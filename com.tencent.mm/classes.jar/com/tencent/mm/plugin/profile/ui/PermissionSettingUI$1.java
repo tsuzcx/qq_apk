@@ -13,9 +13,9 @@ final class PermissionSettingUI$1
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(27363);
-    this.HbP.hideVKB();
-    this.HbP.setResult(-1, new Intent());
-    this.HbP.finish();
+    this.MZW.hideVKB();
+    this.MZW.setResult(-1, new Intent());
+    this.MZW.finish();
     AppMethodBeat.o(27363);
     return true;
   }

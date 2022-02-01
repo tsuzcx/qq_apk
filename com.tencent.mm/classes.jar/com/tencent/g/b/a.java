@@ -14,65 +14,63 @@ import java.util.Set;
 
 public final class a
 {
-  private static final h<a> ZRy;
-  public final Map<Integer, Set<b>> ZRw;
-  private final Map<Integer, Set<Object>> ZRx;
+  private static final h<a> ahVU;
+  public final Map<Integer, Set<b>> ahVS;
+  private final Map<Integer, Set<Object>> ahVT;
   
   static
   {
-    AppMethodBeat.i(208622);
-    ZRy = new h() {};
-    AppMethodBeat.o(208622);
+    AppMethodBeat.i(212101);
+    ahVU = new h() {};
+    AppMethodBeat.o(212101);
   }
   
   public a()
   {
-    AppMethodBeat.i(208614);
-    this.ZRw = new HashMap();
-    this.ZRx = new HashMap();
-    AppMethodBeat.o(208614);
+    AppMethodBeat.i(212064);
+    this.ahVS = new HashMap();
+    this.ahVT = new HashMap();
+    AppMethodBeat.o(212064);
   }
   
-  public static Object c(Class<?> paramClass, String paramString, Object paramObject)
+  public static Object b(Class<?> paramClass, String paramString, Object paramObject)
   {
-    AppMethodBeat.i(208617);
+    AppMethodBeat.i(212081);
     try
     {
       paramClass = paramClass.getDeclaredField(paramString);
       paramClass.setAccessible(true);
       paramClass = paramClass.get(paramObject);
-      AppMethodBeat.o(208617);
       return paramClass;
     }
-    catch (Throwable paramClass)
+    finally
     {
-      AppMethodBeat.o(208617);
+      AppMethodBeat.o(212081);
     }
     return null;
   }
   
-  public static a itx()
+  public static a kcP()
   {
-    AppMethodBeat.i(208615);
-    a locala = (a)ZRy.get();
-    AppMethodBeat.o(208615);
+    AppMethodBeat.i(212069);
+    a locala = (a)ahVU.get();
+    AppMethodBeat.o(212069);
     return locala;
   }
   
-  public static Object jh(View paramView)
+  public static Object mL(View paramView)
   {
-    AppMethodBeat.i(208619);
+    AppMethodBeat.i(212090);
     try
     {
       Method localMethod = View.class.getDeclaredMethod("getListenerInfo", new Class[0]);
       localMethod.setAccessible(true);
       paramView = localMethod.invoke(paramView, new Object[0]);
-      AppMethodBeat.o(208619);
       return paramView;
     }
-    catch (Throwable paramView)
+    finally
     {
-      AppMethodBeat.o(208619);
+      AppMethodBeat.o(212090);
     }
     return null;
   }
@@ -80,16 +78,16 @@ public final class a
   public final class a
     implements View.OnTouchListener
   {
-    private final View.OnTouchListener nbI;
+    private final View.OnTouchListener pYP;
     
     public a(View.OnTouchListener paramOnTouchListener)
     {
-      this.nbI = paramOnTouchListener;
+      this.pYP = paramOnTouchListener;
     }
     
     public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(207788);
+      AppMethodBeat.i(212071);
       if ((a.a(a.this) != null) && (!a.a(a.this).isEmpty()))
       {
         Iterator localIterator = ((Set)a.a(a.this).get(Integer.valueOf(paramView.hashCode()))).iterator();
@@ -97,20 +95,20 @@ public final class a
           ((b)localIterator.next()).onTouch(paramView, paramMotionEvent);
         }
       }
-      if (this.nbI != null)
+      if (this.pYP != null)
       {
-        boolean bool = this.nbI.onTouch(paramView, paramMotionEvent);
-        AppMethodBeat.o(207788);
+        boolean bool = this.pYP.onTouch(paramView, paramMotionEvent);
+        AppMethodBeat.o(212071);
         return bool;
       }
-      AppMethodBeat.o(207788);
+      AppMethodBeat.o(212071);
       return false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.g.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -9,30 +9,25 @@ public abstract interface e
 {
   public abstract void a(Context paramContext, b paramb);
   
-  public abstract void a(Context paramContext, b paramb, a parama);
+  public abstract void a(Context paramContext, b paramb, e.a parama);
   
   public abstract void a(Context paramContext, b paramb, e.c paramc);
   
   public abstract void a(Context paramContext, b paramb, String paramString, e.c paramc);
   
-  public abstract void b(Context paramContext, b paramb, a parama);
-  
-  public static abstract interface a
-  {
-    public abstract void a(boolean paramBoolean, String paramString1, String paramString2);
-  }
+  public abstract void b(Context paramContext, b paramb, e.a parama);
   
   public static final class b
     implements Serializable
   {
-    public int EVA;
-    public int EVB;
-    public String EVw;
-    public String EVx;
-    public String EVy;
-    public String EVz;
+    public String KQX;
+    public String KQY;
+    public String KQZ;
+    public String KRa;
+    public int KRb;
     public String appId;
     public String appName;
+    public int mIJ;
     public String signature;
   }
 }

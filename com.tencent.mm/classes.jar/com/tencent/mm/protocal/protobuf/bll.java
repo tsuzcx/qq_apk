@@ -3,66 +3,95 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bll
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int SWy;
-  public int percent;
-  public int type;
+  public String Kru;
+  public boolean ZUD;
+  public String icon_url;
+  public String wording;
+  public int wuj;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(184213);
+    AppMethodBeat.i(259295);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.type);
-      paramVarArgs.aY(2, this.percent);
-      paramVarArgs.aY(3, this.SWy);
-      AppMethodBeat.o(184213);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.di(1, this.ZUD);
+      if (this.icon_url != null) {
+        paramVarArgs.g(2, this.icon_url);
+      }
+      if (this.wording != null) {
+        paramVarArgs.g(3, this.wording);
+      }
+      paramVarArgs.bS(4, this.wuj);
+      if (this.Kru != null) {
+        paramVarArgs.g(5, this.Kru);
+      }
+      AppMethodBeat.o(259295);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.bM(1, this.type);
-      int i = g.a.a.b.b.a.bM(2, this.percent);
-      int j = g.a.a.b.b.a.bM(3, this.SWy);
-      AppMethodBeat.o(184213);
-      return paramInt + 0 + i + j;
+      int i = i.a.a.b.b.a.ko(1) + 1 + 0;
+      paramInt = i;
+      if (this.icon_url != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.icon_url);
+      }
+      i = paramInt;
+      if (this.wording != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.wording);
+      }
+      i += i.a.a.b.b.a.cJ(4, this.wuj);
+      paramInt = i;
+      if (this.Kru != null) {
+        paramInt = i + i.a.a.b.b.a.h(5, this.Kru);
+      }
+      AppMethodBeat.o(259295);
+      return paramInt;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(184213);
+      AppMethodBeat.o(259295);
       return 0;
     }
     if (paramInt == 3)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       bll localbll = (bll)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(184213);
+        AppMethodBeat.o(259295);
         return -1;
       case 1: 
-        localbll.type = locala.abFh.AK();
-        AppMethodBeat.o(184213);
+        localbll.ZUD = locala.ajGk.aai();
+        AppMethodBeat.o(259295);
         return 0;
       case 2: 
-        localbll.percent = locala.abFh.AK();
-        AppMethodBeat.o(184213);
+        localbll.icon_url = locala.ajGk.readString();
+        AppMethodBeat.o(259295);
+        return 0;
+      case 3: 
+        localbll.wording = locala.ajGk.readString();
+        AppMethodBeat.o(259295);
+        return 0;
+      case 4: 
+        localbll.wuj = locala.ajGk.aar();
+        AppMethodBeat.o(259295);
         return 0;
       }
-      localbll.SWy = locala.abFh.AK();
-      AppMethodBeat.o(184213);
+      localbll.Kru = locala.ajGk.readString();
+      AppMethodBeat.o(259295);
       return 0;
     }
-    AppMethodBeat.o(184213);
+    AppMethodBeat.o(259295);
     return -1;
   }
 }

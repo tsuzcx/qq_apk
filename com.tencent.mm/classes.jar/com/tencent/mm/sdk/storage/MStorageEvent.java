@@ -1,9 +1,9 @@
 package com.tencent.mm.sdk.storage;
 
 import android.os.Looper;
-import com.tencent.e.j.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.threadpool.j.a;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -181,7 +181,7 @@ public abstract class MStorageEvent<T, E>
     //   22: new 9	com/tencent/mm/sdk/storage/MStorageEvent$EventHandler
     //   25: dup
     //   26: aload_2
-    //   27: invokespecial 147	com/tencent/mm/sdk/storage/MStorageEvent$EventHandler:<init>	(Lcom/tencent/e/j/a;)V
+    //   27: invokespecial 147	com/tencent/mm/sdk/storage/MStorageEvent$EventHandler:<init>	(Lcom/tencent/threadpool/j/a;)V
     //   30: invokevirtual 144	java/util/Hashtable:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   33: pop
     //   34: aload_0
@@ -306,7 +306,7 @@ public abstract class MStorageEvent<T, E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.sdk.storage.MStorageEvent
  * JD-Core Version:    0.7.0.1
  */

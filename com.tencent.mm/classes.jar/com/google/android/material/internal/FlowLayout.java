@@ -9,14 +9,14 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
 import androidx.core.g.h;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import com.google.android.material.a.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class FlowLayout
   extends ViewGroup
 {
-  private boolean bCn;
+  private boolean bcF;
   private int itemSpacing;
   private int lineSpacing;
   
@@ -28,29 +28,29 @@ public class FlowLayout
   public FlowLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(237671);
-    this.bCn = false;
+    AppMethodBeat.i(209385);
+    this.bcF = false;
     paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, a.k.FlowLayout, 0, 0);
     this.lineSpacing = paramContext.getDimensionPixelSize(a.k.FlowLayout_lineSpacing, 0);
     this.itemSpacing = paramContext.getDimensionPixelSize(a.k.FlowLayout_itemSpacing, 0);
     paramContext.recycle();
-    AppMethodBeat.o(237671);
+    AppMethodBeat.o(209385);
   }
   
-  private static int x(int paramInt1, int paramInt2, int paramInt3)
+  private static int N(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(237682);
+    AppMethodBeat.i(209392);
     switch (paramInt2)
     {
     default: 
-      AppMethodBeat.o(237682);
+      AppMethodBeat.o(209392);
       return paramInt3;
     case 1073741824: 
-      AppMethodBeat.o(237682);
+      AppMethodBeat.o(209392);
       return paramInt1;
     }
     paramInt1 = Math.min(paramInt3, paramInt1);
-    AppMethodBeat.o(237682);
+    AppMethodBeat.o(209392);
     return paramInt1;
   }
   
@@ -66,10 +66,10 @@ public class FlowLayout
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(237683);
+    AppMethodBeat.i(209452);
     if (getChildCount() == 0)
     {
-      AppMethodBeat.o(237683);
+      AppMethodBeat.o(209452);
       return;
     }
     int j;
@@ -83,7 +83,7 @@ public class FlowLayout
     int m;
     label144:
     int i1;
-    if (w.I(this) == 1)
+    if (z.U(this) == 1)
     {
       j = 1;
       if (j == 0) {
@@ -118,7 +118,7 @@ public class FlowLayout
       int i3 = localView.getMeasuredWidth();
       i = paramInt1;
       i1 = paramInt3;
-      if (!this.bCn)
+      if (!this.bcF)
       {
         i = paramInt1;
         i1 = paramInt3;
@@ -156,7 +156,7 @@ public class FlowLayout
       break label50;
       localView.layout(i1 + n, i, paramInt1, paramInt4);
       break label245;
-      AppMethodBeat.o(237683);
+      AppMethodBeat.o(209452);
       return;
       m = 0;
       break label144;
@@ -165,7 +165,7 @@ public class FlowLayout
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(237680);
+    AppMethodBeat.i(209444);
     int i6 = View.MeasureSpec.getSize(paramInt1);
     int i7 = View.MeasureSpec.getMode(paramInt1);
     int i8 = View.MeasureSpec.getSize(paramInt2);
@@ -210,7 +210,7 @@ public class FlowLayout
       {
         m = i;
         i5 = k;
-        if (!this.bCn)
+        if (!this.bcF)
         {
           i5 = getPaddingLeft();
           m = i2 + this.lineSpacing;
@@ -235,8 +235,8 @@ public class FlowLayout
       n = 2147483647;
       break;
       label301:
-      setMeasuredDimension(x(i6, i7, j), x(i8, i9, i2));
-      AppMethodBeat.o(237680);
+      setMeasuredDimension(N(i6, i7, j), N(i8, i9, i2));
+      AppMethodBeat.o(209444);
       return;
       label329:
       i3 = 0;
@@ -259,12 +259,12 @@ public class FlowLayout
   
   public void setSingleLine(boolean paramBoolean)
   {
-    this.bCn = paramBoolean;
+    this.bcF = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.internal.FlowLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,49 +1,63 @@
 package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
-import com.tencent.luggage.sdk.b.a.d.b.b;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.d;
-import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.al.a;
+import com.tencent.mm.autogen.a.ab;
+import com.tencent.mm.autogen.a.ab.b;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.music.b.b;
 import com.tencent.mm.sdk.platformtools.Log;
+import org.json.JSONObject;
 
 public final class p
-  implements b.b
+  extends c
 {
-  public final boolean RE()
+  public static final int CTRL_INDEX = 481;
+  public static final String NAME = "setInnerAudioOption";
+  
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(278393);
-    int i = ((b)h.ae(b.class)).a(b.a.vuf, 0);
-    Log.i("MicroMsg.Audio.WxAudioSupportDelegateImpl", "wegame_android_use_wxaudio:%d", new Object[] { Integer.valueOf(i) });
-    if (i == 1)
-    {
-      AppMethodBeat.o(278393);
-      return true;
+    AppMethodBeat.i(145774);
+    String str = paramf.getAppId();
+    Log.i("MicroMsg.Audio.JsApiSetInnerAudioOption", "data:%s, appId:%s", new Object[] { paramJSONObject, str });
+    Log.i("MicroMsg.AudioPlayerHelper", "getAudioContextOption()");
+    Object localObject = new ab();
+    ((ab)localObject).hzS.action = 20;
+    b.a((ab)localObject);
+    a locala = ((ab)localObject).hzT.hzV;
+    localObject = locala;
+    if (locala == null) {
+      localObject = new a();
     }
-    AppMethodBeat.o(278393);
-    return false;
+    if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(((a)localObject).appId)) && (!str.equalsIgnoreCase(((a)localObject).appId)))
+    {
+      ((a)localObject).reset();
+      Log.i("MicroMsg.Audio.JsApiSetInnerAudioOption", "reset AudioContextParam");
+    }
+    ((a)localObject).appId = str;
+    if (paramJSONObject.has("mixWithOther")) {
+      ((a)localObject).orh = paramJSONObject.optBoolean("mixWithOther", true);
+    }
+    if (paramJSONObject.has("speakerOn")) {
+      ((a)localObject).hqB = paramJSONObject.optBoolean("speakerOn", true);
+    }
+    if (!((a)localObject).hqB) {
+      ((a)localObject).orh = false;
+    }
+    Log.i("MicroMsg.AudioPlayerHelper", "setAudioContextOption, mixWithOther:%b", new Object[] { Boolean.valueOf(((a)localObject).orh) });
+    paramJSONObject = new ab();
+    paramJSONObject.hzS.action = 19;
+    paramJSONObject.hzS.hzV = ((a)localObject);
+    b.a(paramJSONObject);
+    paramf.callback(paramInt, ZP("ok"));
+    AppMethodBeat.o(145774);
   }
-  
-  public final boolean RF()
-  {
-    AppMethodBeat.i(278394);
-    Log.i("MicroMsg.Audio.WxAudioSupportDelegateImpl", "doCheckResUpdate");
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, null, a.class, null);
-    AppMethodBeat.o(278394);
-    return true;
-  }
-  
-  static final class a
-    implements d<IPCVoid, IPCVoid>
-  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.audio.p
  * JD-Core Version:    0.7.0.1
  */

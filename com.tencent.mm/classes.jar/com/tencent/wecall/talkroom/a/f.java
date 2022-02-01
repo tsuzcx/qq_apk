@@ -1,6 +1,6 @@
 package com.tencent.wecall.talkroom.a;
 
-import com.google.b.a.e;
+import com.google.d.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.pb.common.b.a.a.a.ad;
 import com.tencent.pb.common.b.a.a.a.f;
@@ -19,11 +19,11 @@ public final class f
     try
     {
       localf.groupId = paramString;
-      localf.NOc = paramInt1;
-      localf.NOd = paramLong;
-      localf.bnA = paramInt2;
-      aAc(2);
-      aAd(c.iuI().bEi(paramString));
+      localf.UAZ = paramInt1;
+      localf.UBa = paramLong;
+      localf.reason = paramInt2;
+      aGP(2);
+      aGQ(c.ked().bGH(paramString));
       c(143, localf);
       AppMethodBeat.o(62536);
       return;
@@ -37,7 +37,7 @@ public final class f
     }
   }
   
-  public final Object dn(byte[] paramArrayOfByte)
+  public final Object dp(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62537);
     if (paramArrayOfByte != null) {}
@@ -64,14 +64,14 @@ public final class f
     return 203;
   }
   
-  public final String ikF()
+  public final String jQW()
   {
     return "CsCmd.Cmd_V_CSExitVoiceRoomReq";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.f
  * JD-Core Version:    0.7.0.1
  */

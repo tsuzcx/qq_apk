@@ -128,17 +128,17 @@ public class LruCache<K, V>
   
   public Set<Map.Entry<K, V>> entrySet()
   {
-    AppMethodBeat.i(193045);
+    AppMethodBeat.i(244244);
     Set localSet = this.map.entrySet();
-    AppMethodBeat.o(193045);
+    AppMethodBeat.o(244244);
     return localSet;
   }
   
   public final void evictAll()
   {
-    AppMethodBeat.i(193026);
+    AppMethodBeat.i(244187);
     trimToSize(-1);
-    AppMethodBeat.o(193026);
+    AppMethodBeat.o(244187);
   }
   
   public final int evictionCount()
@@ -435,15 +435,15 @@ public class LruCache<K, V>
   
   public Collection<V> values()
   {
-    AppMethodBeat.i(193050);
+    AppMethodBeat.i(244249);
     Collection localCollection = this.map.values();
-    AppMethodBeat.o(193050);
+    AppMethodBeat.o(244249);
     return localCollection;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.LruCache
  * JD-Core Version:    0.7.0.1
  */

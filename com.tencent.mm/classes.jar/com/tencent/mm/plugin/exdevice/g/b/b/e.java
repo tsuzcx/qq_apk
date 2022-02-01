@@ -4,7 +4,7 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.g.b.a;
 import com.tencent.mm.plugin.exdevice.g.b.d;
-import com.tencent.mm.plugin.exdevice.model.ae;
+import com.tencent.mm.plugin.exdevice.model.ah;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
@@ -70,11 +70,11 @@ public final class e
         Log.w("MicroMsg.ExdeviceRankLikeUserStg", "hy: insert or update failed");
       }
     }
-    ae.cZH().a("HardDeviceLikeUser", new d(paramString1, paramString2, null));
+    ah.dGa().a("HardDeviceLikeUser", new d(paramString1, paramString2, null));
     AppMethodBeat.o(23585);
   }
   
-  public final ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.e> avF(String paramString)
+  public final ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.e> apF(String paramString)
   {
     com.tencent.mm.plugin.exdevice.g.b.a.e locale = null;
     AppMethodBeat.i(23584);
@@ -110,7 +110,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.g.b.b.e
  * JD-Core Version:    0.7.0.1
  */

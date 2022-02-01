@@ -17,14 +17,14 @@ public final class e
     super(paramContext, null, 0);
     AppMethodBeat.i(136645);
     this.mContext = paramContext;
-    this.ty.setInputMethodMode(2);
+    this.ux.setInputMethodMode(2);
     paramContext = paramContext.getResources().getDrawable(a.d.abc_popup_background_mtrl_mult);
-    this.ty.setBackgroundDrawable(paramContext);
-    cpv();
-    cpx();
-    cpw();
+    this.ux.setBackgroundDrawable(paramContext);
+    eK();
+    cSa();
+    cRZ();
     int i = a.a.appbrand_autofill_dropdown;
-    this.ty.setAnimationStyle(i);
+    this.ux.setAnimationStyle(i);
     AppMethodBeat.o(136645);
   }
   
@@ -37,7 +37,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.autofill.e
  * JD-Core Version:    0.7.0.1
  */

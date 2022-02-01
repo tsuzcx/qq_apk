@@ -1,86 +1,60 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
+import android.content.Intent;
+import com.tencent.luggage.bridge.k;
+import com.tencent.luggage.d.b;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.game.luggage.g.i;
-import com.tencent.mm.plugin.gamelife.a.b.b;
-import com.tencent.mm.plugin.webview.luggage.c.c;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bs;
+import com.tencent.mm.plugin.game.a;
+import com.tencent.mm.plugin.game.luggage.page.GameWebPage;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv.a;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class aj
-  extends bs<i>
+  extends bv<GameWebPage>
 {
-  public final void a(Context paramContext, String paramString, final br.a parama)
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
+  
+  public final void b(b<GameWebPage>.a paramb)
   {
-    AppMethodBeat.i(231010);
-    Log.i("MicroMsg.GameLife.JsApiSetBlackList", "invokeInMM");
-    paramContext = c.agO(paramString);
-    if (paramContext == null)
+    AppMethodBeat.i(277174);
+    Object localObject = paramb.eiZ.eif;
+    if (localObject == null)
     {
-      parama.i("invalid_params", null);
-      AppMethodBeat.o(231010);
+      paramb.a("invalid_params", null);
+      AppMethodBeat.o(277174);
       return;
     }
-    paramString = paramContext.optString("userName");
-    Log.i("MicroMsg.GameLife.JsApiSetBlackList", "userName:[%s]", new Object[] { paramString });
-    if (Util.isNullOrNil(paramString))
+    localObject = ((JSONObject)localObject).optString("chatroom_name");
+    if (Util.isNullOrNil((String)localObject))
     {
-      parama.i("null_data", null);
-      AppMethodBeat.o(231010);
+      paramb.a("invalid_params", null);
+      AppMethodBeat.o(277174);
       return;
     }
-    if (!paramContext.has("switch"))
-    {
-      parama.i("switch_null", null);
-      AppMethodBeat.o(231010);
-      return;
-    }
-    try
-    {
-      boolean bool1 = paramContext.getBoolean("switch");
-      boolean bool2 = paramContext.optBoolean("associateWxGameAccount", false);
-      Log.i("MicroMsg.GameLife.JsApiSetBlackList", "JsApiSetBlackList setBlack:%b,associateWxGameAccount:%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-      ((com.tencent.mm.plugin.gamelife.a.b)h.ae(com.tencent.mm.plugin.gamelife.a.b.class)).a(paramString, bool1, bool2, new b.b()
-      {
-        public final void oa(boolean paramAnonymousBoolean)
-        {
-          AppMethodBeat.i(231412);
-          if (paramAnonymousBoolean)
-          {
-            parama.i(null, null);
-            AppMethodBeat.o(231412);
-            return;
-          }
-          parama.i("setBlackList error", null);
-          AppMethodBeat.o(231412);
-        }
-      });
-      AppMethodBeat.o(231010);
-      return;
-    }
-    catch (JSONException paramContext)
-    {
-      parama.i("switch_error", null);
-      AppMethodBeat.o(231010);
-    }
+    Log.i("MicroMsg.JsApiQuitGameLifeChatroom", "chatRoomName:%s", new Object[] { localObject });
+    Intent localIntent = new Intent();
+    localIntent.setAction("com.tencent.mm.game.ACTION_QUIT_CHAT_ROOM");
+    localIntent.putExtra("chatroom_name", (String)localObject);
+    MMApplicationContext.getContext().sendBroadcast(localIntent, a.HRS);
+    paramb.a("", null);
+    ((GameWebPage)paramb.eiY).iR(true);
+    AppMethodBeat.o(277174);
   }
   
-  public final void b(com.tencent.luggage.d.b<i>.a paramb) {}
-  
-  public final int cDj()
+  public final int dgI()
   {
-    return 1;
+    return 0;
   }
   
   public final String name()
   {
-    return "setBlackList";
+    return "quitGameLifeChatroom";
   }
 }
 

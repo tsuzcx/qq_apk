@@ -9,30 +9,30 @@ public class AutoTransition
 {
   public AutoTransition()
   {
-    AppMethodBeat.i(191673);
+    AppMethodBeat.i(201210);
     init();
-    AppMethodBeat.o(191673);
+    AppMethodBeat.o(201210);
   }
   
   public AutoTransition(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(191676);
+    AppMethodBeat.i(201218);
     init();
-    AppMethodBeat.o(191676);
+    AppMethodBeat.o(201218);
   }
   
   private void init()
   {
-    AppMethodBeat.i(191681);
-    dz(1);
+    AppMethodBeat.i(201229);
+    gJ(1);
     c(new Fade(2)).c(new ChangeBounds()).c(new Fade(1));
-    AppMethodBeat.o(191681);
+    AppMethodBeat.o(201229);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.transition.AutoTransition
  * JD-Core Version:    0.7.0.1
  */

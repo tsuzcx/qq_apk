@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.appbrand.appstorage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.w;
 
 final class AppBrandLocalMediaObjectManager$2
-  implements s
+  implements w
 {
-  public final boolean accept(q paramq)
+  public final boolean accept(u paramu)
   {
     AppMethodBeat.i(175561);
-    if ((paramq.ifE()) && (!paramq.isDirectory()) && (!Util.isNullOrNil(paramq.getName())) && (paramq.getName().startsWith("tmp_")))
+    if ((paramu.jKS()) && (!paramu.isDirectory()) && (!Util.isNullOrNil(paramu.getName())) && (paramu.getName().startsWith("tmp_")))
     {
       AppMethodBeat.o(175561);
       return true;

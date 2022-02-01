@@ -1,120 +1,124 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
-import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.app.m;
-import com.tencent.mm.plugin.appbrand.config.z;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.storage.MStorage;
-import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.protocal.protobuf.cwv;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import java.util.Collections;
-import java.util.List;
-import kotlin.l;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandLocalUsageStorageNewImpl;", "Lcom/tencent/mm/sdk/storage/MStorage;", "Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandLocalUsageStorage;", "()V", "TAG", "", "add", "", "listener", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "looper", "Landroid/os/Looper;", "getCount", "", "query", "", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "count", "versionType", "maxUpdateTime", "", "remove", "removeUsage", "", "username", "plugin-appbrand-integration_release"})
-public final class p
-  extends MStorage
-  implements ah
+public enum p
 {
-  private final String TAG = "MicroMsg.AppBrandLocalUsageStorageNewImpl";
+  private static volatile cwv qOY;
+  private static final Set<Object> qOZ;
   
-  public final void add(MStorage.IOnStorageChange paramIOnStorageChange)
+  static
   {
-    AppMethodBeat.i(50278);
-    add(paramIOnStorageChange, Looper.getMainLooper());
-    AppMethodBeat.o(50278);
+    AppMethodBeat.i(44546);
+    qPa = new p[0];
+    qOZ = Collections.newSetFromMap(new ConcurrentHashMap());
+    AppMethodBeat.o(44546);
   }
   
-  public final void add(MStorage.IOnStorageChange paramIOnStorageChange, Looper paramLooper)
+  public static boolean ciO()
   {
-    AppMethodBeat.i(50279);
-    m.bFN().add(paramIOnStorageChange, paramLooper);
-    m.bFF().add(paramIOnStorageChange, paramLooper);
-    AppMethodBeat.o(50279);
+    return true;
   }
   
-  public final boolean bB(String paramString, int paramInt)
+  public static boolean ciP()
   {
-    boolean bool1 = false;
-    AppMethodBeat.i(50275);
-    an.w(paramString, null, paramInt);
-    if (!m.bFN().bI(paramString, paramInt)) {}
-    for (;;)
+    AppMethodBeat.i(44539);
+    switch (1.qPb[ciQ().ordinal()])
     {
-      try
+    }
+    do
+    {
+      AppMethodBeat.o(44539);
+      return false;
+      AppMethodBeat.o(44539);
+      return false;
+      AppMethodBeat.o(44539);
+      return true;
+      if (ciR())
       {
-        boolean bool2 = m.bFN().bJ(paramString, paramInt);
-        if (bool2) {
-          continue;
-        }
-        bool1 = true;
+        AppMethodBeat.o(44539);
+        return true;
       }
-      catch (Exception paramString)
-      {
-        Log.printErrStackTrace(this.TAG, (Throwable)paramString, "removeUsage", new Object[0]);
-        continue;
-      }
-      AppMethodBeat.o(50275);
-      return bool1;
-      bool1 = false;
-    }
-  }
-  
-  public final List<? extends LocalUsageInfo> en(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(50277);
-    if (paramInt1 <= 0)
+    } while (qOY == null);
+    if (qOY.uYb >= qOY.aaCi)
     {
-      localObject = Collections.emptyList();
-      kotlin.g.b.p.j(localObject, "Collections.emptyList<LocalUsageInfo>()");
-      AppMethodBeat.o(50277);
-      return localObject;
+      AppMethodBeat.o(44539);
+      return true;
     }
-    Object localObject = x.f(m.bFN().a(null, paramInt1, 0, paramInt2));
-    kotlin.g.b.p.j(localObject, "obtainHistoryList(SubCor…, count, 0, versionType))");
-    localObject = (List)localObject;
-    AppMethodBeat.o(50277);
-    return localObject;
+    AppMethodBeat.o(44539);
+    return false;
   }
   
-  public final List<? extends LocalUsageInfo> i(long paramLong, int paramInt)
+  static a ciQ()
   {
-    AppMethodBeat.i(247500);
-    Object localObject = m.bFN().bJD().j(paramLong, paramInt);
-    kotlin.g.b.p.j(localObject, "SubCoreAppBrand.getUsage…ive(maxUpdateTime, count)");
-    localObject = (List)localObject;
-    AppMethodBeat.o(247500);
-    return localObject;
-  }
-  
-  public final void remove(MStorage.IOnStorageChange paramIOnStorageChange)
-  {
-    AppMethodBeat.i(50280);
-    m.bFN().remove(paramIOnStorageChange);
-    m.bFF().remove(paramIOnStorageChange);
-    AppMethodBeat.o(50280);
-  }
-  
-  public final List<? extends LocalUsageInfo> zh(int paramInt)
-  {
-    AppMethodBeat.i(50276);
-    if (paramInt <= 0)
+    AppMethodBeat.i(44541);
+    if (!h.baz())
     {
-      localObject = Collections.emptyList();
-      kotlin.g.b.p.j(localObject, "Collections.emptyList<LocalUsageInfo>()");
-      AppMethodBeat.o(50276);
-      return localObject;
+      locala = a.qPc;
+      AppMethodBeat.o(44541);
+      return locala;
     }
-    Object localObject = x.f(m.bFN().a(null, paramInt, 0));
-    kotlin.g.b.p.j(localObject, "obtainHistoryList(SubCor…istories(null, count, 0))");
-    localObject = (List)localObject;
-    AppMethodBeat.o(50276);
-    return localObject;
+    a locala = a.qPd;
+    AppMethodBeat.o(44541);
+    return locala;
+  }
+  
+  static boolean ciR()
+  {
+    AppMethodBeat.i(44542);
+    boolean bool = h.baE().ban().getBoolean(at.a.acNB, false);
+    AppMethodBeat.o(44542);
+    return bool;
+  }
+  
+  static void ciS()
+  {
+    AppMethodBeat.i(44543);
+    h.baE().ban().set(at.a.acNB, Boolean.TRUE);
+    AppMethodBeat.o(44543);
+  }
+  
+  public static cwv ciT()
+  {
+    return qOY;
+  }
+  
+  public static void clearData()
+  {
+    qOY = null;
+  }
+  
+  static enum a
+  {
+    final int value;
+    
+    static
+    {
+      AppMethodBeat.i(44534);
+      qPc = new a("FORCE_OFF", 0, 0);
+      qPd = new a("FORCE_ON", 1, 1);
+      qPe = new a("DYNAMIC_THRESHOLD", 2, 2);
+      qPf = new a[] { qPc, qPd, qPe };
+      AppMethodBeat.o(44534);
+    }
+    
+    private a(int paramInt)
+    {
+      this.value = paramInt;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.p
  * JD-Core Version:    0.7.0.1
  */

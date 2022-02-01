@@ -1,61 +1,35 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.view.KeyEvent;
-import android.view.inputmethod.InputConnection;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageButton;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.ChatFooterPanel.a;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.widget.cedit.api.c;
+import com.tencent.mm.plugin.sns.b.i;
 
 final class SnsCommentFooter$12
-  implements ChatFooterPanel.a
+  implements View.OnTouchListener
 {
   SnsCommentFooter$12(SnsCommentFooter paramSnsCommentFooter) {}
   
-  public final void aDN() {}
-  
-  public final void aDO()
+  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(98647);
-    if (SnsCommentFooter.b(this.KQR) != null)
-    {
-      if (SnsCommentFooter.b(this.KQR).getInputConnection() == null)
-      {
-        AppMethodBeat.o(98647);
-        return;
-      }
-      SnsCommentFooter.b(this.KQR).getInputConnection().sendKeyEvent(new KeyEvent(0, 67));
-      SnsCommentFooter.b(this.KQR).getInputConnection().sendKeyEvent(new KeyEvent(1, 67));
+    AppMethodBeat.i(369913);
+    this.RqJ.setToSendTextColor(true);
+    SnsCommentFooter.m(this.RqJ);
+    SnsCommentFooter.n(this.RqJ);
+    SnsCommentFooter.l(this.RqJ).setImageResource(b.i.icons_outlined_emoji);
+    if (SnsCommentFooter.p(this.RqJ) != null) {
+      SnsCommentFooter.p(this.RqJ).hov();
     }
-    AppMethodBeat.o(98647);
-  }
-  
-  public final void append(String paramString)
-  {
-    AppMethodBeat.i(98648);
-    try
-    {
-      SnsCommentFooter.b(this.KQR).bBa(paramString);
-      AppMethodBeat.o(98648);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      Log.printErrStackTrace("MicroMsg.SnsCommentFooter", paramString, "", new Object[0]);
-      AppMethodBeat.o(98648);
-    }
-  }
-  
-  public final void eE(boolean paramBoolean)
-  {
-    AppMethodBeat.i(98646);
-    this.KQR.setToSendTextColor(paramBoolean);
-    AppMethodBeat.o(98646);
+    SnsCommentFooter.a(this.RqJ, 0);
+    AppMethodBeat.o(369913);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsCommentFooter.12
  * JD-Core Version:    0.7.0.1
  */

@@ -2,9 +2,9 @@ package com.tencent.mm.audio.mix.f;
 
 public abstract interface f
 {
-  public abstract void adP();
+  public abstract void aFO();
   
-  public abstract void kv(int paramInt);
+  public abstract void oc(int paramInt);
 }
 
 

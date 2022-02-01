@@ -210,9 +210,9 @@ public class TXLivePlayer
   
   public int setVideoRenderListener(ITXLivePlayVideoRenderListener paramITXLivePlayVideoRenderListener, Object paramObject)
   {
-    AppMethodBeat.i(218949);
+    AppMethodBeat.i(218495);
     int i = this.mTXLivePlayerImpl.a(paramITXLivePlayVideoRenderListener, paramObject);
-    AppMethodBeat.o(218949);
+    AppMethodBeat.o(218495);
     return i;
   }
   
@@ -307,7 +307,7 @@ public class TXLivePlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.rtmp.TXLivePlayer
  * JD-Core Version:    0.7.0.1
  */

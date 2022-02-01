@@ -10,12 +10,12 @@ public class Location
   implements Parcelable
 {
   public static final Parcelable.Creator<Location> CREATOR;
-  public int fMG;
-  public String fMI;
-  public float lLr;
-  public float lLs;
+  public int EOW;
+  public int hSq;
+  public String hSs;
   public String mac;
-  public int zHu;
+  public float oDT;
+  public float oDU;
   
   static
   {
@@ -28,12 +28,12 @@ public class Location
   
   public Location(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
-    this.lLr = paramFloat1;
-    this.lLs = paramFloat2;
-    this.zHu = paramInt1;
-    this.fMG = paramInt2;
+    this.oDT = paramFloat1;
+    this.oDU = paramFloat2;
+    this.EOW = paramInt1;
+    this.hSq = paramInt2;
     this.mac = paramString1;
-    this.fMI = paramString2;
+    this.hSs = paramString2;
   }
   
   public int describeContents()
@@ -41,10 +41,10 @@ public class Location
     return 0;
   }
   
-  public final boolean hhP()
+  public final boolean iIQ()
   {
     AppMethodBeat.i(151845);
-    if ((this.lLr == -85.0F) || (this.lLs == -1000.0F))
+    if ((this.oDT == -85.0F) || (this.oDU == -1000.0F))
     {
       Log.d("MicroMsg.Radar.Location", "mac and cellId is null");
       AppMethodBeat.o(151845);
@@ -57,18 +57,18 @@ public class Location
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(151846);
-    paramParcel.writeFloat(this.lLr);
-    paramParcel.writeFloat(this.lLs);
-    paramParcel.writeInt(this.zHu);
-    paramParcel.writeInt(this.fMG);
+    paramParcel.writeFloat(this.oDT);
+    paramParcel.writeFloat(this.oDU);
+    paramParcel.writeInt(this.EOW);
+    paramParcel.writeInt(this.hSq);
     paramParcel.writeString(this.mac);
-    paramParcel.writeString(this.fMI);
+    paramParcel.writeString(this.hSs);
     AppMethodBeat.o(151846);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.lbs.Location
  * JD-Core Version:    0.7.0.1
  */

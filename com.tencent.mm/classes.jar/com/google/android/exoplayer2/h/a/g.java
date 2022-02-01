@@ -6,11 +6,11 @@ import java.io.File;
 public class g
   implements Comparable<g>
 {
-  public final long aFL;
-  public final boolean bpU;
-  public final long bpV;
+  public final boolean djy;
+  public final long djz;
   public final File file;
   public final String key;
+  public final long length;
   public final long position;
   
   public g(String paramString, long paramLong1, long paramLong2, long paramLong3, File paramFile)
@@ -18,16 +18,21 @@ public class g
     AppMethodBeat.i(92993);
     this.key = paramString;
     this.position = paramLong1;
-    this.aFL = paramLong2;
+    this.length = paramLong2;
     if (paramFile != null) {}
     for (boolean bool = true;; bool = false)
     {
-      this.bpU = bool;
+      this.djy = bool;
       this.file = paramFile;
-      this.bpV = paramLong3;
+      this.djz = paramLong3;
       AppMethodBeat.o(92993);
       return;
     }
+  }
+  
+  public final boolean Ut()
+  {
+    return this.length == -1L;
   }
   
   public final int c(g paramg)
@@ -53,15 +58,10 @@ public class g
     AppMethodBeat.o(92994);
     return 1;
   }
-  
-  public final boolean uU()
-  {
-    return this.aFL == -1L;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.h.a.g
  * JD-Core Version:    0.7.0.1
  */

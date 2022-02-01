@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@color/ja" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.pluginsdk.ui.VoiceInputFooter android:gravity="center|left" android:id="@id/h_i" android:background="@color/b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    <Button android:textSize="18.0dip" android:textColor="@color/g_" android:gravity="center" android:layout_gravity="center" android:id="@id/j9u" android:background="@null" android:paddingTop="5.0dip" android:paddingBottom="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginRight="16.0dip" android:minHeight="38.0dip" android:text="@string/i07" android:layout_alignTop="@id/h_i" android:layout_alignParentRight="true" />
-    <com.tencent.mm.pluginsdk.ui.VoiceInputScrollView android:background="@null" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:layout_above="@id/h_i" android:layout_centerHorizontal="true" android:fadeScrollbars="false">
-        <LinearLayout android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <com.tencent.mm.ui.widget.MMEditText android:textSize="18.0dip" android:textColor="@color/a2x" android:gravity="center|left|top" android:layout_gravity="center|left|top" android:id="@id/j9v" android:background="@null" android:paddingLeft="18.0dip" android:paddingRight="18.0dip" android:paddingBottom="18.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="10.0dip" android:cursorVisible="true" android:layout_centerHorizontal="true" android:lineSpacingMultiplier="1.2" android:textCursorDrawable="@drawable/a70" />
-        </LinearLayout>
-    </com.tencent.mm.pluginsdk.ui.VoiceInputScrollView>
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:paddingBottom="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="58.0dip">
+        <TextView android:textSize="17.0dip" android:textColor="@color/a7b" android:id="@id/cvn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="@string/bsj" android:layout_centerVertical="true" />
+        <TextView android:textSize="14.0dip" android:textColor="#4d000000" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="4.0dip" android:layout_marginBottom="17.0dip" android:text="@string/jog" android:layout_below="@id/cvn" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="7.0dip" android:layout_height="13.0dip" android:layout_marginRight="19.0dip" android:src="@raw/icons_outlined_arrow" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:iconColor="@color/FG_2" />
+    </RelativeLayout>
+    <include android:layout_width="fill_parent" android:layout_height="12.0dip" layout="@layout/beu" />
+</LinearLayout>

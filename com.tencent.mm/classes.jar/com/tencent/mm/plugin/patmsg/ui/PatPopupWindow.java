@@ -11,12 +11,12 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.PopupWindow;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.aw;
 
 public class PatPopupWindow
   extends PopupWindow
 {
-  private FrameLayout GKQ;
+  private FrameLayout MHK;
   private int maxHeight;
   private int maxWidth;
   private int x;
@@ -35,60 +35,60 @@ public class PatPopupWindow
   public PatPopupWindow(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(186435);
-    this.GKQ = new FrameLayout(paramContext);
-    super.setContentView(this.GKQ);
-    AppMethodBeat.o(186435);
+    AppMethodBeat.i(266381);
+    this.MHK = new FrameLayout(paramContext);
+    super.setContentView(this.MHK);
+    AppMethodBeat.o(266381);
   }
   
   public PatPopupWindow(View paramView)
   {
     this(paramView.getContext());
-    AppMethodBeat.i(186436);
-    this.GKQ = new FrameLayout(paramView.getContext());
-    super.setContentView(this.GKQ);
+    AppMethodBeat.i(266391);
+    this.MHK = new FrameLayout(paramView.getContext());
+    super.setContentView(this.MHK);
     setContentView(paramView);
-    AppMethodBeat.o(186436);
+    AppMethodBeat.o(266391);
   }
   
-  private void fI(View paramView)
+  private void iB(View paramView)
   {
-    AppMethodBeat.i(186442);
-    int i = ar.hIP().widthPixels;
-    int j = ar.hIP().heightPixels;
+    AppMethodBeat.i(266399);
+    int i = aw.jld().widthPixels;
+    int j = aw.jld().heightPixels;
     int[] arrayOfInt = new int[2];
     paramView.getLocationInWindow(arrayOfInt);
     setWidth(-2);
     setHeight(-2);
     this.maxWidth = i;
     this.maxHeight = arrayOfInt[1];
-    this.GKQ.measure(View.MeasureSpec.makeMeasureSpec(this.maxWidth, View.MeasureSpec.getMode(-2147483648)), View.MeasureSpec.makeMeasureSpec(this.maxHeight, View.MeasureSpec.getMode(-2147483648)));
-    setWidth(Math.min(this.GKQ.getMeasuredWidth(), this.maxWidth));
-    setHeight(Math.min(this.GKQ.getMeasuredHeight(), this.maxHeight));
-    AppMethodBeat.o(186442);
+    this.MHK.measure(View.MeasureSpec.makeMeasureSpec(this.maxWidth, View.MeasureSpec.getMode(-2147483648)), View.MeasureSpec.makeMeasureSpec(this.maxHeight, View.MeasureSpec.getMode(-2147483648)));
+    setWidth(Math.min(this.MHK.getMeasuredWidth(), this.maxWidth));
+    setHeight(Math.min(this.MHK.getMeasuredHeight(), this.maxHeight));
+    AppMethodBeat.o(266399);
   }
   
-  private void fJ(View paramView)
+  private void iC(View paramView)
   {
-    AppMethodBeat.i(186444);
+    AppMethodBeat.i(266407);
     paramView.getLocationInWindow(new int[2]);
     this.x = 0;
     this.y = 0;
-    this.x = (-(this.GKQ.getMeasuredWidth() - paramView.getWidth()) / 2);
-    this.y = (-this.GKQ.getMeasuredHeight() - paramView.getHeight());
-    AppMethodBeat.o(186444);
+    this.x = (-(this.MHK.getMeasuredWidth() - paramView.getWidth()) / 2);
+    this.y = (-this.MHK.getMeasuredHeight() - paramView.getHeight());
+    AppMethodBeat.o(266407);
   }
   
-  public final void a(View paramView, FrameLayout.LayoutParams paramLayoutParams)
+  public final void b(View paramView, FrameLayout.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(186440);
+    AppMethodBeat.i(266428);
     if (getBackground() == null) {
       setBackgroundDrawable(new ColorDrawable(0));
     }
     View localView = getContentView();
     if (localView == null)
     {
-      AppMethodBeat.o(186440);
+      AppMethodBeat.o(266428);
       return;
     }
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
@@ -97,39 +97,39 @@ public class PatPopupWindow
     localLayoutParams.topMargin = paramLayoutParams.topMargin;
     localLayoutParams.bottomMargin = paramLayoutParams.bottomMargin;
     localView.setLayoutParams(localLayoutParams);
-    fI(paramView);
-    Log.d("MicroMsg.PatPopupWindow", "show contentView size (%d,%d)", new Object[] { Integer.valueOf(this.GKQ.getMeasuredWidth()), Integer.valueOf(this.GKQ.getMeasuredHeight()) });
-    fJ(paramView);
+    iB(paramView);
+    Log.d("MicroMsg.PatPopupWindow", "show contentView size (%d,%d)", new Object[] { Integer.valueOf(this.MHK.getMeasuredWidth()), Integer.valueOf(this.MHK.getMeasuredHeight()) });
+    iC(paramView);
     Log.d("MicroMsg.PatPopupWindow", "show at fix location (%d,%d)", new Object[] { Integer.valueOf(this.x), Integer.valueOf(this.y) });
     if (isShowing())
     {
       update(paramView, this.x, this.y, getWidth(), getHeight());
-      AppMethodBeat.o(186440);
+      AppMethodBeat.o(266428);
       return;
     }
     showAsDropDown(paramView, this.x, this.y);
-    AppMethodBeat.o(186440);
+    AppMethodBeat.o(266428);
   }
   
   public View getContentView()
   {
-    AppMethodBeat.i(186438);
-    View localView = this.GKQ.getChildAt(0);
-    AppMethodBeat.o(186438);
+    AppMethodBeat.i(266422);
+    View localView = this.MHK.getChildAt(0);
+    AppMethodBeat.o(266422);
     return localView;
   }
   
   public void setContentView(View paramView)
   {
-    AppMethodBeat.i(186437);
-    this.GKQ.removeAllViews();
-    this.GKQ.addView(paramView);
-    AppMethodBeat.o(186437);
+    AppMethodBeat.i(266412);
+    this.MHK.removeAllViews();
+    this.MHK.addView(paramView);
+    AppMethodBeat.o(266412);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.patmsg.ui.PatPopupWindow
  * JD-Core Version:    0.7.0.1
  */

@@ -1,72 +1,59 @@
 package com.tencent.mm.plugin.appbrand.s;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.protocal.protobuf.deg;
+import com.tencent.mm.protocal.protobuf.deh;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/netscene/NetSceneOperateWxDataHelper;", "", "()V", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
 {
-  private static AtomicInteger qiG;
-  public HashMap<String, d> qiH;
+  public static final a tmV;
   
   static
   {
-    AppMethodBeat.i(144343);
-    qiG = new AtomicInteger(1);
-    AppMethodBeat.o(144343);
+    AppMethodBeat.i(319822);
+    tmV = new a((byte)0);
+    AppMethodBeat.o(319822);
   }
   
-  private f()
+  public static final c.a kf(boolean paramBoolean)
   {
-    AppMethodBeat.i(144339);
-    this.qiH = new HashMap();
-    AppMethodBeat.o(144339);
-  }
-  
-  public static int cbN()
-  {
-    AppMethodBeat.i(144340);
-    int i = qiG.incrementAndGet();
-    AppMethodBeat.o(144340);
-    return i;
-  }
-  
-  public static f cbR()
-  {
-    AppMethodBeat.i(144341);
-    f localf = a.cbS();
-    AppMethodBeat.o(144341);
-    return localf;
-  }
-  
-  public final d akT(String paramString)
-  {
-    AppMethodBeat.i(144342);
-    if (this.qiH.containsKey(paramString))
+    AppMethodBeat.i(319814);
+    c.a locala = new c.a();
+    locala.otE = ((a)new deg());
+    locala.otF = ((a)new deh());
+    locala.otD = paramBoolean;
+    String str;
+    if (paramBoolean)
     {
-      paramString = (d)this.qiH.get(paramString);
-      AppMethodBeat.o(144342);
-      return paramString;
+      str = "/cgi-bin/mmbiz-bin/js-operatewxdata-keepalive";
+      locala.uri = str;
+      if (!paramBoolean) {
+        break label94;
+      }
     }
-    AppMethodBeat.o(144342);
-    return null;
-  }
-  
-  static final class a
-  {
-    private static f qjm;
-    
-    static
+    label94:
+    for (int i = 4602;; i = 1133)
     {
-      AppMethodBeat.i(144338);
-      qjm = new f((byte)0);
-      AppMethodBeat.o(144338);
+      locala.funcId = i;
+      locala.otG = 0;
+      locala.respCmdId = 0;
+      AppMethodBeat.o(319814);
+      return locala;
+      str = "/cgi-bin/mmbiz-bin/js-operatewxdata";
+      break;
     }
   }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/netscene/NetSceneOperateWxDataHelper$Companion;", "", "()V", "getReqRespBuilder", "Lcom/tencent/mm/modelbase/CommReqResp$Builder;", "keepAlive", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.s.f
  * JD-Core Version:    0.7.0.1
  */

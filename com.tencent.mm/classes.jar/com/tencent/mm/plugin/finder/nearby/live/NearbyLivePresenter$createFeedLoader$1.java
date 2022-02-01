@@ -2,27 +2,40 @@ package com.tencent.mm.plugin.finder.nearby.live;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.feed.model.internal.IResponse;
-import com.tencent.mm.plugin.finder.model.bu;
-import com.tencent.mm.protocal.protobuf.bid;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.model.cc;
+import com.tencent.mm.protocal.protobuf.bui;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/nearby/live/NearbyLivePresenter$createFeedLoader$1", "Lcom/tencent/mm/plugin/finder/nearby/live/NearbyLiveFeedLoader;", "onFetchDone", "", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "plugin-finder-nearby_release"})
+@Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/nearby/live/NearbyLivePresenter$createFeedLoader$1", "Lcom/tencent/mm/plugin/finder/nearby/live/NearbyLiveFeedLoader;", "onFetchDone", "", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class NearbyLivePresenter$createFeedLoader$1
   extends NearbyLiveFeedLoader
 {
-  NearbyLivePresenter$createFeedLoader$1(bid parambid, int paramInt1, int paramInt2, int paramInt3, String paramString)
+  NearbyLivePresenter$createFeedLoader$1(e parame, bui parambui, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    super(paramInt1, paramInt2, paramInt3, paramString, str);
+    super(parambui, paramInt1, paramInt2, paramInt3, paramString);
   }
   
-  public final void onFetchDone(IResponse<bu> paramIResponse)
+  public final void onFetchDone(IResponse<cc> paramIResponse)
   {
-    AppMethodBeat.i(201336);
-    p.k(paramIResponse, "response");
+    int i = 1;
+    AppMethodBeat.i(340705);
+    s.u(paramIResponse, "response");
     super.onFetchDone(paramIResponse);
-    e.a(this.zEv, paramIResponse.getLastBuffer());
-    AppMethodBeat.o(201336);
+    e.c(paramIResponse);
+    e.a(this.EJe, paramIResponse.getLastBuffer());
+    NearbyLiveFeedLoader localNearbyLiveFeedLoader = this.EJe.EIZ;
+    if ((localNearbyLiveFeedLoader != null) && (localNearbyLiveFeedLoader.isInsertSpecifyOperation(paramIResponse) == true)) {}
+    for (;;)
+    {
+      if (i != 0) {
+        e.a(this.EJe, paramIResponse);
+      }
+      e.d(paramIResponse);
+      AppMethodBeat.o(340705);
+      return;
+      i = 0;
+    }
   }
 }
 

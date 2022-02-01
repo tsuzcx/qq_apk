@@ -1,3 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.base.MMGridPaperGridView android:gravity="center" android:id="@id/dl7" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="0.0dip" android:listSelector="@drawable/tb" android:cacheColorHint="#00000000" android:horizontalSpacing="2.0dip" android:verticalSpacing="2.0dip" android:layout_weight="1.0"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:background="@drawable/acu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/d_"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/fzb" android:paddingLeft="@dimen/cd" android:paddingRight="@dimen/cd" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@raw/icons_tipsbar_close" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <View android:id="@id/fzc" android:background="@color/FG_3" android:layout_width="1.0dip" android:layout_height="@dimen/cp" android:layout_toLeftOf="@id/fzb" android:layout_centerVertical="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/fza" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/fzc">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/fz_" android:layout_width="@dimen/d4" android:layout_height="@dimen/d4" android:layout_marginLeft="@dimen/cd" />
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingTop="@dimen/df" android:paddingBottom="@dimen/df" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:layout_marginRight="@dimen/cv">
+            <TextView android:textSize="@dimen/hn" android:textColor="@color/FG_0" android:ellipsize="end" android:id="@id/fzg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/fz9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:singleLine="true" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

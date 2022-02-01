@@ -40,36 +40,36 @@ import javax.net.ssl.HttpsURLConnection;
 public class j
   implements l
 {
-  private static final Pattern boT;
-  private static final AtomicReference<byte[]> boU;
+  private static final Pattern CONTENT_RANGE_HEADER;
+  private static final AtomicReference<byte[]> skipBufferReference;
   protected String TAG;
-  private InputStream aFw;
-  private final boolean boV;
-  private final int boW;
-  private final int boX;
-  private long bpb;
-  private long bpc;
-  private long bpd;
-  private long bpe;
+  private final boolean allowCrossProtocolRedirects;
+  private long bytesRead;
+  private long bytesSkipped;
+  private long bytesToRead;
+  private long bytesToSkip;
+  private final int connectTimeoutMillis;
   private HttpURLConnection connection;
   private long contentLength;
   private String contentType;
-  private long nHt;
+  private InputStream inputStream;
   private boolean opened;
-  public g pvN;
-  protected String pvQ;
-  private final i<String> pwB;
-  private final HashMap<String, String> pwC;
-  private final e<Map<String, List<String>>> pwD;
-  private final s pwh;
+  private long qHg;
+  private final int readTimeoutMillis;
+  public g sAT;
+  protected String sAW;
+  private final i<String> sBH;
+  private final HashMap<String, String> sBI;
+  private final e<Map<String, List<String>>> sBJ;
+  private final s sBn;
   private final String userAgent;
   
   static
   {
-    AppMethodBeat.i(228478);
-    boT = Pattern.compile("^bytes (\\d+)-(\\d+)/(\\d+)$");
-    boU = new AtomicReference();
-    AppMethodBeat.o(228478);
+    AppMethodBeat.i(328601);
+    CONTENT_RANGE_HEADER = Pattern.compile("^bytes (\\d+)-(\\d+)/(\\d+)$");
+    skipBufferReference = new AtomicReference();
+    AppMethodBeat.o(328601);
   }
   
   public j(String paramString)
@@ -84,26 +84,26 @@ public class j
   
   public j(String paramString, i<String> parami, s params, boolean paramBoolean, e<Map<String, List<String>>> parame)
   {
-    AppMethodBeat.i(228413);
+    AppMethodBeat.i(328543);
     this.TAG = "DefaultHttpDataSource";
     this.contentLength = -1L;
-    this.nHt = -1L;
-    this.pvQ = "";
+    this.qHg = -1L;
+    this.sAW = "";
     if (TextUtils.isEmpty(paramString))
     {
       paramString = new IllegalArgumentException();
-      AppMethodBeat.o(228413);
+      AppMethodBeat.o(328543);
       throw paramString;
     }
     this.userAgent = paramString;
-    this.pwB = parami;
-    this.pwh = params;
-    this.pwC = new HashMap();
-    this.boW = 30000;
-    this.boX = 12000;
-    this.boV = paramBoolean;
-    this.pwD = parame;
-    AppMethodBeat.o(228413);
+    this.sBH = parami;
+    this.sBn = params;
+    this.sBI = new HashMap();
+    this.connectTimeoutMillis = 30000;
+    this.readTimeoutMillis = 12000;
+    this.allowCrossProtocolRedirects = paramBoolean;
+    this.sBJ = parame;
+    AppMethodBeat.o(328543);
   }
   
   private j(String paramString, i<String> parami, e<Map<String, List<String>>> parame)
@@ -114,7 +114,7 @@ public class j
   private static long a(HttpURLConnection paramHttpURLConnection, String paramString)
   {
     long l3 = -1L;
-    AppMethodBeat.i(228470);
+    AppMethodBeat.i(328582);
     Object localObject = paramHttpURLConnection.getHeaderField("Content-Length");
     if (!TextUtils.isEmpty((CharSequence)localObject)) {}
     for (;;)
@@ -127,7 +127,7 @@ public class j
         if (TextUtils.isEmpty(paramHttpURLConnection)) {
           break label191;
         }
-        localObject = boT.matcher(paramHttpURLConnection);
+        localObject = CONTENT_RANGE_HEADER.matcher(paramHttpURLConnection);
         l1 = l3;
         if (!((Matcher)localObject).find()) {}
       }
@@ -149,7 +149,7 @@ public class j
         l1 = l3;
         continue;
       }
-      AppMethodBeat.o(228470);
+      AppMethodBeat.o(328582);
       return l1;
       long l2 = -1L;
       continue;
@@ -167,20 +167,20 @@ public class j
   
   private HttpURLConnection a(URL paramURL, long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    AppMethodBeat.i(228465);
+    AppMethodBeat.i(328573);
     if (h.b(paramURL)) {}
     Object localObject2;
     for (HttpURLConnection localHttpURLConnection = (HttpURLConnection)paramURL.openConnection(Proxy.NO_PROXY);; localHttpURLConnection = (HttpURLConnection)paramURL.openConnection())
     {
-      localHttpURLConnection.setConnectTimeout(this.boW);
-      localHttpURLConnection.setReadTimeout(this.boX);
+      localHttpURLConnection.setConnectTimeout(this.connectTimeoutMillis);
+      localHttpURLConnection.setReadTimeout(this.readTimeoutMillis);
       localHttpURLConnection.setDoOutput(false);
-      if (((localHttpURLConnection instanceof HttpsURLConnection)) && (!a.bVt().pvD)) {
+      if (((localHttpURLConnection instanceof HttpsURLConnection)) && (!a.cvH().sAJ)) {
         k.a((HttpsURLConnection)localHttpURLConnection);
       }
-      synchronized (this.pwC)
+      synchronized (this.sBI)
       {
-        localObject2 = this.pwC.entrySet().iterator();
+        localObject2 = this.sBI.entrySet().iterator();
         if (!((Iterator)localObject2).hasNext()) {
           break;
         }
@@ -201,14 +201,14 @@ public class j
     if (!paramBoolean) {
       localHttpURLConnection.setRequestProperty("Accept-Encoding", "identity");
     }
-    h.log(4, getLogTag(), h.ajm("send upstream request: \r\n" + localHttpURLConnection.getRequestMethod() + " " + paramURL + "\r\n" + f.M(localHttpURLConnection.getRequestProperties())));
-    AppMethodBeat.o(228465);
+    h.log(4, getLogTag(), h.acm("send upstream request: \r\n" + localHttpURLConnection.getRequestMethod() + " " + paramURL + "\r\n" + f.T(localHttpURLConnection.getRequestProperties())));
+    AppMethodBeat.o(328573);
     return localHttpURLConnection;
   }
   
   private static long b(HttpURLConnection paramHttpURLConnection, String paramString)
   {
-    AppMethodBeat.i(228472);
+    AppMethodBeat.i(328591);
     l2 = -1L;
     String str = paramHttpURLConnection.getHeaderField("Content-Length");
     l1 = l2;
@@ -221,7 +221,7 @@ public class j
       Matcher localMatcher;
       if (!TextUtils.isEmpty(paramHttpURLConnection))
       {
-        localMatcher = boT.matcher(paramHttpURLConnection);
+        localMatcher = CONTENT_RANGE_HEADER.matcher(paramHttpURLConnection);
         l2 = l1;
         if (!localMatcher.find()) {}
       }
@@ -244,7 +244,7 @@ public class j
           l2 = l1;
         }
       }
-      AppMethodBeat.o(228472);
+      AppMethodBeat.o(328591);
       return l2;
     }
     catch (NumberFormatException localNumberFormatException2)
@@ -267,15 +267,15 @@ public class j
   
   private HttpURLConnection c(g paramg)
   {
-    AppMethodBeat.i(228451);
+    AppMethodBeat.i(328560);
     Object localObject2 = new URL(paramg.uri.toString());
     long l1 = paramg.position;
-    long l2 = paramg.aFL;
+    long l2 = paramg.length;
     if ((paramg.flags & 0x1) != 0) {}
-    for (boolean bool = true; !this.boV; bool = false)
+    for (boolean bool = true; !this.allowCrossProtocolRedirects; bool = false)
     {
       paramg = a((URL)localObject2, l1, l2, bool);
-      AppMethodBeat.o(228451);
+      AppMethodBeat.o(328560);
       return paramg;
     }
     ((URL)localObject2).toExternalForm();
@@ -296,12 +296,12 @@ public class j
       ((HttpURLConnection)localObject1).connect();
       try
       {
-        localObject3 = m.a(new j.a((HttpURLConnection)localObject1), this.boX, "GetResponseCodeCallable", getLogTag());
+        localObject3 = m.a(new j.a((HttpURLConnection)localObject1), this.readTimeoutMillis, "GetResponseCodeCallable", getLogTag());
         if (localObject3 == null)
         {
           closeConnection();
-          paramg = new l.h("getResponseCode TimeoutException Unable to connect to " + paramg.uri.toString() + " within " + this.boX, new IOException("getResponseCode Timeout " + this.boX), paramg);
-          AppMethodBeat.o(228451);
+          paramg = new l.h("getResponseCode TimeoutException Unable to connect to " + paramg.uri.toString() + " within " + this.readTimeoutMillis, new IOException("getResponseCode Timeout " + this.readTimeoutMillis), paramg);
+          AppMethodBeat.o(328560);
           throw paramg;
         }
       }
@@ -309,15 +309,15 @@ public class j
       {
         Thread.currentThread().interrupt();
         h.log(4, getLogTag(), "GetResponseCodeCallable Interrupted");
-        paramg = new l.b("GetResponseCodeCallable interrupted", this.pvN);
-        AppMethodBeat.o(228451);
+        paramg = new l.b("GetResponseCodeCallable interrupted", this.sAT);
+        AppMethodBeat.o(328560);
         throw paramg;
       }
       catch (ExecutionException paramg)
       {
-        h.log(5, getLogTag(), "GetResponseCodeCallable ExecutionException " + h.i(paramg));
-        paramg = new l.b("Failed To Execute GetResponseCodeCallable", this.pvN);
-        AppMethodBeat.o(228451);
+        h.log(5, getLogTag(), "GetResponseCodeCallable ExecutionException " + h.s(paramg));
+        paramg = new l.b("Failed To Execute GetResponseCodeCallable", this.sAT);
+        AppMethodBeat.o(328560);
         throw paramg;
       }
       j = ((Integer)localObject3).intValue();
@@ -333,7 +333,7 @@ public class j
         if (localObject3 == null)
         {
           paramg = new ProtocolException("Null location redirect");
-          AppMethodBeat.o(228451);
+          AppMethodBeat.o(328560);
           throw paramg;
         }
       }
@@ -351,7 +351,7 @@ public class j
             break;
           }
           paramg = new ProtocolException("Unsupported protocol redirect: ".concat(String.valueOf(localObject3)));
-          AppMethodBeat.o(228451);
+          AppMethodBeat.o(328560);
           throw paramg;
         }
         h.log(2, getLogTag(), "redirect to url=" + ((URL)localObject1).toString() + ", fromUrl=" + localObject2);
@@ -359,36 +359,36 @@ public class j
         localObject2 = localObject1;
       }
     }
-    if ((i > 0) && (a.bVt().pvJ != null))
+    if ((i > 0) && (a.cvH().sAP != null))
     {
       System.currentTimeMillis();
-      a.bVt();
-      h.bI(localArrayList);
+      a.cvH();
+      h.dt(localArrayList);
     }
-    AppMethodBeat.o(228451);
+    AppMethodBeat.o(328560);
     return localObject1;
     label659:
     paramg = new NoRouteToHostException("Too many redirects: ".concat(String.valueOf(k)));
-    AppMethodBeat.o(228451);
+    AppMethodBeat.o(328560);
     throw paramg;
   }
   
   private void closeConnection()
   {
-    AppMethodBeat.i(228473);
+    AppMethodBeat.i(328596);
     if (this.connection != null)
     {
       this.connection.disconnect();
       this.connection = null;
     }
-    AppMethodBeat.o(228473);
+    AppMethodBeat.o(328596);
   }
   
   public long a(g paramg)
   {
-    AppMethodBeat.i(228418);
+    AppMethodBeat.i(328616);
     long l = b(paramg);
-    AppMethodBeat.o(228418);
+    AppMethodBeat.o(328616);
     return l;
   }
   
@@ -399,10 +399,10 @@ public class j
   
   public final long b(g paramg)
   {
-    AppMethodBeat.i(228423);
-    this.pvN = paramg;
-    this.bpe = 0L;
-    this.bpd = 0L;
+    AppMethodBeat.i(328625);
+    this.sAT = paramg;
+    this.bytesRead = 0L;
+    this.bytesSkipped = 0L;
     int i;
     try
     {
@@ -415,76 +415,76 @@ public class j
       try
       {
         i = this.connection.getResponseCode();
-        h.log(4, getLogTag(), h.ajm("uri=" + paramg.toString() + ", response header: \r\n" + f.M(this.connection.getHeaderFields())));
+        h.log(4, getLogTag(), h.acm("uri=" + paramg.toString() + ", response header: \r\n" + f.T(this.connection.getHeaderFields())));
         if ((i >= 200) && (i <= 299)) {
           break label427;
         }
         localMap = this.connection.getHeaderFields();
         closeConnection();
         paramg = new l.f(i, localMap, paramg);
-        AppMethodBeat.o(228423);
+        AppMethodBeat.o(328625);
         throw paramg;
       }
       catch (SocketTimeoutException localSocketTimeoutException)
       {
         closeConnection();
         paramg = new l.h("getResponseCode SocketTimeoutException Unable to connect to " + paramg.uri.toString(), localSocketTimeoutException, paramg);
-        AppMethodBeat.o(228423);
+        AppMethodBeat.o(328625);
         throw paramg;
       }
       catch (InterruptedIOException localInterruptedIOException2)
       {
         closeConnection();
         paramg = new l.b("getResponseCode InterruptedIOException Interrupt connection to " + paramg.uri.toString(), localInterruptedIOException2, paramg);
-        AppMethodBeat.o(228423);
+        AppMethodBeat.o(328625);
         throw paramg;
       }
       catch (IOException localIOException2)
       {
         closeConnection();
         paramg = new l.h("getResponseCode IOException Unable to connect to " + paramg.uri.toString(), localIOException2, paramg);
-        AppMethodBeat.o(228423);
+        AppMethodBeat.o(328625);
         throw paramg;
       }
       catch (ArrayIndexOutOfBoundsException localArrayIndexOutOfBoundsException)
       {
         closeConnection();
-        h.log(6, getLogTag(), h.i(localArrayIndexOutOfBoundsException));
+        h.log(6, getLogTag(), h.s(localArrayIndexOutOfBoundsException));
         paramg = new l.g("getResponseCode Got malformed response when connect to " + paramg.uri.toString(), paramg);
-        AppMethodBeat.o(228423);
+        AppMethodBeat.o(328625);
         throw paramg;
       }
       localInterruptedIOException1 = localInterruptedIOException1;
       paramg = new l.b("makeConnection InterruptedIOException Interrupt connection to " + paramg.uri.toString(), localInterruptedIOException1, paramg);
-      AppMethodBeat.o(228423);
+      AppMethodBeat.o(328625);
       throw paramg;
     }
     catch (IOException localIOException1)
     {
       paramg = new l.h("makeConnection IOException Unable to connect to " + paramg.uri.toString(), localIOException1, paramg);
-      AppMethodBeat.o(228423);
+      AppMethodBeat.o(328625);
       throw paramg;
     }
     label427:
     String str;
     Object localObject = this.connection.getHeaderFields();
-    if ((this.pwB != null) && (!this.pwB.ab(str)))
+    if ((this.sBH != null) && (!this.sBH.evaluate(str)))
     {
       closeConnection();
       paramg = new l.e(str, (Map)localObject, paramg);
-      AppMethodBeat.o(228423);
+      AppMethodBeat.o(328625);
       throw paramg;
     }
     this.contentType = str;
     long l;
-    if (this.pwD != null)
+    if (this.sBJ != null)
     {
-      localObject = (d)this.pwD;
+      localObject = (d)this.sBJ;
       str = this.contentType;
-      if ((str.equals("application/octet-stream")) && (!TextUtils.isEmpty(((d)localObject).pym)))
+      if ((str.equals("application/octet-stream")) && (!TextUtils.isEmpty(((d)localObject).sDr)))
       {
-        h.log(5, ((d)localObject).pyl, "fix contentType from " + str + " to " + ((d)localObject).pym);
-        str = ((d)localObject).pym;
+        h.log(5, ((d)localObject).sDq, "fix contentType from " + str + " to " + ((d)localObject).sDr);
+        str = ((d)localObject).sDr;
         this.contentType = str;
       }
     }
@@ -495,30 +495,30 @@ public class j
       }
       l = paramg.position;
       label616:
-      this.bpb = l;
+      this.bytesToSkip = l;
       if ((paramg.flags & 0x1) != 0) {
         break label765;
       }
       this.contentLength = b(this.connection, getLogTag());
-      this.nHt = a(this.connection, getLogTag());
-      if (paramg.aFL == -1L) {
+      this.qHg = a(this.connection, getLogTag());
+      if (paramg.length == -1L) {
         break label734;
       }
-      l = paramg.aFL;
+      l = paramg.length;
       label676:
-      this.bpc = l;
+      this.bytesToRead = l;
     }
     for (;;)
     {
       try
       {
-        this.aFw = this.connection.getInputStream();
+        this.inputStream = this.connection.getInputStream();
         this.opened = true;
-        if (this.pwh != null) {
-          this.pwh.onTransferStart();
+        if (this.sBn != null) {
+          this.sBn.onTransferStart();
         }
-        l = this.bpc;
-        AppMethodBeat.o(228423);
+        l = this.bytesToRead;
+        AppMethodBeat.o(328625);
         return l;
       }
       catch (IOException localIOException3)
@@ -528,7 +528,7 @@ public class j
         label765:
         closeConnection();
         paramg = new l.a(localIOException3, paramg);
-        AppMethodBeat.o(228423);
+        AppMethodBeat.o(328625);
         throw paramg;
       }
       break;
@@ -536,116 +536,103 @@ public class j
       break label616;
       if (this.contentLength != -1L)
       {
-        l = this.contentLength - this.bpb;
+        l = this.contentLength - this.bytesToSkip;
         break label676;
       }
       l = -1L;
       break label676;
-      this.bpc = paramg.aFL;
-      this.contentLength = paramg.aFL;
-      this.nHt = -1L;
+      this.bytesToRead = paramg.length;
+      this.contentLength = paramg.length;
+      this.qHg = -1L;
     }
   }
   
-  protected final long bVA()
+  protected final long bytesRead()
   {
-    return this.bpe;
-  }
-  
-  public final i<String> bVB()
-  {
-    return this.pwB;
-  }
-  
-  public final c bVy()
-  {
-    AppMethodBeat.i(228475);
-    c localc = c.aiX(this.contentType);
-    AppMethodBeat.o(228475);
-    return localc;
+    return this.bytesRead;
   }
   
   /* Error */
   public final void close()
   {
     // Byte code:
-    //   0: ldc_w 630
+    //   0: ldc_w 618
     //   3: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 603	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:aFw	Ljava/io/InputStream;
+    //   7: getfield 604	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:inputStream	Ljava/io/InputStream;
     //   10: ifnull +41 -> 51
     //   13: aload_0
-    //   14: getfield 510	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:connection	Ljava/net/HttpURLConnection;
+    //   14: getfield 511	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:connection	Ljava/net/HttpURLConnection;
     //   17: astore_3
     //   18: aload_0
-    //   19: getfield 597	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:bpc	J
+    //   19: getfield 598	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:bytesToRead	J
     //   22: ldc2_w 94
     //   25: lcmp
     //   26: ifne +64 -> 90
     //   29: aload_0
-    //   30: getfield 597	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:bpc	J
+    //   30: getfield 598	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:bytesToRead	J
     //   33: lstore_1
     //   34: aload_3
     //   35: lload_1
-    //   36: invokestatic 633	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:a	(Ljava/net/HttpURLConnection;J)V
+    //   36: invokestatic 622	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:maybeTerminateInputStream	(Ljava/net/HttpURLConnection;J)V
     //   39: aload_0
-    //   40: getfield 603	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:aFw	Ljava/io/InputStream;
-    //   43: invokevirtual 637	java/io/InputStream:close	()V
+    //   40: getfield 604	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:inputStream	Ljava/io/InputStream;
+    //   43: invokevirtual 626	java/io/InputStream:close	()V
     //   46: aload_0
     //   47: aconst_null
-    //   48: putfield 603	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:aFw	Ljava/io/InputStream;
+    //   48: putfield 604	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:inputStream	Ljava/io/InputStream;
     //   51: aload_0
-    //   52: getfield 605	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:opened	Z
+    //   52: getfield 606	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:opened	Z
     //   55: ifeq +24 -> 79
     //   58: aload_0
     //   59: iconst_0
-    //   60: putfield 605	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:opened	Z
+    //   60: putfield 606	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:opened	Z
     //   63: aload_0
-    //   64: getfield 118	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:pwh	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/s;
+    //   64: getfield 118	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:sBn	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/s;
     //   67: ifnull +12 -> 79
     //   70: aload_0
-    //   71: getfield 118	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:pwh	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/s;
-    //   74: invokeinterface 640 1 0
+    //   71: getfield 118	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:sBn	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/s;
+    //   74: invokeinterface 629 1 0
     //   79: aload_0
     //   80: invokespecial 390	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:closeConnection	()V
-    //   83: ldc_w 630
+    //   83: ldc_w 618
     //   86: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   89: return
     //   90: aload_0
-    //   91: getfield 597	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:bpc	J
+    //   91: getfield 598	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:bytesToRead	J
     //   94: aload_0
-    //   95: getfield 524	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:bpe	J
+    //   95: getfield 525	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:bytesRead	J
     //   98: lsub
     //   99: lstore_1
     //   100: goto -66 -> 34
     //   103: astore_3
-    //   104: new 612	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/l$a
+    //   104: new 613	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/l$a
     //   107: dup
     //   108: aload_3
     //   109: aload_0
-    //   110: getfield 424	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:pvN	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/g;
-    //   113: invokespecial 615	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/l$a:<init>	(Ljava/io/IOException;Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/g;)V
+    //   110: getfield 424	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:sAT	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/g;
+    //   113: invokespecial 616	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/l$a:<init>	(Ljava/io/IOException;Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/g;)V
     //   116: astore_3
-    //   117: ldc_w 630
+    //   117: ldc_w 618
     //   120: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   123: aload_3
     //   124: athrow
     //   125: astore_3
     //   126: aload_0
-    //   127: getfield 605	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:opened	Z
+    //   127: getfield 606	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:opened	Z
     //   130: ifeq +24 -> 154
     //   133: aload_0
     //   134: iconst_0
-    //   135: putfield 605	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:opened	Z
+    //   135: putfield 606	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:opened	Z
     //   138: aload_0
-    //   139: getfield 118	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:pwh	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/s;
+    //   139: getfield 118	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:sBn	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/s;
     //   142: ifnull +12 -> 154
     //   145: aload_0
-    //   146: getfield 118	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:pwh	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/s;
-    //   149: invokeinterface 640 1 0
+    //   146: getfield 118	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:sBn	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/s;
+    //   149: invokeinterface 629 1 0
     //   154: aload_0
     //   155: invokespecial 390	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:closeConnection	()V
-    //   158: ldc_w 630
+    //   158: ldc_w 618
     //   161: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   164: aload_3
     //   165: athrow
@@ -668,135 +655,148 @@ public class j
     //   104	125	125	finally
   }
   
+  public final c cvM()
+  {
+    AppMethodBeat.i(328644);
+    c localc = c.abW(this.contentType);
+    AppMethodBeat.o(328644);
+    return localc;
+  }
+  
+  public final i<String> cvO()
+  {
+    return this.sBH;
+  }
+  
   public final String getLogTag()
   {
-    AppMethodBeat.i(228476);
-    String str = this.pvQ + this.TAG;
-    AppMethodBeat.o(228476);
+    AppMethodBeat.i(328664);
+    String str = this.sAW + this.TAG;
+    AppMethodBeat.o(328664);
     return str;
   }
   
   public final Map<String, List<String>> getResponseHeaders()
   {
-    AppMethodBeat.i(228417);
+    AppMethodBeat.i(328610);
     if (this.connection == null) {}
-    for (Object localObject = null; this.pwD != null; localObject = this.connection.getHeaderFields())
+    for (Object localObject = null; this.sBJ != null; localObject = this.connection.getHeaderFields())
     {
-      localObject = (Map)this.pwD.cJ(localObject);
-      AppMethodBeat.o(228417);
+      localObject = (Map)this.sBJ.ee(localObject);
+      AppMethodBeat.o(328610);
       return localObject;
     }
-    AppMethodBeat.o(228417);
+    AppMethodBeat.o(328610);
     return localObject;
   }
   
   public final long getTotalLength()
   {
-    return this.nHt;
+    return this.qHg;
   }
   
   public final String getUri()
   {
-    AppMethodBeat.i(228416);
+    AppMethodBeat.i(328606);
     if (this.connection == null)
     {
-      AppMethodBeat.o(228416);
+      AppMethodBeat.o(328606);
       return null;
     }
     String str = this.connection.getURL().toString();
-    AppMethodBeat.o(228416);
+    AppMethodBeat.o(328606);
     return str;
   }
   
   public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(228432);
+    AppMethodBeat.i(328631);
     byte[] arrayOfByte1;
     for (;;)
     {
       int i;
       try
       {
-        if (this.bpd == this.bpb) {
+        if (this.bytesSkipped == this.bytesToSkip) {
           break label295;
         }
-        byte[] arrayOfByte2 = (byte[])boU.getAndSet(null);
+        byte[] arrayOfByte2 = (byte[])skipBufferReference.getAndSet(null);
         arrayOfByte1 = arrayOfByte2;
         if (arrayOfByte2 == null) {
           arrayOfByte1 = new byte[4096];
         }
         getLogTag();
-        new StringBuilder("bytes skipped ").append(this.bpd).append(", bytesToSkip ").append(this.bpb);
-        if (this.bpd == this.bpb) {
+        new StringBuilder("bytes skipped ").append(this.bytesSkipped).append(", bytesToSkip ").append(this.bytesToSkip);
+        if (this.bytesSkipped == this.bytesToSkip) {
           break;
         }
-        i = (int)Math.min(this.bpb - this.bpd, arrayOfByte1.length);
+        i = (int)Math.min(this.bytesToSkip - this.bytesSkipped, arrayOfByte1.length);
         getLogTag();
         new StringBuilder("request skip ").append(i).append(" bytes");
-        i = this.aFw.read(arrayOfByte1, 0, i);
+        i = this.inputStream.read(arrayOfByte1, 0, i);
         getLogTag();
         new StringBuilder("actual skip ").append(i).append(" bytes");
         if (Thread.interrupted())
         {
-          paramArrayOfByte = new l.c("skipInternal interrupted", this.pvN);
-          AppMethodBeat.o(228432);
+          paramArrayOfByte = new l.c("skipInternal interrupted", this.sAT);
+          AppMethodBeat.o(328631);
           throw paramArrayOfByte;
         }
       }
       catch (IOException paramArrayOfByte)
       {
-        paramArrayOfByte = new l.a(paramArrayOfByte, this.pvN);
-        AppMethodBeat.o(228432);
+        paramArrayOfByte = new l.a(paramArrayOfByte, this.sAT);
+        AppMethodBeat.o(328631);
         throw paramArrayOfByte;
       }
       if (i == -1)
       {
         paramArrayOfByte = new EOFException();
-        AppMethodBeat.o(228432);
+        AppMethodBeat.o(328631);
         throw paramArrayOfByte;
       }
-      this.bpd += i;
-      if (this.pwh != null) {
-        this.pwh.AU(i);
+      this.bytesSkipped += i;
+      if (this.sBn != null) {
+        this.sBn.Bj(i);
       }
     }
-    boU.set(arrayOfByte1);
+    skipBufferReference.set(arrayOfByte1);
     label295:
-    if (this.bpc == -1L) {}
+    if (this.bytesToRead == -1L) {}
     while (paramInt2 == 0)
     {
-      AppMethodBeat.o(228432);
+      AppMethodBeat.o(328631);
       return -1;
-      paramInt2 = (int)Math.min(paramInt2, this.bpc - this.bpe);
+      paramInt2 = (int)Math.min(paramInt2, this.bytesToRead - this.bytesRead);
     }
-    paramInt1 = this.aFw.read(paramArrayOfByte, paramInt1, paramInt2);
+    paramInt1 = this.inputStream.read(paramArrayOfByte, paramInt1, paramInt2);
     if (paramInt1 == -1)
     {
-      if ((this.bpc != -1L) && (this.bpc != this.bpe))
+      if ((this.bytesToRead != -1L) && (this.bytesToRead != this.bytesRead))
       {
         paramArrayOfByte = new EOFException();
-        AppMethodBeat.o(228432);
+        AppMethodBeat.o(328631);
         throw paramArrayOfByte;
       }
-      AppMethodBeat.o(228432);
+      AppMethodBeat.o(328631);
       return -1;
     }
-    this.bpe += paramInt1;
-    if (this.pwh != null) {
-      this.pwh.AU(paramInt1);
+    this.bytesRead += paramInt1;
+    if (this.sBn != null) {
+      this.sBn.Bj(paramInt1);
     }
-    AppMethodBeat.o(228432);
+    AppMethodBeat.o(328631);
     return paramInt1;
   }
   
   public final void setLogTag(String paramString)
   {
-    this.pvQ = paramString;
+    this.sAW = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.b.j
  * JD-Core Version:    0.7.0.1
  */

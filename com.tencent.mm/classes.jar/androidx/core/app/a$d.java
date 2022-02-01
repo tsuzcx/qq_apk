@@ -21,17 +21,17 @@ import java.util.Map;
 final class a$d
   extends SharedElementCallback
 {
-  private final k HO;
+  private final l bnR;
   
-  a$d(k paramk)
+  a$d(l paraml)
   {
-    this.HO = paramk;
+    this.bnR = paraml;
   }
   
   public final Parcelable onCaptureSharedElementSnapshot(View paramView, Matrix paramMatrix, RectF paramRectF)
   {
-    AppMethodBeat.i(250203);
-    k localk = this.HO;
+    AppMethodBeat.i(196463);
+    l locall = this.bnR;
     if ((paramView instanceof ImageView))
     {
       localObject1 = (ImageView)paramView;
@@ -39,7 +39,7 @@ final class a$d
       Drawable localDrawable = ((ImageView)localObject1).getBackground();
       if ((localObject2 != null) && (localDrawable == null))
       {
-        localObject2 = k.k((Drawable)localObject2);
+        localObject2 = l.l((Drawable)localObject2);
         if (localObject2 != null)
         {
           paramView = new Bundle();
@@ -52,7 +52,7 @@ final class a$d
             paramMatrix.getValues(paramRectF);
             paramView.putFloatArray("sharedElement:snapshot:imageMatrix", paramRectF);
           }
-          AppMethodBeat.o(250203);
+          AppMethodBeat.o(196463);
           return paramView;
         }
       }
@@ -69,27 +69,27 @@ final class a$d
         float f = Math.min(1.0F, 1048576.0F / (j * i));
         j = (int)(j * f);
         i = (int)(i * f);
-        if (localk.JR == null) {
-          localk.JR = new Matrix();
+        if (locall.bpU == null) {
+          locall.bpU = new Matrix();
         }
-        localk.JR.set(paramMatrix);
-        localk.JR.postTranslate(-paramRectF.left, -paramRectF.top);
-        localk.JR.postScale(f, f);
+        locall.bpU.set(paramMatrix);
+        locall.bpU.postTranslate(-paramRectF.left, -paramRectF.top);
+        locall.bpU.postScale(f, f);
         localObject1 = Bitmap.createBitmap(j, i, Bitmap.Config.ARGB_8888);
         paramMatrix = new Canvas((Bitmap)localObject1);
-        paramMatrix.concat(localk.JR);
+        paramMatrix.concat(locall.bpU);
         paramView.draw(paramMatrix);
       }
     }
-    AppMethodBeat.o(250203);
+    AppMethodBeat.o(196463);
     return localObject1;
   }
   
   public final View onCreateSnapshotView(Context paramContext, Parcelable paramParcelable)
   {
-    AppMethodBeat.i(250205);
-    paramContext = k.onCreateSnapshotView(paramContext, paramParcelable);
-    AppMethodBeat.o(250205);
+    AppMethodBeat.i(196474);
+    paramContext = l.onCreateSnapshotView(paramContext, paramParcelable);
+    AppMethodBeat.o(196474);
     return paramContext;
   }
   
@@ -103,22 +103,22 @@ final class a$d
   
   public final void onSharedElementsArrived(List<String> paramList, List<View> paramList1, final SharedElementCallback.OnSharedElementsReadyListener paramOnSharedElementsReadyListener)
   {
-    AppMethodBeat.i(250206);
-    k.a(new k.a()
+    AppMethodBeat.i(196481);
+    l.a(new l.a()
     {
-      public final void gl()
+      public final void Du()
       {
-        AppMethodBeat.i(250192);
+        AppMethodBeat.i(196297);
         paramOnSharedElementsReadyListener.onSharedElementsReady();
-        AppMethodBeat.o(250192);
+        AppMethodBeat.o(196297);
       }
     });
-    AppMethodBeat.o(250206);
+    AppMethodBeat.o(196481);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     androidx.core.app.a.d
  * JD-Core Version:    0.7.0.1
  */

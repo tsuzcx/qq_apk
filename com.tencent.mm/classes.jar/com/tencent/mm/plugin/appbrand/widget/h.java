@@ -1,31 +1,29 @@
 package com.tencent.mm.plugin.appbrand.widget;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.storage.ISQLiteDatabase;
-import com.tencent.mm.sdk.storage.MAutoStorage;
+import com.tencent.mm.autogen.b.bi;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
 public final class h
-  extends MAutoStorage<g>
+  extends bi
 {
-  public static final String[] lqL;
-  public static final String[] lqM;
+  public static IAutoDBItem.MAutoDBInfo nVV;
   
   static
   {
-    AppMethodBeat.i(76399);
-    lqL = new String[] { MAutoStorage.getCreateSQLs(g.lqK, "DynamicMsgCacheData") };
-    lqM = new String[0];
-    AppMethodBeat.o(76399);
+    AppMethodBeat.i(76398);
+    nVV = bi.aJm();
+    AppMethodBeat.o(76398);
   }
   
-  public h(ISQLiteDatabase paramISQLiteDatabase)
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    super(paramISQLiteDatabase, g.lqK, "DynamicMsgCacheData", lqM);
+    return nVV;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.h
  * JD-Core Version:    0.7.0.1
  */

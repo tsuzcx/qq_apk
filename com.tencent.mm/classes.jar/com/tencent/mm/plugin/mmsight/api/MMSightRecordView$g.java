@@ -4,13 +4,13 @@ import android.graphics.Bitmap;
 
 public abstract interface MMSightRecordView$g
 {
-  public abstract void P(Bitmap paramBitmap);
+  public abstract void X(Bitmap paramBitmap);
   
-  public abstract void bRI();
+  public abstract void crN();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.api.MMSightRecordView.g
  * JD-Core Version:    0.7.0.1
  */

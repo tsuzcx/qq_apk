@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="vertical" android:background="@drawable/a5w" android:paddingLeft="32.0dip" android:paddingTop="40.0dip" android:paddingRight="32.0dip" android:paddingBottom="26.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="17.0dip" android:textColor="@color/l4" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dsv" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/uj" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:text="@string/dsu" android:singleLine="false" />
-        <com.tencent.mm.plugin.game.commlib.view.FixAspectRatioImageView android:id="@id/dd0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:scaleType="fitCenter" app:fix_ratio="0.5627" />
-        <Button android:textSize="17.0dip" android:textColor="@color/a2x" android:layout_gravity="center_horizontal" android:id="@id/dd1" android:background="@drawable/a5p" android:layout_width="184.0dip" android:layout_height="40.0dip" android:layout_marginTop="40.0dip" android:layout_marginBottom="40.0dip" android:text="@string/dph" />
-    </LinearLayout>
-</FrameLayout>
+<LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/j8m" android:background="@drawable/ap0" android:layout_width="wrap_content" android:layout_height="@dimen/d0" android:minWidth="136.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:visibility="gone" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@raw/up_double_arrow" android:layout_marginEnd="@dimen/bv" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/Orange" android:gravity="center" android:layout_gravity="center" android:id="@id/czd" android:layout_width="wrap_content" android:layout_height="@dimen/d0" />
+</LinearLayout>

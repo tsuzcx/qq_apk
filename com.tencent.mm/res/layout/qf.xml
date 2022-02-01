@@ -1,3 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.emoji.view.EmojiStatusView android:layout_gravity="center" android:id="@id/ie7" android:background="@drawable/smiley_item_bg2" android:layout_width="@dimen/a3e" android:layout_height="@dimen/a3e" android:scaleType="centerInside" android:layout_marginStart="@dimen/bt" android:layout_marginEnd="@dimen/bt"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:paddingLeft="@dimen/i9" android:paddingRight="@dimen/i9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
+        <com.tencent.mm.ui.widget.MMNeat7extView android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/iv2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="6.0dip" />
+        <com.tencent.mm.ui.widget.MMNeat7extView android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/iv1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="6.0dip" />
+    </LinearLayout>
+</RelativeLayout>

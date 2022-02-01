@@ -1,32 +1,33 @@
 package com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.a;
 
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.a;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class c$g
-  implements View.OnClickListener
+  extends u
+  implements a<ah>
 {
-  c$g(c paramc) {}
+  public static final g thy;
   
-  public final void onClick(View paramView)
+  static
   {
-    AppMethodBeat.i(280536);
-    b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalPagePhoneNumberManagerPresenterUIView$onCreateView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    c.i(this.qcy);
-    a.a(this, "com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalPagePhoneNumberManagerPresenterUIView$onCreateView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(280536);
+    AppMethodBeat.i(319934);
+    thy = new g();
+    AppMethodBeat.o(319934);
+  }
+  
+  c$g()
+  {
+    super(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.a.c.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,59 +1,31 @@
 package com.tencent.mm.plugin.finder.convert;
 
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout.LayoutParams;
 import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.view.recyclerview.a;
-import com.tencent.mm.view.recyclerview.e;
-import com.tencent.mm.view.recyclerview.i;
-import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.feed.model.m;
+import com.tencent.mm.view.recyclerview.f;
+import com.tencent.mm.view.recyclerview.j;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/convert/FinderVerticalLineConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "()V", "lineHeight", "", "getLineHeight", "()I", "setLineHeight", "(I)V", "lineWidth", "getLineWidth", "setLineWidth", "marginLeft", "getMarginLeft", "setMarginLeft", "marginRight", "getMarginRight", "setMarginRight", "getLayoutId", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/convert/FinderSurveyConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/feed/model/FinderSurveyItem;", "()V", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ct
-  extends e<a>
+  extends f<m>
 {
-  public int lineHeight;
-  public int xpS = 1;
-  
-  public final void a(RecyclerView paramRecyclerView, i parami, int paramInt)
+  public final void a(RecyclerView paramRecyclerView, j paramj, int paramInt)
   {
-    AppMethodBeat.i(250924);
-    p.k(paramRecyclerView, "recyclerView");
-    p.k(parami, "holder");
-    paramRecyclerView = parami.amk.findViewById(b.f.line_view);
-    p.j(paramRecyclerView, "lineView");
-    parami = paramRecyclerView.getLayoutParams();
-    if (parami == null)
-    {
-      paramRecyclerView = new t("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
-      AppMethodBeat.o(250924);
-      throw paramRecyclerView;
-    }
-    parami = (FrameLayout.LayoutParams)parami;
-    parami.width = this.xpS;
-    parami.height = this.lineHeight;
-    paramRecyclerView.setLayoutParams((ViewGroup.LayoutParams)parami);
-    AppMethodBeat.o(250924);
-  }
-  
-  public final void a(i parami, a parama, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
-  {
-    AppMethodBeat.i(250928);
-    p.k(parami, "holder");
-    p.k(parama, "item");
-    AppMethodBeat.o(250928);
+    AppMethodBeat.i(349885);
+    s.u(paramRecyclerView, "recyclerView");
+    s.u(paramj, "holder");
+    paramj.caK.setEnabled(true);
+    AppMethodBeat.o(349885);
   }
   
   public final int getLayoutId()
   {
-    return b.g.finder_vertical_line_convert_layout;
+    return e.f.finder_feed_survey_content_item;
   }
 }
 

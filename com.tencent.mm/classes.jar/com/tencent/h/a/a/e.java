@@ -1,36 +1,31 @@
 package com.tencent.h.a.a;
 
-import com.tencent.g.a.b;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import android.os.Message;
+import com.tencent.g.a.a;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 
-public final class e
-  extends a
+public abstract class e
 {
-  private c ZSp;
+  public MMHandler ahWW;
   
-  public e(c paramc, String paramString)
+  public e(String paramString)
   {
-    super(paramString, (byte)0);
-    AppMethodBeat.i(208560);
-    this.ZSp = paramc;
-    if (this.ZSp != null) {
-      this.ZSp.ZSt = this;
-    }
-    AppMethodBeat.o(208560);
+    this.ahWW = new MMHandler(paramString)
+    {
+      public final void handleMessage(Message paramAnonymousMessage) {}
+    };
   }
   
-  public final void q(Throwable paramThrowable)
+  public final void a(a parama)
   {
-    AppMethodBeat.i(208562);
-    if ((this.ZSp != null) && (this.ZSp.ZSs != null)) {
-      this.ZSp.ZSs.b(paramThrowable, "turing async worker");
+    if (parama != null) {
+      this.ahWW.removeCallbacks(parama);
     }
-    AppMethodBeat.o(208562);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.h.a.a.e
  * JD-Core Version:    0.7.0.1
  */

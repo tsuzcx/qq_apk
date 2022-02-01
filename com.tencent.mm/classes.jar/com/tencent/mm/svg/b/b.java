@@ -5,8 +5,8 @@ import java.lang.reflect.Field;
 
 public final class b
 {
-  private static boolean VLg = false;
-  private static boolean VLh = false;
+  private static boolean adpk = false;
+  private static boolean adpl = false;
   private static boolean mInitialized;
   private static String mPackageName = "";
   
@@ -15,20 +15,12 @@ public final class b
     mInitialized = false;
   }
   
-  public static final void EW(boolean paramBoolean)
+  public static final void KG(boolean paramBoolean)
   {
-    VLh = paramBoolean;
+    adpl = paramBoolean;
   }
   
-  public static long Vb(long paramLong)
-  {
-    AppMethodBeat.i(148761);
-    paramLong = (System.nanoTime() - paramLong) / 1000L;
-    AppMethodBeat.o(148761);
-    return paramLong;
-  }
-  
-  private static final Object byb(String paramString)
+  private static final Object bzw(String paramString)
   {
     AppMethodBeat.i(148757);
     try
@@ -69,28 +61,28 @@ public final class b
     }
   }
   
-  public static final boolean hCo()
+  public static final boolean jeu()
   {
-    return VLh;
+    return adpl;
   }
   
-  public static final boolean hCp()
+  public static final boolean jev()
   {
     AppMethodBeat.i(148758);
     Object localObject;
     if (!mInitialized)
     {
-      localObject = byb("WxSVGCode");
+      localObject = bzw("WxSVGCode");
       if (localObject != null) {
         break label62;
       }
     }
     label62:
-    for (VLg = false;; VLg = ((Boolean)localObject).booleanValue())
+    for (adpk = false;; adpk = ((Boolean)localObject).booleanValue())
     {
-      c.i("MicroMSG.WeChatSVGConfig", "Initialized mUsingWeChatSVGCode %s", new Object[] { Boolean.valueOf(VLg) });
+      c.i("MicroMSG.WeChatSVGConfig", "Initialized mUsingWeChatSVGCode %s", new Object[] { Boolean.valueOf(adpk) });
       mInitialized = true;
-      if (VLg) {
+      if (adpk) {
         break;
       }
       AppMethodBeat.o(148758);
@@ -100,10 +92,10 @@ public final class b
     return false;
   }
   
-  public static final Class<?> hCq()
+  public static final Class<?> jew()
   {
     AppMethodBeat.i(148759);
-    Object localObject = byb("WxSVGRawClass");
+    Object localObject = bzw("WxSVGRawClass");
     if (localObject != null)
     {
       localObject = (Class)localObject;
@@ -114,7 +106,7 @@ public final class b
     return null;
   }
   
-  public static long hCr()
+  public static long jex()
   {
     AppMethodBeat.i(148760);
     long l = System.nanoTime();
@@ -126,10 +118,18 @@ public final class b
   {
     mPackageName = paramString;
   }
+  
+  public static long zj(long paramLong)
+  {
+    AppMethodBeat.i(148761);
+    paramLong = (System.nanoTime() - paramLong) / 1000L;
+    AppMethodBeat.o(148761);
+    return paramLong;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.svg.b.b
  * JD-Core Version:    0.7.0.1
  */

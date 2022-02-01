@@ -5,38 +5,37 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.smtt.sdk.QbSdk.PreInitCallback;
-import com.tencent.smtt.sdk.X5JsCore;
 import com.tencent.smtt.utils.TbsLog;
 import com.tencent.smtt.utils.TbsLogClient;
-import com.tencent.xweb.JsRuntime.JsRuntimeType;
 import com.tencent.xweb.WebView;
 import com.tencent.xweb.WebView.PreInitCallback;
-import com.tencent.xweb.aj;
+import com.tencent.xweb.ao;
 import com.tencent.xweb.internal.CookieInternal.ICookieManagerInternal;
 import com.tencent.xweb.internal.CookieInternal.ICookieSyncManagerInternal;
-import com.tencent.xweb.internal.IJsRuntime;
 import com.tencent.xweb.internal.IWebStorage;
 import com.tencent.xweb.internal.IWebView;
 import com.tencent.xweb.internal.IWebViewDatabase;
-import com.tencent.xweb.internal.l.a;
-import com.tencent.xweb.x5.sdk.g;
-import com.tencent.xweb.x5.sdk.i;
+import com.tencent.xweb.internal.WebViewWrapperFactory.IWebViewProvider;
+import com.tencent.xweb.x5.a.e;
+import com.tencent.xweb.x5.a.f;
+import com.tencent.xweb.x5.a.g;
+import com.tencent.xweb.x5.a.h;
 import org.xwalk.core.Log;
 import org.xwalk.core.WebViewExtensionListener;
 
 public class X5WebFactory
-  implements l.a
+  implements WebViewWrapperFactory.IWebViewProvider
 {
-  private static final String TAG = "MicroMsg.X5WebFactory";
-  static X5WebFactory sInstance;
-  WebViewExtensionListener mWebViewExtensionListener;
+  private static final String TAG = "X5WebFactory";
+  private static X5WebFactory sInstance;
+  private WebViewExtensionListener mWebViewExtensionListener;
   
   public static X5WebFactory getInstance()
   {
     AppMethodBeat.i(153884);
     if (sInstance == null)
     {
-      aj.iwN();
+      ao.kgs();
       sInstance = new X5WebFactory();
     }
     X5WebFactory localX5WebFactory = sInstance;
@@ -54,17 +53,23 @@ public class X5WebFactory
   public IWebView createWebView(WebView paramWebView)
   {
     AppMethodBeat.i(153886);
-    paramWebView = new m(paramWebView);
-    AppMethodBeat.o(153886);
-    return paramWebView;
+    try
+    {
+      paramWebView = new j(paramWebView);
+      return paramWebView;
+    }
+    finally
+    {
+      AppMethodBeat.o(153886);
+    }
   }
   
   public IWebStorage createWebviewStorage()
   {
     AppMethodBeat.i(153896);
-    l locall = new l();
+    i locali = new i();
     AppMethodBeat.o(153896);
-    return locall;
+    return locali;
   }
   
   public Object excute(String paramString, Object[] paramArrayOfObject)
@@ -77,13 +82,13 @@ public class X5WebFactory
     }
     if (paramString.equals("STR_CMD_GET_TBS_QBSDK_IMP"))
     {
-      paramString = new com.tencent.xweb.x5.sdk.e();
+      paramString = new f();
       AppMethodBeat.o(153885);
       return paramString;
     }
     if (paramString.equals("STR_CMD_GET_TBS_DOWNLOADER_IMP"))
     {
-      paramString = new g();
+      paramString = new h();
       AppMethodBeat.o(153885);
       return paramString;
     }
@@ -94,17 +99,17 @@ public class X5WebFactory
   public CookieInternal.ICookieManagerInternal getCookieManager()
   {
     AppMethodBeat.i(153894);
-    d locald = new d();
+    b localb = new b();
     AppMethodBeat.o(153894);
-    return locald;
+    return localb;
   }
   
   public CookieInternal.ICookieSyncManagerInternal getCookieSyncManager()
   {
     AppMethodBeat.i(153895);
-    e locale = new e();
+    c localc = new c();
     AppMethodBeat.o(153895);
-    return locale;
+    return localc;
   }
   
   public WebViewExtensionListener getExtensionCallback()
@@ -112,44 +117,18 @@ public class X5WebFactory
     return this.mWebViewExtensionListener;
   }
   
-  public IJsRuntime getJsCore(JsRuntime.JsRuntimeType paramJsRuntimeType, Context paramContext)
-  {
-    AppMethodBeat.i(153889);
-    Object localObject = null;
-    switch (1.aagD[paramJsRuntimeType.ordinal()])
-    {
-    default: 
-      paramJsRuntimeType = localObject;
-    }
-    boolean bool;
-    do
-    {
-      AppMethodBeat.o(153889);
-      return paramJsRuntimeType;
-      bool = X5JsCore.canUseX5JsCore(paramContext);
-      Log.i("MicroMsg.X5WebFactory", "canUseX5JsCore : ".concat(String.valueOf(bool)));
-      paramJsRuntimeType = localObject;
-    } while (!bool);
-    if (X5JsCore.canUseX5JsCoreNewAPI(paramContext)) {}
-    for (paramJsRuntimeType = new h(paramContext);; paramJsRuntimeType = new f(paramContext))
-    {
-      paramJsRuntimeType.init(0);
-      break;
-    }
-  }
-  
   public IWebViewDatabase getWebViewDatabase()
   {
-    AppMethodBeat.i(207331);
-    n localn = new n();
-    AppMethodBeat.o(207331);
-    return localn;
+    AppMethodBeat.i(213169);
+    l locall = new l();
+    AppMethodBeat.o(213169);
+    return locall;
   }
   
   public boolean hasInited()
   {
     AppMethodBeat.i(153891);
-    boolean bool = b.hasInited();
+    boolean bool = a.hasInited();
     AppMethodBeat.o(153891);
     return bool;
   }
@@ -159,33 +138,35 @@ public class X5WebFactory
     return true;
   }
   
-  public void initCallback(WebViewExtensionListener paramWebViewExtensionListener)
-  {
-    this.mWebViewExtensionListener = paramWebViewExtensionListener;
-  }
-  
   public void initEnviroment(Context paramContext)
   {
     AppMethodBeat.i(153888);
-    TbsLog.setTbsLogClient(new a(paramContext));
+    Log.i("X5WebFactory", "initEnvironment");
+    TbsLog.setTbsLogClient(new b(paramContext));
     AppMethodBeat.o(153888);
   }
   
   public void initInterface()
   {
     AppMethodBeat.i(153887);
-    com.tencent.xweb.x5.sdk.d.a(new com.tencent.xweb.x5.sdk.e());
-    com.tencent.xweb.x5.sdk.f.a(new g());
-    WebView.setX5Interface(new i());
+    e.a(new f());
+    g.a(new h());
+    WebView.setX5Interface(new com.tencent.xweb.x5.a.j());
     AppMethodBeat.o(153887);
+  }
+  
+  public void initWebViewExtensionListener(WebViewExtensionListener paramWebViewExtensionListener)
+  {
+    this.mWebViewExtensionListener = paramWebViewExtensionListener;
   }
   
   public boolean initWebviewCore(Context paramContext, WebView.PreInitCallback paramPreInitCallback)
   {
     AppMethodBeat.i(153890);
-    aj.iwN();
-    com.tencent.xweb.x5.sdk.d.disableAutoCreateX5Webview();
-    b.a(paramContext, paramPreInitCallback);
+    Log.i("X5WebFactory", "initWebviewCore");
+    ao.kgs();
+    e.disableAutoCreateX5Webview();
+    a.a(paramContext, paramPreInitCallback);
     AppMethodBeat.o(153890);
     return true;
   }
@@ -193,15 +174,75 @@ public class X5WebFactory
   public boolean isCoreReady()
   {
     AppMethodBeat.i(153892);
-    boolean bool = b.isCoreReady();
+    boolean bool = a.isCoreReady();
     AppMethodBeat.o(153892);
     return bool;
   }
   
-  final class a
+  static final class a
+  {
+    private static boolean mHasInited = false;
+    private static boolean mIsCoreReady = false;
+    
+    public static void a(Context paramContext, WebView.PreInitCallback paramPreInitCallback)
+    {
+      AppMethodBeat.i(213154);
+      if (mHasInited)
+      {
+        AppMethodBeat.o(213154);
+        return;
+      }
+      Log.i("X5WebFactory.PreIniter", "preInit start");
+      mHasInited = true;
+      QbSdk.preInit(paramContext, new QbSdk.PreInitCallback()
+      {
+        private boolean aink = false;
+        private boolean ainl = false;
+        
+        public final void onCoreInitFinished()
+        {
+          AppMethodBeat.i(213155);
+          Log.i("X5WebFactory.PreIniter", "onCoreInitFinished");
+          this.aink = true;
+          if ((this.aink) && (this.ainl) && (X5WebFactory.a.this != null))
+          {
+            X5WebFactory.a.this.onCoreInitFinished();
+            X5WebFactory.a.aAs();
+          }
+          AppMethodBeat.o(213155);
+        }
+        
+        public final void onViewInitFinished(boolean paramAnonymousBoolean)
+        {
+          AppMethodBeat.i(213158);
+          Log.i("X5WebFactory.PreIniter", "onViewInitFinished");
+          this.ainl = true;
+          if ((this.aink) && (this.ainl) && (X5WebFactory.a.this != null))
+          {
+            X5WebFactory.a.this.onCoreInitFinished();
+            X5WebFactory.a.aAs();
+          }
+          AppMethodBeat.o(213158);
+        }
+      });
+      AppMethodBeat.o(213154);
+    }
+    
+    public static boolean hasInited()
+    {
+      return mHasInited;
+    }
+    
+    public static boolean isCoreReady()
+    {
+      return mIsCoreReady;
+    }
+  }
+  
+  final class b
     extends TbsLogClient
   {
-    public a(Context paramContext)
+    public b(Context paramContext)
     {
       super();
     }
@@ -274,68 +315,10 @@ public class X5WebFactory
       AppMethodBeat.o(153873);
     }
   }
-  
-  static final class b
-  {
-    private static boolean aacJ = false;
-    private static boolean aagF = false;
-    
-    public static void a(Context paramContext, WebView.PreInitCallback paramPreInitCallback)
-    {
-      AppMethodBeat.i(153883);
-      if (aacJ)
-      {
-        AppMethodBeat.o(153883);
-        return;
-      }
-      Log.i("X5WebFactory.preIniter", "preInit");
-      aacJ = true;
-      QbSdk.preInit(paramContext, new QbSdk.PreInitCallback()
-      {
-        private boolean aagG = false;
-        private boolean aagH = false;
-        
-        public final void onCoreInitFinished()
-        {
-          AppMethodBeat.i(153881);
-          this.aagG = true;
-          if ((this.aagG) && (this.aagH) && (this.PDG != null))
-          {
-            this.PDG.onCoreInitFinished();
-            X5WebFactory.b.Yy();
-          }
-          AppMethodBeat.o(153881);
-        }
-        
-        public final void onViewInitFinished(boolean paramAnonymousBoolean)
-        {
-          AppMethodBeat.i(153882);
-          this.aagH = true;
-          if ((this.aagG) && (this.aagH) && (this.PDG != null))
-          {
-            this.PDG.onCoreInitFinished();
-            X5WebFactory.b.Yy();
-          }
-          AppMethodBeat.o(153882);
-        }
-      });
-      AppMethodBeat.o(153883);
-    }
-    
-    public static boolean hasInited()
-    {
-      return aacJ;
-    }
-    
-    public static boolean isCoreReady()
-    {
-      return aagF;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.x5.X5WebFactory
  * JD-Core Version:    0.7.0.1
  */

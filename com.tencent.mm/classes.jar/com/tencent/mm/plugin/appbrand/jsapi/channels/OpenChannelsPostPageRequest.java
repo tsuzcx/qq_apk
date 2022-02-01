@@ -4,9 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/channels/OpenChannelsPostPageRequest;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessRequest;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "()V", "describeContents", "", "getTaskClass", "Ljava/lang/Class;", "Lcom/tencent/mm/plugin/appbrand/jsapi/channels/OpenChannelsPostPageTask;", "CREATOR", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/channels/OpenChannelsPostPageRequest;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessRequest;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "()V", "describeContents", "", "getTaskClass", "Ljava/lang/Class;", "Lcom/tencent/mm/plugin/appbrand/jsapi/channels/OpenChannelsPostPageTask;", "CREATOR", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 final class OpenChannelsPostPageRequest
   extends AppBrandProxyUIProcessTask.ProcessRequest
 {
@@ -14,9 +14,9 @@ final class OpenChannelsPostPageRequest
   
   static
   {
-    AppMethodBeat.i(274362);
+    AppMethodBeat.i(327959);
     CREATOR = new a((byte)0);
-    AppMethodBeat.o(274362);
+    AppMethodBeat.o(327959);
   }
   
   public OpenChannelsPostPageRequest() {}
@@ -24,13 +24,8 @@ final class OpenChannelsPostPageRequest
   public OpenChannelsPostPageRequest(Parcel paramParcel)
   {
     this();
-    AppMethodBeat.i(274360);
-    AppMethodBeat.o(274360);
-  }
-  
-  public final Class<j> bOe()
-  {
-    return j.class;
+    AppMethodBeat.i(327956);
+    AppMethodBeat.o(327956);
   }
   
   public final int describeContents()
@@ -38,7 +33,12 @@ final class OpenChannelsPostPageRequest
     return 0;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/channels/OpenChannelsPostPageRequest$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/channels/OpenChannelsPostPageRequest;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/channels/OpenChannelsPostPageRequest;", "plugin-appbrand-integration_release"})
+  public final Class<o> getTaskClass()
+  {
+    return o.class;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/channels/OpenChannelsPostPageRequest$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/channels/OpenChannelsPostPageRequest;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/channels/OpenChannelsPostPageRequest;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     implements Parcelable.Creator<OpenChannelsPostPageRequest>
   {}

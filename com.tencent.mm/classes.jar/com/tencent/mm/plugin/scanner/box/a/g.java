@@ -4,51 +4,50 @@ import android.content.Context;
 import android.os.Vibrator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.scanner.box.a.a.b;
-import com.tencent.mm.plugin.webview.d.f;
-import com.tencent.mm.plugin.webview.d.h;
-import com.tencent.mm.plugin.webview.d.n;
+import com.tencent.mm.plugin.webview.jsapi.e;
+import com.tencent.mm.plugin.webview.jsapi.h;
+import com.tencent.mm.plugin.webview.jsapi.p;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/box/jsapi/JsApiShake;", "Lcom/tencent/mm/plugin/scanner/box/jsapi/base/ScanBaseJsApi;", "()V", "TAG", "", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "shake", "", "plugin-scan_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/box/jsapi/JsApiShake;", "Lcom/tencent/mm/plugin/scanner/box/jsapi/base/ScanBaseJsApi;", "()V", "TAG", "", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "shake", "", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class g
   extends b
 {
-  public static final g IIh;
-  private static final String fXz = "shake";
+  public static final g OOf;
+  private static final String idA;
   
   static
   {
-    AppMethodBeat.i(221666);
-    IIh = new g();
-    fXz = "shake";
-    AppMethodBeat.o(221666);
+    AppMethodBeat.i(313787);
+    OOf = new g();
+    idA = "shake";
+    AppMethodBeat.o(313787);
   }
   
-  public final boolean a(f paramf, n paramn)
+  public final boolean a(h paramh, p paramp)
   {
-    AppMethodBeat.i(221661);
-    p.k(paramf, "env");
-    p.k(paramn, "msg");
+    AppMethodBeat.i(313804);
+    s.u(paramh, "env");
+    s.u(paramp, "msg");
     Log.d("MicroMsg.JsApiShake", "ScanJsApi-Call:shake");
-    Object localObject2 = paramf.context.getSystemService("vibrator");
-    Object localObject1 = localObject2;
-    if (!(localObject2 instanceof Vibrator)) {
-      localObject1 = null;
+    Object localObject = paramh.context.getSystemService("vibrator");
+    if ((localObject instanceof Vibrator)) {}
+    for (localObject = (Vibrator)localObject;; localObject = null)
+    {
+      if (localObject != null) {
+        ((Vibrator)localObject).vibrate(10L);
+      }
+      paramh.WDy.doCallback(paramp.WEH, s.X(paramp.function, ":ok"), null);
+      AppMethodBeat.o(313804);
+      return true;
     }
-    localObject1 = (Vibrator)localObject1;
-    if (localObject1 != null) {
-      ((Vibrator)localObject1).vibrate(10L);
-    }
-    paramf.PNo.h(paramn.POu, paramn.function + ":ok", null);
-    AppMethodBeat.o(221661);
-    return true;
   }
   
-  public final String fCm()
+  public final String gPX()
   {
-    return fXz;
+    return idA;
   }
 }
 

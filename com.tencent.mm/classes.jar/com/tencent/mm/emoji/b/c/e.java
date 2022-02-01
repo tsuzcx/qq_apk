@@ -1,101 +1,91 @@
 package com.tencent.mm.emoji.b.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.emoji.PluginEmoji;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.bf;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import kotlin.g.b.p;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/model/search/EmojiSuggestLocal;", "Lcom/tencent/mm/emoji/model/search/IEmojiSuggest;", "()V", "TAG", "", "checkMatch", "", "desc", "getEmojiList", "", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "md5List", "searchSuggest", "", "callback", "Lcom/tencent/mm/emoji/model/search/IEmojiSuggest$SuggestCallback;", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcherConfig;", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "url", "", "path", "authKey", "fetcherType", "", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V", "getAuthKey", "()Ljava/lang/String;", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "getFetcherType", "()I", "getPath", "getUrl", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "", "other", "hashCode", "toString", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
-  implements j
 {
-  private final String TAG = "MicroMsg.EmojiSuggestLocal";
+  final String authKey;
+  final EmojiInfo mgK;
+  final int mgL;
+  final String path;
+  final String url;
   
-  public static boolean LM(String paramString)
+  public e(EmojiInfo paramEmojiInfo, String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    AppMethodBeat.i(223695);
-    p.k(paramString, "desc");
-    boolean bool = bf.hyR().LO(paramString);
-    AppMethodBeat.o(223695);
-    return bool;
+    AppMethodBeat.i(105431);
+    this.mgK = paramEmojiInfo;
+    this.url = paramString1;
+    this.path = paramString2;
+    this.authKey = paramString3;
+    this.mgL = paramInt;
+    AppMethodBeat.o(105431);
   }
   
-  public final void a(String paramString, j.b paramb)
+  public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(223700);
-    p.k(paramString, "desc");
-    Object localObject1 = h.ag(PluginEmoji.class);
-    p.j(localObject1, "MMKernel.plugin(PluginEmoji::class.java)");
-    localObject1 = kotlin.a.j.t((Iterable)((PluginEmoji)localObject1).getEmojiMgr().auj(paramString));
-    paramString = new LinkedList();
-    Object localObject2 = (Collection)localObject1;
-    int i;
-    if ((localObject2 == null) || (((Collection)localObject2).isEmpty())) {
-      i = 1;
-    }
-    while (i == 0)
+    AppMethodBeat.i(105434);
+    if (this == paramObject)
     {
-      if (((List)localObject1).size() > 100)
-      {
-        localObject2 = d.jKB;
-        d.rE(24);
-      }
-      int j = ((List)localObject1).size();
-      i = 0;
-      for (;;)
-      {
-        if ((i < j) && (i < 100))
-        {
-          localObject2 = h.ag(PluginEmoji.class);
-          p.j(localObject2, "MMKernel.plugin(PluginEmoji::class.java)");
-          localObject2 = ((PluginEmoji)localObject2).getEmojiMgr().aud((String)((List)localObject1).get(i));
-          if (localObject2 != null) {
-            paramString.add(localObject2);
-          }
-          i += 1;
-          continue;
-          i = 0;
-          break;
-        }
-      }
-      if (!paramString.isEmpty()) {
-        break label302;
-      }
-      Log.i(this.TAG, "sorEmojiList return. empty list.");
+      AppMethodBeat.o(105434);
+      return true;
     }
-    for (;;)
+    if (!(paramObject instanceof e))
     {
-      localObject1 = (Iterable)paramString;
-      paramString = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject1, 10));
-      localObject1 = ((Iterable)localObject1).iterator();
-      i = 0;
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = ((Iterator)localObject1).next();
-        if (i < 0) {
-          kotlin.a.j.iBO();
-        }
-        paramString.add(new l((EmojiInfo)localObject2, 0, i + 1));
-        i += 1;
-      }
-      label302:
-      localObject1 = ((Iterable)paramString).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (EmojiInfo)((Iterator)localObject1).next();
-        Log.i(this.TAG, "getEmojiList: match " + ((EmojiInfo)localObject2).getMd5());
-      }
+      AppMethodBeat.o(105434);
+      return false;
     }
-    paramb.a((List)paramString, new m(0L, 0, 0, null, 15));
-    AppMethodBeat.o(223700);
+    paramObject = (e)paramObject;
+    if (!s.p(this.mgK, paramObject.mgK))
+    {
+      AppMethodBeat.o(105434);
+      return false;
+    }
+    if (!s.p(this.url, paramObject.url))
+    {
+      AppMethodBeat.o(105434);
+      return false;
+    }
+    if (!s.p(this.path, paramObject.path))
+    {
+      AppMethodBeat.o(105434);
+      return false;
+    }
+    if (!s.p(this.authKey, paramObject.authKey))
+    {
+      AppMethodBeat.o(105434);
+      return false;
+    }
+    if (this.mgL != paramObject.mgL)
+    {
+      AppMethodBeat.o(105434);
+      return false;
+    }
+    AppMethodBeat.o(105434);
+    return true;
+  }
+  
+  public final int hashCode()
+  {
+    AppMethodBeat.i(105433);
+    int i = this.mgK.hashCode();
+    int j = this.url.hashCode();
+    int k = this.path.hashCode();
+    int m = this.authKey.hashCode();
+    int n = this.mgL;
+    AppMethodBeat.o(105433);
+    return (((i * 31 + j) * 31 + k) * 31 + m) * 31 + n;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(105432);
+    String str = "EmojiFetcherConfig(emojiInfo=" + this.mgK + ", url=" + this.url + ", path=" + this.path + ", authKey=" + this.authKey + ", fetcherType=" + this.mgL + ')';
+    AppMethodBeat.o(105432);
+    return str;
   }
 }
 

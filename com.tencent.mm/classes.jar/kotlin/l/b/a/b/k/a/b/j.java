@@ -1,94 +1,121 @@
 package kotlin.l.b.a.b.k.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.b.a.g;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Set;
+import kotlin.a.ad;
+import kotlin.g.b.s;
 import kotlin.l.b.a.b.b.ah;
-import kotlin.l.b.a.b.b.aj;
-import kotlin.l.b.a.b.b.an;
-import kotlin.l.b.a.b.b.ba;
-import kotlin.l.b.a.b.b.c.aa;
-import kotlin.l.b.a.b.b.c.ab;
-import kotlin.l.b.a.b.b.l;
-import kotlin.l.b.a.b.b.r;
-import kotlin.l.b.a.b.b.w;
-import kotlin.l.b.a.b.e.a.m;
-import kotlin.l.b.a.b.e.b.b;
-import kotlin.l.b.a.b.e.b.h;
-import kotlin.l.b.a.b.e.b.i;
-import kotlin.x;
+import kotlin.l.b.a.b.b.h;
+import kotlin.l.b.a.b.e.a.k;
+import kotlin.l.b.a.b.f.f;
 
 public final class j
-  extends aa
-  implements c
+  extends i
 {
-  public final kotlin.l.b.a.b.e.b.c aaCB;
-  public final h aaCC;
-  public final a.m aaCz;
-  private final i abnD;
-  public final f abnE;
-  private g.a abow;
+  private final kotlin.l.b.a.b.f.c aiEI;
+  private final ah ajoh;
+  private final String roK;
   
-  public j(l paraml, ah paramah, g paramg, w paramw, ba paramba, boolean paramBoolean1, kotlin.l.b.a.b.f.f paramf, kotlin.l.b.a.b.b.b.a parama, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, boolean paramBoolean6, a.m paramm, kotlin.l.b.a.b.e.b.c paramc, h paramh, i parami, f paramf1)
+  public j(ah paramah, a.k paramk, kotlin.l.b.a.b.e.b.c paramc, kotlin.l.b.a.b.e.b.a parama, g paramg, kotlin.l.b.a.b.k.a.j paramj, String paramString, kotlin.g.a.a<? extends Collection<f>> parama1)
   {
-    super(paraml, paramah, paramg, paramw, paramba, paramBoolean1, paramf, parama, an.aaKE, paramBoolean2, paramBoolean3, paramBoolean6, false, paramBoolean4, paramBoolean5);
-    AppMethodBeat.i(60477);
-    this.aaCz = paramm;
-    this.aaCB = paramc;
-    this.aaCC = paramh;
-    this.abnD = parami;
-    this.abnE = paramf1;
-    this.abow = g.a.aboR;
-    AppMethodBeat.o(60477);
+    super(paramc, parama, paramg, paramk, parama1);
+    AppMethodBeat.i(192356);
+    this.ajoh = paramah;
+    this.roK = paramString;
+    this.aiEI = this.ajoh.koY();
+    AppMethodBeat.o(192356);
   }
   
-  public final aa a(l paraml, w paramw, ba paramba, ah paramah, kotlin.l.b.a.b.b.b.a parama, kotlin.l.b.a.b.f.f paramf, an paraman)
+  protected final kotlin.l.b.a.b.f.b A(f paramf)
   {
-    AppMethodBeat.i(60475);
-    p.k(paraml, "newOwner");
-    p.k(paramw, "newModality");
-    p.k(paramba, "newVisibility");
-    p.k(parama, "kind");
-    p.k(paramf, "newName");
-    p.k(paraman, "source");
-    paraml = (aa)new j(paraml, paramah, iDY(), paramw, paramba, iFU(), paramf, parama, iFX(), iFW(), iDX(), iFY(), iDV(), this.aaCz, this.aaCB, this.aaCC, this.abnD, this.abnE);
-    AppMethodBeat.o(60475);
-    return paraml;
+    AppMethodBeat.i(60469);
+    s.u(paramf, "name");
+    paramf = new kotlin.l.b.a.b.f.b(this.aiEI, paramf);
+    AppMethodBeat.o(60469);
+    return paramf;
   }
   
-  public final void a(ab paramab, aj paramaj, r paramr1, r paramr2, g.a parama)
+  protected final boolean D(f paramf)
   {
-    AppMethodBeat.i(60474);
-    p.k(parama, "isExperimentalCoroutineInReleaseEnvironment");
-    super.a(paramab, paramaj, paramr1, paramr2);
-    paramab = x.aazN;
-    this.abow = parama;
-    AppMethodBeat.o(60474);
+    AppMethodBeat.i(60468);
+    s.u(paramf, "name");
+    if (!super.D(paramf))
+    {
+      Object localObject = this.ajmz.aiWx.ajmd;
+      if (((localObject instanceof Collection)) && (((Collection)localObject).isEmpty())) {
+        break label100;
+      }
+      localObject = ((Iterable)localObject).iterator();
+      do
+      {
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+      } while (!((kotlin.l.b.a.b.b.b.b)((Iterator)localObject).next()).a(this.aiEI, paramf));
+    }
+    label100:
+    for (int i = 1; i != 0; i = 0)
+    {
+      AppMethodBeat.o(60468);
+      return true;
+    }
+    AppMethodBeat.o(60468);
+    return false;
   }
   
-  public final boolean iDX()
+  public final h c(f paramf, kotlin.l.b.a.b.c.a.b paramb)
   {
-    AppMethodBeat.i(60476);
-    Boolean localBoolean = b.abeh.aFe(this.aaCz.aaZS);
-    p.j(localBoolean, "Flags.IS_EXTERNAL_PROPERTY.get(proto.flags)");
-    boolean bool = localBoolean.booleanValue();
-    AppMethodBeat.o(60476);
-    return bool;
+    AppMethodBeat.i(60470);
+    s.u(paramf, "name");
+    s.u(paramb, "location");
+    d(paramf, paramb);
+    paramf = super.c(paramf, paramb);
+    AppMethodBeat.o(60470);
+    return paramf;
   }
   
-  public final kotlin.l.b.a.b.e.b.c iPB()
+  protected final void c(Collection<kotlin.l.b.a.b.b.l> paramCollection, kotlin.g.a.b<? super f, Boolean> paramb)
   {
-    return this.aaCB;
+    AppMethodBeat.i(60472);
+    s.u(paramCollection, "result");
+    s.u(paramb, "nameFilter");
+    AppMethodBeat.o(60472);
   }
   
-  public final h iPC()
+  public final void d(f paramf, kotlin.l.b.a.b.c.a.b paramb)
   {
-    return this.aaCC;
+    AppMethodBeat.i(60471);
+    s.u(paramf, "name");
+    s.u(paramb, "location");
+    kotlin.l.b.a.b.c.a.a(this.ajmz.aiWx.aiRV, paramb, this.ajoh, paramf);
+    AppMethodBeat.o(60471);
+  }
+  
+  protected final Set<f> kAj()
+  {
+    return (Set)ad.aivA;
+  }
+  
+  protected final Set<f> kAk()
+  {
+    return (Set)ad.aivA;
+  }
+  
+  protected final Set<f> kAl()
+  {
+    return (Set)ad.aivA;
+  }
+  
+  public final String toString()
+  {
+    return this.roK;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.k.a.b.j
  * JD-Core Version:    0.7.0.1
  */

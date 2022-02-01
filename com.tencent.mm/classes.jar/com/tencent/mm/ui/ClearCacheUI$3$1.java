@@ -14,7 +14,7 @@ final class ClearCacheUI$3$1
   public final void run()
   {
     AppMethodBeat.i(32992);
-    Toast.makeText(MMApplicationContext.getContext(), MMApplicationContext.getContext().getString(R.l.exF), 0).show();
+    Toast.makeText(MMApplicationContext.getContext(), MMApplicationContext.getContext().getString(R.l.gAp), 0).show();
     AppMethodBeat.o(32992);
   }
 }

@@ -1,124 +1,52 @@
 package com.tencent.mm.plugin.appbrand.config;
 
-import android.os.SystemClock;
+import android.content.Context;
+import com.tencent.luggage.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.utils.ai;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.storage.IAutoDBItem;
-import com.tencent.mm.sdk.storage.ISQLiteDatabase;
-import com.tencent.mm.sdk.storage.ISQLiteDatabaseEx;
-import kotlin.l;
+import com.tencent.mm.plugin.appbrand.af.r;
+import com.tencent.mm.plugin.appbrand.af.r.a;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/config/WxaAttrAvailableBackupStorage;", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttrStorage;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabaseEx;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabaseEx;)V", "insertOrUpdate", "", "record", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes;", "removeForAppIdAndVersionLessThan", "appId", "", "version", "", "CREATOR", "Constants", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/config/MiniProgramUserAgentUtils;", "", "()V", "make", "", "context", "Landroid/content/Context;", "originalUserAgent", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class v
-  extends x
 {
-  public static final String[] lqL;
-  public static final b oan;
-  private final ISQLiteDatabaseEx nHd;
+  public static final v raJ;
   
   static
   {
-    AppMethodBeat.i(270165);
-    oan = new b((byte)0);
-    lqL = new String[] { x.getCreateSQLs(WxaAttributes.nFK, "WxaAttrAvailableBackupTable") };
-    AppMethodBeat.o(270165);
+    AppMethodBeat.i(323372);
+    raJ = new v();
+    AppMethodBeat.o(323372);
   }
   
-  public v(ISQLiteDatabaseEx paramISQLiteDatabaseEx)
+  public static final String Y(Context paramContext, String paramString)
   {
-    super((ISQLiteDatabase)paramISQLiteDatabaseEx, "WxaAttrAvailableBackupTable", null);
-    AppMethodBeat.i(270164);
-    this.nHd = paramISQLiteDatabaseEx;
-    AppMethodBeat.o(270164);
+    AppMethodBeat.i(323365);
+    Context localContext = paramContext;
+    if (paramContext == null) {
+      localContext = MMApplicationContext.getContext();
+    }
+    paramContext = paramString;
+    if (paramString == null) {
+      paramContext = "";
+    }
+    paramString = r.a(localContext, paramContext, (r.a)e.T(r.a.class));
+    s.s(paramString, "ua");
+    paramContext = paramString;
+    if (!n.a((CharSequence)paramString, (CharSequence)"MiniProgramEnv/android", false)) {
+      paramContext = s.X(paramString, " MiniProgramEnv/android");
+    }
+    s.s(paramContext, "ua");
+    AppMethodBeat.o(323365);
+    return paramContext;
   }
-  
-  public final boolean bY(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(270163);
-    CharSequence localCharSequence = (CharSequence)paramString;
-    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      AppMethodBeat.o(270163);
-      return false;
-    }
-    Log.i("MicroMsg.AppBrand.WxaAttrAvailableBackupStorage", "removeForAppIdAndVersionLessThan(appId:" + paramString + ", version:" + paramInt + ')');
-    try
-    {
-      paramString = super.d(paramString, new String[] { "versionInfo" });
-      if ((paramString != null) && (paramString.bLH().appVersion < paramInt))
-      {
-        super.delete((IAutoDBItem)paramString, new String[0]);
-        AppMethodBeat.o(270163);
-        return true;
-      }
-    }
-    catch (Exception paramString)
-    {
-      AppMethodBeat.o(270163);
-    }
-    return false;
-  }
-  
-  public final boolean d(WxaAttributes paramWxaAttributes)
-  {
-    AppMethodBeat.i(270162);
-    if (paramWxaAttributes == null)
-    {
-      AppMethodBeat.o(270162);
-      return false;
-    }
-    Object localObject1 = new StringBuilder("WxaAttrAvailableBackupStorage.insertOrUpdate(").append(paramWxaAttributes.field_username).append('|').append(paramWxaAttributes.field_appId).append('|');
-    Object localObject2 = paramWxaAttributes.bLH();
-    int i;
-    long l;
-    boolean bool;
-    label124:
-    Boolean localBoolean;
-    if (localObject2 != null)
-    {
-      i = ((WxaAttributes.WxaVersionInfo)localObject2).appVersion;
-      localObject2 = i + ')';
-      l = SystemClock.elapsedRealtime();
-      if (!super.a(paramWxaAttributes, new String[] { "username" })) {
-        break label262;
-      }
-      bool = super.update((IAutoDBItem)paramWxaAttributes, new String[] { "username" });
-      localBoolean = Boolean.valueOf(bool);
-      localObject1 = localBoolean.toString();
-      paramWxaAttributes = (WxaAttributes)localObject1;
-      if (localObject1 == null) {
-        paramWxaAttributes = "";
-      }
-      bool = ai.Or();
-      l = SystemClock.elapsedRealtime() - l;
-      if ((l <= 32L) || (!bool)) {
-        break label275;
-      }
-      Log.w("Luggage.Utils.Profile", "block main thread and skip " + (int)(l / 16L) + " frames! runProfiled:log:" + (String)localObject2 + " cost " + l + " ms result:" + paramWxaAttributes + " isMainThread: " + bool + ' ');
-    }
-    for (;;)
-    {
-      bool = localBoolean.booleanValue();
-      AppMethodBeat.o(270162);
-      return bool;
-      i = -1;
-      break;
-      label262:
-      bool = super.insert((IAutoDBItem)paramWxaAttributes);
-      break label124;
-      label275:
-      Log.i("Luggage.Utils.Profile", "runProfiled:log:" + (String)localObject2 + " cost " + l + " ms result:" + paramWxaAttributes + " isMainThread: " + bool + ' ');
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/config/WxaAttrAvailableBackupStorage$Constants;", "", "()V", "TABLE_CREATE", "", "", "kotlin.jvm.PlatformType", "[Ljava/lang/String;", "TABLE_NAME", "TAG", "plugin-appbrand-integration_release"})
-  public static final class b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.v
  * JD-Core Version:    0.7.0.1
  */

@@ -5,23 +5,23 @@ import android.content.Context;
 import android.util.AttributeSet;
 import androidx.appcompat.widget.AppCompatImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/ui/AutoAnimImageView;", "Landroidx/appcompat/widget/AppCompatImageView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "TAG", "", "animator", "Landroid/animation/ValueAnimator;", "getAnimator", "()Landroid/animation/ValueAnimator;", "setAnimator", "(Landroid/animation/ValueAnimator;)V", "durationMsPerDp", "", "autoAnim", "", "dpFromPx", "", "px", "getHorizontalAnimator", "img", "Landroid/widget/ImageView;", "scale", "dwidth", "vwidth", "getScaleAnimator", "getVerticalAnimator", "dheight", "vheight", "onAttachedToWindow", "onDetachedFromWindow", "setDurationMsPerDp", "duration", "AnimType", "plugin-textstatus_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/textstatus/ui/AutoAnimImageView;", "Landroidx/appcompat/widget/AppCompatImageView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "TAG", "", "animator", "Landroid/animation/ValueAnimator;", "getAnimator", "()Landroid/animation/ValueAnimator;", "setAnimator", "(Landroid/animation/ValueAnimator;)V", "durationMsPerDp", "", "autoAnim", "", "dpFromPx", "", "px", "getHorizontalAnimator", "img", "Landroid/widget/ImageView;", "scale", "dwidth", "vwidth", "getScaleAnimator", "getVerticalAnimator", "dheight", "vheight", "onAttachedToWindow", "onDetachedFromWindow", "setDurationMsPerDp", "duration", "AnimType", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class AutoAnimImageView
   extends AppCompatImageView
 {
-  private int MIZ;
   private final String TAG;
+  private int Tvj;
   private ValueAnimator animator;
   
   public AutoAnimImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(236477);
+    AppMethodBeat.i(291458);
     this.TAG = "MicroMsg.TextStatus.AutoAnimImageView";
-    this.MIZ = 50;
-    AppMethodBeat.o(236477);
+    this.Tvj = 50;
+    AppMethodBeat.o(291458);
   }
   
   public final ValueAnimator getAnimator()
@@ -31,30 +31,24 @@ public final class AutoAnimImageView
   
   protected final void onAttachedToWindow()
   {
-    AppMethodBeat.i(236471);
+    AppMethodBeat.i(291474);
     super.onAttachedToWindow();
     ValueAnimator localValueAnimator = this.animator;
-    if (localValueAnimator != null)
-    {
+    if (localValueAnimator != null) {
       localValueAnimator.resume();
-      AppMethodBeat.o(236471);
-      return;
     }
-    AppMethodBeat.o(236471);
+    AppMethodBeat.o(291474);
   }
   
   protected final void onDetachedFromWindow()
   {
-    AppMethodBeat.i(236473);
+    AppMethodBeat.i(291484);
     super.onDetachedFromWindow();
     ValueAnimator localValueAnimator = this.animator;
-    if (localValueAnimator != null)
-    {
+    if (localValueAnimator != null) {
       localValueAnimator.pause();
-      AppMethodBeat.o(236473);
-      return;
     }
-    AppMethodBeat.o(236473);
+    AppMethodBeat.o(291484);
   }
   
   public final void setAnimator(ValueAnimator paramValueAnimator)
@@ -64,7 +58,7 @@ public final class AutoAnimImageView
   
   public final void setDurationMsPerDp(int paramInt)
   {
-    this.MIZ = paramInt;
+    this.Tvj = paramInt;
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.webwx;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.be;
-import com.tencent.mm.plugin.webwx.a.g;
+import com.tencent.mm.plugin.webwx.model.g;
 import com.tencent.mm.pluginsdk.c.c;
 import com.tencent.mm.pluginsdk.c.d;
 import com.tencent.mm.pluginsdk.n;
@@ -33,7 +33,7 @@ public final class Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.webwx.Plugin
  * JD-Core Version:    0.7.0.1
  */

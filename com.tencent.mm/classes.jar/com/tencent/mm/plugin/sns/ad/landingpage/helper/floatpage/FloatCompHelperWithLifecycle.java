@@ -3,26 +3,28 @@ package com.tencent.mm.plugin.sns.ad.landingpage.helper.floatpage;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import androidx.lifecycle.h.a;
-import androidx.lifecycle.k;
-import androidx.lifecycle.t;
+import androidx.lifecycle.j.a;
+import androidx.lifecycle.p;
+import androidx.lifecycle.q;
+import androidx.lifecycle.z;
+import com.tencent.mm.plugin.sns.ad.j.l;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aa;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.m;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.n;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
-public abstract class FloatCompHelperWithLifecycle<INFO extends aa, COMP extends m>
-  implements k
+public abstract class FloatCompHelperWithLifecycle<INFO extends aa, COMP extends n>
+  implements p
 {
-  protected INFO JDo;
-  protected COMP JDp;
-  protected ViewGroup JDq;
+  protected INFO PUn;
+  protected COMP PUo;
+  protected ViewGroup PUp;
   protected Context mContext;
   
   protected FloatCompHelperWithLifecycle(INFO paramINFO, ViewGroup paramViewGroup)
   {
-    this.JDo = paramINFO;
-    this.JDq = paramViewGroup;
+    this.PUn = paramINFO;
+    this.PUp = paramViewGroup;
     if (paramViewGroup != null) {}
     for (paramINFO = paramViewGroup.getContext();; paramINFO = MMApplicationContext.getContext())
     {
@@ -33,25 +35,25 @@ public abstract class FloatCompHelperWithLifecycle<INFO extends aa, COMP extends
   
   protected abstract COMP a(Context paramContext, INFO paramINFO, ViewGroup paramViewGroup);
   
-  @t(jl=h.a.ON_CREATE)
-  public final void doCreate(androidx.lifecycle.l paraml)
+  @z(Ho=j.a.ON_CREATE)
+  public final void doCreate(q paramq)
   {
     try
     {
-      paraml = this.JDo;
-      Object localObject = this.JDq;
-      if ((paraml != null) && (localObject != null))
+      paramq = this.PUn;
+      Object localObject = this.PUp;
+      if ((paramq != null) && (localObject != null))
       {
-        this.JDp = a(((ViewGroup)localObject).getContext(), paraml, (ViewGroup)localObject);
-        paraml = this.JDq;
-        localObject = this.JDp;
-        if ((paraml != null) && (localObject != null))
+        this.PUo = a(((ViewGroup)localObject).getContext(), paramq, (ViewGroup)localObject);
+        paramq = this.PUp;
+        localObject = this.PUo;
+        if ((paramq != null) && (localObject != null))
         {
-          localObject = ((m)localObject).getView();
+          localObject = ((n)localObject).getView();
           if (localObject != null)
           {
-            gc((View)localObject);
-            com.tencent.mm.plugin.sns.ad.i.l.b(paraml, (View)localObject, paraml.getChildCount() - 1);
+            jf((View)localObject);
+            l.b(paramq, (View)localObject, paramq.getChildCount() - 1);
           }
         }
         else
@@ -65,58 +67,58 @@ public abstract class FloatCompHelperWithLifecycle<INFO extends aa, COMP extends
       }
       return;
     }
-    catch (Throwable paraml) {}
+    finally {}
   }
   
-  @t(jl=h.a.ON_DESTROY)
-  public final void doDestroy(androidx.lifecycle.l paraml)
+  @z(Ho=j.a.ON_DESTROY)
+  public final void doDestroy(q paramq)
   {
     try
     {
-      if (this.JDp != null) {
-        this.JDp.fKo();
+      if (this.PUo != null) {
+        this.PUo.has();
       }
       return;
     }
-    catch (Throwable paraml) {}
+    finally {}
   }
   
-  @t(jl=h.a.ON_PAUSE)
-  public final void doPause(androidx.lifecycle.l paraml)
+  @z(Ho=j.a.ON_PAUSE)
+  public final void doPause(q paramq)
   {
     try
     {
-      if (this.JDp != null) {
-        this.JDp.fKl();
+      if (this.PUo != null) {
+        this.PUo.hap();
       }
       return;
     }
-    catch (Throwable paraml) {}
+    finally {}
   }
   
-  @t(jl=h.a.ON_RESUME)
-  public final void doResume(androidx.lifecycle.l paraml)
+  @z(Ho=j.a.ON_RESUME)
+  public final void doResume(q paramq)
   {
     try
     {
-      if (this.JDp != null) {
-        this.JDp.fKk();
+      if (this.PUo != null) {
+        this.PUo.hao();
       }
       return;
     }
-    catch (Throwable paraml) {}
+    finally {}
   }
   
-  public final COMP fKJ()
+  public final COMP haY()
   {
-    return this.JDp;
+    return this.PUo;
   }
   
-  protected void gc(View paramView) {}
+  protected void jf(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.landingpage.helper.floatpage.FloatCompHelperWithLifecycle
  * JD-Core Version:    0.7.0.1
  */

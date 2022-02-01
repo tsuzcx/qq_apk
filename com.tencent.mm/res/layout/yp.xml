@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/ai_" android:padding="@dimen/ir" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/i6"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/is" android:textColor="@color/wx" android:id="@id/ix0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fdh" />
-    <TextView android:textSize="@dimen/is" android:textColor="@color/wx" android:id="@id/ix1" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</LinearLayout>
+    <Button android:id="@id/c6f" android:layout_width="100.0px" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginRight="5.0dip" android:text=" Ok " />
+</RelativeLayout>

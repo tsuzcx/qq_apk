@@ -9,6 +9,9 @@ import com.google.android.gms.common.api.GoogleApi.Settings;
 import com.google.android.gms.tasks.Task;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 public abstract class ChannelClient
   extends GoogleApi<Wearable.WearableOptions>
@@ -72,10 +75,13 @@ public abstract class ChannelClient
     
     public void onOutputClosed(ChannelClient.Channel paramChannel, int paramInt1, int paramInt2) {}
   }
+  
+  @Retention(RetentionPolicy.SOURCE)
+  public static @interface CloseReason {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.ChannelClient
  * JD-Core Version:    0.7.0.1
  */

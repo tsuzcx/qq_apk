@@ -2,24 +2,31 @@ package com.tencent.mm.wallet_core;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.expansions.a;
+import com.tencent.mm.plugin.expansions.e;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.util.b.a;
 import com.tencent.mm.util.i;
 
 public final class b
 {
-  private static b YTx;
+  private static b agRB;
   
-  public static boolean b(com.tencent.mm.plugin.expt.b.b.a parama, boolean paramBoolean)
+  public static boolean b(c.a parama, boolean paramBoolean)
   {
     AppMethodBeat.i(72645);
-    a.dbf();
+    if (!e.aQh())
+    {
+      AppMethodBeat.o(72645);
+      return false;
+    }
     try
     {
-      i locali = i.YyX;
-      i = i.a(com.tencent.mm.util.b.a.Yyv, 0);
-      paramBoolean = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(parama, paramBoolean);
+      i locali = i.agtt;
+      i = i.a(b.a.agsx, 0);
+      paramBoolean = ((c)h.ax(c.class)).a(parama, paramBoolean);
       Log.i("MicroMsg.TenPaySdkAbTest", "isKindaBindCardEnable configval %s svrConfig %s isDebug %s isFlavorRed %s isFlavorPurple %s BuildInfo %s", new Object[] { Integer.valueOf(i), Boolean.valueOf(paramBoolean), Boolean.FALSE, Boolean.valueOf(BuildInfo.IS_FLAVOR_RED), Boolean.valueOf(BuildInfo.IS_FLAVOR_PURPLE), BuildInfo.KINDA_DEFAULT });
       if ("open".equals(BuildInfo.KINDA_DEFAULT))
       {
@@ -65,21 +72,21 @@ public final class b
     return false;
   }
   
-  public static b iie()
+  public static b jNX()
   {
     AppMethodBeat.i(72641);
-    if (YTx == null) {
-      YTx = new b();
+    if (agRB == null) {
+      agRB = new b();
     }
-    b localb = YTx;
+    b localb = agRB;
     AppMethodBeat.o(72641);
     return localb;
   }
   
-  public static boolean iif()
+  public static boolean jNY()
   {
     AppMethodBeat.i(72642);
-    if (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vHr, 0) == 1) {}
+    if (((c)h.ax(c.class)).a(c.a.yXs, 0) == 1) {}
     for (boolean bool = true;; bool = false)
     {
       Log.i("MicroMsg.TenPaySdkAbTest", "isPwdOpen2048 %s", new Object[] { Boolean.valueOf(bool) });
@@ -88,10 +95,10 @@ public final class b
     }
   }
   
-  public static boolean iig()
+  public static boolean jNZ()
   {
     AppMethodBeat.i(72643);
-    if (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vHt, 0) == 1) {}
+    if (((c)h.ax(c.class)).a(c.a.yXu, 0) == 1) {}
     for (boolean bool = true;; bool = false)
     {
       Log.i("MicroMsg.TenPaySdkAbTest", "isOfflineOpen2048 %s", new Object[] { Boolean.valueOf(bool) });
@@ -100,10 +107,10 @@ public final class b
     }
   }
   
-  public static boolean iih()
+  public static boolean jOa()
   {
     AppMethodBeat.i(72644);
-    if (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vHs, 0) == 1) {}
+    if (((c)h.ax(c.class)).a(c.a.yXt, 0) == 1) {}
     for (boolean bool = true;; bool = false)
     {
       Log.i("MicroMsg.TenPaySdkAbTest", "isCertOpen2048 %s", new Object[] { Boolean.valueOf(bool) });
@@ -111,10 +118,18 @@ public final class b
       return bool;
     }
   }
+  
+  public static boolean jOb()
+  {
+    AppMethodBeat.i(242119);
+    boolean bool = ((c)h.ax(c.class)).a(c.a.yXc, false);
+    AppMethodBeat.o(242119);
+    return bool;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.wallet_core.b
  * JD-Core Version:    0.7.0.1
  */

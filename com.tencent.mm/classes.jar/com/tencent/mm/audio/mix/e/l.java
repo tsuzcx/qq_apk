@@ -5,13 +5,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class l
   extends f
 {
-  private float fpF = 1.0F;
-  private boolean fpG = true;
+  private float htO = 1.0F;
+  private boolean htP = true;
   
-  protected final byte[] K(int paramInt1, int paramInt2, int paramInt3)
+  protected final byte[] aa(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(136880);
-    this.fpG = true;
+    this.htP = true;
     int j = 0;
     while (j < paramInt2)
     {
@@ -19,46 +19,46 @@ public final class l
       int k = 0;
       while (k < paramInt1)
       {
-        i += this.fpv[k][j];
+        i += this.htE[k][j];
         k += 1;
       }
-      boolean bool = this.fpG;
+      boolean bool = this.htP;
       for (;;)
       {
-        k = (int)(this.fpF * i);
-        if (k > this.fpA)
+        k = (int)(this.htO * i);
+        if (k > this.htJ)
         {
-          this.fpF = (this.fpA / i);
-          if (this.fpF < 1.0F) {
-            this.fpF -= (1.0F - this.fpF) / 16.0F;
+          this.htO = (this.htJ / i);
+          if (this.htO < 1.0F) {
+            this.htO -= (1.0F - this.htO) / 16.0F;
           }
           bool = false;
           i = k;
         }
         else
         {
-          if (k >= this.fpB) {
+          if (k >= this.htK) {
             break;
           }
-          this.fpF = (this.fpB / i);
-          if (this.fpF < 1.0F) {
-            this.fpF -= (1.0F - this.fpF) / 16.0F;
+          this.htO = (this.htK / i);
+          if (this.htO < 1.0F) {
+            this.htO -= (1.0F - this.htO) / 16.0F;
           }
           bool = false;
           i = k;
         }
       }
-      if ((bool) && (i < this.fpA) && (i > this.fpB))
+      if ((bool) && (i < this.htJ) && (i > this.htK))
       {
-        if (this.fpF < 1.0F) {
-          this.fpF += (1.0F - this.fpF) / 16.0F;
+        if (this.htO < 1.0F) {
+          this.htO += (1.0F - this.htO) / 16.0F;
         }
-        this.fpG = false;
+        this.htP = false;
       }
-      this.fpy[j] = kx(k);
+      this.htH[j] = oe(k);
       j += 1;
     }
-    byte[] arrayOfByte = cB(paramInt3, paramInt2);
+    byte[] arrayOfByte = dr(paramInt3, paramInt2);
     AppMethodBeat.o(136880);
     return arrayOfByte;
   }

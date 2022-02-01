@@ -1,54 +1,32 @@
 package com.tencent.mm.plugin.appbrand.ah;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.appbrand.v8.v.b;
-import com.tencent.mm.plugin.appbrand.ab;
-import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
-import com.tencent.mm.plugin.appbrand.be;
-import java.util.ArrayList;
+import com.tencent.mm.plugin.appbrand.ah.d.d;
 
-public class a
-  extends ab
+public abstract interface a
 {
-  public a(com.tencent.mm.plugin.appbrand.v paramv)
-  {
-    super(paramv);
-  }
+  public abstract void b(d paramd);
   
-  public final void a(ArrayList<v.b> paramArrayList, String paramString1, boolean paramBoolean, String paramString2)
+  public static enum a
   {
-    AppMethodBeat.i(237781);
-    super.a(paramArrayList, paramString1, paramBoolean, paramString2);
-    paramArrayList.add(new d.a(this.ntA.Rs() + "shared_buffer.js", com.tencent.mm.plugin.appbrand.ac.d.anc("wxa_library/shared_buffer.js"), this.ntA.getAppId(), this.ntA.bDU()));
-    paramArrayList.add(new d.a(this.ntA.Rs() + "android.js", com.tencent.mm.plugin.appbrand.ac.d.anc("wxa_library/android.js"), this.ntA.getAppId(), this.ntA.bDU()));
-    paramArrayList.add(new d.a(this.ntA.Rs() + "lazy_load.js", com.tencent.mm.plugin.appbrand.ac.d.anc("wxa_library/lazy_load.js"), this.ntA.getAppId(), this.ntA.bDU()));
-    paramArrayList.add(new d.a(this.ntA.Rs() + "WAWorker.js", this.ntA.bBP().acw("WAWorker.js"), this.ntA.getAppId(), this.ntA.bDU()));
-    paramString1 = be.b(this.ntA);
-    paramArrayList.add(new v.b(this.ntA.Rs() + "WASourceMap.js", paramString1));
-    paramString1 = be.getSysInfo();
-    paramArrayList.add(new v.b(this.ntA.Rs() + "sourcemapSysinfo", paramString1));
-    AppMethodBeat.o(237781);
-  }
-  
-  public final v.b acc(String paramString)
-  {
-    AppMethodBeat.i(147753);
-    paramString = new d.a(super.acc(paramString), be.a(this.ntA.getRuntime(), paramString, this.ntA.Rr()), this.ntA.getAppId(), this.ntA.bDU());
-    AppMethodBeat.o(147753);
-    return paramString;
-  }
-  
-  public com.tencent.mm.appbrand.v8.v bEe()
-  {
-    AppMethodBeat.i(147752);
-    d locald = new d(bEg());
-    AppMethodBeat.o(147752);
-    return locald;
+    static
+    {
+      AppMethodBeat.i(156600);
+      uua = new a("NOT_YET_CONNECTED", 0);
+      uub = new a("CONNECTING", 1);
+      uuc = new a("OPEN", 2);
+      uud = new a("CLOSING", 3);
+      uue = new a("CLOSED", 4);
+      uuf = new a[] { uua, uub, uuc, uud, uue };
+      AppMethodBeat.o(156600);
+    }
+    
+    private a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ah.a
  * JD-Core Version:    0.7.0.1
  */

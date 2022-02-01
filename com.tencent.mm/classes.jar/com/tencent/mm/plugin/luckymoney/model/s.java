@@ -3,41 +3,45 @@ package com.tencent.mm.plugin.luckymoney.model;
 import android.content.Context;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.am.c;
 import com.tencent.mm.contact.d;
 import com.tencent.mm.kernel.h;
+import com.tencent.mm.network.m;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.protocal.protobuf.daj;
+import com.tencent.mm.protocal.protobuf.gol;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 
 public final class s
 {
-  public static void eOD()
+  public static void fXa()
   {
-    AppMethodBeat.i(202742);
-    if ((int)((n)h.ae(n.class)).bbL().bwg("1@fackuser").jxt > 0) {
-      ((n)h.ae(n.class)).bbL().bwp("1@fackuser");
+    AppMethodBeat.i(283986);
+    if ((int)((n)h.ax(n.class)).bzA().bxu("1@fackuser").maN > 0) {
+      ((n)h.ax(n.class)).bzA().bxC("1@fackuser");
     }
-    as localas = new as();
-    localas.setUsername("1@fackuser");
-    localas.setNickname(MMApplicationContext.getContext().getString(a.i.lucky_money_preview_contact_name));
-    localas.axk();
-    localas.jxt = -99L;
-    localas.pv(3);
-    ((n)h.ae(n.class)).bbL().as(localas);
-    AppMethodBeat.o(202742);
+    au localau = new au();
+    localau.setUsername("1@fackuser");
+    localau.setNickname(MMApplicationContext.getContext().getString(a.i.lucky_money_preview_contact_name));
+    localau.aRK();
+    localau.maN = -99L;
+    localau.pu(3);
+    ((n)h.ax(n.class)).bzA().ay(localau);
+    AppMethodBeat.o(283986);
   }
   
-  public static void eOE()
+  public static void fXb()
   {
-    AppMethodBeat.i(202745);
-    Log.d("MicroMsg.LuckyMoneyEnvelopePreview", "before cursor: %s", new Object[] { Integer.valueOf(((n)h.ae(n.class)).eSe().aOF("1@fackuser").getCount()) });
-    ((n)h.ae(n.class)).eSe().aOO("1@fackuser");
-    Log.d("MicroMsg.LuckyMoneyEnvelopePreview", "after cursor: %s", new Object[] { Integer.valueOf(((n)h.ae(n.class)).eSe().aOF("1@fackuser").getCount()) });
-    AppMethodBeat.o(202745);
+    AppMethodBeat.i(283989);
+    Log.d("MicroMsg.LuckyMoneyEnvelopePreview", "before cursor: %s", new Object[] { Integer.valueOf(((n)h.ax(n.class)).gaZ().aLE("1@fackuser").getCount()) });
+    ((n)h.ax(n.class)).gaZ().aLO("1@fackuser");
+    Log.d("MicroMsg.LuckyMoneyEnvelopePreview", "after cursor: %s", new Object[] { Integer.valueOf(((n)h.ax(n.class)).gaZ().aLE("1@fackuser").getCount()) });
+    AppMethodBeat.o(283989);
   }
 }
 

@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:paddingLeft="@dimen/ct" android:paddingRight="@dimen/ct" android:layout_width="fill_parent" android:layout_height="@dimen/dc"
+<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/e23" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:baselineAligned="false" android:weightSum="1.0">
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/c6c" style="@style/ii" />
-        <RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent" style="@style/ij">
-            <RelativeLayout android:id="@id/c6e" android:paddingLeft="13.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toLeftOf="@id/c5u" android:layout_centerVertical="true">
-                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/c5a" android:layout_alignParentLeft="true" android:layout_centerInParent="true" android:layout_centerVertical="true" style="@style/in">
-                    <TextView android:id="@id/c6d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/cb" android:singleLine="true" android:layout_alignParentLeft="true" style="@style/ik" />
-                </RelativeLayout>
-                <TextView android:textColor="@color/Orange_100" android:id="@id/c5a" android:layout_marginBottom="@dimen/g" android:layout_alignParentRight="true" style="@style/io" />
-            </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:background="@null" android:paddingTop="@dimen/m2" android:paddingBottom="@dimen/m2" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:id="@id/i4m" android:text="@string/cet" style="@style/if" />
         </RelativeLayout>
+        <com.tencent.mm.ui.base.MMHorList android:id="@id/i4l" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     </LinearLayout>
-    <LinearLayout android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_alignParentBottom="true">
-        <View android:id="@id/bs8" android:background="@color/nm" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    </LinearLayout>
-</RelativeLayout>
+</merge>

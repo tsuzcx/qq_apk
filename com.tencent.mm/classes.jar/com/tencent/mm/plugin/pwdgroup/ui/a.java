@@ -18,7 +18,7 @@ import com.tencent.mm.R.g;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
 import com.tencent.mm.plugin.pwdgroup.b.a;
-import com.tencent.mm.protocal.protobuf.anh;
+import com.tencent.mm.protocal.protobuf.ara;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -26,59 +26,59 @@ import java.util.LinkedList;
 public final class a
   extends BaseAdapter
 {
-  private Animation DWh;
-  private Animation HjB;
-  private Animation HjC;
-  private HashMap<String, Boolean> HjD;
+  private Animation JNq;
+  private Animation Nho;
+  private Animation Nhp;
+  private HashMap<String, Boolean> Nhq;
   private Context mContext;
-  private LinkedList<anh> uOp;
+  private LinkedList<ara> xWZ;
   
   public a(Context paramContext)
   {
     AppMethodBeat.i(27672);
-    this.uOp = new LinkedList();
-    this.HjD = new HashMap();
+    this.xWZ = new LinkedList();
+    this.Nhq = new HashMap();
     this.mContext = paramContext;
-    this.DWh = AnimationUtils.loadAnimation(this.mContext, R.a.alpha_in);
-    this.HjC = AnimationUtils.loadAnimation(this.mContext, R.a.alpha_in);
-    this.HjB = AnimationUtils.loadAnimation(this.mContext, R.a.alpha_out);
-    this.DWh.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.HjC.setInterpolator(new AccelerateInterpolator());
-    this.HjB.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.DWh.setDuration(300L);
-    this.HjC.setDuration(1000L);
-    this.HjB.setDuration(1000L);
+    this.JNq = AnimationUtils.loadAnimation(this.mContext, R.a.alpha_in);
+    this.Nhp = AnimationUtils.loadAnimation(this.mContext, R.a.alpha_in);
+    this.Nho = AnimationUtils.loadAnimation(this.mContext, R.a.alpha_out);
+    this.JNq.setInterpolator(new AccelerateDecelerateInterpolator());
+    this.Nhp.setInterpolator(new AccelerateInterpolator());
+    this.Nho.setInterpolator(new AccelerateDecelerateInterpolator());
+    this.JNq.setDuration(300L);
+    this.Nhp.setDuration(1000L);
+    this.Nho.setDuration(1000L);
     AppMethodBeat.o(27672);
   }
   
-  private static String a(anh paramanh)
+  private static String a(ara paramara)
   {
     AppMethodBeat.i(27677);
-    if (paramanh == null)
+    if (paramara == null)
     {
       AppMethodBeat.o(27677);
       return "";
     }
-    if (Util.isNullOrNil(paramanh.UserName))
+    if (Util.isNullOrNil(paramara.UserName))
     {
-      paramanh = paramanh.Sxx;
+      paramara = paramara.Zyp;
       AppMethodBeat.o(27677);
-      return paramanh;
+      return paramara;
     }
-    paramanh = paramanh.UserName;
+    paramara = paramara.UserName;
     AppMethodBeat.o(27677);
-    return paramanh;
+    return paramara;
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(27674);
-    if (this.uOp == null)
+    if (this.xWZ == null)
     {
       AppMethodBeat.o(27674);
       return 1;
     }
-    int i = this.uOp.size();
+    int i = this.xWZ.size();
     AppMethodBeat.o(27674);
     return i + 1;
   }
@@ -86,17 +86,17 @@ public final class a
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(27675);
-    if (this.uOp == null)
+    if (this.xWZ == null)
     {
       AppMethodBeat.o(27675);
       return null;
     }
-    if (paramInt >= this.uOp.size())
+    if (paramInt >= this.xWZ.size())
     {
       AppMethodBeat.o(27675);
       return null;
     }
-    Object localObject = this.uOp.get(paramInt);
+    Object localObject = this.xWZ.get(paramInt);
     AppMethodBeat.o(27675);
     return localObject;
   }
@@ -112,39 +112,39 @@ public final class a
     Object localObject;
     if ((paramView == null) || (paramView.getTag() == null))
     {
-      paramView = LayoutInflater.from(this.mContext).inflate(R.i.egV, null);
+      paramView = LayoutInflater.from(this.mContext).inflate(R.i.gjR, null);
       paramViewGroup = new a(paramView);
       paramView.setTag(paramViewGroup);
-      localObject = (anh)getItem(paramInt);
+      localObject = (ara)getItem(paramInt);
       if (localObject != null)
       {
-        if (!Util.isNullOrNil(((anh)localObject).rWI)) {
+        if (!Util.isNullOrNil(((ara)localObject).vhX)) {
           break label262;
         }
-        paramViewGroup.jMg.setText(((anh)localObject).UserName);
+        paramViewGroup.mll.setText(((ara)localObject).UserName);
         label85:
-        if (Util.isNullOrNil(((anh)localObject).UserName)) {
+        if (Util.isNullOrNil(((ara)localObject).UserName)) {
           break label277;
         }
-        b.a.c(paramViewGroup.bwJ, ((anh)localObject).UserName);
+        b.a.g(paramViewGroup.dpM, ((ara)localObject).UserName);
       }
     }
     for (;;)
     {
-      localObject = a((anh)localObject);
+      localObject = a((ara)localObject);
       paramView.clearAnimation();
-      if ((this.HjD.containsKey(localObject)) && (!((Boolean)this.HjD.get(localObject)).booleanValue()))
+      if ((this.Nhq.containsKey(localObject)) && (!((Boolean)this.Nhq.get(localObject)).booleanValue()))
       {
-        paramView.startAnimation(this.DWh);
-        this.HjD.put(localObject, Boolean.TRUE);
+        paramView.startAnimation(this.JNq);
+        this.Nhq.put(localObject, Boolean.TRUE);
       }
       if (paramInt + 1 == getCount())
       {
-        paramViewGroup.jMg.setText("");
-        paramViewGroup.bwJ.setImageResource(R.g.dlX);
+        paramViewGroup.mll.setText("");
+        paramViewGroup.dpM.setImageResource(R.g.fmo);
         if (paramView != null)
         {
-          this.HjC.setAnimationListener(new Animation.AnimationListener()
+          this.Nhp.setAnimationListener(new Animation.AnimationListener()
           {
             public final void onAnimationEnd(Animation paramAnonymousAnimation)
             {
@@ -157,7 +157,7 @@ public final class a
             
             public final void onAnimationStart(Animation paramAnonymousAnimation) {}
           });
-          this.HjB.setAnimationListener(new Animation.AnimationListener()
+          this.Nho.setAnimationListener(new Animation.AnimationListener()
           {
             public final void onAnimationEnd(Animation paramAnonymousAnimation)
             {
@@ -170,7 +170,7 @@ public final class a
             
             public final void onAnimationStart(Animation paramAnonymousAnimation) {}
           });
-          paramView.startAnimation(this.HjC);
+          paramView.startAnimation(this.Nhp);
         }
       }
       AppMethodBeat.o(27676);
@@ -178,26 +178,26 @@ public final class a
       paramViewGroup = (a)paramView.getTag();
       break;
       label262:
-      paramViewGroup.jMg.setText(((anh)localObject).rWI);
+      paramViewGroup.mll.setText(((ara)localObject).vhX);
       break label85;
       label277:
-      b.a.c(paramViewGroup.bwJ, ((anh)localObject).Sxx);
+      b.a.g(paramViewGroup.dpM, ((ara)localObject).Zyp);
     }
   }
   
-  public final void setData(LinkedList<anh> paramLinkedList)
+  public final void setData(LinkedList<ara> paramLinkedList)
   {
     AppMethodBeat.i(27673);
-    this.uOp = paramLinkedList;
-    if ((this.uOp != null) && (this.uOp.size() > 0))
+    this.xWZ = paramLinkedList;
+    if ((this.xWZ != null) && (this.xWZ.size() > 0))
     {
-      int j = this.uOp.size();
+      int j = this.xWZ.size();
       int i = 0;
       while (i < j)
       {
-        paramLinkedList = a((anh)this.uOp.get(i));
-        if (!this.HjD.containsKey(paramLinkedList)) {
-          this.HjD.put(paramLinkedList, Boolean.FALSE);
+        paramLinkedList = a((ara)this.xWZ.get(i));
+        if (!this.Nhq.containsKey(paramLinkedList)) {
+          this.Nhq.put(paramLinkedList, Boolean.FALSE);
         }
         i += 1;
       }
@@ -208,21 +208,21 @@ public final class a
   
   final class a
   {
-    ImageView bwJ;
-    TextView jMg;
+    ImageView dpM;
+    TextView mll;
     
     public a(View paramView)
     {
       AppMethodBeat.i(27671);
-      this.bwJ = ((ImageView)paramView.findViewById(R.h.dGv));
-      this.jMg = ((TextView)paramView.findViewById(R.h.dGE));
+      this.dpM = ((ImageView)paramView.findViewById(R.h.fHB));
+      this.mll = ((TextView)paramView.findViewById(R.h.fHK));
       AppMethodBeat.o(27671);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.pwdgroup.ui.a
  * JD-Core Version:    0.7.0.1
  */

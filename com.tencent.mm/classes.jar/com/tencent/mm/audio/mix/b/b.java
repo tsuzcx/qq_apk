@@ -5,26 +5,26 @@ import java.util.ArrayList;
 
 public class b
 {
-  private static b fmP;
-  private ArrayList<com.tencent.mm.audio.mix.a.b> fmQ;
+  private static b hra;
+  private ArrayList<com.tencent.mm.audio.mix.a.b> hrb;
   
   private b()
   {
     AppMethodBeat.i(136727);
-    this.fmQ = new ArrayList();
+    this.hrb = new ArrayList();
     AppMethodBeat.o(136727);
   }
   
-  public static b adk()
+  public static b aFj()
   {
     AppMethodBeat.i(136728);
-    if (fmP == null) {}
+    if (hra == null) {}
     try
     {
-      if (fmP == null) {
-        fmP = new b();
+      if (hra == null) {
+        hra = new b();
       }
-      b localb = fmP;
+      b localb = hra;
       AppMethodBeat.o(136728);
       return localb;
     }
@@ -45,7 +45,7 @@ public class b
     //   7: aload_1
     //   8: ifnull +10 -> 18
     //   11: aload_1
-    //   12: getfield 44	com/tencent/mm/audio/mix/a/b:fmy	[B
+    //   12: getfield 44	com/tencent/mm/audio/mix/a/b:hqJ	[B
     //   15: ifnonnull +11 -> 26
     //   18: ldc 38
     //   20: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -59,18 +59,18 @@ public class b
     //   32: iconst_0
     //   33: putfield 51	com/tencent/mm/audio/mix/a/b:sampleRate	I
     //   36: aload_1
-    //   37: getfield 55	com/tencent/mm/audio/mix/a/b:fmz	Ljava/util/LinkedList;
+    //   37: getfield 55	com/tencent/mm/audio/mix/a/b:hqK	Ljava/util/LinkedList;
     //   40: invokevirtual 60	java/util/LinkedList:clear	()V
     //   43: aload_1
-    //   44: getfield 44	com/tencent/mm/audio/mix/a/b:fmy	[B
+    //   44: getfield 44	com/tencent/mm/audio/mix/a/b:hqJ	[B
     //   47: iconst_0
     //   48: aload_1
-    //   49: getfield 44	com/tencent/mm/audio/mix/a/b:fmy	[B
+    //   49: getfield 44	com/tencent/mm/audio/mix/a/b:hqJ	[B
     //   52: arraylength
     //   53: iconst_0
     //   54: invokestatic 66	java/util/Arrays:fill	([BIIB)V
     //   57: aload_0
-    //   58: getfield 25	com/tencent/mm/audio/mix/b/b:fmQ	Ljava/util/ArrayList;
+    //   58: getfield 25	com/tencent/mm/audio/mix/b/b:hrb	Ljava/util/ArrayList;
     //   61: iconst_0
     //   62: aload_1
     //   63: invokevirtual 70	java/util/ArrayList:add	(ILjava/lang/Object;)V
@@ -95,7 +95,7 @@ public class b
   }
   
   /* Error */
-  public final com.tencent.mm.audio.mix.a.b adl()
+  public final com.tencent.mm.audio.mix.a.b aFk()
   {
     // Byte code:
     //   0: aload_0
@@ -103,13 +103,13 @@ public class b
     //   2: ldc 73
     //   4: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 25	com/tencent/mm/audio/mix/b/b:fmQ	Ljava/util/ArrayList;
+    //   8: getfield 25	com/tencent/mm/audio/mix/b/b:hrb	Ljava/util/ArrayList;
     //   11: invokevirtual 77	java/util/ArrayList:size	()I
     //   14: ifle +32 -> 46
     //   17: aload_0
-    //   18: getfield 25	com/tencent/mm/audio/mix/b/b:fmQ	Ljava/util/ArrayList;
+    //   18: getfield 25	com/tencent/mm/audio/mix/b/b:hrb	Ljava/util/ArrayList;
     //   21: aload_0
-    //   22: getfield 25	com/tencent/mm/audio/mix/b/b:fmQ	Ljava/util/ArrayList;
+    //   22: getfield 25	com/tencent/mm/audio/mix/b/b:hrb	Ljava/util/ArrayList;
     //   25: invokevirtual 77	java/util/ArrayList:size	()I
     //   28: iconst_1
     //   29: isub

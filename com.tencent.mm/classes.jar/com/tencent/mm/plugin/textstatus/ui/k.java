@@ -1,108 +1,146 @@
 package com.tencent.mm.plugin.textstatus.ui;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.textstatus.proto.TextStatusExtInfo;
-import com.tencent.mm.plugin.textstatus.proto.TextStatusJumpInfo;
-import java.util.Iterator;
-import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.textstatus.a.h;
+import com.tencent.mm.plugin.textstatus.b.f;
+import com.tencent.mm.plugin.textstatus.conversation.g.d;
+import com.tencent.mm.plugin.textstatus.conversation.h.b;
+import com.tencent.mm.plugin.textstatus.h.f.i;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.sdk.storage.MStorageEventData;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.component.UIComponent;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"isBlur", "", "Lcom/tencent/mm/plugin/textstatus/proto/TextStatusExtInfo;", "isSame", "Lcom/tencent/mm/plugin/textstatus/proto/TextStatusJumpInfo;", "compareJumpInfo", "", "compareJumpInfos", "resetMedia", "", "reverseBlur", "setSendToSquare", "isSwitchOpen", "plugin-textstatus_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/textstatus/ui/TextStatusNotifyItemUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "msgBtnCallback", "Lkotlin/Function0;", "", "getMsgBtnCallback", "()Lkotlin/jvm/functions/Function0;", "setMsgBtnCallback", "(Lkotlin/jvm/functions/Function0;)V", "checkNotifyItem", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onNotifyChange", "event", "", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "onResume", "Companion", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class k
+  extends UIComponent
+  implements MStorage.IOnStorageChange
 {
-  public static final boolean B(List<? extends TextStatusJumpInfo> paramList1, List<? extends TextStatusJumpInfo> paramList2)
+  public static final k.a TzC;
+  kotlin.g.a.a<Integer> TzD;
+  
+  static
   {
-    AppMethodBeat.i(236756);
-    p.k(paramList1, "$this$isSame");
-    if (paramList2 == null)
-    {
-      AppMethodBeat.o(236756);
-      return false;
-    }
-    if (paramList1.size() != paramList2.size())
-    {
-      AppMethodBeat.o(236756);
-      return false;
-    }
-    paramList1 = ((Iterable)paramList1).iterator();
-    int i = 0;
-    while (paramList1.hasNext())
-    {
-      Object localObject = paramList1.next();
-      if (i < 0) {
-        j.iBO();
-      }
-      if (!a((TextStatusJumpInfo)localObject, (TextStatusJumpInfo)paramList2.get(i)))
-      {
-        AppMethodBeat.o(236756);
-        return false;
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(236756);
-    return true;
+    AppMethodBeat.i(291257);
+    TzC = new k.a((byte)0);
+    AppMethodBeat.o(291257);
   }
   
-  public static final boolean a(TextStatusExtInfo paramTextStatusExtInfo)
+  public k(AppCompatActivity paramAppCompatActivity)
   {
-    AppMethodBeat.i(236749);
-    p.k(paramTextStatusExtInfo, "$this$isBlur");
-    if ((paramTextStatusExtInfo.option & 1L) != 0L)
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(291243);
+    AppMethodBeat.o(291243);
+  }
+  
+  private static final boolean a(k paramk, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(291250);
+    s.u(paramk, "this$0");
+    paramMenuItem = TextStatusLikeListActivity.Tzn;
+    paramMenuItem = (Context)paramk.getActivity();
+    paramk = paramk.TzD;
+    int i;
+    if (paramk == null) {
+      i = 0;
+    }
+    for (;;)
     {
-      AppMethodBeat.o(236749);
+      s.u(paramMenuItem, "context");
+      paramk = new Intent(paramMenuItem, TextStatusLikeListActivity.class);
+      paramk.putExtra("scene", 3);
+      paramk.putExtra("reportEnterScene", i);
+      paramk = new com.tencent.mm.hellhoundlib.b.a().cG(paramk);
+      com.tencent.mm.hellhoundlib.a.a.b(paramMenuItem, paramk.aYi(), "com/tencent/mm/plugin/textstatus/ui/TextStatusLikeListActivity$Companion", "startForSelfMsg", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramMenuItem.startActivity((Intent)paramk.sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramMenuItem, "com/tencent/mm/plugin/textstatus/ui/TextStatusLikeListActivity$Companion", "startForSelfMsg", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(291250);
       return true;
+      paramk = (Integer)paramk.invoke();
+      if (paramk == null) {
+        i = 0;
+      } else {
+        i = paramk.intValue();
+      }
     }
-    AppMethodBeat.o(236749);
-    return false;
   }
   
-  public static final boolean a(TextStatusJumpInfo paramTextStatusJumpInfo1, TextStatusJumpInfo paramTextStatusJumpInfo2)
+  public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(236760);
-    p.k(paramTextStatusJumpInfo1, "$this$isSame");
-    if (paramTextStatusJumpInfo2 == null)
+    AppMethodBeat.i(291273);
+    super.onCreate(paramBundle);
+    Log.d("MicroMsg.TextStatus.TextStatusNotifyItemUIC", s.X("onCreate() called with: savedInstanceState = ", paramBundle));
+    paramBundle = getActivity();
+    if ((paramBundle instanceof MMActivity))
     {
-      AppMethodBeat.o(236760);
-      return false;
+      paramBundle = (MMActivity)paramBundle;
+      if (paramBundle != null) {
+        paramBundle.addTextOptionMenu(0, getString(a.h.finder_self_wx_msg), new k..ExternalSyntheticLambda0(this));
+      }
+      paramBundle = getActivity();
+      if (!(paramBundle instanceof MMActivity)) {
+        break label147;
+      }
     }
-    if ((p.h(paramTextStatusJumpInfo1.jumpType, paramTextStatusJumpInfo2.jumpType) ^ true))
+    label147:
+    for (paramBundle = (MMActivity)paramBundle;; paramBundle = null)
     {
-      AppMethodBeat.o(236760);
-      return false;
+      if (paramBundle != null)
+      {
+        d locald = d.Tjx;
+        paramBundle.showOptionMenu(d.hGA());
+      }
+      paramBundle = f.TjQ;
+      f.hGL().add((MStorage.IOnStorageChange)this);
+      paramBundle = f.TjQ;
+      f.hGN().add((MStorage.IOnStorageChange)this);
+      paramBundle = f.TjQ;
+      f.hGK().add((MStorage.IOnStorageChange)this);
+      AppMethodBeat.o(291273);
+      return;
+      paramBundle = null;
+      break;
     }
-    if ((p.h(paramTextStatusJumpInfo1.busiId, paramTextStatusJumpInfo2.busiId) ^ true))
-    {
-      AppMethodBeat.o(236760);
-      return false;
-    }
-    if ((p.h(paramTextStatusJumpInfo1.busiBuf, paramTextStatusJumpInfo2.busiBuf) ^ true))
-    {
-      AppMethodBeat.o(236760);
-      return false;
-    }
-    AppMethodBeat.o(236760);
-    return true;
   }
   
-  public static final void b(TextStatusExtInfo paramTextStatusExtInfo)
+  public final void onDestroy()
   {
-    AppMethodBeat.i(236752);
-    p.k(paramTextStatusExtInfo, "$this$resetMedia");
-    paramTextStatusExtInfo.mediaType = 0;
-    paramTextStatusExtInfo.mediaUrl = "";
-    paramTextStatusExtInfo.mediaThumbUrl = "";
-    paramTextStatusExtInfo.mediaAesKey = "";
-    paramTextStatusExtInfo.mediaThumbAesKey = "";
-    paramTextStatusExtInfo.mediaWidth = 0;
-    paramTextStatusExtInfo.mediaHeight = 0;
-    AppMethodBeat.o(236752);
+    AppMethodBeat.i(291284);
+    super.onDestroy();
+    f localf = f.TjQ;
+    f.hGL().remove((MStorage.IOnStorageChange)this);
+    localf = f.TjQ;
+    f.hGN().remove((MStorage.IOnStorageChange)this);
+    localf = f.TjQ;
+    f.hGK().remove((MStorage.IOnStorageChange)this);
+    AppMethodBeat.o(291284);
+  }
+  
+  public final void onNotifyChange(String paramString, MStorageEventData paramMStorageEventData)
+  {
+    AppMethodBeat.i(291290);
+    Log.i("MicroMsg.TextStatus.TextStatusNotifyItemUIC", "onNotifyChange");
+    AppMethodBeat.o(291290);
+  }
+  
+  public final void onResume()
+  {
+    AppMethodBeat.i(291277);
+    super.onResume();
+    AppMethodBeat.o(291277);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.ui.k
  * JD-Core Version:    0.7.0.1
  */

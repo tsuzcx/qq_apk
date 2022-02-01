@@ -1,49 +1,34 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
+import kotlin.Metadata;
+import kotlin.d.d;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/ChildHandleNode;", "Lkotlinx/coroutines/JobCancellingNode;", "Lkotlinx/coroutines/JobSupport;", "Lkotlinx/coroutines/ChildHandle;", "parent", "childJob", "Lkotlinx/coroutines/ChildJob;", "(Lkotlinx/coroutines/JobSupport;Lkotlinx/coroutines/ChildJob;)V", "childCancelled", "", "cause", "", "invoke", "", "toString", "", "kotlinx-coroutines-core"})
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/CancelledContinuation;", "Lkotlin/coroutines/Continuation;", "continuation", "", "cause", "", "handled", "<init>", "(Lkotlin/coroutines/Continuation;Ljava/lang/Throwable;Z)V", "makeResumed", "()Z", "kotlinx-coroutines-core", "Lkotlinx/coroutines/CompletedExceptionally;"}, k=1, mv={1, 5, 1}, xi=48)
 public final class t
-  extends ca<ce>
-  implements s
+  extends ae
 {
-  public final u abwm;
-  
-  public t(ce paramce, u paramu)
+  static
   {
-    super((by)paramce);
-    AppMethodBeat.i(118196);
-    this.abwm = paramu;
-    AppMethodBeat.o(118196);
+    AppMethodBeat.i(188762);
+    ajvs = AtomicIntegerFieldUpdater.newUpdater(t.class, "_resumed");
+    AppMethodBeat.o(188762);
   }
   
-  public final boolean B(Throwable paramThrowable)
+  public t(d<?> paramd, Throwable paramThrowable, boolean paramBoolean) {}
+  
+  public final boolean kBK()
   {
-    AppMethodBeat.i(118194);
-    boolean bool = ((ce)this.Gib).B(paramThrowable);
-    AppMethodBeat.o(118194);
+    AppMethodBeat.i(188768);
+    boolean bool = ajvs.compareAndSet(this, 0, 1);
+    AppMethodBeat.o(188768);
     return bool;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(118195);
-    String str = "ChildHandle[" + this.abwm + ']';
-    AppMethodBeat.o(118195);
-    return str;
-  }
-  
-  public final void y(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(118192);
-    this.abwm.a((cm)this.Gib);
-    AppMethodBeat.o(118192);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.t
  * JD-Core Version:    0.7.0.1
  */

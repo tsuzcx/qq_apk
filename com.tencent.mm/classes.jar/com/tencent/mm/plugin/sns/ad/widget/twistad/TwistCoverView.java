@@ -6,7 +6,6 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.Color;
-import android.hardware.SensorManager;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Message;
@@ -16,16 +15,20 @@ import android.view.LayoutInflater;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import androidx.lifecycle.h;
-import androidx.lifecycle.h.a;
-import androidx.lifecycle.k;
-import androidx.lifecycle.l;
+import androidx.lifecycle.j;
+import androidx.lifecycle.j.a;
+import androidx.lifecycle.p;
+import androidx.lifecycle.q;
+import androidx.lifecycle.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ad.d.r;
-import com.tencent.mm.plugin.sns.ad.d.r.a;
+import com.tencent.mm.plugin.sns.ad.d.b.a;
+import com.tencent.mm.plugin.sns.ad.d.b.a.a;
+import com.tencent.mm.plugin.sns.ad.d.b.d;
+import com.tencent.mm.plugin.sns.b.d;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
 import com.tencent.mm.plugin.sns.data.m;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
+import com.tencent.mm.plugin.sns.data.t;
 import com.tencent.mm.plugin.sns.storage.ADXml.k;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai;
 import com.tencent.mm.plugin.sns.storage.SnsInfo;
@@ -35,64 +38,64 @@ import org.json.JSONObject;
 
 public class TwistCoverView
   extends FrameLayout
-  implements k
+  implements p
 {
-  private TextView EUI;
-  private Handler JMp;
-  private boolean JNT;
-  private boolean JOa;
-  private TwistDegreeView JOf;
-  private ImageView JOg;
-  private volatile ADXml.k JOh;
-  private r JOi;
-  private boolean JOj;
-  private boolean JOk;
-  private boolean JOl;
-  private boolean JOm;
-  private boolean JOn;
-  private boolean JOo;
-  private boolean JOp;
-  private float JOq;
-  private r.a JOr;
-  private a JOs;
-  private SnsInfo Jws;
-  private AnimatorSet atV;
-  private TextView eM;
-  private int mScene;
+  private TextView KPG;
+  public SnsInfo PJQ;
+  public Handler PRJ;
+  private boolean QiI;
+  private boolean QiP;
+  private boolean QjA;
+  private boolean QjB;
+  private boolean QjC;
+  public boolean QjD;
+  private float QjE;
+  public a.a QjF;
+  private a QjG;
+  private TwistDegreeView Qjt;
+  private ImageView Qju;
+  public volatile ADXml.k Qjv;
+  public d Qjw;
+  private boolean Qjx;
+  public boolean Qjy;
+  private boolean Qjz;
+  private AnimatorSet cis;
+  private TextView fO;
+  public int mScene;
   
   public TwistCoverView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(230759);
-    this.JOj = false;
-    this.JOa = false;
-    this.JOk = false;
-    this.JNT = false;
-    this.JOl = true;
-    this.JOm = false;
-    this.JOn = false;
-    this.JOo = false;
-    this.JOp = false;
-    this.JMp = new Handler()
+    AppMethodBeat.i(310344);
+    this.Qjx = false;
+    this.QiP = false;
+    this.Qjy = false;
+    this.QiI = false;
+    this.Qjz = true;
+    this.QjA = false;
+    this.QjB = false;
+    this.QjC = false;
+    this.QjD = false;
+    this.PRJ = new Handler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
-        AppMethodBeat.i(236982);
+        AppMethodBeat.i(310353);
         switch (paramAnonymousMessage.what)
         {
         }
         for (;;)
         {
-          AppMethodBeat.o(236982);
+          AppMethodBeat.o(310353);
           return;
           TwistCoverView.a(TwistCoverView.this, paramAnonymousMessage.arg1);
-          AppMethodBeat.o(236982);
+          AppMethodBeat.o(310353);
           return;
           TwistCoverView.a(TwistCoverView.this, paramAnonymousMessage.arg1 / 1000.0F);
-          AppMethodBeat.o(236982);
+          AppMethodBeat.o(310353);
           return;
           TwistCoverView.a(TwistCoverView.this);
-          AppMethodBeat.o(236982);
+          AppMethodBeat.o(310353);
           return;
           if ((TwistCoverView.b(TwistCoverView.this) != null) && (!TwistCoverView.b(TwistCoverView.this).isRunning())) {
             TwistCoverView.b(TwistCoverView.this).start();
@@ -100,20 +103,21 @@ public class TwistCoverView
         }
       }
     };
-    this.JOq = 0.0F;
-    this.JOr = new r.a()
+    this.QjE = 0.0F;
+    this.QjF = new a.a()
     {
-      public final void bZ(float paramAnonymousFloat)
+      public final void df(float paramAnonymousFloat)
       {
-        AppMethodBeat.i(199686);
+        AppMethodBeat.i(310345);
         Object localObject = TwistCoverView.c(TwistCoverView.this);
         if (localObject == null)
         {
-          AppMethodBeat.o(199686);
+          Log.w("TwistCoverView", "onDegreeChange, twistInfo==null");
+          AppMethodBeat.o(310345);
           return;
         }
         float f = paramAnonymousFloat;
-        if (((ADXml.k)localObject).Kke)
+        if (((ADXml.k)localObject).QIc)
         {
           f = paramAnonymousFloat;
           if (paramAnonymousFloat > 0.0F) {
@@ -121,66 +125,68 @@ public class TwistCoverView
           }
         }
         paramAnonymousFloat = f;
-        if (!((ADXml.k)localObject).Kke)
+        if (!((ADXml.k)localObject).QIc)
         {
           paramAnonymousFloat = f;
           if (f < 0.0F) {
             paramAnonymousFloat = 0.0F;
           }
         }
-        f = Math.abs(paramAnonymousFloat / ((ADXml.k)localObject).Kkd);
+        f = Math.abs(paramAnonymousFloat / ((ADXml.k)localObject).QIb);
         if (Math.abs(paramAnonymousFloat) > TwistCoverView.d(TwistCoverView.this)) {
           TwistCoverView.b(TwistCoverView.this, Math.abs(paramAnonymousFloat));
         }
         localObject = Message.obtain(TwistCoverView.e(TwistCoverView.this), 2);
         ((Message)localObject).arg1 = ((int)(f * 1000.0F));
         ((Message)localObject).sendToTarget();
-        AppMethodBeat.o(199686);
+        AppMethodBeat.o(310345);
       }
       
-      public final void fKc()
+      public final void hab()
       {
-        AppMethodBeat.i(199687);
+        AppMethodBeat.i(310351);
         Message.obtain(TwistCoverView.e(TwistCoverView.this), 3).sendToTarget();
-        AppMethodBeat.o(199687);
+        AppMethodBeat.o(310351);
       }
     };
-    LayoutInflater.from(paramContext).inflate(i.g.sns_ad_twist_cover_layout, this, true);
-    this.JOf = ((TwistDegreeView)findViewById(i.f.twist_degree_view));
-    this.JOg = ((ImageView)findViewById(i.f.phone_icon));
-    this.eM = ((TextView)findViewById(i.f.title_txt));
-    this.EUI = ((TextView)findViewById(i.f.desc_txt));
+    LayoutInflater.from(paramContext).inflate(b.g.sns_ad_twist_cover_layout, this, true);
+    this.Qjt = ((TwistDegreeView)findViewById(b.f.twist_degree_view));
+    this.Qju = ((ImageView)findViewById(b.f.phone_icon));
+    this.fO = ((TextView)findViewById(b.f.title_txt));
+    this.KPG = ((TextView)findViewById(b.f.desc_txt));
+    m.q(this.fO, b.d.sns_ad_twist_cover_title_font_size);
+    m.q(this.KPG, b.d.sns_ad_twist_cover_desc_font_size);
     setBackgroundColor(Color.parseColor("#CC000000"));
-    if ((paramContext instanceof l)) {
-      ((l)paramContext).getLifecycle().a(this);
+    if ((paramContext instanceof q)) {
+      ((q)paramContext).getLifecycle().addObserver(this);
     }
-    AppMethodBeat.o(230759);
+    AppMethodBeat.o(310344);
   }
   
   private void a(int paramInt, boolean paramBoolean, float paramFloat)
   {
     int i = 1;
-    AppMethodBeat.i(230797);
-    if (this.Jws == null)
+    AppMethodBeat.i(310436);
+    if (this.PJQ == null)
     {
       Log.e("TwistCoverView_report", "reportTwistActionResult, snsInfo==null");
-      AppMethodBeat.o(230797);
+      AppMethodBeat.o(310436);
       return;
     }
-    Object localObject2 = this.Jws;
-    Object localObject1 = com.tencent.mm.plugin.sns.data.t.Qu(((SnsInfo)localObject2).field_snsId);
+    Object localObject2 = this.PJQ;
+    Object localObject1 = t.uA(((SnsInfo)localObject2).field_snsId);
     String str = ((SnsInfo)localObject2).getUxinfo();
     int j = this.mScene;
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
       Log.e("TwistCoverView_report", "reportTwistActionResult, snsId==null, source=".concat(String.valueOf(j)));
-      AppMethodBeat.o(230797);
+      AppMethodBeat.o(310436);
       return;
     }
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
       Log.e("TwistCoverView_report", "reportTwistActionResult, snsId==null, source=".concat(String.valueOf(j)));
-      AppMethodBeat.o(230797);
+      AppMethodBeat.o(310436);
       return;
     }
     try
@@ -196,14 +202,14 @@ public class TwistCoverView
       {
         ((JSONObject)localObject1).put("triggerByAcceleration", paramInt);
         ((JSONObject)localObject1).put("failedMaxDegree", Math.round(paramFloat));
-        if (!this.JOp) {
+        if (!this.QjD) {
           ((JSONObject)localObject1).put("sensorDisable", 1);
         }
         ((JSONObject)localObject2).put("extInfo", localObject1);
         localObject1 = ((JSONObject)localObject2).toString();
-        m.ks("timeline_twistad_twist_result", (String)localObject1);
+        m.lU("timeline_twistad_twist_result", (String)localObject1);
         Log.i("TwistCoverView_report", "reportTwistActionResult, content=".concat(String.valueOf(localObject1)));
-        AppMethodBeat.o(230797);
+        AppMethodBeat.o(310436);
         return;
       }
       return;
@@ -211,20 +217,20 @@ public class TwistCoverView
     catch (Exception localException)
     {
       Log.e("TwistCoverView_report", "reportTwistActionResult exp:" + localException.toString());
-      AppMethodBeat.o(230797);
+      AppMethodBeat.o(310436);
     }
   }
   
-  public static void b(ai paramai, int paramInt)
+  public static void a(ai paramai, int paramInt)
   {
-    AppMethodBeat.i(230795);
+    AppMethodBeat.i(310422);
     if (paramai == null)
     {
       Log.e("TwistCoverView_report", "reportGetTwistIdResult, landingPageData==null");
-      AppMethodBeat.o(230795);
+      AppMethodBeat.o(310422);
       return;
     }
-    Object localObject = paramai.getSnsId();
+    Object localObject = paramai.QLy;
     String str = paramai.uxInfo;
     int i = paramai.source;
     try
@@ -237,350 +243,279 @@ public class TwistCoverView
       ((JSONObject)localObject).put("result", paramInt);
       paramai.put("extInfo", localObject);
       paramai = paramai.toString();
-      m.ks("timeline_twistad_canvas_get_twist_cardId_result", paramai);
+      m.lU("timeline_twistad_canvas_get_twist_cardId_result", paramai);
       Log.i("TwistCoverView_report", "reportGetTwistIdResult, content=".concat(String.valueOf(paramai)));
-      AppMethodBeat.o(230795);
+      AppMethodBeat.o(310422);
       return;
     }
     catch (Exception paramai)
     {
       Log.e("TwistCoverView_report", "reportGetTwistIdResult exp:" + paramai.toString());
-      AppMethodBeat.o(230795);
+      AppMethodBeat.o(310422);
     }
   }
   
-  private void fMA()
+  private void clear()
   {
-    AppMethodBeat.i(230771);
-    StringBuilder localStringBuilder = new StringBuilder("resetTwistAngle, sensorMgr==null?");
-    if (this.JOi == null) {}
-    for (boolean bool = true;; bool = false)
+    AppMethodBeat.i(310352);
+    this.Qjy = false;
+    this.Qjv = null;
+    this.PJQ = null;
+    this.QjE = 0.0F;
+    this.mScene = -1;
+    setSensorEnabled(false);
+    hide();
+    this.PRJ.removeCallbacksAndMessages(null);
+    AppMethodBeat.o(310352);
+  }
+  
+  private boolean haa()
+  {
+    AppMethodBeat.i(310365);
+    if (this.Qjw != null)
     {
-      Log.i("TwistCoverView", bool);
-      if (this.JOi != null) {
-        this.JOi.reset();
+      d locald = this.Qjw;
+      if (locald.PPz != null)
+      {
+        boolean bool = locald.PPz.haa();
+        AppMethodBeat.o(310365);
+        return bool;
       }
-      this.JOf.fMI();
-      this.JOj = false;
-      this.JOq = 0.0F;
-      AppMethodBeat.o(230771);
-      return;
-    }
-  }
-  
-  private boolean fMB()
-  {
-    AppMethodBeat.i(230777);
-    if (this.JOi != null)
-    {
-      boolean bool = this.JOi.JzS;
-      AppMethodBeat.o(230777);
-      return bool;
+      AppMethodBeat.o(310365);
+      return false;
     }
     Log.i("TwistCoverView", "isSensorEnabled, sensorMgr==null");
-    AppMethodBeat.o(230777);
+    AppMethodBeat.o(310365);
     return false;
   }
   
-  private void fMC()
+  private void hdI()
   {
-    AppMethodBeat.i(230783);
-    if ((this.JOs != null) && (!this.JOj))
+    AppMethodBeat.i(310358);
+    StringBuilder localStringBuilder = new StringBuilder("resetTwistAngle, sensorMgr==null?");
+    if (this.Qjw == null) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.JOs.fMH();
-      this.JOj = true;
-    }
-    this.JOo = true;
-    AppMethodBeat.o(230783);
-  }
-  
-  private void fMD()
-  {
-    AppMethodBeat.i(230787);
-    this.JMp.removeMessages(4);
-    if ((this.atV != null) && (!this.atV.isRunning()))
-    {
-      Log.d("TwistCoverView", "startIconAnim");
-      this.atV.start();
-    }
-    AppMethodBeat.o(230787);
-  }
-  
-  private void fME()
-  {
-    AppMethodBeat.i(230788);
-    this.JMp.removeMessages(4);
-    if ((this.atV != null) && (this.atV.isRunning()))
-    {
-      Log.d("TwistCoverView", "pauseIconAnim");
-      this.atV.pause();
-    }
-    AppMethodBeat.o(230788);
-  }
-  
-  private void fMF()
-  {
-    AppMethodBeat.i(230790);
-    this.JMp.removeMessages(4);
-    StringBuilder localStringBuilder = new StringBuilder("resumeIconAnim, isUIPaused=").append(this.JNT).append(", anim.isPaused=");
-    if (this.atV == null) {}
-    for (boolean bool = false;; bool = this.atV.isPaused())
-    {
-      Log.d("TwistCoverView", bool);
-      if ((this.atV == null) || (this.JNT)) {
-        break label114;
+      Log.i("TwistCoverView", bool);
+      if (this.Qjw != null) {
+        this.Qjw.reset();
       }
-      if (!this.atV.isPaused()) {
-        break;
-      }
-      this.atV.resume();
-      AppMethodBeat.o(230790);
+      this.Qjt.hdP();
+      this.Qjx = false;
+      this.QjE = 0.0F;
+      AppMethodBeat.o(310358);
       return;
     }
-    fMD();
-    label114:
-    AppMethodBeat.o(230790);
   }
   
-  private void fMG()
+  private void hdJ()
   {
-    AppMethodBeat.i(230792);
-    if (this.atV != null)
+    AppMethodBeat.i(310381);
+    if ((this.QjG != null) && (!this.Qjx))
+    {
+      this.QjG.hdO();
+      this.Qjx = true;
+    }
+    this.QjC = true;
+    AppMethodBeat.o(310381);
+  }
+  
+  private void hdK()
+  {
+    AppMethodBeat.i(310389);
+    this.PRJ.removeMessages(4);
+    if ((this.cis != null) && (!this.cis.isRunning()))
+    {
+      Log.d("TwistCoverView", "startIconAnim");
+      this.cis.start();
+    }
+    AppMethodBeat.o(310389);
+  }
+  
+  private void hdM()
+  {
+    AppMethodBeat.i(310396);
+    this.PRJ.removeMessages(4);
+    StringBuilder localStringBuilder = new StringBuilder("resumeIconAnim, isUIPaused=").append(this.QiI).append(", anim.isPaused=");
+    if (this.cis == null) {}
+    for (boolean bool = false;; bool = this.cis.isPaused())
+    {
+      Log.d("TwistCoverView", bool);
+      if ((this.cis == null) || (this.QiI)) {
+        break label114;
+      }
+      if (!this.cis.isPaused()) {
+        break;
+      }
+      this.cis.resume();
+      AppMethodBeat.o(310396);
+      return;
+    }
+    hdK();
+    label114:
+    AppMethodBeat.o(310396);
+  }
+  
+  private void hdN()
+  {
+    AppMethodBeat.i(310408);
+    if (this.cis != null)
     {
       Log.d("TwistCoverView", "stopIconAnim");
-      this.JMp.removeMessages(4);
-      this.atV.removeAllListeners();
-      this.atV.end();
-      this.atV = null;
+      this.PRJ.removeMessages(4);
+      this.cis.removeAllListeners();
+      this.cis.end();
+      this.cis.setTarget(null);
+      this.cis = null;
     }
-    AppMethodBeat.o(230792);
+    AppMethodBeat.o(310408);
   }
   
   private void hide()
   {
-    AppMethodBeat.i(230781);
-    if (!this.JOa)
+    AppMethodBeat.i(310374);
+    if (!this.QiP)
     {
-      AppMethodBeat.o(230781);
+      AppMethodBeat.o(310374);
       return;
     }
-    this.JOa = false;
+    this.QiP = false;
     Log.i("TwistCoverView", "hide");
-    fMG();
+    hdN();
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this, "alpha", new float[] { 1.0F, 0.0F });
     localObjectAnimator.setDuration(250L);
     localObjectAnimator.addListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(265029);
+        AppMethodBeat.i(310343);
         TwistCoverView.this.setVisibility(8);
-        AppMethodBeat.o(265029);
+        AppMethodBeat.o(310343);
       }
     });
     localObjectAnimator.start();
-    AppMethodBeat.o(230781);
+    AppMethodBeat.o(310374);
   }
   
-  public final void Qp(long paramLong)
+  public final void hdL()
   {
-    AppMethodBeat.i(230762);
-    Message localMessage = Message.obtain(this.JMp, 1);
-    localMessage.arg1 = ((int)paramLong);
-    localMessage.sendToTarget();
-    AppMethodBeat.o(230762);
-  }
-  
-  public final void a(SnsInfo paramSnsInfo, ADXml.k paramk, int paramInt)
-  {
-    AppMethodBeat.i(230760);
-    this.JOh = paramk;
-    this.Jws = paramSnsInfo;
-    this.mScene = paramInt;
-    if ((this.JOh != null) && (paramSnsInfo != null))
+    AppMethodBeat.i(310548);
+    this.PRJ.removeMessages(4);
+    if ((this.cis != null) && (this.cis.isRunning()))
     {
-      Log.i("TwistCoverView", "initData, id=" + com.tencent.mm.plugin.sns.data.t.Qu(paramSnsInfo.field_snsId) + ", twistInfo=" + this.JOh + ", scene=" + paramInt);
-      paramSnsInfo = getContext();
-      if (this.JOi == null)
-      {
-        this.JOi = new r(paramSnsInfo);
-        this.JOi.JzZ = this.JOr;
-        if (this.JOi.JzR == null) {
-          break label171;
-        }
-      }
+      Log.d("TwistCoverView", "pauseIconAnim");
+      this.cis.pause();
     }
-    label171:
-    for (boolean bool = true;; bool = false)
-    {
-      this.JOp = bool;
-      Log.i("TwistCoverView", "initSensor, isSensorOk=" + this.JOp);
-      AppMethodBeat.o(230760);
-      return;
-    }
-  }
-  
-  public final void clear()
-  {
-    AppMethodBeat.i(230770);
-    this.JOk = false;
-    this.JOh = null;
-    this.Jws = null;
-    this.JOq = 0.0F;
-    this.mScene = -1;
-    setSensorEnabled(false);
-    hide();
-    this.JMp.removeCallbacksAndMessages(null);
-    AppMethodBeat.o(230770);
+    AppMethodBeat.o(310548);
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(230766);
+    AppMethodBeat.i(310519);
     super.onDetachedFromWindow();
     Log.i("TwistCoverView", "onDetachedFromWindow");
-    if ((this.JOn) && (!this.JOo)) {
-      a(2, false, this.JOq);
+    if ((this.QjB) && (!this.QjC)) {
+      a(2, false, this.QjE);
     }
     clear();
-    this.JOl = true;
-    this.JOm = false;
-    this.JOo = false;
-    AppMethodBeat.o(230766);
-  }
-  
-  public final void onPlayerPaused()
-  {
-    AppMethodBeat.i(230765);
-    if (this.JOh == null)
-    {
-      AppMethodBeat.o(230765);
-      return;
-    }
-    Log.i("TwistCoverView", "onPlayerPaused");
-    this.JOk = true;
-    setSensorEnabled(false);
-    fME();
-    this.JMp.removeMessages(1);
-    AppMethodBeat.o(230765);
+    this.Qjz = true;
+    this.QjA = false;
+    this.QjC = false;
+    AppMethodBeat.o(310519);
   }
   
   public void onStartTemporaryDetach()
   {
-    AppMethodBeat.i(230768);
+    AppMethodBeat.i(310523);
     super.onStartTemporaryDetach();
     if (Build.VERSION.SDK_INT < 24)
     {
       Log.i("TwistCoverView", "onStartTemporaryDetach");
       clear();
     }
-    AppMethodBeat.o(230768);
+    AppMethodBeat.o(310523);
   }
   
-  @androidx.lifecycle.t(jl=h.a.ON_PAUSE)
+  @z(Ho=j.a.ON_PAUSE)
   public void onUIPause()
   {
-    AppMethodBeat.i(230764);
-    if (this.JOh == null)
+    AppMethodBeat.i(310512);
+    if (this.Qjv == null)
     {
-      AppMethodBeat.o(230764);
+      AppMethodBeat.o(310512);
       return;
     }
     Log.i("TwistCoverView", "onUIPause");
-    this.JNT = true;
+    this.QiI = true;
     setSensorEnabled(false);
-    if (this.JOa) {
-      fME();
+    if (this.QiP) {
+      hdL();
     }
-    AppMethodBeat.o(230764);
+    AppMethodBeat.o(310512);
   }
   
-  @androidx.lifecycle.t(jl=h.a.ON_RESUME)
+  @z(Ho=j.a.ON_RESUME)
   public void onUIResume()
   {
-    AppMethodBeat.i(230763);
-    if (this.JOh == null)
+    AppMethodBeat.i(310505);
+    if (this.Qjv == null)
     {
-      AppMethodBeat.o(230763);
+      AppMethodBeat.o(310505);
       return;
     }
-    Log.i("TwistCoverView", "onUIResume, isTwistActionCalled=" + this.JOj);
-    this.JNT = false;
-    if ((this.JOj) && (getVisibility() == 0)) {
-      fMF();
+    Log.i("TwistCoverView", "onUIResume, isTwistActionCalled=" + this.Qjx);
+    this.QiI = false;
+    if ((this.Qjx) && (getVisibility() == 0)) {
+      hdM();
     }
-    fMA();
-    AppMethodBeat.o(230763);
+    hdI();
+    AppMethodBeat.o(310505);
   }
   
   public void setSensorEnabled(boolean paramBoolean)
   {
-    boolean bool = true;
-    AppMethodBeat.i(230775);
-    if ((this.JOh == null) && (paramBoolean))
+    AppMethodBeat.i(310533);
+    if ((this.Qjv == null) && (paramBoolean))
     {
-      AppMethodBeat.o(230775);
+      AppMethodBeat.o(310533);
       return;
     }
-    if (((this.JOk) || (this.JNT)) && (paramBoolean))
+    if (((this.Qjy) || (this.QiI)) && (paramBoolean))
     {
-      Log.e("TwistCoverView", "setSensorEnabled to true when isUIPaused=" + this.JNT + ", isPlayerPaused=" + this.JOk);
-      AppMethodBeat.o(230775);
+      Log.e("TwistCoverView", "setSensorEnabled to true when isUIPaused=" + this.QiI + ", isPlayerPaused=" + this.Qjy);
+      AppMethodBeat.o(310533);
       return;
     }
     Object localObject = new StringBuilder("setSensorEnabled, enabled=").append(paramBoolean).append(", sensorMgr==null?");
-    if (this.JOi == null) {}
-    for (;;)
+    if (this.Qjw == null) {}
+    for (boolean bool = true;; bool = false)
     {
       Log.i("TwistCoverView", bool);
-      if (this.JOi != null)
+      if (this.Qjw != null)
       {
-        localObject = this.JOi;
-        if (((r)localObject).JzR != null)
-        {
-          if (!paramBoolean) {
-            break;
-          }
-          try
-          {
-            if (((r)localObject).JzS) {
-              break label243;
-            }
-            ((r)localObject).JzV = 0L;
-            ((r)localObject).mSensorManager.registerListener(((r)localObject).JzY, ((r)localObject).JzR, 1);
-            ((r)localObject).JzS = true;
-            AppMethodBeat.o(230775);
-            return;
-          }
-          catch (Throwable localThrowable)
-          {
-            new StringBuilder("setEnabled exp=").append(localThrowable.toString());
-          }
+        localObject = this.Qjw;
+        if (((d)localObject).PPz != null) {
+          ((d)localObject).PPz.setEnabled(paramBoolean);
         }
       }
-      AppMethodBeat.o(230775);
+      AppMethodBeat.o(310533);
       return;
-      bool = false;
     }
-    localThrowable.mSensorManager.unregisterListener(localThrowable.JzY);
-    localThrowable.JzS = false;
-    label243:
-    AppMethodBeat.o(230775);
   }
   
   public void setTwistActionListener(a parama)
   {
-    this.JOs = parama;
+    this.QjG = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void fMH();
+    public abstract void hdO();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.widget.twistad.TwistCoverView
  * JD-Core Version:    0.7.0.1
  */

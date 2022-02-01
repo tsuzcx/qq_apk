@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.findersdk;
 
 public final class c$a
 {
-  public static final int app_waiting = 2131756093;
-  public static final int welcome_i_know = 2131769376;
+  public static final int app_waiting = 2131756164;
+  public static final int finder_draft_max_count = 2131760385;
+  public static final int welcome_i_know = 2131771923;
 }
 
 

@@ -5,7 +5,7 @@ import java.io.Closeable;
 public abstract interface e
   extends Closeable
 {
-  public abstract int bhy();
+  public abstract int bFo();
   
   public abstract long getSize();
   
@@ -17,7 +17,7 @@ public abstract interface e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.al.e
  * JD-Core Version:    0.7.0.1
  */

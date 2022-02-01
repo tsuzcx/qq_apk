@@ -15,18 +15,18 @@ import com.tencent.mm.plugin.wenote.model.nativenote.manager.k;
 public final class f
   extends a
 {
-  private TextView QKj;
-  private View QKk;
-  public LinearLayout QKl;
+  private TextView XDI;
+  private View XDJ;
+  public LinearLayout XDK;
   
   public f(View paramView, k paramk)
   {
     super(paramView, paramk);
     AppMethodBeat.i(30858);
-    this.QKl = ((LinearLayout)paramView.findViewById(R.h.dPU));
-    this.QKl.setVisibility(0);
-    this.QKj = ((TextView)paramView.findViewById(R.h.dPW));
-    this.QKk = paramView.findViewById(R.h.dPV);
+    this.XDK = ((LinearLayout)paramView.findViewById(R.h.fRZ));
+    this.XDK.setVisibility(0);
+    this.XDI = ((TextView)paramView.findViewById(R.h.fSb));
+    this.XDJ = paramView.findViewById(R.h.fSa);
     AppMethodBeat.o(30858);
   }
   
@@ -38,40 +38,40 @@ public final class f
       AppMethodBeat.o(30859);
       return;
     }
-    if (this.QIM.QHZ == 3)
+    if (this.XCl.XBx == 3)
     {
-      this.QKl.setVisibility(8);
+      this.XDK.setVisibility(8);
       AppMethodBeat.o(30859);
       return;
     }
-    this.QKl.setVisibility(0);
+    this.XDK.setVisibility(0);
     paramc = (e)paramc;
-    if (paramc.QHe <= 0L)
+    if (paramc.XAC <= 0L)
     {
       AppMethodBeat.o(30859);
       return;
     }
-    Object localObject = this.QKj.getContext();
-    long l = paramc.QHe;
+    Object localObject = this.XDI.getContext();
+    long l = paramc.XAC;
     if (l < 3600000L) {}
     for (paramc = "";; paramc = DateFormat.format(((Context)localObject).getString(R.l.favorite_longdate), l))
     {
-      localObject = this.QKj.getContext().getString(R.l.eMP);
+      localObject = this.XDI.getContext().getString(R.l.gPb);
       paramc = (String)localObject + " " + paramc;
-      this.QKj.setText(paramc);
+      this.XDI.setText(paramc);
       AppMethodBeat.o(30859);
       return;
     }
   }
   
-  public final int cRD()
+  public final int dvW()
   {
     return -3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.a.f
  * JD-Core Version:    0.7.0.1
  */

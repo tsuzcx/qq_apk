@@ -2,180 +2,107 @@ package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public class dhe
-  extends com.tencent.mm.cd.a
+public final class dhe
+  extends com.tencent.mm.bx.a
 {
-  public String CMP;
-  public String GtP;
-  public double RVy;
-  public double RVz;
-  public String Srf;
-  public String Srg;
-  public String TOk;
-  public String TOl;
-  public String TOm;
-  public String TOn;
-  public String mVA;
-  public String mVz;
+  public String UserName;
+  public String ZhO;
+  public String ZhP;
+  public String aant;
+  public String vhX;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(56257);
+    AppMethodBeat.i(138178);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.CMP != null) {
-        paramVarArgs.f(1, this.CMP);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.UserName != null) {
+        paramVarArgs.g(1, this.UserName);
       }
-      if (this.TOk != null) {
-        paramVarArgs.f(2, this.TOk);
+      if (this.vhX != null) {
+        paramVarArgs.g(2, this.vhX);
       }
-      paramVarArgs.e(3, this.RVy);
-      paramVarArgs.e(4, this.RVz);
-      if (this.TOl != null) {
-        paramVarArgs.f(5, this.TOl);
+      if (this.ZhO != null) {
+        paramVarArgs.g(3, this.ZhO);
       }
-      if (this.GtP != null) {
-        paramVarArgs.f(6, this.GtP);
+      if (this.ZhP != null) {
+        paramVarArgs.g(4, this.ZhP);
       }
-      if (this.TOm != null) {
-        paramVarArgs.f(7, this.TOm);
+      if (this.aant != null) {
+        paramVarArgs.g(5, this.aant);
       }
-      if (this.mVz != null) {
-        paramVarArgs.f(8, this.mVz);
-      }
-      if (this.mVA != null) {
-        paramVarArgs.f(9, this.mVA);
-      }
-      if (this.Srf != null) {
-        paramVarArgs.f(10, this.Srf);
-      }
-      if (this.Srg != null) {
-        paramVarArgs.f(11, this.Srg);
-      }
-      if (this.TOn != null) {
-        paramVarArgs.f(12, this.TOn);
-      }
-      AppMethodBeat.o(56257);
+      AppMethodBeat.o(138178);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.CMP == null) {
-        break label860;
+      if (this.UserName == null) {
+        break label450;
       }
     }
-    label860:
-    for (paramInt = g.a.a.b.b.a.g(1, this.CMP) + 0;; paramInt = 0)
+    label450:
+    for (int i = i.a.a.b.b.a.h(1, this.UserName) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.TOk != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.TOk);
-      }
-      i = i + (g.a.a.b.b.a.gL(3) + 8) + (g.a.a.b.b.a.gL(4) + 8);
       paramInt = i;
-      if (this.TOl != null) {
-        paramInt = i + g.a.a.b.b.a.g(5, this.TOl);
+      if (this.vhX != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.vhX);
       }
       i = paramInt;
-      if (this.GtP != null) {
-        i = paramInt + g.a.a.b.b.a.g(6, this.GtP);
+      if (this.ZhO != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.ZhO);
       }
       paramInt = i;
-      if (this.TOm != null) {
-        paramInt = i + g.a.a.b.b.a.g(7, this.TOm);
+      if (this.ZhP != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.ZhP);
       }
       i = paramInt;
-      if (this.mVz != null) {
-        i = paramInt + g.a.a.b.b.a.g(8, this.mVz);
+      if (this.aant != null) {
+        i = paramInt + i.a.a.b.b.a.h(5, this.aant);
       }
-      paramInt = i;
-      if (this.mVA != null) {
-        paramInt = i + g.a.a.b.b.a.g(9, this.mVA);
-      }
-      i = paramInt;
-      if (this.Srf != null) {
-        i = paramInt + g.a.a.b.b.a.g(10, this.Srf);
-      }
-      paramInt = i;
-      if (this.Srg != null) {
-        paramInt = i + g.a.a.b.b.a.g(11, this.Srg);
-      }
-      i = paramInt;
-      if (this.TOn != null) {
-        i = paramInt + g.a.a.b.b.a.g(12, this.TOn);
-      }
-      AppMethodBeat.o(56257);
+      AppMethodBeat.o(138178);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(56257);
+        AppMethodBeat.o(138178);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         dhe localdhe = (dhe)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(56257);
+          AppMethodBeat.o(138178);
           return -1;
         case 1: 
-          localdhe.CMP = locala.abFh.readString();
-          AppMethodBeat.o(56257);
+          localdhe.UserName = locala.ajGk.readString();
+          AppMethodBeat.o(138178);
           return 0;
         case 2: 
-          localdhe.TOk = locala.abFh.readString();
-          AppMethodBeat.o(56257);
+          localdhe.vhX = locala.ajGk.readString();
+          AppMethodBeat.o(138178);
           return 0;
         case 3: 
-          localdhe.RVy = Double.longBitsToDouble(locala.abFh.AP());
-          AppMethodBeat.o(56257);
+          localdhe.ZhO = locala.ajGk.readString();
+          AppMethodBeat.o(138178);
           return 0;
         case 4: 
-          localdhe.RVz = Double.longBitsToDouble(locala.abFh.AP());
-          AppMethodBeat.o(56257);
-          return 0;
-        case 5: 
-          localdhe.TOl = locala.abFh.readString();
-          AppMethodBeat.o(56257);
-          return 0;
-        case 6: 
-          localdhe.GtP = locala.abFh.readString();
-          AppMethodBeat.o(56257);
-          return 0;
-        case 7: 
-          localdhe.TOm = locala.abFh.readString();
-          AppMethodBeat.o(56257);
-          return 0;
-        case 8: 
-          localdhe.mVz = locala.abFh.readString();
-          AppMethodBeat.o(56257);
-          return 0;
-        case 9: 
-          localdhe.mVA = locala.abFh.readString();
-          AppMethodBeat.o(56257);
-          return 0;
-        case 10: 
-          localdhe.Srf = locala.abFh.readString();
-          AppMethodBeat.o(56257);
-          return 0;
-        case 11: 
-          localdhe.Srg = locala.abFh.readString();
-          AppMethodBeat.o(56257);
+          localdhe.ZhP = locala.ajGk.readString();
+          AppMethodBeat.o(138178);
           return 0;
         }
-        localdhe.TOn = locala.abFh.readString();
-        AppMethodBeat.o(56257);
+        localdhe.aant = locala.ajGk.readString();
+        AppMethodBeat.o(138178);
         return 0;
       }
-      AppMethodBeat.o(56257);
+      AppMethodBeat.o(138178);
       return -1;
     }
   }

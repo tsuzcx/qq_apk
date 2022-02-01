@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.wepkg.event;
 
 public class b
 {
-  public void exa() {}
+  public void fEX() {}
   
-  public void exb() {}
+  public void fEY() {}
   
-  public void si(boolean paramBoolean) {}
+  public void wo(boolean paramBoolean) {}
 }
 
 

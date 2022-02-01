@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.appbrand.launching;
 import android.content.Intent;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
-import com.tencent.mm.plugin.appbrand.au.i;
+import com.tencent.mm.br.c;
+import com.tencent.mm.plugin.appbrand.ba.i;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 final class AppBrandPrepareTask$a$2$1
@@ -15,12 +15,12 @@ final class AppBrandPrepareTask$a$2$1
   public final void run()
   {
     AppMethodBeat.i(47093);
-    Toast.makeText(MMApplicationContext.getContext(), au.i.app_brand_account_release_error, 0).show();
+    Toast.makeText(MMApplicationContext.getContext(), ba.i.app_brand_account_release_error, 0).show();
     try
     {
       Intent localIntent = new Intent();
       localIntent.addFlags(268435456).addFlags(67108864);
-      c.f(MMApplicationContext.getContext(), "com.tencent.mm.ui.LauncherUI", localIntent);
+      c.g(MMApplicationContext.getContext(), "com.tencent.mm.ui.LauncherUI", localIntent);
       AppMethodBeat.o(47093);
       return;
     }

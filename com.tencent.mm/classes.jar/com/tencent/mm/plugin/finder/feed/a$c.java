@@ -4,71 +4,49 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.model.bu;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.model.cc;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ad;
+import com.tencent.mm.ui.af;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
 import java.util.ArrayList;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/FinderAtTimelineUIContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$ViewCallback;", "context", "Lcom/tencent/mm/ui/MMActivity;", "presenter", "Lcom/tencent/mm/plugin/finder/feed/FinderAtTimelineUIContract$Presenter;", "scene", "", "commentScene", "isAutoRefresh", "", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/plugin/finder/feed/FinderAtTimelineUIContract$Presenter;IIZ)V", "()Z", "getEmptyView", "Landroid/view/View;", "initRecyclerView", "", "data", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "onLoadInitDataError", "errCode", "errMsg", "", "onLoadMoreError", "onRefreshError", "onViewPrepared", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/FinderAtTimelineUIContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$ViewCallback;", "context", "Lcom/tencent/mm/ui/MMActivity;", "presenter", "Lcom/tencent/mm/plugin/finder/feed/FinderAtTimelineUIContract$Presenter;", "scene", "", "commentScene", "isAutoRefresh", "", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/plugin/finder/feed/FinderAtTimelineUIContract$Presenter;IIZ)V", "()Z", "getEmptyView", "Landroid/view/View;", "initRecyclerView", "", "data", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "onLoadInitDataError", "errCode", "errMsg", "", "onLoadMoreError", "onRefreshError", "onViewPrepared", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a$c
-  extends aa.b
+  extends ae.b
 {
-  private final boolean xvi;
+  private final boolean ASS;
   
   public a$c(MMActivity paramMMActivity, a.b paramb, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    super(paramMMActivity, (aa.a)paramb, paramInt1, paramInt2);
-    AppMethodBeat.i(287894);
-    this.xvi = paramBoolean;
-    AppMethodBeat.o(287894);
+    super(paramMMActivity, (ae.a)paramb, paramInt1, paramInt2);
+    AppMethodBeat.i(362558);
+    this.ASS = paramBoolean;
+    AppMethodBeat.o(362558);
   }
   
-  public final void aa(ArrayList<bu> paramArrayList)
+  public final void af(ArrayList<cc> paramArrayList)
   {
-    AppMethodBeat.i(287893);
-    p.k(paramArrayList, "data");
-    super.aa(paramArrayList);
-    paramArrayList = this.xvJ;
-    Object localObject = ad.kS((Context)this.iXq);
-    if (dsA()) {}
-    for (int i = b.g.load_more_footer_dark;; i = b.g.load_more_footer)
-    {
-      localObject = ((LayoutInflater)localObject).inflate(i, null);
-      p.j(localObject, "MMLayoutInflater.getInfl…t.load_more_footer, null)");
-      paramArrayList.setLoadMoreFooter((View)localObject);
-      AppMethodBeat.o(287893);
-      return;
-    }
+    AppMethodBeat.i(362572);
+    s.u(paramArrayList, "data");
+    super.af(paramArrayList);
+    paramArrayList = this.ATx;
+    View localView = af.mU((Context)this.lzt).inflate(e.f.load_more_footer_dark, null);
+    s.s(localView, "getInflater(context).inf…d_more_footer_dark, null)");
+    paramArrayList.setLoadMoreFooter(localView);
+    AppMethodBeat.o(362572);
   }
   
-  public final void dsm()
+  public final void ebi()
   {
-    AppMethodBeat.i(287892);
-    Object localObject = this.xvP;
-    if (localObject == null)
-    {
-      localObject = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.feed.FinderLoaderFeedUIContract.Presenter");
-      AppMethodBeat.o(287892);
-      throw ((Throwable)localObject);
+    AppMethodBeat.i(362562);
+    ((ae.a)this.ATv).dUL();
+    if (this.ASS) {
+      ((ae.a)this.ATv).requestRefresh();
     }
-    ((aa.a)localObject).dsF();
-    if (this.xvi)
-    {
-      localObject = this.xvP;
-      if (localObject == null)
-      {
-        localObject = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.feed.FinderLoaderFeedUIContract.Presenter");
-        AppMethodBeat.o(287892);
-        throw ((Throwable)localObject);
-      }
-      ((aa.a)localObject).requestRefresh();
-    }
-    AppMethodBeat.o(287892);
+    AppMethodBeat.o(362562);
   }
   
   public final View getEmptyView()

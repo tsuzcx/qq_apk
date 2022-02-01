@@ -5,48 +5,48 @@ import com.tencent.luggage.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.game.api.d;
-import com.tencent.mm.plugin.game.luggage.g.i;
+import com.tencent.mm.plugin.game.luggage.page.GameWebPage;
 import com.tencent.mm.plugin.webview.luggage.c.c;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bs;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv.a;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bw;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class e
-  extends bs<i>
+  extends bw<GameWebPage>
 {
-  public final void a(Context paramContext, String paramString, br.a parama)
+  public final void a(Context paramContext, String paramString, bv.a parama)
   {
     AppMethodBeat.i(83054);
-    paramContext = c.agO(paramString);
+    paramContext = c.ZL(paramString);
     if (paramContext == null)
     {
-      parama.i("empty_postId", null);
+      parama.j("empty_postId", null);
       AppMethodBeat.o(83054);
       return;
     }
     if (paramContext.optBoolean("cancelAll")) {
-      ((d)h.ae(d.class)).c(null, true);
+      ((d)h.ax(d.class)).c(null, true);
     }
     for (;;)
     {
-      parama.i(null, null);
+      parama.j(null, null);
       AppMethodBeat.o(83054);
       return;
       paramContext = paramContext.optJSONArray("postIdList");
       if ((paramContext == null) || (paramContext.length() == 0))
       {
-        parama.i("empty_postId", null);
+        parama.j("empty_postId", null);
         AppMethodBeat.o(83054);
         return;
       }
-      ((d)h.ae(d.class)).c(paramContext, false);
+      ((d)h.ax(d.class)).c(paramContext, false);
     }
   }
   
-  public final void b(b<i>.a paramb) {}
+  public final void b(b<GameWebPage>.a paramb) {}
   
-  public final int cDj()
+  public final int dgI()
   {
     return 1;
   }

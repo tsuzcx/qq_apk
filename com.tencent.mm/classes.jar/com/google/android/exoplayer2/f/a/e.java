@@ -7,19 +7,19 @@ import java.util.LinkedList;
 public final class e
   extends i
 {
-  private final d blg;
+  private final d dfc;
   
   public e(d paramd)
   {
-    this.blg = paramd;
+    this.dfc = paramd;
   }
   
   public final void release()
   {
     AppMethodBeat.i(92784);
-    d locald = this.blg;
+    d locald = this.dfc;
     clear();
-    locald.bld.add(this);
+    locald.deZ.add(this);
     AppMethodBeat.o(92784);
   }
 }

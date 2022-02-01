@@ -9,30 +9,17 @@ import com.google.android.gms.common.internal.Objects;
 import com.google.android.gms.common.internal.ReflectedParcelable;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Arrays;
 
-@SafeParcelable.Class(creator="AssetCreator")
-@SafeParcelable.Reserved({1})
-@VisibleForTesting
 public class Asset
   extends AbstractSafeParcelable
   implements ReflectedParcelable
 {
   public static final Parcelable.Creator<Asset> CREATOR;
-  @SafeParcelable.Field(getter="getData", id=2)
   private byte[] data;
-  @SafeParcelable.Field(id=5)
   private Uri uri;
-  @SafeParcelable.Field(getter="getDigest", id=3)
   private String zze;
-  @SafeParcelable.Field(id=4)
   private ParcelFileDescriptor zzf;
   
   static
@@ -42,8 +29,7 @@ public class Asset
     AppMethodBeat.o(100776);
   }
   
-  @SafeParcelable.Constructor
-  Asset(@SafeParcelable.Param(id=2) byte[] paramArrayOfByte, @SafeParcelable.Param(id=3) String paramString, @SafeParcelable.Param(id=4) ParcelFileDescriptor paramParcelFileDescriptor, @SafeParcelable.Param(id=5) Uri paramUri)
+  Asset(byte[] paramArrayOfByte, String paramString, ParcelFileDescriptor paramParcelFileDescriptor, Uri paramUri)
   {
     this.data = paramArrayOfByte;
     this.zze = paramString;
@@ -51,7 +37,6 @@ public class Asset
     this.uri = paramUri;
   }
   
-  @VisibleForTesting
   public static Asset createFromBytes(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(100770);
@@ -61,7 +46,6 @@ public class Asset
     return paramArrayOfByte;
   }
   
-  @VisibleForTesting
   public static Asset createFromFd(ParcelFileDescriptor paramParcelFileDescriptor)
   {
     AppMethodBeat.i(100771);
@@ -80,7 +64,6 @@ public class Asset
     return paramString;
   }
   
-  @VisibleForTesting
   public static Asset createFromUri(Uri paramUri)
   {
     AppMethodBeat.i(100772);
@@ -192,7 +175,7 @@ public class Asset
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.Asset
  * JD-Core Version:    0.7.0.1
  */

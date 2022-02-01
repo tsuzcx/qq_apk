@@ -4,79 +4,78 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class zl
-  extends com.tencent.mm.cd.a
+  extends esc
 {
-  public LinkedList<dyx> SlK;
-  
-  public zl()
-  {
-    AppMethodBeat.i(152514);
-    this.SlK = new LinkedList();
-    AppMethodBeat.o(152514);
-  }
-  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152515);
+    AppMethodBeat.i(257838);
     if (paramInt == 0)
     {
-      ((g.a.a.c.a)paramVarArgs[0]).e(1, 8, this.SlK);
-      AppMethodBeat.o(152515);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = g.a.a.a.c(1, 8, this.SlK);
-      AppMethodBeat.o(152515);
-      return paramInt + 0;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.SlK.clear();
-      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
-      }
-      AppMethodBeat.o(152515);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject = (g.a.a.a.a)paramVarArgs[0];
-      zl localzl = (zl)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse != null)
       {
-      default: 
-        AppMethodBeat.o(152515);
-        return -1;
+        paramVarArgs.qD(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-      int i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        localObject = (byte[])paramVarArgs.get(paramInt);
-        dyx localdyx = new dyx();
-        if ((localObject != null) && (localObject.length > 0)) {
-          localdyx.parseFrom((byte[])localObject);
-        }
-        localzl.SlK.add(localdyx);
-        paramInt += 1;
-      }
-      AppMethodBeat.o(152515);
+      AppMethodBeat.o(257838);
       return 0;
     }
-    AppMethodBeat.o(152515);
-    return -1;
+    if (paramInt == 1) {
+      if (this.BaseResponse == null) {
+        break label284;
+      }
+    }
+    label284:
+    for (paramInt = i.a.a.a.qC(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    {
+      AppMethodBeat.o(257838);
+      return paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = esc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = esc.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(257838);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
+        zl localzl = (zl)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(257838);
+          return -1;
+        }
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          kd localkd = new kd();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localkd.parseFrom((byte[])localObject);
+          }
+          localzl.BaseResponse = localkd;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(257838);
+        return 0;
+      }
+      AppMethodBeat.o(257838);
+      return -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.zl
  * JD-Core Version:    0.7.0.1
  */

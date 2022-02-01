@@ -1,6 +1,5 @@
 package com.tencent.mm.app.plugin.graphics;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
 

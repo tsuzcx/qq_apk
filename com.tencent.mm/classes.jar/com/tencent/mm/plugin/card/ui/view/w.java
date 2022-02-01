@@ -13,31 +13,31 @@ import com.tencent.mm.plugin.card.a.c;
 import com.tencent.mm.plugin.card.a.d;
 import com.tencent.mm.plugin.card.a.e;
 import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.plugin.card.d.l;
+import com.tencent.mm.plugin.card.c.l;
 import com.tencent.mm.plugin.card.ui.a.g;
 import com.tencent.mm.plugin.card.ui.n;
-import com.tencent.mm.protocal.protobuf.acg;
-import com.tencent.mm.protocal.protobuf.ua;
-import com.tencent.mm.protocal.protobuf.vb;
+import com.tencent.mm.protocal.protobuf.aek;
+import com.tencent.mm.protocal.protobuf.vr;
+import com.tencent.mm.protocal.protobuf.ws;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ad;
+import com.tencent.mm.ui.af;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class w
   extends i
 {
-  private View tGp;
-  private View tGq;
+  private View wJO;
+  private View wJP;
   
-  public final void cKY()
+  public final void doE()
   {
     AppMethodBeat.i(113710);
-    if (this.tGp != null) {
-      this.tGp.setVisibility(8);
+    if (this.wJO != null) {
+      this.wJO.setVisibility(8);
     }
-    if (this.tGq != null) {
-      this.tGq.setVisibility(8);
+    if (this.wJP != null) {
+      this.wJP.setVisibility(8);
     }
     AppMethodBeat.o(113710);
   }
@@ -47,41 +47,41 @@ public final class w
   public final void update()
   {
     AppMethodBeat.i(113709);
-    b localb = this.tFT.cIS();
-    g localg = this.tFT.cIX();
+    b localb = this.wJs.dmk();
+    g localg = this.wJs.dmp();
     Object localObject1;
     Object localObject2;
     Object localObject3;
     int i;
-    if ((localb.cGt().SdF != null) && (localb.cGt().SdF.size() > 1))
+    if ((localb.djL().Zbz != null) && (localb.djL().Zbz.size() > 1))
     {
-      if (this.tGp == null) {
-        this.tGp = ((ViewStub)findViewById(a.d.tdp)).inflate();
+      if (this.wJO == null) {
+        this.wJO = ((ViewStub)findViewById(a.d.whD)).inflate();
       }
-      if (this.tGq != null) {
-        this.tGq.setVisibility(8);
+      if (this.wJP != null) {
+        this.wJP.setVisibility(8);
       }
-      localObject1 = this.tFT.cIV();
-      localObject2 = this.tGp;
-      localObject3 = this.tFT.cIW();
-      LinkedList localLinkedList = localb.cGt().SdF;
-      int j = l.arR(localb.cGs().lmL);
+      localObject1 = this.wJs.dmn();
+      localObject2 = this.wJO;
+      localObject3 = this.wJs.dmo();
+      LinkedList localLinkedList = localb.djL().Zbz;
+      int j = l.alv(localb.djK().nRQ);
       ((ViewGroup)localObject2).removeAllViews();
       Iterator localIterator = localLinkedList.iterator();
       label376:
       while (localIterator.hasNext())
       {
-        Object localObject4 = (acg)localIterator.next();
-        View localView = ad.kS((Context)localObject1).inflate(a.e.tja, (ViewGroup)localObject2, false);
-        localView.setId(a.d.tdq);
+        Object localObject4 = (aek)localIterator.next();
+        View localView = af.mU((Context)localObject1).inflate(a.e.wnx, (ViewGroup)localObject2, false);
+        localView.setId(a.d.whE);
         localView.setTag(Integer.valueOf(localLinkedList.indexOf(localObject4)));
         localView.setOnClickListener((View.OnClickListener)localObject3);
-        if ((TextUtils.isEmpty(((acg)localObject4).url)) && (Util.isNullOrNil(((acg)localObject4).SfB))) {
+        if ((TextUtils.isEmpty(((aek)localObject4).url)) && (Util.isNullOrNil(((aek)localObject4).Zdw))) {
           localView.setEnabled(false);
         }
-        ((TextView)localView.findViewById(a.d.tgz)).setText(((acg)localObject4).title);
-        TextView localTextView = (TextView)localView.findViewById(a.d.tgw);
-        localTextView.setText(((acg)localObject4).tnY);
+        ((TextView)localView.findViewById(a.d.wkY)).setText(((aek)localObject4).title);
+        TextView localTextView = (TextView)localView.findViewById(a.d.wkV);
+        localTextView.setText(((aek)localObject4).wsz);
         localTextView.setTextColor(j);
         ((ViewGroup)localObject2).addView(localView);
         if (localLinkedList.indexOf(localObject4) + 1 != localLinkedList.size()) {}
@@ -90,60 +90,60 @@ public final class w
           if (i == 0) {
             break label376;
           }
-          localObject4 = ad.kS((Context)localObject1).inflate(a.e.tjb, (ViewGroup)localObject2, false);
+          localObject4 = af.mU((Context)localObject1).inflate(a.e.wny, (ViewGroup)localObject2, false);
           ((ViewGroup)localObject2).addView((View)localObject4);
           break;
         }
       }
-      if ((localb.cFY()) && (localb.cGt().SdM != null) && (!TextUtils.isEmpty(localb.cGt().SdM.title))) {
-        this.tGp.setBackgroundResource(a.c.mm_trans);
+      if ((localb.djq()) && (localb.djL().ZbG != null) && (!TextUtils.isEmpty(localb.djL().ZbG.title))) {
+        this.wJO.setBackgroundResource(a.c.mm_trans);
       }
-      if ((!localb.cFY()) && (localg.cKn()))
+      if ((!localb.djq()) && (localg.dnD()))
       {
-        this.tGp.setBackgroundResource(a.c.mm_trans);
+        this.wJO.setBackgroundResource(a.c.mm_trans);
         AppMethodBeat.o(113709);
       }
     }
-    else if ((localb.cGt().SdF != null) && (localb.cGt().SdF.size() == 1))
+    else if ((localb.djL().Zbz != null) && (localb.djL().Zbz.size() == 1))
     {
-      if (this.tGq == null) {
-        this.tGq = ((ViewStub)findViewById(a.d.tdo)).inflate();
+      if (this.wJP == null) {
+        this.wJP = ((ViewStub)findViewById(a.d.whC)).inflate();
       }
-      if (this.tGp != null) {
-        this.tGp.setVisibility(8);
+      if (this.wJO != null) {
+        this.wJO.setVisibility(8);
       }
-      localObject1 = this.tGq;
-      localObject2 = this.tFT.cIW();
-      localObject3 = localb.cGt().SdF;
+      localObject1 = this.wJP;
+      localObject2 = this.wJs.dmo();
+      localObject3 = localb.djL().Zbz;
       if (((LinkedList)localObject3).size() == 1)
       {
-        ((View)localObject1).findViewById(a.d.tdr).setVisibility(0);
-        localObject3 = (acg)((LinkedList)localObject3).get(0);
-        ((TextView)((View)localObject1).findViewById(a.d.tgA)).setText(((acg)localObject3).title);
-        ((TextView)((View)localObject1).findViewById(a.d.tgx)).setText(((acg)localObject3).tnY);
-        i = l.arR(localb.cGs().lmL);
-        ((TextView)((View)localObject1).findViewById(a.d.tgx)).setTextColor(i);
-        ((View)localObject1).findViewById(a.d.tdr).setOnClickListener((View.OnClickListener)localObject2);
-        if (TextUtils.isEmpty(((acg)localObject3).url)) {
-          ((View)localObject1).findViewById(a.d.tdr).setEnabled(false);
+        ((View)localObject1).findViewById(a.d.whF).setVisibility(0);
+        localObject3 = (aek)((LinkedList)localObject3).get(0);
+        ((TextView)((View)localObject1).findViewById(a.d.wkZ)).setText(((aek)localObject3).title);
+        ((TextView)((View)localObject1).findViewById(a.d.wkW)).setText(((aek)localObject3).wsz);
+        i = l.alv(localb.djK().nRQ);
+        ((TextView)((View)localObject1).findViewById(a.d.wkW)).setTextColor(i);
+        ((View)localObject1).findViewById(a.d.whF).setOnClickListener((View.OnClickListener)localObject2);
+        if (TextUtils.isEmpty(((aek)localObject3).url)) {
+          ((View)localObject1).findViewById(a.d.whF).setEnabled(false);
         }
       }
-      if ((localb.cFY()) && (localb.cGt().SdM != null) && (!TextUtils.isEmpty(localb.cGt().SdM.title))) {
-        this.tGq.setBackgroundResource(a.c.mm_trans);
+      if ((localb.djq()) && (localb.djL().ZbG != null) && (!TextUtils.isEmpty(localb.djL().ZbG.title))) {
+        this.wJP.setBackgroundResource(a.c.mm_trans);
       }
-      if ((!localb.cFY()) && (localg.cKn()))
+      if ((!localb.djq()) && (localg.dnD()))
       {
-        this.tGq.setBackgroundResource(a.c.mm_trans);
+        this.wJP.setBackgroundResource(a.c.mm_trans);
         AppMethodBeat.o(113709);
       }
     }
     else
     {
-      if (this.tGp != null) {
-        this.tGp.setVisibility(8);
+      if (this.wJO != null) {
+        this.wJO.setVisibility(8);
       }
-      if (this.tGq != null) {
-        this.tGq.setVisibility(8);
+      if (this.wJP != null) {
+        this.wJP.setVisibility(8);
       }
     }
     AppMethodBeat.o(113709);
@@ -151,7 +151,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.view.w
  * JD-Core Version:    0.7.0.1
  */

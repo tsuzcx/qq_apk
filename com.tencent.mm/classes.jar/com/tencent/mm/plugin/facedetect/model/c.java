@@ -11,18 +11,18 @@ import com.tencent.mm.sdk.platformtools.Util;
 public final class c
   extends a<byte[]>
 {
-  private static int miK;
-  public static final c wwx;
+  private static int pch;
+  public static final c zSD;
   
   static
   {
     AppMethodBeat.i(103696);
-    wwx = new c();
-    miK = 0;
+    zSD = new c();
+    pch = 0;
     AppMethodBeat.o(103696);
   }
   
-  public static void dE(int paramInt1, int paramInt2)
+  public static void ey(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(103686);
     Log.i("MicroMsg.FaceByteArrayPool", "preloadCameraData, width: %s, height: %s, count: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(5) });
@@ -30,7 +30,7 @@ public final class c
     int i = 0;
     while (i < 5)
     {
-      wwx.as(new byte[paramInt1 * paramInt2 * 3 / 2]);
+      zSD.as(new byte[paramInt1 * paramInt2 * 3 / 2]);
       i += 1;
     }
     Log.i("MicroMsg.FaceByteArrayPool", "preloadCameraData used %sms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
@@ -42,7 +42,7 @@ public final class c
     try
     {
       AppMethodBeat.i(103687);
-      super.bU(paramArrayOfByte);
+      super.dn(paramArrayOfByte);
       AppMethodBeat.o(103687);
       return;
     }
@@ -53,13 +53,13 @@ public final class c
     }
   }
   
-  public final long baJ()
+  public final long bvE()
   {
     AppMethodBeat.i(103689);
-    if (miK <= 0) {
-      miK = ((ActivityManager)MMApplicationContext.getContext().getSystemService("activity")).getLargeMemoryClass();
+    if (pch <= 0) {
+      pch = ((ActivityManager)MMApplicationContext.getContext().getSystemService("activity")).getLargeMemoryClass();
     }
-    if (miK >= 512)
+    if (pch >= 512)
     {
       AppMethodBeat.o(103689);
       return 20971520L;
@@ -68,20 +68,20 @@ public final class c
     return 10485760L;
   }
   
-  public final long baK()
+  public final long bvF()
   {
     return 20971520L;
   }
   
-  public final void baL()
+  public final void bvG()
   {
     AppMethodBeat.i(103690);
-    super.baL();
+    super.bvG();
     AppMethodBeat.o(103690);
   }
   
   /* Error */
-  public final byte[] k(Integer paramInteger)
+  public final byte[] m(Integer paramInteger)
   {
     // Byte code:
     //   0: aload_0
@@ -91,7 +91,7 @@ public final class c
     //   7: aload_0
     //   8: aload_1
     //   9: invokespecial 140	com/tencent/mm/memory/a:h	(Ljava/lang/Integer;)Ljava/lang/Object;
-    //   12: checkcast 79	[B
+    //   12: checkcast 122	[B
     //   15: astore_2
     //   16: aload_2
     //   17: ifnonnull +26 -> 43
@@ -99,7 +99,7 @@ public final class c
     //   22: ldc 142
     //   24: invokestatic 146	com/tencent/mm/sdk/platformtools/Log:v	(Ljava/lang/String;Ljava/lang/String;)V
     //   27: aload_1
-    //   28: invokevirtual 125	java/lang/Integer:intValue	()I
+    //   28: invokevirtual 117	java/lang/Integer:intValue	()I
     //   31: newarray byte
     //   33: astore_1
     //   34: ldc 138
@@ -134,7 +134,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.model.c
  * JD-Core Version:    0.7.0.1
  */

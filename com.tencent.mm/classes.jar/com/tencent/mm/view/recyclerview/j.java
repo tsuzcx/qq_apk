@@ -1,58 +1,89 @@
 package com.tencent.mm.view.recyclerview;
 
-import android.util.LongSparseArray;
+import android.content.Context;
+import android.view.View;
+import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.lang.ref.WeakReference;
+import java.util.LinkedHashSet;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/recyclerview/WxItemShowInfo;", "", "spanIndex", "", "width", "height", "(III)V", "foldedAdapterRef", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "getFoldedAdapterRef", "()Ljava/lang/ref/WeakReference;", "setFoldedAdapterRef", "(Ljava/lang/ref/WeakReference;)V", "foldedExpose", "", "getFoldedExpose", "()Z", "setFoldedExpose", "(Z)V", "foldedExposeReport", "getFoldedExposeReport", "setFoldedExposeReport", "foldedSessionExposeMap", "Landroid/util/LongSparseArray;", "Lcom/tencent/mm/view/recyclerview/WxRVDataItem;", "getFoldedSessionExposeMap", "()Landroid/util/LongSparseArray;", "setFoldedSessionExposeMap", "(Landroid/util/LongSparseArray;)V", "foldedTop", "getFoldedTop", "()I", "setFoldedTop", "(I)V", "globalVisibleBottom", "getGlobalVisibleBottom", "setGlobalVisibleBottom", "globalVisibleTop", "getGlobalVisibleTop", "setGlobalVisibleTop", "getHeight", "setHeight", "getSpanIndex", "visibleTop", "getVisibleTop", "setVisibleTop", "getWidth", "setWidth", "component1", "component2", "component3", "copy", "equals", "other", "hashCode", "toString", "", "libmmui_release"})
-public final class j
+public class j
+  extends RecyclerView.v
 {
-  public final int Gqn;
-  public int YSB;
-  public int YSC;
-  public int YSD;
-  public int YSE;
-  public boolean YSF;
-  public boolean YSG;
-  public LongSparseArray<l> YSH;
-  public WeakReference<WxRecyclerAdapter<?>> YSI;
-  public int height;
-  public int width;
+  public Object CSA;
+  private final LinkedHashSet<Integer> agOj;
+  private final LinkedHashSet<Integer> agOk;
+  public final Context context;
+  public RecyclerView mkw;
+  public RecyclerView.a mlt;
+  public Object tag;
   
-  public j(int paramInt1, int paramInt2, int paramInt3)
+  public j(View paramView)
   {
-    this.Gqn = paramInt1;
-    this.width = paramInt2;
-    this.height = paramInt3;
+    super(paramView);
+    AppMethodBeat.i(164329);
+    this.mkw = null;
+    this.agOj = new LinkedHashSet();
+    this.agOk = new LinkedHashSet();
+    this.context = paramView.getContext();
+    AppMethodBeat.o(164329);
   }
   
-  public final boolean equals(Object paramObject)
+  public final <T extends View> T UH(int paramInt)
   {
-    if (this != paramObject)
+    AppMethodBeat.i(164335);
+    View localView = this.caK.findViewById(paramInt);
+    AppMethodBeat.o(164335);
+    return localView;
+  }
+  
+  public final j d(int paramInt, CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(164331);
+    ((TextView)UH(paramInt)).setText(paramCharSequence);
+    AppMethodBeat.o(164331);
+    return this;
+  }
+  
+  public final RecyclerView getRecyclerView()
+  {
+    AppMethodBeat.i(234929);
+    if ((this.mkw == null) && ((this.caK.getParent() instanceof RecyclerView)))
     {
-      if ((paramObject instanceof j))
-      {
-        paramObject = (j)paramObject;
-        if ((this.Gqn != paramObject.Gqn) || (this.width != paramObject.width) || (this.height != paramObject.height)) {}
-      }
+      this.mkw = ((RecyclerView)this.caK.getParent());
+      localRecyclerView = this.mkw;
+      AppMethodBeat.o(234929);
+      return localRecyclerView;
     }
-    else {
-      return true;
-    }
-    return false;
+    RecyclerView localRecyclerView = this.mkw;
+    AppMethodBeat.o(234929);
+    return localRecyclerView;
   }
   
-  public final int hashCode()
+  public final j pr(int paramInt1, int paramInt2)
   {
-    return (this.Gqn * 31 + this.width) * 31 + this.height;
+    AppMethodBeat.i(234940);
+    ((TextView)UH(paramInt1)).setText(paramInt2);
+    AppMethodBeat.o(234940);
+    return this;
   }
   
-  public final String toString()
+  public final j ps(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(196838);
-    String str = "WxItemShowInfo(spanIndex=" + this.Gqn + ", width=" + this.width + ", height=" + this.height + ")";
-    AppMethodBeat.o(196838);
-    return str;
+    AppMethodBeat.i(234948);
+    ((TextView)UH(paramInt1)).setTextColor(paramInt2);
+    AppMethodBeat.o(234948);
+    return this;
+  }
+  
+  public final j pt(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(164334);
+    UH(paramInt1).setVisibility(paramInt2);
+    AppMethodBeat.o(164334);
+    return this;
   }
 }
 

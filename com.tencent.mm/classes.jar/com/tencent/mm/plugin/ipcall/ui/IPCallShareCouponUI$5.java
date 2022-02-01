@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.e;
 import com.tencent.mm.R.l;
-import com.tencent.mm.by.c;
+import com.tencent.mm.br.c;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -23,7 +23,7 @@ final class IPCallShareCouponUI$5
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(25940);
-    ((TextView)paramView).setHighlightColor(this.DYL.getResources().getColor(R.e.transparent));
+    ((TextView)paramView).setHighlightColor(this.JPU.getResources().getColor(R.e.transparent));
     Object localObject = "https://" + WeChatHosts.domainString(R.l.host_support_weixin_qq_com) + "/cgi-bin/mmsupport-bin/readtemplate?t=weixin_phone/notice";
     String str = LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext());
     paramView = (View)localObject;
@@ -33,14 +33,14 @@ final class IPCallShareCouponUI$5
     localObject = new Intent();
     ((Intent)localObject).putExtra("rawUrl", paramView);
     ((Intent)localObject).putExtra("showShare", false);
-    c.b(this.DYL, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
+    c.b(this.JPU, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
     AppMethodBeat.o(25940);
   }
   
   public final void updateDrawState(TextPaint paramTextPaint)
   {
     AppMethodBeat.i(25941);
-    paramTextPaint.setColor(this.DYL.getResources().getColor(R.e.link_color));
+    paramTextPaint.setColor(this.JPU.getResources().getColor(R.e.link_color));
     paramTextPaint.setUnderlineText(false);
     AppMethodBeat.o(25941);
   }

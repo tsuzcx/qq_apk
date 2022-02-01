@@ -13,21 +13,21 @@ import java.util.Map;
 
 public final class e
 {
-  private static LinkedHashMap<String, c> cqk;
-  private static Map<Class<? extends d>, Object> cql;
+  private static LinkedHashMap<String, c> eic;
+  private static Map<Class<? extends d>, Object> eid;
   
   static
   {
     AppMethodBeat.i(140311);
-    cqk = new LinkedHashMap();
+    eic = new LinkedHashMap();
     a locala = new a();
     Log.i("Luggage.Luggage", "plugin:[%s] installed", new Object[] { locala.getName() });
-    cqk.put(locala.getName(), locala);
-    cql = new HashMap();
+    eic.put(locala.getName(), locala);
+    eid = new HashMap();
     AppMethodBeat.o(140311);
   }
   
-  public static <T extends b> T K(Class<T> paramClass)
+  public static <T extends b> T T(Class<T> paramClass)
   {
     AppMethodBeat.i(140305);
     if (paramClass == null)
@@ -35,13 +35,13 @@ public final class e
       AppMethodBeat.o(140305);
       return null;
     }
-    ListIterator localListIterator = new ArrayList(cqk.values()).listIterator(cqk.size());
+    ListIterator localListIterator = new ArrayList(eic.values()).listIterator(eic.size());
     while (localListIterator.hasPrevious())
     {
       c localc = (c)localListIterator.previous();
-      if ((localc != null) && (localc.NK() != null) && (localc.NK().get(paramClass) != null))
+      if ((localc != null) && (localc.anW() != null) && (localc.anW().get(paramClass) != null))
       {
-        paramClass = (b)localc.NK().get(paramClass);
+        paramClass = (b)localc.anW().get(paramClass);
         AppMethodBeat.o(140305);
         return paramClass;
       }
@@ -51,46 +51,46 @@ public final class e
     return null;
   }
   
-  public static <T extends d> T L(Class<T> paramClass)
+  public static <T extends d> T U(Class<T> paramClass)
   {
     AppMethodBeat.i(140308);
-    paramClass = M(paramClass);
+    paramClass = V(paramClass);
     AppMethodBeat.o(140308);
     return paramClass;
   }
   
-  public static <T extends d> T M(Class<T> paramClass)
+  public static <T extends d> T V(Class<T> paramClass)
   {
     AppMethodBeat.i(140309);
     if (paramClass == null)
     {
-      paramClass = N(paramClass);
+      paramClass = W(paramClass);
       AppMethodBeat.o(140309);
       return paramClass;
     }
-    ListIterator localListIterator = new ArrayList(cqk.values()).listIterator(cqk.size());
+    ListIterator localListIterator = new ArrayList(eic.values()).listIterator(eic.size());
     while (localListIterator.hasPrevious())
     {
       c localc = (c)localListIterator.previous();
-      if ((localc != null) && (localc.NL() != null) && (localc.NL().get(paramClass) != null))
+      if ((localc != null) && (localc.anX() != null) && (localc.anX().get(paramClass) != null))
       {
-        paramClass = (d)localc.NL().get(paramClass);
+        paramClass = (d)localc.anX().get(paramClass);
         AppMethodBeat.o(140309);
         return paramClass;
       }
     }
     Log.w("Luggage.Luggage", "no profiler found for [%s], genDummy[%b]", new Object[] { paramClass.getCanonicalName(), Boolean.TRUE });
-    paramClass = N(paramClass);
+    paramClass = W(paramClass);
     AppMethodBeat.o(140309);
     return paramClass;
   }
   
-  private static <T extends d> T N(Class<T> paramClass)
+  private static <T extends d> T W(Class<T> paramClass)
   {
     AppMethodBeat.i(140310);
-    if (cql.get(paramClass) != null)
+    if (eid.get(paramClass) != null)
     {
-      paramClass = (d)cql.get(paramClass);
+      paramClass = (d)eid.get(paramClass);
       AppMethodBeat.o(140310);
       return paramClass;
     }
@@ -102,7 +102,7 @@ public final class e
       }
     };
     localObject = (d)Proxy.newProxyInstance(d.class.getClassLoader(), new Class[] { paramClass }, (InvocationHandler)localObject);
-    cql.put(paramClass, localObject);
+    eid.put(paramClass, localObject);
     AppMethodBeat.o(140310);
     return localObject;
   }
@@ -115,7 +115,7 @@ public final class e
       AppMethodBeat.o(140306);
       return;
     }
-    ((c)cqk.get("luggage-core")).NK().put(paramClass, paramT);
+    ((c)eic.get("luggage-core")).anW().put(paramClass, paramT);
     AppMethodBeat.o(140306);
   }
   
@@ -127,13 +127,13 @@ public final class e
       AppMethodBeat.o(140307);
       return;
     }
-    ((c)cqk.get("luggage-core")).NL().put(paramClass, paramT);
+    ((c)eic.get("luggage-core")).anX().put(paramClass, paramT);
     AppMethodBeat.o(140307);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.a.e
  * JD-Core Version:    0.7.0.1
  */

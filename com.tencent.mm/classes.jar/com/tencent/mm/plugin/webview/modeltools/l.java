@@ -1,89 +1,125 @@
 package com.tencent.mm.plugin.webview.modeltools;
 
+import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
+import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
+import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.plugin.webview.c.i;
+import com.tencent.mm.plugin.webview.jsapi.j;
+import com.tencent.mm.plugin.webview.jsapi.p.a;
+import com.tencent.mm.protocal.protobuf.aok;
+import com.tencent.mm.protocal.protobuf.aol;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
+import com.tencent.mm.ui.widget.MMWebView;
+import java.net.URL;
 import java.util.HashMap;
-import java.util.HashSet;
+import org.apache.commons.c.h;
+import org.json.JSONObject;
 
 public final class l
 {
-  public HashMap<String, a> PYe;
-  public HashMap<String, a> PYf;
-  private HashSet<Integer> PYg;
-  public HashMap<String, b> PYh;
-  
-  public l()
+  public static boolean a(j paramj, MMWebView paramMMWebView)
   {
-    AppMethodBeat.i(79218);
-    this.PYe = new HashMap();
-    this.PYf = new HashMap();
-    this.PYg = new HashSet();
-    this.PYh = new HashMap();
-    AppMethodBeat.o(79218);
-  }
-  
-  public final boolean anS(int paramInt)
-  {
-    AppMethodBeat.i(79222);
-    boolean bool = this.PYg.remove(Integer.valueOf(paramInt));
-    AppMethodBeat.o(79222);
-    return bool;
-  }
-  
-  public final boolean blq(String paramString)
-  {
-    AppMethodBeat.i(79219);
-    if ((this.PYh.containsKey(paramString)) && (this.PYh.get(paramString) != null))
+    AppMethodBeat.i(295809);
+    if (paramj == null)
     {
-      AppMethodBeat.o(79219);
-      return true;
+      Log.w("MicroMsg.WebViewReportOnLeaveHelper", "handler is null");
+      AppMethodBeat.o(295809);
+      return false;
     }
-    AppMethodBeat.o(79219);
-    return false;
-  }
-  
-  public final b blr(String paramString)
-  {
-    AppMethodBeat.i(79220);
-    paramString = (b)this.PYh.get(paramString);
-    AppMethodBeat.o(79220);
-    return paramString;
-  }
-  
-  public final void cW(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(79221);
-    if (Util.getBoolean(paramString, false))
+    String str = paramMMWebView.getUrl();
+    if (!Util.isNullOrNil(str))
     {
-      this.PYg.add(Integer.valueOf(paramInt));
-      AppMethodBeat.o(79221);
+      try
+      {
+        boolean bool = new URL(str).getHost().equals(WeChatHosts.domainString(c.i.host_mp_weixin_qq_com));
+        if (bool) {
+          break label106;
+        }
+        AppMethodBeat.o(295809);
+        return false;
+      }
+      catch (Exception paramj)
+      {
+        Log.e("MicroMsg.WebViewReportOnLeaveHelper", "create url fail : " + paramj.getLocalizedMessage());
+        AppMethodBeat.o(295809);
+        return false;
+      }
+    }
+    else
+    {
+      AppMethodBeat.o(295809);
+      return false;
+    }
+    label106:
+    paramMMWebView = new ValueCallback() {};
+    if (!paramj.UcS) {
+      paramMMWebView.onReceiveValue(null);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(295809);
+      return true;
+      str = p.a.b("reportOnLeaveForMP", new HashMap(), paramj.WDI, paramj.KQY);
+      paramj.WDz.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + str + ")", paramMMWebView);
+    }
+  }
+  
+  public static int bkT(String paramString)
+  {
+    AppMethodBeat.i(295812);
+    if (Util.isNullOrNil(paramString))
+    {
+      Log.i("MicroMsg.WebViewReportOnLeaveHelper", "doReport invalid reportData %s", new Object[] { paramString });
+      AppMethodBeat.o(295812);
+      return -1;
+    }
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new aok();
+    ((c.a)localObject).otF = new aol();
+    ((c.a)localObject).uri = "/cgi-bin/mmbiz-bin/exitreport";
+    ((c.a)localObject).funcId = 1642;
+    localObject = ((c.a)localObject).bEF();
+    ((aok)c.b.b(((c)localObject).otB)).ZvQ = paramString;
+    IPCRunCgi.a((c)localObject, new IPCRunCgi.a()
+    {
+      public final void callback(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, c paramAnonymousc)
+      {
+        AppMethodBeat.i(79215);
+        Log.i("MicroMsg.WebViewReportOnLeaveHelper", "doReport callback errType:%d errCode:%d msg:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+        AppMethodBeat.o(79215);
+      }
+    });
+    AppMethodBeat.o(295812);
+    return 0;
+  }
+  
+  public static void bkU(String paramString)
+  {
+    AppMethodBeat.i(295816);
+    if (Util.isNullOrNil(paramString))
+    {
+      Log.i("MicroMsg.WebViewReportOnLeaveHelper", "doReportMusic invalid reportData %s", new Object[] { paramString });
+      AppMethodBeat.o(295816);
       return;
     }
-    this.PYg.remove(Integer.valueOf(paramInt));
-    AppMethodBeat.o(79221);
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCString(paramString), a.class, null);
+    AppMethodBeat.o(295816);
   }
   
-  public static final class a
-  {
-    public String desc;
-    public String link;
-    public String title;
-    public String xei;
-  }
-  
-  public static final class b
-  {
-    public boolean PYi;
-    public boolean PYj;
-    public int duration;
-    public String jmB;
-    public int llp;
-    public int lls;
-    public String userName;
-    public String vid;
-    public int videoHeight;
-    public int videoWidth;
-  }
+  @com.tencent.mm.ipcinvoker.c.a
+  static class a
+    implements d<IPCString, IPCString>
+  {}
 }
 
 

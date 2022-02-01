@@ -40,6 +40,7 @@ public abstract interface ITPNativePlayerMessageCallback
   public static final int INFO_LONG0_FIRST_PACKET_READ = 107;
   public static final int INFO_LONG0_FIRST_VIDEO_DECODER_START = 104;
   public static final int INFO_LONG0_FIRST_VIDEO_FRAME_RENDERED = 106;
+  public static final int INFO_LONG0_FIRST_VIDEO_FRAME_RENDERED_AFTER_SURFACE_CHANGE = 108;
   public static final int INFO_LONG0_KEY_PACKET_READ = 102;
   public static final int INFO_LONG0_VIDEO_HW_DECODING_SLOW = 208;
   public static final int INFO_LONG0_VIDEO_SW_DECODING_SLOW = 207;
@@ -84,10 +85,18 @@ public abstract interface ITPNativePlayerMessageCallback
     public int height;
     public int width;
   }
+  
+  public static class VideoSeiInfo
+  {
+    public byte[] data;
+    public int dataSize;
+    public int videoCodecType;
+    public int videoSeiType;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.core.player.ITPNativePlayerMessageCallback
  * JD-Core Version:    0.7.0.1
  */

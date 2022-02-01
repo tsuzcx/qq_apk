@@ -1,31 +1,31 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.c;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.protocal.protobuf.agb;
-import com.tencent.mm.protocal.protobuf.agc;
+import com.tencent.mm.am.b;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.protocal.protobuf.do;
+import com.tencent.mm.protocal.protobuf.dp;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
 
 public final class f
-  extends c<agc>
+  extends b<dp>
 {
   public f(String paramString, LinkedList<String> paramLinkedList)
   {
-    AppMethodBeat.i(186813);
-    Log.d("MicroMsg.CgiOpenImDelChatRoomAdmin", "roomName:%s,username:%s", new Object[] { paramString, Util.listToString(paramLinkedList, ";") });
-    agb localagb = new agb();
-    localagb.fHp = paramString;
-    localagb.username_list = paramLinkedList;
-    paramString = new d.a();
-    paramString.lBU = localagb;
-    paramString.lBV = new agc();
-    paramString.uri = "/cgi-bin/micromsg-bin/delopenimchatroomadmin";
-    paramString.funcId = 3677;
-    c(paramString.bgN());
-    AppMethodBeat.o(186813);
+    AppMethodBeat.i(241425);
+    Log.d("MicroMsg.CgiOpenImAddChatRoomAdmin", "roomName:%s,username:%s", new Object[] { paramString, Util.listToString(paramLinkedList, ";") });
+    do localdo = new do();
+    localdo.hMM = paramString;
+    localdo.username_list = paramLinkedList;
+    paramString = new c.a();
+    paramString.otE = localdo;
+    paramString.otF = new dp();
+    paramString.uri = "/cgi-bin/micromsg-bin/addopenimchatroomadmin";
+    paramString.funcId = 776;
+    c(paramString.bEF());
+    AppMethodBeat.o(241425);
   }
 }
 

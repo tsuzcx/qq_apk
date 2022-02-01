@@ -1,5 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<set
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <alpha android:duration="@android:integer/config_longAnimTime" android:fromAlpha="0.0" android:toAlpha="1.0" />
-</set>
+<translate android:duration="300" android:fromXDelta="100.0%p" android:toXDelta="0.0"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

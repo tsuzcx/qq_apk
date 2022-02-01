@@ -1,67 +1,74 @@
 package com.tencent.mm.plugin.finder.feed;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.feed.model.BaseFinderFeedLoader;
+import com.tencent.mm.plugin.finder.feed.model.internal.BaseFeedLoader;
+import com.tencent.mm.plugin.finder.storage.as;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.view.recyclerview.g;
+import java.util.ArrayList;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/FinderLiveFeedDecorator$AnchorData;", "", "sdkUserId", "", "audioMode", "", "(Ljava/lang/String;Z)V", "getAudioMode", "()Z", "setAudioMode", "(Z)V", "getSdkUserId", "()Ljava/lang/String;", "setSdkUserId", "(Ljava/lang/String;)V", "component1", "component2", "copy", "equals", "other", "hashCode", "", "toString", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/FinderLikeFeedUIContract$LikeFeedPresenter;", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$Presenter;", "context", "Lcom/tencent/mm/ui/MMActivity;", "scene", "", "commentScene", "loader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "(Lcom/tencent/mm/ui/MMActivity;IILcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;)V", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "initViewCallback", "", "loadInitData", "loadMoreData", "requestRefresh", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class z$a
+  extends c.a
 {
-  String ktR;
-  boolean xzt;
-  
-  private z$a(String paramString)
+  public z$a(MMActivity paramMMActivity, int paramInt, BaseFinderFeedLoader paramBaseFinderFeedLoader)
   {
-    AppMethodBeat.i(284466);
-    this.ktR = paramString;
-    this.xzt = false;
-    AppMethodBeat.o(284466);
+    super(paramMMActivity, paramInt, paramBaseFinderFeedLoader);
+    AppMethodBeat.i(362490);
+    AppMethodBeat.o(362490);
   }
   
-  public final void aBD(String paramString)
+  public final void bXB()
   {
-    AppMethodBeat.i(284465);
-    p.k(paramString, "<set-?>");
-    this.ktR = paramString;
-    AppMethodBeat.o(284465);
+    AppMethodBeat.i(362500);
+    BaseFeedLoader.requestLoadMore$default((BaseFeedLoader)this.ALH, false, 1, null);
+    AppMethodBeat.o(362500);
   }
   
-  public final boolean equals(Object paramObject)
+  public final g dUK()
   {
-    AppMethodBeat.i(284470);
-    if (this != paramObject)
+    AppMethodBeat.i(362509);
+    Object localObject = this.ATE;
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ((c.b)localObject).dUN())
     {
-      if ((paramObject instanceof a))
-      {
-        paramObject = (a)paramObject;
-        if ((!p.h(this.ktR, paramObject.ktR)) || (this.xzt != paramObject.xzt)) {}
-      }
+      s.checkNotNull(localObject);
+      localObject = ((as)localObject).ech();
+      AppMethodBeat.o(362509);
+      return localObject;
     }
-    else
-    {
-      AppMethodBeat.o(284470);
-      return true;
-    }
-    AppMethodBeat.o(284470);
-    return false;
   }
   
-  public final int hashCode()
+  public final void dUL()
   {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+    AppMethodBeat.i(362506);
+    this.ALH.requestInit(true);
+    AppMethodBeat.o(362506);
   }
   
-  public final String toString()
+  public final void dUM()
   {
-    AppMethodBeat.i(284468);
-    String str = "AnchorData(sdkUserId=" + this.ktR + ", audioMode=" + this.xzt + ")";
-    AppMethodBeat.o(284468);
-    return str;
+    AppMethodBeat.i(362492);
+    c.b localb = this.ATE;
+    if (localb != null) {
+      localb.ae((ArrayList)this.ALH.getDataListJustForAdapter());
+    }
+    AppMethodBeat.o(362492);
+  }
+  
+  public final void requestRefresh()
+  {
+    AppMethodBeat.i(362495);
+    this.ALH.requestRefresh();
+    AppMethodBeat.o(362495);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.z.a
  * JD-Core Version:    0.7.0.1
  */

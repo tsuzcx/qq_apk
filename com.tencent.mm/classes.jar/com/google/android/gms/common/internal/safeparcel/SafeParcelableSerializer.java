@@ -6,12 +6,10 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.util.Base64Utils;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-@VisibleForTesting
 public final class SafeParcelableSerializer
 {
   public static <T extends SafeParcelable> T deserializeFromBytes(byte[] paramArrayOfByte, Parcelable.Creator<T> paramCreator)
@@ -147,7 +145,7 @@ public final class SafeParcelableSerializer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.safeparcel.SafeParcelableSerializer
  * JD-Core Version:    0.7.0.1
  */

@@ -12,13 +12,13 @@ import java.util.regex.Pattern;
 public final class a
   extends com.google.android.exoplayer2.f.b
 {
-  private static final Pattern bmh;
-  private final StringBuilder bmi;
+  private static final Pattern dgc;
+  private final StringBuilder dgd;
   
   static
   {
     AppMethodBeat.i(92818);
-    bmh = Pattern.compile("\\s*((?:(\\d+):)?(\\d+):(\\d+),(\\d+))\\s*-->\\s*((?:(\\d+):)?(\\d+):(\\d+),(\\d+))?\\s*");
+    dgc = Pattern.compile("\\s*((?:(\\d+):)?(\\d+):(\\d+),(\\d+))\\s*-->\\s*((?:(\\d+):)?(\\d+):(\\d+),(\\d+))?\\s*");
     AppMethodBeat.o(92818);
   }
   
@@ -26,7 +26,7 @@ public final class a
   {
     super("SubripDecoder");
     AppMethodBeat.i(92814);
-    this.bmi = new StringBuilder();
+    this.dgd = new StringBuilder();
     AppMethodBeat.o(92814);
   }
   
@@ -60,7 +60,7 @@ public final class a
         localObject = paramArrayOfByte.readLine();
         if (localObject != null)
         {
-          localObject = bmh.matcher((CharSequence)localObject);
+          localObject = dgc.matcher((CharSequence)localObject);
           if (!((Matcher)localObject).matches()) {
             break;
           }
@@ -70,17 +70,17 @@ public final class a
           }
           localh.add(a((Matcher)localObject, 6));
           paramInt = 1;
-          this.bmi.setLength(0);
+          this.dgd.setLength(0);
           localObject = paramArrayOfByte.readLine();
           if (!TextUtils.isEmpty((CharSequence)localObject))
           {
-            if (this.bmi.length() > 0) {
-              this.bmi.append("<br>");
+            if (this.dgd.length() > 0) {
+              this.dgd.append("<br>");
             }
-            this.bmi.append(((String)localObject).trim());
+            this.dgd.append(((String)localObject).trim());
             continue;
           }
-          localArrayList.add(new com.google.android.exoplayer2.f.a(Html.fromHtml(this.bmi.toString())));
+          localArrayList.add(new com.google.android.exoplayer2.f.a(Html.fromHtml(this.dgd.toString())));
           if (paramInt == 0) {
             break;
           }
@@ -89,7 +89,7 @@ public final class a
         }
         paramArrayOfByte = new com.google.android.exoplayer2.f.a[localArrayList.size()];
         localArrayList.toArray(paramArrayOfByte);
-        paramArrayOfByte = new b(paramArrayOfByte, localh.vb());
+        paramArrayOfByte = new b(paramArrayOfByte, localh.UA());
         AppMethodBeat.o(92815);
         return paramArrayOfByte;
       }

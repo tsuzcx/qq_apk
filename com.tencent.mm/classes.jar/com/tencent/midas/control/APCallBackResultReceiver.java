@@ -18,12 +18,12 @@ public class APCallBackResultReceiver
   
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(252830);
+    AppMethodBeat.i(217601);
     APLog.i("APCallBackResultReceiver", "onReceiveResult resultCode:" + paramInt + " mReceiver:" + this.mReceiver);
     if (this.mReceiver != null) {
       this.mReceiver.onReceiveResult(paramInt, paramBundle);
     }
-    AppMethodBeat.o(252830);
+    AppMethodBeat.o(217601);
   }
   
   public void setReceiver(Receiver paramReceiver)
@@ -38,7 +38,7 @@ public class APCallBackResultReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.midas.control.APCallBackResultReceiver
  * JD-Core Version:    0.7.0.1
  */

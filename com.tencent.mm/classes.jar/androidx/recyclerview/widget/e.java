@@ -1,111 +1,404 @@
 package androidx.recyclerview.widget;
 
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class e
-  implements s
+class e
 {
-  final s afO;
-  int afP = 0;
-  int afQ = -1;
-  int afR = -1;
-  Object afS = null;
+  final a bUA;
+  final List<View> bUB;
+  final b bUz;
   
-  public e(s params)
+  e(b paramb)
   {
-    this.afO = params;
+    AppMethodBeat.i(194717);
+    this.bUz = paramb;
+    this.bUA = new a();
+    this.bUB = new ArrayList();
+    AppMethodBeat.o(194717);
   }
   
-  public final void W(int paramInt1, int paramInt2)
+  private int fC(int paramInt)
   {
-    AppMethodBeat.i(260784);
-    if ((this.afP == 1) && (paramInt1 >= this.afQ) && (paramInt1 <= this.afQ + this.afR))
+    AppMethodBeat.i(194731);
+    if (paramInt < 0)
     {
-      this.afR += paramInt2;
-      this.afQ = Math.min(paramInt1, this.afQ);
-      AppMethodBeat.o(260784);
-      return;
+      AppMethodBeat.o(194731);
+      return -1;
     }
-    ki();
-    this.afQ = paramInt1;
-    this.afR = paramInt2;
-    this.afP = 1;
-    AppMethodBeat.o(260784);
+    int j = this.bUz.getChildCount();
+    int i = paramInt;
+    while (i < j)
+    {
+      int k = paramInt - (i - this.bUA.fE(i));
+      if (k == 0)
+      {
+        while (this.bUA.cr(i)) {
+          i += 1;
+        }
+        AppMethodBeat.o(194731);
+        return i;
+      }
+      i += k;
+    }
+    AppMethodBeat.o(194731);
+    return -1;
   }
   
-  public final void ac(int paramInt1, int paramInt2)
+  final int IU()
   {
-    AppMethodBeat.i(260788);
-    if ((this.afP == 2) && (this.afQ >= paramInt1) && (this.afQ <= paramInt1 + paramInt2))
-    {
-      this.afR += paramInt2;
-      this.afQ = paramInt1;
-      AppMethodBeat.o(260788);
-      return;
-    }
-    ki();
-    this.afQ = paramInt1;
-    this.afR = paramInt2;
-    this.afP = 2;
-    AppMethodBeat.o(260788);
+    AppMethodBeat.i(194794);
+    int i = this.bUz.getChildCount();
+    AppMethodBeat.o(194794);
+    return i;
   }
   
-  public final void ad(int paramInt1, int paramInt2)
+  final void a(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams, boolean paramBoolean)
   {
-    AppMethodBeat.i(260791);
-    ki();
-    this.afO.ad(paramInt1, paramInt2);
-    AppMethodBeat.o(260791);
+    AppMethodBeat.i(194779);
+    if (paramInt < 0) {}
+    for (paramInt = this.bUz.getChildCount();; paramInt = fC(paramInt))
+    {
+      this.bUA.v(paramInt, paramBoolean);
+      if (paramBoolean) {
+        bf(paramView);
+      }
+      this.bUz.attachViewToParent(paramView, paramInt, paramLayoutParams);
+      AppMethodBeat.o(194779);
+      return;
+    }
   }
   
-  public final void c(int paramInt1, int paramInt2, Object paramObject)
+  final void bf(View paramView)
   {
-    AppMethodBeat.i(260793);
-    if ((this.afP == 3) && (paramInt1 <= this.afQ + this.afR) && (paramInt1 + paramInt2 >= this.afQ) && (this.afS == paramObject))
-    {
-      int i = this.afQ;
-      int j = this.afR;
-      this.afQ = Math.min(paramInt1, this.afQ);
-      this.afR = (Math.max(i + j, paramInt1 + paramInt2) - this.afQ);
-      AppMethodBeat.o(260793);
-      return;
-    }
-    ki();
-    this.afQ = paramInt1;
-    this.afR = paramInt2;
-    this.afS = paramObject;
-    this.afP = 3;
-    AppMethodBeat.o(260793);
+    AppMethodBeat.i(194739);
+    this.bUB.add(paramView);
+    this.bUz.bk(paramView);
+    AppMethodBeat.o(194739);
   }
   
-  public final void ki()
+  final boolean bg(View paramView)
   {
-    AppMethodBeat.i(260780);
-    if (this.afP == 0)
+    AppMethodBeat.i(194749);
+    if (this.bUB.remove(paramView))
     {
-      AppMethodBeat.o(260780);
+      this.bUz.bl(paramView);
+      AppMethodBeat.o(194749);
+      return true;
+    }
+    AppMethodBeat.o(194749);
+    return false;
+  }
+  
+  final int bh(View paramView)
+  {
+    AppMethodBeat.i(194821);
+    int i = this.bUz.bh(paramView);
+    if (i == -1)
+    {
+      AppMethodBeat.o(194821);
+      return -1;
+    }
+    if (this.bUA.cr(i))
+    {
+      AppMethodBeat.o(194821);
+      return -1;
+    }
+    int j = this.bUA.fE(i);
+    AppMethodBeat.o(194821);
+    return i - j;
+  }
+  
+  final boolean bi(View paramView)
+  {
+    AppMethodBeat.i(194831);
+    boolean bool = this.bUB.contains(paramView);
+    AppMethodBeat.o(194831);
+    return bool;
+  }
+  
+  final void c(View paramView, int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(194759);
+    if (paramInt < 0) {}
+    for (paramInt = this.bUz.getChildCount();; paramInt = fC(paramInt))
+    {
+      this.bUA.v(paramInt, paramBoolean);
+      if (paramBoolean) {
+        bf(paramView);
+      }
+      this.bUz.addView(paramView, paramInt);
+      AppMethodBeat.o(194759);
       return;
     }
-    switch (this.afP)
+  }
+  
+  final void detachViewFromParent(int paramInt)
+  {
+    AppMethodBeat.i(194811);
+    paramInt = fC(paramInt);
+    this.bUA.remove(paramInt);
+    this.bUz.detachViewFromParent(paramInt);
+    AppMethodBeat.o(194811);
+  }
+  
+  final View fD(int paramInt)
+  {
+    AppMethodBeat.i(194802);
+    View localView = this.bUz.getChildAt(paramInt);
+    AppMethodBeat.o(194802);
+    return localView;
+  }
+  
+  final View getChildAt(int paramInt)
+  {
+    AppMethodBeat.i(194770);
+    paramInt = fC(paramInt);
+    View localView = this.bUz.getChildAt(paramInt);
+    AppMethodBeat.o(194770);
+    return localView;
+  }
+  
+  final int getChildCount()
+  {
+    AppMethodBeat.i(194785);
+    int i = this.bUz.getChildCount();
+    int j = this.bUB.size();
+    AppMethodBeat.o(194785);
+    return i - j;
+  }
+  
+  final void removeViewAt(int paramInt)
+  {
+    AppMethodBeat.i(194765);
+    paramInt = fC(paramInt);
+    View localView = this.bUz.getChildAt(paramInt);
+    if (localView == null)
     {
-    }
-    for (;;)
-    {
-      this.afS = null;
-      this.afP = 0;
-      AppMethodBeat.o(260780);
+      AppMethodBeat.o(194765);
       return;
-      this.afO.W(this.afQ, this.afR);
-      continue;
-      this.afO.ac(this.afQ, this.afR);
-      continue;
-      this.afO.c(this.afQ, this.afR, this.afS);
     }
+    if (this.bUA.remove(paramInt)) {
+      bg(localView);
+    }
+    this.bUz.removeViewAt(paramInt);
+    AppMethodBeat.o(194765);
+  }
+  
+  public String toString()
+  {
+    AppMethodBeat.i(194838);
+    String str = this.bUA.toString() + ", hidden list:" + this.bUB.size();
+    AppMethodBeat.o(194838);
+    return str;
+  }
+  
+  static final class a
+  {
+    long bUC = 0L;
+    a bUD;
+    
+    private void IV()
+    {
+      AppMethodBeat.i(194935);
+      if (this.bUD == null) {
+        this.bUD = new a();
+      }
+      AppMethodBeat.o(194935);
+    }
+    
+    final void clear(int paramInt)
+    {
+      a locala = this;
+      while (paramInt >= 64)
+      {
+        if (locala.bUD == null) {
+          return;
+        }
+        locala = locala.bUD;
+        paramInt -= 64;
+      }
+      locala.bUC &= (1L << paramInt ^ 0xFFFFFFFF);
+    }
+    
+    final boolean cr(int paramInt)
+    {
+      AppMethodBeat.i(194958);
+      a locala = this;
+      while (paramInt >= 64)
+      {
+        locala.IV();
+        locala = locala.bUD;
+        paramInt -= 64;
+      }
+      if ((locala.bUC & 1L << paramInt) != 0L)
+      {
+        AppMethodBeat.o(194958);
+        return true;
+      }
+      AppMethodBeat.o(194958);
+      return false;
+    }
+    
+    final int fE(int paramInt)
+    {
+      AppMethodBeat.i(194982);
+      if (this.bUD == null)
+      {
+        if (paramInt >= 64)
+        {
+          paramInt = Long.bitCount(this.bUC);
+          AppMethodBeat.o(194982);
+          return paramInt;
+        }
+        paramInt = Long.bitCount(this.bUC & (1L << paramInt) - 1L);
+        AppMethodBeat.o(194982);
+        return paramInt;
+      }
+      if (paramInt < 64)
+      {
+        paramInt = Long.bitCount(this.bUC & (1L << paramInt) - 1L);
+        AppMethodBeat.o(194982);
+        return paramInt;
+      }
+      paramInt = this.bUD.fE(paramInt - 64);
+      int i = Long.bitCount(this.bUC);
+      AppMethodBeat.o(194982);
+      return paramInt + i;
+    }
+    
+    final boolean remove(int paramInt)
+    {
+      AppMethodBeat.i(194974);
+      a locala = this;
+      while (paramInt >= 64)
+      {
+        locala.IV();
+        locala = locala.bUD;
+        paramInt -= 64;
+      }
+      long l1 = 1L << paramInt;
+      if ((locala.bUC & l1) != 0L) {}
+      for (boolean bool = true;; bool = false)
+      {
+        locala.bUC &= (l1 ^ 0xFFFFFFFF);
+        l1 -= 1L;
+        long l2 = locala.bUC;
+        locala.bUC = (Long.rotateRight((l1 ^ 0xFFFFFFFF) & locala.bUC, 1) | l2 & l1);
+        if (locala.bUD != null)
+        {
+          if (locala.bUD.cr(0)) {
+            locala.set(63);
+          }
+          locala.bUD.remove(0);
+        }
+        AppMethodBeat.o(194974);
+        return bool;
+      }
+    }
+    
+    final void set(int paramInt)
+    {
+      AppMethodBeat.i(194945);
+      a locala = this;
+      while (paramInt >= 64)
+      {
+        locala.IV();
+        locala = locala.bUD;
+        paramInt -= 64;
+      }
+      locala.bUC |= 1L << paramInt;
+      AppMethodBeat.o(194945);
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(194989);
+      if (this.bUD == null)
+      {
+        str = Long.toBinaryString(this.bUC);
+        AppMethodBeat.o(194989);
+        return str;
+      }
+      String str = this.bUD.toString() + "xx" + Long.toBinaryString(this.bUC);
+      AppMethodBeat.o(194989);
+      return str;
+    }
+    
+    final void v(int paramInt, boolean paramBoolean)
+    {
+      AppMethodBeat.i(194966);
+      boolean bool = paramBoolean;
+      a locala = this;
+      while (paramInt >= 64)
+      {
+        locala.IV();
+        locala = locala.bUD;
+        paramInt -= 64;
+      }
+      if ((locala.bUC & 0x0) != 0L)
+      {
+        paramBoolean = true;
+        label52:
+        long l1 = (1L << paramInt) - 1L;
+        long l2 = locala.bUC;
+        locala.bUC = (((l1 ^ 0xFFFFFFFF) & locala.bUC) << 1 | l2 & l1);
+        if (!bool) {
+          break label137;
+        }
+        locala.set(paramInt);
+      }
+      for (;;)
+      {
+        if ((!paramBoolean) && (locala.bUD == null)) {
+          break label146;
+        }
+        locala.IV();
+        locala = locala.bUD;
+        paramInt = 0;
+        bool = paramBoolean;
+        break;
+        paramBoolean = false;
+        break label52;
+        label137:
+        locala.clear(paramInt);
+      }
+      label146:
+      AppMethodBeat.o(194966);
+    }
+  }
+  
+  static abstract interface b
+  {
+    public abstract void addView(View paramView, int paramInt);
+    
+    public abstract void attachViewToParent(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams);
+    
+    public abstract int bh(View paramView);
+    
+    public abstract RecyclerView.v bj(View paramView);
+    
+    public abstract void bk(View paramView);
+    
+    public abstract void bl(View paramView);
+    
+    public abstract void detachViewFromParent(int paramInt);
+    
+    public abstract View getChildAt(int paramInt);
+    
+    public abstract int getChildCount();
+    
+    public abstract void removeAllViews();
+    
+    public abstract void removeViewAt(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.recyclerview.widget.e
  * JD-Core Version:    0.7.0.1
  */

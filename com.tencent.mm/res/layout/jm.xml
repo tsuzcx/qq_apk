@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" style="@style/rj"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:id="@id/fge" android:background="@drawable/bpv" android:padding="@dimen/ir" android:focusable="true" android:focusableInTouchMode="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/iq">
-        <ProgressBar android:id="@id/fgc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ir" style="@style/a61" />
-        <TextView android:textSize="@dimen/is" android:textColor="@color/ag2" android:id="@id/fgd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="200.0dip" android:minWidth="150.0dip" android:text="@string/a06" />
+<LinearLayout android:orientation="vertical" android:id="@id/ae4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:importantForAccessibility="no"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/ae_" android:paddingLeft="@dimen/i6" android:paddingTop="@dimen/ig" android:paddingRight="@dimen/i6" android:paddingBottom="@dimen/ig" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/db" android:layout_marginBottom="@dimen/db">
+        <TextView android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/aea" android:paddingLeft="28.0dip" android:paddingRight="28.0dip" android:text="@string/aow" android:layout_weight="1.0" style="@style/zn" />
     </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/acq" android:paddingLeft="@dimen/cv" android:paddingRight="@dimen/cp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d0" android:layout_marginBottom="@dimen/d1">
+        <TextView android:textSize="@dimen/m3" android:textColor="@color/xo" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/aeh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ap1" android:singleLine="true" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@raw/biz_item_more_green_icon" android:scaleType="centerCrop" app:iconColor="@color/xo" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/t" android:textColor="@color/gb" android:layout_gravity="left" android:id="@id/aej" android:paddingLeft="@dimen/cp" android:paddingRight="@dimen/cd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/ap0" android:layout_weight="1.0" />
+        <LinearLayout android:layout_gravity="center|right" android:orientation="horizontal" android:id="@id/aei" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/cp">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@raw/icons_outlined_refresh" android:scaleType="centerCrop" app:iconColor="@color/xo" />
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:layout_gravity="left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bv" android:text="@string/aoz" />
+        </LinearLayout>
+    </LinearLayout>
+    <ProgressBar android:layout_gravity="center_horizontal" android:id="@id/aeg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginRight="@dimen/iq" android:layout_marginBottom="@dimen/cp" android:scaleType="centerCrop" style="@style/a85" />
 </LinearLayout>

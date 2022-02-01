@@ -7,7 +7,6 @@ import com.google.android.gms.common.api.Api.Client;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.Result;
 import com.google.android.gms.common.api.Status;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collections;
 import java.util.Map;
@@ -19,7 +18,6 @@ public final class zzck
   public static final Status zzmm;
   private static final BasePendingResult<?>[] zzmn;
   private final Map<Api.AnyClientKey<?>, Api.Client> zzil;
-  @VisibleForTesting
   final Set<BasePendingResult<?>> zzmo;
   private final zzcn zzmp;
   
@@ -117,7 +115,7 @@ public final class zzck
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.zzck
  * JD-Core Version:    0.7.0.1
  */

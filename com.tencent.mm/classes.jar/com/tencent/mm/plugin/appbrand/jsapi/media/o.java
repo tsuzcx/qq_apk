@@ -1,7 +1,6 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
 import android.content.Context;
-import android.text.TextUtils;
 import android.widget.Toast;
 import com.tencent.luggage.b.a.a.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -13,47 +12,43 @@ import com.tencent.mm.sdk.system.AndroidMediaUtil;
 public final class o
   extends a
 {
-  public static final int CTRL_INDEX = 216;
-  public static final String NAME = "saveVideoToPhotosAlbum";
+  public static final int CTRL_INDEX = 217;
+  public static final String NAME = "saveImageToPhotosAlbum";
   
-  final boolean ahR(String paramString)
+  final boolean aaP(String paramString)
   {
-    AppMethodBeat.i(139885);
-    boolean bool = Util.nullAsNil(paramString).toLowerCase().contains("video");
-    AppMethodBeat.o(139885);
+    AppMethodBeat.i(139881);
+    boolean bool = Util.nullAsNil(paramString).toLowerCase().contains("image");
+    AppMethodBeat.o(139881);
     return bool;
   }
   
-  final String ahS(String paramString)
+  final String aaQ(String paramString)
   {
-    AppMethodBeat.i(139886);
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      str = "mp4";
-    }
-    paramString = AndroidMediaUtil.getExportImagePath(str);
-    AppMethodBeat.o(139886);
+    AppMethodBeat.i(139882);
+    paramString = AndroidMediaUtil.getExportImagePath(paramString);
+    AppMethodBeat.o(139882);
     return paramString;
   }
   
-  final void ahT(final String paramString)
+  final void aaR(String paramString)
   {
-    AppMethodBeat.i(139887);
+    AppMethodBeat.i(139883);
     MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(139884);
-        Toast.makeText(MMApplicationContext.getContext(), MMApplicationContext.getContext().getString(a.g.video_file_saved, new Object[] { AndroidMediaUtil.getFriendlySdcardPath(paramString) }), 1).show();
-        AppMethodBeat.o(139884);
+        AppMethodBeat.i(139880);
+        Toast.makeText(MMApplicationContext.getContext(), MMApplicationContext.getContext().getString(a.g.cropimage_saved, new Object[] { AndroidMediaUtil.getToastSysCameraPath() }), 1).show();
+        AppMethodBeat.o(139880);
       }
     });
-    AppMethodBeat.o(139887);
+    AppMethodBeat.o(139883);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.o
  * JD-Core Version:    0.7.0.1
  */

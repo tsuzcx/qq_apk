@@ -86,7 +86,7 @@ public class media_preview_btn_close
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.media_preview_btn_close
  * JD-Core Version:    0.7.0.1
  */

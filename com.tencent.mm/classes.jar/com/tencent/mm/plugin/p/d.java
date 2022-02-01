@@ -1,97 +1,75 @@
 package com.tencent.mm.plugin.p;
 
-import androidx.lifecycle.ab;
-import androidx.lifecycle.x;
-import androidx.lifecycle.y;
-import androidx.lifecycle.y.b;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.h;
-import kotlin.g.b.p;
-import kotlin.l;
+import android.graphics.Point;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mapsdk.raster.model.Circle;
+import com.tencent.tencentmap.mapsdk.map.CameraUpdate;
+import com.tencent.tencentmap.mapsdk.map.TencentMap.OnMarkerClickListener;
+import java.util.Collection;
+import java.util.Set;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/livestorage/LiveDB;", "", "()V", "Companion", "plugin-livestorage_release"})
-public final class d
+public abstract interface d
 {
-  public static final a EiT;
+  public abstract void addPinView(View paramView, double paramDouble1, double paramDouble2);
   
-  static
-  {
-    AppMethodBeat.i(254423);
-    EiT = new a((byte)0);
-    AppMethodBeat.o(254423);
-  }
+  public abstract void addView(Object paramObject, double paramDouble1, double paramDouble2, String paramString);
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/livestorage/LiveDB$Companion;", "", "()V", "getLiveDB", "T", "Landroidx/lifecycle/ViewModel;", "modelClass", "Ljava/lang/Class;", "(Ljava/lang/Class;)Landroidx/lifecycle/ViewModel;", "getLiveStorage", "plugin-livestorage_release"})
-  public static final class a
-  {
-    public static <T extends x> T bj(Class<T> paramClass)
-    {
-      AppMethodBeat.i(254362);
-      p.k(paramClass, "modelClass");
-      h.aHE().aGH();
-      if (!a.class.isAssignableFrom(paramClass))
-      {
-        paramClass = (Throwable)new IllegalArgumentException("getLiveDB modelClass must extends BaseMMLiveDB");
-        AppMethodBeat.o(254362);
-        throw paramClass;
-      }
-      com.tencent.mm.kernel.b localb = h.aHE();
-      p.j(localb, "MMKernel.account()");
-      paramClass = new y((ab)localb.aGT(), (y.b)new a()).i(paramClass);
-      AppMethodBeat.o(254362);
-      return paramClass;
-    }
-    
-    public static <T extends x> T bk(Class<T> paramClass)
-    {
-      AppMethodBeat.i(254365);
-      p.k(paramClass, "modelClass");
-      h.aHE().aGH();
-      if (!b.class.isAssignableFrom(paramClass))
-      {
-        paramClass = (Throwable)new IllegalArgumentException("getLiveStorage modelClass must extends BaseMMLiveStorage");
-        AppMethodBeat.o(254365);
-        throw paramClass;
-      }
-      com.tencent.mm.kernel.b localb = h.aHE();
-      p.j(localb, "MMKernel.account()");
-      paramClass = new y((ab)localb.aGT(), (y.b)new b()).i(paramClass);
-      AppMethodBeat.o(254365);
-      return paramClass;
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/livestorage/LiveDB$Companion$getLiveDB$1", "Landroidx/lifecycle/ViewModelProvider$Factory;", "create", "T", "Landroidx/lifecycle/ViewModel;", "modelClass", "Ljava/lang/Class;", "(Ljava/lang/Class;)Landroidx/lifecycle/ViewModel;", "plugin-livestorage_release"})
-    public static final class a
-      implements y.b
-    {
-      public final <T extends x> T create(Class<T> paramClass)
-      {
-        AppMethodBeat.i(254427);
-        p.k(paramClass, "modelClass");
-        paramClass = (x)paramClass.newInstance();
-        AppMethodBeat.o(254427);
-        return paramClass;
-      }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/livestorage/LiveDB$Companion$getLiveStorage$1", "Landroidx/lifecycle/ViewModelProvider$Factory;", "create", "T", "Landroidx/lifecycle/ViewModel;", "modelClass", "Ljava/lang/Class;", "(Ljava/lang/Class;)Landroidx/lifecycle/ViewModel;", "plugin-livestorage_release"})
-    public static final class b
-      implements y.b
-    {
-      public final <T extends x> T create(Class<T> paramClass)
-      {
-        AppMethodBeat.i(254526);
-        p.k(paramClass, "modelClass");
-        paramClass = (x)paramClass.newInstance();
-        AppMethodBeat.o(254526);
-        return paramClass;
-      }
-    }
-  }
+  public abstract void animateCamera(CameraUpdate paramCameraUpdate);
+  
+  public abstract void clean();
+  
+  public abstract void destroy();
+  
+  public abstract Circle drawAccuracyCircle(double paramDouble1, double paramDouble2, double paramDouble3);
+  
+  public abstract Collection<Object> getChilds();
+  
+  public abstract b getIController();
+  
+  public abstract int getMapCenterX();
+  
+  public abstract int getMapCenterY();
+  
+  public abstract Point getPointByGeoPoint(double paramDouble1, double paramDouble2);
+  
+  public abstract Set<String> getTags();
+  
+  public abstract Object getViewByItag(String paramString);
+  
+  public abstract e getViewManager();
+  
+  public abstract int getZoom();
+  
+  public abstract int getZoomLevel();
+  
+  public abstract void invalidate();
+  
+  public abstract void removeView(View paramView);
+  
+  public abstract Object removeViewByTag(String paramString);
+  
+  public abstract void setBuiltInZoomControls(boolean paramBoolean);
+  
+  public abstract void setCanRotate(boolean paramBoolean);
+  
+  public abstract void setLogoMargin(int[] paramArrayOfInt);
+  
+  public abstract void setMapAnchor(float paramFloat1, float paramFloat2);
+  
+  public abstract void setMapViewOnTouchListener(View.OnTouchListener paramOnTouchListener);
+  
+  public abstract void setMarkerClickListener(View paramView, TencentMap.OnMarkerClickListener paramOnMarkerClickListener);
+  
+  public abstract void updateLocaitonPinLayout(View paramView, double paramDouble1, double paramDouble2);
+  
+  public abstract void updateMarkerView(View paramView);
+  
+  public abstract void zoomToSpan(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.p.d
  * JD-Core Version:    0.7.0.1
  */

@@ -12,9 +12,9 @@ final class h$1
   
   public final void run()
   {
-    AppMethodBeat.i(204674);
+    AppMethodBeat.i(260378);
     Toast.makeText(MMApplicationContext.getContext(), String.format("MediaCodecProxy queueInputBuffer, thread:[%s]", new Object[] { Integer.valueOf(Process.myTid()) }), 1).show();
-    AppMethodBeat.o(204674);
+    AppMethodBeat.o(260378);
   }
 }
 

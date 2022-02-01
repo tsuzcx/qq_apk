@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.hld;
 
 public final class a$a
 {
-  public static final int slide_left_out = 2130772163;
-  public static final int slide_right_in = 2130772166;
+  public static final int slide_left_out = 2130772170;
+  public static final int slide_right_in = 2130772175;
 }
 
 

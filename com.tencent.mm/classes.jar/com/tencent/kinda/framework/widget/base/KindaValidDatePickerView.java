@@ -1,6 +1,9 @@
 package com.tencent.kinda.framework.widget.base;
 
 import android.content.Context;
+import android.view.View;
+import android.view.accessibility.AccessibilityNodeInfo;
+import android.widget.Button;
 import android.widget.EditText;
 import com.tencent.kinda.framework.R.string;
 import com.tencent.kinda.framework.widget.tools.MMKViewUtil;
@@ -12,6 +15,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.widget.picker.a;
 import com.tencent.mm.ui.widget.picker.a.a;
+import com.tencent.mm.wallet_core.c;
 import com.tenpay.android.wechat.TenpaySecureEditText;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -39,8 +43,20 @@ public class KindaValidDatePickerView
     this.mEditText.setBackground(null);
     this.mEditText.setIsValidThru(true);
     this.mEditText.setHint(R.string.wallet_card_date_hint);
+    this.mEditText.setSingleLine(false);
     this.mEditText.setPadding(0, 0, 0, 0);
-    this.mEditText.setTextSize(0, MMKViewUtil.dpToPx(paramContext, 17.0F));
+    float f = MMKViewUtil.getScaleSize(paramContext);
+    this.mEditText.setTextSize(0, MMKViewUtil.dpToPx(paramContext, f * 17.0F));
+    this.mEditText.setAccessibilityDelegate(new c()
+    {
+      public void onInitializeAccessibilityNodeInfo(View paramAnonymousView, AccessibilityNodeInfo paramAnonymousAccessibilityNodeInfo)
+      {
+        AppMethodBeat.i(226500);
+        super.onInitializeAccessibilityNodeInfo(paramAnonymousView, paramAnonymousAccessibilityNodeInfo);
+        paramAnonymousAccessibilityNodeInfo.setClassName(Button.class.getName());
+        AppMethodBeat.o(226500);
+      }
+    });
     if ((paramContext instanceof UIPageFragmentActivity)) {
       this.activity = ((UIPageFragmentActivity)paramContext);
     }
@@ -70,25 +86,25 @@ public class KindaValidDatePickerView
       this.activity.hideVKB();
       this.activity.hideTenpayKB();
       this.datePicker = new a(this.activity);
-      this.datePicker.bq(true, false);
-      this.datePicker.YrF = new a.a()
+      this.datePicker.bP(true, false);
+      this.datePicker.agjU = new a.a()
       {
         public void onResult(boolean paramAnonymousBoolean, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
         {
-          AppMethodBeat.i(18974);
+          AppMethodBeat.i(226505);
           KindaValidDatePickerView.this.datePicker.hide();
           if (paramAnonymousBoolean)
           {
-            Object localObject = KindaValidDatePickerView.this.datePicker.idn();
+            Object localObject = KindaValidDatePickerView.this.datePicker.jIy();
             if (Util.isNullOrNil((String)localObject))
             {
-              AppMethodBeat.o(18974);
+              AppMethodBeat.o(226505);
               return;
             }
             String[] arrayOfString = ((String)localObject).split("-");
             if (arrayOfString.length < 2)
             {
-              AppMethodBeat.o(18974);
+              AppMethodBeat.o(226505);
               return;
             }
             Log.d("base_MMKView", "result: %s", new Object[] { localObject });
@@ -100,24 +116,24 @@ public class KindaValidDatePickerView
             KindaValidDatePickerView.access$402(KindaValidDatePickerView.this, ((DecimalFormat)localObject).format(KindaValidDatePickerView.this.mYear).substring(2) + ((DecimalFormat)localObject).format(KindaValidDatePickerView.this.mMonthOfYear + 1));
             KindaValidDatePickerView.this.callback.onSelect(KindaValidDatePickerView.this.mSelected);
           }
-          AppMethodBeat.o(18974);
+          AppMethodBeat.o(226505);
         }
       };
       Object localObject = new Date();
       localObject = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA).format((Date)localObject).split("-");
       if (localObject.length >= 3)
       {
-        this.datePicker.bc(Util.safeParseInt(localObject[0]), Util.safeParseInt(localObject[1]), Util.safeParseInt(localObject[2]));
-        this.datePicker.bd(Util.safeParseInt(localObject[0]) + 30, 12, 31);
+        this.datePicker.bD(Util.safeParseInt(localObject[0]), Util.safeParseInt(localObject[1]), Util.safeParseInt(localObject[2]));
+        this.datePicker.bE(Util.safeParseInt(localObject[0]) + 30, 12, 31);
       }
       for (;;)
       {
-        this.datePicker.bb(this.mYear, this.mMonthOfYear + 1, 1);
+        this.datePicker.bC(this.mYear, this.mMonthOfYear + 1, 1);
         this.datePicker.show();
         AppMethodBeat.o(18976);
         return;
-        this.datePicker.bc(Util.safeParseInt(localObject[0]), 1, 1);
-        this.datePicker.bd(Util.safeParseInt(localObject[0]) + 30, 12, 31);
+        this.datePicker.bD(Util.safeParseInt(localObject[0]), 1, 1);
+        this.datePicker.bE(Util.safeParseInt(localObject[0]) + 30, 12, 31);
       }
     }
     if (this.datePicker != null) {
@@ -133,7 +149,7 @@ public class KindaValidDatePickerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaValidDatePickerView
  * JD-Core Version:    0.7.0.1
  */

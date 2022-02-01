@@ -1,68 +1,55 @@
 package com.tencent.mm.plugin.finder.live.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.cd.b;
-import com.tencent.mm.live.b.l.k;
-import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.cgi.ao;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.plugin.finder.cgi.bi;
 import com.tencent.mm.plugin.findersdk.b.c;
-import com.tencent.mm.protocal.protobuf.azn;
-import com.tencent.mm.protocal.protobuf.azo;
-import com.tencent.mm.protocal.protobuf.eaf;
-import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.protocal.protobuf.bgu;
+import com.tencent.mm.protocal.protobuf.bgv;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.kd;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/cgi/CgiFinderLiveGetGameTeamInfo;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveGetGameTeamInfoResponse;", "feedId", "", "liveId", "liveCookies", "Lcom/tencent/mm/protobuf/ByteString;", "nonceId", "", "(JJLcom/tencent/mm/protobuf/ByteString;Ljava/lang/String;)V", "TAG", "getFeedId", "()J", "getLiveCookies", "()Lcom/tencent/mm/protobuf/ByteString;", "getLiveId", "getNonceId", "()Ljava/lang/String;", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLiveGetGameTeamInfoRequest;", "onCgiEnd", "", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/cgi/CgiFinderLiveFanClubGetIntimacy;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveFanClubGetIntimacyResp;", "anchorFinderUserName", "", "liveCookies", "Lcom/tencent/mm/protobuf/ByteString;", "liveId", "", "objectId", "username", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Ljava/lang/String;Lcom/tencent/mm/protobuf/ByteString;JJLjava/lang/String;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "TAG", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLiveFanClubGetIntimacyReq;", "getRequest", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveFanClubGetIntimacyReq;", "initReqResp", "", "onCgiEnd", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class i
-  extends c<azo>
+  extends c<bgv>
 {
+  private final bgu Cvq;
   private final String TAG;
-  private final long feedId;
-  private final long liveId;
-  private final String nonceId;
-  private azn xYb;
-  private final b xak;
   
-  public i(long paramLong1, long paramLong2, b paramb, String paramString)
+  public i(String paramString1, b paramb, long paramLong1, long paramLong2, String paramString2)
   {
     super(null);
-    AppMethodBeat.i(286576);
-    this.feedId = paramLong1;
-    this.liveId = paramLong2;
-    this.xak = paramb;
-    this.nonceId = paramString;
-    this.TAG = "Finder.CgiFinderLiveGetGameTeamInfo";
-    this.xYb = new azn();
-    paramb = this.xYb;
-    paramString = ao.xcj;
-    paramb.RLM = ao.dnO();
-    this.xYb.object_id = this.feedId;
-    this.xYb.klE = this.liveId;
-    this.xYb.RLO = this.xak;
-    this.xYb.object_nonce_id = this.nonceId;
-    this.xYb.RLN = z.bdh();
-    paramb = this.xYb;
-    paramString = l.k.kuV;
-    paramb.scene = l.k.aNW();
-    paramb = new d.a();
-    paramb.c((a)this.xYb);
-    paramString = new azo();
-    paramString.setBaseResponse(new jh());
-    paramString.getBaseResponse().Tef = new eaf();
-    paramb.d((a)paramString);
-    paramb.TW("/cgi-bin/micromsg-bin/finderlivegetgameteaminfo");
-    paramb.vD(4159);
-    c(paramb.bgN());
-    Log.i(this.TAG, "init feedId:" + this.feedId + ", liveId:" + this.liveId + ", nonceId:" + this.nonceId + ", liveCookies size:" + this.xak.UH.length);
-    AppMethodBeat.o(286576);
+    AppMethodBeat.i(351131);
+    this.TAG = "CgiFinderLiveFanClubGetIntimacy";
+    this.Cvq = new bgu();
+    bgu localbgu = this.Cvq;
+    bi localbi = bi.ABn;
+    localbgu.YIY = bi.dVu();
+    this.Cvq.ZKq = paramString1;
+    this.Cvq.YJa = paramb;
+    this.Cvq.mMJ = paramLong1;
+    this.Cvq.object_id = paramLong2;
+    this.Cvq.YIZ = paramString2;
+    paramString1 = new c.a();
+    paramString1.otE = ((a)this.Cvq);
+    paramb = new bgv();
+    paramb.setBaseResponse(new kd());
+    paramb.getBaseResponse().akjO = new etl();
+    paramString1.otF = ((a)paramb);
+    paramString1.uri = "/cgi-bin/micromsg-bin/finderlivefanclubgetintimacy";
+    paramString1.funcId = 5985;
+    c(paramString1.bEF());
+    Log.i(this.TAG, "init " + this.Cvq.ZKq + ',' + this.Cvq.YJa + ',' + this.Cvq.mMJ + ',' + this.Cvq.object_id);
+    AppMethodBeat.o(351131);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.cgi.i
  * JD-Core Version:    0.7.0.1
  */

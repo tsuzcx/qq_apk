@@ -19,25 +19,25 @@ public class APMidasPluginDownloadUtils
   
   static boolean checkIniFileExist(File paramFile)
   {
-    AppMethodBeat.i(253009);
+    AppMethodBeat.i(217164);
     if (paramFile == null)
     {
-      AppMethodBeat.o(253009);
+      AppMethodBeat.o(217164);
       return false;
     }
     if (!paramFile.isDirectory())
     {
-      AppMethodBeat.o(253009);
+      AppMethodBeat.o(217164);
       return false;
     }
     boolean bool = new File(paramFile, "MidasSign.ini").exists();
-    AppMethodBeat.o(253009);
+    AppMethodBeat.o(217164);
     return bool;
   }
   
   private static JSONArray getPureH5UpdateJsAlertData(String paramString)
   {
-    AppMethodBeat.i(253007);
+    AppMethodBeat.i(217146);
     if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("midassdk://")) && (paramString.length() > 11))
     {
       paramString = paramString.substring(11, paramString.length());
@@ -47,34 +47,34 @@ public class APMidasPluginDownloadUtils
         if ((paramString.has("action")) && ("update".equalsIgnoreCase(paramString.getString("action"))) && (paramString.has("data")) && (!TextUtils.isEmpty(paramString.getString("data"))))
         {
           paramString = paramString.getJSONArray("data");
-          AppMethodBeat.o(253007);
+          AppMethodBeat.o(217146);
           return paramString;
         }
       }
       catch (JSONException paramString)
       {
-        AppMethodBeat.o(253007);
+        AppMethodBeat.o(217146);
         return null;
       }
     }
-    AppMethodBeat.o(253007);
+    AppMethodBeat.o(217146);
     return null;
   }
   
   public static boolean handlePureH5UpdateJsAlertLogic(Context paramContext, final String paramString)
   {
     boolean bool = false;
-    AppMethodBeat.i(253011);
+    AppMethodBeat.i(217189);
     if (paramContext == null)
     {
       APLog.d("PDUtils", "Cannot handle h5 update logic! Null context!");
-      AppMethodBeat.o(253011);
+      AppMethodBeat.o(217189);
       return false;
     }
     if (TextUtils.isEmpty(paramString))
     {
       APLog.d("PDUtils", "Cannot handle h5 update logic! Empty alert message!");
-      AppMethodBeat.o(253011);
+      AppMethodBeat.o(217189);
       return false;
     }
     if (isPureH5UpdateJsAlert(paramString)) {
@@ -84,7 +84,7 @@ public class APMidasPluginDownloadUtils
     if (paramString == null)
     {
       APLog.d("PDUtils", "Cannot handle h5 update logic! Not relevant message!");
-      AppMethodBeat.o(253011);
+      AppMethodBeat.o(217189);
       return bool;
     }
     APLog.d("PDUtils", "Got h5 update alert message!");
@@ -92,13 +92,13 @@ public class APMidasPluginDownloadUtils
     if (paramString == null)
     {
       APLog.d("PDUtils", "Got h5 update alert message! Cannot parse json to list!");
-      AppMethodBeat.o(253011);
+      AppMethodBeat.o(217189);
       return bool;
     }
     if (paramString.size() <= 0)
     {
       APLog.d("PDUtils", "Got h5 update alert message! Cannot parse json to list! Size error = " + paramString.size());
-      AppMethodBeat.o(253011);
+      AppMethodBeat.o(217189);
       return bool;
     }
     APLog.d("PDUtils", "Got h5 update alert message! Start down lists = " + paramString.toString());
@@ -108,19 +108,19 @@ public class APMidasPluginDownloadUtils
       
       public final void onDownloadSuccess()
       {
-        AppMethodBeat.i(253019);
+        AppMethodBeat.i(217148);
         APLog.d("PDUtils", "Got h5 update alert message! List download success!");
         APMidasPluginDownloadUtils.access$000(this.val$context, paramString);
-        AppMethodBeat.o(253019);
+        AppMethodBeat.o(217148);
       }
     });
-    AppMethodBeat.o(253011);
+    AppMethodBeat.o(217189);
     return bool;
   }
   
   private static boolean isPureH5UpdateJsAlert(String paramString)
   {
-    AppMethodBeat.i(253008);
+    AppMethodBeat.i(217156);
     if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("midassdk://")) && (paramString.length() > 11))
     {
       Object localObject = paramString.substring(11, paramString.length());
@@ -131,27 +131,27 @@ public class APMidasPluginDownloadUtils
         {
           APLog.d("PDUtils", "isPureH5UpdateJsAlert msg = ".concat(String.valueOf(paramString)));
           APLog.d("PDUtils", "isPureH5UpdateJsAlert == true!");
-          AppMethodBeat.o(253008);
+          AppMethodBeat.o(217156);
           return true;
         }
       }
       catch (JSONException paramString)
       {
-        AppMethodBeat.o(253008);
+        AppMethodBeat.o(217156);
         return false;
       }
     }
-    AppMethodBeat.o(253008);
+    AppMethodBeat.o(217156);
     return false;
   }
   
   private static ArrayList<APMidasPluginDownInfo> parseDownJson(JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(253006);
+    AppMethodBeat.i(217139);
     if (paramJSONArray == null)
     {
       APLog.e("PDUtils", "Cannot parse down json! jsonArray is null!");
-      AppMethodBeat.o(253006);
+      AppMethodBeat.o(217139);
       return null;
     }
     ArrayList localArrayList;
@@ -165,7 +165,7 @@ public class APMidasPluginDownloadUtils
         if (j == 0)
         {
           APLog.e("PDUtils", "Cannot parse down json! jsonArray length is 0!");
-          AppMethodBeat.o(253006);
+          AppMethodBeat.o(217139);
           return null;
         }
         localArrayList = new ArrayList();
@@ -179,14 +179,14 @@ public class APMidasPluginDownloadUtils
         if (TextUtils.isEmpty(localAPMidasPluginDownInfo.name))
         {
           APLog.e("PDUtils", "Cannot parse down json! item's name is empty!");
-          AppMethodBeat.o(253006);
+          AppMethodBeat.o(217139);
           return null;
         }
         localAPMidasPluginDownInfo.new_md5_encode = localJSONObject.getString("update_md5");
         if (TextUtils.isEmpty(localAPMidasPluginDownInfo.new_md5_encode))
         {
           APLog.e("PDUtils", "Cannot parse down json! item's new encode md5 is empty!");
-          AppMethodBeat.o(253006);
+          AppMethodBeat.o(217139);
           return null;
         }
         try
@@ -198,7 +198,7 @@ public class APMidasPluginDownloadUtils
           if (TextUtils.isEmpty(localAPMidasPluginDownInfo.new_md5_decode))
           {
             APLog.e("PDUtils", "Cannot parse down json! item's new decode md5 is empty!");
-            AppMethodBeat.o(253006);
+            AppMethodBeat.o(217139);
             return null;
           }
         }
@@ -212,48 +212,48 @@ public class APMidasPluginDownloadUtils
       catch (Exception paramJSONArray)
       {
         APLog.e("PDUtils", "Cannot parse down json! exception = ".concat(String.valueOf(paramJSONArray)));
-        AppMethodBeat.o(253006);
+        AppMethodBeat.o(217139);
         return null;
       }
       if (TextUtils.isEmpty(localAPMidasPluginDownInfo.full_url))
       {
         APLog.e("PDUtils", "Cannot parse down json! item's full url is empty!");
-        AppMethodBeat.o(253006);
+        AppMethodBeat.o(217139);
         return null;
       }
       localArrayList.add(localAPMidasPluginDownInfo);
       i += 1;
     }
-    AppMethodBeat.o(253006);
+    AppMethodBeat.o(217139);
     return localArrayList;
   }
   
   private static void writeMidasSignFile(Context paramContext, ArrayList<APMidasPluginDownInfo> paramArrayList)
   {
-    AppMethodBeat.i(253010);
+    AppMethodBeat.i(217180);
     if (paramContext == null)
     {
       APLog.e("PDUtils", "Cannot write MidasSign.ini! null context!");
-      AppMethodBeat.o(253010);
+      AppMethodBeat.o(217180);
       return;
     }
     if (paramArrayList == null)
     {
       APLog.e("PDUtils", "Cannot write MidasSign.ini! null list!");
-      AppMethodBeat.o(253010);
+      AppMethodBeat.o(217180);
       return;
     }
     if (paramArrayList.size() <= 0)
     {
       APLog.e("PDUtils", "Cannot write MidasSign.ini! list size error = " + paramArrayList.size());
-      AppMethodBeat.o(253010);
+      AppMethodBeat.o(217180);
       return;
     }
     Object localObject = new File(paramContext.getApplicationContext().getDir("midaspluginsTemp", 0), "MidasSign.ini");
     if ((((File)localObject).exists()) && (!((File)localObject).delete()))
     {
       APLog.e("PDUtils", "Cannot delete old MidasSign.ini file!");
-      AppMethodBeat.o(253010);
+      AppMethodBeat.o(217180);
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -265,7 +265,7 @@ public class APMidasPluginDownloadUtils
       if (TextUtils.isEmpty(paramContext))
       {
         APLog.e("PDUtils", "Cannot write MidasSign.ini! item name empty!");
-        AppMethodBeat.o(253010);
+        AppMethodBeat.o(217180);
         return;
       }
       if (paramContext.endsWith(".apk")) {
@@ -280,7 +280,7 @@ public class APMidasPluginDownloadUtils
       if (TextUtils.isEmpty(str))
       {
         APLog.e("PDUtils", "Cannot write MidasSign.ini! item md5 empty!");
-        AppMethodBeat.o(253010);
+        AppMethodBeat.o(217180);
         return;
       }
       localStringBuilder.append(paramContext + ":" + str);
@@ -296,7 +296,7 @@ public class APMidasPluginDownloadUtils
         ((BufferedWriter)localObject).close();
         paramArrayList.close();
         APLog.d("PDUtils", "Write MidasSign.ini success!");
-        AppMethodBeat.o(253010);
+        AppMethodBeat.o(217180);
         return;
       }
       catch (Exception paramContext)
@@ -311,7 +311,7 @@ public class APMidasPluginDownloadUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.midas.download.APMidasPluginDownloadUtils
  * JD-Core Version:    0.7.0.1
  */

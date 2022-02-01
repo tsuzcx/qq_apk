@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ah.a.h;
-import com.tencent.mm.ui.ad;
+import com.tencent.mm.ui.af;
 
 public class TextButtonPreference
   extends Preference
@@ -45,7 +45,7 @@ public class TextButtonPreference
   {
     AppMethodBeat.i(142679);
     super.onCreateView(paramViewGroup);
-    paramViewGroup = ad.kS(this.mContext).inflate(a.h.mm_preference_button, paramViewGroup, false);
+    paramViewGroup = af.mU(this.mContext).inflate(a.h.mm_preference_button, paramViewGroup, false);
     AppMethodBeat.o(142679);
     return paramViewGroup;
   }

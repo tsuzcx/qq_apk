@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" android:layout_height="@dimen/az" style="@style/mz"
+<LinearLayout style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/hj5" android:background="@drawable/qa" android:layout_width="fill_parent" android:layout_height="@dimen/az">
-        <com.tencent.mm.ui.AddressView android:id="@id/ft6" android:layout_width="fill_parent" android:layout_height="@dimen/az" />
-    </RelativeLayout>
+    <ScrollView style="@style/o8">
+        <LinearLayout style="@style/lj">
+            <TextView android:textSize="@dimen/j7" android:textColor="@color/xo" android:gravity="left" android:id="@id/bo5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/gva" />
+            <TextView android:textColor="@color/a7b" android:id="@id/boe" android:background="@drawable/p5" android:paddingBottom="@dimen/m7" android:layout_marginTop="@dimen/j6" style="@style/n9" />
+            <LinearLayout android:orientation="vertical" android:id="@id/bqb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i9">
+                <TextView android:textSize="@dimen/j7" android:textColor="@color/xo" android:gravity="left" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/gv7" />
+                <TextView android:textColor="@color/a7b" android:gravity="top" android:id="@id/boa" android:background="@drawable/p5" android:paddingBottom="@dimen/m7" android:layout_width="fill_parent" android:layout_marginTop="@dimen/j6" android:singleLine="false" style="@style/lx" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/bqc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i9">
+                <TextView android:textSize="@dimen/j7" android:textColor="@color/xo" android:gravity="left" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/gv9" />
+                <ImageView android:id="@id/ila" android:layout_width="fill_parent" android:layout_height="200.0dip" android:layout_marginTop="@dimen/j6" android:scaleType="centerCrop" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

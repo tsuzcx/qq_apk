@@ -5,63 +5,63 @@ import android.util.AttributeSet;
 import androidx.coordinatorlayout.widget.CoordinatorLayout.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.view.recyclerview.WxRecyclerView;
-import kotlin.f;
-import kotlin.g;
+import kotlin.Metadata;
 import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/megavideo/ui/OverScrollRecyclerView;", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "Landroidx/coordinatorlayout/widget/CoordinatorLayout$AttachedBehavior;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "overScrollBehavior", "Lcom/tencent/mm/plugin/finder/megavideo/ui/OverScrollVerticalBehavior;", "getOverScrollBehavior", "()Lcom/tencent/mm/plugin/finder/megavideo/ui/OverScrollVerticalBehavior;", "overScrollBehavior$delegate", "Lkotlin/Lazy;", "getBehavior", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/megavideo/ui/OverScrollRecyclerView;", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "Landroidx/coordinatorlayout/widget/CoordinatorLayout$AttachedBehavior;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "overScrollBehavior", "Lcom/tencent/mm/plugin/finder/megavideo/ui/OverScrollVerticalBehavior;", "getOverScrollBehavior", "()Lcom/tencent/mm/plugin/finder/megavideo/ui/OverScrollVerticalBehavior;", "overScrollBehavior$delegate", "Lkotlin/Lazy;", "getBehavior", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class OverScrollRecyclerView
   extends WxRecyclerView
   implements CoordinatorLayout.a
 {
-  private final f zyD;
+  private final j EBv;
   
   public OverScrollRecyclerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(282231);
-    this.zyD = g.ar((a)a.zyE);
-    AppMethodBeat.o(282231);
+    AppMethodBeat.i(341970);
+    this.EBv = k.cm((a)a.EBw);
+    AppMethodBeat.o(341970);
   }
   
   public OverScrollRecyclerView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(282232);
-    this.zyD = g.ar((a)a.zyE);
-    AppMethodBeat.o(282232);
+    AppMethodBeat.i(341979);
+    this.EBv = k.cm((a)a.EBw);
+    AppMethodBeat.o(341979);
   }
   
   public final OverScrollVerticalBehavior getBehavior()
   {
-    AppMethodBeat.i(282229);
+    AppMethodBeat.i(341992);
     OverScrollVerticalBehavior localOverScrollVerticalBehavior = getOverScrollBehavior();
-    AppMethodBeat.o(282229);
+    AppMethodBeat.o(341992);
     return localOverScrollVerticalBehavior;
   }
   
   public final OverScrollVerticalBehavior getOverScrollBehavior()
   {
-    AppMethodBeat.i(282228);
-    OverScrollVerticalBehavior localOverScrollVerticalBehavior = (OverScrollVerticalBehavior)this.zyD.getValue();
-    AppMethodBeat.o(282228);
+    AppMethodBeat.i(341985);
+    OverScrollVerticalBehavior localOverScrollVerticalBehavior = (OverScrollVerticalBehavior)this.EBv.getValue();
+    AppMethodBeat.o(341985);
     return localOverScrollVerticalBehavior;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/finder/megavideo/ui/OverScrollVerticalBehavior;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/finder/megavideo/ui/OverScrollVerticalBehavior;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    extends q
+    extends u
     implements a<OverScrollVerticalBehavior>
   {
-    public static final a zyE;
+    public static final a EBw;
     
     static
     {
-      AppMethodBeat.i(287647);
-      zyE = new a();
-      AppMethodBeat.o(287647);
+      AppMethodBeat.i(341967);
+      EBw = new a();
+      AppMethodBeat.o(341967);
     }
     
     a()

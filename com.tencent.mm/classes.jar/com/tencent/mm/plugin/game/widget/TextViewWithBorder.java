@@ -9,7 +9,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import androidx.appcompat.widget.AppCompatTextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.g.b;
+import com.tencent.mm.plugin.game.h.b;
 
 public class TextViewWithBorder
   extends AppCompatTextView
@@ -24,7 +24,7 @@ public class TextViewWithBorder
     AppMethodBeat.i(42630);
     Paint localPaint = new Paint();
     localPaint.setStyle(Paint.Style.STROKE);
-    localPaint.setColor(getResources().getColor(g.b.CgH));
+    localPaint.setColor(getResources().getColor(h.b.HSQ));
     paramCanvas.drawRoundRect(new RectF(2.0F, 2.0F, getWidth() - 2, getHeight() - 2), 5.0F, 5.0F, localPaint);
     super.onDraw(paramCanvas);
     AppMethodBeat.o(42630);
@@ -32,7 +32,7 @@ public class TextViewWithBorder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.widget.TextViewWithBorder
  * JD-Core Version:    0.7.0.1
  */

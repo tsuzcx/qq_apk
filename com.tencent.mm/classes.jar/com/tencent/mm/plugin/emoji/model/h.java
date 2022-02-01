@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.emoji.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.b.b.ae;
-import com.tencent.mm.emoji.b.b.af;
-import com.tencent.mm.emoji.b.b.m;
-import com.tencent.mm.emoji.b.b.u;
-import com.tencent.mm.emoji.b.b.y;
-import com.tencent.mm.emoji.b.k;
+import com.tencent.mm.emoji.c.b.ae;
+import com.tencent.mm.emoji.c.b.af;
+import com.tencent.mm.emoji.c.b.m;
+import com.tencent.mm.emoji.c.b.u;
+import com.tencent.mm.emoji.c.b.y;
+import com.tencent.mm.emoji.c.l;
 import com.tencent.mm.emoji.sync.g;
 import com.tencent.mm.emoji.sync.g.b;
 import com.tencent.mm.emoji.sync.j;
@@ -16,39 +16,39 @@ import com.tencent.mm.storage.emotion.EmojiInfo;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import kotlin.a.v;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.ab;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emoji/model/EmojiCustomItemGroup;", "Lcom/tencent/mm/emoji/model/panel/IPanelItemGroup;", "hasEntrance", "", "(Z)V", "TAG", "", "contentList", "", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "dataCount", "", "getDataCount", "getGroupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "getItemList", "", "plugin-emoji_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/emoji/model/EmojiCustomItemGroup;", "Lcom/tencent/mm/emoji/model/panel/IPanelItemGroup;", "hasEntrance", "", "(Z)V", "TAG", "", "contentList", "", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "dataCount", "", "getDataCount", "getGroupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "getItemList", "", "plugin-emoji_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class h
   implements y
 {
   private final String TAG;
-  private final List<ae> lYY;
-  private int uEg;
+  private final List<ae> oSh;
+  private int xMx;
   
   public h(boolean paramBoolean)
   {
-    AppMethodBeat.i(256434);
+    AppMethodBeat.i(269859);
     this.TAG = "MicroMsg.EmojiCustomItem";
-    this.lYY = ((List)new LinkedList());
-    Object localObject1 = k.aBH().aBK();
-    if (localObject1 != null) {}
+    this.oSh = ((List)new LinkedList());
+    Object localObject1 = l.aUF().aUG();
+    if (localObject1 == null) {}
     Object localObject2;
     int j;
     int k;
     int i;
-    for (localObject1 = (List)localObject1;; localObject1 = (List)v.aaAd)
+    for (localObject1 = (List)ab.aivy;; localObject1 = (List)localObject1)
     {
-      this.uEg = ((List)localObject1).size();
+      this.xMx = ((List)localObject1).size();
       if (paramBoolean) {
-        this.lYY.add(new m(0));
+        this.oSh.add(new m(0));
       }
-      localObject2 = g.jOs;
-      j = g.b.aDr().aDj();
-      localObject2 = g.jOs;
-      k = g.b.aDr().aDk();
+      localObject2 = g.mmX;
+      j = g.b.aWn().aWj();
+      localObject2 = g.mmX;
+      k = g.b.aWn().aWk();
       Log.i(this.TAG, "sync: " + j + ", " + k);
       localObject1 = ((List)localObject1).iterator();
       i = 0;
@@ -58,10 +58,10 @@ public final class h
           break label295;
         }
         localObject2 = (EmojiInfo)((Iterator)localObject1).next();
-        if (((EmojiInfo)localObject2).field_catalog != EmojiGroupInfo.YCv) {
+        if (((EmojiInfo)localObject2).field_catalog != EmojiGroupInfo.aklE) {
           break;
         }
-        this.uEg -= 1;
+        this.xMx -= 1;
       }
     }
     if (i < k)
@@ -69,43 +69,43 @@ public final class h
       List localList;
       if (i >= j)
       {
-        localList = this.lYY;
-        p.j(localObject2, "info");
-        localList.add(new com.tencent.mm.emoji.b.b.h((EmojiInfo)localObject2, 3));
+        localList = this.oSh;
+        s.s(localObject2, "info");
+        localList.add(new com.tencent.mm.emoji.c.b.h((EmojiInfo)localObject2, 3));
       }
       for (;;)
       {
         i += 1;
         break;
-        localList = this.lYY;
-        p.j(localObject2, "info");
-        localList.add(new com.tencent.mm.emoji.b.b.h((EmojiInfo)localObject2, 0));
+        localList = this.oSh;
+        s.s(localObject2, "info");
+        localList.add(new com.tencent.mm.emoji.c.b.h((EmojiInfo)localObject2, 0));
       }
     }
     label295:
-    localObject1 = g.jOs;
-    if (g.b.aDr().aDl()) {
-      this.lYY.add(new u(0));
+    localObject1 = g.mmX;
+    if (g.b.aWn().aWl()) {
+      this.oSh.add(new u(0));
     }
-    AppMethodBeat.o(256434);
+    AppMethodBeat.o(269859);
   }
   
-  public final EmojiGroupInfo aCi()
+  public final EmojiGroupInfo aVe()
   {
-    AppMethodBeat.i(256425);
-    EmojiGroupInfo localEmojiGroupInfo = af.aCB();
-    AppMethodBeat.o(256425);
+    AppMethodBeat.i(269862);
+    EmojiGroupInfo localEmojiGroupInfo = af.aVy();
+    AppMethodBeat.o(269862);
     return localEmojiGroupInfo;
   }
   
-  public final List<ae> aCj()
+  public final List<ae> aVf()
   {
-    return this.lYY;
+    return this.oSh;
   }
   
   public final int getDataCount()
   {
-    return this.uEg;
+    return this.xMx;
   }
 }
 

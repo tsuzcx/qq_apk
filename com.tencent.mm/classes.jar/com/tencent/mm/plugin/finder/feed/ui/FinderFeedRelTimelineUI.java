@@ -1,68 +1,39 @@
 package com.tencent.mm.plugin.finder.feed.ui;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.feed.m.a;
-import com.tencent.mm.plugin.finder.feed.m.b;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.feed.l.a;
+import com.tencent.mm.plugin.finder.feed.l.b;
 import com.tencent.mm.plugin.finder.feed.model.FinderFeedRelTimelineLoader;
 import com.tencent.mm.plugin.finder.feed.model.internal.IResponse;
-import com.tencent.mm.plugin.finder.model.bu;
-import com.tencent.mm.plugin.finder.viewmodel.component.aj;
+import com.tencent.mm.plugin.finder.model.cc;
+import com.tencent.mm.plugin.finder.viewmodel.component.as;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.component.g;
-import com.tencent.mm.ui.component.g.a;
-import java.util.HashMap;
+import com.tencent.mm.ui.component.k;
+import com.tencent.mm.ui.component.k.b;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.b;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderFeedRelTimelineUI;", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderLoaderFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/model/FinderFeedRelTimelineLoader;", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedRelTimelineContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedRelTimelineContract$Presenter;", "()V", "TAG", "", "feedId", "", "feedLoader", "mPresenter", "mViewCallback", "scene", "", "tabType", "getCommentScene", "getLayoutId", "getModel", "getPresenter", "getReportType", "getViewCallback", "initOnCreate", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderFeedRelTimelineUI;", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderLoaderFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/model/FinderFeedRelTimelineLoader;", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedRelTimelineContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedRelTimelineContract$Presenter;", "()V", "TAG", "", "feedId", "", "feedLoader", "mPresenter", "mViewCallback", "scene", "", "tabType", "getCommentScene", "getLayoutId", "getModel", "getPresenter", "getReportType", "getViewCallback", "initOnCreate", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderFeedRelTimelineUI
-  extends FinderLoaderFeedUI<FinderFeedRelTimelineLoader, m.b, m.a>
+  extends FinderLoaderFeedUI<FinderFeedRelTimelineLoader, l.b, l.a>
 {
+  private l.a Bmt;
+  private l.b Bmu;
+  private FinderFeedRelTimelineLoader Bmv;
   private final String TAG = "Finder.FinderFeedRelTimelineUI";
-  private HashMap _$_findViewCache;
-  private int fEH;
   private long feedId;
+  private int hJx;
   private final int scene = 2;
-  private m.a xMj;
-  private m.b xMk;
-  private FinderFeedRelTimelineLoader xMl;
   
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(290320);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(290320);
-  }
+  public final void _$_clearFindViewByIdCache() {}
   
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(290319);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(290319);
-    return localView1;
-  }
-  
-  public final int duR()
+  public final int edC()
   {
     return 2;
   }
@@ -74,29 +45,33 @@ public final class FinderFeedRelTimelineUI
   
   public final int getLayoutId()
   {
-    return b.g.finder_feed_rel_timeline_ui;
+    return e.f.finder_feed_rel_timeline_ui;
   }
   
   public final void initOnCreate()
   {
-    AppMethodBeat.i(290314);
+    AppMethodBeat.i(365481);
     this.feedId = getIntent().getLongExtra("FEED_ID", 0L);
-    this.fEH = getIntent().getIntExtra("TAB_TYPE", 0);
+    this.hJx = getIntent().getIntExtra("TAB_TYPE", 0);
     setMMTitle("");
-    this.xMj = new m.a((MMActivity)this, this.feedId, this.scene);
-    Object localObject = (MMActivity)this;
-    m.a locala = this.xMj;
-    if (locala == null) {
-      p.bGy("mPresenter");
+    this.Bmt = new l.a((MMActivity)this, this.feedId, this.scene);
+    MMActivity localMMActivity = (MMActivity)this;
+    Object localObject2 = this.Bmt;
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      s.bIx("mPresenter");
+      localObject1 = null;
     }
-    this.xMk = new m.b((MMActivity)localObject, locala, this.scene);
+    this.Bmu = new l.b(localMMActivity, (l.a)localObject1, this.scene);
     long l = this.feedId;
-    int i = this.fEH;
-    localObject = g.Xox;
-    localObject = new FinderFeedRelTimelineLoader(l, "", i, null, 0, false, null, null, null, 0, ((aj)g.b((AppCompatActivity)this).i(aj.class)).ekY(), 0.0F, 0.0F, 28664);
-    ((FinderFeedRelTimelineLoader)localObject).fetchEndCallback = ((b)new a(this));
-    this.xMl = ((FinderFeedRelTimelineLoader)localObject);
-    AppMethodBeat.o(290314);
+    int i = this.hJx;
+    localObject1 = k.aeZF;
+    localObject1 = new FinderFeedRelTimelineLoader(l, "", i, null, 0, false, null, null, null, 0, ((as)k.d((AppCompatActivity)this).q(as.class)).fou(), 0.0F, 0.0F, 28664);
+    ((FinderFeedRelTimelineLoader)localObject1).fetchEndCallback = ((b)new a(this));
+    localObject2 = ah.aiuX;
+    this.Bmv = ((FinderFeedRelTimelineLoader)localObject1);
+    AppMethodBeat.o(365481);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -105,10 +80,10 @@ public final class FinderFeedRelTimelineUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "invoke", "com/tencent/mm/plugin/finder/feed/ui/FinderFeedRelTimelineUI$initOnCreate$1$1"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    extends q
-    implements b<IResponse<bu>, x>
+    extends u
+    implements b<IResponse<cc>, ah>
   {
     a(FinderFeedRelTimelineUI paramFinderFeedRelTimelineUI)
     {

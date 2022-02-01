@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <PreferenceCategory />
-    <com.tencent.mm.plugin.setting.ui.setting.SettingsAboutMMHeaderPreference android:key="fix_tools_micromsg_header" android:layout="@layout/bqm" />
-    <PreferenceCategory />
-    <PreferenceTitleCategory android:key="fix_tools_wording" android:title="@string/dcv" />
-    <Preference android:key="fix_tools_uplog" android:layout="@layout/b8j" android:title="@string/dcl" />
-    <Preference android:key="fix_tools_db_recover" android:layout="@layout/b8j" android:title="@string/dcc" />
-    <Preference android:key="fix_tools_search" android:layout="@layout/b8j" android:title="@string/dcj" />
-    <Preference android:key="fix_tools_matrix" android:layout="@layout/b8j" android:title="@string/dci" />
-    <Preference android:key="fix_force_update" android:layout="@layout/b8j" android:title="@string/dca" />
-    <PreferenceCategory />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="mail_receiver_info_name" android:layout="@layout/bdi" android:title="@string/glk" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="mail_receiver_info_addr" android:layout="@layout/bdi" android:title="@string/glj" />
+    <PreferenceSmallCategory />
+    <Preference android:key="mail_compose_btn" android:layout="@layout/b2b" android:title="@string/hk9" />
 </PreferenceScreen>

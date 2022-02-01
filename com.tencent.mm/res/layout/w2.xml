@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/b_b" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:minHeight="@dimen/ic" android:layout_weight="1.0">
-        <TextView android:gravity="center_horizontal" android:id="@id/b_j" android:text="hello" style="@style/hl" />
-        <FrameLayout android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ce">
-            <ImageView android:layout_gravity="center" android:id="@id/b_i" android:layout_width="@dimen/i8" android:layout_height="@dimen/i8" android:src="@drawable/bar" />
-        </FrameLayout>
-        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct">
-            <ScrollView android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-                <TextView android:gravity="center_horizontal" android:id="@id/b_g" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k5" android:layout_marginRight="@dimen/k5" android:text="message" android:maxLines="4" style="@style/hl" />
-            </ScrollView>
-        </LinearLayout>
-        <com.tencent.mm.ui.widget.edittext.PasterEditText android:id="@id/b_h" style="@style/hg" />
-    </LinearLayout>
+    <Button android:textSize="@dimen/j7" android:textStyle="bold" android:textColor="@color/gw" android:id="@id/gul" android:background="@drawable/c1" android:visibility="gone" android:layout_width="fill_parent" android:minHeight="@dimen/d_" style="@style/or" />
+    <Button android:textSize="@dimen/j7" android:textStyle="bold" android:textColor="@color/gw" android:id="@id/gum" android:background="@drawable/c3" android:visibility="gone" android:layout_width="fill_parent" android:minHeight="@dimen/d_" style="@style/or" />
+    <Button android:textSize="@dimen/j7" android:textStyle="bold" android:textColor="@color/FG_0_5" android:id="@id/gun" android:background="@drawable/c3" android:paddingLeft="@dimen/r" android:paddingRight="@dimen/r" android:visibility="gone" android:layout_width="fill_parent" android:minHeight="@dimen/d_" style="@style/or" />
 </LinearLayout>

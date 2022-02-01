@@ -1,7 +1,6 @@
 package com.google.android.gms.common.wrappers;
 
 import android.content.Context;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class Wrappers
@@ -24,7 +23,6 @@ public class Wrappers
     return paramContext;
   }
   
-  @VisibleForTesting
   public static void resetForTests()
   {
     AppMethodBeat.i(5349);
@@ -38,7 +36,6 @@ public class Wrappers
   }
   
   /* Error */
-  @VisibleForTesting
   public PackageManagerWrapper getPackageManagerWrapper(Context paramContext)
   {
     // Byte code:
@@ -50,13 +47,13 @@ public class Wrappers
     //   9: getfield 28	com/google/android/gms/common/wrappers/Wrappers:zzaba	Lcom/google/android/gms/common/wrappers/PackageManagerWrapper;
     //   12: ifnonnull +22 -> 34
     //   15: aload_1
-    //   16: invokevirtual 44	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   16: invokevirtual 42	android/content/Context:getApplicationContext	()Landroid/content/Context;
     //   19: ifnonnull +30 -> 49
     //   22: aload_0
-    //   23: new 46	com/google/android/gms/common/wrappers/PackageManagerWrapper
+    //   23: new 44	com/google/android/gms/common/wrappers/PackageManagerWrapper
     //   26: dup
     //   27: aload_1
-    //   28: invokespecial 49	com/google/android/gms/common/wrappers/PackageManagerWrapper:<init>	(Landroid/content/Context;)V
+    //   28: invokespecial 47	com/google/android/gms/common/wrappers/PackageManagerWrapper:<init>	(Landroid/content/Context;)V
     //   31: putfield 28	com/google/android/gms/common/wrappers/Wrappers:zzaba	Lcom/google/android/gms/common/wrappers/PackageManagerWrapper;
     //   34: aload_0
     //   35: getfield 28	com/google/android/gms/common/wrappers/Wrappers:zzaba	Lcom/google/android/gms/common/wrappers/PackageManagerWrapper;
@@ -68,7 +65,7 @@ public class Wrappers
     //   47: aload_1
     //   48: areturn
     //   49: aload_1
-    //   50: invokevirtual 44	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   50: invokevirtual 42	android/content/Context:getApplicationContext	()Landroid/content/Context;
     //   53: astore_1
     //   54: goto -32 -> 22
     //   57: astore_1
@@ -90,7 +87,7 @@ public class Wrappers
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.wrappers.Wrappers
  * JD-Core Version:    0.7.0.1
  */

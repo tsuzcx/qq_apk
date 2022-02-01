@@ -13,23 +13,24 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewConfiguration;
 import android.widget.TextView;
+import androidx.core.content.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class PagerTabStrip
   extends PagerTitleStrip
 {
-  private int avj;
-  private int avk;
-  private int avl;
-  private int avm;
-  private int avn;
-  private int avo;
-  private final Paint avp;
-  private int avq;
-  private boolean avr;
-  private boolean avs;
-  private int avt;
-  private boolean avu;
+  private int cjF;
+  private int cjG;
+  private int cjH;
+  private int cjI;
+  private int cjJ;
+  private int cjK;
+  private final Paint cjL;
+  private int cjM;
+  private boolean cjN;
+  private boolean cjO;
+  private int cjP;
+  private boolean cjQ;
   private float mInitialMotionX;
   private float mInitialMotionY;
   private final Rect mTempRect;
@@ -38,114 +39,114 @@ public class PagerTabStrip
   public PagerTabStrip(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(235106);
-    this.avp = new Paint();
+    AppMethodBeat.i(193315);
+    this.cjL = new Paint();
     this.mTempRect = new Rect();
-    this.avq = 255;
-    this.avr = false;
-    this.avs = false;
-    this.avj = this.avJ;
-    this.avp.setColor(this.avj);
+    this.cjM = 255;
+    this.cjN = false;
+    this.cjO = false;
+    this.cjF = this.ckf;
+    this.cjL.setColor(this.cjF);
     float f = paramContext.getResources().getDisplayMetrics().density;
-    this.avk = ((int)(3.0F * f + 0.5F));
-    this.avl = ((int)(6.0F * f + 0.5F));
-    this.avm = ((int)(64.0F * f));
-    this.avo = ((int)(16.0F * f + 0.5F));
-    this.avt = ((int)(1.0F * f + 0.5F));
-    this.avn = ((int)(f * 32.0F + 0.5F));
+    this.cjG = ((int)(3.0F * f + 0.5F));
+    this.cjH = ((int)(6.0F * f + 0.5F));
+    this.cjI = ((int)(64.0F * f));
+    this.cjK = ((int)(16.0F * f + 0.5F));
+    this.cjP = ((int)(1.0F * f + 0.5F));
+    this.cjJ = ((int)(f * 32.0F + 0.5F));
     this.mTouchSlop = ViewConfiguration.get(paramContext).getScaledTouchSlop();
     setPadding(getPaddingLeft(), getPaddingTop(), getPaddingRight(), getPaddingBottom());
     setTextSpacing(getTextSpacing());
     setWillNotDraw(false);
-    this.avx.setFocusable(true);
-    this.avx.setOnClickListener(new View.OnClickListener()
+    this.cjT.setFocusable(true);
+    this.cjT.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(235087);
-        PagerTabStrip.this.avw.setCurrentItem(PagerTabStrip.this.avw.getCurrentItem() - 1);
-        AppMethodBeat.o(235087);
+        AppMethodBeat.i(193251);
+        PagerTabStrip.this.cjS.setCurrentItem(PagerTabStrip.this.cjS.getCurrentItem() - 1);
+        AppMethodBeat.o(193251);
       }
     });
-    this.avz.setFocusable(true);
-    this.avz.setOnClickListener(new View.OnClickListener()
+    this.cjV.setFocusable(true);
+    this.cjV.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(235097);
-        PagerTabStrip.this.avw.setCurrentItem(PagerTabStrip.this.avw.getCurrentItem() + 1);
-        AppMethodBeat.o(235097);
+        AppMethodBeat.i(193267);
+        PagerTabStrip.this.cjS.setCurrentItem(PagerTabStrip.this.cjS.getCurrentItem() + 1);
+        AppMethodBeat.o(193267);
       }
     });
     if (getBackground() == null) {
-      this.avr = true;
+      this.cjN = true;
     }
-    AppMethodBeat.o(235106);
+    AppMethodBeat.o(193315);
   }
   
   final void a(int paramInt, float paramFloat, boolean paramBoolean)
   {
-    AppMethodBeat.i(235132);
+    AppMethodBeat.i(193466);
     Rect localRect = this.mTempRect;
     int i = getHeight();
-    int j = this.avy.getLeft();
-    int k = this.avo;
-    int m = this.avy.getRight();
-    int n = this.avo;
-    int i1 = i - this.avk;
+    int j = this.cjU.getLeft();
+    int k = this.cjK;
+    int m = this.cjU.getRight();
+    int n = this.cjK;
+    int i1 = i - this.cjG;
     localRect.set(j - k, i1, m + n, i);
     super.a(paramInt, paramFloat, paramBoolean);
-    this.avq = ((int)(Math.abs(paramFloat - 0.5F) * 2.0F * 255.0F));
-    localRect.union(this.avy.getLeft() - this.avo, i1, this.avy.getRight() + this.avo, i);
+    this.cjM = ((int)(Math.abs(paramFloat - 0.5F) * 2.0F * 255.0F));
+    localRect.union(this.cjU.getLeft() - this.cjK, i1, this.cjU.getRight() + this.cjK, i);
     invalidate(localRect);
-    AppMethodBeat.o(235132);
+    AppMethodBeat.o(193466);
   }
   
   public boolean getDrawFullUnderline()
   {
-    return this.avr;
+    return this.cjN;
   }
   
   int getMinHeight()
   {
-    AppMethodBeat.i(235122);
-    int i = Math.max(super.getMinHeight(), this.avn);
-    AppMethodBeat.o(235122);
+    AppMethodBeat.i(193424);
+    int i = Math.max(super.getMinHeight(), this.cjJ);
+    AppMethodBeat.o(193424);
     return i;
   }
   
   public int getTabIndicatorColor()
   {
-    return this.avj;
+    return this.cjF;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(235128);
+    AppMethodBeat.i(193453);
     super.onDraw(paramCanvas);
     int i = getHeight();
-    int j = this.avy.getLeft();
-    int k = this.avo;
-    int m = this.avy.getRight();
-    int n = this.avo;
-    int i1 = this.avk;
-    this.avp.setColor(this.avq << 24 | this.avj & 0xFFFFFF);
-    paramCanvas.drawRect(j - k, i - i1, m + n, i, this.avp);
-    if (this.avr)
+    int j = this.cjU.getLeft();
+    int k = this.cjK;
+    int m = this.cjU.getRight();
+    int n = this.cjK;
+    int i1 = this.cjG;
+    this.cjL.setColor(this.cjM << 24 | this.cjF & 0xFFFFFF);
+    paramCanvas.drawRect(j - k, i - i1, m + n, i, this.cjL);
+    if (this.cjN)
     {
-      this.avp.setColor(0xFF000000 | this.avj & 0xFFFFFF);
-      paramCanvas.drawRect(getPaddingLeft(), i - this.avt, getWidth() - getPaddingRight(), i, this.avp);
+      this.cjL.setColor(0xFF000000 | this.cjF & 0xFFFFFF);
+      paramCanvas.drawRect(getPaddingLeft(), i - this.cjP, getWidth() - getPaddingRight(), i, this.cjL);
     }
-    AppMethodBeat.o(235128);
+    AppMethodBeat.o(193453);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(235124);
+    AppMethodBeat.i(193440);
     int i = paramMotionEvent.getAction();
-    if ((i != 0) && (this.avu))
+    if ((i != 0) && (this.cjQ))
     {
-      AppMethodBeat.o(235124);
+      AppMethodBeat.o(193440);
       return false;
     }
     float f1 = paramMotionEvent.getX();
@@ -155,20 +156,20 @@ public class PagerTabStrip
     }
     for (;;)
     {
-      AppMethodBeat.o(235124);
+      AppMethodBeat.o(193440);
       return true;
       this.mInitialMotionX = f1;
       this.mInitialMotionY = f2;
-      this.avu = false;
+      this.cjQ = false;
       continue;
       if ((Math.abs(f1 - this.mInitialMotionX) > this.mTouchSlop) || (Math.abs(f2 - this.mInitialMotionY) > this.mTouchSlop))
       {
-        this.avu = true;
+        this.cjQ = true;
         continue;
-        if (f1 < this.avy.getLeft() - this.avo) {
-          this.avw.setCurrentItem(this.avw.getCurrentItem() - 1);
-        } else if (f1 > this.avy.getRight() + this.avo) {
-          this.avw.setCurrentItem(this.avw.getCurrentItem() + 1);
+        if (f1 < this.cjU.getLeft() - this.cjK) {
+          this.cjS.setCurrentItem(this.cjS.getCurrentItem() - 1);
+        } else if (f1 > this.cjU.getRight() + this.cjK) {
+          this.cjS.setCurrentItem(this.cjS.getCurrentItem() + 1);
         }
       }
     }
@@ -176,9 +177,9 @@ public class PagerTabStrip
   
   public void setBackgroundColor(int paramInt)
   {
-    AppMethodBeat.i(235116);
+    AppMethodBeat.i(193384);
     super.setBackgroundColor(paramInt);
-    if (!this.avs) {
+    if (!this.cjO) {
       if ((0xFF000000 & paramInt) != 0) {
         break label39;
       }
@@ -186,17 +187,17 @@ public class PagerTabStrip
     label39:
     for (boolean bool = true;; bool = false)
     {
-      this.avr = bool;
-      AppMethodBeat.o(235116);
+      this.cjN = bool;
+      AppMethodBeat.o(193384);
       return;
     }
   }
   
   public void setBackgroundDrawable(Drawable paramDrawable)
   {
-    AppMethodBeat.i(235115);
+    AppMethodBeat.i(193371);
     super.setBackgroundDrawable(paramDrawable);
-    if (!this.avs) {
+    if (!this.cjO) {
       if (paramDrawable != null) {
         break label36;
       }
@@ -204,17 +205,17 @@ public class PagerTabStrip
     label36:
     for (boolean bool = true;; bool = false)
     {
-      this.avr = bool;
-      AppMethodBeat.o(235115);
+      this.cjN = bool;
+      AppMethodBeat.o(193371);
       return;
     }
   }
   
   public void setBackgroundResource(int paramInt)
   {
-    AppMethodBeat.i(235117);
+    AppMethodBeat.i(193395);
     super.setBackgroundResource(paramInt);
-    if (!this.avs) {
+    if (!this.cjO) {
       if (paramInt != 0) {
         break label36;
       }
@@ -222,57 +223,57 @@ public class PagerTabStrip
     label36:
     for (boolean bool = true;; bool = false)
     {
-      this.avr = bool;
-      AppMethodBeat.o(235117);
+      this.cjN = bool;
+      AppMethodBeat.o(193395);
       return;
     }
   }
   
   public void setDrawFullUnderline(boolean paramBoolean)
   {
-    AppMethodBeat.i(235119);
-    this.avr = paramBoolean;
-    this.avs = true;
+    AppMethodBeat.i(193406);
+    this.cjN = paramBoolean;
+    this.cjO = true;
     invalidate();
-    AppMethodBeat.o(235119);
+    AppMethodBeat.o(193406);
   }
   
   public void setPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(235113);
+    AppMethodBeat.i(193352);
     int i = paramInt4;
-    if (paramInt4 < this.avl) {
-      i = this.avl;
+    if (paramInt4 < this.cjH) {
+      i = this.cjH;
     }
     super.setPadding(paramInt1, paramInt2, paramInt3, i);
-    AppMethodBeat.o(235113);
+    AppMethodBeat.o(193352);
   }
   
   public void setTabIndicatorColor(int paramInt)
   {
-    AppMethodBeat.i(235108);
-    this.avj = paramInt;
-    this.avp.setColor(this.avj);
+    AppMethodBeat.i(193324);
+    this.cjF = paramInt;
+    this.cjL.setColor(this.cjF);
     invalidate();
-    AppMethodBeat.o(235108);
+    AppMethodBeat.o(193324);
   }
   
-  public void setTabIndicatorColorResource(@androidx.annotation.a int paramInt)
+  public void setTabIndicatorColorResource(int paramInt)
   {
-    AppMethodBeat.i(235109);
-    setTabIndicatorColor(androidx.core.content.a.w(getContext(), paramInt));
-    AppMethodBeat.o(235109);
+    AppMethodBeat.i(193334);
+    setTabIndicatorColor(a.w(getContext(), paramInt));
+    AppMethodBeat.o(193334);
   }
   
   public void setTextSpacing(int paramInt)
   {
-    AppMethodBeat.i(235114);
+    AppMethodBeat.i(193363);
     int i = paramInt;
-    if (paramInt < this.avm) {
-      i = this.avm;
+    if (paramInt < this.cjI) {
+      i = this.cjI;
     }
     super.setTextSpacing(i);
-    AppMethodBeat.o(235114);
+    AppMethodBeat.o(193363);
   }
 }
 

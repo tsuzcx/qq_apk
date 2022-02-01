@@ -8,15 +8,7 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 public final class d
   implements a
 {
-  public final boolean Tz(long paramLong)
-  {
-    AppMethodBeat.i(116666);
-    boolean bool = com.tencent.mm.plugin.websearch.widget.c.c.at(paramLong, 0);
-    AppMethodBeat.o(116666);
-    return bool;
-  }
-  
-  public final boolean bjf(String paramString)
+  public final boolean biQ(String paramString)
   {
     AppMethodBeat.i(116665);
     if (TextUtils.isEmpty(paramString))
@@ -33,10 +25,10 @@ public final class d
     return false;
   }
   
-  public final boolean bjg(String paramString)
+  public final boolean biR(String paramString)
   {
     AppMethodBeat.i(116667);
-    if (!bjf(paramString))
+    if (!biQ(paramString))
     {
       AppMethodBeat.o(116667);
       return false;
@@ -44,9 +36,17 @@ public final class d
     Intent localIntent = new Intent();
     localIntent.putExtra("rawUrl", paramString);
     localIntent.putExtra("useJs", true);
-    com.tencent.mm.by.c.b(MMApplicationContext.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
+    com.tencent.mm.br.c.b(MMApplicationContext.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
     AppMethodBeat.o(116667);
     return true;
+  }
+  
+  public final boolean xJ(long paramLong)
+  {
+    AppMethodBeat.i(116666);
+    boolean bool = com.tencent.mm.plugin.websearch.widget.c.c.aJ(paramLong, 0);
+    AppMethodBeat.o(116666);
+    return bool;
   }
 }
 

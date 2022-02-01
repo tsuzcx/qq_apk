@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/ftx" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/fts" android:visibility="gone" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:layout_marginTop="@dimen/d6" android:src="@raw/icons_filled_back" android:layout_marginStart="@dimen/cp" app:iconColor="@color/g_" />
+    <ImageView android:id="@id/ftv" android:layout_width="@dimen/db" android:layout_height="@dimen/db" android:layout_marginTop="128.0dip" android:layout_marginBottom="@dimen/d0" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="22.0dip" android:textStyle="bold" android:textColor="@color/FG_0" android:id="@id/ftw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cp" android:text="@string/g7_" android:layout_below="@id/ftv" android:layout_centerHorizontal="true" android:layout_marginStart="@dimen/d0" android:layout_marginEnd="@dimen/d0" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/FG_0" android:gravity="center_horizontal" android:id="@id/ftu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/g79" android:layout_below="@id/ftw" android:layout_centerHorizontal="true" android:layout_marginStart="@dimen/d0" android:layout_marginEnd="@dimen/d0" />
+    <Button android:id="@id/ftt" android:layout_marginBottom="@dimen/c2" android:text="@string/zp" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/op" />
+</RelativeLayout>

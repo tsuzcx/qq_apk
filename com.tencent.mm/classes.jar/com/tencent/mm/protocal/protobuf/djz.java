@@ -1,84 +1,96 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class djz
-  extends com.tencent.mm.cd.a
+  extends erp
 {
-  public String TRA;
-  public String TRB;
-  public String title;
+  public int YIq;
+  public int aaPS;
+  public int aaPT;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91595);
+    AppMethodBeat.i(152622);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.title != null) {
-        paramVarArgs.f(1, this.title);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.TRA != null) {
-        paramVarArgs.f(2, this.TRA);
-      }
-      if (this.TRB != null) {
-        paramVarArgs.f(3, this.TRB);
-      }
-      AppMethodBeat.o(91595);
+      paramVarArgs.bS(2, this.YIq);
+      paramVarArgs.bS(3, this.aaPS);
+      paramVarArgs.bS(4, this.aaPT);
+      AppMethodBeat.o(152622);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.title == null) {
-        break label334;
+      if (this.BaseRequest == null) {
+        break label420;
       }
     }
-    label334:
-    for (int i = g.a.a.b.b.a.g(1, this.title) + 0;; i = 0)
+    label420:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.TRA != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.TRA);
-      }
-      i = paramInt;
-      if (this.TRB != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.TRB);
-      }
-      AppMethodBeat.o(91595);
-      return i;
+      int i = i.a.a.b.b.a.cJ(2, this.YIq);
+      int j = i.a.a.b.b.a.cJ(3, this.aaPS);
+      int k = i.a.a.b.b.a.cJ(4, this.aaPT);
+      AppMethodBeat.o(152622);
+      return paramInt + i + j + k;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(91595);
+        AppMethodBeat.o(152622);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         djz localdjz = (djz)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(91595);
+          AppMethodBeat.o(152622);
           return -1;
         case 1: 
-          localdjz.title = locala.abFh.readString();
-          AppMethodBeat.o(91595);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kc localkc = new kc();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkc.parseFrom((byte[])localObject);
+            }
+            localdjz.BaseRequest = localkc;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(152622);
           return 0;
         case 2: 
-          localdjz.TRA = locala.abFh.readString();
-          AppMethodBeat.o(91595);
+          localdjz.YIq = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(152622);
+          return 0;
+        case 3: 
+          localdjz.aaPS = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(152622);
           return 0;
         }
-        localdjz.TRB = locala.abFh.readString();
-        AppMethodBeat.o(91595);
+        localdjz.aaPT = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(152622);
         return 0;
       }
-      AppMethodBeat.o(91595);
+      AppMethodBeat.o(152622);
       return -1;
     }
   }

@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextureView android:id="@id/ee8" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ee9" android:background="@raw/shadow_up" android:paddingTop="54.0dip" android:paddingBottom="54.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/ee1" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginStart="@dimen/cb" />
-        <TextView android:textSize="18.0dip" android:textColor="@color/afz" android:id="@id/ee_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-    <RelativeLayout android:id="@id/ee2" android:background="@raw/shadow_down" android:paddingBottom="56.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-        <com.tencent.mm.pluginsdk.ui.tools.RedesignVideoPlayerSeekBar android:id="@id/ee4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/ce" android:layout_marginEnd="@dimen/ce" />
-    </RelativeLayout>
-</RelativeLayout>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="26.0dip" android:layout_height="30.0dip" android:layout_marginTop="78.0dip" android:src="@raw/honey_pay_no_record_icon" android:scaleType="centerCrop" android:importantForAccessibility="no" app:iconColor="@color/FG_2" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/FG_2" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="30.0dip" android:text="@string/fk4" />
+</LinearLayout>

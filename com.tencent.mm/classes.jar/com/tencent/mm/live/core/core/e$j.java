@@ -1,39 +1,39 @@
 package com.tencent.mm.live.core.core;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$MicUserAttr;", "", "()V", "BuyProduct", "", "getBuyProduct", "()I", "FollowedAnchor", "getFollowedAnchor", "RewardedAnchor", "getRewardedAnchor", "plugin-core_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$MicSettingFlag;", "", "()V", "EnableBuyProductAudience", "", "getEnableBuyProductAudience", "()I", "EnableFollowedAnchorAudience", "getEnableFollowedAnchorAudience", "EnableRewardedAnchorAudience", "getEnableRewardedAnchorAudience", "plugin-core_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e$j
 {
-  private static final int kkv = 1;
-  private static final int kkw = 2;
-  private static final int kkx = 4;
-  public static final j kky;
+  public static final j mLf;
+  private static final int mLg;
+  private static final int mLh;
+  private static final int mLi;
   
   static
   {
-    AppMethodBeat.i(199260);
-    kky = new j();
-    kkv = 1;
-    kkw = 2;
-    kkx = 4;
-    AppMethodBeat.o(199260);
+    AppMethodBeat.i(248056);
+    mLf = new j();
+    mLg = 1;
+    mLh = 2;
+    mLi = 4;
+    AppMethodBeat.o(248056);
   }
   
-  public static int aKA()
+  public static int bdn()
   {
-    return kkv;
+    return mLg;
   }
   
-  public static int aKB()
+  public static int bdo()
   {
-    return kkw;
+    return mLh;
   }
   
-  public static int aKC()
+  public static int bdp()
   {
-    return kkx;
+    return mLi;
   }
 }
 

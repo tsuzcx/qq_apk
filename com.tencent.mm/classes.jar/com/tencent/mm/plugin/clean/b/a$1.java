@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.clean.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.appbrand.service.f;
+import com.tencent.mm.plugin.appbrand.service.g;
 
 final class a$1
   implements Runnable
@@ -11,9 +11,9 @@ final class a$1
   
   public final void run()
   {
-    AppMethodBeat.i(269386);
-    ((f)h.ae(f.class)).bFk();
-    AppMethodBeat.o(269386);
+    AppMethodBeat.i(271841);
+    ((g)h.ax(g.class)).cey();
+    AppMethodBeat.o(271841);
   }
 }
 

@@ -9,43 +9,43 @@ import java.util.concurrent.Executors;
 
 public final class b
 {
-  private static b Zrk;
-  public Object Brg;
-  private ExecutorService IIs;
-  public Map<Long, String> ZmK;
-  public Map<Long, Object> ZmL;
-  public Map<String, List<Long>> ZmM;
-  private int[] ZmP;
-  private a Zrl;
+  private static b ahvZ;
+  public Object GXz;
+  private ExecutorService OOq;
+  public Map<Long, String> ahrh;
+  public Map<Long, Object> ahri;
+  public Map<String, List<Long>> ahrj;
+  private int[] ahrm;
+  private a ahwa;
   
   static
   {
     AppMethodBeat.i(3557);
-    Zrk = new b();
+    ahvZ = new b();
     AppMethodBeat.o(3557);
   }
   
   private b()
   {
     AppMethodBeat.i(3556);
-    this.ZmP = new int[] { 2, 1 };
-    this.ZmK = new HashMap();
-    this.ZmL = new HashMap();
-    this.ZmM = new HashMap();
-    this.Brg = new Object();
-    this.Zrl = new a("FileDecodeQueue");
-    this.IIs = Executors.newSingleThreadExecutor();
+    this.ahrm = new int[] { 2, 1 };
+    this.ahrh = new HashMap();
+    this.ahri = new HashMap();
+    this.ahrj = new HashMap();
+    this.GXz = new Object();
+    this.ahwa = new a("FileDecodeQueue");
+    this.OOq = Executors.newSingleThreadExecutor();
     AppMethodBeat.o(3556);
   }
   
-  public static b ioB()
+  public static b jXO()
   {
-    return Zrk;
+    return ahvZ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.scanlib.b.b
  * JD-Core Version:    0.7.0.1
  */

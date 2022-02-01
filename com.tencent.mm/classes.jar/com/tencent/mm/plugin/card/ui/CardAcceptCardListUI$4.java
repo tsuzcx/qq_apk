@@ -15,9 +15,9 @@ final class CardAcceptCardListUI$4
   {
     AppMethodBeat.i(113152);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/card/ui/CardAcceptCardListUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    CardAcceptCardListUI.c(this.tuK);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/card/ui/CardAcceptCardListUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    CardAcceptCardListUI.c(this.wzh);
     a.a(this, "com/tencent/mm/plugin/card/ui/CardAcceptCardListUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(113152);
   }

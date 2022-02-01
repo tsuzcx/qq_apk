@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_masssend_header_helper" android:layout="@layout/bi_" />
+    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/bnr" />
     <PreferenceSmallCategory />
-    <Preference android:key="contact_info_masssend_view" android:layout="@layout/b8j" android:title="@string/bcn" />
-    <Preference android:key="contact_info_masssend_clear_data" android:layout="@layout/b8j" android:title="@string/ba3" />
+    <Preference android:key="contact_info_qqmailhelper_account" android:layout="@layout/bdi" android:title="@string/bpc" />
+    <Preference android:key="contact_info_qqmailhelper_view" android:layout="@layout/bdi" android:title="@string/bpm" />
+    <Preference android:key="contact_info_qqmailhelper_compose" android:layout="@layout/bdi" android:title="@string/bpd" />
+    <CheckBoxPreference android:key="contact_info_qqmailhelper_recv_remind" android:layout="@layout/bdi" android:persistent="false" android:title="@string/bpi" />
+    <Preference android:key="contact_info_qqmailhelper_set_files_view" android:layout="@layout/bdi" android:title="@string/bpk" />
+    <Preference android:key="contact_info_qqmailhelper_download_mgr_view" android:layout="@layout/bdi" android:title="@string/bpe" />
+    <Preference android:key="contact_info_qqmailhelper_clear_data" android:layout="@layout/bdi" android:title="@string/blg" />
     <PreferenceSmallCategory />
-    <Preference android:key="contact_info_masssend_install" android:layout="@layout/aw2" android:title="@string/gsq" />
-    <Preference android:key="contact_info_masssend_uninstall" android:layout="@layout/b2o" android:title="@string/gsv" />
+    <Preference android:key="contact_info_qqmailhelper_install" android:layout="@layout/b2b" android:title="@string/iww" />
+    <Preference android:key="contact_info_qqmailhelper_uninstall" android:layout="@layout/b93" android:title="@string/ix1" />
     <PreferenceCategory />
 </PreferenceScreen>

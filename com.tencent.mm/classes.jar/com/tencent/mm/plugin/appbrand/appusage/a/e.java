@@ -1,41 +1,35 @@
 package com.tencent.mm.plugin.appbrand.appusage.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.m;
-import com.tencent.mm.plugin.appbrand.ac.m.a;
+import com.tencent.mm.plugin.appbrand.af.o;
+import com.tencent.mm.plugin.appbrand.af.o.a;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.a;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"runOnWorkThread", "", "action", "Lkotlin/Function0;", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"runOnWorkThread", "", "action", "Lkotlin/Function0;", "plugin-appbrand-integration_release"}, k=2, mv={1, 5, 1}, xi=48)
 public final class e
 {
-  public static final void u(a<x> parama)
+  public static final void am(a<ah> parama)
   {
     AppMethodBeat.i(50331);
-    p.k(parama, "action");
-    m.clV().postToWorker((Runnable)new a(parama));
+    s.u(parama, "action");
+    o.cNm().postToWorker(new e..ExternalSyntheticLambda0(parama));
     AppMethodBeat.o(50331);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class a
-    implements Runnable
+  private static final void an(a parama)
   {
-    a(a parama) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(50330);
-      this.nRz.invoke();
-      AppMethodBeat.o(50330);
-    }
+    AppMethodBeat.i(319358);
+    s.u(parama, "$action");
+    parama.invoke();
+    AppMethodBeat.o(319358);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.a.e
  * JD-Core Version:    0.7.0.1
  */

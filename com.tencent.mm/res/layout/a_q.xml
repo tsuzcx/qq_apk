@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/ivj" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="@dimen/d_"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/h7t" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintTop_toBottomOf="@id/gy3" app:loadMoreLayout="@layout/b21">
-        <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/ccy" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </com.tencent.mm.view.RefreshLoadMoreLayout>
-    <FrameLayout android:id="@id/c3e" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ProgressBar android:layout_gravity="center_horizontal" android:id="@id/gl7" android:visibility="gone" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginTop="@dimen/c8" android:indeterminateDrawable="@drawable/apb" />
-        <TextView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/h5w" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/c8" android:text="@string/cmj" style="@style/zy" />
-        <TextView android:layout_gravity="center_horizontal" android:id="@id/c35" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c8" android:text="@string/cmc" style="@style/zy" />
-    </FrameLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <View android:background="@drawable/a8f" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginStart="@dimen/cw" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/lr_" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:src="@raw/icons_outlined_tencent_video" android:layout_centerVertical="true" app:iconColor="@color/FG_0" />
+    <TextView android:textSize="15.0dip" android:textColor="@color/a7b" android:ellipsize="end" android:id="@id/kw8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/erz" android:maxLines="1" android:layout_centerVertical="true" android:layout_marginStart="@dimen/df" android:layout_marginEnd="@dimen/df" android:layout_toEndOf="@id/lr_" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cd" android:layout_height="@dimen/cv" android:src="@raw/icons_outlined_arrow" android:layout_centerVertical="true" android:layout_alignParentEnd="true" app:iconColor="@color/BW_70" />
+</RelativeLayout>

@@ -1,46 +1,42 @@
 package com.tencent.mm.plugin.scanner.box;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.websearch.api.ai;
-import com.tencent.mm.plugin.websearch.api.at;
+import com.tencent.mm.plugin.websearch.api.aj;
+import com.tencent.mm.plugin.websearch.api.au;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxTemplateManager;", "", "()V", "TAG", "", "getImageOcrTemplateHtmlFile", "getScanGoodsTemplateHtmlFile", "plugin-scan_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxTemplateManager;", "", "()V", "TAG", "", "getImageOcrTemplateHtmlFile", "getScanGoodsTemplateHtmlFile", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class o
 {
-  public static final o IHL;
+  public static final o ONO;
   
   static
   {
     AppMethodBeat.i(52135);
-    IHL = new o();
+    ONO = new o();
     AppMethodBeat.o(52135);
   }
   
-  public static String fCk()
+  public static String gPV()
   {
-    AppMethodBeat.i(221166);
-    Object localObject = ai.anf(4);
-    p.j(localObject, "WebSearchApiLogic.getSea…TEMPLATE_TYPE_SCAN_GOODS)");
-    localObject = ((at)localObject).gRg();
-    Log.v("MicroMsg.ScanBoxTemplateManager", "alvinluo getScanGoodsTemplateHtmlFile: %s", new Object[] { localObject });
-    p.j(localObject, "htmlPath");
-    AppMethodBeat.o(221166);
-    return localObject;
+    AppMethodBeat.i(313750);
+    String str = aj.asW(4).iqs();
+    Log.v("MicroMsg.ScanBoxTemplateManager", "alvinluo getScanGoodsTemplateHtmlFile: %s", new Object[] { str });
+    s.s(str, "htmlPath");
+    AppMethodBeat.o(313750);
+    return str;
   }
   
-  public static String fCl()
+  public static String gPW()
   {
-    AppMethodBeat.i(221168);
-    Object localObject = ai.anf(8);
-    p.j(localObject, "WebSearchApiLogic.getSea….TEMPLATE_TYPE_IMAGE_OCR)");
-    localObject = ((at)localObject).gRg();
-    Log.v("MicroMsg.ScanBoxTemplateManager", "alvinluo getImageOcrTemplateHtmlFile templateHtmlPath: %s", new Object[] { localObject });
-    p.j(localObject, "htmlPath");
-    AppMethodBeat.o(221168);
-    return localObject;
+    AppMethodBeat.i(313757);
+    String str = aj.asW(8).iqs();
+    Log.v("MicroMsg.ScanBoxTemplateManager", "alvinluo getImageOcrTemplateHtmlFile templateHtmlPath: %s", new Object[] { str });
+    s.s(str, "htmlPath");
+    AppMethodBeat.o(313757);
+    return str;
   }
 }
 

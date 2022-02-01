@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.textstatus.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.h.a.c;
-import kotlin.l;
+import com.tencent.mm.loader.g.a.c;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/download/TextStatusImage;", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "url", "", "(Ljava/lang/String;)V", "getUrl", "()Ljava/lang/String;", "toString", "uniqueValue", "plugin-textstatus_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/textstatus/download/TextStatusImage;", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "url", "", "(Ljava/lang/String;)V", "getUrl", "()Ljava/lang/String;", "toString", "uniqueValue", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
   implements c
 {
@@ -12,12 +12,12 @@ public final class b
   
   public b(String paramString)
   {
-    AppMethodBeat.i(232091);
+    AppMethodBeat.i(289653);
     this.url = paramString;
-    AppMethodBeat.o(232091);
+    AppMethodBeat.o(289653);
   }
   
-  public final String aBv()
+  public final String aUt()
   {
     return this.url;
   }

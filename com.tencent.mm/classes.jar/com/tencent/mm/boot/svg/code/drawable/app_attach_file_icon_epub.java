@@ -14,8 +14,8 @@ import com.tencent.mm.svg.c;
 public class app_attach_file_icon_epub
   extends c
 {
-  private final int height = 120;
-  private final int width = 120;
+  private final int height = 40;
+  private final int width = 40;
   
   public int doCommand(int paramInt, Object... paramVarArgs)
   {
@@ -25,8 +25,8 @@ public class app_attach_file_icon_epub
     for (;;)
     {
       return 0;
-      return 120;
-      return 120;
+      return 40;
+      return 40;
       Canvas localCanvas = (Canvas)paramVarArgs[0];
       paramVarArgs = (Looper)paramVarArgs[1];
       Object localObject1 = c.instanceMatrix(paramVarArgs);
@@ -45,7 +45,7 @@ public class app_attach_file_icon_epub
       localPaint2.setPathEffect(null);
       c.instancePaint(localPaint2, paramVarArgs).setStrokeWidth(1.0F);
       localCanvas.save();
-      localObject2 = c.setMatrixFloatArray((float[])localObject2, 1.0F, 0.0F, 15.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F);
+      localObject2 = c.setMatrixFloatArray((float[])localObject2, 1.0F, 0.0F, 8.0F, 0.0F, 1.0F, 4.0F, 0.0F, 0.0F, 1.0F);
       ((Matrix)localObject1).reset();
       ((Matrix)localObject1).setValues((float[])localObject2);
       localCanvas.concat((Matrix)localObject1);
@@ -53,15 +53,15 @@ public class app_attach_file_icon_epub
       localObject1 = c.instancePaint(localPaint1, paramVarArgs);
       ((Paint)localObject1).setColor(-9061376);
       localObject2 = c.instancePath(paramVarArgs);
-      ((Path)localObject2).moveTo(60.882355F, 0.0F);
-      ((Path)localObject2).lineTo(90.0F, 29.333334F);
-      ((Path)localObject2).lineTo(90.0F, 116.0F);
-      ((Path)localObject2).cubicTo(90.0F, 118.20914F, 88.222305F, 120.0F, 86.029411F, 120.0F);
-      ((Path)localObject2).lineTo(3.970588F, 120.0F);
-      ((Path)localObject2).cubicTo(1.777693F, 120.0F, 0.0F, 118.20914F, 0.0F, 116.0F);
-      ((Path)localObject2).lineTo(0.0F, 4.0F);
-      ((Path)localObject2).cubicTo(0.0F, 1.790861F, 1.777693F, 0.0F, 3.970588F, 0.0F);
-      ((Path)localObject2).lineTo(60.882355F, 0.0F);
+      ((Path)localObject2).moveTo(16.235294F, 0.0F);
+      ((Path)localObject2).lineTo(24.0F, 7.822222F);
+      ((Path)localObject2).lineTo(24.0F, 30.933332F);
+      ((Path)localObject2).cubicTo(24.0F, 31.522436F, 23.525948F, 32.0F, 22.941177F, 32.0F);
+      ((Path)localObject2).lineTo(1.058824F, 32.0F);
+      ((Path)localObject2).cubicTo(0.4740515F, 32.0F, 0.0F, 31.522436F, 0.0F, 30.933332F);
+      ((Path)localObject2).lineTo(0.0F, 1.066667F);
+      ((Path)localObject2).cubicTo(0.0F, 0.4775629F, 0.4740515F, 0.0F, 1.058824F, 0.0F);
+      ((Path)localObject2).lineTo(16.235294F, 0.0F);
       ((Path)localObject2).close();
       WeChatSVGRenderC2Java.setFillType((Path)localObject2, 1);
       localCanvas.drawPath((Path)localObject2, (Paint)localObject1);
@@ -70,11 +70,11 @@ public class app_attach_file_icon_epub
       localObject1 = c.instancePaint(localPaint1, paramVarArgs);
       ((Paint)localObject1).setColor(-10643968);
       localObject2 = c.instancePath(paramVarArgs);
-      ((Path)localObject2).moveTo(90.0F, 29.333334F);
-      ((Path)localObject2).lineTo(64.852943F, 29.333334F);
-      ((Path)localObject2).cubicTo(62.660046F, 29.333334F, 60.882355F, 27.542473F, 60.882355F, 25.333334F);
-      ((Path)localObject2).lineTo(60.882355F, 0.0F);
-      ((Path)localObject2).lineTo(90.0F, 29.333334F);
+      ((Path)localObject2).moveTo(24.0F, 7.822222F);
+      ((Path)localObject2).lineTo(17.294117F, 7.822222F);
+      ((Path)localObject2).cubicTo(16.709345F, 7.822222F, 16.235294F, 7.344659F, 16.235294F, 6.755556F);
+      ((Path)localObject2).lineTo(16.235294F, 0.0F);
+      ((Path)localObject2).lineTo(24.0F, 7.822222F);
       ((Path)localObject2).close();
       WeChatSVGRenderC2Java.setFillType((Path)localObject2, 1);
       localCanvas.drawPath((Path)localObject2, (Paint)localObject1);
@@ -83,25 +83,25 @@ public class app_attach_file_icon_epub
       localPaint1 = c.instancePaint(localPaint1, paramVarArgs);
       localPaint1.setColor(-1);
       localObject1 = c.instancePath(paramVarArgs);
-      ((Path)localObject1).moveTo(58.856758F, 65.041008F);
-      ((Path)localObject1).lineTo(48.816174F, 54.926056F);
-      ((Path)localObject1).cubicTo(46.707176F, 52.80143F, 43.281239F, 52.801842F, 41.167931F, 54.930801F);
-      ((Path)localObject1).lineTo(25.410347F, 70.805107F);
-      ((Path)localObject1).cubicTo(23.295818F, 72.935303F, 23.294933F, 76.383667F, 25.405638F, 78.510002F);
-      ((Path)localObject1).lineTo(41.183826F, 94.405067F);
-      ((Path)localObject1).cubicTo(43.292824F, 96.529694F, 46.718761F, 96.529282F, 48.832069F, 94.400322F);
-      ((Path)localObject1).lineTo(64.589653F, 78.526016F);
-      ((Path)localObject1).cubicTo(66.704178F, 76.395821F, 66.705063F, 72.947456F, 64.59436F, 70.821121F);
-      ((Path)localObject1).lineTo(64.114693F, 70.337898F);
-      ((Path)localObject1).lineTo(45.004562F, 89.589584F);
-      ((Path)localObject1).lineTo(42.375595F, 86.941139F);
-      ((Path)localObject1).lineTo(32.815708F, 77.31044F);
-      ((Path)localObject1).lineTo(30.186741F, 74.661995F);
-      ((Path)localObject1).lineTo(44.99749F, 59.741539F);
-      ((Path)localObject1).lineTo(50.255428F, 65.038422F);
-      ((Path)localObject1).lineTo(40.700104F, 74.664528F);
-      ((Path)localObject1).lineTo(45.002052F, 78.998344F);
-      ((Path)localObject1).lineTo(58.856758F, 65.041008F);
+      ((Path)localObject1).moveTo(15.695135F, 17.344269F);
+      ((Path)localObject1).lineTo(13.017647F, 14.646948F);
+      ((Path)localObject1).cubicTo(12.455247F, 14.080381F, 11.541663F, 14.080491F, 10.978115F, 14.648213F);
+      ((Path)localObject1).lineTo(6.776093F, 18.881361F);
+      ((Path)localObject1).cubicTo(6.212218F, 19.449413F, 6.211982F, 20.368979F, 6.774837F, 20.936001F);
+      ((Path)localObject1).lineTo(10.982353F, 25.174685F);
+      ((Path)localObject1).cubicTo(11.544753F, 25.741251F, 12.458337F, 25.741142F, 13.021885F, 25.17342F);
+      ((Path)localObject1).lineTo(17.223907F, 20.940271F);
+      ((Path)localObject1).cubicTo(17.787781F, 20.372219F, 17.788017F, 19.452656F, 17.225164F, 18.885632F);
+      ((Path)localObject1).lineTo(17.097252F, 18.756773F);
+      ((Path)localObject1).lineTo(12.001217F, 23.890554F);
+      ((Path)localObject1).lineTo(11.300159F, 23.184303F);
+      ((Path)localObject1).lineTo(8.750855F, 20.616117F);
+      ((Path)localObject1).lineTo(8.049798F, 19.909866F);
+      ((Path)localObject1).lineTo(11.999331F, 15.931077F);
+      ((Path)localObject1).lineTo(13.401447F, 17.34358F);
+      ((Path)localObject1).lineTo(10.853361F, 19.91054F);
+      ((Path)localObject1).lineTo(12.000547F, 21.066225F);
+      ((Path)localObject1).lineTo(15.695135F, 17.344269F);
       ((Path)localObject1).close();
       WeChatSVGRenderC2Java.setFillType((Path)localObject1, 1);
       localCanvas.drawPath((Path)localObject1, localPaint1);
@@ -113,7 +113,7 @@ public class app_attach_file_icon_epub
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.app_attach_file_icon_epub
  * JD-Core Version:    0.7.0.1
  */

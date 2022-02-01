@@ -4,193 +4,252 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public static final b abfD;
-  public final c abfE;
-  private transient b abfF;
+  public final boolean NIH;
+  private final c aiEI;
+  private final c ajev;
   
   static
   {
-    AppMethodBeat.i(59295);
-    abfD = new b("");
-    AppMethodBeat.o(59295);
-  }
-  
-  public b(String paramString)
-  {
-    AppMethodBeat.i(59280);
-    this.abfE = new c(paramString, this);
-    AppMethodBeat.o(59280);
-  }
-  
-  public b(c paramc)
-  {
-    AppMethodBeat.i(59281);
-    this.abfE = paramc;
-    AppMethodBeat.o(59281);
-  }
-  
-  private b(c paramc, b paramb)
-  {
-    AppMethodBeat.i(59282);
-    this.abfE = paramc;
-    this.abfF = paramb;
-    AppMethodBeat.o(59282);
-  }
-  
-  public static b r(f paramf)
-  {
-    AppMethodBeat.i(59291);
-    if (paramf == null) {
-      aDG(13);
+    AppMethodBeat.i(59278);
+    if (!b.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      $assertionsDisabled = bool;
+      AppMethodBeat.o(59278);
+      return;
     }
-    paramf = new b(c.t(paramf));
-    AppMethodBeat.o(59291);
-    return paramf;
+  }
+  
+  public b(c paramc1, c paramc2, boolean paramBoolean)
+  {
+    AppMethodBeat.i(59263);
+    this.aiEI = paramc1;
+    if ((!$assertionsDisabled) && (paramc2.ajex.ajeC.isEmpty()))
+    {
+      paramc2 = new StringBuilder("Class name must not be root: ").append(paramc1);
+      if (paramBoolean) {}
+      for (paramc1 = " (local)";; paramc1 = "")
+      {
+        paramc1 = new AssertionError(paramc1);
+        AppMethodBeat.o(59263);
+        throw paramc1;
+      }
+    }
+    this.ajev = paramc2;
+    this.NIH = paramBoolean;
+    AppMethodBeat.o(59263);
+  }
+  
+  public b(c paramc, f paramf)
+  {
+    this(paramc, c.s(paramf), false);
+    AppMethodBeat.i(59264);
+    AppMethodBeat.o(59264);
+  }
+  
+  public static b bJd(String paramString)
+  {
+    AppMethodBeat.i(59272);
+    paramString = eV(paramString, false);
+    AppMethodBeat.o(59272);
+    return paramString;
+  }
+  
+  public static b eV(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(59273);
+    if (paramString == null) {
+      aKu(12);
+    }
+    int i = paramString.lastIndexOf("/");
+    String str2;
+    String str1;
+    if (i == -1)
+    {
+      str2 = "";
+      str1 = paramString;
+      paramString = str2;
+    }
+    for (;;)
+    {
+      paramString = new b(new c(paramString), new c(str1), paramBoolean);
+      AppMethodBeat.o(59273);
+      return paramString;
+      str1 = paramString.substring(0, i).replace('/', '.');
+      str2 = paramString.substring(i + 1);
+      paramString = str1;
+      str1 = str2;
+    }
+  }
+  
+  public static b s(c paramc)
+  {
+    AppMethodBeat.i(59262);
+    if (paramc == null) {
+      aKu(0);
+    }
+    paramc = new b(paramc.kxS(), paramc.kxT());
+    AppMethodBeat.o(59262);
+    return paramc;
+  }
+  
+  public final String PF()
+  {
+    AppMethodBeat.i(59274);
+    if (this.aiEI.ajex.ajeC.isEmpty())
+    {
+      str = this.ajev.PF();
+      if (str == null) {
+        aKu(13);
+      }
+      AppMethodBeat.o(59274);
+      return str;
+    }
+    String str = this.aiEI.PF().replace('.', '/') + "/" + this.ajev.PF();
+    if (str == null) {
+      aKu(14);
+    }
+    AppMethodBeat.o(59274);
+    return str;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(59293);
+    AppMethodBeat.i(59275);
     if (this == paramObject)
     {
-      AppMethodBeat.o(59293);
+      AppMethodBeat.o(59275);
       return true;
     }
-    if (!(paramObject instanceof b))
+    if ((paramObject == null) || (getClass() != paramObject.getClass()))
     {
-      AppMethodBeat.o(59293);
+      AppMethodBeat.o(59275);
       return false;
     }
     paramObject = (b)paramObject;
-    if (!this.abfE.equals(paramObject.abfE))
+    if ((this.aiEI.equals(paramObject.aiEI)) && (this.ajev.equals(paramObject.ajev)) && (this.NIH == paramObject.NIH))
     {
-      AppMethodBeat.o(59293);
-      return false;
+      AppMethodBeat.o(59275);
+      return true;
     }
-    AppMethodBeat.o(59293);
-    return true;
+    AppMethodBeat.o(59275);
+    return false;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(59294);
-    int i = this.abfE.hashCode();
-    AppMethodBeat.o(59294);
-    return i;
+    AppMethodBeat.i(59276);
+    int i = this.aiEI.hashCode();
+    int j = this.ajev.hashCode();
+    int k = Boolean.valueOf(this.NIH).hashCode();
+    AppMethodBeat.o(59276);
+    return (i * 31 + j) * 31 + k;
   }
   
-  public final f iNA()
+  public final c kxL()
   {
-    AppMethodBeat.i(59288);
-    f localf = this.abfE.iNA();
-    if (localf == null) {
-      aDG(9);
-    }
-    AppMethodBeat.o(59288);
-    return localf;
-  }
-  
-  public final f iNB()
-  {
-    AppMethodBeat.i(59289);
-    f localf = this.abfE.iNB();
-    if (localf == null) {
-      aDG(10);
-    }
-    AppMethodBeat.o(59289);
-    return localf;
-  }
-  
-  public final c iNy()
-  {
-    AppMethodBeat.i(59284);
-    c localc = this.abfE;
+    AppMethodBeat.i(59265);
+    c localc = this.aiEI;
     if (localc == null) {
-      aDG(5);
+      aKu(5);
     }
-    AppMethodBeat.o(59284);
+    AppMethodBeat.o(59265);
     return localc;
   }
   
-  public final b iNz()
+  public final c kxM()
   {
-    AppMethodBeat.i(59286);
-    if (this.abfF != null)
+    AppMethodBeat.i(59266);
+    c localc = this.ajev;
+    if (localc == null) {
+      aKu(6);
+    }
+    AppMethodBeat.o(59266);
+    return localc;
+  }
+  
+  public final f kxN()
+  {
+    AppMethodBeat.i(59267);
+    f localf = this.ajev.kxT();
+    if (localf == null) {
+      aKu(7);
+    }
+    AppMethodBeat.o(59267);
+    return localf;
+  }
+  
+  public final b kxO()
+  {
+    AppMethodBeat.i(59269);
+    Object localObject = this.ajev.kxS();
+    if (((c)localObject).ajex.ajeC.isEmpty())
     {
-      localObject = this.abfF;
-      if (localObject == null) {
-        aDG(6);
-      }
-      AppMethodBeat.o(59286);
-      return localObject;
+      AppMethodBeat.o(59269);
+      return null;
     }
-    if (isRoot())
-    {
-      localObject = new IllegalStateException("root");
-      AppMethodBeat.o(59286);
-      throw ((Throwable)localObject);
-    }
-    this.abfF = new b(this.abfE.iNE());
-    Object localObject = this.abfF;
-    if (localObject == null) {
-      aDG(7);
-    }
-    AppMethodBeat.o(59286);
+    localObject = new b(kxL(), (c)localObject, this.NIH);
+    AppMethodBeat.o(59269);
     return localObject;
   }
   
-  public final boolean isRoot()
+  public final boolean kxP()
   {
-    AppMethodBeat.i(293022);
-    boolean bool = this.abfE.abfJ.isEmpty();
-    AppMethodBeat.o(293022);
-    return bool;
+    AppMethodBeat.i(59270);
+    if (!this.ajev.kxS().ajex.ajeC.isEmpty())
+    {
+      AppMethodBeat.o(59270);
+      return true;
+    }
+    AppMethodBeat.o(59270);
+    return false;
+  }
+  
+  public final c kxQ()
+  {
+    AppMethodBeat.i(59271);
+    if (this.aiEI.ajex.ajeC.isEmpty())
+    {
+      localc = this.ajev;
+      if (localc == null) {
+        aKu(9);
+      }
+      AppMethodBeat.o(59271);
+      return localc;
+    }
+    c localc = new c(this.aiEI.PF() + "." + this.ajev.PF());
+    AppMethodBeat.o(59271);
+    return localc;
   }
   
   public final b p(f paramf)
   {
-    AppMethodBeat.i(59287);
+    AppMethodBeat.i(59268);
     if (paramf == null) {
-      aDG(8);
+      aKu(8);
     }
-    paramf = new b(this.abfE.s(paramf), this);
-    AppMethodBeat.o(59287);
+    paramf = new b(kxL(), this.ajev.q(paramf), this.NIH);
+    AppMethodBeat.o(59268);
     return paramf;
-  }
-  
-  public final boolean q(f paramf)
-  {
-    AppMethodBeat.i(59290);
-    if (paramf == null) {
-      aDG(12);
-    }
-    boolean bool = this.abfE.q(paramf);
-    AppMethodBeat.o(59290);
-    return bool;
-  }
-  
-  public final String qu()
-  {
-    AppMethodBeat.i(59283);
-    String str = this.abfE.qu();
-    if (str == null) {
-      aDG(4);
-    }
-    AppMethodBeat.o(59283);
-    return str;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(59292);
-    String str = this.abfE.toString();
-    AppMethodBeat.o(59292);
+    AppMethodBeat.i(59277);
+    if (this.aiEI.ajex.ajeC.isEmpty())
+    {
+      str = "/" + PF();
+      AppMethodBeat.o(59277);
+      return str;
+    }
+    String str = PF();
+    AppMethodBeat.o(59277);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.f.b
  * JD-Core Version:    0.7.0.1
  */

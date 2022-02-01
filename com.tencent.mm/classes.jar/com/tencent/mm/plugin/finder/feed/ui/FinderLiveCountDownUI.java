@@ -1,78 +1,71 @@
 package com.tencent.mm.plugin.finder.feed.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.k;
-import com.tencent.mm.plugin.finder.live.viewmodel.h;
+import com.tencent.mm.plugin.finder.live.p.f;
+import com.tencent.mm.plugin.finder.live.p.i;
+import com.tencent.mm.plugin.finder.live.viewmodel.j;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.ui.component.UIComponent;
-import com.tencent.mm.ui.component.g;
-import com.tencent.mm.ui.component.g.a;
-import com.tencent.mm.ui.f.i.a;
-import java.util.HashMap;
+import com.tencent.mm.ui.component.k;
+import com.tencent.mm.ui.component.k.b;
+import com.tencent.mm.ui.f.j.a;
 import java.util.Set;
-import kotlin.a.ak;
+import kotlin.Metadata;
+import kotlin.a.ar;
+import kotlin.ah;
 import kotlin.g.a.b;
-import kotlin.g.a.s;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.u;
 
 @a(39)
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveCountDownUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "landscapeType", "", "Ljava/lang/Integer;", "getForceOrientation", "getLayoutId", "getOrientation", "getReportTag", "", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onConfigurationChanged", "", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onCreateBeforeSetContentView", "onDestroy", "publishEvent", "resetData", "Companion", "plugin-finder-live_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveCountDownUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "landscapeType", "", "Ljava/lang/Integer;", "getForceOrientation", "getLayoutId", "getOrientation", "getReportTag", "", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onConfigurationChanged", "", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onCreateBeforeSetContentView", "onDestroy", "publishEvent", "resetData", "Companion", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderLiveCountDownUI
   extends MMFinderUI
 {
-  public static final a xOH;
-  private HashMap _$_findViewCache;
-  private Integer xNY;
+  public static final FinderLiveCountDownUI.a BoE;
+  private Integer Bob;
   
   static
   {
-    AppMethodBeat.i(232535);
-    xOH = new a((byte)0);
-    AppMethodBeat.o(232535);
+    AppMethodBeat.i(364859);
+    BoE = new FinderLiveCountDownUI.a((byte)0);
+    AppMethodBeat.o(364859);
   }
   
   public FinderLiveCountDownUI()
   {
-    AppMethodBeat.i(232534);
+    AppMethodBeat.i(364830);
     Object localObject = getIntent();
-    if (localObject != null) {}
-    for (localObject = Integer.valueOf(((Intent)localObject).getIntExtra("LANDSCAPE_TYPE", f.i.a.VSj.ordinal()));; localObject = null)
+    if (localObject == null) {}
+    for (localObject = null;; localObject = Integer.valueOf(((Intent)localObject).getIntExtra("LANDSCAPE_TYPE", f.j.a.adwr.ordinal())))
     {
-      this.xNY = ((Integer)localObject);
-      AppMethodBeat.o(232534);
+      this.Bob = ((Integer)localObject);
+      AppMethodBeat.o(364830);
       return;
     }
   }
   
   private int getOrientation()
   {
-    AppMethodBeat.i(232521);
+    AppMethodBeat.i(364837);
     Object localObject = getIntent();
     int i;
-    if (localObject != null)
+    if (localObject == null)
     {
-      localObject = Integer.valueOf(((Intent)localObject).getIntExtra("LANDSCAPE_TYPE", f.i.a.VSj.ordinal()));
-      this.xNY = ((Integer)localObject);
-      localObject = this.xNY;
-      i = f.i.a.VSk.ordinal();
+      localObject = null;
+      this.Bob = ((Integer)localObject);
+      localObject = this.Bob;
+      i = f.j.a.adws.ordinal();
       if (localObject != null) {
         break label74;
       }
-      label51:
-      i = f.i.a.VSl.ordinal();
+      label37:
+      i = f.j.a.adwt.ordinal();
       if (localObject != null) {
         break label89;
       }
@@ -81,107 +74,85 @@ public final class FinderLiveCountDownUI
     label89:
     while (((Integer)localObject).intValue() != i)
     {
-      AppMethodBeat.o(232521);
+      AppMethodBeat.o(364837);
       return -1;
-      localObject = null;
+      localObject = Integer.valueOf(((Intent)localObject).getIntExtra("LANDSCAPE_TYPE", f.j.a.adwr.ordinal()));
       break;
       if (((Integer)localObject).intValue() != i) {
-        break label51;
+        break label37;
       }
-      AppMethodBeat.o(232521);
+      AppMethodBeat.o(364837);
       return 0;
     }
-    AppMethodBeat.o(232521);
+    AppMethodBeat.o(364837);
     return 8;
   }
   
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(232540);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(232540);
-  }
+  public final void _$_clearFindViewByIdCache() {}
   
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(232539);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(232539);
-    return localView1;
-  }
-  
-  public final String dvl()
+  public final String efe()
   {
     return "Finder.FinderLiveCountDownUI";
   }
   
   public final int getForceOrientation()
   {
-    AppMethodBeat.i(232517);
+    AppMethodBeat.i(364881);
     int i = getOrientation();
-    AppMethodBeat.o(232517);
+    AppMethodBeat.o(364881);
     return i;
   }
   
   public final int getLayoutId()
   {
-    return b.g.finder_live_count_down_ui;
+    return p.f.Cdv;
   }
   
   public final Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(232516);
-    Set localSet = ak.setOf(h.class);
-    AppMethodBeat.o(232516);
+    AppMethodBeat.i(364875);
+    Set localSet = ar.setOf(j.class);
+    AppMethodBeat.o(364875);
     return localSet;
   }
   
   public final void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(232532);
-    p.k(paramConfiguration, "newConfig");
+    AppMethodBeat.i(364899);
+    kotlin.g.b.s.u(paramConfiguration, "newConfig");
     super.onConfigurationChanged(paramConfiguration);
-    Log.i("Finder.FinderLiveCountDownUI", "onConfigurationChanged: orientation = " + paramConfiguration.orientation);
-    AppMethodBeat.o(232532);
+    Log.i("Finder.FinderLiveCountDownUI", kotlin.g.b.s.X("onConfigurationChanged: orientation = ", Integer.valueOf(paramConfiguration.orientation)));
+    AppMethodBeat.o(364899);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(232524);
+    AppMethodBeat.i(364885);
     super.onCreate(paramBundle);
     setRequestedOrientation(getOrientation());
-    paramBundle = g.Xox;
-    ((h)g.b((AppCompatActivity)this).i(h.class)).callback = ((b)new b(this));
-    AppMethodBeat.o(232524);
+    paramBundle = k.aeZF;
+    ((j)k.d((AppCompatActivity)this).q(j.class)).callback = ((b)new b(this));
+    AppMethodBeat.o(364885);
   }
   
   public final void onCreateBeforeSetContentView()
   {
-    AppMethodBeat.i(232514);
+    AppMethodBeat.i(364869);
     super.onCreateBeforeSetContentView();
-    this.AwU = true;
-    setTheme(b.k.MMTheme_FinderNoTitleTranslucent);
-    AppMethodBeat.o(232514);
+    this.FVH = true;
+    setTheme(p.i.MMTheme_FinderNoTitleTranslucent);
+    AppMethodBeat.o(364869);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(232527);
+    AppMethodBeat.i(364889);
     super.onDestroy();
-    g localg = g.Xox;
-    ((h)g.b((AppCompatActivity)this).i(h.class)).dFU();
-    AppMethodBeat.o(232527);
+    k localk = k.aeZF;
+    ((j)k.d((AppCompatActivity)this).q(j.class)).exf();
+    localk = k.aeZF;
+    ((j)k.d((AppCompatActivity)this).q(j.class)).callback = null;
+    AppMethodBeat.o(364889);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -190,13 +161,10 @@ public final class FinderLiveCountDownUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveCountDownUI$Companion;", "", "()V", "TAG", "", "plugin-finder-live_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "success", "", "invoke", "com/tencent/mm/plugin/finder/feed/ui/FinderLiveCountDownUI$onCreate$1$1"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "success", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
-    implements b<Boolean, x>
+    extends u
+    implements b<Boolean, ah>
   {
     b(FinderLiveCountDownUI paramFinderLiveCountDownUI)
     {

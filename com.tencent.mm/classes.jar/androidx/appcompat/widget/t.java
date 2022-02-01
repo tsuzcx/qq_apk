@@ -20,21 +20,21 @@ public final class t
   extends ListPopupWindow
   implements s
 {
-  private static Method tA;
-  public s tB;
+  private static Method uz;
+  public s uA;
   
   static
   {
-    AppMethodBeat.i(241451);
+    AppMethodBeat.i(199742);
     try
     {
-      tA = PopupWindow.class.getDeclaredMethod("setTouchModal", new Class[] { Boolean.TYPE });
-      AppMethodBeat.o(241451);
+      uz = PopupWindow.class.getDeclaredMethod("setTouchModal", new Class[] { Boolean.TYPE });
+      AppMethodBeat.o(199742);
       return;
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      AppMethodBeat.o(241451);
+      AppMethodBeat.o(199742);
     }
   }
   
@@ -45,86 +45,86 @@ public final class t
   
   public final void b(h paramh, MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(241449);
-    if (this.tB != null) {
-      this.tB.b(paramh, paramMenuItem);
+    AppMethodBeat.i(199809);
+    if (this.uA != null) {
+      this.uA.b(paramh, paramMenuItem);
     }
-    AppMethodBeat.o(241449);
+    AppMethodBeat.o(199809);
   }
   
   public final void c(h paramh, MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(241448);
-    if (this.tB != null) {
-      this.tB.c(paramh, paramMenuItem);
+    AppMethodBeat.i(199796);
+    if (this.uA != null) {
+      this.uA.c(paramh, paramMenuItem);
     }
-    AppMethodBeat.o(241448);
+    AppMethodBeat.o(199796);
   }
   
-  public final void dR()
+  public final void eR()
   {
-    AppMethodBeat.i(241444);
+    AppMethodBeat.i(199771);
     if (Build.VERSION.SDK_INT >= 23) {
-      this.ty.setEnterTransition(null);
+      this.ux.setEnterTransition(null);
     }
-    AppMethodBeat.o(241444);
+    AppMethodBeat.o(199771);
   }
   
-  public final void dS()
+  public final void eS()
   {
-    AppMethodBeat.i(241446);
-    if (tA != null) {
+    AppMethodBeat.i(199784);
+    if (uz != null) {
       try
       {
-        tA.invoke(this.ty, new Object[] { Boolean.FALSE });
-        AppMethodBeat.o(241446);
+        uz.invoke(this.ux, new Object[] { Boolean.FALSE });
+        AppMethodBeat.o(199784);
         return;
       }
       catch (Exception localException) {}
     }
-    AppMethodBeat.o(241446);
+    AppMethodBeat.o(199784);
   }
   
   final p h(Context paramContext, boolean paramBoolean)
   {
-    AppMethodBeat.i(241443);
+    AppMethodBeat.i(199759);
     paramContext = new a(paramContext, paramBoolean);
     paramContext.setHoverListener(this);
-    AppMethodBeat.o(241443);
+    AppMethodBeat.o(199759);
     return paramContext;
   }
   
   public static final class a
     extends p
   {
-    private s tB;
-    final int tC;
-    final int tD;
-    private MenuItem tE;
+    private s uA;
+    final int uB;
+    final int uC;
+    private MenuItem uD;
     
     public a(Context paramContext, boolean paramBoolean)
     {
       super(paramBoolean);
-      AppMethodBeat.i(241428);
+      AppMethodBeat.i(199422);
       paramContext = paramContext.getResources().getConfiguration();
       if ((Build.VERSION.SDK_INT >= 17) && (1 == paramContext.getLayoutDirection()))
       {
-        this.tC = 21;
-        this.tD = 22;
-        AppMethodBeat.o(241428);
+        this.uB = 21;
+        this.uC = 22;
+        AppMethodBeat.o(199422);
         return;
       }
-      this.tC = 22;
-      this.tD = 21;
-      AppMethodBeat.o(241428);
+      this.uB = 22;
+      this.uC = 21;
+      AppMethodBeat.o(199422);
     }
     
     public final boolean onHoverEvent(MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(241430);
+      AppMethodBeat.i(199450);
       Object localObject;
       int i;
-      if (this.tB != null)
+      if (this.uA != null)
       {
         localObject = getAdapter();
         if (!(localObject instanceof HeaderViewListAdapter)) {
@@ -147,22 +147,22 @@ public final class t
       }
       label180:
       label192:
-      for (j localj = ((g)localObject).ai(i);; localj = null)
+      for (j localj = ((g)localObject).ag(i);; localj = null)
       {
-        MenuItem localMenuItem = this.tE;
+        MenuItem localMenuItem = this.uD;
         if (localMenuItem != localj)
         {
-          localObject = ((g)localObject).mw;
+          localObject = ((g)localObject).nv;
           if (localMenuItem != null) {
-            this.tB.b((h)localObject, localMenuItem);
+            this.uA.b((h)localObject, localMenuItem);
           }
-          this.tE = localj;
+          this.uD = localj;
           if (localj != null) {
-            this.tB.c((h)localObject, localj);
+            this.uA.c((h)localObject, localj);
           }
         }
         boolean bool = super.onHoverEvent(paramMotionEvent);
-        AppMethodBeat.o(241430);
+        AppMethodBeat.o(199450);
         return bool;
         i = 0;
         localObject = (g)localObject;
@@ -172,37 +172,37 @@ public final class t
     
     public final boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
     {
-      AppMethodBeat.i(241429);
+      AppMethodBeat.i(199438);
       ListMenuItemView localListMenuItemView = (ListMenuItemView)getSelectedView();
-      if ((localListMenuItemView != null) && (paramInt == this.tC))
+      if ((localListMenuItemView != null) && (paramInt == this.uB))
       {
         if ((localListMenuItemView.isEnabled()) && (localListMenuItemView.getItemData().hasSubMenu())) {
           performItemClick(localListMenuItemView, getSelectedItemPosition(), getSelectedItemId());
         }
-        AppMethodBeat.o(241429);
+        AppMethodBeat.o(199438);
         return true;
       }
-      if ((localListMenuItemView != null) && (paramInt == this.tD))
+      if ((localListMenuItemView != null) && (paramInt == this.uC))
       {
         setSelection(-1);
-        ((g)getAdapter()).mw.G(false);
-        AppMethodBeat.o(241429);
+        ((g)getAdapter()).nv.K(false);
+        AppMethodBeat.o(199438);
         return true;
       }
       boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-      AppMethodBeat.o(241429);
+      AppMethodBeat.o(199438);
       return bool;
     }
     
     public final void setHoverListener(s params)
     {
-      this.tB = params;
+      this.uA = params;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.widget.t
  * JD-Core Version:    0.7.0.1
  */

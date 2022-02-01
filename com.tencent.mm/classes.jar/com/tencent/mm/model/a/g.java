@@ -5,31 +5,31 @@ import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.be;
 import com.tencent.mm.model.y;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.aq;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class g
   implements be
 {
-  private c lwG = null;
+  private c oof = null;
   
-  private static g bfZ()
+  private static g bDQ()
   {
     AppMethodBeat.i(153100);
-    g localg = (g)y.as(g.class);
+    g localg = (g)y.aL(g.class);
     AppMethodBeat.o(153100);
     return localg;
   }
   
-  public static c bga()
+  public static c bDR()
   {
     AppMethodBeat.i(153103);
-    h.aHE().aGH();
-    if (bfZ().lwG == null) {
-      bfZ().lwG = new c();
+    h.baC().aZJ();
+    if (bDQ().oof == null) {
+      bDQ().oof = new c();
     }
-    c localc = bfZ().lwG;
+    c localc = bDQ().oof;
     AppMethodBeat.o(153103);
     return localc;
   }
@@ -44,13 +44,13 @@ public class g
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(153101);
-    c localc = bga();
+    c localc = bDR();
     long l = System.currentTimeMillis();
     try
     {
-      localc.Sl((String)h.aHG().aHp().b(328193, null));
-      if (localc.bfY()) {
-        f.Sn(localc.lwB.lwy);
+      localc.Kn((String)h.baE().ban().d(328193, null));
+      if (localc.bDP()) {
+        f.Kp(localc.ooa.onX);
       }
       Log.i("MicroMsg.abtest.AbTestManager", "[Abtest] init use time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
       AppMethodBeat.o(153101);
@@ -68,9 +68,9 @@ public class g
   public void onAccountRelease()
   {
     AppMethodBeat.i(153102);
-    c localc = bga();
-    localc.lwC = null;
-    localc.lwB = null;
+    c localc = bDR();
+    localc.oob = null;
+    localc.ooa = null;
     AppMethodBeat.o(153102);
   }
   

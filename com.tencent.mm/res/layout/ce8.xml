@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/kgj" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/k1p" />
-    <include android:id="@id/k1p" android:layout_width="fill_parent" android:layout_height="@dimen/cp" android:layout_marginLeft="@dimen/cb" android:layout_marginRight="@dimen/cb" android:layout_alignParentBottom="true" layout="@layout/ce9" />
-    <ProgressBar android:id="@id/kgi" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a61" />
-</RelativeLayout>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <ImageView android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginTop="48.0dip" android:src="@raw/realname_done" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/gf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:text="@string/kme" />
+    <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="48.0dip" android:textColor="@color/a7b" android:id="@id/ll2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="" wallet:walletTypeFace="k0_" />
+    <Space android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <Button android:id="@id/ll1" android:layout_marginBottom="96.0dip" android:text="@string/z9" style="@style/op" />
+</LinearLayout>

@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.profile.ui;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -18,68 +17,93 @@ import com.tencent.mm.R.c;
 import com.tencent.mm.R.e;
 import com.tencent.mm.R.l;
 import com.tencent.mm.R.o;
-import com.tencent.mm.am.g;
-import com.tencent.mm.am.g.c;
-import com.tencent.mm.am.q;
+import com.tencent.mm.autogen.b.az;
 import com.tencent.mm.b.p;
-import com.tencent.mm.f.c.ax;
 import com.tencent.mm.model.ab;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.account.friend.a.at;
-import com.tencent.mm.plugin.account.friend.a.l;
+import com.tencent.mm.modelavatar.AvatarStorage;
+import com.tencent.mm.modelavatar.f.d;
+import com.tencent.mm.modelavatar.q;
+import com.tencent.mm.plugin.account.friend.model.ap;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.base.h.d;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.k.d;
 import com.tencent.mm.ui.base.preference.KeyValuePreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import java.io.ByteArrayOutputStream;
+import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ContactSocialInfoUI
   extends MMPreference
 {
-  private com.tencent.mm.plugin.account.friend.a.a GYI;
-  private String GYJ;
-  private String GYK;
-  private String GYL;
-  private String GYM;
-  private String GYN;
-  private String GYO;
-  private String GYP;
-  private JSONObject GYQ;
-  private long GYx;
-  private String GYy;
-  private String fPV;
-  private com.tencent.mm.ui.base.preference.f mrf;
-  private com.tencent.mm.storage.as uNk;
+  private long MWA;
+  private String MWB;
+  private com.tencent.mm.plugin.account.friend.model.a MWL;
+  private String MWM;
+  private String MWN;
+  private String MWO;
+  private String MWP;
+  private String MWQ;
+  private String MWR;
+  private String MWS;
+  private JSONObject MWT;
+  private String hVQ;
+  private com.tencent.mm.ui.base.preference.f pkD;
+  private au xVS;
   
-  private void aUN(String paramString)
+  private void E(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    AppMethodBeat.i(27062);
+    if ((!Util.isNullOrNil(paramString2)) && (!Util.isNullOrNil(paramString1)))
+    {
+      paramString1 = (KeyValuePreference)this.pkD.bAi(paramString1);
+      if (paramString1 != null)
+      {
+        paramString1.jnp();
+        if (paramBoolean) {
+          paramString1.wKL = getResources().getColor(R.e.link_color);
+        }
+        paramString1.aS(paramString2);
+        paramString1.LG(false);
+      }
+      AppMethodBeat.o(27062);
+      return;
+    }
+    this.pkD.bAk(paramString1);
+    AppMethodBeat.o(27062);
+  }
+  
+  private void aRV(String paramString)
   {
     AppMethodBeat.i(27065);
     Intent localIntent = new Intent("android.intent.action.DIAL");
     localIntent.setFlags(268435456);
     localIntent.setData(Uri.parse("tel:".concat(String.valueOf(paramString))));
-    paramString = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.b(this, paramString.aFh(), "com/tencent/mm/plugin/profile/ui/ContactSocialInfoUI", "dial", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)paramString.sf(0));
+    paramString = new com.tencent.mm.hellhoundlib.b.a().cG(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.b(this, paramString.aYi(), "com/tencent/mm/plugin/profile/ui/ContactSocialInfoUI", "dial", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)paramString.sb(0));
     com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/profile/ui/ContactSocialInfoUI", "dial", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(27065);
   }
   
-  private void fqg()
+  private void gBw()
   {
     AppMethodBeat.i(27066);
     Intent localIntent = new Intent();
-    localIntent.putExtra("rawUrl", this.GYQ.optString("ShopUrl"));
-    localIntent.putExtra("geta8key_username", z.bcZ());
-    com.tencent.mm.by.c.b(getContext(), "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent);
+    localIntent.putExtra("rawUrl", this.MWT.optString("ShopUrl"));
+    localIntent.putExtra("geta8key_username", z.bAM());
+    com.tencent.mm.br.c.b(getContext(), "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent);
     AppMethodBeat.o(27066);
   }
   
@@ -90,7 +114,7 @@ public class ContactSocialInfoUI
     {
       ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
       paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, localByteArrayOutputStream);
-      boolean bool = l.a(paramString, getContext(), localByteArrayOutputStream.toByteArray());
+      boolean bool = com.tencent.mm.plugin.account.friend.model.i.a(paramString, getContext(), localByteArrayOutputStream.toByteArray());
       AppMethodBeat.o(27064);
       return bool;
     }
@@ -98,37 +122,15 @@ public class ContactSocialInfoUI
     return false;
   }
   
-  private void y(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    AppMethodBeat.i(27062);
-    if ((!Util.isNullOrNil(paramString2)) && (!Util.isNullOrNil(paramString1)))
-    {
-      paramString1 = (KeyValuePreference)this.mrf.byG(paramString1);
-      if (paramString1 != null)
-      {
-        paramString1.hKM();
-        if (paramBoolean) {
-          paramString1.tHk = getResources().getColor(R.e.link_color);
-        }
-        paramString1.aF(paramString2);
-        paramString1.FU(false);
-      }
-      AppMethodBeat.o(27062);
-      return;
-    }
-    this.mrf.byI(paramString1);
-    AppMethodBeat.o(27062);
-  }
-  
   public int getResourceId()
   {
-    return R.o.eXA;
+    return R.o.hbb;
   }
   
   public void initView()
   {
     AppMethodBeat.i(27061);
-    setMMTitle(R.l.ezs);
+    setMMTitle(R.l.gCh);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -139,108 +141,108 @@ public class ContactSocialInfoUI
         return true;
       }
     });
-    this.mrf = getPreferenceScreen();
+    this.pkD = getPreferenceScreen();
     Object localObject1 = getIntent().getStringExtra("Contact_Mobile_MD5");
     Object localObject2 = getIntent().getStringExtra("Contact_full_Mobile_MD5");
     if ((Util.isNullOrNil((String)localObject1)) && (Util.isNullOrNil((String)localObject2))) {
-      if (Util.isNullOrNil(this.uNk.field_username)) {
-        this.GYI = com.tencent.mm.plugin.account.b.getAddrUploadStg().aax(this.fPV);
+      if (Util.isNullOrNil(this.xVS.field_username)) {
+        this.MWL = com.tencent.mm.plugin.account.b.getAddrUploadStg().SR(this.hVQ);
       }
     }
     for (;;)
     {
       label156:
       int i;
-      if ((this.GYI == null) || (this.GYI.getMd5() == null) || (this.GYI.getMd5().length() <= 0))
+      if ((this.MWL == null) || (this.MWL.getMd5() == null) || (this.MWL.getMd5().length() <= 0))
       {
-        Log.e("MicroMsg.ContactSocialInfoUI", "error : this is not the mobile contact, MD5 = " + this.GYJ);
-        y("contact_info_social_mobile", this.GYK, true);
-        bh.beI();
-        i = Util.nullAsNil((Integer)com.tencent.mm.model.c.aHp().b(9, null));
-        this.GYx = getIntent().getLongExtra("Contact_Uin", 0L);
-        this.GYy = getIntent().getStringExtra("Contact_QQNick");
-        if ((this.GYx != 0L) && (i != 0))
+        Log.e("MicroMsg.ContactSocialInfoUI", "error : this is not the mobile contact, MD5 = " + this.MWM);
+        E("contact_info_social_mobile", this.MWN, true);
+        bh.bCz();
+        i = Util.nullAsNil((Integer)com.tencent.mm.model.c.ban().d(9, null));
+        this.MWA = getIntent().getLongExtra("Contact_Uin", 0L);
+        this.MWB = getIntent().getStringExtra("Contact_QQNick");
+        if ((this.MWA != 0L) && (i != 0))
         {
-          if ((this.GYy == null) || (this.GYy.length() == 0))
+          if ((this.MWB == null) || (this.MWB.length() == 0))
           {
-            long l = this.GYx;
-            localObject2 = com.tencent.mm.plugin.account.b.getQQListStg().Hd(l);
+            long l = this.MWA;
+            localObject2 = com.tencent.mm.plugin.account.b.getQQListStg().jt(l);
             localObject1 = localObject2;
             if (localObject2 == null) {
               localObject1 = null;
             }
             if (localObject1 != null) {
-              this.GYy = ((com.tencent.mm.plugin.account.friend.a.as)localObject1).getDisplayName();
+              this.MWB = ((ap)localObject1).getDisplayName();
             }
           }
-          this.GYL = Util.nullAsNil(this.GYy);
-          this.GYL = (this.GYL + " " + new p(this.GYx).longValue());
+          this.MWO = Util.nullAsNil(this.MWB);
+          this.MWO = (this.MWO + " " + new p(this.MWA).longValue());
         }
-        y("contact_info_social_qq", this.GYL, true);
-        localObject1 = com.tencent.mm.n.h.axc().getValue("LinkedinPluginClose");
+        E("contact_info_social_qq", this.MWO, true);
+        localObject1 = com.tencent.mm.k.i.aRC().getValue("LinkedinPluginClose");
         if ((!Util.isNullOrNil((String)localObject1)) && (Util.getInt((String)localObject1, 0) != 0)) {
           break label832;
         }
         i = 1;
         label384:
-        if ((i == 0) || (Util.isNullOrNil(this.uNk.hDs))) {
+        if ((i == 0) || (Util.isNullOrNil(this.xVS.kan))) {
           break label837;
         }
-        this.GYM = this.uNk.hDt;
+        this.MWP = this.xVS.kao;
         label412:
-        y("contact_info_social_linkedin", this.GYM, true);
-        y("contact_info_social_facebook", this.GYN, false);
-        this.GYP = Util.nullAs(getIntent().getStringExtra("verify_gmail"), "");
-        this.GYO = Util.nullAs(getIntent().getStringExtra("profileName"), Util.subStringEmail(this.GYP));
-        if ((Util.isNullOrNil(this.GYP)) || (Util.isNullOrNil(this.GYO))) {
+        E("contact_info_social_linkedin", this.MWP, true);
+        E("contact_info_social_facebook", this.MWQ, false);
+        this.MWS = Util.nullAs(getIntent().getStringExtra("verify_gmail"), "");
+        this.MWR = Util.nullAs(getIntent().getStringExtra("profileName"), Util.subStringEmail(this.MWS));
+        if ((Util.isNullOrNil(this.MWS)) || (Util.isNullOrNil(this.MWR))) {
           break label847;
         }
-        y("contact_info_social_googlecontacts", this.GYO + '\n' + this.GYP, false);
+        E("contact_info_social_googlecontacts", this.MWR + '\n' + this.MWS, false);
         label537:
-        if (!z.bcZ().equals(this.uNk.field_username)) {
+        if (!z.bAM().equals(this.xVS.field_username)) {
           break label861;
         }
-        bh.beI();
-        localObject1 = (String)com.tencent.mm.model.c.aHp().get(ar.a.VjK, null);
+        bh.bCz();
+        localObject1 = (String)com.tencent.mm.model.c.ban().get(at.a.acLe, null);
         Log.i("MicroMsg.ContactSocialInfoUI", "in self social info page, weishop info:%s", new Object[] { localObject1 });
         if (Util.isNullOrNil((String)localObject1)) {}
       }
       try
       {
-        this.GYQ = new JSONObject((String)localObject1);
-        if (this.GYQ != null)
+        this.MWT = new JSONObject((String)localObject1);
+        if (this.MWT != null)
         {
-          y("contact_info_social_weishop", this.GYQ.optString("ShopName"), true);
+          E("contact_info_social_weishop", this.MWT.optString("ShopName"), true);
           AppMethodBeat.o(27061);
           return;
-          this.GYI = com.tencent.mm.plugin.account.b.getAddrUploadStg().aax(this.uNk.field_username);
+          this.MWL = com.tencent.mm.plugin.account.b.getAddrUploadStg().SR(this.xVS.field_username);
           continue;
           if (((localObject1 == null) || (((String)localObject1).length() <= 0)) && ((localObject2 == null) || (((String)localObject2).length() <= 0))) {
             continue;
           }
-          this.GYI = com.tencent.mm.plugin.account.b.getAddrUploadStg().aaA((String)localObject1);
-          if ((this.GYI != null) && (this.GYI.getMd5() != null) && (this.GYI.getMd5().length() > 0)) {
+          this.MWL = com.tencent.mm.plugin.account.b.getAddrUploadStg().SU((String)localObject1);
+          if ((this.MWL != null) && (this.MWL.getMd5() != null) && (this.MWL.getMd5().length() > 0)) {
             continue;
           }
-          this.GYI = com.tencent.mm.plugin.account.b.getAddrUploadStg().aaA((String)localObject2);
-          if ((this.GYI == null) || (this.GYI.getMd5() == null)) {
+          this.MWL = com.tencent.mm.plugin.account.b.getAddrUploadStg().SU((String)localObject2);
+          if ((this.MWL == null) || (this.MWL.getMd5() == null)) {
             continue;
           }
-          this.GYI.getMd5().length();
+          this.MWL.getMd5().length();
           continue;
-          this.GYK = (Util.nullAsNil(this.GYI.bxT()) + " " + Util.nullAsNil(this.GYI.bxY()).replace(" ", ""));
+          this.MWN = (Util.nullAsNil(this.MWL.bWI()) + " " + Util.nullAsNil(this.MWL.bWN()).replace(" ", ""));
           break label156;
           label832:
           i = 0;
           break label384;
           label837:
-          this.GYM = "";
+          this.MWP = "";
           break label412;
           label847:
-          y("contact_info_social_googlecontacts", "", false);
+          E("contact_info_social_googlecontacts", "", false);
           break label537;
           label861:
-          localObject1 = this.uNk.hDv;
+          localObject1 = this.xVS.kaq;
           Log.i("MicroMsg.ContactSocialInfoUI", "weiShopInfo:%s", new Object[] { localObject1 });
         }
       }
@@ -249,9 +251,9 @@ public class ContactSocialInfoUI
         for (;;)
         {
           Log.printErrStackTrace("MicroMsg.ContactSocialInfoUI", localJSONException, "", new Object[0]);
-          this.GYQ = null;
+          this.MWT = null;
         }
-        y("contact_info_social_weishop", "", false);
+        E("contact_info_social_weishop", "", false);
         AppMethodBeat.o(27061);
       }
     }
@@ -261,35 +263,42 @@ public class ContactSocialInfoUI
   {
     AppMethodBeat.i(27060);
     super.onCreate(paramBundle);
-    this.fPV = Util.nullAsNil(getIntent().getStringExtra("Contact_User"));
-    bh.beI();
-    this.uNk = com.tencent.mm.model.c.bbL().RG(this.fPV);
+    this.hVQ = Util.nullAsNil(getIntent().getStringExtra("Contact_User"));
+    bh.bCz();
+    this.xVS = com.tencent.mm.model.c.bzA().JE(this.hVQ);
     initView();
     AppMethodBeat.o(27060);
   }
   
-  public boolean onPreferenceTreeClick(final com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
+  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, final Preference paramPreference)
   {
     AppMethodBeat.i(27063);
     paramf = paramPreference.mKey;
     Log.i("MicroMsg.ContactSocialInfoUI", paramf + " item has been clicked!");
     if (paramf.equals("contact_info_social_mobile")) {
-      if ((this.GYI != null) && (this.uNk != null)) {}
+      if ((this.MWL != null) && (this.xVS != null)) {}
     }
     for (;;)
     {
       AppMethodBeat.o(27063);
       return false;
-      bh.beI();
-      if (com.tencent.mm.model.c.bbL().bwd(this.GYI.getUsername()))
+      bh.bCz();
+      if (com.tencent.mm.model.c.bzA().bxr(this.MWL.getUsername()))
       {
-        if ((this.GYI != null) && (!Util.isNullOrNil(this.GYI.lAY))) {}
-        for (paramf = getResources().getStringArray(R.c.djS);; paramf = getResources().getStringArray(R.c.djT))
+        if ((this.MWL != null) && (!Util.isNullOrNil(this.MWL.osA))) {}
+        for (paramf = getResources().getStringArray(R.c.fjT);; paramf = getResources().getStringArray(R.c.fjU))
         {
-          paramPreference = com.tencent.mm.plugin.profile.b.mIH;
-          com.tencent.mm.ui.base.h.a(this, null, paramf, null, new h.d()
+          paramPreference = paramf;
+          if (com.tencent.mm.plugin.profile.b.pFo.aDC())
           {
-            public final void qy(int paramAnonymousInt)
+            paramf = Util.stringsToList(paramf);
+            paramf.add(getResources().getString(R.l.gyY));
+            paramPreference = (String[])paramf.toArray(new String[paramf.size()]);
+            h.OAn.b(11621, new Object[] { Integer.valueOf(2), Integer.valueOf(3) });
+          }
+          k.a(this, null, paramPreference, null, new k.d()
+          {
+            public final void qz(int paramAnonymousInt)
             {
               AppMethodBeat.i(27057);
               switch (paramAnonymousInt)
@@ -325,14 +334,14 @@ public class ContactSocialInfoUI
                   ab.c(ContactSocialInfoUI.b(ContactSocialInfoUI.this), ((String)localObject).trim());
                   AppMethodBeat.o(27057);
                   return;
-                  if ((paramf == null) || (paramf.length <= 2) || (ContactSocialInfoUI.c(ContactSocialInfoUI.this) == null) || (ContactSocialInfoUI.b(ContactSocialInfoUI.this) == null))
+                  if ((paramPreference == null) || (paramPreference.length <= 2) || (ContactSocialInfoUI.c(ContactSocialInfoUI.this) == null) || (ContactSocialInfoUI.b(ContactSocialInfoUI.this) == null))
                   {
                     AppMethodBeat.o(27057);
                     return;
                   }
-                  if ((ContactSocialInfoUI.c(ContactSocialInfoUI.this) != null) && (!Util.isNullOrNil(ContactSocialInfoUI.c(ContactSocialInfoUI.this).lAY)))
+                  if ((ContactSocialInfoUI.c(ContactSocialInfoUI.this) != null) && (!Util.isNullOrNil(ContactSocialInfoUI.c(ContactSocialInfoUI.this).osA)))
                   {
-                    ContactSocialInfoUI.a(ContactSocialInfoUI.this, ContactSocialInfoUI.b(ContactSocialInfoUI.this).field_username, ContactSocialInfoUI.c(ContactSocialInfoUI.this).lAY);
+                    ContactSocialInfoUI.a(ContactSocialInfoUI.this, ContactSocialInfoUI.b(ContactSocialInfoUI.this).field_username, ContactSocialInfoUI.c(ContactSocialInfoUI.this).osA);
                     AppMethodBeat.o(27057);
                     return;
                   }
@@ -340,7 +349,7 @@ public class ContactSocialInfoUI
                   Bundle localBundle = new Bundle();
                   localBundle.putInt("fromScene", 2);
                   ((Intent)localObject).putExtra("reportArgs", localBundle);
-                  com.tencent.mm.plugin.profile.b.mIG.i((Intent)localObject, ContactSocialInfoUI.this);
+                  com.tencent.mm.plugin.profile.b.pFn.i((Intent)localObject, ContactSocialInfoUI.this);
                 }
               }
             }
@@ -348,17 +357,17 @@ public class ContactSocialInfoUI
           break;
         }
       }
-      if ((this.GYK != null) && (this.GYK.length() != 0))
+      if ((this.MWN != null) && (this.MWN.length() != 0))
       {
-        int i = this.GYK.lastIndexOf(' ') + 1;
+        int i = this.MWN.lastIndexOf(' ') + 1;
         if (i > 0)
         {
-          aUN(this.GYK.substring(i));
+          aRV(this.MWN.substring(i));
           continue;
           if (!paramf.equals("contact_info_social_qq")) {
             if (paramf.equals("contact_info_social_linkedin"))
             {
-              paramf = this.uNk.hDu;
+              paramf = this.xVS.kap;
               if (Util.isNullOrNil(paramf))
               {
                 Log.e("MicroMsg.ContactSocialInfoUI", "this liurl is null!");
@@ -367,27 +376,27 @@ public class ContactSocialInfoUI
               {
                 paramPreference = new Intent();
                 paramPreference.putExtra("rawUrl", paramf);
-                paramPreference.putExtra("geta8key_username", z.bcZ());
-                com.tencent.mm.by.c.b(this, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", paramPreference);
+                paramPreference.putExtra("geta8key_username", z.bAM());
+                com.tencent.mm.br.c.b(this, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", paramPreference);
               }
             }
-            else if ((!paramf.equals("contact_info_social_facebook")) && (!paramf.equals("contact_info_social_googlecontacts")) && (paramf.equals("contact_info_social_weishop")) && (this.GYQ != null))
+            else if ((!paramf.equals("contact_info_social_facebook")) && (!paramf.equals("contact_info_social_googlecontacts")) && (paramf.equals("contact_info_social_weishop")) && (this.MWT != null))
             {
-              bh.beI();
-              if (com.tencent.mm.model.c.aHp().get(ar.a.Vkm, null) == null) {
-                com.tencent.mm.ui.base.h.a(this, R.l.ezt, R.l.app_tip, new DialogInterface.OnClickListener()
+              bh.bCz();
+              if (com.tencent.mm.model.c.ban().get(at.a.acLG, null) == null) {
+                k.a(this, R.l.gCi, R.l.app_tip, new DialogInterface.OnClickListener()
                 {
                   public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
                   {
                     AppMethodBeat.i(27059);
                     ContactSocialInfoUI.d(ContactSocialInfoUI.this);
-                    bh.beI();
-                    com.tencent.mm.model.c.aHp().set(ar.a.Vkm, Integer.valueOf(1));
+                    bh.bCz();
+                    com.tencent.mm.model.c.ban().set(at.a.acLG, Integer.valueOf(1));
                     AppMethodBeat.o(27059);
                   }
                 }, null);
               } else {
-                fqg();
+                gBw();
               }
             }
           }

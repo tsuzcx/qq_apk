@@ -2,32 +2,30 @@ package com.tencent.mm.plugin.account.model;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
 import com.tencent.mm.kernel.f;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.account.friend.a.w;
+import com.tencent.mm.plugin.account.friend.model.t;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.aq;
 
 public class k
-  implements i, j.a
+  implements com.tencent.mm.am.h, j.a
 {
-  public void K(Bundle paramBundle)
+  public void T(Bundle paramBundle)
   {
     AppMethodBeat.i(127848);
     String str = paramBundle.getString("access_token");
     paramBundle = paramBundle.getString("expires");
     Log.i("MicroMsg.RefreshTokenListener", "onComplete : newToken = " + str + ", expires = " + paramBundle);
     if (paramBundle != null) {
-      h.aHG().aHp().i(65832, paramBundle);
+      com.tencent.mm.kernel.h.baE().ban().B(65832, paramBundle);
     }
-    h.aHG().aHp().i(65830, str);
-    h.aHG().aHp().i(65831, Long.valueOf(System.currentTimeMillis()));
-    h.aGY().a(183, this);
-    paramBundle = new w(2, str);
-    h.aGY().a(paramBundle, 0);
+    com.tencent.mm.kernel.h.baE().ban().B(65830, str);
+    com.tencent.mm.kernel.h.baE().ban().B(65831, Long.valueOf(System.currentTimeMillis()));
+    com.tencent.mm.kernel.h.aZW().a(183, this);
+    paramBundle = new t(2, str);
+    com.tencent.mm.kernel.h.aZW().a(paramBundle, 0);
     AppMethodBeat.o(127848);
   }
   
@@ -38,15 +36,15 @@ public class k
     AppMethodBeat.o(127849);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(127850);
-    if (paramq.getType() != 183)
+    if (paramp.getType() != 183)
     {
       AppMethodBeat.o(127850);
       return;
     }
-    h.aGY().b(183, this);
+    com.tencent.mm.kernel.h.aZW().b(183, this);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       Log.i("MicroMsg.RefreshTokenListener", "update token success");

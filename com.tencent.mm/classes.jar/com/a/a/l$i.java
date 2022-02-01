@@ -7,11 +7,11 @@ import org.xmlpull.v1.XmlPullParser;
 final class l$i
   implements Attributes
 {
-  private XmlPullParser aEX;
+  private XmlPullParser cAJ;
   
   public l$i(l paraml, XmlPullParser paramXmlPullParser)
   {
-    this.aEX = paramXmlPullParser;
+    this.cAJ = paramXmlPullParser;
   }
   
   public final int getIndex(String paramString)
@@ -26,29 +26,29 @@ final class l$i
   
   public final int getLength()
   {
-    AppMethodBeat.i(203067);
-    int i = this.aEX.getAttributeCount();
-    AppMethodBeat.o(203067);
+    AppMethodBeat.i(207720);
+    int i = this.cAJ.getAttributeCount();
+    AppMethodBeat.o(207720);
     return i;
   }
   
   public final String getLocalName(int paramInt)
   {
-    AppMethodBeat.i(203070);
-    String str = this.aEX.getAttributeName(paramInt);
-    AppMethodBeat.o(203070);
+    AppMethodBeat.i(207738);
+    String str = this.cAJ.getAttributeName(paramInt);
+    AppMethodBeat.o(207738);
     return str;
   }
   
   public final String getQName(int paramInt)
   {
-    AppMethodBeat.i(203073);
-    String str2 = this.aEX.getAttributeName(paramInt);
+    AppMethodBeat.i(207744);
+    String str2 = this.cAJ.getAttributeName(paramInt);
     String str1 = str2;
-    if (this.aEX.getAttributePrefix(paramInt) != null) {
-      str1 = this.aEX.getAttributePrefix(paramInt) + ':' + str2;
+    if (this.cAJ.getAttributePrefix(paramInt) != null) {
+      str1 = this.cAJ.getAttributePrefix(paramInt) + ':' + str2;
     }
-    AppMethodBeat.o(203073);
+    AppMethodBeat.o(207744);
     return str1;
   }
   
@@ -69,17 +69,17 @@ final class l$i
   
   public final String getURI(int paramInt)
   {
-    AppMethodBeat.i(203068);
-    String str = this.aEX.getAttributeNamespace(paramInt);
-    AppMethodBeat.o(203068);
+    AppMethodBeat.i(207731);
+    String str = this.cAJ.getAttributeNamespace(paramInt);
+    AppMethodBeat.o(207731);
     return str;
   }
   
   public final String getValue(int paramInt)
   {
-    AppMethodBeat.i(203075);
-    String str = this.aEX.getAttributeValue(paramInt);
-    AppMethodBeat.o(203075);
+    AppMethodBeat.i(207750);
+    String str = this.cAJ.getAttributeValue(paramInt);
+    AppMethodBeat.o(207750);
     return str;
   }
   
@@ -95,7 +95,7 @@ final class l$i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.a.a.l.i
  * JD-Core Version:    0.7.0.1
  */

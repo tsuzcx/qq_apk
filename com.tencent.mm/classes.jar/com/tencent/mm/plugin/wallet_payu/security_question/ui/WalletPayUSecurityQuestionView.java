@@ -22,9 +22,9 @@ import com.tencent.mm.ui.tools.CustomFitTextView;
 public class WalletPayUSecurityQuestionView
   extends LinearLayout
 {
-  private TextView PnC;
-  private CustomFitTextView PnD;
-  private String PnE;
+  private TextView Web;
+  private CustomFitTextView Wec;
+  private String Wed;
   private Context mContext;
   
   public WalletPayUSecurityQuestionView(Context paramContext, AttributeSet paramAttributeSet)
@@ -58,26 +58,26 @@ public class WalletPayUSecurityQuestionView
     for (;;)
     {
       localObject = LayoutInflater.from(this.mContext).inflate(a.g.payu_view_secret_question, this, true);
-      this.PnC = ((TextView)((View)localObject).findViewById(a.f.tip_tv));
-      this.PnD = ((CustomFitTextView)((View)localObject).findViewById(a.f.pre_filled_tv));
-      this.PnC.setText(paramContext);
-      paramContext = this.PnD;
-      paramContext.b(paramAttributeSet, paramContext.maxLines, paramContext.XOH, paramContext.XOF, paramContext.getResources().getColor(a.d.hint_text_color));
+      this.Web = ((TextView)((View)localObject).findViewById(a.f.tip_tv));
+      this.Wec = ((CustomFitTextView)((View)localObject).findViewById(a.f.pre_filled_tv));
+      this.Web.setText(paramContext);
+      paramContext = this.Wec;
+      paramContext.b(paramAttributeSet, paramContext.maxLines, paramContext.afEV, paramContext.afET, paramContext.getResources().getColor(a.d.hint_text_color));
       if (!bool)
       {
-        this.PnD.setEnabled(false);
-        this.PnD.setFocusable(false);
-        this.PnD.setClickable(false);
-        this.PnD.setBackgroundResource(a.e.transparent_background);
+        this.Wec.setEnabled(false);
+        this.Wec.setFocusable(false);
+        this.Wec.setClickable(false);
+        this.Wec.setBackgroundResource(a.e.transparent_background);
         setBackgroundResource(a.e.list_item_normal);
         AppMethodBeat.o(72235);
         return;
       }
-      this.PnD.setEnabled(false);
-      this.PnD.setTextColor(getResources().getColor(a.c.wallet_common_clickable_text_color));
-      this.PnD.setFocusable(false);
-      this.PnD.setClickable(false);
-      this.PnD.setBackgroundResource(a.e.transparent_background);
+      this.Wec.setEnabled(false);
+      this.Wec.setTextColor(getResources().getColor(a.c.wallet_common_clickable_text_color));
+      this.Wec.setFocusable(false);
+      this.Wec.setClickable(false);
+      this.Wec.setBackgroundResource(a.e.transparent_background);
       setBackgroundResource(a.e.comm_list_item_selector);
       AppMethodBeat.o(72235);
       return;
@@ -87,10 +87,10 @@ public class WalletPayUSecurityQuestionView
     }
   }
   
-  public final boolean bAz()
+  public final boolean bZp()
   {
     AppMethodBeat.i(72238);
-    if (!Util.isNullOrNil(this.PnE))
+    if (!Util.isNullOrNil(this.Wed))
     {
       AppMethodBeat.o(72238);
       return true;
@@ -101,32 +101,32 @@ public class WalletPayUSecurityQuestionView
   
   public String getCurrentQuestion()
   {
-    return this.PnE;
+    return this.Wed;
   }
   
   public void setQuestionText(String paramString)
   {
     AppMethodBeat.i(72236);
-    this.PnE = paramString;
-    KeyListener localKeyListener = this.PnD.getKeyListener();
-    this.PnD.setInputType(1);
-    this.PnD.setKeyListener(null);
+    this.Wed = paramString;
+    KeyListener localKeyListener = this.Wec.getKeyListener();
+    this.Wec.setInputType(1);
+    this.Wec.setKeyListener(null);
     setValStr(paramString);
-    this.PnD.setKeyListener(localKeyListener);
+    this.Wec.setKeyListener(localKeyListener);
     AppMethodBeat.o(72236);
   }
   
   public void setValStr(String paramString)
   {
     AppMethodBeat.i(72237);
-    CustomFitTextView localCustomFitTextView = this.PnD;
+    CustomFitTextView localCustomFitTextView = this.Wec;
     localCustomFitTextView.b(paramString, 3, false, -1, localCustomFitTextView.getCurrentTextColor());
     AppMethodBeat.o(72237);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.security_question.ui.WalletPayUSecurityQuestionView
  * JD-Core Version:    0.7.0.1
  */

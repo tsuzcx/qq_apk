@@ -14,7 +14,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 public final class a$k
   implements m<IPCString, IPCString>
 {
-  private static IPCString d(IPCString paramIPCString)
+  private static IPCString h(IPCString paramIPCString)
   {
     int i = 1;
     AppMethodBeat.i(63088);
@@ -25,7 +25,7 @@ public final class a$k
       {
         Log.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc updatePieceMusicInfo Task, src:%s", new Object[] { paramIPCString });
         String str1 = paramIPCString.value;
-        locald = o.feX();
+        locald = o.goe();
         if (TextUtils.isEmpty(str1))
         {
           Log.i("MicroMsg.Music.PieceMusicInfoStorage", "updatePieceMusicByUrl url is empty!");
@@ -38,8 +38,8 @@ public final class a$k
           AppMethodBeat.o(63088);
           return paramIPCString;
         }
-        String str2 = b.aSt(str1);
-        c localc = locald.aSn(str2);
+        String str2 = b.aPn(str1);
+        c localc = locald.aPh(str2);
         paramIPCString = localc;
         if (localc == null)
         {
@@ -48,13 +48,13 @@ public final class a$k
         }
         paramIPCString.field_musicId = str2;
         paramIPCString.field_musicUrl = str1;
-        paramIPCString.field_fileName = b.aSu(str1);
+        paramIPCString.field_fileName = b.aPo(str1);
         Log.i("MicroMsg.Music.PieceMusicInfoStorage", "updatePieceMusicByUrl musicId:%s, field_fileName:%s", new Object[] { str2, paramIPCString.field_fileName });
         if (i != 0)
         {
           Log.i("MicroMsg.Music.PieceMusicInfoStorage", "update PieceMusicInfo");
           locald.update(paramIPCString, new String[0]);
-          locald.FSN.put(str2, paramIPCString);
+          locald.LNJ.put(str2, paramIPCString);
           continue;
         }
         Log.i("MicroMsg.Music.PieceMusicInfoStorage", "insert PieceMusicInfo");
@@ -75,7 +75,7 @@ public final class a$k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.a.a.a.k
  * JD-Core Version:    0.7.0.1
  */

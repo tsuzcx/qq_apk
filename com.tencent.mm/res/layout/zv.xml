@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RadioButton android:textSize="@dimen/is" android:gravity="center_vertical" android:paddingLeft="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/k4" style="@style/oi"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.downloader_app.ui.TaskManagerHeaderView android:id="@id/evp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.mm.plugin.downloader_app.ui.DeleteTaskFooterView android:id="@id/c1h" android:background="@color/al2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <com.tencent.mm.plugin.downloader_app.ui.TaskListView android:id="@id/fp6" android:background="@color/ng" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/c1h" android:layout_below="@id/evp" />
+    <ViewStub android:id="@id/hh8" android:layout="@layout/blm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/g40" android:layout="@layout/zs" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

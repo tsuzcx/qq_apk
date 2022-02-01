@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/kz" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip">
-        <Button android:id="@id/djq" android:layout_marginLeft="5.0dip" android:text="getDB" style="@style/ow" />
-        <Button android:id="@id/ahx" android:layout_marginLeft="5.0dip" android:text="calcExpt" style="@style/ow" />
-        <Button android:id="@id/blj" android:layout_marginLeft="5.0dip" android:text="delDB" style="@style/p0" />
-        <Button android:id="@id/h4k" android:layout_marginLeft="5.0dip" android:text="reset" style="@style/p0" />
-        <Button android:id="@id/hqv" android:layout_marginLeft="5.0dip" android:text="experience" style="@style/ow" />
-    </LinearLayout>
-    <TextView android:textSize="@dimen/hc" android:id="@id/c71" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" />
-    <ListView android:id="@id/h8_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@color/afp" android:dividerHeight="1.0dip" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Toolbar android:id="@id/kr3" android:background="#ff009688" android:layout_width="fill_parent" android:layout_height="56.0dip" />
+    <FrameLayout android:id="@id/br7" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </LinearLayout>

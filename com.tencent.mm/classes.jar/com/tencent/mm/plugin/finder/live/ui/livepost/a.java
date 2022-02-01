@@ -1,39 +1,37 @@
 package com.tencent.mm.plugin.finder.live.ui.livepost;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.kernel.h;
-import kotlin.l;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/ui/livepost/FinderLiveCreateNoticeHelper;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "activity", "Landroid/app/Activity;", "(Landroid/app/Activity;)V", "loadingComponent", "Lcom/tencent/mm/plugin/finder/utils/MultiDelayLoadingComponent;", "create", "", "createLiveNote", "doCreateFinderNotice", "startTime", "", "handleCreateFinderNotice", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneCreateLiveNotice;", "onSceneEnd", "Lcom/tencent/mm/modelbase/NetSceneBase;", "release", "reset", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/ui/livepost/FinderLiveCreateNoticeHelper;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "activity", "Landroid/app/Activity;", "(Landroid/app/Activity;)V", "loadingComponent", "Lcom/tencent/mm/plugin/finder/utils/MultiDelayLoadingComponent;", "create", "", "createLiveNote", "doCreateFinderNotice", "startTime", "", "handleCreateFinderNotice", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneCreateLiveNotice;", "onSceneEnd", "Lcom/tencent/mm/modelbase/NetSceneBase;", "release", "reset", "Companion", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  implements i
+  implements com.tencent.mm.am.h
 {
-  public static final a yOn;
+  public static final a DHW;
   
   static
   {
-    AppMethodBeat.i(290668);
-    yOn = new a((byte)0);
-    AppMethodBeat.o(290668);
+    AppMethodBeat.i(352400);
+    DHW = new a((byte)0);
+    AppMethodBeat.o(352400);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(290667);
-    h.aGY().b(6653, (i)this);
-    AppMethodBeat.o(290667);
+    AppMethodBeat.i(352409);
+    com.tencent.mm.kernel.h.aZW().b(6653, (com.tencent.mm.am.h)this);
+    AppMethodBeat.o(352409);
     throw null;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/ui/livepost/FinderLiveCreateNoticeHelper$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/ui/livepost/FinderLiveCreateNoticeHelper$Companion;", "", "()V", "TAG", "", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.ui.livepost.a
  * JD-Core Version:    0.7.0.1
  */

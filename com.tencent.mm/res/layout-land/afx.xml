@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/dju" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <include android:id="@id/dh7" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" layout="@layout/afj" />
+        <include android:id="@id/deh" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" layout="@layout/afw" />
+    </FrameLayout>
+    <com.tencent.mm.plugin.finder.live.view.FinderMaxSizeLayout android:id="@id/djr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <com.tencent.mm.plugin.finder.live.view.FinderLiveCommentRecyclerView android:id="@id/djs" android:fadingEdge="vertical" android:fadingEdgeLength="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:requiresFadingEdge="vertical" />
+        <RelativeLayout android:layout_gravity="bottom" android:id="@id/ft4" android:background="@drawable/ach" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/d0" android:layout_marginEnd="@dimen/d6">
+            <TextView android:textSize="14.0dip" android:textColor="@color/g_" android:id="@id/ft5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/bv" android:text="aaa" android:includeFontPadding="false" android:layout_centerVertical="true" android:layout_marginStart="@dimen/cp" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@raw/icons_outlined_double_arrow_down" android:layout_toRightOf="@id/ft5" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/cp" app:iconColor="#ff000000" />
+        </RelativeLayout>
+    </com.tencent.mm.plugin.finder.live.view.FinderMaxSizeLayout>
+</LinearLayout>

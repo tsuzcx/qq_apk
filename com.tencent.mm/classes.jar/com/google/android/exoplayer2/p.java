@@ -4,24 +4,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class p
 {
-  public static final p aNn;
-  public final float aNo;
-  public final int aNp;
+  public static final p cHj;
+  public final float cHk;
+  public final int cHl;
   public final float pitch;
   
   static
   {
     AppMethodBeat.i(92512);
-    aNn = new p(1.0F, 1.0F);
+    cHj = new p(1.0F, 1.0F);
     AppMethodBeat.o(92512);
   }
   
   public p(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(92509);
-    this.aNo = paramFloat1;
+    this.cHk = paramFloat1;
     this.pitch = paramFloat2;
-    this.aNp = Math.round(1000.0F * paramFloat1);
+    this.cHl = Math.round(1000.0F * paramFloat1);
     AppMethodBeat.o(92509);
   }
   
@@ -39,7 +39,7 @@ public final class p
       return false;
     }
     paramObject = (p)paramObject;
-    if ((this.aNo == paramObject.aNo) && (this.pitch == paramObject.pitch))
+    if ((this.cHk == paramObject.cHk) && (this.pitch == paramObject.pitch))
     {
       AppMethodBeat.o(92510);
       return true;
@@ -51,7 +51,7 @@ public final class p
   public final int hashCode()
   {
     AppMethodBeat.i(92511);
-    int i = Float.floatToRawIntBits(this.aNo);
+    int i = Float.floatToRawIntBits(this.cHk);
     int j = Float.floatToRawIntBits(this.pitch);
     AppMethodBeat.o(92511);
     return (i + 527) * 31 + j;

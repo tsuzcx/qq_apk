@@ -9,64 +9,64 @@ import android.view.View;
 
 public final class a
 {
-  CharSequence Ig;
-  boolean OEz = false;
-  int RaZ = 0;
-  CharSequence UVA;
-  CharSequence UVB;
-  CharSequence UVC;
-  CharSequence UVD;
-  CharSequence UVE;
-  CharSequence UVF;
-  boolean UVG = false;
-  boolean UVH = false;
-  boolean UVI = false;
-  DialogInterface.OnClickListener UVJ;
-  DialogInterface.OnClickListener UVK;
-  DialogInterface.OnClickListener UVL;
-  DialogInterface.OnClickListener UVM;
-  DialogInterface.OnClickListener UVN;
-  View UVO;
-  public View UVP;
-  int UVQ = 0;
-  int UVR = 0;
-  int UVS = 3;
-  int UVT = 1;
-  int UVU = 0;
-  public int UVV = 0;
-  int UVW = 0;
-  int UVX = 0;
-  boolean UVY = true;
-  boolean UVZ = false;
-  CharSequence UVl;
-  CharSequence UVm;
-  CharSequence UVn;
-  boolean UVo;
-  String UVp;
-  CharSequence UVq;
-  boolean UVr;
-  boolean UVs = false;
-  Drawable UVw;
-  Bitmap UVx;
-  CharSequence UVy;
-  CharSequence UVz;
-  boolean UWa = false;
-  CharSequence Ymg;
-  d.a.c Ymh;
-  d.a.a Ymi;
-  d.a.b Ymj;
-  d.a.d Ymk;
-  Bitmap Yml;
-  int Ymm = 0;
-  View bFK;
-  boolean bxO = true;
-  public DialogInterface.OnCancelListener fs;
-  public DialogInterface.OnDismissListener ft;
+  boolean VtK = false;
+  int XXf = 0;
+  String acqA;
+  CharSequence acqB;
+  boolean acqC;
+  boolean acqD = false;
+  Drawable acqH;
+  Bitmap acqI;
+  CharSequence acqJ;
+  CharSequence acqK;
+  CharSequence acqL;
+  CharSequence acqM;
+  CharSequence acqN;
+  CharSequence acqO;
+  CharSequence acqP;
+  CharSequence acqQ;
+  boolean acqR = false;
+  boolean acqS = false;
+  boolean acqT = false;
+  DialogInterface.OnClickListener acqU;
+  DialogInterface.OnClickListener acqV;
+  DialogInterface.OnClickListener acqW;
+  DialogInterface.OnClickListener acqX;
+  DialogInterface.OnClickListener acqY;
+  View acqZ;
+  CharSequence acqw;
+  CharSequence acqx;
+  CharSequence acqy;
+  boolean acqz;
+  View acra;
+  int acrb = 0;
+  int acrc = 0;
+  int acrd = 3;
+  int acre = 1;
+  int acrf = 0;
+  public int acrg = 0;
+  int acrh = 0;
+  int acri = 0;
+  boolean acrj = true;
+  boolean acrk = false;
+  boolean acrl = false;
+  CharSequence agdS;
+  e.a.c agdT;
+  e.a.a agdU;
+  e.a.b agdV;
+  e.a.d agdW;
+  Bitmap agdX;
+  int agdY = 0;
+  boolean dqR = true;
+  View dyK;
+  public DialogInterface.OnCancelListener mOnCancelListener;
+  public DialogInterface.OnDismissListener mOnDismissListener;
   String thumbPath;
+  CharSequence title;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.ui.widget.a.a
  * JD-Core Version:    0.7.0.1
  */

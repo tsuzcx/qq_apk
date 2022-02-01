@@ -2,13 +2,11 @@ package com.tencent.mm.plugin.priority.model;
 
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.e;
-import com.tencent.mm.ay.g;
-import com.tencent.mm.ay.i;
-import com.tencent.mm.ay.q;
-import com.tencent.mm.kernel.h;
+import com.tencent.mm.modelimage.f;
+import com.tencent.mm.modelimage.j;
+import com.tencent.mm.modelimage.r;
 import com.tencent.mm.plugin.priority.PluginPriority;
-import com.tencent.mm.plugin.priority.model.b.c;
+import com.tencent.mm.plugin.priority.model.a.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -17,53 +15,53 @@ import java.util.List;
 
 public class d
 {
-  public List<Object> GSm;
-  public a GSn;
+  public List<Object> MPQ;
+  public a MPR;
   
   public d()
   {
     AppMethodBeat.i(87812);
-    this.GSm = new LinkedList();
-    this.GSn = new a("Priority.PriorityTaskRunner");
+    this.MPQ = new LinkedList();
+    this.MPR = new a("Priority.PriorityTaskRunner");
     AppMethodBeat.o(87812);
   }
   
-  public final void Pd(long paramLong)
-  {
-    AppMethodBeat.i(87813);
-    if (this.GSn != null)
-    {
-      if (paramLong == 0L)
-      {
-        this.GSn.sendEmptyMessage(0);
-        AppMethodBeat.o(87813);
-        return;
-      }
-      this.GSn.sendEmptyMessageDelayed(0, paramLong);
-    }
-    AppMethodBeat.o(87813);
-  }
-  
-  public final void a(com.tencent.mm.plugin.priority.model.b.a parama)
+  public final void a(com.tencent.mm.plugin.priority.model.a.a parama)
   {
     AppMethodBeat.i(87814);
-    if (this.GSn != null)
+    if (this.MPR != null)
     {
-      parama = this.GSn.obtainMessage(1, parama);
-      this.GSn.sendMessage(parama);
+      parama = this.MPR.obtainMessage(1, parama);
+      this.MPR.sendMessage(parama);
     }
     AppMethodBeat.o(87814);
   }
   
-  public final void b(com.tencent.mm.plugin.priority.model.b.a parama)
+  public final void b(com.tencent.mm.plugin.priority.model.a.a parama)
   {
     AppMethodBeat.i(87815);
-    if (this.GSn != null)
+    if (this.MPR != null)
     {
-      parama = this.GSn.obtainMessage(1, parama);
-      this.GSn.sendMessageDelayed(parama, 1000L);
+      parama = this.MPR.obtainMessage(1, parama);
+      this.MPR.sendMessageDelayed(parama, 1000L);
     }
     AppMethodBeat.o(87815);
+  }
+  
+  public final void tf(long paramLong)
+  {
+    AppMethodBeat.i(87813);
+    if (this.MPR != null)
+    {
+      if (paramLong == 0L)
+      {
+        this.MPR.sendEmptyMessage(0);
+        AppMethodBeat.o(87813);
+        return;
+      }
+      this.MPR.sendEmptyMessageDelayed(0, paramLong);
+    }
+    AppMethodBeat.o(87813);
   }
   
   public final class a
@@ -91,7 +89,7 @@ public class d
         }
         catch (Exception paramMessage)
         {
-          g localg;
+          com.tencent.mm.modelimage.h localh;
           Log.printErrStackTrace("MicroMsg.Priority.PriorityTaskRunner", paramMessage, "handle priority msg", new Object[0]);
           AppMethodBeat.o(87811);
           return;
@@ -99,32 +97,32 @@ public class d
         Log.v("MicroMsg.Priority.PriorityTaskRunner", "priority runner tick");
         d.a(d.this);
         d.b(d.this);
-        paramMessage = ((PluginPriority)h.ag(PluginPriority.class)).getC2CImgAutoDownloader();
-        if (paramMessage.GSK != 0L)
+        paramMessage = ((PluginPriority)com.tencent.mm.kernel.h.az(PluginPriority.class)).getC2CImgAutoDownloader();
+        if (paramMessage.MQo != 0L)
         {
-          localg = q.bmh().D(paramMessage.talker, paramMessage.GSK);
-          if (q.bmi().a(localg.localId, paramMessage.GSK, localg.lNK))
+          localh = r.bKa().H(paramMessage.talker, paramMessage.MQo);
+          if ((localh != null) && (r.bKb().c(localh.localId, paramMessage.MQo, localh.oGu)))
           {
             i = 1;
             if (i == 0)
             {
-              ((PluginPriority)h.ag(PluginPriority.class)).getC2CImgAutoDownloader();
-              if (com.tencent.mm.plugin.priority.model.a.c.a.foR()) {
-                ((PluginPriority)h.ag(PluginPriority.class)).getC2CImgAutoDownloader().start();
+              ((PluginPriority)com.tencent.mm.kernel.h.az(PluginPriority.class)).getC2CImgAutoDownloader();
+              if (com.tencent.mm.plugin.priority.model.c2c.img.a.gzV()) {
+                ((PluginPriority)com.tencent.mm.kernel.h.az(PluginPriority.class)).getC2CImgAutoDownloader().start();
               }
             }
-            if (Util.isNullOrNil(((PluginPriority)h.ag(PluginPriority.class)).getC2CFileAutoDownloader().GSz)) {
-              break label270;
+            if (Util.isNullOrNil(((PluginPriority)com.tencent.mm.kernel.h.az(PluginPriority.class)).getC2CFileAutoDownloader().MQd)) {
+              break label275;
             }
             i = 1;
             if (i == 0)
             {
-              ((PluginPriority)h.ag(PluginPriority.class)).getC2CFileAutoDownloader();
-              if (com.tencent.mm.plugin.priority.model.a.b.a.foK()) {
-                ((PluginPriority)h.ag(PluginPriority.class)).getC2CFileAutoDownloader().start();
+              ((PluginPriority)com.tencent.mm.kernel.h.az(PluginPriority.class)).getC2CFileAutoDownloader();
+              if (com.tencent.mm.plugin.priority.model.c2c.b.a.gzN()) {
+                ((PluginPriority)com.tencent.mm.kernel.h.az(PluginPriority.class)).getC2CFileAutoDownloader().start();
               }
             }
-            if (!c.foT()) {
+            if (!c.gzX()) {
               continue;
             }
             d.this.a(new c());
@@ -136,11 +134,11 @@ public class d
         }
         int i = 0;
         continue;
-        label270:
+        label275:
         i = 0;
         continue;
         long l = System.currentTimeMillis();
-        paramMessage = (com.tencent.mm.plugin.priority.model.b.a)paramMessage.obj;
+        paramMessage = (com.tencent.mm.plugin.priority.model.a.a)paramMessage.obj;
         try
         {
           paramMessage.run();
@@ -159,7 +157,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.priority.model.d
  * JD-Core Version:    0.7.0.1
  */

@@ -6,47 +6,47 @@ import com.tencent.luggage.xweb_ext.extendplugin.component.i;
 import com.tencent.luggage.xweb_ext.extendplugin.component.t;
 import com.tencent.luggage.xweb_ext.extendplugin.component.video.TextureImageViewLikeImpl;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.t.d;
-import com.tencent.mm.plugin.appbrand.jsapi.t.h;
-import com.tencent.mm.plugin.appbrand.jsapi.t.h.a;
+import com.tencent.mm.plugin.appbrand.jsapi.w.d;
+import com.tencent.mm.plugin.appbrand.jsapi.w.h;
+import com.tencent.mm.plugin.appbrand.jsapi.w.h.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 final class g
-  extends com.tencent.luggage.xweb_ext.extendplugin.component.c<com.tencent.mm.plugin.appbrand.jsapi.ai.c.a.c, View>
+  extends com.tencent.luggage.xweb_ext.extendplugin.component.c<com.tencent.mm.plugin.appbrand.jsapi.al.c.a.c, View>
 {
-  private h.a<com.tencent.mm.plugin.appbrand.jsapi.ai.c.a.c, View> cGx;
-  final b cGy;
-  private final f cGz;
+  private h.a<com.tencent.mm.plugin.appbrand.jsapi.al.c.a.c, View> ezL;
+  final b ezM;
+  private final f ezN;
   
   protected g(b paramb)
   {
     super(paramb);
-    AppMethodBeat.i(225006);
-    this.cGx = new h.a() {};
-    this.cGy = paramb;
-    this.cGz = new f(paramb);
-    AppMethodBeat.o(225006);
+    AppMethodBeat.i(220658);
+    this.ezL = new h.a() {};
+    this.ezM = paramb;
+    this.ezN = new f(paramb);
+    AppMethodBeat.o(220658);
   }
   
-  public final com.tencent.mm.plugin.appbrand.jsapi.t.g Th()
+  public final com.tencent.mm.plugin.appbrand.jsapi.w.g atM()
   {
-    return this.cGz.cGs;
+    return this.ezN.ezG;
   }
   
-  public final h.a<com.tencent.mm.plugin.appbrand.jsapi.ai.c.a.c, View> Ti()
+  public final h.a<com.tencent.mm.plugin.appbrand.jsapi.al.c.a.c, View> atN()
   {
-    return this.cGx;
+    return this.ezL;
   }
   
-  public final com.tencent.mm.plugin.appbrand.jsapi.t.c Tj()
+  public final com.tencent.mm.plugin.appbrand.jsapi.w.c atO()
   {
-    return f.cGr;
+    return f.ezF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.live.a.g
  * JD-Core Version:    0.7.0.1
  */

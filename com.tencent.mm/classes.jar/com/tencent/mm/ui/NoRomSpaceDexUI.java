@@ -24,29 +24,29 @@ public class NoRomSpaceDexUI
   extends HellActivity
   implements DialogInterface.OnClickListener
 {
-  PendingIntent Wdv;
+  PendingIntent adIY;
   
   public Resources getResources()
   {
-    AppMethodBeat.i(270918);
+    AppMethodBeat.i(250240);
     Resources localResources = MMApplicationContext.getResources();
-    AppMethodBeat.o(270918);
+    AppMethodBeat.o(250240);
     return localResources;
   }
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(33679);
-    if (this.Wdv != null) {}
+    if (this.adIY != null) {}
     try
     {
-      this.Wdv.send();
+      this.adIY.send();
       label19:
       finish();
       paramDialogInterface = c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
       Object localObject = new Object();
-      com.tencent.mm.hellhoundlib.a.a.b(localObject, paramDialogInterface.aFh(), "com/tencent/mm/ui/NoRomSpaceDexUI", "onClick", "(Landroid/content/DialogInterface;I)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
-      Process.killProcess(((Integer)paramDialogInterface.sf(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.b(localObject, paramDialogInterface.aYi(), "com/tencent/mm/ui/NoRomSpaceDexUI", "onClick", "(Landroid/content/DialogInterface;I)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+      Process.killProcess(((Integer)paramDialogInterface.sb(0)).intValue());
       com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/ui/NoRomSpaceDexUI", "onClick", "(Landroid/content/DialogInterface;I)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
       AppMethodBeat.o(33679);
       return;
@@ -62,10 +62,10 @@ public class NoRomSpaceDexUI
     AppMethodBeat.i(33678);
     super.onCreate(paramBundle);
     LocaleUtil.initLanguage(MMApplicationContext.getContext());
-    setContentView(R.i.ejA);
+    setContentView(R.i.gmB);
     Object localObject = getIntent();
-    this.Wdv = ((PendingIntent)((Intent)localObject).getParcelableExtra("action"));
-    paramBundle = new q(this);
+    this.adIY = ((PendingIntent)((Intent)localObject).getParcelableExtra("action"));
+    paramBundle = new s(this);
     if (((Intent)localObject).hasExtra("title"))
     {
       paramBundle.setTitle(((Intent)localObject).getStringExtra("title"));
@@ -82,7 +82,7 @@ public class NoRomSpaceDexUI
     for (;;)
     {
       paramBundle.setCancelable(false);
-      paramBundle.hHm();
+      paramBundle.jjx();
       paramBundle.show();
       AppMethodBeat.o(33678);
       return;
@@ -90,17 +90,17 @@ public class NoRomSpaceDexUI
       break;
       label143:
       int i = ((Intent)localObject).getIntExtra("messageRes", R.l.check_db_size_tip_dangerous_message);
-      paramBundle.UWl.setVisibility(0);
-      paramBundle.UWd.setVisibility(0);
-      paramBundle.UWd.setText(i);
+      paramBundle.acrw.setVisibility(0);
+      paramBundle.acro.setVisibility(0);
+      paramBundle.acro.setText(i);
       break label89;
       label180:
       localObject = getString(((Intent)localObject).getIntExtra("buttonRes", R.l.check_db_size_btn_dangerous_message));
-      if (paramBundle.xPd != null)
+      if (paramBundle.BoW != null)
       {
-        paramBundle.xPd.setVisibility(0);
-        paramBundle.xPd.setText((CharSequence)localObject);
-        paramBundle.xPd.setOnClickListener(new q.1(paramBundle, this));
+        paramBundle.BoW.setVisibility(0);
+        paramBundle.BoW.setText((CharSequence)localObject);
+        paramBundle.BoW.setOnClickListener(new s.1(paramBundle, this));
       }
     }
   }
@@ -113,7 +113,7 @@ public class NoRomSpaceDexUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.NoRomSpaceDexUI
  * JD-Core Version:    0.7.0.1
  */

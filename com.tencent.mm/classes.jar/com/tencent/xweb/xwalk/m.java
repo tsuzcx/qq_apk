@@ -1,68 +1,70 @@
 package com.tencent.xweb.xwalk;
 
-import android.view.View;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import org.xwalk.core.CustomViewCallback;
-import org.xwalk.core.XWalkJavascriptResult;
-import org.xwalk.core.XWalkUIClient;
-import org.xwalk.core.XWalkView;
+import com.tencent.xweb.WebView;
+import com.tencent.xweb.a;
+import com.tencent.xweb.internal.g;
+import com.tencent.xweb.o;
+import org.xwalk.core.Log;
 
-public class m
-  extends XWalkUIClient
+public final class m
+  implements g
 {
-  public m(XWalkView paramXWalkView)
+  private boolean aipn;
+  
+  public final o khd()
   {
-    super(paramXWalkView);
+    AppMethodBeat.i(183742);
+    r localr = r.a.kjn();
+    AppMethodBeat.o(183742);
+    return localr;
   }
   
-  public final void a(View paramView, CustomViewCallback paramCustomViewCallback)
+  public final void khe()
   {
-    AppMethodBeat.i(154453);
-    super.onShowCustomView(paramView, paramCustomViewCallback);
-    AppMethodBeat.o(154453);
-  }
-  
-  public final void a(XWalkView paramXWalkView, String paramString)
-  {
-    AppMethodBeat.i(154451);
-    super.onPageLoadStarted(paramXWalkView, paramString);
-    AppMethodBeat.o(154451);
-  }
-  
-  public final boolean a(XWalkView paramXWalkView, String paramString1, String paramString2, String paramString3, XWalkJavascriptResult paramXWalkJavascriptResult)
-  {
-    AppMethodBeat.i(154454);
-    boolean bool = super.onJsPrompt(paramXWalkView, paramString1, paramString2, paramString3, paramXWalkJavascriptResult);
-    AppMethodBeat.o(154454);
-    return bool;
-  }
-  
-  public final boolean a(XWalkView paramXWalkView, String paramString1, String paramString2, XWalkJavascriptResult paramXWalkJavascriptResult)
-  {
-    AppMethodBeat.i(154455);
-    boolean bool = super.onJsConfirm(paramXWalkView, paramString1, paramString2, paramXWalkJavascriptResult);
-    AppMethodBeat.o(154455);
-    return bool;
-  }
-  
-  public final boolean b(XWalkView paramXWalkView, String paramString1, String paramString2, XWalkJavascriptResult paramXWalkJavascriptResult)
-  {
-    AppMethodBeat.i(154456);
-    boolean bool = super.onJsAlert(paramXWalkView, paramString1, paramString2, paramXWalkJavascriptResult);
-    AppMethodBeat.o(154456);
-    return bool;
-  }
-  
-  public final void iyw()
-  {
-    AppMethodBeat.i(154452);
-    super.onHideCustomView();
-    AppMethodBeat.o(154452);
+    AppMethodBeat.i(183743);
+    String str1;
+    String str2;
+    int i;
+    if (!this.aipn)
+    {
+      str1 = a.keX().qM("setEnabledTraceCategory", WebView.getCurStrModule());
+      str2 = a.keX().qM("setTraceSampleRatioInTenThousand", WebView.getCurStrModule());
+      if ((!TextUtils.isEmpty(str2)) && (TextUtils.isDigitsOnly(str2))) {
+        break label135;
+      }
+      i = 0;
+    }
+    for (;;)
+    {
+      str2 = a.keX().qM("enableWindowPerformanceSampleRatio", WebView.getCurStrModule());
+      try
+      {
+        j = Integer.parseInt(str2);
+        r.a.kjn();
+        Log.i("XWalkExtensionInternal", "setProfileConfig with enabledTraceCategory: " + str1 + " traceSampleRatio: " + i + " enableWindowPerformanceSampleRatio: " + j);
+        r.e(str1, i, j, false);
+        this.aipn = true;
+        AppMethodBeat.o(183743);
+        return;
+        label135:
+        i = Integer.parseInt(str2);
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        for (;;)
+        {
+          Log.e("XWalkExtensionInternal", "initProfile error:".concat(String.valueOf(localNumberFormatException)));
+          int j = 0;
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.xwalk.m
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.google.android.gms.common.util;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -426,7 +425,6 @@ public class WorkSourceUtil
     }
   }
   
-  @SuppressLint({"PrivateApi"})
   private static final Method zzdl()
   {
     AppMethodBeat.i(5317);
@@ -450,7 +448,7 @@ public class WorkSourceUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.util.WorkSourceUtil
  * JD-Core Version:    0.7.0.1
  */

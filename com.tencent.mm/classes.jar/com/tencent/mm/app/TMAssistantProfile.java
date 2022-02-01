@@ -22,8 +22,8 @@ public class TMAssistantProfile
   public final void onCreate()
   {
     AppMethodBeat.i(19478);
-    t.f(false, PROCESS_NAME);
-    ac.abg();
+    w.f(false, PROCESS_NAME);
+    af.aCS();
     AppMethodBeat.o(19478);
   }
   
@@ -34,7 +34,7 @@ public class TMAssistantProfile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.app.TMAssistantProfile
  * JD-Core Version:    0.7.0.1
  */

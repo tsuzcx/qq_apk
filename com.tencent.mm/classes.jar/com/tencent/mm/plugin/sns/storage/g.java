@@ -1,155 +1,88 @@
 package com.tencent.mm.plugin.sns.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.f;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.sns.model.aj;
-import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.adw;
+import com.tencent.mm.plugin.sns.ad.j.d;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.p;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.Map;
 
-public final class g
+public class g
 {
-  public static boolean QZ(long paramLong)
+  @p(hkF=1)
+  public String QYg;
+  public String QYh;
+  public String QYi;
+  public String QYj;
+  public String QYk;
+  public String QYl;
+  public String QYm;
+  public String QYn;
+  public String QYo;
+  public String QYp;
+  @p(hkF=2)
+  public String QYq;
+  public String QYr;
+  
+  public static g as(Map<String, String> paramMap, String paramString)
   {
-    int i = 2;
-    int j = 0;
-    AppMethodBeat.i(97447);
-    Object localObject = aj.fOI().Rd(paramLong);
-    if (localObject == null)
+    AppMethodBeat.i(306585);
+    if ((d.isEmpty(paramMap)) || (Util.isNullOrNil(paramString)))
     {
-      AppMethodBeat.o(97447);
-      return false;
+      AppMethodBeat.o(306585);
+      return null;
     }
-    String[] arrayOfString = ((String)h.aHG().aHp().get(ar.a.Vvi, "")).split("&");
-    boolean bool1;
-    if ((arrayOfString.length > 0) && (Util.getBoolean(arrayOfString[0], false)))
+    if (!paramMap.containsKey(paramString))
     {
-      bool1 = true;
-      if ((arrayOfString.length < 2) || (!Util.getBoolean(arrayOfString[1], false))) {
-        break label154;
-      }
+      AppMethodBeat.o(306585);
+      return null;
     }
-    ArrayList localArrayList;
-    label154:
-    for (boolean bool2 = true;; bool2 = false)
+    try
     {
-      localArrayList = new ArrayList();
-      while (i < arrayOfString.length)
+      String str1 = Util.nullAsNil((String)paramMap.get(paramString + ".cheerIcon"));
+      String str2 = Util.nullAsNil((String)paramMap.get(paramString + ".cheerText.zh"));
+      String str3 = Util.nullAsNil((String)paramMap.get(paramString + ".cheerText.tw"));
+      String str4 = Util.nullAsNil((String)paramMap.get(paramString + ".cheerText.en"));
+      String str5 = Util.nullAsNil((String)paramMap.get(paramString + ".cheerFinishText.zh"));
+      String str6 = Util.nullAsNil((String)paramMap.get(paramString + ".cheerFinishText.tw"));
+      String str7 = Util.nullAsNil((String)paramMap.get(paramString + ".cheerFinishText.en"));
+      String str8 = Util.nullAsNil((String)paramMap.get(paramString + ".commentText.zh"));
+      String str9 = Util.nullAsNil((String)paramMap.get(paramString + ".commentText.tw"));
+      String str10 = Util.nullAsNil((String)paramMap.get(paramString + ".commentText.en"));
+      if (!Util.isNullOrNil(new String[] { str1, str2, str3, str4, str5, str6, str7, str8, str9, str10 }))
       {
-        long l = Util.getLong(arrayOfString[i], 0L);
-        if (l != 0L) {
-          localArrayList.add(Long.valueOf(l));
-        }
-        i += 1;
+        g localg = new g();
+        localg.QYg = str1;
+        localg.QYh = str2;
+        localg.QYi = str3;
+        localg.QYj = str4;
+        localg.QYk = str5;
+        localg.QYl = str6;
+        localg.QYm = str7;
+        localg.QYn = str8;
+        localg.QYo = str9;
+        localg.QYp = str10;
+        localg.QYq = Util.nullAsNil((String)paramMap.get(paramString + ".pagAnimationUrl"));
+        localg.QYr = Util.nullAsNil((String)paramMap.get(paramString + ".pagAnimationMD5"));
+        return localg;
       }
-      bool1 = false;
-      break;
     }
-    if (((SnsInfo)localObject).getTimeLine().ContentObj.Sqq == 15) {
-      if (!bool1) {
-        bool1 = true;
-      }
-    }
-    for (;;)
+    finally
     {
-      if (!localArrayList.contains(Long.valueOf(paramLong))) {
-        localArrayList.add(Long.valueOf(paramLong));
-      }
-      localObject = new StringBuilder().append(bool1).append("&").append(bool2);
-      i = j;
-      while (i < localArrayList.size())
-      {
-        ((StringBuilder)localObject).append("&").append(localArrayList.get(i));
-        i += 1;
-      }
-      AppMethodBeat.o(97447);
-      return false;
-      if (((SnsInfo)localObject).getTimeLine().ContentObj.Sqq != 1) {
-        break label313;
-      }
-      if (bool2) {
-        break;
-      }
-      bool2 = true;
+      AppMethodBeat.o(306585);
     }
-    AppMethodBeat.o(97447);
-    return false;
-    label313:
-    AppMethodBeat.o(97447);
-    return false;
-    h.aHG().aHp().set(ar.a.Vvi, ((StringBuilder)localObject).toString());
-    l(Long.valueOf(paramLong));
-    AppMethodBeat.o(97447);
-    return true;
+    return null;
   }
   
-  public static void Ra(long paramLong)
+  public static final class a
   {
-    boolean bool2 = true;
-    int j = 0;
-    AppMethodBeat.i(97448);
-    Object localObject = ((String)h.aHG().aHp().get(ar.a.Vvi, "")).split("&");
-    boolean bool1;
-    if ((localObject.length > 0) && (Util.getBoolean(localObject[0], false)))
-    {
-      bool1 = true;
-      if ((localObject.length < 2) || (!Util.getBoolean(localObject[1], false))) {
-        break label133;
-      }
-    }
-    ArrayList localArrayList;
-    int i;
-    for (;;)
-    {
-      localArrayList = new ArrayList();
-      i = 2;
-      while (i < localObject.length)
-      {
-        long l = Util.getLong(localObject[i], 0L);
-        if (l != 0L) {
-          localArrayList.add(Long.valueOf(l));
-        }
-        i += 1;
-      }
-      bool1 = false;
-      break;
-      label133:
-      bool2 = false;
-    }
-    localArrayList.remove(Long.valueOf(paramLong));
-    Collections.reverse(localArrayList);
-    if (localArrayList.size() > 0) {}
-    for (localObject = (Long)localArrayList.get(0);; localObject = null)
-    {
-      l((Long)localObject);
-      localObject = new StringBuilder().append(bool1).append("&").append(bool2);
-      i = j;
-      while (i < localArrayList.size())
-      {
-        ((StringBuilder)localObject).append("&").append(localArrayList.get(i));
-        i += 1;
-      }
-    }
-    h.aHG().aHp().set(ar.a.Vvi, ((StringBuilder)localObject).toString());
-    AppMethodBeat.o(97448);
-  }
-  
-  public static void l(Long paramLong)
-  {
-    AppMethodBeat.i(97449);
-    h.aHG().aHp().set(ar.a.Vvj, paramLong);
-    AppMethodBeat.o(97449);
+    public String QYk = "";
+    public String QYn = "";
+    public String QYs = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.g
  * JD-Core Version:    0.7.0.1
  */

@@ -2,72 +2,48 @@ package com.tencent.mm.msgsubscription.voice;
 
 import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.ipcinvoker.j;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/msgsubscription/voice/MsgSubscriptionVoicePlayHelper;", "", "()V", "play", "", "url", "", "stop", "", "id", "wxbiz-msgsubscription-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/msgsubscription/voice/MsgSubscriptionVoicePlayHelper;", "", "()V", "play", "", "url", "", "stop", "", "id", "wxbiz-msgsubscription-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public static final a mtE;
+  public static final a pmY;
   
   static
   {
-    AppMethodBeat.i(263652);
-    mtE = new a();
-    AppMethodBeat.o(263652);
+    AppMethodBeat.i(236484);
+    pmY = new a();
+    AppMethodBeat.o(236484);
   }
   
-  public static void GY(long paramLong)
+  public static long Ro(String paramString)
   {
-    AppMethodBeat.i(263651);
-    j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)new PlayVoiceData(paramLong, "", 1), c.class, (f)b.mtG);
-    AppMethodBeat.o(263651);
-  }
-  
-  public static long Zk(String paramString)
-  {
-    AppMethodBeat.i(263650);
-    p.k(paramString, "url");
+    AppMethodBeat.i(236459);
+    s.u(paramString, "url");
     long l = System.nanoTime();
-    j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)new PlayVoiceData(l, paramString, 0), c.class, (f)a.mtF);
-    AppMethodBeat.o(263650);
+    j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)new PlayVoiceData(l, paramString, 0), c.class, a..ExternalSyntheticLambda0.INSTANCE);
+    AppMethodBeat.o(236459);
     return l;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class a<T>
-    implements f<ResultType>
-  {
-    public static final a mtF;
-    
-    static
-    {
-      AppMethodBeat.i(263468);
-      mtF = new a();
-      AppMethodBeat.o(263468);
-    }
-  }
+  private static final void d(IPCVoid paramIPCVoid) {}
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class b<T>
-    implements f<ResultType>
+  private static final void e(IPCVoid paramIPCVoid) {}
+  
+  public static void jj(long paramLong)
   {
-    public static final b mtG;
-    
-    static
-    {
-      AppMethodBeat.i(263489);
-      mtG = new b();
-      AppMethodBeat.o(263489);
-    }
+    AppMethodBeat.i(236469);
+    j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)new PlayVoiceData(paramLong, "", 1), c.class, a..ExternalSyntheticLambda1.INSTANCE);
+    AppMethodBeat.o(236469);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.msgsubscription.voice.a
  * JD-Core Version:    0.7.0.1
  */

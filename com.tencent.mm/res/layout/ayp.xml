@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="@dimen/a7f" android:layout_height="@dimen/a7f"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="end|bottom|center" android:id="@id/y2" android:layout_width="@dimen/a7g" android:layout_height="@dimen/a7g" android:src="@drawable/et" />
-    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:background="@null" android:paddingLeft="@dimen/a7e" android:paddingTop="@dimen/a7e" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageView android:id="@id/dxv" android:layout_width="@dimen/a7d" android:layout_height="@dimen/a7d" android:src="@raw/float_indicator_icon" />
-        <TextView android:textSize="@dimen/kc" android:textColor="@color/r_" android:layout_gravity="center_horizontal" android:id="@id/dxw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/bwz" />
-    </LinearLayout>
-</FrameLayout>
+    <TextView android:textSize="@dimen/go" android:layout_gravity="center_horizontal" android:id="@id/eop" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <CheckBox android:id="@id/eoq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:checked="true" android:layout_below="@id/eop" style="@style/lq" />
+    <TextView android:textSize="@dimen/gp" android:id="@id/eor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/gq" android:layout_toRightOf="@id/eoq" android:layout_alignBottom="@id/eoq" />
+</RelativeLayout>

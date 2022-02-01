@@ -1,22 +1,22 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class p$c
-  extends q
+  extends u
   implements a<Boolean>
 {
-  public static final c lrN;
+  public static final c ojn;
   
   static
   {
-    AppMethodBeat.i(205833);
-    lrN = new c();
-    AppMethodBeat.o(205833);
+    AppMethodBeat.i(242064);
+    ojn = new c();
+    AppMethodBeat.o(242064);
   }
   
   p$c()

@@ -1,188 +1,183 @@
 package com.tencent.mm.plugin.finder.viewmodel.component;
 
+import android.content.Context;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import com.tencent.d.f.h;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.d;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.feed.aw.a;
-import com.tencent.mm.plugin.finder.feed.aw.b;
-import com.tencent.mm.plugin.finder.feed.ax;
-import com.tencent.mm.plugin.finder.feed.ax.h;
-import com.tencent.mm.plugin.finder.feed.ay;
-import com.tencent.mm.plugin.finder.feed.model.FinderTimelineFeedLoader;
-import com.tencent.mm.plugin.finder.viewmodel.b;
-import com.tencent.mm.plugin.finder.viewmodel.g;
-import com.tencent.mm.plugin.finder.viewmodel.g.a;
-import com.tencent.mm.protocal.protobuf.aqk;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.finder.e.d;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.extension.reddot.l;
+import com.tencent.mm.plugin.finder.extension.reddot.l.a;
+import com.tencent.mm.protocal.protobuf.bxq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.ui.aw;
 import com.tencent.mm.ui.component.UIComponent;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Map;
-import kotlin.g.a.a;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.ah.a;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderTimelineMachineUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "fragment", "Landroidx/fragment/app/Fragment;", "(Landroidx/fragment/app/Fragment;)V", "presenter", "Lcom/tencent/mm/plugin/finder/feed/FinderTimelineMachinePresenter;", "getLayoutId", "", "onActionbarClick", "", "onBackPressed", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onFinished", "onUserVisibleFocused", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderPostQualificationUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "showBottomSheetRunnable", "Ljava/lang/Runnable;", "getShowBottomSheetRunnable", "()Ljava/lang/Runnable;", "setShowBottomSheetRunnable", "(Ljava/lang/Runnable;)V", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onResume", "showBottomSheet", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class aq
   extends UIComponent
 {
-  public static final a BoU;
-  private ax BoT;
+  public static final a GSJ;
+  private Runnable GSK;
   
   static
   {
-    AppMethodBeat.i(234955);
-    BoU = new a((byte)0);
-    AppMethodBeat.o(234955);
+    AppMethodBeat.i(338135);
+    GSJ = new a((byte)0);
+    AppMethodBeat.o(338135);
   }
   
-  public aq(Fragment paramFragment)
+  public aq(AppCompatActivity paramAppCompatActivity)
   {
-    super(paramFragment);
-    AppMethodBeat.i(234954);
-    AppMethodBeat.o(234954);
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(338087);
+    AppMethodBeat.o(338087);
   }
   
-  public final int getLayoutId()
+  private static final void a(aq paramaq)
   {
-    return b.g.finder_timeline_machine_ui;
+    AppMethodBeat.i(338100);
+    s.u(paramaq, "this$0");
+    Log.i("Finder.PostQualityUIC", "showBottomSheet");
+    Object localObject = (CharSequence)z.bAW();
+    int i;
+    if ((localObject == null) || (((CharSequence)localObject).length() == 0))
+    {
+      i = 1;
+      if (i == 0) {
+        Log.i("Finder.PostQualityUIC", "showBottomSheet return ,finder account exit");
+      }
+      localObject = new com.tencent.mm.plugin.finder.view.d((Context)paramaq.getActivity());
+      ((com.tencent.mm.plugin.finder.view.d)localObject).UD(e.f.finder_first_get_post_quality_bottom_sheet_layout);
+      ((com.tencent.mm.plugin.finder.view.d)localObject).rootView.findViewById(e.e.get_post_quality_bottom_sheet_cancel).setOnClickListener(new aq..ExternalSyntheticLambda0((com.tencent.mm.plugin.finder.view.d)localObject));
+      i = e.d.finder_camera_icon;
+      if (!aw.isDarkMode()) {
+        break label146;
+      }
+      i = e.d.finder_camera_icon_dark;
+    }
+    label146:
+    for (;;)
+    {
+      ((ImageView)((com.tencent.mm.plugin.finder.view.d)localObject).rootView.findViewById(e.e.get_post_quality_bottom_sheet_icon)).setImageResource(i);
+      ((com.tencent.mm.plugin.finder.view.d)localObject).dDn();
+      paramaq.GSK = null;
+      AppMethodBeat.o(338100);
+      return;
+      i = 0;
+      break;
+    }
   }
   
-  public final boolean onBackPressed()
+  private static final void a(ah.a parama, aq paramaq, l.a parama1)
   {
-    AppMethodBeat.i(234944);
-    getActivity().finish();
-    AppMethodBeat.o(234944);
-    return true;
+    int j = 0;
+    AppMethodBeat.i(338111);
+    s.u(parama, "$hasShowQualityBottomSheet");
+    s.u(paramaq, "this$0");
+    StringBuilder localStringBuilder = new StringBuilder("[MENU_ID_POST] red=");
+    boolean bool;
+    if ((parama1 != null) && (parama1.hBY == true))
+    {
+      bool = true;
+      Log.i("Finder.PostQualityUIC", bool + "，hasShowQualityBottomSheet = " + parama.aiwY);
+      int i = j;
+      if (parama1 != null)
+      {
+        i = j;
+        if (parama1.hBY == true) {
+          i = 1;
+        }
+      }
+      if (i != 0)
+      {
+        parama1 = parama1.ASg;
+        if (parama1 != null) {
+          break label168;
+        }
+      }
+    }
+    label168:
+    for (parama1 = null;; parama1 = parama1.title)
+    {
+      if ((!s.p(parama1, "temp")) && (!parama.aiwY))
+      {
+        parama.aiwY = true;
+        h.baE().ban().set(at.a.addX, Boolean.TRUE);
+        paramaq.GSK = new aq..ExternalSyntheticLambda2(paramaq);
+      }
+      AppMethodBeat.o(338111);
+      return;
+      bool = false;
+      break;
+    }
+  }
+  
+  private static final void n(com.tencent.mm.plugin.finder.view.d paramd, View paramView)
+  {
+    AppMethodBeat.i(338126);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramd);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/finder/viewmodel/component/FinderPostQualificationUIC", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramd, "$bottomSheet");
+    paramd.cyW();
+    a.a(new Object(), "com/tencent/mm/plugin/finder/viewmodel/component/FinderPostQualificationUIC", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(338126);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(234940);
+    AppMethodBeat.i(338169);
     super.onCreate(paramBundle);
-    paramBundle = getActivity();
-    if (paramBundle == null)
+    paramBundle = new ah.a();
+    Object localObject = h.baE().ban().get(at.a.addX, Boolean.FALSE);
+    if (localObject == null)
     {
-      paramBundle = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-      AppMethodBeat.o(234940);
+      paramBundle = new NullPointerException("null cannot be cast to non-null type kotlin.Boolean");
+      AppMethodBeat.o(338169);
       throw paramBundle;
     }
-    ((MMActivity)paramBundle).setMMTitle(b.j.finder_algo_recommend);
-    paramBundle = getActivity();
-    if (paramBundle == null)
+    paramBundle.aiwY = ((Boolean)localObject).booleanValue();
+    if (!paramBundle.aiwY)
     {
-      paramBundle = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-      AppMethodBeat.o(234940);
-      throw paramBundle;
+      localObject = l.ARA;
+      com.tencent.mm.ae.d.a((LiveData)l.dZD(), (q)getActivity(), new aq..ExternalSyntheticLambda1(paramBundle, this));
     }
-    ((MMActivity)paramBundle).setBackBtn((MenuItem.OnMenuItemClickListener)new b(this));
-    paramBundle = getActivity();
-    if (paramBundle == null)
-    {
-      paramBundle = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-      AppMethodBeat.o(234940);
-      throw paramBundle;
-    }
-    this.BoT = new ax((MMActivity)paramBundle);
-    paramBundle = getActivity();
-    if (paramBundle == null)
-    {
-      paramBundle = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-      AppMethodBeat.o(234940);
-      throw paramBundle;
-    }
-    paramBundle = (MMActivity)paramBundle;
-    ax localax = this.BoT;
-    if (localax == null) {
-      p.bGy("presenter");
-    }
-    paramBundle = new ay(paramBundle, (aw.a)localax, getRootView(), getFragment());
-    localax = this.BoT;
-    if (localax == null) {
-      p.bGy("presenter");
-    }
-    localax.a((aw.b)paramBundle);
-    AppMethodBeat.o(234940);
+    AppMethodBeat.o(338169);
   }
   
-  public final void onDestroy()
+  public final void onResume()
   {
-    AppMethodBeat.i(234952);
-    super.onDestroy();
-    ax localax = this.BoT;
-    if (localax == null) {
-      p.bGy("presenter");
-    }
-    localax.onDetach();
-    AppMethodBeat.o(234952);
-  }
-  
-  public final void onFinished()
-  {
-    AppMethodBeat.i(234949);
-    super.onFinished();
-    Object localObject1 = this.BoT;
-    if (localObject1 == null) {
-      p.bGy("presenter");
-    }
-    b.a(((ax)localObject1).tlCache, 4, 0, ((ax)localObject1).totalDy, (ArrayList)((ax)localObject1).xCg.getDataListJustForAdapter(), null, null, false, 112);
-    if (((ax)localObject1).xCA != null)
+    AppMethodBeat.i(338179);
+    super.onResume();
+    if (this.GSK != null)
     {
-      Object localObject2 = ((ax)localObject1).xCx;
-      localObject1 = ((ax)localObject1).xCA;
-      if (localObject1 == null) {
-        p.iCn();
-      }
-      p.k(localObject1, "lastDataList");
-      new StringBuilder("tabType=4 lastExitPosition=-1  lastDataList size=").append(((aqk)localObject1).SDG.size()).append(' ');
-      h.ioq();
-      localObject2 = (Map)((g)localObject2).Bgm;
-      g.a locala = new g.a();
-      locala.Bhs = -1;
-      p.k(localObject1, "<set-?>");
-      locala.Bhr = ((aqk)localObject1);
-      ((Map)localObject2).put(Integer.valueOf(4), locala);
+      Log.i("Finder.PostQualityUIC", "showBottomSheet onResume");
+      Runnable localRunnable = this.GSK;
+      s.checkNotNull(localRunnable);
+      com.tencent.mm.ae.d.a(0L, localRunnable);
     }
-    AppMethodBeat.o(234949);
+    AppMethodBeat.o(338179);
   }
   
-  public final void onUserVisibleFocused()
-  {
-    AppMethodBeat.i(234946);
-    super.onUserVisibleFocused();
-    ax localax = this.BoT;
-    if (localax == null) {
-      p.bGy("presenter");
-    }
-    d.h((a)new ax.h(localax));
-    AppMethodBeat.o(234946);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderTimelineMachineUIC$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderPostQualificationUIC$Companion;", "", "()V", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class b
-    implements MenuItem.OnMenuItemClickListener
-  {
-    b(aq paramaq) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(276730);
-      boolean bool = this.BoV.onBackPressed();
-      AppMethodBeat.o(276730);
-      return bool;
-    }
-  }
 }
 
 

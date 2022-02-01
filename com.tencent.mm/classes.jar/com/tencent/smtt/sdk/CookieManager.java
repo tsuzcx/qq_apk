@@ -374,7 +374,7 @@ public class CookieManager
       AppMethodBeat.o(54889);
       return paramString;
     }
-    catch (Throwable paramString)
+    finally
     {
       for (;;)
       {
@@ -498,12 +498,10 @@ public class CookieManager
         {
           android.webkit.CookieManager.getInstance().setAcceptCookie(paramBoolean);
           AppMethodBeat.o(54881);
+          continue;
         }
-        catch (Throwable localThrowable)
-        {
-          AppMethodBeat.o(54881);
-        }
-        localObject = finally;
+        finally {}
+        localObject1 = finally;
       }
     }
   }
@@ -559,7 +557,7 @@ public class CookieManager
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 422
+    //   2: ldc_w 420
     //   5: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: invokestatic 320	com/tencent/smtt/sdk/CookieManager:isX5Core	()Z
     //   11: ifeq +23 -> 34
@@ -567,19 +565,19 @@ public class CookieManager
     //   17: aload_1
     //   18: aload_2
     //   19: aload_3
-    //   20: invokeinterface 425 4 0
-    //   25: ldc_w 422
+    //   20: invokeinterface 423 4 0
+    //   25: ldc_w 420
     //   28: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   31: aload_0
     //   32: monitorexit
     //   33: return
     //   34: invokestatic 110	com/tencent/smtt/sdk/x:a	()Lcom/tencent/smtt/sdk/x;
-    //   37: invokevirtual 427	com/tencent/smtt/sdk/x:d	()Z
+    //   37: invokevirtual 425	com/tencent/smtt/sdk/x:d	()Z
     //   40: ifne +65 -> 105
     //   43: new 8	com/tencent/smtt/sdk/CookieManager$b
     //   46: dup
     //   47: aload_0
-    //   48: invokespecial 430	com/tencent/smtt/sdk/CookieManager$b:<init>	(Lcom/tencent/smtt/sdk/CookieManager;)V
+    //   48: invokespecial 428	com/tencent/smtt/sdk/CookieManager$b:<init>	(Lcom/tencent/smtt/sdk/CookieManager;)V
     //   51: astore 4
     //   53: aload 4
     //   55: iconst_1
@@ -599,12 +597,12 @@ public class CookieManager
     //   84: aload_0
     //   85: new 101	java/util/concurrent/CopyOnWriteArrayList
     //   88: dup
-    //   89: invokespecial 431	java/util/concurrent/CopyOnWriteArrayList:<init>	()V
+    //   89: invokespecial 429	java/util/concurrent/CopyOnWriteArrayList:<init>	()V
     //   92: putfield 99	com/tencent/smtt/sdk/CookieManager:a	Ljava/util/concurrent/CopyOnWriteArrayList;
     //   95: aload_0
     //   96: getfield 99	com/tencent/smtt/sdk/CookieManager:a	Ljava/util/concurrent/CopyOnWriteArrayList;
     //   99: aload 4
-    //   101: invokevirtual 434	java/util/concurrent/CopyOnWriteArrayList:add	(Ljava/lang/Object;)Z
+    //   101: invokevirtual 432	java/util/concurrent/CopyOnWriteArrayList:add	(Ljava/lang/Object;)Z
     //   104: pop
     //   105: aload_0
     //   106: getfield 39	com/tencent/smtt/sdk/CookieManager:f	Z
@@ -612,7 +610,7 @@ public class CookieManager
     //   112: getstatic 63	android/os/Build$VERSION:SDK_INT	I
     //   115: bipush 21
     //   117: if_icmpge +17 -> 134
-    //   120: ldc_w 422
+    //   120: ldc_w 420
     //   123: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   126: goto -95 -> 31
     //   129: astore_1
@@ -652,7 +650,7 @@ public class CookieManager
     //   173: aastore
     //   174: invokestatic 160	com/tencent/smtt/utils/k:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
     //   177: pop
-    //   178: ldc_w 422
+    //   178: ldc_w 420
     //   181: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   184: goto -153 -> 31
     // Local variable table:
@@ -678,22 +676,22 @@ public class CookieManager
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 436
+    //   2: ldc_w 434
     //   5: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: invokestatic 320	com/tencent/smtt/sdk/CookieManager:isX5Core	()Z
     //   11: ifeq +22 -> 33
     //   14: invokestatic 324	com/tencent/smtt/sdk/CookieManager:getCookieManagerImpl	()Lcom/tencent/smtt/export/external/interfaces/IX5CoreCookieManager;
     //   17: aload_1
     //   18: aload_2
-    //   19: invokeinterface 437 3 0
-    //   24: ldc_w 436
+    //   19: invokeinterface 435 3 0
+    //   24: ldc_w 434
     //   27: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   30: aload_0
     //   31: monitorexit
     //   32: return
     //   33: new 181	java/lang/StringBuilder
     //   36: dup
-    //   37: ldc_w 439
+    //   37: ldc_w 437
     //   40: invokespecial 186	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   43: aload_0
     //   44: getfield 39	com/tencent/smtt/sdk/CookieManager:f	Z
@@ -709,12 +707,12 @@ public class CookieManager
     //   66: aload_2
     //   67: invokevirtual 161	android/webkit/CookieManager:setCookie	(Ljava/lang/String;Ljava/lang/String;)V
     //   70: invokestatic 110	com/tencent/smtt/sdk/x:a	()Lcom/tencent/smtt/sdk/x;
-    //   73: invokevirtual 427	com/tencent/smtt/sdk/x:d	()Z
+    //   73: invokevirtual 425	com/tencent/smtt/sdk/x:d	()Z
     //   76: ifne +65 -> 141
     //   79: new 8	com/tencent/smtt/sdk/CookieManager$b
     //   82: dup
     //   83: aload_0
-    //   84: invokespecial 430	com/tencent/smtt/sdk/CookieManager$b:<init>	(Lcom/tencent/smtt/sdk/CookieManager;)V
+    //   84: invokespecial 428	com/tencent/smtt/sdk/CookieManager$b:<init>	(Lcom/tencent/smtt/sdk/CookieManager;)V
     //   87: astore 4
     //   89: aload 4
     //   91: iconst_2
@@ -734,14 +732,14 @@ public class CookieManager
     //   120: aload_0
     //   121: new 101	java/util/concurrent/CopyOnWriteArrayList
     //   124: dup
-    //   125: invokespecial 431	java/util/concurrent/CopyOnWriteArrayList:<init>	()V
+    //   125: invokespecial 429	java/util/concurrent/CopyOnWriteArrayList:<init>	()V
     //   128: putfield 99	com/tencent/smtt/sdk/CookieManager:a	Ljava/util/concurrent/CopyOnWriteArrayList;
     //   131: aload_0
     //   132: getfield 99	com/tencent/smtt/sdk/CookieManager:a	Ljava/util/concurrent/CopyOnWriteArrayList;
     //   135: aload 4
-    //   137: invokevirtual 434	java/util/concurrent/CopyOnWriteArrayList:add	(Ljava/lang/Object;)Z
+    //   137: invokevirtual 432	java/util/concurrent/CopyOnWriteArrayList:add	(Ljava/lang/Object;)Z
     //   140: pop
-    //   141: ldc_w 436
+    //   141: ldc_w 434
     //   144: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   147: goto -117 -> 30
     //   150: astore_1
@@ -826,7 +824,7 @@ public class CookieManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.sdk.CookieManager
  * JD-Core Version:    0.7.0.1
  */

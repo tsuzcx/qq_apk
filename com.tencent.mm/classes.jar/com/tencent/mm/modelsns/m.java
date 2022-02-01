@@ -8,33 +8,39 @@ import java.util.Map;
 
 public final class m
 {
-  public static int mbx;
-  public static m mby;
+  public static int oUs;
+  public static m oUt;
   
   static
   {
     AppMethodBeat.i(125681);
-    mbx = 0;
-    mby = new m();
+    oUs = 0;
+    oUt = new m();
     AppMethodBeat.o(125681);
   }
   
-  public static void bpb()
+  public static void bMI()
   {
     AppMethodBeat.i(125680);
-    c localc = com.tencent.mm.model.c.d.bgB().Mu("100024");
+    c localc = com.tencent.mm.model.newabtest.d.bEt().Fd("100024");
+    if (localc == null)
+    {
+      Log.i("MicroMsg.StatisticsOplogAbTest", "abtest is null");
+      AppMethodBeat.o(125680);
+      return;
+    }
     Log.i("MicroMsg.StatisticsOplogAbTest", "test " + localc.field_rawXML + " " + localc.isValid());
     if (localc.isValid())
     {
-      mbx = Util.safeParseInt((String)localc.hvz().get("Switch"));
-      Log.i("MicroMsg.StatisticsOplogAbTest", "switchVal " + mbx);
+      oUs = Util.safeParseInt((String)localc.iWZ().get("Switch"));
+      Log.i("MicroMsg.StatisticsOplogAbTest", "switchVal " + oUs);
     }
     AppMethodBeat.o(125680);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelsns.m
  * JD-Core Version:    0.7.0.1
  */

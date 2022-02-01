@@ -1,55 +1,55 @@
 package com.tencent.mm.modelappbrand;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.ccp;
-import com.tencent.mm.protocal.protobuf.ccq;
+import com.tencent.mm.protocal.protobuf.csb;
+import com.tencent.mm.protocal.protobuf.csc;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class r
-  extends q
+  extends p
   implements m
 {
-  private i jQg;
-  public final d lyx;
+  private h mAY;
+  public final c opY;
   
   public r(int paramInt)
   {
     AppMethodBeat.i(121056);
-    d.a locala = new d.a();
-    locala.lBU = new ccp();
-    locala.lBV = new ccq();
+    c.a locala = new c.a();
+    locala.otE = new csb();
+    locala.otF = new csc();
     locala.uri = "/cgi-bin/mmbiz-bin/wxausrevent/getservicenotifyoptions";
     locala.funcId = getType();
-    locala.lBW = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.lyx = locala.bgN();
-    ((ccp)d.b.b(this.lyx.lBR)).TkK = paramInt;
+    this.opY = locala.bEF();
+    ((csb)c.b.b(this.opY.otB)).aayr = paramInt;
     AppMethodBeat.o(121056);
   }
   
-  public final ccq bgZ()
+  public final csc bEQ()
   {
-    AppMethodBeat.i(207607);
-    ccq localccq = (ccq)d.c.b(this.lyx.lBS);
-    AppMethodBeat.o(207607);
-    return localccq;
+    AppMethodBeat.i(233817);
+    csc localcsc = (csc)c.c.b(this.opY.otC);
+    AppMethodBeat.o(233817);
+    return localcsc;
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(121058);
     Log.i("MicroMsg.NetSceneGetServiceNotifyOptions", "doScene");
-    this.jQg = parami;
-    int i = dispatch(paramg, this.lyx, this);
+    this.mAY = paramh;
+    int i = dispatch(paramg, this.opY, this);
     AppMethodBeat.o(121058);
     return i;
   }
@@ -63,8 +63,8 @@ public final class r
   {
     AppMethodBeat.i(121057);
     Log.i("MicroMsg.NetSceneGetServiceNotifyOptions", "onGYNetEnd, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if (this.jQg != null) {
-      this.jQg.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    if (this.mAY != null) {
+      this.mAY.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
     AppMethodBeat.o(121057);
   }

@@ -1,38 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:background="#fff0eff4" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" android:background="@color/ka" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:paddingTop="@dimen/hs" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:orientation="vertical" android:paddingBottom="@dimen/g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ir" style="@style/mz">
-            <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/k4">
-                <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ir" android:text="@string/j6o" android:layout_weight="1.0" />
-                <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/g49" android:layout_width="@dimen/kj" android:layout_height="@dimen/kg" />
-            </LinearLayout>
+    <com.tencent.mm.pluginsdk.ui.VoiceInputFooter android:gravity="center|left" android:id="@id/j15" android:background="@color/b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <Button android:textSize="18.0dip" android:textColor="@color/gz" android:gravity="center" android:layout_gravity="center" android:id="@id/lao" android:background="@null" android:paddingTop="5.0dip" android:paddingBottom="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginRight="16.0dip" android:minHeight="38.0dip" android:text="@string/kdy" android:layout_alignTop="@id/j15" android:layout_alignParentRight="true" />
+    <com.tencent.mm.pluginsdk.ui.VoiceInputScrollView android:background="@null" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:layout_above="@id/j15" android:layout_centerHorizontal="true" android:fadeScrollbars="false">
+        <LinearLayout android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mm.ui.widget.MMEditText android:textSize="18.0dip" android:textColor="@color/a7b" android:gravity="center|left|top" android:layout_gravity="center|left|top" android:id="@id/lap" android:background="@null" android:paddingLeft="18.0dip" android:paddingRight="18.0dip" android:paddingBottom="18.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="10.0dip" android:cursorVisible="true" android:layout_centerHorizontal="true" android:lineSpacingMultiplier="1.2" android:textCursorDrawable="@drawable/a8b" />
         </LinearLayout>
-        <LinearLayout android:orientation="vertical" android:paddingBottom="@dimen/g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ir" style="@style/mz">
-            <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/k4">
-                <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ir" android:text="@string/j6e" android:layout_weight="1.0" />
-                <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/b6j" android:layout_width="@dimen/kj" android:layout_height="@dimen/kg" />
-            </LinearLayout>
-            <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/j6g" />
-        </LinearLayout>
-        <LinearLayout android:orientation="vertical" android:paddingBottom="@dimen/g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ir" style="@style/mz">
-            <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/k4">
-                <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ir" android:text="@string/j6i" android:layout_weight="1.0" />
-                <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/b7z" android:layout_width="@dimen/kj" android:layout_height="@dimen/kg" />
-            </LinearLayout>
-            <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/j6g" />
-        </LinearLayout>
-        <LinearLayout android:orientation="vertical" android:paddingBottom="@dimen/g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ir" style="@style/mz">
-            <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/k4">
-                <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ir" android:text="@string/j6h" android:layout_weight="1.0" />
-                <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/b7y" android:layout_width="@dimen/kj" android:layout_height="@dimen/kg" />
-            </LinearLayout>
-            <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/j6f" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/r" android:layout_marginTop="24.0dip" android:layout_marginRight="@dimen/r" android:weightSum="2.0">
-            <Button android:id="@id/gyi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/j6p" android:layout_weight="1.0" style="@style/p1" />
-            <Button android:id="@id/b3g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k_" android:text="@string/j6d" android:layout_weight="1.0" style="@style/p1" />
-        </LinearLayout>
-        <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:id="@id/fmo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/r" android:layout_marginTop="24.0dip" android:layout_marginRight="@dimen/r" android:layout_marginBottom="24.0dip" android:lineSpacingExtra="@dimen/k5" />
-    </LinearLayout>
-</ScrollView>
+    </com.tencent.mm.pluginsdk.ui.VoiceInputScrollView>
+</RelativeLayout>

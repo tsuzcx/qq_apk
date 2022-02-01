@@ -9,113 +9,113 @@ import java.util.LinkedList;
 public class a
   implements f
 {
-  Object fmX;
-  public volatile HashMap<String, c> fnJ;
-  public volatile LinkedList<String> foA;
-  volatile ArrayList<String> foB;
-  public f.a foC;
+  public volatile HashMap<String, c> hrU;
+  Object hri;
+  public volatile LinkedList<String> hsK;
+  volatile ArrayList<String> hsL;
+  public f.a hsM;
   
   public a()
   {
-    AppMethodBeat.i(257033);
-    this.fnJ = new HashMap();
-    this.foA = new LinkedList();
-    this.foB = new ArrayList();
-    this.fmX = new Object();
-    AppMethodBeat.o(257033);
+    AppMethodBeat.i(236201);
+    this.hrU = new HashMap();
+    this.hsK = new LinkedList();
+    this.hsL = new ArrayList();
+    this.hri = new Object();
+    AppMethodBeat.o(236201);
   }
   
   public final boolean a(com.tencent.mm.al.b paramb)
   {
-    AppMethodBeat.i(257034);
+    AppMethodBeat.i(236202);
     com.tencent.mm.audio.mix.h.b.i("MicroMsg.Audio.AudioDownloadMgr", "startDownload");
     if (paramb == null)
     {
       com.tencent.mm.audio.mix.h.b.e("MicroMsg.Audio.AudioDownloadMgr", "param is null");
-      AppMethodBeat.o(257034);
+      AppMethodBeat.o(236202);
       return false;
     }
-    if (TextUtils.isEmpty(paramb.fnV))
+    if (TextUtils.isEmpty(paramb.hsg))
     {
       com.tencent.mm.audio.mix.h.b.e("MicroMsg.Audio.AudioDownloadMgr", "srcUrl is null");
-      AppMethodBeat.o(257034);
+      AppMethodBeat.o(236202);
       return false;
     }
-    if (this.foB.contains(paramb.fnV))
+    if (this.hsL.contains(paramb.hsg))
     {
-      com.tencent.mm.audio.mix.h.b.e("MicroMsg.Audio.AudioDownloadMgr", "srcUrl:%s is download finish", new Object[] { paramb.fnV });
-      AppMethodBeat.o(257034);
+      com.tencent.mm.audio.mix.h.b.e("MicroMsg.Audio.AudioDownloadMgr", "srcUrl:%s is download finish", new Object[] { paramb.hsg });
+      AppMethodBeat.o(236202);
       return false;
     }
-    if (this.fnJ.containsKey(paramb.fnV))
+    if (this.hrU.containsKey(paramb.hsg))
     {
       com.tencent.mm.audio.mix.h.b.e("MicroMsg.Audio.AudioDownloadMgr", "task is exit!");
-      AppMethodBeat.o(257034);
+      AppMethodBeat.o(236202);
       return true;
     }
-    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Audio.AudioDownloadMgr", "download src:%s, audioId:%s", new Object[] { paramb.fnV, paramb.fmF });
+    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Audio.AudioDownloadMgr", "download src:%s, audioId:%s", new Object[] { paramb.hsg, paramb.hqQ });
     c localc = new c(new b(new e()
     {
       public final void c(com.tencent.mm.al.b paramAnonymousb)
       {
-        AppMethodBeat.i(257206);
+        AppMethodBeat.i(236209);
         String str = "";
-        Object localObject = a.this.fmX;
+        Object localObject = a.this.hri;
         if (paramAnonymousb != null) {}
         try
         {
-          a.this.fnJ.remove(paramAnonymousb.fnV);
-          str = paramAnonymousb.fnV;
-          a.this.foB.add(paramAnonymousb.fnV);
+          a.this.hrU.remove(paramAnonymousb.hsg);
+          str = paramAnonymousb.hsg;
+          a.this.hsL.add(paramAnonymousb.hsg);
           com.tencent.mm.audio.mix.h.b.i("MicroMsg.Audio.AudioDownloadMgr", "download finish, src:%s", new Object[] { str });
-          if (a.this.foC != null) {
-            a.this.foC.e(paramAnonymousb);
+          if (a.this.hsM != null) {
+            a.this.hsM.e(paramAnonymousb);
           }
-          AppMethodBeat.o(257206);
+          AppMethodBeat.o(236209);
           return;
         }
         finally
         {
-          AppMethodBeat.o(257206);
+          AppMethodBeat.o(236209);
         }
       }
       
       public final void d(com.tencent.mm.al.b paramAnonymousb)
       {
-        AppMethodBeat.i(257207);
+        AppMethodBeat.i(236211);
         String str = "";
-        Object localObject = a.this.fmX;
+        Object localObject = a.this.hri;
         if (paramAnonymousb != null) {}
         try
         {
-          a.this.fnJ.remove(paramAnonymousb.fnV);
-          str = paramAnonymousb.fnV;
+          a.this.hrU.remove(paramAnonymousb.hsg);
+          str = paramAnonymousb.hsg;
           com.tencent.mm.audio.mix.h.b.e("MicroMsg.Audio.AudioDownloadMgr", "download fail, src:%s", new Object[] { str });
-          AppMethodBeat.o(257207);
+          AppMethodBeat.o(236211);
           return;
         }
         finally
         {
-          AppMethodBeat.o(257207);
+          AppMethodBeat.o(236211);
         }
       }
-    }), paramb.fmF);
+    }), paramb.hqQ);
     localc.b(b(paramb));
     d.a(localc);
-    synchronized (this.fmX)
+    synchronized (this.hri)
     {
-      this.fnJ.put(paramb.fnV, localc);
-      this.foA.add(paramb.fnV);
-      AppMethodBeat.o(257034);
+      this.hrU.put(paramb.hsg, localc);
+      this.hsK.add(paramb.hsg);
+      AppMethodBeat.o(236202);
       return true;
     }
   }
   
   protected com.tencent.mm.audio.mix.g.c b(com.tencent.mm.al.b paramb)
   {
-    AppMethodBeat.i(257035);
+    AppMethodBeat.i(236206);
     paramb = new com.tencent.mm.audio.mix.g.b();
-    AppMethodBeat.o(257035);
+    AppMethodBeat.o(236206);
     return paramb;
   }
 }

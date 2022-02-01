@@ -2,26 +2,26 @@ package com.tencent.mm.pluginsdk.wallet;
 
 public final class e
 {
-  private static String Rzs = null;
+  private static String YvQ = null;
   
-  public static void bsi(String paramString)
+  public static void brZ(String paramString)
   {
-    Rzs = paramString;
+    YvQ = paramString;
   }
   
-  public static boolean hod()
+  public static boolean iOV()
   {
-    return Rzs == null;
+    return YvQ == null;
   }
   
-  public static String hoe()
+  public static String iOW()
   {
-    return Rzs;
+    return YvQ;
   }
   
-  public static void hof()
+  public static void iOX()
   {
-    Rzs = null;
+    YvQ = null;
   }
 }
 

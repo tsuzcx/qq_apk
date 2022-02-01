@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="vertical" android:paddingTop="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true" style="@style/a05">
-        <TextView android:textColor="@color/tx" android:id="@id/dyz" android:layout_marginBottom="@dimen/k" android:text="@string/ipj" style="@style/a0h" />
-        <LinearLayout style="@style/a0y">
-            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:gravity="center|right" android:id="@id/fte" android:clickable="false" wallet:contentFocusable="false" wallet:contentHint="@string/ipn" wallet:contentTextColor="@color/uj" wallet:titleText="@string/ipm" style="@style/sj" />
-            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/ao9" android:minHeight="45.0dip" wallet:contentHint="@string/ipl" wallet:titleText="@string/ipg" style="@style/a0o" />
-            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/ghg" wallet:contentHint="@string/ia4" wallet:titleText="@string/ia5" style="@style/ha" />
-            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/gh9" wallet:contentHint="@string/i_y" wallet:titleText="@string/i_z" style="@style/ha" />
-        </LinearLayout>
-        <Button android:id="@id/fz0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/x5" style="@style/a0u" />
-        <LinearLayout android:orientation="horizontal" android:layout_marginTop="8.0dip" android:layout_marginBottom="38.0dip" style="@style/nl">
-            <CheckBox android:textSize="@dimen/hc" android:textColor="@color/a2x" android:gravity="center|left" android:layout_gravity="center|left" android:id="@id/id" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/kr" android:checked="true" android:minHeight="22.0dip" android:text="@string/iak" style="@style/p9" />
-            <TextView android:textSize="@dimen/hc" android:textColor="@color/adw" android:ellipsize="marquee" android:gravity="center|left" android:id="@id/ib" android:paddingRight="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:text="@string/iaj" android:singleLine="true" />
-        </LinearLayout>
-        <TextView android:layout_gravity="bottom" android:id="@id/jhr" android:paddingTop="5.0dip" android:layout_height="fill_parent" android:layout_margin="0.0dip" style="@style/a13" />
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/bxt" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/icons_pop_arrow" android:layout_below="@id/hzb" android:rotation="180.0" app:iconColor="@color/e" />
+    <LinearLayout android:gravity="center" android:id="@id/hzb" android:background="@drawable/amh" android:paddingLeft="@dimen/bv" android:paddingRight="@dimen/bv" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/gsm" android:layout_width="wrap_content" android:layout_height="wrap_content" />
     </LinearLayout>
-    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/c21" />
-</RelativeLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/bxs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-1.0px" android:src="@raw/icons_pop_arrow" android:layout_below="@id/hzb" android:layout_alignParentBottom="true" app:iconColor="@color/e" />
+</LinearLayout>

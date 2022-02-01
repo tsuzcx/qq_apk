@@ -1,15 +1,15 @@
 package com.tencent.mm.util;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/util/OnRepairerReadyListener;", "", "ready", "", "libcompatible_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/util/OnRepairerReadyListener;", "", "ready", "", "libcompatible_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface h
 {
-  public abstract void NO();
+  public abstract void ready();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.util.h
  * JD-Core Version:    0.7.0.1
  */

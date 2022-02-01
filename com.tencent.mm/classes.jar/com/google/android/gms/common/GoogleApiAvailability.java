@@ -1,7 +1,5 @@
 package com.google.android.gms.common;
 
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
@@ -22,8 +20,8 @@ import android.os.Message;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.ProgressBar;
-import androidx.core.app.e.b;
-import androidx.core.app.e.d;
+import androidx.core.app.f.b;
+import androidx.core.app.f.d;
 import androidx.fragment.app.FragmentActivity;
 import com.google.android.gms.base.R.drawable;
 import com.google.android.gms.base.R.string;
@@ -108,7 +106,6 @@ public class GoogleApiAvailability
     return paramContext;
   }
   
-  @TargetApi(26)
   private final String zza(Context paramContext, NotificationManager paramNotificationManager)
   {
     AppMethodBeat.i(10940);
@@ -157,7 +154,6 @@ public class GoogleApiAvailability
     AppMethodBeat.o(10938);
   }
   
-  @TargetApi(20)
   private final void zza(Context paramContext, int paramInt, String paramString, PendingIntent paramPendingIntent)
   {
     AppMethodBeat.i(10939);
@@ -172,21 +168,21 @@ public class GoogleApiAvailability
       AppMethodBeat.o(10939);
       return;
     }
-    String str = ConnectionErrorMessages.getErrorNotificationTitle(paramContext, paramInt);
-    Object localObject1 = ConnectionErrorMessages.getErrorNotificationMessage(paramContext, paramInt);
-    Object localObject2 = paramContext.getResources();
+    Object localObject = ConnectionErrorMessages.getErrorNotificationTitle(paramContext, paramInt);
+    String str = ConnectionErrorMessages.getErrorNotificationMessage(paramContext, paramInt);
+    Resources localResources = paramContext.getResources();
     NotificationManager localNotificationManager = (NotificationManager)paramContext.getSystemService("notification");
     if (DeviceProperties.isWearable(paramContext))
     {
       Preconditions.checkState(PlatformVersion.isAtLeastKitKatWatch());
-      localObject1 = new Notification.Builder(paramContext).setSmallIcon(paramContext.getApplicationInfo().icon).setPriority(2).setAutoCancel(true).setContentTitle(str).setStyle(new Notification.BigTextStyle().bigText((CharSequence)localObject1));
+      localObject = new Notification.Builder(paramContext).setSmallIcon(paramContext.getApplicationInfo().icon).setPriority(2).setAutoCancel(true).setContentTitle((CharSequence)localObject).setStyle(new Notification.BigTextStyle().bigText(str));
       if (DeviceProperties.isWearableWithoutPlayStore(paramContext))
       {
-        ((Notification.Builder)localObject1).addAction(R.drawable.common_full_open_on_phone, ((Resources)localObject2).getString(R.string.common_open_on_phone), paramPendingIntent);
+        ((Notification.Builder)localObject).addAction(R.drawable.common_full_open_on_phone, localResources.getString(R.string.common_open_on_phone), paramPendingIntent);
         if ((PlatformVersion.isAtLeastO()) && (PlatformVersion.isAtLeastO())) {
-          ((Notification.Builder)localObject1).setChannelId(zza(paramContext, localNotificationManager));
+          ((Notification.Builder)localObject).setChannelId(zza(paramContext, localNotificationManager));
         }
-        paramContext = ((Notification.Builder)localObject1).build();
+        paramContext = ((Notification.Builder)localObject).build();
         switch (paramInt)
         {
         default: 
@@ -198,27 +194,23 @@ public class GoogleApiAvailability
     for (;;)
     {
       if (paramString != null) {
-        break label375;
+        break label363;
       }
       localNotificationManager.notify(paramInt, paramContext);
       AppMethodBeat.o(10939);
       return;
-      ((Notification.Builder)localObject1).setContentIntent(paramPendingIntent);
+      ((Notification.Builder)localObject).setContentIntent(paramPendingIntent);
       break;
-      localObject2 = new e.d(paramContext).bn(17301642).n(((Resources)localObject2).getString(R.string.common_google_play_services_notification_ticker)).e(System.currentTimeMillis()).W(true);
-      ((e.d)localObject2).Ip = paramPendingIntent;
-      paramPendingIntent = ((e.d)localObject2).k(str).l((CharSequence)localObject1);
-      paramPendingIntent.IH = true;
-      paramPendingIntent = paramPendingIntent.a(new e.b().j((CharSequence)localObject1));
+      paramPendingIntent = new f.d(paramContext).eb(17301642).o(localResources.getString(R.string.common_google_play_services_notification_ticker)).bt(System.currentTimeMillis()).aC(true).a(paramPendingIntent).l((CharSequence)localObject).m(str).Dz().a(new f.b().k(str));
       if ((PlatformVersion.isAtLeastO()) && (PlatformVersion.isAtLeastO())) {
-        paramPendingIntent.mChannelId = zza(paramContext, localNotificationManager);
+        paramPendingIntent.ar(zza(paramContext, localNotificationManager));
       }
-      paramContext = paramPendingIntent.gr();
+      paramContext = paramPendingIntent.DA();
       break label185;
       paramInt = 10436;
       GooglePlayServicesUtilLight.zzbt.set(false);
     }
-    label375:
+    label363:
     localNotificationManager.notify(paramString, paramInt, paramContext);
     AppMethodBeat.o(10939);
   }
@@ -423,7 +415,6 @@ public class GoogleApiAvailability
     return localGooglePlayServicesUpdatedReceiver;
   }
   
-  @TargetApi(26)
   public void setDefaultNotificationChannelId(Context arg1, String paramString)
   {
     AppMethodBeat.i(10923);
@@ -533,7 +524,6 @@ public class GoogleApiAvailability
     AppMethodBeat.o(10941);
   }
   
-  @SuppressLint({"HandlerLeak"})
   final class zza
     extends Handler
   {
@@ -564,7 +554,7 @@ public class GoogleApiAvailability
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.GoogleApiAvailability
  * JD-Core Version:    0.7.0.1
  */

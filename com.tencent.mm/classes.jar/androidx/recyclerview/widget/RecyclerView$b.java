@@ -7,83 +7,83 @@ import java.util.ArrayList;
 public final class RecyclerView$b
   extends Observable<RecyclerView.c>
 {
-  public final void aE(int paramInt1, int paramInt2)
+  public final void bA(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(262097);
-    e(paramInt1, paramInt2, null);
-    AppMethodBeat.o(262097);
-  }
-  
-  public final void aF(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(262109);
-    int i = this.mObservers.size() - 1;
-    while (i >= 0)
-    {
-      ((RecyclerView.c)this.mObservers.get(i)).onItemRangeMoved(paramInt1, paramInt2, 1);
-      i -= 1;
-    }
-    AppMethodBeat.o(262109);
-  }
-  
-  public final void aG(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(262103);
+    AppMethodBeat.i(195048);
     int i = this.mObservers.size() - 1;
     while (i >= 0)
     {
       ((RecyclerView.c)this.mObservers.get(i)).onItemRangeInserted(paramInt1, paramInt2);
       i -= 1;
     }
-    AppMethodBeat.o(262103);
+    AppMethodBeat.o(195048);
   }
   
-  public final void aH(int paramInt1, int paramInt2)
+  public final void bB(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(262106);
+    AppMethodBeat.i(195053);
     int i = this.mObservers.size() - 1;
     while (i >= 0)
     {
       ((RecyclerView.c)this.mObservers.get(i)).onItemRangeRemoved(paramInt1, paramInt2);
       i -= 1;
     }
-    AppMethodBeat.o(262106);
+    AppMethodBeat.o(195053);
+  }
+  
+  public final void by(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(195037);
+    e(paramInt1, paramInt2, null);
+    AppMethodBeat.o(195037);
+  }
+  
+  public final void bz(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(195058);
+    int i = this.mObservers.size() - 1;
+    while (i >= 0)
+    {
+      ((RecyclerView.c)this.mObservers.get(i)).onItemRangeMoved(paramInt1, paramInt2, 1);
+      i -= 1;
+    }
+    AppMethodBeat.o(195058);
   }
   
   public final void e(int paramInt1, int paramInt2, Object paramObject)
   {
-    AppMethodBeat.i(262101);
+    AppMethodBeat.i(195043);
     int i = this.mObservers.size() - 1;
     while (i >= 0)
     {
       ((RecyclerView.c)this.mObservers.get(i)).onItemRangeChanged(paramInt1, paramInt2, paramObject);
       i -= 1;
     }
-    AppMethodBeat.o(262101);
+    AppMethodBeat.o(195043);
   }
   
   public final boolean hasObservers()
   {
-    AppMethodBeat.i(262091);
+    AppMethodBeat.i(195024);
     if (!this.mObservers.isEmpty())
     {
-      AppMethodBeat.o(262091);
+      AppMethodBeat.o(195024);
       return true;
     }
-    AppMethodBeat.o(262091);
+    AppMethodBeat.o(195024);
     return false;
   }
   
   public final void notifyChanged()
   {
-    AppMethodBeat.i(262095);
+    AppMethodBeat.i(195029);
     int i = this.mObservers.size() - 1;
     while (i >= 0)
     {
       ((RecyclerView.c)this.mObservers.get(i)).onChanged();
       i -= 1;
     }
-    AppMethodBeat.o(262095);
+    AppMethodBeat.o(195029);
   }
 }
 

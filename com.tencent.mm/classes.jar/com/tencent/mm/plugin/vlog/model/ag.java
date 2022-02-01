@@ -8,275 +8,312 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.graphics.MMBitmapFactory;
 import com.tencent.mm.plugin.mmsight.segment.d;
 import com.tencent.mm.plugin.mmsight.segment.o;
-import com.tencent.mm.protocal.protobuf.aaw;
-import com.tencent.mm.protocal.protobuf.cla;
-import com.tencent.mm.protocal.protobuf.cvl;
-import com.tencent.mm.protocal.protobuf.fbi;
+import com.tencent.mm.protocal.protobuf.acw;
+import com.tencent.mm.protocal.protobuf.dbi;
+import com.tencent.mm.protocal.protobuf.dmr;
+import com.tencent.mm.protocal.protobuf.fxq;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.k.f;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.ah;
+import kotlin.g.b.s;
 import kotlin.k.h;
-import kotlin.k.i;
-import kotlin.l;
+import kotlin.k.h.a;
+import kotlin.k.j;
+import kotlin.k.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/model/VLogGenerator;", "", "()V", "TAG", "", "vLogConfig", "Lcom/tencent/mm/protocal/protobuf/ClientConfFromServer;", "cropBitmap", "Landroid/graphics/Bitmap;", "origin", "cropInfo", "Lcom/tencent/mm/plugin/vlog/model/CropInfo;", "maxWidth", "", "maxHeight", "imageTrackToMaterialReq", "Lcom/tencent/mm/protocal/protobuf/MaterialReq;", "track", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "setConfig", "", "config", "trackToMaterialReq", "trackToMaterials", "Ljava/util/LinkedList;", "trackList", "", "videoTrackToMaterialReq", "Companion", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/model/VLogGenerator;", "", "()V", "TAG", "", "vLogConfig", "Lcom/tencent/mm/protocal/protobuf/ClientConfFromServer;", "cropBitmap", "Landroid/graphics/Bitmap;", "origin", "cropInfo", "Lcom/tencent/mm/plugin/vlog/model/CropInfo;", "maxWidth", "", "maxHeight", "imageTrackToMaterialReq", "Lcom/tencent/mm/protocal/protobuf/MaterialReq;", "track", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "setConfig", "", "config", "trackToMaterialReq", "trackToMaterials", "Ljava/util/LinkedList;", "trackList", "", "videoTrackToMaterialReq", "Companion", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ag
 {
-  public static final a Nnu;
-  aaw Nnt;
+  public static final ag.a UaU;
   private final String TAG = "MicroMsg.VLogGenerator";
+  acw UaV;
   
   static
   {
-    AppMethodBeat.i(230606);
-    Nnu = new a((byte)0);
-    AppMethodBeat.o(230606);
+    AppMethodBeat.i(283631);
+    UaU = new ag.a((byte)0);
+    AppMethodBeat.o(283631);
   }
   
-  private final Bitmap a(Bitmap paramBitmap, j paramj, int paramInt1, int paramInt2)
+  private final Bitmap a(Bitmap paramBitmap, i parami, int paramInt1, int paramInt2)
   {
     float f1 = 1.0F;
-    AppMethodBeat.i(230604);
-    if (!paramj.vcr.contains(paramj.kXj)) {
+    AppMethodBeat.i(283628);
+    if (!parami.yok.contains(parami.Gl)) {
       Log.i(this.TAG, "cropBitmap: cropInfo is Error?");
     }
-    float f2 = paramBitmap.getWidth() * 1.0F / paramj.vcr.width();
-    float f3 = paramInt1 * 1.0F / paramj.kXj.width();
-    float f4 = paramInt2 * 1.0F / paramj.kXj.height();
+    float f2 = paramBitmap.getWidth() * 1.0F / parami.yok.width();
+    float f3 = paramInt1 * 1.0F / parami.Gl.width();
+    float f4 = paramInt2 * 1.0F / parami.Gl.height();
     if ((f3 >= 1.0F) && (f4 >= 1.0F)) {}
     for (;;)
     {
-      paramInt1 = (int)((paramj.kXj.left - paramj.vcr.left) * f2);
-      paramInt2 = (int)((paramj.kXj.top - paramj.vcr.top) * f2);
-      int i = (int)(paramj.kXj.width() * f2);
-      int j = (int)(paramj.kXj.height() * f2);
+      paramInt1 = (int)((parami.Gl.left - parami.yok.left) * f2);
+      paramInt2 = (int)((parami.Gl.top - parami.yok.top) * f2);
+      int i = (int)(parami.Gl.width() * f2);
+      int j = (int)(parami.Gl.height() * f2);
       Matrix localMatrix = new Matrix();
       f3 = f1 / f2;
       f1 /= f2;
       localMatrix.setScale(f3, f1);
       Log.i(this.TAG, "cropBitmap, left:" + paramInt1 + ", top:" + paramInt2 + ", width:" + i + ", height:" + j + ", scaleX:" + f3 + ", scaleY:" + f1 + ", bitmap size:[" + paramBitmap.getWidth() + ", " + paramBitmap.getHeight() + ']');
-      paramj = paramBitmap;
+      parami = paramBitmap;
       if (paramInt1 >= 0)
       {
-        paramj = paramBitmap;
+        parami = paramBitmap;
         if (paramInt2 >= 0)
         {
-          paramj = paramBitmap;
+          parami = paramBitmap;
           if (paramInt1 + i <= paramBitmap.getWidth())
           {
-            paramj = paramBitmap;
+            parami = paramBitmap;
             if (paramInt2 + j <= paramBitmap.getHeight())
             {
-              paramj = Bitmap.createBitmap(paramBitmap, paramInt1, paramInt2, i, j, localMatrix, true);
-              p.j(paramj, "Bitmap.createBitmap(orig…eight, scaleMatrix, true)");
+              parami = Bitmap.createBitmap(paramBitmap, paramInt1, paramInt2, i, j, localMatrix, true);
+              s.s(parami, "createBitmap(origin, cro…eight, scaleMatrix, true)");
             }
           }
         }
       }
-      AppMethodBeat.o(230604);
-      return paramj;
+      AppMethodBeat.o(283628);
+      return parami;
       f1 = Math.min(f3, f4);
     }
   }
   
-  private final cvl a(ad paramad)
+  private final dmr a(ad paramad)
   {
-    AppMethodBeat.i(230602);
-    long l4 = paramad.Nng.NwS;
-    Object localObject = this.Nnt;
-    long l2;
+    AppMethodBeat.i(283619);
+    long l4 = paramad.UaI.UjZ;
+    Object localObject1 = this.UaV;
     long l1;
-    label75:
+    long l2;
+    label44:
     int i;
     int j;
     d locald;
-    LinkedList localLinkedList;
-    label163:
-    label193:
+    Object localObject2;
+    label116:
     long l3;
-    label220:
-    long l5;
-    long l6;
-    if (localObject != null)
-    {
-      localObject = ((aaw)localObject).Snj;
-      if (localObject != null)
-      {
-        l2 = ((fbi)localObject).UBn;
-        localObject = this.Nnt;
-        if (localObject == null) {
-          break label377;
-        }
-        localObject = ((aaw)localObject).Snj;
-        if (localObject == null) {
-          break label377;
-        }
-        l1 = ((fbi)localObject).UBm;
-        i = Math.min(paramad.Nna, paramad.Nnd.vcr.width());
-        j = Math.min(paramad.Nnb, paramad.Nnd.vcr.height());
-        locald = o.p(paramad.path, 100, i, j);
-        localLinkedList = new LinkedList();
-        localObject = this.Nnt;
-        if (localObject == null) {
-          break label383;
-        }
-        localObject = ((aaw)localObject).Sni;
-        if (localObject == null) {
-          break label383;
-        }
-        i = (int)((cla)localObject).width;
-        localObject = this.Nnt;
-        if (localObject == null) {
-          break label389;
-        }
-        localObject = ((aaw)localObject).Sni;
-        if (localObject == null) {
-          break label389;
-        }
-        j = (int)((cla)localObject).height;
-        l3 = l4 - 100L;
-        if (l3 > -9223372036854775808L) {
-          break label395;
-        }
-        localObject = h.aaCb;
-        localObject = h.iCv();
-        localObject = i.a((f)localObject, l2);
-        l3 = ((f)localObject).first;
-        l5 = ((f)localObject).aaBW;
-        l6 = ((f)localObject).HIt;
-        if (l6 < 0L) {
-          break label414;
-        }
-        if (l3 > l5) {
-          break label426;
-        }
-        l2 = l3;
-      }
-    }
-    int m;
+    label130:
+    label157:
+    boolean bool;
+    label181:
+    label223:
     int k;
-    label377:
-    label383:
-    do
+    if (localObject1 == null)
     {
-      for (;;)
-      {
-        localObject = locald.getFrameAtTime(l2);
-        p.j(localObject, "bitmap");
-        localObject = a((Bitmap)localObject, paramad.Nnd, i, j);
-        m = ((Bitmap)localObject).getWidth();
-        k = ((Bitmap)localObject).getHeight();
-        localLinkedList.add(new com.tencent.mm.cd.b(BitmapUtil.Bitmap2Bytes((Bitmap)localObject, 20)));
-        if ((localLinkedList.size() >= l1) || (l2 == l5)) {
-          break;
-        }
-        l2 += l6;
+      l1 = 100L;
+      localObject1 = this.UaV;
+      if (localObject1 != null) {
+        break label519;
       }
-      l2 = 100L;
-      break;
-      l1 = 1L;
-      break label75;
+      l2 = 1L;
+      i = Math.min(paramad.UaC, paramad.UaF.yok.width());
+      j = Math.min(paramad.UaD, paramad.UaF.yok.height());
+      locald = o.q(paramad.path, 100, i, j);
+      localObject2 = new LinkedList();
+      localObject1 = this.UaV;
+      if (localObject1 != null) {
+        break label547;
+      }
       i = 120;
-      break label163;
+      localObject1 = this.UaV;
+      if (localObject1 != null) {
+        break label575;
+      }
       j = 120;
-      break label193;
-      localObject = new h(100L, l3 - 1L);
-      break label220;
-      l2 = l3;
-    } while (l3 >= l5);
+      l3 = l4 - 100L;
+      if (l3 > -9223372036854775808L) {
+        break label603;
+      }
+      localObject1 = j.aixD;
+      localObject1 = j.klM();
+      localObject1 = (h)localObject1;
+      s.u(localObject1, "$this$step");
+      if (l1 <= 0L) {
+        break label622;
+      }
+      bool = true;
+      k.a(bool, (Number)Long.valueOf(l1));
+      h.a locala = h.aixz;
+      l3 = ((h)localObject1).first;
+      long l5 = ((h)localObject1).aixy;
+      if (((h)localObject1).NFM <= 0L) {
+        break label628;
+      }
+      localObject1 = new h(l3, l5, l1);
+      l3 = ((h)localObject1).first;
+      l5 = ((h)localObject1).aixy;
+      long l6 = ((h)localObject1).NFM;
+      if (l6 > 0L)
+      {
+        l1 = l3;
+        if (l3 <= l5) {}
+      }
+      else
+      {
+        if ((l6 >= 0L) || (l5 > l3)) {
+          break label636;
+        }
+        l1 = l3;
+      }
+      int m;
+      do
+      {
+        l3 = l1;
+        l1 = l3 + l6;
+        localObject1 = locald.getFrameAtTime(l3);
+        s.s(localObject1, "bitmap");
+        localObject1 = a((Bitmap)localObject1, paramad.UaF, i, j);
+        k = ((Bitmap)localObject1).getWidth();
+        m = ((Bitmap)localObject1).getHeight();
+        ((LinkedList)localObject2).add(new com.tencent.mm.bx.b(BitmapUtil.Bitmap2Bytes((Bitmap)localObject1, 20)));
+      } while ((((LinkedList)localObject2).size() < l2) && (l3 != l5));
+      i = m;
+      j = i;
+    }
     for (;;)
     {
-      label389:
-      label395:
-      label414:
-      label426:
       locald.release();
-      localObject = new cvl();
-      ((cvl)localObject).id = paramad.id;
-      ((cvl)localObject).TDn = localLinkedList;
-      paramad = new cla();
-      paramad.width = i;
+      localObject1 = new dmr();
+      ((dmr)localObject1).id = paramad.id;
+      ((dmr)localObject1).msn = ((LinkedList)localObject2);
+      paramad = new dbi();
+      paramad.width = k;
       paramad.height = j;
-      ((cvl)localObject).TDo = paramad;
-      ((cvl)localObject).fwf = 2L;
-      ((cvl)localObject).TCb = l4;
-      AppMethodBeat.o(230602);
-      return localObject;
-      i = m;
-      j = k;
+      localObject2 = ah.aiuX;
+      ((dmr)localObject1).aaSU = paramad;
+      ((dmr)localObject1).beV = 2L;
+      ((dmr)localObject1).aaRH = l4;
+      AppMethodBeat.o(283619);
+      return localObject1;
+      localObject1 = ((acw)localObject1).Zlv;
+      if (localObject1 == null)
+      {
+        l1 = 100L;
+        break;
+      }
+      l1 = ((fxq)localObject1).abVp;
+      break;
+      label519:
+      localObject1 = ((acw)localObject1).Zlv;
+      if (localObject1 == null)
+      {
+        l2 = 1L;
+        break label44;
+      }
+      l2 = ((fxq)localObject1).abVo;
+      break label44;
+      label547:
+      localObject1 = ((acw)localObject1).Zlu;
+      if (localObject1 == null)
+      {
+        i = 120;
+        break label116;
+      }
+      i = (int)((dbi)localObject1).width;
+      break label116;
+      label575:
+      localObject1 = ((acw)localObject1).Zlu;
+      if (localObject1 == null)
+      {
+        j = 120;
+        break label130;
+      }
+      j = (int)((dbi)localObject1).height;
+      break label130;
+      label603:
+      localObject1 = new j(100L, l3 - 1L);
+      break label157;
+      label622:
+      bool = false;
+      break label181;
+      label628:
+      l1 = -l1;
+      break label223;
+      label636:
+      k = i;
     }
   }
   
-  public final LinkedList<cvl> iD(List<ad> paramList)
+  public final LinkedList<dmr> lJ(List<ad> paramList)
   {
-    AppMethodBeat.i(230598);
-    p.k(paramList, "trackList");
+    AppMethodBeat.i(283643);
+    s.u(paramList, "trackList");
     LinkedList localLinkedList = new LinkedList();
     Iterator localIterator = ((Iterable)paramList).iterator();
-    label154:
-    label184:
-    label318:
-    label351:
+    label138:
+    label152:
+    label313:
+    label368:
     while (localIterator.hasNext())
     {
       Object localObject1 = (ad)localIterator.next();
-      p.k(localObject1, "track");
+      s.u(localObject1, "track");
+      Object localObject2;
       int i;
       int j;
       if (((ad)localObject1).type == 1)
       {
         paramList = new BitmapFactory.Options();
-        paramList.inSampleSize = ((int)(((ad)localObject1).Nna * ((ad)localObject1).Nnc / ((ad)localObject1).Nnd.vcr.width()));
+        paramList.inSampleSize = ((int)(((ad)localObject1).UaC * ((ad)localObject1).UaE / ((ad)localObject1).UaF.yok.width()));
         paramList = MMBitmapFactory.decodeFile(((ad)localObject1).path, paramList);
         if (paramList != null)
         {
-          Object localObject2 = this.Nnt;
-          if (localObject2 != null)
+          localObject2 = this.UaV;
+          if (localObject2 == null)
           {
-            localObject2 = ((aaw)localObject2).Sni;
-            if (localObject2 != null)
-            {
-              i = (int)((cla)localObject2).width;
-              localObject2 = this.Nnt;
-              if (localObject2 == null) {
-                break label318;
-              }
-              localObject2 = ((aaw)localObject2).Sni;
-              if (localObject2 == null) {
-                break label318;
-              }
-              j = (int)((cla)localObject2).height;
-              localObject2 = a(paramList, ((ad)localObject1).Nnd, i, j);
-              byte[] arrayOfByte = BitmapUtil.Bitmap2Bytes((Bitmap)localObject2, 20);
-              paramList = new cvl();
-              paramList.id = ((ad)localObject1).id;
-              paramList.TDn = new LinkedList((Collection)kotlin.a.j.listOf(new com.tencent.mm.cd.b(arrayOfByte)));
-              localObject1 = new cla();
-              ((cla)localObject1).width = ((Bitmap)localObject2).getWidth();
-              ((cla)localObject1).height = ((Bitmap)localObject2).getHeight();
-              paramList.TDo = ((cla)localObject1);
-              paramList.fwf = 1L;
-              paramList.TCb = 0L;
+            i = 120;
+            localObject2 = this.UaV;
+            if (localObject2 != null) {
+              break label313;
             }
+            j = 120;
+            localObject2 = a(paramList, ((ad)localObject1).UaF, i, j);
+            byte[] arrayOfByte = BitmapUtil.Bitmap2Bytes((Bitmap)localObject2, 20);
+            paramList = new dmr();
+            paramList.id = ((ad)localObject1).id;
+            paramList.msn = new LinkedList((Collection)p.listOf(new com.tencent.mm.bx.b(arrayOfByte)));
+            localObject1 = new dbi();
+            ((dbi)localObject1).width = ((Bitmap)localObject2).getWidth();
+            ((dbi)localObject1).height = ((Bitmap)localObject2).getHeight();
+            localObject2 = ah.aiuX;
+            paramList.aaSU = ((dbi)localObject1);
+            paramList.beV = 1L;
+            paramList.aaRH = 0L;
           }
         }
       }
       for (;;)
       {
         if (paramList == null) {
-          break label351;
+          break label368;
         }
         localLinkedList.add(paramList);
         break;
-        i = 120;
-        break label154;
-        j = 120;
-        break label184;
+        localObject2 = ((acw)localObject2).Zlu;
+        if (localObject2 == null)
+        {
+          i = 120;
+          break label138;
+        }
+        i = (int)((dbi)localObject2).width;
+        break label138;
+        localObject2 = ((acw)localObject2).Zlu;
+        if (localObject2 == null)
+        {
+          j = 120;
+          break label152;
+        }
+        j = (int)((dbi)localObject2).height;
+        break label152;
         paramList = null;
         continue;
         if (((ad)localObject1).type == 2) {
@@ -286,16 +323,13 @@ public final class ag
         }
       }
     }
-    AppMethodBeat.o(230598);
+    AppMethodBeat.o(283643);
     return localLinkedList;
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/model/VLogGenerator$Companion;", "", "()V", "DefaultImageHeight", "", "DefaultImageWidth", "plugin-vlog_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.ag
  * JD-Core Version:    0.7.0.1
  */

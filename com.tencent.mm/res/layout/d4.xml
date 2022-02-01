@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:padding="@dimen/cb" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:padding="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textStyle="bold" android:textColor="@color/fq" android:layout_gravity="center|left" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Activity Monitor: " />
-    <TextView android:textStyle="bold" android:gravity="left" android:id="@id/fci" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <LinearLayout android:orientation="vertical" android:id="@id/nc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a85" />
+    <TextView android:textSize="14.0dip" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/gav" />
 </LinearLayout>

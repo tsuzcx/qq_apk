@@ -5,10 +5,10 @@ import java.io.Serializable;
 public final class a
   implements Serializable
 {
-  public String ZMu;
-  public long ZMv;
-  public boolean ZMw;
-  public String ZMx;
+  public String ahRw;
+  public long ahRx;
+  public boolean ahRy;
+  public String ahRz;
   public long costTime;
   public Throwable e;
   public boolean isSuccess;
@@ -18,12 +18,12 @@ public final class a
     StringBuffer localStringBuffer = new StringBuffer();
     localStringBuffer.append("\nPatchResult: \n");
     localStringBuffer.append("isSuccess:" + this.isSuccess + "\n");
-    localStringBuffer.append("rawPatchFilePath:" + this.ZMu + "\n");
+    localStringBuffer.append("rawPatchFilePath:" + this.ahRw + "\n");
     localStringBuffer.append("costTime:" + this.costTime + "\n");
-    localStringBuffer.append("dexoptTriggerTime:" + this.ZMv + "\n");
-    localStringBuffer.append("isOatGenerated:" + this.ZMw + "\n");
-    if (this.ZMx != null) {
-      localStringBuffer.append("patchVersion:" + this.ZMx + "\n");
+    localStringBuffer.append("dexoptTriggerTime:" + this.ahRx + "\n");
+    localStringBuffer.append("isOatGenerated:" + this.ahRy + "\n");
+    if (this.ahRz != null) {
+      localStringBuffer.append("patchVersion:" + this.ahRz + "\n");
     }
     if (this.e != null) {
       localStringBuffer.append("Throwable:" + this.e.getMessage() + "\n");
@@ -33,7 +33,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.lib.service.a
  * JD-Core Version:    0.7.0.1
  */

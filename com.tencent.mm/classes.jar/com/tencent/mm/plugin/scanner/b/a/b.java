@@ -19,66 +19,66 @@ import java.util.concurrent.Executors;
 
 public final class b
 {
-  public static float IIp;
-  private static b IIu;
-  public Object Brg;
-  public Map IIq;
-  public Object IIr;
-  public Rect IIt;
-  public ExecutorService IIv;
-  public long IIw;
-  public a IIx;
-  public boolean IIy;
-  public int IIz;
-  public volatile boolean jvb;
-  public Rect kXj;
+  public static float OOn;
+  private static b OOs;
+  public Object GXz;
+  public Rect Gl;
+  public Map OOo;
+  public Object OOp;
+  public Rect OOr;
+  public ExecutorService OOt;
+  public long OOu;
+  public a OOv;
+  public boolean OOw;
+  public int OOx;
+  public volatile boolean lYs;
   
   static
   {
     AppMethodBeat.i(118326);
-    IIu = new b();
-    IIp = 1.15F;
+    OOs = new b();
+    OOn = 1.15F;
     AppMethodBeat.o(118326);
   }
   
   public b()
   {
     AppMethodBeat.i(118323);
-    this.IIq = new HashMap();
-    this.Brg = new Object();
-    this.IIr = new Object();
-    this.IIv = Executors.newSingleThreadExecutor();
-    this.IIt = new Rect();
-    this.kXj = new Rect();
+    this.OOo = new HashMap();
+    this.GXz = new Object();
+    this.OOp = new Object();
+    this.OOt = Executors.newSingleThreadExecutor();
+    this.OOr = new Rect();
+    this.Gl = new Rect();
     AppMethodBeat.o(118323);
   }
   
-  public static b fCu()
+  public static b gQg()
   {
-    return IIu;
+    return OOs;
   }
   
   public final void release()
   {
     AppMethodBeat.i(118324);
     Log.i("MicroMsg.BankCardDetectQueue", "release");
-    long l = this.IIw;
-    synchronized (this.Brg)
+    long l = this.OOu;
+    synchronized (this.GXz)
     {
-      if (this.IIw == l)
+      if (this.OOu == l)
       {
-        this.IIw = 0L;
-        this.IIz = 0;
-        this.IIx = null;
-        this.IIq.clear();
+        this.OOu = 0L;
+        this.OOx = 0;
+        this.OOv = null;
+        this.OOo.clear();
       }
     }
-    synchronized (this.IIr)
+    synchronized (this.OOp)
     {
-      if (this.jvb) {
+      if (this.lYs) {
         WxQbarNative.focusedEngineRelease();
       }
-      this.jvb = false;
+      this.lYs = false;
       AppMethodBeat.o(118324);
       return;
       localObject2 = finally;
@@ -91,20 +91,20 @@ public final class b
   {
     public abstract void a(long paramLong, Bundle paramBundle);
     
-    public abstract void as(long paramLong1, long paramLong2);
+    public abstract void bc(long paramLong1, long paramLong2);
   }
   
   public final class b
     implements Runnable
   {
-    private byte[] IIA;
-    private Point IIB;
-    private long fwK;
-    private int wxE;
+    private byte[] OOy;
+    private Point OOz;
+    private long hBk;
+    private int zTK;
     
     public b(long paramLong)
     {
-      this.fwK = paramLong;
+      this.hBk = paramLong;
     }
     
     public final void run()
@@ -114,16 +114,16 @@ public final class b
       synchronized (b.a(b.this))
       {
         b.a(b.this, true);
-        if (this.fwK == b.b(b.this)) {
+        if (this.hBk == b.b(b.this)) {
           if (!b.c(b.this).isEmpty())
           {
             localObject2 = (byte[])b.c(b.this).get("param_preview_data");
-            this.IIA = Arrays.copyOf((byte[])localObject2, localObject2.length);
-            this.IIB = new Point((Point)b.c(b.this).get("param_camera_resolution"));
-            this.wxE = ((Integer)b.c(b.this).get("param_camera_rotation")).intValue();
+            this.OOy = Arrays.copyOf((byte[])localObject2, localObject2.length);
+            this.OOz = new Point((Point)b.c(b.this).get("param_camera_resolution"));
+            this.zTK = ((Integer)b.c(b.this).get("param_camera_rotation")).intValue();
             b.c(b.this).clear();
             if (b.d(b.this) != null) {
-              b.d(b.this).as(b.b(b.this), 10L);
+              b.d(b.this).bc(b.b(b.this), 10L);
             }
           }
         }
@@ -131,7 +131,7 @@ public final class b
       synchronized (b.e(b.this))
       {
         localObject2 = new byte[b.f(b.this).width() * b.f(b.this).height() * 3 / 2];
-        int i = WxQbarNative.QIPUtilYUVCrop((byte[])localObject2, this.IIA, this.IIB.x, this.IIB.y, b.f(b.this).left, b.f(b.this).top, b.f(b.this).width(), b.f(b.this).height());
+        int i = WxQbarNative.QIPUtilYUVCrop((byte[])localObject2, this.OOy, this.OOz.x, this.OOz.y, b.f(b.this).left, b.f(b.this).top, b.f(b.this).width(), b.f(b.this).height());
         b.g(b.this);
         Log.i("MicroMsg.BankCardDetectQueue", "yuv crop ret %d", new Object[] { Integer.valueOf(i) });
         if (i == 0)
@@ -143,32 +143,32 @@ public final class b
             bool = true;
             Log.d("MicroMsg.BankCardDetectQueue", "isBest %s", new Object[] { Boolean.valueOf(bool) });
             if (!bool) {
-              break label630;
+              break label627;
             }
-            localObject2 = new YuvImage(this.IIA, 17, this.IIB.x, this.IIB.y, null);
+            localObject2 = new YuvImage(this.OOy, 17, this.OOz.x, this.OOz.y, null);
             localObject5 = new ByteArrayOutputStream();
             ((YuvImage)localObject2).compressToJpeg(b.f(b.this), 80, (OutputStream)localObject5);
-            if (this.wxE % 180 == 0) {
-              break label612;
+            if (this.zTK % 180 == 0) {
+              break label609;
             }
           }
-          label612:
+          label609:
           for (float f = 448.0F / b.f(b.this).height();; f = 448.0F / b.f(b.this).width())
           {
-            localObject2 = BitmapUtil.rotateAndScale(BitmapUtil.decodeByteArray(((ByteArrayOutputStream)localObject5).toByteArray()), this.wxE, f, f);
+            localObject2 = BitmapUtil.rotateAndScale(BitmapUtil.decodeByteArray(((ByteArrayOutputStream)localObject5).toByteArray()), this.zTK, f, f);
             if (localObject2 == null) {
-              break label630;
+              break label627;
             }
             localObject5 = new Bundle();
             ((Bundle)localObject5).putParcelable("param_card_bitmap", (Parcelable)localObject2);
             if (b.d(b.this) != null) {
-              b.d(b.this).a(this.fwK, (Bundle)localObject5);
+              b.d(b.this).a(this.hBk, (Bundle)localObject5);
             }
             b.a(b.this, false);
             AppMethodBeat.o(118322);
             return;
             if (b.d(b.this) != null) {
-              b.d(b.this).as(b.b(b.this), 0L);
+              b.d(b.this).bc(b.b(b.this), 0L);
             }
             b.a(b.this, false);
             AppMethodBeat.o(118322);
@@ -183,7 +183,7 @@ public final class b
             break;
           }
         }
-        label630:
+        label627:
         b.a(b.this, false);
         b.h(b.this);
         AppMethodBeat.o(118322);
@@ -194,7 +194,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.b.a.b
  * JD-Core Version:    0.7.0.1
  */

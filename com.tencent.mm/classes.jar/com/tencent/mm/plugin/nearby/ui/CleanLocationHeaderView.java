@@ -15,14 +15,14 @@ import com.tencent.mm.plugin.nearby.b.g;
 public class CleanLocationHeaderView
   extends LinearLayout
 {
-  private TextView GsK;
-  private ImageView jmf;
+  private TextView MoK;
+  private ImageView lPb;
   
   public CleanLocationHeaderView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(89807);
-    bv(paramContext);
+    ci(paramContext);
     AppMethodBeat.o(89807);
   }
   
@@ -30,25 +30,25 @@ public class CleanLocationHeaderView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(89806);
-    bv(paramContext);
+    ci(paramContext);
     AppMethodBeat.o(89806);
   }
   
-  private void bv(Context paramContext)
+  private void ci(Context paramContext)
   {
     AppMethodBeat.i(89808);
-    paramContext = View.inflate(paramContext, b.d.nearby_bindmobile_header_view, this);
-    this.GsK = ((TextView)paramContext.findViewById(b.c.nearby_header_text));
-    this.GsK.setSingleLine(false);
-    this.jmf = ((ImageView)paramContext.findViewById(b.c.nearby_bind_icon));
-    this.GsK.setText(b.g.clean_loaction_header_title);
-    this.jmf.setImageResource(b.f.peoplenearby_icon);
+    paramContext = View.inflate(paramContext, b.d.Moe, this);
+    this.MoK = ((TextView)paramContext.findViewById(b.c.Mod));
+    this.MoK.setSingleLine(false);
+    this.lPb = ((ImageView)paramContext.findViewById(b.c.Mob));
+    this.MoK.setText(b.g.Moj);
+    this.lPb.setImageResource(b.f.peoplenearby_icon);
     AppMethodBeat.o(89808);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.nearby.ui.CleanLocationHeaderView
  * JD-Core Version:    0.7.0.1
  */

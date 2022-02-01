@@ -1,6 +1,5 @@
 package com.tencent.mm.ui;
 
-import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -32,7 +31,7 @@ import com.tencent.mm.R.h;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.ay;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.plugin.multitask.ui.a.c.b;
+import com.tencent.mm.plugin.multitask.ui.uic.c.b;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -41,32 +40,32 @@ import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.thread.ThreadPool;
 import com.tencent.mm.ui.base.OnLayoutChangedLinearLayout;
 import com.tencent.mm.ui.base.OnLayoutChangedLinearLayout.a;
-import com.tencent.mm.ui.base.ac;
+import com.tencent.mm.ui.base.ag;
 import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
 import com.tencent.mm.ui.chatting.ChattingUI;
 import com.tencent.mm.ui.tools.TestTimeForChatting;
 import com.tencent.mm.ui.tools.TestTimeForChatting.a;
 import com.tencent.mm.ui.tools.k;
 import com.tencent.mm.ui.widget.SwipeBackLayout;
-import com.tencent.mm.ui.widget.j;
+import com.tencent.mm.ui.widget.l;
 
 public class NewChattingTabUI
   implements LauncherUI.a
 {
-  MMFragmentActivity Jvc;
-  LauncherUI.b WcZ;
-  long Wda;
-  private TestTimeForChatting Wdb;
-  private int Wdc;
-  MessageQueue.IdleHandler Wdd;
-  private OnLayoutChangedLinearLayout Wde;
-  String Wdf;
-  private String Wdg;
-  private Bundle Wdh;
-  BaseChattingUIFragment Wdi;
-  private long Wdj;
-  a Wdk;
-  boolean Wdl;
+  MMFragmentActivity PIA;
+  LauncherUI.b adIC;
+  long adID;
+  private TestTimeForChatting adIE;
+  private int adIF;
+  MessageQueue.IdleHandler adIG;
+  private OnLayoutChangedLinearLayout adIH;
+  String adII;
+  private String adIJ;
+  private Bundle adIK;
+  BaseChattingUIFragment adIL;
+  private long adIM;
+  a adIN;
+  boolean adIO;
   boolean isAnimating;
   boolean mChattingClosed;
   Animation mChattingInAnim;
@@ -80,26 +79,26 @@ public class NewChattingTabUI
   public NewChattingTabUI(LauncherUI.b paramb)
   {
     AppMethodBeat.i(33655);
-    this.Wda = 0L;
+    this.adID = 0L;
     this.mChattingClosed = true;
     this.isAnimating = false;
-    this.Wdk = new a((byte)0);
-    this.Wdl = false;
+    this.adIN = new a((byte)0);
+    this.adIO = false;
     this.mStartChattingRunnable = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(275120);
+        AppMethodBeat.i(249166);
         if (!NewChattingTabUI.k(NewChattingTabUI.this))
         {
           Log.e("MicroMsg.LauncherUI.NewChattingTabUI", "start chatting but last chatting does't be close!");
-          NewChattingTabUI.this.FH(false);
+          NewChattingTabUI.this.Lq(false);
         }
-        if ((NewChattingTabUI.g(NewChattingTabUI.this).isFinishing()) || (NewChattingTabUI.g(NewChattingTabUI.this).isPaused()) || (!NewChattingTabUI.k(NewChattingTabUI.this)) || (!h.aHE().aGM()))
+        if ((NewChattingTabUI.g(NewChattingTabUI.this).isFinishing()) || (NewChattingTabUI.g(NewChattingTabUI.this).isPaused()) || (!NewChattingTabUI.k(NewChattingTabUI.this)) || (!h.baC().aZN()))
         {
-          Log.w("MicroMsg.LauncherUI.NewChattingTabUI", "[mStartChattingRunnable] pass! isPause:%s mChattingClosed:%s, account:%s", new Object[] { Boolean.valueOf(NewChattingTabUI.g(NewChattingTabUI.this).isPaused()), Boolean.valueOf(NewChattingTabUI.k(NewChattingTabUI.this)), Boolean.valueOf(h.aHE().aGM()) });
+          Log.w("MicroMsg.LauncherUI.NewChattingTabUI", "[mStartChattingRunnable] pass! isPause:%s mChattingClosed:%s, account:%s", new Object[] { Boolean.valueOf(NewChattingTabUI.g(NewChattingTabUI.this).isPaused()), Boolean.valueOf(NewChattingTabUI.k(NewChattingTabUI.this)), Boolean.valueOf(h.baC().aZN()) });
           NewChattingTabUI.l(NewChattingTabUI.this);
-          AppMethodBeat.o(275120);
+          AppMethodBeat.o(249166);
           return;
         }
         NewChattingTabUI.m(NewChattingTabUI.this);
@@ -114,22 +113,27 @@ public class NewChattingTabUI
           }
           localIntent.putExtra("img_gallery_enter_from_chatting_ui", true);
           NewChattingTabUI.a(NewChattingTabUI.this, localIntent, false);
-          NewChattingTabUI.q(NewChattingTabUI.this).setOnChattingLayoutChangedListener(NewChattingTabUI.p(NewChattingTabUI.this));
+          if (NewChattingTabUI.p(NewChattingTabUI.this) == null) {
+            NewChattingTabUI.a(NewChattingTabUI.this, (OnLayoutChangedLinearLayout)NewChattingTabUI.c(NewChattingTabUI.this).getView().findViewById(R.h.chatting_bg_ll));
+          }
+          if (NewChattingTabUI.p(NewChattingTabUI.this) != null) {
+            NewChattingTabUI.p(NewChattingTabUI.this).setOnChattingLayoutChangedListener(NewChattingTabUI.q(NewChattingTabUI.this));
+          }
           NewChattingTabUI.d(NewChattingTabUI.this).setVisibility(0);
           if (NewChattingTabUI.g(NewChattingTabUI.this).getWindow().getDecorView().getWidth() != 0) {
-            break label376;
+            break label423;
           }
         }
-        label376:
+        label423:
         for (float f = NewChattingTabUI.g(NewChattingTabUI.this).getResources().getDisplayMetrics().widthPixels;; f = NewChattingTabUI.g(NewChattingTabUI.this).getWindow().getDecorView().getWidth())
         {
           NewChattingTabUI.d(NewChattingTabUI.this).setTranslationX(f - 0.1F);
           NewChattingTabUI.a(NewChattingTabUI.this, Util.nowSecond());
           NewChattingTabUI.r(NewChattingTabUI.this);
           if (NewChattingTabUI.s(NewChattingTabUI.this)) {
-            j.a(NewChattingTabUI.g(NewChattingTabUI.this));
+            l.a(NewChattingTabUI.g(NewChattingTabUI.this));
           }
-          AppMethodBeat.o(275120);
+          AppMethodBeat.o(249166);
           return;
           bool = NewChattingTabUI.d(NewChattingTabUI.this).isShown();
           break;
@@ -138,9 +142,9 @@ public class NewChattingTabUI
       
       public final String toString()
       {
-        AppMethodBeat.i(275121);
+        AppMethodBeat.i(249167);
         String str = super.toString() + "|startChattingRunnable";
-        AppMethodBeat.o(275121);
+        AppMethodBeat.o(249167);
         return str;
       }
     };
@@ -148,29 +152,29 @@ public class NewChattingTabUI
     {
       long start = 0L;
       
-      public final void hIt()
+      public final void jkC()
       {
-        AppMethodBeat.i(287372);
+        AppMethodBeat.i(249163);
         if (NewChattingTabUI.t(NewChattingTabUI.this) == null)
         {
-          NewChattingTabUI.a(NewChattingTabUI.this, AnimationUtils.loadAnimation(NewChattingTabUI.g(NewChattingTabUI.this), MMFragmentActivity.a.rhY));
+          NewChattingTabUI.a(NewChattingTabUI.this, AnimationUtils.loadAnimation(NewChattingTabUI.g(NewChattingTabUI.this), MMFragmentActivity.a.upU));
           NewChattingTabUI.t(NewChattingTabUI.this).setAnimationListener(new Animation.AnimationListener()
           {
             public final void onAnimationEnd(Animation paramAnonymous2Animation)
             {
-              AppMethodBeat.i(271534);
+              AppMethodBeat.i(249116);
               NewChattingTabUI.v(NewChattingTabUI.this);
-              AppMethodBeat.o(271534);
+              AppMethodBeat.o(249116);
             }
             
             public final void onAnimationRepeat(Animation paramAnonymous2Animation) {}
             
             public final void onAnimationStart(Animation paramAnonymous2Animation)
             {
-              AppMethodBeat.i(271531);
+              AppMethodBeat.i(249111);
               NewChattingTabUI.u(NewChattingTabUI.this);
-              NewChattingTabUI.this.aq(false, 0);
-              AppMethodBeat.o(271531);
+              NewChattingTabUI.this.ar(false, 0);
+              AppMethodBeat.o(249111);
             }
           });
         }
@@ -178,9 +182,9 @@ public class NewChattingTabUI
         {
           NewChattingTabUI.d(NewChattingTabUI.this).setOndispatchDraw(new TestTimeForChatting.a()
           {
-            public final void hIu()
+            public final void jkD()
             {
-              AppMethodBeat.i(282680);
+              AppMethodBeat.i(249123);
               Log.i("MicroMsg.LauncherUI.NewChattingTabUI", "[onDrawed]");
               NewChattingTabUI.7.this.start = System.currentTimeMillis();
               if (NewChattingTabUI.c(NewChattingTabUI.this).getSwipeBackLayout() != null)
@@ -191,7 +195,7 @@ public class NewChattingTabUI
               for (;;)
               {
                 NewChattingTabUI.d(NewChattingTabUI.this).setOndispatchDraw(null);
-                AppMethodBeat.o(282680);
+                AppMethodBeat.o(249123);
                 return;
                 NewChattingTabUI.c(NewChattingTabUI.this).getView().startAnimation(NewChattingTabUI.t(NewChattingTabUI.this));
               }
@@ -201,16 +205,18 @@ public class NewChattingTabUI
         }
         for (;;)
         {
-          NewChattingTabUI.q(NewChattingTabUI.this).WpA = null;
+          if (NewChattingTabUI.p(NewChattingTabUI.this) != null) {
+            NewChattingTabUI.p(NewChattingTabUI.this).adWO = null;
+          }
           Log.i("MicroMsg.LauncherUI.NewChattingTabUI", "klem CHATTING ONLAYOUT ");
-          AppMethodBeat.o(287372);
+          AppMethodBeat.o(249163);
           return;
           NewChattingTabUI.u(NewChattingTabUI.this);
           NewChattingTabUI.v(NewChattingTabUI.this);
         }
       }
     };
-    this.WcZ = paramb;
+    this.adIC = paramb;
     AppMethodBeat.o(33655);
   }
   
@@ -226,6 +232,11 @@ public class NewChattingTabUI
       return false;
     }
     AppMethodBeat.o(33657);
+    return true;
+  }
+  
+  public static boolean forceRemoveNoMatchOnPath()
+  {
     return true;
   }
   
@@ -249,18 +260,18 @@ public class NewChattingTabUI
       AppMethodBeat.o(33662);
       return null;
     }
-    if (this.Wdi.getView() == null)
+    if (this.adIL.getView() == null)
     {
       AppMethodBeat.o(33662);
       return null;
     }
-    if (this.Wdi != null) {
-      Log.i("MicroMsg.LauncherUI.NewChattingTabUI", "getBottom:%s keyboardState:%s", new Object[] { Integer.valueOf(this.Wdi.getView().getBottom()), Integer.valueOf(this.Wdi.keyboardState()) });
+    if (this.adIL != null) {
+      Log.i("MicroMsg.LauncherUI.NewChattingTabUI", "getBottom:%s keyboardState:%s", new Object[] { Integer.valueOf(this.adIL.getView().getBottom()), Integer.valueOf(this.adIL.keyboardState()) });
     }
-    if ((this.Wdi != null) && (this.Wdi.getView().getBottom() > 0) && ((this.Wdi.keyboardState() == 1) || (this.Wdi.getView().getBottom() < this.Jvc.getResources().getDisplayMetrics().heightPixels * 2 / 3)))
+    if ((this.adIL != null) && (this.adIL.getView().getBottom() > 0) && ((this.adIL.keyboardState() == 1) || (this.adIL.getView().getBottom() < this.PIA.getResources().getDisplayMetrics().heightPixels * 2 / 3)))
     {
-      Log.e("MicroMsg.LauncherUI.NewChattingTabUI", "hardKeyboardHidden:%s", new Object[] { Integer.valueOf(this.Wdi.keyboardState()) });
-      this.Jvc.getWindow().setBackgroundDrawableResource(R.e.dkI);
+      Log.e("MicroMsg.LauncherUI.NewChattingTabUI", "hardKeyboardHidden:%s", new Object[] { Integer.valueOf(this.adIL.keyboardState()) });
+      this.PIA.getWindow().setBackgroundDrawableResource(R.e.fkX);
       AppMethodBeat.o(33662);
       return null;
     }
@@ -297,7 +308,7 @@ public class NewChattingTabUI
   private int getTopHeight()
   {
     AppMethodBeat.i(33658);
-    int i = ax.getStatusBarHeight(this.Jvc);
+    int i = bf.getStatusBarHeight(this.PIA);
     if ((Build.VERSION.SDK_INT >= 24) && (LauncherUI.getInstance() != null)) {}
     for (boolean bool1 = LauncherUI.getInstance().isInMultiWindowMode();; bool1 = false)
     {
@@ -331,10 +342,10 @@ public class NewChattingTabUI
     }
   }
   
-  private ViewGroup hC(View paramView)
+  private ViewGroup kV(View paramView)
   {
-    AppMethodBeat.i(288608);
-    Object localObject1 = this.Jvc.getSupportActionBar().getCustomView().getParent();
+    AppMethodBeat.i(249241);
+    Object localObject1 = this.PIA.getSupportActionBar().getCustomView().getParent();
     Object localObject2 = null;
     while ((localObject1 != paramView) && (localObject1 != null))
     {
@@ -345,11 +356,11 @@ public class NewChattingTabUI
     if ((localObject2 instanceof ViewGroup))
     {
       paramView = (ViewGroup)localObject2;
-      AppMethodBeat.o(288608);
+      AppMethodBeat.o(249241);
       return paramView;
     }
     paramView = (ViewGroup)paramView;
-    AppMethodBeat.o(288608);
+    AppMethodBeat.o(249241);
     return paramView;
   }
   
@@ -358,19 +369,19 @@ public class NewChattingTabUI
     AppMethodBeat.i(33666);
     if (Float.compare(1.0F, paramFloat) <= 0)
     {
-      k.q(paramView, 0.0F);
-      k.q(paramImageView, 0.0F);
+      k.r(paramView, 0.0F);
+      k.r(paramImageView, 0.0F);
       AppMethodBeat.o(33666);
       return;
     }
     if ((paramImageView != null) && (paramImageView.getDrawable() != null))
     {
-      k.q(paramImageView, paramImageView.getWidth() / 2.5F * (1.0F - paramFloat) * -1.0F);
+      k.r(paramImageView, paramImageView.getWidth() / 2.5F * (1.0F - paramFloat) * -1.0F);
       AppMethodBeat.o(33666);
       return;
     }
     if (paramView != null) {
-      k.q(paramView, paramView.getWidth() / 2.5F * (1.0F - paramFloat) * -1.0F);
+      k.r(paramView, paramView.getWidth() / 2.5F * (1.0F - paramFloat) * -1.0F);
     }
     AppMethodBeat.o(33666);
   }
@@ -379,17 +390,17 @@ public class NewChattingTabUI
   {
     boolean bool = true;
     AppMethodBeat.i(33664);
-    if (!hIs())
+    if (!jkB())
     {
       AppMethodBeat.o(33664);
       return;
     }
-    if (this.Wdi == null) {}
+    if (this.adIL == null) {}
     for (;;)
     {
       Log.i("MicroMsg.LauncherUI.NewChattingTabUI", "ashutest: tryResetChattingSwipeStatus, chattingFragment NULL ? %B", new Object[] { Boolean.valueOf(bool) });
-      if (this.Wdi != null) {
-        this.Wdi.getSwipeBackLayout().jRp = false;
+      if (this.adIL != null) {
+        this.adIL.getSwipeBackLayout().mqz = false;
       }
       AppMethodBeat.o(33664);
       return;
@@ -397,75 +408,75 @@ public class NewChattingTabUI
     }
   }
   
-  public final boolean FH(boolean paramBoolean)
+  public final boolean Lq(boolean paramBoolean)
   {
     AppMethodBeat.i(33663);
-    if (this.Wdb == null) {}
-    for (boolean bool = false;; bool = this.Wdb.isShown())
+    if (this.adIE == null) {}
+    for (boolean bool = false;; bool = this.adIE.isShown())
     {
       Log.i("MicroMsg.LauncherUI.NewChattingTabUI", "try closeChatting, ishow:%b", new Object[] { Boolean.valueOf(bool) });
-      if ((this.Wdi != null) && (this.Wdi.getView() != null)) {
-        this.Wdi.getView().setImportantForAccessibility(4);
+      if ((this.adIL != null) && (this.adIL.getView() != null)) {
+        this.adIL.getView().setImportantForAccessibility(4);
       }
-      if ((this.Wdb != null) && (this.Wdb.getVisibility() != 8) && (this.Wdi != null) && (this.Jvc != null)) {
+      if ((this.adIE != null) && (this.adIE.getVisibility() != 8) && (this.adIL != null) && (this.PIA != null)) {
         break;
       }
       AppMethodBeat.o(33663);
       return false;
     }
-    if ((this.Wdi != null) && (this.Wdi.isSupportNavigationSwipeBack())) {
-      j.b(this.Jvc);
+    if ((this.adIL != null) && (this.adIL.isSupportNavigationSwipeBack())) {
+      l.b(this.PIA);
     }
     Log.i("MicroMsg.LauncherUI.NewChattingTabUI", "[closeChatting] needAnim:%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    rE(4);
+    rG(4);
     this.mChattingClosed = true;
     if ((paramBoolean) && (this.mChattingOutAnim == null))
     {
-      this.mChattingOutAnim = AnimationUtils.loadAnimation(this.Jvc, MMFragmentActivity.a.rib);
+      this.mChattingOutAnim = AnimationUtils.loadAnimation(this.PIA, MMFragmentActivity.a.upX);
       this.mChattingOutAnim.setAnimationListener(new Animation.AnimationListener()
       {
         public final void onAnimationEnd(Animation paramAnonymousAnimation)
         {
-          AppMethodBeat.i(290233);
+          AppMethodBeat.i(249160);
           NewChattingTabUI.a(NewChattingTabUI.this, false);
           NewChattingTabUI.d(NewChattingTabUI.this).setVisibility(8);
-          bh.aHJ().setLowPriority();
+          bh.baH().setLowPriority();
           MMHandlerThread.setCurrentPriority(0);
           NewChattingTabUI.y(NewChattingTabUI.this);
           Log.i("MicroMsg.LauncherUI.NewChattingTabUI", "klem pop out onAnimationEnd");
-          AppMethodBeat.o(290233);
+          AppMethodBeat.o(249160);
         }
         
         public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
         
         public final void onAnimationStart(Animation paramAnonymousAnimation)
         {
-          AppMethodBeat.i(290232);
+          AppMethodBeat.i(249151);
           NewChattingTabUI.a(NewChattingTabUI.this, true);
-          bh.aHJ().setLowestPriority();
+          bh.baH().setLowestPriority();
           MMHandlerThread.setCurrentPriority(-8);
-          NewChattingTabUI.this.aq(true, 0);
+          NewChattingTabUI.this.ar(true, 0);
           Log.i("MicroMsg.LauncherUI.NewChattingTabUI", "klem pop out onAnimationStart");
-          AppMethodBeat.o(290232);
+          AppMethodBeat.o(249151);
         }
       });
     }
-    ac.d(true, new Intent().putExtra("classname", "mainui").putExtra("main_process", false));
-    if (this.Wdi.isSupportCustomActionBar())
+    ag.d(true, new Intent().putExtra("classname", "mainui").putExtra("main_process", false));
+    if (this.adIL.isSupportCustomActionBar())
     {
-      ImageView localImageView = (ImageView)this.Jvc.getWindow().getDecorView().findViewById(R.h.dRm);
+      ImageView localImageView = (ImageView)this.PIA.getWindow().getDecorView().findViewById(R.h.fTp);
       if ((localImageView != null) && (localImageView.getVisibility() == 0))
       {
         localImageView.setVisibility(8);
         Log.i("MicroMsg.LauncherUI.NewChattingTabUI", "[closeChatting] prepareView GONE");
       }
     }
-    aug(0);
+    aAx(0);
     if (paramBoolean)
     {
       this.mChattingUIProxy.onExitBegin();
       this.mChattingUIProxy.onExitEnd();
-      this.Wdb.startAnimation(this.mChattingOutAnim);
+      this.adIE.startAnimation(this.mChattingOutAnim);
     }
     for (;;)
     {
@@ -473,37 +484,54 @@ public class NewChattingTabUI
       return true;
       this.mChattingUIProxy.onExitBegin();
       this.mChattingUIProxy.onExitEnd();
-      this.Wdb.setVisibility(8);
-      this.Jvc.onSwipe(1.0F);
+      this.adIE.setVisibility(8);
+      this.PIA.onSwipe(1.0F);
       tryResetChattingSwipeStatus();
     }
   }
   
-  public final boolean aq(boolean paramBoolean, int paramInt)
+  final void aAx(int paramInt)
+  {
+    AppMethodBeat.i(33667);
+    Log.i("MicroMsg.LauncherUI.NewChattingTabUI", "[setLauncherContainerVisible] visible:%s", new Object[] { Integer.valueOf(paramInt) });
+    if (this.PIA == null)
+    {
+      Log.e("MicroMsg.LauncherUI.NewChattingTabUI", "[setLauncherContainerVisible] getActivity is null");
+      AppMethodBeat.o(33667);
+      return;
+    }
+    View localView = this.PIA.findViewById(R.h.fMr);
+    if ((localView != null) && (localView.getVisibility() != paramInt)) {
+      localView.setVisibility(paramInt);
+    }
+    AppMethodBeat.o(33667);
+  }
+  
+  public final boolean ar(boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(33665);
-    Log.v("MicroMsg.LauncherUI.NewChattingTabUI", "ashutest: on settle %B, speed %d, resumeStatus %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), Boolean.valueOf(this.WcZ.hGI()) });
-    if (!hIs())
+    Log.v("MicroMsg.LauncherUI.NewChattingTabUI", "ashutest: on settle %B, speed %d, resumeStatus %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), Boolean.valueOf(this.adIC.jiT()) });
+    if (!jkB())
     {
       AppMethodBeat.o(33665);
       return true;
     }
     if (paramBoolean) {
-      this.WcZ.hGM();
+      this.adIC.jiX();
     }
-    if (!this.WcZ.hGI())
+    if (!this.adIC.jiT())
     {
       AppMethodBeat.o(33665);
       return false;
     }
-    View localView = this.Jvc.findViewById(R.h.dKQ);
+    View localView = this.PIA.findViewById(R.h.fMr);
     if (localView == null)
     {
       Log.e("MicroMsg.LauncherUI.NewChattingTabUI", "[onSettle] null == container");
       AppMethodBeat.o(33665);
       return true;
     }
-    ImageView localImageView = (ImageView)this.Jvc.findViewById(R.h.dRm);
+    ImageView localImageView = (ImageView)this.PIA.findViewById(R.h.fTp);
     if ((localImageView != null) && (localImageView.getVisibility() == 8) && (localImageView.getDrawable() != null))
     {
       localImageView.setVisibility(0);
@@ -513,7 +541,7 @@ public class NewChattingTabUI
     if ((localImageView != null) && (localImageView.getVisibility() == 0)) {
       if (localImageView.getWidth() == 0)
       {
-        paramInt = this.Jvc.getResources().getDisplayMetrics().widthPixels;
+        paramInt = this.PIA.getResources().getDisplayMetrics().widthPixels;
         if (!paramBoolean) {
           break label250;
         }
@@ -530,7 +558,7 @@ public class NewChattingTabUI
       k.a(localImageView, 208L, paramInt * -1 / 3.5F, null);
       continue;
       if (localView.getWidth() == 0) {}
-      for (paramInt = this.Jvc.getResources().getDisplayMetrics().widthPixels;; paramInt = localView.getWidth())
+      for (paramInt = this.PIA.getResources().getDisplayMetrics().widthPixels;; paramInt = localView.getWidth())
       {
         if (!paramBoolean) {
           break label315;
@@ -543,48 +571,36 @@ public class NewChattingTabUI
     }
   }
   
-  final void aug(int paramInt)
+  public final boolean glL()
   {
-    AppMethodBeat.i(33667);
-    Log.i("MicroMsg.LauncherUI.NewChattingTabUI", "[setLauncherContainerVisible] visible:%s", new Object[] { Integer.valueOf(paramInt) });
-    if (this.Jvc == null)
+    AppMethodBeat.i(249360);
+    if (this.adIL == null)
     {
-      Log.e("MicroMsg.LauncherUI.NewChattingTabUI", "[setLauncherContainerVisible] getActivity is null");
-      AppMethodBeat.o(33667);
-      return;
-    }
-    View localView = this.Jvc.findViewById(R.h.dKQ);
-    if ((localView != null) && (localView.getVisibility() != paramInt)) {
-      localView.setVisibility(paramInt);
-    }
-    AppMethodBeat.o(33667);
-  }
-  
-  public final void fMw()
-  {
-    AppMethodBeat.i(288606);
-    if (fcI())
-    {
-      rE(4);
-      if ((this.Wdi != null) && (this.Wdi.isSupportNavigationSwipeBack())) {
-        this.Wdi.getSwipeBackLayout().setEnableGesture(false);
-      }
-    }
-    AppMethodBeat.o(288606);
-  }
-  
-  public final boolean fcI()
-  {
-    if (this.Wdi == null) {
+      AppMethodBeat.o(249360);
       return false;
     }
-    return this.Wdi.fgR.dgo;
+    boolean bool = this.adIL.isForeground();
+    AppMethodBeat.o(249360);
+    return bool;
   }
   
-  final boolean hIs()
+  public final void hdx()
+  {
+    AppMethodBeat.i(249351);
+    if (glL())
+    {
+      rG(4);
+      if ((this.adIL != null) && (this.adIL.isSupportNavigationSwipeBack())) {
+        this.adIL.getSwipeBackLayout().setEnableGesture(false);
+      }
+    }
+    AppMethodBeat.o(249351);
+  }
+  
+  final boolean jkB()
   {
     AppMethodBeat.i(33660);
-    if ((com.tencent.mm.compatible.util.d.qV(19)) && (com.tencent.mm.compatible.h.b.avx()) && (!com.tencent.mm.compatible.e.b.cr(this.Jvc)))
+    if ((com.tencent.mm.compatible.util.d.rb(19)) && (com.tencent.mm.compatible.h.a.aPR()) && (!com.tencent.mm.compatible.e.b.df(this.PIA)))
     {
       AppMethodBeat.o(33660);
       return true;
@@ -593,10 +609,10 @@ public class NewChattingTabUI
     return false;
   }
   
-  final void rE(final int paramInt)
+  final void rG(final int paramInt)
   {
     AppMethodBeat.i(33661);
-    if (this.Wdi == null)
+    if (this.adIL == null)
     {
       AppMethodBeat.o(33661);
       return;
@@ -608,7 +624,7 @@ public class NewChattingTabUI
         AppMethodBeat.i(33641);
         com.tencent.mm.modelstat.d.d(paramInt, "ChattingUI" + NewChattingTabUI.i(NewChattingTabUI.this), hashCode());
         if (paramInt == 4) {
-          com.tencent.mm.modelstat.d.l("ChattingUI" + NewChattingTabUI.i(NewChattingTabUI.this), NewChattingTabUI.j(NewChattingTabUI.this), Util.nowSecond());
+          com.tencent.mm.modelstat.d.n("ChattingUI" + NewChattingTabUI.i(NewChattingTabUI.this), NewChattingTabUI.j(NewChattingTabUI.this), Util.nowSecond());
         }
         AppMethodBeat.o(33641);
       }
@@ -619,36 +635,36 @@ public class NewChattingTabUI
   public final void startChatting(String paramString, Bundle paramBundle, boolean paramBoolean)
   {
     AppMethodBeat.i(33656);
-    this.Wdj = System.currentTimeMillis();
-    if (this.Wdb == null) {}
-    for (boolean bool = false;; bool = this.Wdb.isShown())
+    this.adIM = System.currentTimeMillis();
+    if (this.adIE == null) {}
+    for (boolean bool = false;; bool = this.adIE.isShown())
     {
       Log.i("MicroMsg.LauncherUI.NewChattingTabUI", "try startChatting, ishow:%b userName:%s needAnim:%b", new Object[] { Boolean.valueOf(bool), paramString, Boolean.valueOf(paramBoolean) });
-      if ((this.Wdi != null) && (this.Wdi.getView() != null)) {
-        this.Wdi.getView().setImportantForAccessibility(1);
+      if ((this.adIL != null) && (this.adIL.getView() != null)) {
+        this.adIL.getView().setImportantForAccessibility(1);
       }
-      bh.getNotification().dH(false);
-      this.Wdl = false;
-      this.Wdh = paramBundle;
-      this.Wdg = paramString;
+      bh.getNotification().et(false);
+      this.adIO = false;
+      this.adIK = paramBundle;
+      this.adIJ = paramString;
       this.mNeedChattingAnim = paramBoolean;
-      if ((!ar.hIO()) || ((!ar.hIM()) && (!ar.hIN()) && (!ar.hIH()))) {
+      if ((!aw.jlc()) || ((!aw.ato()) && (!aw.jkZ()) && (!aw.jkS()) && (!aw.jlb()))) {
         break;
       }
-      paramString = new Intent(this.Jvc, ChattingUI.class);
-      paramString.putExtra("Chat_User", this.Wdg);
+      paramString = new Intent(this.PIA, ChattingUI.class);
+      paramString.putExtra("Chat_User", this.adIJ);
       if (paramBundle != null) {
         paramString.putExtras(paramBundle);
       }
-      paramBundle = this.Jvc;
-      paramString = new com.tencent.mm.hellhoundlib.b.a().bm(paramString);
-      com.tencent.mm.hellhoundlib.a.a.b(paramBundle, paramString.aFh(), "com/tencent/mm/ui/NewChattingTabUI", "startChatting", "(Ljava/lang/String;Landroid/os/Bundle;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramBundle.startActivity((Intent)paramString.sf(0));
+      paramBundle = this.PIA;
+      paramString = new com.tencent.mm.hellhoundlib.b.a().cG(paramString);
+      com.tencent.mm.hellhoundlib.a.a.b(paramBundle, paramString.aYi(), "com/tencent/mm/ui/NewChattingTabUI", "startChatting", "(Ljava/lang/String;Landroid/os/Bundle;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramBundle.startActivity((Intent)paramString.sb(0));
       com.tencent.mm.hellhoundlib.a.a.c(paramBundle, "com/tencent/mm/ui/NewChattingTabUI", "startChatting", "(Ljava/lang/String;Landroid/os/Bundle;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(33656);
       return;
     }
-    bh.aHJ().setLowestPriority();
+    bh.baH().setLowestPriority();
     MMHandlerThread.setCurrentPriority(-8);
     MMHandlerThread.removeRunnable(this.mStartChattingRunnable);
     MMHandlerThread.postToMainThread(this.mStartChattingRunnable);
@@ -658,9 +674,9 @@ public class NewChattingTabUI
   final class a
     implements Runnable
   {
-    int Wdt = 0;
-    Intent fJJ;
-    int requestCode;
+    int adIW = 0;
+    int hPm;
+    Intent hPn;
     int resultCode;
     
     private a() {}
@@ -668,9 +684,9 @@ public class NewChattingTabUI
     public final void run()
     {
       AppMethodBeat.i(33653);
-      if ((bh.aHB()) && (NewChattingTabUI.a(NewChattingTabUI.this) != null))
+      if ((bh.baz()) && (NewChattingTabUI.a(NewChattingTabUI.this) != null))
       {
-        Log.i("MicroMsg.LauncherUI.NewChattingTabUI", "on post select image job, acc has ready, retry count %d", new Object[] { Integer.valueOf(this.Wdt) });
+        Log.i("MicroMsg.LauncherUI.NewChattingTabUI", "on post select image job, acc has ready, retry count %d", new Object[] { Integer.valueOf(this.adIW) });
         NewChattingTabUI.this.startChatting(NewChattingTabUI.b(NewChattingTabUI.this), null, false);
         MMHandlerThread.postToMainThread(new Runnable()
         {
@@ -685,7 +701,7 @@ public class NewChattingTabUI
               if (NewChattingTabUI.c(NewChattingTabUI.this) != null)
               {
                 Log.d("MicroMsg.LauncherUI.NewChattingTabUI", "on select image ActivityResult. do post activity result");
-                NewChattingTabUI.c(NewChattingTabUI.this).onActivityResult(NewChattingTabUI.a.this.requestCode & 0xFFFF, NewChattingTabUI.a.this.resultCode, NewChattingTabUI.a.this.fJJ);
+                NewChattingTabUI.c(NewChattingTabUI.this).onActivityResult(NewChattingTabUI.a.this.hPm & 0xFFFF, NewChattingTabUI.a.this.resultCode, NewChattingTabUI.a.this.hPn);
               }
               AppMethodBeat.o(33651);
               return;
@@ -704,7 +720,7 @@ public class NewChattingTabUI
         AppMethodBeat.o(33653);
         return;
       }
-      if (this.Wdt >= 3)
+      if (this.adIW >= 3)
       {
         Log.w("MicroMsg.LauncherUI.NewChattingTabUI", "on post select image job, match max retry count");
         AppMethodBeat.o(33653);
@@ -713,8 +729,8 @@ public class NewChattingTabUI
       if (NewChattingTabUI.a(NewChattingTabUI.this) != null) {}
       for (boolean bool = true;; bool = false)
       {
-        Log.w("MicroMsg.LauncherUI.NewChattingTabUI", "on post select image job, acc not ready or view init(%B), cur retry count %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.Wdt) });
-        this.Wdt += 1;
+        Log.w("MicroMsg.LauncherUI.NewChattingTabUI", "on post select image job, acc not ready or view init(%B), cur retry count %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.adIW) });
+        this.adIW += 1;
         MMHandlerThread.postToMainThreadDelayed(this, 300L);
         AppMethodBeat.o(33653);
         return;
@@ -732,7 +748,7 @@ public class NewChattingTabUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.NewChattingTabUI
  * JD-Core Version:    0.7.0.1
  */

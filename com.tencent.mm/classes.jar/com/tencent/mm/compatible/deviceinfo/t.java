@@ -2,17 +2,17 @@ package com.tencent.mm.compatible.deviceinfo;
 
 public final class t
 {
-  public int jsW = 0;
-  public int jsX = 0;
+  public int lWo = 0;
+  public int lWp = 0;
   
-  public final void qM(int paramInt)
+  public final void qT(int paramInt)
   {
-    this.jsX = paramInt;
+    this.lWp = paramInt;
   }
   
-  public final void qN(int paramInt)
+  public final void qU(int paramInt)
   {
-    this.jsW = paramInt;
+    this.lWo = paramInt;
   }
 }
 

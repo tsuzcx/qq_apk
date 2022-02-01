@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.facedetect.views;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -25,9 +24,9 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class FaceProcessHintView
   extends LinearLayout
 {
-  private int iU;
-  private h wCE;
-  private Animation wCF;
+  private int jP;
+  private h zYP;
+  private Animation zYQ;
   
   public FaceProcessHintView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -38,13 +37,13 @@ public class FaceProcessHintView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(104182);
-    this.wCE = null;
-    this.iU = 0;
-    this.wCF = null;
+    this.zYP = null;
+    this.jP = 0;
+    this.zYQ = null;
     setOrientation(0);
     setMinimumHeight(BackwardSupportUtil.BitmapFactory.fromDPToPix(getContext(), 36.0F));
-    this.wCF = AnimationUtils.loadAnimation(paramContext, a.a.face_zoom_out_from_left);
-    this.wCF.setInterpolator(new AccelerateDecelerateInterpolator());
+    this.zYQ = AnimationUtils.loadAnimation(paramContext, a.a.face_zoom_out_from_left);
+    this.zYQ.setInterpolator(new AccelerateDecelerateInterpolator());
     AppMethodBeat.o(104182);
   }
   
@@ -57,12 +56,11 @@ public class FaceProcessHintView
     AppMethodBeat.o(104184);
   }
   
-  @SuppressLint({"SetTextI18n"})
   public void setDataAndInvalidate(h paramh)
   {
     AppMethodBeat.i(104183);
-    this.wCE = paramh;
-    if ((this.wCE == null) || (this.wCE.wwO <= 0))
+    this.zYP = paramh;
+    if ((this.zYP == null) || (this.zYP.zSU <= 0))
     {
       Log.e("MicroMsg.FaceProcessHintView", "hy: model invalid");
       AppMethodBeat.o(104183);
@@ -70,7 +68,7 @@ public class FaceProcessHintView
     }
     removeAllViews();
     int i = 0;
-    while (i < this.wCE.wwO)
+    while (i < this.zYP.zSU)
     {
       paramh = LayoutInflater.from(getContext()).inflate(a.g.face_process_hint_item, null, false);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -1);
@@ -86,7 +84,7 @@ public class FaceProcessHintView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.views.FaceProcessHintView
  * JD-Core Version:    0.7.0.1
  */

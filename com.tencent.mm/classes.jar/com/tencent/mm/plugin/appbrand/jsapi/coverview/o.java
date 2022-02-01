@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.appbrand.jsapi.coverview;
 import android.text.TextUtils;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.ae.f;
+import com.tencent.mm.plugin.appbrand.jsapi.ah.f;
 import com.tencent.mm.plugin.appbrand.jsapi.base.d;
-import com.tencent.mm.plugin.appbrand.jsapi.g;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import org.json.JSONArray;
@@ -18,29 +18,29 @@ public final class o
   private static final int CTRL_INDEX = 810;
   public static final String NAME = "updateImagePreviewer";
   
-  public final int K(JSONObject paramJSONObject)
+  public final int V(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(270769);
+    AppMethodBeat.i(327352);
     int i = paramJSONObject.getInt("viewId");
-    AppMethodBeat.o(270769);
+    AppMethodBeat.o(327352);
     return i;
   }
   
-  public final boolean c(g paramg, int paramInt, View paramView, JSONObject paramJSONObject)
+  public final boolean c(h paramh, int paramInt, View paramView, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(270768);
+    AppMethodBeat.i(327347);
     Log.d("MicroMsg.JsApiUpdateImagePreviewer", "onUpdateView(viewId : %s, %s)", new Object[] { Integer.valueOf(paramInt), paramJSONObject });
     if (!(paramView instanceof CoverViewContainer))
     {
       Log.w("MicroMsg.JsApiUpdateImagePreviewer", "the view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(270768);
+      AppMethodBeat.o(327347);
       return false;
     }
-    ZoomImagePreviewer localZoomImagePreviewer = (ZoomImagePreviewer)((CoverViewContainer)paramView).aA(ZoomImagePreviewer.class);
+    ZoomImagePreviewer localZoomImagePreviewer = (ZoomImagePreviewer)((CoverViewContainer)paramView).aT(ZoomImagePreviewer.class);
     if (localZoomImagePreviewer == null)
     {
       Log.w("MicroMsg.JsApiUpdateImagePreviewer", "the target view(%s) is null", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(270768);
+      AppMethodBeat.o(327347);
       return false;
     }
     f.b(paramView, paramJSONObject.optJSONObject("style"));
@@ -48,9 +48,9 @@ public final class o
     {
       if (paramJSONObject.has("position"))
       {
-        localObject = P(paramJSONObject);
+        localObject = aa(paramJSONObject);
         if (localObject != null) {
-          localZoomImagePreviewer.eA((int)localObject[2], (int)localObject[3]);
+          localZoomImagePreviewer.fu((int)localObject[2], (int)localObject[3]);
         }
       }
       if (paramJSONObject.has("scale")) {
@@ -95,17 +95,17 @@ public final class o
     else
     {
       if (!((ArrayList)localObject).isEmpty()) {
-        localZoomImagePreviewer.D((ArrayList)localObject);
+        localZoomImagePreviewer.G((ArrayList)localObject);
       }
-      bool = super.c(paramg, paramInt, paramView, paramJSONObject);
-      AppMethodBeat.o(270768);
+      bool = super.c(paramh, paramInt, paramView, paramJSONObject);
+      AppMethodBeat.o(327347);
       return bool;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.coverview.o
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,6 @@ import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelReader.ParseException;
 import com.google.android.gms.common.util.Clock;
 import com.google.android.gms.common.util.CollectionUtils;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.common.wrappers.PackageManagerWrapper;
 import com.google.android.gms.common.wrappers.Wrappers;
 import com.google.android.gms.measurement.AppMeasurement.Event;
@@ -431,7 +430,6 @@ public final class zzka
     return null;
   }
   
-  @VisibleForTesting
   static long zzc(byte[] paramArrayOfByte)
   {
     int j = 0;
@@ -600,7 +598,6 @@ public final class zzka
     return true;
   }
   
-  @VisibleForTesting
   private final boolean zze(Context paramContext, String paramString)
   {
     AppMethodBeat.i(2071);
@@ -669,36 +666,36 @@ public final class zzka
     //   13: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   16: aconst_null
     //   17: areturn
-    //   18: new 468	java/io/ByteArrayOutputStream
+    //   18: new 466	java/io/ByteArrayOutputStream
     //   21: dup
-    //   22: invokespecial 469	java/io/ByteArrayOutputStream:<init>	()V
+    //   22: invokespecial 467	java/io/ByteArrayOutputStream:<init>	()V
     //   25: astore_1
-    //   26: new 471	java/io/ObjectOutputStream
+    //   26: new 469	java/io/ObjectOutputStream
     //   29: dup
     //   30: aload_1
-    //   31: invokespecial 474	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   31: invokespecial 472	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   34: astore_2
     //   35: aload_2
     //   36: aload_0
-    //   37: invokevirtual 478	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   37: invokevirtual 476	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
     //   40: aload_2
-    //   41: invokevirtual 481	java/io/ObjectOutputStream:flush	()V
-    //   44: new 483	java/io/ObjectInputStream
+    //   41: invokevirtual 479	java/io/ObjectOutputStream:flush	()V
+    //   44: new 481	java/io/ObjectInputStream
     //   47: dup
-    //   48: new 418	java/io/ByteArrayInputStream
+    //   48: new 416	java/io/ByteArrayInputStream
     //   51: dup
     //   52: aload_1
-    //   53: invokevirtual 484	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   56: invokespecial 426	java/io/ByteArrayInputStream:<init>	([B)V
-    //   59: invokespecial 487	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   53: invokevirtual 482	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   56: invokespecial 424	java/io/ByteArrayInputStream:<init>	([B)V
+    //   59: invokespecial 485	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   62: astore_1
     //   63: aload_1
-    //   64: invokevirtual 491	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   64: invokevirtual 489	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
     //   67: astore_0
     //   68: aload_2
-    //   69: invokevirtual 494	java/io/ObjectOutputStream:close	()V
+    //   69: invokevirtual 492	java/io/ObjectOutputStream:close	()V
     //   72: aload_1
-    //   73: invokevirtual 495	java/io/ObjectInputStream:close	()V
+    //   73: invokevirtual 493	java/io/ObjectInputStream:close	()V
     //   76: sipush 2076
     //   79: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   82: aload_0
@@ -711,11 +708,11 @@ public final class zzka
     //   89: aload_2
     //   90: ifnull +7 -> 97
     //   93: aload_2
-    //   94: invokevirtual 494	java/io/ObjectOutputStream:close	()V
+    //   94: invokevirtual 492	java/io/ObjectOutputStream:close	()V
     //   97: aload_1
     //   98: ifnull +7 -> 105
     //   101: aload_1
-    //   102: invokevirtual 495	java/io/ObjectInputStream:close	()V
+    //   102: invokevirtual 493	java/io/ObjectInputStream:close	()V
     //   105: sipush 2076
     //   108: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   111: aload_0
@@ -1702,7 +1699,7 @@ public final class zzka
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzka
  * JD-Core Version:    0.7.0.1
  */

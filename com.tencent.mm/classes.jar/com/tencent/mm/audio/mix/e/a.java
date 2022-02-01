@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends f
 {
-  protected final byte[] K(int paramInt1, int paramInt2, int paramInt3)
+  protected final byte[] aa(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(136834);
     int j = 0;
@@ -16,21 +16,21 @@ public final class a
       float f3;
       for (float f1 = 0.0F; k < paramInt1; f1 = f3 + f1)
       {
-        f2 = (float)(f2 + Math.pow(this.fpv[k][j], 2.0D) * Math.signum(this.fpv[k][j]));
-        f3 = Math.abs(this.fpv[k][j]);
+        f2 = (float)(f2 + Math.pow(this.htE[k][j], 2.0D) * Math.signum(this.htE[k][j]));
+        f3 = Math.abs(this.htE[k][j]);
         k += 1;
       }
       if (f1 == 0.0F)
       {
         k = 0;
         label111:
-        localObject = this.fpy;
+        localObject = this.htH;
         if (f1 != 0.0F) {
           break label154;
         }
       }
       label154:
-      for (int i = 0;; i = kx(k))
+      for (int i = 0;; i = oe(k))
       {
         localObject[j] = i;
         j += 1;
@@ -39,7 +39,7 @@ public final class a
         break label111;
       }
     }
-    Object localObject = cB(paramInt3, paramInt2);
+    Object localObject = dr(paramInt3, paramInt2);
     AppMethodBeat.o(136834);
     return localObject;
   }

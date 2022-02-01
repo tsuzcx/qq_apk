@@ -19,13 +19,13 @@ import com.tencent.mm.sdk.vendor.MIUI;
 public class SportForegroundService
   extends Service
 {
-  private static boolean Lyk;
-  private MMHandler qdR;
+  private static boolean SbX;
+  private MMHandler tiG;
   
-  public static void gaW()
+  public static void hun()
   {
     AppMethodBeat.i(149339);
-    if (d.qV(26))
+    if (d.rb(26))
     {
       if (MIUI.ifMIUI())
       {
@@ -33,7 +33,7 @@ public class SportForegroundService
         AppMethodBeat.o(149339);
         return;
       }
-      if ((!Lyk) && (!MMApplicationContext.isMMProcessExist()))
+      if ((!SbX) && (!MMApplicationContext.isMMProcessExist()))
       {
         Log.i("MicroMsg.Sport.SportForegroundService", "startSportForegroundService");
         Intent localIntent = new Intent(MMApplicationContext.getContext(), SportForegroundService.class);
@@ -52,13 +52,13 @@ public class SportForegroundService
     AppMethodBeat.o(149339);
   }
   
-  public static void gaX()
+  public static void huo()
   {
     AppMethodBeat.i(149340);
-    if (d.qV(26))
+    if (d.rb(26))
     {
       Log.i("MicroMsg.Sport.SportForegroundService", "stopSportForegroundService");
-      Lyk = false;
+      SbX = false;
       Intent localIntent = new Intent(MMApplicationContext.getContext(), SportForegroundService.class);
       try
       {
@@ -80,8 +80,8 @@ public class SportForegroundService
   {
     AppMethodBeat.i(149338);
     Log.i("MicroMsg.Sport.SportForegroundService", "onDestroy");
-    if (this.qdR != null) {
-      this.qdR.removeCallbacksAndMessages(null);
+    if (this.tiG != null) {
+      this.tiG.removeCallbacksAndMessages(null);
     }
     stopForeground(true);
     super.onDestroy();
@@ -92,21 +92,21 @@ public class SportForegroundService
   {
     AppMethodBeat.i(149337);
     Log.i("MicroMsg.Sport.SportForegroundService", "onStartCommand %d", new Object[] { Integer.valueOf(paramInt2) });
-    if (d.qV(26))
+    if (d.rb(26))
     {
       Log.i("MicroMsg.Sport.SportForegroundService", "onStartCommand startForeground");
-      Lyk = true;
+      SbX = true;
       Notification.Builder localBuilder = new Notification.Builder(getApplicationContext(), "reminder_channel_id");
       localBuilder.setContentTitle(MMApplicationContext.getResources().getString(b.e.sport_notification_tips)).setWhen(System.currentTimeMillis());
       startForeground(419430, localBuilder.build());
-      ((PluginSport)com.tencent.mm.kernel.h.ag(PluginSport.class)).getPushSportStepDetector().gaM();
-      this.qdR = new MMHandler(Looper.getMainLooper());
-      this.qdR.postDelayed(new Runnable()
+      ((PluginSport)com.tencent.mm.kernel.h.az(PluginSport.class)).getPushSportStepDetector().hud();
+      this.tiG = new MMHandler(Looper.getMainLooper());
+      this.tiG.postDelayed(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(149336);
-          SportForegroundService.gaX();
+          SportForegroundService.huo();
           AppMethodBeat.o(149336);
         }
       }, 6000L);
@@ -118,7 +118,7 @@ public class SportForegroundService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sport.model.SportForegroundService
  * JD-Core Version:    0.7.0.1
  */

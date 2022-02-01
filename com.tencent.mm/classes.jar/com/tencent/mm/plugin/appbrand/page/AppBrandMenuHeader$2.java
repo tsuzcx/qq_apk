@@ -15,16 +15,16 @@ final class AppBrandMenuHeader$2
   {
     AppMethodBeat.i(47772);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/appbrand/page/AppBrandMenuHeader$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    this.qpx.run();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/appbrand/page/AppBrandMenuHeader$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    this.ttY.run();
     a.a(this, "com/tencent/mm/plugin/appbrand/page/AppBrandMenuHeader$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(47772);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.AppBrandMenuHeader.2
  * JD-Core Version:    0.7.0.1
  */

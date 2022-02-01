@@ -3,26 +3,27 @@ package com.tencent.luggage.xweb_ext.extendplugin;
 import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
 import android.view.MotionEvent;
+import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.xweb.XWebExtendInterface;
 import org.xwalk.core.XWalkExtendPluginClient;
-import org.xwalk.core.XWalkView;
 
 public final class c
   extends XWalkExtendPluginClient
 {
-  com.tencent.luggage.xweb_ext.extendplugin.b.c cEq;
+  com.tencent.luggage.xweb_ext.extendplugin.b.c exB;
   
-  public c(XWalkView paramXWalkView)
+  public c(XWebExtendInterface paramXWebExtendInterface)
   {
-    super(paramXWalkView);
+    super(paramXWebExtendInterface);
   }
   
   public final void onPluginDestroy(String paramString, int paramInt)
   {
     AppMethodBeat.i(138805);
     super.onPluginDestroy(paramString, paramInt);
-    if (this.cEq != null) {
-      this.cEq.onPluginDestroy(paramString, paramInt);
+    if (this.exB != null) {
+      this.exB.onPluginDestroy(paramString, paramInt);
     }
     AppMethodBeat.o(138805);
   }
@@ -31,18 +32,28 @@ public final class c
   {
     AppMethodBeat.i(138804);
     super.onPluginReady(paramString, paramInt, paramSurfaceTexture);
-    if (this.cEq != null) {
-      this.cEq.onPluginReady(paramString, paramInt, paramSurfaceTexture);
+    if (this.exB != null) {
+      this.exB.onPluginReady(paramString, paramInt, paramSurfaceTexture);
     }
     AppMethodBeat.o(138804);
+  }
+  
+  public final void onPluginReadyForGPUProcess(String paramString, int paramInt, Surface paramSurface)
+  {
+    AppMethodBeat.i(220591);
+    super.onPluginReadyForGPUProcess(paramString, paramInt, paramSurface);
+    if (this.exB != null) {
+      this.exB.onPluginReadyForGPUProcess(paramString, paramInt, paramSurface);
+    }
+    AppMethodBeat.o(220591);
   }
   
   public final void onPluginScreenshotTaken(String paramString, int paramInt, Bitmap paramBitmap)
   {
     AppMethodBeat.i(178798);
     super.onPluginScreenshotTaken(paramString, paramInt, paramBitmap);
-    if (this.cEq != null) {
-      this.cEq.onPluginScreenshotTaken(paramString, paramInt, paramBitmap);
+    if (this.exB != null) {
+      this.exB.onPluginScreenshotTaken(paramString, paramInt, paramBitmap);
     }
     AppMethodBeat.o(178798);
   }
@@ -51,8 +62,8 @@ public final class c
   {
     AppMethodBeat.i(138806);
     super.onPluginTouch(paramString, paramInt, paramMotionEvent);
-    if (this.cEq != null) {
-      this.cEq.onPluginTouch(paramString, paramInt, paramMotionEvent);
+    if (this.exB != null) {
+      this.exB.onPluginTouch(paramString, paramInt, paramMotionEvent);
     }
     AppMethodBeat.o(138806);
   }
@@ -66,7 +77,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.c
  * JD-Core Version:    0.7.0.1
  */

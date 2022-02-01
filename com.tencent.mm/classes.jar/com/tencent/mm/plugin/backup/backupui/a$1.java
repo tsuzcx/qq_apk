@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.backup.backupui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.z;
+import com.tencent.mm.autogen.mmdata.rpt.ad;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
 
@@ -12,21 +12,21 @@ final class a$1
   
   public final void run()
   {
-    AppMethodBeat.i(284398);
-    Object localObject = this.rSN.getString("MMKV_BACKUP_ERROR_CACHE", "");
+    AppMethodBeat.i(300668);
+    Object localObject = this.vec.getString("MMKV_BACKUP_ERROR_CACHE", "");
     if (Util.isNullOrNil((String)localObject))
     {
-      localObject = new z();
-      ((z)localObject).ggn = this.rSO;
-      ((z)localObject).bpa();
+      localObject = new ad();
+      ((ad)localObject).ink = this.ved;
+      ((ad)localObject).bMH();
     }
     for (;;)
     {
-      this.rSN.encode("MMKV_BACKUP_NEED_REPORT", false);
-      AppMethodBeat.o(284398);
+      this.vec.encode("MMKV_BACKUP_NEED_REPORT", false);
+      AppMethodBeat.o(300668);
       return;
-      new z((String)localObject).bpa();
-      this.rSN.encode("MMKV_BACKUP_ERROR_CACHE", "");
+      new ad((String)localObject).bMH();
+      this.vec.encode("MMKV_BACKUP_ERROR_CACHE", "");
     }
   }
 }

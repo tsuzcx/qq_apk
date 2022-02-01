@@ -10,18 +10,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.game.report.g;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.game.d.c;
-import com.tencent.mm.plugin.game.g.e;
+import com.tencent.mm.plugin.game.h.e;
 import com.tencent.mm.plugin.game.model.d;
-import com.tencent.mm.plugin.game.protobuf.ap;
-import com.tencent.mm.plugin.game.protobuf.dd;
+import com.tencent.mm.plugin.game.protobuf.aq;
+import com.tencent.mm.plugin.game.protobuf.dg;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public class GameFeedMoreGameEntranceView
   extends RelativeLayout
   implements View.OnClickListener
 {
-  private d CTb;
-  private TextView rR;
+  private d INr;
+  private TextView sQ;
   
   public GameFeedMoreGameEntranceView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,18 +32,18 @@ public class GameFeedMoreGameEntranceView
   {
     AppMethodBeat.i(42118);
     b localb = new b();
-    localb.bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/game/ui/GameFeedMoreGameEntranceView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    if ((this.CTb == null) || (this.CTb.CIr == null))
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/game/ui/GameFeedMoreGameEntranceView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    if ((this.INr == null) || (this.INr.ICB == null))
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameFeedMoreGameEntranceView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(42118);
       return;
     }
-    if (!Util.isNullOrNil(this.CTb.CIr.CMD))
+    if (!Util.isNullOrNil(this.INr.ICB.IGI))
     {
-      int i = c.aY(getContext(), this.CTb.CIr.CMD);
-      g.a(getContext(), 10, 1024, this.CTb.position, i, this.CTb.CIr.lVG, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.c.a.am(this.CTb.CIr.CNA, "clickType", "card"));
+      int i = c.ba(getContext(), this.INr.ICB.IGI);
+      g.a(getContext(), 10, 1024, this.INr.position, i, this.INr.ICB.oOI, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.c.a.aw(this.INr.ICB.IHI, "clickType", "card"));
     }
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameFeedMoreGameEntranceView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(42118);
@@ -53,7 +53,7 @@ public class GameFeedMoreGameEntranceView
   {
     AppMethodBeat.i(42116);
     super.onFinishInflate();
-    this.rR = ((TextView)findViewById(g.e.CkN));
+    this.sQ = ((TextView)findViewById(h.e.HWV));
     setOnClickListener(this);
     AppMethodBeat.o(42116);
   }
@@ -61,26 +61,26 @@ public class GameFeedMoreGameEntranceView
   public void setData(d paramd)
   {
     AppMethodBeat.i(42117);
-    if ((paramd == null) || (paramd.CIr == null) || (paramd.CIr.COE == null))
+    if ((paramd == null) || (paramd.ICB == null) || (paramd.ICB.IIO == null))
     {
       setVisibility(8);
       AppMethodBeat.o(42117);
       return;
     }
-    this.CTb = paramd;
+    this.INr = paramd;
     setVisibility(0);
-    this.rR.setText(paramd.CIr.COE.CMB);
-    if (!this.CTb.CIt)
+    this.sQ.setText(paramd.ICB.IIO.IGG);
+    if (!this.INr.ICD)
     {
-      com.tencent.mm.plugin.game.c.a.b(getContext(), 10, 1024, this.CTb.position, this.CTb.CIr.lVG, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.c.a.Md(this.CTb.CIr.CNA));
-      this.CTb.CIt = true;
+      com.tencent.mm.plugin.game.c.a.b(getContext(), 10, 1024, this.INr.position, this.INr.ICB.oOI, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.c.a.EM(this.INr.ICB.IHI));
+      this.INr.ICD = true;
     }
     AppMethodBeat.o(42117);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameFeedMoreGameEntranceView
  * JD-Core Version:    0.7.0.1
  */

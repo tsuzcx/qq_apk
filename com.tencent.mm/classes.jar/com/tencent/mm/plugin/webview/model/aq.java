@@ -21,7 +21,7 @@ public final class aq
     super(paramISQLiteDatabase, ap.info, "WebviewLocalData", null);
   }
   
-  public static int aZ(String paramString1, String paramString2, String paramString3)
+  public static int bs(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(79030);
     int i = (paramString1 + paramString2 + paramString3).hashCode();

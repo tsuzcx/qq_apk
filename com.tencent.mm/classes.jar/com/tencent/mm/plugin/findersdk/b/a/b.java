@@ -1,22 +1,19 @@
 package com.tencent.mm.plugin.findersdk.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/findersdk/cgi/report/EnableValue;", "", "(Ljava/lang/String;I)V", "Default", "Enable", "Disable", "finder-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/findersdk/cgi/report/EnableValue;", "", "(Ljava/lang/String;I)V", "Default", "Enable", "Disable", "finder-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public enum b
 {
   static
   {
-    AppMethodBeat.i(208901);
-    b localb1 = new b("Default", 0);
-    BvT = localb1;
-    b localb2 = new b("Enable", 1);
-    BvU = localb2;
-    b localb3 = new b("Disable", 2);
-    BvV = localb3;
-    BvW = new b[] { localb1, localb2, localb3 };
-    AppMethodBeat.o(208901);
+    AppMethodBeat.i(273867);
+    Hdd = new b("Default", 0);
+    Hde = new b("Enable", 1);
+    Hdf = new b("Disable", 2);
+    Hdg = new b[] { Hdd, Hde, Hdf };
+    AppMethodBeat.o(273867);
   }
   
   private b() {}

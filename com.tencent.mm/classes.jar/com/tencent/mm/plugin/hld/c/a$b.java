@@ -1,52 +1,48 @@
 package com.tencent.mm.plugin.hld.c;
 
 import android.os.Bundle;
-import com.tencent.e.h;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.aa.a;
-import com.tencent.mm.an.q;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.f;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/dict/WxImeDictFetcher$IPCCgiImeGetImeDictRaw;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Landroid/os/Bundle;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/dict/WxImeDictFetcher$IPCCgiImeGetImeDictRaw;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Landroid/os/Bundle;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a$b
-  implements com.tencent.mm.ipcinvoker.d<Bundle, Bundle>
+  implements d<Bundle, Bundle>
 {
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "errType", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "callback", "com/tencent/mm/plugin/hld/dict/WxImeDictFetcher$IPCCgiImeGetImeDictRaw$invoke$1$1"})
-  static final class a
-    implements aa.a
+  private static final int b(f paramf, int paramInt1, int paramInt2, String paramString, c paramc, p paramp)
   {
-    a(f paramf) {}
-    
-    public final int a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.d paramd, final q paramq)
-    {
-      AppMethodBeat.i(213238);
-      paramq = new Bundle();
-      paramq.putInt("errType", paramInt1);
-      paramq.putInt("errCode", paramInt2);
-      paramq.putString("errMsg", paramString);
-      p.j(paramd, "rr");
-      paramq.putByteArray("resp", paramd.bhY().toByteArray());
-      h.ZvG.be((Runnable)new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(217293);
-          this.DvJ.Dvv.aH(paramq);
-          AppMethodBeat.o(217293);
-        }
-      });
-      AppMethodBeat.o(213238);
-      return 0;
-    }
+    AppMethodBeat.i(311473);
+    s.u(paramf, "$callback");
+    paramp = new Bundle();
+    paramp.putInt("errType", paramInt1);
+    paramp.putInt("errCode", paramInt2);
+    paramp.putString("errMsg", paramString);
+    paramp.putByteArray("resp", c.c.b(paramc.otC).toByteArray());
+    h.ahAA.bm(new a.b..ExternalSyntheticLambda1(paramf, paramp));
+    AppMethodBeat.o(311473);
+    return 0;
+  }
+  
+  private static final void d(f paramf, Bundle paramBundle)
+  {
+    AppMethodBeat.i(311466);
+    s.u(paramf, "$callback");
+    s.u(paramBundle, "$bundle");
+    paramf.onCallback(paramBundle);
+    AppMethodBeat.o(311466);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.hld.c.a.b
  * JD-Core Version:    0.7.0.1
  */

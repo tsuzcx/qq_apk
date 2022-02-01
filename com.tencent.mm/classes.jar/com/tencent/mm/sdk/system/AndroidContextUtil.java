@@ -67,20 +67,20 @@ public class AndroidContextUtil
       {
         localObject1 = localInputMethodManager.getClass().getDeclaredField((String)localObject1);
         ((Field)localObject1).setAccessible(true);
-        Object localObject2 = ((Field)localObject1).get(localInputMethodManager);
-        if ((localObject2 != null) && ((localObject2 instanceof View)))
+        Object localObject3 = ((Field)localObject1).get(localInputMethodManager);
+        if ((localObject3 != null) && ((localObject3 instanceof View)))
         {
-          localObject2 = (View)localObject2;
-          if ((((View)localObject2).getContext() == paramContext) || (isContextReferencedByOtherContext(paramContext, ((View)localObject2).getContext()))) {
+          localObject3 = (View)localObject3;
+          if ((((View)localObject3).getContext() == paramContext) || (isContextReferencedByOtherContext(paramContext, ((View)localObject3).getContext()))) {
             ((Field)localObject1).set(localInputMethodManager, null);
           }
         }
       }
-      catch (Throwable localThrowable)
+      finally
       {
         for (;;)
         {
-          Log.w("Luggage.AndroidContextUtil", "fixInputMethodManagerLeak %s", new Object[] { localThrowable.getMessage() });
+          Log.w("Luggage.AndroidContextUtil", "fixInputMethodManagerLeak %s", new Object[] { localObject2.getMessage() });
         }
       }
       i += 1;
@@ -91,10 +91,10 @@ public class AndroidContextUtil
   
   private static boolean isContextReferencedByOtherContext(Context paramContext1, Context paramContext2)
   {
-    AppMethodBeat.i(210042);
+    AppMethodBeat.i(243198);
     if (paramContext1 == paramContext2)
     {
-      AppMethodBeat.o(210042);
+      AppMethodBeat.o(243198);
       return true;
     }
     if ((paramContext2 instanceof ContextWrapper))
@@ -105,7 +105,7 @@ public class AndroidContextUtil
       {
         if (paramContext1 == paramContext2)
         {
-          AppMethodBeat.o(210042);
+          AppMethodBeat.o(243198);
           return true;
         }
         if (!(paramContext2 instanceof ContextWrapper)) {
@@ -114,10 +114,10 @@ public class AndroidContextUtil
         localContext = ((ContextWrapper)paramContext2).getBaseContext();
         paramContext2 = localContext;
       } while (localContext != null);
-      AppMethodBeat.o(210042);
+      AppMethodBeat.o(243198);
       return false;
     }
-    AppMethodBeat.o(210042);
+    AppMethodBeat.o(243198);
     return false;
   }
 }

@@ -11,13 +11,13 @@ public class ReloadNotify
   implements Parcelable
 {
   public static Parcelable.Creator<ReloadNotify> CREATOR;
-  public static Set<String> QMf;
-  public String[] QMg;
+  public static Set<String> XFD;
+  public String[] XFE;
   
   static
   {
     AppMethodBeat.i(110648);
-    QMf = new HashSet();
+    XFD = new HashSet();
     CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(110648);
   }
@@ -25,7 +25,7 @@ public class ReloadNotify
   private ReloadNotify(Parcel paramParcel)
   {
     AppMethodBeat.i(110647);
-    this.QMg = paramParcel.createStringArray();
+    this.XFE = paramParcel.createStringArray();
     AppMethodBeat.o(110647);
   }
   
@@ -37,7 +37,7 @@ public class ReloadNotify
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(110646);
-    paramParcel.writeStringArray(this.QMg);
+    paramParcel.writeStringArray(this.XFE);
     AppMethodBeat.o(110646);
   }
 }

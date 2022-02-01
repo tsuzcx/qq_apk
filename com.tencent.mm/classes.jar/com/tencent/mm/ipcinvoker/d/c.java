@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class c
 {
-  private static volatile c jZh;
+  private static volatile c mzf;
   Map<String, List<e>> mMap;
   
   private c()
@@ -21,16 +21,16 @@ public class c
     AppMethodBeat.o(158785);
   }
   
-  public static c aFC()
+  public static c aYB()
   {
     AppMethodBeat.i(158784);
-    if (jZh == null) {}
+    if (mzf == null) {}
     try
     {
-      if (jZh == null) {
-        jZh = new c();
+      if (mzf == null) {
+        mzf = new c();
       }
-      c localc = jZh;
+      c localc = mzf;
       AppMethodBeat.o(158784);
       return localc;
     }
@@ -129,7 +129,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.d.c
  * JD-Core Version:    0.7.0.1
  */

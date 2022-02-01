@@ -11,24 +11,24 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class b
 {
-  private static String ooO;
+  private static String rsw;
   
-  public static String bOR()
+  public static String cpf()
   {
     AppMethodBeat.i(45277);
     Object localObject;
-    if (!Util.isNullOrNil(ooO))
+    if (!Util.isNullOrNil(rsw))
     {
-      localObject = ooO;
+      localObject = rsw;
       AppMethodBeat.o(45277);
       return localObject;
     }
     try
     {
-      localObject = (IPCString)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.jZu, a.class);
+      localObject = (IPCString)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.mzv, a.class);
       if (localObject == null)
       {
-        String str2 = com.tencent.mm.loader.j.b.aSL();
+        String str2 = com.tencent.mm.loader.i.b.bmz();
         localObject = str2;
         if (!str2.endsWith("/")) {
           localObject = str2 + "/";
@@ -46,7 +46,7 @@ public final class b
         str1 = null;
       }
       String str1 = str1.value;
-      ooO = str1;
+      rsw = str1;
       AppMethodBeat.o(45277);
       return str1;
     }

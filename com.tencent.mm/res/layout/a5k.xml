@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:weightSum="1.0"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <TextView android:textSize="14.0dip" android:textColor="@color/a2t" android:gravity="center_horizontal" android:id="@id/gty" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/g44" android:layout_weight="1.0" />
-            </LinearLayout>
-            <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/h28" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="15.0dip">
-                <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-                    <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/h0w" android:background="@color/ac_" android:focusable="false" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/bca" android:scaleType="centerCrop" android:contentDescription="@string/a4u" />
-                    <TextView android:textSize="18.0dip" android:textColor="@color/kj" android:gravity="center_horizontal" android:id="@id/gry" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{¥100}" />
-                </LinearLayout>
-            </LinearLayout>
-            <View android:id="@id/i3t" android:background="@color/a7t" android:layout_width="fill_parent" android:layout_height="1.0px" />
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.flash.action.FaceFlashActionPreviewLayout android:id="@id/ea4" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.flash.action.FaceFlashActionProcessLayout android:id="@id/ea5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ea1" android:paddingLeft="@dimen/df" android:paddingTop="@dimen/df" android:paddingRight="@dimen/cd" android:paddingBottom="@dimen/cd" android:layout_width="@dimen/d5" android:layout_height="@dimen/d5" android:src="@raw/icons_filled_close" app:iconColor="@color/BW_0" />
+</RelativeLayout>

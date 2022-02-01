@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.game.commlib.d;
 
 public abstract interface b
 {
-  public abstract void bWp();
+  public abstract void cwC();
 }
 
 

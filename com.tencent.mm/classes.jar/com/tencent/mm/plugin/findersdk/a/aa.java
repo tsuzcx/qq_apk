@@ -1,19 +1,17 @@
 package com.tencent.mm.plugin.findersdk.a;
 
-import com.tencent.mm.protocal.protobuf.amd;
-import com.tencent.mm.ui.component.a;
-import java.util.List;
-import kotlin.l;
+import com.tencent.mm.ui.component.c;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/findersdk/api/IFinderReporterUIC;", "Lcom/tencent/mm/ui/component/ApiUIC;", "getLastVisibleExtStats", "", "Lcom/tencent/mm/protocal/protobuf/ExtStats;", "finder-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/findersdk/api/IFinderDebugUIC;", "Lcom/tencent/mm/ui/component/ApiUIC;", "isEnableDebugInfo", "", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface aa
-  extends a
+  extends c
 {
-  public abstract List<amd> ekZ();
+  public abstract boolean fnk();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.findersdk.a.aa
  * JD-Core Version:    0.7.0.1
  */

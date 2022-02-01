@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.picker.WheelView android:id="@id/g5a" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
-    <com.tencent.mm.ui.widget.picker.WheelView android:id="@id/g5b" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/FG_0" android:gravity="center" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d4" android:text="@string/fa8" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/FG_1" android:gravity="center" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:text="@string/fa7" />
+    <ImageView android:layout_gravity="center_horizontal" android:id="@id/c_9" android:layout_width="@dimen/cu" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d4" android:src="@drawable/bcc" android:scaleType="centerInside" />
 </LinearLayout>

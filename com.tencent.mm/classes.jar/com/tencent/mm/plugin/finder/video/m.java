@@ -2,44 +2,42 @@ package com.tencent.mm.plugin.finder.video;
 
 import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.cm;
+import com.tencent.mm.model.cn;
 import com.tencent.mm.modelcontrol.VideoTransPara;
-import com.tencent.mm.plugin.finder.loader.aa;
-import com.tencent.mm.plugin.finder.report.v.c;
-import com.tencent.mm.plugin.finder.report.v.e;
+import com.tencent.mm.plugin.finder.report.ah.e;
 import com.tencent.mm.plugin.finder.storage.d;
 import com.tencent.mm.plugin.finder.upload.c;
 import com.tencent.mm.plugin.finder.upload.c.a;
 import com.tencent.mm.plugin.finder.upload.c.a.a;
-import com.tencent.mm.plugin.finder.utils.av;
+import com.tencent.mm.plugin.finder.utils.bm;
 import com.tencent.mm.plugin.gallery.picker.b.a;
 import com.tencent.mm.plugin.gallery.picker.b.b.b;
 import com.tencent.mm.plugin.gallery.picker.b.b.f;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.protocal.protobuf.csg;
-import com.tencent.mm.protocal.protobuf.css;
-import com.tencent.mm.protocal.protobuf.fbq;
+import com.tencent.mm.protocal.protobuf.dji;
+import com.tencent.mm.protocal.protobuf.dju;
+import com.tencent.mm.protocal.protobuf.fyb;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.g.b.aa.a;
-import kotlin.g.b.aa.c;
-import kotlin.g.b.aa.d;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.vfs.y;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.ah.a;
+import kotlin.g.b.ah.d;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/video/FinderVideoCropTailor;", "Lcom/tencent/mm/plugin/gallery/picker/generator/IMediaGenerate;", "", "Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Result;", "config", "Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Config;", "(Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Config;)V", "TAG", "adjustRect", "Landroid/graphics/Rect;", "input", "clipRect", "contentRect", "viewRect", "calcOriginRect", "onInput", "mediaType", "", "matrix", "Landroid/graphics/Matrix;", "remux", "", "it", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "result", "Lcom/tencent/mm/plugin/finder/video/FinderMediaTailorResult;", "thumbWidth", "thumbHeight", "mediaInfo", "Lcom/tencent/mm/plugin/sight/base/MediaInfo;", "resize", "Lkotlin/Pair;", "originWidth", "originHeight", "maxWidth", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/video/FinderVideoCropTailor;", "Lcom/tencent/mm/plugin/gallery/picker/generator/IMediaGenerate;", "", "Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Result;", "config", "Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Config;", "(Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Config;)V", "TAG", "adjustRect", "Landroid/graphics/Rect;", "input", "clipRect", "contentRect", "viewRect", "calcOriginRect", "onInput", "mediaType", "", "matrix", "Landroid/graphics/Matrix;", "remux", "", "it", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "result", "Lcom/tencent/mm/plugin/finder/video/FinderMediaTailorResult;", "thumbWidth", "thumbHeight", "mediaInfo", "Lcom/tencent/mm/plugin/sight/base/MediaInfo;", "resize", "Lkotlin/Pair;", "originWidth", "originHeight", "maxWidth", "plugin-finder-publish_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class m
   implements a<String, b.f>
 {
-  private final b.b ANu;
+  private final b.b GpU;
   final String TAG;
   
   public m(b.b paramb)
   {
     AppMethodBeat.i(168052);
-    this.ANu = paramb;
+    this.GpU = paramb;
     this.TAG = "Finder.FinderVideoCropTailor";
     AppMethodBeat.o(168052);
   }
@@ -57,197 +55,169 @@ public final class m
     return paramRect1;
   }
   
-  private final boolean a(csg paramcsg, e parame, int paramInt1, int paramInt2, com.tencent.mm.plugin.sight.base.b paramb)
+  private final boolean a(dji paramdji, e parame, int paramInt1, int paramInt2, com.tencent.mm.plugin.sight.base.b paramb)
   {
     AppMethodBeat.i(168050);
-    Object localObject1 = d.AjH;
-    final VideoTransPara localVideoTransPara = d.dRJ();
-    final Object localObject4 = new Object();
-    final aa.a locala = new aa.a();
-    locala.aaBx = false;
-    final aa.d locald1 = new aa.d();
-    locald1.aaBA = -1;
+    Object localObject1 = d.FAy;
+    final VideoTransPara localVideoTransPara = d.ePV();
+    final Object localObject5 = new Object();
+    final ah.a locala = new ah.a();
+    ah.d locald1 = new ah.d();
+    locald1.aixb = -1;
     int i;
-    Object localObject3;
+    Object localObject4;
     String str;
-    aa.c localc;
+    kotlin.g.b.ah.c localc;
     int n;
-    aa.d locald2;
-    label196:
-    final aa.d locald3;
-    label230:
+    final ah.d locald2;
+    label180:
+    final ah.d locald3;
+    label210:
     int k;
     int m;
-    label284:
-    label309:
+    label260:
     int j;
     int i1;
     c.a.a locala1;
     final long l1;
-    if (com.tencent.mm.modelcontrol.e.vW(4))
+    if (com.tencent.mm.modelcontrol.e.wb(4))
     {
       i = 2;
-      localObject1 = new aa(paramcsg, com.tencent.mm.plugin.finder.storage.u.AlL, i, null, 8);
-      localObject3 = av.AJz;
-      localObject3 = String.valueOf(cm.bfC());
-      p.k(localObject1, "video");
-      p.k(localObject3, "suffix");
-      str = av.egt() + ((aa)localObject1).aBv() + "_" + (String)localObject3;
-      localc = new aa.c();
-      localc.aaBz = 0.0F;
-      n = SightVideoJNI.getMp4RotateVFS(paramcsg.url);
-      locald2 = new aa.d();
-      localObject1 = paramcsg.zBo;
-      if (localObject1 == null) {
-        break label1055;
+      localObject1 = new com.tencent.mm.plugin.finder.loader.v(paramdji, com.tencent.mm.plugin.finder.storage.v.FLB, i, null, 8);
+      localObject4 = bm.GlZ;
+      localObject4 = String.valueOf(cn.bDu());
+      s.u(localObject1, "video");
+      s.u(localObject4, "suffix");
+      str = bm.fit() + ((com.tencent.mm.plugin.finder.loader.v)localObject1).aUt() + '_' + (String)localObject4;
+      localc = new kotlin.g.b.ah.c();
+      n = SightVideoJNI.getMp4RotateVFS(paramdji.url);
+      locald2 = new ah.d();
+      localObject1 = paramdji.EDC;
+      if (localObject1 != null) {
+        break label969;
       }
-      i = ((css)localObject1).width;
-      locald2.aaBA = i;
-      locald3 = new aa.d();
-      localObject1 = paramcsg.zBo;
-      if (localObject1 == null) {
-        break label1061;
+      i = 0;
+      locald2.aixb = i;
+      locald3 = new ah.d();
+      localObject1 = paramdji.EDC;
+      if (localObject1 != null) {
+        break label979;
       }
-      i = ((css)localObject1).height;
-      locald3.aaBA = i;
+      i = 0;
+      locald3.aixb = i;
       k = paramb.width;
       m = paramb.height;
-      if ((n == 90) || (n == 270))
+      switch (n)
       {
-        localObject1 = paramcsg.zBo;
-        if (localObject1 == null) {
-          break label1067;
+      default: 
+        j = localVideoTransPara.videoBitrate;
+        localObject1 = com.tencent.mm.plugin.finder.report.ah.c.Ftv;
+        com.tencent.mm.plugin.finder.report.ah.c.tP(false);
+        Log.i(this.TAG, "video rotate:" + n + ", width:" + locald2.aixb + ", height:" + locald3.aixb + " url " + paramdji.url + " thumbUrl: " + paramdji.thumbUrl + " size:" + Util.getSizeKB(y.bEl(paramdji.url)));
+        localObject1 = c.Gbx;
+        localObject4 = paramdji.url;
+        localObject1 = localObject4;
+        if (localObject4 == null) {
+          localObject1 = "";
         }
-        i = ((css)localObject1).height;
-        locald2.aaBA = i;
-        localObject1 = paramcsg.zBo;
-        if (localObject1 == null) {
-          break label1073;
-        }
-        i = ((css)localObject1).width;
-        locald3.aaBA = i;
-      }
-      j = localVideoTransPara.videoBitrate;
-      localObject1 = v.c.zYk;
-      v.c.qd(false);
-      Log.i(this.TAG, "video rotate:" + n + ", width:" + locald2.aaBA + ", height:" + locald3.aaBA + " url " + paramcsg.url + " thumbUrl: " + paramcsg.thumbUrl + " size:" + Util.getSizeKB(com.tencent.mm.vfs.u.bBQ(paramcsg.url)));
-      localObject1 = c.Azt;
-      localObject3 = paramcsg.url;
-      localObject1 = localObject3;
-      if (localObject3 == null) {
-        localObject1 = "";
-      }
-      i = locald2.aaBA;
-      n = locald3.aaBA;
-      localObject3 = paramcsg.zBo;
-      if (localObject3 == null) {
-        p.iCn();
-      }
-      i1 = ((css)localObject3).endTime;
-      localObject3 = paramcsg.zBo;
-      if (localObject3 == null) {
-        p.iCn();
-      }
-      float f = (i1 - ((css)localObject3).fod) / 1000.0F;
-      localObject3 = paramcsg.zBo;
-      if (localObject3 == null) {
-        p.iCn();
-      }
-      locala1 = c.a.a((String)localObject1, i, n, f, ((css)localObject3).fod / 1000.0F, localVideoTransPara, false);
-      i = j;
-      if (locala1.errCode == 0)
-      {
+        i = locald2.aixb;
+        n = locald3.aixb;
+        localObject4 = paramdji.EDC;
+        s.checkNotNull(localObject4);
+        i1 = ((dju)localObject4).endTime;
+        localObject4 = paramdji.EDC;
+        s.checkNotNull(localObject4);
+        float f = (i1 - ((dju)localObject4).startTime) / 1000.0F;
+        localObject4 = paramdji.EDC;
+        s.checkNotNull(localObject4);
+        locala1 = c.a.a((String)localObject1, i, n, f, ((dju)localObject4).startTime / 1000.0F, localVideoTransPara, false);
         i = j;
-        if (locala1.width > 0)
+        if (locala1.errCode == 0)
         {
           i = j;
-          if (locala1.height > 0)
+          if (locala1.width > 0)
           {
             i = j;
-            if (locala1.bitrate > 0)
+            if (locala1.height > 0)
             {
-              locald2.aaBA = locala1.width;
-              locald3.aaBA = locala1.height;
-              i = locala1.bitrate;
-              Log.i(this.TAG, "video abaResult, width:" + locald2.aaBA + ", height:" + locald3.aaBA + ", " + i);
+              i = j;
+              if (locala1.bitrate > 0)
+              {
+                locald2.aixb = locala1.width;
+                locald3.aixb = locala1.height;
+                i = locala1.bitrate;
+                Log.i(this.TAG, "video abaResult, width:" + locald2.aixb + ", height:" + locald3.aixb + ", " + i);
+              }
             }
           }
         }
+        l1 = Util.currentTicks();
       }
-      l1 = Util.currentTicks();
     }
     for (;;)
     {
       try
       {
-        localObject3 = paramcsg.url;
-        localObject1 = localObject3;
-        if (localObject3 == null) {
+        localObject4 = paramdji.url;
+        localObject1 = localObject4;
+        if (localObject4 == null) {
           localObject1 = "";
         }
-        localObject3 = c.Azt;
-        localObject3 = paramcsg.zBo;
-        if (localObject3 != null)
+        localObject4 = c.Gbx;
+        localObject4 = paramdji.EDC;
+        if (localObject4 == null)
         {
-          localObject3 = ((css)localObject3).TAv;
-          if (localObject3 == null) {
-            p.iCn();
-          }
-          p.j(localObject3, "it.cropInfo?.rect!!");
-          localObject3 = c.a.a((fbq)localObject3);
-          j = locald2.aaBA;
-          n = locald3.aaBA;
+          localObject4 = null;
+          s.checkNotNull(localObject4);
+          s.s(localObject4, "it.cropInfo?.rect!!");
+          localObject4 = c.a.a((fyb)localObject4);
+          j = locald2.aixb;
+          n = locald3.aixb;
           i1 = localVideoTransPara.audioBitrate;
           int i2 = localVideoTransPara.audioSampleRate;
           int i3 = localVideoTransPara.audioChannelCount;
           int i4 = localVideoTransPara.fps;
-          css localcss = paramcsg.zBo;
-          if (localcss == null) {
-            p.iCn();
-          }
-          long l2 = localcss.fod;
-          localcss = paramcsg.zBo;
-          if (localcss == null) {
-            p.iCn();
-          }
-          localObject1 = new o(null, (String)localObject1, 1, str, (Rect)localObject3, j, n, i, i1, i2, i3, i4, l2, localcss.endTime, localVideoTransPara.kXt, (kotlin.g.a.b)new a(localc), (kotlin.g.a.b)new b(this, locald1, l1, locald2, locald3, localVideoTransPara, localObject4, locala), k, m);
-          ((o)localObject1).aUW();
+          dju localdju = paramdji.EDC;
+          s.checkNotNull(localdju);
+          long l2 = localdju.startTime;
+          localdju = paramdji.EDC;
+          s.checkNotNull(localdju);
+          localObject1 = new o(null, (String)localObject1, 1, str, (Rect)localObject4, j, n, i, i1, i2, i3, i4, l2, localdju.endTime, localVideoTransPara.nCd, (kotlin.g.a.b)new m.a(localc), (kotlin.g.a.b)new b(locald1, l1, this, locald2, locald3, localVideoTransPara, localObject5, locala), k, m);
+          ((o)localObject1).bpE();
         }
       }
-      catch (Throwable localThrowable1)
+      finally
       {
-        label1055:
-        label1061:
-        label1067:
-        label1073:
+        label969:
+        label979:
         parame.ret = -10;
-        Log.printErrStackTrace(this.TAG, localThrowable1, "create remuxer failed", new Object[0]);
-        localObject2 = v.c.zYk;
-        v.c.qe(false);
-        localObject2 = v.e.zYK;
-        v.e.Mw(Util.ticksToNow(l1));
-        localObject2 = v.e.zYK;
-        v.e.a(paramb, null, (int)com.tencent.mm.vfs.u.bBQ(paramcsg.url), 0, Util.ticksToNow(l1), parame.ret);
+        Log.printErrStackTrace(this.TAG, localThrowable, "create remuxer failed", new Object[0]);
+        localObject2 = com.tencent.mm.plugin.finder.report.ah.c.Ftv;
+        com.tencent.mm.plugin.finder.report.ah.c.ty(false);
+        localObject2 = ah.e.Ftx;
+        ah.e.pP(Util.ticksToNow(l1));
+        localObject2 = ah.e.Ftx;
+        ah.e.a(paramb, null, (int)y.bEl(paramdji.url), 0, Util.ticksToNow(l1), parame.ret);
         AppMethodBeat.o(168050);
         return false;
       }
       try
       {
-        if (!locala.aaBx)
+        if (!locala.aiwY)
         {
           Log.i(this.TAG, "wait");
-          localObject4.wait();
-          Log.i(this.TAG, "notify, " + locald1.aaBA);
+          localObject5.wait();
+          Log.i(this.TAG, s.X("notify, ", Integer.valueOf(locald1.aixb)));
         }
-        localObject1 = x.aazN;
-        if (locald1.aaBA >= 0) {
-          break label1178;
+        localObject1 = ah.aiuX;
+        if (locald1.aixb >= 0) {
+          break label1157;
         }
-        parame.ret = locald1.aaBA;
-        localObject1 = v.e.zYK;
-        v.e.Mw(Util.ticksToNow(l1));
-        localObject1 = v.e.zYK;
-        v.e.a(paramb, null, (int)com.tencent.mm.vfs.u.bBQ(paramcsg.url), 0, Util.ticksToNow(l1), parame.ret);
+        parame.ret = locald1.aixb;
+        localObject1 = ah.e.Ftx;
+        ah.e.pP(Util.ticksToNow(l1));
+        localObject1 = ah.e.Ftx;
+        ah.e.a(paramb, null, (int)y.bEl(paramdji.url), 0, Util.ticksToNow(l1), parame.ret);
         AppMethodBeat.o(168050);
         return false;
       }
@@ -257,57 +227,59 @@ public final class m
       }
       i = 1;
       break;
-      i = 0;
-      break label196;
-      i = 0;
-      break label230;
-      i = 0;
-      break label284;
-      i = 0;
-      break label309;
-      localObject3 = null;
+      i = ((dju)localObject1).width;
+      break label180;
+      i = ((dju)localObject1).height;
+      break label210;
+      localObject1 = paramdji.EDC;
+      if (localObject1 == null)
+      {
+        i = 0;
+        locald2.aixb = i;
+        localObject1 = paramdji.EDC;
+        if (localObject1 != null) {
+          continue;
+        }
+        i = 0;
+        locald3.aixb = i;
+        break label260;
+      }
+      i = ((dju)localObject1).height;
+      continue;
+      i = ((dju)localObject1).width;
+      continue;
+      localObject4 = ((dju)localObject4).aaPJ;
     }
     Object localObject2;
-    label1178:
-    if ((locala1.errCode == 0) && (locala1.Azu != null) && (locala1.width > 0) && (locala1.height > 0) && (locala1.bitrate > 0)) {}
+    label1157:
+    if ((locala1.errCode == 0) && (locala1.Gbz != null) && (locala1.width > 0) && (locala1.height > 0) && (locala1.bitrate > 0)) {}
     try
     {
-      SightVideoJNI.addReportMetadata(str, locala1.Azu, localVideoTransPara.lJz, 0);
-      label1234:
-      parame.aIv(str);
-      localObject2 = com.tencent.mm.plugin.finder.upload.f.AzZ;
-      parame.ON(com.tencent.mm.plugin.finder.upload.f.a(str, paramInt1, paramInt2, null));
-      localObject2 = v.e.zYK;
-      v.e.Mw(Util.ticksToNow(l1));
-      localObject2 = com.tencent.mm.plugin.sight.base.f.aYg(str);
-      localObject3 = v.e.zYK;
-      v.e.a(paramb, (com.tencent.mm.plugin.sight.base.b)localObject2, (int)com.tencent.mm.vfs.u.bBQ(paramcsg.url), (int)com.tencent.mm.vfs.u.bBQ(str), Util.ticksToNow(l1), parame.ret);
+      SightVideoJNI.addReportMetadata(str, locala1.Gbz, localVideoTransPara.oCb, 0);
+      label1213:
+      parame.aET(str);
+      localObject2 = com.tencent.mm.plugin.finder.upload.f.GbE;
+      parame.Hd(com.tencent.mm.plugin.finder.upload.f.a(str, paramInt1, paramInt2, null));
+      localObject2 = ah.e.Ftx;
+      ah.e.pP(Util.ticksToNow(l1));
+      localObject2 = com.tencent.mm.plugin.sight.base.f.aVX(str);
+      localObject4 = ah.e.Ftx;
+      ah.e.a(paramb, (com.tencent.mm.plugin.sight.base.b)localObject2, (int)y.bEl(paramdji.url), (int)y.bEl(str), Util.ticksToNow(l1), parame.ret);
       AppMethodBeat.o(168050);
       return true;
     }
-    catch (Throwable localThrowable2)
+    finally
     {
-      break label1234;
+      break label1213;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "invoke"})
-  static final class a
-    extends q
-    implements kotlin.g.a.b<Float, x>
-  {
-    a(aa.c paramc)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
-    implements kotlin.g.a.b<String, x>
+    extends u
+    implements kotlin.g.a.b<String, ah>
   {
-    b(m paramm, aa.d paramd1, long paramLong, aa.d paramd2, aa.d paramd3, VideoTransPara paramVideoTransPara, Object paramObject, aa.a parama)
+    b(ah.d paramd1, long paramLong, m paramm, ah.d paramd2, ah.d paramd3, VideoTransPara paramVideoTransPara, Object paramObject, ah.a parama)
     {
       super();
     }
@@ -315,7 +287,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.m
  * JD-Core Version:    0.7.0.1
  */

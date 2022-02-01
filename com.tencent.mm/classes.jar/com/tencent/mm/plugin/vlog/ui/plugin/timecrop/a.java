@@ -1,205 +1,241 @@
 package com.tencent.mm.plugin.vlog.ui.plugin.timecrop;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recordvideo.ui.editor.EditorPanelHolder;
 import com.tencent.mm.plugin.recordvideo.ui.editor.item.b.c;
+import com.tencent.mm.plugin.recordvideo.ui.editor.item.b.d;
 import com.tencent.mm.plugin.vlog.model.ac;
+import com.tencent.mm.plugin.vlog.ui.plugin.d.c;
 import com.tencent.mm.plugin.vlog.ui.plugin.d.e;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.videocomposition.j;
 import com.tencent.tav.coremedia.CMTimeRange;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/timecrop/VLogTimeEditPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/AutoRegisterPlugin;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$PreviewSeekCallback;", "holder", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "cancelImg", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "getCancelImg", "()Landroid/widget/ImageView;", "cancelImg$delegate", "Lkotlin/Lazy;", "confirmed", "", "context", "Landroid/content/Context;", "getContext", "()Landroid/content/Context;", "context$delegate", "cropEnd", "", "cropStart", "doneImg", "getDoneImg", "doneImg$delegate", "editTimeData", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "getHolder", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder;", "inited", "onCropCallback", "com/tencent/mm/plugin/vlog/ui/plugin/timecrop/VLogTimeEditPlugin$onCropCallback$1", "Lcom/tencent/mm/plugin/vlog/ui/plugin/timecrop/VLogTimeEditPlugin$onCropCallback$1;", "originEnd", "originStart", "panelRoot", "Landroid/view/ViewGroup;", "getPanelRoot", "()Landroid/view/ViewGroup;", "panelRoot$delegate", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "timeRangeEnd", "timeRangeStart", "trackCropView", "Lcom/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropViewGroup;", "getTrackCropView", "()Lcom/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropViewGroup;", "trackCropView$delegate", "videoSeekable", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$Seekable;", "checkInit", "", "onBackPress", "onFinish", "onProgress", "timeMs", "onStart", "seekable", "setEditData", "data", "setEnableLengthEdit", "enable", "setTrack", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "setVisibility", "visibility", "", "Companion", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/plugin/timecrop/VLogTimeEditPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/AutoRegisterPlugin;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$PreviewSeekCallback;", "holder", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "cancelImg", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "getCancelImg", "()Landroid/widget/ImageView;", "cancelImg$delegate", "Lkotlin/Lazy;", "confirmed", "", "context", "Landroid/content/Context;", "getContext", "()Landroid/content/Context;", "context$delegate", "cropEnd", "", "cropStart", "doneImg", "getDoneImg", "doneImg$delegate", "editTimeData", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "getHolder", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder;", "inited", "onCropCallback", "com/tencent/mm/plugin/vlog/ui/plugin/timecrop/VLogTimeEditPlugin$onCropCallback$1", "Lcom/tencent/mm/plugin/vlog/ui/plugin/timecrop/VLogTimeEditPlugin$onCropCallback$1;", "originEnd", "originStart", "panelRoot", "Landroid/view/ViewGroup;", "getPanelRoot", "()Landroid/view/ViewGroup;", "panelRoot$delegate", "timeRangeEnd", "timeRangeStart", "trackCropView", "Lcom/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropViewGroup;", "getTrackCropView", "()Lcom/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropViewGroup;", "trackCropView$delegate", "videoSeekable", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$Seekable;", "checkInit", "", "onBackPress", "onFinish", "onProgress", "timeMs", "onStart", "seekable", "setEditData", "data", "setEnableLengthEdit", "enable", "setTrack", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "setVisibility", "visibility", "", "Companion", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   extends com.tencent.mm.plugin.recordvideo.plugin.a
-  implements com.tencent.mm.plugin.vlog.ui.plugin.d.c
+  implements d.c
 {
-  public static final a NAk;
-  final com.tencent.mm.plugin.recordvideo.plugin.parent.d APl;
-  final EditorPanelHolder ATq;
-  private final f NAe;
-  private final f NAf;
-  private long NAg;
-  private long NAh;
-  public com.tencent.mm.plugin.recordvideo.ui.editor.item.a NAi;
-  private final h NAj;
-  private d.e NuG;
-  private final f Nua;
-  private final f Nub;
-  private boolean Nuj;
-  private long Nvc;
-  private long Nvd;
-  private long Nve;
-  private long Nvf;
-  private boolean jvb;
-  private final f xwp;
+  public static final a.a UmU;
+  private final kotlin.j ATU;
+  final EditorPanelHolder Gvm;
+  private boolean UhB;
+  private final kotlin.j Uhs;
+  private final kotlin.j Uht;
+  private d.e Uia;
+  private long Uis;
+  private long Uit;
+  private long Uiu;
+  private long Uiv;
+  private final kotlin.j UmV;
+  private final kotlin.j UmW;
+  private long UmX;
+  private long UmY;
+  public com.tencent.mm.plugin.recordvideo.ui.editor.item.a UmZ;
+  private final f Una;
+  private boolean lYs;
   
   static
   {
-    AppMethodBeat.i(246249);
-    NAk = new a((byte)0);
-    AppMethodBeat.o(246249);
+    AppMethodBeat.i(283054);
+    UmU = new a.a((byte)0);
+    AppMethodBeat.o(283054);
   }
   
-  public a(EditorPanelHolder paramEditorPanelHolder, com.tencent.mm.plugin.recordvideo.plugin.parent.d paramd)
+  public a(EditorPanelHolder paramEditorPanelHolder, final com.tencent.mm.plugin.recordvideo.plugin.parent.a parama)
   {
-    super(paramd, (byte)0);
-    AppMethodBeat.i(246248);
-    this.ATq = paramEditorPanelHolder;
-    this.APl = paramd;
-    this.xwp = g.ar((kotlin.g.a.a)new f(this));
-    this.Nua = g.ar((kotlin.g.a.a)new i(this));
-    this.Nub = g.ar((kotlin.g.a.a)new j(this));
-    this.NAe = g.ar((kotlin.g.a.a)new b(this));
-    this.NAf = g.ar((kotlin.g.a.a)new g(this));
-    this.NAj = new h(this);
-    AppMethodBeat.o(246248);
+    super(parama);
+    AppMethodBeat.i(282973);
+    this.Gvm = paramEditorPanelHolder;
+    this.ATU = k.cm((kotlin.g.a.a)new a.d(this));
+    this.Uhs = k.cm((kotlin.g.a.a)new a.g(this));
+    this.Uht = k.cm((kotlin.g.a.a)new h(this));
+    this.UmV = k.cm((kotlin.g.a.a)new a.b(this));
+    this.UmW = k.cm((kotlin.g.a.a)new a.e(this));
+    this.Una = new f(this, parama);
+    AppMethodBeat.o(282973);
   }
   
-  private final void bcM()
+  private static final void a(a parama, View paramView)
   {
-    AppMethodBeat.i(246242);
-    if (this.jvb)
+    AppMethodBeat.i(283004);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(parama);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/timecrop/VLogTimeEditPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(parama, "this$0");
+    parama.Gvm.setShow(false);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/vlog/ui/plugin/timecrop/VLogTimeEditPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(283004);
+  }
+  
+  private static final void b(a parama, View paramView)
+  {
+    AppMethodBeat.i(283014);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(parama);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/timecrop/VLogTimeEditPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(parama, "this$0");
+    if ((parama.UmX != parama.Uiu) || (parama.UmY != parama.Uiv))
     {
-      AppMethodBeat.o(246242);
+      paramView = parama.UmZ;
+      if (paramView != null)
+      {
+        paramView = paramView.NXR;
+        if (paramView != null)
+        {
+          paramView.NZL.a(null);
+          paramView.NZL.tF(parama.Uiu);
+          paramView.NZM.a(paramView.NZL);
+          paramView.NZM.tF(parama.Uiv - parama.Uiu);
+        }
+      }
+    }
+    for (;;)
+    {
+      paramView = parama.UmZ;
+      if (paramView != null) {
+        paramView.NXQ = null;
+      }
+      parama.UmZ = null;
+      parama.Gvm.setShow(false);
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/vlog/ui/plugin/timecrop/VLogTimeEditPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(283014);
+      return;
+      paramView = parama.UmZ;
+      if (paramView != null)
+      {
+        paramView = paramView.NXR;
+        if (paramView != null) {
+          paramView.bb(parama.Uiu, parama.Uiv);
+        }
+      }
+    }
+  }
+  
+  private final void checkInit()
+  {
+    AppMethodBeat.i(282994);
+    if (this.lYs)
+    {
+      AppMethodBeat.o(282994);
       return;
     }
-    this.jvb = true;
-    this.ATq.setCloseTouchOutside(true);
-    gvm().setCallback((TimeCropViewGroup.a)this.NAj);
-    gvm().setRealTimeCallback((TimeCropViewGroup.a)this.NAj);
-    this.ATq.setOnVisibleChangeCallback((kotlin.g.a.b)new c(this));
-    ((ImageView)this.NAe.getValue()).setOnClickListener((View.OnClickListener)new d(this));
-    ((ImageView)this.NAf.getValue()).setOnClickListener((View.OnClickListener)new e(this));
-    AppMethodBeat.o(246242);
+    this.lYs = true;
+    this.Gvm.setCloseTouchOutside(true);
+    hTc().setCallback((TimeCropViewGroup.a)this.Una);
+    hTc().setRealTimeCallback((TimeCropViewGroup.a)this.Una);
+    this.Gvm.setOnVisibleChangeCallback((kotlin.g.a.b)new c(this));
+    ((ImageView)this.UmV.getValue()).setOnClickListener(new a..ExternalSyntheticLambda1(this));
+    ((ImageView)this.UmW.getValue()).setOnClickListener(new a..ExternalSyntheticLambda0(this));
+    AppMethodBeat.o(282994);
   }
   
-  private final TimeCropViewGroup gvm()
+  private final TimeCropViewGroup hTc()
   {
-    AppMethodBeat.i(246240);
-    TimeCropViewGroup localTimeCropViewGroup = (TimeCropViewGroup)this.Nub.getValue();
-    AppMethodBeat.o(246240);
+    AppMethodBeat.i(282986);
+    TimeCropViewGroup localTimeCropViewGroup = (TimeCropViewGroup)this.Uht.getValue();
+    AppMethodBeat.o(282986);
     return localTimeCropViewGroup;
-  }
-  
-  public final void LX(long paramLong)
-  {
-    AppMethodBeat.i(246247);
-    gvm().setProgress(paramLong);
-    AppMethodBeat.o(246247);
   }
   
   public final void a(d.e parame)
   {
-    this.NuG = parame;
+    this.Uia = parame;
   }
   
   public final boolean onBackPress()
   {
-    AppMethodBeat.i(246245);
-    if (this.ATq.bVd())
+    AppMethodBeat.i(283077);
+    if (this.Gvm.cvt())
     {
-      this.Nuj = false;
-      this.ATq.setShow(false);
-      AppMethodBeat.o(246245);
+      this.UhB = false;
+      this.Gvm.setShow(false);
+      AppMethodBeat.o(283077);
       return true;
     }
     boolean bool = super.onBackPress();
-    AppMethodBeat.o(246245);
+    AppMethodBeat.o(283077);
     return bool;
+  }
+  
+  public final void qU(long paramLong)
+  {
+    AppMethodBeat.i(283103);
+    hTc().setProgress(paramLong);
+    AppMethodBeat.o(283103);
   }
   
   public final void setEnableLengthEdit(boolean paramBoolean)
   {
-    AppMethodBeat.i(246243);
-    gvm().setEnableLengthEdit(paramBoolean);
-    AppMethodBeat.o(246243);
+    AppMethodBeat.i(283068);
+    hTc().setEnableLengthEdit(paramBoolean);
+    AppMethodBeat.o(283068);
   }
   
   public final void setTrack(ac paramac)
   {
-    AppMethodBeat.i(246246);
-    p.k(paramac, "composition");
-    Object localObject1 = this.NAi;
+    AppMethodBeat.i(283092);
+    s.u(paramac, "composition");
+    Object localObject1 = this.UmZ;
     if (localObject1 != null)
     {
-      this.Nuj = false;
-      bcM();
-      this.Nvc = (paramac.NmT.igH().getStartUs() / 1000L);
-      this.Nvd = (paramac.NmT.igH().getEndUs() / 1000L);
-      if (((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject1).Ibr.Idp.getTime() > this.Nvd)
+      this.UhB = false;
+      checkInit();
+      this.Uis = (paramac.Uaw.jLV().getStartUs() / 1000L);
+      this.Uit = (paramac.Uaw.jLV().getEndUs() / 1000L);
+      if (((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject1).NXR.NZM.getTime() > this.Uit)
       {
-        localObject2 = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject1).Ibr.Idp;
-        ((c)localObject2).PF(((c)localObject2).offset + (this.Nvd - ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject1).Ibr.Idp.getTime()));
+        localObject2 = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject1).NXR.NZM;
+        ((c)localObject2).tF(((c)localObject2).offset + (this.Uit - ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject1).NXR.NZM.getTime()));
       }
-      this.Nve = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject1).Ibr.Ido.getTime();
-      this.Nvf = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject1).Ibr.Idp.getTime();
-      this.NAg = this.Nve;
-      this.NAh = this.Nvf;
-      Object localObject2 = new com.tencent.mm.plugin.recordvideo.ui.editor.item.b.d(0L, false, 3);
-      ((com.tencent.mm.plugin.recordvideo.ui.editor.item.b.d)localObject2).ar(this.NAg, this.NAh);
-      ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject1).Ibq = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.b.d)localObject2);
-      Log.i("MicroMsg.VLogTimeEditPlugin", "time range:" + ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject1).Ibr);
-      localObject1 = gvm();
-      localObject2 = this.NAi;
-      if (localObject2 == null) {
-        p.iCn();
-      }
-      long l = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject2).Ibr.getStart();
-      localObject2 = this.NAi;
-      if (localObject2 == null) {
-        p.iCn();
-      }
-      ((TimeCropViewGroup)localObject1).a(paramac, l, ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject2).Ibr.getEnd());
-      this.ATq.setShow(true);
-      AppMethodBeat.o(246246);
-      return;
+      this.Uiu = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject1).NXR.NZL.getTime();
+      this.Uiv = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject1).NXR.NZM.getTime();
+      this.UmX = this.Uiu;
+      this.UmY = this.Uiv;
+      Object localObject2 = new d(0L, false, 3);
+      ((d)localObject2).bb(this.UmX, this.UmY);
+      ah localah = ah.aiuX;
+      ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject1).NXQ = ((d)localObject2);
+      Log.i("MicroMsg.VLogTimeEditPlugin", s.X("time range:", ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject1).NXR));
+      localObject1 = hTc();
+      localObject2 = this.UmZ;
+      s.checkNotNull(localObject2);
+      long l = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject2).NXR.NZL.getTime();
+      localObject2 = this.UmZ;
+      s.checkNotNull(localObject2);
+      ((TimeCropViewGroup)localObject1).a(paramac, l, ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject2).NXR.NZM.getTime());
+      this.Gvm.setShow(true);
     }
-    AppMethodBeat.o(246246);
+    AppMethodBeat.o(283092);
   }
   
   public final void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(246244);
+    AppMethodBeat.i(283073);
     super.setVisibility(paramInt);
     if (paramInt == 8)
     {
-      this.Nuj = false;
-      this.ATq.setShow(false);
+      this.UhB = false;
+      this.Gvm.setShow(false);
     }
-    AppMethodBeat.o(246244);
+    AppMethodBeat.o(283073);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/timecrop/VLogTimeEditPlugin$Companion;", "", "()V", "TAG", "", "plugin-vlog_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class b
-    extends q
-    implements kotlin.g.a.a<ImageView>
-  {
-    b(a parama)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends q
-    implements kotlin.g.a.b<Boolean, x>
+    extends u
+    implements kotlin.g.a.b<Boolean, ah>
   {
     c(a parama)
     {
@@ -207,177 +243,86 @@ public final class a
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class d
-    implements View.OnClickListener
-  {
-    d(a parama) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(233487);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/timecrop/VLogTimeEditPlugin$checkInit$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      this.NAl.ATq.setShow(false);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/timecrop/VLogTimeEditPlugin$checkInit$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(233487);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class e
-    implements View.OnClickListener
-  {
-    e(a parama) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(229484);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/timecrop/VLogTimeEditPlugin$checkInit$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      if ((a.c(this.NAl) != a.e(this.NAl)) || (a.d(this.NAl) != a.f(this.NAl)))
-      {
-        paramView = a.a(this.NAl);
-        if (paramView != null)
-        {
-          paramView = paramView.Ibr;
-          if (paramView != null)
-          {
-            paramView.Ido.a(null);
-            paramView.Ido.PF(a.e(this.NAl));
-            paramView.Idp.a(paramView.Ido);
-            paramView.Idp.PF(a.f(this.NAl) - a.e(this.NAl));
-          }
-        }
-      }
-      for (;;)
-      {
-        paramView = a.a(this.NAl);
-        if (paramView != null) {
-          paramView.Ibq = null;
-        }
-        a.b(this.NAl);
-        this.NAl.ATq.setShow(false);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/timecrop/VLogTimeEditPlugin$checkInit$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(229484);
-        return;
-        paramView = a.a(this.NAl);
-        if (paramView != null)
-        {
-          paramView = paramView.Ibr;
-          if (paramView != null) {
-            paramView.ar(a.e(this.NAl), a.f(this.NAl));
-          }
-        }
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class f
-    extends q
-    implements kotlin.g.a.a<Context>
-  {
-    f(a parama)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class g
-    extends q
-    implements kotlin.g.a.a<ImageView>
-  {
-    g(a parama)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/vlog/ui/plugin/timecrop/VLogTimeEditPlugin$onCropCallback$1", "Lcom/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropViewGroup$OnCropCallback;", "onCrop", "", "start", "", "end", "onUp", "", "plugin-vlog_release"})
-  public static final class h
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/vlog/ui/plugin/timecrop/VLogTimeEditPlugin$onCropCallback$1", "Lcom/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropViewGroup$OnCropCallback;", "onCrop", "", "start", "", "end", "onUp", "", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class f
     implements TimeCropViewGroup.a
   {
+    f(a parama, com.tencent.mm.plugin.recordvideo.plugin.parent.a parama1) {}
+    
     public final void d(long paramLong1, long paramLong2, boolean paramBoolean)
     {
-      com.tencent.mm.plugin.recordvideo.plugin.parent.d.c localc = null;
-      AppMethodBeat.i(230384);
+      AppMethodBeat.i(282956);
       Object localObject2 = new StringBuilder("onCropCallback: [").append(paramLong1).append(", ").append(paramLong2).append("], onUp:").append(paramBoolean).append(", showTime start:");
-      Object localObject1 = a.a(this.NAl);
-      if (localObject1 != null)
+      Object localObject1 = a.a(this.Unb);
+      if (localObject1 == null)
       {
-        localObject1 = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject1).Ibr;
-        if (localObject1 != null)
-        {
-          localObject1 = Long.valueOf(((com.tencent.mm.plugin.recordvideo.ui.editor.item.b.d)localObject1).getStart());
-          localObject2 = ((StringBuilder)localObject2).append(localObject1).append(" end:");
-          Object localObject3 = a.a(this.NAl);
-          localObject1 = localc;
-          if (localObject3 != null)
-          {
-            localObject3 = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject3).Ibr;
-            localObject1 = localc;
-            if (localObject3 != null) {
-              localObject1 = Long.valueOf(((com.tencent.mm.plugin.recordvideo.ui.editor.item.b.d)localObject3).getEnd());
-            }
-          }
-          Log.i("MicroMsg.VLogTimeEditPlugin", localObject1);
-          if (a.e(this.NAl) == paramLong1) {
-            break label328;
-          }
-          a.a(this.NAl, paramLong1);
-          a.b(this.NAl, paramLong2);
-        }
-      }
-      for (paramLong1 = a.e(this.NAl);; paramLong1 = a.f(this.NAl))
-      {
-        localObject1 = a.a(this.NAl);
-        if (localObject1 != null)
-        {
-          localObject1 = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject1).Ibq;
-          if (localObject1 != null) {
-            ((com.tencent.mm.plugin.recordvideo.ui.editor.item.b.d)localObject1).ar(a.e(this.NAl), a.f(this.NAl));
-          }
-        }
-        localObject1 = this.NAl.APl;
-        localc = com.tencent.mm.plugin.recordvideo.plugin.parent.d.c.HSZ;
-        localObject2 = new Bundle();
-        ((Bundle)localObject2).putLong("EDIT_CROP_VLOG_LENGTH_START_TIME_LONG", a.e(this.NAl));
-        ((Bundle)localObject2).putLong("EDIT_CROP_VLOG_LENGTH_END_TIME_LONG", a.f(this.NAl));
-        ((Bundle)localObject2).putLong("EDIT_CROP_VLOG_SEEKTIME_LONG", paramLong1);
-        ((Bundle)localObject2).putBoolean("EDIT_CROP_VLOG_ON_UP_BOOLEAN", paramBoolean);
-        ((com.tencent.mm.plugin.recordvideo.plugin.parent.d)localObject1).a(localc, (Bundle)localObject2);
-        AppMethodBeat.o(230384);
-        return;
         localObject1 = null;
+        localObject2 = ((StringBuilder)localObject2).append(localObject1).append(" end:");
+        localObject1 = a.a(this.Unb);
+        if (localObject1 != null) {
+          break label308;
+        }
+        localObject1 = null;
+        label92:
+        Log.i("MicroMsg.VLogTimeEditPlugin", localObject1);
+        if (a.d(this.Unb) == paramLong1) {
+          break label339;
+        }
+        a.a(this.Unb, paramLong1);
+        a.b(this.Unb, paramLong2);
+      }
+      for (paramLong1 = a.d(this.Unb);; paramLong1 = a.g(this.Unb))
+      {
+        localObject1 = a.a(this.Unb);
+        if (localObject1 != null)
+        {
+          localObject1 = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject1).NXQ;
+          if (localObject1 != null) {
+            ((d)localObject1).bb(a.d(this.Unb), a.g(this.Unb));
+          }
+        }
+        localObject1 = parama;
+        localObject2 = com.tencent.mm.plugin.recordvideo.plugin.parent.a.c.NPF;
+        Bundle localBundle = new Bundle();
+        Object localObject3 = this.Unb;
+        localBundle.putLong("EDIT_CROP_VLOG_LENGTH_START_TIME_LONG", a.d((a)localObject3));
+        localBundle.putLong("EDIT_CROP_VLOG_LENGTH_END_TIME_LONG", a.g((a)localObject3));
+        localBundle.putLong("EDIT_CROP_VLOG_SEEKTIME_LONG", paramLong1);
+        localBundle.putBoolean("EDIT_CROP_VLOG_ON_UP_BOOLEAN", paramBoolean);
+        localObject3 = ah.aiuX;
+        ((com.tencent.mm.plugin.recordvideo.plugin.parent.a)localObject1).a((com.tencent.mm.plugin.recordvideo.plugin.parent.a.c)localObject2, localBundle);
+        AppMethodBeat.o(282956);
+        return;
+        localObject1 = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject1).NXR;
+        if (localObject1 == null)
+        {
+          localObject1 = null;
+          break;
+        }
+        localObject1 = Long.valueOf(((d)localObject1).getStart());
         break;
-        label328:
-        a.a(this.NAl, paramLong1);
-        a.b(this.NAl, paramLong2);
+        label308:
+        localObject1 = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject1).NXR;
+        if (localObject1 == null)
+        {
+          localObject1 = null;
+          break label92;
+        }
+        localObject1 = Long.valueOf(((d)localObject1).getEnd());
+        break label92;
+        label339:
+        a.a(this.Unb, paramLong1);
+        a.b(this.Unb, paramLong2);
       }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/ViewGroup;", "invoke"})
-  static final class i
-    extends q
-    implements kotlin.g.a.a<ViewGroup>
-  {
-    i(a parama)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropViewGroup;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class j
-    extends q
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropViewGroup;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class h
+    extends u
     implements kotlin.g.a.a<TimeCropViewGroup>
   {
-    j(a parama)
+    h(a parama)
     {
       super();
     }
@@ -385,7 +330,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.plugin.timecrop.a
  * JD-Core Version:    0.7.0.1
  */

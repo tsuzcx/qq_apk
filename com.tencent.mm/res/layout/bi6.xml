@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/h4p" android:background="@drawable/b1g" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/h5e" layout="@layout/bip" />
+    <include android:id="@id/h5g" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/biq" />
+    <include android:id="@id/h4q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="@dimen/bv" android:layout_marginEnd="@dimen/bv" android:layout_alignParentEnd="true" layout="@layout/bi5" />
+</RelativeLayout>

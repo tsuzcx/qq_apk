@@ -2,65 +2,64 @@ package com.tencent.mm.plugin.wallet.wecoin.model;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.protocal.l.e;
-import com.tencent.mm.protocal.protobuf.fah;
-import com.tencent.mm.protocal.protobuf.fai;
-import com.tencent.mm.protocal.protobuf.jh;
-import com.tencent.mm.protocal.protobuf.wn;
+import com.tencent.mm.protocal.protobuf.fwl;
+import com.tencent.mm.protocal.protobuf.fwm;
+import com.tencent.mm.protocal.protobuf.kd;
+import com.tencent.mm.protocal.protobuf.yf;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.nio.charset.StandardCharsets;
 
 public final class c
-  extends q
+  extends p
   implements m
 {
-  private i jQg;
-  private d vgf;
+  private h mAY;
+  private com.tencent.mm.am.c ysd;
   
   public c()
   {
-    AppMethodBeat.i(228438);
-    this.vgf = null;
-    this.jQg = null;
-    d.a locala = new d.a();
-    locala.lBU = new fah();
-    locala.lBV = new fai();
+    AppMethodBeat.i(315777);
+    this.ysd = null;
+    this.mAY = null;
+    c.a locala = new c.a();
+    locala.otE = new fwl();
+    locala.otF = new fwm();
     locala.funcId = 5249;
     locala.uri = "/cgi-bin/micromsg-bin/verifysignaturetest";
-    locala.lBW = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.vgf = locala.bgN();
-    AppMethodBeat.o(228438);
+    this.ysd = locala.bEF();
+    AppMethodBeat.o(315777);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(228444);
-    this.jQg = parami;
-    parami = (fah)d.b.b(this.vgf.lBR);
-    String str = com.tencent.mm.network.b.bsU().Zo("TestSignData");
+    AppMethodBeat.i(315789);
+    this.mAY = paramh;
+    paramh = (fwl)c.b.b(this.ysd.otB);
+    String str = com.tencent.mm.network.b.bQD().Rs("TestSignData");
     byte[] arrayOfByte = str.getBytes(StandardCharsets.ISO_8859_1);
     if (!TextUtils.isEmpty(str))
     {
       Log.i("MMVerifyCgiSignatureTest", "after sign data length " + str.length() + " byte length " + arrayOfByte.length);
-      parami.SpW = new com.tencent.mm.cd.b(arrayOfByte);
-      parami.UAl = new com.tencent.mm.cd.b("TestSignData".getBytes());
-      Log.d("MMVerifyCgiSignatureTest", "zyzhang verify result ".concat(String.valueOf(com.tencent.mm.network.b.bsU().bO("TestSignData", str))));
-      int i = dispatch(paramg, this.vgf, this);
-      AppMethodBeat.o(228444);
+      paramh.ZoS = new com.tencent.mm.bx.b(arrayOfByte);
+      paramh.abUn = new com.tencent.mm.bx.b("TestSignData".getBytes());
+      Log.d("MMVerifyCgiSignatureTest", "zyzhang verify result ".concat(String.valueOf(com.tencent.mm.network.b.bQD().bZ("TestSignData", str))));
+      int i = dispatch(paramg, this.ysd, this);
+      AppMethodBeat.o(315789);
       return i;
     }
     Log.e("MMVerifyCgiSignatureTest", "sign failed");
-    AppMethodBeat.o(228444);
+    AppMethodBeat.o(315789);
     return -1;
   }
   
@@ -71,18 +70,18 @@ public final class c
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(228448);
+    AppMethodBeat.i(315799);
     Log.i("MMVerifyCgiSignatureTest", "receive response " + paramInt2 + " code " + paramInt3 + " message " + paramString + " code " + params.getRespObj().getRetCode());
-    paramArrayOfByte = (fai)d.c.b(this.vgf.lBS);
+    paramArrayOfByte = (fwm)c.c.b(this.ysd.otC);
     params = params.getRespObj().getProfile();
     if (params != null) {
       Log.d("MMVerifyCgiSignatureTest", "profile " + params.startConnectTime + " " + params.readPacketFinishedTime + " " + params.taskStartTime + " " + params.startHandshakeTime + " " + params.handshakeSuccessfulTime);
     }
     while ((paramArrayOfByte != null) && (paramArrayOfByte.BaseResponse != null))
     {
-      Log.d("MMVerifyCgiSignatureTest", "response ret " + paramArrayOfByte.BaseResponse.CqV);
-      this.jQg.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(228448);
+      Log.d("MMVerifyCgiSignatureTest", "response ret " + paramArrayOfByte.BaseResponse.Idd);
+      this.mAY.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(315799);
       return;
       Log.d("MMVerifyCgiSignatureTest", "profile is null");
     }

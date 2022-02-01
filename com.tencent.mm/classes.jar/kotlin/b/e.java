@@ -2,24 +2,24 @@ package kotlin.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Comparator;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/comparisons/NaturalOrderComparator;", "Ljava/util/Comparator;", "", "", "Lkotlin/Comparator;", "()V", "compare", "", "a", "b", "reversed", "kotlin-stdlib"})
+@Metadata(d1={""}, d2={"Lkotlin/comparisons/NaturalOrderComparator;", "Ljava/util/Comparator;", "", "", "Lkotlin/Comparator;", "()V", "compare", "", "a", "b", "reversed", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
 final class e
   implements Comparator<Comparable<? super Object>>
 {
-  public static final e aaAj;
+  public static final e aivV;
   
   static
   {
     AppMethodBeat.i(128998);
-    aaAj = new e();
+    aivV = new e();
     AppMethodBeat.o(128998);
   }
   
   public final Comparator<Comparable<Object>> reversed()
   {
-    return (Comparator)f.aaAk;
+    return (Comparator)f.aivW;
   }
 }
 

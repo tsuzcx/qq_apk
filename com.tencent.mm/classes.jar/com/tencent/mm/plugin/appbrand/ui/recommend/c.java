@@ -2,19 +2,20 @@ package com.tencent.mm.plugin.appbrand.ui.recommend;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.plugin.teenmode.a.d;
 
 public final class c
 {
-  public static boolean clA()
+  public static boolean cMX()
   {
     AppMethodBeat.i(49292);
-    if (clC())
+    if (cMZ())
     {
       AppMethodBeat.o(49292);
       return false;
     }
-    if (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vuj, 0) > 0)
+    if (((com.tencent.mm.plugin.expt.b.c)h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yGO, 0) > 0)
     {
       AppMethodBeat.o(49292);
       return true;
@@ -23,15 +24,15 @@ public final class c
     return false;
   }
   
-  public static boolean clB()
+  public static boolean cMY()
   {
     AppMethodBeat.i(49294);
-    if (clC())
+    if (cMZ())
     {
       AppMethodBeat.o(49294);
       return false;
     }
-    if (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vEL, -1) == 1)
+    if (((com.tencent.mm.plugin.expt.b.c)h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yUg, -1) == 1)
     {
       AppMethodBeat.o(49294);
       return true;
@@ -40,20 +41,20 @@ public final class c
     return false;
   }
   
-  private static boolean clC()
+  private static boolean cMZ()
   {
-    AppMethodBeat.i(271209);
-    if (((com.tencent.mm.plugin.teenmode.a.b)h.ae(com.tencent.mm.plugin.teenmode.a.b.class)).ZM())
+    AppMethodBeat.i(322561);
+    if (((d)h.ax(d.class)).aBu())
     {
-      if (((com.tencent.mm.plugin.teenmode.a.b)h.ae(com.tencent.mm.plugin.teenmode.a.b.class)).gks() != 1)
+      if (((d)h.ax(d.class)).hEr() != 1)
       {
-        AppMethodBeat.o(271209);
+        AppMethodBeat.o(322561);
         return true;
       }
-      AppMethodBeat.o(271209);
+      AppMethodBeat.o(322561);
       return false;
     }
-    AppMethodBeat.o(271209);
+    AppMethodBeat.o(322561);
     return false;
   }
 }

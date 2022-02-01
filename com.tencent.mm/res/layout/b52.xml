@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView android:id="@id/hhi" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/np"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<FrameLayout android:layout_width="@dimen/aa7" android:layout_height="@dimen/aa7"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="end|bottom|center" android:id="@id/a3b" android:layout_width="@dimen/aa8" android:layout_height="@dimen/aa8" android:src="@drawable/ed" />
+    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:background="@null" android:paddingLeft="@dimen/aa6" android:paddingTop="@dimen/aa6" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/f6t" android:layout_width="@dimen/aa5" android:layout_height="@dimen/aa5" />
+        <TextView android:textSize="@dimen/m_" android:textColor="@color/ts" android:layout_gravity="center_horizontal" android:id="@id/f6u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:text="@string/cak" />
+    </LinearLayout>
+</FrameLayout>

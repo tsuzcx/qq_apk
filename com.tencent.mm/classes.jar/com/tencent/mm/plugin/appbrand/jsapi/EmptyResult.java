@@ -4,10 +4,10 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/EmptyResult;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessResult;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "()V", "describeContents", "", "readParcel", "", "in", "writeToParcel", "flags", "CREATOR", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/EmptyResult;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessResult;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "()V", "describeContents", "", "readParcel", "", "in", "writeToParcel", "flags", "CREATOR", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class EmptyResult
   extends AppBrandProxyUIProcessTask.ProcessResult
 {
@@ -15,9 +15,9 @@ public final class EmptyResult
   
   static
   {
-    AppMethodBeat.i(284595);
+    AppMethodBeat.i(325505);
     CREATOR = new a((byte)0);
-    AppMethodBeat.o(284595);
+    AppMethodBeat.o(325505);
   }
   
   public EmptyResult() {}
@@ -25,8 +25,8 @@ public final class EmptyResult
   public EmptyResult(Parcel paramParcel)
   {
     this();
-    AppMethodBeat.i(284594);
-    AppMethodBeat.o(284594);
+    AppMethodBeat.i(325503);
+    AppMethodBeat.o(325503);
   }
   
   public final int describeContents()
@@ -34,16 +34,16 @@ public final class EmptyResult
     return 0;
   }
   
-  public final void k(Parcel paramParcel) {}
+  public final void readParcel(Parcel paramParcel) {}
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(284592);
-    p.k(paramParcel, "parcel");
-    AppMethodBeat.o(284592);
+    AppMethodBeat.i(325508);
+    s.u(paramParcel, "parcel");
+    AppMethodBeat.o(325508);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/EmptyResult$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/EmptyResult;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/EmptyResult;", "plugin-appbrand-integration_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/EmptyResult$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/EmptyResult;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/EmptyResult;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     implements Parcelable.Creator<EmptyResult>
   {}

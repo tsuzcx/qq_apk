@@ -13,9 +13,9 @@ public abstract interface b
 {
   public abstract void a(Intent paramIntent, a parama);
   
-  public abstract void bs(Intent paramIntent);
+  public abstract void bV(Intent paramIntent);
   
-  public abstract void bw(Intent paramIntent);
+  public abstract void ca(Intent paramIntent);
   
   public abstract void startService(Intent paramIntent);
   
@@ -28,7 +28,7 @@ public abstract interface b
       attachInterface(this, "com.tencent.mm.service.IMMServiceStub_AIDL");
     }
     
-    public static b T(IBinder paramIBinder)
+    public static b Y(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -40,9 +40,9 @@ public abstract interface b
       return new a(paramIBinder);
     }
     
-    public static b htC()
+    public static b iUD()
     {
-      return a.UXx;
+      return a.acwp;
     }
     
     public IBinder asBinder()
@@ -91,7 +91,7 @@ public abstract interface b
         if (paramParcel1.readInt() != 0) {}
         for (paramParcel1 = (Intent)Intent.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
         {
-          bw(paramParcel1);
+          ca(paramParcel1);
           paramParcel2.writeNoException();
           return true;
         }
@@ -110,7 +110,7 @@ public abstract interface b
       if (paramParcel1.readInt() != 0) {}
       for (paramParcel1 = (Intent)Intent.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
       {
-        bs(paramParcel1);
+        bV(paramParcel1);
         paramParcel2.writeNoException();
         return true;
       }
@@ -119,7 +119,7 @@ public abstract interface b
     static final class a
       implements b
     {
-      public static b UXx;
+      public static b acwp;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -145,10 +145,10 @@ public abstract interface b
               {
                 localIBinder = parama.asBinder();
                 localParcel1.writeStrongBinder(localIBinder);
-                if ((this.mRemote.transact(1, localParcel1, localParcel2, 0)) || (b.a.htC() == null)) {
+                if ((this.mRemote.transact(1, localParcel1, localParcel2, 0)) || (b.a.iUD() == null)) {
                   break;
                 }
-                b.a.htC().a(paramIntent, parama);
+                b.a.iUD().a(paramIntent, parama);
               }
             }
             else
@@ -176,7 +176,7 @@ public abstract interface b
         return this.mRemote;
       }
       
-      public final void bs(Intent paramIntent)
+      public final void bV(Intent paramIntent)
       {
         AppMethodBeat.i(125308);
         Parcel localParcel1 = Parcel.obtain();
@@ -189,9 +189,9 @@ public abstract interface b
             localParcel1.writeInt(1);
             paramIntent.writeToParcel(localParcel1, 0);
           }
-          while ((!this.mRemote.transact(4, localParcel1, localParcel2, 0)) && (b.a.htC() != null))
+          while ((!this.mRemote.transact(4, localParcel1, localParcel2, 0)) && (b.a.iUD() != null))
           {
-            b.a.htC().bs(paramIntent);
+            b.a.iUD().bV(paramIntent);
             return;
             localParcel1.writeInt(0);
           }
@@ -208,7 +208,7 @@ public abstract interface b
         AppMethodBeat.o(125308);
       }
       
-      public final void bw(Intent paramIntent)
+      public final void ca(Intent paramIntent)
       {
         AppMethodBeat.i(125306);
         Parcel localParcel1 = Parcel.obtain();
@@ -221,9 +221,9 @@ public abstract interface b
             localParcel1.writeInt(1);
             paramIntent.writeToParcel(localParcel1, 0);
           }
-          while ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (b.a.htC() != null))
+          while ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (b.a.iUD() != null))
           {
-            b.a.htC().bw(paramIntent);
+            b.a.iUD().ca(paramIntent);
             return;
             localParcel1.writeInt(0);
           }
@@ -253,9 +253,9 @@ public abstract interface b
             localParcel1.writeInt(1);
             paramIntent.writeToParcel(localParcel1, 0);
           }
-          while ((!this.mRemote.transact(3, localParcel1, localParcel2, 0)) && (b.a.htC() != null))
+          while ((!this.mRemote.transact(3, localParcel1, localParcel2, 0)) && (b.a.iUD() != null))
           {
-            b.a.htC().startService(paramIntent);
+            b.a.iUD().startService(paramIntent);
             return;
             localParcel1.writeInt(0);
           }
@@ -276,7 +276,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.service.b
  * JD-Core Version:    0.7.0.1
  */

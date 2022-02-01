@@ -1,7 +1,5 @@
 package com.tencent.smtt.sdk;
 
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.graphics.Bitmap;
@@ -20,7 +18,6 @@ import java.security.PrivateKey;
 import java.security.cert.X509Certificate;
 import java.util.Map;
 
-@SuppressLint({"NewApi", "Override"})
 class SystemWebViewClient
   extends android.webkit.WebViewClient
 {
@@ -193,7 +190,6 @@ class SystemWebViewClient
     AppMethodBeat.o(54704);
   }
   
-  @TargetApi(12)
   public void onReceivedLoginRequest(android.webkit.WebView paramWebView, String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(54707);
@@ -205,7 +201,6 @@ class SystemWebViewClient
     AppMethodBeat.o(54707);
   }
   
-  @TargetApi(8)
   public void onReceivedSslError(android.webkit.WebView paramWebView, SslErrorHandler paramSslErrorHandler, SslError paramSslError)
   {
     AppMethodBeat.i(54708);
@@ -282,7 +277,6 @@ class SystemWebViewClient
     return paramWebView;
   }
   
-  @TargetApi(11)
   public android.webkit.WebResourceResponse shouldInterceptRequest(android.webkit.WebView paramWebView, String paramString)
   {
     AppMethodBeat.i(54696);
@@ -525,7 +519,7 @@ class SystemWebViewClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.sdk.SystemWebViewClient
  * JD-Core Version:    0.7.0.1
  */

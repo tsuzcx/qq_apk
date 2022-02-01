@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.wallet.pwd.ui.WalletBalancePrivacyMMHeaderPreference android:key="wallet_balance_privacy_header" android:layout="@layout/c7o" />
-    <com.tencent.mm.plugin.wallet.pwd.ui.WalletBalancePrivacyCheckBoxPreference android:key="wallet_banlance_privacy_cb" android:summary="@string/ir8" android:title="@string/ir7" />
-    <PreferenceCategory />
+    <PreferenceTitleCategory android:key="wallet_lock_title" android:title="@string/kvs" />
+    <IconPreference android:key="wallet_lock_fingerprint" android:layout="@layout/bdi" android:title="@string/kvf" />
+    <IconPreference android:key="wallet_lock_faceid" android:layout="@layout/bdi" android:title="@string/kv9" />
+    <IconPreference android:key="wallet_lock_gesture" android:layout="@layout/bdi" android:title="@string/kvn" />
+    <IconPreference android:key="wallet_lock_close" android:layout="@layout/bdi" android:title="@string/kv7" />
+    <PreferenceSmallCategory />
+    <Preference android:key="wallet_lock_modify_gesture" android:layout="@layout/bdi" android:title="@string/feh" />
 </PreferenceScreen>

@@ -7,6 +7,7 @@ import java.util.concurrent.RejectedExecutionException;
 
 public class ReflectMethod
 {
+  public static final String TAG = "ReflectMethod";
   protected Object[] mArguments;
   protected Class<?> mClass;
   protected Object mInstance;
@@ -87,6 +88,7 @@ public class ReflectMethod
         }
         catch (NoSuchMethodException paramClass)
         {
+          Log.e("ReflectMethod", "init error:".concat(String.valueOf(paramClass)));
           paramObject = paramObject.getSuperclass();
         }
       }
@@ -175,7 +177,7 @@ public class ReflectMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.ReflectMethod
  * JD-Core Version:    0.7.0.1
  */

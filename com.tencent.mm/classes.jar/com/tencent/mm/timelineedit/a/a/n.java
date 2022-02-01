@@ -1,28 +1,28 @@
 package com.tencent.mm.timelineedit.a.a;
 
-import com.google.b.be.b;
-import com.google.b.cl;
+import com.google.d.bj.d;
+import com.google.d.cw;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum n
-  implements cl
+  implements cw
 {
-  private static final n[] VMB;
-  private static final be.b<n> bRT;
+  private static final n[] adqG;
+  private static final bj.d<n> dLG;
   private final int value;
   
   static
   {
-    AppMethodBeat.i(260792);
-    VMw = new n("NoneAnimation", 0, 0);
-    VMx = new n("AnimationStart", 1, 1);
-    VMy = new n("AnimationProgress", 2, 2);
-    VMz = new n("AnimationFinish", 3, 3);
-    VMA = new n("UNRECOGNIZED", 4, -1);
-    VMC = new n[] { VMw, VMx, VMy, VMz, VMA };
-    bRT = new be.b() {};
-    VMB = values();
-    AppMethodBeat.o(260792);
+    AppMethodBeat.i(232191);
+    adqB = new n("NoneAnimation", 0, 0);
+    adqC = new n("AnimationStart", 1, 1);
+    adqD = new n("AnimationProgress", 2, 2);
+    adqE = new n("AnimationFinish", 3, 3);
+    adqF = new n("UNRECOGNIZED", 4, -1);
+    adqH = new n[] { adqB, adqC, adqD, adqE, adqF };
+    dLG = new bj.d() {};
+    adqG = values();
+    AppMethodBeat.o(232191);
   }
   
   private n(int paramInt)
@@ -32,21 +32,21 @@ public enum n
   
   public final int getNumber()
   {
-    AppMethodBeat.i(260787);
-    if (this == VMA)
+    AppMethodBeat.i(232197);
+    if (this == adqF)
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Can't get the number of an unknown enum value.");
-      AppMethodBeat.o(260787);
+      AppMethodBeat.o(232197);
       throw localIllegalArgumentException;
     }
     int i = this.value;
-    AppMethodBeat.o(260787);
+    AppMethodBeat.o(232197);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.timelineedit.a.a.n
  * JD-Core Version:    0.7.0.1
  */

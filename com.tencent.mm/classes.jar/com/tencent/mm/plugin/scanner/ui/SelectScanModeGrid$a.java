@@ -15,24 +15,24 @@ import java.util.List;
 public final class SelectScanModeGrid$a
   extends BaseAdapter
 {
-  int ITG;
+  int Pcz;
   private Context context;
-  private List<SelectScanModeGrid.b> moS;
+  private List<SelectScanModeGrid.b> piH;
   
   public SelectScanModeGrid$a(Context paramContext, List<SelectScanModeGrid.b> paramList)
   {
     AppMethodBeat.i(51981);
-    this.ITG = -1;
+    this.Pcz = -1;
     this.context = paramContext;
-    this.moS = paramList;
-    Log.d("MicroMsg.scanner.SelectScanModeGroupAdapter", "<init> list size = " + this.moS.size());
+    this.piH = paramList;
+    Log.d("MicroMsg.scanner.SelectScanModeGroupAdapter", "<init> list size = " + this.piH.size());
     AppMethodBeat.o(51981);
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(51982);
-    int i = this.moS.size();
+    int i = this.piH.size();
     AppMethodBeat.o(51982);
     return i;
   }
@@ -40,13 +40,13 @@ public final class SelectScanModeGrid$a
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(51983);
-    if ((paramInt < 0) || (paramInt >= this.moS.size()))
+    if ((paramInt < 0) || (paramInt >= this.piH.size()))
     {
       Log.e("MicroMsg.scanner.SelectScanModeGroupAdapter", "getItem fail, invalid position = ".concat(String.valueOf(paramInt)));
       AppMethodBeat.o(51983);
       return null;
     }
-    Object localObject = this.moS.get(paramInt);
+    Object localObject = this.piH.get(paramInt);
     AppMethodBeat.o(51983);
     return localObject;
   }
@@ -62,11 +62,11 @@ public final class SelectScanModeGrid$a
     a locala;
     if (paramView == null)
     {
-      paramView = View.inflate(this.context, l.g.IEz, null);
+      paramView = View.inflate(this.context, l.g.OKC, null);
       locala = new a();
-      locala.ITH = ((TextView)paramView.findViewById(l.f.IDE));
-      locala.zlv = ((TextView)paramView.findViewById(l.f.IDJ));
-      locala.Dck = ((ImageView)paramView.findViewById(l.f.IDI));
+      locala.PcA = ((TextView)paramView.findViewById(l.f.OJG));
+      locala.ElR = ((TextView)paramView.findViewById(l.f.OJL));
+      locala.IWE = ((ImageView)paramView.findViewById(l.f.OJK));
       paramView.setTag(locala);
     }
     while (paramInt == paramViewGroup.getChildCount())
@@ -81,16 +81,16 @@ public final class SelectScanModeGrid$a
       }
       else
       {
-        locala.zlv.setText(paramViewGroup.title);
-        if (paramInt != this.ITG) {
+        locala.ElR.setText(paramViewGroup.title);
+        if (paramInt != this.Pcz) {
           break label192;
         }
-        locala.ITH.setBackgroundResource(paramViewGroup.ITJ);
-        paramViewGroup.ITL = locala.ITH;
-        if (!paramViewGroup.ITM) {
+        locala.PcA.setBackgroundResource(paramViewGroup.PcC);
+        paramViewGroup.PcE = locala.PcA;
+        if (!paramViewGroup.PcF) {
           break label207;
         }
-        locala.Dck.setVisibility(0);
+        locala.IWE.setVisibility(0);
       }
     }
     for (;;)
@@ -98,23 +98,23 @@ public final class SelectScanModeGrid$a
       AppMethodBeat.o(51984);
       return paramView;
       label192:
-      locala.ITH.setBackgroundResource(paramViewGroup.ITI);
+      locala.PcA.setBackgroundResource(paramViewGroup.PcB);
       break;
       label207:
-      locala.Dck.setVisibility(4);
+      locala.IWE.setVisibility(4);
     }
   }
   
   static final class a
   {
-    public ImageView Dck;
-    public TextView ITH;
-    public TextView zlv;
+    public TextView ElR;
+    public ImageView IWE;
+    public TextView PcA;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.SelectScanModeGrid.a
  * JD-Core Version:    0.7.0.1
  */

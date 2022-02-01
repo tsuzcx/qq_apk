@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/qa" android:layout_width="fill_parent" android:layout_height="@dimen/iq" android:minHeight="@dimen/iq" android:paddingStart="@dimen/k5" android:paddingEnd="@dimen/k5"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="horizontal" android:id="@id/gdu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_alignParentEnd="true">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/gdv" android:padding="3.0dip" android:visibility="invisible" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@raw/big_select_tick" android:layout_marginStart="@dimen/k5" app:iconColor="@color/afp" />
-    </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/gdr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="5.0dip" android:layout_toStartOf="@id/gdu">
-        <TextView android:textColor="@color/a2x" android:id="@id/gdt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ekf" style="@style/mp" />
-        <TextView android:textColor="@color/uj" android:id="@id/gds" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" style="@style/mo" />
-    </LinearLayout>
+<RelativeLayout android:background="@color/a4" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/j3l" android:layout_width="fill_parent" android:layout_height="@dimen/d6" android:layout_alignParentTop="true" />
+    <RelativeLayout android:id="@id/j3o" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <FrameLayout android:id="@id/j3n" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <FrameLayout android:id="@id/j3k" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:gravity="bottom" android:id="@id/j3p" android:layout_width="fill_parent" android:layout_height="128.0dip" android:layout_alignParentBottom="true" />
+    <FrameLayout android:id="@id/j3m" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true" android:layout_alignParentEnd="true" />
+    <FrameLayout android:id="@id/j3g" android:layout_width="fill_parent" android:layout_height="@dimen/dc" android:layout_alignParentBottom="true" />
 </RelativeLayout>

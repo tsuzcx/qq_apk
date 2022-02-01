@@ -5,50 +5,50 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class ab
   extends z
 {
-  private static final ThreadLocal<ab> fil;
-  private final a fkv;
+  private static final ThreadLocal<ab> hmy;
+  private final a hoI;
   
   static
   {
-    AppMethodBeat.i(262259);
-    fil = new ThreadLocal();
-    AppMethodBeat.o(262259);
+    AppMethodBeat.i(238624);
+    hmy = new ThreadLocal();
+    AppMethodBeat.o(238624);
   }
   
   private ab(a parama, boolean paramBoolean)
   {
     super(paramBoolean);
-    this.fkv = parama;
+    this.hoI = parama;
   }
   
   public static ab a(a parama, boolean paramBoolean)
   {
-    AppMethodBeat.i(262255);
-    if (fil.get() != null)
+    AppMethodBeat.i(238617);
+    if (hmy.get() != null)
     {
       parama = new RuntimeException("Only one Looper may be created per thread");
-      AppMethodBeat.o(262255);
+      AppMethodBeat.o(238617);
       throw parama;
     }
     parama = new ab(parama, paramBoolean);
-    fil.set(parama);
-    AppMethodBeat.o(262255);
+    hmy.set(parama);
+    AppMethodBeat.o(238617);
     return parama;
   }
   
-  protected final void acg()
+  protected final void aEf()
   {
-    AppMethodBeat.i(262257);
-    super.acg();
-    if (this.fkv != null) {
-      this.fkv.acv();
+    AppMethodBeat.i(238627);
+    super.aEf();
+    if (this.hoI != null) {
+      this.hoI.aEv();
     }
-    AppMethodBeat.o(262257);
+    AppMethodBeat.o(238627);
   }
   
   static abstract interface a
   {
-    public abstract void acv();
+    public abstract void aEv();
   }
 }
 

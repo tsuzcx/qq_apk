@@ -1,6 +1,5 @@
 package com.tencent.smtt.sdk;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -39,7 +38,6 @@ public class WebSettings
     this.c = true;
   }
   
-  @TargetApi(17)
   public static String getDefaultUserAgent(Context paramContext)
   {
     AppMethodBeat.i(54480);
@@ -97,7 +95,6 @@ public class WebSettings
     return false;
   }
   
-  @TargetApi(11)
   public boolean getAllowContentAccess()
   {
     AppMethodBeat.i(54401);
@@ -129,7 +126,6 @@ public class WebSettings
     return false;
   }
   
-  @TargetApi(3)
   public boolean getAllowFileAccess()
   {
     AppMethodBeat.i(54398);
@@ -176,7 +172,6 @@ public class WebSettings
     }
   }
   
-  @TargetApi(8)
   public boolean getBlockNetworkLoads()
   {
     boolean bool = false;
@@ -209,7 +204,6 @@ public class WebSettings
     }
   }
   
-  @TargetApi(3)
   public boolean getBuiltInZoomControls()
   {
     AppMethodBeat.i(54394);
@@ -277,7 +271,6 @@ public class WebSettings
     }
   }
   
-  @TargetApi(5)
   public boolean getDatabaseEnabled()
   {
     for (;;)
@@ -304,7 +297,6 @@ public class WebSettings
     }
   }
   
-  @TargetApi(5)
   public String getDatabasePath()
   {
     for (;;)
@@ -411,7 +403,6 @@ public class WebSettings
     }
   }
   
-  @TargetApi(7)
   public WebSettings.ZoomDensity getDefaultZoom()
   {
     AppMethodBeat.i(54417);
@@ -432,7 +423,6 @@ public class WebSettings
     return null;
   }
   
-  @TargetApi(11)
   public boolean getDisplayZoomControls()
   {
     AppMethodBeat.i(54396);
@@ -464,7 +454,6 @@ public class WebSettings
     return false;
   }
   
-  @TargetApi(7)
   public boolean getDomStorageEnabled()
   {
     for (;;)
@@ -644,7 +633,6 @@ public class WebSettings
     return false;
   }
   
-  @TargetApi(7)
   public boolean getLoadWithOverviewMode()
   {
     AppMethodBeat.i(54403);
@@ -691,7 +679,6 @@ public class WebSettings
     }
   }
   
-  @TargetApi(17)
   public boolean getMediaPlaybackRequiresUserGesture()
   {
     AppMethodBeat.i(54481);
@@ -781,62 +768,62 @@ public class WebSettings
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 292
-    //   5: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 281
+    //   5: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 43	com/tencent/smtt/sdk/WebSettings:c	Z
+    //   9: getfield 42	com/tencent/smtt/sdk/WebSettings:c	Z
     //   12: ifeq +44 -> 56
     //   15: aload_0
-    //   16: getfield 39	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   16: getfield 38	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   19: astore_2
     //   20: aload_2
     //   21: ifnull +35 -> 56
     //   24: aload_0
-    //   25: getfield 39	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
-    //   28: invokeinterface 294 1 0
+    //   25: getfield 38	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   28: invokeinterface 283 1 0
     //   33: istore_1
-    //   34: ldc_w 292
-    //   37: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   34: ldc_w 281
+    //   37: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   40: aload_0
     //   41: monitorexit
     //   42: iload_1
     //   43: ireturn
     //   44: astore_2
-    //   45: ldc_w 292
-    //   48: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   45: ldc_w 281
+    //   48: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   51: iconst_m1
     //   52: istore_1
     //   53: goto -13 -> 40
-    //   56: getstatic 89	android/os/Build$VERSION:SDK_INT	I
+    //   56: getstatic 85	android/os/Build$VERSION:SDK_INT	I
     //   59: bipush 21
     //   61: if_icmpge +14 -> 75
-    //   64: ldc_w 292
-    //   67: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   64: ldc_w 281
+    //   67: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   70: iconst_m1
     //   71: istore_1
     //   72: goto -32 -> 40
     //   75: aload_0
-    //   76: getfield 41	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
-    //   79: ldc_w 295
+    //   76: getfield 40	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   79: ldc_w 284
     //   82: iconst_0
-    //   83: anewarray 94	java/lang/Class
+    //   83: anewarray 90	java/lang/Class
     //   86: iconst_0
     //   87: anewarray 4	java/lang/Object
-    //   90: invokestatic 298	com/tencent/smtt/utils/k:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   90: invokestatic 287	com/tencent/smtt/utils/k:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
     //   93: astore_2
     //   94: aload_2
     //   95: ifnonnull +14 -> 109
-    //   98: ldc_w 292
-    //   101: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   98: ldc_w 281
+    //   101: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   104: iconst_m1
     //   105: istore_1
     //   106: goto -66 -> 40
     //   109: aload_2
-    //   110: checkcast 300	java/lang/Integer
-    //   113: invokevirtual 303	java/lang/Integer:intValue	()I
+    //   110: checkcast 289	java/lang/Integer
+    //   113: invokevirtual 292	java/lang/Integer:intValue	()I
     //   116: istore_1
-    //   117: ldc_w 292
-    //   120: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   117: ldc_w 281
+    //   120: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   123: goto -83 -> 40
     //   126: astore_2
     //   127: aload_0
@@ -848,14 +835,13 @@ public class WebSettings
     //   0	131	0	this	WebSettings
     //   33	84	1	i	int
     //   19	2	2	localIX5WebSettings	IX5WebSettings
-    //   44	1	2	localThrowable	Throwable
-    //   93	17	2	localObject1	Object
-    //   126	4	2	localObject2	Object
+    //   44	1	2	localObject1	Object
+    //   93	17	2	localObject2	Object
+    //   126	4	2	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   24	34	44	java/lang/Throwable
+    //   24	34	44	finally
     //   2	20	126	finally
-    //   24	34	126	finally
     //   34	40	126	finally
     //   45	51	126	finally
     //   56	70	126	finally
@@ -891,7 +877,6 @@ public class WebSettings
   }
   
   @Deprecated
-  @TargetApi(8)
   public WebSettings.PluginState getPluginState()
   {
     for (;;)
@@ -934,7 +919,6 @@ public class WebSettings
   }
   
   @Deprecated
-  @TargetApi(8)
   public boolean getPluginsEnabled()
   {
     for (;;)
@@ -1176,50 +1160,49 @@ public class WebSettings
   }
   
   /* Error */
-  @TargetApi(14)
   public int getTextZoom()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 389
-    //   5: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 377
+    //   5: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 43	com/tencent/smtt/sdk/WebSettings:c	Z
+    //   9: getfield 42	com/tencent/smtt/sdk/WebSettings:c	Z
     //   12: ifeq +30 -> 42
     //   15: aload_0
-    //   16: getfield 39	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   16: getfield 38	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   19: ifnull +23 -> 42
     //   22: aload_0
-    //   23: getfield 39	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
-    //   26: invokeinterface 391 1 0
+    //   23: getfield 38	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   26: invokeinterface 379 1 0
     //   31: istore_1
-    //   32: ldc_w 389
-    //   35: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   32: ldc_w 377
+    //   35: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   38: aload_0
     //   39: monitorexit
     //   40: iload_1
     //   41: ireturn
     //   42: aload_0
-    //   43: getfield 43	com/tencent/smtt/sdk/WebSettings:c	Z
+    //   43: getfield 42	com/tencent/smtt/sdk/WebSettings:c	Z
     //   46: ifne +95 -> 141
     //   49: aload_0
-    //   50: getfield 41	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   50: getfield 40	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   53: ifnull +88 -> 141
-    //   56: getstatic 89	android/os/Build$VERSION:SDK_INT	I
+    //   56: getstatic 85	android/os/Build$VERSION:SDK_INT	I
     //   59: bipush 14
     //   61: if_icmpge +14 -> 75
-    //   64: ldc_w 389
-    //   67: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   64: ldc_w 377
+    //   67: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   70: iconst_0
     //   71: istore_1
     //   72: goto -34 -> 38
     //   75: aload_0
-    //   76: getfield 41	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
-    //   79: invokevirtual 392	android/webkit/WebSettings:getTextZoom	()I
+    //   76: getfield 40	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   79: invokevirtual 380	android/webkit/WebSettings:getTextZoom	()I
     //   82: istore_1
-    //   83: ldc_w 389
-    //   86: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   83: ldc_w 377
+    //   86: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   89: goto -51 -> 38
     //   92: astore_2
     //   93: aload_0
@@ -1228,26 +1211,26 @@ public class WebSettings
     //   96: athrow
     //   97: astore_2
     //   98: aload_0
-    //   99: getfield 41	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
-    //   102: ldc_w 393
-    //   105: invokestatic 115	com/tencent/smtt/utils/k:a	(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
+    //   99: getfield 40	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   102: ldc_w 381
+    //   105: invokestatic 110	com/tencent/smtt/utils/k:a	(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
     //   108: astore_2
     //   109: aload_2
     //   110: ifnonnull +14 -> 124
-    //   113: ldc_w 389
-    //   116: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   113: ldc_w 377
+    //   116: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   119: iconst_0
     //   120: istore_1
     //   121: goto -83 -> 38
     //   124: aload_2
-    //   125: checkcast 300	java/lang/Integer
-    //   128: invokevirtual 303	java/lang/Integer:intValue	()I
+    //   125: checkcast 289	java/lang/Integer
+    //   128: invokevirtual 292	java/lang/Integer:intValue	()I
     //   131: istore_1
-    //   132: ldc_w 389
-    //   135: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   132: ldc_w 377
+    //   135: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   138: goto -100 -> 38
-    //   141: ldc_w 389
-    //   144: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   141: ldc_w 377
+    //   144: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   147: iconst_0
     //   148: istore_1
     //   149: goto -111 -> 38
@@ -1324,7 +1307,6 @@ public class WebSettings
     }
   }
   
-  @TargetApi(3)
   public String getUserAgentString()
   {
     AppMethodBeat.i(54421);
@@ -1345,7 +1327,6 @@ public class WebSettings
     return "";
   }
   
-  @TargetApi(11)
   public void setAllowContentAccess(boolean paramBoolean)
   {
     AppMethodBeat.i(54399);
@@ -1369,7 +1350,6 @@ public class WebSettings
     AppMethodBeat.o(54399);
   }
   
-  @TargetApi(3)
   public void setAllowFileAccess(boolean paramBoolean)
   {
     AppMethodBeat.i(54397);
@@ -1388,7 +1368,6 @@ public class WebSettings
     AppMethodBeat.o(54397);
   }
   
-  @TargetApi(16)
   public void setAllowFileAccessFromFileURLs(boolean paramBoolean)
   {
     AppMethodBeat.i(54457);
@@ -1407,7 +1386,6 @@ public class WebSettings
     AppMethodBeat.o(54457);
   }
   
-  @TargetApi(16)
   public void setAllowUniversalAccessFromFileURLs(boolean paramBoolean)
   {
     AppMethodBeat.i(54456);
@@ -1426,7 +1404,6 @@ public class WebSettings
     AppMethodBeat.o(54456);
   }
   
-  @TargetApi(7)
   public void setAppCacheEnabled(boolean paramBoolean)
   {
     AppMethodBeat.i(54463);
@@ -1445,7 +1422,6 @@ public class WebSettings
     AppMethodBeat.o(54463);
   }
   
-  @TargetApi(7)
   public void setAppCacheMaxSize(long paramLong)
   {
     AppMethodBeat.i(54465);
@@ -1464,7 +1440,6 @@ public class WebSettings
     AppMethodBeat.o(54465);
   }
   
-  @TargetApi(7)
   public void setAppCachePath(String paramString)
   {
     AppMethodBeat.i(54464);
@@ -1501,7 +1476,6 @@ public class WebSettings
     AppMethodBeat.o(54451);
   }
   
-  @TargetApi(8)
   public void setBlockNetworkLoads(boolean paramBoolean)
   {
     for (;;)
@@ -1533,7 +1507,6 @@ public class WebSettings
     }
   }
   
-  @TargetApi(3)
   public void setBuiltInZoomControls(boolean paramBoolean)
   {
     AppMethodBeat.i(54393);
@@ -1594,7 +1567,6 @@ public class WebSettings
     }
   }
   
-  @TargetApi(5)
   public void setDatabaseEnabled(boolean paramBoolean)
   {
     AppMethodBeat.i(54466);
@@ -1614,7 +1586,6 @@ public class WebSettings
   }
   
   @Deprecated
-  @TargetApi(5)
   public void setDatabasePath(String paramString)
   {
     AppMethodBeat.i(54461);
@@ -1714,7 +1685,6 @@ public class WebSettings
     }
   }
   
-  @TargetApi(7)
   public void setDefaultZoom(WebSettings.ZoomDensity paramZoomDensity)
   {
     AppMethodBeat.i(54416);
@@ -1733,7 +1703,6 @@ public class WebSettings
     AppMethodBeat.o(54416);
   }
   
-  @TargetApi(11)
   public void setDisplayZoomControls(boolean paramBoolean)
   {
     AppMethodBeat.i(54395);
@@ -1757,7 +1726,6 @@ public class WebSettings
     AppMethodBeat.o(54395);
   }
   
-  @TargetApi(7)
   public void setDomStorageEnabled(boolean paramBoolean)
   {
     AppMethodBeat.i(54467);
@@ -1777,7 +1745,6 @@ public class WebSettings
   }
   
   @Deprecated
-  @TargetApi(11)
   public void setEnableSmoothTransition(boolean paramBoolean)
   {
     AppMethodBeat.i(54404);
@@ -1857,7 +1824,6 @@ public class WebSettings
     }
   }
   
-  @TargetApi(5)
   public void setGeolocationDatabasePath(String paramString)
   {
     AppMethodBeat.i(54462);
@@ -1876,7 +1842,6 @@ public class WebSettings
     AppMethodBeat.o(54462);
   }
   
-  @TargetApi(5)
   public void setGeolocationEnabled(boolean paramBoolean)
   {
     AppMethodBeat.i(54471);
@@ -1934,14 +1899,11 @@ public class WebSettings
         AppMethodBeat.o(54455);
         return;
       }
-      if ((!this.c) && (this.b != null))
-      {
+      if ((!this.c) && (this.b != null)) {
         this.b.setJavaScriptEnabled(paramBoolean);
-        AppMethodBeat.o(54455);
-        return;
       }
     }
-    catch (Throwable localThrowable)
+    finally
     {
       AppMethodBeat.o(54455);
       return;
@@ -1982,7 +1944,6 @@ public class WebSettings
     AppMethodBeat.o(54418);
   }
   
-  @TargetApi(7)
   public void setLoadWithOverviewMode(boolean paramBoolean)
   {
     AppMethodBeat.i(54402);
@@ -2019,7 +1980,6 @@ public class WebSettings
     AppMethodBeat.o(54449);
   }
   
-  @TargetApi(17)
   public void setMediaPlaybackRequiresUserGesture(boolean paramBoolean)
   {
     AppMethodBeat.i(54482);
@@ -2097,7 +2057,6 @@ public class WebSettings
     }
   }
   
-  @TargetApi(21)
   public void setMixedContentMode(int paramInt)
   {
     AppMethodBeat.i(54400);
@@ -2157,7 +2116,6 @@ public class WebSettings
   }
   
   @Deprecated
-  @TargetApi(8)
   public void setPluginState(WebSettings.PluginState paramPluginState)
   {
     for (;;)
@@ -2237,7 +2195,7 @@ public class WebSettings
     }
   }
   
-  public void setRenderPriority(RenderPriority paramRenderPriority)
+  public void setRenderPriority(WebSettings.RenderPriority paramRenderPriority)
   {
     AppMethodBeat.i(54484);
     if ((this.c) && (this.a != null))
@@ -2417,7 +2375,6 @@ public class WebSettings
     AppMethodBeat.o(54414);
   }
   
-  @TargetApi(14)
   public void setTextZoom(int paramInt)
   {
     for (;;)
@@ -2503,7 +2460,6 @@ public class WebSettings
     AppMethodBeat.o(54420);
   }
   
-  @TargetApi(3)
   public void setUserAgentString(String paramString)
   {
     AppMethodBeat.i(54422);
@@ -2564,25 +2520,10 @@ public class WebSettings
     AppMethodBeat.o(54392);
     return false;
   }
-  
-  public static enum RenderPriority
-  {
-    static
-    {
-      AppMethodBeat.i(54366);
-      NORMAL = new RenderPriority("NORMAL", 0);
-      HIGH = new RenderPriority("HIGH", 1);
-      LOW = new RenderPriority("LOW", 2);
-      $VALUES = new RenderPriority[] { NORMAL, HIGH, LOW };
-      AppMethodBeat.o(54366);
-    }
-    
-    private RenderPriority() {}
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebSettings
  * JD-Core Version:    0.7.0.1
  */

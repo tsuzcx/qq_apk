@@ -1,46 +1,20 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.feed.model.internal.k;
-import com.tencent.mm.protocal.protobuf.awr;
-import com.tencent.mm.view.recyclerview.a;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderFeedLike;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "likeObj", "Lcom/tencent/mm/protocal/protobuf/FinderLikeInfo;", "(Lcom/tencent/mm/protocal/protobuf/FinderLikeInfo;)V", "blink", "", "getBlink", "()Z", "setBlink", "(Z)V", "hasBlink", "getHasBlink", "setHasBlink", "getLikeObj", "()Lcom/tencent/mm/protocal/protobuf/FinderLikeInfo;", "setLikeObj", "compare", "", "obj", "getItemId", "", "getItemType", "plugin-finder_release"})
-public final class v
-  implements k, a
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/model/FinderFeedImage;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "feedObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "isEnterSeekMode", "", "()Z", "setEnterSeekMode", "(Z)V", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+public class v
+  extends BaseFinderFeed
 {
-  public boolean zAp;
-  public boolean zAq;
-  public awr zAz;
+  public boolean ECG;
   
-  public v(awr paramawr)
+  public v(FinderItem paramFinderItem)
   {
-    AppMethodBeat.i(276297);
-    this.zAz = paramawr;
-    AppMethodBeat.o(276297);
-  }
-  
-  public final int a(k paramk)
-  {
-    AppMethodBeat.i(276296);
-    p.k(paramk, "obj");
-    AppMethodBeat.o(276296);
-    return 0;
-  }
-  
-  public final int bAQ()
-  {
-    return 0;
-  }
-  
-  public final long mf()
-  {
-    AppMethodBeat.i(276294);
-    long l = Long.valueOf(this.zAz.xaG).hashCode();
-    AppMethodBeat.o(276294);
-    return l;
+    super(paramFinderItem);
+    AppMethodBeat.i(166384);
+    AppMethodBeat.o(166384);
   }
 }
 

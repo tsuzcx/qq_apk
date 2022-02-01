@@ -1,27 +1,27 @@
 package com.tencent.mm.plugin.radar;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.b;
+import com.tencent.mm.br.b;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.model.y;
 import com.tencent.mm.plugin.radar.a.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/radar/PluginRadar;", "Lcom/tencent/mm/kernel/plugin/Plugin;", "Lcom/tencent/mm/plugin/radar/api/IPluginRadar;", "()V", "configure", "", "profile", "Lcom/tencent/mm/kernel/plugin/ProcessProfile;", "execute", "Companion", "plugin-radar_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/radar/PluginRadar;", "Lcom/tencent/mm/kernel/plugin/Plugin;", "Lcom/tencent/mm/plugin/radar/api/IPluginRadar;", "()V", "configure", "", "profile", "Lcom/tencent/mm/kernel/plugin/ProcessProfile;", "execute", "Companion", "plugin-radar_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class PluginRadar
   extends f
   implements a
 {
-  public static final a Hst;
-  private static final String TAG = "MicroMsg.PluginRadar";
+  public static final a Nqi;
+  private static final String TAG;
   
   static
   {
     AppMethodBeat.i(138492);
-    Hst = new a((byte)0);
+    Nqi = new a((byte)0);
     TAG = "MicroMsg.PluginRadar";
     AppMethodBeat.o(138492);
   }
@@ -29,8 +29,8 @@ public final class PluginRadar
   public final void configure(g paramg)
   {
     AppMethodBeat.i(138490);
-    p.k(paramg, "profile");
-    if (paramg.aIE())
+    s.u(paramg, "profile");
+    if (paramg.bbA())
     {
       Log.i(TAG, "PluginRadar configure");
       pin((com.tencent.mm.kernel.b.c)new y(c.class));
@@ -41,12 +41,12 @@ public final class PluginRadar
   public final void execute(g paramg)
   {
     AppMethodBeat.i(138491);
-    p.k(paramg, "profile");
-    b.bsj("radar");
+    s.u(paramg, "profile");
+    b.bsa("radar");
     AppMethodBeat.o(138491);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/radar/PluginRadar$Companion;", "", "()V", "TAG", "", "plugin-radar_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/radar/PluginRadar$Companion;", "", "()V", "TAG", "", "plugin-radar_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

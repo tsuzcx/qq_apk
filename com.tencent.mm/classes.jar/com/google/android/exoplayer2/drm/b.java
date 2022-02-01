@@ -1,13 +1,10 @@
 package com.google.android.exoplayer2.drm;
 
-import android.annotation.TargetApi;
-
-@TargetApi(16)
 public abstract interface b<T extends c>
 {
-  public abstract boolean sm();
+  public abstract boolean RP();
   
-  public abstract a<T> sn();
+  public abstract a<T> RQ();
 }
 
 

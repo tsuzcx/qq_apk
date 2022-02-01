@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="@dimen/cp"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="@dimen/cp">
-        <CheckBox android:layout_gravity="center_vertical" android:id="@id/jni" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" style="@style/jk" />
-        <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/jnn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cj" android:singleLine="true" />
-        <View android:layout_gravity="bottom" android:background="@color/BW_100_Alpha_0_0_5" android:layout_width="fill_parent" android:layout_height="1.0px" />
+<LinearLayout android:orientation="vertical" android:paddingTop="@dimen/df" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/fpt" android:layout_width="fill_parent" android:layout_height="@dimen/d5">
+        <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:layout_gravity="center_vertical" android:id="@id/fpq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:text="@string/e9z" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dkl" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/az" android:gravity="center" android:layout_gravity="center|right" android:id="@id/fpu" android:background="@drawable/a2n" android:paddingLeft="@dimen/cd" android:paddingRight="@dimen/cd" android:layout_width="wrap_content" android:layout_height="@dimen/d0" android:layout_marginRight="@dimen/cp" android:text="@string/e_1" />
     </FrameLayout>
-</FrameLayout>
+    <LinearLayout android:gravity="left" android:orientation="vertical" android:id="@id/fpr" android:paddingLeft="@dimen/cp" android:paddingRight="@dimen/cp" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginBottom="@dimen/cp" android:layout_weight="1.0">
+        <com.tencent.mm.ui.widget.MMEditText android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:textColorHint="@color/BW_100_Alpha_0_3" android:gravity="top" android:id="@id/fps" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:hint="@string/dkj" android:singleLine="false" android:inputType="textMultiLine" android:textCursorDrawable="@drawable/yy" />
+        <TextView android:textSize="@dimen/ce" android:textColor="#fffa5151" android:id="@id/fpx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" />
+    </LinearLayout>
+</LinearLayout>

@@ -8,107 +8,107 @@ import java.util.List;
 public final class g
   implements h
 {
-  private int aTo;
-  private final List<v.a> bak;
-  private final com.google.android.exoplayer2.c.m[] bal;
-  private boolean bam;
-  private int ban;
-  private long bao;
+  private int cNk;
+  private final List<v.a> cUf;
+  private final com.google.android.exoplayer2.c.m[] cUg;
+  private boolean cUh;
+  private int cUi;
+  private long cUj;
   
   public g(List<v.a> paramList)
   {
     AppMethodBeat.i(92228);
-    this.bak = paramList;
-    this.bal = new com.google.android.exoplayer2.c.m[paramList.size()];
+    this.cUf = paramList;
+    this.cUg = new com.google.android.exoplayer2.c.m[paramList.size()];
     AppMethodBeat.o(92228);
   }
   
   private boolean e(com.google.android.exoplayer2.i.m paramm, int paramInt)
   {
     AppMethodBeat.i(92232);
-    if (paramm.vg() == 0)
+    if (paramm.UF() == 0)
     {
       AppMethodBeat.o(92232);
       return false;
     }
     if (paramm.readUnsignedByte() != paramInt) {
-      this.bam = false;
+      this.cUh = false;
     }
-    this.ban -= 1;
-    boolean bool = this.bam;
+    this.cUi -= 1;
+    boolean bool = this.cUh;
     AppMethodBeat.o(92232);
     return bool;
+  }
+  
+  public final void Si()
+  {
+    this.cUh = false;
+  }
+  
+  public final void Sj()
+  {
+    AppMethodBeat.i(92230);
+    if (this.cUh)
+    {
+      com.google.android.exoplayer2.c.m[] arrayOfm = this.cUg;
+      int j = arrayOfm.length;
+      int i = 0;
+      while (i < j)
+      {
+        arrayOfm[i].a(this.cUj, 1, this.cNk, 0, null);
+        i += 1;
+      }
+      this.cUh = false;
+    }
+    AppMethodBeat.o(92230);
   }
   
   public final void a(com.google.android.exoplayer2.c.g paramg, v.d paramd)
   {
     AppMethodBeat.i(92229);
     int i = 0;
-    while (i < this.bal.length)
+    while (i < this.cUg.length)
     {
-      v.a locala = (v.a)this.bak.get(i);
-      paramd.sR();
-      com.google.android.exoplayer2.c.m localm = paramg.ej(paramd.getTrackId());
-      localm.f(Format.a(paramd.sS(), "application/dvbsubs", Collections.singletonList(locala.bcl), locala.language, null));
-      this.bal[i] = localm;
+      v.a locala = (v.a)this.cUf.get(i);
+      paramd.Sv();
+      com.google.android.exoplayer2.c.m localm = paramg.hz(paramd.getTrackId());
+      localm.f(Format.a(paramd.Sw(), "application/dvbsubs", Collections.singletonList(locala.cWg), locala.language, null));
+      this.cUg[i] = localm;
       i += 1;
     }
     AppMethodBeat.o(92229);
   }
   
-  public final void c(long paramLong, boolean paramBoolean)
+  public final void h(long paramLong, boolean paramBoolean)
   {
     if (!paramBoolean) {
       return;
     }
-    this.bam = true;
-    this.bao = paramLong;
-    this.aTo = 0;
-    this.ban = 2;
-  }
-  
-  public final void sF()
-  {
-    this.bam = false;
-  }
-  
-  public final void sG()
-  {
-    AppMethodBeat.i(92230);
-    if (this.bam)
-    {
-      com.google.android.exoplayer2.c.m[] arrayOfm = this.bal;
-      int j = arrayOfm.length;
-      int i = 0;
-      while (i < j)
-      {
-        arrayOfm[i].a(this.bao, 1, this.aTo, 0, null);
-        i += 1;
-      }
-      this.bam = false;
-    }
-    AppMethodBeat.o(92230);
+    this.cUh = true;
+    this.cUj = paramLong;
+    this.cNk = 0;
+    this.cUi = 2;
   }
   
   public final void t(com.google.android.exoplayer2.i.m paramm)
   {
     int i = 0;
     AppMethodBeat.i(92231);
-    if (this.bam)
+    if (this.cUh)
     {
-      if ((this.ban == 2) && (!e(paramm, 32)))
+      if ((this.cUi == 2) && (!e(paramm, 32)))
       {
         AppMethodBeat.o(92231);
         return;
       }
-      if ((this.ban == 1) && (!e(paramm, 0)))
+      if ((this.cUi == 1) && (!e(paramm, 0)))
       {
         AppMethodBeat.o(92231);
         return;
       }
       int j = paramm.position;
-      int k = paramm.vg();
-      com.google.android.exoplayer2.c.m[] arrayOfm = this.bal;
+      int k = paramm.UF();
+      com.google.android.exoplayer2.c.m[] arrayOfm = this.cUg;
       int m = arrayOfm.length;
       while (i < m)
       {
@@ -117,14 +117,14 @@ public final class g
         localm.a(paramm, k);
         i += 1;
       }
-      this.aTo += k;
+      this.cNk += k;
     }
     AppMethodBeat.o(92231);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.c.f.g
  * JD-Core Version:    0.7.0.1
  */

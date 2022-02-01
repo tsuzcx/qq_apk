@@ -43,7 +43,7 @@ public final class b
     }
   }
   
-  public static void c(Window paramWindow, final boolean paramBoolean)
+  public static void b(Window paramWindow, final boolean paramBoolean)
   {
     AppMethodBeat.i(78761);
     if (paramBoolean)
@@ -57,7 +57,7 @@ public final class b
         {
           AppMethodBeat.i(78760);
           if ((paramAnonymousInt & 0x4) == 0) {
-            this.ptw.getDecorView().setSystemUiVisibility(b.a(this.ptw, paramBoolean));
+            b.this.getDecorView().setSystemUiVisibility(b.a(b.this, paramBoolean));
           }
           AppMethodBeat.o(78760);
         }

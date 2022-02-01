@@ -9,24 +9,24 @@ class RequestStatus
   
   RequestStatus()
   {
-    AppMethodBeat.i(192002);
+    AppMethodBeat.i(216416);
     this.finish = new AtomicBoolean(false);
-    AppMethodBeat.o(192002);
+    AppMethodBeat.o(216416);
   }
   
   public boolean getFinish()
   {
-    AppMethodBeat.i(192007);
+    AppMethodBeat.i(216429);
     boolean bool = this.finish.get();
-    AppMethodBeat.o(192007);
+    AppMethodBeat.o(216429);
     return bool;
   }
   
   public void setFinish(boolean paramBoolean)
   {
-    AppMethodBeat.i(192005);
+    AppMethodBeat.i(216424);
     this.finish.set(paramBoolean);
-    AppMethodBeat.o(192005);
+    AppMethodBeat.o(216424);
   }
 }
 

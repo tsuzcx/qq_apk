@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="right" android:orientation="horizontal" android:paddingLeft="@dimen/i1" android:paddingRight="@dimen/hs" android:paddingBottom="@dimen/hs" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:textSize="@dimen/is" android:textColor="@color/hg" android:id="@id/b_7" android:background="@drawable/c5" android:layout_width="wrap_content" android:minWidth="@dimen/av" android:text="@string/b96" style="@style/p5" />
-    <Button android:textSize="@dimen/is" android:textColor="@color/g7" android:id="@id/b_6" android:background="@drawable/c5" android:layout_width="wrap_content" android:minWidth="@dimen/av" android:text="@string/b9_" style="@style/p5" />
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_weight="1.0">
+        <TextView android:textSize="@dimen/bj" android:textColor="@color/m4" android:ellipsize="end" android:id="@id/gv1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" />
+        <TextView android:textSize="@dimen/bj" android:textColor="@color/m4" android:ellipsize="end" android:id="@id/gv0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="msg_content" android:maxLines="1" />
+    </LinearLayout>
+    <ImageView android:id="@id/guz" android:visibility="gone" android:layout_width="@dimen/akj" android:layout_height="@dimen/akj" android:scaleType="centerCrop" />
 </LinearLayout>

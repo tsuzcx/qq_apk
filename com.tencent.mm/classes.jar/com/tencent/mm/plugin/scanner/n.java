@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.scanner;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.k.f;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.n.f;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.plugin.performance.a.e;
 import com.tencent.mm.plugin.zero.b.a;
 import com.tencent.mm.protocal.d;
@@ -17,44 +17,51 @@ import java.util.List;
 
 public final class n
 {
-  private static Boolean IGb;
-  private static Boolean IGc;
-  private static int IGd;
-  private static boolean IGe;
+  private static Boolean OMj;
+  private static Boolean OMk;
+  private static int OMl;
+  private static boolean OMm;
   
   static
   {
-    AppMethodBeat.i(207818);
-    IGb = null;
-    IGc = null;
-    IGd = 0;
-    IGe = true;
-    int i = ((b)h.ae(b.class)).a(b.a.vXf, 10);
-    int j = ((b)h.ae(b.class)).a(b.a.vXg, 0);
+    AppMethodBeat.i(313363);
+    OMj = null;
+    OMk = null;
+    OMl = 0;
+    OMm = true;
+    int i = ((c)h.ax(c.class)).a(c.a.zpK, 10);
+    int j = ((c)h.ax(c.class)).a(c.a.zpL, 0);
     if (j == 1)
     {
-      IGd = ((b)h.ae(b.class)).a(b.a.vXh, 10);
-      if (((b)h.ae(b.class)).a(b.a.vOe, 0) != 1) {
+      OMl = ((c)h.ax(c.class)).a(c.a.zpM, 10);
+      if (((c)h.ax(c.class)).a(c.a.zgv, 0) != 1) {
         break label211;
       }
     }
     label211:
     for (boolean bool = true;; bool = false)
     {
-      IGc = Boolean.valueOf(bool);
-      int k = ((b)h.ae(b.class)).a(b.a.vXi, 0);
+      OMk = Boolean.valueOf(bool);
+      int k = ((c)h.ax(c.class)).a(c.a.zpN, 0);
       if (k == 1) {
-        IGe = false;
+        OMm = false;
       }
-      Log.i("MicroMsg.ScannerHelper", "alvinluo initScannerHelper testTranslateConfig: %s, useConfig: %s, translateConfigRatio %d, pendingWordDetect: %b, disableAlwaysShowTranslateMenu: %s, alwaysShowTranlsateMenu: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(IGd), IGc, Integer.valueOf(k), Boolean.valueOf(IGe) });
-      AppMethodBeat.o(207818);
+      Log.i("MicroMsg.ScannerHelper", "alvinluo initScannerHelper testTranslateConfig: %s, useConfig: %s, translateConfigRatio %d, pendingWordDetect: %b, disableAlwaysShowTranslateMenu: %s, alwaysShowTranlsateMenu: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(OMl), OMk, Integer.valueOf(k), Boolean.valueOf(OMm) });
+      AppMethodBeat.o(313363);
       return;
-      IGd = i;
+      OMl = i;
       break;
     }
   }
   
-  private static String adh(int paramInt)
+  public static void BV(boolean paramBoolean)
+  {
+    AppMethodBeat.i(313311);
+    OMj = Boolean.valueOf(paramBoolean);
+    AppMethodBeat.o(313311);
+  }
+  
+  private static String ahE(int paramInt)
   {
     switch (paramInt)
     {
@@ -76,59 +83,59 @@ public final class n
     return "vi";
   }
   
-  public static boolean adi(int paramInt)
+  public static boolean ahF(int paramInt)
   {
-    return paramInt >= IGd;
+    return paramInt >= OMl;
   }
   
-  public static boolean adj(int paramInt)
+  public static boolean ahG(int paramInt)
   {
-    return paramInt >= IGd;
+    return paramInt >= OMl;
   }
   
-  private static boolean fBL()
+  private static boolean gPp()
   {
-    AppMethodBeat.i(207794);
-    if (((b)h.ae(b.class)).a(b.a.vzP, 1) == 1)
+    AppMethodBeat.i(313302);
+    if (((c)h.ax(c.class)).a(c.a.yNx, 1) == 1)
     {
-      AppMethodBeat.o(207794);
+      AppMethodBeat.o(313302);
       return true;
     }
-    AppMethodBeat.o(207794);
+    AppMethodBeat.o(313302);
     return false;
   }
   
-  public static boolean fBM()
+  public static boolean gPq()
   {
-    AppMethodBeat.i(207795);
-    if ((BuildInfo.DEBUG) && (IGb != null))
+    AppMethodBeat.i(313306);
+    if ((BuildInfo.DEBUG) && (OMj != null))
     {
-      boolean bool = IGb.booleanValue();
-      AppMethodBeat.o(207795);
+      boolean bool = OMj.booleanValue();
+      AppMethodBeat.o(313306);
       return bool;
     }
-    e locale = (e)h.ae(e.class);
-    if ((IGc.booleanValue()) && (locale != null) && (locale.bwe()))
+    e locale = (e)h.ax(e.class);
+    if ((OMk.booleanValue()) && (locale != null) && (locale.bUX()))
     {
       Log.i("MicroMsg.ScannerHelper", "isPendingWordDetect disabled by memory degrade.");
-      AppMethodBeat.o(207795);
+      AppMethodBeat.o(313306);
       return true;
     }
-    AppMethodBeat.o(207795);
+    AppMethodBeat.o(313306);
     return false;
   }
   
-  public static boolean fBN()
+  public static boolean gPr()
   {
-    AppMethodBeat.i(207798);
-    if (!fBL())
+    AppMethodBeat.i(313318);
+    if (!gPp())
     {
       Log.i("MicroMsg.ScannerHelper", "Word Detect Closed");
-      AppMethodBeat.o(207798);
+      AppMethodBeat.o(313318);
       return false;
     }
-    int i = ((a)h.ae(a.class)).axc().getInt("EnableSessionPicTranslation", 0);
-    Object localObject = ((a)h.ae(a.class)).axc().getValue("PicTranslationSupportUserLanguage");
+    int i = ((a)h.ax(a.class)).aRC().getInt("EnableSessionPicTranslation", 0);
+    Object localObject = ((a)h.ax(a.class)).aRC().getValue("PicTranslationSupportUserLanguage");
     if (i == 1) {}
     for (boolean bool = true;; bool = false)
     {
@@ -140,29 +147,29 @@ public final class n
       if ((localObject == null) || (!Arrays.asList((Object[])localObject).contains(LocaleUtil.getApplicationLanguage()))) {
         break;
       }
-      AppMethodBeat.o(207798);
+      AppMethodBeat.o(313318);
       return true;
     }
-    if (d.RAH)
+    if (d.Yxl)
     {
-      AppMethodBeat.o(207798);
+      AppMethodBeat.o(313318);
       return true;
     }
-    AppMethodBeat.o(207798);
+    AppMethodBeat.o(313318);
     return false;
   }
   
-  public static boolean fBO()
+  public static boolean gPs()
   {
     AppMethodBeat.i(151578);
-    if (!fBL())
+    if (!gPp())
     {
       Log.i("MicroMsg.ScannerHelper", "Word Detect Closed");
       AppMethodBeat.o(151578);
       return false;
     }
-    int i = ((a)h.ae(a.class)).axc().getInt("EnableSnsPicTranslation", 0);
-    Object localObject = ((a)h.ae(a.class)).axc().getValue("PicTranslationSupportUserLanguage");
+    int i = ((a)h.ax(a.class)).aRC().getInt("EnableSnsPicTranslation", 0);
+    Object localObject = ((a)h.ax(a.class)).aRC().getValue("PicTranslationSupportUserLanguage");
     if (i == 1) {}
     for (boolean bool = true;; bool = false)
     {
@@ -177,7 +184,7 @@ public final class n
       AppMethodBeat.o(151578);
       return true;
     }
-    if (d.RAH)
+    if (d.Yxl)
     {
       AppMethodBeat.o(151578);
       return true;
@@ -186,17 +193,17 @@ public final class n
     return false;
   }
   
-  public static boolean fBP()
+  public static boolean gPt()
   {
     AppMethodBeat.i(151579);
-    if (!fBL())
+    if (!gPp())
     {
       Log.i("MicroMsg.ScannerHelper", "Word Detect Closed");
       AppMethodBeat.o(151579);
       return false;
     }
-    int i = ((a)h.ae(a.class)).axc().getInt("EnableFavPicTranslation", 0);
-    Object localObject = ((a)h.ae(a.class)).axc().getValue("PicTranslationSupportUserLanguage");
+    int i = ((a)h.ax(a.class)).aRC().getInt("EnableFavPicTranslation", 0);
+    Object localObject = ((a)h.ax(a.class)).aRC().getValue("PicTranslationSupportUserLanguage");
     if (i == 1) {}
     for (boolean bool = true;; bool = false)
     {
@@ -211,7 +218,7 @@ public final class n
       AppMethodBeat.o(151579);
       return true;
     }
-    if (d.RAH)
+    if (d.Yxl)
     {
       AppMethodBeat.o(151579);
       return true;
@@ -220,17 +227,17 @@ public final class n
     return false;
   }
   
-  public static boolean fBQ()
+  public static boolean gPu()
   {
-    AppMethodBeat.i(207804);
-    if (!fBL())
+    AppMethodBeat.i(313330);
+    if (!gPp())
     {
       Log.i("MicroMsg.ScannerHelper", "Word Detect Closed");
-      AppMethodBeat.o(207804);
+      AppMethodBeat.o(313330);
       return false;
     }
-    int i = ((a)h.ae(a.class)).axc().getInt("EnableWebviewPicTranslation", 0);
-    Object localObject = ((a)h.ae(a.class)).axc().getValue("PicTranslationSupportUserLanguage");
+    int i = ((a)h.ax(a.class)).aRC().getInt("EnableWebviewPicTranslation", 0);
+    Object localObject = ((a)h.ax(a.class)).aRC().getValue("PicTranslationSupportUserLanguage");
     if (i == 1) {}
     for (boolean bool = true;; bool = false)
     {
@@ -242,26 +249,26 @@ public final class n
       if ((localObject == null) || (!Arrays.asList((Object[])localObject).contains(LocaleUtil.getApplicationLanguage()))) {
         break;
       }
-      AppMethodBeat.o(207804);
+      AppMethodBeat.o(313330);
       return true;
     }
-    if (d.RAH)
+    if (d.Yxl)
     {
-      AppMethodBeat.o(207804);
+      AppMethodBeat.o(313330);
       return true;
     }
-    AppMethodBeat.o(207804);
+    AppMethodBeat.o(313330);
     return false;
   }
   
-  public static boolean fBR()
+  public static boolean gPv()
   {
-    return IGe;
+    return OMm;
   }
   
-  public static int hc(List<Float> paramList)
+  public static int kd(List<Float> paramList)
   {
-    AppMethodBeat.i(207810);
+    AppMethodBeat.i(313342);
     if (paramList != null)
     {
       int j = 0;
@@ -272,10 +279,10 @@ public final class n
           break;
         }
         k = i;
-        if (!adh(j).equalsIgnoreCase("bg"))
+        if (!ahE(j).equalsIgnoreCase("bg"))
         {
           k = i;
-          if (!adh(j).equalsIgnoreCase(LocaleUtil.getApplicationLanguage())) {
+          if (!ahE(j).equalsIgnoreCase(LocaleUtil.getApplicationLanguage())) {
             k = i + (int)(((Float)paramList.get(j)).floatValue() * 100.0F);
           }
         }
@@ -283,18 +290,18 @@ public final class n
       }
     }
     int k = 0;
-    AppMethodBeat.o(207810);
+    AppMethodBeat.o(313342);
     return k;
   }
   
-  public static boolean hd(List<Float> paramList)
+  public static boolean ke(List<Float> paramList)
   {
-    AppMethodBeat.i(207816);
+    AppMethodBeat.i(313359);
     if (paramList != null)
     {
       i = 0;
       if (i < paramList.size()) {
-        if (adh(i).equalsIgnoreCase("bg"))
+        if (ahE(i).equalsIgnoreCase("bg"))
         {
           i = (int)(((Float)paramList.get(i)).floatValue() * 100.0F);
           label51:
@@ -311,7 +318,7 @@ public final class n
       if (i == 0) {
         break label109;
       }
-      AppMethodBeat.o(207816);
+      AppMethodBeat.o(313359);
       return true;
       i += 1;
       break;
@@ -319,20 +326,13 @@ public final class n
       break label51;
     }
     label109:
-    AppMethodBeat.o(207816);
+    AppMethodBeat.o(313359);
     return false;
-  }
-  
-  public static void xk(boolean paramBoolean)
-  {
-    AppMethodBeat.i(207796);
-    IGb = Boolean.valueOf(paramBoolean);
-    AppMethodBeat.o(207796);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.n
  * JD-Core Version:    0.7.0.1
  */

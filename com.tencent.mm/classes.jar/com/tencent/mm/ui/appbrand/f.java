@@ -15,80 +15,82 @@ import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.modelappbrand.a.b.k;
-import com.tencent.mm.plugin.appbrand.ac.n;
+import com.tencent.mm.plugin.appbrand.af.p;
 import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
-import com.tencent.mm.ui.base.r;
+import com.tencent.mm.ui.base.v;
 
 public final class f
   implements b.k
 {
-  private TextView KWK;
-  private TextView KWL;
-  r RnU;
-  public boolean RnV;
-  private String WgA;
-  private ChatFooter WgB;
-  private boolean WgC;
-  public a WgD;
-  MMHandler WgE;
-  private long Wgy;
-  private ImageView Wgz;
+  private TextView JfT;
+  private TextView JfU;
+  v Ykl;
+  public boolean Ykm;
+  MMHandler adNA;
+  private long adNu;
+  private ImageView adNv;
+  private String adNw;
+  private ChatFooter adNx;
+  private boolean adNy;
+  public a adNz;
   private Bitmap bitmap;
   private View contentView;
   private Context context;
-  private ImageView fIv;
-  private ProgressBar fIx;
-  private View jac;
+  private ImageView hNV;
+  private ProgressBar hNX;
+  private View lBX;
   
   public f(Context paramContext, View paramView, ChatFooter paramChatFooter)
   {
     AppMethodBeat.i(33824);
-    this.Wgy = 10000L;
+    this.adNu = 10000L;
     this.contentView = null;
-    this.KWK = null;
-    this.KWL = null;
-    this.fIv = null;
-    this.Wgz = null;
-    this.fIx = null;
-    this.WgA = null;
+    this.JfT = null;
+    this.JfU = null;
+    this.hNV = null;
+    this.adNv = null;
+    this.hNX = null;
+    this.adNw = null;
     this.bitmap = null;
-    this.RnV = true;
-    this.WgC = false;
-    this.WgE = null;
+    this.Ykm = true;
+    this.adNy = false;
+    this.adNA = null;
     this.context = paramContext;
-    this.jac = paramView;
-    this.WgB = paramChatFooter;
-    this.contentView = View.inflate(this.context, R.i.ecp, null);
-    this.KWK = ((TextView)this.contentView.findViewById(R.h.dIU));
-    this.KWL = ((TextView)this.contentView.findViewById(R.h.dIV));
-    this.fIv = ((ImageView)this.contentView.findViewById(R.h.image_iv));
-    this.Wgz = ((ImageView)this.contentView.findViewById(R.h.error_iv));
-    this.fIx = ((ProgressBar)this.contentView.findViewById(R.h.dIS));
-    this.RnU = new r(this.contentView, -2, -2, true);
-    this.RnU.setBackgroundDrawable(new ColorDrawable(0));
-    this.RnU.setOutsideTouchable(true);
-    this.RnU.setFocusable(false);
+    this.lBX = paramView;
+    this.adNx = paramChatFooter;
+    this.contentView = View.inflate(this.context, R.i.geX, null);
+    this.JfT = ((TextView)this.contentView.findViewById(R.h.fKp));
+    this.JfU = ((TextView)this.contentView.findViewById(R.h.fKq));
+    this.hNV = ((ImageView)this.contentView.findViewById(R.h.image_iv));
+    this.adNv = ((ImageView)this.contentView.findViewById(R.h.error_iv));
+    this.hNX = ((ProgressBar)this.contentView.findViewById(R.h.fKn));
+    this.Ykl = new v(this.contentView, -2, -2, true);
+    this.Ykl.setBackgroundDrawable(new ColorDrawable(0));
+    this.Ykl.setOutsideTouchable(true);
+    this.Ykl.setFocusable(false);
     this.contentView.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(33815);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/ui/appbrand/AppBrandServiceImageBubble$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        if (f.this.WgD != null) {
-          f.this.WgD.hJo();
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/ui/appbrand/AppBrandServiceImageBubble$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        if (f.this.adNz != null) {
+          f.this.adNz.onSendImg();
         }
-        f.this.RnU.dismiss();
+        f.this.Ykl.dismiss();
         a.a(this, "com/tencent/mm/ui/appbrand/AppBrandServiceImageBubble$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(33815);
       }
     });
-    this.WgE = new MMHandler(this.context.getMainLooper())
+    this.adNA = new MMHandler(this.context.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -100,7 +102,35 @@ public final class f
     AppMethodBeat.o(33824);
   }
   
-  public final void G(Bitmap paramBitmap)
+  public final void bFg()
+  {
+    AppMethodBeat.i(33820);
+    Log.d("MicroMsg.AppBrandServiceImageBubble", "beforeLoadBitmap");
+    this.hNX.setVisibility(0);
+    this.hNV.setVisibility(8);
+    this.adNv.setVisibility(8);
+    AppMethodBeat.o(33820);
+  }
+  
+  public final void bFh()
+  {
+    AppMethodBeat.i(33822);
+    Log.i("MicroMsg.AppBrandServiceImageBubble", "onLoadFailed");
+    this.adNv.setVisibility(0);
+    this.hNX.setVisibility(8);
+    this.hNV.setVisibility(8);
+    AppMethodBeat.o(33822);
+  }
+  
+  public final String key()
+  {
+    AppMethodBeat.i(33823);
+    String str = p.el(this);
+    AppMethodBeat.o(33823);
+    return str;
+  }
+  
+  public final void onBitmapLoaded(Bitmap paramBitmap)
   {
     AppMethodBeat.i(33821);
     Log.d("MicroMsg.AppBrandServiceImageBubble", "onBitmapLoaded");
@@ -111,56 +141,52 @@ public final class f
       return;
     }
     this.bitmap = paramBitmap;
-    this.fIx.setVisibility(8);
+    this.hNX.setVisibility(8);
     if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      this.fIv.setVisibility(0);
-      this.fIv.setImageBitmap(paramBitmap);
-      this.Wgz.setVisibility(8);
+      this.hNV.setVisibility(0);
+      this.hNV.setImageBitmap(paramBitmap);
+      this.adNv.setVisibility(8);
       AppMethodBeat.o(33821);
       return;
     }
-    this.Wgz.setVisibility(0);
-    this.fIv.setVisibility(8);
+    this.adNv.setVisibility(0);
+    this.hNV.setVisibility(8);
     AppMethodBeat.o(33821);
   }
   
-  public final void bhq()
+  public final void show()
   {
-    AppMethodBeat.i(33820);
-    Log.d("MicroMsg.AppBrandServiceImageBubble", "beforeLoadBitmap");
-    this.fIx.setVisibility(0);
-    this.fIv.setVisibility(8);
-    this.Wgz.setVisibility(8);
-    AppMethodBeat.o(33820);
-  }
-  
-  public final void bhr()
-  {
-    AppMethodBeat.i(33822);
-    Log.i("MicroMsg.AppBrandServiceImageBubble", "onLoadFailed");
-    this.Wgz.setVisibility(0);
-    this.fIx.setVisibility(8);
-    this.fIv.setVisibility(8);
-    AppMethodBeat.o(33822);
-  }
-  
-  public final String key()
-  {
-    AppMethodBeat.i(33823);
-    String str = n.cP(this);
-    AppMethodBeat.o(33823);
-    return str;
+    AppMethodBeat.i(249684);
+    Log.d("MicroMsg.AppBrandServiceImageBubble", "show");
+    bh.baH().postToWorker(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(33818);
+        f.this.adNA.sendEmptyMessage(0);
+        AppMethodBeat.o(33818);
+      }
+      
+      public final String toString()
+      {
+        AppMethodBeat.i(33819);
+        String str = super.toString() + "MicroMsg.AppBrandServiceImageBubbleshow";
+        AppMethodBeat.o(33819);
+        return str;
+      }
+    });
+    AppMethodBeat.o(249684);
   }
   
   public static abstract interface a
   {
-    public abstract void hJo();
+    public abstract void onSendImg();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.appbrand.f
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ import com.tencent.mm.plugin.story.api.n;
 public class StoryTouchImageView
   extends TouchImageView
 {
-  i LeM;
+  i REW;
   
   public StoryTouchImageView(Context paramContext)
   {
@@ -24,10 +24,10 @@ public class StoryTouchImageView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(99695);
-    this.LeM = null;
-    this.LeM = ((e)h.ag(e.class)).getStoryUIFactory().ik(paramContext);
-    this.LeM.g(this);
-    this.LeM.setOnClickListener(this.LeM.gbx());
+    this.REW = null;
+    this.REW = ((e)h.az(e.class)).getStoryUIFactory().ka(paramContext);
+    this.REW.g(this);
+    this.REW.setOnClickListener(this.REW.huQ());
     setLayerType(1, null);
     AppMethodBeat.o(99695);
   }
@@ -36,28 +36,28 @@ public class StoryTouchImageView
   {
     AppMethodBeat.i(99696);
     super.onDraw(paramCanvas);
-    this.LeM.a(paramCanvas, true, 0);
+    this.REW.a(paramCanvas, true, 0);
     AppMethodBeat.o(99696);
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(99697);
-    super.setOnClickListener(this.LeM.gbx());
-    this.LeM.setOnClickListener(paramOnClickListener);
+    super.setOnClickListener(this.REW.huQ());
+    this.REW.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(99697);
   }
   
   public void setShowStoryHint(boolean paramBoolean)
   {
     AppMethodBeat.i(99698);
-    this.LeM.setShowStoryHint(paramBoolean);
+    this.REW.setShowStoryHint(paramBoolean);
     AppMethodBeat.o(99698);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.StoryTouchImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -3,90 +3,83 @@ package com.tencent.mm.plugin.scanner.f.a;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/ocr/animation/AlphaImageAnimator;", "Lcom/tencent/mm/plugin/scanner/ocr/animation/BaseOCRImageAnimator;", "animationType", "", "(I)V", "canUpdate", "", "onDismissStart", "", "animationInfo", "Lcom/tencent/mm/plugin/scanner/ocr/animation/OCRImageAnimator$ImageAnimationInfo;", "onDismissUpdate", "factor", "", "onShowStart", "onShowUpdate", "updateViewAlpha", "view", "Landroid/view/View;", "alpha", "Companion", "plugin-scan_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/ocr/animation/AlphaImageAnimator;", "Lcom/tencent/mm/plugin/scanner/ocr/animation/BaseOCRImageAnimator;", "animationType", "", "(I)V", "canUpdate", "", "onDismissStart", "", "animationInfo", "Lcom/tencent/mm/plugin/scanner/ocr/animation/OCRImageAnimator$ImageAnimationInfo;", "onDismissUpdate", "factor", "", "onShowStart", "onShowUpdate", "updateViewAlpha", "view", "Landroid/view/View;", "alpha", "Companion", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   extends b
 {
-  public static final a.a IOb;
-  private final int INI;
+  public static final a.a OVd;
+  private final int OUN;
   
   static
   {
-    AppMethodBeat.i(216881);
-    IOb = new a.a((byte)0);
-    AppMethodBeat.o(216881);
+    AppMethodBeat.i(313520);
+    OVd = new a.a((byte)0);
+    AppMethodBeat.o(313520);
   }
   
   public a(int paramInt)
   {
-    this.INI = paramInt;
+    this.OUN = paramInt;
   }
   
-  private static void y(View paramView, float paramFloat)
+  private static void z(View paramView, float paramFloat)
   {
-    AppMethodBeat.i(216876);
+    AppMethodBeat.i(313518);
     Log.v("MicroMsg.AlphaImageAnimator", "alvinluo updateViewAlpha: %s", new Object[] { Float.valueOf(paramFloat) });
-    if (paramView != null)
-    {
+    if (paramView != null) {
       paramView.setAlpha(paramFloat);
-      AppMethodBeat.o(216876);
-      return;
     }
-    AppMethodBeat.o(216876);
+    AppMethodBeat.o(313518);
   }
   
   public final void a(c.a parama)
   {
-    AppMethodBeat.i(216865);
-    p.k(parama, "animationInfo");
+    AppMethodBeat.i(313527);
+    s.u(parama, "animationInfo");
     super.a(parama);
-    AppMethodBeat.o(216865);
+    AppMethodBeat.o(313527);
   }
   
   public final void b(c.a parama)
   {
-    AppMethodBeat.i(216868);
-    p.k(parama, "animationInfo");
-    AppMethodBeat.o(216868);
+    AppMethodBeat.i(313531);
+    s.u(parama, "animationInfo");
+    AppMethodBeat.o(313531);
   }
   
-  public final void bV(float paramFloat)
+  public final void db(float paramFloat)
   {
-    AppMethodBeat.i(216871);
+    AppMethodBeat.i(313537);
     View localView = getCurrentImageView();
-    if (localView == null) {
-      p.iCn();
-    }
+    s.checkNotNull(localView);
     if (localView.getAlpha() >= 1.0F - paramFloat) {
-      y(getCurrentImageView(), 1.0F - paramFloat);
+      z(getCurrentImageView(), 1.0F - paramFloat);
     }
-    AppMethodBeat.o(216871);
+    AppMethodBeat.o(313537);
   }
   
-  public final void bW(float paramFloat)
+  public final void dc(float paramFloat)
   {
-    AppMethodBeat.i(216873);
+    AppMethodBeat.i(313541);
     View localView = getCurrentImageView();
-    if (localView == null) {
-      p.iCn();
-    }
+    s.checkNotNull(localView);
     if (localView.getAlpha() <= paramFloat) {
-      y(getCurrentImageView(), paramFloat);
+      z(getCurrentImageView(), paramFloat);
     }
-    AppMethodBeat.o(216873);
+    AppMethodBeat.o(313541);
   }
   
-  public final boolean fDw()
+  public final boolean gRI()
   {
-    return this.INI == 2;
+    return this.OUN == 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.f.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -28,7 +28,7 @@ public class TXCSWVideoEncoder
   {
     AppMethodBeat.i(14849);
     TAG = TXCSWVideoEncoder.class.getSimpleName();
-    h.f();
+    h.d();
     nativeClassInit();
     AppMethodBeat.o(14849);
   }
@@ -49,6 +49,14 @@ public class TXCSWVideoEncoder
     return l;
   }
   
+  public static boolean isRPSSupported()
+  {
+    AppMethodBeat.i(229493);
+    boolean bool = nativeIsRPSSupported();
+    AppMethodBeat.o(229493);
+    return bool;
+  }
+  
   private static native void nativeClassInit();
   
   private native void nativeEnableNearestRPS(long paramLong, int paramInt);
@@ -64,6 +72,8 @@ public class TXCSWVideoEncoder
   private native long nativeGetRealFPS(long paramLong);
   
   private native long nativeInit(WeakReference<TXCSWVideoEncoder> paramWeakReference);
+  
+  private static native boolean nativeIsRPSSupported();
   
   private native void nativeRelease(long paramLong);
   
@@ -91,12 +101,12 @@ public class TXCSWVideoEncoder
   
   private static void onEncodeFinishedFromNative(WeakReference<TXCSWVideoEncoder> paramWeakReference, int paramInt, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(229017);
+    AppMethodBeat.i(229509);
     paramWeakReference = (TXCSWVideoEncoder)paramWeakReference.get();
     if (paramWeakReference != null) {
       paramWeakReference.onEncodeFinished(paramInt, paramLong1, paramLong2);
     }
-    AppMethodBeat.o(229017);
+    AppMethodBeat.o(229509);
   }
   
   private static void postEventFromNative(WeakReference<TXCSWVideoEncoder> paramWeakReference, byte[] paramArrayOfByte, int paramInt1, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, int paramInt2)
@@ -470,7 +480,7 @@ public class TXCSWVideoEncoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.videoencoder.TXCSWVideoEncoder
  * JD-Core Version:    0.7.0.1
  */

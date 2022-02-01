@@ -12,27 +12,28 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.b.k;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class VideoSurfaceView
   extends SurfaceView
-  implements k
+  implements i
 {
-  SurfaceHolder.Callback Ryb;
-  private int alM;
-  private boolean cJM;
-  private boolean iYs;
-  private SurfaceHolder jAv;
+  SurfaceHolder.Callback Yux;
+  private int cam;
+  private boolean eDv;
+  private boolean lAj;
   private int mVideoHeight;
   private int mVideoWidth;
-  private MediaPlayer.OnCompletionListener pAa;
-  private MediaPlayer.OnErrorListener pAd;
-  private String pDg;
-  private boolean pDh;
-  private MediaPlayer pzX;
-  MediaPlayer.OnPreparedListener pzY;
-  MediaPlayer.OnVideoSizeChangedListener pzZ;
-  private k.a uXU;
+  private SurfaceHolder rsd;
+  private MediaPlayer sFf;
+  MediaPlayer.OnPreparedListener sFg;
+  MediaPlayer.OnVideoSizeChangedListener sFh;
+  private MediaPlayer.OnCompletionListener sFi;
+  private MediaPlayer.OnErrorListener sFl;
+  private String sIs;
+  private boolean sIt;
+  private i.a yki;
   
   public VideoSurfaceView(Context paramContext)
   {
@@ -48,9 +49,9 @@ public class VideoSurfaceView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(116301);
-    this.jAv = null;
-    this.pzX = null;
-    this.pzZ = new MediaPlayer.OnVideoSizeChangedListener()
+    this.rsd = null;
+    this.sFf = null;
+    this.sFh = new MediaPlayer.OnVideoSizeChangedListener()
     {
       public final void onVideoSizeChanged(MediaPlayer paramAnonymousMediaPlayer, int paramAnonymousInt1, int paramAnonymousInt2)
       {
@@ -62,14 +63,14 @@ public class VideoSurfaceView
         AppMethodBeat.o(116294);
       }
     };
-    this.pzY = new MediaPlayer.OnPreparedListener()
+    this.sFg = new MediaPlayer.OnPreparedListener()
     {
       public final void onPrepared(MediaPlayer paramAnonymousMediaPlayer)
       {
         AppMethodBeat.i(116295);
         VideoSurfaceView.d(VideoSurfaceView.this);
         if (VideoSurfaceView.e(VideoSurfaceView.this) != null) {
-          VideoSurfaceView.e(VideoSurfaceView.this).qX();
+          VideoSurfaceView.e(VideoSurfaceView.this).Qz();
         }
         VideoSurfaceView.a(VideoSurfaceView.this, paramAnonymousMediaPlayer.getVideoWidth());
         VideoSurfaceView.b(VideoSurfaceView.this, paramAnonymousMediaPlayer.getVideoHeight());
@@ -91,9 +92,33 @@ public class VideoSurfaceView
         AppMethodBeat.o(116295);
       }
     };
-    this.pAa = new VideoSurfaceView.3(this);
-    this.pAd = new VideoSurfaceView.4(this);
-    this.Ryb = new SurfaceHolder.Callback()
+    this.sFi = new MediaPlayer.OnCompletionListener()
+    {
+      public final void onCompletion(MediaPlayer paramAnonymousMediaPlayer)
+      {
+        AppMethodBeat.i(116296);
+        if (VideoSurfaceView.e(VideoSurfaceView.this) != null)
+        {
+          VideoSurfaceView.e(VideoSurfaceView.this).gw(VideoSurfaceView.g(VideoSurfaceView.this).getCurrentPosition(), VideoSurfaceView.g(VideoSurfaceView.this).getDuration());
+          VideoSurfaceView.e(VideoSurfaceView.this).onCompletion();
+        }
+        AppMethodBeat.o(116296);
+      }
+    };
+    this.sFl = new MediaPlayer.OnErrorListener()
+    {
+      public final boolean onError(MediaPlayer paramAnonymousMediaPlayer, int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        AppMethodBeat.i(116297);
+        Log.d("MicroMsg.VideoSurfaceView", "Error: " + paramAnonymousInt1 + "," + paramAnonymousInt2);
+        if (VideoSurfaceView.e(VideoSurfaceView.this) != null) {
+          VideoSurfaceView.e(VideoSurfaceView.this).onError(paramAnonymousInt1, paramAnonymousInt2);
+        }
+        AppMethodBeat.o(116297);
+        return true;
+      }
+    };
+    this.Yux = new SurfaceHolder.Callback()
     {
       public final void surfaceChanged(SurfaceHolder paramAnonymousSurfaceHolder, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
@@ -121,7 +146,7 @@ public class VideoSurfaceView
         VideoSurfaceView.a(VideoSurfaceView.this, null);
         if (VideoSurfaceView.g(VideoSurfaceView.this) != null)
         {
-          VideoSurfaceView.e(VideoSurfaceView.this).fE(VideoSurfaceView.g(VideoSurfaceView.this).getCurrentPosition(), VideoSurfaceView.g(VideoSurfaceView.this).getDuration());
+          VideoSurfaceView.e(VideoSurfaceView.this).gw(VideoSurfaceView.g(VideoSurfaceView.this).getCurrentPosition(), VideoSurfaceView.g(VideoSurfaceView.this).getDuration());
           VideoSurfaceView.g(VideoSurfaceView.this).reset();
           VideoSurfaceView.g(VideoSurfaceView.this).release();
           VideoSurfaceView.k(VideoSurfaceView.this);
@@ -129,10 +154,10 @@ public class VideoSurfaceView
         AppMethodBeat.o(116300);
       }
     };
-    this.iYs = false;
+    this.lAj = false;
     this.mVideoWidth = 0;
     this.mVideoHeight = 0;
-    getHolder().addCallback(this.Ryb);
+    getHolder().addCallback(this.Yux);
     getHolder().setType(3);
     setFocusable(true);
     setFocusableInTouchMode(true);
@@ -140,52 +165,64 @@ public class VideoSurfaceView
     AppMethodBeat.o(116301);
   }
   
-  private void bXd()
+  private void cxo()
   {
     AppMethodBeat.i(116304);
-    if ((this.pDg == null) || (this.jAv == null))
+    if ((this.sIs == null) || (this.rsd == null))
     {
       AppMethodBeat.o(116304);
       return;
     }
-    if (this.pzX != null)
+    if (this.sFf != null)
     {
-      this.pzX.stop();
-      this.pzX.release();
-      this.pzX = null;
+      this.sFf.stop();
+      this.sFf.release();
+      this.sFf = null;
     }
     try
     {
-      this.pzX = new com.tencent.mm.compatible.b.k();
-      this.pzX.setOnPreparedListener(this.pzY);
-      this.pzX.setOnVideoSizeChangedListener(this.pzZ);
-      this.pDh = false;
+      this.sFf = new k();
+      this.sFf.setOnPreparedListener(this.sFg);
+      this.sFf.setOnVideoSizeChangedListener(this.sFh);
+      this.sIt = false;
       Log.v("MicroMsg.VideoSurfaceView", "reset duration to -1 in openVideo");
-      this.alM = -1;
-      this.pzX.setOnCompletionListener(this.pAa);
-      this.pzX.setOnErrorListener(this.pAd);
-      this.pzX.setDataSource(this.pDg);
-      this.pzX.setDisplay(this.jAv);
-      this.pzX.setAudioStreamType(3);
-      this.pzX.setScreenOnWhilePlaying(true);
-      this.pzX.prepareAsync();
-      this.mVideoHeight = this.pzX.getVideoHeight();
-      this.mVideoWidth = this.pzX.getVideoWidth();
-      setMute(this.iYs);
+      this.cam = -1;
+      this.sFf.setOnCompletionListener(this.sFi);
+      this.sFf.setOnErrorListener(this.sFl);
+      this.sFf.setDataSource(this.sIs);
+      this.sFf.setDisplay(this.rsd);
+      this.sFf.setAudioStreamType(3);
+      this.sFf.setScreenOnWhilePlaying(true);
+      this.sFf.prepareAsync();
+      this.mVideoHeight = this.sFf.getVideoHeight();
+      this.mVideoWidth = this.sFf.getVideoWidth();
+      setMute(this.lAj);
       AppMethodBeat.o(116304);
       return;
     }
     catch (Exception localException)
     {
       Log.printErrStackTrace("MicroMsg.VideoSurfaceView", localException, "prepare async error %s", new Object[] { localException.getMessage() });
-      if (this.uXU != null) {
-        this.uXU.onError(-1, -1);
+      if (this.yki != null) {
+        this.yki.onError(-1, -1);
       }
       AppMethodBeat.o(116304);
     }
   }
   
-  public final boolean I(Context paramContext, boolean paramBoolean)
+  public final void H(double paramDouble)
+  {
+    AppMethodBeat.i(116312);
+    if (this.sFf != null)
+    {
+      Log.d("MicroMsg.VideoSurfaceView", "seek to time: ".concat(String.valueOf(paramDouble)));
+      this.sFf.seekTo((int)paramDouble);
+      start();
+    }
+    AppMethodBeat.o(116312);
+  }
+  
+  public final boolean P(Context paramContext, boolean paramBoolean)
   {
     AppMethodBeat.i(116311);
     paramBoolean = start();
@@ -193,19 +230,19 @@ public class VideoSurfaceView
     return paramBoolean;
   }
   
-  public final void b(double paramDouble, boolean paramBoolean)
+  public final void c(double paramDouble, boolean paramBoolean)
   {
     AppMethodBeat.i(116314);
-    q(paramDouble);
+    H(paramDouble);
     AppMethodBeat.o(116314);
   }
   
   public int getCurrentPosition()
   {
     AppMethodBeat.i(116307);
-    if ((this.pzX != null) && (this.pDh))
+    if ((this.sFf != null) && (this.sIt))
     {
-      int i = this.pzX.getCurrentPosition();
+      int i = this.sFf.getCurrentPosition();
       AppMethodBeat.o(116307);
       return i;
     }
@@ -216,21 +253,21 @@ public class VideoSurfaceView
   public int getDuration()
   {
     AppMethodBeat.i(116306);
-    if ((this.pzX != null) && (this.pDh))
+    if ((this.sFf != null) && (this.sIt))
     {
-      if (this.alM > 0)
+      if (this.cam > 0)
       {
-        i = this.alM;
+        i = this.cam;
         AppMethodBeat.o(116306);
         return i;
       }
-      this.alM = this.pzX.getDuration();
-      i = this.alM;
+      this.cam = this.sFf.getDuration();
+      i = this.cam;
       AppMethodBeat.o(116306);
       return i;
     }
-    this.alM = -1;
-    int i = this.alM;
+    this.cam = -1;
+    int i = this.cam;
     AppMethodBeat.o(116306);
     return i;
   }
@@ -247,15 +284,15 @@ public class VideoSurfaceView
   
   public String getVideoPath()
   {
-    return this.pDg;
+    return this.sIs;
   }
   
   public final boolean isPlaying()
   {
     AppMethodBeat.i(116308);
-    if ((this.pzX != null) && (this.pDh))
+    if ((this.sFf != null) && (this.sIt))
     {
-      boolean bool = this.pzX.isPlaying();
+      boolean bool = this.sFf.isPlaying();
       AppMethodBeat.o(116308);
       return bool;
     }
@@ -268,23 +305,11 @@ public class VideoSurfaceView
   public final void pause()
   {
     AppMethodBeat.i(116305);
-    if ((this.pzX != null) && (this.pDh) && (this.pzX.isPlaying())) {
-      this.pzX.pause();
+    if ((this.sFf != null) && (this.sIt) && (this.sFf.isPlaying())) {
+      this.sFf.pause();
     }
-    this.cJM = false;
+    this.eDv = false;
     AppMethodBeat.o(116305);
-  }
-  
-  public final void q(double paramDouble)
-  {
-    AppMethodBeat.i(116312);
-    if (this.pzX != null)
-    {
-      Log.d("MicroMsg.VideoSurfaceView", "seek to time: ".concat(String.valueOf(paramDouble)));
-      this.pzX.seekTo((int)paramDouble);
-      start();
-    }
-    AppMethodBeat.o(116312);
   }
   
   public void setForceScaleFullScreen(boolean paramBoolean) {}
@@ -292,8 +317,8 @@ public class VideoSurfaceView
   public void setLoop(boolean paramBoolean)
   {
     AppMethodBeat.i(116309);
-    if (this.pzX != null) {
-      this.pzX.setLooping(paramBoolean);
+    if (this.sFf != null) {
+      this.sFf.setLooping(paramBoolean);
     }
     AppMethodBeat.o(116309);
   }
@@ -301,43 +326,43 @@ public class VideoSurfaceView
   public void setMute(boolean paramBoolean)
   {
     AppMethodBeat.i(116313);
-    this.iYs = paramBoolean;
-    if (this.pzX != null)
+    this.lAj = paramBoolean;
+    if (this.sFf != null)
     {
-      if (this.iYs)
+      if (this.lAj)
       {
-        this.pzX.setVolume(0.0F, 0.0F);
+        this.sFf.setVolume(0.0F, 0.0F);
         AppMethodBeat.o(116313);
         return;
       }
-      this.pzX.setVolume(0.5F, 0.5F);
+      this.sFf.setVolume(0.5F, 0.5F);
     }
     AppMethodBeat.o(116313);
   }
   
-  public void setOnInfoCallback(k.b paramb) {}
+  public void setOnInfoCallback(i.b paramb) {}
   
-  public void setOnSeekCompleteCallback(k.c paramc) {}
+  public void setOnSeekCompleteCallback(i.c paramc) {}
   
-  public void setOnSurfaceCallback(k.d paramd) {}
+  public void setOnSurfaceCallback(i.d paramd) {}
   
-  public void setOneTimeVideoTextureUpdateCallback(k.e parame) {}
+  public void setOneTimeVideoTextureUpdateCallback(i.e parame) {}
   
   public void setPlayProgressCallback(boolean paramBoolean) {}
   
   public void setThumb(Bitmap paramBitmap) {}
   
-  public void setVideoCallback(k.a parama)
+  public void setVideoCallback(i.a parama)
   {
-    this.uXU = parama;
+    this.yki = parama;
   }
   
   public void setVideoPath(String paramString)
   {
     AppMethodBeat.i(116302);
-    this.pDg = paramString;
-    this.cJM = false;
-    bXd();
+    this.sIs = paramString;
+    this.eDv = false;
+    cxo();
     requestLayout();
     AppMethodBeat.o(116302);
   }
@@ -345,10 +370,10 @@ public class VideoSurfaceView
   public final boolean start()
   {
     AppMethodBeat.i(116310);
-    if ((this.pzX != null) && (this.pDh)) {
-      this.pzX.start();
+    if ((this.sFf != null) && (this.sIt)) {
+      this.sFf.start();
     }
-    for (this.cJM = false;; this.cJM = true)
+    for (this.eDv = false;; this.eDv = true)
     {
       AppMethodBeat.o(116310);
       return true;
@@ -358,11 +383,11 @@ public class VideoSurfaceView
   public final void stop()
   {
     AppMethodBeat.i(116303);
-    if (this.pzX != null)
+    if (this.sFf != null)
     {
-      this.pzX.stop();
-      this.pzX.release();
-      this.pzX = null;
+      this.sFf.stop();
+      this.sFf.release();
+      this.sFf = null;
     }
     AppMethodBeat.o(116303);
   }

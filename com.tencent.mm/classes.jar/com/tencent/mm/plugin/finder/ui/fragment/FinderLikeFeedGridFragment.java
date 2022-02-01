@@ -3,177 +3,227 @@ package com.tencent.mm.plugin.finder.ui.fragment;
 import android.content.res.Resources;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.q;
 import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.hu;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.app.f;
+import com.tencent.mm.autogen.a.if;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.e.h;
 import com.tencent.mm.plugin.finder.feed.c.a;
 import com.tencent.mm.plugin.finder.feed.c.b;
 import com.tencent.mm.plugin.finder.feed.model.BaseFinderFeedLoader;
 import com.tencent.mm.plugin.finder.feed.model.FinderLikedFeedLoader;
 import com.tencent.mm.plugin.finder.feed.model.FinderLikedFeedLoader.b;
+import com.tencent.mm.plugin.finder.feed.model.internal.g;
 import com.tencent.mm.plugin.finder.feed.model.internal.j;
-import com.tencent.mm.plugin.finder.feed.y.a;
-import com.tencent.mm.plugin.finder.feed.y.b;
-import com.tencent.mm.plugin.finder.storage.data.k;
+import com.tencent.mm.plugin.finder.feed.z.a;
+import com.tencent.mm.plugin.finder.feed.z.b;
 import com.tencent.mm.plugin.finder.storage.data.k.a;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
-import com.tencent.mm.plugin.finder.viewmodel.component.aj;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.plugin.finder.viewmodel.component.as;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.component.g.a;
+import com.tencent.mm.ui.component.k.b;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.a;
 import kotlin.g.a.b;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/fragment/FinderLikeFeedGridFragment;", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderBaseGridFeedFragment;", "Lcom/tencent/mm/plugin/finder/feed/FinderLikeFeedUIContract$LikeFeedViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderLikeFeedUIContract$LikeFeedPresenter;", "()V", "eventListener", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/FeedUpdateEvent;", "getEventListener", "()Lcom/tencent/mm/sdk/event/IListener;", "setEventListener", "(Lcom/tencent/mm/sdk/event/IListener;)V", "feedLoader", "Lcom/tencent/mm/plugin/finder/feed/model/FinderLikedFeedLoader;", "getFeedLoader", "()Lcom/tencent/mm/plugin/finder/feed/model/FinderLikedFeedLoader;", "setFeedLoader", "(Lcom/tencent/mm/plugin/finder/feed/model/FinderLikedFeedLoader;)V", "presenter", "scene", "", "unLikeIdList", "Ljava/util/HashSet;", "", "Lkotlin/collections/HashSet;", "viewCallback", "checkEmptyOnUnLike", "", "getLayoutId", "getLoader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "getPresenter", "getViewCallback", "initAfterAttach", "initOnCreate", "onDestroy", "onResume", "updateTitle", "count", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/ui/fragment/FinderLikeFeedGridFragment;", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderBaseGridFeedFragment;", "Lcom/tencent/mm/plugin/finder/feed/FinderLikeFeedUIContract$LikeFeedViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderLikeFeedUIContract$LikeFeedPresenter;", "()V", "eventListener", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/FeedUpdateEvent;", "getEventListener", "()Lcom/tencent/mm/sdk/event/IListener;", "setEventListener", "(Lcom/tencent/mm/sdk/event/IListener;)V", "feedLoader", "Lcom/tencent/mm/plugin/finder/feed/model/FinderLikedFeedLoader;", "getFeedLoader", "()Lcom/tencent/mm/plugin/finder/feed/model/FinderLikedFeedLoader;", "setFeedLoader", "(Lcom/tencent/mm/plugin/finder/feed/model/FinderLikedFeedLoader;)V", "presenter", "scene", "", "unLikeIdList", "Ljava/util/HashSet;", "", "Lkotlin/collections/HashSet;", "viewCallback", "checkEmptyOnUnLike", "", "getCommentScene", "getLayoutId", "getLoader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "getPresenter", "getViewCallback", "initAfterAttach", "initOnCreate", "onDestroy", "onResume", "updateTitle", "count", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderLikeFeedGridFragment
-  extends FinderBaseGridFeedFragment<y.b, y.a>
+  extends FinderBaseGridFeedFragment<z.b, z.a>
 {
-  private y.a Ayr;
-  private y.b Ays;
-  private HashSet<Long> Ayt;
-  private HashMap _$_findViewCache;
+  public FinderLikedFeedLoader EXX;
+  private z.a FXM;
+  private z.b FXN;
+  private HashSet<Long> FXO;
+  private IListener<if> qmO;
   private final int scene = 2;
-  private IListener<hu> xyI;
-  public FinderLikedFeedLoader zNr;
   
   public FinderLikeFeedGridFragment()
   {
-    this.fEH = 102;
+    this.hJx = 102;
   }
   
-  public final void MI(int paramInt)
+  public final void Og(int paramInt)
   {
-    AppMethodBeat.i(221215);
-    if (paramInt > 0)
+    AppMethodBeat.i(347699);
+    if (paramInt > 0) {
+      getActivity().setMMTitle(getActivity().getResources().getString(e.h.finder_like_feed_title, new Object[] { String.valueOf(paramInt) }));
+    }
+    for (;;)
     {
-      ebI().setMMTitle(ebI().getResources().getString(b.j.finder_like_feed_title, new Object[] { String.valueOf(paramInt) }));
-      AppMethodBeat.o(221215);
+      super.Og(paramInt);
+      AppMethodBeat.o(347699);
       return;
+      getActivity().setMMTitle(getActivity().getResources().getString(e.h.finder_like_feed_title_zero));
     }
-    ebI().setMMTitle(ebI().getResources().getString(b.j.finder_like_feed_title_zero));
-    AppMethodBeat.o(221215);
   }
   
-  public final void _$_clearFindViewByIdCache()
+  public final FinderLikedFeedLoader fcT()
   {
-    AppMethodBeat.i(221225);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
+    AppMethodBeat.i(347668);
+    FinderLikedFeedLoader localFinderLikedFeedLoader = this.EXX;
+    if (localFinderLikedFeedLoader != null)
+    {
+      AppMethodBeat.o(347668);
+      return localFinderLikedFeedLoader;
     }
-    AppMethodBeat.o(221225);
+    s.bIx("feedLoader");
+    AppMethodBeat.o(347668);
+    return null;
   }
   
-  public final FinderLikedFeedLoader ebN()
+  public final int getCommentScene()
   {
-    AppMethodBeat.i(221185);
-    FinderLikedFeedLoader localFinderLikedFeedLoader = this.zNr;
-    if (localFinderLikedFeedLoader == null) {
-      p.bGy("feedLoader");
-    }
-    AppMethodBeat.o(221185);
-    return localFinderLikedFeedLoader;
+    return 35;
   }
   
   public final int getLayoutId()
   {
-    return b.g.finder_like_grid_list_layout;
+    return e.f.finder_like_grid_list_layout;
   }
   
   public final void initOnCreate()
   {
-    AppMethodBeat.i(221200);
-    this.Ayt = new HashSet();
-    MI(0);
-    Object localObject1 = com.tencent.mm.plugin.finder.feed.model.internal.g.xKw;
-    Object localObject2 = com.tencent.mm.ui.component.g.Xox;
-    localObject1 = new FinderLikedFeedLoader(false, (com.tencent.mm.plugin.finder.feed.model.internal.g)localObject1, ((aj)com.tencent.mm.ui.component.g.b((AppCompatActivity)ebI()).i(aj.class)).ekY());
+    AppMethodBeat.i(347685);
+    this.FXO = new HashSet();
+    Og(0);
+    Object localObject1 = g.Bkl;
+    Object localObject2 = com.tencent.mm.ui.component.k.aeZF;
+    localObject1 = new FinderLikedFeedLoader(false, (g)localObject1, ((as)com.tencent.mm.ui.component.k.d((AppCompatActivity)getActivity()).q(as.class)).fou());
     ((FinderLikedFeedLoader)localObject1).setInitDone((j)new a(this));
-    ((FinderLikedFeedLoader)localObject1).xEI = ((a)new b(this));
-    ((FinderLikedFeedLoader)localObject1).xHK = ((b)new c((FinderLikedFeedLoader)localObject1, this));
-    this.zNr = ((FinderLikedFeedLoader)localObject1);
-    localObject1 = (MMActivity)ebI();
-    ebI().getCommentScene();
-    localObject2 = this.zNr;
-    if (localObject2 == null) {
-      p.bGy("feedLoader");
+    ((FinderLikedFeedLoader)localObject1).BbB = ((a)new b(this));
+    ((FinderLikedFeedLoader)localObject1).BgZ = ((b)new c(this, (FinderLikedFeedLoader)localObject1));
+    localObject2 = ah.aiuX;
+    s.u(localObject1, "<set-?>");
+    this.EXX = ((FinderLikedFeedLoader)localObject1);
+    localObject2 = getActivity();
+    localObject1 = getActivity();
+    int i;
+    if ((localObject1 instanceof MMFinderUI))
+    {
+      localObject1 = (MMFinderUI)localObject1;
+      if (localObject1 != null) {
+        break label313;
+      }
+      i = 0;
+      label152:
+      this.FXM = new z.a((MMActivity)localObject2, i, (BaseFinderFeedLoader)fcT());
+      localObject2 = getActivity();
+      int j = this.scene;
+      localObject1 = getActivity();
+      if (!(localObject1 instanceof MMFinderUI)) {
+        break label321;
+      }
+      localObject1 = (MMFinderUI)localObject1;
+      label201:
+      if (localObject1 != null) {
+        break label326;
+      }
+      i = 0;
+      label207:
+      this.FXN = new z.b((MMActivity)localObject2, j, i, (byte)0);
+      localObject1 = this.FXN;
+      if (localObject1 != null) {
+        break label334;
+      }
+      s.bIx("viewCallback");
+      localObject1 = null;
     }
-    this.Ayr = new y.a((MMActivity)localObject1, (BaseFinderFeedLoader)localObject2);
-    this.Ays = new y.b((MMActivity)ebI(), this.scene, ebI().getCommentScene(), (byte)0);
-    localObject1 = this.Ays;
-    if (localObject1 == null) {
-      p.bGy("viewCallback");
+    label313:
+    label321:
+    label326:
+    label334:
+    for (;;)
+    {
+      z.a locala = this.FXM;
+      localObject2 = locala;
+      if (locala == null)
+      {
+        s.bIx("presenter");
+        localObject2 = null;
+      }
+      ((z.b)localObject1).a((c.a)localObject2);
+      this.qmO = ((IListener)new IListener(f.hfK)
+      {
+        @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+        static final class a
+          extends u
+          implements a<ah>
+        {
+          a(if paramif, FinderLikeFeedGridFragment paramFinderLikeFeedGridFragment)
+          {
+            super();
+          }
+        }
+      });
+      localObject1 = this.qmO;
+      if (localObject1 != null) {
+        ((IListener)localObject1).alive();
+      }
+      AppMethodBeat.o(347685);
+      return;
+      localObject1 = null;
+      break;
+      i = ((MMFinderUI)localObject1).getCommentScene();
+      break label152;
+      localObject1 = null;
+      break label201;
+      i = ((MMFinderUI)localObject1).getCommentScene();
+      break label207;
     }
-    localObject2 = this.Ayr;
-    if (localObject2 == null) {
-      p.bGy("presenter");
-    }
-    ((y.b)localObject1).a((c.a)localObject2);
-    this.xyI = ((IListener)new d(this));
-    EventCenter.instance.add(this.xyI);
-    AppMethodBeat.o(221200);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(221219);
-    EventCenter.instance.removeListener(this.xyI);
+    AppMethodBeat.i(347707);
+    IListener localIListener = this.qmO;
+    if (localIListener != null) {
+      localIListener.dead();
+    }
     super.onDestroy();
-    AppMethodBeat.o(221219);
+    AppMethodBeat.o(347707);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(221210);
+    AppMethodBeat.i(347693);
     super.onResume();
-    Object localObject1 = this.Ayt;
-    if (localObject1 != null)
+    Object localObject = this.FXO;
+    if (localObject != null)
     {
-      localObject1 = ((Iterable)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
+      Iterator localIterator = ((Iterable)localObject).iterator();
+      while (localIterator.hasNext())
       {
-        long l = ((Number)((Iterator)localObject1).next()).longValue();
-        Object localObject2 = this.zNr;
-        if (localObject2 == null) {
-          p.bGy("feedLoader");
-        }
-        ((FinderLikedFeedLoader)localObject2).remove(l, true);
-        localObject2 = k.Anu;
-        k.a.R(l, 2);
-        localObject2 = this.zNr;
-        if (localObject2 == null) {
-          p.bGy("feedLoader");
-        }
-        if (((FinderLikedFeedLoader)localObject2).getSize() == 0)
+        long l = ((Number)localIterator.next()).longValue();
+        fcT().remove(l, true);
+        localObject = com.tencent.mm.plugin.finder.storage.data.k.FNg;
+        k.a.ad(l, 2);
+        if (fcT().getSize() == 0)
         {
-          localObject2 = this.Ays;
-          if (localObject2 == null) {
-            p.bGy("viewCallback");
+          z.b localb = this.FXN;
+          localObject = localb;
+          if (localb == null)
+          {
+            s.bIx("viewCallback");
+            localObject = null;
           }
-          ((y.b)localObject2).bTY();
+          ((z.b)localObject).cul();
         }
       }
     }
-    localObject1 = this.zNr;
-    if (localObject1 == null) {
-      p.bGy("feedLoader");
-    }
-    MI(((FinderLikedFeedLoader)localObject1).jlf);
-    AppMethodBeat.o(221210);
+    Og(fcT().lNX);
+    AppMethodBeat.o(347693);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/ui/fragment/FinderLikeFeedGridFragment$initOnCreate$1$1", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IInitDone;", "call", "", "incrementCount", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/ui/fragment/FinderLikeFeedGridFragment$initOnCreate$1$1", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IInitDone;", "call", "", "incrementCount", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     implements j
   {
@@ -181,27 +231,45 @@ public final class FinderLikeFeedGridFragment
     
     public final void call(int paramInt)
     {
-      AppMethodBeat.i(289928);
-      Object localObject = FinderLikeFeedGridFragment.a(this.Ayu).getEmptyView();
-      if (localObject != null)
+      Object localObject2 = null;
+      AppMethodBeat.i(347649);
+      Object localObject3 = FinderLikeFeedGridFragment.b(this.FXP);
+      Object localObject1 = localObject3;
+      if (localObject3 == null)
       {
-        ((View)localObject).setVisibility(8);
-        localObject = FinderLikeFeedGridFragment.a(this.Ayu).xvJ.getRecyclerView();
-        if (localObject != null) {
-          ((RecyclerView)localObject).setVisibility(0);
+        s.bIx("viewCallback");
+        localObject1 = null;
+      }
+      localObject1 = ((z.b)localObject1).getEmptyView();
+      if (localObject1 != null)
+      {
+        localObject3 = this.FXP;
+        ((View)localObject1).setVisibility(8);
+        localObject1 = FinderLikeFeedGridFragment.b((FinderLikeFeedGridFragment)localObject3);
+        if (localObject1 != null) {
+          break label103;
         }
-        EventCenter.instance.publish((IEvent)new hu());
-        AppMethodBeat.o(289928);
+        s.bIx("viewCallback");
+        localObject1 = localObject2;
+      }
+      label103:
+      for (;;)
+      {
+        localObject1 = ((c.b)localObject1).ATx.getRecyclerView();
+        if (localObject1 != null) {
+          ((RecyclerView)localObject1).setVisibility(0);
+        }
+        new if().publish();
+        AppMethodBeat.o(347649);
         return;
       }
-      AppMethodBeat.o(289928);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/finder/ui/fragment/FinderLikeFeedGridFragment$initOnCreate$1$2"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
-    implements a<x>
+    extends u
+    implements a<ah>
   {
     b(FinderLikeFeedGridFragment paramFinderLikeFeedGridFragment)
     {
@@ -209,30 +277,25 @@ public final class FinderLikeFeedGridFragment
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/feed/model/FinderLikedFeedLoader$LikedTimelineResponse;", "invoke", "com/tencent/mm/plugin/finder/ui/fragment/FinderLikeFeedGridFragment$initOnCreate$1$3"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/feed/model/FinderLikedFeedLoader$LikedTimelineResponse;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends q
-    implements b<FinderLikedFeedLoader.b, x>
+    extends u
+    implements b<FinderLikedFeedLoader.b, ah>
   {
-    c(FinderLikedFeedLoader paramFinderLikedFeedLoader, FinderLikeFeedGridFragment paramFinderLikeFeedGridFragment)
+    c(FinderLikeFeedGridFragment paramFinderLikeFeedGridFragment, FinderLikedFeedLoader paramFinderLikedFeedLoader)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/ui/fragment/FinderLikeFeedGridFragment$initOnCreate$2", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/FeedUpdateEvent;", "callback", "", "event", "plugin-finder_release"})
-  public static final class d
-    extends IListener<hu>
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class initOnCreate$2$a
+    extends u
+    implements a<ah>
   {
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/finder/ui/fragment/FinderLikeFeedGridFragment$initOnCreate$2$callback$1$1"})
-    static final class a
-      extends q
-      implements a<x>
+    initOnCreate$2$a(if paramif, FinderLikeFeedGridFragment paramFinderLikeFeedGridFragment)
     {
-      a(FinderLikeFeedGridFragment.d paramd, hu paramhu)
-      {
-        super();
-      }
+      super();
     }
   }
 }

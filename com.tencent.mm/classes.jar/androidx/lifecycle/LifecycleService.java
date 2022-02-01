@@ -7,67 +7,67 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class LifecycleService
   extends Service
-  implements l
+  implements q
 {
-  private final w aae;
+  private final ae bHy;
   
   public LifecycleService()
   {
-    AppMethodBeat.i(188837);
-    this.aae = new w(this);
-    AppMethodBeat.o(188837);
+    AppMethodBeat.i(194511);
+    this.bHy = new ae(this);
+    AppMethodBeat.o(194511);
   }
   
-  public h getLifecycle()
+  public j getLifecycle()
   {
-    return this.aae.aaB;
+    return this.bHy.bHV;
   }
   
   public IBinder onBind(Intent paramIntent)
   {
-    AppMethodBeat.i(188845);
-    this.aae.d(h.a.ON_START);
-    AppMethodBeat.o(188845);
+    AppMethodBeat.i(194527);
+    this.bHy.c(j.a.ON_START);
+    AppMethodBeat.o(194527);
     return null;
   }
   
   public void onCreate()
   {
-    AppMethodBeat.i(188840);
-    this.aae.d(h.a.ON_CREATE);
+    AppMethodBeat.i(194520);
+    this.bHy.c(j.a.ON_CREATE);
     super.onCreate();
-    AppMethodBeat.o(188840);
+    AppMethodBeat.o(194520);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(188853);
-    w localw = this.aae;
-    localw.d(h.a.ON_STOP);
-    localw.d(h.a.ON_DESTROY);
+    AppMethodBeat.i(194566);
+    ae localae = this.bHy;
+    localae.c(j.a.ON_STOP);
+    localae.c(j.a.ON_DESTROY);
     super.onDestroy();
-    AppMethodBeat.o(188853);
+    AppMethodBeat.o(194566);
   }
   
   public void onStart(Intent paramIntent, int paramInt)
   {
-    AppMethodBeat.i(188849);
-    this.aae.d(h.a.ON_START);
+    AppMethodBeat.i(194536);
+    this.bHy.c(j.a.ON_START);
     super.onStart(paramIntent, paramInt);
-    AppMethodBeat.o(188849);
+    AppMethodBeat.o(194536);
   }
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(188851);
+    AppMethodBeat.i(194552);
     paramInt1 = super.onStartCommand(paramIntent, paramInt1, paramInt2);
-    AppMethodBeat.o(188851);
+    AppMethodBeat.o(194552);
     return paramInt1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     androidx.lifecycle.LifecycleService
  * JD-Core Version:    0.7.0.1
  */

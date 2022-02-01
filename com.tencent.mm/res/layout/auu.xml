@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/a7n" android:paddingLeft="24.0dip" android:paddingRight="24.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="100.0dip">
-        <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/dst" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginRight="16.0dip" android:scaleType="centerCrop" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <TextView android:textSize="@dimen/t" android:textColor="@drawable/a7k" android:id="@id/dsv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
-            <TextView android:textSize="@dimen/bd" android:textColor="@drawable/a7t" android:id="@id/dsu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="" />
-        </LinearLayout>
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dss" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/arrow_right" app:iconColor="@color/en" />
-    </LinearLayout>
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <View android:background="@color/a7t" android:layout_width="fill_parent" android:layout_height="1.0px" />
-        <LinearLayout android:paddingTop="15.0dip" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/dsw" android:layout_width="26.0dip" android:layout_height="14.0dip" />
-            <TextView android:textSize="@dimen/bd" android:textColor="@color/u7" android:id="@id/dsx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="" android:includeFontPadding="false" />
-        </LinearLayout>
-    </RelativeLayout>
-</LinearLayout>
+<RelativeLayout android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/emc" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginTop="172.0dip" android:src="@raw/game_logo" android:scaleType="fitXY" android:layout_centerHorizontal="true" />
+    <com.tencent.mm.ui.widget.ThreeDotsLoadingView android:id="@id/emd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/emc" android:layout_centerHorizontal="true" />
+</RelativeLayout>

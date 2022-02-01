@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet_payu.security_question.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.wallet_core.e.a.a;
+import com.tencent.mm.wallet_core.d.a.a;
 import java.util.ArrayList;
 import java.util.HashMap;
 import org.json.JSONArray;
@@ -10,7 +10,7 @@ import org.json.JSONObject;
 public final class d
   extends a
 {
-  public ArrayList<PayUSecurityQuestion> Pns;
+  public ArrayList<PayUSecurityQuestion> WdR;
   
   public d()
   {
@@ -19,7 +19,7 @@ public final class d
     AppMethodBeat.o(72213);
   }
   
-  public final int gIA()
+  public final int ihO()
   {
     return 11;
   }
@@ -29,7 +29,7 @@ public final class d
     AppMethodBeat.i(72214);
     if (paramJSONObject != null)
     {
-      this.Pns = new ArrayList();
+      this.WdR = new ArrayList();
       paramString = paramJSONObject.optJSONArray("security_question_list");
       if (paramString != null)
       {
@@ -40,7 +40,7 @@ public final class d
           if (paramJSONObject != null)
           {
             paramJSONObject = new PayUSecurityQuestion(paramJSONObject.optString("id"), paramJSONObject.optString("description"));
-            this.Pns.add(paramJSONObject);
+            this.WdR.add(paramJSONObject);
           }
           paramInt += 1;
         }

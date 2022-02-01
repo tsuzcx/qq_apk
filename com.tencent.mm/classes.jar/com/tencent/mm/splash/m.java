@@ -9,19 +9,19 @@ import java.util.List;
 
 final class m
 {
-  public static Object Vaa;
-  public static Application Vab;
-  public static List<ProviderInfo> Vac;
-  public static Method Vad;
-  public static k Vae;
-  public static Field Vaf;
-  public static Field Vag;
-  public static Object feV;
-  public static Handler nBO;
+  public static Field acBA;
+  public static Object acBu;
+  public static Application acBv;
+  public static List<ProviderInfo> acBw;
+  public static Method acBx;
+  public static k acBy;
+  public static Field acBz;
+  public static Object hjc;
+  public static Handler qBf;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.splash.m
  * JD-Core Version:    0.7.0.1
  */

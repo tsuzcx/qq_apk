@@ -14,12 +14,12 @@ final class b$2
   public final void run()
   {
     AppMethodBeat.i(48185);
-    QualitySessionRuntime localQualitySessionRuntime = this.qMD;
-    h.a locala = (h.a)d.a("MemoryInspector.getMemoryMB", new h.1(h.ctP));
+    QualitySessionRuntime localQualitySessionRuntime = this.tRn;
+    h.a locala = (h.a)d.b("MemoryInspector.getMemoryMB", new h.1(h.elJ));
     if (locala == null) {}
-    for (int i = 0;; i = locala.ctT)
+    for (int i = 0;; i = locala.elN)
     {
-      localQualitySessionRuntime.qNH = i;
+      localQualitySessionRuntime.tSr = i;
       AppMethodBeat.o(48185);
       return;
     }
@@ -27,7 +27,7 @@ final class b$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.quality.b.2
  * JD-Core Version:    0.7.0.1
  */

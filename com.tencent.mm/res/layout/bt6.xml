@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/bb"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cb" android:layout_marginTop="@dimen/cl" android:layout_marginRight="@dimen/cb" />
-    <RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="@dimen/cp">
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/dt5" android:layout_width="@dimen/ba" android:layout_height="@dimen/ba" android:layout_marginLeft="@dimen/ce" android:layout_marginRight="@dimen/ce" android:src="@raw/sos_logo_icon" android:layout_centerVertical="true" />
-        <TextView android:textColor="@color/a2x" android:text="@string/h2i" android:layout_toRightOf="@id/dt5" android:layout_centerVertical="true" style="@style/mi" />
-        <ImageView android:layout_gravity="center_vertical" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="@dimen/ce" android:layout_marginRight="@dimen/ce" android:src="@raw/arrow_right" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-    <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cb" android:layout_marginRight="@dimen/cb" android:layout_marginBottom="@dimen/cl" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.view.refreshLayout.WxRefreshLayout android:id="@id/ijl" android:layout_width="fill_parent" android:layout_height="fill_parent" app:enableFooterFollowWhenNoMoreData="true" app:enableOverScrollDrag="true">
+        <com.tencent.mm.plugin.repairer.ui.demo.refresh.view.DemoHeader android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/iiv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="never" />
+        <com.tencent.mm.plugin.repairer.ui.demo.refresh.view.DemoFooter android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </com.tencent.mm.view.refreshLayout.WxRefreshLayout>
 </LinearLayout>

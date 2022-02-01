@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <View android:background="@color/lx" android:layout_width="fill_parent" android:layout_height="@dimen/bo" />
-    <TextView android:textSize="@dimen/t" android:textColor="@color/a2w" android:id="@id/a6a" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_marginStart="@dimen/ce" />
-    <com.tencent.mm.ui.widget.happybubble.LabelsView android:id="@id/a6e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:layout_marginBottom="@dimen/cb" android:layout_marginStart="@dimen/ce" android:layout_marginEnd="@dimen/ce" app:labelBackground="@drawable/hm" app:labelTextColor="@drawable/hn" app:labelTextHeight="@dimen/cf" app:labelTextPaddingBottom="@dimen/g" app:labelTextPaddingLeft="@dimen/k5" app:labelTextPaddingRight="@dimen/k5" app:labelTextPaddingTop="@dimen/g" app:labelTextSize="@dimen/hc" app:labelTextWidth="jr2" app:lineMargin="@dimen/c5" app:selectType="l" app:wordMargin="@dimen/ct" />
+<LinearLayout android:gravity="center|left" android:paddingTop="@dimen/m2" android:paddingBottom="@dimen/m2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/m1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:gravity="center|left" android:id="@android:id/title" android:layout_width="@dimen/f9" android:layout_height="wrap_content" android:singleLine="false" style="@style/m4" />
+    <HorizontalScrollView android:paddingLeft="@dimen/m0" android:paddingTop="@dimen/m2" android:paddingRight="@dimen/m2" android:paddingBottom="@dimen/m2" android:scrollbars="none" android:layout_width="fill_parent" style="@style/m7">
+        <LinearLayout android:gravity="center|left" android:id="@id/ka_" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </HorizontalScrollView>
 </LinearLayout>

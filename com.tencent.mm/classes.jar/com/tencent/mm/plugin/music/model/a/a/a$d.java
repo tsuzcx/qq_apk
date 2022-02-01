@@ -12,14 +12,14 @@ import com.tencent.mm.sdk.platformtools.Log;
 public final class a$d
   implements m<IPCString, IPCString>
 {
-  private static IPCString d(IPCString paramIPCString)
+  private static IPCString h(IPCString paramIPCString)
   {
     AppMethodBeat.i(63072);
     try
     {
       Log.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc getMusicMIMETypeByMusicId Task, musicId:%s", new Object[] { paramIPCString });
       paramIPCString = paramIPCString.value;
-      paramIPCString = o.feX().aSn(paramIPCString);
+      paramIPCString = o.goe().aPh(paramIPCString);
       if (paramIPCString == null)
       {
         Log.e("MicroMsg.Music.MusicDataSourceMainProcessImp", "getMusicMIMETypeByMusicId pMusic is null!'");
@@ -53,7 +53,7 @@ public final class a$d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.a.a.a.d
  * JD-Core Version:    0.7.0.1
  */

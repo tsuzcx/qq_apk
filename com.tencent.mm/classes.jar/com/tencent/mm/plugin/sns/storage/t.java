@@ -1,165 +1,129 @@
 package com.tencent.mm.plugin.sns.storage;
 
 import android.database.Cursor;
+import com.tencent.e.f.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.b.m;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 
 public final class t
   extends MAutoStorage<s>
-  implements m
 {
+  private static String QYM;
+  public static String QYN;
+  public static String QYO;
   public static final String[] SQL_CREATE;
-  private ISQLiteDatabase db;
+  public ISQLiteDatabase db;
   
   static
   {
-    AppMethodBeat.i(97635);
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(s.info, "snsTagInfo2") };
-    AppMethodBeat.o(97635);
+    AppMethodBeat.i(176289);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(s.info, "snsDraft") };
+    QYM = " (snsDraft.extFlag & 2 == 0 ) ";
+    QYN = " (snsDraft.extFlag & 2 != 0 ) ";
+    QYO = " order by snsDraft.timestamp desc";
+    AppMethodBeat.o(176289);
   }
   
   public t(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramISQLiteDatabase, s.info, "snsTagInfo2", null);
+    super(paramISQLiteDatabase, s.info, "snsDraft", null);
+    AppMethodBeat.i(176285);
     this.db = paramISQLiteDatabase;
+    Log.i("MicroMsg.SnsDraftStorage", "createDraftStorage " + paramISQLiteDatabase + "  " + Thread.currentThread().getId());
+    AppMethodBeat.o(176285);
   }
   
-  public final List<String> Qs(long paramLong)
+  public final void DX(boolean paramBoolean)
   {
-    AppMethodBeat.i(97625);
-    Object localObject = Rf(paramLong);
-    if ((((s)localObject).field_memberList != null) && (!((s)localObject).field_memberList.equals("")))
+    AppMethodBeat.i(176286);
+    Object localObject;
+    if (paramBoolean)
     {
-      localObject = Util.stringsToList(((s)localObject).field_memberList.split(","));
-      AppMethodBeat.o(97625);
-      return localObject;
+      h.baF();
+      localObject = (String)h.baE().ban().get(at.a.acKp, null);
     }
-    localObject = new ArrayList();
-    AppMethodBeat.o(97625);
-    return localObject;
+    while (!Util.isNullOrNil((String)localObject))
+    {
+      localObject = e.bFB((String)localObject);
+      if (!Util.isNullOrNil((byte[])localObject)) {
+        if (paramBoolean)
+        {
+          h.baF();
+          h.baE().ban().set(at.a.acKp, "");
+          b("draft_text", (byte[])localObject, 0);
+          AppMethodBeat.o(176286);
+          return;
+          h.baF();
+          localObject = (String)h.baE().ban().get(at.a.acKo, null);
+        }
+        else
+        {
+          h.baF();
+          h.baE().ban().set(at.a.acKo, "");
+          b("draft_normal", (byte[])localObject, 0);
+        }
+      }
+    }
+    AppMethodBeat.o(176286);
   }
   
-  public final String Qt(long paramLong)
+  public final s aZP(String paramString)
   {
-    AppMethodBeat.i(97626);
-    String str = Rf(paramLong).field_tagName;
-    AppMethodBeat.o(97626);
-    return str;
-  }
-  
-  public final s Rf(long paramLong)
-  {
-    AppMethodBeat.i(97624);
-    Cursor localCursor = this.db.rawQuery("select *, rowid from snsTagInfo2 where tagId = ? ", new String[] { String.valueOf(paramLong) }, 2);
+    Integer localInteger = null;
+    AppMethodBeat.i(176288);
     s locals = new s();
-    if (localCursor.moveToFirst()) {
-      locals.convertFrom(localCursor);
-    }
-    localCursor.close();
-    AppMethodBeat.o(97624);
-    return locals;
-  }
-  
-  public final int Rg(long paramLong)
-  {
-    AppMethodBeat.i(97629);
-    int i = this.db.delete("snsTagInfo2", " tagId = ? ", new String[] { String.valueOf(paramLong) });
-    AppMethodBeat.o(97629);
-    return i;
-  }
-  
-  public final boolean S(long paramLong, String paramString)
-  {
-    AppMethodBeat.i(97630);
-    paramString = "select tagId, tagName, count, rowid from snsTagInfo2 where tagId > 5 AND  tagName  =\"" + Util.escapeSqlValue(paramString) + "\" AND  tagId != " + paramLong;
-    Log.d("MicroMsg.SnsTagInfoStorage", "isTagNameExist ".concat(String.valueOf(paramString)));
-    paramString = this.db.rawQuery(paramString, null, 2);
-    boolean bool = paramString.moveToFirst();
-    paramString.close();
-    AppMethodBeat.o(97630);
-    return bool;
-  }
-  
-  public final boolean a(s params)
-  {
-    AppMethodBeat.i(97628);
-    if (params.field_tagId == 0L)
+    Object localObject = "select *,rowid from snsDraft  where snsDraft.key='" + paramString + "' limit 1";
+    localObject = this.db.rawQuery((String)localObject, null, 2);
+    if (((Cursor)localObject).moveToFirst())
     {
-      AppMethodBeat.o(97628);
-      return false;
-    }
-    long l = params.field_tagId;
-    Cursor localCursor = this.db.rawQuery("select *, rowid from snsTagInfo2 where tagId = ? ", new String[] { String.valueOf(l) }, 2);
-    boolean bool = localCursor.moveToFirst();
-    localCursor.close();
-    if (!bool) {
-      super.insert(params);
+      locals.convertFrom((Cursor)localObject);
+      ((Cursor)localObject).close();
+      if (locals.field_draft != null) {
+        break label123;
+      }
     }
     for (;;)
     {
-      doNotify(params.field_tagId, 0, params);
-      AppMethodBeat.o(97628);
-      return true;
-      super.replace(params);
+      Log.i("MicroMsg.SnsDraftStorage", "readDraft: %s, %s", new Object[] { paramString, localInteger });
+      AppMethodBeat.o(176288);
+      return locals;
+      ((Cursor)localObject).close();
+      AppMethodBeat.o(176288);
+      return null;
+      label123:
+      localInteger = Integer.valueOf(locals.field_draft.length);
     }
   }
   
-  public final boolean aUR(String paramString)
+  public final void b(String paramString, byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(97632);
-    s locals = Rf(5L);
-    if (Util.isNullOrNil(locals.field_memberList))
+    AppMethodBeat.i(176287);
+    if (paramArrayOfByte == null) {}
+    for (Object localObject = null;; localObject = Integer.valueOf(paramArrayOfByte.length))
     {
-      AppMethodBeat.o(97632);
-      return false;
+      Log.i("MicroMsg.SnsDraftStorage", "writeDraft: %s, %s", new Object[] { paramString, localObject });
+      localObject = new s();
+      ((s)localObject).field_key = paramString;
+      ((s)localObject).field_timestamp = System.currentTimeMillis();
+      ((s)localObject).field_draft = paramArrayOfByte;
+      ((s)localObject).field_extFlag = paramInt;
+      super.replace((IAutoDBItem)localObject);
+      AppMethodBeat.o(176287);
+      return;
     }
-    boolean bool = Util.stringsToList(locals.field_memberList.split(",")).contains(paramString);
-    AppMethodBeat.o(97632);
-    return bool;
-  }
-  
-  public final boolean fNc()
-  {
-    AppMethodBeat.i(97633);
-    if (fTb().size() == 0)
-    {
-      AppMethodBeat.o(97633);
-      return false;
-    }
-    AppMethodBeat.o(97633);
-    return true;
-  }
-  
-  public final List<Long> fTb()
-  {
-    AppMethodBeat.i(97627);
-    Cursor localCursor = this.db.query("snsTagInfo2", new String[] { "tagId" }, null, null, null, null, null, 2);
-    ArrayList localArrayList = new ArrayList();
-    while (localCursor.moveToNext()) {
-      localArrayList.add(Long.valueOf(localCursor.getLong(0)));
-    }
-    localCursor.close();
-    AppMethodBeat.o(97627);
-    return localArrayList;
-  }
-  
-  public final Cursor hK()
-  {
-    AppMethodBeat.i(97631);
-    Cursor localCursor = this.db.rawQuery("select *, rowid from snsTagInfo2 where tagId > 5", null);
-    AppMethodBeat.o(97631);
-    return localCursor;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.t
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/adk" android:background="@drawable/b1e" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:id="@id/adl" android:layout_width="fill_parent" android:layout_height="@dimen/cr">
-        <TextView android:textSize="15.0dip" android:textColor="@color/BW_0_Alpha_0_9" android:ellipsize="end" android:id="@id/adp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/iye" android:maxLines="1" android:lines="1" android:includeFontPadding="false" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-    <View android:background="@color/m9" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    <com.tencent.mm.plugin.appbrand.ui.MaxHeightRecyclerView android:id="@id/ads" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ce" android:layout_marginRight="@dimen/ce" />
-    <RelativeLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cl" android:layout_marginBottom="@dimen/cr">
-        <TextView android:textSize="@dimen/t" android:id="@id/adn" android:layout_width="@dimen/c1" android:layout_height="@dimen/cl" android:text="@string/sz" style="@style/p5" />
-        <TextView android:textSize="@dimen/t" android:id="@id/ado" android:layout_width="@dimen/c1" android:layout_height="@dimen/cl" android:layout_marginLeft="@dimen/cb" android:text="@string/vl" android:layout_toRightOf="@id/adn" style="@style/ow" />
-    </RelativeLayout>
-</LinearLayout>
+<FrameLayout android:background="@color/g_" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center" android:id="@id/l6d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" android:adjustViewBounds="true" />
+    <ImageView android:layout_gravity="center" android:id="@id/l5l" android:background="#ff333333" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <View android:background="#59000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/g40" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.game.commlib.view.CycleProgressView android:layout_gravity="center_horizontal" android:id="@id/byo" android:layout_width="36.0dip" android:layout_height="36.0dip" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/al6" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/fcl" />
+    </LinearLayout>
+    <ImageView android:id="@id/c9p" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:src="@raw/actionbar_icon_light_back" android:layout_alignParentTop="true" android:layout_marginStart="24.0dip" android:layout_alignParentStart="true" />
+</FrameLayout>

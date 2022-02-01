@@ -4,21 +4,21 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelive/event/GameLiveAppbrandEventService$LiveIntPayload;", "Landroid/os/Parcelable;", "param", "", "(I)V", "getParam", "()I", "setParam", "component1", "copy", "describeContents", "equals", "", "other", "", "hashCode", "toString", "", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "plugin-gamelive_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/gamelive/event/GameLiveAppbrandEventService$LiveIntPayload;", "Landroid/os/Parcelable;", "param", "", "(I)V", "getParam", "()I", "setParam", "component1", "copy", "describeContents", "equals", "", "other", "", "hashCode", "toString", "", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "plugin-gamelive_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class GameLiveAppbrandEventService$LiveIntPayload
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR;
-  public int Djt;
+  public static final Parcelable.Creator<LiveIntPayload> CREATOR;
+  public int JcS;
   
   static
   {
-    AppMethodBeat.i(207839);
-    CREATOR = new a();
-    AppMethodBeat.o(207839);
+    AppMethodBeat.i(277437);
+    CREATOR = (Parcelable.Creator)new a();
+    AppMethodBeat.o(277437);
   }
   
   private GameLiveAppbrandEventService$LiveIntPayload(byte paramByte)
@@ -28,7 +28,7 @@ public final class GameLiveAppbrandEventService$LiveIntPayload
   
   public GameLiveAppbrandEventService$LiveIntPayload(int paramInt)
   {
-    this.Djt = paramInt;
+    this.JcS = paramInt;
   }
   
   public final int describeContents()
@@ -38,63 +38,47 @@ public final class GameLiveAppbrandEventService$LiveIntPayload
   
   public final boolean equals(Object paramObject)
   {
-    if (this != paramObject)
+    if (this == paramObject) {}
+    do
     {
-      if ((paramObject instanceof LiveIntPayload))
-      {
-        paramObject = (LiveIntPayload)paramObject;
-        if (this.Djt != paramObject.Djt) {}
-      }
-    }
-    else {
       return true;
-    }
+      if (!(paramObject instanceof LiveIntPayload)) {
+        return false;
+      }
+      paramObject = (LiveIntPayload)paramObject;
+    } while (this.JcS == paramObject.JcS);
     return false;
   }
   
   public final int hashCode()
   {
-    return this.Djt;
+    return this.JcS;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(207834);
-    String str = "LiveIntPayload(param=" + this.Djt + ")";
-    AppMethodBeat.o(207834);
+    AppMethodBeat.i(277447);
+    String str = "LiveIntPayload(param=" + this.JcS + ')';
+    AppMethodBeat.o(277447);
     return str;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(207837);
-    p.k(paramParcel, "parcel");
-    paramParcel.writeInt(this.Djt);
-    AppMethodBeat.o(207837);
+    AppMethodBeat.i(277478);
+    s.u(paramParcel, "out");
+    paramParcel.writeInt(this.JcS);
+    AppMethodBeat.o(277478);
   }
   
-  @l(iBK={1, 1, 16})
+  @Metadata(k=3, mv={1, 5, 1}, xi=48)
   public static final class a
-    implements Parcelable.Creator
-  {
-    public final Object createFromParcel(Parcel paramParcel)
-    {
-      AppMethodBeat.i(208690);
-      p.k(paramParcel, "in");
-      paramParcel = new GameLiveAppbrandEventService.LiveIntPayload(paramParcel.readInt());
-      AppMethodBeat.o(208690);
-      return paramParcel;
-    }
-    
-    public final Object[] newArray(int paramInt)
-    {
-      return new GameLiveAppbrandEventService.LiveIntPayload[paramInt];
-    }
-  }
+    implements Parcelable.Creator<GameLiveAppbrandEventService.LiveIntPayload>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelive.event.GameLiveAppbrandEventService.LiveIntPayload
  * JD-Core Version:    0.7.0.1
  */

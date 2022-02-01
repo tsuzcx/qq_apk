@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video.d;
 
+import com.tencent.luggage.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.az;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
+import com.tencent.mm.plugin.appbrand.jsapi.bc;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
 import com.tencent.mm.plugin.appbrand.jsapi.video.c.b.j;
 import com.tencent.mm.plugin.appbrand.jsapi.video.c.b.k;
 import com.tencent.mm.plugin.appbrand.jsapi.video.g;
@@ -19,9 +20,9 @@ public final class b
   public static final int CTRL_INDEX = 482;
   public static final String NAME = "loadVideoResource";
   
-  static void a(com.tencent.mm.plugin.appbrand.jsapi.e parame, String paramString, int paramInt1, int paramInt2)
+  static void a(f paramf, String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(228724);
+    AppMethodBeat.i(328206);
     String str = "";
     switch (paramInt1)
     {
@@ -32,8 +33,8 @@ public final class b
       localHashMap.put("errMsg", str);
       localHashMap.put("resource", paramString);
       paramString = new JSONObject(localHashMap).toString();
-      new b.j().j(parame).agU(paramString).bPO();
-      AppMethodBeat.o(228724);
+      new b.j().i(paramf).ZR(paramString).cpV();
+      AppMethodBeat.o(328206);
       return;
       str = "args illegal";
       continue;
@@ -47,26 +48,26 @@ public final class b
     }
   }
   
-  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.e parame, JSONObject paramJSONObject, int paramInt)
+  public final void a(final f paramf, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(228718);
+    AppMethodBeat.i(328220);
     if (paramJSONObject == null)
     {
-      parame.j(paramInt, h("fail:data nil", null));
+      paramf.callback(paramInt, ZP("fail:data nil"));
       Log.w("MicroMsg.JsApiLoadVideoResource", "data is null");
-      AppMethodBeat.o(228718);
+      AppMethodBeat.o(328220);
       return;
     }
     paramJSONObject = paramJSONObject.optJSONArray("resources");
     if ((paramJSONObject == null) || (paramJSONObject.length() == 0))
     {
       Log.w("MicroMsg.JsApiLoadVideoResource", "dataArr nil");
-      parame.j(paramInt, h("fail:dataArr nil", null));
-      AppMethodBeat.o(228718);
+      paramf.callback(paramInt, ZP("fail:dataArr nil"));
+      AppMethodBeat.o(328220);
       return;
     }
-    int k = 0;
     int j = 0;
+    int k = 0;
     if (j < paramJSONObject.length())
     {
       String str = paramJSONObject.optString(j, "");
@@ -83,49 +84,49 @@ public final class b
         k = i;
         break;
         i = k;
-        if (com.tencent.luggage.a.e.K(g.class) != null)
+        if (e.T(g.class) != null)
         {
-          int m = ((g)com.tencent.luggage.a.e.K(g.class)).a(str, new com.tencent.mm.plugin.appbrand.jsapi.video.c()
+          int m = ((g)e.T(g.class)).a(str, new com.tencent.mm.plugin.appbrand.jsapi.video.c()
           {
-            public final void cl(String paramAnonymousString, int paramAnonymousInt)
+            public final void cK(String paramAnonymousString, int paramAnonymousInt)
             {
-              AppMethodBeat.i(227666);
+              AppMethodBeat.i(328219);
               Log.i("MicroMsg.JsApiLoadVideoResource", "leonlad downloadVideo onPreLoadFail err_code = %s, url = %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
-              b.a(parame, paramAnonymousString, -5, paramAnonymousInt);
-              AppMethodBeat.o(227666);
+              b.a(paramf, paramAnonymousString, -5, paramAnonymousInt);
+              AppMethodBeat.o(328219);
             }
             
-            public final void dY(String paramAnonymousString1, String paramAnonymousString2)
+            public final void er(String paramAnonymousString1, String paramAnonymousString2)
             {
-              AppMethodBeat.i(227662);
+              AppMethodBeat.i(328212);
               Log.i("MicroMsg.JsApiLoadVideoResource", "leonlad downloadVideo onPreLoadSucc save_path = %s, url = %s", new Object[] { paramAnonymousString2, paramAnonymousString1 });
-              paramAnonymousString2 = parame;
+              paramAnonymousString2 = paramf;
               HashMap localHashMap = new HashMap();
               localHashMap.put("resource", paramAnonymousString1);
               paramAnonymousString1 = new JSONObject(localHashMap).toString();
-              new b.k().j(paramAnonymousString2).agU(paramAnonymousString1).bPO();
-              AppMethodBeat.o(227662);
+              new b.k().i(paramAnonymousString2).ZR(paramAnonymousString1).cpV();
+              AppMethodBeat.o(328212);
             }
           });
           i = k;
           if (m != 0)
           {
             Log.i("MicroMsg.JsApiLoadVideoResource", "leonlad downloadVideo genPreLoad fail ret = %s, videoUrl = %s", new Object[] { Integer.valueOf(m), str });
-            a(parame, str, m, 0);
+            a(paramf, str, m, 0);
             i = k + 1;
           }
         }
       }
     }
     if ((k != 0) && (k == paramJSONObject.length())) {
-      parame.j(paramInt, h("fail", null));
+      paramf.callback(paramInt, ZP("fail"));
     }
-    AppMethodBeat.o(228718);
+    AppMethodBeat.o(328220);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.d.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,99 +1,94 @@
 package com.tencent.mm.plugin.finder.cgi.oplog;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.expt.b.c;
-import com.tencent.mm.plugin.finder.cgi.ca;
-import com.tencent.mm.plugin.finder.cgi.ca.a;
-import com.tencent.mm.plugin.finder.report.n;
-import com.tencent.mm.plugin.findersdk.a.aj;
-import com.tencent.mm.plugin.report.f;
-import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.bet;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.plugin.finder.service.p;
+import com.tencent.mm.plugin.findersdk.a.ck;
+import com.tencent.mm.protocal.protobuf.bpp;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.a;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderModifyFeedSettingService;", "Lcom/tencent/mm/plugin/finder/service/IFinderModifyFeedSetting;", "Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderOpLogCore;", "Lcom/tencent/mm/protocal/protobuf/FinderModFeedSetting;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "convertToCmdBuf", "Lcom/tencent/mm/protobuf/ByteString;", "kotlin.jvm.PlatformType", "modUserInfo", "getCmdId", "", "handleUpdateResult", "", "cmdBufItem", "retCode", "modifyFeedComment", "feedId", "", "feedObj", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "objectNonceId", "openComment", "", "callback", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "modifyFeedPrivacy", "ifPrivate", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderModifyBlackListService;", "Lcom/tencent/mm/plugin/finder/service/IFinderModifyBlackList;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderOpLogCore;", "Lcom/tencent/mm/protocal/protobuf/FinderModBlackList;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "convertToCmdBuf", "Lcom/tencent/mm/protobuf/ByteString;", "kotlin.jvm.PlatformType", "cmdBufItem", "getCmdId", "", "handleUpdateResult", "", "retCode", "modifyCommentBlackList", "commentId", "", "feedId", "feedNonceId", "isBlack", "", "callback", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "modifyFansBlackList", "fansId", "modifyLiveBlackList", "username", "anchorUsername", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class j
-  extends m<bet>
-  implements com.tencent.mm.plugin.finder.service.l
+  extends n<bpp>
+  implements p
 {
-  public static final a xfO;
-  private final String TAG = "Finder.FinderModifyFeedSettingService";
+  public static final a AFi;
+  private static final int AFj;
+  private static final int AFk;
+  private final String TAG = "Finder.FinderModifyBlackListService";
   
   static
   {
-    AppMethodBeat.i(165306);
-    xfO = new a((byte)0);
-    AppMethodBeat.o(165306);
+    AppMethodBeat.i(165301);
+    AFi = new a((byte)0);
+    AFj = 1;
+    AFk = 2;
+    AppMethodBeat.o(165301);
   }
   
-  public final void a(long paramLong, FinderObject paramFinderObject, String paramString, boolean paramBoolean, aj<bet> paramaj)
+  public final void a(long paramLong1, long paramLong2, String paramString, ck<bpp> paramck)
   {
-    int j = 1;
-    AppMethodBeat.i(165302);
-    p.k(paramFinderObject, "feedObj");
-    p.k(paramString, "objectNonceId");
-    Object localObject = n.zWF;
+    AppMethodBeat.i(165299);
+    s.u(paramString, "feedNonceId");
+    bpp localbpp = new bpp();
+    localbpp.AAW = paramLong1;
+    localbpp.refObjectId = paramLong2;
+    localbpp.refObjectNonceId = paramString;
+    localbpp.opType = AFj;
+    n.a((n)this, localbpp, paramck, false, false, 12);
+    AppMethodBeat.o(165299);
+  }
+  
+  public final void a(String paramString1, String paramString2, ck<bpp> paramck)
+  {
+    AppMethodBeat.i(336551);
+    s.u(paramString1, "anchorUsername");
+    s.u(paramString2, "username");
+    Log.i(this.TAG, "modifyLiveBlackList anchorUsername:" + paramString1 + ", username:" + paramString2);
+    bpp localbpp = new bpp();
+    localbpp.username = paramString2;
+    localbpp.opType = AFj;
+    ((n)this).a(paramString1, localbpp, paramck);
+    AppMethodBeat.o(336551);
+  }
+  
+  public final void b(String paramString, ck<bpp> paramck)
+  {
+    AppMethodBeat.i(336544);
+    s.u(paramString, "username");
+    bpp localbpp = new bpp();
+    localbpp.username = paramString;
+    localbpp.opType = AFj;
+    n.a((n)this, localbpp, paramck, false, false, 12);
+    AppMethodBeat.o(336544);
+  }
+  
+  public final void b(String paramString, boolean paramBoolean, ck<bpp> paramck)
+  {
+    AppMethodBeat.i(165298);
+    s.u(paramString, "fansId");
+    bpp localbpp = new bpp();
+    localbpp.hJS = paramString;
     if (paramBoolean) {}
-    for (int i = 2;; i = 1)
+    for (localbpp.opType = AFj;; localbpp.opType = AFk)
     {
-      p.k(paramFinderObject, "finderObject");
-      localObject = ((c)h.ae(c.class)).dbr();
-      paramFinderObject = (String)localObject + ',' + i + ',' + n.Mp(paramFinderObject.id) + ',' + paramFinderObject.username + ',' + paramFinderObject.likeCount + ',' + paramFinderObject.commentCount + ',' + paramFinderObject.friendLikeCount;
-      Log.i(n.TAG, "18952 ".concat(String.valueOf(paramFinderObject)));
-      f.Iyx.kvStat(18952, paramFinderObject);
-      paramFinderObject = new bet();
-      paramFinderObject.SPH = paramLong;
-      paramFinderObject.scene = 1;
-      i = j;
-      if (paramBoolean) {
-        i = 0;
-      }
-      paramFinderObject.fSo = i;
-      paramFinderObject.objectNonceId = paramString;
-      m.a(this, paramFinderObject, paramaj);
-      AppMethodBeat.o(165302);
+      n.a((n)this, localbpp, paramck, false, false, 12);
+      d.uiThread((a)b.AFl);
+      AppMethodBeat.o(165298);
       return;
-    }
-  }
-  
-  public final void b(long paramLong, FinderObject paramFinderObject, String paramString, boolean paramBoolean, aj<bet> paramaj)
-  {
-    boolean bool = true;
-    AppMethodBeat.i(278874);
-    p.k(paramString, "objectNonceId");
-    bet localbet = new bet();
-    localbet.SPH = paramLong;
-    localbet.scene = 2;
-    int i;
-    if (paramBoolean)
-    {
-      i = 1;
-      localbet.fSo = i;
-      localbet.objectNonceId = paramString;
-      if (paramFinderObject != null) {
-        break label88;
-      }
-    }
-    label88:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      a(localbet, paramaj, paramBoolean);
-      AppMethodBeat.o(278874);
-      return;
-      i = 0;
-      break;
     }
   }
   
   public final int getCmdId()
   {
-    AppMethodBeat.i(165305);
-    ca.a locala = ca.xdJ;
-    int i = ca.doF();
-    AppMethodBeat.o(165305);
-    return i;
+    AppMethodBeat.i(165297);
+    AppMethodBeat.o(165297);
+    return 3;
   }
   
   public final String getTAG()
@@ -101,12 +96,32 @@ public final class j
     return this.TAG;
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderModifyFeedSettingService$Companion;", "", "()V", "CLOSE_COMMENT", "", "OPEN_COMMENT", "SCENE_CLOSE_COMMENT", "SCENE_SET_PRIVATE", "SET_PRIVATE", "SET_PUBLIC", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderModifyBlackListService$Companion;", "", "()V", "ModBlackListOpAdd", "", "getModBlackListOpAdd", "()I", "ModBlackListOpDel", "getModBlackListOpDel", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements a<ah>
+  {
+    public static final b AFl;
+    
+    static
+    {
+      AppMethodBeat.i(336516);
+      AFl = new b();
+      AppMethodBeat.o(336516);
+    }
+    
+    b()
+    {
+      super();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.oplog.j
  * JD-Core Version:    0.7.0.1
  */

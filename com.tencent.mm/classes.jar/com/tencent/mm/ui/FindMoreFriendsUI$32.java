@@ -1,26 +1,28 @@
 package com.tencent.mm.ui;
 
+import android.graphics.Bitmap;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.yf;
-import com.tencent.mm.model.bh;
-import com.tencent.mm.model.c;
-import com.tencent.mm.sdk.event.IListener;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.ui.base.preference.h;
+import com.tencent.mm.autogen.a.kq;
+import com.tencent.mm.modelimage.loader.b.k;
 
 final class FindMoreFriendsUI$32
-  extends IListener<yf>
+  implements k
 {
-  FindMoreFriendsUI$32(FindMoreFriendsUI paramFindMoreFriendsUI)
+  FindMoreFriendsUI$32(FindMoreFriendsUI paramFindMoreFriendsUI, kq paramkq) {}
+  
+  public final void onImageLoadComplete(String paramString, View paramView, Bitmap paramBitmap, Object... paramVarArgs)
   {
-    AppMethodBeat.i(161491);
-    this.__eventId = yf.class.getName().hashCode();
-    AppMethodBeat.o(161491);
+    AppMethodBeat.i(249753);
+    this.IYa.hMl.bUl = 2;
+    this.IYa.hMl.url = paramString;
+    this.IYa.publish();
+    AppMethodBeat.o(249753);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.FindMoreFriendsUI.32
  * JD-Core Version:    0.7.0.1
  */

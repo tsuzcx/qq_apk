@@ -1,31 +1,34 @@
 !!brut.androlib.meta.MetaInfo
-apkFileName: wechat-8.0.7-1920-3454.apk
+apkFileName: wechat-8.0.19-2080-3454.apk
 compressionType: false
 doNotCompress:
 - resources.arsc
 - wav
 - png
 - assets/b7c9a7fd-851e-7761-07df-8ab7c0b02787.sec
+- mp3
 - assets/default_poi_categories.dat
 - assets/emoji_config.conf
+- assets/finder_live_clap_anim.pag
 - gif
 - m4a
 - assets/rel_wechat_2055-12-06.lic1.2
 - assets/small_lottery_amin.pag
+- assets/star-ignition-animation.pag
 - assets/wenote_config.conf
 - assets/xwalk-command-line
 - assets/TencentLocationComp_sapp/1
+- assets/dexopt/baseline.prof
 - jpg
-- assets/flutter_assets/packages/flutter_ring_cut/assets/i18n/en_US.json
-- assets/flutter_assets/packages/flutter_ring_cut/assets/i18n/zh_CN.json
+- assets/flutter_assets/packages/flutter_mmui/assets/wxemoji/config.conf
+- webp
 - assets/fts/feature/version.info
 - assets/newemoji/config.conf
 - assets/panel/config.conf
-- mp3
-- assets/tencentmap/tms_ps/tms_module/df681ec1c0860bfbe76f58ec73b89fb8
+- assets/tencentmap/mapsdk_vector/sdkconfig.dat
 - assets/wxa_library/develop/DEVELOP
 - assets/wxa_library/local/LOCAL
-- r/ao/android_wear_micro_apk.apk
+- r/c/android_wear_micro_apk.apk
 isFrameworkApk: false
 packageInfo:
   forcedPackageId: '127'
@@ -42,5 +45,5 @@ usesFramework:
   tag: null
 version: 2.6.0
 versionInfo:
-  versionCode: '1920'
-  versionName: 8.0.7
+  versionCode: '2080'
+  versionName: 8.0.19

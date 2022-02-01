@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:topLeftRadius="8.0dip" android:topRightRadius="8.0dip" />
-    <solid android:color="@color/FG_3" />
-</shape>
+    <item android:drawable="@drawable/bpy" />
+</selector>

@@ -6,27 +6,27 @@ import junit.framework.Assert;
 
 public final class e<T>
 {
-  private volatile T jZm;
-  private Class<T> targetClass;
+  private volatile T mzk;
+  private Class<T> mzl;
   
   public e(Class<T> paramClass)
   {
     AppMethodBeat.i(158799);
     Assert.assertNotNull(paramClass);
-    this.targetClass = paramClass;
+    this.mzl = paramClass;
     AppMethodBeat.o(158799);
   }
   
   public final T get()
   {
     AppMethodBeat.i(158800);
-    if (this.jZm == null) {}
+    if (this.mzk == null) {}
     try
     {
-      if (this.jZm == null) {
-        this.jZm = b.x(this.targetClass);
+      if (this.mzk == null) {
+        this.mzk = b.G(this.mzl);
       }
-      Object localObject1 = this.jZm;
+      Object localObject1 = this.mzk;
       AppMethodBeat.o(158800);
       return localObject1;
     }

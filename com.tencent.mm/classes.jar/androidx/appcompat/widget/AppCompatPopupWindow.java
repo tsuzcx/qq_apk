@@ -7,21 +7,21 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.PopupWindow;
 import androidx.appcompat.a.j;
-import androidx.core.widget.g;
+import androidx.core.widget.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class AppCompatPopupWindow
   extends PopupWindow
 {
-  private static final boolean qT;
-  private boolean qU;
+  private static final boolean rQ;
+  private boolean rR;
   
   static
   {
     if (Build.VERSION.SDK_INT < 21) {}
     for (boolean bool = true;; bool = false)
     {
-      qT = bool;
+      rQ = bool;
       return;
     }
   }
@@ -29,84 +29,84 @@ class AppCompatPopupWindow
   public AppCompatPopupWindow(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(240919);
+    AppMethodBeat.i(199687);
     a(paramContext, paramAttributeSet, paramInt, 0);
-    AppMethodBeat.o(240919);
+    AppMethodBeat.o(199687);
   }
   
   public AppCompatPopupWindow(Context paramContext, AttributeSet paramAttributeSet, int paramInt1, int paramInt2)
   {
     super(paramContext, paramAttributeSet, paramInt1, paramInt2);
-    AppMethodBeat.i(240921);
+    AppMethodBeat.i(199701);
     a(paramContext, paramAttributeSet, paramInt1, paramInt2);
-    AppMethodBeat.o(240921);
+    AppMethodBeat.o(199701);
   }
   
-  private void O(boolean paramBoolean)
+  private void S(boolean paramBoolean)
   {
-    AppMethodBeat.i(240928);
-    if (qT)
+    AppMethodBeat.i(199725);
+    if (rQ)
     {
-      this.qU = paramBoolean;
-      AppMethodBeat.o(240928);
+      this.rR = paramBoolean;
+      AppMethodBeat.o(199725);
       return;
     }
-    g.a(this, paramBoolean);
-    AppMethodBeat.o(240928);
+    h.a(this, paramBoolean);
+    AppMethodBeat.o(199725);
   }
   
   private void a(Context paramContext, AttributeSet paramAttributeSet, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(240923);
+    AppMethodBeat.i(199714);
     paramContext = ac.a(paramContext, paramAttributeSet, a.j.PopupWindow, paramInt1, paramInt2);
-    if (paramContext.aC(a.j.PopupWindow_overlapAnchor)) {
-      O(paramContext.c(a.j.PopupWindow_overlapAnchor, false));
+    if (paramContext.az(a.j.PopupWindow_overlapAnchor)) {
+      S(paramContext.m(a.j.PopupWindow_overlapAnchor, false));
     }
     setBackgroundDrawable(paramContext.getDrawable(a.j.PopupWindow_android_popupBackground));
-    paramContext.wA.recycle();
-    AppMethodBeat.o(240923);
+    paramContext.xv.recycle();
+    AppMethodBeat.o(199714);
   }
   
   public void showAsDropDown(View paramView, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(240924);
+    AppMethodBeat.i(199744);
     int i = paramInt2;
-    if (qT)
+    if (rQ)
     {
       i = paramInt2;
-      if (this.qU) {
+      if (this.rR) {
         i = paramInt2 - paramView.getHeight();
       }
     }
     super.showAsDropDown(paramView, paramInt1, i);
-    AppMethodBeat.o(240924);
+    AppMethodBeat.o(199744);
   }
   
   public void showAsDropDown(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(240926);
+    AppMethodBeat.i(199758);
     int i = paramInt2;
-    if (qT)
+    if (rQ)
     {
       i = paramInt2;
-      if (this.qU) {
+      if (this.rR) {
         i = paramInt2 - paramView.getHeight();
       }
     }
     super.showAsDropDown(paramView, paramInt1, i, paramInt3);
-    AppMethodBeat.o(240926);
+    AppMethodBeat.o(199758);
   }
   
   public void update(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(240927);
-    if ((qT) && (this.qU)) {
+    AppMethodBeat.i(199772);
+    if ((rQ) && (this.rR)) {
       paramInt2 -= paramView.getHeight();
     }
     for (;;)
     {
       super.update(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
-      AppMethodBeat.o(240927);
+      AppMethodBeat.o(199772);
       return;
     }
   }

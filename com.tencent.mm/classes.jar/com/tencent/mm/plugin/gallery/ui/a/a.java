@@ -7,34 +7,34 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 
 public final class a
   extends com.tencent.mm.ui.tools.b.a
 {
-  private a CeU;
-  public long aKk = 104857600L;
-  private String cJT;
+  private a HQY;
+  public long cEg = 104857600L;
+  private String eDC;
   
   public a(String paramString)
   {
-    this.cJT = paramString;
+    this.eDC = paramString;
   }
   
-  public final int bNF()
+  public final int cnU()
   {
     int i = 10485760;
     AppMethodBeat.i(111735);
-    if (Util.isNullOrNil(this.cJT)) {
+    if (Util.isNullOrNil(this.eDC)) {
       Log.w("MicroMsg.VideoBoundaryCheck", "dz[check video but path is null or nil]");
     }
     boolean bool1 = NetStatusUtil.is2G(MMApplicationContext.getContext());
-    boolean bool2 = c.ZZ(this.cJT);
+    boolean bool2 = c.Sm(this.eDC);
     label58:
     double d;
     if (bool2)
     {
-      String str = this.cJT;
+      String str = this.eDC;
       if (bool1)
       {
         if (!bool1) {
@@ -54,12 +54,12 @@ public final class a
         Log.e("MicroMsg.VideoBoundaryCheck", "unknown check type %d", new Object[] { Integer.valueOf(i) });
         AppMethodBeat.o(111735);
         return 1;
-        i = (int)this.aKk;
+        i = (int)this.cEg;
         break label58;
         label206:
-        d = this.aKk;
+        d = this.cEg;
         break label67;
-        int j = (int)u.bBQ(this.cJT);
+        int j = (int)y.bEl(this.eDC);
         if (bool1) {}
         for (i = 10485760;; i = 26214400)
         {
@@ -81,16 +81,16 @@ public final class a
     return 1;
   }
   
-  public final void euX()
+  public final void fBQ()
   {
     AppMethodBeat.i(111736);
-    if (this.CeU == null)
+    if (this.HQY == null)
     {
       Log.w("MicroMsg.VideoBoundaryCheck", "dz[callback is null]");
       AppMethodBeat.o(111736);
       return;
     }
-    bNF();
+    cnU();
     AppMethodBeat.o(111736);
   }
   
@@ -98,7 +98,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.a.a
  * JD-Core Version:    0.7.0.1
  */

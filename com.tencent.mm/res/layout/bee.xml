@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@drawable/ci1" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/y6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <FrameLayout android:id="@id/y5" android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <View android:background="@drawable/alj" android:layout_width="fill_parent" android:layout_height="@dimen/cd" android:layout_alignParentTop="true" />
-    <View android:background="@drawable/ali" android:layout_width="fill_parent" android:layout_height="@dimen/cd" android:layout_alignParentBottom="true" />
-    <Button android:id="@id/b9t" android:background="@drawable/k_" android:layout_width="@dimen/c8" android:layout_height="@dimen/cl" android:layout_marginBottom="@dimen/bu" android:text="@string/vl" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/ou" />
-    <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/b3u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cn" android:layout_above="@id/b9t" android:layout_centerHorizontal="true" />
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/xt" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginLeft="@dimen/cb" android:layout_marginTop="@dimen/cm" android:layout_marginRight="@dimen/cb" android:src="@raw/actionbar_icon_light_back" app:iconColor="@color/am" />
-    <com.tencent.mm.plugin.music.ui.LyricView android:ellipsize="end" android:id="@id/f5l" android:fadingEdge="vertical" android:fadingEdgeLength="10.0dip" android:layout_width="fill_parent" android:layout_height="30.0dip" android:requiresFadingEdge="vertical" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb" />
-</RelativeLayout>
+<LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minHeight="@dimen/ie" android:layout_weight="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/f4s" android:layout_width="@dimen/ba" android:layout_height="@dimen/ba" />
+    <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/kpd" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/cp" android:layout_weight="1.0">
+        <TextView android:id="@android:id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="hello" android:singleLine="true" style="@style/m4" />
+        <TextView android:id="@id/hbv" android:visibility="gone" android:layout_marginLeft="8.0dip" style="@style/zi" />
+        <TextView android:textSize="10.0dip" android:textColor="@color/al6" android:gravity="center" android:id="@id/kj1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/a11" />
+    </LinearLayout>
+</LinearLayout>

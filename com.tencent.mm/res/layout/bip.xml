@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/afz" android:padding="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/k4"
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/a2a" android:background="@null" android:layout_width="fill_parent" android:layout_height="156.0dip" android:scaleType="fitXY" android:minHeight="156.0dip" />
+    <RelativeLayout android:id="@id/h4b" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginTop="@dimen/df" android:layout_marginBottom="@dimen/df" android:layout_marginStart="@dimen/df" android:layout_marginEnd="24.0dip">
+        <com.tencent.mm.plugin.voip.video.render.VoIPRenderTextureView android:id="@id/h58" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/h57" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true" />
+        <RelativeLayout android:id="@id/a2j" android:background="@drawable/icon_shadow_multitalk_avatar" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/cr" android:layout_alignParentBottom="true" />
+        <TextView android:textSize="10.0dip" android:textColor="@color/az" android:ellipsize="end" android:id="@id/h5d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:layout_marginStart="@dimen/df" android:layout_marginEnd="@dimen/df" />
+        <RelativeLayout android:orientation="horizontal" android:id="@id/lda" android:background="@drawable/b1e" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/h4n" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginTop="16.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:id="@id/h4o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:text="@string/khg" android:layout_below="@id/h4n" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </RelativeLayout>
 </RelativeLayout>

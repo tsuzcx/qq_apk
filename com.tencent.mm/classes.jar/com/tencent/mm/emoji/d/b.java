@@ -1,105 +1,88 @@
 package com.tencent.mm.emoji.d;
 
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.d;
-import com.tencent.mm.kernel.e;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import java.util.HashMap;
-import java.util.HashSet;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/upload/EmojiCaptureCallbackDispatcher;", "", "()V", "TAG", "", "callbackMap", "Ljava/util/HashMap;", "", "Ljava/util/HashSet;", "Lcom/tencent/mm/emoji/upload/EmojiCaptureCallback;", "Lkotlin/collections/HashSet;", "Lkotlin/collections/HashMap;", "broadcastResult", "", "timeEnter", "success", "", "md5", "dispatch", "registerCallback", "callback", "unregisterCallback", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/report/ChatEmojiBtnClickReport;", "", "()V", "TAG", "", "btnClicked", "", "lastShow", "panelOpenTime", "", "recordBtnClick", "", "recordClose", "recordOpen", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  private static final String TAG = "MicroMsg.EmojiCaptureCallbackDispatcher";
-  private static final HashMap<Long, HashSet<a>> jPb;
-  public static final b jPc;
+  private static final String TAG;
+  public static final b mmj;
+  private static long mmk;
+  private static boolean mml;
+  private static boolean mmm;
   
   static
   {
-    AppMethodBeat.i(105771);
-    jPc = new b();
-    TAG = "MicroMsg.EmojiCaptureCallbackDispatcher";
-    jPb = new HashMap();
-    AppMethodBeat.o(105771);
+    AppMethodBeat.i(105725);
+    mmj = new b();
+    TAG = "MicroMsg.ChatEmojiBtnClickReport";
+    AppMethodBeat.o(105725);
   }
   
-  public static void a(long paramLong, a parama)
+  public static void aVY()
   {
-    AppMethodBeat.i(105768);
-    p.k(parama, "callback");
-    d.uiThread((kotlin.g.a.a)new b(paramLong, parama));
-    AppMethodBeat.o(105768);
+    mml = true;
   }
   
-  public static void b(long paramLong, a parama)
+  public static void aVZ()
   {
-    AppMethodBeat.i(105769);
-    p.k(parama, "callback");
-    d.uiThread((kotlin.g.a.a)new c(paramLong, parama));
-    AppMethodBeat.o(105769);
-  }
-  
-  public static void b(long paramLong, boolean paramBoolean, final String paramString)
-  {
-    AppMethodBeat.i(105770);
-    Log.i(TAG, "dispatch: " + paramLong + ", " + paramBoolean + ", " + paramString);
-    d.uiThread((kotlin.g.a.a)new a(paramLong, paramBoolean, paramString));
-    Object localObject = com.tencent.mm.kernel.h.aHD().aHf();
-    p.j(localObject, "MMKernel.process().current()");
-    if (((com.tencent.mm.kernel.b.h)localObject).aIE())
+    int i = 3;
+    AppMethodBeat.i(105723);
+    mmk = System.currentTimeMillis();
+    Log.i(TAG, "recordOpen: " + mmk + ", " + mmm);
+    if (!mmm)
     {
-      localObject = new Intent("com.tencent.mm.Emoji_Capture_Upload");
-      ((Intent)localObject).putExtra("upload_time_enter", paramLong);
-      ((Intent)localObject).putExtra("upload_success", paramBoolean);
-      ((Intent)localObject).putExtra("upload_md5", paramString);
-      MMApplicationContext.getContext().sendBroadcast((Intent)localObject);
+      Object localObject = com.tencent.mm.plugin.report.service.h.OAn;
+      if (mml) {
+        i = 1;
+      }
+      ((com.tencent.mm.plugin.report.service.h)localObject).b(17302, new Object[] { Integer.valueOf(i), Integer.valueOf(0), Long.valueOf(mmk) });
+      localObject = c.aWb();
+      long l = mmk;
+      Log.i("EmojiClickReport", "panelShow");
+      ((c)localObject).mmo = l;
+      ((c)localObject).mmp = 1;
+      localObject = h.aWe();
+      ((h)localObject).mmo = mmk;
+      ((h)localObject).mmp = 1;
+      localObject = g.mmw;
+      g.hv(mmk);
     }
-    AppMethodBeat.o(105770);
+    mmm = true;
+    mml = false;
+    AppMethodBeat.o(105723);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class a
-    extends q
-    implements kotlin.g.a.a<x>
+  public static void aWa()
   {
-    a(long paramLong, boolean paramBoolean, String paramString)
+    int i = 2;
+    AppMethodBeat.i(105724);
+    long l = System.currentTimeMillis() - mmk;
+    Log.i(TAG, "recordClose: " + l + ", " + mmk + ", " + mmm);
+    com.tencent.mm.plugin.report.service.h localh;
+    if (mmm)
     {
-      super();
+      localh = com.tencent.mm.plugin.report.service.h.OAn;
+      if (!mml) {
+        break label110;
+      }
     }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class b
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    b(long paramLong, a parama)
+    for (;;)
     {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class c
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    c(long paramLong, a parama)
-    {
-      super();
+      localh.b(17302, new Object[] { Integer.valueOf(i), Long.valueOf(l) });
+      mmm = false;
+      AppMethodBeat.o(105724);
+      return;
+      label110:
+      i = 4;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.emoji.d.b
  * JD-Core Version:    0.7.0.1
  */

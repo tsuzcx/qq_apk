@@ -1,42 +1,42 @@
 package com.tencent.mm.plugin.game.media;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.e;
-import androidx.fragment.app.g;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.m;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 
 public final class i
-  extends g
+  extends m
 {
-  private ArrayList<GameGalleryFragment> CEV;
+  private ArrayList<GameGalleryFragment> IyY;
   
-  public i(e parame, ArrayList<GameGalleryFragment> paramArrayList)
+  public i(FragmentManager paramFragmentManager, ArrayList<GameGalleryFragment> paramArrayList)
   {
-    super(parame);
-    this.CEV = paramArrayList;
+    super(paramFragmentManager);
+    this.IyY = paramArrayList;
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(40996);
-    int i = this.CEV.size();
+    int i = this.IyY.size();
     AppMethodBeat.o(40996);
     return i;
   }
   
   public final Fragment getItem(int paramInt)
   {
-    AppMethodBeat.i(207370);
-    Object localObject = this.CEV;
+    AppMethodBeat.i(276821);
+    Object localObject = this.IyY;
     localObject = (Fragment)((ArrayList)localObject).get(paramInt % ((ArrayList)localObject).size());
-    AppMethodBeat.o(207370);
+    AppMethodBeat.o(276821);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.i
  * JD-Core Version:    0.7.0.1
  */

@@ -2,63 +2,29 @@ package com.tencent.mm.plugin.appbrand.jsapi.channels;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/channels/JsApiOpenChannelsActivity;", "Lcom/tencent/mm/plugin/appbrand/jsapi/channels/JsApiOpenChannelsBase;", "()V", "action", "", "getAction", "()Ljava/lang/String;", "isParamValid", "", "extInfoJsonObj", "Lorg/json/JSONObject;", "preProcessExtInfo", "Companion", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/channels/JsApiOpenChannelsActivity;", "Lcom/tencent/mm/plugin/appbrand/jsapi/channels/JsApiOpenChannelsCommon;", "()V", "action", "", "getAction", "()Ljava/lang/String;", "preProcessExtInfo", "", "extInfoJsonObj", "Lorg/json/JSONObject;", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends c
+  extends d
 {
   private static final int CTRL_INDEX = 970;
   private static final String NAME = "openChannelsActivity";
-  public static final a oNS;
+  public static final a rRH;
   
   static
   {
-    AppMethodBeat.i(269870);
-    oNS = new a((byte)0);
-    AppMethodBeat.o(269870);
+    AppMethodBeat.i(327851);
+    rRH = new a((byte)0);
+    AppMethodBeat.o(327851);
   }
   
-  public final boolean X(JSONObject paramJSONObject)
+  public final boolean ai(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(269865);
-    p.k(paramJSONObject, "extInfoJsonObj");
-    String str = paramJSONObject.optString("feedId");
-    p.j(str, "extInfoJsonObj.optString(PARAM_KEY_FEED_ID)");
-    if (((CharSequence)str).length() > 0)
-    {
-      i = 1;
-      if (i == 0) {
-        break label90;
-      }
-      paramJSONObject = paramJSONObject.optString("nonceId");
-      p.j(paramJSONObject, "extInfoJsonObj.optString(PARAM_KEY_NONCE_ID)");
-      if (((CharSequence)paramJSONObject).length() <= 0) {
-        break label85;
-      }
-    }
-    label85:
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0) {
-        break label90;
-      }
-      AppMethodBeat.o(269865);
-      return true;
-      i = 0;
-      break;
-    }
-    label90:
-    AppMethodBeat.o(269865);
-    return false;
-  }
-  
-  public final boolean Y(JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(269867);
-    p.k(paramJSONObject, "extInfoJsonObj");
+    AppMethodBeat.i(327865);
+    s.u(paramJSONObject, "extInfoJsonObj");
     try
     {
       paramJSONObject.put("feedID", paramJSONObject.optString("feedId"));
@@ -70,11 +36,11 @@ public final class b
     {
       for (;;)
       {
-        Log.w("MicroMsg.AppBrand.JsApiOpenChannelsActivity", "preProcessExtInfo, fail since ".concat(String.valueOf(paramJSONObject)));
+        Log.w("MicroMsg.AppBrand.JsApiOpenChannelsActivity", s.X("preProcessExtInfo, fail since ", paramJSONObject));
         boolean bool = false;
       }
     }
-    AppMethodBeat.o(269867);
+    AppMethodBeat.o(327865);
     return bool;
   }
   
@@ -83,12 +49,12 @@ public final class b
     return "openFinderFeed";
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/channels/JsApiOpenChannelsActivity$Companion;", "", "()V", "ACTION", "", "CTRL_INDEX", "", "NAME", "PARAM_KEY_SHARE_SCENE", "PARAM_VALUE_SHARE_SCENE", "TAG", "plugin-appbrand-integration_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/channels/JsApiOpenChannelsActivity$Companion;", "", "()V", "ACTION", "", "CTRL_INDEX", "", "NAME", "PARAM_KEY_SHARE_SCENE", "PARAM_VALUE_SHARE_SCENE", "TAG", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.channels.b
  * JD-Core Version:    0.7.0.1
  */

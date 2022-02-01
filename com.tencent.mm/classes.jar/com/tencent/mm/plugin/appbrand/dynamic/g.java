@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.appbrand.dynamic;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.j;
 import com.tencent.mm.kernel.c;
 import com.tencent.mm.kernel.h;
@@ -12,19 +13,19 @@ import java.util.Iterator;
 
 public final class g
 {
-  private static p.a ogQ;
+  private static p.a rku;
   
   static
   {
     AppMethodBeat.i(121177);
-    ogQ = new p.a()
+    rku = new p.a()
     {
       public final void onNetworkChange(int paramAnonymousInt)
       {
         AppMethodBeat.i(121173);
         Bundle localBundle = new Bundle();
         localBundle.putInt("status", paramAnonymousInt);
-        Iterator localIterator = i.bNh().bNi().iterator();
+        Iterator localIterator = i.cnw().cnx().iterator();
         while (localIterator.hasNext()) {
           j.a((String)localIterator.next(), localBundle, g.a.class, null);
         }
@@ -42,18 +43,22 @@ public final class g
       AppMethodBeat.o(121175);
       return;
     }
-    h.aHH();
-    h.aHF().a(ogQ);
+    h.baF();
+    h.baD().a(rku);
     AppMethodBeat.o(121175);
   }
   
   public static void release()
   {
     AppMethodBeat.i(121176);
-    h.aHH();
-    h.aHF().b(ogQ);
+    h.baF();
+    h.baD().b(rku);
     AppMethodBeat.o(121176);
   }
+  
+  static final class a
+    implements d<Bundle, Bundle>
+  {}
 }
 
 

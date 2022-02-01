@@ -3,7 +3,7 @@ package com.tencent.matrix.report;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.matrix.d;
+import com.tencent.matrix.e;
 import com.tencent.matrix.e.c;
 import com.tencent.mm.sdk.platformtools.IntentUtil;
 import org.json.JSONException;
@@ -26,19 +26,19 @@ public class MatrixReportBroadcast
       int i = IntentUtil.getIntExtra(paramIntent, "type", 0);
       String str2 = IntentUtil.getStringExtra(paramIntent, "value");
       paramContext = IntentUtil.getStringExtra(paramIntent, "filePath");
-      paramIntent = new f();
+      paramIntent = new g();
       paramIntent.tag = ((String)localObject);
       paramIntent.key = str1;
       paramIntent.type = i;
       try
       {
-        paramIntent.cZZ = new JSONObject(str2);
+        paramIntent.eYz = new JSONObject(str2);
         label93:
-        localObject = d.cQA.cQB;
+        localObject = e.eLE.eLF;
         if (localObject == null) {
           continue;
         }
-        ((k)localObject).a(paramIntent, paramContext);
+        ((l)localObject).a(paramIntent, paramContext);
         return;
       }
       catch (JSONException localJSONException)
@@ -50,7 +50,7 @@ public class MatrixReportBroadcast
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.report.MatrixReportBroadcast
  * JD-Core Version:    0.7.0.1
  */

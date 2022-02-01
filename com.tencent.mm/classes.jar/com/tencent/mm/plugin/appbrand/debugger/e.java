@@ -5,18 +5,18 @@ import android.text.TextUtils;
 import com.tencent.luggage.sdk.h.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.api.g;
+import com.tencent.mm.plugin.appbrand.app.n;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
 import com.tencent.mm.plugin.appbrand.appcache.bj.c;
 import com.tencent.mm.plugin.appbrand.appcache.bm;
-import com.tencent.mm.plugin.appbrand.appcache.j.a;
-import com.tencent.mm.plugin.appbrand.launching.s;
+import com.tencent.mm.plugin.appbrand.appcache.k.a;
+import com.tencent.mm.plugin.appbrand.config.o;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.service.r;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.IOException;
 import java.util.Map;
 
@@ -25,50 +25,50 @@ public final class e
 {
   private static void a(String paramString1, String paramString2, String paramString3, Runnable paramRunnable)
   {
-    AppMethodBeat.i(281535);
-    com.tencent.e.h.ZvG.be(new e.4(paramString1, paramString2, paramString3, paramRunnable));
-    AppMethodBeat.o(281535);
+    AppMethodBeat.i(319683);
+    com.tencent.threadpool.h.ahAA.bm(new e.4(paramString1, paramString2, paramString3, paramRunnable));
+    AppMethodBeat.o(319683);
   }
   
-  public static String dd(String paramString1, String paramString2)
+  public static String du(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(281537);
+    AppMethodBeat.i(319688);
     paramString1 = MultiProcessMMKV.getMMKV("MicroMsg.AppBrand.ForceOpenAppNotify.TestInjectJsPath", 2).getString(paramString1 + "-" + paramString2, null);
-    AppMethodBeat.o(281537);
+    AppMethodBeat.o(319688);
     return paramString1;
   }
   
-  static String n(q paramq)
+  static String n(u paramu)
   {
-    AppMethodBeat.i(281536);
+    AppMethodBeat.i(319685);
     try
     {
-      paramq = WxaPkgWrappingInfo.n(paramq);
-      AppMethodBeat.o(281536);
-      return paramq;
+      paramu = WxaPkgWrappingInfo.n(paramu);
+      AppMethodBeat.o(319685);
+      return paramu;
     }
-    catch (IOException paramq)
+    catch (IOException paramu)
     {
-      AppMethodBeat.o(281536);
+      AppMethodBeat.o(319685);
     }
     return "";
   }
   
-  public final void B(Intent paramIntent)
+  public final void D(Intent paramIntent)
   {
     AppMethodBeat.i(44949);
     String str = paramIntent.getStringExtra("appId");
     int i = paramIntent.getIntExtra("versionType", 0);
     paramIntent = new AppBrandStatObject();
     paramIntent.scene = 1030;
-    ((r)com.tencent.mm.kernel.h.ae(r.class)).a(null, null, str, i, 0, null, paramIntent);
+    ((com.tencent.mm.plugin.appbrand.service.t)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.appbrand.service.t.class)).a(null, null, str, i, 0, null, paramIntent);
     AppMethodBeat.o(44949);
   }
   
   public final void k(final String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(281534);
-    if (DebuggerShell.bLS())
+    AppMethodBeat.i(319692);
+    if (DebuggerShell.cls())
     {
       Log.i("MicroMsg.AppBrand.ForceOpenAppNotify", "handleMessage %s", new Object[] { paramString });
       paramString = (String)paramMap.get(".sysmsg.ForceOpenAppNotify.OpenAppInfo.AppID");
@@ -83,7 +83,7 @@ public final class e
       paramMap.get(".sysmsg.ForceOpenAppNotify.OpenAppInfo.WithoutPluginCodeUrls");
       if (i < 0)
       {
-        AppMethodBeat.o(281534);
+        AppMethodBeat.o(319692);
         return;
       }
       int k;
@@ -93,16 +93,16 @@ public final class e
         if (k != 1) {
           break label215;
         }
-        com.tencent.mm.plugin.appbrand.config.m.ao(paramString, true);
+        o.aw(paramString, true);
       }
       while (i != 0) {
-        if (com.tencent.mm.plugin.appbrand.app.m.bFP() == null)
+        if (n.cfm() == null)
         {
-          AppMethodBeat.o(281534);
+          AppMethodBeat.o(319692);
           return;
           label215:
-          if ((k == 0) && (!com.tencent.mm.plugin.appbrand.config.m.aeP(paramString))) {
-            com.tencent.mm.plugin.appbrand.config.m.ao(paramString, false);
+          if ((k == 0) && (!o.Xr(paramString))) {
+            o.aw(paramString, false);
           }
         }
         else
@@ -112,7 +112,7 @@ public final class e
           }
           if (i == 1)
           {
-            AppMethodBeat.o(281534);
+            AppMethodBeat.o(319692);
             return;
           }
           if (i != 2) {
@@ -126,25 +126,25 @@ public final class e
         public final void run()
         {
           AppMethodBeat.i(44947);
-          if ((j.a.vB(i)) && (!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str3))) {
-            com.tencent.mm.plugin.appbrand.app.m.bFP().a(paramString, i, str2, str3, 0L, 0L);
+          if ((k.a.vK(i)) && (!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str3))) {
+            n.cfm().a(paramString, i, str2, str3, 0L, 0L);
           }
-          if ((j.a.vB(i)) && (!TextUtils.isEmpty(str4))) {
-            ((s)com.tencent.mm.plugin.appbrand.app.m.W(s.class)).B(paramString, i, str4);
+          if ((k.a.vK(i)) && (!TextUtils.isEmpty(str4))) {
+            ((com.tencent.mm.plugin.appbrand.launching.t)n.ag(com.tencent.mm.plugin.appbrand.launching.t.class)).D(paramString, i, str4);
           }
-          this.ocr.appId = paramString;
-          this.ocr.username = this.iXG;
-          this.ocr.cBU = i;
-          this.ocr.nBq = str1;
-          this.ocr.version = j;
-          this.ocr.scene = 1030;
-          ((r)com.tencent.mm.kernel.h.ae(r.class)).a(MMApplicationContext.getContext(), this.ocr);
+          this.rdj.appId = paramString;
+          this.rdj.username = this.lzC;
+          this.rdj.euz = i;
+          this.rdj.qAF = str1;
+          this.rdj.version = j;
+          this.rdj.scene = 1030;
+          ((com.tencent.mm.plugin.appbrand.service.t)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.appbrand.service.t.class)).a(MMApplicationContext.getContext(), this.rdj);
           AppMethodBeat.o(44947);
         }
       }, 2);
       str1 = (String)paramMap.get(".sysmsg.ForceOpenAppNotify.OpenAppInfo.Needjs");
       if (TextUtils.isEmpty(str1)) {
-        ((b)localObject).Sz();
+        ((b)localObject).asP();
       }
       for (;;)
       {
@@ -152,22 +152,22 @@ public final class e
         if (!TextUtils.isEmpty(paramMap)) {
           break label446;
         }
-        ((b)localObject).Sz();
-        AppMethodBeat.o(281534);
+        ((b)localObject).asP();
+        AppMethodBeat.o(319692);
         return;
         label389:
-        if (!com.tencent.mm.plugin.appbrand.app.m.bFP().a(paramString, i, str2, str3, Util.nowSecond(), Util.nowSecond() + 432000L)) {
+        if (!n.cfm().a(paramString, i, str2, str3, Util.nowSecond(), Util.nowSecond() + 432000L)) {
           break;
         }
-        com.tencent.mm.plugin.appbrand.task.i.cjb().u(paramString, i);
+        com.tencent.mm.plugin.appbrand.task.i.cJV().F(paramString, i);
         break;
         a(paramString, "Needjs", str1, new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(272403);
-            this.nFX.Sz();
-            AppMethodBeat.o(272403);
+            AppMethodBeat.i(319700);
+            this.qFQ.asP();
+            AppMethodBeat.o(319700);
           }
         });
       }
@@ -176,13 +176,13 @@ public final class e
       {
         public final void run()
         {
-          AppMethodBeat.i(283735);
-          this.nFX.Sz();
-          AppMethodBeat.o(283735);
+          AppMethodBeat.i(319697);
+          this.qFQ.asP();
+          AppMethodBeat.o(319697);
         }
       });
     }
-    AppMethodBeat.o(281534);
+    AppMethodBeat.o(319692);
   }
   
   public final String name()
@@ -192,7 +192,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.debugger.e
  * JD-Core Version:    0.7.0.1
  */

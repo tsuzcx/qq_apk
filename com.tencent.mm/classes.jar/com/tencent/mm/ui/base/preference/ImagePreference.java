@@ -14,8 +14,8 @@ import com.tencent.mm.ah.a.m;
 public final class ImagePreference
   extends Preference
 {
-  private ImageView GZJ;
-  private e WrC;
+  private ImageView MXO;
+  private e adYS;
   
   public ImagePreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,18 +26,18 @@ public final class ImagePreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142569);
-    this.GZJ = null;
-    this.WrC = new e();
+    this.MXO = null;
+    this.adYS = new e();
     setLayoutResource(a.h.mm_preference_image);
-    auN(a.h.mm_preference_submenu);
+    aBp(a.h.mm_preference_submenu);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.m.ImagePreference);
     paramInt = paramContext.getResourceId(a.m.ImagePreference_img, 0);
     if (paramInt > 0)
     {
-      paramAttributeSet = this.WrC;
+      paramAttributeSet = this.adYS;
       paramAttributeSet.resId = paramInt;
       paramAttributeSet.bitmap = null;
-      this.WrC.q(this.GZJ);
+      this.adYS.z(this.MXO);
     }
     paramContext.recycle();
     AppMethodBeat.o(142569);
@@ -47,8 +47,8 @@ public final class ImagePreference
   {
     AppMethodBeat.i(142571);
     super.onBindView(paramView);
-    this.GZJ = ((ImageView)paramView.findViewById(a.g.image_iv));
-    this.WrC.q(this.GZJ);
+    this.MXO = ((ImageView)paramView.findViewById(a.g.image_iv));
+    this.adYS.z(this.MXO);
     AppMethodBeat.o(142571);
   }
   
@@ -65,7 +65,7 @@ public final class ImagePreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.ImagePreference
  * JD-Core Version:    0.7.0.1
  */

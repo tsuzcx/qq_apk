@@ -24,7 +24,7 @@ public final class f
     this.db = paramISQLiteDatabase;
   }
   
-  public final void b(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2)
+  public final void c(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2)
   {
     AppMethodBeat.i(70613);
     aa localaa = new aa();
@@ -40,7 +40,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.d.f
  * JD-Core Version:    0.7.0.1
  */

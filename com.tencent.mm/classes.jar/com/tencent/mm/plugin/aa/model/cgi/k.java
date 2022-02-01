@@ -1,59 +1,57 @@
 package com.tencent.mm.plugin.aa.model.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
 import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.protocal.protobuf.y;
 import com.tencent.mm.protocal.protobuf.z;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.model.w;
 
 public final class k
-  extends q
-  implements m
+  extends w
 {
-  private i callback;
-  private d kwO;
-  private y mKC;
-  public z mKD;
+  private h callback;
+  private c nao;
+  private y pHk;
+  public z pHl;
   
   public k(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2)
   {
     AppMethodBeat.i(63391);
-    d.a locala = new d.a();
-    locala.lBU = new y();
-    locala.lBV = new z();
+    c.a locala = new c.a();
+    locala.otE = new y();
+    locala.otF = new z();
     locala.funcId = 1695;
     locala.uri = "/cgi-bin/mmpay-bin/newaaquerydetail";
-    locala.lBW = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.kwO = locala.bgN();
-    this.mKC = ((y)d.b.b(this.kwO.lBR));
-    this.mKC.RDi = paramString1;
-    this.mKC.scene = paramInt1;
-    this.mKC.RDj = paramString2;
+    this.nao = locala.bEF();
+    this.pHk = ((y)c.b.b(this.nao.otB));
+    this.pHk.YzL = paramString1;
+    this.pHk.scene = paramInt1;
+    this.pHk.YzM = paramString2;
     if (paramInt1 == 5)
     {
       Log.i("MicroMsg.NetSceneAAQueryDetail", "set sign and ver");
-      this.mKC.sign = paramString3;
-      this.mKC.ver = paramInt2;
+      this.pHk.sign = paramString3;
+      this.pHk.ver = paramInt2;
     }
     Log.i("MicroMsg.NetSceneAAQueryDetail", "NetSceneAAQueryDetail, billNo: %s, scene: %s, groupId: %s", new Object[] { paramString1, Integer.valueOf(paramInt1), paramString2 });
     AppMethodBeat.o(63391);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(63393);
     Log.i("MicroMsg.NetSceneAAQueryDetail", "doScene");
-    this.callback = parami;
-    int i = dispatch(paramg, this.kwO, this);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.nao, this);
     AppMethodBeat.o(63393);
     return i;
   }
@@ -63,16 +61,16 @@ public final class k
     return 1695;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte, long paramLong)
   {
-    AppMethodBeat.i(63392);
+    AppMethodBeat.i(268407);
     Log.i("MicroMsg.NetSceneAAQueryDetail", "onGYNetEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.mKD = ((z)d.c.b(((d)params).lBS));
-    Log.i("MicroMsg.NetSceneAAQueryDetail", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.mKD.fwx), this.mKD.tVo });
+    this.pHl = ((z)c.c.b(((c)params).otC));
+    Log.i("MicroMsg.NetSceneAAQueryDetail", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.pHl.hAV), this.pHl.wYI });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(63392);
+    AppMethodBeat.o(268407);
   }
 }
 

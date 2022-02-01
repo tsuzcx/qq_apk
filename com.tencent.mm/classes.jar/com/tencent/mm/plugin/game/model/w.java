@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.bx.a;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -26,7 +26,7 @@ public final class w
     super(paramISQLiteDatabase, v.info, "GamePBCache", null);
   }
   
-  public final byte[] aIX(String paramString)
+  public final byte[] aFI(String paramString)
   {
     AppMethodBeat.i(41519);
     if (Util.isNullOrNil(paramString))
@@ -34,7 +34,7 @@ public final class w
       AppMethodBeat.o(41519);
       return null;
     }
-    if (!LocaleUtil.getApplicationLanguage().equals(e.eye()))
+    if (!LocaleUtil.getApplicationLanguage().equals(e.fGa()))
     {
       AppMethodBeat.o(41519);
       return null;
@@ -51,19 +51,27 @@ public final class w
     return null;
   }
   
-  public final boolean aJX(String paramString)
+  public final boolean aGM(String paramString)
   {
-    AppMethodBeat.i(198632);
+    AppMethodBeat.i(275421);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(198632);
+      AppMethodBeat.o(275421);
       return false;
     }
     v localv = new v();
     localv.field_key = paramString;
     boolean bool = super.delete(localv, new String[0]);
-    AppMethodBeat.o(198632);
+    AppMethodBeat.o(275421);
     return bool;
+  }
+  
+  public final void aGN(String paramString)
+  {
+    AppMethodBeat.i(275422);
+    paramString = "delete from GamePBCache where key like '%" + paramString + "'";
+    Log.i("MicroMsg.GamePBCacheStorage", "deleteDataWithSuffix, ret:%b, sql: %s", new Object[] { Boolean.valueOf(execSQL("GameHaowanMedia", paramString)), paramString });
+    AppMethodBeat.o(275422);
   }
   
   public final boolean b(String paramString, a parama)
@@ -77,7 +85,7 @@ public final class w
     try
     {
       parama = parama.toByteArray();
-      boolean bool = u(paramString, parama);
+      boolean bool = y(paramString, parama);
       AppMethodBeat.o(41520);
       return bool;
     }
@@ -89,10 +97,10 @@ public final class w
     return false;
   }
   
-  public final boolean u(String paramString, byte[] paramArrayOfByte)
+  public final boolean y(String paramString, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(41521);
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
+    if (paramArrayOfByte == null)
     {
       AppMethodBeat.o(41521);
       return false;

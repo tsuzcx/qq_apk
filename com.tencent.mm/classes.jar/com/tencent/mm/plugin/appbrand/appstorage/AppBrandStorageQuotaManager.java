@@ -2,206 +2,212 @@ package com.tencent.mm.plugin.appbrand.appstorage;
 
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.ol;
+import com.tencent.mm.autogen.mmdata.rpt.se;
+import com.tencent.mm.autogen.mmdata.rpt.se.a;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.plugin.appbrand.app.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import com.tencent.mm.vfs.q;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.ah;
+import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.w;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import kotlin.g.b.p;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import kotlin.h.a;
-import kotlin.k.i;
-import kotlin.l;
-import kotlin.x;
+import kotlin.k.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandStorageQuotaManager;", "", "()V", "MMKV_KEY_PREFIX", "", "MMKV_NAME", "STORAGE_KEY_NORMAL_NONE_FLATTEN", "STORAGE_KEY_SAVED_TEMP", "STORAGE_KEY_TEMP", "TAG", "storageKey2Path", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "supportRuntimeSpaceStaticsMap", "", "", "calculateAllStorageSize", "", "appId", "key2ReportStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/WeAppFileSystemTempFileLastOccupationStatStruct;", "calculateStorageSize", "", "key", "dir", "Lcom/tencent/mm/vfs/VFSFile;", "reportStruct", "calculateStorageSizeAndCleanupTempFilesOnExit", "minTempSize", "maxTempSize", "maxTotalTempSize", "clearCalculatedStorageSize", "getStorageSize", "getSupportRuntimeSpaceStaticsMap", "hasCalculatedStorageSize", "", "markSupportRuntimeSpaceStatics", "registerStorage", "path", "reset", "saveStorageSize", "size", "log", "report1654", "CleanupTempFilesOnExitParams", "IPCCleanupTempFilesOnExitTask", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandStorageQuotaManager;", "", "()V", "MMKV_KEY_PREFIX", "", "MMKV_NAME", "STORAGE_KEY_NORMAL_NONE_FLATTEN", "STORAGE_KEY_SAVED_TEMP", "STORAGE_KEY_TEMP", "TAG", "storageKey2Path", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "supportRuntimeSpaceStaticsMap", "", "", "calculateAllStorageSize", "", "appId", "key2ReportStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/WeAppFileSystemTempFileLastOccupationStatStruct;", "calculateStorageSize", "", "key", "dir", "Lcom/tencent/mm/vfs/VFSFile;", "reportStruct", "calculateStorageSizeAndCleanupTempFilesOnExit", "minTempSize", "maxTempSize", "maxTotalTempSize", "clearCalculatedStorageSize", "getStorageSize", "getSupportRuntimeSpaceStaticsMap", "hasCalculatedStorageSize", "", "markSupportRuntimeSpaceStatics", "registerStorage", "path", "reset", "saveStorageSize", "size", "log", "report1654", "CleanupTempFilesOnExitParams", "IPCCleanupTempFilesOnExitTask", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class AppBrandStorageQuotaManager
 {
-  public static final HashMap<String, String> nMt;
-  public static final Map<String, List<String>> nMu;
-  public static final AppBrandStorageQuotaManager nMv;
+  public static final AppBrandStorageQuotaManager qMt;
+  public static final HashMap<String, String> qMu;
+  public static final Map<String, List<String>> qMv;
   
   static
   {
-    AppMethodBeat.i(279268);
-    nMv = new AppBrandStorageQuotaManager();
-    nMt = new HashMap();
-    nMu = (Map)new LinkedHashMap();
-    AppMethodBeat.o(279268);
+    AppMethodBeat.i(323227);
+    qMt = new AppBrandStorageQuotaManager();
+    qMu = new HashMap();
+    qMv = (Map)new LinkedHashMap();
+    AppMethodBeat.o(323227);
   }
   
-  public static long a(String paramString1, String paramString2, q paramq)
+  public static void Wh(String paramString)
   {
-    AppMethodBeat.i(279264);
-    p.k(paramString1, "appId");
-    p.k(paramString2, "key");
-    p.k(paramq, "dir");
-    if ((!paramq.ifE()) || (!paramq.isDirectory()))
+    AppMethodBeat.i(323198);
+    s.u(paramString, "appId");
+    Log.i("MicroMsg.AppBrandStorageQuotaManager", s.X("clearCalculatedStorageSize ", paramString));
+    Object localObject = f.qBv;
+    localObject = f.getMMKV("AppBrandStorageQuota");
+    if (localObject != null) {
+      ((MultiProcessMMKV)localObject).remove("storage_size_" + paramString + "_temp");
+    }
+    localObject = f.qBv;
+    localObject = f.getMMKV("AppBrandStorageQuota");
+    if (localObject != null) {
+      ((MultiProcessMMKV)localObject).remove("storage_size_" + paramString + "_saved_temp");
+    }
+    localObject = f.qBv;
+    localObject = f.getMMKV("AppBrandStorageQuota");
+    if (localObject != null) {
+      ((MultiProcessMMKV)localObject).remove("storage_size_" + paramString + "_normal_none_flatten");
+    }
+    AppMethodBeat.o(323198);
+  }
+  
+  public static long a(String paramString1, String paramString2, u paramu)
+  {
+    AppMethodBeat.i(323213);
+    s.u(paramString1, "appId");
+    s.u(paramString2, "key");
+    s.u(paramu, "dir");
+    if ((!paramu.jKS()) || (!paramu.isDirectory()))
     {
-      Log.i("MicroMsg.AppBrandStorageQuotaManager", "dir not exist[" + paramString1 + ',' + paramString2 + ',' + paramq.getPath() + ']');
-      a(paramString1, paramString2, 0L, true);
-      AppMethodBeat.o(279264);
+      Log.i("MicroMsg.AppBrandStorageQuotaManager", "dir not exist[" + paramString1 + ',' + paramString2 + ',' + ah.v(paramu.mUri) + ']');
+      b(paramString1, paramString2, 0L, true);
+      AppMethodBeat.o(323213);
       return 0L;
     }
     long l3 = System.currentTimeMillis();
-    long l1;
-    switch (paramString2.hashCode())
+    boolean bool;
+    if (s.p(paramString2, "temp"))
     {
-    default: 
-      l1 = o.p(paramq);
+      bool = true;
+      if (!bool) {
+        break label213;
+      }
+      if (!s.p(paramString2, "temp")) {
+        break label205;
+      }
+      localObject = m.qMD;
     }
-    for (;;)
+    long l1;
+    label205:
+    for (Object localObject = m.cif();; localObject = LuggageLocalFileObjectManager.qNy)
     {
-      Log.i("MicroMsg.AppBrandStorageQuotaManager", "calculateStorageSize [" + paramString1 + ',' + paramString2 + ',' + paramq.getPath() + "]->" + l1 + " cost[" + (System.currentTimeMillis() - l3) + ']');
-      if (l1 >= 0L) {
-        a(paramString1, paramString2, l1, true);
+      localObject = paramu.a((w)localObject);
+      if (localObject == null) {
+        break label324;
       }
-      l1 = i.be(l1, 0L);
-      AppMethodBeat.o(279264);
-      return l1;
-      if (!paramString2.equals("temp")) {
-        break;
-      }
-      label249:
-      if (p.h(paramString2, "temp")) {
-        localObject = h.nMI;
-      }
-      for (Object localObject = h.bIB();; localObject = LuggageLocalFileObjectManager.nNG)
+      int j = localObject.length;
+      int i = 0;
+      l1 = 0L;
+      for (;;)
       {
-        localObject = paramq.a((s)localObject);
-        if (localObject == null) {
-          break label340;
-        }
-        int j = localObject.length;
-        int i = 0;
-        long l2 = 0L;
-        for (;;)
-        {
-          l1 = l2;
-          if (i >= j) {
-            break;
-          }
-          l2 += localObject[i].length();
-          i += 1;
-        }
-        if (!paramString2.equals("saved_temp")) {
+        l2 = l1;
+        if (i >= j) {
           break;
         }
-        break label249;
+        l1 += localObject[i].length();
+        i += 1;
       }
-      label340:
-      l1 = 0L;
+      bool = s.p(paramString2, "saved_temp");
+      break;
+    }
+    label213:
+    for (long l2 = t.q(paramu);; l2 = 0L)
+    {
+      Log.i("MicroMsg.AppBrandStorageQuotaManager", "calculateStorageSize [" + paramString1 + ',' + paramString2 + ',' + ah.v(paramu.mUri) + "]->" + l2 + " cost[" + (System.currentTimeMillis() - l3) + ']');
+      if (l2 >= 0L) {
+        b(paramString1, paramString2, l2, true);
+      }
+      l1 = k.bR(l2, 0L);
+      AppMethodBeat.o(323213);
+      return l1;
     }
   }
   
-  public static void a(String paramString1, String paramString2, long paramLong, boolean paramBoolean)
+  public static void a(String paramString, HashMap<String, String> paramHashMap, HashMap<String, se> paramHashMap1, Map<String, List<String>> paramMap)
   {
-    AppMethodBeat.i(279260);
-    p.k(paramString1, "appId");
-    p.k(paramString2, "key");
+    AppMethodBeat.i(323208);
+    s.u(paramString, "appId");
+    s.u(paramHashMap, "storageKey2Path");
+    s.u(paramMap, "supportRuntimeSpaceStaticsMap");
+    Object localObject1 = paramHashMap.keySet();
+    s.s(localObject1, "storageKey2Path.keys");
+    Iterator localIterator = ((Iterable)localObject1).iterator();
+    if (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      s.s(str, "it");
+      se localse = (se)paramHashMap1.get(str);
+      s.u(paramString, "appId");
+      s.u(str, "key");
+      s.u(paramHashMap, "storageKey2Path");
+      s.u(paramMap, "supportRuntimeSpaceStaticsMap");
+      Object localObject2 = (String)paramHashMap.get(str);
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      localObject1 = new u((String)localObject1);
+      int i;
+      if (localse != null)
+      {
+        localObject2 = (List)paramMap.get(paramString);
+        if ((localObject2 == null) || (((List)localObject2).contains(str) != true)) {
+          break label255;
+        }
+        i = 1;
+        label194:
+        if (i == 0) {
+          break label261;
+        }
+      }
+      label261:
+      for (long l = a.ai(dc(paramString, str) / 1024.0D);; l = -1L)
+      {
+        localse.jxC = l;
+        l = a(paramString, str, (u)localObject1);
+        if (localse == null) {
+          break;
+        }
+        localse.jxx = a.ai(l / 1024.0D);
+        break;
+        label255:
+        i = 0;
+        break label194;
+      }
+    }
+    AppMethodBeat.o(323208);
+  }
+  
+  public static void b(String paramString1, String paramString2, long paramLong, boolean paramBoolean)
+  {
+    AppMethodBeat.i(323204);
+    s.u(paramString1, "appId");
+    s.u(paramString2, "key");
     if (paramBoolean) {
       Log.i("MicroMsg.AppBrandStorageQuotaManager", "save storage size:" + paramLong + " for " + paramString1 + ',' + paramString2);
     }
-    Object localObject = f.nCi.getMMKV("AppBrandStorageQuota");
+    Object localObject = f.qBv;
+    localObject = f.getMMKV("AppBrandStorageQuota");
     if (localObject != null)
     {
       localObject = ((MultiProcessMMKV)localObject).edit();
       if (localObject != null)
       {
         paramString1 = ((SharedPreferences.Editor)localObject).putLong("storage_size_" + paramString1 + '_' + paramString2, paramLong);
-        if (paramString1 != null)
-        {
+        if (paramString1 != null) {
           paramString1.apply();
-          AppMethodBeat.o(279260);
-          return;
         }
       }
     }
-    AppMethodBeat.o(279260);
+    AppMethodBeat.o(323204);
   }
   
-  public static void a(String paramString, HashMap<String, String> paramHashMap, HashMap<String, ol> paramHashMap1, Map<String, List<String>> paramMap)
+  public static void da(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(279262);
-    p.k(paramString, "appId");
-    p.k(paramHashMap, "storageKey2Path");
-    p.k(paramMap, "supportRuntimeSpaceStaticsMap");
-    Object localObject1 = paramHashMap.keySet();
-    p.j(localObject1, "storageKey2Path.keys");
-    Iterator localIterator = ((Iterable)localObject1).iterator();
-    if (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      p.j(str, "it");
-      ol localol = (ol)paramHashMap1.get(str);
-      p.k(paramString, "appId");
-      p.k(str, "key");
-      p.k(paramHashMap, "storageKey2Path");
-      p.k(paramMap, "supportRuntimeSpaceStaticsMap");
-      Object localObject2 = (String)paramHashMap.get(str);
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = "";
-      }
-      localObject1 = new q((String)localObject1);
-      if (localol != null)
-      {
-        localObject2 = (List)paramMap.get(paramString);
-        if ((localObject2 == null) || (((List)localObject2).contains(str) != true)) {
-          break label249;
-        }
-      }
-      label249:
-      for (long l = a.N(cL(paramString, str) / 1024.0D);; l = -1L)
-      {
-        localol.AX(l);
-        l = a(paramString, str, (q)localObject1);
-        if (localol == null) {
-          break;
-        }
-        localol.AU(a.N(l / 1024.0D));
-        break;
-      }
-    }
-    AppMethodBeat.o(279262);
-  }
-  
-  public static void adG(String paramString)
-  {
-    AppMethodBeat.i(279257);
-    p.k(paramString, "appId");
-    Log.i("MicroMsg.AppBrandStorageQuotaManager", "clearCalculatedStorageSize ".concat(String.valueOf(paramString)));
-    MultiProcessMMKV localMultiProcessMMKV = f.nCi.getMMKV("AppBrandStorageQuota");
-    if (localMultiProcessMMKV != null) {
-      localMultiProcessMMKV.remove("storage_size_" + paramString + "_temp");
-    }
-    localMultiProcessMMKV = f.nCi.getMMKV("AppBrandStorageQuota");
-    if (localMultiProcessMMKV != null) {
-      localMultiProcessMMKV.remove("storage_size_" + paramString + "_saved_temp");
-    }
-    localMultiProcessMMKV = f.nCi.getMMKV("AppBrandStorageQuota");
-    if (localMultiProcessMMKV != null)
-    {
-      localMultiProcessMMKV.remove("storage_size_" + paramString + "_normal_none_flatten");
-      AppMethodBeat.o(279257);
-      return;
-    }
-    AppMethodBeat.o(279257);
-  }
-  
-  public static void cJ(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(279256);
-    p.k(paramString1, "key");
-    p.k(paramString2, "path");
+    AppMethodBeat.i(323194);
+    s.u(paramString1, "key");
+    s.u(paramString2, "path");
     if (((CharSequence)paramString1).length() == 0)
     {
       i = 1;
@@ -217,217 +223,223 @@ public final class AppBrandStorageQuotaManager
       if (i == 0) {
         break label72;
       }
-      AppMethodBeat.o(279256);
+      AppMethodBeat.o(323194);
       return;
       i = 0;
       break;
     }
     label72:
-    ((Map)nMt).put(paramString1, paramString2);
-    AppMethodBeat.o(279256);
+    ((Map)qMu).put(paramString1, paramString2);
+    AppMethodBeat.o(323194);
   }
   
-  public static boolean cK(String paramString1, String paramString2)
+  public static boolean db(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(279258);
-    p.k(paramString1, "appId");
-    p.k(paramString2, "key");
-    MultiProcessMMKV localMultiProcessMMKV = f.nCi.getMMKV("AppBrandStorageQuota");
-    if (localMultiProcessMMKV != null)
+    AppMethodBeat.i(323199);
+    s.u(paramString1, "appId");
+    s.u(paramString2, "key");
+    Object localObject = f.qBv;
+    localObject = f.getMMKV("AppBrandStorageQuota");
+    if (localObject == null)
     {
-      boolean bool = localMultiProcessMMKV.containsKey("storage_size_" + paramString1 + '_' + paramString2);
-      AppMethodBeat.o(279258);
-      return bool;
+      AppMethodBeat.o(323199);
+      return false;
     }
-    AppMethodBeat.o(279258);
-    return false;
+    boolean bool = ((MultiProcessMMKV)localObject).containsKey("storage_size_" + paramString1 + '_' + paramString2);
+    AppMethodBeat.o(323199);
+    return bool;
   }
   
-  public static long cL(String paramString1, String paramString2)
+  public static long dc(String paramString1, String paramString2)
   {
     long l = 0L;
-    AppMethodBeat.i(279259);
-    p.k(paramString1, "appId");
-    p.k(paramString2, "key");
-    MultiProcessMMKV localMultiProcessMMKV = f.nCi.getMMKV("AppBrandStorageQuota");
-    if (localMultiProcessMMKV != null) {
-      l = localMultiProcessMMKV.getLong("storage_size_" + paramString1 + '_' + paramString2, 0L);
+    AppMethodBeat.i(323202);
+    s.u(paramString1, "appId");
+    s.u(paramString2, "key");
+    Object localObject = f.qBv;
+    localObject = f.getMMKV("AppBrandStorageQuota");
+    if (localObject == null) {}
+    for (;;)
+    {
+      Log.i("MicroMsg.AppBrandStorageQuotaManager", "get saved storage size:" + l + " for " + paramString1 + ',' + paramString2);
+      AppMethodBeat.o(323202);
+      return l;
+      l = ((MultiProcessMMKV)localObject).getLong("storage_size_" + paramString1 + '_' + paramString2, 0L);
     }
-    Log.i("MicroMsg.AppBrandStorageQuotaManager", "get saved storage size:" + l + " for " + paramString1 + ',' + paramString2);
-    AppMethodBeat.o(279259);
-    return l;
   }
   
-  public static void cM(String paramString1, String paramString2)
+  public static void dd(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(279265);
-    p.k(paramString2, "key");
+    AppMethodBeat.i(323218);
+    s.u(paramString2, "key");
     if (paramString1 == null)
     {
-      AppMethodBeat.o(279265);
+      AppMethodBeat.o(323218);
       return;
     }
-    if ((List)nMu.get(paramString1) == null)
-    {
-      nMu.put(paramString1, (List)new ArrayList());
-      x localx = x.aazN;
+    if ((List)qMv.get(paramString1) == null) {
+      qMv.put(paramString1, (List)new ArrayList());
     }
-    paramString1 = (List)nMu.get(paramString1);
-    if (paramString1 != null)
-    {
+    paramString1 = (List)qMv.get(paramString1);
+    if (paramString1 != null) {
       paramString1.add(paramString2);
-      AppMethodBeat.o(279265);
-      return;
     }
-    AppMethodBeat.o(279265);
+    AppMethodBeat.o(323218);
   }
   
   public static void reset()
   {
-    AppMethodBeat.i(279255);
-    nMt.clear();
-    nMu.clear();
-    AppMethodBeat.o(279255);
+    AppMethodBeat.i(323192);
+    qMu.clear();
+    qMv.clear();
+    AppMethodBeat.o(323192);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandStorageQuotaManager$IPCCleanupTempFilesOnExitTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandStorageQuotaManager$CleanupTempFilesOnExitParams;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "createStatStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/WeAppFileSystemTempFileLastOccupationStatStruct;", "params", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandStorageQuotaManager$IPCCleanupTempFilesOnExitTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandStorageQuotaManager$CleanupTempFilesOnExitParams;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "createStatStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/WeAppFileSystemTempFileLastOccupationStatStruct;", "params", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     implements d<AppBrandStorageQuotaManager.CleanupTempFilesOnExitParams, IPCVoid>
   {
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/appstorage/AppBrandStorageQuotaManager$IPCCleanupTempFilesOnExitTask$invoke$1$1"})
-    static final class a
-      implements Runnable
+    private static se a(AppBrandStorageQuotaManager.CleanupTempFilesOnExitParams paramCleanupTempFilesOnExitParams)
     {
-      a(AppBrandStorageQuotaManager.CleanupTempFilesOnExitParams paramCleanupTempFilesOnExitParams1, AppBrandStorageQuotaManager.a parama, AppBrandStorageQuotaManager.CleanupTempFilesOnExitParams paramCleanupTempFilesOnExitParams2) {}
-      
-      public final void run()
+      AppMethodBeat.i(323207);
+      se localse = new se();
+      localse.iqr = 1L;
+      localse.yQ(paramCleanupTempFilesOnExitParams.appId);
+      localse.ind = paramCleanupTempFilesOnExitParams.qMA;
+      localse.jxw = se.a.oC(paramCleanupTempFilesOnExitParams.hzw);
+      localse.jax = paramCleanupTempFilesOnExitParams.qMB;
+      AppMethodBeat.o(323207);
+      return localse;
+    }
+    
+    private static final void a(AppBrandStorageQuotaManager.CleanupTempFilesOnExitParams paramCleanupTempFilesOnExitParams1, a parama, AppBrandStorageQuotaManager.CleanupTempFilesOnExitParams paramCleanupTempFilesOnExitParams2)
+    {
+      AppMethodBeat.i(323225);
+      s.u(paramCleanupTempFilesOnExitParams1, "$it");
+      s.u(parama, "this$0");
+      HashMap localHashMap = new HashMap();
+      long l1;
+      Object localObject1;
+      Object localObject2;
+      if (paramCleanupTempFilesOnExitParams1.qMz)
       {
-        AppMethodBeat.i(274043);
-        HashMap localHashMap = new HashMap();
-        Object localObject1;
-        long l1;
-        Object localObject2;
-        Object localObject3;
-        if (this.nMD.nMz)
+        parama = a(paramCleanupTempFilesOnExitParams1);
+        parama.yR("tmp");
+        if (paramCleanupTempFilesOnExitParams2.qMC)
         {
-          localObject1 = AppBrandStorageQuotaManager.a.a(this.nMD);
-          ((ol)localObject1).FA("tmp");
-          if (this.nMF.nMC)
-          {
-            l1 = 1L;
-            ((ol)localObject1).AY(l1);
-            ((Map)localHashMap).put("temp", localObject1);
-            localObject2 = (Map)localHashMap;
-            localObject3 = AppBrandStorageQuotaManager.a.a(this.nMD);
-            ((ol)localObject3).FA("store");
-            if (!this.nMF.nMC) {
-              break label573;
-            }
-            l1 = 1L;
-            label111:
-            ((ol)localObject3).AY(l1);
-            ((Map)localObject2).put("saved_temp", localObject3);
-            localObject2 = (Map)localHashMap;
-            localObject3 = AppBrandStorageQuotaManager.a.a(this.nMD);
-            ((ol)localObject3).FA("usr");
-            if (!this.nMF.nMC) {
-              break label578;
-            }
-            l1 = 1L;
-            label166:
-            ((ol)localObject3).AY(l1);
-            ((Map)localObject2).put("normal_none_flatten", localObject3);
+          l1 = 1L;
+          parama.jxD = l1;
+          ((Map)localHashMap).put("temp", parama);
+          localObject1 = (Map)localHashMap;
+          localObject2 = a(paramCleanupTempFilesOnExitParams1);
+          ((se)localObject2).yR("store");
+          if (!paramCleanupTempFilesOnExitParams2.qMC) {
+            break label486;
           }
+          l1 = 1L;
+          label103:
+          ((se)localObject2).jxD = l1;
+          ((Map)localObject1).put("saved_temp", localObject2);
+          localObject1 = (Map)localHashMap;
+          localObject2 = a(paramCleanupTempFilesOnExitParams1);
+          ((se)localObject2).yR("usr");
+          if (!paramCleanupTempFilesOnExitParams2.qMC) {
+            break label491;
+          }
+          l1 = 1L;
+          label151:
+          ((se)localObject2).jxD = l1;
+          ((Map)localObject1).put("normal_none_flatten", localObject2);
+        }
+      }
+      for (;;)
+      {
+        Log.i("MicroMsg.AppBrandStorageQuotaManager", "[mm]start check: appId[" + paramCleanupTempFilesOnExitParams1.appId + "] minTemp[" + paramCleanupTempFilesOnExitParams1.qMw + "] maxTemp[" + paramCleanupTempFilesOnExitParams1.qMx + "] maxTotal[" + paramCleanupTempFilesOnExitParams1.qMy + ']');
+        paramCleanupTempFilesOnExitParams2 = AppBrandStorageQuotaManager.qMt;
+        AppBrandStorageQuotaManager.a(paramCleanupTempFilesOnExitParams1.appId, paramCleanupTempFilesOnExitParams1.qMu, localHashMap, paramCleanupTempFilesOnExitParams1.qMv);
+        paramCleanupTempFilesOnExitParams2 = m.qMD;
+        localObject2 = paramCleanupTempFilesOnExitParams1.appId;
+        long l2 = paramCleanupTempFilesOnExitParams1.qMw;
+        long l4 = paramCleanupTempFilesOnExitParams1.qMx;
+        paramCleanupTempFilesOnExitParams2 = paramCleanupTempFilesOnExitParams1.qMu;
+        s.u(localObject2, "appId");
+        s.u(paramCleanupTempFilesOnExitParams2, "storageKey2Path");
+        long l3 = System.currentTimeMillis();
+        localObject1 = (String)paramCleanupTempFilesOnExitParams2.get("temp");
+        paramCleanupTempFilesOnExitParams2 = (AppBrandStorageQuotaManager.CleanupTempFilesOnExitParams)localObject1;
+        if (localObject1 == null) {
+          paramCleanupTempFilesOnExitParams2 = "";
+        }
+        paramCleanupTempFilesOnExitParams2 = new u(paramCleanupTempFilesOnExitParams2);
+        if ((paramCleanupTempFilesOnExitParams2.jKS()) && (paramCleanupTempFilesOnExitParams2.isDirectory()))
+        {
+          paramCleanupTempFilesOnExitParams2 = ah.v(paramCleanupTempFilesOnExitParams2.jKT());
+          s.s(paramCleanupTempFilesOnExitParams2, "appDir.absolutePath");
+          if (!m.a.Wi(paramCleanupTempFilesOnExitParams2)) {}
+        }
+        else
+        {
+          paramCleanupTempFilesOnExitParams2 = m.qMD;
+          m.a.a(paramCleanupTempFilesOnExitParams1.qMy, parama);
+          paramCleanupTempFilesOnExitParams1 = localHashMap.values();
+          s.s(paramCleanupTempFilesOnExitParams1, "key2ReportStruct.values");
+          paramCleanupTempFilesOnExitParams1 = ((Iterable)paramCleanupTempFilesOnExitParams1).iterator();
+          while (paramCleanupTempFilesOnExitParams1.hasNext())
+          {
+            parama = (se)paramCleanupTempFilesOnExitParams1.next();
+            Log.i("MicroMsg.AppBrandStorageQuotaManager", s.X("report ", parama.aIF()));
+            parama.bMH();
+            if ((s.p("store", parama.jxy)) || (s.p("usr", parama.jxy)))
+            {
+              paramCleanupTempFilesOnExitParams2 = AppBrandStorageQuotaManager.qMt;
+              s.s(parama, "");
+              AppBrandStorageQuotaManager.a(parama);
+            }
+          }
+          l1 = 0L;
+          break;
+          label486:
+          l1 = 0L;
+          break label103;
+          label491:
+          l1 = 0L;
+          break label151;
+        }
+        paramCleanupTempFilesOnExitParams2 = AppBrandStorageQuotaManager.qMt;
+        l1 = AppBrandStorageQuotaManager.dc((String)localObject2, "temp");
+        if (parama != null) {
+          parama.jxx = a.ai(l1 / 1024.0D);
+        }
+        long l5 = l4 - l2;
+        Log.i("MicroMsg.AppBrandTempFileCleaner", "checkAppDirTempFileLimit current:" + l1 + " min:" + l2 + " max:" + l4 + " limit:" + l5);
+        l2 = m.a.p((String)localObject2, l1, l5);
+        if (l2 >= 0L)
+        {
+          if (parama != null) {
+            parama.jxA = 1L;
+          }
+          paramCleanupTempFilesOnExitParams2 = AppBrandStorageQuotaManager.qMt;
+          AppBrandStorageQuotaManager.b((String)localObject2, "temp", l2, true);
+        }
+        paramCleanupTempFilesOnExitParams2 = new StringBuilder("checkAppDirTempFileLimit after:");
+        if (l2 >= 0L) {
+          l1 = l2;
         }
         for (;;)
         {
-          Log.i("MicroMsg.AppBrandStorageQuotaManager", "[mm]start check: appId[" + this.nMD.appId + "] minTemp[" + this.nMD.nMw + "] maxTemp[" + this.nMD.nMx + "] maxTotal[" + this.nMD.nMy + ']');
-          localObject2 = AppBrandStorageQuotaManager.nMv;
-          AppBrandStorageQuotaManager.a(this.nMD.appId, this.nMD.nMt, localHashMap, this.nMD.nMu);
-          localObject2 = h.nMI;
-          String str = this.nMD.appId;
-          long l2 = this.nMD.nMw;
-          long l4 = this.nMD.nMx;
-          localObject2 = this.nMD.nMt;
-          p.k(str, "appId");
-          p.k(localObject2, "storageKey2Path");
-          long l3 = System.currentTimeMillis();
-          localObject3 = (String)((HashMap)localObject2).get("temp");
-          localObject2 = localObject3;
-          if (localObject3 == null) {
-            localObject2 = "";
-          }
-          localObject2 = new q((String)localObject2);
-          if ((((q)localObject2).ifE()) && (((q)localObject2).isDirectory()))
-          {
-            localObject2 = ((q)localObject2).bOF();
-            p.j(localObject2, "appDir.absolutePath");
-            if (!h.a.adH((String)localObject2)) {}
-          }
-          else
-          {
-            localObject2 = h.nMI;
-            h.a.a(this.nMD.nMy, (ol)localObject1);
-            localObject1 = localHashMap.values();
-            p.j(localObject1, "key2ReportStruct.values");
-            localObject1 = ((Iterable)localObject1).iterator();
-            while (((Iterator)localObject1).hasNext())
-            {
-              localObject2 = (ol)((Iterator)localObject1).next();
-              Log.i("MicroMsg.AppBrandStorageQuotaManager", "report " + ((ol)localObject2).agI());
-              ((ol)localObject2).bpa();
-              p.j(localObject2, "this");
-              if ((p.h("store", ((ol)localObject2).aow())) || (p.h("usr", ((ol)localObject2).aow())))
-              {
-                localObject3 = AppBrandStorageQuotaManager.nMv;
-                AppBrandStorageQuotaManager.a((ol)localObject2);
-              }
-            }
-            l1 = 0L;
-            break;
-            label573:
-            l1 = 0L;
-            break label111;
-            label578:
-            l1 = 0L;
-            break label166;
-          }
-          localObject2 = AppBrandStorageQuotaManager.nMv;
-          l1 = AppBrandStorageQuotaManager.cL(str, "temp");
-          if (localObject1 != null) {
-            ((ol)localObject1).AU(a.N(l1 / 1024.0D));
-          }
-          long l5 = l4 - l2;
-          Log.i("MicroMsg.AppBrandTempFileCleaner", "checkAppDirTempFileLimit current:" + l1 + " min:" + l2 + " max:" + l4 + " limit:" + l5);
-          l2 = h.a.n(str, l1, l5);
-          if (l2 >= 0L)
-          {
-            if (localObject1 != null) {
-              ((ol)localObject1).aoy();
-            }
-            localObject2 = AppBrandStorageQuotaManager.nMv;
-            AppBrandStorageQuotaManager.a(str, "temp", l2, true);
-          }
-          localObject2 = new StringBuilder("checkAppDirTempFileLimit after:");
-          if (l2 >= 0L) {
-            l1 = l2;
-          }
-          for (;;)
-          {
-            Log.i("MicroMsg.AppBrandTempFileCleaner", l1 + " cost " + (System.currentTimeMillis() - l3));
-            break;
-          }
-          AppMethodBeat.o(274043);
-          return;
-          localObject1 = null;
+          Log.i("MicroMsg.AppBrandTempFileCleaner", l1 + " cost " + (System.currentTimeMillis() - l3));
+          break;
         }
+        AppMethodBeat.o(323225);
+        return;
+        parama = null;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.AppBrandStorageQuotaManager
  * JD-Core Version:    0.7.0.1
  */

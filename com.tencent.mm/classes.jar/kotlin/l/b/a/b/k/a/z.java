@@ -1,96 +1,142 @@
 package kotlin.l.b.a.b.k.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.b.an;
-import kotlin.l.b.a.b.e.a.b;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.b.ab;
+import kotlin.l.b.a.b.b.f;
 import kotlin.l.b.a.b.e.a.b.b;
-import kotlin.l.b.a.b.e.b.b.a;
-import kotlin.l.b.a.b.e.b.b.c;
-import kotlin.l.b.a.b.e.b.c;
-import kotlin.l.b.a.b.e.b.h;
-import kotlin.l.b.a.b.f.a;
+import kotlin.l.b.a.b.e.a.j;
+import kotlin.l.b.a.b.e.a.p.a.b;
+import kotlin.l.b.a.b.e.a.r.b;
+import kotlin.l.b.a.b.m.bl;
+import kotlin.p;
 
-public abstract class z
+public final class z
 {
-  public final c aaCB;
-  public final h aaCC;
-  public final an aaLe;
+  public static final z ajmO;
   
-  private z(c paramc, h paramh, an paraman)
+  static
   {
-    this.aaCB = paramc;
-    this.aaCC = paramh;
-    this.aaLe = paraman;
+    AppMethodBeat.i(60356);
+    ajmO = new z();
+    AppMethodBeat.o(60356);
   }
   
-  public abstract kotlin.l.b.a.b.f.b iPx();
-  
-  public String toString()
+  public static ab a(a.j paramj)
   {
-    return getClass().getSimpleName() + ": " + iPx();
-  }
-  
-  public static final class a
-    extends z
-  {
-    public final a aaId;
-    public final boolean aaKt;
-    final a.b abnd;
-    public final a.b.b abod;
-    public final a aboe;
-    
-    public a(a.b paramb, c paramc, h paramh, an paraman, a parama)
-    {
-      super(paramh, paraman, (byte)0);
-      AppMethodBeat.i(60347);
-      this.abnd = paramb;
-      this.aboe = parama;
-      this.aaId = x.a(paramc, this.abnd.abaj);
-      paramc = (a.b.b)kotlin.l.b.a.b.e.b.b.abdM.get(this.abnd.aaZS);
-      paramb = paramc;
-      if (paramc == null) {
-        paramb = a.b.b.abaB;
+    AppMethodBeat.i(60351);
+    if (paramj == null) {}
+    for (int i = -1;; i = a.$EnumSwitchMapping$0[paramj.ordinal()]) {
+      switch (i)
+      {
+      default: 
+        paramj = ab.aiGY;
+        AppMethodBeat.o(60351);
+        return paramj;
       }
-      this.abod = paramb;
-      paramb = kotlin.l.b.a.b.e.b.b.abdN.aFe(this.abnd.aaZS);
-      p.j(paramb, "Flags.IS_INNER.get(classProto.flags)");
-      this.aaKt = paramb.booleanValue();
-      AppMethodBeat.o(60347);
     }
-    
-    public final kotlin.l.b.a.b.f.b iPx()
-    {
-      AppMethodBeat.i(60346);
-      kotlin.l.b.a.b.f.b localb = this.aaId.iNx();
-      p.j(localb, "classId.asSingleFqName()");
-      AppMethodBeat.o(60346);
-      return localb;
-    }
+    paramj = ab.aiGY;
+    AppMethodBeat.o(60351);
+    return paramj;
+    paramj = ab.aiHa;
+    AppMethodBeat.o(60351);
+    return paramj;
+    paramj = ab.aiHb;
+    AppMethodBeat.o(60351);
+    return paramj;
+    paramj = ab.aiGZ;
+    AppMethodBeat.o(60351);
+    return paramj;
   }
   
-  public static final class b
-    extends z
+  public static f a(a.b.b paramb)
   {
-    private final kotlin.l.b.a.b.f.b aaLC;
-    
-    public b(kotlin.l.b.a.b.f.b paramb, c paramc, h paramh, an paraman)
-    {
-      super(paramh, paraman, (byte)0);
-      AppMethodBeat.i(60348);
-      this.aaLC = paramb;
-      AppMethodBeat.o(60348);
+    AppMethodBeat.i(60353);
+    if (paramb == null) {}
+    for (int i = -1;; i = a.bOL[paramb.ordinal()]) {
+      switch (i)
+      {
+      default: 
+        paramb = f.aiGt;
+        AppMethodBeat.o(60353);
+        return paramb;
+      }
     }
-    
-    public final kotlin.l.b.a.b.f.b iPx()
+    paramb = f.aiGt;
+    AppMethodBeat.o(60353);
+    return paramb;
+    paramb = f.aiGu;
+    AppMethodBeat.o(60353);
+    return paramb;
+    paramb = f.aiGv;
+    AppMethodBeat.o(60353);
+    return paramb;
+    paramb = f.aiGw;
+    AppMethodBeat.o(60353);
+    return paramb;
+    paramb = f.aiGx;
+    AppMethodBeat.o(60353);
+    return paramb;
+    paramb = f.aiGy;
+    AppMethodBeat.o(60353);
+    return paramb;
+  }
+  
+  public static bl b(a.p.a.b paramb)
+  {
+    AppMethodBeat.i(60355);
+    s.u(paramb, "projection");
+    switch (a.bPq[paramb.ordinal()])
     {
-      return this.aaLC;
+    default: 
+      paramb = new p();
+      AppMethodBeat.o(60355);
+      throw paramb;
+    case 1: 
+      paramb = bl.ajqN;
+      AppMethodBeat.o(60355);
+      return paramb;
+    case 2: 
+      paramb = bl.ajqO;
+      AppMethodBeat.o(60355);
+      return paramb;
+    case 3: 
+      paramb = bl.ajqM;
+      AppMethodBeat.o(60355);
+      return paramb;
     }
+    paramb = new IllegalArgumentException(s.X("Only IN, OUT and INV are supported. Actual argument: ", paramb));
+    AppMethodBeat.o(60355);
+    throw paramb;
+  }
+  
+  public static bl b(a.r.b paramb)
+  {
+    AppMethodBeat.i(60354);
+    s.u(paramb, "variance");
+    switch (a.bPp[paramb.ordinal()])
+    {
+    default: 
+      paramb = new p();
+      AppMethodBeat.o(60354);
+      throw paramb;
+    case 1: 
+      paramb = bl.ajqN;
+      AppMethodBeat.o(60354);
+      return paramb;
+    case 2: 
+      paramb = bl.ajqO;
+      AppMethodBeat.o(60354);
+      return paramb;
+    }
+    paramb = bl.ajqM;
+    AppMethodBeat.o(60354);
+    return paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.k.a.z
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.websearch.widget;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.jw;
+import com.tencent.mm.autogen.mmdata.rpt.mn;
 import com.tencent.mm.kernel.f;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.modelappbrand.u;
@@ -17,29 +17,29 @@ import java.util.Set;
 
 public final class e
 {
-  private static final e PCC;
-  Set<WidgetData> PCD;
-  b PCE;
-  boolean gZ;
+  private static final e Wth;
+  Set<WidgetData> Wti;
+  b Wtj;
+  boolean hU;
   
   static
   {
     AppMethodBeat.i(116644);
-    PCC = new e();
+    Wth = new e();
     AppMethodBeat.o(116644);
   }
   
   public e()
   {
     AppMethodBeat.i(116641);
-    this.PCD = new HashSet();
-    h.aHH();
-    this.PCE = new b(h.aHG().kcF);
-    this.gZ = true;
+    this.Wti = new HashSet();
+    h.baF();
+    this.Wtj = new b(h.baE().mCN);
+    this.hU = true;
     AppMethodBeat.o(116641);
   }
   
-  public static e gRL()
+  public static e irc()
   {
     AppMethodBeat.i(116640);
     if (!MMApplicationContext.isMMProcess())
@@ -48,7 +48,7 @@ public final class e
       AppMethodBeat.o(116640);
       throw ((Throwable)localObject);
     }
-    Object localObject = PCC;
+    Object localObject = Wth;
     AppMethodBeat.o(116640);
     return localObject;
   }
@@ -56,36 +56,36 @@ public final class e
   public final void b(WidgetData paramWidgetData, String paramString)
   {
     AppMethodBeat.i(116643);
-    if (this.PCD.contains(paramWidgetData))
+    if (this.Wti.contains(paramWidgetData))
     {
-      u.i("WidgetSafeModeProxyImpl", "widget js error appid %s, err %s", new Object[] { paramWidgetData.PzY.lyD, paramString });
-      v.rE(31);
-      jw localjw = new jw().AS(paramWidgetData.PzY.lyD);
-      localjw.gyo = paramWidgetData.PzY.serviceType;
-      localjw.gLX = 20L;
-      localjw.gLY = System.currentTimeMillis();
-      localjw.AT(NetStatusUtil.getFormatedNetType(MMApplicationContext.getContext())).AU(paramString).bpa();
+      u.i("WidgetSafeModeProxyImpl", "widget js error appid %s, err %s", new Object[] { paramWidgetData.Wqn.oqe, paramString });
+      v.rG(31);
+      mn localmn = new mn().uY(paramWidgetData.Wqn.oqe);
+      localmn.iKD = paramWidgetData.Wqn.serviceType;
+      localmn.jbJ = 20L;
+      localmn.jbK = System.currentTimeMillis();
+      localmn.uZ(NetStatusUtil.getFormatedNetType(MMApplicationContext.getContext())).va(paramString).bMH();
       paramString = new a();
-      paramString.field_appid = paramWidgetData.PzY.lyD;
-      if (this.PCE.get(paramString, new String[0]))
+      paramString.field_appid = paramWidgetData.Wqn.oqe;
+      if (this.Wtj.get(paramString, new String[0]))
       {
-        paramString.field_pkgVersion = paramWidgetData.PzY.version;
+        paramString.field_pkgVersion = paramWidgetData.Wqn.version;
         paramString.field_jsExceptionCount += 1;
-        this.PCE.update(paramString, new String[0]);
+        this.Wtj.update(paramString, new String[0]);
         AppMethodBeat.o(116643);
         return;
       }
-      paramString.field_pkgVersion = paramWidgetData.PzY.version;
+      paramString.field_pkgVersion = paramWidgetData.Wqn.version;
       paramString.field_jsExceptionCount = 1;
       paramString.field_beginTimestamp = System.currentTimeMillis();
-      this.PCE.insert(paramString);
+      this.Wtj.insert(paramString);
     }
     AppMethodBeat.o(116643);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.e
  * JD-Core Version:    0.7.0.1
  */

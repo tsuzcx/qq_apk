@@ -15,16 +15,16 @@ final class FloatMenuView$1
   {
     AppMethodBeat.i(106484);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/ball/view/FloatMenuView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    FloatMenuView.a(this.seK);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/ball/view/FloatMenuView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    FloatMenuView.a(this.vqy);
     a.a(this, "com/tencent/mm/plugin/ball/view/FloatMenuView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(106484);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.view.FloatMenuView.1
  * JD-Core Version:    0.7.0.1
  */

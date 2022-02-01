@@ -1,49 +1,35 @@
 package com.tencent.matrix.report;
 
-import java.util.HashSet;
+import com.tencent.matrix.d.b;
+import org.json.JSONObject;
 
 public class g
 {
-  private final a dab;
-  private final HashSet<String> dac = new HashSet();
+  public b eYA;
+  public JSONObject eYz;
+  public String key;
+  public String tag;
+  public int type;
   
-  public g(a parama)
+  public g() {}
+  
+  public g(int paramInt)
   {
-    this.dab = parama;
+    this.type = paramInt;
   }
   
-  protected final void b(f paramf)
+  public String toString()
   {
-    if (this.dab == null) {
-      throw new RuntimeException("publish issue, but issue listener is null");
+    String str = "";
+    if (this.eYz != null) {
+      str = this.eYz.toString();
     }
-    this.dab.onDetectIssue(paramf);
-  }
-  
-  protected void fw(String paramString)
-  {
-    if (paramString == null) {
-      return;
-    }
-    this.dac.add(paramString);
-  }
-  
-  protected boolean fx(String paramString)
-  {
-    if (paramString == null) {
-      return false;
-    }
-    return this.dac.contains(paramString);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void onDetectIssue(f paramf);
+    return String.format("tag[%s]type[%d];key[%s];content[%s]", new Object[] { this.tag, Integer.valueOf(this.type), this.key, str });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.report.g
  * JD-Core Version:    0.7.0.1
  */

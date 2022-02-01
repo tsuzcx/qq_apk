@@ -1,15 +1,18 @@
 package com.tencent.mm.plugin.lite;
 
 import android.os.Bundle;
+import com.tencent.liteapp.report.WxaLiteAppStartReport;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.j;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
-import com.tencent.mm.kernel.api.bucket.c;
 import com.tencent.mm.kernel.f.c;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.ck;
+import com.tencent.mm.model.cl;
+import com.tencent.mm.plugin.lite.api.d;
+import com.tencent.mm.plugin.lite.logic.LiteAppCheckerListener;
+import com.tencent.mm.plugin.lite.logic.LiteAppDevQrCodeListener;
+import com.tencent.mm.plugin.lite.storage.i;
 import com.tencent.mm.plugin.messenger.foundation.a.v;
-import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -18,60 +21,67 @@ import java.util.HashMap;
 
 public class PluginLiteApp
   extends com.tencent.mm.kernel.b.f
-  implements com.tencent.mm.kernel.api.bucket.a, c, com.tencent.mm.plugin.lite.a.b
+  implements com.tencent.mm.kernel.api.bucket.a, com.tencent.mm.kernel.api.bucket.c, d
 {
-  private com.tencent.mm.plugin.lite.b.g EfL;
-  private IListener EfM;
-  private com.tencent.mm.plugin.lite.b.a EfN;
-  private com.tencent.mm.plugin.lite.b.b EfO;
+  private com.tencent.mm.plugin.lite.logic.e JZb;
+  private IListener JZc;
+  private com.tencent.mm.plugin.lite.logic.a JZd;
+  private LiteAppCheckerListener JZe;
   
   public PluginLiteApp()
   {
-    AppMethodBeat.i(234255);
-    this.EfL = null;
-    this.EfM = null;
-    this.EfN = new com.tencent.mm.plugin.lite.b.a();
-    this.EfO = new com.tencent.mm.plugin.lite.b.b();
-    AppMethodBeat.o(234255);
+    AppMethodBeat.i(271350);
+    this.JZb = null;
+    this.JZc = null;
+    this.JZd = new com.tencent.mm.plugin.lite.logic.a();
+    this.JZe = new LiteAppCheckerListener();
+    AppMethodBeat.o(271350);
   }
   
   public HashMap<Integer, h.b> collectDatabaseFactory()
   {
-    AppMethodBeat.i(234262);
+    AppMethodBeat.i(271386);
     HashMap localHashMap = new HashMap();
     localHashMap.put(Integer.valueOf("LiteAppInfo".hashCode()), new h.b()
     {
       public final String[] getSQLs()
       {
-        return com.tencent.mm.plugin.lite.storage.f.SQL_CREATE;
+        return i.SQL_CREATE;
       }
     });
     localHashMap.put(Integer.valueOf("LiteAppAuthInfo".hashCode()), new h.b()
     {
       public final String[] getSQLs()
       {
-        return com.tencent.mm.plugin.lite.storage.d.SQL_CREATE;
+        return com.tencent.mm.plugin.lite.storage.e.SQL_CREATE;
       }
     });
-    AppMethodBeat.o(234262);
+    localHashMap.put(Integer.valueOf("LiteAppBaselibInfo".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return com.tencent.mm.plugin.lite.storage.g.SQL_CREATE;
+      }
+    });
+    AppMethodBeat.o(271386);
     return localHashMap;
   }
   
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(146365);
-    h.b(com.tencent.mm.plugin.lite.a.a.class, new b());
+    h.b(com.tencent.mm.plugin.lite.api.c.class, new b());
     AppMethodBeat.o(146365);
   }
   
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
-    AppMethodBeat.i(234257);
+    AppMethodBeat.i(271359);
     Log.d("MicroMsg.AppLite.PluginLiteApp", "execute %s", new Object[] { paramg.mProcessName });
     if (MMApplicationContext.isLiteProcess()) {
-      j.a(MainProcessIPCService.PROCESS_NAME, new Bundle(), com.tencent.mm.plugin.lite.c.a.class, new com.tencent.mm.ipcinvoker.f() {});
+      j.a(MainProcessIPCService.PROCESS_NAME, new Bundle(), com.tencent.mm.plugin.lite.b.a.class, new com.tencent.mm.ipcinvoker.f() {});
     }
-    AppMethodBeat.o(234257);
+    AppMethodBeat.o(271359);
   }
   
   public String name()
@@ -85,17 +95,17 @@ public class PluginLiteApp
     Log.d("MicroMsg.AppLite.PluginLiteApp", "onAccountInitialized");
     if (MMApplicationContext.isMainProcess())
     {
-      if (this.EfL == null) {
-        this.EfL = new com.tencent.mm.plugin.lite.b.g();
+      if (this.JZb == null) {
+        this.JZb = new com.tencent.mm.plugin.lite.logic.e();
       }
-      if (this.EfM == null)
+      if (this.JZc == null)
       {
-        this.EfM = new com.tencent.mm.plugin.lite.b.d();
-        EventCenter.instance.add(this.EfM);
+        this.JZc = new LiteAppDevQrCodeListener();
+        this.JZc.alive();
       }
-      ((v)h.ag(v.class)).getSysCmdMsgExtension().a("LiteAppDevPackage", this.EfL);
-      this.EfN.alive();
-      this.EfO.alive();
+      ((v)h.az(v.class)).getSysCmdMsgExtension().a("LiteAppDevPackage", this.JZb);
+      this.JZd.alive();
+      this.JZe.alive();
     }
     AppMethodBeat.o(146366);
   }
@@ -106,9 +116,9 @@ public class PluginLiteApp
     Log.d("MicroMsg.AppLite.PluginLiteApp", "onAccountRelease");
     if (MMApplicationContext.isMainProcess())
     {
-      ((v)h.ag(v.class)).getSysCmdMsgExtension().b("LiteAppDevPackage", this.EfL);
-      this.EfN.dead();
-      this.EfO.dead();
+      ((v)h.az(v.class)).getSysCmdMsgExtension().b("LiteAppDevPackage", this.JZb);
+      this.JZd.dead();
+      this.JZe.dead();
     }
     AppMethodBeat.o(146367);
   }

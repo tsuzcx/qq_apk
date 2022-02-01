@@ -1,12 +1,14 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.hm;
+import com.tencent.mm.autogen.b.ii;
 import com.tencent.mm.plugin.wallet_core.d.e;
+import com.tencent.mm.protocal.protobuf.dus;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import java.lang.reflect.Field;
+import com.tencent.mm.wallet_core.ui.i;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -15,141 +17,130 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class z
-  extends hm
+  extends ii
 {
   public static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(70415);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[3];
-    localMAutoDBInfo.columns = new String[4];
-    StringBuilder localStringBuilder = new StringBuilder();
-    localMAutoDBInfo.columns[0] = "bulletin_scene";
-    localMAutoDBInfo.colsMap.put("bulletin_scene", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" bulletin_scene TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.primaryKey = "bulletin_scene";
-    localMAutoDBInfo.columns[1] = "bulletin_content";
-    localMAutoDBInfo.colsMap.put("bulletin_content", "TEXT");
-    localStringBuilder.append(" bulletin_content TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[2] = "bulletin_url";
-    localMAutoDBInfo.colsMap.put("bulletin_url", "TEXT");
-    localStringBuilder.append(" bulletin_url TEXT");
-    localMAutoDBInfo.columns[3] = "rowid";
-    localMAutoDBInfo.sql = localStringBuilder.toString();
-    info = localMAutoDBInfo;
+    info = ii.aJm();
     AppMethodBeat.o(70415);
   }
   
-  public static void bY(JSONObject paramJSONObject)
+  public static void cu(JSONObject paramJSONObject)
   {
-    boolean bool3 = true;
-    boolean bool2 = true;
-    int j = 0;
     AppMethodBeat.i(70414);
-    Object localObject1 = u.gJs();
-    if ((paramJSONObject != null) && (localObject1 != null))
+    e locale = u.iiG();
+    if ((paramJSONObject != null) && (locale != null))
     {
       Object localObject3 = paramJSONObject.optJSONArray("banner_map");
-      paramJSONObject = paramJSONObject.optJSONArray("banner_content_array");
-      localObject2 = new HashMap();
-      HashMap localHashMap = new HashMap();
-      if ((localObject3 != null) && (paramJSONObject != null))
+      localObject1 = paramJSONObject.optJSONArray("banner_content_array");
+      Object localObject2 = paramJSONObject.optJSONArray("notice_item_array");
+      paramJSONObject = new HashMap();
+      HashMap localHashMap1 = new HashMap();
+      HashMap localHashMap2 = new HashMap();
+      int j;
+      int i;
+      Object localObject5;
+      Object localObject4;
+      if (localObject3 != null)
       {
-        int k = ((JSONArray)localObject3).length();
-        int i = 0;
-        Object localObject4;
-        String str;
-        while (i < k)
+        j = ((JSONArray)localObject3).length();
+        i = 0;
+        while (i < j)
         {
-          localObject4 = ((JSONArray)localObject3).optJSONObject(i);
-          if (localObject4 != null)
+          localObject5 = ((JSONArray)localObject3).optJSONObject(i);
+          if (localObject5 != null)
           {
-            str = ((JSONObject)localObject4).optString("banner_type");
-            localObject4 = ((JSONObject)localObject4).optString("banner_template_id");
-            Log.i("MicroMsg.WalletBulletin", "sceneid=" + str + "; contentid=" + (String)localObject4);
-            if ((!Util.isNullOrNil(str)) && (!Util.isNullOrNil((String)localObject4)))
+            localObject4 = ((JSONObject)localObject5).optString("banner_type");
+            localObject5 = ((JSONObject)localObject5).optString("banner_template_id");
+            Log.i("MicroMsg.WalletBulletin", "sceneid=" + (String)localObject4 + "; contentid=" + (String)localObject5);
+            if ((!Util.isNullOrNil((String)localObject4)) && (!Util.isNullOrNil((String)localObject5)))
             {
-              ((Map)localObject2).put(str, localObject4);
-              Log.i("MicroMsg.WalletBulletin", "sceneid:" + str + " map contentid:" + (String)localObject4);
+              paramJSONObject.put(localObject4, localObject5);
+              Log.i("MicroMsg.WalletBulletin", "sceneid:" + (String)localObject4 + " map contentid:" + (String)localObject5);
             }
           }
           i += 1;
         }
-        k = paramJSONObject.length();
-        i = j;
-        while (i < k)
+      }
+      if (localObject1 != null)
+      {
+        j = ((JSONArray)localObject1).length();
+        i = 0;
+        while (i < j)
         {
-          localObject3 = paramJSONObject.optJSONObject(i);
+          localObject3 = ((JSONArray)localObject1).optJSONObject(i);
           if (localObject3 != null) {
-            localHashMap.put(((JSONObject)localObject3).optString("banner_template_id"), Integer.valueOf(i));
+            localHashMap1.put(((JSONObject)localObject3).optString("banner_template_id"), Integer.valueOf(i));
           }
           i += 1;
         }
-        if (((Map)localObject2).size() > 0)
+      }
+      if (localObject2 != null)
+      {
+        i = 0;
+        while (i < ((JSONArray)localObject2).length())
         {
-          localObject3 = ((Map)localObject2).keySet().iterator();
-          while (((Iterator)localObject3).hasNext())
+          localObject3 = i.cR(((JSONArray)localObject2).optJSONObject(i));
+          if (localObject3 != null) {
+            localHashMap2.put(((dus)localObject3).YSS, localObject3);
+          }
+          i += 1;
+        }
+      }
+      if (paramJSONObject.size() > 0)
+      {
+        localObject2 = paramJSONObject.keySet().iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          localObject5 = (String)((Iterator)localObject2).next();
+          localObject4 = (String)paramJSONObject.get(localObject5);
+          localObject3 = new z();
+          ((z)localObject3).field_bulletin_scene = ((String)localObject5);
+          if (localHashMap2.containsKey(localObject4))
           {
-            str = (String)((Iterator)localObject3).next();
-            localObject4 = (String)((Map)localObject2).get(str);
-            if (localHashMap.containsKey(localObject4))
+            localObject5 = (dus)localHashMap2.get(localObject4);
+            if (localObject5 != null)
             {
-              Log.i("MicroMsg.WalletBulletin", "find contentid:" + (String)localObject4 + "in contentMap");
-              localObject4 = paramJSONObject.optJSONObject(((Integer)localHashMap.get(localObject4)).intValue());
-              z localz = new z();
-              localz.field_bulletin_scene = str;
-              localz.field_bulletin_content = ((JSONObject)localObject4).optString("content");
-              localz.field_bulletin_url = ((JSONObject)localObject4).optString("url");
-              ((e)localObject1).insert(localz);
-            }
-            else
-            {
-              Log.e("MicroMsg.WalletBulletin", "can not find contentid:" + (String)localObject4 + "in contentMap");
+              ((z)localObject3).field_is_show_notice = ((dus)localObject5).abaE;
+              ((z)localObject3).field_wording = ((dus)localObject5).wording;
+              ((z)localObject3).field_jump_url = ((dus)localObject5).jump_url;
+              ((z)localObject3).field_left_icon = ((dus)localObject5).left_icon;
+              ((z)localObject3).field_notice_id = ((dus)localObject5).YSS;
+              ((z)localObject3).field_type = 2;
             }
           }
-        }
-        AppMethodBeat.o(70414);
-        return;
-      }
-      localObject1 = new StringBuilder("scenes==null?");
-      if (localObject3 == null)
-      {
-        bool1 = true;
-        localObject1 = ((StringBuilder)localObject1).append(bool1).append("  contents==null?");
-        if (paramJSONObject != null) {
-          break label537;
+          if (localHashMap1.containsKey(localObject4))
+          {
+            Log.i("MicroMsg.WalletBulletin", "find contentid:" + (String)localObject4 + "in contentMap");
+            localObject4 = ((JSONArray)localObject1).optJSONObject(((Integer)localHashMap1.get(localObject4)).intValue());
+            ((z)localObject3).field_bulletin_content = ((JSONObject)localObject4).optString("content");
+            ((z)localObject3).field_bulletin_url = ((JSONObject)localObject4).optString("url");
+            locale.insert((IAutoDBItem)localObject3);
+          }
         }
       }
-      label537:
-      for (bool1 = bool2;; bool1 = false)
-      {
-        Log.e("MicroMsg.WalletBulletin", bool1);
-        AppMethodBeat.o(70414);
-        return;
-        bool1 = false;
-        break;
-      }
-    }
-    Object localObject2 = new StringBuilder("json==null?");
-    if (paramJSONObject == null)
-    {
-      bool1 = true;
-      paramJSONObject = ((StringBuilder)localObject2).append(bool1).append("  stg==null?");
-      if (localObject1 != null) {
-        break label609;
-      }
-    }
-    label609:
-    for (boolean bool1 = bool3;; bool1 = false)
-    {
-      Log.e("MicroMsg.WalletBulletin", bool1);
       AppMethodBeat.o(70414);
       return;
-      bool1 = false;
+    }
+    Object localObject1 = new StringBuilder("json==null?");
+    if (paramJSONObject == null)
+    {
+      bool = true;
+      paramJSONObject = ((StringBuilder)localObject1).append(bool).append("  stg==null?");
+      if (locale != null) {
+        break label649;
+      }
+    }
+    label649:
+    for (boolean bool = true;; bool = false)
+    {
+      Log.e("MicroMsg.WalletBulletin", bool);
+      AppMethodBeat.o(70414);
+      return;
+      bool = false;
       break;
     }
   }
@@ -161,7 +152,7 @@ public class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.z
  * JD-Core Version:    0.7.0.1
  */

@@ -31,10 +31,10 @@ public class LooperCompat
     }
     new Handler(Looper.getMainLooper()).post(new Runnable()
     {
-      public final void run()
+      public void run()
       {
         AppMethodBeat.i(153463);
-        Looper.myQueue().addIdleHandler(this.val$handler);
+        Looper.myQueue().addIdleHandler(LooperCompat.this);
         AppMethodBeat.o(153463);
       }
     });
@@ -43,7 +43,7 @@ public class LooperCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.sdk.system.LooperCompat
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/ic5" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:orientation="vertical" android:id="@id/ic3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="4.0">
-            <FrameLayout android:id="@id/ibs" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
-            <RelativeLayout android:id="@id/ibr" android:background="@drawable/axq" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="3.0">
-                <FrameLayout android:layout_gravity="center" android:id="@id/ibw" android:background="@drawable/g9" android:layout_width="48.0dip" android:layout_height="24.0dip" android:layout_marginTop="20.0dip" android:layout_marginBottom="24.0dip" android:layout_centerHorizontal="true">
-                    <ImageView android:layout_gravity="center" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/byx" android:rotation="-90.0" />
-                </FrameLayout>
-                <androidx.viewpager.widget.ViewPager android:id="@id/ic6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="30.0dip" android:layout_below="@id/ibw" />
-            </RelativeLayout>
-        </LinearLayout>
-        <com.tencent.mm.plugin.story.ui.view.StoryActionView android:id="@id/ibq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_alignParentEnd="true" />
-        <com.tencent.mm.plugin.story.ui.view.StoryMsgInputView android:id="@id/ic2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
-    </RelativeLayout>
-</merge>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/zc">
+        <ImageView android:id="@id/fmz" android:background="@null" android:padding="4.0dip" android:visibility="gone" android:layout_width="@dimen/iv" android:layout_height="@dimen/iv" android:layout_marginRight="@dimen/k" />
+        <TextView android:id="@android:id/title" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/m2" android:singleLine="true" style="@style/ze" />
+        <TextView android:id="@id/kiu" android:visibility="gone" android:text="@string/k67" style="@style/zh" />
+        <ImageView android:id="@id/f5c" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/azm" />
+        <ImageView android:id="@id/itu" android:background="@null" android:padding="4.0dip" android:visibility="gone" android:layout_width="@dimen/iv" android:layout_height="@dimen/iv" android:layout_marginRight="@dimen/k" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="0.0dip" style="@style/zc">
+        <TextView android:id="@id/ka_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:text="summary" style="@style/zd" />
+    </LinearLayout>
+</LinearLayout>

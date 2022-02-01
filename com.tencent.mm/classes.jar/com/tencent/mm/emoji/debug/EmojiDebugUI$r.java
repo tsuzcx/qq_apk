@@ -1,33 +1,23 @@
 package com.tencent.mm.emoji.debug;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class EmojiDebugUI$r
-  extends q
-  implements a<x>
+  extends u
+  implements a<ah>
 {
-  public static final r jFd;
-  
-  static
-  {
-    AppMethodBeat.i(183950);
-    jFd = new r();
-    AppMethodBeat.o(183950);
-  }
-  
-  EmojiDebugUI$r()
+  EmojiDebugUI$r(EmojiDebugUI paramEmojiDebugUI)
   {
     super(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.emoji.debug.EmojiDebugUI.r
  * JD-Core Version:    0.7.0.1
  */

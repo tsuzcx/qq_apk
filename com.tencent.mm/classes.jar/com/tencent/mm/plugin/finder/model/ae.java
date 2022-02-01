@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderFeedTextCard;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedImage;", "feedObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/model/FinderFeedPlainText;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "feedObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ae
-  extends u
+  extends BaseFinderFeed
 {
   public ae(FinderItem paramFinderItem)
   {
     super(paramFinderItem);
-    AppMethodBeat.i(166387);
-    AppMethodBeat.o(166387);
+    AppMethodBeat.i(166386);
+    AppMethodBeat.o(166386);
   }
 }
 

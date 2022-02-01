@@ -9,7 +9,6 @@ import android.util.StringBuilderPrinter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.ab;
 import com.tencent.mm.compatible.deviceinfo.af;
-import com.tencent.mm.modelvideo.v;
 import com.tencent.mm.pointers.PInt;
 import com.tencent.mm.sdk.crash.CrashReportFactory;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
@@ -18,7 +17,6 @@ import com.tencent.mm.sdk.platformtools.ChannelUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.u;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,8 +25,8 @@ import org.json.JSONObject;
 
 public final class f
 {
-  private static int EXU = 0;
-  private static int EXV = 0;
+  private static int KTG = 0;
+  private static int KTH = 0;
   
   public static String a(String paramString, PInt paramPInt1, PInt paramPInt2, PInt paramPInt3, PInt paramPInt4, PInt paramPInt5)
   {
@@ -37,7 +35,7 @@ public final class f
     try
     {
       paramString = SightVideoJNI.getSimpleMp4InfoVFS(paramString);
-      Log.d("MicroMsg.SightUtil", "get simple mp4 info %s", new Object[] { paramString });
+      Log.i("MicroMsg.SightUtil", "get simple mp4 info %s", new Object[] { paramString });
       paramString = new JSONObject(paramString);
       paramPInt1.value = ((int)paramString.getDouble("videoDuration"));
       paramPInt2.value = paramString.getInt("videoWidth");
@@ -62,7 +60,7 @@ public final class f
     }
   }
   
-  public static Bitmap aC(String paramString, int paramInt1, int paramInt2)
+  public static Bitmap aK(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(133602);
     if (Util.isNullOrNil(paramString))
@@ -81,7 +79,7 @@ public final class f
     }
   }
   
-  public static String aPv(String paramString)
+  public static String aMt(String paramString)
   {
     AppMethodBeat.i(133600);
     paramString = Util.nullAs(paramString, "") + ".thumb";
@@ -89,23 +87,23 @@ public final class f
     return paramString;
   }
   
-  public static String aPw(String paramString)
+  public static String aMu(String paramString)
   {
     AppMethodBeat.i(133605);
     StringBuffer localStringBuffer = new StringBuffer();
     localStringBuffer.append("extInfo: \n".concat(String.valueOf(a(paramString, new PInt(), new PInt(), new PInt(), new PInt(), new PInt()))));
-    localStringBuffer.append("size: " + Util.getSizeKB(u.bBQ(paramString)) + ":" + paramString + "\n");
+    localStringBuffer.append("size: " + Util.getSizeKB(com.tencent.mm.vfs.y.bEl(paramString)) + ":" + paramString + "\n");
     String str = SightVideoJNI.getMp4RecordInfo(paramString);
     if (!Util.isNullOrNil(str)) {
       localStringBuffer.append(str);
     }
-    localStringBuffer.append("isH265:").append(v.isH265Video(paramString));
+    localStringBuffer.append("isH265:").append(com.tencent.mm.modelvideo.y.isH265Video(paramString));
     paramString = localStringBuffer.toString();
     AppMethodBeat.o(133605);
     return paramString;
   }
   
-  public static String aYe(String paramString)
+  public static String aVV(String paramString)
   {
     AppMethodBeat.i(133601);
     paramString = Util.nullAs(paramString, "") + ".soundmp4";
@@ -113,17 +111,17 @@ public final class f
     return paramString;
   }
   
-  public static boolean aYf(String paramString)
+  public static boolean aVW(String paramString)
   {
     AppMethodBeat.i(133603);
-    if ((Util.isNullOrNil(paramString)) || (!u.agG(paramString)))
+    if ((Util.isNullOrNil(paramString)) || (!com.tencent.mm.vfs.y.ZC(paramString)))
     {
       AppMethodBeat.o(133603);
       return false;
     }
     long l = Util.currentTicks();
     e locale = new e();
-    int i = SightVideoJNI.isSightOkVFS(paramString, locale.JrO, locale.JrP, locale.JrQ, locale.JrS, locale.JrR, locale.JrR.length);
+    int i = SightVideoJNI.isSightOkVFS(paramString, locale.PFq, locale.PFr, locale.PFs, locale.PFu, locale.PFt, locale.PFt.length);
     Log.d("MicroMsg.SightUtil", "ashu::check sight use %dms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
     if (i == 0)
     {
@@ -134,25 +132,25 @@ public final class f
     return false;
   }
   
-  public static b aYg(String paramString)
+  public static b aVX(String paramString)
   {
     AppMethodBeat.i(133607);
-    paramString = aYh(paramString);
+    paramString = aVY(paramString);
     AppMethodBeat.o(133607);
     return paramString;
   }
   
-  public static b aYh(String paramString)
+  public static b aVY(String paramString)
   {
-    AppMethodBeat.i(213664);
+    AppMethodBeat.i(291930);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(213664);
+      AppMethodBeat.o(291930);
       return null;
     }
-    if (!u.agG(paramString))
+    if (!com.tencent.mm.vfs.y.ZC(paramString))
     {
-      AppMethodBeat.o(213664);
+      AppMethodBeat.o(291930);
       return null;
     }
     b localb = new b();
@@ -170,17 +168,19 @@ public final class f
         localb.videoBitrate = paramString.getInt("videoBitrate");
         localb.audioBitrate = paramString.getInt("audioBitrate");
         localb.audioChannel = paramString.getInt("audioChannel");
-        localb.Ifg = paramString.getInt("useABA");
-        localb.Ifi = paramString.getInt("useMinMaxQP");
-        localb.Ifh = paramString.getInt("bitrateAdaptiveUp");
+        localb.Obw = paramString.getInt("useABA");
+        localb.Oby = paramString.getInt("useMinMaxQP");
+        localb.Obx = paramString.getInt("bitrateAdaptiveUp");
         localb.audioSampleRate = paramString.getInt("aacSampleRate");
         localb.pixelFormat = paramString.optInt("pixelFormat", -1);
         if (paramString.getInt("hasH264") != 1) {
           continue;
         }
         bool = true;
-        localb.JrE = bool;
-        localb.fSM = paramString.optInt("rotate", -1);
+        localb.PFe = bool;
+        localb.hYK = paramString.optInt("rotate", -1);
+        localb.PFf = paramString.optString("format_name", "");
+        localb.PFg = paramString.optString("format_long_name", "");
       }
       catch (Exception paramString)
       {
@@ -189,26 +189,43 @@ public final class f
         continue;
       }
       Log.i("MicroMsg.SightUtil", "get media %s", new Object[] { localb });
-      AppMethodBeat.o(213664);
+      AppMethodBeat.o(291930);
       return localb;
       bool = false;
     }
   }
   
-  public static boolean fIx()
+  public static JSONObject aVZ(String paramString)
+  {
+    AppMethodBeat.i(291933);
+    try
+    {
+      paramString = new JSONObject(SightVideoJNI.getVideoMetaData(paramString));
+      AppMethodBeat.o(291933);
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      Log.printErrStackTrace("MicroMsg.SightUtil", paramString, "getVideoMetaData error:%s", new Object[] { paramString.getMessage() });
+      AppMethodBeat.o(291933);
+    }
+    return null;
+  }
+  
+  public static boolean gYq()
   {
     AppMethodBeat.i(133599);
-    if (af.juJ.juv == 0)
+    if (af.lYa.lXM == 0)
     {
       AppMethodBeat.o(133599);
       return false;
     }
-    boolean bool = com.tencent.mm.compatible.util.d.qV(14);
+    boolean bool = com.tencent.mm.compatible.util.d.rb(14);
     AppMethodBeat.o(133599);
     return bool;
   }
   
-  public static String fIy()
+  public static String gYr()
   {
     AppMethodBeat.i(133604);
     StringBuilder localStringBuilder = new StringBuilder(512);
@@ -224,18 +241,18 @@ public final class f
     for (;;)
     {
       localStringBuilderPrinter.println((String)localObject1 + ":" + Thread.currentThread().getName() + ":" + CrashReportFactory.currentActivity);
-      localStringBuilderPrinter.println("#aacinfo.device_brand=" + com.tencent.mm.protocal.d.RAw);
-      localStringBuilderPrinter.println("#aacinfo.device_model=" + com.tencent.mm.protocal.d.RAx);
-      localStringBuilderPrinter.println("#aacinfo.os_type=" + com.tencent.mm.protocal.d.RAy);
-      localStringBuilderPrinter.println("#aacinfo.os_name=" + com.tencent.mm.protocal.d.RAz);
-      localStringBuilderPrinter.println("#aacinfo.os_version=" + com.tencent.mm.protocal.d.RAA);
-      localStringBuilderPrinter.println("#aacinfo.device_name=" + com.tencent.mm.protocal.d.RAB);
+      localStringBuilderPrinter.println("#aacinfo.device_brand=" + com.tencent.mm.protocal.d.Yxa);
+      localStringBuilderPrinter.println("#aacinfo.device_model=" + com.tencent.mm.protocal.d.Yxb);
+      localStringBuilderPrinter.println("#aacinfo.os_type=" + com.tencent.mm.protocal.d.Yxc);
+      localStringBuilderPrinter.println("#aacinfo.os_name=" + com.tencent.mm.protocal.d.Yxd);
+      localStringBuilderPrinter.println("#aacinfo.os_version=" + com.tencent.mm.protocal.d.Yxe);
+      localStringBuilderPrinter.println("#aacinfo.device_name=" + com.tencent.mm.protocal.d.Yxf);
       try
       {
         localObject1 = Environment.getDataDirectory().getAbsolutePath();
         localObject3 = new StatFs((String)localObject1);
-        StatFs localStatFs = new StatFs(com.tencent.mm.loader.j.b.aSF());
-        localObject1 = String.format("%dMB %s:%d:%d:%d %s:%d:%d:%d", new Object[] { Integer.valueOf(((ActivityManager)((Context)localObject2).getSystemService("activity")).getMemoryClass()), localObject1, Integer.valueOf(((StatFs)localObject3).getBlockSize()), Integer.valueOf(((StatFs)localObject3).getBlockCount()), Integer.valueOf(((StatFs)localObject3).getAvailableBlocks()), com.tencent.mm.loader.j.b.aSF(), Integer.valueOf(localStatFs.getBlockSize()), Integer.valueOf(localStatFs.getBlockCount()), Integer.valueOf(localStatFs.getAvailableBlocks()) });
+        StatFs localStatFs = new StatFs(com.tencent.mm.loader.i.b.bmt());
+        localObject1 = String.format("%dMB %s:%d:%d:%d %s:%d:%d:%d", new Object[] { Integer.valueOf(((ActivityManager)((Context)localObject2).getSystemService("activity")).getMemoryClass()), localObject1, Integer.valueOf(((StatFs)localObject3).getBlockSize()), Integer.valueOf(((StatFs)localObject3).getBlockCount()), Integer.valueOf(((StatFs)localObject3).getAvailableBlocks()), com.tencent.mm.loader.i.b.bmt(), Integer.valueOf(localStatFs.getBlockSize()), Integer.valueOf(localStatFs.getBlockCount()), Integer.valueOf(localStatFs.getAvailableBlocks()) });
         localStringBuilderPrinter.println("#accinfo.data=".concat(String.valueOf(localObject1)));
         localObject1 = new Date();
         localObject2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSZ", Locale.getDefault());
@@ -257,7 +274,7 @@ public final class f
     }
   }
   
-  public static int kD(int paramInt1, int paramInt2)
+  public static int lc(int paramInt1, int paramInt2)
   {
     int i = paramInt1;
     if (paramInt1 % paramInt2 == 0) {
@@ -275,7 +292,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.base.f
  * JD-Core Version:    0.7.0.1
  */

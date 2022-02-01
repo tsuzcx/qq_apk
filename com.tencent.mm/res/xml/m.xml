@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<automotiveApp>
-    <uses name="notification" />
-</automotiveApp>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:newtip="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.remittance.mobile.ui.BankMobileRemitChooseMMHeaderPreference newtip:key="bank_mobile_remit_choose_header" newtip:layout="@layout/hx" />
+    <com.tencent.mm.plugin.newtips.NormalIconNewTipPreference newtip:icon="@raw/icons_outlined_pay_cards" newtip:iconColor="@color/Brand" newtip:key="bank_mobile_remit_choose_bank" newtip:path="transtobankreddot" newtip:title="@string/agn" />
+    <com.tencent.mm.plugin.newtips.NormalIconNewTipPreference newtip:icon="@raw/icons_outlined_cellphone" newtip:iconColor="@color/Brand" newtip:key="bank_mobile_remit_choose_mobile" newtip:path="mobiletransferreddot" newtip:title="@string/agp" />
+    <PreferenceCategory />
+</PreferenceScreen>

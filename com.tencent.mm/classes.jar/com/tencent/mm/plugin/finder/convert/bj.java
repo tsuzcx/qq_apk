@@ -1,36 +1,21 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import androidx.recyclerview.widget.RecyclerView;
-import com.tencent.mm.plugin.finder.model.a;
-import com.tencent.mm.view.recyclerview.e;
-import com.tencent.mm.view.recyclerview.i;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.model.bc;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/convert/FinderMsgConvert;", "T", "Lcom/tencent/mm/plugin/finder/model/BaseFinderMsg;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "layoutResId", "", "scene", "(II)V", "convertMsg", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "(Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;Lcom/tencent/mm/plugin/finder/model/BaseFinderMsg;I)V", "getLayoutId", "onBindViewHolder", "type", "isHotPatch", "", "payloads", "", "", "(Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;Lcom/tencent/mm/plugin/finder/model/BaseFinderMsg;IIZLjava/util/List;)V", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "showFinderMentionDialog", "context", "Landroid/content/Context;", "finderMention", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;", "plugin-finder_release"})
-public abstract class bj<T extends a>
-  extends e<T>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/convert/FinderMsgFollowNewConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderMsgConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderMsgFollow;", "scene", "", "(I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getScene", "()I", "convertMsg", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class bj
+  extends bf<bc>
 {
+  private final String TAG;
   private final int scene;
-  private final int xmc;
   
-  public bj(int paramInt1, int paramInt2)
+  public bj(int paramInt)
   {
-    this.xmc = paramInt1;
-    this.scene = paramInt2;
-  }
-  
-  public final void a(RecyclerView paramRecyclerView, i parami, int paramInt)
-  {
-    p.k(paramRecyclerView, "recyclerView");
-    p.k(parami, "holder");
-  }
-  
-  public abstract void a(i parami, T paramT);
-  
-  public final int getLayoutId()
-  {
-    return this.xmc;
+    super(e.f.finder_msg_item_of_follow_new, paramInt);
+    this.scene = paramInt;
+    this.TAG = "Finder.FinderMsgFollowConvert";
   }
 }
 

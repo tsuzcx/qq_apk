@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/rj"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:dslv="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.widget.sortlist.DragSortListView android:id="@id/ed2" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" dslv:collapsed_height="2.0dip" dslv:drag_enabled="true" dslv:drag_handle_id="@id/dpx" dslv:drag_scroll_start="0.33" dslv:drag_start_mode="g3u" dslv:float_alpha="0.4" dslv:max_drag_scroll_speed="0.5" dslv:remove_enabled="false" dslv:remove_mode="d67" dslv:slide_shuffle_speed="0.3" dslv:sort_enabled="true" dslv:track_drag_sort="false" dslv:use_default_controller="true" />
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/i_" android:paddingRight="@dimen/i_" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d6" android:layout_marginBottom="@dimen/cv">
+            <TextView android:textSize="@dimen/m3" android:id="@id/jfb" android:paddingLeft="0.0dip" android:paddingRight="@dimen/bu" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hms" style="@style/ko" />
+            <TextView android:textSize="@dimen/m3" android:id="@id/jfa" android:paddingLeft="@dimen/bu" android:paddingRight="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hmr" style="@style/ko" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

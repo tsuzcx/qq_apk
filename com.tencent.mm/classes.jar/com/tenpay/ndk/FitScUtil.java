@@ -6,9 +6,10 @@ public class FitScUtil
 {
   static
   {
-    AppMethodBeat.i(231379);
-    System.loadLibrary("tsmsc");
-    AppMethodBeat.o(231379);
+    AppMethodBeat.i(208510);
+    FitScLibraryLoader.load("TencentSM");
+    FitScLibraryLoader.load("tsmsc");
+    AppMethodBeat.o(208510);
   }
   
   public native byte[] certEncrypt(String paramString, byte[] paramArrayOfByte);
@@ -27,7 +28,7 @@ public class FitScUtil
   
   public native boolean clearValue(String paramString);
   
-  public native String encryptPass(String paramString, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, long paramLong1, long paramLong2, int paramInt);
+  public native String encryptPass(String paramString1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, long paramLong, String paramString2, int paramInt);
   
   public native long[] getCertExpireTime(String paramString);
   
@@ -69,7 +70,7 @@ public class FitScUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tenpay.ndk.FitScUtil
  * JD-Core Version:    0.7.0.1
  */

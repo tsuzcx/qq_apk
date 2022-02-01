@@ -1,33 +1,33 @@
 package kotlin.l.b.a.b.m;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.m.c.h;
-import kotlin.l.b.a.b.m.c.j;
-import kotlin.l.b.a.b.m.c.m;
-import kotlin.l.b.a.b.m.c.q;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.m.c.i;
+import kotlin.l.b.a.b.m.c.k;
+import kotlin.l.b.a.b.m.c.n;
+import kotlin.l.b.a.b.m.c.r;
 
 public final class d
 {
-  public static final d abpL;
+  public static final d ajoP;
   
   static
   {
     AppMethodBeat.i(60575);
-    abpL = new d();
+    ajoP = new d();
     AppMethodBeat.o(60575);
   }
   
-  private final boolean a(q paramq, j paramj1, j paramj2)
+  private final boolean a(r paramr, k paramk1, k paramk2)
   {
     AppMethodBeat.i(60574);
-    if ((paramq.q((h)paramj1) == paramq.q((h)paramj2)) && (paramq.h(paramj1) == paramq.h(paramj2)))
+    if ((paramr.a((i)paramk1) == paramr.a((i)paramk2)) && (paramr.f(paramk1) == paramr.f(paramk2)))
     {
-      if (paramq.g(paramj1) != null) {
+      if (paramr.c(paramk1) != null) {
         break label108;
       }
       i = 1;
-      if (paramq.g(paramj2) != null) {
+      if (paramr.c(paramk2) != null) {
         break label114;
       }
     }
@@ -35,7 +35,7 @@ public final class d
     label114:
     for (int j = 1;; j = 0)
     {
-      if ((i == j) && (paramq.b(paramq.i(paramj1), paramq.i(paramj2)))) {
+      if ((i == j) && (paramr.a(paramr.l(paramk1), paramr.l(paramk2)))) {
         break label120;
       }
       AppMethodBeat.o(60574);
@@ -44,62 +44,65 @@ public final class d
       break;
     }
     label120:
-    if (paramq.a(paramj1, paramj2))
+    if (paramr.b(paramk1, paramk2))
     {
       AppMethodBeat.o(60574);
       return true;
     }
-    j = paramq.q((h)paramj1);
-    int i = 0;
-    while (i < j)
+    int k = paramr.a((i)paramk1);
+    if (k > 0) {}
+    for (int i = 0;; i = j)
     {
-      m localm1 = paramq.a((h)paramj1, i);
-      m localm2 = paramq.a((h)paramj2, i);
-      if (paramq.a(localm1) != paramq.a(localm2))
+      j = i + 1;
+      n localn1 = paramr.a((i)paramk1, i);
+      n localn2 = paramr.a((i)paramk2, i);
+      if (paramr.c(localn1) != paramr.c(localn2))
       {
         AppMethodBeat.o(60574);
         return false;
       }
-      if (!paramq.a(localm1))
+      if (!paramr.c(localn1))
       {
-        if (paramq.b(localm1) != paramq.b(localm2))
+        if (paramr.b(localn1) != paramr.b(localn2))
         {
           AppMethodBeat.o(60574);
           return false;
         }
-        if (!b(paramq, paramq.c(localm1), paramq.c(localm2)))
+        if (!b(paramr, paramr.a(localn1), paramr.a(localn2)))
         {
           AppMethodBeat.o(60574);
           return false;
         }
       }
-      i += 1;
+      if (j >= k)
+      {
+        AppMethodBeat.o(60574);
+        return true;
+      }
     }
-    AppMethodBeat.o(60574);
-    return true;
   }
   
-  private final boolean b(q paramq, h paramh1, h paramh2)
+  private final boolean b(r paramr, i parami1, i parami2)
   {
     AppMethodBeat.i(60573);
-    if (paramh1 == paramh2)
+    if (parami1 == parami2)
     {
       AppMethodBeat.o(60573);
       return true;
     }
-    j localj1 = paramq.o(paramh1);
-    j localj2 = paramq.o(paramh2);
-    if ((localj1 != null) && (localj2 != null))
+    k localk1 = paramr.c(parami1);
+    k localk2 = paramr.c(parami2);
+    if ((localk1 != null) && (localk2 != null))
     {
-      boolean bool = a(paramq, localj1, localj2);
+      boolean bool = a(paramr, localk1, localk2);
       AppMethodBeat.o(60573);
       return bool;
     }
-    paramh1 = paramq.p(paramh1);
-    paramh2 = paramq.p(paramh2);
-    if ((paramh1 != null) && (paramh2 != null))
+    parami1 = paramr.b(parami1);
+    parami2 = paramr.b(parami2);
+    if ((parami1 != null) && (parami2 != null))
     {
-      if ((a(paramq, paramq.c(paramh1), paramq.c(paramh2))) && (a(paramq, paramq.b(paramh1), paramq.b(paramh2))))
+      if ((a(paramr, paramr.b(parami1), paramr.b(parami2))) && (a(paramr, paramr.c(parami1), paramr.c(parami2))))
       {
         AppMethodBeat.o(60573);
         return true;
@@ -111,20 +114,20 @@ public final class d
     return false;
   }
   
-  public final boolean a(q paramq, h paramh1, h paramh2)
+  public final boolean a(r paramr, i parami1, i parami2)
   {
     AppMethodBeat.i(60572);
-    p.k(paramq, "context");
-    p.k(paramh1, "a");
-    p.k(paramh2, "b");
-    boolean bool = b(paramq, paramh1, paramh2);
+    s.u(paramr, "context");
+    s.u(parami1, "a");
+    s.u(parami2, "b");
+    boolean bool = b(paramr, parami1, parami2);
     AppMethodBeat.o(60572);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.m.d
  * JD-Core Version:    0.7.0.1
  */

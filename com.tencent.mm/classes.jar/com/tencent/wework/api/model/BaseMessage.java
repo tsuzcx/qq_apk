@@ -10,11 +10,11 @@ import com.tencent.wework.api.util.SessionProvider;
 
 public abstract class BaseMessage
 {
-  protected static SessionProvider ZYr = null;
-  protected String EsO = "";
-  public String ZYp;
-  public String ZYq;
-  protected String ZYs;
+  protected static SessionProvider aicS = null;
+  protected String Klu = "";
+  public String aicQ;
+  public String aicR;
+  protected String aicT;
   public String appName;
   protected Context mContext = null;
   public int sdkVer;
@@ -31,7 +31,7 @@ public abstract class BaseMessage
     return localBundle;
   }
   
-  public static BaseMessage by(Bundle paramBundle)
+  public static BaseMessage ch(Bundle paramBundle)
   {
     try
     {
@@ -43,11 +43,11 @@ public abstract class BaseMessage
         return localObject;
       }
     }
-    catch (Throwable paramBundle) {}
+    finally {}
     return null;
   }
   
-  public static BaseMessage t(Uri paramUri)
+  public static BaseMessage w(Uri paramUri)
   {
     try
     {
@@ -58,18 +58,18 @@ public abstract class BaseMessage
         return paramUri;
       }
     }
-    catch (Throwable paramUri) {}
+    finally {}
     return null;
   }
   
-  public final void bEy(String paramString)
+  public final void bGX(String paramString)
   {
-    this.EsO = paramString;
+    this.Klu = paramString;
   }
   
-  public void bEz(String paramString)
+  public void bGY(String paramString)
   {
-    this.ZYs = paramString;
+    this.aicT = paramString;
   }
   
   public abstract boolean checkArgs();
@@ -83,7 +83,7 @@ public abstract class BaseMessage
   
   public abstract void toBundle(Bundle paramBundle);
   
-  public void u(Intent paramIntent, String paramString) {}
+  public void w(Intent paramIntent, String paramString) {}
 }
 
 

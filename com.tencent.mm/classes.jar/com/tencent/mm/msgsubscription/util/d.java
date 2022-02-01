@@ -11,68 +11,68 @@ import com.tencent.mm.msgsubscription.presenter.SubscribeMsgSettingData;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/msgsubscription/util/WxaSubscribeMsgSettingDataHelper;", "", "()V", "getSubscribeMsgInfoByNetScene", "", "userName", "", "lifecycleKeeper", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "receiver", "Lkotlin/Function1;", "Lcom/tencent/mm/msgsubscription/presenter/SubscribeMsgSettingData;", "syncSetting2Server", "data", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "bind", "Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$IOnNetSceneSubscribeEndCallback;", "plugin-comm_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/msgsubscription/util/WxaSubscribeMsgSettingDataHelper;", "", "()V", "getSubscribeMsgInfoByNetScene", "", "userName", "", "lifecycleKeeper", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "receiver", "Lkotlin/Function1;", "Lcom/tencent/mm/msgsubscription/presenter/SubscribeMsgSettingData;", "syncSetting2Server", "data", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "bind", "Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$IOnNetSceneSubscribeEndCallback;", "plugin-comm_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
 {
-  public static final d mtA;
+  public static final d pmU;
   
   static
   {
     AppMethodBeat.i(149823);
-    mtA = new d();
+    pmU = new d();
     AppMethodBeat.o(149823);
   }
   
   private static b.c a(b.c paramc, com.tencent.mm.vending.e.b<? super com.tencent.mm.vending.e.a> paramb)
   {
-    AppMethodBeat.i(241070);
-    p.k(paramc, "$this$bind");
+    AppMethodBeat.i(236308);
+    s.u(paramc, "<this>");
     if (paramb == null)
     {
-      AppMethodBeat.o(241070);
+      AppMethodBeat.o(236308);
       return paramc;
     }
     a locala = new a();
-    locala.mtB = paramc;
+    locala.pmV = paramc;
     paramb.keep((com.tencent.mm.vending.e.a)locala);
     paramc = (b.c)locala;
-    AppMethodBeat.o(241070);
+    AppMethodBeat.o(236308);
     return paramc;
   }
   
-  public static void a(final String paramString, SubscribeMsgSettingData paramSubscribeMsgSettingData, com.tencent.mm.vending.e.b<? super com.tencent.mm.vending.e.a> paramb, kotlin.g.a.b<? super SubscribeMsgRequestResult, x> paramb1)
+  public static void a(final String paramString, SubscribeMsgSettingData paramSubscribeMsgSettingData, com.tencent.mm.vending.e.b<? super com.tencent.mm.vending.e.a> paramb, kotlin.g.a.b<? super SubscribeMsgRequestResult, ah> paramb1)
   {
-    AppMethodBeat.i(241082);
-    p.k(paramString, "userName");
-    p.k(paramSubscribeMsgSettingData, "data");
-    p.k(paramb1, "receiver");
-    Object localObject = b.a.mpa;
+    AppMethodBeat.i(236326);
+    s.u(paramString, "userName");
+    s.u(paramSubscribeMsgSettingData, "data");
+    s.u(paramb1, "receiver");
+    Object localObject = b.a.piO;
     List localList = (List)new ArrayList();
-    Iterator localIterator1 = ((Iterable)paramSubscribeMsgSettingData.lxh).iterator();
+    Iterator localIterator1 = ((Iterable)paramSubscribeMsgSettingData.bMQ).iterator();
     label137:
-    label202:
-    label206:
+    label215:
+    label219:
     while (localIterator1.hasNext())
     {
       SubscribeMsgTmpItem localSubscribeMsgTmpItem = (SubscribeMsgTmpItem)localIterator1.next();
-      Iterator localIterator2 = ((Iterable)paramSubscribeMsgSettingData.mpP.mnO).iterator();
+      Iterator localIterator2 = ((Iterable)paramSubscribeMsgSettingData.pjB.phC).iterator();
       for (;;)
       {
         if (localIterator2.hasNext())
         {
           localObject = localIterator2.next();
-          if (TextUtils.equals((CharSequence)((SubscribeMsgTmpItem)localObject).lnb, (CharSequence)localSubscribeMsgTmpItem.lnb))
+          if (TextUtils.equals((CharSequence)((SubscribeMsgTmpItem)localObject).nSg, (CharSequence)localSubscribeMsgTmpItem.nSg))
           {
             localObject = (SubscribeMsgTmpItem)localObject;
             if (localObject == null) {
               break;
             }
-            if ((((SubscribeMsgTmpItem)localObject).mof == localSubscribeMsgTmpItem.mof) && (((SubscribeMsgTmpItem)localObject).mnH == localSubscribeMsgTmpItem.mnH)) {
-              break label202;
+            if ((((SubscribeMsgTmpItem)localObject).phT == localSubscribeMsgTmpItem.phT) && (((SubscribeMsgTmpItem)localObject).phu == localSubscribeMsgTmpItem.phu) && (((SubscribeMsgTmpItem)localObject).pib == localSubscribeMsgTmpItem.pib)) {
+              break label215;
             }
           }
         }
@@ -80,7 +80,7 @@ public final class d
       for (int i = 1;; i = 0)
       {
         if (i == 0) {
-          break label206;
+          break label219;
         }
         localList.add(localSubscribeMsgTmpItem);
         break;
@@ -89,43 +89,46 @@ public final class d
       }
     }
     paramb = a((b.c)new c(paramb1, paramString), paramb);
-    boolean bool = paramSubscribeMsgSettingData.lGT;
-    p.k(paramString, "username");
-    p.k(localList, "templates");
-    b.a.a.a(paramString, "", bool, paramb, localList, new byte[0]).a((a.a)com.tencent.mm.msgsubscription.a.a.moO);
-    AppMethodBeat.o(241082);
+    boolean bool = paramSubscribeMsgSettingData.oyB;
+    s.u(paramString, "username");
+    s.u(localList, "templates");
+    b.a.a.a(paramString, "", bool, paramb, localList, new byte[0]).a((a.a)com.tencent.mm.msgsubscription.a.a.piE);
+    AppMethodBeat.o(236326);
   }
   
-  public static void a(String paramString, SubscribeMsgSettingData paramSubscribeMsgSettingData, kotlin.g.a.b<? super SubscribeMsgRequestResult, x> paramb)
+  public static void a(String paramString, SubscribeMsgSettingData paramSubscribeMsgSettingData, kotlin.g.a.b<? super SubscribeMsgRequestResult, ah> paramb)
   {
     AppMethodBeat.i(149822);
+    s.u(paramString, "userName");
+    s.u(paramSubscribeMsgSettingData, "data");
+    s.u(paramb, "receiver");
     a(paramString, paramSubscribeMsgSettingData, null, paramb);
     AppMethodBeat.o(149822);
   }
   
-  public static void a(String paramString, com.tencent.mm.vending.e.b<? super com.tencent.mm.vending.e.a> paramb, final kotlin.g.a.b<? super SubscribeMsgSettingData, x> paramb1)
+  public static void a(String paramString, com.tencent.mm.vending.e.b<? super com.tencent.mm.vending.e.a> paramb, final kotlin.g.a.b<? super SubscribeMsgSettingData, ah> paramb1)
   {
-    AppMethodBeat.i(241074);
-    p.k(paramString, "userName");
-    p.k(paramb1, "receiver");
-    b.a.a locala = b.a.mpa;
-    b.a.a.a(paramString, a((b.c)new b(paramString, paramb1), paramb)).a((a.a)com.tencent.mm.msgsubscription.a.a.moO);
-    AppMethodBeat.o(241074);
+    AppMethodBeat.i(236315);
+    s.u(paramString, "userName");
+    s.u(paramb1, "receiver");
+    b.a.a locala = b.a.piO;
+    b.a.a.a(paramString, a((b.c)new b(paramString, paramb1), paramb)).a((a.a)com.tencent.mm.msgsubscription.a.a.piE);
+    AppMethodBeat.o(236315);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/msgsubscription/util/WxaSubscribeMsgSettingDataHelper$bind$1", "Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$IOnNetSceneSubscribeEndCallback;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "cb", "getCb", "()Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$IOnNetSceneSubscribeEndCallback;", "setCb", "(Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$IOnNetSceneSubscribeEndCallback;)V", "dead", "", "onNetSceneEndCallback", "errType", "", "errCode", "errMsg", "", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "plugin-comm_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/msgsubscription/util/WxaSubscribeMsgSettingDataHelper$bind$1", "Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$IOnNetSceneSubscribeEndCallback;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "cb", "getCb", "()Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$IOnNetSceneSubscribeEndCallback;", "setCb", "(Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$IOnNetSceneSubscribeEndCallback;)V", "dead", "", "onNetSceneEndCallback", "errType", "", "errCode", "errMsg", "", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "plugin-comm_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     implements b.c, com.tencent.mm.vending.e.a
   {
-    b.c mtB;
+    b.c pmV;
     
     public final void a(int paramInt1, int paramInt2, String paramString, SubscribeMsgRequestResult paramSubscribeMsgRequestResult)
     {
-      AppMethodBeat.i(219300);
-      p.k(paramString, "errMsg");
+      AppMethodBeat.i(236301);
+      s.u(paramString, "errMsg");
       try
       {
-        b.c localc = this.mtB;
+        b.c localc = this.pmV;
         if (localc != null) {
           localc.a(paramInt1, paramInt2, paramString, paramSubscribeMsgRequestResult);
         }
@@ -134,34 +137,34 @@ public final class d
       finally
       {
         dead();
-        AppMethodBeat.o(219300);
+        AppMethodBeat.o(236301);
       }
     }
     
     public final void dead()
     {
-      this.mtB = null;
+      this.pmV = null;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/msgsubscription/util/WxaSubscribeMsgSettingDataHelper$getSubscribeMsgInfoByNetScene$netScene$1", "Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$IOnNetSceneSubscribeEndCallback;", "onNetSceneEndCallback", "", "errType", "", "errCode", "errMsg", "", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "plugin-comm_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/msgsubscription/util/WxaSubscribeMsgSettingDataHelper$getSubscribeMsgInfoByNetScene$netScene$1", "Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$IOnNetSceneSubscribeEndCallback;", "onNetSceneEndCallback", "", "errType", "", "errCode", "errMsg", "", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "plugin-comm_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
     implements b.c
   {
-    b(String paramString, kotlin.g.a.b paramb) {}
+    b(String paramString, kotlin.g.a.b<? super SubscribeMsgSettingData, ah> paramb) {}
     
     public final void a(int paramInt1, int paramInt2, String paramString, SubscribeMsgRequestResult paramSubscribeMsgRequestResult)
     {
       AppMethodBeat.i(149819);
-      p.k(paramString, "errMsg");
+      s.u(paramString, "errMsg");
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
         if (paramSubscribeMsgRequestResult != null)
         {
-          paramString = com.tencent.mm.msgsubscription.api.b.moG;
-          paramString = com.tencent.mm.msgsubscription.api.b.YR("name_wxa");
+          paramString = com.tencent.mm.msgsubscription.api.b.piw;
+          paramString = com.tencent.mm.msgsubscription.api.b.QW("name_wxa");
           if (paramString != null) {
-            paramString.a(this.mtC, (List)paramSubscribeMsgRequestResult.mnO, paramSubscribeMsgRequestResult.mnS, true, false);
+            paramString.a(this.pmW, (List)paramSubscribeMsgRequestResult.phC, paramSubscribeMsgRequestResult.phG, true, false);
           }
           paramb1.invoke(new SubscribeMsgSettingData(paramSubscribeMsgRequestResult, (byte)0));
           AppMethodBeat.o(149819);
@@ -176,35 +179,35 @@ public final class d
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/msgsubscription/util/WxaSubscribeMsgSettingDataHelper$syncSetting2Server$netSceneSubscribeMsg$1", "Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$IOnNetSceneSubscribeEndCallback;", "onNetSceneEndCallback", "", "errType", "", "errCode", "errMsg", "", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "plugin-comm_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/msgsubscription/util/WxaSubscribeMsgSettingDataHelper$syncSetting2Server$netSceneSubscribeMsg$1", "Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$IOnNetSceneSubscribeEndCallback;", "onNetSceneEndCallback", "", "errType", "", "errCode", "errMsg", "", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "plugin-comm_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class c
     implements b.c
   {
-    c(kotlin.g.a.b paramb, String paramString) {}
+    c(kotlin.g.a.b<? super SubscribeMsgRequestResult, ah> paramb, String paramString) {}
     
     public final void a(int paramInt1, int paramInt2, String paramString, SubscribeMsgRequestResult paramSubscribeMsgRequestResult)
     {
       AppMethodBeat.i(149820);
-      p.k(paramString, "errMsg");
+      s.u(paramString, "errMsg");
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        this.mtD.invoke(null);
+        this.pmX.invoke(null);
         AppMethodBeat.o(149820);
         return;
       }
-      paramString = com.tencent.mm.msgsubscription.api.b.moG;
-      paramString = com.tencent.mm.msgsubscription.api.b.YR("name_wxa");
+      paramString = com.tencent.mm.msgsubscription.api.b.piw;
+      paramString = com.tencent.mm.msgsubscription.api.b.QW("name_wxa");
       if ((paramString != null) && (paramSubscribeMsgRequestResult != null)) {
-        paramString.a(paramString, (List)paramSubscribeMsgRequestResult.mnO, paramSubscribeMsgRequestResult.mnS, true, false);
+        paramString.a(paramString, (List)paramSubscribeMsgRequestResult.phC, paramSubscribeMsgRequestResult.phG, true, false);
       }
-      this.mtD.invoke(paramSubscribeMsgRequestResult);
+      this.pmX.invoke(paramSubscribeMsgRequestResult);
       AppMethodBeat.o(149820);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.msgsubscription.util.d
  * JD-Core Version:    0.7.0.1
  */

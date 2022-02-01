@@ -1,193 +1,183 @@
 package com.tencent.mm.emoji.a;
 
-import android.graphics.RectF;
 import android.view.View;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.o;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.autogen.mmdata.rpt.q;
 import com.tencent.mm.plugin.gif.MMGIFException;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ca;
-import com.tencent.mm.ui.widget.MMNeat7extView;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.storage.cc;
+import com.tencent.mm.vfs.y;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/egg/EmojiDynamicController;", "", "()V", "chatId", "", "getChatId", "()Ljava/lang/String;", "setChatId", "(Ljava/lang/String;)V", "holderCallback", "Lcom/tencent/mm/emoji/egg/EmojiAnimViewHolder$AnimCallback;", "holderPool", "Lcom/tencent/mm/emoji/egg/EmojiAnimViewPool;", "rootLocation", "", "rootView", "Landroid/widget/FrameLayout;", "getRootView", "()Landroid/widget/FrameLayout;", "setRootView", "(Landroid/widget/FrameLayout;)V", "stateCallback", "Lcom/tencent/mm/emoji/egg/EmojiDynamicController$StateCallback;", "getStateCallback", "()Lcom/tencent/mm/emoji/egg/EmojiDynamicController$StateCallback;", "setStateCallback", "(Lcom/tencent/mm/emoji/egg/EmojiDynamicController$StateCallback;)V", "checkMatch", "", "msgInfo", "Lcom/tencent/mm/storage/MsgInfo;", "checkMatchPatMsg", "", "playedIndex", "checkRevoke", "", "createHolder", "Lcom/tencent/mm/emoji/egg/EmojiAnimViewHolder;", "index", "animKey", "content", "emojiKey", "onStop", "setPlayingKey", "itemHolder", "updateItemView", "viewProvider", "Lcom/tencent/mm/emoji/egg/ChattingViewProvider;", "Companion", "StateCallback", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/egg/EmojiDynamicController;", "", "()V", "chatId", "", "getChatId", "()Ljava/lang/String;", "setChatId", "(Ljava/lang/String;)V", "holderCallback", "Lcom/tencent/mm/emoji/egg/EmojiAnimViewHolder$AnimCallback;", "holderPool", "Lcom/tencent/mm/emoji/egg/EmojiAnimViewPool;", "rootLocation", "", "rootView", "Landroid/widget/FrameLayout;", "getRootView", "()Landroid/widget/FrameLayout;", "setRootView", "(Landroid/widget/FrameLayout;)V", "stateCallback", "Lcom/tencent/mm/emoji/egg/EmojiDynamicController$StateCallback;", "getStateCallback", "()Lcom/tencent/mm/emoji/egg/EmojiDynamicController$StateCallback;", "setStateCallback", "(Lcom/tencent/mm/emoji/egg/EmojiDynamicController$StateCallback;)V", "checkMatch", "", "msgInfo", "Lcom/tencent/mm/storage/MsgInfo;", "checkMatchPatMsg", "", "playedIndex", "checkRevoke", "", "createHolder", "Lcom/tencent/mm/emoji/egg/EmojiAnimViewHolder;", "index", "animKey", "content", "emojiKey", "onStop", "setPlayingKey", "itemHolder", "updateItemView", "viewProvider", "Lcom/tencent/mm/emoji/egg/ChattingViewProvider;", "Companion", "StateCallback", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
 {
-  private static final String TAG = "MicroMsg.EmojiDynamicController";
-  public static final e.a jGq;
-  public FrameLayout jFQ;
-  private final int[] jGl;
-  public final d jGm;
-  private final c.a jGn;
-  public String jGo;
-  public b jGp;
+  private static final String TAG;
+  public static final e.a mfS;
+  public FrameLayout mfE;
+  private final int[] mfT;
+  public final d mfU;
+  private final c.a mfV;
+  public String mfW;
+  public b mfX;
   
   static
   {
-    AppMethodBeat.i(228530);
-    jGq = new e.a((byte)0);
+    AppMethodBeat.i(242335);
+    mfS = new e.a((byte)0);
     TAG = "MicroMsg.EmojiDynamicController";
-    AppMethodBeat.o(228530);
+    AppMethodBeat.o(242335);
   }
   
   public e()
   {
-    AppMethodBeat.i(228528);
-    this.jGl = new int[2];
-    this.jGm = new d();
-    this.jGn = ((c.a)new c.a()
+    AppMethodBeat.i(242309);
+    this.mfT = new int[2];
+    this.mfU = new d();
+    this.mfV = ((c.a)new c.a()
     {
       public final void a(long paramAnonymousLong, String paramAnonymousString, b.a paramAnonymousa)
       {
-        AppMethodBeat.i(226329);
-        p.k(paramAnonymousString, "animKey");
-        p.k(paramAnonymousa, "config");
-        e.b localb = this.jGr.jGp;
-        if (localb != null)
-        {
+        AppMethodBeat.i(242350);
+        s.u(paramAnonymousString, "animKey");
+        s.u(paramAnonymousa, "config");
+        e.b localb = this.mfY.mfX;
+        if (localb != null) {
           localb.a(paramAnonymousLong, paramAnonymousString, paramAnonymousa);
-          AppMethodBeat.o(226329);
-          return;
         }
-        AppMethodBeat.o(226329);
-      }
-      
-      public final void a(c paramAnonymousc)
-      {
-        AppMethodBeat.i(226327);
-        p.k(paramAnonymousc, "holder");
-        e.a(this.jGr).b(paramAnonymousc);
-        AppMethodBeat.o(226327);
+        AppMethodBeat.o(242350);
       }
       
       public final void a(String paramAnonymousString, b.a paramAnonymousa)
       {
-        AppMethodBeat.i(226328);
-        p.k(paramAnonymousString, "animKey");
-        p.k(paramAnonymousa, "config");
-        e.b localb = this.jGr.jGp;
-        if (localb != null)
-        {
+        AppMethodBeat.i(242340);
+        s.u(paramAnonymousString, "animKey");
+        s.u(paramAnonymousa, "config");
+        e.b localb = this.mfY.mfX;
+        if (localb != null) {
           localb.a(paramAnonymousString, paramAnonymousa);
-          AppMethodBeat.o(226328);
-          return;
         }
-        AppMethodBeat.o(226328);
+        AppMethodBeat.o(242340);
+      }
+      
+      public final void d(c paramAnonymousc)
+      {
+        AppMethodBeat.i(242334);
+        s.u(paramAnonymousc, "holder");
+        e.a(this.mfY).e(paramAnonymousc);
+        AppMethodBeat.o(242334);
       }
     });
-    AppMethodBeat.o(228528);
+    AppMethodBeat.o(242309);
   }
   
-  private final c a(ca paramca, int paramInt, String paramString1, String paramString2, String paramString3)
+  private final c a(cc paramcc, int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(228526);
-    Object localObject = this.jGm;
-    paramca.apG();
-    localObject = ((d)localObject).aBo();
-    ((c)localObject).msgId = paramca.apG();
-    ((c)localObject).LD(paramString1);
-    ((c)localObject).jFP = paramInt;
-    ((c)localObject).msgType = paramca.getType();
-    ((c)localObject).jFQ = this.jFQ;
-    ((c)localObject).jGc = this.jGn;
-    if (paramca.apA() == 1)
+    AppMethodBeat.i(242325);
+    c localc = this.mfU.aUm();
+    localc.msgId = paramcc.field_msgId;
+    localc.Ej(paramString1);
+    localc.mfD = paramInt;
+    localc.msgType = paramcc.getType();
+    localc.mfE = this.mfE;
+    localc.mfQ = this.mfV;
+    if (paramcc.field_isSend == 1)
     {
-      ((c)localObject).jGb = new o();
-      paramca = ((c)localObject).jGb;
-      if (paramca != null)
+      localc.mfP = new q();
+      paramcc = localc.mfP;
+      if (paramcc != null)
       {
-        paramString1 = com.tencent.mm.emoji.c.a.jNj;
-        if (com.tencent.mm.emoji.c.a.aCX())
+        paramString1 = com.tencent.mm.emoji.d.a.mmh;
+        if (com.tencent.mm.emoji.d.a.aVX())
         {
           paramInt = 1;
-          paramca.kY(paramInt);
+          paramcc.ily = paramInt;
         }
       }
       else
       {
-        paramca = com.tencent.mm.emoji.c.a.jNj;
-        com.tencent.mm.emoji.c.a.eA(false);
+        paramcc = com.tencent.mm.emoji.d.a.mmh;
+        com.tencent.mm.emoji.d.a.fl(false);
       }
     }
     else
     {
-      paramca = ((c)localObject).jGb;
-      if (paramca != null) {
-        paramca.iI(this.jGo);
+      paramcc = localc.mfP;
+      if (paramcc != null) {
+        paramcc.kh(this.mfW);
       }
-      paramca = ((c)localObject).jGb;
-      if (paramca != null) {
-        paramca.iH(paramString2);
+      paramcc = localc.mfP;
+      if (paramcc != null) {
+        paramcc.kg(paramString2);
       }
-      if (a((c)localObject, paramString3)) {
-        break label226;
+      if (a(localc, paramString3)) {
+        break label215;
       }
-      paramca = ((c)localObject).jGb;
-      if (paramca != null) {
-        paramca.kW(2);
+      paramcc = localc.mfP;
+      if (paramcc != null) {
+        paramcc.ilv = 2;
       }
-      paramca = ((c)localObject).jGb;
-      if (paramca != null) {
-        paramca.bpa();
+      paramcc = localc.mfP;
+      if (paramcc != null) {
+        paramcc.bMH();
       }
-      this.jGm.b((c)localObject);
+      this.mfU.e(localc);
     }
     for (;;)
     {
-      AppMethodBeat.o(228526);
-      return localObject;
+      AppMethodBeat.o(242325);
+      return localc;
       paramInt = 0;
       break;
-      label226:
-      paramca = ((c)localObject).jGb;
-      if (paramca != null) {
-        paramca.kW(1);
+      label215:
+      paramcc = localc.mfP;
+      if (paramcc != null) {
+        paramcc.ilv = 1;
       }
     }
   }
   
   private static boolean a(c paramc, String paramString)
   {
-    AppMethodBeat.i(228508);
-    p.k(paramc, "itemHolder");
-    p.k(paramString, "emojiKey");
-    Log.i(TAG, "setPlayingKey: ".concat(String.valueOf(paramString)));
-    Object localObject1 = f.jGv;
-    Object localObject2 = ((Iterable)f.aBp().jFL).iterator();
+    AppMethodBeat.i(242320);
+    s.u(paramc, "itemHolder");
+    s.u(paramString, "emojiKey");
+    Log.i(TAG, s.X("setPlayingKey: ", paramString));
+    Object localObject1 = f.mfZ;
+    Object localObject2 = ((Iterable)f.aUn().mfy).iterator();
     for (;;)
     {
       if (((Iterator)localObject2).hasNext())
       {
         localObject1 = ((Iterator)localObject2).next();
-        if (p.h(((b.a)localObject1).key, paramString))
+        if (s.p(((b.a)localObject1).key, paramString))
         {
           paramString = (String)localObject1;
-          paramString = (b.a)paramString;
-          if (paramString == null) {
-            break label402;
+          localObject1 = (b.a)paramString;
+          if (localObject1 == null) {
+            break label381;
           }
-          localObject1 = new StringBuilder();
-          localObject2 = com.tencent.mm.emoji.e.a.jPz;
-          localObject1 = com.tencent.mm.emoji.e.a.aDE() + paramString.jFM;
-          if (!u.agG((String)localObject1)) {
-            break label388;
+          paramString = com.tencent.mm.emoji.f.c.moq;
+          paramString = s.X(com.tencent.mm.emoji.f.c.aWD(), ((b.a)localObject1).mfz);
+          if (!y.ZC(paramString)) {
+            break label367;
           }
-          p.k(paramString, "config");
-          p.k(localObject1, "filePath");
-          paramc.jFW = paramString;
-          paramString = paramc.jFW;
-          if ((paramString != null) && (paramString.jFN != null))
+          s.u(localObject1, "config");
+          s.u(paramString, "filePath");
+          paramc.mfK = ((b.a)localObject1);
+          localObject1 = paramc.mfK;
+          if ((localObject1 != null) && (((b.a)localObject1).mfA != null))
           {
-            localObject2 = paramc.jGc;
+            localObject2 = paramc.mfQ;
             if (localObject2 != null) {
-              ((c.a)localObject2).a(paramc.jFO, paramString);
+              ((c.a)localObject2).a(paramc.mfC, (b.a)localObject1);
             }
           }
         }
@@ -197,13 +187,13 @@ public final class e
     {
       try
       {
-        paramc.jFU = new com.tencent.mm.plugin.gif.h(u.aY((String)localObject1, 0, -1));
-        if (paramc.jFU == null) {
+        paramc.mfI = new com.tencent.mm.plugin.gif.h(y.bi(paramString, 0, -1));
+        if (paramc.mfI == null) {
           continue;
         }
-        paramString = paramc.jGb;
+        paramString = paramc.mfP;
         if (paramString != null) {
-          paramString.kX(1);
+          paramString.ilw = 1;
         }
       }
       catch (Exception paramString)
@@ -212,204 +202,179 @@ public final class e
         if (!(paramString instanceof MMGIFException)) {
           continue;
         }
-        com.tencent.mm.plugin.report.service.h.IzE.el(711, 21);
-        paramString = paramc.jGb;
+        com.tencent.mm.plugin.report.service.h.OAn.kJ(711, 21);
+        paramString = paramc.mfP;
         if (paramString == null) {
           continue;
         }
-        paramString.kX(2);
-        paramString = paramc.jGb;
+        paramString.ilw = 2;
+        paramString = paramc.mfP;
         if (paramString == null) {
           continue;
         }
-        paramString.agM();
+        paramString.ilx = 1;
         continue;
-        int i = 1;
-        continue;
-      }
-      paramString = paramc.jFU;
-      if (paramString == null) {
+        int i = paramString.JhE;
         continue;
       }
-      i = paramString.eAY();
-      paramString = paramc.jFU;
+      paramString = paramc.mfI;
       if (paramString != null) {
-        paramString.Uh(i);
+        continue;
       }
-      paramString = paramc.jFU;
+      i = 1;
+      paramString = paramc.mfI;
       if (paramString != null) {
-        paramString.pI();
+        paramString.JhH = i;
       }
-      paramc = paramc.jFU;
+      paramString = paramc.mfI;
+      if (paramString != null) {
+        paramString.preDraw();
+      }
+      paramc = paramc.mfI;
       if (paramc != null) {
-        paramc.pause();
+        paramc.mIsRunning = false;
       }
-      AppMethodBeat.o(228508);
+      AppMethodBeat.o(242320);
       return true;
       paramString = null;
       break;
-      paramString = paramc.jGb;
+      paramString = paramc.mfP;
       if (paramString != null) {
-        paramString.kX(2);
+        paramString.ilw = 2;
       }
     }
-    label388:
-    paramc = f.jGv;
-    f.a.aBu();
+    label367:
+    paramc = f.mfZ;
+    f.a.aUs();
     for (;;)
     {
-      AppMethodBeat.o(228508);
+      AppMethodBeat.o(242320);
       return false;
-      label402:
+      label381:
       Log.i(TAG, "setPlayingKey: no config");
     }
   }
   
-  public final int a(ca paramca, int paramInt)
+  public final int a(cc paramcc, int paramInt)
   {
-    AppMethodBeat.i(228488);
-    p.k(paramca, "msgInfo");
-    Object localObject1 = f.jGv;
-    localObject1 = f.a.t(paramca);
-    if (((Collection)localObject1).isEmpty()) {}
+    AppMethodBeat.i(242347);
+    s.u(paramcc, "msgInfo");
+    Object localObject1 = f.mfZ;
+    localObject1 = f.a.t(paramcc);
+    Object localObject2 = (Collection)localObject1;
+    if ((localObject2 == null) || (((Collection)localObject2).isEmpty())) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(228488);
+      AppMethodBeat.o(242347);
       return 0;
     }
-    int j = ((List)localObject1).size();
-    if (paramInt < j)
+    int k = ((List)localObject1).size();
+    int j;
+    String str;
+    Object localObject3;
+    if (paramInt < k)
     {
-      String str1 = (String)((List)localObject1).get(paramInt);
-      String str2 = com.tencent.mm.plugin.emoji.i.b.avg(str1);
-      Object localObject2 = (CharSequence)str2;
-      if ((localObject2 == null) || (((CharSequence)localObject2).length() == 0)) {}
-      for (i = 1;; i = 0)
-      {
-        if (i == 0)
-        {
-          localObject2 = paramca.apG() + '_' + paramInt;
-          Log.i(TAG, "checkMatchPatMsg: ".concat(String.valueOf(localObject2)));
-          if (this.jGm.LE((String)localObject2) == null) {
-            a(paramca, paramInt, (String)localObject2, str1, str2);
-          }
-        }
-        paramInt += 1;
-        break;
+      j = paramInt;
+      i = j + 1;
+      localObject2 = (String)((List)localObject1).get(j);
+      str = com.tencent.mm.plugin.emoji.g.d.apg((String)localObject2);
+      localObject3 = (CharSequence)str;
+      if ((localObject3 != null) && (((CharSequence)localObject3).length() != 0)) {
+        break label230;
       }
     }
-    paramInt = ((List)localObject1).size();
-    AppMethodBeat.o(228488);
-    return paramInt;
+    label230:
+    for (paramInt = 1;; paramInt = 0)
+    {
+      if (paramInt == 0)
+      {
+        localObject3 = paramcc.field_msgId + '_' + j;
+        Log.i(TAG, s.X("checkMatchPatMsg: ", localObject3));
+        if (this.mfU.Ek((String)localObject3) == null) {
+          a(paramcc, j, (String)localObject3, (String)localObject2, str);
+        }
+      }
+      paramInt = i;
+      if (i < k) {
+        break;
+      }
+      paramInt = ((List)localObject1).size();
+      AppMethodBeat.o(242347);
+      return paramInt;
+    }
   }
   
   public final void a(a parama)
   {
-    AppMethodBeat.i(228519);
-    p.k(parama, "viewProvider");
-    Object localObject;
-    if (this.jGm.jGk.size() > 0)
+    AppMethodBeat.i(242363);
+    s.u(parama, "viewProvider");
+    if (this.mfU.mfR.size() > 0)
     {
-      localObject = this.jFQ;
+      localObject = this.mfE;
       if (localObject != null) {
-        ((FrameLayout)localObject).getLocationInWindow(this.jGl);
+        ((FrameLayout)localObject).getLocationInWindow(this.mfT);
       }
     }
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = ((Iterable)this.jGm.jGk).iterator();
-    label165:
-    label335:
-    label348:
-    label371:
+    Object localObject = new ArrayList();
+    Iterator localIterator = ((Iterable)this.mfU.mfR).iterator();
+    label158:
     while (localIterator.hasNext())
     {
       c localc = (c)localIterator.next();
-      localObject = parama.Fl(localc.msgId);
+      View localView = parama.ht(localc.msgId);
       boolean bool;
-      if (localObject != null)
+      if (localView != null)
       {
-        bool = localc.b(parama.c((View)localObject, localc.jFO));
-        int[] arrayOfInt1 = this.jGl;
-        p.k(arrayOfInt1, "rootLocation");
-        MMNeat7extView localMMNeat7extView = localc.jFS;
-        if (localMMNeat7extView != null)
-        {
-          localObject = localMMNeat7extView.getLayout();
-          if (localObject == null) {
-            break label348;
-          }
-          localObject = a.jFJ;
-          localObject = a.a.a(localMMNeat7extView);
-          int[] arrayOfInt2 = new int[2];
-          localMMNeat7extView.getLocationInWindow(arrayOfInt2);
-          int i = arrayOfInt2[0] - arrayOfInt1[0];
-          int j = arrayOfInt2[1] - arrayOfInt1[1];
-          if (!((RectF)localObject).isEmpty()) {
-            break label335;
-          }
-          localMMNeat7extView.post((Runnable)new c.e(localc, localMMNeat7extView, i, j));
-          ((RectF)localObject).set(localc.jFV);
-          float f1 = ((RectF)localObject).centerX();
-          float f2 = i;
-          float f3 = localMMNeat7extView.getPaddingLeft();
-          float f4 = ((RectF)localObject).centerY();
-          localc.c(f1 + f2 + f3, j + f4 + localMMNeat7extView.getPaddingTop(), (int)((RectF)localObject).width());
-        }
+        bool = localc.b(parama.c(localView, localc.mfC));
+        localc.u(this.mfT);
       }
       for (;;)
       {
         if (!bool) {
-          break label371;
+          break label158;
         }
-        localArrayList.add(localc);
+        ((ArrayList)localObject).add(localc);
         break;
-        localObject = null;
-        break label165;
-        localc.jFV.set((RectF)localObject);
-        break label258;
-        Log.i(localc.TAG, "updateView: no layout");
-        continue;
         bool = localc.b(null);
       }
     }
-    label258:
-    parama = ((Iterable)localArrayList).iterator();
+    parama = ((Iterable)localObject).iterator();
     while (parama.hasNext())
     {
       localObject = (c)parama.next();
-      this.jGm.b((c)localObject);
+      this.mfU.e((c)localObject);
     }
-    AppMethodBeat.o(228519);
+    AppMethodBeat.o(242363);
   }
   
   public final void onStop()
   {
-    AppMethodBeat.i(228491);
-    Log.i(TAG, "onStop: " + this.jGm.jGk.size());
-    Iterator localIterator = ((Iterable)this.jGm.jGk).iterator();
+    AppMethodBeat.i(242354);
+    Log.i(TAG, s.X("onStop: ", Integer.valueOf(this.mfU.mfR.size())));
+    Iterator localIterator = ((Iterable)this.mfU.mfR).iterator();
     while (localIterator.hasNext()) {
       ((c)localIterator.next()).stop();
     }
-    this.jGm.jGk.clear();
-    AppMethodBeat.o(228491);
+    this.mfU.mfR.clear();
+    AppMethodBeat.o(242354);
   }
   
-  public final boolean r(ca paramca)
+  public final boolean r(cc paramcc)
   {
-    AppMethodBeat.i(228479);
-    p.k(paramca, "msgInfo");
-    Object localObject = f.jGv;
-    String str = f.a.s(paramca);
+    AppMethodBeat.i(242339);
+    s.u(paramcc, "msgInfo");
+    Object localObject = f.mfZ;
+    String str = f.a.s(paramcc);
     localObject = (CharSequence)str;
     if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(228479);
+      AppMethodBeat.o(242339);
       return false;
     }
-    if (paramca.hzL())
+    if (paramcc.jbQ())
     {
-      localObject = com.tencent.mm.plugin.emoji.i.b.avg(str);
+      localObject = com.tencent.mm.plugin.emoji.g.d.apg(str);
       CharSequence localCharSequence = (CharSequence)localObject;
       if ((localCharSequence != null) && (localCharSequence.length() != 0)) {
         break label135;
@@ -419,16 +384,16 @@ public final class e
     for (i = 1;; i = 0)
     {
       if (i == 0) {
-        a(paramca, 0, String.valueOf(paramca.apG()), str, (String)localObject);
+        a(paramcc, 0, String.valueOf(paramcc.field_msgId), str, (String)localObject);
       }
-      AppMethodBeat.o(228479);
+      AppMethodBeat.o(242339);
       return false;
-      localObject = com.tencent.mm.plugin.emoji.i.b.avf(str);
+      localObject = com.tencent.mm.plugin.emoji.g.d.apf(str);
       break;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/egg/EmojiDynamicController$StateCallback;", "", "onEnd", "", "onPlayScreenEffect", "msgId", "", "animKey", "", "config", "Lcom/tencent/mm/emoji/egg/EmojiAnimConfig$EmojiAnimItem;", "onScreenEffect", "onStart", "plugin-emojisdk_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/egg/EmojiDynamicController$StateCallback;", "", "onEnd", "", "onPlayScreenEffect", "msgId", "", "animKey", "", "config", "Lcom/tencent/mm/emoji/egg/EmojiAnimConfig$EmojiAnimItem;", "onScreenEffect", "onStart", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface b
   {
     public abstract void a(long paramLong, String paramString, b.a parama);

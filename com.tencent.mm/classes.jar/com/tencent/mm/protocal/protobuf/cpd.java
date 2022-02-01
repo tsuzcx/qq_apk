@@ -1,72 +1,94 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class cpd
-  extends com.tencent.mm.cd.a
+  extends erp
 {
-  public String key;
-  public String value;
+  public String URL;
+  public int YYs;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(122517);
+    AppMethodBeat.i(32258);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.key != null) {
-        paramVarArgs.f(1, this.key);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.value != null) {
-        paramVarArgs.f(2, this.value);
+      if (this.URL != null) {
+        paramVarArgs.g(2, this.URL);
       }
-      AppMethodBeat.o(122517);
+      paramVarArgs.bS(3, this.YYs);
+      AppMethodBeat.o(32258);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.key == null) {
-        break label274;
+      if (this.BaseRequest == null) {
+        break label397;
       }
     }
-    label274:
-    for (paramInt = g.a.a.b.b.a.g(1, this.key) + 0;; paramInt = 0)
+    label397:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.value != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.value);
+      if (this.URL != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.URL);
       }
-      AppMethodBeat.o(122517);
-      return i;
+      paramInt = i.a.a.b.b.a.cJ(3, this.YYs);
+      AppMethodBeat.o(32258);
+      return i + paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(122517);
+        AppMethodBeat.o(32258);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         cpd localcpd = (cpd)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(122517);
+          AppMethodBeat.o(32258);
           return -1;
         case 1: 
-          localcpd.key = locala.abFh.readString();
-          AppMethodBeat.o(122517);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kc localkc = new kc();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkc.parseFrom((byte[])localObject);
+            }
+            localcpd.BaseRequest = localkc;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(32258);
+          return 0;
+        case 2: 
+          localcpd.URL = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(32258);
           return 0;
         }
-        localcpd.value = locala.abFh.readString();
-        AppMethodBeat.o(122517);
+        localcpd.YYs = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(32258);
         return 0;
       }
-      AppMethodBeat.o(122517);
+      AppMethodBeat.o(32258);
       return -1;
     }
   }

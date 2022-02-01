@@ -12,7 +12,7 @@ final class IPCallShareCouponUI$8
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(25945);
-    this.DYL.finish();
+    this.JPU.finish();
     AppMethodBeat.o(25945);
     return true;
   }

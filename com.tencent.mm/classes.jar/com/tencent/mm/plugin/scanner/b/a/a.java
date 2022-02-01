@@ -9,38 +9,38 @@ import java.util.concurrent.Executors;
 
 public final class a
 {
-  private static a IIo;
-  private static float IIp;
-  private Object Brg;
-  private Map IIq;
-  private Object IIr;
-  private ExecutorService IIs;
-  private Rect IIt;
-  private Rect kXj;
+  private static a OOm;
+  private static float OOn;
+  private Object GXz;
+  private Rect Gl;
+  private Map OOo;
+  private Object OOp;
+  private ExecutorService OOq;
+  private Rect OOr;
   
   static
   {
     AppMethodBeat.i(118321);
-    IIo = new a();
-    IIp = 1.15F;
+    OOm = new a();
+    OOn = 1.15F;
     AppMethodBeat.o(118321);
   }
   
   public a()
   {
     AppMethodBeat.i(118320);
-    this.IIq = new HashMap();
-    this.Brg = new Object();
-    this.IIr = new Object();
-    this.IIs = Executors.newSingleThreadExecutor();
-    this.IIt = new Rect();
-    this.kXj = new Rect();
+    this.OOo = new HashMap();
+    this.GXz = new Object();
+    this.OOp = new Object();
+    this.OOq = Executors.newSingleThreadExecutor();
+    this.OOr = new Rect();
+    this.Gl = new Rect();
     AppMethodBeat.o(118320);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.b.a.a
  * JD-Core Version:    0.7.0.1
  */

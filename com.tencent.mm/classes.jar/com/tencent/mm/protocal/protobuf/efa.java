@@ -3,94 +3,101 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class efa
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String Uiw;
-  public String Uix;
-  public String fFe;
-  public String wmA;
+  public String URL;
+  public String YAQ;
+  public int abkw;
+  public String abkx;
+  public String hAP;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(122526);
+    AppMethodBeat.i(259813);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.wmA != null) {
-        paramVarArgs.f(1, this.wmA);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.hAP != null) {
+        paramVarArgs.g(1, this.hAP);
       }
-      if (this.Uiw != null) {
-        paramVarArgs.f(2, this.Uiw);
+      if (this.URL != null) {
+        paramVarArgs.g(2, this.URL);
       }
-      if (this.fFe != null) {
-        paramVarArgs.f(3, this.fFe);
+      paramVarArgs.bS(3, this.abkw);
+      if (this.abkx != null) {
+        paramVarArgs.g(4, this.abkx);
       }
-      if (this.Uix != null) {
-        paramVarArgs.f(4, this.Uix);
+      if (this.YAQ != null) {
+        paramVarArgs.g(5, this.YAQ);
       }
-      AppMethodBeat.o(122526);
+      AppMethodBeat.o(259813);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.wmA == null) {
-        break label394;
+      if (this.hAP == null) {
+        break label434;
       }
     }
-    label394:
-    for (int i = g.a.a.b.b.a.g(1, this.wmA) + 0;; i = 0)
+    label434:
+    for (paramInt = i.a.a.b.b.a.h(1, this.hAP) + 0;; paramInt = 0)
     {
+      int i = paramInt;
+      if (this.URL != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.URL);
+      }
+      i += i.a.a.b.b.a.cJ(3, this.abkw);
       paramInt = i;
-      if (this.Uiw != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.Uiw);
+      if (this.abkx != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.abkx);
       }
       i = paramInt;
-      if (this.fFe != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.fFe);
+      if (this.YAQ != null) {
+        i = paramInt + i.a.a.b.b.a.h(5, this.YAQ);
       }
-      paramInt = i;
-      if (this.Uix != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.Uix);
-      }
-      AppMethodBeat.o(122526);
-      return paramInt;
+      AppMethodBeat.o(259813);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(122526);
+        AppMethodBeat.o(259813);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         efa localefa = (efa)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(122526);
+          AppMethodBeat.o(259813);
           return -1;
         case 1: 
-          localefa.wmA = locala.abFh.readString();
-          AppMethodBeat.o(122526);
+          localefa.hAP = locala.ajGk.readString();
+          AppMethodBeat.o(259813);
           return 0;
         case 2: 
-          localefa.Uiw = locala.abFh.readString();
-          AppMethodBeat.o(122526);
+          localefa.URL = locala.ajGk.readString();
+          AppMethodBeat.o(259813);
           return 0;
         case 3: 
-          localefa.fFe = locala.abFh.readString();
-          AppMethodBeat.o(122526);
+          localefa.abkw = locala.ajGk.aar();
+          AppMethodBeat.o(259813);
+          return 0;
+        case 4: 
+          localefa.abkx = locala.ajGk.readString();
+          AppMethodBeat.o(259813);
           return 0;
         }
-        localefa.Uix = locala.abFh.readString();
-        AppMethodBeat.o(122526);
+        localefa.YAQ = locala.ajGk.readString();
+        AppMethodBeat.o(259813);
         return 0;
       }
-      AppMethodBeat.o(122526);
+      AppMethodBeat.o(259813);
       return -1;
     }
   }

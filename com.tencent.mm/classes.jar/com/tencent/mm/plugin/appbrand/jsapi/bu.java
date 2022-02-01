@@ -1,25 +1,14 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.content.Intent;
-import com.tencent.luggage.k.f.c;
-import com.tencent.luggage.sdk.h.a;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.v;
-import com.tencent.mm.sdk.platformtools.Log;
+import android.os.Bundle;
+import com.tencent.mm.ipcinvoker.f;
+import com.tencent.mm.plugin.appbrand.g;
 
 public final class bu
-  extends c<v>
+  extends c<g>
 {
-  public static final int CTRL_INDEX = 59;
-  public static final String NAME = "openCard";
-  final int owm;
-  
-  public bu()
-  {
-    AppMethodBeat.i(174756);
-    this.owm = a.aI(this);
-    AppMethodBeat.o(174756);
-  }
+  public static final int CTRL_INDEX = 925;
+  public static final String NAME = "requestOfflineUserBindQuery";
 }
 
 

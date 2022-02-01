@@ -1,112 +1,74 @@
 package com.tencent.mm.app;
 
+import android.os.HandlerThread;
+import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.j.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.tinker.entry.ApplicationLike;
-import com.tencent.tinker.lib.e.b;
-import com.tencent.tinker.loader.TinkerRuntimeException;
-import com.tencent.tinker.loader.shareutil.ShareIntentUtil;
-import com.tencent.tinker.loader.shareutil.SharePatchFileUtil;
-import java.io.File;
-import java.util.HashMap;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.vending.h.h;
 
-public class s
+public final class s
 {
-  static String fcP = "";
-  static ApplicationLike fcb;
-  String fcQ;
-  String fcR;
-  long fcS;
-  long fcT;
+  private static s hgv;
+  MMHandler handler;
+  HandlerThread hgw;
+  com.tencent.mm.vending.h.d mScheduler;
   
-  public s(ApplicationLike paramApplicationLike)
+  private s(String paramString)
   {
-    fcb = paramApplicationLike;
-    d.fcb = paramApplicationLike;
+    AppMethodBeat.i(19444);
+    this.hgw = new HandlerThread(paramString, 10);
+    this.hgw.start();
+    this.handler = new MMHandler(this.hgw.getLooper());
+    this.mScheduler = new h(com.tencent.mm.cp.d.c(this.handler), paramString);
+    AppMethodBeat.o(19444);
   }
   
-  static void a(ApplicationLike paramApplicationLike)
+  public static s aCt()
   {
-    AppMethodBeat.i(125024);
-    if (paramApplicationLike == null)
-    {
-      AppMethodBeat.o(125024);
-      return;
+    AppMethodBeat.i(19443);
+    if (hgv == null) {
+      hgv = new s("initThread");
     }
-    if ((paramApplicationLike == null) || (paramApplicationLike.getApplication() == null))
-    {
-      paramApplicationLike = new TinkerRuntimeException("tinkerApplication is null");
-      AppMethodBeat.o(125024);
-      throw paramApplicationLike;
-    }
-    paramApplicationLike = paramApplicationLike.getTinkerResultIntent();
-    if ((paramApplicationLike != null) && (ShareIntentUtil.getIntentReturnCode(paramApplicationLike) == 0)) {}
-    for (paramApplicationLike = ShareIntentUtil.getIntentPackageConfig(paramApplicationLike);; paramApplicationLike = null)
-    {
-      if (paramApplicationLike != null)
-      {
-        a.kRa = (String)paramApplicationLike.get("patch.rev");
-        a.kRb = (String)paramApplicationLike.get("NEW_TINKER_ID");
-        Log.w("MicroMsg.MMApplicationLikeImpl", "application set patch rev:%s patch tinkerId:%s ", new Object[] { a.kRa, a.kRb });
-      }
-      AppMethodBeat.o(125024);
-      return;
-    }
+    s locals = hgv;
+    AppMethodBeat.o(19443);
+    return locals;
   }
   
-  static String gN(String paramString)
+  public final void setHighPriority()
   {
-    AppMethodBeat.i(125025);
+    AppMethodBeat.i(19445);
+    if ((this.hgw == null) || (!this.hgw.isAlive()))
+    {
+      Log.e("MicroMsg.InitThreadController", "setHighPriority failed thread is dead");
+      AppMethodBeat.o(19445);
+      return;
+    }
+    int i = this.hgw.getThreadId();
     try
     {
-      File localFile = SharePatchFileUtil.getPatchDirectory(fcb.getApplication());
-      String str = SharePatchFileUtil.getPatchVersionDirectory(b.d(fcb));
-      localFile = new File(localFile.getAbsolutePath(), str);
-      paramString = new File(localFile.getAbsolutePath() + "/lib/lib/" + paramString).getAbsolutePath();
-      AppMethodBeat.o(125025);
-      return paramString;
-    }
-    catch (Throwable paramString)
-    {
-      Log.printErrStackTrace("MicroMsg.MMApplicationLikeImpl", paramString, "[-] Fail to get patched native libs path.", new Object[0]);
-      AppMethodBeat.o(125025);
-    }
-    return null;
-  }
-  
-  static final boolean w(File paramFile)
-  {
-    int i = 0;
-    AppMethodBeat.i(175407);
-    if ((paramFile == null) || (!paramFile.exists()))
-    {
-      AppMethodBeat.o(175407);
-      return false;
-    }
-    if (paramFile.isDirectory())
-    {
-      paramFile = paramFile.listFiles();
-      if (paramFile == null)
+      if (-8 == Process.getThreadPriority(i))
       {
-        AppMethodBeat.o(175407);
-        return false;
+        Log.w("MicroMsg.InitThreadController", "setHighPriority No Need.");
+        AppMethodBeat.o(19445);
+        return;
       }
-      while (i < paramFile.length)
-      {
-        paramFile[i].delete();
-        i += 1;
-      }
-      AppMethodBeat.o(175407);
-      return true;
+      Process.setThreadPriority(i, -8);
+      Log.i("MicroMsg.InitThreadController", "InitThreadController:%d setHighPriority to %d", new Object[] { Integer.valueOf(i), Integer.valueOf(Process.getThreadPriority(i)) });
+      AppMethodBeat.o(19445);
+      return;
     }
-    AppMethodBeat.o(175407);
-    return false;
+    catch (Exception localException)
+    {
+      Log.w("MicroMsg.InitThreadController", "thread:%d setHighPriority failed", new Object[] { Integer.valueOf(i) });
+      Log.printErrStackTrace("MicroMsg.InitThreadController", localException, "", new Object[0]);
+      AppMethodBeat.o(19445);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.app.s
  * JD-Core Version:    0.7.0.1
  */

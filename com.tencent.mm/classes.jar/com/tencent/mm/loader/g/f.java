@@ -1,11 +1,27 @@
 package com.tencent.mm.loader.g;
 
-import kotlin.l;
+import com.tencent.mm.loader.g.b.a;
+import java.io.OutputStream;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "T", "Lcom/tencent/mm/loader/loader/IWorkTask;", "", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "(Lcom/tencent/mm/loader/loader/IWorkTask;Lcom/tencent/mm/loader/loader/WorkStatus;)V", "libimageloader_release"})
-public abstract interface f<T extends c>
+public abstract class f<T>
 {
-  public abstract void a(T paramT, j paramj);
+  public T cpt;
+  
+  f() {}
+  
+  public f(T paramT)
+  {
+    this.cpt = paramT;
+  }
+  
+  public abstract void b(OutputStream paramOutputStream);
+  
+  public abstract a blY();
+  
+  public static abstract interface a<T>
+  {
+    public abstract a blZ();
+  }
 }
 
 

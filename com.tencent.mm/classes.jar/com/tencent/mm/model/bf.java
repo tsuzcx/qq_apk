@@ -1,23 +1,23 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.k.b;
 import com.tencent.mm.kernel.f;
-import com.tencent.mm.n.b;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.aq;
 
 public final class bf
 {
-  public static void q(boolean paramBoolean1, boolean paramBoolean2)
+  public static void v(boolean paramBoolean1, boolean paramBoolean2)
   {
     int j = 2;
     AppMethodBeat.i(150169);
-    boolean bool2 = b.awg();
-    boolean bool3 = b.awi();
-    com.tencent.mm.kernel.h.aHH();
-    boolean bool4 = ((Boolean)com.tencent.mm.kernel.h.aHG().aHp().b(73217, Boolean.TRUE)).booleanValue();
-    com.tencent.mm.kernel.h.aHH();
-    boolean bool5 = ((Boolean)com.tencent.mm.kernel.h.aHG().aHp().b(73218, Boolean.TRUE)).booleanValue();
+    boolean bool2 = b.aQF();
+    boolean bool3 = b.aQH();
+    com.tencent.mm.kernel.h.baF();
+    boolean bool4 = ((Boolean)com.tencent.mm.kernel.h.baE().ban().d(73217, Boolean.TRUE)).booleanValue();
+    com.tencent.mm.kernel.h.baF();
+    boolean bool5 = ((Boolean)com.tencent.mm.kernel.h.baE().ban().d(73218, Boolean.TRUE)).booleanValue();
     boolean bool1;
     com.tencent.mm.plugin.report.service.h localh;
     int k;
@@ -31,7 +31,7 @@ public final class bf
     {
       bool1 = true;
       Log.i("MicroMsg.KvNotificationStat", "doStatSysNotificationAfterModify, switchNewMsg: %s, switchVoipInvite: %s, isNewMsgNotification: %s, isNewVoipMsgNotification: %s, voipSound: %s, voipAudioSound: %s, voipHasSound: %s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool5), Boolean.valueOf(bool1) });
-      localh = com.tencent.mm.plugin.report.service.h.IzE;
+      localh = com.tencent.mm.plugin.report.service.h.OAn;
       if (!bool2) {
         break label284;
       }
@@ -61,7 +61,7 @@ public final class bf
     }
     for (;;)
     {
-      localh.a(14852, new Object[] { Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(0), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(0), Integer.valueOf(0) });
+      localh.b(14852, new Object[] { Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(0), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(0), Integer.valueOf(0) });
       AppMethodBeat.o(150169);
       return;
       bool1 = false;
@@ -89,23 +89,23 @@ public final class bf
     }
   }
   
-  public static void uV(int paramInt)
+  public static void vg(int paramInt)
   {
     AppMethodBeat.i(150167);
-    boolean bool2 = b.awg();
-    boolean bool3 = b.awi();
-    boolean bool4 = b.awj();
-    boolean bool5 = b.awk();
-    boolean bool6 = b.awo();
-    boolean bool7 = b.awx();
-    int i2 = b.awy();
-    int i3 = b.awA();
-    int i4 = b.awz();
-    int i5 = b.awB();
-    com.tencent.mm.kernel.h.aHH();
-    boolean bool8 = ((Boolean)com.tencent.mm.kernel.h.aHG().aHp().b(73217, Boolean.TRUE)).booleanValue();
-    com.tencent.mm.kernel.h.aHH();
-    boolean bool9 = ((Boolean)com.tencent.mm.kernel.h.aHG().aHp().b(73218, Boolean.TRUE)).booleanValue();
+    boolean bool2 = b.aQF();
+    boolean bool3 = b.aQH();
+    boolean bool4 = b.aQI();
+    boolean bool5 = b.aQL();
+    boolean bool6 = b.aQN();
+    boolean bool7 = b.aQX();
+    int i2 = b.aQY();
+    int i3 = b.aRa();
+    int i4 = b.aQZ();
+    int i5 = b.aRb();
+    com.tencent.mm.kernel.h.baF();
+    boolean bool8 = ((Boolean)com.tencent.mm.kernel.h.baE().ban().d(73217, Boolean.TRUE)).booleanValue();
+    com.tencent.mm.kernel.h.baF();
+    boolean bool9 = ((Boolean)com.tencent.mm.kernel.h.baE().ban().d(73218, Boolean.TRUE)).booleanValue();
     boolean bool1;
     com.tencent.mm.plugin.report.service.h localh;
     int i;
@@ -125,8 +125,8 @@ public final class bf
     if ((bool8) || (bool9))
     {
       bool1 = true;
-      Log.i("MicroMsg.KvNotificationStat", "doStatNotification, isNewMsgNotification: %s, isNewVoipMsgNotification: %s, isNotificationShowDetail: %s, isNotificationSound: %s, isNotificationShake: %s, isActiveSilentTime: %s, activeBegin: %s, activeEnd: %s, scene: %s, voipSound: %s, voipAudioSound: %s, voipHasSound: %s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool5), Boolean.valueOf(bool6), Boolean.valueOf(bool7), uW(i2) + uW(i3), uW(i4) + uW(i5), Integer.valueOf(paramInt), Boolean.valueOf(bool8), Boolean.valueOf(bool9), Boolean.valueOf(bool1) });
-      localh = com.tencent.mm.plugin.report.service.h.IzE;
+      Log.i("MicroMsg.KvNotificationStat", "doStatNotification, isNewMsgNotification: %s, isNewVoipMsgNotification: %s, isNotificationShowDetail: %s, isNotificationSound: %s, isNotificationShake: %s, isActiveSilentTime: %s, activeBegin: %s, activeEnd: %s, scene: %s, voipSound: %s, voipAudioSound: %s, voipHasSound: %s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool5), Boolean.valueOf(bool6), Boolean.valueOf(bool7), vh(i2) + vh(i3), vh(i4) + vh(i5), Integer.valueOf(paramInt), Boolean.valueOf(bool8), Boolean.valueOf(bool9), Boolean.valueOf(bool1) });
+      localh = com.tencent.mm.plugin.report.service.h.OAn;
       if (!bool2) {
         break label488;
       }
@@ -151,8 +151,8 @@ public final class bf
         break label515;
       }
       i1 = 2;
-      str1 = uW(i4) + uW(i5);
-      str2 = uW(i2) + uW(i3);
+      str1 = vh(i4) + vh(i5);
+      str2 = vh(i2) + vh(i3);
       if (!bool1) {
         break label521;
       }
@@ -161,7 +161,7 @@ public final class bf
     label521:
     for (i2 = 1;; i2 = 2)
     {
-      localh.a(15308, new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), str1, str2, Integer.valueOf(paramInt), Integer.valueOf(i2) });
+      localh.b(15308, new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), str1, str2, Integer.valueOf(paramInt), Integer.valueOf(i2) });
       AppMethodBeat.o(150167);
       return;
       bool1 = false;
@@ -186,7 +186,7 @@ public final class bf
     }
   }
   
-  private static String uW(int paramInt)
+  private static String vh(int paramInt)
   {
     AppMethodBeat.i(150168);
     if (paramInt > 10)
@@ -201,7 +201,7 @@ public final class bf
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.bf
  * JD-Core Version:    0.7.0.1
  */

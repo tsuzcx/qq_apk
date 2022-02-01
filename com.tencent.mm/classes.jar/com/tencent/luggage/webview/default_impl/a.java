@@ -1,6 +1,5 @@
 package com.tencent.luggage.webview.default_impl;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.MutableContextWrapper;
 import android.graphics.Bitmap;
@@ -21,8 +20,8 @@ import java.util.Map;
 public class a
   implements com.tencent.luggage.webview.a
 {
-  private DefaultWebView cEd;
-  private p crX;
+  private p ejR;
+  private DefaultWebView exo;
   private Context mContext;
   private Handler mainThreadHandler;
   
@@ -31,7 +30,7 @@ public class a
     AppMethodBeat.i(140543);
     this.mainThreadHandler = new Handler(Looper.getMainLooper());
     this.mContext = paramContext;
-    this.cEd = new DefaultWebView(paramContext);
+    this.exo = new DefaultWebView(paramContext);
     AppMethodBeat.o(140543);
   }
   
@@ -82,7 +81,7 @@ public class a
   public boolean canGoBack()
   {
     AppMethodBeat.i(140551);
-    boolean bool = this.cEd.canGoBack();
+    boolean bool = this.exo.canGoBack();
     AppMethodBeat.o(140551);
     return bool;
   }
@@ -90,13 +89,13 @@ public class a
   public void destroy()
   {
     AppMethodBeat.i(140552);
-    this.cEd.destroy();
+    this.exo.destroy();
     AppMethodBeat.o(140552);
   }
   
   public void evaluateJavascript(final String paramString, final ValueCallback<String> paramValueCallback)
   {
-    AppMethodBeat.i(208798);
+    AppMethodBeat.i(219955);
     paramString = new Runnable()
     {
       public final void run()
@@ -109,11 +108,11 @@ public class a
     if (Thread.currentThread() == Looper.getMainLooper().getThread())
     {
       paramString.run();
-      AppMethodBeat.o(208798);
+      AppMethodBeat.o(219955);
       return;
     }
     this.mainThreadHandler.post(paramString);
-    AppMethodBeat.o(208798);
+    AppMethodBeat.o(219955);
   }
   
   public Context getContext()
@@ -128,20 +127,20 @@ public class a
   
   public View getView()
   {
-    return this.cEd;
+    return this.exo;
   }
   
   public void goBack()
   {
     AppMethodBeat.i(140550);
-    this.cEd.goBack();
+    this.exo.goBack();
     AppMethodBeat.o(140550);
   }
   
   public void loadData(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(140548);
-    this.cEd.loadData(paramString1, paramString2, paramString3);
+    this.exo.loadData(paramString1, paramString2, paramString3);
     AppMethodBeat.o(140548);
   }
   
@@ -170,7 +169,7 @@ public class a
   public void loadUrl(String paramString, Map<String, String> paramMap)
   {
     AppMethodBeat.i(140547);
-    this.cEd.loadUrl(paramString, paramMap);
+    this.exo.loadUrl(paramString, paramMap);
     AppMethodBeat.o(140547);
   }
   
@@ -185,13 +184,13 @@ public class a
   
   public void setWebCore(p paramp)
   {
-    this.crX = paramp;
+    this.ejR = paramp;
   }
   
   public void stopLoading()
   {
     AppMethodBeat.i(140549);
-    this.cEd.stopLoading();
+    this.exo.stopLoading();
     AppMethodBeat.o(140549);
   }
 }

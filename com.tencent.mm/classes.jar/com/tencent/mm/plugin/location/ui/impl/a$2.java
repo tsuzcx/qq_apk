@@ -15,12 +15,12 @@ final class a$2
   {
     AppMethodBeat.i(55996);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/location/ui/impl/BaseMapUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/location/ui/impl/BaseMapUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
     paramView = new Intent();
-    paramView.putExtra("key_fav_item_id", this.EoY.activity.getIntent().getLongExtra("kFavInfoLocalId", -1L));
-    paramView.putExtra("key_fav_result_list", this.EoY.activity.getIntent().getStringArrayListExtra("kTags"));
-    com.tencent.mm.plugin.fav.a.b.a(this.EoY.activity, ".ui.FavTagEditUI", paramView, 4100);
+    paramView.putExtra("key_fav_item_id", this.KhF.activity.getIntent().getLongExtra("kFavInfoLocalId", -1L));
+    paramView.putExtra("key_fav_result_list", this.KhF.activity.getIntent().getStringArrayListExtra("kTags"));
+    com.tencent.mm.plugin.fav.a.b.a(this.KhF.activity, ".ui.FavTagEditUI", paramView, 4100);
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/location/ui/impl/BaseMapUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(55996);
   }

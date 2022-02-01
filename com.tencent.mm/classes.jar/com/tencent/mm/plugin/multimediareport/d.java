@@ -1,265 +1,265 @@
 package com.tencent.mm.plugin.multimediareport;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.b;
+import com.tencent.mm.bx.b;
 import java.util.LinkedList;
 
 public final class d
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public long FlS;
-  public int FlT;
-  public long FlU;
-  public String FlV;
-  public String FlW;
-  public int FlX;
-  public int FlY;
-  public int FlZ;
-  public int Fma;
-  public String Fmb;
-  public String Fmc;
-  public int Fmd;
-  public b Fme;
-  public LinkedList<a> Fmf;
+  public long LhU;
+  public int LhV;
+  public long LhW;
+  public String LhX;
+  public String LhY;
+  public int LhZ;
+  public int Lia;
+  public int Lib;
+  public int Lic;
+  public String Lid;
+  public String Lie;
+  public int Lif;
+  public b Lig;
+  public LinkedList<a> Lih;
   public long createtime;
   public String fileid;
-  public String jEd;
-  public int klF;
+  public int mMK;
   public String md5;
-  public String sWA;
+  public String mdZ;
   public int source;
-  public String tVp;
   public String uuid;
+  public String wYJ;
+  public String waL;
   
   public d()
   {
-    AppMethodBeat.i(187536);
-    this.Fmf = new LinkedList();
-    AppMethodBeat.o(187536);
+    AppMethodBeat.i(262698);
+    this.Lih = new LinkedList();
+    AppMethodBeat.o(262698);
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(187539);
+    AppMethodBeat.i(262703);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bm(1, this.FlS);
-      paramVarArgs.aY(2, this.FlT);
-      paramVarArgs.aY(3, this.source);
-      paramVarArgs.bm(4, this.FlU);
-      if (this.sWA != null) {
-        paramVarArgs.f(5, this.sWA);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bv(1, this.LhU);
+      paramVarArgs.bS(2, this.LhV);
+      paramVarArgs.bS(3, this.source);
+      paramVarArgs.bv(4, this.LhW);
+      if (this.waL != null) {
+        paramVarArgs.g(5, this.waL);
       }
-      if (this.FlV != null) {
-        paramVarArgs.f(6, this.FlV);
+      if (this.LhX != null) {
+        paramVarArgs.g(6, this.LhX);
       }
       if (this.fileid != null) {
-        paramVarArgs.f(7, this.fileid);
+        paramVarArgs.g(7, this.fileid);
       }
-      if (this.FlW != null) {
-        paramVarArgs.f(8, this.FlW);
+      if (this.LhY != null) {
+        paramVarArgs.g(8, this.LhY);
       }
       if (this.md5 != null) {
-        paramVarArgs.f(9, this.md5);
+        paramVarArgs.g(9, this.md5);
       }
-      paramVarArgs.bm(10, this.createtime);
-      paramVarArgs.aY(11, this.FlX);
-      paramVarArgs.aY(12, this.FlY);
-      if (this.jEd != null) {
-        paramVarArgs.f(13, this.jEd);
+      paramVarArgs.bv(10, this.createtime);
+      paramVarArgs.bS(11, this.LhZ);
+      paramVarArgs.bS(12, this.Lia);
+      if (this.mdZ != null) {
+        paramVarArgs.g(13, this.mdZ);
       }
-      paramVarArgs.aY(14, this.FlZ);
-      paramVarArgs.aY(15, this.klF);
-      paramVarArgs.aY(16, this.Fma);
-      if (this.Fmb != null) {
-        paramVarArgs.f(17, this.Fmb);
+      paramVarArgs.bS(14, this.Lib);
+      paramVarArgs.bS(15, this.mMK);
+      paramVarArgs.bS(16, this.Lic);
+      if (this.Lid != null) {
+        paramVarArgs.g(17, this.Lid);
       }
-      if (this.Fmc != null) {
-        paramVarArgs.f(18, this.Fmc);
+      if (this.Lie != null) {
+        paramVarArgs.g(18, this.Lie);
       }
-      if (this.tVp != null) {
-        paramVarArgs.f(19, this.tVp);
+      if (this.wYJ != null) {
+        paramVarArgs.g(19, this.wYJ);
       }
-      paramVarArgs.aY(20, this.Fmd);
+      paramVarArgs.bS(20, this.Lif);
       if (this.uuid != null) {
-        paramVarArgs.f(21, this.uuid);
+        paramVarArgs.g(21, this.uuid);
       }
-      if (this.Fme != null) {
-        paramVarArgs.c(22, this.Fme);
+      if (this.Lig != null) {
+        paramVarArgs.d(22, this.Lig);
       }
-      paramVarArgs.e(23, 8, this.Fmf);
-      AppMethodBeat.o(187539);
+      paramVarArgs.e(23, 8, this.Lih);
+      AppMethodBeat.o(262703);
       return 0;
     }
     int i;
     if (paramInt == 1)
     {
-      i = g.a.a.b.b.a.p(1, this.FlS) + 0 + g.a.a.b.b.a.bM(2, this.FlT) + g.a.a.b.b.a.bM(3, this.source) + g.a.a.b.b.a.p(4, this.FlU);
+      i = i.a.a.b.b.a.q(1, this.LhU) + 0 + i.a.a.b.b.a.cJ(2, this.LhV) + i.a.a.b.b.a.cJ(3, this.source) + i.a.a.b.b.a.q(4, this.LhW);
       paramInt = i;
-      if (this.sWA != null) {
-        paramInt = i + g.a.a.b.b.a.g(5, this.sWA);
+      if (this.waL != null) {
+        paramInt = i + i.a.a.b.b.a.h(5, this.waL);
       }
       i = paramInt;
-      if (this.FlV != null) {
-        i = paramInt + g.a.a.b.b.a.g(6, this.FlV);
+      if (this.LhX != null) {
+        i = paramInt + i.a.a.b.b.a.h(6, this.LhX);
       }
       paramInt = i;
       if (this.fileid != null) {
-        paramInt = i + g.a.a.b.b.a.g(7, this.fileid);
+        paramInt = i + i.a.a.b.b.a.h(7, this.fileid);
       }
       i = paramInt;
-      if (this.FlW != null) {
-        i = paramInt + g.a.a.b.b.a.g(8, this.FlW);
+      if (this.LhY != null) {
+        i = paramInt + i.a.a.b.b.a.h(8, this.LhY);
       }
       paramInt = i;
       if (this.md5 != null) {
-        paramInt = i + g.a.a.b.b.a.g(9, this.md5);
+        paramInt = i + i.a.a.b.b.a.h(9, this.md5);
       }
-      i = paramInt + g.a.a.b.b.a.p(10, this.createtime) + g.a.a.b.b.a.bM(11, this.FlX) + g.a.a.b.b.a.bM(12, this.FlY);
+      i = paramInt + i.a.a.b.b.a.q(10, this.createtime) + i.a.a.b.b.a.cJ(11, this.LhZ) + i.a.a.b.b.a.cJ(12, this.Lia);
       paramInt = i;
-      if (this.jEd != null) {
-        paramInt = i + g.a.a.b.b.a.g(13, this.jEd);
+      if (this.mdZ != null) {
+        paramInt = i + i.a.a.b.b.a.h(13, this.mdZ);
       }
-      i = paramInt + g.a.a.b.b.a.bM(14, this.FlZ) + g.a.a.b.b.a.bM(15, this.klF) + g.a.a.b.b.a.bM(16, this.Fma);
+      i = paramInt + i.a.a.b.b.a.cJ(14, this.Lib) + i.a.a.b.b.a.cJ(15, this.mMK) + i.a.a.b.b.a.cJ(16, this.Lic);
       paramInt = i;
-      if (this.Fmb != null) {
-        paramInt = i + g.a.a.b.b.a.g(17, this.Fmb);
+      if (this.Lid != null) {
+        paramInt = i + i.a.a.b.b.a.h(17, this.Lid);
       }
       i = paramInt;
-      if (this.Fmc != null) {
-        i = paramInt + g.a.a.b.b.a.g(18, this.Fmc);
+      if (this.Lie != null) {
+        i = paramInt + i.a.a.b.b.a.h(18, this.Lie);
       }
       paramInt = i;
-      if (this.tVp != null) {
-        paramInt = i + g.a.a.b.b.a.g(19, this.tVp);
+      if (this.wYJ != null) {
+        paramInt = i + i.a.a.b.b.a.h(19, this.wYJ);
       }
-      i = paramInt + g.a.a.b.b.a.bM(20, this.Fmd);
+      i = paramInt + i.a.a.b.b.a.cJ(20, this.Lif);
       paramInt = i;
       if (this.uuid != null) {
-        paramInt = i + g.a.a.b.b.a.g(21, this.uuid);
+        paramInt = i + i.a.a.b.b.a.h(21, this.uuid);
       }
       i = paramInt;
-      if (this.Fme != null) {
-        i = paramInt + g.a.a.b.b.a.b(22, this.Fme);
+      if (this.Lig != null) {
+        i = paramInt + i.a.a.b.b.a.c(22, this.Lig);
       }
-      paramInt = g.a.a.a.c(23, 8, this.Fmf);
-      AppMethodBeat.o(187539);
+      paramInt = i.a.a.a.c(23, 8, this.Lih);
+      AppMethodBeat.o(262703);
       return i + paramInt;
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.Fmf.clear();
-      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      this.Lih.clear();
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(187539);
+      AppMethodBeat.o(262703);
       return 0;
     }
     if (paramInt == 3)
     {
-      Object localObject = (g.a.a.a.a)paramVarArgs[0];
+      Object localObject = (i.a.a.a.a)paramVarArgs[0];
       d locald = (d)paramVarArgs[1];
       paramInt = ((Integer)paramVarArgs[2]).intValue();
       switch (paramInt)
       {
       default: 
-        AppMethodBeat.o(187539);
+        AppMethodBeat.o(262703);
         return -1;
       case 1: 
-        locald.FlS = ((g.a.a.a.a)localObject).abFh.AN();
-        AppMethodBeat.o(187539);
+        locald.LhU = ((i.a.a.a.a)localObject).ajGk.aaw();
+        AppMethodBeat.o(262703);
         return 0;
       case 2: 
-        locald.FlT = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(187539);
+        locald.LhV = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(262703);
         return 0;
       case 3: 
-        locald.source = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(187539);
+        locald.source = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(262703);
         return 0;
       case 4: 
-        locald.FlU = ((g.a.a.a.a)localObject).abFh.AN();
-        AppMethodBeat.o(187539);
+        locald.LhW = ((i.a.a.a.a)localObject).ajGk.aaw();
+        AppMethodBeat.o(262703);
         return 0;
       case 5: 
-        locald.sWA = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(187539);
+        locald.waL = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(262703);
         return 0;
       case 6: 
-        locald.FlV = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(187539);
+        locald.LhX = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(262703);
         return 0;
       case 7: 
-        locald.fileid = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(187539);
+        locald.fileid = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(262703);
         return 0;
       case 8: 
-        locald.FlW = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(187539);
+        locald.LhY = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(262703);
         return 0;
       case 9: 
-        locald.md5 = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(187539);
+        locald.md5 = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(262703);
         return 0;
       case 10: 
-        locald.createtime = ((g.a.a.a.a)localObject).abFh.AN();
-        AppMethodBeat.o(187539);
+        locald.createtime = ((i.a.a.a.a)localObject).ajGk.aaw();
+        AppMethodBeat.o(262703);
         return 0;
       case 11: 
-        locald.FlX = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(187539);
+        locald.LhZ = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(262703);
         return 0;
       case 12: 
-        locald.FlY = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(187539);
+        locald.Lia = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(262703);
         return 0;
       case 13: 
-        locald.jEd = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(187539);
+        locald.mdZ = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(262703);
         return 0;
       case 14: 
-        locald.FlZ = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(187539);
+        locald.Lib = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(262703);
         return 0;
       case 15: 
-        locald.klF = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(187539);
+        locald.mMK = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(262703);
         return 0;
       case 16: 
-        locald.Fma = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(187539);
+        locald.Lic = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(262703);
         return 0;
       case 17: 
-        locald.Fmb = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(187539);
+        locald.Lid = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(262703);
         return 0;
       case 18: 
-        locald.Fmc = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(187539);
+        locald.Lie = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(262703);
         return 0;
       case 19: 
-        locald.tVp = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(187539);
+        locald.wYJ = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(262703);
         return 0;
       case 20: 
-        locald.Fmd = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(187539);
+        locald.Lif = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(262703);
         return 0;
       case 21: 
-        locald.uuid = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(187539);
+        locald.uuid = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(262703);
         return 0;
       case 22: 
-        locald.Fme = ((g.a.a.a.a)localObject).abFh.iUw();
-        AppMethodBeat.o(187539);
+        locald.Lig = ((i.a.a.a.a)localObject).ajGk.kFX();
+        AppMethodBeat.o(262703);
         return 0;
       }
-      paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+      paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
       i = paramVarArgs.size();
       paramInt = 0;
       while (paramInt < i)
@@ -269,19 +269,19 @@ public final class d
         if ((localObject != null) && (localObject.length > 0)) {
           locala.parseFrom((byte[])localObject);
         }
-        locald.Fmf.add(locala);
+        locald.Lih.add(locala);
         paramInt += 1;
       }
-      AppMethodBeat.o(187539);
+      AppMethodBeat.o(262703);
       return 0;
     }
-    AppMethodBeat.o(187539);
+    AppMethodBeat.o(262703);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.multimediareport.d
  * JD-Core Version:    0.7.0.1
  */

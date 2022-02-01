@@ -1,14 +1,11 @@
 package com.tencent.mm.plugin.textstatus.ui;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.format.Time;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
@@ -16,636 +13,661 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
-import com.tencent.mm.plugin.textstatus.a.r;
-import com.tencent.mm.plugin.textstatus.b.b;
-import com.tencent.mm.plugin.textstatus.b.e;
-import com.tencent.mm.plugin.textstatus.b.f;
-import com.tencent.mm.plugin.textstatus.b.g;
-import com.tencent.mm.plugin.textstatus.b.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.b.g;
+import com.tencent.mm.plugin.textstatus.a.b;
+import com.tencent.mm.plugin.textstatus.a.e;
+import com.tencent.mm.plugin.textstatus.a.f;
+import com.tencent.mm.plugin.textstatus.a.g;
+import com.tencent.mm.plugin.textstatus.a.h;
+import com.tencent.mm.plugin.textstatus.a.o;
+import com.tencent.mm.plugin.textstatus.a.x;
 import com.tencent.mm.plugin.textstatus.proto.TextStatusJumpInfo;
 import com.tencent.mm.plugin.textstatus.proto.TextStatusTopicInfo;
-import com.tencent.mm.plugin.textstatus.proto.aa;
+import com.tencent.mm.plugin.textstatus.proto.an;
+import com.tencent.mm.plugin.textstatus.proto.t;
+import com.tencent.mm.plugin.textstatus.third.i;
+import com.tencent.mm.plugin.textstatus.third.j;
 import com.tencent.mm.plugin.thumbplayer.view.MMTPEffectVideoLayout;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ak;
-import com.tencent.mm.ui.ak.a;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.q.f;
-import com.tencent.mm.ui.base.q.g;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ao.a;
+import com.tencent.mm.ui.base.w;
 import com.tencent.mm.ui.widget.pulldown.c;
 import com.tencent.mm.videocomposition.effect.EffectRenderView;
 import com.tencent.mm.xeffect.effect.EffectManager;
-import java.nio.charset.Charset;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
 import kotlin.n.n;
 
 @com.tencent.mm.ui.base.a(32)
 @c(0)
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/ui/TextStatusDetailActivity;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "info", "Lcom/tencent/mm/plugin/textstatus/model/storage/TextStatusItem;", "getInfo", "()Lcom/tencent/mm/plugin/textstatus/model/storage/TextStatusItem;", "setInfo", "(Lcom/tencent/mm/plugin/textstatus/model/storage/TextStatusItem;)V", "ivMask", "Landroid/view/View;", "getIvMask", "()Landroid/view/View;", "setIvMask", "(Landroid/view/View;)V", "lastSetThirdTopicInfo", "Lcom/tencent/mm/plugin/textstatus/proto/TextStatusTopicInfo;", "getLastSetThirdTopicInfo", "()Lcom/tencent/mm/plugin/textstatus/proto/TextStatusTopicInfo;", "setLastSetThirdTopicInfo", "(Lcom/tencent/mm/plugin/textstatus/proto/TextStatusTopicInfo;)V", "layoutThirdContainer", "Landroid/widget/FrameLayout;", "getLayoutThirdContainer", "()Landroid/widget/FrameLayout;", "setLayoutThirdContainer", "(Landroid/widget/FrameLayout;)V", "layoutThirdThumb", "getLayoutThirdThumb", "setLayoutThirdThumb", "layoutVideo", "getLayoutVideo", "setLayoutVideo", "loadLogic", "Lcom/tencent/mm/plugin/textstatus/logic/IStatusLoadLogic;", "getLoadLogic", "()Lcom/tencent/mm/plugin/textstatus/logic/IStatusLoadLogic;", "setLoadLogic", "(Lcom/tencent/mm/plugin/textstatus/logic/IStatusLoadLogic;)V", "progressDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "getProgressDialog", "()Lcom/tencent/mm/ui/base/MMProgressDialog;", "setProgressDialog", "(Lcom/tencent/mm/ui/base/MMProgressDialog;)V", "thirdBack", "Lcom/tencent/mm/ui/widget/IPullDownView;", "getThirdBack", "()Lcom/tencent/mm/ui/widget/IPullDownView;", "setThirdBack", "(Lcom/tencent/mm/ui/widget/IPullDownView;)V", "videoLayout", "Lcom/tencent/mm/plugin/thumbplayer/view/MMTPEffectVideoLayout;", "getVideoLayout", "()Lcom/tencent/mm/plugin/thumbplayer/view/MMTPEffectVideoLayout;", "setVideoLayout", "(Lcom/tencent/mm/plugin/thumbplayer/view/MMTPEffectVideoLayout;)V", "checkCurThirdBackValid", "", "topicInfo", "destroyCustomPartsManual", "", "destroyThirdBackManual", "destroyVideo", "doMoreClick", "getCustomParts", "Lcom/tencent/mm/plugin/textstatus/api/IStatusCustomParts;", "getLayoutId", "", "sourceId", "", "jumpInfos", "", "Lcom/tencent/mm/plugin/textstatus/proto/TextStatusJumpInfo;", "handleThirdBack", "handleThirdThumb", "handleVideo", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "pauseThirdPreview", "pauseVideo", "playThirdPreview", "playVideo", "updateMask", "Companion", "plugin-textstatus_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/textstatus/ui/TextStatusDetailActivity;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "info", "Lcom/tencent/mm/plugin/textstatus/model/storage/TextStatusItem;", "getInfo", "()Lcom/tencent/mm/plugin/textstatus/model/storage/TextStatusItem;", "setInfo", "(Lcom/tencent/mm/plugin/textstatus/model/storage/TextStatusItem;)V", "ivMask", "Landroid/view/View;", "getIvMask", "()Landroid/view/View;", "setIvMask", "(Landroid/view/View;)V", "lastSetThirdTopicInfo", "Lcom/tencent/mm/plugin/textstatus/proto/TextStatusTopicInfo;", "getLastSetThirdTopicInfo", "()Lcom/tencent/mm/plugin/textstatus/proto/TextStatusTopicInfo;", "setLastSetThirdTopicInfo", "(Lcom/tencent/mm/plugin/textstatus/proto/TextStatusTopicInfo;)V", "layoutThirdContainer", "Landroid/widget/FrameLayout;", "getLayoutThirdContainer", "()Landroid/widget/FrameLayout;", "setLayoutThirdContainer", "(Landroid/widget/FrameLayout;)V", "layoutThirdThumb", "getLayoutThirdThumb", "setLayoutThirdThumb", "layoutVideo", "getLayoutVideo", "setLayoutVideo", "loadLogic", "Lcom/tencent/mm/plugin/textstatus/logic/IStatusLoadLogic;", "getLoadLogic", "()Lcom/tencent/mm/plugin/textstatus/logic/IStatusLoadLogic;", "setLoadLogic", "(Lcom/tencent/mm/plugin/textstatus/logic/IStatusLoadLogic;)V", "progressDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "getProgressDialog", "()Lcom/tencent/mm/ui/base/MMProgressDialog;", "setProgressDialog", "(Lcom/tencent/mm/ui/base/MMProgressDialog;)V", "thirdBack", "Lcom/tencent/mm/ui/widget/IPullDownView;", "getThirdBack", "()Lcom/tencent/mm/ui/widget/IPullDownView;", "setThirdBack", "(Lcom/tencent/mm/ui/widget/IPullDownView;)V", "videoLayout", "Lcom/tencent/mm/plugin/thumbplayer/view/MMTPEffectVideoLayout;", "getVideoLayout", "()Lcom/tencent/mm/plugin/thumbplayer/view/MMTPEffectVideoLayout;", "setVideoLayout", "(Lcom/tencent/mm/plugin/thumbplayer/view/MMTPEffectVideoLayout;)V", "checkCurThirdBackValid", "", "topicInfo", "destroyCustomPartsManual", "", "destroyThirdBackManual", "destroyVideo", "doMoreClick", "getCustomParts", "Lcom/tencent/mm/plugin/textstatus/api/IStatusCustomParts;", "getLayoutId", "", "sourceId", "", "jumpInfos", "", "Lcom/tencent/mm/plugin/textstatus/proto/TextStatusJumpInfo;", "handleThirdBack", "handleThirdThumb", "handleVideo", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "pauseThirdPreview", "pauseVideo", "playThirdPreview", "playVideo", "updateMask", "Companion", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class TextStatusDetailActivity
   extends MMActivity
-  implements com.tencent.mm.an.i
+  implements com.tencent.mm.am.h
 {
-  public static final TextStatusDetailActivity.a MKN;
-  private MMTPEffectVideoLayout Bba;
-  public com.tencent.mm.plugin.textstatus.g.e.a MCs;
-  private FrameLayout MJb;
-  private FrameLayout MJd;
-  private FrameLayout MJg;
-  private com.tencent.mm.ui.widget.b MJn;
-  private TextStatusTopicInfo MJo;
-  public com.tencent.mm.plugin.textstatus.e.e MKE;
-  private View MKF;
-  s iYE;
+  public static final TextStatusDetailActivity.a Txi;
+  private MMTPEffectVideoLayout Goz;
+  public com.tencent.mm.plugin.textstatus.h.f.b Tmb;
+  private TextStatusTopicInfo TvA;
+  private FrameLayout Tvm;
+  private FrameLayout Tvo;
+  private FrameLayout Tvs;
+  private com.tencent.mm.ui.widget.b Tvz;
+  public com.tencent.mm.plugin.textstatus.f.e TwP;
+  private View TwR;
+  private w psR;
   
   static
   {
-    AppMethodBeat.i(234826);
-    MKN = new TextStatusDetailActivity.a((byte)0);
-    AppMethodBeat.o(234826);
+    AppMethodBeat.i(291690);
+    Txi = new TextStatusDetailActivity.a((byte)0);
+    AppMethodBeat.o(291690);
   }
   
-  private com.tencent.mm.ui.widget.b F(String paramString, List<? extends TextStatusJumpInfo> paramList)
+  private com.tencent.mm.ui.widget.b N(String paramString, List<? extends TextStatusJumpInfo> paramList)
   {
     localObject2 = null;
-    AppMethodBeat.i(234816);
-    p.k(paramString, "sourceId");
-    com.tencent.mm.plugin.textstatus.proto.d locald = new com.tencent.mm.plugin.textstatus.proto.d();
-    locald.kYn = 0;
-    locald.MEO = 3;
-    localObject1 = this.MCs;
-    if (localObject1 == null) {
-      p.bGy("info");
-    }
-    locald.MEQ = ((com.tencent.mm.plugin.textstatus.g.e.a)localObject1).field_CreateTime;
+    AppMethodBeat.i(291639);
+    kotlin.g.b.s.u(paramString, "sourceId");
+    com.tencent.mm.plugin.textstatus.proto.l locall = new com.tencent.mm.plugin.textstatus.proto.l();
+    locall.nDl = 0;
+    locall.ToO = 3;
+    locall.ToQ = hIG().field_CreateTime;
     try
     {
-      localFrameLayout = this.MJd;
+      localFrameLayout = this.Tvo;
       if (localFrameLayout != null) {
-        break label79;
+        break label68;
       }
       localObject1 = localObject2;
     }
-    catch (Throwable paramString)
+    finally
     {
       for (;;)
       {
         FrameLayout localFrameLayout;
-        localObject1 = localObject2;
+        Object localObject1 = localObject2;
       }
     }
-    AppMethodBeat.o(234816);
+    AppMethodBeat.o(291639);
     return localObject1;
-    label79:
-    if (paramList != null)
+    label68:
+    if (paramList == null)
     {
-      paramList = com.tencent.mm.plugin.textstatus.j.e.in(paramList);
-      label88:
-      localObject1 = com.tencent.mm.plugin.textstatus.j.d.MIW;
-      if (paramList == null) {
-        break label137;
+      paramList = null;
+      label74:
+      localObject1 = i.TuX;
+      if (paramList != null) {
+        break label123;
       }
     }
-    label137:
-    for (localObject1 = paramList.jumpType;; localObject1 = null)
+    label123:
+    for (localObject1 = null;; localObject1 = paramList.jumpType)
     {
-      com.tencent.mm.plugin.textstatus.a.m localm = com.tencent.mm.plugin.textstatus.j.d.beD((String)localObject1);
+      o localo = i.bec((String)localObject1);
       localObject1 = localObject2;
-      if (localm == null) {
+      if (localo == null) {
         break;
       }
-      localObject1 = localm.a(paramString, localFrameLayout, paramList, locald);
+      localObject1 = localo.a(paramString, localFrameLayout, paramList, locall);
       break;
-      paramList = null;
-      break label88;
+      paramList = j.lu(paramList);
+      break label74;
     }
   }
   
-  private void Tf()
+  private static final void a(TextStatusDetailActivity paramTextStatusDetailActivity, com.tencent.mm.ui.base.s params)
   {
-    AppMethodBeat.i(234822);
-    Object localObject = this.Bba;
+    AppMethodBeat.i(291672);
+    kotlin.g.b.s.u(paramTextStatusDetailActivity, "this$0");
+    params.a(a.e.TdG, paramTextStatusDetailActivity.getResources().getColor(a.b.Red), (CharSequence)paramTextStatusDetailActivity.getString(a.h.TfV));
+    AppMethodBeat.o(291672);
+  }
+  
+  private static final void a(TextStatusDetailActivity paramTextStatusDetailActivity, String paramString, MenuItem paramMenuItem, int paramInt)
+  {
+    AppMethodBeat.i(291685);
+    kotlin.g.b.s.u(paramTextStatusDetailActivity, "this$0");
+    if (paramMenuItem.getItemId() == a.e.TdG)
+    {
+      paramMenuItem = (Context)paramTextStatusDetailActivity.getContext();
+      paramTextStatusDetailActivity.getResources().getString(a.h.Tgd);
+      paramTextStatusDetailActivity.psR = com.tencent.mm.ui.base.k.a(paramMenuItem, paramTextStatusDetailActivity.getResources().getString(a.h.Tgd), false, null);
+      kotlin.g.b.s.s(paramString, "statusId");
+      paramString = new com.tencent.mm.plugin.textstatus.h.a(paramString, 2);
+      com.tencent.mm.kernel.h.aZW().a(paramString.getType(), (com.tencent.mm.am.h)paramTextStatusDetailActivity);
+      com.tencent.mm.kernel.h.aZW().a((p)paramString, 0);
+      paramString = com.tencent.mm.plugin.textstatus.i.b.Trt;
+      paramTextStatusDetailActivity = paramTextStatusDetailActivity.getContext();
+      kotlin.g.b.s.s(paramTextStatusDetailActivity, "context");
+      com.tencent.mm.plugin.textstatus.i.b.a((Context)paramTextStatusDetailActivity, 43L, null, null, 0L, 0L, 0L, 124);
+    }
+    AppMethodBeat.o(291685);
+  }
+  
+  private static final boolean a(TextStatusDetailActivity paramTextStatusDetailActivity, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(291658);
+    kotlin.g.b.s.u(paramTextStatusDetailActivity, "this$0");
+    paramTextStatusDetailActivity.finish();
+    AppMethodBeat.o(291658);
+    return false;
+  }
+  
+  private void atK()
+  {
+    AppMethodBeat.i(291647);
+    Object localObject = this.Goz;
     if (localObject != null)
     {
       localObject = ((MMTPEffectVideoLayout)localObject).getPlayer();
-      if (localObject != null)
-      {
-        ((com.tencent.mm.plugin.thumbplayer.f.b)localObject).gos();
-        AppMethodBeat.o(234822);
-        return;
+      if (localObject != null) {
+        ((com.tencent.mm.plugin.thumbplayer.e.b)localObject).hLh();
       }
     }
-    AppMethodBeat.o(234822);
+    AppMethodBeat.o(291647);
   }
   
-  private void gmC()
+  private static final boolean b(TextStatusDetailActivity paramTextStatusDetailActivity, MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(234814);
-    com.tencent.mm.ui.widget.b localb = this.MJn;
+    AppMethodBeat.i(291666);
+    kotlin.g.b.s.u(paramTextStatusDetailActivity, "this$0");
+    paramMenuItem = new com.tencent.mm.ui.tools.l((Context)paramTextStatusDetailActivity.getContext());
+    paramMenuItem.Vtg = new TextStatusDetailActivity..ExternalSyntheticLambda2(paramTextStatusDetailActivity);
+    paramMenuItem.GAC = new TextStatusDetailActivity..ExternalSyntheticLambda3(paramTextStatusDetailActivity, paramTextStatusDetailActivity.hIG().field_StatusID);
+    paramMenuItem.jDd();
+    AppMethodBeat.o(291666);
+    return true;
+  }
+  
+  private void hIC()
+  {
+    AppMethodBeat.i(291628);
+    com.tencent.mm.ui.widget.b localb = this.Tvz;
     if (localb != null) {
-      localb.dDC();
+      localb.etM();
     }
-    localb = this.MJn;
+    localb = this.Tvz;
+    if (localb != null) {
+      localb.onPostClose();
+    }
+    AppMethodBeat.o(291628);
+  }
+  
+  private com.tencent.mm.plugin.textstatus.h.f.b hIG()
+  {
+    AppMethodBeat.i(291617);
+    com.tencent.mm.plugin.textstatus.h.f.b localb = this.Tmb;
     if (localb != null)
     {
-      localb.onPostClose();
-      AppMethodBeat.o(234814);
-      return;
+      AppMethodBeat.o(291617);
+      return localb;
     }
-    AppMethodBeat.o(234814);
+    kotlin.g.b.s.bIx("info");
+    AppMethodBeat.o(291617);
+    return null;
   }
   
-  private void gmq()
+  private com.tencent.mm.plugin.textstatus.f.e hIH()
   {
-    AppMethodBeat.i(234823);
-    Object localObject = this.MJb;
+    AppMethodBeat.i(291620);
+    com.tencent.mm.plugin.textstatus.f.e locale = this.TwP;
+    if (locale != null)
+    {
+      AppMethodBeat.o(291620);
+      return locale;
+    }
+    kotlin.g.b.s.bIx("loadLogic");
+    AppMethodBeat.o(291620);
+    return null;
+  }
+  
+  private void hIi()
+  {
+    AppMethodBeat.i(291653);
+    Object localObject = this.Tvm;
     if (localObject != null) {
       ((FrameLayout)localObject).removeAllViews();
     }
-    localObject = this.MJb;
+    localObject = this.Tvm;
     if (localObject != null) {
       ((FrameLayout)localObject).setVisibility(8);
     }
-    localObject = this.Bba;
+    localObject = this.Goz;
     if (localObject != null)
     {
       localObject = ((MMTPEffectVideoLayout)localObject).getPlayer();
       if (localObject != null) {
-        ((com.tencent.mm.plugin.thumbplayer.f.b)localObject).stopAsync();
+        ((com.tencent.mm.plugin.thumbplayer.e.b)localObject).stopAsync();
       }
     }
-    localObject = this.Bba;
+    localObject = this.Goz;
     if (localObject != null)
     {
       localObject = ((MMTPEffectVideoLayout)localObject).getPlayer();
       if (localObject != null) {
-        ((com.tencent.mm.plugin.thumbplayer.f.b)localObject).recycle();
+        ((com.tencent.mm.plugin.thumbplayer.e.b)localObject).recycle();
       }
     }
-    localObject = this.Bba;
-    if (localObject != null)
-    {
-      ((MMTPEffectVideoLayout)localObject).MUh.YIy.release();
-      AppMethodBeat.o(234823);
-      return;
+    localObject = this.Goz;
+    if (localObject != null) {
+      ((MMTPEffectVideoLayout)localObject).TGP.HkF.release();
     }
-    AppMethodBeat.o(234823);
+    AppMethodBeat.o(291653);
   }
   
-  private final void gmr()
+  private final void hIj()
   {
-    AppMethodBeat.i(234818);
-    gmC();
-    com.tencent.mm.ui.widget.b localb = this.MJn;
+    AppMethodBeat.i(291641);
+    hIC();
+    com.tencent.mm.ui.widget.b localb = this.Tvz;
     if (localb != null) {
       localb.onDestroy();
     }
-    this.MJn = null;
-    this.MJo = null;
-    AppMethodBeat.o(234818);
+    this.Tvz = null;
+    this.TvA = null;
+    AppMethodBeat.o(291641);
   }
+  
+  public final void _$_clearFindViewByIdCache() {}
   
   public final int getLayoutId()
   {
-    return b.f.MxG;
+    return a.f.Tfk;
   }
   
-  @SuppressLint({"ResourceType"})
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(234813);
-    com.tencent.mm.pluginsdk.h.r((MMActivity)this);
+    AppMethodBeat.i(291752);
+    com.tencent.mm.pluginsdk.h.w((MMActivity)this);
     super.onCreate(paramBundle);
     setActionbarColor(0);
-    paramBundle = getWindow();
-    p.j(paramBundle, "window");
-    paramBundle = paramBundle.getDecorView();
-    p.j(paramBundle, "window.decorView");
-    paramBundle.setSystemUiVisibility(1792);
-    com.tencent.mm.ui.statusbar.d.e(getWindow());
-    setNavigationbarColor(getResources().getColor(b.b.transparent));
-    setMMTitleSize(com.tencent.mm.ci.a.fromDPToPix((Context)this, 14));
+    getWindow().getDecorView().setSystemUiVisibility(1792);
+    com.tencent.mm.ui.statusbar.d.g(getWindow());
+    setNavigationbarColor(getResources().getColor(a.b.transparent));
+    setMMTitleSize(com.tencent.mm.cd.a.fromDPToPix((Context)this, 14));
     hideActionbarLine();
-    setBackBtn((MenuItem.OnMenuItemClickListener)new d(this));
+    setBackBtn(new TextStatusDetailActivity..ExternalSyntheticLambda1(this));
     paramBundle = getIntent().getStringExtra("username");
-    localObject2 = getIntent().getByteArrayExtra("history_item");
-    Object localObject1 = new com.tencent.mm.plugin.textstatus.proto.i();
-    Object localObject3 = (CharSequence)paramBundle;
-    if ((localObject3 == null) || (n.ba((CharSequence)localObject3)))
+    Object localObject4 = getIntent().getByteArrayExtra("history_item");
+    Object localObject1 = new t();
+    Object localObject5 = (CharSequence)paramBundle;
+    if ((localObject5 == null) || (n.bp((CharSequence)localObject5)))
     {
       i = 1;
       if (i != 0) {
-        break label204;
+        break label183;
       }
-      localObject2 = com.tencent.mm.plugin.textstatus.b.f.MAm;
-      paramBundle = com.tencent.mm.plugin.textstatus.b.f.bep(paramBundle);
+      localObject4 = com.tencent.mm.plugin.textstatus.b.f.TjQ;
+      paramBundle = com.tencent.mm.plugin.textstatus.b.f.bdN(paramBundle);
     }
     for (;;)
     {
       if (paramBundle != null) {
-        break label251;
+        break label230;
       }
       finish();
       Log.e("MicroMsg.TextStatus.TextStatusDetailActivity", "err info == null");
-      AppMethodBeat.o(234813);
+      AppMethodBeat.o(291752);
       return;
       i = 0;
       break;
-      label204:
-      if (localObject2 != null)
+      label183:
+      if (localObject4 != null)
       {
-        paramBundle = new aa();
-        paramBundle.parseFrom((byte[])localObject2);
-        ((com.tencent.mm.plugin.textstatus.proto.i)localObject1).MFk = (paramBundle.MFs + paramBundle.MFt);
-        paramBundle = com.tencent.mm.plugin.textstatus.g.a.b.a(paramBundle);
+        paramBundle = new an();
+        paramBundle.parseFrom((byte[])localObject4);
+        ((t)localObject1).Tpr = (paramBundle.TpF + paramBundle.TpG);
+        paramBundle = com.tencent.mm.plugin.textstatus.h.a.b.a(paramBundle);
       }
       else
       {
         paramBundle = null;
       }
     }
-    label251:
-    this.MCs = paramBundle;
-    localObject2 = com.tencent.mm.plugin.textstatus.e.f.MCG;
-    localObject2 = r.gkT();
-    p.j(localObject2, "StatusShowParam.defDetail()");
-    this.MKE = com.tencent.mm.plugin.textstatus.e.f.c((r)localObject2);
-    localObject2 = this.MKE;
-    if (localObject2 == null) {
-      p.bGy("loadLogic");
-    }
-    localObject3 = getContentView();
-    p.j(localObject3, "contentView");
-    ((com.tencent.mm.plugin.textstatus.e.e)localObject2).g((View)localObject3);
-    localObject2 = this.MKE;
-    if (localObject2 == null) {
-      p.bGy("loadLogic");
-    }
-    ((com.tencent.mm.plugin.textstatus.e.e)localObject2).ag((kotlin.g.a.a)TextStatusDetailActivity.e.MKP);
-    localObject2 = this.MKE;
-    if (localObject2 == null) {
-      p.bGy("loadLogic");
-    }
-    localObject3 = paramBundle.field_UserName;
-    p.j(localObject3, "info.field_UserName");
-    if (!((com.tencent.mm.plugin.textstatus.e.e)localObject2).b((String)localObject3, paramBundle, (com.tencent.mm.plugin.textstatus.proto.i)localObject1))
+    label230:
+    kotlin.g.b.s.u(paramBundle, "<set-?>");
+    this.Tmb = paramBundle;
+    localObject4 = com.tencent.mm.plugin.textstatus.f.f.Tmq;
+    localObject4 = x.hFM();
+    kotlin.g.b.s.s(localObject4, "defDetail()");
+    localObject4 = com.tencent.mm.plugin.textstatus.f.f.c((x)localObject4);
+    kotlin.g.b.s.u(localObject4, "<set-?>");
+    this.TwP = ((com.tencent.mm.plugin.textstatus.f.e)localObject4);
+    localObject4 = hIH();
+    localObject5 = getContentView();
+    kotlin.g.b.s.s(localObject5, "contentView");
+    ((com.tencent.mm.plugin.textstatus.f.e)localObject4).g((View)localObject5);
+    hIH().bO((kotlin.g.a.a)TextStatusDetailActivity.b.Txj);
+    localObject4 = hIH();
+    localObject5 = paramBundle.field_UserName;
+    kotlin.g.b.s.s(localObject5, "info.field_UserName");
+    if (!((com.tencent.mm.plugin.textstatus.f.e)localObject4).b((String)localObject5, paramBundle, (t)localObject1))
     {
       finish();
       Log.e("MicroMsg.TextStatus.TextStatusDetailActivity", "logic init fail");
-      AppMethodBeat.o(234813);
+      AppMethodBeat.o(291752);
       return;
     }
-    this.MKF = findViewById(b.e.Mvu);
-    this.MJb = ((FrameLayout)findViewById(b.e.Mwm));
-    this.MJg = ((FrameLayout)findViewById(b.e.Mwi));
-    this.MJd = ((FrameLayout)findViewById(b.e.Mwh));
+    this.TwR = findViewById(a.e.TcH);
+    this.Tvm = ((FrameLayout)findViewById(a.e.TdB));
+    this.Tvs = ((FrameLayout)findViewById(a.e.Tdx));
+    this.Tvo = ((FrameLayout)findViewById(a.e.Tdw));
     localObject1 = new Time();
     ((Time)localObject1).set(paramBundle.field_CreateTime * 1000L);
-    setMMTitle(com.tencent.mm.pluginsdk.j.e.a((CharSequence)getContext().getString(b.h.fmt_longtime, new Object[] { com.tencent.mm.pluginsdk.j.f.x((Context)getContext(), ((Time)localObject1).hour * 3600000L) }), (Time)localObject1));
+    setMMTitle(com.tencent.mm.pluginsdk.platformtools.e.a((CharSequence)getContext().getString(a.h.fmt_longtime, new Object[] { com.tencent.mm.pluginsdk.platformtools.f.A((Context)getContext(), ((Time)localObject1).hour * 3600000L) }), (Time)localObject1));
     showOptionMenu(true);
-    addIconOptionMenu(0, b.g.icons_outlined_more, (MenuItem.OnMenuItemClickListener)new f(this));
-    localObject1 = this.MCs;
-    if (localObject1 == null) {
-      p.bGy("info");
-    }
-    if (localObject1 != null)
+    addIconOptionMenu(0, a.g.icons_outlined_more, new TextStatusDetailActivity..ExternalSyntheticLambda0(this));
+    localObject1 = hIG();
+    if (localObject1 == null)
     {
-      localObject1 = ((com.tencent.mm.plugin.textstatus.g.e.a)localObject1).field_MediaThumbUrl;
+      localObject1 = null;
       localObject1 = (CharSequence)localObject1;
-      if ((localObject1 != null) && (!n.ba((CharSequence)localObject1))) {
-        break label951;
+      if ((localObject1 != null) && (!n.bp((CharSequence)localObject1))) {
+        break label1187;
       }
       i = 1;
-      label618:
+      label562:
       if (i == 0)
       {
-        localObject1 = this.MCs;
-        if (localObject1 == null) {
-          p.bGy("info");
+        localObject1 = hIG();
+        if ((localObject1 == null) || (((com.tencent.mm.plugin.textstatus.h.f.b)localObject1).hHI() != true)) {
+          break label1192;
         }
-        if ((localObject1 == null) || (((com.tencent.mm.plugin.textstatus.g.e.a)localObject1).gma() != true)) {
-          break label956;
+        i = 1;
+        label588:
+        if (i == 0) {
+          break label1197;
         }
       }
-      localObject1 = this.MKF;
+      localObject1 = this.TwR;
       if (localObject1 != null) {
         ((View)localObject1).setVisibility(8);
-      }
-    }
-    try
-    {
-      label670:
-      localObject1 = this.MCs;
-      if (localObject1 == null) {
-        p.bGy("info");
-      }
-      str2 = ((com.tencent.mm.plugin.textstatus.g.e.a)localObject1).field_UserName;
-      locala = this.MCs;
-      if (locala == null) {
-        p.bGy("info");
-      }
-      if (locala != null) {
-        break label976;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        String str2;
-        com.tencent.mm.plugin.textstatus.g.e.a locala;
-        label714:
-        int j;
-        continue;
-        String str1 = "";
-        continue;
-        localObject2 = "";
-        continue;
-        i = 0;
-        continue;
-        i = 1;
-      }
-    }
-    localObject1 = this.MKE;
-    if (localObject1 == null) {
-      p.bGy("loadLogic");
-    }
-    localObject1 = ((com.tencent.mm.plugin.textstatus.e.e)localObject1).glR();
-    j = 0;
-    localObject2 = this.MJg;
-    i = j;
-    if (localObject2 != null)
-    {
-      ((FrameLayout)localObject2).removeAllViews();
-      i = j;
-      if (localObject1 != null)
-      {
-        i = j;
-        if (((com.tencent.mm.plugin.textstatus.a.i)localObject1).d(this.MJg) == true) {
-          i = 1;
-        }
-      }
-    }
-    if (i != 0)
-    {
-      localObject1 = this.MJg;
-      if (localObject1 != null) {
-        ((FrameLayout)localObject1).setVisibility(0);
-      }
-      label805:
-      if (paramBundle == null) {
-        break label1424;
       }
     }
     for (;;)
     {
       try
       {
-        paramBundle = paramBundle.glY();
-        if (paramBundle == null) {
-          break label1465;
+        String str = hIG().field_UserName;
+        localb = hIG();
+        if (localb != null)
+        {
+          if (localb.field_MediaType != 2) {
+            continue;
+          }
+          localObject1 = this.Tvm;
+          if (localObject1 != null) {
+            ((FrameLayout)localObject1).removeAllViews();
+          }
+          MMTPEffectVideoLayout localMMTPEffectVideoLayout = new MMTPEffectVideoLayout((Context)this, (byte)0);
+          localObject1 = new FrameLayout.LayoutParams(-1, -1);
+          ((FrameLayout.LayoutParams)localObject1).gravity = 17;
+          localObject4 = this.Tvm;
+          if (localObject4 != null) {
+            ((FrameLayout)localObject4).addView((View)localMMTPEffectVideoLayout, (ViewGroup.LayoutParams)localObject1);
+          }
+          localObject1 = this.Tvm;
+          if (localObject1 != null) {
+            ((FrameLayout)localObject1).setVisibility(0);
+          }
+          if (localb.field_MediaUrl != null) {
+            continue;
+          }
+          localObject1 = "";
+          if (localb.field_MediaUrl != null) {
+            continue;
+          }
+          localObject4 = "";
+          localObject5 = com.tencent.mm.plugin.textstatus.util.e.TAU;
+          localObject5 = localb.field_MediaUrl;
+          kotlin.g.b.s.s(localObject5, "info.field_MediaUrl");
+          kotlin.g.b.s.s(str, "username");
+          localObject5 = com.tencent.mm.plugin.textstatus.util.e.nm((String)localObject5, str);
+          j = localb.field_mediaWidth;
+          k = localb.field_mediaHeight;
+          if (j > 0)
+          {
+            i = k;
+            if (k > 0) {}
+          }
+          else
+          {
+            j = ao.mX((Context)this).width;
+            i = ao.mX((Context)this).height;
+          }
+          localObject1 = new com.tencent.mm.plugin.thumbplayer.a.b((String)localObject1, (String)localObject5, (String)localObject4, j, i);
+          ((com.tencent.mm.plugin.thumbplayer.a.b)localObject1).hJv = false;
+          localMMTPEffectVideoLayout.setMediaInfo((com.tencent.mm.plugin.thumbplayer.a.b)localObject1);
+          localObject1 = localMMTPEffectVideoLayout.getPlayer();
+          if (localObject1 != null) {
+            ((com.tencent.mm.plugin.thumbplayer.e.b)localObject1).Flr = true;
+          }
+          localObject1 = localMMTPEffectVideoLayout.getPlayer();
+          if (localObject1 != null) {
+            ((com.tencent.mm.plugin.thumbplayer.e.b)localObject1).setLoop(true);
+          }
+          localMMTPEffectVideoLayout.getEffectManager().jQk();
+          if (localb.hHI())
+          {
+            localObject1 = localMMTPEffectVideoLayout.getEffectManager().jQj();
+            ((com.tencent.mm.xeffect.effect.b)localObject1).setRadius(5.0F);
+            ((com.tencent.mm.xeffect.effect.b)localObject1).eC(1.0F);
+          }
+          this.Goz = localMMTPEffectVideoLayout;
+          atK();
         }
+      }
+      finally
+      {
+        com.tencent.mm.plugin.textstatus.h.f.b localb;
+        int j;
+        int k;
+        label1187:
+        label1192:
+        label1197:
+        continue;
+        i = 0;
+        continue;
+        Object localObject3 = this.Tvs;
+        if (localObject3 == null) {
+          continue;
+        }
+        ((FrameLayout)localObject3).setVisibility(8);
+        continue;
+        paramBundle = com.tencent.mm.plugin.textstatus.h.f.b.b(paramBundle);
+        continue;
+        localObject3 = this.TvA;
+        if ((localObject3 == null) || (b.a((TextStatusTopicInfo)localObject3, paramBundle) != true)) {
+          continue;
+        }
+        i = 1;
+        continue;
+        hIj();
+        paramBundle = this.Tvo;
+        if (paramBundle == null) {
+          continue;
+        }
+        paramBundle.removeAllViews();
+        paramBundle = this.Tvo;
+        if (paramBundle == null) {
+          continue;
+        }
+        paramBundle.setVisibility(8);
+        AppMethodBeat.o(291752);
+        return;
+        i = 1;
+        continue;
+        i = 0;
+        continue;
+        if (i != 0) {
+          continue;
+        }
+        i = 0;
+        continue;
+        i = 0;
+        continue;
+        i = 1;
+        continue;
+      }
+      localObject1 = hIH().hHx();
+      k = 0;
+      localObject4 = this.Tvs;
+      j = k;
+      if (localObject4 != null)
+      {
+        ((FrameLayout)localObject4).removeAllViews();
+        if ((localObject1 == null) || (((com.tencent.mm.plugin.textstatus.a.k)localObject1).d(this.Tvs) != true)) {
+          continue;
+        }
+        i = 1;
+        j = k;
+        if (i != 0) {
+          j = 1;
+        }
+      }
+      if (j == 0) {
+        continue;
+      }
+      localObject1 = this.Tvs;
+      if (localObject1 != null) {
+        ((FrameLayout)localObject1).setVisibility(0);
+      }
+      if (paramBundle != null) {
+        continue;
+      }
+      paramBundle = null;
+      if (paramBundle == null) {
+        continue;
+      }
+      try
+      {
         localObject1 = (CharSequence)paramBundle.sourceId;
         if (localObject1 == null) {
-          break label1511;
+          continue;
         }
-        if (!n.ba((CharSequence)localObject1)) {
-          break label1429;
+        if (!n.bp((CharSequence)localObject1)) {
+          continue;
         }
       }
-      catch (Throwable paramBundle)
+      finally
       {
-        AppMethodBeat.o(234813);
+        AppMethodBeat.o(291752);
         return;
       }
+      if (i != 0) {
+        continue;
+      }
+      if (this.Tvz != null) {
+        continue;
+      }
+      i = 0;
       if (i == 0)
       {
-        if (this.MJn == null)
-        {
-          i = 0;
-          if (i == 0)
-          {
-            gmr();
-            localObject1 = this.MJd;
-            if (localObject1 != null) {
-              ((FrameLayout)localObject1).removeAllViews();
-            }
-            localObject1 = paramBundle.sourceId;
-            p.j(localObject1, "topicInfo.sourceId");
-            this.MJn = F((String)localObject1, (List)paramBundle.jumpInfos);
-            this.MJo = paramBundle;
-          }
-          paramBundle = this.MJd;
-          if (paramBundle == null) {
-            break label1458;
-          }
-          paramBundle.setVisibility(0);
-          AppMethodBeat.o(234813);
-          return;
-          localObject1 = null;
-          break;
-          label951:
-          i = 0;
-          break label618;
-          label956:
-          localObject1 = this.MKF;
-          if (localObject1 == null) {
-            break label670;
-          }
-          ((View)localObject1).setVisibility(0);
-          break label670;
-          label976:
-          if (locala.field_MediaType == 2)
-          {
-            localObject1 = this.MJb;
-            if (localObject1 != null) {
-              ((FrameLayout)localObject1).removeAllViews();
-            }
-            MMTPEffectVideoLayout localMMTPEffectVideoLayout = new MMTPEffectVideoLayout((Context)this, (byte)0);
-            localObject1 = new FrameLayout.LayoutParams(-1, -1);
-            ((FrameLayout.LayoutParams)localObject1).gravity = 17;
-            localObject2 = this.MJb;
-            if (localObject2 != null) {
-              ((FrameLayout)localObject2).addView((View)localMMTPEffectVideoLayout, (ViewGroup.LayoutParams)localObject1);
-            }
-            localObject1 = this.MJb;
-            if (localObject1 != null) {
-              ((FrameLayout)localObject1).setVisibility(0);
-            }
-            if (locala.field_MediaUrl == null) {
-              break label1521;
-            }
-            localObject1 = locala.field_MediaUrl;
-            p.j(localObject1, "info.field_MediaUrl");
-            localObject2 = kotlin.n.d.UTF_8;
-            if (localObject1 == null)
-            {
-              localObject1 = new kotlin.t("null cannot be cast to non-null type java.lang.String");
-              AppMethodBeat.o(234813);
-              throw ((Throwable)localObject1);
-            }
-            localObject1 = ((String)localObject1).getBytes((Charset)localObject2);
-            p.j(localObject1, "(this as java.lang.String).getBytes(charset)");
-            localObject2 = com.tencent.xweb.util.d.getMessageDigest((byte[])localObject1);
-            localObject1 = localObject2;
-            if (localObject2 == null) {
-              break label1521;
-            }
-            if (locala.field_MediaUrl == null) {
-              break label1529;
-            }
-            localObject3 = locala.field_MediaUrl;
-            localObject2 = localObject3;
-            if (localObject3 == null) {
-              break label1529;
-            }
-            localObject3 = com.tencent.mm.plugin.textstatus.k.f.MOw;
-            localObject3 = locala.field_MediaUrl;
-            p.j(localObject3, "info.field_MediaUrl");
-            p.j(str2, "username");
-            localObject3 = com.tencent.mm.plugin.textstatus.k.f.lE((String)localObject3, str2);
-            j = locala.field_mediaWidth;
-            int k = locala.field_mediaHeight;
-            if (j > 0)
-            {
-              i = k;
-              if (k > 0) {}
-            }
-            else
-            {
-              j = ak.kU((Context)this).width;
-              i = ak.kU((Context)this).height;
-            }
-            localObject1 = new com.tencent.mm.plugin.thumbplayer.e.d((String)localObject1, (String)localObject3, (String)localObject2, j, i);
-            ((com.tencent.mm.plugin.thumbplayer.e.d)localObject1).fEF = false;
-            localMMTPEffectVideoLayout.setMediaInfo((com.tencent.mm.plugin.thumbplayer.e.d)localObject1);
-            localObject1 = localMMTPEffectVideoLayout.getPlayer();
-            if (localObject1 != null) {
-              ((com.tencent.mm.plugin.thumbplayer.f.b)localObject1).ALj = true;
-            }
-            localObject1 = localMMTPEffectVideoLayout.getPlayer();
-            if (localObject1 != null) {
-              ((com.tencent.mm.plugin.thumbplayer.f.b)localObject1).setLoop(true);
-            }
-            localMMTPEffectVideoLayout.getEffectManager().ikd();
-            if (locala.gma())
-            {
-              localObject1 = localMMTPEffectVideoLayout.getEffectManager().ikc();
-              ((com.tencent.mm.xeffect.effect.b)localObject1).setRadius(5.0F);
-              ((com.tencent.mm.xeffect.effect.b)localObject1).ikb();
-            }
-            this.Bba = localMMTPEffectVideoLayout;
-            Tf();
-            break label714;
-          }
-          gmq();
-          break label714;
-          localObject1 = this.MJg;
-          if (localObject1 == null) {
-            break label805;
-          }
-          ((FrameLayout)localObject1).setVisibility(8);
-          break label805;
-          label1424:
-          paramBundle = null;
-          continue;
-          label1429:
-          i = 0;
-          continue;
+        hIj();
+        localObject1 = this.Tvo;
+        if (localObject1 != null) {
+          ((FrameLayout)localObject1).removeAllViews();
         }
-        localObject1 = this.MJo;
-        if (localObject1 == null) {
-          break label1537;
-        }
-        if (b.a((TextStatusTopicInfo)localObject1, paramBundle) == true) {
-          break label1542;
-        }
-        break label1537;
-        label1458:
-        AppMethodBeat.o(234813);
-        return;
+        localObject1 = paramBundle.sourceId;
+        kotlin.g.b.s.s(localObject1, "topicInfo.sourceId");
+        this.Tvz = N((String)localObject1, (List)paramBundle.jumpInfos);
+        this.TvA = paramBundle;
       }
-      label1465:
-      gmr();
-      paramBundle = this.MJd;
-      if (paramBundle != null) {
-        paramBundle.removeAllViews();
+      paramBundle = this.Tvo;
+      if (paramBundle == null) {
+        continue;
       }
-      paramBundle = this.MJd;
-      if (paramBundle != null)
-      {
-        paramBundle.setVisibility(8);
-        AppMethodBeat.o(234813);
-        return;
-      }
-      AppMethodBeat.o(234813);
+      paramBundle.setVisibility(0);
+      AppMethodBeat.o(291752);
       return;
-      label1511:
-      i = 1;
+      localObject1 = ((com.tencent.mm.plugin.textstatus.h.f.b)localObject1).field_MediaThumbUrl;
+      break;
+      i = 0;
+      break label562;
+      i = 0;
+      break label588;
+      localObject1 = this.TwR;
+      if (localObject1 != null)
+      {
+        ((View)localObject1).setVisibility(0);
+        continue;
+        localObject1 = localb.field_MediaUrl;
+        kotlin.g.b.s.s(localObject1, "info.field_MediaUrl");
+        localObject1 = ((String)localObject1).getBytes(kotlin.n.d.UTF_8);
+        kotlin.g.b.s.s(localObject1, "(this as java.lang.String).getBytes(charset)");
+        localObject4 = g.getMessageDigest((byte[])localObject1);
+        localObject1 = localObject4;
+        if (localObject4 == null)
+        {
+          localObject1 = "";
+          continue;
+          localObject5 = localb.field_MediaUrl;
+          localObject4 = localObject5;
+          if (localObject5 == null)
+          {
+            localObject4 = "";
+            continue;
+            hIi();
+          }
+        }
+      }
     }
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(234812);
+    AppMethodBeat.i(291723);
     super.onDestroy();
-    gmq();
-    com.tencent.mm.plugin.textstatus.e.e locale = this.MKE;
-    if (locale == null) {
-      p.bGy("loadLogic");
-    }
-    locale.glS();
-    gmr();
-    com.tencent.mm.kernel.h.aGY().b(5967, (com.tencent.mm.an.i)this);
-    AppMethodBeat.o(234812);
+    hIi();
+    hIH().hHu();
+    hIH().hHt();
+    hIj();
+    com.tencent.mm.kernel.h.aZW().b(5967, (com.tencent.mm.am.h)this);
+    AppMethodBeat.o(291723);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(234824);
+    AppMethodBeat.i(291761);
     super.onPause();
-    gmC();
-    Object localObject = this.Bba;
+    hIC();
+    Object localObject = this.Goz;
     if (localObject != null)
     {
       localObject = ((MMTPEffectVideoLayout)localObject).getPlayer();
-      if (localObject != null)
-      {
-        ((com.tencent.mm.plugin.thumbplayer.f.b)localObject).pause();
-        AppMethodBeat.o(234824);
-        return;
+      if (localObject != null) {
+        com.tencent.mm.plugin.thumbplayer.e.b.b((com.tencent.mm.plugin.thumbplayer.e.b)localObject);
       }
     }
-    AppMethodBeat.o(234824);
+    AppMethodBeat.o(291761);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(234825);
+    AppMethodBeat.i(291767);
     super.onResume();
-    com.tencent.mm.ui.widget.b localb = this.MJn;
+    com.tencent.mm.ui.widget.b localb = this.Tvz;
     if (localb != null) {
-      localb.dDB();
+      localb.etL();
     }
-    localb = this.MJn;
+    localb = this.Tvz;
     if (localb != null) {
-      localb.dDE();
+      localb.etO();
     }
-    Tf();
-    AppMethodBeat.o(234825);
+    atK();
+    AppMethodBeat.o(291767);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(234820);
-    if ((paramq instanceof com.tencent.mm.plugin.textstatus.g.a))
+    AppMethodBeat.i(291756);
+    if ((paramp instanceof com.tencent.mm.plugin.textstatus.h.a))
     {
-      com.tencent.mm.kernel.h.aGY().b(((com.tencent.mm.plugin.textstatus.g.a)paramq).getType(), (com.tencent.mm.an.i)this);
+      com.tencent.mm.kernel.h.aZW().b(((com.tencent.mm.plugin.textstatus.h.a)paramp).getType(), (com.tencent.mm.am.h)this);
       if ((paramInt1 != 0) || (paramInt2 != 0)) {
         break label70;
       }
@@ -655,20 +677,18 @@ public final class TextStatusDetailActivity
       if (paramInt1 != 0) {
         finish();
       }
-      paramString = this.iYE;
-      if (paramString == null) {
-        break;
+      paramString = this.psR;
+      if (paramString != null) {
+        paramString.dismiss();
       }
-      paramString.dismiss();
-      AppMethodBeat.o(234820);
+      AppMethodBeat.o(291756);
       return;
       label70:
       paramString = getContext();
       if (paramString != null) {
-        com.tencent.mm.ui.base.h.af((Context)paramString, paramString.getString(b.h.Myu), "");
+        com.tencent.mm.ui.base.k.c((Context)paramString, paramString.getString(a.h.Tgb), "", true);
       }
     }
-    AppMethodBeat.o(234820);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -679,94 +699,12 @@ public final class TextStatusDetailActivity
   
   public final void setIvMask(View paramView)
   {
-    this.MKF = paramView;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
-  static final class b
-    implements q.f
-  {
-    b(TextStatusDetailActivity paramTextStatusDetailActivity) {}
-    
-    public final void onCreateMMMenu(o paramo)
-    {
-      AppMethodBeat.i(232279);
-      paramo.a(b.e.Mwp, this.MKO.getResources().getColor(b.b.Red), (CharSequence)this.MKO.getString(b.h.Mys));
-      AppMethodBeat.o(232279);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
-  static final class c
-    implements q.g
-  {
-    c(TextStatusDetailActivity paramTextStatusDetailActivity, String paramString) {}
-    
-    public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
-    {
-      AppMethodBeat.i(236256);
-      p.j(paramMenuItem, "menuItem");
-      if (paramMenuItem.getItemId() == b.e.Mwp)
-      {
-        paramMenuItem = this.MKO;
-        Context localContext = (Context)this.MKO.getContext();
-        this.MKO.getResources().getString(b.h.Myw);
-        paramMenuItem.iYE = com.tencent.mm.ui.base.h.a(localContext, this.MKO.getResources().getString(b.h.Myw), false, null);
-        paramMenuItem = this.MCL;
-        p.j(paramMenuItem, "statusId");
-        paramMenuItem = new com.tencent.mm.plugin.textstatus.g.a(paramMenuItem, 2);
-        com.tencent.mm.kernel.h.aGY().a(paramMenuItem.getType(), (com.tencent.mm.an.i)this.MKO);
-        com.tencent.mm.kernel.h.aGY().b((q)paramMenuItem);
-        paramMenuItem = com.tencent.mm.plugin.textstatus.h.a.MGJ;
-        paramMenuItem = this.MKO.getContext();
-        p.j(paramMenuItem, "context");
-        com.tencent.mm.plugin.textstatus.h.a.a((Context)paramMenuItem, 43L, null, null, 12);
-      }
-      AppMethodBeat.o(236256);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class d
-    implements MenuItem.OnMenuItemClickListener
-  {
-    d(TextStatusDetailActivity paramTextStatusDetailActivity) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(236328);
-      this.MKO.finish();
-      AppMethodBeat.o(236328);
-      return false;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class f
-    implements MenuItem.OnMenuItemClickListener
-  {
-    f(TextStatusDetailActivity paramTextStatusDetailActivity) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(238490);
-      paramMenuItem = this.MKO;
-      com.tencent.mm.ui.tools.m localm = new com.tencent.mm.ui.tools.m((Context)paramMenuItem.getContext());
-      localm.a((q.f)new TextStatusDetailActivity.b(paramMenuItem));
-      com.tencent.mm.plugin.textstatus.g.e.a locala = paramMenuItem.MCs;
-      if (locala == null) {
-        p.bGy("info");
-      }
-      localm.a((q.g)new TextStatusDetailActivity.c(paramMenuItem, locala.field_StatusID));
-      localm.hYu();
-      AppMethodBeat.o(238490);
-      return true;
-    }
+    this.TwR = paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.ui.TextStatusDetailActivity
  * JD-Core Version:    0.7.0.1
  */

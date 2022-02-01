@@ -3,51 +3,51 @@ package com.tencent.tinker.a.b.a;
 public final class h
   extends a
 {
-  public short[] ZKd;
+  public short[] ahPf;
   
   public h(int paramInt)
   {
     if (paramInt < 0) {
       throw new IllegalArgumentException("initSize < 0");
     }
-    this.ZKd = new short[paramInt];
+    this.ahPf = new short[paramInt];
   }
   
   public final void a(short paramShort1, short paramShort2, short paramShort3)
   {
-    d(paramShort1);
-    d(paramShort2);
-    d(paramShort3);
+    g(paramShort1);
+    g(paramShort2);
+    g(paramShort3);
   }
   
-  public final void b(short paramShort1, short paramShort2)
+  public final void aX(int paramInt)
   {
-    d(paramShort1);
-    d(paramShort2);
+    g((short)paramInt);
+    g((short)(paramInt >> 16));
   }
   
-  public final void bV(int paramInt)
+  public final void d(short paramShort1, short paramShort2)
   {
-    d((short)paramInt);
-    d((short)(paramInt >> 16));
+    g(paramShort1);
+    g(paramShort2);
   }
   
-  public final void d(short paramShort)
+  public final void g(short paramShort)
   {
-    int i = this.YO;
-    if (this.ZKd.length - i <= 0)
+    int i = this.bGj;
+    if (this.ahPf.length - i <= 0)
     {
-      short[] arrayOfShort = new short[this.ZKd.length + (this.ZKd.length >> 1)];
-      System.arraycopy(this.ZKd, 0, arrayOfShort, 0, i);
-      this.ZKd = arrayOfShort;
+      short[] arrayOfShort = new short[this.ahPf.length + (this.ahPf.length >> 1)];
+      System.arraycopy(this.ahPf, 0, arrayOfShort, 0, i);
+      this.ahPf = arrayOfShort;
     }
-    this.ZKd[this.YO] = paramShort;
-    isz();
+    this.ahPf[this.bGj] = paramShort;
+    kbZ();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.tinker.a.b.a.h
  * JD-Core Version:    0.7.0.1
  */

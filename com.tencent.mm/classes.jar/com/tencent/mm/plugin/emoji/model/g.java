@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.emoji.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emoji/model/EmojiCustomGroupModel;", "Lcom/tencent/mm/plugin/emoji/model/AbsEmojiCustomGroupModel;", "Lcom/tencent/mm/plugin/emoji/model/EmojiCustomItemGroup;", "entrance", "", "(Z)V", "data", "getData", "()Lcom/tencent/mm/plugin/emoji/model/EmojiCustomItemGroup;", "setData", "(Lcom/tencent/mm/plugin/emoji/model/EmojiCustomItemGroup;)V", "getEntrance", "()Z", "setEntrance", "createData", "plugin-emoji_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/emoji/model/EmojiCustomGroupModel;", "Lcom/tencent/mm/plugin/emoji/model/AbsEmojiCustomGroupModel;", "Lcom/tencent/mm/plugin/emoji/model/EmojiCustomItemGroup;", "entrance", "", "(Z)V", "data", "getData", "()Lcom/tencent/mm/plugin/emoji/model/EmojiCustomItemGroup;", "setData", "(Lcom/tencent/mm/plugin/emoji/model/EmojiCustomItemGroup;)V", "getEntrance", "()Z", "setEntrance", "createData", "plugin-emoji_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class g
   extends a<h>
 {
-  private boolean uDV;
-  private h uEh;
+  private boolean xMm;
+  private h xMy;
   
   public g()
   {
-    AppMethodBeat.i(256222);
-    this.uDV = true;
-    this.uEh = cUE();
-    AppMethodBeat.o(256222);
+    AppMethodBeat.i(269856);
+    this.xMm = true;
+    this.xMy = dzL();
+    AppMethodBeat.o(269856);
   }
   
-  private h cUE()
+  private h dzL()
   {
-    AppMethodBeat.i(256217);
-    h localh = new h(this.uDV);
-    AppMethodBeat.o(256217);
+    AppMethodBeat.i(269860);
+    h localh = new h(this.xMm);
+    AppMethodBeat.o(269860);
     return localh;
   }
   
-  public final void cUC()
+  public final void dzJ()
   {
-    this.uDV = true;
+    this.xMm = true;
   }
 }
 

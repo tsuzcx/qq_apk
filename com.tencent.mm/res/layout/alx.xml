@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/d6o" android:paddingLeft="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mz"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/d71" android:layout_width="fill_parent" android:layout_height="@dimen/az">
-        <com.tencent.mm.ui.base.MaskLayout android:id="@id/d6j" android:layout_width="@dimen/ax" android:layout_height="@dimen/ax" android:layout_marginRight="@dimen/c5">
-            <ImageView android:id="@id/be9" android:layout_width="@dimen/aw" android:layout_height="@dimen/aw" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
-        </com.tencent.mm.ui.base.MaskLayout>
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="?sg" android:paddingRight="@dimen/e" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <TextView android:gravity="center_vertical" android:paddingRight="@dimen/hs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/f8" android:singleLine="true" style="@style/mp" />
-            <TextView android:textSize="@dimen/kc" android:textColor="@color/ag2" android:gravity="center" android:id="@id/d6z" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+<com.tencent.mm.view.HardTouchableLayout android:id="@id/gq8" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.finder.view.FinderLongVideoMediaBanner android:layout_gravity="center" android:id="@id/gq4" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="end|bottom|center" android:id="@id/l07" android:visibility="gone" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginBottom="@dimen/cp" android:src="@raw/icons_filled_unfold" android:layout_marginEnd="@dimen/cp" app:iconColor="@android:color/white" />
+    <include layout="@layout/am7" />
+    <include layout="@layout/am6" />
+    <include layout="@layout/bc0" />
+    <include layout="@layout/bc2" />
+</com.tencent.mm.view.HardTouchableLayout>

@@ -9,10 +9,10 @@ import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.g.a;
-import com.tencent.mm.plugin.game.g.e;
-import com.tencent.mm.plugin.game.g.f;
-import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.plugin.game.h.a;
+import com.tencent.mm.plugin.game.h.e;
+import com.tencent.mm.plugin.game.h.f;
+import com.tencent.mm.pluginsdk.ui.span.p;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import java.util.ArrayList;
@@ -21,25 +21,25 @@ import java.util.List;
 public class GameDetailAutoScrollView
   extends LinearLayout
 {
-  private MTimerHandler CSP;
-  private ArrayList<String> CUd;
-  private ViewGroup CUe;
-  private TextView CUf;
-  private TextView CUg;
-  private ViewGroup CUh;
-  private TextView CUi;
-  private TextView CUj;
-  private Animation CUk;
-  private Animation CUl;
-  private int uPV;
+  private MTimerHandler INf;
+  private TextView IOA;
+  private Animation IOB;
+  private Animation IOC;
+  private ArrayList<String> IOu;
+  private ViewGroup IOv;
+  private TextView IOw;
+  private TextView IOx;
+  private ViewGroup IOy;
+  private TextView IOz;
+  private int xYG;
   
   public GameDetailAutoScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(41975);
-    this.CUd = new ArrayList();
-    this.uPV = 0;
-    this.CSP = new MTimerHandler(new MTimerHandler.CallBack()
+    this.IOu = new ArrayList();
+    this.xYG = 0;
+    this.INf = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -49,18 +49,18 @@ public class GameDetailAutoScrollView
         return true;
       }
     }, true);
-    this.CUe = ((ViewGroup)LayoutInflater.from(paramContext).inflate(g.f.CmN, this, false));
-    this.CUf = ((TextView)this.CUe.findViewById(g.e.Cie));
-    this.CUg = ((TextView)this.CUe.findViewById(g.e.Cif));
-    addView(this.CUe);
-    this.CUe.setVisibility(8);
-    this.CUh = ((ViewGroup)LayoutInflater.from(paramContext).inflate(g.f.CmN, this, false));
-    this.CUi = ((TextView)this.CUh.findViewById(g.e.Cie));
-    this.CUj = ((TextView)this.CUh.findViewById(g.e.Cif));
-    addView(this.CUh);
-    this.CUh.setVisibility(8);
-    this.CUk = AnimationUtils.loadAnimation(paramContext, g.a.slide_bottom_in);
-    this.CUl = AnimationUtils.loadAnimation(paramContext, g.a.slide_top_out);
+    this.IOv = ((ViewGroup)LayoutInflater.from(paramContext).inflate(h.f.HYV, this, false));
+    this.IOw = ((TextView)this.IOv.findViewById(h.e.HUm));
+    this.IOx = ((TextView)this.IOv.findViewById(h.e.HUn));
+    addView(this.IOv);
+    this.IOv.setVisibility(8);
+    this.IOy = ((ViewGroup)LayoutInflater.from(paramContext).inflate(h.f.HYV, this, false));
+    this.IOz = ((TextView)this.IOy.findViewById(h.e.HUm));
+    this.IOA = ((TextView)this.IOy.findViewById(h.e.HUn));
+    addView(this.IOy);
+    this.IOy.setVisibility(8);
+    this.IOB = AnimationUtils.loadAnimation(paramContext, h.a.slide_bottom_in);
+    this.IOC = AnimationUtils.loadAnimation(paramContext, h.a.slide_top_out);
     AppMethodBeat.o(41975);
   }
   
@@ -68,41 +68,41 @@ public class GameDetailAutoScrollView
   {
     AppMethodBeat.i(41977);
     super.onDetachedFromWindow();
-    this.CSP.stopTimer();
+    this.INf.stopTimer();
     AppMethodBeat.o(41977);
   }
   
   public void setText(List<String> paramList)
   {
     AppMethodBeat.i(41976);
-    this.CUd.clear();
-    this.CSP.stopTimer();
+    this.IOu.clear();
+    this.INf.stopTimer();
     if ((paramList == null) || (paramList.size() == 0) || (paramList.size() % 2 != 0))
     {
-      this.CUe.setVisibility(8);
-      this.CUh.setVisibility(8);
+      this.IOv.setVisibility(8);
+      this.IOy.setVisibility(8);
       AppMethodBeat.o(41976);
       return;
     }
-    this.CUd.addAll(paramList);
-    this.uPV = 0;
-    paramList = l.b(getContext(), (CharSequence)this.CUd.get(0), this.CUf.getTextSize());
-    this.CUf.setText(paramList);
-    this.CUg.setText((CharSequence)this.CUd.get(1));
-    this.CUe.setVisibility(0);
-    this.CUh.setVisibility(8);
-    if (this.CUd.size() / 2 == 1)
+    this.IOu.addAll(paramList);
+    this.xYG = 0;
+    paramList = p.b(getContext(), (CharSequence)this.IOu.get(0), this.IOw.getTextSize());
+    this.IOw.setText(paramList);
+    this.IOx.setText((CharSequence)this.IOu.get(1));
+    this.IOv.setVisibility(0);
+    this.IOy.setVisibility(8);
+    if (this.IOu.size() / 2 == 1)
     {
       AppMethodBeat.o(41976);
       return;
     }
-    this.CSP.startTimer(5000L);
+    this.INf.startTimer(5000L);
     AppMethodBeat.o(41976);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameDetailAutoScrollView
  * JD-Core Version:    0.7.0.1
  */

@@ -9,15 +9,15 @@ import com.tencent.mm.sdk.platformtools.Log;
 final class RecyclerThumbSeekBar$a
   implements Runnable
 {
-  private RecyclerThumbSeekBar.b Fek;
+  private RecyclerThumbSeekBar.b KZT;
   private Bitmap bitmap;
-  private ImageView fDJ;
+  private ImageView hIz;
   
   RecyclerThumbSeekBar$a(RecyclerThumbSeekBar paramRecyclerThumbSeekBar, Bitmap paramBitmap, ImageView paramImageView, RecyclerThumbSeekBar.b paramb)
   {
     this.bitmap = paramBitmap;
-    this.fDJ = paramImageView;
-    this.Fek = paramb;
+    this.hIz = paramImageView;
+    this.KZT = paramb;
   }
   
   public final void run()
@@ -35,13 +35,13 @@ final class RecyclerThumbSeekBar$a
         bool = false;
       }
     }
-    if ((this.Fek == null) || (this.Fek.lTb) || (this.fDJ == null))
+    if ((this.KZT == null) || (this.KZT.oLU) || (this.hIz == null))
     {
       Log.i("RecyclerThumbSeekBar", "bitmap in DrawBitmapOnViewTask");
       AppMethodBeat.o(94416);
       return;
     }
-    ImageView localImageView = this.fDJ;
+    ImageView localImageView = this.hIz;
     localImageView.setTag(null);
     ObjectAnimator.ofInt(localImageView, "imageAlpha", new int[] { 50, 255 }).setDuration(200L).start();
     localImageView.setImageBitmap(this.bitmap);

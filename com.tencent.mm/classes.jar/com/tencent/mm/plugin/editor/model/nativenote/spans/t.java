@@ -33,19 +33,19 @@ public abstract class t<V, C extends h<V>>
   
   public abstract void a(WXRTEditText paramWXRTEditText, V paramV);
   
-  public abstract int cSW();
+  public abstract int dxp();
   
   protected abstract g r(WXRTEditText paramWXRTEditText);
   
   public final boolean s(WXRTEditText paramWXRTEditText)
   {
     g localg = r(paramWXRTEditText);
-    return !a(paramWXRTEditText.getText(), localg, q.uvI).isEmpty();
+    return !a(paramWXRTEditText.getText(), localg, q.xCh).isEmpty();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.spans.t
  * JD-Core Version:    0.7.0.1
  */

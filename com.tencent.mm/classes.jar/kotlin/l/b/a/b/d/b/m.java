@@ -1,157 +1,52 @@
 package kotlin.l.b.a.b.d.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.j.e.d;
-import kotlin.n.n;
-import kotlin.z;
+import kotlin.l.b.a.b.d.a.e.g;
+import kotlin.l.b.a.b.f.b;
+import kotlin.l.b.a.b.k.a.t;
 
-final class m
-  implements l<k>
+public abstract interface m
+  extends t
 {
-  public static final m aaYD;
+  public abstract a a(g paramg);
   
-  static
-  {
-    AppMethodBeat.i(58216);
-    aaYD = new m();
-    AppMethodBeat.o(58216);
-  }
+  public abstract a c(b paramb);
   
-  private k bGR(String paramString)
+  public static abstract class a
   {
-    int k = 0;
-    AppMethodBeat.i(58209);
-    p.k(paramString, "representation");
-    if (((CharSequence)paramString).length() > 0) {}
-    for (int i = 1; (z.aazO) && (i == 0); i = 0)
+    public final o ksX()
     {
-      paramString = (Throwable)new AssertionError("empty string as JvmType");
-      AppMethodBeat.o(58209);
-      throw paramString;
+      if ((this instanceof b)) {}
+      for (b localb = (b)this; localb == null; localb = null) {
+        return null;
+      }
+      return localb.aiWZ;
     }
-    int m = paramString.charAt(0);
-    d[] arrayOfd = d.values();
-    int n = arrayOfd.length;
-    i = 0;
-    d locald;
-    int j;
-    if (i < n)
+    
+    public static final class a
+      extends m.a
+    {}
+    
+    public static final class b
+      extends m.a
     {
-      locald = arrayOfd[i];
-      if (locald.getDesc().charAt(0) == m)
+      final o aiWZ;
+      private final byte[] aiXa;
+      
+      private b(o paramo)
       {
-        j = 1;
-        label110:
-        if (j == 0) {
-          break label144;
-        }
+        super();
+        AppMethodBeat.i(58220);
+        this.aiWZ = paramo;
+        this.aiXa = null;
+        AppMethodBeat.o(58220);
       }
     }
-    for (;;)
-    {
-      if (locald == null) {
-        break label157;
-      }
-      paramString = (k)new k.c(locald);
-      AppMethodBeat.o(58209);
-      return paramString;
-      j = 0;
-      break label110;
-      label144:
-      i += 1;
-      break;
-      locald = null;
-    }
-    switch (m)
-    {
-    default: 
-      i = k;
-      if (m == 76)
-      {
-        i = k;
-        if (n.a((CharSequence)paramString, ';')) {
-          i = 1;
-        }
-      }
-      if ((z.aazO) && (i == 0))
-      {
-        paramString = (Throwable)new AssertionError("Type that is not primitive nor array should be Object, but '" + paramString + "' was found");
-        AppMethodBeat.o(58209);
-        throw paramString;
-      }
-      break;
-    case 86: 
-      paramString = (k)new k.c(null);
-      AppMethodBeat.o(58209);
-      return paramString;
-    case 91: 
-      label157:
-      paramString = paramString.substring(1);
-      p.j(paramString, "(this as java.lang.String).substring(startIndex)");
-      paramString = (k)new k.a(bGR(paramString));
-      AppMethodBeat.o(58209);
-      return paramString;
-    }
-    paramString = paramString.substring(1, paramString.length() - 1);
-    p.j(paramString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-    paramString = (k)new k.b(paramString);
-    AppMethodBeat.o(58209);
-    return paramString;
-  }
-  
-  private static k.b bGS(String paramString)
-  {
-    AppMethodBeat.i(58211);
-    p.k(paramString, "internalName");
-    paramString = new k.b(paramString);
-    AppMethodBeat.o(58211);
-    return paramString;
-  }
-  
-  public final String a(k paramk)
-  {
-    AppMethodBeat.i(58213);
-    p.k(paramk, "type");
-    if ((paramk instanceof k.a))
-    {
-      paramk = "[" + a(((k.a)paramk).aaYA);
-      AppMethodBeat.o(58213);
-      return paramk;
-    }
-    if ((paramk instanceof k.c))
-    {
-      paramk = ((k.c)paramk).aaYC;
-      if (paramk != null)
-      {
-        paramk = paramk.getDesc();
-        if (paramk != null) {}
-      }
-      else
-      {
-        AppMethodBeat.o(58213);
-        return "V";
-      }
-    }
-    else
-    {
-      if ((paramk instanceof k.b))
-      {
-        paramk = "L" + ((k.b)paramk).aaYB + ";";
-        AppMethodBeat.o(58213);
-        return paramk;
-      }
-      paramk = new kotlin.m();
-      AppMethodBeat.o(58213);
-      throw paramk;
-    }
-    AppMethodBeat.o(58213);
-    return paramk;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.d.b.m
  * JD-Core Version:    0.7.0.1
  */

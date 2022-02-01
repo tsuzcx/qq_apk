@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.game.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.di;
+import com.tencent.mm.autogen.b.ds;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/game/download/GameResourceDownload;", "Lcom/tencent/mm/autogen/table/BaseGameResourceDownload;", "()V", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "Companion", "plugin-game_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/game/download/GameResourceDownload;", "Lcom/tencent/mm/autogen/table/BaseGameResourceDownload;", "()V", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "Companion", "plugin-game_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends di
+  extends ds
 {
-  public static final a CzE;
+  public static final a Itv;
   private static final IAutoDBItem.MAutoDBInfo info;
   
   static
   {
-    AppMethodBeat.i(193138);
-    CzE = new a((byte)0);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = di.aoY();
-    p.j(localMAutoDBInfo, "initAutoDBInfo(BaseGameR…urceDownload::class.java)");
+    AppMethodBeat.i(275320);
+    Itv = new a((byte)0);
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = ds.aJm();
+    s.s(localMAutoDBInfo, "initAutoDBInfo(BaseGameR…urceDownload::class.java)");
     info = localMAutoDBInfo;
-    AppMethodBeat.o(193138);
+    AppMethodBeat.o(275320);
   }
   
   public final IAutoDBItem.MAutoDBInfo getDBInfo()
@@ -28,12 +28,12 @@ public final class a
     return info;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/game/download/GameResourceDownload$Companion;", "", "()V", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-game_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/game/download/GameResourceDownload$Companion;", "", "()V", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-game_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.b.a
  * JD-Core Version:    0.7.0.1
  */

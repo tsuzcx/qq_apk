@@ -1,25 +1,23 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.plugin.sns.storage.SnsInfo;
-import com.tencent.mm.vending.base.Vending;
+import android.view.View;
+import java.util.List;
 
 public abstract interface ac
 {
-  public abstract SnsInfo agM(int paramInt);
+  public abstract void ah(List<String> paramList, int paramInt);
   
-  public abstract bn agN(int paramInt);
+  public abstract void clean();
   
-  public abstract void fTJ();
+  public abstract View getView();
   
-  public abstract Vending fTK();
+  public abstract void setImageClick(ac.a parama);
   
-  public abstract int getCount();
-  
-  public abstract void notifyDataSetChanged();
+  public abstract void setIsShowAddImage(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.ac
  * JD-Core Version:    0.7.0.1
  */

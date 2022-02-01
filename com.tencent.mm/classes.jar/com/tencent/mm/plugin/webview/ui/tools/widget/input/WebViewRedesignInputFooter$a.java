@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.webview.ui.tools.widget.input;
 
 public abstract interface WebViewRedesignInputFooter$a
 {
-  public abstract boolean dO(String paramString);
+  public abstract boolean eZ(String paramString);
 }
 
 

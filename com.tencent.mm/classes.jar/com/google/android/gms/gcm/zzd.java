@@ -19,7 +19,7 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.Log;
-import androidx.core.app.e.d;
+import androidx.core.app.f.d;
 import com.google.android.gms.common.util.PlatformVersion;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
@@ -220,7 +220,7 @@ final class zzd
         }
       }
       label525:
-      label1066:
+      label1068:
       for (;;)
       {
         Object localObject4 = new Bundle(paramBundle);
@@ -259,7 +259,7 @@ final class zzd
               label458:
               localObject1 = this.zzk.getPackageManager().getLaunchIntentForPackage(this.zzk.getPackageName());
               if (localObject1 != null) {
-                break label1066;
+                break label1068;
               }
               localObject4 = null;
               if ((!PlatformVersion.isAtLeastO()) || (this.zzk.getApplicationInfo().targetSdkVersion < 26)) {
@@ -294,7 +294,7 @@ final class zzd
             }
           }
         }
-        for (localObject1 = ((Notification.Builder)localObject5).build();; localObject1 = ((e.d)localObject1).gr())
+        for (localObject1 = ((Notification.Builder)localObject5).build();; localObject1 = ((f.d)localObject1).DA())
         {
           localObject2 = zzd(paramBundle, "gcm.n.tag");
           Log.isLoggable("GcmNotification", 3);
@@ -336,21 +336,21 @@ final class zzd
           localObject1 = this.zzl;
           break label525;
           label960:
-          localObject1 = new e.d(this.zzk).W(true).bn(i);
+          localObject1 = new f.d(this.zzk).aC(true).eb(i);
           if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-            ((e.d)localObject1).k((CharSequence)localObject3);
+            ((f.d)localObject1).l((CharSequence)localObject3);
           }
           if (!TextUtils.isEmpty(str1)) {
-            ((e.d)localObject1).l(str1);
+            ((f.d)localObject1).m(str1);
           }
           if (!TextUtils.isEmpty(str2)) {
-            ((e.d)localObject1).mColor = Color.parseColor(str2);
+            ((f.d)localObject1).ec(Color.parseColor(str2));
           }
           if (localObject2 != null) {
-            ((e.d)localObject1).d((Uri)localObject2);
+            ((f.d)localObject1).d((Uri)localObject2);
           }
           if (localObject4 != null) {
-            ((e.d)localObject1).Ip = ((PendingIntent)localObject4);
+            ((f.d)localObject1).a((PendingIntent)localObject4);
           }
         }
       }
@@ -359,7 +359,7 @@ final class zzd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.gcm.zzd
  * JD-Core Version:    0.7.0.1
  */

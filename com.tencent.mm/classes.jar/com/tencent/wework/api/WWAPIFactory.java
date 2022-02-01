@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class WWAPIFactory
 {
-  public static IWWAPI mw(Context paramContext)
+  public static IWWAPI oM(Context paramContext)
   {
     AppMethodBeat.i(106526);
     if (TextUtils.equals(paramContext.getPackageName(), "com.tencent.mm"))

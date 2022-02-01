@@ -6,7 +6,7 @@ public enum OfflineStatus
 {
   static
   {
-    AppMethodBeat.i(236129);
+    AppMethodBeat.i(211049);
     ERROR = new OfflineStatus("ERROR", 0);
     READY = new OfflineStatus("READY", 1);
     START = new OfflineStatus("START", 2);
@@ -16,14 +16,14 @@ public enum OfflineStatus
     OPEN = new OfflineStatus("OPEN", 6);
     CLOSE = new OfflineStatus("CLOSE", 7);
     $VALUES = new OfflineStatus[] { ERROR, READY, START, DOWNLOADING, CANCEL, COMPLETED, OPEN, CLOSE };
-    AppMethodBeat.o(236129);
+    AppMethodBeat.o(211049);
   }
   
   private OfflineStatus() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.map.sdk.comps.offlinemap.OfflineStatus
  * JD-Core Version:    0.7.0.1
  */

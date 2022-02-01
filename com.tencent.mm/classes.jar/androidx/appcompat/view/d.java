@@ -14,8 +14,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class d
   extends ContextWrapper
 {
-  public int jM;
-  private Configuration jN;
+  public int kI;
+  private Configuration kJ;
   private LayoutInflater mInflater;
   private Resources mResources;
   private Resources.Theme mTheme;
@@ -28,12 +28,12 @@ public final class d
   public d(Context paramContext, int paramInt)
   {
     super(paramContext);
-    this.jM = paramInt;
+    this.kI = paramInt;
   }
   
-  private void bD()
+  private void cw()
   {
-    AppMethodBeat.i(238907);
+    AppMethodBeat.i(200701);
     if (this.mTheme == null) {}
     for (int i = 1;; i = 0)
     {
@@ -45,33 +45,33 @@ public final class d
           this.mTheme.setTo(localTheme);
         }
       }
-      this.mTheme.applyStyle(this.jM, true);
-      AppMethodBeat.o(238907);
+      this.mTheme.applyStyle(this.kI, true);
+      AppMethodBeat.o(200701);
       return;
     }
   }
   
   protected final void attachBaseContext(Context paramContext)
   {
-    AppMethodBeat.i(238902);
+    AppMethodBeat.i(200712);
     super.attachBaseContext(paramContext);
-    AppMethodBeat.o(238902);
+    AppMethodBeat.o(200712);
   }
   
   public final AssetManager getAssets()
   {
-    AppMethodBeat.i(238908);
+    AppMethodBeat.i(200766);
     AssetManager localAssetManager = getResources().getAssets();
-    AppMethodBeat.o(238908);
+    AppMethodBeat.o(200766);
     return localAssetManager;
   }
   
   public final Resources getResources()
   {
-    AppMethodBeat.i(238903);
+    AppMethodBeat.i(200725);
     if (this.mResources == null)
     {
-      if (this.jN != null) {
+      if (this.kJ != null) {
         break label39;
       }
       this.mResources = super.getResources();
@@ -79,64 +79,64 @@ public final class d
     for (;;)
     {
       Resources localResources = this.mResources;
-      AppMethodBeat.o(238903);
+      AppMethodBeat.o(200725);
       return localResources;
       label39:
       if (Build.VERSION.SDK_INT >= 17) {
-        this.mResources = createConfigurationContext(this.jN).getResources();
+        this.mResources = createConfigurationContext(this.kJ).getResources();
       }
     }
   }
   
   public final Object getSystemService(String paramString)
   {
-    AppMethodBeat.i(238906);
+    AppMethodBeat.i(200757);
     if ("layout_inflater".equals(paramString))
     {
       if (this.mInflater == null) {
         this.mInflater = LayoutInflater.from(getBaseContext()).cloneInContext(this);
       }
       paramString = this.mInflater;
-      AppMethodBeat.o(238906);
+      AppMethodBeat.o(200757);
       return paramString;
     }
     paramString = getBaseContext().getSystemService(paramString);
-    AppMethodBeat.o(238906);
+    AppMethodBeat.o(200757);
     return paramString;
   }
   
   public final Resources.Theme getTheme()
   {
-    AppMethodBeat.i(238905);
+    AppMethodBeat.i(200746);
     if (this.mTheme != null)
     {
       localTheme = this.mTheme;
-      AppMethodBeat.o(238905);
+      AppMethodBeat.o(200746);
       return localTheme;
     }
-    if (this.jM == 0) {
-      this.jM = a.i.Theme_AppCompat_Light;
+    if (this.kI == 0) {
+      this.kI = a.i.Theme_AppCompat_Light;
     }
-    bD();
+    cw();
     Resources.Theme localTheme = this.mTheme;
-    AppMethodBeat.o(238905);
+    AppMethodBeat.o(200746);
     return localTheme;
   }
   
   public final void setTheme(int paramInt)
   {
-    AppMethodBeat.i(238904);
-    if (this.jM != paramInt)
+    AppMethodBeat.i(200734);
+    if (this.kI != paramInt)
     {
-      this.jM = paramInt;
-      bD();
+      this.kI = paramInt;
+      cw();
     }
-    AppMethodBeat.o(238904);
+    AppMethodBeat.o(200734);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     androidx.appcompat.view.d
  * JD-Core Version:    0.7.0.1
  */

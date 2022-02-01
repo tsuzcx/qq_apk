@@ -7,21 +7,16 @@ import android.text.TextUtils;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.internal.Preconditions;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-import javax.annotation.Nullable;
-import javax.annotation.concurrent.GuardedBy;
 import org.json.JSONException;
 
 public class Storage
 {
   private static final Lock zzaf;
-  @GuardedBy("sLk")
   private static Storage zzag;
   private final Lock zzah;
-  @GuardedBy("mLk")
   private final SharedPreferences zzai;
   
   static
@@ -31,7 +26,6 @@ public class Storage
     AppMethodBeat.o(10898);
   }
   
-  @VisibleForTesting
   private Storage(Context paramContext)
   {
     AppMethodBeat.i(10884);
@@ -60,8 +54,7 @@ public class Storage
     }
   }
   
-  @VisibleForTesting
-  public static void setInstance(@Nullable Storage paramStorage)
+  public static void setInstance(Storage paramStorage)
   {
     AppMethodBeat.i(10882);
     zzaf.lock();
@@ -85,8 +78,6 @@ public class Storage
     return paramString1;
   }
   
-  @Nullable
-  @VisibleForTesting
   private final GoogleSignInAccount zzb(String paramString)
   {
     AppMethodBeat.i(10889);
@@ -112,8 +103,6 @@ public class Storage
     return null;
   }
   
-  @Nullable
-  @VisibleForTesting
   private final GoogleSignInOptions zzc(String paramString)
   {
     AppMethodBeat.i(10891);
@@ -155,7 +144,6 @@ public class Storage
     }
   }
   
-  @Nullable
   protected String getFromStore(String paramString)
   {
     AppMethodBeat.i(10893);
@@ -172,7 +160,6 @@ public class Storage
     }
   }
   
-  @Nullable
   public GoogleSignInAccount getSavedDefaultGoogleSignInAccount()
   {
     AppMethodBeat.i(10888);
@@ -181,7 +168,6 @@ public class Storage
     return localGoogleSignInAccount;
   }
   
-  @Nullable
   public GoogleSignInOptions getSavedDefaultGoogleSignInOptions()
   {
     AppMethodBeat.i(10890);
@@ -190,7 +176,6 @@ public class Storage
     return localGoogleSignInOptions;
   }
   
-  @Nullable
   public String getSavedRefreshToken()
   {
     AppMethodBeat.i(10892);
@@ -269,7 +254,7 @@ public class Storage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.signin.internal.Storage
  * JD-Core Version:    0.7.0.1
  */

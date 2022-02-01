@@ -4,17 +4,17 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.z.a;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.y.a;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/items/FilterItem;", "", "type", "", "(I)V", "TAG", "", "cacheColorWeight", "", "getCacheColorWeight", "()F", "setCacheColorWeight", "(F)V", "cacheFilteredBitmap", "Landroid/graphics/Bitmap;", "getCacheFilteredBitmap", "()Landroid/graphics/Bitmap;", "setCacheFilteredBitmap", "(Landroid/graphics/Bitmap;)V", "getType", "()I", "draw", "", "canvas", "Landroid/graphics/Canvas;", "preBitmap", "colorWeight", "filterBitmap", "plugin-photoedit-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/items/FilterItem;", "", "type", "", "(I)V", "TAG", "", "cacheColorWeight", "", "getCacheColorWeight", "()F", "setCacheColorWeight", "(F)V", "cacheFilteredBitmap", "Landroid/graphics/Bitmap;", "getCacheFilteredBitmap", "()Landroid/graphics/Bitmap;", "setCacheFilteredBitmap", "(Landroid/graphics/Bitmap;)V", "getType", "()I", "draw", "", "canvas", "Landroid/graphics/Canvas;", "preBitmap", "colorWeight", "filterBitmap", "plugin-photoedit-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
   implements Cloneable
 {
   private final String TAG;
-  private Bitmap kao;
-  private float kap;
+  private Bitmap mAr;
+  private float mAs;
   private final int type;
   
   public d(int paramInt)
@@ -23,33 +23,41 @@ public final class d
     this.TAG = "MicroMsg.FilterItem";
   }
   
-  private void x(Bitmap paramBitmap)
+  private void F(Bitmap paramBitmap)
   {
     AppMethodBeat.i(163166);
-    p.k(paramBitmap, "preBitmap");
-    a locala = a.jUw;
-    this.kao = a.a(paramBitmap, this.type, paramBitmap.getWidth(), paramBitmap.getHeight(), this.kap);
+    s.u(paramBitmap, "preBitmap");
+    a locala = a.muK;
+    this.mAr = a.a(paramBitmap, this.type, paramBitmap.getWidth(), paramBitmap.getHeight(), this.mAs);
     AppMethodBeat.o(163166);
   }
   
   public final void a(Canvas paramCanvas, Bitmap paramBitmap, float paramFloat)
   {
     AppMethodBeat.i(163165);
-    p.k(paramCanvas, "canvas");
-    p.k(paramBitmap, "preBitmap");
-    Log.i(this.TAG, "draw cacheColorWeight " + this.kap + ", colorWeight:" + paramFloat + ", cacheFilteredBitmap:" + this.kao);
-    if ((this.kao == null) || (paramFloat != this.kap))
+    s.u(paramCanvas, "canvas");
+    s.u(paramBitmap, "preBitmap");
+    Log.i(this.TAG, "draw cacheColorWeight " + this.mAs + ", colorWeight:" + paramFloat + ", cacheFilteredBitmap:" + this.mAr);
+    if (this.mAr != null) {
+      if (paramFloat != this.mAs) {
+        break label130;
+      }
+    }
+    label130:
+    for (int i = 1;; i = 0)
     {
-      this.kap = paramFloat;
-      x(paramBitmap);
+      if (i == 0)
+      {
+        this.mAs = paramFloat;
+        F(paramBitmap);
+      }
+      paramBitmap = this.mAr;
+      s.checkNotNull(paramBitmap);
+      paramCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, null);
+      Log.i(this.TAG, "lxl item draw");
+      AppMethodBeat.o(163165);
+      return;
     }
-    paramBitmap = this.kao;
-    if (paramBitmap == null) {
-      p.iCn();
-    }
-    paramCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, null);
-    Log.i(this.TAG, "lxl item draw");
-    AppMethodBeat.o(163165);
   }
   
   public final Object clone()

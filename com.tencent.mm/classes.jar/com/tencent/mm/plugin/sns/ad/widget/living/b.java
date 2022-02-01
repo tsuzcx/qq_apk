@@ -4,8 +4,8 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.ArrayMap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ad.i.d;
-import com.tencent.mm.protocal.protobuf.bx;
+import com.tencent.mm.plugin.sns.ad.j.d;
+import com.tencent.mm.protocal.protobuf.ch;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
@@ -17,21 +17,21 @@ import org.json.JSONObject;
 
 public class b
 {
-  static volatile b JMv;
-  private final Map<String, Integer> JMw;
-  private final Map<String, WeakReference<a>> JMx;
+  static volatile b QgY;
+  private final Map<String, Integer> QgZ;
+  private final Map<String, WeakReference<a>> Qha;
   
   public b()
   {
-    AppMethodBeat.i(218716);
-    this.JMw = new ArrayMap();
-    this.JMx = new ArrayMap();
-    AppMethodBeat.o(218716);
+    AppMethodBeat.i(310370);
+    this.QgZ = new ArrayMap();
+    this.Qha = new ArrayMap();
+    AppMethodBeat.o(310370);
   }
   
-  public static int C(String paramString, List<bx> paramList)
+  public static int I(String paramString, List<ch> paramList)
   {
-    AppMethodBeat.i(218730);
+    AppMethodBeat.i(310427);
     try
     {
       Iterator localIterator = paramList.iterator();
@@ -40,10 +40,10 @@ public class b
         if (!localIterator.hasNext()) {
           break;
         }
-        paramList = (bx)localIterator.next();
-      } while (paramList.tpK != 2);
+        paramList = (ch)localIterator.next();
+      } while (paramList.wuj != 2);
     }
-    catch (Throwable paramString)
+    finally
     {
       for (;;)
       {
@@ -54,20 +54,20 @@ public class b
     }
     if (paramList != null)
     {
-      i = aYM(paramList.data);
+      i = aWU(paramList.data);
       Log.d("SnsAd.LivingStatusManager", "parseAndPutLivingStatus:: the sns id is " + paramString + ", the living status is " + i);
-      fMf().fW(paramString, i);
-      AppMethodBeat.o(218730);
+      hdb().gP(paramString, i);
+      AppMethodBeat.o(310427);
       return i;
     }
     Log.d("SnsAd.LivingStatusManager", "parseAndPutLivingStatus:: the sns id is " + paramString + " and the living item is null!!");
-    AppMethodBeat.o(218730);
+    AppMethodBeat.o(310427);
     return 0;
   }
   
   public static void a(String paramString, a parama)
   {
-    AppMethodBeat.i(218732);
+    AppMethodBeat.i(310441);
     label339:
     label345:
     label352:
@@ -77,11 +77,11 @@ public class b
       int i;
       try
       {
-        localb = fMf();
+        localb = hdb();
         l = SystemClock.elapsedRealtimeNanos();
         if ((parama != null) && (!TextUtils.isEmpty(paramString)))
         {
-          localObject1 = (WeakReference)localb.JMx.get(paramString);
+          localObject1 = (WeakReference)localb.Qha.get(paramString);
           if ((localObject1 == null) || (parama != ((WeakReference)localObject1).get())) {
             break label352;
           }
@@ -89,10 +89,8 @@ public class b
           break label345;
         }
         Log.i("SnsAd.LivingStatusManager", "the input sns id or listener is invalid, or there is same key-value of them.");
-        AppMethodBeat.o(218732);
-        return;
       }
-      catch (Throwable paramString)
+      finally
       {
         b localb;
         long l;
@@ -100,15 +98,15 @@ public class b
         boolean bool;
         Map.Entry localEntry;
         WeakReference localWeakReference;
-        AppMethodBeat.o(218732);
+        AppMethodBeat.o(310441);
         return;
       }
-      bool = d.aC(localb.JMx);
+      bool = d.aT(localb.Qha);
       if (bool)
       {
         try
         {
-          localObject1 = localb.JMx.entrySet().iterator();
+          localObject1 = localb.Qha.entrySet().iterator();
           if (((Iterator)localObject1).hasNext())
           {
             localEntry = (Map.Entry)((Iterator)localObject1).next();
@@ -118,33 +116,33 @@ public class b
             ((Iterator)localObject1).remove();
             continue;
           }
-          if (d.isEmpty(localb.JMx)) {
+          if (d.isEmpty(localb.Qha)) {
             continue;
           }
         }
-        catch (Throwable localThrowable) {}
+        finally {}
       }
       else
       {
-        localObject2 = localb.JMx.entrySet().iterator();
-        if (!((Iterator)localObject2).hasNext()) {
+        localObject3 = localb.Qha.entrySet().iterator();
+        if (!((Iterator)localObject3).hasNext()) {
           break label339;
         }
-        localEntry = (Map.Entry)((Iterator)localObject2).next();
+        localEntry = (Map.Entry)((Iterator)localObject3).next();
         localWeakReference = (WeakReference)localEntry.getValue();
         if ((localWeakReference == null) || (localWeakReference.get() != parama)) {
           continue;
         }
-        localObject2 = (String)localEntry.getKey();
-        if (localObject2 != null) {
-          localb.JMx.remove(localObject2);
+        localObject3 = (String)localEntry.getKey();
+        if (localObject3 != null) {
+          localb.Qha.remove(localObject3);
         }
       }
-      localb.JMx.put(paramString, new WeakReference(parama));
+      localb.Qha.put(paramString, new WeakReference(parama));
       Log.d("SnsAd.LivingStatusManager", "addStatusChangedListener new take times is " + (SystemClock.elapsedRealtimeNanos() - l) + "ns");
-      AppMethodBeat.o(218732);
+      AppMethodBeat.o(310441);
       return;
-      Object localObject2 = null;
+      Object localObject3 = null;
       continue;
       for (;;)
       {
@@ -157,48 +155,28 @@ public class b
     }
   }
   
-  private static int aYM(String paramString)
+  private static int aWU(String paramString)
   {
-    AppMethodBeat.i(218724);
+    AppMethodBeat.i(310393);
     try
     {
       int i = new JSONObject(paramString).optInt("liveStatus", 0);
-      AppMethodBeat.o(218724);
       return i;
     }
-    catch (Throwable paramString)
+    finally
     {
-      AppMethodBeat.o(218724);
+      AppMethodBeat.o(310393);
     }
     return 0;
   }
   
-  private static b fMf()
+  private void gP(String paramString, int paramInt)
   {
-    AppMethodBeat.i(218720);
-    if (JMv == null) {}
-    try
-    {
-      if (JMv == null) {
-        JMv = new b();
-      }
-      b localb = JMv;
-      AppMethodBeat.o(218720);
-      return localb;
-    }
-    finally
-    {
-      AppMethodBeat.o(218720);
-    }
-  }
-  
-  private void fW(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(218723);
-    Integer localInteger = (Integer)this.JMw.put(paramString, Integer.valueOf(paramInt));
+    AppMethodBeat.i(310386);
+    Integer localInteger = (Integer)this.QgZ.put(paramString, Integer.valueOf(paramInt));
     if ((localInteger == null) || (!localInteger.equals(Integer.valueOf(paramInt))))
     {
-      Object localObject = (WeakReference)this.JMx.get(paramString);
+      Object localObject = (WeakReference)this.Qha.get(paramString);
       if (localObject != null)
       {
         localObject = (a)((WeakReference)localObject).get();
@@ -207,19 +185,19 @@ public class b
           if (localInteger != null) {
             localInteger.intValue();
           }
-          ((a)localObject).fZ(paramString, paramInt);
+          ((a)localObject).gS(paramString, paramInt);
         }
       }
     }
-    AppMethodBeat.o(218723);
+    AppMethodBeat.o(310386);
   }
   
-  public static int fX(String paramString, int paramInt)
+  public static int gQ(String paramString, int paramInt)
   {
-    AppMethodBeat.i(218726);
+    AppMethodBeat.i(310403);
     try
     {
-      paramString = (Integer)fMf().JMw.get(paramString);
+      paramString = (Integer)hdb().QgZ.get(paramString);
       int i;
       int j;
       if (paramString != null)
@@ -236,7 +214,6 @@ public class b
       }
       for (;;)
       {
-        AppMethodBeat.o(218726);
         return j;
         i = 0;
         break;
@@ -248,37 +225,55 @@ public class b
       }
       return 0;
     }
-    catch (Throwable paramString)
+    finally
     {
-      AppMethodBeat.o(218726);
+      AppMethodBeat.o(310403);
     }
   }
   
-  public static void fY(String paramString, int paramInt)
+  public static void gR(String paramString, int paramInt)
   {
-    AppMethodBeat.i(218727);
+    AppMethodBeat.i(310413);
     try
     {
       if (!TextUtils.isEmpty(paramString)) {
-        fMf().fW(paramString, paramInt);
+        hdb().gP(paramString, paramInt);
       }
-      AppMethodBeat.o(218727);
       return;
     }
-    catch (Throwable paramString)
+    finally
     {
-      AppMethodBeat.o(218727);
+      AppMethodBeat.o(310413);
+    }
+  }
+  
+  private static b hdb()
+  {
+    AppMethodBeat.i(310379);
+    if (QgY == null) {}
+    try
+    {
+      if (QgY == null) {
+        QgY = new b();
+      }
+      b localb = QgY;
+      AppMethodBeat.o(310379);
+      return localb;
+    }
+    finally
+    {
+      AppMethodBeat.o(310379);
     }
   }
   
   public static abstract interface a
   {
-    public abstract void fZ(String paramString, int paramInt);
+    public abstract void gS(String paramString, int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.widget.living.b
  * JD-Core Version:    0.7.0.1
  */

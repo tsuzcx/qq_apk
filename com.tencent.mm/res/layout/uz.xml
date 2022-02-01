@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/m" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@color/r" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.collect.ui.CollectPullDownView android:id="@id/b6e" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ListView android:id="@id/b6c" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/aij" android:cacheColorHint="#00000000" android:divider="@color/m" android:dividerHeight="@dimen/ib" android:headerDividersEnabled="false" android:footerDividersEnabled="true" android:overScrollMode="never" />
-        <LinearLayout android:gravity="center_horizontal" android:id="@id/b6a" android:background="@color/afz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <TextView android:textSize="14.0dip" android:textColor="@color/a2t" android:id="@id/b6b" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:text="@string/b6_" />
+    <com.tencent.mm.plugin.collect.ui.CollectPullDownView android:id="@id/bgz" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ListView android:id="@id/bgx" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/ah8" android:cacheColorHint="#00000000" android:divider="@color/r" android:dividerHeight="@dimen/iq" android:headerDividersEnabled="false" android:footerDividersEnabled="true" android:overScrollMode="never" />
+        <LinearLayout android:gravity="center_horizontal" android:id="@id/bgv" android:background="@color/al2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="14.0dip" android:textColor="@color/a78" android:id="@id/bgw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:text="@string/bfx" />
         </LinearLayout>
     </com.tencent.mm.plugin.collect.ui.CollectPullDownView>
 </LinearLayout>

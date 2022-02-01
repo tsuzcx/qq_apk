@@ -4,13 +4,11 @@ import android.graphics.Point;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 import java.util.ArrayList;
 import java.util.List;
 
-@Keep
 public class GeoPoint
   implements Parcelable
 {
@@ -21,7 +19,21 @@ public class GeoPoint
   static
   {
     AppMethodBeat.i(180746);
-    CREATOR = new Parcelable.Creator() {};
+    CREATOR = new Parcelable.Creator()
+    {
+      private static GeoPoint a(Parcel paramAnonymousParcel)
+      {
+        AppMethodBeat.i(210902);
+        paramAnonymousParcel = new GeoPoint(paramAnonymousParcel, null);
+        AppMethodBeat.o(210902);
+        return paramAnonymousParcel;
+      }
+      
+      private static GeoPoint[] a(int paramAnonymousInt)
+      {
+        return new GeoPoint[paramAnonymousInt];
+      }
+    };
     AppMethodBeat.o(180746);
   }
   
@@ -54,10 +66,10 @@ public class GeoPoint
   
   public GeoPoint(LatLng paramLatLng)
   {
-    AppMethodBeat.i(235942);
+    AppMethodBeat.i(210948);
     this.mLatitudeE6 = ((int)(paramLatLng.latitude * 1000000.0D));
     this.mLongitudeE6 = ((int)(paramLatLng.longitude * 1000000.0D));
-    AppMethodBeat.o(235942);
+    AppMethodBeat.o(210948);
   }
   
   public static GeoPoint formString(String paramString)
@@ -85,25 +97,25 @@ public class GeoPoint
   
   public static GeoPoint from(LatLng paramLatLng)
   {
-    AppMethodBeat.i(235944);
+    AppMethodBeat.i(210952);
     if (paramLatLng == null)
     {
-      AppMethodBeat.o(235944);
+      AppMethodBeat.o(210952);
       return null;
     }
     paramLatLng = new GeoPoint(paramLatLng);
-    AppMethodBeat.o(235944);
+    AppMethodBeat.o(210952);
     return paramLatLng;
   }
   
   public static List<GeoPoint> from(List<LatLng> paramList)
   {
     int i = 0;
-    AppMethodBeat.i(235946);
+    AppMethodBeat.i(210958);
     if ((paramList == null) || (paramList.isEmpty()))
     {
       paramList = new ArrayList(0);
-      AppMethodBeat.o(235946);
+      AppMethodBeat.o(210958);
       return paramList;
     }
     int j = paramList.size();
@@ -116,7 +128,7 @@ public class GeoPoint
       }
       i += 1;
     }
-    AppMethodBeat.o(235946);
+    AppMethodBeat.o(210958);
     return localArrayList;
   }
   
@@ -182,9 +194,9 @@ public class GeoPoint
   
   public Point toPoint()
   {
-    AppMethodBeat.i(235966);
+    AppMethodBeat.i(211011);
     Point localPoint = new Point(getLongitudeE6(), getLatitudeE6());
-    AppMethodBeat.o(235966);
+    AppMethodBeat.o(211011);
     return localPoint;
   }
   
@@ -206,7 +218,7 @@ public class GeoPoint
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.map.lib.models.GeoPoint
  * JD-Core Version:    0.7.0.1
  */

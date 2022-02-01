@@ -3,9 +3,8 @@ package com.tencent.mm.plugin.expt.hellhound.core.b.b;
 import android.app.Activity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.e;
+import androidx.fragment.app.FragmentManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.expt.hellhound.a.b.b.k;
 import com.tencent.mm.plugin.expt.hellhound.core.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.reflect.Method;
@@ -14,26 +13,10 @@ import java.util.List;
 
 public final class h
 {
-  static String KD(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return "-1";
-    case 0: 
-      return "ff000001";
-    case 1: 
-      return "ff000002";
-    case 2: 
-      return "ff000003";
-    }
-    return "ff000004";
-  }
-  
   private static Fragment a(int paramInt, List<Fragment> paramList, FragmentActivity paramFragmentActivity)
   {
-    Fragment localFragment = null;
-    AppMethodBeat.i(250882);
+    Object localObject = null;
+    AppMethodBeat.i(299982);
     int i;
     if ((paramList != null) && (!paramList.isEmpty()))
     {
@@ -42,18 +25,18 @@ public final class h
     }
     else
     {
-      AppMethodBeat.o(250882);
+      AppMethodBeat.o(299982);
       return null;
     }
     if ((paramInt < 0) || (paramInt >= i))
     {
-      AppMethodBeat.o(250882);
+      AppMethodBeat.o(299982);
       return null;
     }
     switch (paramInt)
     {
     default: 
-      if (localFragment != null) {
+      if (localObject != null) {
         break;
       }
     }
@@ -61,95 +44,92 @@ public final class h
     {
       try
       {
-        localFragment = (Fragment)paramList.get(paramInt);
-        Log.i("HABBYGE-MALI.FragmentUtil", "getCurFragmentOfLauncherUI-1: %s", new Object[] { localFragment.getClass().getCanonicalName() });
-        AppMethodBeat.o(250882);
-        return localFragment;
-        localFragment = q(b.weS, paramList);
+        localObject = (Fragment)paramList.get(paramInt);
+        Log.i("HABBYGE-MALI.FragmentUtil", "getCurFragmentOfLauncherUI-1: %s", new Object[] { localObject.getClass().getCanonicalName() });
+        AppMethodBeat.o(299982);
+        return localObject;
+        localObject = w(b.zAQ, paramList);
         break;
-        localFragment = q(b.weT, paramList);
+        Fragment localFragment = w(b.zAS, paramList);
+        localObject = localFragment;
+        if (localFragment != null) {
+          break;
+        }
+        localObject = w(b.zAR, paramList);
         break;
-        localFragment = q(b.weU, paramList);
+        localObject = w(b.zAT, paramList);
         break;
-        localFragment = q(b.weV, paramList);
+        localObject = w(b.zAU, paramList);
         break;
-        localFragment = q(b.weW, paramList);
+        localObject = w(b.zAV, paramList);
       }
       catch (Exception paramList)
       {
-        localFragment = d(paramFragmentActivity);
-        Log.i("HABBYGE-MALI.FragmentUtil", "getCurFragmentOfLauncherUI-2: %s", new Object[] { localFragment.getClass().getCanonicalName() });
+        localObject = c(paramFragmentActivity);
+        Log.i("HABBYGE-MALI.FragmentUtil", "getCurFragmentOfLauncherUI-2: %s", new Object[] { localObject.getClass().getCanonicalName() });
         continue;
       }
-      Log.i("HABBYGE-MALI.FragmentUtil", "_getFragmentByIndex: %s", new Object[] { localFragment.getClass().getCanonicalName() });
+      Log.i("HABBYGE-MALI.FragmentUtil", "_getFragmentByIndex: %s", new Object[] { localObject.getClass().getCanonicalName() });
     }
   }
   
   public static Fragment a(FragmentActivity paramFragmentActivity, int paramInt)
   {
-    AppMethodBeat.i(250876);
-    List localList = c(paramFragmentActivity);
+    AppMethodBeat.i(299964);
+    List localList = b(paramFragmentActivity);
     if ((localList == null) || (localList.isEmpty()) || (paramInt < 0) || (paramInt >= localList.size()))
     {
-      AppMethodBeat.o(250876);
+      AppMethodBeat.o(299964);
       return null;
     }
     paramFragmentActivity = a(paramInt, localList, paramFragmentActivity);
-    AppMethodBeat.o(250876);
+    AppMethodBeat.o(299964);
     return paramFragmentActivity;
   }
   
-  public static Fragment ab(Activity paramActivity)
+  public static Fragment ak(Activity paramActivity)
   {
-    AppMethodBeat.i(250884);
+    AppMethodBeat.i(299991);
     if (paramActivity == null)
     {
-      AppMethodBeat.o(250884);
+      AppMethodBeat.o(299991);
       return null;
     }
-    paramActivity = axm(paramActivity.getClass().getCanonicalName());
-    AppMethodBeat.o(250884);
+    paramActivity = arq(paramActivity.getClass().getCanonicalName());
+    AppMethodBeat.o(299991);
     return paramActivity;
   }
   
-  public static Fragment ac(Activity paramActivity)
+  public static Fragment arp(String paramString)
   {
-    AppMethodBeat.i(250889);
-    paramActivity = k.ac(paramActivity);
-    AppMethodBeat.o(250889);
-    return paramActivity;
-  }
-  
-  public static Fragment axl(String paramString)
-  {
-    AppMethodBeat.i(250874);
+    AppMethodBeat.i(299948);
     if (paramString == null)
     {
-      AppMethodBeat.o(250874);
+      AppMethodBeat.o(299948);
       return null;
     }
-    FragmentActivity localFragmentActivity = b.dcs();
+    FragmentActivity localFragmentActivity = b.dIW();
     if (localFragmentActivity == null)
     {
-      AppMethodBeat.o(250874);
+      AppMethodBeat.o(299948);
       return null;
     }
     paramString = c(localFragmentActivity, paramString);
-    AppMethodBeat.o(250874);
+    AppMethodBeat.o(299948);
     return paramString;
   }
   
-  public static Fragment axm(String paramString)
+  public static Fragment arq(String paramString)
   {
-    AppMethodBeat.i(250879);
+    AppMethodBeat.i(299974);
     if (paramString == null)
     {
-      AppMethodBeat.o(250879);
+      AppMethodBeat.o(299974);
       return null;
     }
-    if (!b.awy(paramString))
+    if (!b.aqC(paramString))
     {
-      AppMethodBeat.o(250879);
+      AppMethodBeat.o(299974);
       return null;
     }
     try
@@ -158,98 +138,62 @@ public final class h
       paramString.setAccessible(true);
       int i = ((Integer)paramString.invoke(null, new Object[0])).intValue();
       Log.i("HABBYGE-MALI.FragmentUtil", "getCurFragmentOfLauncherUI, index: %d", new Object[] { Integer.valueOf(i) });
-      paramString = b.dcs();
+      paramString = b.dIW();
       if (paramString == null)
       {
-        AppMethodBeat.o(250879);
+        AppMethodBeat.o(299974);
         return null;
       }
       if (i <= 0)
       {
-        paramString = d(paramString);
-        AppMethodBeat.o(250879);
+        paramString = c(paramString);
+        AppMethodBeat.o(299974);
         return paramString;
       }
       List localList = paramString.getSupportFragmentManager().getFragments();
       if (localList == null)
       {
         Log.e("HABBYGE-MALI.FragmentUtil", "getCurFragmentOfLauncherUI, fragmentList NULL");
-        AppMethodBeat.o(250879);
+        AppMethodBeat.o(299974);
         return null;
       }
       paramString = a(i, localList, paramString);
-      AppMethodBeat.o(250879);
+      AppMethodBeat.o(299974);
       return paramString;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(250879);
+      AppMethodBeat.o(299974);
     }
     return null;
   }
   
-  public static Fragment c(FragmentActivity paramFragmentActivity, String paramString)
+  public static List<Fragment> b(FragmentActivity paramFragmentActivity)
   {
-    AppMethodBeat.i(250875);
-    if ((paramFragmentActivity == null) || (paramString == null))
+    AppMethodBeat.i(299942);
+    if (paramFragmentActivity == null)
     {
-      AppMethodBeat.o(250875);
+      AppMethodBeat.o(299942);
       return null;
     }
     paramFragmentActivity = paramFragmentActivity.getSupportFragmentManager();
     if (paramFragmentActivity == null)
     {
-      AppMethodBeat.o(250875);
+      AppMethodBeat.o(299942);
       return null;
     }
     paramFragmentActivity = paramFragmentActivity.getFragments();
-    if (paramFragmentActivity == null)
-    {
-      AppMethodBeat.o(250875);
-      return null;
-    }
-    Iterator localIterator = paramFragmentActivity.iterator();
-    do
-    {
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      paramFragmentActivity = (Fragment)localIterator.next();
-    } while ((paramFragmentActivity == null) || (!paramString.equals(paramFragmentActivity.getClass().getCanonicalName())));
-    for (;;)
-    {
-      AppMethodBeat.o(250875);
-      return paramFragmentActivity;
-      paramFragmentActivity = null;
-    }
-  }
-  
-  public static List<Fragment> c(FragmentActivity paramFragmentActivity)
-  {
-    AppMethodBeat.i(250873);
-    if (paramFragmentActivity == null)
-    {
-      AppMethodBeat.o(250873);
-      return null;
-    }
-    paramFragmentActivity = paramFragmentActivity.getSupportFragmentManager();
-    if (paramFragmentActivity == null)
-    {
-      AppMethodBeat.o(250873);
-      return null;
-    }
-    paramFragmentActivity = paramFragmentActivity.getFragments();
-    AppMethodBeat.o(250873);
+    AppMethodBeat.o(299942);
     return paramFragmentActivity;
   }
   
-  private static Fragment d(FragmentActivity paramFragmentActivity)
+  private static Fragment c(FragmentActivity paramFragmentActivity)
   {
     Object localObject2 = null;
-    AppMethodBeat.i(250885);
+    AppMethodBeat.i(299999);
     if (paramFragmentActivity == null)
     {
-      AppMethodBeat.o(250885);
+      AppMethodBeat.o(299999);
       return null;
     }
     Iterator localIterator;
@@ -266,7 +210,7 @@ public final class h
       if (paramFragmentActivity == null)
       {
         Log.e("HABBYGE-MALI.FragmentUtil", "getCurFragment, FragmentManager: NULL");
-        AppMethodBeat.o(250885);
+        AppMethodBeat.o(299999);
         return null;
       }
     }
@@ -285,7 +229,7 @@ public final class h
     paramFragmentActivity = localObject2;
     for (;;)
     {
-      AppMethodBeat.o(250885);
+      AppMethodBeat.o(299999);
       return paramFragmentActivity;
       label129:
       Log.i("HABBYGE-MALI.FragmentUtil", "_getCurrentFragmentFromSystem, fragmentList: %d", new Object[] { Integer.valueOf(paramFragmentActivity.size()) });
@@ -293,7 +237,7 @@ public final class h
       while (localIterator.hasNext())
       {
         paramFragmentActivity = (Fragment)localIterator.next();
-        if ((paramFragmentActivity != null) && (paramFragmentActivity.isAdded()) && (f(paramFragmentActivity).booleanValue())) {
+        if ((paramFragmentActivity != null) && (paramFragmentActivity.isAdded()) && (v(paramFragmentActivity).booleanValue())) {
           Log.i("HABBYGE-MALI.FragmentUtil", "_getCurrentFragmentFromSystem: %s", new Object[] { paramFragmentActivity.getClass().getCanonicalName() });
         }
       }
@@ -307,54 +251,118 @@ public final class h
     }
   }
   
-  public static Fragment ddc()
+  public static Fragment c(FragmentActivity paramFragmentActivity, String paramString)
   {
-    AppMethodBeat.i(250888);
-    Fragment localFragment = k.ddc();
-    AppMethodBeat.o(250888);
-    return localFragment;
+    AppMethodBeat.i(299956);
+    if ((paramFragmentActivity == null) || (paramString == null))
+    {
+      AppMethodBeat.o(299956);
+      return null;
+    }
+    paramFragmentActivity = paramFragmentActivity.getSupportFragmentManager();
+    if (paramFragmentActivity == null)
+    {
+      AppMethodBeat.o(299956);
+      return null;
+    }
+    paramFragmentActivity = paramFragmentActivity.getFragments();
+    if (paramFragmentActivity == null)
+    {
+      AppMethodBeat.o(299956);
+      return null;
+    }
+    Iterator localIterator = paramFragmentActivity.iterator();
+    do
+    {
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      paramFragmentActivity = (Fragment)localIterator.next();
+    } while ((paramFragmentActivity == null) || (!paramString.equals(paramFragmentActivity.getClass().getCanonicalName())));
+    for (;;)
+    {
+      AppMethodBeat.o(299956);
+      return paramFragmentActivity;
+      paramFragmentActivity = null;
+    }
   }
   
-  private static Boolean f(Fragment paramFragment)
+  public static Fragment d(FragmentActivity paramFragmentActivity)
   {
-    AppMethodBeat.i(250886);
+    AppMethodBeat.i(300013);
+    if (paramFragmentActivity == null)
+    {
+      AppMethodBeat.o(300013);
+      return null;
+    }
+    if (!b.aqC(paramFragmentActivity.getClass().getCanonicalName()))
+    {
+      AppMethodBeat.o(300013);
+      return null;
+    }
+    for (;;)
+    {
+      try
+      {
+        Method localMethod = Class.forName(paramFragmentActivity.getClass().getCanonicalName()).getDeclaredMethod("getMainTabCurFragment", new Class[0]);
+        localMethod.setAccessible(true);
+        paramFragmentActivity = localMethod.invoke(paramFragmentActivity, new Object[0]);
+        if ((paramFragmentActivity != null) && ((paramFragmentActivity instanceof Fragment)))
+        {
+          paramFragmentActivity = (Fragment)paramFragmentActivity;
+          AppMethodBeat.o(300013);
+          return paramFragmentActivity;
+        }
+      }
+      catch (Exception paramFragmentActivity)
+      {
+        AppMethodBeat.o(300013);
+        return null;
+      }
+      paramFragmentActivity = null;
+    }
+  }
+  
+  private static Boolean v(Fragment paramFragment)
+  {
+    AppMethodBeat.i(300005);
     try
     {
       Method localMethod = Fragment.class.getDeclaredMethod("isMenuVisible", new Class[0]);
       localMethod.setAccessible(true);
       paramFragment = (Boolean)localMethod.invoke(paramFragment, new Object[0]);
-      AppMethodBeat.o(250886);
+      AppMethodBeat.o(300005);
       return paramFragment;
     }
-    catch (Throwable paramFragment)
+    finally
     {
       Log.printErrStackTrace("HABBYGE-MALI.FragmentUtil", paramFragment, "isMenuVisible", new Object[0]);
       paramFragment = Boolean.FALSE;
-      AppMethodBeat.o(250886);
+      AppMethodBeat.o(300005);
     }
     return paramFragment;
   }
   
-  private static Fragment q(String paramString, List<Fragment> paramList)
+  private static Fragment w(String paramString, List<Fragment> paramList)
   {
-    AppMethodBeat.i(250883);
+    AppMethodBeat.i(299986);
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       Fragment localFragment = (Fragment)paramList.next();
       if ((localFragment != null) && (paramString.equals(localFragment.getClass().getCanonicalName())))
       {
-        AppMethodBeat.o(250883);
+        AppMethodBeat.o(299986);
         return localFragment;
       }
     }
-    AppMethodBeat.o(250883);
+    AppMethodBeat.o(299986);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.b.b.h
  * JD-Core Version:    0.7.0.1
  */

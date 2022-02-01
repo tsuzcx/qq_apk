@@ -6,31 +6,31 @@ import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.model.y;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/audio/PluginAudio;", "Lcom/tencent/mm/kernel/plugin/Plugin;", "Lcom/tencent/mm/plugin/audio/api/IPluginAudio;", "()V", "configure", "", "profile", "Lcom/tencent/mm/kernel/plugin/ProcessProfile;", "execute", "name", "", "Companion", "plugin-audio_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/audio/PluginAudio;", "Lcom/tencent/mm/kernel/plugin/Plugin;", "Lcom/tencent/mm/plugin/audio/api/IPluginAudio;", "()V", "configure", "", "profile", "Lcom/tencent/mm/kernel/plugin/ProcessProfile;", "execute", "name", "", "Companion", "plugin-audio_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class PluginAudio
   extends f
   implements com.tencent.mm.plugin.audio.a.a
 {
-  public static final a rJr;
+  public static final a uUI;
   
   static
   {
-    AppMethodBeat.i(257704);
-    rJr = new a((byte)0);
-    AppMethodBeat.o(257704);
+    AppMethodBeat.i(263728);
+    uUI = new a((byte)0);
+    AppMethodBeat.o(263728);
   }
   
   public final void configure(g paramg)
   {
-    AppMethodBeat.i(257702);
-    if ((paramg != null) && (paramg.aIE()))
+    AppMethodBeat.i(263745);
+    if ((paramg != null) && (paramg.bbA()))
     {
       Log.i("MicroMsg.PluginAudio", "PluginAudio configure");
       pin((c)new y(com.tencent.mm.plugin.audio.c.a.class));
     }
-    AppMethodBeat.o(257702);
+    AppMethodBeat.o(263745);
   }
   
   public final void execute(g paramg) {}
@@ -40,7 +40,7 @@ public final class PluginAudio
     return "plugin-audio";
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/audio/PluginAudio$Companion;", "", "()V", "TAG", "", "plugin-audio_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/audio/PluginAudio$Companion;", "", "()V", "TAG", "", "plugin-audio_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

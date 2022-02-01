@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.sns.data;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cvt;
+import com.tencent.mm.protocal.protobuf.dmz;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class p
 {
-  public int JRn;
-  public String fIY;
-  public List<cvt> list;
+  public int QnY;
+  public String hOG;
+  public List<dmz> list;
   
   public p()
   {
@@ -18,15 +18,15 @@ public final class p
     AppMethodBeat.o(95086);
   }
   
-  public p(cvt paramcvt)
+  public p(dmz paramdmz)
   {
     AppMethodBeat.i(95087);
     this.list = new LinkedList();
-    this.list.add(paramcvt);
+    this.list.add(paramdmz);
     AppMethodBeat.o(95087);
   }
   
-  public p(List<cvt> paramList)
+  public p(List<dmz> paramList)
   {
     AppMethodBeat.i(95088);
     this.list = new LinkedList();
@@ -36,7 +36,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.data.p
  * JD-Core Version:    0.7.0.1
  */

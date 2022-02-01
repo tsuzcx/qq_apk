@@ -20,25 +20,25 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
-import com.tencent.mm.ui.base.q.g;
-import com.tencent.mm.ui.tools.m;
-import com.tencent.mm.ui.widget.a.e.b;
+import com.tencent.mm.ui.base.u.i;
+import com.tencent.mm.ui.tools.l;
+import com.tencent.mm.ui.widget.a.f.b;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public class j
-  extends bs<g>
+  extends bw<g>
 {
-  private com.tencent.luggage.d.b<g>.a PSb;
+  private com.tencent.luggage.d.b<g>.a WIy;
   private MMActivity activity;
-  private MMActivity.a orh;
+  private MMActivity.a rvb;
   
   public j()
   {
     AppMethodBeat.i(78532);
-    this.orh = new MMActivity.a()
+    this.rvb = new MMActivity.a()
     {
-      public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
+      public final void mmOnActivityResult(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(78531);
         if (paramAnonymousInt1 == (j.this.hashCode() & 0xFFFF)) {
@@ -77,7 +77,7 @@ public class j
             AppMethodBeat.o(78531);
             return;
           }
-          Object localObject2 = com.tencent.mm.plugin.webview.luggage.c.c.bkw((String)localObject1);
+          Object localObject2 = com.tencent.mm.plugin.webview.luggage.c.c.bkh((String)localObject1);
           if ((localObject2 != null) && ((localObject2 instanceof WebViewJSSDKVideoItem)))
           {
             localObject2 = (WebViewJSSDKVideoItem)localObject2;
@@ -118,67 +118,65 @@ public class j
     AppMethodBeat.o(78532);
   }
   
-  private void bl(Intent paramIntent)
+  private void bL(Intent paramIntent)
   {
     AppMethodBeat.i(78535);
     Log.i("MicroMsg.JsApiChooseMedia", "chooseMediaFromAlbum");
     paramIntent.putExtra("key_pick_local_pic_capture", 4096);
-    this.activity.mmSetOnActivityResultCallback(this.orh);
-    com.tencent.mm.by.c.a(this.activity, "webview", ".ui.tools.OpenFileChooserUI", paramIntent, 0xFFFF & hashCode(), false);
+    this.activity.mmSetOnActivityResultCallback(this.rvb);
+    com.tencent.mm.br.c.a(this.activity, "webview", ".ui.tools.OpenFileChooserUI", paramIntent, 0xFFFF & hashCode(), false);
     AppMethodBeat.o(78535);
   }
   
   private void e(String paramString, HashMap<String, Object> paramHashMap)
   {
     AppMethodBeat.i(78536);
-    if (this.PSb != null) {
-      this.PSb.d(paramString, paramHashMap);
+    if (this.WIy != null) {
+      this.WIy.d(paramString, paramHashMap);
     }
-    this.PSb = null;
+    this.WIy = null;
     this.activity = null;
     AppMethodBeat.o(78536);
   }
   
-  private void f(String paramString, Intent paramIntent)
+  private void g(String paramString, Intent paramIntent)
   {
     AppMethodBeat.i(78534);
     Log.i("MicroMsg.JsApiChooseMedia", "chooseMediaFromCamera");
+    boolean bool = com.tencent.mm.pluginsdk.permission.b.a(this.activity, "android.permission.CAMERA", 119, "");
+    Log.i("MicroMsg.JsApiChooseMedia", " checkPermission checkcamera[%b]", new Object[] { Boolean.valueOf(bool) });
+    if (!bool)
+    {
+      e("no_user_permission", null);
+      AppMethodBeat.o(78534);
+      return;
+    }
     if (paramString.equals("front")) {}
     for (int i = 16;; i = 256)
     {
       paramIntent.putExtra("key_pick_local_pic_capture", i);
-      this.activity.mmSetOnActivityResultCallback(this.orh);
-      com.tencent.mm.by.c.a(this.activity, "webview", ".ui.tools.OpenFileChooserUI", paramIntent, 0xFFFF & hashCode(), false);
+      this.activity.mmSetOnActivityResultCallback(this.rvb);
+      com.tencent.mm.br.c.a(this.activity, "webview", ".ui.tools.OpenFileChooserUI", paramIntent, 0xFFFF & hashCode(), false);
       AppMethodBeat.o(78534);
       return;
     }
   }
   
-  public final void a(Context paramContext, String paramString, br.a parama) {}
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
   
   public final void b(com.tencent.luggage.d.b<g>.a paramb)
   {
     AppMethodBeat.i(78533);
     Log.i("MicroMsg.JsApiChooseMedia", "invoke");
-    this.activity = ((MMActivity)((g)paramb.crg).mContext);
-    this.PSb = paramb;
+    this.activity = ((MMActivity)((g)paramb.eiY).mContext);
+    this.WIy = paramb;
     if (this.activity == null)
     {
       e("fail", null);
       AppMethodBeat.o(78533);
       return;
     }
-    Object localObject = paramb.crh.cqn;
-    boolean bool1 = com.tencent.mm.pluginsdk.permission.b.a(this.activity, "android.permission.CAMERA", 119, "", "");
-    Log.i("MicroMsg.JsApiChooseMedia", " checkPermission checkcamera[%b]", new Object[] { Boolean.valueOf(bool1) });
-    boolean bool2 = com.tencent.mm.pluginsdk.permission.b.a(this.activity, "android.permission.RECORD_AUDIO", 120, "", "");
-    Log.i("MicroMsg.JsApiChooseMedia", " checkPermission checkMicroPhone[%b]", new Object[] { Boolean.valueOf(bool2) });
-    if ((!bool2) || (!bool1))
-    {
-      e("no_user_permission", null);
-      AppMethodBeat.o(78533);
-      return;
-    }
+    Object localObject = paramb.eiZ.eif;
     String str1 = Util.nullAsNil(((JSONObject)localObject).optString("sourceType"));
     paramb = ((JSONObject)localObject).optString("mediaType", "");
     int j = Math.min(((JSONObject)localObject).optInt("maxDuration", 10), 10);
@@ -196,16 +194,17 @@ public class j
     localIntent.putExtra("query_media_type", 3);
     localIntent.putExtra("key_pick_local_media_video_type", 2);
     localIntent.putExtra("key_pick_local_media_sight_type", paramb);
+    boolean bool;
     if ((str3.contains("original") ^ str3.contains("compressed")))
     {
       i = 7;
       localIntent.putExtra("key_pick_local_pic_query_source_type", i);
       if (!str3.contains("compressed")) {
-        break label509;
+        break label414;
       }
-      bool1 = false;
-      label377:
-      localObject = Boolean.valueOf(bool1);
+      bool = false;
+      label282:
+      localObject = Boolean.valueOf(bool);
       paramb = (com.tencent.luggage.d.b<g>.a)localObject;
       if (!str3.contains("original"))
       {
@@ -216,15 +215,16 @@ public class j
       }
       localIntent.putExtra("key_pick_local_pic_send_raw", paramb);
       if (!Util.isNullOrNil(str1)) {
-        break label574;
+        break label479;
       }
     }
-    label574:
+    label414:
+    label479:
     for (paramb = "album|camera";; paramb = str1)
     {
       if ((paramb.contains("album")) && (paramb.contains("camera")))
       {
-        new m(this.activity).a(null, new View.OnCreateContextMenuListener()new q.g
+        new l(this.activity).a(null, new View.OnCreateContextMenuListener()new u.i
         {
           public final void onCreateContextMenu(ContextMenu paramAnonymousContextMenu, View paramAnonymousView, ContextMenu.ContextMenuInfo paramAnonymousContextMenuInfo)
           {
@@ -233,7 +233,7 @@ public class j
             paramAnonymousContextMenu.add(0, 2, 1, j.a(j.this).getString(c.i.app_field_select_new_pic));
             AppMethodBeat.o(78528);
           }
-        }, new q.g()new e.b
+        }, new u.i()new f.b
         {
           public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
           {
@@ -251,7 +251,7 @@ public class j
               j.a(j.this, localIntent);
             }
           }
-        }, new e.b()
+        }, new f.b()
         {
           public final void onDismiss()
           {
@@ -264,19 +264,18 @@ public class j
         return;
         i = 8;
         break;
-        label509:
-        bool1 = true;
-        break label377;
+        bool = true;
+        break label282;
       }
       if (paramb.contains("album"))
       {
-        bl(localIntent);
+        bL(localIntent);
         AppMethodBeat.o(78533);
         return;
       }
       if (paramb.contains("camera"))
       {
-        f(str2, localIntent);
+        g(str2, localIntent);
         AppMethodBeat.o(78533);
         return;
       }
@@ -286,7 +285,7 @@ public class j
     }
   }
   
-  public final int cDj()
+  public final int dgI()
   {
     return 0;
   }

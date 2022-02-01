@@ -11,14 +11,14 @@ final class JsApiAddToFavorites$IPCFavRequest
 {
   public static final Parcelable.Creator<IPCFavRequest> CREATOR;
   String appId;
-  int cBU;
-  String fXg;
-  String fve;
+  int euz;
+  String hzy;
   String iconUrl;
-  int nYp;
-  String otD;
-  int otE;
-  boolean otF;
+  String idf;
+  int nOX;
+  String rxr;
+  int rxs;
+  boolean rxt;
   int scene;
   int subType;
   String title;
@@ -27,47 +27,37 @@ final class JsApiAddToFavorites$IPCFavRequest
   
   static
   {
-    AppMethodBeat.i(276402);
+    AppMethodBeat.i(325615);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(276402);
+    AppMethodBeat.o(325615);
   }
   
   protected JsApiAddToFavorites$IPCFavRequest() {}
   
   protected JsApiAddToFavorites$IPCFavRequest(Parcel paramParcel)
   {
-    AppMethodBeat.i(276399);
+    AppMethodBeat.i(325610);
     this.username = paramParcel.readString();
     this.appId = paramParcel.readString();
-    this.fve = paramParcel.readString();
+    this.hzy = paramParcel.readString();
     this.iconUrl = paramParcel.readString();
     this.version = paramParcel.readInt();
-    this.cBU = paramParcel.readInt();
+    this.euz = paramParcel.readInt();
     this.title = paramParcel.readString();
-    this.otD = paramParcel.readString();
-    this.otE = paramParcel.readInt();
-    this.nYp = paramParcel.readInt();
+    this.rxr = paramParcel.readString();
+    this.rxs = paramParcel.readInt();
+    this.nOX = paramParcel.readInt();
     this.scene = paramParcel.readInt();
-    this.fXg = paramParcel.readString();
+    this.idf = paramParcel.readString();
     this.subType = paramParcel.readInt();
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.otF = bool;
-      AppMethodBeat.o(276399);
+      this.rxt = bool;
+      AppMethodBeat.o(325610);
       return;
       bool = false;
     }
-  }
-  
-  public final Class<? extends AppBrandProxyUIProcessTask> bOe()
-  {
-    return JsApiAddToFavorites.a.class;
-  }
-  
-  public final boolean bPq()
-  {
-    return this.otF;
   }
   
   public final int describeContents()
@@ -75,34 +65,44 @@ final class JsApiAddToFavorites$IPCFavRequest
     return 0;
   }
   
+  public final Class<? extends AppBrandProxyUIProcessTask> getTaskClass()
+  {
+    return JsApiAddToFavorites.a.class;
+  }
+  
+  public final boolean useLandscape()
+  {
+    return this.rxt;
+  }
+  
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(276400);
+    AppMethodBeat.i(325622);
     paramParcel.writeString(this.username);
     paramParcel.writeString(this.appId);
-    paramParcel.writeString(this.fve);
+    paramParcel.writeString(this.hzy);
     paramParcel.writeString(this.iconUrl);
     paramParcel.writeInt(this.version);
-    paramParcel.writeInt(this.cBU);
+    paramParcel.writeInt(this.euz);
     paramParcel.writeString(this.title);
-    paramParcel.writeString(this.otD);
-    paramParcel.writeInt(this.otE);
-    paramParcel.writeInt(this.nYp);
+    paramParcel.writeString(this.rxr);
+    paramParcel.writeInt(this.rxs);
+    paramParcel.writeInt(this.nOX);
     paramParcel.writeInt(this.scene);
-    paramParcel.writeString(this.fXg);
+    paramParcel.writeString(this.idf);
     paramParcel.writeInt(this.subType);
-    if (this.otF) {}
+    if (this.rxt) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      AppMethodBeat.o(276400);
+      AppMethodBeat.o(325622);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.JsApiAddToFavorites.IPCFavRequest
  * JD-Core Version:    0.7.0.1
  */

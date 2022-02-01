@@ -1,6 +1,5 @@
 package androidx.appcompat.widget;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources.NotFoundException;
@@ -12,83 +11,83 @@ import android.text.method.PasswordTransformationMethod;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import androidx.appcompat.a.j;
-import androidx.core.content.a.f.a;
+import androidx.core.content.a.f.c;
 import androidx.core.widget.b;
-import androidx.core.widget.i;
+import androidx.core.widget.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 
 class k
 {
   int mStyle;
-  private aa rA;
-  final l rB;
-  Typeface rC;
-  boolean rD;
-  private final TextView ru;
-  private aa rv;
-  private aa rw;
-  private aa rx;
-  private aa ry;
-  private aa rz;
+  final l sA;
+  Typeface sB;
+  boolean sC;
+  private final TextView ss;
+  private aa st;
+  private aa su;
+  private aa sv;
+  private aa sx;
+  private aa sy;
+  private aa sz;
   
   k(TextView paramTextView)
   {
-    AppMethodBeat.i(241057);
+    AppMethodBeat.i(199899);
     this.mStyle = 0;
-    this.ru = paramTextView;
-    this.rB = new l(this.ru);
-    AppMethodBeat.o(241057);
+    this.ss = paramTextView;
+    this.sA = new l(this.ss);
+    AppMethodBeat.o(199899);
   }
   
   private static aa a(Context paramContext, f paramf, int paramInt)
   {
-    AppMethodBeat.i(241069);
+    AppMethodBeat.i(199928);
     paramContext = paramf.q(paramContext, paramInt);
     if (paramContext != null)
     {
       paramf = new aa();
-      paramf.jG = true;
-      paramf.jE = paramContext;
-      AppMethodBeat.o(241069);
+      paramf.kB = true;
+      paramf.kz = paramContext;
+      AppMethodBeat.o(199928);
       return paramf;
     }
-    AppMethodBeat.o(241069);
+    AppMethodBeat.o(199928);
     return null;
   }
   
   private void a(Context paramContext, ac paramac)
   {
     boolean bool = true;
-    AppMethodBeat.i(241063);
+    AppMethodBeat.i(199911);
     this.mStyle = paramac.getInt(a.j.TextAppearance_android_textStyle, this.mStyle);
-    if ((paramac.aC(a.j.TextAppearance_android_fontFamily)) || (paramac.aC(a.j.TextAppearance_fontFamily)))
+    if ((paramac.az(a.j.TextAppearance_android_fontFamily)) || (paramac.az(a.j.TextAppearance_fontFamily)))
     {
-      this.rC = null;
+      this.sB = null;
       int i;
-      if (paramac.aC(a.j.TextAppearance_fontFamily))
+      if (paramac.az(a.j.TextAppearance_fontFamily))
       {
         i = a.j.TextAppearance_fontFamily;
         if (!paramContext.isRestricted()) {
-          paramContext = new f.a()
+          paramContext = new f.c()
           {
-            public final void a(Typeface paramAnonymousTypeface)
+            public final void as(int paramAnonymousInt) {}
+            
+            public final void b(Typeface paramAnonymousTypeface)
             {
-              AppMethodBeat.i(241053);
+              AppMethodBeat.i(199355);
               k localk = k.this;
-              Object localObject = this.rE;
-              if (localk.rD)
+              Object localObject = this.sD;
+              if (localk.sC)
               {
-                localk.rC = paramAnonymousTypeface;
+                localk.sB = paramAnonymousTypeface;
                 localObject = (TextView)((WeakReference)localObject).get();
                 if (localObject != null) {
                   ((TextView)localObject).setTypeface(paramAnonymousTypeface, localk.mStyle);
                 }
               }
-              AppMethodBeat.o(241053);
+              AppMethodBeat.o(199355);
             }
-            
-            public final void au(int paramAnonymousInt) {}
           };
         }
       }
@@ -96,11 +95,11 @@ class k
       {
         try
         {
-          this.rC = paramac.a(i, this.mStyle, paramContext);
-          if (this.rC != null) {
+          this.sB = paramac.a(i, this.mStyle, paramContext);
+          if (this.sB != null) {
             continue;
           }
-          this.rD = bool;
+          this.sC = bool;
         }
         catch (UnsupportedOperationException paramContext)
         {
@@ -110,88 +109,87 @@ class k
         {
           continue;
         }
-        if (this.rC == null)
+        if (this.sB == null)
         {
           paramContext = paramac.getString(i);
           if (paramContext != null) {
-            this.rC = Typeface.create(paramContext, this.mStyle);
+            this.sB = Typeface.create(paramContext, this.mStyle);
           }
         }
-        AppMethodBeat.o(241063);
+        AppMethodBeat.o(199911);
         return;
         i = a.j.TextAppearance_android_fontFamily;
         break;
         bool = false;
       }
     }
-    if (paramac.aC(a.j.TextAppearance_android_typeface))
+    if (paramac.az(a.j.TextAppearance_android_typeface))
     {
-      this.rD = false;
+      this.sC = false;
       switch (paramac.getInt(a.j.TextAppearance_android_typeface, 1))
       {
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(241063);
+      AppMethodBeat.o(199911);
       return;
-      this.rC = Typeface.SANS_SERIF;
-      AppMethodBeat.o(241063);
+      this.sB = Typeface.SANS_SERIF;
+      AppMethodBeat.o(199911);
       return;
-      this.rC = Typeface.SERIF;
-      AppMethodBeat.o(241063);
+      this.sB = Typeface.SERIF;
+      AppMethodBeat.o(199911);
       return;
-      this.rC = Typeface.MONOSPACE;
+      this.sB = Typeface.MONOSPACE;
     }
   }
   
   private void a(Drawable paramDrawable, aa paramaa)
   {
-    AppMethodBeat.i(241067);
+    AppMethodBeat.i(199921);
     if ((paramDrawable != null) && (paramaa != null)) {
-      f.a(paramDrawable, paramaa, this.ru.getDrawableState());
+      f.a(paramDrawable, paramaa, this.ss.getDrawableState());
     }
-    AppMethodBeat.o(241067);
+    AppMethodBeat.o(199921);
   }
   
-  private void b(int paramInt, float paramFloat)
+  private void c(int paramInt, float paramFloat)
   {
-    AppMethodBeat.i(241076);
-    this.rB.b(paramInt, paramFloat);
-    AppMethodBeat.o(241076);
+    AppMethodBeat.i(199936);
+    this.sA.c(paramInt, paramFloat);
+    AppMethodBeat.o(199936);
   }
   
-  @SuppressLint({"NewApi"})
   final void a(AttributeSet paramAttributeSet, int paramInt)
   {
-    AppMethodBeat.i(241061);
-    Context localContext = this.ru.getContext();
-    Object localObject1 = f.dq();
+    AppMethodBeat.i(199961);
+    Context localContext = this.ss.getContext();
+    Object localObject1 = f.ep();
     Object localObject2 = ac.a(localContext, paramAttributeSet, a.j.AppCompatTextHelper, paramInt, 0);
-    int i = ((ac)localObject2).r(a.j.AppCompatTextHelper_android_textAppearance, -1);
-    if (((ac)localObject2).aC(a.j.AppCompatTextHelper_android_drawableLeft)) {
-      this.rv = a(localContext, (f)localObject1, ((ac)localObject2).r(a.j.AppCompatTextHelper_android_drawableLeft, 0));
+    int i = ((ac)localObject2).w(a.j.AppCompatTextHelper_android_textAppearance, -1);
+    if (((ac)localObject2).az(a.j.AppCompatTextHelper_android_drawableLeft)) {
+      this.st = a(localContext, (f)localObject1, ((ac)localObject2).w(a.j.AppCompatTextHelper_android_drawableLeft, 0));
     }
-    if (((ac)localObject2).aC(a.j.AppCompatTextHelper_android_drawableTop)) {
-      this.rw = a(localContext, (f)localObject1, ((ac)localObject2).r(a.j.AppCompatTextHelper_android_drawableTop, 0));
+    if (((ac)localObject2).az(a.j.AppCompatTextHelper_android_drawableTop)) {
+      this.su = a(localContext, (f)localObject1, ((ac)localObject2).w(a.j.AppCompatTextHelper_android_drawableTop, 0));
     }
-    if (((ac)localObject2).aC(a.j.AppCompatTextHelper_android_drawableRight)) {
-      this.rx = a(localContext, (f)localObject1, ((ac)localObject2).r(a.j.AppCompatTextHelper_android_drawableRight, 0));
+    if (((ac)localObject2).az(a.j.AppCompatTextHelper_android_drawableRight)) {
+      this.sv = a(localContext, (f)localObject1, ((ac)localObject2).w(a.j.AppCompatTextHelper_android_drawableRight, 0));
     }
-    if (((ac)localObject2).aC(a.j.AppCompatTextHelper_android_drawableBottom)) {
-      this.ry = a(localContext, (f)localObject1, ((ac)localObject2).r(a.j.AppCompatTextHelper_android_drawableBottom, 0));
+    if (((ac)localObject2).az(a.j.AppCompatTextHelper_android_drawableBottom)) {
+      this.sx = a(localContext, (f)localObject1, ((ac)localObject2).w(a.j.AppCompatTextHelper_android_drawableBottom, 0));
     }
     if (Build.VERSION.SDK_INT >= 17)
     {
-      if (((ac)localObject2).aC(a.j.AppCompatTextHelper_android_drawableStart)) {
-        this.rz = a(localContext, (f)localObject1, ((ac)localObject2).r(a.j.AppCompatTextHelper_android_drawableStart, 0));
+      if (((ac)localObject2).az(a.j.AppCompatTextHelper_android_drawableStart)) {
+        this.sy = a(localContext, (f)localObject1, ((ac)localObject2).w(a.j.AppCompatTextHelper_android_drawableStart, 0));
       }
-      if (((ac)localObject2).aC(a.j.AppCompatTextHelper_android_drawableEnd)) {
-        this.rA = a(localContext, (f)localObject1, ((ac)localObject2).r(a.j.AppCompatTextHelper_android_drawableEnd, 0));
+      if (((ac)localObject2).az(a.j.AppCompatTextHelper_android_drawableEnd)) {
+        this.sz = a(localContext, (f)localObject1, ((ac)localObject2).w(a.j.AppCompatTextHelper_android_drawableEnd, 0));
       }
     }
-    ((ac)localObject2).wA.recycle();
-    boolean bool3 = this.ru.getTransformationMethod() instanceof PasswordTransformationMethod;
+    ((ac)localObject2).xv.recycle();
+    boolean bool3 = this.ss.getTransformationMethod() instanceof PasswordTransformationMethod;
     Object localObject3;
     boolean bool1;
     label338:
@@ -199,24 +197,24 @@ class k
     if (i != -1)
     {
       localObject3 = ac.a(localContext, i, a.j.TextAppearance);
-      if ((!bool3) && (((ac)localObject3).aC(a.j.TextAppearance_textAllCaps)))
+      if ((!bool3) && (((ac)localObject3).az(a.j.TextAppearance_textAllCaps)))
       {
-        bool1 = ((ac)localObject3).c(a.j.TextAppearance_textAllCaps, false);
+        bool1 = ((ac)localObject3).m(a.j.TextAppearance_textAllCaps, false);
         i = 1;
         a(localContext, (ac)localObject3);
         if (Build.VERSION.SDK_INT < 23) {
-          if (((ac)localObject3).aC(a.j.TextAppearance_android_textColor))
+          if (((ac)localObject3).az(a.j.TextAppearance_android_textColor))
           {
             localObject2 = ((ac)localObject3).getColorStateList(a.j.TextAppearance_android_textColor);
-            if (((ac)localObject3).aC(a.j.TextAppearance_android_textColorHint))
+            if (((ac)localObject3).az(a.j.TextAppearance_android_textColorHint))
             {
               localObject4 = ((ac)localObject3).getColorStateList(a.j.TextAppearance_android_textColorHint);
               label359:
-              if (((ac)localObject3).aC(a.j.TextAppearance_android_textColorLink))
+              if (((ac)localObject3).az(a.j.TextAppearance_android_textColorLink))
               {
                 localObject1 = ((ac)localObject3).getColorStateList(a.j.TextAppearance_android_textColorLink);
                 label380:
-                ((ac)localObject3).wA.recycle();
+                ((ac)localObject3).xv.recycle();
                 localObject3 = localObject1;
                 localObject1 = localObject4;
               }
@@ -234,9 +232,9 @@ class k
       {
         j = i;
         bool2 = bool1;
-        if (localac.aC(a.j.TextAppearance_textAllCaps))
+        if (localac.az(a.j.TextAppearance_textAllCaps))
         {
-          bool2 = localac.c(a.j.TextAppearance_textAllCaps, false);
+          bool2 = localac.m(a.j.TextAppearance_textAllCaps, false);
           j = 1;
         }
       }
@@ -245,74 +243,74 @@ class k
       Object localObject6 = localObject3;
       if (Build.VERSION.SDK_INT < 23)
       {
-        if (localac.aC(a.j.TextAppearance_android_textColor)) {
+        if (localac.az(a.j.TextAppearance_android_textColor)) {
           localObject2 = localac.getColorStateList(a.j.TextAppearance_android_textColor);
         }
-        if (localac.aC(a.j.TextAppearance_android_textColorHint)) {
+        if (localac.az(a.j.TextAppearance_android_textColorHint)) {
           localObject1 = localac.getColorStateList(a.j.TextAppearance_android_textColorHint);
         }
         localObject4 = localObject2;
         localObject5 = localObject1;
         localObject6 = localObject3;
-        if (localac.aC(a.j.TextAppearance_android_textColorLink))
+        if (localac.az(a.j.TextAppearance_android_textColorLink))
         {
           localObject6 = localac.getColorStateList(a.j.TextAppearance_android_textColorLink);
           localObject5 = localObject1;
           localObject4 = localObject2;
         }
       }
-      if ((Build.VERSION.SDK_INT >= 28) && (localac.aC(a.j.TextAppearance_android_textSize)) && (localac.p(a.j.TextAppearance_android_textSize, -1) == 0)) {
-        this.ru.setTextSize(0, 0.0F);
+      if ((Build.VERSION.SDK_INT >= 28) && (localac.az(a.j.TextAppearance_android_textSize)) && (localac.u(a.j.TextAppearance_android_textSize, -1) == 0)) {
+        this.ss.setTextSize(0, 0.0F);
       }
       a(localContext, localac);
-      localac.wA.recycle();
+      localac.xv.recycle();
       if (localObject4 != null) {
-        this.ru.setTextColor((ColorStateList)localObject4);
+        this.ss.setTextColor((ColorStateList)localObject4);
       }
       if (localObject5 != null) {
-        this.ru.setHintTextColor(localObject5);
+        this.ss.setHintTextColor(localObject5);
       }
       if (localObject6 != null) {
-        this.ru.setLinkTextColor((ColorStateList)localObject6);
+        this.ss.setLinkTextColor((ColorStateList)localObject6);
       }
       if ((!bool3) && (j != 0)) {
         setAllCaps(bool2);
       }
-      if (this.rC != null) {
-        this.ru.setTypeface(this.rC, this.mStyle);
+      if (this.sB != null) {
+        this.ss.setTypeface(this.sB, this.mStyle);
       }
-      this.rB.a(paramAttributeSet, paramInt);
-      if ((b.PX) && (this.rB.rJ != 0))
+      this.sA.a(paramAttributeSet, paramInt);
+      if ((b.bwp) && (this.sA.sI != 0))
       {
-        localObject1 = this.rB.rO;
+        localObject1 = this.sA.sN;
         if (localObject1.length > 0)
         {
-          if (this.ru.getAutoSizeStepGranularity() == -1.0F) {
+          if (this.ss.getAutoSizeStepGranularity() == -1.0F) {
             break label877;
           }
-          this.ru.setAutoSizeTextTypeUniformWithConfiguration(Math.round(this.rB.rM), Math.round(this.rB.rN), Math.round(this.rB.rL), 0);
+          this.ss.setAutoSizeTextTypeUniformWithConfiguration(Math.round(this.sA.sL), Math.round(this.sA.sM), Math.round(this.sA.sK), 0);
         }
       }
       for (;;)
       {
         paramAttributeSet = ac.a(localContext, paramAttributeSet, a.j.AppCompatTextView);
-        paramInt = paramAttributeSet.p(a.j.AppCompatTextView_firstBaselineToTopHeight, -1);
-        i = paramAttributeSet.p(a.j.AppCompatTextView_lastBaselineToBottomHeight, -1);
-        j = paramAttributeSet.p(a.j.AppCompatTextView_lineHeight, -1);
-        paramAttributeSet.wA.recycle();
+        paramInt = paramAttributeSet.u(a.j.AppCompatTextView_firstBaselineToTopHeight, -1);
+        i = paramAttributeSet.u(a.j.AppCompatTextView_lastBaselineToBottomHeight, -1);
+        j = paramAttributeSet.u(a.j.AppCompatTextView_lineHeight, -1);
+        paramAttributeSet.xv.recycle();
         if (paramInt != -1) {
-          i.b(this.ru, paramInt);
+          j.c(this.ss, paramInt);
         }
         if (i != -1) {
-          i.c(this.ru, i);
+          j.d(this.ss, i);
         }
         if (j != -1) {
-          i.d(this.ru, j);
+          j.e(this.ss, j);
         }
-        AppMethodBeat.o(241061);
+        AppMethodBeat.o(199961);
         return;
         label877:
-        this.ru.setAutoSizeTextTypeUniformWithPresetSizes((int[])localObject1, 0);
+        this.ss.setAutoSizeTextTypeUniformWithPresetSizes((int[])localObject1, 0);
       }
       localObject1 = null;
       break label380;
@@ -335,101 +333,101 @@ class k
     }
   }
   
-  final void du()
+  final void et()
   {
-    AppMethodBeat.i(241066);
+    AppMethodBeat.i(199996);
     Drawable[] arrayOfDrawable;
-    if ((this.rv != null) || (this.rw != null) || (this.rx != null) || (this.ry != null))
+    if ((this.st != null) || (this.su != null) || (this.sv != null) || (this.sx != null))
     {
-      arrayOfDrawable = this.ru.getCompoundDrawables();
-      a(arrayOfDrawable[0], this.rv);
-      a(arrayOfDrawable[1], this.rw);
-      a(arrayOfDrawable[2], this.rx);
-      a(arrayOfDrawable[3], this.ry);
+      arrayOfDrawable = this.ss.getCompoundDrawables();
+      a(arrayOfDrawable[0], this.st);
+      a(arrayOfDrawable[1], this.su);
+      a(arrayOfDrawable[2], this.sv);
+      a(arrayOfDrawable[3], this.sx);
     }
-    if ((Build.VERSION.SDK_INT >= 17) && ((this.rz != null) || (this.rA != null)))
+    if ((Build.VERSION.SDK_INT >= 17) && ((this.sy != null) || (this.sz != null)))
     {
-      arrayOfDrawable = this.ru.getCompoundDrawablesRelative();
-      a(arrayOfDrawable[0], this.rz);
-      a(arrayOfDrawable[2], this.rA);
+      arrayOfDrawable = this.ss.getCompoundDrawablesRelative();
+      a(arrayOfDrawable[0], this.sy);
+      a(arrayOfDrawable[2], this.sz);
     }
-    AppMethodBeat.o(241066);
+    AppMethodBeat.o(199996);
   }
   
-  final void dv()
+  final void eu()
   {
-    AppMethodBeat.i(241072);
-    if (!b.PX) {
-      this.rB.dz();
+    AppMethodBeat.i(200006);
+    if (!b.bwp) {
+      this.sA.ey();
     }
-    AppMethodBeat.o(241072);
+    AppMethodBeat.o(200006);
   }
   
   final void s(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(241064);
+    AppMethodBeat.i(199973);
     ac localac = ac.a(paramContext, paramInt, a.j.TextAppearance);
-    if (localac.aC(a.j.TextAppearance_textAllCaps)) {
-      setAllCaps(localac.c(a.j.TextAppearance_textAllCaps, false));
+    if (localac.az(a.j.TextAppearance_textAllCaps)) {
+      setAllCaps(localac.m(a.j.TextAppearance_textAllCaps, false));
     }
-    if ((Build.VERSION.SDK_INT < 23) && (localac.aC(a.j.TextAppearance_android_textColor)))
+    if ((Build.VERSION.SDK_INT < 23) && (localac.az(a.j.TextAppearance_android_textColor)))
     {
       ColorStateList localColorStateList = localac.getColorStateList(a.j.TextAppearance_android_textColor);
       if (localColorStateList != null) {
-        this.ru.setTextColor(localColorStateList);
+        this.ss.setTextColor(localColorStateList);
       }
     }
-    if ((localac.aC(a.j.TextAppearance_android_textSize)) && (localac.p(a.j.TextAppearance_android_textSize, -1) == 0)) {
-      this.ru.setTextSize(0, 0.0F);
+    if ((localac.az(a.j.TextAppearance_android_textSize)) && (localac.u(a.j.TextAppearance_android_textSize, -1) == 0)) {
+      this.ss.setTextSize(0, 0.0F);
     }
     a(paramContext, localac);
-    localac.wA.recycle();
-    if (this.rC != null) {
-      this.ru.setTypeface(this.rC, this.mStyle);
+    localac.xv.recycle();
+    if (this.sB != null) {
+      this.ss.setTypeface(this.sB, this.mStyle);
     }
-    AppMethodBeat.o(241064);
+    AppMethodBeat.o(199973);
   }
   
   final void setAllCaps(boolean paramBoolean)
   {
-    AppMethodBeat.i(241065);
-    this.ru.setAllCaps(paramBoolean);
-    AppMethodBeat.o(241065);
+    AppMethodBeat.i(199981);
+    this.ss.setAllCaps(paramBoolean);
+    AppMethodBeat.o(199981);
   }
   
   final void setAutoSizeTextTypeUniformWithConfiguration(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(241079);
-    this.rB.setAutoSizeTextTypeUniformWithConfiguration(paramInt1, paramInt2, paramInt3, paramInt4);
-    AppMethodBeat.o(241079);
+    AppMethodBeat.i(200034);
+    this.sA.setAutoSizeTextTypeUniformWithConfiguration(paramInt1, paramInt2, paramInt3, paramInt4);
+    AppMethodBeat.o(200034);
   }
   
   final void setAutoSizeTextTypeUniformWithPresetSizes(int[] paramArrayOfInt, int paramInt)
   {
-    AppMethodBeat.i(241080);
-    this.rB.setAutoSizeTextTypeUniformWithPresetSizes(paramArrayOfInt, paramInt);
-    AppMethodBeat.o(241080);
+    AppMethodBeat.i(200040);
+    this.sA.setAutoSizeTextTypeUniformWithPresetSizes(paramArrayOfInt, paramInt);
+    AppMethodBeat.o(200040);
   }
   
   final void setAutoSizeTextTypeWithDefaults(int paramInt)
   {
-    AppMethodBeat.i(241078);
-    this.rB.setAutoSizeTextTypeWithDefaults(paramInt);
-    AppMethodBeat.o(241078);
+    AppMethodBeat.i(200026);
+    this.sA.setAutoSizeTextTypeWithDefaults(paramInt);
+    AppMethodBeat.o(200026);
   }
   
   final void setTextSize(int paramInt, float paramFloat)
   {
-    AppMethodBeat.i(241073);
-    if ((!b.PX) && (!this.rB.dB())) {
-      b(paramInt, paramFloat);
+    AppMethodBeat.i(200017);
+    if ((!b.bwp) && (!this.sA.eA())) {
+      c(paramInt, paramFloat);
     }
-    AppMethodBeat.o(241073);
+    AppMethodBeat.o(200017);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.widget.k
  * JD-Core Version:    0.7.0.1
  */

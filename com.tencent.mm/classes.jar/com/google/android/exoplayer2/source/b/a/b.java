@@ -7,18 +7,18 @@ import java.util.List;
 public final class b
   extends c
 {
-  public final long aNk;
-  public final long bgP;
-  public final a biA;
-  public final int bir;
-  public final long bis;
-  public final boolean bit;
-  public final int biu;
-  public final int biv;
-  public final long biw;
-  public final boolean bix;
-  public final boolean biy;
-  public final boolean biz;
+  public final long cHg;
+  public final long daJ;
+  public final int dcl;
+  public final long dcm;
+  public final boolean dcn;
+  public final int dco;
+  public final int dcp;
+  public final long dcq;
+  public final boolean dcr;
+  public final boolean dcs;
+  public final boolean dct;
+  public final a dcu;
   public final List<a> segments;
   public final int version;
   
@@ -26,23 +26,23 @@ public final class b
   {
     super(paramString, paramList);
     AppMethodBeat.i(62888);
-    this.bir = paramInt1;
-    this.bgP = paramLong2;
-    this.bit = paramBoolean1;
-    this.biu = paramInt2;
-    this.biv = paramInt3;
+    this.dcl = paramInt1;
+    this.daJ = paramLong2;
+    this.dcn = paramBoolean1;
+    this.dco = paramInt2;
+    this.dcp = paramInt3;
     this.version = paramInt4;
-    this.biw = paramLong3;
-    this.bix = paramBoolean2;
-    this.biy = paramBoolean3;
-    this.biz = paramBoolean4;
-    this.biA = parama;
+    this.dcq = paramLong3;
+    this.dcr = paramBoolean2;
+    this.dcs = paramBoolean3;
+    this.dct = paramBoolean4;
+    this.dcu = parama;
     this.segments = Collections.unmodifiableList(paramList1);
     if (!paramList1.isEmpty())
     {
       paramString = (a)paramList1.get(paramList1.size() - 1);
-      paramLong2 = paramString.biC;
-      this.aNk = (paramString.aNk + paramLong2);
+      paramLong2 = paramString.dcw;
+      this.cHg = (paramString.cHg + paramLong2);
       if (paramLong1 != -9223372036854775807L) {
         break label166;
       }
@@ -50,48 +50,48 @@ public final class b
     }
     for (;;)
     {
-      this.bis = paramLong2;
+      this.dcm = paramLong2;
       AppMethodBeat.o(62888);
       return;
-      this.aNk = 0L;
+      this.cHg = 0L;
       break;
       label166:
       paramLong2 = paramLong1;
       if (paramLong1 < 0L) {
-        paramLong2 = paramLong1 + this.aNk;
+        paramLong2 = paramLong1 + this.cHg;
       }
     }
   }
   
-  public final long tU()
+  public final long Tx()
   {
-    return this.bgP + this.aNk;
+    return this.daJ + this.cHg;
   }
   
   public static final class a
     implements Comparable<Long>
   {
-    public final long aNk;
-    public final boolean aXW;
-    public final int biB;
-    public final long biC;
-    public final String biD;
-    public final String biE;
-    public final long biF;
-    public final long biG;
+    public final long cHg;
+    public final boolean cRS;
+    public final long dcA;
+    public final int dcv;
+    public final long dcw;
+    public final String dcx;
+    public final String dcy;
+    public final long dcz;
     public final String url;
     
     public a(String paramString1, long paramLong1, int paramInt, long paramLong2, boolean paramBoolean, String paramString2, String paramString3, long paramLong3, long paramLong4)
     {
       this.url = paramString1;
-      this.aNk = paramLong1;
-      this.biB = paramInt;
-      this.biC = paramLong2;
-      this.aXW = paramBoolean;
-      this.biD = paramString2;
-      this.biE = paramString3;
-      this.biF = paramLong3;
-      this.biG = paramLong4;
+      this.cHg = paramLong1;
+      this.dcv = paramInt;
+      this.dcw = paramLong2;
+      this.cRS = paramBoolean;
+      this.dcx = paramString2;
+      this.dcy = paramString3;
+      this.dcz = paramLong3;
+      this.dcA = paramLong4;
     }
     
     public a(String paramString, long paramLong1, long paramLong2)
@@ -102,7 +102,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.source.b.a.b
  * JD-Core Version:    0.7.0.1
  */

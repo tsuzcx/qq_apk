@@ -6,38 +6,38 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract class AbstractTabChildActivity$AbStractTabFragment
   extends MMFragment
-  implements o
+  implements p
 {
-  private boolean VPs;
-  private boolean VPt;
-  private boolean VPu;
-  protected boolean VPv;
-  protected boolean VPw = false;
-  protected boolean VPx = false;
-  protected boolean VPy;
-  protected boolean VPz = false;
+  protected boolean adtA;
+  protected boolean adtB = false;
+  protected boolean adtC = false;
+  protected boolean adtD;
+  protected boolean adtE = false;
+  private boolean adtx;
+  private boolean adty;
+  private boolean adtz;
   private Bundle savedInstanceState;
   
-  private void hFn()
+  private void jhz()
   {
     Log.i("MicroMsg.INIT", "checkNeedRecreate");
-    if (this.VPt)
+    if (this.adty)
     {
-      hFb();
-      this.VPt = false;
+      jhn();
+      this.adty = false;
     }
     for (;;)
     {
-      this.VPz = true;
+      this.adtE = true;
       return;
-      if (this.VPs)
+      if (this.adtx)
       {
-        if (this.VPz) {
-          hFg();
+        if (this.adtE) {
+          jhs();
         }
-        hFb();
+        jhn();
         Log.v("MicroMsg.INIT", "KEVIN tab onRecreate " + toString());
-        this.VPs = false;
+        this.adtx = false;
       }
     }
   }
@@ -47,67 +47,67 @@ public abstract class AbstractTabChildActivity$AbStractTabFragment
     return 0;
   }
   
-  protected abstract void hFb();
-  
-  protected abstract void hFc();
-  
-  protected abstract void hFd();
-  
-  protected abstract void hFe();
-  
-  protected abstract void hFf();
-  
-  protected abstract void hFg();
-  
-  public abstract void hFh();
-  
-  public abstract void hFi();
-  
-  public abstract void hFj();
-  
-  public final void hFk()
+  public final void jhA()
   {
-    hFi();
-    this.VPu = true;
-  }
-  
-  public final void hFl() {}
-  
-  public final void hFm()
-  {
-    this.VPx = true;
-  }
-  
-  public final void hFo()
-  {
-    Log.i("MicroMsg.INIT", "deliverOnTabResume %s", new Object[] { Boolean.valueOf(this.VPw) });
-    if (!this.VPw) {
+    Log.i("MicroMsg.INIT", "deliverOnTabResume %s", new Object[] { Boolean.valueOf(this.adtB) });
+    if (!this.adtB) {
       return;
     }
-    hFn();
+    jhz();
     long l = System.currentTimeMillis();
-    if (this.VPu)
+    if (this.adtz)
     {
-      this.VPu = false;
-      hFj();
+      this.adtz = false;
+      jhv();
     }
-    hFc();
+    jho();
     Log.d("MicroMsg.INIT", "KEVIN " + toString() + " OnTabResume last : " + (System.currentTimeMillis() - l));
-    this.VPv = true;
-    this.VPw = false;
+    this.adtA = true;
+    this.adtB = false;
+  }
+  
+  protected abstract void jhn();
+  
+  protected abstract void jho();
+  
+  protected abstract void jhp();
+  
+  protected abstract void jhq();
+  
+  protected abstract void jhr();
+  
+  protected abstract void jhs();
+  
+  public abstract void jht();
+  
+  public abstract void jhu();
+  
+  public abstract void jhv();
+  
+  public final void jhw()
+  {
+    jhu();
+    this.adtz = true;
+  }
+  
+  public final void jhx() {}
+  
+  public final void jhy()
+  {
+    this.adtC = true;
   }
   
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    this.VPt = true;
+    this.adty = true;
     this.savedInstanceState = paramBundle;
   }
   
   public void onDestroy()
   {
-    if (this.VPz) {
-      hFg();
+    if (this.adtE) {
+      jhs();
     }
     super.onDestroy();
   }
@@ -124,53 +124,53 @@ public abstract class AbstractTabChildActivity$AbStractTabFragment
   {
     super.onPause();
     Log.i("MicroMsg.INIT", "onPause");
-    this.VPy = true;
-    if (this.VPy)
+    this.adtD = true;
+    if (this.adtD)
     {
-      if (!this.VPv) {
-        this.VPy = false;
+      if (!this.adtA) {
+        this.adtD = false;
       }
     }
     else {
       return;
     }
     long l = System.currentTimeMillis();
-    hFe();
+    jhq();
     Log.d("MicroMsg.INIT", "KEVIN " + toString() + " onTabPause last : " + (System.currentTimeMillis() - l));
-    this.VPv = false;
-    this.VPy = false;
+    this.adtA = false;
+    this.adtD = false;
   }
   
   public void onResume()
   {
     Log.i("MicroMsg.INIT", "onResume");
     super.onResume();
-    Log.i("MicroMsg.INIT", "resumeWithVerify %s", new Object[] { Boolean.valueOf(this.VPw) });
+    Log.i("MicroMsg.INIT", "resumeWithVerify %s", new Object[] { Boolean.valueOf(this.adtB) });
     LauncherUI localLauncherUI = LauncherUI.getInstance();
-    if ((localLauncherUI == null) || (!localLauncherUI.VXn)) {}
+    if ((localLauncherUI == null) || (!localLauncherUI.adBJ)) {}
     do
     {
       return;
-      this.VPw = true;
-    } while (!this.VPx);
-    hFo();
-    this.VPx = false;
+      this.adtB = true;
+    } while (!this.adtC);
+    jhA();
+    this.adtC = false;
   }
   
   public void onStart()
   {
     super.onStart();
     LauncherUI localLauncherUI = LauncherUI.getInstance();
-    if ((localLauncherUI == null) || (!localLauncherUI.VXn)) {
+    if ((localLauncherUI == null) || (!localLauncherUI.adBJ)) {
       return;
     }
-    hFd();
+    jhp();
   }
   
   public void onStop()
   {
     super.onStop();
-    hFf();
+    jhr();
   }
   
   public boolean supportNavigationSwipeBack()

@@ -1,98 +1,82 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.b;
+import java.util.LinkedList;
 
 public final class bff
-  extends com.tencent.mm.cd.a
+  extends esc
 {
-  public int SPR;
-  public int SPS;
-  public b SPT;
-  public String fcD;
-  public String sessionId;
+  public int ZPl;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(202947);
+    AppMethodBeat.i(258437);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.fcD != null) {
-        paramVarArgs.f(1, this.fcD);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.qD(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      if (this.sessionId != null) {
-        paramVarArgs.f(2, this.sessionId);
-      }
-      paramVarArgs.aY(3, this.SPR);
-      paramVarArgs.aY(4, this.SPS);
-      if (this.SPT != null) {
-        paramVarArgs.c(5, this.SPT);
-      }
-      AppMethodBeat.o(202947);
+      paramVarArgs.bS(2, this.ZPl);
+      AppMethodBeat.o(258437);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.fcD == null) {
-        break label422;
+      if (this.BaseResponse == null) {
+        break label328;
       }
     }
-    label422:
-    for (paramInt = g.a.a.b.b.a.g(1, this.fcD) + 0;; paramInt = 0)
+    label328:
+    for (paramInt = i.a.a.a.qC(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.sessionId != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.sessionId);
-      }
-      i = i + g.a.a.b.b.a.bM(3, this.SPR) + g.a.a.b.b.a.bM(4, this.SPS);
-      paramInt = i;
-      if (this.SPT != null) {
-        paramInt = i + g.a.a.b.b.a.b(5, this.SPT);
-      }
-      AppMethodBeat.o(202947);
-      return paramInt;
+      int i = i.a.a.b.b.a.cJ(2, this.ZPl);
+      AppMethodBeat.o(258437);
+      return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = esc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = esc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(202947);
+        AppMethodBeat.o(258437);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         bff localbff = (bff)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(202947);
+          AppMethodBeat.o(258437);
           return -1;
         case 1: 
-          localbff.fcD = locala.abFh.readString();
-          AppMethodBeat.o(202947);
-          return 0;
-        case 2: 
-          localbff.sessionId = locala.abFh.readString();
-          AppMethodBeat.o(202947);
-          return 0;
-        case 3: 
-          localbff.SPR = locala.abFh.AK();
-          AppMethodBeat.o(202947);
-          return 0;
-        case 4: 
-          localbff.SPS = locala.abFh.AK();
-          AppMethodBeat.o(202947);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kd localkd = new kd();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkd.parseFrom((byte[])localObject);
+            }
+            localbff.BaseResponse = localkd;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(258437);
           return 0;
         }
-        localbff.SPT = locala.abFh.iUw();
-        AppMethodBeat.o(202947);
+        localbff.ZPl = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(258437);
         return 0;
       }
-      AppMethodBeat.o(202947);
+      AppMethodBeat.o(258437);
       return -1;
     }
   }

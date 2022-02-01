@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.tools;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
@@ -10,9 +9,9 @@ public class MiniQbCallBackBaseUI
 {
   protected void b(String paramString1, String paramString2, int paramInt1, String paramString3, int paramInt2)
   {
-    AppMethodBeat.i(279035);
+    AppMethodBeat.i(251102);
     Log.i(getTag(), "dealEvent() processName:%s appId:%s readProgress:%d", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt2) });
-    AppMethodBeat.o(279035);
+    AppMethodBeat.o(251102);
   }
   
   public int getLayoutId()
@@ -137,7 +136,7 @@ public class MiniQbCallBackBaseUI
     //   199: aload 8
     //   201: astore_1
     //   202: aload 6
-    //   204: invokestatic 110	com/tencent/mm/ui/chatting/g/a:isFileExist	(Ljava/lang/String;)Z
+    //   204: invokestatic 110	com/tencent/mm/ui/chatting/floatball/a:isFileExist	(Ljava/lang/String;)Z
     //   207: ifne +71 -> 278
     //   210: aload_0
     //   211: invokevirtual 22	com/tencent/mm/ui/tools/MiniQbCallBackBaseUI:getTag	()Ljava/lang/String;

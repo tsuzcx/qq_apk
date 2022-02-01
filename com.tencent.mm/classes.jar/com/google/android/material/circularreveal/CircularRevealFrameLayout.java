@@ -1,6 +1,5 @@
 package com.google.android.material.circularreveal;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -13,118 +12,117 @@ public class CircularRevealFrameLayout
   extends FrameLayout
   implements c
 {
-  private final b bzV;
+  private final b dsW;
   
   public CircularRevealFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(236475);
-    this.bzV = new b(this);
-    AppMethodBeat.o(236475);
+    AppMethodBeat.i(209102);
+    this.dsW = new b(this);
+    AppMethodBeat.o(209102);
   }
   
-  public final void b(Canvas paramCanvas)
+  public final void Wl()
   {
-    AppMethodBeat.i(236494);
-    super.draw(paramCanvas);
-    AppMethodBeat.o(236494);
+    AppMethodBeat.i(209113);
+    this.dsW.Wl();
+    AppMethodBeat.o(209113);
   }
   
-  @SuppressLint({"MissingSuperCall"})
+  public final void Wm()
+  {
+    AppMethodBeat.i(209123);
+    this.dsW.Wm();
+    AppMethodBeat.o(209123);
+  }
+  
+  public final boolean Wn()
+  {
+    AppMethodBeat.i(209240);
+    boolean bool = super.isOpaque();
+    AppMethodBeat.o(209240);
+    return bool;
+  }
+  
   public void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(236492);
-    if (this.bzV != null)
+    AppMethodBeat.i(209207);
+    if (this.dsW != null)
     {
-      this.bzV.draw(paramCanvas);
-      AppMethodBeat.o(236492);
+      this.dsW.draw(paramCanvas);
+      AppMethodBeat.o(209207);
       return;
     }
     super.draw(paramCanvas);
-    AppMethodBeat.o(236492);
+    AppMethodBeat.o(209207);
+  }
+  
+  public final void e(Canvas paramCanvas)
+  {
+    AppMethodBeat.i(209224);
+    super.draw(paramCanvas);
+    AppMethodBeat.o(209224);
   }
   
   public Drawable getCircularRevealOverlayDrawable()
   {
-    return this.bzV.bAc;
+    return this.dsW.dtd;
   }
   
   public int getCircularRevealScrimColor()
   {
-    AppMethodBeat.i(236486);
-    int i = this.bzV.bAa.getColor();
-    AppMethodBeat.o(236486);
+    AppMethodBeat.i(209161);
+    int i = this.dsW.dtb.getColor();
+    AppMethodBeat.o(209161);
     return i;
   }
   
   public c.d getRevealInfo()
   {
-    AppMethodBeat.i(236483);
-    c.d locald = this.bzV.getRevealInfo();
-    AppMethodBeat.o(236483);
+    AppMethodBeat.i(209135);
+    c.d locald = this.dsW.getRevealInfo();
+    AppMethodBeat.o(209135);
     return locald;
   }
   
   public boolean isOpaque()
   {
-    AppMethodBeat.i(236496);
-    if (this.bzV != null)
+    AppMethodBeat.i(209233);
+    if (this.dsW != null)
     {
-      bool = this.bzV.isOpaque();
-      AppMethodBeat.o(236496);
+      bool = this.dsW.isOpaque();
+      AppMethodBeat.o(209233);
       return bool;
     }
     boolean bool = super.isOpaque();
-    AppMethodBeat.o(236496);
+    AppMethodBeat.o(209233);
     return bool;
   }
   
   public void setCircularRevealOverlayDrawable(Drawable paramDrawable)
   {
-    AppMethodBeat.i(236488);
-    this.bzV.setCircularRevealOverlayDrawable(paramDrawable);
-    AppMethodBeat.o(236488);
+    AppMethodBeat.i(209196);
+    this.dsW.setCircularRevealOverlayDrawable(paramDrawable);
+    AppMethodBeat.o(209196);
   }
   
   public void setCircularRevealScrimColor(int paramInt)
   {
-    AppMethodBeat.i(236487);
-    this.bzV.setCircularRevealScrimColor(paramInt);
-    AppMethodBeat.o(236487);
+    AppMethodBeat.i(209176);
+    this.dsW.setCircularRevealScrimColor(paramInt);
+    AppMethodBeat.o(209176);
   }
   
   public void setRevealInfo(c.d paramd)
   {
-    AppMethodBeat.i(236485);
-    this.bzV.setRevealInfo(paramd);
-    AppMethodBeat.o(236485);
-  }
-  
-  public final void wM()
-  {
-    AppMethodBeat.i(236478);
-    this.bzV.wM();
-    AppMethodBeat.o(236478);
-  }
-  
-  public final void wN()
-  {
-    AppMethodBeat.i(236481);
-    this.bzV.wN();
-    AppMethodBeat.o(236481);
-  }
-  
-  public final boolean wO()
-  {
-    AppMethodBeat.i(236499);
-    boolean bool = super.isOpaque();
-    AppMethodBeat.o(236499);
-    return bool;
+    AppMethodBeat.i(209150);
+    this.dsW.setRevealInfo(paramd);
+    AppMethodBeat.o(209150);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.circularreveal.CircularRevealFrameLayout
  * JD-Core Version:    0.7.0.1
  */

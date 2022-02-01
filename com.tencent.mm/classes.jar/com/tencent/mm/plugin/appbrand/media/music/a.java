@@ -2,8 +2,7 @@ package com.tencent.mm.plugin.appbrand.media.music;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bb.f;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.aw.f;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
@@ -11,49 +10,49 @@ import java.util.HashMap;
 public final class a
 {
   public String appUserName;
-  private HashMap<String, IListener> bqq;
-  public int fES;
-  public String fzM;
-  public String qdn;
-  public String qdo;
-  public f qdp;
+  private HashMap<String, IListener> djU;
+  public String hEy;
+  public int hJK;
+  public String tib;
+  public String tic;
+  public f tie;
   
   private a()
   {
     AppMethodBeat.i(145817);
-    this.bqq = new HashMap();
+    this.djU = new HashMap();
     AppMethodBeat.o(145817);
   }
   
   public final void a(IListener paramIListener, String paramString)
   {
     AppMethodBeat.i(145819);
-    if (this.bqq.get(paramString) != null)
+    if (this.djU.get(paramString) != null)
     {
       Log.i("MicroMsg.AppBrandMusicPlayerManager", "listeners already add appid: %s", new Object[] { paramString });
       AppMethodBeat.o(145819);
       return;
     }
-    EventCenter.instance.addListener(paramIListener);
-    this.bqq.put(paramString, paramIListener);
+    paramIListener.alive();
+    this.djU.put(paramString, paramIListener);
     AppMethodBeat.o(145819);
   }
   
-  public final void akx(String paramString)
+  public final void adD(String paramString)
   {
     AppMethodBeat.i(145820);
-    if (this.bqq.get(paramString) == null)
+    if (this.djU.get(paramString) == null)
     {
       Log.i("MicroMsg.AppBrandMusicPlayerManager", "listeners already remove appid: %s", new Object[] { paramString });
       AppMethodBeat.o(145820);
       return;
     }
-    EventCenter.instance.removeListener((IListener)this.bqq.remove(paramString));
-    this.bqq.remove(paramString);
+    ((IListener)this.djU.remove(paramString)).dead();
+    this.djU.remove(paramString);
     AppMethodBeat.o(145820);
   }
   
-  public final boolean aky(String paramString)
+  public final boolean adE(String paramString)
   {
     AppMethodBeat.i(145821);
     if (TextUtils.isEmpty(paramString))
@@ -62,32 +61,32 @@ public final class a
       AppMethodBeat.o(145821);
       return false;
     }
-    if (!paramString.equalsIgnoreCase(this.qdn))
+    if (!paramString.equalsIgnoreCase(this.tib))
     {
       Log.e("MicroMsg.AppBrandMusicPlayerManager", "appId is not equals pre play id");
       AppMethodBeat.o(145821);
       return false;
     }
-    if (TextUtils.isEmpty(this.qdo))
+    if (TextUtils.isEmpty(this.tic))
     {
       Log.e("MicroMsg.AppBrandMusicPlayerManager", "now app not play music");
       AppMethodBeat.o(145821);
       return false;
     }
-    paramString = com.tencent.mm.bb.a.bnA();
+    paramString = com.tencent.mm.aw.a.bLn();
     if (paramString == null)
     {
       Log.e("MicroMsg.AppBrandMusicPlayerManager", "wrapper is null");
       AppMethodBeat.o(145821);
       return false;
     }
-    if (!this.qdo.equalsIgnoreCase(paramString.lVt))
+    if (!this.tic.equalsIgnoreCase(paramString.oOv))
     {
       Log.e("MicroMsg.AppBrandMusicPlayerManager", "musicId is diff");
       AppMethodBeat.o(145821);
       return false;
     }
-    if (!com.tencent.mm.bb.a.bnx())
+    if (!com.tencent.mm.aw.a.bLk())
     {
       Log.i("MicroMsg.AppBrandMusicPlayerManager", "MusicHelper.isPlayingMusic FALSE");
       AppMethodBeat.o(145821);
@@ -97,19 +96,19 @@ public final class a
     return true;
   }
   
-  public final boolean eG(String paramString1, String paramString2)
+  public final boolean eX(String paramString1, String paramString2)
   {
     AppMethodBeat.i(145818);
     if (paramString2.equalsIgnoreCase("play"))
     {
-      Log.i("MicroMsg.AppBrandMusicPlayerManager", "play option appid %s, pre appid %s", new Object[] { paramString1, this.qdn });
+      Log.i("MicroMsg.AppBrandMusicPlayerManager", "play option appid %s, pre appid %s", new Object[] { paramString1, this.tib });
       AppMethodBeat.o(145818);
       return true;
     }
-    if (paramString1.equalsIgnoreCase(this.qdn))
+    if (paramString1.equalsIgnoreCase(this.tib))
     {
-      paramString1 = com.tencent.mm.bb.a.bnA();
-      if ((paramString1 != null) && (paramString1.lVt.equals(this.qdo)))
+      paramString1 = com.tencent.mm.aw.a.bLn();
+      if ((paramString1 != null) && (paramString1.oOv.equals(this.tic)))
       {
         AppMethodBeat.o(145818);
         return true;
@@ -121,12 +120,12 @@ public final class a
   
   public static final class a
   {
-    private static a qdq;
+    private static a tif;
     
     static
     {
       AppMethodBeat.i(145816);
-      qdq = new a((byte)0);
+      tif = new a((byte)0);
       AppMethodBeat.o(145816);
     }
   }

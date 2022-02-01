@@ -6,18 +6,18 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class g
 {
-  public static d EUL;
+  public static d KPJ;
   
-  public static d eRW()
+  public static d gaI()
   {
     AppMethodBeat.i(94806);
-    if (EUL == null) {
-      EUL = new b();
+    if (KPJ == null) {
+      KPJ = new b();
     }
-    if ((EUL instanceof b)) {
+    if ((KPJ instanceof b)) {
       Log.w("MicroMsg.SendMsgMgrFactory", "we are using dummy SendMsgMgr!!");
     }
-    d locald = EUL;
+    d locald = KPJ;
     AppMethodBeat.o(94806);
     return locald;
   }

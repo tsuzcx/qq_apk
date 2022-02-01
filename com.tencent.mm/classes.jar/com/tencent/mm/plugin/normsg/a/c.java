@@ -5,9 +5,9 @@ import java.util.UUID;
 
 public final class c
 {
-  public static String aaA(int paramInt)
+  public static String aeT(int paramInt)
   {
-    AppMethodBeat.i(222515);
+    AppMethodBeat.i(261942);
     Object localObject = new StringBuilder();
     switch (paramInt)
     {
@@ -19,7 +19,7 @@ public final class c
       ((StringBuilder)localObject).append("_");
       ((StringBuilder)localObject).append(UUID.randomUUID().toString());
       localObject = ((StringBuilder)localObject).toString();
-      AppMethodBeat.o(222515);
+      AppMethodBeat.o(261942);
       return localObject;
       ((StringBuilder)localObject).append("VerifyUser");
       continue;
@@ -31,7 +31,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.normsg.a.c
  * JD-Core Version:    0.7.0.1
  */

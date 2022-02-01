@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.backgroundfetch;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.config.y;
+import com.tencent.mm.plugin.appbrand.config.ad;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
@@ -9,21 +9,21 @@ import com.tencent.mm.sdk.storage.MAutoStorage;
 public class d
   extends MAutoStorage<c>
 {
-  public static final String[] lqL;
+  public static final String[] nVW;
   
   static
   {
     AppMethodBeat.i(44709);
-    lqL = new String[] { MAutoStorage.getCreateSQLs(c.nSc, "AppBrandBackgroundFetchData") };
+    nVW = new String[] { MAutoStorage.getCreateSQLs(c.qRM, "AppBrandBackgroundFetchData") };
     AppMethodBeat.o(44709);
   }
   
   public d(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramISQLiteDatabase, c.nSc, "AppBrandBackgroundFetchData", null);
+    super(paramISQLiteDatabase, c.qRM, "AppBrandBackgroundFetchData", null);
   }
   
-  private AppBrandBackgroundFetchDataParcel bM(String paramString, int paramInt)
+  private AppBrandBackgroundFetchDataParcel ce(String paramString, int paramInt)
   {
     AppMethodBeat.i(44706);
     if (Util.isNullOrNil(paramString))
@@ -38,12 +38,12 @@ public class d
     {
       paramString = new AppBrandBackgroundFetchDataParcel();
       paramString.username = localc.field_username;
-      paramString.nSb = localc.field_fetchType;
+      paramString.qRL = localc.field_fetchType;
       paramString.path = localc.field_path;
       paramString.query = localc.field_query;
       paramString.data = localc.field_data;
       paramString.scene = localc.field_scene;
-      paramString.coZ = localc.field_updateTime;
+      paramString.egK = localc.field_updateTime;
       AppMethodBeat.o(44706);
       return paramString;
     }
@@ -85,13 +85,13 @@ public class d
     return bool;
   }
   
-  public final long bN(String paramString, int paramInt)
+  public final long cf(String paramString, int paramInt)
   {
     AppMethodBeat.i(44707);
-    paramString = bM(paramString, paramInt);
+    paramString = ce(paramString, paramInt);
     if (paramString != null)
     {
-      long l = paramString.coZ;
+      long l = paramString.egK;
       AppMethodBeat.o(44707);
       return l;
     }
@@ -99,7 +99,7 @@ public class d
     return 0L;
   }
   
-  public final AppBrandBackgroundFetchDataParcel bO(String paramString, int paramInt)
+  public final AppBrandBackgroundFetchDataParcel cg(String paramString, int paramInt)
   {
     AppMethodBeat.i(44708);
     if (Util.isNullOrNil(paramString))
@@ -107,7 +107,7 @@ public class d
       AppMethodBeat.o(44708);
       return null;
     }
-    paramString = bM(y.afk(paramString), paramInt);
+    paramString = ce(ad.XL(paramString), paramInt);
     AppMethodBeat.o(44708);
     return paramString;
   }

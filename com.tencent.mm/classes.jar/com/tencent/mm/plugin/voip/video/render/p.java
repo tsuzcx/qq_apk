@@ -1,419 +1,248 @@
 package com.tencent.mm.plugin.voip.video.render;
 
+import android.graphics.SurfaceTexture;
+import android.opengl.EGLContext;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.ad;
+import com.tencent.mm.media.g.d;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.nio.ByteBuffer;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.a;
 import kotlin.g.a.b;
-import kotlin.g.a.r;
-import kotlin.g.b.aa.e;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/voip/video/render/VoipWindowsSurfaceRenderer;", "", "()V", "mCameraOrientation", "", "getMCameraOrientation", "()I", "setMCameraOrientation", "(I)V", "mIsMirror", "", "getMIsMirror", "()Z", "setMIsMirror", "(Z)V", "mLocalWindowSurfaceRender", "Lcom/tencent/mm/plugin/voip/video/render/WindowSurfaceRenderer;", "mPboSurfaceRender", "Lcom/tencent/mm/plugin/voip/video/render/PboSurfaceRender;", "getMPboSurfaceRender", "()Lcom/tencent/mm/plugin/voip/video/render/PboSurfaceRender;", "setMPboSurfaceRender", "(Lcom/tencent/mm/plugin/voip/video/render/PboSurfaceRender;)V", "mRemoteWindowsSurfaceRenderer", "mRenderEventListener", "Lcom/tencent/mm/plugin/voip/video/render/IVoIPRendererEvent;", "getMRenderEventListener", "()Lcom/tencent/mm/plugin/voip/video/render/IVoIPRendererEvent;", "setMRenderEventListener", "(Lcom/tencent/mm/plugin/voip/video/render/IVoIPRendererEvent;)V", "addRenderSurface", "", "surface", "Lcom/tencent/mm/plugin/voip/video/render/OpenGLSurface;", "renderSide", "checkInit", "callback", "Lkotlin/Function1;", "choiceRenderSurface", "mIsRenderLocal", "createSurface", "glSurface", "drawFrame", "pBuff", "", "w", "h", "flag", "", "getFaceBeautyType", "initLocalSurfaceRenderer", "pboSurfaceRender", "initPboSurfaceRenderer", "width", "height", "initRemoteSurfaceRenderer", "isUseFaceBeauty", "onCameraPreviewApply", "release", "removeSurface", "setCameraIsMirror", "mirror", "setCameraOrientation", "orientation", "setCameraPreviewSize", "size", "Lcom/tencent/mm/compatible/deviceinfo/Size;", "rotateDegree", "setLocalRenderOrientation", "setLocalVideoSize", "setOnDrawProcEndAfterViewAddCallback", "Lkotlin/Function0;", "setOnFrameAvailableCallback", "setOnFrameDataCallback", "Lkotlin/Function4;", "Ljava/nio/ByteBuffer;", "Lcom/tencent/mm/plugin/voip/video/program/FaceBeautyDataCallBack;", "setSTFilterMotionNoiseData", "motion", "noise", "", "setShowMode", "mode", "setSpatiotemporalDenosing", "cmd", "skipFilter", "setVoIPBeauty", "startRender", "stopRender", "switchRenderSurface", "updateDrawViewSize", "outputSurface", "updateEncodeResType", "encWidth", "encHeight", "encoderType", "updateLocalRenderSize", "renderSize", "updateRendererSize", "(Lcom/tencent/mm/compatible/deviceinfo/Size;Ljava/lang/Integer;)V", "Companion", "plugin-voip_release"})
-public final class p
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/voip/video/render/WindowSurfaceRenderer;", "Lcom/tencent/mm/plugin/voip/video/render/IWindowSurfaceRenderer;", "mIsRenderLocal", "", "(Z)V", "initCallback", "Lkotlin/Function1;", "", "getInitCallback", "()Lkotlin/jvm/functions/Function1;", "setInitCallback", "(Lkotlin/jvm/functions/Function1;)V", "mSharedGLContext", "Landroid/opengl/EGLContext;", "getMSharedGLContext", "()Landroid/opengl/EGLContext;", "setMSharedGLContext", "(Landroid/opengl/EGLContext;)V", "postCreatedGLContext", "getPostCreatedGLContext", "()Z", "setPostCreatedGLContext", "softPatchSize", "", "checkInit", "callback", "pboSurfaceRender", "Lcom/tencent/mm/plugin/voip/video/render/PboSurfaceRender;", "needRefresh", "createEGLContext", "isUseShareContext", "drawFrame", "pBuff", "", "w", "h", "flag", "", "getRenderSurface", "", "Lcom/tencent/mm/plugin/voip/video/render/OpenGLSurface;", "()[Lcom/tencent/mm/plugin/voip/video/render/OpenGLSurface;", "recreate", "refreshFrame", "setLocalRenderOrientation", "rotateDegree", "setMirror", "isMirror", "setSharedContext", "sharedContext", "updateLocalRendererSize", "renderSize", "Landroid/util/Size;", "Companion", "plugin-voip_release"}, k=1, mv={1, 5, 1}, xi=48)
+public class p
+  extends f
 {
-  public static final a Ogf;
-  boolean NYu;
-  public h Oga;
-  public q Ogb;
-  public q Ogc;
-  d Oge;
-  int wAs;
+  public static final p.a UUA;
+  b<? super f, ah> USI;
+  private boolean UUB;
+  EGLContext UUC;
+  private final int UUD;
   
   static
   {
-    AppMethodBeat.i(239899);
-    Ogf = new a((byte)0);
-    AppMethodBeat.o(239899);
+    AppMethodBeat.i(293127);
+    UUA = new p.a((byte)0);
+    AppMethodBeat.o(293127);
   }
   
-  public final void a(ad paramad, int paramInt, boolean paramBoolean)
+  public p(boolean paramBoolean)
   {
-    AppMethodBeat.i(239869);
-    kotlin.g.b.p.k(paramad, "size");
-    h localh = this.Oga;
-    if (localh != null)
+    super(paramBoolean, UUA.hashCode());
+    AppMethodBeat.i(293113);
+    this.UUD = ((c)com.tencent.mm.kernel.h.ax(c.class)).a(c.a.ySq, 64);
+    AppMethodBeat.o(293113);
+  }
+  
+  public void GV(boolean paramBoolean)
+  {
+    AppMethodBeat.i(293161);
+    if (this.UUB)
     {
-      q localq = this.Ogb;
-      if (localq != null)
+      AppMethodBeat.o(293161);
+      return;
+    }
+    Log.printInfoStack("MicroMsg.WindowSurfaceRenderer", "createEGLContext, isUseShareContext:" + paramBoolean + ", shareGLContext:" + this.UUC, new Object[0]);
+    if (paramBoolean)
+    {
+      if (this.UUC == null)
       {
-        localq.a(localh, paramad, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean));
-        AppMethodBeat.o(239869);
+        AppMethodBeat.o(293161);
         return;
       }
-      AppMethodBeat.o(239869);
+      K((a)new c(this));
+      this.UUB = true;
+      AppMethodBeat.o(293161);
       return;
     }
-    AppMethodBeat.o(239869);
+    K((a)new d(this));
+    this.UUB = true;
+    AppMethodBeat.o(293161);
   }
   
-  public final void a(ad paramad, Integer paramInteger)
+  public void a(b<? super f, ah> paramb, h paramh, boolean paramBoolean)
   {
-    AppMethodBeat.i(239890);
-    kotlin.g.b.p.k(paramad, "renderSize");
-    q localq = this.Ogc;
-    if (localq != null)
+    AppMethodBeat.i(293152);
+    if (paramh != null)
     {
-      e.a(localq, paramad, paramInteger);
-      AppMethodBeat.o(239890);
-      return;
-    }
-    AppMethodBeat.o(239890);
-  }
-  
-  public final void a(g paramg)
-  {
-    AppMethodBeat.i(239879);
-    q localq = this.Ogb;
-    if (localq != null) {
-      localq.a(paramg);
-    }
-    paramg = this.Ogc;
-    if (paramg != null)
-    {
-      e.a(paramg);
-      AppMethodBeat.o(239879);
-      return;
-    }
-    AppMethodBeat.o(239879);
-  }
-  
-  public final void a(g paramg, int paramInt)
-  {
-    AppMethodBeat.i(239884);
-    q localq = this.Ogb;
-    if (localq != null) {
-      localq.a(paramg, paramInt);
-    }
-    localq = this.Ogc;
-    if (localq != null)
-    {
-      localq.a(paramg, paramInt);
-      AppMethodBeat.o(239884);
-      return;
-    }
-    AppMethodBeat.o(239884);
-  }
-  
-  public final void a(g paramg, b<? super g, x> paramb)
-  {
-    AppMethodBeat.i(239885);
-    kotlin.g.b.p.k(paramg, "glSurface");
-    h localh = this.Oga;
-    if (localh != null)
-    {
-      localh.a(paramg, paramb);
-      AppMethodBeat.o(239885);
-      return;
-    }
-    AppMethodBeat.o(239885);
-  }
-  
-  public final void aJ(int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(239864);
-    h localh = this.Oga;
-    if (localh != null)
-    {
-      localh.aJ(paramInt1, paramInt2, paramInt3);
-      AppMethodBeat.o(239864);
-      return;
-    }
-    AppMethodBeat.o(239864);
-  }
-  
-  public final void alO(int paramInt)
-  {
-    AppMethodBeat.i(239870);
-    Object localObject;
-    if (!this.NYu)
-    {
-      if ((paramInt == 180) || (paramInt == 0))
-      {
-        localObject = this.Ogb;
-        if (localObject != null) {
-          ((q)localObject).alO(180);
-        }
+      d(paramh.ido());
+      if (paramBoolean) {
+        paramh.aO((b)new b(this));
       }
       for (;;)
       {
-        localObject = this.Ogb;
-        if (localObject != null) {
-          ((q)localObject).setMirror(true);
-        }
-        localObject = this.Oga;
-        if (localObject != null) {
-          ((h)localObject).NYu = this.NYu;
-        }
-        localObject = this.Oga;
-        if (localObject == null) {
-          break;
-        }
-        ((h)localObject).lc(paramInt, this.wAs);
-        AppMethodBeat.o(239870);
+        this.USo = paramh.width;
+        this.USp = paramh.height;
+        AppMethodBeat.o(293152);
         return;
-        localObject = this.Ogb;
-        if (localObject != null) {
-          ((q)localObject).alO((paramInt + 180) % 360);
-        }
+        this.USI = paramb;
       }
     }
-    if ((paramInt == 180) || (paramInt == 0))
-    {
-      localObject = this.Ogb;
-      if (localObject != null) {
-        ((q)localObject).alO(0);
-      }
-    }
-    for (;;)
-    {
-      localObject = this.Ogb;
-      if (localObject == null) {
-        break;
-      }
-      ((q)localObject).setMirror(false);
-      break;
-      localObject = this.Ogb;
-      if (localObject != null) {
-        ((q)localObject).alO(paramInt % 360);
-      }
-    }
-    AppMethodBeat.o(239870);
+    this.USI = paramb;
+    ((f)this).GV(false);
+    AppMethodBeat.o(293152);
   }
   
-  public final void am(a<x> parama)
+  public final void aru(int paramInt)
   {
-    Object localObject = this.Ogb;
-    if (localObject != null) {
-      ((e)localObject).Oea = parama;
+    AppMethodBeat.i(293169);
+    n localn = this.USn;
+    if (localn != null) {
+      localn.th(paramInt);
     }
-    localObject = this.Oga;
-    if (localObject != null) {
-      ((h)localObject).Oea = parama;
+    localn = this.USn;
+    if (localn != null) {
+      localn.arz(paramInt);
     }
-    localObject = this.Ogc;
-    if (localObject != null) {
-      ((e)localObject).Oea = parama;
-    }
+    AppMethodBeat.o(293169);
   }
   
-  public final void b(g paramg, int paramInt)
+  protected final void d(EGLContext paramEGLContext)
   {
-    AppMethodBeat.i(239874);
-    if (paramg != null)
+    AppMethodBeat.i(293142);
+    if (paramEGLContext != null)
     {
-      Log.printInfoStack("MicroMsg.LocalWindowsSurfaceRenderer", "add render surface renderSide " + paramInt + " and :" + paramg, new Object[0]);
-      q localq = this.Ogb;
-      if (localq != null) {
-        localq.b(paramg, paramInt);
-      }
-      localq = this.Ogc;
-      if (localq != null)
-      {
-        localq.b(paramg, paramInt);
-        AppMethodBeat.o(239874);
-        return;
-      }
-      AppMethodBeat.o(239874);
-      return;
+      this.UUC = paramEGLContext;
+      GV(true);
     }
-    Log.e("MicroMsg.LocalWindowsSurfaceRenderer", "add a null surface");
-    AppMethodBeat.o(239874);
+    AppMethodBeat.o(293142);
   }
   
-  public final void c(g paramg, int paramInt)
+  protected final boolean idI()
   {
-    AppMethodBeat.i(239876);
-    if (paramg != null)
-    {
-      q localq = this.Ogb;
-      if (localq != null) {
-        localq.c(paramg, paramInt);
-      }
-      localq = this.Ogc;
-      if (localq != null)
-      {
-        localq.c(paramg, paramInt);
-        AppMethodBeat.o(239876);
-        return;
-      }
-      AppMethodBeat.o(239876);
-      return;
-    }
-    Log.e("MicroMsg.LocalWindowsSurfaceRenderer", "remove a null surface");
-    AppMethodBeat.o(239876);
+    return this.UUB;
   }
   
-  public final int gEF()
+  protected final void idJ()
   {
-    h localh = this.Oga;
-    if (localh != null) {
-      return localh.OeC;
-    }
-    return 0;
+    this.UUB = true;
   }
   
-  public final void gEG()
+  public g[] idg()
   {
-    AppMethodBeat.i(239872);
-    q localq = this.Ogb;
-    if (localq != null) {
-      localq.Bt(true);
-    }
-    localq = this.Ogc;
-    if (localq != null)
-    {
-      localq.Bt(false);
-      AppMethodBeat.o(239872);
-      return;
-    }
-    AppMethodBeat.o(239872);
+    return new g[] { this.USl, this.USm, this.URC };
   }
   
-  public final void gEs()
+  public final void setMirror(boolean paramBoolean)
   {
-    AppMethodBeat.i(239883);
-    q localq = this.Ogb;
-    if (localq != null) {
-      localq.gEs();
+    AppMethodBeat.i(293179);
+    n localn = this.USn;
+    if (localn != null) {
+      localn.gr(paramBoolean);
     }
-    localq = this.Ogc;
-    if (localq != null)
-    {
-      localq.gEs();
-      AppMethodBeat.o(239883);
-      return;
+    localn = this.USn;
+    if (localn != null) {
+      localn.GZ(paramBoolean);
     }
-    AppMethodBeat.o(239883);
+    AppMethodBeat.o(293179);
   }
   
-  public final void i(r<? super ByteBuffer, ? super Integer, ? super Integer, ? super Integer, x> paramr)
-  {
-    AppMethodBeat.i(293178);
-    h localh = this.Oga;
-    if (localh != null)
-    {
-      localh.h(paramr);
-      AppMethodBeat.o(293178);
-      return;
-    }
-    AppMethodBeat.o(293178);
-  }
-  
-  public final void release()
-  {
-    AppMethodBeat.i(239894);
-    h localh = this.Oga;
-    if (localh != null)
-    {
-      localh.j((a)new i(this));
-      AppMethodBeat.o(239894);
-      return;
-    }
-    AppMethodBeat.o(239894);
-  }
-  
-  public final void setShowMode(int paramInt)
-  {
-    AppMethodBeat.i(239887);
-    q localq = this.Ogc;
-    if (localq != null)
-    {
-      localq.setShowMode(paramInt);
-      AppMethodBeat.o(239887);
-      return;
-    }
-    AppMethodBeat.o(239887);
-  }
-  
-  public final void y(int paramInt, float paramFloat)
-  {
-    AppMethodBeat.i(239866);
-    h localh = this.Oga;
-    if (localh != null)
-    {
-      localh.y(paramInt, paramFloat);
-      AppMethodBeat.o(239866);
-      return;
-    }
-    AppMethodBeat.o(239866);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/voip/video/render/VoipWindowsSurfaceRenderer$Companion;", "", "()V", "TAG", "", "plugin-voip_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/voip/video/render/PboSurfaceRender;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/media/globject/GLTextureObject;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends kotlin.g.b.q
-    implements b<h, x>
+    extends u
+    implements b<d, ah>
   {
-    b(p paramp, b paramb)
+    b(p paramp)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "invoke", "(J)Lkotlin/Unit;"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends u
+    implements a<ah>
+  {
+    c(p paramp)
+    {
+      super();
+    }
+    
+    private static final void a(final p paramp, final d paramd, SurfaceTexture paramSurfaceTexture)
+    {
+      AppMethodBeat.i(292961);
+      s.u(paramp, "this$0");
+      s.u(paramd, "$this_apply");
+      paramp.K((a)new a(paramSurfaceTexture, paramp, paramd));
+      AppMethodBeat.o(292961);
+    }
+    
+    private static final void b(p paramp)
+    {
+      AppMethodBeat.i(292965);
+      s.u(paramp, "this$0");
+      b localb = paramp.USI;
+      if (localb != null) {
+        localb.invoke(paramp);
+      }
+      AppMethodBeat.o(292965);
+    }
+    
+    @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+    static final class a
+      extends u
+      implements a<ah>
+    {
+      a(SurfaceTexture paramSurfaceTexture, p paramp, d paramd)
+      {
+        super();
+      }
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    extends kotlin.g.b.q
-    implements b<Long, x>
+    extends u
+    implements a<ah>
   {
-    d(p paramp, aa.e parame)
+    d(p paramp)
     {
       super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "renderer", "Lcom/tencent/mm/plugin/voip/video/render/IWindowSurfaceRenderer;", "invoke"})
-  static final class f
-    extends kotlin.g.b.q
-    implements b<e, x>
-  {
-    public static final f Ogj;
-    
-    static
-    {
-      AppMethodBeat.i(236125);
-      Ogj = new f();
-      AppMethodBeat.o(236125);
     }
     
-    f()
+    private static final void a(final p paramp, final d paramd, SurfaceTexture paramSurfaceTexture)
     {
-      super();
+      AppMethodBeat.i(292963);
+      s.u(paramp, "this$0");
+      s.u(paramd, "$this_apply");
+      paramp.K((a)new a(paramSurfaceTexture, paramp, paramd));
+      AppMethodBeat.o(292963);
+    }
+    
+    private static final void b(p paramp)
+    {
+      AppMethodBeat.i(292969);
+      s.u(paramp, "this$0");
+      b localb = paramp.USI;
+      if (localb != null) {
+        localb.invoke(paramp);
+      }
+      AppMethodBeat.o(292969);
+    }
+    
+    @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+    static final class a
+      extends u
+      implements a<ah>
+    {
+      a(SurfaceTexture paramSurfaceTexture, p paramp, d paramd)
+      {
+        super();
+      }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "invoke"})
-  static final class g
-    extends kotlin.g.b.q
-    implements b<Long, x>
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  public static final class e
+    extends u
+    implements a<ah>
   {
-    g(p paramp)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "invoke", "(J)Lkotlin/Unit;"})
-  static final class h
-    extends kotlin.g.b.q
-    implements b<Long, x>
-  {
-    h(p paramp)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class i
-    extends kotlin.g.b.q
-    implements a<x>
-  {
-    i(p paramp)
+    public e(p paramp, int paramInt1, int paramInt2, byte[] paramArrayOfByte, int paramInt3)
     {
       super();
     }
@@ -421,7 +250,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.render.p
  * JD-Core Version:    0.7.0.1
  */

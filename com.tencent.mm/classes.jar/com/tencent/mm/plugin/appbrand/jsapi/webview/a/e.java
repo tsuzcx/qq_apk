@@ -1,44 +1,43 @@
 package com.tencent.mm.plugin.appbrand.jsapi.webview.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.d.f;
-import com.tencent.mm.plugin.webview.d.n;
-import com.tencent.mm.plugin.webview.d.q;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.webview.jsapi.g;
+import com.tencent.mm.plugin.webview.jsapi.h;
+import com.tencent.mm.plugin.webview.jsapi.p;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/webview/bwc/HTMLWebViewJsApiPool;", "Lcom/tencent/mm/plugin/webview/jsapi/IWebViewJsApiPool;", "()V", "compatJsApiPool", "Lcom/tencent/mm/plugin/webview/jsapi/WebViewJsApiPool;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "support", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/webview/bwc/HTMLWebViewJsApiPool;", "Lcom/tencent/mm/plugin/webview/jsapi/IWebViewJsApiPool;", "()V", "compatJsApiPool", "Lcom/tencent/mm/plugin/webview/jsapi/WebViewJsApiPool;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "support", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
-  implements com.tencent.mm.plugin.webview.d.e
+  implements g
 {
-  private static final q pHJ;
-  public static final e pHK;
+  public static final e sME;
+  private static final com.tencent.mm.plugin.webview.jsapi.s sMF;
   
   static
   {
-    AppMethodBeat.i(274475);
-    pHK = new e();
-    pHJ = q.POB;
-    AppMethodBeat.o(274475);
+    AppMethodBeat.i(327554);
+    sME = new e();
+    sMF = com.tencent.mm.plugin.webview.jsapi.s.WEN;
+    AppMethodBeat.o(327554);
   }
   
-  public final boolean a(f paramf, n paramn)
+  public final boolean a(h paramh, p paramp)
   {
-    AppMethodBeat.i(274473);
-    p.k(paramf, "env");
-    p.k(paramn, "msg");
-    boolean bool = pHJ.a(paramf, paramn);
-    AppMethodBeat.o(274473);
+    AppMethodBeat.i(327562);
+    kotlin.g.b.s.u(paramh, "env");
+    kotlin.g.b.s.u(paramp, "msg");
+    boolean bool = sMF.a(paramh, paramp);
+    AppMethodBeat.o(327562);
     return bool;
   }
   
-  public final boolean b(f paramf, n paramn)
+  public final boolean b(h paramh, p paramp)
   {
-    AppMethodBeat.i(274474);
-    p.k(paramf, "env");
-    p.k(paramn, "msg");
-    boolean bool = pHJ.b(paramf, paramn);
-    AppMethodBeat.o(274474);
+    AppMethodBeat.i(327567);
+    kotlin.g.b.s.u(paramh, "env");
+    kotlin.g.b.s.u(paramp, "msg");
+    boolean bool = sMF.b(paramh, paramp);
+    AppMethodBeat.o(327567);
     return bool;
   }
 }

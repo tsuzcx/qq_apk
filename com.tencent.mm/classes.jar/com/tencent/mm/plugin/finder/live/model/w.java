@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.finder.live.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bbd;
-import com.tencent.mm.protocal.protobuf.bdm;
-import kotlin.l;
+import com.tencent.mm.protocal.protobuf.bke;
+import com.tencent.mm.protocal.protobuf.cbs;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/FinderLiveLocationMsg;", "Lcom/tencent/mm/plugin/finder/live/model/FinderLiveTextMsg;", "msg", "Lcom/tencent/mm/protocal/protobuf/FinderLiveMsg;", "loc", "Lcom/tencent/mm/protocal/protobuf/FinderLocation;", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveMsg;Lcom/tencent/mm/protocal/protobuf/FinderLocation;)V", "getLoc", "()Lcom/tencent/mm/protocal/protobuf/FinderLocation;", "setLoc", "(Lcom/tencent/mm/protocal/protobuf/FinderLocation;)V", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/model/FinderLiveJumpGameMsg;", "Lcom/tencent/mm/plugin/finder/live/model/FinderLiveTextMsg;", "msg", "Lcom/tencent/mm/protocal/protobuf/FinderLiveMsg;", "info", "Lcom/tencent/mm/protocal/protobuf/GameLiveJumpInfo;", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveMsg;Lcom/tencent/mm/protocal/protobuf/GameLiveJumpInfo;)V", "getInfo", "()Lcom/tencent/mm/protocal/protobuf/GameLiveJumpInfo;", "setInfo", "(Lcom/tencent/mm/protocal/protobuf/GameLiveJumpInfo;)V", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class w
-  extends ak
+  extends am
 {
-  public bdm ygw;
+  public cbs CGt;
   
-  public w(bbd parambbd, bdm parambdm)
+  public w(bke parambke, cbs paramcbs)
   {
-    super(parambbd);
-    AppMethodBeat.i(274270);
-    this.ygw = parambdm;
-    AppMethodBeat.o(274270);
+    super(parambke);
+    AppMethodBeat.i(359463);
+    this.CGt = paramcbs;
+    AppMethodBeat.o(359463);
   }
 }
 

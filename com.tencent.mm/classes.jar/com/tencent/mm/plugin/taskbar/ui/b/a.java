@@ -8,55 +8,55 @@ import java.util.List;
 public final class a
   implements b
 {
-  private List<Double> MqB;
-  public double MqC;
-  public double kSF;
-  public double kSG;
+  private List<Double> STN;
+  public double STO;
+  public double nyq;
+  public double nyr;
   
   public a()
   {
-    AppMethodBeat.i(214892);
-    this.MqB = new ArrayList(100);
-    this.MqC = 0.0D;
-    this.kSF = 1.7976931348623157E+308D;
-    this.kSG = 4.9E-324D;
-    AppMethodBeat.o(214892);
+    AppMethodBeat.i(264179);
+    this.STN = new ArrayList(100);
+    this.STO = 0.0D;
+    this.nyq = 1.7976931348623157E+308D;
+    this.nyr = 4.9E-324D;
+    AppMethodBeat.o(264179);
   }
   
-  public final void aEV()
+  public final void aXX()
   {
-    AppMethodBeat.i(214896);
-    if (this.MqB == null)
+    AppMethodBeat.i(264195);
+    if (this.STN == null)
     {
-      AppMethodBeat.o(214896);
+      AppMethodBeat.o(264195);
       return;
     }
-    if (this.MqB.size() > 10000)
+    if (this.STN.size() > 10000)
     {
-      AppMethodBeat.o(214896);
+      AppMethodBeat.o(264195);
       return;
     }
-    if (this.MqB.size() != 0)
+    if (this.STN.size() != 0)
     {
-      Iterator localIterator = this.MqB.iterator();
+      Iterator localIterator = this.STN.iterator();
       double d2;
       for (double d1 = 0.0D; localIterator.hasNext(); d1 += d2)
       {
         d2 = ((Double)localIterator.next()).doubleValue();
-        this.kSF = Math.min(this.kSF, d2);
-        this.kSG = Math.max(this.kSG, d2);
+        this.nyq = Math.min(this.nyq, d2);
+        this.nyr = Math.max(this.nyr, d2);
       }
-      this.MqC = (d1 / this.MqB.size());
+      this.STO = (d1 / this.STN.size());
     }
-    AppMethodBeat.o(214896);
+    AppMethodBeat.o(264195);
   }
   
-  public final void aEW()
+  public final void aXY()
   {
     double d1 = 60.0D;
     double d2 = 0.0D;
-    AppMethodBeat.i(214900);
-    double d3 = c.MqD.jVQ;
+    AppMethodBeat.i(264203);
+    double d3 = c.STP.mvK;
     if (d3 > 60.0D) {}
     for (;;)
     {
@@ -65,8 +65,8 @@ public final class a
       }
       for (;;)
       {
-        this.MqB.add(Double.valueOf(d1));
-        AppMethodBeat.o(214900);
+        this.STN.add(Double.valueOf(d1));
+        AppMethodBeat.o(264203);
         return;
       }
       d1 = d3;
@@ -75,7 +75,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.taskbar.ui.b.a
  * JD-Core Version:    0.7.0.1
  */

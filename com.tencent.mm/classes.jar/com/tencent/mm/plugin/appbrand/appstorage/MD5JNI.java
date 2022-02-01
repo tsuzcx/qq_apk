@@ -9,17 +9,17 @@ public class MD5JNI
   
   static
   {
-    AppMethodBeat.i(211056);
+    AppMethodBeat.i(323212);
     HEX_ARRAY = "0123456789abcdef".getBytes(StandardCharsets.US_ASCII);
-    AppMethodBeat.o(211056);
+    AppMethodBeat.o(323212);
   }
   
   public static String bytesToHexStringFast(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(211053);
+    AppMethodBeat.i(323206);
     if (paramArrayOfByte == null)
     {
-      AppMethodBeat.o(211053);
+      AppMethodBeat.o(323206);
       return "";
     }
     byte[] arrayOfByte = new byte[paramArrayOfByte.length * 2];
@@ -32,7 +32,7 @@ public class MD5JNI
       i += 1;
     }
     paramArrayOfByte = new String(arrayOfByte, StandardCharsets.UTF_8);
-    AppMethodBeat.o(211053);
+    AppMethodBeat.o(323206);
     return paramArrayOfByte;
   }
   
@@ -57,17 +57,17 @@ public class MD5JNI
   
   public static String getMD5WrapLegacy(String paramString)
   {
-    AppMethodBeat.i(211054);
+    AppMethodBeat.i(323209);
     String[] arrayOfString = new String[1];
     getMD5StringLegacy(paramString, arrayOfString);
     paramString = arrayOfString[0];
-    AppMethodBeat.o(211054);
+    AppMethodBeat.o(323209);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.MD5JNI
  * JD-Core Version:    0.7.0.1
  */

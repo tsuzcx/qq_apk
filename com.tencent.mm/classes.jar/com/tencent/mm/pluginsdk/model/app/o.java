@@ -1,48 +1,40 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.aa;
-import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.message.k.b;
+import com.tencent.mm.plugin.musicchat.a.b;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/model/app/AppMsgMusicSender;", "Lcom/tencent/mm/plugin/musicchat/api/IPluginSendMusicToChat;", "userName", "", "(Ljava/lang/String;)V", "getChatUserName", "sendMusic", "", "content", "Lcom/tencent/mm/message/AppMessage$Content;", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class o
-  extends aa
+  implements b
 {
-  protected static IAutoDBItem.MAutoDBInfo info;
+  private final String userName;
   
-  static
+  public o(String paramString)
   {
-    AppMethodBeat.i(31043);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[3];
-    localMAutoDBInfo.columns = new String[4];
-    StringBuilder localStringBuilder = new StringBuilder();
-    localMAutoDBInfo.columns[0] = "flag";
-    localMAutoDBInfo.colsMap.put("flag", "LONG default '0' ");
-    localStringBuilder.append(" flag LONG default '0' ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[1] = "appId";
-    localMAutoDBInfo.colsMap.put("appId", "TEXT default '' ");
-    localStringBuilder.append(" appId TEXT default '' ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[2] = "sortId";
-    localMAutoDBInfo.colsMap.put("sortId", "INTEGER default '0' ");
-    localStringBuilder.append(" sortId INTEGER default '0' ");
-    localMAutoDBInfo.columns[3] = "rowid";
-    localMAutoDBInfo.sql = localStringBuilder.toString();
-    info = localMAutoDBInfo;
-    AppMethodBeat.o(31043);
+    AppMethodBeat.i(244890);
+    this.userName = paramString;
+    AppMethodBeat.o(244890);
   }
   
-  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  public final void f(k.b paramb)
   {
-    return info;
+    AppMethodBeat.i(244894);
+    s.u(paramb, "content");
+    n.a(k.b.a(paramb), paramb.appId, paramb.appName, this.userName, "", null);
+    AppMethodBeat.o(244894);
+  }
+  
+  public final String gpc()
+  {
+    return this.userName;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.o
  * JD-Core Version:    0.7.0.1
  */

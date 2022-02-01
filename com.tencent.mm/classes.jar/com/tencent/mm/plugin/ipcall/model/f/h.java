@@ -6,41 +6,41 @@ import com.tencent.mm.sdk.platformtools.Util;
 public final class h
   extends a
 {
-  private long DRU;
-  public long DRV;
-  private long DSq = 0L;
-  public long DSr = 0L;
-  public long DSs = 0L;
-  public long DSt = 0L;
+  private long JJA = 0L;
+  public long JJB = 0L;
+  public long JJC = 0L;
+  public long JJD = 0L;
+  private long JJe;
+  public long JJf;
   
-  protected final void cig()
+  protected final void cIX()
   {
     AppMethodBeat.i(25508);
-    com.tencent.mm.plugin.report.service.h.IzE.a(12931, new Object[] { Long.valueOf(this.DRU), Long.valueOf(this.DRV), Long.valueOf(this.DSq), Long.valueOf(this.DSr), Long.valueOf(this.DSs), Long.valueOf(this.DSt) });
+    com.tencent.mm.plugin.report.service.h.OAn.b(12931, new Object[] { Long.valueOf(this.JJe), Long.valueOf(this.JJf), Long.valueOf(this.JJA), Long.valueOf(this.JJB), Long.valueOf(this.JJC), Long.valueOf(this.JJD) });
     AppMethodBeat.o(25508);
   }
   
   public final void reset()
   {
-    this.DRU = 0L;
-    this.DRV = 0L;
-    this.DSq = 0L;
-    this.DSr = 0L;
-    this.DSs = 0L;
-    this.DSt = 0L;
+    this.JJe = 0L;
+    this.JJf = 0L;
+    this.JJA = 0L;
+    this.JJB = 0L;
+    this.JJC = 0L;
+    this.JJD = 0L;
   }
   
   public final void start()
   {
     AppMethodBeat.i(25507);
     super.start();
-    this.DRU = Util.nowMilliSecond();
+    this.JJe = Util.nowMilliSecond();
     AppMethodBeat.o(25507);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.f.h
  * JD-Core Version:    0.7.0.1
  */

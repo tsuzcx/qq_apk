@@ -124,7 +124,7 @@ public class brand_100_loading_60_60
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.brand_100_loading_60_60
  * JD-Core Version:    0.7.0.1
  */

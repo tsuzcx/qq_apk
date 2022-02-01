@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/a95" android:background="@drawable/ip" android:paddingLeft="@dimen/ce" android:paddingTop="@dimen/i2" android:paddingRight="@dimen/ce" android:paddingBottom="@dimen/i2" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/hc" android:textColor="@color/ts" android:id="@id/a96" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wx" android:singleLine="true" />
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="10.0dip" android:layout_height="20.0dip" android:layout_marginLeft="@dimen/g" android:src="@raw/biz_time_line_to_top_icon" app:iconColor="@color/ts" />
-    </LinearLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.brandservice.ui.timeline.item.BizTLRecCardCanvasView android:id="@id/if1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:contentDescription="@string/ap0" />
 </LinearLayout>

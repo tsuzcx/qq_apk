@@ -13,20 +13,20 @@ public final class f
       AppMethodBeat.o(182599);
       return null;
     }
-    if (g.cbg())
+    if (g.cBA())
     {
-      paramInfo = new e(paramInfo.fileName, paramInfo.nGF);
+      paramInfo = new e(paramInfo.fileName, paramInfo.qGx);
       AppMethodBeat.o(182599);
       return paramInfo;
     }
-    paramInfo = new d(paramInfo.fileName, paramInfo.nGF);
+    paramInfo = new d(paramInfo.fileName, paramInfo.qGx);
     AppMethodBeat.o(182599);
     return paramInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.a.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,146 +1,143 @@
 package kotlinx.coroutines.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 import kotlin.d.a.a;
 import kotlin.d.b.a.e;
 import kotlin.d.d;
 import kotlin.g.a.m;
-import kotlin.g.b.ag;
-import kotlin.l;
-import kotlinx.coroutines.ap;
-import kotlinx.coroutines.cf;
-import kotlinx.coroutines.cy;
-import kotlinx.coroutines.internal.u;
-import kotlinx.coroutines.x;
+import kotlin.g.b.an;
+import kotlinx.coroutines.ae;
+import kotlinx.coroutines.au;
+import kotlinx.coroutines.cj;
+import kotlinx.coroutines.da;
+import kotlinx.coroutines.internal.ab;
+import kotlinx.coroutines.internal.y;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"startDirect", "", "T", "completion", "Lkotlin/coroutines/Continuation;", "block", "Lkotlin/Function1;", "", "startCoroutineUndispatched", "(Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)V", "R", "Lkotlin/Function2;", "receiver", "(Lkotlin/jvm/functions/Function2;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)V", "startCoroutineUnintercepted", "startUndispatchedOrReturn", "Lkotlinx/coroutines/internal/ScopeCoroutine;", "Lkotlin/ExtensionFunctionType;", "(Lkotlinx/coroutines/internal/ScopeCoroutine;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "startUndispatchedOrReturnIgnoreTimeout", "undispatchedResult", "shouldThrow", "", "", "startBlock", "Lkotlin/Function0;", "kotlinx-coroutines-core"})
+@Metadata(d1={""}, d2={"startDirect", "", "T", "completion", "Lkotlin/coroutines/Continuation;", "block", "Lkotlin/Function1;", "", "startCoroutineUndispatched", "(Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)V", "R", "Lkotlin/Function2;", "receiver", "(Lkotlin/jvm/functions/Function2;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)V", "startCoroutineUnintercepted", "startUndispatchedOrReturn", "Lkotlinx/coroutines/internal/ScopeCoroutine;", "Lkotlin/ExtensionFunctionType;", "(Lkotlinx/coroutines/internal/ScopeCoroutine;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "startUndispatchedOrReturnIgnoreTimeout", "undispatchedResult", "shouldThrow", "", "", "startBlock", "Lkotlin/Function0;", "kotlinx-coroutines-core"}, k=2, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  public static final <T, R> Object a(kotlinx.coroutines.internal.t<? super T> paramt, R paramR, m<? super R, ? super d<? super T>, ? extends Object> paramm)
+  public static final <T, R> Object a(y<? super T> paramy, R paramR, m<? super R, ? super d<? super T>, ? extends Object> paramm)
   {
-    AppMethodBeat.i(204880);
-    paramt.iQC();
-    try
-    {
-      locald = (d)paramt;
-      if (paramm == null)
+    AppMethodBeat.i(188871);
+    if (paramm == null) {
+      try
       {
-        paramR = new kotlin.t("null cannot be cast to non-null type (R, kotlin.coroutines.Continuation<T>) -> kotlin.Any?");
-        AppMethodBeat.o(204880);
+        paramR = new NullPointerException("null cannot be cast to non-null type (R, kotlin.coroutines.Continuation<T>) -> kotlin.Any?");
+        AppMethodBeat.o(188871);
         throw paramR;
       }
+      finally
+      {
+        paramR = new ae(paramR);
+      }
     }
-    catch (Throwable paramR)
+    while (paramR == a.aiwj)
     {
-      d locald;
-      for (paramR = new x(paramR); paramR == a.aaAA; paramR = ((m)ag.x(paramm, 2)).invoke(paramR, locald))
-      {
-        paramt = a.aaAA;
-        AppMethodBeat.o(204880);
-        return paramt;
-      }
-      paramR = paramt.gi(paramR);
-      if (paramR == cf.abxE)
-      {
-        paramt = a.aaAA;
-        AppMethodBeat.o(204880);
-        return paramt;
-      }
-      if ((paramR instanceof x))
-      {
-        paramR = ((x)paramR).cause;
-        paramt = paramt.abzw;
-        if ((!ap.iRh()) || (!(paramt instanceof e))) {}
-        for (paramt = paramR;; paramt = u.a(paramR, (e)paramt))
-        {
-          AppMethodBeat.o(204880);
-          throw paramt;
-        }
-      }
-      paramt = cf.gl(paramR);
-      AppMethodBeat.o(204880);
+      paramy = a.aiwj;
+      AppMethodBeat.o(188871);
+      return paramy;
+      paramR = ((m)an.y(paramm, 2)).invoke(paramR, (d)paramy);
     }
-    return paramt;
+    paramR = paramy.iK(paramR);
+    if (paramR == cj.ajwE)
+    {
+      paramy = a.aiwj;
+      AppMethodBeat.o(188871);
+      return paramy;
+    }
+    if ((paramR instanceof ae))
+    {
+      paramR = ((ae)paramR).cause;
+      paramy = paramy.ajzY;
+      if ((!au.ajvP) || (!(paramy instanceof e))) {}
+      for (paramy = paramR;; paramy = ab.a(paramR, (e)paramy))
+      {
+        AppMethodBeat.o(188871);
+        throw paramy;
+      }
+    }
+    paramy = cj.iN(paramR);
+    AppMethodBeat.o(188871);
+    return paramy;
   }
   
-  public static final <T, R> Object b(kotlinx.coroutines.internal.t<? super T> paramt, R paramR, m<? super R, ? super d<? super T>, ? extends Object> paramm)
+  public static final <T, R> Object b(y<? super T> paramy, R paramR, m<? super R, ? super d<? super T>, ? extends Object> paramm)
   {
-    AppMethodBeat.i(204881);
-    paramt.iQC();
-    try
-    {
-      localObject = (d)paramt;
-      if (paramm == null)
+    AppMethodBeat.i(188879);
+    if (paramm == null) {
+      try
       {
-        paramR = new kotlin.t("null cannot be cast to non-null type (R, kotlin.coroutines.Continuation<T>) -> kotlin.Any?");
-        AppMethodBeat.o(204881);
+        paramR = new NullPointerException("null cannot be cast to non-null type (R, kotlin.coroutines.Continuation<T>) -> kotlin.Any?");
+        AppMethodBeat.o(188879);
         throw paramR;
       }
+      finally
+      {
+        paramR = new ae(paramR);
+      }
     }
-    catch (Throwable paramR)
+    while (paramR == a.aiwj)
     {
-      Object localObject;
-      for (paramR = new x(paramR); paramR == a.aaAA; paramR = ((m)ag.x(paramm, 2)).invoke(paramR, localObject))
-      {
-        paramt = a.aaAA;
-        AppMethodBeat.o(204881);
-        return paramt;
-      }
-      paramm = paramt.gi(paramR);
-      if (paramm == cf.abxE)
-      {
-        paramt = a.aaAA;
-        AppMethodBeat.o(204881);
-        return paramt;
-      }
-      if ((paramm instanceof x))
-      {
-        localObject = ((x)paramm).cause;
-        int i;
-        if ((!(localObject instanceof cy)) || (((cy)localObject).abxQ != paramt))
-        {
-          i = 1;
-          if (i == 0) {
-            break label202;
-          }
-          paramR = ((x)paramm).cause;
-          paramt = paramt.abzw;
-          if ((ap.iRh()) && ((paramt instanceof e))) {
-            break label190;
-          }
-        }
-        label190:
-        for (paramt = paramR;; paramt = u.a(paramR, (e)paramt))
-        {
-          AppMethodBeat.o(204881);
-          throw paramt;
-          i = 0;
-          break;
-        }
-        label202:
-        if ((paramR instanceof x))
-        {
-          paramR = ((x)paramR).cause;
-          paramt = paramt.abzw;
-          if ((!ap.iRh()) || (!(paramt instanceof e))) {}
-          for (paramt = paramR;; paramt = u.a(paramR, (e)paramt))
-          {
-            AppMethodBeat.o(204881);
-            throw paramt;
-          }
-        }
-        AppMethodBeat.o(204881);
-        return paramR;
-      }
-      paramt = cf.gl(paramm);
-      AppMethodBeat.o(204881);
+      paramy = a.aiwj;
+      AppMethodBeat.o(188879);
+      return paramy;
+      paramR = ((m)an.y(paramm, 2)).invoke(paramR, (d)paramy);
     }
-    return paramt;
+    paramm = paramy.iK(paramR);
+    if (paramm == cj.ajwE)
+    {
+      paramy = a.aiwj;
+      AppMethodBeat.o(188879);
+      return paramy;
+    }
+    if ((paramm instanceof ae))
+    {
+      Throwable localThrowable = ((ae)paramm).cause;
+      int i;
+      if ((!(localThrowable instanceof da)) || (((da)localThrowable).ajwP != paramy))
+      {
+        i = 1;
+        if (i == 0) {
+          break label194;
+        }
+        paramR = ((ae)paramm).cause;
+        paramy = paramy.ajzY;
+        if ((au.ajvP) && ((paramy instanceof e))) {
+          break label182;
+        }
+      }
+      label182:
+      for (paramy = paramR;; paramy = ab.a(paramR, (e)paramy))
+      {
+        AppMethodBeat.o(188879);
+        throw paramy;
+        i = 0;
+        break;
+      }
+      label194:
+      if ((paramR instanceof ae))
+      {
+        paramR = ((ae)paramR).cause;
+        paramy = paramy.ajzY;
+        if ((!au.ajvP) || (!(paramy instanceof e))) {}
+        for (paramy = paramR;; paramy = ab.a(paramR, (e)paramy))
+        {
+          AppMethodBeat.o(188879);
+          throw paramy;
+        }
+      }
+      AppMethodBeat.o(188879);
+      return paramR;
+    }
+    paramy = cj.iN(paramm);
+    AppMethodBeat.o(188879);
+    return paramy;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.c.b
  * JD-Core Version:    0.7.0.1
  */

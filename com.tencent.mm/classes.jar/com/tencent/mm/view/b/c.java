@@ -1,8 +1,8 @@
 package com.tencent.mm.view.b;
 
-import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
@@ -10,42 +10,39 @@ import android.graphics.PointF;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.view.MotionEvent;
-import android.view.animation.LinearInterpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.c.d;
-import com.tencent.mm.c.d.1;
-import com.tencent.mm.c.d.2;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
   extends a
 {
-  private d YPo;
-  private PointF YPp;
-  private float YPq;
-  private boolean YPr;
-  public boolean YPs;
-  private float pPK;
+  private d agLb;
+  private PointF agLc;
+  private float agLd;
+  private boolean agLe;
+  public boolean agLf;
+  private float sUk;
   
-  public c(Context paramContext, com.tencent.mm.ca.b paramb)
+  public c(Context paramContext, com.tencent.mm.bt.b paramb)
   {
     super(paramContext, paramb);
     AppMethodBeat.i(9394);
-    this.YPo = new d(this);
-    this.YPp = new PointF();
-    this.YPq = 0.0F;
-    this.pPK = 0.0F;
-    this.YPr = false;
-    this.YPs = false;
+    this.agLb = new d(this);
+    this.agLc = new PointF();
+    this.agLd = 0.0F;
+    this.sUk = 0.0F;
+    this.agLe = false;
+    this.agLf = false;
     AppMethodBeat.o(9394);
   }
   
-  private void aC(float paramFloat1, float paramFloat2)
+  private void A(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(9397);
     RectF localRectF = getCurImageRect();
-    float f2 = paramFloat1 - this.YPp.x;
-    float f1 = paramFloat2 - this.YPp.y;
+    float f2 = paramFloat1 - this.agLc.x;
+    float f1 = paramFloat2 - this.agLc.y;
     if (f2 > 0.0F) {
       if (getBoardRect().left <= localRectF.left)
       {
@@ -103,199 +100,95 @@ public final class c
     }
   }
   
-  protected final void aI(MotionEvent paramMotionEvent)
+  protected final void aL(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(9396);
-    float f4 = paramMotionEvent.getX(paramMotionEvent.getPointerCount() - 1);
-    float f5 = paramMotionEvent.getY(paramMotionEvent.getPointerCount() - 1);
-    if (!getPresenter().hor())
+    float f3 = paramMotionEvent.getX(paramMotionEvent.getPointerCount() - 1);
+    float f4 = paramMotionEvent.getY(paramMotionEvent.getPointerCount() - 1);
+    if (!getPresenter().iPl())
     {
       AppMethodBeat.o(9396);
       return;
     }
-    RectF localRectF;
-    Rect localRect;
-    float f2;
-    float f1;
-    float f6;
-    float f7;
-    float f3;
-    label338:
-    int i;
-    label356:
-    int j;
     switch (paramMotionEvent.getActionMasked())
     {
-    case 3: 
-    case 4: 
-    default: 
-    case 0: 
-    case 1: 
-      do
-      {
-        do
-        {
-          for (;;)
-          {
-            this.YPp.x = f4;
-            this.YPp.y = f5;
-            AppMethodBeat.o(9396);
-            return;
-            this.YPp.set(f4, f5);
-            this.YPq = 0.0F;
-            this.pPK = getCurScale();
-            paramMotionEvent = this.YPo;
-            Log.d("MicroMsg.StickRoundAnim", "[cancel]");
-            if ((paramMotionEvent.eYu != null) && ((paramMotionEvent.eYu.isRunning()) || (paramMotionEvent.eYu.isStarted()))) {
-              paramMotionEvent.eYu.cancel();
-            }
-            this.YPs = false;
-          }
-          this.YPq = 0.0F;
-        } while (!this.YPs);
-        paramMotionEvent = this.YPo;
-      } while (!paramMotionEvent.eYG);
-      Log.d("MicroMsg.StickRoundAnim", "[play] start");
-      localRectF = paramMotionEvent.eYN.getCurImageRect();
-      localRect = paramMotionEvent.eYN.getBoardRect();
-      paramMotionEvent.eYP = localRectF.centerX();
-      paramMotionEvent.eYQ = localRectF.centerY();
-      f2 = localRect.centerY() - localRectF.centerY();
-      f1 = localRect.centerX() - localRectF.centerX();
-      f6 = paramMotionEvent.eYN.getCurScale();
-      f7 = paramMotionEvent.eYN.getMaxScale();
-      f3 = paramMotionEvent.eYN.getMinScale();
-      if (f6 > f7)
-      {
-        paramMotionEvent.eYO = f7;
-        paramMotionEvent.eYR = true;
-        if (localRect.height() >= localRectF.height()) {
-          break label661;
-        }
-        i = 1;
-        if (localRect.width() >= localRectF.width()) {
-          break label667;
-        }
-        j = 1;
-        label374:
-        if (i != 0) {
-          f2 = 0.0F;
-        }
-        if (j != 0) {
-          f1 = 0.0F;
-        }
-        if ((localRectF.top <= localRect.top) || (i == 0)) {
-          break label673;
-        }
-        f2 = localRect.top - localRectF.top;
-      }
-      break;
     }
-    label421:
-    label455:
-    label752:
-    label1018:
     for (;;)
     {
-      if ((localRectF.left > localRect.left) && (j != 0))
-      {
-        f3 = localRect.left - localRectF.left;
-        Log.d("MicroMsg.StickRoundAnim", "%s %s ", new Object[] { Float.valueOf(f3), Float.valueOf(f2) });
-        if (f6 <= f7) {
-          break label752;
-        }
+      this.agLc.x = f3;
+      this.agLc.y = f4;
+      AppMethodBeat.o(9396);
+      return;
+      this.agLc.set(f3, f4);
+      this.agLd = 0.0F;
+      this.sUk = getCurScale();
+      paramMotionEvent = this.agLb;
+      Log.d("MicroMsg.StickRoundAnim", "[cancel]");
+      if ((paramMotionEvent.hbU != null) && ((paramMotionEvent.hbU.isRunning()) || (paramMotionEvent.hbU.isStarted()))) {
+        paramMotionEvent.hbU.cancel();
       }
-      for (paramMotionEvent.eYS = true;; paramMotionEvent.eYS = false)
+      this.agLf = false;
+      continue;
+      this.agLd = 0.0F;
+      if (this.agLf)
       {
-        paramMotionEvent.eYu = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("deltaY", new float[] { 0.0F, f2 }), PropertyValuesHolder.ofFloat("deltaX", new float[] { 0.0F, f3 }), PropertyValuesHolder.ofFloat("scale", new float[] { 0.0F, 80.0F }) });
-        paramMotionEvent.eYu.addUpdateListener(new d.1(paramMotionEvent, f6));
-        paramMotionEvent.eYu.addListener(new d.2(paramMotionEvent));
-        paramMotionEvent.eYu.setInterpolator(new LinearInterpolator());
-        paramMotionEvent.eYu.setDuration(80L);
-        paramMotionEvent.eYu.start();
-        break;
-        if (f6 < f3)
+        this.agLb.play();
+        continue;
+        this.agLd = 0.0F;
+        this.sUk = getCurScale();
+        continue;
+        this.agLd = 0.0F;
+        this.agLe = true;
+        continue;
+        if (this.agLe)
         {
-          paramMotionEvent.eYO = f3;
-          paramMotionEvent.eYR = true;
-          break label338;
+          this.agLe = false;
+          AppMethodBeat.o(9396);
+          return;
         }
-        paramMotionEvent.eYR = false;
-        break label338;
-        i = 0;
-        break label356;
-        j = 0;
-        break label374;
-        if ((localRectF.bottom >= localRect.bottom) || (i == 0)) {
-          break label1018;
-        }
-        f2 = localRect.bottom - localRectF.bottom;
-        break label421;
-        f3 = f1;
-        if (localRectF.right >= localRect.right) {
-          break label455;
-        }
-        f3 = f1;
-        if (j == 0) {
-          break label455;
-        }
-        f3 = localRect.right - localRectF.right;
-        break label455;
-      }
-      this.YPq = 0.0F;
-      this.pPK = getCurScale();
-      break;
-      this.YPq = 0.0F;
-      this.YPr = true;
-      break;
-      if (this.YPr)
-      {
-        this.YPr = false;
-        AppMethodBeat.o(9396);
-        return;
-      }
-      if (paramMotionEvent.getPointerCount() == 2)
-      {
-        this.YPs = true;
-        f1 = paramMotionEvent.getX(0) - paramMotionEvent.getX(1);
-        f2 = paramMotionEvent.getY(0) - paramMotionEvent.getY(1);
-        f1 = (float)Math.sqrt(f1 * f1 + f2 * f2);
-        if (this.YPq == 0.0F)
+        if (paramMotionEvent.getPointerCount() == 2)
         {
-          this.YPq = f1;
-          break;
-        }
-        f2 = f1 / this.YPq * this.pPK;
-        if (this.YOW * 0.5F <= f2)
-        {
-          f1 = f2;
-          if (f2 > this.YLO)
+          this.agLf = true;
+          float f1 = paramMotionEvent.getX(0) - paramMotionEvent.getX(1);
+          float f2 = paramMotionEvent.getY(0) - paramMotionEvent.getY(1);
+          f1 = (float)Math.sqrt(f1 * f1 + f2 * f2);
+          if (this.agLd == 0.0F)
           {
-            f1 = this.YLO;
-            f1 = (f2 - this.YLO) * 0.2F + f1;
+            this.agLd = f1;
           }
-          getMainMatrix().postScale(f1 / getCurScale(), f1 / getCurScale(), f4, f5);
+          else
+          {
+            f2 = f1 / this.agLd * this.sUk;
+            if (this.agKJ * 0.5F <= f2)
+            {
+              f1 = f2;
+              if (f2 > this.agHA)
+              {
+                f1 = this.agHA;
+                f1 = (f2 - this.agHA) * 0.2F + f1;
+              }
+              getMainMatrix().postScale(f1 / getCurScale(), f1 / getCurScale(), f3, f4);
+            }
+            this.agLb.hcg = true;
+            A(f3, f4);
+            postInvalidate();
+          }
         }
-        this.YPo.eYG = true;
-        aC(f4, f5);
-        postInvalidate();
-        break;
+        else if ((paramMotionEvent.getPointerCount() == 1) && (jMN()))
+        {
+          this.agLf = true;
+          this.agLb.hcg = true;
+          A(f3, f4);
+          postInvalidate();
+        }
       }
-      if ((paramMotionEvent.getPointerCount() != 1) || (!ihA())) {
-        break;
-      }
-      this.YPs = true;
-      this.YPo.eYG = true;
-      aC(f4, f5);
-      postInvalidate();
-      break;
     }
   }
   
   public final float getMinScale()
   {
     AppMethodBeat.i(9398);
-    if (getPresenter().hov().acy() == com.tencent.mm.e.a.fkA)
+    if (getPresenter().iPp().aEy() == com.tencent.mm.e.a.hoN)
     {
       f1 = getBoardRect().width() / getCurImageRect().width();
       float f2 = getBoardRect().height() / getCurImageRect().height();
@@ -313,25 +206,32 @@ public final class c
     return f1;
   }
   
-  public final boolean ihB()
+  public final boolean jMO()
   {
     return true;
+  }
+  
+  protected final void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    AppMethodBeat.i(234844);
+    super.onConfigurationChanged(paramConfiguration);
+    AppMethodBeat.o(234844);
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(9395);
     paramCanvas.drawColor(-16777216);
-    if (this.YOQ != null)
+    if (this.agKC != null)
     {
-      this.fkF.set(this.YOQ);
-      paramCanvas.setMatrix(this.YOQ);
+      this.hoS.set(this.agKC);
+      paramCanvas.setMatrix(this.agKC);
     }
     for (;;)
     {
       paramCanvas.save();
       paramCanvas.clipRect(getAliveRect());
-      Bitmap localBitmap = getPresenter().hoy();
+      Bitmap localBitmap = getPresenter().iPu();
       if ((localBitmap != null) && (!localBitmap.isRecycled())) {
         paramCanvas.drawBitmap(localBitmap, 0.0F, 0.0F, null);
       }
@@ -342,10 +242,22 @@ public final class c
       paramCanvas.setMatrix(getMainMatrix());
     }
   }
+  
+  protected final void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    AppMethodBeat.i(234848);
+    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+    if (paramBoolean)
+    {
+      this.agLb.hcg = true;
+      this.agLb.play();
+    }
+    AppMethodBeat.o(234848);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.view.b.c
  * JD-Core Version:    0.7.0.1
  */

@@ -5,43 +5,43 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public final class m
 {
-  private static m NMM;
-  private l NMN;
-  private ReentrantLock eYl;
+  private static m UzA;
+  private l UzB;
+  private ReentrantLock bKF;
   
   static
   {
     AppMethodBeat.i(114940);
-    NMM = new m();
+    UzA = new m();
     AppMethodBeat.o(114940);
   }
   
   private m()
   {
     AppMethodBeat.i(114938);
-    this.eYl = new ReentrantLock();
+    this.bKF = new ReentrantLock();
     AppMethodBeat.o(114938);
   }
   
-  public static l gza()
+  public static l hWU()
   {
     AppMethodBeat.i(114939);
-    if (NMM.NMN == null) {
-      NMM.eYl.lock();
+    if (UzA.UzB == null) {
+      UzA.bKF.lock();
     }
     try
     {
-      if (NMM.NMN == null) {
-        NMM.NMN = new l();
+      if (UzA.UzB == null) {
+        UzA.UzB = new l();
       }
-      NMM.eYl.unlock();
-      l locall = NMM.NMN;
+      UzA.bKF.unlock();
+      l locall = UzA.UzB;
       AppMethodBeat.o(114939);
       return locall;
     }
     finally
     {
-      NMM.eYl.unlock();
+      UzA.bKF.unlock();
       AppMethodBeat.o(114939);
     }
   }

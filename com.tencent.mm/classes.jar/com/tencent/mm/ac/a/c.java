@@ -1,52 +1,50 @@
 package com.tencent.mm.ac.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cnm;
-import com.tencent.mm.protocal.protobuf.cnn;
-import com.tencent.mm.protocal.protobuf.foh;
+import com.tencent.mm.protocal.protobuf.dee;
+import com.tencent.mm.protocal.protobuf.def;
+import com.tencent.mm.protocal.protobuf.glg;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
 public final class c
-  extends q
+  extends p
   implements m
 {
-  private i jQg;
-  private a<c> kaW;
-  private final d rr;
+  private h mAY;
+  private a<c> mBb;
+  private final com.tencent.mm.am.c rr;
   
   private c(String paramString1, LinkedList<String> paramLinkedList, int paramInt1, String paramString2, String paramString3, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(150097);
     Log.i("MicroMsg.webview.NetSceneJSLogin", "NetSceneJSLogin doScene appId [%s], loginType [%d], url [%s], state [%s], versionType [%d], extScene [%d]", new Object[] { paramString1, Integer.valueOf(paramInt1), paramString2, paramString3, Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new cnm();
-    ((d.a)localObject).lBV = new cnn();
-    ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/js-login";
-    ((d.a)localObject).funcId = 1029;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (cnm)d.b.b(this.rr.lBR);
-    ((cnm)localObject).lVG = paramString1;
-    ((cnm)localObject).TuN = paramLinkedList;
-    ((cnm)localObject).Tva = paramInt1;
-    ((cnm)localObject).Url = paramString2;
-    ((cnm)localObject).Tvb = paramString3;
-    ((cnm)localObject).TuP = paramInt2;
+    Object localObject = new com.tencent.mm.am.c.a();
+    ((com.tencent.mm.am.c.a)localObject).otE = new dee();
+    ((com.tencent.mm.am.c.a)localObject).otF = new def();
+    ((com.tencent.mm.am.c.a)localObject).uri = "/cgi-bin/mmbiz-bin/js-login";
+    ((com.tencent.mm.am.c.a)localObject).funcId = 1029;
+    ((com.tencent.mm.am.c.a)localObject).otG = 0;
+    ((com.tencent.mm.am.c.a)localObject).respCmdId = 0;
+    this.rr = ((com.tencent.mm.am.c.a)localObject).bEF();
+    localObject = (dee)c.b.b(this.rr.otB);
+    ((dee)localObject).oOI = paramString1;
+    ((dee)localObject).aaJs = paramLinkedList;
+    ((dee)localObject).aaJG = paramInt1;
+    ((dee)localObject).Url = paramString2;
+    ((dee)localObject).aaJH = paramString3;
+    ((dee)localObject).aaJu = paramInt2;
     if (paramInt3 > 0)
     {
-      ((cnm)localObject).TuQ = new foh();
-      ((cnm)localObject).TuQ.scene = paramInt3;
+      ((dee)localObject).aaJv = new glg();
+      ((dee)localObject).aaJv.scene = paramInt3;
     }
     AppMethodBeat.o(150097);
   }
@@ -54,7 +52,7 @@ public final class c
   public c(String paramString1, LinkedList<String> paramLinkedList, int paramInt1, String paramString2, String paramString3, int paramInt2, int paramInt3, a<c> parama)
   {
     this(paramString1, paramLinkedList, paramInt1, paramString2, paramString3, paramInt2, paramInt3);
-    this.kaW = parama;
+    this.mBb = parama;
   }
   
   public c(String paramString1, LinkedList<String> paramLinkedList, String paramString2, String paramString3, a<c> parama)
@@ -62,32 +60,32 @@ public final class c
     this(paramString1, paramLinkedList, 0, paramString2, paramString3, 0, -1, parama);
   }
   
-  public final cnm aGe()
+  public final dee aZd()
   {
-    AppMethodBeat.i(235720);
+    AppMethodBeat.i(240872);
     if (this.rr == null)
     {
-      AppMethodBeat.o(235720);
+      AppMethodBeat.o(240872);
       return null;
     }
-    cnm localcnm = (cnm)d.b.b(this.rr.lBR);
-    AppMethodBeat.o(235720);
-    return localcnm;
+    dee localdee = (dee)c.b.b(this.rr.otB);
+    AppMethodBeat.o(240872);
+    return localdee;
   }
   
-  public final cnn aGf()
+  public final def aZe()
   {
-    AppMethodBeat.i(235722);
-    cnn localcnn = (cnn)d.c.b(this.rr.lBS);
-    AppMethodBeat.o(235722);
-    return localcnn;
+    AppMethodBeat.i(240873);
+    def localdef = (def)c.c.b(this.rr.otC);
+    AppMethodBeat.o(240873);
+    return localdef;
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(150099);
     Log.i("MicroMsg.webview.NetSceneJSLogin", "doScene");
-    this.jQg = parami;
+    this.mAY = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(150099);
     return i;
@@ -102,18 +100,18 @@ public final class c
   {
     AppMethodBeat.i(150098);
     Log.i("MicroMsg.webview.NetSceneJSLogin", "errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if (this.jQg != null) {
-      this.jQg.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    if (this.mAY != null) {
+      this.mAY.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    if (this.kaW != null) {
-      this.kaW.a(paramInt2, paramInt3, paramString, this);
+    if (this.mBb != null) {
+      this.mBb.onNetSceneEndCallback(paramInt2, paramInt3, paramString, this);
     }
     AppMethodBeat.o(150098);
   }
   
-  public static abstract interface a<T extends q>
+  public static abstract interface a<T extends p>
   {
-    public abstract void a(int paramInt1, int paramInt2, String paramString, T paramT);
+    public abstract void onNetSceneEndCallback(int paramInt1, int paramInt2, String paramString, T paramT);
   }
 }
 

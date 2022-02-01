@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.view.ActionMode.Callback;
 import android.widget.TextView;
 import androidx.appcompat.a.j;
-import androidx.core.widget.i;
+import androidx.core.widget.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class DialogTitle
@@ -25,7 +25,7 @@ public class DialogTitle
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(241233);
+    AppMethodBeat.i(200293);
     super.onMeasure(paramInt1, paramInt2);
     Object localObject = getLayout();
     if (localObject != null)
@@ -44,19 +44,19 @@ public class DialogTitle
         super.onMeasure(paramInt1, paramInt2);
       }
     }
-    AppMethodBeat.o(241233);
+    AppMethodBeat.o(200293);
   }
   
   public void setCustomSelectionActionModeCallback(ActionMode.Callback paramCallback)
   {
-    AppMethodBeat.i(241234);
-    super.setCustomSelectionActionModeCallback(i.a(this, paramCallback));
-    AppMethodBeat.o(241234);
+    AppMethodBeat.i(200297);
+    super.setCustomSelectionActionModeCallback(j.a(this, paramCallback));
+    AppMethodBeat.o(200297);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.widget.DialogTitle
  * JD-Core Version:    0.7.0.1
  */

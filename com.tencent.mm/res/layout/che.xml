@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/aw8"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/kaw" android:layout_centerVertical="true">
-        <ImageView android:layout_gravity="center|left" android:id="@id/k8b" android:background="@color/ai6" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_marginLeft="15.909973dip" android:layout_marginRight="15.909973dip" />
-        <ImageView android:layout_gravity="center|left" android:id="@id/k8c" android:background="@color/ai7" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_marginLeft="15.909973dip" android:layout_marginRight="15.909973dip" />
-        <ImageView android:id="@id/k8d" android:background="@drawable/cxu" android:paddingLeft="@dimen/k" android:paddingRight="@dimen/k" android:layout_width="@dimen/aw8" android:layout_height="@dimen/aw8" />
-    </FrameLayout>
-    <TextView android:textSize="@dimen/atb" android:textColor="@color/ah_" android:gravity="center|right" android:id="@id/kaw" android:layout_width="33.609985dip" android:layout_height="wrap_content" android:text="[0]" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+<RelativeLayout android:background="@color/aj5" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:paddingTop="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true" style="@style/zv">
+        <TextView android:id="@id/f84" android:text="@string/kqs" style="@style/a08" />
+        <LinearLayout style="@style/a0o">
+            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/h_f" wallet:contentHint="@string/kqg" wallet:titleText="@string/kqj" style="@style/a0p" />
+            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/f3b" android:imeOptions="actionNext" wallet:contentHint="@string/kp8" wallet:titleText="@string/kpa" style="@style/a0e" />
+        </LinearLayout>
+        <Button android:id="@id/hfl" android:layout_width="fill_parent" android:layout_marginTop="16.0dip" android:text="@string/a12" style="@style/a0k" />
+    </LinearLayout>
+    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/c9a" />
 </RelativeLayout>

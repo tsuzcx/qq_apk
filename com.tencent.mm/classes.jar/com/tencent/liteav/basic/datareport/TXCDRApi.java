@@ -5,13 +5,9 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.provider.Settings.Secure;
-import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.util.TXCBuild;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
 import com.tencent.liteav.basic.util.h;
@@ -25,11 +21,6 @@ import java.util.UUID;
 public class TXCDRApi
 {
   private static final char[] DIGITS_LOWER;
-  static final int NETWORK_TYPE_2G = 4;
-  static final int NETWORK_TYPE_3G = 3;
-  static final int NETWORK_TYPE_4G = 2;
-  static final int NETWORK_TYPE_UNKNOWN = 255;
-  static final int NETWORK_TYPE_WIFI = 1;
   private static final String TAG = "TXCDRApi";
   private static String g_simulate_idfa;
   static boolean initRpt;
@@ -38,6 +29,7 @@ public class TXCDRApi
   private static String mDevType;
   private static String mDevUUID;
   private static String mNetType;
+  private static String mPackageName;
   private static String mSysVersion;
   
   static
@@ -50,9 +42,10 @@ public class TXCDRApi
     mAppName = "";
     mSysVersion = "";
     g_simulate_idfa = "";
+    mPackageName = "";
     DIGITS_LOWER = new char[] { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
     initRpt = false;
-    h.f();
+    h.d();
     nativeInitDataReport();
     AppMethodBeat.o(14636);
   }
@@ -114,85 +107,6 @@ public class TXCDRApi
     paramContext = getSimulateIDFA(paramContext);
     AppMethodBeat.o(14631);
     return paramContext;
-  }
-  
-  public static int getNetworkType(Context paramContext)
-  {
-    AppMethodBeat.i(14632);
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(14632);
-      return 255;
-    }
-    Object localObject = (ConnectivityManager)paramContext.getSystemService("connectivity");
-    paramContext = (TelephonyManager)paramContext.getSystemService("phone");
-    try
-    {
-      localObject = ((ConnectivityManager)localObject).getActiveNetworkInfo();
-      if (localObject == null)
-      {
-        AppMethodBeat.o(14632);
-        return 255;
-      }
-    }
-    catch (Exception paramContext)
-    {
-      TXCLog.e("TXCDRApi", "getActiveNetworkInfo exception:", paramContext);
-      AppMethodBeat.o(14632);
-      return 255;
-    }
-    if (((NetworkInfo)localObject).getType() == 1)
-    {
-      AppMethodBeat.o(14632);
-      return 1;
-    }
-    if (((NetworkInfo)localObject).getType() == 0)
-    {
-      try
-      {
-        int i = paramContext.getNetworkType();
-        switch (i)
-        {
-        default: 
-          AppMethodBeat.o(14632);
-          return 2;
-        }
-      }
-      catch (Exception paramContext)
-      {
-        TXCLog.e("TXCDRApi", "TXCDRApi: get network type fail, exception occurred.", paramContext);
-        AppMethodBeat.o(14632);
-        return 2;
-      }
-      AppMethodBeat.o(14632);
-      return 4;
-      AppMethodBeat.o(14632);
-      return 3;
-      AppMethodBeat.o(14632);
-      return 2;
-    }
-    AppMethodBeat.o(14632);
-    return 255;
-  }
-  
-  public static String getOrigAndroidID(Context paramContext)
-  {
-    AppMethodBeat.i(14628);
-    String str = "";
-    try
-    {
-      paramContext = Settings.Secure.getString(paramContext.getContentResolver(), "android_id");
-      paramContext = string2Md5(paramContext);
-      AppMethodBeat.o(14628);
-      return paramContext;
-    }
-    catch (Throwable paramContext)
-    {
-      for (;;)
-      {
-        paramContext = str;
-      }
-    }
   }
   
   private static String getPackageName(Context paramContext)
@@ -327,7 +241,7 @@ public class TXCDRApi
       {
         localObject4 = localObject1;
         if (((String)localObject1).length() != 0) {
-          break label500;
+          break label496;
         }
       }
       localObject1 = "";
@@ -422,17 +336,25 @@ public class TXCDRApi
   public static void setCommonInfo(Context paramContext)
   {
     AppMethodBeat.i(14621);
-    mDevType = Build.MODEL;
-    mNetType = Integer.toString(getNetworkType(paramContext));
-    if (mDevId.isEmpty()) {
+    if (TextUtils.isEmpty(mDevType)) {
+      mDevType = TXCBuild.Model();
+    }
+    mNetType = Integer.toString(h.e(paramContext));
+    if (TextUtils.isEmpty(mDevId)) {
       mDevId = getSimulateIDFA(paramContext);
     }
-    if (mDevUUID.isEmpty()) {
-      mDevUUID = getDevUUID(paramContext, mDevId);
+    if (TextUtils.isEmpty(mDevUUID)) {
+      mDevUUID = h.f(paramContext);
     }
-    String str = getPackageName(paramContext);
-    mAppName = getApplicationNameByPackageName(paramContext, str) + ":" + str;
-    mSysVersion = String.valueOf(Build.VERSION.SDK_INT);
+    if (TextUtils.isEmpty(mPackageName)) {
+      mPackageName = h.c(paramContext);
+    }
+    if (TextUtils.isEmpty(mAppName)) {
+      mAppName = h.a(paramContext, mPackageName) + ":" + mPackageName;
+    }
+    if (TextUtils.isEmpty(mSysVersion)) {
+      mSysVersion = String.valueOf(TXCBuild.VersionInt());
+    }
     txSetCommonInfo();
     AppMethodBeat.o(14621);
   }
@@ -543,7 +465,7 @@ public class TXCDRApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.basic.datareport.TXCDRApi
  * JD-Core Version:    0.7.0.1
  */

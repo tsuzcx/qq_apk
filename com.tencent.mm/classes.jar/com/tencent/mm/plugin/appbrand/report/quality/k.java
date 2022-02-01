@@ -1,203 +1,146 @@
 package com.tencent.mm.plugin.appbrand.report.quality;
 
-import com.tencent.e.i;
+import com.tencent.luggage.game.c.h.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.k.c;
-import com.tencent.mm.plugin.appbrand.k.d;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.util.ArrayList;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.threadpool.i;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-public final class k
+final class k
 {
-  private static Map<String, k> jZc;
-  private static Boolean qNj;
-  private final String mAppId;
-  private final String mAppVersion;
-  private final int nvW;
-  private final String opi;
-  private final String pRV;
-  private final List<a> qNh;
-  private final Map<Integer, Integer> qNi;
+  static String tRX = "QualityKVReporter_19941";
+  boolean mStarted;
+  volatile int tRY;
+  b tRZ;
+  private long tSa;
+  private final Map<Integer, c> tSb;
   
-  static
+  private k()
   {
-    AppMethodBeat.i(265594);
-    jZc = new HashMap();
-    AppMethodBeat.o(265594);
+    AppMethodBeat.i(321402);
+    this.tSb = new HashMap();
+    this.tSb.put(Integer.valueOf(1), new c(1));
+    this.tSb.put(Integer.valueOf(2), new c(2));
+    this.tSb.put(Integer.valueOf(3), new c(3));
+    this.tSb.put(Integer.valueOf(4), new c(4));
+    this.tSb.put(Integer.valueOf(5), new c(5));
+    this.tSb.put(Integer.valueOf(6), new c(6));
+    AppMethodBeat.o(321402);
   }
   
-  private k(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
+  private void cJf()
   {
-    AppMethodBeat.i(265587);
-    this.opi = paramString1;
-    this.mAppId = paramString2;
-    this.pRV = paramString3;
-    this.mAppVersion = paramString4;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    AppMethodBeat.i(321394);
+    Object localObject = com.tencent.luggage.game.c.h.elJ;
+    localObject = com.tencent.luggage.game.c.h.apd();
+    ((c)this.tSb.get(Integer.valueOf(1))).Di(((h.a)localObject).elN);
+    c localc = (c)this.tSb.get(Integer.valueOf(2));
+    if (((h.a)localObject).elT > 0) {}
+    for (int i = ((h.a)localObject).elT;; i = ((h.a)localObject).elP)
     {
-      this.nvW = i;
-      this.qNi = new HashMap();
-      this.qNh = new ArrayList();
-      com.tencent.e.h.ZvG.d(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(282504);
-          k.a(k.this);
-          AppMethodBeat.o(282504);
-        }
-      }, "QualityKVReporter_19941");
-      AppMethodBeat.o(265587);
+      localc.Di(i);
+      ((c)this.tSb.get(Integer.valueOf(3))).Di(((h.a)localObject).elO);
+      ((c)this.tSb.get(Integer.valueOf(4))).Di(((h.a)localObject).elQ);
+      ((c)this.tSb.get(Integer.valueOf(5))).Di(((h.a)localObject).elU);
+      ((c)this.tSb.get(Integer.valueOf(6))).Di(((h.a)localObject).elV);
+      AppMethodBeat.o(321394);
       return;
     }
   }
   
-  public static void CK(int paramInt)
+  public static k cJg()
   {
-    AppMethodBeat.i(265586);
-    Log.i("MicroMsg.QualitySampleHelper", "updateSampleInterval :%d", new Object[] { Integer.valueOf(paramInt) });
-    l.cip().qNo = paramInt;
-    AppMethodBeat.o(265586);
+    AppMethodBeat.i(321397);
+    k localk = a.cJh();
+    AppMethodBeat.o(321397);
+    return localk;
   }
   
-  private void CL(int paramInt)
+  public final int Dg(int paramInt)
   {
-    AppMethodBeat.i(265589);
-    a locala = new a((byte)0);
-    locala.qNl = paramInt;
-    locala.qNm = l.cip().CN(paramInt);
-    this.qNh.add(locala);
-    AppMethodBeat.o(265589);
-  }
-  
-  private int CM(int paramInt)
-  {
-    AppMethodBeat.i(265590);
-    Integer localInteger = (Integer)this.qNi.get(Integer.valueOf(paramInt));
-    if (localInteger == null)
+    AppMethodBeat.i(321424);
+    long l = Util.nowMilliSecond();
+    if (l - this.tSa > 1000L)
     {
-      AppMethodBeat.o(265590);
-      return 0;
+      cJf();
+      this.tSa = l;
     }
-    paramInt = localInteger.intValue();
-    AppMethodBeat.o(265590);
+    paramInt = Dh(paramInt).tSg;
+    AppMethodBeat.o(321424);
     return paramInt;
   }
   
-  public static void b(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
+  final c Dh(int paramInt)
   {
-    AppMethodBeat.i(265583);
-    if (!cin())
+    AppMethodBeat.i(321427);
+    Object localObject = (c)this.tSb.get(Integer.valueOf(paramInt));
+    if (localObject == null)
     {
-      AppMethodBeat.o(265583);
-      return;
+      localObject = new IllegalStateException(String.format("StatisticsWrapper null, type:%d", new Object[] { Integer.valueOf(paramInt) }));
+      AppMethodBeat.o(321427);
+      throw ((Throwable)localObject);
     }
-    if (!l.cip().mStarted)
-    {
-      l locall = l.cip();
-      if (!locall.mStarted)
-      {
-        locall.mStarted = true;
-        locall.qNo = 60000;
-        locall.qNp = new l.b(locall, (byte)0);
-        com.tencent.e.h.ZvG.d(locall.qNp, l.qNn);
-        Log.i("MicroMsg.QualitySampleHelper", "startSample interval:%d", new Object[] { Integer.valueOf(60000) });
-      }
-    }
-    if (!jZc.containsKey(paramString2))
-    {
-      jZc.put(paramString2, new k(paramString1, paramString2, paramString3, paramString4, paramBoolean));
-      com.tencent.mm.plugin.appbrand.k.a(paramString2, new k.c()
-      {
-        public final void a(k.d paramAnonymousd)
-        {
-          AppMethodBeat.i(281450);
-          k.cI(this.val$appId, 2);
-          AppMethodBeat.o(281450);
-        }
-        
-        public final void onDestroy()
-        {
-          AppMethodBeat.i(281453);
-          k.cI(this.val$appId, 5);
-          k.jZc.remove(this.val$appId);
-          com.tencent.mm.plugin.appbrand.k.b(this.val$appId, this);
-          AppMethodBeat.o(281453);
-        }
-        
-        public final void onResume()
-        {
-          AppMethodBeat.i(281452);
-          k.cI(this.val$appId, 3);
-          AppMethodBeat.o(281452);
-        }
-      });
-    }
-    AppMethodBeat.o(265583);
-  }
-  
-  public static void cI(String paramString, final int paramInt)
-  {
-    AppMethodBeat.i(265585);
-    if (!cin())
-    {
-      AppMethodBeat.o(265585);
-      return;
-    }
-    com.tencent.e.h.ZvG.d(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(276981);
-        k localk = (k)k.jZc.get(this.val$appId);
-        if (localk != null)
-        {
-          k.a(localk, paramInt);
-          k.b(localk, paramInt);
-        }
-        AppMethodBeat.o(276981);
-      }
-    }, "QualityKVReporter_19941");
-    AppMethodBeat.o(265585);
-  }
-  
-  private static boolean cin()
-  {
-    AppMethodBeat.i(265588);
-    if (qNj != null)
-    {
-      bool = qNj.booleanValue();
-      AppMethodBeat.o(265588);
-      return bool;
-    }
-    int i = ((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vWQ, 0);
-    Log.i("MicroMsg.QualitySampleHelper", "shouldReport:%d", new Object[] { Integer.valueOf(i) });
-    if (i == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Boolean localBoolean = Boolean.valueOf(bool);
-      qNj = localBoolean;
-      bool = localBoolean.booleanValue();
-      AppMethodBeat.o(265588);
-      return bool;
-    }
+    AppMethodBeat.o(321427);
+    return localObject;
   }
   
   static final class a
   {
-    int qNl;
-    int qNm;
+    private static final k tSc;
+    
+    static
+    {
+      AppMethodBeat.i(321451);
+      tSc = new k((byte)0);
+      AppMethodBeat.o(321451);
+    }
+  }
+  
+  final class b
+    implements Runnable
+  {
+    private b() {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(321458);
+      k.a(k.this);
+      com.tencent.threadpool.h.ahAA.a(this, k.b(k.this), k.tRX);
+      AppMethodBeat.o(321458);
+    }
+  }
+  
+  public static final class c
+  {
+    int mCount;
+    private final int mType;
+    int tSe;
+    int tSf = -2147483648;
+    int tSg;
+    
+    public c(int paramInt)
+    {
+      this.mType = paramInt;
+    }
+    
+    public final void Di(int paramInt)
+    {
+      this.mCount += 1;
+      this.tSe += paramInt;
+      if (paramInt > this.tSf) {}
+      for (int i = paramInt;; i = this.tSf)
+      {
+        this.tSf = i;
+        this.tSg = paramInt;
+        return;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.quality.k
  * JD-Core Version:    0.7.0.1
  */

@@ -4,43 +4,41 @@ import com.tencent.luggage.d.n;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.brandservice.ui.timeline.preload.a.a.b;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br;
+import com.tencent.mm.plugin.brandservice.ui.timeline.preload.a.a.e;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/game/jsapi/base/GamePrefetchJsApiPool;", "", "()V", "TAG", "", "prefetchJsApis", "Ljava/util/ArrayList;", "Ljava/lang/Class;", "Lcom/tencent/mm/plugin/webview/luggage/jsapi/LuggageBaseJsApi;", "Lkotlin/collections/ArrayList;", "initJsApiPool", "", "runtime", "Lcom/tencent/luggage/container/LuggageRuntime;", "context", "Lcom/tencent/luggage/container/LuggageJsApiContext;", "plugin-brandservice_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/game/jsapi/base/GamePrefetchJsApiPool;", "", "()V", "TAG", "", "prefetchJsApis", "Ljava/util/ArrayList;", "Ljava/lang/Class;", "Lcom/tencent/mm/plugin/webview/luggage/jsapi/LuggageBaseJsApi;", "Lkotlin/collections/ArrayList;", "initJsApiPool", "", "runtime", "Lcom/tencent/luggage/container/LuggageRuntime;", "context", "Lcom/tencent/luggage/container/LuggageJsApiContext;", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  private static final ArrayList<Class<? extends br<?>>> sQv;
-  public static final a sQw;
+  public static final a vVJ;
+  private static final ArrayList<Class<? extends bv<?>>> vVK;
   
   static
   {
-    AppMethodBeat.i(257501);
-    sQw = new a();
-    sQv = j.ag(new Class[] { com.tencent.mm.plugin.brandservice.ui.timeline.preload.a.a.a.class, b.class, com.tencent.mm.plugin.brandservice.ui.timeline.preload.a.a.c.class });
-    AppMethodBeat.o(257501);
+    AppMethodBeat.i(303149);
+    vVJ = new a();
+    vVK = p.al(new Class[] { b.class, com.tencent.mm.plugin.brandservice.ui.timeline.preload.a.a.c.class, com.tencent.mm.plugin.brandservice.ui.timeline.preload.a.a.a.class, e.class });
+    AppMethodBeat.o(303149);
   }
   
   public static void a(n paramn, com.tencent.luggage.d.c paramc)
   {
-    AppMethodBeat.i(257500);
-    p.k(paramn, "runtime");
-    p.k(paramc, "context");
-    Class localClass;
+    AppMethodBeat.i(303140);
+    s.u(paramn, "runtime");
+    s.u(paramc, "context");
     for (;;)
     {
+      Class localClass;
       try
       {
-        localObject = h.ae(com.tencent.mm.plugin.game.luggage.a.a.class);
-        p.j(localObject, "MMKernel.service(ILuggageGameService::class.java)");
-        localObject = ((com.tencent.mm.plugin.game.luggage.a.a)localObject).eww();
-        p.j(localObject, "gameJsApiPool");
+        localObject = ((com.tencent.mm.plugin.game.luggage.a.a)h.ax(com.tencent.mm.plugin.game.luggage.a.a.class)).fEq();
+        s.s(localObject, "gameJsApiPool");
         localObject = ((Iterable)localObject).iterator();
         if (!((Iterator)localObject).hasNext()) {
           break;
@@ -48,32 +46,24 @@ public final class a
         localClass = (Class)((Iterator)localObject).next();
         if (localClass == null)
         {
-          paramn = new t("null cannot be cast to non-null type java.lang.Class<com.tencent.luggage.container.LuggageJsApi<com.tencent.luggage.container.LuggageJsApiContext>>");
-          AppMethodBeat.o(257500);
+          paramn = new NullPointerException("null cannot be cast to non-null type java.lang.Class<com.tencent.luggage.container.LuggageJsApi<com.tencent.luggage.container.LuggageJsApiContext>>");
+          AppMethodBeat.o(303140);
           throw paramn;
         }
       }
       catch (Exception paramn)
       {
         Log.printErrStackTrace("MicroMsg.GamePrefetchJsApiPool", (Throwable)paramn, "[game-web-prefetch] init jsApiPool exception", new Object[0]);
-        AppMethodBeat.o(257500);
+        AppMethodBeat.o(303140);
         return;
       }
       paramn.a(localClass, paramc);
     }
-    Object localObject = ((Iterable)sQv).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      localClass = (Class)((Iterator)localObject).next();
-      if (localClass == null)
-      {
-        paramn = new t("null cannot be cast to non-null type java.lang.Class<com.tencent.luggage.container.LuggageJsApi<com.tencent.luggage.container.LuggageJsApiContext>>");
-        AppMethodBeat.o(257500);
-        throw paramn;
-      }
-      paramn.a(localClass, paramc);
+    Object localObject = ((Iterable)vVK).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      paramn.a((Class)((Iterator)localObject).next(), paramc);
     }
-    AppMethodBeat.o(257500);
+    AppMethodBeat.o(303140);
   }
 }
 

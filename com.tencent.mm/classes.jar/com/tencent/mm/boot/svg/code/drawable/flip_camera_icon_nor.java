@@ -121,7 +121,7 @@ public class flip_camera_icon_nor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.flip_camera_icon_nor
  * JD-Core Version:    0.7.0.1
  */

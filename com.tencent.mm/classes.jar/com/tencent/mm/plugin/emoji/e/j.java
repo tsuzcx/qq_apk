@@ -1,57 +1,123 @@
 package com.tencent.mm.plugin.emoji.e;
 
-import android.content.Context;
-import android.content.Intent;
+import android.content.ContentValues;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.ad;
-import com.tencent.mm.model.ad.b;
-import com.tencent.mm.plugin.emoji.i.a;
-import com.tencent.mm.plugin.emoji.i.h;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.emoji.c.d;
+import com.tencent.mm.protocal.protobuf.cij;
+import com.tencent.mm.protocal.protobuf.cik;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.storage.bl;
+import com.tencent.mm.storage.emotion.k;
+import com.tencent.mm.storage.emotion.k.a;
+import java.io.IOException;
 
 public final class j
+  extends p
+  implements m
 {
-  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt)
+  private com.tencent.mm.am.h mAY;
+  private final c rr;
+  private String xOA;
+  
+  public j(String paramString)
   {
-    AppMethodBeat.i(108530);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("Ksnsupload_title", paramString1);
-    localIntent.putExtra("KContentObjDesc", paramString2);
-    localIntent.putExtra("Ksnsupload_imgurl", paramString3);
-    localIntent.putExtra("Ksnsupload_link", paramString4);
-    localIntent.putExtra("KUploadProduct_UserData", paramString5);
-    localIntent.putExtra("Ksnsupload_type", paramInt);
-    paramString1 = ad.Rp("emoje_stroe");
-    ad.beh().I(paramString1, true).k("prePublishId", "emoje_stroe");
-    localIntent.putExtra("reportSessionId", paramString1);
-    c.c(paramContext, "sns", ".ui.SnsUploadUI", localIntent);
-    AppMethodBeat.o(108530);
+    AppMethodBeat.i(108689);
+    c.a locala = new c.a();
+    locala.otE = new cij();
+    locala.otF = new cik();
+    locala.uri = "/cgi-bin/micromsg-bin/mmgetdesignersimpleinfo";
+    locala.funcId = 239;
+    locala.otG = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.bEF();
+    this.xOA = paramString;
+    AppMethodBeat.o(108689);
   }
   
-  public static void a(MMActivity paramMMActivity, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt3, String paramString6)
+  public final cik dAB()
   {
-    AppMethodBeat.i(108533);
-    ((com.tencent.mm.pluginsdk.j)h.ae(com.tencent.mm.pluginsdk.j.class)).b(paramMMActivity.getController(), paramString2, paramString4, paramString3, "", paramMMActivity.getString(i.h.app_send), new j.3(paramString1, paramInt1, paramInt2, paramString2, paramString3, paramString4, paramString5, paramInt3, paramString6, paramMMActivity));
-    AppMethodBeat.o(108533);
+    AppMethodBeat.i(269815);
+    if (this.rr == null)
+    {
+      AppMethodBeat.o(269815);
+      return null;
+    }
+    cik localcik = (cik)c.c.b(this.rr.otC);
+    AppMethodBeat.o(269815);
+    return localcik;
   }
   
-  public static void fc(Context paramContext)
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
-    AppMethodBeat.i(108531);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("Select_Conv_Type", 3);
-    localIntent.putExtra("MMActivity.OverrideEnterAnimation", i.a.fast_faded_in);
-    localIntent.putExtra("MMActivity.OverrideExitAnimation", i.a.push_down_out);
-    localIntent.putExtra("scene_from", 14);
-    c.d(paramContext, ".ui.transmit.SelectConversationUI", localIntent, 2002);
-    AppMethodBeat.o(108531);
+    AppMethodBeat.i(108691);
+    this.mAY = paramh;
+    ((cij)c.b.b(this.rr.otB)).DesignerID = this.xOA;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(108691);
+    return i;
+  }
+  
+  public final int getType()
+  {
+    return 239;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(108690);
+    Log.d("MicroMsg.emoji.NetSceneGetDesignerSimpleInfo", "onGYNetEnd ErrType:%d, errCode:%d, errMsg", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    Object localObject;
+    if ((paramInt2 == 0) && (paramInt3 == 0))
+    {
+      params = ((d)com.tencent.mm.kernel.h.az(d.class)).getEmojiStorageMgr().adjB;
+      paramArrayOfByte = this.xOA;
+      localObject = dAB();
+      if ((!Util.isNullOrNil(paramArrayOfByte)) && (localObject != null)) {
+        break label113;
+      }
+      Log.w("MicroMsg.emoji.EmotionDesignerInfo", "saveDesignerSimpleInfoResponseByID failed. designerID or response is null.");
+    }
+    for (;;)
+    {
+      this.mAY.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(108690);
+      return;
+      try
+      {
+        label113:
+        com.tencent.mm.storage.emotion.j localj = new com.tencent.mm.storage.emotion.j();
+        localj.field_designerIDAndType = (paramArrayOfByte + k.a.admE.value);
+        localj.field_content = ((cik)localObject).toByteArray();
+        localObject = localj.convertTo();
+        new StringBuilder().append(paramArrayOfByte).append(k.a.admE.value).toString();
+        if (params.db.replace("EmotionDesignerInfo", "designerIDAndType", (ContentValues)localObject) <= 0L) {
+          break label257;
+        }
+        Log.i("MicroMsg.emoji.EmotionDesignerInfo", "saveDesignerSimpleInfoResponseByID success. designerID:%s", new Object[] { paramArrayOfByte });
+      }
+      catch (IOException params)
+      {
+        Log.e("MicroMsg.emoji.EmotionDesignerInfo", "saveDesignerSimpleInfoResponseByID exception:%s", new Object[] { Util.stackTraceToString(params) });
+      }
+      continue;
+      label257:
+      Log.i("MicroMsg.emoji.EmotionDesignerInfo", "saveDesignerSimpleInfoResponseByID failed. designerID:%s", new Object[] { paramArrayOfByte });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.e.j
  * JD-Core Version:    0.7.0.1
  */

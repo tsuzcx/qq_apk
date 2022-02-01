@@ -19,10 +19,11 @@ public class ConstantsKinda
   public static final int REQUEST_TYPE_DEFAULT = 0;
   public static final int REQUEST_TYPE_MODALVIEW = 1;
   public static final int REQUEST_WEBVIEW = 2;
+  public static final int REQUEST_YUNSHANFU = 10;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.tools.ConstantsKinda
  * JD-Core Version:    0.7.0.1
  */

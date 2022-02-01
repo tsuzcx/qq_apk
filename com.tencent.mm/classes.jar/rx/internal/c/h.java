@@ -24,28 +24,28 @@ import rx.j;
 public class h
   extends g.a
 {
-  private static final boolean abPL;
-  public static final int abPM;
-  private static final ConcurrentHashMap<ScheduledThreadPoolExecutor, ScheduledThreadPoolExecutor> abPN;
-  private static final AtomicReference<ScheduledExecutorService> abPO;
-  private static volatile Object abPP;
-  private static final Object abPQ;
-  final ScheduledExecutorService abPJ;
-  volatile boolean abPK;
+  private static final boolean akcD;
+  public static final int akcE;
+  private static final ConcurrentHashMap<ScheduledThreadPoolExecutor, ScheduledThreadPoolExecutor> akcF;
+  private static final AtomicReference<ScheduledExecutorService> akcG;
+  private static volatile Object akcH;
+  private static final Object akcI;
+  final ScheduledExecutorService akcB;
+  volatile boolean akcC;
   
   static
   {
     AppMethodBeat.i(90336);
-    abPQ = new Object();
-    abPN = new ConcurrentHashMap();
-    abPO = new AtomicReference();
-    abPM = Integer.getInteger("rx.scheduler.jdk6.purge-frequency-millis", 1000).intValue();
+    akcI = new Object();
+    akcF = new ConcurrentHashMap();
+    akcG = new AtomicReference();
+    akcE = Integer.getInteger("rx.scheduler.jdk6.purge-frequency-millis", 1000).intValue();
     boolean bool = Boolean.getBoolean("rx.scheduler.jdk6.purge-force");
-    int i = e.iWb();
+    int i = e.kKy();
     if ((!bool) && ((i == 0) || (i >= 21))) {}
     for (bool = true;; bool = false)
     {
-      abPL = bool;
+      akcD = bool;
       AppMethodBeat.o(90336);
       return;
     }
@@ -58,14 +58,14 @@ public class h
     if ((!b(paramThreadFactory)) && ((paramThreadFactory instanceof ScheduledThreadPoolExecutor))) {
       a((ScheduledThreadPoolExecutor)paramThreadFactory);
     }
-    this.abPJ = paramThreadFactory;
+    this.akcB = paramThreadFactory;
     AppMethodBeat.o(90331);
   }
   
   public static void a(ScheduledExecutorService paramScheduledExecutorService)
   {
     AppMethodBeat.i(90327);
-    abPN.remove(paramScheduledExecutorService);
+    akcF.remove(paramScheduledExecutorService);
     AppMethodBeat.o(90327);
   }
   
@@ -75,24 +75,24 @@ public class h
     for (;;)
     {
       ScheduledExecutorService localScheduledExecutorService;
-      if ((ScheduledExecutorService)abPO.get() == null)
+      if ((ScheduledExecutorService)akcG.get() == null)
       {
         localScheduledExecutorService = Executors.newScheduledThreadPool(1, new g("RxSchedulerPurge-"));
-        if (abPO.compareAndSet(null, localScheduledExecutorService)) {
+        if (akcG.compareAndSet(null, localScheduledExecutorService)) {
           localScheduledExecutorService.scheduleAtFixedRate(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(90325);
-              h.iVW();
+              h.kKt();
               AppMethodBeat.o(90325);
             }
-          }, abPM, abPM, TimeUnit.MILLISECONDS);
+          }, akcE, akcE, TimeUnit.MILLISECONDS);
         }
       }
       else
       {
-        abPN.putIfAbsent(paramScheduledThreadPoolExecutor, paramScheduledThreadPoolExecutor);
+        akcF.putIfAbsent(paramScheduledThreadPoolExecutor, paramScheduledThreadPoolExecutor);
         AppMethodBeat.o(90326);
         return;
       }
@@ -103,14 +103,14 @@ public class h
   public static boolean b(ScheduledExecutorService paramScheduledExecutorService)
   {
     AppMethodBeat.i(90329);
-    if (abPL)
+    if (akcD)
     {
       Object localObject1;
       Object localObject2;
       if ((paramScheduledExecutorService instanceof ScheduledThreadPoolExecutor))
       {
-        localObject1 = abPP;
-        if (localObject1 == abPQ)
+        localObject1 = akcH;
+        if (localObject1 == akcI)
         {
           AppMethodBeat.o(90329);
           return false;
@@ -121,7 +121,7 @@ public class h
           if (localObject1 != null)
           {
             localObject2 = localObject1;
-            abPP = localObject2;
+            akcH = localObject2;
           }
         }
       }
@@ -138,7 +138,7 @@ public class h
         }
         catch (InvocationTargetException paramScheduledExecutorService)
         {
-          c.c(paramScheduledExecutorService);
+          c.l(paramScheduledExecutorService);
           AppMethodBeat.o(90329);
           return false;
         }
@@ -146,17 +146,17 @@ public class h
         {
           for (;;)
           {
-            c.c(paramScheduledExecutorService);
+            c.l(paramScheduledExecutorService);
           }
         }
         catch (IllegalArgumentException paramScheduledExecutorService)
         {
           for (;;)
           {
-            c.c(paramScheduledExecutorService);
+            c.l(paramScheduledExecutorService);
           }
         }
-        localObject2 = abPQ;
+        localObject2 = akcI;
         break;
         localObject1 = (Method)localObject1;
         continue;
@@ -189,14 +189,14 @@ public class h
     return null;
   }
   
-  static void iVW()
+  static void kKt()
   {
     AppMethodBeat.i(90328);
     for (;;)
     {
       try
       {
-        Iterator localIterator = abPN.keySet().iterator();
+        Iterator localIterator = akcF.keySet().iterator();
         if (!localIterator.hasNext()) {
           break;
         }
@@ -207,10 +207,10 @@ public class h
           localThrowable.remove();
         }
       }
-      catch (Throwable localThrowable)
+      finally
       {
-        b.R(localThrowable);
-        c.c(localThrowable);
+        b.ai(localThrowable);
+        c.l(localThrowable);
         AppMethodBeat.o(90328);
         return;
       }
@@ -229,9 +229,9 @@ public class h
   public final j a(a parama, long paramLong, TimeUnit paramTimeUnit)
   {
     AppMethodBeat.i(90333);
-    if (this.abPK)
+    if (this.akcC)
     {
-      parama = d.iWx();
+      parama = d.kKY();
       AppMethodBeat.o(90333);
       return parama;
     }
@@ -245,31 +245,31 @@ public class h
     AppMethodBeat.i(90334);
     i locali = new i(c.b(parama));
     if (paramLong <= 0L) {}
-    for (parama = this.abPJ.submit(locali);; parama = this.abPJ.schedule(locali, paramLong, paramTimeUnit))
+    for (parama = this.akcB.submit(locali);; parama = this.akcB.schedule(locali, paramLong, paramTimeUnit))
     {
-      locali.b(parama);
+      locali.d(parama);
       AppMethodBeat.o(90334);
       return locali;
     }
   }
   
-  public final void iVJ()
+  public final void kKh()
   {
     AppMethodBeat.i(90335);
-    this.abPK = true;
-    this.abPJ.shutdownNow();
-    a(this.abPJ);
+    this.akcC = true;
+    this.akcB.shutdownNow();
+    a(this.akcB);
     AppMethodBeat.o(90335);
   }
   
-  public final boolean iVK()
+  public final boolean kKi()
   {
-    return this.abPK;
+    return this.akcC;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     rx.internal.c.h
  * JD-Core Version:    0.7.0.1
  */

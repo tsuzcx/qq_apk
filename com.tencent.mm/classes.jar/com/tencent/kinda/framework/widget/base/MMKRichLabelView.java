@@ -7,6 +7,7 @@ import com.tencent.kinda.framework.widget.tools.MMKViewUtil;
 import com.tencent.kinda.gen.DynamicColor;
 import com.tencent.kinda.gen.KRichLabelView;
 import com.tencent.kinda.gen.KText;
+import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 
@@ -14,6 +15,7 @@ public class MMKRichLabelView
   extends MMKLabelView
   implements KRichLabelView
 {
+  public VoidCallback linkCallback;
   private MMKRichText richText;
   
   public KText getRichText()
@@ -27,9 +29,10 @@ public class MMKRichLabelView
     if ((paramKText != null) && ((paramKText instanceof MMKRichText)))
     {
       this.richText = ((MMKRichText)paramKText);
+      this.linkCallback = this.richText.linkCallback;
       ((TextView)getView()).setText(this.richText.get());
       if (!this.richText.hasLinkAndCanCallback) {
-        break label163;
+        break label174;
       }
       ((TextView)getView()).setClickable(true);
     }
@@ -40,7 +43,7 @@ public class MMKRichLabelView
       notifyChanged();
       AppMethodBeat.o(19103);
       return;
-      label163:
+      label174:
       ((TextView)getView()).setClickable(false);
     }
   }
@@ -57,7 +60,7 @@ public class MMKRichLabelView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKRichLabelView
  * JD-Core Version:    0.7.0.1
  */

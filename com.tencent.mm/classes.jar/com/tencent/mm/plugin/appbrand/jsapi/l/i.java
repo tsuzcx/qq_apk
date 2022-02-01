@@ -1,96 +1,166 @@
 package com.tencent.mm.plugin.appbrand.jsapi.l;
 
-import android.graphics.Color;
+import android.graphics.Rect;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.g;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.l.a.b.ab;
-import com.tencent.mm.plugin.appbrand.jsapi.l.a.b.i;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.widget.input.ac;
+import com.tencent.mm.plugin.appbrand.widget.input.an;
+import com.tencent.mm.plugin.appbrand.widget.input.au;
+import com.tencent.mm.plugin.appbrand.widget.input.c;
+import com.tencent.mm.plugin.appbrand.widget.input.e.f;
+import com.tencent.mm.plugin.appbrand.widget.input.e.h;
+import com.tencent.mm.plugin.appbrand.widget.input.g;
+import com.tencent.mm.plugin.appbrand.widget.input.j;
+import com.tencent.mm.plugin.appbrand.widget.input.j.1;
+import com.tencent.mm.plugin.appbrand.widget.input.j.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
+import java.lang.ref.WeakReference;
+import java.util.Locale;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-public final class i
-  extends b
+public class i
+  extends a<h>
 {
-  public static final int CTRL_INDEX = 492;
-  public static final String NAME = "addMapPolygons";
+  private static final int CTRL_INDEX = 112;
+  private static final String NAME = "updateInput";
   
-  public final void a(e parame, JSONObject paramJSONObject, int paramInt)
+  public void a(final ad paramad, JSONObject paramJSONObject, final int paramInt)
   {
-    AppMethodBeat.i(143662);
-    super.a(parame, paramJSONObject, paramInt);
-    if (paramJSONObject == null)
+    AppMethodBeat.i(136292);
+    final h localh = new h();
+    if (!a(localh, paramJSONObject, paramad, paramInt))
     {
-      Log.e("MicroMsg.JsApiAddMapPolygons", "data is null");
-      parame.j(paramInt, h("fail:invalid data", null));
-      AppMethodBeat.o(143662);
-      return;
-    }
-    Log.i("MicroMsg.JsApiAddMapPolygons", "data:%s", new Object[] { paramJSONObject });
-    com.tencent.mm.plugin.appbrand.jsapi.l.a.b localb = g(parame, paramJSONObject);
-    if (localb == null)
-    {
-      Log.e("MicroMsg.JsApiAddMapPolygons", "mapView is null, return");
-      parame.j(paramInt, h("fail:mapview is null", null));
-      AppMethodBeat.o(143662);
+      AppMethodBeat.o(136292);
       return;
     }
     try
     {
-      if (paramJSONObject.has("polygons"))
-      {
-        localb.bSM();
-        paramJSONObject = new JSONArray(paramJSONObject.optString("polygons"));
-        int i = 0;
-        while (i < paramJSONObject.length())
-        {
-          JSONObject localJSONObject1 = (JSONObject)paramJSONObject.get(i);
-          ArrayList localArrayList = new ArrayList();
-          Object localObject = new JSONArray(localJSONObject1.optString("points"));
-          int j = 0;
-          while (j < ((JSONArray)localObject).length())
-          {
-            JSONObject localJSONObject2 = ((JSONArray)localObject).getJSONObject(j);
-            localArrayList.add(new b.i(Util.getDouble(localJSONObject2.optString("latitude"), 0.0D), Util.getDouble(localJSONObject2.optString("longitude"), 0.0D)) {});
-            j += 1;
-          }
-          j = g.cO(localJSONObject1.optString("fillColor", ""), Color.parseColor("#000000"));
-          int k = g.cO(localJSONObject1.optString("strokeColor", ""), Color.parseColor("#000000"));
-          int m = g.a(localJSONObject1, "strokeWidth", 0);
-          int n = localJSONObject1.optInt("zIndex", 0);
-          localObject = new b.ab();
-          ((b.ab)localObject).oYw = new ArrayList();
-          ((b.ab)localObject).oYw.addAll(localArrayList);
-          ((b.ab)localObject).fillColor = j;
-          ((b.ab)localObject).strokeWidth = m;
-          ((b.ab)localObject).strokeColor = k;
-          ((b.ab)localObject).zIndex = n;
-          ((b.ab)localObject).oYl = localJSONObject1.optString("level");
-          localb.a((b.ab)localObject);
-          i += 1;
-        }
+      final int i = paramJSONObject.getInt("inputId");
+      if ((localh.uLz != null) && (localh.uLz.intValue() < 0)) {
+        localh.uLz = Integer.valueOf(0);
       }
-      Log.e("MicroMsg.JsApiAddMapPolygons", "data has not lines info");
-      a(parame, paramInt, h("ok", null), true, localb.bSF());
-      AppMethodBeat.o(143662);
+      if ((localh.uLA != null) && (localh.uLA.intValue() < 0)) {
+        localh.uLA = Integer.valueOf(0);
+      }
+      String str = paramJSONObject.optString("data", null);
+      if (str != null) {
+        ax(i, str);
+      }
+      au.a(paramJSONObject, localh);
+      com.tencent.mm.plugin.appbrand.af.o.runOnUiThread(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(136291);
+          Object localObject1 = j.a.cRb();
+          ad localad = paramad;
+          int i = i;
+          Object localObject2 = localh;
+          localObject1 = com.tencent.mm.plugin.appbrand.widget.input.e.a(localad, new j.1((j)localObject1, i));
+          if ((localObject1 instanceof c))
+          {
+            localObject1 = (c)localObject1;
+            if (localObject1 == null) {
+              break label204;
+            }
+            if (((h)localObject2).defaultValue != null) {
+              ((c)localObject1).agZ(((h)localObject2).defaultValue);
+            }
+            ((c)localObject1).a((h)localObject2);
+            localObject2 = ((c)localObject1).cQB();
+            if (localObject2 != null)
+            {
+              localad = (ad)((c)localObject1).uEU.get();
+              if ((localad != null) && (localad.tti != null)) {
+                break label149;
+              }
+            }
+          }
+          label112:
+          for (i = 1;; i = 0)
+          {
+            if (i == 0) {
+              break label209;
+            }
+            paramad.callback(paramInt, i.this.ZP("ok"));
+            AppMethodBeat.o(136291);
+            return;
+            localObject1 = null;
+            break;
+            g localg = (g)localad.cEy();
+            if (localg == null) {
+              break label112;
+            }
+            localObject1 = ((c)localObject1).cQC();
+            if (localObject1 == null) {
+              break label112;
+            }
+            localg.c(localad.tti, (View)localObject2, ((Rect)localObject1).width(), ((Rect)localObject1).height(), ((Rect)localObject1).left, ((Rect)localObject1).top);
+            break label112;
+          }
+          label149:
+          label204:
+          label209:
+          localObject1 = com.tencent.mm.plugin.appbrand.widget.input.o.a(paramad, i);
+          if ((localObject1 instanceof com.tencent.mm.plugin.appbrand.widget.input.i))
+          {
+            localObject1 = (com.tencent.mm.plugin.appbrand.widget.input.i)localObject1;
+            localObject2 = localh;
+            if ((((com.tencent.mm.plugin.appbrand.widget.input.i)localObject1).uFL == null) || (((com.tencent.mm.plugin.appbrand.widget.input.i)localObject1).uFN == null)) {}
+            do
+            {
+              paramad.callback(paramInt, i.this.ZP("ok"));
+              AppMethodBeat.o(136291);
+              return;
+              ((com.tencent.mm.plugin.appbrand.widget.input.i)localObject1).uFL.a((f)localObject2);
+            } while ((!((com.tencent.mm.plugin.appbrand.widget.input.i)localObject1).uFL.uLw) && ((((com.tencent.mm.plugin.appbrand.widget.input.i)localObject1).uFL.uLA == null) || (((com.tencent.mm.plugin.appbrand.widget.input.i)localObject1).uFL.uLA.intValue() <= 0)));
+            ((com.tencent.mm.plugin.appbrand.widget.input.i)localObject1).uFN.setWillNotDraw(true);
+            ((com.tencent.mm.plugin.appbrand.widget.input.i)localObject1).cQW();
+            if (((com.tencent.mm.plugin.appbrand.widget.input.i)localObject1).uFL.defaultValue != null) {
+              ((com.tencent.mm.plugin.appbrand.widget.input.i)localObject1).uFN.T(Util.nullAsNil(((com.tencent.mm.plugin.appbrand.widget.input.i)localObject1).uFL.defaultValue));
+            }
+            if (!an.o(((com.tencent.mm.plugin.appbrand.widget.input.i)localObject1).uFL.uLR)) {
+              ((com.tencent.mm.plugin.appbrand.widget.input.i)localObject1).b(((com.tencent.mm.plugin.appbrand.widget.input.i)localObject1).uFN, ((com.tencent.mm.plugin.appbrand.widget.input.i)localObject1).uFL);
+            }
+            for (;;)
+            {
+              ((com.tencent.mm.plugin.appbrand.widget.input.i)localObject1).uFN.setWillNotDraw(false);
+              ((com.tencent.mm.plugin.appbrand.widget.input.i)localObject1).uFN.invalidate();
+              break;
+              localObject2 = new com.tencent.mm.plugin.appbrand.widget.input.i.1((com.tencent.mm.plugin.appbrand.widget.input.i)localObject1);
+              if (((com.tencent.mm.plugin.appbrand.widget.input.i)localObject1).uFN.getLayout() == null) {
+                ((com.tencent.mm.plugin.appbrand.widget.input.i)localObject1).uFN.post((Runnable)localObject2);
+              } else {
+                ((Runnable)localObject2).run();
+              }
+            }
+          }
+          Log.e("MicroMsg.AppBrand.JsApiUpdateInput", String.format(Locale.US, "AppBrandInputInvokeHandler with inputID(%d) 404", new Object[] { Integer.valueOf(i) }));
+          paramad.callback(paramInt, i.this.ZP(String.format(Locale.US, "fail found no input with %d", new Object[] { Integer.valueOf(i) })));
+          AppMethodBeat.o(136291);
+        }
+      });
+      AppMethodBeat.o(136292);
       return;
     }
-    catch (Exception paramJSONObject)
+    catch (JSONException paramJSONObject)
     {
-      Log.e("MicroMsg.JsApiAddMapPolygons", "parse lines error, exception : %s", new Object[] { paramJSONObject });
-      a(parame, paramInt, h("fail:internal error", null), false, localb.bSF());
-      AppMethodBeat.o(143662);
+      paramad.callback(paramInt, ZP("fail:invalid data"));
+      AppMethodBeat.o(136292);
     }
+  }
+  
+  protected final boolean csl()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.l.i
  * JD-Core Version:    0.7.0.1
  */

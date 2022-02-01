@@ -9,8 +9,8 @@ import java.io.RandomAccessFile;
 public final class b
   implements com.b.a.a
 {
-  private RandomAccessFile aFN;
-  private final a aFa;
+  private final a cAM;
+  private RandomAccessFile cBx;
   public File file;
   
   public b(File paramFile, a parama)
@@ -30,7 +30,7 @@ public final class b
         throw paramFile;
       }
     }
-    this.aFa = parama;
+    this.cAM = parama;
     parama = paramFile.getParentFile();
     if (parama.exists())
     {
@@ -61,11 +61,50 @@ public final class b
     label250:
     for (parama = "r";; parama = "rw")
     {
-      this.aFN = new RandomAccessFile(localFile, parama);
+      this.cBx = new RandomAccessFile(localFile, parama);
       AppMethodBeat.o(183618);
       return;
       parama = new File(paramFile.getParentFile(), paramFile.getName() + ".download");
       break;
+    }
+  }
+  
+  public final void GK()
+  {
+    for (;;)
+    {
+      try
+      {
+        AppMethodBeat.i(183623);
+        if (isCompleted())
+        {
+          AppMethodBeat.o(183623);
+          return;
+        }
+        close();
+        Object localObject1 = this.file.getName().substring(0, this.file.getName().length() - 9);
+        localObject1 = new File(this.file.getParentFile(), (String)localObject1);
+        if (!this.file.renameTo((File)localObject1))
+        {
+          localObject1 = new n("Error renaming file " + this.file + " to " + localObject1 + " for completion!");
+          AppMethodBeat.o(183623);
+          throw ((Throwable)localObject1);
+        }
+      }
+      finally {}
+      this.file = localObject2;
+      try
+      {
+        this.cBx = new RandomAccessFile(this.file, "r");
+        this.cAM.s(this.file);
+        AppMethodBeat.o(183623);
+      }
+      catch (IOException localIOException)
+      {
+        n localn = new n("Error opening " + this.file + " as disc cache", localIOException);
+        AppMethodBeat.o(183623);
+        throw localn;
+      }
     }
   }
   
@@ -75,17 +114,17 @@ public final class b
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 115
+    //   2: ldc 150
     //   4: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 102	com/b/a/a/b:aFN	Ljava/io/RandomAccessFile;
-    //   11: invokevirtual 118	java/io/RandomAccessFile:length	()J
+    //   8: getfield 102	com/b/a/a/b:cBx	Ljava/io/RandomAccessFile;
+    //   11: invokevirtual 152	java/io/RandomAccessFile:length	()J
     //   14: lstore_1
     //   15: lload_1
     //   16: l2i
     //   17: i2l
     //   18: lstore_1
-    //   19: ldc 115
+    //   19: ldc 150
     //   21: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   24: aload_0
     //   25: monitorexit
@@ -96,7 +135,7 @@ public final class b
     //   32: dup
     //   33: new 36	java/lang/StringBuilder
     //   36: dup
-    //   37: ldc 120
+    //   37: ldc 154
     //   39: invokespecial 41	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   42: aload_0
     //   43: getfield 93	com/b/a/a/b:file	Ljava/io/File;
@@ -105,7 +144,7 @@ public final class b
     //   52: aload_3
     //   53: invokespecial 57	com/b/a/n:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   56: astore_3
-    //   57: ldc 115
+    //   57: ldc 150
     //   59: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   62: aload_3
     //   63: athrow
@@ -136,20 +175,20 @@ public final class b
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 123
+    //   2: ldc 157
     //   4: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 102	com/b/a/a/b:aFN	Ljava/io/RandomAccessFile;
+    //   8: getfield 102	com/b/a/a/b:cBx	Ljava/io/RandomAccessFile;
     //   11: lload_2
-    //   12: invokevirtual 127	java/io/RandomAccessFile:seek	(J)V
+    //   12: invokevirtual 161	java/io/RandomAccessFile:seek	(J)V
     //   15: aload_0
-    //   16: getfield 102	com/b/a/a/b:aFN	Ljava/io/RandomAccessFile;
+    //   16: getfield 102	com/b/a/a/b:cBx	Ljava/io/RandomAccessFile;
     //   19: aload_1
     //   20: iconst_0
     //   21: sipush 8192
-    //   24: invokevirtual 131	java/io/RandomAccessFile:read	([BII)I
+    //   24: invokevirtual 165	java/io/RandomAccessFile:read	([BII)I
     //   27: istore 4
-    //   29: ldc 123
+    //   29: ldc 157
     //   31: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   34: aload_0
     //   35: monitorexit
@@ -158,36 +197,36 @@ public final class b
     //   39: astore 5
     //   41: new 34	com/b/a/n
     //   44: dup
-    //   45: ldc 133
+    //   45: ldc 167
     //   47: iconst_4
     //   48: anewarray 4	java/lang/Object
     //   51: dup
     //   52: iconst_0
     //   53: sipush 8192
-    //   56: invokestatic 139	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   56: invokestatic 173	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   59: aastore
     //   60: dup
     //   61: iconst_1
     //   62: lload_2
-    //   63: invokestatic 144	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   63: invokestatic 178	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   66: aastore
     //   67: dup
     //   68: iconst_2
     //   69: aload_0
-    //   70: invokevirtual 146	com/b/a/a/b:available	()J
-    //   73: invokestatic 144	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   70: invokevirtual 180	com/b/a/a/b:available	()J
+    //   73: invokestatic 178	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   76: aastore
     //   77: dup
     //   78: iconst_3
     //   79: aload_1
     //   80: arraylength
-    //   81: invokestatic 139	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   81: invokestatic 173	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   84: aastore
     //   85: invokestatic 91	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   88: aload 5
     //   90: invokespecial 57	com/b/a/n:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   93: astore_1
-    //   94: ldc 123
+    //   94: ldc 157
     //   96: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   99: aload_1
     //   100: athrow
@@ -228,14 +267,14 @@ public final class b
       }
       catch (IOException paramArrayOfByte)
       {
-        paramArrayOfByte = new n(String.format("Error writing %d bytes to %s from buffer with size %d", new Object[] { Integer.valueOf(paramInt), this.aFN, Integer.valueOf(8192) }), paramArrayOfByte);
+        paramArrayOfByte = new n(String.format("Error writing %d bytes to %s from buffer with size %d", new Object[] { Integer.valueOf(paramInt), this.cBx, Integer.valueOf(8192) }), paramArrayOfByte);
         AppMethodBeat.o(183621);
         throw paramArrayOfByte;
       }
-      this.aFN.seek(available());
+      this.cBx.seek(available());
     }
     finally {}
-    this.aFN.write(paramArrayOfByte, 0, paramInt);
+    this.cBx.write(paramArrayOfByte, 0, paramInt);
     AppMethodBeat.o(183621);
   }
   
@@ -245,17 +284,17 @@ public final class b
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 164
+    //   2: ldc 193
     //   4: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 102	com/b/a/a/b:aFN	Ljava/io/RandomAccessFile;
-    //   11: invokevirtual 166	java/io/RandomAccessFile:close	()V
+    //   8: getfield 102	com/b/a/a/b:cBx	Ljava/io/RandomAccessFile;
+    //   11: invokevirtual 194	java/io/RandomAccessFile:close	()V
     //   14: aload_0
-    //   15: getfield 59	com/b/a/a/b:aFa	Lcom/b/a/a/a;
+    //   15: getfield 59	com/b/a/a/b:cAM	Lcom/b/a/a/a;
     //   18: aload_0
     //   19: getfield 93	com/b/a/a/b:file	Ljava/io/File;
-    //   22: invokeinterface 172 2 0
-    //   27: ldc 164
+    //   22: invokeinterface 145 2 0
+    //   27: ldc 193
     //   29: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   32: aload_0
     //   33: monitorexit
@@ -265,7 +304,7 @@ public final class b
     //   39: dup
     //   40: new 36	java/lang/StringBuilder
     //   43: dup
-    //   44: ldc 174
+    //   44: ldc 196
     //   46: invokespecial 41	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   49: aload_0
     //   50: getfield 93	com/b/a/a/b:file	Ljava/io/File;
@@ -274,7 +313,7 @@ public final class b
     //   59: aload_1
     //   60: invokespecial 57	com/b/a/n:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   63: astore_1
-    //   64: ldc 164
+    //   64: ldc 193
     //   66: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   69: aload_1
     //   70: athrow
@@ -304,17 +343,17 @@ public final class b
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 175
+    //   2: ldc 197
     //   4: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
     //   8: getfield 93	com/b/a/a/b:file	Ljava/io/File;
     //   11: invokevirtual 106	java/io/File:getName	()Ljava/lang/String;
     //   14: ldc 108
-    //   16: invokevirtual 179	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   16: invokevirtual 201	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   19: ifne +14 -> 33
     //   22: iconst_1
     //   23: istore_1
-    //   24: ldc 175
+    //   24: ldc 197
     //   26: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   29: aload_0
     //   30: monitorexit
@@ -322,7 +361,7 @@ public final class b
     //   32: ireturn
     //   33: iconst_0
     //   34: istore_1
-    //   35: ldc 175
+    //   35: ldc 197
     //   37: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   40: goto -11 -> 29
     //   43: astore_2
@@ -341,49 +380,10 @@ public final class b
     //   24	29	43	finally
     //   35	40	43	finally
   }
-  
-  public final void ph()
-  {
-    for (;;)
-    {
-      try
-      {
-        AppMethodBeat.i(183623);
-        if (isCompleted())
-        {
-          AppMethodBeat.o(183623);
-          return;
-        }
-        close();
-        Object localObject1 = this.file.getName().substring(0, this.file.getName().length() - 9);
-        localObject1 = new File(this.file.getParentFile(), (String)localObject1);
-        if (!this.file.renameTo((File)localObject1))
-        {
-          localObject1 = new n("Error renaming file " + this.file + " to " + localObject1 + " for completion!");
-          AppMethodBeat.o(183623);
-          throw ((Throwable)localObject1);
-        }
-      }
-      finally {}
-      this.file = localObject2;
-      try
-      {
-        this.aFN = new RandomAccessFile(this.file, "r");
-        this.aFa.q(this.file);
-        AppMethodBeat.o(183623);
-      }
-      catch (IOException localIOException)
-      {
-        n localn = new n("Error opening " + this.file + " as disc cache", localIOException);
-        AppMethodBeat.o(183623);
-        throw localn;
-      }
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.b.a.a.b
  * JD-Core Version:    0.7.0.1
  */

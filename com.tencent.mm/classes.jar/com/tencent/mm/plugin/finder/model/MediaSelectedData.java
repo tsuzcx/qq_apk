@@ -4,16 +4,16 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.css;
+import com.tencent.mm.protocal.protobuf.dju;
 
 public class MediaSelectedData
   implements Parcelable
 {
   public static final Parcelable.Creator<MediaSelectedData> CREATOR;
+  public dju EDC;
   public String path;
   public String thumbPath;
   public int type;
-  public css zBo;
   
   static
   {
@@ -24,14 +24,14 @@ public class MediaSelectedData
   
   public MediaSelectedData(int paramInt)
   {
-    this.zBo = null;
+    this.EDC = null;
     this.type = paramInt;
   }
   
   protected MediaSelectedData(Parcel paramParcel)
   {
     AppMethodBeat.i(168634);
-    this.zBo = null;
+    this.EDC = null;
     this.path = paramParcel.readString();
     this.thumbPath = paramParcel.readString();
     this.type = paramParcel.readInt();
@@ -46,7 +46,7 @@ public class MediaSelectedData
   public String toString()
   {
     AppMethodBeat.i(168633);
-    String str = "MediaSelectedData{path='" + this.path + '\'' + ", thumbPath='" + this.thumbPath + '\'' + ", type=" + this.type + ", cropInfo=" + this.zBo + '}';
+    String str = "MediaSelectedData{path='" + this.path + '\'' + ", thumbPath='" + this.thumbPath + '\'' + ", type=" + this.type + ", cropInfo=" + this.EDC + '}';
     AppMethodBeat.o(168633);
     return str;
   }
@@ -62,7 +62,7 @@ public class MediaSelectedData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.model.MediaSelectedData
  * JD-Core Version:    0.7.0.1
  */

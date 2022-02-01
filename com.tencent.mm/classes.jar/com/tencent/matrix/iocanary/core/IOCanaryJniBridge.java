@@ -10,6 +10,7 @@ public class IOCanaryJniBridge
   private static boolean sIsLoadJniLib;
   private static boolean sIsTryInstall;
   private static OnJniIssuePublishListener sOnIssuePublishListener;
+  private byte _hellAccFlag_;
   
   private static native boolean doHook();
   
@@ -24,7 +25,7 @@ public class IOCanaryJniBridge
       JavaContext localJavaContext = new JavaContext(null);
       return localJavaContext;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       c.printErrStackTrace("Matrix.IOCanaryJniBridge", localThrowable, "get javacontext exception", new Object[0]);
     }
@@ -46,20 +47,20 @@ public class IOCanaryJniBridge
     if (parama != null) {}
     try
     {
-      if (parama.WM())
+      if (parama.axO())
       {
         enableDetector(0);
-        setConfig(0, parama.cYC.D(a.a.ZbE.name(), 500) * 1000L);
+        setConfig(0, parama.eVt.L(a.a.ahal.name(), 500) * 1000L);
       }
-      if (parama.WO())
+      if (parama.axQ())
       {
         enableDetector(1);
-        setConfig(1, parama.cYC.D(a.a.ZbG.name(), 4096));
+        setConfig(1, parama.eVt.L(a.a.ahan.name(), 4096));
       }
-      if (parama.WN())
+      if (parama.axP())
       {
         enableDetector(2);
-        setConfig(2, parama.cYC.D(a.a.ZbJ.name(), 5));
+        setConfig(2, parama.eVt.L(a.a.ahaq.name(), 5));
       }
       doHook();
       sIsTryInstall = true;
@@ -78,7 +79,11 @@ public class IOCanaryJniBridge
     }
     try
     {
-      System.loadLibrary("io-canary");
+      com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG("io-canary");
+      Object localObject = new Object();
+      com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/matrix/iocanary/core/IOCanaryJniBridge", "loadJni", "()Z", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+      System.loadLibrary((String)locala.sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/matrix/iocanary/core/IOCanaryJniBridge", "loadJni", "()Z", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
       sIsLoadJniLib = true;
       return true;
     }
@@ -124,7 +129,7 @@ public class IOCanaryJniBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.iocanary.core.IOCanaryJniBridge
  * JD-Core Version:    0.7.0.1
  */

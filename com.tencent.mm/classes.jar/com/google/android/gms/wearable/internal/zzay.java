@@ -11,11 +11,6 @@ import com.google.android.gms.common.internal.Objects;
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
 import com.google.android.gms.wearable.Channel;
 import com.google.android.gms.wearable.Channel.GetInputStreamResult;
 import com.google.android.gms.wearable.Channel.GetOutputStreamResult;
@@ -23,18 +18,13 @@ import com.google.android.gms.wearable.ChannelApi.ChannelListener;
 import com.google.android.gms.wearable.ChannelClient.Channel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SafeParcelable.Class(creator="ChannelImplCreator")
-@SafeParcelable.Reserved({1})
 public final class zzay
   extends AbstractSafeParcelable
   implements Channel, ChannelClient.Channel
 {
   public static final Parcelable.Creator<zzay> CREATOR;
-  @SafeParcelable.Field(getter="getToken", id=2)
   private final String zzce;
-  @SafeParcelable.Field(getter="getPath", id=4)
   private final String zzcl;
-  @SafeParcelable.Field(getter="getNodeId", id=3)
   private final String zzo;
   
   static
@@ -44,8 +34,7 @@ public final class zzay
     AppMethodBeat.o(101040);
   }
   
-  @SafeParcelable.Constructor
-  public zzay(@SafeParcelable.Param(id=2) String paramString1, @SafeParcelable.Param(id=3) String paramString2, @SafeParcelable.Param(id=4) String paramString3)
+  public zzay(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(101026);
     this.zzce = ((String)Preconditions.checkNotNull(paramString1));
@@ -236,7 +225,7 @@ public final class zzay
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzay
  * JD-Core Version:    0.7.0.1
  */

@@ -1,89 +1,78 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class dim
-  extends dyy
+  extends com.tencent.mm.bx.a
 {
-  public int TPT;
+  public int errCode;
+  public String errMsg;
+  public int errType;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(117885);
+    AppMethodBeat.i(260195);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse != null)
-      {
-        paramVarArgs.oE(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.errType);
+      paramVarArgs.bS(2, this.errCode);
+      if (this.errMsg != null) {
+        paramVarArgs.g(3, this.errMsg);
       }
-      paramVarArgs.aY(2, this.TPT);
-      AppMethodBeat.o(117885);
+      AppMethodBeat.o(260195);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label332;
-      }
-    }
-    label332:
-    for (paramInt = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.bM(2, this.TPT);
-      AppMethodBeat.o(117885);
-      return paramInt + i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
-          }
-        }
-        AppMethodBeat.o(117885);
-        return 0;
+      int i = i.a.a.b.b.a.cJ(1, this.errType) + 0 + i.a.a.b.b.a.cJ(2, this.errCode);
+      paramInt = i;
+      if (this.errMsg != null) {
+        paramInt = i + i.a.a.b.b.a.h(3, this.errMsg);
       }
-      if (paramInt == 3)
-      {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
-        dim localdim = (dim)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(117885);
-          return -1;
-        case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject = (byte[])paramVarArgs.get(paramInt);
-            jh localjh = new jh();
-            if ((localObject != null) && (localObject.length > 0)) {
-              localjh.parseFrom((byte[])localObject);
-            }
-            localdim.BaseResponse = localjh;
-            paramInt += 1;
-          }
-          AppMethodBeat.o(117885);
-          return 0;
-        }
-        localdim.TPT = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(117885);
-        return 0;
-      }
-      AppMethodBeat.o(117885);
-      return -1;
+      AppMethodBeat.o(260195);
+      return paramInt;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(260195);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+      dim localdim = (dim)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(260195);
+        return -1;
+      case 1: 
+        localdim.errType = locala.ajGk.aar();
+        AppMethodBeat.o(260195);
+        return 0;
+      case 2: 
+        localdim.errCode = locala.ajGk.aar();
+        AppMethodBeat.o(260195);
+        return 0;
+      }
+      localdim.errMsg = locala.ajGk.readString();
+      AppMethodBeat.o(260195);
+      return 0;
+    }
+    AppMethodBeat.o(260195);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dim
  * JD-Core Version:    0.7.0.1
  */

@@ -10,24 +10,24 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.LinearLayout;
 import android.widget.Scroller;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.i.d;
+import com.tencent.mm.plugin.sns.b.d;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class ScrollableLayout
   extends LinearLayout
 {
-  private int JAF;
-  private int LqA;
-  private int Lqz;
-  public View LuI;
-  private int LuJ;
-  private int LuK;
-  private int LuL;
-  private int LuM;
-  private int LuN;
-  private int LuO;
-  private ScrollableLayout.a LuP;
-  private ScrollableLayout.b LuQ;
+  private int PQn;
+  private int RTt;
+  private int RTu;
+  public View RYj;
+  private int RYk;
+  private int RYl;
+  private int RYm;
+  private int RYn;
+  private int RYo;
+  private int RYp;
+  private ScrollableLayout.a RYq;
+  private ScrollableLayout.b RYr;
   private int mActivePointerId;
   private boolean mIsBeingDragged;
   protected Scroller mScroller;
@@ -51,40 +51,58 @@ public class ScrollableLayout
   private ScrollableLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt, byte paramByte)
   {
     super(paramContext, paramAttributeSet, paramInt, 0);
-    AppMethodBeat.i(253743);
+    AppMethodBeat.i(309282);
     this.mIsBeingDragged = false;
-    this.LuJ = 0;
-    this.LuK = 0;
-    this.LuL = 0;
-    this.LuM = 0;
+    this.RYk = 0;
+    this.RYl = 0;
+    this.RYm = 0;
+    this.RYn = 0;
     this.mActivePointerId = -1;
-    this.LuN = 0;
-    this.LuO = 0;
+    this.RYo = 0;
+    this.RYp = 0;
     try
     {
       this.mScroller = new Scroller(paramContext, new DecelerateInterpolator());
       this.mTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
       setOrientation(1);
-      this.JAF = paramContext.getResources().getDimensionPixelOffset(i.d.sns_ad_float_web_view_slide_threshold);
-      AppMethodBeat.o(253743);
+      this.PQn = paramContext.getResources().getDimensionPixelOffset(b.d.sns_ad_float_web_view_slide_threshold);
+      AppMethodBeat.o(309282);
       return;
     }
-    catch (Throwable paramContext)
+    finally
     {
       Log.w("ScrollLinearLayout", "the init method has something wrong!");
-      AppMethodBeat.o(253743);
+      AppMethodBeat.o(309282);
     }
   }
   
-  private void ahL(int paramInt)
+  private boolean E(View paramView, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(253753);
-    ScrollableLayout.b localb;
-    if (paramInt != this.LuO)
+    AppMethodBeat.i(309284);
+    if (paramView == null)
     {
-      localb = this.LuQ;
+      AppMethodBeat.o(309284);
+      return false;
+    }
+    int i = getScrollY();
+    if ((paramInt2 >= paramView.getTop() - i) && (paramInt2 < paramView.getBottom() - i) && (paramInt1 >= paramView.getLeft()) && (paramInt1 < paramView.getRight()))
+    {
+      AppMethodBeat.o(309284);
+      return true;
+    }
+    AppMethodBeat.o(309284);
+    return false;
+  }
+  
+  private void amM(int paramInt)
+  {
+    AppMethodBeat.i(309289);
+    ScrollableLayout.b localb;
+    if (paramInt != this.RYp)
+    {
+      localb = this.RYr;
       if (localb != null) {
-        if (getScrollY() < this.LuK) {
+        if (getScrollY() < this.RYl) {
           break label68;
         }
       }
@@ -92,35 +110,17 @@ public class ScrollableLayout
     label68:
     for (boolean bool = true;; bool = false)
     {
-      localb.bb(paramInt, bool);
+      localb.bI(paramInt, bool);
       Log.i("ScrollLinearLayout", "the new state is ".concat(String.valueOf(paramInt)));
-      this.LuO = paramInt;
-      AppMethodBeat.o(253753);
+      this.RYp = paramInt;
+      AppMethodBeat.o(309289);
       return;
     }
   }
   
-  private boolean z(View paramView, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(253752);
-    if (paramView == null)
-    {
-      AppMethodBeat.o(253752);
-      return false;
-    }
-    int i = getScrollY();
-    if ((paramInt2 >= paramView.getTop() - i) && (paramInt2 < paramView.getBottom() - i) && (paramInt1 >= paramView.getLeft()) && (paramInt1 < paramView.getRight()))
-    {
-      AppMethodBeat.o(253752);
-      return true;
-    }
-    AppMethodBeat.o(253752);
-    return false;
-  }
-  
   public void computeScroll()
   {
-    AppMethodBeat.i(253744);
+    AppMethodBeat.i(309292);
     super.computeScroll();
     try
     {
@@ -128,21 +128,21 @@ public class ScrollableLayout
       {
         scrollTo(this.mScroller.getCurrX(), this.mScroller.getCurrY());
         invalidate();
-        AppMethodBeat.o(253744);
+        AppMethodBeat.o(309292);
         return;
       }
-      if (this.LuO == 2)
+      if (this.RYp == 2)
       {
         Log.i("ScrollLinearLayout", "compute scroll offset is false the currY is " + this.mScroller.getCurrY() + ", the final Y is " + this.mScroller.getFinalY());
-        ahL(0);
+        amM(0);
       }
-      AppMethodBeat.o(253744);
+      AppMethodBeat.o(309292);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Log.w("ScrollLinearLayout", "the compute scroll has something wrong!");
-      AppMethodBeat.o(253744);
+      AppMethodBeat.o(309292);
     }
   }
   
@@ -150,7 +150,7 @@ public class ScrollableLayout
   {
     boolean bool2 = false;
     boolean bool1 = false;
-    AppMethodBeat.i(253748);
+    AppMethodBeat.i(309307);
     for (;;)
     {
       int j;
@@ -166,7 +166,7 @@ public class ScrollableLayout
             if (!bool1) {
               continue;
             }
-            AppMethodBeat.o(253748);
+            AppMethodBeat.o(309307);
             return true;
           }
         }
@@ -177,37 +177,37 @@ public class ScrollableLayout
         case 0: 
           i = (int)paramMotionEvent.getX();
           j = (int)paramMotionEvent.getY();
-          this.LuN = getScrollY();
-          if (!z(this.LuI, i, j))
+          this.RYo = getScrollY();
+          if (!E(this.RYj, i, j))
           {
             this.mIsBeingDragged = false;
-            Log.i("ScrollLinearLayout", "the onInterceptTouchActionDown is called " + this.mIsBeingDragged + ", mScrollYWhenTouchDown = " + this.LuN);
+            Log.i("ScrollLinearLayout", "the onInterceptTouchActionDown is called " + this.mIsBeingDragged + ", mScrollYWhenTouchDown = " + this.RYo);
             bool1 = this.mIsBeingDragged;
             continue;
           }
           this.mActivePointerId = paramMotionEvent.getPointerId(0);
-          this.Lqz = j;
-          this.LqA = i;
+          this.RTt = j;
+          this.RTu = i;
           bool1 = bool2;
           if (!this.mScroller.isFinished()) {
             bool1 = true;
           }
           this.mIsBeingDragged = bool1;
-          if (this.LuJ > 0)
+          if (this.RYk > 0)
           {
-            i = this.LuJ;
-            this.LuL = (this.LuK + i);
-            this.LuM = (-i);
+            i = this.RYk;
+            this.RYm = (this.RYl + i);
+            this.RYn = (-i);
             continue;
           }
-          i = this.LuK / 3;
+          i = this.RYl / 3;
         }
       }
-      catch (Throwable localThrowable)
+      finally
       {
         Log.e("ScrollLinearLayout", "the onInterceptTouchEventInner has something wrong");
         bool1 = super.onInterceptTouchEvent(paramMotionEvent);
-        AppMethodBeat.o(253748);
+        AppMethodBeat.o(309307);
         return bool1;
       }
       continue;
@@ -219,13 +219,13 @@ public class ScrollableLayout
         {
           i = (int)paramMotionEvent.getX(j);
           j = (int)paramMotionEvent.getY(j);
-          int k = j - this.Lqz;
+          int k = j - this.RTt;
           int m = getScrollY();
           if (Math.abs(k) >= this.mTouchSlop)
           {
-            this.Lqz = j;
-            this.LqA = i;
-            if (((k < 0) && (m <= 0)) || ((k > 0) && (m >= this.LuK))) {
+            this.RTt = j;
+            this.RTu = i;
+            if (((k < 0) && (m <= 0)) || ((k > 0) && (m >= this.RYl))) {
               this.mIsBeingDragged = true;
             }
           }
@@ -246,7 +246,7 @@ public class ScrollableLayout
     boolean bool2 = false;
     boolean bool3 = false;
     boolean bool1 = false;
-    AppMethodBeat.i(253750);
+    AppMethodBeat.i(309314);
     for (;;)
     {
       try
@@ -258,20 +258,20 @@ public class ScrollableLayout
           if (!bool1) {
             continue;
           }
-          AppMethodBeat.o(253750);
+          AppMethodBeat.o(309314);
           return true;
         }
       }
-      catch (Throwable localThrowable)
+      finally
       {
         Log.e("ScrollLinearLayout", "the onTouchEventInner is called " + this.mIsBeingDragged);
         bool1 = super.onTouchEvent(paramMotionEvent);
-        AppMethodBeat.o(253750);
+        AppMethodBeat.o(309314);
         return bool1;
       }
       int i = (int)paramMotionEvent.getX();
       int j = (int)paramMotionEvent.getY();
-      if (z(this.LuI, i, j))
+      if (E(this.RYj, i, j))
       {
         bool1 = bool2;
         if (!this.mScroller.isFinished()) {
@@ -281,8 +281,8 @@ public class ScrollableLayout
         if (!this.mScroller.isFinished()) {
           this.mScroller.abortAnimation();
         }
-        this.LqA = i;
-        this.Lqz = j;
+        this.RTu = i;
+        this.RTt = j;
         this.mActivePointerId = paramMotionEvent.getPointerId(0);
         Log.i("ScrollLinearLayout", "the onTouchActionDown is called " + this.mIsBeingDragged);
         bool1 = this.mIsBeingDragged;
@@ -296,7 +296,7 @@ public class ScrollableLayout
         {
           int k = (int)paramMotionEvent.getX(i);
           int m = (int)paramMotionEvent.getY(i);
-          j = m - this.Lqz;
+          j = m - this.RTt;
           i = j;
           if (!this.mIsBeingDragged)
           {
@@ -311,23 +311,23 @@ public class ScrollableLayout
             }
           }
           j = getScrollY() - i;
-          if ((this.mIsBeingDragged) && (this.LuM < j) && (this.LuL > j))
+          if ((this.mIsBeingDragged) && (this.RYn < j) && (this.RYm > j))
           {
-            ahL(1);
+            amM(1);
             scrollBy(0, -i);
-            this.Lqz = m;
-            this.LqA = k;
+            this.RTt = m;
+            this.RTu = k;
             break label585;
             label392:
             i = j + this.mTouchSlop;
             continue;
-            j = this.LuN;
+            j = this.RYo;
             k = getScrollY();
             m = k - j;
             if (m > 0)
             {
-              i = this.LuK - k;
-              if (m < this.JAF) {
+              i = this.RYl - k;
+              if (m < this.PQn) {
                 i = -k;
               }
               label445:
@@ -337,23 +337,23 @@ public class ScrollableLayout
               }
               this.mScroller.startScroll(getScrollX(), k, 0, i, 350);
               invalidate();
-              ahL(2);
+              amM(2);
             }
             for (bool1 = true;; bool1 = bool3)
             {
               this.mIsBeingDragged = false;
               this.mActivePointerId = -1;
-              this.Lqz = 0;
-              this.LqA = 0;
+              this.RTt = 0;
+              this.RTu = 0;
               break;
               i = -k;
-              if (m <= -this.JAF) {
+              if (m <= -this.PQn) {
                 break label445;
               }
-              i = this.LuK - k;
+              i = this.RYl - k;
               break label445;
               label573:
-              ahL(0);
+              amM(0);
             }
           }
         }
@@ -365,27 +365,27 @@ public class ScrollableLayout
   
   public void setDescendantScrollStatusHunter(ScrollableLayout.a parama)
   {
-    this.LuP = parama;
+    this.RYq = parama;
   }
   
   public void setMaxOverScrollOffset(int paramInt)
   {
-    this.LuJ = paramInt;
+    this.RYk = paramInt;
   }
   
   public void setMaxYScrollOffset(int paramInt)
   {
-    this.LuK = paramInt;
+    this.RYl = paramInt;
   }
   
   public void setOnScrollStatusListener(ScrollableLayout.b paramb)
   {
-    this.LuQ = paramb;
+    this.RYr = paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.ad.ScrollableLayout
  * JD-Core Version:    0.7.0.1
  */

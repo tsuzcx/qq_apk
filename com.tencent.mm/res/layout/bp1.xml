@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/hr9" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:id="@id/hv9" android:background="@color/ahb" style="@style/n9"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/hr_" android:background="@drawable/e0" android:layout_width="120.0dip" android:layout_height="wrap_content" android:minHeight="120.0dip">
-        <ProgressBar android:id="@id/gl7" android:padding="7.5dip" android:layout_width="41.0dip" android:layout_height="41.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/e1" />
-        <ImageView android:id="@id/e4p" android:layout_width="41.0dip" android:layout_height="41.0dip" />
-        <TextView android:textSize="13.0dip" android:textColor="@color/ag2" android:gravity="center" android:id="@id/ipm" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k" android:layout_marginTop="@dimen/r" android:layout_marginRight="@dimen/k" android:maxLines="1" />
+    <LinearLayout android:gravity="center" android:layout_width="@dimen/d6" android:layout_height="@dimen/d_">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/jc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/icons_outlined_add2" />
     </LinearLayout>
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:textColorHint="@color/uu" android:gravity="center_vertical" android:layout_gravity="center" android:id="@id/hva" android:paddingLeft="0.0dip" android:paddingTop="0.0dip" android:paddingRight="0.0dip" android:paddingBottom="0.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/d_" android:minHeight="@dimen/d_" android:text="@string/gv3" android:singleLine="true" />
 </LinearLayout>

@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  static final boolean VIZ;
+  static final boolean adnd;
   
   static
   {
@@ -29,7 +29,7 @@ public final class b
       default: 
         bool = true;
       }
-      VIZ = bool;
+      adnd = bool;
       AppMethodBeat.o(133325);
       return;
       if (str.equals("exynos7884"))
@@ -65,7 +65,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storagebase.b
  * JD-Core Version:    0.7.0.1
  */

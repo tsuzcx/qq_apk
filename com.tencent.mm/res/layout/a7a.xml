@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/qd" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.base.MMTagPanelScrollView android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fadeScrollbars="false">
+        <com.tencent.mm.plugin.fav.ui.widget.FavTagPanel android:id="@id/cwq" android:paddingLeft="@dimen/f5" android:paddingTop="@dimen/m2" android:paddingRight="@dimen/f5" android:paddingBottom="@dimen/m2" android:layout_width="fill_parent" android:layout_height="wrap_content" flowlayout:horizontalSpacing="@dimen/m2" flowlayout:verticalSpacing="@dimen/m2" />
+    </com.tencent.mm.ui.base.MMTagPanelScrollView>
+    <View android:layout_width="fill_parent" android:layout_height="1.0px" style="@style/i7" />
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/a9w" android:gravity="center" android:id="@id/gq0" android:padding="@dimen/g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ListView android:id="@id/keu" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/na" />
+    <ListView android:id="@id/j7a" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/na" />
+</LinearLayout>

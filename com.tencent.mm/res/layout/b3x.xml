@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingTop="32.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@color/YellowK" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/l" android:textColor="@color/a2x" android:id="@id/f1b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{xiangdangyu }" />
-    <LinearLayout android:orientation="vertical" android:id="@id/f1a" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" />
-</LinearLayout>
+    <com.tencent.mm.plugin.kidswatch.ui.login.KidsWatchHeadComponent android:id="@id/eu9" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:layout_below="@id/eu9">
+        <com.tencent.mm.ui.widget.InputPanelLinearLayout android:orientation="vertical" android:id="@id/f7l" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/gku" android:background="@drawable/aaz" android:padding="@dimen/d0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cv" android:layout_marginTop="@dimen/d6" android:layout_marginRight="@dimen/cv">
+                <ImageView android:layout_width="@dimen/db" android:layout_height="@dimen/db" android:src="@drawable/bjh" />
+                <TextView android:textSize="@dimen/hr" android:textColor="@color/a7d" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d0" android:text="@string/g1l" />
+                <TextView android:textSize="@dimen/t" android:textColor="@color/a7d" android:gravity="center" android:id="@id/c22" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:text="@string/g1k" />
+            </LinearLayout>
+            <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ag4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/c2">
+                <Button android:id="@id/eq0" android:text="@string/g1m" android:layout_above="@id/ik0" android:layout_below="@id/fjc" style="@style/kq" />
+            </LinearLayout>
+        </com.tencent.mm.ui.widget.InputPanelLinearLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.game.luggage.e.a;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.luggage.ipc.CommonLogicTask;
-import com.tencent.mm.protocal.protobuf.cio;
-import com.tencent.mm.protocal.protobuf.cxc;
+import com.tencent.mm.protocal.protobuf.cyr;
+import com.tencent.mm.protocal.protobuf.doh;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
@@ -17,16 +17,16 @@ import java.util.Map;
 
 public class b
 {
-  List<cxc> CBG;
-  Map<Integer, a> CBH;
+  List<doh> Ivw;
+  Map<Integer, a> Ivx;
   private String mAppId;
   
   public b(String paramString)
   {
     AppMethodBeat.i(83096);
     this.mAppId = paramString;
-    this.CBH = new HashMap();
-    ewI();
+    this.Ivx = new HashMap();
+    fEA();
     a(new h());
     a(new f());
     a(new j());
@@ -40,34 +40,34 @@ public class b
   private void a(a parama)
   {
     AppMethodBeat.i(83097);
-    this.CBH.put(Integer.valueOf(parama.id), parama);
+    this.Ivx.put(Integer.valueOf(parama.id), parama);
     AppMethodBeat.o(83097);
   }
   
-  private void ewI()
+  private void fEA()
   {
     AppMethodBeat.i(83098);
-    this.CBG = com.tencent.mm.plugin.webview.ui.tools.game.menu.a.Qph;
+    this.Ivw = com.tencent.mm.plugin.webview.ui.tools.game.menu.a.Xhv;
     try
     {
       Object localObject1 = new CommonLogicTask();
       ((CommonLogicTask)localObject1).type = 9;
-      ((CommonLogicTask)localObject1).fKb.putString("game_hv_menu_appid", this.mAppId);
-      ((CommonLogicTask)localObject1).bPu();
-      localObject1 = ((CommonLogicTask)localObject1).fKb.getString("game_hv_menu_pbcache");
+      ((CommonLogicTask)localObject1).hPH.putString("game_hv_menu_appid", this.mAppId);
+      ((CommonLogicTask)localObject1).cpB();
+      localObject1 = ((CommonLogicTask)localObject1).hPH.getString("game_hv_menu_pbcache");
       if (!Util.isNullOrNil((String)localObject1))
       {
         localObject1 = ((String)localObject1).getBytes("ISO-8859-1");
-        localObject2 = new cio();
-        ((cio)localObject2).parseFrom((byte[])localObject1);
-        if (!Util.isNullOrNil(((cio)localObject2).Tpr))
+        localObject2 = new cyr();
+        ((cyr)localObject2).parseFrom((byte[])localObject1);
+        if (!Util.isNullOrNil(((cyr)localObject2).aaDt))
         {
-          this.CBG = ((cio)localObject2).Tpr;
+          this.Ivw = ((cyr)localObject2).aaDt;
           Log.i("MicroMsg.H5GameMenuHelp", "use net menu data");
         }
       }
-      Collections.sort(this.CBG, new Comparator() {});
-      int j = ((cxc)this.CBG.get(this.CBG.size() - 1)).TFG;
+      Collections.sort(this.Ivw, new Comparator() {});
+      int j = ((doh)this.Ivw.get(this.Ivw.size() - 1)).aaVn;
       localObject1 = new ArrayList();
       int i = 0;
       while (i < j)
@@ -82,15 +82,15 @@ public class b
       {
         Log.e("MicroMsg.H5GameMenuHelp", "get cache hv game menu fail! exception:%s", new Object[] { localException.getMessage() });
       }
-      Object localObject2 = this.CBG.iterator();
+      Object localObject2 = this.Ivw.iterator();
       while (((Iterator)localObject2).hasNext())
       {
-        cxc localcxc = (cxc)((Iterator)localObject2).next();
-        if ((localcxc.TFG > 0) && (localcxc.TFG <= localException.size())) {
-          localException.set(localcxc.TFG - 1, localcxc);
+        doh localdoh = (doh)((Iterator)localObject2).next();
+        if ((localdoh.aaVn > 0) && (localdoh.aaVn <= localException.size())) {
+          localException.set(localdoh.aaVn - 1, localdoh);
         }
       }
-      this.CBG = localException;
+      this.Ivw = localException;
       AppMethodBeat.o(83098);
     }
   }

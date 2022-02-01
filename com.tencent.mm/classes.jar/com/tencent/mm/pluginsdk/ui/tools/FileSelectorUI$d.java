@@ -12,124 +12,131 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileDataSource;", "", "adapter", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter;", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI;", "(Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI;Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter;)V", "DEFAULT_PAGESIZE", "", "getDEFAULT_PAGESIZE", "()I", "setDEFAULT_PAGESIZE", "(I)V", "getAdapter", "()Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter;", "fileList", "", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$ListFileItem;", "getFileList", "()Ljava/util/List;", "setFileList", "(Ljava/util/List;)V", "hasInit", "", "getHasInit", "()Z", "setHasInit", "(Z)V", "searchList", "startIndex", "getStartIndex", "setStartIndex", "talker", "", "getTalker", "()Ljava/lang/String;", "setTalker", "(Ljava/lang/String;)V", "getData", "getDisplayName", "fromUser", "getHighLightContent", "", "key", "content", "initASync", "", "loadMoreAsync", "search", "app_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileDataSource;", "", "adapter", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter;", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI;", "(Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI;Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter;)V", "DEFAULT_PAGESIZE", "", "getDEFAULT_PAGESIZE", "()I", "setDEFAULT_PAGESIZE", "(I)V", "getAdapter", "()Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter;", "fileList", "", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$ListFileItem;", "getFileList", "()Ljava/util/List;", "setFileList", "(Ljava/util/List;)V", "hasInit", "", "getHasInit", "()Z", "setHasInit", "(Z)V", "searchList", "startIndex", "getStartIndex", "setStartIndex", "talker", "", "getTalker", "()Ljava/lang/String;", "setTalker", "(Ljava/lang/String;)V", "getData", "getDisplayName", "fromUser", "getHighLightContent", "", "key", "content", "initASync", "", "loadMoreAsync", "search", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class FileSelectorUI$d
 {
-  private int RvA;
-  List<FileSelectorUI.j> RvB;
-  private List<FileSelectorUI.j> RvC;
-  final FileSelectorUI.e Rvl;
+  final FileSelectorUI.e YrI;
+  private int YrV;
+  List<FileSelectorUI.j> YrW;
+  private List<FileSelectorUI.j> YrX;
   boolean hasInit;
-  int startIndex;
+  private int startIndex;
   private String talker;
   
   public FileSelectorUI$d(FileSelectorUI.e parame)
   {
-    this.Rvl = localObject;
-    this.RvA = 100;
+    this.YrI = localObject;
+    this.YrV = 100;
     parame = Collections.synchronizedList((List)new ArrayList());
-    p.j(parame, "Collections.synchronized…rrayList<ListFileItem>())");
-    this.RvB = parame;
+    s.s(parame, "synchronizedList(ArrayList<ListFileItem>())");
+    this.YrW = parame;
     parame = Collections.synchronizedList((List)new ArrayList());
-    p.j(parame, "Collections.synchronized…rrayList<ListFileItem>())");
-    this.RvC = parame;
-    parame = z.bcZ();
-    p.j(parame, "ConfigStorageLogic.getUsernameFromUserInfo()");
+    s.s(parame, "synchronizedList(ArrayList<ListFileItem>())");
+    this.YrX = parame;
+    parame = z.bAM();
+    s.s(parame, "getUsernameFromUserInfo()");
     this.talker = parame;
   }
   
-  private static CharSequence a(String paramString, CharSequence paramCharSequence)
+  private static CharSequence b(String paramString, CharSequence paramCharSequence)
   {
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
     SpannableString localSpannableString = new SpannableString(paramCharSequence);
     int i = n.a(paramCharSequence, paramString, 0, true);
-    localSpannableString.setSpan(new ForegroundColorSpan(b.b.BLP), i, paramString.length() + i, 33);
+    localSpannableString.setSpan(new ForegroundColorSpan(b.b.HwL), i, paramString.length() + i, 33);
     localSpannableStringBuilder.append((CharSequence)localSpannableString);
     return (CharSequence)localSpannableStringBuilder;
   }
   
-  protected final String PJ(String paramString)
-  {
-    String str = z.bcZ();
-    if ((Util.isNullOrNil(paramString)) || (p.h(paramString, str))) {}
-    for (paramString = this.Rvw.getString(R.l.eMk);; paramString = aa.PJ(paramString))
-    {
-      paramString = this.Rvw.getString(R.l.exe, new Object[] { paramString });
-      p.j(paramString, "getString(R.string.chatt…ce_from, displayFromUser)");
-      return paramString;
-    }
-  }
-  
-  protected final String apJ()
+  protected final String aJK()
   {
     return this.talker;
   }
   
-  protected final void aqY(int paramInt)
+  protected final void axe(int paramInt)
   {
-    this.RvA = paramInt;
+    this.YrV = paramInt;
   }
   
-  public final List<FileSelectorUI.j> brS(String paramString)
+  public final List<FileSelectorUI.j> brH(String paramString)
   {
-    p.k(paramString, "key");
-    this.RvC.clear();
+    s.u(paramString, "key");
+    this.YrX.clear();
     Object localObject;
     if (Util.isNullOrNil(paramString))
     {
-      paramString = this.RvB.iterator();
+      paramString = this.YrW.iterator();
       while (paramString.hasNext())
       {
         localObject = (FileSelectorUI.j)paramString.next();
-        ((FileSelectorUI.j)localObject).Rwc = ((CharSequence)String.valueOf(((FileSelectorUI.j)localObject).Rwc));
-        ((FileSelectorUI.j)localObject).aA((CharSequence)((FileSelectorUI.j)localObject).hnu().toString());
-        localObject = ((FileSelectorUI.j)localObject).hnt();
-        this.RvC.add(localObject);
+        ((FileSelectorUI.j)localObject).Ysx = ((CharSequence)String.valueOf(((FileSelectorUI.j)localObject).Ysx));
+        ((FileSelectorUI.j)localObject).aO((CharSequence)((FileSelectorUI.j)localObject).iOm().toString());
+        localObject = ((FileSelectorUI.j)localObject).iOl();
+        this.YrX.add(localObject);
       }
     }
-    Iterator localIterator = this.RvB.iterator();
-    FileSelectorUI.j localj;
+    Iterator localIterator = this.YrW.iterator();
     if (localIterator.hasNext())
     {
-      localj = (FileSelectorUI.j)localIterator.next();
-      localObject = localj.Rwc;
-      if (localObject != null) {
-        break label244;
+      FileSelectorUI.j localj = (FileSelectorUI.j)localIterator.next();
+      localObject = localj.Ysx;
+      if (localObject == null) {
+        localObject = (CharSequence)"";
       }
-      localObject = (CharSequence)"";
-    }
-    label244:
-    for (;;)
-    {
-      boolean bool1 = n.a(localj.hnu(), (CharSequence)paramString, true);
-      boolean bool2 = n.a((CharSequence)localObject, (CharSequence)paramString, true);
-      if ((!bool1) && (!bool2)) {
+      for (;;)
+      {
+        boolean bool1 = n.a(localj.iOm(), (CharSequence)paramString, true);
+        boolean bool2 = n.a((CharSequence)localObject, (CharSequence)paramString, true);
+        if ((!bool1) && (!bool2)) {
+          break;
+        }
+        if (bool1) {
+          localj.aO(b(paramString, localj.iOm()));
+        }
+        if (bool2) {
+          localj.Ysx = b(paramString, (CharSequence)localObject);
+        }
+        this.YrX.add(localj);
         break;
       }
-      if (bool1) {
-        localj.aA(a(paramString, localj.hnu()));
-      }
-      if (bool2) {
-        localj.Rwc = a(paramString, (CharSequence)localObject);
-      }
-      this.RvC.add(localj);
-      break;
-      return this.RvC;
+    }
+    return this.YrX;
+  }
+  
+  protected final String getDisplayName(String paramString)
+  {
+    String str = z.bAM();
+    if ((Util.isNullOrNil(paramString)) || (s.p(paramString, str))) {}
+    for (paramString = this.YrS.getString(R.l.gOi);; paramString = aa.getDisplayName(paramString))
+    {
+      paramString = this.YrS.getString(R.l.gzI, new Object[] { paramString });
+      s.s(paramString, "getString(R.string.chatt…ce_from, displayFromUser)");
+      return paramString;
     }
   }
   
-  protected final int hno()
+  protected final int getStartIndex()
   {
-    return this.RvA;
+    return this.startIndex;
+  }
+  
+  protected final int iOg()
+  {
+    return this.YrV;
+  }
+  
+  protected final void setStartIndex(int paramInt)
+  {
+    this.startIndex = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.FileSelectorUI.d
  * JD-Core Version:    0.7.0.1
  */

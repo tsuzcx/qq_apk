@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.appbrand.widget.picker;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
-import androidx.annotation.Keep;
 import androidx.core.content.a;
 import com.tencent.luggage.b.a.a.b;
 import com.tencent.luggage.b.a.a.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.picker.b.b;
 import com.tencent.mm.picker.base.view.WheelView;
+import com.tencent.mm.picker.f.e;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class AppBrandTimePickerV2
-  implements com.tencent.mm.plugin.appbrand.jsapi.s.c<String>
+  implements com.tencent.mm.plugin.appbrand.jsapi.v.c<String>
 {
   private Context context;
   private int currentHour;
@@ -29,7 +29,6 @@ public class AppBrandTimePickerV2
   private View mView;
   private com.tencent.mm.picker.f.c pvTime;
   
-  @Keep
   AppBrandTimePickerV2(Context paramContext)
   {
     AppMethodBeat.i(138076);
@@ -80,7 +79,7 @@ public class AppBrandTimePickerV2
   public String currentValue()
   {
     AppMethodBeat.i(138080);
-    this.pvTime.buV();
+    this.pvTime.bTe();
     String str = String.format(Locale.US, "%02d:%02d", new Object[] { Integer.valueOf(this.currentHour), Integer.valueOf(this.currentMinute) });
     AppMethodBeat.o(138080);
     return str;
@@ -90,7 +89,7 @@ public class AppBrandTimePickerV2
   {
     AppMethodBeat.i(138081);
     if (this.mView == null) {
-      this.mView = this.pvTime.buX();
+      this.mView = this.pvTime.bTg();
     }
     View localView = this.mView;
     AppMethodBeat.o(138081);
@@ -109,23 +108,15 @@ public class AppBrandTimePickerV2
     Calendar localCalendar2 = Calendar.getInstance();
     localCalendar2.set(11, this.mMaxTimeHour);
     localCalendar2.set(12, this.mMaxTimeMinute);
-    new b(this.context, new com.tencent.mm.picker.d.e()
-    {
-      public final void a(Date paramAnonymousDate)
-      {
-        AppMethodBeat.i(138075);
-        AppBrandTimePickerV2.access$000(AppBrandTimePickerV2.this, paramAnonymousDate);
-        AppMethodBeat.o(138075);
-      }
-    }).c(new boolean[] { 0, 0, 0, 1, 1, 0 }).a((Calendar)localObject).a(localCalendar1, localCalendar2).buN().xQ(a.w(this.context, a.b.BW_0_Alpha_0_1)).a(this.pvTime);
+    new b(this.context, new AppBrandTimePickerV2.1(this)).d(new boolean[] { 0, 0, 0, 1, 1, 0 }).a((Calendar)localObject).a(localCalendar1, localCalendar2).bSW().xV(a.w(this.context, a.b.BW_0_Alpha_0_1)).a(this.pvTime);
     this.pvTime.setDividerHeight(this.context.getResources().getDimensionPixelSize(a.c.bottomsheet_dividing_line_height));
     this.context.getResources().getDimensionPixelSize(a.c.picker_item_height);
-    this.pvTime.ec(this.context.getResources().getDimensionPixelSize(a.c.Edge_2A), this.context.getResources().getDimensionPixelSize(a.c.Edge_2A));
-    localObject = this.pvTime.mCN.bvb().iterator();
+    this.pvTime.eV(this.context.getResources().getDimensionPixelSize(a.c.Edge_2A), this.context.getResources().getDimensionPixelSize(a.c.Edge_2A));
+    localObject = this.pvTime.pzv.bTk().iterator();
     while (((Iterator)localObject).hasNext()) {
-      ((WheelView)((Iterator)localObject).next()).xN(a.w(this.context, a.b.BW_0_Alpha_0_9)).xM(this.context.getResources().getDimensionPixelSize(a.c.Edge_2A)).setBackgroundColor(a.w(this.context, a.b.BG_5));
+      ((WheelView)((Iterator)localObject).next()).xS(a.w(this.context, a.b.BW_0_Alpha_0_9)).xR(this.context.getResources().getDimensionPixelSize(a.c.Edge_2A)).setBackgroundColor(a.w(this.context, a.b.BG_5));
     }
-    configPadding(this.pvTime.mCN.bvb());
+    configPadding(this.pvTime.pzv.bTk());
     AppMethodBeat.o(138077);
   }
   
@@ -156,7 +147,7 @@ public class AppBrandTimePickerV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.AppBrandTimePickerV2
  * JD-Core Version:    0.7.0.1
  */

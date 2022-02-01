@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@color/kz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/m1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/cg5" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/k4" android:listSelector="@color/ac_" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" />
-    <TextView android:textSize="16.0dip" android:textColor="@color/uj" android:layout_gravity="center" android:id="@id/cg0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/k4" android:text="@string/cdu" />
-    <RelativeLayout android:gravity="center_vertical" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/cg4" android:background="@color/bj" android:padding="@dimen/k5" android:layout_width="fill_parent" android:layout_height="@dimen/k4">
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/cg1" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="fill_parent">
-            <TextView android:textSize="@dimen/is" android:textColor="@color/ag5" android:id="@id/cg3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cdv" />
-            <ImageView android:background="@null" android:paddingTop="@dimen/k5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/g" android:src="@drawable/b00" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/kpd" android:paddingTop="@dimen/j6" android:paddingBottom="@dimen/j6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/m1">
+        <LinearLayout android:gravity="center|left" android:paddingLeft="@dimen/iw" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:id="@android:id/title" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/m4" />
+            <LinearLayout android:gravity="center|right" android:orientation="vertical" android:id="@android:id/widget_frame" android:layout_width="wrap_content" android:layout_height="fill_parent" />
         </LinearLayout>
-        <TextView android:textSize="@dimen/k6" android:textColor="@color/ag5" android:id="@id/hiw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-    <com.tencent.mm.pluginsdk.ui.tools.FileSelectorFolderView android:id="@id/cg2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/k4" />
-</FrameLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m2">
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:gravity="left" android:id="@android:id/summary" android:paddingRight="@dimen/m2" android:layout_width="wrap_content" style="@style/lk" />
+            <ImageView android:id="@id/kae" android:layout_width="13.0dip" android:layout_height="13.0dip" android:layout_marginTop="1.0dip" android:scaleType="fitXY" />
+        </LinearLayout>
+    </LinearLayout>
+    <View android:orientation="vertical" android:id="@id/kac" android:layout_width="30.0dip" android:layout_height="50.0dip" android:layout_alignBottom="@id/kpd" />
+</RelativeLayout>

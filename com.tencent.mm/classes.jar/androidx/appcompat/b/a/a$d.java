@@ -8,13 +8,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class a$d
   extends a.f
 {
-  private final ObjectAnimator iK;
-  private final boolean iL;
+  private final ObjectAnimator jF;
+  private final boolean jG;
   
   a$d(AnimationDrawable paramAnimationDrawable, boolean paramBoolean1, boolean paramBoolean2)
   {
     super((byte)0);
-    AppMethodBeat.i(238652);
+    AppMethodBeat.i(199275);
     int j = paramAnimationDrawable.getNumberOfFrames();
     int i;
     if (paramBoolean1)
@@ -32,11 +32,11 @@ final class a$d
       if (Build.VERSION.SDK_INT >= 18) {
         paramAnimationDrawable.setAutoCancel(true);
       }
-      paramAnimationDrawable.setDuration(locale.iO);
+      paramAnimationDrawable.setDuration(locale.jJ);
       paramAnimationDrawable.setInterpolator(locale);
-      this.iL = paramBoolean2;
-      this.iK = paramAnimationDrawable;
-      AppMethodBeat.o(238652);
+      this.jG = paramBoolean2;
+      this.jF = paramAnimationDrawable;
+      AppMethodBeat.o(199275);
       return;
       i = 0;
       break;
@@ -45,35 +45,35 @@ final class a$d
     }
   }
   
-  public final boolean bs()
+  public final boolean cl()
   {
-    return this.iL;
+    return this.jG;
   }
   
-  public final void bt()
+  public final void cm()
   {
-    AppMethodBeat.i(238654);
-    this.iK.reverse();
-    AppMethodBeat.o(238654);
+    AppMethodBeat.i(199290);
+    this.jF.reverse();
+    AppMethodBeat.o(199290);
   }
   
   public final void start()
   {
-    AppMethodBeat.i(238653);
-    this.iK.start();
-    AppMethodBeat.o(238653);
+    AppMethodBeat.i(199286);
+    this.jF.start();
+    AppMethodBeat.o(199286);
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(238656);
-    this.iK.cancel();
-    AppMethodBeat.o(238656);
+    AppMethodBeat.i(199293);
+    this.jF.cancel();
+    AppMethodBeat.o(199293);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     androidx.appcompat.b.a.a.d
  * JD-Core Version:    0.7.0.1
  */

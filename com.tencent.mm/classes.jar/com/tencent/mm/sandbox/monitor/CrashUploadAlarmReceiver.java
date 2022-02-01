@@ -11,14 +11,14 @@ public class CrashUploadAlarmReceiver
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     Log.i("MicroMsg.CrashUploadAlarmReceiver", "dkcrash AlarmReceiver.onReceive");
-    if ((a.hrT() == 0) || (a.hrU() == 0)) {
-      b.kw(paramContext);
+    if ((a.iRZ() == 0) || (a.iSa() == 0)) {
+      b.my(paramContext);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.sandbox.monitor.CrashUploadAlarmReceiver
  * JD-Core Version:    0.7.0.1
  */

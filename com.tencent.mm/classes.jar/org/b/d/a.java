@@ -5,24 +5,24 @@ import java.io.OutputStream;
 
 public final class a
 {
-  public final h abLA;
-  private final OutputStream abLB;
-  public final String abLw;
-  public final String abLx;
-  public final String abLy;
+  public final String ajYp;
+  public final String ajYq;
+  public final String ajYr;
+  public final h ajYt;
+  private final OutputStream ajYu;
   public final String scope;
   
   public a(String paramString1, String paramString2, String paramString3, h paramh, String paramString4, OutputStream paramOutputStream)
   {
-    this.abLw = paramString1;
-    this.abLx = paramString2;
-    this.abLy = paramString3;
-    this.abLA = paramh;
+    this.ajYp = paramString1;
+    this.ajYq = paramString2;
+    this.ajYr = paramString3;
+    this.ajYt = paramh;
     this.scope = paramString4;
-    this.abLB = paramOutputStream;
+    this.ajYu = paramOutputStream;
   }
   
-  public final boolean iVj()
+  public final boolean kJH()
   {
     return this.scope != null;
   }
@@ -30,12 +30,12 @@ public final class a
   public final void log(String paramString)
   {
     AppMethodBeat.i(40544);
-    if (this.abLB != null)
+    if (this.ajYu != null)
     {
       paramString = paramString + "\n";
       try
       {
-        this.abLB.write(paramString.getBytes("UTF8"));
+        this.ajYu.write(paramString.getBytes("UTF8"));
         AppMethodBeat.o(40544);
         return;
       }
@@ -51,7 +51,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.b.d.a
  * JD-Core Version:    0.7.0.1
  */

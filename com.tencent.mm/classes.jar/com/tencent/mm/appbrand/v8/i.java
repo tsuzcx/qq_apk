@@ -6,43 +6,43 @@ import com.tencent.mm.sdk.platformtools.Log;
 final class i
   extends z
 {
-  private static final ThreadLocal<i> fil;
-  private final a fij;
-  private boolean fik;
+  private static final ThreadLocal<i> hmy;
+  private final a hmw;
+  private boolean hmx;
   
   static
   {
     AppMethodBeat.i(144034);
-    fil = new ThreadLocal();
+    hmy = new ThreadLocal();
     AppMethodBeat.o(144034);
   }
   
   private i(a parama, boolean paramBoolean)
   {
     super(paramBoolean);
-    this.fij = parama;
-    this.fik = true;
+    this.hmw = parama;
+    this.hmx = true;
   }
   
   public static i a(a parama, boolean paramBoolean)
   {
-    AppMethodBeat.i(262216);
-    if (fil.get() != null)
+    AppMethodBeat.i(238650);
+    if (hmy.get() != null)
     {
       parama = new RuntimeException("Only one Looper may be created per thread");
-      AppMethodBeat.o(262216);
+      AppMethodBeat.o(238650);
       throw parama;
     }
     parama = new i(parama, paramBoolean);
-    fil.set(parama);
-    AppMethodBeat.o(262216);
+    hmy.set(parama);
+    AppMethodBeat.o(238650);
     return parama;
   }
   
-  protected final boolean acf()
+  protected final boolean aEe()
   {
     AppMethodBeat.i(144028);
-    if ((!this.fik) && (super.acf()))
+    if ((!this.hmx) && (super.aEe()))
     {
       AppMethodBeat.o(144028);
       return true;
@@ -51,48 +51,48 @@ final class i
     return false;
   }
   
-  protected final void acg()
+  protected final void aEf()
   {
     AppMethodBeat.i(144029);
-    super.acg();
-    this.fik = this.fij.ace();
+    super.aEf();
+    this.hmx = this.hmw.aEd();
     AppMethodBeat.o(144029);
   }
   
-  protected final void ach()
+  protected final void aEg()
   {
-    AppMethodBeat.i(262218);
-    super.ach();
-    this.fik = this.fij.ace();
-    AppMethodBeat.o(262218);
+    AppMethodBeat.i(238667);
+    super.aEg();
+    this.hmx = this.hmw.aEd();
+    AppMethodBeat.o(238667);
   }
   
-  protected final void aci()
+  protected final void aEh()
   {
     AppMethodBeat.i(144030);
-    super.aci();
-    if (this.fij != null) {
-      this.fij.closeUVLoop();
+    super.aEh();
+    if (this.hmw != null) {
+      this.hmw.closeUVLoop();
     }
     AppMethodBeat.o(144030);
   }
   
-  protected final void acj()
+  protected final void aEi()
   {
     AppMethodBeat.i(144031);
-    if ((this.fij != null) && (!isPaused())) {
-      this.fij.wakeUpUVLoop();
+    if ((this.hmw != null) && (!isPaused())) {
+      this.hmw.wakeUpUVLoop();
     }
     AppMethodBeat.o(144031);
   }
   
-  protected final void ack()
+  protected final void aEj()
   {
     AppMethodBeat.i(144033);
-    if (this.fij != null)
+    if (this.hmw != null)
     {
       Log.i("MicroMsg.NodeJSRuntimeLooper", "onQuit wakeUpUVLoop");
-      this.fij.wakeUpUVLoop();
+      this.hmw.wakeUpUVLoop();
     }
     AppMethodBeat.o(144033);
   }
@@ -100,15 +100,15 @@ final class i
   protected final void onResume()
   {
     AppMethodBeat.i(144032);
-    if (this.fij != null) {
-      this.fij.wakeUpUVLoop();
+    if (this.hmw != null) {
+      this.hmw.wakeUpUVLoop();
     }
     AppMethodBeat.o(144032);
   }
   
   static abstract interface a
   {
-    public abstract boolean ace();
+    public abstract boolean aEd();
     
     public abstract void closeUVLoop();
     

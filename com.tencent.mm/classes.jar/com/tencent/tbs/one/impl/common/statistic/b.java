@@ -8,7 +8,6 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public final class b
 {
@@ -29,18 +28,7 @@ public final class b
     b = Math.max(2, Math.min(a - 1, 4));
     c = a * 2 + 1;
     d = new LinkedBlockingQueue(128);
-    f = new ThreadFactory()
-    {
-      private final AtomicInteger a;
-      
-      public final Thread newThread(Runnable paramAnonymousRunnable)
-      {
-        AppMethodBeat.i(174200);
-        paramAnonymousRunnable = new Thread(paramAnonymousRunnable, "StatisticExecutor #" + this.a.getAndIncrement());
-        AppMethodBeat.o(174200);
-        return paramAnonymousRunnable;
-      }
-    };
+    f = new b.1();
     g = new Executor()
     {
       final ArrayDeque<Runnable> a;
@@ -124,7 +112,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tbs.one.impl.common.statistic.b
  * JD-Core Version:    0.7.0.1
  */

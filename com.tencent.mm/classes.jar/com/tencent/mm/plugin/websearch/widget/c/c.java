@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.websearch.widget.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.q;
-import com.tencent.mm.f.b.a.kd;
+import com.tencent.mm.autogen.mmdata.rpt.mu;
+import com.tencent.mm.compatible.util.r;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Arrays;
 
 public final class c
 {
-  public static boolean at(long paramLong, int paramInt)
+  public static boolean aJ(long paramLong, int paramInt)
   {
     return (1 << paramInt & paramLong) > 0L;
   }
@@ -18,20 +18,20 @@ public final class c
   {
     AppMethodBeat.i(116657);
     Log.e("WidgetPermissionUtil", "permissionFailed appid %s, api %s, args %s", new Object[] { paramString1, paramString2, Arrays.toString(paramVarArgs) });
-    h.IzE.el(930, 0);
+    h.OAn.kJ(930, 0);
     StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
     while (i <= 0)
     {
-      localStringBuilder.append(q.aT(paramVarArgs[0])).append("&");
+      localStringBuilder.append(r.cg(paramVarArgs[0])).append("&");
       i += 1;
     }
-    paramVarArgs = new kd();
-    paramVarArgs.gMG = paramVarArgs.z("api", paramString2, true);
-    paramVarArgs.giT = paramVarArgs.z("appid", paramString1, true);
-    paramString1 = paramVarArgs.uO(System.currentTimeMillis());
-    paramString1.gMH = paramString1.z("arg", localStringBuilder.toString(), true);
-    paramString1.bpa();
+    paramVarArgs = new mu();
+    paramVarArgs.jcy = paramVarArgs.F("api", paramString2, true);
+    paramVarArgs.ipx = paramVarArgs.F("appid", paramString1, true);
+    paramString1 = paramVarArgs.fn(System.currentTimeMillis());
+    paramString1.jcz = paramString1.F("arg", localStringBuilder.toString(), true);
+    paramString1.bMH();
     AppMethodBeat.o(116657);
   }
 }

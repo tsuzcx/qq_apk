@@ -1,72 +1,91 @@
 package com.tencent.mm.plugin.remittance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.ds;
-import com.tencent.mm.protocal.protobuf.re;
-import com.tencent.mm.protocal.protobuf.rf;
+import com.tencent.mm.protocal.protobuf.eh;
+import com.tencent.mm.protocal.protobuf.sn;
+import com.tencent.mm.protocal.protobuf.so;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.wallet_core.model.w;
+import java.util.LinkedList;
 
 public final class m
-  extends q
-  implements com.tencent.mm.network.m
+  extends w
 {
-  public rf IlH;
-  private i callback;
-  private d kwO;
+  public so OiX;
+  private h callback;
+  private com.tencent.mm.am.c nao;
   
-  public m(ds paramds, String paramString)
+  public m() {}
+  
+  public m(eh parameh, String paramString)
   {
-    AppMethodBeat.i(67857);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new re();
-    ((d.a)localObject).lBV = new rf();
-    ((d.a)localObject).funcId = 2702;
-    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/busif2funlockfavor";
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.kwO = ((d.a)localObject).bgN();
-    localObject = (re)d.b.b(this.kwO.lBR);
-    ((re)localObject).RZn = paramds;
-    ((re)localObject).RZF = paramString;
-    h.IzE.el(886, 0);
-    Log.i("MicroMsg.NetSceneBusiF2fUnlockFavor", "NetSceneBusiF2fUnlockFavor, f2fId: %s, transId: %s, amount: %s", new Object[] { paramds.RJf, paramds.InV, Integer.valueOf(paramds.RJi) });
-    AppMethodBeat.o(67857);
+    this(parameh, paramString, 0, 0, 0L);
   }
   
-  public final int doScene(g paramg, i parami)
+  public m(eh parameh, String paramString, int paramInt1, int paramInt2, long paramLong)
   {
-    AppMethodBeat.i(67858);
-    this.callback = parami;
-    int i = dispatch(paramg, this.kwO, this);
-    AppMethodBeat.o(67858);
+    AppMethodBeat.i(67854);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new sn();
+    ((c.a)localObject).otF = new so();
+    ((c.a)localObject).funcId = 2504;
+    ((c.a)localObject).uri = "/cgi-bin/mmpay-bin/busif2fsucpage";
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.nao = ((c.a)localObject).bEF();
+    localObject = (sn)c.b.b(this.nao.otB);
+    ((sn)localObject).YXl = parameh;
+    ((sn)localObject).YXD = paramString;
+    ((sn)localObject).YXV = paramInt1;
+    if (Util.isEqual(paramInt1, 1))
+    {
+      ((sn)localObject).YXW = paramInt2;
+      ((sn)localObject).YXX = paramLong;
+    }
+    Log.i("MicroMsg.NetSceneBusiF2fSucpage", "NetSceneBusiF2fSucpage suc_page_extend %s req %s fault_flag %s fault_retry_cnt %s fault_retry_client_time %s", new Object[] { paramString, b.a(parameh), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong) });
+    AppMethodBeat.o(67854);
+  }
+  
+  public final int doScene(g paramg, h paramh)
+  {
+    AppMethodBeat.i(67855);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.nao, this);
+    AppMethodBeat.o(67855);
     return i;
   }
   
   public final int getType()
   {
-    return 2702;
+    return 2504;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte, long paramLong)
   {
-    AppMethodBeat.i(67859);
-    Log.i("MicroMsg.NetSceneBusiF2fUnlockFavor", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.IlH = ((rf)d.c.b(((d)params).lBS));
-    Log.i("MicroMsg.NetSceneBusiF2fUnlockFavor", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.IlH.tqa), this.IlH.tqb });
-    h.IzE.el(886, 1);
+    AppMethodBeat.i(288841);
+    Log.i("MicroMsg.NetSceneBusiF2fSucpage", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.OiX = ((so)c.c.b(((com.tencent.mm.am.c)params).otC));
+    params = new StringBuffer();
+    if (this.OiX.VIz != null)
+    {
+      params.append("response: " + this.OiX.YXY);
+      params.append("is_show_btn: " + this.OiX.VIz.ZvU);
+      if (this.OiX.VIz.ZvT != null) {
+        params.append("single_exposure_info_list " + this.OiX.VIz.ZvT.size());
+      }
+    }
+    Log.i("MicroMsg.NetSceneBusiF2fSucpage", "ret_code: %s, ret_msg: %s %s", new Object[] { Integer.valueOf(this.OiX.wuz), this.OiX.wuA, params.toString() });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(67859);
+    AppMethodBeat.o(288841);
   }
 }
 

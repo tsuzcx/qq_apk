@@ -1,35 +1,32 @@
 package com.tencent.mm.plugin.appbrand;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.ComponentCallbacks2;
+import android.content.res.Configuration;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-final class t$a
-  implements Runnable
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeSuspendingWatchDog$SystemLowMemoryListenerImpl;", "Landroid/content/ComponentCallbacks2;", "()V", "alive", "", "dead", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onTrimMemory", "level", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+abstract class t$a
+  implements ComponentCallbacks2
 {
-  private final AtomicBoolean nwY;
-  
-  t$a()
+  public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(43871);
-    this.nwY = new AtomicBoolean(false);
-    AppMethodBeat.o(43871);
+    s.u(paramConfiguration, "newConfig");
   }
   
-  public final void run()
+  public void onTrimMemory(int paramInt)
   {
-    AppMethodBeat.i(43872);
-    if (!this.nwY.getAndSet(true))
+    switch (paramInt)
     {
-      Log.i("MicroMsg.AppBrandRuntimeWC", "[ILaunchWxaAppInfoNotify] addPendingPermissionUpdateTask run()");
-      this.val$runnable.run();
+    default: 
+      return;
     }
-    AppMethodBeat.o(43872);
+    onLowMemory();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.t.a
  * JD-Core Version:    0.7.0.1
  */

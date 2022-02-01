@@ -1,9 +1,9 @@
 package com.tencent.mm.timelineedit.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/timelineedit/model/Size;", "", "width", "", "height", "(II)V", "getHeight", "()I", "getWidth", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "", "timelinelib_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mm/timelineedit/model/Size;", "", "width", "", "height", "(II)V", "getHeight", "()I", "getWidth", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "", "timelinelib_release"}, k=1, mv={1, 1, 15})
 public final class e
 {
   final int height;
@@ -60,15 +60,15 @@ public final class e
   
   public final String toString()
   {
-    AppMethodBeat.i(262062);
+    AppMethodBeat.i(232070);
     String str = "Size(width=" + this.width + ", height=" + this.height + ')';
-    AppMethodBeat.o(262062);
+    AppMethodBeat.o(232070);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.timelineedit.a.e
  * JD-Core Version:    0.7.0.1
  */

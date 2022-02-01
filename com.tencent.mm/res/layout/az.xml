@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="?jv" android:minWidth="196.0dip"
+<LinearLayout android:orientation="vertical" android:background="@color/a" android:padding="@dimen/cp" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textAppearance="?a1y" android:ellipsize="marquee" android:layout_gravity="center_vertical" android:id="@android:id/title" android:fadingEdge="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:textAlignment="viewStart" />
-</FrameLayout>
+    <com.tencent.mm.ui.widget.MMEditText android:id="@id/cu" android:layout_width="fill_parent" android:layout_height="@dimen/d6" android:layout_marginTop="@dimen/cp" android:hint="errCode:" android:inputType="numberSigned" />
+    <com.tencent.mm.ui.widget.MMEditText android:id="@id/cv" android:layout_width="fill_parent" android:layout_height="@dimen/d6" android:layout_marginTop="@dimen/cp" android:text="" android:hint="errMsg:" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/hls" android:layout_width="180.0dip" android:layout_height="48.0dip" android:layout_marginTop="@dimen/cp" android:text="@string/a17" style="@style/og" />
+</LinearLayout>

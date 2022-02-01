@@ -1,96 +1,96 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Parcelable;
-import com.tencent.luggage.bridge.k;
-import com.tencent.luggage.d.b;
+import android.content.Intent;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.d;
-import com.tencent.mm.ipcinvoker.f;
-import com.tencent.mm.ipcinvoker.j;
-import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
-import com.tencent.mm.plugin.game.luggage.g.i;
-import com.tencent.mm.plugin.game.luggage.j.f;
-import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
-import com.tencent.mm.plugin.webview.luggage.w;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.br.c;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv.a;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.platformtools.WeChatHosts;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.MMActivity.a;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class l
-  extends br<com.tencent.luggage.d.a>
+  extends bv
 {
-  public final void a(Context paramContext, String paramString, br.a parama) {}
-  
-  public final void b(final b<com.tencent.luggage.d.a>.a paramb)
+  public final void a(final Context paramContext, String paramString, final bv.a parama)
   {
-    AppMethodBeat.i(83069);
-    Log.i("MicroMsg.JsApiGetGameData", "invokeInOwn");
-    Object localObject2 = paramb.crh.cqn;
-    if (localObject2 == null)
+    AppMethodBeat.i(277136);
+    try
     {
-      Log.e("MicroMsg.JsApiGetGameData", "data is null");
-      paramb.a("null_data", null);
-      AppMethodBeat.o(83069);
-      return;
-    }
-    Object localObject3 = (com.tencent.luggage.d.a)paramb.crg;
-    if ((localObject3 instanceof i))
-    {
-      localObject1 = ((i)localObject3).PPO.getAppId();
-      if (!Util.isNullOrNil((String)localObject1)) {
-        break label226;
-      }
-      localObject1 = Uri.parse(Util.nullAsNil(((i)localObject3).cDu()));
-      if ((((Uri)localObject1).getHost() == null) || (!((Uri)localObject1).getHost().equals(WeChatHosts.domainString(j.f.host_game_weixin_qq_com))))
+      localObject = new JSONObject(paramString);
+      paramString = ((JSONObject)localObject).optString("videoUrl", "");
+      if (Util.isNullOrNil(paramString))
       {
-        Log.i("MicroMsg.JsApiGetGameData", "appId is null");
-        paramb.a("appid_null", null);
-        AppMethodBeat.o(83069);
+        parama.j("videoUrl is null", null);
+        AppMethodBeat.o(277136);
         return;
       }
     }
-    Object localObject1 = "wx62d9035fd4fd2059";
-    label226:
-    for (;;)
+    catch (JSONException paramContext)
     {
-      localObject2 = ((JSONObject)localObject2).optString("key");
-      if (Util.isNullOrNil((String)localObject2))
-      {
-        Log.i("MicroMsg.JsApiGetGameData", "key is null");
-        paramb.a("null_key", null);
-        AppMethodBeat.o(83069);
-        return;
-      }
-      localObject3 = new Bundle();
-      ((Bundle)localObject3).putString("appId", (String)localObject1);
-      ((Bundle)localObject3).putString("key", (String)localObject2);
-      j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)localObject3, a.class, new f() {});
-      AppMethodBeat.o(83069);
+      parama.j("fail", null);
+      AppMethodBeat.o(277136);
       return;
     }
+    Object localObject = ((JSONObject)localObject).optString("thumbUrl", "");
+    if (Util.isNullOrNil((String)localObject))
+    {
+      parama.j("thumbUrl is null", null);
+      AppMethodBeat.o(277136);
+      return;
+    }
+    Intent localIntent = new Intent();
+    localIntent.putExtra("game_from", 11);
+    localIntent.putExtra("video_url", paramString);
+    localIntent.putExtra("thumb_url", (String)localObject);
+    ((MMActivity)paramContext).mmSetOnActivityResultCallback(new MMActivity.a()
+    {
+      public final void mmOnActivityResult(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
+      {
+        AppMethodBeat.i(277114);
+        if (paramAnonymousInt1 == 1137)
+        {
+          if (paramAnonymousInt2 != -1) {
+            break label71;
+          }
+          paramAnonymousIntent = paramAnonymousIntent.getStringExtra("ret_info");
+          if (!"0".equals(paramAnonymousIntent)) {
+            break label59;
+          }
+          parama.j(null, null);
+        }
+        for (;;)
+        {
+          ((MMActivity)paramContext).mmSetOnActivityResultCallback(null);
+          AppMethodBeat.o(277114);
+          return;
+          label59:
+          parama.j(paramAnonymousIntent, null);
+          continue;
+          label71:
+          parama.j("cancel", null);
+        }
+      }
+    });
+    c.b(paramContext, "game", ".media.GameVideoDownloadUI", localIntent, 1137);
+    AppMethodBeat.o(277136);
   }
   
-  public final int cDj()
+  public final void b(b.a parama) {}
+  
+  public final int dgI()
   {
-    return 0;
+    return 2;
   }
   
   public final String name()
   {
-    return "getGameData";
+    return "downloadGameVideo";
   }
-  
-  @com.tencent.mm.ipcinvoker.c.a
-  static class a
-    implements d<Bundle, Bundle>
-  {}
 }
 
 

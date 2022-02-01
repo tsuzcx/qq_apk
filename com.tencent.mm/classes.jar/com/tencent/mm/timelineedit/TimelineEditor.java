@@ -12,58 +12,60 @@ import com.tencent.mm.xeffect.effect.ac;
 import com.tencent.mm.xeffect.effect.af;
 import java.util.HashMap;
 import java.util.Map;
-import kotlin.g.a.a;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.b;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/timelineedit/TimelineEditor;", "", "()V", "effectList", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/xeffect/effect/VLogEffect;", "Lkotlin/collections/HashMap;", "effectManager", "Lcom/tencent/mm/xeffect/effect/EffectManager;", "effectManagerPtr", "nPtr", "addEffectToTimeline", "", "effect", "bindTrack", "", "addEffectToTimelineBindToTrack", "trackId", "addTrack", "Lcom/tencent/mm/videocomposition/VideoComposition;", "track", "Lcom/tencent/mm/timelineedit/model/Track;", "addWrapDurationAudioTrack", "path", "", "checkEffectPtrValid", "ptr", "clearTransition", "create", "canvasRect", "Landroid/graphics/Rect;", "validRect", "config", "Lcom/tencent/mm/timelineedit/model/EditorConfig;", "createDecodeStickerEffect", "Lcom/tencent/mm/xeffect/effect/StickerEffect;", "asset", "Landroid/content/res/AssetManager;", "assetPath", "bytes", "", "createGlobalAnimationEffect", "Lcom/tencent/mm/xeffect/effect/PagGlobalAnimateEffect;", "createPAGStickerEffect", "Lcom/tencent/mm/xeffect/effect/PagStickerEffect;", "createTextEffect", "Lcom/tencent/mm/xeffect/effect/PagTextEffect;", "createTrack", "type", "", "createTransitionEffect", "Lcom/tencent/mm/xeffect/effect/PagTransitionEffect;", "createVideoTemplateEffect", "Lcom/tencent/mm/xeffect/effect/PagTemplateEffect;", "destroy", "getEffectManager", "getNoTransitionComposition", "getSingleFullRangeComposition", "nAddEffectToTimeline", "effectPtr", "nAddEffectToTimelineBindToTrack", "nAddTrack", "trackBytes", "nAddWrapDurationAudioTrack", "nClearTransition", "nCreate", "canvasRectBytes", "validRectBytes", "editorConfig", "nCreateDecodeStickerEffectAsset", "nCreateDecodeStickerEffectBytes", "length", "nCreateDecodeStickerEffectPath", "nCreateGlobalAnimationEffectAsset", "nCreateGlobalAnimationEffectBytes", "nCreateGlobalAnimationEffectPath", "nCreatePAGStickerEffectAsset", "nCreatePAGStickerEffectBytes", "nCreatePAGStickerEffectPath", "nCreateTextEffectAsset", "nCreateTextEffectBytes", "nCreateTextEffectPath", "nCreateTrack", "nCreateTransitionEffectAsset", "nCreateTransitionEffectBytes", "nCreateTransitionEffectPath", "nCreateVideoTemplateEffectAsset", "nCreateVideoTemplateEffectBytes", "nCreateVideoTemplateEffectPath", "nDestroy", "nGetEffectManager", "nGetNoTransitionComposition", "nGetSingleFullRangeComposition", "nRemoveEffect", "nRemoveTrack", "nRemoveTransition", "afterTrack", "nRestore", "replace", "nSave", "nSetNativeLog", "nSetTransition", "beforeTrack", "transitionEffect", "durationMs", "nTouchMotionEvent", "actionA", "pointAX", "", "pointAY", "keyA", "actionB", "pointBX", "pointBY", "keyB", "nUpdateCompositionDuration", "startMs", "endMs", "nUpdateConfig", "nUpdateDisplayTime", "displayTime", "nUpdateTrack", "nUpdateValidRect", "onTouchEvent", "Lkotlin/Pair;", "Lcom/tencent/mm/xeffect/effect/LayoutInfoEffect;", "touchEvent", "Landroid/view/MotionEvent;", "removeEffect", "removeTrack", "removeTransition", "restore", "returnValueOrNull", "R", "T", "call", "Lkotlin/Function0;", "ret", "Lkotlin/Function1;", "(Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "save", "setNativeLog", "setTransition", "transitionInfo", "Lcom/tencent/mm/timelineedit/model/TrackTransitionInfo;", "updateCompositionDuration", "updateConfig", "updateDisplayTime", "updateTrack", "Companion", "timelinelib_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mm/timelineedit/TimelineEditor;", "", "()V", "effectList", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/xeffect/effect/VLogEffect;", "Lkotlin/collections/HashMap;", "effectManager", "Lcom/tencent/mm/xeffect/effect/EffectManager;", "effectManagerPtr", "nPtr", "addEffectToTimeline", "", "effect", "bindTrack", "", "addEffectToTimelineBindToTrack", "trackId", "addTrack", "Lcom/tencent/mm/videocomposition/VideoComposition;", "track", "Lcom/tencent/mm/timelineedit/model/Track;", "addWrapDurationAudioTrack", "path", "", "checkEffectPtrValid", "ptr", "clearTransition", "create", "canvasRect", "Landroid/graphics/Rect;", "validRect", "config", "Lcom/tencent/mm/timelineedit/model/EditorConfig;", "createDecodeStickerEffect", "Lcom/tencent/mm/xeffect/effect/StickerEffect;", "asset", "Landroid/content/res/AssetManager;", "assetPath", "bytes", "", "createGlobalAnimationEffect", "Lcom/tencent/mm/xeffect/effect/PagGlobalAnimateEffect;", "createPAGStickerEffect", "Lcom/tencent/mm/xeffect/effect/PagStickerEffect;", "createTextEffect", "Lcom/tencent/mm/xeffect/effect/PagTextEffect;", "createTrack", "type", "", "createTransitionEffect", "Lcom/tencent/mm/xeffect/effect/PagTransitionEffect;", "createVideoTemplateEffect", "Lcom/tencent/mm/xeffect/effect/PagTemplateEffect;", "destroy", "getEffectManager", "getNoTransitionComposition", "getSingleFullRangeComposition", "nAddEffectToTimeline", "effectPtr", "nAddEffectToTimelineBindToTrack", "nAddTrack", "trackBytes", "nAddWrapDurationAudioTrack", "nClearTransition", "nCreate", "canvasRectBytes", "validRectBytes", "editorConfig", "nCreateDecodeStickerEffectAsset", "nCreateDecodeStickerEffectBytes", "length", "nCreateDecodeStickerEffectPath", "nCreateGlobalAnimationEffectAsset", "nCreateGlobalAnimationEffectBytes", "nCreateGlobalAnimationEffectPath", "nCreatePAGStickerEffectAsset", "nCreatePAGStickerEffectBytes", "nCreatePAGStickerEffectPath", "nCreateTextEffectAsset", "nCreateTextEffectBytes", "nCreateTextEffectPath", "nCreateTrack", "nCreateTransitionEffectAsset", "nCreateTransitionEffectBytes", "nCreateTransitionEffectPath", "nCreateVideoTemplateEffectAsset", "nCreateVideoTemplateEffectBytes", "nCreateVideoTemplateEffectPath", "nDestroy", "nGetEffectManager", "nGetNoTransitionComposition", "nGetSingleFullRangeComposition", "nRemoveEffect", "nRemoveTrack", "nRemoveTransition", "afterTrack", "nRestore", "replace", "nSave", "nSetNativeLog", "nSetTransition", "beforeTrack", "transitionEffect", "durationMs", "nTouchMotionEvent", "actionA", "pointAX", "", "pointAY", "keyA", "actionB", "pointBX", "pointBY", "keyB", "nUpdateCompositionDuration", "startMs", "endMs", "nUpdateConfig", "nUpdateDisplayTime", "displayTime", "nUpdateTrack", "nUpdateValidRect", "onTouchEvent", "Lkotlin/Pair;", "Lcom/tencent/mm/xeffect/effect/LayoutInfoEffect;", "touchEvent", "Landroid/view/MotionEvent;", "removeEffect", "removeTrack", "removeTransition", "restore", "returnValueOrNull", "R", "T", "call", "Lkotlin/Function0;", "ret", "Lkotlin/Function1;", "(Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "save", "setNativeLog", "setTransition", "transitionInfo", "Lcom/tencent/mm/timelineedit/model/TrackTransitionInfo;", "updateCompositionDuration", "updateConfig", "updateDisplayTime", "updateTrack", "Companion", "timelinelib_release"}, k=1, mv={1, 1, 15})
 public final class TimelineEditor
 {
-  private static volatile boolean VLp;
-  public static final Companion VLq;
-  private EffectManager ANo;
-  public long NmO;
-  private long VLn;
-  public HashMap<Long, af> VLo;
+  private static volatile boolean adpt;
+  public static final Companion adpu;
+  private EffectManager GpO;
+  private long adpr;
+  public HashMap<Long, af> adps;
+  public long nNg;
   
   static
   {
-    AppMethodBeat.i(261993);
-    VLq = new Companion((byte)0);
-    System.loadLibrary("xlabeffect");
-    System.loadLibrary("timeline-editor");
-    AppMethodBeat.o(261993);
+    AppMethodBeat.i(232238);
+    adpu = new Companion((byte)0);
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG("xlabeffect");
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/mm/timelineedit/TimelineEditor", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/timelineedit/TimelineEditor", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    locala = new com.tencent.mm.hellhoundlib.b.a().cG("timeline-editor");
+    localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/mm/timelineedit/TimelineEditor", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/timelineedit/TimelineEditor", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    AppMethodBeat.o(232238);
   }
   
   public TimelineEditor()
   {
-    AppMethodBeat.i(261992);
-    this.NmO = -1L;
-    this.VLn = -1L;
-    this.VLo = new HashMap();
-    AppMethodBeat.o(261992);
+    AppMethodBeat.i(232228);
+    this.nNg = -1L;
+    this.adpr = -1L;
+    this.adps = new HashMap();
+    AppMethodBeat.o(232228);
   }
   
-  public static boolean Vc(long paramLong)
-  {
-    return paramLong > 0L;
-  }
-  
-  public static <T, R> R a(a<? extends T> parama, b<? super T, ? extends R> paramb)
+  public static <T, R> R a(kotlin.g.a.a<? extends T> parama, b<? super T, ? extends R> paramb)
   {
     Object localObject = null;
-    AppMethodBeat.i(261955);
+    AppMethodBeat.i(232047);
     parama = parama.invoke();
     if (parama != null) {}
     try
     {
       parama = paramb.invoke(parama);
-      AppMethodBeat.o(261955);
+      AppMethodBeat.o(232047);
       return parama;
-      AppMethodBeat.o(261955);
+      AppMethodBeat.o(232047);
       return null;
     }
     catch (Exception parama)
@@ -151,104 +153,109 @@ public final class TimelineEditor
   
   private final native byte[] nUpdateValidRect(long paramLong, byte[] paramArrayOfByte);
   
+  public static boolean zk(long paramLong)
+  {
+    return paramLong > 0L;
+  }
+  
   public final j a(final g paramg)
   {
-    AppMethodBeat.i(261958);
-    p.k(paramg, "track");
-    paramg = (j)a((a)new a(this, paramg), (b)new b(this));
-    AppMethodBeat.o(261958);
+    AppMethodBeat.i(232385);
+    s.t(paramg, "track");
+    paramg = (j)a((kotlin.g.a.a)new a(this, paramg), (b)new b(this));
+    AppMethodBeat.o(232385);
     return paramg;
   }
   
   public final void a(af paramaf)
   {
-    AppMethodBeat.i(261966);
-    p.k(paramaf, "effect");
-    long l = nAddEffectToTimeline(this.NmO, paramaf.ptr, true);
+    AppMethodBeat.i(232413);
+    s.t(paramaf, "effect");
+    long l = nAddEffectToTimeline(this.nNg, paramaf.ptr, true);
     if (l > 0L) {
-      synchronized (this.VLo)
+      synchronized (this.adps)
       {
-        ((Map)this.VLo).put(Long.valueOf(l), paramaf);
-        paramaf = x.aazN;
-        AppMethodBeat.o(261966);
+        ((Map)this.adps).put(Long.valueOf(l), paramaf);
+        paramaf = ah.aiuX;
+        AppMethodBeat.o(232413);
         return;
       }
     }
-    AppMethodBeat.o(261966);
+    AppMethodBeat.o(232413);
   }
   
   public final void a(af paramaf, long paramLong)
   {
-    AppMethodBeat.i(261967);
-    p.k(paramaf, "effect");
-    paramLong = nAddEffectToTimelineBindToTrack(this.NmO, paramaf.ptr, paramLong);
+    AppMethodBeat.i(232423);
+    s.t(paramaf, "effect");
+    paramLong = nAddEffectToTimelineBindToTrack(this.nNg, paramaf.ptr, paramLong);
     if (paramLong > 0L) {
-      synchronized (this.VLo)
+      synchronized (this.adps)
       {
-        ((Map)this.VLo).put(Long.valueOf(paramLong), paramaf);
-        paramaf = x.aazN;
-        AppMethodBeat.o(261967);
+        ((Map)this.adps).put(Long.valueOf(paramLong), paramaf);
+        paramaf = ah.aiuX;
+        AppMethodBeat.o(232423);
         return;
       }
     }
-    AppMethodBeat.o(261967);
+    AppMethodBeat.o(232423);
   }
   
   public final j b(final g paramg)
   {
-    AppMethodBeat.i(261960);
-    p.k(paramg, "track");
-    paramg = (j)a((a)new u(this, paramg), (b)new v(this));
-    AppMethodBeat.o(261960);
+    AppMethodBeat.i(232391);
+    s.t(paramg, "track");
+    paramg = (j)a((kotlin.g.a.a)new u(this, paramg), (b)new v(this));
+    AppMethodBeat.o(232391);
     return paramg;
   }
   
-  public final ac byc(String paramString)
+  public final ac bzx(String paramString)
   {
-    AppMethodBeat.i(261965);
-    p.k(paramString, "path");
-    paramString = Long.valueOf(nCreateDecodeStickerEffectPath(this.NmO, paramString));
-    if (Vc(((Number)paramString).longValue())) {}
+    AppMethodBeat.i(232404);
+    s.t(paramString, "path");
+    paramString = Long.valueOf(nCreateDecodeStickerEffectPath(this.nNg, paramString));
+    if (zk(((Number)paramString).longValue())) {}
     while (paramString != null)
     {
       paramString = new ac(((Number)paramString).longValue());
-      AppMethodBeat.o(261965);
+      AppMethodBeat.o(232404);
       return paramString;
       paramString = null;
     }
-    AppMethodBeat.o(261965);
+    AppMethodBeat.o(232404);
     return null;
   }
   
   public final j c(final g paramg)
   {
-    AppMethodBeat.i(261962);
-    p.k(paramg, "track");
-    paramg = (j)a((a)new k(this, paramg), (b)new l(this));
-    AppMethodBeat.o(261962);
+    AppMethodBeat.i(232397);
+    s.t(paramg, "track");
+    paramg = (j)a((kotlin.g.a.a)new k(this, paramg), (b)new l(this));
+    AppMethodBeat.o(232397);
     return paramg;
   }
   
   public final EffectManager getEffectManager()
   {
-    AppMethodBeat.i(261968);
-    if (this.VLn == -1L)
+    AppMethodBeat.i(232433);
+    if (this.adpr == -1L)
     {
-      this.VLn = nGetEffectManager(this.NmO);
-      localObject = EffectManager.YZy;
-      this.ANo = EffectManager.a.WK(this.VLn);
+      this.adpr = nGetEffectManager(this.nNg);
+      localObject = EffectManager.agXK;
+      this.GpO = EffectManager.a.AV(this.adpr);
     }
-    Object localObject = this.ANo;
-    AppMethodBeat.o(261968);
+    Object localObject = this.GpO;
+    AppMethodBeat.o(232433);
     return localObject;
   }
   
-  public final g hE(final String paramString, final int paramInt)
+  public final g iL(final String paramString, final int paramInt)
   {
-    AppMethodBeat.i(261957);
-    p.k(paramString, "path");
-    paramString = (g)a((a)new e(this, paramString, paramInt), (b)f.VLt);
-    AppMethodBeat.o(261957);
+    AppMethodBeat.i(232374);
+    s.t(paramString, "path");
+    paramString = (g)a((kotlin.g.a.a)new e(this, paramString, paramInt), (b)f.adpx);
+    AppMethodBeat.o(232374);
     return paramString;
   }
   
@@ -260,25 +267,25 @@ public final class TimelineEditor
   
   public final native byte[] nTouchMotionEvent(long paramLong1, int paramInt1, float paramFloat1, float paramFloat2, long paramLong2, int paramInt2, float paramFloat3, float paramFloat4, long paramLong3);
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/timelineedit/TimelineEditor$Companion;", "", "()V", "TAG", "", "jniInit", "", "checkInitJNI", "", "timelinelib_release"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mm/timelineedit/TimelineEditor$Companion;", "", "()V", "TAG", "", "jniInit", "", "checkInitJNI", "", "timelinelib_release"}, k=1, mv={1, 1, 15})
   public static final class Companion
   {
     private final void checkInitJNI()
     {
-      AppMethodBeat.i(261837);
-      if (!TimelineEditor.hCu())
+      AppMethodBeat.i(232036);
+      if (!TimelineEditor.jeA())
       {
         new EffectManager();
-        TimelineEditor.hCv();
+        TimelineEditor.jeB();
       }
-      AppMethodBeat.o(261837);
+      AppMethodBeat.o(232036);
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 15})
   static final class a
-    extends q
-    implements a<byte[]>
+    extends u
+    implements kotlin.g.a.a<byte[]>
   {
     a(TimelineEditor paramTimelineEditor, g paramg)
     {
@@ -286,9 +293,9 @@ public final class TimelineEditor
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/videocomposition/VideoComposition;", "it", "", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/videocomposition/VideoComposition;", "it", "", "invoke"}, k=3, mv={1, 1, 15})
   static final class b
-    extends q
+    extends u
     implements b<byte[], j>
   {
     b(TimelineEditor paramTimelineEditor)
@@ -297,10 +304,10 @@ public final class TimelineEditor
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 15})
   public static final class c
-    extends q
-    implements a<byte[]>
+    extends u
+    implements kotlin.g.a.a<byte[]>
   {
     public c(TimelineEditor paramTimelineEditor, String paramString)
     {
@@ -308,9 +315,9 @@ public final class TimelineEditor
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/videocomposition/VideoComposition;", "it", "", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/videocomposition/VideoComposition;", "it", "", "invoke"}, k=3, mv={1, 1, 15})
   public static final class d
-    extends q
+    extends u
     implements b<byte[], j>
   {
     public d(TimelineEditor paramTimelineEditor)
@@ -319,10 +326,10 @@ public final class TimelineEditor
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 15})
   static final class e
-    extends q
-    implements a<byte[]>
+    extends u
+    implements kotlin.g.a.a<byte[]>
   {
     e(TimelineEditor paramTimelineEditor, String paramString, int paramInt)
     {
@@ -330,18 +337,18 @@ public final class TimelineEditor
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/timelineedit/model/Track;", "it", "", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/timelineedit/model/Track;", "it", "", "invoke"}, k=3, mv={1, 1, 15})
   static final class f
-    extends q
+    extends u
     implements b<byte[], g>
   {
-    public static final f VLt;
+    public static final f adpx;
     
     static
     {
-      AppMethodBeat.i(261872);
-      VLt = new f();
-      AppMethodBeat.o(261872);
+      AppMethodBeat.i(232054);
+      adpx = new f();
+      AppMethodBeat.o(232054);
     }
     
     f()
@@ -350,10 +357,10 @@ public final class TimelineEditor
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 15})
   public static final class g
-    extends q
-    implements a<byte[]>
+    extends u
+    implements kotlin.g.a.a<byte[]>
   {
     public g(TimelineEditor paramTimelineEditor)
     {
@@ -361,9 +368,9 @@ public final class TimelineEditor
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/videocomposition/VideoComposition;", "it", "", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/videocomposition/VideoComposition;", "it", "", "invoke"}, k=3, mv={1, 1, 15})
   public static final class h
-    extends q
+    extends u
     implements b<byte[], j>
   {
     public h(TimelineEditor paramTimelineEditor)
@@ -372,10 +379,10 @@ public final class TimelineEditor
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 15})
   public static final class i
-    extends q
-    implements a<byte[]>
+    extends u
+    implements kotlin.g.a.a<byte[]>
   {
     public i(TimelineEditor paramTimelineEditor, long paramLong)
     {
@@ -383,9 +390,9 @@ public final class TimelineEditor
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/videocomposition/VideoComposition;", "it", "", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/videocomposition/VideoComposition;", "it", "", "invoke"}, k=3, mv={1, 1, 15})
   public static final class j
-    extends q
+    extends u
     implements b<byte[], j>
   {
     public j(TimelineEditor paramTimelineEditor)
@@ -394,10 +401,10 @@ public final class TimelineEditor
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 15})
   static final class k
-    extends q
-    implements a<byte[]>
+    extends u
+    implements kotlin.g.a.a<byte[]>
   {
     k(TimelineEditor paramTimelineEditor, g paramg)
     {
@@ -405,9 +412,9 @@ public final class TimelineEditor
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/videocomposition/VideoComposition;", "it", "", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/videocomposition/VideoComposition;", "it", "", "invoke"}, k=3, mv={1, 1, 15})
   static final class l
-    extends q
+    extends u
     implements b<byte[], j>
   {
     l(TimelineEditor paramTimelineEditor)
@@ -416,10 +423,10 @@ public final class TimelineEditor
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 15})
   public static final class m
-    extends q
-    implements a<byte[]>
+    extends u
+    implements kotlin.g.a.a<byte[]>
   {
     public m(TimelineEditor paramTimelineEditor, g paramg)
     {
@@ -427,9 +434,9 @@ public final class TimelineEditor
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/videocomposition/VideoComposition;", "it", "", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/videocomposition/VideoComposition;", "it", "", "invoke"}, k=3, mv={1, 1, 15})
   public static final class n
-    extends q
+    extends u
     implements b<byte[], j>
   {
     public n(TimelineEditor paramTimelineEditor)
@@ -438,10 +445,10 @@ public final class TimelineEditor
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 15})
   public static final class o
-    extends q
-    implements a<byte[]>
+    extends u
+    implements kotlin.g.a.a<byte[]>
   {
     public o(TimelineEditor paramTimelineEditor, boolean paramBoolean)
     {
@@ -449,9 +456,9 @@ public final class TimelineEditor
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/videocomposition/VideoComposition;", "it", "", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/videocomposition/VideoComposition;", "it", "", "invoke"}, k=3, mv={1, 1, 15})
   public static final class p
-    extends q
+    extends u
     implements b<byte[], j>
   {
     public p(TimelineEditor paramTimelineEditor)
@@ -460,10 +467,10 @@ public final class TimelineEditor
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 15})
   public static final class q
-    extends q
-    implements a<byte[]>
+    extends u
+    implements kotlin.g.a.a<byte[]>
   {
     public q(TimelineEditor paramTimelineEditor, h paramh)
     {
@@ -471,9 +478,9 @@ public final class TimelineEditor
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/videocomposition/VideoComposition;", "it", "", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/videocomposition/VideoComposition;", "it", "", "invoke"}, k=3, mv={1, 1, 15})
   public static final class r
-    extends q
+    extends u
     implements b<byte[], j>
   {
     public r(TimelineEditor paramTimelineEditor)
@@ -482,10 +489,10 @@ public final class TimelineEditor
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 15})
   public static final class s
-    extends q
-    implements a<byte[]>
+    extends u
+    implements kotlin.g.a.a<byte[]>
   {
     public s(TimelineEditor paramTimelineEditor, c paramc)
     {
@@ -493,9 +500,9 @@ public final class TimelineEditor
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/videocomposition/VideoComposition;", "it", "", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/videocomposition/VideoComposition;", "it", "", "invoke"}, k=3, mv={1, 1, 15})
   public static final class t
-    extends q
+    extends u
     implements b<byte[], j>
   {
     public t(TimelineEditor paramTimelineEditor)
@@ -504,10 +511,10 @@ public final class TimelineEditor
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 15})
   static final class u
-    extends q
-    implements a<byte[]>
+    extends u
+    implements kotlin.g.a.a<byte[]>
   {
     u(TimelineEditor paramTimelineEditor, g paramg)
     {
@@ -515,9 +522,9 @@ public final class TimelineEditor
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/videocomposition/VideoComposition;", "it", "", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/videocomposition/VideoComposition;", "it", "", "invoke"}, k=3, mv={1, 1, 15})
   static final class v
-    extends q
+    extends u
     implements b<byte[], j>
   {
     v(TimelineEditor paramTimelineEditor)
@@ -528,7 +535,7 @@ public final class TimelineEditor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.timelineedit.TimelineEditor
  * JD-Core Version:    0.7.0.1
  */

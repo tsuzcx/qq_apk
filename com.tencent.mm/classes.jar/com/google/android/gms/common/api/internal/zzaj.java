@@ -35,7 +35,6 @@ import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 import java.util.concurrent.locks.Lock;
-import javax.annotation.concurrent.GuardedBy;
 
 public final class zzaj
   implements zzbc
@@ -79,7 +78,6 @@ public final class zzaj
     AppMethodBeat.o(11212);
   }
   
-  @GuardedBy("mLock")
   private final void zza(SignInResponse paramSignInResponse)
   {
     AppMethodBeat.i(11215);
@@ -134,7 +132,6 @@ public final class zzaj
     AppMethodBeat.o(11228);
   }
   
-  @GuardedBy("mLock")
   private final boolean zzar()
   {
     AppMethodBeat.i(11214);
@@ -163,7 +160,6 @@ public final class zzaj
     return true;
   }
   
-  @GuardedBy("mLock")
   private final void zzas()
   {
     AppMethodBeat.i(11216);
@@ -198,7 +194,6 @@ public final class zzaj
     AppMethodBeat.o(11216);
   }
   
-  @GuardedBy("mLock")
   private final void zzat()
   {
     AppMethodBeat.i(11219);
@@ -226,7 +221,6 @@ public final class zzaj
     }
   }
   
-  @GuardedBy("mLock")
   private final void zzau()
   {
     AppMethodBeat.i(11225);
@@ -282,7 +276,6 @@ public final class zzaj
     return localObject;
   }
   
-  @GuardedBy("mLock")
   private final void zzb(ConnectionResult paramConnectionResult, Api<?> paramApi, boolean paramBoolean)
   {
     int j = 1;
@@ -328,7 +321,6 @@ public final class zzaj
     }
   }
   
-  @GuardedBy("mLock")
   private final boolean zzd(ConnectionResult paramConnectionResult)
   {
     AppMethodBeat.i(11226);
@@ -341,7 +333,6 @@ public final class zzaj
     return false;
   }
   
-  @GuardedBy("mLock")
   private final void zze(ConnectionResult paramConnectionResult)
   {
     AppMethodBeat.i(11227);
@@ -357,7 +348,6 @@ public final class zzaj
     }
   }
   
-  @GuardedBy("mLock")
   private final boolean zze(int paramInt)
   {
     AppMethodBeat.i(11231);
@@ -477,7 +467,6 @@ public final class zzaj
     throw paramT;
   }
   
-  @GuardedBy("mLock")
   public final void onConnected(Bundle paramBundle)
   {
     AppMethodBeat.i(11217);
@@ -495,7 +484,6 @@ public final class zzaj
     AppMethodBeat.o(11217);
   }
   
-  @GuardedBy("mLock")
   public final void onConnectionSuspended(int paramInt)
   {
     AppMethodBeat.i(11223);
@@ -503,7 +491,6 @@ public final class zzaj
     AppMethodBeat.o(11223);
   }
   
-  @GuardedBy("mLock")
   public final void zza(ConnectionResult paramConnectionResult, Api<?> paramApi, boolean paramBoolean)
   {
     AppMethodBeat.i(11218);
@@ -521,7 +508,7 @@ public final class zzaj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.zzaj
  * JD-Core Version:    0.7.0.1
  */

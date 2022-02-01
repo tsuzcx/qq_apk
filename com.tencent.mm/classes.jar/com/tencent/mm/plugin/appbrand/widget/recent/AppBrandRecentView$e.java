@@ -6,11 +6,11 @@ public enum AppBrandRecentView$e
 {
   static
   {
-    AppMethodBeat.i(192000);
-    rEG = new e("RECENT_APP_BRAND", 0);
-    rEH = new e("MY_APP_BRAND", 1);
-    rEI = new e[] { rEG, rEH };
-    AppMethodBeat.o(192000);
+    AppMethodBeat.i(324032);
+    uPS = new e("RECENT_APP_BRAND", 0);
+    uPT = new e("MY_APP_BRAND", 1);
+    uPU = new e[] { uPS, uPT };
+    AppMethodBeat.o(324032);
   }
   
   private AppBrandRecentView$e() {}

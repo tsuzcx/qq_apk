@@ -5,32 +5,21 @@ import android.os.Parcelable.Creator;
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
 import com.google.android.gms.wearable.CapabilityInfo;
 import com.google.android.gms.wearable.Node;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import javax.annotation.concurrent.GuardedBy;
 
-@SafeParcelable.Class(creator="CapabilityInfoParcelableCreator")
-@SafeParcelable.Reserved({1})
 public final class zzah
   extends AbstractSafeParcelable
   implements CapabilityInfo
 {
   public static final Parcelable.Creator<zzah> CREATOR;
   private final Object lock;
-  @SafeParcelable.Field(getter="getName", id=2)
   private final String name;
-  @GuardedBy("lock")
   private Set<Node> zzbt;
-  @SafeParcelable.Field(getter="getNodeParcelables", id=3)
   private final List<zzfo> zzca;
   
   static
@@ -40,8 +29,7 @@ public final class zzah
     AppMethodBeat.o(100978);
   }
   
-  @SafeParcelable.Constructor
-  public zzah(@SafeParcelable.Param(id=2) String paramString, @SafeParcelable.Param(id=3) List<zzfo> paramList)
+  public zzah(String paramString, List<zzfo> paramList)
   {
     AppMethodBeat.i(100972);
     this.lock = new Object();
@@ -149,7 +137,7 @@ public final class zzah
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzah
  * JD-Core Version:    0.7.0.1
  */

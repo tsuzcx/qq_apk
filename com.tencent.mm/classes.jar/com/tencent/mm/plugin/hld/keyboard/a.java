@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.hld.keyboard;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/keyboard/KeyArea;", "", "x", "", "y", "rightX", "bottomY", "(IIII)V", "getBottomY", "()I", "getRightX", "getX", "getY", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/keyboard/KeyArea;", "", "x", "", "y", "rightX", "bottomY", "(IIII)V", "getBottomY", "()I", "getRightX", "getX", "getY", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  final int Dye;
-  final int Dyf;
+  final int Jri;
+  final int Jrj;
   final int x;
   final int y;
   
@@ -14,8 +14,8 @@ public final class a
   {
     this.x = paramInt1;
     this.y = paramInt2;
-    this.Dye = paramInt3;
-    this.Dyf = paramInt4;
+    this.Jri = paramInt3;
+    this.Jrj = paramInt4;
   }
 }
 

@@ -4,18 +4,18 @@ import java.util.List;
 
 public final class j
 {
-  public String GIA;
-  public String GIB;
-  public String GIC;
-  public String GID;
-  public String GIE;
-  public String GIF;
-  public String GIG;
-  public String GIH;
-  public List<a> GII;
-  public List<b> GIJ;
-  public String GIq;
-  public String fQs;
+  public String MFg;
+  public String MFq;
+  public String MFr;
+  public String MFs;
+  public String MFt;
+  public String MFu;
+  public String MFv;
+  public String MFw;
+  public String MFx;
+  public List<a> MFy;
+  public List<b> MFz;
+  public String hWn;
   public String msgId;
   
   public static final class a
@@ -33,7 +33,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.order.model.j
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.recovery.wx;
 
-import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.job.JobInfo.Builder;
@@ -42,7 +41,7 @@ public class RecoveryTinkerManager
       paramContext = localPackageManager.getServiceInfo(paramContext, 0);
       return paramContext.processName;
     }
-    catch (Throwable paramContext) {}
+    finally {}
     return null;
   }
   
@@ -78,14 +77,13 @@ public class RecoveryTinkerManager
       paramContext.startService(localIntent);
       return 0;
     }
-    catch (Throwable paramContext)
+    finally
     {
       RecoveryLog.e("Recovery.RecoveryTinkerManager", "start patch service fail, exception:".concat(String.valueOf(paramContext)), new Object[0]);
     }
     return -1;
   }
   
-  @TargetApi(21)
   private static int startPatchByJobScheduler(Context paramContext, String paramString)
   {
     try
@@ -108,7 +106,7 @@ public class RecoveryTinkerManager
       RecoveryLog.e("Recovery.RecoveryTinkerManager", "fail to get job scheduler service.", new Object[0]);
       return -1;
     }
-    catch (Throwable paramContext)
+    finally
     {
       RecoveryLog.e("Recovery.RecoveryTinkerManager", "start patch service fail, exception:".concat(String.valueOf(paramContext)), new Object[0]);
     }
@@ -128,7 +126,7 @@ public class RecoveryTinkerManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.recovery.wx.RecoveryTinkerManager
  * JD-Core Version:    0.7.0.1
  */

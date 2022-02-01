@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.appbrand.jsapi.i;
 
-import com.tencent.mm.plugin.appbrand.jsapi.aa;
-import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.gamelive.b.b;
 
 public final class b
-  extends aa<ad>
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<com.tencent.mm.plugin.appbrand.service.c>
 {
-  private static final int CTRL_INDEX = 583;
-  private static final String NAME = "getSelectedTextRange";
+  public static final int CTRL_INDEX = 1030;
+  public static final String NAME = "exitGameLive";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.i.b
  * JD-Core Version:    0.7.0.1
  */

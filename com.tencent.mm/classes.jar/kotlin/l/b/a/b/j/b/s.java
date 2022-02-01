@@ -1,28 +1,16 @@
 package kotlin.l.b.a.b.j.b;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-
 public final class s
-  extends p<Long>
+  extends g<Void>
 {
-  public s(long paramLong)
+  public s()
   {
-    super(Long.valueOf(paramLong));
-    AppMethodBeat.i(60109);
-    AppMethodBeat.o(60109);
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(60108);
-    String str = ((Number)getValue()).longValue() + ".toLong()";
-    AppMethodBeat.o(60108);
-    return str;
+    super(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.j.b.s
  * JD-Core Version:    0.7.0.1
  */

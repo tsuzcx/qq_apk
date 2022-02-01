@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/b_k" android:paddingRight="@dimen/ci" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:paddingStart="@dimen/ci">
-        <ImageView android:id="@id/to" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" />
-        <TextView android:textSize="@dimen/k6" android:textColor="@color/fr" android:id="@id/tp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" />
-    </LinearLayout>
-    <TextView android:textSize="@dimen/hd" android:layout_gravity="center_horizontal" android:id="@id/c8x" android:paddingRight="@dimen/ci" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_below="@id/b_k" android:paddingStart="@dimen/ci" style="@style/p_" />
-    <TextView android:textSize="@dimen/k6" android:textColor="@color/x0" android:gravity="center_horizontal" android:id="@id/c8w" android:paddingRight="@dimen/ci" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ce" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:paddingStart="@dimen/ci" style="@style/p_" />
-    <Button android:enabled="false" android:id="@id/i4i" android:paddingRight="@dimen/ci" android:layout_marginBottom="@dimen/bx" android:text="@string/c4m" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:paddingStart="@dimen/ci" style="@style/ov" />
-    <RelativeLayout android:id="@id/c8z" android:paddingTop="@dimen/ct" android:paddingRight="@dimen/ci" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ci" android:layout_above="@id/i4i" android:paddingStart="@dimen/ci">
-        <CheckBox android:layout_gravity="center" android:id="@id/c8y" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginTop="4.0dip" android:button="@null" android:layout_alignTop="@id/c90" style="@style/m6" />
-        <TextView android:textSize="@dimen/k6" android:textColor="@color/uj" android:id="@id/c90" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bt" android:layout_marginTop="3.0dip" android:text="@string/c4o" android:includeFontPadding="false" android:layout_toRightOf="@id/c8y" android:layout_alignParentTop="true" android:lineSpacingMultiplier="1.25" />
-    </RelativeLayout>
-</RelativeLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/l4j" android:background="@color/al2" android:padding="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/t" android:textColor="@color/gg" android:gravity="center" android:id="@id/fe1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gq8" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_" style="@style/z8" />
+    <TextView android:textSize="@dimen/t" android:textColor="@color/gg" android:gravity="center" android:id="@id/fe0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="700ms" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" style="@style/z8" />
+    <SeekBar android:id="@id/kk_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d0" android:max="100" android:progress="100" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="@id/fe1" style="@style/ob" />
+</androidx.constraintlayout.widget.ConstraintLayout>

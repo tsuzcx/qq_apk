@@ -49,7 +49,7 @@ public final class TextInformationFrame
       return false;
     }
     paramObject = (TextInformationFrame)paramObject;
-    if ((this.id.equals(paramObject.id)) && (x.h(this.description, paramObject.description)) && (x.h(this.value, paramObject.value)))
+    if ((this.id.equals(paramObject.id)) && (x.p(this.description, paramObject.description)) && (x.p(this.value, paramObject.value)))
     {
       AppMethodBeat.o(92452);
       return true;

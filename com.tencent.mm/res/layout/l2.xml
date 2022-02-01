@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/avr" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/avs" android:background="@drawable/i2" android:paddingLeft="@dimen/ta" android:paddingRight="@dimen/ta" android:paddingBottom="@dimen/ta" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="174.0dip">
-        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/ikc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="128.0dip">
-            <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/is" android:textColor="@color/BW_0_Alpha_0_9" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/a8y" android:paddingLeft="@dimen/t7" android:paddingRight="@dimen/t7" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="90.0dip" android:maxLines="4" android:lineSpacingExtra="7.0dip" />
-            <TextView android:textSize="@dimen/is" android:textColor="@color/fb" android:id="@id/a8z" android:paddingLeft="@dimen/t7" android:paddingRight="@dimen/t7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" android:text="@string/aib" />
-        </LinearLayout>
-        <RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k" android:minHeight="10.0dip">
-            <include android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_centerVertical="true" layout="@layout/ks" />
-            <TextView android:textSize="@dimen/is" android:textColor="@color/Link" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/aic" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-        </RelativeLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@drawable/agc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cd" android:layout_marginTop="@dimen/df" android:layout_marginRight="@dimen/cd" android:minHeight="@dimen/d_">
+        <ProgressBar android:layout_gravity="center" android:id="@id/i83" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a85" />
     </LinearLayout>
 </LinearLayout>

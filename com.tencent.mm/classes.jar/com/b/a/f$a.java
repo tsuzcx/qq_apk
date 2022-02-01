@@ -10,16 +10,16 @@ import java.io.File;
 
 public final class f$a
 {
-  public File aEY;
-  public c aEZ;
-  public com.b.a.a.a aFa;
-  public com.b.a.c.b aFb;
-  public com.b.a.b.b aFc;
+  public File cAK;
+  public c cAL;
+  public com.b.a.a.a cAM;
+  public com.b.a.c.b cAN;
+  public com.b.a.b.b cAO;
   
   public f$a(Context paramContext)
   {
     AppMethodBeat.i(183569);
-    this.aFb = new com.b.a.c.a(paramContext);
+    this.cAN = new com.b.a.c.a(paramContext);
     Object localObject2 = null;
     if ("mounted".equals(Environment.getExternalStorageState())) {
       localObject2 = paramContext.getExternalCacheDir();
@@ -32,16 +32,16 @@ public final class f$a
     if (localObject1 == null) {
       localObject2 = new File("/data/data/" + paramContext.getPackageName() + "/cache/");
     }
-    this.aEY = new File((File)localObject2, "video-cache");
-    this.aFa = new g(536870912L);
-    this.aEZ = new f();
-    this.aFc = new com.b.a.b.a();
+    this.cAK = new File((File)localObject2, "video-cache");
+    this.cAM = new g(536870912L);
+    this.cAL = new f();
+    this.cAO = new com.b.a.b.a();
     AppMethodBeat.o(183569);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.b.a.f.a
  * JD-Core Version:    0.7.0.1
  */

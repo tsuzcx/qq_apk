@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.live;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.g;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.rtmp.ITXLivePlayListener;
 import java.util.Iterator;
@@ -13,7 +13,7 @@ import org.json.JSONObject;
 final class c$8
   implements ITXLivePlayListener
 {
-  c$8(c paramc, int paramInt, g paramg) {}
+  c$8(c paramc, int paramInt, h paramh) {}
   
   public final void onNetStatus(Bundle paramBundle)
   {
@@ -23,7 +23,7 @@ final class c$8
     JSONObject localJSONObject2;
     try
     {
-      localJSONObject1.put("livePlayerId", this.oGn);
+      localJSONObject1.put("livePlayerId", this.rJm);
       localJSONObject2 = new JSONObject();
       if (paramBundle != null)
       {
@@ -33,7 +33,7 @@ final class c$8
           String str = (String)localIterator.next();
           localJSONObject2.put(str, paramBundle.get(str));
           continue;
-          this.oGi.a(localc.agU(localJSONObject1.toString()), null);
+          this.rJh.a(localc.ZR(localJSONObject1.toString()), null);
         }
       }
     }
@@ -56,9 +56,9 @@ final class c$8
     {
       localJSONObject.put("errCode", paramInt);
       localJSONObject.put("errMsg", paramBundle.getString("EVT_MSG"));
-      localJSONObject.put("livePlayerId", this.oGn);
+      localJSONObject.put("livePlayerId", this.rJm);
       label76:
-      this.oGi.a(locald.agU(localJSONObject.toString()), null);
+      this.rJh.a(locald.ZR(localJSONObject.toString()), null);
       AppMethodBeat.o(145853);
       return;
     }
@@ -70,7 +70,7 @@ final class c$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.live.c.8
  * JD-Core Version:    0.7.0.1
  */

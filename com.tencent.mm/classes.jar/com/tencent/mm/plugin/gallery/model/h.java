@@ -1,96 +1,45 @@
 package com.tencent.mm.plugin.gallery.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import com.tencent.mm.sdk.platformtools.Log;
 
-public final class h<E>
-  extends LinkedList<E>
+public final class h
 {
-  private byte[] lock;
+  private static k HHy;
+  public static final h HHz;
   
-  public h()
+  static
   {
-    AppMethodBeat.i(111324);
-    this.lock = new byte[0];
-    AppMethodBeat.o(111324);
+    AppMethodBeat.i(289588);
+    HHy = null;
+    HHz = new h();
+    AppMethodBeat.o(289588);
   }
   
-  private boolean check(E paramE)
+  public static String ID(String paramString)
   {
-    AppMethodBeat.i(111326);
-    synchronized (this.lock)
+    AppMethodBeat.i(289587);
+    if (HHy == null)
     {
-      boolean bool = super.contains(paramE);
-      AppMethodBeat.o(111326);
-      return bool;
-    }
-  }
-  
-  public final boolean add(E paramE)
-  {
-    AppMethodBeat.i(111328);
-    synchronized (this.lock)
-    {
-      boolean bool = super.add(paramE);
-      AppMethodBeat.o(111328);
-      return bool;
-    }
-  }
-  
-  public final void clear()
-  {
-    AppMethodBeat.i(111330);
-    synchronized (this.lock)
-    {
-      super.clear();
-      AppMethodBeat.o(111330);
-      return;
-    }
-  }
-  
-  public final void dv(E paramE)
-  {
-    AppMethodBeat.i(111327);
-    synchronized (this.lock)
-    {
-      if (check(paramE)) {
-        super.remove(paramE);
-      }
-      AppMethodBeat.o(111327);
-      return;
-    }
-  }
-  
-  public final E etN()
-  {
-    AppMethodBeat.i(111325);
-    synchronized (this.lock)
-    {
-      if (size() > 0)
-      {
-        Object localObject1 = super.poll();
-        AppMethodBeat.o(111325);
-        return localObject1;
-      }
-      AppMethodBeat.o(111325);
+      AppMethodBeat.o(289587);
       return null;
     }
+    paramString = HHy.ID(paramString);
+    AppMethodBeat.o(289587);
+    return paramString;
   }
   
-  public final int size()
+  public static void a(k paramk)
   {
-    AppMethodBeat.i(111329);
-    synchronized (this.lock)
-    {
-      int i = super.size();
-      AppMethodBeat.o(111329);
-      return i;
-    }
+    AppMethodBeat.i(289585);
+    HHy = paramk;
+    Log.i("MicroMsg.GalleryHelper", "setMediaItemProvider: ".concat(String.valueOf(paramk)));
+    AppMethodBeat.o(289585);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.h
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ import com.tencent.mm.plugin.scanner.l.f;
 import com.tencent.mm.plugin.scanner.l.g;
 import com.tencent.mm.plugin.scanner.l.h;
 import com.tencent.mm.plugin.scanner.l.i;
-import com.tencent.mm.plugin.scanner.util.r;
+import com.tencent.mm.plugin.scanner.util.t;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.MMDotView;
@@ -35,84 +35,84 @@ import java.util.Set;
 public class SelectScanModePanel
   extends LinearLayout
 {
-  private static int ITN = 85;
-  private static int ITO = 85;
-  private boolean ITP;
-  private int ITQ;
-  private final int ITR;
-  private int ITS;
-  protected List<SelectScanModeGrid> ITT;
-  private String[] ITU;
-  private int[] ITV;
-  private int[] ITW;
-  private int[] ITX;
-  private ArrayList<Integer> ITY;
-  private Set<Integer> ITZ;
-  private AdapterView.OnItemClickListener IUa;
-  private int IUb;
-  private boolean IUc;
-  private int IUd;
-  private int IUe;
-  private MMFlipper IUf;
-  private MMDotView IUg;
-  private a IUh;
+  private static int PcG = 85;
+  private static int PcH = 85;
+  private boolean PcI;
+  private int PcJ;
+  private final int PcK;
+  private int PcL;
+  protected List<SelectScanModeGrid> PcM;
+  private String[] PcN;
+  private int[] PcO;
+  private int[] PcP;
+  private int[] PcQ;
+  private ArrayList<Integer> PcR;
+  private Set<Integer> PcS;
+  private AdapterView.OnItemClickListener PcT;
+  private boolean PcU;
+  private int PcV;
+  private int PcW;
+  private MMFlipper PcX;
+  private MMDotView PcY;
+  private a PcZ;
   private Context context;
+  private int iew;
   
   public SelectScanModePanel(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(51989);
-    this.ITP = r.fFe();
-    this.ITQ = 4;
-    this.ITR = 0;
-    this.ITS = 0;
-    this.ITV = new int[] { l.e.ICp, l.e.ICn, l.e.ICs, l.h.scan_translation, l.e.ICn };
-    this.ITW = new int[] { l.e.ICq, l.e.ICo, l.e.ICt, l.h.scan_translation_hl, l.e.ICo };
-    this.ITX = new int[] { 1, 2, 5, 3, 12 };
-    this.ITY = new ArrayList();
-    this.ITZ = new HashSet();
-    this.IUb = 0;
-    this.IUc = false;
+    this.PcI = t.gUo();
+    this.PcJ = 4;
+    this.PcK = 0;
+    this.PcL = 0;
+    this.PcO = new int[] { l.e.OIr, l.e.OIp, l.e.OIt, l.h.scan_translation, l.e.OIp };
+    this.PcP = new int[] { l.e.OIs, l.e.OIq, l.e.OIu, l.h.scan_translation_hl, l.e.OIq };
+    this.PcQ = new int[] { 1, 2, 5, 3, 12 };
+    this.PcR = new ArrayList();
+    this.PcS = new HashSet();
+    this.iew = 0;
+    this.PcU = false;
     this.context = paramContext;
-    View.inflate(this.context, l.g.IEA, this);
-    this.IUg = ((MMDotView)findViewById(l.f.IDG));
-    this.ITY.clear();
-    this.ITY.add(Integer.valueOf(1));
-    this.ITY.add(Integer.valueOf(2));
-    this.ITY.add(Integer.valueOf(5));
-    this.ITY.add(Integer.valueOf(3));
-    if (this.ITP) {
-      this.ITY.add(Integer.valueOf(12));
+    View.inflate(this.context, l.g.OKD, this);
+    this.PcY = ((MMDotView)findViewById(l.f.OJI));
+    this.PcR.clear();
+    this.PcR.add(Integer.valueOf(1));
+    this.PcR.add(Integer.valueOf(2));
+    this.PcR.add(Integer.valueOf(5));
+    this.PcR.add(Integer.valueOf(3));
+    if (this.PcI) {
+      this.PcR.add(Integer.valueOf(12));
     }
     int i;
-    if (this.ITP)
+    if (this.PcI)
     {
       i = 5;
-      this.ITQ = i;
-      this.ITU = new String[this.ITQ];
-      this.ITU[0] = this.context.getString(l.i.IEQ);
-      this.ITU[1] = r.kj(r.IZY, this.context.getString(l.i.IEO));
-      this.ITU[2] = this.context.getString(l.i.scan_entry_street);
-      this.ITU[3] = this.context.getString(l.i.scan_entry_ocr);
-      if (this.ITP) {
-        this.ITU[4] = this.context.getString(l.i.IEN);
+      this.PcJ = i;
+      this.PcN = new String[this.PcJ];
+      this.PcN[0] = this.context.getString(l.i.OKX);
+      this.PcN[1] = t.lI(t.PjQ, this.context.getString(l.i.OKV));
+      this.PcN[2] = this.context.getString(l.i.scan_entry_street);
+      this.PcN[3] = this.context.getString(l.i.scan_entry_ocr);
+      if (this.PcI) {
+        this.PcN[4] = this.context.getString(l.i.OKU);
       }
       Log.v("MicroMsg.scanner.SelectScanModePanel", "AppPanel initFlipper");
-      this.IUf = ((MMFlipper)findViewById(l.f.IDH));
-      paramContext = findViewById(l.f.IDF);
+      this.PcX = ((MMFlipper)findViewById(l.f.OJJ));
+      paramContext = findViewById(l.f.OJH);
       if (this.context.getResources().getConfiguration().orientation != 2) {
         break label513;
       }
       paramAttributeSet = (LinearLayout.LayoutParams)paramContext.getLayoutParams();
-      paramAttributeSet.height = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.context, ITO);
+      paramAttributeSet.height = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.context, PcH);
       paramContext.setLayoutParams(paramAttributeSet);
     }
     for (;;)
     {
-      this.IUf.removeAllViews();
-      this.IUf.setOnMeasureListener(new MMFlipper.b()
+      this.PcX.removeAllViews();
+      this.PcX.setOnMeasureListener(new MMFlipper.b()
       {
-        public final void jl(int paramAnonymousInt1, int paramAnonymousInt2)
+        public final void kS(int paramAnonymousInt1, int paramAnonymousInt2)
         {
           AppMethodBeat.i(51986);
           Log.v("MicroMsg.scanner.SelectScanModePanel", "onMeasure width:" + paramAnonymousInt1 + " height:" + paramAnonymousInt2 + " isMeasured:" + SelectScanModePanel.a(SelectScanModePanel.this));
@@ -128,9 +128,9 @@ public class SelectScanModePanel
           AppMethodBeat.o(51986);
         }
       });
-      this.IUf.setOnScreenChangedListener(new MMFlipper.c()
+      this.PcX.setOnScreenChangedListener(new MMFlipper.c()
       {
-        public final void E(int paramAnonymousInt1, int paramAnonymousInt2, boolean paramAnonymousBoolean)
+        public final void onScreenChanged(int paramAnonymousInt1, int paramAnonymousInt2, boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(163474);
           SelectScanModePanel.d(SelectScanModePanel.this).setSelectedDot(paramAnonymousInt2);
@@ -143,17 +143,17 @@ public class SelectScanModePanel
       break;
       label513:
       paramAttributeSet = (LinearLayout.LayoutParams)paramContext.getLayoutParams();
-      paramAttributeSet.height = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.context, ITN);
+      paramAttributeSet.height = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.context, PcG);
       paramContext.setLayoutParams(paramAttributeSet);
     }
   }
   
-  private int adQ(int paramInt)
+  private int ais(int paramInt)
   {
     int i = 0;
-    while (i < this.ITX.length)
+    while (i < this.PcQ.length)
     {
-      if (this.ITX[i] == paramInt) {
+      if (this.PcQ[i] == paramInt) {
         return i;
       }
       i += 1;
@@ -161,23 +161,23 @@ public class SelectScanModePanel
     return -1;
   }
   
-  private void fEo()
+  private void gTb()
   {
     int j = 1;
     AppMethodBeat.i(51993);
-    if (this.IUa == null) {
-      this.IUa = new AdapterView.OnItemClickListener()
+    if (this.PcT == null) {
+      this.PcT = new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           boolean bool2 = true;
           AppMethodBeat.i(51988);
           b localb = new b();
-          localb.bn(paramAnonymousAdapterView);
-          localb.bn(paramAnonymousView);
-          localb.sg(paramAnonymousInt);
-          localb.Fs(paramAnonymousLong);
-          a.c("com/tencent/mm/plugin/scanner/ui/SelectScanModePanel$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
+          localb.cH(paramAnonymousAdapterView);
+          localb.cH(paramAnonymousView);
+          localb.sc(paramAnonymousInt);
+          localb.hB(paramAnonymousLong);
+          a.c("com/tencent/mm/plugin/scanner/ui/SelectScanModePanel$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aYj());
           if ((paramAnonymousAdapterView == null) || (SelectScanModePanel.e(SelectScanModePanel.this) == null))
           {
             paramAnonymousView = new StringBuilder("parent == null ? ");
@@ -208,28 +208,28 @@ public class SelectScanModePanel
             AppMethodBeat.o(51988);
             return;
           }
-          ((SelectScanModeGrid.a)paramAnonymousAdapterView.getAdapter()).ITG = paramAnonymousInt;
+          ((SelectScanModeGrid.a)paramAnonymousAdapterView.getAdapter()).Pcz = paramAnonymousInt;
           Log.d("MicroMsg.scanner.SelectScanModePanel", "position=[%s], clickItem=[%s]", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousView.title });
           if ((SelectScanModePanel.f(SelectScanModePanel.this) != null) && (paramAnonymousView != null)) {
             SelectScanModePanel.f(SelectScanModePanel.this);
           }
-          SelectScanModePanel.this.setSelectedMode(paramAnonymousView.ITK);
+          SelectScanModePanel.this.setSelectedMode(paramAnonymousView.PcD);
           a.a(this, "com/tencent/mm/plugin/scanner/ui/SelectScanModePanel$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(51988);
         }
       };
     }
-    this.ITT = new ArrayList();
-    if ((this.IUd == 0) || (this.IUe == 0))
+    this.PcM = new ArrayList();
+    if ((this.PcV == 0) || (this.PcW == 0))
     {
       AppMethodBeat.o(51993);
       return;
     }
-    this.IUf.removeAllViews();
+    this.PcX.removeAllViews();
     int k = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.context, 64.0F);
     int i = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.context, 78.0F);
-    int m = this.IUd / k;
-    k = this.IUe / i;
+    int m = this.PcV / k;
+    k = this.PcW / i;
     if (m == 0)
     {
       i = 1;
@@ -240,49 +240,49 @@ public class SelectScanModePanel
     for (;;)
     {
       m = i * j;
-      this.IUb = 0;
-      i = this.ITQ;
+      this.iew = 0;
+      i = this.PcJ;
       for (;;)
       {
         if (i > 0)
         {
           i -= m;
-          this.IUb += 1;
+          this.iew += 1;
           continue;
           i = m;
-          if (m <= this.ITY.size()) {
+          if (m <= this.PcR.size()) {
             break;
           }
-          i = this.ITY.size();
+          i = this.PcR.size();
           break;
         }
       }
       i = 0;
-      while (i < this.IUb)
+      while (i < this.iew)
       {
         Object localObject = new ArrayList();
         k = i * m;
         j = k;
-        while ((j < this.ITY.size()) && (j < k + m))
+        while ((j < this.PcR.size()) && (j < k + m))
         {
-          int n = adQ(((Integer)this.ITY.get(j)).intValue());
-          ((List)localObject).add(new SelectScanModeGrid.b(this.ITU[n], this.ITV[n], this.ITW[n], ((Integer)this.ITY.get(j)).intValue(), this.ITZ.contains(this.ITY.get(j))));
+          int n = ais(((Integer)this.PcR.get(j)).intValue());
+          ((List)localObject).add(new SelectScanModeGrid.b(this.PcN[n], this.PcO[n], this.PcP[n], ((Integer)this.PcR.get(j)).intValue(), this.PcS.contains(this.PcR.get(j))));
           j += 1;
         }
         if (((List)localObject).size() > 0)
         {
-          SelectScanModeGrid localSelectScanModeGrid = (SelectScanModeGrid)inflate(this.context, l.g.IEy, null);
+          SelectScanModeGrid localSelectScanModeGrid = (SelectScanModeGrid)inflate(this.context, l.g.OKB, null);
           localSelectScanModeGrid.setNumColumns(m);
           localObject = new SelectScanModeGrid.a(this.context, (List)localObject);
-          ((SelectScanModeGrid.a)localObject).ITG = this.ITS;
+          ((SelectScanModeGrid.a)localObject).Pcz = this.PcL;
           localSelectScanModeGrid.setAdapter((ListAdapter)localObject);
-          this.IUf.addView(localSelectScanModeGrid, new LinearLayout.LayoutParams(-1, -1));
-          localSelectScanModeGrid.setOnItemClickListener(this.IUa);
-          this.ITT.add(localSelectScanModeGrid);
+          this.PcX.addView(localSelectScanModeGrid, new LinearLayout.LayoutParams(-1, -1));
+          localSelectScanModeGrid.setOnItemClickListener(this.PcT);
+          this.PcM.add(localSelectScanModeGrid);
         }
         i += 1;
       }
-      fEp();
+      gTc();
       AppMethodBeat.o(51993);
       return;
       label437:
@@ -290,71 +290,71 @@ public class SelectScanModePanel
     }
   }
   
-  private void fEp()
+  private void gTc()
   {
     AppMethodBeat.i(51994);
-    if (this.ITT.size() <= 1)
+    if (this.PcM.size() <= 1)
     {
-      this.IUg.setVisibility(4);
+      this.PcY.setVisibility(4);
       AppMethodBeat.o(51994);
       return;
     }
-    this.IUg.setVisibility(0);
-    this.IUg.setDotCount(this.ITT.size());
-    int i = this.IUf.getCurScreen();
-    this.IUf.setToScreen(i);
-    this.IUg.setSelectedDot(i);
+    this.PcY.setVisibility(0);
+    this.PcY.setDotCount(this.PcM.size());
+    int i = this.PcX.getCurScreen();
+    this.PcX.setToScreen(i);
+    this.PcY.setSelectedDot(i);
     AppMethodBeat.o(51994);
   }
   
   public void setDisplayModes(int[] paramArrayOfInt)
   {
     AppMethodBeat.i(51990);
-    this.ITY.clear();
+    this.PcR.clear();
     int j = paramArrayOfInt.length;
     int i = 0;
     while (i < j)
     {
       int k = paramArrayOfInt[i];
-      this.ITY.add(Integer.valueOf(k));
+      this.PcR.add(Integer.valueOf(k));
       i += 1;
     }
-    fEo();
+    gTb();
     AppMethodBeat.o(51990);
   }
   
   public void setOnGridItemClickCallback(a parama)
   {
-    this.IUh = parama;
+    this.PcZ = parama;
   }
   
   public void setSelectedMode(int paramInt)
   {
     AppMethodBeat.i(51992);
-    this.ITS = adQ(paramInt);
-    if (this.ITT != null)
+    this.PcL = ais(paramInt);
+    if (this.PcM != null)
     {
       int i = 0;
-      while (i < this.ITT.size())
+      while (i < this.PcM.size())
       {
-        SelectScanModeGrid.a locala = (SelectScanModeGrid.a)((SelectScanModeGrid)this.ITT.get(i)).getAdapter();
+        SelectScanModeGrid.a locala = (SelectScanModeGrid.a)((SelectScanModeGrid)this.PcM.get(i)).getAdapter();
         if (locala != null)
         {
           int j = 0;
           if (j < locala.getCount())
           {
             SelectScanModeGrid.b localb = (SelectScanModeGrid.b)locala.getItem(j);
-            if ((localb != null) && (localb.ITL != null))
+            if ((localb != null) && (localb.PcE != null))
             {
-              if (localb.ITK != paramInt) {
+              if (localb.PcD != paramInt) {
                 break label153;
               }
-              localb.ITL.setBackgroundResource(localb.ITJ);
-              localb.ITM = false;
+              localb.PcE.setBackgroundResource(localb.PcC);
+              localb.PcF = false;
               if (i > 0)
               {
-                this.IUf.setToScreen(i);
-                this.IUg.setSelectedDot(i);
+                this.PcX.setToScreen(i);
+                this.PcY.setSelectedDot(i);
               }
             }
             for (;;)
@@ -362,10 +362,10 @@ public class SelectScanModePanel
               j += 1;
               break;
               label153:
-              localb.ITL.setBackgroundResource(localb.ITI);
+              localb.PcE.setBackgroundResource(localb.PcB);
             }
           }
-          locala.ITG = this.ITS;
+          locala.Pcz = this.PcL;
           locala.notifyDataSetChanged();
         }
         i += 1;
@@ -379,8 +379,8 @@ public class SelectScanModePanel
     AppMethodBeat.i(51991);
     if (paramSet != null)
     {
-      this.ITZ.clear();
-      this.ITZ.addAll(paramSet);
+      this.PcS.clear();
+      this.PcS.addAll(paramSet);
     }
     AppMethodBeat.o(51991);
   }
@@ -389,7 +389,7 @@ public class SelectScanModePanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.SelectScanModePanel
  * JD-Core Version:    0.7.0.1
  */

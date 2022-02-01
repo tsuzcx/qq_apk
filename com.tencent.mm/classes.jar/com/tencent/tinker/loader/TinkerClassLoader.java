@@ -1,7 +1,5 @@
 package com.tencent.tinker.loader;
 
-import android.annotation.SuppressLint;
-import com.tencent.tinker.anno.Keep;
 import dalvik.system.PathClassLoader;
 import java.io.File;
 import java.net.URL;
@@ -10,8 +8,6 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-@SuppressLint({"NewApi"})
-@Keep
 public final class TinkerClassLoader
   extends PathClassLoader
 {
@@ -50,10 +46,7 @@ public final class TinkerClassLoader
           return;
         }
       }
-      catch (Throwable paramClassLoader)
-      {
-        throw new TinkerRuntimeException("Fail to create TinkerClassLoader.", paramClassLoader);
-      }
+      finally {}
       i += 1;
     }
   }
@@ -96,7 +89,6 @@ public final class TinkerClassLoader
     return new CompoundEnumeration((Enumeration[])new Enumeration[] { Object.class.getClassLoader().getResources(paramString), findResources(paramString), this.mOriginAppClassLoader.getResources(paramString) });
   }
   
-  @Keep
   class CompoundEnumeration<E>
     implements Enumeration<E>
   {
@@ -132,7 +124,7 @@ public final class TinkerClassLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.loader.TinkerClassLoader
  * JD-Core Version:    0.7.0.1
  */

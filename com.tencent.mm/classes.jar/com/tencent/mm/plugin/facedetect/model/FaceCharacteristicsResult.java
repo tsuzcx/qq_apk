@@ -12,7 +12,7 @@ public class FaceCharacteristicsResult
   public static final Parcelable.Creator<FaceCharacteristicsResult> CREATOR;
   public int errCode;
   public String errMsg;
-  public FaceProNative.FaceStatus wwC;
+  public FaceProNative.FaceStatus zSI;
   
   static
   {
@@ -31,22 +31,22 @@ public class FaceCharacteristicsResult
     AppMethodBeat.o(103703);
   }
   
-  public static boolean Lq(int paramInt)
+  public static boolean Mn(int paramInt)
   {
     return (paramInt >= 10) && (paramInt < 100);
   }
   
-  public static boolean Lr(int paramInt)
+  public static boolean Mo(int paramInt)
   {
     return (paramInt > 0) && (paramInt < 10);
   }
   
-  public static boolean Ls(int paramInt)
+  public static boolean Mp(int paramInt)
   {
     return paramInt <= 0;
   }
   
-  public final void aV(int paramInt, String paramString)
+  public final void bp(int paramInt, String paramString)
   {
     this.errCode = paramInt;
     this.errMsg = paramString;
@@ -60,7 +60,7 @@ public class FaceCharacteristicsResult
   public String toString()
   {
     AppMethodBeat.i(103705);
-    String str = "FaceCharacteristicsResult{mStatus=" + this.wwC + ", errCode=" + this.errCode + ", errMsg='" + this.errMsg + '\'' + '}';
+    String str = "FaceCharacteristicsResult{mStatus=" + this.zSI + ", errCode=" + this.errCode + ", errMsg='" + this.errMsg + '\'' + '}';
     AppMethodBeat.o(103705);
     return str;
   }
@@ -68,7 +68,7 @@ public class FaceCharacteristicsResult
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(103704);
-    paramParcel.writeParcelable(this.wwC, paramInt);
+    paramParcel.writeParcelable(this.zSI, paramInt);
     paramParcel.writeInt(this.errCode);
     paramParcel.writeString(this.errMsg);
     AppMethodBeat.o(103704);
@@ -76,7 +76,7 @@ public class FaceCharacteristicsResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.model.FaceCharacteristicsResult
  * JD-Core Version:    0.7.0.1
  */

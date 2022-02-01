@@ -4,12 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.wallet_core.d;
+import com.tencent.mm.wallet_core.e;
 
 public class b
   extends com.tencent.mm.plugin.wallet_core.b.b
 {
-  public final d a(Activity paramActivity, Bundle paramBundle)
+  public final e a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(68737);
     paramActivity = super.a(paramActivity, paramBundle);
@@ -30,12 +30,12 @@ public class b
     AppMethodBeat.o(68739);
   }
   
-  public final String epb()
+  public final String fud()
   {
     return "BalanceFetchCardProcess";
   }
   
-  public final void h(Activity paramActivity, int paramInt)
+  public final void i(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(68738);
     if (paramActivity != null) {
@@ -46,7 +46,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.lqt.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,64 +1,64 @@
 package com.tencent.mm.plugin.ipcall.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.model.z;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dpo;
-import com.tencent.mm.protocal.protobuf.dpp;
+import com.tencent.mm.protocal.protobuf.eii;
+import com.tencent.mm.protocal.protobuf.eij;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class o
-  extends q
+  extends p
   implements m
 {
-  public dpo DRS;
-  public dpp DRT;
-  private i callback;
-  private d rr;
+  public eii JJc;
+  public eij JJd;
+  private h callback;
+  private c rr;
   
   public o(int paramInt1, long paramLong1, int paramInt2, long paramLong2, boolean paramBoolean)
   {
     AppMethodBeat.i(25493);
     this.rr = null;
-    this.DRS = null;
-    this.DRT = null;
-    d.a locala = new d.a();
-    locala.lBU = new dpo();
-    locala.lBV = new dpp();
+    this.JJc = null;
+    this.JJd = null;
+    c.a locala = new c.a();
+    locala.otE = new eii();
+    locala.otF = new eij();
     locala.funcId = 819;
     locala.uri = "/cgi-bin/micromsg-bin/pstnsync";
-    locala.lBW = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.rr = locala.bgN();
+    this.rr = locala.bEF();
     long l = System.currentTimeMillis();
-    this.DRS = ((dpo)d.b.b(this.rr.lBR));
-    this.DRS.TWw = z.bcZ();
-    this.DRS.Svu = paramInt1;
-    this.DRS.Svv = paramLong1;
-    this.DRS.TVZ = l;
-    this.DRS.TWx = paramInt2;
-    this.DRS.TWc = paramLong2;
+    this.JJc = ((eii)c.b.b(this.rr.otB));
+    this.JJc.abnl = z.bAM();
+    this.JJc.Zvz = paramInt1;
+    this.JJc.ZvA = paramLong1;
+    this.JJc.abmO = l;
+    this.JJc.abnm = paramInt2;
+    this.JJc.abmR = paramLong2;
     if (!paramBoolean) {}
-    for (this.DRS.TWy = 0;; this.DRS.TWy = 1)
+    for (this.JJc.abnn = 0;; this.JJc.abnn = 1)
     {
-      Log.i("MicroMsg.NetSceneIPCallSync", "roomId: %d, roomKey: %d, syncKey: %d, callSeq: %d,dataFlag: %d, timestamp: %d", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(paramLong1), Integer.valueOf(paramInt2), Long.valueOf(paramLong2), Integer.valueOf(this.DRS.TWy), Long.valueOf(l) });
+      Log.i("MicroMsg.NetSceneIPCallSync", "roomId: %d, roomKey: %d, syncKey: %d, callSeq: %d,dataFlag: %d, timestamp: %d", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(paramLong1), Integer.valueOf(paramInt2), Long.valueOf(paramLong2), Integer.valueOf(this.JJc.abnn), Long.valueOf(l) });
       AppMethodBeat.o(25493);
       return;
     }
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(25494);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(25494);
     return i;
@@ -73,14 +73,14 @@ public final class o
   {
     AppMethodBeat.i(25495);
     Log.i("MicroMsg.NetSceneIPCallSync", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.DRT = ((dpp)d.c.b(((d)params).lBS));
+    this.JJd = ((eij)c.c.b(((c)params).otC));
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(25495);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.e.o
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.teenmode.ui;
 
-import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
@@ -14,61 +13,63 @@ import com.tencent.mm.plugin.teenmode.a.a;
 import com.tencent.mm.plugin.teenmode.a.d;
 import com.tencent.mm.plugin.teenmode.a.e;
 import com.tencent.mm.plugin.teenmode.a.g;
-import com.tencent.mm.plugin.teenmode.a.b;
-import com.tencent.mm.protocal.protobuf.eqz;
+import com.tencent.mm.plugin.teenmode.a.d;
+import com.tencent.mm.plugin.teenmode.b.j;
+import com.tencent.mm.protocal.protobuf.fmf;
+import com.tencent.mm.protocal.protobuf.gol;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 
 public class SettingsTeenModeMainMiniProgram
   extends MMActivity
 {
-  private WeImageView MtY;
-  private WeImageView MtZ;
-  private WeImageView Mua;
-  private LinearLayout Mub;
-  private int Muc = 0;
+  private WeImageView TaP;
+  private WeImageView TaQ;
+  private WeImageView TaR;
+  private LinearLayout TaS;
+  private int TaT = 0;
   
-  private void gkx()
+  private void hFa()
   {
-    AppMethodBeat.i(259514);
-    Log.d("MicroMsg.SettingsTeenModeMainMiniProgram", "doSaveConfig: %s", new Object[] { Integer.valueOf(this.Muc) });
-    com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vpa, Integer.valueOf(this.Muc));
-    AppMethodBeat.o(259514);
+    AppMethodBeat.i(279206);
+    Log.d("MicroMsg.SettingsTeenModeMainMiniProgram", "doSaveConfig: %s", new Object[] { Integer.valueOf(this.TaT) });
+    com.tencent.mm.kernel.h.baE().ban().set(at.a.acQw, Integer.valueOf(this.TaT));
+    AppMethodBeat.o(279206);
   }
   
   private void updateStatus()
   {
-    AppMethodBeat.i(259513);
-    TextView localTextView1 = (TextView)findViewById(a.d.Msw);
-    TextView localTextView2 = (TextView)findViewById(a.d.MsA);
-    TextView localTextView3 = (TextView)findViewById(a.d.Msy);
-    localTextView1.setContentDescription(getString(a.g.Mtr));
-    localTextView2.setContentDescription(getString(a.g.Mta));
-    localTextView3.setContentDescription(getString(a.g.Mtb));
-    this.MtY.setVisibility(8);
-    this.MtZ.setVisibility(8);
-    this.Mua.setVisibility(8);
-    this.Mub.setVisibility(4);
-    switch (this.Muc)
+    AppMethodBeat.i(279201);
+    TextView localTextView1 = (TextView)findViewById(a.d.SWc);
+    TextView localTextView2 = (TextView)findViewById(a.d.SWg);
+    TextView localTextView3 = (TextView)findViewById(a.d.SWe);
+    localTextView1.setContentDescription(getString(a.g.SXP));
+    localTextView2.setContentDescription(getString(a.g.SXw));
+    localTextView3.setContentDescription(getString(a.g.SXx));
+    this.TaP.setVisibility(8);
+    this.TaQ.setVisibility(8);
+    this.TaR.setVisibility(8);
+    this.TaS.setVisibility(4);
+    switch (this.TaT)
     {
     }
     for (;;)
     {
-      gkx();
-      AppMethodBeat.o(259513);
+      hFa();
+      AppMethodBeat.o(279201);
       return;
-      this.MtY.setVisibility(0);
-      localTextView1.setContentDescription(getString(a.g.Mtd) + getString(a.g.Mtr));
+      this.TaP.setVisibility(0);
+      localTextView1.setContentDescription(getString(a.g.SXz) + getString(a.g.SXP));
       continue;
-      this.MtZ.setVisibility(0);
-      this.Mub.setVisibility(0);
-      localTextView2.setContentDescription(getString(a.g.Mtd) + getString(a.g.Mta));
+      this.TaQ.setVisibility(0);
+      this.TaS.setVisibility(0);
+      localTextView2.setContentDescription(getString(a.g.SXz) + getString(a.g.SXw));
       continue;
-      this.Mua.setVisibility(0);
-      localTextView3.setContentDescription(getString(a.g.Mtd) + getString(a.g.Mtb));
+      this.TaR.setVisibility(0);
+      localTextView3.setContentDescription(getString(a.g.SXz) + getString(a.g.SXx));
     }
   }
   
@@ -79,47 +80,53 @@ public class SettingsTeenModeMainMiniProgram
   
   public int getLayoutId()
   {
-    return a.e.MsH;
+    return a.e.SWr;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(259509);
+    AppMethodBeat.i(279244);
     super.onCreate(paramBundle);
     setMMTitle("");
     hideActionbarLine();
     setActionbarColor(getResources().getColor(a.a.white));
-    this.MtY = ((WeImageView)findViewById(a.d.Msv));
-    this.MtZ = ((WeImageView)findViewById(a.d.Msz));
-    this.Mua = ((WeImageView)findViewById(a.d.Msx));
-    this.Mub = ((LinearLayout)findViewById(a.d.Msc));
-    this.Muc = ((b)com.tencent.mm.kernel.h.ae(b.class)).gks();
+    this.TaP = ((WeImageView)findViewById(a.d.SWb));
+    this.TaQ = ((WeImageView)findViewById(a.d.SWf));
+    this.TaR = ((WeImageView)findViewById(a.d.SWd));
+    this.TaS = ((LinearLayout)findViewById(a.d.SVB));
+    this.TaT = ((d)com.tencent.mm.kernel.h.ax(d.class)).hEr();
     updateStatus();
-    ((View)this.MtY.getParent()).setOnClickListener(new SettingsTeenModeMainMiniProgram.1(this));
-    ((View)this.MtZ.getParent()).setOnClickListener(new SettingsTeenModeMainMiniProgram.2(this));
-    ((View)this.Mua.getParent()).setOnClickListener(new SettingsTeenModeMainMiniProgram.3(this));
-    this.Mub.setOnClickListener(new SettingsTeenModeMainMiniProgram.4(this));
+    ((View)this.TaP.getParent()).setOnClickListener(new SettingsTeenModeMainMiniProgram.1(this));
+    ((View)this.TaQ.getParent()).setOnClickListener(new SettingsTeenModeMainMiniProgram.2(this));
+    ((View)this.TaR.getParent()).setOnClickListener(new SettingsTeenModeMainMiniProgram.3(this));
+    this.TaS.setOnClickListener(new SettingsTeenModeMainMiniProgram.4(this));
     setBackBtn(new SettingsTeenModeMainMiniProgram.5(this));
-    AppMethodBeat.o(259509);
+    AppMethodBeat.o(279244);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(259511);
-    Log.d("MicroMsg.SettingsTeenModeMainMiniProgram", "doOPLog: %s", new Object[] { Integer.valueOf(this.Muc) });
-    eqz localeqz = new eqz();
-    localeqz.Utn = this.Muc;
-    ((n)com.tencent.mm.kernel.h.ae(n.class)).eRY().b(new k.a(225, localeqz));
-    ((b)com.tencent.mm.kernel.h.ae(b.class)).gkt();
+    AppMethodBeat.i(279261);
+    Log.d("MicroMsg.SettingsTeenModeMainMiniProgram", "doOPLog: %s", new Object[] { Integer.valueOf(this.TaT) });
+    fmf localfmf = new fmf();
+    localfmf.abMB = this.TaT;
+    if (j.hEy().hFb != null)
+    {
+      localfmf.aajK = new gol();
+      localfmf.aajK.df(j.hEy().hFb.getBytes());
+    }
+    localfmf.aajL = j.hEy().qfP;
+    ((n)com.tencent.mm.kernel.h.ax(n.class)).gaT().b(new k.a(225, localfmf));
+    ((d)com.tencent.mm.kernel.h.ax(d.class)).hEs();
     super.onDestroy();
-    AppMethodBeat.o(259511);
+    AppMethodBeat.o(279261);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(259510);
+    AppMethodBeat.i(279250);
     super.onPause();
-    AppMethodBeat.o(259510);
+    AppMethodBeat.o(279250);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -130,7 +137,7 @@ public class SettingsTeenModeMainMiniProgram
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.teenmode.ui.SettingsTeenModeMainMiniProgram
  * JD-Core Version:    0.7.0.1
  */

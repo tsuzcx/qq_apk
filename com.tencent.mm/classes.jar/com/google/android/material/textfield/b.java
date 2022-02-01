@@ -16,8 +16,8 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import androidx.core.g.w;
-import androidx.core.widget.i;
+import androidx.core.g.z;
+import androidx.core.widget.j;
 import androidx.legacy.widget.Space;
 import com.google.android.material.a.d;
 import com.google.android.material.a.a;
@@ -27,64 +27,64 @@ import java.util.List;
 
 final class b
 {
-  final TextInputLayout bGa;
-  private LinearLayout bGb;
-  private int bGc;
-  private FrameLayout bGd;
-  private int bGe;
-  Animator bGf;
-  private final float bGg;
-  int bGh;
-  int bGi;
-  CharSequence bGj;
-  boolean bGk;
-  TextView bGl;
-  CharSequence bGm;
-  boolean bGn;
-  TextView bGo;
-  Typeface bGp;
+  Typeface bbO;
   final Context context;
+  final TextInputLayout dza;
+  private LinearLayout dzb;
+  private int dzc;
+  private FrameLayout dzd;
+  private int dze;
+  Animator dzf;
+  private final float dzg;
+  int dzh;
+  int dzi;
+  CharSequence dzj;
+  boolean dzk;
+  TextView dzl;
+  CharSequence dzm;
+  boolean dzn;
+  TextView dzo;
   int errorTextAppearance;
   int helperTextTextAppearance;
   
   public b(TextInputLayout paramTextInputLayout)
   {
-    AppMethodBeat.i(240142);
+    AppMethodBeat.i(209710);
     this.context = paramTextInputLayout.getContext();
-    this.bGa = paramTextInputLayout;
-    this.bGg = this.context.getResources().getDimensionPixelSize(a.d.design_textinput_caption_translate_y);
-    AppMethodBeat.o(240142);
+    this.dza = paramTextInputLayout;
+    this.dzg = this.context.getResources().getDimensionPixelSize(a.d.design_textinput_caption_translate_y);
+    AppMethodBeat.o(209710);
   }
   
   private static ObjectAnimator a(TextView paramTextView, boolean paramBoolean)
   {
-    AppMethodBeat.i(240161);
+    AppMethodBeat.i(209754);
     if (paramBoolean) {}
     for (float f = 1.0F;; f = 0.0F)
     {
       paramTextView = ObjectAnimator.ofFloat(paramTextView, View.ALPHA, new float[] { f });
       paramTextView.setDuration(167L);
-      paramTextView.setInterpolator(a.bum);
-      AppMethodBeat.o(240161);
+      paramTextView.setInterpolator(a.dnq);
+      AppMethodBeat.o(209754);
       return paramTextView;
     }
   }
   
   static void a(TextView paramTextView, Typeface paramTypeface)
   {
-    AppMethodBeat.i(240180);
+    AppMethodBeat.i(209800);
     if (paramTextView != null) {
       paramTextView.setTypeface(paramTypeface);
     }
-    AppMethodBeat.o(240180);
+    AppMethodBeat.o(209800);
   }
   
   private void a(List<Animator> paramList, boolean paramBoolean, TextView paramTextView, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(240158);
+    AppMethodBeat.i(209741);
     if ((paramTextView == null) || (!paramBoolean))
     {
-      AppMethodBeat.o(240158);
+      AppMethodBeat.o(209741);
       return;
     }
     if ((paramInt1 == paramInt3) || (paramInt1 == paramInt2)) {
@@ -97,25 +97,25 @@ final class b
     {
       paramList.add(a(paramTextView, paramBoolean));
       if (paramInt3 == paramInt1) {
-        paramList.add(f(paramTextView));
+        paramList.add(g(paramTextView));
       }
-      AppMethodBeat.o(240158);
+      AppMethodBeat.o(209741);
       return;
     }
   }
   
-  private void bG(int paramInt1, int paramInt2)
+  private void cB(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(240154);
+    AppMethodBeat.i(209720);
     if (paramInt1 == paramInt2)
     {
-      AppMethodBeat.o(240154);
+      AppMethodBeat.o(209720);
       return;
     }
     TextView localTextView;
     if (paramInt2 != 0)
     {
-      localTextView = gm(paramInt2);
+      localTextView = jy(paramInt2);
       if (localTextView != null)
       {
         localTextView.setVisibility(0);
@@ -124,7 +124,7 @@ final class b
     }
     if (paramInt1 != 0)
     {
-      localTextView = gm(paramInt1);
+      localTextView = jy(paramInt1);
       if (localTextView != null)
       {
         localTextView.setVisibility(4);
@@ -133,268 +133,268 @@ final class b
         }
       }
     }
-    this.bGh = paramInt2;
-    AppMethodBeat.o(240154);
+    this.dzh = paramInt2;
+    AppMethodBeat.o(209720);
   }
   
   private static void d(ViewGroup paramViewGroup, int paramInt)
   {
-    AppMethodBeat.i(240177);
+    AppMethodBeat.i(209788);
     if (paramInt == 0) {
       paramViewGroup.setVisibility(8);
     }
-    AppMethodBeat.o(240177);
+    AppMethodBeat.o(209788);
   }
   
-  private ObjectAnimator f(TextView paramTextView)
+  private ObjectAnimator g(TextView paramTextView)
   {
-    AppMethodBeat.i(240164);
-    paramTextView = ObjectAnimator.ofFloat(paramTextView, View.TRANSLATION_Y, new float[] { -this.bGg, 0.0F });
+    AppMethodBeat.i(209763);
+    paramTextView = ObjectAnimator.ofFloat(paramTextView, View.TRANSLATION_Y, new float[] { -this.dzg, 0.0F });
     paramTextView.setDuration(217L);
-    paramTextView.setInterpolator(a.bup);
-    AppMethodBeat.o(240164);
+    paramTextView.setInterpolator(a.dnt);
+    AppMethodBeat.o(209763);
     return paramTextView;
   }
   
-  private static boolean gl(int paramInt)
+  private static boolean jx(int paramInt)
   {
     return (paramInt == 0) || (paramInt == 1);
   }
   
-  private TextView gm(int paramInt)
+  private TextView jy(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     case 1: 
-      return this.bGl;
+      return this.dzl;
     }
-    return this.bGo;
+    return this.dzo;
+  }
+  
+  final void Xh()
+  {
+    AppMethodBeat.i(209809);
+    this.dzj = null;
+    Xi();
+    if (this.dzh == 1) {
+      if ((!this.dzn) || (TextUtils.isEmpty(this.dzm))) {
+        break label71;
+      }
+    }
+    label71:
+    for (this.dzi = 2;; this.dzi = 0)
+    {
+      i(this.dzh, this.dzi, b(this.dzl, null));
+      AppMethodBeat.o(209809);
+      return;
+    }
+  }
+  
+  final void Xi()
+  {
+    AppMethodBeat.i(209832);
+    if (this.dzf != null) {
+      this.dzf.cancel();
+    }
+    AppMethodBeat.o(209832);
+  }
+  
+  final void Xj()
+  {
+    AppMethodBeat.i(209842);
+    if ((this.dzb != null) && (this.dza.getEditText() != null)) {}
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        z.g(this.dzb, z.X(this.dza.getEditText()), 0, z.Y(this.dza.getEditText()), 0);
+      }
+      AppMethodBeat.o(209842);
+      return;
+    }
+  }
+  
+  final boolean Xk()
+  {
+    AppMethodBeat.i(209863);
+    if ((this.dzi == 1) && (this.dzl != null) && (!TextUtils.isEmpty(this.dzj)))
+    {
+      AppMethodBeat.o(209863);
+      return true;
+    }
+    AppMethodBeat.o(209863);
+    return false;
+  }
+  
+  final int Xl()
+  {
+    AppMethodBeat.i(209869);
+    if (this.dzl != null)
+    {
+      int i = this.dzl.getCurrentTextColor();
+      AppMethodBeat.o(209869);
+      return i;
+    }
+    AppMethodBeat.o(209869);
+    return -1;
+  }
+  
+  final ColorStateList Xm()
+  {
+    AppMethodBeat.i(209875);
+    if (this.dzl != null)
+    {
+      ColorStateList localColorStateList = this.dzl.getTextColors();
+      AppMethodBeat.o(209875);
+      return localColorStateList;
+    }
+    AppMethodBeat.o(209875);
+    return null;
   }
   
   final boolean b(TextView paramTextView, CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(240148);
-    if ((w.ah(this.bGa)) && (this.bGa.isEnabled()) && ((this.bGi != this.bGh) || (paramTextView == null) || (!TextUtils.equals(paramTextView.getText(), paramCharSequence))))
+    AppMethodBeat.i(209817);
+    if ((z.au(this.dza)) && (this.dza.isEnabled()) && ((this.dzi != this.dzh) || (paramTextView == null) || (!TextUtils.equals(paramTextView.getText(), paramCharSequence))))
     {
-      AppMethodBeat.o(240148);
+      AppMethodBeat.o(209817);
       return true;
     }
-    AppMethodBeat.o(240148);
+    AppMethodBeat.o(209817);
     return false;
-  }
-  
-  final void e(TextView paramTextView, int paramInt)
-  {
-    AppMethodBeat.i(240172);
-    if ((this.bGb == null) && (this.bGd == null))
-    {
-      this.bGb = new LinearLayout(this.context);
-      this.bGb.setOrientation(0);
-      this.bGa.addView(this.bGb, -1, -2);
-      this.bGd = new FrameLayout(this.context);
-      this.bGb.addView(this.bGd, -1, new FrameLayout.LayoutParams(-2, -2));
-      Space localSpace = new Space(this.context);
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, 0, 1.0F);
-      this.bGb.addView(localSpace, localLayoutParams);
-      if (this.bGa.getEditText() != null) {
-        xM();
-      }
-    }
-    if (gl(paramInt))
-    {
-      this.bGd.setVisibility(0);
-      this.bGd.addView(paramTextView);
-      this.bGe += 1;
-    }
-    for (;;)
-    {
-      this.bGb.setVisibility(0);
-      this.bGc += 1;
-      AppMethodBeat.o(240172);
-      return;
-      this.bGb.addView(paramTextView, paramInt);
-    }
   }
   
   final void f(TextView paramTextView, int paramInt)
   {
-    AppMethodBeat.i(240174);
-    if (this.bGb == null)
+    AppMethodBeat.i(209849);
+    if ((this.dzb == null) && (this.dzd == null))
     {
-      AppMethodBeat.o(240174);
-      return;
+      this.dzb = new LinearLayout(this.context);
+      this.dzb.setOrientation(0);
+      this.dza.addView(this.dzb, -1, -2);
+      this.dzd = new FrameLayout(this.context);
+      this.dzb.addView(this.dzd, -1, new FrameLayout.LayoutParams(-2, -2));
+      Space localSpace = new Space(this.context);
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, 0, 1.0F);
+      this.dzb.addView(localSpace, localLayoutParams);
+      if (this.dza.getEditText() != null) {
+        Xj();
+      }
     }
-    if ((gl(paramInt)) && (this.bGd != null))
+    if (jx(paramInt))
     {
-      this.bGe -= 1;
-      d(this.bGd, this.bGe);
-      this.bGd.removeView(paramTextView);
+      this.dzd.setVisibility(0);
+      this.dzd.addView(paramTextView);
+      this.dze += 1;
     }
     for (;;)
     {
-      this.bGc -= 1;
-      d(this.bGb, this.bGc);
-      AppMethodBeat.o(240174);
+      this.dzb.setVisibility(0);
+      this.dzc += 1;
+      AppMethodBeat.o(209849);
       return;
-      this.bGb.removeView(paramTextView);
+      this.dzb.addView(paramTextView, paramInt);
     }
   }
   
-  final void g(final int paramInt1, final int paramInt2, boolean paramBoolean)
+  final void g(TextView paramTextView, int paramInt)
   {
-    AppMethodBeat.i(240152);
+    AppMethodBeat.i(209857);
+    if (this.dzb == null)
+    {
+      AppMethodBeat.o(209857);
+      return;
+    }
+    if ((jx(paramInt)) && (this.dzd != null))
+    {
+      this.dze -= 1;
+      d(this.dzd, this.dze);
+      this.dzd.removeView(paramTextView);
+    }
+    for (;;)
+    {
+      this.dzc -= 1;
+      d(this.dzb, this.dzc);
+      AppMethodBeat.o(209857);
+      return;
+      this.dzb.removeView(paramTextView);
+    }
+  }
+  
+  final void i(final int paramInt1, final int paramInt2, boolean paramBoolean)
+  {
+    AppMethodBeat.i(209828);
     if (paramBoolean)
     {
       AnimatorSet localAnimatorSet = new AnimatorSet();
-      this.bGf = localAnimatorSet;
+      this.dzf = localAnimatorSet;
       ArrayList localArrayList = new ArrayList();
-      a(localArrayList, this.bGn, this.bGo, 2, paramInt1, paramInt2);
-      a(localArrayList, this.bGk, this.bGl, 1, paramInt1, paramInt2);
+      a(localArrayList, this.dzn, this.dzo, 2, paramInt1, paramInt2);
+      a(localArrayList, this.dzk, this.dzl, 1, paramInt1, paramInt2);
       com.google.android.material.a.b.a(localAnimatorSet, localArrayList);
       localAnimatorSet.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
-          AppMethodBeat.i(240130);
-          b.this.bGh = paramInt2;
-          b.this.bGf = null;
-          if (this.bGr != null)
+          AppMethodBeat.i(209732);
+          b.this.dzh = paramInt2;
+          b.this.dzf = null;
+          if (this.dzq != null)
           {
-            this.bGr.setVisibility(4);
-            if ((paramInt1 == 1) && (b.this.bGl != null)) {
-              b.this.bGl.setText(null);
+            this.dzq.setVisibility(4);
+            if ((paramInt1 == 1) && (b.this.dzl != null)) {
+              b.this.dzl.setText(null);
             }
           }
-          AppMethodBeat.o(240130);
+          AppMethodBeat.o(209732);
         }
         
         public final void onAnimationStart(Animator paramAnonymousAnimator)
         {
-          AppMethodBeat.i(240132);
-          if (this.bGt != null) {
-            this.bGt.setVisibility(0);
+          AppMethodBeat.i(209744);
+          if (this.dzs != null) {
+            this.dzs.setVisibility(0);
           }
-          AppMethodBeat.o(240132);
+          AppMethodBeat.o(209744);
         }
       });
       localAnimatorSet.start();
     }
     for (;;)
     {
-      this.bGa.xZ();
-      this.bGa.i(paramBoolean, false);
-      this.bGa.yi();
-      AppMethodBeat.o(240152);
+      this.dza.Xw();
+      this.dza.k(paramBoolean, false);
+      this.dza.XF();
+      AppMethodBeat.o(209828);
       return;
-      bG(paramInt1, paramInt2);
+      cB(paramInt1, paramInt2);
     }
   }
   
-  final void gn(int paramInt)
+  final void jz(int paramInt)
   {
-    AppMethodBeat.i(240190);
+    AppMethodBeat.i(209885);
     this.helperTextTextAppearance = paramInt;
-    if (this.bGo != null) {
-      i.a(this.bGo, paramInt);
+    if (this.dzo != null) {
+      j.a(this.dzo, paramInt);
     }
-    AppMethodBeat.o(240190);
+    AppMethodBeat.o(209885);
   }
   
   final void setErrorTextAppearance(int paramInt)
   {
-    AppMethodBeat.i(240188);
+    AppMethodBeat.i(209881);
     this.errorTextAppearance = paramInt;
-    if (this.bGl != null) {
-      this.bGa.g(this.bGl, paramInt);
+    if (this.dzl != null) {
+      this.dza.h(this.dzl, paramInt);
     }
-    AppMethodBeat.o(240188);
-  }
-  
-  final void xK()
-  {
-    AppMethodBeat.i(240144);
-    this.bGj = null;
-    xL();
-    if (this.bGh == 1) {
-      if ((!this.bGn) || (TextUtils.isEmpty(this.bGm))) {
-        break label73;
-      }
-    }
-    label73:
-    for (this.bGi = 2;; this.bGi = 0)
-    {
-      g(this.bGh, this.bGi, b(this.bGl, null));
-      AppMethodBeat.o(240144);
-      return;
-    }
-  }
-  
-  final void xL()
-  {
-    AppMethodBeat.i(240165);
-    if (this.bGf != null) {
-      this.bGf.cancel();
-    }
-    AppMethodBeat.o(240165);
-  }
-  
-  final void xM()
-  {
-    AppMethodBeat.i(240169);
-    if ((this.bGb != null) && (this.bGa.getEditText() != null)) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        w.g(this.bGb, w.L(this.bGa.getEditText()), 0, w.M(this.bGa.getEditText()), 0);
-      }
-      AppMethodBeat.o(240169);
-      return;
-    }
-  }
-  
-  final boolean xN()
-  {
-    AppMethodBeat.i(240179);
-    if ((this.bGi == 1) && (this.bGl != null) && (!TextUtils.isEmpty(this.bGj)))
-    {
-      AppMethodBeat.o(240179);
-      return true;
-    }
-    AppMethodBeat.o(240179);
-    return false;
-  }
-  
-  final int xO()
-  {
-    AppMethodBeat.i(240182);
-    if (this.bGl != null)
-    {
-      int i = this.bGl.getCurrentTextColor();
-      AppMethodBeat.o(240182);
-      return i;
-    }
-    AppMethodBeat.o(240182);
-    return -1;
-  }
-  
-  final ColorStateList xP()
-  {
-    AppMethodBeat.i(240184);
-    if (this.bGl != null)
-    {
-      ColorStateList localColorStateList = this.bGl.getTextColors();
-      AppMethodBeat.o(240184);
-      return localColorStateList;
-    }
-    AppMethodBeat.o(240184);
-    return null;
+    AppMethodBeat.o(209881);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.textfield.b
  * JD-Core Version:    0.7.0.1
  */

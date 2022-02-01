@@ -5,14 +5,14 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 import kotlin.g.a.b;
-import kotlin.l;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/view/InterceptRelativeLayout;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "beforeDispatchTouchEvent", "Lkotlin/Function1;", "Landroid/view/MotionEvent;", "Lkotlin/ParameterName;", "name", "ev", "", "getBeforeDispatchTouchEvent", "()Lkotlin/jvm/functions/Function1;", "setBeforeDispatchTouchEvent", "(Lkotlin/jvm/functions/Function1;)V", "onInterceptTouchEvent", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/view/InterceptRelativeLayout;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "beforeDispatchTouchEvent", "Lkotlin/Function1;", "Landroid/view/MotionEvent;", "Lkotlin/ParameterName;", "name", "ev", "", "getBeforeDispatchTouchEvent", "()Lkotlin/jvm/functions/Function1;", "setBeforeDispatchTouchEvent", "(Lkotlin/jvm/functions/Function1;)V", "onInterceptTouchEvent", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class InterceptRelativeLayout
   extends RelativeLayout
 {
-  private b<? super MotionEvent, Boolean> Gnk;
+  private b<? super MotionEvent, Boolean> Mhn;
   
   public InterceptRelativeLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,30 +26,32 @@ public final class InterceptRelativeLayout
   
   public final b<MotionEvent, Boolean> getBeforeDispatchTouchEvent()
   {
-    return this.Gnk;
+    return this.Mhn;
   }
   
   public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(229368);
-    b localb = this.Gnk;
-    if (localb != null)
+    AppMethodBeat.i(286985);
+    b localb = this.Mhn;
+    if (localb == null)
     {
-      paramMotionEvent = (Boolean)localb.invoke(paramMotionEvent);
-      if (paramMotionEvent != null)
-      {
-        boolean bool = paramMotionEvent.booleanValue();
-        AppMethodBeat.o(229368);
-        return bool;
-      }
+      AppMethodBeat.o(286985);
+      return false;
     }
-    AppMethodBeat.o(229368);
-    return false;
+    paramMotionEvent = (Boolean)localb.invoke(paramMotionEvent);
+    if (paramMotionEvent == null)
+    {
+      AppMethodBeat.o(286985);
+      return false;
+    }
+    boolean bool = paramMotionEvent.booleanValue();
+    AppMethodBeat.o(286985);
+    return bool;
   }
   
   public final void setBeforeDispatchTouchEvent(b<? super MotionEvent, Boolean> paramb)
   {
-    this.Gnk = paramb;
+    this.Mhn = paramb;
   }
 }
 

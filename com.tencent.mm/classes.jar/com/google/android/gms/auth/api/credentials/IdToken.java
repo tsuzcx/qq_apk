@@ -7,23 +7,14 @@ import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.internal.ReflectedParcelable;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SafeParcelable.Class(creator="IdTokenCreator")
-@SafeParcelable.Reserved({1000})
 public final class IdToken
   extends AbstractSafeParcelable
   implements ReflectedParcelable
 {
   public static final Parcelable.Creator<IdToken> CREATOR;
-  @SafeParcelable.Field(getter="getAccountType", id=1)
   private final String zzbx;
-  @SafeParcelable.Field(getter="getIdToken", id=2)
   private final String zzdf;
   
   static
@@ -33,8 +24,7 @@ public final class IdToken
     AppMethodBeat.o(88248);
   }
   
-  @SafeParcelable.Constructor
-  public IdToken(@SafeParcelable.Param(id=1) String paramString1, @SafeParcelable.Param(id=2) String paramString2)
+  public IdToken(String paramString1, String paramString2)
   {
     AppMethodBeat.i(88246);
     if (!TextUtils.isEmpty(paramString1))
@@ -80,7 +70,7 @@ public final class IdToken
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.credentials.IdToken
  * JD-Core Version:    0.7.0.1
  */

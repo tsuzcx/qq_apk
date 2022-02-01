@@ -5,13 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import com.google.android.gms.common.internal.Preconditions;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class zzfp
   extends BroadcastReceiver
 {
-  @VisibleForTesting
   private static final String zzaaw;
   private boolean zzaax;
   private boolean zzaay;
@@ -100,7 +98,7 @@ class zzfp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzfp
  * JD-Core Version:    0.7.0.1
  */

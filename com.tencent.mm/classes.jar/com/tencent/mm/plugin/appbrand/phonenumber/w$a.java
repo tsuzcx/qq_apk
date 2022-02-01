@@ -2,22 +2,22 @@ package com.tencent.mm.plugin.appbrand.phonenumber;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.m;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "Landroid/content/Intent;", "invoke", "(Ljava/lang/Integer;Landroid/content/Intent;)V"})
+@Metadata(d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "Landroid/content/Intent;"}, k=3, mv={1, 5, 1}, xi=48)
 final class w$a
-  extends q
-  implements m<Integer, Intent, x>
+  extends u
+  implements m<Integer, Intent, ah>
 {
-  public static final a qCC;
+  public static final a tHA;
   
   static
   {
     AppMethodBeat.i(148136);
-    qCC = new a();
+    tHA = new a();
     AppMethodBeat.o(148136);
   }
   

@@ -15,7 +15,7 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class CdnImageIconPreference
   extends IconPreference
 {
-  private CdnImageView EPf;
+  private CdnImageView KJD;
   String iconUrl;
   
   public CdnImageIconPreference(Context paramContext)
@@ -37,12 +37,12 @@ public class CdnImageIconPreference
   {
     AppMethodBeat.i(66029);
     super.onBindView(paramView);
-    this.EPf = ((CdnImageView)paramView.findViewById(a.f.image_iv));
+    this.KJD = ((CdnImageView)paramView.findViewById(a.f.image_iv));
     if (!Util.isNullOrNil(this.iconUrl))
     {
-      this.EPf.setUseSdcardCache(true);
-      this.EPf.setUrl(this.iconUrl);
-      this.EPf.setVisibility(0);
+      this.KJD.setUseSdcardCache(true);
+      this.KJD.setUrl(this.iconUrl);
+      this.KJD.setVisibility(0);
     }
     AppMethodBeat.o(66029);
   }
@@ -60,7 +60,7 @@ public class CdnImageIconPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.ui.CdnImageIconPreference
  * JD-Core Version:    0.7.0.1
  */

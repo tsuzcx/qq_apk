@@ -145,11 +145,11 @@ public final class SettingsCfg
     this.type = paramJceInputStream.read(this.type, 0, true);
     if (cache_cfg == null)
     {
-      byte[] arrayOfByte = (byte[])new byte[1];
+      byte[] arrayOfByte = new byte[1];
       cache_cfg = arrayOfByte;
-      ((byte[])arrayOfByte)[0] = 0;
+      arrayOfByte[0] = 0;
     }
-    this.cfg = ((byte[])paramJceInputStream.read(cache_cfg, 1, true));
+    this.cfg = paramJceInputStream.read(cache_cfg, 1, true);
     this.revision = paramJceInputStream.read(this.revision, 2, false);
     AppMethodBeat.o(102376);
   }
@@ -180,7 +180,7 @@ public final class SettingsCfg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.protocol.jce.SettingsCfg
  * JD-Core Version:    0.7.0.1
  */

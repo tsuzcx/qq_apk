@@ -6,16 +6,16 @@ import java.util.Map;
 public abstract class AbstractFileSystem
   implements FileSystem
 {
-  private volatile o YBi = o.YEk;
+  private volatile s agvF = s.agzG;
   
-  public final void a(String paramString, o.a parama)
+  public final void a(String paramString, s.a parama)
   {
     if (parama == null)
     {
-      this.YBi = o.YEk;
+      this.agvF = s.agzG;
       return;
     }
-    this.YBi = new o(this, paramString, parama);
+    this.agvF = new s(this, paramString, parama);
   }
   
   public int describeContents()
@@ -23,15 +23,15 @@ public abstract class AbstractFileSystem
     return 0;
   }
   
-  protected final void k(int paramInt, Object... paramVarArgs)
+  protected final void l(int paramInt, Object... paramVarArgs)
   {
     if (paramVarArgs.length == 0) {}
     Object localObject1;
     for (paramVarArgs = null;; paramVarArgs = (Object[])localObject1)
     {
-      localObject1 = this.YBi;
-      if (((o)localObject1).YEj != null) {
-        ((o)localObject1).YEj.a(((o)localObject1).jsP, ((o)localObject1).YEi, paramInt, paramVarArgs);
+      localObject1 = this.agvF;
+      if (((s)localObject1).agzF != null) {
+        ((s)localObject1).agzF.a(((s)localObject1).lWh, ((s)localObject1).agzE, paramInt, paramVarArgs);
       }
       return;
       localObject1 = new HashMap(paramVarArgs.length / 2);
@@ -52,7 +52,7 @@ public abstract class AbstractFileSystem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.vfs.AbstractFileSystem
  * JD-Core Version:    0.7.0.1
  */

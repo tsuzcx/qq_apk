@@ -1,47 +1,85 @@
 package com.tencent.mm.plugin.shake.c.a;
 
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.p.b;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.ctf;
+import com.tencent.mm.protocal.protobuf.ctg;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
+  extends p
+  implements m
 {
-  int JmX;
-  long JmY;
-  String JmZ;
-  public float iQD;
-  public float iQE;
-  Map<String, Object> tmX;
+  private String PBo;
+  private h callback;
+  public com.tencent.mm.am.c rr;
+  private int scene;
   
-  public c()
+  public c(String paramString, int paramInt)
   {
-    AppMethodBeat.i(28188);
-    this.tmX = new HashMap();
-    this.JmX = 0;
-    this.JmY = 0L;
-    this.iQD = -85.0F;
-    this.iQE = -1000.0F;
-    this.JmZ = "";
-    this.tmX.clear();
-    AppMethodBeat.o(28188);
+    this.PBo = paramString;
+    this.scene = paramInt;
   }
   
-  public final void r(String paramString, Object paramObject)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(28189);
-    if (TextUtils.isEmpty(paramString))
+    AppMethodBeat.i(28274);
+    this.callback = paramh;
+    paramh = new c.a();
+    paramh.otE = new ctf();
+    paramh.otF = new ctg();
+    paramh.uri = "/cgi-bin/micromsg-bin/gettvinfo";
+    paramh.funcId = 552;
+    paramh.otG = 0;
+    paramh.respCmdId = 0;
+    this.rr = paramh.bEF();
+    paramh = (ctf)c.b.b(this.rr.otB);
+    paramh.aazg = this.PBo;
+    paramh.IJG = this.scene;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(28274);
+    return i;
+  }
+  
+  public final int getType()
+  {
+    return 552;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(28276);
+    Log.d("MicroMsg.scanner.NetSceneGetTVInfo", "onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " errMsg:" + paramString);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(28276);
+  }
+  
+  public final p.b securityVerificationChecked(s params)
+  {
+    AppMethodBeat.i(28275);
+    params = (ctf)c.b.b(((com.tencent.mm.am.c)params).otB);
+    if ((params.IJG < 0) || (params.aazg == null) || (params.aazg.length() <= 0))
     {
-      AppMethodBeat.o(28189);
-      return;
+      Log.e("MicroMsg.scanner.NetSceneGetTVInfo", "ERR: Security Check Failed, Scene = %s", new Object[] { Integer.valueOf(params.IJG) });
+      params = p.b.oui;
+      AppMethodBeat.o(28275);
+      return params;
     }
-    this.tmX.put(paramString, paramObject);
-    AppMethodBeat.o(28189);
+    params = p.b.ouh;
+    AppMethodBeat.o(28275);
+    return params;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.c.a.c
  * JD-Core Version:    0.7.0.1
  */

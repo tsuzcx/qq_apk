@@ -16,13 +16,13 @@ final class LoginIndepPass$12
   {
     AppMethodBeat.i(128156);
     b localb = new b();
-    localb.bn(paramView);
-    localb.sg(paramInt);
-    localb.bn(paramKeyEvent);
-    a.c("com/tencent/mm/plugin/account/ui/LoginIndepPass$5", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.aFi());
+    localb.cH(paramView);
+    localb.sc(paramInt);
+    localb.cH(paramKeyEvent);
+    a.c("com/tencent/mm/plugin/account/ui/LoginIndepPass$5", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.aYj());
     if ((66 == paramInt) && (paramKeyEvent.getAction() == 0))
     {
-      LoginIndepPass.a(this.nes);
+      LoginIndepPass.a(this.qbg);
       a.a(true, this, "com/tencent/mm/plugin/account/ui/LoginIndepPass$5", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
       AppMethodBeat.o(128156);
       return true;

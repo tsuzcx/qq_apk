@@ -1,48 +1,48 @@
 package com.tencent.mm.plugin.scanner.b.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.cd.b;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.ox;
-import com.tencent.mm.protocal.protobuf.oy;
+import com.tencent.mm.protocal.protobuf.qg;
+import com.tencent.mm.protocal.protobuf.qh;
 
 public final class a
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  public String fLj;
-  public d rr;
+  private h callback;
+  public String hQR;
+  public c rr;
   
   public a(String paramString, byte[] paramArrayOfByte, int paramInt)
   {
     AppMethodBeat.i(118333);
-    this.fLj = paramString;
-    d.a locala = new d.a();
+    this.hQR = paramString;
+    c.a locala = new c.a();
     locala.funcId = getType();
-    ox localox = new ox();
-    localox.RSg = new b(paramArrayOfByte);
-    localox.RSh = paramString;
-    localox.RXj = 3;
-    localox.source = 101;
-    localox.ROx = paramInt;
-    locala.lBU = localox;
+    qg localqg = new qg();
+    localqg.YPG = new b(paramArrayOfByte);
+    localqg.YPH = paramString;
+    localqg.YVb = 3;
+    localqg.source = 101;
+    localqg.YLL = paramInt;
+    locala.otE = localqg;
     locala.uri = "/cgi-bin/mmpay-bin/ocrgetbankcardinfo";
-    locala.lBV = new oy();
-    this.rr = locala.bgN();
+    locala.otF = new qh();
+    this.rr = locala.bEF();
     AppMethodBeat.o(118333);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(118335);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(118335);
     return i;

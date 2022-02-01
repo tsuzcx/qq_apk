@@ -1,70 +1,70 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.exc;
-import com.tencent.mm.protocal.protobuf.exd;
+import com.tencent.mm.protocal.protobuf.etb;
+import com.tencent.mm.protocal.protobuf.etc;
+import com.tencent.mm.protocal.protobuf.etd;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class w
-  extends q
+  extends p
   implements m
 {
-  private i callback;
+  private h callback;
   private String errMsg;
-  public String fHp;
-  public exd iWF;
-  private final d rr;
+  private etc lyI;
+  private final c rr;
   
-  public w(String paramString1, String paramString2, int paramInt)
+  public w(String paramString1, String paramString2, String paramString3, etd parametd)
   {
-    AppMethodBeat.i(186540);
-    Log.i("MicroMsg.NetSceneUpgradeAssociateChatRoom", "NetSceneUpgradeAssociateChatRoom roomname:%s", new Object[] { Util.nullAs(paramString1, "") });
-    Object localObject = new d.a();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/upgradeassociatechatroom";
-    ((d.a)localObject).funcId = 3927;
-    ((d.a)localObject).lBU = new exc();
-    ((d.a)localObject).lBV = new exd();
-    this.rr = ((d.a)localObject).bgN();
-    this.fHp = paramString1;
-    localObject = (exc)d.b.b(this.rr.lBR);
-    ((exc)localObject).fHp = paramString1;
-    ((exc)localObject).fAo = paramString2;
-    ((exc)localObject).scene = paramInt;
-    AppMethodBeat.o(186540);
+    AppMethodBeat.i(182091);
+    Log.i("MicroMsg.roomTodo.NetSceneRoomToolsReplyTodo", "NetSceneRoomToolsReplyTodo chatRoomName:%s creator:%s", new Object[] { Util.nullAs(paramString1, ""), Util.nullAs(paramString2, ""), Util.nullAs(paramString3, ""), ab.a(parametd) });
+    Object localObject = new c.a();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/roomtoolsreplytodo";
+    ((c.a)localObject).funcId = 3854;
+    ((c.a)localObject).otE = new etb();
+    ((c.a)localObject).otF = new etc();
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (etb)c.b.b(this.rr.otB);
+    ((etb)localObject).YFk = Util.nullAs(paramString1, "");
+    ((etb)localObject).abws = paramString2;
+    ((etb)localObject).abwt = paramString3;
+    ((etb)localObject).abwr = parametd;
+    AppMethodBeat.o(182091);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(182095);
-    this.callback = parami;
-    this.iWF = ((exd)d.c.b(this.rr.lBS));
+    AppMethodBeat.i(182092);
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(182095);
+    AppMethodBeat.o(182092);
     return i;
   }
   
   public final int getType()
   {
-    return 3927;
+    return 3854;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(182096);
-    Log.d("MicroMsg.NetSceneUpgradeAssociateChatRoom", "onGYNetEnd:[%d,%d,%s]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(182093);
+    Log.d("MicroMsg.roomTodo.NetSceneRoomToolsReplyTodo", "onGYNetEnd:[%d,%d,%s]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.lyI = ((etc)c.c.b(((c)params).otC));
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     this.errMsg = paramString;
-    AppMethodBeat.o(182096);
+    AppMethodBeat.o(182093);
   }
 }
 

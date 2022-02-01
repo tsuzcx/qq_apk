@@ -8,39 +8,39 @@ import java.lang.reflect.Method;
 class aj
   extends am
 {
-  private static Method atf;
-  private static boolean atg;
-  private static Method ath;
-  private static boolean ati;
+  private static Method chO;
+  private static boolean chP;
+  private static Method chQ;
+  private static boolean chR;
   
-  public final float bO(View paramView)
+  public final float ci(View paramView)
   {
-    AppMethodBeat.i(193263);
-    if (!ati) {}
+    AppMethodBeat.i(201564);
+    if (!chR) {}
     try
     {
       Method localMethod = View.class.getDeclaredMethod("getTransitionAlpha", new Class[0]);
-      ath = localMethod;
+      chQ = localMethod;
       localMethod.setAccessible(true);
       label32:
-      ati = true;
-      if (ath != null) {
+      chR = true;
+      if (chQ != null) {
         try
         {
-          f = ((Float)ath.invoke(paramView, new Object[0])).floatValue();
-          AppMethodBeat.o(193263);
+          f = ((Float)chQ.invoke(paramView, new Object[0])).floatValue();
+          AppMethodBeat.o(201564);
           return f;
         }
         catch (InvocationTargetException paramView)
         {
           paramView = new RuntimeException(paramView.getCause());
-          AppMethodBeat.o(193263);
+          AppMethodBeat.o(201564);
           throw paramView;
         }
         catch (IllegalAccessException localIllegalAccessException) {}
       }
-      float f = super.bO(paramView);
-      AppMethodBeat.o(193263);
+      float f = super.ci(paramView);
+      AppMethodBeat.o(201564);
       return f;
     }
     catch (NoSuchMethodException localNoSuchMethodException)
@@ -49,42 +49,42 @@ class aj
     }
   }
   
-  public final void bP(View paramView) {}
+  public final void cj(View paramView) {}
   
-  public final void bQ(View paramView) {}
+  public final void ck(View paramView) {}
   
-  public final void n(View paramView, float paramFloat)
+  public final void o(View paramView, float paramFloat)
   {
-    AppMethodBeat.i(193260);
-    if (!atg) {}
+    AppMethodBeat.i(201555);
+    if (!chP) {}
     try
     {
       Method localMethod = View.class.getDeclaredMethod("setTransitionAlpha", new Class[] { Float.TYPE });
-      atf = localMethod;
+      chO = localMethod;
       localMethod.setAccessible(true);
       label38:
-      atg = true;
-      if (atf != null) {
+      chP = true;
+      if (chO != null) {
         try
         {
-          atf.invoke(paramView, new Object[] { Float.valueOf(paramFloat) });
-          AppMethodBeat.o(193260);
+          chO.invoke(paramView, new Object[] { Float.valueOf(paramFloat) });
+          AppMethodBeat.o(201555);
           return;
         }
         catch (IllegalAccessException paramView)
         {
-          AppMethodBeat.o(193260);
+          AppMethodBeat.o(201555);
           return;
         }
         catch (InvocationTargetException paramView)
         {
           paramView = new RuntimeException(paramView.getCause());
-          AppMethodBeat.o(193260);
+          AppMethodBeat.o(201555);
           throw paramView;
         }
       }
       paramView.setAlpha(paramFloat);
-      AppMethodBeat.o(193260);
+      AppMethodBeat.o(201555);
       return;
     }
     catch (NoSuchMethodException localNoSuchMethodException)
@@ -95,7 +95,7 @@ class aj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     androidx.transition.aj
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.app.d;
+import com.tencent.mm.app.e;
 import com.tencent.mm.plugin.report.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
@@ -27,26 +27,26 @@ import java.util.concurrent.TimeUnit;
 
 public final class ExtStorageMigrateMonitor
 {
-  private static final String CURRENT_PROCESS_NAME;
-  private static final PeriodRecorder UUt;
-  private static final boolean[] UUu;
-  private static final PendingOps UUv;
-  private static final a UUw;
+  private static final String acpD;
+  private static final PeriodRecorder acpE;
+  private static final boolean[] acpF;
+  private static final PendingOps acpG;
+  private static final a acpH;
   
   static
   {
     AppMethodBeat.i(176861);
-    CURRENT_PROCESS_NAME = d.cQP;
-    UUt = new PeriodRecorder("ExtStorageMigrateMonitor", TimeUnit.DAYS.toMillis(1L), true, true);
-    UUu = new boolean[] { false };
-    UUv = new PendingOps((byte)0);
-    UUw = new a()
+    acpD = e.eMg;
+    acpE = new PeriodRecorder("ExtStorageMigrateMonitor", TimeUnit.DAYS.toMillis(1L), true, true);
+    acpF = new boolean[] { false };
+    acpG = new PendingOps((byte)0);
+    acpH = new a()
     {
       private static void a(int paramAnonymousInt, String paramAnonymousString1, Throwable arg2, String paramAnonymousString2, Object... paramAnonymousVarArgs)
       {
         AppMethodBeat.i(176852);
         Object localObject = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.ENGLISH);
-        localObject = "[@" + ((SimpleDateFormat)localObject).format(new Date()) + "|" + ExtStorageMigrateMonitor.CURRENT_PROCESS_NAME + "]";
+        localObject = "[@" + ((SimpleDateFormat)localObject).format(new Date()) + "|" + ExtStorageMigrateMonitor.acpD + "]";
         if ((paramAnonymousVarArgs == null) || (paramAnonymousVarArgs.length == 0)) {
           paramAnonymousString2 = (String)localObject + paramAnonymousString2;
         }
@@ -62,10 +62,10 @@ public final class ExtStorageMigrateMonitor
             paramAnonymousVarArgs = paramAnonymousString2 + "\n" + paramAnonymousVarArgs.toString();
             ((PrintWriter)localObject).close();
           }
-          synchronized (ExtStorageMigrateMonitor.hsN())
+          synchronized (ExtStorageMigrateMonitor.iSS())
           {
-            if (ExtStorageMigrateMonitor.hsN()[0] != 0) {
-              ExtStorageMigrateMonitor.Z(paramAnonymousInt, paramAnonymousString1, paramAnonymousVarArgs);
+            if (ExtStorageMigrateMonitor.iSS()[0] != 0) {
+              ExtStorageMigrateMonitor.ac(paramAnonymousInt, paramAnonymousString1, paramAnonymousVarArgs);
             }
             while (paramAnonymousInt == 3)
             {
@@ -74,17 +74,17 @@ public final class ExtStorageMigrateMonitor
               paramAnonymousString2 = (String)localObject + String.format(paramAnonymousString2, paramAnonymousVarArgs);
               break;
             }
-            ExtStorageMigrateMonitor.hsO().aa(paramAnonymousInt, paramAnonymousString1, paramAnonymousVarArgs);
+            ExtStorageMigrateMonitor.iST().ad(paramAnonymousInt, paramAnonymousString1, paramAnonymousVarArgs);
           }
         }
       }
       
       public final void d(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
       {
-        AppMethodBeat.i(195941);
+        AppMethodBeat.i(257266);
         Log.d(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
         a(3, paramAnonymousString1, null, paramAnonymousString2, paramAnonymousVarArgs);
-        AppMethodBeat.o(195941);
+        AppMethodBeat.o(257266);
       }
       
       public final void e(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
@@ -122,52 +122,32 @@ public final class ExtStorageMigrateMonitor
     AppMethodBeat.o(176861);
   }
   
-  public static void Um(long paramLong)
+  public static a iSO()
   {
-    AppMethodBeat.i(176859);
-    if (!UUt.isExpired("idkey_1315_" + paramLong))
-    {
-      AppMethodBeat.o(176859);
-      return;
-    }
-    synchronized (UUu)
-    {
-      if (UUu[0] != 0)
-      {
-        r(1315L, paramLong, 1L);
-        AppMethodBeat.o(176859);
-        return;
-      }
-      UUv.t(1315L, paramLong, 1L);
-    }
+    return acpH;
   }
   
-  public static a hsJ()
-  {
-    return UUw;
-  }
-  
-  public static void hsK()
+  public static void iSP()
   {
     AppMethodBeat.i(176860);
-    String str = d.fcb.getApplication().getPackageName();
-    if (!d.cQP.equals(str))
+    String str = e.hfI.getApplication().getPackageName();
+    if (!e.eMg.equals(str))
     {
       AppMethodBeat.o(176860);
       return;
     }
-    g.ieN().Wo(500L).d(new a()
+    g.jJU().AA(500L).d(new a()
     {
-      private static Void bFz()
+      private static Void ceW()
       {
         AppMethodBeat.i(176857);
         Object localObject3;
         for (;;)
         {
-          synchronized (ExtStorageMigrateMonitor.hsN())
+          synchronized (ExtStorageMigrateMonitor.iSS())
           {
-            ExtStorageMigrateMonitor.hsN()[0] = 1;
-            ??? = ExtStorageMigrateMonitor.hsP();
+            ExtStorageMigrateMonitor.iSS()[0] = 1;
+            ??? = ExtStorageMigrateMonitor.iSU();
             if (??? == null) {
               break;
             }
@@ -175,28 +155,28 @@ public final class ExtStorageMigrateMonitor
             if (localIterator.hasNext())
             {
               ExtStorageMigrateMonitor.PendingOps.a locala = (ExtStorageMigrateMonitor.PendingOps.a)localIterator.next();
-              ExtStorageMigrateMonitor.s(locala.id, locala.key, locala.value);
+              ExtStorageMigrateMonitor.w(locala.id, locala.key, locala.value);
             }
           }
           localObject3 = (ExtStorageMigrateMonitor.PendingOps.b)((Iterator)???).next();
-          ExtStorageMigrateMonitor.Z(((ExtStorageMigrateMonitor.PendingOps.b)localObject3).level, ((ExtStorageMigrateMonitor.PendingOps.b)localObject3).tag, ((ExtStorageMigrateMonitor.PendingOps.b)localObject3).msg);
+          ExtStorageMigrateMonitor.ac(((ExtStorageMigrateMonitor.PendingOps.b)localObject3).level, ((ExtStorageMigrateMonitor.PendingOps.b)localObject3).tag, ((ExtStorageMigrateMonitor.PendingOps.b)localObject3).msg);
           continue;
-          ExtStorageMigrateMonitor.hsQ();
+          ExtStorageMigrateMonitor.iSV();
         }
-        ??? = ExtStorageMigrateMonitor.PendingOps.a(ExtStorageMigrateMonitor.hsO()).iterator();
+        ??? = ExtStorageMigrateMonitor.PendingOps.a(ExtStorageMigrateMonitor.iST()).iterator();
         while (((Iterator)???).hasNext())
         {
           localObject3 = (ExtStorageMigrateMonitor.PendingOps.a)((Iterator)???).next();
-          ExtStorageMigrateMonitor.s(((ExtStorageMigrateMonitor.PendingOps.a)localObject3).id, ((ExtStorageMigrateMonitor.PendingOps.a)localObject3).key, ((ExtStorageMigrateMonitor.PendingOps.a)localObject3).value);
+          ExtStorageMigrateMonitor.w(((ExtStorageMigrateMonitor.PendingOps.a)localObject3).id, ((ExtStorageMigrateMonitor.PendingOps.a)localObject3).key, ((ExtStorageMigrateMonitor.PendingOps.a)localObject3).value);
         }
-        ExtStorageMigrateMonitor.PendingOps.a(ExtStorageMigrateMonitor.hsO()).clear();
-        ??? = ExtStorageMigrateMonitor.PendingOps.b(ExtStorageMigrateMonitor.hsO()).iterator();
+        ExtStorageMigrateMonitor.PendingOps.a(ExtStorageMigrateMonitor.iST()).clear();
+        ??? = ExtStorageMigrateMonitor.PendingOps.b(ExtStorageMigrateMonitor.iST()).iterator();
         while (((Iterator)???).hasNext())
         {
           localObject3 = (ExtStorageMigrateMonitor.PendingOps.b)((Iterator)???).next();
-          ExtStorageMigrateMonitor.Z(((ExtStorageMigrateMonitor.PendingOps.b)localObject3).level, ((ExtStorageMigrateMonitor.PendingOps.b)localObject3).tag, ((ExtStorageMigrateMonitor.PendingOps.b)localObject3).msg);
+          ExtStorageMigrateMonitor.ac(((ExtStorageMigrateMonitor.PendingOps.b)localObject3).level, ((ExtStorageMigrateMonitor.PendingOps.b)localObject3).tag, ((ExtStorageMigrateMonitor.PendingOps.b)localObject3).msg);
         }
-        ExtStorageMigrateMonitor.PendingOps.b(ExtStorageMigrateMonitor.hsO()).clear();
+        ExtStorageMigrateMonitor.PendingOps.b(ExtStorageMigrateMonitor.iST()).clear();
         AppMethodBeat.o(176857);
         return null;
       }
@@ -204,9 +184,9 @@ public final class ExtStorageMigrateMonitor
     AppMethodBeat.o(176860);
   }
   
-  private static PendingOps hsL()
+  private static PendingOps iSQ()
   {
-    AppMethodBeat.i(214031);
+    AppMethodBeat.i(257261);
     try
     {
       Object localObject1 = MultiProcessMMKV.getMMKV("mmkv_extstg_mon_pending_ops").decodeBytes("mmkv_key_pendingops");
@@ -229,7 +209,7 @@ public final class ExtStorageMigrateMonitor
             if (localParcel != null) {
               localParcel.recycle();
             }
-            AppMethodBeat.o(214031);
+            AppMethodBeat.o(257261);
             return localObject1;
           }
           finally
@@ -243,35 +223,35 @@ public final class ExtStorageMigrateMonitor
         label68:
         localParcel.recycle();
         label76:
-        AppMethodBeat.o(214031);
+        AppMethodBeat.o(257261);
         throw localObject2;
       }
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      UUw.printErrStackTrace("MicroMsg.ExtStorageMigrateMonitor", localThrowable, "[-] Fail to load from persist storage.", new Object[0]);
-      AppMethodBeat.o(214031);
+      acpH.printErrStackTrace("MicroMsg.ExtStorageMigrateMonitor", localThrowable, "[-] Fail to load from persist storage.", new Object[0]);
+      AppMethodBeat.o(257261);
       return null;
     }
-    AppMethodBeat.o(214031);
+    AppMethodBeat.o(257261);
     return null;
   }
   
-  public static void hsM()
+  public static void iSR()
   {
-    AppMethodBeat.i(214033);
+    AppMethodBeat.i(257267);
     try
     {
       PendingOps localPendingOps = new PendingOps((byte)0);
       MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("mmkv_extstg_mon_pending_ops");
-      Object localObject1 = hsL();
+      Object localObject1 = iSQ();
       if (localObject1 != null)
       {
         PendingOps.a(localPendingOps).addAll(PendingOps.a((PendingOps)localObject1));
         PendingOps.b(localPendingOps).addAll(PendingOps.b((PendingOps)localObject1));
       }
-      PendingOps.a(localPendingOps).addAll(PendingOps.a(UUv));
-      PendingOps.b(localPendingOps).addAll(PendingOps.b(UUv));
+      PendingOps.a(localPendingOps).addAll(PendingOps.a(acpG));
+      PendingOps.b(localPendingOps).addAll(PendingOps.b(acpG));
       localObject1 = null;
       try
       {
@@ -283,9 +263,9 @@ public final class ExtStorageMigrateMonitor
         if (localParcel != null) {
           localParcel.recycle();
         }
-        PendingOps.a(UUv).clear();
-        PendingOps.b(UUv).clear();
-        AppMethodBeat.o(214033);
+        PendingOps.a(acpG).clear();
+        PendingOps.b(acpG).clear();
+        AppMethodBeat.o(257267);
         return;
       }
       finally
@@ -293,51 +273,71 @@ public final class ExtStorageMigrateMonitor
         if (localObject1 != null) {
           ((Parcel)localObject1).recycle();
         }
-        AppMethodBeat.o(214033);
+        AppMethodBeat.o(257267);
       }
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      UUw.printErrStackTrace("MicroMsg.ExtStorageMigrateMonitor", localThrowable, "[-] Fail to flush to persist storage.", new Object[0]);
-      AppMethodBeat.o(214033);
+      acpH.printErrStackTrace("MicroMsg.ExtStorageMigrateMonitor", localThrowable, "[-] Fail to flush to persist storage.", new Object[0]);
+      AppMethodBeat.o(257267);
     }
   }
   
-  private static void r(long paramLong1, long paramLong2, long paramLong3)
+  private static void v(long paramLong1, long paramLong2, long paramLong3)
   {
     AppMethodBeat.i(185089);
-    f.Iyx.idkeyStat(paramLong1, paramLong2, paramLong3, true);
+    f.Ozc.idkeyStat(paramLong1, paramLong2, paramLong3, true);
     AppMethodBeat.o(185089);
+  }
+  
+  public static void yy(long paramLong)
+  {
+    AppMethodBeat.i(176859);
+    if (!acpE.isExpired("idkey_1315_" + paramLong))
+    {
+      AppMethodBeat.o(176859);
+      return;
+    }
+    synchronized (acpF)
+    {
+      if (acpF[0] != 0)
+      {
+        v(1315L, paramLong, 1L);
+        AppMethodBeat.o(176859);
+        return;
+      }
+      acpG.x(1315L, paramLong, 1L);
+    }
   }
   
   static class PendingOps
     implements Parcelable
   {
     public static final Parcelable.Creator<PendingOps> CREATOR;
-    private final List<a> UUx;
-    private final List<b> UUy;
+    private final List<a> acpI;
+    private final List<b> acpJ;
     
     static
     {
-      AppMethodBeat.i(194122);
+      AppMethodBeat.i(257145);
       CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(194122);
+      AppMethodBeat.o(257145);
     }
     
     private PendingOps()
     {
-      AppMethodBeat.i(194113);
-      this.UUx = Collections.synchronizedList(new ArrayList(16));
-      this.UUy = Collections.synchronizedList(new ArrayList(32));
-      AppMethodBeat.o(194113);
+      AppMethodBeat.i(257120);
+      this.acpI = Collections.synchronizedList(new ArrayList(16));
+      this.acpJ = Collections.synchronizedList(new ArrayList(32));
+      AppMethodBeat.o(257120);
     }
     
-    final void aa(int paramInt, String paramString1, String paramString2)
+    final void ad(int paramInt, String paramString1, String paramString2)
     {
-      AppMethodBeat.i(194116);
-      this.UUy.add(new b(paramInt, paramString1, paramString2));
-      AppMethodBeat.o(194116);
+      AppMethodBeat.i(257159);
+      this.acpJ.add(new b(paramInt, paramString1, paramString2));
+      AppMethodBeat.o(257159);
     }
     
     public int describeContents()
@@ -345,19 +345,12 @@ public final class ExtStorageMigrateMonitor
       return 0;
     }
     
-    final void t(long paramLong1, long paramLong2, long paramLong3)
-    {
-      AppMethodBeat.i(194115);
-      this.UUx.add(new a(paramLong1, paramLong2, paramLong3));
-      AppMethodBeat.o(194115);
-    }
-    
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(194118);
+      AppMethodBeat.i(257171);
       paramParcel.writeInt(-33554431);
-      paramParcel.writeInt(this.UUx.size());
-      Iterator localIterator = this.UUx.iterator();
+      paramParcel.writeInt(this.acpI.size());
+      Iterator localIterator = this.acpI.iterator();
       Object localObject;
       while (localIterator.hasNext())
       {
@@ -366,8 +359,8 @@ public final class ExtStorageMigrateMonitor
         paramParcel.writeLong(((a)localObject).key);
         paramParcel.writeLong(((a)localObject).value);
       }
-      paramParcel.writeInt(this.UUy.size());
-      localIterator = this.UUy.iterator();
+      paramParcel.writeInt(this.acpJ.size());
+      localIterator = this.acpJ.iterator();
       while (localIterator.hasNext())
       {
         localObject = (b)localIterator.next();
@@ -375,7 +368,14 @@ public final class ExtStorageMigrateMonitor
         paramParcel.writeString(((b)localObject).tag);
         paramParcel.writeString(((b)localObject).msg);
       }
-      AppMethodBeat.o(194118);
+      AppMethodBeat.o(257171);
+    }
+    
+    final void x(long paramLong1, long paramLong2, long paramLong3)
+    {
+      AppMethodBeat.i(257154);
+      this.acpI.add(new a(paramLong1, paramLong2, paramLong3));
+      AppMethodBeat.o(257154);
     }
     
     static final class a
@@ -393,9 +393,9 @@ public final class ExtStorageMigrateMonitor
       
       public final String toString()
       {
-        AppMethodBeat.i(202207);
+        AppMethodBeat.i(257092);
         String str = "IDKeyOp {id:" + this.id + ", key:" + this.key + ", value:" + this.value + "}";
-        AppMethodBeat.o(202207);
+        AppMethodBeat.o(257092);
         return str;
       }
     }
@@ -415,9 +415,9 @@ public final class ExtStorageMigrateMonitor
       
       public final String toString()
       {
-        AppMethodBeat.i(196862);
+        AppMethodBeat.i(257096);
         String str = "LogOp {level:" + this.level + ", tag:" + this.tag + ", msg:" + this.msg + "}";
-        AppMethodBeat.o(196862);
+        AppMethodBeat.o(257096);
         return str;
       }
     }
@@ -438,7 +438,7 @@ public final class ExtStorageMigrateMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sdcard_migrate.ExtStorageMigrateMonitor
  * JD-Core Version:    0.7.0.1
  */

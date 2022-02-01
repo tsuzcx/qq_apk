@@ -2,53 +2,53 @@ package com.tencent.mm.videocomposition.effect;
 
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/videocomposition/effect/BitmapEffector;", "", "()V", "TAG", "", "height", "", "inputBitmap", "Landroid/graphics/Bitmap;", "renderController", "Lcom/tencent/mm/videocomposition/effect/EffectRenderController;", "width", "getEffectManager", "Lcom/tencent/mm/xeffect/effect/EffectManager;", "requestEffect", "", "callback", "Lkotlin/Function1;", "setInputBitmap", "bitmap", "setOutputSize", "video_composition_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mm/videocomposition/effect/BitmapEffector;", "", "()V", "TAG", "", "height", "", "inputBitmap", "Landroid/graphics/Bitmap;", "renderController", "Lcom/tencent/mm/videocomposition/effect/EffectRenderController;", "reportData", "Lcom/tencent/mm/videocomposition/effect/EffectRenderReportData;", "getReportData", "()Lcom/tencent/mm/videocomposition/effect/EffectRenderReportData;", "width", "getEffectManager", "Lcom/tencent/mm/xeffect/effect/EffectManager;", "requestEffect", "", "callback", "Lkotlin/Function1;", "setInputBitmap", "bitmap", "setOutputSize", "video_composition_release"}, k=1, mv={1, 1, 15})
 public final class a
 {
+  public final b HkF;
   private final String TAG;
-  public final b YIy;
   private int height;
-  private Bitmap jUC;
+  private Bitmap muT;
   private int width;
   
   public a()
   {
-    AppMethodBeat.i(248091);
+    AppMethodBeat.i(233659);
     this.TAG = ("BitmapEffector@" + hashCode());
-    this.YIy = new b();
-    AppMethodBeat.o(248091);
+    this.HkF = new b();
+    AppMethodBeat.o(233659);
   }
   
-  public final void af(kotlin.g.a.b<? super Bitmap, x> paramb)
+  public final void aW(kotlin.g.a.b<? super Bitmap, ah> paramb)
   {
-    AppMethodBeat.i(248090);
-    p.k(paramb, "callback");
+    AppMethodBeat.i(233697);
+    s.t(paramb, "callback");
     if ((this.width <= 0) || (this.height <= 0))
     {
-      com.tencent.mm.videocomposition.c.b.r("size error [" + this.width + ", " + this.height + ']', new Object[0]);
-      paramb.invoke(this.jUC);
-      AppMethodBeat.o(248090);
+      com.tencent.mm.videocomposition.d.b.s("size error [" + this.width + ", " + this.height + ']', new Object[0]);
+      paramb.invoke(this.muT);
+      AppMethodBeat.o(233697);
       return;
     }
-    this.YIy.no(this.width, this.height);
-    this.YIy.YIS = ((kotlin.g.a.b)new a(this));
-    this.YIy.ag((kotlin.g.a.b)new b(paramb));
-    AppMethodBeat.o(248090);
+    this.HkF.pl(this.width, this.height);
+    this.HkF.aX((kotlin.g.a.b)new a.a(paramb));
+    this.HkF.K((kotlin.g.a.a)new b(this));
+    AppMethodBeat.o(233697);
   }
   
   public final void setInputBitmap(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(248087);
-    p.k(paramBitmap, "bitmap");
-    com.tencent.mm.videocomposition.c.b.i(this.TAG, "setInputBitmap: " + paramBitmap + ", size:[" + paramBitmap.getWidth() + ',' + paramBitmap.getHeight() + ']', new Object[0]);
-    this.jUC = paramBitmap;
-    this.YIy.setInputBitmap(paramBitmap);
-    AppMethodBeat.o(248087);
+    AppMethodBeat.i(233685);
+    s.t(paramBitmap, "bitmap");
+    com.tencent.mm.videocomposition.d.b.i(this.TAG, "setInputBitmap: " + paramBitmap + ", size:[" + paramBitmap.getWidth() + ',' + paramBitmap.getHeight() + ']', new Object[0]);
+    this.muT = paramBitmap;
+    this.HkF.setInputBitmap(paramBitmap);
+    AppMethodBeat.o(233685);
   }
   
   public final void setOutputSize(int paramInt1, int paramInt2)
@@ -57,23 +57,12 @@ public final class a
     this.height = paramInt2;
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "", "it", "", "invoke"})
-  static final class a
-    extends q
-    implements kotlin.g.a.b<Long, x>
-  {
-    a(a parama)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/graphics/Bitmap;", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 15})
   static final class b
-    extends q
-    implements kotlin.g.a.b<Bitmap, x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    b(kotlin.g.a.b paramb)
+    b(a parama)
     {
       super();
     }
@@ -81,7 +70,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.videocomposition.effect.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.wallet_core.ui.view;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -20,16 +19,16 @@ import com.tencent.mm.plugin.wxpay.a.f;
 import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import e.a.a.f;
+import g.a.a.f;
 import java.io.IOException;
 
 @com.tencent.mm.ui.base.a(3)
 public class WalletSuccPageAwardLuckyMoneyDialog
   extends MMActivity
 {
-  private ViewGroup EMs;
-  private ImageView IUH;
-  private f Pgn;
+  private ImageView CQi;
+  private ViewGroup KGL;
+  private f VXb;
   
   public int getForceOrientation()
   {
@@ -48,7 +47,7 @@ public class WalletSuccPageAwardLuckyMoneyDialog
     if (getSupportActionBar() != null) {
       getSupportActionBar().hide();
     }
-    if (d.qV(19)) {
+    if (d.rb(19)) {
       getWindow().setFlags(67108864, 67108864);
     }
     paramBundle = getIntent().getByteArrayExtra("key_layer_info");
@@ -57,26 +56,26 @@ public class WalletSuccPageAwardLuckyMoneyDialog
       Log.e("MicroMsg.WalletSuccPageAwardLuckyMoneyDialog", "WalletSuccPageAwardLuckyMoneyDialog onCreate error! cannot get layerInfoBytes!");
       finish();
     }
-    this.Pgn = new f();
+    this.VXb = new f();
     try
     {
-      this.Pgn.parseFrom(paramBundle);
-      this.EMs = ((ViewGroup)findViewById(a.f.content_layout));
-      this.IUH = ((ImageView)findViewById(a.f.close_btn));
-      this.IUH.setOnClickListener(new View.OnClickListener()
+      this.VXb.parseFrom(paramBundle);
+      this.KGL = ((ViewGroup)findViewById(a.f.content_layout));
+      this.CQi = ((ImageView)findViewById(a.f.close_btn));
+      this.CQi.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(71549);
           b localb = new b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet_core/ui/view/WalletSuccPageAwardLuckyMoneyDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet_core/ui/view/WalletSuccPageAwardLuckyMoneyDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           WalletSuccPageAwardLuckyMoneyDialog.this.finish();
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_core/ui/view/WalletSuccPageAwardLuckyMoneyDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(71549);
         }
       });
-      paramBundle = this.EMs;
+      paramBundle = this.KGL;
       Animation.AnimationListener local2 = new Animation.AnimationListener()
       {
         public final void onAnimationEnd(Animation paramAnonymousAnimation) {}

@@ -5,6 +5,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class AudioPlayerConfigure$1
   implements ISoLibraryLoader
 {
+  private byte _hellAccFlag_;
+  
   public final String findLibPath(String paramString)
   {
     AppMethodBeat.i(114308);
@@ -23,7 +25,11 @@ final class AudioPlayerConfigure$1
   public final boolean load(String paramString)
   {
     AppMethodBeat.i(114307);
-    System.loadLibrary(paramString);
+    paramString = new com.tencent.mm.hellhoundlib.b.a().cG(paramString);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, paramString.aYi(), "com/tencent/qqmusic/mediaplayer/AudioPlayerConfigure$1", "load", "(Ljava/lang/String;)Z", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)paramString.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/qqmusic/mediaplayer/AudioPlayerConfigure$1", "load", "(Ljava/lang/String;)Z", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
     AppMethodBeat.o(114307);
     return true;
   }

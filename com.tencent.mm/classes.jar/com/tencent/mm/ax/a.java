@@ -1,89 +1,109 @@
 package com.tencent.mm.ax;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.be;
+import android.view.View;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storagebase.h.b;
+import com.tencent.mm.storage.cc;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+import junit.framework.Assert;
 
-public class a
-  implements be
+public abstract class a
 {
-  private static MMHandler lNb = null;
+  public static String oPh = "";
+  public static String oPi = "";
+  public String SCENE;
+  public String TYPE;
+  public cc hTm;
+  public String oPj = "";
+  public String oPk;
+  public LinkedList<String> oPl = new LinkedList();
+  public LinkedList<Integer> oPm = new LinkedList();
+  public LinkedList<Integer> oPn = new LinkedList();
+  public Map<String, String> values;
   
-  public static boolean f(Runnable paramRunnable, long paramLong)
+  public a(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(104523);
-    if (paramRunnable == null)
+    this.values = paramMap;
+  }
+  
+  public a(Map<String, String> paramMap, cc paramcc)
+  {
+    this.values = paramMap;
+    this.hTm = paramcc;
+  }
+  
+  protected abstract boolean bAo();
+  
+  public final boolean bLy()
+  {
+    if ((this.values != null) && (this.values.size() > 0))
     {
-      AppMethodBeat.o(104523);
-      return false;
+      if (this.values.containsKey(".sysmsg.$type")) {
+        this.TYPE = ((String)this.values.get(".sysmsg.$type"));
+      }
+      oPh = ".sysmsg." + this.TYPE + ".text";
+      if (this.values.containsKey(oPh)) {
+        this.oPk = ((String)this.values.get(oPh));
+      }
+      oPi = ".sysmsg." + this.TYPE + ".link.scene";
+      if (this.values.containsKey(oPi)) {
+        this.SCENE = ((String)this.values.get(oPi));
+      }
+      return bAo();
     }
-    boolean bool;
-    if (lNb == null)
+    Log.e("MicroMsg.BaseNewXmlMsg", "values == null || values.size() == 0 ");
+    return false;
+  }
+  
+  public static abstract class a
+  {
+    private static HashMap<String, a> oPo = new HashMap();
+    
+    public static void a(String paramString, a parama)
     {
-      if (lNb != null)
+      Assert.assertNotNull(paramString);
+      Assert.assertNotNull(parama);
+      synchronized (oPo)
       {
-        bool = true;
-        Log.w("MicroMsg.GIF.SubCoreGIF", "check decoder thread available fail, handler[%B] stack[%s]", new Object[] { Boolean.valueOf(bool), Util.getStack() });
-        if (lNb != null) {
-          lNb.removeCallbacksAndMessages(null);
+        oPo.put(paramString.toLowerCase(), parama);
+        return;
+      }
+    }
+    
+    public static a b(Map<String, String> paramMap, cc paramcc)
+    {
+      if (paramMap == null)
+      {
+        Log.e("MicroMsg.BaseNewXmlMsg", "values is null !!!");
+        return null;
+      }
+      String str = Util.nullAs((String)paramMap.get(".sysmsg.$type"), "");
+      synchronized (oPo)
+      {
+        a locala = (a)oPo.get(str.toLowerCase());
+        if (locala == null)
+        {
+          Log.w("MicroMsg.BaseNewXmlMsg", "TYPE %s is unDefine", new Object[] { str });
+          return null;
         }
-        MMHandler localMMHandler = new MMHandler("GIF-Decoder");
-        lNb = localMMHandler;
-        localMMHandler.setLogging(false);
+        paramMap = locala.a(paramMap, paramcc);
+        return paramMap;
       }
     }
-    else
-    {
-      if (paramLong <= 0L) {
-        break label116;
-      }
-      lNb.postDelayed(paramRunnable, paramLong);
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(104523);
-      return true;
-      bool = false;
-      break;
-      label116:
-      lNb.post(paramRunnable);
-    }
+    
+    public abstract a a(Map<String, String> paramMap, cc paramcc);
   }
   
-  public void clearPluginData(int paramInt) {}
-  
-  public HashMap<Integer, h.b> getBaseDBFactories()
+  public static abstract interface b
   {
-    return null;
+    public abstract void a(View paramView, cc paramcc, a parama, int paramInt);
   }
-  
-  public void onAccountPostReset(boolean paramBoolean)
-  {
-    AppMethodBeat.i(104524);
-    if (lNb != null) {
-      lNb.removeCallbacksAndMessages(null);
-    }
-    AppMethodBeat.o(104524);
-  }
-  
-  public void onAccountRelease()
-  {
-    AppMethodBeat.i(104525);
-    if (lNb != null) {
-      lNb.removeCallbacksAndMessages(null);
-    }
-    AppMethodBeat.o(104525);
-  }
-  
-  public void onSdcardMount(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ax.a
  * JD-Core Version:    0.7.0.1
  */

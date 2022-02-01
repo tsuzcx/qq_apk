@@ -3,28 +3,27 @@ package com.tencent.mm.plugin.luckymoney.ui.a;
 import android.content.Context;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.ac.a;
-import com.tencent.mm.api.ad;
+import com.tencent.mm.api.ad.a;
+import com.tencent.mm.api.ae;
 import com.tencent.mm.plugin.wxpay.a.a;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
 
 public final class b
 {
-  public static void a(ViewGroup paramViewGroup, ChatFooterPanel paramChatFooterPanel, int paramInt, ac.a parama)
+  public static void a(ViewGroup paramViewGroup, ChatFooterPanel paramChatFooterPanel, int paramInt, ad.a parama)
   {
     AppMethodBeat.i(65985);
     paramChatFooterPanel.setEntranceScene(paramInt);
     paramChatFooterPanel.setVisibility(0);
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, ad.bC(paramViewGroup.getContext()));
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, ae.cp(paramViewGroup.getContext()));
     localLayoutParams.gravity = 80;
     paramViewGroup.removeAllViews();
     paramViewGroup.addView(paramChatFooterPanel, localLayoutParams);
-    paramViewGroup = ad.aaf();
-    paramViewGroup.faJ = parama;
+    paramViewGroup = ae.aBJ();
+    paramViewGroup.hej = parama;
     paramChatFooterPanel.setCallback(paramViewGroup);
     AppMethodBeat.o(65985);
   }
@@ -42,30 +41,7 @@ public final class b
     {
       paramChatFooterPanel.setVisibility(8);
       paramContext = AnimationUtils.loadAnimation(paramContext, a.a.push_down_out);
-      paramContext.setAnimationListener(new Animation.AnimationListener()
-      {
-        public final void onAnimationEnd(Animation paramAnonymousAnimation)
-        {
-          AppMethodBeat.i(65983);
-          if (this.EOx != null)
-          {
-            this.EOx.onPause();
-            this.EOx.setVisibility(8);
-          }
-          AppMethodBeat.o(65983);
-        }
-        
-        public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
-        
-        public final void onAnimationStart(Animation paramAnonymousAnimation)
-        {
-          AppMethodBeat.i(65982);
-          if (this.EOx != null) {
-            this.EOx.setVisibility(0);
-          }
-          AppMethodBeat.o(65982);
-        }
-      });
+      paramContext.setAnimationListener(new b.1(paramChatFooterPanel));
       paramChatFooterPanel.startAnimation(paramContext);
       AppMethodBeat.o(65984);
       return true;
@@ -76,7 +52,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.a.b
  * JD-Core Version:    0.7.0.1
  */

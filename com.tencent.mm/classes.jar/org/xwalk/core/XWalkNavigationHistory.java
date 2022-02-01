@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class XWalkNavigationHistory
 {
+  private static final String TAG = "XWalkNavigationHistory";
   private Object bridge;
   private ReflectMethod canGoBackMethod;
   private ReflectMethod canGoForwardMethod;
@@ -45,6 +46,29 @@ public class XWalkNavigationHistory
     paramDirection = this.enumDirectionClassValueOfMethod.invoke(new Object[] { paramDirection.toString() });
     AppMethodBeat.o(154812);
     return paramDirection;
+  }
+  
+  private void reflectionInit()
+  {
+    AppMethodBeat.i(154823);
+    if (XWalkCoreWrapper.getInstance() == null)
+    {
+      XWalkReflectionInitHandler.reserveReflectObject(this);
+      AppMethodBeat.o(154823);
+      return;
+    }
+    this.coreWrapper = XWalkCoreWrapper.getInstance();
+    this.enumDirectionClassValueOfMethod.init(null, this.coreWrapper.getBridgeClass("XWalkNavigationHistoryInternal$DirectionInternal"), "valueOf", new Class[] { String.class });
+    this.sizeMethod.init(this.bridge, null, "sizeSuper", new Class[0]);
+    this.hasItemAtintMethod.init(this.bridge, null, "hasItemAtSuper", new Class[] { Integer.TYPE });
+    this.getItemAtintMethod.init(this.bridge, null, "getItemAtSuper", new Class[] { Integer.TYPE });
+    this.getCurrentItemMethod.init(this.bridge, null, "getCurrentItemSuper", new Class[0]);
+    this.canGoBackMethod.init(this.bridge, null, "canGoBackSuper", new Class[0]);
+    this.canGoForwardMethod.init(this.bridge, null, "canGoForwardSuper", new Class[0]);
+    this.navigateDirectionInternalintMethod.init(this.bridge, null, "navigateSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkNavigationHistoryInternal$DirectionInternal"), Integer.TYPE });
+    this.getCurrentIndexMethod.init(this.bridge, null, "getCurrentIndexSuper", new Class[0]);
+    this.clearMethod.init(this.bridge, null, "clearSuper", new Class[0]);
+    AppMethodBeat.o(154823);
   }
   
   public boolean canGoBack()
@@ -241,30 +265,6 @@ public class XWalkNavigationHistory
     }
   }
   
-  void reflectionInit()
-  {
-    AppMethodBeat.i(154823);
-    XWalkCoreWrapper.initEmbeddedMode();
-    this.coreWrapper = XWalkCoreWrapper.getInstance();
-    if (this.coreWrapper == null)
-    {
-      XWalkCoreWrapper.reserveReflectObject(this);
-      AppMethodBeat.o(154823);
-      return;
-    }
-    this.enumDirectionClassValueOfMethod.init(null, this.coreWrapper.getBridgeClass("XWalkNavigationHistoryInternal$DirectionInternal"), "valueOf", new Class[] { String.class });
-    this.sizeMethod.init(this.bridge, null, "sizeSuper", new Class[0]);
-    this.hasItemAtintMethod.init(this.bridge, null, "hasItemAtSuper", new Class[] { Integer.TYPE });
-    this.getItemAtintMethod.init(this.bridge, null, "getItemAtSuper", new Class[] { Integer.TYPE });
-    this.getCurrentItemMethod.init(this.bridge, null, "getCurrentItemSuper", new Class[0]);
-    this.canGoBackMethod.init(this.bridge, null, "canGoBackSuper", new Class[0]);
-    this.canGoForwardMethod.init(this.bridge, null, "canGoForwardSuper", new Class[0]);
-    this.navigateDirectionInternalintMethod.init(this.bridge, null, "navigateSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkNavigationHistoryInternal$DirectionInternal"), Integer.TYPE });
-    this.getCurrentIndexMethod.init(this.bridge, null, "getCurrentIndexSuper", new Class[0]);
-    this.clearMethod.init(this.bridge, null, "clearSuper", new Class[0]);
-    AppMethodBeat.o(154823);
-  }
-  
   public int size()
   {
     AppMethodBeat.i(154814);
@@ -291,7 +291,7 @@ public class XWalkNavigationHistory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.XWalkNavigationHistory
  * JD-Core Version:    0.7.0.1
  */

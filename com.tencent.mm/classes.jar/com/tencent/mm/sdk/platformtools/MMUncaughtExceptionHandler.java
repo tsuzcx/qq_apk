@@ -2,7 +2,7 @@ package com.tencent.mm.sdk.platformtools;
 
 import android.os.Process;
 import android.text.TextUtils;
-import com.tencent.mm.cw.j;
+import com.tencent.mm.cp.j;
 import com.tencent.mm.hellhoundlib.b.c;
 import com.tencent.mm.sdk.crash.CallbackForReset;
 import com.tencent.recovery.crash.DefaultExceptionHandler;
@@ -23,7 +23,7 @@ public final class MMUncaughtExceptionHandler
   private static MMUncaughtExceptionHandler thiz = null;
   private byte _hellAccFlag_;
   public IAfterReport after = null;
-  private Map<String, IAssertFailedReporter> assertFailedReporter = new HashMap();
+  private Map<String, MMUncaughtExceptionHandler.IAssertFailedReporter> assertFailedReporter = new HashMap();
   private CallbackForReset callbackReset = null;
   private boolean hasBeenReport = false;
   private List<MMUncaughtExceptionHandler.IOnUncaughtExceptionListener> mOnUncaughtExceptionListenerList = new LinkedList();
@@ -35,7 +35,7 @@ public final class MMUncaughtExceptionHandler
     Thread.setDefaultUncaughtExceptionHandler(new DefaultExceptionHandler(this));
   }
   
-  public static void addAssertFailedReporter(String paramString, IAssertFailedReporter paramIAssertFailedReporter)
+  public static void addAssertFailedReporter(String paramString, MMUncaughtExceptionHandler.IAssertFailedReporter paramIAssertFailedReporter)
   {
     try
     {
@@ -69,13 +69,7 @@ public final class MMUncaughtExceptionHandler
   {
     try
     {
-      addAssertFailedReporter(paramString1, new IAssertFailedReporter()
-      {
-        public final String getReport()
-        {
-          return "subinfo=" + this.val$subHeaderInfo;
-        }
-      });
+      addAssertFailedReporter(paramString1, new MMUncaughtExceptionHandler.1(paramString2));
       Assert.assertTrue(paramString1, paramBoolean);
       return;
     }
@@ -90,36 +84,36 @@ public final class MMUncaughtExceptionHandler
   public static String getExceptionCauseString(Throwable paramThrowable)
   {
     // Byte code:
-    //   0: new 120	java/io/ByteArrayOutputStream
+    //   0: new 119	java/io/ByteArrayOutputStream
     //   3: dup
-    //   4: invokespecial 121	java/io/ByteArrayOutputStream:<init>	()V
+    //   4: invokespecial 120	java/io/ByteArrayOutputStream:<init>	()V
     //   7: astore_1
-    //   8: new 123	java/io/PrintStream
+    //   8: new 122	java/io/PrintStream
     //   11: dup
     //   12: aload_1
-    //   13: invokespecial 126	java/io/PrintStream:<init>	(Ljava/io/OutputStream;)V
+    //   13: invokespecial 125	java/io/PrintStream:<init>	(Ljava/io/OutputStream;)V
     //   16: astore_2
     //   17: aload_0
-    //   18: invokevirtual 132	java/lang/Throwable:getCause	()Ljava/lang/Throwable;
+    //   18: invokevirtual 131	java/lang/Throwable:getCause	()Ljava/lang/Throwable;
     //   21: ifnull +11 -> 32
     //   24: aload_0
-    //   25: invokevirtual 132	java/lang/Throwable:getCause	()Ljava/lang/Throwable;
+    //   25: invokevirtual 131	java/lang/Throwable:getCause	()Ljava/lang/Throwable;
     //   28: astore_0
     //   29: goto -12 -> 17
     //   32: aload_0
     //   33: aload_2
-    //   34: invokevirtual 136	java/lang/Throwable:printStackTrace	(Ljava/io/PrintStream;)V
+    //   34: invokevirtual 135	java/lang/Throwable:printStackTrace	(Ljava/io/PrintStream;)V
     //   37: aload_1
-    //   38: invokevirtual 140	java/io/ByteArrayOutputStream:toString	()Ljava/lang/String;
-    //   41: invokestatic 144	com/tencent/mm/sdk/platformtools/MMUncaughtExceptionHandler:toVisualString	(Ljava/lang/String;)Ljava/lang/String;
+    //   38: invokevirtual 139	java/io/ByteArrayOutputStream:toString	()Ljava/lang/String;
+    //   41: invokestatic 143	com/tencent/mm/sdk/platformtools/MMUncaughtExceptionHandler:toVisualString	(Ljava/lang/String;)Ljava/lang/String;
     //   44: astore_0
     //   45: aload_1
-    //   46: invokevirtual 147	java/io/ByteArrayOutputStream:close	()V
+    //   46: invokevirtual 146	java/io/ByteArrayOutputStream:close	()V
     //   49: aload_0
     //   50: areturn
     //   51: astore_0
     //   52: aload_1
-    //   53: invokevirtual 147	java/io/ByteArrayOutputStream:close	()V
+    //   53: invokevirtual 146	java/io/ByteArrayOutputStream:close	()V
     //   56: aload_0
     //   57: athrow
     //   58: astore_1
@@ -186,30 +180,29 @@ public final class MMUncaughtExceptionHandler
     if (paramString == null) {
       paramString = null;
     }
-    label66:
-    for (;;)
+    char[] arrayOfChar;
+    int i;
+    int j;
+    do
     {
       return paramString;
-      char[] arrayOfChar = paramString.toCharArray();
+      arrayOfChar = paramString.toCharArray();
       if (arrayOfChar == null) {
         return null;
       }
-      int i = 0;
-      if (i < arrayOfChar.length) {
-        if (arrayOfChar[i] > '') {
-          arrayOfChar[i] = '\000';
-        }
-      }
-      for (int j = 1;; j = 0)
+      i = 0;
+      j = 0;
+      while (i < arrayOfChar.length)
       {
-        if (j == 0) {
-          break label66;
+        if (arrayOfChar[i] > '')
+        {
+          arrayOfChar[i] = '?';
+          j = 1;
         }
-        return new String(arrayOfChar, 0, i);
         i += 1;
-        break;
       }
-    }
+    } while (j == 0);
+    return new String(arrayOfChar, 0, i);
   }
   
   public final String getReportByAssertPrefix(String paramString)
@@ -220,7 +213,7 @@ public final class MMUncaughtExceptionHandler
       Map.Entry localEntry = (Map.Entry)localIterator.next();
       String str = (String)localEntry.getKey();
       if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramString)) && (paramString.startsWith(str))) {
-        return ((IAssertFailedReporter)localEntry.getValue()).getReport();
+        return ((MMUncaughtExceptionHandler.IAssertFailedReporter)localEntry.getValue()).getReport();
       }
     }
     return "";
@@ -260,7 +253,7 @@ public final class MMUncaughtExceptionHandler
             }
           }
         });
-        ((j)localObject2).ijQ();
+        ((j)localObject2).jPY();
       }
       if ((this.reporter != null) && (localObject1 != null))
       {
@@ -296,24 +289,19 @@ public final class MMUncaughtExceptionHandler
     }
     paramThread = c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
     paramThrowable = new Object();
-    com.tencent.mm.hellhoundlib.a.a.b(paramThrowable, paramThread.aFh(), "com/tencent/mm/sdk/platformtools/MMUncaughtExceptionHandler", "uncaughtException", "(Ljava/lang/Thread;Ljava/lang/Throwable;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
-    Process.killProcess(((Integer)paramThread.sf(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.b(paramThrowable, paramThread.aYi(), "com/tencent/mm/sdk/platformtools/MMUncaughtExceptionHandler", "uncaughtException", "(Ljava/lang/Thread;Ljava/lang/Throwable;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+    Process.killProcess(((Integer)paramThread.sb(0)).intValue());
     com.tencent.mm.hellhoundlib.a.a.c(paramThrowable, "com/tencent/mm/sdk/platformtools/MMUncaughtExceptionHandler", "uncaughtException", "(Ljava/lang/Thread;Ljava/lang/Throwable;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
     paramThread = c.a(0, new com.tencent.mm.hellhoundlib.b.a());
     paramThrowable = new Object();
-    com.tencent.mm.hellhoundlib.a.a.b(paramThrowable, paramThread.aFh(), "com/tencent/mm/sdk/platformtools/MMUncaughtExceptionHandler", "uncaughtException", "(Ljava/lang/Thread;Ljava/lang/Throwable;)V", "java/lang/System_EXEC_", "exit", "(I)V");
-    System.exit(((Integer)paramThread.sf(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.b(paramThrowable, paramThread.aYi(), "com/tencent/mm/sdk/platformtools/MMUncaughtExceptionHandler", "uncaughtException", "(Ljava/lang/Thread;Ljava/lang/Throwable;)V", "java/lang/System_EXEC_", "exit", "(I)V");
+    System.exit(((Integer)paramThread.sb(0)).intValue());
     com.tencent.mm.hellhoundlib.a.a.c(paramThrowable, "com/tencent/mm/sdk/platformtools/MMUncaughtExceptionHandler", "uncaughtException", "(Ljava/lang/Thread;Ljava/lang/Throwable;)V", "java/lang/System_EXEC_", "exit", "(I)V");
   }
   
   public static abstract interface IAfterReport
   {
     public abstract void afterReport();
-  }
-  
-  public static abstract interface IAssertFailedReporter
-  {
-    public abstract String getReport();
   }
   
   public static abstract interface IReporter
@@ -323,7 +311,7 @@ public final class MMUncaughtExceptionHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.MMUncaughtExceptionHandler
  * JD-Core Version:    0.7.0.1
  */

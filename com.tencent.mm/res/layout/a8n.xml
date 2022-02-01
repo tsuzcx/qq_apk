@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/d6_" android:paddingTop="@dimen/d6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="@dimen/d0" android:paddingEnd="@dimen/d0"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/d6c" android:layout_width="@dimen/d_" android:layout_height="@dimen/d_" android:layout_marginTop="@dimen/d6" android:src="@raw/icons_filled_info" app:iconColor="@color/Blue_100" />
+    <TextView android:textSize="@dimen/hp" android:textColor="@color/gb" android:ellipsize="end" android:id="@id/d6d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:text="@string/cyx" android:singleLine="true" android:includeFontPadding="false" />
+    <TextView android:textSize="@dimen/io" android:textColor="@color/gb" android:ellipsize="end" android:id="@id/d6b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cd" android:text="@string/cyv" android:singleLine="true" android:includeFontPadding="false" />
+    <Button android:textColor="@color/Orange" android:id="@id/d69" android:background="@drawable/uj" android:layout_width="@dimen/cj" android:layout_height="@dimen/d4" android:layout_marginTop="@dimen/a7k" android:text="@string/cyw" />
+</LinearLayout>

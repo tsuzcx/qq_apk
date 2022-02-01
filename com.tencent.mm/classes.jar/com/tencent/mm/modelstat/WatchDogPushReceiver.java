@@ -20,26 +20,7 @@ public class WatchDogPushReceiver
 {
   private static String className = "";
   
-  public static void a(g paramg)
-  {
-    AppMethodBeat.i(151147);
-    Intent localIntent = new Intent();
-    localIntent.setAction("com.tencent.mm.WatchDogPushReceiver");
-    localIntent.setComponent(new ComponentName(MMApplicationContext.getPackageName(), bpE()));
-    localIntent.putExtra("type", 1);
-    localIntent.putExtra("rtType", paramg.rtType);
-    localIntent.putExtra("beginTime", paramg.beginTime);
-    localIntent.putExtra("endTime", paramg.endTime);
-    localIntent.putExtra("rtType", paramg.rtType);
-    localIntent.putExtra("dataLen", paramg.mds);
-    localIntent.putExtra("isSend", paramg.gbt);
-    localIntent.putExtra("cost", paramg.cCY);
-    localIntent.putExtra("doSceneCount", paramg.mdt);
-    MMApplicationContext.getContext().sendBroadcast(localIntent);
-    AppMethodBeat.o(151147);
-  }
-  
-  private static String bpE()
+  private static String Dy()
   {
     AppMethodBeat.i(151146);
     if (Util.isNullOrNil(className)) {
@@ -50,18 +31,37 @@ public class WatchDogPushReceiver
     return str;
   }
   
-  public static void bpF()
+  public static void a(g paramg)
+  {
+    AppMethodBeat.i(151147);
+    Intent localIntent = new Intent();
+    localIntent.setAction("com.tencent.mm.WatchDogPushReceiver");
+    localIntent.setComponent(new ComponentName(MMApplicationContext.getPackageName(), Dy()));
+    localIntent.putExtra("type", 1);
+    localIntent.putExtra("rtType", paramg.rtType);
+    localIntent.putExtra("beginTime", paramg.beginTime);
+    localIntent.putExtra("endTime", paramg.endTime);
+    localIntent.putExtra("rtType", paramg.rtType);
+    localIntent.putExtra("dataLen", paramg.oWl);
+    localIntent.putExtra("isSend", paramg.ihD);
+    localIntent.putExtra("cost", paramg.cost);
+    localIntent.putExtra("doSceneCount", paramg.oWm);
+    MMApplicationContext.getContext().sendBroadcast(localIntent);
+    AppMethodBeat.o(151147);
+  }
+  
+  public static void bNl()
   {
     AppMethodBeat.i(151148);
     Intent localIntent = new Intent();
     localIntent.setAction("com.tencent.mm.WatchDogPushReceiver");
-    localIntent.setComponent(new ComponentName(MMApplicationContext.getPackageName(), bpE()));
+    localIntent.setComponent(new ComponentName(MMApplicationContext.getPackageName(), Dy()));
     localIntent.putExtra("type", 3);
     MMApplicationContext.getContext().sendBroadcast(localIntent);
     AppMethodBeat.o(151148);
   }
   
-  public static void bpG()
+  public static void bNm()
   {
     AppMethodBeat.i(151150);
     if (!CrashReportFactory.hasDebuger())
@@ -71,7 +71,7 @@ public class WatchDogPushReceiver
     }
     Intent localIntent = new Intent();
     localIntent.setAction("com.tencent.mm.WatchDogPushReceiver");
-    localIntent.setComponent(new ComponentName(MMApplicationContext.getPackageName(), bpE()));
+    localIntent.setComponent(new ComponentName(MMApplicationContext.getPackageName(), Dy()));
     localIntent.putExtra("type", 7);
     MMApplicationContext.getContext().sendBroadcast(localIntent);
     AppMethodBeat.o(151150);
@@ -87,7 +87,7 @@ public class WatchDogPushReceiver
     }
     Intent localIntent = new Intent();
     localIntent.setAction("com.tencent.mm.WatchDogPushReceiver");
-    localIntent.setComponent(new ComponentName(MMApplicationContext.getPackageName(), bpE()));
+    localIntent.setComponent(new ComponentName(MMApplicationContext.getPackageName(), Dy()));
     localIntent.putExtra("type", 5);
     localIntent.putExtra("jni", paramInt);
     MMApplicationContext.getContext().sendBroadcast(localIntent);
@@ -113,20 +113,20 @@ public class WatchDogPushReceiver
       paramContext.endTime = paramIntent.getLongExtra("endTime", 0L);
       boolean bool = paramIntent.getBooleanExtra("isSend", false);
       if (!bool) {
-        paramContext.mwS = paramIntent.getLongExtra("dataLen", 0L);
+        paramContext.pqr = paramIntent.getLongExtra("dataLen", 0L);
       }
       for (;;)
       {
-        paramContext.cCY = paramIntent.getLongExtra("cost", 0L);
+        paramContext.cost = paramIntent.getLongExtra("cost", 0L);
         paramContext.count = paramIntent.getLongExtra("doSceneCount", 0L);
-        Log.d("MicroMsg.WatchDogPushReceiver", "onRecv: rtType:" + paramContext.rtType + " isSend:" + bool + " tx:" + paramContext.mwR + " rx:" + paramContext.mwS + " begin:" + paramContext.beginTime + " end:" + paramContext.endTime);
+        Log.d("MicroMsg.WatchDogPushReceiver", "onRecv: rtType:" + paramContext.rtType + " isSend:" + bool + " tx:" + paramContext.pqq + " rx:" + paramContext.pqr + " begin:" + paramContext.beginTime + " end:" + paramContext.endTime);
         if ((paramContext.count != 0L) && (paramContext.rtType != 0L) && (paramContext.beginTime != 0L) && (paramContext.endTime != 0L) && (paramContext.endTime - paramContext.beginTime > 0L)) {
           break;
         }
         Log.w("MicroMsg.WatchDogPushReceiver", "onRecv: count:" + paramContext.count + " rtType:" + paramContext.rtType + " begin:" + paramContext.beginTime + " end:" + paramContext.endTime);
         AppMethodBeat.o(151145);
         return;
-        paramContext.mwR = paramIntent.getLongExtra("dataLen", 0L);
+        paramContext.pqq = paramIntent.getLongExtra("dataLen", 0L);
       }
       AppMethodBeat.o(151145);
       return;

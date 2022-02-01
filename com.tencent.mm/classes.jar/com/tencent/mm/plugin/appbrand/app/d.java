@@ -2,50 +2,50 @@ package com.tencent.mm.plugin.appbrand.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.e;
-import com.tencent.mm.plugin.appbrand.service.g;
-import com.tencent.mm.plugin.appbrand.service.g.a;
+import com.tencent.mm.plugin.appbrand.service.h;
+import com.tencent.mm.plugin.appbrand.service.h.a;
 import com.tencent.mm.sdk.platformtools.MD5Util;
 
 public final class d
-  implements g
+  implements h
 {
-  private String nBW;
-  private g.a nBX;
+  private String qBl;
+  private h.a qBm;
   
-  public final void a(g.a parama)
+  public final void UQ(String paramString)
   {
-    this.nBX = parama;
+    AppMethodBeat.i(317803);
+    this.qBl = MD5Util.getMD5String(paramString + String.valueOf(System.currentTimeMillis()));
+    AppMethodBeat.o(317803);
   }
   
-  public final void acp(String paramString)
+  public final void a(h.a parama)
   {
-    AppMethodBeat.i(257831);
-    this.nBW = MD5Util.getMD5String(paramString + String.valueOf(System.currentTimeMillis()));
-    AppMethodBeat.o(257831);
+    this.qBm = parama;
   }
   
-  public final String bFl()
+  public final String cL(String paramString1, String paramString2)
   {
-    return this.nBW;
+    AppMethodBeat.i(317798);
+    paramString1 = n.aqS().O(paramString1, paramString2);
+    AppMethodBeat.o(317798);
+    return paramString1;
   }
   
-  public final g.a bFm()
+  public final h.a ceA()
   {
-    return this.nBX;
+    return this.qBm;
+  }
+  
+  public final String cez()
+  {
+    return this.qBl;
   }
   
   public final void clear()
   {
-    this.nBW = null;
-    this.nBX = null;
-  }
-  
-  public final String cu(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(257830);
-    paramString1 = m.QG().L(paramString1, paramString2);
-    AppMethodBeat.o(257830);
-    return paramString1;
+    this.qBl = null;
+    this.qBm = null;
   }
 }
 

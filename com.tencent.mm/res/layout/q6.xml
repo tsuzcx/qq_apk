@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:paddingTop="7.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="15.0dip" android:textColor="@color/l4" android:ellipsize="end" android:gravity="left" android:id="@id/ebx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxEms="5" android:singleLine="false" android:includeFontPadding="false" />
-    <TextView android:textSize="15.0dip" android:textColor="@color/a2x" android:gravity="left" android:id="@id/ec4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="false" android:lineSpacingExtra="1.0dip" />
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:background="@color/BW_97" android:layout_width="fill_parent" android:layout_height="@dimen/df" />
+    <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/kpd" android:paddingLeft="@dimen/cv" android:layout_width="fill_parent" android:layout_height="@dimen/bb" android:layout_weight="1.0" style="@style/mk">
+        <LinearLayout android:gravity="center|left" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/m4">
+            <TextView android:ellipsize="end" android:id="@android:id/title" android:paddingRight="@dimen/m2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gsa" android:singleLine="true" style="@style/m4" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

@@ -1,100 +1,76 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.b;
 import java.util.LinkedList;
 
 public final class bce
-  extends dyy
+  extends com.tencent.mm.bx.a
 {
-  public String RDi;
-  public b SNH;
+  public FinderJumpInfo ZNl;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(231123);
+    AppMethodBeat.i(259334);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse != null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.ZNl != null)
       {
-        paramVarArgs.oE(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+        paramVarArgs.qD(1, this.ZNl.computeSize());
+        this.ZNl.writeFields(paramVarArgs);
       }
-      if (this.RDi != null) {
-        paramVarArgs.f(2, this.RDi);
-      }
-      if (this.SNH != null) {
-        paramVarArgs.c(3, this.SNH);
-      }
-      AppMethodBeat.o(231123);
+      AppMethodBeat.o(259334);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label408;
+      if (this.ZNl == null) {
+        break label284;
       }
     }
-    label408:
-    for (int i = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; i = 0)
+    label284:
+    for (paramInt = i.a.a.a.qC(1, this.ZNl.computeSize()) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.RDi != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.RDi);
-      }
-      i = paramInt;
-      if (this.SNH != null) {
-        i = paramInt + g.a.a.b.b.a.b(3, this.SNH);
-      }
-      AppMethodBeat.o(231123);
-      return i;
+      AppMethodBeat.o(259334);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(231123);
+        AppMethodBeat.o(259334);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         bce localbce = (bce)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(231123);
+          AppMethodBeat.o(259334);
           return -1;
-        case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject = (byte[])paramVarArgs.get(paramInt);
-            jh localjh = new jh();
-            if ((localObject != null) && (localObject.length > 0)) {
-              localjh.parseFrom((byte[])localObject);
-            }
-            localbce.BaseResponse = localjh;
-            paramInt += 1;
-          }
-          AppMethodBeat.o(231123);
-          return 0;
-        case 2: 
-          localbce.RDi = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(231123);
-          return 0;
         }
-        localbce.SNH = ((g.a.a.a.a)localObject).abFh.iUw();
-        AppMethodBeat.o(231123);
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          FinderJumpInfo localFinderJumpInfo = new FinderJumpInfo();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localFinderJumpInfo.parseFrom((byte[])localObject);
+          }
+          localbce.ZNl = localFinderJumpInfo;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(259334);
         return 0;
       }
-      AppMethodBeat.o(231123);
+      AppMethodBeat.o(259334);
       return -1;
     }
   }

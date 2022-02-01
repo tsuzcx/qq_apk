@@ -16,14 +16,14 @@ import java.util.ArrayList;
 public class StoryLoadIconPreference
   extends Preference
 {
-  private StoryAvatarDotsView jmo;
-  private b.h jmp;
-  private int jmq;
-  private int jmr;
-  private int jms;
-  private int jmt;
-  private int jmu;
-  private ArrayList<String> jmv;
+  private StoryAvatarDotsView lPm;
+  private b.h lPn;
+  private int lPo;
+  private int lPp;
+  private int lPq;
+  private int lPr;
+  private int lPs;
+  private ArrayList<String> lPt;
   private Context mContext;
   private View mView;
   
@@ -32,10 +32,10 @@ public class StoryLoadIconPreference
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(13018);
     this.mView = null;
-    this.jmt = -1;
-    this.jmu = -1;
-    this.jmv = new ArrayList();
-    co(paramContext);
+    this.lPr = -1;
+    this.lPs = -1;
+    this.lPt = new ArrayList();
+    dc(paramContext);
     AppMethodBeat.o(13018);
   }
   
@@ -44,14 +44,14 @@ public class StoryLoadIconPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(13019);
     this.mView = null;
-    this.jmt = -1;
-    this.jmu = -1;
-    this.jmv = new ArrayList();
-    co(paramContext);
+    this.lPr = -1;
+    this.lPs = -1;
+    this.lPt = new ArrayList();
+    dc(paramContext);
     AppMethodBeat.o(13019);
   }
   
-  private void co(Context paramContext)
+  private void dc(Context paramContext)
   {
     AppMethodBeat.i(13020);
     setLayoutResource(a.f.mm_preference);
@@ -63,32 +63,32 @@ public class StoryLoadIconPreference
   {
     AppMethodBeat.i(13022);
     super.onBindView(paramView);
-    this.jmq = com.tencent.mm.ci.a.fromDPToPix(this.mContext, 21);
-    this.jms = com.tencent.mm.ci.a.fromDPToPix(this.mContext, 2);
-    this.jmr = com.tencent.mm.ci.a.fromDPToPix(this.mContext, this.jmq);
-    this.jmt = this.mContext.getResources().getColor(com.tencent.mm.chatroom.ui.a.b.icon_border_color);
-    this.jmo = ((StoryAvatarDotsView)paramView.findViewById(a.e.jdt));
-    this.jmo.setIconSize(this.jmq + this.jms * 2);
-    this.jmo.setIconGap(this.jmr / 2);
-    if (this.jmo != null)
+    this.lPo = com.tencent.mm.cd.a.fromDPToPix(this.mContext, 21);
+    this.lPq = com.tencent.mm.cd.a.fromDPToPix(this.mContext, 2);
+    this.lPp = com.tencent.mm.cd.a.fromDPToPix(this.mContext, this.lPo);
+    this.lPr = this.mContext.getResources().getColor(com.tencent.mm.chatroom.ui.a.b.icon_border_color);
+    this.lPm = ((StoryAvatarDotsView)paramView.findViewById(a.e.lFB));
+    this.lPm.setIconSize(this.lPo + this.lPq * 2);
+    this.lPm.setIconGap(this.lPp / 2);
+    if (this.lPm != null)
     {
-      if (this.jmv.size() > 0)
+      if (this.lPt.size() > 0)
       {
-        this.jmo.setVisibility(0);
-        this.jmo.setIconLayerCount(Math.min(this.jmv.size(), 3));
-        if (this.jmp == null) {
-          this.jmp = new com.tencent.mm.plugin.appbrand.ui.widget.a(this.jmq, this.jms, this.jmt);
+        this.lPm.setVisibility(0);
+        this.lPm.setIconLayerCount(Math.min(this.lPt.size(), 3));
+        if (this.lPn == null) {
+          this.lPn = new com.tencent.mm.plugin.appbrand.ui.widget.a(this.lPo, this.lPq, this.lPr);
         }
         int i = 0;
-        while (i < this.jmo.getChildCount())
+        while (i < this.lPm.getChildCount())
         {
-          com.tencent.mm.pluginsdk.ui.a.b.a(this.jmo.Dt(i), (String)this.jmv.get(i), 0.5F, false);
+          com.tencent.mm.pluginsdk.ui.a.b.a(this.lPm.DS(i), (String)this.lPt.get(i), 0.5F, false);
           i += 1;
         }
         AppMethodBeat.o(13022);
         return;
       }
-      this.jmo.setVisibility(8);
+      this.lPm.setVisibility(8);
     }
     AppMethodBeat.o(13022);
   }
@@ -101,7 +101,7 @@ public class StoryLoadIconPreference
       paramViewGroup = super.onCreateView(paramViewGroup);
       ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(a.e.content);
       localViewGroup.removeAllViews();
-      View.inflate(this.mContext, a.f.jes, localViewGroup);
+      View.inflate(this.mContext, a.f.lGD, localViewGroup);
       this.mView = paramViewGroup;
     }
     paramViewGroup = this.mView;
@@ -111,7 +111,7 @@ public class StoryLoadIconPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.story.StoryLoadIconPreference
  * JD-Core Version:    0.7.0.1
  */

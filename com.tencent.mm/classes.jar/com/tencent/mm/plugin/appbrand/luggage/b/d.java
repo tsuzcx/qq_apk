@@ -5,52 +5,63 @@ import android.text.Spannable;
 import android.text.Spannable.Factory;
 import android.text.SpannableString;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cl.c;
-import com.tencent.mm.cl.g;
-import com.tencent.mm.cl.h;
-import com.tencent.mm.plugin.appbrand.app.j;
+import com.tencent.mm.plugin.appbrand.app.k;
+import com.tencent.mm.plugin.appbrand.widget.input.a.b;
 import com.tencent.mm.plugin.appbrand.widget.input.a.b.a;
 import com.tencent.mm.pointers.PInt;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.smiley.EmojiHelper;
+import com.tencent.mm.smiley.QQSmileyManager;
+import com.tencent.mm.smiley.QQSmileyManager.a;
+import com.tencent.mm.smiley.u;
+import com.tencent.mm.smiley.w;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/luggage/customize/LuggageEmojiCompatByWechat;", "Lcom/tencent/mm/plugin/appbrand/widget/input/emoji/IEmojiCompat;", "()V", "getEmojiItemBySoftBank", "Lcom/tencent/mm/plugin/appbrand/widget/input/emoji/IEmojiCompat$EmojiInfo;", "codePoint", "", "getSmileySpan", "Landroid/text/SpannableString;", "context", "Landroid/content/Context;", "source", "", "sizePx", "", "replaceEmojiSpan", "Landroid/text/Spannable;", "ss", "sizeInPx", "maxNum", "Lcom/tencent/mm/pointers/PInt;", "factory", "Landroid/text/Spannable$Factory;", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/luggage/customize/LuggageEmojiCompatByWechat;", "Lcom/tencent/mm/plugin/appbrand/widget/input/emoji/IEmojiCompat;", "()V", "getEmojiItemBySoftBank", "Lcom/tencent/mm/plugin/appbrand/widget/input/emoji/IEmojiCompat$EmojiInfo;", "codePoint", "", "getSmileySpan", "Landroid/text/SpannableString;", "context", "Landroid/content/Context;", "source", "", "sizePx", "", "replaceEmojiSpan", "Landroid/text/Spannable;", "ss", "sizeInPx", "maxNum", "Lcom/tencent/mm/pointers/PInt;", "factory", "Landroid/text/Spannable$Factory;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
-  implements com.tencent.mm.plugin.appbrand.widget.input.a.b
+  implements b
 {
-  public static final d qat;
+  public static final d tfy;
   
   static
   {
     AppMethodBeat.i(50854);
-    qat = new d();
-    j.act("com.tencent.mm.plugin.emoji.PluginEmoji");
+    tfy = new d();
+    k.UT("com.tencent.mm.plugin.emoji.PluginEmoji");
     AppMethodBeat.o(50854);
   }
   
-  public final b.a BS(int paramInt)
+  public final b.a Ch(int paramInt)
   {
     AppMethodBeat.i(50852);
-    c localc = com.tencent.mm.cl.b.htF().asg(paramInt);
-    if (localc != null)
+    EmojiHelper.iUM();
+    w localw = EmojiHelper.ayo(paramInt);
+    if (localw == null)
     {
-      b.a locala = new b.a();
-      locala.rzB = localc.rzB;
-      locala.rzC = localc.rzC;
-      locala.rzD = localc.rzD;
       AppMethodBeat.o(50852);
-      return locala;
+      return null;
     }
+    b.a locala = new b.a();
+    if (localw.mdx.length > 0) {
+      locala.uKE = localw.mdx[0];
+    }
+    if (localw.mdx.length > 1) {
+      locala.uKF = localw.mdx[1];
+    }
+    EmojiHelper.iUM();
+    locala.uKG = EmojiHelper.a(localw);
     AppMethodBeat.o(50852);
-    return null;
+    return locala;
   }
   
   public final Spannable a(Spannable paramSpannable, int paramInt, PInt paramPInt, Spannable.Factory paramFactory)
   {
     AppMethodBeat.i(50853);
-    p.k(paramFactory, "factory");
-    paramSpannable = com.tencent.mm.cl.b.htF().b(paramSpannable, paramInt, paramPInt);
-    g.htS().a(paramSpannable, paramInt, 300);
+    s.u(paramFactory, "factory");
+    EmojiHelper.iUM();
+    paramSpannable = EmojiHelper.a(paramSpannable, paramInt, paramPInt);
+    paramPInt = QQSmileyManager.acyx;
+    QQSmileyManager.a.iVq().a(paramSpannable, paramInt);
     AppMethodBeat.o(50853);
     return paramSpannable;
   }
@@ -58,8 +69,8 @@ public final class d
   public final SpannableString a(Context paramContext, CharSequence paramCharSequence, float paramFloat)
   {
     AppMethodBeat.i(50851);
-    paramContext = h.htZ().a(paramContext, paramCharSequence, paramFloat);
-    p.j(paramContext, "SmileyManager.getInstanc…(context, source, sizePx)");
+    paramContext = u.iVt().a(paramContext, paramCharSequence, paramFloat);
+    s.s(paramContext, "getInstance().getSmileyS…(context, source, sizePx)");
     AppMethodBeat.o(50851);
     return paramContext;
   }

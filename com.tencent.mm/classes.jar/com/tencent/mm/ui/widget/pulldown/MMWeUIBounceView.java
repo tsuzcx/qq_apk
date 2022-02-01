@@ -5,175 +5,173 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.util.b.a;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import com.tencent.mm.util.i;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/widget/pulldown/MMWeUIBounceView;", "Lcom/tencent/mm/ui/widget/pulldown/WeUIBounceViewV2;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "onInterceptTouchEvent", "", "ev", "Landroid/view/MotionEvent;", "onNestedPreScrollInner", "", "target", "Landroid/view/View;", "dx", "dy", "consumed", "", "type", "onNestedScrollInternal", "", "dyUnconsumed", "onStopNestedScroll", "onTouchEvent", "event", "setPadding", "left", "top", "right", "bottom", "Companion", "libmmui_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/widget/pulldown/MMWeUIBounceView;", "Lcom/tencent/mm/ui/widget/pulldown/WeUIBounceViewV2;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "onInterceptTouchEvent", "", "ev", "Landroid/view/MotionEvent;", "onNestedPreScrollInner", "", "target", "Landroid/view/View;", "dx", "dy", "consumed", "", "type", "onNestedScrollInternal", "", "dyUnconsumed", "onStopNestedScroll", "onTouchEvent", "event", "reportOverScrollTimes", "scrollTime", "setBackgroundResource", "resid", "setOffset", "child", "offset", "setPadding", "left", "top", "right", "bottom", "Companion", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class MMWeUIBounceView
   extends WeUIBounceViewV2
 {
-  public static final a Yto;
+  public static final MMWeUIBounceView.a aglC;
   
   static
   {
-    AppMethodBeat.i(220918);
-    Yto = new a((byte)0);
-    AppMethodBeat.o(220918);
+    AppMethodBeat.i(251935);
+    aglC = new MMWeUIBounceView.a((byte)0);
+    AppMethodBeat.o(251935);
   }
   
   public MMWeUIBounceView(Context paramContext)
   {
     this(paramContext, null);
-    AppMethodBeat.i(220916);
-    AppMethodBeat.o(220916);
+    AppMethodBeat.i(251930);
+    AppMethodBeat.o(251930);
   }
   
   public MMWeUIBounceView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(220913);
-    paramContext = i.YtH;
-    paramContext = com.tencent.mm.util.i.YyX;
-    paramContext = com.tencent.mm.util.i.a(b.a.YxO, Integer.valueOf(0));
-    if (paramContext == null)
-    {
-      paramContext = new t("null cannot be cast to non-null type kotlin.Int");
-      AppMethodBeat.o(220913);
-      throw paramContext;
-    }
-    if (((Integer)paramContext).intValue() == 1) {}
+    AppMethodBeat.i(251925);
+    paramContext = j.aglL;
+    paramContext = i.agtt;
+    if (((Integer)i.a(b.a.agqx, Integer.valueOf(0))).intValue() == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      i.HP(bool);
-      AppMethodBeat.o(220913);
+      j.NK(bool);
+      AppMethodBeat.o(251925);
       return;
     }
   }
   
+  public final void P(View paramView, int paramInt)
+  {
+    AppMethodBeat.i(251940);
+    super.P(paramView, paramInt);
+    AppMethodBeat.o(251940);
+  }
+  
   protected final void a(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(220905);
-    p.k(paramView, "target");
+    AppMethodBeat.i(251971);
+    s.u(paramView, "target");
     try
     {
       super.a(paramView, paramInt1, paramInt2, paramArrayOfInt);
-      AppMethodBeat.o(220905);
+      AppMethodBeat.o(251971);
       return;
     }
-    catch (Throwable paramView)
+    finally
     {
-      a.ayM(3);
+      MMWeUIBounceView.a.aFs(3);
       Log.printErrStackTrace("PullDownParentView", paramView, "onNestedScrollInternal err", new Object[0]);
-      AppMethodBeat.o(220905);
+      AppMethodBeat.o(251971);
     }
   }
   
   protected final int b(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt, int paramInt3)
   {
-    AppMethodBeat.i(220904);
-    p.k(paramView, "target");
-    p.k(paramArrayOfInt, "consumed");
+    AppMethodBeat.i(251965);
+    s.u(paramView, "target");
+    s.u(paramArrayOfInt, "consumed");
     try
     {
       paramInt1 = super.b(paramView, paramInt1, paramInt2, paramArrayOfInt, paramInt3);
-      AppMethodBeat.o(220904);
+      AppMethodBeat.o(251965);
       return paramInt1;
     }
-    catch (Throwable paramView)
+    finally
     {
-      a.ayM(2);
+      MMWeUIBounceView.a.aFs(2);
       Log.printErrStackTrace("PullDownParentView", paramView, "onNestedPreScrollInner err", new Object[0]);
-      AppMethodBeat.o(220904);
+      AppMethodBeat.o(251965);
     }
     return 0;
   }
   
   public final void l(View paramView, int paramInt)
   {
-    AppMethodBeat.i(220908);
-    p.k(paramView, "target");
+    AppMethodBeat.i(251976);
+    s.u(paramView, "target");
     try
     {
       super.l(paramView, paramInt);
-      AppMethodBeat.o(220908);
+      AppMethodBeat.o(251976);
       return;
     }
-    catch (Throwable paramView)
+    finally
     {
-      a.ayM(4);
+      MMWeUIBounceView.a.aFs(4);
       Log.printErrStackTrace("PullDownParentView", paramView, "onStopNestedScroll err", new Object[0]);
-      AppMethodBeat.o(220908);
+      AppMethodBeat.o(251976);
     }
   }
   
   public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool1 = false;
-    AppMethodBeat.i(220894);
+    AppMethodBeat.i(251950);
     try
     {
       boolean bool2 = super.onInterceptTouchEvent(paramMotionEvent);
       bool1 = bool2;
     }
-    catch (Throwable paramMotionEvent)
+    finally
     {
       for (;;)
       {
-        a.ayM(0);
+        MMWeUIBounceView.a.aFs(0);
         Log.printErrStackTrace("PullDownParentView", paramMotionEvent, "onInterceptTouchEvent err", new Object[0]);
       }
     }
-    AppMethodBeat.o(220894);
+    AppMethodBeat.o(251950);
     return bool1;
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool1 = false;
-    AppMethodBeat.i(220900);
-    p.k(paramMotionEvent, "event");
+    AppMethodBeat.i(251958);
+    s.u(paramMotionEvent, "event");
     try
     {
       boolean bool2 = super.onTouchEvent(paramMotionEvent);
       bool1 = bool2;
     }
-    catch (Throwable paramMotionEvent)
+    finally
     {
       for (;;)
       {
-        a.ayM(1);
+        MMWeUIBounceView.a.aFs(1);
         Log.printErrStackTrace("PullDownParentView", paramMotionEvent, "onTouchEvent err", new Object[0]);
       }
     }
-    AppMethodBeat.o(220900);
+    AppMethodBeat.o(251958);
     return bool1;
+  }
+  
+  public final void setBackgroundResource(int paramInt)
+  {
+    AppMethodBeat.i(251981);
+    View localView = getMContentView();
+    if (localView != null) {
+      localView.setBackgroundResource(paramInt);
+    }
+    AppMethodBeat.o(251981);
   }
   
   public final void setPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(220891);
+    AppMethodBeat.i(251945);
     super.setPadding(paramInt1, paramInt2, paramInt3, paramInt4);
-    AppMethodBeat.o(220891);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/widget/pulldown/MMWeUIBounceView$Companion;", "", "()V", "KEY_onInterceptTouchEvent", "", "KEY_onNestedPreScroll", "KEY_onNestedScroll", "KEY_onStopNestedScroll", "KEY_onTouchEvent", "reportErr", "", "key", "libmmui_release"})
-  public static final class a
-  {
-    public static void ayM(int paramInt)
-    {
-      AppMethodBeat.i(196749);
-      f.Iyx.idkeyStat(1729L, paramInt, 1L, false);
-      AppMethodBeat.o(196749);
-    }
+    AppMethodBeat.o(251945);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.widget.pulldown.MMWeUIBounceView
  * JD-Core Version:    0.7.0.1
  */

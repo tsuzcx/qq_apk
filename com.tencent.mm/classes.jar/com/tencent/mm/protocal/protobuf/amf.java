@@ -1,196 +1,141 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class amf
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int RIs;
-  public LinkedList<pf> RVd;
-  public String RVi;
-  public String RVm;
-  public LinkedList<String> RXF;
-  public int RXG;
-  public long RXN;
-  public String SwE;
-  public String SwF;
-  public String SwG;
-  public String SwH;
-  public String SwI;
-  
-  public amf()
-  {
-    AppMethodBeat.i(205342);
-    this.RVd = new LinkedList();
-    this.RXF = new LinkedList();
-    AppMethodBeat.o(205342);
-  }
+  public String dbPath;
+  public String sql;
+  public int zAd;
+  public String zAf;
+  public String zAh;
+  public String zAi;
+  public String zzS;
+  public int zzX;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(205345);
+    AppMethodBeat.i(257731);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.SwE != null) {
-        paramVarArgs.f(1, this.SwE);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.zzS != null) {
+        paramVarArgs.g(1, this.zzS);
       }
-      if (this.SwF != null) {
-        paramVarArgs.f(2, this.SwF);
+      paramVarArgs.bS(2, this.zzX);
+      if (this.sql != null) {
+        paramVarArgs.g(3, this.sql);
       }
-      paramVarArgs.bm(3, this.RXN);
-      paramVarArgs.e(4, 8, this.RVd);
-      paramVarArgs.aY(5, this.RIs);
-      if (this.SwG != null) {
-        paramVarArgs.f(6, this.SwG);
+      if (this.dbPath != null) {
+        paramVarArgs.g(4, this.dbPath);
       }
-      if (this.RVi != null) {
-        paramVarArgs.f(7, this.RVi);
+      if (this.zAf != null) {
+        paramVarArgs.g(5, this.zAf);
       }
-      if (this.RVm != null) {
-        paramVarArgs.f(8, this.RVm);
+      if (this.zAi != null) {
+        paramVarArgs.g(6, this.zAi);
       }
-      paramVarArgs.e(9, 1, this.RXF);
-      paramVarArgs.aY(10, this.RXG);
-      if (this.SwH != null) {
-        paramVarArgs.f(11, this.SwH);
+      paramVarArgs.bS(7, this.zAd);
+      if (this.zAh != null) {
+        paramVarArgs.g(8, this.zAh);
       }
-      if (this.SwI != null) {
-        paramVarArgs.f(12, this.SwI);
-      }
-      AppMethodBeat.o(205345);
+      AppMethodBeat.o(257731);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.SwE == null) {
-        break label892;
+      if (this.zzS == null) {
+        break label606;
       }
     }
-    label892:
-    for (paramInt = g.a.a.b.b.a.g(1, this.SwE) + 0;; paramInt = 0)
+    label606:
+    for (paramInt = i.a.a.b.b.a.h(1, this.zzS) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.SwF != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.SwF);
-      }
-      i = i + g.a.a.b.b.a.p(3, this.RXN) + g.a.a.a.c(4, 8, this.RVd) + g.a.a.b.b.a.bM(5, this.RIs);
+      int i = paramInt + i.a.a.b.b.a.cJ(2, this.zzX);
       paramInt = i;
-      if (this.SwG != null) {
-        paramInt = i + g.a.a.b.b.a.g(6, this.SwG);
+      if (this.sql != null) {
+        paramInt = i + i.a.a.b.b.a.h(3, this.sql);
       }
       i = paramInt;
-      if (this.RVi != null) {
-        i = paramInt + g.a.a.b.b.a.g(7, this.RVi);
+      if (this.dbPath != null) {
+        i = paramInt + i.a.a.b.b.a.h(4, this.dbPath);
       }
       paramInt = i;
-      if (this.RVm != null) {
-        paramInt = i + g.a.a.b.b.a.g(8, this.RVm);
-      }
-      i = paramInt + g.a.a.a.c(9, 1, this.RXF) + g.a.a.b.b.a.bM(10, this.RXG);
-      paramInt = i;
-      if (this.SwH != null) {
-        paramInt = i + g.a.a.b.b.a.g(11, this.SwH);
+      if (this.zAf != null) {
+        paramInt = i + i.a.a.b.b.a.h(5, this.zAf);
       }
       i = paramInt;
-      if (this.SwI != null) {
-        i = paramInt + g.a.a.b.b.a.g(12, this.SwI);
+      if (this.zAi != null) {
+        i = paramInt + i.a.a.b.b.a.h(6, this.zAi);
       }
-      AppMethodBeat.o(205345);
-      return i;
+      i += i.a.a.b.b.a.cJ(7, this.zAd);
+      paramInt = i;
+      if (this.zAh != null) {
+        paramInt = i + i.a.a.b.b.a.h(8, this.zAh);
+      }
+      AppMethodBeat.o(257731);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.RVd.clear();
-        this.RXF.clear();
-        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(205345);
+        AppMethodBeat.o(257731);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         amf localamf = (amf)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(205345);
+          AppMethodBeat.o(257731);
           return -1;
         case 1: 
-          localamf.SwE = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(205345);
+          localamf.zzS = locala.ajGk.readString();
+          AppMethodBeat.o(257731);
           return 0;
         case 2: 
-          localamf.SwF = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(205345);
+          localamf.zzX = locala.ajGk.aar();
+          AppMethodBeat.o(257731);
           return 0;
         case 3: 
-          localamf.RXN = ((g.a.a.a.a)localObject).abFh.AN();
-          AppMethodBeat.o(205345);
+          localamf.sql = locala.ajGk.readString();
+          AppMethodBeat.o(257731);
           return 0;
         case 4: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject = (byte[])paramVarArgs.get(paramInt);
-            pf localpf = new pf();
-            if ((localObject != null) && (localObject.length > 0)) {
-              localpf.parseFrom((byte[])localObject);
-            }
-            localamf.RVd.add(localpf);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(205345);
+          localamf.dbPath = locala.ajGk.readString();
+          AppMethodBeat.o(257731);
           return 0;
         case 5: 
-          localamf.RIs = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(205345);
+          localamf.zAf = locala.ajGk.readString();
+          AppMethodBeat.o(257731);
           return 0;
         case 6: 
-          localamf.SwG = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(205345);
+          localamf.zAi = locala.ajGk.readString();
+          AppMethodBeat.o(257731);
           return 0;
         case 7: 
-          localamf.RVi = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(205345);
-          return 0;
-        case 8: 
-          localamf.RVm = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(205345);
-          return 0;
-        case 9: 
-          localamf.RXF.add(((g.a.a.a.a)localObject).abFh.readString());
-          AppMethodBeat.o(205345);
-          return 0;
-        case 10: 
-          localamf.RXG = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(205345);
-          return 0;
-        case 11: 
-          localamf.SwH = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(205345);
+          localamf.zAd = locala.ajGk.aar();
+          AppMethodBeat.o(257731);
           return 0;
         }
-        localamf.SwI = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(205345);
+        localamf.zAh = locala.ajGk.readString();
+        AppMethodBeat.o(257731);
         return 0;
       }
-      AppMethodBeat.o(205345);
+      AppMethodBeat.o(257731);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.amf
  * JD-Core Version:    0.7.0.1
  */

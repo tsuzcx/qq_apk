@@ -17,8 +17,8 @@ import java.util.LinkedList;
 public final class v
   implements View.OnClickListener
 {
-  private int CKU;
-  private int Dba;
+  private int IFc;
+  private int IVo;
   private Context mContext;
   private int mPosition;
   private int mScene;
@@ -29,10 +29,10 @@ public final class v
     this.mScene = 13;
   }
   
-  public final void hE(int paramInt1, int paramInt2)
+  public final void jh(int paramInt1, int paramInt2)
   {
-    this.CKU = paramInt1;
-    this.Dba = 1301;
+    this.IFc = paramInt1;
+    this.IVo = 1301;
     this.mPosition = paramInt2;
   }
   
@@ -40,8 +40,8 @@ public final class v
   {
     AppMethodBeat.i(42415);
     Object localObject = new b();
-    ((b)localObject).bn(paramView);
-    a.c("com/tencent/mm/plugin/game/ui/GameURLClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+    ((b)localObject).cH(paramView);
+    a.c("com/tencent/mm/plugin/game/ui/GameURLClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
     if (paramView.getTag() == null)
     {
       a.a(this, "com/tencent/mm/plugin/game/ui/GameURLClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -52,15 +52,15 @@ public final class v
     if ((paramView.getTag() instanceof o))
     {
       paramView = (o)paramView.getTag();
-      if (!Util.isNullOrNil(paramView.CJf))
+      if (!Util.isNullOrNil(paramView.IDq))
       {
-        localObject = ((o.l)paramView.CJf.get(0)).CKt;
+        localObject = ((o.l)paramView.IDq.get(0)).IEE;
         if (Util.isNullOrNil((String)localObject)) {
           break label189;
         }
-        i = c.aY(this.mContext, (String)localObject);
-        localObject = g.a(null, null, paramView.CJY, null);
-        g.a(this.mContext, this.mScene, this.Dba, this.mPosition, i, 0, paramView.field_appId, this.CKU, paramView.field_msgType, paramView.field_gameMsgId, paramView.CJX, (String)localObject);
+        i = c.ba(this.mContext, (String)localObject);
+        localObject = g.a(null, null, paramView.IEi, null);
+        g.a(this.mContext, this.mScene, this.IVo, this.mPosition, i, 0, paramView.field_appId, this.IFc, paramView.field_msgType, paramView.field_gameMsgId, paramView.mNoticeId, (String)localObject);
       }
     }
     for (;;)
@@ -80,15 +80,15 @@ public final class v
           AppMethodBeat.o(42415);
           return;
         }
-        i = c.aY(this.mContext, paramView);
-        g.a(this.mContext, this.mScene, this.Dba, this.mPosition, i, this.CKU, null);
+        i = c.ba(this.mContext, paramView);
+        g.a(this.mContext, this.mScene, this.IVo, this.mPosition, i, this.IFc, null);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.v
  * JD-Core Version:    0.7.0.1
  */

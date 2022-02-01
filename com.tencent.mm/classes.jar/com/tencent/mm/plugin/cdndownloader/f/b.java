@@ -9,27 +9,27 @@ public final class b
   public static void a(a parama)
   {
     AppMethodBeat.i(120811);
-    c localc = cMo();
+    c localc = dpS();
     if (localc != null) {
       Log.i("MicroMsg.CdnDownloadInfoDBHelp", "insert: ".concat(String.valueOf(localc.insert(parama))));
     }
     AppMethodBeat.o(120811);
   }
   
-  public static void asj(String paramString)
+  public static void alN(String paramString)
   {
     AppMethodBeat.i(120812);
-    c localc = cMo();
+    c localc = dpS();
     if (localc != null) {
-      Log.i("MicroMsg.CdnDownloadInfoDBHelp", "removeDownloadInfoByDownloadUrl: ".concat(String.valueOf(localc.ask(paramString))));
+      Log.i("MicroMsg.CdnDownloadInfoDBHelp", "removeDownloadInfoByDownloadUrl: ".concat(String.valueOf(localc.alO(paramString))));
     }
     AppMethodBeat.o(120812);
   }
   
-  public static c cMo()
+  public static c dpS()
   {
     AppMethodBeat.i(120813);
-    c localc = ((com.tencent.mm.plugin.cdndownloader.b.a)h.ae(com.tencent.mm.plugin.cdndownloader.b.a.class)).cMo();
+    c localc = ((com.tencent.mm.plugin.cdndownloader.b.a)h.ax(com.tencent.mm.plugin.cdndownloader.b.a.class)).dpS();
     AppMethodBeat.o(120813);
     return localc;
   }

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/c4b" />
-    <item android:state_focused="true" android:drawable="@drawable/c4b" />
-    <item android:state_selected="true" android:drawable="@drawable/c4b" />
-    <item android:drawable="@color/ac_" />
-</selector>
+    <corners android:radius="2.0dip" />
+    <solid android:color="#fffafafa" />
+</shape>

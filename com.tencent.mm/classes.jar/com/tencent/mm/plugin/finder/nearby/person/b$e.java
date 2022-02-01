@@ -1,28 +1,23 @@
 package com.tencent.mm.plugin.finder.nearby.person;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.a;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"})
+@Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class b$e
-  implements DialogInterface.OnClickListener
+  extends u
+  implements a<ah>
 {
-  public static final e zId;
-  
-  static
+  b$e(b paramb)
   {
-    AppMethodBeat.i(201026);
-    zId = new e();
-    AppMethodBeat.o(201026);
+    super(0);
   }
-  
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.nearby.person.b.e
  * JD-Core Version:    0.7.0.1
  */

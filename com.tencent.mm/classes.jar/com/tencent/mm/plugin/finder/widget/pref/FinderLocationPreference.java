@@ -6,30 +6,29 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.e.h;
 import com.tencent.mm.plugin.messenger.a.b;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.RegionCodeDecoder;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/widget/pref/FinderLocationPreference;", "Lcom/tencent/mm/ui/base/preference/Preference;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "cityCode", "", "getCityCode", "()Ljava/lang/String;", "setCityCode", "(Ljava/lang/String;)V", "countryCode", "getCountryCode", "setCountryCode", "locationIV", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "mView", "Landroid/view/View;", "provinceCode", "getProvinceCode", "setProvinceCode", "selectIV", "selected", "", "getSelected", "()Z", "setSelected", "(Z)V", "showLocationIcon", "getShowLocationIcon", "setShowLocationIcon", "onBindView", "", "view", "onCreateView", "parent", "Landroid/view/ViewGroup;", "updateTitle", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/widget/pref/FinderLocationPreference;", "Lcom/tencent/mm/ui/base/preference/Preference;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "cityCode", "", "getCityCode", "()Ljava/lang/String;", "setCityCode", "(Ljava/lang/String;)V", "countryCode", "getCountryCode", "setCountryCode", "locationIV", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "mView", "Landroid/view/View;", "provinceCode", "getProvinceCode", "setProvinceCode", "selectIV", "selected", "", "getSelected", "()Z", "setSelected", "(Z)V", "showLocationIcon", "getShowLocationIcon", "setShowLocationIcon", "onBindView", "", "view", "onCreateView", "parent", "Landroid/view/ViewGroup;", "updateTitle", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderLocationPreference
   extends Preference
 {
-  private WeImageView Bun;
-  private WeImageView Buo;
-  public boolean Bup;
+  public boolean Bvd;
+  private WeImageView HaY;
+  private WeImageView HaZ;
+  public boolean Hba;
   public String cityCode;
   public String countryCode;
   private View mView;
   public String provinceCode;
-  public boolean xUg;
   
   public FinderLocationPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -46,107 +45,30 @@ public final class FinderLocationPreference
     this.countryCode = "";
     this.provinceCode = "";
     this.cityCode = "";
-    setLayoutResource(b.g.mm_preference);
+    setLayoutResource(e.f.mm_preference);
     AppMethodBeat.o(178503);
   }
   
-  public final void aGJ(String paramString)
+  public final void aCY(String paramString)
   {
     AppMethodBeat.i(178498);
-    p.k(paramString, "<set-?>");
+    s.u(paramString, "<set-?>");
     this.provinceCode = paramString;
     AppMethodBeat.o(178498);
   }
   
-  public final void aGK(String paramString)
+  public final void aCZ(String paramString)
   {
     AppMethodBeat.i(178499);
-    p.k(paramString, "<set-?>");
+    s.u(paramString, "<set-?>");
     this.cityCode = paramString;
     AppMethodBeat.o(178499);
   }
   
-  public final void onBindView(View paramView)
-  {
-    int j = 0;
-    AppMethodBeat.i(178501);
-    p.k(paramView, "view");
-    super.onBindView(paramView);
-    auO(8);
-    Object localObject = paramView.findViewById(b.f.state_icon);
-    if (localObject == null)
-    {
-      paramView = new t("null cannot be cast to non-null type com.tencent.mm.ui.widget.imageview.WeImageView");
-      AppMethodBeat.o(178501);
-      throw paramView;
-    }
-    this.Buo = ((WeImageView)localObject);
-    localObject = this.Buo;
-    if (localObject != null) {
-      if (!this.xUg) {
-        break label119;
-      }
-    }
-    label119:
-    for (int i = 0;; i = 8)
-    {
-      ((WeImageView)localObject).setVisibility(i);
-      paramView = paramView.findViewById(b.f.location_icon);
-      if (paramView != null) {
-        break;
-      }
-      paramView = new t("null cannot be cast to non-null type com.tencent.mm.ui.widget.imageview.WeImageView");
-      AppMethodBeat.o(178501);
-      throw paramView;
-    }
-    this.Bun = ((WeImageView)paramView);
-    paramView = this.Bun;
-    if (paramView != null)
-    {
-      if (this.Bup) {}
-      for (i = j;; i = 8)
-      {
-        paramView.setVisibility(i);
-        AppMethodBeat.o(178501);
-        return;
-      }
-    }
-    AppMethodBeat.o(178501);
-  }
-  
-  public final View onCreateView(ViewGroup paramViewGroup)
-  {
-    AppMethodBeat.i(178500);
-    p.k(paramViewGroup, "parent");
-    paramViewGroup = super.onCreateView(paramViewGroup);
-    Object localObject = paramViewGroup.findViewById(b.f.content);
-    if (localObject == null)
-    {
-      paramViewGroup = new t("null cannot be cast to non-null type android.view.ViewGroup");
-      AppMethodBeat.o(178500);
-      throw paramViewGroup;
-    }
-    localObject = (ViewGroup)localObject;
-    ((ViewGroup)localObject).removeAllViews();
-    View.inflate(getContext(), b.g.finder_location_preference_select, (ViewGroup)localObject);
-    this.mView = paramViewGroup;
-    paramViewGroup = this.mView;
-    AppMethodBeat.o(178500);
-    return paramViewGroup;
-  }
-  
-  public final void setCountryCode(String paramString)
-  {
-    AppMethodBeat.i(178497);
-    p.k(paramString, "<set-?>");
-    this.countryCode = paramString;
-    AppMethodBeat.o(178497);
-  }
-  
-  public final void updateTitle()
+  public final void aMl()
   {
     AppMethodBeat.i(178502);
-    if (!p.h(this.countryCode, "unshow")) {
+    if (!s.p(this.countryCode, "unshow")) {
       if (((CharSequence)this.countryCode).length() != 0) {
         break label61;
       }
@@ -154,19 +76,19 @@ public final class FinderLocationPreference
     label61:
     for (int i = 1; i != 0; i = 0)
     {
-      setTitle((CharSequence)getContext().getString(b.j.finder_settings_unshow));
+      setTitle((CharSequence)this.mContext.getString(e.h.finder_settings_unshow));
       AppMethodBeat.o(178502);
       return;
     }
-    RegionCodeDecoder.hAC();
-    String str1 = RegionCodeDecoder.bxo(this.countryCode);
-    RegionCodeDecoder.hAC();
-    String str2 = RegionCodeDecoder.nN(this.countryCode, this.provinceCode);
-    RegionCodeDecoder.hAC();
-    String str3 = RegionCodeDecoder.bm(this.countryCode, this.provinceCode, this.cityCode);
+    RegionCodeDecoder.jcF();
+    String str1 = RegionCodeDecoder.getLocName(this.countryCode);
+    RegionCodeDecoder.jcF();
+    String str2 = RegionCodeDecoder.pL(this.countryCode, this.provinceCode);
+    RegionCodeDecoder.jcF();
+    String str3 = RegionCodeDecoder.bJ(this.countryCode, this.provinceCode, this.cityCode);
     if (!Util.isNullOrNil(str3))
     {
-      setTitle((CharSequence)(((b)h.ae(b.class)).PL(str2) + " " + str3));
+      setTitle((CharSequence)(((b)h.ax(b.class)).IF(str2) + ' ' + str3));
       AppMethodBeat.o(178502);
       return;
     }
@@ -180,6 +102,84 @@ public final class FinderLocationPreference
       setTitle((CharSequence)str1);
     }
     AppMethodBeat.o(178502);
+  }
+  
+  public final void onBindView(View paramView)
+  {
+    int j = 0;
+    AppMethodBeat.i(178501);
+    s.u(paramView, "view");
+    super.onBindView(paramView);
+    aBq(8);
+    Object localObject = paramView.findViewById(e.e.state_icon);
+    if (localObject == null)
+    {
+      paramView = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.ui.widget.imageview.WeImageView");
+      AppMethodBeat.o(178501);
+      throw paramView;
+    }
+    this.HaZ = ((WeImageView)localObject);
+    localObject = this.HaZ;
+    if (localObject != null) {
+      if (!this.Bvd) {
+        break label119;
+      }
+    }
+    label119:
+    for (int i = 0;; i = 8)
+    {
+      ((WeImageView)localObject).setVisibility(i);
+      paramView = paramView.findViewById(e.e.location_icon);
+      if (paramView != null) {
+        break;
+      }
+      paramView = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.ui.widget.imageview.WeImageView");
+      AppMethodBeat.o(178501);
+      throw paramView;
+    }
+    this.HaY = ((WeImageView)paramView);
+    paramView = this.HaY;
+    if (paramView != null) {
+      if (!this.Hba) {
+        break label162;
+      }
+    }
+    label162:
+    for (i = j;; i = 8)
+    {
+      paramView.setVisibility(i);
+      AppMethodBeat.o(178501);
+      return;
+    }
+  }
+  
+  public final View onCreateView(ViewGroup paramViewGroup)
+  {
+    AppMethodBeat.i(178500);
+    s.u(paramViewGroup, "parent");
+    paramViewGroup = super.onCreateView(paramViewGroup);
+    Object localObject = paramViewGroup.findViewById(e.e.content);
+    if (localObject == null)
+    {
+      paramViewGroup = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+      AppMethodBeat.o(178500);
+      throw paramViewGroup;
+    }
+    localObject = (ViewGroup)localObject;
+    ((ViewGroup)localObject).removeAllViews();
+    View.inflate(this.mContext, e.f.finder_location_preference_select, (ViewGroup)localObject);
+    this.mView = paramViewGroup;
+    paramViewGroup = this.mView;
+    AppMethodBeat.o(178500);
+    return paramViewGroup;
+  }
+  
+  public final void setCountryCode(String paramString)
+  {
+    AppMethodBeat.i(178497);
+    s.u(paramString, "<set-?>");
+    this.countryCode = paramString;
+    AppMethodBeat.o(178497);
   }
 }
 

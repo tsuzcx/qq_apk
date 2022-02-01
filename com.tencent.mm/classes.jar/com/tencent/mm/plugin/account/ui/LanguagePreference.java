@@ -15,7 +15,7 @@ import com.tencent.mm.ui.widget.imageview.WeImageView;
 public class LanguagePreference
   extends Preference
 {
-  public a ndd;
+  public a qay;
   
   public LanguagePreference(Context paramContext)
   {
@@ -38,14 +38,14 @@ public class LanguagePreference
   public final void a(a parama)
   {
     AppMethodBeat.i(128056);
-    if ((parama == null) || (Util.isNullOrNil(parama.ndg)))
+    if ((parama == null) || (Util.isNullOrNil(parama.qaB)))
     {
       Log.e("MicroMsg.LanguagePreference", "setInfo info error");
       AppMethodBeat.o(128056);
       return;
     }
-    this.ndd = parama;
-    setKey(parama.ndg);
+    this.qay = parama;
+    setKey(parama.qaB);
     AppMethodBeat.o(128056);
   }
   
@@ -65,8 +65,8 @@ public class LanguagePreference
       label46:
       if ((j & i) != 0)
       {
-        localTextView.setText(this.ndd.nde);
-        if (!this.ndd.isSelected) {
+        localTextView.setText(this.qay.qaz);
+        if (!this.qay.isSelected) {
           break label103;
         }
       }
@@ -76,7 +76,7 @@ public class LanguagePreference
     for (int i = 0;; i = 8)
     {
       paramView.setVisibility(i);
-      auO(8);
+      aBq(8);
       AppMethodBeat.o(128058);
       return;
       i = 0;
@@ -101,22 +101,22 @@ public class LanguagePreference
   public static final class a
   {
     public boolean isSelected;
-    String nde;
-    private String ndf;
-    public String ndg;
+    private String qaA;
+    public String qaB;
+    public String qaz;
     
     public a(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
     {
-      this.nde = paramString1;
-      this.ndf = paramString2;
-      this.ndg = paramString3;
+      this.qaz = paramString1;
+      this.qaA = paramString2;
+      this.qaB = paramString3;
       this.isSelected = paramBoolean;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.LanguagePreference
  * JD-Core Version:    0.7.0.1
  */

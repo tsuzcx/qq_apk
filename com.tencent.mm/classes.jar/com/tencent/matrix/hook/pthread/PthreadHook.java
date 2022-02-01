@@ -1,6 +1,5 @@
 package com.tencent.matrix.hook.pthread;
 
-import androidx.annotation.Keep;
 import com.tencent.matrix.e.c;
 import com.tencent.matrix.hook.a;
 import java.util.HashSet;
@@ -9,53 +8,51 @@ import java.util.Set;
 public class PthreadHook
   extends a
 {
-  public static final PthreadHook cYv = new PthreadHook();
-  private boolean cSo = false;
-  private boolean cYt = false;
-  public Set<String> cYw = new HashSet();
-  public boolean cYx = false;
-  public boolean cYy = false;
-  public a cYz = null;
+  public static final PthreadHook eVl = new PthreadHook();
+  private boolean eNE = false;
+  private boolean eVj = false;
+  public Set<String> eVm = new HashSet();
+  public boolean eVn = false;
+  public boolean eVo = false;
+  public a eVp = null;
+  private boolean eVq = false;
   public boolean mConfigured = false;
   
-  @Keep
   private native void addHookThreadNameNative(String[] paramArrayOfString);
   
-  @Keep
   private native void enableLoggerNative(boolean paramBoolean);
   
-  @Keep
+  private native void enableTracePthreadReleaseNative(boolean paramBoolean);
+  
   private native void installHooksNative(boolean paramBoolean);
   
-  @Keep
   private native void setThreadStackShrinkEnabledNative(boolean paramBoolean);
   
-  @Keep
   private native boolean setThreadStackShrinkIgnoredCreatorSoPatternsNative(String[] paramArrayOfString);
   
-  @Keep
   private native void setThreadTraceEnabledNative(boolean paramBoolean);
   
-  public final String WJ()
+  public final String axH()
   {
     return "matrix-pthreadhook";
   }
   
-  public final boolean WK()
+  public final boolean axI()
   {
-    addHookThreadNameNative((String[])this.cYw.toArray(new String[0]));
-    enableQuickenNative(this.cYx);
-    enableLoggerNative(this.cSo);
-    if (this.cYz != null)
+    addHookThreadNameNative((String[])this.eVm.toArray(new String[0]));
+    enableQuickenNative(this.eVn);
+    enableLoggerNative(this.eNE);
+    enableTracePthreadReleaseNative(this.eVq);
+    if (this.eVp != null)
     {
-      String[] arrayOfString = new String[this.cYz.cYA.size()];
-      if (setThreadStackShrinkIgnoredCreatorSoPatternsNative((String[])this.cYz.cYA.toArray(arrayOfString))) {
-        setThreadStackShrinkEnabledNative(this.cYz.enabled);
+      String[] arrayOfString = new String[this.eVp.eVr.size()];
+      if (setThreadStackShrinkIgnoredCreatorSoPatternsNative((String[])this.eVp.eVr.toArray(arrayOfString))) {
+        setThreadStackShrinkEnabledNative(this.eVp.enabled);
       }
     }
     for (;;)
     {
-      setThreadTraceEnabledNative(this.cYy);
+      setThreadTraceEnabledNative(this.eVo);
       this.mConfigured = true;
       return true;
       c.e("Matrix.Pthread", "setThreadStackShrinkIgnoredCreatorSoPatternsNative return false, do not enable ThreadStackShrinker.", new Object[0]);
@@ -66,37 +63,35 @@ public class PthreadHook
     }
   }
   
-  public final boolean cR(boolean paramBoolean)
+  public native void dumpNative(String paramString);
+  
+  public final boolean dy(boolean paramBoolean)
   {
-    if (((this.cYy) || ((this.cYz != null) && (this.cYz.enabled))) && (!this.cYt))
+    if (((this.eVo) || ((this.eVp != null) && (this.eVp.enabled))) && (!this.eVj))
     {
       installHooksNative(paramBoolean);
-      this.cYt = true;
+      this.eVj = true;
     }
     return true;
   }
   
-  @Keep
-  public native void dumpNative(String paramString);
-  
-  @Keep
   public native void enableQuickenNative(boolean paramBoolean);
   
   public static class a
   {
-    public final Set<String> cYA = new HashSet(5);
+    public final Set<String> eVr = new HashSet(5);
     public boolean enabled = false;
     
-    public final a ff(String paramString)
+    public final a gD(String paramString)
     {
-      this.cYA.add(paramString);
+      this.eVr.add(paramString);
       return this;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.hook.pthread.PthreadHook
  * JD-Core Version:    0.7.0.1
  */

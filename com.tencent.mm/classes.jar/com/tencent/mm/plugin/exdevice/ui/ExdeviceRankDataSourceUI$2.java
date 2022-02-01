@@ -16,10 +16,10 @@ final class ExdeviceRankDataSourceUI$2
   {
     AppMethodBeat.i(24187);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/exdevice/ui/ExdeviceRankDataSourceUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    paramView = new Intent(this.vpR.getContext(), ExdeviceAddDataSourceUI.class);
-    this.vpR.startActivityForResult(paramView, 1);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/exdevice/ui/ExdeviceRankDataSourceUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    paramView = new Intent(this.yCi.getContext(), ExdeviceAddDataSourceUI.class);
+    this.yCi.startActivityForResult(paramView, 1);
     a.a(this, "com/tencent/mm/plugin/exdevice/ui/ExdeviceRankDataSourceUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(24187);
   }

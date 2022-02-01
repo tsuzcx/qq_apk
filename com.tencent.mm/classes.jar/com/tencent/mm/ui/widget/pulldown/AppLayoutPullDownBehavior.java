@@ -2,7 +2,6 @@ package com.tencent.mm.ui.widget.pulldown;
 
 import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -12,97 +11,117 @@ import android.view.animation.Interpolator;
 import android.widget.OverScroller;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.b.a;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import com.google.android.material.appbar.AppBarLayout.ScrollingViewBehavior;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/widget/pulldown/AppLayoutPullDownBehavior;", "Lcom/google/android/material/appbar/AppBarLayout$ScrollingViewBehavior;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "mDirectionToEnd", "", "mDirectionToEnd$annotations", "()V", "mDirectionToStart", "mMinFlingVelocity", "mOverScroller", "Landroid/widget/OverScroller;", "mSpringBackAnimator", "Landroid/animation/ValueAnimator;", "mSpringBackInterpolator", "Landroid/view/animation/Interpolator;", "computerOffset", "child", "Landroid/view/View;", "newOffset", "minOffset", "maxOffset", "computerWithDampingFactor", "distance", "getDampingFactor", "", "scrollDirection", "getMaxFlingOffset", "getMaxOffset", "getMinFlingVelocity", "getMinOffset", "getOffset", "layoutDependsOn", "", "parent", "Landroidx/coordinatorlayout/widget/CoordinatorLayout;", "dependency", "onDependentViewChanged", "onLayoutChild", "layoutDirection", "onNestedFling", "coordinatorLayout", "target", "velocityX", "velocityY", "consumed", "onNestedPreFling", "onNestedPreScroll", "", "dx", "dy", "", "type", "onNestedPreScrollInner", "onNestedScroll", "dxConsumed", "dyConsumed", "dxUnconsumed", "dyUnconsumed", "onNestedScrollAccepted", "directTargetChild", "axes", "onNestedScrollInner", "distanceConsumed", "distanceUnconsumed", "onStartNestedScroll", "onStopNestedScroll", "scroll", "scrollWithoutDampingFactor", "setOffset", "offset", "springBack", "stopSpringBack", "Companion", "weui-native-android-lib_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/widget/pulldown/AppLayoutPullDownBehavior;", "Lcom/google/android/material/appbar/AppBarLayout$ScrollingViewBehavior;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "mDirectionToEnd", "", "getMDirectionToEnd$annotations", "()V", "mDirectionToStart", "mMinFlingVelocity", "mOverScroller", "Landroid/widget/OverScroller;", "mSpringBackAnimator", "Landroid/animation/ValueAnimator;", "mSpringBackInterpolator", "Landroid/view/animation/Interpolator;", "computerOffset", "child", "Landroid/view/View;", "newOffset", "minOffset", "maxOffset", "computerWithDampingFactor", "distance", "getDampingFactor", "", "scrollDirection", "getMaxFlingOffset", "getMaxOffset", "getMinFlingVelocity", "getMinOffset", "getOffset", "layoutDependsOn", "", "parent", "Landroidx/coordinatorlayout/widget/CoordinatorLayout;", "dependency", "onDependentViewChanged", "onLayoutChild", "layoutDirection", "onNestedFling", "coordinatorLayout", "target", "velocityX", "velocityY", "consumed", "onNestedPreFling", "onNestedPreScroll", "", "dx", "dy", "", "type", "onNestedPreScrollInner", "onNestedScroll", "dxConsumed", "dyConsumed", "dxUnconsumed", "dyUnconsumed", "onNestedScrollAccepted", "directTargetChild", "axes", "onNestedScrollInner", "distanceConsumed", "distanceUnconsumed", "onStartNestedScroll", "onStopNestedScroll", "scroll", "scrollWithoutDampingFactor", "setOffset", "offset", "springBack", "stopSpringBack", "Companion", "weui-native-android-lib_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class AppLayoutPullDownBehavior
   extends AppBarLayout.ScrollingViewBehavior
 {
-  public static final AppLayoutPullDownBehavior.a Ytl;
-  private OverScroller Ytg;
-  private int Yth;
-  private int Yti;
-  private ValueAnimator Ytj;
-  private final Interpolator Ytk;
-  private int vZ;
+  public static final AppLayoutPullDownBehavior.a aglv;
+  private final Interpolator aglA;
+  private OverScroller aglw;
+  private int aglx;
+  private int agly;
+  private ValueAnimator aglz;
+  private int wV;
   
   static
   {
-    AppMethodBeat.i(252420);
-    Ytl = new AppLayoutPullDownBehavior.a((byte)0);
-    AppMethodBeat.o(252420);
+    AppMethodBeat.i(252029);
+    aglv = new AppLayoutPullDownBehavior.a((byte)0);
+    AppMethodBeat.o(252029);
   }
   
   public AppLayoutPullDownBehavior(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(252419);
-    this.Ytk = ((Interpolator)new DecelerateInterpolator(0.8F));
-    AppMethodBeat.o(252419);
+    AppMethodBeat.i(251977);
+    this.aglA = ((Interpolator)new DecelerateInterpolator(0.8F));
+    AppMethodBeat.o(251977);
   }
   
-  public static void K(View paramView, int paramInt)
+  private static void P(View paramView, int paramInt)
   {
-    AppMethodBeat.i(252397);
-    p.k(paramView, "child");
+    AppMethodBeat.i(251992);
+    s.u(paramView, "child");
     paramView.setTranslationY(paramInt);
-    AppMethodBeat.o(252397);
+    AppMethodBeat.o(251992);
   }
   
-  private static int aV(View paramView, int paramInt)
+  private static final void a(AppLayoutPullDownBehavior paramAppLayoutPullDownBehavior, View paramView, ValueAnimator paramValueAnimator)
   {
-    AppMethodBeat.i(252399);
-    p.k(paramView, "child");
-    if ((paramInt == 2) || (paramInt == 8))
+    AppMethodBeat.i(252023);
+    s.u(paramAppLayoutPullDownBehavior, "this$0");
+    s.u(paramView, "$child");
+    paramAppLayoutPullDownBehavior = paramValueAnimator.getAnimatedValue();
+    if (paramAppLayoutPullDownBehavior == null)
     {
-      paramInt = paramView.getHeight() / 3;
-      AppMethodBeat.o(252399);
+      paramAppLayoutPullDownBehavior = new NullPointerException("null cannot be cast to non-null type kotlin.Int");
+      AppMethodBeat.o(252023);
+      throw paramAppLayoutPullDownBehavior;
+    }
+    P(paramView, ((Integer)paramAppLayoutPullDownBehavior).intValue());
+    AppMethodBeat.o(252023);
+  }
+  
+  private static int bs(View paramView, int paramInt)
+  {
+    AppMethodBeat.i(251995);
+    s.u(paramView, "child");
+    switch (paramInt)
+    {
+    default: 
+      paramInt = -paramView.getHeight() / 3;
+      AppMethodBeat.o(251995);
       return paramInt;
     }
-    paramInt = -paramView.getHeight() / 3;
-    AppMethodBeat.o(252399);
+    paramInt = paramView.getHeight() / 3;
+    AppMethodBeat.o(251995);
     return paramInt;
   }
   
-  private static int aW(View paramView, int paramInt)
+  private static int bt(View paramView, int paramInt)
   {
-    AppMethodBeat.i(252402);
-    float f2 = iQ(paramView);
-    float f1 = f2;
-    if (f2 == 0.0F) {
-      f1 = 1.0F;
+    AppMethodBeat.i(252008);
+    float f = mn(paramView);
+    if (f == 0.0F) {}
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        f = 1.0F;
+      }
+      paramInt = (int)(paramInt / f + 0.5F);
+      AppMethodBeat.o(252008);
+      return paramInt;
     }
-    paramInt = (int)(paramInt / f1 + 0.5F);
-    AppMethodBeat.o(252402);
-    return paramInt;
   }
   
-  private static int cm(View paramView)
+  private static int cI(View paramView)
   {
-    AppMethodBeat.i(252394);
-    p.k(paramView, "child");
+    AppMethodBeat.i(251982);
+    s.u(paramView, "child");
     int i = (int)paramView.getTranslationY();
-    AppMethodBeat.o(252394);
+    AppMethodBeat.o(251982);
     return i;
   }
   
-  private static int cn(View paramView)
+  private static int cJ(View paramView)
   {
-    AppMethodBeat.i(252404);
-    p.k(paramView, "child");
+    AppMethodBeat.i(252015);
+    s.u(paramView, "child");
     int i = paramView.getHeight();
-    AppMethodBeat.o(252404);
+    AppMethodBeat.o(252015);
     return i;
   }
   
-  private static int g(View paramView, int paramInt1, int paramInt2, int paramInt3)
+  private static int f(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(252396);
-    int k = cm(paramView);
+    AppMethodBeat.i(251988);
+    int k = cI(paramView);
     int j = 0;
     int i = j;
     if (k >= paramInt2)
@@ -114,149 +133,144 @@ public final class AppLayoutPullDownBehavior
         i = j;
         if (k != paramInt1)
         {
-          K(paramView, paramInt1);
+          P(paramView, paramInt1);
           i = k - paramInt1;
         }
       }
     }
-    AppMethodBeat.o(252396);
+    AppMethodBeat.o(251988);
     return i;
   }
   
-  private final int h(View paramView, int paramInt1, int paramInt2, int paramInt3)
+  private final int g(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(252401);
-    paramInt1 = g(paramView, cm(paramView) - aW(paramView, paramInt1), paramInt2, paramInt3);
-    AppMethodBeat.o(252401);
+    AppMethodBeat.i(252005);
+    paramInt1 = f(paramView, cI(paramView) - bt(paramView, paramInt1), paramInt2, paramInt3);
+    AppMethodBeat.o(252005);
     return paramInt1;
   }
   
-  private int iP(View paramView)
+  private int mm(View paramView)
   {
-    AppMethodBeat.i(252400);
-    p.k(paramView, "child");
-    if (this.vZ <= 0)
-    {
-      paramView = ViewConfiguration.get(paramView.getContext());
-      p.j(paramView, "ViewConfiguration.get(child.context)");
-      this.vZ = (paramView.getScaledMinimumFlingVelocity() * 15);
+    AppMethodBeat.i(252001);
+    s.u(paramView, "child");
+    if (this.wV <= 0) {
+      this.wV = (ViewConfiguration.get(paramView.getContext()).getScaledMinimumFlingVelocity() * 15);
     }
-    int i = this.vZ;
-    AppMethodBeat.o(252400);
+    int i = this.wV;
+    AppMethodBeat.o(252001);
     return i;
   }
   
-  private static float iQ(View paramView)
+  private static float mn(View paramView)
   {
-    AppMethodBeat.i(252403);
-    p.k(paramView, "child");
-    float f = Math.abs(cm(paramView)) * 1.0F / paramView.getHeight();
-    AppMethodBeat.o(252403);
+    AppMethodBeat.i(252012);
+    s.u(paramView, "child");
+    float f = Math.abs(cI(paramView)) * 1.0F / paramView.getHeight();
+    AppMethodBeat.o(252012);
     return f * 4.0F + 1.0F;
   }
   
-  private void iR(View paramView)
+  private void mo(View paramView)
   {
-    AppMethodBeat.i(252409);
-    p.k(paramView, "child");
-    int i = cm(paramView);
-    if (i == 0)
+    AppMethodBeat.i(252018);
+    s.u(paramView, "child");
+    int j = cI(paramView);
+    if (j == 0)
     {
-      AppMethodBeat.o(252409);
+      AppMethodBeat.o(252018);
       return;
     }
-    if (this.Ytj == null)
+    if (this.aglz == null)
     {
-      this.Ytj = ValueAnimator.ofInt(new int[0]);
-      localValueAnimator = this.Ytj;
+      this.aglz = ValueAnimator.ofInt(new int[0]);
+      localValueAnimator = this.aglz;
       if (localValueAnimator != null) {
-        localValueAnimator.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new AppLayoutPullDownBehavior.b(this, paramView));
+        localValueAnimator.addUpdateListener(new AppLayoutPullDownBehavior..ExternalSyntheticLambda0(this, paramView));
       }
     }
-    ValueAnimator localValueAnimator = this.Ytj;
-    if ((localValueAnimator != null) && (localValueAnimator.isStarted() == true))
+    ValueAnimator localValueAnimator = this.aglz;
+    if ((localValueAnimator != null) && (localValueAnimator.isStarted() == true)) {}
+    for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(252409);
+      AppMethodBeat.o(252018);
       return;
     }
-    float f = Math.abs(i) * 1.0F / cn(paramView);
-    paramView = this.Ytj;
+    float f = Math.abs(j) * 1.0F / cJ(paramView);
+    paramView = this.aglz;
     if (paramView != null) {
       paramView.setDuration(Math.max((int)(f * 300.0F), 150));
     }
-    paramView = this.Ytj;
+    paramView = this.aglz;
     if (paramView != null) {
-      paramView.setInterpolator((TimeInterpolator)this.Ytk);
+      paramView.setInterpolator((TimeInterpolator)this.aglA);
     }
-    paramView = this.Ytj;
+    paramView = this.aglz;
     if (paramView != null) {
-      paramView.setIntValues(new int[] { i, 0 });
+      paramView.setIntValues(new int[] { j, 0 });
     }
-    paramView = this.Ytj;
-    if (paramView != null)
-    {
+    paramView = this.aglz;
+    if (paramView != null) {
       paramView.start();
-      AppMethodBeat.o(252409);
-      return;
     }
-    AppMethodBeat.o(252409);
+    AppMethodBeat.o(252018);
   }
   
   public final void a(CoordinatorLayout paramCoordinatorLayout, View paramView1, View paramView2, int paramInt)
   {
-    AppMethodBeat.i(252408);
-    p.k(paramCoordinatorLayout, "coordinatorLayout");
-    p.k(paramView1, "child");
-    p.k(paramView2, "target");
+    AppMethodBeat.i(252059);
+    s.u(paramCoordinatorLayout, "coordinatorLayout");
+    s.u(paramView1, "child");
+    s.u(paramView2, "target");
     new StringBuilder("onStopNestedScroll() called with:child = ").append(paramView1.getClass()).append(", target = ").append(paramView2).append(", type = ").append(paramInt);
     if (paramInt == 0)
     {
-      if (cm((View)paramCoordinatorLayout) != 0)
+      if (cI((View)paramCoordinatorLayout) != 0)
       {
-        paramView1 = this.Ytg;
+        paramView1 = this.aglw;
         if ((paramView1 == null) || (!paramView1.computeScrollOffset()))
         {
-          iR((View)paramCoordinatorLayout);
-          AppMethodBeat.o(252408);
+          mo((View)paramCoordinatorLayout);
+          AppMethodBeat.o(252059);
         }
       }
     }
-    else if (cm((View)paramCoordinatorLayout) != 0) {
-      iR((View)paramCoordinatorLayout);
+    else if (cI((View)paramCoordinatorLayout) != 0) {
+      mo((View)paramCoordinatorLayout);
     }
-    AppMethodBeat.o(252408);
+    AppMethodBeat.o(252059);
   }
   
   public final void a(CoordinatorLayout paramCoordinatorLayout, View paramView1, View paramView2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(252398);
-    p.k(paramCoordinatorLayout, "coordinatorLayout");
-    p.k(paramView1, "child");
-    p.k(paramView2, "target");
+    AppMethodBeat.i(252051);
+    s.u(paramCoordinatorLayout, "coordinatorLayout");
+    s.u(paramView1, "child");
+    s.u(paramView2, "target");
     new StringBuilder("onNestedScroll() called with: child = ").append(paramView1.getClass().getName()).append(", target = ").append(paramView2.getClass().getName()).append(", dxConsumed = ").append(paramInt1).append(", dyConsumed = ").append(paramInt2).append(", dxUnconsumed = ").append(paramInt3).append(", dyUnconsumed = ").append(paramInt4).append(", type = ").append(paramInt5);
     if ((paramInt2 == 0) && (paramInt4 != 0))
     {
-      p.k(paramCoordinatorLayout, "coordinatorLayout");
-      p.k(paramView1, "child");
-      p.k(paramView2, "target");
+      s.u(paramCoordinatorLayout, "coordinatorLayout");
+      s.u(paramView1, "child");
+      s.u(paramView2, "target");
       new StringBuilder("onNestedScrollInner() called with, child = ").append(paramView1.getClass().getName()).append(", target = ").append(paramView2.getClass().getName()).append(", distanceConsumed = ").append(paramInt2).append(", distanceUnconsumed = ").append(paramInt4).append(", type = ").append(paramInt5);
       if (paramInt4 < 0)
       {
         if (paramInt5 == 0)
         {
-          h((View)paramCoordinatorLayout, paramInt4, 0, cn((View)paramCoordinatorLayout));
-          AppMethodBeat.o(252398);
+          g((View)paramCoordinatorLayout, paramInt4, 0, cJ((View)paramCoordinatorLayout));
+          AppMethodBeat.o(252051);
           return;
         }
-        paramView1 = this.Ytg;
-        if ((paramView1 == null) || (!paramView1.computeScrollOffset()) || (Math.abs(paramView1.getCurrVelocity()) < Math.abs(iP((View)paramCoordinatorLayout))) || (cm((View)paramCoordinatorLayout) >= aV((View)paramCoordinatorLayout, this.Yth)))
+        paramView1 = this.aglw;
+        if ((paramView1 == null) || (!paramView1.computeScrollOffset()) || (Math.abs(paramView1.getCurrVelocity()) < Math.abs(mm((View)paramCoordinatorLayout))) || (cI((View)paramCoordinatorLayout) >= bs((View)paramCoordinatorLayout, this.aglx)))
         {
-          w.ag(paramView2);
-          AppMethodBeat.o(252398);
+          z.at(paramView2);
+          AppMethodBeat.o(252051);
           return;
         }
-        h((View)paramCoordinatorLayout, paramInt4, cm((View)paramCoordinatorLayout), aV((View)paramCoordinatorLayout, this.Yth));
-        AppMethodBeat.o(252398);
+        g((View)paramCoordinatorLayout, paramInt4, cI((View)paramCoordinatorLayout), bs((View)paramCoordinatorLayout, this.aglx));
+        AppMethodBeat.o(252051);
         return;
       }
       if (paramInt4 > 0)
@@ -265,57 +279,57 @@ public final class AppLayoutPullDownBehavior
         {
           paramView1 = (View)paramCoordinatorLayout;
           paramCoordinatorLayout = (View)paramCoordinatorLayout;
-          p.k(paramCoordinatorLayout, "child");
-          h(paramView1, paramInt4, -paramCoordinatorLayout.getHeight(), 0);
-          AppMethodBeat.o(252398);
+          s.u(paramCoordinatorLayout, "child");
+          g(paramView1, paramInt4, -paramCoordinatorLayout.getHeight(), 0);
+          AppMethodBeat.o(252051);
           return;
         }
-        paramView1 = this.Ytg;
-        if ((paramView1 == null) || (!paramView1.computeScrollOffset()) || (Math.abs(paramView1.getCurrVelocity()) < Math.abs(iP((View)paramCoordinatorLayout))) || (cm((View)paramCoordinatorLayout) <= aV((View)paramCoordinatorLayout, this.Yti)))
+        paramView1 = this.aglw;
+        if ((paramView1 == null) || (!paramView1.computeScrollOffset()) || (Math.abs(paramView1.getCurrVelocity()) < Math.abs(mm((View)paramCoordinatorLayout))) || (cI((View)paramCoordinatorLayout) <= bs((View)paramCoordinatorLayout, this.agly)))
         {
-          w.ag(paramView2);
-          AppMethodBeat.o(252398);
+          z.at(paramView2);
+          AppMethodBeat.o(252051);
           return;
         }
-        h((View)paramCoordinatorLayout, paramInt4, aV((View)paramCoordinatorLayout, this.Yti), cm((View)paramCoordinatorLayout));
+        g((View)paramCoordinatorLayout, paramInt4, bs((View)paramCoordinatorLayout, this.agly), cI((View)paramCoordinatorLayout));
       }
-      AppMethodBeat.o(252398);
+      AppMethodBeat.o(252051);
       return;
     }
     super.a(paramCoordinatorLayout, paramView1, paramView2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
-    AppMethodBeat.o(252398);
+    AppMethodBeat.o(252051);
   }
   
   public final void a(CoordinatorLayout paramCoordinatorLayout, View paramView1, View paramView2, int paramInt1, int paramInt2, int[] paramArrayOfInt, int paramInt3)
   {
-    AppMethodBeat.i(252393);
-    p.k(paramCoordinatorLayout, "coordinatorLayout");
-    p.k(paramView1, "child");
-    p.k(paramView2, "target");
-    p.k(paramArrayOfInt, "consumed");
-    p.k(paramCoordinatorLayout, "coordinatorLayout");
-    p.k(paramView1, "child");
-    p.k(paramView2, "target");
+    AppMethodBeat.i(252040);
+    s.u(paramCoordinatorLayout, "coordinatorLayout");
+    s.u(paramView1, "child");
+    s.u(paramView2, "target");
+    s.u(paramArrayOfInt, "consumed");
+    s.u(paramCoordinatorLayout, "coordinatorLayout");
+    s.u(paramView1, "child");
+    s.u(paramView2, "target");
     new StringBuilder("onNestedPreScrollInner() called with:  child = ").append(paramView1.getClass()).append(", target = ").append(paramView2.getClass()).append(", distance = ").append(paramInt2).append(", type = ").append(paramInt3);
     if (paramInt2 != 0) {
       if (paramInt2 < 0)
       {
-        paramInt3 = cm((View)paramCoordinatorLayout);
+        paramInt3 = cI((View)paramCoordinatorLayout);
         paramInt1 = 0;
         if (paramInt3 == paramInt1) {
-          break label204;
+          break label200;
         }
         paramCoordinatorLayout = (View)paramCoordinatorLayout;
       }
     }
-    label204:
-    for (paramInt1 = g(paramCoordinatorLayout, cm(paramCoordinatorLayout) - paramInt2, paramInt3, paramInt1);; paramInt1 = 0)
+    label200:
+    for (paramInt1 = f(paramCoordinatorLayout, cI(paramCoordinatorLayout) - paramInt2, paramInt3, paramInt1);; paramInt1 = 0)
     {
       paramArrayOfInt[1] = paramInt1;
-      new StringBuilder("onNestedPreScroll() comsumed[1]=").append(paramArrayOfInt[1]);
-      AppMethodBeat.o(252393);
+      s.X("onNestedPreScroll() comsumed[1]=", Integer.valueOf(paramArrayOfInt[1]));
+      AppMethodBeat.o(252040);
       return;
-      paramInt1 = cm((View)paramCoordinatorLayout);
+      paramInt1 = cI((View)paramCoordinatorLayout);
       paramInt3 = 0;
       break;
     }
@@ -323,135 +337,131 @@ public final class AppLayoutPullDownBehavior
   
   public final boolean a(CoordinatorLayout paramCoordinatorLayout, View paramView, int paramInt)
   {
-    AppMethodBeat.i(252414);
-    p.k(paramCoordinatorLayout, "parent");
-    p.k(paramView, "child");
+    AppMethodBeat.i(252077);
+    s.u(paramCoordinatorLayout, "parent");
+    s.u(paramView, "child");
     new StringBuilder("onLayoutChild() called with: parent = ").append(paramCoordinatorLayout.getClass().getName()).append(", child = ").append(paramView.getClass().getName()).append(", layoutDirection = ").append(Integer.TYPE.getName());
     boolean bool = super.a(paramCoordinatorLayout, paramView, paramInt);
-    AppMethodBeat.o(252414);
+    AppMethodBeat.o(252077);
     return bool;
   }
   
   public final boolean a(CoordinatorLayout paramCoordinatorLayout, View paramView1, View paramView2)
   {
-    AppMethodBeat.i(252411);
-    p.k(paramCoordinatorLayout, "parent");
-    p.k(paramView1, "child");
-    p.k(paramView2, "dependency");
+    AppMethodBeat.i(252068);
+    s.u(paramCoordinatorLayout, "parent");
+    s.u(paramView1, "child");
+    s.u(paramView2, "dependency");
     new StringBuilder("layoutDependsOn() called with: parent = ").append(paramCoordinatorLayout.getClass().getName()).append(", child = ").append(paramView1.getClass().getName()).append(", dependency = ").append(paramView2.getClass().getName());
     boolean bool = super.a(paramCoordinatorLayout, paramView1, paramView2);
-    AppMethodBeat.o(252411);
+    AppMethodBeat.o(252068);
     return bool;
   }
   
   public final boolean a(CoordinatorLayout paramCoordinatorLayout, View paramView1, View paramView2, float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(252417);
-    p.k(paramCoordinatorLayout, "coordinatorLayout");
-    p.k(paramView1, "child");
-    p.k(paramView2, "target");
+    AppMethodBeat.i(252085);
+    s.u(paramCoordinatorLayout, "coordinatorLayout");
+    s.u(paramView1, "child");
+    s.u(paramView2, "target");
     new StringBuilder("onNestedPreFling() called with: coordinatorLayout = ").append(paramCoordinatorLayout.getClass().getName()).append(", child = ").append(paramView1.getClass().getName()).append(", target = ").append(paramView2.getClass().getName()).append(", velocityX = ").append(paramFloat1).append(", velocityY = ").append(paramFloat2);
-    if (this.Ytg == null) {
-      this.Ytg = new OverScroller(paramCoordinatorLayout.getContext());
+    if (this.aglw == null) {
+      this.aglw = new OverScroller(paramCoordinatorLayout.getContext());
     }
-    paramCoordinatorLayout = this.Ytg;
+    paramCoordinatorLayout = this.aglw;
     if (paramCoordinatorLayout != null) {
       paramCoordinatorLayout.fling(0, 0, 0, (int)paramFloat2, 0, 0, -2147483648, 2147483647);
     }
-    AppMethodBeat.o(252417);
+    AppMethodBeat.o(252085);
     return false;
   }
   
   public final boolean a(CoordinatorLayout paramCoordinatorLayout, View paramView1, View paramView2, float paramFloat1, float paramFloat2, boolean paramBoolean)
   {
-    AppMethodBeat.i(252415);
-    p.k(paramCoordinatorLayout, "coordinatorLayout");
-    p.k(paramView1, "child");
-    p.k(paramView2, "target");
+    AppMethodBeat.i(252081);
+    s.u(paramCoordinatorLayout, "coordinatorLayout");
+    s.u(paramView1, "child");
+    s.u(paramView2, "target");
     new StringBuilder("onNestedFling() called with: coordinatorLayout = ").append(paramCoordinatorLayout.getClass().getName()).append(", child = ").append(paramView1.getClass().getName()).append(", target = ").append(paramView2).append(", velocityX = ").append(paramFloat1).append(", velocityY = ").append(paramFloat2).append(", consumed = ").append(paramBoolean);
     paramBoolean = super.a(paramCoordinatorLayout, paramView1, paramView2, paramFloat1, paramFloat2, paramBoolean);
-    AppMethodBeat.o(252415);
+    AppMethodBeat.o(252081);
     return paramBoolean;
   }
   
   public final boolean a(CoordinatorLayout paramCoordinatorLayout, View paramView1, View paramView2, View paramView3, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(252406);
-    p.k(paramCoordinatorLayout, "coordinatorLayout");
-    p.k(paramView1, "child");
-    p.k(paramView2, "directTargetChild");
-    p.k(paramView3, "target");
+    AppMethodBeat.i(252055);
+    s.u(paramCoordinatorLayout, "coordinatorLayout");
+    s.u(paramView1, "child");
+    s.u(paramView2, "directTargetChild");
+    s.u(paramView3, "target");
     new StringBuilder("onStartNestedScroll() called with: coordinatorLayout = ").append(paramCoordinatorLayout.getClass().getName()).append(", child = ").append(paramView1.getClass().getName()).append(", directTargetChild = ").append(paramView2.getClass().getName()).append(", target = ").append(paramView3.getClass().getName()).append(", axes = ").append(paramInt1).append(", type = ").append(paramInt2);
     if ((paramInt1 & 0x2) != 0)
     {
-      AppMethodBeat.o(252406);
+      AppMethodBeat.o(252055);
       return true;
     }
-    AppMethodBeat.o(252406);
+    AppMethodBeat.o(252055);
     return false;
   }
   
   public final void b(CoordinatorLayout paramCoordinatorLayout, View paramView1, View paramView2, View paramView3, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(252410);
-    p.k(paramCoordinatorLayout, "coordinatorLayout");
-    p.k(paramView1, "child");
-    p.k(paramView2, "directTargetChild");
-    p.k(paramView3, "target");
+    AppMethodBeat.i(252064);
+    s.u(paramCoordinatorLayout, "coordinatorLayout");
+    s.u(paramView1, "child");
+    s.u(paramView2, "directTargetChild");
+    s.u(paramView3, "target");
     new StringBuilder("onNestedScrollAccepted() called with: coordinatorLayout = ").append(paramCoordinatorLayout.getClass().getName()).append(", child = ").append(paramView1.getClass().getName()).append(", directTargetChild = ").append(paramView2).append(", target = ").append(paramView3.getClass().getName()).append(", axes = ").append(paramInt1).append(", type = ").append(paramInt2);
     if (paramInt2 == 0)
     {
-      p.k(paramView1, "child");
-      if (this.Ytj != null)
+      s.u(paramView1, "child");
+      if (this.aglz != null)
       {
-        paramCoordinatorLayout = this.Ytj;
-        if (paramCoordinatorLayout == null) {
-          p.iCn();
-        }
+        paramCoordinatorLayout = this.aglz;
+        s.checkNotNull(paramCoordinatorLayout);
         if (paramCoordinatorLayout.isRunning())
         {
-          paramCoordinatorLayout = this.Ytj;
-          if (paramCoordinatorLayout == null) {
-            p.iCn();
-          }
+          paramCoordinatorLayout = this.aglz;
+          s.checkNotNull(paramCoordinatorLayout);
           paramCoordinatorLayout.cancel();
         }
       }
     }
     if (paramInt2 == 0)
     {
-      paramCoordinatorLayout = this.Ytg;
+      paramCoordinatorLayout = this.aglw;
       if (paramCoordinatorLayout != null) {
         paramCoordinatorLayout.forceFinished(true);
       }
     }
     if ((paramInt1 & 0x2) != 0)
     {
-      this.Yth = 2;
-      this.Yti = 1;
-      AppMethodBeat.o(252410);
+      this.aglx = 2;
+      this.agly = 1;
+      AppMethodBeat.o(252064);
       return;
     }
-    this.Yth = 8;
-    this.Yti = 4;
-    AppMethodBeat.o(252410);
+    this.aglx = 8;
+    this.agly = 4;
+    AppMethodBeat.o(252064);
   }
   
   public final boolean b(CoordinatorLayout paramCoordinatorLayout, View paramView1, View paramView2)
   {
-    AppMethodBeat.i(252412);
-    p.k(paramCoordinatorLayout, "parent");
-    p.k(paramView1, "child");
-    p.k(paramView2, "dependency");
+    AppMethodBeat.i(252073);
+    s.u(paramCoordinatorLayout, "parent");
+    s.u(paramView1, "child");
+    s.u(paramView2, "dependency");
     new StringBuilder("onDependentViewChanged() called with: parent = ").append(paramCoordinatorLayout.getClass().getName()).append(", child = ").append(paramView1.getClass().getName()).append(", dependency = ").append(paramView2.getClass().getName());
     boolean bool = super.b(paramCoordinatorLayout, paramView1, paramView2);
-    AppMethodBeat.o(252412);
+    AppMethodBeat.o(252073);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.widget.pulldown.AppLayoutPullDownBehavior
  * JD-Core Version:    0.7.0.1
  */

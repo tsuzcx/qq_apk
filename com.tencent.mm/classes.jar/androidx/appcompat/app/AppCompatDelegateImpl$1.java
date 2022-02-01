@@ -11,7 +11,7 @@ final class AppCompatDelegateImpl$1
   public final void uncaughtException(Thread paramThread, Throwable paramThrowable)
   {
     int j = 0;
-    AppMethodBeat.i(238084);
+    AppMethodBeat.i(200451);
     int i = j;
     Object localObject;
     if ((paramThrowable instanceof Resources.NotFoundException))
@@ -35,17 +35,17 @@ final class AppCompatDelegateImpl$1
       localObject = new Resources.NotFoundException(paramThrowable.getMessage() + ". If the resource you are trying to use is a vector resource, you may be referencing it in an unsupported way. See AppCompatDelegate.setCompatVectorFromResourcesEnabled() for more info.");
       ((Throwable)localObject).initCause(paramThrowable.getCause());
       ((Throwable)localObject).setStackTrace(paramThrowable.getStackTrace());
-      this.gF.uncaughtException(paramThread, (Throwable)localObject);
-      AppMethodBeat.o(238084);
+      this.hA.uncaughtException(paramThread, (Throwable)localObject);
+      AppMethodBeat.o(200451);
       return;
     }
-    this.gF.uncaughtException(paramThread, paramThrowable);
-    AppMethodBeat.o(238084);
+    this.hA.uncaughtException(paramThread, paramThrowable);
+    AppMethodBeat.o(200451);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     androidx.appcompat.app.AppCompatDelegateImpl.1
  * JD-Core Version:    0.7.0.1
  */

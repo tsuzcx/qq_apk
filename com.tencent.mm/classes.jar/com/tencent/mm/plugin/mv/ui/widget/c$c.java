@@ -7,10 +7,10 @@ import androidx.core.content.a;
 import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mv.b.d;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/widget/MvTracksAdapter$FillingViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "parent", "Landroid/view/ViewGroup;", "(Landroid/view/ViewGroup;)V", "bind", "", "width", "", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/widget/MvTracksAdapter$FillingViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "parent", "Landroid/view/ViewGroup;", "(Landroid/view/ViewGroup;)V", "bind", "", "width", "", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c$c
   extends RecyclerView.v
 {
@@ -19,18 +19,13 @@ public final class c$c
   public c$c(ViewGroup paramViewGroup)
   {
     super(new View(paramViewGroup.getContext()));
-    AppMethodBeat.i(227718);
+    AppMethodBeat.i(286623);
     this.parent = paramViewGroup;
-    paramViewGroup = this.amk;
-    p.j(paramViewGroup, "itemView");
-    Object localObject = this.amk;
-    p.j(localObject, "itemView");
-    localObject = a.m(((View)localObject).getContext(), b.d.FWx);
-    if (localObject == null) {
-      p.iCn();
-    }
-    paramViewGroup.setBackground((Drawable)localObject);
-    AppMethodBeat.o(227718);
+    paramViewGroup = this.caK;
+    Drawable localDrawable = a.m(this.caK.getContext(), b.d.LRK);
+    s.checkNotNull(localDrawable);
+    paramViewGroup.setBackground(localDrawable);
+    AppMethodBeat.o(286623);
   }
 }
 

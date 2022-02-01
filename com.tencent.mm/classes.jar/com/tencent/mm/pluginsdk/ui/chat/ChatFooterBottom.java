@@ -12,7 +12,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class ChatFooterBottom
   extends FrameLayout
 {
-  private boolean fYp = false;
+  private boolean iep = false;
   
   public ChatFooterBottom(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -39,10 +39,10 @@ public class ChatFooterBottom
     return localLayoutParams;
   }
   
-  public final boolean hmq()
+  public final boolean iNi()
   {
     AppMethodBeat.i(31727);
-    if ((this.fYp) || (getVisibility() != 0))
+    if ((this.iep) || (getVisibility() != 0))
     {
       AppMethodBeat.o(31727);
       return true;
@@ -69,8 +69,8 @@ public class ChatFooterBottom
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(31720);
-    Log.d("MicroMsg.ChatFooterBottom", "jacks onMeasure  width:%d, height:%d, isHide: %B", new Object[] { Integer.valueOf(View.MeasureSpec.getSize(paramInt1)), Integer.valueOf(View.MeasureSpec.getSize(paramInt2)), Boolean.valueOf(this.fYp) });
-    if (this.fYp)
+    Log.d("MicroMsg.ChatFooterBottom", "jacks onMeasure  width:%d, height:%d, isHide: %B", new Object[] { Integer.valueOf(View.MeasureSpec.getSize(paramInt1)), Integer.valueOf(View.MeasureSpec.getSize(paramInt2)), Boolean.valueOf(this.iep) });
+    if (this.iep)
     {
       setVisibility(8);
       paramInt1 = View.MeasureSpec.makeMeasureSpec(0, 1073741824);
@@ -90,7 +90,7 @@ public class ChatFooterBottom
   
   public void setIsHide(boolean paramBoolean)
   {
-    this.fYp = paramBoolean;
+    this.iep = paramBoolean;
   }
   
   public void setLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
@@ -104,7 +104,7 @@ public class ChatFooterBottom
   {
     AppMethodBeat.i(31724);
     if (paramInt == 0) {
-      this.fYp = false;
+      this.iep = false;
     }
     super.setVisibility(paramInt);
     AppMethodBeat.o(31724);
@@ -112,7 +112,7 @@ public class ChatFooterBottom
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.ChatFooterBottom
  * JD-Core Version:    0.7.0.1
  */

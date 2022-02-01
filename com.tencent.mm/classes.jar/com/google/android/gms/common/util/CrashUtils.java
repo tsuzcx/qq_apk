@@ -6,9 +6,11 @@ import android.text.TextUtils;
 import android.util.Log;
 import com.google.android.gms.common.internal.Preconditions;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 import java.util.LinkedList;
-import javax.annotation.concurrent.GuardedBy;
 
 public final class CrashUtils
 {
@@ -18,9 +20,7 @@ public final class CrashUtils
   private static boolean zzzf;
   private static boolean zzzg;
   private static int zzzh = -1;
-  @GuardedBy("CrashUtils.class")
   private static int zzzi = 0;
-  @GuardedBy("CrashUtils.class")
   private static int zzzj = 0;
   
   public static boolean addDynamiteErrorToDropBox(Context paramContext, Throwable paramThrowable)
@@ -131,7 +131,6 @@ public final class CrashUtils
     return false;
   }
   
-  @VisibleForTesting
   public static void setTestVariables(DropBoxManager paramDropBoxManager, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
     try
@@ -153,37 +152,36 @@ public final class CrashUtils
   }
   
   /* Error */
-  @VisibleForTesting
   private static String zza(Context paramContext, String paramString1, String paramString2, int paramInt)
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
     //   3: sipush 5164
-    //   6: invokestatic 59	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: new 131	java/lang/StringBuilder
+    //   6: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   9: new 127	java/lang/StringBuilder
     //   12: dup
     //   13: sipush 1024
-    //   16: invokespecial 133	java/lang/StringBuilder:<init>	(I)V
+    //   16: invokespecial 129	java/lang/StringBuilder:<init>	(I)V
     //   19: astore 9
     //   21: aload 9
-    //   23: ldc 135
-    //   25: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: ldc 131
+    //   25: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   28: aload_2
-    //   29: invokestatic 145	com/google/android/gms/common/util/Strings:nullToEmpty	(Ljava/lang/String;)Ljava/lang/String;
-    //   32: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: ldc 147
-    //   37: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: invokestatic 141	com/google/android/gms/common/util/Strings:nullToEmpty	(Ljava/lang/String;)Ljava/lang/String;
+    //   32: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   35: ldc 143
+    //   37: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   40: pop
     //   41: aload 9
-    //   43: ldc 149
-    //   45: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   43: ldc 145
+    //   45: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   48: pop
-    //   49: ldc 150
+    //   49: ldc 146
     //   51: istore 6
-    //   53: ldc 152
+    //   53: ldc 148
     //   55: astore 8
-    //   57: invokestatic 92	com/google/android/gms/common/util/CrashUtils:zzdb	()Z
+    //   57: invokestatic 90	com/google/android/gms/common/util/CrashUtils:zzdb	()Z
     //   60: istore 7
     //   62: aload 8
     //   64: astore_2
@@ -194,16 +192,16 @@ public final class CrashUtils
     //   74: iload 6
     //   76: istore 5
     //   78: aload_0
-    //   79: invokestatic 158	com/google/android/gms/common/wrappers/Wrappers:packageManager	(Landroid/content/Context;)Lcom/google/android/gms/common/wrappers/PackageManagerWrapper;
+    //   79: invokestatic 154	com/google/android/gms/common/wrappers/Wrappers:packageManager	(Landroid/content/Context;)Lcom/google/android/gms/common/wrappers/PackageManagerWrapper;
     //   82: aload_0
-    //   83: invokevirtual 163	android/content/Context:getPackageName	()Ljava/lang/String;
+    //   83: invokevirtual 159	android/content/Context:getPackageName	()Ljava/lang/String;
     //   86: iconst_0
-    //   87: invokevirtual 169	com/google/android/gms/common/wrappers/PackageManagerWrapper:getPackageInfo	(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
+    //   87: invokevirtual 165	com/google/android/gms/common/wrappers/PackageManagerWrapper:getPackageInfo	(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
     //   90: astore 10
     //   92: iload 6
     //   94: istore 5
     //   96: aload 10
-    //   98: getfield 174	android/content/pm/PackageInfo:versionCode	I
+    //   98: getfield 170	android/content/pm/PackageInfo:versionCode	I
     //   101: istore 6
     //   103: aload 8
     //   105: astore_2
@@ -212,191 +210,191 @@ public final class CrashUtils
     //   110: iload 6
     //   112: istore 5
     //   114: aload 10
-    //   116: getfield 178	android/content/pm/PackageInfo:versionName	Ljava/lang/String;
+    //   116: getfield 174	android/content/pm/PackageInfo:versionName	Ljava/lang/String;
     //   119: ifnull +17 -> 136
     //   122: iload 6
     //   124: istore 5
     //   126: aload 10
-    //   128: getfield 178	android/content/pm/PackageInfo:versionName	Ljava/lang/String;
+    //   128: getfield 174	android/content/pm/PackageInfo:versionName	Ljava/lang/String;
     //   131: astore_2
     //   132: iload 6
     //   134: istore 4
     //   136: aload 9
-    //   138: ldc 180
-    //   140: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   138: ldc 176
+    //   140: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   143: iload 4
-    //   145: invokevirtual 183	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   145: invokevirtual 179	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   148: pop
     //   149: aload_2
-    //   150: invokestatic 117	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   150: invokestatic 115	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   153: ifne +80 -> 233
     //   156: aload_2
     //   157: astore 8
     //   159: aload_2
-    //   160: ldc 185
-    //   162: invokevirtual 188	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   160: ldc 181
+    //   162: invokevirtual 184	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   165: ifeq +50 -> 215
     //   168: aload_2
     //   169: astore 8
     //   171: aload_2
-    //   172: ldc 190
-    //   174: invokevirtual 188	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   172: ldc 186
+    //   174: invokevirtual 184	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   177: ifne +38 -> 215
     //   180: aload_2
     //   181: astore 8
     //   183: aload_2
-    //   184: ldc 192
-    //   186: invokevirtual 195	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   184: ldc 188
+    //   186: invokevirtual 191	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   189: ifeq +14 -> 203
     //   192: aload_2
-    //   193: invokestatic 199	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   196: ldc 201
-    //   198: invokevirtual 204	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   193: invokestatic 195	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   196: ldc 197
+    //   198: invokevirtual 200	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
     //   201: astore 8
     //   203: aload 8
-    //   205: invokestatic 199	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   208: ldc 190
-    //   210: invokevirtual 204	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   205: invokestatic 195	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   208: ldc 186
+    //   210: invokevirtual 200	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
     //   213: astore 8
     //   215: aload 9
-    //   217: ldc 206
-    //   219: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   217: ldc 202
+    //   219: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   222: aload 8
-    //   224: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   227: ldc 190
-    //   229: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   224: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   227: ldc 186
+    //   229: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   232: pop
     //   233: aload 9
-    //   235: ldc 147
-    //   237: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   235: ldc 143
+    //   237: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   240: pop
     //   241: aload 9
-    //   243: ldc 208
-    //   245: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   248: getstatic 213	android/os/Build:FINGERPRINT	Ljava/lang/String;
-    //   251: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   254: ldc 147
-    //   256: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   243: ldc 204
+    //   245: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   248: getstatic 209	android/os/Build:FINGERPRINT	Ljava/lang/String;
+    //   251: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   254: ldc 143
+    //   256: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   259: pop
-    //   260: invokestatic 218	android/os/Debug:isDebuggerConnected	()Z
+    //   260: invokestatic 214	android/os/Debug:isDebuggerConnected	()Z
     //   263: ifeq +11 -> 274
     //   266: aload 9
-    //   268: ldc 220
-    //   270: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   268: ldc 216
+    //   270: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   273: pop
     //   274: iload_3
     //   275: ifeq +20 -> 295
     //   278: aload 9
-    //   280: ldc 222
-    //   282: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   280: ldc 218
+    //   282: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   285: iload_3
-    //   286: invokevirtual 183	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   289: ldc 147
-    //   291: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   286: invokevirtual 179	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   289: ldc 143
+    //   291: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   294: pop
     //   295: aload 9
-    //   297: ldc 147
-    //   299: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   297: ldc 143
+    //   299: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   302: pop
     //   303: aload_1
-    //   304: invokestatic 117	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   304: invokestatic 115	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   307: ifne +10 -> 317
     //   310: aload 9
     //   312: aload_1
-    //   313: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   313: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   316: pop
-    //   317: invokestatic 92	com/google/android/gms/common/util/CrashUtils:zzdb	()Z
+    //   317: invokestatic 90	com/google/android/gms/common/util/CrashUtils:zzdb	()Z
     //   320: ifeq +293 -> 613
-    //   323: getstatic 43	com/google/android/gms/common/util/CrashUtils:zzzh	I
+    //   323: getstatic 41	com/google/android/gms/common/util/CrashUtils:zzzh	I
     //   326: iflt +193 -> 519
-    //   329: getstatic 43	com/google/android/gms/common/util/CrashUtils:zzzh	I
+    //   329: getstatic 41	com/google/android/gms/common/util/CrashUtils:zzzh	I
     //   332: istore_3
     //   333: iload_3
     //   334: ifle +168 -> 502
     //   337: aload 9
-    //   339: ldc 147
-    //   341: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   339: ldc 143
+    //   341: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   344: pop
-    //   345: new 224	java/lang/ProcessBuilder
+    //   345: new 220	java/lang/ProcessBuilder
     //   348: dup
     //   349: bipush 13
-    //   351: anewarray 25	java/lang/String
+    //   351: anewarray 23	java/lang/String
     //   354: dup
     //   355: iconst_0
-    //   356: ldc 226
+    //   356: ldc 222
     //   358: aastore
     //   359: dup
     //   360: iconst_1
-    //   361: ldc 228
+    //   361: ldc 224
     //   363: aastore
     //   364: dup
     //   365: iconst_2
-    //   366: ldc 230
+    //   366: ldc 226
     //   368: aastore
     //   369: dup
     //   370: iconst_3
-    //   371: ldc 232
+    //   371: ldc 228
     //   373: aastore
     //   374: dup
     //   375: iconst_4
-    //   376: ldc 234
+    //   376: ldc 230
     //   378: aastore
     //   379: dup
     //   380: iconst_5
-    //   381: ldc 232
+    //   381: ldc 228
     //   383: aastore
     //   384: dup
     //   385: bipush 6
-    //   387: ldc 236
+    //   387: ldc 232
     //   389: aastore
     //   390: dup
     //   391: bipush 7
-    //   393: ldc 232
+    //   393: ldc 228
     //   395: aastore
     //   396: dup
     //   397: bipush 8
-    //   399: ldc 238
+    //   399: ldc 234
     //   401: aastore
     //   402: dup
     //   403: bipush 9
-    //   405: ldc 232
+    //   405: ldc 228
     //   407: aastore
     //   408: dup
     //   409: bipush 10
-    //   411: ldc 240
+    //   411: ldc 236
     //   413: aastore
     //   414: dup
     //   415: bipush 11
-    //   417: ldc 242
+    //   417: ldc 238
     //   419: aastore
     //   420: dup
     //   421: bipush 12
     //   423: iload_3
-    //   424: invokestatic 245	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   424: invokestatic 241	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   427: aastore
-    //   428: invokespecial 248	java/lang/ProcessBuilder:<init>	([Ljava/lang/String;)V
+    //   428: invokespecial 244	java/lang/ProcessBuilder:<init>	([Ljava/lang/String;)V
     //   431: iconst_1
-    //   432: invokevirtual 252	java/lang/ProcessBuilder:redirectErrorStream	(Z)Ljava/lang/ProcessBuilder;
-    //   435: invokevirtual 256	java/lang/ProcessBuilder:start	()Ljava/lang/Process;
+    //   432: invokevirtual 248	java/lang/ProcessBuilder:redirectErrorStream	(Z)Ljava/lang/ProcessBuilder;
+    //   435: invokevirtual 252	java/lang/ProcessBuilder:start	()Ljava/lang/Process;
     //   438: astore_0
     //   439: aload_0
-    //   440: invokevirtual 262	java/lang/Process:getOutputStream	()Ljava/io/OutputStream;
-    //   443: invokevirtual 267	java/io/OutputStream:close	()V
+    //   440: invokevirtual 258	java/lang/Process:getOutputStream	()Ljava/io/OutputStream;
+    //   443: invokevirtual 263	java/io/OutputStream:close	()V
     //   446: aload_0
-    //   447: invokevirtual 271	java/lang/Process:getErrorStream	()Ljava/io/InputStream;
-    //   450: invokevirtual 274	java/io/InputStream:close	()V
-    //   453: new 276	java/io/InputStreamReader
+    //   447: invokevirtual 267	java/lang/Process:getErrorStream	()Ljava/io/InputStream;
+    //   450: invokevirtual 270	java/io/InputStream:close	()V
+    //   453: new 272	java/io/InputStreamReader
     //   456: dup
     //   457: aload_0
-    //   458: invokevirtual 279	java/lang/Process:getInputStream	()Ljava/io/InputStream;
-    //   461: invokespecial 282	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   458: invokevirtual 275	java/lang/Process:getInputStream	()Ljava/io/InputStream;
+    //   461: invokespecial 278	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
     //   464: astore_0
     //   465: sipush 8192
     //   468: newarray char
     //   470: astore_1
     //   471: aload_0
     //   472: aload_1
-    //   473: invokevirtual 286	java/io/InputStreamReader:read	([C)I
+    //   473: invokevirtual 282	java/io/InputStreamReader:read	([C)I
     //   476: istore_3
     //   477: iload_3
     //   478: ifle +56 -> 534
@@ -404,32 +402,32 @@ public final class CrashUtils
     //   483: aload_1
     //   484: iconst_0
     //   485: iload_3
-    //   486: invokevirtual 289	java/lang/StringBuilder:append	([CII)Ljava/lang/StringBuilder;
+    //   486: invokevirtual 285	java/lang/StringBuilder:append	([CII)Ljava/lang/StringBuilder;
     //   489: pop
     //   490: goto -19 -> 471
     //   493: astore_1
     //   494: aload_0
     //   495: ifnull +7 -> 502
     //   498: aload_0
-    //   499: invokevirtual 290	java/io/InputStreamReader:close	()V
+    //   499: invokevirtual 286	java/io/InputStreamReader:close	()V
     //   502: aload 9
-    //   504: invokevirtual 293	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   504: invokevirtual 289	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   507: astore_0
     //   508: sipush 5164
-    //   511: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   511: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   514: ldc 2
     //   516: monitorexit
     //   517: aload_0
     //   518: areturn
     //   519: aload_0
-    //   520: invokevirtual 297	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   523: ldc_w 299
+    //   520: invokevirtual 293	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   523: ldc_w 295
     //   526: iconst_0
-    //   527: invokestatic 305	android/provider/Settings$Secure:getInt	(Landroid/content/ContentResolver;Ljava/lang/String;I)I
+    //   527: invokestatic 301	android/provider/Settings$Secure:getInt	(Landroid/content/ContentResolver;Ljava/lang/String;I)I
     //   530: istore_3
     //   531: goto -198 -> 333
     //   534: aload_0
-    //   535: invokevirtual 290	java/io/InputStreamReader:close	()V
+    //   535: invokevirtual 286	java/io/InputStreamReader:close	()V
     //   538: goto -36 -> 502
     //   541: astore_0
     //   542: goto -40 -> 502
@@ -439,9 +437,9 @@ public final class CrashUtils
     //   548: aload_1
     //   549: ifnull +7 -> 556
     //   552: aload_1
-    //   553: invokevirtual 290	java/io/InputStreamReader:close	()V
+    //   553: invokevirtual 286	java/io/InputStreamReader:close	()V
     //   556: sipush 5164
-    //   559: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   559: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   562: aload_0
     //   563: athrow
     //   564: astore_0
@@ -539,7 +537,6 @@ public final class CrashUtils
     //   126	132	602	java/lang/Exception
   }
   
-  @VisibleForTesting
   private static Throwable zza(Throwable paramThrowable)
   {
     for (;;)
@@ -618,17 +615,17 @@ public final class CrashUtils
     //   0: ldc 2
     //   2: monitorenter
     //   3: sipush 5161
-    //   6: invokestatic 59	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: aload_0
-    //   10: invokestatic 85	com/google/android/gms/common/internal/Preconditions:checkNotNull	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   10: invokestatic 83	com/google/android/gms/common/internal/Preconditions:checkNotNull	(Ljava/lang/Object;)Ljava/lang/Object;
     //   13: pop
-    //   14: invokestatic 89	com/google/android/gms/common/util/CrashUtils:isPackageSide	()Z
+    //   14: invokestatic 87	com/google/android/gms/common/util/CrashUtils:isPackageSide	()Z
     //   17: ifeq +10 -> 27
     //   20: aload_1
-    //   21: invokestatic 380	com/google/android/gms/common/util/Strings:isEmptyOrWhitespace	(Ljava/lang/String;)Z
+    //   21: invokestatic 376	com/google/android/gms/common/util/Strings:isEmptyOrWhitespace	(Ljava/lang/String;)Z
     //   24: ifeq +18 -> 42
     //   27: sipush 5161
-    //   30: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   30: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   33: iconst_0
     //   34: istore 7
     //   36: ldc 2
@@ -636,64 +633,64 @@ public final class CrashUtils
     //   39: iload 7
     //   41: ireturn
     //   42: aload_1
-    //   43: invokevirtual 384	java/lang/String:hashCode	()I
+    //   43: invokevirtual 380	java/lang/String:hashCode	()I
     //   46: istore 6
     //   48: aload 4
     //   50: ifnonnull +36 -> 86
-    //   53: getstatic 47	com/google/android/gms/common/util/CrashUtils:zzzj	I
+    //   53: getstatic 45	com/google/android/gms/common/util/CrashUtils:zzzj	I
     //   56: istore 5
-    //   58: getstatic 45	com/google/android/gms/common/util/CrashUtils:zzzi	I
+    //   58: getstatic 43	com/google/android/gms/common/util/CrashUtils:zzzi	I
     //   61: iload 6
     //   63: if_icmpne +33 -> 96
-    //   66: getstatic 47	com/google/android/gms/common/util/CrashUtils:zzzj	I
+    //   66: getstatic 45	com/google/android/gms/common/util/CrashUtils:zzzj	I
     //   69: iload 5
     //   71: if_icmpne +25 -> 96
     //   74: sipush 5161
-    //   77: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   77: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   80: iconst_0
     //   81: istore 7
     //   83: goto -47 -> 36
     //   86: aload 4
-    //   88: invokevirtual 385	java/lang/Object:hashCode	()I
+    //   88: invokevirtual 381	java/lang/Object:hashCode	()I
     //   91: istore 5
     //   93: goto -35 -> 58
     //   96: iload 6
-    //   98: putstatic 45	com/google/android/gms/common/util/CrashUtils:zzzi	I
+    //   98: putstatic 43	com/google/android/gms/common/util/CrashUtils:zzzi	I
     //   101: iload 5
-    //   103: putstatic 47	com/google/android/gms/common/util/CrashUtils:zzzj	I
-    //   106: getstatic 39	com/google/android/gms/common/util/CrashUtils:zzzd	Landroid/os/DropBoxManager;
+    //   103: putstatic 45	com/google/android/gms/common/util/CrashUtils:zzzj	I
+    //   106: getstatic 37	com/google/android/gms/common/util/CrashUtils:zzzd	Landroid/os/DropBoxManager;
     //   109: ifnull +36 -> 145
-    //   112: getstatic 39	com/google/android/gms/common/util/CrashUtils:zzzd	Landroid/os/DropBoxManager;
+    //   112: getstatic 37	com/google/android/gms/common/util/CrashUtils:zzzd	Landroid/os/DropBoxManager;
     //   115: astore 4
     //   117: aload 4
     //   119: ifnull +14 -> 133
     //   122: aload 4
-    //   124: ldc_w 387
-    //   127: invokevirtual 392	android/os/DropBoxManager:isTagEnabled	(Ljava/lang/String;)Z
+    //   124: ldc_w 383
+    //   127: invokevirtual 388	android/os/DropBoxManager:isTagEnabled	(Ljava/lang/String;)Z
     //   130: ifne +30 -> 160
     //   133: sipush 5161
-    //   136: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   136: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   139: iconst_0
     //   140: istore 7
     //   142: goto -106 -> 36
     //   145: aload_0
-    //   146: ldc_w 394
-    //   149: invokevirtual 398	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   152: checkcast 389	android/os/DropBoxManager
+    //   146: ldc_w 390
+    //   149: invokevirtual 394	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   152: checkcast 385	android/os/DropBoxManager
     //   155: astore 4
     //   157: goto -40 -> 117
     //   160: aload 4
-    //   162: ldc_w 387
+    //   162: ldc_w 383
     //   165: aload_0
     //   166: aload_1
     //   167: aload_2
     //   168: iload_3
-    //   169: invokestatic 400	com/google/android/gms/common/util/CrashUtils:zza	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;I)Ljava/lang/String;
-    //   172: invokevirtual 404	android/os/DropBoxManager:addText	(Ljava/lang/String;Ljava/lang/String;)V
+    //   169: invokestatic 396	com/google/android/gms/common/util/CrashUtils:zza	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;I)Ljava/lang/String;
+    //   172: invokevirtual 400	android/os/DropBoxManager:addText	(Ljava/lang/String;Ljava/lang/String;)V
     //   175: iconst_1
     //   176: istore 7
     //   178: sipush 5161
-    //   181: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   181: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   184: goto -148 -> 36
     //   187: astore_0
     //   188: ldc 2
@@ -733,10 +730,22 @@ public final class CrashUtils
     }
     return false;
   }
+  
+  @Retention(RetentionPolicy.SOURCE)
+  public static @interface ErrorDialogData
+  {
+    public static final int AVG_CRASH_FREQ = 2;
+    public static final int BINDER_CRASH = 268435456;
+    public static final int DYNAMITE_CRASH = 536870912;
+    public static final int FORCED_SHUSHED_BY_WRAPPER = 4;
+    public static final int NONE = 0;
+    public static final int POPUP_FREQ = 1;
+    public static final int SUPPRESSED = 1073741824;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.util.CrashUtils
  * JD-Core Version:    0.7.0.1
  */

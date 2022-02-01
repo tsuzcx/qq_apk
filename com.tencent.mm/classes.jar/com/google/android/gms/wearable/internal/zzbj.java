@@ -4,13 +4,11 @@ import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.wearable.ChannelIOException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.InputStream;
-import javax.annotation.Nullable;
 
 public final class zzbj
   extends InputStream
 {
   private final InputStream zzcv;
-  @Nullable
   private volatile zzav zzcw;
   
   public zzbj(InputStream paramInputStream)
@@ -115,7 +113,7 @@ public final class zzbj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzbj
  * JD-Core Version:    0.7.0.1
  */

@@ -2,214 +2,269 @@ package com.tencent.mm.plugin.finder.ui;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.finder.service.k;
-import com.tencent.mm.plugin.finder.view.e;
+import com.tencent.mm.plugin.finder.service.p;
+import com.tencent.mm.plugin.finder.utils.av;
+import com.tencent.mm.plugin.finder.view.d;
+import com.tencent.mm.plugin.findersdk.a.ck;
 import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.ard;
-import com.tencent.mm.protocal.protobuf.arg;
-import com.tencent.mm.protocal.protobuf.asn;
-import com.tencent.mm.protocal.protobuf.beo;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.protocal.protobuf.avl;
+import com.tencent.mm.protocal.protobuf.avo;
+import com.tencent.mm.protocal.protobuf.axc;
+import com.tencent.mm.protocal.protobuf.bpp;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.q;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"MENU_ID_ADD_BLACK_LIST", "", "addBlackListener", "Lkotlin/Function3;", "", "Landroid/content/Context;", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModBlackList;", "", "getAddBlackListener", "()Lkotlin/jvm/functions/Function3;", "clickFansItem", "Lcom/tencent/mm/plugin/finder/view/FinderBottomSheet;", "fansContact", "Lcom/tencent/mm/protocal/protobuf/FinderFansContact;", "context", "Lkotlin/Function1;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"MENU_ID_ADD_BLACK_LIST", "", "addBlackListener", "Lkotlin/Function3;", "", "Landroid/content/Context;", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModBlackList;", "", "getAddBlackListener", "()Lkotlin/jvm/functions/Function3;", "clickFansItem", "Lcom/tencent/mm/plugin/finder/view/FinderBottomSheet;", "fansContact", "Lcom/tencent/mm/protocal/protobuf/FinderFansContact;", "context", "Lkotlin/Function1;", "plugin-finder_release"}, k=2, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  private static final kotlin.g.a.q<String, Context, com.tencent.mm.plugin.findersdk.a.aj<beo>, x> AqL = (kotlin.g.a.q)a.AqM;
+  private static final q<String, Context, ck<bpp>, ah> FQz = (q)a.FQA;
   
-  public static final e a(asn paramasn, Context paramContext, kotlin.g.a.b<? super String, x> paramb)
+  public static final d a(axc paramaxc, Context paramContext, kotlin.g.a.b<? super String, ah> paramb)
   {
-    AppMethodBeat.i(280905);
-    p.k(paramasn, "fansContact");
-    p.k(paramContext, "context");
+    AppMethodBeat.i(346569);
+    s.u(paramaxc, "fansContact");
+    s.u(paramContext, "context");
     Intent localIntent = new Intent();
-    Object localObject = paramasn.contact;
+    Object localObject = paramaxc.contact;
     String str;
-    if (localObject != null)
-    {
-      str = ((FinderContact)localObject).username;
-      localObject = str;
-      if (str != null) {}
-    }
-    else
-    {
-      localObject = paramasn.contact;
-      if (localObject != null)
-      {
-        localObject = ((FinderContact)localObject).msgInfo;
-        if (localObject != null)
-        {
-          str = ((arg)localObject).SEn;
-          localObject = str;
-          if (str != null) {
-            break label96;
-          }
-        }
-      }
-      localObject = "";
-    }
-    label96:
-    localIntent.putExtra("Username", (String)localObject);
-    localObject = paramasn.contact;
-    if (localObject != null)
-    {
-      str = ((FinderContact)localObject).nickname;
-      localObject = str;
-      if (str != null) {}
-    }
-    else
-    {
-      localObject = "";
-    }
-    localIntent.putExtra("Nickname", (String)localObject);
-    localObject = paramasn.contact;
-    if (localObject != null)
-    {
-      str = ((FinderContact)localObject).headUrl;
-      localObject = str;
-      if (str != null) {}
-    }
-    else
-    {
-      localObject = "";
-    }
-    localIntent.putExtra("Avatar", (String)localObject);
-    localObject = paramasn.contact;
-    if (localObject != null)
-    {
-      str = ((FinderContact)localObject).signature;
-      localObject = str;
-      if (str != null) {}
-    }
-    else
-    {
-      localObject = "";
-    }
-    localIntent.putExtra("Signature", (String)localObject);
-    localObject = paramasn.contact;
+    label64:
+    label89:
+    label114:
     int i;
-    if (localObject != null)
+    if (localObject == null)
     {
-      localObject = ((FinderContact)localObject).extInfo;
-      if (localObject != null)
+      str = null;
+      localObject = str;
+      if (str == null)
       {
-        i = ((ard)localObject).sex;
-        localIntent.putExtra("Sex", i);
-        localObject = paramasn.contact;
-        if (localObject != null)
-        {
-          localObject = ((FinderContact)localObject).extInfo;
-          if (localObject != null)
-          {
-            str = ((ard)localObject).province;
-            localObject = str;
-            if (str != null) {
-              break label310;
-            }
-          }
+        localObject = paramaxc.contact;
+        if (localObject != null) {
+          break label367;
         }
         localObject = "";
-        label310:
-        localIntent.putExtra("Province", (String)localObject);
-        localObject = paramasn.contact;
-        if (localObject != null)
-        {
-          localObject = ((FinderContact)localObject).extInfo;
-          if (localObject != null)
-          {
-            str = ((ard)localObject).city;
-            localObject = str;
-            if (str != null) {
-              break label363;
-            }
-          }
-        }
-        localObject = "";
-        label363:
-        localIntent.putExtra("City", (String)localObject);
-        localObject = paramasn.contact;
-        if (localObject != null)
-        {
-          localObject = ((FinderContact)localObject).extInfo;
-          if (localObject != null)
-          {
-            str = ((ard)localObject).country;
-            localObject = str;
-            if (str != null) {
-              break label416;
-            }
-          }
-        }
-        localObject = "";
-        label416:
-        localIntent.putExtra("Country", (String)localObject);
-        if (paramasn.displayFlag == 0) {
-          localIntent.putExtra("Action", 1);
-        }
-        localIntent.putExtra("FansId", paramasn.fFa);
-        localObject = paramasn.contact;
-        if (localObject != null)
-        {
-          str = ((FinderContact)localObject).wx_username_v5;
-          localObject = str;
-          if (str != null) {}
-        }
-        else
-        {
-          localObject = "";
-        }
-        localIntent.putExtra("V5UserName", (String)localObject);
-        localObject = paramasn.contact;
-        if (localObject == null) {
-          break label574;
-        }
-        localObject = ((FinderContact)localObject).msgInfo;
-        if (localObject == null) {
-          break label574;
-        }
       }
+      localIntent.putExtra("Username", (String)localObject);
+      localObject = paramaxc.contact;
+      if (localObject != null) {
+        break label409;
+      }
+      localObject = "";
+      localIntent.putExtra("Nickname", (String)localObject);
+      localObject = paramaxc.contact;
+      if (localObject != null) {
+        break label432;
+      }
+      localObject = "";
+      localIntent.putExtra("Avatar", (String)localObject);
+      localObject = paramaxc.contact;
+      if (localObject != null) {
+        break label455;
+      }
+      localObject = "";
+      label139:
+      localIntent.putExtra("Signature", (String)localObject);
+      localObject = paramaxc.contact;
+      if (localObject != null) {
+        break label478;
+      }
+      i = 0;
+      label162:
+      localIntent.putExtra("Sex", i);
+      localObject = paramaxc.contact;
+      if (localObject != null) {
+        break label504;
+      }
+      localObject = "";
+      label186:
+      localIntent.putExtra("Province", (String)localObject);
+      localObject = paramaxc.contact;
+      if (localObject != null) {
+        break label546;
+      }
+      localObject = "";
+      label211:
+      localIntent.putExtra("City", (String)localObject);
+      localObject = paramaxc.contact;
+      if (localObject != null) {
+        break label588;
+      }
+      localObject = "";
+      label236:
+      localIntent.putExtra("Country", (String)localObject);
+      if (paramaxc.displayFlag == 0) {
+        localIntent.putExtra("Action", 1);
+      }
+      localIntent.putExtra("FansId", paramaxc.hJS);
+      localObject = paramaxc.contact;
+      if (localObject != null) {
+        break label630;
+      }
+      localObject = "";
+      label289:
+      localIntent.putExtra("V5UserName", (String)localObject);
+      localObject = paramaxc.contact;
+      if (localObject != null) {
+        break label653;
+      }
+      localObject = null;
     }
-    label574:
-    for (localObject = ((arg)localObject).toByteArray();; localObject = null)
+    for (;;)
     {
       localIntent.putExtra("ContactMsgInfo", (byte[])localObject);
       localIntent.putExtra("IsPoster", true);
-      localObject = com.tencent.mm.plugin.finder.utils.aj.AGc;
-      paramasn = com.tencent.mm.plugin.finder.utils.aj.a(paramContext, paramasn.username, localIntent, 1, paramb);
-      AppMethodBeat.o(280905);
-      return paramasn;
-      i = 0;
+      localObject = av.GiL;
+      paramaxc = av.a(paramContext, paramaxc.username, localIntent, 1, paramb);
+      AppMethodBeat.o(346569);
+      return paramaxc;
+      str = ((FinderContact)localObject).username;
       break;
+      label367:
+      localObject = ((FinderContact)localObject).msgInfo;
+      if (localObject == null)
+      {
+        localObject = "";
+        break label64;
+      }
+      str = ((avo)localObject).ZFM;
+      localObject = str;
+      if (str != null) {
+        break label64;
+      }
+      localObject = "";
+      break label64;
+      label409:
+      str = ((FinderContact)localObject).nickname;
+      localObject = str;
+      if (str != null) {
+        break label89;
+      }
+      localObject = "";
+      break label89;
+      label432:
+      str = ((FinderContact)localObject).headUrl;
+      localObject = str;
+      if (str != null) {
+        break label114;
+      }
+      localObject = "";
+      break label114;
+      label455:
+      str = ((FinderContact)localObject).signature;
+      localObject = str;
+      if (str != null) {
+        break label139;
+      }
+      localObject = "";
+      break label139;
+      label478:
+      localObject = ((FinderContact)localObject).extInfo;
+      if (localObject == null)
+      {
+        i = 0;
+        break label162;
+      }
+      i = ((avl)localObject).sex;
+      break label162;
+      label504:
+      localObject = ((FinderContact)localObject).extInfo;
+      if (localObject == null)
+      {
+        localObject = "";
+        break label186;
+      }
+      str = ((avl)localObject).province;
+      localObject = str;
+      if (str != null) {
+        break label186;
+      }
+      localObject = "";
+      break label186;
+      label546:
+      localObject = ((FinderContact)localObject).extInfo;
+      if (localObject == null)
+      {
+        localObject = "";
+        break label211;
+      }
+      str = ((avl)localObject).city;
+      localObject = str;
+      if (str != null) {
+        break label211;
+      }
+      localObject = "";
+      break label211;
+      label588:
+      localObject = ((FinderContact)localObject).extInfo;
+      if (localObject == null)
+      {
+        localObject = "";
+        break label236;
+      }
+      str = ((avl)localObject).country;
+      localObject = str;
+      if (str != null) {
+        break label236;
+      }
+      localObject = "";
+      break label236;
+      label630:
+      str = ((FinderContact)localObject).wx_username_v5;
+      localObject = str;
+      if (str != null) {
+        break label289;
+      }
+      localObject = "";
+      break label289;
+      label653:
+      localObject = ((FinderContact)localObject).msgInfo;
+      if (localObject == null) {
+        localObject = null;
+      } else {
+        localObject = ((avo)localObject).toByteArray();
+      }
     }
   }
   
-  public static final kotlin.g.a.q<String, Context, com.tencent.mm.plugin.findersdk.a.aj<beo>, x> eao()
+  public static final q<String, Context, ck<bpp>, ah> fbc()
   {
-    return AqL;
+    return FQz;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "fansId", "", "context", "Landroid/content/Context;", "callback", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModBlackList;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "fansId", "", "context", "Landroid/content/Context;", "callback", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModBlackList;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    extends kotlin.g.b.q
-    implements kotlin.g.a.q<String, Context, com.tencent.mm.plugin.findersdk.a.aj<beo>, x>
+    extends u
+    implements q<String, Context, ck<bpp>, ah>
   {
-    public static final a AqM;
+    public static final a FQA;
     
     static
     {
-      AppMethodBeat.i(230374);
-      AqM = new a();
-      AppMethodBeat.o(230374);
+      AppMethodBeat.i(347007);
+      FQA = new a();
+      AppMethodBeat.o(347007);
     }
     
     a()
     {
       super();
+    }
+    
+    private static final void a(String paramString, ck paramck, DialogInterface paramDialogInterface, int paramInt)
+    {
+      AppMethodBeat.i(347001);
+      p localp = (p)h.ax(p.class);
+      paramDialogInterface = paramString;
+      if (paramString == null) {
+        paramDialogInterface = "";
+      }
+      localp.b(paramDialogInterface, true, paramck);
+      AppMethodBeat.o(347001);
     }
   }
 }

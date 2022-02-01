@@ -13,47 +13,47 @@ final class MultiGestureImageView$c
   
   public final boolean onContextClick(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(241515);
+    AppMethodBeat.i(289627);
     b localb = new b();
-    localb.bn(paramMotionEvent);
-    a.c("com/tencent/mm/plugin/gallery/view/MultiGestureImageView$MySimpleGesture", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
+    localb.cH(paramMotionEvent);
+    a.c("com/tencent/mm/plugin/gallery/view/MultiGestureImageView$MySimpleGesture", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.aYj());
     boolean bool = super.onContextClick(paramMotionEvent);
     a.a(bool, this, "com/tencent/mm/plugin/gallery/view/MultiGestureImageView$MySimpleGesture", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
-    AppMethodBeat.o(241515);
+    AppMethodBeat.o(289627);
     return bool;
   }
   
   public final boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(241505);
+    AppMethodBeat.i(289620);
     b localb = new b();
-    localb.bn(paramMotionEvent);
-    a.c("com/tencent/mm/plugin/gallery/view/MultiGestureImageView$MySimpleGesture", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
+    localb.cH(paramMotionEvent);
+    a.c("com/tencent/mm/plugin/gallery/view/MultiGestureImageView$MySimpleGesture", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.aYj());
     a.a(true, this, "com/tencent/mm/plugin/gallery/view/MultiGestureImageView$MySimpleGesture", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
-    AppMethodBeat.o(241505);
+    AppMethodBeat.o(289620);
     return true;
   }
   
   public final void onLongPress(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(241512);
+    AppMethodBeat.i(289624);
     b localb = new b();
-    localb.bn(paramMotionEvent);
-    a.c("com/tencent/mm/plugin/gallery/view/MultiGestureImageView$MySimpleGesture", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aFi());
+    localb.cH(paramMotionEvent);
+    a.c("com/tencent/mm/plugin/gallery/view/MultiGestureImageView$MySimpleGesture", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aYj());
     super.onLongPress(paramMotionEvent);
     a.a(this, "com/tencent/mm/plugin/gallery/view/MultiGestureImageView$MySimpleGesture", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-    AppMethodBeat.o(241512);
+    AppMethodBeat.o(289624);
   }
   
   public final boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(241509);
+    AppMethodBeat.i(289622);
     b localb = new b();
-    localb.bn(paramMotionEvent);
-    a.c("com/tencent/mm/plugin/gallery/view/MultiGestureImageView$MySimpleGesture", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
+    localb.cH(paramMotionEvent);
+    a.c("com/tencent/mm/plugin/gallery/view/MultiGestureImageView$MySimpleGesture", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aYj());
     boolean bool = super.onSingleTapUp(paramMotionEvent);
     a.a(bool, this, "com/tencent/mm/plugin/gallery/view/MultiGestureImageView$MySimpleGesture", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
-    AppMethodBeat.o(241509);
+    AppMethodBeat.o(289622);
     return bool;
   }
 }

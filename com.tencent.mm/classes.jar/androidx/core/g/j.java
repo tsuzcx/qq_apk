@@ -6,83 +6,83 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class j
 {
   @Deprecated
-  public static int c(MotionEvent paramMotionEvent, int paramInt)
-  {
-    AppMethodBeat.i(251472);
-    paramInt = paramMotionEvent.findPointerIndex(paramInt);
-    AppMethodBeat.o(251472);
-    return paramInt;
-  }
-  
-  @Deprecated
   public static int d(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(251469);
+    AppMethodBeat.i(195685);
     int i = paramMotionEvent.getActionMasked();
-    AppMethodBeat.o(251469);
+    AppMethodBeat.o(195685);
     return i;
   }
   
   @Deprecated
   public static int d(MotionEvent paramMotionEvent, int paramInt)
   {
-    AppMethodBeat.i(251474);
-    paramInt = paramMotionEvent.getPointerId(paramInt);
-    AppMethodBeat.o(251474);
+    AppMethodBeat.i(195704);
+    paramInt = paramMotionEvent.findPointerIndex(paramInt);
+    AppMethodBeat.o(195704);
     return paramInt;
-  }
-  
-  @Deprecated
-  public static float e(MotionEvent paramMotionEvent, int paramInt)
-  {
-    AppMethodBeat.i(251475);
-    float f = paramMotionEvent.getX(paramInt);
-    AppMethodBeat.o(251475);
-    return f;
   }
   
   @Deprecated
   public static int e(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(251471);
+    AppMethodBeat.i(195694);
     int i = paramMotionEvent.getActionIndex();
-    AppMethodBeat.o(251471);
+    AppMethodBeat.o(195694);
     return i;
+  }
+  
+  @Deprecated
+  public static int e(MotionEvent paramMotionEvent, int paramInt)
+  {
+    AppMethodBeat.i(195711);
+    paramInt = paramMotionEvent.getPointerId(paramInt);
+    AppMethodBeat.o(195711);
+    return paramInt;
   }
   
   @Deprecated
   public static float f(MotionEvent paramMotionEvent, int paramInt)
   {
-    AppMethodBeat.i(251476);
-    float f = paramMotionEvent.getY(paramInt);
-    AppMethodBeat.o(251476);
+    AppMethodBeat.i(195723);
+    float f = paramMotionEvent.getX(paramInt);
+    AppMethodBeat.o(195723);
     return f;
   }
   
   @Deprecated
   public static int f(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(251477);
+    AppMethodBeat.i(195741);
     int i = paramMotionEvent.getPointerCount();
-    AppMethodBeat.o(251477);
+    AppMethodBeat.o(195741);
     return i;
+  }
+  
+  @Deprecated
+  public static float g(MotionEvent paramMotionEvent, int paramInt)
+  {
+    AppMethodBeat.i(195734);
+    float f = paramMotionEvent.getY(paramInt);
+    AppMethodBeat.o(195734);
+    return f;
   }
   
   public static boolean g(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(251478);
+    AppMethodBeat.i(195754);
     if ((paramMotionEvent.getSource() & 0x2002) == 8194)
     {
-      AppMethodBeat.o(251478);
+      AppMethodBeat.o(195754);
       return true;
     }
-    AppMethodBeat.o(251478);
+    AppMethodBeat.o(195754);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.core.g.j
  * JD-Core Version:    0.7.0.1
  */

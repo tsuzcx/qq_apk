@@ -1,32 +1,38 @@
 package kotlin.l.b.a.b.d.a.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.b.e;
-import kotlin.l.b.a.b.d.a.e.g;
-import kotlin.l.b.a.b.j.e.b;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.b.ba;
+import kotlin.l.b.a.b.d.a.e.x;
 
-public final class l
-  implements j
+public abstract interface l
 {
-  public b aaUy;
+  public abstract ba a(x paramx);
   
-  public final e c(g paramg)
+  public static final class a
+    implements l
   {
-    AppMethodBeat.i(57769);
-    p.k(paramg, "javaClass");
-    b localb = this.aaUy;
-    if (localb == null) {
-      p.bGy("resolver");
+    public static final a aiSz;
+    
+    static
+    {
+      AppMethodBeat.i(57771);
+      aiSz = new a();
+      AppMethodBeat.o(57771);
     }
-    paramg = localb.c(paramg);
-    AppMethodBeat.o(57769);
-    return paramg;
+    
+    public final ba a(x paramx)
+    {
+      AppMethodBeat.i(57770);
+      s.u(paramx, "javaTypeParameter");
+      AppMethodBeat.o(57770);
+      return null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.c.l
  * JD-Core Version:    0.7.0.1
  */

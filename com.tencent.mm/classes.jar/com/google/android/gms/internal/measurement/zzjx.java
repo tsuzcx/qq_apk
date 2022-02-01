@@ -5,32 +5,19 @@ import android.os.Parcelable.Creator;
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SafeParcelable.Class(creator="UserAttributeParcelCreator")
 public final class zzjx
   extends AbstractSafeParcelable
 {
   public static final Parcelable.Creator<zzjx> CREATOR;
-  @SafeParcelable.Field(id=2)
   public final String name;
-  @SafeParcelable.Field(id=7)
   public final String origin;
-  @SafeParcelable.Field(id=1)
   private final int versionCode;
-  @SafeParcelable.Field(id=6)
   private final String zzajf;
-  @SafeParcelable.Field(id=3)
   public final long zzaqz;
-  @SafeParcelable.Field(id=4)
   private final Long zzara;
-  @SafeParcelable.Field(id=5)
   private final Float zzarb;
-  @SafeParcelable.Field(id=8)
   private final Double zzarc;
   
   static
@@ -40,8 +27,7 @@ public final class zzjx
     AppMethodBeat.o(2018);
   }
   
-  @SafeParcelable.Constructor
-  zzjx(@SafeParcelable.Param(id=1) int paramInt, @SafeParcelable.Param(id=2) String paramString1, @SafeParcelable.Param(id=3) long paramLong, @SafeParcelable.Param(id=4) Long paramLong1, @SafeParcelable.Param(id=5) Float paramFloat, @SafeParcelable.Param(id=6) String paramString2, @SafeParcelable.Param(id=7) String paramString3, @SafeParcelable.Param(id=8) Double paramDouble)
+  zzjx(int paramInt, String paramString1, long paramLong, Long paramLong1, Float paramFloat, String paramString2, String paramString3, Double paramDouble)
   {
     AppMethodBeat.i(2016);
     this.versionCode = paramInt;
@@ -151,7 +137,7 @@ public final class zzjx
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzjx
  * JD-Core Version:    0.7.0.1
  */

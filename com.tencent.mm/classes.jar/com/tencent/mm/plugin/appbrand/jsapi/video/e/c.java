@@ -2,74 +2,71 @@ package com.tencent.mm.plugin.appbrand.jsapi.video.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import java.io.Closeable;
+import java.io.InputStream;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/GeneralErrorType;", "", "(Ljava/lang/String;I)V", "NETWORK", "EXTRACT", "EXTRACT_NOT_SUPPORT", "DECODE", "DECODE_NOT_SUPPORT", "RENDER", "ILLEGAL", "OTHER", "Companion", "luggage-commons-jsapi-video-ext_release"})
-public enum c
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/DefaultContainerFormatInferer;", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/IContainerFormatInferer;", "srcStreamProvider", "Lkotlin/Function1;", "", "Ljava/io/InputStream;", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/SrcStreamProvider;", "(Lkotlin/jvm/functions/Function1;)V", "isHls", "", "src", "luggage-commons-jsapi-video-ext_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class c
 {
-  public static final c.a pzN;
+  private final kotlin.g.a.b<String, InputStream> sEJ;
   
-  static
+  public c(kotlin.g.a.b<? super String, ? extends InputStream> paramb)
   {
-    AppMethodBeat.i(230666);
-    c localc1 = new c("NETWORK", 0);
-    pzE = localc1;
-    c localc2 = new c("EXTRACT", 1);
-    pzF = localc2;
-    c localc3 = new c("EXTRACT_NOT_SUPPORT", 2);
-    pzG = localc3;
-    c localc4 = new c("DECODE", 3);
-    pzH = localc4;
-    c localc5 = new c("DECODE_NOT_SUPPORT", 4);
-    pzI = localc5;
-    c localc6 = new c("RENDER", 5);
-    pzJ = localc6;
-    c localc7 = new c("ILLEGAL", 6);
-    pzK = localc7;
-    c localc8 = new c("OTHER", 7);
-    pzL = localc8;
-    pzM = new c[] { localc1, localc2, localc3, localc4, localc5, localc6, localc7, localc8 };
-    pzN = new c.a((byte)0);
-    AppMethodBeat.o(230666);
+    AppMethodBeat.i(328651);
+    this.sEJ = paramb;
+    AppMethodBeat.o(328651);
   }
   
-  private c() {}
-  
-  public static final c eJ(int paramInt1, int paramInt2)
+  public final boolean acp(String paramString)
   {
-    Object localObject = null;
-    c localc = null;
-    AppMethodBeat.i(230675);
-    if (-4000 >= paramInt1) {
-      switch (paramInt1)
-      {
-      }
+    AppMethodBeat.i(328667);
+    s.u(paramString, "src");
+    Object localObject1 = (InputStream)this.sEJ.invoke(paramString);
+    if (localObject1 == null) {
+      localObject1 = null;
     }
-    for (;;)
+    while (localObject1 == null)
     {
-      localObject = localc;
-      if (localc == null)
+      localObject1 = b.sEI;
+      bool = b.aco(paramString);
+      AppMethodBeat.o(328667);
+      return bool;
+      Closeable localCloseable = (Closeable)localObject1;
+      try
       {
-        Log.e("MicroMsg.AppBrand.GeneralErrorType", "fromExoErrorInfo, errorType is null, errorWhat: " + paramInt1 + ", errorExtra: " + paramInt2);
-        localObject = localc;
+        b localb2 = b.sEI;
+        bool = b.R((InputStream)localObject1);
+        localObject1 = Boolean.valueOf(bool);
+        kotlin.f.b.a(localCloseable, null);
       }
-      Log.i("MicroMsg.AppBrand.GeneralErrorType", "fromErrorInfo, errorWhat: " + paramInt1 + ", errorExtra: " + paramInt2 + ", errorType: " + localObject);
-      AppMethodBeat.o(230675);
-      return localObject;
-      localc = pzE;
-      continue;
-      localc = pzF;
-      continue;
-      localc = pzG;
-      continue;
-      localc = pzH;
-      continue;
-      localc = pzJ;
-      continue;
-      localc = pzK;
-      continue;
-      localc = pzL;
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          Log.printErrStackTrace("MicroMsg.AppBrand.ContainerFormatInferer", (Throwable)localException, "judge isHls fail", new Object[0]);
+          b localb1 = b.sEI;
+          bool = b.aco(paramString);
+        }
+      }
+      finally
+      {
+        try
+        {
+          AppMethodBeat.o(328667);
+          throw paramString;
+        }
+        finally
+        {
+          kotlin.f.b.a(localCloseable, paramString);
+          AppMethodBeat.o(328667);
+        }
+      }
     }
+    boolean bool = localObject2.booleanValue();
+    AppMethodBeat.o(328667);
+    return bool;
   }
 }
 

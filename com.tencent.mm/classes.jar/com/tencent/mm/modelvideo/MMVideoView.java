@@ -5,56 +5,58 @@ import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.loader.j.b;
+import com.tencent.mm.loader.i.b;
+import com.tencent.mm.plugin.a.k;
 import com.tencent.mm.pluginsdk.ui.CommonVideoView;
 import com.tencent.mm.pluginsdk.ui.i.a;
 import com.tencent.mm.pluginsdk.ui.i.e;
 import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView;
+import com.tencent.mm.pluginsdk.ui.tools.i;
 import com.tencent.mm.pointers.PInt;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 
 public class MMVideoView
   extends CommonVideoView
   implements f.a
 {
-  protected int mfA;
-  private boolean mfB;
-  protected boolean mfC;
-  protected int mfD;
-  protected int mfE;
-  protected boolean mfF;
-  protected boolean mfG;
-  private boolean mfH;
-  protected a mfI;
-  protected boolean mfJ;
-  public boolean mfK;
-  private MTimerHandler mfL;
-  private i.a mfg;
-  private String mfn;
-  protected f mft;
-  protected String mfu;
-  public String mfv;
-  protected int mfw;
-  protected int mfx;
-  protected com.tencent.mm.plugin.a.f mfy;
-  protected int mfz;
+  private i.a oXY;
+  protected int oYA;
+  protected boolean oYB;
+  protected boolean oYC;
+  private boolean oYD;
+  protected a oYE;
+  protected boolean oYF;
+  public boolean oYG;
+  private MTimerHandler oYH;
+  private String oYg;
+  protected f oYp;
+  protected String oYq;
+  public String oYr;
+  protected int oYs;
+  protected int oYt;
+  protected com.tencent.mm.plugin.a.f oYu;
+  protected int oYv;
+  protected int oYw;
+  private boolean oYx;
+  protected boolean oYy;
+  protected int oYz;
   
   public MMVideoView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(126787);
-    this.mfw = 0;
-    this.mfx = 0;
-    this.mfD = 0;
-    this.mfF = false;
-    this.mfG = false;
-    this.mfH = false;
-    this.mfJ = false;
-    this.mfL = new MTimerHandler(new MTimerHandler.CallBack()
+    this.oYs = 0;
+    this.oYt = 0;
+    this.oYz = 0;
+    this.oYB = false;
+    this.oYC = false;
+    this.oYD = false;
+    this.oYF = false;
+    this.oYH = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -109,14 +111,14 @@ public class MMVideoView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(126788);
-    this.mfw = 0;
-    this.mfx = 0;
-    this.mfD = 0;
-    this.mfF = false;
-    this.mfG = false;
-    this.mfH = false;
-    this.mfJ = false;
-    this.mfL = new MTimerHandler(new MTimerHandler.CallBack()
+    this.oYs = 0;
+    this.oYt = 0;
+    this.oYz = 0;
+    this.oYB = false;
+    this.oYC = false;
+    this.oYD = false;
+    this.oYF = false;
+    this.oYH = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -171,14 +173,14 @@ public class MMVideoView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(126789);
-    this.mfw = 0;
-    this.mfx = 0;
-    this.mfD = 0;
-    this.mfF = false;
-    this.mfG = false;
-    this.mfH = false;
-    this.mfJ = false;
-    this.mfL = new MTimerHandler(new MTimerHandler.CallBack()
+    this.oYs = 0;
+    this.oYt = 0;
+    this.oYz = 0;
+    this.oYB = false;
+    this.oYC = false;
+    this.oYD = false;
+    this.oYF = false;
+    this.oYH = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -229,10 +231,10 @@ public class MMVideoView
     AppMethodBeat.o(126789);
   }
   
-  private void bqn()
+  private void bNT()
   {
     AppMethodBeat.i(126808);
-    Log.i(this.TAG, "%s pauseByDataBlock ", new Object[] { bqf() });
+    Log.i(this.TAG, "%s pauseByDataBlock ", new Object[] { bNL() });
     showLoading();
     pause();
     AppMethodBeat.o(126808);
@@ -241,13 +243,13 @@ public class MMVideoView
   private String getRootPath()
   {
     AppMethodBeat.i(126793);
-    if (!Util.isNullOrNil(this.mfn))
+    if (!Util.isNullOrNil(this.oYg))
     {
-      str = this.mfn;
+      str = this.oYg;
       AppMethodBeat.o(126793);
       return str;
     }
-    String str = b.aSL() + "video/";
+    String str = b.bmz() + "video/";
     AppMethodBeat.o(126793);
     return str;
   }
@@ -259,19 +261,19 @@ public class MMVideoView
     PInt localPInt2 = new PInt();
     try
     {
-      if ((this.mfy.a(paramInt1, paramInt2, localPInt1, localPInt2)) && (this.mft != null))
+      if ((this.oYu.a(paramInt1, paramInt2, localPInt1, localPInt2)) && (this.oYp != null))
       {
-        bool = this.mft.isVideoDataAvailable(this.mfu, localPInt1.value, localPInt2.value);
+        bool = this.oYp.isVideoDataAvailable(this.oYq, localPInt1.value, localPInt2.value);
         if (bool) {
           break label258;
         }
-        String str = this.mfu + "_" + localPInt1.value + "_" + localPInt2.value;
-        if ((this.mfG) && (!paramBoolean)) {
+        String str = this.oYq + "_" + localPInt1.value + "_" + localPInt2.value;
+        if ((this.oYC) && (!paramBoolean)) {
           break label213;
         }
-        this.mfG = true;
-        if (this.mft != null) {
-          this.mft.requestVideoData(this.mfu, localPInt1.value, localPInt2.value);
+        this.oYC = true;
+        if (this.oYp != null) {
+          this.oYp.requestVideoData(this.oYq, localPInt1.value, localPInt2.value);
         }
         AppMethodBeat.o(126811);
         return bool;
@@ -281,73 +283,22 @@ public class MMVideoView
     {
       for (;;)
       {
-        Log.e(this.TAG, "%s check video data error[%s] ", new Object[] { bqf(), localException.toString() });
+        Log.e(this.TAG, "%s check video data error[%s] ", new Object[] { bNL(), localException.toString() });
         boolean bool = false;
         continue;
         label213:
-        Log.d(this.TAG, "%s already request video [%s] isRequestNow[%b] isSeek[%b] ", new Object[] { bqf(), localException, Boolean.valueOf(this.mfG), Boolean.valueOf(paramBoolean) });
+        Log.d(this.TAG, "%s already request video [%s] isRequestNow[%b] isSeek[%b] ", new Object[] { bNL(), localException, Boolean.valueOf(this.oYC), Boolean.valueOf(paramBoolean) });
         continue;
         label258:
-        Log.d(this.TAG, "%s already had video data.", new Object[] { bqf() });
+        Log.d(this.TAG, "%s already had video data.", new Object[] { bNL() });
       }
     }
   }
   
-  public final void GQ(long paramLong)
-  {
-    AppMethodBeat.i(216966);
-    Log.i(this.TAG, "%s deal moov ready moovPos %d, timeDuration %d, cdnMediaId %s", new Object[] { bqf(), Long.valueOf(paramLong), Integer.valueOf(this.mfz), this.mfu });
-    if (this.mfz != 0)
-    {
-      Log.w(this.TAG, "moov had callback, do nothing.");
-      AppMethodBeat.o(216966);
-      return;
-    }
-    hja();
-    try
-    {
-      if (this.mfy == null)
-      {
-        Log.w(this.TAG, "%s parser is null, thread is error.", new Object[] { bqf() });
-        AppMethodBeat.o(216966);
-        return;
-      }
-      if (!this.mfy.K(this.mfv, paramLong)) {
-        break label254;
-      }
-      this.mfz = this.mfy.bvI();
-      Log.i(this.TAG, "%s mp4 parse moov success. duration %d cdnMediaId %s ", new Object[] { bqf(), Integer.valueOf(this.mfz), this.mfu });
-      if (xa(0)) {
-        bqm();
-      }
-      if (this.mfA == -1)
-      {
-        this.mfx = 1;
-        AppMethodBeat.o(216966);
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      Log.printErrStackTrace(this.TAG, localException, "%s deal moov ready error [%s]", new Object[] { bqf(), this.mfu });
-      AppMethodBeat.o(216966);
-      return;
-    }
-    this.mfx = 2;
-    AppMethodBeat.o(216966);
-    return;
-    label254:
-    Log.w(this.TAG, "%s mp4 parse moov error. cdnMediaId %s", new Object[] { bqf(), this.mfu });
-    if (this.mft != null) {
-      this.mft.requestVideoData(this.mfu, 0, -1);
-    }
-    AppMethodBeat.o(216966);
-  }
-  
-  public boolean I(int paramInt, boolean paramBoolean)
+  public boolean X(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(126804);
-    switch (this.mfw)
+    switch (this.oYs)
     {
     }
     do
@@ -355,237 +306,234 @@ public class MMVideoView
       paramBoolean = true;
       for (;;)
       {
-        Log.printInfoStack(this.TAG, "%s seek video time %d, download status %d playStatus %d", new Object[] { bqf(), Integer.valueOf(paramInt), Integer.valueOf(this.mfw), Integer.valueOf(this.mfx) });
+        Log.printInfoStack(this.TAG, "%s seek video time %d, download status %d playStatus %d", new Object[] { bNL(), Integer.valueOf(paramInt), Integer.valueOf(this.oYs), Integer.valueOf(this.oYt) });
         AppMethodBeat.o(126804);
         return paramBoolean;
-        this.mfx = 2;
+        Log.i(this.XXD, "seekTo, downloadStatus is downloading");
+        this.oYt = 2;
         PInt localPInt1 = new PInt();
         PInt localPInt2 = new PInt();
         a(paramInt, localPInt1, localPInt2);
         if (p(localPInt1.value, localPInt2.value, true))
         {
-          this.mfA = -1;
-          this.mfC = false;
-          this.mfD = localPInt2.value;
-          this.mfx = 3;
-          super.a(paramInt, paramBoolean);
+          this.oYw = -1;
+          this.oYy = false;
+          this.oYz = localPInt2.value;
+          this.oYt = 3;
+          super.b(paramInt, paramBoolean);
           paramBoolean = true;
         }
         else
         {
-          this.mfA = paramInt;
-          this.mfB = paramBoolean;
-          this.mfC = true;
-          bqn();
+          this.oYw = paramInt;
+          this.oYx = paramBoolean;
+          this.oYy = true;
+          bNT();
           paramBoolean = false;
           continue;
-          super.a(paramInt, paramBoolean);
+          Log.i(this.XXD, "seekTo, downloadStatus is download finish");
+          super.b(paramInt, paramBoolean);
           paramBoolean = true;
           continue;
+          Log.i(this.XXD, "seekTo, downloadStatus is download error");
           paramBoolean = true;
         }
       }
-    } while (ayN());
-    if (this.pDY)
+      Log.i(this.XXD, "seekTo, downloadStatus is download default, isPrepared is " + cxs());
+    } while (cxs());
+    if (this.sJk)
     {
-      this.pDW = paramBoolean;
-      this.mfB = paramBoolean;
-      this.pDX = paramInt;
-      this.mfA = paramInt;
+      this.sJi = paramBoolean;
+      this.oYx = paramBoolean;
+      this.sJj = paramInt;
+      this.oYw = paramInt;
     }
     for (;;)
     {
       start();
       break;
-      this.pDW = paramBoolean;
+      this.sJi = paramBoolean;
       if (paramInt > 0) {
-        this.pDX = paramInt;
+        this.sJj = paramInt;
       } else {
-        this.pDX = this.pDT;
+        this.sJj = this.sJf;
       }
     }
-  }
-  
-  public boolean a(double paramDouble, boolean paramBoolean)
-  {
-    AppMethodBeat.i(126803);
-    paramBoolean = I((int)paramDouble, paramBoolean);
-    AppMethodBeat.o(126803);
-    return paramBoolean;
   }
   
   protected boolean a(int paramInt, PInt paramPInt1, PInt paramPInt2)
   {
     AppMethodBeat.i(126807);
-    paramPInt1.value = Math.max(paramInt, this.mfD);
-    if (this.mfx == 1)
+    paramPInt1.value = Math.max(paramInt, this.oYz);
+    if (this.oYt == 1)
     {
       paramPInt1.value = paramInt;
-      paramPInt1.value += this.mfE;
+      paramPInt1.value += this.oYA;
     }
-    if (this.mfx == 2)
+    if (this.oYt == 2)
     {
       paramPInt1.value = (paramInt - 8);
       if (paramPInt1.value < 0) {
         paramPInt1.value = 0;
       }
-      paramPInt2.value = (paramPInt1.value + this.mfE + 8);
+      paramPInt2.value = (paramPInt1.value + this.oYA + 8);
     }
-    if ((this.mfx == 3) || (this.mfx == 4))
+    if ((this.oYt == 3) || (this.oYt == 4))
     {
-      paramPInt1.value = this.mfD;
-      paramPInt2.value = (this.mfE + paramInt + 1 + this.mfI.mfO);
+      paramPInt1.value = this.oYz;
+      paramPInt2.value = (this.oYA + paramInt + 1 + this.oYE.oYK);
     }
-    if (paramPInt2.value >= this.mfz + 1) {
-      paramPInt2.value = (this.mfz + 1);
+    if (paramPInt2.value >= this.oYv + 1) {
+      paramPInt2.value = (this.oYv + 1);
     }
     if (paramPInt2.value < paramPInt1.value)
     {
-      paramPInt1.value += this.mfI.mfO;
+      paramPInt1.value += this.oYE.oYK;
       AppMethodBeat.o(126807);
       return false;
     }
-    Log.i(this.TAG, "%s calcDownloadRange range[%d, %d] playTime[%d] playStatus[%d] cache[%d, %d] [%s]", new Object[] { bqf(), Integer.valueOf(paramPInt1.value), Integer.valueOf(paramPInt2.value), Integer.valueOf(paramInt), Integer.valueOf(this.mfx), Integer.valueOf(this.mfD), Integer.valueOf(this.mfE), this.mfu });
+    Log.i(this.TAG, "%s calcDownloadRange range[%d, %d] playTime[%d] playStatus[%d] cache[%d, %d] [%s]", new Object[] { bNL(), Integer.valueOf(paramPInt1.value), Integer.valueOf(paramPInt2.value), Integer.valueOf(paramInt), Integer.valueOf(this.oYt), Integer.valueOf(this.oYz), Integer.valueOf(this.oYA), this.oYq });
     AppMethodBeat.o(126807);
     return true;
   }
   
-  public void aP(String paramString, int paramInt)
+  public void b(boolean paramBoolean, String paramString, int paramInt)
   {
-    AppMethodBeat.i(126815);
-    if ((!Util.isEqual(this.mfu, paramString)) || (this.mfw == 3))
-    {
-      AppMethodBeat.o(126815);
-      return;
-    }
-    Log.i(this.TAG, "%s download finish [%d]", new Object[] { bqf(), Integer.valueOf(paramInt) });
-    if (paramInt == 0) {
-      this.mfw = 3;
-    }
-    String str;
-    if (this.mfg != null)
-    {
-      paramString = this.mfg;
-      str = this.mfv;
-      if (this.mfx <= 0) {
-        break label122;
-      }
-    }
-    label122:
-    for (boolean bool = true;; bool = false)
-    {
-      paramString.aR(str, bool);
-      gA(true);
-      this.mfG = false;
-      AppMethodBeat.o(126815);
-      return;
-    }
+    AppMethodBeat.i(126792);
+    super.b(paramBoolean, paramString, paramInt);
+    bNO();
+    AppMethodBeat.o(126792);
   }
   
-  protected void bqi()
+  public boolean b(double paramDouble, boolean paramBoolean)
+  {
+    AppMethodBeat.i(126803);
+    paramBoolean = X((int)paramDouble, paramBoolean);
+    AppMethodBeat.o(126803);
+    return paramBoolean;
+  }
+  
+  protected void bNO()
   {
     AppMethodBeat.i(169101);
     if (!Util.isNullOrNil(this.url))
     {
-      this.mfu = ("MMVideo_" + this.url.hashCode());
-      this.mfv = (getRootPath() + "MMVideo_" + this.url.hashCode() + ".mp4");
-      u.bBD(u.bBT(this.mfv));
-      Log.i(this.TAG, "%s set video path [%s %s]", new Object[] { bqf(), this.mfu, this.mfv });
+      this.oYq = ("MMVideo_" + this.url.hashCode());
+      this.oYr = (getRootPath() + "MMVideo_" + this.url.hashCode() + ".mp4");
+      y.bDX(y.bEo(this.oYr));
+      Log.i(this.TAG, "%s set video path [%s %s]", new Object[] { bNL(), this.oYq, this.oYr });
     }
     AppMethodBeat.o(169101);
   }
   
-  protected com.tencent.mm.plugin.a.f bqk()
+  protected com.tencent.mm.plugin.a.f bNQ()
   {
-    AppMethodBeat.i(216939);
-    com.tencent.mm.plugin.a.k localk = new com.tencent.mm.plugin.a.k();
-    AppMethodBeat.o(216939);
+    AppMethodBeat.i(241259);
+    k localk = new k();
+    AppMethodBeat.o(241259);
     return localk;
   }
   
-  protected void bql()
+  protected void bNR()
   {
-    this.mfI.mfN = 5;
-    this.mfI.mfO = 2;
+    this.oYE.oYJ = 5;
+    this.oYE.oYK = 2;
   }
   
-  protected void bqm()
+  protected void bNS()
   {
     AppMethodBeat.i(126794);
-    Log.printInfoStack(this.TAG, "%s prepareVideo", new Object[] { bqf() });
-    if (this.txH != null)
+    Log.i(this.XXD, "prepareVideo and set video path to VideoPlayerTextureView");
+    Log.printInfoStack(this.TAG, "%s prepareVideo", new Object[] { bNL() });
+    if (this.wCd != null)
     {
-      this.mfF = true;
-      this.txH.setVideoPath(this.mfv);
+      this.oYB = true;
+      this.wCd.setVideoPath(this.oYr);
     }
     AppMethodBeat.o(126794);
   }
   
-  public boolean bqo()
+  public boolean bNU()
   {
     AppMethodBeat.i(126810);
-    boolean bool = super.bqo();
+    boolean bool = super.bNU();
     if (bool) {
-      this.mfx = 3;
+      this.oYt = 3;
     }
     AppMethodBeat.o(126810);
     return bool;
   }
   
-  public void bqp() {}
+  public void bNV() {}
   
-  public void c(boolean paramBoolean, String paramString, int paramInt)
+  public void bb(String paramString, int paramInt)
   {
-    AppMethodBeat.i(126792);
-    super.c(paramBoolean, paramString, paramInt);
-    bqi();
-    AppMethodBeat.o(126792);
+    AppMethodBeat.i(126815);
+    if ((!Util.isEqual(this.oYq, paramString)) || (this.oYs == 3))
+    {
+      AppMethodBeat.o(126815);
+      return;
+    }
+    Log.i(this.TAG, "%s download finish [%d]", new Object[] { bNL(), Integer.valueOf(paramInt) });
+    if (paramInt == 0) {
+      this.oYs = 3;
+    }
+    String str;
+    if (this.oXY != null)
+    {
+      paramString = this.oXY;
+      str = this.oYr;
+      if (this.oYt <= 0) {
+        break label132;
+      }
+    }
+    label132:
+    for (boolean bool = true;; bool = false)
+    {
+      paramString.bd(str, bool);
+      Log.i(this.XXD, "onFinish, startTimer");
+      ho(true);
+      this.oYC = false;
+      AppMethodBeat.o(126815);
+      return;
+    }
   }
   
-  public com.tencent.mm.pluginsdk.ui.tools.k df(Context paramContext)
+  public i dY(Context paramContext)
   {
     AppMethodBeat.i(126800);
-    this.pDV = 1;
+    this.sJh = 1;
     paramContext = new VideoPlayerTextureView(paramContext);
     paramContext.setNeedResetExtractor(true);
     AppMethodBeat.o(126800);
     return paramContext;
   }
   
-  public void gA(boolean paramBoolean)
-  {
-    AppMethodBeat.i(126816);
-    Log.d(this.TAG, "%s start timer rightNow[%b]", new Object[] { bqf(), Boolean.valueOf(paramBoolean) });
-    this.mfL.stopTimer();
-    this.mfL.startTimer(10L, 500L);
-    AppMethodBeat.o(126816);
-  }
-  
   public int getCacheTimeSec()
   {
     AppMethodBeat.i(126818);
-    if (this.mfw == 3)
+    if (this.oYs == 3)
     {
       i = getVideoDurationSec();
       AppMethodBeat.o(126818);
       return i;
     }
-    int i = this.mfD;
+    int i = this.oYz;
     AppMethodBeat.o(126818);
     return i;
   }
   
   public View getInnerVideoView()
   {
-    if ((this.txH instanceof VideoPlayerTextureView)) {
-      return (View)this.txH;
+    if ((this.wCd instanceof VideoPlayerTextureView)) {
+      return (View)this.wCd;
     }
     return null;
   }
   
   public String getMediaId()
   {
-    return this.mfu;
+    return this.oYq;
   }
   
   public int getReportIdkey()
@@ -593,24 +541,25 @@ public class MMVideoView
     return 100;
   }
   
-  public void gz(boolean paramBoolean)
-  {
-    AppMethodBeat.i(126805);
-    super.gz(paramBoolean);
-    hideLoading();
-    AppMethodBeat.o(126805);
-  }
-  
   public void h(String paramString, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(126814);
-    if (!Util.isEqual(this.mfu, paramString))
+    if (!Util.isEqual(this.oYq, paramString))
     {
       AppMethodBeat.o(126814);
       return;
     }
-    Log.d(this.TAG, "%s download  onProgress [%d, %d]", new Object[] { bqf(), Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+    Log.d(this.TAG, "%s download  onProgress [%d, %d]", new Object[] { bNL(), Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
     AppMethodBeat.o(126814);
+  }
+  
+  public void ho(boolean paramBoolean)
+  {
+    AppMethodBeat.i(126816);
+    Log.d(this.TAG, "%s start timer rightNow[%b]", new Object[] { bNL(), Boolean.valueOf(paramBoolean) });
+    this.oYH.stopTimer();
+    this.oYH.startTimer(10L, 500L);
+    AppMethodBeat.o(126816);
   }
   
   public void initView()
@@ -618,33 +567,86 @@ public class MMVideoView
     AppMethodBeat.i(126790);
     super.initView();
     this.TAG = "MicroMsg.MMVideoView";
-    this.mfy = bqk();
-    this.mfI = new a();
-    bql();
+    this.XXD = "VideoView.MMVideoView";
+    this.oYu = bNQ();
+    this.oYE = new a();
+    bNR();
     reset();
     AppMethodBeat.o(126790);
+  }
+  
+  public final void jb(long paramLong)
+  {
+    AppMethodBeat.i(241316);
+    Log.i(this.XXD, "onMoovReady");
+    Log.i(this.TAG, "%s deal moov ready moovPos %d, timeDuration %d, cdnMediaId %s", new Object[] { bNL(), Long.valueOf(paramLong), Integer.valueOf(this.oYv), this.oYq });
+    if (this.oYv != 0)
+    {
+      Log.w(this.TAG, "moov had callback, do nothing.");
+      AppMethodBeat.o(241316);
+      return;
+    }
+    iJV();
+    try
+    {
+      if (this.oYu == null)
+      {
+        Log.w(this.TAG, "%s parser is null, thread is error.", new Object[] { bNL() });
+        AppMethodBeat.o(241316);
+        return;
+      }
+      if (!this.oYu.O(this.oYr, paramLong)) {
+        break label273;
+      }
+      this.oYv = this.oYu.bTU();
+      Log.i(this.TAG, "%s mp4 parse moov success. duration %d cdnMediaId %s ", new Object[] { bNL(), Integer.valueOf(this.oYv), this.oYq });
+      if (xa(0)) {
+        bNS();
+      }
+      if (this.oYw == -1)
+      {
+        this.oYt = 1;
+        AppMethodBeat.o(241316);
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      Log.printErrStackTrace(this.TAG, localException, "%s deal moov ready error [%s]", new Object[] { bNL(), this.oYq });
+      AppMethodBeat.o(241316);
+      return;
+    }
+    this.oYt = 2;
+    AppMethodBeat.o(241316);
+    return;
+    label273:
+    Log.w(this.TAG, "%s mp4 parse moov error. cdnMediaId %s", new Object[] { bNL(), this.oYq });
+    if (this.oYp != null) {
+      this.oYp.requestVideoData(this.oYq, 0, -1);
+    }
+    AppMethodBeat.o(241316);
   }
   
   public void onCompletion()
   {
     AppMethodBeat.i(126798);
-    if (this.mfK)
+    if (this.oYG)
     {
-      I(0, true);
-      super.fKt();
+      X(0, true);
+      super.hay();
     }
     for (;;)
     {
-      this.mfy.release();
+      this.oYu.release();
       AppMethodBeat.o(126798);
       return;
       super.onCompletion();
-      if ((this.mfu != null) && (this.mft != null)) {
-        this.mft.hR(this.mfu);
+      if ((this.oYq != null) && (this.oYp != null)) {
+        this.oYp.js(this.oYq);
       }
       reset();
-      if (this.txH != null) {
-        this.txH.stop();
+      if (this.wCd != null) {
+        this.wCd.stop();
       }
     }
   }
@@ -652,23 +654,24 @@ public class MMVideoView
   public void onDataAvailable(String paramString, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(126813);
-    this.mfG = false;
+    this.oYC = false;
     if ((paramLong1 <= -1L) || (paramLong2 <= -1L))
     {
-      Log.w(this.TAG, "%s deal data available error offset[%d], length[%d]", new Object[] { bqf(), Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+      Log.w(this.TAG, "%s deal data available error offset[%d], length[%d]", new Object[] { bNL(), Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
       AppMethodBeat.o(126813);
       return;
     }
-    if (!Util.isEqual(this.mfu, paramString))
+    if (!Util.isEqual(this.oYq, paramString))
     {
       AppMethodBeat.o(126813);
       return;
     }
     try
     {
-      this.mfD = this.mfy.ee((int)paramLong1, (int)paramLong2);
-      Log.i(this.TAG, "%s deal data available. offset[%d] length[%d] cachePlayTime[%d]", new Object[] { bqf(), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(this.mfD) });
-      gA(true);
+      this.oYz = this.oYu.eX((int)paramLong1, (int)paramLong2);
+      Log.i(this.TAG, "%s deal data available. offset[%d] length[%d] cachePlayTime[%d]", new Object[] { bNL(), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(this.oYz) });
+      Log.i(this.XXD, "onDataAvailable, startTimer");
+      ho(true);
       AppMethodBeat.o(126813);
       return;
     }
@@ -676,18 +679,26 @@ public class MMVideoView
     {
       for (;;)
       {
-        Log.e(this.TAG, "%s deal data available file pos to video time error[%s] ", new Object[] { bqf(), paramString.toString() });
+        Log.e(this.TAG, "%s deal data available file pos to video time error[%s] ", new Object[] { bNL(), paramString.toString() });
       }
     }
+  }
+  
+  public void onSeekComplete(boolean paramBoolean)
+  {
+    AppMethodBeat.i(126805);
+    super.onSeekComplete(paramBoolean);
+    hideLoading();
+    AppMethodBeat.o(126805);
   }
   
   public void onUIPause()
   {
     AppMethodBeat.i(126795);
     super.onUIPause();
-    if (this.mfJ)
+    if (this.oYF)
     {
-      this.mfH = true;
+      this.oYD = true;
       stop();
     }
     AppMethodBeat.o(126795);
@@ -697,16 +708,16 @@ public class MMVideoView
   {
     AppMethodBeat.i(126796);
     super.onUIResume();
-    Log.i(this.TAG, "%s onUIResume stopDownloadByUiPause[%b] currTimeOnUiPause[%d] isPlayOnUiPause[%b]", new Object[] { bqf(), Boolean.valueOf(this.mfH), Integer.valueOf(this.pDT), Boolean.valueOf(this.pDU) });
-    if (this.mfH)
+    Log.i(this.TAG, "%s onUIResume stopDownloadByUiPause[%b] currTimeOnUiPause[%d] isPlayOnUiPause[%b]", new Object[] { bNL(), Boolean.valueOf(this.oYD), Integer.valueOf(this.sJf), Boolean.valueOf(this.sJg) });
+    if (this.oYD)
     {
-      I(this.pDT, this.pDU);
+      X(this.sJf, this.sJg);
       AppMethodBeat.o(126796);
       return;
     }
-    if ((this.txH != null) && (d.qV(24)) && ((this.txH instanceof VideoPlayerTextureView)))
+    if ((this.wCd != null) && (d.rb(24)) && ((this.wCd instanceof VideoPlayerTextureView)))
     {
-      ((VideoPlayerTextureView)this.txH).bXe();
+      ((VideoPlayerTextureView)this.wCd).cxp();
       AppMethodBeat.o(126796);
       return;
     }
@@ -719,8 +730,8 @@ public class MMVideoView
     boolean bool = super.pause();
     if (bool)
     {
-      this.mfG = false;
-      this.mfx = 4;
+      this.oYC = false;
+      this.oYt = 4;
     }
     AppMethodBeat.o(126809);
     return bool;
@@ -728,59 +739,59 @@ public class MMVideoView
   
   public void reset()
   {
-    this.mfA = -1;
-    this.mfD = 0;
-    this.mfz = 0;
-    this.mfx = 0;
-    this.mfw = 0;
-    this.mfC = false;
-    this.mfF = false;
-    this.mfG = false;
-    if (this.mfI != null) {
-      this.mfE = this.mfI.mfN;
+    this.oYw = -1;
+    this.oYz = 0;
+    this.oYv = 0;
+    this.oYt = 0;
+    this.oYs = 0;
+    this.oYy = false;
+    this.oYB = false;
+    this.oYC = false;
+    if (this.oYE != null) {
+      this.oYA = this.oYE.oYJ;
     }
   }
   
   protected void setDownloadStatus(int paramInt)
   {
-    this.mfw = paramInt;
+    this.oYs = paramInt;
   }
   
   protected void setFilepath(String paramString)
   {
-    this.mfv = paramString;
+    this.oYr = paramString;
   }
   
   public void setIMMDownloadFinish(i.a parama)
   {
-    this.mfg = parama;
+    this.oXY = parama;
   }
   
   public void setIOnlineVideoProxy(f paramf)
   {
     AppMethodBeat.i(126791);
-    this.mft = paramf;
-    this.mft.a(this);
+    this.oYp = paramf;
+    this.oYp.a(this);
     AppMethodBeat.o(126791);
   }
   
   public void setLoop(boolean paramBoolean)
   {
-    this.mfK = paramBoolean;
+    this.oYG = paramBoolean;
   }
   
   public void setRootPath(String paramString)
   {
-    this.mfn = paramString;
+    this.oYg = paramString;
   }
   
   public void setScaleType(i.e parame)
   {
     AppMethodBeat.i(126801);
-    if ((this.txH instanceof VideoPlayerTextureView))
+    if ((this.wCd instanceof VideoPlayerTextureView))
     {
-      ((VideoPlayerTextureView)this.txH).setScaleType(parame);
-      EW(getReportIdkey() + 14);
+      ((VideoPlayerTextureView)this.wCd).setScaleType(parame);
+      hp(getReportIdkey() + 14);
     }
     AppMethodBeat.o(126801);
   }
@@ -788,49 +799,49 @@ public class MMVideoView
   public void start()
   {
     AppMethodBeat.i(126797);
-    Log.i(this.TAG, "%s start cdnMediaId[%s] timeDuration[%d]", new Object[] { bqf(), this.mfu, Integer.valueOf(this.mfz) });
-    if (this.txH != null)
+    Log.i(this.TAG, "%s start cdnMediaId[%s] timeDuration[%d]", new Object[] { bNL(), this.oYq, Integer.valueOf(this.oYv) });
+    if (this.wCd != null)
     {
-      if (!Util.isNullOrNil(this.txH.getVideoPath())) {
+      if (!Util.isNullOrNil(this.wCd.getVideoPath())) {
         break label145;
       }
       showLoading();
-      this.mfJ = true;
-      this.mfz = 0;
-      this.mfw = 1;
-      if (this.mft != null)
+      this.oYF = true;
+      this.oYv = 0;
+      this.oYs = 1;
+      if (this.oYp != null)
       {
-        this.mft.s(this.mfu, this.mfv, this.url);
-        this.mft.a(this);
+        this.oYp.w(this.oYq, this.oYr, this.url);
+        this.oYp.a(this);
       }
-      fUH();
+      hmY();
     }
     for (;;)
     {
-      EW(getReportIdkey() + 1);
+      hp(getReportIdkey() + 1);
       AppMethodBeat.o(126797);
       return;
       label145:
-      bqo();
+      bNU();
     }
   }
   
   public void stop()
   {
     AppMethodBeat.i(126799);
-    if (this.mft != null) {
-      this.mft.hR(this.mfu);
+    if (this.oYp != null) {
+      this.oYp.js(this.oYq);
     }
     reset();
     super.stop();
-    this.mfy.release();
+    this.oYu.release();
     AppMethodBeat.o(126799);
   }
   
   public void stopTimer()
   {
     AppMethodBeat.i(126817);
-    this.mfL.stopTimer();
+    this.oYH.stopTimer();
     AppMethodBeat.o(126817);
   }
   
@@ -839,144 +850,148 @@ public class MMVideoView
     boolean bool1 = false;
     boolean bool2 = true;
     AppMethodBeat.i(126802);
-    if (this.mfA != -1) {}
-    for (int i = this.mfA;; i = paramInt)
+    if (this.oYw != -1) {}
+    for (int i = this.oYw;; i = paramInt)
     {
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(bqf()).append(" check timer playCurrPos ").append(paramInt).append(" playTime ").append(i).append(" cachePlayTime ").append(this.mfD).append(" timeDuration ").append(this.mfz).append(" playStatus ").append(this.mfx).append(" downloadStatus ").append(this.mfw).append(" cdnMediaId ").append(this.mfu).append(" isPrepareVideo[").append(this.mfF).append("], isPrepared[").append(this.gX).append("]");
+      ((StringBuilder)localObject).append(bNL()).append(" check timer playCurrPos ").append(paramInt).append(" playTime ").append(i).append(" cachePlayTime ").append(this.oYz).append(" timeDuration ").append(this.oYv).append(" playStatus ").append(this.oYt).append(" downloadStatus ").append(this.oYs).append(" cdnMediaId ").append(this.oYq).append(" isPrepareVideo[").append(this.oYB).append("], isPrepared[").append(this.hS).append("]");
       Log.i(this.TAG, ((StringBuilder)localObject).toString());
-      switch (this.mfw)
+      switch (this.oYs)
       {
       default: 
-        Log.w(this.TAG, "%s check time default.", new Object[] { bqf() });
+        Log.i(this.XXD, "checkTimer, downloadStatus is default, playCurrPos is ".concat(String.valueOf(paramInt)));
+        Log.w(this.TAG, "%s check time default.", new Object[] { bNL() });
         bool1 = false;
       }
       for (;;)
       {
         AppMethodBeat.o(126802);
         return bool1;
+        Log.i(this.XXD, "checkTimer, downloadStatus is downloading, playCurrPos is ".concat(String.valueOf(paramInt)));
         if (!xb(i))
         {
-          this.mfC = true;
-          if (this.mfD <= 0) {
-            if (this.mfA == -1)
+          this.oYy = true;
+          if (this.oYz <= 0) {
+            if (this.oYw == -1)
             {
-              this.mfx = 1;
-              label268:
+              this.oYt = 1;
+              label302:
               bool1 = false;
             }
           }
         }
         for (;;)
         {
-          Bg(i);
+          Bt(i);
           localObject = new PInt();
           PInt localPInt = new PInt();
           if (!a(i, (PInt)localObject, localPInt)) {
-            break label743;
+            break label777;
           }
           if (!p(((PInt)localObject).value, localPInt.value, false)) {
-            break label764;
+            break label798;
           }
-          this.mfD = Math.max(this.mfD, localPInt.value);
+          this.oYz = Math.max(this.oYz, localPInt.value);
           bool1 = bool2;
           break;
-          this.mfx = 2;
-          break label268;
-          Log.i(this.TAG, "%s pause by load data cdnMediaId %s, playStatus %d", new Object[] { bqf(), this.mfu, Integer.valueOf(this.mfx) });
-          hjb();
-          if ((this.mfx != 2) && (this.mfx != 4))
+          this.oYt = 2;
+          break label302;
+          Log.i(this.TAG, "%s pause by load data cdnMediaId %s, playStatus %d", new Object[] { bNL(), this.oYq, Integer.valueOf(this.oYt) });
+          iJW();
+          if ((this.oYt != 2) && (this.oYt != 4))
           {
-            this.mfE += this.mfI.mfN;
-            this.mfE = Math.min(this.mfE, 60);
-            hjd();
-            this.mfx = 4;
+            this.oYA += this.oYE.oYJ;
+            this.oYA = Math.min(this.oYA, 60);
+            iJY();
+            this.oYt = 4;
           }
-          bqn();
-          break label268;
-          if (this.mfF)
+          bNT();
+          break label302;
+          if (this.oYB)
           {
-            Bg(i);
-            Log.i(this.TAG, "resumeByDataGain, playStatus:%s, isPlaying:%s, pauseByLoadData:%s", new Object[] { Integer.valueOf(this.mfx), Boolean.valueOf(this.txH.isPlaying()), Boolean.valueOf(this.mfC) });
-            if (this.mfC)
+            Bt(i);
+            Log.i(this.TAG, "resumeByDataGain, playStatus:%s, isPlaying:%s, pauseByLoadData:%s", new Object[] { Integer.valueOf(this.oYt), Boolean.valueOf(this.wCd.isPlaying()), Boolean.valueOf(this.oYy) });
+            if (this.oYy)
             {
-              hjc();
-              hje();
-              Log.i(this.TAG, "%s resume by data gain cdnMediaId %s", new Object[] { bqf(), this.mfu });
-              if (this.mfA != -1)
+              iJX();
+              iJZ();
+              Log.i(this.TAG, "%s resume by data gain cdnMediaId %s", new Object[] { bNL(), this.oYq });
+              if (this.oYw != -1)
               {
-                I(this.mfA, this.mfB);
-                this.mfA = -1;
+                X(this.oYw, this.oYx);
+                this.oYw = -1;
                 bool1 = false;
-                label588:
-                this.mfC = bool1;
+                label622:
+                this.oYy = bool1;
                 paramInt = 3;
               }
             }
             for (;;)
             {
-              this.mfx = paramInt;
+              this.oYt = paramInt;
               do
               {
                 bool1 = true;
                 break;
-                if (bqo())
+                if (bNU())
                 {
                   bool1 = false;
-                  break label588;
+                  break label622;
                 }
                 bool1 = true;
-                break label588;
-              } while ((this.mfx == 3) && (this.txH.isPlaying()));
-              Log.i(this.TAG, "%s start to play video playStatus[%d]", new Object[] { bqf(), Integer.valueOf(this.mfx) });
-              if (bqo()) {
+                break label622;
+              } while ((this.oYt == 3) && (this.wCd.isPlaying()));
+              Log.i(this.TAG, "%s start to play video playStatus[%d]", new Object[] { bNL(), Integer.valueOf(this.oYt) });
+              if (bNU()) {
                 paramInt = 3;
               } else {
-                paramInt = this.mfx;
+                paramInt = this.oYt;
               }
             }
           }
-          Log.i(this.TAG, "%s prepare cdnMediaId [%s]", new Object[] { bqf(), this.mfu });
-          if (this.mfx == 5) {
-            this.mfx = 1;
+          Log.i(this.TAG, "%s prepare cdnMediaId [%s]", new Object[] { bNL(), this.oYq });
+          if (this.oYt == 5) {
+            this.oYt = 1;
           }
-          bqm();
+          bNS();
           bool1 = true;
         }
-        label743:
-        Log.d(this.TAG, "%s can not calc download.", new Object[] { bqf() });
-        label764:
+        label777:
+        Log.d(this.TAG, "%s can not calc download.", new Object[] { bNL() });
+        label798:
         continue;
-        if (this.gX)
+        Log.i(this.XXD, "checkTimer, downloadStatus is download finish, playCurrPos is ".concat(String.valueOf(paramInt)));
+        if (this.hS)
         {
-          if (this.mfC)
+          if (this.oYy)
           {
-            if (this.mfA == -1) {
-              break label825;
+            if (this.oYw == -1) {
+              break label876;
             }
-            I(this.mfA, true);
-            this.mfA = -1;
+            X(this.oYw, true);
+            this.oYw = -1;
           }
           for (;;)
           {
-            this.mfC = bool1;
-            this.mfx = 3;
-            Bg(i);
+            this.oYy = bool1;
+            this.oYt = 3;
+            Bt(i);
             bool1 = bool2;
             break;
-            label825:
-            if (!bqo()) {
+            label876:
+            if (!bNU()) {
               bool1 = true;
             }
           }
         }
-        if (this.mfx == 5) {
-          this.mfx = 1;
+        if (this.oYt == 5) {
+          this.oYt = 1;
         }
-        bqm();
+        bNS();
         bool1 = bool2;
         continue;
-        Log.w(this.TAG, "%s download error.", new Object[] { bqf() });
+        Log.i(this.XXD, "checkTimer, downloadStatus is download error, playCurrPos is ".concat(String.valueOf(paramInt)));
+        Log.w(this.TAG, "%s download error.", new Object[] { bNL() });
         bool1 = false;
       }
     }
@@ -985,12 +1000,12 @@ public class MMVideoView
   public boolean xb(int paramInt)
   {
     AppMethodBeat.i(126806);
-    if (this.mfw == 3)
+    if (this.oYs == 3)
     {
       AppMethodBeat.o(126806);
       return true;
     }
-    if ((this.mfD - paramInt <= 1) && (this.mfD < this.mfz))
+    if ((this.oYz - paramInt <= 1) && (this.oYz < this.oYv))
     {
       AppMethodBeat.o(126806);
       return false;
@@ -999,10 +1014,10 @@ public class MMVideoView
     PInt localPInt2 = new PInt();
     try
     {
-      if (this.mfy.a(paramInt, paramInt + 1, localPInt1, localPInt2)) {
-        if (this.mft != null)
+      if (this.oYu.a(paramInt, paramInt + 1, localPInt1, localPInt2)) {
+        if (this.oYp != null)
         {
-          bool1 = this.mft.isVideoDataAvailable(this.mfu, localPInt1.value, localPInt2.value);
+          bool1 = this.oYp.isVideoDataAvailable(this.oYq, localPInt1.value, localPInt2.value);
           bool2 = bool1;
           if (bool1) {}
         }
@@ -1014,7 +1029,7 @@ public class MMVideoView
       {
         try
         {
-          this.mfD = paramInt;
+          this.oYz = paramInt;
           bool2 = bool1;
           AppMethodBeat.o(126806);
           return bool2;
@@ -1025,7 +1040,7 @@ public class MMVideoView
         }
         localException1 = localException1;
         boolean bool1 = false;
-        Log.e(this.TAG, "%s check video data error %s ", new Object[] { bqf(), localException1.toString() });
+        Log.e(this.TAG, "%s check video data error %s ", new Object[] { bNL(), localException1.toString() });
         boolean bool2 = bool1;
         continue;
         bool1 = false;
@@ -1037,13 +1052,13 @@ public class MMVideoView
   
   public static final class a
   {
-    public int mfN;
-    public int mfO;
+    public int oYJ;
+    public int oYK;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.modelvideo.MMVideoView
  * JD-Core Version:    0.7.0.1
  */

@@ -7,610 +7,666 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.t;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.plugin.music.f.a.d;
+import com.tencent.mm.am.p;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.plugin.music.e.a.d;
 import com.tencent.mm.plugin.mv.b.e;
 import com.tencent.mm.plugin.mv.b.f;
-import com.tencent.mm.plugin.mv.model.a.c;
-import com.tencent.mm.plugin.thumbplayer.d.c.c;
+import com.tencent.mm.plugin.mv.model.a.o;
+import com.tencent.mm.plugin.mv.model.f.a;
+import com.tencent.mm.plugin.thumbplayer.c.b.c;
 import com.tencent.mm.plugin.thumbplayer.view.MultiMediaEffectVideoLayout;
-import com.tencent.mm.plugin.thumbplayer.view.b;
-import com.tencent.mm.protocal.protobuf.att;
-import com.tencent.mm.protocal.protobuf.bds;
-import com.tencent.mm.protocal.protobuf.dau;
-import com.tencent.mm.protocal.protobuf.dbc;
-import com.tencent.mm.protocal.protobuf.dbr;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.FinderObjectDesc;
+import com.tencent.mm.protocal.protobuf.ayl;
+import com.tencent.mm.protocal.protobuf.bol;
+import com.tencent.mm.protocal.protobuf.boo;
+import com.tencent.mm.protocal.protobuf.dsc;
+import com.tencent.mm.protocal.protobuf.dst;
+import com.tencent.mm.protocal.protobuf.dtj;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 import java.util.List;
-import kotlin.g;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/open/text_status/MusicMvView;", "Lcom/tencent/mm/plugin/mv/ui/open/api/IMusicMvViewLifeCycle;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "lyricManager", "Lcom/tencent/mm/plugin/mv/ui/open/text_status/MusicMvLyricManager;", "getLyricManager", "()Lcom/tencent/mm/plugin/mv/ui/open/text_status/MusicMvLyricManager;", "lyricManager$delegate", "Lkotlin/Lazy;", "musicMv", "Lcom/tencent/mm/plugin/mv/model/MusicMv;", "needResumePosition", "", "onSceneEndListener", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "songInfo", "Lcom/tencent/mm/protocal/protobuf/FinderMVSongInfo;", "videoContainer", "Landroid/widget/FrameLayout;", "kotlin.jvm.PlatformType", "getVideoContainer", "()Landroid/widget/FrameLayout;", "videoContainer$delegate", "videoLayout", "Lcom/tencent/mm/plugin/thumbplayer/view/MultiMediaEffectVideoLayout;", "addSceneEndListener", "", "checkVideoLayout", "fillMvByMusicShareObject", "obj", "Lcom/tencent/mm/protocal/protobuf/MusicShareObject;", "mv", "fillSongInfoByMusicShareObject", "getMvDetailInfo", "mvObjectId", "", "mvNonceId", "", "getSongDetailInfo", "getSongIdWithCheckPermission", "handleGetCommentDetailResponse", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderGetCommentDetailResponse;", "musicMvHashCode", "onBackground", "onForeground", "onMvPause", "onMvResume", "onViewCreate", "mvInfo", "onViewDestroy", "refreshVideo", "position", "removeSceneEndListener", "Companion", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/open/text_status/MusicMvView;", "Lcom/tencent/mm/plugin/mv/ui/open/api/IMusicMvViewLifeCycle;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "lyricManager", "Lcom/tencent/mm/plugin/mv/ui/open/text_status/MusicMvLyricManager;", "getLyricManager", "()Lcom/tencent/mm/plugin/mv/ui/open/text_status/MusicMvLyricManager;", "lyricManager$delegate", "Lkotlin/Lazy;", "musicMv", "Lcom/tencent/mm/plugin/mv/model/MusicMv;", "needResumePosition", "", "onSceneEndListener", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "songInfo", "Lcom/tencent/mm/protocal/protobuf/FinderMVSongInfo;", "videoContainer", "Landroid/widget/FrameLayout;", "kotlin.jvm.PlatformType", "getVideoContainer", "()Landroid/widget/FrameLayout;", "videoContainer$delegate", "videoLayout", "Lcom/tencent/mm/plugin/thumbplayer/view/MultiMediaEffectVideoLayout;", "addSceneEndListener", "", "checkVideoLayout", "fillMvByMusicShareObject", "obj", "Lcom/tencent/mm/protocal/protobuf/MusicShareObject;", "mv", "fillSongInfoByMusicShareObject", "getMvDetailInfo", "mvObjectId", "", "mvNonceId", "", "getSongDetailInfo", "getSongIdWithCheckPermission", "handleGetCommentDetailResponse", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderGetCommentDetailResponse;", "musicMvHashCode", "onBackground", "onForeground", "onMvPause", "onMvResume", "onViewCreate", "mvInfo", "onViewDestroy", "refreshVideo", "position", "removeSceneEndListener", "Companion", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class MusicMvView
   extends RelativeLayout
 {
-  public static final MusicMvView.a Ghe;
-  public bds GaB;
-  public MultiMediaEffectVideoLayout GgY;
-  public final com.tencent.mm.plugin.mv.model.f GgZ;
-  private final kotlin.f Gha;
-  public boolean Ghb;
-  private final kotlin.f Ghc;
-  public final i Ghd;
+  public static final MusicMvView.a Mch;
+  public boo LWI;
+  public final com.tencent.mm.am.h LYH;
+  public MultiMediaEffectVideoLayout Mci;
+  public final com.tencent.mm.plugin.mv.model.f Mcj;
+  private final kotlin.j Mck;
+  public boolean Mcl;
+  private final kotlin.j Mcm;
   
   static
   {
-    AppMethodBeat.i(228487);
-    Ghe = new MusicMvView.a((byte)0);
-    AppMethodBeat.o(228487);
+    AppMethodBeat.i(286662);
+    Mch = new MusicMvView.a((byte)0);
+    AppMethodBeat.o(286662);
   }
   
   public MusicMvView(Context paramContext)
   {
     this(paramContext, null, 0);
-    AppMethodBeat.i(228485);
-    AppMethodBeat.o(228485);
+    AppMethodBeat.i(286577);
+    AppMethodBeat.o(286577);
   }
   
   public MusicMvView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(228484);
-    AppMethodBeat.o(228484);
+    AppMethodBeat.i(286571);
+    AppMethodBeat.o(286571);
   }
   
-  public MusicMvView(final Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  public MusicMvView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(228481);
-    this.GgZ = new com.tencent.mm.plugin.mv.model.f();
-    this.GaB = new bds();
-    this.Gha = g.ar((kotlin.g.a.a)new g(this));
-    this.Ghc = g.ar((kotlin.g.a.a)new d(this, paramContext));
-    View.inflate(paramContext, b.f.FZO, (ViewGroup)this);
-    this.Ghd = ((i)new e(this));
-    AppMethodBeat.o(228481);
+    AppMethodBeat.i(286564);
+    this.Mcj = new com.tencent.mm.plugin.mv.model.f();
+    this.LWI = new boo();
+    this.Mck = kotlin.k.cm((kotlin.g.a.a)new MusicMvView.e(this));
+    this.Mcm = kotlin.k.cm((kotlin.g.a.a)new MusicMvView.c(paramContext, this));
+    View.inflate(paramContext, b.f.LVP, (ViewGroup)this);
+    this.LYH = new MusicMvView..ExternalSyntheticLambda0(this);
+    AppMethodBeat.o(286564);
   }
   
-  public static void a(dbr paramdbr, bds parambds)
+  private static final void a(MusicMvView paramMusicMvView, int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(293188);
-    Object localObject = paramdbr.HLH;
-    int i;
-    if (localObject != null)
+    AppMethodBeat.i(286652);
+    kotlin.g.b.s.u(paramMusicMvView, "this$0");
+    if (((paramp instanceof com.tencent.mm.plugin.mv.model.a.a)) && (((com.tencent.mm.plugin.mv.model.a.a)paramp).LYA != 0) && (((com.tencent.mm.plugin.mv.model.a.a)paramp).LYA != paramMusicMvView.hashCode()))
     {
-      p.j(localObject, "it");
-      if (((CharSequence)localObject).length() <= 0) {
-        break label398;
-      }
-      i = 1;
-      if (i == 0) {
-        break label403;
-      }
-      label40:
-      if (localObject != null) {
-        parambds.HLH = ((String)localObject);
-      }
+      Log.i("MicroMsg.Ts.MusicMvView", "not the same page of netscene");
+      AppMethodBeat.o(286652);
+      return;
     }
-    localObject = paramdbr.songLyric;
-    if (localObject != null)
+    if ((paramp instanceof com.tencent.mm.plugin.mv.model.a.k))
     {
-      p.j(localObject, "it");
-      if (((CharSequence)localObject).length() <= 0) {
-        break label408;
-      }
-      i = 1;
-      label79:
-      if (i == 0) {
-        break label413;
-      }
-      label83:
-      if (localObject != null) {
-        parambds.SOL = ((String)localObject);
-      }
-    }
-    localObject = paramdbr.albumName;
-    if (localObject != null)
-    {
-      p.j(localObject, "it");
-      if (((CharSequence)localObject).length() <= 0) {
-        break label418;
-      }
-      i = 1;
-      label122:
-      if (i == 0) {
-        break label423;
-      }
-      label126:
-      if (localObject != null) {
-        parambds.albumName = ((String)localObject);
-      }
-    }
-    localObject = paramdbr.singerName;
-    if (localObject != null)
-    {
-      p.j(localObject, "it");
-      if (((CharSequence)localObject).length() <= 0) {
-        break label428;
-      }
-      i = 1;
-      label165:
-      if (i == 0) {
-        break label433;
-      }
-      label169:
-      if (localObject != null) {
-        parambds.ozs = ((String)localObject);
-      }
-    }
-    localObject = paramdbr.KGh;
-    if (localObject != null)
-    {
-      p.j(localObject, "it");
-      if (((CharSequence)localObject).length() <= 0) {
-        break label438;
-      }
-      i = 1;
-      label208:
-      if (i == 0) {
-        break label443;
-      }
-      label212:
-      if (localObject != null) {
-        parambds.SOM = ((String)localObject);
-      }
-    }
-    localObject = Long.valueOf(paramdbr.issueDate);
-    if (((Number)localObject).longValue() > 0L)
-    {
-      i = 1;
-      label243:
-      if (i == 0) {
-        break label453;
-      }
-      label247:
-      if (localObject != null) {
-        parambds.SOO = ((Number)localObject).longValue();
-      }
-      localObject = paramdbr.musicGenre;
-      if (localObject != null)
+      Log.i("MicroMsg.Ts.MusicMvView", "NetSceneMusicMvGetFinderFeedDetail, errType:" + paramInt1 + ", errCode:" + paramInt2 + ", errMsg:" + paramString);
+      if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        p.j(localObject, "it");
-        if (((CharSequence)localObject).length() <= 0) {
-          break label458;
-        }
-        i = 1;
-        label292:
-        if (i == 0) {
-          break label463;
-        }
-        label296:
-        if (localObject != null) {
-          parambds.SMY = ((String)localObject);
+        paramString = ((com.tencent.mm.plugin.mv.model.a.k)paramp).LWS;
+        if (paramString != null)
+        {
+          paramMusicMvView.a(paramString, ((com.tencent.mm.plugin.mv.model.a.k)paramp).LZe);
+          AppMethodBeat.o(286652);
         }
       }
-      localObject = paramdbr.identification;
-      if (localObject != null)
+    }
+    else if ((paramp instanceof o))
+    {
+      Log.i("MicroMsg.Ts.MusicMvView", "NetSceneMusicMvGetSongStatus, errType:" + paramInt1 + ", errCode:" + paramInt2 + ", errMsg:" + paramString);
+      if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        p.j(localObject, "it");
-        if (((CharSequence)localObject).length() <= 0) {
-          break label468;
-        }
-        i = 1;
-        label335:
-        if (i == 0) {
-          break label473;
-        }
-        label339:
-        if (localObject != null) {
-          parambds.identification = ((String)localObject);
+        paramString = ((o)paramp).LZo;
+        if (paramString != null)
+        {
+          paramString = paramString.Mcq;
+          if (paramString != null)
+          {
+            if (((CharSequence)paramString).length() <= 0) {
+              break label276;
+            }
+            paramInt1 = 1;
+            if (paramInt1 == 0) {
+              break label281;
+            }
+          }
+          for (;;)
+          {
+            if (paramString != null)
+            {
+              Log.i("MicroMsg.Ts.MusicMvView", kotlin.g.b.s.X("NetSceneMusicMvGetSongStatus, lyric length:", Integer.valueOf(paramString.length())));
+              paramMusicMvView.getLyricManager().aPE(paramString);
+            }
+            AppMethodBeat.o(286652);
+            return;
+            label276:
+            paramInt1 = 0;
+            break;
+            label281:
+            paramString = null;
+          }
         }
       }
-      paramdbr = paramdbr.extraInfo;
-      if (paramdbr == null) {
-        break label488;
+    }
+    else if ((paramp instanceof com.tencent.mm.plugin.mv.model.a.f))
+    {
+      Log.i("MicroMsg.Ts.MusicMvView", "NetSceneMusicMvCheckPermission, errType:" + paramInt1 + ", errCode:" + paramInt2 + ", errMsg:" + paramString);
+      if ((paramInt1 == 0) && (paramInt2 == 0))
+      {
+        paramString = ((com.tencent.mm.plugin.mv.model.a.f)paramp).LYP;
+        if (paramString != null)
+        {
+          paramMusicMvView.LWI.mLQ = paramString.aaXV;
+          Log.i("MicroMsg.Ts.MusicMvView", "NetSceneMusicMvCheckPermission songId:" + paramString.aaXV + " mvPostPermissionBit:" + paramString.aaXX + " statusVerifyInfo:" + paramString.EdM);
+          paramString = paramMusicMvView.LWI;
+          Log.i("MicroMsg.Ts.MusicMvView", "getSongDetailInfo songId:" + paramString.mLQ + " appId:" + paramString.ZWQ + " webUrl:" + paramString.ZWR);
+          com.tencent.mm.kernel.h.aZW().a((p)new o(paramString, paramMusicMvView.hashCode()), 0);
+        }
       }
-      p.j(paramdbr, "it");
-      if (((CharSequence)paramdbr).length() <= 0) {
-        break label478;
-      }
-      i = 1;
-      label378:
-      if (i == 0) {
-        break label483;
+    }
+    AppMethodBeat.o(286652);
+  }
+  
+  private static final void a(MusicMvView paramMusicMvView, ayl paramayl, com.tencent.mm.plugin.mv.model.f paramf)
+  {
+    AppMethodBeat.i(286644);
+    kotlin.g.b.s.u(paramMusicMvView, "this$0");
+    kotlin.g.b.s.u(paramayl, "$cache");
+    kotlin.g.b.s.u(paramf, "$musicMv");
+    paramMusicMvView.a(paramayl, paramf.hashCode());
+    AppMethodBeat.o(286644);
+  }
+  
+  private final void a(ayl paramayl, int paramInt)
+  {
+    int i = 1;
+    AppMethodBeat.i(286635);
+    Object localObject1 = new StringBuilder("handleGetCommentDetailResponse, musicMv.hashCode() == musicMvHashCode:");
+    boolean bool;
+    if (this.Mcj.hashCode() == paramInt)
+    {
+      bool = true;
+      Log.i("MicroMsg.Ts.MusicMvView", bool + ", musicMvHashCode:" + paramInt);
+      if (this.Mcj.hashCode() == paramInt)
+      {
+        localObject1 = paramayl.feedObject;
+        if (localObject1 != null)
+        {
+          Object localObject2 = com.tencent.mm.plugin.mv.model.f.LXf;
+          f.a.a((FinderObject)localObject1, this.Mcj);
+          localObject2 = this.Mcj;
+          paramayl = paramayl.ZJp;
+          kotlin.g.b.s.s(paramayl, "resp.refObjectList");
+          ((com.tencent.mm.plugin.mv.model.f)localObject2).bH(paramayl);
+          paramayl = ((FinderObject)localObject1).objectDesc;
+          if (paramayl != null)
+          {
+            paramayl = paramayl.mvInfo;
+            if (paramayl != null)
+            {
+              paramayl = paramayl.LWI;
+              if (paramayl != null)
+              {
+                paramayl = paramayl.Mcq;
+                if (paramayl != null)
+                {
+                  if (((CharSequence)paramayl).length() <= 0) {
+                    break label203;
+                  }
+                  paramInt = i;
+                  label170:
+                  if (paramInt == 0) {
+                    break label208;
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
     for (;;)
     {
-      if (paramdbr == null) {
-        break label488;
+      if (paramayl != null) {
+        getLyricManager().aPE(paramayl);
       }
-      parambds.extraInfo = paramdbr;
-      AppMethodBeat.o(293188);
+      gqs();
+      AppMethodBeat.o(286635);
       return;
-      label398:
-      i = 0;
+      bool = false;
       break;
-      label403:
-      localObject = null;
-      break label40;
-      label408:
-      i = 0;
-      break label79;
-      label413:
-      localObject = null;
-      break label83;
-      label418:
-      i = 0;
-      break label122;
-      label423:
-      localObject = null;
-      break label126;
-      label428:
-      i = 0;
-      break label165;
-      label433:
-      localObject = null;
-      break label169;
-      label438:
-      i = 0;
-      break label208;
-      label443:
-      localObject = null;
-      break label212;
-      i = 0;
-      break label243;
-      label453:
-      localObject = null;
-      break label247;
-      label458:
-      i = 0;
-      break label292;
-      label463:
-      localObject = null;
-      break label296;
-      label468:
-      i = 0;
-      break label335;
-      label473:
-      localObject = null;
-      break label339;
-      label478:
-      i = 0;
-      break label378;
-      label483:
-      paramdbr = null;
+      label203:
+      paramInt = 0;
+      break label170;
+      label208:
+      paramayl = null;
     }
-    label488:
-    AppMethodBeat.o(293188);
   }
   
-  private final void fgI()
+  public static void a(dtj paramdtj, boo paramboo)
   {
-    AppMethodBeat.i(228471);
-    if (this.GgY == null)
+    AppMethodBeat.i(286624);
+    Object localObject = paramdtj.songName;
+    int i;
+    if (localObject != null)
     {
-      Object localObject = getContext();
-      p.j(localObject, "context");
-      this.GgY = new MultiMediaEffectVideoLayout((Context)localObject);
-      localObject = this.GgY;
-      if (localObject != null) {
-        ((MultiMediaEffectVideoLayout)localObject).setMvMusicProxy((b)new b());
+      if (((CharSequence)localObject).length() <= 0) {
+        break label342;
       }
-      localObject = this.GgY;
-      if (localObject != null)
-      {
-        ((MultiMediaEffectVideoLayout)localObject).setId(b.e.music_video_layout);
-        AppMethodBeat.o(228471);
-        return;
+      i = 1;
+      if (i == 0) {
+        break label347;
+      }
+      label33:
+      if (localObject != null) {
+        paramboo.songName = ((String)localObject);
       }
     }
-    AppMethodBeat.o(228471);
+    localObject = paramdtj.songLyric;
+    if (localObject != null)
+    {
+      if (((CharSequence)localObject).length() <= 0) {
+        break label352;
+      }
+      i = 1;
+      label65:
+      if (i == 0) {
+        break label357;
+      }
+      label69:
+      if (localObject != null) {
+        paramboo.Mcq = ((String)localObject);
+      }
+    }
+    localObject = paramdtj.albumName;
+    if (localObject != null)
+    {
+      if (((CharSequence)localObject).length() <= 0) {
+        break label362;
+      }
+      i = 1;
+      label101:
+      if (i == 0) {
+        break label367;
+      }
+      label105:
+      if (localObject != null) {
+        paramboo.albumName = ((String)localObject);
+      }
+    }
+    localObject = paramdtj.singerName;
+    if (localObject != null)
+    {
+      if (((CharSequence)localObject).length() <= 0) {
+        break label372;
+      }
+      i = 1;
+      label137:
+      if (i == 0) {
+        break label377;
+      }
+      label141:
+      if (localObject != null) {
+        paramboo.rDl = ((String)localObject);
+      }
+    }
+    localObject = paramdtj.RfH;
+    if (localObject != null)
+    {
+      if (((CharSequence)localObject).length() <= 0) {
+        break label382;
+      }
+      i = 1;
+      label173:
+      if (i == 0) {
+        break label387;
+      }
+      label177:
+      if (localObject != null) {
+        paramboo.ZWS = ((String)localObject);
+      }
+    }
+    localObject = Long.valueOf(paramdtj.issueDate);
+    if (((Number)localObject).longValue() > 0L)
+    {
+      i = 1;
+      label208:
+      if (i == 0) {
+        break label397;
+      }
+      label212:
+      if (localObject != null) {
+        paramboo.ZWU = ((Number)localObject).longValue();
+      }
+      localObject = paramdtj.musicGenre;
+      if (localObject != null)
+      {
+        if (((CharSequence)localObject).length() <= 0) {
+          break label402;
+        }
+        i = 1;
+        label250:
+        if (i == 0) {
+          break label407;
+        }
+        label254:
+        if (localObject != null) {
+          paramboo.ZTA = ((String)localObject);
+        }
+      }
+      localObject = paramdtj.identification;
+      if (localObject != null)
+      {
+        if (((CharSequence)localObject).length() <= 0) {
+          break label412;
+        }
+        i = 1;
+        label286:
+        if (i == 0) {
+          break label417;
+        }
+        label290:
+        if (localObject != null) {
+          paramboo.identification = ((String)localObject);
+        }
+      }
+      paramdtj = paramdtj.extraInfo;
+      if (paramdtj != null)
+      {
+        if (((CharSequence)paramdtj).length() <= 0) {
+          break label422;
+        }
+        i = 1;
+        label322:
+        if (i == 0) {
+          break label427;
+        }
+      }
+    }
+    for (;;)
+    {
+      if (paramdtj != null) {
+        paramboo.extraInfo = paramdtj;
+      }
+      AppMethodBeat.o(286624);
+      return;
+      label342:
+      i = 0;
+      break;
+      label347:
+      localObject = null;
+      break label33;
+      label352:
+      i = 0;
+      break label65;
+      label357:
+      localObject = null;
+      break label69;
+      label362:
+      i = 0;
+      break label101;
+      label367:
+      localObject = null;
+      break label105;
+      label372:
+      i = 0;
+      break label137;
+      label377:
+      localObject = null;
+      break label141;
+      label382:
+      i = 0;
+      break label173;
+      label387:
+      localObject = null;
+      break label177;
+      i = 0;
+      break label208;
+      label397:
+      localObject = null;
+      break label212;
+      label402:
+      i = 0;
+      break label250;
+      label407:
+      localObject = null;
+      break label254;
+      label412:
+      i = 0;
+      break label286;
+      label417:
+      localObject = null;
+      break label290;
+      label422:
+      i = 0;
+      break label322;
+      label427:
+      paramdtj = null;
+    }
   }
   
   private final FrameLayout getVideoContainer()
   {
-    AppMethodBeat.i(228467);
-    FrameLayout localFrameLayout = (FrameLayout)this.Gha.getValue();
-    AppMethodBeat.o(228467);
+    AppMethodBeat.i(286583);
+    FrameLayout localFrameLayout = (FrameLayout)this.Mck.getValue();
+    AppMethodBeat.o(286583);
     return localFrameLayout;
   }
   
-  public final void fgJ()
+  private final void gqr()
+  {
+    AppMethodBeat.i(286594);
+    if (this.Mci == null)
+    {
+      Object localObject = getContext();
+      kotlin.g.b.s.s(localObject, "context");
+      this.Mci = new MultiMediaEffectVideoLayout((Context)localObject);
+      localObject = this.Mci;
+      if (localObject != null) {
+        ((MultiMediaEffectVideoLayout)localObject).setMvMusicProxy((com.tencent.mm.plugin.thumbplayer.view.b)new b());
+      }
+      localObject = this.Mci;
+      if (localObject != null) {
+        ((MultiMediaEffectVideoLayout)localObject).setId(b.e.music_video_layout);
+      }
+    }
+    AppMethodBeat.o(286594);
+  }
+  
+  private final void gqs()
   {
     Object localObject2 = null;
-    AppMethodBeat.i(228477);
-    if (this.GgZ.Gbo.size() == 0)
+    AppMethodBeat.i(286609);
+    if (this.Mcj.LXm.size() == 0)
     {
       Log.i("MicroMsg.Ts.MusicMvView", "refreshVideo 0 trackDataList empty");
-      AppMethodBeat.o(228477);
+      AppMethodBeat.o(286609);
       return;
     }
-    Log.i("MicroMsg.Ts.MusicMvView", "refreshVideo, position:0");
-    fgI();
-    Object localObject3 = new StringBuilder("refreshVideo, videoLayout.parent:");
-    Object localObject1 = this.GgY;
-    if (localObject1 != null) {}
-    for (localObject1 = ((MultiMediaEffectVideoLayout)localObject1).getParent();; localObject1 = null)
+    Log.i("MicroMsg.Ts.MusicMvView", kotlin.g.b.s.X("refreshVideo, position:", Integer.valueOf(0)));
+    gqr();
+    Object localObject1 = this.Mci;
+    if (localObject1 == null)
     {
-      Log.i("MicroMsg.Ts.MusicMvView", localObject1);
-      localObject3 = this.GgY;
-      localObject1 = localObject2;
-      if (localObject3 != null) {
-        localObject1 = ((MultiMediaEffectVideoLayout)localObject3).getParent();
+      localObject1 = null;
+      Log.i("MicroMsg.Ts.MusicMvView", kotlin.g.b.s.X("refreshVideo, videoLayout.parent:", localObject1));
+      localObject1 = this.Mci;
+      if (localObject1 != null) {
+        break label320;
       }
+    }
+    label320:
+    for (localObject1 = localObject2;; localObject1 = ((MultiMediaEffectVideoLayout)localObject1).getParent())
+    {
       if (localObject1 == null)
       {
-        localObject1 = this.GgY;
+        localObject1 = this.Mci;
         if (localObject1 != null) {
           ((MultiMediaEffectVideoLayout)localObject1).setId(b.e.music_video_layout);
         }
         Log.i("MicroMsg.Ts.MusicMvView", "refreshVideo add videoLayout to current videoContainer");
-        getVideoContainer().addView((View)this.GgY);
+        getVideoContainer().addView((View)this.Mci);
       }
-      localObject1 = new StringBuilder("refreshVideo current music position:");
-      localObject2 = com.tencent.mm.plugin.music.e.k.fet();
-      p.j(localObject2, "MusicPlayerManager.Instance()");
-      localObject2 = ((com.tencent.mm.plugin.music.e.k)localObject2).feg();
-      p.j(localObject2, "MusicPlayerManager.Instance().musicPlayer");
-      Log.i("MicroMsg.Ts.MusicMvView", ((d)localObject2).fdx());
-      localObject1 = this.GgY;
+      Log.i("MicroMsg.Ts.MusicMvView", kotlin.g.b.s.X("refreshVideo current music position:", Integer.valueOf(com.tencent.mm.plugin.music.logic.j.gnw().gnj().gmA())));
+      localObject1 = this.Mci;
       if (localObject1 != null) {
         ((MultiMediaEffectVideoLayout)localObject1).setMute(true);
       }
-      localObject1 = this.GgY;
+      localObject1 = this.Mci;
       if (localObject1 != null) {
-        ((MultiMediaEffectVideoLayout)localObject1).setMediaList((List)this.GgZ.ffZ());
+        ((MultiMediaEffectVideoLayout)localObject1).setMediaList((List)this.Mcj.gpD());
       }
-      localObject1 = this.GgY;
+      localObject1 = this.Mci;
       if (localObject1 != null) {
-        ((MultiMediaEffectVideoLayout)localObject1).setPlayStatusChangeListener((c.c)new f(this));
+        ((MultiMediaEffectVideoLayout)localObject1).setPlayStatusChangeListener((b.c)new d(this));
       }
-      localObject1 = this.GgY;
+      localObject1 = this.Mci;
       if (localObject1 != null) {
         ((MultiMediaEffectVideoLayout)localObject1).start();
       }
-      localObject1 = com.tencent.mm.plugin.music.e.k.fet();
-      p.j(localObject1, "MusicPlayerManager.Instance()");
-      localObject1 = ((com.tencent.mm.plugin.music.e.k)localObject1).feg();
-      p.j(localObject1, "MusicPlayerManager.Instance().musicPlayer");
-      int j = ((d)localObject1).fdx();
+      int j = com.tencent.mm.plugin.music.logic.j.gnw().gnj().gmA();
       int i = j;
       if (j < 0) {
         i = 0;
       }
-      localObject1 = this.GgY;
+      localObject1 = this.Mci;
       if (localObject1 != null) {
         ((MultiMediaEffectVideoLayout)localObject1).seekTo(i);
       }
-      localObject1 = this.GgY;
+      localObject1 = this.Mci;
       if (localObject1 != null) {
         ((MultiMediaEffectVideoLayout)localObject1).setPauseOnVideoPlay(false);
       }
-      localObject1 = this.GgY;
-      if (localObject1 == null) {
-        break;
+      localObject1 = this.Mci;
+      if (localObject1 != null) {
+        ((MultiMediaEffectVideoLayout)localObject1).setKeepScreenOn(true);
       }
-      ((MultiMediaEffectVideoLayout)localObject1).setKeepScreenOn(true);
-      AppMethodBeat.o(228477);
+      AppMethodBeat.o(286609);
       return;
+      localObject1 = ((MultiMediaEffectVideoLayout)localObject1).getParent();
+      break;
     }
-    AppMethodBeat.o(228477);
+  }
+  
+  public final void a(long paramLong, String paramString, com.tencent.mm.plugin.mv.model.f paramf)
+  {
+    AppMethodBeat.i(286716);
+    Log.i("MicroMsg.Ts.MusicMvView", "getMvDetailInfo mvObjectId:" + paramLong + " mvNonceId:" + paramString + " localId:" + paramf.LXg);
+    Object localObject = com.tencent.mm.plugin.mv.model.i.LXD;
+    localObject = com.tencent.mm.plugin.mv.model.i.W(paramLong, paramString);
+    if (localObject == null) {}
+    for (localObject = null;; localObject = com.tencent.threadpool.h.ahAA.bk(new MusicMvView..ExternalSyntheticLambda1(this, (ayl)localObject, paramf)))
+    {
+      if (localObject == null)
+      {
+        localObject = (MusicMvView)this;
+        com.tencent.mm.kernel.h.aZW().a((p)new com.tencent.mm.plugin.mv.model.a.k(paramLong, paramString, paramf.hashCode(), ((MusicMvView)localObject).hashCode()), 0);
+      }
+      AppMethodBeat.o(286716);
+      return;
+      Log.i("MicroMsg.Ts.MusicMvView", "getMvDetailInfo hit cache");
+    }
   }
   
   public final a getLyricManager()
   {
-    AppMethodBeat.i(228468);
-    a locala = (a)this.Ghc.getValue();
-    AppMethodBeat.o(228468);
+    AppMethodBeat.i(286684);
+    a locala = (a)this.Mcm.getValue();
+    AppMethodBeat.o(286684);
     return locala;
   }
   
   public final void getSongIdWithCheckPermission()
   {
-    AppMethodBeat.i(293187);
-    com.tencent.mm.kernel.h.aGY().b((com.tencent.mm.an.q)new c(this.GaB, hashCode()));
-    AppMethodBeat.o(293187);
+    AppMethodBeat.i(286707);
+    com.tencent.mm.kernel.h.aZW().a((p)new com.tencent.mm.plugin.mv.model.a.f(this.LWI, hashCode()), 0);
+    AppMethodBeat.o(286707);
   }
   
-  public final void hfT()
+  public final void gqo()
   {
-    AppMethodBeat.i(293186);
-    com.tencent.mm.kernel.h.aGY().a(3763, this.Ghd);
-    com.tencent.mm.kernel.h.aGY().a(5286, this.Ghd);
-    com.tencent.mm.kernel.h.aGY().a(5292, this.Ghd);
-    AppMethodBeat.o(293186);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/mv/ui/open/text_status/MusicMvView$checkVideoLayout$1", "Lcom/tencent/mm/plugin/thumbplayer/view/MvMusicProxy;", "getCurrentPosition", "", "getTotalDuration", "seekMusic", "", "position", "", "plugin-mv_release"})
-  public static final class b
-    implements b
-  {
-    public final void ZN(int paramInt)
+    AppMethodBeat.i(286689);
+    Log.i("MicroMsg.Ts.MusicMvView", kotlin.g.b.s.X("onResume, needResumePosition:", Boolean.valueOf(this.Mcl)));
+    if (!this.Mcl) {
+      gqs();
+    }
+    for (;;)
     {
-      AppMethodBeat.i(226535);
-      com.tencent.mm.plugin.music.e.k localk = com.tencent.mm.plugin.music.e.k.fet();
-      p.j(localk, "MusicPlayerManager.Instance()");
-      localk.feg().wG(paramInt);
-      AppMethodBeat.o(226535);
+      this.Mcl = false;
+      getLyricManager().onResume();
+      AppMethodBeat.o(286689);
+      return;
+      MultiMediaEffectVideoLayout localMultiMediaEffectVideoLayout = this.Mci;
+      if (localMultiMediaEffectVideoLayout != null) {
+        localMultiMediaEffectVideoLayout.TGY.resume();
+      }
+    }
+  }
+  
+  public final void gqp()
+  {
+    AppMethodBeat.i(286696);
+    Log.i("MicroMsg.Ts.MusicMvView", "onMvPause");
+    MultiMediaEffectVideoLayout localMultiMediaEffectVideoLayout = this.Mci;
+    if (localMultiMediaEffectVideoLayout != null) {
+      localMultiMediaEffectVideoLayout.pause();
+    }
+    this.Mcl = true;
+    getLyricManager().onPause();
+    AppMethodBeat.o(286696);
+  }
+  
+  public final void gqq()
+  {
+    AppMethodBeat.i(286700);
+    com.tencent.mm.kernel.h.aZW().a(3763, this.LYH);
+    com.tencent.mm.kernel.h.aZW().a(5286, this.LYH);
+    com.tencent.mm.kernel.h.aZW().a(5292, this.LYH);
+    AppMethodBeat.o(286700);
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/mv/ui/open/text_status/MusicMvView$checkVideoLayout$1", "Lcom/tencent/mm/plugin/thumbplayer/view/MvMusicProxy;", "getCurrentPosition", "", "getTotalDuration", "seekMusic", "", "position", "", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+    implements com.tencent.mm.plugin.thumbplayer.view.b
+  {
+    public final void aea(int paramInt)
+    {
+      AppMethodBeat.i(286553);
+      com.tencent.mm.plugin.music.logic.j.gnw().gnj().wH(paramInt);
+      AppMethodBeat.o(286553);
     }
     
     public final long getCurrentPosition()
     {
-      AppMethodBeat.i(226533);
-      Object localObject = com.tencent.mm.plugin.music.e.k.fet();
-      p.j(localObject, "MusicPlayerManager.Instance()");
-      localObject = ((com.tencent.mm.plugin.music.e.k)localObject).feg();
-      p.j(localObject, "MusicPlayerManager.Instance().musicPlayer");
-      long l = ((d)localObject).fdx();
-      AppMethodBeat.o(226533);
+      AppMethodBeat.i(286546);
+      long l = com.tencent.mm.plugin.music.logic.j.gnw().gnj().gmA();
+      AppMethodBeat.o(286546);
       return l;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/mv/ui/open/text_status/MusicMvView$getMvDetailInfo$1$1"})
-  public static final class c
-    implements Runnable
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/mv/ui/open/text_status/MusicMvView$refreshVideo$1", "Lcom/tencent/mm/plugin/thumbplayer/effect/MultiMediaEffectController$PlayerStatusChangeListener;", "onPause", "", "onResume", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class d
+    implements b.c
   {
-    public c(att paramatt, MusicMvView paramMusicMvView, com.tencent.mm.plugin.mv.model.f paramf) {}
+    d(MusicMvView paramMusicMvView) {}
     
-    public final void run()
-    {
-      AppMethodBeat.i(230857);
-      MusicMvView.a(this.Ghg, this.Ghf, this.Ghh.hashCode());
-      AppMethodBeat.o(230857);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/mv/ui/open/text_status/MusicMvLyricManager;", "invoke"})
-  static final class d
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<a>
-  {
-    d(MusicMvView paramMusicMvView, Context paramContext)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onSceneEnd"})
-  static final class e
-    implements i
-  {
-    e(MusicMvView paramMusicMvView) {}
-    
-    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
-    {
-      AppMethodBeat.i(231263);
-      if (((paramq instanceof com.tencent.mm.plugin.mv.model.a.a)) && (((com.tencent.mm.plugin.mv.model.a.a)paramq).GcW != 0) && (((com.tencent.mm.plugin.mv.model.a.a)paramq).GcW != this.Ghg.hashCode()))
-      {
-        Log.i("MicroMsg.Ts.MusicMvView", "not the same page of netscene");
-        AppMethodBeat.o(231263);
-        return;
-      }
-      if ((paramq instanceof com.tencent.mm.plugin.mv.model.a.h))
-      {
-        Log.i("MicroMsg.Ts.MusicMvView", "NetSceneMusicMvGetFinderFeedDetail, errType:" + paramInt1 + ", errCode:" + paramInt2 + ", errMsg:" + paramString);
-        if ((paramInt1 == 0) && (paramInt2 == 0))
-        {
-          paramString = ((com.tencent.mm.plugin.mv.model.a.h)paramq).GaS;
-          if (paramString != null)
-          {
-            MusicMvView.a(this.Ghg, paramString, ((com.tencent.mm.plugin.mv.model.a.h)paramq).Gdt);
-            AppMethodBeat.o(231263);
-            return;
-          }
-          AppMethodBeat.o(231263);
-        }
-      }
-      else if ((paramq instanceof com.tencent.mm.plugin.mv.model.a.k))
-      {
-        Log.i("MicroMsg.Ts.MusicMvView", "NetSceneMusicMvGetSongStatus, errType:" + paramInt1 + ", errCode:" + paramInt2 + ", errMsg:" + paramString);
-        if ((paramInt1 == 0) && (paramInt2 == 0))
-        {
-          paramString = ((com.tencent.mm.plugin.mv.model.a.k)paramq).Gdz;
-          if (paramString != null)
-          {
-            paramString = paramString.SOL;
-            if (paramString != null)
-            {
-              p.j(paramString, "it");
-              if (((CharSequence)paramString).length() > 0)
-              {
-                paramInt1 = 1;
-                if (paramInt1 == 0) {
-                  break label302;
-                }
-              }
-              for (;;)
-              {
-                if (paramString == null) {
-                  break label307;
-                }
-                Log.i("MicroMsg.Ts.MusicMvView", "NetSceneMusicMvGetSongStatus, lyric length:" + paramString.length());
-                MusicMvView.b(this.Ghg).aSK(paramString);
-                AppMethodBeat.o(231263);
-                return;
-                paramInt1 = 0;
-                break;
-                label302:
-                paramString = null;
-              }
-            }
-            label307:
-            AppMethodBeat.o(231263);
-            return;
-          }
-          AppMethodBeat.o(231263);
-        }
-      }
-      else if ((paramq instanceof c))
-      {
-        Log.i("MicroMsg.Ts.MusicMvView", "NetSceneMusicMvCheckPermission, errType:" + paramInt1 + ", errCode:" + paramInt2 + ", errMsg:" + paramString);
-        if ((paramInt1 == 0) && (paramInt2 == 0))
-        {
-          paramString = ((c)paramq).Gdd;
-          if (paramString != null)
-          {
-            MusicMvView.c(this.Ghg).kkU = paramString.TIm;
-            Log.i("MicroMsg.Ts.MusicMvView", "NetSceneMusicMvCheckPermission songId:" + paramString.TIm + " mvPostPermissionBit:" + paramString.TIo + " statusVerifyInfo:" + paramString.zfW);
-            MusicMvView.a(this.Ghg, MusicMvView.c(this.Ghg));
-            AppMethodBeat.o(231263);
-            return;
-          }
-        }
-      }
-      AppMethodBeat.o(231263);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/mv/ui/open/text_status/MusicMvView$refreshVideo$1", "Lcom/tencent/mm/plugin/thumbplayer/effect/MultiMediaEffectController$PlayerStatusChangeListener;", "onPause", "", "onResume", "plugin-mv_release"})
-  public static final class f
-    implements c.c
-  {
     public final void onPause()
     {
-      AppMethodBeat.i(228282);
-      if (MusicMvView.a(this.Ghg).Gbz > 0L)
+      AppMethodBeat.i(286551);
+      if (MusicMvView.a(this.Mcn).LXx > 0L)
       {
-        com.tencent.mm.plugin.mv.model.f localf = MusicMvView.a(this.Ghg);
-        localf.GbA += cm.bfE() - MusicMvView.a(this.Ghg).Gbz;
-        MusicMvView.a(this.Ghg).Gbz = 0L;
+        com.tencent.mm.plugin.mv.model.f localf = MusicMvView.a(this.Mcn);
+        localf.LXy += cn.bDw() - MusicMvView.a(this.Mcn).LXx;
+        MusicMvView.a(this.Mcn).LXx = 0L;
       }
-      AppMethodBeat.o(228282);
+      AppMethodBeat.o(286551);
     }
     
     public final void onResume()
     {
-      AppMethodBeat.i(228285);
-      if (MusicMvView.a(this.Ghg).Gbz > 0L)
+      AppMethodBeat.i(286556);
+      if (MusicMvView.a(this.Mcn).LXx > 0L)
       {
-        com.tencent.mm.plugin.mv.model.f localf = MusicMvView.a(this.Ghg);
-        localf.GbA += cm.bfE() - MusicMvView.a(this.Ghg).Gbz;
+        com.tencent.mm.plugin.mv.model.f localf = MusicMvView.a(this.Mcn);
+        localf.LXy += cn.bDw() - MusicMvView.a(this.Mcn).LXx;
       }
-      MusicMvView.a(this.Ghg).Gbz = cm.bfE();
-      AppMethodBeat.o(228285);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/FrameLayout;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class g
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<FrameLayout>
-  {
-    g(MusicMvView paramMusicMvView)
-    {
-      super();
+      MusicMvView.a(this.Mcn).LXx = cn.bDw();
+      AppMethodBeat.o(286556);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mv.ui.open.text_status.MusicMvView
  * JD-Core Version:    0.7.0.1
  */

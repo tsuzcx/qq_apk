@@ -7,7 +7,7 @@ import com.tencent.kinda.gen.KContactService;
 import com.tencent.kinda.gen.KImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.wallet_core.ui.g;
+import com.tencent.mm.wallet_core.ui.i;
 
 public class ContactServiceImpl
   implements KContactService
@@ -15,7 +15,7 @@ public class ContactServiceImpl
   public void attachAvatar(String paramString, KImageView paramKImageView)
   {
     AppMethodBeat.i(18623);
-    a.b.c((ImageView)((MMKImageView)paramKImageView).getView(), paramString);
+    a.b.g((ImageView)((MMKImageView)paramKImageView).getView(), paramString);
     AppMethodBeat.o(18623);
   }
   
@@ -35,7 +35,7 @@ public class ContactServiceImpl
   public String getUserName()
   {
     AppMethodBeat.i(18624);
-    String str = g.getUsername();
+    String str = i.getUsername();
     AppMethodBeat.o(18624);
     return str;
   }
@@ -47,7 +47,7 @@ public class ContactServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.kinda.framework.module.impl.ContactServiceImpl
  * JD-Core Version:    0.7.0.1
  */

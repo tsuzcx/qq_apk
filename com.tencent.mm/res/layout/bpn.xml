@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <androidx.recyclerview.widget.RecyclerView android:id="@id/d7r" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="17.0dip" android:textColor="@color/a7b" android:id="@id/ljz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="金额" />
+        <com.tenpay.android.wechat.TenpaySecureEditText android:textSize="17.0dip" android:gravity="right" android:id="@id/lgl" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/a7b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="元" />
+    </LinearLayout>
+</merge>

@@ -1,77 +1,108 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class cxl
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public LinkedList<String> TFX;
-  public String aFM;
-  
-  public cxl()
-  {
-    AppMethodBeat.i(116473);
-    this.TFX = new LinkedList();
-    AppMethodBeat.o(116473);
-  }
+  public String IGG;
+  public String IHo;
+  public String aaCS;
+  public String aaCT;
+  public String hAP;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(116474);
+    AppMethodBeat.i(152610);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.aFM != null) {
-        paramVarArgs.f(1, this.aFM);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.aaCS != null) {
+        paramVarArgs.g(1, this.aaCS);
       }
-      paramVarArgs.e(2, 1, this.TFX);
-      AppMethodBeat.o(116474);
+      if (this.IHo != null) {
+        paramVarArgs.g(2, this.IHo);
+      }
+      if (this.hAP != null) {
+        paramVarArgs.g(3, this.hAP);
+      }
+      if (this.IGG != null) {
+        paramVarArgs.g(4, this.IGG);
+      }
+      if (this.aaCT != null) {
+        paramVarArgs.g(5, this.aaCT);
+      }
+      AppMethodBeat.o(152610);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.aFM == null) {
-        break label274;
+      if (this.aaCS == null) {
+        break label450;
       }
     }
-    label274:
-    for (paramInt = g.a.a.b.b.a.g(1, this.aFM) + 0;; paramInt = 0)
+    label450:
+    for (int i = i.a.a.b.b.a.h(1, this.aaCS) + 0;; i = 0)
     {
-      int i = g.a.a.a.c(2, 1, this.TFX);
-      AppMethodBeat.o(116474);
-      return paramInt + i;
+      paramInt = i;
+      if (this.IHo != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.IHo);
+      }
+      i = paramInt;
+      if (this.hAP != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.hAP);
+      }
+      paramInt = i;
+      if (this.IGG != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.IGG);
+      }
+      i = paramInt;
+      if (this.aaCT != null) {
+        i = paramInt + i.a.a.b.b.a.h(5, this.aaCT);
+      }
+      AppMethodBeat.o(152610);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.TFX.clear();
-        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(116474);
+        AppMethodBeat.o(152610);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         cxl localcxl = (cxl)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(116474);
+          AppMethodBeat.o(152610);
           return -1;
         case 1: 
-          localcxl.aFM = locala.abFh.readString();
-          AppMethodBeat.o(116474);
+          localcxl.aaCS = locala.ajGk.readString();
+          AppMethodBeat.o(152610);
+          return 0;
+        case 2: 
+          localcxl.IHo = locala.ajGk.readString();
+          AppMethodBeat.o(152610);
+          return 0;
+        case 3: 
+          localcxl.hAP = locala.ajGk.readString();
+          AppMethodBeat.o(152610);
+          return 0;
+        case 4: 
+          localcxl.IGG = locala.ajGk.readString();
+          AppMethodBeat.o(152610);
           return 0;
         }
-        localcxl.TFX.add(locala.abFh.readString());
-        AppMethodBeat.o(116474);
+        localcxl.aaCT = locala.ajGk.readString();
+        AppMethodBeat.o(152610);
         return 0;
       }
-      AppMethodBeat.o(116474);
+      AppMethodBeat.o(152610);
       return -1;
     }
   }

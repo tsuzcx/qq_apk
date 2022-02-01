@@ -1,115 +1,114 @@
 package com.tencent.mm.plugin.wallet_payu.order.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.p;
 import com.tencent.mm.plugin.wallet_payu.order.a.c;
 import com.tencent.mm.plugin.wxpay.a.f;
 import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.protocal.protobuf.dke;
+import com.tencent.mm.protocal.protobuf.eco;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
-import com.tencent.mm.wallet_core.ui.g;
+import com.tencent.mm.wallet_core.ui.i;
 
 public class PayUMallOrderDetailUI
   extends WalletBaseUI
 {
-  private TextView Eui;
-  private String GCu = "";
-  private TextView Ipw;
-  private dke Pmm;
-  private LinearLayout Pmn;
-  private LinearLayout Pmo;
-  private LinearLayout Pmp;
-  private LinearLayout Pmq;
-  private LinearLayout Pmr;
-  private LinearLayout Pms;
-  private LinearLayout Pmt;
-  private TextView Pmu;
-  private TextView Pmv;
-  private TextView Pmw;
-  private TextView Pmx;
-  private TextView qph;
+  private TextView KmP;
+  private String MyF = "";
+  private TextView OmP;
+  private LinearLayout WdA;
+  private LinearLayout WdB;
+  private LinearLayout WdC;
+  private LinearLayout WdD;
+  private LinearLayout WdE;
+  private LinearLayout WdF;
+  private TextView WdG;
+  private TextView WdH;
+  private TextView WdI;
+  private TextView WdJ;
+  private eco Wdy;
+  private LinearLayout Wdz;
+  private TextView ttK;
   
-  private void dBo()
+  private void gAA()
   {
     AppMethodBeat.i(72068);
-    if (this.Pmm == null)
+    if (this.Wdy == null)
     {
       AppMethodBeat.o(72068);
       return;
     }
-    if (!Util.isNullOrNil(this.Pmm.GIh))
+    if (!Util.isNullOrNil(this.Wdy.MEX))
     {
-      this.Pmn.setVisibility(0);
-      this.Pmu.setText(this.Pmm.GIh);
+      this.Wdz.setVisibility(0);
+      this.WdG.setText(this.Wdy.MEX);
       label53:
-      if (Util.isNullOrNil(this.Pmm.GIq)) {
+      if (Util.isNullOrNil(this.Wdy.MFg)) {
         break label304;
       }
-      this.Pmo.setVisibility(0);
-      this.Pmv.setText(this.Pmm.GIq);
+      this.WdA.setVisibility(0);
+      this.WdH.setText(this.Wdy.MFg);
       label88:
-      if (Util.isNullOrNil(this.Pmm.GIj)) {
+      if (Util.isNullOrNil(this.Wdy.MEZ)) {
         break label316;
       }
-      this.Pmp.setVisibility(0);
-      this.Pmw.setText(this.Pmm.GIj);
+      this.WdB.setVisibility(0);
+      this.WdI.setText(this.Wdy.MEZ);
       label123:
-      if (Util.isNullOrNil(this.Pmm.GIm)) {
+      if (Util.isNullOrNil(this.Wdy.MFc)) {
         break label328;
       }
-      this.Pmq.setVisibility(0);
-      this.Ipw.setText(g.d(this.Pmm.TRD / 100.0D, this.Pmm.GIm));
+      this.WdC.setVisibility(0);
+      this.OmP.setText(i.e(this.Wdy.abic / 100.0D, this.Wdy.MFc));
       label173:
-      if (this.Pmm.CreateTime < 0) {
+      if (this.Wdy.CreateTime < 0) {
         break label340;
       }
-      this.Pmr.setVisibility(0);
-      this.Eui.setText(g.uW(this.Pmm.CreateTime));
+      this.WdD.setVisibility(0);
+      this.KmP.setText(i.vh(this.Wdy.CreateTime));
       label208:
-      if (Util.isNullOrNil(this.Pmm.GIk)) {
+      if (Util.isNullOrNil(this.Wdy.MFa)) {
         break label352;
       }
-      this.Pms.setVisibility(0);
-      this.qph.setText(this.Pmm.GIk);
+      this.WdE.setVisibility(0);
+      this.ttK.setText(this.Wdy.MFa);
     }
     for (;;)
     {
-      switch (this.Pmm.GIo)
+      switch (this.Wdy.MFe)
       {
       case 4: 
       default: 
-        this.Pmx.setText(a.i.wallet_payu_detail_type_reserve);
+        this.WdJ.setText(a.i.wallet_payu_detail_type_reserve);
         AppMethodBeat.o(72068);
         return;
-        this.Pmn.setVisibility(8);
+        this.Wdz.setVisibility(8);
         break label53;
         label304:
-        this.Pmo.setVisibility(8);
+        this.WdA.setVisibility(8);
         break label88;
         label316:
-        this.Pmp.setVisibility(8);
+        this.WdB.setVisibility(8);
         break label123;
         label328:
-        this.Pmq.setVisibility(8);
+        this.WdC.setVisibility(8);
         break label173;
         label340:
-        this.Pmr.setVisibility(8);
+        this.WdD.setVisibility(8);
         break label208;
         label352:
-        this.Pms.setVisibility(8);
+        this.WdE.setVisibility(8);
       }
     }
-    this.Pmx.setText(a.i.wallet_balance_manager_save);
+    this.WdJ.setText(a.i.wallet_balance_manager_save);
     AppMethodBeat.o(72068);
     return;
-    this.Pmx.setText(a.i.wallet_index_ui_transfer);
+    this.WdJ.setText(a.i.wallet_index_ui_transfer);
     AppMethodBeat.o(72068);
   }
   
@@ -123,28 +122,28 @@ public class PayUMallOrderDetailUI
     AppMethodBeat.i(72067);
     super.onCreate(paramBundle);
     addSceneEndListener(1520);
-    this.GCu = getInput().getString("key_trans_id");
-    if (Util.isNullOrNil(this.GCu))
+    this.MyF = getInput().getString("key_trans_id");
+    if (Util.isNullOrNil(this.MyF))
     {
       Log.e("MicroMsg.PayUMallOrderDetailUI", "hy: trans id is null");
       finish();
     }
-    doSceneProgress(new c(this.GCu));
-    this.Pmn = ((LinearLayout)findViewById(a.f.detail_transid));
-    this.Pmo = ((LinearLayout)findViewById(a.f.detail_appname));
-    this.Pmp = ((LinearLayout)findViewById(a.f.detail_goodsname));
-    this.Pmq = ((LinearLayout)findViewById(a.f.detail_moneyspent));
-    this.Pmr = ((LinearLayout)findViewById(a.f.detail_time));
-    this.Pms = ((LinearLayout)findViewById(a.f.detail_status));
-    this.Pmt = ((LinearLayout)findViewById(a.f.detail_type));
-    this.Pmu = ((TextView)findViewById(a.f.detail_transid_tv));
-    this.Pmv = ((TextView)findViewById(a.f.detail_appname_tv));
-    this.Pmw = ((TextView)findViewById(a.f.detail_goodsname_tv));
-    this.Ipw = ((TextView)findViewById(a.f.detail_moneyspent_tv));
-    this.Eui = ((TextView)findViewById(a.f.detail_time_tv));
-    this.qph = ((TextView)findViewById(a.f.detail_status_tv));
-    this.Pmx = ((TextView)findViewById(a.f.detail_type_tv));
-    dBo();
+    doSceneProgress(new c(this.MyF));
+    this.Wdz = ((LinearLayout)findViewById(a.f.detail_transid));
+    this.WdA = ((LinearLayout)findViewById(a.f.detail_appname));
+    this.WdB = ((LinearLayout)findViewById(a.f.detail_goodsname));
+    this.WdC = ((LinearLayout)findViewById(a.f.detail_moneyspent));
+    this.WdD = ((LinearLayout)findViewById(a.f.detail_time));
+    this.WdE = ((LinearLayout)findViewById(a.f.detail_status));
+    this.WdF = ((LinearLayout)findViewById(a.f.detail_type));
+    this.WdG = ((TextView)findViewById(a.f.detail_transid_tv));
+    this.WdH = ((TextView)findViewById(a.f.detail_appname_tv));
+    this.WdI = ((TextView)findViewById(a.f.detail_goodsname_tv));
+    this.OmP = ((TextView)findViewById(a.f.detail_moneyspent_tv));
+    this.KmP = ((TextView)findViewById(a.f.detail_time_tv));
+    this.ttK = ((TextView)findViewById(a.f.detail_status_tv));
+    this.WdJ = ((TextView)findViewById(a.f.detail_type_tv));
+    gAA();
     AppMethodBeat.o(72067);
   }
   
@@ -156,15 +155,15 @@ public class PayUMallOrderDetailUI
     AppMethodBeat.o(72070);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(72069);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if ((paramq instanceof c))
+      if ((paramp instanceof c))
       {
-        this.Pmm = ((c)paramq).Pml;
-        dBo();
+        this.Wdy = ((c)paramp).Wdx;
+        gAA();
       }
       AppMethodBeat.o(72069);
       return true;
@@ -181,7 +180,7 @@ public class PayUMallOrderDetailUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.order.ui.PayUMallOrderDetailUI
  * JD-Core Version:    0.7.0.1
  */

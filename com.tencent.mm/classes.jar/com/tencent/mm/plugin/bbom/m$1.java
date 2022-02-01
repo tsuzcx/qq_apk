@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.bbom;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bl.d;
 import com.tencent.mm.kernel.a.c.a;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.model.y;
+import com.tencent.mm.modelverify.d;
 
 final class m$1
   extends a
@@ -18,7 +18,7 @@ final class m$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.bbom.m.1
  * JD-Core Version:    0.7.0.1
  */

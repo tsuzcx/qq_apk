@@ -1,114 +1,79 @@
 package com.tencent.mm.plugin.appbrand.jsapi.channels;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
+import com.tencent.mm.plugin.appbrand.ipc.a;
+import com.tencent.mm.plugin.appbrand.jsapi.EmptyResult;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.Arrays;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
 import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/channels/JsApiOpenChannelsLive;", "Lcom/tencent/mm/plugin/appbrand/jsapi/channels/JsApiOpenChannelsBase;", "()V", "action", "", "getAction", "()Ljava/lang/String;", "isParamValid", "", "extInfoJsonObj", "Lorg/json/JSONObject;", "overrideErrMsg", "originErrMsg", "errCode", "", "preProcessExtInfo", "isClientErrCode", "Companion", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/channels/JsApiOpenChannelsCreateContact;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
-  extends c
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<f>
 {
-  private static final int CTRL_INDEX = 968;
-  private static final String NAME = "openChannelsLive";
-  public static final a oNX;
+  private static final int CTRL_INDEX = 985;
+  private static final String NAME = "openChannelsCreateContact";
+  public static final a rRI;
   
   static
   {
-    AppMethodBeat.i(279646);
-    oNX = new a((byte)0);
-    AppMethodBeat.o(279646);
+    AppMethodBeat.i(327896);
+    rRI = new a((byte)0);
+    AppMethodBeat.o(327896);
   }
   
-  public final boolean X(JSONObject paramJSONObject)
+  public e()
   {
-    AppMethodBeat.i(279640);
-    p.k(paramJSONObject, "extInfoJsonObj");
-    String str = paramJSONObject.optString("feedId");
-    p.j(str, "extInfoJsonObj.optString(PARAM_KEY_FEED_ID)");
-    if (((CharSequence)str).length() > 0)
-    {
-      i = 1;
-      if (i == 0) {
-        break label90;
-      }
-      paramJSONObject = paramJSONObject.optString("nonceId");
-      p.j(paramJSONObject, "extInfoJsonObj.optString(PARAM_KEY_NONCE_ID)");
-      if (((CharSequence)paramJSONObject).length() <= 0) {
-        break label85;
-      }
-    }
-    label85:
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0) {
-        break label90;
-      }
-      AppMethodBeat.o(279640);
-      return true;
-      i = 0;
-      break;
-    }
-    label90:
-    AppMethodBeat.o(279640);
-    return false;
+    AppMethodBeat.i(327873);
+    com.tencent.mm.plugin.appbrand.permission.c.afo("openChannelsCreateContact");
+    AppMethodBeat.o(327873);
   }
   
-  public final boolean Y(JSONObject paramJSONObject)
+  private static final void b(EmptyResult paramEmptyResult) {}
+  
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(279642);
-    p.k(paramJSONObject, "extInfoJsonObj");
-    try
+    AppMethodBeat.i(327919);
+    if (paramf == null)
     {
-      paramJSONObject.put("feedID", paramJSONObject.optString("feedId"));
-      paramJSONObject.put("nonceID", paramJSONObject.optString("nonceId"));
-      paramJSONObject.put("commentScene", 15);
-      bool = true;
+      Log.w("MicroMsg.AppBrand.JsApiOpenChannelsCreateContact", "invoke, env is null");
+      AppMethodBeat.o(327919);
+      return;
     }
-    catch (Exception paramJSONObject)
+    Context localContext = paramf.getContext();
+    if (localContext == null)
     {
-      for (;;)
-      {
-        Log.w("MicroMsg.AppBrand.JsApiOpenChannelsLive", "preProcessExtInfo, fail since ".concat(String.valueOf(paramJSONObject)));
-        boolean bool = false;
+      Log.w("MicroMsg.AppBrand.JsApiOpenChannelsCreateContact", "invoke, context is null");
+      paramf.callback(paramInt, ZP("fail:internal error invalid android context"));
+      AppMethodBeat.o(327919);
+      return;
+    }
+    if (paramJSONObject == null) {
+      paramJSONObject = "";
+    }
+    for (;;)
+    {
+      a.a(localContext, (AppBrandProxyUIProcessTask.ProcessRequest)new OpenChannelsCreateContactRequest(paramJSONObject), e..ExternalSyntheticLambda0.INSTANCE);
+      paramf.callback(paramInt, ZP("ok"));
+      AppMethodBeat.o(327919);
+      return;
+      String str = paramJSONObject.toString();
+      paramJSONObject = str;
+      if (str == null) {
+        paramJSONObject = "";
       }
     }
-    AppMethodBeat.o(279642);
-    return bool;
   }
   
-  public final String ch(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(279644);
-    p.k(paramString, "originErrMsg");
-    Log.i("MicroMsg.AppBrand.JsApiOpenChannelsLive", "overrideErrMsg, errCode: ".concat(String.valueOf(paramInt)));
-    if ((-1000 == paramInt) || (-1001 == paramInt) || (-1002 == paramInt) || (-1003 == paramInt)) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      paramString = super.ch(paramString, paramInt);
-      AppMethodBeat.o(279644);
-      return paramString;
-    }
-    paramString = String.format("fail:pre check fail, errCode=%d", Arrays.copyOf(new Object[] { Integer.valueOf(paramInt) }, 1));
-    p.j(paramString, "java.lang.String.format(this, *args)");
-    Log.i("MicroMsg.AppBrand.JsApiOpenChannelsLive", "overrideErrMsg, newErrMsg: ".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(279644);
-    return paramString;
-  }
-  
-  public final String getAction()
-  {
-    return "openFinderLive";
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/channels/JsApiOpenChannelsLive$Companion;", "", "()V", "ACTION", "", "CTRL_INDEX", "", "NAME", "PARAM_KEY_COMMENT_SCENE", "PARAM_VALUE_COMMENT_SCENE", "PRE_CHECK_ERR_MSG_FORMAT", "TAG", "plugin-appbrand-integration_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/channels/JsApiOpenChannelsCreateContact$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.channels.e
  * JD-Core Version:    0.7.0.1
  */

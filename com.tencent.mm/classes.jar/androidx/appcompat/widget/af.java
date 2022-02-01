@@ -9,137 +9,137 @@ import android.view.View.OnHoverListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewConfiguration;
 import android.view.accessibility.AccessibilityManager;
-import androidx.core.g.w;
-import androidx.core.g.x;
+import androidx.core.g.aa;
+import androidx.core.g.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class af
   implements View.OnAttachStateChangeListener, View.OnHoverListener, View.OnLongClickListener
 {
-  private static af xI;
-  private static af xJ;
-  private final CharSequence kY;
+  private static af yD;
+  private static af yE;
+  private final CharSequence lU;
   private final Runnable mHideRunnable;
-  private final View xB;
-  private final int xC;
-  private final Runnable xD;
-  private int xE;
-  private int xF;
-  private ag xG;
-  private boolean xH;
+  private int yA;
+  private ag yB;
+  private boolean yC;
+  private final View yw;
+  private final int yx;
+  private final Runnable yy;
+  private int yz;
   
   private af(View paramView, CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(242456);
-    this.xD = new Runnable()
+    AppMethodBeat.i(199592);
+    this.yy = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(242442);
-        af.this.T(false);
-        AppMethodBeat.o(242442);
+        AppMethodBeat.i(199413);
+        af.this.W(false);
+        AppMethodBeat.o(199413);
       }
     };
     this.mHideRunnable = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(242450);
+        AppMethodBeat.i(199424);
         af.this.hide();
-        AppMethodBeat.o(242450);
+        AppMethodBeat.o(199424);
       }
     };
-    this.xB = paramView;
-    this.kY = paramCharSequence;
-    this.xC = x.b(ViewConfiguration.get(this.xB.getContext()));
-    eG();
-    this.xB.setOnLongClickListener(this);
-    this.xB.setOnHoverListener(this);
-    AppMethodBeat.o(242456);
+    this.yw = paramView;
+    this.lU = paramCharSequence;
+    this.yx = aa.b(ViewConfiguration.get(this.yw.getContext()));
+    fD();
+    this.yw.setOnLongClickListener(this);
+    this.yw.setOnHoverListener(this);
+    AppMethodBeat.o(199592);
   }
   
   public static void a(View paramView, CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(242454);
-    if ((xI != null) && (xI.xB == paramView)) {
+    AppMethodBeat.i(199580);
+    if ((yD != null) && (yD.yw == paramView)) {
       a(null);
     }
     if (TextUtils.isEmpty(paramCharSequence))
     {
-      if ((xJ != null) && (xJ.xB == paramView)) {
-        xJ.hide();
+      if ((yE != null) && (yE.yw == paramView)) {
+        yE.hide();
       }
       paramView.setOnLongClickListener(null);
       paramView.setLongClickable(false);
       paramView.setOnHoverListener(null);
-      AppMethodBeat.o(242454);
+      AppMethodBeat.o(199580);
       return;
     }
     new af(paramView, paramCharSequence);
-    AppMethodBeat.o(242454);
+    AppMethodBeat.o(199580);
   }
   
   private static void a(af paramaf)
   {
-    AppMethodBeat.i(242469);
-    if (xI != null) {
-      xI.eF();
+    AppMethodBeat.i(199602);
+    if (yD != null) {
+      yD.fC();
     }
-    xI = paramaf;
+    yD = paramaf;
     if (paramaf != null) {
-      xI.eE();
+      yD.fB();
     }
-    AppMethodBeat.o(242469);
+    AppMethodBeat.o(199602);
   }
   
-  private void eE()
+  private void fB()
   {
-    AppMethodBeat.i(242470);
-    this.xB.postDelayed(this.xD, ViewConfiguration.getLongPressTimeout());
-    AppMethodBeat.o(242470);
+    AppMethodBeat.i(199614);
+    this.yw.postDelayed(this.yy, ViewConfiguration.getLongPressTimeout());
+    AppMethodBeat.o(199614);
   }
   
-  private void eF()
+  private void fC()
   {
-    AppMethodBeat.i(242471);
-    this.xB.removeCallbacks(this.xD);
-    AppMethodBeat.o(242471);
+    AppMethodBeat.i(199624);
+    this.yw.removeCallbacks(this.yy);
+    AppMethodBeat.o(199624);
   }
   
-  private void eG()
+  private void fD()
   {
-    this.xE = 2147483647;
-    this.xF = 2147483647;
+    this.yz = 2147483647;
+    this.yA = 2147483647;
   }
   
-  final void T(boolean paramBoolean)
+  final void W(boolean paramBoolean)
   {
-    AppMethodBeat.i(242466);
-    if (!w.al(this.xB))
+    AppMethodBeat.i(199689);
+    if (!z.ay(this.yw))
     {
-      AppMethodBeat.o(242466);
+      AppMethodBeat.o(199689);
       return;
     }
     a(null);
-    if (xJ != null) {
-      xJ.hide();
+    if (yE != null) {
+      yE.hide();
     }
-    xJ = this;
-    this.xH = paramBoolean;
-    this.xG = new ag(this.xB.getContext());
-    this.xG.a(this.xB, this.xE, this.xF, this.xH, this.kY);
-    this.xB.addOnAttachStateChangeListener(this);
+    yE = this;
+    this.yC = paramBoolean;
+    this.yB = new ag(this.yw.getContext());
+    this.yB.a(this.yw, this.yz, this.yA, this.yC, this.lU);
+    this.yw.addOnAttachStateChangeListener(this);
     long l;
-    if (this.xH) {
+    if (this.yC) {
       l = 2500L;
     }
     for (;;)
     {
-      this.xB.removeCallbacks(this.mHideRunnable);
-      this.xB.postDelayed(this.mHideRunnable, l);
-      AppMethodBeat.o(242466);
+      this.yw.removeCallbacks(this.mHideRunnable);
+      this.yw.postDelayed(this.mHideRunnable, l);
+      AppMethodBeat.o(199689);
       return;
-      if ((w.X(this.xB) & 0x1) == 1) {
+      if ((z.aj(this.yw) & 0x1) == 1) {
         l = 3000L - ViewConfiguration.getLongPressTimeout();
       } else {
         l = 15000L - ViewConfiguration.getLongPressTimeout();
@@ -149,37 +149,37 @@ final class af
   
   final void hide()
   {
-    AppMethodBeat.i(242468);
-    if (xJ == this)
+    AppMethodBeat.i(199698);
+    if (yE == this)
     {
-      xJ = null;
-      if (this.xG != null)
+      yE = null;
+      if (this.yB != null)
       {
-        this.xG.hide();
-        this.xG = null;
-        eG();
-        this.xB.removeOnAttachStateChangeListener(this);
+        this.yB.hide();
+        this.yB = null;
+        fD();
+        this.yw.removeOnAttachStateChangeListener(this);
       }
     }
-    if (xI == this) {
+    if (yD == this) {
       a(null);
     }
-    this.xB.removeCallbacks(this.mHideRunnable);
-    AppMethodBeat.o(242468);
+    this.yw.removeCallbacks(this.mHideRunnable);
+    AppMethodBeat.o(199698);
   }
   
   public final boolean onHover(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(242460);
-    if ((this.xG != null) && (this.xH))
+    AppMethodBeat.i(199658);
+    if ((this.yB != null) && (this.yC))
     {
-      AppMethodBeat.o(242460);
+      AppMethodBeat.o(199658);
       return false;
     }
-    paramView = (AccessibilityManager)this.xB.getContext().getSystemService("accessibility");
+    paramView = (AccessibilityManager)this.yw.getContext().getSystemService("accessibility");
     if ((paramView.isEnabled()) && (paramView.isTouchExplorationEnabled()))
     {
-      AppMethodBeat.o(242460);
+      AppMethodBeat.o(199658);
       return false;
     }
     switch (paramMotionEvent.getAction())
@@ -187,21 +187,21 @@ final class af
     }
     for (;;)
     {
-      AppMethodBeat.o(242460);
+      AppMethodBeat.o(199658);
       return false;
-      if ((this.xB.isEnabled()) && (this.xG == null))
+      if ((this.yw.isEnabled()) && (this.yB == null))
       {
         int i = (int)paramMotionEvent.getX();
         int j = (int)paramMotionEvent.getY();
-        if ((Math.abs(i - this.xE) <= this.xC) && (Math.abs(j - this.xF) <= this.xC)) {}
+        if ((Math.abs(i - this.yz) <= this.yx) && (Math.abs(j - this.yA) <= this.yx)) {}
         for (i = 0; i != 0; i = 1)
         {
           a(this);
           break;
-          this.xE = i;
-          this.xF = j;
+          this.yz = i;
+          this.yA = j;
         }
-        eG();
+        fD();
         hide();
       }
     }
@@ -209,11 +209,11 @@ final class af
   
   public final boolean onLongClick(View paramView)
   {
-    AppMethodBeat.i(242457);
-    this.xE = (paramView.getWidth() / 2);
-    this.xF = (paramView.getHeight() / 2);
-    T(true);
-    AppMethodBeat.o(242457);
+    AppMethodBeat.i(199644);
+    this.yz = (paramView.getWidth() / 2);
+    this.yA = (paramView.getHeight() / 2);
+    W(true);
+    AppMethodBeat.o(199644);
     return true;
   }
   
@@ -221,14 +221,14 @@ final class af
   
   public final void onViewDetachedFromWindow(View paramView)
   {
-    AppMethodBeat.i(242462);
+    AppMethodBeat.i(199677);
     hide();
-    AppMethodBeat.o(242462);
+    AppMethodBeat.o(199677);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     androidx.appcompat.widget.af
  * JD-Core Version:    0.7.0.1
  */

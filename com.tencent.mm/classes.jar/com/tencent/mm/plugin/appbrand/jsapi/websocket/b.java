@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.appbrand.jsapi.websocket;
 import com.tencent.mars.cdn.AndroidCertVerifyResult;
 import com.tencent.mars.cdn.X509Util;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.af.e.h;
-import com.tencent.mm.plugin.appbrand.s.j;
+import com.tencent.mm.plugin.appbrand.ah.e.h;
+import com.tencent.mm.plugin.appbrand.t.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.io.UnsupportedEncodingException;
 import java.net.Socket;
@@ -25,33 +25,33 @@ public final class b
   private Timer mTimer;
   private X509TrustManager mTrustManager;
   private String mUrl;
-  private String mvB;
-  private URI pFA;
-  private ArrayList pFB;
-  private ArrayList pFC;
-  private WssConfig pFD;
-  private int pFE;
-  private ArrayList<String> pFF;
-  private e.a pFG;
-  private WcWss.a pFH;
-  private b.a pFI;
-  private String pFz;
+  private String ppa;
+  private String sKH;
+  private URI sKI;
+  private ArrayList sKJ;
+  private ArrayList sKK;
+  private WssConfig sKL;
+  private int sKM;
+  private ArrayList<String> sKN;
+  private e.a sKO;
+  private WcWss.a sKP;
+  private a sKQ;
   
-  public b(String paramString1, String paramString2, URI paramURI, Map<String, String> paramMap, WssConfig paramWssConfig, ArrayList<String> paramArrayList, com.tencent.mm.plugin.appbrand.s.a parama)
+  public b(String paramString1, String paramString2, URI paramURI, Map<String, String> paramMap, WssConfig paramWssConfig, ArrayList<String> paramArrayList, com.tencent.mm.plugin.appbrand.t.a parama)
   {
     AppMethodBeat.i(144274);
-    this.pFB = new ArrayList();
-    this.pFC = new ArrayList();
-    this.pFE = -1;
+    this.sKJ = new ArrayList();
+    this.sKK = new ArrayList();
+    this.sKM = -1;
     this.mTimer = null;
-    this.pFI = b.a.pFK;
-    this.pFz = paramString1;
+    this.sKQ = a.sKS;
+    this.sKH = paramString1;
     this.mUrl = paramString2;
-    this.pFA = paramURI;
+    this.sKI = paramURI;
     this.mHeaders = paramMap;
-    this.pFD = paramWssConfig;
-    this.pFF = paramArrayList;
-    this.mTrustManager = j.b(parama);
+    this.sKL = paramWssConfig;
+    this.sKN = paramArrayList;
+    this.mTrustManager = i.b(parama);
     if (this.mHeaders == null)
     {
       Log.e("MicroMsg.AppBrandWcWssSocket", "header is null");
@@ -62,8 +62,8 @@ public final class b
     while (paramString1.hasNext())
     {
       paramString2 = (Map.Entry)paramString1.next();
-      this.pFB.add(paramString2.getKey());
-      this.pFC.add(paramString2.getValue());
+      this.sKJ.add(paramString2.getKey());
+      this.sKK.add(paramString2.getValue());
     }
     AppMethodBeat.o(144274);
   }
@@ -72,8 +72,8 @@ public final class b
   {
     AppMethodBeat.i(144275);
     Log.i("MicroMsg.AppBrandWcWssSocket", "setCallBack");
-    this.pFG = parama;
-    this.pFH = new WcWss.a()
+    this.sKO = parama;
+    this.sKP = new WcWss.a()
     {
       public final int doCertificateVerify(String paramAnonymousString, byte[][] paramAnonymousArrayOfByte)
       {
@@ -90,13 +90,13 @@ public final class b
             Log.i("MicroMsg.AppBrandWcWssSocket", "host %s ecdsa verify result %d, isknownroots %b, ishostmatched %b", new Object[] { paramAnonymousString, Integer.valueOf(localAndroidCertVerifyResult1.getStatus()), Boolean.valueOf(localAndroidCertVerifyResult1.isIssuedByKnownRoot()), Boolean.valueOf(localAndroidCertVerifyResult1.isIssuedByHostMatched()) });
           }
           if (localAndroidCertVerifyResult1.getStatus() != 0) {
-            ((com.tencent.mm.plugin.appbrand.w.a)com.tencent.luggage.a.e.L(com.tencent.mm.plugin.appbrand.w.a.class)).idkeyStat(972L, 7L, 1L, false);
+            ((com.tencent.mm.plugin.appbrand.x.a)com.tencent.luggage.a.e.U(com.tencent.mm.plugin.appbrand.x.a.class)).idkeyStat(972L, 7L, 1L, false);
           }
           if ((localAndroidCertVerifyResult1.getStatus() == 0) && (!localAndroidCertVerifyResult1.isIssuedByHostMatched())) {
-            ((com.tencent.mm.plugin.appbrand.w.a)com.tencent.luggage.a.e.L(com.tencent.mm.plugin.appbrand.w.a.class)).idkeyStat(972L, 8L, 1L, false);
+            ((com.tencent.mm.plugin.appbrand.x.a)com.tencent.luggage.a.e.U(com.tencent.mm.plugin.appbrand.x.a.class)).idkeyStat(972L, 8L, 1L, false);
           }
           if ((localAndroidCertVerifyResult1.getStatus() == 0) && (!localAndroidCertVerifyResult1.isIssuedByKnownRoot())) {
-            ((com.tencent.mm.plugin.appbrand.w.a)com.tencent.luggage.a.e.L(com.tencent.mm.plugin.appbrand.w.a.class)).idkeyStat(972L, 9L, 1L, false);
+            ((com.tencent.mm.plugin.appbrand.x.a)com.tencent.luggage.a.e.U(com.tencent.mm.plugin.appbrand.x.a.class)).idkeyStat(972L, 9L, 1L, false);
           }
           if ((localAndroidCertVerifyResult1.getStatus() == 0) && (localAndroidCertVerifyResult1.isIssuedByKnownRoot()))
           {
@@ -118,8 +118,8 @@ public final class b
       {
         AppMethodBeat.i(144269);
         Log.i("MicroMsg.AppBrandWcWssSocket", "onClose group:%s,id:%s, reason:%s, code:%s", new Object[] { paramAnonymousString1, Integer.valueOf(paramAnonymousInt1), paramAnonymousString2, Integer.valueOf(paramAnonymousInt2) });
-        b.a(b.this, b.a.pFO);
-        b.a(b.this).ag(paramAnonymousInt2, paramAnonymousString2);
+        b.a(b.this, b.a.sKW);
+        b.a(b.this).ap(paramAnonymousInt2, paramAnonymousString2);
         AppMethodBeat.o(144269);
       }
       
@@ -128,7 +128,7 @@ public final class b
         AppMethodBeat.i(144266);
         Log.i("MicroMsg.AppBrandWcWssSocket", "onHandShake group:%s, wssId:%s", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousInt) });
         paramAnonymousString = b.a(b.this, 1, paramAnonymousArrayOfString1, paramAnonymousArrayOfString2);
-        b.a(b.this).a((com.tencent.mm.plugin.appbrand.af.e.a)paramAnonymousString);
+        b.a(b.this).a((com.tencent.mm.plugin.appbrand.ah.e.a)paramAnonymousString);
         AppMethodBeat.o(144266);
       }
       
@@ -140,7 +140,7 @@ public final class b
           try
           {
             paramAnonymousString = new String(paramAnonymousArrayOfByte, "utf-8");
-            b.a(b.this).aii(paramAnonymousString);
+            b.a(b.this).abg(paramAnonymousString);
             AppMethodBeat.o(144268);
             return;
           }
@@ -152,25 +152,25 @@ public final class b
           }
         }
         paramAnonymousString = ByteBuffer.wrap(paramAnonymousArrayOfByte);
-        b.a(b.this).h(paramAnonymousString);
+        b.a(b.this).n(paramAnonymousString);
         AppMethodBeat.o(144268);
       }
       
-      public final void onOpen(String paramAnonymousString1, int paramAnonymousInt1, boolean paramAnonymousBoolean, String[] paramAnonymousArrayOfString1, String[] paramAnonymousArrayOfString2, int paramAnonymousInt2, String paramAnonymousString2, long paramAnonymousLong1, long paramAnonymousLong2, long paramAnonymousLong3, long paramAnonymousLong4, long paramAnonymousLong5, long paramAnonymousLong6, long paramAnonymousLong7, long paramAnonymousLong8)
+      public final void onOpen(String paramAnonymousString1, int paramAnonymousInt1, boolean paramAnonymousBoolean, String[] paramAnonymousArrayOfString1, String[] paramAnonymousArrayOfString2, int paramAnonymousInt2, String paramAnonymousString2, String[] paramAnonymousArrayOfString3, String[] paramAnonymousArrayOfString4)
       {
-        AppMethodBeat.i(175387);
-        Log.i("MicroMsg.AppBrandWcWssSocket", "onOpen group:%s,isSuc:%s, msg:%s, code:%s, wssId:%s, fetchStart:%d, domainLookupStart:%d, domainLookupEnd:%d, connectStart:%d, connectEnd:%d, rtt:%d, handshakeCost:%d, cost:%d", new Object[] { paramAnonymousString1, Boolean.valueOf(paramAnonymousBoolean), paramAnonymousString2, Integer.valueOf(paramAnonymousInt2), Integer.valueOf(paramAnonymousInt1), Long.valueOf(paramAnonymousLong1), Long.valueOf(paramAnonymousLong2), Long.valueOf(paramAnonymousLong3), Long.valueOf(paramAnonymousLong4), Long.valueOf(paramAnonymousLong5), Long.valueOf(paramAnonymousLong6), Long.valueOf(paramAnonymousLong7), Long.valueOf(paramAnonymousLong8) });
+        AppMethodBeat.i(325801);
+        Log.i("MicroMsg.AppBrandWcWssSocket", "onOpen group:%s,isSuc:%s, msg:%s, code:%s, wssId:%s", new Object[] { paramAnonymousString1, Boolean.valueOf(paramAnonymousBoolean), paramAnonymousString2, Integer.valueOf(paramAnonymousInt2), Integer.valueOf(paramAnonymousInt1) });
         if (paramAnonymousBoolean)
         {
-          b.a(b.this, b.a.pFM);
+          b.a(b.this, b.a.sKU);
           paramAnonymousString1 = b.a(b.this, 2, paramAnonymousArrayOfString1, paramAnonymousArrayOfString2);
-          paramAnonymousArrayOfString1 = b.a(new String[] { "fetchStart", "domainLookupStart", "domainLookupEnd", "connectStart", "connectEnd", "rtt", "handshakeCost", "cost" }, new long[] { paramAnonymousLong1, paramAnonymousLong2, paramAnonymousLong3, paramAnonymousLong4, paramAnonymousLong5, paramAnonymousLong6, paramAnonymousLong7, paramAnonymousLong8 });
+          paramAnonymousArrayOfString1 = b.b(paramAnonymousArrayOfString3, paramAnonymousArrayOfString4);
           b.a(b.this).a((h)paramAnonymousString1, paramAnonymousArrayOfString1);
-          AppMethodBeat.o(175387);
+          AppMethodBeat.o(325801);
           return;
         }
-        b.a(b.this).afG("onOpen fail code:" + paramAnonymousInt2 + ", msg:" + paramAnonymousString2);
-        AppMethodBeat.o(175387);
+        b.a(b.this).Yf("onOpen fail code:" + paramAnonymousInt2 + ", msg:" + paramAnonymousString2);
+        AppMethodBeat.o(325801);
       }
     };
     AppMethodBeat.o(144275);
@@ -181,18 +181,18 @@ public final class b
     this.mTimer = paramTimer;
   }
   
-  public final void ajt(String paramString)
+  public final void acu(String paramString)
   {
-    this.mvB = paramString;
+    this.ppa = paramString;
   }
   
-  public final void aju(String paramString)
+  public final void acv(String paramString)
   {
     AppMethodBeat.i(144278);
     Log.i("MicroMsg.AppBrandWcWssSocket", "send text");
-    if (this.pFE < 0)
+    if (this.sKM < 0)
     {
-      this.pFG.afG("error socket id");
+      this.sKO.Yf("error socket id");
       AppMethodBeat.o(144278);
       return;
     }
@@ -201,58 +201,48 @@ public final class b
       paramString = ByteBuffer.wrap(paramString.getBytes("UTF8"));
       byte[] arrayOfByte = new byte[paramString.remaining()];
       paramString.get(arrayOfByte);
-      WcWss.sendBuffer(this.pFz, this.pFE, arrayOfByte, true);
+      WcWss.sendBuffer(this.sKH, this.sKM, arrayOfByte, true);
       AppMethodBeat.o(144278);
       return;
     }
     catch (UnsupportedEncodingException paramString)
     {
       Log.printErrStackTrace("MicroMsg.AppBrandWcWssSocket", paramString, "unsupport encoding UnsupportedEncodingException", new Object[0]);
-      this.pFG.afG("unsupport encoding");
+      this.sKO.Yf("unsupport encoding");
       AppMethodBeat.o(144278);
     }
   }
   
   public final void b(Socket paramSocket) {}
   
-  public final Timer bXn()
+  public final String bQs()
   {
-    return this.mTimer;
+    return this.ppa;
   }
   
-  public final Socket bXo()
+  public final void cN(String paramString, int paramInt)
   {
-    return null;
-  }
-  
-  public final String bsL()
-  {
-    return this.mvB;
+    AppMethodBeat.i(144277);
+    Log.i("MicroMsg.AppBrandWcWssSocket", "close reason:%s,code:%s", new Object[] { paramString, Integer.valueOf(paramInt) });
+    if (this.sKM < 0)
+    {
+      this.sKO.Yf("error socket id");
+      AppMethodBeat.o(144277);
+      return;
+    }
+    if ((this.sKQ != a.sKV) && (this.sKQ != a.sKW)) {
+      this.sKQ = a.sKV;
+    }
+    WcWss.closeSocket(this.sKH, this.sKM, paramInt, paramString);
+    AppMethodBeat.o(144277);
   }
   
   public final void close()
   {
     AppMethodBeat.i(144276);
     Log.i("MicroMsg.AppBrandWcWssSocket", "close");
-    cn("default_close", 1000);
+    cN("default_close", 1000);
     AppMethodBeat.o(144276);
-  }
-  
-  public final void cn(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(144277);
-    Log.i("MicroMsg.AppBrandWcWssSocket", "close reason:%s,code:%s", new Object[] { paramString, Integer.valueOf(paramInt) });
-    if (this.pFE < 0)
-    {
-      this.pFG.afG("error socket id");
-      AppMethodBeat.o(144277);
-      return;
-    }
-    if ((this.pFI != b.a.pFN) && (this.pFI != b.a.pFO)) {
-      this.pFI = b.a.pFN;
-    }
-    WcWss.closeSocket(this.pFz, this.pFE, paramInt, paramString);
-    AppMethodBeat.o(144277);
   }
   
   public final void connect()
@@ -261,44 +251,71 @@ public final class b
     Log.i("MicroMsg.AppBrandWcWssSocket", "connect");
     if (this.mHeaders == null)
     {
-      this.pFG.afG("header is null");
+      this.sKO.Yf("header is null");
       AppMethodBeat.o(144280);
       return;
     }
-    this.pFE = WcWss.a(this.pFH, this.pFz, this.mUrl, this.pFB.toArray(), this.pFC.toArray(), this.pFD, this.pFF.toArray());
-    if (this.pFE < 0) {
-      this.pFG.afG("call connect fail code:" + this.pFE);
+    this.sKM = WcWss.a(this.sKP, this.sKH, this.mUrl, this.sKJ.toArray(), this.sKK.toArray(), this.sKL, this.sKN.toArray());
+    if (this.sKM < 0) {
+      this.sKO.Yf("call connect fail code:" + this.sKM);
     }
-    Log.i("MicroMsg.AppBrandWcWssSocket", "connect mWcWssId:%s", new Object[] { Integer.valueOf(this.pFE) });
+    Log.i("MicroMsg.AppBrandWcWssSocket", "connect mWcWssId:%s", new Object[] { Integer.valueOf(this.sKM) });
     AppMethodBeat.o(144280);
+  }
+  
+  public final Socket cxA()
+  {
+    return null;
+  }
+  
+  public final Timer cxz()
+  {
+    return this.mTimer;
   }
   
   public final boolean isOpen()
   {
-    return this.pFI == b.a.pFM;
+    return this.sKQ == a.sKU;
   }
   
-  public final void l(ByteBuffer paramByteBuffer)
+  public final void r(ByteBuffer paramByteBuffer)
   {
     AppMethodBeat.i(144279);
     Log.i("MicroMsg.AppBrandWcWssSocket", "send bytes");
-    if (this.pFE < 0)
+    if (this.sKM < 0)
     {
-      this.pFG.afG("error socket id");
+      this.sKO.Yf("error socket id");
       AppMethodBeat.o(144279);
       return;
     }
     byte[] arrayOfByte = new byte[paramByteBuffer.remaining()];
     paramByteBuffer.get(arrayOfByte);
-    WcWss.sendBuffer(this.pFz, this.pFE, arrayOfByte, false);
+    WcWss.sendBuffer(this.sKH, this.sKM, arrayOfByte, false);
     AppMethodBeat.o(144279);
   }
   
   public final void setTcpNoDelay(boolean paramBoolean) {}
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(144273);
+      sKS = new a("NOT_YET_CONNECTED", 0);
+      sKT = new a("CONNECTING", 1);
+      sKU = new a("OPEN", 2);
+      sKV = new a("CLOSING", 3);
+      sKW = new a("CLOSED", 4);
+      sKX = new a[] { sKS, sKT, sKU, sKV, sKW };
+      AppMethodBeat.o(144273);
+    }
+    
+    private a() {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.websocket.b
  * JD-Core Version:    0.7.0.1
  */

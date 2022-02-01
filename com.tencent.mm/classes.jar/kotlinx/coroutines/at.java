@@ -1,19 +1,19 @@
 package kotlinx.coroutines;
 
-import kotlin.d.d;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/Deferred;", "T", "Lkotlinx/coroutines/Job;", "onAwait", "Lkotlinx/coroutines/selects/SelectClause1;", "getOnAwait", "()Lkotlinx/coroutines/selects/SelectClause1;", "await", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getCompleted", "()Ljava/lang/Object;", "getCompletionExceptionOrNull", "", "kotlinx-coroutines-core"})
-public abstract interface at<T>
-  extends by
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/CoroutinesInternalError;", "Ljava/lang/Error;", "Lkotlin/Error;", "message", "", "cause", "", "(Ljava/lang/String;Ljava/lang/Throwable;)V", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+public final class at
+  extends Error
 {
-  public abstract T iRo();
-  
-  public abstract Object n(d<? super T> paramd);
+  public at(String paramString, Throwable paramThrowable)
+  {
+    super(paramString, paramThrowable);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.at
  * JD-Core Version:    0.7.0.1
  */

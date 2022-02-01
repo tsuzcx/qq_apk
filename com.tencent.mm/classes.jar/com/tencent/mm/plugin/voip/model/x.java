@@ -2,42 +2,40 @@ package com.tencent.mm.plugin.voip.model;
 
 public abstract interface x
 {
-  public static final x NQg = new x()
+  public static final x UCS = new x()
   {
-    public final void AO(boolean paramAnonymousBoolean) {}
+    public final void VQ(int paramAnonymousInt) {}
     
-    public final void akA(int paramAnonymousInt) {}
+    public final void VR(int paramAnonymousInt) {}
     
-    public final void akB(int paramAnonymousInt) {}
+    public final void VS(int paramAnonymousInt) {}
     
-    public final void akC(int paramAnonymousInt) {}
+    public final void VT(int paramAnonymousInt) {}
     
-    public final void akD(int paramAnonymousInt) {}
+    public final void aDH(String paramAnonymousString) {}
     
-    public final void bgb(String paramAnonymousString) {}
+    public final void c(int paramAnonymousInt1, int paramAnonymousInt2, byte[] paramAnonymousArrayOfByte) {}
     
-    public final void e(int paramAnonymousInt1, int paramAnonymousInt2, byte[] paramAnonymousArrayOfByte) {}
+    public final void fvW() {}
     
-    public final void eIH() {}
+    public final void fwd() {}
     
-    public final void eXH() {}
+    public final void fwi() {}
     
-    public final void gxZ() {}
+    public final void fwj() {}
     
-    public final void gya() {}
+    public final void fwk() {}
     
-    public final void gyd() {}
+    public final void fwl() {}
     
-    public final void gye() {}
+    public final void fwm() {}
     
-    public final void gyf() {}
-    
-    public final long gyg()
+    public final long fwn()
     {
       return 0L;
     }
     
-    public final void kN(int paramAnonymousInt1, int paramAnonymousInt2) {}
+    public final void iS(int paramAnonymousInt1, int paramAnonymousInt2) {}
     
     public final void onConnected() {}
     
@@ -48,39 +46,39 @@ public abstract interface x
     public final void setSpatiotemporalDenosing(int paramAnonymousInt) {}
     
     public final void setVoipBeauty(int paramAnonymousInt) {}
+    
+    public final void vI(boolean paramAnonymousBoolean) {}
   };
   
-  public abstract void AO(boolean paramBoolean);
+  public abstract void VQ(int paramInt);
   
-  public abstract void akA(int paramInt);
+  public abstract void VR(int paramInt);
   
-  public abstract void akB(int paramInt);
+  public abstract void VS(int paramInt);
   
-  public abstract void akC(int paramInt);
+  public abstract void VT(int paramInt);
   
-  public abstract void akD(int paramInt);
+  public abstract void aDH(String paramString);
   
-  public abstract void bgb(String paramString);
+  public abstract void c(int paramInt1, int paramInt2, byte[] paramArrayOfByte);
   
-  public abstract void e(int paramInt1, int paramInt2, byte[] paramArrayOfByte);
+  public abstract void fvW();
   
-  public abstract void eIH();
+  public abstract void fwd();
   
-  public abstract void eXH();
+  public abstract void fwi();
   
-  public abstract void gxZ();
+  public abstract void fwj();
   
-  public abstract void gya();
+  public abstract void fwk();
   
-  public abstract void gyd();
+  public abstract void fwl();
   
-  public abstract void gye();
+  public abstract void fwm();
   
-  public abstract void gyf();
+  public abstract long fwn();
   
-  public abstract long gyg();
-  
-  public abstract void kN(int paramInt1, int paramInt2);
+  public abstract void iS(int paramInt1, int paramInt2);
   
   public abstract void onConnected();
   
@@ -91,10 +89,12 @@ public abstract interface x
   public abstract void setSpatiotemporalDenosing(int paramInt);
   
   public abstract void setVoipBeauty(int paramInt);
+  
+  public abstract void vI(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.x
  * JD-Core Version:    0.7.0.1
  */

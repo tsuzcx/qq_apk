@@ -14,7 +14,7 @@ import java.util.Set;
 public class XWebMMkvWrapper
   implements SharedPreferences, SharedPreferences.Editor
 {
-  MultiProcessMMKV mSp;
+  private MultiProcessMMKV mSp;
   
   public XWebMMkvWrapper(MultiProcessMMKV paramMultiProcessMMKV)
   {
@@ -23,9 +23,9 @@ public class XWebMMkvWrapper
   
   public static SharedPreferences getMMKV(Context paramContext, String paramString, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(220768);
-    paramContext = b.ZaS.F(paramString, paramInt, paramBoolean);
-    AppMethodBeat.o(220768);
+    AppMethodBeat.i(231669);
+    paramContext = b.agZE.H(paramString, paramInt, paramBoolean);
+    AppMethodBeat.o(231669);
     return paramContext;
   }
   

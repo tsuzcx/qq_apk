@@ -70,15 +70,15 @@ public class d
   
   public void r()
   {
-    AppMethodBeat.i(233307);
+    AppMethodBeat.i(229777);
     this.r = GLES20.glGetUniformLocation(q(), "texelWidthOffset");
     this.s = GLES20.glGetUniformLocation(q(), "texelHeightOffset");
-    AppMethodBeat.o(233307);
+    AppMethodBeat.o(229777);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.a.d
  * JD-Core Version:    0.7.0.1
  */

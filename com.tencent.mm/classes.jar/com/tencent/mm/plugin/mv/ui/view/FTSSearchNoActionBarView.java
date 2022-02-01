@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -14,119 +13,106 @@ import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.mv.b.e;
 import com.tencent.mm.plugin.mv.b.f;
 import com.tencent.mm.ui.search.FTSEditTextView;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/view/FTSSearchNoActionBarView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "backBtn", "Landroid/view/View;", "<set-?>", "Lcom/tencent/mm/ui/search/FTSEditTextView;", "ftsEditText", "getFtsEditText", "()Lcom/tencent/mm/ui/search/FTSEditTextView;", "searchIcon", "Landroid/widget/ImageView;", "searchViewListener", "Lcom/tencent/mm/plugin/mv/ui/view/FTSSearchNoActionBarView$FTSSearchViewListener;", "hideSearchIcon", "", "init", "setSearchViewListener", "Companion", "FTSImageSearchListener", "FTSSearchViewListener", "IFTSTagModel", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/view/FTSSearchNoActionBarView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "backBtn", "Landroid/view/View;", "<set-?>", "Lcom/tencent/mm/ui/search/FTSEditTextView;", "ftsEditText", "getFtsEditText", "()Lcom/tencent/mm/ui/search/FTSEditTextView;", "searchIcon", "Landroid/widget/ImageView;", "searchViewListener", "Lcom/tencent/mm/plugin/mv/ui/view/FTSSearchNoActionBarView$FTSSearchViewListener;", "hideSearchIcon", "", "init", "setSearchViewListener", "Companion", "FTSImageSearchListener", "FTSSearchViewListener", "IFTSTagModel", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FTSSearchNoActionBarView
   extends LinearLayout
 {
-  public static final FTSSearchNoActionBarView.a Gni;
-  private FTSEditTextView Gng;
-  private b Gnh;
-  private ImageView xOf;
-  private View xZQ;
+  public static final FTSSearchNoActionBarView.a Mhk;
+  private ImageView Boh;
+  private View CxW;
+  private FTSEditTextView Mhl;
+  private FTSSearchNoActionBarView.b Mhm;
   
   static
   {
-    AppMethodBeat.i(230031);
-    Gni = new FTSSearchNoActionBarView.a((byte)0);
-    AppMethodBeat.o(230031);
+    AppMethodBeat.i(286910);
+    Mhk = new FTSSearchNoActionBarView.a((byte)0);
+    AppMethodBeat.o(286910);
   }
   
   public FTSSearchNoActionBarView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(230028);
+    AppMethodBeat.i(286886);
     init();
-    AppMethodBeat.o(230028);
+    AppMethodBeat.o(286886);
   }
   
   public FTSSearchNoActionBarView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(230030);
+    AppMethodBeat.i(286889);
     init();
-    AppMethodBeat.o(230030);
+    AppMethodBeat.o(286889);
+  }
+  
+  private static final void a(FTSSearchNoActionBarView paramFTSSearchNoActionBarView, View paramView)
+  {
+    AppMethodBeat.i(286905);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramFTSSearchNoActionBarView);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/mv/ui/view/FTSSearchNoActionBarView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFTSSearchNoActionBarView, "this$0");
+    if (paramFTSSearchNoActionBarView.Mhm != null)
+    {
+      paramFTSSearchNoActionBarView = paramFTSSearchNoActionBarView.Mhm;
+      s.checkNotNull(paramFTSSearchNoActionBarView);
+      paramFTSSearchNoActionBarView.grp();
+    }
+    a.a(new Object(), "com/tencent/mm/plugin/mv/ui/view/FTSSearchNoActionBarView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(286905);
   }
   
   private final void init()
   {
-    AppMethodBeat.i(230026);
+    AppMethodBeat.i(286896);
     Object localObject = getContext().getSystemService("layout_inflater");
     if (localObject == null)
     {
-      localObject = new t("null cannot be cast to non-null type android.view.LayoutInflater");
-      AppMethodBeat.o(230026);
+      localObject = new NullPointerException("null cannot be cast to non-null type android.view.LayoutInflater");
+      AppMethodBeat.o(286896);
       throw ((Throwable)localObject);
     }
     ((LayoutInflater)localObject).inflate(b.f.fts_searchview, (ViewGroup)this, true);
-    this.xZQ = findViewById(b.e.cancel_btn);
-    localObject = this.xZQ;
+    this.CxW = findViewById(b.e.cancel_btn);
+    localObject = this.CxW;
     if (localObject != null) {
-      ((View)localObject).setOnClickListener((View.OnClickListener)new c(this));
+      ((View)localObject).setOnClickListener(new FTSSearchNoActionBarView..ExternalSyntheticLambda0(this));
     }
-    this.xOf = ((ImageView)findViewById(b.e.search_icon));
-    localObject = this.xOf;
+    this.Boh = ((ImageView)findViewById(b.e.search_icon));
+    localObject = this.Boh;
     if (localObject != null) {
       ((ImageView)localObject).setVisibility(0);
     }
     localObject = findViewById(b.e.fts_edittext);
     if (localObject == null)
     {
-      localObject = new t("null cannot be cast to non-null type com.tencent.mm.ui.search.FTSEditTextView");
-      AppMethodBeat.o(230026);
+      localObject = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.ui.search.FTSEditTextView");
+      AppMethodBeat.o(286896);
       throw ((Throwable)localObject);
     }
-    this.Gng = ((FTSEditTextView)localObject);
-    AppMethodBeat.o(230026);
+    this.Mhl = ((FTSEditTextView)localObject);
+    AppMethodBeat.o(286896);
   }
   
   public final FTSEditTextView getFtsEditText()
   {
-    return this.Gng;
+    return this.Mhl;
   }
   
-  public final void setSearchViewListener(b paramb)
+  public final void setSearchViewListener(FTSSearchNoActionBarView.b paramb)
   {
-    this.Gnh = paramb;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/view/FTSSearchNoActionBarView$FTSSearchViewListener;", "", "onClickBackBtn", "", "view", "Landroid/view/View;", "onClickCancelBtn", "plugin-mv_release"})
-  public static abstract interface b
-  {
-    public abstract void fhA();
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class c
-    implements View.OnClickListener
-  {
-    c(FTSSearchNoActionBarView paramFTSSearchNoActionBarView) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(243386);
-      b localb = new b();
-      localb.bn(paramView);
-      a.c("com/tencent/mm/plugin/mv/ui/view/FTSSearchNoActionBarView$init$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      if (FTSSearchNoActionBarView.a(this.Gnj) != null)
-      {
-        paramView = FTSSearchNoActionBarView.a(this.Gnj);
-        if (paramView == null) {
-          p.iCn();
-        }
-        paramView.fhA();
-      }
-      a.a(this, "com/tencent/mm/plugin/mv/ui/view/FTSSearchNoActionBarView$init$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(243386);
-    }
+    this.Mhm = paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mv.ui.view.FTSSearchNoActionBarView
  * JD-Core Version:    0.7.0.1
  */

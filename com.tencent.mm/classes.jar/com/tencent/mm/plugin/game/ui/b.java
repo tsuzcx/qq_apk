@@ -14,14 +14,14 @@ import com.tencent.mm.sdk.platformtools.Util;
 public abstract class b
   implements View.OnClickListener
 {
-  protected int CKU;
+  protected int IFc;
   protected Context mContext;
-  protected int wvn;
+  protected int zRs;
   
   public b(Context paramContext)
   {
     this.mContext = paramContext;
-    this.wvn = 1301;
+    this.zRs = 1301;
     if (paramContext == null) {
       throw new IllegalArgumentException("context is null.");
     }
@@ -45,7 +45,7 @@ public abstract class b
     return 0;
   }
   
-  protected static o dx(Object paramObject)
+  protected static o fO(Object paramObject)
   {
     o localo = null;
     if (paramObject == null)
@@ -61,16 +61,16 @@ public abstract class b
         Log.e("MicroMsg.GameMessageOnClickListener", "The tag of action listener is not instance of Long");
         return null;
       }
-      localo = ((f)h.ae(f.class)).evo().NP(((Long)paramObject).longValue());
+      localo = ((f)h.ax(f.class)).fCh().rG(((Long)paramObject).longValue());
       paramObject = localo;
     } while (localo == null);
-    localo.eyt();
+    localo.fGp();
     return localo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.b
  * JD-Core Version:    0.7.0.1
  */

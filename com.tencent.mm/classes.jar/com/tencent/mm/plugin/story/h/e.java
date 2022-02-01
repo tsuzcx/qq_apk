@@ -1,106 +1,31 @@
 package com.tencent.mm.plugin.story.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import kotlin.l;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/report/StoryOthersIDKeyStat;", "", "()V", "ID", "", "STORY_OPTION_ID", "TAG", "", "bubble", "", "bubbleComment", "bubbleCommentFail", "bubbleCommentFailSvr", "bubbleCommentSuccess", "bubbleFail", "bubbleFailSvr", "bubbleSuccess", "recommendAudioAutoPlayFail", "recommendAudioFail", "recommendAudioGetFrameFail", "setFav", "isFav", "", "setNotifyMoment", "isNotify", "setPrivacy", "isPrivacy", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/storage/StoryEditorDataStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/story/storage/StoryEditorData;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "cleanDirtyData", "", "cleanNullData", "timeStamp", "", "getAllDataIfNoMix", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getByLocalId", "localId", "getByTimeStamp", "getLastDataIfNoMix", "updateByLocal", "id", "editorData", "Companion", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
+  extends MAutoStorage<d>
 {
-  public static final e LOi;
+  public static final a SsQ;
+  private static final String[] SsR;
   
   static
   {
-    AppMethodBeat.i(119435);
-    LOi = new e();
-    AppMethodBeat.o(119435);
+    AppMethodBeat.i(119487);
+    SsQ = new a((byte)0);
+    d.a locala = d.SsP;
+    SsR = new String[] { MAutoStorage.getCreateSQLs(d.access$getInfo$cp(), "StoryEditorInfo") };
+    AppMethodBeat.o(119487);
   }
   
-  public static void geA()
-  {
-    AppMethodBeat.i(119432);
-    h.IzE.p(994L, 9L, 1L);
-    AppMethodBeat.o(119432);
-  }
-  
-  public static void ges()
-  {
-    AppMethodBeat.i(119425);
-    h.IzE.p(994L, 2L, 1L);
-    AppMethodBeat.o(119425);
-  }
-  
-  public static void geu()
-  {
-    AppMethodBeat.i(119426);
-    h.IzE.p(994L, 1L, 1L);
-    AppMethodBeat.o(119426);
-  }
-  
-  public static void gev()
-  {
-    AppMethodBeat.i(119427);
-    h.IzE.p(994L, 6L, 1L);
-    AppMethodBeat.o(119427);
-  }
-  
-  public static void gew()
-  {
-    AppMethodBeat.i(119428);
-    h.IzE.p(994L, 5L, 1L);
-    AppMethodBeat.o(119428);
-  }
-  
-  public static void gex()
-  {
-    AppMethodBeat.i(119429);
-    h.IzE.p(994L, 8L, 1L);
-    AppMethodBeat.o(119429);
-  }
-  
-  public static void gey()
-  {
-    AppMethodBeat.i(119430);
-    h.IzE.p(994L, 7L, 1L);
-    AppMethodBeat.o(119430);
-  }
-  
-  public static void gez()
-  {
-    AppMethodBeat.i(119431);
-    h.IzE.p(994L, 10L, 1L);
-    AppMethodBeat.o(119431);
-  }
-  
-  public static void zw(boolean paramBoolean)
-  {
-    AppMethodBeat.i(119433);
-    if (paramBoolean)
-    {
-      h.IzE.p(1045L, 0L, 1L);
-      AppMethodBeat.o(119433);
-      return;
-    }
-    h.IzE.p(1045L, 1L, 1L);
-    AppMethodBeat.o(119433);
-  }
-  
-  public static void zx(boolean paramBoolean)
-  {
-    AppMethodBeat.i(119434);
-    if (paramBoolean)
-    {
-      h.IzE.p(1045L, 2L, 1L);
-      AppMethodBeat.o(119434);
-      return;
-    }
-    h.IzE.p(1045L, 3L, 1L);
-    AppMethodBeat.o(119434);
-  }
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/storage/StoryEditorDataStorage$Companion;", "", "()V", "SqlCreate", "", "", "kotlin.jvm.PlatformType", "getSqlCreate", "()[Ljava/lang/String;", "[Ljava/lang/String;", "Table", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.story.h.e
  * JD-Core Version:    0.7.0.1
  */

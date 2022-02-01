@@ -8,58 +8,58 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class a
 {
-  private static a ljr;
-  public static boolean ljs;
-  public String fND;
-  public int ljt;
-  public int lju;
-  public int ljv;
-  public double ljw;
-  public int ljx;
-  public Class<?> targetClass;
+  private static a nOc;
+  public static boolean nOd;
+  public String hTs;
+  public Class<?> mzl;
+  public int nOe;
+  public int nOf;
+  public int nOg;
+  public double nOh;
+  public int nOi;
   
   static
   {
     AppMethodBeat.i(156507);
-    ljr = new a();
-    ljs = false;
+    nOc = new a();
+    nOd = false;
     AppMethodBeat.o(156507);
   }
   
   public a()
   {
     AppMethodBeat.i(156505);
-    this.ljt = 10485760;
-    this.lju = 3;
-    this.ljv = 2000;
-    this.ljw = 0.15D;
-    this.ljx = 3;
-    this.fND = "default";
+    this.nOe = 10485760;
+    this.nOf = 3;
+    this.nOg = 2000;
+    this.nOh = 0.15D;
+    this.nOi = 3;
+    this.hTs = "default";
     int i = ((ActivityManager)MMApplicationContext.getContext().getSystemService("activity")).getLargeMemoryClass();
     Log.i("MicroMsg.CacheInvoke", "BitmapPool %dMB", new Object[] { Integer.valueOf(i) });
     if (i >= 512) {
-      this.ljt = 62914560;
+      this.nOe = 62914560;
     }
     for (;;)
     {
-      this.targetClass = com.tencent.mm.memory.a.a.a.class;
-      this.lju = 3;
-      this.ljv = 2000;
-      this.ljx = 3;
-      this.ljw = 0.15D;
+      this.mzl = com.tencent.mm.memory.a.a.a.class;
+      this.nOf = 3;
+      this.nOg = 2000;
+      this.nOi = 3;
+      this.nOh = 0.15D;
       AppMethodBeat.o(156505);
       return;
       if (i >= 256) {
-        this.ljt = 31457280;
+        this.nOe = 31457280;
       } else {
-        this.ljt = 15728640;
+        this.nOe = 15728640;
       }
     }
   }
   
-  public static a bbm()
+  public static a bwh()
   {
-    return ljr;
+    return nOc;
   }
   
   public final boolean equals(Object paramObject)
@@ -67,7 +67,7 @@ public final class a
     AppMethodBeat.i(156506);
     if ((paramObject instanceof a))
     {
-      bool = this.fND.equals(((a)paramObject).fND);
+      bool = this.hTs.equals(((a)paramObject).hTs);
       AppMethodBeat.o(156506);
       return bool;
     }
@@ -78,7 +78,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.memory.a.a.a.a
  * JD-Core Version:    0.7.0.1
  */

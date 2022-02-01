@@ -3,6 +3,7 @@ package com.tencent.live2.jsplugin;
 public class V2TXJSAdapterConstants
 {
   public static final int EVT_ID_SDK_VERSION = -9999999;
+  public static final String IS_VOIP = "isVoip";
   public static final String PLAYER_KEY_AUTO_PLAY = "autoplay";
   public static final String PLAYER_KEY_CAN_AUTO_PLAY = "canStartPlay";
   public static final String PLAYER_KEY_DEBUG = "debug";

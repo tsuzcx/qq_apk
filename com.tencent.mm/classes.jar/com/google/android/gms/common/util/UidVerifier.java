@@ -1,6 +1,5 @@
 package com.google.android.gms.common.util;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -37,7 +36,6 @@ public final class UidVerifier
     return false;
   }
   
-  @TargetApi(19)
   public static boolean uidHasPackageName(Context paramContext, int paramInt, String paramString)
   {
     AppMethodBeat.i(5298);
@@ -48,7 +46,7 @@ public final class UidVerifier
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.util.UidVerifier
  * JD-Core Version:    0.7.0.1
  */

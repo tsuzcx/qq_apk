@@ -3,17 +3,13 @@ package com.google.android.gms.auth.api.signin.internal;
 import android.content.Context;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class zzq
 {
   private static zzq zzfa = null;
-  @VisibleForTesting
   private Storage zzfb;
-  @VisibleForTesting
   private GoogleSignInAccount zzfc;
-  @VisibleForTesting
   private GoogleSignInOptions zzfd;
   
   private zzq(Context paramContext)
@@ -122,7 +118,7 @@ public final class zzq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.signin.internal.zzq
  * JD-Core Version:    0.7.0.1
  */

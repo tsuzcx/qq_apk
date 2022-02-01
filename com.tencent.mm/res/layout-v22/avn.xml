@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.tencent.mm.plugin.game.commlib.view.FixAspectRatioImageView android:id="@id/f6_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="centerCrop" app:fix_ratio="0.5625" />
+            <ImageView android:layout_gravity="center" android:id="@id/f40" android:visibility="gone" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/bgz" />
+        </FrameLayout>
+        <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="15.0dip" android:textStyle="bold" android:textColor="@color/BW_100_Alpha_0_8" android:ellipsize="end" android:id="@id/f3z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:maxLines="2" android:singleLine="false" android:lineHeight="21.0dip" />
+    </LinearLayout>
+</FrameLayout>

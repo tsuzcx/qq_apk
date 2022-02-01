@@ -4,136 +4,136 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public abstract class f
 {
-  public String cOk;
+  public String defaultValue;
+  public String eJF;
   public String fontFamily;
-  public String nUc = null;
-  public Boolean rAA = Boolean.FALSE;
-  public Boolean rAB = null;
-  public Boolean rAC = null;
-  public Integer rAD = null;
-  public b rAE = null;
-  public Boolean rAF = null;
-  public Boolean rAG = null;
-  public String rAH;
-  public Integer rAI = null;
-  public Integer rAJ = null;
-  public String rAi;
-  public Integer rAj;
-  public Integer rAk;
-  public Integer rAl;
-  public Integer rAm;
-  public Integer rAn;
-  public Integer rAo;
-  public Integer rAp = null;
-  public Integer rAq = null;
-  public Float rAr = null;
-  public Integer rAs;
-  public String rAt;
-  public String rAu;
-  public Integer rAv;
-  public Integer rAw;
-  public Boolean rAx = Boolean.FALSE;
-  public Boolean rAy = Boolean.FALSE;
-  public Boolean rAz = Boolean.FALSE;
+  public String qTN = null;
+  public Integer uLA;
+  public Integer uLB;
+  public Integer uLC;
+  public Integer uLD;
+  public Integer uLE;
+  public Integer uLF = null;
+  public Integer uLG = null;
+  public Float uLH = null;
+  public Integer uLI;
+  public String uLJ;
+  public String uLK;
+  public Integer uLL;
+  public Integer uLM;
+  public Boolean uLN = Boolean.FALSE;
+  public Boolean uLO = Boolean.FALSE;
+  public Boolean uLP = Boolean.FALSE;
+  public Boolean uLQ = Boolean.FALSE;
+  public Boolean uLR = null;
+  public Boolean uLS = null;
+  public Integer uLT = null;
+  public b uLU = null;
+  public Boolean uLV = null;
+  public Boolean uLW = null;
+  public String uLX;
+  public Integer uLY = null;
+  public Integer uLZ = null;
+  public Integer uLz;
   
   public final void a(f paramf)
   {
-    this.rAi = paramf.rAi;
-    if (paramf.rAj != null) {
-      this.rAj = paramf.rAj;
+    this.defaultValue = paramf.defaultValue;
+    if (paramf.uLz != null) {
+      this.uLz = paramf.uLz;
     }
-    if (paramf.rAk != null) {
-      this.rAk = paramf.rAk;
+    if (paramf.uLA != null) {
+      this.uLA = paramf.uLA;
     }
-    if (paramf.rAl != null) {
-      this.rAl = paramf.rAl;
+    if (paramf.uLB != null) {
+      this.uLB = paramf.uLB;
     }
-    if (paramf.rAm != null) {
-      this.rAm = paramf.rAm;
+    if (paramf.uLC != null) {
+      this.uLC = paramf.uLC;
     }
-    if (paramf.rAn != null) {
-      this.rAn = paramf.rAn;
+    if (paramf.uLD != null) {
+      this.uLD = paramf.uLD;
     }
-    if (paramf.rAo != null) {
-      this.rAo = paramf.rAo;
+    if (paramf.uLE != null) {
+      this.uLE = paramf.uLE;
     }
-    if (paramf.rAp != null) {
-      this.rAp = paramf.rAp;
+    if (paramf.uLF != null) {
+      this.uLF = paramf.uLF;
     }
-    if (paramf.rAq != null) {
-      this.rAq = paramf.rAq;
+    if (paramf.uLG != null) {
+      this.uLG = paramf.uLG;
     }
-    if (paramf.rAr != null) {
-      this.rAr = paramf.rAr;
+    if (paramf.uLH != null) {
+      this.uLH = paramf.uLH;
     }
     if (!Util.isNullOrNil(paramf.fontFamily)) {
       this.fontFamily = paramf.fontFamily;
     }
-    if (!Util.isNullOrNil(paramf.cOk)) {
-      this.cOk = paramf.cOk;
+    if (!Util.isNullOrNil(paramf.eJF)) {
+      this.eJF = paramf.eJF;
     }
-    if (paramf.rAs != null) {
-      this.rAs = paramf.rAs;
+    if (paramf.uLI != null) {
+      this.uLI = paramf.uLI;
     }
-    if (paramf.rAt != null) {
-      this.rAt = paramf.rAt;
+    if (paramf.uLJ != null) {
+      this.uLJ = paramf.uLJ;
     }
-    if (!Util.isNullOrNil(paramf.rAu)) {
-      this.rAu = paramf.rAu;
+    if (!Util.isNullOrNil(paramf.uLK)) {
+      this.uLK = paramf.uLK;
     }
-    if (paramf.rAv != null) {
-      this.rAv = paramf.rAv;
+    if (paramf.uLL != null) {
+      this.uLL = paramf.uLL;
     }
-    if (paramf.rAw != null) {
-      this.rAw = paramf.rAw;
+    if (paramf.uLM != null) {
+      this.uLM = paramf.uLM;
     }
-    if (paramf.rAx != null) {
-      this.rAx = paramf.rAx;
+    if (paramf.uLN != null) {
+      this.uLN = paramf.uLN;
     }
-    if (paramf.rAy != null) {
-      this.rAy = paramf.rAy;
+    if (paramf.uLO != null) {
+      this.uLO = paramf.uLO;
     }
-    if (paramf.rAz != null) {
-      this.rAz = paramf.rAz;
+    if (paramf.uLP != null) {
+      this.uLP = paramf.uLP;
     }
-    if (paramf.rAA != null) {
-      this.rAA = paramf.rAA;
+    if (paramf.uLQ != null) {
+      this.uLQ = paramf.uLQ;
     }
-    if (paramf.rAB != null) {
-      this.rAB = paramf.rAB;
+    if (paramf.uLR != null) {
+      this.uLR = paramf.uLR;
     }
-    if (!Util.isNullOrNil(paramf.nUc)) {
-      this.nUc = paramf.nUc;
+    if (!Util.isNullOrNil(paramf.qTN)) {
+      this.qTN = paramf.qTN;
     }
-    if (paramf.rAC != null) {
-      this.rAC = paramf.rAC;
+    if (paramf.uLS != null) {
+      this.uLS = paramf.uLS;
     }
-    if (paramf.rAD != null) {
-      this.rAD = paramf.rAD;
+    if (paramf.uLT != null) {
+      this.uLT = paramf.uLT;
     }
-    if (paramf.rAE != null) {
-      this.rAE = paramf.rAE;
+    if (paramf.uLU != null) {
+      this.uLU = paramf.uLU;
     }
-    if (paramf.rAF != null) {
-      this.rAF = paramf.rAF;
+    if (paramf.uLV != null) {
+      this.uLV = paramf.uLV;
     }
-    if (paramf.rAG != null) {
-      this.rAG = paramf.rAG;
+    if (paramf.uLW != null) {
+      this.uLW = paramf.uLW;
     }
-    if (paramf.rAH != null) {
-      this.rAH = paramf.rAH;
+    if (paramf.uLX != null) {
+      this.uLX = paramf.uLX;
     }
-    if (paramf.rAI != null) {
-      this.rAI = paramf.rAI;
+    if (paramf.uLY != null) {
+      this.uLY = paramf.uLY;
     }
-    if (paramf.rAJ != null) {
-      this.rAJ = paramf.rAJ;
+    if (paramf.uLZ != null) {
+      this.uLZ = paramf.uLZ;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.e.f
  * JD-Core Version:    0.7.0.1
  */

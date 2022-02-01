@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout style="@style/rj"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:form="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:background="@color/a2h" android:paddingLeft="@dimen/ir" android:paddingTop="@dimen/hs" android:paddingRight="@dimen/ir" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/a4z" android:layout_width="@dimen/x7" android:layout_height="@dimen/x7" android:layout_marginTop="@dimen/hw" />
-        <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:gravity="center" android:id="@id/a51" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hs" android:text="@string/hyy" />
-        <Button android:id="@id/a52" android:visibility="visible" android:layout_marginTop="@dimen/hv" android:layout_marginBottom="@dimen/k5" android:text="@string/hyz" style="@style/ou" />
-        <Button android:id="@id/a50" android:visibility="visible" android:layout_marginTop="@dimen/hv" android:layout_marginBottom="@dimen/k5" android:text="@string/agc" style="@style/ou" />
-    </LinearLayout>
-</RelativeLayout>
+<LinearLayout style="@style/r8"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.bizui.widget.StoryListView android:id="@id/ae3" android:background="#00000000" style="@style/na" />
+    <TextView android:id="@id/cj1" android:visibility="gone" style="@style/m3" />
+</LinearLayout>

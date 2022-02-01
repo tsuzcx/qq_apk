@@ -13,25 +13,25 @@ public final class MMImageChecker
   
   static
   {
-    AppMethodBeat.i(261489);
+    AppMethodBeat.i(243803);
     sCheckers = new IImageChecker[] { new BmpBadAllocChecker(104857600) };
-    AppMethodBeat.o(261489);
+    AppMethodBeat.o(243803);
   }
   
   private MMImageChecker()
   {
-    AppMethodBeat.i(261488);
+    AppMethodBeat.i(243793);
     UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException();
-    AppMethodBeat.o(261488);
+    AppMethodBeat.o(243793);
     throw localUnsupportedOperationException;
   }
   
   public static boolean isLegalImage(FileDescriptor paramFileDescriptor)
   {
-    AppMethodBeat.i(261486);
+    AppMethodBeat.i(243784);
     if ((paramFileDescriptor == null) || (!paramFileDescriptor.valid()))
     {
-      AppMethodBeat.o(261486);
+      AppMethodBeat.o(243784);
       return false;
     }
     IImageChecker[] arrayOfIImageChecker = sCheckers;
@@ -41,21 +41,21 @@ public final class MMImageChecker
     {
       if (!arrayOfIImageChecker[i].isLegalImage(paramFileDescriptor))
       {
-        AppMethodBeat.o(261486);
+        AppMethodBeat.o(243784);
         return false;
       }
       i += 1;
     }
-    AppMethodBeat.o(261486);
+    AppMethodBeat.o(243784);
     return true;
   }
   
   public static boolean isLegalImage(InputStream paramInputStream)
   {
-    AppMethodBeat.i(261481);
+    AppMethodBeat.i(243771);
     if (paramInputStream == null)
     {
-      AppMethodBeat.o(261481);
+      AppMethodBeat.o(243771);
       return false;
     }
     IImageChecker[] arrayOfIImageChecker = sCheckers;
@@ -65,21 +65,21 @@ public final class MMImageChecker
     {
       if (!arrayOfIImageChecker[i].isLegalImage(paramInputStream))
       {
-        AppMethodBeat.o(261481);
+        AppMethodBeat.o(243771);
         return false;
       }
       i += 1;
     }
-    AppMethodBeat.o(261481);
+    AppMethodBeat.o(243771);
     return true;
   }
   
   public static boolean isLegalImage(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(261484);
+    AppMethodBeat.i(243779);
     if (paramArrayOfByte == null)
     {
-      AppMethodBeat.o(261484);
+      AppMethodBeat.o(243779);
       return false;
     }
     IImageChecker[] arrayOfIImageChecker = sCheckers;
@@ -89,12 +89,12 @@ public final class MMImageChecker
     {
       if (!arrayOfIImageChecker[i].isLegalImage(paramArrayOfByte))
       {
-        AppMethodBeat.o(261484);
+        AppMethodBeat.o(243779);
         return false;
       }
       i += 1;
     }
-    AppMethodBeat.o(261484);
+    AppMethodBeat.o(243779);
     return true;
   }
   
@@ -107,9 +107,9 @@ public final class MMImageChecker
     
     BmpBadAllocChecker(int paramInt)
     {
-      AppMethodBeat.i(262773);
+      AppMethodBeat.i(243483);
       this.mImageSizeLimit = paramInt;
-      AppMethodBeat.o(262773);
+      AppMethodBeat.o(243483);
     }
     
     /* Error */
@@ -118,33 +118,33 @@ public final class MMImageChecker
       // Byte code:
       //   0: iconst_1
       //   1: istore 4
-      //   3: ldc 40
+      //   3: ldc 38
       //   5: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   8: aload_1
-      //   9: invokevirtual 46	java/io/InputStream:markSupported	()Z
+      //   9: invokevirtual 44	java/io/InputStream:markSupported	()Z
       //   12: ifne +20 -> 32
-      //   15: new 48	java/lang/IllegalArgumentException
+      //   15: new 46	java/lang/IllegalArgumentException
       //   18: dup
-      //   19: ldc 50
-      //   21: invokespecial 53	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
+      //   19: ldc 48
+      //   21: invokespecial 51	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
       //   24: astore_1
-      //   25: ldc 40
+      //   25: ldc 38
       //   27: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   30: aload_1
       //   31: athrow
       //   32: aload_1
       //   33: bipush 32
-      //   35: invokevirtual 56	java/io/InputStream:mark	(I)V
-      //   38: new 58	java/io/DataInputStream
+      //   35: invokevirtual 54	java/io/InputStream:mark	(I)V
+      //   38: new 56	java/io/DataInputStream
       //   41: dup
       //   42: aload_1
-      //   43: invokespecial 61	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+      //   43: invokespecial 59	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
       //   46: astore 9
       //   48: aload 9
-      //   50: invokevirtual 65	java/io/DataInputStream:readByte	()B
+      //   50: invokevirtual 63	java/io/DataInputStream:readByte	()B
       //   53: istore_2
       //   54: aload 9
-      //   56: invokevirtual 65	java/io/DataInputStream:readByte	()B
+      //   56: invokevirtual 63	java/io/DataInputStream:readByte	()B
       //   59: istore_3
       //   60: iload_2
       //   61: bipush 66
@@ -153,21 +153,21 @@ public final class MMImageChecker
       //   67: bipush 77
       //   69: if_icmpeq +14 -> 83
       //   72: aload_1
-      //   73: invokevirtual 68	java/io/InputStream:reset	()V
-      //   76: ldc 40
+      //   73: invokevirtual 66	java/io/InputStream:reset	()V
+      //   76: ldc 38
       //   78: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   81: iconst_1
       //   82: ireturn
       //   83: aload 9
-      //   85: ldc2_w 69
-      //   88: invokevirtual 74	java/io/DataInputStream:skip	(J)J
+      //   85: ldc2_w 67
+      //   88: invokevirtual 72	java/io/DataInputStream:skip	(J)J
       //   91: pop2
       //   92: iconst_4
       //   93: newarray byte
       //   95: astore 10
       //   97: aload 9
       //   99: aload 10
-      //   101: invokevirtual 78	java/io/DataInputStream:read	([B)I
+      //   101: invokevirtual 76	java/io/DataInputStream:read	([B)I
       //   104: pop
       //   105: aload 10
       //   107: iconst_3
@@ -204,14 +204,14 @@ public final class MMImageChecker
       //   153: getfield 31	com/tencent/mm/sdk/platformtools/MMImageChecker$BmpBadAllocChecker:mImageSizeLimit	J
       //   156: lstore 7
       //   158: lload 5
-      //   160: ldc2_w 79
+      //   160: ldc2_w 77
       //   163: land
       //   164: lload 7
       //   166: lcmp
       //   167: ifgt +15 -> 182
       //   170: aload_1
-      //   171: invokevirtual 68	java/io/InputStream:reset	()V
-      //   174: ldc 40
+      //   171: invokevirtual 66	java/io/InputStream:reset	()V
+      //   174: ldc 38
       //   176: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   179: iload 4
       //   181: ireturn
@@ -221,20 +221,20 @@ public final class MMImageChecker
       //   188: astore 9
       //   190: ldc 17
       //   192: aload 9
-      //   194: ldc 82
+      //   194: ldc 80
       //   196: iconst_0
       //   197: anewarray 4	java/lang/Object
-      //   200: invokestatic 88	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   200: invokestatic 86	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   203: aload_1
-      //   204: invokevirtual 68	java/io/InputStream:reset	()V
-      //   207: ldc 40
+      //   204: invokevirtual 66	java/io/InputStream:reset	()V
+      //   207: ldc 38
       //   209: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   212: iconst_0
       //   213: ireturn
       //   214: astore 9
       //   216: aload_1
-      //   217: invokevirtual 68	java/io/InputStream:reset	()V
-      //   220: ldc 40
+      //   217: invokevirtual 66	java/io/InputStream:reset	()V
+      //   220: ldc 38
       //   222: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   225: aload 9
       //   227: athrow
@@ -256,115 +256,100 @@ public final class MMImageChecker
       //   150	9	5	l1	long
       //   156	9	7	l2	long
       //   46	52	9	localDataInputStream	java.io.DataInputStream
-      //   188	5	9	localThrowable	Throwable
+      //   188	5	9	localThrowable	java.lang.Throwable
       //   214	12	9	localObject	Object
       //   95	46	10	arrayOfByte	byte[]
       // Exception table:
       //   from	to	target	type
-      //   38	60	188	java/lang/Throwable
-      //   83	105	188	java/lang/Throwable
-      //   152	158	188	java/lang/Throwable
-      //   38	60	214	finally
-      //   83	105	214	finally
-      //   152	158	214	finally
+      //   38	60	188	finally
+      //   83	105	188	finally
+      //   152	158	188	finally
       //   190	203	214	finally
-      //   72	76	228	java/lang/Throwable
-      //   170	174	232	java/lang/Throwable
-      //   203	207	236	java/lang/Throwable
-      //   216	220	240	java/lang/Throwable
+      //   72	76	228	finally
+      //   170	174	232	finally
+      //   203	207	236	finally
+      //   216	220	240	finally
     }
     
     /* Error */
     public boolean isLegalImage(FileDescriptor paramFileDescriptor)
     {
       // Byte code:
-      //   0: ldc 91
+      //   0: ldc 89
       //   2: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-      //   5: new 93	java/io/BufferedInputStream
+      //   5: new 91	java/io/BufferedInputStream
       //   8: dup
-      //   9: new 95	java/io/FileInputStream
+      //   9: new 93	java/io/FileInputStream
       //   12: dup
       //   13: aload_1
-      //   14: invokespecial 98	java/io/FileInputStream:<init>	(Ljava/io/FileDescriptor;)V
-      //   17: invokespecial 99	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-      //   20: astore_3
-      //   21: aload_3
-      //   22: astore_1
-      //   23: aload_0
-      //   24: aload_3
-      //   25: invokespecial 101	com/tencent/mm/sdk/platformtools/MMImageChecker$BmpBadAllocChecker:isLegalImageInMarkableStream	(Ljava/io/InputStream;)Z
-      //   28: istore_2
-      //   29: aload_3
-      //   30: invokevirtual 104	java/io/InputStream:close	()V
-      //   33: ldc 91
-      //   35: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   38: iload_2
-      //   39: ireturn
-      //   40: astore 4
-      //   42: aconst_null
-      //   43: astore_3
-      //   44: aload_3
-      //   45: astore_1
-      //   46: ldc 17
-      //   48: aload 4
-      //   50: ldc 82
-      //   52: iconst_0
-      //   53: anewarray 4	java/lang/Object
-      //   56: invokestatic 88	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   59: aload_3
-      //   60: ifnull +7 -> 67
-      //   63: aload_3
-      //   64: invokevirtual 104	java/io/InputStream:close	()V
-      //   67: ldc 91
-      //   69: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   72: iconst_0
-      //   73: ireturn
-      //   74: astore_3
-      //   75: aconst_null
-      //   76: astore_1
-      //   77: aload_1
-      //   78: ifnull +7 -> 85
-      //   81: aload_1
-      //   82: invokevirtual 104	java/io/InputStream:close	()V
-      //   85: ldc 91
-      //   87: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   90: aload_3
-      //   91: athrow
+      //   14: invokespecial 96	java/io/FileInputStream:<init>	(Ljava/io/FileDescriptor;)V
+      //   17: invokespecial 97	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+      //   20: astore_1
+      //   21: aload_0
+      //   22: aload_1
+      //   23: invokespecial 99	com/tencent/mm/sdk/platformtools/MMImageChecker$BmpBadAllocChecker:isLegalImageInMarkableStream	(Ljava/io/InputStream;)Z
+      //   26: istore_2
+      //   27: aload_1
+      //   28: invokevirtual 102	java/io/InputStream:close	()V
+      //   31: ldc 89
+      //   33: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   36: iload_2
+      //   37: ireturn
+      //   38: astore_3
+      //   39: aconst_null
+      //   40: astore_1
+      //   41: ldc 17
+      //   43: aload_3
+      //   44: ldc 80
+      //   46: iconst_0
+      //   47: anewarray 4	java/lang/Object
+      //   50: invokestatic 86	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   53: aload_1
+      //   54: ifnull +7 -> 61
+      //   57: aload_1
+      //   58: invokevirtual 102	java/io/InputStream:close	()V
+      //   61: ldc 89
+      //   63: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   66: iconst_0
+      //   67: ireturn
+      //   68: astore_3
+      //   69: aload_1
+      //   70: ifnull +7 -> 77
+      //   73: aload_1
+      //   74: invokevirtual 102	java/io/InputStream:close	()V
+      //   77: ldc 89
+      //   79: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   82: aload_3
+      //   83: athrow
+      //   84: astore_1
+      //   85: goto -54 -> 31
+      //   88: astore_1
+      //   89: goto -28 -> 61
       //   92: astore_1
-      //   93: goto -60 -> 33
-      //   96: astore_1
-      //   97: goto -30 -> 67
-      //   100: astore_1
-      //   101: goto -16 -> 85
-      //   104: astore_3
-      //   105: goto -28 -> 77
-      //   108: astore 4
-      //   110: goto -66 -> 44
+      //   93: goto -16 -> 77
+      //   96: astore_3
+      //   97: goto -56 -> 41
       // Local variable table:
       //   start	length	slot	name	signature
-      //   0	113	0	this	BmpBadAllocChecker
-      //   0	113	1	paramFileDescriptor	FileDescriptor
-      //   28	11	2	bool	boolean
-      //   20	44	3	localBufferedInputStream	BufferedInputStream
-      //   74	17	3	localObject1	Object
-      //   104	1	3	localObject2	Object
-      //   40	9	4	localThrowable1	Throwable
-      //   108	1	4	localThrowable2	Throwable
+      //   0	100	0	this	BmpBadAllocChecker
+      //   0	100	1	paramFileDescriptor	FileDescriptor
+      //   26	11	2	bool	boolean
+      //   38	6	3	localThrowable	java.lang.Throwable
+      //   68	15	3	localObject1	Object
+      //   96	1	3	localObject2	Object
       // Exception table:
       //   from	to	target	type
-      //   5	21	40	java/lang/Throwable
-      //   5	21	74	finally
-      //   29	33	92	java/lang/Throwable
-      //   63	67	96	java/lang/Throwable
-      //   81	85	100	java/lang/Throwable
-      //   23	29	104	finally
-      //   46	59	104	finally
-      //   23	29	108	java/lang/Throwable
+      //   5	21	38	finally
+      //   41	53	68	finally
+      //   27	31	84	finally
+      //   57	61	88	finally
+      //   73	77	92	finally
+      //   21	27	96	finally
     }
     
     public boolean isLegalImage(InputStream paramInputStream)
     {
-      AppMethodBeat.i(262774);
+      AppMethodBeat.i(243496);
       Object localObject = paramInputStream;
       if (!paramInputStream.markSupported()) {
         if (!(paramInputStream instanceof FileInputStream)) {
@@ -375,17 +360,17 @@ public final class MMImageChecker
       for (localObject = new FileSeekingInputStream((FileInputStream)paramInputStream);; localObject = new BufferedInputStream(paramInputStream))
       {
         boolean bool = isLegalImageInMarkableStream((InputStream)localObject);
-        AppMethodBeat.o(262774);
+        AppMethodBeat.o(243496);
         return bool;
       }
     }
     
     public boolean isLegalImage(byte[] paramArrayOfByte)
     {
-      AppMethodBeat.i(262775);
+      AppMethodBeat.i(243500);
       if (paramArrayOfByte.length < 14L)
       {
-        AppMethodBeat.o(262775);
+        AppMethodBeat.o(243500);
         return true;
       }
       paramArrayOfByte = new ByteArrayInputStream(paramArrayOfByte);
@@ -394,10 +379,10 @@ public final class MMImageChecker
       {
         paramArrayOfByte.close();
         label41:
-        AppMethodBeat.o(262775);
+        AppMethodBeat.o(243500);
         return bool;
       }
-      catch (Throwable paramArrayOfByte)
+      finally
       {
         break label41;
       }
@@ -415,7 +400,7 @@ public final class MMImageChecker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.MMImageChecker
  * JD-Core Version:    0.7.0.1
  */

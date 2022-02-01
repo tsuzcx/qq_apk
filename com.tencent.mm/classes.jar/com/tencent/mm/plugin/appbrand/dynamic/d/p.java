@@ -4,16 +4,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class p
 {
-  private static volatile com.tencent.mm.ac.c.d oit;
-  private static volatile com.tencent.mm.ac.c.d oiu;
+  private static volatile com.tencent.mm.ac.c.d rlV;
+  private static volatile com.tencent.mm.ac.c.d rlW;
   
-  private static com.tencent.mm.ac.c.d bNw()
+  private static com.tencent.mm.ac.c.d cnL()
   {
     AppMethodBeat.i(121346);
-    if (oit == null) {}
+    if (rlV == null) {}
     try
     {
-      if (oit == null)
+      if (rlV == null)
       {
         locald = new com.tencent.mm.ac.c.d();
         locald.a(new l(312));
@@ -25,9 +25,9 @@ public class p
         locald.a(new j(310));
         locald.a(new f(311));
         locald.a(new o());
-        oit = locald;
+        rlV = locald;
       }
-      com.tencent.mm.ac.c.d locald = oit;
+      com.tencent.mm.ac.c.d locald = rlV;
       AppMethodBeat.o(121346);
       return locald;
     }
@@ -37,13 +37,13 @@ public class p
     }
   }
   
-  private static com.tencent.mm.ac.c.d bNx()
+  private static com.tencent.mm.ac.c.d cnM()
   {
     AppMethodBeat.i(121347);
-    if (oiu == null) {}
+    if (rlW == null) {}
     try
     {
-      if (oiu == null)
+      if (rlW == null)
       {
         locald = new com.tencent.mm.ac.c.d();
         locald.a(new l(289));
@@ -62,9 +62,9 @@ public class p
         locald.a(new h());
         locald.a(new g());
         locald.a(new a());
-        oiu = locald;
+        rlW = locald;
       }
-      com.tencent.mm.ac.c.d locald = oiu;
+      com.tencent.mm.ac.c.d locald = rlW;
       AppMethodBeat.o(121347);
       return locald;
     }
@@ -74,23 +74,23 @@ public class p
     }
   }
   
-  public static com.tencent.mm.ac.c.d zB(int paramInt)
+  public static com.tencent.mm.ac.c.d zR(int paramInt)
   {
     AppMethodBeat.i(121345);
     if (paramInt == 1)
     {
-      locald = bNx();
+      locald = cnM();
       AppMethodBeat.o(121345);
       return locald;
     }
-    com.tencent.mm.ac.c.d locald = bNw();
+    com.tencent.mm.ac.c.d locald = cnL();
     AppMethodBeat.o(121345);
     return locald;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.p
  * JD-Core Version:    0.7.0.1
  */

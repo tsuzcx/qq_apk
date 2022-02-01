@@ -39,7 +39,6 @@ public class SandboxContentChildProcessServiceDelegate
     }
   }
   
-  @CalledByNative
   private void forwardSurfaceTextureForSurfaceRequest(UnguessableToken paramUnguessableToken, SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(53779);
@@ -69,7 +68,6 @@ public class SandboxContentChildProcessServiceDelegate
     }
   }
   
-  @CalledByNative
   private Surface getViewSurface(int paramInt)
   {
     AppMethodBeat.i(53780);
@@ -116,7 +114,6 @@ public class SandboxContentChildProcessServiceDelegate
   
   private static native int nativeStartContentMain();
   
-  @CalledByNative
   private void setFileDescriptorsIdsToKeys(int[] paramArrayOfInt, String[] paramArrayOfString)
   {
     AppMethodBeat.i(53778);
@@ -182,7 +179,6 @@ public class SandboxContentChildProcessServiceDelegate
     AppMethodBeat.o(53774);
   }
   
-  @CalledByNative
   public String invokeMiscMethod(String paramString, Bundle paramBundle)
   {
     AppMethodBeat.i(53783);
@@ -287,7 +283,7 @@ public class SandboxContentChildProcessServiceDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.sandbox.SandboxContentChildProcessServiceDelegate
  * JD-Core Version:    0.7.0.1
  */

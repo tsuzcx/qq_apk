@@ -15,8 +15,8 @@ import java.util.List;
 final class d$a
   extends BaseAdapter
 {
-  List<String> GUF;
-  int GUG = -1;
+  List<String> MSh;
+  int MSi = -1;
   private final Context context;
   private final int style;
   
@@ -29,9 +29,9 @@ final class d$a
   public final int getCount()
   {
     AppMethodBeat.i(66957);
-    if (this.GUF != null)
+    if (this.MSh != null)
     {
-      int i = this.GUF.size();
+      int i = this.MSh.size();
       AppMethodBeat.o(66957);
       return i;
     }
@@ -58,35 +58,35 @@ final class d$a
     {
       paramViewGroup = View.inflate(this.context, a.g.mm_preference_dialog_item, null);
       paramView = new d.b();
-      paramView.zlv = ((TextView)paramViewGroup.findViewById(a.f.text));
-      paramView.GUH = ((CheckBox)paramViewGroup.findViewById(a.f.check));
-      paramView.GUI = ((RadioButton)paramViewGroup.findViewById(a.f.radio));
+      paramView.ElR = ((TextView)paramViewGroup.findViewById(a.f.text));
+      paramView.MSj = ((CheckBox)paramViewGroup.findViewById(a.f.check));
+      paramView.MSk = ((RadioButton)paramViewGroup.findViewById(a.f.radio));
       paramViewGroup.setTag(paramView);
     }
     paramView = (d.b)paramViewGroup.getTag();
-    paramView.zlv.setText((CharSequence)this.GUF.get(paramInt));
+    paramView.ElR.setText((CharSequence)this.MSh.get(paramInt));
     switch (this.style)
     {
     default: 
-      paramView.GUH.setVisibility(8);
-      paramView.GUI.setVisibility(8);
+      paramView.MSj.setVisibility(8);
+      paramView.MSk.setVisibility(8);
       AppMethodBeat.o(66958);
       return paramViewGroup;
     case 1: 
-      paramView.GUH.setVisibility(8);
-      paramView.GUI.setVisibility(0);
-      paramView = paramView.GUI;
-      if (paramInt == this.GUG) {}
+      paramView.MSj.setVisibility(8);
+      paramView.MSk.setVisibility(0);
+      paramView = paramView.MSk;
+      if (paramInt == this.MSi) {}
       for (bool = true;; bool = false)
       {
         paramView.setChecked(bool);
         break;
       }
     }
-    paramView.GUH.setVisibility(0);
-    paramView.GUI.setVisibility(8);
-    paramView = paramView.GUH;
-    if (paramInt == this.GUG) {}
+    paramView.MSj.setVisibility(0);
+    paramView.MSk.setVisibility(8);
+    paramView = paramView.MSj;
+    if (paramInt == this.MSi) {}
     for (;;)
     {
       paramView.setChecked(bool);
@@ -97,7 +97,7 @@ final class d$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.d.a
  * JD-Core Version:    0.7.0.1
  */

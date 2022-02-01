@@ -22,32 +22,32 @@ class VSyncRenderer
   
   static
   {
-    AppMethodBeat.i(196780);
+    AppMethodBeat.i(213822);
     sRendererList = new ThreadLocal();
-    AppMethodBeat.o(196780);
+    AppMethodBeat.o(213822);
   }
   
   VSyncRenderer(IXWebWorkingHandler paramIXWebWorkingHandler)
   {
-    AppMethodBeat.i(196765);
+    AppMethodBeat.i(213758);
     this.mThreadHandler = paramIXWebWorkingHandler;
     this.mPresentCallbackList = new LinkedList();
     this.mAnimationCallbackIdMap = new HashMap();
     this.mStartFrameTimeNanos = SystemClock.elapsedRealtimeNanos();
-    AppMethodBeat.o(196765);
+    AppMethodBeat.o(213758);
   }
   
   private void checkAndPost(Runnable paramRunnable)
   {
-    AppMethodBeat.i(196774);
+    AppMethodBeat.i(213775);
     if (this.mThreadHandler.isRunOnWorkingThread())
     {
       paramRunnable.run();
-      AppMethodBeat.o(196774);
+      AppMethodBeat.o(213775);
       return;
     }
     this.mThreadHandler.post(paramRunnable);
-    AppMethodBeat.o(196774);
+    AppMethodBeat.o(213775);
   }
   
   private long generateAnimationCallbackUniqueId()
@@ -59,55 +59,55 @@ class VSyncRenderer
   
   static VSyncRenderer getInstance()
   {
-    AppMethodBeat.i(196763);
+    AppMethodBeat.i(213747);
     VSyncRenderer localVSyncRenderer = (VSyncRenderer)sRendererList.get();
-    AppMethodBeat.o(196763);
+    AppMethodBeat.o(213747);
     return localVSyncRenderer;
   }
   
   static void initRenderer(IXWebWorkingHandler paramIXWebWorkingHandler)
   {
-    AppMethodBeat.i(196762);
+    AppMethodBeat.i(213737);
     if (sRendererList.get() == null) {
       sRendererList.set(new VSyncRenderer(paramIXWebWorkingHandler));
     }
-    AppMethodBeat.o(196762);
+    AppMethodBeat.o(213737);
   }
   
   private void schedulerNextVSync()
   {
-    AppMethodBeat.i(196775);
+    AppMethodBeat.i(213785);
     this.mWaitingForNextVSync = true;
     VSyncWaiter.getInstance().asyncWaitForVSync(this);
-    AppMethodBeat.o(196775);
+    AppMethodBeat.o(213785);
   }
   
   long addAnimationCallback(AnimationCallback paramAnimationCallback)
   {
-    AppMethodBeat.i(196770);
+    AppMethodBeat.i(213844);
     long l = generateAnimationCallbackUniqueId();
     this.mAnimationCallbackIdMap.put(Long.valueOf(l), paramAnimationCallback);
     triggerNextVSync();
-    AppMethodBeat.o(196770);
+    AppMethodBeat.o(213844);
     return l;
   }
   
   void addPresentCallback(PresentCallback paramPresentCallback)
   {
-    AppMethodBeat.i(196767);
+    AppMethodBeat.i(213830);
     this.mPresentCallbackList.add(paramPresentCallback);
     triggerNextVSync();
-    AppMethodBeat.o(196767);
+    AppMethodBeat.o(213830);
   }
   
   public void doFrame(long paramLong)
   {
-    AppMethodBeat.i(196778);
+    AppMethodBeat.i(213867);
     checkAndPost(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(196760);
+        AppMethodBeat.i(213710);
         VSyncRenderer.access$002(VSyncRenderer.this, false);
         Object localObject = VSyncRenderer.this.mPresentCallbackList.iterator();
         while (((Iterator)localObject).hasNext()) {
@@ -121,33 +121,33 @@ class VSyncRenderer
         while (((Iterator)localObject).hasNext()) {
           ((VSyncRenderer.AnimationCallback)((Iterator)localObject).next()).doAnimation(l1 - l2);
         }
-        AppMethodBeat.o(196760);
+        AppMethodBeat.o(213710);
       }
     });
-    AppMethodBeat.o(196778);
+    AppMethodBeat.o(213867);
   }
   
   void removeAnimationCallback(long paramLong)
   {
-    AppMethodBeat.i(196771);
+    AppMethodBeat.i(213850);
     this.mAnimationCallbackIdMap.remove(Long.valueOf(paramLong));
-    AppMethodBeat.o(196771);
+    AppMethodBeat.o(213850);
   }
   
   void removePresentCallback(PresentCallback paramPresentCallback)
   {
-    AppMethodBeat.i(196768);
+    AppMethodBeat.i(213838);
     this.mPresentCallbackList.remove(paramPresentCallback);
-    AppMethodBeat.o(196768);
+    AppMethodBeat.o(213838);
   }
   
   void triggerNextVSync()
   {
-    AppMethodBeat.i(196776);
+    AppMethodBeat.i(213858);
     if (!this.mWaitingForNextVSync) {
       schedulerNextVSync();
     }
-    AppMethodBeat.o(196776);
+    AppMethodBeat.o(213858);
   }
   
   static abstract interface AnimationCallback
@@ -162,7 +162,7 @@ class VSyncRenderer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.xweb.skia_canvas.VSyncRenderer
  * JD-Core Version:    0.7.0.1
  */

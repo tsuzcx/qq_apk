@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -27,34 +26,31 @@ import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 import androidx.recyclerview.widget.RecyclerView.a;
 import androidx.recyclerview.widget.RecyclerView.b;
 import androidx.recyclerview.widget.RecyclerView.l;
-import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.f.a.le;
-import com.tencent.mm.plugin.topstory.a.c;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.autogen.a.mk;
+import com.tencent.mm.plugin.secdata.ui.MMSecDataActivity;
 import com.tencent.mm.plugin.topstory.a.c.j;
 import com.tencent.mm.plugin.topstory.ui.c.a;
 import com.tencent.mm.plugin.topstory.ui.c.d;
 import com.tencent.mm.plugin.topstory.ui.c.f;
 import com.tencent.mm.plugin.topstory.ui.c.g;
 import com.tencent.mm.plugin.topstory.ui.widget.d.a;
-import com.tencent.mm.protocal.protobuf.aoz;
-import com.tencent.mm.protocal.protobuf.eso;
-import com.tencent.mm.protocal.protobuf.esp;
-import com.tencent.mm.protocal.protobuf.esv;
-import com.tencent.mm.protocal.protobuf.esy;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.protocal.protobuf.ass;
+import com.tencent.mm.protocal.protobuf.fnx;
+import com.tencent.mm.protocal.protobuf.fny;
+import com.tencent.mm.protocal.protobuf.foe;
+import com.tencent.mm.protocal.protobuf.foh;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.base.q.g;
-import com.tencent.mm.ui.base.w;
-import com.tencent.mm.ui.report.MMSecDataActivity;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.base.aa;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.u.i;
+import com.tencent.mm.vfs.y;
 import java.util.List;
 import java.util.Set;
 import org.json.JSONException;
@@ -62,72 +58,90 @@ import org.json.JSONObject;
 
 public abstract class TopStoryBaseVideoUI
   extends MMSecDataActivity
-  implements c, b
+  implements com.tencent.mm.plugin.topstory.a.c, b
 {
-  protected ImageButton FUI;
-  public esv MWu;
-  protected long MZA = -1L;
-  private i.a MZB = new i.a()
+  protected View AtJ;
+  protected ImageButton LPI;
+  public foe TIY;
+  protected View TLS;
+  protected ImageView TLT;
+  protected View TLU;
+  protected ImageView TLV;
+  protected i TLW;
+  protected RecyclerView TLX;
+  protected e TLY;
+  protected d TLZ;
+  public RecyclerView TMa;
+  protected LinearLayoutManager TMb;
+  protected e TMc;
+  public d TMd;
+  private com.tencent.mm.plugin.topstory.ui.b.a TMe;
+  private com.tencent.mm.plugin.topstory.ui.a.a TMf;
+  public boolean TMg = true;
+  protected int TMh = 0;
+  protected long TMi = -1L;
+  protected long TMj = -1L;
+  private i.a TMk = new i.a()
   {
     public final void onOrientationChange(int paramAnonymousInt)
     {
       AppMethodBeat.i(126088);
-      TopStoryBaseVideoUI.this.ajH(paramAnonymousInt);
+      TopStoryBaseVideoUI.this.apa(paramAnonymousInt);
       AppMethodBeat.o(126088);
     }
   };
-  private l MZC;
-  public o MZD;
-  private m MZE;
-  public r MZF;
-  protected n MZG;
-  private boolean MZH;
-  protected com.tencent.mm.plugin.topstory.ui.widget.d MZI;
-  private boolean MZJ;
-  protected com.tencent.mm.plugin.topstory.ui.widget.b MZK;
-  private androidx.recyclerview.widget.u MZL;
-  private androidx.recyclerview.widget.u MZM;
-  public boolean MZN;
-  private j MZO;
-  private com.tencent.mm.an.i MZP = new com.tencent.mm.an.i()
+  private l TMl;
+  public o TMm;
+  private m TMn;
+  public r TMo;
+  protected n TMp;
+  private boolean TMq;
+  protected com.tencent.mm.plugin.topstory.ui.widget.d TMr;
+  private boolean TMs;
+  protected com.tencent.mm.plugin.topstory.ui.widget.b TMt;
+  private androidx.recyclerview.widget.s TMu;
+  private androidx.recyclerview.widget.s TMv;
+  public boolean TMw;
+  private j TMx;
+  private com.tencent.mm.am.h TMy = new com.tencent.mm.am.h()
   {
-    public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+    public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.am.p paramAnonymousp)
     {
       AppMethodBeat.i(126079);
-      final j localj = (j)paramAnonymousq;
-      paramAnonymousq = (eso)d.b.b(localj.rr.lBR);
+      final j localj = (j)paramAnonymousp;
+      paramAnonymousp = (fnx)c.b.b(localj.rr.otB);
       if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
       {
         Log.w("MicroMsg.TopStory.TopStoryBaseVideoUI", "NetSceneTopStorySetComment response, errType:%s, errCode:%s, errMsg:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
-        w.makeText(TopStoryBaseVideoUI.this.getContext(), TopStoryBaseVideoUI.this.getString(c.g.top_story_like_failed), 0).show();
-        if (localj.MWs != null)
+        aa.makeText(TopStoryBaseVideoUI.this.getContext(), TopStoryBaseVideoUI.this.getString(c.g.top_story_like_failed), 0).show();
+        if (localj.TIW != null)
         {
-          paramAnonymousString = localj.MWs;
-          if (localj.MWs.Uvi) {
+          paramAnonymousString = localj.TIW;
+          if (localj.TIW.abOJ) {
             break label174;
           }
         }
         label174:
         for (bool = true;; bool = false)
         {
-          paramAnonymousString.Uvi = bool;
-          Log.i("MicroMsg.TopStory.TopStoryBaseVideoUI", "setCmtListener onSceneEnd error, thumb:" + localj.MWs.Uvi);
+          paramAnonymousString.abOJ = bool;
+          Log.i("MicroMsg.TopStory.TopStoryBaseVideoUI", "setCmtListener onSceneEnd error, thumb:" + localj.TIW.abOJ);
           TopStoryBaseVideoUI.this.runOnUiThread(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(126078);
-              h localh = TopStoryBaseVideoUI.this.gqH().b(localj.MWs);
+              h localh = TopStoryBaseVideoUI.this.hNG().b(localj.TIW);
               if (localh != null)
               {
                 if ((localh instanceof com.tencent.mm.plugin.topstory.ui.video.list.h))
                 {
-                  localh.gri();
+                  localh.hOh();
                   AppMethodBeat.o(126078);
                   return;
                 }
                 if ((localh instanceof com.tencent.mm.plugin.topstory.ui.video.fs.g)) {
-                  ((com.tencent.mm.plugin.topstory.ui.video.fs.f)localh.grj().getControlBar()).m(localj.MWs);
+                  ((com.tencent.mm.plugin.topstory.ui.video.fs.f)localh.hOi().getControlBar()).m(localj.TIW);
                 }
               }
               AppMethodBeat.o(126078);
@@ -140,10 +154,10 @@ public abstract class TopStoryBaseVideoUI
       JSONObject localJSONObject = new JSONObject();
       try
       {
-        localJSONObject.put("docId", paramAnonymousq.TPZ);
+        localJSONObject.put("docId", paramAnonymousp.abgw);
         localJSONObject.put("opType", "LIKE");
-        if (paramAnonymousq.jUk != 4) {
-          break label517;
+        if (paramAnonymousp.muC != 4) {
+          break label514;
         }
         bool = true;
         label224:
@@ -154,38 +168,38 @@ public abstract class TopStoryBaseVideoUI
         label234:
         break label234;
       }
-      if (localj.MWs != null)
+      if (localj.TIW != null)
       {
-        paramAnonymousString = localj.MWs;
-        if (paramAnonymousq.jUk != 4) {
-          break label523;
+        paramAnonymousString = localj.TIW;
+        if (paramAnonymousp.muC != 4) {
+          break label520;
         }
       }
-      label517:
-      label523:
+      label514:
+      label520:
       for (boolean bool = true;; bool = false)
       {
-        paramAnonymousString.Uvi = bool;
-        Log.i("MicroMsg.TopStory.TopStoryBaseVideoUI", "setCmtListener onSceneEnd succ, thumb: %s count: %s", new Object[] { Boolean.valueOf(localj.MWs.Uvi), Integer.valueOf(localj.MWs.Uvm) });
-        if (paramAnonymousq.jUk != 4) {
-          break label529;
+        paramAnonymousString.abOJ = bool;
+        Log.i("MicroMsg.TopStory.TopStoryBaseVideoUI", "setCmtListener onSceneEnd succ, thumb: %s count: %s", new Object[] { Boolean.valueOf(localj.TIW.abOJ), Integer.valueOf(localj.TIW.abON) });
+        if (paramAnonymousp.muC != 4) {
+          break label526;
         }
-        h localh = TopStoryBaseVideoUI.this.gqH().b(localj.MWs);
-        paramAnonymousq = null;
-        paramAnonymousString = paramAnonymousq;
-        if (TopStoryBaseVideoUI.g(TopStoryBaseVideoUI.this).MWv != null)
+        h localh = TopStoryBaseVideoUI.this.hNG().b(localj.TIW);
+        paramAnonymousp = null;
+        paramAnonymousString = paramAnonymousp;
+        if (TopStoryBaseVideoUI.g(TopStoryBaseVideoUI.this).TIZ != null)
         {
-          paramAnonymousString = paramAnonymousq;
-          if (TopStoryBaseVideoUI.g(TopStoryBaseVideoUI.this).MWv != null)
+          paramAnonymousString = paramAnonymousp;
+          if (TopStoryBaseVideoUI.g(TopStoryBaseVideoUI.this).TIZ != null)
           {
-            paramAnonymousString = paramAnonymousq;
-            if (TopStoryBaseVideoUI.g(TopStoryBaseVideoUI.this).MWv.Crh != null)
+            paramAnonymousString = paramAnonymousp;
+            if (TopStoryBaseVideoUI.g(TopStoryBaseVideoUI.this).TIZ.Ido != null)
             {
-              paramAnonymousString = paramAnonymousq;
-              if (TopStoryBaseVideoUI.g(TopStoryBaseVideoUI.this).MWv.Crh.equals(localj.MWs.Crh)) {
+              paramAnonymousString = paramAnonymousp;
+              if (TopStoryBaseVideoUI.g(TopStoryBaseVideoUI.this).TIZ.Ido.equals(localj.TIW.Ido)) {
                 if (!(localh instanceof com.tencent.mm.plugin.topstory.ui.video.list.h))
                 {
-                  paramAnonymousString = paramAnonymousq;
+                  paramAnonymousString = paramAnonymousp;
                   if (!(localh instanceof com.tencent.mm.plugin.topstory.ui.video.fs.g)) {}
                 }
                 else
@@ -198,115 +212,48 @@ public abstract class TopStoryBaseVideoUI
         }
         if (paramAnonymousString != null)
         {
-          TopStoryBaseVideoUI.this.a(localj.MWs, paramAnonymousString, true);
+          TopStoryBaseVideoUI.this.a(localj.TIW, paramAnonymousString, true);
           if ((localh instanceof com.tencent.mm.plugin.topstory.ui.video.fs.g)) {
-            localh.grj().getControlBar().show();
+            localh.hOi().getControlBar().show();
           }
         }
-        paramAnonymousString = new le();
-        paramAnonymousString.fIS.fIT = localJSONObject.toString();
-        paramAnonymousString.fIS.fIU = "";
-        EventCenter.instance.publish(paramAnonymousString);
+        paramAnonymousString = new mk();
+        paramAnonymousString.hOA.hOB = localJSONObject.toString();
+        paramAnonymousString.hOA.hOC = "";
+        paramAnonymousString.publish();
         break;
         bool = false;
         break label224;
       }
-      label529:
-      if (localj.gqa().Uuo) {
-        com.tencent.mm.ui.base.h.c(TopStoryBaseVideoUI.this, TopStoryBaseVideoUI.this.getString(c.g.top_story_unlike_succ), "", true);
+      label526:
+      if (localj.hMW().abNR) {
+        k.c(TopStoryBaseVideoUI.this, TopStoryBaseVideoUI.this.getString(c.g.top_story_unlike_succ), "", true);
       }
       for (;;)
       {
-        TopStoryBaseVideoUI.this.a(localj.MWs, null, false);
+        TopStoryBaseVideoUI.this.a(localj.TIW, null, false);
         break;
-        w.makeText(TopStoryBaseVideoUI.this.getContext(), c.g.top_story_unlike_succ_2, 0).show();
+        aa.makeText(TopStoryBaseVideoUI.this.getContext(), c.g.top_story_unlike_succ_2, 0).show();
       }
     }
   };
-  protected View MZj;
-  protected ImageView MZk;
-  protected View MZl;
-  protected ImageView MZm;
-  protected i MZn;
-  protected RecyclerView MZo;
-  protected e MZp;
-  protected d MZq;
-  public RecyclerView MZr;
-  protected LinearLayoutManager MZs;
-  protected e MZt;
-  public d MZu;
-  private com.tencent.mm.plugin.topstory.ui.b.a MZv;
-  private com.tencent.mm.plugin.topstory.ui.a.a MZw;
-  public boolean MZx = true;
-  protected int MZy = 0;
-  protected long MZz = -1L;
-  protected RecyclerView.l iZi = new RecyclerView.l()
-  {
-    public final void onScrollStateChanged(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt)
-    {
-      AppMethodBeat.i(203576);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramAnonymousRecyclerView);
-      localb.sg(paramAnonymousInt);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/topstory/ui/video/TopStoryBaseVideoUI$6", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aFi());
-      if (!TopStoryBaseVideoUI.this.MZx)
-      {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/topstory/ui/video/TopStoryBaseVideoUI$6", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
-        AppMethodBeat.o(203576);
-        return;
-      }
-      switch (paramAnonymousInt)
-      {
-      }
-      for (;;)
-      {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/topstory/ui/video/TopStoryBaseVideoUI$6", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
-        AppMethodBeat.o(203576);
-        return;
-        if (TopStoryBaseVideoUI.this.MZN) {
-          TopStoryBaseVideoUI.this.MZu.b(TopStoryBaseVideoUI.this);
-        } else {
-          TopStoryBaseVideoUI.this.MZq.b(TopStoryBaseVideoUI.this);
-        }
-      }
-    }
-    
-    public final void onScrolled(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
-    {
-      AppMethodBeat.i(203579);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramAnonymousRecyclerView);
-      localb.sg(paramAnonymousInt1);
-      localb.sg(paramAnonymousInt2);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/topstory/ui/video/TopStoryBaseVideoUI$6", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aFi());
-      if ((!TopStoryBaseVideoUI.this.MZx) || (paramAnonymousInt2 == 0))
-      {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/topstory/ui/video/TopStoryBaseVideoUI$6", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
-        AppMethodBeat.o(203579);
-        return;
-      }
-      TopStoryBaseVideoUI.this.gro();
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/topstory/ui/video/TopStoryBaseVideoUI$6", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
-      AppMethodBeat.o(203579);
-    }
-  };
-  private Point lbY;
-  protected TextView mNb;
-  private boolean poG = false;
-  protected LinearLayoutManager set;
+  protected RecyclerView.l lBe = new TopStoryBaseVideoUI.9(this);
+  private Point nGU;
+  protected TextView pJJ;
+  private boolean str = false;
   private int videoHeight;
-  protected View wWQ;
+  protected LinearLayoutManager vqi;
   
   private int getSystemVolume()
   {
     return ((AudioManager)getApplicationContext().getSystemService("audio")).getStreamVolume(3);
   }
   
-  private void grk()
+  private void hOj()
   {
     getWindow().setFlags(201327616, 201327616);
     View localView = getWindow().getDecorView();
-    if (com.tencent.mm.compatible.util.d.qW(19)) {
+    if (com.tencent.mm.compatible.util.d.rc(19)) {
       localView.setSystemUiVisibility(2);
     }
     for (;;)
@@ -317,66 +264,87 @@ public abstract class TopStoryBaseVideoUI
     }
   }
   
-  private void grt()
+  private void hOs()
   {
-    if (this.MWu.iYs) {
-      this.MZk.setBackgroundResource(c.f.top_story_volume_off);
+    if (this.TIY.lAj) {
+      this.TLT.setBackgroundResource(c.f.top_story_volume_off);
     }
     for (;;)
     {
-      if (this.MZF.NaM) {
-        this.MZF.setMute(this.MWu.iYs);
+      if (this.TMo.TNv) {
+        this.TMo.setMute(this.TIY.lAj);
       }
       return;
-      this.MZk.setBackgroundResource(c.f.top_story_volume_on);
+      this.TLT.setBackgroundResource(c.f.top_story_volume_on);
     }
   }
   
-  private void gru()
+  private void hOt()
   {
     com.tencent.mm.compatible.b.a.a((AudioManager)getContext().getSystemService("audio"), 3, 1, 0);
   }
   
-  public final void Ai(boolean paramBoolean)
+  public final void FE(boolean paramBoolean)
   {
     Log.i("MicroMsg.TopStory.TopStoryBaseVideoUI", "setNeedScrollEvent %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.MZx = paramBoolean;
+    this.TMg = paramBoolean;
   }
   
-  public final void Aj(boolean paramBoolean)
+  public final void FF(boolean paramBoolean)
   {
     if (paramBoolean) {
-      this.MWu.iYs = true;
+      this.TIY.lAj = true;
     }
     for (;;)
     {
-      grt();
+      hOs();
       return;
-      this.MWu.iYs = false;
+      this.TIY.lAj = false;
       if (getSystemVolume() == 0) {
-        gru();
+        hOt();
       }
     }
   }
   
-  public final void a(esy paramesy)
+  public void H(final List<foh> paramList, final boolean paramBoolean)
   {
-    if (!this.MZN)
+    MMHandlerThread.postToMainThread(new Runnable()
     {
-      this.mNb.setText(c.g.recommend_video_title);
-      this.MZm.setVisibility(8);
+      public final void run()
+      {
+        AppMethodBeat.i(126077);
+        if (TopStoryBaseVideoUI.this.TMw)
+        {
+          TopStoryBaseVideoUI.this.TMc.I(paramList, paramBoolean);
+          TopStoryBaseVideoUI.this.TLY.bZE.notifyChanged();
+          AppMethodBeat.o(126077);
+          return;
+        }
+        TopStoryBaseVideoUI.this.TLY.I(paramList, paramBoolean);
+        TopStoryBaseVideoUI.this.TMc.bZE.notifyChanged();
+        AppMethodBeat.o(126077);
+      }
+    });
+  }
+  
+  public final void a(foh paramfoh)
+  {
+    if (!this.TMw)
+    {
+      this.pJJ.setText(c.g.recommend_video_title);
+      this.TLV.setVisibility(8);
     }
-    if (this.MZv != null) {
-      this.MZv.a(this.MWu, paramesy);
+    if (this.TMe != null) {
+      this.TMe.a(this.TIY, paramfoh);
     }
-    if (this.MZw != null) {
-      this.MZw.a(this.MWu, paramesy);
+    if (this.TMf != null) {
+      this.TMf.a(this.TIY, paramfoh);
     }
   }
   
-  public final void a(esy paramesy, View paramView)
+  public final void a(foh paramfoh, View paramView)
   {
-    if (paramesy != null)
+    if (paramfoh != null)
     {
       if (!NetStatusUtil.isConnected(this)) {
         Toast.makeText(getContext(), getString(c.g.top_story_like_failed), 0).show();
@@ -385,43 +353,43 @@ public abstract class TopStoryBaseVideoUI
     else {
       return;
     }
-    if (this.MZO != null) {
-      com.tencent.mm.kernel.h.aGY().a(this.MZO);
+    if (this.TMx != null) {
+      com.tencent.mm.kernel.h.aZW().a(this.TMx);
     }
-    String str1 = paramesy.BHW;
+    String str1 = paramfoh.HsD;
     int i;
     int j;
     label110:
     boolean bool;
-    if (paramesy.Uvi)
+    if (paramfoh.abOJ)
     {
       i = 5;
       String str2 = System.currentTimeMillis();
-      int k = this.MWu.scene;
-      String str3 = this.MWu.jQi;
-      if (!gqI()) {
+      int k = this.TIY.scene;
+      String str3 = this.TIY.mpa;
+      if (!hNH()) {
         break label238;
       }
       j = 318;
-      this.MZO = new j(paramesy, str1, i, str2, k, str3, j, paramesy.Crh, paramesy.zGJ);
-      com.tencent.mm.kernel.h.aGY().a(this.MZO, 0);
-      if (paramesy.Uvi) {
+      this.TMx = new j(paramfoh, str1, i, str2, k, str3, j, paramfoh.Ido, paramfoh.ELy);
+      com.tencent.mm.kernel.h.aZW().a(this.TMx, 0);
+      if (paramfoh.abOJ) {
         break label246;
       }
       bool = true;
       label163:
-      paramesy.Uvi = bool;
-      if (!paramesy.Uvi) {
+      paramfoh.abOJ = bool;
+      if (!paramfoh.abOJ) {
         break label252;
       }
     }
     label238:
     label246:
     label252:
-    for (paramesy.Uvm += 1;; paramesy.Uvm -= 1)
+    for (paramfoh.abON += 1;; paramfoh.abON -= 1)
     {
-      ((TextView)paramView.findViewById(c.d.wow_icon_text)).setText(com.tencent.mm.plugin.topstory.ui.d.ajw(paramesy.Uvm));
-      Log.i("MicroMsg.TopStory.TopStoryBaseVideoUI", "onWowBtnClick thumb:" + paramesy.Uvi);
+      ((TextView)paramView.findViewById(c.d.wow_icon_text)).setText(com.tencent.mm.plugin.topstory.ui.d.aoN(paramfoh.abON));
+      Log.i("MicroMsg.TopStory.TopStoryBaseVideoUI", "onWowBtnClick thumb:" + paramfoh.abOJ);
       return;
       i = 4;
       break;
@@ -432,52 +400,92 @@ public abstract class TopStoryBaseVideoUI
     }
   }
   
-  public abstract void a(esy paramesy, View paramView, boolean paramBoolean);
+  public abstract void a(foh paramfoh, View paramView, boolean paramBoolean);
   
-  public final void aD(final View paramView, final int paramInt)
+  public final boolean aGe()
   {
-    if (this.MZF.ehu())
+    return this.TIY.lAj;
+  }
+  
+  protected void aNi()
+  {
+    byte[] arrayOfByte = getIntent().getByteArrayExtra("key_context");
+    this.TIY = new foe();
+    try
     {
-      this.MZF.dmi();
-      this.MZH = true;
+      this.TIY.parseFrom(arrayOfByte);
+      this.TMp = new n();
+      this.TMp.TLn = this;
+      this.TMn = new m();
+      this.TMn.d(this);
+      this.TMm = new o();
+      this.TMm.d(this);
+      this.TMo = new r();
+      this.TMo.d(this);
+      this.TMl = new l();
+      this.TLZ = hOl();
+      this.TMd = hOm();
+      this.TMf = new com.tencent.mm.plugin.topstory.ui.a.a(new com.tencent.mm.plugin.topstory.ui.a.b(this));
+      this.TMf.J(8, this.TIY.zIO);
+      this.TMf.ahU(getResources().getString(c.g.top_story_float_ball_title));
+      this.TMe = new com.tencent.mm.plugin.topstory.ui.b.a(new com.tencent.mm.plugin.topstory.ui.b.b(this));
+      this.TMe.J(8, this.TIY.zIO);
+      this.TMe.updateTitle(getResources().getString(c.g.top_story_float_ball_title));
+      return;
     }
-    esy localesy = this.MZG.ajJ(paramInt);
-    this.MZI = new com.tencent.mm.plugin.topstory.ui.widget.d(getContext(), localesy, new d.a()
+    catch (Exception localException)
     {
-      public final void e(esy paramAnonymousesy)
+      for (;;)
+      {
+        finish();
+      }
+    }
+  }
+  
+  public final void aZ(final View paramView, final int paramInt)
+  {
+    if (this.TMo.fjy())
+    {
+      this.TMo.bck();
+      this.TMq = true;
+    }
+    foh localfoh = this.TMp.apc(paramInt);
+    this.TMr = new com.tencent.mm.plugin.topstory.ui.widget.d(getContext(), localfoh, new d.a()
+    {
+      public final void e(foh paramAnonymousfoh)
       {
         AppMethodBeat.i(126089);
-        if (paramAnonymousesy.Uvj != null) {
-          TopStoryBaseVideoUI.this.aE(paramView, paramInt);
+        if (paramAnonymousfoh.abOK != null) {
+          TopStoryBaseVideoUI.this.ba(paramView, paramInt);
         }
-        TopStoryBaseVideoUI.this.MZI.dismiss();
+        TopStoryBaseVideoUI.this.TMr.dismiss();
         AppMethodBeat.o(126089);
       }
       
-      public final void f(esy paramAnonymousesy)
+      public final void f(foh paramAnonymousfoh)
       {
         AppMethodBeat.i(126090);
-        p localp = p.NaI;
-        p.a(TopStoryBaseVideoUI.this, TopStoryBaseVideoUI.this.gqA(), paramAnonymousesy);
-        TopStoryBaseVideoUI.this.MZI.dismiss();
-        com.tencent.mm.plugin.report.f.Iyx.a(17080, new Object[] { Integer.valueOf(65), Integer.valueOf(2) });
+        p localp = p.TNr;
+        p.a(TopStoryBaseVideoUI.this, TopStoryBaseVideoUI.this.hNz(), paramAnonymousfoh);
+        TopStoryBaseVideoUI.this.TMr.dismiss();
+        com.tencent.mm.plugin.report.f.Ozc.b(17080, new Object[] { Integer.valueOf(65), Integer.valueOf(2) });
         AppMethodBeat.o(126090);
       }
       
-      public final void g(esy paramAnonymousesy)
+      public final void g(foh paramAnonymousfoh)
       {
         AppMethodBeat.i(164124);
-        Object localObject = com.tencent.mm.util.i.YyX;
-        if (com.tencent.mm.util.i.a(com.tencent.mm.util.b.a.Yyq, 0) == 1)
+        Object localObject = com.tencent.mm.util.i.agtt;
+        if (com.tencent.mm.util.i.a(com.tencent.mm.util.b.a.agrS, 0) == 1)
         {
-          localObject = com.tencent.mm.plugin.topstory.ui.d.bz(paramAnonymousesy.Crh, paramAnonymousesy.UuV);
-          localObject = TopStoryBaseVideoUI.this.gqz() + (String)localObject + ".mp4";
-          String str = "/sdcard/video/" + paramAnonymousesy.title + ".mp4";
-          if (com.tencent.mm.vfs.u.agG("/sdcard/video/")) {
-            com.tencent.mm.vfs.u.bBD("/sdcard/video/");
+          localObject = com.tencent.mm.plugin.topstory.ui.d.bL(paramAnonymousfoh.Ido, paramAnonymousfoh.abOw);
+          localObject = TopStoryBaseVideoUI.this.hNy() + (String)localObject + ".mp4";
+          String str = "/sdcard/video/" + paramAnonymousfoh.title + ".mp4";
+          if (y.ZC("/sdcard/video/")) {
+            y.bDX("/sdcard/video/");
           }
-          com.tencent.mm.vfs.u.on((String)localObject, str);
-          Toast.makeText(TopStoryBaseVideoUI.this, "copy success " + paramAnonymousesy.title, 0).show();
+          y.O((String)localObject, str, false);
+          Toast.makeText(TopStoryBaseVideoUI.this, "copy success " + paramAnonymousfoh.title, 0).show();
         }
         AppMethodBeat.o(164124);
       }
@@ -494,11 +502,11 @@ public abstract class TopStoryBaseVideoUI
             AppMethodBeat.o(126091);
             return;
           }
-          TopStoryBaseVideoUI.this.MZF.fLJ();
-          if (TopStoryBaseVideoUI.this.MZN) {
+          TopStoryBaseVideoUI.this.TMo.bcl();
+          if (TopStoryBaseVideoUI.this.TMw) {
             try
             {
-              ((com.tencent.mm.plugin.topstory.ui.video.fs.f)TopStoryBaseVideoUI.this.MZF.NaL.getControlBar()).bVi();
+              ((com.tencent.mm.plugin.topstory.ui.video.fs.f)TopStoryBaseVideoUI.this.TMo.TNu.getControlBar()).cvy();
               AppMethodBeat.o(126091);
               return;
             }
@@ -508,18 +516,18 @@ public abstract class TopStoryBaseVideoUI
         AppMethodBeat.o(126091);
       }
     });
-    if (this.MZN) {
-      this.MZI.a(paramView, true, 0 - com.tencent.mm.ci.a.fromDPToPix(getContext(), 40), com.tencent.mm.ci.a.fromDPToPix(getContext(), 16));
+    if (this.TMw) {
+      this.TMr.a(paramView, true, 0 - com.tencent.mm.cd.a.fromDPToPix(getContext(), 40), com.tencent.mm.cd.a.fromDPToPix(getContext(), 16));
     }
     try
     {
-      ((com.tencent.mm.plugin.topstory.ui.video.fs.f)this.MZF.NaL.getControlBar()).cEO();
+      ((com.tencent.mm.plugin.topstory.ui.video.fs.f)this.TMo.TNu.getControlBar()).hON();
       for (;;)
       {
         label109:
-        com.tencent.mm.plugin.report.f.Iyx.a(17080, new Object[] { Integer.valueOf(65), Integer.valueOf(1) });
+        com.tencent.mm.plugin.report.f.Ozc.b(17080, new Object[] { Integer.valueOf(65), Integer.valueOf(1) });
         return;
-        this.MZI.a(paramView, false, 0, 0);
+        this.TMr.a(paramView, false, 0, 0);
       }
     }
     catch (Exception paramView)
@@ -528,24 +536,63 @@ public abstract class TopStoryBaseVideoUI
     }
   }
   
-  public final void aE(View paramView, final int paramInt)
+  public final void aoU(int paramInt)
   {
-    this.MZJ = true;
-    final esy localesy = this.MZG.ajJ(paramInt);
-    this.MZK = new com.tencent.mm.plugin.topstory.ui.widget.b(getContext(), localesy, new com.tencent.mm.plugin.topstory.ui.widget.b.a()
+    this.TIY.abOo = paramInt;
+  }
+  
+  public final void aoV(int paramInt)
+  {
+    this.TIY.abOr = paramInt;
+  }
+  
+  protected void apa(int paramInt) {}
+  
+  public final void ba(View paramView, final int paramInt)
+  {
+    this.TMs = true;
+    final foh localfoh = this.TMp.apc(paramInt);
+    this.TMt = new com.tencent.mm.plugin.topstory.ui.widget.b(getContext(), localfoh, new com.tencent.mm.plugin.topstory.ui.widget.b.a()
     {
+      public final void D(Set<ass> paramAnonymousSet)
+      {
+        AppMethodBeat.i(126092);
+        Log.i("MicroMsg.TopStory.TopStoryBaseVideoUI", "popupWindow commit");
+        aa.makeText(TopStoryBaseVideoUI.this.getContext(), c.g.top_story_feedback_unlike_toast, 0).show();
+        com.tencent.mm.plugin.topstory.a.h.a(TopStoryBaseVideoUI.this.hNz(), localfoh, paramAnonymousSet, TopStoryBaseVideoUI.this.TMp.hOz());
+        TopStoryBaseVideoUI.this.TMo.stopPlay();
+        TopStoryBaseVideoUI.this.TMp.apb(paramInt);
+        if (TopStoryBaseVideoUI.this.TMp.hOz() == 0)
+        {
+          TopStoryBaseVideoUI.this.finish();
+          AppMethodBeat.o(126092);
+          return;
+        }
+        if (TopStoryBaseVideoUI.this.TMw)
+        {
+          TopStoryBaseVideoUI.this.TMc.fX(paramInt + TopStoryBaseVideoUI.this.TMc.hNP());
+          TopStoryBaseVideoUI.this.TLY.bZE.notifyChanged();
+          TopStoryBaseVideoUI.this.TMa.br(0, 3);
+          AppMethodBeat.o(126092);
+          return;
+        }
+        TopStoryBaseVideoUI.this.TLY.fX(paramInt + TopStoryBaseVideoUI.this.TLY.hNP());
+        TopStoryBaseVideoUI.this.TMc.bZE.notifyChanged();
+        AppMethodBeat.o(126092);
+      }
+      
       public final void onDismiss()
       {
         AppMethodBeat.i(126093);
         Log.i("MicroMsg.TopStory.TopStoryBaseVideoUI", "popupWindow dismiss");
         if (TopStoryBaseVideoUI.e(TopStoryBaseVideoUI.this))
         {
-          TopStoryBaseVideoUI.this.MZF.fLJ();
+          TopStoryBaseVideoUI.this.TMo.bcl();
           TopStoryBaseVideoUI.f(TopStoryBaseVideoUI.this);
-          if (TopStoryBaseVideoUI.this.MZN) {
+          if (TopStoryBaseVideoUI.this.TMw) {
             try
             {
-              ((com.tencent.mm.plugin.topstory.ui.video.fs.f)TopStoryBaseVideoUI.this.MZF.NaL.getControlBar()).bVi();
+              ((com.tencent.mm.plugin.topstory.ui.video.fs.f)TopStoryBaseVideoUI.this.TMo.TNu.getControlBar()).cvy();
               AppMethodBeat.o(126093);
               return;
             }
@@ -554,146 +601,75 @@ public abstract class TopStoryBaseVideoUI
         }
         AppMethodBeat.o(126093);
       }
-      
-      public final void v(Set<aoz> paramAnonymousSet)
-      {
-        AppMethodBeat.i(126092);
-        Log.i("MicroMsg.TopStory.TopStoryBaseVideoUI", "popupWindow commit");
-        w.makeText(TopStoryBaseVideoUI.this.getContext(), c.g.top_story_feedback_unlike_toast, 0).show();
-        com.tencent.mm.plugin.topstory.a.i.a(TopStoryBaseVideoUI.this.gqA(), localesy, paramAnonymousSet, TopStoryBaseVideoUI.this.MZG.grz());
-        TopStoryBaseVideoUI.this.MZF.stopPlay();
-        TopStoryBaseVideoUI.this.MZG.ajI(paramInt);
-        if (TopStoryBaseVideoUI.this.MZG.grz() == 0)
-        {
-          TopStoryBaseVideoUI.this.finish();
-          AppMethodBeat.o(126092);
-          return;
-        }
-        if (TopStoryBaseVideoUI.this.MZN)
-        {
-          TopStoryBaseVideoUI.this.MZt.cN(paramInt + TopStoryBaseVideoUI.this.MZt.gqR());
-          TopStoryBaseVideoUI.this.MZp.alc.notifyChanged();
-          TopStoryBaseVideoUI.this.MZr.a(0, 3, null);
-          AppMethodBeat.o(126092);
-          return;
-        }
-        TopStoryBaseVideoUI.this.MZp.cN(paramInt + TopStoryBaseVideoUI.this.MZp.gqR());
-        TopStoryBaseVideoUI.this.MZt.alc.notifyChanged();
-        AppMethodBeat.o(126092);
-      }
     });
-    if (this.MZN) {
-      this.MZK.a(paramView, true, 0 - com.tencent.mm.ci.a.fromDPToPix(getContext(), 40), com.tencent.mm.ci.a.fromDPToPix(getContext(), 16));
+    if (this.TMw) {
+      this.TMt.a(paramView, true, 0 - com.tencent.mm.cd.a.fromDPToPix(getContext(), 40), com.tencent.mm.cd.a.fromDPToPix(getContext(), 16));
     }
     try
     {
-      ((com.tencent.mm.plugin.topstory.ui.video.fs.f)this.MZF.NaL.getControlBar()).cEO();
+      ((com.tencent.mm.plugin.topstory.ui.video.fs.f)this.TMo.TNu.getControlBar()).hON();
       return;
     }
     catch (Exception paramView) {}
-    this.MZK.a(paramView, false, 0, 0 - com.tencent.mm.ci.a.fromDPToPix(getContext(), 10));
+    this.TMt.a(paramView, false, 0, 0 - com.tencent.mm.cd.a.fromDPToPix(getContext(), 10));
     return;
   }
   
-  public final boolean aeg()
+  public final void beA(String paramString)
   {
-    return this.MWu.iYs;
+    this.TIY.abOq = paramString;
   }
   
-  public final void ajB(int paramInt)
+  public void bez(String paramString) {}
+  
+  public final boolean cOX()
   {
-    this.MWu.UuM = paramInt;
+    return this.TMw;
   }
   
-  public final void ajC(int paramInt)
+  public final Point dXX()
   {
-    this.MWu.UuP = paramInt;
-  }
-  
-  protected void ajH(int paramInt) {}
-  
-  protected void ata()
-  {
-    byte[] arrayOfByte = getIntent().getByteArrayExtra("key_context");
-    this.MWu = new esv();
-    try
-    {
-      this.MWu.parseFrom(arrayOfByte);
-      this.MZG = new n();
-      this.MZG.MYE = this;
-      this.MZE = new m();
-      this.MZE.d(this);
-      this.MZD = new o();
-      this.MZD.d(this);
-      this.MZF = new r();
-      this.MZF.d(this);
-      this.MZC = new l();
-      this.MZq = grm();
-      this.MZu = grn();
-      this.MZw = new com.tencent.mm.plugin.topstory.ui.a.a(new com.tencent.mm.plugin.topstory.ui.a.b(this));
-      this.MZw.I(8, this.MWu.wmL);
-      this.MZw.aoy(getResources().getString(c.g.top_story_float_ball_title));
-      this.MZv = new com.tencent.mm.plugin.topstory.ui.b.a(new com.tencent.mm.plugin.topstory.ui.b.b(this));
-      this.MZv.I(8, this.MWu.wmL);
-      this.MZv.aMT(getResources().getString(c.g.top_story_float_ball_title));
-      return;
+    if (this.nGU == null) {
+      this.nGU = aw.bf(this);
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        finish();
-      }
-    }
+    Log.i("MicroMsg.TopStory.TopStoryBaseVideoUI", "lxl screenSize:%s, %s", new Object[] { Integer.valueOf(this.nGU.x), Integer.valueOf(this.nGU.y) });
+    return this.nGU;
   }
   
-  public void bfc(String paramString) {}
-  
-  public final void bfd(String paramString)
-  {
-    this.MWu.UuO = paramString;
-  }
-  
-  public final boolean cne()
-  {
-    return this.MZN;
-  }
-  
-  public final Point dpI()
-  {
-    if (this.lbY == null) {
-      this.lbY = ar.au(this);
-    }
-    Log.i("MicroMsg.TopStory.TopStoryBaseVideoUI", "lxl screenSize:%s, %s", new Object[] { Integer.valueOf(this.lbY.x), Integer.valueOf(this.lbY.y) });
-    return this.lbY;
-  }
-  
-  public final MMActivity eOa()
+  public final MMActivity fWt()
   {
     return this;
   }
   
+  public void finish()
+  {
+    if (this.TMf != null) {
+      this.TMf.finish();
+    }
+    super.finish();
+  }
+  
   public final RecyclerView.LayoutManager getLayoutManager()
   {
-    if (this.MZN) {
-      return this.MZs;
+    if (this.TMw) {
+      return this.TMb;
     }
-    return this.set;
+    return this.vqi;
   }
   
   public final RecyclerView getRecyclerView()
   {
-    if (this.MZN) {
-      return this.MZr;
+    if (this.TMw) {
+      return this.TMa;
     }
-    return this.MZo;
+    return this.TLX;
   }
   
   public final int getVideoHeight()
   {
     if (this.videoHeight == 0)
     {
-      if (gqI()) {
+      if (hNH()) {
         break label35;
       }
       this.videoHeight = (getVideoWidth() * 280 / 496);
@@ -703,7 +679,7 @@ public abstract class TopStoryBaseVideoUI
       return this.videoHeight;
       label35:
       this.videoHeight = 1280;
-      int i = dpI().y * 3 / 5;
+      int i = dXX().y * 3 / 5;
       if (this.videoHeight > i) {
         this.videoHeight = i;
       }
@@ -713,153 +689,153 @@ public abstract class TopStoryBaseVideoUI
   
   public final int getVideoWidth()
   {
-    return Math.min(dpI().x, dpI().y);
+    return Math.min(dXX().x, dXX().y);
   }
   
-  public final esv gqA()
+  public final m hNA()
   {
-    return this.MWu;
+    return this.TMn;
   }
   
-  public final m gqB()
+  public final r hNB()
   {
-    return this.MZE;
+    return this.TMo;
   }
   
-  public final r gqC()
+  public final androidx.recyclerview.widget.s hNC()
   {
-    return this.MZF;
-  }
-  
-  public final androidx.recyclerview.widget.u gqD()
-  {
-    if (this.MZN) {
-      return this.MZM;
+    if (this.TMw) {
+      return this.TMv;
     }
-    return this.MZL;
+    return this.TMu;
   }
   
-  public final int gqE()
+  public final int hND()
   {
-    return this.MWu.UuM;
+    return this.TIY.abOo;
   }
   
-  public final boolean gqF()
+  public final boolean hNE()
   {
-    return this.MWu.scene != 36;
+    return this.TIY.scene != 36;
   }
   
-  public final boolean gqG()
+  public final boolean hNF()
   {
-    return this.MWu.scene != 326;
+    return this.TIY.scene != 326;
   }
   
-  public final e gqH()
+  public final e hNG()
   {
-    if (this.MZN) {
-      return this.MZt;
+    if (this.TMw) {
+      return this.TMc;
     }
-    return this.MZp;
+    return this.TLY;
   }
   
-  public final boolean gqI()
+  public final boolean hNH()
   {
-    return this.MWu.UuH == 100203L;
+    return this.TIY.abOj == 100203L;
   }
   
-  public final void gqJ()
+  public final void hNI()
   {
-    grk();
+    hOj();
   }
   
-  public int gqK()
+  public int hNJ()
   {
-    return com.tencent.mm.plugin.topstory.ui.a.MWy;
+    return com.tencent.mm.plugin.topstory.ui.a.TJc;
   }
   
-  public final n gqL()
+  public final n hNK()
   {
-    return this.MZG;
+    return this.TMp;
   }
   
-  public final String gqM()
+  public final String hNL()
   {
-    if (this.MWu.UuO == null) {
+    if (this.TIY.abOq == null) {
       return "";
     }
-    return this.MWu.UuO;
+    return this.TIY.abOq;
   }
   
-  public final int gqN()
+  public final int hNM()
   {
-    return this.MWu.UuP;
+    return this.TIY.abOr;
   }
   
-  public final void gqO()
+  public final void hNN()
   {
     runOnUiThread(new Runnable()
     {
       private static void a(e paramAnonymouse)
       {
         AppMethodBeat.i(126081);
-        int i = paramAnonymouse.gqS();
+        int i = paramAnonymouse.hNQ();
         int j = paramAnonymouse.getItemCount();
-        paramAnonymouse.gqT();
-        paramAnonymouse.aH(j - i, i);
+        paramAnonymouse.hNR();
+        paramAnonymouse.bB(j - i, i);
         AppMethodBeat.o(126081);
       }
       
       public final void run()
       {
         AppMethodBeat.i(126080);
-        a(TopStoryBaseVideoUI.this.MZp);
-        a(TopStoryBaseVideoUI.this.MZt);
+        a(TopStoryBaseVideoUI.this.TLY);
+        a(TopStoryBaseVideoUI.this.TMc);
         AppMethodBeat.o(126080);
       }
     });
   }
   
-  public void gqu() {}
+  public void hNt() {}
   
-  public void gqv() {}
+  public void hNu() {}
   
-  public final l gqx()
+  public final l hNw()
   {
-    return this.MZC;
+    return this.TMl;
   }
   
-  public final o gqy()
+  public final o hNx()
   {
-    return this.MZD;
+    return this.TMm;
   }
   
-  public final String gqz()
+  public final String hNy()
   {
-    return com.tencent.mm.plugin.topstory.a.h.beT(this.MWu.wmL);
+    return com.tencent.mm.plugin.topstory.a.g.beq(this.TIY.zIO);
   }
   
-  protected void grl() {}
+  public final foe hNz()
+  {
+    return this.TIY;
+  }
   
-  protected abstract d grm();
+  protected void hOk() {}
   
-  protected abstract d grn();
+  protected abstract d hOl();
   
-  protected void gro()
+  protected abstract d hOm();
+  
+  protected void hOn()
   {
     int j = 0;
     int i;
-    if (this.MZN)
+    if (this.TMw)
     {
-      this.MZu.a(this);
-      this.MZy = ((LinearLayoutManager)getLayoutManager()).kL();
+      this.TMd.a(this);
+      this.TMh = ((LinearLayoutManager)getLayoutManager()).Jw();
       i = getLayoutManager().getItemCount();
-      if ((this.MZz <= 0L) || (Util.ticksToNow(this.MZz) >= 50L))
+      if ((this.TMi <= 0L) || (Util.ticksToNow(this.TMi) >= 50L))
       {
-        this.MZz = Util.currentTicks();
-        if (this.MZG.Nar == 1) {
+        this.TMi = Util.currentTicks();
+        if (this.TMp.TNa == 1) {
           break label145;
         }
-        if ((this.MZy < i - 1) || (this.MZG.MTh) || (Util.ticksToNow(this.MZA) < 50L)) {
+        if ((this.TMh < i - 1) || (this.TMp.TFx) || (Util.ticksToNow(this.TMj) < 50L)) {
           break label187;
         }
         i = 1;
@@ -868,19 +844,19 @@ public abstract class TopStoryBaseVideoUI
     for (;;)
     {
       label116:
-      if (!grq()) {
+      if (!hOp()) {
         i = j;
       }
       for (;;)
       {
         if (i != 0) {
-          grp();
+          hOo();
         }
         return;
-        this.MZq.a(this);
+        this.TLZ.a(this);
         break;
         label145:
-        if ((i - this.MZy > 3) || (this.MZG.MTh) || (Util.ticksToNow(this.MZA) < 50L)) {
+        if ((i - this.TMh > 3) || (this.TMp.TFx) || (Util.ticksToNow(this.TMj) < 50L)) {
           break label187;
         }
         i = 1;
@@ -891,28 +867,28 @@ public abstract class TopStoryBaseVideoUI
     }
   }
   
-  protected void grp()
+  protected void hOo()
   {
-    this.MZA = Util.currentTicks();
+    this.TMj = Util.currentTicks();
   }
   
-  protected final boolean grq()
+  protected final boolean hOp()
   {
-    return (this.MWu.scene != 36) && (!this.MWu.UuQ);
+    return (this.TIY.scene != 36) && (!this.TIY.abOs);
   }
   
-  protected abstract e grr();
+  protected abstract e hOq();
   
-  protected abstract e grs();
+  protected abstract e hOr();
   
-  public final com.tencent.mm.plugin.topstory.ui.b.a grv()
+  public final com.tencent.mm.plugin.topstory.ui.b.a hOu()
   {
-    return this.MZv;
+    return this.TMe;
   }
   
-  public final com.tencent.mm.plugin.topstory.ui.a.a grw()
+  public final com.tencent.mm.plugin.topstory.ui.a.a hOv()
   {
-    return this.MZw;
+    return this.TMf;
   }
   
   protected void initContentView()
@@ -922,109 +898,109 @@ public abstract class TopStoryBaseVideoUI
       getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0));
       getSupportActionBar().hide();
     }
-    grk();
-    this.wWQ = findViewById(c.d.title_container);
-    this.mNb = ((TextView)findViewById(c.d.title_tv));
-    this.MZm = ((ImageView)findViewById(c.d.source_iv));
-    this.MZj = findViewById(c.d.mute_click_area);
-    this.MZk = ((ImageView)findViewById(c.d.mute_iv));
-    this.MZl = findViewById(c.d.more_click_area);
-    this.FUI = ((ImageButton)findViewById(c.d.back_btn));
-    this.FUI.getDrawable().setColorFilter(getResources().getColor(c.a.White), PorterDuff.Mode.SRC_ATOP);
-    this.FUI.setOnClickListener(new TopStoryBaseVideoUI.1(this));
-    this.MZj.setOnClickListener(new View.OnClickListener()
+    hOj();
+    this.AtJ = findViewById(c.d.title_container);
+    this.pJJ = ((TextView)findViewById(c.d.title_tv));
+    this.TLV = ((ImageView)findViewById(c.d.source_iv));
+    this.TLS = findViewById(c.d.mute_click_area);
+    this.TLT = ((ImageView)findViewById(c.d.mute_iv));
+    this.TLU = findViewById(c.d.more_click_area);
+    this.LPI = ((ImageButton)findViewById(c.d.back_btn));
+    this.LPI.getDrawable().setColorFilter(getResources().getColor(c.a.White), PorterDuff.Mode.SRC_ATOP);
+    this.LPI.setOnClickListener(new TopStoryBaseVideoUI.1(this));
+    this.TLS.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(126082);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/topstory/ui/video/TopStoryBaseVideoUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/topstory/ui/video/TopStoryBaseVideoUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         paramAnonymousView = TopStoryBaseVideoUI.this;
-        if (!paramAnonymousView.MWu.iYs) {}
+        if (!paramAnonymousView.TIY.lAj) {}
         for (boolean bool = true;; bool = false)
         {
-          paramAnonymousView.Aj(bool);
-          paramAnonymousView.gqv();
-          paramAnonymousView.gqu();
+          paramAnonymousView.FF(bool);
+          paramAnonymousView.hNu();
+          paramAnonymousView.hNt();
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/topstory/ui/video/TopStoryBaseVideoUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(126082);
           return;
         }
       }
     });
-    this.MZj.setVisibility(8);
-    this.MZo = ((RecyclerView)findViewById(c.d.video_recycle_view));
-    this.MZo.a(this.iZi);
-    this.MZo.setItemAnimator(new a((byte)0));
-    this.set = new LinearLayoutManager();
-    this.MZo.setLayoutManager(this.set);
-    this.MZL = androidx.recyclerview.widget.u.e(this.set);
-    this.MZp = grr();
-    this.MZo.setAdapter(this.MZp);
-    this.MZr = ((RecyclerView)findViewById(c.d.fs_video_recycle_view));
-    this.MZr.a(this.iZi);
-    this.MZr.setItemAnimator(new a((byte)0));
-    this.MZs = new LinearLayoutManager();
-    this.MZr.setLayoutManager(this.MZs);
-    this.MZM = androidx.recyclerview.widget.u.e(this.MZs);
-    this.MZt = grs();
-    this.MZr.setAdapter(this.MZt);
-    this.MZr.setVisibility(8);
-    if ((!this.poG) && (!gqI()))
+    this.TLS.setVisibility(8);
+    this.TLX = ((RecyclerView)findViewById(c.d.video_recycle_view));
+    this.TLX.a(this.lBe);
+    this.TLX.setItemAnimator(new TopStoryBaseVideoUI.a(this, (byte)0));
+    this.vqi = new LinearLayoutManager();
+    this.TLX.setLayoutManager(this.vqi);
+    this.TMu = androidx.recyclerview.widget.s.e(this.vqi);
+    this.TLY = hOq();
+    this.TLX.setAdapter(this.TLY);
+    this.TMa = ((RecyclerView)findViewById(c.d.fs_video_recycle_view));
+    this.TMa.a(this.lBe);
+    this.TMa.setItemAnimator(new TopStoryBaseVideoUI.a(this, (byte)0));
+    this.TMb = new LinearLayoutManager();
+    this.TMa.setLayoutManager(this.TMb);
+    this.TMv = androidx.recyclerview.widget.s.e(this.TMb);
+    this.TMc = hOr();
+    this.TMa.setAdapter(this.TMc);
+    this.TMa.setVisibility(8);
+    if ((!this.str) && (!hNH()))
     {
-      this.MZn = new i(getApplicationContext());
-      this.MZn.enable();
-      this.MZn.MZW = this.MZB;
-      this.poG = true;
+      this.TLW = new i(getApplicationContext());
+      this.TLW.enable();
+      this.TLW.TMF = this.TMk;
+      this.str = true;
     }
-    if (this.MWu.iYs) {
-      Aj(this.MWu.iYs);
+    if (this.TIY.lAj) {
+      FF(this.TIY.lAj);
     }
-    this.MZC.Nai = this;
-    this.MZl.setOnClickListener(new TopStoryBaseVideoUI.6(this));
+    this.TMl.TMR = this;
+    this.TLU.setOnClickListener(new TopStoryBaseVideoUI.6(this));
   }
   
-  public void ky(int paramInt1, int paramInt2)
+  public void mm(int paramInt1, int paramInt2)
   {
-    this.MZF.kB(paramInt1, paramInt2);
+    this.TMo.mp(paramInt1, paramInt2);
   }
   
   public void onBackPressed()
   {
-    grl();
+    hOk();
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    ata();
+    aNi();
     initContentView();
-    com.tencent.mm.kernel.h.aGY().a(2802, this.MZP);
+    com.tencent.mm.kernel.h.aZW().a(2802, this.TMy);
   }
   
   public void onDestroy()
   {
-    com.tencent.mm.plugin.topstory.a.i.a(this.MWu, getActivityBrowseTimeMs(), this.MZG.ajJ(this.MWu.UuM));
-    if (this.poG)
+    com.tencent.mm.plugin.topstory.a.h.a(this.TIY, getActivityBrowseTimeMs(), this.TMp.apc(this.TIY.abOo));
+    if (this.str)
     {
-      this.MZn.disable();
-      this.MZn.MZW = null;
-      this.MZn = null;
+      this.TLW.disable();
+      this.TLW.TMF = null;
+      this.TLW = null;
     }
-    if (this.MZO != null) {
-      com.tencent.mm.kernel.h.aGY().a(this.MZO);
+    if (this.TMx != null) {
+      com.tencent.mm.kernel.h.aZW().a(this.TMx);
     }
-    com.tencent.mm.kernel.h.aGY().b(2802, this.MZP);
-    this.MZG.onUIDestroy();
-    ((com.tencent.mm.plugin.topstory.a.b)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.topstory.a.b.class)).onVideoListUIDestroy(this.MWu);
-    this.MZF.onUIDestroy();
-    this.MZC.onUIDestroy();
-    this.MZD.onUIDestroy();
-    this.MZE.onUIDestroy();
-    com.tencent.mm.plugin.websearch.api.a.a.rE(16);
-    if (this.MZw != null) {
-      this.MZw.onDestroy();
+    com.tencent.mm.kernel.h.aZW().b(2802, this.TMy);
+    this.TMp.onUIDestroy();
+    ((com.tencent.mm.plugin.topstory.a.b)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.topstory.a.b.class)).onVideoListUIDestroy(this.TIY);
+    this.TMo.onUIDestroy();
+    this.TMl.onUIDestroy();
+    this.TMm.onUIDestroy();
+    this.TMn.onUIDestroy();
+    com.tencent.mm.plugin.websearch.api.a.a.rG(16);
+    if (this.TMf != null) {
+      this.TMf.onDestroy();
     }
     super.onDestroy();
   }
@@ -1035,11 +1011,11 @@ public abstract class TopStoryBaseVideoUI
     if ((paramInt == 25) && (paramKeyEvent.getAction() == 0))
     {
       Log.i("MicroMsg.TopStory.TopStoryBaseVideoUI", "onKeyDown KEYCODE_VOLUME_DOWN %d", new Object[] { Integer.valueOf(getSystemVolume()) });
-      esv localesv = this.MWu;
+      foe localfoe = this.TIY;
       if (getSystemVolume() <= 1)
       {
-        localesv.iYs = bool;
-        grt();
+        localfoe.lAj = bool;
+        hOs();
       }
     }
     for (;;)
@@ -1050,8 +1026,8 @@ public abstract class TopStoryBaseVideoUI
       if ((paramInt == 24) && (paramKeyEvent.getAction() == 0))
       {
         Log.i("MicroMsg.TopStory.TopStoryBaseVideoUI", "onKeyDown KEYCODE_VOLUME_UP %d", new Object[] { Integer.valueOf(getSystemVolume()) });
-        this.MWu.iYs = false;
-        grt();
+        this.TIY.lAj = false;
+        hOs();
       }
     }
   }
@@ -1061,15 +1037,15 @@ public abstract class TopStoryBaseVideoUI
     super.onPause();
     try
     {
-      this.MZF.onUIPause();
-      ((com.tencent.mm.plugin.topstory.a.b)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.topstory.a.b.class)).onVideoListUIPause();
+      this.TMo.onUIPause();
+      ((com.tencent.mm.plugin.topstory.a.b)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.topstory.a.b.class)).onVideoListUIPause();
       label25:
-      com.tencent.mm.plugin.websearch.api.a.a.rE(15);
-      if (this.MZv != null) {
-        this.MZv.aOj();
+      com.tencent.mm.plugin.websearch.api.a.a.rG(15);
+      if (this.TMe != null) {
+        this.TMe.bhW();
       }
-      if (this.MZw != null) {
-        this.MZw.aOj();
+      if (this.TMf != null) {
+        this.TMf.bhW();
       }
       return;
     }
@@ -1082,17 +1058,17 @@ public abstract class TopStoryBaseVideoUI
   public void onResume()
   {
     super.onResume();
-    grk();
-    grt();
-    ((com.tencent.mm.plugin.topstory.a.b)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.topstory.a.b.class)).onVideoListUIResume();
-    this.MZF.onUIResume();
-    this.MZC.IYy = l.fWI();
-    com.tencent.mm.plugin.websearch.api.a.a.rE(14);
-    if (this.MZv != null) {
-      this.MZv.bNV();
+    hOj();
+    hOs();
+    ((com.tencent.mm.plugin.topstory.a.b)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.topstory.a.b.class)).onVideoListUIResume();
+    this.TMo.onUIResume();
+    this.TMl.PhY = l.hoZ();
+    com.tencent.mm.plugin.websearch.api.a.a.rG(14);
+    if (this.TMe != null) {
+      this.TMe.coi();
     }
-    if (this.MZw != null) {
-      this.MZw.bNV();
+    if (this.TMf != null) {
+      this.TMf.coi();
     }
   }
   
@@ -1101,47 +1077,10 @@ public abstract class TopStoryBaseVideoUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
-  
-  public void t(final List<esy> paramList, final boolean paramBoolean)
-  {
-    MMHandlerThread.postToMainThread(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(126077);
-        if (TopStoryBaseVideoUI.this.MZN)
-        {
-          TopStoryBaseVideoUI.this.MZt.u(paramList, paramBoolean);
-          TopStoryBaseVideoUI.this.MZp.alc.notifyChanged();
-          AppMethodBeat.o(126077);
-          return;
-        }
-        TopStoryBaseVideoUI.this.MZp.u(paramList, paramBoolean);
-        TopStoryBaseVideoUI.this.MZt.alc.notifyChanged();
-        AppMethodBeat.o(126077);
-      }
-    });
-  }
-  
-  final class a
-    extends androidx.recyclerview.widget.g
-  {
-    private a() {}
-    
-    public final void G(RecyclerView.v paramv)
-    {
-      AppMethodBeat.i(205375);
-      super.G(paramv);
-      TopStoryBaseVideoUI.this.gro();
-      TopStoryBaseVideoUI.this.MZq.b(TopStoryBaseVideoUI.this);
-      Log.i("MicroMsg.TopStory.TopStoryBaseVideoUI", "onRemoveFinished %d", new Object[] { Integer.valueOf(paramv.md()) });
-      AppMethodBeat.o(205375);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.TopStoryBaseVideoUI
  * JD-Core Version:    0.7.0.1
  */

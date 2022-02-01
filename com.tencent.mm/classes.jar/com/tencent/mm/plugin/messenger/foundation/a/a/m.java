@@ -5,7 +5,7 @@ import com.tencent.mm.sdk.storage.IStorage;
 public abstract interface m
   extends IStorage
 {
-  public abstract long aOB(String paramString);
+  public abstract long aLA(String paramString);
 }
 
 

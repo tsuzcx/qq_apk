@@ -6,6 +6,9 @@ import android.net.Uri;
 import com.google.android.gms.common.api.GoogleApi;
 import com.google.android.gms.common.api.GoogleApi.Settings;
 import com.google.android.gms.tasks.Task;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 public abstract class MessageClient
   extends GoogleApi<Wearable.WearableOptions>
@@ -32,6 +35,9 @@ public abstract class MessageClient
   
   public abstract Task<Integer> sendMessage(String paramString1, String paramString2, byte[] paramArrayOfByte);
   
+  @Retention(RetentionPolicy.SOURCE)
+  public static @interface FilterType {}
+  
   public static abstract interface OnMessageReceivedListener
     extends MessageApi.MessageListener
   {
@@ -40,7 +46,7 @@ public abstract class MessageClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.MessageClient
  * JD-Core Version:    0.7.0.1
  */

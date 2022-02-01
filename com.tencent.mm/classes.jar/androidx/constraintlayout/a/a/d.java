@@ -5,60 +5,60 @@ import java.util.ArrayList;
 
 public final class d
 {
-  protected f Bd;
-  protected f Be;
-  protected f Bf;
-  protected f Bg;
-  protected f Bh;
-  protected f Bi;
-  protected f Bj;
-  protected ArrayList<f> Bk;
-  protected int Bl;
-  protected int Bm;
-  protected float Bn = 0.0F;
-  protected boolean Bo;
-  protected boolean Bp;
-  protected boolean Bq;
-  boolean Br;
+  protected f bhl;
+  protected f bhm;
+  protected f bhn;
+  protected f bho;
+  protected f bhp;
+  protected f bhq;
+  protected f bhr;
+  protected ArrayList<f> bhs;
+  protected int bht;
+  protected int bhu;
+  protected float bhv = 0.0F;
+  protected boolean bhw;
+  protected boolean bhx;
+  protected boolean bhy;
+  boolean bhz;
   private int mOrientation;
-  private boolean tL = false;
+  private boolean uK = false;
   
   public d(f paramf, int paramInt, boolean paramBoolean)
   {
-    this.Bd = paramf;
+    this.bhl = paramf;
     this.mOrientation = paramInt;
-    this.tL = paramBoolean;
+    this.uK = paramBoolean;
   }
   
-  final void ft()
+  final void CC()
   {
     boolean bool = true;
-    AppMethodBeat.i(229485);
+    AppMethodBeat.i(194037);
     int k = this.mOrientation * 2;
-    Object localObject2 = this.Bd;
-    Object localObject1 = this.Bd;
+    Object localObject2 = this.bhl;
+    Object localObject1 = this.bhl;
     int i = 0;
     while (i == 0)
     {
-      this.Bl += 1;
-      ((f)localObject1).Dk[this.mOrientation] = null;
-      ((f)localObject1).Dj[this.mOrientation] = null;
+      this.bht += 1;
+      ((f)localObject1).bjs[this.mOrientation] = null;
+      ((f)localObject1).bjr[this.mOrientation] = null;
       int j;
-      if (((f)localObject1).CX != 8)
+      if (((f)localObject1).bje != 8)
       {
-        if (this.Be == null) {
-          this.Be = ((f)localObject1);
+        if (this.bhm == null) {
+          this.bhm = ((f)localObject1);
         }
-        this.Bg = ((f)localObject1);
-        if ((localObject1.Cz[this.mOrientation] == f.a.Dq) && ((localObject1.Cb[this.mOrientation] == 0) || (localObject1.Cb[this.mOrientation] == 3) || (localObject1.Cb[this.mOrientation] == 2)))
+        this.bho = ((f)localObject1);
+        if ((localObject1.biH[this.mOrientation] == f.a.bjy) && ((localObject1.bii[this.mOrientation] == 0) || (localObject1.bii[this.mOrientation] == 3) || (localObject1.bii[this.mOrientation] == 2)))
         {
-          this.Bm += 1;
-          float f = localObject1.Di[this.mOrientation];
+          this.bhu += 1;
+          float f = localObject1.bjq[this.mOrientation];
           if (f > 0.0F) {
-            this.Bn += localObject1.Di[this.mOrientation];
+            this.bhv += localObject1.bjq[this.mOrientation];
           }
           j = this.mOrientation;
-          if ((((f)localObject1).CX == 8) || (localObject1.Cz[j] != f.a.Dq) || ((localObject1.Cb[j] != 0) && (localObject1.Cb[j] != 3))) {
+          if ((((f)localObject1).bje == 8) || (localObject1.biH[j] != f.a.bjy) || ((localObject1.bii[j] != 0) && (localObject1.bii[j] != 3))) {
             break label438;
           }
           j = 1;
@@ -68,34 +68,34 @@ public final class d
             if (f >= 0.0F) {
               break label443;
             }
-            this.Bo = true;
-            if (this.Bk == null) {
-              this.Bk = new ArrayList();
+            this.bhw = true;
+            if (this.bhs == null) {
+              this.bhs = new ArrayList();
             }
-            this.Bk.add(localObject1);
+            this.bhs.add(localObject1);
           }
           label264:
-          if (this.Bi == null) {
-            this.Bi = ((f)localObject1);
+          if (this.bhq == null) {
+            this.bhq = ((f)localObject1);
           }
-          if (this.Bj != null) {
-            this.Bj.Dj[this.mOrientation] = localObject1;
+          if (this.bhr != null) {
+            this.bhr.bjr[this.mOrientation] = localObject1;
           }
-          this.Bj = ((f)localObject1);
+          this.bhr = ((f)localObject1);
         }
       }
       if (localObject2 != localObject1) {
-        ((f)localObject2).Dk[this.mOrientation] = localObject1;
+        ((f)localObject2).bjs[this.mOrientation] = localObject1;
       }
-      localObject2 = localObject1.Cx[(k + 1)].Bv;
+      localObject2 = localObject1.biF[(k + 1)].bhD;
       Object localObject3;
       if (localObject2 != null)
       {
-        localObject3 = ((e)localObject2).Bt;
-        if (localObject3.Cx[k].Bv != null)
+        localObject3 = ((e)localObject2).bhB;
+        if (localObject3.biF[k].bhD != null)
         {
           localObject2 = localObject3;
-          if (localObject3.Cx[k].Bv.Bt == localObject1) {
+          if (localObject3.biF[k].bhD.bhB == localObject1) {
             break label418;
           }
         }
@@ -114,27 +114,27 @@ public final class d
         j = 0;
         break label249;
         label443:
-        this.Bp = true;
+        this.bhx = true;
         break label264;
       }
       label457:
       i = 1;
       localObject2 = localObject1;
     }
-    this.Bf = ((f)localObject1);
-    if ((this.mOrientation == 0) && (this.tL))
+    this.bhn = ((f)localObject1);
+    if ((this.mOrientation == 0) && (this.uK))
     {
-      this.Bh = this.Bf;
-      if ((!this.Bp) || (!this.Bo)) {
+      this.bhp = this.bhn;
+      if ((!this.bhx) || (!this.bhw)) {
         break label531;
       }
     }
     for (;;)
     {
-      this.Bq = bool;
-      AppMethodBeat.o(229485);
+      this.bhy = bool;
+      AppMethodBeat.o(194037);
       return;
-      this.Bh = this.Bd;
+      this.bhp = this.bhl;
       break;
       label531:
       bool = false;
@@ -143,7 +143,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     androidx.constraintlayout.a.a.d
  * JD-Core Version:    0.7.0.1
  */

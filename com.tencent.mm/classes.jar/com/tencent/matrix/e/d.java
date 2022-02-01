@@ -1,33 +1,60 @@
 package com.tencent.matrix.e;
 
 import android.content.Context;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 public final class d
 {
-  private static final ThreadLocal<MessageDigest> djg = new d.1();
-  private static final ThreadLocal<MessageDigest> djh = new ThreadLocal()
-  {
-    private static MessageDigest initialValue()
-    {
-      try
-      {
-        MessageDigest localMessageDigest = MessageDigest.getInstance("SHA-256");
-        return localMessageDigest;
-      }
-      catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
-      {
-        throw new RuntimeException("Initialize SHA256-DIGEST failed.", localNoSuchAlgorithmException);
-      }
-    }
-  };
+  private static final ThreadLocal<MessageDigest> fjb = new d.1();
+  private static final ThreadLocal<MessageDigest> fjc = new d.2();
   private static char[] hexDigits;
   private static String processName = null;
   
   static
   {
     hexDigits = new char[] { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
+  }
+  
+  public static void Y(String paramString1, String paramString2)
+  {
+    try
+    {
+      paramString2 = new BufferedReader(new InputStreamReader(new FileInputStream(new File(paramString2)), "UTF-8"));
+      try
+      {
+        for (;;)
+        {
+          String str = paramString2.readLine();
+          if (str == null) {
+            break;
+          }
+          c.i(paramString1, str, new Object[0]);
+        }
+        try
+        {
+          c.e(paramString1, "printFileByLine failed e : " + localObject1.getMessage(), new Object[0]);
+          return;
+        }
+        finally
+        {
+          if (paramString2 == null) {
+            break label104;
+          }
+          paramString2.close();
+        }
+      }
+      finally {}
+    }
+    finally
+    {
+      label104:
+      paramString2 = null;
+    }
+    paramString2.close();
   }
   
   public static String e(Exception paramException)
@@ -51,25 +78,6 @@ public final class d
     return paramException.toString();
   }
   
-  public static long fN(String paramString)
-  {
-    if (paramString != null) {
-      try
-      {
-        if (paramString.length() <= 0) {
-          return 0L;
-        }
-        long l = Long.decode(paramString).longValue();
-        return l;
-      }
-      catch (NumberFormatException paramString)
-      {
-        c.w("Matrix.MatrixUtil", "parseLong error: " + paramString.getMessage(), new Object[0]);
-      }
-    }
-    return 0L;
-  }
-  
   public static String getProcessName(Context paramContext)
   {
     if (processName != null) {
@@ -84,38 +92,38 @@ public final class d
   private static String getProcessNameInternal(Context paramContext)
   {
     // Byte code:
-    //   0: invokestatic 137	android/os/Process:myPid	()I
+    //   0: invokestatic 148	android/os/Process:myPid	()I
     //   3: istore_1
     //   4: aload_0
     //   5: ifnull +7 -> 12
     //   8: iload_1
     //   9: ifgt +6 -> 15
-    //   12: ldc 57
+    //   12: ldc 113
     //   14: areturn
     //   15: aload_0
-    //   16: ldc 139
-    //   18: invokevirtual 145	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   21: checkcast 147	android/app/ActivityManager
+    //   16: ldc 150
+    //   18: invokevirtual 156	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   21: checkcast 158	android/app/ActivityManager
     //   24: astore_0
     //   25: aload_0
     //   26: ifnull +88 -> 114
     //   29: aload_0
-    //   30: invokevirtual 151	android/app/ActivityManager:getRunningAppProcesses	()Ljava/util/List;
+    //   30: invokevirtual 162	android/app/ActivityManager:getRunningAppProcesses	()Ljava/util/List;
     //   33: astore_0
     //   34: aload_0
     //   35: ifnull +79 -> 114
     //   38: aload_0
-    //   39: invokeinterface 157 1 0
+    //   39: invokeinterface 168 1 0
     //   44: astore 4
     //   46: aload 4
-    //   48: invokeinterface 163 1 0
+    //   48: invokeinterface 174 1 0
     //   53: ifeq +33 -> 86
     //   56: aload 4
-    //   58: invokeinterface 167 1 0
-    //   63: checkcast 169	android/app/ActivityManager$RunningAppProcessInfo
+    //   58: invokeinterface 178 1 0
+    //   63: checkcast 180	android/app/ActivityManager$RunningAppProcessInfo
     //   66: astore_0
     //   67: aload_0
-    //   68: getfield 173	android/app/ActivityManager$RunningAppProcessInfo:pid	I
+    //   68: getfield 184	android/app/ActivityManager$RunningAppProcessInfo:pid	I
     //   71: istore_2
     //   72: iload_2
     //   73: iload_1
@@ -123,19 +131,19 @@ public final class d
     //   77: aload_0
     //   78: ifnull +36 -> 114
     //   81: aload_0
-    //   82: getfield 174	android/app/ActivityManager$RunningAppProcessInfo:processName	Ljava/lang/String;
+    //   82: getfield 185	android/app/ActivityManager$RunningAppProcessInfo:processName	Ljava/lang/String;
     //   85: areturn
     //   86: aconst_null
     //   87: astore_0
     //   88: goto -11 -> 77
     //   91: astore_0
-    //   92: new 59	java/lang/StringBuilder
+    //   92: new 83	java/lang/StringBuilder
     //   95: dup
-    //   96: ldc 176
-    //   98: invokespecial 66	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   96: ldc 187
+    //   98: invokespecial 86	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   101: aload_0
-    //   102: invokevirtual 177	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   105: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   102: invokevirtual 188	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   105: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   108: pop
     //   109: aconst_null
     //   110: astore_0
@@ -143,24 +151,24 @@ public final class d
     //   114: sipush 128
     //   117: newarray byte
     //   119: astore 5
-    //   121: new 179	java/io/FileInputStream
+    //   121: new 55	java/io/FileInputStream
     //   124: dup
-    //   125: new 59	java/lang/StringBuilder
+    //   125: new 83	java/lang/StringBuilder
     //   128: dup
-    //   129: ldc 181
-    //   131: invokespecial 66	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   129: ldc 190
+    //   131: invokespecial 86	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   134: iload_1
-    //   135: invokevirtual 90	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   138: ldc 183
-    //   140: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   143: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   146: invokespecial 184	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   135: invokevirtual 134	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   138: ldc 192
+    //   140: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   143: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   146: invokespecial 193	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   149: astore 4
     //   151: aload 4
     //   153: astore_0
     //   154: aload 4
     //   156: aload 5
-    //   158: invokevirtual 188	java/io/FileInputStream:read	([B)I
+    //   158: invokevirtual 197	java/io/FileInputStream:read	([B)I
     //   161: istore_3
     //   162: iload_3
     //   163: ifle +53 -> 216
@@ -169,22 +177,22 @@ public final class d
     //   168: goto +147 -> 315
     //   171: aload 4
     //   173: astore_0
-    //   174: new 101	java/lang/String
+    //   174: new 199	java/lang/String
     //   177: dup
     //   178: aload 5
     //   180: iconst_0
     //   181: iload_2
-    //   182: ldc 190
-    //   184: invokestatic 196	java/nio/charset/Charset:forName	(Ljava/lang/String;)Ljava/nio/charset/Charset;
-    //   187: invokespecial 199	java/lang/String:<init>	([BIILjava/nio/charset/Charset;)V
+    //   182: ldc 65
+    //   184: invokestatic 205	java/nio/charset/Charset:forName	(Ljava/lang/String;)Ljava/nio/charset/Charset;
+    //   187: invokespecial 208	java/lang/String:<init>	([BIILjava/nio/charset/Charset;)V
     //   190: astore 5
     //   192: aload 4
-    //   194: invokevirtual 202	java/io/FileInputStream:close	()V
+    //   194: invokevirtual 209	java/io/FileInputStream:close	()V
     //   197: aload 5
     //   199: areturn
     //   200: astore_0
     //   201: aload_0
-    //   202: invokevirtual 177	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   202: invokevirtual 188	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   205: pop
     //   206: aload 5
     //   208: areturn
@@ -194,12 +202,12 @@ public final class d
     //   212: istore_1
     //   213: goto +102 -> 315
     //   216: aload 4
-    //   218: invokevirtual 202	java/io/FileInputStream:close	()V
-    //   221: ldc 57
+    //   218: invokevirtual 209	java/io/FileInputStream:close	()V
+    //   221: ldc 113
     //   223: areturn
     //   224: astore_0
     //   225: aload_0
-    //   226: invokevirtual 177	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   226: invokevirtual 188	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   229: pop
     //   230: goto -9 -> 221
     //   233: astore 5
@@ -207,22 +215,22 @@ public final class d
     //   236: astore 4
     //   238: aload 4
     //   240: astore_0
-    //   241: new 59	java/lang/StringBuilder
+    //   241: new 83	java/lang/StringBuilder
     //   244: dup
-    //   245: ldc 176
-    //   247: invokespecial 66	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   245: ldc 187
+    //   247: invokespecial 86	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   250: aload 5
-    //   252: invokevirtual 177	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   255: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   252: invokevirtual 188	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   255: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   258: pop
     //   259: aload 4
     //   261: ifnull -40 -> 221
     //   264: aload 4
-    //   266: invokevirtual 202	java/io/FileInputStream:close	()V
+    //   266: invokevirtual 209	java/io/FileInputStream:close	()V
     //   269: goto -48 -> 221
     //   272: astore_0
     //   273: aload_0
-    //   274: invokevirtual 177	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   274: invokevirtual 188	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   277: pop
     //   278: goto -57 -> 221
     //   281: astore 4
@@ -231,12 +239,12 @@ public final class d
     //   285: aload_0
     //   286: ifnull +7 -> 293
     //   289: aload_0
-    //   290: invokevirtual 202	java/io/FileInputStream:close	()V
+    //   290: invokevirtual 209	java/io/FileInputStream:close	()V
     //   293: aload 4
     //   295: athrow
     //   296: astore_0
     //   297: aload_0
-    //   298: invokevirtual 177	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   298: invokevirtual 188	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   301: pop
     //   302: goto -9 -> 293
     //   305: astore 4
@@ -283,10 +291,29 @@ public final class d
     //   154	162	310	java/lang/Exception
     //   174	192	310	java/lang/Exception
   }
+  
+  public static long hq(String paramString)
+  {
+    if (paramString != null) {
+      try
+      {
+        if (paramString.length() <= 0) {
+          return 0L;
+        }
+        long l = Long.decode(paramString).longValue();
+        return l;
+      }
+      catch (NumberFormatException paramString)
+      {
+        c.w("Matrix.MatrixUtil", "parseLong error: " + paramString.getMessage(), new Object[0]);
+      }
+    }
+    return 0L;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.e.d
  * JD-Core Version:    0.7.0.1
  */

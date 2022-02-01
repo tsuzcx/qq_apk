@@ -1,29 +1,34 @@
 package com.tencent.mm.plugin.finder.service;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.b.az;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.cm;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.finder.PluginFinder;
 import com.tencent.mm.plugin.finder.api.d;
 import com.tencent.mm.plugin.finder.api.d.a;
-import com.tencent.mm.plugin.finder.api.i;
-import com.tencent.mm.plugin.finder.storage.af;
-import com.tencent.mm.plugin.finder.storage.e;
-import com.tencent.mm.plugin.finder.storage.y;
-import com.tencent.mm.plugin.finder.utils.aj;
-import com.tencent.mm.plugin.findersdk.a.ab;
-import com.tencent.mm.plugin.findersdk.a.ai;
-import com.tencent.mm.plugin.findersdk.a.m;
-import com.tencent.mm.plugin.findersdk.a.m.a;
-import com.tencent.mm.plugin.findersdk.a.m.b;
-import com.tencent.mm.plugin.findersdk.a.m.c;
-import com.tencent.mm.protocal.protobuf.arg;
+import com.tencent.mm.plugin.finder.api.m;
+import com.tencent.mm.plugin.finder.conv.o;
+import com.tencent.mm.plugin.finder.storage.aa;
+import com.tencent.mm.plugin.finder.storage.ab;
+import com.tencent.mm.plugin.finder.storage.ak;
+import com.tencent.mm.plugin.finder.storage.f;
+import com.tencent.mm.plugin.finder.utils.av;
+import com.tencent.mm.plugin.findersdk.a.bp;
+import com.tencent.mm.plugin.findersdk.a.ch;
+import com.tencent.mm.plugin.findersdk.a.y;
+import com.tencent.mm.plugin.findersdk.a.y.a;
+import com.tencent.mm.plugin.findersdk.a.y.b;
+import com.tencent.mm.protocal.protobuf.avk;
+import com.tencent.mm.protocal.protobuf.avm;
+import com.tencent.mm.protocal.protobuf.avo;
+import com.tencent.mm.protocal.protobuf.avr;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.bv.a;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.bx.a;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -33,58 +38,75 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import kotlin.a.j;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.b.aa.d;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.t;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.ah;
+import kotlin.g.a.b;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/service/FinderContactService;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderContactService;", "()V", "aliasContactStorage", "Lcom/tencent/mm/plugin/finder/storage/FinderMsgAliasContactStorage;", "getAliasContactStorage", "()Lcom/tencent/mm/plugin/finder/storage/FinderMsgAliasContactStorage;", "aliasContactStorage$delegate", "Lkotlin/Lazy;", "cacheContactItems", "", "", "kotlin.jvm.PlatformType", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "", "contactExtension", "Lcom/tencent/mm/storage/IContactStorage$IContactExtension;", "getContactExtension", "()Lcom/tencent/mm/storage/IContactStorage$IContactExtension;", "finderContactFetcher", "Lcom/tencent/mm/plugin/finder/cgi/fetcher/FinderContactFetcher;", "getFinderContactFetcher", "()Lcom/tencent/mm/plugin/finder/cgi/fetcher/FinderContactFetcher;", "finderContactFetcher$delegate", "gettingContactSet", "Ljava/util/concurrent/ConcurrentHashMap;", "", "sessionInfoStorage", "Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "getSessionInfoStorage", "()Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "sessionInfoStorage$delegate", "strangerContactStorage", "Lcom/tencent/mm/plugin/finder/storage/FinderMsgStrangerContactStorage;", "getStrangerContactStorage", "()Lcom/tencent/mm/plugin/finder/storage/FinderMsgStrangerContactStorage;", "strangerContactStorage$delegate", "addOnStorageChange", "", "storageChange", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "checkContactExpired", "username", "isCheckAvatar", "", "clearFollowStateCache", "follow", "finderUser", "opType", "", "feedId", "", "isPrivate", "fromCommentScene", "getFinderContact", "callback", "Lcom/tencent/mm/plugin/findersdk/api/IFinderContactService$GetContactCallback;", "type", "usernameList", "", "Lcom/tencent/mm/plugin/findersdk/api/IFinderContactService$GetContactListCallback;", "getFinderMsgAliasContact", "sessionId", "getFinderMsgStrangerContact", "commentId", "objectId", "getFollowState", "Lcom/tencent/mm/plugin/findersdk/api/IFinderContactService$GetFollowStateCallback;", "getLocalContact", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;", "getLocalFinderContact", "getLocalFinderMsgAliasContact", "getLocalFinderMsgStrangerContact", "insertOrUpdateContact", "contact", "isContactExpired", "isAd", "isContactFromMatch", "isContactRetryLimited", "isSessionMute", "talker", "removeOnStorageChange", "simpleTalker", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/service/FinderContactService;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderContactService;", "()V", "aliasContactStorage", "Lcom/tencent/mm/plugin/finder/storage/FinderMsgAliasContactStorage;", "getAliasContactStorage", "()Lcom/tencent/mm/plugin/finder/storage/FinderMsgAliasContactStorage;", "aliasContactStorage$delegate", "Lkotlin/Lazy;", "cacheContactItems", "", "", "kotlin.jvm.PlatformType", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "", "contactExtension", "Lcom/tencent/mm/storage/IContactStorage$IContactExtension;", "getContactExtension", "()Lcom/tencent/mm/storage/IContactStorage$IContactExtension;", "finderContactFetcher", "Lcom/tencent/mm/plugin/finder/cgi/fetcher/FinderContactFetcher;", "getFinderContactFetcher", "()Lcom/tencent/mm/plugin/finder/cgi/fetcher/FinderContactFetcher;", "finderContactFetcher$delegate", "gettingContactSet", "Ljava/util/concurrent/ConcurrentHashMap;", "", "sessionInfoStorage", "Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "getSessionInfoStorage", "()Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "sessionInfoStorage$delegate", "strangerContactStorage", "Lcom/tencent/mm/plugin/finder/storage/FinderMsgStrangerContactStorage;", "getStrangerContactStorage", "()Lcom/tencent/mm/plugin/finder/storage/FinderMsgStrangerContactStorage;", "strangerContactStorage$delegate", "addOnStorageChange", "", "storageChange", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "checkContactExpired", "username", "isCheckAvatar", "", "clearFollowStateCache", "follow", "finderUser", "opType", "", "feedId", "", "isPrivate", "fromCommentScene", "getAllFollowedContact", "", "Lcom/tencent/mm/storage/Contact;", "getContactTableInfo", "getFinderContact", "callback", "Lcom/tencent/mm/plugin/findersdk/api/IFinderContactService$GetContactCallback;", "type", "usernameList", "", "Lcom/tencent/mm/plugin/findersdk/api/IFinderContactService$GetContactListCallback;", "limitTimeMs", "getFinderContactImpl", "expiredTimeMs", "getFinderMsgAliasContact", "sessionId", "getFinderMsgCommentLikeContact", "commentId", "commentLikeId", "getFinderMsgContactByName", "getFinderMsgFansContact", "fansId", "getFinderMsgStrangerContact", "objectId", "getFollowState", "Lcom/tencent/mm/plugin/findersdk/api/IFinderContactService$GetFollowStateCallback;", "getIContactExtension", "getLocalContact", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;", "getLocalFinderContact", "getLocalFinderMsgAliasContact", "getLocalFinderMsgStrangerContact", "insertOrUpdateContact", "contact", "isContactExpired", "isAd", "isContactFromMatch", "isContactRetryLimited", "isSessionMute", "talker", "removeOnStorageChange", "simpleTalker", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  implements m
+  implements y
 {
-  public static final a AcY;
-  private final f AcU;
-  private final Map<String, i> AcV;
-  public final bv.a AcW;
-  private final ConcurrentHashMap<String, Object> AcX;
-  private final f xeE;
-  private final f xeF;
-  private final f xgB;
+  public static final a FyJ;
+  private final j ADQ;
+  private final j ADR;
+  private final j AFU;
+  private final j FyK;
+  private final Map<String, m> FyL;
+  private final ConcurrentHashMap<String, Object> FyM;
+  private final bx.a pqO;
   
   static
   {
-    AppMethodBeat.i(221911);
-    AcY = new a((byte)0);
-    AppMethodBeat.o(221911);
+    AppMethodBeat.i(330205);
+    FyJ = new a((byte)0);
+    AppMethodBeat.o(330205);
   }
   
   public a()
   {
-    AppMethodBeat.i(221910);
-    this.xgB = g.ar((kotlin.g.a.a)r.Adj);
-    this.xeE = g.ar((kotlin.g.a.a)s.Adk);
-    this.xeF = g.ar((kotlin.g.a.a)b.AcZ);
-    this.AcU = g.ar((kotlin.g.a.a)h.Adb);
-    this.AcV = Collections.synchronizedMap((Map)new HashMap());
-    this.AcW = ((bv.a)new g(this));
-    this.AcX = new ConcurrentHashMap();
-    AppMethodBeat.o(221910);
+    AppMethodBeat.i(330085);
+    this.AFU = k.cm((kotlin.g.a.a)a.q.FyT);
+    this.ADQ = k.cm((kotlin.g.a.a)r.FyU);
+    this.ADR = k.cm((kotlin.g.a.a)b.FyN);
+    this.FyK = k.cm((kotlin.g.a.a)h.FyQ);
+    this.FyL = Collections.synchronizedMap((Map)new HashMap());
+    this.pqO = ((bx.a)new g(this));
+    this.FyM = new ConcurrentHashMap();
+    AppMethodBeat.o(330085);
   }
   
-  private void a(List<String> paramList, final m.b paramb, int paramInt)
+  private static final void a(y.a parama, List paramList)
   {
-    AppMethodBeat.i(221780);
-    p.k(paramList, "usernameList");
-    p.k(paramb, "callback");
-    Log.i("Finder.ContactService", "[getContact] begin... usernameList=".concat(String.valueOf(paramList)));
-    m.b localb = (m.b)new m(paramList, paramb);
+    AppMethodBeat.i(330166);
+    s.u(parama, "$callback");
+    s.s(paramList, "contact");
+    parama.onDone((ch)p.oL(paramList));
+    AppMethodBeat.o(330166);
+  }
+  
+  private void a(List<String> paramList, y.b paramb, int paramInt)
+  {
+    AppMethodBeat.i(330114);
+    s.u(paramList, "usernameList");
+    s.u(paramb, "callback");
+    a(paramList, paramb, paramInt, -1L);
+    AppMethodBeat.o(330114);
+  }
+  
+  private final void a(List<String> paramList, y.b paramb, int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(330128);
+    Log.i("Finder.ContactService", s.X("[getContact] begin... usernameList=", paramList));
+    a..ExternalSyntheticLambda2 localExternalSyntheticLambda2 = new a..ExternalSyntheticLambda2(paramList, paramb);
     LinkedList localLinkedList2 = new LinkedList();
     LinkedList localLinkedList1 = new LinkedList();
     Iterator localIterator = ((Iterable)paramList).iterator();
+    int i;
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
@@ -92,112 +114,51 @@ public final class a
       for (i = 1;; i = 0)
       {
         if (i == 0) {
-          break label147;
+          break label133;
         }
         Log.e("Finder.ContactService", "username is null.");
-        localLinkedList2.add(new i());
+        localLinkedList2.add(new m());
         break;
       }
-      label147:
+      label133:
       if (paramInt == 4)
       {
-        paramb = com.tencent.mm.plugin.finder.api.a.wZL;
-        if (Util.isNullOrNil(str))
-        {
-          i = 0;
-          label167:
-          if (i == 0) {
-            break label464;
-          }
-          paramb = d.wZQ;
-          paramb = d.a.aAK(str);
-          localObject = com.tencent.mm.plugin.finder.api.a.dnd();
-          if (str == null) {
-            p.iCn();
-          }
-          localObject = ((com.tencent.mm.plugin.finder.api.a.b)localObject).aAI(str);
-          if (localObject == null) {
-            break label459;
-          }
-          if (paramb != null)
-          {
-            i = paramb.field_follow_Flag;
-            Log.i("Finder.FinderAdContactLogic", "update cache field_follow_Flag ".concat(String.valueOf(i)));
-            ((i)localObject).field_follow_Flag = i;
-          }
-          i = ((com.tencent.mm.plugin.b)h.ae(com.tencent.mm.plugin.b.class)).aad(str);
-          paramb = (m.b)localObject;
-          if (i > 0)
-          {
-            ((i)localObject).field_friendFollowCount = i;
-            paramb = (m.b)localObject;
-          }
-          label279:
-          if (paramb != null)
-          {
-            if (((CharSequence)paramb.getNickname()).length() != 0) {
-              break label482;
-            }
-            i = 1;
-            label301:
-            if ((i == 0) && (!b((ai)paramb))) {
-              break label555;
-            }
-          }
-          if ((!c((ai)paramb)) || (b((ai)paramb))) {
-            break label493;
-          }
-          localObject = new StringBuilder("[getFinderContact] isContactRetryLimited contact=");
-          if (paramb == null) {
-            break label488;
-          }
-        }
-      }
-      label447:
-      label453:
-      label459:
-      label464:
-      label482:
-      label488:
-      for (paramb = paramb.getUsername();; paramb = null)
-      {
-        Log.e("Finder.ContactService", paramb);
-        localLinkedList2.add(new i(str));
-        break;
-        paramb = com.tencent.mm.plugin.finder.api.a.dnd();
-        if (str == null) {
-          p.iCn();
-        }
-        paramb = paramb.aAI(str);
+        paramb = com.tencent.mm.plugin.finder.api.a.AwT;
+        paramb = com.tencent.mm.plugin.finder.api.a.a.auQ(str);
+        label148:
         if (paramb != null)
         {
-          paramb = (CharSequence)paramb.field_username;
-          if ((paramb != null) && (paramb.length() != 0)) {
-            break label447;
+          if (((CharSequence)paramb.getNickname()).length() != 0) {
+            break label261;
+          }
+          i = 1;
+          label170:
+          if ((i == 0) && (!a((ch)paramb, paramLong, 2))) {
+            break label338;
           }
         }
-        for (i = 1;; i = 0)
-        {
-          if (i == 0) {
-            break label453;
-          }
-          i = 0;
-          break;
+        if ((!b((ch)paramb)) || (a((ch)paramb, paramLong, 2))) {
+          break label275;
         }
-        i = 1;
-        break label167;
-        paramb = null;
-        break label279;
-        paramb = null;
-        break label279;
-        paramb = d.wZQ;
-        paramb = d.a.aAK(str);
-        break label279;
-        i = 0;
-        break label301;
+        if (paramb != null) {
+          break label267;
+        }
       }
-      label493:
-      Object localObject = new StringBuilder("contact is null[");
+      label261:
+      label267:
+      for (paramb = null;; paramb = paramb.getUsername())
+      {
+        Log.e("Finder.ContactService", s.X("[getFinderContact] isContactRetryLimited contact=", paramb));
+        localLinkedList2.add(new m(str));
+        break;
+        paramb = d.AwY;
+        paramb = d.a.auT(str);
+        break label148;
+        i = 0;
+        break label170;
+      }
+      label275:
+      StringBuilder localStringBuilder = new StringBuilder("contact is null[");
       if (paramb == null) {}
       for (boolean bool = true;; bool = false)
       {
@@ -205,154 +166,145 @@ public final class a
         localLinkedList1.add(str);
         break;
       }
-      label555:
+      label338:
       localLinkedList2.add(paramb);
     }
-    if (!((Collection)localLinkedList1).isEmpty())
-    {
+    if (!((Collection)localLinkedList1).isEmpty()) {
       i = 1;
-      if (i == 0) {
-        break label763;
-      }
-      if (paramInt != 4) {
-        break label682;
-      }
-      paramb = com.tencent.mm.plugin.finder.api.a.wZL;
-      if ((com.tencent.mm.plugin.finder.api.a.dnf() == 0L) || (com.tencent.mm.plugin.finder.api.a.dne() <= 0) || (cm.bfE() - com.tencent.mm.plugin.finder.api.a.dnf() >= com.tencent.mm.plugin.finder.api.a.dne())) {
-        break label661;
-      }
-      Log.i("Finder.FinderAdContactLogic", "interceptRequest");
     }
-    for (int i = 1;; i = 0)
+    while (i != 0)
     {
-      if (i == 0) {
-        break label682;
+      if (paramInt == 4)
+      {
+        paramb = com.tencent.mm.plugin.finder.api.a.AwT;
+        if (com.tencent.mm.plugin.finder.api.a.a.dTZ())
+        {
+          localExternalSyntheticLambda2.onDone(null);
+          AppMethodBeat.o(330128);
+          return;
+          i = 0;
+          continue;
+        }
       }
-      localb.eK(null);
-      AppMethodBeat.o(221780);
-      return;
-      i = 0;
-      break;
-      label661:
-      Log.i("Finder.FinderAdContactLogic", "not interceptRequest");
-      com.tencent.mm.plugin.finder.api.a.Kt(cm.bfE());
-    }
-    label682:
-    if (localLinkedList1.size() > 1)
-    {
-      dRp().a(paramList, (kotlin.g.a.b)new j(localb), paramInt);
-      AppMethodBeat.o(221780);
+      if (localLinkedList1.size() > 1)
+      {
+        ePq().a(paramList, (b)new i(localExternalSyntheticLambda2), paramInt);
+        AppMethodBeat.o(330128);
+        return;
+      }
+      paramList = ePq();
+      paramb = localLinkedList1.getFirst();
+      s.s(paramb, "reqList.first");
+      paramList.b((String)paramb, (b)new j(localExternalSyntheticLambda2), paramInt);
+      AppMethodBeat.o(330128);
       return;
     }
-    paramList = dRp();
-    paramb = localLinkedList1.getFirst();
-    p.j(paramb, "reqList.first");
-    paramList.a((String)paramb, (kotlin.g.a.b)new k(localb), paramInt);
-    AppMethodBeat.o(221780);
-    return;
-    label763:
-    localb.eK((List)localLinkedList2);
-    AppMethodBeat.o(221780);
+    localExternalSyntheticLambda2.onDone((List)localLinkedList2);
+    AppMethodBeat.o(330128);
   }
   
-  private static boolean b(ai paramai)
+  private static final void a(List paramList1, y.b paramb, List paramList2)
   {
-    AppMethodBeat.i(221891);
-    long l;
-    if (paramai != null)
+    AppMethodBeat.i(330164);
+    s.u(paramList1, "$usernameList");
+    s.u(paramb, "$callback");
+    paramList1 = new StringBuilder("[getContact] completed! usernameList=").append(paramList1).append(" result=");
+    s.s(paramList2, "result");
+    Object localObject = (Iterable)paramList2;
+    Collection localCollection = (Collection)new ArrayList(p.a((Iterable)localObject, 10));
+    localObject = ((Iterable)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      l = paramai.dnn();
-      if (System.currentTimeMillis() - l < 86400000L) {
-        break label96;
+      ch localch = (ch)((Iterator)localObject).next();
+      localCollection.add(localch.getUsername() + '=' + localch.getNickname());
+    }
+    Log.i("Finder.ContactService", (List)localCollection);
+    paramb.onDone(paramList2);
+    AppMethodBeat.o(330164);
+  }
+  
+  private static boolean a(ch paramch, long paramLong)
+  {
+    AppMethodBeat.i(330137);
+    long l1;
+    if (paramch == null)
+    {
+      l1 = 0L;
+      long l3 = System.currentTimeMillis();
+      long l2 = paramLong;
+      if (paramLong == -1L) {
+        l2 = 86400000L;
+      }
+      if (l3 - l1 < l2) {
+        break label119;
       }
     }
-    label96:
+    label119:
     for (boolean bool = true;; bool = false)
     {
       if (bool) {
-        Log.i("Finder.ContactService", "[isContactExpired] current=" + Util.formatUnixTime(System.currentTimeMillis() / 1000L) + " time=" + Util.formatUnixTime(l / 1000L));
+        Log.i("Finder.ContactService", "[isContactExpired] current=" + Util.formatUnixTime(System.currentTimeMillis() / 1000L) + " time=" + Util.formatUnixTime(l1 / 1000L));
       }
-      AppMethodBeat.o(221891);
+      AppMethodBeat.o(330137);
       return bool;
-      l = 0L;
+      l1 = paramch.dUt();
       break;
     }
   }
   
-  private static boolean c(ai paramai)
+  private static final void b(y.a parama, List paramList)
   {
-    AppMethodBeat.i(221893);
-    if (paramai != null) {}
-    for (int i = paramai.getRetryCount(); i >= 3; i = 0)
+    AppMethodBeat.i(330174);
+    s.u(parama, "$callback");
+    s.s(paramList, "contact");
+    parama.onDone((ch)p.oL(paramList));
+    AppMethodBeat.o(330174);
+  }
+  
+  private static boolean b(ch paramch)
+  {
+    AppMethodBeat.i(330155);
+    if (paramch == null) {}
+    for (int i = 0; i >= 3; i = paramch.getRetryCount())
     {
-      AppMethodBeat.o(221893);
+      AppMethodBeat.o(330155);
       return true;
     }
-    AppMethodBeat.o(221893);
+    AppMethodBeat.o(330155);
     return false;
   }
   
-  private final com.tencent.mm.plugin.finder.cgi.fetcher.a dRp()
+  private final ab dWJ()
   {
-    AppMethodBeat.i(221763);
-    com.tencent.mm.plugin.finder.cgi.fetcher.a locala = (com.tencent.mm.plugin.finder.cgi.fetcher.a)this.AcU.getValue();
-    AppMethodBeat.o(221763);
+    AppMethodBeat.i(330093);
+    ab localab = (ab)this.ADQ.getValue();
+    AppMethodBeat.o(330093);
+    return localab;
+  }
+  
+  private final aa dWK()
+  {
+    AppMethodBeat.i(330098);
+    aa localaa = (aa)this.ADR.getValue();
+    AppMethodBeat.o(330098);
+    return localaa;
+  }
+  
+  private final com.tencent.mm.plugin.finder.cgi.fetcher.a ePq()
+  {
+    AppMethodBeat.i(330107);
+    com.tencent.mm.plugin.finder.cgi.fetcher.a locala = (com.tencent.mm.plugin.finder.cgi.fetcher.a)this.FyK.getValue();
+    AppMethodBeat.o(330107);
     return locala;
   }
   
-  private final com.tencent.mm.plugin.finder.storage.z dpi()
-  {
-    AppMethodBeat.i(221757);
-    com.tencent.mm.plugin.finder.storage.z localz = (com.tencent.mm.plugin.finder.storage.z)this.xeE.getValue();
-    AppMethodBeat.o(221757);
-    return localz;
-  }
+  private static final void hu(List paramList) {}
   
-  private final y dpj()
+  public final void a(ch paramch)
   {
-    AppMethodBeat.i(221760);
-    y localy = (y)this.xeF.getValue();
-    AppMethodBeat.o(221760);
-    return localy;
-  }
-  
-  public final int a(final String paramString, final m.c paramc)
-  {
-    AppMethodBeat.i(221868);
-    Log.i("Finder.ContactService", "[getFollowState] username:".concat(String.valueOf(paramString)));
-    if (paramString == null)
-    {
-      AppMethodBeat.o(221868);
-      return 3;
-    }
-    final aa.d locald = new aa.d();
-    locald.aaBA = 1;
-    i locali = (i)this.AcV.get(paramString);
-    if (locali != null)
-    {
-      Log.i("Finder.ContactService", "[getFollowState] cache user:".concat(String.valueOf(locali)));
-      i = locali.field_follow_Flag;
-      paramString = i.xai;
-      if (i == i.dny()) {}
-      for (i = 2;; i = 3)
-      {
-        locald.aaBA = i;
-        i = locald.aaBA;
-        AppMethodBeat.o(221868);
-        return i;
-      }
-    }
-    com.tencent.mm.plugin.finder.cgi.fetcher.a.a(dRp(), paramString, (kotlin.g.a.b)new q(this, locald, paramString, paramc));
-    int i = locald.aaBA;
-    AppMethodBeat.o(221868);
-    return i;
-  }
-  
-  public final void a(ai paramai)
-  {
-    AppMethodBeat.i(221856);
-    p.k(paramai, "contact");
-    Object localObject = paramai.getUsername();
+    AppMethodBeat.i(330304);
+    s.u(paramch, "contact");
+    Object localObject = paramch.getUsername();
     if (localObject != null)
     {
       int i;
@@ -360,212 +312,305 @@ public final class a
       {
         i = 1;
         if (i == 0) {
-          break label85;
+          break label90;
         }
         label42:
         if (localObject == null) {
-          break label191;
+          break label155;
         }
-        if (!(paramai instanceof i)) {
-          break label90;
+        if (!(paramch instanceof m)) {
+          break label95;
         }
       }
       for (;;)
       {
-        if (paramai != null)
+        if (paramch != null)
         {
-          if (paramai == null)
+          paramch = (m)paramch;
+          if (au.bwV((String)localObject))
           {
-            paramai = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.api.LocalFinderContact");
-            AppMethodBeat.o(221856);
-            throw paramai;
+            localObject = d.AwY;
+            d.a.e(paramch);
+            AppMethodBeat.o(330304);
+            return;
             i = 0;
             break;
-            label85:
+            label90:
             localObject = null;
             break label42;
-            label90:
-            paramai = null;
+            label95:
+            paramch = null;
             continue;
           }
-          paramai = (i)paramai;
-          if (as.bvP((String)localObject))
+          if (au.bwT((String)localObject))
           {
-            localObject = d.wZQ;
-            d.a.d(paramai);
-            AppMethodBeat.o(221856);
+            ab.a(dWJ(), paramch);
+            AppMethodBeat.o(330304);
             return;
           }
-          if (as.bvN((String)localObject))
+          if (au.bwU((String)localObject))
           {
-            com.tencent.mm.plugin.finder.storage.z.a(dpi(), paramai);
-            AppMethodBeat.o(221856);
-            return;
-          }
-          if (as.bvO((String)localObject))
-          {
-            y.a(dpj(), paramai);
-            AppMethodBeat.o(221856);
+            aa.a(dWK(), paramch);
+            AppMethodBeat.o(330304);
             return;
           }
           Log.i("Finder.ContactService", "[insertOrUpdateContact] illegel contact");
-          AppMethodBeat.o(221856);
-          return;
         }
       }
-      AppMethodBeat.o(221856);
-      return;
     }
-    label191:
-    AppMethodBeat.o(221856);
+    label155:
+    AppMethodBeat.o(330304);
   }
   
-  public final void a(String paramString, m.a parama)
+  public final void a(String paramString, long paramLong1, long paramLong2, long paramLong3, y.a parama)
   {
-    AppMethodBeat.i(221787);
-    p.k(paramString, "username");
-    p.k(parama, "callback");
-    paramString = j.t((Collection)j.listOf(paramString));
-    parama = (m.b)new l(parama);
-    p.k(paramString, "usernameList");
-    p.k(parama, "callback");
-    a(paramString, parama, 0);
-    AppMethodBeat.o(221787);
-  }
-  
-  public final void a(String paramString1, String paramString2, m.a parama)
-  {
-    AppMethodBeat.i(221795);
-    Object localObject1 = (CharSequence)paramString1;
-    if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0)) {}
+    AppMethodBeat.i(330278);
+    Object localObject = (CharSequence)paramString;
+    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
       Log.e("Finder.ContactService", "username is null.");
-      parama.d((ai)new i());
-      AppMethodBeat.o(221795);
+      if (parama != null) {
+        parama.onDone((ch)new m());
+      }
+      AppMethodBeat.o(330278);
       return;
     }
-    localObject1 = (CharSequence)paramString2;
-    if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0)) {}
-    for (i = 1; i != 0; i = 0)
+    if (paramLong1 == 0L)
     {
-      Log.e("Finder.ContactService", "sessionId is null.");
-      parama.d((ai)new i());
-      AppMethodBeat.o(221795);
+      Log.e("Finder.ContactService", "feedId is 0.");
+      if (parama != null) {
+        parama.onDone((ch)new m());
+      }
+      AppMethodBeat.o(330278);
       return;
     }
-    localObject1 = dpi().aAK(paramString1);
-    if (localObject1 != null)
+    if (paramLong2 == 0L)
     {
-      if (((CharSequence)((i)localObject1).getNickname()).length() == 0)
+      Log.e("Finder.ContactService", "commentId is 0.");
+      if (parama != null) {
+        parama.onDone((ch)new m());
+      }
+      AppMethodBeat.o(330278);
+      return;
+    }
+    m localm = dWJ().auT(paramString);
+    if (localm != null)
+    {
+      if (((CharSequence)localm.getNickname()).length() == 0)
       {
         i = 1;
-        if ((i == 0) && (!b((ai)localObject1))) {
-          break label350;
+        if ((i == 0) && (!a((ch)localm, 0L, 6))) {
+          break label390;
         }
       }
     }
     else
     {
-      if ((!c((ai)localObject1)) || (b((ai)localObject1))) {
-        break label298;
+      if ((!b((ch)localm)) || (a((ch)localm, 0L, 6))) {
+        break label327;
       }
-      localObject2 = new StringBuilder("[getFinderContact] isContactRetryLimited contact=");
-      if (localObject1 == null) {
-        break label278;
+      if (localm != null) {
+        break label311;
       }
-      paramString2 = ((i)localObject1).getUsername();
-      label233:
-      Log.e("Finder.ContactService", paramString2);
-      if (localObject1 == null) {
-        break label283;
+      localObject = null;
+      label254:
+      Log.e("Finder.ContactService", s.X("[getFinderContact] isContactRetryLimited contact=", localObject));
+      if (parama != null) {
+        if (localm != null) {
+          break label321;
+        }
       }
     }
-    label278:
-    label283:
-    for (paramString1 = (ai)localObject1;; paramString1 = (ai)new i(paramString1))
+    label311:
+    label321:
+    for (paramString = new m(paramString);; paramString = localm)
     {
-      parama.d(paramString1);
-      AppMethodBeat.o(221795);
+      parama.onDone((ch)paramString);
+      AppMethodBeat.o(330278);
       return;
       i = 0;
       break;
+      localObject = localm.getUsername();
+      break label254;
+    }
+    label327:
+    localObject = new avk();
+    ((avk)localObject).object_id = paramLong1;
+    ((avk)localObject).ZFw = paramLong2;
+    ((avk)localObject).Tqf = paramLong3;
+    ((avk)localObject).ZFC = paramString;
+    ePq().a((avk)localObject, (b)new l(parama));
+    AppMethodBeat.o(330278);
+    return;
+    label390:
+    Log.i("Finder.ContactService", "[getFinderMsgFansContact] local completed! result=" + localm.getUsername() + '=' + localm.getNickname());
+    if (parama != null) {
+      parama.onDone((ch)localm);
+    }
+    AppMethodBeat.o(330278);
+  }
+  
+  public final void a(String paramString, y.a parama)
+  {
+    AppMethodBeat.i(330252);
+    s.u(paramString, "username");
+    s.u(parama, "callback");
+    paramString = p.J((Collection)p.listOf(paramString));
+    parama = new a..ExternalSyntheticLambda0(parama);
+    s.u(paramString, "usernameList");
+    s.u(parama, "callback");
+    a(paramString, parama, 0);
+    AppMethodBeat.o(330252);
+  }
+  
+  public final void a(String paramString1, String paramString2, y.a parama)
+  {
+    AppMethodBeat.i(330266);
+    Object localObject = (CharSequence)paramString1;
+    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      Log.e("Finder.ContactService", "username is null.");
+      if (parama != null) {
+        parama.onDone((ch)new m());
+      }
+      AppMethodBeat.o(330266);
+      return;
+    }
+    localObject = (CharSequence)paramString2;
+    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
+    for (i = 1; i != 0; i = 0)
+    {
+      Log.e("Finder.ContactService", "sessionId is null.");
+      if (parama != null) {
+        parama.onDone((ch)new m());
+      }
+      AppMethodBeat.o(330266);
+      return;
+    }
+    localObject = dWJ().auT(paramString1);
+    if (localObject != null)
+    {
+      if (((CharSequence)((m)localObject).getNickname()).length() == 0)
+      {
+        i = 1;
+        if ((i == 0) && (!a((ch)localObject, 0L, 6))) {
+          break label358;
+        }
+      }
+    }
+    else
+    {
+      if ((!b((ch)localObject)) || (a((ch)localObject, 0L, 6))) {
+        break label302;
+      }
+      if (localObject != null) {
+        break label287;
+      }
       paramString2 = null;
+      label233:
+      Log.e("Finder.ContactService", s.X("[getFinderContact] isContactRetryLimited contact=", paramString2));
+      if (parama != null) {
+        if (localObject != null) {
+          break label296;
+        }
+      }
+    }
+    label287:
+    label296:
+    for (paramString1 = new m(paramString1);; paramString1 = (String)localObject)
+    {
+      parama.onDone((ch)paramString1);
+      AppMethodBeat.o(330266);
+      return;
+      i = 0;
+      break;
+      paramString2 = ((m)localObject).getUsername();
       break label233;
     }
-    label298:
-    localObject1 = dRp();
-    Object localObject2 = new arg();
-    ((arg)localObject2).SEn = paramString1;
-    ((arg)localObject2).session_id = paramString2;
-    ((com.tencent.mm.plugin.finder.cgi.fetcher.a)localObject1).a((arg)localObject2, (kotlin.g.a.b)new o(parama));
-    AppMethodBeat.o(221795);
+    label302:
+    localObject = ePq();
+    avo localavo = new avo();
+    localavo.ZFM = paramString1;
+    localavo.session_id = paramString2;
+    paramString1 = ah.aiuX;
+    ((com.tencent.mm.plugin.finder.cgi.fetcher.a)localObject).a(localavo, (b)new o(parama));
+    AppMethodBeat.o(330266);
     return;
-    label350:
-    Log.i("Finder.ContactService", "[getFinderMsgStrangerContact] local completed! result=" + ((i)localObject1).getUsername() + '=' + ((i)localObject1).getNickname());
-    parama.d((ai)localObject1);
-    AppMethodBeat.o(221795);
+    label358:
+    Log.i("Finder.ContactService", "[getFinderMsgStrangerContact] local completed! result=" + ((m)localObject).getUsername() + '=' + ((m)localObject).getNickname());
+    if (parama != null) {
+      parama.onDone((ch)localObject);
+    }
+    AppMethodBeat.o(330266);
   }
   
-  public final ai aEs(String paramString)
+  public final ch aAl(String paramString)
   {
-    AppMethodBeat.i(221821);
+    AppMethodBeat.i(330287);
     if (paramString != null)
     {
-      d.a locala = d.wZQ;
-      paramString = (ai)d.a.aAK(paramString);
-      AppMethodBeat.o(221821);
+      d.a locala = d.AwY;
+      paramString = (ch)d.a.auT(paramString);
+      AppMethodBeat.o(330287);
       return paramString;
     }
-    AppMethodBeat.o(221821);
+    AppMethodBeat.o(330287);
     return null;
   }
   
-  public final ai aEt(String paramString)
+  public final ch aAm(String paramString)
   {
-    AppMethodBeat.i(221832);
+    ah localah = null;
+    AppMethodBeat.i(330292);
     if (paramString != null)
     {
-      i locali = dpi().aAK(paramString);
-      if (locali != null) {
-        Log.i("Finder.ContactService", "[getLocalFinderStrangerContact] " + locali.getUsername() + '=' + locali.getNickname());
-      }
+      m localm = dWJ().auT(paramString);
+      if (localm == null) {}
       for (;;)
       {
-        paramString = (ai)locali;
-        AppMethodBeat.o(221832);
+        if (localah == null) {
+          Log.i("Finder.ContactService", s.X("[getLocalFinderStrangerContact] get contact return null. ", paramString));
+        }
+        paramString = (ch)localm;
+        AppMethodBeat.o(330292);
         return paramString;
-        Log.i("Finder.ContactService", "[getLocalFinderStrangerContact] get contact return null. ".concat(String.valueOf(paramString)));
+        Log.i("Finder.ContactService", "[getLocalFinderStrangerContact] " + localm.getUsername() + '=' + localm.getNickname());
+        localah = ah.aiuX;
       }
     }
-    AppMethodBeat.o(221832);
+    AppMethodBeat.o(330292);
     return null;
   }
   
-  public final ai aEu(String paramString)
+  public final ch aAn(String paramString)
   {
-    AppMethodBeat.i(221841);
+    ah localah = null;
+    AppMethodBeat.i(330294);
     if (paramString != null)
     {
-      i locali = dpj().aAK(paramString);
-      if (locali != null) {
-        Log.i("Finder.ContactService", "[getLocalFinderMsgAliasContact] " + locali.getUsername() + '=' + locali.getNickname());
-      }
+      m localm = dWK().auT(paramString);
+      if (localm == null) {}
       for (;;)
       {
-        paramString = (ai)locali;
-        AppMethodBeat.o(221841);
+        if (localah == null) {
+          Log.i("Finder.ContactService", s.X("[getLocalFinderMsgAliasContact] get contact return null. ", paramString));
+        }
+        paramString = (ch)localm;
+        AppMethodBeat.o(330294);
         return paramString;
-        Log.i("Finder.ContactService", "[getLocalFinderMsgAliasContact] get contact return null. ".concat(String.valueOf(paramString)));
+        Log.i("Finder.ContactService", "[getLocalFinderMsgAliasContact] " + localm.getUsername() + '=' + localm.getNickname());
+        localah = ah.aiuX;
       }
     }
-    AppMethodBeat.o(221841);
+    AppMethodBeat.o(330294);
     return null;
   }
   
-  public final ai aEv(String paramString)
+  public final ch aAo(String paramString)
   {
-    AppMethodBeat.i(221846);
+    AppMethodBeat.i(330299);
     if (paramString != null)
     {
       int i;
@@ -580,10 +625,10 @@ public final class a
       {
         if (paramString != null)
         {
-          if (as.bvP(paramString))
+          if (au.bwV(paramString))
           {
-            paramString = aEs(paramString);
-            AppMethodBeat.o(221846);
+            paramString = aAl(paramString);
+            AppMethodBeat.o(330299);
             return paramString;
             i = 0;
             break;
@@ -591,132 +636,129 @@ public final class a
             paramString = null;
             continue;
           }
-          if (as.bvN(paramString))
+          if (au.bwT(paramString))
           {
-            paramString = aEt(paramString);
-            AppMethodBeat.o(221846);
+            paramString = aAm(paramString);
+            AppMethodBeat.o(330299);
             return paramString;
           }
-          if (as.bvO(paramString))
+          if (au.bwU(paramString))
           {
-            paramString = aEu(paramString);
-            AppMethodBeat.o(221846);
+            paramString = aAn(paramString);
+            AppMethodBeat.o(330299);
             return paramString;
           }
-          AppMethodBeat.o(221846);
+          AppMethodBeat.o(330299);
           return null;
         }
       }
     }
-    AppMethodBeat.o(221846);
+    AppMethodBeat.o(330299);
     return null;
   }
   
-  public final boolean aEw(String paramString)
+  public final boolean aAp(String paramString)
   {
-    AppMethodBeat.i(221862);
-    if (((af)this.xgB.getValue()).aEN(paramString).field_rejectMsg == 1)
+    AppMethodBeat.i(330314);
+    if (((ak)this.AFU.getValue()).aAG(paramString).field_rejectMsg == 1)
     {
-      AppMethodBeat.o(221862);
+      AppMethodBeat.o(330314);
       return true;
     }
-    AppMethodBeat.o(221862);
+    AppMethodBeat.o(330314);
     return false;
   }
   
-  public final void b(String paramString, final m.a parama)
+  public final void b(String paramString, y.a parama)
   {
-    AppMethodBeat.i(221789);
-    p.k(parama, "callback");
-    if (paramString != null)
-    {
-      a(j.t((Collection)j.listOf(paramString)), (m.b)new i(this, parama), 4);
-      AppMethodBeat.o(221789);
-      return;
+    AppMethodBeat.i(330256);
+    s.u(parama, "callback");
+    if (paramString != null) {
+      a(p.J((Collection)p.listOf(paramString)), new a..ExternalSyntheticLambda1(parama), 4);
     }
-    AppMethodBeat.o(221789);
+    AppMethodBeat.o(330256);
   }
   
-  public final void b(String paramString1, String paramString2, m.a parama)
+  public final void b(String paramString1, String paramString2, y.a parama)
   {
-    AppMethodBeat.i(221907);
+    AppMethodBeat.i(330269);
+    s.u(paramString2, "fansId");
     Object localObject = (CharSequence)paramString1;
     if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
       Log.e("Finder.ContactService", "username is null.");
-      parama.d((ai)new i());
-      AppMethodBeat.o(221907);
+      if (parama != null) {
+        parama.onDone((ch)new m());
+      }
+      AppMethodBeat.o(330269);
       return;
     }
-    paramString2 = (CharSequence)paramString2;
-    if ((paramString2 == null) || (paramString2.length() == 0)) {}
-    for (i = 1; i != 0; i = 0)
-    {
-      Log.e("Finder.ContactService", "sessionId is null.");
-      parama.d((ai)new i());
-      AppMethodBeat.o(221907);
-      return;
-    }
-    localObject = dpj().aAK(paramString1);
+    localObject = dWJ().auT(paramString1);
     if (localObject != null)
     {
-      if (((CharSequence)((i)localObject).getNickname()).length() == 0)
+      if (((CharSequence)((m)localObject).getNickname()).length() == 0)
       {
         i = 1;
-        if ((i == 0) && (!b((ai)localObject))) {
-          break label320;
+        if ((i == 0) && (!a((ch)localObject, 0L, 6))) {
+          break label286;
         }
       }
     }
     else
     {
-      if ((!c((ai)localObject)) || (b((ai)localObject))) {
-        break label295;
+      if ((!b((ch)localObject)) || (a((ch)localObject, 0L, 6))) {
+        break label238;
       }
-      StringBuilder localStringBuilder = new StringBuilder("[getFinderMsgAliasContact] isContactRetryLimited contact=");
-      if (localObject == null) {
-        break label275;
+      if (localObject != null) {
+        break label223;
       }
-      paramString2 = ((i)localObject).getUsername();
-      label230:
-      Log.e("Finder.ContactService", paramString2);
-      if (localObject == null) {
-        break label280;
+      paramString2 = null;
+      label169:
+      Log.e("Finder.ContactService", s.X("[getFinderContact] isContactRetryLimited contact=", paramString2));
+      if (parama != null) {
+        if (localObject != null) {
+          break label232;
+        }
       }
     }
-    label275:
-    label280:
-    for (paramString1 = (ai)localObject;; paramString1 = (ai)new i(paramString1))
+    label223:
+    label232:
+    for (paramString1 = new m(paramString1);; paramString1 = (String)localObject)
     {
-      parama.d(paramString1);
-      AppMethodBeat.o(221907);
+      parama.onDone((ch)paramString1);
+      AppMethodBeat.o(330269);
       return;
       i = 0;
       break;
-      paramString2 = null;
-      break label230;
+      paramString2 = ((m)localObject).getUsername();
+      break label169;
     }
-    label295:
-    dRp().E((kotlin.g.a.b)new n(parama));
-    AppMethodBeat.o(221907);
+    label238:
+    localObject = new avm();
+    ((avm)localObject).hJS = paramString2;
+    ((avm)localObject).ZFG = paramString1;
+    ePq().a((avm)localObject, (b)new n(parama));
+    AppMethodBeat.o(330269);
     return;
-    label320:
-    Log.i("Finder.ContactService", "[getFinderMsgAliasContact] local completed! result=" + ((i)localObject).getUsername() + '=' + ((i)localObject).getNickname());
-    parama.d((ai)localObject);
-    AppMethodBeat.o(221907);
+    label286:
+    Log.i("Finder.ContactService", "[getFinderMsgFansContact] local completed! result=" + ((m)localObject).getUsername() + '=' + ((m)localObject).getNickname());
+    if (parama != null) {
+      parama.onDone((ch)localObject);
+    }
+    AppMethodBeat.o(330269);
   }
   
-  public final void bx(String paramString, boolean paramBoolean)
+  public final void bO(String paramString, boolean paramBoolean)
   {
-    arg localarg = null;
+    avo localavo = null;
     int k = 0;
     int j = 0;
-    AppMethodBeat.i(221886);
+    AppMethodBeat.i(330346);
     final String str;
-    if (as.aEF(paramString))
+    if (au.aAy(paramString))
     {
-      str = ((ab)h.ae(ab.class)).aED(paramString);
+      str = ((bp)h.ax(bp.class)).aAw(paramString);
       paramString = (CharSequence)str;
       if ((paramString != null) && (paramString.length() != 0)) {
         break label77;
@@ -728,41 +770,41 @@ public final class a
       if (i == 0) {
         break label82;
       }
-      AppMethodBeat.o(221886);
+      AppMethodBeat.o(330346);
       return;
       str = paramString;
       break;
     }
     label82:
-    if (this.AcX.containsKey(str))
+    if (this.FyM.containsKey(str))
     {
-      AppMethodBeat.o(221886);
+      AppMethodBeat.o(330346);
       return;
     }
-    paramString = aj.AGc;
-    if (!aj.aFW(str))
+    paramString = av.GiL;
+    if (!av.aBV(str))
     {
-      AppMethodBeat.o(221886);
+      AppMethodBeat.o(330346);
       return;
     }
     Object localObject;
-    if (as.bvP(str))
+    if (au.bwV(str))
     {
-      paramString = aEs(str);
+      paramString = aAl(str);
       if (paramString != null)
       {
         localObject = (CharSequence)paramString.getNickname();
         if ((localObject != null) && (((CharSequence)localObject).length() != 0)) {
-          break label430;
+          break label423;
         }
         i = 1;
         label167:
         if (i == 0) {
           if (paramBoolean)
           {
-            localObject = (CharSequence)paramString.Mm();
+            localObject = (CharSequence)paramString.amx();
             if ((localObject != null) && (((CharSequence)localObject).length() != 0)) {
-              break label435;
+              break label428;
             }
             i = 1;
             label203:
@@ -770,69 +812,72 @@ public final class a
           }
           else
           {
-            if (!b(paramString)) {
-              break label745;
+            if (!a(paramString, 0L, 6)) {
+              break label761;
             }
           }
         }
       }
-      if ((c(paramString)) && (!b(paramString))) {
-        break label440;
+      if ((b(paramString)) && (!a(paramString, 0L, 6))) {
+        break label433;
       }
       paramBoolean = true;
-      label230:
+      label236:
       StringBuilder localStringBuilder = new StringBuilder("[checkContactExpired] isNeedGetContact=").append(paramBoolean).append(" talker=").append(str).append(" nickname=");
-      if (paramString == null) {
-        break label445;
-      }
-      localObject = paramString.getNickname();
-      label275:
-      localStringBuilder = localStringBuilder.append((String)localObject).append(" avatar=");
-      localObject = localarg;
       if (paramString != null) {
-        localObject = paramString.Mm();
+        break label438;
       }
-      Log.i("Finder.ContactService", (String)localObject);
+      localObject = null;
+      label276:
+      localObject = localStringBuilder.append(localObject).append(" avatar=");
+      if (paramString != null) {
+        break label449;
+      }
+      paramString = localavo;
+      label298:
+      Log.i("Finder.ContactService", paramString);
     }
     for (;;)
     {
       if (paramBoolean)
       {
-        ((Map)this.AcX).put(str, this);
-        if (as.bvP(str))
+        ((Map)this.FyM).put(str, this);
+        if (au.bwV(str))
         {
-          com.tencent.mm.plugin.finder.cgi.fetcher.a.a(dRp(), str, (kotlin.g.a.b)new c(this, str));
-          AppMethodBeat.o(221886);
+          com.tencent.mm.plugin.finder.cgi.fetcher.a.a(ePq(), str, (b)new c(this, str));
+          AppMethodBeat.o(330346);
           return;
-          if (as.bvN(str)) {
-            paramString = dpi().aAK(str);
-          }
-          for (;;)
+          if (au.bwT(str))
           {
-            paramString = (ai)paramString;
+            paramString = (ch)dWJ().auT(str);
             break;
-            if (as.bvO(str)) {
-              paramString = dpj().aAK(str);
-            } else {
-              paramString = null;
-            }
           }
-          label430:
+          if (au.bwU(str))
+          {
+            paramString = (ch)dWK().auT(str);
+            break;
+          }
+          paramString = null;
+          break;
+          label423:
           i = 0;
           break label167;
-          label435:
+          label428:
           i = 0;
           break label203;
-          label440:
+          label433:
           paramBoolean = false;
-          break label230;
-          label445:
-          localObject = null;
-          break label275;
+          break label236;
+          label438:
+          localObject = paramString.getNickname();
+          break label276;
+          label449:
+          paramString = paramString.amx();
+          break label298;
         }
-        if (as.bvN(str))
+        if (au.bwT(str))
         {
-          paramString = ((ab)h.ae(ab.class)).dX(str, 3);
+          paramString = ((bp)h.ax(bp.class)).eI(str, 3);
           localObject = (CharSequence)paramString;
           if (localObject != null)
           {
@@ -845,27 +890,28 @@ public final class a
           }
           if (i != 0)
           {
-            this.AcX.remove(str);
-            AppMethodBeat.o(221886);
+            this.FyM.remove(str);
+            AppMethodBeat.o(330346);
             return;
           }
-          localObject = dRp();
-          localarg = new arg();
-          localarg.SEn = str;
-          localarg.session_id = paramString;
-          ((com.tencent.mm.plugin.finder.cgi.fetcher.a)localObject).a(localarg, (kotlin.g.a.b)new d(this, str));
-          AppMethodBeat.o(221886);
+          localObject = ePq();
+          localavo = new avo();
+          localavo.ZFM = str;
+          localavo.session_id = paramString;
+          paramString = ah.aiuX;
+          ((com.tencent.mm.plugin.finder.cgi.fetcher.a)localObject).a(localavo, (b)new d(str, this));
+          AppMethodBeat.o(330346);
           return;
         }
-        if (as.bvO(str))
+        if (au.bwU(str))
         {
-          if (p.h(str, com.tencent.mm.model.z.bdi()))
+          if (s.p(str, z.bAX()))
           {
-            dRp().E((kotlin.g.a.b)new e(this, str));
-            AppMethodBeat.o(221886);
+            ePq().ah((b)new e(str, this));
+            AppMethodBeat.o(330346);
             return;
           }
-          paramString = ((ab)h.ae(ab.class)).dX(str, 3);
+          paramString = ((bp)h.ax(bp.class)).eI(str, 3);
           localObject = (CharSequence)paramString;
           if (localObject != null)
           {
@@ -878,75 +924,253 @@ public final class a
           }
           if (i != 0)
           {
-            this.AcX.remove(str);
-            AppMethodBeat.o(221886);
+            this.FyM.remove(str);
+            AppMethodBeat.o(330346);
             return;
           }
-          localObject = dRp();
-          localarg = new arg();
-          localarg.SEn = str;
-          localarg.session_id = paramString;
-          ((com.tencent.mm.plugin.finder.cgi.fetcher.a)localObject).a(localarg, (kotlin.g.a.b)new f(this, str));
+          localObject = ePq();
+          localavo = new avo();
+          localavo.ZFM = str;
+          localavo.session_id = paramString;
+          paramString = ah.aiuX;
+          ((com.tencent.mm.plugin.finder.cgi.fetcher.a)localObject).a(localavo, (b)new f(str, this));
         }
       }
-      AppMethodBeat.o(221886);
+      AppMethodBeat.o(330346);
       return;
-      label745:
+      label761:
       paramBoolean = false;
     }
   }
   
-  public final void dRq()
+  public final void c(String paramString, y.a parama)
   {
-    AppMethodBeat.i(221863);
+    AppMethodBeat.i(330284);
+    Object localObject = (CharSequence)paramString;
+    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      Log.e("Finder.ContactService", "username is null.");
+      if (parama != null) {
+        parama.onDone((ch)new m());
+      }
+      AppMethodBeat.o(330284);
+      return;
+    }
+    m localm = dWJ().auT(paramString);
+    if (localm != null)
+    {
+      if (((CharSequence)localm.getNickname()).length() == 0)
+      {
+        i = 1;
+        if ((i == 0) && (!a((ch)localm, 0L, 6))) {
+          break label270;
+        }
+      }
+    }
+    else
+    {
+      if ((!b((ch)localm)) || (a((ch)localm, 0L, 6))) {
+        break label228;
+      }
+      if (localm != null) {
+        break label212;
+      }
+      localObject = null;
+      label158:
+      Log.e("Finder.ContactService", s.X("[getWxMsgContact] isContactRetryLimited contact=", localObject));
+      if (parama != null) {
+        if (localm != null) {
+          break label222;
+        }
+      }
+    }
+    label212:
+    label222:
+    for (paramString = new m(paramString);; paramString = localm)
+    {
+      parama.onDone((ch)paramString);
+      AppMethodBeat.o(330284);
+      return;
+      i = 0;
+      break;
+      localObject = localm.getUsername();
+      break label158;
+    }
+    label228:
+    localObject = new avr();
+    ((avr)localObject).ZFO = paramString;
+    ePq().a((avr)localObject, (b)new m(parama));
+    AppMethodBeat.o(330284);
+    return;
+    label270:
+    Log.i("Finder.ContactService", "[getWxMsgContact] local completed! result=" + localm.getUsername() + '=' + localm.getNickname());
+    if (parama != null) {
+      parama.onDone((ch)localm);
+    }
+    AppMethodBeat.o(330284);
+  }
+  
+  public final void c(String paramString1, String paramString2, y.a parama)
+  {
+    AppMethodBeat.i(330354);
+    Object localObject = (CharSequence)paramString1;
+    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      Log.e("Finder.ContactService", "username is null.");
+      if (parama != null) {
+        parama.onDone((ch)new m());
+      }
+      AppMethodBeat.o(330354);
+      return;
+    }
+    paramString2 = (CharSequence)paramString2;
+    if ((paramString2 == null) || (paramString2.length() == 0)) {}
+    for (i = 1; i != 0; i = 0)
+    {
+      Log.e("Finder.ContactService", "sessionId is null.");
+      if (parama != null) {
+        parama.onDone((ch)new m());
+      }
+      AppMethodBeat.o(330354);
+      return;
+    }
+    localObject = dWK().auT(paramString1);
+    if (localObject != null)
+    {
+      if (((CharSequence)((m)localObject).getNickname()).length() == 0)
+      {
+        i = 1;
+        if ((i == 0) && (!a((ch)localObject, 0L, 6))) {
+          break label324;
+        }
+      }
+    }
+    else
+    {
+      if ((!b((ch)localObject)) || (a((ch)localObject, 0L, 6))) {
+        break label299;
+      }
+      if (localObject != null) {
+        break label284;
+      }
+      paramString2 = null;
+      label230:
+      Log.e("Finder.ContactService", s.X("[getFinderMsgAliasContact] isContactRetryLimited contact=", paramString2));
+      if (parama != null) {
+        if (localObject != null) {
+          break label293;
+        }
+      }
+    }
+    label284:
+    label293:
+    for (paramString1 = new m(paramString1);; paramString1 = (String)localObject)
+    {
+      parama.onDone((ch)paramString1);
+      AppMethodBeat.o(330354);
+      return;
+      i = 0;
+      break;
+      paramString2 = ((m)localObject).getUsername();
+      break label230;
+    }
+    label299:
+    ePq().ah((b)new k(parama));
+    AppMethodBeat.o(330354);
+    return;
+    label324:
+    Log.i("Finder.ContactService", "[getFinderMsgAliasContact] local completed! result=" + ((m)localObject).getUsername() + '=' + ((m)localObject).getNickname());
+    if (parama != null) {
+      parama.onDone((ch)localObject);
+    }
+    AppMethodBeat.o(330354);
+  }
+  
+  public final void ePr()
+  {
+    AppMethodBeat.i(330318);
     Log.i("Finder.ContactService", "[clearFollowStateCache]");
-    this.AcV.clear();
-    AppMethodBeat.o(221863);
+    this.FyL.clear();
+    AppMethodBeat.o(330318);
+  }
+  
+  public final String ePs()
+  {
+    AppMethodBeat.i(330324);
+    String str = ((PluginFinder)h.az(PluginFinder.class)).getContactStorage().eYI();
+    AppMethodBeat.o(330324);
+    return str;
+  }
+  
+  public final bx.a ePt()
+  {
+    return this.pqO;
+  }
+  
+  public final List<au> ePu()
+  {
+    AppMethodBeat.i(330361);
+    Object localObject1 = d.AwY;
+    Object localObject2 = (Iterable)d.a.dUg();
+    localObject1 = (Collection)new ArrayList(p.a((Iterable)localObject2, 10));
+    localObject2 = ((Iterable)localObject2).iterator();
+    while (((Iterator)localObject2).hasNext()) {
+      ((Collection)localObject1).add(m.g((m)((Iterator)localObject2).next()));
+    }
+    localObject1 = (List)localObject1;
+    AppMethodBeat.o(330361);
+    return localObject1;
+  }
+  
+  public final void f(List<String> paramList, long paramLong)
+  {
+    AppMethodBeat.i(330240);
+    s.u(paramList, "usernameList");
+    a(paramList, a..ExternalSyntheticLambda3.INSTANCE, 0, paramLong);
+    AppMethodBeat.o(330240);
   }
   
   public final void l(MStorage.IOnStorageChange paramIOnStorageChange)
   {
-    AppMethodBeat.i(221858);
+    AppMethodBeat.i(330309);
     if (paramIOnStorageChange != null)
     {
-      ((PluginFinder)h.ag(PluginFinder.class)).getContactStorage().remove(paramIOnStorageChange);
-      ((PluginFinder)h.ag(PluginFinder.class)).getMsgStrangerContactStorage().remove(paramIOnStorageChange);
-      ((PluginFinder)h.ag(PluginFinder.class)).getMsgAliasContactStorage().remove(paramIOnStorageChange);
-      AppMethodBeat.o(221858);
-      return;
+      ((PluginFinder)h.az(PluginFinder.class)).getContactStorage().remove(paramIOnStorageChange);
+      ((PluginFinder)h.az(PluginFinder.class)).getMsgStrangerContactStorage().remove(paramIOnStorageChange);
+      ((PluginFinder)h.az(PluginFinder.class)).getMsgAliasContactStorage().remove(paramIOnStorageChange);
     }
-    AppMethodBeat.o(221858);
+    AppMethodBeat.o(330309);
   }
   
   public final void m(MStorage.IOnStorageChange paramIOnStorageChange)
   {
-    AppMethodBeat.i(221871);
+    AppMethodBeat.i(330328);
     if (paramIOnStorageChange != null)
     {
-      ((PluginFinder)h.ag(PluginFinder.class)).getContactStorage().add(paramIOnStorageChange);
-      ((PluginFinder)h.ag(PluginFinder.class)).getMsgStrangerContactStorage().add(paramIOnStorageChange);
-      ((PluginFinder)h.ag(PluginFinder.class)).getMsgAliasContactStorage().add(paramIOnStorageChange);
-      AppMethodBeat.o(221871);
-      return;
+      ((PluginFinder)h.az(PluginFinder.class)).getContactStorage().add(paramIOnStorageChange);
+      ((PluginFinder)h.az(PluginFinder.class)).getMsgStrangerContactStorage().add(paramIOnStorageChange);
+      ((PluginFinder)h.az(PluginFinder.class)).getMsgAliasContactStorage().add(paramIOnStorageChange);
     }
-    AppMethodBeat.o(221871);
+    AppMethodBeat.o(330328);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/service/FinderContactService$Companion;", "", "()V", "FINDER_AD_CONTACT_EXPIRED_TIME", "", "FINDER_CONTACT_EXPIRED_TIME", "TAG", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/service/FinderContactService$Companion;", "", "()V", "FINDER_AD_CONTACT_EXPIRED_TIME", "", "FINDER_CONTACT_EXPIRED_TIME", "FINDER_CONTACT_LIMIT_TIME", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/finder/storage/FinderMsgAliasContactStorage;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/finder/storage/FinderMsgAliasContactStorage;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
-    implements kotlin.g.a.a<y>
+    extends u
+    implements kotlin.g.a.a<aa>
   {
-    public static final b AcZ;
+    public static final b FyN;
     
     static
     {
-      AppMethodBeat.i(282418);
-      AcZ = new b();
-      AppMethodBeat.o(282418);
+      AppMethodBeat.i(330167);
+      FyN = new b();
+      AppMethodBeat.o(330167);
     }
     
     b()
@@ -955,10 +1179,10 @@ public final class a
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends q
-    implements kotlin.g.a.b<ai, x>
+    extends u
+    implements b<ch, ah>
   {
     c(a parama, String paramString)
     {
@@ -966,58 +1190,60 @@ public final class a
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    extends q
-    implements kotlin.g.a.b<ai, x>
+    extends u
+    implements b<ch, ah>
   {
-    d(a parama, String paramString)
+    d(String paramString, a parama)
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class e
-    extends q
-    implements kotlin.g.a.b<ai, x>
+    extends u
+    implements b<ch, ah>
   {
-    e(a parama, String paramString)
+    e(String paramString, a parama)
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class f
-    extends q
-    implements kotlin.g.a.b<ai, x>
+    extends u
+    implements b<ch, ah>
   {
-    f(a parama, String paramString)
+    f(String paramString, a parama)
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/service/FinderContactService$contactExtension$1", "Lcom/tencent/mm/storage/IContactStorage$IContactExtension;", "get", "Lcom/tencent/mm/storage/Contact;", "username", "", "onPreInsertContact", "", "stg", "Lcom/tencent/mm/storage/IContactStorage;", "contact", "replace", "", "isUpdate", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/service/FinderContactService$contactExtension$1", "Lcom/tencent/mm/storage/IContactStorage$IContactExtension;", "get", "Lcom/tencent/mm/storage/Contact;", "username", "", "onPreInsertContact", "", "stg", "Lcom/tencent/mm/storage/IContactStorage;", "contact", "replace", "", "isUpdate", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class g
-    implements bv.a
+    implements bx.a
   {
-    public final as RG(String paramString)
+    g(a parama) {}
+    
+    public final au JE(String paramString)
     {
-      AppMethodBeat.i(284925);
+      AppMethodBeat.i(330145);
       Object localObject1 = (CharSequence)paramString;
       if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0)) {}
       for (int i = 1; i != 0; i = 0)
       {
-        AppMethodBeat.o(284925);
+        AppMethodBeat.o(330145);
         return null;
       }
       String str;
-      if (as.aEF(paramString))
+      if (au.aAy(paramString))
       {
-        str = ((ab)h.ae(ab.class)).aED(paramString);
-        if ((!as.bvN(str)) && (!as.bvP(str)) && (!as.bvO(str))) {
+        str = ((bp)h.ax(bp.class)).aAw(paramString);
+        if ((!au.bwT(str)) && (!au.bwV(str)) && (!au.bwU(str))) {
           break label107;
         }
       }
@@ -1027,25 +1253,25 @@ public final class a
         if (i != 0) {
           break label112;
         }
-        AppMethodBeat.o(284925);
+        AppMethodBeat.o(330145);
         return null;
         str = paramString;
         break;
       }
       label112:
-      if (as.bvP(str))
+      if (au.bwV(str))
       {
-        localObject1 = d.wZQ;
-        localObject1 = d.a.aAK(str);
+        localObject1 = d.AwY;
+        localObject1 = d.a.auT(str);
         if (localObject1 == null) {
-          break label344;
+          break label341;
         }
-        localObject1 = i.f((i)localObject1);
+        localObject1 = m.g((m)localObject1);
         if (localObject1 != null)
         {
-          localObject2 = (CharSequence)((as)localObject1).getNickname();
+          localObject2 = (CharSequence)((az)localObject1).field_nickname;
           if ((localObject2 != null) && (((CharSequence)localObject2).length() != 0)) {
-            break label349;
+            break label346;
           }
           i = 1;
           if (i == 0) {
@@ -1053,46 +1279,46 @@ public final class a
           }
         }
         Object localObject2 = new StringBuilder("[get] contact is null or nickname is empty. nickname=");
-        if (localObject1 == null) {
-          break label354;
+        if (localObject1 != null) {
+          break label351;
         }
-        localObject1 = ((as)localObject1).getNickname();
-        localObject1 = ((StringBuilder)localObject2).append((String)localObject1).append(" talker=");
-        p.j(str, "talker");
-        Log.e("Finder.ContactService", a.aEx(str));
-        this.Ada.bx(str, false);
-        localObject1 = new as(paramString);
+        localObject1 = null;
+        localObject1 = ((StringBuilder)localObject2).append(localObject1).append(" talker=");
+        s.s(str, "talker");
+        Log.e("Finder.ContactService", a.aAq(str));
+        this.FyO.bO(str, false);
+        localObject1 = new au(paramString);
       }
       label169:
-      label193:
-      label344:
-      label349:
-      label354:
+      label190:
+      label341:
+      label346:
+      label351:
       label359:
       for (;;)
       {
-        ((as)localObject1).setUsername(paramString);
-        AppMethodBeat.o(284925);
+        ((au)localObject1).setUsername(paramString);
+        AppMethodBeat.o(330145);
         return localObject1;
-        if (as.bvN(str))
+        if (au.bwT(str))
         {
-          localObject1 = a.c(this.Ada);
-          p.j(str, "talker");
-          localObject1 = ((com.tencent.mm.plugin.finder.storage.z)localObject1).aAK(str);
+          localObject1 = a.b(this.FyO);
+          s.s(str, "talker");
+          localObject1 = ((ab)localObject1).auT(str);
           if (localObject1 == null) {
-            break label344;
+            break label341;
           }
-          localObject1 = i.f((i)localObject1);
+          localObject1 = m.g((m)localObject1);
           break;
         }
-        if (as.bvO(str))
+        if (au.bwU(str))
         {
-          localObject1 = a.d(this.Ada);
-          p.j(str, "talker");
-          localObject1 = ((y)localObject1).aAK(str);
+          localObject1 = a.c(this.FyO);
+          s.s(str, "talker");
+          localObject1 = ((aa)localObject1).auT(str);
           if (localObject1 != null)
           {
-            localObject1 = i.f((i)localObject1);
+            localObject1 = m.g((m)localObject1);
             break;
           }
         }
@@ -1100,56 +1326,56 @@ public final class a
         break;
         i = 0;
         break label169;
-        localObject1 = null;
-        break label193;
+        localObject1 = ((az)localObject1).field_nickname;
+        break label190;
       }
     }
     
-    public final void a(bv parambv, as paramas) {}
+    public final void a(bx parambx, au paramau) {}
     
-    public final int b(as paramas, boolean paramBoolean)
+    public final int b(au paramau, boolean paramBoolean)
     {
-      AppMethodBeat.i(284924);
-      if (paramas == null)
+      AppMethodBeat.i(330127);
+      if (paramau == null)
       {
-        AppMethodBeat.o(284924);
+        AppMethodBeat.o(330127);
         return -1;
       }
-      String str = paramas.getUsername();
+      String str = paramau.field_username;
       Object localObject = (CharSequence)str;
       if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
       for (int i = 1; i != 0; i = 0)
       {
-        AppMethodBeat.o(284924);
+        AppMethodBeat.o(330127);
         return -1;
       }
       localObject = str;
-      if (as.aEF(str)) {
-        localObject = ((ab)h.ae(ab.class)).aED(str);
+      if (au.aAy(str)) {
+        localObject = ((bp)h.ax(bp.class)).aAw(str);
       }
-      if ((paramas.getFromType() == 2) || (as.bvN((String)localObject)) || (as.bvP((String)localObject))) {}
+      if ((paramau.fromType == 2) || (au.bwT((String)localObject)) || (au.bwV((String)localObject))) {}
       for (i = 1; i == 0; i = 0)
       {
-        AppMethodBeat.o(284924);
+        AppMethodBeat.o(330127);
         return -1;
       }
-      AppMethodBeat.o(284924);
+      AppMethodBeat.o(330127);
       return 1;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/finder/cgi/fetcher/FinderContactFetcher;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/finder/cgi/fetcher/FinderContactFetcher;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class h
-    extends q
+    extends u
     implements kotlin.g.a.a<com.tencent.mm.plugin.finder.cgi.fetcher.a>
   {
-    public static final h Adb;
+    public static final h FyQ;
     
     static
     {
-      AppMethodBeat.i(292072);
-      Adb = new h();
-      AppMethodBeat.o(292072);
+      AppMethodBeat.i(330151);
+      FyQ = new h();
+      AppMethodBeat.o(330151);
     }
     
     h()
@@ -1158,143 +1384,106 @@ public final class a
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "contact", "", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;", "kotlin.jvm.PlatformType", "", "onDone", "com/tencent/mm/plugin/finder/service/FinderContactService$getFinderContact$5$1"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class i
-    implements m.b
+    extends u
+    implements b<List<? extends ch>, ah>
   {
-    i(a parama, m.a parama1) {}
-    
-    public final void eK(List<ai> paramList)
+    i(y.b paramb)
     {
-      AppMethodBeat.i(277400);
-      m.a locala = parama;
-      p.j(paramList, "contact");
-      locala.d((ai)j.lp(paramList));
-      AppMethodBeat.o(277400);
+      super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class j
-    extends q
-    implements kotlin.g.a.b<List<? extends ai>, x>
+    extends u
+    implements b<ch, ah>
   {
-    j(m.b paramb)
+    j(y.b paramb)
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class k
-    extends q
-    implements kotlin.g.a.b<ai, x>
+    extends u
+    implements b<ch, ah>
   {
-    k(m.b paramb)
+    k(y.a parama)
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "contact", "", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;", "kotlin.jvm.PlatformType", "", "onDone"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class l
-    implements m.b
+    extends u
+    implements b<ch, ah>
   {
-    l(m.a parama) {}
-    
-    public final void eK(List<ai> paramList)
+    l(y.a parama)
     {
-      AppMethodBeat.i(278928);
-      m.a locala = this.Adf;
-      p.j(paramList, "contact");
-      locala.d((ai)j.lp(paramList));
-      AppMethodBeat.o(278928);
+      super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "result", "", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;", "kotlin.jvm.PlatformType", "", "onDone"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class m
-    implements m.b
+    extends u
+    implements b<ch, ah>
   {
-    m(List paramList, m.b paramb) {}
-    
-    public final void eK(List<ai> paramList)
+    m(y.a parama)
     {
-      AppMethodBeat.i(274904);
-      StringBuilder localStringBuilder1 = new StringBuilder("[getContact] completed! usernameList=").append(this.nJx).append(" result=");
-      p.j(paramList, "result");
-      Object localObject = (Iterable)paramList;
-      Collection localCollection = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
-      localObject = ((Iterable)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        ai localai = (ai)((Iterator)localObject).next();
-        StringBuilder localStringBuilder2 = new StringBuilder();
-        p.j(localai, "it");
-        localCollection.add(localai.getUsername() + '=' + localai.getNickname());
-      }
-      Log.i("Finder.ContactService", (List)localCollection);
-      paramb.eK(paramList);
-      AppMethodBeat.o(274904);
+      super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class n
-    extends q
-    implements kotlin.g.a.b<ai, x>
+    extends u
+    implements b<ch, ah>
   {
-    n(m.a parama)
+    n(y.a parama)
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class o
-    extends q
-    implements kotlin.g.a.b<ai, x>
+    extends u
+    implements b<ch, ah>
   {
-    o(m.a parama)
+    o(y.a parama)
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class p
-    extends q
-    implements kotlin.g.a.b<ai, x>
+    extends u
+    implements b<ch, ah>
   {
-    p(m.a parama)
+    p(y.a parama)
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;", "invoke"})
-  static final class q
-    extends q
-    implements kotlin.g.a.b<ai, x>
-  {
-    q(a parama, aa.d paramd, String paramString, m.c paramc)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/finder/storage/FinderMsgStrangerContactStorage;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class r
-    extends q
-    implements kotlin.g.a.a<af>
+    extends u
+    implements kotlin.g.a.a<ab>
   {
-    public static final r Adj;
+    public static final r FyU;
     
     static
     {
-      AppMethodBeat.i(290019);
-      Adj = new r();
-      AppMethodBeat.o(290019);
+      AppMethodBeat.i(330096);
+      FyU = new r();
+      AppMethodBeat.o(330096);
     }
     
     r()
@@ -1302,30 +1491,10 @@ public final class a
       super();
     }
   }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/finder/storage/FinderMsgStrangerContactStorage;", "invoke"})
-  static final class s
-    extends q
-    implements kotlin.g.a.a<com.tencent.mm.plugin.finder.storage.z>
-  {
-    public static final s Adk;
-    
-    static
-    {
-      AppMethodBeat.i(283450);
-      Adk = new s();
-      AppMethodBeat.o(283450);
-    }
-    
-    s()
-    {
-      super();
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.service.a
  * JD-Core Version:    0.7.0.1
  */

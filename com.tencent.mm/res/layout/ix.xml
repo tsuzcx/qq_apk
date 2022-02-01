@@ -1,20 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/rj"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:scrollbars="none" style="@style/om">
-        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" style="@style/lz">
-            <ImageView android:id="@id/a43" android:layout_width="96.0dip" android:layout_height="96.0dip" android:layout_marginBottom="20.0dip" android:src="@drawable/baj" />
-            <TextView android:textColor="@color/a2x" android:gravity="center" android:id="@id/a41" android:layout_marginBottom="10.0dip" android:text="@string/aee" style="@style/qc" />
-            <TextView android:gravity="center" android:id="@id/a40" android:layout_marginBottom="20.0dip" android:text="@string/aed" style="@style/m0" />
-            <Button android:textSize="20.0dip" android:id="@id/a42" android:text="@string/aeh" style="@style/ou" />
-            <RelativeLayout android:id="@id/a3x" android:background="@drawable/gm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:minHeight="42.0dip">
-                <TextView android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/gp1" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/m0" />
-                <ImageView android:layout_gravity="center|right" android:id="@id/a4t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="2.0dip" android:src="@raw/checkbox_selected" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-            </RelativeLayout>
-            <RelativeLayout android:id="@id/a3y" android:background="@drawable/gn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="42.0dip">
-                <TextView android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/bel" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/m0" />
-                <ImageView android:layout_gravity="center|right" android:id="@id/a4s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="2.0dip" android:src="@raw/checkbox_selected" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-            </RelativeLayout>
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+<RelativeLayout style="@style/r8"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:form="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:background="@color/a6w" android:paddingLeft="@dimen/j6" android:paddingTop="@dimen/i6" android:paddingRight="@dimen/j6" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/a_h" android:layout_width="@dimen/z7" android:layout_height="@dimen/z7" android:layout_marginTop="@dimen/i_" />
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:gravity="center" android:id="@id/a_j" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i6" android:text="@string/kcm" />
+        <Button android:id="@id/a_k" android:visibility="visible" android:layout_marginTop="@dimen/i9" android:layout_marginBottom="@dimen/m2" android:text="@string/kcn" style="@style/og" />
+        <Button android:id="@id/a_i" android:visibility="visible" android:layout_marginTop="@dimen/i9" android:layout_marginBottom="@dimen/m2" android:text="@string/amh" style="@style/og" />
+    </LinearLayout>
+</RelativeLayout>

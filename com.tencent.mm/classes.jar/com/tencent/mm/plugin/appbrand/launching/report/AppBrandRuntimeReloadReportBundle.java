@@ -4,30 +4,30 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/launching/report/AppBrandRuntimeReloadReportBundle;", "Landroid/os/Parcelable;", "refererInstanceId", "", "reloadReason", "(Ljava/lang/String;Ljava/lang/String;)V", "getRefererInstanceId", "()Ljava/lang/String;", "setRefererInstanceId", "(Ljava/lang/String;)V", "getReloadReason", "setReloadReason", "component1", "component2", "copy", "describeContents", "", "equals", "", "other", "", "hashCode", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/launching/report/AppBrandRuntimeReloadReportBundle;", "Landroid/os/Parcelable;", "refererInstanceId", "", "reloadReason", "(Ljava/lang/String;Ljava/lang/String;)V", "getRefererInstanceId", "()Ljava/lang/String;", "setRefererInstanceId", "(Ljava/lang/String;)V", "getReloadReason", "setReloadReason", "component1", "component2", "copy", "describeContents", "", "equals", "", "other", "", "hashCode", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class AppBrandRuntimeReloadReportBundle
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR;
-  public String pZP;
-  public String pZQ;
+  public static final Parcelable.Creator<AppBrandRuntimeReloadReportBundle> CREATOR;
+  public String teY;
+  public String teZ;
   
   static
   {
-    AppMethodBeat.i(283270);
-    CREATOR = new a();
-    AppMethodBeat.o(283270);
+    AppMethodBeat.i(321202);
+    CREATOR = (Parcelable.Creator)new a();
+    AppMethodBeat.o(321202);
   }
   
   public AppBrandRuntimeReloadReportBundle(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(283264);
-    this.pZP = paramString1;
-    this.pZQ = paramString2;
-    AppMethodBeat.o(283264);
+    AppMethodBeat.i(321192);
+    this.teY = paramString1;
+    this.teZ = paramString2;
+    AppMethodBeat.o(321192);
   }
   
   public final int describeContents()
@@ -37,80 +37,69 @@ public final class AppBrandRuntimeReloadReportBundle
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(283267);
-    if (this != paramObject)
+    AppMethodBeat.i(321221);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof AppBrandRuntimeReloadReportBundle))
-      {
-        paramObject = (AppBrandRuntimeReloadReportBundle)paramObject;
-        if ((!p.h(this.pZP, paramObject.pZP)) || (!p.h(this.pZQ, paramObject.pZQ))) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(283267);
+      AppMethodBeat.o(321221);
       return true;
     }
-    AppMethodBeat.o(283267);
-    return false;
+    if (!(paramObject instanceof AppBrandRuntimeReloadReportBundle))
+    {
+      AppMethodBeat.o(321221);
+      return false;
+    }
+    paramObject = (AppBrandRuntimeReloadReportBundle)paramObject;
+    if (!s.p(this.teY, paramObject.teY))
+    {
+      AppMethodBeat.o(321221);
+      return false;
+    }
+    if (!s.p(this.teZ, paramObject.teZ))
+    {
+      AppMethodBeat.o(321221);
+      return false;
+    }
+    AppMethodBeat.o(321221);
+    return true;
   }
   
   public final int hashCode()
   {
-    int j = 0;
-    AppMethodBeat.i(283266);
-    String str = this.pZP;
-    if (str != null) {}
-    for (int i = str.hashCode();; i = 0)
+    AppMethodBeat.i(321216);
+    int j = this.teY.hashCode();
+    if (this.teZ == null) {}
+    for (int i = 0;; i = this.teZ.hashCode())
     {
-      str = this.pZQ;
-      if (str != null) {
-        j = str.hashCode();
-      }
-      AppMethodBeat.o(283266);
-      return i * 31 + j;
+      AppMethodBeat.o(321216);
+      return i + j * 31;
     }
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(283265);
-    String str = "AppBrandRuntimeReloadReportBundle(refererInstanceId=" + this.pZP + ", reloadReason=" + this.pZQ + ")";
-    AppMethodBeat.o(283265);
+    AppMethodBeat.i(321210);
+    String str = "AppBrandRuntimeReloadReportBundle(refererInstanceId=" + this.teY + ", reloadReason=" + this.teZ + ')';
+    AppMethodBeat.o(321210);
     return str;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(283268);
-    p.k(paramParcel, "parcel");
-    paramParcel.writeString(this.pZP);
-    paramParcel.writeString(this.pZQ);
-    AppMethodBeat.o(283268);
+    AppMethodBeat.i(321229);
+    s.u(paramParcel, "out");
+    paramParcel.writeString(this.teY);
+    paramParcel.writeString(this.teZ);
+    AppMethodBeat.o(321229);
   }
   
-  @l(iBK={1, 1, 16})
+  @Metadata(k=3, mv={1, 5, 1}, xi=48)
   public static final class a
-    implements Parcelable.Creator
-  {
-    public final Object createFromParcel(Parcel paramParcel)
-    {
-      AppMethodBeat.i(269094);
-      p.k(paramParcel, "in");
-      paramParcel = new AppBrandRuntimeReloadReportBundle(paramParcel.readString(), paramParcel.readString());
-      AppMethodBeat.o(269094);
-      return paramParcel;
-    }
-    
-    public final Object[] newArray(int paramInt)
-    {
-      return new AppBrandRuntimeReloadReportBundle[paramInt];
-    }
-  }
+    implements Parcelable.Creator<AppBrandRuntimeReloadReportBundle>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.report.AppBrandRuntimeReloadReportBundle
  * JD-Core Version:    0.7.0.1
  */

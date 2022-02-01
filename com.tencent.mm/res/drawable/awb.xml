@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@raw/search_sos_cancel_pressed" />
-    <item android:drawable="@raw/search_sos_cancel" />
-</selector>
+    <gradient android:startColor="#00000000" android:endColor="#4c000000" android:angle="90.0" />
+</shape>

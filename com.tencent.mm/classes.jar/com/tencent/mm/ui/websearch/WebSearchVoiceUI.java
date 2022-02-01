@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.websearch;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -24,22 +23,22 @@ import com.tencent.mm.pluginsdk.ui.websearch.a.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.statusbar.b;
-import com.tencent.mm.ui.w;
 import com.tencent.mm.ui.widget.SwipeBackLayout;
+import com.tencent.mm.ui.y;
 
 @com.tencent.mm.ui.base.a(7)
 public class WebSearchVoiceUI
   extends MMActivity
 {
-  private b XMm = null;
-  private com.tencent.mm.pluginsdk.ui.websearch.a XZV;
-  private View XZW;
-  private int XZX;
-  private String fPs;
+  private b afCA = null;
+  private com.tencent.mm.pluginsdk.ui.websearch.a afRQ;
+  private View afRR;
+  private int afRS;
+  private String hVn;
   private int scene;
   private String sessionId;
   
-  private int hZp()
+  private int jEy()
   {
     AppMethodBeat.i(39591);
     int i = getResources().getColor(R.e.websearch_bg);
@@ -57,7 +56,7 @@ public class WebSearchVoiceUI
     AppMethodBeat.i(39590);
     boolean bool = super.initNavigationSwipeBack();
     if (!isSupportNavigationSwipeBack()) {
-      com.tencent.mm.ui.statusbar.a.f(getContentView(), hZp(), true);
+      com.tencent.mm.ui.statusbar.a.h(getContentView(), jEy(), true);
     }
     AppMethodBeat.o(39590);
     return bool;
@@ -71,12 +70,12 @@ public class WebSearchVoiceUI
     {
       View localView = getSwipeBackLayout().getChildAt(0);
       getSwipeBackLayout().removeView(localView);
-      this.XMm = new b(this);
-      this.XMm.addView(localView, new FrameLayout.LayoutParams(-1, -1));
-      getSwipeBackLayout().addView(this.XMm);
-      getSwipeBackLayout().setContentView(this.XMm);
+      this.afCA = new b(this);
+      this.afCA.addView(localView, new FrameLayout.LayoutParams(-1, -1));
+      getSwipeBackLayout().addView(this.afCA);
+      getSwipeBackLayout().setContentView(this.afCA);
     }
-    com.tencent.mm.ui.statusbar.a.f(getContentView(), hZp(), true);
+    com.tencent.mm.ui.statusbar.a.h(getContentView(), jEy(), true);
     AppMethodBeat.o(39589);
   }
   
@@ -93,7 +92,7 @@ public class WebSearchVoiceUI
   {
     AppMethodBeat.i(39588);
     super.onCreate(paramBundle);
-    setBackBtnColorFilter(-16777216);
+    setBackBtnColorFilter(R.e.BW_0);
     setMMTitleColor(-16777216);
     if (getSupportActionBar() != null)
     {
@@ -113,27 +112,27 @@ public class WebSearchVoiceUI
     if (getIntent() != null)
     {
       this.sessionId = getIntent().getStringExtra("sessionId");
-      this.fPs = getIntent().getStringExtra("subSessionId");
+      this.hVn = getIntent().getStringExtra("subSessionId");
       this.scene = getIntent().getIntExtra("key_scene", -1);
-      this.XZX = getIntent().getIntExtra("key_is_nav_voice", 0);
+      this.afRS = getIntent().getIntExtra("key_is_nav_voice", 0);
     }
-    this.XZW = findViewById(R.h.voiceinput_mask_view);
+    this.afRR = findViewById(R.h.voiceinput_mask_view);
     this.mController.hideTitleView();
-    if (this.XZV == null)
+    if (this.afRQ == null)
     {
-      this.XZV = new com.tencent.mm.pluginsdk.ui.websearch.a(getContext());
-      this.XZV.setCallback(new a.a()
+      this.afRQ = new com.tencent.mm.pluginsdk.ui.websearch.a(getContext());
+      this.afRQ.setCallback(new a.a()
       {
-        public final void DV(boolean paramAnonymousBoolean)
+        public final void JE(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(39587);
           if (paramAnonymousBoolean) {
-            h.IzE.a(15178, new Object[] { Integer.valueOf(2), Long.valueOf(System.currentTimeMillis()), "", WebSearchVoiceUI.a(WebSearchVoiceUI.this), WebSearchVoiceUI.b(WebSearchVoiceUI.this), Integer.valueOf(WebSearchVoiceUI.c(WebSearchVoiceUI.this)), Integer.valueOf(WebSearchVoiceUI.d(WebSearchVoiceUI.this)) });
+            h.OAn.b(15178, new Object[] { Integer.valueOf(2), Long.valueOf(System.currentTimeMillis()), "", WebSearchVoiceUI.a(WebSearchVoiceUI.this), WebSearchVoiceUI.b(WebSearchVoiceUI.this), Integer.valueOf(WebSearchVoiceUI.c(WebSearchVoiceUI.this)), Integer.valueOf(WebSearchVoiceUI.d(WebSearchVoiceUI.this)) });
           }
           AppMethodBeat.o(39587);
         }
         
-        public final void bqV(String paramAnonymousString)
+        public final void bqK(String paramAnonymousString)
         {
           AppMethodBeat.i(39586);
           String str = paramAnonymousString;
@@ -147,44 +146,44 @@ public class WebSearchVoiceUI
           paramAnonymousString = new Intent();
           paramAnonymousString.putExtra("text", str);
           WebSearchVoiceUI.this.setResult(0, paramAnonymousString);
-          h.IzE.a(15178, new Object[] { Integer.valueOf(3), Long.valueOf(System.currentTimeMillis()), str, WebSearchVoiceUI.a(WebSearchVoiceUI.this), WebSearchVoiceUI.b(WebSearchVoiceUI.this), Integer.valueOf(WebSearchVoiceUI.c(WebSearchVoiceUI.this)), Integer.valueOf(WebSearchVoiceUI.d(WebSearchVoiceUI.this)) });
+          h.OAn.b(15178, new Object[] { Integer.valueOf(3), Long.valueOf(System.currentTimeMillis()), str, WebSearchVoiceUI.a(WebSearchVoiceUI.this), WebSearchVoiceUI.b(WebSearchVoiceUI.this), Integer.valueOf(WebSearchVoiceUI.c(WebSearchVoiceUI.this)), Integer.valueOf(WebSearchVoiceUI.d(WebSearchVoiceUI.this)) });
           WebSearchVoiceUI.this.finish();
           AppMethodBeat.o(39586);
         }
         
-        public final void hjV()
+        public final void iKN()
         {
           AppMethodBeat.i(39585);
           WebSearchVoiceUI.this.setResult(0);
-          h.IzE.a(15178, new Object[] { Integer.valueOf(4), Long.valueOf(System.currentTimeMillis()), "", WebSearchVoiceUI.a(WebSearchVoiceUI.this), WebSearchVoiceUI.b(WebSearchVoiceUI.this), Integer.valueOf(WebSearchVoiceUI.c(WebSearchVoiceUI.this)), Integer.valueOf(WebSearchVoiceUI.d(WebSearchVoiceUI.this)) });
+          h.OAn.b(15178, new Object[] { Integer.valueOf(4), Long.valueOf(System.currentTimeMillis()), "", WebSearchVoiceUI.a(WebSearchVoiceUI.this), WebSearchVoiceUI.b(WebSearchVoiceUI.this), Integer.valueOf(WebSearchVoiceUI.c(WebSearchVoiceUI.this)), Integer.valueOf(WebSearchVoiceUI.d(WebSearchVoiceUI.this)) });
           WebSearchVoiceUI.this.finish();
           AppMethodBeat.o(39585);
         }
       });
     }
-    this.XZV.hmy();
-    com.tencent.mm.pluginsdk.ui.websearch.a locala = this.XZV;
-    Log.d("MicroMsg.VoiceInputPanel", "refreshHeight DISPLAY_HEIGHT_PORT_IN_PX %s,needRefreshProtHeight %s", new Object[] { Integer.valueOf(locala.RhU), Boolean.valueOf(locala.Rpa) });
-    if (locala.Rpa)
+    this.afRQ.iNo();
+    com.tencent.mm.pluginsdk.ui.websearch.a locala = this.afRQ;
+    Log.d("MicroMsg.VoiceInputPanel", "refreshHeight DISPLAY_HEIGHT_PORT_IN_PX %s,needRefreshProtHeight %s", new Object[] { Integer.valueOf(locala.Yea), Boolean.valueOf(locala.Ylr) });
+    if (locala.Ylr)
     {
-      locala.Rpa = false;
-      View localView = locala.findViewById(R.h.eaa);
+      locala.Ylr = false;
+      View localView = locala.findViewById(R.h.gcO);
       ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
-      int i = locala.RhU;
+      int i = locala.Yea;
       paramBundle = localLayoutParams;
       if (localLayoutParams == null) {
         paramBundle = new LinearLayout.LayoutParams(-1, i);
       }
       paramBundle.height = i;
       localView.setLayoutParams(paramBundle);
-      locala.hmA();
+      locala.iNq();
       locala.requestLayout();
     }
-    this.XZV.setVisibility(0);
+    this.afRQ.setVisibility(0);
     paramBundle = new RelativeLayout.LayoutParams(-1, -2);
     paramBundle.addRule(12);
-    ((ViewGroup)findViewById(R.h.root)).addView(this.XZV, paramBundle);
-    h.IzE.a(15178, new Object[] { Integer.valueOf(1), Long.valueOf(System.currentTimeMillis()), "", this.sessionId, this.fPs, Integer.valueOf(this.scene), Integer.valueOf(this.XZX) });
+    ((ViewGroup)findViewById(R.h.root)).addView(this.afRQ, paramBundle);
+    h.OAn.b(15178, new Object[] { Integer.valueOf(1), Long.valueOf(System.currentTimeMillis()), "", this.sessionId, this.hVn, Integer.valueOf(this.scene), Integer.valueOf(this.afRS) });
     AppMethodBeat.o(39588);
   }
   
@@ -192,8 +191,8 @@ public class WebSearchVoiceUI
   {
     AppMethodBeat.i(39593);
     super.onDestroy();
-    if (this.XZV != null) {
-      this.XZV.destroy();
+    if (this.afRQ != null) {
+      this.afRQ.destroy();
     }
     AppMethodBeat.o(39593);
   }
@@ -206,7 +205,7 @@ public class WebSearchVoiceUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.websearch.WebSearchVoiceUI
  * JD-Core Version:    0.7.0.1
  */

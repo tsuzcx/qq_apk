@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.webview.model;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
-import com.tencent.mm.plugin.am.a;
+import com.tencent.mm.br.c;
+import com.tencent.mm.plugin.an.a;
 import com.tencent.mm.sdk.platformtools.IntentUtil;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.io.UnsupportedEncodingException;
@@ -13,7 +13,7 @@ import java.net.URLDecoder;
 public final class at
   extends a
 {
-  private static String bm(Intent paramIntent)
+  private static String bM(Intent paramIntent)
   {
     AppMethodBeat.i(79039);
     try
@@ -29,17 +29,12 @@ public final class at
     return "";
   }
   
-  public final int getType()
-  {
-    return 4;
-  }
-  
-  public final void k(Context paramContext, Intent paramIntent)
+  public final void C(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(79038);
     paramIntent.putExtra("type", 4);
     paramIntent.putExtra("id", "");
-    paramIntent = bm(paramIntent);
+    paramIntent = bM(paramIntent);
     if (Util.isNullOrNil(paramIntent))
     {
       AppMethodBeat.o(79038);
@@ -51,6 +46,11 @@ public final class at
     localIntent.addFlags(268435456);
     c.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
     AppMethodBeat.o(79038);
+  }
+  
+  public final int getType()
+  {
+    return 4;
   }
 }
 

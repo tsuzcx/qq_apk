@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@color/a2" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/d_"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_3" android:gravity="center_horizontal" android:id="@id/g30" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/eau" />
+    <androidx.constraintlayout.widget.ConstraintLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/g2z" android:paddingBottom="@dimen/bx" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:id="@id/aym" android:background="@drawable/x0" android:layout_width="@dimen/bv" android:layout_height="@dimen/bv" android:layout_marginTop="@dimen/d1" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+        <View android:id="@id/fmz" android:background="@color/BW_0_Alpha_0_1_Night_Mode" android:layout_width="@dimen/cv" android:layout_height="1.0dip" android:layout_marginRight="@dimen/df" app:layout_constraintBottom_toBottomOf="@id/aym" app:layout_constraintRight_toLeftOf="@id/aym" app:layout_constraintTop_toTopOf="@id/aym" />
+        <View android:id="@id/itu" android:background="@color/BW_0_Alpha_0_1_Night_Mode" android:layout_width="@dimen/cv" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/df" app:layout_constraintBottom_toBottomOf="@id/aym" app:layout_constraintLeft_toRightOf="@id/aym" app:layout_constraintTop_toTopOf="@id/aym" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

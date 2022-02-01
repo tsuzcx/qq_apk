@@ -6,15 +6,15 @@ import java.nio.ByteBuffer;
 
 public class BufferURLManager
 {
-  private volatile long fhr;
+  private volatile long mInst;
   
   public BufferURLManager()
   {
-    AppMethodBeat.i(246824);
-    this.fhr = 0L;
-    this.fhr = nativeCreate();
-    c.c.i("BufferURLManager", "BufferURLManager created %d", new Object[] { Long.valueOf(this.fhr) });
-    AppMethodBeat.o(246824);
+    AppMethodBeat.i(238534);
+    this.mInst = 0L;
+    this.mInst = nativeCreate();
+    c.c.i("BufferURLManager", "BufferURLManager created %d", new Object[] { Long.valueOf(this.mInst) });
+    AppMethodBeat.o(238534);
   }
   
   private static native void nativeBindTo(long paramLong1, long paramLong2, long paramLong3);
@@ -33,39 +33,39 @@ public class BufferURLManager
   
   public final void bindTo(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(246827);
-    c.c.i("BufferURLManager", "BufferURLManager %d %d %d", new Object[] { Long.valueOf(this.fhr), Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
-    nativeBindTo(this.fhr, paramLong1, paramLong2);
-    AppMethodBeat.o(246827);
+    AppMethodBeat.i(238573);
+    c.c.i("BufferURLManager", "BufferURLManager %d %d %d", new Object[] { Long.valueOf(this.mInst), Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+    nativeBindTo(this.mInst, paramLong1, paramLong2);
+    AppMethodBeat.o(238573);
   }
   
   public final void destroy()
   {
-    AppMethodBeat.i(246826);
-    c.c.i("BufferURLManager", "BufferURLManager destroying %d", new Object[] { Long.valueOf(this.fhr) });
-    nativeDestroy(this.fhr);
-    this.fhr = 0L;
-    c.c.i("BufferURLManager", "BufferURLManager destroyed %d", new Object[] { Long.valueOf(this.fhr) });
-    AppMethodBeat.o(246826);
+    AppMethodBeat.i(238569);
+    c.c.i("BufferURLManager", "BufferURLManager destroying %d", new Object[] { Long.valueOf(this.mInst) });
+    nativeDestroy(this.mInst);
+    this.mInst = 0L;
+    c.c.i("BufferURLManager", "BufferURLManager destroyed %d", new Object[] { Long.valueOf(this.mInst) });
+    AppMethodBeat.o(238569);
   }
   
-  public final ByteBuffer eb(String paramString)
+  public final ByteBuffer fu(String paramString)
   {
-    AppMethodBeat.i(246828);
+    AppMethodBeat.i(238576);
     if (paramString == null)
     {
       c.c.e("BufferURLManager", "BufferURLManager getBuffer but url is null", new Object[0]);
-      AppMethodBeat.o(246828);
+      AppMethodBeat.o(238576);
       return null;
     }
-    paramString = nativeGetBuffer(this.fhr, paramString);
-    AppMethodBeat.o(246828);
+    paramString = nativeGetBuffer(this.mInst, paramString);
+    AppMethodBeat.o(238576);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.appbrand.commonjni.buffer.BufferURLManager
  * JD-Core Version:    0.7.0.1
  */

@@ -20,15 +20,15 @@ public class NoScaleRelativeLayout
   
   protected void onFinishInflate()
   {
-    AppMethodBeat.i(200122);
+    AppMethodBeat.i(242207);
     super.onFinishInflate();
-    a.jg(this);
-    AppMethodBeat.o(200122);
+    a.mK(this);
+    AppMethodBeat.o(242207);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.wallet_core.ui.noscale.NoScaleRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

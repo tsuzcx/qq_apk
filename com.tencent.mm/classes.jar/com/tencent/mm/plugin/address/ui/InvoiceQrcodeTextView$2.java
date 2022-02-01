@@ -17,8 +17,8 @@ import com.tencent.mm.R.e;
 import com.tencent.mm.R.l;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.sdk.platformtools.ClipboardHelper;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.q.g;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.u.i;
 
 final class InvoiceQrcodeTextView$2
   implements View.OnLongClickListener
@@ -27,10 +27,10 @@ final class InvoiceQrcodeTextView$2
   
   public final boolean onLongClick(final View paramView)
   {
-    AppMethodBeat.i(251981);
+    AppMethodBeat.i(267176);
     Object localObject1 = new b();
-    ((b)localObject1).bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/address/ui/InvoiceQrcodeTextView$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((b)localObject1).aFi());
+    ((b)localObject1).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/address/ui/InvoiceQrcodeTextView$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((b)localObject1).aYj());
     paramView = (TextView)paramView;
     if (paramView.getText() != null)
     {
@@ -39,47 +39,47 @@ final class InvoiceQrcodeTextView$2
       ((SpannableString)localObject2).setSpan(new BackgroundColorSpan(paramView.getContext().getResources().getColor(R.e.light_blue_bg_color)), 0, ((CharSequence)localObject1).length(), 33);
       paramView.setText((CharSequence)localObject2);
       localObject2 = new com.tencent.mm.ui.widget.b.a(paramView.getContext(), paramView);
-      ((com.tencent.mm.ui.widget.b.a)localObject2).Yrf = new View.OnCreateContextMenuListener()
+      ((com.tencent.mm.ui.widget.b.a)localObject2).agjt = new View.OnCreateContextMenuListener()
       {
         public final void onCreateContextMenu(ContextMenu paramAnonymousContextMenu, View paramAnonymousView, ContextMenu.ContextMenuInfo paramAnonymousContextMenuInfo)
         {
-          AppMethodBeat.i(286221);
+          AppMethodBeat.i(267177);
           paramAnonymousContextMenu.add(paramView.getContext().getString(R.l.app_copy));
-          AppMethodBeat.o(286221);
+          AppMethodBeat.o(267177);
         }
       };
-      ((com.tencent.mm.ui.widget.b.a)localObject2).ODU = new q.g()
+      ((com.tencent.mm.ui.widget.b.a)localObject2).GAC = new u.i()
       {
         public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
         {
-          AppMethodBeat.i(291254);
+          AppMethodBeat.i(267175);
           if (paramAnonymousInt == 0)
           {
             ClipboardHelper.setText(paramView.getText().toString());
-            h.cN(paramView.getContext(), paramView.getContext().getString(R.l.app_copy_ok));
+            k.cY(paramView.getContext(), paramView.getContext().getString(R.l.app_copy_ok));
           }
-          AppMethodBeat.o(291254);
+          AppMethodBeat.o(267175);
         }
       };
-      ((com.tencent.mm.ui.widget.b.a)localObject2).XVa = new PopupWindow.OnDismissListener()
+      ((com.tencent.mm.ui.widget.b.a)localObject2).afLp = new PopupWindow.OnDismissListener()
       {
         public final void onDismiss()
         {
-          AppMethodBeat.i(286255);
-          paramView.setText(this.nmn);
-          AppMethodBeat.o(286255);
+          AppMethodBeat.i(267174);
+          paramView.setText(this.qjw);
+          AppMethodBeat.o(267174);
         }
       };
-      ((com.tencent.mm.ui.widget.b.a)localObject2).eY(InvoiceQrcodeTextView.a(this.nml), InvoiceQrcodeTextView.b(this.nml));
+      ((com.tencent.mm.ui.widget.b.a)localObject2).fQ(InvoiceQrcodeTextView.a(this.qju), InvoiceQrcodeTextView.b(this.qju));
     }
     com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/address/ui/InvoiceQrcodeTextView$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-    AppMethodBeat.o(251981);
+    AppMethodBeat.o(267176);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.address.ui.InvoiceQrcodeTextView.2
  * JD-Core Version:    0.7.0.1
  */

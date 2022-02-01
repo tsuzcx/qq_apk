@@ -6,6 +6,7 @@
     "BRAND_ID_Others": "WeChat ID",
     "BRAND_Team": "WeChat Team",
     "BRAND_Pay": "WeChat Pay",
+    "BRAND_Pay_Separation": "Weixin Pay",
     "BRAND_Pay_OverseaMY": "WeChat Pay MY",
     "BRAND_Pay_OverseaHK": "WeChat Pay HK",
     "BRAND_Pay_Oversea": "WeChat Pay",
@@ -84,7 +85,7 @@
     "Compliance_Locale": "國家",
     "OfficialAliasName": "WeChat",
     "OfficialEntity": "深圳市腾讯计算机系统有限公司",
-    "Compliance_Terms": "WeChat 服務條款",
+    "Compliance_Terms": "服務條款",
     "HC_LANG": "zh_TW",
     "HC_MENU_SELF": "帳號服務",
     "HC_MENU_FREEZE_ACCOUNT": "凍結帳號",
@@ -92,5 +93,7 @@
     "HC_MENU_FORGOT_PASSWORD": "忘記密碼",
     "HC_MENU_HELP_LOGIN": "協助好友登入",
     "HC_MENU_HELP_REGISTER": "協助好友註冊",
-    "HC_MENU_FEEDBACK": "意見反映"
+    "HC_MENU_FEEDBACK": "意見反映",
+
+    "BRAND_SEPARATION": "微信"
 }

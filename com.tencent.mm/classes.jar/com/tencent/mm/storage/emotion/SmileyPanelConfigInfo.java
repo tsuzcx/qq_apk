@@ -4,13 +4,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.gn;
+import com.tencent.mm.autogen.b.hh;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import java.lang.reflect.Field;
-import java.util.Map;
 
 public class SmileyPanelConfigInfo
-  extends gn
+  extends hh
   implements Parcelable
 {
   public static final Parcelable.Creator<SmileyPanelConfigInfo> CREATOR;
@@ -19,21 +17,7 @@ public class SmileyPanelConfigInfo
   static
   {
     AppMethodBeat.i(105150);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[2];
-    localMAutoDBInfo.columns = new String[3];
-    StringBuilder localStringBuilder = new StringBuilder();
-    localMAutoDBInfo.columns[0] = "key";
-    localMAutoDBInfo.colsMap.put("key", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" key TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.primaryKey = "key";
-    localMAutoDBInfo.columns[1] = "position";
-    localMAutoDBInfo.colsMap.put("position", "INTEGER");
-    localStringBuilder.append(" position INTEGER");
-    localMAutoDBInfo.columns[2] = "rowid";
-    localMAutoDBInfo.sql = localStringBuilder.toString();
-    info = localMAutoDBInfo;
+    info = aJm();
     CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(105150);
   }
@@ -85,7 +69,7 @@ public class SmileyPanelConfigInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.SmileyPanelConfigInfo
  * JD-Core Version:    0.7.0.1
  */

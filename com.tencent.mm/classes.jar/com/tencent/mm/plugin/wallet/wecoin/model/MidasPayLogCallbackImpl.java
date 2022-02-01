@@ -16,25 +16,25 @@ public class MidasPayLogCallbackImpl
   
   public void onLogging(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(277488);
+    AppMethodBeat.i(315733);
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(277488);
+      AppMethodBeat.o(315733);
       return;
       Log.v("MicroMsg.MidasPayLogCallbackImpl", "tag:%s msg:%s", new Object[] { paramString1, paramString2 });
-      AppMethodBeat.o(277488);
+      AppMethodBeat.o(315733);
       return;
       Log.d("MicroMsg.MidasPayLogCallbackImpl", "tag:%s msg:%s", new Object[] { paramString1, paramString2 });
-      AppMethodBeat.o(277488);
+      AppMethodBeat.o(315733);
       return;
       Log.i("MicroMsg.MidasPayLogCallbackImpl", "tag:%s msg:%s", new Object[] { paramString1, paramString2 });
-      AppMethodBeat.o(277488);
+      AppMethodBeat.o(315733);
       return;
       Log.w("MicroMsg.MidasPayLogCallbackImpl", "tag:%s msg:%s", new Object[] { paramString1, paramString2 });
-      AppMethodBeat.o(277488);
+      AppMethodBeat.o(315733);
       return;
       Log.e("MicroMsg.MidasPayLogCallbackImpl", "tag:%s msg:%s", new Object[] { paramString1, paramString2 });
     }

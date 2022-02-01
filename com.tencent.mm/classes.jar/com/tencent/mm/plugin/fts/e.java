@@ -5,43 +5,43 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.f;
 import com.tencent.mm.plugin.fts.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class e
   implements j
 {
-  public final as aHC(String paramString)
+  public final au aEa(String paramString)
   {
     AppMethodBeat.i(52550);
-    as localas2 = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().bwc(paramString);
-    as localas1 = localas2;
-    if (localas2 == null)
+    au localau2 = ((n)com.tencent.mm.kernel.h.ax(n.class)).bzA().bxq(paramString);
+    au localau1 = localau2;
+    if (localau2 == null)
     {
-      localas1 = new as();
+      localau1 = new au();
       paramString = h("SELECT ROWID, username, alias, conRemark, nickname, verifyFlag, type, lvbuff, contactLabelIds FROM rcontact WHERE username = ? AND deleteFlag=0;", new String[] { paramString });
       if (paramString.moveToNext())
       {
-        localas1.jxt = paramString.getLong(0);
-        localas1.setUsername(paramString.getString(1));
-        localas1.Iq(paramString.getString(2));
-        localas1.Ir(paramString.getString(3));
-        localas1.setNickname(paramString.getString(4));
-        localas1.ps(paramString.getInt(5));
-        localas1.rm(paramString.getInt(6));
-        localas1.ag(paramString.getBlob(7));
-        localas1.Iz(paramString.getString(8));
-        localas1.pu(0);
+        localau1.maN = paramString.getLong(0);
+        localau1.setUsername(paramString.getString(1));
+        localau1.AV(paramString.getString(2));
+        localau1.AW(paramString.getString(3));
+        localau1.setNickname(paramString.getString(4));
+        localau1.pr(paramString.getInt(5));
+        localau1.ru(paramString.getInt(6));
+        localau1.ag(paramString.getBlob(7));
+        localau1.Be(paramString.getString(8));
+        localau1.pt(0);
       }
       paramString.close();
     }
     AppMethodBeat.o(52550);
-    return localas1;
+    return localau1;
   }
   
-  public final boolean aHD(String paramString)
+  public final boolean aEb(String paramString)
   {
     AppMethodBeat.i(52551);
     paramString = h(String.format("SELECT 1 FROM rconversation WHERE username = ?", new Object[0]), new String[] { paramString });
@@ -59,7 +59,7 @@ public final class e
     }
   }
   
-  public final long aHE(String paramString)
+  public final long aEc(String paramString)
   {
     AppMethodBeat.i(52552);
     paramString = h("SELECT conversationTime FROM rconversation WHERE username=?;", new String[] { paramString });
@@ -79,7 +79,7 @@ public final class e
     return l1;
   }
   
-  public final List<String> aHF(String paramString)
+  public final List<String> aEd(String paramString)
   {
     AppMethodBeat.i(52553);
     ArrayList localArrayList = new ArrayList();
@@ -104,8 +104,8 @@ public final class e
   public final Cursor h(String paramString, String[] paramArrayOfString)
   {
     AppMethodBeat.i(52548);
-    com.tencent.mm.kernel.h.aHH();
-    paramString = com.tencent.mm.kernel.h.aHG().kcG.rawQuery(paramString, paramArrayOfString, 2);
+    com.tencent.mm.kernel.h.baF();
+    paramString = com.tencent.mm.kernel.h.baE().mCO.rawQuery(paramString, paramArrayOfString, 2);
     AppMethodBeat.o(52548);
     return paramString;
   }
@@ -113,8 +113,8 @@ public final class e
   public final Cursor rawQuery(String paramString, String[] paramArrayOfString)
   {
     AppMethodBeat.i(52549);
-    com.tencent.mm.kernel.h.aHH();
-    paramString = com.tencent.mm.kernel.h.aHG().kcG.rawQuery(paramString, paramArrayOfString);
+    com.tencent.mm.kernel.h.baF();
+    paramString = com.tencent.mm.kernel.h.baE().mCO.rawQuery(paramString, paramArrayOfString);
     AppMethodBeat.o(52549);
     return paramString;
   }

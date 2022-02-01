@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/fvc" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <RelativeLayout android:id="@id/dwq" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <include android:id="@id/dec" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/af6" />
+    </RelativeLayout>
+    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/ai1" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:elevation="@dimen/agq">
+        <include android:id="@id/dyj" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" android:layout_above="@id/dyn" android:layout_below="@id/e21" layout="@layout/ak2" />
+        <include android:id="@id/dsl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/aij" />
+        <include android:id="@id/dsv" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/ain" />
+        <include layout="@layout/b7w" />
+        <include android:id="@id/e6v" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:layout_alignParentStart="true" layout="@layout/akw" />
+        <include android:id="@id/e6s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignTop="@id/e6v" android:layout_alignBottom="@id/e6v" android:layout_marginStart="@dimen/bv" android:layout_toEndOf="@id/e6v" layout="@layout/afy" />
+        <include android:id="@id/e6w" android:visibility="gone" android:layout_width="@dimen/d6" android:layout_height="@dimen/d6" android:layout_centerVertical="true" android:layout_alignParentEnd="true" layout="@layout/al1" />
+        <include android:id="@id/e6u" android:visibility="visible" android:layout_width="@dimen/d4" android:layout_height="@dimen/d_" android:layout_marginTop="@dimen/bv" android:layout_alignParentTop="true" android:layout_marginEnd="@dimen/bv" android:layout_toStartOf="@id/e6y" layout="@layout/aiq" />
+        <include android:id="@id/e6y" android:layout_width="@dimen/d4" android:layout_height="@dimen/d_" android:layout_marginTop="@dimen/bv" android:layout_alignParentTop="true" android:layout_marginEnd="@dimen/bv" android:layout_toStartOf="@id/e6x" layout="@layout/alc" />
+        <include android:id="@id/e6x" android:visibility="visible" android:layout_width="@dimen/d4" android:layout_height="@dimen/d_" android:layout_marginTop="@dimen/bv" android:layout_alignParentTop="true" android:layout_marginEnd="-8.0dip" android:layout_alignParentEnd="true" layout="@layout/al6" />
+        <include android:id="@id/e6r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cp" android:layout_above="@id/dyn" android:layout_marginStart="@dimen/cp" android:layout_alignParentStart="true" layout="@layout/afx" />
+        <include android:id="@id/e6t" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cp" android:layout_above="@id/dyn" android:layout_alignParentRight="true" layout="@layout/afs" />
+        <include android:id="@id/dyn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/ip8" layout="@layout/ajx" />
+        <View android:id="@id/ip8" android:layout_width="1.0dip" android:layout_height="1.0dip" android:layout_alignParentBottom="true" />
+        <com.tencent.mm.plugin.finder.live.view.FinderLiveShadeView android:id="@id/dyw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,6 +1,5 @@
 package com.google.firebase.messaging;
 
-import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.KeyguardManager;
@@ -27,8 +26,8 @@ import android.os.Process;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.Log;
-import androidx.core.app.e.b;
-import androidx.core.app.e.d;
+import androidx.core.app.f.b;
+import androidx.core.app.f.d;
 import androidx.core.content.a;
 import com.google.android.gms.common.util.PlatformVersion;
 import com.google.firebase.iid.o;
@@ -47,26 +46,57 @@ import org.json.JSONException;
 
 final class d
 {
-  private static d bKA;
-  private final Context bJa;
-  private Bundle bKB;
-  private Method bKC;
-  private Method bKD;
-  private final AtomicInteger bKE;
+  private static d dEi;
+  private final Context dCI;
+  private Bundle dEj;
+  private Method dEk;
+  private Method dEl;
+  private final AtomicInteger dEm;
   
   private d(Context paramContext)
   {
     AppMethodBeat.i(116792);
-    this.bKE = new AtomicInteger((int)SystemClock.elapsedRealtime());
-    this.bJa = paramContext.getApplicationContext();
+    this.dEm = new AtomicInteger((int)SystemClock.elapsedRealtime());
+    this.dCI = paramContext.getApplicationContext();
     AppMethodBeat.o(116792);
   }
   
-  @TargetApi(26)
+  private final Bundle YG()
+  {
+    AppMethodBeat.i(116801);
+    if (this.dEj != null)
+    {
+      localObject = this.dEj;
+      AppMethodBeat.o(116801);
+      return localObject;
+    }
+    Object localObject = null;
+    try
+    {
+      ApplicationInfo localApplicationInfo = this.dCI.getPackageManager().getApplicationInfo(this.dCI.getPackageName(), 128);
+      localObject = localApplicationInfo;
+    }
+    catch (PackageManager.NameNotFoundException localNameNotFoundException)
+    {
+      label49:
+      break label49;
+    }
+    if ((localObject != null) && (((ApplicationInfo)localObject).metaData != null))
+    {
+      this.dEj = ((ApplicationInfo)localObject).metaData;
+      localObject = this.dEj;
+      AppMethodBeat.o(116801);
+      return localObject;
+    }
+    localObject = Bundle.EMPTY;
+    AppMethodBeat.o(116801);
+    return localObject;
+  }
+  
   private final Notification a(CharSequence paramCharSequence, String paramString1, int paramInt, Integer paramInteger, Uri paramUri, PendingIntent paramPendingIntent1, PendingIntent paramPendingIntent2, String paramString2)
   {
     AppMethodBeat.i(116794);
-    Notification.Builder localBuilder = new Notification.Builder(this.bJa).setAutoCancel(true).setSmallIcon(paramInt);
+    Notification.Builder localBuilder = new Notification.Builder(this.dCI).setAutoCancel(true).setSmallIcon(paramInt);
     if (!TextUtils.isEmpty(paramCharSequence)) {
       localBuilder.setContentTitle(paramCharSequence);
     }
@@ -89,17 +119,17 @@ final class d
     }
     if (paramString2 != null)
     {
-      if (this.bKC == null) {
-        this.bKC = cg("setChannelId");
+      if (this.dEk == null) {
+        this.dEk = dG("setChannelId");
       }
-      if (this.bKC == null) {
-        this.bKC = cg("setChannel");
+      if (this.dEk == null) {
+        this.dEk = dG("setChannel");
       }
-      if (this.bKC == null) {}
+      if (this.dEk == null) {}
     }
     try
     {
-      this.bKC.invoke(localBuilder, new Object[] { paramString2 });
+      this.dEk.invoke(localBuilder, new Object[] { paramString2 });
       label189:
       paramCharSequence = localBuilder.build();
       AppMethodBeat.o(116794);
@@ -123,21 +153,6 @@ final class d
     }
   }
   
-  static d ap(Context paramContext)
-  {
-    try
-    {
-      AppMethodBeat.i(116789);
-      if (bKA == null) {
-        bKA = new d(paramContext);
-      }
-      paramContext = bKA;
-      AppMethodBeat.o(116789);
-      return paramContext;
-    }
-    finally {}
-  }
-  
   private static void b(Intent paramIntent, Bundle paramBundle)
   {
     AppMethodBeat.i(116800);
@@ -152,6 +167,21 @@ final class d
     AppMethodBeat.o(116800);
   }
   
+  static d ba(Context paramContext)
+  {
+    try
+    {
+      AppMethodBeat.i(116789);
+      if (dEi == null) {
+        dEi = new d(paramContext);
+      }
+      paramContext = dEi;
+      AppMethodBeat.o(116789);
+      return paramContext;
+    }
+    finally {}
+  }
+  
   static String c(Bundle paramBundle, String paramString)
   {
     AppMethodBeat.i(116790);
@@ -162,62 +192,6 @@ final class d
     }
     AppMethodBeat.o(116790);
     return str1;
-  }
-  
-  @TargetApi(26)
-  private static Method cg(String paramString)
-  {
-    AppMethodBeat.i(116795);
-    try
-    {
-      paramString = Notification.Builder.class.getMethod(paramString, new Class[] { String.class });
-      AppMethodBeat.o(116795);
-      return paramString;
-    }
-    catch (SecurityException paramString)
-    {
-      AppMethodBeat.o(116795);
-      return null;
-    }
-    catch (NoSuchMethodException paramString)
-    {
-      label29:
-      break label29;
-    }
-  }
-  
-  private final Integer ch(String paramString)
-  {
-    AppMethodBeat.i(116798);
-    if (Build.VERSION.SDK_INT < 21)
-    {
-      AppMethodBeat.o(116798);
-      return null;
-    }
-    if (!TextUtils.isEmpty(paramString)) {
-      try
-      {
-        i = Color.parseColor(paramString);
-        AppMethodBeat.o(116798);
-        return Integer.valueOf(i);
-      }
-      catch (IllegalArgumentException localIllegalArgumentException)
-      {
-        new StringBuilder(String.valueOf(paramString).length() + 54).append("Color ").append(paramString).append(" not valid. Notification will use default color.");
-      }
-    }
-    int i = yV().getInt("com.google.firebase.messaging.default_notification_color", 0);
-    if (i != 0) {
-      try
-      {
-        i = a.w(this.bJa, i);
-        AppMethodBeat.o(116798);
-        return Integer.valueOf(i);
-      }
-      catch (Resources.NotFoundException paramString) {}
-    }
-    AppMethodBeat.o(116798);
-    return null;
   }
   
   private static Object[] d(Bundle paramBundle, String paramString)
@@ -263,8 +237,62 @@ final class d
     }
   }
   
-  @TargetApi(26)
-  private final boolean gq(int paramInt)
+  private static Method dG(String paramString)
+  {
+    AppMethodBeat.i(116795);
+    try
+    {
+      paramString = Notification.Builder.class.getMethod(paramString, new Class[] { String.class });
+      AppMethodBeat.o(116795);
+      return paramString;
+    }
+    catch (SecurityException paramString)
+    {
+      AppMethodBeat.o(116795);
+      return null;
+    }
+    catch (NoSuchMethodException paramString)
+    {
+      label31:
+      break label31;
+    }
+  }
+  
+  private final Integer dH(String paramString)
+  {
+    AppMethodBeat.i(116798);
+    if (Build.VERSION.SDK_INT < 21)
+    {
+      AppMethodBeat.o(116798);
+      return null;
+    }
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        i = Color.parseColor(paramString);
+        AppMethodBeat.o(116798);
+        return Integer.valueOf(i);
+      }
+      catch (IllegalArgumentException localIllegalArgumentException)
+      {
+        new StringBuilder(String.valueOf(paramString).length() + 54).append("Color ").append(paramString).append(" not valid. Notification will use default color.");
+      }
+    }
+    int i = YG().getInt("com.google.firebase.messaging.default_notification_color", 0);
+    if (i != 0) {
+      try
+      {
+        i = a.w(this.dCI, i);
+        AppMethodBeat.o(116798);
+        return Integer.valueOf(i);
+      }
+      catch (Resources.NotFoundException paramString) {}
+    }
+    AppMethodBeat.o(116798);
+    return null;
+  }
+  
+  private final boolean jC(int paramInt)
   {
     AppMethodBeat.i(116797);
     if (Build.VERSION.SDK_INT != 26)
@@ -274,7 +302,7 @@ final class d
     }
     try
     {
-      if ((this.bJa.getResources().getDrawable(paramInt, null) instanceof AdaptiveIconDrawable))
+      if ((this.dCI.getResources().getDrawable(paramInt, null) instanceof AdaptiveIconDrawable))
       {
         new StringBuilder(77).append("Adaptive icons cannot be used in notifications. Ignoring icon id: ").append(paramInt);
         AppMethodBeat.o(116797);
@@ -288,38 +316,6 @@ final class d
       AppMethodBeat.o(116797);
     }
     return false;
-  }
-  
-  private final Bundle yV()
-  {
-    AppMethodBeat.i(116801);
-    if (this.bKB != null)
-    {
-      localObject = this.bKB;
-      AppMethodBeat.o(116801);
-      return localObject;
-    }
-    Object localObject = null;
-    try
-    {
-      ApplicationInfo localApplicationInfo = this.bJa.getPackageManager().getApplicationInfo(this.bJa.getPackageName(), 128);
-      localObject = localApplicationInfo;
-    }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException)
-    {
-      label51:
-      break label51;
-    }
-    if ((localObject != null) && (((ApplicationInfo)localObject).metaData != null))
-    {
-      this.bKB = ((ApplicationInfo)localObject).metaData;
-      localObject = this.bKB;
-      AppMethodBeat.o(116801);
-      return localObject;
-    }
-    localObject = Bundle.EMPTY;
-    AppMethodBeat.o(116801);
-    return localObject;
   }
   
   private final String zzd(Bundle paramBundle, String paramString)
@@ -343,8 +339,8 @@ final class d
       AppMethodBeat.o(116796);
       return null;
     }
-    localObject = this.bJa.getResources();
-    int i = ((Resources)localObject).getIdentifier(str, "string", this.bJa.getPackageName());
+    localObject = this.dCI.getResources();
+    int i = ((Resources)localObject).getIdentifier(str, "string", this.dCI.getPackageName());
     if (i == 0)
     {
       paramBundle = String.valueOf(paramString);
@@ -380,7 +376,6 @@ final class d
     return null;
   }
   
-  @TargetApi(26)
   private final String zzn(String paramString)
   {
     AppMethodBeat.i(116799);
@@ -389,16 +384,16 @@ final class d
       AppMethodBeat.o(116799);
       return null;
     }
-    NotificationManager localNotificationManager = (NotificationManager)this.bJa.getSystemService(NotificationManager.class);
+    NotificationManager localNotificationManager = (NotificationManager)this.dCI.getSystemService(NotificationManager.class);
     try
     {
-      if (this.bKD == null) {
-        this.bKD = localNotificationManager.getClass().getMethod("getNotificationChannel", new Class[] { String.class });
+      if (this.dEl == null) {
+        this.dEl = localNotificationManager.getClass().getMethod("getNotificationChannel", new Class[] { String.class });
       }
       Object localObject;
       if (!TextUtils.isEmpty(paramString))
       {
-        localObject = this.bKD.invoke(localNotificationManager, new Object[] { paramString });
+        localObject = this.dEl.invoke(localNotificationManager, new Object[] { paramString });
         if (localObject != null)
         {
           AppMethodBeat.o(116799);
@@ -406,20 +401,20 @@ final class d
         }
         new StringBuilder(String.valueOf(paramString).length() + 122).append("Notification Channel requested (").append(paramString).append(") has not been created by the app. Manifest configuration, or default, value will be used.");
       }
-      paramString = yV().getString("com.google.firebase.messaging.default_notification_channel_id");
+      paramString = YG().getString("com.google.firebase.messaging.default_notification_channel_id");
       if (!TextUtils.isEmpty(paramString))
       {
-        localObject = this.bKD.invoke(localNotificationManager, new Object[] { paramString });
+        localObject = this.dEl.invoke(localNotificationManager, new Object[] { paramString });
         if (localObject != null)
         {
           AppMethodBeat.o(116799);
           return paramString;
         }
       }
-      if (this.bKD.invoke(localNotificationManager, new Object[] { "fcm_fallback_notification_channel" }) == null)
+      if (this.dEl.invoke(localNotificationManager, new Object[] { "fcm_fallback_notification_channel" }) == null)
       {
         paramString = Class.forName("android.app.NotificationChannel");
-        localObject = paramString.getConstructor(new Class[] { String.class, CharSequence.class, Integer.TYPE }).newInstance(new Object[] { "fcm_fallback_notification_channel", this.bJa.getString(b.a.fcm_fallback_notification_channel_label), Integer.valueOf(3) });
+        localObject = paramString.getConstructor(new Class[] { String.class, CharSequence.class, Integer.TYPE }).newInstance(new Object[] { "fcm_fallback_notification_channel", this.dCI.getString(b.a.fcm_fallback_notification_channel_label), Integer.valueOf(3) });
         localNotificationManager.getClass().getMethod("createNotificationChannel", new Class[] { paramString }).invoke(localNotificationManager, new Object[] { localObject });
       }
       AppMethodBeat.o(116799);
@@ -461,7 +456,7 @@ final class d
     }
   }
   
-  final boolean o(Bundle paramBundle)
+  final boolean t(Bundle paramBundle)
   {
     Object localObject4 = null;
     AppMethodBeat.i(116793);
@@ -472,13 +467,13 @@ final class d
     }
     int i;
     Object localObject2;
-    if (!((KeyguardManager)this.bJa.getSystemService("keyguard")).inKeyguardRestrictedInputMode())
+    if (!((KeyguardManager)this.dCI.getSystemService("keyguard")).inKeyguardRestrictedInputMode())
     {
       if (!PlatformVersion.isAtLeastLollipop()) {
         SystemClock.sleep(10L);
       }
       i = Process.myPid();
-      localObject1 = ((ActivityManager)this.bJa.getSystemService("activity")).getRunningAppProcesses();
+      localObject1 = ((ActivityManager)this.dCI.getSystemService("activity")).getRunningAppProcesses();
       if (localObject1 != null)
       {
         localObject1 = ((List)localObject1).iterator();
@@ -507,18 +502,18 @@ final class d
     Object localObject1 = zzd(paramBundle, "gcm.n.title");
     Object localObject3 = localObject1;
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      localObject3 = this.bJa.getApplicationInfo().loadLabel(this.bJa.getPackageManager());
+      localObject3 = this.dCI.getApplicationInfo().loadLabel(this.dCI.getPackageManager());
     }
     String str1 = zzd(paramBundle, "gcm.n.body");
     localObject1 = c(paramBundle, "gcm.n.icon");
     Integer localInteger;
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
-      localObject2 = this.bJa.getResources();
-      i = ((Resources)localObject2).getIdentifier((String)localObject1, "drawable", this.bJa.getPackageName());
-      if ((i != 0) && (gq(i)))
+      localObject2 = this.dCI.getResources();
+      i = ((Resources)localObject2).getIdentifier((String)localObject1, "drawable", this.dCI.getPackageName());
+      if ((i != 0) && (jC(i)))
       {
-        localInteger = ch(c(paramBundle, "gcm.n.color"));
+        localInteger = dH(c(paramBundle, "gcm.n.color"));
         localObject2 = c(paramBundle, "gcm.n.sound2");
         localObject1 = localObject2;
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
@@ -534,7 +529,7 @@ final class d
           break label856;
         }
         localObject2 = new Intent((String)localObject2);
-        ((Intent)localObject2).setPackage(this.bJa.getPackageName());
+        ((Intent)localObject2).setPackage(this.dCI.getPackageName());
         ((Intent)localObject2).setFlags(268435456);
         label376:
         if (localObject2 != null) {
@@ -542,30 +537,30 @@ final class d
         }
         localObject2 = null;
         label384:
-        if (!FirebaseMessagingService.n(paramBundle)) {
-          break label1228;
+        if (!FirebaseMessagingService.s(paramBundle)) {
+          break label1230;
         }
         localObject4 = new Intent("com.google.firebase.messaging.NOTIFICATION_OPEN");
         b((Intent)localObject4, paramBundle);
         ((Intent)localObject4).putExtra("pending_intent", (Parcelable)localObject2);
-        localObject2 = o.a(this.bJa, this.bKE.incrementAndGet(), (Intent)localObject4);
+        localObject2 = o.a(this.dCI, this.dEm.incrementAndGet(), (Intent)localObject4);
         localObject4 = new Intent("com.google.firebase.messaging.NOTIFICATION_DISMISS");
         b((Intent)localObject4, paramBundle);
-        localObject4 = o.a(this.bJa, this.bKE.incrementAndGet(), (Intent)localObject4);
+        localObject4 = o.a(this.dCI, this.dEm.incrementAndGet(), (Intent)localObject4);
       }
     }
     label952:
-    label1228:
+    label1230:
     for (;;)
     {
-      if ((PlatformVersion.isAtLeastO()) && (this.bJa.getApplicationInfo().targetSdkVersion > 25)) {}
+      if ((PlatformVersion.isAtLeastO()) && (this.dCI.getApplicationInfo().targetSdkVersion > 25)) {}
       label742:
       Object localObject5;
-      for (localObject1 = a((CharSequence)localObject3, str1, i, localInteger, (Uri)localObject1, (PendingIntent)localObject2, (PendingIntent)localObject4, zzn(c(paramBundle, "gcm.n.android_channel_id")));; localObject1 = ((e.d)localObject5).gr())
+      for (localObject1 = a((CharSequence)localObject3, str1, i, localInteger, (Uri)localObject1, (PendingIntent)localObject2, (PendingIntent)localObject4, zzn(c(paramBundle, "gcm.n.android_channel_id")));; localObject1 = ((f.d)localObject5).DA())
       {
         localObject2 = c(paramBundle, "gcm.n.tag");
         Log.isLoggable("FirebaseMessaging", 3);
-        localObject3 = (NotificationManager)this.bJa.getSystemService("notification");
+        localObject3 = (NotificationManager)this.dCI.getSystemService("notification");
         paramBundle = (Bundle)localObject2;
         if (TextUtils.isEmpty((CharSequence)localObject2))
         {
@@ -575,29 +570,29 @@ final class d
         ((NotificationManager)localObject3).notify(paramBundle, 0, (Notification)localObject1);
         AppMethodBeat.o(116793);
         return true;
-        int j = ((Resources)localObject2).getIdentifier((String)localObject1, "mipmap", this.bJa.getPackageName());
+        int j = ((Resources)localObject2).getIdentifier((String)localObject1, "mipmap", this.dCI.getPackageName());
         if (j != 0)
         {
           i = j;
-          if (gq(j)) {
+          if (jC(j)) {
             break;
           }
         }
         new StringBuilder(String.valueOf(localObject1).length() + 61).append("Icon resource ").append((String)localObject1).append(" not found. Notification will use default icon.");
-        j = yV().getInt("com.google.firebase.messaging.default_notification_icon", 0);
+        j = YG().getInt("com.google.firebase.messaging.default_notification_icon", 0);
         if (j != 0)
         {
           i = j;
-          if (gq(j)) {}
+          if (jC(j)) {}
         }
         else
         {
-          i = this.bJa.getApplicationInfo().icon;
+          i = this.dCI.getApplicationInfo().icon;
         }
         if (i != 0)
         {
           j = i;
-          if (gq(i)) {}
+          if (jC(i)) {}
         }
         else
         {
@@ -605,9 +600,9 @@ final class d
         }
         i = j;
         break;
-        if ((!"default".equals(localObject1)) && (this.bJa.getResources().getIdentifier((String)localObject1, "raw", this.bJa.getPackageName()) != 0))
+        if ((!"default".equals(localObject1)) && (this.dCI.getResources().getIdentifier((String)localObject1, "raw", this.dCI.getPackageName()) != 0))
         {
-          localObject2 = this.bJa.getPackageName();
+          localObject2 = this.dCI.getPackageName();
           localObject1 = Uri.parse(String.valueOf(localObject2).length() + 24 + String.valueOf(localObject1).length() + "android.resource://" + (String)localObject2 + "/raw/" + (String)localObject1);
           break label326;
         }
@@ -626,17 +621,17 @@ final class d
             break label952;
           }
           localObject5 = new Intent("android.intent.action.VIEW");
-          ((Intent)localObject5).setPackage(this.bJa.getPackageName());
+          ((Intent)localObject5).setPackage(this.dCI.getPackageName());
           ((Intent)localObject5).setData((Uri)localObject2);
           localObject2 = localObject5;
           break;
         }
-        localObject2 = this.bJa.getPackageManager().getLaunchIntentForPackage(this.bJa.getPackageName());
+        localObject2 = this.dCI.getPackageManager().getLaunchIntentForPackage(this.dCI.getPackageName());
         break label376;
         label974:
         ((Intent)localObject2).addFlags(67108864);
         localObject5 = new Bundle(paramBundle);
-        FirebaseMessagingService.m((Bundle)localObject5);
+        FirebaseMessagingService.r((Bundle)localObject5);
         ((Intent)localObject2).putExtras((Bundle)localObject5);
         localObject5 = ((Bundle)localObject5).keySet().iterator();
         while (((Iterator)localObject5).hasNext())
@@ -646,28 +641,28 @@ final class d
             ((Intent)localObject2).removeExtra(str2);
           }
         }
-        localObject2 = PendingIntent.getActivity(this.bJa, this.bKE.incrementAndGet(), (Intent)localObject2, 1073741824);
+        localObject2 = PendingIntent.getActivity(this.dCI, this.dEm.incrementAndGet(), (Intent)localObject2, 1073741824);
         break label384;
-        localObject5 = new e.d(this.bJa).W(true).bn(i);
+        localObject5 = new f.d(this.dCI).aC(true).eb(i);
         if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-          ((e.d)localObject5).k((CharSequence)localObject3);
+          ((f.d)localObject5).l((CharSequence)localObject3);
         }
         if (!TextUtils.isEmpty(str1))
         {
-          ((e.d)localObject5).l(str1);
-          ((e.d)localObject5).a(new e.b().j(str1));
+          ((f.d)localObject5).m(str1);
+          ((f.d)localObject5).a(new f.b().k(str1));
         }
         if (localInteger != null) {
-          ((e.d)localObject5).mColor = localInteger.intValue();
+          ((f.d)localObject5).ec(localInteger.intValue());
         }
         if (localObject1 != null) {
-          ((e.d)localObject5).d((Uri)localObject1);
+          ((f.d)localObject5).d((Uri)localObject1);
         }
         if (localObject2 != null) {
-          ((e.d)localObject5).Ip = ((PendingIntent)localObject2);
+          ((f.d)localObject5).a((PendingIntent)localObject2);
         }
         if (localObject4 != null) {
-          ((e.d)localObject5).b((PendingIntent)localObject4);
+          ((f.d)localObject5).b((PendingIntent)localObject4);
         }
       }
     }
@@ -675,7 +670,7 @@ final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.firebase.messaging.d
  * JD-Core Version:    0.7.0.1
  */

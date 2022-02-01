@@ -1,10 +1,8 @@
 package com.tencent.mm.libwxaudio;
 
 import android.content.res.AssetManager;
-import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@Keep
 public class WxAudioNative
 {
   public static int INIT_ERROR = -1002;
@@ -20,15 +18,14 @@ public class WxAudioNative
     REPEAT_WXAUDIO_ERROR = -1001;
   }
   
-  @Keep
   public WxAudioNative(long paramLong1, long paramLong2, long paramLong3)
   {
-    AppMethodBeat.i(199871);
+    AppMethodBeat.i(234119);
     this.mNativeInst = 0L;
     this.initCallBackFlag = false;
     new StringBuilder("WxAudioNative isolate_ptr:").append(paramLong1).append(",context_ptr:").append(paramLong2).append(",uvloop_ptr:").append(paramLong3);
     this.mNativeInst = initBindingWxAudio(paramLong1, paramLong2, paramLong3);
-    AppMethodBeat.o(199871);
+    AppMethodBeat.o(234119);
   }
   
   private native void destroyBindingWxAudio(long paramLong);
@@ -51,14 +48,13 @@ public class WxAudioNative
   
   private native void updateNativeInterface(long paramLong1, long paramLong2);
   
-  @Keep
   public int InitCallBack(final NativeCallBackInterface paramNativeCallBackInterface)
   {
-    AppMethodBeat.i(199877);
+    AppMethodBeat.i(234134);
     if (this.mNativeInst == -1L)
     {
       i = NEW_WXAUDIO_ERROR;
-      AppMethodBeat.o(199877);
+      AppMethodBeat.o(234134);
       return i;
     }
     if (!this.initCallBackFlag)
@@ -67,42 +63,40 @@ public class WxAudioNative
       {
         public String getFilePath(String paramAnonymousString)
         {
-          AppMethodBeat.i(199861);
+          AppMethodBeat.i(234093);
           paramAnonymousString = paramNativeCallBackInterface.getFilePath(paramAnonymousString);
-          AppMethodBeat.o(199861);
+          AppMethodBeat.o(234093);
           return paramAnonymousString;
         }
         
-        @Keep
         public void onCallBack(long paramAnonymousLong, String paramAnonymousString)
         {
-          AppMethodBeat.i(199860);
+          AppMethodBeat.i(234091);
           paramNativeCallBackInterface.onCallBack(paramAnonymousLong, paramAnonymousString);
-          AppMethodBeat.o(199860);
+          AppMethodBeat.o(234091);
         }
       });
       if (i == 0)
       {
         this.initCallBackFlag = true;
-        AppMethodBeat.o(199877);
+        AppMethodBeat.o(234134);
         return i;
       }
       i = INIT_ERROR;
-      AppMethodBeat.o(199877);
+      AppMethodBeat.o(234134);
       return i;
     }
     int i = REPEAT_WXAUDIO_ERROR;
-    AppMethodBeat.o(199877);
+    AppMethodBeat.o(234134);
     return i;
   }
   
-  @Keep
   public void destroyWebAudioContext()
   {
-    AppMethodBeat.i(199874);
+    AppMethodBeat.i(234128);
     if (this.mNativeInst == -1L)
     {
-      AppMethodBeat.o(199874);
+      AppMethodBeat.o(234128);
       return;
     }
     if (this.initCallBackFlag)
@@ -111,106 +105,96 @@ public class WxAudioNative
       destroyBindingWxAudio(this.mNativeInst);
       this.mNativeInst = -1L;
     }
-    AppMethodBeat.o(199874);
+    AppMethodBeat.o(234128);
   }
   
-  @Keep
   public void forcePauseAllPlayer()
   {
-    AppMethodBeat.i(199887);
+    AppMethodBeat.i(234151);
     if (this.mNativeInst == -1L)
     {
-      AppMethodBeat.o(199887);
+      AppMethodBeat.o(234151);
       return;
     }
     forcePauseAllPlayer(this.mNativeInst);
-    AppMethodBeat.o(199887);
+    AppMethodBeat.o(234151);
   }
   
-  @Keep
   public void forceResumeAllPlayer()
   {
-    AppMethodBeat.i(199889);
+    AppMethodBeat.i(234159);
     if (this.mNativeInst == -1L)
     {
-      AppMethodBeat.o(199889);
+      AppMethodBeat.o(234159);
       return;
     }
     forceResumeAllPlayer(this.mNativeInst);
-    AppMethodBeat.o(199889);
+    AppMethodBeat.o(234159);
   }
   
-  @Keep
   public void registerAudioPcmCallback(NativeAudioPcmCallback paramNativeAudioPcmCallback)
   {
-    AppMethodBeat.i(199893);
+    AppMethodBeat.i(234162);
     if (this.mNativeInst == -1L)
     {
-      AppMethodBeat.o(199893);
+      AppMethodBeat.o(234162);
       return;
     }
     registerAudioPcmCallback(this.mNativeInst, paramNativeAudioPcmCallback);
-    AppMethodBeat.o(199893);
+    AppMethodBeat.o(234162);
   }
   
   public void testBind()
   {
-    AppMethodBeat.i(199881);
+    AppMethodBeat.i(234146);
     if (this.mNativeInst == -1L)
     {
-      AppMethodBeat.o(199881);
+      AppMethodBeat.o(234146);
       return;
     }
     testBindingWxAudio(this.mNativeInst);
-    AppMethodBeat.o(199881);
+    AppMethodBeat.o(234146);
   }
   
-  @Keep
   public void unregisterAudioPcmCallback()
   {
-    AppMethodBeat.i(199895);
+    AppMethodBeat.i(234168);
     if (this.mNativeInst == -1L)
     {
-      AppMethodBeat.o(199895);
+      AppMethodBeat.o(234168);
       return;
     }
     unregisterAudioPcmCallback(this.mNativeInst);
-    AppMethodBeat.o(199895);
+    AppMethodBeat.o(234168);
   }
   
-  @Keep
   public void update(long paramLong)
   {
-    AppMethodBeat.i(199878);
+    AppMethodBeat.i(234139);
     if (this.mNativeInst == -1L)
     {
-      AppMethodBeat.o(199878);
+      AppMethodBeat.o(234139);
       return;
     }
     updateNativeInterface(this.mNativeInst, paramLong);
-    AppMethodBeat.o(199878);
+    AppMethodBeat.o(234139);
   }
   
-  @Keep
   public static abstract interface NativeAudioPcmCallback
   {
-    @Keep
     public abstract void onPcmCallback(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   }
   
-  @Keep
   public static abstract interface NativeCallBackInterface
   {
-    @Keep
     public abstract String getFilePath(String paramString);
     
-    @Keep
     public abstract void onCallBack(long paramLong, String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.libwxaudio.WxAudioNative
  * JD-Core Version:    0.7.0.1
  */

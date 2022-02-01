@@ -1,75 +1,59 @@
 package com.tencent.mm.plugin.emoji.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.emoji.a.a.f;
-import com.tencent.mm.protocal.protobuf.aju;
-import com.tencent.mm.protocal.protobuf.ajw;
-import com.tencent.mm.protocal.protobuf.akh;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.emotion.EmojiGroupInfo;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.autogen.a.ee;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class l
 {
-  public List<ajw> uEA;
-  public List<ajw> uEB;
-  public int uEw;
-  public List<f> uEx;
-  public aju uEy;
-  public List<aju> uEz;
+  private ee xMR;
+  public final Map<String, Integer> xMS;
   
-  public final void JF(int paramInt)
+  public l()
   {
-    this.uEw += paramInt;
+    AppMethodBeat.i(108585);
+    this.xMS = new HashMap();
+    this.xMR = new ee();
+    AppMethodBeat.o(108585);
   }
   
-  public final void cUI()
+  public final int aoI(String paramString)
   {
-    AppMethodBeat.i(108587);
-    if (this.uEB == null)
+    AppMethodBeat.i(269857);
+    paramString = (Integer)this.xMS.get(paramString);
+    if (paramString == null)
     {
-      AppMethodBeat.o(108587);
-      return;
+      AppMethodBeat.o(269857);
+      return -1;
     }
-    if (this.uEB.isEmpty())
-    {
-      AppMethodBeat.o(108587);
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(this.uEB);
-    int i = localArrayList.size() - 1;
-    while (i >= 0)
-    {
-      this.uEx.add(0, new f((ajw)localArrayList.get(i)));
-      this.uEw += 1;
-      this.uEB.remove(localArrayList.get(i));
-      i -= 1;
-    }
-    AppMethodBeat.o(108587);
+    int i = paramString.intValue();
+    AppMethodBeat.o(269857);
+    return i;
   }
   
-  public final void df(List<f> paramList)
+  public final void i(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    AppMethodBeat.i(108588);
-    if (this.uEx == null) {
-      this.uEx = new ArrayList();
-    }
-    for (;;)
+    AppMethodBeat.i(108586);
+    this.xMR.hDW.productId = paramString1;
+    this.xMR.hDW.status = paramInt1;
+    this.xMR.hDW.progress = paramInt2;
+    this.xMR.hDW.hDX = paramString2;
+    this.xMR.publish();
+    if (paramInt1 == 6)
     {
-      this.uEx.addAll(paramList);
-      AppMethodBeat.o(108588);
-      return;
-      int i = this.uEx.size() - 1;
-      if ((i >= 0) && (i < this.uEx.size()))
+      if ((paramInt2 < 0) || (paramInt2 >= 100))
       {
-        f localf = (f)this.uEx.get(i);
-        if ((localf != null) && (localf.uBa != null) && (!Util.isNullOrNil(localf.uBa.ProductID)) && (localf.uBa.ProductID.equals(EmojiGroupInfo.YCu))) {
-          this.uEx.remove(localf);
-        }
+        this.xMS.remove(paramString1);
+        AppMethodBeat.o(108586);
+        return;
       }
+      this.xMS.put(paramString1, Integer.valueOf(paramInt2));
+      AppMethodBeat.o(108586);
+      return;
     }
+    this.xMS.remove(paramString1);
+    AppMethodBeat.o(108586);
   }
 }
 

@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.remittance.mobile.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.eul;
-import com.tencent.mm.protocal.protobuf.eum;
+import com.tencent.mm.protocal.protobuf.fpy;
+import com.tencent.mm.protocal.protobuf.fpz;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class g
   extends a
 {
-  private eum IiV;
-  public int IiW;
-  public boolean IiX;
-  public boolean IiY;
+  private fpz OfG;
+  public int OfH;
+  public boolean OfI;
+  public boolean OfJ;
   private final String TAG;
   public int amount;
   
@@ -26,29 +26,29 @@ public final class g
   {
     AppMethodBeat.i(67656);
     this.TAG = "MicroMsg.mobileRemit.NetSceneMobileRemitPlaceOrder";
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new eul();
-    ((d.a)localObject).lBV = new eum();
-    ((d.a)localObject).funcId = 2878;
-    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/transferphoneplaceorder";
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (eul)d.b.b(this.rr.lBR);
-    ((eul)localObject).UvJ = paramString1;
-    ((eul)localObject).UvK = paramString2;
-    ((eul)localObject).UvL = paramString3;
-    ((eul)localObject).amount = ((int)Math.round(100.0D * paramDouble));
-    ((eul)localObject).desc = paramString4;
-    ((eul)localObject).Uwc = paramInt;
-    ((eul)localObject).UvN = paramString5;
-    ((eul)localObject).UvX = paramString6;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new fpy();
+    ((c.a)localObject).otF = new fpz();
+    ((c.a)localObject).funcId = 2878;
+    ((c.a)localObject).uri = "/cgi-bin/mmpay-bin/transferphoneplaceorder";
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (fpy)c.b.b(this.rr.otB);
+    ((fpy)localObject).abPo = paramString1;
+    ((fpy)localObject).abPp = paramString2;
+    ((fpy)localObject).abPq = paramString3;
+    ((fpy)localObject).amount = ((int)Math.round(100.0D * paramDouble));
+    ((fpy)localObject).desc = paramString4;
+    ((fpy)localObject).abPI = paramInt;
+    ((fpy)localObject).abPs = paramString5;
+    ((fpy)localObject).abPC = paramString6;
     if (paramBoolean1) {
-      ((eul)localObject).Uwd = Util.nullAs(paramString7, "");
+      ((fpy)localObject).abPJ = Util.nullAs(paramString7, "");
     }
     Log.i("MicroMsg.mobileRemit.NetSceneMobileRemitPlaceOrder", "do scene NetSceneMobileRemitGetRecord rcvr_openid:%s rcvr_token:%s get_rcvr_ext%s amount:%s desc:%s delay_code:%s real_name_token:%s timestamp_ms:%s isFromForceCheckName:%s replaceorder_token:%s", new Object[] { paramString1, paramString2, paramString3, Double.valueOf(paramDouble), paramString4, Integer.valueOf(paramInt), paramString5, paramString6, Boolean.valueOf(paramBoolean1), Util.nullAs(paramString7, "null") });
-    this.amount = ((eul)localObject).amount;
-    this.IiW = ((eul)localObject).Uwc;
-    this.IiX = paramBoolean1;
-    this.IiY = paramBoolean2;
+    this.amount = ((fpy)localObject).amount;
+    this.OfH = ((fpy)localObject).abPI;
+    this.OfI = paramBoolean1;
+    this.OfJ = paramBoolean2;
     AppMethodBeat.o(67656);
   }
   
@@ -56,8 +56,8 @@ public final class g
   {
     AppMethodBeat.i(67657);
     Log.i("MicroMsg.mobileRemit.NetSceneMobileRemitPlaceOrder", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.IiV = ((eum)d.c.b(((d)params).lBS));
-    Log.i("MicroMsg.mobileRemit.NetSceneMobileRemitPlaceOrder", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.IiV.tqa), this.IiV.tqb });
+    this.OfG = ((fpz)c.c.b(((c)params).otC));
+    Log.i("MicroMsg.mobileRemit.NetSceneMobileRemitPlaceOrder", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.OfG.wuz), this.OfG.wuA });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
@@ -66,19 +66,19 @@ public final class g
   
   public final void f(s params)
   {
-    AppMethodBeat.i(255881);
-    params = (eum)d.c.b(((d)params).lBS);
-    this.YVy = params.tqa;
-    this.YVz = params.tqb;
-    AppMethodBeat.o(255881);
+    AppMethodBeat.i(288864);
+    params = (fpz)c.c.b(((c)params).otC);
+    this.agTs = params.wuz;
+    this.agTt = params.wuA;
+    AppMethodBeat.o(288864);
   }
   
-  public final eum fAd()
+  public final fpz gLP()
   {
-    if (this.IiV == null) {
+    if (this.OfG == null) {
       return null;
     }
-    return this.IiV;
+    return this.OfG;
   }
   
   public final int getType()
@@ -88,7 +88,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.mobile.cgi.g
  * JD-Core Version:    0.7.0.1
  */

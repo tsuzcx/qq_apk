@@ -1,36 +1,38 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
 
-public final class cp
-  extends c
+public class cp
+  extends c<k>
 {
-  public static final int CTRL_INDEX = 731;
-  public static final String NAME = "saveWaid";
+  public static final int CTRL_INDEX = 406;
+  public static final String NAME = "private_openUrl";
   
-  public final void a(e parame, JSONObject paramJSONObject, int paramInt)
+  private void a(k paramk, int paramInt, String paramString)
   {
-    AppMethodBeat.i(45633);
-    HashMap localHashMap = new HashMap();
-    try
+    AppMethodBeat.i(45617);
+    Log.e("MicroMsg.JsApiPrivateOpenUrl", "switchCallback msg:%s", new Object[] { paramString });
+    if (paramk != null) {
+      paramk.callback(paramInt, ZP(paramString));
+    }
+    AppMethodBeat.o(45617);
+  }
+  
+  protected void a(Context paramContext, Intent paramIntent, k paramk, int paramInt)
+  {
+    AppMethodBeat.i(325431);
+    if (paramContext != null)
     {
-      localHashMap.put("result", "0");
-      parame.j(paramInt, m("ok", localHashMap));
-      Log.i("MicroMsg.JsApiSaveWaid", "appBrand JsApiSaveWaid, data=" + paramJSONObject + ", waidNum=0");
-      AppMethodBeat.o(45633);
+      com.tencent.mm.br.c.b(paramContext, "webview", ".ui.tools.WebViewUI", paramIntent);
+      a(paramk, paramInt, "ok");
+      AppMethodBeat.o(325431);
       return;
     }
-    catch (Exception paramJSONObject)
-    {
-      localHashMap.put("result", "0");
-      parame.j(paramInt, m("fail", localHashMap));
-      Log.e("MicroMsg.JsApiSaveWaid", "appBrand JsApiSaveWaid, exp=" + paramJSONObject.toString());
-      AppMethodBeat.o(45633);
-    }
+    a(paramk, paramInt, "fail");
+    AppMethodBeat.o(325431);
   }
 }
 

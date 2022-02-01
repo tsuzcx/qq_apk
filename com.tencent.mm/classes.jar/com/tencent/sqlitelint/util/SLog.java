@@ -76,7 +76,7 @@ public class SLog
       AppMethodBeat.o(52953);
       return;
     }
-    catch (Throwable paramString1)
+    finally
     {
       new StringBuilder("printLog ex ").append(paramString1.getMessage());
       AppMethodBeat.o(52953);
@@ -100,7 +100,7 @@ public class SLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.sqlitelint.util.SLog
  * JD-Core Version:    0.7.0.1
  */

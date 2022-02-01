@@ -6,23 +6,21 @@ import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.widget.NumberPicker;
-import androidx.annotation.Keep;
 import com.tencent.luggage.b.e.a.a;
 import com.tencent.luggage.b.e.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.ui.widget.picker.e;
 
 public class AppBrandOptionsPicker
   extends NumberPicker
-  implements com.tencent.mm.plugin.appbrand.jsapi.s.c<String>
+  implements com.tencent.mm.plugin.appbrand.jsapi.v.c<String>
 {
-  private int lj;
-  private String[] rCh;
-  private int rCi;
-  private int uJ;
+  private int mf;
+  private String[] uNw;
+  private int uNx;
+  private int vF;
   
-  @Keep
   public AppBrandOptionsPicker(Context paramContext)
   {
     super(new ContextThemeWrapper(paramContext, a.b.Widget_AppBrand_Picker));
@@ -31,20 +29,20 @@ public class AppBrandOptionsPicker
     e.d(this);
     e.f(this);
     d.a(this);
-    this.lj = a.fromDPToPix(paramContext, 100);
-    this.rCi = a.fromDPToPix(paramContext, 20);
+    this.mf = a.fromDPToPix(paramContext, 100);
+    this.uNx = a.fromDPToPix(paramContext, 20);
     AppMethodBeat.o(138018);
   }
   
   public final String currentValue()
   {
     AppMethodBeat.i(138024);
-    if ((this.rCh == null) || (this.rCh.length <= 0))
+    if ((this.uNw == null) || (this.uNw.length <= 0))
     {
       AppMethodBeat.o(138024);
       return "";
     }
-    String str = this.rCh[getValue()];
+    String str = this.uNw[getValue()];
     AppMethodBeat.o(138024);
     return str;
   }
@@ -72,24 +70,24 @@ public class AppBrandOptionsPicker
   {
     AppMethodBeat.i(138022);
     if ((View.MeasureSpec.getMode(paramInt1) == -2147483648) || (View.MeasureSpec.getMode(paramInt1) == 1073741824)) {
-      this.uJ = View.MeasureSpec.getSize(paramInt1);
+      this.vF = View.MeasureSpec.getSize(paramInt1);
     }
     super.onMeasure(View.MeasureSpec.makeMeasureSpec(0, 0), paramInt2);
-    if ((getMeasuredWidth() <= this.lj) && ((this.uJ <= 0) || (this.lj <= this.uJ)))
+    if ((getMeasuredWidth() <= this.mf) && ((this.vF <= 0) || (this.mf <= this.vF)))
     {
-      setMeasuredDimension(this.lj, getMeasuredHeight());
+      setMeasuredDimension(this.mf, getMeasuredHeight());
       AppMethodBeat.o(138022);
       return;
     }
-    paramInt2 = getMeasuredWidth() + this.rCi * 2;
+    paramInt2 = getMeasuredWidth() + this.uNx * 2;
     paramInt1 = paramInt2;
-    if (this.uJ > 0) {
-      if (this.uJ <= paramInt2) {
+    if (this.vF > 0) {
+      if (this.vF <= paramInt2) {
         break label134;
       }
     }
     label134:
-    for (paramInt1 = paramInt2;; paramInt1 = this.uJ)
+    for (paramInt1 = paramInt2;; paramInt1 = this.vF)
     {
       setMeasuredDimension(paramInt1, getMeasuredHeight());
       AppMethodBeat.o(138022);
@@ -110,18 +108,18 @@ public class AppBrandOptionsPicker
   public final void setExtraPadding(int paramInt)
   {
     AppMethodBeat.i(138020);
-    this.rCi = Math.max(paramInt, 0);
+    this.uNx = Math.max(paramInt, 0);
     AppMethodBeat.o(138020);
   }
   
   public final void setMaxWidth(int paramInt)
   {
-    this.uJ = paramInt;
+    this.vF = paramInt;
   }
   
   public final void setMinWidth(int paramInt)
   {
-    this.lj = paramInt;
+    this.mf = paramInt;
   }
   
   public void setOptionsArray(String[] paramArrayOfString)
@@ -132,7 +130,7 @@ public class AppBrandOptionsPicker
       AppMethodBeat.o(138019);
       return;
     }
-    this.rCh = paramArrayOfString;
+    this.uNw = paramArrayOfString;
     setDisplayedValues(null);
     setMinValue(0);
     setMaxValue(Math.max(paramArrayOfString.length - 1, 0));
@@ -146,7 +144,7 @@ public class AppBrandOptionsPicker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.AppBrandOptionsPicker
  * JD-Core Version:    0.7.0.1
  */

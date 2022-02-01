@@ -1,29 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/rj"
+<LinearLayout style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:scrollbars="none" style="@style/om">
-        <LinearLayout android:gravity="center_vertical" style="@style/lz">
-            <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <ImageView android:id="@id/a46" android:layout_width="96.0dip" android:layout_height="96.0dip" android:layout_marginBottom="10.0dip" android:src="@drawable/bak" />
-            </LinearLayout>
-            <TextView android:gravity="center_horizontal" android:id="@id/a4a" android:text="@string/aec" style="@style/no" />
-            <LinearLayout android:orientation="horizontal" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" style="@style/lz">
-                <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/bgn" android:background="@drawable/ai6" android:layout_width="wrap_content" android:layout_height="50.0dip">
-                    <TextView android:textSize="15.0dip" android:textColor="@color/a2x" android:gravity="center_horizontal" android:id="@id/bgk" android:layout_width="48.0dip" android:layout_height="wrap_content" android:text="@string/bj9" android:singleLine="true" />
-                    <TextView android:textSize="8.0dip" android:textColor="@color/a2x" android:gravity="center_horizontal" android:id="@id/bgp" android:layout_width="48.0dip" android:layout_height="wrap_content" android:text="@string/bj_" android:singleLine="true" />
-                </LinearLayout>
-                <EditText android:id="@id/a47" android:layout_height="50.0dip" android:layout_marginLeft="10.0dip" android:hint="@string/afj" android:inputType="phone" style="@style/nn" />
-            </LinearLayout>
-            <Button android:textSize="20.0dip" android:id="@id/a3v" android:text="@string/adh" style="@style/ou" />
-            <LinearLayout android:gravity="left" android:orientation="vertical" android:id="@id/a4_" android:layout_marginLeft="6.0dip" android:layout_marginTop="12.0dip" style="@style/nl">
-                <CheckBox android:textSize="13.0dip" android:textColor="@color/a2x" android:id="@id/a44" android:paddingLeft="25.0dip" android:checked="false" android:text="@string/ae6" style="@style/fb" />
-                <CheckBox android:textSize="13.0dip" android:textColor="@color/a2x" android:id="@id/a45" android:paddingLeft="25.0dip" android:layout_marginTop="10.0dip" android:checked="false" android:text="@string/bel" style="@style/fb" />
-            </LinearLayout>
-            <TextView android:textSize="12.0dip" android:id="@id/a3w" android:background="@drawable/ckd" android:padding="6.0dip" android:layout_marginTop="16.0dip" android:text="@string/adi" style="@style/m0" />
-            <Button android:id="@id/a4g" android:visibility="gone" android:text="@string/afc" style="@style/p1" />
-        </LinearLayout>
-    </ScrollView>
-    <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:id="@id/a48" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ae5" style="@style/l5" />
+    <LinearLayout style="@style/lj">
+        <EditText android:id="@id/a_6" android:hint="@string/ama" android:inputType="number" style="@style/n9" />
+        <View style="@style/n5" />
+        <EditText android:id="@id/a_5" android:hint="@string/am_" style="@style/n8" />
     </LinearLayout>
 </LinearLayout>

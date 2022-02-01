@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/cqt" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <org.libpag.PAGView android:id="@id/cqu" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+<RelativeLayout android:background="@drawable/bw4" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="22.0dip" android:textColor="@color/sd" android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d0" android:layout_marginTop="@dimen/ca" android:layout_marginRight="@dimen/d0" android:text="@string/df6" />
 </RelativeLayout>

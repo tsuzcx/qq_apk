@@ -1,36 +1,28 @@
 package kotlin.l.b.a.b.m.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.m.bg;
-import kotlin.l.b.a.b.m.c.h;
-import kotlin.l.b.a.b.m.c.q;
-import kotlin.l.b.a.b.m.d;
+import kotlin.l.b.a.b.m.ax;
 
-public final class t
+final class t
+  implements v
 {
-  public static final t abrV;
-  
-  static
+  public final boolean b(ax paramax1, ax paramax2)
   {
-    AppMethodBeat.i(61149);
-    abrV = new t();
-    AppMethodBeat.o(61149);
-  }
-  
-  public static boolean a(bg parambg1, bg parambg2)
-  {
-    AppMethodBeat.i(61148);
-    p.k(parambg1, "a");
-    p.k(parambg2, "b");
-    boolean bool = d.abpL.a((q)s.abrU, (h)parambg1, (h)parambg2);
-    AppMethodBeat.o(61148);
+    AppMethodBeat.i(61152);
+    if (paramax1 == null) {
+      aKu(3);
+    }
+    if (paramax2 == null) {
+      aKu(4);
+    }
+    boolean bool = paramax1.equals(paramax2);
+    AppMethodBeat.o(61152);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     kotlin.l.b.a.b.m.a.t
  * JD-Core Version:    0.7.0.1
  */

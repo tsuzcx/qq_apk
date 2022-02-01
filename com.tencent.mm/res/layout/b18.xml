@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:id="@id/iwz" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:layout_gravity="center" android:id="@id/ei_" android:background="@drawable/acw" android:padding="1.0dip" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_centerVertical="true" android:layout_marginStart="@dimen/c5">
-        <com.tencent.mm.ui.widget.RoundCornerImageView android:id="@id/ei7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" app:roundHeight="@dimen/a_s" app:roundWidth="@dimen/a_s" />
-    </RelativeLayout>
-    <RelativeLayout android:layout_gravity="center" android:id="@id/eia" android:background="@drawable/acw" android:padding="1.0dip" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_centerVertical="true" android:layout_marginStart="-11.199982dip" android:layout_toEndOf="@id/ei_">
-        <com.tencent.mm.ui.widget.RoundCornerImageView android:id="@id/ei8" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" app:roundHeight="@dimen/a_s" app:roundWidth="@dimen/a_s" />
-    </RelativeLayout>
-    <RelativeLayout android:layout_gravity="center" android:id="@id/eib" android:background="@drawable/acw" android:padding="1.0dip" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_centerVertical="true" android:layout_marginStart="-11.199982dip" android:layout_toEndOf="@id/eia">
-        <com.tencent.mm.ui.widget.RoundCornerImageView android:id="@id/ei9" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" app:roundHeight="@dimen/a_s" app:roundWidth="@dimen/a_s" />
-    </RelativeLayout>
-    <TextView android:textSize="12.0dip" android:textColor="@color/afz" android:id="@id/eid" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="@dimen/ct" android:layout_marginEnd="@dimen/c5" android:layout_toEndOf="@id/eib" />
-</merge>
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/iwl" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="never" android:paddingStart="@dimen/df" android:paddingEnd="@dimen/df" />
+</LinearLayout>

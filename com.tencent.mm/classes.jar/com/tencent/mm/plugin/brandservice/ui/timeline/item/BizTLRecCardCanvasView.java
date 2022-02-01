@@ -9,129 +9,121 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webcanvas.WebCanvasView;
 import com.tencent.mm.plugin.webcanvas.a;
 import com.tencent.mm.plugin.webcanvas.c;
-import com.tencent.mm.plugin.webcanvas.g;
-import com.tencent.mm.plugin.webcanvas.h;
-import com.tencent.mm.plugin.webcanvas.k;
+import com.tencent.mm.plugin.webcanvas.e;
+import com.tencent.mm.plugin.webcanvas.f;
+import com.tencent.mm.plugin.webcanvas.i;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.storage.ab;
 import java.lang.ref.WeakReference;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardCanvasView;", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasView;", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasNoneLifecycleObserver;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "getInfo", "()Lcom/tencent/mm/storage/BizTimeLineInfo;", "setInfo", "(Lcom/tencent/mm/storage/BizTimeLineInfo;)V", "isDoingConfigurationChanged", "", "()Z", "setDoingConfigurationChanged", "(Z)V", "isVideoCard", "setVideoCard", "jsEngine", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasJsEngine;", "getJsEngine", "()Lcom/tencent/mm/plugin/webcanvas/WebCanvasJsEngine;", "logicEngine", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardJsEngine;", "value", "videoStatus", "getVideoStatus", "()I", "setVideoStatus", "(I)V", "getVideoRelativePos", "", "init", "", "msgId", "", "canvasId", "type", "data", "onAttachedToWindow", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onDetachedFromWindow", "onScreenShot", "onScroll", "view", "Landroid/widget/AbsListView;", "firstVisibleItem", "visibleItemCount", "totalItemCount", "onScrollStateChanged", "scrollState", "setBizTimeLineInfo", "bizTimeLineInfo", "plugin-brandservice_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardCanvasView;", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasView;", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasNoneLifecycleObserver;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "getInfo", "()Lcom/tencent/mm/storage/BizTimeLineInfo;", "setInfo", "(Lcom/tencent/mm/storage/BizTimeLineInfo;)V", "isDoingConfigurationChanged", "", "()Z", "setDoingConfigurationChanged", "(Z)V", "isVideoCard", "setVideoCard", "jsEngine", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasJsEngine;", "getJsEngine", "()Lcom/tencent/mm/plugin/webcanvas/WebCanvasJsEngine;", "logicEngine", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardJsEngine;", "getLogicEngine", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardJsEngine;", "value", "videoStatus", "getVideoStatus", "()I", "setVideoStatus", "(I)V", "getVideoRelativePos", "", "init", "", "msgId", "", "canvasId", "type", "data", "onAttachedToWindow", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onDetachedFromWindow", "onScreenShot", "onScroll", "view", "Landroid/widget/AbsListView;", "firstVisibleItem", "visibleItemCount", "totalItemCount", "onScrollStateChanged", "scrollState", "setBizTimeLineInfo", "bizTimeLineInfo", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class BizTLRecCardCanvasView
   extends WebCanvasView
-  implements h
+  implements f
 {
   final String TAG;
-  z sBt;
-  final y sEK;
-  private final c sEL;
-  private boolean sEM;
-  private boolean sEz;
+  ab vGS;
+  private boolean vKj;
+  private final c vKs;
+  private boolean vKt;
   private int videoStatus;
   
   public BizTLRecCardCanvasView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, (byte)0);
+    AppMethodBeat.i(302593);
+    AppMethodBeat.o(302593);
   }
   
   public BizTLRecCardCanvasView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(265514);
-    this.TAG = ("MicroMsg.BizTLRecCardCanvasView:" + hashCode());
-    this.sEz = true;
-    this.sEK = y.sFw.cAO();
-    this.sEL = ((c)this.sEK);
-    AppMethodBeat.o(265514);
+    AppMethodBeat.i(302587);
+    this.TAG = s.X("MicroMsg.BizTLRecCardCanvasView:", Integer.valueOf(hashCode()));
+    this.vKj = true;
+    this.vKs = ((c)getLogicEngine());
+    AppMethodBeat.o(302587);
   }
   
   public final void a(long paramLong, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(265507);
-    p.k(paramString1, "canvasId");
-    p.k(paramString2, "type");
-    p.k(paramString3, "data");
-    Object localObject1 = getJsEngine();
-    if (localObject1 == null)
-    {
-      paramString1 = new t("null cannot be cast to non-null type com.tencent.mm.plugin.brandservice.ui.timeline.item.BizTLRecCardJsEngine");
-      AppMethodBeat.o(265507);
-      throw paramString1;
-    }
-    ((Map)((y)localObject1).sFp).put(paramString1, Long.valueOf(paramLong));
-    Object localObject2 = this.sBt;
+    AppMethodBeat.i(302635);
+    s.u(paramString1, "canvasId");
+    s.u(paramString2, "type");
+    s.u(paramString3, "data");
+    ((Map)((BizTLRecCardJsEngine)getJsEngine()).vKV).put(paramString1, Long.valueOf(paramLong));
+    Object localObject2 = this.vGS;
     if (localObject2 != null)
     {
-      localObject1 = (Map)((y)getJsEngine()).sFq;
-      localObject2 = ((z)localObject2).getId();
-      p.j(localObject2, "it.id");
+      localObject1 = (Map)((BizTLRecCardJsEngine)getJsEngine()).vKW;
+      localObject2 = ((ab)localObject2).getId();
+      s.s(localObject2, "it.id");
       ((Map)localObject1).put(paramString1, localObject2);
     }
-    localObject1 = (y)getJsEngine();
+    Object localObject1 = (BizTLRecCardJsEngine)getJsEngine();
     localObject2 = new WeakReference(getContext());
-    p.k(localObject2, "<set-?>");
-    ((y)localObject1).context = ((WeakReference)localObject2);
-    aV(paramString1, paramString2, paramString3);
-    AppMethodBeat.o(265507);
+    s.u(localObject2, "<set-?>");
+    ((BizTLRecCardJsEngine)localObject1).context = ((WeakReference)localObject2);
+    bo(paramString1, paramString2, paramString3);
+    AppMethodBeat.o(302635);
   }
   
-  public final void cAD()
+  public final void ddD()
   {
-    AppMethodBeat.i(265510);
-    y localy = this.sEK;
+    AppMethodBeat.i(302647);
+    BizTLRecCardJsEngine localBizTLRecCardJsEngine = getLogicEngine();
     String str = getCanvasId();
-    p.k(str, "canvasId");
-    c.a(localy, "scroll", str);
-    AppMethodBeat.o(265510);
+    s.u(str, "canvasId");
+    c.a((c)localBizTLRecCardJsEngine, "scroll", str);
+    AppMethodBeat.o(302647);
   }
   
-  public final void cAE()
+  public final void ddE()
   {
-    AppMethodBeat.i(265511);
-    Object localObject = this.sEK;
+    AppMethodBeat.i(302650);
+    Object localObject = getLogicEngine();
     String str = getCanvasId();
-    p.k(str, "canvasId");
-    Log.i(y.TAG, "onScreenShot ".concat(String.valueOf(str)));
+    s.u(str, "canvasId");
+    Log.i(BizTLRecCardJsEngine.TAG, s.X("onScreenShot ", str));
     c.a((c)localObject, "onScreenShot", str);
-    localObject = ((y)localObject).sFr;
-    if (localObject == null) {
-      p.bGy("tlRenderJsEngine");
-    }
-    p.k(str, "canvasId");
-    k.a((k)localObject, "onScreenShot", str);
-    AppMethodBeat.o(265511);
+    localObject = ((BizTLRecCardJsEngine)localObject).ddN();
+    s.u(str, "canvasId");
+    i.a((i)localObject, "onScreenShot", str);
+    AppMethodBeat.o(302650);
   }
   
-  public final z getInfo()
+  public final ab getInfo()
   {
-    return this.sBt;
+    return this.vGS;
   }
   
   public final c getJsEngine()
   {
-    return this.sEL;
+    return this.vKs;
+  }
+  
+  final BizTLRecCardJsEngine getLogicEngine()
+  {
+    AppMethodBeat.i(302624);
+    BizTLRecCardJsEngine localBizTLRecCardJsEngine = BizTLRecCardJsEngine.vKS.ddS();
+    AppMethodBeat.o(302624);
+    return localBizTLRecCardJsEngine;
   }
   
   public final float[] getVideoRelativePos()
   {
-    AppMethodBeat.i(265513);
-    float[] arrayOfFloat2 = this.sEK.bic(getCanvasId());
-    float[] arrayOfFloat1 = arrayOfFloat2;
-    if (arrayOfFloat2 == null)
+    AppMethodBeat.i(302672);
+    float[] arrayOfFloat = getLogicEngine().bhN(getCanvasId());
+    if (arrayOfFloat == null)
     {
-      arrayOfFloat1 = new float[2];
-      float[] tmp29_28 = arrayOfFloat1;
-      tmp29_28[0] = 0.0F;
-      float[] tmp33_29 = tmp29_28;
-      tmp33_29[1] = 0.0F;
-      tmp33_29;
+      AppMethodBeat.o(302672);
+      return new float[] { 0.0F, 0.0F };
     }
-    AppMethodBeat.o(265513);
-    return arrayOfFloat1;
+    AppMethodBeat.o(302672);
+    return arrayOfFloat;
   }
   
   public final int getVideoStatus()
@@ -141,123 +133,135 @@ public final class BizTLRecCardCanvasView
   
   public final void onAttachedToWindow()
   {
-    AppMethodBeat.i(265508);
+    AppMethodBeat.i(302639);
     super.onAttachedToWindow();
-    Context localContext = getContext();
-    Object localObject = localContext;
-    if (!(localContext instanceof g)) {
-      localObject = null;
-    }
-    localObject = (g)localObject;
-    if (localObject != null)
+    Object localObject = getContext();
+    if ((localObject instanceof e)) {}
+    for (localObject = (e)localObject;; localObject = null)
     {
-      ((g)localObject).a((h)this);
-      AppMethodBeat.o(265508);
+      if (localObject != null) {
+        ((e)localObject).a((f)this);
+      }
+      AppMethodBeat.o(302639);
       return;
     }
-    AppMethodBeat.o(265508);
   }
   
   public final void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(265512);
-    if (this.sEM)
+    AppMethodBeat.i(302663);
+    if (this.vKt)
     {
-      AppMethodBeat.o(265512);
+      AppMethodBeat.o(302663);
       return;
     }
-    this.sEM = true;
-    Log.d(this.TAG, "onConfigurationChanged before:[" + getMeasuredWidth() + ", " + getMeasuredHeight() + ']');
+    this.vKt = true;
+    c.a(getJsEngine(), getCanvasId());
+    Log.d(this.TAG, "CanvasView onConfigurationChanged before:[" + getMeasuredWidth() + ", " + getMeasuredHeight() + ']');
     getViewTreeObserver().addOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)new a(this));
-    AppMethodBeat.o(265512);
+    AppMethodBeat.o(302663);
   }
   
   protected final void onDetachedFromWindow()
   {
-    AppMethodBeat.i(265509);
+    AppMethodBeat.i(302642);
     super.onDetachedFromWindow();
-    Context localContext = getContext();
-    Object localObject = localContext;
-    if (!(localContext instanceof g)) {
-      localObject = null;
+    Object localObject = getContext();
+    if ((localObject instanceof e)) {}
+    for (localObject = (e)localObject;; localObject = null)
+    {
+      if (localObject != null) {
+        ((e)localObject).b((f)this);
+      }
+      if (this.videoStatus == 1) {
+        getLogicEngine().ajb(getCanvasId());
+      }
+      AppMethodBeat.o(302642);
+      return;
     }
-    localObject = (g)localObject;
-    if (localObject != null) {
-      ((g)localObject).b((h)this);
-    }
-    if (this.videoStatus == 1) {
-      this.sEK.apB(getCanvasId());
-    }
-    AppMethodBeat.o(265509);
   }
   
-  public final void setBizTimeLineInfo(z paramz)
+  public final void setBizTimeLineInfo(ab paramab)
   {
-    AppMethodBeat.i(265506);
-    p.k(paramz, "bizTimeLineInfo");
-    this.sEK.sBt = paramz;
-    this.sBt = paramz;
-    AppMethodBeat.o(265506);
+    AppMethodBeat.i(302631);
+    s.u(paramab, "bizTimeLineInfo");
+    getLogicEngine().vGS = paramab;
+    this.vGS = paramab;
+    AppMethodBeat.o(302631);
   }
   
   public final void setDoingConfigurationChanged(boolean paramBoolean)
   {
-    this.sEM = paramBoolean;
+    this.vKt = paramBoolean;
   }
   
-  public final void setInfo(z paramz)
+  public final void setInfo(ab paramab)
   {
-    this.sBt = paramz;
+    this.vGS = paramab;
   }
   
   public final void setVideoCard(boolean paramBoolean)
   {
-    this.sEz = paramBoolean;
+    this.vKj = paramBoolean;
   }
   
   public final void setVideoStatus(int paramInt)
   {
-    AppMethodBeat.i(265505);
+    AppMethodBeat.i(302621);
     this.videoStatus = paramInt;
     Log.d(this.TAG, "set videoStatus = " + paramInt + ", " + getCanvasId());
     if (paramInt == 1)
     {
-      Object localObject = this.sEK;
+      Object localObject = getLogicEngine();
       String str = getCanvasId();
-      p.k(str, "canvasId");
-      Log.i(y.TAG, "enterHotZone #".concat(String.valueOf(str)));
-      ac localac = ((y)localObject).sFr;
-      if (localac == null) {
-        p.bGy("tlRenderJsEngine");
+      s.u(str, "canvasId");
+      Log.i(BizTLRecCardJsEngine.TAG, s.X("enterHotZone #", str));
+      z localz = ((BizTLRecCardJsEngine)localObject).ddN();
+      s.u(str, "canvasId");
+      i.a((i)localz, "enterHotZone", str);
+      localObject = ((BizTLRecCardJsEngine)localObject).ddN().bhV(str);
+      if (localObject != null) {
+        ((a)localObject).WjU = true;
       }
-      p.k(str, "canvasId");
-      k.a(localac, "enterHotZone", str);
-      localObject = ((y)localObject).cAK().bij(str);
-      if (localObject != null)
-      {
-        ((a)localObject).Ptc = true;
-        AppMethodBeat.o(265505);
-        return;
-      }
-      AppMethodBeat.o(265505);
+      AppMethodBeat.o(302621);
       return;
     }
-    this.sEK.apB(getCanvasId());
-    AppMethodBeat.o(265505);
+    getLogicEngine().ajb(getCanvasId());
+    AppMethodBeat.o(302621);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardCanvasView$onConfigurationChanged$1", "Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;", "onGlobalLayout", "", "plugin-brandservice_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardCanvasView$onConfigurationChanged$1", "Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;", "counter", "", "onGlobalLayout", "", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     implements ViewTreeObserver.OnGlobalLayoutListener
   {
+    private int evg;
+    
+    a(BizTLRecCardCanvasView paramBizTLRecCardCanvasView) {}
+    
+    private static final void a(BizTLRecCardCanvasView paramBizTLRecCardCanvasView, a parama)
+    {
+      AppMethodBeat.i(302611);
+      s.u(paramBizTLRecCardCanvasView, "this$0");
+      s.u(parama, "this$1");
+      paramBizTLRecCardCanvasView.setDoingConfigurationChanged(false);
+      Log.i(BizTLRecCardCanvasView.b(paramBizTLRecCardCanvasView), "CanvasView onConfigurationChanged:[" + paramBizTLRecCardCanvasView.getMeasuredWidth() + ", " + paramBizTLRecCardCanvasView.getMeasuredHeight() + ']');
+      c.a(paramBizTLRecCardCanvasView.getJsEngine(), BizTLRecCardCanvasView.a(paramBizTLRecCardCanvasView));
+      paramBizTLRecCardCanvasView.getViewTreeObserver().removeOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)parama);
+      AppMethodBeat.o(302611);
+    }
+    
     public final void onGlobalLayout()
     {
-      AppMethodBeat.i(258192);
-      this.sEN.setDoingConfigurationChanged(false);
-      Log.i(BizTLRecCardCanvasView.a(this.sEN), "onConfigurationChanged:[" + this.sEN.getMeasuredWidth() + ", " + this.sEN.getMeasuredHeight() + ']');
-      c.a(this.sEN.getJsEngine(), BizTLRecCardCanvasView.b(this.sEN));
-      this.sEN.getViewTreeObserver().removeOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)this);
-      AppMethodBeat.o(258192);
+      AppMethodBeat.i(302620);
+      c.a(this.vKu.getJsEngine(), BizTLRecCardCanvasView.a(this.vKu));
+      this.evg += 1;
+      if (this.evg < 2)
+      {
+        AppMethodBeat.o(302620);
+        return;
+      }
+      this.vKu.post(new BizTLRecCardCanvasView.a..ExternalSyntheticLambda0(this.vKu, this));
+      AppMethodBeat.o(302620);
     }
   }
 }

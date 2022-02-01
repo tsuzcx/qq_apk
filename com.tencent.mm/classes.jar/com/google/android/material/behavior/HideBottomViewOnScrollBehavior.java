@@ -15,8 +15,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class HideBottomViewOnScrollBehavior<V extends View>
   extends CoordinatorLayout.Behavior<V>
 {
-  private ViewPropertyAnimator bvY;
   private int currentState = 2;
+  private ViewPropertyAnimator dpb;
   private int height = 0;
   
   public HideBottomViewOnScrollBehavior() {}
@@ -28,17 +28,17 @@ public class HideBottomViewOnScrollBehavior<V extends View>
   
   private void a(V paramV, int paramInt, long paramLong, TimeInterpolator paramTimeInterpolator)
   {
-    AppMethodBeat.i(234853);
-    this.bvY = paramV.animate().translationY(paramInt).setInterpolator(paramTimeInterpolator).setDuration(paramLong).setListener(new AnimatorListenerAdapter()
+    AppMethodBeat.i(209914);
+    this.dpb = paramV.animate().translationY(paramInt).setInterpolator(paramTimeInterpolator).setDuration(paramLong).setListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(234828);
+        AppMethodBeat.i(209918);
         HideBottomViewOnScrollBehavior.a(HideBottomViewOnScrollBehavior.this);
-        AppMethodBeat.o(234828);
+        AppMethodBeat.o(209918);
       }
     });
-    AppMethodBeat.o(234853);
+    AppMethodBeat.o(209914);
   }
   
   public final boolean C(int paramInt)
@@ -48,57 +48,57 @@ public class HideBottomViewOnScrollBehavior<V extends View>
   
   public boolean a(CoordinatorLayout paramCoordinatorLayout, V paramV, int paramInt)
   {
-    AppMethodBeat.i(234843);
+    AppMethodBeat.i(209929);
     this.height = paramV.getMeasuredHeight();
     boolean bool = super.a(paramCoordinatorLayout, paramV, paramInt);
-    AppMethodBeat.o(234843);
+    AppMethodBeat.o(209929);
     return bool;
   }
   
-  protected void cd(V paramV)
+  protected void cA(V paramV)
   {
-    AppMethodBeat.i(234848);
-    if (this.bvY != null)
+    AppMethodBeat.i(209956);
+    if (this.dpb != null)
     {
-      this.bvY.cancel();
-      paramV.clearAnimation();
-    }
-    this.currentState = 2;
-    a(paramV, 0, 225L, a.bup);
-    AppMethodBeat.o(234848);
-  }
-  
-  protected void ce(V paramV)
-  {
-    AppMethodBeat.i(234850);
-    if (this.bvY != null)
-    {
-      this.bvY.cancel();
+      this.dpb.cancel();
       paramV.clearAnimation();
     }
     this.currentState = 1;
-    a(paramV, this.height, 175L, a.buo);
-    AppMethodBeat.o(234850);
+    a(paramV, this.height, 175L, a.dns);
+    AppMethodBeat.o(209956);
+  }
+  
+  protected void cz(V paramV)
+  {
+    AppMethodBeat.i(209949);
+    if (this.dpb != null)
+    {
+      this.dpb.cancel();
+      paramV.clearAnimation();
+    }
+    this.currentState = 2;
+    a(paramV, 0, 225L, a.dnt);
+    AppMethodBeat.o(209949);
   }
   
   public final void m(V paramV, int paramInt)
   {
-    AppMethodBeat.i(234847);
+    AppMethodBeat.i(209942);
     if ((this.currentState != 1) && (paramInt > 0))
     {
-      ce(paramV);
-      AppMethodBeat.o(234847);
+      cA(paramV);
+      AppMethodBeat.o(209942);
       return;
     }
     if ((this.currentState != 2) && (paramInt < 0)) {
-      cd(paramV);
+      cz(paramV);
     }
-    AppMethodBeat.o(234847);
+    AppMethodBeat.o(209942);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.behavior.HideBottomViewOnScrollBehavior
  * JD-Core Version:    0.7.0.1
  */

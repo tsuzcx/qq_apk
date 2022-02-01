@@ -1,51 +1,36 @@
 package com.tencent.mm.live.core.core;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$SEIMsgAnchorInfo;", "", "()V", "playStatus", "", "getPlayStatus", "()Ljava/lang/String;", "songId", "getSongId", "userId", "getUserId", "userStatus", "getUserStatus", "plugin-core_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$Role;", "", "()V", "ANCHOR", "", "getANCHOR", "()I", "VISITOR", "getVISITOR", "plugin-core_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e$p
 {
-  private static final String kkT = "userStatus";
-  private static final String kkU = "songId";
-  private static final String kkV = "playStatus";
-  public static final p kkW;
-  private static final String userId = "userId";
+  public static final p mLE;
+  private static final int mLF = 0;
+  private static final int mLG;
   
   static
   {
-    AppMethodBeat.i(200364);
-    kkW = new p();
-    userId = "userId";
-    kkT = "userStatus";
-    kkU = "songId";
-    kkV = "playStatus";
-    AppMethodBeat.o(200364);
+    AppMethodBeat.i(248183);
+    mLE = new p();
+    mLG = 1;
+    AppMethodBeat.o(248183);
   }
   
-  public static String aKM()
+  public static int bdG()
   {
-    return kkT;
+    return mLF;
   }
   
-  public static String aKN()
+  public static int bdH()
   {
-    return kkU;
-  }
-  
-  public static String aKO()
-  {
-    return kkV;
-  }
-  
-  public static String getUserId()
-  {
-    return userId;
+    return mLG;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.live.core.core.e.p
  * JD-Core Version:    0.7.0.1
  */

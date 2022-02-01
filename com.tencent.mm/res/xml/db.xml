@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <Preference android:key="biometric_pay_close" android:layout="@layout/b8j" android:persistent="false" android:title="@string/i8i" android:widgetLayout="@layout/b_n" />
+    <Preference android:key="wallet_realname_verify" android:layout="@layout/bdi" android:title="@string/l38" />
+    <PreferenceSmallCategory />
+    <Preference android:key="wallet_modify_password" android:layout="@layout/bdi" android:title="@string/l34" />
+    <Preference android:key="wallet_forget_password" android:layout="@layout/bdi" android:title="@string/l2z" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.plugin.wallet.pwd.ui.RightBelowPreference android:key="wallet_biometric_pay" android:layout="@layout/bfo" android:title="" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:key="mobile_remit_switch" android:persistent="false" />
+    <PreferenceSmallCategory />
+    <IconPreference android:key="wallet_open_auto_pay" android:layout="@layout/bdi" android:title="@string/l2n" />
+    <Preference android:key="wallet_delay_transfer_date" android:layout="@layout/bdi" android:title="@string/l1w" />
+    <Preference android:key="wallet_universal_pay_order" android:layout="@layout/bdi" android:title="@string/l3g" />
+    <IconPreference android:key="wallet_lucky_money_refund_way" android:layout="@layout/bdi" android:title="@string/l2l" />
+    <PreferenceSmallCategory />
+    <Preference android:key="wallet_function_settings" android:layout="@layout/bdi" android:title="@string/kub" />
+    <Preference android:key="wallet_switch_currency" android:layout="@layout/bdi" android:title="@string/kuf" />
+    <Preference android:key="wallet_im_mch" android:layout="@layout/bdi" android:title="" />
+    <PreferenceSmallCategory android:key="wallet_switch_category" />
+    <Preference android:key="wallet_digitalcert" android:layout="@layout/bdi" android:title="@string/l1x" />
+    <Preference android:key="wallet_password_setting_un_reg" android:layout="@layout/bdi" android:title="@string/l3f" />
 </PreferenceScreen>

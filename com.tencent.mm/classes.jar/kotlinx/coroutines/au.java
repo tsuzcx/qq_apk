@@ -1,77 +1,71 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.d.f;
-import kotlin.l;
+import java.util.concurrent.atomic.AtomicLong;
+import kotlin.Metadata;
+import kotlinx.coroutines.internal.ae;
+import kotlinx.coroutines.internal.af;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/DeferredCoroutine;", "T", "Lkotlinx/coroutines/AbstractCoroutine;", "Lkotlinx/coroutines/Deferred;", "Lkotlinx/coroutines/selects/SelectClause1;", "parentContext", "Lkotlin/coroutines/CoroutineContext;", "active", "", "(Lkotlin/coroutines/CoroutineContext;Z)V", "onAwait", "getOnAwait", "()Lkotlinx/coroutines/selects/SelectClause1;", "await", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getCompleted", "()Ljava/lang/Object;", "registerSelectClause1", "", "R", "select", "Lkotlinx/coroutines/selects/SelectInstance;", "block", "Lkotlin/Function2;", "Lkotlin/coroutines/Continuation;", "", "(Lkotlinx/coroutines/selects/SelectInstance;Lkotlin/jvm/functions/Function2;)V", "kotlinx-coroutines-core"})
-class au<T>
-  extends a<T>
-  implements at<T>
+@Metadata(d1={""}, d2={"ASSERTIONS_ENABLED", "", "getASSERTIONS_ENABLED", "()Z", "COROUTINE_ID", "Ljava/util/concurrent/atomic/AtomicLong;", "getCOROUTINE_ID", "()Ljava/util/concurrent/atomic/AtomicLong;", "DEBUG", "getDEBUG", "DEBUG_PROPERTY_NAME", "", "DEBUG_PROPERTY_VALUE_AUTO", "DEBUG_PROPERTY_VALUE_OFF", "DEBUG_PROPERTY_VALUE_ON", "RECOVER_STACK_TRACES", "getRECOVER_STACK_TRACES", "STACKTRACE_RECOVERY_PROPERTY_NAME", "assert", "", "value", "Lkotlin/Function0;", "resetCoroutineId", "kotlinx-coroutines-core"}, k=2, mv={1, 5, 1}, xi=48)
+public final class au
 {
-  public au(f paramf, boolean paramBoolean)
-  {
-    super(paramf, paramBoolean);
-    AppMethodBeat.i(118061);
-    AppMethodBeat.o(118061);
-  }
+  public static final boolean ASSERTIONS_ENABLED;
+  public static final boolean DEBUG;
+  public static final boolean ajvP;
+  static final AtomicLong ajvQ;
   
-  public final T iRo()
+  static
   {
-    AppMethodBeat.i(204630);
-    Object localObject = iRJ();
-    if (!(localObject instanceof bt)) {}
-    for (int i = 1; i == 0; i = 0)
-    {
-      localObject = (Throwable)new IllegalStateException("This job has not completed yet".toString());
-      AppMethodBeat.o(204630);
-      throw ((Throwable)localObject);
+    boolean bool2 = true;
+    AppMethodBeat.i(118233);
+    ASSERTIONS_ENABLED = ao.class.desiredAssertionStatus();
+    Object localObject = ae.bJL("kotlinx.coroutines.debug");
+    if (localObject != null) {
+      switch (((String)localObject).hashCode())
+      {
+      default: 
+      case 0: 
+        do
+        {
+          localObject = (Throwable)new IllegalStateException(("System property 'kotlinx.coroutines.debug' has unrecognized value '" + localObject + '\'').toString());
+          AppMethodBeat.o(118233);
+          throw ((Throwable)localObject);
+        } while (!((String)localObject).equals(""));
+        label123:
+        bool1 = true;
+        label125:
+        DEBUG = bool1;
+        if ((!bool1) || (!af.bJM("kotlinx.coroutines.stacktrace.recovery"))) {
+          break;
+        }
+      }
     }
-    if ((localObject instanceof x))
+    for (boolean bool1 = bool2;; bool1 = false)
     {
-      localObject = ((x)localObject).cause;
-      AppMethodBeat.o(204630);
-      throw ((Throwable)localObject);
-    }
-    localObject = cf.gl(localObject);
-    AppMethodBeat.o(204630);
-    return localObject;
-  }
-  
-  public final Object n(kotlin.d.d<? super T> paramd)
-  {
-    AppMethodBeat.i(118059);
-    paramd = a(this, paramd);
-    AppMethodBeat.o(118059);
-    return paramd;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"await", "", "T", "continuation", "Lkotlin/coroutines/Continuation;"})
-  static final class a
-    extends kotlin.d.b.a.d
-  {
-    Object L$0;
-    int label;
-    
-    a(au paramau, kotlin.d.d paramd)
-    {
-      super();
-    }
-    
-    public final Object invokeSuspend(Object paramObject)
-    {
-      AppMethodBeat.i(118042);
-      this.result = paramObject;
-      this.label |= 0x80000000;
-      paramObject = au.a(this.abwL, this);
-      AppMethodBeat.o(118042);
-      return paramObject;
+      ajvP = bool1;
+      ajvQ = new AtomicLong(0L);
+      AppMethodBeat.o(118233);
+      return;
+      if (!((String)localObject).equals("auto")) {
+        break;
+      }
+      bool1 = ASSERTIONS_ENABLED;
+      break label125;
+      if (!((String)localObject).equals("off")) {
+        break;
+      }
+      bool1 = false;
+      break label125;
+      if (((String)localObject).equals("on")) {
+        break label123;
+      }
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.au
  * JD-Core Version:    0.7.0.1
  */

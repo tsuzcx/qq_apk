@@ -8,10 +8,10 @@ public class PAGShapeLayer
 {
   static
   {
-    AppMethodBeat.i(195246);
+    AppMethodBeat.i(187492);
     b.loadLibrary("pag");
     nativeInit();
-    AppMethodBeat.o(195246);
+    AppMethodBeat.o(187492);
   }
   
   public PAGShapeLayer(long paramLong)
@@ -23,7 +23,7 @@ public class PAGShapeLayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.libpag.PAGShapeLayer
  * JD-Core Version:    0.7.0.1
  */

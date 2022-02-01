@@ -11,57 +11,57 @@ public class BindCardOrder
   implements Parcelable
 {
   public static final Parcelable.Creator<BindCardOrder> CREATOR;
-  public static int OOp;
-  public static int OOq;
-  public static int OOr;
-  public s OOA;
-  public s.a OOB;
-  public s.b OOC;
-  private String OOo;
-  public int OOs;
-  public String OOt;
-  public String OOu;
-  public String OOv;
-  public String OOw;
-  public String OOx;
-  public int OOy;
-  public int OOz;
-  public String fvP;
+  public static int VEj;
+  public static int VEk;
+  public static int VEl;
+  private String VEi;
+  public int VEm;
+  public String VEn;
+  public String VEo;
+  public String VEp;
+  public String VEq;
+  public String VEr;
+  public int VEs;
+  public int VEt;
+  public s VEu;
+  public s.a VEv;
+  public s.b VEw;
+  public String hAk;
   public int jumpType;
   
   static
   {
     AppMethodBeat.i(70242);
-    OOp = 1;
-    OOq = 2;
-    OOr = 6;
+    VEj = 1;
+    VEk = 2;
+    VEl = 6;
     CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(70242);
   }
   
   public BindCardOrder()
   {
-    this.OOo = "";
-    this.OOt = "";
-    this.OOu = "";
-    this.OOv = "";
-    this.OOw = "";
-    this.OOx = "";
+    this.VEi = "";
+    this.VEn = "";
+    this.VEo = "";
+    this.VEp = "";
+    this.VEq = "";
+    this.VEr = "";
   }
   
   protected BindCardOrder(Parcel paramParcel)
   {
     AppMethodBeat.i(70239);
-    this.OOo = "";
-    this.OOt = "";
-    this.OOu = "";
-    this.OOv = "";
-    this.OOw = "";
-    this.OOx = "";
-    this.OOo = paramParcel.readString();
+    this.VEi = "";
+    this.VEn = "";
+    this.VEo = "";
+    this.VEp = "";
+    this.VEq = "";
+    this.VEr = "";
+    this.VEi = paramParcel.readString();
     try
     {
-      bM(new JSONObject(this.OOo));
+      ch(new JSONObject(this.VEi));
       AppMethodBeat.o(70239);
       return;
     }
@@ -72,43 +72,43 @@ public class BindCardOrder
     }
   }
   
-  public final void bM(JSONObject paramJSONObject)
+  public final void ch(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70241);
     if (paramJSONObject == null) {}
     for (Object localObject = "";; localObject = paramJSONObject.toString())
     {
-      this.OOo = ((String)localObject);
-      Log.i("MicroMsg.BindCardOrder", "feed json %s", new Object[] { this.OOo });
+      this.VEi = ((String)localObject);
+      Log.i("MicroMsg.BindCardOrder", "feed json %s", new Object[] { this.VEi });
       try
       {
-        this.OOs = paramJSONObject.optInt("show_bind_succ_page", 0);
-        this.OOt = paramJSONObject.optString("bind_succ_btn_wording", "");
-        this.OOu = paramJSONObject.optString("bind_succ_remind_wording", "");
+        this.VEm = paramJSONObject.optInt("show_bind_succ_page", 0);
+        this.VEn = paramJSONObject.optString("bind_succ_btn_wording", "");
+        this.VEo = paramJSONObject.optString("bind_succ_remind_wording", "");
         this.jumpType = paramJSONObject.optInt("jump_type", 0);
-        this.OOx = paramJSONObject.optString("bind_serial");
+        this.VEr = paramJSONObject.optString("bind_serial");
         localObject = paramJSONObject.optJSONObject("activity_info");
-        this.OOA = new s();
+        this.VEu = new s();
         if (localObject != null) {
-          this.OOA.bV((JSONObject)localObject);
+          this.VEu.cq((JSONObject)localObject);
         }
         localObject = paramJSONObject.optJSONObject("h5_info");
         if (localObject != null)
         {
-          this.OOB = new s.a();
-          this.OOB.bV((JSONObject)localObject);
+          this.VEv = new s.a();
+          this.VEv.cq((JSONObject)localObject);
         }
         localObject = paramJSONObject.optJSONObject("native_info");
         if (localObject != null)
         {
-          this.OOB = new s.a();
-          this.OOB.bV((JSONObject)localObject);
+          this.VEv = new s.a();
+          this.VEv.cq((JSONObject)localObject);
         }
         paramJSONObject = paramJSONObject.optJSONObject("tinyapp_info");
         if (paramJSONObject != null)
         {
-          this.OOC = new s.b();
-          this.OOC.bV(paramJSONObject);
+          this.VEw = new s.b();
+          this.VEw.cq(paramJSONObject);
         }
         AppMethodBeat.o(70241);
         return;
@@ -126,31 +126,31 @@ public class BindCardOrder
     return 0;
   }
   
-  public final boolean gIO()
+  public final boolean iic()
   {
-    return (this.jumpType == OOp) && (this.OOB != null);
+    return (this.jumpType == VEj) && (this.VEv != null);
   }
   
-  public final boolean gIP()
+  public final boolean iid()
   {
-    return (this.jumpType == OOq) && (this.OOC != null);
+    return (this.jumpType == VEk) && (this.VEw != null);
   }
   
-  public final boolean gIQ()
+  public final boolean iie()
   {
-    return (this.jumpType == OOr) && (this.OOB != null);
+    return (this.jumpType == VEl) && (this.VEv != null);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(70240);
-    paramParcel.writeString(this.OOo);
+    paramParcel.writeString(this.VEi);
     AppMethodBeat.o(70240);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.BindCardOrder
  * JD-Core Version:    0.7.0.1
  */

@@ -14,8 +14,8 @@ import com.tencent.mm.R.j;
 public class IPCallAddressCountView
   extends FrameLayout
 {
-  private TextView DUp;
-  private View fyN;
+  private TextView JLz;
+  private View hDw;
   
   private IPCallAddressCountView(Context paramContext)
   {
@@ -44,22 +44,22 @@ public class IPCallAddressCountView
   private void init()
   {
     AppMethodBeat.i(25663);
-    inflate(getContext(), R.i.ehJ, this);
-    this.fyN = findViewById(R.h.dAF);
-    this.DUp = ((TextView)findViewById(R.h.dAE));
+    inflate(getContext(), R.i.gkE, this);
+    this.hDw = findViewById(R.h.fBH);
+    this.JLz = ((TextView)findViewById(R.h.fBG));
     AppMethodBeat.o(25663);
   }
   
   public void setAddressCount(int paramInt)
   {
     AppMethodBeat.i(25664);
-    this.DUp.setText(getContext().getResources().getQuantityString(R.j.emi, paramInt, new Object[] { Integer.valueOf(paramInt) }));
+    this.JLz.setText(getContext().getResources().getQuantityString(R.j.gpl, paramInt, new Object[] { Integer.valueOf(paramInt) }));
     AppMethodBeat.o(25664);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallAddressCountView
  * JD-Core Version:    0.7.0.1
  */

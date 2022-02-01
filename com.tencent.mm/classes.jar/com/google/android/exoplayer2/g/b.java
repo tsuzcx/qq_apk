@@ -10,11 +10,11 @@ import java.util.Comparator;
 public abstract class b
   implements f
 {
-  private int aNf;
-  private final Format[] bgf;
-  protected final q bnE;
-  protected final int[] bnF;
-  private final long[] bnG;
+  private int cHb;
+  private final Format[] cZY;
+  private final long[] dhA;
+  protected final q dhy;
+  protected final int[] dhz;
   protected final int length;
   
   public b(q paramq, int... paramVarArgs)
@@ -23,27 +23,42 @@ public abstract class b
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      this.bnE = ((q)a.checkNotNull(paramq));
+      this.dhy = ((q)a.checkNotNull(paramq));
       this.length = paramVarArgs.length;
-      this.bgf = new Format[this.length];
+      this.cZY = new Format[this.length];
       i = 0;
       while (i < paramVarArgs.length)
       {
-        Format[] arrayOfFormat = this.bgf;
+        Format[] arrayOfFormat = this.cZY;
         int k = paramVarArgs[i];
-        arrayOfFormat[i] = paramq.bgf[k];
+        arrayOfFormat[i] = paramq.cZY[k];
         i += 1;
       }
     }
-    Arrays.sort(this.bgf, new a((byte)0));
-    this.bnF = new int[this.length];
+    Arrays.sort(this.cZY, new a((byte)0));
+    this.dhz = new int[this.length];
     int i = j;
     while (i < this.length)
     {
-      this.bnF[i] = paramq.j(this.bgf[i]);
+      this.dhz[i] = paramq.j(this.cZY[i]);
       i += 1;
     }
-    this.bnG = new long[this.length];
+    this.dhA = new long[this.length];
+  }
+  
+  public final q Uc()
+  {
+    return this.dhy;
+  }
+  
+  public final Format Ud()
+  {
+    return this.cZY[getSelectedIndex()];
+  }
+  
+  public final int Ue()
+  {
+    return this.dhz[getSelectedIndex()];
   }
   
   public boolean equals(Object paramObject)
@@ -56,26 +71,16 @@ public abstract class b
         return false;
       }
       paramObject = (b)paramObject;
-    } while ((this.bnE == paramObject.bnE) && (Arrays.equals(this.bnF, paramObject.bnF)));
+    } while ((this.dhy == paramObject.dhy) && (Arrays.equals(this.dhz, paramObject.dhz)));
     return false;
   }
   
-  public final Format fm(int paramInt)
-  {
-    return this.bgf[paramInt];
-  }
-  
-  public final int fn(int paramInt)
-  {
-    return this.bnF[paramInt];
-  }
-  
-  public final int fo(int paramInt)
+  public final int es(int paramInt)
   {
     int i = 0;
     while (i < this.length)
     {
-      if (this.bnF[i] == paramInt) {
+      if (this.dhz[i] == paramInt) {
         return i;
       }
       i += 1;
@@ -85,10 +90,20 @@ public abstract class b
   
   public int hashCode()
   {
-    if (this.aNf == 0) {
-      this.aNf = (System.identityHashCode(this.bnE) * 31 + Arrays.hashCode(this.bnF));
+    if (this.cHb == 0) {
+      this.cHb = (System.identityHashCode(this.dhy) * 31 + Arrays.hashCode(this.dhz));
     }
-    return this.aNf;
+    return this.cHb;
+  }
+  
+  public final Format iB(int paramInt)
+  {
+    return this.cZY[paramInt];
+  }
+  
+  public final int iC(int paramInt)
+  {
+    return this.dhz[paramInt];
   }
   
   public final int j(Format paramFormat)
@@ -96,7 +111,7 @@ public abstract class b
     int i = 0;
     while (i < this.length)
     {
-      if (this.bgf[i] == paramFormat) {
+      if (this.cZY[i] == paramFormat) {
         return i;
       }
       i += 1;
@@ -121,34 +136,19 @@ public abstract class b
     if (!bool) {
       return false;
     }
-    long[] arrayOfLong = this.bnG;
+    long[] arrayOfLong = this.dhA;
     arrayOfLong[paramInt] = Math.max(arrayOfLong[paramInt], paramLong + 60000L);
     return true;
   }
   
   protected final boolean l(int paramInt, long paramLong)
   {
-    return this.bnG[paramInt] > paramLong;
+    return this.dhA[paramInt] > paramLong;
   }
   
   public final int length()
   {
-    return this.bnF.length;
-  }
-  
-  public final Format uA()
-  {
-    return this.bgf[getSelectedIndex()];
-  }
-  
-  public final int uB()
-  {
-    return this.bnF[getSelectedIndex()];
-  }
-  
-  public final q uz()
-  {
-    return this.bnE;
+    return this.dhz.length;
   }
   
   static final class a

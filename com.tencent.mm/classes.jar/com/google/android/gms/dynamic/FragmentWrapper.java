@@ -1,13 +1,11 @@
 package com.google.android.gms.dynamic;
 
-import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SuppressLint({"NewApi"})
 public final class FragmentWrapper
   extends IFragmentWrapper.Stub
 {
@@ -216,9 +214,9 @@ public final class FragmentWrapper
   {
     AppMethodBeat.i(5387);
     Fragment localFragment = this.zzabm;
-    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bm(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.b(localFragment, paramIntent.aFh(), "com/google/android/gms/dynamic/FragmentWrapper", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    localFragment.startActivity((Intent)paramIntent.sf(0));
+    paramIntent = new com.tencent.mm.hellhoundlib.b.a().cG(paramIntent);
+    com.tencent.mm.hellhoundlib.a.a.b(localFragment, paramIntent.aYi(), "com/google/android/gms/dynamic/FragmentWrapper", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localFragment.startActivity((Intent)paramIntent.sb(0));
     com.tencent.mm.hellhoundlib.a.a.c(localFragment, "com/google/android/gms/dynamic/FragmentWrapper", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(5387);
   }
@@ -240,7 +238,7 @@ public final class FragmentWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.dynamic.FragmentWrapper
  * JD-Core Version:    0.7.0.1
  */

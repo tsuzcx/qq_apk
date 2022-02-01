@@ -18,7 +18,6 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.Feature;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.GoogleApiAvailabilityLight;
-import com.google.android.gms.common.annotation.KeepForSdk;
 import com.google.android.gms.common.api.Api;
 import com.google.android.gms.common.api.Api.AnyClient;
 import com.google.android.gms.common.api.Api.ApiOptions;
@@ -55,16 +54,13 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.concurrent.GuardedBy;
 
-@KeepForSdk
 public class GoogleApiManager
   implements Handler.Callback
 {
   private static final Object lock;
   public static final Status zzjj;
   private static final Status zzjk;
-  @GuardedBy("lock")
   private static GoogleApiManager zzjo;
   private final Handler handler;
   private long zzjl;
@@ -76,9 +72,7 @@ public class GoogleApiManager
   private final AtomicInteger zzjs;
   private final AtomicInteger zzjt;
   private final Map<zzh<?>, zza<?>> zzju;
-  @GuardedBy("lock")
   private zzad zzjv;
-  @GuardedBy("lock")
   private final Set<zzh<?>> zzjw;
   private final Set<zzh<?>> zzjx;
   
@@ -91,7 +85,6 @@ public class GoogleApiManager
     AppMethodBeat.o(11127);
   }
   
-  @KeepForSdk
   private GoogleApiManager(Context paramContext, Looper paramLooper, GoogleApiAvailability paramGoogleApiAvailability)
   {
     AppMethodBeat.i(11109);
@@ -112,7 +105,6 @@ public class GoogleApiManager
     AppMethodBeat.o(11109);
   }
   
-  @KeepForSdk
   public static void reportSignOut()
   {
     AppMethodBeat.i(11108);
@@ -212,7 +204,7 @@ public class GoogleApiManager
         localObject2 = (zzh)((Iterator)localObject1).next();
         localzza = (zza)this.zzju.get(localObject2);
         if (localzza != null) {
-          break label306;
+          break label305;
         }
         paramMessage.zza((zzh)localObject2, new ConnectionResult(13), null);
       }
@@ -262,7 +254,7 @@ public class GoogleApiManager
         }
       }
     case 5: 
-      label306:
+      label305:
       i = paramMessage.arg1;
       localObject1 = (ConnectionResult)paramMessage.obj;
       localObject2 = this.zzju.values().iterator();
@@ -1223,7 +1215,7 @@ public class GoogleApiManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.GoogleApiManager
  * JD-Core Version:    0.7.0.1
  */

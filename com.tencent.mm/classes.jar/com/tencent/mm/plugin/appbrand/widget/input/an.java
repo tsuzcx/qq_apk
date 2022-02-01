@@ -24,12 +24,12 @@ import org.a.a;
 
 public enum an
 {
-  static final Class rxW;
+  static final Class uJa;
   
   static
   {
     AppMethodBeat.i(136598);
-    rxX = new an[0];
+    uJb = new an[0];
     Object localObject = null;
     try
     {
@@ -43,11 +43,11 @@ public enum an
         Log.e("MicroMsg.AppBrand.InputUtil", "class for ComposingText e = %s", new Object[] { localClassNotFoundException });
       }
     }
-    rxW = localObject;
+    uJa = localObject;
     AppMethodBeat.o(136598);
   }
   
-  static Spannable Q(CharSequence paramCharSequence)
+  static Spannable U(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(136590);
     if (paramCharSequence == null) {
@@ -67,13 +67,13 @@ public enum an
     }
   }
   
-  public static boolean R(CharSequence paramCharSequence)
+  public static boolean V(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(136591);
     if ((paramCharSequence instanceof Spanned))
     {
       paramCharSequence = (Spanned)paramCharSequence;
-      paramCharSequence = paramCharSequence.getSpans(0, paramCharSequence.length(), rxW);
+      paramCharSequence = paramCharSequence.getSpans(0, paramCharSequence.length(), uJa);
       if ((paramCharSequence != null) && (paramCharSequence.length > 0))
       {
         AppMethodBeat.o(136591);
@@ -86,15 +86,7 @@ public enum an
     return false;
   }
   
-  static boolean cU(Object paramObject)
-  {
-    AppMethodBeat.i(136592);
-    boolean bool = rxW.isInstance(paramObject);
-    AppMethodBeat.o(136592);
-    return bool;
-  }
-  
-  public static InputMethodManager dB(View paramView)
+  public static InputMethodManager ep(View paramView)
   {
     AppMethodBeat.i(136593);
     if (paramView != null)
@@ -112,7 +104,7 @@ public enum an
     return paramView;
   }
   
-  public static void dC(View paramView)
+  public static void eq(View paramView)
   {
     AppMethodBeat.i(136594);
     if (Build.VERSION.SDK_INT >= 30)
@@ -121,7 +113,7 @@ public enum an
       AppMethodBeat.o(136594);
       return;
     }
-    Object localObject = dB(paramView);
+    Object localObject = ep(paramView);
     if (localObject == null) {
       paramView = "NULL Imm";
     }
@@ -132,8 +124,8 @@ public enum an
       return;
       try
       {
-        paramView = (View)a.gY(localObject).get("mServedView");
-        localObject = (View)a.gY(localObject).get("mNextServedView");
+        paramView = (View)a.jP(localObject).get("mServedView");
+        localObject = (View)a.jP(localObject).get("mNextServedView");
         paramView = String.format(Locale.US, "mServedView=%s, mNextServedView=%s", new Object[] { paramView, localObject });
       }
       catch (Exception paramView)
@@ -142,6 +134,14 @@ public enum an
         AppMethodBeat.o(136594);
       }
     }
+  }
+  
+  static boolean eq(Object paramObject)
+  {
+    AppMethodBeat.i(136592);
+    boolean bool = uJa.isInstance(paramObject);
+    AppMethodBeat.o(136592);
+    return bool;
   }
   
   public static boolean i(View paramView1, View paramView2)
@@ -168,7 +168,7 @@ public enum an
     return false;
   }
   
-  static int m(Integer paramInteger)
+  static int o(Integer paramInteger)
   {
     AppMethodBeat.i(136597);
     if (paramInteger != null)
@@ -181,7 +181,7 @@ public enum an
     return 0;
   }
   
-  public static boolean m(Boolean paramBoolean)
+  public static boolean o(Boolean paramBoolean)
   {
     AppMethodBeat.i(136596);
     if ((paramBoolean != null) && (paramBoolean.booleanValue()))
@@ -294,7 +294,7 @@ public enum an
         AppMethodBeat.o(136585);
         return;
       }
-      an.dB(paramEditText).hideSoftInputFromInputMethod(paramEditText.getWindowToken(), 0);
+      an.ep(paramEditText).hideSoftInputFromInputMethod(paramEditText.getWindowToken(), 0);
       AppMethodBeat.o(136585);
     }
     
@@ -353,7 +353,7 @@ public enum an
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.an
  * JD-Core Version:    0.7.0.1
  */

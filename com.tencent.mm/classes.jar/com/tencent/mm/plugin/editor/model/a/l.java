@@ -5,12 +5,12 @@ public final class l
 {
   public int duration;
   public String thumbPath;
-  public String urV;
-  public boolean usc = false;
+  public String xyq;
+  public boolean xyy = false;
   
-  public final String cRL()
+  public final String dwe()
   {
-    return this.urV;
+    return this.xyq;
   }
   
   public final int getType()
@@ -20,7 +20,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.a.l
  * JD-Core Version:    0.7.0.1
  */

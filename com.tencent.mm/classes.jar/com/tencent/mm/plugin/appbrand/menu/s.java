@@ -13,27 +13,27 @@ public final class s
 {
   public s()
   {
-    super(w.qgg.ordinal());
-    AppMethodBeat.i(283020);
-    AppMethodBeat.o(283020);
+    super(x.tkK.ordinal());
+    AppMethodBeat.i(323863);
+    AppMethodBeat.o(323863);
   }
   
-  public static boolean ee(Context paramContext)
+  public static boolean eY(Context paramContext)
   {
-    AppMethodBeat.i(283021);
-    paramContext = WWAPIFactory.mw(paramContext);
-    if ((paramContext.a(IWWAPI.WWAppType.ZYb)) && (paramContext.ivm()))
+    AppMethodBeat.i(323873);
+    paramContext = WWAPIFactory.oM(paramContext);
+    if ((paramContext.a(IWWAPI.WWAppType.aicA)) && (paramContext.keI()))
     {
-      AppMethodBeat.o(283021);
+      AppMethodBeat.o(323873);
       return true;
     }
-    AppMethodBeat.o(283021);
+    AppMethodBeat.o(323873);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.s
  * JD-Core Version:    0.7.0.1
  */

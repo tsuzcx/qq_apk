@@ -72,7 +72,7 @@ public final class a
     }
   }
   
-  private String ow(String paramString1, String paramString2)
+  private String qu(String paramString1, String paramString2)
   {
     AppMethodBeat.i(72650);
     String str = paramString1;
@@ -103,7 +103,7 @@ public final class a
   public final String desedeEncode(String paramString1, String paramString2)
   {
     AppMethodBeat.i(72647);
-    paramString1 = ow(paramString1, paramString2);
+    paramString1 = qu(paramString1, paramString2);
     AppMethodBeat.o(72647);
     return paramString1;
   }
@@ -111,7 +111,7 @@ public final class a
   public final String desedeVerifyCode(String paramString1, String paramString2)
   {
     AppMethodBeat.i(72648);
-    paramString1 = ow(paramString1, paramString2);
+    paramString1 = qu(paramString1, paramString2);
     AppMethodBeat.o(72648);
     return paramString1;
   }
@@ -119,7 +119,7 @@ public final class a
   public final String encryptPasswd(boolean paramBoolean, String paramString1, String paramString2)
   {
     AppMethodBeat.i(72649);
-    paramString1 = ow(paramString1, paramString2);
+    paramString1 = qu(paramString1, paramString2);
     AppMethodBeat.o(72649);
     return paramString1;
   }

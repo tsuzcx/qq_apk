@@ -9,70 +9,70 @@ import org.xwalk.core.Log;
 public final class a
   implements CookieInternal.ICookieManagerInternal
 {
-  CookieManager aafe;
+  private CookieManager ailZ;
   
   public a()
   {
     AppMethodBeat.i(153648);
-    this.aafe = CookieManager.getInstance();
+    this.ailZ = CookieManager.getInstance();
     AppMethodBeat.o(153648);
   }
   
-  public final void f(com.tencent.xweb.WebView paramWebView)
+  public final void b(com.tencent.xweb.WebView paramWebView, boolean paramBoolean)
   {
-    AppMethodBeat.i(153650);
+    AppMethodBeat.i(212651);
     if (Build.VERSION.SDK_INT >= 21)
     {
       if ((paramWebView != null) && (paramWebView.getWebViewUI() != null) && ((paramWebView.getWebViewUI() instanceof android.webkit.WebView)))
       {
-        this.aafe.setAcceptThirdPartyCookies((android.webkit.WebView)paramWebView.getWebViewUI(), true);
-        AppMethodBeat.o(153650);
+        this.ailZ.setAcceptThirdPartyCookies((android.webkit.WebView)paramWebView.getWebViewUI(), true);
+        AppMethodBeat.o(212651);
         return;
       }
-      Log.e("SysCookieManagerWrapper", "webview kind not match");
+      Log.e("SysCookieManagerWrapper", "setAcceptThirdPartyCookies, webview kind not match");
     }
-    AppMethodBeat.o(153650);
+    AppMethodBeat.o(212651);
   }
   
   public final String getCookie(String paramString)
   {
     AppMethodBeat.i(153652);
-    paramString = this.aafe.getCookie(paramString);
+    paramString = this.ailZ.getCookie(paramString);
     AppMethodBeat.o(153652);
     return paramString;
-  }
-  
-  public final void ivY()
-  {
-    AppMethodBeat.i(153649);
-    this.aafe.setAcceptCookie(true);
-    AppMethodBeat.o(153649);
   }
   
   public final void removeAllCookie()
   {
     AppMethodBeat.i(153651);
-    this.aafe.removeAllCookie();
+    this.ailZ.removeAllCookie();
     AppMethodBeat.o(153651);
   }
   
   public final void removeSessionCookie()
   {
     AppMethodBeat.i(153654);
-    this.aafe.removeSessionCookie();
+    this.ailZ.removeSessionCookie();
     AppMethodBeat.o(153654);
+  }
+  
+  public final void setAcceptCookie(boolean paramBoolean)
+  {
+    AppMethodBeat.i(212648);
+    this.ailZ.setAcceptCookie(true);
+    AppMethodBeat.o(212648);
   }
   
   public final void setCookie(String paramString1, String paramString2)
   {
     AppMethodBeat.i(153653);
-    this.aafe.setCookie(paramString1, paramString2);
+    this.ailZ.setCookie(paramString1, paramString2);
     AppMethodBeat.o(153653);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.sys.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/afz" />
-    <corners android:radius="3.0dip" />
-</shape>
+    <item android:drawable="@drawable/apu" />
+</selector>

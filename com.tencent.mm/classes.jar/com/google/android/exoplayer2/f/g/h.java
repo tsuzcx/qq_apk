@@ -7,14 +7,14 @@ import java.util.regex.Pattern;
 
 public final class h
 {
-  private static final Pattern bnq;
-  private static final Pattern bnr;
+  private static final Pattern dhl;
+  private static final Pattern dhm;
   
   static
   {
     AppMethodBeat.i(92916);
-    bnq = Pattern.compile("^NOTE(( |\t).*)?$");
-    bnr = Pattern.compile("^﻿?WEBVTT(( |\t).*)?$");
+    dhl = Pattern.compile("^NOTE(( |\t).*)?$");
+    dhm = Pattern.compile("^﻿?WEBVTT(( |\t).*)?$");
     AppMethodBeat.o(92916);
   }
   
@@ -22,7 +22,7 @@ public final class h
   {
     AppMethodBeat.i(92912);
     paramm = paramm.readLine();
-    if ((paramm == null) || (!bnr.matcher(paramm).matches()))
+    if ((paramm == null) || (!dhm.matcher(paramm).matches()))
     {
       paramm = new com.google.android.exoplayer2.f.f("Expected WEBVTT. Got ".concat(String.valueOf(paramm)));
       AppMethodBeat.o(92912);
@@ -41,7 +41,7 @@ public final class h
       if (localObject == null) {
         break;
       }
-      if (bnq.matcher((CharSequence)localObject).matches()) {
+      if (dhl.matcher((CharSequence)localObject).matches()) {
         for (;;)
         {
           localObject = paramm.readLine();
@@ -50,7 +50,7 @@ public final class h
           }
         }
       }
-      localObject = f.bng.matcher((CharSequence)localObject);
+      localObject = f.dhb.matcher((CharSequence)localObject);
     } while (!((Matcher)localObject).matches());
     AppMethodBeat.o(92915);
     return localObject;
@@ -58,7 +58,7 @@ public final class h
     return null;
   }
   
-  public static long by(String paramString)
+  public static long cQ(String paramString)
   {
     int i = 0;
     AppMethodBeat.i(92913);
@@ -76,7 +76,7 @@ public final class h
     return (l2 + l1 * 1000L) * 1000L;
   }
   
-  public static float bz(String paramString)
+  public static float cR(String paramString)
   {
     AppMethodBeat.i(92914);
     if (!paramString.endsWith("%"))

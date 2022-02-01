@@ -3,33 +3,32 @@ package com.tencent.mm.plugin.findersdk.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import kotlin.n.n;
-import kotlin.t;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/findersdk/trace/LiveTracker;", "", "()V", "IS_DEBUG", "", "TAG", "", "TAG2", "debugStack", "enableDebug", "", "getStack", "printLine", "maxLine", "", "logImp", "tag", "msg", "logLevel", "longLog", "log", "trace", "traceWtf", "finder-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/findersdk/trace/LiveTracker;", "", "()V", "IS_DEBUG", "", "TAG", "", "TAG2", "debugStack", "enableDebug", "", "getStack", "printLine", "maxLine", "", "logImp", "tag", "msg", "logLevel", "longLog", "log", "trace", "traceWtf", "finder-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  public static final b Bxg;
-  private static boolean aFB;
+  public static final b HeJ;
+  private static boolean cBm;
   
   static
   {
-    AppMethodBeat.i(207601);
-    Bxg = new b();
+    AppMethodBeat.i(273766);
+    HeJ = new b();
     boolean bool = BuildInfo.DEBUG;
-    aFB = false;
-    AppMethodBeat.o(207601);
+    cBm = false;
+    AppMethodBeat.o(273766);
   }
   
-  public static void W(String paramString1, String paramString2, int paramInt)
+  public static void ad(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(207586);
-    if (!aFB)
+    AppMethodBeat.i(273728);
+    if (!cBm)
     {
-      X(paramString1, paramString2, paramInt);
-      AppMethodBeat.o(207586);
+      ae(paramString1, paramString2, paramInt);
+      AppMethodBeat.o(273728);
       return;
     }
     int j;
@@ -38,12 +37,12 @@ public final class b
     int i;
     if (paramString2.length() < 4000)
     {
-      X(paramString1, paramString2, paramInt);
-      AppMethodBeat.o(207586);
+      ae(paramString1, paramString2, paramInt);
+      AppMethodBeat.o(273728);
       return;
       str = paramString2.substring(j);
-      p.j(str, "(this as java.lang.String).substring(startIndex)");
-      X(paramString1, "=>id:" + i + ' ' + str, paramInt);
+      s.s(str, "(this as java.lang.String).substring(startIndex)");
+      ae(paramString1, "=>id:" + i + ' ' + str, paramInt);
       i += 1;
       j += 4000;
     }
@@ -56,138 +55,132 @@ public final class b
           if (paramString2 != null) {
             break;
           }
-          paramString1 = new t("null cannot be cast to non-null type java.lang.String");
-          AppMethodBeat.o(207586);
+          paramString1 = new NullPointerException("null cannot be cast to non-null type java.lang.String");
+          AppMethodBeat.o(273728);
           throw paramString1;
         }
         if (paramString2 == null)
         {
-          paramString1 = new t("null cannot be cast to non-null type java.lang.String");
-          AppMethodBeat.o(207586);
+          paramString1 = new NullPointerException("null cannot be cast to non-null type java.lang.String");
+          AppMethodBeat.o(273728);
           throw paramString1;
         }
         str = paramString2.substring(j, j + 4000);
-        p.j(str, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+        s.s(str, "(this as java.lang.Strin…ing(startIndex, endIndex)");
         break label60;
       }
-      AppMethodBeat.o(207586);
+      AppMethodBeat.o(273728);
       return;
       i = 0;
       j = 0;
     }
   }
   
-  private static void X(String paramString1, String paramString2, int paramInt)
+  private static void ae(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(207588);
+    AppMethodBeat.i(273735);
     switch (paramInt)
     {
     default: 
       Log.v(paramString1, paramString2);
-      AppMethodBeat.o(207588);
+      AppMethodBeat.o(273735);
       return;
     case 2: 
       Log.i(paramString1, paramString2);
-      AppMethodBeat.o(207588);
+      AppMethodBeat.o(273735);
       return;
     case 1: 
       Log.d(paramString1, paramString2);
-      AppMethodBeat.o(207588);
+      AppMethodBeat.o(273735);
       return;
     case 4: 
       Log.e(paramString1, paramString2);
-      AppMethodBeat.o(207588);
+      AppMethodBeat.o(273735);
       return;
     case 3: 
       Log.w(paramString1, paramString2);
-      AppMethodBeat.o(207588);
+      AppMethodBeat.o(273735);
       return;
     }
     Log.v(paramString1, paramString2);
-    AppMethodBeat.o(207588);
+    AppMethodBeat.o(273735);
   }
   
-  public static void enX()
+  public static void enableDebug()
   {
-    AppMethodBeat.i(207581);
-    aFB = true;
-    Log.i("Finder.LiveTracker", "enableDebug " + aFB);
-    AppMethodBeat.o(207581);
+    AppMethodBeat.i(273707);
+    cBm = true;
+    Log.i("Finder.LiveTracker", s.X("enableDebug ", Boolean.valueOf(cBm)));
+    AppMethodBeat.o(273707);
   }
   
-  private static String enY()
+  private static String ftb()
   {
-    AppMethodBeat.i(207592);
-    Object localObject1 = new Throwable().getStackTrace();
-    if (localObject1.length < 4)
+    AppMethodBeat.i(273745);
+    Object localObject = new Throwable().getStackTrace();
+    if (localObject.length < 4)
     {
-      AppMethodBeat.o(207592);
+      AppMethodBeat.o(273745);
       return "";
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    int j = localObject1.length;
-    int i = 3;
-    while (i < j)
+    int k = localObject.length;
+    if (3 < k) {}
+    int j;
+    for (int i = 3;; i = j)
     {
-      Object localObject2 = localObject1[i];
-      p.j(localObject2, "stes[i]");
-      localObject2 = ((StackTraceElement)localObject2).getClassName();
-      p.j(localObject2, "stes[i].className");
-      if (n.g((CharSequence)localObject2, (CharSequence)"com.tencent."))
+      j = i + 1;
+      String str = localObject[i].getClassName();
+      s.s(str, "stes[i].className");
+      if (n.i((CharSequence)str, (CharSequence)"com.tencent."))
       {
-        localObject2 = localObject1[i];
-        p.j(localObject2, "stes[i]");
-        localObject2 = ((StackTraceElement)localObject2).getClassName();
-        p.j(localObject2, "stes[i].className");
-        if (!n.g((CharSequence)localObject2, (CharSequence)"sdk.platformtools.Log"))
+        str = localObject[i].getClassName();
+        s.s(str, "stes[i].className");
+        if (!n.i((CharSequence)str, (CharSequence)"sdk.platformtools.Log"))
         {
           localStringBuilder.append("[");
-          localObject2 = localObject1[i];
-          p.j(localObject2, "stes[i]");
-          localObject2 = ((StackTraceElement)localObject2).getClassName();
-          p.j(localObject2, "stes[i].className");
-          localStringBuilder.append(n.l((String)localObject2, "com.tencent.mm", "", false));
+          str = localObject[i].getClassName();
+          s.s(str, "stes[i].className");
+          localStringBuilder.append(n.bV(str, "com.tencent.mm", ""));
           localStringBuilder.append(":");
-          localObject2 = localObject1[i];
-          p.j(localObject2, "stes[i]");
-          localStringBuilder.append(((StackTraceElement)localObject2).getMethodName());
-          localObject2 = new StringBuilder("(");
-          Object localObject3 = localObject1[i];
-          p.j(localObject3, "stes[i]");
-          localStringBuilder.append(localObject3.getLineNumber() + ")]");
+          localStringBuilder.append(localObject[i].getMethodName());
+          localStringBuilder.append("(" + localObject[i].getLineNumber() + ")]");
           if (i >= 6) {
-            break;
+            break label216;
           }
         }
       }
-      i += 1;
+      if (j >= k)
+      {
+        label216:
+        localObject = localStringBuilder.toString();
+        s.s(localObject, "t.toString()");
+        AppMethodBeat.o(273745);
+        return localObject;
+      }
     }
-    localObject1 = localStringBuilder.toString();
-    p.j(localObject1, "t.toString()");
-    AppMethodBeat.o(207592);
-    return localObject1;
   }
   
-  public static String enZ()
+  public static String ftc()
   {
-    AppMethodBeat.i(207595);
-    if (aFB)
+    AppMethodBeat.i(273758);
+    if (cBm)
     {
-      String str = "\nstack=>" + enY();
-      AppMethodBeat.o(207595);
+      String str = s.X("\nstack=>", ftb());
+      AppMethodBeat.o(273758);
       return str;
     }
-    AppMethodBeat.o(207595);
+    AppMethodBeat.o(273758);
     return "";
   }
   
-  public static void hA(String paramString1, String paramString2)
+  public static void iz(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(207583);
-    p.k(paramString1, "tag");
-    p.k(paramString2, "msg");
-    W("Finder.LiveTracker", paramString1 + ':' + paramString2 + ' ' + enZ(), 2);
-    AppMethodBeat.o(207583);
+    AppMethodBeat.i(273716);
+    s.u(paramString1, "tag");
+    s.u(paramString2, "msg");
+    ad("Finder.LiveTracker", paramString1 + ':' + paramString2 + ' ' + ftc(), 2);
+    AppMethodBeat.o(273716);
   }
 }
 

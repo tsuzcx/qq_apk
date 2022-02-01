@@ -1,68 +1,44 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
-import kotlinx.coroutines.internal.v;
+import java.util.concurrent.CancellationException;
+import kotlin.Metadata;
+import kotlin.d.f;
+import kotlin.g.a.b;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"COMPLETING_ALREADY", "Lkotlinx/coroutines/internal/Symbol;", "COMPLETING_ALREADY$annotations", "()V", "COMPLETING_RETRY", "COMPLETING_RETRY$annotations", "COMPLETING_WAITING_CHILDREN", "COMPLETING_WAITING_CHILDREN$annotations", "EMPTY_ACTIVE", "Lkotlinx/coroutines/Empty;", "EMPTY_ACTIVE$annotations", "EMPTY_NEW", "EMPTY_NEW$annotations", "FALSE", "", "RETRY", "SEALED", "SEALED$annotations", "TOO_LATE_TO_CANCEL", "TOO_LATE_TO_CANCEL$annotations", "TRUE", "boxIncomplete", "", "unboxState", "kotlinx-coroutines-core"})
+@Metadata(d1={"kotlinx/coroutines/JobKt__FutureKt", "kotlinx/coroutines/JobKt__JobKt"}, k=4, mv={1, 5, 1}, xi=48)
 public final class cf
 {
-  private static final v abxD;
-  public static final v abxE;
-  private static final v abxF;
-  private static final v abxG;
-  private static final v abxH;
-  private static final bh abxI;
-  private static final bh abxJ;
-  
-  static
+  public static final bi a(cb paramcb, bi parambi)
   {
-    AppMethodBeat.i(118155);
-    abxD = new v("COMPLETING_ALREADY");
-    abxE = new v("COMPLETING_WAITING_CHILDREN");
-    abxF = new v("COMPLETING_RETRY");
-    abxG = new v("TOO_LATE_TO_CANCEL");
-    abxH = new v("SEALED");
-    abxI = new bh(false);
-    abxJ = new bh(true);
-    AppMethodBeat.o(118155);
+    AppMethodBeat.i(188780);
+    paramcb = paramcb.bh((b)new bk(parambi));
+    AppMethodBeat.o(188780);
+    return paramcb;
   }
   
-  public static final Object gk(Object paramObject)
+  public static final void a(f paramf, CancellationException paramCancellationException)
   {
-    AppMethodBeat.i(204912);
-    if ((paramObject instanceof bt))
-    {
-      paramObject = new bu((bt)paramObject);
-      AppMethodBeat.o(204912);
-      return paramObject;
-    }
-    AppMethodBeat.o(204912);
-    return paramObject;
+    AppMethodBeat.i(369481);
+    cg.a(paramf, paramCancellationException);
+    AppMethodBeat.o(369481);
   }
   
-  public static final Object gl(Object paramObject)
+  public static final void d(cb paramcb)
   {
-    if (!(paramObject instanceof bu)) {}
-    for (Object localObject = null;; localObject = paramObject)
+    AppMethodBeat.i(188795);
+    if (!paramcb.isActive())
     {
-      localObject = (bu)localObject;
-      if (localObject != null)
-      {
-        localObject = ((bu)localObject).abxq;
-        if (localObject != null) {}
-      }
-      else
-      {
-        return paramObject;
-      }
-      return localObject;
+      paramcb = paramcb.kCu();
+      AppMethodBeat.o(188795);
+      throw paramcb;
     }
+    AppMethodBeat.o(188795);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.cf
  * JD-Core Version:    0.7.0.1
  */

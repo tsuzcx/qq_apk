@@ -7,31 +7,31 @@ import com.tencent.mm.plugin.facedetect.a.i;
 public final class e
   extends a
 {
-  public final int epF()
+  public final int fuB()
+  {
+    return 2;
+  }
+  
+  public final int fuH()
   {
     return 1;
   }
   
-  public final int epv()
+  public final int fux()
   {
     return 2;
   }
   
-  public final int epz()
+  public final void y(TextView paramTextView)
   {
-    return 2;
-  }
-  
-  public final void x(TextView paramTextView)
-  {
-    AppMethodBeat.i(197250);
-    com.tencent.mm.plugin.flash.d.a.d(paramTextView, com.tencent.mm.ci.a.ba(paramTextView.getContext(), a.i.face_preview_posture_correct));
-    AppMethodBeat.o(197250);
+    AppMethodBeat.i(264802);
+    com.tencent.mm.plugin.flash.d.a.d(paramTextView, com.tencent.mm.cd.a.bt(paramTextView.getContext(), a.i.face_preview_posture_correct));
+    AppMethodBeat.o(264802);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.flash.b.e
  * JD-Core Version:    0.7.0.1
  */

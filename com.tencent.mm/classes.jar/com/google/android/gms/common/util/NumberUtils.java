@@ -2,7 +2,6 @@ package com.google.android.gms.common.util;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@VisibleForTesting
 public class NumberUtils
 {
   public static int compare(int paramInt1, int paramInt2)

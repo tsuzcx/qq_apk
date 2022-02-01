@@ -1,172 +1,138 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bx.b;
+import java.util.LinkedList;
 
 public final class bab
-  extends com.tencent.mm.cd.a
+  extends esc
 {
-  public int RUA;
-  public String SKd;
-  public String SLD;
-  public String SLE;
-  public String SLF;
-  public String SLG;
-  public String SLH;
-  public String SLI;
-  public float SLJ;
-  public int SLK;
-  public String name;
+  public b ZEQ;
+  public LinkedList<bim> ZKS;
+  public int ZKT;
+  public int ZKU;
+  
+  public bab()
+  {
+    AppMethodBeat.i(260238);
+    this.ZKS = new LinkedList();
+    AppMethodBeat.o(260238);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(231008);
+    AppMethodBeat.i(260248);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.SKd != null) {
-        paramVarArgs.f(1, this.SKd);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.qD(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      paramVarArgs.aY(2, this.RUA);
-      if (this.SLD != null) {
-        paramVarArgs.f(3, this.SLD);
+      paramVarArgs.e(2, 8, this.ZKS);
+      if (this.ZEQ != null) {
+        paramVarArgs.d(3, this.ZEQ);
       }
-      if (this.SLE != null) {
-        paramVarArgs.f(4, this.SLE);
-      }
-      if (this.SLF != null) {
-        paramVarArgs.f(5, this.SLF);
-      }
-      if (this.SLG != null) {
-        paramVarArgs.f(6, this.SLG);
-      }
-      if (this.SLH != null) {
-        paramVarArgs.f(7, this.SLH);
-      }
-      if (this.SLI != null) {
-        paramVarArgs.f(8, this.SLI);
-      }
-      if (this.name != null) {
-        paramVarArgs.f(9, this.name);
-      }
-      paramVarArgs.i(10, this.SLJ);
-      paramVarArgs.aY(11, this.SLK);
-      AppMethodBeat.o(231008);
+      paramVarArgs.bS(4, this.ZKT);
+      paramVarArgs.bS(5, this.ZKU);
+      AppMethodBeat.o(260248);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.SKd == null) {
-        break label781;
+      if (this.BaseResponse == null) {
+        break label554;
       }
     }
-    label781:
-    for (paramInt = g.a.a.b.b.a.g(1, this.SKd) + 0;; paramInt = 0)
+    label554:
+    for (paramInt = i.a.a.a.qC(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + g.a.a.b.b.a.bM(2, this.RUA);
+      int i = paramInt + i.a.a.a.c(2, 8, this.ZKS);
       paramInt = i;
-      if (this.SLD != null) {
-        paramInt = i + g.a.a.b.b.a.g(3, this.SLD);
+      if (this.ZEQ != null) {
+        paramInt = i + i.a.a.b.b.a.c(3, this.ZEQ);
       }
-      i = paramInt;
-      if (this.SLE != null) {
-        i = paramInt + g.a.a.b.b.a.g(4, this.SLE);
-      }
-      paramInt = i;
-      if (this.SLF != null) {
-        paramInt = i + g.a.a.b.b.a.g(5, this.SLF);
-      }
-      i = paramInt;
-      if (this.SLG != null) {
-        i = paramInt + g.a.a.b.b.a.g(6, this.SLG);
-      }
-      paramInt = i;
-      if (this.SLH != null) {
-        paramInt = i + g.a.a.b.b.a.g(7, this.SLH);
-      }
-      i = paramInt;
-      if (this.SLI != null) {
-        i = paramInt + g.a.a.b.b.a.g(8, this.SLI);
-      }
-      paramInt = i;
-      if (this.name != null) {
-        paramInt = i + g.a.a.b.b.a.g(9, this.name);
-      }
-      i = g.a.a.b.b.a.gL(10);
-      int j = g.a.a.b.b.a.bM(11, this.SLK);
-      AppMethodBeat.o(231008);
-      return paramInt + (i + 4) + j;
+      i = i.a.a.b.b.a.cJ(4, this.ZKT);
+      int j = i.a.a.b.b.a.cJ(5, this.ZKU);
+      AppMethodBeat.o(260248);
+      return paramInt + i + j;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.ZKS.clear();
+        paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = esc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = esc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(231008);
+        AppMethodBeat.o(260248);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
         bab localbab = (bab)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(231008);
+          AppMethodBeat.o(260248);
           return -1;
         case 1: 
-          localbab.SKd = locala.abFh.readString();
-          AppMethodBeat.o(231008);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new kd();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((kd)localObject2).parseFrom((byte[])localObject1);
+            }
+            localbab.BaseResponse = ((kd)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(260248);
           return 0;
         case 2: 
-          localbab.RUA = locala.abFh.AK();
-          AppMethodBeat.o(231008);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new bim();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((bim)localObject2).parseFrom((byte[])localObject1);
+            }
+            localbab.ZKS.add(localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(260248);
           return 0;
         case 3: 
-          localbab.SLD = locala.abFh.readString();
-          AppMethodBeat.o(231008);
+          localbab.ZEQ = ((i.a.a.a.a)localObject1).ajGk.kFX();
+          AppMethodBeat.o(260248);
           return 0;
         case 4: 
-          localbab.SLE = locala.abFh.readString();
-          AppMethodBeat.o(231008);
-          return 0;
-        case 5: 
-          localbab.SLF = locala.abFh.readString();
-          AppMethodBeat.o(231008);
-          return 0;
-        case 6: 
-          localbab.SLG = locala.abFh.readString();
-          AppMethodBeat.o(231008);
-          return 0;
-        case 7: 
-          localbab.SLH = locala.abFh.readString();
-          AppMethodBeat.o(231008);
-          return 0;
-        case 8: 
-          localbab.SLI = locala.abFh.readString();
-          AppMethodBeat.o(231008);
-          return 0;
-        case 9: 
-          localbab.name = locala.abFh.readString();
-          AppMethodBeat.o(231008);
-          return 0;
-        case 10: 
-          localbab.SLJ = Float.intBitsToFloat(locala.abFh.AO());
-          AppMethodBeat.o(231008);
+          localbab.ZKT = ((i.a.a.a.a)localObject1).ajGk.aar();
+          AppMethodBeat.o(260248);
           return 0;
         }
-        localbab.SLK = locala.abFh.AK();
-        AppMethodBeat.o(231008);
+        localbab.ZKU = ((i.a.a.a.a)localObject1).ajGk.aar();
+        AppMethodBeat.o(260248);
         return 0;
       }
-      AppMethodBeat.o(231008);
+      AppMethodBeat.o(260248);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bab
  * JD-Core Version:    0.7.0.1
  */

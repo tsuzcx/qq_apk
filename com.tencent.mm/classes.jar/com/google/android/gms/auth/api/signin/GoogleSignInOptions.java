@@ -12,12 +12,6 @@ import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.internal.ReflectedParcelable;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,7 +27,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@SafeParcelable.Class(creator="GoogleSignInOptionsCreator")
 public class GoogleSignInOptions
   extends AbstractSafeParcelable
   implements Api.ApiOptions.Optional, ReflectedParcelable
@@ -41,34 +34,20 @@ public class GoogleSignInOptions
   public static final Parcelable.Creator<GoogleSignInOptions> CREATOR;
   public static final GoogleSignInOptions DEFAULT_GAMES_SIGN_IN;
   public static final GoogleSignInOptions DEFAULT_SIGN_IN;
-  @VisibleForTesting
   public static final Scope SCOPE_EMAIL;
-  @VisibleForTesting
   public static final Scope SCOPE_GAMES;
-  @VisibleForTesting
   public static final Scope SCOPE_GAMES_LITE;
-  @VisibleForTesting
   public static final Scope SCOPE_OPEN_ID;
-  @VisibleForTesting
   public static final Scope SCOPE_PROFILE;
   private static Comparator<Scope> zzaa;
-  @SafeParcelable.VersionField(id=1)
   private final int versionCode;
-  @SafeParcelable.Field(getter="getScopes", id=2)
   private final ArrayList<Scope> zzr;
-  @SafeParcelable.Field(getter="getAccount", id=3)
   private Account zzs;
-  @SafeParcelable.Field(getter="isIdTokenRequested", id=4)
   private boolean zzt;
-  @SafeParcelable.Field(getter="isServerAuthCodeRequested", id=5)
   private final boolean zzu;
-  @SafeParcelable.Field(getter="isForceCodeForRefreshToken", id=6)
   private final boolean zzv;
-  @SafeParcelable.Field(getter="getServerClientId", id=7)
   private String zzw;
-  @SafeParcelable.Field(getter="getHostedDomain", id=8)
   private String zzx;
-  @SafeParcelable.Field(getter="getExtensions", id=9)
   private ArrayList<GoogleSignInOptionsExtensionParcelable> zzy;
   private Map<Integer, GoogleSignInOptionsExtensionParcelable> zzz;
   
@@ -87,8 +66,7 @@ public class GoogleSignInOptions
     AppMethodBeat.o(10871);
   }
   
-  @SafeParcelable.Constructor
-  GoogleSignInOptions(@SafeParcelable.Param(id=1) int paramInt, @SafeParcelable.Param(id=2) ArrayList<Scope> paramArrayList, @SafeParcelable.Param(id=3) Account paramAccount, @SafeParcelable.Param(id=4) boolean paramBoolean1, @SafeParcelable.Param(id=5) boolean paramBoolean2, @SafeParcelable.Param(id=6) boolean paramBoolean3, @SafeParcelable.Param(id=7) String paramString1, @SafeParcelable.Param(id=8) String paramString2, @SafeParcelable.Param(id=9) ArrayList<GoogleSignInOptionsExtensionParcelable> paramArrayList1)
+  GoogleSignInOptions(int paramInt, ArrayList<Scope> paramArrayList, Account paramAccount, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString1, String paramString2, ArrayList<GoogleSignInOptionsExtensionParcelable> paramArrayList1)
   {
     this(paramInt, paramArrayList, paramAccount, paramBoolean1, paramBoolean2, paramBoolean3, paramString1, paramString2, zza(paramArrayList1));
     AppMethodBeat.i(10858);
@@ -277,7 +255,7 @@ public class GoogleSignInOptions
     return this.zzs;
   }
   
-  public GoogleSignInOptionsExtensionParcelable getExtension(@GoogleSignInOptionsExtension.TypeId int paramInt)
+  public GoogleSignInOptionsExtensionParcelable getExtension(int paramInt)
   {
     AppMethodBeat.i(10863);
     GoogleSignInOptionsExtensionParcelable localGoogleSignInOptionsExtensionParcelable = (GoogleSignInOptionsExtensionParcelable)this.zzz.get(Integer.valueOf(paramInt));
@@ -316,7 +294,7 @@ public class GoogleSignInOptions
     return this.zzw;
   }
   
-  public boolean hasExtension(@GoogleSignInOptionsExtension.TypeId int paramInt)
+  public boolean hasExtension(int paramInt)
   {
     AppMethodBeat.i(10862);
     boolean bool = this.zzz.containsKey(Integer.valueOf(paramInt));
@@ -558,7 +536,7 @@ public class GoogleSignInOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.signin.GoogleSignInOptions
  * JD-Core Version:    0.7.0.1
  */

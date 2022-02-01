@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.emojicapture.model.a;
 
 import java.util.List;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerListDiffCallback;", "", "onInsert", "", "start", "", "count", "onMove", "fromPos", "toPos", "onRemove", "onUpdate", "updateData", "lensList", "", "Lcom/tencent/mm/sticker/LensItem;", "plugin-emojicapture_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerListDiffCallback;", "", "onInsert", "", "start", "", "count", "onMove", "fromPos", "toPos", "onRemove", "onUpdate", "updateData", "lensList", "", "Lcom/tencent/mm/sticker/LensItem;", "plugin-emojicapture_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface c
 {
-  public abstract void aa(List<com.tencent.mm.sticker.c> paramList);
+  public abstract void bz(List<com.tencent.mm.sticker.c> paramList);
   
-  public abstract void ge(int paramInt1, int paramInt2);
+  public abstract void gX(int paramInt1, int paramInt2);
   
-  public abstract void gf(int paramInt1, int paramInt2);
+  public abstract void gY(int paramInt1, int paramInt2);
   
-  public abstract void gg(int paramInt1, int paramInt2);
+  public abstract void gZ(int paramInt1, int paramInt2);
   
-  public abstract void gh(int paramInt1, int paramInt2);
+  public abstract void ha(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.model.a.c
  * JD-Core Version:    0.7.0.1
  */

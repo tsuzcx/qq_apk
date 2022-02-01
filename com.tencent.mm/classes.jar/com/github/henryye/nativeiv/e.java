@@ -1,35 +1,33 @@
 package com.github.henryye.nativeiv;
 
-import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import com.github.henryye.nativeiv.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SuppressLint({"LongLogTag"})
 public class e
 {
-  private static volatile e aKh = null;
-  b aKi;
+  private static volatile e cEd = null;
+  b cEe;
   
   private e()
   {
     AppMethodBeat.i(127355);
-    this.aKi = new a((byte)0);
-    this.aKi.init();
+    this.cEe = new a((byte)0);
+    this.cEe.init();
     AppMethodBeat.o(127355);
   }
   
-  public static e qF()
+  public static e Qi()
   {
     AppMethodBeat.i(127354);
-    if (aKh == null) {
+    if (cEd == null) {
       try
       {
-        if (aKh == null) {
-          aKh = new e();
+        if (cEd == null) {
+          cEd = new e();
         }
-        e locale1 = aKh;
+        e locale1 = cEd;
         return locale1;
       }
       finally
@@ -37,7 +35,7 @@ public class e
         AppMethodBeat.o(127354);
       }
     }
-    e locale2 = aKh;
+    e locale2 = cEd;
     AppMethodBeat.o(127354);
     return locale2;
   }
@@ -47,7 +45,7 @@ public class e
   {
     private a() {}
     
-    public final Bitmap bd(int paramInt1, int paramInt2)
+    public final Bitmap bY(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(127353);
       b.i("MiroMsg.MBBitmapPool", "hy: dummy getTask", new Object[0]);
@@ -66,14 +64,14 @@ public class e
   
   public static abstract interface b
   {
-    public abstract Bitmap bd(int paramInt1, int paramInt2);
+    public abstract Bitmap bY(int paramInt1, int paramInt2);
     
     public abstract void init();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.github.henryye.nativeiv.e
  * JD-Core Version:    0.7.0.1
  */

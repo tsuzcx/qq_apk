@@ -1,12 +1,10 @@
 package com.tencent.rtmp.sharp.jni;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.media.MediaCodec;
 import android.media.MediaCodec.BufferInfo;
 import android.media.MediaFormat;
-import android.os.Build;
-import android.os.Build.VERSION;
+import com.tencent.liteav.basic.util.TXCBuild;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
@@ -120,10 +118,10 @@ public class MediaCodecEncoder
   {
     AppMethodBeat.i(13695);
     if (QLog.isColorLevel()) {
-      QLog.w("TRAE", 2, "manufacture:" + Build.MANUFACTURER);
+      QLog.w("TRAE", 2, "manufacture:" + TXCBuild.Manufacturer());
     }
     if (QLog.isColorLevel()) {
-      QLog.w("TRAE", 2, "MODEL:" + Build.MODEL);
+      QLog.w("TRAE", 2, "MODEL:" + TXCBuild.Model());
     }
     if (this.mContext == null)
     {
@@ -136,7 +134,7 @@ public class MediaCodecEncoder
       AppMethodBeat.o(13695);
       return null;
     }
-    paramString = localFile.getPath() + "/MF-" + Build.MANUFACTURER + "-M-" + Build.MODEL + "-" + paramString;
+    paramString = localFile.getPath() + "/MF-" + TXCBuild.Manufacturer() + "-M-" + TXCBuild.Model() + "-" + paramString;
     localFile = new File(paramString);
     if (!localFile.getParentFile().exists()) {
       localFile.getParentFile().mkdirs();
@@ -152,7 +150,6 @@ public class MediaCodecEncoder
     return paramString;
   }
   
-  @SuppressLint({"NewApi"})
   public int createAACEncoder(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(13696);
@@ -208,7 +205,6 @@ public class MediaCodecEncoder
     }
   }
   
-  @SuppressLint({"NewApi"})
   public int encodeAACFrame(int paramInt)
   {
     AppMethodBeat.i(13697);
@@ -260,7 +256,6 @@ public class MediaCodecEncoder
     }
   }
   
-  @SuppressLint({"NewApi"})
   public int encodeInternalAACFrame(int paramInt)
   {
     AppMethodBeat.i(13698);
@@ -269,7 +264,7 @@ public class MediaCodecEncoder
     {
       i = this.mAudioAACEncoder.dequeueInputBuffer(2000L);
       if (i != -1) {
-        if (Build.VERSION.SDK_INT < 21) {
+        if (TXCBuild.VersionInt() < 21) {
           break label109;
         }
       }
@@ -301,7 +296,7 @@ public class MediaCodecEncoder
     {
       return i;
       int j = this.mAACEncBufferInfo.size;
-      if (Build.VERSION.SDK_INT >= 21)
+      if (TXCBuild.VersionInt() >= 21)
       {
         this.mOutputBuffer = this.mAudioAACEncoder.getOutputBuffer(i);
         paramInt = this.mAACEncBufferInfo.flags;
@@ -338,7 +333,6 @@ public class MediaCodecEncoder
     }
   }
   
-  @SuppressLint({"NewApi"})
   public int releaseAACEncoder()
   {
     AppMethodBeat.i(13699);
@@ -369,7 +363,6 @@ public class MediaCodecEncoder
     return -1;
   }
   
-  @SuppressLint({"NewApi"})
   public int setAACEncodeBitrate(int paramInt)
   {
     AppMethodBeat.i(13700);
@@ -387,7 +380,7 @@ public class MediaCodecEncoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.MediaCodecEncoder
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,32 @@
 package com.tencent.ilink.tdi;
 
-import com.google.b.be.b;
-import com.google.b.cl;
+import com.google.d.bj.d;
+import com.google.d.cw;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum a$a
-  implements cl
+  implements cw
 {
-  private static final be.b<a> bRT;
-  private static final a[] cmK;
+  private static final bj.d<a> dLG;
+  private static final a[] edQ;
   final int value;
   
   static
   {
-    AppMethodBeat.i(218381);
-    cmB = new a("kFaceExtVerifyType_WxBase_Begin", 0, 0);
-    cmC = new a("kFaceExtVerifyType_WxBase_4PhoneNum", 1, 1);
-    cmD = new a("kFaceExtVerifyType_WxBase_End", 2, 999);
-    cmE = new a("kFaceExtVerifyType_WxPay_Begin", 3, 1000);
-    cmF = new a("kFaceExtVerifyType_WxPay_4PhoneNum", 4, 1001);
-    cmG = new a("kFaceExtVerifyType_WxPay_WholePhoneNum", 5, 1002);
-    cmH = new a("kFaceExtVerifyType_WxPay_QrCode", 6, 1003);
-    cmI = new a("kFaceExtVerifyType_WxPay_FacePin", 7, 1004);
-    cmJ = new a("kFaceExtVerifyType_WxPay_End", 8, 1999);
-    cmL = new a[] { cmB, cmC, cmD, cmE, cmF, cmG, cmH, cmI, cmJ };
-    bRT = new be.b() {};
-    cmK = values();
-    AppMethodBeat.o(218381);
+    AppMethodBeat.i(213998);
+    edH = new a("kFaceExtVerifyType_WxBase_Begin", 0, 0);
+    edI = new a("kFaceExtVerifyType_WxBase_4PhoneNum", 1, 1);
+    edJ = new a("kFaceExtVerifyType_WxBase_End", 2, 999);
+    edK = new a("kFaceExtVerifyType_WxPay_Begin", 3, 1000);
+    edL = new a("kFaceExtVerifyType_WxPay_4PhoneNum", 4, 1001);
+    edM = new a("kFaceExtVerifyType_WxPay_WholePhoneNum", 5, 1002);
+    edN = new a("kFaceExtVerifyType_WxPay_QrCode", 6, 1003);
+    edO = new a("kFaceExtVerifyType_WxPay_FacePin", 7, 1004);
+    edP = new a("kFaceExtVerifyType_WxPay_End", 8, 1999);
+    edR = new a[] { edH, edI, edJ, edK, edL, edM, edN, edO, edP };
+    dLG = new bj.d() {};
+    edQ = values();
+    AppMethodBeat.o(213998);
   }
   
   private a$a(int paramInt)
@@ -35,30 +35,30 @@ public enum a$a
   }
   
   @Deprecated
-  public static a ix(int paramInt)
+  public static a mc(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     case 0: 
-      return cmB;
+      return edH;
     case 1: 
-      return cmC;
+      return edI;
     case 999: 
-      return cmD;
+      return edJ;
     case 1000: 
-      return cmE;
+      return edK;
     case 1001: 
-      return cmF;
+      return edL;
     case 1002: 
-      return cmG;
+      return edM;
     case 1003: 
-      return cmH;
+      return edN;
     case 1004: 
-      return cmI;
+      return edO;
     }
-    return cmJ;
+    return edP;
   }
   
   public final int getNumber()
@@ -68,7 +68,7 @@ public enum a$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.ilink.tdi.a.a
  * JD-Core Version:    0.7.0.1
  */

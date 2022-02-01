@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/rj"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <ScrollView android:id="@id/h9a" android:background="@color/afz" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="0.0dip" android:fillViewport="true" android:layout_weight="1.0" android:overScrollMode="never">
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <LinearLayout android:orientation="vertical" android:id="@id/jhx" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <TextView android:textSize="@dimen/hd" android:textColor="@color/a2x" android:gravity="center_horizontal" android:id="@id/jhz" android:layout_marginLeft="@dimen/ci" android:layout_marginTop="@dimen/bu" android:layout_marginRight="@dimen/ci" android:text="@string/iss" style="@style/a0r" />
-                <TextView android:textSize="@dimen/t1" android:textColor="@color/a2x" android:gravity="center_horizontal" android:id="@id/jhu" android:layout_marginLeft="@dimen/ci" android:layout_marginTop="@dimen/cb" android:layout_marginRight="@dimen/ci" android:layout_marginBottom="@dimen/bx" android:text="@string/isl" style="@style/a0r" />
-            </LinearLayout>
-            <com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView android:layout_gravity="center_horizontal" android:id="@id/dyp" android:layout_width="304.0dip" android:layout_marginBottom="@dimen/cn" wallet:format="g8w" style="@style/qn" />
-            <TextView android:id="@id/a4v" android:layout_marginLeft="@dimen/hs" android:layout_marginRight="@dimen/hs" android:text="@string/isu" style="@style/a0r" />
-            <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
-            <TextView android:layout_gravity="center_horizontal" android:id="@id/dyr" android:visibility="gone" android:layout_marginBottom="@dimen/cr" android:text="@string/vl" style="@style/ov" />
-        </LinearLayout>
-    </ScrollView>
-    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/c21" />
-</LinearLayout>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.videocomposition.play.VideoCompositionPlayView android:id="@id/l5_" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/ca0" />
+    <com.tencent.mm.ui.widget.InsectRelativeLayout android:id="@id/hxz" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <include android:id="@id/kle" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/d6" layout="@layout/ca2" />
+        <include android:id="@id/cb4" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="@dimen/d_" android:layout_marginLeft="@dimen/d6" android:layout_marginRight="@dimen/d6" android:layout_marginBottom="@dimen/cr" android:layout_alignParentBottom="true" layout="@layout/ccv" />
+        <include android:id="@id/klc" android:layout_width="fill_parent" android:layout_height="@dimen/d5" android:layout_marginBottom="46.0dip" android:layout_alignParentBottom="true" layout="@layout/c_z" />
+        <include android:id="@id/klf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/klc" layout="@layout/ca5" />
+        <TextView android:textSize="@dimen/hn" android:textColor="@color/ahw" android:id="@id/kla" android:background="@drawable/bvw" android:paddingLeft="@dimen/cr" android:paddingTop="9.0dip" android:paddingRight="@dimen/cr" android:paddingBottom="13.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:layout_marginRight="@dimen/df" android:text="@string/d73" android:layout_above="@id/klc" />
+        <RelativeLayout android:id="@id/i2_" android:background="@drawable/b05" android:visibility="gone" android:layout_width="@dimen/d1" android:layout_height="@dimen/d1" />
+    </com.tencent.mm.ui.widget.InsectRelativeLayout>
+    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/ca4" />
+</merge>

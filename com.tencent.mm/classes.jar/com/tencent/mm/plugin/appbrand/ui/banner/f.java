@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.ui.banner;
 
 public abstract interface f
 {
-  public abstract void ce(String paramString, int paramInt);
+  public abstract void cB(String paramString, int paramInt);
 }
 
 

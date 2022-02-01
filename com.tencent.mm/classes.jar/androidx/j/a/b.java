@@ -1,31 +1,29 @@
 package androidx.j.a;
 
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.util.SparseBooleanArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 public final class b
 {
-  static final b aeZ;
-  private final List<d> aeU;
-  private final List<c> aeV;
-  private final Map<c, d> aeW;
-  private final SparseBooleanArray aeX;
-  public final d aeY;
+  static final b bTe;
+  public final List<b.d> bSZ;
+  private final List<c> bTa;
+  private final Map<c, b.d> bTb;
+  private final SparseBooleanArray bTc;
+  public final b.d bTd;
   
   static
   {
-    AppMethodBeat.i(243017);
-    aeZ = new b()
+    AppMethodBeat.i(192753);
+    bTe = new b()
     {
-      public final boolean e(float[] paramAnonymousArrayOfFloat)
+      public final boolean n(float[] paramAnonymousArrayOfFloat)
       {
         if (paramAnonymousArrayOfFloat[2] >= 0.95F)
         {
@@ -62,42 +60,34 @@ public final class b
         return false;
       }
     };
-    AppMethodBeat.o(243017);
+    AppMethodBeat.o(192753);
   }
   
-  b(List<d> paramList, List<c> paramList1)
+  b(List<b.d> paramList, List<c> paramList1)
   {
-    AppMethodBeat.i(243010);
-    this.aeU = paramList;
-    this.aeV = paramList1;
-    this.aeX = new SparseBooleanArray();
-    this.aeW = new androidx.b.a();
-    this.aeY = jV();
-    AppMethodBeat.o(243010);
+    AppMethodBeat.i(192731);
+    this.bSZ = paramList;
+    this.bTa = paramList1;
+    this.bTc = new SparseBooleanArray();
+    this.bTb = new androidx.b.a();
+    this.bTd = IA();
+    AppMethodBeat.o(192731);
   }
   
-  public static a e(Bitmap paramBitmap)
+  private b.d IA()
   {
-    AppMethodBeat.i(243008);
-    paramBitmap = new a(paramBitmap);
-    AppMethodBeat.o(243008);
-    return paramBitmap;
-  }
-  
-  private d jV()
-  {
-    AppMethodBeat.i(243016);
+    AppMethodBeat.i(192743);
     int j = -2147483648;
     Object localObject = null;
-    int k = this.aeU.size();
+    int k = this.bSZ.size();
     int i = 0;
     if (i < k)
     {
-      d locald = (d)this.aeU.get(i);
-      if (locald.aeM <= j) {
+      b.d locald = (b.d)this.bSZ.get(i);
+      if (locald.bSR <= j) {
         break label77;
       }
-      j = locald.aeM;
+      j = locald.bSR;
       localObject = locald;
     }
     label77:
@@ -105,20 +95,23 @@ public final class b
     {
       i += 1;
       break;
-      AppMethodBeat.o(243016);
+      AppMethodBeat.o(192743);
       return localObject;
     }
   }
   
-  public final d jT()
+  public static a l(Bitmap paramBitmap)
   {
-    return this.aeY;
+    AppMethodBeat.i(192725);
+    paramBitmap = new a(paramBitmap);
+    AppMethodBeat.o(192725);
+    return paramBitmap;
   }
   
-  final void jU()
+  final void Iz()
   {
-    AppMethodBeat.i(243014);
-    int m = this.aeV.size();
+    AppMethodBeat.i(192764);
+    int m = this.bTa.size();
     int i = 0;
     c localc;
     float f1;
@@ -129,16 +122,16 @@ public final class b
     Object localObject;
     Map localMap;
     label184:
-    d locald;
+    b.d locald;
     if (i < m)
     {
-      localc = (c)this.aeV.get(i);
+      localc = (c)this.bTa.get(i);
       f1 = 0.0F;
       j = 0;
-      k = localc.afw.length;
+      k = localc.bTB.length;
       while (j < k)
       {
-        f3 = localc.afw[j];
+        f3 = localc.bTB[j];
         f2 = f1;
         if (f3 > 0.0F) {
           f2 = f1 + f3;
@@ -149,57 +142,57 @@ public final class b
       if (f1 != 0.0F)
       {
         j = 0;
-        k = localc.afw.length;
+        k = localc.bTB.length;
         while (j < k)
         {
-          if (localc.afw[j] > 0.0F)
+          if (localc.bTB[j] > 0.0F)
           {
-            localObject = localc.afw;
+            localObject = localc.bTB;
             localObject[j] /= f1;
           }
           j += 1;
         }
       }
-      localMap = this.aeW;
+      localMap = this.bTb;
       f1 = 0.0F;
       localObject = null;
-      int n = this.aeU.size();
+      int n = this.bSZ.size();
       j = 0;
       if (j < n)
       {
-        locald = (d)this.aeU.get(j);
-        float[] arrayOfFloat = locald.jZ();
-        if ((arrayOfFloat[1] >= localc.afu[0]) && (arrayOfFloat[1] <= localc.afu[2]) && (arrayOfFloat[2] >= localc.afv[0]) && (arrayOfFloat[2] <= localc.afv[2]) && (!this.aeX.get(locald.afk)))
+        locald = (b.d)this.bSZ.get(j);
+        float[] arrayOfFloat = locald.IF();
+        if ((arrayOfFloat[1] >= localc.bTz[0]) && (arrayOfFloat[1] <= localc.bTz[2]) && (arrayOfFloat[2] >= localc.bTA[0]) && (arrayOfFloat[2] <= localc.bTA[2]) && (!this.bTc.get(locald.bTp)))
         {
           k = 1;
           label292:
           if (k == 0) {
             break label541;
           }
-          arrayOfFloat = locald.jZ();
+          arrayOfFloat = locald.IF();
           f2 = 0.0F;
           f3 = 0.0F;
-          if (this.aeY == null) {
+          if (this.bTd == null) {
             break label475;
           }
-          k = this.aeY.aeM;
+          k = this.bTd.bSR;
           label324:
-          if (localc.afw[0] > 0.0F) {
-            f2 = localc.afw[0] * (1.0F - Math.abs(arrayOfFloat[1] - localc.afu[1]));
+          if (localc.bTB[0] > 0.0F) {
+            f2 = localc.bTB[0] * (1.0F - Math.abs(arrayOfFloat[1] - localc.bTz[1]));
           }
-          if (localc.afw[1] > 0.0F) {
-            f3 = localc.afw[1] * (1.0F - Math.abs(arrayOfFloat[2] - localc.afv[1]));
+          if (localc.bTB[1] > 0.0F) {
+            f3 = localc.bTB[1] * (1.0F - Math.abs(arrayOfFloat[2] - localc.bTA[1]));
           }
-          if (localc.afw[2] <= 0.0F) {
+          if (localc.bTB[2] <= 0.0F) {
             break label544;
           }
-          f4 = localc.afw[2];
+          f4 = localc.bTB[2];
         }
       }
     }
     label541:
     label544:
-    for (float f4 = locald.aeM / k * f4;; f4 = 0.0F)
+    for (float f4 = locald.bSR / k * f4;; f4 = 0.0F)
     {
       f2 = f4 + (f2 + f3);
       if ((localObject == null) || (f2 > f1))
@@ -216,14 +209,14 @@ public final class b
         label475:
         k = 1;
         break label324;
-        if ((localObject != null) && (localc.afx)) {
-          this.aeX.append(((d)localObject).afk, true);
+        if ((localObject != null) && (localc.bTC)) {
+          this.bTc.append(((b.d)localObject).bTp, true);
         }
         localMap.put(localc, localObject);
         i += 1;
         break;
-        this.aeX.clear();
-        AppMethodBeat.o(243014);
+        this.bTc.clear();
+        AppMethodBeat.o(192764);
         return;
       }
     }
@@ -231,94 +224,87 @@ public final class b
   
   public static final class a
   {
-    private final List<b.d> aeU;
-    private final List<c> aeV;
-    private int afa;
-    private int afb;
-    private int afc;
-    private final List<b.b> afd;
-    private Rect afe;
+    private final List<b.d> bSZ;
+    private final List<c> bTa;
+    public int bTf;
+    private int bTg;
+    private int bTh;
+    private final List<b.b> bTi;
+    private Rect bTj;
     private final Bitmap mBitmap;
     
     public a(Bitmap paramBitmap)
     {
-      AppMethodBeat.i(242994);
-      this.aeV = new ArrayList();
-      this.afa = 16;
-      this.afb = 12544;
-      this.afc = -1;
-      this.afd = new ArrayList();
+      AppMethodBeat.i(192703);
+      this.bTa = new ArrayList();
+      this.bTf = 16;
+      this.bTg = 12544;
+      this.bTh = -1;
+      this.bTi = new ArrayList();
       if ((paramBitmap == null) || (paramBitmap.isRecycled()))
       {
         paramBitmap = new IllegalArgumentException("Bitmap is not valid");
-        AppMethodBeat.o(242994);
+        AppMethodBeat.o(192703);
         throw paramBitmap;
       }
-      this.afd.add(b.aeZ);
+      this.bTi.add(b.bTe);
       this.mBitmap = paramBitmap;
-      this.aeU = null;
-      this.aeV.add(c.afo);
-      this.aeV.add(c.afp);
-      this.aeV.add(c.afq);
-      this.aeV.add(c.afr);
-      this.aeV.add(c.afs);
-      this.aeV.add(c.aft);
-      AppMethodBeat.o(242994);
+      this.bSZ = null;
+      this.bTa.add(c.bTt);
+      this.bTa.add(c.bTu);
+      this.bTa.add(c.bTv);
+      this.bTa.add(c.bTw);
+      this.bTa.add(c.bTx);
+      this.bTa.add(c.bTy);
+      AppMethodBeat.o(192703);
     }
     
-    private int[] f(Bitmap paramBitmap)
+    private int[] m(Bitmap paramBitmap)
     {
       int i = 0;
-      AppMethodBeat.i(242997);
+      AppMethodBeat.i(192719);
       int j = paramBitmap.getWidth();
       int k = paramBitmap.getHeight();
       int[] arrayOfInt = new int[j * k];
       paramBitmap.getPixels(arrayOfInt, 0, j, 0, 0, j, k);
-      if (this.afe == null)
+      if (this.bTj == null)
       {
-        AppMethodBeat.o(242997);
+        AppMethodBeat.o(192719);
         return arrayOfInt;
       }
-      k = this.afe.width();
-      int m = this.afe.height();
+      k = this.bTj.width();
+      int m = this.bTj.height();
       paramBitmap = new int[k * m];
       while (i < m)
       {
-        System.arraycopy(arrayOfInt, (this.afe.top + i) * j + this.afe.left, paramBitmap, i * k, k);
+        System.arraycopy(arrayOfInt, (this.bTj.top + i) * j + this.bTj.left, paramBitmap, i * k, k);
         i += 1;
       }
-      AppMethodBeat.o(242997);
+      AppMethodBeat.o(192719);
       return paramBitmap;
     }
     
-    public final AsyncTask<Bitmap, Void, b> a(final b.c paramc)
+    public final a IB()
     {
-      AppMethodBeat.i(242996);
-      paramc = new AsyncTask()
-      {
-        private b jX()
-        {
-          AppMethodBeat.i(242991);
-          try
-          {
-            b localb = b.a.this.jW();
-            AppMethodBeat.o(242991);
-            return localb;
-          }
-          catch (Exception localException)
-          {
-            AppMethodBeat.o(242991);
-          }
-          return null;
-        }
-      }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Bitmap[] { this.mBitmap });
-      AppMethodBeat.o(242996);
-      return paramc;
+      AppMethodBeat.i(192742);
+      this.bTi.clear();
+      AppMethodBeat.o(192742);
+      return this;
     }
     
-    public final b jW()
+    public final a IC()
     {
-      AppMethodBeat.i(242995);
+      AppMethodBeat.i(192755);
+      if (this.bTa != null) {
+        this.bTa.clear();
+      }
+      AppMethodBeat.o(192755);
+      return this;
+    }
+    
+    public final b ID()
+    {
+      AppMethodBeat.i(192771);
       double d2;
       int i;
       double d1;
@@ -328,17 +314,17 @@ public final class b
       {
         localObject1 = this.mBitmap;
         d2 = -1.0D;
-        if (this.afb > 0)
+        if (this.bTg > 0)
         {
           i = ((Bitmap)localObject1).getWidth() * ((Bitmap)localObject1).getHeight();
           d1 = d2;
-          if (i > this.afb) {
-            d1 = Math.sqrt(this.afb / i);
+          if (i > this.bTg) {
+            d1 = Math.sqrt(this.bTg / i);
           }
           if (d1 > 0.0D) {
             break label333;
           }
-          localObject2 = this.afe;
+          localObject2 = this.bTj;
           if ((localObject1 != this.mBitmap) && (localObject2 != null))
           {
             d1 = ((Bitmap)localObject1).getWidth() / this.mBitmap.getWidth();
@@ -347,9 +333,9 @@ public final class b
             ((Rect)localObject2).right = Math.min((int)Math.ceil(((Rect)localObject2).right * d1), ((Bitmap)localObject1).getWidth());
             ((Rect)localObject2).bottom = Math.min((int)Math.ceil(d1 * ((Rect)localObject2).bottom), ((Bitmap)localObject1).getHeight());
           }
-          int[] arrayOfInt = f((Bitmap)localObject1);
-          i = this.afa;
-          if (!this.afd.isEmpty()) {
+          int[] arrayOfInt = m((Bitmap)localObject1);
+          i = this.bTf;
+          if (!this.bTi.isEmpty()) {
             break label368;
           }
           localObject2 = null;
@@ -360,186 +346,91 @@ public final class b
           }
         }
       }
-      for (Object localObject1 = ((a)localObject2).aeF;; localObject1 = this.aeU)
+      for (Object localObject1 = ((a)localObject2).bSK;; localObject1 = this.bSZ)
       {
-        localObject1 = new b((List)localObject1, this.aeV);
-        ((b)localObject1).jU();
-        AppMethodBeat.o(242995);
+        localObject1 = new b((List)localObject1, this.bTa);
+        ((b)localObject1).Iz();
+        AppMethodBeat.o(192771);
         return localObject1;
         d1 = d2;
-        if (this.afc <= 0) {
+        if (this.bTh <= 0) {
           break;
         }
         i = Math.max(((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight());
         d1 = d2;
-        if (i <= this.afc) {
+        if (i <= this.bTh) {
           break;
         }
-        d1 = this.afc / i;
+        d1 = this.bTh / i;
         break;
         label333:
         localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject1, (int)Math.ceil(((Bitmap)localObject1).getWidth() * d1), (int)Math.ceil(d1 * ((Bitmap)localObject1).getHeight()), false);
         break label72;
         label368:
-        localObject2 = (b.b[])this.afd.toArray(new b.b[this.afd.size()]);
+        localObject2 = (b.b[])this.bTi.toArray(new b.b[this.bTi.size()]);
         break label221;
-        if (this.aeU == null) {
+        if (this.bSZ == null) {
           break label413;
         }
       }
       label413:
       localObject1 = new AssertionError();
-      AppMethodBeat.o(242995);
+      AppMethodBeat.o(192771);
       throw ((Throwable)localObject1);
+    }
+    
+    public final AsyncTask<Bitmap, Void, b> a(final b.c paramc)
+    {
+      AppMethodBeat.i(192779);
+      if (paramc == null)
+      {
+        paramc = new IllegalArgumentException("listener can not be null");
+        AppMethodBeat.o(192779);
+        throw paramc;
+      }
+      paramc = new AsyncTask()
+      {
+        private b IE()
+        {
+          AppMethodBeat.i(192744);
+          try
+          {
+            b localb = b.a.this.ID();
+            AppMethodBeat.o(192744);
+            return localb;
+          }
+          catch (Exception localException)
+          {
+            AppMethodBeat.o(192744);
+          }
+          return null;
+        }
+      }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Bitmap[] { this.mBitmap });
+      AppMethodBeat.o(192779);
+      return paramc;
+    }
+    
+    public final a fu(int paramInt)
+    {
+      this.bTg = paramInt;
+      this.bTh = -1;
+      return this;
     }
   }
   
   public static abstract interface b
   {
-    public abstract boolean e(float[] paramArrayOfFloat);
+    public abstract boolean n(float[] paramArrayOfFloat);
   }
   
-  public static final class d
+  public static abstract interface c
   {
-    final int aeM;
-    private final int afh;
-    private final int afi;
-    private final int afj;
-    public final int afk;
-    private boolean afl;
-    private int afm;
-    private float[] afn;
-    private int wW;
-    
-    public d(int paramInt1, int paramInt2)
-    {
-      AppMethodBeat.i(242998);
-      this.afh = Color.red(paramInt1);
-      this.afi = Color.green(paramInt1);
-      this.afj = Color.blue(paramInt1);
-      this.afk = paramInt1;
-      this.aeM = paramInt2;
-      AppMethodBeat.o(242998);
-    }
-    
-    private void kb()
-    {
-      AppMethodBeat.i(243002);
-      int j;
-      int m;
-      int k;
-      if (!this.afl)
-      {
-        i = androidx.core.graphics.b.b(-1, this.afk, 4.5F);
-        j = androidx.core.graphics.b.b(-1, this.afk, 3.0F);
-        if ((i != -1) && (j != -1))
-        {
-          this.afm = androidx.core.graphics.b.C(-1, i);
-          this.wW = androidx.core.graphics.b.C(-1, j);
-          this.afl = true;
-          AppMethodBeat.o(243002);
-          return;
-        }
-        m = androidx.core.graphics.b.b(-16777216, this.afk, 4.5F);
-        k = androidx.core.graphics.b.b(-16777216, this.afk, 3.0F);
-        if ((m != -1) && (k != -1))
-        {
-          this.afm = androidx.core.graphics.b.C(-16777216, m);
-          this.wW = androidx.core.graphics.b.C(-16777216, k);
-          this.afl = true;
-          AppMethodBeat.o(243002);
-          return;
-        }
-        if (i == -1) {
-          break label184;
-        }
-        i = androidx.core.graphics.b.C(-1, i);
-        this.afm = i;
-        if (j == -1) {
-          break label195;
-        }
-      }
-      label184:
-      label195:
-      for (int i = androidx.core.graphics.b.C(-1, j);; i = androidx.core.graphics.b.C(-16777216, k))
-      {
-        this.wW = i;
-        this.afl = true;
-        AppMethodBeat.o(243002);
-        return;
-        i = androidx.core.graphics.b.C(-16777216, m);
-        break;
-      }
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      AppMethodBeat.i(243004);
-      if (this == paramObject)
-      {
-        AppMethodBeat.o(243004);
-        return true;
-      }
-      if ((paramObject == null) || (getClass() != paramObject.getClass()))
-      {
-        AppMethodBeat.o(243004);
-        return false;
-      }
-      paramObject = (d)paramObject;
-      if ((this.aeM == paramObject.aeM) && (this.afk == paramObject.afk))
-      {
-        AppMethodBeat.o(243004);
-        return true;
-      }
-      AppMethodBeat.o(243004);
-      return false;
-    }
-    
-    public final int hashCode()
-    {
-      return this.afk * 31 + this.aeM;
-    }
-    
-    public final int jY()
-    {
-      return this.afk;
-    }
-    
-    public final float[] jZ()
-    {
-      AppMethodBeat.i(242999);
-      if (this.afn == null) {
-        this.afn = new float[3];
-      }
-      androidx.core.graphics.b.a(this.afh, this.afi, this.afj, this.afn);
-      float[] arrayOfFloat = this.afn;
-      AppMethodBeat.o(242999);
-      return arrayOfFloat;
-    }
-    
-    public final int ka()
-    {
-      AppMethodBeat.i(243000);
-      kb();
-      int i = this.afm;
-      AppMethodBeat.o(243000);
-      return i;
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(243003);
-      Object localObject = new StringBuilder(getClass().getSimpleName()).append(" [RGB: #").append(Integer.toHexString(this.afk)).append(']').append(" [HSL: ").append(Arrays.toString(jZ())).append(']').append(" [Population: ").append(this.aeM).append(']').append(" [Title Text: #");
-      kb();
-      localObject = Integer.toHexString(this.wW) + ']' + " [Body Text: #" + Integer.toHexString(ka()) + ']';
-      AppMethodBeat.o(243003);
-      return localObject;
-    }
+    public abstract void onGenerated(b paramb);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     androidx.j.a.b
  * JD-Core Version:    0.7.0.1
  */

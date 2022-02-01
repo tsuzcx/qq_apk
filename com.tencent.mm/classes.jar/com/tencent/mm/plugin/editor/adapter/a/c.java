@@ -8,20 +8,20 @@ import com.tencent.mm.plugin.editor.model.nativenote.manager.j;
 
 public final class c
 {
-  private static final int uqr = d.f.upT;
-  private static final int uqs = d.f.upR;
-  public SparseIntArray uqt;
+  private static final int xwO = d.f.xwq;
+  private static final int xwP = d.f.xwo;
+  public SparseIntArray xwQ;
   
   public c()
   {
     AppMethodBeat.i(181646);
-    this.uqt = new SparseIntArray();
-    this.uqt.put(1, uqr);
-    this.uqt.put(2, uqs);
-    this.uqt.put(4, uqs);
-    this.uqt.put(6, uqs);
-    this.uqt.put(0, uqs);
-    this.uqt.put(-1, uqs);
+    this.xwQ = new SparseIntArray();
+    this.xwQ.put(1, xwO);
+    this.xwQ.put(2, xwP);
+    this.xwQ.put(4, xwP);
+    this.xwQ.put(6, xwP);
+    this.xwQ.put(0, xwP);
+    this.xwQ.put(-1, xwP);
     AppMethodBeat.o(181646);
   }
   
@@ -63,7 +63,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.adapter.a.c
  * JD-Core Version:    0.7.0.1
  */

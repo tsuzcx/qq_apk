@@ -4,140 +4,144 @@ import android.content.Context;
 import android.graphics.Point;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ar;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.ui.aw;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/taskbar/ui/dynamicbackground/DynamicBgServiceImpl;", "Lcom/tencent/mm/dynamicbackground/model/DynamicBgService;", "()V", "getDisplayRealSize", "Landroid/graphics/Point;", "context", "Landroid/content/Context;", "getSleepTimeInMsPerFrame", "", "isEnableNativeDynamicBackground", "", "isInitCrash", "loadDynamicBgLibrary", "", "markDrawEndPoint", "markDrawStartPoint", "markWillCrash", "needMarkDrawPoint", "onInitCrash", "onInitEnd", "onInitStart", "setEnableNativeDynamicBackground", "enable", "willCrash", "Companion", "plugin-taskbar_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/taskbar/ui/dynamicbackground/DynamicBgServiceImpl;", "Lcom/tencent/mm/dynamicbackground/model/DynamicBgService;", "()V", "getDisplayRealSize", "Landroid/graphics/Point;", "context", "Landroid/content/Context;", "getSleepTimeInMsPerFrame", "", "isEnableNativeDynamicBackground", "", "isInitCrash", "loadDynamicBgLibrary", "", "markDrawEndPoint", "markDrawStartPoint", "markWillCrash", "needMarkDrawPoint", "onInitCrash", "onInitEnd", "onInitStart", "setEnableNativeDynamicBackground", "enable", "willCrash", "Companion", "plugin-taskbar_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
   implements com.tencent.mm.dynamicbackground.model.c
 {
-  public static final e.a MqA;
+  public static final e.a STM;
   
   static
   {
-    AppMethodBeat.i(215638);
-    MqA = new e.a((byte)0);
-    AppMethodBeat.o(215638);
+    AppMethodBeat.i(264131);
+    STM = new e.a((byte)0);
+    AppMethodBeat.o(264131);
   }
   
-  public final boolean aAA()
+  public final boolean aTo()
   {
-    AppMethodBeat.i(215628);
-    boolean bool = c.aAA();
-    AppMethodBeat.o(215628);
+    AppMethodBeat.i(264165);
+    boolean bool = com.tencent.mm.plugin.taskbar.e.aTo();
+    AppMethodBeat.o(264165);
     return bool;
   }
   
-  public final boolean aAB()
+  public final void aTp()
   {
-    AppMethodBeat.i(215633);
-    boolean bool = c.aAB();
-    AppMethodBeat.o(215633);
-    return bool;
+    AppMethodBeat.i(264211);
+    com.tencent.mm.plugin.taskbar.e.Fg(false);
+    AppMethodBeat.o(264211);
   }
   
-  public final void aAC()
+  public final void aTq()
   {
-    AppMethodBeat.i(215630);
-    c.aAC();
-    AppMethodBeat.o(215630);
-  }
-  
-  public final void aAD()
-  {
-    AppMethodBeat.i(215629);
-    c.aAD();
-    AppMethodBeat.o(215629);
-  }
-  
-  public final float aAE()
-  {
-    AppMethodBeat.i(215625);
-    a locala = a.Mqu;
-    float f = a.gjW();
-    AppMethodBeat.o(215625);
-    return f;
-  }
-  
-  public final boolean aAt()
-  {
-    AppMethodBeat.i(215627);
-    boolean bool = com.tencent.mm.plugin.taskbar.e.aAt();
-    AppMethodBeat.o(215627);
-    return bool;
-  }
-  
-  public final void aAu()
-  {
-    AppMethodBeat.i(215636);
-    com.tencent.mm.plugin.taskbar.e.zP(false);
-    AppMethodBeat.o(215636);
-  }
-  
-  public final void aAv()
-  {
-    AppMethodBeat.i(215626);
+    AppMethodBeat.i(264159);
     Log.i("MicroMsg.DynamicBgServiceImpl", "alvinluo loadDynamicBgLibrary");
-    if (com.tencent.mm.plugin.taskbar.e.aAt()) {
-      c.gkc();
+    if (com.tencent.mm.plugin.taskbar.e.aTo()) {
+      c.hEc();
     }
     try
     {
-      System.loadLibrary("dynamicBg");
-      AppMethodBeat.o(215626);
+      com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG("dynamicBg");
+      Object localObject = new Object();
+      com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/mm/plugin/taskbar/ui/dynamicbackground/DynamicBgServiceImpl", "loadDynamicBgLibrary", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+      System.loadLibrary((String)locala.sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/taskbar/ui/dynamicbackground/DynamicBgServiceImpl", "loadDynamicBgLibrary", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+      AppMethodBeat.o(264159);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Log.printErrStackTrace("MicroMsg.DynamicBgServiceImpl", localThrowable, "alvinluo DynamicBackgroundNative exception", new Object[0]);
-      c.gkb();
-      AppMethodBeat.o(215626);
+      c.hEb();
+      AppMethodBeat.o(264159);
     }
   }
   
-  public final boolean aAw()
+  public final boolean aTr()
   {
-    AppMethodBeat.i(215637);
-    boolean bool = c.gke();
-    AppMethodBeat.o(215637);
+    AppMethodBeat.i(264216);
+    boolean bool = c.hEe();
+    AppMethodBeat.o(264216);
     return bool;
   }
   
-  public final void aAx()
+  public final void aTs()
   {
-    AppMethodBeat.i(215632);
-    c.aAx();
-    AppMethodBeat.o(215632);
+    AppMethodBeat.i(264190);
+    c.aTs();
+    AppMethodBeat.o(264190);
   }
   
-  public final void aAy()
+  public final void aTt()
   {
-    AppMethodBeat.i(215634);
-    c.gkb();
-    AppMethodBeat.o(215634);
+    AppMethodBeat.i(264204);
+    c.hEb();
+    AppMethodBeat.o(264204);
   }
   
-  public final void aAz()
+  public final void aTu()
   {
-    AppMethodBeat.i(215635);
-    c.gkd();
-    AppMethodBeat.o(215635);
+    AppMethodBeat.i(264206);
+    c.hEd();
+    AppMethodBeat.o(264206);
   }
   
-  public final Point au(Context paramContext)
+  public final boolean aTv()
   {
-    AppMethodBeat.i(215624);
-    p.k(paramContext, "context");
-    paramContext = ar.au(paramContext);
-    p.j(paramContext, "UIUtils.getDisplayRealSize(context)");
-    AppMethodBeat.o(215624);
+    AppMethodBeat.i(264169);
+    boolean bool = c.aTv();
+    AppMethodBeat.o(264169);
+    return bool;
+  }
+  
+  public final boolean aTw()
+  {
+    AppMethodBeat.i(264200);
+    boolean bool = c.aTw();
+    AppMethodBeat.o(264200);
+    return bool;
+  }
+  
+  public final void aTx()
+  {
+    AppMethodBeat.i(264182);
+    c.aTx();
+    AppMethodBeat.o(264182);
+  }
+  
+  public final void aTy()
+  {
+    AppMethodBeat.i(264174);
+    c.aTy();
+    AppMethodBeat.o(264174);
+  }
+  
+  public final float aTz()
+  {
+    AppMethodBeat.i(264149);
+    a locala = a.STE;
+    float f = a.hDW();
+    AppMethodBeat.o(264149);
+    return f;
+  }
+  
+  public final Point bf(Context paramContext)
+  {
+    AppMethodBeat.i(264140);
+    s.u(paramContext, "context");
+    paramContext = aw.bf(paramContext);
+    s.s(paramContext, "getDisplayRealSize(context)");
+    AppMethodBeat.o(264140);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.taskbar.ui.a.e
  * JD-Core Version:    0.7.0.1
  */

@@ -11,60 +11,60 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import androidx.appcompat.a.f;
 import androidx.appcompat.a.j;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class ButtonBarLayout
   extends LinearLayout
 {
-  private boolean rS;
-  private int rT;
-  private int rU;
+  private boolean sR;
+  private int sS;
+  private int sT;
   
   public ButtonBarLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(241175);
-    this.rT = -1;
-    this.rU = 0;
+    AppMethodBeat.i(200205);
+    this.sS = -1;
+    this.sT = 0;
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.j.ButtonBarLayout);
-    this.rS = paramContext.getBoolean(a.j.ButtonBarLayout_allowStacking, true);
+    this.sR = paramContext.getBoolean(a.j.ButtonBarLayout_allowStacking, true);
     paramContext.recycle();
-    AppMethodBeat.o(241175);
+    AppMethodBeat.o(200205);
   }
   
-  private int av(int paramInt)
+  private int at(int paramInt)
   {
-    AppMethodBeat.i(241180);
+    AppMethodBeat.i(200216);
     int i = getChildCount();
     while (paramInt < i)
     {
       if (getChildAt(paramInt).getVisibility() == 0)
       {
-        AppMethodBeat.o(241180);
+        AppMethodBeat.o(200216);
         return paramInt;
       }
       paramInt += 1;
     }
-    AppMethodBeat.o(241180);
+    AppMethodBeat.o(200216);
     return -1;
   }
   
-  private boolean dD()
+  private boolean eC()
   {
-    AppMethodBeat.i(241184);
+    AppMethodBeat.i(200238);
     if (getOrientation() == 1)
     {
-      AppMethodBeat.o(241184);
+      AppMethodBeat.o(200238);
       return true;
     }
-    AppMethodBeat.o(241184);
+    AppMethodBeat.o(200238);
     return false;
   }
   
   private void setStacked(boolean paramBoolean)
   {
-    AppMethodBeat.i(241183);
+    AppMethodBeat.i(200227);
     label22:
     View localView;
     if (paramBoolean)
@@ -99,39 +99,39 @@ public class ButtonBarLayout
       i = 80;
       break label22;
     }
-    AppMethodBeat.o(241183);
+    AppMethodBeat.o(200227);
   }
   
   public int getMinimumHeight()
   {
-    AppMethodBeat.i(241182);
-    int i = Math.max(this.rU, super.getMinimumHeight());
-    AppMethodBeat.o(241182);
+    AppMethodBeat.i(200278);
+    int i = Math.max(this.sT, super.getMinimumHeight());
+    AppMethodBeat.o(200278);
     return i;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(241178);
+    AppMethodBeat.i(200268);
     int i = View.MeasureSpec.getSize(paramInt1);
-    if (this.rS)
+    if (this.sR)
     {
-      if ((i > this.rT) && (dD())) {
+      if ((i > this.sS) && (eC())) {
         setStacked(false);
       }
-      this.rT = i;
+      this.sS = i;
     }
     int j;
-    if ((!dD()) && (View.MeasureSpec.getMode(paramInt1) == 1073741824))
+    if ((!eC()) && (View.MeasureSpec.getMode(paramInt1) == 1073741824))
     {
       j = View.MeasureSpec.makeMeasureSpec(i, -2147483648);
       i = 1;
       super.onMeasure(j, paramInt2);
       int k = i;
-      if (this.rS)
+      if (this.sR)
       {
         k = i;
-        if (!dD())
+        if (!eC())
         {
           if ((getMeasuredWidthAndState() & 0xFF000000) != 16777216) {
             break label271;
@@ -149,7 +149,7 @@ public class ButtonBarLayout
       if (k != 0) {
         super.onMeasure(paramInt1, paramInt2);
       }
-      paramInt1 = av(0);
+      paramInt1 = at(0);
       if (paramInt1 < 0) {
         break label287;
       }
@@ -159,10 +159,10 @@ public class ButtonBarLayout
       i = localView.getMeasuredHeight();
       j = localLayoutParams.topMargin;
       paramInt2 = localLayoutParams.bottomMargin + (i + paramInt2 + j) + 0;
-      if (!dD()) {
+      if (!eC()) {
         break label277;
       }
-      i = av(paramInt1 + 1);
+      i = at(paramInt1 + 1);
       paramInt1 = paramInt2;
       if (i >= 0) {
         paramInt1 = paramInt2 + (getChildAt(i).getPaddingTop() + (int)(16.0F * getResources().getDisplayMetrics().density));
@@ -170,10 +170,10 @@ public class ButtonBarLayout
     }
     for (;;)
     {
-      if (w.P(this) != paramInt1) {
+      if (z.ab(this) != paramInt1) {
         setMinimumHeight(paramInt1);
       }
-      AppMethodBeat.o(241178);
+      AppMethodBeat.o(200268);
       return;
       i = 0;
       j = paramInt1;
@@ -191,21 +191,21 @@ public class ButtonBarLayout
   
   public void setAllowStacking(boolean paramBoolean)
   {
-    AppMethodBeat.i(241177);
-    if (this.rS != paramBoolean)
+    AppMethodBeat.i(200250);
+    if (this.sR != paramBoolean)
     {
-      this.rS = paramBoolean;
-      if ((!this.rS) && (getOrientation() == 1)) {
+      this.sR = paramBoolean;
+      if ((!this.sR) && (getOrientation() == 1)) {
         setStacked(false);
       }
       requestLayout();
     }
-    AppMethodBeat.o(241177);
+    AppMethodBeat.o(200250);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     androidx.appcompat.widget.ButtonBarLayout
  * JD-Core Version:    0.7.0.1
  */

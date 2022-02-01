@@ -1,122 +1,219 @@
 package com.tencent.mm.storage;
 
+import android.content.ContentValues;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.b.bd;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.model.ac;
+import com.tencent.mm.plugin.report.f;
+import com.tencent.mm.protocal.protobuf.ebd;
+import com.tencent.mm.protocal.protobuf.ebe;
+import com.tencent.mm.util.g;
 import java.util.LinkedList;
 
-public final class bb
-  extends com.tencent.mm.cd.a
+public class bb
+  extends com.tencent.mm.l.a
+  implements com.tencent.mm.storagebase.a.a<String>
 {
-  public int VER;
-  public LinkedList<Integer> VES;
-  public LinkedList<Integer> VET;
-  public LinkedList<Integer> VEU;
-  public LinkedList<Long> VEV;
-  public LinkedList<Long> VEW;
-  public LinkedList<Long> VEX;
+  public cc adir;
+  public int adis;
   
-  public bb()
+  public bb() {}
+  
+  public bb(String paramString)
   {
-    AppMethodBeat.i(43195);
-    this.VES = new LinkedList();
-    this.VET = new LinkedList();
-    this.VEU = new LinkedList();
-    this.VEV = new LinkedList();
-    this.VEW = new LinkedList();
-    this.VEX = new LinkedList();
-    AppMethodBeat.o(43195);
+    super(paramString);
   }
   
-  public final int op(int paramInt, Object... paramVarArgs)
+  public final void bG(cc paramcc)
   {
-    AppMethodBeat.i(43196);
-    if (paramInt == 0)
+    AppMethodBeat.i(43191);
+    setStatus(paramcc.field_status);
+    pI(paramcc.field_isSend);
+    if (paramcc.dSJ()) {}
+    label36:
+    label293:
+    for (;;)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.VER);
-      paramVarArgs.e(2, 2, this.VES);
-      paramVarArgs.e(3, 2, this.VET);
-      paramVarArgs.e(4, 2, this.VEU);
-      paramVarArgs.e(5, 3, this.VEV);
-      paramVarArgs.e(6, 3, this.VEW);
-      paramVarArgs.e(7, 3, this.VEX);
-      AppMethodBeat.o(43196);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = g.a.a.b.b.a.bM(1, this.VER);
-      int i = g.a.a.a.c(2, 2, this.VES);
-      int j = g.a.a.a.c(3, 2, this.VET);
-      int k = g.a.a.a.c(4, 2, this.VEU);
-      int m = g.a.a.a.c(5, 3, this.VEV);
-      int n = g.a.a.a.c(6, 3, this.VEW);
-      int i1 = g.a.a.a.c(7, 3, this.VEX);
-      AppMethodBeat.o(43196);
-      return paramInt + 0 + i + j + k + m + n + i1;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.VES.clear();
-      this.VET.clear();
-      this.VEU.clear();
-      this.VEV.clear();
-      this.VEW.clear();
-      this.VEX.clear();
-      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+      long l = paramcc.getCreateTime();
+      Object localObject = this;
+      ((bb)localObject).gR(l);
+      if (paramcc.jbA()) {
+        setContent(paramcc.jct());
+      }
+      for (;;)
+      {
+        if ((paramcc != null) && ("hidden_conv_parent".equalsIgnoreCase(this.field_parentRef)))
+        {
+          if ((au.Hh(this.field_username)) && (!au.bwc(this.field_username)))
+          {
+            BH("appbrandcustomerservicemsg");
+            AppMethodBeat.o(43191);
+            return;
+            if (paramcc.jbQ())
+            {
+              localObject = g.bDK(this.field_content);
+              if (!((ebd)localObject).Ksg.isEmpty())
+              {
+                l = ((ebe)((ebd)localObject).Ksg.getLast()).createTime;
+                localObject = this;
+                break label36;
+              }
+              break;
+            }
+            if (paramcc.field_status != 1) {
+              break label293;
+            }
+            l = 9223372036854775807L;
+            localObject = this;
+            break label36;
+            setContent(paramcc.field_content);
+            continue;
+          }
+          BH(null);
+          localObject = f.Ozc;
+          if (paramcc.field_isSend == 1) {}
+          for (int i = 3;; i = 6)
+          {
+            ((f)localObject).b(21170, new Object[] { Integer.valueOf(i), this.field_username, Integer.valueOf(ac.Jj(this.field_username)) });
+            AppMethodBeat.o(43191);
+            return;
+          }
         }
       }
-      AppMethodBeat.o(43196);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      bb localbb = (bb)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      if ((paramcc != null) && ("message_fold".equalsIgnoreCase(this.field_username)))
       {
-      default: 
-        AppMethodBeat.o(43196);
-        return -1;
-      case 1: 
-        localbb.VER = locala.abFh.AK();
-        AppMethodBeat.o(43196);
-        return 0;
-      case 2: 
-        localbb.VES.add(Integer.valueOf(locala.abFh.AK()));
-        AppMethodBeat.o(43196);
-        return 0;
-      case 3: 
-        localbb.VET.add(Integer.valueOf(locala.abFh.AK()));
-        AppMethodBeat.o(43196);
-        return 0;
-      case 4: 
-        localbb.VEU.add(Integer.valueOf(locala.abFh.AK()));
-        AppMethodBeat.o(43196);
-        return 0;
-      case 5: 
-        localbb.VEV.add(Long.valueOf(locala.abFh.AN()));
-        AppMethodBeat.o(43196);
-        return 0;
-      case 6: 
-        localbb.VEW.add(Long.valueOf(locala.abFh.AN()));
-        AppMethodBeat.o(43196);
-        return 0;
+        gR(0L);
+        super.gS(com.tencent.mm.plugin.messenger.foundation.a.a.a.a(this, 2, 0L));
       }
-      localbb.VEX.add(Long.valueOf(locala.abFh.AN()));
-      AppMethodBeat.o(43196);
-      return 0;
+      AppMethodBeat.o(43191);
+      return;
     }
-    AppMethodBeat.o(43196);
-    return -1;
   }
+  
+  public final void bo(int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(43193);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(43193);
+      return;
+      pG((int)paramLong);
+      AppMethodBeat.o(43193);
+      return;
+      setStatus((int)paramLong);
+      AppMethodBeat.o(43193);
+      return;
+      pI((int)paramLong);
+      AppMethodBeat.o(43193);
+      return;
+      gR(paramLong);
+      AppMethodBeat.o(43193);
+      return;
+      super.gS(paramLong);
+      AppMethodBeat.o(43193);
+      return;
+      pK((int)paramLong);
+      AppMethodBeat.o(43193);
+      return;
+      pL((int)paramLong);
+      AppMethodBeat.o(43193);
+      return;
+      pM((int)paramLong);
+      AppMethodBeat.o(43193);
+      return;
+      pO((int)paramLong);
+      AppMethodBeat.o(43193);
+      return;
+      pQ((int)paramLong);
+      AppMethodBeat.o(43193);
+      return;
+      pR((int)paramLong);
+    }
+  }
+  
+  public void convertFrom(Cursor paramCursor)
+  {
+    AppMethodBeat.i(160773);
+    super.convertFrom(paramCursor);
+    AppMethodBeat.o(160773);
+  }
+  
+  public ContentValues convertTo()
+  {
+    AppMethodBeat.i(160772);
+    ContentValues localContentValues = super.convertTo();
+    AppMethodBeat.o(160772);
+    return localContentValues;
+  }
+  
+  public final void dY(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(43194);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(43194);
+      return;
+      setUsername(paramString);
+      AppMethodBeat.o(43194);
+      return;
+      setContent(paramString);
+      AppMethodBeat.o(43194);
+      return;
+      BE(paramString);
+      AppMethodBeat.o(43194);
+      return;
+      BF(paramString);
+      AppMethodBeat.o(43194);
+      return;
+      BG(paramString);
+      AppMethodBeat.o(43194);
+      return;
+      BI(paramString);
+      AppMethodBeat.o(43194);
+      return;
+      BH(paramString);
+    }
+  }
+  
+  public final void gS(long paramLong)
+  {
+    AppMethodBeat.i(369606);
+    super.gS(paramLong);
+    AppMethodBeat.o(369606);
+  }
+  
+  public final void iXb() {}
+  
+  public final void jaJ()
+  {
+    AppMethodBeat.i(43192);
+    setStatus(0);
+    pI(0);
+    setContent("");
+    BE("0");
+    pG(0);
+    pO(0);
+    gT(0L);
+    pN(0);
+    pN(0);
+    super.BF("");
+    super.BG("");
+    AppMethodBeat.o(43192);
+  }
+  
+  public final void v(int paramInt, byte[] paramArrayOfByte) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.bb
  * JD-Core Version:    0.7.0.1
  */

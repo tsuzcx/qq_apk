@@ -5,20 +5,18 @@ import android.os.Parcelable;
 import android.util.Pair;
 
 public abstract interface SchemeResolver
-  extends Parcelable
+  extends Parcelable, d<a>
 {
-  public abstract a ifv();
-  
   public static abstract interface a
   {
-    public abstract Pair<FileSystem.b, String> a(l paraml, Uri paramUri);
+    public abstract Pair<FileSystem.b, String> a(o paramo, Uri paramUri);
     
-    public abstract SchemeResolver ifw();
+    public abstract SchemeResolver jKK();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.vfs.SchemeResolver
  * JD-Core Version:    0.7.0.1
  */

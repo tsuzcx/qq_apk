@@ -28,7 +28,7 @@ public class AppBrandTaskPreloadReceiver
     long l1 = SystemClock.elapsedRealtime();
     long l2 = paramIntent.getLongExtra("EXTRA_KEY_TRIGGER_TIME", -1L);
     AppBrandPreloadProfiler localAppBrandPreloadProfiler = (AppBrandPreloadProfiler)paramIntent.getParcelableExtra("preloadProfiler");
-    e.a(n.g(LuggageServiceType.j(paramIntent)), localAppBrandPreloadProfiler, paramIntent.getBooleanExtra("EXTRA_KEY_AGGRESSIVE", false), i);
+    e.a(l.g(LuggageServiceType.k(paramIntent)), localAppBrandPreloadProfiler, paramIntent.getBooleanExtra("EXTRA_KEY_AGGRESSIVE", false), i);
     int j = paramIntent.getIntExtra("EXTRA_KEY_PROCESS_INDEX", -1);
     if (BuildInfo.DEBUG) {
       if (j == -1) {
@@ -39,7 +39,7 @@ public class AppBrandTaskPreloadReceiver
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      h.cxa = j;
+      h.epc = j;
       Log.i("MicroMsg.AppBrandTaskPreloadReceiver", "[PreloadProfile][%s] Trigger cost [%d]ms Receiver cost [%d]ms, at [%d], level [%d]", new Object[] { paramString, Long.valueOf(SystemClock.elapsedRealtime() - l2), Long.valueOf(SystemClock.elapsedRealtime() - l1), Long.valueOf(l1), Integer.valueOf(i) });
       AppMethodBeat.o(48473);
       return;
@@ -55,7 +55,7 @@ public class AppBrandTaskPreloadReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.task.AppBrandTaskPreloadReceiver
  * JD-Core Version:    0.7.0.1
  */

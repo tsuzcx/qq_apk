@@ -1,68 +1,67 @@
 package kotlin.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import kotlin.n.n;
-import kotlin.t;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"IMPLEMENTATIONS", "Lkotlin/internal/PlatformImplementations;", "apiVersionIsAtLeast", "", "major", "", "minor", "patch", "castToBaseType", "T", "", "instance", "(Ljava/lang/Object;)Ljava/lang/Object;", "getJavaVersion", "kotlin-stdlib"})
+@Metadata(d1={""}, d2={"IMPLEMENTATIONS", "Lkotlin/internal/PlatformImplementations;", "apiVersionIsAtLeast", "", "major", "", "minor", "patch", "castToBaseType", "T", "", "instance", "(Ljava/lang/Object;)Ljava/lang/Object;", "getJavaVersion", "kotlin-stdlib"}, k=2, mv={1, 5, 1})
 public final class b
 {
-  public static final a aaAQ;
+  public static final a aiwB;
   
   static
   {
     AppMethodBeat.i(128992);
-    int i = iBW();
+    int i = kll();
     Object localObject;
     if (i >= 65544) {
       try
       {
-        localObject = Class.forName("kotlin.internal.jdk8.JDK8PlatformImplementations").newInstance();
-        p.j(localObject, "Class.forName(\"kotlin.in…entations\").newInstance()");
+        localObject = Class.forName("kotlin.e.b.a").newInstance();
+        s.s(localObject, "Class.forName(\"kotlin.in…entations\").newInstance()");
         if (localObject == null)
         {
           ClassLoader localClassLoader;
           try
           {
-            t localt1 = new t("null cannot be cast to non-null type kotlin.internal.PlatformImplementations");
+            NullPointerException localNullPointerException1 = new NullPointerException("null cannot be cast to non-null type kotlin.internal.PlatformImplementations");
             AppMethodBeat.o(128992);
-            throw localt1;
+            throw localNullPointerException1;
           }
           catch (ClassCastException localClassCastException1)
           {
             localObject = localObject.getClass().getClassLoader();
             localClassLoader = a.class.getClassLoader();
             Throwable localThrowable1 = new ClassCastException("Instance classloader: " + localObject + ", base type classloader: " + localClassLoader).initCause((Throwable)localClassCastException1);
-            p.j(localThrowable1, "ClassCastException(\"Inst…baseTypeCL\").initCause(e)");
+            s.s(localThrowable1, "ClassCastException(\"Inst…baseTypeCL\").initCause(e)");
             AppMethodBeat.o(128992);
             throw localThrowable1;
           }
           try
           {
-            t localt2;
+            NullPointerException localNullPointerException2;
             Throwable localThrowable2;
             localObject = Class.forName("kotlin.e.a.a").newInstance();
-            p.j(localObject, "Class.forName(\"kotlin.in…entations\").newInstance()");
+            s.s(localObject, "Class.forName(\"kotlin.in…entations\").newInstance()");
             if (localObject == null)
             {
               try
               {
-                localt3 = new t("null cannot be cast to non-null type kotlin.internal.PlatformImplementations");
+                localNullPointerException3 = new NullPointerException("null cannot be cast to non-null type kotlin.internal.PlatformImplementations");
                 AppMethodBeat.o(128992);
-                throw localt3;
+                throw localNullPointerException3;
               }
               catch (ClassCastException localClassCastException3)
               {
                 localObject = localObject.getClass().getClassLoader();
                 localClassLoader = a.class.getClassLoader();
                 localThrowable3 = new ClassCastException("Instance classloader: " + localObject + ", base type classloader: " + localClassLoader).initCause((Throwable)localClassCastException3);
-                p.j(localThrowable3, "ClassCastException(\"Inst…baseTypeCL\").initCause(e)");
+                s.s(localThrowable3, "ClassCastException(\"Inst…baseTypeCL\").initCause(e)");
                 AppMethodBeat.o(128992);
                 throw localThrowable3;
               }
-              aaAQ = locala;
+              aiwB = locala;
             }
           }
           catch (ClassNotFoundException localClassNotFoundException3)
@@ -70,21 +69,21 @@ public final class b
             try
             {
               localObject = Class.forName("kotlin.internal.JRE7PlatformImplementations").newInstance();
-              p.j(localObject, "Class.forName(\"kotlin.in…entations\").newInstance()");
+              s.s(localObject, "Class.forName(\"kotlin.in…entations\").newInstance()");
               if (localObject == null)
               {
                 try
                 {
-                  localt4 = new t("null cannot be cast to non-null type kotlin.internal.PlatformImplementations");
+                  localNullPointerException4 = new NullPointerException("null cannot be cast to non-null type kotlin.internal.PlatformImplementations");
                   AppMethodBeat.o(128992);
-                  throw localt4;
+                  throw localNullPointerException4;
                 }
                 catch (ClassCastException localClassCastException4)
                 {
                   localObject = localObject.getClass().getClassLoader();
                   localClassLoader = a.class.getClassLoader();
                   localThrowable4 = new ClassCastException("Instance classloader: " + localObject + ", base type classloader: " + localClassLoader).initCause((Throwable)localClassCastException4);
-                  p.j(localThrowable4, "ClassCastException(\"Inst…baseTypeCL\").initCause(e)");
+                  s.s(localThrowable4, "ClassCastException(\"Inst…baseTypeCL\").initCause(e)");
                   AppMethodBeat.o(128992);
                   throw localThrowable4;
                 }
@@ -100,21 +99,21 @@ public final class b
         try
         {
           localObject = Class.forName("kotlin.internal.JRE8PlatformImplementations").newInstance();
-          p.j(localObject, "Class.forName(\"kotlin.in…entations\").newInstance()");
+          s.s(localObject, "Class.forName(\"kotlin.in…entations\").newInstance()");
           if (localObject == null)
           {
             try
             {
-              localt2 = new t("null cannot be cast to non-null type kotlin.internal.PlatformImplementations");
+              localNullPointerException2 = new NullPointerException("null cannot be cast to non-null type kotlin.internal.PlatformImplementations");
               AppMethodBeat.o(128992);
-              throw localt2;
+              throw localNullPointerException2;
             }
             catch (ClassCastException localClassCastException2)
             {
               localObject = localObject.getClass().getClassLoader();
               localClassLoader = a.class.getClassLoader();
               localThrowable2 = new ClassCastException("Instance classloader: " + localObject + ", base type classloader: " + localClassLoader).initCause((Throwable)localClassCastException2);
-              p.j(localThrowable2, "ClassCastException(\"Inst…baseTypeCL\").initCause(e)");
+              s.s(localThrowable2, "ClassCastException(\"Inst…baseTypeCL\").initCause(e)");
               AppMethodBeat.o(128992);
               throw localThrowable2;
             }
@@ -126,9 +125,9 @@ public final class b
     }
     for (;;)
     {
-      t localt3;
+      NullPointerException localNullPointerException3;
       Throwable localThrowable3;
-      t localt4;
+      NullPointerException localNullPointerException4;
       Throwable localThrowable4;
       AppMethodBeat.o(128992);
       return;
@@ -142,7 +141,7 @@ public final class b
     }
   }
   
-  private static final int iBW()
+  private static final int kll()
   {
     j = 65542;
     AppMethodBeat.i(128991);
@@ -177,20 +176,20 @@ public final class b
     }
     if (str == null)
     {
-      localObject = new t("null cannot be cast to non-null type java.lang.String");
+      localObject = new NullPointerException("null cannot be cast to non-null type java.lang.String");
       AppMethodBeat.o(128991);
       throw ((Throwable)localObject);
     }
     Object localObject = str.substring(0, m);
-    p.j(localObject, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+    s.s(localObject, "(this as java.lang.Strin…ing(startIndex, endIndex)");
     if (str == null)
     {
-      localObject = new t("null cannot be cast to non-null type java.lang.String");
+      localObject = new NullPointerException("null cannot be cast to non-null type java.lang.String");
       AppMethodBeat.o(128991);
       throw ((Throwable)localObject);
     }
     str = str.substring(m + 1, i);
-    p.j(str, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+    s.s(str, "(this as java.lang.Strin…ing(startIndex, endIndex)");
     try
     {
       i = Integer.parseInt((String)localObject);

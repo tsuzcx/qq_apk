@@ -1,25 +1,43 @@
 package com.tencent.mm.plugin.appbrand.service;
 
+import android.content.Context;
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.vending.g.e;
-import java.util.List;
+import com.tencent.mm.plugin.appbrand.openmaterial.g;
+import com.tencent.mm.plugin.appbrand.openmaterial.g.a;
+import com.tencent.mm.plugin.appbrand.openmaterial.h;
+import com.tencent.mm.plugin.appbrand.openmaterial.i;
+import com.tencent.mm.plugin.appbrand.openmaterial.k;
+import com.tencent.mm.plugin.appbrand.openmaterial.model.AppBrandOpenMaterialCollection;
+import com.tencent.mm.plugin.appbrand.openmaterial.model.MaterialModel;
+import com.tencent.mm.plugin.appbrand.openmaterial.model.b;
+import com.tencent.mm.ui.widget.a.f;
 
 public abstract interface j
   extends a
 {
-  public abstract void a(int paramInt, String paramString, Object paramObject);
+  public abstract h a(b paramb, AppBrandOpenMaterialCollection paramAppBrandOpenMaterialCollection);
   
-  public abstract e<Integer> acu(String paramString);
+  public abstract h a(b paramb, MaterialModel paramMaterialModel, AppBrandOpenMaterialCollection paramAppBrandOpenMaterialCollection, boolean paramBoolean);
   
-  public abstract void acv(String paramString);
+  public abstract i a(b paramb, Context paramContext, f paramf, AppBrandOpenMaterialCollection paramAppBrandOpenMaterialCollection, g paramg, k paramk);
   
-  public abstract int bFx();
+  public abstract AppBrandOpenMaterialCollection a(MaterialModel paramMaterialModel);
   
-  public abstract void ba(List<String> paramList);
+  public abstract void a(MaterialModel paramMaterialModel, com.tencent.mm.plugin.appbrand.openmaterial.j paramj);
   
-  public abstract void cw(String paramString1, String paramString2);
+  public abstract boolean a(MaterialModel paramMaterialModel, AppBrandOpenMaterialCollection paramAppBrandOpenMaterialCollection);
   
-  public abstract void r(String paramString1, String paramString2, int paramInt);
+  public abstract boolean a(b paramb, MaterialModel paramMaterialModel, h paramh);
+  
+  public abstract boolean a(f paramf, AppBrandOpenMaterialCollection paramAppBrandOpenMaterialCollection);
+  
+  public abstract boolean aen(String paramString);
+  
+  public abstract AppBrandOpenMaterialCollection b(MaterialModel paramMaterialModel);
+  
+  public abstract boolean c(b paramb);
+  
+  public abstract g.a cDh();
 }
 
 

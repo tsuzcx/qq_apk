@@ -6,74 +6,71 @@ import com.tencent.mm.plugin.finder.megavideo.convert.b;
 import com.tencent.mm.plugin.finder.megavideo.loader.BaseMegaVideoLoader;
 import com.tencent.mm.plugin.finder.megavideo.loader.FinderFavMegaVideoLoader;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.view.recyclerview.e;
 import com.tencent.mm.view.recyclerview.f;
+import com.tencent.mm.view.recyclerview.g;
 import java.util.ArrayList;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderFavMegaVideoUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$Presenter;", "context", "Lcom/tencent/mm/ui/MMActivity;", "feedLoader", "Lcom/tencent/mm/plugin/finder/megavideo/loader/FinderFavMegaVideoLoader;", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/plugin/finder/megavideo/loader/FinderFavMegaVideoLoader;)V", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "initViewCallback", "", "loadInitData", "loadMoreData", "refreshRV", "data", "Landroid/content/Intent;", "requestRefresh", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderFavMegaVideoUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$Presenter;", "context", "Lcom/tencent/mm/ui/MMActivity;", "feedLoader", "Lcom/tencent/mm/plugin/finder/megavideo/loader/FinderFavMegaVideoLoader;", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/plugin/finder/megavideo/loader/FinderFavMegaVideoLoader;)V", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "initViewCallback", "", "loadInitData", "loadMoreData", "refreshRV", "data", "Landroid/content/Intent;", "requestRefresh", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b$a
   extends a.a
 {
   public b$a(MMActivity paramMMActivity, FinderFavMegaVideoLoader paramFinderFavMegaVideoLoader)
   {
     super(paramMMActivity, (BaseMegaVideoLoader)paramFinderFavMegaVideoLoader);
-    AppMethodBeat.i(291184);
-    AppMethodBeat.o(291184);
+    AppMethodBeat.i(341883);
+    AppMethodBeat.o(341883);
   }
   
-  public final void byN()
+  public final void bXB()
   {
-    AppMethodBeat.i(291179);
-    this.zxg.requestLoadMore();
-    AppMethodBeat.o(291179);
+    AppMethodBeat.i(341896);
+    BaseFeedLoader.requestLoadMore$default((BaseFeedLoader)this.EzZ, false, 1, null);
+    AppMethodBeat.o(341896);
   }
   
-  public final void dsF()
+  public final g dUK()
   {
-    AppMethodBeat.i(291181);
-    BaseFeedLoader.requestInit$default(this.zxg, false, 1, null);
-    AppMethodBeat.o(291181);
+    AppMethodBeat.i(341909);
+    g localg = (g)new a();
+    AppMethodBeat.o(341909);
+    return localg;
   }
   
-  public final void dsr()
+  public final void dUL()
   {
-    AppMethodBeat.i(291183);
-    a.b localb = this.zxf;
-    if (localb != null)
-    {
-      localb.ab((ArrayList)this.zxg.getDataListJustForAdapter());
-      AppMethodBeat.o(291183);
-      return;
+    AppMethodBeat.i(341902);
+    BaseFeedLoader.requestInit$default((BaseFeedLoader)this.EzZ, false, 1, null);
+    AppMethodBeat.o(341902);
+  }
+  
+  public final void dUM()
+  {
+    AppMethodBeat.i(341920);
+    a.b localb = this.EAa;
+    if (localb != null) {
+      localb.ae((ArrayList)this.EzZ.getDataListJustForAdapter());
     }
-    AppMethodBeat.o(291183);
-  }
-  
-  public final f dsu()
-  {
-    AppMethodBeat.i(291182);
-    f localf = (f)new a();
-    AppMethodBeat.o(291182);
-    return localf;
+    AppMethodBeat.o(341920);
   }
   
   public final void requestRefresh()
   {
-    AppMethodBeat.i(291178);
-    this.zxg.requestRefresh();
-    AppMethodBeat.o(291178);
+    AppMethodBeat.i(341889);
+    this.EzZ.requestRefresh();
+    AppMethodBeat.o(341889);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/megavideo/ui/FinderFavMegaVideoUIContract$Presenter$buildItemCoverts$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/megavideo/ui/FinderFavMegaVideoUIContract$Presenter$buildItemCoverts$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
-    implements f
+    implements g
   {
-    public final e<?> yx(int paramInt)
+    public final f<?> yF(int paramInt)
     {
-      AppMethodBeat.i(282856);
-      e locale = (e)new b();
-      AppMethodBeat.o(282856);
-      return locale;
+      AppMethodBeat.i(341817);
+      f localf = (f)new b();
+      AppMethodBeat.o(341817);
+      return localf;
     }
   }
 }

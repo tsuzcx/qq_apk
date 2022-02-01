@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:layout_width="274.0dip" android:layout_height="206.0dip" app:cornerRadius="8.0dip"
+<RelativeLayout android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/kiq" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <FrameLayout android:id="@id/kir" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <include android:layout_gravity="bottom" android:id="@id/kil" android:layout_width="fill_parent" android:layout_height="68.0dip" layout="@layout/cjd" />
-</com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/ksg" android:background="#ff4378be" android:layout_width="fill_parent" android:layout_height="48.0dip">
+        <TextView android:textSize="15.0dip" android:ellipsize="end" android:gravity="center" android:id="@id/a2w" android:background="@drawable/b4o" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:singleLine="true" android:drawableLeft="@drawable/c_5" />
+        <TextView android:textSize="17.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center|left" android:layout_gravity="center_vertical" android:id="@id/ko8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="20.0dip" android:singleLine="true" />
+    </LinearLayout>
+    <WebView android:id="@id/lmh" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/ksg" />
+</RelativeLayout>

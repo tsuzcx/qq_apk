@@ -10,15 +10,14 @@ import com.tencent.mars.smc.SmcLogic.BaseInfo;
 import com.tencent.mars.smc.SmcLogic.ICallBack;
 import com.tencent.mars.smc.SmcProtoBufUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.s;
+import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.c;
-import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
-import com.tencent.mm.plugin.report.b.g;
 import com.tencent.mm.protocal.a.a.k;
-import com.tencent.mm.protocal.protobuf.ckv;
+import com.tencent.mm.protocal.protobuf.dbc;
 import com.tencent.mm.sdk.platformtools.ChannelUtil;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -30,9 +29,9 @@ import java.util.Map;
 public final class j
   implements SmcLogic.ICallBack
 {
-  public static IKVReportNotify IAk = null;
+  public static IKVReportNotify OAT = null;
   
-  public static void aWZ(String paramString)
+  public static void aUp(String paramString)
   {
     AppMethodBeat.i(143926);
     if (Util.isNullOrNil(paramString))
@@ -77,8 +76,8 @@ public final class j
   public final boolean OnSelfMonitorOpLogReady(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(143923);
-    h.aHE();
-    if (!b.aGL())
+    com.tencent.mm.kernel.h.baC();
+    if (!b.aZM())
     {
       Log.e("MicroMsg.SmcCallBack", "onReportKVDaSelfMonitorOpLogReady account not ready");
       AppMethodBeat.o(143923);
@@ -89,13 +88,13 @@ public final class j
       k localk = new k();
       localk.parseFrom(paramArrayOfByte);
       paramArrayOfByte = SmcProtoBufUtil.toMMSelfMonitor(localk);
-      if (paramArrayOfByte.Tsn <= 0)
+      if (paramArrayOfByte.aaGy <= 0)
       {
         Log.e("KVReportJni", "error selfmonitor count");
         AppMethodBeat.o(143923);
         return true;
       }
-      ((n)h.ae(n.class)).bbK().d(new k.a(202, paramArrayOfByte));
+      ((n)com.tencent.mm.kernel.h.ax(n.class)).bzz().d(new k.a(202, paramArrayOfByte));
       AppMethodBeat.o(143923);
       return true;
     }
@@ -120,7 +119,7 @@ public final class j
   {
     AppMethodBeat.i(143924);
     SmcLogic.BaseInfo localBaseInfo = new SmcLogic.BaseInfo();
-    localBaseInfo.deviceModel = (Build.MODEL + Build.CPU_ABI);
+    localBaseInfo.deviceModel = (q.aPo() + Build.CPU_ABI);
     localBaseInfo.deviceBrand = Build.BRAND;
     localBaseInfo.osName = ("android-" + Build.MANUFACTURER);
     localBaseInfo.osVersion = Build.VERSION.SDK_INT;
@@ -136,19 +135,19 @@ public final class j
   
   public final void onReportDataReady(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt, String paramString)
   {
-    AppMethodBeat.i(194084);
+    AppMethodBeat.i(261720);
     try
     {
-      if ((IAk != null) && (paramArrayOfByte2 != null) && (paramArrayOfByte2.length > 0)) {
-        IAk.onReportKVDataReady(paramArrayOfByte1, paramArrayOfByte2, paramInt);
+      if ((OAT != null) && (paramArrayOfByte2 != null) && (paramArrayOfByte2.length > 0)) {
+        OAT.onReportKVDataReady(paramArrayOfByte1, paramArrayOfByte2, paramInt);
       }
-      AppMethodBeat.o(194084);
+      AppMethodBeat.o(261720);
       return;
     }
     catch (Exception paramArrayOfByte1)
     {
       Log.e("KVReportJni", paramArrayOfByte1.getMessage());
-      AppMethodBeat.o(194084);
+      AppMethodBeat.o(261720);
     }
   }
   
@@ -165,13 +164,13 @@ public final class j
       }
       try
       {
-        if (g.isRunning())
+        if (com.tencent.mm.plugin.report.b.h.isRunning())
         {
           Log.i("KVReportJni", "already running");
           return false;
         }
-        paramArrayOfByte = new g();
-        h.aHF().kcd.a(paramArrayOfByte, 0);
+        paramArrayOfByte = new com.tencent.mm.plugin.report.b.h();
+        com.tencent.mm.kernel.h.baD().mCm.a(paramArrayOfByte, 0);
         return true;
       }
       finally
@@ -189,7 +188,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.report.service.j
  * JD-Core Version:    0.7.0.1
  */

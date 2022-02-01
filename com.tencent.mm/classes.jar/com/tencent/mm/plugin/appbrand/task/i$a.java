@@ -9,47 +9,49 @@ import com.tencent.mm.plugin.appbrand.ui.AppBrandUI2;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandUI3;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandUI4;
 import java.util.Collection;
-import kotlin.a.e;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.a.k;
+import kotlin.a.p;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/task/AppBrandProcessesManager$Companion;", "", "()V", "INSTANCE", "Lcom/tencent/mm/plugin/appbrand/task/AppBrandProcessesManager;", "INSTANCE$annotations", "getINSTANCE", "()Lcom/tencent/mm/plugin/appbrand/task/AppBrandProcessesManager;", "setINSTANCE", "(Lcom/tencent/mm/plugin/appbrand/task/AppBrandProcessesManager;)V", "TAG", "", "getAllStaticProcessNames", "", "()[Ljava/lang/String;", "inject", "", "instance", "stripSceneNote", "stat", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "cfg", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/task/AppBrandProcessesManager$Companion;", "", "()V", "INSTANCE", "Lcom/tencent/mm/plugin/appbrand/task/AppBrandProcessesManager;", "()Lcom/tencent/mm/plugin/appbrand/task/AppBrandProcessesManager;", "setINSTANCE", "(Lcom/tencent/mm/plugin/appbrand/task/AppBrandProcessesManager;)V", "TAG", "", "getAllStaticProcessNames", "", "()[Ljava/lang/String;", "inject", "", "instance", "stripSceneNote", "stat", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "cfg", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class i$a
 {
-  public static i cjb()
+  public static i cJV()
   {
-    AppMethodBeat.i(275678);
-    i locali = i.cja();
-    if (locali == null) {
-      p.bGy("INSTANCE");
+    AppMethodBeat.i(318523);
+    i locali = i.tWs;
+    if (locali != null)
+    {
+      AppMethodBeat.o(318523);
+      return locali;
     }
-    AppMethodBeat.o(275678);
-    return locali;
+    s.bIx("INSTANCE");
+    AppMethodBeat.o(318523);
+    return null;
   }
   
-  public static String[] cjc()
+  public static String[] cJW()
   {
-    AppMethodBeat.i(275681);
-    Object localObject1 = c.cBt;
-    localObject1 = c.a.U(AppBrandUI.class);
-    Object localObject2 = c.cBt;
-    localObject2 = c.a.U(AppBrandUI1.class);
-    Object localObject3 = c.cBt;
-    localObject3 = c.a.U(AppBrandUI2.class);
-    Object localObject4 = c.cBt;
-    localObject4 = c.a.U(AppBrandUI3.class);
-    c.a locala = c.cBt;
-    localObject1 = ((Collection)j.t((Iterable)j.t((Collection)e.X(new String[] { localObject1, localObject2, localObject3, localObject4, c.a.U(AppBrandUI4.class) })))).toArray(new String[0]);
+    AppMethodBeat.i(318528);
+    Object localObject1 = c.etU;
+    localObject1 = c.a.ad(AppBrandUI.class);
+    Object localObject2 = c.etU;
+    localObject2 = c.a.ad(AppBrandUI1.class);
+    Object localObject3 = c.etU;
+    localObject3 = c.a.ad(AppBrandUI2.class);
+    Object localObject4 = c.etU;
+    localObject4 = c.a.ad(AppBrandUI3.class);
+    c.a locala = c.etU;
+    localObject1 = ((Collection)p.t((Iterable)p.J((Collection)k.ab(new String[] { localObject1, localObject2, localObject3, localObject4, c.a.ad(AppBrandUI4.class) })))).toArray(new String[0]);
     if (localObject1 == null)
     {
-      localObject1 = new t("null cannot be cast to non-null type kotlin.Array<T>");
-      AppMethodBeat.o(275681);
+      localObject1 = new NullPointerException("null cannot be cast to non-null type kotlin.Array<T>");
+      AppMethodBeat.o(318528);
       throw ((Throwable)localObject1);
     }
     localObject1 = (String[])localObject1;
-    AppMethodBeat.o(275681);
+    AppMethodBeat.o(318528);
     return localObject1;
   }
 }

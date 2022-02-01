@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="start" android:background="@color/a2h" android:paddingLeft="@dimen/ir" android:paddingRight="@dimen/ir" style="@style/nr"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/hn" android:textColor="@color/fr" android:ellipsize="end" android:gravity="center" android:id="@id/hma" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
-            <TextView android:textSize="@dimen/kl" android:textColor="@color/a2x" android:ellipsize="end" android:gravity="center" android:id="@id/hmb" android:background="@drawable/boa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/kb" android:maxLines="1" android:layout_toRightOf="@id/hma" />
-        </LinearLayout>
-        <TextView android:textSize="@dimen/ka" android:textColor="@color/a2x" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/hm_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <RelativeLayout android:orientation="vertical" android:id="@id/ig8" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/j7" android:textColor="@color/aks" android:gravity="center_horizontal" android:id="@id/ig7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/l6u" android:layout_centerVertical="true" />
+            <View android:id="@id/ig9" android:background="@color/aky" android:layout_width="fill_parent" android:layout_height="3.0dip" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+        <RelativeLayout android:orientation="vertical" android:id="@id/igb" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/j7" android:textColor="@color/aju" android:gravity="center_horizontal" android:id="@id/iga" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/l6v" android:layout_centerVertical="true" />
+            <View android:id="@id/igc" android:background="@color/aky" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="3.0dip" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
     </LinearLayout>
-    <Button android:id="@id/hm9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/tf" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/p5" />
-</RelativeLayout>
+    <View android:background="@color/abn" android:layout_width="fill_parent" android:layout_height="@dimen/bo" />
+    <RelativeLayout android:id="@id/igp" android:layout_width="fill_parent" android:layout_height="400.0dip">
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/xo" android:id="@id/ig6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/l6g" android:layout_centerInParent="true" />
+        <com.tencent.mm.ui.ListViewInScrollView android:id="@id/ig_" android:background="@null" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/aw4" android:transcriptMode="disabled" android:cacheColorHint="@android:color/transparent" android:divider="@color/abn" android:dividerHeight="@dimen/bq" android:headerDividersEnabled="true" style="@style/r8" />
+        <com.tencent.mm.ui.ListViewInScrollView android:id="@id/igd" android:background="@null" android:focusable="true" android:visibility="gone" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/aw4" android:transcriptMode="disabled" android:cacheColorHint="@android:color/transparent" android:divider="@color/abn" android:dividerHeight="@dimen/bq" android:headerDividersEnabled="true" style="@style/r8" />
+    </RelativeLayout>
+</LinearLayout>

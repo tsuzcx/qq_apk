@@ -12,8 +12,8 @@ import junit.framework.Assert;
 public final class b
   implements b.h
 {
-  private int CD;
-  private int CE;
+  private int biL;
+  private int biM;
   private int mHeight;
   private int mWidth;
   
@@ -32,8 +32,8 @@ public final class b
     for (boolean bool1 = bool2;; bool1 = false)
     {
       Assert.assertFalse(bool1);
-      this.CD = paramInt1;
-      this.CE = paramInt2;
+      this.biL = paramInt1;
+      this.biM = paramInt2;
       this.mWidth = paramInt3;
       this.mHeight = paramInt4;
       AppMethodBeat.o(134893);
@@ -43,7 +43,7 @@ public final class b
     }
   }
   
-  public final Bitmap H(Bitmap paramBitmap)
+  public final Bitmap P(Bitmap paramBitmap)
   {
     AppMethodBeat.i(134894);
     if ((paramBitmap == null) || (paramBitmap.isRecycled()))
@@ -53,20 +53,20 @@ public final class b
     }
     int n = paramBitmap.getWidth();
     int m = paramBitmap.getHeight();
-    int i = this.CD;
-    int j = this.CE;
+    int i = this.biL;
+    int j = this.biM;
     label63:
     int i1;
     int k;
-    if (this.CD < 0)
+    if (this.biL < 0)
     {
       i = 0;
-      if (this.CE >= 0) {
+      if (this.biM >= 0) {
         break label164;
       }
       j = 0;
-      int i2 = this.mWidth + this.CD - i;
-      i1 = this.mHeight + this.CE - j;
+      int i2 = this.mWidth + this.biL - i;
+      i1 = this.mHeight + this.biM - j;
       k = i2;
       if (i + i2 > n) {
         k = n - i;
@@ -83,13 +83,13 @@ public final class b
         paramBitmap = BitmapUtil.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
         AppMethodBeat.o(134894);
         return paramBitmap;
-        if (this.CD <= n) {
+        if (this.biL <= n) {
           break;
         }
         i = n;
         break;
         label164:
-        if (this.CE <= m) {
+        if (this.biM <= m) {
           break label63;
         }
         j = m;
@@ -107,14 +107,14 @@ public final class b
   public final String key()
   {
     AppMethodBeat.i(134895);
-    String str = String.format("Transformation_x%s_y%s_w%s_h%s", new Object[] { Integer.valueOf(this.CD), Integer.valueOf(this.CE), Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight) });
+    String str = String.format("Transformation_x%s_y%s_w%s_h%s", new Object[] { Integer.valueOf(this.biL), Integer.valueOf(this.biM), Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight) });
     AppMethodBeat.o(134895);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.a.b
  * JD-Core Version:    0.7.0.1
  */

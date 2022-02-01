@@ -1,18 +1,17 @@
 package com.tencent.mm.plugin.scanner.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.t;
-import com.tencent.mm.by.c;
+import com.tencent.mm.am.s;
+import com.tencent.mm.br.c;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.scanner.l.k;
 import com.tencent.mm.plugin.scanner.model.a.a;
-import com.tencent.mm.plugin.scanner.model.n;
-import com.tencent.mm.plugin.scanner.model.p;
-import com.tencent.mm.plugin.scanner.util.o.a;
+import com.tencent.mm.plugin.scanner.model.v;
+import com.tencent.mm.plugin.scanner.model.x;
+import com.tencent.mm.plugin.scanner.util.q.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.MMPreference;
@@ -23,17 +22,17 @@ import java.util.List;
 public class ProductPurchaseAreaUI
   extends MMPreference
 {
-  private int IQA;
-  private List<a.a> IQz;
-  protected com.tencent.mm.ui.base.preference.f mrf;
-  private String uFI;
+  private List<a.a> OZv;
+  private int OZw;
+  protected com.tencent.mm.ui.base.preference.f pkD;
+  private String xOk;
   
-  private static void o(Context paramContext, String paramString, int paramInt)
+  private static void q(Context paramContext, String paramString, int paramInt)
   {
     AppMethodBeat.i(51847);
     Intent localIntent = new Intent();
     Bundle localBundle = new Bundle();
-    localBundle.putString("jsapi_args_appid", p.adp(paramInt));
+    localBundle.putString("jsapi_args_appid", x.ahM(paramInt));
     localIntent.putExtra("jsapiargs", localBundle);
     localIntent.putExtra("rawUrl", paramString);
     localIntent.putExtra("pay_channel", 3);
@@ -43,14 +42,14 @@ public class ProductPurchaseAreaUI
   
   public int getResourceId()
   {
-    return l.k.IFK;
+    return l.k.OLT;
   }
   
   public void initView()
   {
     AppMethodBeat.i(51845);
     setBackBtn(new ProductPurchaseAreaUI.1(this));
-    this.mrf = getPreferenceScreen();
+    this.pkD = getPreferenceScreen();
     AppMethodBeat.o(51845);
   }
   
@@ -60,45 +59,45 @@ public class ProductPurchaseAreaUI
     AppMethodBeat.i(51844);
     super.onCreate(paramBundle);
     initView();
-    paramBundle = p.fP(getIntent().getStringExtra("key_Product_xml"), getIntent().getIntExtra("key_Product_funcType", 0));
-    if ((paramBundle != null) && (paramBundle.IZR != null))
+    paramBundle = x.gI(getIntent().getStringExtra("key_Product_xml"), getIntent().getIntExtra("key_Product_funcType", 0));
+    if ((paramBundle != null) && (paramBundle.PjJ != null))
     {
-      this.uFI = paramBundle.field_productid;
-      this.IQA = paramBundle.field_functionType;
+      this.xOk = paramBundle.field_productid;
+      this.OZw = paramBundle.field_functionType;
       Object localObject = getIntent().getStringExtra("referkey");
       Log.i("MicroMsg.ProductPurchaseAreaUI", "referkey:".concat(String.valueOf(localObject)));
       if (!Util.isNullOrNil((String)localObject))
       {
         int i = 0;
-        while (i < paramBundle.IZR.size())
+        while (i < paramBundle.PjJ.size())
         {
-          if (((String)localObject).equals(((com.tencent.mm.plugin.scanner.model.a)paramBundle.IZR.get(i)).IKf))
+          if (((String)localObject).equals(((com.tencent.mm.plugin.scanner.model.a)paramBundle.PjJ.get(i)).OQP))
           {
-            this.IQz = ((com.tencent.mm.plugin.scanner.model.a)paramBundle.IZR.get(i)).pSC;
-            setMMTitle(((com.tencent.mm.plugin.scanner.model.a)paramBundle.IZR.get(i)).title);
-            if (this.IQz != null)
+            this.OZv = ((com.tencent.mm.plugin.scanner.model.a)paramBundle.PjJ.get(i)).sXD;
+            setMMTitle(((com.tencent.mm.plugin.scanner.model.a)paramBundle.PjJ.get(i)).title);
+            if (this.OZv != null)
             {
               i = j;
-              while (i < this.IQz.size())
+              while (i < this.OZv.size())
               {
-                paramBundle = (a.a)this.IQz.get(i);
+                paramBundle = (a.a)this.OZv.get(i);
                 if (paramBundle != null)
                 {
                   localObject = new a(this);
                   ((a)localObject).setKey(String.valueOf(i));
                   ((a)localObject).setTitle(paramBundle.name);
-                  ((a)localObject).aF(paramBundle.desc);
-                  ((a)localObject).IOC = paramBundle.lpM;
-                  this.mrf.b((Preference)localObject);
-                  if (i != this.IQz.size() - 1)
+                  ((a)localObject).aS(paramBundle.desc);
+                  ((a)localObject).OXe = paramBundle.nUO;
+                  this.pkD.c((Preference)localObject);
+                  if (i != this.OZv.size() - 1)
                   {
                     paramBundle = new f(getContext());
-                    this.mrf.b(paramBundle);
+                    this.pkD.c(paramBundle);
                   }
                 }
                 i += 1;
               }
-              this.mrf.notifyDataSetChanged();
+              this.pkD.notifyDataSetChanged();
             }
             AppMethodBeat.o(51844);
             return;
@@ -116,7 +115,7 @@ public class ProductPurchaseAreaUI
   public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
   {
     AppMethodBeat.i(51846);
-    if (this.IQz == null)
+    if (this.OZv == null)
     {
       AppMethodBeat.o(51846);
       return false;
@@ -129,7 +128,7 @@ public class ProductPurchaseAreaUI
         int i = Integer.valueOf(paramPreference.mKey).intValue();
         if (i >= 0)
         {
-          int j = this.IQz.size();
+          int j = this.OZv.size();
           if (i < j) {}
         }
         else
@@ -137,7 +136,7 @@ public class ProductPurchaseAreaUI
           AppMethodBeat.o(51846);
           return false;
         }
-        locala = (a.a)this.IQz.get(i);
+        locala = (a.a)this.OZv.get(i);
         if (locala == null)
         {
           AppMethodBeat.o(51846);
@@ -151,11 +150,11 @@ public class ProductPurchaseAreaUI
           paramf = paramPreference;
           if (!Util.isNullOrNil(locala.link))
           {
-            o(getContext(), locala.link, this.IQA);
+            q(getContext(), locala.link, this.OZw);
             paramf = paramPreference;
           }
-          paramf = new n(this.uFI, locala.IKl, locala.type, paramf, this.IQz.size(), locala.fwp);
-          h.aGY().a(paramf, 0);
+          paramf = new v(this.xOk, locala.OQV, locala.type, paramf, this.OZv.size(), locala.hAN);
+          h.aZW().a(paramf, 0);
           AppMethodBeat.o(51846);
           return true;
         }
@@ -170,18 +169,18 @@ public class ProductPurchaseAreaUI
       paramf = locala.link;
       if (!Util.isNullOrNil(locala.link))
       {
-        o(getContext(), locala.link, this.IQA);
+        q(getContext(), locala.link, this.OZw);
       }
       else
       {
         Log.w("MicroMsg.ProductPurchaseAreaUI", "action link empty");
         continue;
-        paramPreference = locala.IKm;
+        paramPreference = locala.productid;
         paramf = paramPreference;
-        if (!Util.isNullOrNil(locala.IKm))
+        if (!Util.isNullOrNil(locala.productid))
         {
           paramf = new Intent();
-          paramf.putExtra("key_product_id", locala.IKm);
+          paramf.putExtra("key_product_id", locala.productid);
           paramf.putExtra("key_product_scene", 12);
           c.b(this, "product", ".ui.MallProductUI", paramf);
           paramf = paramPreference;
@@ -198,7 +197,7 @@ public class ProductPurchaseAreaUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.ProductPurchaseAreaUI
  * JD-Core Version:    0.7.0.1
  */

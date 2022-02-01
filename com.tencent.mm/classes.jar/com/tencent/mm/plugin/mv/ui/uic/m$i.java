@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.mv.ui.uic;
 
 import androidx.appcompat.app.AppCompatActivity;
-import com.tencent.mm.view.recyclerview.WxRecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import kotlin.Metadata;
 import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "kotlin.jvm.PlatformType", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", "Landroidx/recyclerview/widget/LinearLayoutManager;"}, k=3, mv={1, 5, 1}, xi=48)
 final class m$i
-  extends q
-  implements a<WxRecyclerView>
+  extends u
+  implements a<LinearLayoutManager>
 {
   m$i(AppCompatActivity paramAppCompatActivity)
   {

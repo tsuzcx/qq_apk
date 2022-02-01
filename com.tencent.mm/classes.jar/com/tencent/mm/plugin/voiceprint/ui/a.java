@@ -24,8 +24,8 @@ public final class a
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
         AppMethodBeat.i(29937);
-        if (this.NIP != null) {
-          this.NIP.gwZ();
+        if (a.this != null) {
+          a.this.hUW();
         }
         AppMethodBeat.o(29937);
       }
@@ -59,8 +59,8 @@ public final class a
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
         AppMethodBeat.i(29936);
-        if (this.NIQ != null) {
-          this.NIQ.gwY();
+        if (a.this != null) {
+          a.this.hUV();
         }
         Log.d("MicroMsg.VoiceViewAnimationHelper", "onAnimationEnd ");
         paramAnonymousAnimation = new TranslateAnimation(0, i, 0, 0.0F, 1, 0.0F, 1, 0.0F);
@@ -75,8 +75,8 @@ public final class a
           {
             AppMethodBeat.i(29935);
             Log.i("MicroMsg.VoiceViewAnimationHelper", "next end");
-            if (a.2.this.NIQ != null) {
-              a.2.this.NIQ.gwZ();
+            if (a.this != null) {
+              a.this.hUW();
             }
             AppMethodBeat.o(29935);
           }
@@ -109,8 +109,8 @@ public final class a
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
         AppMethodBeat.i(29938);
-        if (this.NIP != null) {
-          this.NIP.gwZ();
+        if (a.this != null) {
+          a.this.hUW();
         }
         AppMethodBeat.o(29938);
       }
@@ -135,8 +135,8 @@ public final class a
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
         AppMethodBeat.i(29940);
-        if (this.NIP != null) {
-          this.NIP.gwZ();
+        if (a.this != null) {
+          a.this.hUW();
         }
         AppMethodBeat.o(29940);
       }
@@ -146,8 +146,8 @@ public final class a
       public final void onAnimationStart(Animation paramAnonymousAnimation)
       {
         AppMethodBeat.i(29939);
-        if (this.NIP != null) {
-          this.NIP.gwY();
+        if (a.this != null) {
+          a.this.hUV();
         }
         AppMethodBeat.o(29939);
       }
@@ -158,14 +158,14 @@ public final class a
   
   public static abstract interface a
   {
-    public abstract void gwY();
+    public abstract void hUV();
     
-    public abstract void gwZ();
+    public abstract void hUW();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.ui.a
  * JD-Core Version:    0.7.0.1
  */

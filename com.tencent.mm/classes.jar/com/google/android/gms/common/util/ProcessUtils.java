@@ -9,14 +9,12 @@ import java.io.BufferedReader;
 import java.io.Closeable;
 import java.io.FileReader;
 import java.io.IOException;
-import javax.annotation.Nullable;
 
 public class ProcessUtils
 {
   private static String zzaai = null;
   private static int zzaaj = 0;
   
-  @Nullable
   public static String getCallingProcessName()
   {
     AppMethodBeat.i(5277);
@@ -32,7 +30,6 @@ public class ProcessUtils
     return str;
   }
   
-  @Nullable
   public static String getMyProcessName()
   {
     AppMethodBeat.i(5278);
@@ -130,58 +127,57 @@ public class ProcessUtils
   }
   
   /* Error */
-  @Nullable
   private static String zzl(int paramInt)
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore_2
     //   2: sipush 5281
-    //   5: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: iload_0
     //   9: ifgt +11 -> 20
     //   12: sipush 5281
-    //   15: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   15: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   18: aconst_null
     //   19: areturn
-    //   20: new 56	java/lang/StringBuilder
+    //   20: new 54	java/lang/StringBuilder
     //   23: dup
     //   24: bipush 25
-    //   26: invokespecial 58	java/lang/StringBuilder:<init>	(I)V
-    //   29: ldc 60
-    //   31: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   26: invokespecial 56	java/lang/StringBuilder:<init>	(I)V
+    //   29: ldc 58
+    //   31: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   34: iload_0
-    //   35: invokevirtual 67	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   38: ldc 140
-    //   40: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   43: invokevirtual 72	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   46: invokestatic 76	com/google/android/gms/common/util/ProcessUtils:zzm	(Ljava/lang/String;)Ljava/io/BufferedReader;
+    //   35: invokevirtual 65	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   38: ldc 138
+    //   40: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   43: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   46: invokestatic 74	com/google/android/gms/common/util/ProcessUtils:zzm	(Ljava/lang/String;)Ljava/io/BufferedReader;
     //   49: astore_1
     //   50: aload_1
-    //   51: invokevirtual 103	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   54: invokevirtual 108	java/lang/String:trim	()Ljava/lang/String;
+    //   51: invokevirtual 101	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   54: invokevirtual 106	java/lang/String:trim	()Ljava/lang/String;
     //   57: astore_3
     //   58: aload_3
     //   59: astore_2
     //   60: aload_1
-    //   61: invokestatic 86	com/google/android/gms/common/util/IOUtils:closeQuietly	(Ljava/io/Closeable;)V
+    //   61: invokestatic 84	com/google/android/gms/common/util/IOUtils:closeQuietly	(Ljava/io/Closeable;)V
     //   64: sipush 5281
-    //   67: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   67: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   70: aload_2
     //   71: areturn
     //   72: astore_1
     //   73: aconst_null
     //   74: astore_1
     //   75: aload_1
-    //   76: invokestatic 86	com/google/android/gms/common/util/IOUtils:closeQuietly	(Ljava/io/Closeable;)V
+    //   76: invokestatic 84	com/google/android/gms/common/util/IOUtils:closeQuietly	(Ljava/io/Closeable;)V
     //   79: goto -15 -> 64
     //   82: astore_1
     //   83: aconst_null
     //   84: astore_2
     //   85: aload_2
-    //   86: invokestatic 86	com/google/android/gms/common/util/IOUtils:closeQuietly	(Ljava/io/Closeable;)V
+    //   86: invokestatic 84	com/google/android/gms/common/util/IOUtils:closeQuietly	(Ljava/io/Closeable;)V
     //   89: sipush 5281
-    //   92: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   92: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   95: aload_1
     //   96: athrow
     //   97: astore_2
@@ -247,7 +243,7 @@ public class ProcessUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.util.ProcessUtils
  * JD-Core Version:    0.7.0.1
  */

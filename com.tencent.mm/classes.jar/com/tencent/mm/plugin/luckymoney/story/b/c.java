@@ -1,93 +1,54 @@
 package com.tencent.mm.plugin.luckymoney.story.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.eo;
-import com.tencent.mm.protocal.protobuf.eno;
+import com.tencent.mm.autogen.b.fc;
+import com.tencent.mm.protocal.protobuf.fim;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import java.lang.reflect.Field;
-import java.util.Map;
 
 public final class c
-  extends eo
+  extends fc
 {
   public static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(163696);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[8];
-    localMAutoDBInfo.columns = new String[9];
-    StringBuilder localStringBuilder = new StringBuilder();
-    localMAutoDBInfo.columns[0] = "media_type";
-    localMAutoDBInfo.colsMap.put("media_type", "INTEGER");
-    localStringBuilder.append(" media_type INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[1] = "media_url";
-    localMAutoDBInfo.colsMap.put("media_url", "TEXT");
-    localStringBuilder.append(" media_url TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[2] = "media_md5";
-    localMAutoDBInfo.colsMap.put("media_md5", "TEXT");
-    localStringBuilder.append(" media_md5 TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[3] = "height";
-    localMAutoDBInfo.colsMap.put("height", "INTEGER");
-    localStringBuilder.append(" height INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[4] = "width";
-    localMAutoDBInfo.colsMap.put("width", "INTEGER");
-    localStringBuilder.append(" width INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[5] = "packet_id";
-    localMAutoDBInfo.colsMap.put("packet_id", "TEXT");
-    localStringBuilder.append(" packet_id TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[6] = "media_fuzzy_thumbnail_url";
-    localMAutoDBInfo.colsMap.put("media_fuzzy_thumbnail_url", "TEXT");
-    localStringBuilder.append(" media_fuzzy_thumbnail_url TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[7] = "media_fuzzy_thumbnail_md5";
-    localMAutoDBInfo.colsMap.put("media_fuzzy_thumbnail_md5", "TEXT");
-    localStringBuilder.append(" media_fuzzy_thumbnail_md5 TEXT");
-    localMAutoDBInfo.columns[8] = "rowid";
-    localMAutoDBInfo.sql = localStringBuilder.toString();
-    info = localMAutoDBInfo;
+    info = fc.aJm();
     AppMethodBeat.o(163696);
   }
   
-  public static c a(eno parameno, String paramString)
+  public static c a(fim paramfim, String paramString)
   {
     AppMethodBeat.i(163694);
     c localc = new c();
-    if (parameno != null)
+    if (paramfim != null)
     {
       localc.field_packet_id = paramString;
-      localc.field_height = parameno.height;
-      localc.field_width = parameno.width;
-      localc.field_media_type = parameno.Uql;
-      localc.field_media_md5 = parameno.Uqn;
-      localc.field_media_url = parameno.Uqm;
-      localc.field_media_fuzzy_thumbnail_url = parameno.Uqo;
-      localc.field_media_fuzzy_thumbnail_md5 = parameno.Uqp;
+      localc.field_height = paramfim.height;
+      localc.field_width = paramfim.width;
+      localc.field_media_type = paramfim.abJk;
+      localc.field_media_md5 = paramfim.abJm;
+      localc.field_media_url = paramfim.abJl;
+      localc.field_media_fuzzy_thumbnail_url = paramfim.abJn;
+      localc.field_media_fuzzy_thumbnail_md5 = paramfim.abJo;
     }
     AppMethodBeat.o(163694);
     return localc;
   }
   
-  public static eno a(c paramc)
+  public static fim a(c paramc)
   {
     AppMethodBeat.i(163695);
-    eno localeno = new eno();
-    localeno.height = paramc.field_height;
-    localeno.width = paramc.field_width;
-    localeno.Uql = paramc.field_media_type;
-    localeno.Uqm = paramc.field_media_url;
-    localeno.Uqn = paramc.field_media_md5;
-    localeno.Uqo = paramc.field_media_fuzzy_thumbnail_url;
-    localeno.Uqp = paramc.field_media_fuzzy_thumbnail_md5;
+    fim localfim = new fim();
+    localfim.height = paramc.field_height;
+    localfim.width = paramc.field_width;
+    localfim.abJk = paramc.field_media_type;
+    localfim.abJl = paramc.field_media_url;
+    localfim.abJm = paramc.field_media_md5;
+    localfim.abJn = paramc.field_media_fuzzy_thumbnail_url;
+    localfim.abJo = paramc.field_media_fuzzy_thumbnail_md5;
     AppMethodBeat.o(163695);
-    return localeno;
+    return localfim;
   }
   
   public final IAutoDBItem.MAutoDBInfo getDBInfo()
@@ -97,7 +58,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.story.b.c
  * JD-Core Version:    0.7.0.1
  */

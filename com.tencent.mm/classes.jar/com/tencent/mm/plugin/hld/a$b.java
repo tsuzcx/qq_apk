@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.hld;
 
 public final class a$b
 {
-  public static final int textColor = 2130969678;
-  public static final int textSize = 2130969685;
+  public static final int textColor = 2130969752;
+  public static final int textSize = 2130969760;
 }
 
 

@@ -12,7 +12,6 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
 import androidx.b.a;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.iid.InstanceID;
 import com.google.android.gms.iid.zzaf;
 import com.google.android.gms.iid.zzak;
@@ -139,7 +138,6 @@ public class GoogleCloudMessaging
   }
   
   @Deprecated
-  @VisibleForTesting
   private final String zzd(boolean paramBoolean, String... paramVarArgs)
   {
     Object localObject1;
@@ -433,7 +431,7 @@ public class GoogleCloudMessaging
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.gcm.GoogleCloudMessaging
  * JD-Core Version:    0.7.0.1
  */

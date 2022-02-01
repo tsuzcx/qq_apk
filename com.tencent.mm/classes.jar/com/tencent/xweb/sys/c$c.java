@@ -1,27 +1,25 @@
 package com.tencent.xweb.sys;
 
-import android.annotation.TargetApi;
 import android.webkit.WebChromeClient.FileChooserParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.x.a;
+import com.tencent.xweb.z.a;
 
 public final class c$c
-  extends x.a
+  extends z.a
 {
-  public WebChromeClient.FileChooserParams aafj;
+  public WebChromeClient.FileChooserParams aikv;
   
   public c$c(WebChromeClient.FileChooserParams paramFileChooserParams)
   {
-    this.aafj = paramFileChooserParams;
+    this.aikv = paramFileChooserParams;
   }
   
-  @TargetApi(21)
   public final String[] getAcceptTypes()
   {
     AppMethodBeat.i(153660);
-    if (this.aafj != null)
+    if (this.aikv != null)
     {
-      String[] arrayOfString = this.aafj.getAcceptTypes();
+      String[] arrayOfString = this.aikv.getAcceptTypes();
       AppMethodBeat.o(153660);
       return arrayOfString;
     }
@@ -29,13 +27,12 @@ public final class c$c
     return new String[0];
   }
   
-  @TargetApi(21)
   public final int getMode()
   {
     AppMethodBeat.i(153659);
-    if (this.aafj != null)
+    if (this.aikv != null)
     {
-      int i = this.aafj.getMode();
+      int i = this.aikv.getMode();
       AppMethodBeat.o(153659);
       return i;
     }
@@ -43,13 +40,12 @@ public final class c$c
     return 0;
   }
   
-  @TargetApi(21)
   public final boolean isCaptureEnabled()
   {
     AppMethodBeat.i(153661);
-    if (this.aafj != null)
+    if (this.aikv != null)
     {
-      boolean bool = this.aafj.isCaptureEnabled();
+      boolean bool = this.aikv.isCaptureEnabled();
       AppMethodBeat.o(153661);
       return bool;
     }
@@ -59,7 +55,7 @@ public final class c$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.sys.c.c
  * JD-Core Version:    0.7.0.1
  */

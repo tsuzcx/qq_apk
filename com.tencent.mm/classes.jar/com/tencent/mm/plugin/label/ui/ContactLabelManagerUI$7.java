@@ -1,25 +1,20 @@
 package com.tencent.mm.plugin.label.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.am.s;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.plugin.label.b.d;
 
 final class ContactLabelManagerUI$7
-  implements View.OnClickListener
+  implements Runnable
 {
   ContactLabelManagerUI$7(ContactLabelManagerUI paramContactLabelManagerUI) {}
   
-  public final void onClick(View paramView)
+  public final void run()
   {
-    AppMethodBeat.i(26213);
-    b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/label/ui/ContactLabelManagerUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    ContactLabelManagerUI.b(this.EdX);
-    a.a(this, "com/tencent/mm/plugin/label/ui/ContactLabelManagerUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(26213);
+    AppMethodBeat.i(268733);
+    bh.aZW().a(new d(), 0);
+    AppMethodBeat.o(268733);
   }
 }
 

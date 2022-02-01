@@ -1,105 +1,148 @@
 package com.tencent.mm.plugin.websearch.webview;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.websearch.api.w;
-import com.tencent.mm.protocal.protobuf.fks;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.am.p;
+import com.tencent.mm.app.AppForegroundDelegate;
+import com.tencent.mm.app.q;
+import com.tencent.mm.plugin.websearch.api.x;
+import com.tencent.mm.protocal.protobuf.ghg;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/websearch/webview/BaseWebSearchData;", "T", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "uiComponent", "Lcom/tencent/mm/plugin/websearch/webview/IWebSearchUIComponent;", "(Lcom/tencent/mm/plugin/websearch/webview/IWebSearchUIComponent;)V", "getUiComponent", "()Lcom/tencent/mm/plugin/websearch/webview/IWebSearchUIComponent;", "setUiComponent", "destroy", "", "getWebViewId", "", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "querySearchWeb", "paramsStr", "ui-websearch_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/websearch/webview/BaseWebSearchData;", "T", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mm/app/IAppForegroundListener;", "uiComponent", "Lcom/tencent/mm/plugin/websearch/webview/IWebSearchUIComponent;", "(Lcom/tencent/mm/plugin/websearch/webview/IWebSearchUIComponent;)V", "TAG", "", "getUiComponent", "()Lcom/tencent/mm/plugin/websearch/webview/IWebSearchUIComponent;", "setUiComponent", "destroy", "", "getWebViewId", "", "onAppBackground", "activity", "onAppForeground", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "querySearchWeb", "paramsStr", "ui-websearch_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class a<T>
-  implements i
+  implements com.tencent.mm.am.h, q
 {
-  public d<T> PBs;
+  private final String TAG;
+  public f<T> WrK;
   
-  public a(d<T> paramd)
+  public a(f<T> paramf)
   {
-    AppMethodBeat.i(198518);
-    this.PBs = paramd;
-    h.aGY().a(2975, (i)this);
-    AppMethodBeat.o(198518);
+    AppMethodBeat.i(315260);
+    this.WrK = paramf;
+    this.TAG = "MicroMsg.WebSearch.BaseWebSearchData";
+    com.tencent.mm.kernel.h.aZW().a(2975, (com.tencent.mm.am.h)this);
+    AppForegroundDelegate.heY.a((q)this);
+    AppMethodBeat.o(315260);
   }
   
   public void destroy()
   {
-    AppMethodBeat.i(198510);
-    h.aGY().b(2975, (i)this);
-    AppMethodBeat.o(198510);
+    AppMethodBeat.i(315265);
+    com.tencent.mm.kernel.h.aZW().b(2975, (com.tencent.mm.am.h)this);
+    AppForegroundDelegate.heY.b((q)this);
+    AppMethodBeat.o(315265);
   }
   
-  public final int gQm()
+  public final int ipD()
   {
-    AppMethodBeat.i(198517);
-    Object localObject = this.PBs;
+    AppMethodBeat.i(315280);
+    Object localObject = this.WrK;
+    if (localObject == null)
+    {
+      AppMethodBeat.o(315280);
+      return -1;
+    }
+    localObject = ((f)localObject).getWebView();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(315280);
+      return -1;
+    }
+    int i = ((WebSearchWebView)localObject).hashCode();
+    AppMethodBeat.o(315280);
+    return i;
+  }
+  
+  public void onAppBackground(String paramString)
+  {
+    AppMethodBeat.i(315292);
+    Log.i(this.TAG, kotlin.g.b.s.X("onAppBackground ", paramString));
+    Object localObject = this.WrK;
     if (localObject != null)
     {
-      localObject = ((d)localObject).esG();
-      if (localObject != null)
-      {
-        int i = ((WebSearchWebView)localObject).hashCode();
-        AppMethodBeat.o(198517);
-        return i;
+      localObject = ((f)localObject).fyU();
+      if (localObject != null) {
+        ((b)localObject).biJ(paramString);
       }
     }
-    AppMethodBeat.o(198517);
-    return -1;
+    AppMethodBeat.o(315292);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public void onAppForeground(String paramString)
   {
-    AppMethodBeat.i(198516);
-    if (((paramq instanceof w)) && (((w)paramq).gQB() == gQm()))
+    AppMethodBeat.i(315287);
+    Log.i(this.TAG, kotlin.g.b.s.X("onAppForeground ", paramString));
+    Object localObject = this.WrK;
+    if (localObject != null)
     {
-      fks localfks = ((w)paramq).gpT();
-      if (localfks != null)
-      {
-        Object localObject = this.PBs;
-        if (localObject == null) {
-          break label191;
-        }
-        b localb = ((d)localObject).esJ();
-        if (localb == null) {
-          break label191;
-        }
-        localObject = paramString;
-        if (paramString == null) {
-          localObject = "";
-        }
-        String str = localfks.UJk;
-        paramString = str;
-        if (str == null) {
-          paramString = "";
-        }
-        str = localfks.fIY;
-        p.j(str, "it.requestId");
-        localb.h(paramInt2, (String)localObject, paramString, str);
+      localObject = ((f)localObject).fyU();
+      if (localObject != null) {
+        ((b)localObject).biI(paramString);
       }
     }
-    label191:
-    for (paramString = x.aazN;; paramString = null)
+    AppMethodBeat.o(315287);
+  }
+  
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
+  {
+    AppMethodBeat.i(315273);
+    ghg localghg;
+    if (((paramp instanceof x)) && (((x)paramp).hVk == ipD()))
+    {
+      localghg = ((x)paramp).hMP();
+      if (localghg != null) {
+        break label107;
+      }
+      paramString = null;
+    }
+    for (;;)
     {
       if (paramString == null)
       {
-        paramString = ((a)this).PBs;
+        paramString = ((a)this).WrK;
         if (paramString != null)
         {
-          paramString = paramString.esJ();
+          paramString = paramString.fyU();
           if (paramString != null)
           {
-            paramq = ((w)paramq).gQA();
-            p.j(paramq, "scene.requestId");
-            paramString.h(-1, "", "", paramq);
-            paramString = x.aazN;
+            paramp = ((x)paramp).hOG;
+            kotlin.g.b.s.s(paramp, "scene.requestId");
+            paramString.h(-1, "", "", paramp);
           }
         }
       }
-      AppMethodBeat.o(198516);
+      AppMethodBeat.o(315273);
       return;
+      label107:
+      Object localObject = this.WrK;
+      if (localObject == null)
+      {
+        paramString = null;
+      }
+      else
+      {
+        b localb = ((f)localObject).fyU();
+        if (localb == null)
+        {
+          paramString = null;
+        }
+        else
+        {
+          localObject = paramString;
+          if (paramString == null) {
+            localObject = "";
+          }
+          String str = localghg.acds;
+          paramString = str;
+          if (str == null) {
+            paramString = "";
+          }
+          str = localghg.hOG;
+          kotlin.g.b.s.s(str, "it.requestId");
+          paramString = localb.h(paramInt2, (String)localObject, paramString, str);
+        }
+      }
     }
   }
 }

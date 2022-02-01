@@ -1,60 +1,60 @@
 package com.tencent.mm.plugin.voip.video.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.j;
+import com.tencent.mm.compatible.util.k;
 
 public class c
 {
-  public static boolean ObP;
+  public static boolean UPL;
   
   static
   {
     AppMethodBeat.i(115716);
-    ObP = false;
-    gEc();
+    UPL = false;
+    icQ();
     AppMethodBeat.o(115716);
   }
   
-  public static void gEc()
+  public static void icQ()
   {
     AppMethodBeat.i(115715);
     System.currentTimeMillis();
-    if (!ObP) {
+    if (!UPL) {
       try
       {
         c.class.getClassLoader();
-        j.KW("image_filter_common");
+        k.DA("image_filter_common");
         c.class.getClassLoader();
-        j.KW("image_filter_gpu");
+        k.DA("image_filter_gpu");
         c.class.getClassLoader();
-        j.KW("format_convert");
+        k.DA("format_convert");
         c.class.getClassLoader();
-        j.KW("YTCommon");
+        k.DA("YTCommon");
         c.class.getClassLoader();
-        j.KW("YTFaceTrackPro");
+        k.DA("YTFaceTrackPro");
         c.class.getClassLoader();
-        j.KW("algo_youtu_jni");
+        k.DA("algo_youtu_jni");
         c.class.getClassLoader();
-        j.KW("pitu_tools");
-        ObP = true;
+        k.DA("pitu_tools");
+        UPL = true;
         AppMethodBeat.o(115715);
         return;
       }
       catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
       {
-        ObP = false;
+        UPL = false;
         AppMethodBeat.o(115715);
         return;
       }
       catch (RuntimeException localRuntimeException)
       {
-        ObP = false;
+        UPL = false;
         AppMethodBeat.o(115715);
         return;
       }
       catch (Exception localException)
       {
-        ObP = false;
+        UPL = false;
       }
     }
     AppMethodBeat.o(115715);

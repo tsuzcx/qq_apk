@@ -1,283 +1,213 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ImageView;
+import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.loader.d;
-import com.tencent.mm.plugin.finder.b.e;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.i;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.e.h;
 import com.tencent.mm.plugin.finder.feed.model.BaseFinderFeedLoader;
+import com.tencent.mm.plugin.finder.feed.model.internal.BaseFeedLoader;
 import com.tencent.mm.plugin.finder.feed.model.internal.DataBuffer;
-import com.tencent.mm.plugin.finder.loader.r;
-import com.tencent.mm.plugin.finder.loader.t;
-import com.tencent.mm.plugin.finder.loader.t.a;
+import com.tencent.mm.plugin.finder.feed.model.internal.g;
+import com.tencent.mm.plugin.finder.loader.n;
+import com.tencent.mm.plugin.finder.loader.p.a;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.mm.plugin.finder.report.z;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.u;
-import com.tencent.mm.protocal.protobuf.csg;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.plugin.finder.storage.v;
+import com.tencent.mm.plugin.finder.utils.av;
+import com.tencent.mm.plugin.finder.utils.r;
+import com.tencent.mm.plugin.finder.viewmodel.component.as;
+import com.tencent.mm.plugin.finder.viewmodel.component.as.a;
+import com.tencent.mm.protocal.protobuf.dji;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
-import com.tencent.mm.view.recyclerview.i;
-import java.util.Collection;
-import java.util.Iterator;
+import com.tencent.mm.view.recyclerview.j;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.o;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/convert/FinderProfileAtGridConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedRoundCornerConvert;", "feedLoader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "username", "", "isSelfFlag", "", "atFeedState", "Lcom/tencent/mm/plugin/finder/viewmodel/atfeed/AtFeedState;", "(Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;Ljava/lang/String;ZLcom/tencent/mm/plugin/finder/viewmodel/atfeed/AtFeedState;)V", "jumpAtTimeline", "", "context", "Landroid/content/Context;", "pos", "", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "onBindViewHolder", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "setSelectImage", "isSelect", "selectImage", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "container", "Landroid/view/View;", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/convert/FinderProfileGridConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedRoundCornerConvert;", "feedLoader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "username", "", "isSelfFlag", "", "isShowLikeCount", "(Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;Ljava/lang/String;ZZ)V", "TAG", "getTAG", "()Ljava/lang/String;", "setTAG", "(Ljava/lang/String;)V", "jumpAtTimeline", "", "context", "Landroid/content/Context;", "pos", "", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "onBindViewHolder", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class cb
-  extends ag
+  extends ac
 {
-  public static final a xoa;
+  private final BaseFinderFeedLoader ALH;
+  private final boolean ALI;
+  private final boolean AMc;
+  private String TAG;
   private final String username;
-  private final BaseFinderFeedLoader xnX;
-  private final boolean xnY;
-  private final com.tencent.mm.plugin.finder.viewmodel.atfeed.a xnZ;
   
-  static
+  private cb(BaseFinderFeedLoader paramBaseFinderFeedLoader, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(267552);
-    xoa = new a((byte)0);
-    AppMethodBeat.o(267552);
-  }
-  
-  public cb(BaseFinderFeedLoader paramBaseFinderFeedLoader, String paramString, boolean paramBoolean, com.tencent.mm.plugin.finder.viewmodel.atfeed.a parama)
-  {
-    super(b.g.finder_grid_at_feed_manage_item);
-    AppMethodBeat.i(267551);
-    this.xnX = paramBaseFinderFeedLoader;
+    super(e.f.finder_grid_feed_item_layout);
+    AppMethodBeat.i(349753);
+    this.ALH = paramBaseFinderFeedLoader;
     this.username = paramString;
-    this.xnY = paramBoolean;
-    this.xnZ = parama;
-    AppMethodBeat.o(267551);
+    this.ALI = paramBoolean;
+    this.AMc = false;
+    this.TAG = "Finder.FinderFeedGridConvert";
+    AppMethodBeat.o(349753);
   }
   
-  @SuppressLint({"ResourceType"})
-  private static void a(boolean paramBoolean, WeImageView paramWeImageView, View paramView)
+  private static final void a(j paramj, cb paramcb, RecyclerView paramRecyclerView, View paramView)
   {
-    AppMethodBeat.i(267549);
-    if (paramWeImageView != null)
+    AppMethodBeat.i(349804);
+    Object localObject1 = new Object();
+    Object localObject2 = new b();
+    ((b)localObject2).cH(paramj);
+    ((b)localObject2).cH(paramcb);
+    ((b)localObject2).cH(paramRecyclerView);
+    ((b)localObject2).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/convert/FinderProfileGridConvert", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject1, ((b)localObject2).aYj());
+    s.u(paramj, "$holder");
+    s.u(paramcb, "this$0");
+    s.u(paramRecyclerView, "$recyclerView");
+    paramj = (BaseFinderFeed)paramj.CSA;
+    paramRecyclerView = paramRecyclerView.getContext();
+    s.s(paramRecyclerView, "recyclerView.context");
+    paramView = paramcb.ALH;
+    int i;
+    if (paramView == null)
     {
-      if (paramBoolean)
-      {
-        paramWeImageView.setImageResource(b.i.icons_outlined_done);
-        if (paramView != null)
-        {
-          paramView.setBackgroundResource(b.e.finder_at_feed_item_select_bg);
-          AppMethodBeat.o(267549);
-          return;
-        }
-        AppMethodBeat.o(267549);
-        return;
+      i = 0;
+      s.s(paramj, "item");
+      paramView = new Intent();
+      localObject1 = paramcb.ALH;
+      if (localObject1 != null) {
+        BaseFeedLoader.saveCache$default((BaseFeedLoader)localObject1, paramView, i, null, 4, null);
       }
-      paramWeImageView.setImageDrawable(null);
-      if (paramView != null)
-      {
-        paramView.setBackgroundResource(b.e.finder_at_feed_item_un_select_bg);
-        AppMethodBeat.o(267549);
-        return;
-      }
-      AppMethodBeat.o(267549);
-      return;
-    }
-    AppMethodBeat.o(267549);
-  }
-  
-  public final void a(RecyclerView paramRecyclerView, i parami, int paramInt)
-  {
-    AppMethodBeat.i(267544);
-    p.k(paramRecyclerView, "recyclerView");
-    p.k(parami, "holder");
-    AppMethodBeat.o(267544);
-  }
-  
-  @SuppressLint({"ResourceType"})
-  public final void a(final i parami, final BaseFinderFeed paramBaseFinderFeed, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
-  {
-    AppMethodBeat.i(267547);
-    p.k(parami, "holder");
-    p.k(paramBaseFinderFeed, "item");
-    Object localObject1 = parami.amk.findViewById(b.f.finder_grid_at_manage_select_container);
-    final WeImageView localWeImageView = (WeImageView)parami.amk.findViewById(b.f.finder_grid_at_manage_select_iv);
-    final View localView1 = parami.amk.findViewById(b.f.finder_grid_at_manage_select_iv_container);
-    View localView2 = parami.amk.findViewById(b.f.if_item_image);
-    Log.i("Finder.ProfileAtGridConvert", "onBindViewHolder  " + paramBaseFinderFeed.feedObject.getMentionListSelected());
-    Object localObject2 = (Collection)paramList;
-    if ((localObject2 == null) || (((Collection)localObject2).isEmpty())) {
-      paramInt1 = 1;
-    }
-    label121:
-    while (paramInt1 == 0)
-    {
-      paramList = ((Iterable)paramList).iterator();
-      for (;;)
-      {
-        if (paramList.hasNext())
-        {
-          localObject2 = paramList.next();
-          if ((localObject2 instanceof o)) {
-            switch (((Number)((o)localObject2).Mx).intValue())
-            {
-            default: 
-              break;
-            case 23: 
-              if (!this.xnZ.BhC)
-              {
-                if (paramBaseFinderFeed.feedObject.getMentionListSelected() == 2)
-                {
-                  if (localView2 != null)
-                  {
-                    localView2.setVisibility(0);
-                    AppMethodBeat.o(267547);
-                    return;
-                    paramInt1 = 0;
-                    break label121;
-                  }
-                  AppMethodBeat.o(267547);
-                  return;
-                }
-                if (localView2 != null)
-                {
-                  localView2.setVisibility(8);
-                  AppMethodBeat.o(267547);
-                  return;
-                }
-              }
-              AppMethodBeat.o(267547);
-              return;
-            }
-          }
-        }
-      }
-    }
-    if (this.xnZ.BhC) {
+      localObject1 = paramcb.ALH;
       if (localObject1 != null)
       {
-        ((View)localObject1).setOnClickListener((View.OnClickListener)new b(this, paramBaseFinderFeed, localWeImageView, localView1));
-        if (localView1 != null) {
-          localView1.setVisibility(0);
-        }
-        if (paramBaseFinderFeed.feedObject.getMentionListSelected() == 2)
+        localObject1 = ((BaseFinderFeedLoader)localObject1).getDataListJustForAdapter();
+        if (localObject1 != null)
         {
-          paramBoolean = true;
-          a(paramBoolean, localWeImageView, localView1);
+          localObject2 = av.GiL;
+          av.a(i, (List)localObject1, paramcb.ALH.getLastBuffer(), paramView);
         }
       }
-      else if (localView2 != null)
+      paramView.putExtra("KEY_FROM_SCENE", 1);
+      paramView.putExtra("KEY_USERNAME", paramcb.username);
+      paramView.putExtra("KEY_FINDER_SELF_FLAG", paramcb.ALI);
+      if (!paramcb.ALI) {
+        break label358;
+      }
+      paramView.putExtra("force_show_ad_tip", true);
+      paramView.putExtra("key_from_page", g.Bkr.value);
+    }
+    for (;;)
+    {
+      paramView.putExtra("KEY_TITLE", paramRecyclerView.getResources().getString(e.h.finder_be_at_timeline_title));
+      paramcb = as.GSQ;
+      as.a.a(paramRecyclerView, paramView, 0L, 0, false, 124);
+      paramcb = com.tencent.mm.plugin.finder.utils.a.GfO;
+      com.tencent.mm.plugin.finder.utils.a.ar(paramRecyclerView, paramView);
+      paramcb = z.FrZ;
+      z.ab(paramj.bZA(), 1);
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/convert/FinderProfileGridConvert", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(349804);
+      return;
+      paramView = paramView.getDataListJustForAdapter();
+      if (paramView == null)
       {
-        localView2.setVisibility(8);
+        i = 0;
+        break;
+      }
+      i = paramView.indexOf(paramj);
+      break;
+      label358:
+      paramView.putExtra("key_from_page", g.Bkj.value);
+    }
+  }
+  
+  public final void a(RecyclerView paramRecyclerView, j paramj, int paramInt)
+  {
+    AppMethodBeat.i(349836);
+    s.u(paramRecyclerView, "recyclerView");
+    s.u(paramj, "holder");
+    paramj.caK.setOnClickListener(new cb..ExternalSyntheticLambda0(paramj, this, paramRecyclerView));
+    ((WeImageView)paramj.caK.findViewById(e.e.awesomeIv)).setEnabled(false);
+    AppMethodBeat.o(349836);
+  }
+  
+  public final void a(j paramj, BaseFinderFeed paramBaseFinderFeed, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
+  {
+    AppMethodBeat.i(349861);
+    s.u(paramj, "holder");
+    s.u(paramBaseFinderFeed, "item");
+    Object localObject2 = (dji)kotlin.a.p.oK((List)paramBaseFinderFeed.feedObject.getMediaList());
+    paramList = (ImageView)paramj.UH(e.e.finder_grid_list_item_iv);
+    Object localObject1;
+    com.tencent.mm.plugin.finder.loader.p localp;
+    if (((dji)localObject2).mediaType == 4)
+    {
+      localObject1 = new n((dji)localObject2, v.FKZ, null, null, 12);
+      localObject2 = com.tencent.mm.plugin.finder.loader.p.ExI;
+      localObject2 = com.tencent.mm.plugin.finder.loader.p.eCl();
+      s.s(paramList, "imageView");
+      localp = com.tencent.mm.plugin.finder.loader.p.ExI;
+      ((d)localObject2).a(localObject1, paramList, com.tencent.mm.plugin.finder.loader.p.a(p.a.ExJ));
+      if ((!this.AMc) || (paramBaseFinderFeed.feedObject.getLikeCount() <= 0)) {
+        break label312;
+      }
+      paramj.UH(e.e.item_like_count_layout).setVisibility(0);
+      ((TextView)paramj.UH(e.e.item_like_count_tv)).setText((CharSequence)r.ip(2, paramBaseFinderFeed.feedObject.getLikeCount()));
+      label169:
+      ((ImageView)paramj.UH(e.e.if_item_image)).setVisibility(8);
+      localObject1 = paramj.UH(e.e.finder_grid_feed_item_layout_container);
+      if (localObject1 != null)
+      {
+        paramInt1 = e.e.finder_accessibility_nickname_tag;
+        paramj = paramBaseFinderFeed.feedObject;
+        if (paramj != null) {
+          break label327;
+        }
+        paramj = "";
+        label215:
+        ((View)localObject1).setTag(paramInt1, paramj);
+        paramInt1 = e.e.finder_accessibility_content_desc_tag;
+        paramj = paramBaseFinderFeed.feedObject;
+        if (paramj != null) {
+          break label348;
+        }
+        paramj = "";
       }
     }
     for (;;)
     {
-      paramBaseFinderFeed = (csg)j.lo((List)paramBaseFinderFeed.feedObject.getMediaList());
-      parami = (ImageView)parami.RD(b.f.finder_grid_at_manage_iv);
-      if (paramBaseFinderFeed.mediaType != 4) {
-        break label528;
-      }
-      paramBaseFinderFeed = new r(paramBaseFinderFeed, u.Alz, null, null, 12);
-      paramList = t.ztT;
-      paramList = t.dJe();
-      p.j(parami, "imageView");
-      localObject1 = t.ztT;
-      paramList.a(paramBaseFinderFeed, parami, t.a(t.a.ztU));
-      AppMethodBeat.o(267547);
+      ((View)localObject1).setTag(paramInt1, paramj);
+      AppMethodBeat.o(349861);
       return;
-      paramBoolean = false;
+      localObject1 = com.tencent.mm.plugin.finder.loader.p.ExI;
+      localObject1 = com.tencent.mm.plugin.finder.loader.p.eCl();
+      localObject2 = new n((dji)localObject2, v.FKZ, null, null, 12);
+      s.s(paramList, "imageView");
+      localp = com.tencent.mm.plugin.finder.loader.p.ExI;
+      ((d)localObject1).a(localObject2, paramList, com.tencent.mm.plugin.finder.loader.p.a(p.a.ExJ));
       break;
-      if (localView1 != null) {
-        localView1.setVisibility(8);
+      label312:
+      paramj.UH(e.e.item_like_count_layout).setVisibility(8);
+      break label169;
+      label327:
+      paramList = paramj.getNickName();
+      paramj = paramList;
+      if (paramList != null) {
+        break label215;
       }
-      if (localObject1 != null) {
-        ((View)localObject1).setOnClickListener((View.OnClickListener)new c(this, parami, paramBaseFinderFeed));
-      }
-      if (paramBaseFinderFeed.feedObject.getMentionListSelected() == 2)
-      {
-        if (localView2 != null) {
-          localView2.setVisibility(0);
-        }
-      }
-      else if (localView2 != null) {
-        localView2.setVisibility(8);
-      }
-    }
-    label528:
-    paramList = t.ztT;
-    paramList = t.dJe();
-    paramBaseFinderFeed = new r(paramBaseFinderFeed, u.Alz, null, null, 12);
-    p.j(parami, "imageView");
-    localObject1 = t.ztT;
-    paramList.a(paramBaseFinderFeed, parami, t.a(t.a.ztU));
-    AppMethodBeat.o(267547);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/convert/FinderProfileAtGridConvert$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/convert/FinderProfileAtGridConvert$onBindViewHolder$2$1"})
-  static final class b
-    implements View.OnClickListener
-  {
-    b(cb paramcb, BaseFinderFeed paramBaseFinderFeed, WeImageView paramWeImageView, View paramView) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(289612);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/convert/FinderProfileAtGridConvert$onBindViewHolder$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      if (paramBaseFinderFeed.feedObject.getMentionListSelected() == 3)
-      {
-        cb.b(true, localWeImageView, localView1);
-        paramBaseFinderFeed.feedObject.setMentionListSelected(2);
-      }
-      for (;;)
-      {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/convert/FinderProfileAtGridConvert$onBindViewHolder$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(289612);
-        return;
-        cb.b(false, localWeImageView, localView1);
-        paramBaseFinderFeed.feedObject.setMentionListSelected(3);
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/convert/FinderProfileAtGridConvert$onBindViewHolder$3$1"})
-  static final class c
-    implements View.OnClickListener
-  {
-    c(cb paramcb, i parami, BaseFinderFeed paramBaseFinderFeed) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(287269);
-      Object localObject1 = new b();
-      ((b)localObject1).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/convert/FinderProfileAtGridConvert$onBindViewHolder$$inlined$apply$lambda$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject1).aFi());
-      paramView = this.xob;
-      localObject1 = parami.getContext();
-      p.j(localObject1, "holder.context");
-      Object localObject2 = cb.a(this.xob);
-      if (localObject2 != null)
-      {
-        localObject2 = ((BaseFinderFeedLoader)localObject2).getDataListJustForAdapter();
-        if (localObject2 == null) {}
-      }
-      for (int i = ((DataBuffer)localObject2).indexOf(paramBaseFinderFeed);; i = 0)
-      {
-        cb.a(paramView, (Context)localObject1, i, paramBaseFinderFeed);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/convert/FinderProfileAtGridConvert$onBindViewHolder$$inlined$apply$lambda$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(287269);
-        return;
+      paramj = "";
+      break label215;
+      label348:
+      paramBaseFinderFeed = paramj.getDescription();
+      paramj = paramBaseFinderFeed;
+      if (paramBaseFinderFeed == null) {
+        paramj = "";
       }
     }
   }

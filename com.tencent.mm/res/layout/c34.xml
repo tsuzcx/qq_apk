@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/bt" android:paddingRight="@dimen/bt" android:layout_width="wrap_content" android:layout_height="@dimen/cs"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/e35" layout="@layout/c37" />
-    <include android:id="@id/e33" layout="@layout/c37" />
-    <include android:id="@id/e37" layout="@layout/c37" />
-    <include android:id="@id/e36" layout="@layout/c36" />
-    <include android:id="@id/e34" layout="@layout/c37" />
+<LinearLayout android:orientation="vertical" android:id="@id/bk_" android:background="@drawable/atp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="6.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/jsn" android:background="@drawable/atv" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <LinearLayout android:orientation="horizontal" android:paddingRight="10.0dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="top" android:id="@id/jsm" android:paddingLeft="8.0dip" android:paddingTop="13.0dip" android:paddingRight="8.0dip" android:visibility="invisible" android:layout_width="33.0dip" android:layout_height="33.0dip" android:src="@raw/friendactivity_writeicon" android:scaleType="center" app:iconColor="@color/Link" />
+        <LinearLayout android:orientation="horizontal" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="6.0dip">
+            <com.tencent.mm.plugin.sns.ui.widget.SnsAvatarImageView android:id="@id/m0" android:focusable="false" android:scaleType="centerCrop" android:contentDescription="@string/a_q" style="@style/ud" />
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <TextView android:textSize="12.0dip" android:textColor="@color/adx" android:layout_gravity="center_vertical" android:id="@id/me" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" />
+                    <TextView android:textSize="13.0dip" android:textColor="@color/a7b" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/mb" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="200.0dip" android:singleLine="true" android:layout_toLeftOf="@id/me" android:layout_alignParentStart="true" />
+                </RelativeLayout>
+                <FrameLayout android:id="@id/m3" android:background="@drawable/ati" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip">
+                    <TextView android:textSize="15.0dip" android:textColor="@color/FG_0_5" android:layout_gravity="center_vertical" android:id="@id/m4" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                </FrameLayout>
+                <com.tencent.mm.plugin.sns.ui.SnsTranslateResultView android:id="@id/jx5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <com.tencent.mm.emoji.view.EmojiStatusView android:id="@id/m5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:adjustViewBounds="true" android:maxWidth="120.0dip" android:maxHeight="120.0dip" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

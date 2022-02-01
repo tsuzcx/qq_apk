@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class APMidasPluginDownloadManager
 {
@@ -17,9 +16,9 @@ public class APMidasPluginDownloadManager
   
   private APMidasPluginDownloadManager()
   {
-    AppMethodBeat.i(253040);
+    AppMethodBeat.i(217135);
     this.executorService = getExecutorService();
-    AppMethodBeat.o(253040);
+    AppMethodBeat.o(217135);
   }
   
   /* Error */
@@ -28,24 +27,24 @@ public class APMidasPluginDownloadManager
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 39
-    //   4: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc 37
+    //   4: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_1
     //   8: ifnonnull +18 -> 26
-    //   11: ldc 13
-    //   13: ldc 41
-    //   15: invokestatic 47	com/tencent/midas/comm/APLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   18: ldc 39
-    //   20: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   11: ldc 11
+    //   13: ldc 39
+    //   15: invokestatic 45	com/tencent/midas/comm/APLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   18: ldc 37
+    //   20: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   23: aload_0
     //   24: monitorexit
     //   25: return
     //   26: aload_0
-    //   27: getfield 32	com/tencent/midas/download/APMidasPluginDownloadManager:executorService	Ljava/util/concurrent/ExecutorService;
+    //   27: getfield 30	com/tencent/midas/download/APMidasPluginDownloadManager:executorService	Ljava/util/concurrent/ExecutorService;
     //   30: aload_1
-    //   31: invokeinterface 53 2 0
-    //   36: ldc 39
-    //   38: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   31: invokeinterface 51 2 0
+    //   36: ldc 37
+    //   38: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   41: goto -18 -> 23
     //   44: astore_1
     //   45: aload_0
@@ -65,47 +64,34 @@ public class APMidasPluginDownloadManager
   
   private ExecutorService getExecutorService()
   {
-    AppMethodBeat.i(253046);
+    AppMethodBeat.i(217158);
     if (this.executorService == null) {
       this.executorService = Executors.newFixedThreadPool(1, threadFactory("Plugin Download Thread", false));
     }
     ExecutorService localExecutorService = this.executorService;
-    AppMethodBeat.o(253046);
+    AppMethodBeat.o(217158);
     return localExecutorService;
   }
   
   static void startDownload(Context paramContext, ArrayList<APMidasPluginDownInfo> paramArrayList, IAPMidasPluginDownListener paramIAPMidasPluginDownListener)
   {
-    AppMethodBeat.i(253042);
+    AppMethodBeat.i(217142);
     File localFile = paramContext.getApplicationContext().getDir("midaspluginsTemp", 0);
     new APMidasPluginDownloadManager().enqueue(new APMidasPluginDownloadWorker(paramContext, paramArrayList, localFile, paramIAPMidasPluginDownListener));
-    AppMethodBeat.o(253042);
+    AppMethodBeat.o(217142);
   }
   
-  private static ThreadFactory threadFactory(String paramString, final boolean paramBoolean)
+  private static ThreadFactory threadFactory(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(253047);
-    paramString = new ThreadFactory()
-    {
-      private AtomicInteger netThreadCount;
-      
-      public final Thread newThread(Runnable paramAnonymousRunnable)
-      {
-        AppMethodBeat.i(252989);
-        paramAnonymousRunnable = new Thread(paramAnonymousRunnable, this.val$name + " " + this.netThreadCount.getAndIncrement());
-        paramAnonymousRunnable.setPriority(10);
-        paramAnonymousRunnable.setDaemon(paramBoolean);
-        AppMethodBeat.o(252989);
-        return paramAnonymousRunnable;
-      }
-    };
-    AppMethodBeat.o(253047);
+    AppMethodBeat.i(217165);
+    paramString = new APMidasPluginDownloadManager.1(paramString, paramBoolean);
+    AppMethodBeat.o(217165);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.midas.download.APMidasPluginDownloadManager
  * JD-Core Version:    0.7.0.1
  */

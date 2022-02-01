@@ -1,26 +1,22 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.l;
 
 final class RegByMobileRegAIOUI$5
-  implements View.OnClickListener
+  implements MenuItem.OnMenuItemClickListener
 {
   RegByMobileRegAIOUI$5(RegByMobileRegAIOUI paramRegByMobileRegAIOUI) {}
   
-  public final void onClick(View paramView)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(169148);
-    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/ui/RegByMobileRegAIOUI$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    if (com.tencent.mm.pluginsdk.permission.b.a(this.nic, "android.permission.WRITE_EXTERNAL_STORAGE", 34, "", "")) {
-      com.tencent.mm.plugin.account.sdk.a.mIH.r(this.nic);
-    }
-    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/RegByMobileRegAIOUI$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(169148);
+    AppMethodBeat.i(128515);
+    this.qfw.hideVKB();
+    RegByMobileRegAIOUI.o(this.qfw);
+    this.qfw.finish();
+    AppMethodBeat.o(128515);
+    return true;
   }
 }
 

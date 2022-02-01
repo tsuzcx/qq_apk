@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.hld.candidate;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
@@ -8,7 +7,6 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -17,461 +15,389 @@ import com.tencent.mm.plugin.hld.a.d;
 import com.tencent.mm.plugin.hld.a.f;
 import com.tencent.mm.plugin.hld.a.h;
 import com.tencent.mm.plugin.hld.f.k;
+import com.tencent.mm.plugin.hld.f.l;
 import com.tencent.mm.plugin.hld.view.ImeEditText;
-import com.tencent.mm.plugin.hld.view.e;
-import com.tencent.mm.plugin.hld.view.g;
+import com.tencent.mm.plugin.hld.view.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ad;
+import com.tencent.mm.ui.af;
 import com.tencent.wxhld.WxhldApi;
 import com.tencent.wxhld.info.PendingInput;
-import kotlin.g.b.aa.f;
-import kotlin.g.b.p;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/candidate/ImeUnfoldStrikeView;", "Lcom/tencent/mm/plugin/hld/candidate/IPendingInputDataListener;", "Lcom/tencent/mm/plugin/hld/view/ImeEditTextCursorListener;", "Landroid/view/View$OnTouchListener;", "()V", "TAG", "", "loc", "", "mAdjustX", "", "mAdjustY", "mAnchorView", "Landroid/view/View;", "mBottomYOffSet", "mContext", "Landroid/content/Context;", "mCursorHandleView", "mCursorHandleWidow", "Landroid/widget/PopupWindow;", "mInitializeSuccess", "", "mStrikeContainerWidow", "mStrikeEt", "Lcom/tencent/mm/plugin/hld/view/ImeEditText;", "mStrikeMaskView", "mUnfoldStrikeContainerView", "offset", "getOffset", "()Ljava/lang/Integer;", "setOffset", "(Ljava/lang/Integer;)V", "Ljava/lang/Integer;", "calculateOffset", "rawX", "rawY", "(II)Ljava/lang/Integer;", "init", "", "context", "onCursorLocation", "x", "y", "cursorIndex", "onHide", "onShow", "anchorView", "onTouch", "v", "event", "Landroid/view/MotionEvent;", "reset", "showUnfoldStrikeView", "updatePendingInputData", "pendingInputs", "", "Lcom/tencent/wxhld/info/PendingInput;", "lastPendingInputContent", "", "([Lcom/tencent/wxhld/info/PendingInput;Ljava/lang/CharSequence;I)V", "plugin-hld_release"})
-@SuppressLint({"StaticFieldLeak"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/candidate/ImeUnfoldStrikeView;", "Lcom/tencent/mm/plugin/hld/candidate/IPendingInputDataListener;", "Lcom/tencent/mm/plugin/hld/view/ImeEditTextCursorListener;", "Landroid/view/View$OnTouchListener;", "()V", "TAG", "", "loc", "", "mAdjustX", "", "mAdjustY", "mAnchorView", "Landroid/view/View;", "mBottomYOffSet", "mContext", "Landroid/content/Context;", "mCursorHandleView", "mCursorHandleWidow", "Landroid/widget/PopupWindow;", "mInitializeSuccess", "", "mStrikeContainerWidow", "mStrikeEt", "Lcom/tencent/mm/plugin/hld/view/ImeEditText;", "mStrikeMaskView", "mUnfoldStrikeContainerView", "offset", "getOffset", "()Ljava/lang/Integer;", "setOffset", "(Ljava/lang/Integer;)V", "Ljava/lang/Integer;", "calculateOffset", "rawX", "rawY", "(II)Ljava/lang/Integer;", "init", "", "context", "onCursorLocation", "x", "y", "cursorIndex", "onHide", "onShow", "anchorView", "onTouch", "v", "event", "Landroid/view/MotionEvent;", "reset", "showUnfoldStrikeView", "updatePendingInputData", "pendingInputs", "", "Lcom/tencent/wxhld/info/PendingInput;", "lastPendingInputContent", "", "([Lcom/tencent/wxhld/info/PendingInput;Ljava/lang/CharSequence;I)V", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
-  implements View.OnTouchListener, b, e
+  implements View.OnTouchListener, b, d
 {
-  private static PopupWindow DuV;
-  private static View DuW;
-  static ImeEditText DuX;
-  private static View DuY;
-  static int DuZ;
-  public static boolean Dva;
-  private static PopupWindow Dvb;
-  private static View Dvc;
-  private static int Dvd;
-  private static int Dve;
-  private static final int[] Dvf;
-  private static Integer Dvg;
-  public static final f Dvh;
-  static View lJ;
+  private static int JoA;
+  private static int JoB;
+  private static final int[] JoC;
+  private static Integer JoD;
+  public static final f Jor;
+  private static PopupWindow Jos;
+  private static View Jot;
+  static ImeEditText Jou;
+  private static View Jov;
+  static int Jow;
+  private static boolean Jox;
+  private static PopupWindow Joy;
+  private static View Joz;
   private static Context mContext;
+  static View mF;
   
   static
   {
-    AppMethodBeat.i(211599);
-    Dvh = new f();
-    Dvf = new int[2];
-    AppMethodBeat.o(211599);
+    AppMethodBeat.i(312878);
+    Jor = new f();
+    JoC = new int[2];
+    AppMethodBeat.o(312878);
   }
   
-  static void eCR()
+  private static final void Yo(int paramInt)
   {
-    AppMethodBeat.i(211590);
-    PopupWindow localPopupWindow = DuV;
+    AppMethodBeat.i(312873);
+    ImeEditText localImeEditText = Jou;
+    if (localImeEditText != null) {
+      localImeEditText.setSelection(paramInt);
+    }
+    AppMethodBeat.o(312873);
+  }
+  
+  static void fKT()
+  {
+    AppMethodBeat.i(312854);
+    PopupWindow localPopupWindow = Jos;
     if (localPopupWindow != null)
     {
       int i = localPopupWindow.getHeight();
-      Object localObject1 = k.DHH;
-      localObject1 = DuX;
-      if (localObject1 == null) {
-        p.iCn();
-      }
+      Object localObject1 = k.JyF;
+      localObject1 = Jou;
+      s.checkNotNull(localObject1);
       localObject1 = (TextView)localObject1;
-      Object localObject2 = com.tencent.mm.plugin.hld.model.n.DEn;
-      localObject2 = com.tencent.mm.plugin.hld.model.n.eEM();
-      Object localObject3 = mContext;
-      if (localObject3 == null) {
-        p.iCn();
-      }
-      localObject3 = ((Context)localObject3).getResources();
-      p.j(localObject3, "mContext!!.resources");
-      int j = k.b((TextView)localObject1, (CharSequence)localObject2, ((Resources)localObject3).getDisplayMetrics().widthPixels - com.tencent.mm.ci.a.aZ(mContext, a.d.ime_strike_container_content_margin_left) * 2) + com.tencent.mm.ci.a.aZ(mContext, a.d.ime_strike_container_top_margin) * 2 + com.tencent.mm.ci.a.aZ(mContext, a.d.ime_strike_container_content_margin_bottom) + com.tencent.mm.ci.a.aZ(mContext, a.d.bottomsheet_dividing_line_height);
+      Object localObject2 = com.tencent.mm.plugin.hld.model.n.JvW;
+      localObject2 = com.tencent.mm.plugin.hld.model.n.fMP();
+      Context localContext = mContext;
+      s.checkNotNull(localContext);
+      int j = k.b((TextView)localObject1, (CharSequence)localObject2, localContext.getResources().getDisplayMetrics().widthPixels - com.tencent.mm.cd.a.bs(mContext, a.d.ime_strike_container_content_margin_left) * 2) + com.tencent.mm.cd.a.bs(mContext, a.d.ime_strike_container_top_margin) * 2 + com.tencent.mm.cd.a.bs(mContext, a.d.ime_strike_container_content_margin_bottom) + com.tencent.mm.cd.a.bs(mContext, a.d.bottomsheet_dividing_line_height);
       if ((i != j) || (!localPopupWindow.isShowing()))
       {
-        int k = DuZ;
-        localObject1 = com.tencent.mm.plugin.hld.f.l.DHK;
+        int k = Jow;
+        localObject1 = l.JyV;
         localObject1 = mContext;
-        if (localObject1 == null) {
-          p.iCn();
-        }
-        k = k - j - com.tencent.mm.plugin.hld.f.l.getStatusBarHeight((Context)localObject1);
-        localObject1 = new StringBuilder().append(localPopupWindow.isShowing()).append(" yOffset:").append(k).append(" mBottomYOffSet:").append(DuZ).append(" newHeight:").append(j).append(" statusBar:");
-        localObject2 = com.tencent.mm.plugin.hld.f.l.DHK;
+        s.checkNotNull(localObject1);
+        k = k - j - l.getStatusBarHeight((Context)localObject1);
+        localObject1 = new StringBuilder().append(localPopupWindow.isShowing()).append(" yOffset:").append(k).append(" mBottomYOffSet:").append(Jow).append(" newHeight:").append(j).append(" statusBar:");
+        localObject2 = l.JyV;
         localObject2 = mContext;
-        if (localObject2 == null) {
-          p.iCn();
-        }
-        Log.d("WxIme.ImeUnfoldStrikeView", com.tencent.mm.plugin.hld.f.l.getStatusBarHeight((Context)localObject2) + " oriHeight:" + i + " newHeight:" + j);
-        if (lJ != null)
+        s.checkNotNull(localObject2);
+        Log.d("WxIme.ImeUnfoldStrikeView", l.getStatusBarHeight((Context)localObject2) + " oriHeight:" + i + " newHeight:" + j);
+        if (mF != null)
         {
           if (!localPopupWindow.isShowing())
           {
             localPopupWindow.dismiss();
             localPopupWindow.setHeight(j);
-            localPopupWindow.showAtLocation(lJ, 8388659, 0, k);
-            AppMethodBeat.o(211590);
+            localPopupWindow.showAtLocation(mF, 8388659, 0, k);
+            AppMethodBeat.o(312854);
             return;
           }
           localPopupWindow.update(0, k, localPopupWindow.getWidth(), j);
-          AppMethodBeat.o(211590);
+          AppMethodBeat.o(312854);
           return;
         }
         Log.e("WxIme.ImeUnfoldStrikeView", "mAnchorView is null?");
-        AppMethodBeat.o(211590);
+        AppMethodBeat.o(312854);
         return;
       }
       Log.d("WxIme.ImeUnfoldStrikeView", "oriHeight:" + i + " newHeight:" + j);
-      AppMethodBeat.o(211590);
-      return;
     }
-    AppMethodBeat.o(211590);
+    AppMethodBeat.o(312854);
   }
   
-  private static Integer hJ(int paramInt1, int paramInt2)
+  private static final void hK(View paramView)
   {
-    AppMethodBeat.i(211597);
-    aa.f localf = new aa.f();
-    paramInt1 -= Dvf[0];
-    int i = Dve;
-    Object localObject1 = Dvc;
-    if (localObject1 == null) {
-      p.iCn();
-    }
+    AppMethodBeat.i(312867);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/hld/candidate/ImeUnfoldStrikeView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    Jor.onHide();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/hld/candidate/ImeUnfoldStrikeView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(312867);
+  }
+  
+  private static Integer jn(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(312863);
+    paramInt1 -= JoC[0];
+    int i = JoB;
+    Object localObject1 = Joz;
+    s.checkNotNull(localObject1);
     int j = ((View)localObject1).getMeasuredHeight();
-    localObject1 = DuX;
-    if (localObject1 == null) {
-      p.iCn();
-    }
+    localObject1 = Jou;
+    s.checkNotNull(localObject1);
     int k = ((ImeEditText)localObject1).getMeasuredHeight();
-    localObject1 = DuX;
-    if (localObject1 == null) {
-      p.iCn();
-    }
-    paramInt2 = i + paramInt2 - j - k / ((ImeEditText)localObject1).getLineCount() - Dvf[1];
-    localObject1 = (View)DuX;
-    Object localObject2 = DuX;
-    if (localObject2 == null) {
-      p.iCn();
-    }
-    i = com.tencent.mm.ui.widget.textview.b.i((View)localObject1, paramInt1, paramInt2, ((ImeEditText)localObject2).getSelectionStart());
+    localObject1 = Jou;
+    s.checkNotNull(localObject1);
+    paramInt2 = i + paramInt2 - j - k / ((ImeEditText)localObject1).getLineCount() - JoC[1];
+    localObject1 = (View)Jou;
+    Object localObject2 = Jou;
+    s.checkNotNull(localObject2);
+    i = com.tencent.mm.ui.widget.textview.b.h((View)localObject1, paramInt1, paramInt2, ((ImeEditText)localObject2).getSelectionStart());
     localObject2 = new StringBuilder("onTouch ").append(paramInt1).append(' ').append(paramInt2).append(" offset:").append(i).append(" oriOffset:");
-    localObject1 = DuX;
-    if (localObject1 != null) {}
-    for (localObject1 = Integer.valueOf(((ImeEditText)localObject1).getSelectionStart());; localObject1 = null)
+    localObject1 = Jou;
+    if (localObject1 == null) {}
+    for (localObject1 = null;; localObject1 = Integer.valueOf(((ImeEditText)localObject1).getSelectionStart()))
     {
       Log.d("WxIme.ImeUnfoldStrikeView", localObject1);
-      localObject1 = DuX;
+      localObject1 = Jou;
       if (localObject1 != null) {
         ((ImeEditText)localObject1).setSelection(i);
       }
-      localf.aaBC = Integer.valueOf(i);
-      localObject1 = (Integer)localf.aaBC;
-      AppMethodBeat.o(211597);
-      return localObject1;
+      AppMethodBeat.o(312863);
+      return Integer.valueOf(i);
     }
   }
   
   public final void a(PendingInput[] paramArrayOfPendingInput, CharSequence paramCharSequence, int paramInt)
   {
-    AppMethodBeat.i(211593);
-    paramArrayOfPendingInput = DuX;
-    if (paramArrayOfPendingInput == null) {
-      p.iCn();
-    }
+    AppMethodBeat.i(312920);
+    paramArrayOfPendingInput = Jou;
+    s.checkNotNull(paramArrayOfPendingInput);
     int i = paramArrayOfPendingInput.getMCurrentCursorIndex();
     paramArrayOfPendingInput = new StringBuilder("updatePendingInputData length:");
-    com.tencent.mm.plugin.hld.model.n localn = com.tencent.mm.plugin.hld.model.n.DEn;
-    paramArrayOfPendingInput = paramArrayOfPendingInput.append(com.tencent.mm.plugin.hld.model.n.eEM().length()).append(" lastLength:");
-    if (paramCharSequence == null) {
-      p.iCn();
-    }
+    com.tencent.mm.plugin.hld.model.n localn = com.tencent.mm.plugin.hld.model.n.JvW;
+    paramArrayOfPendingInput = paramArrayOfPendingInput.append(com.tencent.mm.plugin.hld.model.n.fMP().length()).append(" lastLength:");
+    s.checkNotNull(paramCharSequence);
     Log.i("WxIme.ImeUnfoldStrikeView", paramCharSequence.length() + " cursorIndex:" + paramInt + " lastPendingInputCursorIndex:" + i);
-    paramArrayOfPendingInput = com.tencent.mm.plugin.hld.model.n.DEn;
-    if ((Util.isEqual(paramCharSequence, com.tencent.mm.plugin.hld.model.n.eEM())) && (i == paramInt))
+    paramArrayOfPendingInput = com.tencent.mm.plugin.hld.model.n.JvW;
+    if ((Util.isEqual(paramCharSequence, com.tencent.mm.plugin.hld.model.n.fMP())) && (i == paramInt))
     {
-      AppMethodBeat.o(211593);
+      AppMethodBeat.o(312920);
       return;
     }
-    paramArrayOfPendingInput = DuX;
-    if (paramArrayOfPendingInput == null) {
-      p.iCn();
-    }
-    paramArrayOfPendingInput.eHE();
-    paramArrayOfPendingInput = DuX;
-    if (paramArrayOfPendingInput == null) {
-      p.iCn();
-    }
-    paramCharSequence = com.tencent.mm.plugin.hld.model.n.DEn;
-    paramArrayOfPendingInput.setText(com.tencent.mm.plugin.hld.model.n.eEM());
-    paramArrayOfPendingInput = DuX;
+    paramArrayOfPendingInput = Jou;
+    s.checkNotNull(paramArrayOfPendingInput);
+    paramArrayOfPendingInput.fPq();
+    paramArrayOfPendingInput = Jou;
+    s.checkNotNull(paramArrayOfPendingInput);
+    paramCharSequence = com.tencent.mm.plugin.hld.model.n.JvW;
+    paramArrayOfPendingInput.setText(com.tencent.mm.plugin.hld.model.n.fMP());
+    paramArrayOfPendingInput = Jou;
     if (paramArrayOfPendingInput != null) {
-      paramArrayOfPendingInput.post((Runnable)new b(paramInt));
+      paramArrayOfPendingInput.post(new f..ExternalSyntheticLambda1(paramInt));
     }
-    paramArrayOfPendingInput = com.tencent.mm.plugin.hld.model.n.DEn;
-    if (Util.isNullOrNil(com.tencent.mm.plugin.hld.model.n.eEM()))
+    paramArrayOfPendingInput = com.tencent.mm.plugin.hld.model.n.JvW;
+    if (Util.isNullOrNil(com.tencent.mm.plugin.hld.model.n.fMP()))
     {
       onHide();
-      AppMethodBeat.o(211593);
+      AppMethodBeat.o(312920);
       return;
     }
-    eCR();
-    AppMethodBeat.o(211593);
-  }
-  
-  public final void hI(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(211594);
-    Object localObject = DuX;
-    if (localObject == null) {
-      p.iCn();
-    }
-    int i = ((ImeEditText)localObject).getMeasuredHeight();
-    localObject = DuX;
-    if (localObject == null) {
-      p.iCn();
-    }
-    i /= ((ImeEditText)localObject).getLineCount();
-    localObject = Dvb;
-    if (localObject == null) {
-      p.iCn();
-    }
-    paramInt1 -= ((PopupWindow)localObject).getWidth() / 2;
-    localObject = com.tencent.mm.plugin.hld.f.l.DHK;
-    localObject = mContext;
-    if (localObject == null) {
-      p.iCn();
-    }
-    int j = paramInt2 - com.tencent.mm.plugin.hld.f.l.getStatusBarHeight((Context)localObject);
-    Log.d("WxIme.ImeUnfoldStrikeView", "onCursorLocation y:" + paramInt2 + " lineHeight:" + i);
-    localObject = Dvb;
-    if (localObject == null) {
-      p.iCn();
-    }
-    if (!((PopupWindow)localObject).isShowing())
-    {
-      localObject = Dvb;
-      if (localObject == null) {
-        p.iCn();
-      }
-      ((PopupWindow)localObject).dismiss();
-      localObject = Dvb;
-      if (localObject == null) {
-        p.iCn();
-      }
-      ((PopupWindow)localObject).showAtLocation(lJ, 8388659, paramInt1, j);
-      AppMethodBeat.o(211594);
-      return;
-    }
-    localObject = Dvb;
-    if (localObject == null) {
-      p.iCn();
-    }
-    PopupWindow localPopupWindow = Dvb;
-    if (localPopupWindow == null) {
-      p.iCn();
-    }
-    paramInt2 = localPopupWindow.getWidth();
-    localPopupWindow = Dvb;
-    if (localPopupWindow == null) {
-      p.iCn();
-    }
-    ((PopupWindow)localObject).update(paramInt1, j, paramInt2, localPopupWindow.getHeight());
-    AppMethodBeat.o(211594);
+    fKT();
+    AppMethodBeat.o(312920);
   }
   
   public final void init(Context paramContext)
   {
-    AppMethodBeat.i(211587);
-    p.k(paramContext, "context");
+    AppMethodBeat.i(312901);
+    s.u(paramContext, "context");
     long l = System.currentTimeMillis();
     mContext = paramContext;
-    Object localObject1 = ad.kS(paramContext).inflate(a.h.ime_unfold_strike_container_view, null, false);
-    DuX = (ImeEditText)((View)localObject1).findViewById(a.f.un_fold_strike_et);
-    DuY = ((View)localObject1).findViewById(a.f.un_fold_strike_mask);
-    Object localObject2 = g.DIP;
-    g.a(((View)localObject1).findViewById(a.f.strike_unfold_back_ll), (View.OnClickListener)a.Dvi);
-    DuW = (View)localObject1;
-    localObject1 = new PopupWindow(DuW);
-    ((PopupWindow)localObject1).setClippingEnabled(false);
-    ((PopupWindow)localObject1).setInputMethodMode(2);
+    Object localObject = af.mU(paramContext).inflate(a.h.ime_unfold_strike_container_view, null, false);
+    Jou = (ImeEditText)((View)localObject).findViewById(a.f.un_fold_strike_et);
+    Jov = ((View)localObject).findViewById(a.f.un_fold_strike_mask);
+    com.tencent.mm.plugin.hld.view.f.JzR.a(((View)localObject).findViewById(a.f.strike_unfold_back_ll), f..ExternalSyntheticLambda0.INSTANCE);
+    Jot = (View)localObject;
+    localObject = new PopupWindow(Jot);
+    ((PopupWindow)localObject).setClippingEnabled(false);
+    ((PopupWindow)localObject).setInputMethodMode(2);
     if (Build.VERSION.SDK_INT >= 23)
     {
-      localObject2 = com.tencent.mm.plugin.hld.f.l.DHK;
-      ((PopupWindow)localObject1).setWindowLayoutType(1003);
+      l locall = l.JyV;
+      ((PopupWindow)localObject).setWindowLayoutType(l.fOG());
     }
-    localObject2 = paramContext.getResources();
-    p.j(localObject2, "context.resources");
-    ((PopupWindow)localObject1).setWidth(((Resources)localObject2).getDisplayMetrics().widthPixels);
-    DuV = (PopupWindow)localObject1;
-    paramContext = ad.kS(paramContext).inflate(a.h.ime_unfold_strike_container_cursor_handle_view, null, false);
-    paramContext.setOnTouchListener((View.OnTouchListener)Dvh);
-    Dvc = paramContext;
-    paramContext = new PopupWindow(Dvc);
+    ((PopupWindow)localObject).setWidth(paramContext.getResources().getDisplayMetrics().widthPixels);
+    Jos = (PopupWindow)localObject;
+    paramContext = af.mU(paramContext).inflate(a.h.ime_unfold_strike_container_cursor_handle_view, null, false);
+    paramContext.setOnTouchListener((View.OnTouchListener)Jor);
+    Joz = paramContext;
+    paramContext = new PopupWindow(Joz);
     paramContext.setClippingEnabled(true);
     paramContext.setInputMethodMode(2);
     if (Build.VERSION.SDK_INT >= 23)
     {
-      localObject1 = com.tencent.mm.plugin.hld.f.l.DHK;
-      paramContext.setWindowLayoutType(1003);
+      localObject = l.JyV;
+      paramContext.setWindowLayoutType(l.fOG());
     }
-    paramContext.setWidth(com.tencent.mm.ci.a.aZ(mContext, a.d.ime_strike_container_cursor_handle_width));
-    paramContext.setHeight(com.tencent.mm.ci.a.aZ(mContext, a.d.ime_strike_container_cursor_handle_height));
-    Dvb = paramContext;
-    paramContext = DuY;
+    paramContext.setWidth(com.tencent.mm.cd.a.bs(mContext, a.d.ime_strike_container_cursor_handle_width));
+    paramContext.setHeight(com.tencent.mm.cd.a.bs(mContext, a.d.ime_strike_container_cursor_handle_height));
+    Joy = paramContext;
+    paramContext = Jov;
     if (paramContext != null) {
       paramContext.setOnTouchListener((View.OnTouchListener)this);
     }
-    Dva = true;
-    Log.i("WxIme.ImeUnfoldStrikeView", "init inter time:" + (System.currentTimeMillis() - l));
-    AppMethodBeat.o(211587);
+    Jox = true;
+    Log.i("WxIme.ImeUnfoldStrikeView", s.X("init inter time:", Long.valueOf(System.currentTimeMillis() - l)));
+    AppMethodBeat.o(312901);
+  }
+  
+  public final void jm(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(312927);
+    Object localObject = Jou;
+    s.checkNotNull(localObject);
+    int i = ((ImeEditText)localObject).getMeasuredHeight();
+    localObject = Jou;
+    s.checkNotNull(localObject);
+    i /= ((ImeEditText)localObject).getLineCount();
+    localObject = Joy;
+    s.checkNotNull(localObject);
+    paramInt1 -= ((PopupWindow)localObject).getWidth() / 2;
+    localObject = l.JyV;
+    localObject = mContext;
+    s.checkNotNull(localObject);
+    int j = paramInt2 - l.getStatusBarHeight((Context)localObject);
+    Log.d("WxIme.ImeUnfoldStrikeView", "onCursorLocation y:" + paramInt2 + " lineHeight:" + i);
+    localObject = Joy;
+    s.checkNotNull(localObject);
+    if (!((PopupWindow)localObject).isShowing())
+    {
+      localObject = Joy;
+      s.checkNotNull(localObject);
+      ((PopupWindow)localObject).dismiss();
+      localObject = Joy;
+      s.checkNotNull(localObject);
+      ((PopupWindow)localObject).showAtLocation(mF, 8388659, paramInt1, j);
+      AppMethodBeat.o(312927);
+      return;
+    }
+    localObject = Joy;
+    s.checkNotNull(localObject);
+    PopupWindow localPopupWindow = Joy;
+    s.checkNotNull(localPopupWindow);
+    paramInt2 = localPopupWindow.getWidth();
+    localPopupWindow = Joy;
+    s.checkNotNull(localPopupWindow);
+    ((PopupWindow)localObject).update(paramInt1, j, paramInt2, localPopupWindow.getHeight());
+    AppMethodBeat.o(312927);
   }
   
   public final void onHide()
   {
-    AppMethodBeat.i(211589);
+    AppMethodBeat.i(312913);
     Log.d("WxIme.ImeUnfoldStrikeView", "onHide");
-    if (!Dva)
+    if (!Jox)
     {
       Log.i("WxIme.ImeUnfoldStrikeView", "onHide:init wait....");
-      AppMethodBeat.o(211589);
+      AppMethodBeat.o(312913);
       return;
     }
-    Object localObject = DuX;
+    Object localObject = Jou;
     if (localObject != null) {
       ((ImeEditText)localObject).setImeEditTextCursorListener(null);
     }
-    localObject = com.tencent.mm.plugin.hld.model.n.DEn;
+    localObject = com.tencent.mm.plugin.hld.model.n.JvW;
     com.tencent.mm.plugin.hld.model.n.b((b)this);
-    localObject = com.tencent.mm.plugin.hld.model.n.DEn;
-    com.tencent.mm.plugin.hld.model.n.eEJ();
-    localObject = DuV;
+    localObject = com.tencent.mm.plugin.hld.model.n.JvW;
+    com.tencent.mm.plugin.hld.model.n.fMM();
+    localObject = Jos;
     if (localObject != null) {
       ((PopupWindow)localObject).dismiss();
     }
-    localObject = Dvb;
+    localObject = Joy;
     if (localObject != null) {
       ((PopupWindow)localObject).dismiss();
     }
-    lJ = null;
-    AppMethodBeat.o(211589);
+    mF = null;
+    AppMethodBeat.o(312913);
   }
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(211596);
-    Integer localInteger;
+    Object localObject2 = null;
+    AppMethodBeat.i(312938);
+    Object localObject1;
     int i;
     int j;
-    if (paramMotionEvent != null)
+    if (paramMotionEvent == null)
     {
-      localInteger = Integer.valueOf(paramMotionEvent.getActionMasked());
-      if (paramMotionEvent == null) {
-        p.iCn();
-      }
+      localObject1 = null;
+      s.checkNotNull(paramMotionEvent);
       i = (int)paramMotionEvent.getRawX();
       j = (int)paramMotionEvent.getRawY();
-      if (localInteger != null) {
-        break label125;
+      if (localObject1 != null) {
+        break label120;
       }
-      label44:
-      if (localInteger != null) {
-        break label179;
+      label38:
+      if (localObject1 != null) {
+        break label171;
       }
-      label49:
-      if (localInteger != null) {
-        break label200;
+      label43:
+      if (localObject1 != null) {
+        break label192;
       }
-      label54:
-      paramMotionEvent = new StringBuilder("onTouch action:").append(localInteger).append(' ');
-      if (paramView == null) {
-        break label345;
+      label48:
+      paramMotionEvent = new StringBuilder("onTouch action:").append(localObject1).append(' ');
+      if (paramView != null) {
+        break label336;
       }
     }
-    label179:
-    label200:
-    label345:
-    for (paramView = Integer.valueOf(paramView.getId());; paramView = null)
+    label171:
+    label192:
+    label336:
+    for (paramView = localObject2;; paramView = Integer.valueOf(paramView.getId()))
     {
-      Log.d("WxIme.ImeUnfoldStrikeView", paramView + ' ' + Dvg);
-      AppMethodBeat.o(211596);
+      Log.d("WxIme.ImeUnfoldStrikeView", paramView + ' ' + JoD);
+      AppMethodBeat.o(312938);
       return true;
-      localInteger = null;
+      localObject1 = Integer.valueOf(paramMotionEvent.getActionMasked());
       break;
-      label125:
-      if (localInteger.intValue() != 0) {
-        break label44;
+      label120:
+      if (((Integer)localObject1).intValue() != 0) {
+        break label38;
       }
-      Dvd = (int)paramMotionEvent.getX();
-      Dve = (int)paramMotionEvent.getY();
-      paramMotionEvent = DuX;
+      JoA = (int)paramMotionEvent.getX();
+      JoB = (int)paramMotionEvent.getY();
+      paramMotionEvent = Jou;
+      s.checkNotNull(paramMotionEvent);
+      paramMotionEvent.getLocationOnScreen(JoC);
+      JoD = jn(i, j);
+      break label48;
+      if (((Integer)localObject1).intValue() != 2) {
+        break label43;
+      }
+      JoD = jn(i, j);
+      break label48;
+      if (((Integer)localObject1).intValue() != 1) {
+        break label48;
+      }
+      paramMotionEvent = JoD;
       if (paramMotionEvent == null) {
-        p.iCn();
-      }
-      paramMotionEvent.getLocationOnScreen(Dvf);
-      Dvg = hJ(i, j);
-      break label54;
-      if (localInteger.intValue() != 2) {
-        break label49;
-      }
-      Dvg = hJ(i, j);
-      break label54;
-      if (localInteger.intValue() != 1) {
-        break label54;
-      }
-      paramMotionEvent = Dvg;
-      if (paramMotionEvent == null) {
-        break label54;
+        break label48;
       }
       i = ((Number)paramMotionEvent).intValue();
-      paramMotionEvent = com.tencent.mm.plugin.hld.model.n.DEn;
-      Log.i("WxIme.WxEngineMgr", "setCursorIndex " + com.tencent.mm.plugin.hld.model.n.DDY + ' ' + i + ' ' + com.tencent.mm.plugin.hld.model.n.eEM().length());
-      if (com.tencent.mm.plugin.hld.model.n.eEX()) {
-        break label54;
+      paramMotionEvent = com.tencent.mm.plugin.hld.model.n.JvW;
+      Log.i("WxIme.WxEngineMgr", "setCursorIndex " + com.tencent.mm.plugin.hld.model.n.JvX + ' ' + i + ' ' + com.tencent.mm.plugin.hld.model.n.fMP().length());
+      if (com.tencent.mm.plugin.hld.model.n.fNa()) {
+        break label48;
       }
-      i = kotlin.n.n.l(com.tencent.mm.plugin.hld.model.n.eEM().subSequence(i, com.tencent.mm.plugin.hld.model.n.eEM().length()).toString(), " ", "", false).length();
-      Log.d("WxIme.WxEngineMgr", "setCursorIndex ".concat(String.valueOf(i)));
-      WxhldApi.session_set_internal_cursor(com.tencent.mm.plugin.hld.model.n.DDY, i);
-      break label54;
+      i = kotlin.n.n.bV(com.tencent.mm.plugin.hld.model.n.fMP().subSequence(i, com.tencent.mm.plugin.hld.model.n.fMP().length()).toString(), " ", "").length();
+      Log.d("WxIme.WxEngineMgr", s.X("setCursorIndex ", Integer.valueOf(i)));
+      WxhldApi.session_set_internal_cursor(com.tencent.mm.plugin.hld.model.n.JvX, i);
+      break label48;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class a
-    implements View.OnClickListener
+  public final void reset(Context paramContext)
   {
-    public static final a Dvi;
-    
-    static
-    {
-      AppMethodBeat.i(210720);
-      Dvi = new a();
-      AppMethodBeat.o(210720);
-    }
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(210718);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/hld/candidate/ImeUnfoldStrikeView$init$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      f.Dvh.onHide();
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/hld/candidate/ImeUnfoldStrikeView$init$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(210718);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
-  {
-    b(int paramInt) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(210771);
-      Object localObject = f.Dvh;
-      localObject = f.eCS();
-      if (localObject != null)
-      {
-        ((ImeEditText)localObject).setSelection(this.Dvj);
-        AppMethodBeat.o(210771);
-        return;
-      }
-      AppMethodBeat.o(210771);
-    }
+    AppMethodBeat.i(312906);
+    s.u(paramContext, "context");
+    onHide();
+    Jox = false;
+    init(paramContext);
+    AppMethodBeat.o(312906);
   }
 }
 

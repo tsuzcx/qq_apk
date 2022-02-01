@@ -3,8 +3,10 @@ package com.tencent.mm.plugin.appbrand.jsapi.camera;
 import android.util.Size;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.af.i;
 import com.tencent.mm.plugin.appbrand.jsapi.base.d;
 import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONArray;
@@ -16,7 +18,7 @@ public final class q
   private static final int CTRL_INDEX = 331;
   public static final String NAME = "updateCamera";
   
-  public final int K(JSONObject paramJSONObject)
+  public final int V(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(137483);
     int i = paramJSONObject.optInt("cameraId");
@@ -24,7 +26,7 @@ public final class q
     return i;
   }
   
-  public final boolean c(com.tencent.mm.plugin.appbrand.jsapi.g paramg, int paramInt, View paramView, JSONObject paramJSONObject)
+  public final boolean c(h paramh, int paramInt, View paramView, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(137484);
     Log.i("MicroMsg.JsApiUpdateCamera", "onUpdateView : cameraId=%d", new Object[] { Integer.valueOf(paramInt) });
@@ -34,7 +36,7 @@ public final class q
       AppMethodBeat.o(137484);
       return false;
     }
-    paramView = (View)((CoverViewContainer)paramView).aA(View.class);
+    paramView = (View)((CoverViewContainer)paramView).aT(View.class);
     if ((paramView == null) || (!(paramView instanceof f)))
     {
       Log.w("MicroMsg.JsApiUpdateCamera", "the camera view(%s) is null", new Object[] { Integer.valueOf(paramInt) });
@@ -46,36 +48,36 @@ public final class q
     Object localObject = paramJSONObject.optString("devicePosition", "back");
     String str = paramJSONObject.optString("flash", "auto");
     boolean bool = paramJSONObject.optBoolean("needOutput", false);
-    paramView.setAppId(paramg.getAppId());
-    paramView.at((String)localObject, false);
+    paramView.setAppId(paramh.getAppId());
+    paramView.aE((String)localObject, false);
     paramView.setFlash(str);
     paramView.setNeedOutput(bool);
     JSONObject localJSONObject = paramJSONObject.optJSONObject("position");
-    int i = com.tencent.mm.plugin.appbrand.ac.g.a(localJSONObject, "width", 0);
-    int j = com.tencent.mm.plugin.appbrand.ac.g.a(localJSONObject, "height", 0);
+    int i = i.a(localJSONObject, "width", 0);
+    int j = i.a(localJSONObject, "height", 0);
     Log.d("MicroMsg.JsApiUpdateCamera", "onUpdateView cameraId: %d, devicePosition: %s,flash: %s,width： %d,height： %d", new Object[] { Integer.valueOf(paramInt), localObject, str, Integer.valueOf(i), Integer.valueOf(j) });
     if ((i != 0) && (j != 0)) {}
-    for (bool = paramView.ey(i, j);; bool = false)
+    for (bool = paramView.fs(i, j);; bool = false)
     {
-      localObject = (e)paramg.K(e.class);
+      localObject = (e)paramh.T(e.class);
       if (localObject != null)
       {
-        paramg = ((e)localObject).r(paramg);
-        if ((paramg != null) && (paramg.length == 2) && (paramg[0] > 0) && (paramg[1] > 0))
+        paramh = ((e)localObject).t(paramh);
+        if ((paramh != null) && (paramh.length == 2) && (paramh[0] > 0) && (paramh[1] > 0))
         {
-          paramView.setDisplayScreenSize(new Size(paramg[0], paramg[1]));
-          Log.i("MicroMsg.JsApiUpdateCamera", "onUpdateView screen width: %d, screen height: %d", new Object[] { Integer.valueOf(paramg[0]), Integer.valueOf(paramg[1]) });
+          paramView.setDisplayScreenSize(new Size(paramh[0], paramh[1]));
+          Log.i("MicroMsg.JsApiUpdateCamera", "onUpdateView screen width: %d, screen height: %d", new Object[] { Integer.valueOf(paramh[0]), Integer.valueOf(paramh[1]) });
         }
       }
-      paramg = paramJSONObject.optString("mode");
-      if (!Util.isNullOrNil(paramg)) {
-        paramView.setMode(paramg);
+      paramh = paramJSONObject.optString("mode");
+      if (!Util.isNullOrNil(paramh)) {
+        paramView.setMode(paramh);
       }
-      paramg = paramJSONObject.optJSONArray("scanArea");
-      if ((paramg != null) && (paramg.length() == 4))
+      paramh = paramJSONObject.optJSONArray("scanArea");
+      if ((paramh != null) && (paramh.length() == 4))
       {
-        Log.i("MicroMsg.JsApiUpdateCamera", "scanAreaArray:%s, scanAreaArray.length:%d", new Object[] { paramg, Integer.valueOf(paramg.length()) });
-        paramView.z(com.tencent.mm.plugin.appbrand.ac.g.Di(paramg.optInt(0)), com.tencent.mm.plugin.appbrand.ac.g.Di(paramg.optInt(1)), com.tencent.mm.plugin.appbrand.ac.g.Di(paramg.optInt(2)), com.tencent.mm.plugin.appbrand.ac.g.Di(paramg.optInt(3)));
+        Log.i("MicroMsg.JsApiUpdateCamera", "scanAreaArray:%s, scanAreaArray.length:%d", new Object[] { paramh, Integer.valueOf(paramh.length()) });
+        paramView.F(i.DC(paramh.optInt(0)), i.DC(paramh.optInt(1)), i.DC(paramh.optInt(2)), i.DC(paramh.optInt(3)));
       }
       paramView.setScanFreq(paramJSONObject.optInt("scanFreq"));
       if (bool)
@@ -87,14 +89,14 @@ public final class q
       {
         AppMethodBeat.o(137484);
         return true;
-        paramView.bRv();
+        paramView.crB();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.camera.q
  * JD-Core Version:    0.7.0.1
  */

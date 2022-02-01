@@ -2,7 +2,7 @@ package com.tencent.tmediacodec.b;
 
 public final class b
 {
-  public int bsm;
+  public int dlO;
   public int height;
   public int width;
   
@@ -10,7 +10,7 @@ public final class b
   {
     this.width = paramInt1;
     this.height = paramInt2;
-    this.bsm = paramInt3;
+    this.dlO = paramInt3;
   }
 }
 

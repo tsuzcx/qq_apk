@@ -18,38 +18,57 @@ import androidx.recyclerview.widget.RecyclerView.v;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/view/GridItemDecoration;", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "mHorizonSpan", "", "mVerticalSpan", "color", "mShowLastLine", "", "(IIIZ)V", "mDivider", "Landroid/graphics/drawable/Drawable;", "drawHorizontal", "", "c", "Landroid/graphics/Canvas;", "parent", "Landroidx/recyclerview/widget/RecyclerView;", "drawVertical", "getItemOffsets", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "getResult", "pos", "spanCount", "childCount", "getSpanCount", "isLastRaw", "onDrawOver", "Builder", "Companion", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/view/GridItemDecoration;", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "mHorizonSpan", "", "mVerticalSpan", "color", "mShowLastLine", "", "(IIIZ)V", "mDivider", "Landroid/graphics/drawable/Drawable;", "drawHorizontal", "", "c", "Landroid/graphics/Canvas;", "parent", "Landroidx/recyclerview/widget/RecyclerView;", "drawVertical", "getItemOffsets", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "getResult", "pos", "spanCount", "childCount", "getSpanCount", "isLastRaw", "onDrawOver", "Builder", "Companion", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   extends RecyclerView.h
 {
-  public static final b DHP;
-  private final boolean CbQ;
-  private final int CbR;
-  private final int CbS;
-  private final Drawable sQ;
+  public static final a.b JyX;
+  private final boolean HNS;
+  private final int HNT;
+  private final int HNU;
+  private final Drawable tP;
   
   static
   {
-    AppMethodBeat.i(217177);
-    DHP = new b((byte)0);
-    AppMethodBeat.o(217177);
+    AppMethodBeat.i(312653);
+    JyX = new a.b((byte)0);
+    AppMethodBeat.o(312653);
   }
   
   private a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    AppMethodBeat.i(217176);
-    this.CbR = paramInt1;
-    this.CbS = paramInt2;
-    this.CbQ = paramBoolean;
-    this.sQ = ((Drawable)new ColorDrawable(paramInt3));
-    AppMethodBeat.o(217176);
+    AppMethodBeat.i(312605);
+    this.HNT = paramInt1;
+    this.HNU = paramInt2;
+    this.HNS = paramBoolean;
+    this.tP = ((Drawable)new ColorDrawable(paramInt3));
+    AppMethodBeat.o(312605);
   }
   
-  private static boolean am(int paramInt1, int paramInt2, int paramInt3)
+  private static int I(RecyclerView paramRecyclerView)
+  {
+    AppMethodBeat.i(312627);
+    paramRecyclerView = paramRecyclerView.getLayoutManager();
+    int i;
+    if ((paramRecyclerView instanceof GridLayoutManager)) {
+      i = ((GridLayoutManager)paramRecyclerView).bWl;
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(312627);
+      return i;
+      if ((paramRecyclerView instanceof StaggeredGridLayoutManager)) {
+        i = ((StaggeredGridLayoutManager)paramRecyclerView).bWl;
+      } else {
+        i = -1;
+      }
+    }
+  }
+  
+  private static boolean aI(int paramInt1, int paramInt2, int paramInt3)
   {
     if (paramInt3 % paramInt2 == 0)
     {
@@ -63,77 +82,131 @@ public final class a
     return false;
   }
   
-  private static int z(RecyclerView paramRecyclerView)
+  private final void b(Canvas paramCanvas, RecyclerView paramRecyclerView)
   {
-    AppMethodBeat.i(217174);
-    paramRecyclerView = paramRecyclerView.getLayoutManager();
-    int i;
-    if ((paramRecyclerView instanceof GridLayoutManager)) {
-      i = ((GridLayoutManager)paramRecyclerView).ku();
-    }
-    for (;;)
+    AppMethodBeat.i(312621);
+    int n = paramRecyclerView.getChildCount();
+    if (n > 0) {}
+    int m;
+    for (int i = 0;; i = m)
     {
-      AppMethodBeat.o(217174);
-      return i;
-      if ((paramRecyclerView instanceof StaggeredGridLayoutManager)) {
-        i = ((StaggeredGridLayoutManager)paramRecyclerView).ku();
-      } else {
-        i = -1;
+      m = i + 1;
+      if ((i != n - 1) || (this.HNS))
+      {
+        View localView = paramRecyclerView.getChildAt(i);
+        int i1 = I(paramRecyclerView);
+        Object localObject = (GridLayoutManager)paramRecyclerView.getLayoutManager();
+        if (localObject == null)
+        {
+          localObject = null;
+          if (localObject != null) {
+            break label213;
+          }
+          j = 0;
+          label76:
+          if (localObject != null) {
+            break label236;
+          }
+          k = 0;
+          label84:
+          localObject = new StringBuilder("drawVertical ").append(i).append(' ').append(i1).append(' ').append(j).append(' ').append(k).append(' ');
+          if ((j + k) % i1 != 0) {
+            break label255;
+          }
+        }
+        label213:
+        label236:
+        label255:
+        for (boolean bool = true;; bool = false)
+        {
+          Log.d("WxIme.GridItemDecoration", bool);
+          if ((k + j) % i1 == 0) {
+            break label358;
+          }
+          localObject = localView.getLayoutParams();
+          if (localObject != null) {
+            break label261;
+          }
+          paramCanvas = new NullPointerException("null cannot be cast to non-null type androidx.recyclerview.widget.RecyclerView.LayoutParams");
+          AppMethodBeat.o(312621);
+          throw paramCanvas;
+          localObject = ((GridLayoutManager)localObject).bWq;
+          break;
+          j = ((GridLayoutManager.b)localObject).bf(paramRecyclerView.bj(localView).KJ(), I(paramRecyclerView));
+          break label76;
+          k = ((GridLayoutManager.b)localObject).fJ(paramRecyclerView.bj(localView).KJ());
+          break label84;
+        }
+        label261:
+        localObject = (RecyclerView.LayoutParams)localObject;
+        i = localView.getTop();
+        int j = ((RecyclerView.LayoutParams)localObject).topMargin;
+        int k = localView.getBottom();
+        i1 = ((RecyclerView.LayoutParams)localObject).bottomMargin;
+        int i2 = this.HNT;
+        int i3 = localView.getRight();
+        i3 = ((RecyclerView.LayoutParams)localObject).rightMargin + i3;
+        int i4 = this.HNU;
+        this.tP.setBounds(i3 - i4, i - j, i3, k + i1 + i2);
+        this.tP.draw(paramCanvas);
+      }
+      label358:
+      if (m >= n)
+      {
+        AppMethodBeat.o(312621);
+        return;
       }
     }
   }
   
   public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
   {
-    AppMethodBeat.i(217172);
-    p.k(paramRect, "outRect");
-    p.k(paramView, "view");
-    p.k(paramRecyclerView, "parent");
-    p.k(params, "state");
-    int i = z(paramRecyclerView);
+    AppMethodBeat.i(312665);
+    s.u(paramRect, "outRect");
+    s.u(paramView, "view");
+    s.u(paramRecyclerView, "parent");
+    s.u(params, "state");
+    int i = I(paramRecyclerView);
     params = paramRecyclerView.getAdapter();
-    if (params == null) {
-      p.iCn();
-    }
-    p.j(params, "parent.adapter!!");
+    s.checkNotNull(params);
     int n = params.getItemCount();
     paramView = paramView.getLayoutParams();
     if (paramView == null)
     {
-      paramRect = new t("null cannot be cast to non-null type androidx.recyclerview.widget.RecyclerView.LayoutParams");
-      AppMethodBeat.o(217172);
+      paramRect = new NullPointerException("null cannot be cast to non-null type androidx.recyclerview.widget.RecyclerView.LayoutParams");
+      AppMethodBeat.o(312665);
       throw paramRect;
     }
-    int i1 = ((RecyclerView.LayoutParams)paramView).lR();
+    int i1 = ((RecyclerView.LayoutParams)paramView).bXh.KI();
     if (i1 < 0)
     {
-      AppMethodBeat.o(217172);
+      AppMethodBeat.o(312665);
       return;
     }
     int m = i1 % i;
-    int j = this.CbS * m / i;
-    int k = this.CbS;
-    m = (m + 1) * this.CbS / i;
+    int j = this.HNU * m / i;
+    int k = this.HNU;
+    m = (m + 1) * this.HNU / i;
     paramView = paramRecyclerView.getLayoutManager();
     boolean bool;
     if ((paramView instanceof GridLayoutManager))
     {
-      bool = am(i1, i, n);
-      if ((!bool) || (this.CbQ)) {
-        break label261;
+      bool = aI(i1, i, n);
+      if ((!bool) || (this.HNS)) {
+        break label254;
       }
     }
-    label261:
-    for (i = 0;; i = this.CbR)
+    label254:
+    for (i = 0;; i = this.HNT)
     {
       paramRect.set(j, 0, k - m, i);
-      AppMethodBeat.o(217172);
+      AppMethodBeat.o(312665);
       return;
       if ((paramView instanceof StaggeredGridLayoutManager))
       {
-        if (((StaggeredGridLayoutManager)paramView).getOrientation() == 1)
+        if (((StaggeredGridLayoutManager)paramView).mOrientation == 1)
         {
-          bool = am(i1, i, n);
+          bool = aI(i1, i, n);
           break;
         }
         if ((i1 + 1) % i == 0)
@@ -149,177 +222,103 @@ public final class a
   
   public final void b(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.s params)
   {
-    AppMethodBeat.i(217171);
-    p.k(paramCanvas, "c");
-    p.k(paramRecyclerView, "parent");
-    p.k(params, "state");
-    int j = paramRecyclerView.getChildCount();
+    AppMethodBeat.i(312657);
+    s.u(paramCanvas, "c");
+    s.u(paramRecyclerView, "parent");
+    s.u(params, "state");
+    int k = paramRecyclerView.getChildCount();
     int i = 0;
-    Object localObject;
-    int k;
-    int n;
-    int i1;
-    int i2;
-    int i3;
-    while (i < j)
+    if (k > 0) {}
+    for (;;)
     {
+      int j = i + 1;
       params = paramRecyclerView.getChildAt(i);
-      if ((i != j - 1) || (this.CbQ))
+      if ((i != k - 1) || (this.HNS))
       {
-        p.j(params, "child");
-        localObject = params.getLayoutParams();
+        Object localObject = params.getLayoutParams();
         if (localObject == null)
         {
-          paramCanvas = new t("null cannot be cast to non-null type androidx.recyclerview.widget.RecyclerView.LayoutParams");
-          AppMethodBeat.o(217171);
+          paramCanvas = new NullPointerException("null cannot be cast to non-null type androidx.recyclerview.widget.RecyclerView.LayoutParams");
+          AppMethodBeat.o(312657);
           throw paramCanvas;
         }
         localObject = (RecyclerView.LayoutParams)localObject;
-        k = params.getLeft();
-        m = ((RecyclerView.LayoutParams)localObject).leftMargin;
-        n = params.getRight();
-        i1 = ((RecyclerView.LayoutParams)localObject).rightMargin;
-        i2 = params.getBottom();
+        i = params.getLeft();
+        int m = ((RecyclerView.LayoutParams)localObject).leftMargin;
+        int n = params.getRight();
+        int i1 = ((RecyclerView.LayoutParams)localObject).rightMargin;
+        int i2 = params.getBottom();
         i2 = ((RecyclerView.LayoutParams)localObject).bottomMargin + i2;
-        i3 = this.CbR;
-        this.sQ.setBounds(k - m, i2, n + i1, i3 + i2);
-        this.sQ.draw(paramCanvas);
+        int i3 = this.HNT;
+        this.tP.setBounds(i - m, i2, n + i1, i3 + i2);
+        this.tP.draw(paramCanvas);
       }
-      i += 1;
-    }
-    int m = paramRecyclerView.getChildCount();
-    i = 0;
-    while (i < m)
-    {
-      if ((i != m - 1) || (this.CbQ))
+      if (j >= k)
       {
-        localObject = paramRecyclerView.getChildAt(i);
-        n = z(paramRecyclerView);
-        params = (GridLayoutManager)paramRecyclerView.getLayoutManager();
-        if (params != null)
-        {
-          params = params.getSpanSizeLookup();
-          if (params == null) {
-            break label447;
-          }
-          RecyclerView.v localv = paramRecyclerView.aQ((View)localObject);
-          p.j(localv, "parent.getChildViewHolder(child)");
-          j = params.am(localv.md(), z(paramRecyclerView));
-          label289:
-          if (params == null) {
-            break label453;
-          }
-          localv = paramRecyclerView.aQ((View)localObject);
-          p.j(localv, "parent.getChildViewHolder(child)");
-          k = params.cx(localv.md());
-          label319:
-          params = new StringBuilder("drawVertical ").append(i).append(' ').append(n).append(' ').append(j).append(' ').append(k).append(' ');
-          if ((j + k) % n != 0) {
-            break label459;
-          }
-        }
-        label447:
-        label453:
-        label459:
-        for (boolean bool = true;; bool = false)
-        {
-          Log.d("WxIme.GridItemDecoration", bool);
-          if ((k + j) % n == 0) {
-            break label559;
-          }
-          p.j(localObject, "child");
-          params = ((View)localObject).getLayoutParams();
-          if (params != null) {
-            break label465;
-          }
-          paramCanvas = new t("null cannot be cast to non-null type androidx.recyclerview.widget.RecyclerView.LayoutParams");
-          AppMethodBeat.o(217171);
-          throw paramCanvas;
-          params = null;
-          break;
-          j = 0;
-          break label289;
-          k = 0;
-          break label319;
-        }
-        label465:
-        params = (RecyclerView.LayoutParams)params;
-        j = ((View)localObject).getTop();
-        k = params.topMargin;
-        n = ((View)localObject).getBottom();
-        i1 = params.bottomMargin;
-        i2 = this.CbR;
-        i3 = ((View)localObject).getRight();
-        i3 = params.rightMargin + i3;
-        int i4 = this.CbS;
-        this.sQ.setBounds(i3 - i4, j - k, i3, n + i1 + i2);
-        this.sQ.draw(paramCanvas);
+        b(paramCanvas, paramRecyclerView);
+        AppMethodBeat.o(312657);
+        return;
       }
-      label559:
-      i += 1;
+      i = j;
     }
-    AppMethodBeat.o(217171);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/view/GridItemDecoration$Builder;", "", "mContext", "Landroid/content/Context;", "(Landroid/content/Context;)V", "mColor", "", "mHorizonSpan", "mResources", "Landroid/content/res/Resources;", "mShowLastLine", "", "mVerticalSpan", "build", "Lcom/tencent/mm/plugin/hld/view/GridItemDecoration;", "setColor", "color", "setColorResource", "resource", "setHorizontalSpan", "horizontal", "", "setShowLastLine", "show", "setVerticalSpan", "mVertical", "vertical", "plugin-hld_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/view/GridItemDecoration$Builder;", "", "mContext", "Landroid/content/Context;", "(Landroid/content/Context;)V", "mColor", "", "mHorizonSpan", "mResources", "Landroid/content/res/Resources;", "mShowLastLine", "", "mVerticalSpan", "build", "Lcom/tencent/mm/plugin/hld/view/GridItemDecoration;", "setColor", "color", "setColorResource", "resource", "setHorizontalSpan", "horizontal", "", "setShowLastLine", "show", "setVerticalSpan", "mVertical", "vertical", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
-    public boolean CbQ;
-    private int CbR;
-    private int CbS;
+    public boolean HNS;
+    private int HNT;
+    private int HNU;
     private int mColor;
     private final Context mContext;
     private final Resources mResources;
     
     public a(Context paramContext)
     {
-      AppMethodBeat.i(210074);
+      AppMethodBeat.i(312625);
       this.mContext = paramContext;
       paramContext = this.mContext.getResources();
-      p.j(paramContext, "mContext.resources");
+      s.s(paramContext, "mContext.resources");
       this.mResources = paramContext;
-      this.CbQ = true;
-      this.CbR = 0;
-      this.CbS = 0;
+      this.HNS = true;
+      this.HNT = 0;
+      this.HNU = 0;
       this.mColor = -1;
-      AppMethodBeat.o(210074);
+      AppMethodBeat.o(312625);
     }
     
-    public final a UL(@androidx.annotation.a int paramInt)
+    public final a YJ(int paramInt)
     {
-      AppMethodBeat.i(210068);
+      AppMethodBeat.i(312630);
       this.mColor = androidx.core.content.a.w(this.mContext, paramInt);
-      AppMethodBeat.o(210068);
+      AppMethodBeat.o(312630);
       return this;
     }
     
-    public final a UM(int paramInt)
+    public final a YK(int paramInt)
     {
-      AppMethodBeat.i(210070);
-      this.CbS = this.mResources.getDimensionPixelSize(paramInt);
-      AppMethodBeat.o(210070);
+      AppMethodBeat.i(312636);
+      this.HNU = this.mResources.getDimensionPixelSize(paramInt);
+      AppMethodBeat.o(312636);
       return this;
     }
     
-    public final a UN(int paramInt)
+    public final a YL(int paramInt)
     {
-      AppMethodBeat.i(210072);
-      this.CbR = this.mResources.getDimensionPixelSize(paramInt);
-      AppMethodBeat.o(210072);
+      AppMethodBeat.i(312640);
+      this.HNT = this.mResources.getDimensionPixelSize(paramInt);
+      AppMethodBeat.o(312640);
       return this;
     }
     
-    public final a eHD()
+    public final a fPp()
     {
-      AppMethodBeat.i(210073);
-      a locala = new a(this.CbR, this.CbS, this.mColor, this.CbQ, (byte)0);
-      AppMethodBeat.o(210073);
+      AppMethodBeat.i(312644);
+      a locala = new a(this.HNT, this.HNU, this.mColor, this.HNS, (byte)0);
+      AppMethodBeat.o(312644);
       return locala;
     }
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/view/GridItemDecoration$Companion;", "", "()V", "TAG", "", "plugin-hld_release"})
-  public static final class b {}
 }
 
 

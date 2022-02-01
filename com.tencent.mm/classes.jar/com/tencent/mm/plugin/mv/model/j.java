@@ -1,63 +1,67 @@
 package com.tencent.mm.plugin.mv.model;
 
+import androidx.compose.a.q.a..ExternalSyntheticBackport0;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dba;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.protocal.protobuf.dsr;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/model/MusicMvRecommendListCache;", "", "response", "Lcom/tencent/mm/protocal/protobuf/MusicLiveGetRelatedListResp;", "timestamp", "", "(Lcom/tencent/mm/protocal/protobuf/MusicLiveGetRelatedListResp;J)V", "getResponse", "()Lcom/tencent/mm/protocal/protobuf/MusicLiveGetRelatedListResp;", "getTimestamp", "()J", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/model/MusicMvRecommendListCache;", "", "response", "Lcom/tencent/mm/protocal/protobuf/MusicLiveGetRelatedListResp;", "timestamp", "", "(Lcom/tencent/mm/protocal/protobuf/MusicLiveGetRelatedListResp;J)V", "getResponse", "()Lcom/tencent/mm/protocal/protobuf/MusicLiveGetRelatedListResp;", "getTimestamp", "()J", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class j
 {
-  public final dba GbX;
-  public final long timestamp;
+  final dsr LXH;
+  final long timestamp;
   
-  public j(dba paramdba, long paramLong)
+  public j(dsr paramdsr, long paramLong)
   {
-    AppMethodBeat.i(229893);
-    this.GbX = paramdba;
+    AppMethodBeat.i(286038);
+    this.LXH = paramdsr;
     this.timestamp = paramLong;
-    AppMethodBeat.o(229893);
+    AppMethodBeat.o(286038);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(229901);
-    if (this != paramObject)
+    AppMethodBeat.i(286054);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof j))
-      {
-        paramObject = (j)paramObject;
-        if ((!p.h(this.GbX, paramObject.GbX)) || (this.timestamp != paramObject.timestamp)) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(229901);
+      AppMethodBeat.o(286054);
       return true;
     }
-    AppMethodBeat.o(229901);
-    return false;
+    if (!(paramObject instanceof j))
+    {
+      AppMethodBeat.o(286054);
+      return false;
+    }
+    paramObject = (j)paramObject;
+    if (!s.p(this.LXH, paramObject.LXH))
+    {
+      AppMethodBeat.o(286054);
+      return false;
+    }
+    if (this.timestamp != paramObject.timestamp)
+    {
+      AppMethodBeat.o(286054);
+      return false;
+    }
+    AppMethodBeat.o(286054);
+    return true;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(229899);
-    dba localdba = this.GbX;
-    if (localdba != null) {}
-    for (int i = localdba.hashCode();; i = 0)
-    {
-      long l = this.timestamp;
-      int j = (int)(l ^ l >>> 32);
-      AppMethodBeat.o(229899);
-      return i * 31 + j;
-    }
+    AppMethodBeat.i(286048);
+    int i = this.LXH.hashCode();
+    int j = q.a..ExternalSyntheticBackport0.m(this.timestamp);
+    AppMethodBeat.o(286048);
+    return i * 31 + j;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(229897);
-    String str = "MusicMvRecommendListCache(response=" + this.GbX + ", timestamp=" + this.timestamp + ")";
-    AppMethodBeat.o(229897);
+    AppMethodBeat.i(286045);
+    String str = "MusicMvRecommendListCache(response=" + this.LXH + ", timestamp=" + this.timestamp + ')';
+    AppMethodBeat.o(286045);
     return str;
   }
 }

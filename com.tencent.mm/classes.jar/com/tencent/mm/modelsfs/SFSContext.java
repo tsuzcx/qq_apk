@@ -50,7 +50,7 @@ public class SFSContext
   
   private static native long nativeInit(String paramString);
   
-  private static native int nativeList(long paramLong, String paramString, List<SFSContext.FileEntry> paramList);
+  private static native int nativeList(long paramLong, String paramString, List<FileEntry> paramList);
   
   public static native long nativeOpenRead(long paramLong, String paramString);
   
@@ -64,7 +64,7 @@ public class SFSContext
   
   private static native void nativeSetStringConf(int paramInt, String paramString);
   
-  private static native SFSContext.FileEntry nativeStat(long paramLong, String paramString);
+  private static native FileEntry nativeStat(long paramLong, String paramString);
   
   private static native SFSContext.Statistics nativeStatistics(long paramLong);
   
@@ -100,7 +100,7 @@ public class SFSContext
       AppMethodBeat.i(156019);
       CREATOR = new Parcelable.Creator()
       {
-        public final SFSContext.Builder createFromParcel(Parcel paramAnonymousParcel)
+        public SFSContext.Builder createFromParcel(Parcel paramAnonymousParcel)
         {
           AppMethodBeat.i(156001);
           paramAnonymousParcel = new SFSContext.Builder(paramAnonymousParcel, null);
@@ -108,7 +108,7 @@ public class SFSContext
           return paramAnonymousParcel;
         }
         
-        public final SFSContext.Builder[] newArray(int paramAnonymousInt)
+        public SFSContext.Builder[] newArray(int paramAnonymousInt)
         {
           return new SFSContext.Builder[paramAnonymousInt];
         }
@@ -278,10 +278,17 @@ public class SFSContext
       AppMethodBeat.o(156017);
     }
   }
+  
+  public static class FileEntry
+  {
+    public String name;
+    public long size;
+    public long timestamp;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.modelsfs.SFSContext
  * JD-Core Version:    0.7.0.1
  */

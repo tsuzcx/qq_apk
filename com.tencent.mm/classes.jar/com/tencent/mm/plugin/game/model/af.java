@@ -4,18 +4,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.game.api.e;
 import com.tencent.mm.plugin.game.d.d;
-import com.tencent.mm.plugin.game.protobuf.bd;
 import com.tencent.mm.plugin.game.protobuf.be;
-import com.tencent.mm.plugin.game.protobuf.bg;
-import com.tencent.mm.plugin.game.protobuf.cq;
-import com.tencent.mm.plugin.game.protobuf.cr;
-import com.tencent.mm.plugin.game.protobuf.cw;
-import com.tencent.mm.plugin.game.protobuf.m;
-import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.game.protobuf.bf;
+import com.tencent.mm.plugin.game.protobuf.bh;
+import com.tencent.mm.plugin.game.protobuf.bw;
+import com.tencent.mm.plugin.game.protobuf.cs;
+import com.tencent.mm.plugin.game.protobuf.ct;
+import com.tencent.mm.plugin.game.protobuf.cz;
 import com.tencent.mm.pluginsdk.model.app.j;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -24,32 +24,32 @@ import java.util.LinkedList;
 public final class af
   extends x
 {
-  public com.tencent.mm.plugin.game.protobuf.bv CLw;
-  private boolean CLx;
-  public LinkedList<c> CLy;
-  public HashMap<String, Integer> CLz;
+  public bw IFD;
+  private boolean IFE;
+  public LinkedList<c> IFF;
+  public HashMap<String, Integer> IFG;
   
-  public af(com.tencent.mm.cd.a parama)
+  public af(com.tencent.mm.bx.a parama)
   {
     AppMethodBeat.i(41549);
-    this.CLz = new HashMap();
+    this.IFG = new HashMap();
     if (parama == null)
     {
-      this.CLw = new com.tencent.mm.plugin.game.protobuf.bv();
+      this.IFD = new bw();
       AppMethodBeat.o(41549);
       return;
     }
-    this.CLw = ((com.tencent.mm.plugin.game.protobuf.bv)parama);
-    this.CLx = true;
-    ata();
+    this.IFD = ((bw)parama);
+    this.IFE = true;
+    aNi();
     AppMethodBeat.o(41549);
   }
   
   public af(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(41550);
-    this.CLz = new HashMap();
-    this.CLw = new com.tencent.mm.plugin.game.protobuf.bv();
+    this.IFG = new HashMap();
+    this.IFD = new bw();
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
       AppMethodBeat.o(41550);
@@ -57,9 +57,9 @@ public final class af
     }
     try
     {
-      this.CLw.parseFrom(paramArrayOfByte);
-      this.CLx = false;
-      ata();
+      this.IFD.parseFrom(paramArrayOfByte);
+      this.IFE = false;
+      aNi();
       AppMethodBeat.o(41550);
       return;
     }
@@ -72,101 +72,101 @@ public final class af
     }
   }
   
-  private void ata()
+  private void aNi()
   {
     AppMethodBeat.i(41551);
-    this.CLy = ezc();
-    if (this.CLx)
+    this.IFF = fGY();
+    if (this.IFE)
     {
-      d.bs(this.CLy);
-      ezd();
-      ((e)h.ae(e.class)).evm().init(MMApplicationContext.getContext());
+      d.bz(this.IFF);
+      fGZ();
+      ((e)h.ax(e.class)).fCf().init(MMApplicationContext.getContext());
     }
     AppMethodBeat.o(41551);
   }
   
-  private LinkedList<c> ezc()
+  private LinkedList<c> fGY()
   {
     AppMethodBeat.i(41552);
     LinkedList localLinkedList = new LinkedList();
-    if ((this.CLw.CQb == null) || (this.CLw.CQb.CNz == null))
+    if ((this.IFD.IKl == null) || (this.IFD.IKl.IHH == null))
     {
       AppMethodBeat.o(41552);
       return localLinkedList;
     }
-    Iterator localIterator = this.CLw.CQb.CNz.iterator();
+    Iterator localIterator = this.IFD.IKl.IHH.iterator();
     int i = 1;
     while (localIterator.hasNext())
     {
-      Object localObject = (bd)localIterator.next();
-      if (((bd)localObject).CME != null)
+      Object localObject = (be)localIterator.next();
+      if (((be)localObject).IGJ != null)
       {
-        c localc = a(((bd)localObject).CME);
+        c localc = a(((be)localObject).IGJ);
         if (localc != null)
         {
-          be localbe;
+          bf localbf;
           StringBuilder localStringBuilder;
           int j;
-          if (((bd)localObject).CME.CNa != null) {
-            if ((((bd)localObject).CME.CNa.CMP != null) && (((bd)localObject).CME.CNa.CQM != null))
+          if (((be)localObject).IGJ.IHf != null) {
+            if ((((be)localObject).IGJ.IHf.IGU != null) && (((be)localObject).IGJ.IHf.ILa != null))
             {
-              localc.CIi = ((bd)localObject).CME.CNa.CMP;
-              localc.CIj = ((bd)localObject).CME.CNa.CQM;
-              localc.CIm = com.tencent.mm.plugin.game.c.a.am(((bd)localObject).CNA, "label", localc.CIi);
-              if (((bd)localObject).CPm == null) {
+              localc.ICs = ((be)localObject).IGJ.IHf.IGU;
+              localc.ICt = ((be)localObject).IGJ.IHf.ILa;
+              localc.ICw = com.tencent.mm.plugin.game.c.a.aw(((be)localObject).IHI, "label", localc.ICs);
+              if (((be)localObject).IJw == null) {
                 break label476;
               }
-              localObject = ((bd)localObject).CPm.iterator();
+              localObject = ((be)localObject).IJw.iterator();
               do
               {
                 if (!((Iterator)localObject).hasNext()) {
                   break;
                 }
-                localbe = (be)((Iterator)localObject).next();
-              } while (localbe == null);
-              if ((localbe.CPn == null) || (localbe.CPn.size() == 0)) {
+                localbf = (bf)((Iterator)localObject).next();
+              } while (localbf == null);
+              if ((localbf.IJx == null) || (localbf.IJx.size() == 0)) {
                 break label462;
               }
               localStringBuilder = new StringBuilder();
               j = 0;
               label271:
-              if (j >= localbe.CPn.size()) {
+              if (j >= localbf.IJx.size()) {
                 break label423;
               }
-              as localas = ((n)h.ae(n.class)).bbL().RG((String)localbe.CPn.get(j));
-              if ((localas == null) || (localas.jxt == 0L)) {
+              au localau = ((com.tencent.mm.plugin.messenger.foundation.a.n)h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzA().JE((String)localbf.IJx.get(j));
+              if ((localau == null) || (localau.maN == 0L)) {
                 break label402;
               }
-              localStringBuilder.append(localas.ays());
+              localStringBuilder.append(localau.aSV());
             }
           }
           for (;;)
           {
-            if (j < localbe.CPn.size() - 1) {
+            if (j < localbf.IJx.size() - 1) {
               localStringBuilder.append("、");
             }
             j += 1;
             break label271;
-            localc.CIm = com.tencent.mm.plugin.game.c.a.Md(((bd)localObject).CNA);
+            localc.ICw = com.tencent.mm.plugin.game.c.a.EM(((be)localObject).IHI);
             break;
-            localc.CIm = com.tencent.mm.plugin.game.c.a.Md(((bd)localObject).CNA);
+            localc.ICw = com.tencent.mm.plugin.game.c.a.EM(((be)localObject).IHI);
             break;
             label402:
-            localStringBuilder.append((String)localbe.CPn.get(j));
+            localStringBuilder.append((String)localbf.IJx.get(j));
           }
           label423:
           localStringBuilder.append(" ");
-          localc.CId.add(localStringBuilder.toString());
+          localc.ICn.add(localStringBuilder.toString());
           for (;;)
           {
-            localc.CId.add(localbe.COk);
+            localc.ICn.add(localbf.IIu);
             break;
             label462:
-            localc.CId.add("");
+            localc.ICn.add("");
           }
           label476:
           localc.scene = 10;
-          localc.fSl = 1004;
+          localc.hYi = 1004;
           localc.position = i;
           localLinkedList.add(localc);
           i += 1;
@@ -177,28 +177,28 @@ public final class af
     return localLinkedList;
   }
   
-  private void ezd()
+  private void fGZ()
   {
     AppMethodBeat.i(41553);
-    this.CLz = new HashMap();
-    if ((this.CLw.CQc == null) || (this.CLw.CQc.CQH == null))
+    this.IFG = new HashMap();
+    if ((this.IFD.IKm == null) || (this.IFD.IKm.IKT == null))
     {
       AppMethodBeat.o(41553);
       return;
     }
-    Iterator localIterator = this.CLw.CQc.CQH.iterator();
+    Iterator localIterator = this.IFD.IKm.IKT.iterator();
     while (localIterator.hasNext())
     {
-      cr localcr = (cr)localIterator.next();
-      Object localObject = a(localcr.CME);
+      ct localct = (ct)localIterator.next();
+      Object localObject = a(localct.IGJ);
       if (localObject != null)
       {
-        this.CLz.put(((c)localObject).field_appId, Integer.valueOf(((c)localObject).versionCode));
-        localObject = com.tencent.mm.plugin.ab.a.fmz().bqc(((c)localObject).field_appId);
+        this.IFG.put(((c)localObject).field_appId, Integer.valueOf(((c)localObject).versionCode));
+        localObject = com.tencent.mm.plugin.openapi.a.gxn().bpR(((c)localObject).field_appId);
         if (localObject != null)
         {
-          ((com.tencent.mm.pluginsdk.model.app.g)localObject).Ib(localcr.CQJ);
-          if (!com.tencent.mm.plugin.ab.a.fmz().a((com.tencent.mm.pluginsdk.model.app.g)localObject, new String[0])) {
+          ((com.tencent.mm.pluginsdk.model.app.g)localObject).AG(localct.IKV);
+          if (!com.tencent.mm.plugin.openapi.a.gxn().a((com.tencent.mm.pluginsdk.model.app.g)localObject, new String[0])) {
             Log.e("MicroMsg.GamePBDataOverSea", "Store rank info failed, AppID: %s", new Object[] { ((com.tencent.mm.pluginsdk.model.app.g)localObject).field_appId });
           }
         }
@@ -207,17 +207,17 @@ public final class af
     AppMethodBeat.o(41553);
   }
   
-  public final bg eze()
+  public final bh fHa()
   {
-    if (this.CLw != null) {
-      return this.CLw.CPZ;
+    if (this.IFD != null) {
+      return this.IFD.IKj;
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.af
  * JD-Core Version:    0.7.0.1
  */

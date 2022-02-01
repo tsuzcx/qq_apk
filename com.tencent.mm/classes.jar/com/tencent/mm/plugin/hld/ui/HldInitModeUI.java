@@ -1,12 +1,10 @@
 package com.tencent.mm.plugin.hld.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -18,7 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
+import com.tencent.mm.br.c;
 import com.tencent.mm.plugin.hld.a.a;
 import com.tencent.mm.plugin.hld.a.c;
 import com.tencent.mm.plugin.hld.a.e;
@@ -27,101 +25,96 @@ import com.tencent.mm.plugin.hld.a.h;
 import com.tencent.mm.plugin.hld.a.j;
 import com.tencent.mm.plugin.hld.b.e;
 import com.tencent.mm.plugin.hld.b.e.a;
+import com.tencent.mm.plugin.hld.b.f;
+import com.tencent.mm.plugin.hld.f.l;
 import com.tencent.mm.plugin.hld.model.WxImeInterService;
-import com.tencent.mm.plugin.hld.model.k;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.aa;
 import com.tencent.mm.ui.base.w;
+import com.tencent.threadpool.h;
 import java.util.ArrayList;
 import java.util.List;
-import kotlin.g;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/ui/HldInitModeUI;", "Lcom/tencent/mm/ui/MMActivity;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/hld/cgi/ImeOplogSyncCallback;", "()V", "finishBt", "Landroid/widget/Button;", "getFinishBt", "()Landroid/widget/Button;", "finishBt$delegate", "Lkotlin/Lazy;", "finishLayout", "Landroid/widget/FrameLayout;", "getFinishLayout", "()Landroid/widget/FrameLayout;", "finishLayout$delegate", "normalSelectIv", "Landroid/widget/ImageView;", "normalTitle", "Landroid/widget/RelativeLayout;", "safetySelectIv", "safetyTitle", "settingDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "doOplogSyncCallback", "", "success", "", "getForceOrientation", "", "getLayoutId", "handleInitMode", "safetyMode", "initView", "isSelect", "id", "onClick", "v", "Landroid/view/View;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "updateChildrenView", "updateStyle", "Companion", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/ui/HldInitModeUI;", "Lcom/tencent/mm/ui/MMActivity;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/hld/cgi/ImeOplogSyncCallback;", "()V", "finishBt", "Landroid/widget/Button;", "getFinishBt", "()Landroid/widget/Button;", "finishBt$delegate", "Lkotlin/Lazy;", "finishLayout", "Landroid/widget/FrameLayout;", "getFinishLayout", "()Landroid/widget/FrameLayout;", "finishLayout$delegate", "normalSelectIv", "Landroid/widget/ImageView;", "normalTitle", "Landroid/widget/RelativeLayout;", "safetySelectIv", "safetyTitle", "settingDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "doOplogSyncCallback", "", "success", "", "getForceOrientation", "", "getLayoutId", "handleInitMode", "safetyMode", "initView", "isSelect", "id", "onClick", "v", "Landroid/view/View;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "updateChildrenView", "updateStyle", "Companion", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class HldInitModeUI
   extends MMActivity
-  implements View.OnClickListener, com.tencent.mm.plugin.hld.b.f
+  implements View.OnClickListener, f
 {
-  public static final a DGc;
-  private final kotlin.f DFW;
-  private ImageView DFX;
-  private ImageView DFY;
-  private RelativeLayout DFZ;
-  private RelativeLayout DGa;
-  private s DGb;
-  private final kotlin.f Dzq;
+  public static final HldInitModeUI.a Jxz;
+  private final j Jst;
+  private final j JxA;
+  private ImageView JxB;
+  private ImageView JxC;
+  private RelativeLayout JxD;
+  private RelativeLayout JxE;
+  private w JxF;
   
   static
   {
-    AppMethodBeat.i(215609);
-    DGc = new a((byte)0);
-    AppMethodBeat.o(215609);
+    AppMethodBeat.i(312530);
+    Jxz = new HldInitModeUI.a((byte)0);
+    AppMethodBeat.o(312530);
   }
   
   public HldInitModeUI()
   {
-    AppMethodBeat.i(215608);
-    this.Dzq = g.ar((kotlin.g.a.a)new d(this));
-    this.DFW = g.ar((kotlin.g.a.a)new e(this));
-    AppMethodBeat.o(215608);
+    AppMethodBeat.i(312442);
+    this.Jst = kotlin.k.cm((kotlin.g.a.a)new b(this));
+    this.JxA = kotlin.k.cm((kotlin.g.a.a)new c(this));
+    AppMethodBeat.o(312442);
   }
   
-  private final boolean UG(int paramInt)
+  private final boolean YE(int paramInt)
   {
-    AppMethodBeat.i(215602);
-    ImageView localImageView = (ImageView)((LinearLayout)findViewById(paramInt)).findViewById(a.f.state_icon);
-    p.j(localImageView, "selectIv");
-    if (localImageView.getVisibility() == 0)
+    AppMethodBeat.i(312460);
+    if (((ImageView)((LinearLayout)findViewById(paramInt)).findViewById(a.f.state_icon)).getVisibility() == 0)
     {
-      AppMethodBeat.o(215602);
+      AppMethodBeat.o(312460);
       return true;
     }
-    AppMethodBeat.o(215602);
+    AppMethodBeat.o(312460);
     return false;
   }
   
-  private final void Uv(final int paramInt)
+  private final void Ys(int paramInt)
   {
-    AppMethodBeat.i(215603);
+    AppMethodBeat.i(312473);
     LinearLayout localLinearLayout = (LinearLayout)findViewById(paramInt);
-    p.j(localLinearLayout, "view");
     localLinearLayout.setVisibility(0);
     Object localObject = (RelativeLayout)localLinearLayout.findViewById(a.f.title_ll);
     ImageView localImageView = (ImageView)localLinearLayout.findViewById(a.f.state_icon);
     TextView localTextView1 = (TextView)localLinearLayout.findViewById(a.f.title_tv);
     TextView localTextView2 = (TextView)localLinearLayout.findViewById(a.f.desc_tv);
-    p.j(localImageView, "selectIv");
     localImageView.setTag(Integer.valueOf(paramInt));
     if (paramInt == a.f.safety_item)
     {
-      this.DFX = localImageView;
-      this.DFZ = ((RelativeLayout)localObject);
-      p.j(localTextView1, "titleTv");
+      this.JxB = localImageView;
+      this.JxD = ((RelativeLayout)localObject);
       localTextView1.setText((CharSequence)getString(a.j.ime_mode_safety_name));
-      p.j(localTextView2, "descTv");
       localTextView2.setText((CharSequence)getString(a.j.ime_mode_safety_desc));
-      localObject = this.DFX;
+      localObject = this.JxB;
       if (localObject != null) {
         ((ImageView)localObject).setVisibility(4);
       }
     }
     for (;;)
     {
-      localLinearLayout.setOnClickListener((View.OnClickListener)new g(this, paramInt));
-      AppMethodBeat.o(215603);
+      localLinearLayout.setOnClickListener(new HldInitModeUI..ExternalSyntheticLambda1(paramInt, this));
+      AppMethodBeat.o(312473);
       return;
       if (paramInt == a.f.normal_item)
       {
-        this.DFY = localImageView;
-        this.DGa = ((RelativeLayout)localObject);
-        p.j(localTextView1, "titleTv");
+        this.JxC = localImageView;
+        this.JxE = ((RelativeLayout)localObject);
         localTextView1.setText((CharSequence)getString(a.j.ime_mode_normal_name));
-        p.j(localTextView2, "descTv");
         localTextView2.setText((CharSequence)getString(a.j.ime_mode_normal_desc));
-        localObject = this.DFY;
+        localObject = this.JxC;
         if (localObject != null) {
           ((ImageView)localObject).setVisibility(4);
         }
@@ -129,141 +122,218 @@ public class HldInitModeUI
     }
   }
   
-  private final void eFC()
+  private static final void a(int paramInt, HldInitModeUI paramHldInitModeUI, View paramView)
   {
-    AppMethodBeat.i(215604);
-    if (!getFinishBt().isEnabled())
+    AppMethodBeat.i(312506);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.sc(paramInt);
+    localb.cH(paramHldInitModeUI);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/hld/ui/HldInitModeUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramHldInitModeUI, "this$0");
+    if (paramInt == a.f.safety_item)
     {
-      AppMethodBeat.o(215604);
+      paramView = paramHldInitModeUI.JxB;
+      if (paramView != null) {
+        paramView.setVisibility(0);
+      }
+      paramView = paramHldInitModeUI.JxC;
+      if (paramView != null) {
+        paramView.setVisibility(4);
+      }
+      paramHldInitModeUI.getFinishBt().setEnabled(true);
+      paramHldInitModeUI.getFinishBt().setClickable(true);
+      paramHldInitModeUI.fNv();
+    }
+    for (;;)
+    {
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/hld/ui/HldInitModeUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(312506);
       return;
-    }
-    Object localObject1;
-    Object localObject2;
-    if (UG(a.f.safety_item))
-    {
-      localObject1 = this.DFZ;
-      if (localObject1 != null)
+      if (paramInt == a.f.normal_item)
       {
-        localObject1 = ((RelativeLayout)localObject1).getParent();
-        localObject2 = this.DGa;
-        if (localObject2 == null) {
-          break label312;
+        paramView = paramHldInitModeUI.JxB;
+        if (paramView != null) {
+          paramView.setVisibility(4);
         }
-        localObject3 = ((RelativeLayout)localObject2).getParent();
-        label59:
-        localObject2 = localObject1;
-        localObject1 = localObject3;
-        if ((localObject2 instanceof View)) {
-          break label391;
+        paramView = paramHldInitModeUI.JxC;
+        if (paramView != null) {
+          paramView.setVisibility(0);
         }
-      }
-    }
-    label391:
-    for (Object localObject3 = null;; localObject3 = localObject2)
-    {
-      localObject3 = (View)localObject3;
-      if (localObject3 != null) {
-        ((View)localObject3).setBackgroundResource(a.e.ime_collect_data_item_select_bg);
-      }
-      if (!(localObject1 instanceof View)) {}
-      for (localObject3 = null;; localObject3 = localObject1)
-      {
-        localObject3 = (View)localObject3;
-        if (localObject3 != null) {
-          ((View)localObject3).setBackgroundResource(a.e.ime_collect_data_item_unselect_bg);
-        }
-        if (!(localObject2 instanceof View)) {}
-        for (localObject3 = null;; localObject3 = localObject2)
-        {
-          localObject3 = (View)localObject3;
-          if (localObject3 != null)
-          {
-            localObject3 = (TextView)((View)localObject3).findViewById(a.f.title_tv);
-            if (localObject3 != null) {
-              ((TextView)localObject3).setTextColor(getResources().getColor(a.c.Brand));
-            }
-          }
-          if (!(localObject2 instanceof View)) {
-            localObject2 = null;
-          }
-          for (;;)
-          {
-            localObject2 = (View)localObject2;
-            if (localObject2 != null)
-            {
-              localObject2 = (TextView)((View)localObject2).findViewById(a.f.desc_tv);
-              if (localObject2 != null) {
-                ((TextView)localObject2).setTextColor(getResources().getColor(a.c.Brand));
-              }
-            }
-            if (!(localObject1 instanceof View)) {}
-            for (localObject2 = null;; localObject2 = localObject1)
-            {
-              localObject2 = (View)localObject2;
-              if (localObject2 != null)
-              {
-                localObject2 = (TextView)((View)localObject2).findViewById(a.f.title_tv);
-                if (localObject2 != null) {
-                  ((TextView)localObject2).setTextColor(getResources().getColor(a.c.normal_text_color));
-                }
-              }
-              if (!(localObject1 instanceof View)) {
-                localObject1 = null;
-              }
-              for (;;)
-              {
-                localObject1 = (View)localObject1;
-                if (localObject1 != null)
-                {
-                  localObject1 = (TextView)((View)localObject1).findViewById(a.f.desc_tv);
-                  if (localObject1 != null)
-                  {
-                    ((TextView)localObject1).setTextColor(getResources().getColor(a.c.hint_text_color));
-                    AppMethodBeat.o(215604);
-                    return;
-                    localObject1 = null;
-                    break;
-                    label312:
-                    localObject3 = null;
-                    break label59;
-                    localObject1 = this.DGa;
-                    if (localObject1 != null)
-                    {
-                      localObject1 = ((RelativeLayout)localObject1).getParent();
-                      label331:
-                      localObject2 = this.DFZ;
-                      if (localObject2 == null) {
-                        break label359;
-                      }
-                    }
-                    label359:
-                    for (localObject2 = ((RelativeLayout)localObject2).getParent();; localObject2 = null)
-                    {
-                      localObject3 = localObject1;
-                      localObject1 = localObject2;
-                      localObject2 = localObject3;
-                      break;
-                      localObject1 = null;
-                      break label331;
-                    }
-                  }
-                }
-                AppMethodBeat.o(215604);
-                return;
-              }
-            }
-          }
-        }
+        paramHldInitModeUI.getFinishBt().setEnabled(true);
+        paramHldInitModeUI.getFinishBt().setClickable(true);
+        paramHldInitModeUI.fNv();
       }
     }
   }
   
+  private static final void a(HldInitModeUI paramHldInitModeUI)
+  {
+    AppMethodBeat.i(312520);
+    s.u(paramHldInitModeUI, "this$0");
+    aa.makeText((Context)paramHldInitModeUI, (CharSequence)paramHldInitModeUI.getString(a.j.ime_mode_setting_fail), 0).show();
+    AppMethodBeat.o(312520);
+  }
+  
+  private static final boolean a(HldInitModeUI paramHldInitModeUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(312497);
+    s.u(paramHldInitModeUI, "this$0");
+    paramHldInitModeUI.finish();
+    AppMethodBeat.o(312497);
+    return true;
+  }
+  
+  private final void fNv()
+  {
+    AppMethodBeat.i(312488);
+    if (!getFinishBt().isEnabled())
+    {
+      AppMethodBeat.o(312488);
+      return;
+    }
+    Object localObject2;
+    label55:
+    Object localObject3;
+    if (YE(a.f.safety_item))
+    {
+      localObject1 = this.JxD;
+      if (localObject1 == null)
+      {
+        localObject1 = null;
+        localObject2 = this.JxE;
+        if (localObject2 != null) {
+          break label296;
+        }
+        localObject2 = null;
+        if (!(localObject1 instanceof View)) {
+          break label345;
+        }
+        localObject3 = (View)localObject1;
+        label67:
+        if (localObject3 != null) {
+          ((View)localObject3).setBackgroundResource(a.e.ime_collect_data_item_select_bg);
+        }
+        if (!(localObject2 instanceof View)) {
+          break label350;
+        }
+        localObject3 = (View)localObject2;
+        label90:
+        if (localObject3 != null) {
+          ((View)localObject3).setBackgroundResource(a.e.ime_collect_data_item_unselect_bg);
+        }
+        if (!(localObject1 instanceof View)) {
+          break label355;
+        }
+        localObject3 = (View)localObject1;
+        label113:
+        if (localObject3 != null)
+        {
+          localObject3 = (TextView)((View)localObject3).findViewById(a.f.title_tv);
+          if (localObject3 != null) {
+            ((TextView)localObject3).setTextColor(getResources().getColor(a.c.Brand));
+          }
+        }
+        if (!(localObject1 instanceof View)) {
+          break label360;
+        }
+        localObject1 = (View)localObject1;
+        label158:
+        if (localObject1 != null)
+        {
+          localObject1 = (TextView)((View)localObject1).findViewById(a.f.desc_tv);
+          if (localObject1 != null) {
+            ((TextView)localObject1).setTextColor(getResources().getColor(a.c.Brand));
+          }
+        }
+        if (!(localObject2 instanceof View)) {
+          break label365;
+        }
+        localObject1 = (View)localObject2;
+        label203:
+        if (localObject1 != null)
+        {
+          localObject1 = (TextView)((View)localObject1).findViewById(a.f.title_tv);
+          if (localObject1 != null) {
+            ((TextView)localObject1).setTextColor(getResources().getColor(a.c.normal_text_color));
+          }
+        }
+        if (!(localObject2 instanceof View)) {
+          break label370;
+        }
+      }
+    }
+    label296:
+    label315:
+    label337:
+    label345:
+    label350:
+    label355:
+    label360:
+    label365:
+    label370:
+    for (Object localObject1 = (View)localObject2;; localObject1 = null)
+    {
+      if (localObject1 != null)
+      {
+        localObject1 = (TextView)((View)localObject1).findViewById(a.f.desc_tv);
+        if (localObject1 != null) {
+          ((TextView)localObject1).setTextColor(getResources().getColor(a.c.hint_text_color));
+        }
+      }
+      AppMethodBeat.o(312488);
+      return;
+      localObject1 = ((RelativeLayout)localObject1).getParent();
+      break;
+      localObject2 = ((RelativeLayout)localObject2).getParent();
+      break label55;
+      localObject1 = this.JxE;
+      if (localObject1 == null)
+      {
+        localObject1 = null;
+        localObject2 = this.JxD;
+        if (localObject2 != null) {
+          break label337;
+        }
+      }
+      for (localObject2 = null;; localObject2 = ((RelativeLayout)localObject2).getParent())
+      {
+        break;
+        localObject1 = ((RelativeLayout)localObject1).getParent();
+        break label315;
+      }
+      localObject3 = null;
+      break label67;
+      localObject3 = null;
+      break label90;
+      localObject3 = null;
+      break label113;
+      localObject1 = null;
+      break label158;
+      localObject1 = null;
+      break label203;
+    }
+  }
+  
+  private static final void fNw()
+  {
+    AppMethodBeat.i(312513);
+    Intent localIntent = new Intent(MMApplicationContext.getContext(), WxImeInterService.class);
+    localIntent.putExtra("ime_load_contact", true);
+    localIntent.putExtra("ime_mode_switch", true);
+    c.n(localIntent, "hld");
+    AppMethodBeat.o(312513);
+  }
+  
   private final Button getFinishBt()
   {
-    AppMethodBeat.i(215592);
-    Button localButton = (Button)this.Dzq.getValue();
-    AppMethodBeat.o(215592);
-    return localButton;
+    AppMethodBeat.i(312450);
+    Object localObject = this.Jst.getValue();
+    s.s(localObject, "<get-finishBt>(...)");
+    localObject = (Button)localObject;
+    AppMethodBeat.o(312450);
+    return localObject;
   }
   
   public int getForceOrientation()
@@ -278,129 +348,130 @@ public class HldInitModeUI
   
   public void initView()
   {
-    AppMethodBeat.i(215598);
+    AppMethodBeat.i(312586);
     super.initView();
     setMMTitle("");
     hideActionbarLine();
     setActionbarColor(getResources().getColor(a.c.white));
     setBackGroundColorResource(a.c.white);
-    setBackBtn((MenuItem.OnMenuItemClickListener)new f(this));
-    Uv(a.f.safety_item);
-    Uv(a.f.normal_item);
+    setBackBtn(new HldInitModeUI..ExternalSyntheticLambda0(this));
+    Ys(a.f.safety_item);
+    Ys(a.f.normal_item);
     getFinishBt().setOnClickListener((View.OnClickListener)this);
-    ((FrameLayout)this.DFW.getValue()).setOnClickListener((View.OnClickListener)this);
-    Object localObject = com.tencent.mm.plugin.hld.f.l.DHK;
-    switch (com.tencent.mm.plugin.hld.f.l.eHc())
+    Object localObject = this.JxA.getValue();
+    s.s(localObject, "<get-finishLayout>(...)");
+    ((FrameLayout)localObject).setOnClickListener((View.OnClickListener)this);
+    localObject = l.JyV;
+    switch (l.fOL())
     {
     default: 
-      localObject = this.DFX;
+      localObject = this.JxB;
       if (localObject != null) {
         ((ImageView)localObject).setVisibility(4);
       }
-      localObject = this.DFY;
+      localObject = this.JxC;
       if (localObject != null) {
         ((ImageView)localObject).setVisibility(4);
       }
       getFinishBt().setEnabled(false);
       getFinishBt().setClickable(false);
-      eFC();
+      fNv();
     }
     for (;;)
     {
-      localObject = new StringBuilder("init default mode:");
-      com.tencent.mm.plugin.hld.f.l locall = com.tencent.mm.plugin.hld.f.l.DHK;
-      Log.i("WxIme.HldInitModeUI", com.tencent.mm.plugin.hld.f.l.eHc());
-      AppMethodBeat.o(215598);
+      localObject = l.JyV;
+      Log.i("WxIme.HldInitModeUI", s.X("init default mode:", Integer.valueOf(l.fOL())));
+      AppMethodBeat.o(312586);
       return;
-      localObject = this.DFX;
+      localObject = this.JxB;
       if (localObject != null) {
         ((ImageView)localObject).setVisibility(0);
       }
-      localObject = this.DFY;
+      localObject = this.JxC;
       if (localObject != null) {
         ((ImageView)localObject).setVisibility(4);
       }
       getFinishBt().setEnabled(true);
       getFinishBt().setClickable(true);
-      eFC();
+      fNv();
       continue;
-      localObject = this.DFX;
+      localObject = this.JxB;
       if (localObject != null) {
         ((ImageView)localObject).setVisibility(4);
       }
-      localObject = this.DFY;
+      localObject = this.JxC;
       if (localObject != null) {
         ((ImageView)localObject).setVisibility(0);
       }
       getFinishBt().setEnabled(true);
       getFinishBt().setClickable(true);
-      eFC();
+      fNv();
     }
   }
   
   public void onClick(View paramView)
   {
-    AppMethodBeat.i(215600);
+    AppMethodBeat.i(312599);
     Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-    ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/hld/ui/HldInitModeUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+    ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/hld/ui/HldInitModeUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
     int i;
-    if (paramView != null)
+    if (paramView == null)
     {
-      paramView = Integer.valueOf(paramView.getId());
+      paramView = null;
       i = a.f.finish_container;
       if (paramView != null) {
-        break label98;
+        break label90;
       }
-      label62:
+      label52:
       i = a.f.finish_bt;
       if (paramView != null) {
-        break label156;
+        break label144;
       }
     }
-    label98:
+    label90:
     while (paramView.intValue() != i)
     {
       do
       {
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/hld/ui/HldInitModeUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(215600);
+        AppMethodBeat.o(312599);
         return;
-        paramView = null;
+        paramView = Integer.valueOf(paramView.getId());
         break;
         if (paramView.intValue() != i) {
-          break label62;
+          break label52;
         }
       } while (getFinishBt().isEnabled());
-      w.cP((Context)getContext(), getString(a.j.contact_info_wxime_keyboard_mode_select_toast));
+      aa.showTextToast((Context)getContext(), getString(a.j.contact_info_wxime_keyboard_mode_select_toast));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/hld/ui/HldInitModeUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(215600);
+      AppMethodBeat.o(312599);
       return;
     }
-    label156:
-    boolean bool = UG(a.f.safety_item);
+    label144:
+    boolean bool = YE(a.f.safety_item);
     paramView = (Context)this;
     getString(a.j.app_tip);
-    this.DGb = com.tencent.mm.ui.base.h.a(paramView, getString(a.j.app_waiting), false, null);
+    this.JxF = com.tencent.mm.ui.base.k.a(paramView, getString(a.j.app_waiting), false, null);
     localObject = new ArrayList();
     if (bool) {}
-    for (paramView = com.tencent.mm.plugin.hld.model.b.DBt;; paramView = com.tencent.mm.plugin.hld.model.b.DBs)
+    for (paramView = com.tencent.mm.plugin.hld.model.b.Jus;; paramView = com.tencent.mm.plugin.hld.model.b.Jur)
     {
       ((ArrayList)localObject).add(paramView);
-      ((ArrayList)localObject).add(com.tencent.mm.plugin.hld.model.b.DBu);
-      paramView = e.Dvq;
-      e.a.a((List)localObject, (com.tencent.mm.plugin.hld.b.f)this);
+      ((ArrayList)localObject).add(com.tencent.mm.plugin.hld.model.b.Jut);
+      paramView = e.JoK;
+      e.a.a((List)localObject, (f)this);
       break;
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(215595);
+    AppMethodBeat.i(312571);
     super.onCreate(paramBundle);
     initView();
     overridePendingTransition(a.a.slide_right_in, a.a.slide_left_out);
-    AppMethodBeat.o(215595);
+    AppMethodBeat.o(312571);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -409,167 +480,59 @@ public class HldInitModeUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void sJ(boolean paramBoolean)
+  public final void wP(boolean paramBoolean)
   {
-    AppMethodBeat.i(215607);
-    Log.i("WxIme.HldModeSettingUI", "doOplogSyncCallback ".concat(String.valueOf(paramBoolean)));
-    Log.i("WxIme.HldInitModeUI", "doOplogSyncCallback ".concat(String.valueOf(paramBoolean)));
-    Object localObject = this.DGb;
+    AppMethodBeat.i(312613);
+    Log.i("WxIme.HldModeSettingUI", s.X("doOplogSyncCallback ", Boolean.valueOf(paramBoolean)));
+    Log.i("WxIme.HldInitModeUI", s.X("doOplogSyncCallback ", Boolean.valueOf(paramBoolean)));
+    Object localObject = this.JxF;
     if (localObject != null) {
-      ((s)localObject).dismiss();
+      ((w)localObject).dismiss();
     }
     if (paramBoolean)
     {
-      paramBoolean = UG(a.f.safety_item);
-      localObject = k.DDb;
-      localObject = getContext();
-      p.j(localObject, "context");
-      int j = ((AppCompatActivity)localObject).getIntent().getIntExtra("ime_enter_scene", 6);
+      paramBoolean = YE(a.f.safety_item);
+      localObject = com.tencent.mm.plugin.hld.model.k.JvH;
+      int j = getContext().getIntent().getIntExtra("ime_enter_scene", 6);
       if (paramBoolean) {}
       for (int i = 2;; i = 1)
       {
-        k.ao(10, j, i);
-        localObject = com.tencent.mm.plugin.hld.f.l.DHK;
-        com.tencent.mm.plugin.hld.f.l.eHo();
-        Log.i("WxIme.HldInitModeUI", "set safetyMode:".concat(String.valueOf(paramBoolean)));
-        localObject = com.tencent.mm.plugin.hld.f.i.DHq;
-        com.tencent.mm.plugin.hld.f.i.td(paramBoolean);
-        com.tencent.e.h.ZvG.be((Runnable)b.DGd);
+        com.tencent.mm.plugin.hld.model.k.aK(10, j, i);
+        localObject = l.JyV;
+        l.fOX();
+        Log.i("WxIme.HldInitModeUI", s.X("set safetyMode:", Boolean.valueOf(paramBoolean)));
+        localObject = com.tencent.mm.plugin.hld.f.i.JyA;
+        com.tencent.mm.plugin.hld.f.i.xo(paramBoolean);
+        h.ahAA.bm(HldInitModeUI..ExternalSyntheticLambda3.INSTANCE);
         setResult(-1, new Intent());
         finish();
-        AppMethodBeat.o(215607);
+        AppMethodBeat.o(312613);
         return;
       }
     }
-    com.tencent.e.h.ZvG.bc((Runnable)new c(this));
-    AppMethodBeat.o(215607);
+    h.ahAA.bk(new HldInitModeUI..ExternalSyntheticLambda2(this));
+    AppMethodBeat.o(312613);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/ui/HldInitModeUI$Companion;", "", "()V", "TAG", "", "plugin-hld_release"})
-  public static final class a {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/Button;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    implements Runnable
-  {
-    public static final b DGd;
-    
-    static
-    {
-      AppMethodBeat.i(217899);
-      DGd = new b();
-      AppMethodBeat.o(217899);
-    }
-    
-    public final void run()
-    {
-      AppMethodBeat.i(217897);
-      Intent localIntent = new Intent(MMApplicationContext.getContext(), WxImeInterService.class);
-      localIntent.putExtra("ime_load_contact", true);
-      localIntent.putExtra("ime_mode_switch", true);
-      c.l(localIntent, "hld");
-      AppMethodBeat.o(217897);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class c
-    implements Runnable
-  {
-    c(HldInitModeUI paramHldInitModeUI) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(217147);
-      w.makeText((Context)this.DGe, (CharSequence)this.DGe.getString(a.j.ime_mode_setting_fail), 0).show();
-      AppMethodBeat.o(217147);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/Button;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class d
-    extends q
+    extends u
     implements kotlin.g.a.a<Button>
   {
-    d(HldInitModeUI paramHldInitModeUI)
+    b(HldInitModeUI paramHldInitModeUI)
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/FrameLayout;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class e
-    extends q
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/FrameLayout;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends u
     implements kotlin.g.a.a<FrameLayout>
   {
-    e(HldInitModeUI paramHldInitModeUI)
+    c(HldInitModeUI paramHldInitModeUI)
     {
       super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class f
-    implements MenuItem.OnMenuItemClickListener
-  {
-    f(HldInitModeUI paramHldInitModeUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(213855);
-      this.DGe.finish();
-      AppMethodBeat.o(213855);
-      return true;
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class g
-    implements View.OnClickListener
-  {
-    g(HldInitModeUI paramHldInitModeUI, int paramInt) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(217121);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/hld/ui/HldInitModeUI$updateChildrenView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      int i = paramInt;
-      if (i == a.f.safety_item)
-      {
-        paramView = HldInitModeUI.a(this.DGe);
-        if (paramView != null) {
-          paramView.setVisibility(0);
-        }
-        paramView = HldInitModeUI.b(this.DGe);
-        if (paramView != null) {
-          paramView.setVisibility(4);
-        }
-        HldInitModeUI.c(this.DGe).setEnabled(true);
-        HldInitModeUI.c(this.DGe).setClickable(true);
-        HldInitModeUI.d(this.DGe);
-      }
-      for (;;)
-      {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/hld/ui/HldInitModeUI$updateChildrenView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(217121);
-        return;
-        if (i == a.f.normal_item)
-        {
-          paramView = HldInitModeUI.a(this.DGe);
-          if (paramView != null) {
-            paramView.setVisibility(4);
-          }
-          paramView = HldInitModeUI.b(this.DGe);
-          if (paramView != null) {
-            paramView.setVisibility(0);
-          }
-          HldInitModeUI.c(this.DGe).setEnabled(true);
-          HldInitModeUI.c(this.DGe).setClickable(true);
-          HldInitModeUI.d(this.DGe);
-        }
-      }
     }
   }
 }

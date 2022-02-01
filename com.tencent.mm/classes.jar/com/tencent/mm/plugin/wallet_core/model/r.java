@@ -8,32 +8,32 @@ import org.json.JSONObject;
 
 public final class r
 {
-  public String OON;
-  public String OOO;
-  public int OQx;
-  public List<a> OQy;
-  public int tpK;
-  public boolean tpu;
+  public String VEH;
+  public String VEI;
+  public int VGr;
+  public List<a> VGs;
   public String url;
+  public boolean wtT;
+  public int wuj;
   
   public r()
   {
-    AppMethodBeat.i(274622);
-    this.OQy = new ArrayList();
-    AppMethodBeat.o(274622);
+    AppMethodBeat.i(301163);
+    this.VGs = new ArrayList();
+    AppMethodBeat.o(301163);
   }
   
-  public static r bU(JSONObject paramJSONObject)
+  public static r cp(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(274623);
+    AppMethodBeat.i(301165);
     if (paramJSONObject != null)
     {
       r localr = new r();
-      localr.OQx = paramJSONObject.optInt("block_layer_report_id");
-      localr.tpu = paramJSONObject.optBoolean("is_show");
-      localr.tpK = paramJSONObject.optInt("action_type");
-      localr.OON = paramJSONObject.optString("tiny_app_username");
-      localr.OOO = paramJSONObject.optString("tiny_app_path");
+      localr.VGr = paramJSONObject.optInt("block_layer_report_id");
+      localr.wtT = paramJSONObject.optBoolean("is_show");
+      localr.wuj = paramJSONObject.optInt("action_type");
+      localr.VEH = paramJSONObject.optString("tiny_app_username");
+      localr.VEI = paramJSONObject.optString("tiny_app_path");
       localr.url = paramJSONObject.optString("url");
       if (paramJSONObject.has("text_info_array"))
       {
@@ -45,33 +45,33 @@ public final class r
           {
             JSONObject localJSONObject = paramJSONObject.optJSONObject(i);
             a locala = new a();
-            locala.OQt = localJSONObject.optString("main_wording");
-            locala.OQu = localJSONObject.optString("reminder_content");
-            locala.OQz = localJSONObject.optString("action_btn_text");
+            locala.VGn = localJSONObject.optString("main_wording");
+            locala.VGo = localJSONObject.optString("reminder_content");
+            locala.VGt = localJSONObject.optString("action_btn_text");
             locala.language = localJSONObject.optString("language");
-            localr.OQy.add(locala);
+            localr.VGs.add(locala);
             i += 1;
           }
         }
       }
-      AppMethodBeat.o(274623);
+      AppMethodBeat.o(301165);
       return localr;
     }
-    AppMethodBeat.o(274623);
+    AppMethodBeat.o(301165);
     return null;
   }
   
   public static final class a
   {
-    public String OQt;
-    public String OQu;
-    public String OQz;
+    public String VGn;
+    public String VGo;
+    public String VGt;
     public String language;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.r
  * JD-Core Version:    0.7.0.1
  */

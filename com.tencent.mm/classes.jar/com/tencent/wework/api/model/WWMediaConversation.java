@@ -8,25 +8,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class WWMediaConversation
   extends WWMediaMessage.WWMediaObject
 {
-  public byte[] ZYt;
-  public WWMediaMessage.WWMediaObject ZYu;
+  public String AmC;
+  public byte[] aicW;
+  public WWMediaMessage.WWMediaObject aicX;
   public String name;
-  public String wQa;
-  public long wpR;
+  public long zLU;
   
-  public final void bEz(String paramString)
+  public final void bGY(String paramString)
   {
-    AppMethodBeat.i(233357);
-    super.bEz(paramString);
+    AppMethodBeat.i(210659);
+    super.bGY(paramString);
     try
     {
-      this.ZYu.bEz(paramString);
-      AppMethodBeat.o(233357);
+      this.aicX.bGY(paramString);
       return;
     }
-    catch (Throwable paramString)
+    finally
     {
-      AppMethodBeat.o(233357);
+      AppMethodBeat.o(210659);
     }
   }
   
@@ -38,22 +37,22 @@ public class WWMediaConversation
       AppMethodBeat.o(106538);
       return false;
     }
-    if ((this.ZYt != null) && (this.ZYt.length > 10485760))
+    if ((this.aicW != null) && (this.aicW.length > 10485760))
     {
       AppMethodBeat.o(106538);
       return false;
     }
-    if ((this.wQa != null) && (this.wQa.length() > 10240))
+    if ((this.AmC != null) && (this.AmC.length() > 10240))
     {
       AppMethodBeat.o(106538);
       return false;
     }
-    if ((this.wQa != null) && (getFileSize(this.wQa) > 10485760))
+    if ((this.AmC != null) && (getFileSize(this.AmC) > 10485760))
     {
       AppMethodBeat.o(106538);
       return false;
     }
-    if ((this.ZYu != null) && (this.ZYu.checkArgs()))
+    if ((this.aicX != null) && (this.aicX.checkArgs()))
     {
       AppMethodBeat.o(106538);
       return true;
@@ -64,37 +63,35 @@ public class WWMediaConversation
   
   public final void fromBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(233350);
+    AppMethodBeat.i(210645);
     super.fromBundle(paramBundle);
     this.name = paramBundle.getString("_wwconvobject_name");
-    this.wpR = paramBundle.getLong("_wwconvobject_date");
-    this.ZYt = paramBundle.getByteArray("_wwconvobject_avatarData");
-    this.wQa = paramBundle.getString("_wwconvobject_avatarPath");
+    this.zLU = paramBundle.getLong("_wwconvobject_date");
+    this.aicW = paramBundle.getByteArray("_wwconvobject_avatarData");
+    this.AmC = paramBundle.getString("_wwconvobject_avatarPath");
     try
     {
-      this.ZYu = ((WWMediaMessage.WWMediaObject)BaseMessage.by(paramBundle.getBundle("_wwconvobject_message")));
-      AppMethodBeat.o(233350);
+      this.aicX = ((WWMediaMessage.WWMediaObject)BaseMessage.ch(paramBundle.getBundle("_wwconvobject_message")));
       return;
     }
-    catch (Throwable paramBundle)
+    finally
     {
-      AppMethodBeat.o(233350);
+      AppMethodBeat.o(210645);
     }
   }
   
   public final void setContext(Context paramContext)
   {
-    AppMethodBeat.i(233359);
+    AppMethodBeat.i(210665);
     super.setContext(paramContext);
     try
     {
-      this.ZYu.setContext(paramContext);
-      AppMethodBeat.o(233359);
+      this.aicX.setContext(paramContext);
       return;
     }
-    catch (Throwable paramContext)
+    finally
     {
-      AppMethodBeat.o(233359);
+      AppMethodBeat.o(210665);
     }
   }
   
@@ -103,25 +100,24 @@ public class WWMediaConversation
     AppMethodBeat.i(106539);
     super.toBundle(paramBundle);
     paramBundle.putString("_wwconvobject_name", this.name);
-    paramBundle.putLong("_wwconvobject_date", this.wpR);
-    paramBundle.putByteArray("_wwconvobject_avatarData", this.ZYt);
-    paramBundle.putString("_wwconvobject_avatarPath", this.wQa);
-    paramBundle.putBundle("_wwconvobject_message", BaseMessage.a(this.ZYu));
+    paramBundle.putLong("_wwconvobject_date", this.zLU);
+    paramBundle.putByteArray("_wwconvobject_avatarData", this.aicW);
+    paramBundle.putString("_wwconvobject_avatarPath", this.AmC);
+    paramBundle.putBundle("_wwconvobject_message", BaseMessage.a(this.aicX));
     AppMethodBeat.o(106539);
   }
   
-  public final void u(Intent paramIntent, String paramString)
+  public final void w(Intent paramIntent, String paramString)
   {
-    AppMethodBeat.i(233354);
+    AppMethodBeat.i(210654);
     try
     {
-      this.ZYu.u(paramIntent, paramString);
-      AppMethodBeat.o(233354);
+      this.aicX.w(paramIntent, paramString);
       return;
     }
-    catch (Throwable paramIntent)
+    finally
     {
-      AppMethodBeat.o(233354);
+      AppMethodBeat.o(210654);
     }
   }
 }

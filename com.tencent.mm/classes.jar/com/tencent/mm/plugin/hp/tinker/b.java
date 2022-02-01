@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.hp.tinker;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -13,8 +12,8 @@ import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 
 public final class b
 {
-  private final String DNk;
-  private final String DNl;
+  private final String JEy;
+  private final String JEz;
   
   private b(String paramString1, String paramString2)
   {
@@ -31,12 +30,12 @@ public final class b
       AppMethodBeat.o(117456);
       throw paramString1;
     }
-    this.DNk = paramString1;
-    this.DNl = paramString2;
+    this.JEy = paramString1;
+    this.JEz = paramString2;
     AppMethodBeat.o(117456);
   }
   
-  private static int aLO(String paramString)
+  private static int aII(String paramString)
   {
     AppMethodBeat.i(117459);
     Object localObject = paramString;
@@ -69,18 +68,17 @@ public final class b
       }
       return 0;
     }
-    catch (Throwable paramString)
+    finally
     {
       Log.e("MicroMsg.TinkerDeployStatistic", "[-] Fail to parse hex string: %s", new Object[] { localObject });
       AppMethodBeat.o(117459);
     }
   }
   
-  @SuppressLint({"ApplySharedPref"})
-  private static void aLP(String paramString)
+  private static void aIJ(String paramString)
   {
     AppMethodBeat.i(117462);
-    SharedPreferences localSharedPreferences = eIe();
+    SharedPreferences localSharedPreferences = fPX();
     if (!localSharedPreferences.contains(paramString))
     {
       long l = System.currentTimeMillis();
@@ -89,7 +87,7 @@ public final class b
     AppMethodBeat.o(117462);
   }
   
-  public static SharedPreferences eIe()
+  public static SharedPreferences fPX()
   {
     AppMethodBeat.i(117458);
     try
@@ -98,7 +96,7 @@ public final class b
       AppMethodBeat.o(117458);
       return localMultiProcessMMKV;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Log.printErrStackTrace("MicroMsg.TinkerDeployStatistic", localThrowable, "[-] Fail to init mmkv storage, fallback to system sp.", new Object[0]);
       SharedPreferences localSharedPreferences = MMApplicationContext.getContext().getSharedPreferences("tinker_deploy_stats_ts", 4);
@@ -107,7 +105,7 @@ public final class b
     }
   }
   
-  public static b iv(String paramString1, String paramString2)
+  public static b jF(String paramString1, String paramString2)
   {
     AppMethodBeat.i(117457);
     paramString1 = new b(paramString1, paramString2);
@@ -115,49 +113,48 @@ public final class b
     return paramString1;
   }
   
-  public final String Ve(int paramInt)
+  public final String YZ(int paramInt)
   {
     AppMethodBeat.i(117460);
-    String str = "mmkv_key_" + aLO(this.DNk) + "_" + aLO(this.DNl) + "_" + paramInt;
+    String str = "mmkv_key_" + aII(this.JEy) + "_" + aII(this.JEz) + "_" + paramInt;
     AppMethodBeat.o(117460);
     return str;
   }
   
-  public final void ay(int paramInt, long paramLong)
+  public final void aF(int paramInt, long paramLong)
   {
     AppMethodBeat.i(184835);
-    String str = String.valueOf(paramInt) + ',' + aLO(this.DNk) + ',' + aLO(this.DNl) + ',' + paramLong;
-    h.IzE.b(17676, str, true, true);
+    String str = String.valueOf(paramInt) + ',' + aII(this.JEy) + ',' + aII(this.JEz) + ',' + paramLong;
+    h.OAn.b(17676, str, true, true);
     AppMethodBeat.o(184835);
   }
   
-  public final void eIf()
+  public final void fPY()
   {
     AppMethodBeat.i(117463);
-    aLP(Ve(1));
+    aIJ(YZ(1));
     AppMethodBeat.o(117463);
   }
   
-  public final void eIg()
+  public final void fPZ()
   {
-    AppMethodBeat.i(195475);
-    aLP(Ve(2));
-    AppMethodBeat.o(195475);
+    AppMethodBeat.i(261854);
+    aIJ(YZ(2));
+    AppMethodBeat.o(261854);
   }
   
-  @SuppressLint({"ApplySharedPref"})
-  public final void eIh()
+  public final void fQa()
   {
-    AppMethodBeat.i(195477);
-    SharedPreferences localSharedPreferences = eIe();
-    String str = Ve(1);
+    AppMethodBeat.i(261855);
+    SharedPreferences localSharedPreferences = fPX();
+    String str = YZ(1);
     if (localSharedPreferences.contains(str))
     {
       long l = localSharedPreferences.getLong(str, 0L);
-      ay(1, System.currentTimeMillis() - l);
+      aF(1, System.currentTimeMillis() - l);
       localSharedPreferences.edit().remove(str).commit();
     }
-    AppMethodBeat.o(195477);
+    AppMethodBeat.o(261855);
   }
 }
 

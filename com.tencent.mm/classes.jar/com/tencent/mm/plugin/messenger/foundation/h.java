@@ -1,171 +1,103 @@
 package com.tencent.mm.plugin.messenger.foundation;
 
+import com.tencent.mars.mm.MMLogic;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cw.c;
-import com.tencent.mm.modelmulti.k;
-import com.tencent.mm.modelmulti.q.c;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.ab;
-import com.tencent.mm.plugin.messenger.foundation.a.ab.a;
-import com.tencent.mm.plugin.messenger.foundation.a.ad;
-import com.tencent.mm.plugin.messenger.foundation.a.ae;
-import com.tencent.mm.plugin.messenger.foundation.a.af;
-import com.tencent.mm.plugin.messenger.foundation.a.n;
-import com.tencent.mm.plugin.zero.a.f;
-import com.tencent.mm.protocal.protobuf.abu;
-import com.tencent.mm.protocal.protobuf.db;
+import com.tencent.mm.am.g.a;
+import com.tencent.mm.am.g.d;
+import com.tencent.mm.am.s;
+import com.tencent.mm.booter.NotifyReceiver.NotifyService;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.jni.utils.UtilsJni;
+import com.tencent.mm.protocal.MMProtocalJni;
+import com.tencent.mm.protocal.protobuf.bf;
+import com.tencent.mm.protocal.protobuf.bg;
+import com.tencent.mm.protocal.protobuf.dl;
+import com.tencent.mm.protocal.protobuf.dut;
+import com.tencent.mm.protocal.protobuf.ewv;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ca;
-import java.io.IOException;
 
 public final class h
-  implements f
+  implements com.tencent.mm.plugin.zero.a.c
 {
-  private static final h.b EVs;
-  private ae EVt;
-  
-  static
+  public final void a(NotifyReceiver.NotifyService paramNotifyService, int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, long paramLong)
   {
-    AppMethodBeat.i(116928);
-    EVs = new h.b((byte)0);
-    AppMethodBeat.o(116928);
-  }
-  
-  public static void addSyncDoCmdCallback(ad paramad)
-  {
-    AppMethodBeat.i(116921);
-    EVs.add(paramad);
-    AppMethodBeat.o(116921);
-  }
-  
-  public static void removeSyncDoCmdCallback(ad paramad)
-  {
-    AppMethodBeat.i(116922);
-    EVs.remove(paramad);
-    AppMethodBeat.o(116922);
-  }
-  
-  public final void a(abu paramabu, byte[] paramArrayOfByte, boolean paramBoolean)
-  {
-    AppMethodBeat.i(116924);
-    ab localab = ab.a.WA(paramabu.SnG);
-    if (localab != null) {
-      try
+    AppMethodBeat.i(288636);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(288636);
+      return;
+      if (paramArrayOfByte1 != null)
       {
-        localab.a(paramabu, paramArrayOfByte, paramBoolean, this.EVt);
-        AppMethodBeat.o(116924);
-        return;
+        ewv localewv = new ewv();
+        try
+        {
+          localewv.parseFrom(paramArrayOfByte1);
+          paramArrayOfByte1 = localewv.Zsu.Op;
+          paramNotifyService = paramArrayOfByte1;
+          int i;
+          if (localewv.TpC != null)
+          {
+            bf localbf = new bf();
+            localbf.parseFrom(localewv.TpC.Op);
+            paramNotifyService = paramArrayOfByte1;
+            if (localbf.YCp)
+            {
+              paramNotifyService = localbf.YCq;
+              Log.i("MicroMsg.SecurityNotifyReceiverCallback", "summerbadcr MM_PKT_SILENCE_NOTIFY secureData[%d, %d, %d, %d, %d, %d]", new Object[] { Integer.valueOf(paramNotifyService.YCs), Integer.valueOf(paramNotifyService.YCt), Integer.valueOf(paramNotifyService.YCu), Integer.valueOf(paramNotifyService.YCv), Integer.valueOf(paramNotifyService.YCw), Integer.valueOf(paramNotifyService.YCx) });
+              if (paramNotifyService.YCs != 13) {
+                break label357;
+              }
+              com.tencent.mm.kernel.h.baF();
+              paramArrayOfByte2 = com.tencent.mm.kernel.h.baD().sA(3);
+              paramNotifyService = UtilsJni.AesGcmDecryptWithUncompress(paramArrayOfByte2, paramArrayOfByte1);
+              if (paramArrayOfByte2 != null) {
+                break label343;
+              }
+              paramInt = -1;
+              if (paramNotifyService != null) {
+                break label350;
+              }
+              i = -1;
+              label223:
+              Log.i("MicroMsg.SecurityNotifyReceiverCallback", "summerbadcr MM_PKT_SILENCE_NOTIFY AES_GCM_ENCRYPT serverSession[%s] data[%s]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+            }
+          }
+          for (;;)
+          {
+            paramArrayOfByte1 = new dut();
+            paramArrayOfByte1.parseFrom(paramNotifyService);
+            g.d.dB(Integer.valueOf(paramArrayOfByte1.YFg.IIs)).b(new g.a(paramArrayOfByte1.YFg));
+            com.tencent.mm.kernel.h.aZW().oun.ackActionNotify("", localewv.abyW, MMLogic.ACTION_ACK_OK);
+            Log.i("MicroMsg.SecurityNotifyReceiverCallback", "deal succ, taskid:%d", new Object[] { Long.valueOf(localewv.abyW) });
+            AppMethodBeat.o(288636);
+            return;
+            label343:
+            paramInt = paramArrayOfByte2.length;
+            break;
+            label350:
+            i = paramNotifyService.length;
+            break label223;
+            label357:
+            paramNotifyService = MMProtocalJni.decodeSecureNotifyData(paramArrayOfByte2, paramNotifyService.YCs, paramNotifyService.YCt, paramNotifyService.YCu, paramNotifyService.YCv, paramNotifyService.YCw, paramNotifyService.YCx, paramNotifyService.YCy, paramArrayOfByte1);
+          }
+          if (paramNotifyService == null) {
+            continue;
+          }
+        }
+        catch (Exception paramNotifyService)
+        {
+          Log.printErrStackTrace("MicroMsg.SecurityNotifyReceiverCallback", paramNotifyService, "taskid:%d", new Object[] { Long.valueOf(localewv.abyW) });
+          paramNotifyService = com.tencent.mm.kernel.h.aZW();
+        }
+        paramNotifyService = paramNotifyService.oun;
+        if (paramNotifyService != null) {
+          paramNotifyService.ackActionNotify("", localewv.abyW, MMLogic.ACTION_ACK_FAILED);
+        }
       }
-      catch (IOException paramabu)
-      {
-        Log.e("MicroMsg.SyncDoCmdExtensions", "docmd: parse protobuf error, " + paramabu.getMessage());
-        paramabu = new RuntimeException("docmd: parse protobuf error");
-        AppMethodBeat.o(116924);
-        throw paramabu;
-      }
     }
-    Log.w("MicroMsg.SyncDoCmdExtensions", "SyncDoCmdExtension for cmd id [%s] is null.", new Object[] { Integer.valueOf(paramabu.SnG) });
-    AppMethodBeat.o(116924);
-  }
-  
-  public final void dC(Object paramObject)
-  {
-    AppMethodBeat.i(116923);
-    c localc = af.eSf();
-    if (localc != null) {
-      this.EVt = ((ae)localc.get());
-    }
-    if (this.EVt == null) {
-      this.EVt = new a((byte)0);
-    }
-    if ((paramObject instanceof k))
-    {
-      ((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().aOC(((k)paramObject).TAG);
-      EVs.aU(paramObject);
-      AppMethodBeat.o(116923);
-      return;
-    }
-    if ((paramObject instanceof String))
-    {
-      if (paramObject.equals("NetSceneInit"))
-      {
-        ((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().aOC((String)paramObject);
-        EVs.aU(paramObject);
-        AppMethodBeat.o(116923);
-      }
-    }
-    else if ((paramObject instanceof q.c))
-    {
-      ((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().aOC(paramObject.toString());
-      EVs.aU(paramObject);
-    }
-    AppMethodBeat.o(116923);
-  }
-  
-  public final void dD(Object paramObject)
-  {
-    AppMethodBeat.i(116925);
-    if ((paramObject instanceof k))
-    {
-      this.EVt.dKq();
-      ((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().aOD(((k)paramObject).TAG);
-      EVs.aV(paramObject);
-      AppMethodBeat.o(116925);
-      return;
-    }
-    if (((paramObject instanceof String)) && (paramObject.equals("NetSceneInit")))
-    {
-      this.EVt.dKq();
-      ((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().aOD((String)paramObject);
-      EVs.aV(paramObject);
-      AppMethodBeat.o(116925);
-      return;
-    }
-    if ((paramObject instanceof q.c))
-    {
-      this.EVt.dKq();
-      ((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().aOD(paramObject.toString());
-      EVs.aV(paramObject);
-    }
-    AppMethodBeat.o(116925);
-  }
-  
-  public final void dE(Object paramObject)
-  {
-    AppMethodBeat.i(116926);
-    if ((paramObject instanceof k)) {
-      ((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().aOD(((k)paramObject).TAG);
-    }
-    AppMethodBeat.o(116926);
-  }
-  
-  public final void dF(Object paramObject)
-  {
-    AppMethodBeat.i(116927);
-    if ((paramObject instanceof k))
-    {
-      EVs.aW(paramObject);
-      AppMethodBeat.o(116927);
-      return;
-    }
-    if (((paramObject instanceof String)) && (paramObject.equals("NetSceneInit")))
-    {
-      EVs.aW(paramObject);
-      AppMethodBeat.o(116927);
-      return;
-    }
-    if ((paramObject instanceof q.c)) {
-      EVs.aW(paramObject);
-    }
-    AppMethodBeat.o(116927);
-  }
-  
-  static final class a
-    implements ae
-  {
-    public final void a(ca paramca, db paramdb) {}
-    
-    public final void dKq() {}
   }
 }
 

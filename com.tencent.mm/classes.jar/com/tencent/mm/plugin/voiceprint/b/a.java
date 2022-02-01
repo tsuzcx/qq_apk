@@ -5,121 +5,120 @@ import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/voiceprint/audio/VoicePrintRecorderAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseRecorderAudioManager;", "onStartRecord", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isImmediatelyResponse", "", "(Lkotlin/jvm/functions/Function1;)V", "audioFocusHelper", "Lcom/tencent/mm/compatible/util/AudioFocusHelper;", "hasBeginRec", "onAudioDeviceStateChanged", "status", "", "releaseAudioRecordDevice", "requestAudioRecorderDevice", "context", "Landroid/content/Context;", "stopRecord", "isContinue", "Companion", "app_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/voiceprint/audio/VoicePrintRecorderAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseRecorderAudioManager;", "onStartRecord", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isImmediatelyResponse", "", "(Lkotlin/jvm/functions/Function1;)V", "audioFocusHelper", "Lcom/tencent/mm/compatible/util/AudioFocusHelper;", "hasBeginRec", "onAudioDeviceStateChanged", "status", "", "releaseAudioRecordDevice", "requestAudioRecorderDevice", "context", "Landroid/content/Context;", "stopRecord", "isContinue", "Companion", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   extends com.tencent.mm.plugin.audio.b.d
 {
-  public static final a.a NGP;
-  private boolean NGO;
-  private kotlin.g.a.b<? super Boolean, x> fmu;
-  private com.tencent.mm.compatible.util.b mlj;
+  public static final a.a UsO;
+  private boolean UsP;
+  private kotlin.g.a.b<? super Boolean, ah> hqF;
+  private com.tencent.mm.compatible.util.b peV;
   
   static
   {
-    AppMethodBeat.i(285565);
-    NGP = new a.a((byte)0);
-    AppMethodBeat.o(285565);
+    AppMethodBeat.i(272646);
+    UsO = new a.a((byte)0);
+    AppMethodBeat.o(272646);
   }
   
-  public a(kotlin.g.a.b<? super Boolean, x> paramb)
+  public a(kotlin.g.a.b<? super Boolean, ah> paramb)
   {
-    AppMethodBeat.i(285564);
-    this.fmu = paramb;
-    com.tencent.mm.plugin.audio.d.b.crG();
-    com.tencent.mm.plugin.audio.d.d.crG();
-    paramb = com.tencent.mm.plugin.audio.c.a.rJX;
+    AppMethodBeat.i(272634);
+    this.hqF = paramb;
+    com.tencent.mm.plugin.audio.d.b.cUq();
+    com.tencent.mm.plugin.audio.d.d.cUq();
+    paramb = com.tencent.mm.plugin.audio.c.a.uVi;
     com.tencent.mm.plugin.audio.c.a.a.a((com.tencent.mm.plugin.audio.b.a)this, "record");
-    AppMethodBeat.o(285564);
+    AppMethodBeat.o(272634);
   }
   
-  private final void acV()
+  private final void aEV()
   {
-    AppMethodBeat.i(285561);
-    anT("record");
-    com.tencent.mm.plugin.audio.c.a.a locala = com.tencent.mm.plugin.audio.c.a.rJX;
-    com.tencent.mm.plugin.audio.c.a.a.anX("record");
-    AppMethodBeat.o(285561);
+    AppMethodBeat.i(272639);
+    ahq("record");
+    com.tencent.mm.plugin.audio.c.a.a locala = com.tencent.mm.plugin.audio.c.a.uVi;
+    com.tencent.mm.plugin.audio.c.a.a.ahu("record");
+    AppMethodBeat.o(272639);
   }
   
-  public final void AF(boolean paramBoolean)
+  public final void Ge(boolean paramBoolean)
   {
-    AppMethodBeat.i(285562);
+    AppMethodBeat.i(272654);
     if (!paramBoolean) {
-      acV();
+      aEV();
     }
-    com.tencent.mm.compatible.util.b localb = this.mlj;
-    if (localb != null)
-    {
-      localb.avz();
-      AppMethodBeat.o(285562);
-      return;
+    com.tencent.mm.compatible.util.b localb = this.peV;
+    if (localb != null) {
+      localb.aPS();
     }
-    AppMethodBeat.o(285562);
+    AppMethodBeat.o(272654);
   }
   
-  public final boolean iD(Context paramContext)
+  public final boolean kv(Context paramContext)
   {
-    AppMethodBeat.i(285560);
-    p.k(paramContext, "context");
-    com.tencent.mm.plugin.audio.c.a.a locala = com.tencent.mm.plugin.audio.c.a.rJX;
+    AppMethodBeat.i(272650);
+    s.u(paramContext, "context");
+    com.tencent.mm.plugin.audio.c.a.a locala = com.tencent.mm.plugin.audio.c.a.uVi;
     com.tencent.mm.plugin.audio.c.a.a.a((com.tencent.mm.plugin.audio.b.a)this, "record");
-    this.mlj = new com.tencent.mm.compatible.util.b(paramContext);
+    this.peV = new com.tencent.mm.compatible.util.b(paramContext);
     int i = b("record", Integer.valueOf(4));
-    this.NGO = false;
+    this.UsP = false;
     if (i != 0) {
-      ko(100);
+      nW(100);
     }
     for (;;)
     {
-      AppMethodBeat.o(285560);
+      AppMethodBeat.o(272650);
       return false;
       new b(this).sendEmptyMessageDelayed(0, 50L);
     }
   }
   
-  public final void ko(int paramInt)
+  public final void nW(int paramInt)
   {
-    AppMethodBeat.i(285563);
-    super.ko(paramInt);
-    Log.d("MicroMsg.VoicePrintRecorderAudioManager", " Recorder onAudioDeviceStateChange :".concat(String.valueOf(paramInt)));
-    if (this.NGO)
+    AppMethodBeat.i(272658);
+    super.nW(paramInt);
+    Log.d("MicroMsg.VoicePrintRecorderAudioManager", s.X(" Recorder onAudioDeviceStateChange :", Integer.valueOf(paramInt)));
+    if (this.UsP)
     {
-      AppMethodBeat.o(285563);
+      AppMethodBeat.o(272658);
       return;
     }
-    this.NGO = true;
-    acV();
-    this.fmu.invoke(Boolean.TRUE);
-    AppMethodBeat.o(285563);
+    this.UsP = true;
+    aEV();
+    this.hqF.invoke(Boolean.TRUE);
+    AppMethodBeat.o(272658);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/voiceprint/audio/VoicePrintRecorderAudioManager$requestAudioRecorderDevice$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "app_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/voiceprint/audio/VoicePrintRecorderAudioManager$requestAudioRecorderDevice$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
     extends MMHandler
   {
+    b(a parama) {}
+    
     public final void handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(286060);
-      p.k(paramMessage, "msg");
+      AppMethodBeat.i(272637);
+      s.u(paramMessage, "msg");
       Log.d("MicroMsg.VoicePrintRecorderAudioManager", " Recorder handleMessage");
-      if (a.a(this.NGQ))
+      if (a.a(this.UsQ))
       {
-        AppMethodBeat.o(286060);
+        AppMethodBeat.o(272637);
         return;
       }
-      this.NGQ.anT("record");
-      this.NGQ.ko(200);
-      AppMethodBeat.o(286060);
+      this.UsQ.ahq("record");
+      this.UsQ.nW(200);
+      AppMethodBeat.o(272637);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import com.tencent.kinda.framework.R.string;
 import com.tencent.kinda.framework.widget.tools.MMKViewUtil;
 import com.tencent.kinda.gen.KRegionEditView;
@@ -27,6 +28,7 @@ public class KindaRegionEditViewImpl
   private UIPageFragmentActivity.a intentHandler;
   private boolean mAutoLocation;
   private KRegionEditViewOnRegionSelectedCallback mCallback;
+  private LinearLayout mContainer;
   private Context mContext;
   private EditText mEditText;
   private boolean mShowDomesticCity;
@@ -71,6 +73,7 @@ public class KindaRegionEditViewImpl
             localStringBuilder.append(" ").append(paramAnonymousIntent);
           }
           KindaRegionEditViewImpl.this.mEditText.setText(localStringBuilder.toString());
+          KindaRegionEditViewImpl.this.mContainer.setContentDescription(localStringBuilder.toString());
           if (KindaRegionEditViewImpl.this.mCallback != null) {
             KindaRegionEditViewImpl.this.mCallback.onRegionSelected();
           }
@@ -94,16 +97,20 @@ public class KindaRegionEditViewImpl
     this.mEditText.setInputType(0);
     this.mEditText.setFocusable(false);
     this.mEditText.setBackground(null);
+    this.mEditText.setSingleLine(false);
     this.mEditText.setHint(R.string.wallet_card_private_info_address_hint);
-    this.mEditText.setTextSize(0, MMKViewUtil.dpToPx(MMApplicationContext.getContext(), 17.0F));
+    float f = MMKViewUtil.getScaleSize(paramContext);
+    this.mEditText.setTextSize(0, MMKViewUtil.dpToPx(paramContext, f * 17.0F));
     this.mEditText.setPadding(0, 0, 0, 0);
     this.mContext = paramContext;
     if ((this.mContext instanceof UIPageFragmentActivity))
     {
-      this.REQUEST_CODE = ((UIPageFragmentActivity)this.mContext).jSv.getAndIncrement();
+      this.REQUEST_CODE = ((UIPageFragmentActivity)this.mContext).msM.getAndIncrement();
       UIPageFragmentActivity.a(this.REQUEST_CODE, this.intentHandler);
     }
-    paramContext = new LayoutWrapper(paramContext, this.mEditText);
+    this.mContainer = new LayoutWrapper(paramContext, this.mEditText);
+    this.mContainer.setContentDescription(paramContext.getString(R.string.wallet_card_private_info_address_hint));
+    paramContext = this.mContainer;
     AppMethodBeat.o(18945);
     return paramContext;
   }
@@ -205,8 +212,10 @@ public class KindaRegionEditViewImpl
     this.countryCode = paramString1;
     this.provinceCode = paramString2;
     this.cityCode = paramString3;
-    if (!Util.isNullOrNil(paramString4)) {
+    if (!Util.isNullOrNil(paramString4))
+    {
       this.mEditText.setText(paramString4);
+      this.mContainer.setContentDescription(paramString4);
     }
     AppMethodBeat.o(18941);
   }
@@ -223,7 +232,7 @@ public class KindaRegionEditViewImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaRegionEditViewImpl
  * JD-Core Version:    0.7.0.1
  */

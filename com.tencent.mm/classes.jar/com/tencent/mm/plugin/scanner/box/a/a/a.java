@@ -2,56 +2,46 @@ package com.tencent.mm.plugin.scanner.box.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/box/jsapi/base/DefaultScanJsApiPool;", "", "()V", "jsApis", "", "", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "getJsApis", "()Ljava/util/Map;", "jsApis$delegate", "Lkotlin/Lazy;", "initJsApiPool", "", "toMap", "Ljava/util/HashMap;", "", "plugin-scan_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/box/jsapi/base/DefaultScanJsApiPool;", "", "()V", "jsApis", "", "", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "getJsApis", "()Ljava/util/Map;", "jsApis$delegate", "Lkotlin/Lazy;", "initJsApiPool", "", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public static final f IIi;
-  public static final a IIj;
+  public static final a OOg;
+  private static final j OOh;
   
   static
   {
-    AppMethodBeat.i(221482);
-    IIj = new a();
-    IIi = g.ar((kotlin.g.a.a)a.IIk);
-    AppMethodBeat.o(221482);
+    AppMethodBeat.i(313835);
+    OOg = new a();
+    OOh = k.cm((kotlin.g.a.a)a.OOi);
+    AppMethodBeat.o(313835);
   }
   
-  public static HashMap<String, com.tencent.mm.plugin.webview.d.c.a> hf(List<? extends com.tencent.mm.plugin.webview.d.c.a> paramList)
+  public static Map<String, com.tencent.mm.plugin.webview.jsapi.c.a> gPY()
   {
-    AppMethodBeat.i(221477);
-    p.k(paramList, "$this$toMap");
-    HashMap localHashMap = new HashMap();
-    paramList = ((Iterable)paramList).iterator();
-    while (paramList.hasNext())
-    {
-      com.tencent.mm.plugin.webview.d.c.a locala = (com.tencent.mm.plugin.webview.d.c.a)paramList.next();
-      ((Map)localHashMap).put(locala.fCm(), locala);
-    }
-    AppMethodBeat.o(221477);
-    return localHashMap;
+    AppMethodBeat.i(313826);
+    Map localMap = (Map)OOh.getValue();
+    AppMethodBeat.o(313826);
+    return localMap;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "Lkotlin/collections/HashMap;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    extends q
-    implements kotlin.g.a.a<HashMap<String, com.tencent.mm.plugin.webview.d.c.a>>
+    extends u
+    implements kotlin.g.a.a<HashMap<String, com.tencent.mm.plugin.webview.jsapi.c.a>>
   {
-    public static final a IIk;
+    public static final a OOi;
     
     static
     {
-      AppMethodBeat.i(222275);
-      IIk = new a();
-      AppMethodBeat.o(222275);
+      AppMethodBeat.i(313818);
+      OOi = new a();
+      AppMethodBeat.o(313818);
     }
     
     a()

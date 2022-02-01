@@ -1,22 +1,21 @@
 package com.tencent.mm.plugin.emoji.ui.v2;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.ba;
+import com.tencent.mm.autogen.mmdata.rpt.bw;
 import com.tencent.mm.plugin.emoji.a.a.a;
 import com.tencent.mm.plugin.emoji.a.a.f.a;
-import com.tencent.mm.plugin.emoji.e.k;
-import com.tencent.mm.plugin.emoji.f.o;
-import com.tencent.mm.plugin.emoji.i.h;
+import com.tencent.mm.plugin.emoji.e.o;
+import com.tencent.mm.plugin.emoji.h.h;
+import com.tencent.mm.plugin.emoji.mgr.k;
 import com.tencent.mm.plugin.emoji.ui.BaseEmojiStoreUI;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.akh;
-import com.tencent.mm.protocal.protobuf.don;
+import com.tencent.mm.protocal.protobuf.cjb;
+import com.tencent.mm.protocal.protobuf.ehf;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import java.io.IOException;
@@ -24,14 +23,14 @@ import java.io.IOException;
 public class EmojiStoreV2RankUI
   extends BaseEmojiStoreUI
 {
-  private boolean pIj;
-  protected ba uES;
+  private boolean sNa;
+  protected bw xNu;
   
   public EmojiStoreV2RankUI()
   {
     AppMethodBeat.i(109236);
-    this.uES = new ba();
-    this.pIj = true;
+    this.xNu = new bw();
+    this.sNa = true;
     AppMethodBeat.o(109236);
   }
   
@@ -39,7 +38,7 @@ public class EmojiStoreV2RankUI
   {
     AppMethodBeat.i(109239);
     super.a(paramInt1, paramInt2, paramString, paramo);
-    if (this.pIj)
+    if (this.sNa)
     {
       MMHandlerThread.postToMainThreadDelayed(new Runnable()
       {
@@ -50,7 +49,7 @@ public class EmojiStoreV2RankUI
           AppMethodBeat.o(109235);
         }
       }, 300L);
-      this.pIj = false;
+      this.sNa = false;
     }
     AppMethodBeat.o(109239);
   }
@@ -64,9 +63,9 @@ public class EmojiStoreV2RankUI
       AppMethodBeat.o(109240);
       return;
     }
-    if (paramf.uAZ == f.a.uBi)
+    if (paramf.xHD == f.a.xHN)
     {
-      paramf = paramf.uBb;
+      paramf = paramf.xHF;
       if (paramf == null)
       {
         Log.i("MicroMsg.EmojiStoreV2RankUI", "banner set is null. do nothing");
@@ -77,44 +76,44 @@ public class EmojiStoreV2RankUI
       AppMethodBeat.o(109240);
       return;
     }
-    akh localakh = paramf.uBa;
-    if (localakh == null)
+    cjb localcjb = paramf.xHE;
+    if (localcjb == null)
     {
       Log.i("MicroMsg.EmojiStoreV2RankUI", "summary is null. do nothing");
       AppMethodBeat.o(109240);
       return;
     }
-    this.uES.jA(String.valueOf(paramInt + 1));
-    this.uES.jy(localakh.ProductID);
-    this.uES.jz(localakh.VHP);
-    this.uES.gly = 3;
-    this.uES.bpa();
+    this.xNu.li(String.valueOf(paramInt + 1));
+    this.xNu.lg(localcjb.ProductID);
+    this.xNu.lh(localcjb.akkA);
+    this.xNu.ipB = 3;
+    this.xNu.bMH();
     String str = getIntent().getStringExtra("to_talker_name");
-    k.a(getContext(), localakh, 5, paramf.mStatus, paramf.IB, str, 105, this.uES);
+    k.a(getContext(), localcjb, 5, paramf.mStatus, paramf.boE, str, 105, this.xNu);
     AppMethodBeat.o(109240);
   }
   
-  public final int cVA()
-  {
-    return 10;
-  }
-  
-  public final int cVr()
+  public final int dAR()
   {
     return 5;
   }
   
-  public final int cVs()
+  public final int dAS()
   {
     return 105;
   }
   
-  public final a cVt()
+  public final a dAT()
   {
     AppMethodBeat.i(109241);
     com.tencent.mm.plugin.emoji.a.f localf = new com.tencent.mm.plugin.emoji.a.f(getContext());
     AppMethodBeat.o(109241);
     return localf;
+  }
+  
+  public final int dBa()
+  {
+    return 10;
   }
   
   public int getForceOrientation()
@@ -126,7 +125,7 @@ public class EmojiStoreV2RankUI
   {
     AppMethodBeat.i(109238);
     super.initView();
-    setMMTitle(i.h.emoji_store_new_suggest);
+    setMMTitle(h.h.emoji_store_new_suggest);
     this.mListView.setOnScrollListener(new AbsListView.OnScrollListener()
     {
       public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
@@ -147,14 +146,14 @@ public class EmojiStoreV2RankUI
   {
     AppMethodBeat.i(109237);
     super.onCreate(paramBundle);
-    h.IzE.a(12740, new Object[] { Integer.valueOf(4), "", "", "", Integer.valueOf(5), Integer.valueOf(5) });
-    this.uES.glx = 3;
-    this.uHy.uES = this.uES;
+    h.OAn.b(12740, new Object[] { Integer.valueOf(4), "", "", "", Integer.valueOf(5), Integer.valueOf(5) });
+    this.xNu.iuF = 3;
+    this.xQe.xNu = this.xNu;
     long l = System.currentTimeMillis();
-    paramBundle = new don();
-    paramBundle.TVG = l;
-    this.uES.glw = l;
-    Log.i("MicroMsg.EmojiStoreV2RankUI", "initeData: %s", new Object[] { Long.valueOf(paramBundle.TVG) });
+    paramBundle = new ehf();
+    paramBundle.abmu = l;
+    this.xNu.iuE = l;
+    Log.i("MicroMsg.EmojiStoreV2RankUI", "initeData: %s", new Object[] { Long.valueOf(paramBundle.abmu) });
     try
     {
       bD(paramBundle.toByteArray());

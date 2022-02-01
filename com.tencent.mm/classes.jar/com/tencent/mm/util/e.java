@@ -6,97 +6,113 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.widget.RemoteViews;
-import androidx.core.app.e.d;
+import androidx.core.app.f.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.ba;
 import com.tencent.mm.plugin.comm.c.d;
 import com.tencent.mm.plugin.comm.c.h;
-import com.tencent.mm.plugin.notification.d;
+import com.tencent.mm.plugin.notification.f;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/util/FullscreenIntentActivityUtil;", "", "()V", "CONTENTTEXT", "", "DESTCLASS", "NOTIFICATION_CHANNEL_ID", "NOTIFY_STILL", "REMOTEVIEW", "TAG", "getTAG", "()Ljava/lang/String;", "callNormalNotification", "", "context", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "remoteViews", "Landroid/widget/RemoteViews;", "description", "destClass", "channelId", "isNotifyStill", "", "cancelNotification", "getNotificationIconRs", "", "startActivity", "remoteView", "startActivityWithOp", "stopFullScreenService", "plugin-comm_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/util/FullscreenIntentActivityUtil;", "", "()V", "CONTENTTEXT", "", "DESTCLASS", "NOTIFICATION_CHANNEL_ID", "NOTIFY_STILL", "REMOTEVIEW", "TAG", "getTAG", "()Ljava/lang/String;", "callNormalNotification", "", "context", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "remoteViews", "Landroid/widget/RemoteViews;", "description", "destClass", "channelId", "isNotifyStill", "", "cancelNotification", "getNotificationIconRs", "", "startActivity", "remoteView", "startActivityOnService", "serviceClass", "startActivityWithOp", "stopFullScreenService", "plugin-comm_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
 {
-  private static final String TAG = "MicroMsg.FullscreenIntentActivityUtil";
-  public static final String YyC = "fullscreenRemoteview";
-  public static final String YyD = "contentText";
-  public static final String YyE = "destClass";
-  public static final String YyF = "channelId";
-  public static final String YyG = "notifyStill";
-  public static final e YyH;
+  private static final String TAG;
+  public static final e agta;
+  public static final String agtb;
+  public static final String agtc;
+  public static final String agtd;
+  public static final String agte;
+  public static final String agtf;
   
   static
   {
     AppMethodBeat.i(149845);
-    YyH = new e();
-    YyC = "fullscreenRemoteview";
-    YyD = "contentText";
-    YyE = "destClass";
-    YyF = "channelId";
-    YyG = "notifyStill";
+    agta = new e();
+    agtb = "fullscreenRemoteview";
+    agtc = "contentText";
+    agtd = "destClass";
+    agte = "channelId";
+    agtf = "notifyStill";
     TAG = "MicroMsg.FullscreenIntentActivityUtil";
     AppMethodBeat.o(149845);
+  }
+  
+  public static void a(Context paramContext, Intent paramIntent, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
+  {
+    AppMethodBeat.i(149842);
+    s.u(paramContext, "context");
+    s.u(paramIntent, "intent");
+    s.u(paramString1, "description");
+    s.u(paramString3, "channelId");
+    c(paramContext, paramIntent, null, paramString1, paramString2, paramString3, paramBoolean);
+    AppMethodBeat.o(149842);
   }
   
   public static void b(Context paramContext, Intent paramIntent, RemoteViews paramRemoteViews, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
     AppMethodBeat.i(149841);
-    p.k(paramContext, "context");
-    p.k(paramIntent, "intent");
-    p.k(paramString1, "description");
-    p.k(paramString2, "destClass");
-    p.k(paramString3, "channelId");
+    s.u(paramContext, "context");
+    s.u(paramIntent, "intent");
+    s.u(paramString1, "description");
+    s.u(paramString3, "channelId");
     c(paramContext, paramIntent, paramRemoteViews, paramString1, paramString2, paramString3, paramBoolean);
     AppMethodBeat.o(149841);
-  }
-  
-  public static void b(Context paramContext, Intent paramIntent, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
-  {
-    AppMethodBeat.i(149842);
-    p.k(paramContext, "context");
-    p.k(paramIntent, "intent");
-    p.k(paramString1, "description");
-    p.k(paramString2, "destClass");
-    p.k(paramString3, "channelId");
-    c(paramContext, paramIntent, null, paramString1, paramString2, paramString3, paramBoolean);
-    AppMethodBeat.o(149842);
   }
   
   private static void c(Context paramContext, Intent paramIntent, RemoteViews paramRemoteViews, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
     AppMethodBeat.i(149843);
-    p.k(paramContext, "context");
-    p.k(paramIntent, "intent");
-    p.k(paramString1, "description");
-    p.k(paramString2, "destClass");
-    p.k(paramString3, "channelId");
+    s.u(paramContext, "context");
+    s.u(paramIntent, "intent");
+    s.u(paramString1, "description");
+    s.u(paramString3, "channelId");
     paramIntent.setFlags(268435456);
-    Context localContext = MMApplicationContext.getContext();
-    p.j(localContext, "MMApplicationContext.getContext()");
-    paramIntent.setClassName(localContext.getPackageName(), paramString2);
+    if (paramString2 != null) {
+      paramIntent.setClassName(MMApplicationContext.getContext().getPackageName(), paramString2);
+    }
     paramIntent = PendingIntent.getActivity(MMApplicationContext.getContext(), 0, paramIntent, 134217728);
     if (paramRemoteViews != null)
     {
-      paramContext = new e.d(paramContext, paramString3).gq().z("call").e(System.currentTimeMillis()).a(paramIntent).c(paramIntent).bn(fkG()).b(paramRemoteViews).k((CharSequence)MMApplicationContext.getContext().getString(c.h.app_pushcontent_title)).c(paramRemoteViews).l((CharSequence)paramString1).gp().W(true);
-      p.j(paramContext, "NotificationCompat.Build…\t\t\t\t\t.setAutoCancel(true)");
+      paramContext = new f.d(paramContext, paramString3);
+      paramContext.mPriority = 1;
+      paramContext.boM = "call";
+      paramContext = paramContext.bt(System.currentTimeMillis());
+      paramContext.bor = paramIntent;
+      paramContext = paramContext.c(paramIntent).eb(guX());
+      paramContext.boO = paramRemoteViews;
+      paramContext = paramContext.l((CharSequence)MMApplicationContext.getContext().getString(c.h.app_pushcontent_title));
+      paramContext.boP = paramRemoteViews;
+      paramContext = paramContext.m((CharSequence)paramString1);
+      paramContext.q(2, true);
+      paramContext = paramContext.aC(true);
+      s.s(paramContext, "Builder(context, channel…\t\t\t\t\t.setAutoCancel(true)");
     }
     for (;;)
     {
-      paramContext = paramContext.gr();
+      paramContext = paramContext.DA();
+      s.s(paramContext, "builder.build()");
       if (paramBoolean) {
         paramContext.flags |= 0x4;
       }
-      d.fjX().c(41, paramContext);
+      f.MvN.c(41, paramContext);
       AppMethodBeat.o(149843);
       return;
-      paramContext = new e.d(paramContext, paramString3).gq().z("reminder").e(System.currentTimeMillis()).a(paramIntent).c(paramIntent).bn(fkG()).k((CharSequence)MMApplicationContext.getContext().getString(c.h.app_pushcontent_title)).l((CharSequence)paramString1).gp().W(true);
-      p.j(paramContext, "NotificationCompat.Build…\t\t\t\t\t.setAutoCancel(true)");
+      paramContext = new f.d(paramContext, paramString3);
+      paramContext.mPriority = 1;
+      paramContext.boM = "reminder";
+      paramContext = paramContext.bt(System.currentTimeMillis());
+      paramContext.bor = paramIntent;
+      paramContext = paramContext.c(paramIntent).eb(guX()).l((CharSequence)MMApplicationContext.getContext().getString(c.h.app_pushcontent_title)).m((CharSequence)paramString1);
+      paramContext.q(2, true);
+      paramContext = paramContext.aC(true);
+      s.s(paramContext, "Builder(context, channel…\t\t\t\t\t.setAutoCancel(true)");
     }
   }
   
-  private static int fkG()
+  private static int guX()
   {
     if (Build.VERSION.SDK_INT < 19) {
       return c.d.notification_icon;
@@ -104,16 +120,16 @@ public final class e
     return c.d.notification_icon_gray;
   }
   
-  public static final void gsM()
+  public static final void hPY()
   {
     AppMethodBeat.i(149844);
-    d.fjX().cancel(41);
+    f.MvN.cancel(41);
     AppMethodBeat.o(149844);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.util.e
  * JD-Core Version:    0.7.0.1
  */

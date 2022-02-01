@@ -1,94 +1,89 @@
 package com.tencent.mm.view;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/BaseViewActionCallback;", "Lcom/tencent/mm/view/IViewActionCallback;", "rlLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout;)V", "getHeaderCount", "", "onChanged", "", "onItemRangeChanged", "positionStart", "itemCount", "payload", "", "onItemRangeInserted", "onItemRangeMoved", "fromPosition", "toPosition", "onItemRangeRemoved", "onPreFinishLoadMore", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "onPreFinishLoadMoreSmooth", "onPreFinishRefresh", "updateState", "libmmui_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/view/BaseViewActionCallback;", "Lcom/tencent/mm/view/IViewActionCallback;", "rlLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout;)V", "getHeaderCount", "", "onChanged", "", "onItemRangeChanged", "positionStart", "itemCount", "payload", "", "onItemRangeInserted", "onItemRangeMoved", "fromPosition", "toPosition", "onItemRangeRemoved", "onPreFinishLoadMore", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "onPreFinishLoadMoreSmooth", "onPreFinishRefresh", "updateState", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class b
-  implements j
+  implements k
 {
-  private final RefreshLoadMoreLayout xvJ;
+  private final RefreshLoadMoreLayout ATx;
   
   public b(RefreshLoadMoreLayout paramRefreshLoadMoreLayout)
   {
-    AppMethodBeat.i(194328);
-    this.xvJ = paramRefreshLoadMoreLayout;
-    AppMethodBeat.o(194328);
+    AppMethodBeat.i(234620);
+    this.ATx = paramRefreshLoadMoreLayout;
+    AppMethodBeat.o(234620);
   }
   
-  public void dFf() {}
-  
-  public int getHeaderCount()
-  {
-    return 0;
-  }
+  public void evt() {}
   
   public void onChanged()
   {
-    AppMethodBeat.i(194316);
-    this.xvJ.onChanged();
-    dFf();
-    AppMethodBeat.o(194316);
+    AppMethodBeat.i(234636);
+    this.ATx.onChanged();
+    evt();
+    AppMethodBeat.o(234636);
   }
   
   public void onItemRangeChanged(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(194319);
-    this.xvJ.onItemRangeChanged(getHeaderCount() + paramInt1, paramInt2);
-    dFf();
-    AppMethodBeat.o(194319);
+    AppMethodBeat.i(234640);
+    this.ATx.onItemRangeChanged(paramInt1 + 0, paramInt2);
+    evt();
+    AppMethodBeat.o(234640);
   }
   
   public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
   {
-    AppMethodBeat.i(194320);
-    this.xvJ.onItemRangeChanged(getHeaderCount() + paramInt1, paramInt2, paramObject);
-    dFf();
-    AppMethodBeat.o(194320);
+    AppMethodBeat.i(234644);
+    this.ATx.onItemRangeChanged(paramInt1 + 0, paramInt2, paramObject);
+    evt();
+    AppMethodBeat.o(234644);
   }
   
   public void onItemRangeInserted(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(194323);
-    this.xvJ.onItemRangeInserted(getHeaderCount() + paramInt1, paramInt2);
-    dFf();
-    AppMethodBeat.o(194323);
+    AppMethodBeat.i(234647);
+    this.ATx.onItemRangeInserted(paramInt1 + 0, paramInt2);
+    evt();
+    AppMethodBeat.o(234647);
   }
   
   public void onItemRangeRemoved(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(194325);
-    this.xvJ.onItemRangeRemoved(getHeaderCount() + paramInt1, paramInt2);
-    dFf();
-    AppMethodBeat.o(194325);
+    AppMethodBeat.i(234650);
+    this.ATx.onItemRangeRemoved(paramInt1 + 0, paramInt2);
+    evt();
+    AppMethodBeat.o(234650);
   }
   
-  public void onPreFinishLoadMore(RefreshLoadMoreLayout.c<Object> paramc)
+  public void onPreFinishLoadMore(RefreshLoadMoreLayout.d<Object> paramd)
   {
-    AppMethodBeat.i(194315);
-    p.k(paramc, "reason");
-    this.xvJ.onPreFinishLoadMore(paramc);
-    dFf();
-    AppMethodBeat.o(194315);
+    AppMethodBeat.i(234632);
+    s.u(paramd, "reason");
+    this.ATx.onPreFinishLoadMore(paramd);
+    evt();
+    AppMethodBeat.o(234632);
   }
   
-  public void onPreFinishLoadMoreSmooth(RefreshLoadMoreLayout.c<Object> paramc)
+  public void onPreFinishLoadMoreSmooth(RefreshLoadMoreLayout.d<Object> paramd)
   {
-    AppMethodBeat.i(194313);
-    p.k(paramc, "reason");
-    this.xvJ.onPreFinishLoadMoreSmooth(paramc);
-    dFf();
-    AppMethodBeat.o(194313);
+    AppMethodBeat.i(234624);
+    s.u(paramd, "reason");
+    this.ATx.onPreFinishLoadMoreSmooth(paramd);
+    evt();
+    AppMethodBeat.o(234624);
   }
   
-  public void onPreFinishRefresh(RefreshLoadMoreLayout.c<Object> paramc)
+  public void onPreFinishRefresh(RefreshLoadMoreLayout.d<Object> paramd)
   {
-    AppMethodBeat.i(194314);
-    p.k(paramc, "reason");
-    this.xvJ.onPreFinishRefresh(paramc);
-    dFf();
-    AppMethodBeat.o(194314);
+    AppMethodBeat.i(234627);
+    s.u(paramd, "reason");
+    this.ATx.onPreFinishRefresh(paramd);
+    evt();
+    AppMethodBeat.o(234627);
   }
 }
 

@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/cbv" android:background="@null" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true"
+<FrameLayout android:id="@id/cvi" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/jn"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/btc" />
-    <TextView android:textSize="@dimen/t1" android:textColor="@color/ag2" android:id="@id/cbw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/c9e" />
-</LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:padding="@dimen/f1" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/jf">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ImageView android:id="@id/cvg" style="@style/je" />
+                    <ImageView android:layout_gravity="center" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:src="@drawable/ak8" />
+                    <TextView android:layout_gravity="bottom|center|right" android:id="@id/cx6" android:paddingRight="8.0dip" android:paddingBottom="8.0dip" android:text="{11:32}" style="@style/ji" />
+                </FrameLayout>
+            </LinearLayout>
+            <include layout="@layout/a6w" />
+            <include layout="@layout/a6v" />
+        </LinearLayout>
+        <include layout="@layout/a6t" />
+    </LinearLayout>
+</FrameLayout>

@@ -1,15 +1,25 @@
 package com.tencent.mm.plugin.appbrand.jsapi.t;
 
-import kotlin.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.g;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.dp;
+import com.tencent.mm.plugin.appbrand.page.ad;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/pip/PipOrientationModeListener;", "", "onModeConfirmed", "", "mode", "Lcom/tencent/mm/plugin/appbrand/jsapi/pip/PipOrientationMode;", "luggage-wxa-app_release"})
-public abstract interface f
+public final class f
+  extends c<g>
 {
-  public abstract void a(e parame);
+  public static final int CTRL_INDEX = 10;
+  public static final String NAME = "hideNavigationBarLoading";
+  
+  public final boolean cpE()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.t.f
  * JD-Core Version:    0.7.0.1
  */

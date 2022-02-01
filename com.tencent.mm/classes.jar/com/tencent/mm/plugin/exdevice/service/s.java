@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface s
   extends IInterface
 {
-  public abstract void c(long paramLong, byte[] paramArrayOfByte);
+  public abstract void d(long paramLong, byte[] paramArrayOfByte);
   
   public static abstract class a
     extends Binder
@@ -20,9 +20,9 @@ public abstract interface s
       attachInterface(this, "com.tencent.mm.plugin.exdevice.service.ISimpleBTOnRecv_AIDL");
     }
     
-    public static s dah()
+    public static s dGA()
     {
-      return a.vjA;
+      return a.yvy;
     }
     
     public IBinder asBinder()
@@ -41,7 +41,7 @@ public abstract interface s
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.ISimpleBTOnRecv_AIDL");
-      c(paramParcel1.readLong(), paramParcel1.createByteArray());
+      d(paramParcel1.readLong(), paramParcel1.createByteArray());
       paramParcel2.writeNoException();
       return true;
     }
@@ -49,7 +49,7 @@ public abstract interface s
     static final class a
       implements s
     {
-      public static s vjA;
+      public static s yvy;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -62,7 +62,7 @@ public abstract interface s
         return this.mRemote;
       }
       
-      public final void c(long paramLong, byte[] paramArrayOfByte)
+      public final void d(long paramLong, byte[] paramArrayOfByte)
       {
         AppMethodBeat.i(23692);
         Parcel localParcel1 = Parcel.obtain();
@@ -72,9 +72,9 @@ public abstract interface s
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.exdevice.service.ISimpleBTOnRecv_AIDL");
           localParcel1.writeLong(paramLong);
           localParcel1.writeByteArray(paramArrayOfByte);
-          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (s.a.dah() != null))
+          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (s.a.dGA() != null))
           {
-            s.a.dah().c(paramLong, paramArrayOfByte);
+            s.a.dGA().d(paramLong, paramArrayOfByte);
             return;
           }
           localParcel2.readException();
@@ -92,7 +92,7 @@ public abstract interface s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.s
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,14 @@
 package com.tencent.mm.memory;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.SynchronizedPool;
-import com.tencent.mm.sdk.thread.ThreadPool;
-import java.nio.ByteBuffer;
-
-public final class h
-  extends SynchronizedPool<ByteBuffer>
+public abstract interface h
 {
-  public static h liI;
+  public abstract void bvM();
   
-  static
-  {
-    AppMethodBeat.i(156425);
-    liI = new h();
-    ThreadPool.post(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(156424);
-        int i = 0;
-        while (i < 10)
-        {
-          h.a(h.liI, ByteBuffer.allocate(16384));
-          i += 1;
-        }
-        AppMethodBeat.o(156424);
-      }
-    }, "DecodeTempStorage_preload");
-    AppMethodBeat.o(156425);
-  }
-  
-  private h()
-  {
-    super(20);
-  }
+  public abstract void bvN();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.memory.h
  * JD-Core Version:    0.7.0.1
  */

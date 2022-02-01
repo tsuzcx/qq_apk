@@ -118,7 +118,7 @@ public class wechat_wallet_authenticate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.wechat_wallet_authenticate
  * JD-Core Version:    0.7.0.1
  */

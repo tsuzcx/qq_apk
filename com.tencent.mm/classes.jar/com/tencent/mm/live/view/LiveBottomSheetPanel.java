@@ -19,102 +19,104 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.live.b.f;
 import com.tencent.mm.live.b.j;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ax;
+import com.tencent.mm.ui.bf;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.b;
-import kotlin.g.b.p;
-import kotlin.k.i;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.s;
+import kotlin.k.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/view/LiveBottomSheetPanel;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attr", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "direction", "fling", "", "onVisibilityListener", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "isShow", "", "getOnVisibilityListener", "()Lkotlin/jvm/functions/Function1;", "setOnVisibilityListener", "(Lkotlin/jvm/functions/Function1;)V", "totalConsumed", "hide", "hideNavigationBar", "window", "Landroid/view/Window;", "onNestedFling", "target", "Landroid/view/View;", "velocityX", "", "velocityY", "consumed", "onNestedPreScroll", "dx", "dy", "", "onNestedScroll", "dxConsumed", "dyConsumed", "dxUnconsumed", "dyUnconsumed", "onStartNestedScroll", "child", "nestedScrollAxes", "onStopNestedScroll", "setContentBg", "background", "Landroid/graphics/drawable/Drawable;", "setContentView", "contentView", "show", "Companion", "plugin-logic_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/view/LiveBottomSheetPanel;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attr", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "direction", "getDirection", "()I", "setDirection", "(I)V", "fling", "", "onVisibilityListener", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "isShow", "", "getOnVisibilityListener", "()Lkotlin/jvm/functions/Function1;", "setOnVisibilityListener", "(Lkotlin/jvm/functions/Function1;)V", "totalConsumed", "hide", "hideNavigationBar", "window", "Landroid/view/Window;", "onNestedFling", "target", "Landroid/view/View;", "velocityX", "", "velocityY", "consumed", "onNestedPreScroll", "dx", "dy", "", "onNestedScroll", "dxConsumed", "dyConsumed", "dxUnconsumed", "dyUnconsumed", "onStartNestedScroll", "child", "nestedScrollAxes", "onStopNestedScroll", "setContentBg", "background", "Landroid/graphics/drawable/Drawable;", "setContentView", "contentView", "show", "Companion", "plugin-logic_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class LiveBottomSheetPanel
   extends RelativeLayout
 {
-  public static final a kLb;
+  public static final LiveBottomSheetPanel.a nnb;
   private final String TAG;
   private int direction;
-  private int kKY;
-  private boolean kKZ;
-  private b<? super Boolean, x> kLa;
+  private int nnc;
+  private boolean nnd;
+  private b<? super Boolean, ah> nne;
   
   static
   {
-    AppMethodBeat.i(190226);
-    kLb = new a((byte)0);
-    AppMethodBeat.o(190226);
+    AppMethodBeat.i(246120);
+    nnb = new LiveBottomSheetPanel.a((byte)0);
+    AppMethodBeat.o(246120);
   }
   
   public LiveBottomSheetPanel(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(190223);
-    AppMethodBeat.o(190223);
+    AppMethodBeat.i(246111);
+    AppMethodBeat.o(246111);
   }
   
   public LiveBottomSheetPanel(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(190219);
+    AppMethodBeat.i(246101);
     this.TAG = "MicroMsg.LiveBottomSheetPanel";
     this.direction = 1;
     if (paramAttributeSet != null)
     {
       paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, b.j.LiveBottomSheetPanel);
-      p.j(paramAttributeSet, "context.obtainStyledAttr…ble.LiveBottomSheetPanel)");
+      s.s(paramAttributeSet, "context.obtainStyledAttr…ble.LiveBottomSheetPanel)");
       this.direction = paramAttributeSet.getInt(b.j.LiveBottomSheetPanel_sheetDirection, 1);
       paramAttributeSet.recycle();
     }
     View.inflate(paramContext, b.f.live_bottom_sheet_panel, (ViewGroup)this);
-    AppMethodBeat.o(190219);
+    AppMethodBeat.o(246101);
   }
   
   public static void b(Window paramWindow)
   {
-    AppMethodBeat.i(190188);
-    if (paramWindow != null)
-    {
-      paramWindow = paramWindow.getDecorView();
-      p.j(paramWindow, "window.decorView");
-      paramWindow.setSystemUiVisibility(7942);
+    AppMethodBeat.i(246114);
+    if (paramWindow != null) {
+      paramWindow.getDecorView().setSystemUiVisibility(7942);
     }
-    AppMethodBeat.o(190188);
+    AppMethodBeat.o(246114);
   }
   
-  public final b<Boolean, x> getOnVisibilityListener()
+  protected final int getDirection()
   {
-    return this.kLa;
+    return this.direction;
+  }
+  
+  public final b<Boolean, ah> getOnVisibilityListener()
+  {
+    return this.nne;
   }
   
   public void hide()
   {
-    AppMethodBeat.i(190178);
+    AppMethodBeat.i(246155);
     if (this.direction == 0)
     {
-      animate().translationX(ax.au(getContext()).x).setListener((Animator.AnimatorListener)new b(this)).start();
-      AppMethodBeat.o(190178);
+      animate().translationX(bf.bf(getContext()).x).setListener((Animator.AnimatorListener)new b(this)).start();
+      AppMethodBeat.o(246155);
       return;
     }
-    animate().translationY(ax.au(getContext()).y).setListener((Animator.AnimatorListener)new c(this)).start();
-    AppMethodBeat.o(190178);
+    animate().translationY(bf.bf(getContext()).y).setListener((Animator.AnimatorListener)new c(this)).start();
+    AppMethodBeat.o(246155);
   }
   
   public boolean onNestedFling(View paramView, float paramFloat1, float paramFloat2, boolean paramBoolean)
   {
-    AppMethodBeat.i(190212);
+    AppMethodBeat.i(246192);
     Log.d(this.TAG, "onNestedFling velocityX:" + paramFloat1 + " velocityY:" + paramFloat2 + " ViewConfiguration.getMinimumFlingVelocity():" + ViewConfiguration.getMinimumFlingVelocity());
     if (paramFloat2 > 0.0F)
     {
-      this.kKZ = true;
+      this.nnd = true;
       show();
     }
     for (;;)
     {
       paramBoolean = super.onNestedFling(paramView, paramFloat1, paramFloat2, paramBoolean);
-      AppMethodBeat.o(190212);
+      AppMethodBeat.o(246192);
       return paramBoolean;
       if (paramFloat2 > 0.0F)
       {
-        this.kKZ = true;
+        this.nnd = true;
         hide();
       }
     }
@@ -122,58 +124,58 @@ public class LiveBottomSheetPanel
   
   public void onNestedPreScroll(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(190192);
+    AppMethodBeat.i(246171);
     Log.d(this.TAG, "onNestedPreScroll target:" + paramView + " dx:" + paramInt1 + " dy:" + paramInt2);
-    AppMethodBeat.o(190192);
+    AppMethodBeat.o(246171);
   }
   
   public void onNestedScroll(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(190201);
+    AppMethodBeat.i(246175);
     Log.d(this.TAG, "onNestedScroll target:" + paramView + " dxConsumed:" + paramInt1 + " dyConsumed:" + paramInt2 + " dxUnconsumed:" + paramInt3 + " dyUnconsumed:" + paramInt4);
     if (this.direction == 0)
     {
-      this.kKY += paramInt3;
-      setTranslationX(i.aQ(ax.au(getContext()).x, i.aP(0.0F, getTranslationX() - paramInt3)));
-      AppMethodBeat.o(190201);
+      this.nnc += paramInt3;
+      setTranslationX(k.bu(bf.bf(getContext()).x, k.bt(0.0F, getTranslationX() - paramInt3)));
+      AppMethodBeat.o(246175);
       return;
     }
-    this.kKY += paramInt4;
-    setTranslationY(i.aQ(ax.au(getContext()).y, i.aP(0.0F, getTranslationY() - paramInt4)));
-    AppMethodBeat.o(190201);
+    this.nnc += paramInt4;
+    setTranslationY(k.bu(bf.bf(getContext()).y, k.bt(0.0F, getTranslationY() - paramInt4)));
+    AppMethodBeat.o(246175);
   }
   
   public boolean onStartNestedScroll(View paramView1, View paramView2, int paramInt)
   {
-    AppMethodBeat.i(190191);
-    Log.d(this.TAG, "onStartNestedScroll");
-    this.kKY = 0;
-    this.kKZ = false;
+    AppMethodBeat.i(246167);
+    Log.d(this.TAG, "onStartNestedScroll target:" + paramView2 + ",nestedScrollAxes:" + paramInt);
+    this.nnc = 0;
+    this.nnd = false;
     if ((paramInt & 0x2) != 0)
     {
-      AppMethodBeat.o(190191);
+      AppMethodBeat.o(246167);
       return true;
     }
-    AppMethodBeat.o(190191);
+    AppMethodBeat.o(246167);
     return false;
   }
   
   public void onStopNestedScroll(View paramView)
   {
-    AppMethodBeat.i(190207);
-    if ((!this.kKZ) && (this.kKY != 0))
+    AppMethodBeat.i(246183);
+    if ((!this.nnd) && (this.nnc != 0))
     {
-      if ((this.kKY > 0) || (Math.abs(this.kKY) <= getHeight() / 5)) {
+      if ((this.nnc > 0) || (Math.abs(this.nnc) <= getHeight() / 5)) {
         break label101;
       }
       hide();
     }
     for (;;)
     {
-      Log.d(this.TAG, "onStopNestedScroll child:" + paramView + ", totalConsumed:" + this.kKY);
-      this.kKY = 0;
-      this.kKZ = false;
-      AppMethodBeat.o(190207);
+      Log.d(this.TAG, "onStopNestedScroll child:" + paramView + ", totalConsumed:" + this.nnc);
+      this.nnc = 0;
+      this.nnd = false;
+      AppMethodBeat.o(246183);
       return;
       label101:
       show();
@@ -182,89 +184,92 @@ public class LiveBottomSheetPanel
   
   public final void setContentBg(Drawable paramDrawable)
   {
-    AppMethodBeat.i(190176);
+    AppMethodBeat.i(246152);
     setBackground(paramDrawable);
-    AppMethodBeat.o(190176);
+    AppMethodBeat.o(246152);
   }
   
   public final void setContentView(View paramView)
   {
-    AppMethodBeat.i(190172);
-    p.k(paramView, "contentView");
+    AppMethodBeat.i(246145);
+    s.u(paramView, "contentView");
     addView(paramView);
-    AppMethodBeat.o(190172);
+    AppMethodBeat.o(246145);
   }
   
-  public final void setOnVisibilityListener(b<? super Boolean, x> paramb)
+  protected final void setDirection(int paramInt)
   {
-    this.kLa = paramb;
+    this.direction = paramInt;
+  }
+  
+  public final void setOnVisibilityListener(b<? super Boolean, ah> paramb)
+  {
+    this.nne = paramb;
   }
   
   public void show()
   {
-    Object localObject2 = null;
-    AppMethodBeat.i(190184);
-    Object localObject1 = this.kLa;
-    if (localObject1 != null) {
-      ((b)localObject1).invoke(Boolean.TRUE);
+    AppMethodBeat.i(246161);
+    Object localObject = this.nne;
+    if (localObject != null) {
+      ((b)localObject).invoke(Boolean.TRUE);
     }
     if (this.direction == 0)
     {
       animate().setListener(null).translationX(0.0F).start();
-      Object localObject3 = getContext();
-      localObject1 = localObject3;
-      if (!(localObject3 instanceof Activity)) {
-        localObject1 = null;
+      localObject = getContext();
+      if ((localObject instanceof Activity))
+      {
+        localObject = (Activity)localObject;
+        if (localObject != null) {
+          break label86;
+        }
       }
-      localObject3 = (Activity)localObject1;
-      localObject1 = localObject2;
-      if (localObject3 != null) {
-        localObject1 = ((Activity)localObject3).getWindow();
+      label86:
+      for (localObject = null;; localObject = ((Activity)localObject).getWindow())
+      {
+        b((Window)localObject);
+        AppMethodBeat.o(246161);
+        return;
+        localObject = null;
+        break;
       }
-      b((Window)localObject1);
-      AppMethodBeat.o(190184);
-      return;
     }
     animate().setListener(null).translationY(0.0F).start();
-    AppMethodBeat.o(190184);
+    AppMethodBeat.o(246161);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/view/LiveBottomSheetPanel$Companion;", "", "()V", "DIRECTION_HORIZONTAL", "", "DIRECTION_VERTICAL", "plugin-logic_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/live/view/LiveBottomSheetPanel$hide$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-logic_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/live/view/LiveBottomSheetPanel$hide$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-logic_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
     extends AnimatorListenerAdapter
   {
+    b(LiveBottomSheetPanel paramLiveBottomSheetPanel) {}
+    
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(195625);
-      paramAnimator = this.kLc.getOnVisibilityListener();
-      if (paramAnimator != null)
-      {
+      AppMethodBeat.i(246021);
+      paramAnimator = this.nnf.getOnVisibilityListener();
+      if (paramAnimator != null) {
         paramAnimator.invoke(Boolean.FALSE);
-        AppMethodBeat.o(195625);
-        return;
       }
-      AppMethodBeat.o(195625);
+      AppMethodBeat.o(246021);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/live/view/LiveBottomSheetPanel$hide$2", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-logic_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/live/view/LiveBottomSheetPanel$hide$2", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-logic_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class c
     extends AnimatorListenerAdapter
   {
+    c(LiveBottomSheetPanel paramLiveBottomSheetPanel) {}
+    
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(188970);
-      paramAnimator = this.kLc.getOnVisibilityListener();
-      if (paramAnimator != null)
-      {
+      AppMethodBeat.i(246020);
+      paramAnimator = this.nnf.getOnVisibilityListener();
+      if (paramAnimator != null) {
         paramAnimator.invoke(Boolean.FALSE);
-        AppMethodBeat.o(188970);
-        return;
       }
-      AppMethodBeat.o(188970);
+      AppMethodBeat.o(246020);
     }
   }
 }

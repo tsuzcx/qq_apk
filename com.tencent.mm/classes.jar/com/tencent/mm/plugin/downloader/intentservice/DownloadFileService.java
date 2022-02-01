@@ -5,20 +5,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.ResultReceiver;
-import androidx.core.app.e.d;
+import androidx.core.app.f.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.a;
+import com.tencent.mm.bq.a;
 import com.tencent.mm.plugin.downloader.c.b;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.File;
 
 public class DownloadFileService
   extends IntentService
 {
   private static final String TAG;
-  private ResultReceiver ugD;
-  private int ugE;
-  private int ugF;
+  private ResultReceiver xmK;
+  private int xmL;
+  private int xmM;
   
   static
   {
@@ -33,13 +33,13 @@ public class DownloadFileService
   }
   
   /* Error */
-  private void f(String paramString, q paramq)
+  private void f(String paramString, u paramu)
   {
     // Byte code:
     //   0: ldc 49
     //   2: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_2
-    //   6: invokestatic 55	com/tencent/mm/vfs/u:an	(Lcom/tencent/mm/vfs/q;)Ljava/io/OutputStream;
+    //   6: invokestatic 55	com/tencent/mm/vfs/y:ap	(Lcom/tencent/mm/vfs/u;)Ljava/io/OutputStream;
     //   9: astore 8
     //   11: new 57	java/net/URL
     //   14: dup
@@ -90,15 +90,15 @@ public class DownloadFileService
     //   107: aload_0
     //   108: iload 4
     //   110: aload_0
-    //   111: getfield 109	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:ugE	I
+    //   111: getfield 109	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:xmL	I
     //   114: iadd
-    //   115: putfield 109	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:ugE	I
+    //   115: putfield 109	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:xmL	I
     //   118: new 111	android/os/Bundle
     //   121: dup
     //   122: invokespecial 113	android/os/Bundle:<init>	()V
     //   125: astore 6
     //   127: aload_0
-    //   128: getfield 109	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:ugE	I
+    //   128: getfield 109	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:xmL	I
     //   131: i2l
     //   132: ldc2_w 114
     //   135: lmul
@@ -109,20 +109,20 @@ public class DownloadFileService
     //   140: istore 4
     //   142: iload 4
     //   144: aload_0
-    //   145: getfield 117	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:ugF	I
+    //   145: getfield 117	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:xmM	I
     //   148: if_icmple -65 -> 83
     //   151: aload 6
     //   153: ldc 119
     //   155: iload 4
     //   157: invokevirtual 123	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   160: aload_0
-    //   161: getfield 125	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:ugD	Landroid/os/ResultReceiver;
+    //   161: getfield 125	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:xmK	Landroid/os/ResultReceiver;
     //   164: sipush 4657
     //   167: aload 6
     //   169: invokevirtual 131	android/os/ResultReceiver:send	(ILandroid/os/Bundle;)V
     //   172: aload_0
     //   173: iload 4
-    //   175: putfield 117	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:ugF	I
+    //   175: putfield 117	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:xmM	I
     //   178: goto -95 -> 83
     //   181: astore 7
     //   183: aload_2
@@ -357,7 +357,7 @@ public class DownloadFileService
     //   start	length	slot	name	signature
     //   0	648	0	this	DownloadFileService
     //   0	648	1	paramString	String
-    //   0	648	2	paramq	q
+    //   0	648	2	paramu	u
     //   56	81	3	i	int
     //   66	208	4	j	int
     //   81	390	5	localObject1	java.lang.Object
@@ -427,9 +427,9 @@ public class DownloadFileService
   {
     AppMethodBeat.i(88882);
     super.onCreate();
-    e.d locald = a.cp(this, "reminder_channel_id");
-    locald.k("Something Download").l("Download in progress").bn(c.b.icon);
-    startForeground(4657, locald.gr());
+    f.d locald = a.cA(this, "reminder_channel_id");
+    locald.l("Something Download").m("Download in progress").eb(c.b.icon);
+    startForeground(4657, locald.DA());
     AppMethodBeat.o(88882);
   }
   
@@ -437,12 +437,12 @@ public class DownloadFileService
   {
     AppMethodBeat.i(88883);
     String str = paramIntent.getExtras().getString("url");
-    this.ugD = ((ResultReceiver)paramIntent.getParcelableExtra("receiver"));
-    paramIntent = new q(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Download");
-    if (!paramIntent.ifE()) {
-      paramIntent.ifL();
+    this.xmK = ((ResultReceiver)paramIntent.getParcelableExtra("receiver"));
+    paramIntent = new u(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Download");
+    if (!paramIntent.jKS()) {
+      paramIntent.jKY();
     }
-    f(str, new q(paramIntent, "file11.apk"));
+    f(str, new u(paramIntent, "file11.apk"));
     AppMethodBeat.o(88883);
   }
 }

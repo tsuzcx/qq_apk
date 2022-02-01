@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="100.0dip" android:layout_marginRight="20.0dip">
-        <EditText android:id="@id/bw_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="60.0dip" android:hint="url" />
-        <Button android:id="@id/e5h" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:minHeight="60.0dip" android:text="跳转" />
-        <Button android:id="@id/e5o" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:minHeight="60.0dip" android:text="跳转游戏中心首页" />
-    </LinearLayout>
-</LinearLayout>
+<RelativeLayout android:orientation="vertical" android:paddingTop="@dimen/a9z" android:paddingBottom="@dimen/a9z" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:gravity="center" android:id="@id/h6q" android:layout_width="@dimen/a9y" android:layout_height="@dimen/a9y" android:layout_centerVertical="true" android:layout_marginStart="@dimen/df" android:layout_alignParentStart="true">
+        <ImageView android:layout_gravity="center" android:id="@id/h64" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <View android:background="@drawable/a64" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mm.plugin.gif.MMAnimateView android:layout_gravity="center" android:id="@id/h6o" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="10.0dip" android:alpha="0.8" />
+    </RelativeLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/h60" android:paddingTop="@dimen/df" android:paddingBottom="@dimen/df" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:src="@raw/icons_filled_close" android:layout_centerVertical="true" android:paddingStart="@dimen/df" android:paddingEnd="@dimen/df" android:layout_alignParentEnd="true" app:iconColor="@color/FG_1" />
+</RelativeLayout>

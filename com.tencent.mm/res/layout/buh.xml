@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerInParent="true"
+<RelativeLayout android:id="@id/iwl" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/hw1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" />
-    <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/glr" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_centerInParent="true" style="@style/a61" />
+    <com.tencent.mm.plugin.patmsg.ui.AvatarPatTipImageView android:gravity="center_horizontal" android:id="@id/iwj" android:src="@drawable/b_a" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:importantForAccessibility="no" style="@style/ss" />
+    <ImageView android:gravity="center" android:id="@id/ivy" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/e5" android:layout_alignLeft="@id/iwj" android:layout_alignTop="@id/iwj" />
+    <ImageView android:id="@id/iw0" android:visibility="gone" android:layout_width="25.0dip" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_alignRight="@id/iwj" android:layout_alignBottom="@id/iwj" />
+    <ImageView android:id="@id/ivz" android:visibility="gone" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginTop="2.0dip" android:src="@drawable/bex" android:layout_alignRight="@id/iwj" android:layout_alignBottom="@id/iwj" />
+    <RelativeLayout android:id="@id/iwh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/iwj" android:layout_centerHorizontal="true">
+        <TextView android:id="@id/iwf" android:visibility="gone" android:layout_centerHorizontal="true" style="@style/st" />
+        <TextView android:id="@id/iwg" android:paddingTop="@dimen/g" android:visibility="gone" android:layout_centerHorizontal="true" style="@style/st" />
+    </RelativeLayout>
+    <TextView android:textColor="@color/Orange" android:id="@id/iwi" android:visibility="gone" android:layout_below="@id/iwh" android:layout_centerHorizontal="true" style="@style/st" />
 </RelativeLayout>

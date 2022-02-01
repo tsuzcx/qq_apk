@@ -2,50 +2,34 @@ package com.tencent.mm.plugin.priority;
 
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.k.b;
-import com.tencent.mm.f.c.et;
+import com.tencent.mm.autogen.b.fi;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.ab;
-import com.tencent.mm.model.bq;
+import com.tencent.mm.message.k.b;
+import com.tencent.mm.model.br;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
-import com.tencent.mm.plugin.record.b.p;
-import com.tencent.mm.pluginsdk.j.f;
-import com.tencent.mm.protocal.protobuf.anm;
-import com.tencent.mm.protocal.protobuf.hr;
+import com.tencent.mm.plugin.record.model.q;
+import com.tencent.mm.pluginsdk.platformtools.f;
+import com.tencent.mm.protocal.protobuf.arf;
+import com.tencent.mm.protocal.protobuf.in;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ca;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.cc;
+import com.tencent.mm.vfs.u;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class a
-  implements com.tencent.mm.plugin.comm.a.b
+  implements com.tencent.mm.plugin.comm.a.c
 {
-  public final List<Pair<String, String>> Ir(long paramLong)
-  {
-    AppMethodBeat.i(87795);
-    List localList = ((PluginPriority)h.ag(PluginPriority.class)).getC2CMsgFileUsageStorage().Pe(paramLong);
-    AppMethodBeat.o(87795);
-    return localList;
-  }
-  
-  public final List<Pair<String, String>> Is(long paramLong)
-  {
-    AppMethodBeat.i(87796);
-    List localList = ((PluginPriority)h.ag(PluginPriority.class)).getC2CMsgImgUsageStorage().Pe(paramLong);
-    AppMethodBeat.o(87796);
-    return localList;
-  }
-  
-  public final void a(ca paramca, Runnable paramRunnable)
+  public final void a(cc paramcc, Runnable paramRunnable)
   {
     AppMethodBeat.i(87789);
-    if ((h.aHB()) && (((PluginPriority)h.ag(PluginPriority.class)).getPriorityTaskRunner() != null)) {
-      ((PluginPriority)h.ag(PluginPriority.class)).getPriorityTaskRunner().a(new f(paramca, new WeakReference(paramRunnable)));
+    if ((h.baz()) && (((PluginPriority)h.az(PluginPriority.class)).getPriorityTaskRunner() != null)) {
+      ((PluginPriority)h.az(PluginPriority.class)).getPriorityTaskRunner().a(new f(paramcc, new WeakReference(paramRunnable)));
     }
     AppMethodBeat.o(87789);
   }
@@ -53,98 +37,114 @@ public final class a
   public final void a(boolean paramBoolean1, String paramString, long paramLong, boolean paramBoolean2)
   {
     AppMethodBeat.i(87790);
-    if ((h.aHB()) && (((PluginPriority)h.ag(PluginPriority.class)).getPriorityTaskRunner() != null)) {
-      ((PluginPriority)h.ag(PluginPriority.class)).getPriorityTaskRunner().a(new a(paramBoolean1, paramString, paramLong, paramBoolean2));
+    if ((h.baz()) && (((PluginPriority)h.az(PluginPriority.class)).getPriorityTaskRunner() != null)) {
+      ((PluginPriority)h.az(PluginPriority.class)).getPriorityTaskRunner().a(new a(paramBoolean1, paramString, paramLong, paramBoolean2));
     }
     AppMethodBeat.o(87790);
   }
   
-  public final void aA(ca paramca)
+  public final void aJ(cc paramcc)
   {
     AppMethodBeat.i(87787);
-    if ((h.aHB()) && (((PluginPriority)h.ag(PluginPriority.class)).getPriorityTaskRunner() != null)) {
-      ((PluginPriority)h.ag(PluginPriority.class)).getPriorityTaskRunner().a(new e(paramca));
+    if ((h.baz()) && (((PluginPriority)h.az(PluginPriority.class)).getPriorityTaskRunner() != null)) {
+      ((PluginPriority)h.az(PluginPriority.class)).getPriorityTaskRunner().a(new e(paramcc));
     }
     AppMethodBeat.o(87787);
   }
   
-  public final void aB(ca paramca)
+  public final void aK(cc paramcc)
   {
     AppMethodBeat.i(87788);
-    if ((h.aHB()) && (((PluginPriority)h.ag(PluginPriority.class)).getPriorityTaskRunner() != null)) {
-      ((PluginPriority)h.ag(PluginPriority.class)).getPriorityTaskRunner().a(new com.tencent.mm.plugin.priority.model.b.b(paramca));
+    if ((h.baz()) && (((PluginPriority)h.az(PluginPriority.class)).getPriorityTaskRunner() != null)) {
+      ((PluginPriority)h.az(PluginPriority.class)).getPriorityTaskRunner().a(new com.tencent.mm.plugin.priority.model.a.b(paramcc));
     }
     AppMethodBeat.o(87788);
   }
   
-  public final void aC(ca paramca)
+  public final void aL(cc paramcc)
   {
     AppMethodBeat.i(87792);
-    if ((h.aHB()) && (((PluginPriority)h.ag(PluginPriority.class)).getPriorityTaskRunner() != null)) {
-      ((PluginPriority)h.ag(PluginPriority.class)).getPriorityTaskRunner().a(new c(paramca));
+    if ((h.baz()) && (((PluginPriority)h.az(PluginPriority.class)).getPriorityTaskRunner() != null)) {
+      ((PluginPriority)h.az(PluginPriority.class)).getPriorityTaskRunner().a(new c(paramcc));
     }
     AppMethodBeat.o(87792);
   }
   
-  public final void aa(String paramString, long paramLong)
+  public final void ae(String paramString, long paramLong)
   {
     AppMethodBeat.i(87791);
-    if ((h.aHB()) && (((PluginPriority)h.ag(PluginPriority.class)).getPriorityTaskRunner() != null)) {
-      ((PluginPriority)h.ag(PluginPriority.class)).getPriorityTaskRunner().a(new b(paramString, paramLong));
+    if ((h.baz()) && (((PluginPriority)h.az(PluginPriority.class)).getPriorityTaskRunner() != null)) {
+      ((PluginPriority)h.az(PluginPriority.class)).getPriorityTaskRunner().a(new b(paramString, paramLong));
     }
     AppMethodBeat.o(87791);
   }
   
-  public final void asK(String paramString)
+  public final void amp(String paramString)
   {
     AppMethodBeat.i(87793);
-    dp(paramString, 1);
+    dQ(paramString, 1);
     AppMethodBeat.o(87793);
   }
   
   public final void b(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(87786);
-    if ((h.aHB()) && (((PluginPriority)h.ag(PluginPriority.class)).getPriorityTaskRunner() != null)) {
-      ((PluginPriority)h.ag(PluginPriority.class)).getPriorityTaskRunner().a(new d(paramLong, paramBoolean1, paramBoolean2));
+    if ((h.baz()) && (((PluginPriority)h.az(PluginPriority.class)).getPriorityTaskRunner() != null)) {
+      ((PluginPriority)h.az(PluginPriority.class)).getPriorityTaskRunner().a(new d(paramLong, paramBoolean1, paramBoolean2));
     }
     AppMethodBeat.o(87786);
   }
   
-  public final List<Pair<String, String>> cPo()
-  {
-    AppMethodBeat.i(87794);
-    new com.tencent.mm.plugin.priority.model.b.c().run();
-    List localList = ((PluginPriority)h.ag(PluginPriority.class)).getC2CChatUsageResultStorage().foP();
-    AppMethodBeat.o(87794);
-    return localList;
-  }
-  
-  public final void dp(String paramString, int paramInt)
+  public final void dQ(String paramString, int paramInt)
   {
     AppMethodBeat.i(174312);
-    if ((h.aHB()) && (((PluginPriority)h.ag(PluginPriority.class)).getPriorityTaskRunner() != null)) {
-      ((PluginPriority)h.ag(PluginPriority.class)).getPriorityTaskRunner().a(new g(paramString, paramInt));
+    if ((h.baz()) && (((PluginPriority)h.az(PluginPriority.class)).getPriorityTaskRunner() != null)) {
+      ((PluginPriority)h.az(PluginPriority.class)).getPriorityTaskRunner().a(new g(paramString, paramInt));
     }
     AppMethodBeat.o(174312);
   }
   
-  final class a
-    extends com.tencent.mm.plugin.priority.model.b.a
+  public final List<Pair<String, String>> dsU()
   {
-    private long fNu;
+    AppMethodBeat.i(87794);
+    new com.tencent.mm.plugin.priority.model.a.c().run();
+    List localList = ((PluginPriority)h.az(PluginPriority.class)).getC2CChatUsageResultStorage().gzT();
+    AppMethodBeat.o(87794);
+    return localList;
+  }
+  
+  public final List<Pair<String, String>> kJ(long paramLong)
+  {
+    AppMethodBeat.i(87795);
+    List localList = ((PluginPriority)h.az(PluginPriority.class)).getC2CMsgFileUsageStorage().tg(paramLong);
+    AppMethodBeat.o(87795);
+    return localList;
+  }
+  
+  public final List<Pair<String, String>> kK(long paramLong)
+  {
+    AppMethodBeat.i(87796);
+    List localList = ((PluginPriority)h.az(PluginPriority.class)).getC2CMsgImgUsageStorage().tg(paramLong);
+    AppMethodBeat.o(87796);
+    return localList;
+  }
+  
+  final class a
+    extends com.tencent.mm.plugin.priority.model.a.a
+  {
+    private long hTh;
     private String id;
     private boolean isSuccess;
-    private boolean kUn;
-    private boolean uii;
+    private boolean nzW;
+    private boolean xon;
     
     public a(boolean paramBoolean1, String paramString, long paramLong, boolean paramBoolean2)
     {
-      this.uii = paramBoolean1;
+      this.xon = paramBoolean1;
       this.id = paramString;
-      this.fNu = paramLong;
+      this.hTh = paramLong;
       this.isSuccess = paramBoolean2;
-      this.kUn = false;
+      this.nzW = false;
     }
     
     public final String getName()
@@ -155,25 +155,25 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(87779);
-      if (((PluginPriority)h.ag(PluginPriority.class)).getC2CMsgAutoDownloadFileLogic() != null)
+      if (((PluginPriority)h.az(PluginPriority.class)).getC2CMsgAutoDownloadFileLogic() != null)
       {
-        ((PluginPriority)h.ag(PluginPriority.class)).getC2CMsgAutoDownloadFileLogic();
-        com.tencent.mm.plugin.priority.model.a.b.b.a(this.uii, this.id, this.fNu, this.isSuccess, this.kUn);
+        ((PluginPriority)h.az(PluginPriority.class)).getC2CMsgAutoDownloadFileLogic();
+        com.tencent.mm.plugin.priority.model.c2c.b.b.a(this.xon, this.id, this.hTh, this.isSuccess, this.nzW);
       }
       AppMethodBeat.o(87779);
     }
   }
   
   final class b
-    extends com.tencent.mm.plugin.priority.model.b.a
+    extends com.tencent.mm.plugin.priority.model.a.a
   {
-    private long fNu;
+    private long hTh;
     private String id;
     
     public b(String paramString, long paramLong)
     {
       this.id = paramString;
-      this.fNu = paramLong;
+      this.hTh = paramLong;
     }
     
     public final String getName()
@@ -184,23 +184,23 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(87780);
-      if (((PluginPriority)h.ag(PluginPriority.class)).getC2CMsgAutoDownloadFileLogic() != null)
+      if (((PluginPriority)h.az(PluginPriority.class)).getC2CMsgAutoDownloadFileLogic() != null)
       {
-        ((PluginPriority)h.ag(PluginPriority.class)).getC2CMsgAutoDownloadFileLogic();
-        com.tencent.mm.plugin.priority.model.a.b.b.bf(this.id, this.fNu);
+        ((PluginPriority)h.az(PluginPriority.class)).getC2CMsgAutoDownloadFileLogic();
+        com.tencent.mm.plugin.priority.model.c2c.b.b.bp(this.id, this.hTh);
       }
       AppMethodBeat.o(87780);
     }
   }
   
   final class c
-    extends com.tencent.mm.plugin.priority.model.b.a
+    extends com.tencent.mm.plugin.priority.model.a.a
   {
-    private ca fNz;
+    private cc hTm;
     
-    public c(ca paramca)
+    public c(cc paramcc)
     {
-      this.fNz = paramca;
+      this.hTm = paramcc;
     }
     
     public final String getName()
@@ -211,133 +211,133 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(87781);
-      if (this.fNz.field_createTime <= ((PluginPriority)h.ag(PluginPriority.class)).getInstallPriorityTime())
+      if (this.hTm.getCreateTime() <= ((PluginPriority)h.az(PluginPriority.class)).getInstallPriorityTime())
       {
-        Log.i("MicroMsg.Priority.PriorityService", "onC2CFileReceive time condition not support %s", new Object[] { f.formatTime("yyyy-MM-dd HH:mm:ss", this.fNz.field_createTime / 1000L) });
+        Log.i("MicroMsg.Priority.PriorityService", "onC2CFileReceive time condition not support %s", new Object[] { f.formatTime("yyyy-MM-dd HH:mm:ss", this.hTm.getCreateTime() / 1000L) });
         AppMethodBeat.o(87781);
         return;
       }
-      if (((PluginPriority)h.ag(PluginPriority.class)).getC2CMsgAutoDownloadFileLogic() != null)
+      if (((PluginPriority)h.az(PluginPriority.class)).getC2CMsgAutoDownloadFileLogic() != null)
       {
-        ((PluginPriority)h.ag(PluginPriority.class)).getC2CMsgAutoDownloadFileLogic();
-        Object localObject3 = this.fNz;
-        Object localObject1 = ((et)localObject3).field_talker;
-        if ((ab.Lj(((et)localObject3).field_talker)) && (((et)localObject3).field_isSend == 0))
+        ((PluginPriority)h.az(PluginPriority.class)).getC2CMsgAutoDownloadFileLogic();
+        Object localObject3 = this.hTm;
+        Object localObject1 = ((fi)localObject3).field_talker;
+        if ((au.bwE(((fi)localObject3).field_talker)) && (((fi)localObject3).field_isSend == 0))
         {
-          localObject2 = bq.RM(((et)localObject3).field_content);
-          localObject1 = Util.nullAs(bq.RL(((et)localObject3).field_content), "");
+          localObject2 = br.JK(((fi)localObject3).field_content);
+          localObject1 = Util.nullAs(br.JJ(((fi)localObject3).field_content), "");
         }
         Object localObject4;
         for (;;)
         {
-          localObject4 = k.b.OQ((String)localObject2);
+          localObject4 = k.b.Hf((String)localObject2);
           if (localObject4 != null) {
             break;
           }
           Log.i("MicroMsg.Priority.C2CMsgAutoDownloadFileLogic", "appMsgContent is null");
           AppMethodBeat.o(87781);
           return;
-          localObject2 = ((et)localObject3).field_content;
+          localObject2 = ((fi)localObject3).field_content;
         }
-        if ((ab.Lj(((et)localObject3).field_talker)) && (((et)localObject3).field_isSend == 0)) {
-          localObject2 = ((PluginPriority)h.ag(PluginPriority.class)).getC2CMsgFileUsageStorage().jD(((et)localObject3).field_talker, "@all");
+        if ((au.bwE(((fi)localObject3).field_talker)) && (((fi)localObject3).field_isSend == 0)) {
+          localObject2 = ((PluginPriority)h.az(PluginPriority.class)).getC2CMsgFileUsageStorage().kX(((fi)localObject3).field_talker, "@all");
         }
         double d;
         String str;
-        for (int i = ((PluginPriority)h.ag(PluginPriority.class)).getC2CMsgFileUsageStorage().jF(((et)localObject3).field_talker, "@all");; i = ((PluginPriority)h.ag(PluginPriority.class)).getC2CMsgFileUsageStorage().jF(((et)localObject3).field_talker, ((et)localObject3).field_talker))
+        for (int i = ((PluginPriority)h.az(PluginPriority.class)).getC2CMsgFileUsageStorage().kZ(((fi)localObject3).field_talker, "@all");; i = ((PluginPriority)h.az(PluginPriority.class)).getC2CMsgFileUsageStorage().kZ(((fi)localObject3).field_talker, ((fi)localObject3).field_talker))
         {
-          d = com.tencent.mm.plugin.priority.model.a.b.b.b((double[])localObject2);
+          d = com.tencent.mm.plugin.priority.model.c2c.b.b.d((double[])localObject2);
           if (((k.b)localObject4).type != 6) {
             break label742;
           }
-          str = String.valueOf(((et)localObject3).field_msgId);
-          if (!((PluginPriority)h.ag(PluginPriority.class)).getC2CMsgAutoDownloadFileStorage().bg(str, ((et)localObject3).field_msgSvrId)) {
+          str = String.valueOf(((fi)localObject3).field_msgId);
+          if (!((PluginPriority)h.az(PluginPriority.class)).getC2CMsgAutoDownloadFileStorage().br(str, ((fi)localObject3).field_msgSvrId)) {
             break;
           }
-          Log.i("MicroMsg.Priority.C2CMsgAutoDownloadFileLogic", "file already exist msg %s %s", new Object[] { Long.valueOf(((et)localObject3).field_msgId), Long.valueOf(((et)localObject3).field_msgSvrId) });
+          Log.i("MicroMsg.Priority.C2CMsgAutoDownloadFileLogic", "file already exist msg %s %s", new Object[] { Long.valueOf(((fi)localObject3).field_msgId), Long.valueOf(((fi)localObject3).field_msgSvrId) });
           AppMethodBeat.o(87781);
           return;
-          localObject2 = ((PluginPriority)h.ag(PluginPriority.class)).getC2CMsgFileUsageStorage().jD(((et)localObject3).field_talker, ((et)localObject3).field_talker);
+          localObject2 = ((PluginPriority)h.az(PluginPriority.class)).getC2CMsgFileUsageStorage().kX(((fi)localObject3).field_talker, ((fi)localObject3).field_talker);
         }
-        Object localObject2 = new hr();
-        ((hr)localObject2).Id = str;
-        ((hr)localObject2).RMW = ((et)localObject3).field_talker;
-        ((hr)localObject2).RMX = ((String)localObject1);
-        ((hr)localObject2).RMY = 2;
-        ((hr)localObject2).RMZ = ((et)localObject3).field_createTime;
+        Object localObject2 = new in();
+        ((in)localObject2).Id = str;
+        ((in)localObject2).YKk = ((fi)localObject3).field_talker;
+        ((in)localObject2).YKl = ((String)localObject1);
+        ((in)localObject2).YKm = 2;
+        ((in)localObject2).YKn = ((cc)localObject3).getCreateTime();
         if (i < 2) {}
         for (i = 1;; i = 0)
         {
-          ((hr)localObject2).RNa = i;
-          ((hr)localObject2).rVU = 1;
-          ((hr)localObject2).RNb = 0L;
-          ((hr)localObject2).RNc = ((et)localObject3).field_msgSvrId;
-          ((hr)localObject2).RNd = ((k.b)localObject4).llX;
-          ((hr)localObject2).RNe = ((k.b)localObject4).llY;
-          ((hr)localObject2).RNg = d;
-          ((hr)localObject2).RNh = 1;
-          ((hr)localObject2).RNi = ((k.b)localObject4).fvr;
-          localObject1 = com.tencent.mm.plugin.ab.a.ctZ().bpR(((k.b)localObject4).fvr);
+          ((in)localObject2).YKo = i;
+          ((in)localObject2).vhk = 1;
+          ((in)localObject2).YKp = 0L;
+          ((in)localObject2).YKq = ((fi)localObject3).field_msgSvrId;
+          ((in)localObject2).YKr = ((k.b)localObject4).nRd;
+          ((in)localObject2).YKs = ((k.b)localObject4).nRe;
+          ((in)localObject2).YKu = d;
+          ((in)localObject2).YKv = 1;
+          ((in)localObject2).YKw = ((k.b)localObject4).hzM;
+          localObject1 = com.tencent.mm.plugin.openapi.a.cWJ().bpI(((k.b)localObject4).hzM);
           if (localObject1 != null)
           {
-            localObject3 = new q(((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_fileFullPath);
-            if ((((q)localObject3).ifE()) && (((q)localObject3).length() == ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_totalLen))
+            localObject3 = new u(((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_fileFullPath);
+            if ((((u)localObject3).jKS()) && (((u)localObject3).length() == ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_totalLen))
             {
-              ((hr)localObject2).RNb = System.currentTimeMillis();
-              ((hr)localObject2).rVU = 6;
+              ((in)localObject2).YKp = System.currentTimeMillis();
+              ((in)localObject2).vhk = 6;
             }
           }
-          Log.i("MicroMsg.Priority.C2CMsgAutoDownloadFileLogic", "insert auto download file %s %s %s %s %.2f", new Object[] { ((hr)localObject2).RMW, Util.getSizeMB(((hr)localObject2).RNd), ((hr)localObject2).RNe, Integer.valueOf(((hr)localObject2).RNa), Double.valueOf(((hr)localObject2).RNg) });
-          ((PluginPriority)h.ag(PluginPriority.class)).getC2CMsgAutoDownloadFileStorage().a((hr)localObject2);
-          if (ab.Lj(((hr)localObject2).RMW)) {
-            ((PluginPriority)h.ag(PluginPriority.class)).getC2CMsgFileUsageStorage().jB(((hr)localObject2).RMW, "@all");
+          Log.i("MicroMsg.Priority.C2CMsgAutoDownloadFileLogic", "insert auto download file %s %s %s %s %.2f", new Object[] { ((in)localObject2).YKk, Util.getSizeMB(((in)localObject2).YKr), ((in)localObject2).YKs, Integer.valueOf(((in)localObject2).YKo), Double.valueOf(((in)localObject2).YKu) });
+          ((PluginPriority)h.az(PluginPriority.class)).getC2CMsgAutoDownloadFileStorage().a((in)localObject2);
+          if (au.bwE(((in)localObject2).YKk)) {
+            ((PluginPriority)h.az(PluginPriority.class)).getC2CMsgFileUsageStorage().kV(((in)localObject2).YKk, "@all");
           }
-          ((PluginPriority)h.ag(PluginPriority.class)).getC2CMsgFileUsageStorage().jB(((hr)localObject2).RMW, ((hr)localObject2).RMX);
-          com.tencent.mm.plugin.priority.model.c.a(3, System.currentTimeMillis(), ((hr)localObject2).rVU, (hr)localObject2);
+          ((PluginPriority)h.az(PluginPriority.class)).getC2CMsgFileUsageStorage().kV(((in)localObject2).YKk, ((in)localObject2).YKl);
+          com.tencent.mm.plugin.priority.model.c.a(3, System.currentTimeMillis(), ((in)localObject2).vhk, (in)localObject2);
           AppMethodBeat.o(87781);
           return;
         }
         label742:
         if (((k.b)localObject4).type == 19)
         {
-          localObject2 = p.aVz(((k.b)localObject4).lmA).lpz.iterator();
+          localObject2 = q.aSH(((k.b)localObject4).nRF).nUC.iterator();
           while (((Iterator)localObject2).hasNext())
           {
-            localObject4 = (anm)((Iterator)localObject2).next();
-            if (((anm)localObject4).dataType == 8)
+            localObject4 = (arf)((Iterator)localObject2).next();
+            if (((arf)localObject4).dataType == 8)
             {
-              str = ((anm)localObject4).fEa;
-              if (((PluginPriority)h.ag(PluginPriority.class)).getC2CMsgAutoDownloadFileStorage().bg(str, ((et)localObject3).field_msgSvrId))
+              str = ((arf)localObject4).hIQ;
+              if (((PluginPriority)h.az(PluginPriority.class)).getC2CMsgAutoDownloadFileStorage().br(str, ((fi)localObject3).field_msgSvrId))
               {
-                Log.i("MicroMsg.Priority.C2CMsgAutoDownloadFileLogic", "file already exist msg %s %s", new Object[] { str, Long.valueOf(((et)localObject3).field_msgSvrId) });
+                Log.i("MicroMsg.Priority.C2CMsgAutoDownloadFileLogic", "file already exist msg %s %s", new Object[] { str, Long.valueOf(((fi)localObject3).field_msgSvrId) });
               }
               else
               {
-                hr localhr = new hr();
-                localhr.Id = str;
-                localhr.RMW = ((et)localObject3).field_talker;
-                localhr.RMX = ((String)localObject1);
-                localhr.RMY = 3;
-                localhr.RMZ = ((et)localObject3).field_createTime;
+                in localin = new in();
+                localin.Id = str;
+                localin.YKk = ((fi)localObject3).field_talker;
+                localin.YKl = ((String)localObject1);
+                localin.YKm = 3;
+                localin.YKn = ((cc)localObject3).getCreateTime();
                 if (i < 2) {}
                 for (int j = 1;; j = 0)
                 {
-                  localhr.RNa = j;
-                  localhr.rVU = 1;
-                  localhr.RNb = 0L;
-                  localhr.RNc = ((et)localObject3).field_msgSvrId;
-                  localhr.RNd = ((anm)localObject4).Syi;
-                  localhr.RNe = ((anm)localObject4).Syc;
-                  localhr.RNg = d;
-                  localhr.RNh = 1;
-                  localhr.RNi = ((anm)localObject4).Rwb;
-                  Log.i("MicroMsg.Priority.C2CMsgAutoDownloadFileLogic", "insert auto download file %s %s %s %s %.2f", new Object[] { localhr.RMW, Util.getSizeMB(localhr.RNd), localhr.RNe, Integer.valueOf(localhr.RNa), Double.valueOf(localhr.RNg) });
-                  ((PluginPriority)h.ag(PluginPriority.class)).getC2CMsgAutoDownloadFileStorage().a(localhr);
-                  if (ab.Lj(localhr.RMW)) {
-                    ((PluginPriority)h.ag(PluginPriority.class)).getC2CMsgFileUsageStorage().jB(localhr.RMW, "@all");
+                  localin.YKo = j;
+                  localin.vhk = 1;
+                  localin.YKp = 0L;
+                  localin.YKq = ((fi)localObject3).field_msgSvrId;
+                  localin.YKr = ((arf)localObject4).Zza;
+                  localin.YKs = ((arf)localObject4).ZyU;
+                  localin.YKu = d;
+                  localin.YKv = 1;
+                  localin.YKw = ((arf)localObject4).Ysw;
+                  Log.i("MicroMsg.Priority.C2CMsgAutoDownloadFileLogic", "insert auto download file %s %s %s %s %.2f", new Object[] { localin.YKk, Util.getSizeMB(localin.YKr), localin.YKs, Integer.valueOf(localin.YKo), Double.valueOf(localin.YKu) });
+                  ((PluginPriority)h.az(PluginPriority.class)).getC2CMsgAutoDownloadFileStorage().a(localin);
+                  if (au.bwE(localin.YKk)) {
+                    ((PluginPriority)h.az(PluginPriority.class)).getC2CMsgFileUsageStorage().kV(localin.YKk, "@all");
                   }
-                  ((PluginPriority)h.ag(PluginPriority.class)).getC2CMsgFileUsageStorage().jB(localhr.RMW, localhr.RMX);
-                  com.tencent.mm.plugin.priority.model.c.a(3, System.currentTimeMillis(), localhr.rVU, localhr);
+                  ((PluginPriority)h.az(PluginPriority.class)).getC2CMsgFileUsageStorage().kV(localin.YKk, localin.YKl);
+                  com.tencent.mm.plugin.priority.model.c.a(3, System.currentTimeMillis(), localin.vhk, localin);
                   break;
                 }
               }
@@ -350,17 +350,17 @@ public final class a
   }
   
   final class d
-    extends com.tencent.mm.plugin.priority.model.b.a
+    extends com.tencent.mm.plugin.priority.model.a.a
   {
     private boolean isSuccess;
-    private boolean kUn;
     private long msgId;
+    private boolean nzW;
     
     public d(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
     {
       this.msgId = paramLong;
       this.isSuccess = paramBoolean1;
-      this.kUn = paramBoolean2;
+      this.nzW = paramBoolean2;
     }
     
     public final String getName()
@@ -371,30 +371,30 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(87782);
-      ca localca = ((n)h.ae(n.class)).eSe().Oq(this.msgId);
-      if (localca.field_createTime <= ((PluginPriority)h.ag(PluginPriority.class)).getInstallPriorityTime())
+      cc localcc = ((n)h.ax(n.class)).gaZ().sl(this.msgId);
+      if (localcc.getCreateTime() <= ((PluginPriority)h.az(PluginPriority.class)).getInstallPriorityTime())
       {
-        Log.i("MicroMsg.Priority.PriorityService", "onC2CImgDownloaded time condition not support %s", new Object[] { f.formatTime("yyyy-MM-dd HH:mm:ss", localca.field_createTime / 1000L) });
+        Log.i("MicroMsg.Priority.PriorityService", "onC2CImgDownloaded time condition not support %s", new Object[] { f.formatTime("yyyy-MM-dd HH:mm:ss", localcc.getCreateTime() / 1000L) });
         AppMethodBeat.o(87782);
         return;
       }
-      if (((PluginPriority)h.ag(PluginPriority.class)).getC2CMsgAutoDownloadImgLogic() != null)
+      if (((PluginPriority)h.az(PluginPriority.class)).getC2CMsgAutoDownloadImgLogic() != null)
       {
-        ((PluginPriority)h.ag(PluginPriority.class)).getC2CMsgAutoDownloadImgLogic();
-        com.tencent.mm.plugin.priority.model.a.c.b.a(localca, this.isSuccess, this.kUn);
+        ((PluginPriority)h.az(PluginPriority.class)).getC2CMsgAutoDownloadImgLogic();
+        com.tencent.mm.plugin.priority.model.c2c.img.b.a(localcc, this.isSuccess, this.nzW);
       }
       AppMethodBeat.o(87782);
     }
   }
   
   final class e
-    extends com.tencent.mm.plugin.priority.model.b.a
+    extends com.tencent.mm.plugin.priority.model.a.a
   {
-    private ca fNz;
+    private cc hTm;
     
-    public e(ca paramca)
+    public e(cc paramcc)
     {
-      this.fNz = paramca;
+      this.hTm = paramcc;
     }
     
     public final String getName()
@@ -405,32 +405,32 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(87783);
-      if (this.fNz.field_createTime <= ((PluginPriority)h.ag(PluginPriority.class)).getInstallPriorityTime())
+      if (this.hTm.getCreateTime() <= ((PluginPriority)h.az(PluginPriority.class)).getInstallPriorityTime())
       {
-        Log.i("MicroMsg.Priority.PriorityService", "onC2CImgOpen time condition not support %s", new Object[] { f.formatTime("yyyy-MM-dd HH:mm:ss", this.fNz.field_createTime / 1000L) });
+        Log.i("MicroMsg.Priority.PriorityService", "onC2CImgOpen time condition not support %s", new Object[] { f.formatTime("yyyy-MM-dd HH:mm:ss", this.hTm.getCreateTime() / 1000L) });
         AppMethodBeat.o(87783);
         return;
       }
-      if (((PluginPriority)h.ag(PluginPriority.class)).getC2CMsgAutoDownloadImgLogic() != null)
+      if (((PluginPriority)h.az(PluginPriority.class)).getC2CMsgAutoDownloadImgLogic() != null)
       {
-        ((PluginPriority)h.ag(PluginPriority.class)).getC2CMsgAutoDownloadImgLogic();
-        com.tencent.mm.plugin.priority.model.a.c.b.aV(this.fNz);
+        ((PluginPriority)h.az(PluginPriority.class)).getC2CMsgAutoDownloadImgLogic();
+        com.tencent.mm.plugin.priority.model.c2c.img.b.bm(this.hTm);
       }
       AppMethodBeat.o(87783);
     }
   }
   
   final class f
-    extends com.tencent.mm.plugin.priority.model.b.a
+    extends com.tencent.mm.plugin.priority.model.a.a
   {
-    private WeakReference<Runnable> GSf;
-    private ca fNz;
+    private WeakReference<Runnable> MPJ;
+    private cc hTm;
     
     f(WeakReference<Runnable> paramWeakReference)
     {
-      this.fNz = paramWeakReference;
+      this.hTm = paramWeakReference;
       Object localObject;
-      this.GSf = localObject;
+      this.MPJ = localObject;
     }
     
     public final String getName()
@@ -441,31 +441,31 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(87784);
-      if (this.fNz.field_createTime <= ((PluginPriority)h.ag(PluginPriority.class)).getInstallPriorityTime())
+      if (this.hTm.getCreateTime() <= ((PluginPriority)h.az(PluginPriority.class)).getInstallPriorityTime())
       {
-        Log.i("MicroMsg.Priority.PriorityService", "onC2CImgScroll time condition not support %s", new Object[] { f.formatTime("yyyy-MM-dd HH:mm:ss", this.fNz.field_createTime / 1000L) });
+        Log.i("MicroMsg.Priority.PriorityService", "onC2CImgScroll time condition not support %s", new Object[] { f.formatTime("yyyy-MM-dd HH:mm:ss", this.hTm.getCreateTime() / 1000L) });
         AppMethodBeat.o(87784);
         return;
       }
-      Log.i("MicroMsg.Priority.PriorityService", "C2CImgScrollTask Start To Auto Download %d MsgId %d", new Object[] { Integer.valueOf(32), Long.valueOf(this.fNz.field_msgId) });
-      if (this.GSf.get() != null) {
-        ((Runnable)this.GSf.get()).run();
+      Log.i("MicroMsg.Priority.PriorityService", "C2CImgScrollTask Start To Auto Download %d MsgId %d", new Object[] { Integer.valueOf(32), Long.valueOf(this.hTm.field_msgId) });
+      if (this.MPJ.get() != null) {
+        ((Runnable)this.MPJ.get()).run();
       }
-      ((PluginPriority)h.ag(PluginPriority.class)).getC2CMsgAutoDownloadImgLogic();
-      com.tencent.mm.plugin.priority.model.a.c.b.aU(this.fNz);
+      ((PluginPriority)h.az(PluginPriority.class)).getC2CMsgAutoDownloadImgLogic();
+      com.tencent.mm.plugin.priority.model.c2c.img.b.bl(this.hTm);
       AppMethodBeat.o(87784);
     }
   }
   
   final class g
-    extends com.tencent.mm.plugin.priority.model.b.a
+    extends com.tencent.mm.plugin.priority.model.a.a
   {
-    private String GSg;
+    private String MPK;
     private int score;
     
     public g(String paramString, int paramInt)
     {
-      this.GSg = paramString;
+      this.MPK = paramString;
       this.score = paramInt;
     }
     
@@ -477,12 +477,12 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(87785);
-      if (((PluginPriority)h.ag(PluginPriority.class)).getC2CChatUsageLogic() != null)
+      if (((PluginPriority)h.az(PluginPriority.class)).getC2CChatUsageLogic() != null)
       {
-        com.tencent.mm.plugin.priority.model.a.a.a locala = ((PluginPriority)h.ag(PluginPriority.class)).getC2CChatUsageLogic();
-        String str = this.GSg;
+        com.tencent.mm.plugin.priority.model.c2c.a.a locala = ((PluginPriority)h.az(PluginPriority.class)).getC2CChatUsageLogic();
+        String str = this.MPK;
         int i = this.score;
-        ((PluginPriority)h.ag(PluginPriority.class)).getPriorityTaskRunner().a(new com.tencent.mm.plugin.priority.model.a.a.a.a(locala, str, i, (byte)0));
+        ((PluginPriority)h.az(PluginPriority.class)).getPriorityTaskRunner().a(new com.tencent.mm.plugin.priority.model.c2c.a.a.a(locala, str, i, (byte)0));
       }
       AppMethodBeat.o(87785);
     }
@@ -490,7 +490,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.priority.a
  * JD-Core Version:    0.7.0.1
  */

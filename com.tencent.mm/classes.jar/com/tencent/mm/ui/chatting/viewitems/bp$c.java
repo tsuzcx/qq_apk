@@ -1,80 +1,66 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.i;
-import com.tencent.mm.f.c.et;
-import com.tencent.mm.pluginsdk.j.f;
-import com.tencent.mm.storage.ca;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
-import com.tencent.mm.ui.chatting.e.a;
+import com.tencent.mm.storage.cc;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.chatting.d.a;
 
 public final class bp$c
-  extends c
+  extends bp.a
 {
   public final View a(LayoutInflater paramLayoutInflater, View paramView)
   {
-    AppMethodBeat.i(37546);
-    View localView;
+    AppMethodBeat.i(37517);
+    Object localObject;
     if (paramView != null)
     {
-      localView = paramView;
+      localObject = paramView;
       if (paramView.getTag() != null) {}
     }
     else
     {
-      localView = paramLayoutInflater.inflate(R.i.eex, null);
-      localView.setTag(new bp.d().ip(localView));
+      localObject = new ap(paramLayoutInflater, R.i.ggj);
+      ((View)localObject).setTag(new bp.i().lM((View)localObject));
     }
-    AppMethodBeat.o(37546);
-    return localView;
+    AppMethodBeat.o(37517);
+    return localObject;
   }
   
-  public final void a(c.a parama, int paramInt, a parama1, ca paramca, String paramString)
+  public final void a(c.a parama, int paramInt, a parama1, cc paramcc, String paramString)
   {
-    AppMethodBeat.i(37547);
-    parama.timeTV.setVisibility(0);
-    parama.timeTV.setText(f.w(parama1.WQv.getContext(), paramca.field_createTime));
-    AppMethodBeat.o(37547);
+    AppMethodBeat.i(37518);
+    bp.i.a((bp.i)parama, paramcc, true, paramInt, parama1, p(parama1), c(parama1));
+    AppMethodBeat.o(37518);
   }
   
-  public final boolean a(MenuItem paramMenuItem, a parama, ca paramca)
-  {
-    return false;
-  }
-  
-  public final boolean a(o paramo, View paramView, ca paramca)
+  public final boolean a(MenuItem paramMenuItem, a parama, cc paramcc)
   {
     return false;
   }
   
-  public final boolean bZ(int paramInt, boolean paramBoolean)
-  {
-    return paramInt == -1879048188;
-  }
-  
-  public final boolean c(View paramView, a parama, ca paramca)
+  public final boolean a(s params, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo, cc paramcc)
   {
     return false;
   }
   
-  public final boolean hTD()
+  public final boolean c(View paramView, a parama, cc paramcc)
   {
     return false;
   }
   
-  protected final boolean hTE()
+  public final boolean cM(int paramInt, boolean paramBoolean)
   {
-    return false;
+    return (!paramBoolean) && (paramInt == 50);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.bp.c
  * JD-Core Version:    0.7.0.1
  */

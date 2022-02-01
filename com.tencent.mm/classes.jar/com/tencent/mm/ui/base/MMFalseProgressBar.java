@@ -17,17 +17,17 @@ public class MMFalseProgressBar
   private MMHandler mHandler;
   private boolean mIsStart;
   private float mProgress;
-  private float rnQ;
-  private float rnR;
-  private float rnS;
-  private float rnT;
-  public boolean rnU;
+  private float uxL;
+  private float uxM;
+  private float uxN;
+  private float uxO;
+  public boolean uxP;
   
   public MMFalseProgressBar(Context paramContext)
   {
     this(paramContext, null);
     AppMethodBeat.i(141887);
-    hJD();
+    jmi();
     AppMethodBeat.o(141887);
   }
   
@@ -42,7 +42,7 @@ public class MMFalseProgressBar
     AppMethodBeat.i(141888);
     this.mIsStart = false;
     this.mProgress = 0.0F;
-    this.rnU = true;
+    this.uxP = true;
     this.mHandler = new MMHandler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
@@ -69,26 +69,26 @@ public class MMFalseProgressBar
       }
     };
     setMax(1000);
-    hJD();
+    jmi();
     AppMethodBeat.o(141888);
   }
   
-  private void hJD()
+  private void jmi()
   {
     AppMethodBeat.i(141891);
     if (NetStatusUtil.isWifiOr4G(MMApplicationContext.getContext()))
     {
-      this.rnQ = 4.0F;
-      this.rnR = 1.0F;
-      this.rnS = 0.3F;
-      this.rnT = 50.0F;
+      this.uxL = 4.0F;
+      this.uxM = 1.0F;
+      this.uxN = 0.3F;
+      this.uxO = 50.0F;
       AppMethodBeat.o(141891);
       return;
     }
-    this.rnQ = 2.0F;
-    this.rnR = 0.5F;
-    this.rnS = 0.15F;
-    this.rnT = 50.0F;
+    this.uxL = 2.0F;
+    this.uxM = 0.5F;
+    this.uxN = 0.15F;
+    this.uxO = 50.0F;
     AppMethodBeat.o(141891);
   }
   
@@ -106,7 +106,7 @@ public class MMFalseProgressBar
   {
     AppMethodBeat.i(141889);
     Log.d("MicroMsg.MMFalseProgressBar", "[cpan] start");
-    if (!this.rnU)
+    if (!this.uxP)
     {
       AppMethodBeat.o(141889);
       return;
@@ -117,7 +117,7 @@ public class MMFalseProgressBar
       return;
     }
     this.mIsStart = true;
-    hJD();
+    jmi();
     if (this.mHandler != null)
     {
       this.mHandler.sendEmptyMessage(1000);

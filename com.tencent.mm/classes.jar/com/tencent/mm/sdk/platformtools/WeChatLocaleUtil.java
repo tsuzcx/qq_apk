@@ -10,17 +10,17 @@ public class WeChatLocaleUtil
 {
   public static boolean isOverseasUser()
   {
-    AppMethodBeat.i(249042);
+    AppMethodBeat.i(243669);
     if (!Locale.getDefault().getCountry().equalsIgnoreCase("CN"))
     {
-      AppMethodBeat.o(249042);
+      AppMethodBeat.o(243669);
       return true;
     }
     Object localObject = TimeZone.getDefault();
     TimeZone localTimeZone = TimeZone.getTimeZone("GMT+08:00");
     if (((TimeZone)localObject).getRawOffset() != localTimeZone.getRawOffset())
     {
-      AppMethodBeat.o(249042);
+      AppMethodBeat.o(243669);
       return true;
     }
     localObject = (TelephonyManager)MMApplicationContext.getContext().getSystemService("phone");
@@ -29,11 +29,11 @@ public class WeChatLocaleUtil
       localObject = ((TelephonyManager)localObject).getNetworkCountryIso();
       if ((!Util.isNullOrNil((String)localObject)) && (!((String)localObject).contains("cn")) && (!((String)localObject).contains("CN")))
       {
-        AppMethodBeat.o(249042);
+        AppMethodBeat.o(243669);
         return true;
       }
     }
-    AppMethodBeat.o(249042);
+    AppMethodBeat.o(243669);
     return false;
   }
   

@@ -4,19 +4,19 @@ import android.content.Context;
 
 public abstract interface f
 {
-  public abstract boolean V(CharSequence paramCharSequence);
-  
-  public abstract boolean W(CharSequence paramCharSequence);
-  
   public abstract CharSequence a(Context paramContext, CharSequence paramCharSequence, int paramInt);
+  
+  public abstract boolean aa(CharSequence paramCharSequence);
+  
+  public abstract boolean ab(CharSequence paramCharSequence);
   
   public static final class a
   {
-    protected static f RrM;
+    protected static f Yoa;
     
     public static final void a(f paramf)
     {
-      RrM = paramf;
+      Yoa = paramf;
     }
   }
 }

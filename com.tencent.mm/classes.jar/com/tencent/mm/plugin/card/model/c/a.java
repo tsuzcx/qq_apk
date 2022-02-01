@@ -2,38 +2,38 @@ package com.tencent.mm.plugin.card.model.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.model.a.j;
-import com.tencent.mm.protocal.protobuf.agv;
-import com.tencent.mm.protocal.protobuf.agx;
-import com.tencent.mm.protocal.protobuf.dyl;
-import com.tencent.mm.protocal.protobuf.dyy;
+import com.tencent.mm.protocal.protobuf.ajk;
+import com.tencent.mm.protocal.protobuf.ajm;
+import com.tencent.mm.protocal.protobuf.erp;
+import com.tencent.mm.protocal.protobuf.esc;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/card/model/v4/CgiDeleteCouponRequest;", "Lcom/tencent/mm/plugin/card/model/v2/CommonCardCgi;", "Lcom/tencent/mm/protocal/protobuf/DeleteCouponResponse;", "cardId", "", "(Ljava/lang/String;)V", "Companion", "plugin-card_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/card/model/v4/CgiDeleteCouponRequest;", "Lcom/tencent/mm/plugin/card/model/v2/CommonCardCgi;", "Lcom/tencent/mm/protocal/protobuf/DeleteCouponResponse;", "cardId", "", "(Ljava/lang/String;)V", "Companion", "plugin-card_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends j<agx>
+  extends j<ajm>
 {
-  public static final a trD;
+  public static final a wwb;
   
   static
   {
-    AppMethodBeat.i(253136);
-    trD = new a((byte)0);
-    AppMethodBeat.o(253136);
+    AppMethodBeat.i(294531);
+    wwb = new a((byte)0);
+    AppMethodBeat.o(294531);
   }
   
   public a(String paramString)
   {
-    AppMethodBeat.i(253135);
-    agv localagv = new agv();
-    agx localagx = new agx();
-    localagv.RFf = paramString;
-    a((dyl)localagv, (dyy)localagx, 5027, "/cgi-bin/mmpay-bin/mktdeletecoupon");
+    AppMethodBeat.i(294526);
+    ajk localajk = new ajk();
+    ajm localajm = new ajm();
+    localajk.YBH = paramString;
+    a((erp)localajk, (esc)localajm, 5027, "/cgi-bin/mmpay-bin/mktdeletecoupon");
     Log.i("MicroMsg.CgiDeleteCouponRequest", "cardid: %s", new Object[] { paramString });
-    AppMethodBeat.o(253135);
+    AppMethodBeat.o(294526);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/card/model/v4/CgiDeleteCouponRequest$Companion;", "", "()V", "TAG", "", "plugin-card_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/card/model/v4/CgiDeleteCouponRequest$Companion;", "", "()V", "TAG", "", "plugin-card_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

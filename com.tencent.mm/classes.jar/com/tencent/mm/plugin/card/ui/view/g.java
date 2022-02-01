@@ -10,48 +10,48 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.a.d;
 import com.tencent.mm.plugin.card.a.g;
-import com.tencent.mm.plugin.card.d.c;
-import com.tencent.mm.plugin.card.d.l;
-import com.tencent.mm.plugin.card.d.q;
+import com.tencent.mm.plugin.card.c.c;
+import com.tencent.mm.plugin.card.c.l;
+import com.tencent.mm.plugin.card.c.q;
 import com.tencent.mm.plugin.card.ui.j;
-import com.tencent.mm.protocal.protobuf.ua;
-import com.tencent.mm.protocal.protobuf.vb;
+import com.tencent.mm.protocal.protobuf.vr;
+import com.tencent.mm.protocal.protobuf.ws;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.r;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.v;
 
 public abstract class g
   extends i
 {
   String code;
-  private Bitmap nmx;
-  private ViewGroup tFM;
-  private ab tFN;
-  private ViewStub tFO;
-  protected com.tencent.mm.plugin.card.base.b tmU;
-  MMActivity tmY;
-  private View.OnLongClickListener tsA = new View.OnLongClickListener()
+  private Bitmap qjG;
+  private j wAf;
+  private ViewGroup wJl;
+  private ab wJm;
+  private ViewStub wJn;
+  protected com.tencent.mm.plugin.card.base.b wru;
+  MMActivity wry;
+  private Bitmap wwO;
+  private View.OnLongClickListener wwX = new View.OnLongClickListener()
   {
     public final boolean onLongClick(View paramAnonymousView)
     {
       AppMethodBeat.i(113671);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramAnonymousView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/card/ui/view/CardBaseCodeView$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aFi());
-      if (paramAnonymousView.getId() == a.d.tfp)
+      localb.cH(paramAnonymousView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/card/ui/view/CardBaseCodeView$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aYj());
+      if (paramAnonymousView.getId() == a.d.wjG)
       {
-        q.abo(g.this.tmU.cGt().code);
-        h.cO(g.this.tmY, g.this.getString(a.g.app_copy_ok));
+        q.TF(g.this.wru.djL().code);
+        k.cZ(g.this.wry, g.this.getString(a.g.app_copy_ok));
       }
       com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/card/ui/view/CardBaseCodeView$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
       AppMethodBeat.o(113671);
       return false;
     }
   };
-  private Bitmap tsr;
-  private j tvH;
   
   private static void a(ImageView paramImageView, Bitmap paramBitmap)
   {
@@ -65,22 +65,24 @@ public abstract class g
   {
     try
     {
-      paramView = (ImageView)paramView.findViewById(a.d.tfi);
-      l.X(this.nmx);
+      paramView = (ImageView)paramView.findViewById(a.d.wjz);
+      l.ah(this.qjG);
       int j = 1;
       int i = j;
-      if (this.tmU != null)
+      if (this.wru != null)
       {
         i = j;
-        if (this.tmU.cGs() != null) {
-          i = this.tmU.cGs().Sgv;
+        if (this.wru.djK() != null) {
+          i = this.wru.djK().Zeq;
         }
       }
-      this.nmx = com.tencent.mm.cf.a.a.c(this.tmY, paramString, 12, i);
-      a(paramView, this.nmx);
-      paramView.setOnClickListener(this.tFT.cIW());
-      this.tvH.nmx = this.nmx;
-      this.tvH.cJM();
+      this.qjG = com.tencent.mm.bz.a.a.d(this.wry, paramString, 12, i);
+      a(paramView, this.qjG);
+      if (doM()) {
+        paramView.setOnClickListener(this.wJs.dmo());
+      }
+      this.wAf.qjG = this.qjG;
+      this.wAf.dnc();
       return;
     }
     catch (Exception paramView)
@@ -93,14 +95,14 @@ public abstract class g
   {
     try
     {
-      paramView = (ImageView)paramView.findViewById(a.d.teZ);
-      l.X(this.tsr);
+      paramView = (ImageView)paramView.findViewById(a.d.wjq);
+      l.ah(this.wwO);
       if ((paramString != null) && (paramString.length() > 0)) {
-        this.tsr = com.tencent.mm.cf.a.a.c(this.tmY, paramString, 5, 0);
+        this.wwO = com.tencent.mm.bz.a.a.d(this.wry, paramString, 5, 0);
       }
-      a(paramView, this.tsr);
-      paramView.setOnClickListener(this.tFT.cIW());
-      this.tvH.tsr = this.tsr;
+      a(paramView, this.wwO);
+      paramView.setOnClickListener(this.wJs.dmo());
+      this.wAf.wwO = this.wwO;
       return;
     }
     catch (Exception paramView)
@@ -111,12 +113,12 @@ public abstract class g
   
   private void g(View paramView, String paramString)
   {
-    paramView = (TextView)paramView.findViewById(a.d.tfp);
-    paramView.setText(com.tencent.mm.plugin.card.d.n.arY(paramString));
-    paramView.setOnLongClickListener(this.tsA);
-    String str = this.tmU.cGs().lmL;
+    paramView = (TextView)paramView.findViewById(a.d.wjG);
+    paramView.setText(com.tencent.mm.plugin.card.c.n.alC(paramString));
+    paramView.setOnLongClickListener(this.wwX);
+    String str = this.wru.djK().nRQ;
     if (!Util.isNullOrNil(str)) {
-      paramView.setTextColor(l.arR(str));
+      paramView.setTextColor(l.alv(str));
     }
     if (paramString.length() <= 12) {
       paramView.setTextSize(1, 33.0F);
@@ -150,54 +152,12 @@ public abstract class g
       Log.e("MicroMsg.CardBaseCodeView", "updateCardInfo failure! mCardInfo is null!");
       return;
     }
-    this.tmU = paramb;
+    this.wru = paramb;
   }
-  
-  public final void cAE()
-  {
-    if ((this.tmU != null) && (this.tFN != null) && (this.tFM != null))
-    {
-      this.tFN.b(this.tFM, this.tmU);
-      if ((this.tmU.cGt().SdE == 2) && (this.tvH != null))
-      {
-        j localj = this.tvH;
-        if ((localj.nmy != null) && (localj.nmy.isShowing())) {
-          localj.nmy.dismiss();
-        }
-      }
-      return;
-    }
-    Log.e("MicroMsg.CardBaseCodeView", "onScreenShot is error! mCardInfo or codeContainer or targetView is null ");
-  }
-  
-  public final void cKY()
-  {
-    cLc();
-  }
-  
-  public final void cLb()
-  {
-    if ((this.tFN != null) && (this.tmU != null) && (this.tFM != null)) {
-      this.tFN.a(this.tFM, this.tmU);
-    }
-  }
-  
-  public final void cLc()
-  {
-    if (this.tFM != null) {
-      this.tFM.setVisibility(8);
-    }
-  }
-  
-  public abstract ab cLd();
-  
-  public abstract ab cLe();
-  
-  public abstract ab cLf();
   
   public final void d(c paramc)
   {
-    if (this.tmU == null)
+    if (this.wru == null)
     {
       Log.e("MicroMsg.CardBaseCodeView", "updateCodeView getCode mCardInfo  is null ! cannot show code view");
       return;
@@ -207,13 +167,13 @@ public abstract class g
       Log.e("MicroMsg.CardBaseCodeView", "updateCodeView failure!refreshReason is null!");
       return;
     }
-    if (!this.tFN.g(this.tmU))
+    if (!this.wJm.g(this.wru))
     {
       Log.e("MicroMsg.CardBaseCodeView", "updateCodeView failure! can not get qrcode! refreshReason = %s", new Object[] { Integer.valueOf(paramc.action) });
-      cLb();
+      doH();
       return;
     }
-    this.tFN.o(this.tFM);
+    this.wJm.s(this.wJl);
     Log.i("MicroMsg.CardBaseCodeView", "updateCodeView from refreshReason = %s", new Object[] { Integer.valueOf(paramc.action) });
     this.code = e(paramc);
     if (Util.isNullOrNil(this.code))
@@ -221,30 +181,77 @@ public abstract class g
       Log.e("MicroMsg.CardBaseCodeView", "updateCodeView getCode is empty! cannot show code view");
       return;
     }
-    switch (this.tmU.cGt().SdE)
+    switch (this.wru.djL().Zby)
     {
     default: 
       return;
     case 0: 
-      g(this.tFM, this.code);
+      g(this.wJl, this.code);
       return;
     case 2: 
-      e(this.tFM, this.code);
+      e(this.wJl, this.code);
       return;
     }
-    f(this.tFM, this.code);
+    f(this.wJl, this.code);
+  }
+  
+  public final void ddE()
+  {
+    if ((this.wru != null) && (this.wJm != null) && (this.wJl != null))
+    {
+      this.wJm.b(this.wJl, this.wru);
+      if ((this.wru.djL().Zby == 2) && (this.wAf != null))
+      {
+        j localj = this.wAf;
+        if ((localj.qjH != null) && (localj.qjH.isShowing())) {
+          localj.qjH.dismiss();
+        }
+      }
+      return;
+    }
+    Log.e("MicroMsg.CardBaseCodeView", "onScreenShot is error! mCardInfo or codeContainer or targetView is null ");
   }
   
   public final void destroy()
   {
     super.destroy();
-    this.tmY = null;
-    this.tvH = null;
-    this.tmU = null;
-    this.tFM = null;
-    this.tFN = null;
-    l.X(this.nmx);
-    l.X(this.tsr);
+    this.wry = null;
+    this.wAf = null;
+    this.wru = null;
+    this.wJl = null;
+    this.wJm = null;
+    l.ah(this.qjG);
+    l.ah(this.wwO);
+  }
+  
+  public final void doE()
+  {
+    doI();
+  }
+  
+  public final void doH()
+  {
+    if ((this.wJm != null) && (this.wru != null) && (this.wJl != null)) {
+      this.wJm.a(this.wJl, this.wru);
+    }
+  }
+  
+  public final void doI()
+  {
+    if (this.wJl != null) {
+      this.wJl.setVisibility(8);
+    }
+  }
+  
+  public abstract ab doJ();
+  
+  public abstract ab doK();
+  
+  public abstract ab doL();
+  
+  public boolean doM()
+  {
+    return true;
   }
   
   public abstract String e(c paramc);
@@ -253,73 +260,73 @@ public abstract class g
   
   public final void initView()
   {
-    this.tmY = this.tFT.cIV();
-    this.tvH = this.tFT.cJb();
-    this.tmU = this.tFT.cIS();
-    if (this.tmU == null)
+    this.wry = this.wJs.dmn();
+    this.wAf = this.wJs.dmt();
+    this.wru = this.wJs.dmk();
+    if (this.wru == null)
     {
       Log.e("MicroMsg.CardBaseCodeView", "initView failure! cardInfo is null!");
       return;
     }
-    switch (this.tmU.cGt().SdE)
+    switch (this.wru.djL().Zby)
     {
     default: 
-      this.tFN = cLd();
+      this.wJm = doJ();
     }
-    while (this.tFN == null)
+    while (this.wJm == null)
     {
       Log.e("MicroMsg.CardBaseCodeView", "iniView failure! codeContainer is null!");
       return;
-      this.tFN = cLd();
+      this.wJm = doJ();
       continue;
-      this.tFN = cLe();
+      this.wJm = doK();
       continue;
-      this.tFN = cLf();
+      this.wJm = doL();
     }
-    switch (this.tmU.cGt().SdE)
+    switch (this.wru.djL().Zby)
     {
     default: 
-      if (this.tFO == null) {
-        this.tFO = ((ViewStub)findViewById(a.d.tdk));
+      if (this.wJn == null) {
+        this.wJn = ((ViewStub)findViewById(a.d.why));
       }
       label209:
-      if (this.tFO == null) {
+      if (this.wJn == null) {
         Log.e("MicroMsg.CardBaseCodeView", "initTargetView failure! viewStub is null!");
       }
       break;
     }
-    while (this.tFM == null)
+    while (this.wJl == null)
     {
       Log.e("MicroMsg.CardBaseCodeView", "iniView failure! targetView is null!");
       return;
-      if (this.tFO != null) {
+      if (this.wJn != null) {
         break label209;
       }
-      this.tFO = ((ViewStub)findViewById(a.d.tdk));
+      this.wJn = ((ViewStub)findViewById(a.d.why));
       break label209;
-      if (this.tFO != null) {
+      if (this.wJn != null) {
         break label209;
       }
-      this.tFO = ((ViewStub)findViewById(a.d.tbj));
+      this.wJn = ((ViewStub)findViewById(a.d.wft));
       break label209;
-      if (this.tFO != null) {
+      if (this.wJn != null) {
         break label209;
       }
-      this.tFO = ((ViewStub)findViewById(a.d.tbD));
+      this.wJn = ((ViewStub)findViewById(a.d.wfQ));
       break label209;
-      if (this.tFN == null)
+      if (this.wJm == null)
       {
         Log.e("MicroMsg.CardBaseCodeView", "iniView failure! codeContainer is null!");
       }
-      else if (this.tFN.getLayoutId() == 0)
+      else if (this.wJm.getLayoutId() == 0)
       {
         Log.e("MicroMsg.CardBaseCodeView", "initTargetView failure! codeContainer.getLayoutId()  is 0!");
       }
       else
       {
-        this.tFO.setLayoutResource(this.tFN.getLayoutId());
-        if (this.tFM == null) {
-          this.tFM = ((ViewGroup)this.tFO.inflate());
+        this.wJn.setLayoutResource(this.wJm.getLayoutId());
+        if (this.wJl == null) {
+          this.wJl = ((ViewGroup)this.wJn.inflate());
         }
       }
     }
@@ -327,29 +334,29 @@ public abstract class g
   
   public final void update()
   {
-    if (this.tmU == null)
+    if (this.wru == null)
     {
       Log.e("MicroMsg.CardBaseCodeView", "update  failure! mCardInfo is null!");
       return;
     }
-    if (this.tFN == null)
+    if (this.wJm == null)
     {
       Log.e("MicroMsg.CardBaseCodeView", "update failure! codeContainer is null!");
       return;
     }
-    if (this.tFM == null)
+    if (this.wJl == null)
     {
       Log.e("MicroMsg.CardBaseCodeView", "update failure! targetView is null!");
       return;
     }
-    this.tvH.cJK();
-    d(c.tGR);
-    this.tFN.c(this.tFM, this.tmU);
+    this.wAf.dna();
+    d(c.wKq);
+    this.wJm.c(this.wJl, this.wru);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.view.g
  * JD-Core Version:    0.7.0.1
  */

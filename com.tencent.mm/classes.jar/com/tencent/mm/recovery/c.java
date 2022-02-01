@@ -5,11 +5,11 @@ import androidx.core.f.a;
 public final class c
   implements a<Integer>
 {
-  private final int[] UOJ;
+  private final int[] acjD;
   
   public c(int[] paramArrayOfInt)
   {
-    this.UOJ = paramArrayOfInt;
+    this.acjD = paramArrayOfInt;
   }
 }
 

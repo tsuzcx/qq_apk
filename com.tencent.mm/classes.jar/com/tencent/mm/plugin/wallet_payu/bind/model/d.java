@@ -4,22 +4,21 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.p;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.plugin.wallet.bind.a;
 import com.tencent.mm.plugin.wallet.bind.ui.WalletBankcardDetailUI;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_payu.bind.ui.WalletPayUBankcardDetailUI;
-import com.tencent.mm.plugin.wallet_payu.pwd.a.c;
 import com.tencent.mm.plugin.wallet_payu.pwd.ui.WalletPayUCheckPwdUI;
 import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.w;
-import com.tencent.mm.wallet_core.d.g;
-import com.tencent.mm.wallet_core.d.i;
+import com.tencent.mm.ui.base.aa;
+import com.tencent.mm.wallet_core.c.g;
+import com.tencent.mm.wallet_core.c.i;
 
 public class d
   extends a
@@ -45,13 +44,13 @@ public class d
           return localObject;
         }
         
-        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
         {
           AppMethodBeat.i(71987);
-          if ((paramAnonymousq instanceof c)) {
+          if ((paramAnonymousp instanceof com.tencent.mm.plugin.wallet_payu.pwd.a.c)) {
             if ((paramAnonymousInt2 == 0) && (paramAnonymousInt1 == 0))
             {
-              paramAnonymousString = (c)paramAnonymousq;
+              paramAnonymousString = (com.tencent.mm.plugin.wallet_payu.pwd.a.c)paramAnonymousp;
               d.a(d.this).putString("payu_reference", paramAnonymousString.token);
               if (Util.isNullOrNil(paramAnonymousString.token)) {
                 break label118;
@@ -59,12 +58,12 @@ public class d
               Log.d("MicroMsg.PayUUnbindProcess", "hy: check pwd pass");
               paramAnonymousString = (Bankcard)d.b(d.this).getParcelable("key_bankcard");
               if (paramAnonymousString != null) {
-                this.YVX.b(new b(paramAnonymousString.field_bindSerial, d.c(d.this).getString("payu_reference")), true);
+                this.agTR.b(new b(paramAnonymousString.field_bindSerial, d.c(d.this).getString("payu_reference")), true);
               }
             }
           }
           label118:
-          while (!(paramAnonymousq instanceof b)) {
+          while (!(paramAnonymousp instanceof b)) {
             for (;;)
             {
               AppMethodBeat.o(71987);
@@ -81,11 +80,11 @@ public class d
           return false;
         }
         
-        public final boolean r(Object... paramAnonymousVarArgs)
+        public final boolean t(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(71988);
           d.f(d.this).putString("key_pwd1", (String)paramAnonymousVarArgs[0]);
-          this.YVX.b(new c(d.g(d.this).getString("key_pwd1")), true);
+          this.agTR.b(new com.tencent.mm.plugin.wallet_payu.pwd.a.c(d.g(d.this).getString("key_pwd1")), true);
           AppMethodBeat.o(71988);
           return true;
         }
@@ -116,22 +115,22 @@ public class d
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(71990);
-    if (this.fKb.getInt("key_errcode_payu", -1) == 0) {
-      w.makeText(paramActivity, a.i.wallet_order_info_result_success, 0).show();
+    if (this.hPH.getInt("key_errcode_payu", -1) == 0) {
+      aa.makeText(paramActivity, a.i.wallet_order_info_result_success, 0).show();
     }
     for (;;)
     {
-      boolean bool = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vHh, true);
+      boolean bool = ((com.tencent.mm.plugin.expt.b.c)h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yXg, true);
       Log.i("MicroMsg.PayUUnbindProcess", " walletMallV2 switch is ：%s", new Object[] { Boolean.valueOf(bool) });
       if (!bool) {
         break;
       }
-      h(paramActivity, "mall", ".ui.MallIndexUIv2");
+      g(paramActivity, "mall", ".ui.MallIndexUIv2");
       AppMethodBeat.o(71990);
       return;
-      w.makeText(paramActivity, a.i.wallet_err_wording_comm_failed, 0).show();
+      aa.makeText(paramActivity, a.i.wallet_err_wording_comm_failed, 0).show();
     }
-    h(paramActivity, "mall", ".ui.MallIndexUI");
+    g(paramActivity, "mall", ".ui.MallIndexUI");
     AppMethodBeat.o(71990);
   }
   

@@ -1,54 +1,54 @@
 package com.tencent.mm.appbrand.v8;
 
-import androidx.annotation.RecentlyNullable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Queue;
-import kotlin.a.j;
-import kotlin.g.b.i;
-import kotlin.g.b.p;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.j;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/appbrand/v8/TaskQueueWithImportantIndexUnsafe;", "T", "Ljava/util/Queue;", "q", "(Ljava/util/Queue;)V", "lastImportantTaskIndex", "", "size", "getSize", "()I", "add", "", "element", "kotlin.jvm.PlatformType", "(Ljava/lang/Object;)Z", "addAll", "elements", "", "clear", "", "contains", "containsAll", "copyToWriteUnsafe", "anotherQueue", "isPaused", "()Ljava/lang/Object;", "getLastTaskIndexToExecute", "hasImportantTask", "isEmpty", "iterator", "", "markImportantTask", "offer", "p0", "offerTask", "t", "important", "(Ljava/lang/Object;Z)V", "peek", "poll", "remove", "removeAll", "retainAll", "Companion", "luggage-v8-ext_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/appbrand/v8/TaskQueueWithImportantIndexUnsafe;", "T", "Ljava/util/Queue;", "q", "(Ljava/util/Queue;)V", "lastImportantTaskIndex", "", "size", "getSize", "()I", "add", "", "element", "kotlin.jvm.PlatformType", "(Ljava/lang/Object;)Z", "addAll", "elements", "", "clear", "", "contains", "containsAll", "copyToWriteUnsafe", "anotherQueue", "isPaused", "()Ljava/lang/Object;", "getLastTaskIndexToExecute", "hasImportantTask", "isEmpty", "iterator", "", "markImportantTask", "offer", "p0", "offerTask", "t", "important", "(Ljava/lang/Object;Z)V", "peek", "poll", "remove", "removeAll", "retainAll", "Companion", "luggage-v8-ext_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class l<T>
   implements Queue<T>
 {
-  public static final l.a fix;
-  private int fiv;
-  private final Queue<T> fiw;
+  public static final l.a hmH;
+  private final Queue<T> hmI;
+  int hmJ;
   
   static
   {
-    AppMethodBeat.i(262369);
-    fix = new l.a((byte)0);
-    AppMethodBeat.o(262369);
+    AppMethodBeat.i(238664);
+    hmH = new l.a((byte)0);
+    AppMethodBeat.o(238664);
   }
   
   public l(Queue<T> paramQueue)
   {
-    AppMethodBeat.i(262365);
-    this.fiw = paramQueue;
-    this.fiv = -1;
-    AppMethodBeat.o(262365);
+    AppMethodBeat.i(238656);
+    this.hmI = paramQueue;
+    this.hmJ = -1;
+    AppMethodBeat.o(238656);
   }
   
   public final void a(Queue<T> paramQueue, boolean paramBoolean)
   {
     int k = 0;
-    AppMethodBeat.i(262359);
-    p.k(paramQueue, "anotherQueue");
+    AppMethodBeat.i(238791);
+    s.u(paramQueue, "anotherQueue");
     if (paramBoolean) {}
     int j;
-    for (int i = this.fiv;; i = this.fiw.size())
+    for (int i = this.hmJ;; i = this.hmI.size())
     {
-      this.fiv = -1;
-      Iterator localIterator = ((Iterable)this.fiw).iterator();
+      this.hmJ = -1;
+      Iterator localIterator = ((Iterable)this.hmI).iterator();
       j = 0;
       while (localIterator.hasNext())
       {
         Object localObject = localIterator.next();
         if (j < 0) {
-          j.iBO();
+          p.kkW();
         }
         if (j <= i) {
           paramQueue.offer(localObject);
@@ -56,174 +56,168 @@ public final class l<T>
         j += 1;
       }
     }
-    if (i >= 0)
-    {
+    if (i >= 0) {
       j = k;
-      for (;;)
-      {
-        this.fiw.poll();
-        if (j == i) {
-          break;
-        }
-        j += 1;
-      }
     }
-    AppMethodBeat.o(262359);
-  }
-  
-  public final boolean acl()
-  {
-    return this.fiv >= 0;
+    for (;;)
+    {
+      this.hmI.poll();
+      if (j == i)
+      {
+        AppMethodBeat.o(238791);
+        return;
+      }
+      j += 1;
+    }
   }
   
   public final boolean add(T paramT)
   {
-    AppMethodBeat.i(262374);
-    boolean bool = this.fiw.add(paramT);
-    AppMethodBeat.o(262374);
+    AppMethodBeat.i(238677);
+    boolean bool = this.hmI.add(paramT);
+    AppMethodBeat.o(238677);
     return bool;
   }
   
   public final boolean addAll(Collection<? extends T> paramCollection)
   {
-    AppMethodBeat.i(262377);
-    p.k(paramCollection, "elements");
-    boolean bool = this.fiw.addAll(paramCollection);
-    AppMethodBeat.o(262377);
+    AppMethodBeat.i(238683);
+    s.u(paramCollection, "elements");
+    boolean bool = this.hmI.addAll(paramCollection);
+    AppMethodBeat.o(238683);
     return bool;
-  }
-  
-  public final void c(T paramT, boolean paramBoolean)
-  {
-    AppMethodBeat.i(262361);
-    offer(paramT);
-    if (paramBoolean) {
-      this.fiv = (this.fiw.size() - 1);
-    }
-    AppMethodBeat.o(262361);
   }
   
   public final void clear()
   {
-    AppMethodBeat.i(262379);
-    this.fiw.clear();
-    AppMethodBeat.o(262379);
+    AppMethodBeat.i(238691);
+    this.hmI.clear();
+    AppMethodBeat.o(238691);
   }
   
   public final boolean contains(Object paramObject)
   {
-    AppMethodBeat.i(262382);
-    boolean bool = this.fiw.contains(paramObject);
-    AppMethodBeat.o(262382);
+    AppMethodBeat.i(238700);
+    boolean bool = this.hmI.contains(paramObject);
+    AppMethodBeat.o(238700);
     return bool;
   }
   
   public final boolean containsAll(Collection<? extends Object> paramCollection)
   {
-    AppMethodBeat.i(262385);
-    p.k(paramCollection, "elements");
-    boolean bool = this.fiw.containsAll(paramCollection);
-    AppMethodBeat.o(262385);
+    AppMethodBeat.i(238709);
+    s.u(paramCollection, "elements");
+    boolean bool = this.hmI.containsAll(paramCollection);
+    AppMethodBeat.o(238709);
     return bool;
+  }
+  
+  public final void d(T paramT, boolean paramBoolean)
+  {
+    AppMethodBeat.i(238800);
+    offer(paramT);
+    if (paramBoolean) {
+      this.hmJ = (this.hmI.size() - 1);
+    }
+    AppMethodBeat.o(238800);
   }
   
   public final T element()
   {
-    AppMethodBeat.i(262387);
-    Object localObject = this.fiw.element();
-    AppMethodBeat.o(262387);
+    AppMethodBeat.i(238716);
+    Object localObject = this.hmI.element();
+    AppMethodBeat.o(238716);
     return localObject;
   }
   
   public final boolean isEmpty()
   {
-    AppMethodBeat.i(262388);
-    boolean bool = this.fiw.isEmpty();
-    AppMethodBeat.o(262388);
+    AppMethodBeat.i(238725);
+    boolean bool = this.hmI.isEmpty();
+    AppMethodBeat.o(238725);
     return bool;
   }
   
   public final Iterator<T> iterator()
   {
-    AppMethodBeat.i(262389);
-    Iterator localIterator = this.fiw.iterator();
-    AppMethodBeat.o(262389);
+    AppMethodBeat.i(238736);
+    Iterator localIterator = this.hmI.iterator();
+    AppMethodBeat.o(238736);
     return localIterator;
   }
   
   public final boolean offer(T paramT)
   {
-    AppMethodBeat.i(262390);
-    boolean bool = this.fiw.offer(paramT);
-    AppMethodBeat.o(262390);
+    AppMethodBeat.i(238746);
+    boolean bool = this.hmI.offer(paramT);
+    AppMethodBeat.o(238746);
     return bool;
   }
   
-  @RecentlyNullable
   public final T peek()
   {
-    AppMethodBeat.i(262392);
-    Object localObject = this.fiw.peek();
-    AppMethodBeat.o(262392);
+    AppMethodBeat.i(238668);
+    Object localObject = this.hmI.peek();
+    AppMethodBeat.o(238668);
     return localObject;
   }
   
-  @RecentlyNullable
   public final T poll()
   {
-    AppMethodBeat.i(262393);
-    Object localObject = this.fiw.poll();
-    AppMethodBeat.o(262393);
+    AppMethodBeat.i(238672);
+    Object localObject = this.hmI.poll();
+    AppMethodBeat.o(238672);
     return localObject;
   }
   
   public final T remove()
   {
-    AppMethodBeat.i(262395);
-    Object localObject = this.fiw.remove();
-    AppMethodBeat.o(262395);
+    AppMethodBeat.i(238757);
+    Object localObject = this.hmI.remove();
+    AppMethodBeat.o(238757);
     return localObject;
   }
   
   public final boolean remove(Object paramObject)
   {
-    AppMethodBeat.i(262396);
-    boolean bool = this.fiw.remove(paramObject);
-    AppMethodBeat.o(262396);
+    AppMethodBeat.i(238764);
+    boolean bool = this.hmI.remove(paramObject);
+    AppMethodBeat.o(238764);
     return bool;
   }
   
   public final boolean removeAll(Collection<? extends Object> paramCollection)
   {
-    AppMethodBeat.i(262397);
-    p.k(paramCollection, "elements");
-    boolean bool = this.fiw.removeAll(paramCollection);
-    AppMethodBeat.o(262397);
+    AppMethodBeat.i(238771);
+    s.u(paramCollection, "elements");
+    boolean bool = this.hmI.removeAll(paramCollection);
+    AppMethodBeat.o(238771);
     return bool;
   }
   
   public final boolean retainAll(Collection<? extends Object> paramCollection)
   {
-    AppMethodBeat.i(262398);
-    p.k(paramCollection, "elements");
-    boolean bool = this.fiw.retainAll(paramCollection);
-    AppMethodBeat.o(262398);
+    AppMethodBeat.i(238781);
+    s.u(paramCollection, "elements");
+    boolean bool = this.hmI.retainAll(paramCollection);
+    AppMethodBeat.o(238781);
     return bool;
   }
   
   public final Object[] toArray()
   {
-    AppMethodBeat.i(262400);
-    Object[] arrayOfObject = i.u(this);
-    AppMethodBeat.o(262400);
+    AppMethodBeat.i(238821);
+    Object[] arrayOfObject = j.L((Collection)this);
+    AppMethodBeat.o(238821);
     return arrayOfObject;
   }
   
   public final <T> T[] toArray(T[] paramArrayOfT)
   {
-    AppMethodBeat.i(262401);
-    paramArrayOfT = i.b(this, paramArrayOfT);
-    AppMethodBeat.o(262401);
+    AppMethodBeat.i(238815);
+    s.u(paramArrayOfT, "array");
+    paramArrayOfT = j.b((Collection)this, paramArrayOfT);
+    AppMethodBeat.o(238815);
     return paramArrayOfT;
   }
 }

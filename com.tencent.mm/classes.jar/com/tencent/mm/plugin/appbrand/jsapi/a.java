@@ -2,34 +2,32 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.hi;
+import com.tencent.mm.autogen.a.ht;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/AddTagWhenFavTask;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask;", "()V", "handleRequest", "", "request", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessRequest;", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/AddTagWhenFavTask;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask;", "()V", "handleRequest", "", "request", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessRequest;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 final class a
   extends AppBrandProxyUIProcessTask
 {
-  public final void a(AppBrandProxyUIProcessTask.ProcessRequest paramProcessRequest)
+  public final void handleRequest(AppBrandProxyUIProcessTask.ProcessRequest paramProcessRequest)
   {
-    AppMethodBeat.i(284088);
+    AppMethodBeat.i(325647);
     if (!(paramProcessRequest instanceof AddTagWhenFavRequest))
     {
       Log.w("MicroMsg.AppBrand.AddToFavoritesCommons", "handleRequest#AddTagWhenFavTask, request is not AddTagWhenFavRequest");
-      AppMethodBeat.o(284088);
+      AppMethodBeat.o(325647);
       return;
     }
-    paramProcessRequest = new hi();
-    paramProcessRequest.fEb.type = 35;
-    paramProcessRequest.fEb.context = ((Context)bPf());
-    EventCenter.instance.publish((IEvent)paramProcessRequest);
-    b((AppBrandProxyUIProcessTask.ProcessResult)new EmptyResult());
-    AppMethodBeat.o(284088);
+    paramProcessRequest = new ht();
+    paramProcessRequest.hIR.type = 35;
+    paramProcessRequest.hIR.context = ((Context)getActivityContext());
+    paramProcessRequest.publish();
+    finishProcess((AppBrandProxyUIProcessTask.ProcessResult)new EmptyResult());
+    AppMethodBeat.o(325647);
   }
 }
 

@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/we" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/dnu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="8.0dip">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="16.0dip" android:textColor="@color/fr" android:id="@id/bq2" android:background="@drawable/awj" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e_p" />
-            <TextView android:textSize="15.0dip" android:textColor="@color/fr" android:id="@id/dtp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" />
-        </LinearLayout>
+<RelativeLayout android:paddingLeft="32.0dip" android:paddingRight="32.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/fda" android:background="@drawable/icon" android:layout_width="62.0dip" android:layout_height="62.0dip" android:layout_marginTop="97.0dip" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="22.0sp" android:textColor="@color/gg" android:id="@id/kxc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="33.0dip" android:layout_marginBottom="16.0dip" android:text="@string/hvg" android:layout_below="@id/fda" android:layout_centerHorizontal="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/l8v" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/l8m" android:layout_below="@id/kxc">
+        <TextView android:textSize="17.0sp" android:textColor="@color/gg" android:gravity="center_horizontal" android:id="@id/kyv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/hvj" />
     </LinearLayout>
-    <androidx.core.widget.NestedScrollView android:orientation="vertical" android:id="@id/in4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/dnu">
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <TextView android:textSize="14.0dip" android:textColor="@color/fr" android:id="@id/e5z" android:paddingLeft="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" />
-            <com.tencent.mm.plugin.appbrand.keylogger.stepview.VerticalStepView android:id="@id/i5t" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_marginBottom="16.0dip" />
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
-    <ScrollView android:id="@id/bq1" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/dnu" android:layout_centerHorizontal="true">
-        <HorizontalScrollView android:id="@id/dq1" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <LinearLayout android:orientation="vertical" android:id="@id/bq0" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        </HorizontalScrollView>
-    </ScrollView>
+    <LinearLayout android:gravity="center" android:id="@id/l8m" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginBottom="96.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <Button android:id="@id/alz" android:visibility="visible" android:layout_width="184.0dip" android:layout_height="40.0dip" android:text="@string/hve" style="@style/oh" />
+        <ProgressBar android:id="@id/i86" android:visibility="gone" android:layout_width="48.0dip" android:layout_height="48.0dip" />
+    </LinearLayout>
 </RelativeLayout>

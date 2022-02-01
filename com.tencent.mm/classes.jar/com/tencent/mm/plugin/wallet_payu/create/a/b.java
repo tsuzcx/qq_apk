@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet_payu.create.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.wallet_core.e.a.a;
+import com.tencent.mm.wallet_core.d.a.a;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -9,18 +9,18 @@ import org.json.JSONObject;
 public final class b
   extends a
 {
-  public String PlK;
-  public String Pla;
-  public String fLj;
-  public String fVa;
+  public String WcW;
+  public String Wcz;
+  public String hQR;
+  public String iaX;
   
   public b(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(72011);
-    this.PlK = paramString1;
-    this.fVa = paramString2;
-    this.Pla = paramString3;
-    this.fLj = paramString4;
+    this.WcW = paramString1;
+    this.iaX = paramString2;
+    this.Wcz = paramString3;
+    this.hQR = paramString4;
     HashMap localHashMap = new HashMap();
     localHashMap.put("dial_code", paramString1);
     localHashMap.put("number", paramString2);
@@ -30,7 +30,7 @@ public final class b
     AppMethodBeat.o(72011);
   }
   
-  public final int gIA()
+  public final int ihO()
   {
     return 17;
   }

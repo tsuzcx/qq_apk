@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="148.0dip" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintTop_toTopOf="hr_">
+        <FrameLayout android:id="@id/j8c" android:background="@drawable/ww" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/cd" android:layout_height="@dimen/cv" android:src="@raw/icons_filled_arrow" app:iconColor="@color/BW_70" />
+        </FrameLayout>
+        <TextView android:textSize="@dimen/m3" android:textColor="@color/FG_0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:text="@string/d_f" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

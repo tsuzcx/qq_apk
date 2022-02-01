@@ -4,7 +4,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.booter.notification.NotificationItem;
-import com.tencent.mm.n.g;
+import com.tencent.mm.k.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.io.IOException;
@@ -17,32 +17,32 @@ import java.util.List;
 public final class a
   implements Serializable, Iterable<a>
 {
-  LinkedList<a> iSv;
+  LinkedList<a> lus;
   
-  private void arg()
+  private void sz()
   {
     try
     {
       AppMethodBeat.i(20005);
-      if (this.iSv == null) {
+      if (this.lus == null) {
         AppMethodBeat.o(20005);
       }
       for (;;)
       {
         return;
-        Log.d("MicroMsg.NotificationAppMsgQueue", "save: size: %d", new Object[] { Integer.valueOf(this.iSv.size()) });
-        if (this.iSv.isEmpty())
+        Log.d("MicroMsg.NotificationAppMsgQueue", "save: size: %d", new Object[] { Integer.valueOf(this.lus.size()) });
+        if (this.lus.isEmpty())
         {
-          g.awe().edit().putString("com.tencent.preference.notification.key.queue", "").apply();
-          Log.i("MicroMsg.NotificationAppMsgQueue", "reset size:%d, %s", new Object[] { Integer.valueOf(this.iSv.size()), toString() });
+          h.aQD().edit().putString("com.tencent.preference.notification.key.queue", "").apply();
+          Log.i("MicroMsg.NotificationAppMsgQueue", "reset size:%d, %s", new Object[] { Integer.valueOf(this.lus.size()), toString() });
           AppMethodBeat.o(20005);
           continue;
         }
         try
         {
-          LinkedList localLinkedList = new LinkedList(this.iSv);
-          g.awe().edit().putString("com.tencent.preference.notification.key.queue", c.a(localLinkedList)).apply();
-          Log.i("MicroMsg.NotificationAppMsgQueue", "save size:%d, %s", new Object[] { Integer.valueOf(this.iSv.size()), toString() });
+          LinkedList localLinkedList = new LinkedList(this.lus);
+          h.aQD().edit().putString("com.tencent.preference.notification.key.queue", c.a(localLinkedList)).apply();
+          Log.i("MicroMsg.NotificationAppMsgQueue", "save size:%d, %s", new Object[] { Integer.valueOf(this.lus.size()), toString() });
           AppMethodBeat.o(20005);
         }
         catch (IOException localIOException)
@@ -63,22 +63,22 @@ public final class a
     try
     {
       AppMethodBeat.i(20006);
-      if (this.iSv == null) {
+      if (this.lus == null) {
         restore();
       }
       remove(paramNotificationItem.id);
       Object localObject;
-      if ((paramNotificationItem.iSq) && (!Util.isNullOrNil(paramNotificationItem.iSn))) {
-        localObject = this.iSv.iterator();
+      if ((paramNotificationItem.lun) && (!Util.isNullOrNil(paramNotificationItem.luk))) {
+        localObject = this.lus.iterator();
       }
       for (;;)
       {
         if (((Iterator)localObject).hasNext())
         {
           a locala = (a)((Iterator)localObject).next();
-          if (locala.userName.equals(paramNotificationItem.iSn))
+          if (locala.userName.equals(paramNotificationItem.luk))
           {
-            locala.a(paramNotificationItem.id, paramNotificationItem.iSo, paramNotificationItem.iSn, paramNotificationItem.iSp, paramNotificationItem.iSq, paramNotificationItem.iSr);
+            locala.a(paramNotificationItem.id, paramNotificationItem.lul, paramNotificationItem.luk, paramNotificationItem.lum, paramNotificationItem.lun, paramNotificationItem.luo);
             i = 0;
           }
         }
@@ -86,16 +86,16 @@ public final class a
         {
           if (i != 0)
           {
-            localObject = new a(paramNotificationItem.id, paramNotificationItem.iSo, paramNotificationItem.iSn, paramNotificationItem.iSp, paramNotificationItem.iSq, paramNotificationItem.iSr);
-            this.iSv.add(localObject);
+            localObject = new a(paramNotificationItem.id, paramNotificationItem.lul, paramNotificationItem.luk, paramNotificationItem.lum, paramNotificationItem.lun, paramNotificationItem.luo);
+            this.lus.add(localObject);
             Log.d("MicroMsg.NotificationAppMsgQueue", "add: [%s]", new Object[] { paramNotificationItem.toString() });
           }
           for (;;)
           {
-            arg();
+            sz();
             AppMethodBeat.o(20006);
             return;
-            this.iSv.add(new a(paramNotificationItem.id, paramNotificationItem.iSq));
+            this.lus.add(new a(paramNotificationItem.id, paramNotificationItem.lun));
             Log.d("MicroMsg.NotificationAppMsgQueue", "add: [%s]", new Object[] { paramNotificationItem.toString() });
           }
         }
@@ -107,10 +107,10 @@ public final class a
   public final Iterator<a> iterator()
   {
     AppMethodBeat.i(20010);
-    if (this.iSv == null) {
+    if (this.lus == null) {
       restore();
     }
-    Iterator localIterator = this.iSv.iterator();
+    Iterator localIterator = this.lus.iterator();
     AppMethodBeat.o(20010);
     return localIterator;
   }
@@ -120,7 +120,7 @@ public final class a
     try
     {
       AppMethodBeat.i(20007);
-      if (this.iSv == null) {
+      if (this.lus == null) {
         restore();
       }
       ArrayList localArrayList = new ArrayList();
@@ -128,7 +128,7 @@ public final class a
       while (localIterator.hasNext())
       {
         a locala = (a)localIterator.next();
-        if (((locala.iSw & paramInt) != 0) && (!localArrayList.contains(Integer.valueOf(locala.notificationId)))) {
+        if (((locala.lut & paramInt) != 0) && (!localArrayList.contains(Integer.valueOf(locala.notificationId)))) {
           localArrayList.add(Integer.valueOf(locala.notificationId));
         }
       }
@@ -153,11 +153,11 @@ public final class a
           bool = false;
           return bool;
         }
-        if (this.iSv == null) {
+        if (this.lus == null) {
           restore();
         }
         LinkedList localLinkedList = new LinkedList();
-        Iterator localIterator = this.iSv.iterator();
+        Iterator localIterator = this.lus.iterator();
         i = 0;
         if (!localIterator.hasNext()) {
           break label110;
@@ -175,8 +175,8 @@ public final class a
       label110:
       if (i != 0)
       {
-        this.iSv = localObject;
-        arg();
+        this.lus = localObject;
+        sz();
         AppMethodBeat.o(20008);
         bool = true;
       }
@@ -217,12 +217,12 @@ public final class a
     //   40: iload_2
     //   41: ireturn
     //   42: aload_0
-    //   43: getfield 31	com/tencent/mm/booter/notification/queue/a:iSv	Ljava/util/LinkedList;
+    //   43: getfield 31	com/tencent/mm/booter/notification/queue/a:lus	Ljava/util/LinkedList;
     //   46: ifnonnull +7 -> 53
     //   49: aload_0
     //   50: invokevirtual 112	com/tencent/mm/booter/notification/queue/a:restore	()V
     //   53: aload_0
-    //   54: getfield 31	com/tencent/mm/booter/notification/queue/a:iSv	Ljava/util/LinkedList;
+    //   54: getfield 31	com/tencent/mm/booter/notification/queue/a:lus	Ljava/util/LinkedList;
     //   57: invokevirtual 140	java/util/LinkedList:iterator	()Ljava/util/Iterator;
     //   60: astore_3
     //   61: aload_3
@@ -238,12 +238,12 @@ public final class a
     //   87: invokevirtual 158	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   90: ifeq -29 -> 61
     //   93: aload_0
-    //   94: getfield 31	com/tencent/mm/booter/notification/queue/a:iSv	Ljava/util/LinkedList;
+    //   94: getfield 31	com/tencent/mm/booter/notification/queue/a:lus	Ljava/util/LinkedList;
     //   97: aload 4
     //   99: invokevirtual 210	java/util/LinkedList:remove	(Ljava/lang/Object;)Z
     //   102: pop
     //   103: aload_0
-    //   104: invokespecial 181	com/tencent/mm/booter/notification/queue/a:arg	()V
+    //   104: invokespecial 181	com/tencent/mm/booter/notification/queue/a:sz	()V
     //   107: sipush 20009
     //   110: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   113: iconst_1
@@ -283,24 +283,24 @@ public final class a
     //   1: monitorenter
     //   2: sipush 20004
     //   5: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: invokestatic 66	com/tencent/mm/n/g:awe	()Landroid/content/SharedPreferences;
+    //   8: invokestatic 66	com/tencent/mm/k/h:aQD	()Landroid/content/SharedPreferences;
     //   11: ldc 74
     //   13: ldc 76
     //   15: invokeinterface 216 3 0
     //   20: astore_1
     //   21: aload_0
     //   22: aload_1
-    //   23: invokestatic 220	com/tencent/mm/booter/notification/queue/c:JS	(Ljava/lang/String;)Ljava/io/Serializable;
+    //   23: invokestatic 220	com/tencent/mm/booter/notification/queue/c:Cz	(Ljava/lang/String;)Ljava/io/Serializable;
     //   26: checkcast 40	java/util/LinkedList
-    //   29: putfield 31	com/tencent/mm/booter/notification/queue/a:iSv	Ljava/util/LinkedList;
+    //   29: putfield 31	com/tencent/mm/booter/notification/queue/a:lus	Ljava/util/LinkedList;
     //   32: aload_0
-    //   33: getfield 31	com/tencent/mm/booter/notification/queue/a:iSv	Ljava/util/LinkedList;
+    //   33: getfield 31	com/tencent/mm/booter/notification/queue/a:lus	Ljava/util/LinkedList;
     //   36: ifnonnull +14 -> 50
     //   39: aload_0
     //   40: new 40	java/util/LinkedList
     //   43: dup
     //   44: invokespecial 206	java/util/LinkedList:<init>	()V
-    //   47: putfield 31	com/tencent/mm/booter/notification/queue/a:iSv	Ljava/util/LinkedList;
+    //   47: putfield 31	com/tencent/mm/booter/notification/queue/a:lus	Ljava/util/LinkedList;
     //   50: ldc 36
     //   52: ldc 222
     //   54: iconst_2
@@ -308,7 +308,7 @@ public final class a
     //   58: dup
     //   59: iconst_0
     //   60: aload_0
-    //   61: getfield 31	com/tencent/mm/booter/notification/queue/a:iSv	Ljava/util/LinkedList;
+    //   61: getfield 31	com/tencent/mm/booter/notification/queue/a:lus	Ljava/util/LinkedList;
     //   64: invokevirtual 44	java/util/LinkedList:size	()I
     //   67: invokestatic 50	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   70: aastore
@@ -331,13 +331,13 @@ public final class a
     //   97: anewarray 5	java/lang/Object
     //   100: invokestatic 107	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   103: aload_0
-    //   104: getfield 31	com/tencent/mm/booter/notification/queue/a:iSv	Ljava/util/LinkedList;
+    //   104: getfield 31	com/tencent/mm/booter/notification/queue/a:lus	Ljava/util/LinkedList;
     //   107: ifnonnull -57 -> 50
     //   110: aload_0
     //   111: new 40	java/util/LinkedList
     //   114: dup
     //   115: invokespecial 206	java/util/LinkedList:<init>	()V
-    //   118: putfield 31	com/tencent/mm/booter/notification/queue/a:iSv	Ljava/util/LinkedList;
+    //   118: putfield 31	com/tencent/mm/booter/notification/queue/a:lus	Ljava/util/LinkedList;
     //   121: goto -71 -> 50
     //   124: astore_1
     //   125: aload_0
@@ -346,13 +346,13 @@ public final class a
     //   128: athrow
     //   129: astore_1
     //   130: aload_0
-    //   131: getfield 31	com/tencent/mm/booter/notification/queue/a:iSv	Ljava/util/LinkedList;
+    //   131: getfield 31	com/tencent/mm/booter/notification/queue/a:lus	Ljava/util/LinkedList;
     //   134: ifnonnull +14 -> 148
     //   137: aload_0
     //   138: new 40	java/util/LinkedList
     //   141: dup
     //   142: invokespecial 206	java/util/LinkedList:<init>	()V
-    //   145: putfield 31	com/tencent/mm/booter/notification/queue/a:iSv	Ljava/util/LinkedList;
+    //   145: putfield 31	com/tencent/mm/booter/notification/queue/a:lus	Ljava/util/LinkedList;
     //   148: sipush 20004
     //   151: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   154: aload_1
@@ -381,7 +381,7 @@ public final class a
   {
     AppMethodBeat.i(20003);
     Object localObject = new StringBuilder("");
-    Iterator localIterator = this.iSv.iterator();
+    Iterator localIterator = this.lus.iterator();
     while (localIterator.hasNext()) {
       ((StringBuilder)localObject).append(((a)localIterator.next()).toString()).append(";  ");
     }
@@ -393,9 +393,9 @@ public final class a
   public static final class a
     implements Serializable
   {
-    public int fId;
-    public boolean iSq;
-    public int iSw;
+    public int hND;
+    public boolean lun;
+    public int lut;
     public long msgId;
     public int notificationId;
     public String userName;
@@ -405,8 +405,8 @@ public final class a
       AppMethodBeat.i(20001);
       this.msgId = -1L;
       this.userName = "";
-      this.iSq = false;
-      this.iSw = 0;
+      this.lun = false;
+      this.lut = 0;
       a(paramInt1, paramLong, paramString, paramInt2, paramBoolean, paramInt3);
       AppMethodBeat.o(20001);
     }
@@ -415,10 +415,10 @@ public final class a
     {
       this.msgId = -1L;
       this.userName = "";
-      this.iSq = false;
-      this.iSw = 0;
+      this.lun = false;
+      this.lut = 0;
       this.notificationId = paramInt;
-      this.iSq = paramBoolean;
+      this.lun = paramBoolean;
     }
     
     public final void a(int paramInt1, long paramLong, String paramString, int paramInt2, boolean paramBoolean, int paramInt3)
@@ -426,15 +426,15 @@ public final class a
       this.notificationId = paramInt1;
       this.msgId = paramLong;
       this.userName = paramString;
-      this.fId = paramInt2;
-      this.iSq = paramBoolean;
-      this.iSw = paramInt3;
+      this.hND = paramInt2;
+      this.lun = paramBoolean;
+      this.lut = paramInt3;
     }
     
     public final String toString()
     {
       AppMethodBeat.i(20002);
-      String str = this.userName + " id:" + this.msgId + " unReadCount:" + this.fId + "　notificationId:" + this.notificationId;
+      String str = this.userName + " id:" + this.msgId + " unReadCount:" + this.hND + "　notificationId:" + this.notificationId;
       AppMethodBeat.o(20002);
       return str;
     }
@@ -442,7 +442,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.booter.notification.queue.a
  * JD-Core Version:    0.7.0.1
  */

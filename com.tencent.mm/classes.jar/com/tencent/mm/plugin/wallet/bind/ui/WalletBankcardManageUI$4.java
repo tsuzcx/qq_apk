@@ -1,68 +1,40 @@
 package com.tencent.mm.plugin.wallet.bind.ui;
 
-import android.content.Intent;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.a.zp;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.WeChatHosts;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.q.f;
-import com.tencent.mm.ui.base.q.g;
-import com.tencent.mm.ui.f.r;
-import com.tencent.mm.ui.widget.a.e;
-import com.tencent.mm.wallet_core.ui.g;
+import com.tencent.mm.plugin.wallet_core.model.f;
+import com.tencent.mm.sdk.platformtools.Util;
 
 final class WalletBankcardManageUI$4
-  implements MenuItem.OnMenuItemClickListener
+  implements View.OnClickListener
 {
-  WalletBankcardManageUI$4(WalletBankcardManageUI paramWalletBankcardManageUI) {}
+  WalletBankcardManageUI$4(WalletBankcardManageUI paramWalletBankcardManageUI, f paramf) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(69104);
-    paramMenuItem = new e(this.Ovo.getContext(), 1, false);
-    paramMenuItem.ODT = new q.f()
-    {
-      public final void onCreateMMMenu(o paramAnonymouso)
-      {
-        AppMethodBeat.i(69102);
-        paramAnonymouso.mn(0, a.i.wallet_bankcard_manager_ui_help_text);
-        AppMethodBeat.o(69102);
-      }
-    };
-    paramMenuItem.ODU = new q.g()
-    {
-      public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(69103);
-        paramAnonymousInt = paramAnonymousMenuItem.getItemId();
-        Log.i("MicroMsg.WalletBankcardManageUI", "operType：%s", new Object[] { Integer.valueOf(paramAnonymousInt) });
-        switch (paramAnonymousInt)
-        {
-        }
-        for (;;)
-        {
-          AppMethodBeat.o(69103);
-          return;
-          paramAnonymousMenuItem = new Intent();
-          paramAnonymousMenuItem.putExtra(f.r.VSX, true);
-          paramAnonymousMenuItem.putExtra("rawUrl", "https://" + WeChatHosts.domainString(a.i.host_kf_qq_com) + "/touch/product/weixinpay_app.html?platform=15&ADTAG=veda.weixinpay.wenti");
-          g.aJ(WalletBankcardManageUI.4.this.Ovo.getContext(), paramAnonymousMenuItem);
-          h.IzE.a(14422, new Object[] { Integer.valueOf(3) });
-        }
-      }
-    };
-    paramMenuItem.eik();
-    AppMethodBeat.o(69104);
-    return false;
+    AppMethodBeat.i(315564);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/wallet/bind/ui/WalletBankcardManageUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    paramView = new zp();
+    paramView.icM.userName = this.VkD.VEe;
+    paramView.icM.icO = Util.nullAs(this.VkD.VEf, "");
+    paramView.icM.scene = 1071;
+    paramView.icM.icP = 0;
+    paramView.publish();
+    h.OAn.b(14422, new Object[] { Integer.valueOf(6) });
+    a.a(this, "com/tencent/mm/plugin/wallet/bind/ui/WalletBankcardManageUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(315564);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.bind.ui.WalletBankcardManageUI.4
  * JD-Core Version:    0.7.0.1
  */

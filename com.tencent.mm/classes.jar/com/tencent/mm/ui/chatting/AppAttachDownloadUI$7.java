@@ -13,14 +13,14 @@ final class AppAttachDownloadUI$7
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(277244);
+    AppMethodBeat.i(253969);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/ui/chatting/AppAttachDownloadUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    AppAttachDownloadUI.O(this.WwM);
-    AppAttachDownloadUI.P(this.WwM);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/ui/chatting/AppAttachDownloadUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    AppAttachDownloadUI.P(this.aeed);
+    AppAttachDownloadUI.Q(this.aeed);
     a.a(this, "com/tencent/mm/ui/chatting/AppAttachDownloadUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(277244);
+    AppMethodBeat.o(253969);
   }
 }
 

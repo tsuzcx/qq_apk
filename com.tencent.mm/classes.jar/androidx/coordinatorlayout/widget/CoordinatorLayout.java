@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.Region.Op;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
@@ -32,19 +34,20 @@ import androidx.b.g;
 import androidx.coordinatorlayout.a.a;
 import androidx.coordinatorlayout.a.b;
 import androidx.coordinatorlayout.a.c;
-import androidx.core.f.d;
-import androidx.core.f.f.a;
-import androidx.core.f.f.c;
-import androidx.core.g.ae;
-import androidx.core.g.ae.e;
+import androidx.core.f.c;
+import androidx.core.f.e.a;
+import androidx.core.f.e.c;
+import androidx.core.g.ah;
 import androidx.core.g.e;
 import androidx.core.g.p;
 import androidx.core.g.r;
 import androidx.core.g.s;
-import androidx.core.g.w;
-import androidx.core.graphics.c;
+import androidx.core.g.z;
 import androidx.customview.view.AbsSavedState;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -58,49 +61,50 @@ public class CoordinatorLayout
   extends ViewGroup
   implements p
 {
-  static final String GT;
-  static final Class<?>[] GU;
-  static final ThreadLocal<Map<String, Constructor<Behavior>>> GV;
-  static final Comparator<View> GW;
-  private static final f.a<Rect> GX;
-  private final List<View> GY;
-  private final a<View> GZ;
-  private final List<View> Ha;
-  private final List<View> Hb;
-  private final int[] Hc;
-  private boolean Hd;
-  private int[] He;
-  private View Hf;
-  private View Hg;
-  private e Hh;
-  private boolean Hi;
-  ae Hj;
-  boolean Hk;
-  private Drawable Hl;
-  ViewGroup.OnHierarchyChangeListener Hm;
-  private s Hn;
-  private final r Ho;
+  static final String bmT;
+  static final Class<?>[] bmU;
+  static final ThreadLocal<Map<String, Constructor<Behavior>>> bmV;
+  static final Comparator<View> bmW;
+  private static final e.a<Rect> bmX;
+  private final List<View> bmY;
+  private final a<View> bmZ;
+  private final List<View> bna;
+  private final List<View> bnb;
+  private final int[] bnc;
+  private Paint bnd;
+  private boolean bne;
+  private int[] bnf;
+  private View bng;
+  private View bnh;
+  private e bni;
+  private boolean bnj;
+  ah bnk;
+  boolean bnl;
+  private Drawable bnm;
+  ViewGroup.OnHierarchyChangeListener bnn;
+  private s bno;
+  private final r bnp;
   private boolean mIsAttachedToWindow;
   
   static
   {
-    AppMethodBeat.i(263437);
+    AppMethodBeat.i(193359);
     Object localObject = CoordinatorLayout.class.getPackage();
     if (localObject != null)
     {
       localObject = ((Package)localObject).getName();
-      GT = (String)localObject;
+      bmT = (String)localObject;
       if (Build.VERSION.SDK_INT < 21) {
         break label92;
       }
     }
     label92:
-    for (GW = new CoordinatorLayout.f();; GW = null)
+    for (bmW = new CoordinatorLayout.f();; bmW = null)
     {
-      GU = new Class[] { Context.class, AttributeSet.class };
-      GV = new ThreadLocal();
-      GX = new f.c(12);
-      AppMethodBeat.o(263437);
+      bmU = new Class[] { Context.class, AttributeSet.class };
+      bmV = new ThreadLocal();
+      bmX = new e.c(12);
+      AppMethodBeat.o(193359);
       return;
       localObject = null;
       break;
@@ -115,13 +119,13 @@ public class CoordinatorLayout
   public CoordinatorLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(263355);
-    this.GY = new ArrayList();
-    this.GZ = new a();
-    this.Ha = new ArrayList();
-    this.Hb = new ArrayList();
-    this.Hc = new int[2];
-    this.Ho = new r();
+    AppMethodBeat.i(193185);
+    this.bmY = new ArrayList();
+    this.bmZ = new a();
+    this.bna = new ArrayList();
+    this.bnb = new ArrayList();
+    this.bnc = new int[2];
+    this.bnp = new r();
     if (paramInt == 0) {}
     for (paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.c.CoordinatorLayout, 0, a.b.Widget_Support_CoordinatorLayout);; paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.c.CoordinatorLayout, paramInt, 0))
     {
@@ -130,69 +134,364 @@ public class CoordinatorLayout
         break;
       }
       paramContext = paramContext.getResources();
-      this.He = paramContext.getIntArray(paramInt);
+      this.bnf = paramContext.getIntArray(paramInt);
       float f = paramContext.getDisplayMetrics().density;
-      int j = this.He.length;
+      int j = this.bnf.length;
       paramInt = i;
       while (paramInt < j)
       {
-        paramContext = this.He;
+        paramContext = this.bnf;
         paramContext[paramInt] = ((int)(paramContext[paramInt] * f));
         paramInt += 1;
       }
     }
-    this.Hl = paramAttributeSet.getDrawable(a.c.CoordinatorLayout_statusBarBackground);
+    this.bnm = paramAttributeSet.getDrawable(a.c.CoordinatorLayout_statusBarBackground);
     paramAttributeSet.recycle();
-    ge();
+    Do();
     super.setOnHierarchyChangeListener(new c());
-    AppMethodBeat.o(263355);
+    AppMethodBeat.o(193185);
   }
   
-  private void V(boolean paramBoolean)
+  private static Rect Dm()
   {
-    AppMethodBeat.i(263367);
-    int j = getChildCount();
+    AppMethodBeat.i(193166);
+    Rect localRect2 = (Rect)bmX.acquire();
+    Rect localRect1 = localRect2;
+    if (localRect2 == null) {
+      localRect1 = new Rect();
+    }
+    AppMethodBeat.o(193166);
+    return localRect1;
+  }
+  
+  private void Dn()
+  {
+    AppMethodBeat.i(193256);
+    this.bmY.clear();
+    Object localObject1 = this.bmZ;
+    int j = ((a)localObject1).bnI.size();
     int i = 0;
-    if (i < j)
+    Object localObject2;
+    while (i < j)
     {
-      View localView = getChildAt(i);
-      Behavior localBehavior = ((d)localView.getLayoutParams()).Hq;
-      MotionEvent localMotionEvent;
-      if (localBehavior != null)
+      localObject2 = (ArrayList)((a)localObject1).bnI.bl(i);
+      if (localObject2 != null)
       {
-        long l = SystemClock.uptimeMillis();
-        localMotionEvent = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
-        if (!paramBoolean) {
-          break label87;
-        }
-        localBehavior.a(this, localView, localMotionEvent);
+        ((ArrayList)localObject2).clear();
+        ((a)localObject1).bnH.release(localObject2);
+      }
+      i += 1;
+    }
+    ((a)localObject1).bnI.clear();
+    int m = getChildCount();
+    j = 0;
+    while (j < m)
+    {
+      View localView1 = getChildAt(j);
+      d locald = E(localView1);
+      if (locald.bnu == -1)
+      {
+        locald.bnz = null;
+        locald.mF = null;
+        this.bmZ.au(localView1);
+        i = 0;
       }
       for (;;)
       {
-        localMotionEvent.recycle();
+        if (i >= m) {
+          break label813;
+        }
+        if (i != j)
+        {
+          View localView2 = getChildAt(i);
+          int k;
+          if (localView2 != locald.bnz)
+          {
+            k = z.U(this);
+            int n = e.ay(((d)localView2.getLayoutParams()).bnv, k);
+            if ((n != 0) && ((e.ay(locald.bnw, k) & n) == n))
+            {
+              k = 1;
+              label222:
+              if ((k == 0) && ((locald.bnr == null) || (!locald.bnr.a(this, localView1, localView2)))) {
+                break label723;
+              }
+            }
+          }
+          else
+          {
+            k = 1;
+          }
+          for (;;)
+          {
+            if (k != 0)
+            {
+              if (!this.bmZ.bnI.containsKey(localView2)) {
+                this.bmZ.au(localView2);
+              }
+              a locala = this.bmZ;
+              if ((!locala.bnI.containsKey(localView2)) || (!locala.bnI.containsKey(localView1)))
+              {
+                localObject1 = new IllegalArgumentException("All nodes must be present in the graph before being added as an edge");
+                AppMethodBeat.o(193256);
+                throw ((Throwable)localObject1);
+                if (locald.mF != null)
+                {
+                  if (locald.mF.getId() == locald.bnu) {
+                    break label415;
+                  }
+                  i = 0;
+                }
+                for (;;)
+                {
+                  if (i != 0) {
+                    break label504;
+                  }
+                  locald.mF = findViewById(locald.bnu);
+                  if (locald.mF == null) {
+                    break label640;
+                  }
+                  if (locald.mF != this) {
+                    break label526;
+                  }
+                  if (!isInEditMode()) {
+                    break label506;
+                  }
+                  locald.bnz = null;
+                  locald.mF = null;
+                  break;
+                  label415:
+                  localObject2 = locald.mF;
+                  for (localObject1 = locald.mF.getParent();; localObject1 = ((ViewParent)localObject1).getParent())
+                  {
+                    if (localObject1 == this) {
+                      break label494;
+                    }
+                    if ((localObject1 == null) || (localObject1 == localView1))
+                    {
+                      locald.bnz = null;
+                      locald.mF = null;
+                      i = 0;
+                      break;
+                    }
+                    if ((localObject1 instanceof View)) {
+                      localObject2 = (View)localObject1;
+                    }
+                  }
+                  label494:
+                  locald.bnz = ((View)localObject2);
+                  i = 1;
+                }
+                label504:
+                break;
+                label506:
+                localObject1 = new IllegalStateException("View can not be anchored to the the parent CoordinatorLayout");
+                AppMethodBeat.o(193256);
+                throw ((Throwable)localObject1);
+                label526:
+                localObject2 = locald.mF;
+                for (localObject1 = locald.mF.getParent();; localObject1 = ((ViewParent)localObject1).getParent())
+                {
+                  if ((localObject1 == this) || (localObject1 == null)) {
+                    break label630;
+                  }
+                  if (localObject1 == localView1)
+                  {
+                    if (isInEditMode())
+                    {
+                      locald.bnz = null;
+                      locald.mF = null;
+                      break;
+                    }
+                    localObject1 = new IllegalStateException("Anchor must not be a descendant of the anchored view");
+                    AppMethodBeat.o(193256);
+                    throw ((Throwable)localObject1);
+                  }
+                  if ((localObject1 instanceof View)) {
+                    localObject2 = (View)localObject1;
+                  }
+                }
+                label630:
+                locald.bnz = ((View)localObject2);
+                break;
+                label640:
+                if (isInEditMode())
+                {
+                  locald.bnz = null;
+                  locald.mF = null;
+                  break;
+                }
+                localObject1 = new IllegalStateException("Could not find CoordinatorLayout descendant view with id " + getResources().getResourceName(locald.bnu) + " to anchor view " + localView1);
+                AppMethodBeat.o(193256);
+                throw ((Throwable)localObject1);
+                k = 0;
+                break label222;
+                label723:
+                k = 0;
+                continue;
+              }
+              localObject2 = (ArrayList)locala.bnI.get(localView2);
+              localObject1 = localObject2;
+              if (localObject2 == null)
+              {
+                localObject2 = (ArrayList)locala.bnH.acquire();
+                localObject1 = localObject2;
+                if (localObject2 == null) {
+                  localObject1 = new ArrayList();
+                }
+                locala.bnI.put(localView2, localObject1);
+              }
+              ((ArrayList)localObject1).add(localView1);
+            }
+          }
+        }
         i += 1;
-        break;
-        label87:
-        localBehavior.b(this, localView, localMotionEvent);
+      }
+      label813:
+      j += 1;
+    }
+    this.bmY.addAll(this.bmZ.Dt());
+    Collections.reverse(this.bmY);
+    AppMethodBeat.o(193256);
+  }
+  
+  private void Do()
+  {
+    AppMethodBeat.i(193350);
+    if (Build.VERSION.SDK_INT < 21)
+    {
+      AppMethodBeat.o(193350);
+      return;
+    }
+    if (z.al(this))
+    {
+      if (this.bno == null) {
+        this.bno = new s()
+        {
+          public final ah a(View paramAnonymousView, ah paramAnonymousah)
+          {
+            boolean bool2 = true;
+            int i = 0;
+            AppMethodBeat.i(193146);
+            CoordinatorLayout localCoordinatorLayout = CoordinatorLayout.this;
+            if (!c.equals(localCoordinatorLayout.bnk, paramAnonymousah))
+            {
+              localCoordinatorLayout.bnk = paramAnonymousah;
+              if ((paramAnonymousah != null) && (paramAnonymousah.En() > 0))
+              {
+                bool1 = true;
+                localCoordinatorLayout.bnl = bool1;
+                if ((localCoordinatorLayout.bnl) || (localCoordinatorLayout.getBackground() != null)) {
+                  break label160;
+                }
+              }
+              label160:
+              for (boolean bool1 = bool2;; bool1 = false)
+              {
+                localCoordinatorLayout.setWillNotDraw(bool1);
+                if (paramAnonymousah.Er()) {
+                  break label181;
+                }
+                int j = localCoordinatorLayout.getChildCount();
+                paramAnonymousView = paramAnonymousah;
+                while (i < j)
+                {
+                  paramAnonymousah = localCoordinatorLayout.getChildAt(i);
+                  if ((!z.al(paramAnonymousah)) || (((CoordinatorLayout.d)paramAnonymousah.getLayoutParams()).bnr == null)) {
+                    break label178;
+                  }
+                  paramAnonymousah = CoordinatorLayout.Behavior.a(paramAnonymousView);
+                  paramAnonymousView = paramAnonymousah;
+                  if (paramAnonymousah.Er()) {
+                    break;
+                  }
+                  paramAnonymousView = paramAnonymousah;
+                  i += 1;
+                }
+                bool1 = false;
+                break;
+              }
+              label166:
+              localCoordinatorLayout.requestLayout();
+            }
+            for (;;)
+            {
+              AppMethodBeat.o(193146);
+              return paramAnonymousView;
+              label178:
+              break;
+              label181:
+              paramAnonymousView = paramAnonymousah;
+              break label166;
+              paramAnonymousView = paramAnonymousah;
+            }
+          }
+        };
+      }
+      z.a(this, this.bno);
+      setSystemUiVisibility(1280);
+      AppMethodBeat.o(193350);
+      return;
+    }
+    z.a(this, null);
+    AppMethodBeat.o(193350);
+  }
+  
+  private static d E(View paramView)
+  {
+    AppMethodBeat.i(193236);
+    d locald = (d)paramView.getLayoutParams();
+    if (!locald.bns)
+    {
+      if (!(paramView instanceof CoordinatorLayout.a)) {
+        break label54;
+      }
+      locald.a(((CoordinatorLayout.a)paramView).getBehavior());
+      locald.bns = true;
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(193236);
+      return locald;
+      label54:
+      Class localClass = paramView.getClass();
+      paramView = null;
+      View localView;
+      for (;;)
+      {
+        localView = paramView;
+        if (localClass == null) {
+          break;
+        }
+        paramView = (b)localClass.getAnnotation(b.class);
+        localView = paramView;
+        if (paramView != null) {
+          break;
+        }
+        localClass = localClass.getSuperclass();
+      }
+      if (localView != null) {}
+      try
+      {
+        locald.a((Behavior)localView.Dr().getDeclaredConstructor(new Class[0]).newInstance(new Object[0]));
+        locald.bns = true;
+      }
+      catch (Exception paramView)
+      {
+        for (;;)
+        {
+          new StringBuilder("Default behavior class ").append(localView.Dr().getName()).append(" could not be instantiated. Did you forget a default constructor?");
+        }
       }
     }
-    i = 0;
-    while (i < j)
-    {
-      ((d)getChildAt(i).getLayoutParams()).Hz = false;
-      i += 1;
-    }
-    this.Hf = null;
-    this.Hd = false;
-    AppMethodBeat.o(263367);
   }
   
   static Behavior a(Context paramContext, AttributeSet paramAttributeSet, String paramString)
   {
-    AppMethodBeat.i(263377);
+    AppMethodBeat.i(193227);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(263377);
+      AppMethodBeat.o(193227);
       return null;
     }
     String str;
@@ -204,36 +503,36 @@ public class CoordinatorLayout
     {
       try
       {
-        paramString = (Map)GV.get();
+        paramString = (Map)bmV.get();
         if (paramString != null) {
           break label243;
         }
         paramString = new HashMap();
-        GV.set(paramString);
+        bmV.set(paramString);
         Constructor localConstructor2 = (Constructor)paramString.get(str);
         Constructor localConstructor1 = localConstructor2;
         if (localConstructor2 == null)
         {
-          localConstructor1 = paramContext.getClassLoader().loadClass(str).getConstructor(GU);
+          localConstructor1 = paramContext.getClassLoader().loadClass(str).getConstructor(bmU);
           localConstructor1.setAccessible(true);
           paramString.put(str, localConstructor1);
         }
         paramContext = (Behavior)localConstructor1.newInstance(new Object[] { paramContext, paramAttributeSet });
-        AppMethodBeat.o(263377);
+        AppMethodBeat.o(193227);
         return paramContext;
       }
       catch (Exception paramContext)
       {
         paramContext = new RuntimeException("Could not inflate Behavior subclass ".concat(String.valueOf(str)), paramContext);
-        AppMethodBeat.o(263377);
+        AppMethodBeat.o(193227);
         throw paramContext;
       }
       str = paramString;
       if (paramString.indexOf('.') < 0)
       {
         str = paramString;
-        if (!TextUtils.isEmpty(GT)) {
-          str = GT + '.' + paramString;
+        if (!TextUtils.isEmpty(bmT)) {
+          str = bmT + '.' + paramString;
         }
       }
     }
@@ -241,14 +540,14 @@ public class CoordinatorLayout
   
   private static void a(int paramInt1, Rect paramRect1, Rect paramRect2, d paramd, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(263396);
-    int j = paramd.ek;
+    AppMethodBeat.i(193276);
+    int j = paramd.fl;
     int i = j;
     if (j == 0) {
       i = 17;
     }
-    int k = e.D(i, paramInt1);
-    i = e.D(bj(paramd.anchorGravity), paramInt1);
+    int k = e.ay(i, paramInt1);
+    i = e.ay(dX(paramd.anchorGravity), paramInt1);
     switch (i & 0x7)
     {
     default: 
@@ -278,7 +577,7 @@ public class CoordinatorLayout
     for (paramInt1 = i - paramInt3;; paramInt1 = i - paramInt3 / 2)
     {
       paramRect2.set(j, paramInt1, j + paramInt2, paramInt1 + paramInt3);
-      AppMethodBeat.o(263396);
+      AppMethodBeat.o(193276);
       return;
       paramInt1 = paramRect1.right;
       break;
@@ -296,20 +595,20 @@ public class CoordinatorLayout
   
   private void a(View paramView, int paramInt, Rect paramRect1, Rect paramRect2)
   {
-    AppMethodBeat.i(263398);
+    AppMethodBeat.i(193289);
     d locald = (d)paramView.getLayoutParams();
     int i = paramView.getMeasuredWidth();
     int j = paramView.getMeasuredHeight();
     a(paramInt, paramRect1, paramRect2, locald, i, j);
     a(locald, paramRect2, i, j);
-    AppMethodBeat.o(263398);
+    AppMethodBeat.o(193289);
   }
   
   private void a(View paramView1, View paramView2, int paramInt)
   {
-    AppMethodBeat.i(263399);
-    Rect localRect1 = gc();
-    Rect localRect2 = gc();
+    AppMethodBeat.i(193299);
+    Rect localRect1 = Dm();
+    Rect localRect2 = Dm();
     try
     {
       b.a(this, paramView2, localRect1);
@@ -319,212 +618,86 @@ public class CoordinatorLayout
     }
     finally
     {
-      d(localRect1);
-      d(localRect2);
-      AppMethodBeat.o(263399);
+      h(localRect1);
+      h(localRect2);
+      AppMethodBeat.o(193299);
     }
   }
   
   private void a(View paramView, boolean paramBoolean, Rect paramRect)
   {
-    AppMethodBeat.i(263394);
+    AppMethodBeat.i(193263);
     if ((paramView.isLayoutRequested()) || (paramView.getVisibility() == 8))
     {
       paramRect.setEmpty();
-      AppMethodBeat.o(263394);
+      AppMethodBeat.o(193263);
       return;
     }
     if (paramBoolean)
     {
       b.a(this, paramView, paramRect);
-      AppMethodBeat.o(263394);
+      AppMethodBeat.o(193263);
       return;
     }
     paramRect.set(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom());
-    AppMethodBeat.o(263394);
+    AppMethodBeat.o(193263);
   }
   
   private void a(d paramd, Rect paramRect, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(263397);
+    AppMethodBeat.i(193283);
     int j = getWidth();
     int i = getHeight();
     j = Math.max(getPaddingLeft() + paramd.leftMargin, Math.min(paramRect.left, j - getPaddingRight() - paramInt1 - paramd.rightMargin));
     i = Math.max(getPaddingTop() + paramd.topMargin, Math.min(paramRect.top, i - getPaddingBottom() - paramInt2 - paramd.bottomMargin));
     paramRect.set(j, i, j + paramInt1, i + paramInt2);
-    AppMethodBeat.o(263397);
+    AppMethodBeat.o(193283);
   }
   
-  private boolean b(MotionEvent paramMotionEvent, int paramInt)
+  private void aB(boolean paramBoolean)
   {
-    AppMethodBeat.i(263371);
-    boolean bool1 = false;
-    int k = 0;
-    int m = paramMotionEvent.getActionMasked();
-    List localList = this.Ha;
-    localList.clear();
-    boolean bool2 = isChildrenDrawingOrderEnabled();
-    int n = getChildCount();
-    int i = n - 1;
-    if (i >= 0)
+    AppMethodBeat.i(193195);
+    int j = getChildCount();
+    int i = 0;
+    if (i < j)
     {
-      if (bool2) {}
-      for (j = getChildDrawingOrder(n, i);; j = i)
+      View localView = getChildAt(i);
+      Behavior localBehavior = ((d)localView.getLayoutParams()).bnr;
+      MotionEvent localMotionEvent;
+      if (localBehavior != null)
       {
-        localList.add(getChildAt(j));
-        i -= 1;
-        break;
-      }
-    }
-    if (GW != null) {
-      Collections.sort(localList, GW);
-    }
-    n = localList.size();
-    int j = 0;
-    MotionEvent localMotionEvent = null;
-    i = k;
-    View localView;
-    d locald;
-    Behavior localBehavior;
-    if (j < n)
-    {
-      localView = (View)localList.get(j);
-      locald = (d)localView.getLayoutParams();
-      localBehavior = locald.Hq;
-      if (((bool1) || (i != 0)) && (m != 0))
-      {
-        if (localBehavior == null) {
-          break label466;
-        }
-        if (localMotionEvent != null) {
-          break label463;
-        }
         long l = SystemClock.uptimeMillis();
         localMotionEvent = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
-        label205:
-        switch (paramInt)
-        {
+        if (!paramBoolean) {
+          break label88;
         }
+        localBehavior.a(this, localView, localMotionEvent);
       }
-    }
-    label308:
-    label438:
-    label447:
-    label463:
-    label466:
-    for (;;)
-    {
-      j += 1;
-      break;
-      localBehavior.a(this, localView, localMotionEvent);
-      continue;
-      localBehavior.b(this, localView, localMotionEvent);
-      continue;
-      bool2 = bool1;
-      if (!bool1)
+      for (;;)
       {
-        bool2 = bool1;
-        if (localBehavior == null) {}
-      }
-      switch (paramInt)
-      {
-      default: 
-        bool2 = bool1;
-        if (bool1)
-        {
-          this.Hf = localView;
-          bool2 = bool1;
-        }
-        bool1 = bool2;
-        if (locald.Hq == null) {
-          locald.Hz = false;
-        }
-        boolean bool3 = locald.Hz;
-        if (locald.Hz)
-        {
-          bool2 = true;
-          label363:
-          if ((!bool2) || (bool3)) {
-            break label438;
-          }
-        }
+        localMotionEvent.recycle();
+        i += 1;
         break;
+        label88:
+        localBehavior.b(this, localView, localMotionEvent);
       }
-      for (i = 1;; i = 0)
-      {
-        if (bool2)
-        {
-          bool2 = bool1;
-          if (i == 0) {
-            break label447;
-          }
-        }
-        break;
-        bool1 = localBehavior.a(this, localView, paramMotionEvent);
-        break label308;
-        bool1 = localBehavior.b(this, localView, paramMotionEvent);
-        break label308;
-        bool2 = locald.Hz | false;
-        locald.Hz = bool2;
-        break label363;
-      }
-      bool2 = bool1;
-      localList.clear();
-      AppMethodBeat.o(263371);
-      return bool2;
-      break label205;
     }
-  }
-  
-  private int bi(int paramInt)
-  {
-    AppMethodBeat.i(263376);
-    if (this.He == null)
+    i = 0;
+    while (i < j)
     {
-      new StringBuilder("No keylines defined for ").append(this).append(" - attempted index lookup ").append(paramInt);
-      AppMethodBeat.o(263376);
-      return 0;
+      ((d)getChildAt(i).getLayoutParams()).bnA = false;
+      i += 1;
     }
-    if ((paramInt < 0) || (paramInt >= this.He.length))
-    {
-      new StringBuilder("Keyline index ").append(paramInt).append(" out of range for ").append(this);
-      AppMethodBeat.o(263376);
-      return 0;
-    }
-    paramInt = this.He[paramInt];
-    AppMethodBeat.o(263376);
-    return paramInt;
-  }
-  
-  private static int bj(int paramInt)
-  {
-    if ((paramInt & 0x7) == 0) {
-      paramInt = 0x800003 | paramInt;
-    }
-    for (;;)
-    {
-      int i = paramInt;
-      if ((paramInt & 0x70) == 0) {
-        i = paramInt | 0x30;
-      }
-      return i;
-    }
-  }
-  
-  private static int bk(int paramInt)
-  {
-    int i = paramInt;
-    if (paramInt == 0) {
-      i = 8388661;
-    }
-    return i;
+    this.bng = null;
+    this.bne = false;
+    AppMethodBeat.o(193195);
   }
   
   private void c(View paramView, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(263400);
+    AppMethodBeat.i(193310);
     d locald = (d)paramView.getLayoutParams();
-    int i1 = e.D(bk(locald.ek), paramInt2);
+    int i1 = e.ay(dY(locald.fl), paramInt2);
     int n = getWidth();
     int m = getHeight();
     int j = paramView.getMeasuredWidth();
@@ -533,7 +706,7 @@ public class CoordinatorLayout
     if (paramInt2 == 1) {
       i = n - paramInt1;
     }
-    paramInt1 = bi(i) - j;
+    paramInt1 = dW(i) - j;
     paramInt2 = 0;
     switch (i1 & 0x7)
     {
@@ -548,7 +721,7 @@ public class CoordinatorLayout
       paramInt1 = Math.max(getPaddingLeft() + locald.leftMargin, Math.min(paramInt1, n - getPaddingRight() - j - locald.rightMargin));
       paramInt2 = Math.max(getPaddingTop() + locald.topMargin, Math.min(paramInt2, m - getPaddingBottom() - k - locald.bottomMargin));
       paramView.layout(paramInt1, paramInt2, paramInt1 + j, paramInt2 + k);
-      AppMethodBeat.o(263400);
+      AppMethodBeat.o(193310);
       return;
       paramInt1 += j;
       break;
@@ -560,396 +733,314 @@ public class CoordinatorLayout
     }
   }
   
-  private static void d(Rect paramRect)
+  private boolean c(MotionEvent paramMotionEvent, int paramInt)
   {
-    AppMethodBeat.i(263354);
+    AppMethodBeat.i(193206);
+    int i2 = 0;
+    int m = 0;
+    int n = paramMotionEvent.getActionMasked();
+    List localList = this.bna;
+    localList.clear();
+    int i3 = isChildrenDrawingOrderEnabled();
+    int i1 = getChildCount();
+    int i = i1 - 1;
+    if (i >= 0)
+    {
+      if (i3 != 0) {}
+      for (k = getChildDrawingOrder(i1, i);; k = i)
+      {
+        localList.add(getChildAt(k));
+        i -= 1;
+        break;
+      }
+    }
+    if (bmW != null) {
+      Collections.sort(localList, bmW);
+    }
+    i1 = localList.size();
+    int k = 0;
+    MotionEvent localMotionEvent = null;
+    i = m;
+    View localView;
+    d locald;
+    Behavior localBehavior;
+    if (k < i1)
+    {
+      localView = (View)localList.get(k);
+      locald = (d)localView.getLayoutParams();
+      localBehavior = locald.bnr;
+      if (((i2 != 0) || (i != 0)) && (n != 0))
+      {
+        if (localBehavior == null) {
+          break label498;
+        }
+        if (localMotionEvent != null) {
+          break label495;
+        }
+        long l = SystemClock.uptimeMillis();
+        localMotionEvent = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
+        label205:
+        switch (paramInt)
+        {
+        }
+      }
+    }
+    label308:
+    label470:
+    label479:
+    label495:
+    label498:
+    for (;;)
+    {
+      k += 1;
+      break;
+      localBehavior.a(this, localView, localMotionEvent);
+      continue;
+      localBehavior.b(this, localView, localMotionEvent);
+      continue;
+      i3 = i2;
+      if (i2 == 0)
+      {
+        i3 = i2;
+        if (localBehavior == null) {}
+      }
+      switch (paramInt)
+      {
+      default: 
+        i3 = i2;
+        if (i2 != 0)
+        {
+          this.bng = localView;
+          i3 = i2;
+        }
+        i2 = i3;
+        if (locald.bnr == null) {
+          locald.bnA = false;
+        }
+        boolean bool = locald.bnA;
+        if (locald.bnA)
+        {
+          i3 = 1;
+          if ((i3 == 0) || (bool)) {
+            break label470;
+          }
+        }
+        break;
+      }
+      int j;
+      for (i = 1;; j = 0)
+      {
+        if (i3 != 0)
+        {
+          i3 = i2;
+          if (i == 0) {
+            break label479;
+          }
+        }
+        break;
+        i2 = localBehavior.a(this, localView, paramMotionEvent);
+        break label308;
+        i2 = localBehavior.b(this, localView, paramMotionEvent);
+        break label308;
+        i3 = locald.bnA;
+        if (locald.bnr != null) {
+          if (Behavior.Dq() > 0.0F) {
+            i = 1;
+          }
+        }
+        for (;;)
+        {
+          i3 = i | i3;
+          locald.bnA = i3;
+          break;
+          j = 0;
+          continue;
+          j = 0;
+        }
+      }
+      i3 = i2;
+      localList.clear();
+      AppMethodBeat.o(193206);
+      return i3;
+      break label205;
+    }
+  }
+  
+  private int dW(int paramInt)
+  {
+    AppMethodBeat.i(193216);
+    if (this.bnf == null)
+    {
+      new StringBuilder("No keylines defined for ").append(this).append(" - attempted index lookup ").append(paramInt);
+      AppMethodBeat.o(193216);
+      return 0;
+    }
+    if ((paramInt < 0) || (paramInt >= this.bnf.length))
+    {
+      new StringBuilder("Keyline index ").append(paramInt).append(" out of range for ").append(this);
+      AppMethodBeat.o(193216);
+      return 0;
+    }
+    paramInt = this.bnf[paramInt];
+    AppMethodBeat.o(193216);
+    return paramInt;
+  }
+  
+  private static int dX(int paramInt)
+  {
+    if ((paramInt & 0x7) == 0) {
+      paramInt = 0x800003 | paramInt;
+    }
+    for (;;)
+    {
+      int i = paramInt;
+      if ((paramInt & 0x70) == 0) {
+        i = paramInt | 0x30;
+      }
+      return i;
+    }
+  }
+  
+  private static int dY(int paramInt)
+  {
+    int i = paramInt;
+    if (paramInt == 0) {
+      i = 8388661;
+    }
+    return i;
+  }
+  
+  private static void h(Rect paramRect)
+  {
+    AppMethodBeat.i(193168);
     paramRect.setEmpty();
-    GX.release(paramRect);
-    AppMethodBeat.o(263354);
-  }
-  
-  private static Rect gc()
-  {
-    AppMethodBeat.i(263353);
-    Rect localRect2 = (Rect)GX.acquire();
-    Rect localRect1 = localRect2;
-    if (localRect2 == null) {
-      localRect1 = new Rect();
-    }
-    AppMethodBeat.o(263353);
-    return localRect1;
-  }
-  
-  private void gd()
-  {
-    AppMethodBeat.i(263382);
-    this.GY.clear();
-    Object localObject1 = this.GZ;
-    int j = ((a)localObject1).HH.size();
-    int i = 0;
-    Object localObject2;
-    while (i < j)
-    {
-      localObject2 = (ArrayList)((a)localObject1).HH.aM(i);
-      if (localObject2 != null)
-      {
-        ((ArrayList)localObject2).clear();
-        ((a)localObject1).HG.release(localObject2);
-      }
-      i += 1;
-    }
-    ((a)localObject1).HH.clear();
-    int m = getChildCount();
-    j = 0;
-    while (j < m)
-    {
-      View localView1 = getChildAt(j);
-      d locald = v(localView1);
-      if (locald.Ht == -1)
-      {
-        locald.Hy = null;
-        locald.lJ = null;
-        this.GZ.v(localView1);
-        i = 0;
-      }
-      for (;;)
-      {
-        if (i >= m) {
-          break label818;
-        }
-        if (i != j)
-        {
-          View localView2 = getChildAt(i);
-          int k;
-          if (localView2 != locald.Hy)
-          {
-            k = w.I(this);
-            int n = e.D(((d)localView2.getLayoutParams()).Hu, k);
-            if ((n != 0) && ((e.D(locald.Hv, k) & n) == n))
-            {
-              k = 1;
-              label223:
-              if ((k == 0) && ((locald.Hq == null) || (!locald.Hq.a(this, localView1, localView2)))) {
-                break label728;
-              }
-            }
-          }
-          else
-          {
-            k = 1;
-          }
-          for (;;)
-          {
-            if (k != 0)
-            {
-              if (!this.GZ.HH.containsKey(localView2)) {
-                this.GZ.v(localView2);
-              }
-              a locala = this.GZ;
-              if ((!locala.HH.containsKey(localView2)) || (!locala.HH.containsKey(localView1)))
-              {
-                localObject1 = new IllegalArgumentException("All nodes must be present in the graph before being added as an edge");
-                AppMethodBeat.o(263382);
-                throw ((Throwable)localObject1);
-                if (locald.lJ != null)
-                {
-                  if (locald.lJ.getId() == locald.Ht) {
-                    break label417;
-                  }
-                  i = 0;
-                }
-                for (;;)
-                {
-                  if (i != 0) {
-                    break label506;
-                  }
-                  locald.lJ = findViewById(locald.Ht);
-                  if (locald.lJ == null) {
-                    break label644;
-                  }
-                  if (locald.lJ != this) {
-                    break label529;
-                  }
-                  if (!isInEditMode()) {
-                    break label508;
-                  }
-                  locald.Hy = null;
-                  locald.lJ = null;
-                  break;
-                  label417:
-                  localObject2 = locald.lJ;
-                  for (localObject1 = locald.lJ.getParent();; localObject1 = ((ViewParent)localObject1).getParent())
-                  {
-                    if (localObject1 == this) {
-                      break label496;
-                    }
-                    if ((localObject1 == null) || (localObject1 == localView1))
-                    {
-                      locald.Hy = null;
-                      locald.lJ = null;
-                      i = 0;
-                      break;
-                    }
-                    if ((localObject1 instanceof View)) {
-                      localObject2 = (View)localObject1;
-                    }
-                  }
-                  label496:
-                  locald.Hy = ((View)localObject2);
-                  i = 1;
-                }
-                label506:
-                break;
-                label508:
-                localObject1 = new IllegalStateException("View can not be anchored to the the parent CoordinatorLayout");
-                AppMethodBeat.o(263382);
-                throw ((Throwable)localObject1);
-                label529:
-                localObject2 = locald.lJ;
-                for (localObject1 = locald.lJ.getParent();; localObject1 = ((ViewParent)localObject1).getParent())
-                {
-                  if ((localObject1 == this) || (localObject1 == null)) {
-                    break label634;
-                  }
-                  if (localObject1 == localView1)
-                  {
-                    if (isInEditMode())
-                    {
-                      locald.Hy = null;
-                      locald.lJ = null;
-                      break;
-                    }
-                    localObject1 = new IllegalStateException("Anchor must not be a descendant of the anchored view");
-                    AppMethodBeat.o(263382);
-                    throw ((Throwable)localObject1);
-                  }
-                  if ((localObject1 instanceof View)) {
-                    localObject2 = (View)localObject1;
-                  }
-                }
-                label634:
-                locald.Hy = ((View)localObject2);
-                break;
-                label644:
-                if (isInEditMode())
-                {
-                  locald.Hy = null;
-                  locald.lJ = null;
-                  break;
-                }
-                localObject1 = new IllegalStateException("Could not find CoordinatorLayout descendant view with id " + getResources().getResourceName(locald.Ht) + " to anchor view " + localView1);
-                AppMethodBeat.o(263382);
-                throw ((Throwable)localObject1);
-                k = 0;
-                break label223;
-                label728:
-                k = 0;
-                continue;
-              }
-              localObject2 = (ArrayList)locala.HH.get(localView2);
-              localObject1 = localObject2;
-              if (localObject2 == null)
-              {
-                localObject2 = (ArrayList)locala.HG.acquire();
-                localObject1 = localObject2;
-                if (localObject2 == null) {
-                  localObject1 = new ArrayList();
-                }
-                locala.HH.put(localView2, localObject1);
-              }
-              ((ArrayList)localObject1).add(localView1);
-            }
-          }
-        }
-        i += 1;
-      }
-      label818:
-      j += 1;
-    }
-    this.GY.addAll(this.GZ.gh());
-    Collections.reverse(this.GY);
-    AppMethodBeat.o(263382);
-  }
-  
-  private void ge()
-  {
-    AppMethodBeat.i(263432);
-    if (Build.VERSION.SDK_INT < 21)
-    {
-      AppMethodBeat.o(263432);
-      return;
-    }
-    if (w.Z(this))
-    {
-      if (this.Hn == null) {
-        this.Hn = new s()
-        {
-          public final ae a(View paramAnonymousView, ae paramAnonymousae)
-          {
-            boolean bool2 = true;
-            int i = 0;
-            AppMethodBeat.i(263323);
-            CoordinatorLayout localCoordinatorLayout = CoordinatorLayout.this;
-            if (!d.equals(localCoordinatorLayout.Hj, paramAnonymousae))
-            {
-              localCoordinatorLayout.Hj = paramAnonymousae;
-              if ((paramAnonymousae != null) && (paramAnonymousae.Oa.hp().top > 0))
-              {
-                bool1 = true;
-                localCoordinatorLayout.Hk = bool1;
-                if ((localCoordinatorLayout.Hk) || (localCoordinatorLayout.getBackground() != null)) {
-                  break label172;
-                }
-              }
-              label172:
-              for (boolean bool1 = bool2;; bool1 = false)
-              {
-                localCoordinatorLayout.setWillNotDraw(bool1);
-                if (paramAnonymousae.Oa.hk()) {
-                  break label193;
-                }
-                int j = localCoordinatorLayout.getChildCount();
-                paramAnonymousView = paramAnonymousae;
-                while (i < j)
-                {
-                  paramAnonymousae = localCoordinatorLayout.getChildAt(i);
-                  if ((!w.Z(paramAnonymousae)) || (((CoordinatorLayout.d)paramAnonymousae.getLayoutParams()).Hq == null)) {
-                    break label190;
-                  }
-                  paramAnonymousae = CoordinatorLayout.Behavior.a(paramAnonymousView);
-                  paramAnonymousView = paramAnonymousae;
-                  if (paramAnonymousae.Oa.hk()) {
-                    break;
-                  }
-                  paramAnonymousView = paramAnonymousae;
-                  i += 1;
-                }
-                bool1 = false;
-                break;
-              }
-              label178:
-              localCoordinatorLayout.requestLayout();
-            }
-            for (;;)
-            {
-              AppMethodBeat.o(263323);
-              return paramAnonymousView;
-              label190:
-              break;
-              label193:
-              paramAnonymousView = paramAnonymousae;
-              break label178;
-              paramAnonymousView = paramAnonymousae;
-            }
-          }
-        };
-      }
-      w.a(this, this.Hn);
-      setSystemUiVisibility(1280);
-      AppMethodBeat.o(263432);
-      return;
-    }
-    w.a(this, null);
-    AppMethodBeat.o(263432);
+    bmX.release(paramRect);
+    AppMethodBeat.o(193168);
   }
   
   private void i(View paramView, int paramInt)
   {
-    AppMethodBeat.i(263401);
+    AppMethodBeat.i(193318);
     d locald = (d)paramView.getLayoutParams();
-    Rect localRect1 = gc();
+    Rect localRect1 = Dm();
     localRect1.set(getPaddingLeft() + locald.leftMargin, getPaddingTop() + locald.topMargin, getWidth() - getPaddingRight() - locald.rightMargin, getHeight() - getPaddingBottom() - locald.bottomMargin);
-    if ((this.Hj != null) && (w.Z(this)) && (!w.Z(paramView)))
+    if ((this.bnk != null) && (z.al(this)) && (!z.al(paramView)))
     {
-      localRect1.left += this.Hj.Oa.hp().left;
-      localRect1.top += this.Hj.Oa.hp().top;
-      localRect1.right -= this.Hj.Oa.hp().right;
-      localRect1.bottom -= this.Hj.Oa.hp().bottom;
+      localRect1.left += this.bnk.Em();
+      localRect1.top += this.bnk.En();
+      localRect1.right -= this.bnk.Eo();
+      localRect1.bottom -= this.bnk.Ep();
     }
-    Rect localRect2 = gc();
-    e.a(bj(locald.ek), paramView.getMeasuredWidth(), paramView.getMeasuredHeight(), localRect1, localRect2, paramInt);
+    Rect localRect2 = Dm();
+    e.a(dX(locald.fl), paramView.getMeasuredWidth(), paramView.getMeasuredHeight(), localRect1, localRect2, paramInt);
     paramView.layout(localRect2.left, localRect2.top, localRect2.right, localRect2.bottom);
-    d(localRect1);
-    d(localRect2);
-    AppMethodBeat.o(263401);
+    h(localRect1);
+    h(localRect2);
+    AppMethodBeat.o(193318);
   }
   
   private static void j(View paramView, int paramInt)
   {
-    AppMethodBeat.i(263405);
+    AppMethodBeat.i(193338);
     d locald = (d)paramView.getLayoutParams();
-    if (locald.Hw != paramInt)
+    if (locald.bnx != paramInt)
     {
-      w.u(paramView, paramInt - locald.Hw);
-      locald.Hw = paramInt;
+      z.u(paramView, paramInt - locald.bnx);
+      locald.bnx = paramInt;
     }
-    AppMethodBeat.o(263405);
+    AppMethodBeat.o(193338);
   }
   
   private static void k(View paramView, int paramInt)
   {
-    AppMethodBeat.i(263406);
+    AppMethodBeat.i(193344);
     d locald = (d)paramView.getLayoutParams();
-    if (locald.Hx != paramInt)
+    if (locald.bny != paramInt)
     {
-      w.s(paramView, paramInt - locald.Hx);
-      locald.Hx = paramInt;
+      z.s(paramView, paramInt - locald.bny);
+      locald.bny = paramInt;
     }
-    AppMethodBeat.o(263406);
+    AppMethodBeat.o(193344);
   }
   
-  private static d v(View paramView)
+  public final void F(View paramView)
   {
-    AppMethodBeat.i(263379);
-    d locald = (d)paramView.getLayoutParams();
-    if (!locald.Hr)
+    AppMethodBeat.i(193561);
+    List localList = this.bmZ.av(paramView);
+    if ((localList != null) && (!localList.isEmpty()))
     {
-      if (!(paramView instanceof CoordinatorLayout.a)) {
-        break label54;
+      int i = 0;
+      while (i < localList.size())
+      {
+        View localView = (View)localList.get(i);
+        Behavior localBehavior = ((d)localView.getLayoutParams()).bnr;
+        if (localBehavior != null) {
+          localBehavior.b(this, localView, paramView);
+        }
+        i += 1;
       }
-      locald.a(((CoordinatorLayout.a)paramView).getBehavior());
-      locald.Hr = true;
     }
+    AppMethodBeat.o(193561);
+  }
+  
+  public final List<View> G(View paramView)
+  {
+    AppMethodBeat.i(193569);
+    a locala = this.bmZ;
+    Object localObject1 = null;
+    int j = locala.bnI.size();
+    int i = 0;
+    Object localObject2;
+    if (i < j)
+    {
+      ArrayList localArrayList = (ArrayList)locala.bnI.bl(i);
+      localObject2 = localObject1;
+      if (localArrayList != null)
+      {
+        localObject2 = localObject1;
+        if (localArrayList.contains(paramView))
+        {
+          if (localObject1 != null) {
+            break label150;
+          }
+          localObject1 = new ArrayList();
+        }
+      }
+    }
+    label150:
     for (;;)
     {
-      AppMethodBeat.o(263379);
-      return locald;
-      label54:
-      Class localClass = paramView.getClass();
-      paramView = null;
-      View localView;
-      for (;;)
-      {
-        localView = paramView;
-        if (localClass == null) {
-          break;
-        }
-        paramView = (CoordinatorLayout.b)localClass.getAnnotation(CoordinatorLayout.b.class);
-        localView = paramView;
-        if (paramView != null) {
-          break;
-        }
-        localClass = localClass.getSuperclass();
+      ((ArrayList)localObject1).add(locala.bnI.bn(i));
+      localObject2 = localObject1;
+      i += 1;
+      localObject1 = localObject2;
+      break;
+      this.bnb.clear();
+      if (localObject1 != null) {
+        this.bnb.addAll((Collection)localObject1);
       }
-      if (localView != null) {}
-      try
-      {
-        locald.a((Behavior)localView.gf().getDeclaredConstructor(new Class[0]).newInstance(new Object[0]));
-        locald.Hr = true;
-      }
-      catch (Exception paramView)
-      {
-        for (;;)
-        {
-          new StringBuilder("Default behavior class ").append(localView.gf().getName()).append(" could not be instantiated. Did you forget a default constructor?");
-        }
-      }
+      paramView = this.bnb;
+      AppMethodBeat.o(193569);
+      return paramView;
     }
+  }
+  
+  public final List<View> H(View paramView)
+  {
+    AppMethodBeat.i(193578);
+    paramView = this.bmZ.av(paramView);
+    this.bnb.clear();
+    if (paramView != null) {
+      this.bnb.addAll(paramView);
+    }
+    paramView = this.bnb;
+    AppMethodBeat.o(193578);
+    return paramView;
   }
   
   public final void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(263421);
+    AppMethodBeat.i(193665);
     int k = getChildCount();
     int i = 0;
     int j = 0;
@@ -960,10 +1051,10 @@ public class CoordinatorLayout
         break label121;
       }
       Object localObject = (d)localView.getLayoutParams();
-      if (!((d)localObject).bm(paramInt5)) {
+      if (!((d)localObject).ea(paramInt5)) {
         break label121;
       }
-      localObject = ((d)localObject).Hq;
+      localObject = ((d)localObject).bnr;
       if (localObject == null) {
         break label121;
       }
@@ -976,16 +1067,16 @@ public class CoordinatorLayout
       j += 1;
       break;
       if (i != 0) {
-        bl(1);
+        dZ(1);
       }
-      AppMethodBeat.o(263421);
+      AppMethodBeat.o(193665);
       return;
     }
   }
   
   public final void a(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt, int paramInt3)
   {
-    AppMethodBeat.i(263424);
+    AppMethodBeat.i(193680);
     int j = 0;
     int i = 0;
     int k = 0;
@@ -1001,24 +1092,24 @@ public class CoordinatorLayout
         break label251;
       }
       Object localObject = (d)localView.getLayoutParams();
-      if (!((d)localObject).bm(paramInt3)) {
+      if (!((d)localObject).ea(paramInt3)) {
         break label251;
       }
-      localObject = ((d)localObject).Hq;
+      localObject = ((d)localObject).bnr;
       if (localObject == null) {
         break label251;
       }
-      int[] arrayOfInt = this.Hc;
-      this.Hc[1] = 0;
+      int[] arrayOfInt = this.bnc;
+      this.bnc[1] = 0;
       arrayOfInt[0] = 0;
-      ((Behavior)localObject).a(this, localView, paramView, paramInt1, paramInt2, this.Hc, paramInt3);
+      ((Behavior)localObject).a(this, localView, paramView, paramInt1, paramInt2, this.bnc, paramInt3);
       if (paramInt1 > 0)
       {
-        j = Math.max(j, this.Hc[0]);
+        j = Math.max(j, this.bnc[0]);
         if (paramInt2 <= 0) {
           break label206;
         }
-        k = Math.max(i, this.Hc[1]);
+        k = Math.max(i, this.bnc[1]);
         n = 1;
         i = j;
         j = k;
@@ -1033,17 +1124,17 @@ public class CoordinatorLayout
       j = m;
       m = i1;
       break;
-      j = Math.min(j, this.Hc[0]);
+      j = Math.min(j, this.bnc[0]);
       break label133;
       label206:
-      k = Math.min(i, this.Hc[1]);
+      k = Math.min(i, this.bnc[1]);
       break label150;
       paramArrayOfInt[0] = j;
       paramArrayOfInt[1] = i;
       if (k != 0) {
-        bl(1);
+        dZ(1);
       }
-      AppMethodBeat.o(263424);
+      AppMethodBeat.o(193680);
       return;
       label251:
       n = i;
@@ -1055,7 +1146,7 @@ public class CoordinatorLayout
   
   public final boolean a(View paramView1, View paramView2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(263414);
+    AppMethodBeat.i(193618);
     boolean bool1 = false;
     int j = getChildCount();
     int i = 0;
@@ -1066,56 +1157,85 @@ public class CoordinatorLayout
       if (localView.getVisibility() != 8)
       {
         locald = (d)localView.getLayoutParams();
-        Behavior localBehavior = locald.Hq;
+        Behavior localBehavior = locald.bnr;
         if (localBehavior != null)
         {
           boolean bool2 = localBehavior.a(this, localView, paramView1, paramView2, paramInt1, paramInt2);
           bool1 |= bool2;
-          locald.d(paramInt2, bool2);
+          locald.p(paramInt2, bool2);
         }
       }
       for (;;)
       {
         i += 1;
         break;
-        locald.d(paramInt2, false);
+        locald.p(paramInt2, false);
       }
     }
-    AppMethodBeat.o(263414);
+    AppMethodBeat.o(193618);
     return bool1;
   }
   
   public final void b(View paramView1, View paramView2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(263416);
-    this.Ho.F(paramInt1, paramInt2);
-    this.Hg = paramView2;
+    AppMethodBeat.i(193636);
+    this.bnp.aA(paramInt1, paramInt2);
+    this.bnh = paramView2;
     int j = getChildCount();
     int i = 0;
     while (i < j)
     {
       View localView = getChildAt(i);
       Object localObject = (d)localView.getLayoutParams();
-      if (((d)localObject).bm(paramInt2))
+      if (((d)localObject).ea(paramInt2))
       {
-        localObject = ((d)localObject).Hq;
+        localObject = ((d)localObject).bnr;
         if (localObject != null) {
           ((Behavior)localObject).b(this, localView, paramView1, paramView2, paramInt1, paramInt2);
         }
       }
       i += 1;
     }
-    AppMethodBeat.o(263416);
+    AppMethodBeat.o(193636);
   }
   
-  final void bl(int paramInt)
+  protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(263404);
-    int m = w.I(this);
-    int n = this.GY.size();
-    Object localObject1 = gc();
-    Rect localRect1 = gc();
-    Rect localRect2 = gc();
+    AppMethodBeat.i(193603);
+    if (((paramLayoutParams instanceof d)) && (super.checkLayoutParams(paramLayoutParams)))
+    {
+      AppMethodBeat.o(193603);
+      return true;
+    }
+    AppMethodBeat.o(193603);
+    return false;
+  }
+  
+  public final boolean d(View paramView, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(193594);
+    Rect localRect = Dm();
+    b.a(this, paramView, localRect);
+    try
+    {
+      boolean bool = localRect.contains(paramInt1, paramInt2);
+      return bool;
+    }
+    finally
+    {
+      h(localRect);
+      AppMethodBeat.o(193594);
+    }
+  }
+  
+  final void dZ(int paramInt)
+  {
+    AppMethodBeat.i(193549);
+    int m = z.U(this);
+    int n = this.bmY.size();
+    Object localObject1 = Dm();
+    Rect localRect1 = Dm();
+    Rect localRect2 = Dm();
     int j = 0;
     View localView;
     Object localObject2;
@@ -1124,7 +1244,7 @@ public class CoordinatorLayout
     Object localObject4;
     if (j < n)
     {
-      localView = (View)this.GY.get(j);
+      localView = (View)this.bmY.get(j);
       localObject2 = (d)localView.getLayoutParams();
       if ((paramInt != 0) || (localView.getVisibility() != 8))
       {
@@ -1134,17 +1254,17 @@ public class CoordinatorLayout
         int k;
         if (i < j)
         {
-          localObject3 = (View)this.GY.get(i);
+          localObject3 = (View)this.bmY.get(i);
           Rect localRect4;
-          if (((d)localObject2).Hy == localObject3)
+          if (((d)localObject2).bnz == localObject3)
           {
             localObject3 = (d)localView.getLayoutParams();
-            if (((d)localObject3).lJ != null)
+            if (((d)localObject3).mF != null)
             {
-              localObject4 = gc();
-              localRect3 = gc();
-              localRect4 = gc();
-              b.a(this, ((d)localObject3).lJ, (Rect)localObject4);
+              localObject4 = Dm();
+              localRect3 = Dm();
+              localRect4 = Dm();
+              b.a(this, ((d)localObject3).mF, (Rect)localObject4);
               a(localView, false, localRect3);
               i1 = localView.getMeasuredWidth();
               i2 = localView.getMeasuredHeight();
@@ -1161,29 +1281,29 @@ public class CoordinatorLayout
             i1 = localRect4.left - localRect3.left;
             i2 = localRect4.top - localRect3.top;
             if (i1 != 0) {
-              w.u(localView, i1);
+              z.u(localView, i1);
             }
             if (i2 != 0) {
-              w.s(localView, i2);
+              z.s(localView, i2);
             }
             if (k != 0)
             {
-              Behavior localBehavior = ((d)localObject3).Hq;
+              Behavior localBehavior = ((d)localObject3).bnr;
               if (localBehavior != null) {
-                localBehavior.b(this, localView, ((d)localObject3).lJ);
+                localBehavior.b(this, localView, ((d)localObject3).mF);
               }
             }
-            d((Rect)localObject4);
-            d(localRect3);
-            d(localRect4);
+            h((Rect)localObject4);
+            h(localRect3);
+            h(localRect4);
             i += 1;
             break;
           }
         }
         a(localView, true, localRect1);
-        if ((((d)localObject2).Hu != 0) && (!localRect1.isEmpty()))
+        if ((((d)localObject2).bnv != 0) && (!localRect1.isEmpty()))
         {
-          i = e.D(((d)localObject2).Hu, m);
+          i = e.ay(((d)localObject2).bnv, m);
           switch (i & 0x70)
           {
           default: 
@@ -1195,17 +1315,17 @@ public class CoordinatorLayout
         }
         for (;;)
         {
-          if ((((d)localObject2).Hv != 0) && (localView.getVisibility() == 0) && (w.ah(localView)) && (localView.getWidth() > 0) && (localView.getHeight() > 0)) {
+          if ((((d)localObject2).bnw != 0) && (localView.getVisibility() == 0) && (z.au(localView)) && (localView.getWidth() > 0) && (localView.getHeight() > 0)) {
             break label714;
           }
           label488:
           if (paramInt != 2)
           {
-            localRect2.set(((d)localView.getLayoutParams()).HD);
+            localRect2.set(((d)localView.getLayoutParams()).bnE);
             if (localRect2.equals(localRect1)) {
               break label1221;
             }
-            ((d)localView.getLayoutParams()).HD.set(localRect1);
+            ((d)localView.getLayoutParams()).bnE.set(localRect1);
           }
           i = j + 1;
           for (;;)
@@ -1213,15 +1333,15 @@ public class CoordinatorLayout
             if (i >= n) {
               break label1221;
             }
-            localObject2 = (View)this.GY.get(i);
+            localObject2 = (View)this.bmY.get(i);
             localObject3 = (d)((View)localObject2).getLayoutParams();
-            localObject4 = ((d)localObject3).Hq;
+            localObject4 = ((d)localObject3).bnr;
             if ((localObject4 != null) && (((Behavior)localObject4).a(this, (View)localObject2, localView)))
             {
-              if ((paramInt != 0) || (!((d)localObject3).HC)) {
+              if ((paramInt != 0) || (!((d)localObject3).bnD)) {
                 break;
               }
-              ((d)localObject3).HC = false;
+              ((d)localObject3).bnD = false;
             }
             i += 1;
           }
@@ -1235,31 +1355,31 @@ public class CoordinatorLayout
         }
         label714:
         localObject2 = (d)localView.getLayoutParams();
-        localObject3 = ((d)localObject2).Hq;
-        localObject4 = gc();
-        Rect localRect3 = gc();
+        localObject3 = ((d)localObject2).bnr;
+        localObject4 = Dm();
+        Rect localRect3 = Dm();
         localRect3.set(localView.getLeft(), localView.getTop(), localView.getRight(), localView.getBottom());
         if ((localObject3 != null) && (((Behavior)localObject3).a(this, localView, (Rect)localObject4)))
         {
           if (!localRect3.contains((Rect)localObject4))
           {
             localObject1 = new IllegalArgumentException("Rect should be within the child's bounds. Rect:" + ((Rect)localObject4).toShortString() + " | Bounds:" + localRect3.toShortString());
-            AppMethodBeat.o(263404);
+            AppMethodBeat.o(193549);
             throw ((Throwable)localObject1);
           }
         }
         else {
           ((Rect)localObject4).set(localRect3);
         }
-        d(localRect3);
+        h(localRect3);
         if (!((Rect)localObject4).isEmpty())
         {
-          i1 = e.D(((d)localObject2).Hv, m);
+          i1 = e.ay(((d)localObject2).bnw, m);
           k = 0;
           i = k;
           if ((i1 & 0x30) == 48)
           {
-            i2 = ((Rect)localObject4).top - ((d)localObject2).topMargin - ((d)localObject2).Hx;
+            i2 = ((Rect)localObject4).top - ((d)localObject2).topMargin - ((d)localObject2).bny;
             i = k;
             if (i2 < ((Rect)localObject1).top)
             {
@@ -1270,7 +1390,7 @@ public class CoordinatorLayout
           k = i;
           if ((i1 & 0x50) == 80)
           {
-            i2 = getHeight() - ((Rect)localObject4).bottom - ((d)localObject2).bottomMargin + ((d)localObject2).Hx;
+            i2 = getHeight() - ((Rect)localObject4).bottom - ((d)localObject2).bottomMargin + ((d)localObject2).bny;
             k = i;
             if (i2 < ((Rect)localObject1).bottom)
             {
@@ -1285,7 +1405,7 @@ public class CoordinatorLayout
           i = k;
           if ((i1 & 0x3) == 3)
           {
-            i2 = ((Rect)localObject4).left - ((d)localObject2).leftMargin - ((d)localObject2).Hw;
+            i2 = ((Rect)localObject4).left - ((d)localObject2).leftMargin - ((d)localObject2).bnx;
             i = k;
             if (i2 < ((Rect)localObject1).left)
             {
@@ -1299,7 +1419,7 @@ public class CoordinatorLayout
           k = getWidth();
           i1 = ((Rect)localObject4).right;
           i2 = ((d)localObject2).rightMargin;
-          k = ((d)localObject2).Hw + (k - i1 - i2);
+          k = ((d)localObject2).bnx + (k - i1 - i2);
           if (k >= ((Rect)localObject1).right) {
             break label1250;
           }
@@ -1315,71 +1435,76 @@ public class CoordinatorLayout
       if (i == 0) {
         j(localView, 0);
       }
-      d((Rect)localObject4);
+      h((Rect)localObject4);
       break label488;
       switch (paramInt)
       {
       }
       for (boolean bool = ((Behavior)localObject4).b(this, (View)localObject2, localView); paramInt == 1; bool = true)
       {
-        ((d)localObject3).HC = bool;
+        ((d)localObject3).bnD = bool;
         break;
       }
       j += 1;
       break;
-      d((Rect)localObject1);
-      d(localRect1);
-      d(localRect2);
-      AppMethodBeat.o(263404);
+      h((Rect)localObject1);
+      h(localRect1);
+      h(localRect2);
+      AppMethodBeat.o(193549);
       return;
-    }
-  }
-  
-  protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
-  {
-    AppMethodBeat.i(263412);
-    if (((paramLayoutParams instanceof d)) && (super.checkLayoutParams(paramLayoutParams)))
-    {
-      AppMethodBeat.o(263412);
-      return true;
-    }
-    AppMethodBeat.o(263412);
-    return false;
-  }
-  
-  public final boolean d(View paramView, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(263411);
-    Rect localRect = gc();
-    b.a(this, paramView, localRect);
-    try
-    {
-      boolean bool = localRect.contains(paramInt1, paramInt2);
-      return bool;
-    }
-    finally
-    {
-      d(localRect);
-      AppMethodBeat.o(263411);
     }
   }
   
   protected boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
   {
-    AppMethodBeat.i(263403);
-    paramView.getLayoutParams();
-    boolean bool = super.drawChild(paramCanvas, paramView, paramLong);
-    AppMethodBeat.o(263403);
-    return bool;
+    AppMethodBeat.i(193531);
+    Paint localPaint;
+    int j;
+    int i;
+    if (((d)paramView.getLayoutParams()).bnr != null)
+    {
+      float f = Behavior.Dq();
+      if (f > 0.0F)
+      {
+        if (this.bnd == null) {
+          this.bnd = new Paint();
+        }
+        this.bnd.setColor(Behavior.Dp());
+        localPaint = this.bnd;
+        j = Math.round(f * 255.0F);
+        if (j >= 0) {
+          break label194;
+        }
+        i = 0;
+      }
+    }
+    for (;;)
+    {
+      localPaint.setAlpha(i);
+      i = paramCanvas.save();
+      if (paramView.isOpaque()) {
+        paramCanvas.clipRect(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom(), Region.Op.DIFFERENCE);
+      }
+      paramCanvas.drawRect(getPaddingLeft(), getPaddingTop(), getWidth() - getPaddingRight(), getHeight() - getPaddingBottom(), this.bnd);
+      paramCanvas.restoreToCount(i);
+      boolean bool = super.drawChild(paramCanvas, paramView, paramLong);
+      AppMethodBeat.o(193531);
+      return bool;
+      label194:
+      i = j;
+      if (j > 255) {
+        i = 255;
+      }
+    }
   }
   
   protected void drawableStateChanged()
   {
-    AppMethodBeat.i(263360);
+    AppMethodBeat.i(193403);
     super.drawableStateChanged();
     int[] arrayOfInt = getDrawableState();
     boolean bool2 = false;
-    Drawable localDrawable = this.Hl;
+    Drawable localDrawable = this.bnm;
     boolean bool1 = bool2;
     if (localDrawable != null)
     {
@@ -1391,206 +1516,206 @@ public class CoordinatorLayout
     if (bool1) {
       invalidate();
     }
-    AppMethodBeat.o(263360);
+    AppMethodBeat.o(193403);
   }
   
   public final void e(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(263385);
+    AppMethodBeat.i(193478);
     measureChildWithMargins(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
-    AppMethodBeat.o(263385);
+    AppMethodBeat.o(193478);
   }
   
   final List<View> getDependencySortedChildren()
   {
-    AppMethodBeat.i(263410);
-    gd();
-    List localList = Collections.unmodifiableList(this.GY);
-    AppMethodBeat.o(263410);
+    AppMethodBeat.i(193585);
+    Dn();
+    List localList = Collections.unmodifiableList(this.bmY);
+    AppMethodBeat.o(193585);
     return localList;
   }
   
-  public final ae getLastWindowInsets()
+  public final ah getLastWindowInsets()
   {
-    return this.Hj;
+    return this.bnk;
   }
   
   public int getNestedScrollAxes()
   {
-    AppMethodBeat.i(263427);
-    int i = this.Ho.getNestedScrollAxes();
-    AppMethodBeat.o(263427);
+    AppMethodBeat.i(193700);
+    int i = this.bnp.getNestedScrollAxes();
+    AppMethodBeat.o(193700);
     return i;
   }
   
   public Drawable getStatusBarBackground()
   {
-    return this.Hl;
+    return this.bnm;
   }
   
   protected int getSuggestedMinimumHeight()
   {
-    AppMethodBeat.i(263384);
+    AppMethodBeat.i(193472);
     int i = Math.max(super.getSuggestedMinimumHeight(), getPaddingTop() + getPaddingBottom());
-    AppMethodBeat.o(263384);
+    AppMethodBeat.o(193472);
     return i;
   }
   
   protected int getSuggestedMinimumWidth()
   {
-    AppMethodBeat.i(263383);
+    AppMethodBeat.i(193467);
     int i = Math.max(super.getSuggestedMinimumWidth(), getPaddingLeft() + getPaddingRight());
-    AppMethodBeat.o(263383);
+    AppMethodBeat.o(193467);
     return i;
   }
   
   public final void h(View paramView, int paramInt)
   {
-    AppMethodBeat.i(263389);
+    AppMethodBeat.i(193497);
     d locald = (d)paramView.getLayoutParams();
-    if (locald.gg())
+    if (locald.Ds())
     {
       paramView = new IllegalStateException("An anchor may not be changed after CoordinatorLayout measurement begins before layout is complete.");
-      AppMethodBeat.o(263389);
+      AppMethodBeat.o(193497);
       throw paramView;
     }
-    if (locald.lJ != null)
+    if (locald.mF != null)
     {
-      a(paramView, locald.lJ, paramInt);
-      AppMethodBeat.o(263389);
+      a(paramView, locald.mF, paramInt);
+      AppMethodBeat.o(193497);
       return;
     }
-    if (locald.Hs >= 0)
+    if (locald.bnt >= 0)
     {
-      c(paramView, locald.Hs, paramInt);
-      AppMethodBeat.o(263389);
+      c(paramView, locald.bnt, paramInt);
+      AppMethodBeat.o(193497);
       return;
     }
     i(paramView, paramInt);
-    AppMethodBeat.o(263389);
+    AppMethodBeat.o(193497);
   }
   
   public final void l(View paramView, int paramInt)
   {
-    AppMethodBeat.i(263419);
-    this.Ho.bz(paramInt);
+    AppMethodBeat.i(193647);
+    this.bnp.eq(paramInt);
     int j = getChildCount();
     int i = 0;
     while (i < j)
     {
       View localView = getChildAt(i);
       d locald = (d)localView.getLayoutParams();
-      if (locald.bm(paramInt))
+      if (locald.ea(paramInt))
       {
-        Behavior localBehavior = locald.Hq;
+        Behavior localBehavior = locald.bnr;
         if (localBehavior != null) {
           localBehavior.a(this, localView, paramView, paramInt);
         }
-        locald.d(paramInt, false);
-        locald.HC = false;
+        locald.p(paramInt, false);
+        locald.bnD = false;
       }
       i += 1;
     }
-    this.Hg = null;
-    AppMethodBeat.o(263419);
+    this.bnh = null;
+    AppMethodBeat.o(193647);
   }
   
   public void onAttachedToWindow()
   {
-    AppMethodBeat.i(263356);
+    AppMethodBeat.i(193370);
     super.onAttachedToWindow();
-    V(false);
-    if (this.Hi)
+    aB(false);
+    if (this.bnj)
     {
-      if (this.Hh == null) {
-        this.Hh = new e();
+      if (this.bni == null) {
+        this.bni = new e();
       }
-      getViewTreeObserver().addOnPreDrawListener(this.Hh);
+      getViewTreeObserver().addOnPreDrawListener(this.bni);
     }
-    if ((this.Hj == null) && (w.Z(this))) {
-      w.Y(this);
+    if ((this.bnk == null) && (z.al(this))) {
+      z.ak(this);
     }
     this.mIsAttachedToWindow = true;
-    AppMethodBeat.o(263356);
+    AppMethodBeat.o(193370);
   }
   
   public void onDetachedFromWindow()
   {
-    AppMethodBeat.i(263357);
+    AppMethodBeat.i(193377);
     super.onDetachedFromWindow();
-    V(false);
-    if ((this.Hi) && (this.Hh != null)) {
-      getViewTreeObserver().removeOnPreDrawListener(this.Hh);
+    aB(false);
+    if ((this.bnj) && (this.bni != null)) {
+      getViewTreeObserver().removeOnPreDrawListener(this.bni);
     }
-    if (this.Hg != null) {
-      onStopNestedScroll(this.Hg);
+    if (this.bnh != null) {
+      onStopNestedScroll(this.bnh);
     }
     this.mIsAttachedToWindow = false;
-    AppMethodBeat.o(263357);
+    AppMethodBeat.o(193377);
   }
   
   public void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(263391);
+    AppMethodBeat.i(193515);
     super.onDraw(paramCanvas);
-    if ((this.Hk) && (this.Hl != null)) {
-      if (this.Hj == null) {
-        break label79;
+    if ((this.bnl) && (this.bnm != null)) {
+      if (this.bnk == null) {
+        break label73;
       }
     }
-    label79:
-    for (int i = this.Hj.Oa.hp().top;; i = 0)
+    label73:
+    for (int i = this.bnk.En();; i = 0)
     {
       if (i > 0)
       {
-        this.Hl.setBounds(0, 0, getWidth(), i);
-        this.Hl.draw(paramCanvas);
+        this.bnm.setBounds(0, 0, getWidth(), i);
+        this.bnm.draw(paramCanvas);
       }
-      AppMethodBeat.o(263391);
+      AppMethodBeat.o(193515);
       return;
     }
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(263372);
+    AppMethodBeat.i(193443);
     int i = paramMotionEvent.getActionMasked();
     if (i == 0) {
-      V(true);
+      aB(true);
     }
-    boolean bool = b(paramMotionEvent, 0);
+    boolean bool = c(paramMotionEvent, 0);
     if ((i == 1) || (i == 3)) {
-      V(true);
+      aB(true);
     }
-    AppMethodBeat.o(263372);
+    AppMethodBeat.o(193443);
     return bool;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(263390);
-    paramInt2 = w.I(this);
-    paramInt3 = this.GY.size();
+    AppMethodBeat.i(193505);
+    paramInt2 = z.U(this);
+    paramInt3 = this.bmY.size();
     paramInt1 = 0;
     while (paramInt1 < paramInt3)
     {
-      View localView = (View)this.GY.get(paramInt1);
+      View localView = (View)this.bmY.get(paramInt1);
       if (localView.getVisibility() != 8)
       {
-        Behavior localBehavior = ((d)localView.getLayoutParams()).Hq;
+        Behavior localBehavior = ((d)localView.getLayoutParams()).bnr;
         if ((localBehavior == null) || (!localBehavior.a(this, localView, paramInt2))) {
           h(localView, paramInt2);
         }
       }
       paramInt1 += 1;
     }
-    AppMethodBeat.o(263390);
+    AppMethodBeat.o(193505);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(263387);
-    gd();
+    AppMethodBeat.i(193492);
+    Dn();
     int k = getChildCount();
     int i = 0;
     View localView;
@@ -1602,18 +1727,18 @@ public class CoordinatorLayout
     if (i < k)
     {
       localView = getChildAt(i);
-      localObject1 = this.GZ;
-      m = ((a)localObject1).HH.size();
+      localObject1 = this.bmZ;
+      m = ((a)localObject1).bnI.size();
       j = 0;
       if (j < m)
       {
-        localObject2 = (ArrayList)((a)localObject1).HH.aM(j);
+        localObject2 = (ArrayList)((a)localObject1).bnI.bl(j);
         if ((localObject2 != null) && (((ArrayList)localObject2).contains(localView)))
         {
           j = 1;
           label90:
           if (j == 0) {
-            break label648;
+            break label624;
           }
         }
       }
@@ -1631,18 +1756,18 @@ public class CoordinatorLayout
       int i3;
       int i4;
       int i15;
-      if (i17 != this.Hi)
+      if (i17 != this.bnj)
       {
         if (i17 != 0)
         {
           if (this.mIsAttachedToWindow)
           {
-            if (this.Hh == null) {
-              this.Hh = new e();
+            if (this.bni == null) {
+              this.bni = new e();
             }
-            getViewTreeObserver().addOnPreDrawListener(this.Hh);
+            getViewTreeObserver().addOnPreDrawListener(this.bni);
           }
-          this.Hi = true;
+          this.bnj = true;
         }
       }
       else
@@ -1651,9 +1776,9 @@ public class CoordinatorLayout
         int i6 = getPaddingTop();
         int i7 = getPaddingRight();
         int i8 = getPaddingBottom();
-        int i9 = w.I(this);
+        int i9 = z.U(this);
         if (i9 != 1) {
-          break label688;
+          break label664;
         }
         n = 1;
         int i10 = View.MeasureSpec.getMode(paramInt1);
@@ -1663,47 +1788,47 @@ public class CoordinatorLayout
         k = getSuggestedMinimumWidth();
         j = getSuggestedMinimumHeight();
         i = 0;
-        if ((this.Hj == null) || (!w.Z(this))) {
-          break label694;
+        if ((this.bnk == null) || (!z.al(this))) {
+          break label670;
         }
         i1 = 1;
-        int i14 = this.GY.size();
+        int i14 = this.bmY.size();
         i2 = 0;
         if (i2 >= i14) {
-          break label744;
+          break label720;
         }
-        localView = (View)this.GY.get(i2);
+        localView = (View)this.bmY.get(i2);
         if (localView.getVisibility() == 8) {
-          break label785;
+          break label761;
         }
         localObject1 = (d)localView.getLayoutParams();
         i3 = 0;
         m = i3;
-        if (((d)localObject1).Hs >= 0)
+        if (((d)localObject1).bnt >= 0)
         {
           m = i3;
           if (i10 != 0)
           {
-            i4 = bi(((d)localObject1).Hs);
-            i15 = e.D(bk(((d)localObject1).ek), i9) & 0x7;
+            i4 = dW(((d)localObject1).bnt);
+            i15 = e.ay(dY(((d)localObject1).fl), i9) & 0x7;
             if (((i15 != 3) || (n != 0)) && ((i15 != 5) || (n == 0))) {
-              break label700;
+              break label676;
             }
             m = Math.max(0, i11 - i7 - i4);
           }
         }
         label394:
-        if ((i1 == 0) || (w.Z(localView))) {
-          break label776;
+        if ((i1 == 0) || (z.al(localView))) {
+          break label752;
         }
-        i3 = this.Hj.Oa.hp().left;
-        int i16 = this.Hj.Oa.hp().right;
-        i4 = this.Hj.Oa.hp().top;
-        i15 = this.Hj.Oa.hp().bottom;
+        i3 = this.bnk.Em();
+        int i16 = this.bnk.Eo();
+        i4 = this.bnk.En();
+        i15 = this.bnk.Ep();
         i3 = View.MeasureSpec.makeMeasureSpec(i11 - (i3 + i16), i10);
         i4 = View.MeasureSpec.makeMeasureSpec(i13 - (i4 + i15), i12);
-        label497:
-        localObject2 = ((d)localObject1).Hq;
+        label473:
+        localObject2 = ((d)localObject1).bnr;
         if ((localObject2 == null) || (!((Behavior)localObject2).a(this, localView, i3, m, i4, 0))) {
           e(localView, i3, m, i4, 0);
         }
@@ -1722,21 +1847,21 @@ public class CoordinatorLayout
         break label50;
         j = 0;
         break label90;
-        label648:
+        label624:
         i += 1;
         break;
-        if ((this.mIsAttachedToWindow) && (this.Hh != null)) {
-          getViewTreeObserver().removeOnPreDrawListener(this.Hh);
+        if ((this.mIsAttachedToWindow) && (this.bni != null)) {
+          getViewTreeObserver().removeOnPreDrawListener(this.bni);
         }
-        this.Hi = false;
+        this.bnj = false;
         break label154;
-        label688:
+        label664:
         n = 0;
         break label193;
-        label694:
+        label670:
         i1 = 0;
         break label248;
-        label700:
+        label676:
         if ((i15 != 5) || (n != 0))
         {
           m = i3;
@@ -1750,15 +1875,15 @@ public class CoordinatorLayout
         }
         m = Math.max(0, i4 - i5);
         break label394;
-        label744:
+        label720:
         setMeasuredDimension(View.resolveSizeAndState(k, paramInt1, 0xFF000000 & i), View.resolveSizeAndState(j, paramInt2, i << 16));
-        AppMethodBeat.o(263387);
+        AppMethodBeat.o(193492);
         return;
-        label776:
+        label752:
         i4 = paramInt2;
         i3 = paramInt1;
-        break label497;
-        label785:
+        break label473;
+        label761:
         m = k;
         k = i;
       }
@@ -1767,7 +1892,7 @@ public class CoordinatorLayout
   
   public boolean onNestedFling(View paramView, float paramFloat1, float paramFloat2, boolean paramBoolean)
   {
-    AppMethodBeat.i(263425);
+    AppMethodBeat.i(193686);
     boolean bool = false;
     int j = getChildCount();
     int i = 0;
@@ -1778,10 +1903,10 @@ public class CoordinatorLayout
         break label120;
       }
       Object localObject = (d)localView.getLayoutParams();
-      if (!((d)localObject).bm(0)) {
+      if (!((d)localObject).ea(0)) {
         break label120;
       }
-      localObject = ((d)localObject).Hq;
+      localObject = ((d)localObject).bnr;
       if (localObject == null) {
         break label120;
       }
@@ -1793,16 +1918,16 @@ public class CoordinatorLayout
       i += 1;
       break;
       if (bool) {
-        bl(1);
+        dZ(1);
       }
-      AppMethodBeat.o(263425);
+      AppMethodBeat.o(193686);
       return bool;
     }
   }
   
   public boolean onNestedPreFling(View paramView, float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(263426);
+    AppMethodBeat.i(193694);
     int j = getChildCount();
     int i = 0;
     boolean bool = false;
@@ -1813,10 +1938,10 @@ public class CoordinatorLayout
         break label108;
       }
       Object localObject = (d)localView.getLayoutParams();
-      if (!((d)localObject).bm(0)) {
+      if (!((d)localObject).ea(0)) {
         break label108;
       }
-      localObject = ((d)localObject).Hq;
+      localObject = ((d)localObject).bnr;
       if (localObject == null) {
         break label108;
       }
@@ -1827,51 +1952,51 @@ public class CoordinatorLayout
     {
       i += 1;
       break;
-      AppMethodBeat.o(263426);
+      AppMethodBeat.o(193694);
       return bool;
     }
   }
   
   public void onNestedPreScroll(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(263423);
+    AppMethodBeat.i(193671);
     a(paramView, paramInt1, paramInt2, paramArrayOfInt, 0);
-    AppMethodBeat.o(263423);
+    AppMethodBeat.o(193671);
   }
   
   public void onNestedScroll(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(263420);
+    AppMethodBeat.i(193657);
     a(paramView, paramInt1, paramInt2, paramInt3, paramInt4, 0);
-    AppMethodBeat.o(263420);
+    AppMethodBeat.o(193657);
   }
   
   public void onNestedScrollAccepted(View paramView1, View paramView2, int paramInt)
   {
-    AppMethodBeat.i(263415);
+    AppMethodBeat.i(193629);
     b(paramView1, paramView2, paramInt, 0);
-    AppMethodBeat.o(263415);
+    AppMethodBeat.o(193629);
   }
   
   protected void onRestoreInstanceState(Parcelable paramParcelable)
   {
-    AppMethodBeat.i(263429);
+    AppMethodBeat.i(193712);
     if (!(paramParcelable instanceof SavedState))
     {
       super.onRestoreInstanceState(paramParcelable);
-      AppMethodBeat.o(263429);
+      AppMethodBeat.o(193712);
       return;
     }
     paramParcelable = (SavedState)paramParcelable;
-    super.onRestoreInstanceState(paramParcelable.Rb);
-    paramParcelable = paramParcelable.HF;
+    super.onRestoreInstanceState(paramParcelable.bxs);
+    paramParcelable = paramParcelable.bnG;
     int j = getChildCount();
     int i = 0;
     while (i < j)
     {
       View localView = getChildAt(i);
       int k = localView.getId();
-      Behavior localBehavior = v(localView).Hq;
+      Behavior localBehavior = E(localView).bnr;
       if ((k != -1) && (localBehavior != null))
       {
         Parcelable localParcelable = (Parcelable)paramParcelable.get(k);
@@ -1881,12 +2006,12 @@ public class CoordinatorLayout
       }
       i += 1;
     }
-    AppMethodBeat.o(263429);
+    AppMethodBeat.o(193712);
   }
   
   protected Parcelable onSaveInstanceState()
   {
-    AppMethodBeat.i(263430);
+    AppMethodBeat.i(193718);
     SavedState localSavedState = new SavedState(super.onSaveInstanceState());
     SparseArray localSparseArray = new SparseArray();
     int j = getChildCount();
@@ -1895,7 +2020,7 @@ public class CoordinatorLayout
     {
       Object localObject = getChildAt(i);
       int k = ((View)localObject).getId();
-      Behavior localBehavior = ((d)((View)localObject).getLayoutParams()).Hq;
+      Behavior localBehavior = ((d)((View)localObject).getLayoutParams()).bnr;
       if ((k != -1) && (localBehavior != null))
       {
         localObject = localBehavior.a(this, (View)localObject);
@@ -1905,46 +2030,46 @@ public class CoordinatorLayout
       }
       i += 1;
     }
-    localSavedState.HF = localSparseArray;
-    AppMethodBeat.o(263430);
+    localSavedState.bnG = localSparseArray;
+    AppMethodBeat.o(193718);
     return localSavedState;
   }
   
   public boolean onStartNestedScroll(View paramView1, View paramView2, int paramInt)
   {
-    AppMethodBeat.i(263413);
+    AppMethodBeat.i(193608);
     boolean bool = a(paramView1, paramView2, paramInt, 0);
-    AppMethodBeat.o(263413);
+    AppMethodBeat.o(193608);
     return bool;
   }
   
   public void onStopNestedScroll(View paramView)
   {
-    AppMethodBeat.i(263417);
+    AppMethodBeat.i(193641);
     l(paramView, 0);
-    AppMethodBeat.o(263417);
+    AppMethodBeat.o(193641);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(263374);
+    AppMethodBeat.i(193450);
     int i = paramMotionEvent.getActionMasked();
     boolean bool2;
-    if (this.Hf == null)
+    if (this.bng == null)
     {
-      bool2 = b(paramMotionEvent, 1);
+      bool2 = c(paramMotionEvent, 1);
       if (!bool2) {}
     }
     for (;;)
     {
-      Behavior localBehavior = ((d)this.Hf.getLayoutParams()).Hq;
+      Behavior localBehavior = ((d)this.bng.getLayoutParams()).bnr;
       boolean bool1;
       if (localBehavior != null) {
-        bool1 = localBehavior.b(this, this.Hf, paramMotionEvent);
+        bool1 = localBehavior.b(this, this.bng, paramMotionEvent);
       }
       for (;;)
       {
-        if (this.Hf == null)
+        if (this.bng == null)
         {
           bool1 |= super.onTouchEvent(paramMotionEvent);
           paramMotionEvent = null;
@@ -1955,9 +2080,9 @@ public class CoordinatorLayout
             paramMotionEvent.recycle();
           }
           if ((i == 1) || (i == 3)) {
-            V(false);
+            aB(false);
           }
-          AppMethodBeat.o(263374);
+          AppMethodBeat.o(193450);
           return bool1;
           if (bool2)
           {
@@ -1980,63 +2105,63 @@ public class CoordinatorLayout
   
   public boolean requestChildRectangleOnScreen(View paramView, Rect paramRect, boolean paramBoolean)
   {
-    AppMethodBeat.i(263431);
-    Behavior localBehavior = ((d)paramView.getLayoutParams()).Hq;
+    AppMethodBeat.i(193726);
+    Behavior localBehavior = ((d)paramView.getLayoutParams()).bnr;
     if ((localBehavior != null) && (localBehavior.a(this, paramView, paramRect, paramBoolean)))
     {
-      AppMethodBeat.o(263431);
+      AppMethodBeat.o(193726);
       return true;
     }
     paramBoolean = super.requestChildRectangleOnScreen(paramView, paramRect, paramBoolean);
-    AppMethodBeat.o(263431);
+    AppMethodBeat.o(193726);
     return paramBoolean;
   }
   
   public void requestDisallowInterceptTouchEvent(boolean paramBoolean)
   {
-    AppMethodBeat.i(263375);
+    AppMethodBeat.i(193461);
     super.requestDisallowInterceptTouchEvent(paramBoolean);
-    if ((paramBoolean) && (!this.Hd))
+    if ((paramBoolean) && (!this.bne))
     {
-      V(false);
-      this.Hd = true;
+      aB(false);
+      this.bne = true;
     }
-    AppMethodBeat.o(263375);
+    AppMethodBeat.o(193461);
   }
   
   public void setFitsSystemWindows(boolean paramBoolean)
   {
-    AppMethodBeat.i(263392);
+    AppMethodBeat.i(193520);
     super.setFitsSystemWindows(paramBoolean);
-    ge();
-    AppMethodBeat.o(263392);
+    Do();
+    AppMethodBeat.o(193520);
   }
   
   public void setOnHierarchyChangeListener(ViewGroup.OnHierarchyChangeListener paramOnHierarchyChangeListener)
   {
-    this.Hm = paramOnHierarchyChangeListener;
+    this.bnn = paramOnHierarchyChangeListener;
   }
   
   public void setStatusBarBackground(Drawable paramDrawable)
   {
     Drawable localDrawable = null;
-    AppMethodBeat.i(263358);
-    if (this.Hl != paramDrawable)
+    AppMethodBeat.i(193388);
+    if (this.bnm != paramDrawable)
     {
-      if (this.Hl != null) {
-        this.Hl.setCallback(null);
+      if (this.bnm != null) {
+        this.bnm.setCallback(null);
       }
       if (paramDrawable != null) {
         localDrawable = paramDrawable.mutate();
       }
-      this.Hl = localDrawable;
-      if (this.Hl != null)
+      this.bnm = localDrawable;
+      if (this.bnm != null)
       {
-        if (this.Hl.isStateful()) {
-          this.Hl.setState(getDrawableState());
+        if (this.bnm.isStateful()) {
+          this.bnm.setState(getDrawableState());
         }
-        androidx.core.graphics.drawable.a.b(this.Hl, w.I(this));
-        paramDrawable = this.Hl;
+        androidx.core.graphics.drawable.a.b(this.bnm, z.U(this));
+        paramDrawable = this.bnm;
         if (getVisibility() != 0) {
           break label126;
         }
@@ -2046,132 +2171,57 @@ public class CoordinatorLayout
     for (boolean bool = true;; bool = false)
     {
       paramDrawable.setVisible(bool, false);
-      this.Hl.setCallback(this);
-      w.G(this);
-      AppMethodBeat.o(263358);
+      this.bnm.setCallback(this);
+      z.Q(this);
+      AppMethodBeat.o(193388);
       return;
     }
   }
   
   public void setStatusBarBackgroundColor(int paramInt)
   {
-    AppMethodBeat.i(263365);
+    AppMethodBeat.i(193432);
     setStatusBarBackground(new ColorDrawable(paramInt));
-    AppMethodBeat.o(263365);
+    AppMethodBeat.o(193432);
   }
   
   public void setStatusBarBackgroundResource(int paramInt)
   {
-    AppMethodBeat.i(263364);
+    AppMethodBeat.i(193422);
     if (paramInt != 0) {}
     for (Drawable localDrawable = androidx.core.content.a.m(getContext(), paramInt);; localDrawable = null)
     {
       setStatusBarBackground(localDrawable);
-      AppMethodBeat.o(263364);
+      AppMethodBeat.o(193422);
       return;
     }
   }
   
   public void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(263363);
+    AppMethodBeat.i(193417);
     super.setVisibility(paramInt);
     if (paramInt == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      if ((this.Hl != null) && (this.Hl.isVisible() != bool)) {
-        this.Hl.setVisible(bool, false);
+      if ((this.bnm != null) && (this.bnm.isVisible() != bool)) {
+        this.bnm.setVisible(bool, false);
       }
-      AppMethodBeat.o(263363);
+      AppMethodBeat.o(193417);
       return;
     }
   }
   
   protected boolean verifyDrawable(Drawable paramDrawable)
   {
-    AppMethodBeat.i(263361);
-    if ((super.verifyDrawable(paramDrawable)) || (paramDrawable == this.Hl))
+    AppMethodBeat.i(193411);
+    if ((super.verifyDrawable(paramDrawable)) || (paramDrawable == this.bnm))
     {
-      AppMethodBeat.o(263361);
+      AppMethodBeat.o(193411);
       return true;
     }
-    AppMethodBeat.o(263361);
+    AppMethodBeat.o(193411);
     return false;
-  }
-  
-  public final void w(View paramView)
-  {
-    AppMethodBeat.i(263407);
-    List localList = this.GZ.w(paramView);
-    if ((localList != null) && (!localList.isEmpty()))
-    {
-      int i = 0;
-      while (i < localList.size())
-      {
-        View localView = (View)localList.get(i);
-        Behavior localBehavior = ((d)localView.getLayoutParams()).Hq;
-        if (localBehavior != null) {
-          localBehavior.b(this, localView, paramView);
-        }
-        i += 1;
-      }
-    }
-    AppMethodBeat.o(263407);
-  }
-  
-  public final List<View> x(View paramView)
-  {
-    AppMethodBeat.i(263408);
-    a locala = this.GZ;
-    Object localObject1 = null;
-    int j = locala.HH.size();
-    int i = 0;
-    Object localObject2;
-    if (i < j)
-    {
-      ArrayList localArrayList = (ArrayList)locala.HH.aM(i);
-      localObject2 = localObject1;
-      if (localArrayList != null)
-      {
-        localObject2 = localObject1;
-        if (localArrayList.contains(paramView))
-        {
-          if (localObject1 != null) {
-            break label150;
-          }
-          localObject1 = new ArrayList();
-        }
-      }
-    }
-    label150:
-    for (;;)
-    {
-      ((ArrayList)localObject1).add(locala.HH.aO(i));
-      localObject2 = localObject1;
-      i += 1;
-      localObject1 = localObject2;
-      break;
-      this.Hb.clear();
-      if (localObject1 != null) {
-        this.Hb.addAll((Collection)localObject1);
-      }
-      paramView = this.Hb;
-      AppMethodBeat.o(263408);
-      return paramView;
-    }
-  }
-  
-  public final List<View> y(View paramView)
-  {
-    AppMethodBeat.i(263409);
-    paramView = this.GZ.w(paramView);
-    this.Hb.clear();
-    if (paramView != null) {
-      this.Hb.addAll(paramView);
-    }
-    paramView = this.Hb;
-    AppMethodBeat.o(263409);
-    return paramView;
   }
   
   public static abstract class Behavior<V extends View>
@@ -2180,9 +2230,19 @@ public class CoordinatorLayout
     
     public Behavior(Context paramContext, AttributeSet paramAttributeSet) {}
     
-    public static ae a(ae paramae)
+    public static int Dp()
     {
-      return paramae;
+      return -16777216;
+    }
+    
+    public static float Dq()
+    {
+      return 0.0F;
+    }
+    
+    public static ah a(ah paramah)
+    {
+      return paramah;
     }
     
     @Deprecated
@@ -2295,31 +2355,31 @@ public class CoordinatorLayout
     extends AbsSavedState
   {
     public static final Parcelable.Creator<SavedState> CREATOR;
-    SparseArray<Parcelable> HF;
+    SparseArray<Parcelable> bnG;
     
     static
     {
-      AppMethodBeat.i(263340);
+      AppMethodBeat.i(193126);
       CREATOR = new Parcelable.ClassLoaderCreator() {};
-      AppMethodBeat.o(263340);
+      AppMethodBeat.o(193126);
     }
     
     public SavedState(Parcel paramParcel, ClassLoader paramClassLoader)
     {
       super(paramClassLoader);
-      AppMethodBeat.i(263338);
+      AppMethodBeat.i(193114);
       int j = paramParcel.readInt();
       int[] arrayOfInt = new int[j];
       paramParcel.readIntArray(arrayOfInt);
       paramParcel = paramParcel.readParcelableArray(paramClassLoader);
-      this.HF = new SparseArray(j);
+      this.bnG = new SparseArray(j);
       int i = 0;
       while (i < j)
       {
-        this.HF.append(arrayOfInt[i], paramParcel[i]);
+        this.bnG.append(arrayOfInt[i], paramParcel[i]);
         i += 1;
       }
-      AppMethodBeat.o(263338);
+      AppMethodBeat.o(193114);
     }
     
     public SavedState(Parcelable paramParcelable)
@@ -2330,27 +2390,34 @@ public class CoordinatorLayout
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       int j = 0;
-      AppMethodBeat.i(263339);
+      AppMethodBeat.i(193137);
       super.writeToParcel(paramParcel, paramInt);
-      if (this.HF != null) {}
+      if (this.bnG != null) {}
       int[] arrayOfInt;
       Parcelable[] arrayOfParcelable;
-      for (int i = this.HF.size();; i = 0)
+      for (int i = this.bnG.size();; i = 0)
       {
         paramParcel.writeInt(i);
         arrayOfInt = new int[i];
         arrayOfParcelable = new Parcelable[i];
         while (j < i)
         {
-          arrayOfInt[j] = this.HF.keyAt(j);
-          arrayOfParcelable[j] = ((Parcelable)this.HF.valueAt(j));
+          arrayOfInt[j] = this.bnG.keyAt(j);
+          arrayOfParcelable[j] = ((Parcelable)this.bnG.valueAt(j));
           j += 1;
         }
       }
       paramParcel.writeIntArray(arrayOfInt);
       paramParcel.writeParcelableArray(arrayOfParcelable, paramInt);
-      AppMethodBeat.o(263339);
+      AppMethodBeat.o(193137);
     }
+  }
+  
+  @Deprecated
+  @Retention(RetentionPolicy.RUNTIME)
+  public static @interface b
+  {
+    Class<? extends CoordinatorLayout.Behavior> Dr();
   }
   
   final class c
@@ -2360,179 +2427,179 @@ public class CoordinatorLayout
     
     public final void onChildViewAdded(View paramView1, View paramView2)
     {
-      AppMethodBeat.i(263325);
-      if (CoordinatorLayout.this.Hm != null) {
-        CoordinatorLayout.this.Hm.onChildViewAdded(paramView1, paramView2);
+      AppMethodBeat.i(193124);
+      if (CoordinatorLayout.this.bnn != null) {
+        CoordinatorLayout.this.bnn.onChildViewAdded(paramView1, paramView2);
       }
-      AppMethodBeat.o(263325);
+      AppMethodBeat.o(193124);
     }
     
     public final void onChildViewRemoved(View paramView1, View paramView2)
     {
-      AppMethodBeat.i(263326);
-      CoordinatorLayout.this.bl(2);
-      if (CoordinatorLayout.this.Hm != null) {
-        CoordinatorLayout.this.Hm.onChildViewRemoved(paramView1, paramView2);
+      AppMethodBeat.i(193133);
+      CoordinatorLayout.this.dZ(2);
+      if (CoordinatorLayout.this.bnn != null) {
+        CoordinatorLayout.this.bnn.onChildViewRemoved(paramView1, paramView2);
       }
-      AppMethodBeat.o(263326);
+      AppMethodBeat.o(193133);
     }
   }
   
   public static final class d
     extends ViewGroup.MarginLayoutParams
   {
-    private boolean HA;
-    private boolean HB;
-    boolean HC;
-    final Rect HD;
-    Object HE;
-    public CoordinatorLayout.Behavior Hq;
-    boolean Hr;
-    public int Hs;
-    public int Ht;
-    public int Hu;
-    public int Hv;
-    int Hw;
-    int Hx;
-    View Hy;
-    boolean Hz;
     public int anchorGravity;
-    public int ek;
-    View lJ;
+    boolean bnA;
+    private boolean bnB;
+    private boolean bnC;
+    boolean bnD;
+    final Rect bnE;
+    Object bnF;
+    public CoordinatorLayout.Behavior bnr;
+    boolean bns;
+    public int bnt;
+    public int bnu;
+    public int bnv;
+    public int bnw;
+    int bnx;
+    int bny;
+    View bnz;
+    public int fl;
+    View mF;
     
     public d(int paramInt1, int paramInt2)
     {
       super(paramInt2);
-      AppMethodBeat.i(263327);
-      this.Hr = false;
-      this.ek = 0;
+      AppMethodBeat.i(193117);
+      this.bns = false;
+      this.fl = 0;
       this.anchorGravity = 0;
-      this.Hs = -1;
-      this.Ht = -1;
-      this.Hu = 0;
-      this.Hv = 0;
-      this.HD = new Rect();
-      AppMethodBeat.o(263327);
+      this.bnt = -1;
+      this.bnu = -1;
+      this.bnv = 0;
+      this.bnw = 0;
+      this.bnE = new Rect();
+      AppMethodBeat.o(193117);
     }
     
     d(Context paramContext, AttributeSet paramAttributeSet)
     {
       super(paramAttributeSet);
-      AppMethodBeat.i(263328);
-      this.Hr = false;
-      this.ek = 0;
+      AppMethodBeat.i(193128);
+      this.bns = false;
+      this.fl = 0;
       this.anchorGravity = 0;
-      this.Hs = -1;
-      this.Ht = -1;
-      this.Hu = 0;
-      this.Hv = 0;
-      this.HD = new Rect();
+      this.bnt = -1;
+      this.bnu = -1;
+      this.bnv = 0;
+      this.bnw = 0;
+      this.bnE = new Rect();
       TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, a.c.CoordinatorLayout_Layout);
-      this.ek = localTypedArray.getInteger(a.c.CoordinatorLayout_Layout_android_layout_gravity, 0);
-      this.Ht = localTypedArray.getResourceId(a.c.CoordinatorLayout_Layout_layout_anchor, -1);
+      this.fl = localTypedArray.getInteger(a.c.CoordinatorLayout_Layout_android_layout_gravity, 0);
+      this.bnu = localTypedArray.getResourceId(a.c.CoordinatorLayout_Layout_layout_anchor, -1);
       this.anchorGravity = localTypedArray.getInteger(a.c.CoordinatorLayout_Layout_layout_anchorGravity, 0);
-      this.Hs = localTypedArray.getInteger(a.c.CoordinatorLayout_Layout_layout_keyline, -1);
-      this.Hu = localTypedArray.getInt(a.c.CoordinatorLayout_Layout_layout_insetEdge, 0);
-      this.Hv = localTypedArray.getInt(a.c.CoordinatorLayout_Layout_layout_dodgeInsetEdges, 0);
-      this.Hr = localTypedArray.hasValue(a.c.CoordinatorLayout_Layout_layout_behavior);
-      if (this.Hr) {
-        this.Hq = CoordinatorLayout.a(paramContext, paramAttributeSet, localTypedArray.getString(a.c.CoordinatorLayout_Layout_layout_behavior));
+      this.bnt = localTypedArray.getInteger(a.c.CoordinatorLayout_Layout_layout_keyline, -1);
+      this.bnv = localTypedArray.getInt(a.c.CoordinatorLayout_Layout_layout_insetEdge, 0);
+      this.bnw = localTypedArray.getInt(a.c.CoordinatorLayout_Layout_layout_dodgeInsetEdges, 0);
+      this.bns = localTypedArray.hasValue(a.c.CoordinatorLayout_Layout_layout_behavior);
+      if (this.bns) {
+        this.bnr = CoordinatorLayout.a(paramContext, paramAttributeSet, localTypedArray.getString(a.c.CoordinatorLayout_Layout_layout_behavior));
       }
       localTypedArray.recycle();
-      if (this.Hq != null) {
-        this.Hq.a(this);
+      if (this.bnr != null) {
+        this.bnr.a(this);
       }
-      AppMethodBeat.o(263328);
+      AppMethodBeat.o(193128);
     }
     
     public d(ViewGroup.LayoutParams paramLayoutParams)
     {
       super();
-      AppMethodBeat.i(263332);
-      this.Hr = false;
-      this.ek = 0;
+      AppMethodBeat.i(193149);
+      this.bns = false;
+      this.fl = 0;
       this.anchorGravity = 0;
-      this.Hs = -1;
-      this.Ht = -1;
-      this.Hu = 0;
-      this.Hv = 0;
-      this.HD = new Rect();
-      AppMethodBeat.o(263332);
+      this.bnt = -1;
+      this.bnu = -1;
+      this.bnv = 0;
+      this.bnw = 0;
+      this.bnE = new Rect();
+      AppMethodBeat.o(193149);
     }
     
     public d(ViewGroup.MarginLayoutParams paramMarginLayoutParams)
     {
       super();
-      AppMethodBeat.i(263330);
-      this.Hr = false;
-      this.ek = 0;
+      AppMethodBeat.i(193144);
+      this.bns = false;
+      this.fl = 0;
       this.anchorGravity = 0;
-      this.Hs = -1;
-      this.Ht = -1;
-      this.Hu = 0;
-      this.Hv = 0;
-      this.HD = new Rect();
-      AppMethodBeat.o(263330);
+      this.bnt = -1;
+      this.bnu = -1;
+      this.bnv = 0;
+      this.bnw = 0;
+      this.bnE = new Rect();
+      AppMethodBeat.o(193144);
     }
     
     public d(d paramd)
     {
       super();
-      AppMethodBeat.i(263329);
-      this.Hr = false;
-      this.ek = 0;
+      AppMethodBeat.i(193139);
+      this.bns = false;
+      this.fl = 0;
       this.anchorGravity = 0;
-      this.Hs = -1;
-      this.Ht = -1;
-      this.Hu = 0;
-      this.Hv = 0;
-      this.HD = new Rect();
-      AppMethodBeat.o(263329);
+      this.bnt = -1;
+      this.bnu = -1;
+      this.bnv = 0;
+      this.bnw = 0;
+      this.bnE = new Rect();
+      AppMethodBeat.o(193139);
+    }
+    
+    final boolean Ds()
+    {
+      return (this.mF == null) && (this.bnu != -1);
     }
     
     public final void a(CoordinatorLayout.Behavior paramBehavior)
     {
-      AppMethodBeat.i(263333);
-      if (this.Hq != paramBehavior)
+      AppMethodBeat.i(193152);
+      if (this.bnr != paramBehavior)
       {
-        this.Hq = paramBehavior;
-        this.HE = null;
-        this.Hr = true;
+        this.bnr = paramBehavior;
+        this.bnF = null;
+        this.bns = true;
         if (paramBehavior != null) {
           paramBehavior.a(this);
         }
       }
-      AppMethodBeat.o(263333);
+      AppMethodBeat.o(193152);
     }
     
-    final boolean bm(int paramInt)
+    final boolean ea(int paramInt)
     {
       switch (paramInt)
       {
       default: 
         return false;
       case 0: 
-        return this.HA;
+        return this.bnB;
       }
-      return this.HB;
+      return this.bnC;
     }
     
-    final void d(int paramInt, boolean paramBoolean)
+    final void p(int paramInt, boolean paramBoolean)
     {
       switch (paramInt)
       {
       default: 
         return;
       case 0: 
-        this.HA = paramBoolean;
+        this.bnB = paramBoolean;
         return;
       }
-      this.HB = paramBoolean;
-    }
-    
-    final boolean gg()
-    {
-      return (this.lJ == null) && (this.Ht != -1);
+      this.bnC = paramBoolean;
     }
   }
   
@@ -2543,16 +2610,16 @@ public class CoordinatorLayout
     
     public final boolean onPreDraw()
     {
-      AppMethodBeat.i(263334);
-      CoordinatorLayout.this.bl(0);
-      AppMethodBeat.o(263334);
+      AppMethodBeat.i(193140);
+      CoordinatorLayout.this.dZ(0);
+      AppMethodBeat.o(193140);
       return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.coordinatorlayout.widget.CoordinatorLayout
  * JD-Core Version:    0.7.0.1
  */

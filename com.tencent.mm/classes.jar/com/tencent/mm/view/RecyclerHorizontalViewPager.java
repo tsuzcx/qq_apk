@@ -10,30 +10,29 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.a;
 import androidx.recyclerview.widget.RecyclerView.l;
 import androidx.recyclerview.widget.RecyclerView.v;
-import androidx.recyclerview.widget.v;
-import androidx.recyclerview.widget.z;
+import androidx.recyclerview.widget.t;
+import androidx.recyclerview.widget.x;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/RecyclerHorizontalViewPager;", "Landroidx/recyclerview/widget/RecyclerView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "frozeTouch", "", "getFrozeTouch", "()Z", "setFrozeTouch", "(Z)V", "historicalX", "", "onInterceptTouchEvent", "Lcom/tencent/mm/view/RecyclerHorizontalViewPager$OnInterceptTouchEvent;", "getOnInterceptTouchEvent", "()Lcom/tencent/mm/view/RecyclerHorizontalViewPager$OnInterceptTouchEvent;", "setOnInterceptTouchEvent", "(Lcom/tencent/mm/view/RecyclerHorizontalViewPager$OnInterceptTouchEvent;)V", "pageChangeListener", "Lcom/tencent/mm/view/RecyclerHorizontalViewPager$IPageChangeCallback;", "getPageChangeListener", "()Lcom/tencent/mm/view/RecyclerHorizontalViewPager$IPageChangeCallback;", "setPageChangeListener", "(Lcom/tencent/mm/view/RecyclerHorizontalViewPager$IPageChangeCallback;)V", "snapHelper", "Landroidx/recyclerview/widget/SnapHelper;", "getSnapHelper", "()Landroidx/recyclerview/widget/SnapHelper;", "setSnapHelper", "(Landroidx/recyclerview/widget/SnapHelper;)V", "dispatchTouchEvent", "ev", "Landroid/view/MotionEvent;", "event", "onPageChange", "", "position", "", "isIdle", "isAuto", "onTouchEvent", "e", "selectViewAt", "setAdapter", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Companion", "IPageChangeCallback", "OnInterceptTouchEvent", "libmmui_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/view/RecyclerHorizontalViewPager;", "Landroidx/recyclerview/widget/RecyclerView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "frozeTouch", "", "getFrozeTouch", "()Z", "setFrozeTouch", "(Z)V", "historicalX", "", "onInterceptTouchEvent", "Lcom/tencent/mm/view/RecyclerHorizontalViewPager$OnInterceptTouchEvent;", "getOnInterceptTouchEvent", "()Lcom/tencent/mm/view/RecyclerHorizontalViewPager$OnInterceptTouchEvent;", "setOnInterceptTouchEvent", "(Lcom/tencent/mm/view/RecyclerHorizontalViewPager$OnInterceptTouchEvent;)V", "pageChangeListener", "Lcom/tencent/mm/view/RecyclerHorizontalViewPager$IPageChangeCallback;", "getPageChangeListener", "()Lcom/tencent/mm/view/RecyclerHorizontalViewPager$IPageChangeCallback;", "setPageChangeListener", "(Lcom/tencent/mm/view/RecyclerHorizontalViewPager$IPageChangeCallback;)V", "snapHelper", "Landroidx/recyclerview/widget/SnapHelper;", "getSnapHelper", "()Landroidx/recyclerview/widget/SnapHelper;", "setSnapHelper", "(Landroidx/recyclerview/widget/SnapHelper;)V", "dispatchTouchEvent", "ev", "Landroid/view/MotionEvent;", "event", "onPageChange", "", "position", "", "isIdle", "isAuto", "onTouchEvent", "e", "selectViewAt", "setAdapter", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Companion", "IPageChangeCallback", "OnInterceptTouchEvent", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class RecyclerHorizontalViewPager
   extends RecyclerView
 {
-  public static final a YMY;
-  private b YMU;
-  private z YMV;
-  private boolean YMW;
-  private c YMX;
+  public static final RecyclerHorizontalViewPager.a agII;
+  private b agIJ;
+  private x agIK;
+  private boolean agIL;
+  private c agIM;
   private float historicalX;
   
   static
   {
     AppMethodBeat.i(164570);
-    YMY = new a((byte)0);
+    agII = new RecyclerHorizontalViewPager.a((byte)0);
     AppMethodBeat.o(164570);
   }
   
@@ -54,14 +53,14 @@ public class RecyclerHorizontalViewPager
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(164565);
-    p.k(paramMotionEvent, "ev");
+    s.u(paramMotionEvent, "ev");
     if (paramMotionEvent.getActionMasked() == 3)
     {
       bool = super.dispatchTouchEvent(MotionEvent.obtain(paramMotionEvent.getDownTime(), paramMotionEvent.getEventTime(), 1, paramMotionEvent.getX(), paramMotionEvent.getY(), paramMotionEvent.getMetaState()));
       AppMethodBeat.o(164565);
       return bool;
     }
-    c localc = this.YMX;
+    c localc = this.agIM;
     if (localc != null) {
       localc.n(paramMotionEvent);
     }
@@ -72,48 +71,45 @@ public class RecyclerHorizontalViewPager
   
   public void g(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(190648);
-    b localb = this.YMU;
-    if (localb != null)
-    {
-      localb.al(paramInt, paramBoolean1);
-      AppMethodBeat.o(190648);
-      return;
+    AppMethodBeat.i(234771);
+    b localb = this.agIJ;
+    if (localb != null) {
+      localb.aE(paramInt, paramBoolean1);
     }
-    AppMethodBeat.o(190648);
+    AppMethodBeat.o(234771);
   }
   
   public final boolean getFrozeTouch()
   {
-    return this.YMW;
+    return this.agIL;
   }
   
   public final c getOnInterceptTouchEvent()
   {
-    return this.YMX;
+    return this.agIM;
   }
   
   public final b getPageChangeListener()
   {
-    return this.YMU;
+    return this.agIJ;
   }
   
-  public final z getSnapHelper()
+  public final x getSnapHelper()
   {
-    return this.YMV;
+    return this.agIK;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(164567);
-    p.k(paramMotionEvent, "event");
-    if (this.YMW)
+    s.u(paramMotionEvent, "event");
+    if (this.agIL)
     {
       AppMethodBeat.o(164567);
       return false;
     }
     boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
-    c localc = this.YMX;
+    c localc = this.agIM;
     if (localc != null)
     {
       if (paramMotionEvent.getAction() == 0) {
@@ -124,7 +120,6 @@ public class RecyclerHorizontalViewPager
       if (!bool)
       {
         paramMotionEvent = MotionEvent.obtain(paramMotionEvent);
-        p.j(paramMotionEvent, "cancelEvent");
         paramMotionEvent.setAction(3);
         onTouchEvent(paramMotionEvent);
       }
@@ -137,62 +132,59 @@ public class RecyclerHorizontalViewPager
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(190660);
-    if (this.YMW)
+    AppMethodBeat.i(234779);
+    if (this.agIL)
     {
-      AppMethodBeat.o(190660);
+      AppMethodBeat.o(234779);
       return false;
     }
     boolean bool = super.onTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(190660);
+    AppMethodBeat.o(234779);
     return bool;
   }
   
   public void setAdapter(RecyclerView.a<?> parama)
   {
-    AppMethodBeat.i(190638);
-    if (this.YMV == null) {
-      this.YMV = ((z)new v());
+    AppMethodBeat.i(234764);
+    if (this.agIK == null) {
+      this.agIK = ((x)new t());
     }
-    z localz = this.YMV;
-    if (localz != null) {
-      localz.a((RecyclerView)this);
+    x localx = this.agIK;
+    if (localx != null) {
+      localx.a((RecyclerView)this);
     }
     super.setAdapter(parama);
     a((RecyclerView.l)new d(this));
-    AppMethodBeat.o(190638);
+    AppMethodBeat.o(234764);
   }
   
   public final void setFrozeTouch(boolean paramBoolean)
   {
-    this.YMW = paramBoolean;
+    this.agIL = paramBoolean;
   }
   
   public final void setOnInterceptTouchEvent(c paramc)
   {
-    this.YMX = paramc;
+    this.agIM = paramc;
   }
   
   public final void setPageChangeListener(b paramb)
   {
-    this.YMU = paramb;
+    this.agIJ = paramb;
   }
   
-  public final void setSnapHelper(z paramz)
+  public final void setSnapHelper(x paramx)
   {
-    this.YMV = paramz;
+    this.agIK = paramx;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/RecyclerHorizontalViewPager$Companion;", "", "()V", "TAG", "", "libmmui_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/RecyclerHorizontalViewPager$IPageChangeCallback;", "", "onPageChange", "", "position", "", "isIdle", "", "isAuto", "libmmui_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/view/RecyclerHorizontalViewPager$IPageChangeCallback;", "", "onPageChange", "", "position", "", "isIdle", "", "isAuto", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface b
   {
-    public abstract void al(int paramInt, boolean paramBoolean);
+    public abstract void aE(int paramInt, boolean paramBoolean);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/RecyclerHorizontalViewPager$OnInterceptTouchEvent;", "", "isIntercept", "", "direction", "", "event", "Landroid/view/MotionEvent;", "isSuperIntercept", "onDispatchTouchEvent", "", "ev", "libmmui_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/view/RecyclerHorizontalViewPager$OnInterceptTouchEvent;", "", "isIntercept", "", "direction", "", "event", "Landroid/view/MotionEvent;", "isSuperIntercept", "onDispatchTouchEvent", "", "ev", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface c
   {
     public abstract boolean a(MotionEvent paramMotionEvent, boolean paramBoolean);
@@ -200,109 +192,107 @@ public class RecyclerHorizontalViewPager
     public abstract void n(MotionEvent paramMotionEvent);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/view/RecyclerHorizontalViewPager$setAdapter$1", "Landroidx/recyclerview/widget/RecyclerView$OnScrollListener;", "firstRect", "Landroid/graphics/Rect;", "getFirstRect", "()Landroid/graphics/Rect;", "lastPos", "", "getLastPos", "()I", "setLastPos", "(I)V", "secondRect", "getSecondRect", "onScrolled", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "dx", "dy", "libmmui_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/view/RecyclerHorizontalViewPager$setAdapter$1", "Landroidx/recyclerview/widget/RecyclerView$OnScrollListener;", "firstRect", "Landroid/graphics/Rect;", "getFirstRect", "()Landroid/graphics/Rect;", "lastPos", "", "getLastPos", "()I", "setLastPos", "(I)V", "secondRect", "getSecondRect", "onScrolled", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "dx", "dy", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class d
     extends RecyclerView.l
   {
-    private final Rect YMZ;
-    private final Rect YNa;
-    private int wKJ;
+    private int Ahg;
+    private final Rect agIN;
+    private final Rect agIO;
     
-    d()
+    d(RecyclerHorizontalViewPager paramRecyclerHorizontalViewPager)
     {
       AppMethodBeat.i(164563);
-      this.wKJ = -1;
-      this.YMZ = new Rect();
-      this.YNa = new Rect();
+      this.Ahg = -1;
+      this.agIN = new Rect();
+      this.agIO = new Rect();
       AppMethodBeat.o(164563);
+    }
+    
+    private static final void a(RecyclerHorizontalViewPager paramRecyclerHorizontalViewPager, int paramInt)
+    {
+      AppMethodBeat.i(235016);
+      s.u(paramRecyclerHorizontalViewPager, "this$0");
+      paramRecyclerHorizontalViewPager.g(paramInt, true, true);
+      AppMethodBeat.o(235016);
     }
     
     public final void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
     {
-      AppMethodBeat.i(207640);
+      AppMethodBeat.i(235034);
       b localb = new b();
-      localb.bn(paramRecyclerView);
-      localb.sg(paramInt);
-      a.c("com/tencent/mm/view/RecyclerHorizontalViewPager$setAdapter$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aFi());
+      localb.cH(paramRecyclerView);
+      localb.sc(paramInt);
+      a.c("com/tencent/mm/view/RecyclerHorizontalViewPager$setAdapter$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aYj());
       super.onScrollStateChanged(paramRecyclerView, paramInt);
       a.a(this, "com/tencent/mm/view/RecyclerHorizontalViewPager$setAdapter$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
-      AppMethodBeat.o(207640);
+      AppMethodBeat.o(235034);
     }
     
-    public final void onScrolled(RecyclerView paramRecyclerView, final int paramInt1, int paramInt2)
+    public final void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
     {
       Object localObject2 = null;
-      AppMethodBeat.i(207636);
+      AppMethodBeat.i(235027);
       Object localObject1 = new b();
-      ((b)localObject1).bn(paramRecyclerView);
-      ((b)localObject1).sg(paramInt1);
-      ((b)localObject1).sg(paramInt2);
-      a.c("com/tencent/mm/view/RecyclerHorizontalViewPager$setAdapter$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, ((b)localObject1).aFi());
-      p.k(paramRecyclerView, "recyclerView");
+      ((b)localObject1).cH(paramRecyclerView);
+      ((b)localObject1).sc(paramInt1);
+      ((b)localObject1).sc(paramInt2);
+      a.c("com/tencent/mm/view/RecyclerHorizontalViewPager$setAdapter$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, ((b)localObject1).aYj());
+      s.u(paramRecyclerView, "recyclerView");
       super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-      localObject1 = this.YNb.getLayoutManager();
+      localObject1 = this.agIP.getLayoutManager();
       if (localObject1 == null)
       {
-        paramRecyclerView = new t("null cannot be cast to non-null type androidx.recyclerview.widget.LinearLayoutManager");
-        AppMethodBeat.o(207636);
+        paramRecyclerView = new NullPointerException("null cannot be cast to non-null type androidx.recyclerview.widget.LinearLayoutManager");
+        AppMethodBeat.o(235027);
         throw paramRecyclerView;
       }
-      paramInt1 = ((LinearLayoutManager)localObject1).kJ();
-      localObject1 = this.YNb.getLayoutManager();
+      paramInt1 = ((LinearLayoutManager)localObject1).Ju();
+      localObject1 = this.agIP.getLayoutManager();
       if (localObject1 == null)
       {
-        paramRecyclerView = new t("null cannot be cast to non-null type androidx.recyclerview.widget.LinearLayoutManager");
-        AppMethodBeat.o(207636);
+        paramRecyclerView = new NullPointerException("null cannot be cast to non-null type androidx.recyclerview.widget.LinearLayoutManager");
+        AppMethodBeat.o(235027);
         throw paramRecyclerView;
       }
-      paramInt2 = ((LinearLayoutManager)localObject1).kL();
-      localObject1 = paramRecyclerView.cK(paramInt1);
-      if (localObject1 != null)
+      paramInt2 = ((LinearLayoutManager)localObject1).Jw();
+      localObject1 = paramRecyclerView.fU(paramInt1);
+      if (localObject1 == null)
       {
-        localObject1 = ((RecyclerView.v)localObject1).amk;
-        RecyclerView.v localv = paramRecyclerView.cK(paramInt2);
-        paramRecyclerView = localObject2;
-        if (localv != null) {
-          paramRecyclerView = localv.amk;
+        localObject1 = null;
+        paramRecyclerView = paramRecyclerView.fU(paramInt2);
+        if (paramRecyclerView != null) {
+          break label284;
         }
+        paramRecyclerView = localObject2;
+        label173:
         if (localObject1 != null) {
-          ((View)localObject1).getLocalVisibleRect(this.YMZ);
+          ((View)localObject1).getLocalVisibleRect(this.agIN);
         }
         if (paramRecyclerView != null) {
-          paramRecyclerView.getLocalVisibleRect(this.YNa);
+          paramRecyclerView.getLocalVisibleRect(this.agIO);
         }
-        if (this.YMZ.width() <= this.YNa.width()) {
+        if (this.agIN.width() <= this.agIO.width()) {
           break label292;
         }
       }
       for (;;)
       {
-        if ((paramInt1 != this.wKJ) && (paramInt1 != -1))
+        if ((paramInt1 != this.Ahg) && (paramInt1 != -1))
         {
-          this.YNb.post((Runnable)new a(this, paramInt1));
-          this.wKJ = paramInt1;
+          this.agIP.post(new RecyclerHorizontalViewPager.d..ExternalSyntheticLambda0(this.agIP, paramInt1));
+          this.Ahg = paramInt1;
         }
         a.a(this, "com/tencent/mm/view/RecyclerHorizontalViewPager$setAdapter$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
-        AppMethodBeat.o(207636);
+        AppMethodBeat.o(235027);
         return;
-        localObject1 = null;
+        localObject1 = ((RecyclerView.v)localObject1).caK;
         break;
+        label284:
+        paramRecyclerView = paramRecyclerView.caK;
+        break label173;
         label292:
         paramInt1 = paramInt2;
-      }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-    static final class a
-      implements Runnable
-    {
-      a(RecyclerHorizontalViewPager.d paramd, int paramInt) {}
-      
-      public final void run()
-      {
-        AppMethodBeat.i(164561);
-        this.YNc.YNb.g(paramInt1, true, true);
-        AppMethodBeat.o(164561);
       }
     }
   }

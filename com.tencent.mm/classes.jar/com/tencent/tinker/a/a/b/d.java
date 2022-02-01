@@ -5,7 +5,12 @@ import java.io.InputStream;
 
 public final class d
 {
-  public static byte[] c(InputStream paramInputStream, int paramInt)
+  public static byte[] B(InputStream paramInputStream)
+  {
+    return f(paramInputStream, 32768);
+  }
+  
+  public static byte[] f(InputStream paramInputStream, int paramInt)
   {
     int i = paramInt;
     if (paramInt <= 0) {
@@ -23,15 +28,10 @@ public final class d
     }
     return localByteArrayOutputStream.toByteArray();
   }
-  
-  public static byte[] p(InputStream paramInputStream)
-  {
-    return c(paramInputStream, 32768);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.a.a.b.d
  * JD-Core Version:    0.7.0.1
  */

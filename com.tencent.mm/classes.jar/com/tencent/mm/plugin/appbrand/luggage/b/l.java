@@ -9,15 +9,15 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.ad.b;
-import com.tencent.mm.plugin.appbrand.jsapi.v.c;
-import com.tencent.mm.plugin.appbrand.widget.b.a;
-import com.tencent.mm.plugin.appbrand.widget.b.b;
+import com.tencent.mm.plugin.appbrand.jsapi.y.c;
+import com.tencent.mm.plugin.appbrand.widget.c.a;
+import com.tencent.mm.plugin.appbrand.widget.c.b;
 import com.tencent.mm.plugin.gif.MMAnimateView;
 
 public final class l
   implements b
 {
-  public final a ec(Context paramContext)
+  public final a eX(Context paramContext)
   {
     AppMethodBeat.i(47492);
     paramContext = new a(paramContext);
@@ -29,39 +29,39 @@ public final class l
     extends FrameLayout
     implements a
   {
-    private c cFt;
-    private ImageView cJr;
-    private ad.b qaA;
-    private MMAnimateView qay;
-    private boolean qaz;
+    private ImageView ewg;
+    private c eyH;
+    private MMAnimateView tfD;
+    private boolean tfE;
+    private ad.b tfF;
     
     public a(Context paramContext)
     {
       super();
       AppMethodBeat.i(47486);
-      this.cFt = null;
-      this.qay = new MMAnimateView(paramContext);
-      addView(this.qay, new ViewGroup.LayoutParams(-1, -1));
-      this.qay.setVisibility(8);
-      this.cJr = new ImageView(paramContext);
-      addView(this.cJr, new ViewGroup.LayoutParams(-1, -1));
-      this.cJr.setVisibility(8);
+      this.eyH = null;
+      this.tfD = new MMAnimateView(paramContext);
+      addView(this.tfD, new ViewGroup.LayoutParams(-1, -1));
+      this.tfD.setVisibility(8);
+      this.ewg = new ImageView(paramContext);
+      addView(this.ewg, new ViewGroup.LayoutParams(-1, -1));
+      this.ewg.setVisibility(8);
       AppMethodBeat.o(47486);
     }
     
-    public final boolean bQC()
+    public final boolean cqz()
     {
-      return this.qaz;
+      return this.tfE;
     }
     
     public final ad.b getKeyValueSet()
     {
-      return this.qaA;
+      return this.tfF;
     }
     
     public final c getReferrerPolicy()
     {
-      return this.cFt;
+      return this.eyH;
     }
     
     public final View getView()
@@ -72,57 +72,57 @@ public final class l
     public final void setImageBitmap(Bitmap paramBitmap)
     {
       AppMethodBeat.i(47489);
-      this.qay.setVisibility(8);
-      this.cJr.setVisibility(0);
-      this.cJr.setImageBitmap(paramBitmap);
+      this.tfD.setVisibility(8);
+      this.ewg.setVisibility(0);
+      this.ewg.setImageBitmap(paramBitmap);
       AppMethodBeat.o(47489);
     }
     
     public final void setImageByteArray(byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(47488);
-      this.qay.setVisibility(0);
-      this.cJr.setVisibility(8);
-      this.qay.h(paramArrayOfByte, "");
+      this.tfD.setVisibility(0);
+      this.ewg.setVisibility(8);
+      this.tfD.h(paramArrayOfByte, "");
       AppMethodBeat.o(47488);
     }
     
     public final void setImageFilePath(String paramString)
     {
       AppMethodBeat.i(47487);
-      this.qay.setVisibility(0);
-      this.cJr.setVisibility(8);
-      this.qay.setImageFilePath(paramString);
+      this.tfD.setVisibility(0);
+      this.ewg.setVisibility(8);
+      this.tfD.setImageFilePath(paramString);
       AppMethodBeat.o(47487);
     }
     
     public final void setInterceptEvent(boolean paramBoolean)
     {
-      this.qaz = paramBoolean;
+      this.tfE = paramBoolean;
     }
     
     public final void setKeyValueSet(ad.b paramb)
     {
-      this.qaA = paramb;
+      this.tfF = paramb;
     }
     
     public final void setReferrerPolicy(c paramc)
     {
-      this.cFt = paramc;
+      this.eyH = paramc;
     }
     
     public final void setScaleType(ImageView.ScaleType paramScaleType)
     {
       AppMethodBeat.i(47490);
-      this.cJr.setScaleType(paramScaleType);
-      this.qay.setScaleType(paramScaleType);
+      this.ewg.setScaleType(paramScaleType);
+      this.tfD.setScaleType(paramScaleType);
       AppMethodBeat.o(47490);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.b.l
  * JD-Core Version:    0.7.0.1
  */

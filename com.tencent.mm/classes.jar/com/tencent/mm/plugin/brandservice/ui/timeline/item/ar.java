@@ -1,166 +1,159 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.item;
 
-import android.content.Context;
-import android.content.res.Resources;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.view.ViewStub;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.u;
-import com.tencent.mm.aj.v;
-import com.tencent.mm.ay.a.a.c.a;
-import com.tencent.mm.ci.a;
-import com.tencent.mm.plugin.brandservice.d.b;
+import com.tencent.mm.message.u;
+import com.tencent.mm.message.v;
 import com.tencent.mm.plugin.brandservice.d.d;
 import com.tencent.mm.plugin.brandservice.d.e;
-import com.tencent.mm.plugin.brandservice.d.h;
 import com.tencent.mm.plugin.brandservice.d.i;
-import com.tencent.mm.plugin.brandservice.ui.timeline.BizTimeLineUI;
-import com.tencent.mm.plugin.brandservice.ui.timeline.b;
-import com.tencent.mm.pluginsdk.model.c;
-import com.tencent.mm.pluginsdk.model.w;
-import com.tencent.mm.pluginsdk.ui.applet.e;
-import com.tencent.mm.pluginsdk.ui.applet.g;
-import com.tencent.mm.pluginsdk.ui.applet.l;
-import com.tencent.mm.pluginsdk.ui.applet.m;
-import com.tencent.mm.pluginsdk.ui.applet.m.a;
-import com.tencent.mm.pluginsdk.ui.applet.n;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.plugin.brandservice.ui.timeline.offenread.g;
+import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.pluginsdk.ui.span.s;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.ui.widget.MMNeat7extView;
+import java.util.Set;
 
 public final class ar
-  extends ak
+  extends ah
 {
-  public ImageView bwJ;
-  public ImageView sCR;
-  public View sDp;
+  TextView vNg;
+  MMNeat7extView vNx;
+  private LinearLayout vNy;
   
-  public final void a(int paramInt1, v paramv, final z paramz, final int paramInt2, u paramu, int paramInt3)
+  public final void a(int paramInt1, final v paramv, ab paramab, int paramInt2, u paramu, int paramInt3)
   {
-    AppMethodBeat.i(6048);
-    super.a(paramInt1, paramv, paramz, paramInt2, paramu, paramInt3);
-    dU(this.sDp);
-    this.sCT.setVisibility(8);
-    this.sDl.setTextColor(this.mContext.getResources().getColor(d.b.light_grey_text_color));
-    this.bwJ.setBackgroundResource(d.h.chatting_item_biz_pic_loading_icon);
-    Object localObject3 = this.sHf.sAc;
-    long l = paramz.field_msgId;
-    String str = paramv.lpK;
-    Object localObject1 = this.sCR;
-    int k = b.sAo;
-    Object localObject2 = new m.a()
+    boolean bool1 = true;
+    AppMethodBeat.i(6061);
+    super.a(paramInt1, paramv, paramab, paramInt2, paramu, paramInt3);
+    paramab.acFw = g.ajf(paramab.field_talker);
+    Object localObject1;
+    if (Util.isNullOrNil(paramv.title))
     {
-      public final void onFinish()
-      {
-        AppMethodBeat.i(6046);
-        ar.this.sCT.setVisibility(0);
-        ar.this.sDl.setTextColor(ar.this.mContext.getResources().getColor(d.b.white_text_color));
-        ar.this.bwJ.setBackgroundResource(d.h.biz_time_line_pic_icon);
-        ar.this.sHf.sAc.p(paramz.field_msgId, paramInt2);
-        AppMethodBeat.o(6046);
-      }
-      
-      public final void onStart() {}
-    };
-    int i;
-    label179:
-    int j;
-    if (paramInt1 == 1)
-    {
-      bool = true;
-      ((ImageView)localObject1).setContentDescription(((com.tencent.mm.plugin.brandservice.ui.timeline.preload.d)localObject3).sAm.getString(d.i.chatting_img_item_desc));
-      str = com.tencent.mm.plugin.brandservice.ui.timeline.preload.d.Wm(str);
-      Object localObject4 = g.Rfj;
-      if (g.aqi(1))
-      {
-        localObject4 = c.QUt;
-        c.m(l, 0, paramv.url);
-      }
-      if (!bool) {
-        break label425;
-      }
-      i = d.d.spx;
-      if (!bool) {
-        break label431;
-      }
-      j = d.d.spy;
-      label189:
-      float f = a.fromDPToPix(((com.tencent.mm.plugin.brandservice.ui.timeline.preload.d)localObject3).sAm, 8);
-      int m = ((com.tencent.mm.plugin.brandservice.ui.timeline.preload.d)localObject3).getContentWidth();
-      localObject3 = com.tencent.mm.pluginsdk.model.d.QUR;
-      localObject3 = new c.a();
-      ((c.a)localObject3).lRS = j;
-      ((c.a)localObject3).lRD = true;
-      localObject3 = ((c.a)localObject3).dO(m, k);
-      ((c.a)localObject3).lRU = String.valueOf(i);
-      ((c.a)localObject3).lRs = new n(1);
-      ((c.a)localObject3).lSb = new e(1);
-      ((c.a)localObject3).lSc = new l();
-      ((c.a)localObject3).fullPath = w.bpO(str);
-      com.tencent.mm.pluginsdk.model.d.a(l, 0, paramv, str, (ImageView)localObject1, paramInt3, false, ((c.a)localObject3).bmL(), new m(1, m, k, false, bool, f, (m.a)localObject2));
-      a(this, paramz, paramv);
-      localObject1 = this.sHf;
-      localObject2 = this.sDd;
-      if (paramInt1 <= 1) {
-        break label439;
+      this.vNx.aZ("");
+      this.vNx.setVisibility(8);
+      paramInt3 = com.tencent.mm.cd.a.ms(this.mContext);
+      int i = com.tencent.mm.cd.a.fromDPToPix(this.mContext, 72);
+      localObject1 = this.vNx.pE(paramInt3 - i, 2147483647);
+      if (localObject1 == null) {
+        break label421;
       }
     }
-    label425:
-    label431:
-    label439:
-    for (boolean bool = true;; bool = false)
+    label415:
+    label421:
+    for (paramInt3 = ((com.tencent.neattextview.textview.layout.a)localObject1).jQH();; paramInt3 = 0)
     {
-      ((b)localObject1).a(paramv, paramz, paramInt2, paramu, (View)localObject2, bool, 0);
-      if (paramInt1 != 1) {
-        break label445;
+      localObject1 = (LinearLayout.LayoutParams)this.vNx.getLayoutParams();
+      Object localObject2 = (LinearLayout.LayoutParams)this.vNy.getLayoutParams();
+      if (paramInt3 <= 3)
+      {
+        this.vNg.setVisibility(8);
+        ((LinearLayout.LayoutParams)localObject2).gravity = 16;
+        this.vNy.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        ((LinearLayout.LayoutParams)localObject1).topMargin = 0;
+        ((LinearLayout.LayoutParams)localObject1).gravity = 17;
+        this.vNx.setMaxLines(3);
+        this.vNx.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        this.vIV.setBackgroundResource(d.d.biz_time_line_item_bottom_bg);
+        a(this, paramab, paramv);
+        localObject1 = this.vMC;
+        localObject2 = this.vIV;
+        if (paramInt1 <= 1) {
+          break label415;
+        }
       }
-      this.sDf.setBackgroundResource(d.d.spA);
-      this.sCT.setBackgroundResource(d.d.spG);
-      AppMethodBeat.o(6048);
-      return;
-      bool = false;
-      break;
-      i = 0;
-      break label179;
-      j = d.d.spB;
-      break label189;
+      for (;;)
+      {
+        ((com.tencent.mm.plugin.brandservice.ui.timeline.b)localObject1).a(paramv, paramab, paramInt2, paramu, (View)localObject2, bool1, 0);
+        AppMethodBeat.o(6061);
+        return;
+        this.vNx.setVisibility(0);
+        this.vNx.aZ(p.j(this.mContext, paramv.title, (int)this.vNx.getTextSize()));
+        break;
+        boolean bool2 = this.vMC.vFS.contains(paramv);
+        this.vNg.setVisibility(0);
+        ((LinearLayout.LayoutParams)localObject2).gravity = 48;
+        this.vNy.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        ((LinearLayout.LayoutParams)localObject1).topMargin = com.tencent.mm.cd.a.fromDPToPix(this.mContext, 12);
+        ((LinearLayout.LayoutParams)localObject1).gravity = 8388627;
+        if (bool2)
+        {
+          this.vNx.setMaxLines(2147483647);
+          this.vNg.setText(d.i.biz_time_line_item_text_collapse);
+        }
+        for (;;)
+        {
+          this.vNg.setOnClickListener(new View.OnClickListener()
+          {
+            public final void onClick(View paramAnonymousView)
+            {
+              AppMethodBeat.i(6059);
+              com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+              localb.cH(paramAnonymousView);
+              com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTimeLineTopTextSlot$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+              if (ar.this.vMC.vFS.contains(paramv))
+              {
+                ar.this.vNx.setMaxLines(3);
+                ar.this.vNg.setText(d.i.biz_time_line_item_text_expand);
+                ar.this.vMC.vFS.remove(paramv);
+              }
+              for (;;)
+              {
+                com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTimeLineTopTextSlot$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+                AppMethodBeat.o(6059);
+                return;
+                ar.this.vNx.setMaxLines(2147483647);
+                ar.this.vNg.setText(d.i.biz_time_line_item_text_collapse);
+                ar.this.vMC.vFS.add(paramv);
+              }
+            }
+          });
+          break;
+          this.vNx.setMaxLines(3);
+          this.vNg.setText(d.i.biz_time_line_item_text_expand);
+        }
+        bool1 = false;
+      }
     }
-    label445:
-    this.sDf.setBackgroundResource(d.d.spC);
-    this.sCT.setBackgroundResource(d.d.spH);
-    AppMethodBeat.o(6048);
   }
   
-  public final void a(View paramView, b paramb)
+  public final void a(View paramView, com.tencent.mm.plugin.brandservice.ui.timeline.b paramb)
   {
-    AppMethodBeat.i(6047);
+    AppMethodBeat.i(6060);
     super.a(paramView, paramb);
-    if (this.sEi != null)
+    if (this.vJU != null)
     {
-      AppMethodBeat.o(6047);
+      AppMethodBeat.o(6060);
       return;
     }
-    paramb = (ViewStub)paramView.findViewById(d.e.dZx);
+    paramb = (ViewStub)paramView.findViewById(d.e.viewstub_top_text_slot);
     if (paramb == null)
     {
-      AppMethodBeat.o(6047);
+      AppMethodBeat.o(6060);
       return;
     }
     paramb.inflate();
-    this.sEi = paramView.findViewById(d.e.sqN);
-    this.sDd = paramView.findViewById(d.e.sry);
-    cAo();
-    this.sCR = ((ImageView)this.sEi.findViewById(d.e.cover));
-    this.sCT = ((ImageView)this.sEi.findViewById(d.e.dCV));
-    this.bwJ = ((ImageView)this.sEi.findViewById(d.e.dRf));
-    this.sDp = this.sEi.findViewById(d.e.dza);
-    this.sDf = ((ImageView)this.sEi.findViewById(d.e.dRn));
-    AppMethodBeat.o(6047);
+    this.vJU = paramView.findViewById(d.e.chatting_item_biz_text);
+    this.vIV = paramView.findViewById(d.e.chatting_item_biz_text_click_view);
+    ddp();
+    this.vNx = ((MMNeat7extView)paramView.findViewById(d.e.biz_time_line_text));
+    this.vNx.setOnTouchListener(new l(this.vNx, new s(this.vNx.getContext())));
+    this.vNg = ((TextView)paramView.findViewById(d.e.biz_time_line_text_expand));
+    this.vNy = ((LinearLayout)paramView.findViewById(d.e.text_layout));
+    AppMethodBeat.o(6060);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.item.ar
  * JD-Core Version:    0.7.0.1
  */

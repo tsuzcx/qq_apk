@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.j;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Message;
 import android.view.LayoutInflater;
@@ -11,13 +10,12 @@ import com.tencent.mm.ah.a.g;
 import com.tencent.mm.ah.a.h;
 import com.tencent.mm.ah.a.l;
 import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.ui.base.r;
+import com.tencent.mm.ui.base.v;
 
 public final class b
-  extends r
+  extends v
 {
   public long mDuration;
-  @SuppressLint({"HandlerLeak"})
   private MMHandler mHandler;
   
   private b(View paramView)
@@ -44,7 +42,7 @@ public final class b
     AppMethodBeat.o(142861);
   }
   
-  public static b lx(Context paramContext)
+  public static b nz(Context paramContext)
   {
     AppMethodBeat.i(142862);
     paramContext = LayoutInflater.from(paramContext).inflate(a.h.toast_popup, null);
@@ -89,7 +87,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.j.b
  * JD-Core Version:    0.7.0.1
  */

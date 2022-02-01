@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.mmsight.segment;
 
 public final class l$a
 {
-  public static final int background_transparent = 2131493173;
+  public static final int background_transparent = 2131493168;
 }
 
 

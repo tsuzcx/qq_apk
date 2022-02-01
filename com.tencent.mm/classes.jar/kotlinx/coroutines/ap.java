@@ -1,96 +1,62 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.concurrent.atomic.AtomicLong;
-import kotlin.l;
-import kotlinx.coroutines.internal.x;
-import kotlinx.coroutines.internal.y;
+import kotlin.Metadata;
+import kotlin.d.a;
+import kotlin.d.f.c;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"ASSERTIONS_ENABLED", "", "getASSERTIONS_ENABLED", "()Z", "COROUTINE_ID", "Ljava/util/concurrent/atomic/AtomicLong;", "getCOROUTINE_ID", "()Ljava/util/concurrent/atomic/AtomicLong;", "DEBUG", "getDEBUG", "DEBUG_PROPERTY_NAME", "", "DEBUG_PROPERTY_VALUE_AUTO", "DEBUG_PROPERTY_VALUE_OFF", "DEBUG_PROPERTY_VALUE_ON", "RECOVER_STACK_TRACES", "getRECOVER_STACK_TRACES", "STACKTRACE_RECOVERY_PROPERTY_NAME", "assert", "", "value", "Lkotlin/Function0;", "resetCoroutineId", "kotlinx-coroutines-core"})
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/CoroutineName;", "Lkotlin/coroutines/AbstractCoroutineContextElement;", "name", "", "(Ljava/lang/String;)V", "getName", "()Ljava/lang/String;", "component1", "copy", "equals", "", "other", "", "hashCode", "", "toString", "Key", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ap
+  extends a
 {
-  private static final boolean DEBUG;
-  private static final boolean abwF;
-  private static final boolean abwG;
-  private static final AtomicLong abwH;
+  public static final a ajvJ;
   
   static
   {
-    boolean bool2 = true;
-    AppMethodBeat.i(118233);
-    abwF = ai.class.desiredAssertionStatus();
-    Object localObject = x.bHF("kotlinx.coroutines.debug");
-    if (localObject == null)
+    AppMethodBeat.i(118179);
+    ajvJ = new a((byte)0);
+    AppMethodBeat.o(118179);
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    AppMethodBeat.i(118181);
+    if (this == paramObject)
     {
-      bool1 = abwF;
-      label29:
-      DEBUG = bool1;
-      if ((!bool1) || (!y.bHG("kotlinx.coroutines.stacktrace.recovery"))) {
-        break label210;
-      }
+      AppMethodBeat.o(118181);
+      return true;
     }
-    label210:
-    for (boolean bool1 = bool2;; bool1 = false)
+    if (!(paramObject instanceof ap))
     {
-      abwG = bool1;
-      abwH = new AtomicLong(0L);
-      AppMethodBeat.o(118233);
-      return;
-      switch (((String)localObject).hashCode())
-      {
-      default: 
-      case 0: 
-        label116:
-        do
-        {
-          localObject = (Throwable)new IllegalStateException(("System property 'kotlinx.coroutines.debug' has unrecognized value '" + (String)localObject + '\'').toString());
-          AppMethodBeat.o(118233);
-          throw ((Throwable)localObject);
-        } while (!((String)localObject).equals(""));
-      }
-      for (;;)
-      {
-        bool1 = true;
-        break label29;
-        if (!((String)localObject).equals("auto")) {
-          break label116;
-        }
-        break;
-        if (!((String)localObject).equals("off")) {
-          break label116;
-        }
-        bool1 = false;
-        break label29;
-        if (!((String)localObject).equals("on")) {
-          break label116;
-        }
-      }
+      AppMethodBeat.o(118181);
+      return false;
     }
+    AppMethodBeat.o(118181);
+    throw null;
   }
   
-  public static final boolean getDEBUG()
+  public final int hashCode()
   {
-    return DEBUG;
+    AppMethodBeat.i(118180);
+    AppMethodBeat.o(118180);
+    throw null;
   }
   
-  public static final boolean iRg()
+  public final String toString()
   {
-    return abwF;
+    AppMethodBeat.i(118178);
+    AppMethodBeat.o(118178);
+    throw null;
   }
   
-  public static final boolean iRh()
-  {
-    return abwG;
-  }
-  
-  public static final AtomicLong iRi()
-  {
-    return abwH;
-  }
+  @Metadata(d1={""}, d2={"Lkotlinx/coroutines/CoroutineName$Key;", "Lkotlin/coroutines/CoroutineContext$Key;", "Lkotlinx/coroutines/CoroutineName;", "()V", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+    implements f.c<ap>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     kotlinx.coroutines.ap
  * JD-Core Version:    0.7.0.1
  */

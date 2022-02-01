@@ -6,10 +6,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class WWMediaLocation
   extends WWMediaMessage.WWMediaObject
 {
-  public double ZYv;
-  public String lLg;
+  public double aicZ;
   public double latitude;
   public double longitude;
+  public String oDI;
   
   public final boolean checkArgs()
   {
@@ -19,7 +19,7 @@ public class WWMediaLocation
       AppMethodBeat.o(106544);
       return false;
     }
-    if ((this.lLg != null) && (this.lLg.length() != 0) && (this.lLg.length() <= 10240))
+    if ((this.oDI != null) && (this.oDI.length() != 0) && (this.oDI.length() <= 10240))
     {
       AppMethodBeat.o(106544);
       return true;
@@ -30,22 +30,22 @@ public class WWMediaLocation
   
   public final void fromBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(233401);
-    this.lLg = paramBundle.getString("_wwlocobject_address");
+    AppMethodBeat.i(210609);
+    this.oDI = paramBundle.getString("_wwlocobject_address");
     this.longitude = paramBundle.getDouble("_wwlocobject_longitude");
     this.latitude = paramBundle.getDouble("_wwlocobject_latitude");
-    this.ZYv = paramBundle.getDouble("_wwlocobject_zoom");
+    this.aicZ = paramBundle.getDouble("_wwlocobject_zoom");
     super.fromBundle(paramBundle);
-    AppMethodBeat.o(233401);
+    AppMethodBeat.o(210609);
   }
   
   public final void toBundle(Bundle paramBundle)
   {
     AppMethodBeat.i(106545);
-    paramBundle.putString("_wwlocobject_address", this.lLg);
+    paramBundle.putString("_wwlocobject_address", this.oDI);
     paramBundle.putDouble("_wwlocobject_longitude", this.longitude);
     paramBundle.putDouble("_wwlocobject_latitude", this.latitude);
-    paramBundle.putDouble("_wwlocobject_zoom", this.ZYv);
+    paramBundle.putDouble("_wwlocobject_zoom", this.aicZ);
     super.toBundle(paramBundle);
     AppMethodBeat.o(106545);
   }

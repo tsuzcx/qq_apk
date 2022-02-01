@@ -10,31 +10,31 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  private static final SparseIntArray cqh;
   private static float density;
+  private static final SparseIntArray ehY;
   
   static
   {
-    AppMethodBeat.i(258910);
+    AppMethodBeat.i(235339);
     density = -1.0F;
-    cqh = new SparseIntArray();
-    AppMethodBeat.o(258910);
+    ehY = new SparseIntArray();
+    AppMethodBeat.o(235339);
   }
   
-  public static int H(Context paramContext, int paramInt)
+  public static int K(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(258909);
+    AppMethodBeat.i(235334);
     float f1 = paramInt;
     Context localContext = paramContext;
     if (paramContext == null)
     {
-      paramContext = b.cox;
+      paramContext = b.efD;
       localContext = b.a.getAppContext();
     }
     float f2 = localContext.getResources().getDisplayMetrics().density;
     density = f2;
     paramInt = Math.round(f1 / f2);
-    AppMethodBeat.o(258909);
+    AppMethodBeat.o(235334);
     return paramInt;
   }
 }

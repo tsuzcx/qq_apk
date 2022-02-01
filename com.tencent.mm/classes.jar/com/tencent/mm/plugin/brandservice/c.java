@@ -3,17 +3,21 @@ package com.tencent.mm.plugin.brandservice;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.u;
-import com.tencent.mm.aj.v;
+import com.tencent.mm.ipcinvoker.f;
+import com.tencent.mm.message.q;
+import com.tencent.mm.message.v;
+import com.tencent.mm.message.y;
 import com.tencent.mm.model.p.a;
 import com.tencent.mm.plugin.biz.PluginBiz;
-import com.tencent.mm.plugin.brandservice.b.h.a;
-import com.tencent.mm.plugin.brandservice.ui.timeline.item.y.a;
+import com.tencent.mm.plugin.brandservice.model.d;
+import com.tencent.mm.plugin.brandservice.model.h.a;
+import com.tencent.mm.plugin.brandservice.ui.timeline.item.BizTLRecCardJsEngine;
+import com.tencent.mm.plugin.brandservice.ui.timeline.item.BizTLRecCardJsEngine.Companion;
 import com.tencent.mm.plugin.brandservice.ui.timeline.preload.UrlExKt;
-import com.tencent.mm.protocal.protobuf.fu;
-import com.tencent.mm.protocal.protobuf.jd;
+import com.tencent.mm.plugin.webview.ui.tools.media.e;
+import com.tencent.mm.protocal.protobuf.go;
+import com.tencent.mm.protocal.protobuf.jz;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMCacheSlotManager;
@@ -23,9 +27,10 @@ import com.tencent.mm.sdk.platformtools.MMSlotKt;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.r;
-import com.tencent.mm.storage.z;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.threadpool.i;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -36,32 +41,33 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
-import kotlin.a.j;
-import kotlin.g;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.j;
 import org.json.JSONObject;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/BrandServiceImpl;", "Lcom/tencent/mm/plugin/brandservice/api/IBrandService;", "()V", "TAG", "", "chatSessions", "Ljava/util/concurrent/ConcurrentHashMap;", "", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "getHandler", "()Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handler$delegate", "Lkotlin/Lazy;", "minPreloadTime", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMmkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "mmkv$delegate", "addReportParamForBizUrl", "url", "scene", "", "subScene", "clickTime", "addToPreload", "", "itemShowType", "openScene", "vals", "", "", "(Ljava/lang/String;II[Ljava/lang/Object;)V", "appMsgPaySuccess", "canPreloadIn", "", "dispatchEvent", "appId", "event", "data", "doPreloadTimelineRecCard", "path", "canvasId", "doSendMpShareVideoMsg", "toUser", "msgInfo", "Lcom/tencent/mm/message/MPShareVideoInfo;", "appendText", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Landroid/os/Bundle;", "favMpVideo", "videoInfo", "Lcom/tencent/mm/protocal/protobuf/BaseMpShareVideoInfo;", "getAppMsgRelatedInfo", "Lcom/tencent/mm/message/AppMsgRelatedInfo;", "reqType", "getAppMsgRelatedInfoForAppMsg", "items", "", "Lcom/tencent/mm/message/AppMsgUrlReqInfo;", "getAppMsgRelatedInfoForBizMsg", "getBizFinderLiveChecker", "Lcom/tencent/mm/plugin/brandservice/api/IBizFinderLiveChecker;", "getBizTimeLineSessionId", "getChannelFeeds", "getChatSession", "chatName", "getFinderLiveExportId", "userName", "getFinderLiveScene", "getHardCodeUrl", "getUrlKey", "isBizNativePageOpen", "isBizTimeLineOpen", "isFinderLiveNow", "isMpArticle", "isMpUrl", "isPayReadingOpen", "isShowBigPic", "baseInfo", "baseTopItem", "count", "isSupportStyle", "style", "onFinderLiveClick", "context", "Landroid/content/Context;", "bizUserName", "finderFeedExportId", "liveScene", "onResumeCheckFinderLive", "openBizProfileLive", "openWebTopBarLive", "openWebViewUseFastLoad", "Lorg/json/JSONObject;", "ret", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "preCreateWebView", "preloadByIdAndUrls", "preloadByInfoIdAndBuffer", "preloadTimelineCanvas", "preloadTimelineRecCard", "preloadTimelineVideoChannel", "recycleTimelineCanvas", "safeExecute", "block", "Lkotlin/Function0;", "safePreload", "saveChannelFeeds", "channelFeeds", "setChatSession", "setRecommendReportData", "reportData", "shareMpVideoToSns", "activity", "Lcom/tencent/mm/ui/MMActivity;", "currentEnterId", "startPreloadWebView", "isNative", "intent", "Landroid/content/Intent;", "openType", "result", "Lcom/tencent/mm/plugin/brandservice/api/IBrandService$PreloadWebViewResult;", "tryPreloadTmplWebview", "updateChannelFeeds", "Lcom/tencent/mm/plugin/brandservice/api/IBrandService$UpdateChannelFeedsCallback;", "Companion", "plugin-brandservice_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/BrandServiceImpl;", "Lcom/tencent/mm/plugin/brandservice/api/IBrandService;", "()V", "TAG", "", "chatSessions", "Ljava/util/concurrent/ConcurrentHashMap;", "", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "getHandler", "()Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handler$delegate", "Lkotlin/Lazy;", "minPreloadTime", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMmkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "mmkv$delegate", "addReportParamForBizUrl", "url", "scene", "", "subScene", "clickTime", "addToPreload", "", "itemShowType", "openScene", "vals", "", "", "(Ljava/lang/String;II[Ljava/lang/Object;)V", "appMsgPaySuccess", "canPreloadIn", "", "dispatchEvent", "appId", "event", "data", "doPreloadTimelineRecCard", "path", "canvasId", "msgId", "doSendMpShareVideoMsg", "toUser", "msgInfo", "Lcom/tencent/mm/message/MPShareVideoInfo;", "appendText", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Landroid/os/Bundle;", "favMpVideo", "videoInfo", "Lcom/tencent/mm/protocal/protobuf/BaseMpShareVideoInfo;", "getAppMsgRelatedInfo", "Lcom/tencent/mm/message/AppMsgRelatedInfo;", "reqType", "getAppMsgRelatedInfoForAppMsg", "items", "", "Lcom/tencent/mm/message/AppMsgUrlReqInfo;", "getAppMsgRelatedInfoForBizMsg", "getBizFinderLiveChecker", "Lcom/tencent/mm/plugin/brandservice/api/IBizFinderLiveChecker;", "getBizTimeLineSessionId", "getChannelFeeds", "getChatSession", "chatName", "getFinderLiveExportId", "userName", "getFinderLiveScene", "getHardCodeUrl", "getOfficialAccountPos", "getTimelineCanvasPkgVersion", "getUrlKey", "isBizNativePageOpen", "isBizTimeLineOpen", "isCanvasPreloaded", "isFinderLiveNow", "isMpArticle", "isMpUrl", "isPayReadingOpen", "isShowBigPic", "baseInfo", "baseTopItem", "count", "isSupportStyle", "style", "onFinderLiveClick", "context", "Landroid/content/Context;", "bizUserName", "finderFeedExportId", "liveScene", "bypass", "onResumeCheckFinderLive", "openBizProfileLive", "openWebTopBarLive", "openWebViewUseFastLoad", "Lorg/json/JSONObject;", "ret", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "preCreateWebView", "preloadByIdAndUrls", "preloadByInfoIdAndBuffer", "preloadTimelineCanvas", "preloadTimelineRecCard", "preloadTimelineVideoChannel", "recycleTimelineCanvas", "removeAllBizPreloadData", "safeExecute", "block", "Lkotlin/Function0;", "safePreload", "saveChannelFeeds", "channelFeeds", "setChatSession", "setRecommendReportData", "reportData", "shareMpVideoToSns", "activity", "Lcom/tencent/mm/ui/MMActivity;", "currentEnterId", "startPreloadWebView", "isNative", "intent", "Landroid/content/Intent;", "openType", "result", "Lcom/tencent/mm/plugin/brandservice/api/IBrandService$PreloadWebViewResult;", "tryPreloadTmplWebview", "updateChannelFeeds", "Lcom/tencent/mm/plugin/brandservice/api/IBrandService$UpdateChannelFeedsCallback;", "Companion", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
-  implements com.tencent.mm.plugin.brandservice.a.c
+  implements com.tencent.mm.plugin.brandservice.api.c
 {
-  private static final MMCacheSlotManager soA;
-  private static final MMCacheSlotManager soB;
-  private static final MMCacheSlotManager soC;
-  public static final a soD;
+  public static final a vAt;
+  private static final MMCacheSlotManager vAw;
+  private static final MMCacheSlotManager vAx;
+  private static final MMCacheSlotManager vAy;
   private final String TAG;
-  private final kotlin.f lrB;
-  private final kotlin.f ocu;
-  private final ConcurrentHashMap<String, Long> soy;
-  private final long soz;
+  private final j exj;
+  private final j rdm;
+  private final ConcurrentHashMap<String, Long> vAu;
+  private final long vAv;
   
   static
   {
     AppMethodBeat.i(6487);
-    soD = new a((byte)0);
-    soA = new MMCacheSlotManager();
-    soB = new MMCacheSlotManager();
-    soC = new MMCacheSlotManager();
+    vAt = new a((byte)0);
+    vAw = new MMCacheSlotManager();
+    vAx = new MMCacheSlotManager();
+    vAy = new MMCacheSlotManager();
     AppMethodBeat.o(6487);
   }
   
@@ -69,74 +75,262 @@ public final class c
   {
     AppMethodBeat.i(6486);
     this.TAG = "MicroMsg.BrandServiceImpl";
-    this.lrB = g.ar((kotlin.g.a.a)new i(this));
-    this.soy = new ConcurrentHashMap();
-    this.soz = 15000L;
-    this.ocu = g.ar((kotlin.g.a.a)h.soL);
+    this.exj = kotlin.k.cm((kotlin.g.a.a)new e(this));
+    this.vAu = new ConcurrentHashMap();
+    this.vAv = 15000L;
+    this.rdm = kotlin.k.cm((kotlin.g.a.a)d.vAB);
     AppMethodBeat.o(6486);
   }
   
-  private final void B(kotlin.g.a.a<x> parama)
+  private static final void a(c paramc, kotlin.g.a.a parama)
   {
-    AppMethodBeat.i(259558);
-    long l = System.currentTimeMillis() - PluginBiz.startTime;
-    if ((l < this.soz) && (!BuildInfo.IS_FLAVOR_RED) && (!BuildInfo.DEBUG))
+    AppMethodBeat.i(301577);
+    s.u(paramc, "this$0");
+    s.u(parama, "$block");
+    com.tencent.mm.plugin.biz.b.c localc = com.tencent.mm.plugin.biz.b.c.vtp;
+    int i = com.tencent.mm.plugin.biz.b.c.daA().decodeInt("biz_canvas_card_preload_crash_times", 0);
+    localc = com.tencent.mm.plugin.biz.b.c.vtp;
+    if (!com.tencent.mm.plugin.biz.b.c.b(i, 0L, "biz_canvas_card_preload_last_time", 10L))
     {
-      com.tencent.e.h.ZvG.o((Runnable)new o(parama), Math.max(this.soz - l, 5000L));
-      AppMethodBeat.o(259558);
+      AppMethodBeat.o(301577);
+      return;
+    }
+    localc = com.tencent.mm.plugin.biz.b.c.vtp;
+    com.tencent.mm.plugin.biz.b.c.daA().encode("biz_canvas_card_preload_crash_times", i + 1);
+    Log.i(paramc.TAG, "safePreload set crash flag");
+    parama.invoke();
+    parama = com.tencent.mm.plugin.biz.b.c.vtp;
+    com.tencent.mm.plugin.biz.b.c.daA().encode("biz_canvas_card_preload_crash_times", 0);
+    Log.i(paramc.TAG, "safePreload reset crash flag");
+    AppMethodBeat.o(301577);
+  }
+  
+  private static final void a(String paramString, int paramInt1, int paramInt2, Object[] paramArrayOfObject, c paramc)
+  {
+    AppMethodBeat.i(301551);
+    s.u(paramString, "$url");
+    s.u(paramArrayOfObject, "$vals");
+    s.u(paramc, "this$0");
+    try
+    {
+      com.tencent.mm.plugin.brandservice.ui.timeline.preload.m.a(paramString, paramInt1, paramInt2, Arrays.copyOf(paramArrayOfObject, paramArrayOfObject.length));
+      AppMethodBeat.o(301551);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      Log.w(paramc.TAG, "addToPreload ex %s", new Object[] { paramString.getMessage() });
+      AppMethodBeat.o(301551);
+    }
+  }
+  
+  private final void aB(kotlin.g.a.a<ah> parama)
+  {
+    AppMethodBeat.i(301535);
+    long l = System.currentTimeMillis() - PluginBiz.startTime;
+    if ((l < this.vAv) && (!BuildInfo.IS_FLAVOR_RED) && (!BuildInfo.DEBUG))
+    {
+      com.tencent.threadpool.h.ahAA.p(new c..ExternalSyntheticLambda7(parama), Math.max(this.vAv - l, 5000L));
+      AppMethodBeat.o(301535);
       return;
     }
     parama.invoke();
-    AppMethodBeat.o(259558);
+    AppMethodBeat.o(301535);
   }
   
-  private final void C(final kotlin.g.a.a<x> parama)
+  private final void aC(kotlin.g.a.a<ah> parama)
   {
-    AppMethodBeat.i(259570);
-    btS().post((Runnable)new p(this, parama));
-    AppMethodBeat.o(259570);
+    AppMethodBeat.i(301547);
+    getHandler().post(new c..ExternalSyntheticLambda0(this, parama));
+    AppMethodBeat.o(301547);
   }
   
-  private final MultiProcessMMKV bcJ()
+  private static final void aD(kotlin.g.a.a parama)
   {
-    AppMethodBeat.i(259507);
-    MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)this.lrB.getValue();
-    AppMethodBeat.o(259507);
+    AppMethodBeat.i(301572);
+    s.u(parama, "$block");
+    parama.invoke();
+    AppMethodBeat.o(301572);
+  }
+  
+  private final MultiProcessMMKV atj()
+  {
+    AppMethodBeat.i(301529);
+    MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)this.exj.getValue();
+    AppMethodBeat.o(301529);
     return localMultiProcessMMKV;
   }
   
-  private MMHandler btS()
+  private MMHandler getHandler()
   {
-    AppMethodBeat.i(259569);
-    MMHandler localMMHandler = (MMHandler)this.ocu.getValue();
-    AppMethodBeat.o(259569);
+    AppMethodBeat.i(301541);
+    MMHandler localMMHandler = (MMHandler)this.rdm.getValue();
+    AppMethodBeat.o(301541);
     return localMMHandler;
   }
   
-  public final boolean E(Object paramObject1, Object paramObject2)
+  private static final void k(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    Object localObject = null;
-    AppMethodBeat.i(6485);
-    if (!(paramObject1 instanceof z)) {
-      paramObject1 = null;
-    }
-    for (;;)
-    {
-      z localz = (z)paramObject1;
-      if (!(paramObject2 instanceof v)) {}
-      for (paramObject1 = localObject;; paramObject1 = paramObject2)
-      {
-        boolean bool = com.tencent.mm.plugin.brandservice.ui.b.a.a(localz, (v)paramObject1);
-        AppMethodBeat.o(6485);
-        return bool;
-      }
-    }
+    AppMethodBeat.i(301566);
+    com.tencent.mm.plugin.brandservice.model.h localh = com.tencent.mm.plugin.brandservice.model.h.vCa;
+    com.tencent.mm.plugin.brandservice.model.h.l(paramString, paramInt1, paramInt2, paramInt3);
+    AppMethodBeat.o(301566);
   }
   
-  public final boolean Gv(int paramInt)
+  private static final void v(List paramList, int paramInt)
+  {
+    AppMethodBeat.i(301553);
+    s.u(paramList, "$it");
+    com.tencent.mm.plugin.brandservice.ui.timeline.preload.m.s(paramList, paramInt);
+    AppMethodBeat.o(301553);
+  }
+  
+  private static final void w(List paramList, int paramInt)
+  {
+    AppMethodBeat.i(301556);
+    s.u(paramList, "$it");
+    com.tencent.mm.plugin.brandservice.ui.timeline.preload.m.t(paramList, paramInt);
+    AppMethodBeat.o(301556);
+  }
+  
+  private static final void x(List paramList, int paramInt)
+  {
+    AppMethodBeat.i(301564);
+    s.u(paramList, "$items");
+    Object localObject1 = com.tencent.mm.plugin.brandservice.model.h.vCa;
+    s.u(paramList, "items");
+    com.tencent.mm.plugin.brandservice.model.h.vCd = 0L;
+    com.tencent.mm.plugin.brandservice.model.h.vCe.clear();
+    localObject1 = new LinkedList();
+    Object localObject2 = (Iterable)paramList;
+    paramList = (Collection)new ArrayList();
+    localObject2 = ((Iterable)localObject2).iterator();
+    Object localObject3;
+    while (((Iterator)localObject2).hasNext())
+    {
+      localObject3 = (q)((Iterator)localObject2).next();
+      localObject3 = ((com.tencent.mm.plugin.biz.a.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.biz.a.a.class)).c(((q)localObject3).msgId, ((q)localObject3).nUB).nUC;
+      s.s(localObject3, "service(IAppMsgBizHelper….msgId, it.Content).items");
+      kotlin.a.p.a(paramList, (Iterable)localObject3);
+    }
+    localObject2 = (Iterable)paramList;
+    paramList = (Collection)new ArrayList();
+    localObject2 = ((Iterable)localObject2).iterator();
+    Object localObject4;
+    label245:
+    while (((Iterator)localObject2).hasNext())
+    {
+      localObject3 = ((Iterator)localObject2).next();
+      localObject4 = (v)localObject3;
+      if (((v)localObject4).url == null) {}
+      for (boolean bool = false;; bool = UrlExKt.isMpArticleUrl((String)localObject4))
+      {
+        if (!bool) {
+          break label245;
+        }
+        paramList.add(localObject3);
+        break;
+        localObject4 = ((v)localObject4).url;
+        s.s(localObject4, "it.url");
+      }
+    }
+    paramList = ((Iterable)paramList).iterator();
+    while (paramList.hasNext())
+    {
+      localObject3 = (v)paramList.next();
+      localObject2 = new go();
+      ((go)localObject2).Url = ((v)localObject3).url;
+      localObject4 = ((go)localObject2).Url;
+      s.s(localObject4, "appMsgUrlInfo.Url");
+      ((go)localObject2).nUv = com.tencent.mm.plugin.brandservice.model.h.aiQ((String)localObject4);
+      ((go)localObject2).nUA = ((v)localObject3).type;
+      ((go)localObject2).YIl = ((v)localObject3).nVh;
+      if (paramInt == 0)
+      {
+        if (((v)localObject3).nQp == 1)
+        {
+          localObject3 = com.tencent.mm.plugin.brandservice.model.b.vBC;
+          if (com.tencent.mm.plugin.brandservice.model.b.dbx())
+          {
+            ((go)localObject2).nUz = 2;
+            ((LinkedList)localObject1).add(localObject2);
+          }
+        }
+      }
+      else
+      {
+        if (((v)localObject3).nQp == 1)
+        {
+          localObject3 = com.tencent.mm.plugin.brandservice.model.b.vBC;
+          if (!com.tencent.mm.plugin.brandservice.model.b.dbx()) {}
+        }
+        for (((go)localObject2).nUz = 3;; ((go)localObject2).nUz = 1)
+        {
+          ((LinkedList)localObject1).add(localObject2);
+          break;
+        }
+      }
+    }
+    Log.v(com.tencent.mm.plugin.brandservice.model.h.TAG, s.X("getAppMsgRelatedInfoForBizMsg size:", Integer.valueOf(((LinkedList)localObject1).size())));
+    com.tencent.mm.plugin.brandservice.model.h.b((LinkedList)localObject1, paramInt);
+    AppMethodBeat.o(301564);
+  }
+  
+  private static final void y(List paramList, int paramInt)
+  {
+    AppMethodBeat.i(301571);
+    s.u(paramList, "$items");
+    Object localObject1 = com.tencent.mm.plugin.brandservice.model.h.vCa;
+    s.u(paramList, "items");
+    com.tencent.mm.plugin.brandservice.model.h.vCd = 0L;
+    com.tencent.mm.plugin.brandservice.model.h.vCe.clear();
+    localObject1 = new LinkedList();
+    Object localObject3 = (Iterable)paramList;
+    Object localObject2 = (Collection)new ArrayList();
+    localObject3 = ((Iterable)localObject3).iterator();
+    Object localObject4;
+    Object localObject5;
+    label146:
+    while (((Iterator)localObject3).hasNext())
+    {
+      localObject4 = ((Iterator)localObject3).next();
+      localObject5 = (q)localObject4;
+      if (((q)localObject5).Url == null) {}
+      for (boolean bool = false;; bool = UrlExKt.isMpArticleUrl((String)localObject5))
+      {
+        if (!bool) {
+          break label146;
+        }
+        ((Collection)localObject2).add(localObject4);
+        break;
+        localObject5 = ((q)localObject5).Url;
+        s.s(localObject5, "it.Url");
+      }
+    }
+    localObject2 = ((Iterable)localObject2).iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      localObject3 = (q)((Iterator)localObject2).next();
+      localObject4 = new go();
+      ((go)localObject4).Url = ((q)localObject3).Url;
+      localObject5 = ((go)localObject4).Url;
+      s.s(localObject5, "appMsgUrlInfo.Url");
+      ((go)localObject4).nUv = com.tencent.mm.plugin.brandservice.model.h.aiQ((String)localObject5);
+      ((go)localObject4).nUA = ((q)localObject3).nUA;
+      ((go)localObject4).nUz = ((q)localObject3).nUz;
+      if (((go)localObject4).nUz > 0) {
+        ((LinkedList)localObject1).add(localObject4);
+      }
+    }
+    Log.v(com.tencent.mm.plugin.brandservice.model.h.TAG, s.X("getAppMsgRelatedInfoForAppMsg size:", Integer.valueOf(paramList.size())));
+    com.tencent.mm.plugin.brandservice.model.h.b((LinkedList)localObject1, paramInt);
+    AppMethodBeat.o(301571);
+  }
+  
+  public final boolean GU(int paramInt)
   {
     AppMethodBeat.i(6459);
-    if (paramInt == 5)
+    if (paramInt == 16)
     {
       AppMethodBeat.o(6459);
       return true;
@@ -145,62 +339,70 @@ public final class c
     return false;
   }
   
-  public final boolean Gw(int paramInt)
+  public final boolean GV(int paramInt)
   {
     AppMethodBeat.i(6476);
-    boolean bool = com.tencent.mm.plugin.brandservice.ui.timeline.preload.m.Gw(paramInt);
+    boolean bool = com.tencent.mm.plugin.brandservice.ui.timeline.preload.m.GV(paramInt);
     AppMethodBeat.o(6476);
     return bool;
   }
   
-  public final void Gx(int paramInt)
+  public final void GW(int paramInt)
   {
     AppMethodBeat.i(6479);
     com.tencent.mm.plugin.brandservice.ui.timeline.preload.m.run(paramInt);
     AppMethodBeat.o(6479);
   }
   
-  public final com.tencent.mm.plugin.brandservice.a.a Gy(int paramInt)
+  public final com.tencent.mm.plugin.brandservice.api.a GX(int paramInt)
   {
-    AppMethodBeat.i(259542);
-    com.tencent.mm.plugin.brandservice.a.a locala = (com.tencent.mm.plugin.brandservice.a.a)new com.tencent.mm.pluginsdk.model.a(paramInt);
-    AppMethodBeat.o(259542);
+    AppMethodBeat.i(301760);
+    com.tencent.mm.plugin.brandservice.api.a locala = (com.tencent.mm.plugin.brandservice.api.a)new com.tencent.mm.pluginsdk.model.b(paramInt);
+    AppMethodBeat.o(301760);
     return locala;
   }
   
-  public final boolean Gz(int paramInt)
+  public final boolean GY(int paramInt)
   {
-    AppMethodBeat.i(259552);
-    boolean bool = com.tencent.mm.plugin.brandservice.ui.timeline.item.l.Gz(paramInt);
-    AppMethodBeat.o(259552);
+    AppMethodBeat.i(301818);
+    boolean bool = com.tencent.mm.plugin.brandservice.ui.timeline.item.k.GY(paramInt);
+    AppMethodBeat.o(301818);
     return bool;
   }
   
-  public final void O(final String paramString1, final String paramString2, final String paramString3)
+  public final boolean P(Object paramObject1, Object paramObject2)
   {
-    AppMethodBeat.i(259556);
-    kotlin.g.b.p.k(paramString1, "path");
-    kotlin.g.b.p.k(paramString2, "canvasId");
-    kotlin.g.b.p.k(paramString3, "data");
-    r localr = r.VcW;
-    if (r.hvU()) {
-      B((kotlin.g.a.a)new m(this, paramString1, paramString2, paramString3));
+    AppMethodBeat.i(6485);
+    if ((paramObject1 instanceof ab))
+    {
+      paramObject1 = (ab)paramObject1;
+      if (!(paramObject2 instanceof v)) {
+        break label49;
+      }
     }
-    AppMethodBeat.o(259556);
+    label49:
+    for (paramObject2 = (v)paramObject2;; paramObject2 = null)
+    {
+      boolean bool = com.tencent.mm.plugin.brandservice.ui.b.b.a(paramObject1, paramObject2);
+      AppMethodBeat.o(6485);
+      return bool;
+      paramObject1 = null;
+      break;
+    }
   }
   
   public final void a(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(259543);
-    kotlin.g.b.p.k(paramContext, "context");
-    com.tencent.mm.pluginsdk.model.b.QTJ.b(paramContext, paramString1, paramString2, paramInt1, paramInt2);
-    AppMethodBeat.o(259543);
+    AppMethodBeat.i(301767);
+    s.u(paramContext, "context");
+    com.tencent.mm.pluginsdk.model.c.a(com.tencent.mm.pluginsdk.model.c.XPt, paramContext, paramString1, paramString2, paramInt1, paramInt2);
+    AppMethodBeat.o(301767);
   }
   
   public final void a(Context paramContext, JSONObject paramJSONObject, HashMap<String, Object> paramHashMap)
   {
     AppMethodBeat.i(175450);
-    kotlin.g.b.p.k(paramHashMap, "ret");
+    s.u(paramHashMap, "ret");
     if (paramJSONObject == null)
     {
       AppMethodBeat.o(175450);
@@ -211,8 +413,8 @@ public final class c
     Object localObject1;
     if (i == 5)
     {
-      localObject1 = com.tencent.mm.plugin.webview.ui.tools.video.a.QvS;
-      if ((com.tencent.mm.plugin.webview.ui.tools.video.a.hbB()) && (paramJSONObject != null))
+      localObject1 = com.tencent.mm.plugin.webview.ui.tools.video.a.Xok;
+      if ((com.tencent.mm.plugin.webview.ui.tools.video.a.iBO()) && (paramJSONObject != null))
       {
         Log.i("MicroMsg.MPVideoPreviewDataMgr", "saveVideo openwebviewusefastload");
         localObject1 = paramJSONObject.optString("vid");
@@ -224,34 +426,34 @@ public final class c
     }
     for (;;)
     {
-      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1061L, 21L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(1061L, 21L, 1L, false);
       localBundle.putString("url", paramJSONObject.optString("url"));
       localBundle.putInt("item_show_type", paramJSONObject.optInt("item_show_type"));
       localBundle.putInt("scene", paramJSONObject.optInt("scene"));
       localBundle.putInt("subscene", paramJSONObject.optInt("subscene"));
       localBundle.putInt("openType", paramJSONObject.optInt("openType"));
       localBundle.putString("biz_video_channel_session_id", paramJSONObject.optString("channelSessionId"));
-      Object localObject2 = new com.tencent.mm.plugin.brandservice.a.c.a();
+      Object localObject2 = new com.tencent.mm.plugin.brandservice.api.c.a();
       Object localObject3 = new Intent();
       i = localBundle.getInt("scene");
       int j = localBundle.getInt("subscene", 10000);
       localObject1 = localBundle.getString("url");
       paramJSONObject = (JSONObject)localObject1;
-      if (((com.tencent.mm.plugin.brandservice.a.c)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.brandservice.a.c.class)).isMpUrl((String)localObject1))
+      if (((com.tencent.mm.plugin.brandservice.api.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.brandservice.api.c.class)).isMpUrl((String)localObject1))
       {
         k = (int)(System.currentTimeMillis() / 1000L);
-        paramJSONObject = ((com.tencent.mm.plugin.brandservice.a.c)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.brandservice.a.c.class)).e((String)localObject1, i, j, k);
+        paramJSONObject = ((com.tencent.mm.plugin.brandservice.api.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.brandservice.api.c.class)).e((String)localObject1, i, j, k);
       }
-      localObject1 = (com.tencent.mm.plugin.brandservice.a.c)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.brandservice.a.c.class);
+      localObject1 = (com.tencent.mm.plugin.brandservice.api.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.brandservice.api.c.class);
       int k = localBundle.getInt("item_show_type");
       localBundle.getBoolean("isNativePage");
-      boolean bool = ((com.tencent.mm.plugin.brandservice.a.c)localObject1).a(paramContext, paramJSONObject, k, i, j, (Intent)localObject3, localBundle.getInt("openType"), (com.tencent.mm.plugin.brandservice.a.c.a)localObject2);
+      boolean bool = ((com.tencent.mm.plugin.brandservice.api.c)localObject1).a(paramContext, paramJSONObject, k, i, j, (Intent)localObject3, localBundle.getInt("openType"), (com.tencent.mm.plugin.brandservice.api.c.a)localObject2);
       ((Map)paramHashMap).put("success", Boolean.valueOf(bool));
-      if ((!((com.tencent.mm.plugin.brandservice.a.c.a)localObject2).success) && (((com.tencent.mm.plugin.brandservice.a.c.a)localObject2).message != null))
+      if ((!((com.tencent.mm.plugin.brandservice.api.c.a)localObject2).success) && (((com.tencent.mm.plugin.brandservice.api.c.a)localObject2).message != null))
       {
         paramContext = (Map)paramHashMap;
-        paramJSONObject = ((com.tencent.mm.plugin.brandservice.a.c.a)localObject2).message;
-        kotlin.g.b.p.j(paramJSONObject, "result.message");
+        paramJSONObject = ((com.tencent.mm.plugin.brandservice.api.c.a)localObject2).message;
+        s.s(paramJSONObject, "result.message");
         paramContext.put("desc", paramJSONObject);
       }
       AppMethodBeat.o(175450);
@@ -265,212 +467,220 @@ public final class c
       }
       else
       {
-        localObject3 = (MultiProcessMMKV)com.tencent.mm.plugin.webview.ui.tools.video.a.QvR.getSlotForWrite();
-        ((MultiProcessMMKV)localObject3).encode("MicroMsg.MPVideoPreviewDataMgr_" + (String)localObject1 + "_playTime", i);
-        ((MultiProcessMMKV)localObject3).encode("MicroMsg.MPVideoPreviewDataMgr_" + (String)localObject1 + "_expire", System.currentTimeMillis() / 1000L + 600L);
-        ((MultiProcessMMKV)localObject3).encode("MicroMsg.MPVideoPreviewDataMgr_" + (String)localObject1 + "_bitmap", (String)localObject2);
-        com.tencent.mm.plugin.webview.ui.tools.video.a.bnh((String)localObject1);
+        localObject3 = (MultiProcessMMKV)com.tencent.mm.plugin.webview.ui.tools.video.a.Xom.getSlotForWrite();
+        ((MultiProcessMMKV)localObject3).encode("MicroMsg.MPVideoPreviewDataMgr_" + localObject1 + "_playTime", i);
+        ((MultiProcessMMKV)localObject3).encode("MicroMsg.MPVideoPreviewDataMgr_" + localObject1 + "_expire", System.currentTimeMillis() / 1000L + 600L);
+        ((MultiProcessMMKV)localObject3).encode("MicroMsg.MPVideoPreviewDataMgr_" + localObject1 + "_bitmap", (String)localObject2);
+        com.tencent.mm.plugin.webview.ui.tools.video.a.bmO((String)localObject1);
       }
     }
   }
   
-  public final void a(com.tencent.mm.plugin.brandservice.a.c.b paramb)
+  public final void a(com.tencent.mm.plugin.brandservice.api.c.b paramb)
   {
     AppMethodBeat.i(175449);
-    com.tencent.mm.plugin.brandservice.b.d locald = com.tencent.mm.plugin.brandservice.b.d.swc;
-    com.tencent.mm.plugin.brandservice.b.d.b(paramb);
+    d locald = d.vBI;
+    d.b(paramb);
     AppMethodBeat.o(175449);
   }
   
-  public final void a(jd paramjd, MMActivity paramMMActivity, int paramInt)
+  public final void a(jz paramjz, MMActivity paramMMActivity, int paramInt)
   {
-    AppMethodBeat.i(259518);
-    com.tencent.mm.plugin.webview.ui.tools.media.c localc = com.tencent.mm.plugin.webview.ui.tools.media.c.Qud;
-    com.tencent.mm.plugin.webview.ui.tools.media.c.b(paramjd, paramMMActivity, paramInt);
-    AppMethodBeat.o(259518);
+    AppMethodBeat.i(301695);
+    com.tencent.mm.plugin.webview.ui.tools.media.b localb = com.tencent.mm.plugin.webview.ui.tools.media.b.Xmj;
+    com.tencent.mm.plugin.webview.ui.tools.media.b.b(paramjz, paramMMActivity, paramInt);
+    AppMethodBeat.o(301695);
   }
   
-  public final void a(final String paramString, final int paramInt1, final int paramInt2, final Object... paramVarArgs)
+  public final void a(String paramString, int paramInt1, int paramInt2, Object... paramVarArgs)
   {
     AppMethodBeat.i(6461);
-    kotlin.g.b.p.k(paramString, "url");
-    kotlin.g.b.p.k(paramVarArgs, "vals");
-    String str = com.tencent.mm.plugin.brandservice.ui.timeline.preload.c.apI(paramString);
-    if (soA.contains(str))
+    s.u(paramString, "url");
+    s.u(paramVarArgs, "vals");
+    String str = com.tencent.mm.plugin.brandservice.ui.timeline.preload.c.ajj(paramString);
+    if (vAw.contains(str))
     {
       AppMethodBeat.o(6461);
       return;
     }
-    soA.add(str);
-    Log.v(this.TAG, "preloadData: addToPreload:".concat(String.valueOf(str)));
-    com.tencent.e.h.ZvG.d((Runnable)new b(this, paramString, paramInt1, paramInt2, paramVarArgs), "tmplPreload");
+    vAw.add(str);
+    Log.v(this.TAG, s.X("preloadData: addToPreload:", str));
+    com.tencent.threadpool.h.ahAA.g(new c..ExternalSyntheticLambda2(paramString, paramInt1, paramInt2, paramVarArgs, this), "tmplPreload");
     AppMethodBeat.o(6461);
   }
   
-  public final void a(String paramString1, com.tencent.mm.aj.y paramy, String paramString2, com.tencent.mm.ipcinvoker.f<Bundle> paramf)
+  public final void a(String paramString1, y paramy, String paramString2, f<Bundle> paramf)
   {
     AppMethodBeat.i(6482);
-    kotlin.g.b.p.k(paramString1, "toUser");
-    kotlin.g.b.p.k(paramy, "msgInfo");
-    kotlin.g.b.p.k(paramf, "callback");
-    com.tencent.mm.plugin.webview.ui.tools.media.d locald = com.tencent.mm.plugin.webview.ui.tools.media.d.Qug;
-    com.tencent.mm.plugin.webview.ui.tools.media.d.b(paramString1, paramy, paramString2, paramf);
+    s.u(paramString1, "toUser");
+    s.u(paramy, "msgInfo");
+    s.u(paramf, "callback");
+    com.tencent.mm.plugin.webview.ui.tools.media.c localc = com.tencent.mm.plugin.webview.ui.tools.media.c.Xmk;
+    com.tencent.mm.plugin.webview.ui.tools.media.c.b(paramString1, paramy, paramString2, paramf);
     AppMethodBeat.o(6482);
+  }
+  
+  public final void a(final String paramString1, final String paramString2, final String paramString3, final long paramLong)
+  {
+    AppMethodBeat.i(301834);
+    s.u(paramString1, "path");
+    s.u(paramString2, "canvasId");
+    s.u(paramString3, "data");
+    r localr = r.acDM;
+    if (r.iXx()) {
+      aB((kotlin.g.a.a)new g(this, paramString1, paramString2, paramString3, paramLong));
+    }
+    AppMethodBeat.o(301834);
   }
   
   public final boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, int paramInt3, Intent paramIntent)
   {
-    AppMethodBeat.i(259522);
-    kotlin.g.b.p.k(paramContext, "context");
-    kotlin.g.b.p.k(paramString, "url");
-    kotlin.g.b.p.k(paramIntent, "intent");
+    AppMethodBeat.i(301706);
+    s.u(paramContext, "context");
+    s.u(paramString, "url");
+    s.u(paramIntent, "intent");
     boolean bool = com.tencent.mm.plugin.brandservice.ui.timeline.preload.m.a(paramContext, paramString, paramInt1, paramInt2, paramInt3, paramIntent, 0, null, false, 896);
-    AppMethodBeat.o(259522);
+    AppMethodBeat.o(301706);
     return bool;
   }
   
-  public final boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, int paramInt3, Intent paramIntent, int paramInt4, com.tencent.mm.plugin.brandservice.a.c.a parama)
+  public final boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, int paramInt3, Intent paramIntent, int paramInt4, com.tencent.mm.plugin.brandservice.api.c.a parama)
   {
-    AppMethodBeat.i(259523);
-    kotlin.g.b.p.k(paramContext, "context");
-    kotlin.g.b.p.k(paramString, "url");
-    kotlin.g.b.p.k(paramIntent, "intent");
-    kotlin.g.b.p.k(parama, "result");
+    AppMethodBeat.i(301708);
+    s.u(paramContext, "context");
+    s.u(paramString, "url");
+    s.u(paramIntent, "intent");
+    s.u(parama, "result");
     boolean bool = com.tencent.mm.plugin.brandservice.ui.timeline.preload.m.a(paramContext, paramString, paramInt1, paramInt2, paramInt3, paramIntent, paramInt4, parama, false, 512);
-    AppMethodBeat.o(259523);
+    AppMethodBeat.o(301708);
     return bool;
   }
   
-  public final boolean apb(String paramString)
-  {
-    AppMethodBeat.i(259508);
-    if (paramString != null)
-    {
-      boolean bool = UrlExKt.isMpArticleUrl(paramString);
-      AppMethodBeat.o(259508);
-      return bool;
-    }
-    AppMethodBeat.o(259508);
-    return false;
-  }
-  
-  public final com.tencent.mm.aj.p apc(String paramString)
-  {
-    AppMethodBeat.i(6473);
-    h.a locala = h.a.swy;
-    paramString = h.a.apx(paramString);
-    AppMethodBeat.o(6473);
-    return paramString;
-  }
-  
-  public final void apd(String paramString)
+  public final void aiA(String paramString)
   {
     AppMethodBeat.i(6483);
-    kotlin.g.b.p.k(paramString, "chatName");
-    ((Map)this.soy).put(paramString, Long.valueOf(MMSlotKt.now()));
+    s.u(paramString, "chatName");
+    ((Map)this.vAu).put(paramString, Long.valueOf(MMSlotKt.now()));
     AppMethodBeat.o(6483);
   }
   
-  public final long ape(String paramString)
+  public final long aiB(String paramString)
   {
     AppMethodBeat.i(6484);
-    kotlin.g.b.p.k(paramString, "chatName");
-    paramString = (Long)this.soy.get(paramString);
-    if (paramString != null)
+    s.u(paramString, "chatName");
+    paramString = (Long)this.vAu.get(paramString);
+    if (paramString == null)
     {
-      long l = paramString.longValue();
       AppMethodBeat.o(6484);
-      return l;
+      return -1L;
     }
+    long l = paramString.longValue();
     AppMethodBeat.o(6484);
-    return -1L;
+    return l;
   }
   
-  public final String apf(String paramString)
+  public final String aiC(String paramString)
   {
     AppMethodBeat.i(175443);
-    kotlin.g.b.p.k(paramString, "url");
-    paramString = com.tencent.mm.plugin.brandservice.ui.timeline.preload.c.apQ(paramString);
+    s.u(paramString, "url");
+    paramString = com.tencent.mm.plugin.brandservice.ui.timeline.preload.c.ajr(paramString);
     AppMethodBeat.o(175443);
     return paramString;
   }
   
-  public final String apg(String paramString)
+  public final String aiD(String paramString)
   {
-    AppMethodBeat.i(259534);
-    com.tencent.mm.pluginsdk.model.b localb = com.tencent.mm.pluginsdk.model.b.QTJ;
-    paramString = com.tencent.mm.pluginsdk.model.b.bpq(paramString);
-    AppMethodBeat.o(259534);
+    AppMethodBeat.i(301733);
+    com.tencent.mm.pluginsdk.model.c localc = com.tencent.mm.pluginsdk.model.c.XPt;
+    paramString = com.tencent.mm.pluginsdk.model.c.bpi(paramString);
+    AppMethodBeat.o(301733);
     return paramString;
   }
   
-  public final int aph(String paramString)
+  public final int aiE(String paramString)
   {
-    AppMethodBeat.i(259535);
-    com.tencent.mm.pluginsdk.model.b localb = com.tencent.mm.pluginsdk.model.b.QTJ;
-    int i = com.tencent.mm.pluginsdk.model.b.bpr(paramString);
-    AppMethodBeat.o(259535);
+    AppMethodBeat.i(301738);
+    com.tencent.mm.pluginsdk.model.c localc = com.tencent.mm.pluginsdk.model.c.XPt;
+    int i = com.tencent.mm.pluginsdk.model.c.bpj(paramString);
+    AppMethodBeat.o(301738);
     return i;
   }
   
-  public final boolean api(String paramString)
+  public final boolean aiF(String paramString)
   {
-    AppMethodBeat.i(259539);
-    com.tencent.mm.pluginsdk.model.b localb = com.tencent.mm.pluginsdk.model.b.QTJ;
-    boolean bool = com.tencent.mm.pluginsdk.model.b.bmt(paramString);
-    AppMethodBeat.o(259539);
+    AppMethodBeat.i(301754);
+    com.tencent.mm.pluginsdk.model.c localc = com.tencent.mm.pluginsdk.model.c.XPt;
+    boolean bool = com.tencent.mm.pluginsdk.model.c.bpf(paramString);
+    AppMethodBeat.o(301754);
     return bool;
   }
   
-  public final void apj(String paramString)
+  public final void aiG(String paramString)
   {
     AppMethodBeat.i(175448);
     Log.d(this.TAG, "alvinluo saveChannelFeeds %s", new Object[] { paramString });
-    bcJ().putString("video_channel_feeds_data", paramString);
+    atj().putString("video_channel_feeds_data", paramString);
     AppMethodBeat.o(175448);
   }
   
-  public final void apk(String paramString)
+  public final void aiH(String paramString)
   {
-    AppMethodBeat.i(259563);
-    kotlin.g.b.p.k(paramString, "canvasId");
-    Object localObject = r.VcW;
-    if (r.hvM())
-    {
-      localObject = com.tencent.mm.plugin.brandservice.ui.timeline.item.y.sFw.cAO();
-      kotlin.g.b.p.k(paramString, "canvasId");
-      if (((com.tencent.mm.plugin.webcanvas.c)localObject).PtI.containsKey(paramString))
-      {
-        Integer localInteger = (Integer)((com.tencent.mm.plugin.webcanvas.c)localObject).PtI.get(paramString);
-        if (localInteger != null)
-        {
-          kotlin.g.b.p.j(localInteger, "contextId");
-          ((com.tencent.mm.plugin.webcanvas.c)localObject).By(localInteger.intValue());
-          Log.i(((com.tencent.mm.plugin.webcanvas.c)localObject).TAG, "recycleContext canvasId=".concat(String.valueOf(paramString)));
-        }
-        ((com.tencent.mm.plugin.webcanvas.c)localObject).PtI.remove(paramString);
-      }
+    AppMethodBeat.i(301848);
+    s.u(paramString, "canvasId");
+    r localr = r.acDM;
+    if (r.iXl()) {
+      BizTLRecCardJsEngine.vKS.ddS().bhP(paramString);
     }
-    AppMethodBeat.o(259563);
+    AppMethodBeat.o(301848);
   }
   
-  public final void apl(String paramString)
+  public final void aiI(String paramString)
   {
-    AppMethodBeat.i(259567);
-    p.a locala = com.tencent.mm.model.p.lrH;
-    com.tencent.mm.model.p.Pf(paramString);
-    AppMethodBeat.o(259567);
+    AppMethodBeat.i(301862);
+    p.a locala = com.tencent.mm.model.p.ojc;
+    com.tencent.mm.model.p.HY(paramString);
+    AppMethodBeat.o(301862);
   }
   
-  public final void c(jd paramjd)
+  public final boolean aiy(String paramString)
   {
-    AppMethodBeat.i(259517);
-    com.tencent.mm.plugin.webview.ui.tools.media.f localf = com.tencent.mm.plugin.webview.ui.tools.media.f.Quk;
-    com.tencent.mm.plugin.webview.ui.tools.media.f.d(paramjd);
-    AppMethodBeat.o(259517);
+    AppMethodBeat.i(301624);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(301624);
+      return false;
+    }
+    boolean bool = UrlExKt.isMpArticleUrl(paramString);
+    AppMethodBeat.o(301624);
+    return bool;
   }
   
-  public final void cY(String paramString, final int paramInt)
+  public final com.tencent.mm.message.p aiz(String paramString)
+  {
+    AppMethodBeat.i(6473);
+    h.a locala = h.a.vCf;
+    paramString = h.a.aiS(paramString);
+    AppMethodBeat.o(6473);
+    return paramString;
+  }
+  
+  public final void b(Context paramContext, String paramString1, String paramString2, int paramInt, String paramString3)
+  {
+    AppMethodBeat.i(301771);
+    s.u(paramContext, "context");
+    com.tencent.mm.pluginsdk.model.c.a(com.tencent.mm.pluginsdk.model.c.XPt, paramContext, paramString1, paramString2, paramInt, paramString3);
+    AppMethodBeat.o(301771);
+  }
+  
+  public final void c(jz paramjz)
+  {
+    AppMethodBeat.i(301691);
+    e locale = e.Xml;
+    e.d(paramjz);
+    AppMethodBeat.o(301691);
+  }
+  
+  public final void dA(String paramString, int paramInt)
   {
     AppMethodBeat.i(175441);
     if (paramString == null)
@@ -478,150 +688,207 @@ public final class c
       AppMethodBeat.o(175441);
       return;
     }
-    com.tencent.e.h.ZvG.d((Runnable)new e(paramString, paramInt), "getAppMsgRelatedInfo");
+    com.tencent.threadpool.h.ahAA.g(new c..ExternalSyntheticLambda1(paramString, paramInt, 0, 2), "getAppMsgRelatedInfo");
     AppMethodBeat.o(175441);
   }
   
-  public final void cZ(String paramString, int paramInt)
+  public final void dB(String paramString, int paramInt)
   {
     AppMethodBeat.i(6475);
-    kotlin.g.b.p.k(paramString, "url");
-    com.tencent.mm.plugin.brandservice.b.b.svR.cZ(paramString, paramInt);
+    s.u(paramString, "url");
+    com.tencent.mm.plugin.brandservice.model.b.vBC.dB(paramString, paramInt);
     AppMethodBeat.o(6475);
   }
   
-  public final void cp(List<? extends com.tencent.mm.aj.q> paramList)
+  public final int dav()
   {
-    AppMethodBeat.i(259515);
-    kotlin.g.b.p.k(paramList, "items");
-    if (Util.isNullOrNil(paramList))
+    AppMethodBeat.i(301630);
+    com.tencent.mm.plugin.brandservice.api.b localb = (com.tencent.mm.plugin.brandservice.api.b)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.brandservice.api.b.class);
+    if (localb == null)
     {
-      AppMethodBeat.o(259515);
-      return;
+      AppMethodBeat.o(301630);
+      return -1;
     }
-    com.tencent.e.h.ZvG.d((Runnable)new f(paramList), "getAppMsgRelatedInfo");
-    AppMethodBeat.o(259515);
+    int i = localb.dav();
+    AppMethodBeat.o(301630);
+    return i;
   }
   
-  public final boolean cyB()
+  public final void dbA()
+  {
+    AppMethodBeat.i(6481);
+    com.tencent.mm.plugin.brandservice.ui.timeline.preload.ui.a.dhs();
+    AppMethodBeat.o(6481);
+  }
+  
+  public final int dbB()
+  {
+    AppMethodBeat.i(301727);
+    int i = ad.getSessionId();
+    AppMethodBeat.o(301727);
+    return i;
+  }
+  
+  public final boolean dbC()
+  {
+    AppMethodBeat.i(301744);
+    com.tencent.mm.pluginsdk.model.c localc = com.tencent.mm.pluginsdk.model.c.XPt;
+    boolean bool = com.tencent.mm.pluginsdk.model.c.iHa();
+    AppMethodBeat.o(301744);
+    return bool;
+  }
+  
+  public final boolean dbD()
+  {
+    AppMethodBeat.i(301749);
+    com.tencent.mm.pluginsdk.model.c localc = com.tencent.mm.pluginsdk.model.c.XPt;
+    boolean bool = com.tencent.mm.pluginsdk.model.c.iHb();
+    AppMethodBeat.o(301749);
+    return bool;
+  }
+  
+  public final void dbE()
+  {
+    AppMethodBeat.i(301778);
+    com.tencent.mm.pluginsdk.model.c localc = com.tencent.mm.pluginsdk.model.c.XPt;
+    com.tencent.mm.pluginsdk.model.c.onResume();
+    AppMethodBeat.o(301778);
+  }
+  
+  public final String dbF()
+  {
+    AppMethodBeat.i(175447);
+    String str = atj().getString("video_channel_feeds_data", "");
+    if (str == null)
+    {
+      AppMethodBeat.o(175447);
+      return "";
+    }
+    AppMethodBeat.o(175447);
+    return str;
+  }
+  
+  public final int dbG()
+  {
+    AppMethodBeat.i(301822);
+    try
+    {
+      i = com.tencent.mm.plugin.webview.l.a.h(BizTLRecCardJsEngine.vKS.ddS().ioy());
+      AppMethodBeat.o(301822);
+      return i;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.w(this.TAG, s.X("getTimelineCanvasPkgVersion ex ", localException.getMessage()));
+        int i = 0;
+      }
+    }
+  }
+  
+  public final void dbH()
+  {
+    AppMethodBeat.i(301841);
+    r localr = r.acDM;
+    if (r.iXx()) {
+      aC((kotlin.g.a.a)new f(this));
+    }
+    AppMethodBeat.o(301841);
+  }
+  
+  public final void dbI()
+  {
+    AppMethodBeat.i(301855);
+    Object localObject = r.acDM;
+    if (r.iXx())
+    {
+      localObject = d.vBI;
+      if (d.dcd()) {
+        aC((kotlin.g.a.a)h.vAE);
+      }
+    }
+    AppMethodBeat.o(301855);
+  }
+  
+  public final boolean dbw()
+  {
+    AppMethodBeat.i(6458);
+    AppMethodBeat.o(6458);
+    return true;
+  }
+  
+  public final boolean dbx()
   {
     AppMethodBeat.i(6474);
-    com.tencent.mm.plugin.brandservice.b.b localb = com.tencent.mm.plugin.brandservice.b.b.svR;
-    boolean bool = com.tencent.mm.plugin.brandservice.b.b.cyB();
+    com.tencent.mm.plugin.brandservice.model.b localb = com.tencent.mm.plugin.brandservice.model.b.vBC;
+    boolean bool = com.tencent.mm.plugin.brandservice.model.b.dbx();
     AppMethodBeat.o(6474);
     return bool;
   }
   
-  public final String cyC()
+  public final void dby()
+  {
+    AppMethodBeat.i(301703);
+    com.tencent.mm.plugin.brandservice.ui.timeline.preload.m localm = com.tencent.mm.plugin.brandservice.ui.timeline.preload.m.vSK;
+    com.tencent.mm.plugin.brandservice.ui.timeline.preload.m.dfz();
+    AppMethodBeat.o(301703);
+  }
+  
+  public final String dbz()
   {
     AppMethodBeat.i(6480);
-    String str = com.tencent.mm.plugin.brandservice.ui.timeline.preload.c.b.cDp();
+    String str = com.tencent.mm.plugin.brandservice.ui.timeline.preload.c.b.dgP();
     AppMethodBeat.o(6480);
     return str;
-  }
-  
-  public final void cyD()
-  {
-    AppMethodBeat.i(6481);
-    com.tencent.mm.plugin.brandservice.ui.timeline.preload.ui.a.cDO();
-    AppMethodBeat.o(6481);
-  }
-  
-  public final int cyE()
-  {
-    AppMethodBeat.i(259530);
-    int i = ab.getSessionId();
-    AppMethodBeat.o(259530);
-    return i;
-  }
-  
-  public final boolean cyF()
-  {
-    AppMethodBeat.i(259536);
-    com.tencent.mm.pluginsdk.model.b localb = com.tencent.mm.pluginsdk.model.b.QTJ;
-    boolean bool = ((Boolean)com.tencent.mm.pluginsdk.model.b.QTz.getValue()).booleanValue();
-    AppMethodBeat.o(259536);
-    return bool;
-  }
-  
-  public final boolean cyG()
-  {
-    AppMethodBeat.i(259538);
-    com.tencent.mm.pluginsdk.model.b localb = com.tencent.mm.pluginsdk.model.b.QTJ;
-    boolean bool = ((Boolean)com.tencent.mm.pluginsdk.model.b.QTA.getValue()).booleanValue();
-    AppMethodBeat.o(259538);
-    return bool;
-  }
-  
-  public final void cyH()
-  {
-    AppMethodBeat.i(259544);
-    com.tencent.mm.pluginsdk.model.b localb = com.tencent.mm.pluginsdk.model.b.QTJ;
-    com.tencent.mm.pluginsdk.model.b.onResume();
-    AppMethodBeat.o(259544);
-  }
-  
-  public final String cyI()
-  {
-    AppMethodBeat.i(175447);
-    String str2 = bcJ().getString("video_channel_feeds_data", "");
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    AppMethodBeat.o(175447);
-    return str1;
-  }
-  
-  public final void cyJ()
-  {
-    AppMethodBeat.i(259561);
-    r localr = r.VcW;
-    if (r.hvU()) {
-      C((kotlin.g.a.a)new l(this));
-    }
-    AppMethodBeat.o(259561);
-  }
-  
-  public final void cyK()
-  {
-    AppMethodBeat.i(259566);
-    Object localObject = r.VcW;
-    if (r.hvU())
-    {
-      localObject = com.tencent.mm.plugin.brandservice.b.d.swc;
-      if (com.tencent.mm.plugin.brandservice.b.d.czj()) {
-        C((kotlin.g.a.a)n.soN);
-      }
-    }
-    AppMethodBeat.o(259566);
   }
   
   public final String e(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(6457);
-    paramString = com.tencent.mm.aj.m.e(paramString, paramInt1, paramInt2, paramInt3);
+    paramString = com.tencent.mm.message.m.e(paramString, paramInt1, paramInt2, paramInt3);
     AppMethodBeat.o(6457);
     return paramString;
+  }
+  
+  public final void eh(List<? extends q> paramList)
+  {
+    AppMethodBeat.i(301684);
+    s.u(paramList, "items");
+    if (Util.isNullOrNil(paramList))
+    {
+      AppMethodBeat.o(301684);
+      return;
+    }
+    com.tencent.threadpool.h.ahAA.g(new c..ExternalSyntheticLambda6(paramList, 90), "getAppMsgRelatedInfo");
+    AppMethodBeat.o(301684);
   }
   
   public final boolean isMpUrl(String paramString)
   {
     AppMethodBeat.i(6453);
-    if (paramString != null)
+    if (paramString == null)
     {
-      boolean bool = UrlExKt.isMpUrl(paramString);
       AppMethodBeat.o(6453);
-      return bool;
+      return false;
     }
+    boolean bool = UrlExKt.isMpUrl(paramString);
     AppMethodBeat.o(6453);
-    return false;
+    return bool;
   }
   
-  public final void j(List<? extends List<String>> paramList, final int paramInt)
+  public final void m(String paramString1, final String paramString2, final String paramString3, final String paramString4)
+  {
+    AppMethodBeat.i(301828);
+    s.u(paramString3, "event");
+    aB((kotlin.g.a.a)new b(paramString1, paramString2, paramString3, paramString4));
+    AppMethodBeat.o(301828);
+  }
+  
+  public final void s(List<? extends List<String>> paramList, int paramInt)
   {
     AppMethodBeat.i(6469);
-    kotlin.g.b.p.k(paramList, "items");
+    s.u(paramList, "items");
     Object localObject1 = (Iterable)paramList;
     paramList = (Collection)new ArrayList();
     localObject1 = ((Iterable)localObject1).iterator();
@@ -632,8 +899,8 @@ public final class c
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = ((Iterator)localObject1).next();
-      localObject3 = com.tencent.mm.plugin.brandservice.ui.timeline.preload.c.apI((String)((List)localObject2).get(0));
-      if (soA.contains((String)localObject3)) {}
+      localObject3 = com.tencent.mm.plugin.brandservice.ui.timeline.preload.c.ajj((String)((List)localObject2).get(0));
+      if (vAw.contains((String)localObject3)) {}
       for (i = 0;; i = 1)
       {
         if (i == 0) {
@@ -641,7 +908,7 @@ public final class c
         }
         paramList.add(localObject2);
         break;
-        soA.add((String)localObject3);
+        vAw.add((String)localObject3);
       }
     }
     paramList = (List)paramList;
@@ -653,31 +920,30 @@ public final class c
       if (Log.getLogLevel() == 0)
       {
         localObject1 = this.TAG;
-        localObject2 = new StringBuilder("preloadData: preloadByIdAndUrls:");
-        Object localObject4 = (Iterable)paramList;
-        localObject3 = (Collection)new ArrayList(j.a((Iterable)localObject4, 10));
-        localObject4 = ((Iterable)localObject4).iterator();
+        localObject3 = (Iterable)paramList;
+        localObject2 = (Collection)new ArrayList(kotlin.a.p.a((Iterable)localObject3, 10));
+        localObject3 = ((Iterable)localObject3).iterator();
         for (;;)
         {
-          if (((Iterator)localObject4).hasNext())
+          if (((Iterator)localObject3).hasNext())
           {
-            ((Collection)localObject3).add(com.tencent.mm.plugin.brandservice.ui.timeline.preload.c.apI((String)((List)((Iterator)localObject4).next()).get(0)));
+            ((Collection)localObject2).add(com.tencent.mm.plugin.brandservice.ui.timeline.preload.c.ajj((String)((List)((Iterator)localObject3).next()).get(0)));
             continue;
             i = 0;
             break;
           }
         }
-        Log.v((String)localObject1, (List)localObject3);
+        Log.v((String)localObject1, s.X("preloadData: preloadByIdAndUrls:", (List)localObject2));
       }
-      com.tencent.e.h.ZvG.d((Runnable)new j(paramList, this, paramInt), "tmplPreload");
+      com.tencent.threadpool.h.ahAA.g(new c..ExternalSyntheticLambda5(paramList, paramInt), "tmplPreload");
     }
     AppMethodBeat.o(6469);
   }
   
-  public final void k(List<String[]> paramList, final int paramInt)
+  public final void t(List<String[]> paramList, int paramInt)
   {
     AppMethodBeat.i(6470);
-    kotlin.g.b.p.k(paramList, "items");
+    s.u(paramList, "items");
     Object localObject1 = (Iterable)paramList;
     paramList = (Collection)new ArrayList();
     localObject1 = ((Iterable)localObject1).iterator();
@@ -688,8 +954,8 @@ public final class c
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = ((Iterator)localObject1).next();
-      localObject3 = com.tencent.mm.plugin.brandservice.ui.timeline.preload.c.apI(((String[])localObject2)[0]);
-      if (soA.contains((String)localObject3)) {}
+      localObject3 = com.tencent.mm.plugin.brandservice.ui.timeline.preload.c.ajj(((String[])localObject2)[0]);
+      if (vAw.contains((String)localObject3)) {}
       for (i = 0;; i = 1)
       {
         if (i == 0) {
@@ -697,7 +963,7 @@ public final class c
         }
         paramList.add(localObject2);
         break;
-        soA.add((String)localObject3);
+        vAw.add((String)localObject3);
       }
     }
     paramList = (List)paramList;
@@ -709,403 +975,134 @@ public final class c
       if (Log.getLogLevel() == 0)
       {
         localObject1 = this.TAG;
-        localObject2 = new StringBuilder("preloadData: preloadByInfoIdAndBuffer:");
-        Object localObject4 = (Iterable)paramList;
-        localObject3 = (Collection)new ArrayList(j.a((Iterable)localObject4, 10));
-        localObject4 = ((Iterable)localObject4).iterator();
+        localObject3 = (Iterable)paramList;
+        localObject2 = (Collection)new ArrayList(kotlin.a.p.a((Iterable)localObject3, 10));
+        localObject3 = ((Iterable)localObject3).iterator();
         for (;;)
         {
-          if (((Iterator)localObject4).hasNext())
+          if (((Iterator)localObject3).hasNext())
           {
-            ((Collection)localObject3).add(com.tencent.mm.plugin.brandservice.ui.timeline.preload.c.apI(((String[])localObject4.next())[0]));
+            ((Collection)localObject2).add(com.tencent.mm.plugin.brandservice.ui.timeline.preload.c.ajj(((String[])localObject3.next())[0]));
             continue;
             i = 0;
             break;
           }
         }
-        Log.v((String)localObject1, (List)localObject3);
+        Log.v((String)localObject1, s.X("preloadData: preloadByInfoIdAndBuffer:", (List)localObject2));
       }
-      com.tencent.e.h.ZvG.d((Runnable)new k(paramList, this, paramInt), "tmplPreload");
+      com.tencent.threadpool.h.ahAA.g(new c..ExternalSyntheticLambda4(paramList, paramInt), "tmplPreload");
     }
     AppMethodBeat.o(6470);
   }
   
-  public final void l(List<? extends com.tencent.mm.aj.q> paramList, final int paramInt)
+  public final void u(List<? extends q> paramList, int paramInt)
   {
     AppMethodBeat.i(6471);
-    kotlin.g.b.p.k(paramList, "items");
+    s.u(paramList, "items");
     if (Util.isNullOrNil(paramList))
     {
       AppMethodBeat.o(6471);
       return;
     }
-    com.tencent.e.h.ZvG.d((Runnable)new g(paramList, paramInt), "getAppMsgRelatedInfo");
+    com.tencent.threadpool.h.ahAA.g(new c..ExternalSyntheticLambda3(paramList, paramInt), "getAppMsgRelatedInfo");
     AppMethodBeat.o(6471);
   }
   
-  public final void n(String paramString1, final String paramString2, final String paramString3, final String paramString4)
-  {
-    AppMethodBeat.i(259553);
-    kotlin.g.b.p.k(paramString3, "event");
-    B((kotlin.g.a.a)new c(paramString1, paramString2, paramString3, paramString4));
-    AppMethodBeat.o(259553);
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/BrandServiceImpl$Companion;", "", "()V", "KEY_BIZ_CANVAS_PRELOAD_CANVAS_LAST_TIME", "", "KEY_BIZ_CANVAS_PRELOAD_CRASH_TIMES", "preauthLimiter", "Lcom/tencent/mm/sdk/platformtools/MMCacheSlotManager;", "getPreauthLimiter", "()Lcom/tencent/mm/sdk/platformtools/MMCacheSlotManager;", "prednsLimiter", "getPrednsLimiter", "preloadLimiter", "getPreloadLimiter", "plugin-brandservice_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/BrandServiceImpl$Companion;", "", "()V", "KEY_BIZ_CANVAS_PRELOAD_CANVAS_LAST_TIME", "", "KEY_BIZ_CANVAS_PRELOAD_CRASH_TIMES", "preauthLimiter", "Lcom/tencent/mm/sdk/platformtools/MMCacheSlotManager;", "getPreauthLimiter", "()Lcom/tencent/mm/sdk/platformtools/MMCacheSlotManager;", "prednsLimiter", "getPrednsLimiter", "preloadLimiter", "getPreloadLimiter", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    implements Runnable
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<ah>
   {
-    b(c paramc, String paramString, int paramInt1, int paramInt2, Object[] paramArrayOfObject) {}
-    
-    public final void run()
+    b(String paramString1, String paramString2, String paramString3, String paramString4)
     {
-      AppMethodBeat.i(6448);
-      try
-      {
-        String str = paramString;
-        int i = paramInt1;
-        int j = paramInt2;
-        Object[] arrayOfObject = paramVarArgs;
-        com.tencent.mm.plugin.brandservice.ui.timeline.preload.m.a(str, i, j, Arrays.copyOf(arrayOfObject, arrayOfObject.length));
-        AppMethodBeat.o(6448);
-        return;
-      }
-      catch (Exception localException)
-      {
-        Log.w(c.a(this.soE), "addToPreload ex %s", new Object[] { localException.getMessage() });
-        AppMethodBeat.o(6448);
-      }
+      super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<ah>
   {
-    c(String paramString1, String paramString2, String paramString3, String paramString4)
+    c(String paramString1, String paramString2, String paramString3)
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MMHandler;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
-  {
-    d(String paramString1, String paramString2, String paramString3)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class e
-    implements Runnable
-  {
-    e(String paramString, int paramInt) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(6449);
-      com.tencent.mm.plugin.brandservice.b.h localh = com.tencent.mm.plugin.brandservice.b.h.swx;
-      com.tencent.mm.plugin.brandservice.b.h.k(this.piM, paramInt, this.soG, this.soK);
-      AppMethodBeat.o(6449);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class f
-    implements Runnable
-  {
-    f(List paramList) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(265214);
-      Object localObject1 = com.tencent.mm.plugin.brandservice.b.h.swx;
-      localObject1 = this.mpK;
-      int i = this.soG;
-      kotlin.g.b.p.k(localObject1, "items");
-      com.tencent.mm.plugin.brandservice.b.h.swv = 0L;
-      com.tencent.mm.plugin.brandservice.b.h.sww.clear();
-      LinkedList localLinkedList = new LinkedList();
-      Object localObject3 = (Iterable)localObject1;
-      Object localObject2 = (Collection)new ArrayList();
-      localObject3 = ((Iterable)localObject3).iterator();
-      Object localObject4;
-      Object localObject5;
-      label147:
-      while (((Iterator)localObject3).hasNext())
-      {
-        localObject4 = ((Iterator)localObject3).next();
-        localObject5 = (com.tencent.mm.aj.q)localObject4;
-        if (((com.tencent.mm.aj.q)localObject5).Url == null) {}
-        for (boolean bool = false;; bool = UrlExKt.isMpArticleUrl((String)localObject5))
-        {
-          if (!bool) {
-            break label147;
-          }
-          ((Collection)localObject2).add(localObject4);
-          break;
-          localObject5 = ((com.tencent.mm.aj.q)localObject5).Url;
-          kotlin.g.b.p.j(localObject5, "it.Url");
-        }
-      }
-      localObject2 = ((Iterable)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        localObject3 = (com.tencent.mm.aj.q)((Iterator)localObject2).next();
-        localObject4 = new fu();
-        ((fu)localObject4).Url = ((com.tencent.mm.aj.q)localObject3).Url;
-        localObject5 = ((fu)localObject4).Url;
-        kotlin.g.b.p.j(localObject5, "appMsgUrlInfo.Url");
-        ((fu)localObject4).lps = com.tencent.mm.plugin.brandservice.b.h.apv((String)localObject5);
-        ((fu)localObject4).lpx = ((com.tencent.mm.aj.q)localObject3).lpx;
-        ((fu)localObject4).lpw = ((com.tencent.mm.aj.q)localObject3).lpw;
-        if (((fu)localObject4).lpw > 0) {
-          localLinkedList.add(localObject4);
-        }
-      }
-      Log.v(com.tencent.mm.plugin.brandservice.b.h.TAG, "getAppMsgRelatedInfoForAppMsg size:" + ((List)localObject1).size());
-      com.tencent.mm.plugin.brandservice.b.h.b(localLinkedList, i);
-      AppMethodBeat.o(265214);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class g
-    implements Runnable
-  {
-    g(List paramList, int paramInt) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(6450);
-      Object localObject1 = com.tencent.mm.plugin.brandservice.b.h.swx;
-      Object localObject2 = this.mpK;
-      int i = paramInt;
-      kotlin.g.b.p.k(localObject2, "items");
-      com.tencent.mm.plugin.brandservice.b.h.swv = 0L;
-      com.tencent.mm.plugin.brandservice.b.h.sww.clear();
-      localObject1 = new LinkedList();
-      Object localObject3 = (Iterable)localObject2;
-      localObject2 = (Collection)new ArrayList();
-      localObject3 = ((Iterable)localObject3).iterator();
-      Object localObject4;
-      while (((Iterator)localObject3).hasNext())
-      {
-        localObject4 = (com.tencent.mm.aj.q)((Iterator)localObject3).next();
-        j.a((Collection)localObject2, (Iterable)((com.tencent.mm.plugin.biz.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.biz.a.a.class)).b(((com.tencent.mm.aj.q)localObject4).msgId, ((com.tencent.mm.aj.q)localObject4).lpy).lpz);
-      }
-      localObject3 = (Iterable)localObject2;
-      localObject2 = (Collection)new ArrayList();
-      localObject3 = ((Iterable)localObject3).iterator();
-      Object localObject5;
-      label241:
-      while (((Iterator)localObject3).hasNext())
-      {
-        localObject4 = ((Iterator)localObject3).next();
-        localObject5 = (v)localObject4;
-        if (((v)localObject5).url == null) {}
-        for (boolean bool = false;; bool = UrlExKt.isMpArticleUrl((String)localObject5))
-        {
-          if (!bool) {
-            break label241;
-          }
-          ((Collection)localObject2).add(localObject4);
-          break;
-          localObject5 = ((v)localObject5).url;
-          kotlin.g.b.p.j(localObject5, "it.url");
-        }
-      }
-      localObject2 = ((Iterable)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        localObject4 = (v)((Iterator)localObject2).next();
-        localObject3 = new fu();
-        ((fu)localObject3).Url = ((v)localObject4).url;
-        localObject5 = ((fu)localObject3).Url;
-        kotlin.g.b.p.j(localObject5, "appMsgUrlInfo.Url");
-        ((fu)localObject3).lps = com.tencent.mm.plugin.brandservice.b.h.apv((String)localObject5);
-        ((fu)localObject3).lpx = ((v)localObject4).type;
-        ((fu)localObject3).RKR = ((v)localObject4).lqf;
-        if (i == 0)
-        {
-          if (((v)localObject4).lls == 1)
-          {
-            localObject4 = com.tencent.mm.plugin.brandservice.b.b.svR;
-            if (com.tencent.mm.plugin.brandservice.b.b.cyB())
-            {
-              ((fu)localObject3).lpw = 2;
-              ((LinkedList)localObject1).add(localObject3);
-            }
-          }
-        }
-        else
-        {
-          if (((v)localObject4).lls == 1)
-          {
-            localObject4 = com.tencent.mm.plugin.brandservice.b.b.svR;
-            if (!com.tencent.mm.plugin.brandservice.b.b.cyB()) {}
-          }
-          for (((fu)localObject3).lpw = 3;; ((fu)localObject3).lpw = 1)
-          {
-            ((LinkedList)localObject1).add(localObject3);
-            break;
-          }
-        }
-      }
-      Log.v(com.tencent.mm.plugin.brandservice.b.h.TAG, "getAppMsgRelatedInfoForBizMsg size:" + ((LinkedList)localObject1).size());
-      com.tencent.mm.plugin.brandservice.b.h.b((LinkedList)localObject1, i);
-      AppMethodBeat.o(6450);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "invoke"})
-  static final class h
-    extends kotlin.g.b.q
+    extends kotlin.g.b.u
     implements kotlin.g.a.a<MMHandler>
   {
-    public static final h soL;
+    public static final d vAB;
     
     static
     {
-      AppMethodBeat.i(265660);
-      soL = new h();
-      AppMethodBeat.o(265660);
+      AppMethodBeat.i(301508);
+      vAB = new d();
+      AppMethodBeat.o(301508);
+    }
+    
+    d()
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class e
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<MultiProcessMMKV>
+  {
+    e(c paramc)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class f
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<ah>
+  {
+    f(c paramc)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class g
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<ah>
+  {
+    g(c paramc, String paramString1, String paramString2, String paramString3, long paramLong)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class h
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<ah>
+  {
+    public static final h vAE;
+    
+    static
+    {
+      AppMethodBeat.i(301528);
+      vAE = new h();
+      AppMethodBeat.o(301528);
     }
     
     h()
     {
       super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class i
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<MultiProcessMMKV>
-  {
-    i(c paramc)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/brandservice/BrandServiceImpl$preloadByIdAndUrls$2$2"})
-  static final class j
-    implements Runnable
-  {
-    j(List paramList, c paramc, int paramInt) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(6451);
-      com.tencent.mm.plugin.brandservice.ui.timeline.preload.m.j(this.rcs, paramInt);
-      AppMethodBeat.o(6451);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/brandservice/BrandServiceImpl$preloadByInfoIdAndBuffer$2$2"})
-  static final class k
-    implements Runnable
-  {
-    k(List paramList, c paramc, int paramInt) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(6452);
-      com.tencent.mm.plugin.brandservice.ui.timeline.preload.m.k(this.rcs, paramInt);
-      AppMethodBeat.o(6452);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class l
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
-  {
-    l(c paramc)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class m
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
-  {
-    m(c paramc, String paramString1, String paramString2, String paramString3)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class n
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
-  {
-    public static final n soN;
-    
-    static
-    {
-      AppMethodBeat.i(263956);
-      soN = new n();
-      AppMethodBeat.o(263956);
-    }
-    
-    n()
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class o
-    implements Runnable
-  {
-    o(kotlin.g.a.a parama) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(265678);
-      this.$block.invoke();
-      AppMethodBeat.o(265678);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class p
-    implements Runnable
-  {
-    p(c paramc, kotlin.g.a.a parama) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(266999);
-      com.tencent.mm.plugin.biz.b.c localc = com.tencent.mm.plugin.biz.b.c.shz;
-      int i = com.tencent.mm.plugin.biz.b.c.cxK().decodeInt("biz_canvas_card_preload_crash_times", 0);
-      localc = com.tencent.mm.plugin.biz.b.c.shz;
-      if (!com.tencent.mm.plugin.biz.b.c.a(i, 0L, "biz_canvas_card_preload_last_time", 10L))
-      {
-        AppMethodBeat.o(266999);
-        return;
-      }
-      localc = com.tencent.mm.plugin.biz.b.c.shz;
-      com.tencent.mm.plugin.biz.b.c.cxK().encode("biz_canvas_card_preload_crash_times", i + 1);
-      Log.i(c.a(this.soE), "safePreload set crash flag");
-      parama.invoke();
-      localc = com.tencent.mm.plugin.biz.b.c.shz;
-      com.tencent.mm.plugin.biz.b.c.cxK().encode("biz_canvas_card_preload_crash_times", 0);
-      Log.i(c.a(this.soE), "safePreload reset crash flag");
-      AppMethodBeat.o(266999);
     }
   }
 }

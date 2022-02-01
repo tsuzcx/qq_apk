@@ -10,7 +10,6 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.PersistableBundle;
-import com.tencent.tinker.loader.TinkerRuntimeException;
 import com.tencent.tinker.loader.hotplug.IncrementComponentManager;
 import com.tencent.tinker.loader.shareutil.ShareIntentUtil;
 import com.tencent.tinker.loader.shareutil.ShareReflectUtil;
@@ -35,10 +34,7 @@ public class TinkerHackInstrumentation
       copyAllFields(paramInstrumentation);
       return;
     }
-    catch (Throwable paramInstrumentation)
-    {
-      throw new TinkerRuntimeException(paramInstrumentation.getMessage(), paramInstrumentation);
-    }
+    finally {}
   }
   
   private void copyAllFields(Instrumentation paramInstrumentation)
@@ -67,10 +63,7 @@ public class TinkerHackInstrumentation
       paramContext = new TinkerHackInstrumentation(localInstrumentation, paramContext, localField);
       return paramContext;
     }
-    catch (Throwable paramContext)
-    {
-      throw new TinkerRuntimeException("see next stacktrace", paramContext);
-    }
+    finally {}
   }
   
   private void fixActivityParams(Activity paramActivity, ActivityInfo paramActivityInfo)
@@ -82,10 +75,7 @@ public class TinkerHackInstrumentation
       ShareReflectUtil.findField(paramActivity, "mActivityInfo").set(paramActivity, paramActivityInfo);
       return;
     }
-    catch (Throwable paramActivity)
-    {
-      throw new TinkerRuntimeException("see next stacktrace.", paramActivity);
-    }
+    finally {}
   }
   
   private boolean processIntent(ClassLoader paramClassLoader, Intent paramIntent)
@@ -174,7 +164,7 @@ public class TinkerHackInstrumentation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.loader.hotplug.interceptor.TinkerHackInstrumentation
  * JD-Core Version:    0.7.0.1
  */

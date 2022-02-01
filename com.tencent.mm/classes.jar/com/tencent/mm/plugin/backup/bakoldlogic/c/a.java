@@ -11,55 +11,55 @@ public final class a
   extends com.tencent.mm.plugin.backup.g.b
 {
   final byte[] key;
-  final int rKO;
-  private v rRe;
-  private w rRf;
-  final String rUk;
-  final String rUl;
-  private boolean rUm;
+  final int uWc;
+  private v vct;
+  private w vcu;
+  final String vfA;
+  private boolean vfB;
+  final String vfz;
   
   public a(String paramString1, String paramString2, byte[] paramArrayOfByte, String paramString3)
   {
     AppMethodBeat.i(21936);
-    this.rRe = new v();
-    this.rRf = new w();
-    this.rUm = false;
+    this.vct = new v();
+    this.vcu = new w();
+    this.vfB = false;
     Log.i("MicroMsg.BakOldAuthScene", "summerbak init id:%s,  hello:%s, ok:%s, stack[%s]", new Object[] { paramString3, paramString1, paramString2, Util.getStack() });
-    this.rRe.rVk = new com.tencent.mm.cd.b(l.e(paramString1.getBytes(), paramArrayOfByte));
-    this.rRe.rWs = 0;
-    this.rRe.ID = paramString3;
-    this.rRe.rWt = 0;
-    this.rUk = paramString2;
-    this.rUl = paramString3;
+    this.vct.vgA = new com.tencent.mm.bx.b(l.e(paramString1.getBytes(), paramArrayOfByte));
+    this.vct.vhI = 0;
+    this.vct.vgy = paramString3;
+    this.vct.crz = 0;
+    this.vfz = paramString2;
+    this.vfA = paramString3;
     this.key = paramArrayOfByte;
-    this.rKO = -1;
+    this.uWc = -1;
     AppMethodBeat.o(21936);
   }
   
-  public final void EN(int paramInt)
+  public final void Fo(int paramInt)
   {
     AppMethodBeat.i(21937);
-    if (this.rRf.rVU == 0)
+    if (this.vcu.vhk == 0)
     {
-      if (this.rUl.equals(this.rRf.ID))
+      if (this.vfA.equals(this.vcu.vgy))
       {
-        String str = new String(l.d(this.rRf.rVk.UH, this.key));
-        if (str.length() != this.rUk.length()) {}
-        for (boolean bool = false;; bool = str.equals(this.rUk))
+        String str = new String(l.d(this.vcu.vgA.Op, this.key));
+        if (str.length() != this.vfz.length()) {}
+        for (boolean bool = false;; bool = str.equals(this.vfz))
         {
-          this.rUm = bool;
-          Log.i("MicroMsg.BakOldAuthScene", "check ok result:%b", new Object[] { Boolean.valueOf(this.rUm) });
-          if (!this.rUm) {
+          this.vfB = bool;
+          Log.i("MicroMsg.BakOldAuthScene", "check ok result:%b", new Object[] { Boolean.valueOf(this.vfB) });
+          if (!this.vfB) {
             break;
           }
-          r(0, 0, "auth ok");
-          this.rRe.rVk = new com.tencent.mm.cd.b(l.e(this.rUk.getBytes(), this.key));
-          this.rRe.rWs = 1;
-          this.rRe.ID = this.rUl;
+          u(0, 0, "auth ok");
+          this.vct.vgA = new com.tencent.mm.bx.b(l.e(this.vfz.getBytes(), this.key));
+          this.vct.vhI = 1;
+          this.vct.vgy = this.vfA;
           try
           {
             Log.i("MicroMsg.BakOldAuthScene", "directSendAuthOk");
-            com.tencent.mm.plugin.backup.g.b.F(this.rRe.toByteArray(), getType(), paramInt);
+            com.tencent.mm.plugin.backup.g.b.D(this.vct.toByteArray(), getType(), paramInt);
             AppMethodBeat.o(21937);
             return;
           }
@@ -71,28 +71,28 @@ public final class a
           }
         }
         Log.e("MicroMsg.BakOldAuthScene", "check ok failed");
-        r(4, 1, "not ok packet");
+        u(4, 1, "not ok packet");
         AppMethodBeat.o(21937);
         return;
       }
       Log.e("MicroMsg.BakOldAuthScene", "not the same id");
-      r(4, -1, "not the same id");
+      u(4, -1, "not the same id");
       AppMethodBeat.o(21937);
       return;
     }
-    Log.e("MicroMsg.BakOldAuthScene", "errType %d", new Object[] { Integer.valueOf(this.rRf.rVU) });
-    r(4, this.rRf.rVU, "not not success");
+    Log.e("MicroMsg.BakOldAuthScene", "errType %d", new Object[] { Integer.valueOf(this.vcu.vhk) });
+    u(4, this.vcu.vhk, "not not success");
     AppMethodBeat.o(21937);
   }
   
-  public final com.tencent.mm.cd.a ctC()
+  public final com.tencent.mm.bx.a cWm()
   {
-    return this.rRf;
+    return this.vcu;
   }
   
-  public final com.tencent.mm.cd.a ctD()
+  public final com.tencent.mm.bx.a cWn()
   {
-    return this.rRe;
+    return this.vct;
   }
   
   public final int getType()

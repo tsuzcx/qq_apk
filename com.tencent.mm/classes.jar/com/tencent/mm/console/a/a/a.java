@@ -16,7 +16,7 @@ public final class a
       return false;
     }
     if (Util.getInt(paramArrayOfString[1], 0) > 0) {}
-    for (com.tencent.mm.plugin.hardcoder.a.Dtd = true;; com.tencent.mm.plugin.hardcoder.a.Dtd = false)
+    for (com.tencent.mm.plugin.hardcoder.a.Jms = true;; com.tencent.mm.plugin.hardcoder.a.Jms = false)
     {
       AppMethodBeat.o(20197);
       return true;
@@ -25,7 +25,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.console.a.a.a
  * JD-Core Version:    0.7.0.1
  */

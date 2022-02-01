@@ -4,25 +4,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Map;
 
 public class WeEffectRender
 {
   static
   {
-    AppMethodBeat.i(194594);
-    e.load("xlabeffect");
-    AppMethodBeat.o(194594);
+    AppMethodBeat.i(234630);
+    f.load("xlabeffect");
+    if (140 != nGetSdkVersion())
+    {
+      RuntimeException localRuntimeException = new RuntimeException("SDK version error in java 140");
+      AppMethodBeat.o(234630);
+      throw localRuntimeException;
+    }
+    AppMethodBeat.o(234630);
   }
   
-  public static long b(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  public static long b(Map<String, String> paramMap, int paramInt, String paramString)
   {
-    AppMethodBeat.i(194585);
-    long l = nInit(paramInt, paramString, paramString + "/OpenCLCNNLib.bin", paramBoolean1, paramBoolean2);
-    AppMethodBeat.o(194585);
+    AppMethodBeat.i(234525);
+    long l = nInitWithMap(d.cX(paramMap), paramInt, paramString, false);
+    AppMethodBeat.o(234525);
     return l;
   }
   
   public static native long nAddDeFaceWrinkle(long paramLong, String paramString);
+  
+  public static native long[] nAddEffectMaterialsFolder(long paramLong, String paramString);
   
   public static native long nAddFaceAutoSlimer(long paramLong, String paramString);
   
@@ -42,11 +51,17 @@ public class WeEffectRender
   
   public static native int nFaceTrack(long paramLong1, Buffer paramBuffer, int paramInt1, int paramInt2, long paramLong2);
   
+  public static native int nFaceTrackWithAngle(long paramLong1, Buffer paramBuffer, int paramInt1, int paramInt2, long paramLong2, int paramInt3);
+  
   public static native int nGetImageLabel(long paramLong);
+  
+  private static native int nGetSdkVersion();
   
   public static native int nGetSegmentTexture(long paramLong);
   
   public static native long nInit(int paramInt, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2);
+  
+  public static native long nInitWithMap(String[] paramArrayOfString, int paramInt, String paramString, boolean paramBoolean);
   
   public static native void nRemoveFilter(long paramLong1, long paramLong2);
   
@@ -62,19 +77,27 @@ public class WeEffectRender
   
   public static native int nSetConfigFlags(long paramLong, String paramString, float paramFloat);
   
+  public static native void nSetCustomSegmentSticker(long paramLong, int paramInt1, int paramInt2, int paramInt3);
+  
   public static native void nSetDeFaceWrinkle(long paramLong1, long paramLong2, float paramFloat1, float paramFloat2);
   
-  public static native int nSetEffectLevel(long paramLong, int paramInt, float paramFloat);
+  public static native int nSetEffectLevel(long paramLong, int paramInt1, float paramFloat, int paramInt2);
   
   public static native void nSetFilterColorWeight(long paramLong1, long paramLong2, float paramFloat);
   
   public static native void nSetFocalLength(long paramLong, float paramFloat);
+  
+  public static native void nSetMakeUpAlpha(long paramLong1, long paramLong2, float paramFloat);
+  
+  public static native void nSetMouthMorph(long paramLong, float paramFloat);
   
   public static native void nSetNativeLog(long paramLong);
   
   public static native void nSetRenderTextureCropSize(long paramLong, float paramFloat);
   
   public static native void nSetSegment(long paramLong, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3);
+  
+  public static native void nSetSegmentBgBlur(long paramLong, boolean paramBoolean, float paramFloat, int paramInt);
   
   public static native int nSetSlimerRate(long paramLong1, long paramLong2, float paramFloat);
   
@@ -88,7 +111,7 @@ public class WeEffectRender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.xeffect.WeEffectRender
  * JD-Core Version:    0.7.0.1
  */

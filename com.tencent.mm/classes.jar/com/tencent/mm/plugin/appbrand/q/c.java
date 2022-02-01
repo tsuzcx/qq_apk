@@ -1,81 +1,130 @@
 package com.tencent.mm.plugin.appbrand.q;
 
-import com.tencent.e.h;
-import com.tencent.e.i;
-import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.os.Looper;
+import androidx.a.a.c.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.api.ParcelableMultiTaskData;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.t;
-import com.tencent.mm.plugin.multitask.g;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mm.plugin.appbrand.widget.dialog.j;
+import com.tencent.mm.plugin.appbrand.widget.dialog.n;
+import com.tencent.mm.plugin.appbrand.widget.dialog.n.a;
+import com.tencent.mm.plugin.appbrand.widget.dialog.r;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.system.AndroidContextUtil;
 
 public final class c
+  implements DialogInterface
 {
-  public b qib;
+  private boolean mCanceled = false;
+  private boolean mDismissed = false;
+  private DialogInterface.OnCancelListener mOnCancelListener;
+  private MTimerHandler qaM;
+  public a<Context, n.a> tmg;
+  n.a tmh;
+  int tmi;
   
-  public static void x(t paramt)
+  public final c a(DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    AppMethodBeat.i(276859);
-    Log.i("MicroMsg.AppBrandMultiTaskLogic", "destroy, runtime:%s", new Object[] { paramt.mAppId });
-    AppMethodBeat.o(276859);
+    AppMethodBeat.i(147345);
+    this.mOnCancelListener = paramOnCancelListener;
+    if (this.tmh != null) {
+      this.tmh.setOnCancelListener(this.mOnCancelListener);
+    }
+    AppMethodBeat.o(147345);
+    return this;
   }
   
-  public final void w(final t paramt)
+  public final void ap(final AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(276858);
-    Log.i("MicroMsg.AppBrandMultiTaskLogic", "init, runtime:%s", new Object[] { paramt.mAppId });
-    h.ZvG.d(new Runnable()
+    AppMethodBeat.i(147344);
+    if (!MMHandlerThread.isMainThread())
     {
-      public final void run()
+      MMHandlerThread.postToMainThread(new Runnable()
       {
-        AppMethodBeat.i(277629);
-        if ((paramt.ntU.get()) || (paramt.aol))
+        public final void run()
         {
-          Log.w("MicroMsg.AppBrandMultiTaskLogic", "initFloatBallHelper in work thread, but runtime finished");
-          AppMethodBeat.o(277629);
-          return;
+          AppMethodBeat.i(147342);
+          c.this.ap(paramAppBrandRuntime);
+          AppMethodBeat.o(147342);
         }
-        d locald = new d(paramt);
-        c.this.qib = new b(locald, paramt);
-        c.this.qib.I(1, g.fq(paramt.mAppId, paramt.ntz.cBI));
-        if (paramt.bDy().nBI != null) {
-          c.this.qib.b(paramt.bDy().nBI.nBo);
+      });
+      AppMethodBeat.o(147344);
+      return;
+    }
+    this.qaM = new MTimerHandler(Looper.getMainLooper(), new MTimerHandler.CallBack()
+    {
+      public final boolean onTimerExpired()
+      {
+        AppMethodBeat.i(147343);
+        if ((c.a(c.this)) || (c.b(c.this)))
+        {
+          AppMethodBeat.o(147343);
+          return false;
+        }
+        Object localObject1 = AndroidContextUtil.castActivityOrNull(paramAppBrandRuntime.mContext);
+        if (localObject1 == null) {
+          localObject1 = paramAppBrandRuntime.mContext;
         }
         for (;;)
         {
-          paramt.O(new Runnable()
+          if (c.c(c.this) == null) {}
+          for (n.a locala = null;; locala = (n.a)c.c(c.this).apply(localObject1))
           {
-            public final void run()
-            {
-              AppMethodBeat.i(284378);
-              if (c.this.qib != null) {
-                c.this.qib.bNV();
-              }
-              AppMethodBeat.o(284378);
+            Object localObject2 = locala;
+            if (locala == null) {
+              localObject2 = new j((Context)localObject1);
             }
-          });
-          AppMethodBeat.o(277629);
-          return;
-          Log.e("MicroMsg.AppBrandMultiTaskLogic", "multiTaskData null! enter scene:%d", new Object[] { Integer.valueOf(paramt.Sk().cxf.scene) });
-          if ((paramt.Sk().cxf.scene == 1089) || (paramt.Sk().cxf.scene == 1104)) {
-            c.this.qib.FHw = Boolean.TRUE;
-          } else {
-            c.this.qib.FHw = Boolean.FALSE;
+            ((n.a)localObject2).setOnCancelListener(c.d(c.this));
+            ((n.a)localObject2).setCancelable(true);
+            ((n.a)localObject2).setCanceledOnTouchOutside(false);
+            paramAppBrandRuntime.pmu.b((n)localObject2);
+            c.a(c.this, (n.a)localObject2);
+            if ((c.e(c.this) > 0) && ((c.f(c.this) instanceof j))) {
+              ((j)c.f(c.this)).setProgress(c.e(c.this));
+            }
+            AppMethodBeat.o(147343);
+            return false;
           }
         }
       }
-    }, "MultiTaskHelperThread");
-    AppMethodBeat.o(276858);
+    }, false);
+    this.qaM.startTimer(500L);
+    AppMethodBeat.o(147344);
+  }
+  
+  public final void cancel()
+  {
+    AppMethodBeat.i(147346);
+    this.mCanceled = true;
+    if (this.tmh != null)
+    {
+      this.tmh.cancel();
+      AppMethodBeat.o(147346);
+      return;
+    }
+    if (this.mOnCancelListener != null) {
+      this.mOnCancelListener.onCancel(this);
+    }
+    AppMethodBeat.o(147346);
+  }
+  
+  public final void dismiss()
+  {
+    AppMethodBeat.i(147347);
+    this.mDismissed = true;
+    if (this.tmh != null) {
+      this.tmh.dismiss();
+    }
+    AppMethodBeat.o(147347);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.q.c
  * JD-Core Version:    0.7.0.1
  */

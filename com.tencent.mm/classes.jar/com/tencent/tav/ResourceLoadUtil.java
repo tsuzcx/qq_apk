@@ -11,10 +11,10 @@ public class ResourceLoadUtil
   
   static
   {
-    AppMethodBeat.i(188264);
+    AppMethodBeat.i(214714);
     TAG = ResourceLoadUtil.class.getSimpleName();
     success = false;
-    AppMethodBeat.o(188264);
+    AppMethodBeat.o(214714);
   }
   
   public static boolean isLoaded()
@@ -24,7 +24,7 @@ public class ResourceLoadUtil
   
   public static boolean loadSoSync(String paramString)
   {
-    AppMethodBeat.i(188261);
+    AppMethodBeat.i(214693);
     if (!success)
     {
       if (TextUtils.isEmpty(paramString))
@@ -32,7 +32,7 @@ public class ResourceLoadUtil
         success = false;
         Logger.e(TAG, "load so path is empty.");
         bool = success;
-        AppMethodBeat.o(188261);
+        AppMethodBeat.o(214693);
         return bool;
       }
       try
@@ -59,12 +59,12 @@ public class ResourceLoadUtil
       {
         Logger.d(TAG, "load " + paramString + ": " + success);
         bool = success;
-        AppMethodBeat.o(188261);
+        AppMethodBeat.o(214693);
         return bool;
       }
     }
     boolean bool = success;
-    AppMethodBeat.o(188261);
+    AppMethodBeat.o(214693);
     return bool;
   }
   
@@ -75,7 +75,7 @@ public class ResourceLoadUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tav.ResourceLoadUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ public final class WxaAttributes$WxaEntryInfo
 {
   public static final Parcelable.Creator<WxaEntryInfo> CREATOR;
   public String iconUrl;
-  public String obt;
+  public String rcg;
   public String title;
   public String username;
   
@@ -28,7 +28,7 @@ public final class WxaAttributes$WxaEntryInfo
     AppMethodBeat.i(123494);
     this.username = paramParcel.readString();
     this.title = paramParcel.readString();
-    this.obt = paramParcel.readString();
+    this.rcg = paramParcel.readString();
     this.iconUrl = paramParcel.readString();
     AppMethodBeat.o(123494);
   }
@@ -43,14 +43,14 @@ public final class WxaAttributes$WxaEntryInfo
     AppMethodBeat.i(123493);
     paramParcel.writeString(this.username);
     paramParcel.writeString(this.title);
-    paramParcel.writeString(this.obt);
+    paramParcel.writeString(this.rcg);
     paramParcel.writeString(this.iconUrl);
     AppMethodBeat.o(123493);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaEntryInfo
  * JD-Core Version:    0.7.0.1
  */

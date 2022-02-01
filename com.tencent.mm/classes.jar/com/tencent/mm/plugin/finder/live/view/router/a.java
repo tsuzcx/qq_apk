@@ -1,162 +1,93 @@
 package com.tencent.mm.plugin.finder.live.view.router;
 
 import android.content.Context;
-import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import com.tencent.mm.ae.d;
-import com.tencent.mm.live.c.b.c;
-import com.tencent.mm.live.core.core.a.b;
-import com.tencent.mm.live.core.core.model.h;
-import com.tencent.mm.live.core.view.LivePreviewView;
-import com.tencent.mm.plugin.finder.live.plugin.ab;
-import com.tencent.mm.plugin.finder.live.plugin.ah;
 import com.tencent.mm.plugin.finder.live.viewmodel.state.anchor.c;
-import com.tencent.mm.plugin.finder.live.viewmodel.state.anchor.c.g;
-import com.tencent.mm.plugin.finder.live.viewmodel.state.anchor.c.h;
-import com.tencent.mm.plugin.finder.live.viewmodel.state.anchor.e;
-import java.util.HashMap;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/view/router/FinderLiveAnchorRouter;", "Lcom/tencent/mm/plugin/finder/live/view/FinderBaseLivePluginLayout;", "Lcom/tencent/mm/plugin/finder/live/view/router/IFinderLiveRouter;", "context", "Landroid/content/Context;", "uicFragment", "Landroidx/fragment/app/Fragment;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroidx/fragment/app/Fragment;Landroid/util/AttributeSet;)V", "liveCore", "Lcom/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore;", "getLiveCore", "()Lcom/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore;", "setLiveCore", "(Lcom/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore;)V", "liveEndUIC", "Lcom/tencent/mm/plugin/finder/live/viewmodel/state/anchor/FinderLiveAnchorEndUIC;", "getLiveEndUIC", "()Lcom/tencent/mm/plugin/finder/live/viewmodel/state/anchor/FinderLiveAnchorEndUIC;", "setLiveEndUIC", "(Lcom/tencent/mm/plugin/finder/live/viewmodel/state/anchor/FinderLiveAnchorEndUIC;)V", "livePrepareUIC", "Lcom/tencent/mm/plugin/finder/live/viewmodel/state/anchor/FinderLiveAnchorPrepareUIC;", "getLivePrepareUIC", "()Lcom/tencent/mm/plugin/finder/live/viewmodel/state/anchor/FinderLiveAnchorPrepareUIC;", "setLivePrepareUIC", "(Lcom/tencent/mm/plugin/finder/live/viewmodel/state/anchor/FinderLiveAnchorPrepareUIC;)V", "liveStartUIC", "Lcom/tencent/mm/plugin/finder/live/viewmodel/state/anchor/FinderLiveAnchorLivingUIC;", "getLiveStartUIC", "()Lcom/tencent/mm/plugin/finder/live/viewmodel/state/anchor/FinderLiveAnchorLivingUIC;", "setLiveStartUIC", "(Lcom/tencent/mm/plugin/finder/live/viewmodel/state/anchor/FinderLiveAnchorLivingUIC;)V", "getStartUIC", "liveEndWithAnimation", "", "prepareToStart", "byMiniWin", "", "startToEnd", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/view/router/FinderLiveAnchorRouter;", "Lcom/tencent/mm/plugin/finder/live/view/FinderBaseLivePluginLayout;", "Lcom/tencent/mm/plugin/finder/live/view/router/IFinderLiveRouter;", "context", "Landroid/content/Context;", "uicFragment", "Landroidx/fragment/app/Fragment;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroidx/fragment/app/Fragment;Landroid/util/AttributeSet;)V", "liveCore", "Lcom/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore;", "getLiveCore", "()Lcom/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore;", "setLiveCore", "(Lcom/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore;)V", "liveEndUIC", "Lcom/tencent/mm/plugin/finder/live/viewmodel/state/anchor/FinderLiveAnchorEndUIC;", "getLiveEndUIC", "()Lcom/tencent/mm/plugin/finder/live/viewmodel/state/anchor/FinderLiveAnchorEndUIC;", "setLiveEndUIC", "(Lcom/tencent/mm/plugin/finder/live/viewmodel/state/anchor/FinderLiveAnchorEndUIC;)V", "livePrepareUIC", "Lcom/tencent/mm/plugin/finder/live/viewmodel/state/anchor/FinderLiveAnchorPrepareUIC;", "getLivePrepareUIC", "()Lcom/tencent/mm/plugin/finder/live/viewmodel/state/anchor/FinderLiveAnchorPrepareUIC;", "setLivePrepareUIC", "(Lcom/tencent/mm/plugin/finder/live/viewmodel/state/anchor/FinderLiveAnchorPrepareUIC;)V", "liveStartUIC", "Lcom/tencent/mm/plugin/finder/live/viewmodel/state/anchor/FinderLiveAnchorLivingUIC;", "getLiveStartUIC", "()Lcom/tencent/mm/plugin/finder/live/viewmodel/state/anchor/FinderLiveAnchorLivingUIC;", "setLiveStartUIC", "(Lcom/tencent/mm/plugin/finder/live/viewmodel/state/anchor/FinderLiveAnchorLivingUIC;)V", "getStartUIC", "liveEndWithAnimation", "", "prepareToStart", "byMiniWin", "", "startToEnd", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class a
   extends com.tencent.mm.plugin.finder.live.view.a
 {
-  private HashMap _$_findViewCache;
-  private b kDk;
-  private e zaZ;
-  public c zba;
-  private com.tencent.mm.plugin.finder.live.viewmodel.state.anchor.a zbb;
+  private c DWa;
+  public com.tencent.mm.plugin.finder.live.viewmodel.state.anchor.b DWb;
+  private com.tencent.mm.plugin.finder.live.viewmodel.state.anchor.a DWc;
+  private com.tencent.mm.live.core.core.a.b ngB;
   
   public a(Context paramContext, Fragment paramFragment)
   {
     super(paramContext, paramFragment, null);
-    this.zaZ = new e((AppCompatActivity)paramContext);
-    this.zba = new c((AppCompatActivity)paramContext);
-    this.zbb = new com.tencent.mm.plugin.finder.live.viewmodel.state.anchor.a((AppCompatActivity)paramContext);
+    this.DWa = new c((AppCompatActivity)paramContext);
+    this.DWb = new com.tencent.mm.plugin.finder.live.viewmodel.state.anchor.b((AppCompatActivity)paramContext);
+    this.DWc = new com.tencent.mm.plugin.finder.live.viewmodel.state.anchor.a((AppCompatActivity)paramContext);
   }
   
-  public void _$_clearFindViewByIdCache()
-  {
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-  }
+  public void _$_clearFindViewByIdCache() {}
   
-  public View _$_findCachedViewById(int paramInt)
+  public final com.tencent.mm.live.core.core.a.b getLiveCore()
   {
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    return localView1;
-  }
-  
-  public final b getLiveCore()
-  {
-    return this.kDk;
+    return this.ngB;
   }
   
   protected final com.tencent.mm.plugin.finder.live.viewmodel.state.anchor.a getLiveEndUIC()
   {
-    return this.zbb;
+    return this.DWc;
   }
   
-  protected final e getLivePrepareUIC()
+  protected final c getLivePrepareUIC()
   {
-    return this.zaZ;
+    return this.DWa;
   }
   
-  public final c getLiveStartUIC()
+  public final com.tencent.mm.plugin.finder.live.viewmodel.state.anchor.b getLiveStartUIC()
   {
-    return this.zba;
+    return this.DWb;
   }
   
-  public final c getStartUIC()
+  public final com.tencent.mm.plugin.finder.live.viewmodel.state.anchor.b getStartUIC()
   {
-    return this.zba;
+    return this.DWb;
   }
   
   public final void prepareToStart(boolean paramBoolean)
   {
-    c localc = this.zba;
+    com.tencent.mm.plugin.finder.live.viewmodel.state.anchor.b localb = this.DWb;
     if (paramBoolean)
     {
-      Object localObject = localc.ycU;
-      if (localObject != null) {
-        com.tencent.mm.plugin.finder.live.view.a.hideLoadingLayer$default((com.tencent.mm.plugin.finder.live.view.a)localObject, false, 1, null);
-      }
-      localObject = new Bundle();
-      ((Bundle)localObject).putBoolean("PARAM_FINDER_LIVE_START_BY_MINI_WINDOW", true);
-      a locala = localc.ycU;
-      if (locala != null) {
-        locala.statusChange(b.c.kyU, (Bundle)localObject);
-      }
-      localObject = localc.kDk;
-      if (localObject != null)
-      {
-        localObject = ((com.tencent.mm.live.core.core.trtc.a)localObject).knA;
-        if ((localObject != null) && (((h)localObject).kmG == true))
-        {
-          localObject = localc.zjb;
-          if (localObject != null) {
-            ((ab)localObject).dAQ();
-          }
-        }
-      }
-      localObject = localc.zjb;
-      if (localObject != null)
-      {
-        localObject = (ViewGroup)((ab)localObject).knt.getRenderLayout();
-        if (localObject != null) {
-          ((ViewGroup)localObject).post((Runnable)new c.g(localc));
-        }
-      }
-      localObject = localc.zjH;
-      if (localObject != null) {
-        ((ah)localObject).dAS();
-      }
-      d.a(200L, (kotlin.g.a.a)new c.h(localc));
+      localb.ezt();
       return;
     }
-    localc.dHl();
+    localb.ezs();
   }
   
-  public final void setLiveCore(b paramb)
+  public final void setLiveCore(com.tencent.mm.live.core.core.a.b paramb)
   {
-    this.kDk = paramb;
+    this.ngB = paramb;
   }
   
   protected final void setLiveEndUIC(com.tencent.mm.plugin.finder.live.viewmodel.state.anchor.a parama)
   {
-    p.k(parama, "<set-?>");
-    this.zbb = parama;
+    s.u(parama, "<set-?>");
+    this.DWc = parama;
   }
   
-  protected final void setLivePrepareUIC(e parame)
+  protected final void setLivePrepareUIC(c paramc)
   {
-    p.k(parame, "<set-?>");
-    this.zaZ = parame;
+    s.u(paramc, "<set-?>");
+    this.DWa = paramc;
   }
   
-  protected final void setLiveStartUIC(c paramc)
+  protected final void setLiveStartUIC(com.tencent.mm.plugin.finder.live.viewmodel.state.anchor.b paramb)
   {
-    p.k(paramc, "<set-?>");
-    this.zba = paramc;
+    s.u(paramb, "<set-?>");
+    this.DWb = paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.view.router.a
  * JD-Core Version:    0.7.0.1
  */

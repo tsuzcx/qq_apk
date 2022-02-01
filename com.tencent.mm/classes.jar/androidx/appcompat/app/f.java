@@ -9,60 +9,60 @@ import java.util.Map;
 
 final class f
 {
-  private static Field hl;
-  private static boolean hm;
-  private static Class hn;
-  private static boolean ho;
-  private static Field hp;
-  private static boolean hq;
-  private static Field hr;
-  private static boolean hs;
+  private static Field ih;
+  private static boolean ii;
+  private static Class ij;
+  private static boolean ik;
+  private static Field il;
+  private static boolean im;
+  private static Field in;
+  private static boolean io;
   
   static void a(Resources paramResources)
   {
-    AppMethodBeat.i(238415);
+    AppMethodBeat.i(200480);
     if (Build.VERSION.SDK_INT >= 28)
     {
-      AppMethodBeat.o(238415);
+      AppMethodBeat.o(200480);
       return;
     }
     if (Build.VERSION.SDK_INT >= 24)
     {
       d(paramResources);
-      AppMethodBeat.o(238415);
+      AppMethodBeat.o(200480);
       return;
     }
     if (Build.VERSION.SDK_INT >= 23)
     {
       c(paramResources);
-      AppMethodBeat.o(238415);
+      AppMethodBeat.o(200480);
       return;
     }
     if (Build.VERSION.SDK_INT >= 21) {
       b(paramResources);
     }
-    AppMethodBeat.o(238415);
+    AppMethodBeat.o(200480);
   }
   
   private static void b(Resources paramResources)
   {
-    AppMethodBeat.i(238416);
-    if (!hm) {}
+    AppMethodBeat.i(200493);
+    if (!ii) {}
     try
     {
       Field localField = Resources.class.getDeclaredField("mDrawableCache");
-      hl = localField;
+      ih = localField;
       localField.setAccessible(true);
       label28:
-      hm = true;
-      if (hl != null) {}
+      ii = true;
+      if (ih != null) {}
       try
       {
-        paramResources = (Map)hl.get(paramResources);
+        paramResources = (Map)ih.get(paramResources);
         if (paramResources != null) {
           paramResources.clear();
         }
-        AppMethodBeat.o(238416);
+        AppMethodBeat.o(200493);
         return;
       }
       catch (IllegalAccessException paramResources)
@@ -81,28 +81,28 @@ final class f
   
   private static void c(Resources paramResources)
   {
-    AppMethodBeat.i(238417);
-    if (!hm) {}
+    AppMethodBeat.i(200501);
+    if (!ii) {}
     try
     {
       Object localObject1 = Resources.class.getDeclaredField("mDrawableCache");
-      hl = (Field)localObject1;
+      ih = (Field)localObject1;
       ((Field)localObject1).setAccessible(true);
       label28:
-      hm = true;
+      ii = true;
       Object localObject2 = null;
       localObject1 = localObject2;
-      if (hl != null) {}
+      if (ih != null) {}
       try
       {
-        localObject1 = hl.get(paramResources);
+        localObject1 = ih.get(paramResources);
         if (localObject1 == null)
         {
-          AppMethodBeat.o(238417);
+          AppMethodBeat.o(200501);
           return;
         }
-        l(localObject1);
-        AppMethodBeat.o(238417);
+        o(localObject1);
+        AppMethodBeat.o(200501);
         return;
       }
       catch (IllegalAccessException paramResources)
@@ -122,26 +122,26 @@ final class f
   private static void d(Resources paramResources)
   {
     Object localObject2 = null;
-    AppMethodBeat.i(238418);
-    if (!hs) {}
+    AppMethodBeat.i(200510);
+    if (!io) {}
     try
     {
       Object localObject1 = Resources.class.getDeclaredField("mResourcesImpl");
-      hr = (Field)localObject1;
+      in = (Field)localObject1;
       ((Field)localObject1).setAccessible(true);
       label30:
-      hs = true;
-      if (hr == null)
+      io = true;
+      if (in == null)
       {
-        AppMethodBeat.o(238418);
+        AppMethodBeat.o(200510);
         return;
       }
       try
       {
-        paramResources = hr.get(paramResources);
+        paramResources = in.get(paramResources);
         if (paramResources == null)
         {
-          AppMethodBeat.o(238418);
+          AppMethodBeat.o(200510);
           return;
         }
       }
@@ -151,23 +151,23 @@ final class f
         {
           paramResources = null;
         }
-        if (!hm) {}
+        if (!ii) {}
         try
         {
           localObject1 = paramResources.getClass().getDeclaredField("mDrawableCache");
-          hl = (Field)localObject1;
+          ih = (Field)localObject1;
           ((Field)localObject1).setAccessible(true);
           label95:
-          hm = true;
+          ii = true;
           localObject1 = localObject2;
-          if (hl != null) {}
+          if (ih != null) {}
           try
           {
-            localObject1 = hl.get(paramResources);
+            localObject1 = ih.get(paramResources);
             if (localObject1 != null) {
-              l(localObject1);
+              o(localObject1);
             }
-            AppMethodBeat.o(238418);
+            AppMethodBeat.o(200510);
             return;
           }
           catch (IllegalAccessException paramResources)
@@ -190,40 +190,40 @@ final class f
     }
   }
   
-  private static void l(Object paramObject)
+  private static void o(Object paramObject)
   {
-    AppMethodBeat.i(238420);
-    if (!ho) {}
+    AppMethodBeat.i(200521);
+    if (!ik) {}
     try
     {
-      hn = Class.forName("android.content.res.ThemedResourceCache");
+      ij = Class.forName("android.content.res.ThemedResourceCache");
       label19:
-      ho = true;
-      if (hn == null)
+      ik = true;
+      if (ij == null)
       {
-        AppMethodBeat.o(238420);
+        AppMethodBeat.o(200521);
         return;
       }
-      if (!hq) {}
+      if (!im) {}
       try
       {
-        Field localField = hn.getDeclaredField("mUnthemedEntries");
-        hp = localField;
+        Field localField = ij.getDeclaredField("mUnthemedEntries");
+        il = localField;
         localField.setAccessible(true);
         label59:
-        hq = true;
-        if (hp == null)
+        im = true;
+        if (il == null)
         {
-          AppMethodBeat.o(238420);
+          AppMethodBeat.o(200521);
           return;
         }
         try
         {
-          paramObject = (LongSparseArray)hp.get(paramObject);
+          paramObject = (LongSparseArray)il.get(paramObject);
           if (paramObject != null) {
             paramObject.clear();
           }
-          AppMethodBeat.o(238420);
+          AppMethodBeat.o(200521);
           return;
         }
         catch (IllegalAccessException paramObject)

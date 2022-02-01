@@ -12,19 +12,19 @@ public final class g
     AppMethodBeat.i(158812);
     paramObject = (f)paramObject;
     paramParcel.writeString(paramObject.getClass().getName());
-    paramObject.e(paramParcel);
+    paramObject.g(paramParcel);
     AppMethodBeat.o(158812);
   }
   
-  public final boolean bp(Object paramObject)
+  public final boolean cJ(Object paramObject)
   {
     return paramObject instanceof f;
   }
   
-  public final Object d(Parcel paramParcel)
+  public final Object f(Parcel paramParcel)
   {
     AppMethodBeat.i(158813);
-    f localf = (f)r.c(paramParcel.readString(), f.class);
+    f localf = (f)r.g(paramParcel.readString(), f.class);
     if (localf != null)
     {
       localf.readFromParcel(paramParcel);

@@ -2,7 +2,7 @@ package com.tencent.tinker.lib.b;
 
 public abstract interface b
 {
-  public abstract int bDE(String paramString);
+  public abstract int bGk(String paramString);
 }
 
 

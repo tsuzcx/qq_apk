@@ -1,425 +1,215 @@
 package com.tencent.mm.plugin.finder.live.plugin;
 
-import android.content.Context;
-import android.content.res.Resources;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.TextView;
-import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.live.b.e;
-import com.tencent.mm.live.b.h;
-import com.tencent.mm.live.c.b.c;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.live.viewmodel.data.business.c;
-import com.tencent.mm.protocal.protobuf.bac;
-import com.tencent.mm.ui.aw;
-import com.tencent.mm.ui.ax;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.q.f;
-import com.tencent.mm.ui.base.q.g;
-import com.tencent.mm.ui.widget.a.e;
-import com.tencent.mm.ui.widget.a.e.b;
-import java.util.ArrayList;
-import java.util.Collection;
-import kotlin.g.b.p;
-import kotlin.t;
+import com.tencent.mm.ad.i;
+import com.tencent.mm.app.f;
+import com.tencent.mm.live.b.b.b;
+import com.tencent.mm.live.b.b.c;
+import com.tencent.mm.plugin.finder.live.report.j;
+import com.tencent.mm.plugin.finder.live.report.q.ax;
+import com.tencent.mm.plugin.finder.live.viewmodel.data.business.e;
+import com.tencent.mm.plugin.finder.live.widget.w;
+import com.tencent.mm.plugin.finder.live.widget.w.a;
+import com.tencent.mm.plugin.finder.utils.bc;
+import com.tencent.mm.protocal.protobuf.bgq;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorClosePlugin;", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statueMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "bottomSheet", "Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "bottomSheetItemClickListener", "Lcom/tencent/mm/ui/base/MMMenuListener$OnMMMenuItemSelectedListener;", "closeBtn", "Landroid/view/View;", "kotlin.jvm.PlatformType", "isSecondDaryDevice", "", "()Z", "setSecondDaryDevice", "(Z)V", "value", "", "mNavigatorHeight", "setMNavigatorHeight", "(I)V", "canClearScreen", "notifyCloseLive", "", "resume", "showQuitBottomSheet", "showSecondConfirmBottomSheet", "showSecondaryBottomSheet", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorExceptionPlugin;", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "REQUEST_CODE_FACE_VERIFY", "", "TAG", "", "exceptionWidget", "Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveExceptionWidget;", "realnameNotifyListener", "Lcom/tencent/mm/sdk/event/IListener;", "afterVerify", "", "resultCode", "initWidget", "anchorUserName", "onActivityResult", "requestCode", "data", "Landroid/content/Intent;", "showAnchorForceQuit", "errorPage", "Lcom/tencent/mm/protocal/protobuf/FinderLiveErrorPage;", "errCode", "showCreateLiveDynamicErrPage", "showFaceVerify", "verifyUrl", "userName", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class l
-  extends d
+  extends b
 {
-  private e kCR;
-  private int kCS;
-  private final q.g kCT;
-  private final com.tencent.mm.live.c.b kCU;
-  private final View kFA;
-  public boolean ymg;
+  private final int CUF;
+  private w CUG;
+  private final IListener<?> CUH;
+  private final String TAG;
+  private final com.tencent.mm.live.b.b nfT;
   
-  public l(final ViewGroup paramViewGroup, com.tencent.mm.live.c.b paramb)
+  public l(ViewGroup paramViewGroup, com.tencent.mm.live.b.b paramb)
   {
     super(paramViewGroup, paramb);
-    AppMethodBeat.i(289678);
-    this.kCU = paramb;
-    this.kFA = paramViewGroup.findViewById(b.e.live_visitor_close_btn_group);
-    this.kCS = ax.aB(paramViewGroup.getContext());
-    this.kCT = ((q.g)new a(this, paramViewGroup));
-    this.kFA.setOnClickListener((View.OnClickListener)new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(265267);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorClosePlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        com.tencent.mm.live.c.b.b.a(l.e(this.ymh), b.c.kyV);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorClosePlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(265267);
-      }
-    });
-    if ((isLandscape()) && (paramViewGroup.getLayoutParams() != null) && ((paramViewGroup.getLayoutParams() instanceof ViewGroup.MarginLayoutParams))) {
-      switch (getCurrentOrientation())
-      {
-      }
-    }
-    for (;;)
-    {
-      paramViewGroup = com.tencent.mm.plugin.finder.live.utils.a.yRm;
-      com.tencent.mm.plugin.finder.live.utils.a.a((d)this, false);
-      paramViewGroup = com.tencent.mm.plugin.finder.live.utils.a.yRm;
-      com.tencent.mm.plugin.finder.live.utils.a.a((d)this);
-      AppMethodBeat.o(289678);
-      return;
-      paramb = paramViewGroup.getLayoutParams();
-      if (paramb == null)
-      {
-        paramViewGroup = new t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-        AppMethodBeat.o(289678);
-        throw paramViewGroup;
-      }
-      ((ViewGroup.MarginLayoutParams)paramb).setMarginEnd(ax.aB(paramViewGroup.getContext()));
-      continue;
-      paramb = paramViewGroup.getLayoutParams();
-      if (paramb == null)
-      {
-        paramViewGroup = new t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-        AppMethodBeat.o(289678);
-        throw paramViewGroup;
-      }
-      ((ViewGroup.MarginLayoutParams)paramb).setMarginEnd(aw.fromDPToPix(paramViewGroup.getContext(), 16));
-    }
+    AppMethodBeat.i(354597);
+    this.nfT = paramb;
+    this.TAG = "Finder.LiveAnchorExceptionPlugin";
+    this.CUF = 10000;
+    this.CUH = ((IListener)new FinderLiveAnchorExceptionPlugin.realnameNotifyListener.1(this, f.hfK));
+    AppMethodBeat.o(354597);
   }
   
-  public final boolean dAo()
+  private final void awP(String paramString)
   {
-    return true;
+    AppMethodBeat.i(354607);
+    if (this.CUG == null)
+    {
+      this.CUG = new w((View)this.mJe, paramString, ((e)getBuContext().business(e.class)).eyo());
+      paramString = this.CUG;
+      if (paramString != null) {
+        paramString.EoC = ((kotlin.g.a.b)new a(this));
+      }
+    }
+    AppMethodBeat.o(354607);
   }
   
-  public final void resume()
+  public final void a(String paramString, bgq parambgq, int paramInt)
   {
-    AppMethodBeat.i(289676);
-    super.resume();
-    int j = ax.aB(this.kiF.getContext());
-    int i = j;
-    if (j == 0) {
-      i = aw.fromDPToPix(this.kiF.getContext(), 16);
+    AppMethodBeat.i(354673);
+    s.u(paramString, "anchorUserName");
+    Log.i(this.TAG, s.X("showAnchorForceQuit anchorUserName:", paramString));
+    awP(paramString);
+    paramString = this.CUG;
+    if (paramString != null)
+    {
+      w.a locala = w.EoA;
+      paramString.a(w.eAC(), parambgq, paramInt, (kotlin.g.a.b)new b(this));
     }
-    this.kCS = i;
-    AppMethodBeat.o(289676);
+    AppMethodBeat.o(354673);
   }
   
-  public final void statusChange(final b.c paramc, final Bundle paramBundle)
+  public final void a(String paramString1, final String paramString2, bgq parambgq)
   {
-    AppMethodBeat.i(289677);
-    p.k(paramc, "status");
-    switch (m.$EnumSwitchMapping$0[paramc.ordinal()])
+    AppMethodBeat.i(354648);
+    Log.i(this.TAG, s.X("showFaceVerify:", paramString1));
+    paramString1 = j.Dob;
+    j.a(q.ax.DAe, paramString2);
+    awP("");
+    paramString1 = this.CUG;
+    if (paramString1 != null)
     {
+      w.a locala = w.EoA;
+      w.a(paramString1, w.eAB(), parambgq, (kotlin.g.a.b)new d(this, paramString2), 4);
     }
-    for (;;)
+    AppMethodBeat.o(354648);
+  }
+  
+  public final void b(String paramString, bgq parambgq, int paramInt)
+  {
+    AppMethodBeat.i(354682);
+    s.u(paramString, "anchorUserName");
+    Log.i(this.TAG, s.X("showCreateLiveDynamicErrPage anchorUserName:", paramString));
+    awP(paramString);
+    paramString = this.CUG;
+    if (paramString != null)
     {
-      AppMethodBeat.o(289677);
-      return;
-      if (this.ymg)
+      w.a locala = w.EoA;
+      paramString.a(w.eAF(), parambgq, paramInt, (kotlin.g.a.b)new c(this));
+    }
+    AppMethodBeat.o(354682);
+  }
+  
+  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(354664);
+    super.onActivityResult(paramInt1, paramInt2, paramIntent);
+    if (paramInt1 == this.CUF)
+    {
+      Object localObject1 = this.CUG;
+      if (localObject1 != null) {
+        ((w)localObject1).hide();
+      }
+      if (paramIntent == null)
       {
-        paramc = new ArrayList();
-        paramBundle = new ArrayList();
-        localObject1 = this.kiF.getContext();
-        p.j(localObject1, "root.context");
-        localObject1 = ((Context)localObject1).getResources();
-        if (((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).zgy) {}
-        for (int i = b.j.finder_live_pause_mini_game_action;; i = b.j.finder_live_quit_but_not_close)
-        {
-          paramc.add(((Resources)localObject1).getString(i));
-          localObject1 = com.tencent.mm.live.b.l.f.kuF;
-          paramBundle.add(Integer.valueOf(com.tencent.mm.live.b.l.f.aNN()));
-          if (this.kCR == null)
-          {
-            this.kCR = new e(this.kiF.getContext(), 1, true);
-            localObject1 = View.inflate(this.kiF.getContext(), b.g.live_bottom_sheet_title_view, null);
-            Object localObject2 = (TextView)((View)localObject1).findViewById(b.f.live_bottom_sheet_title_tv);
-            p.j(localObject2, "bottomSheetTitleTv");
-            ((TextView)localObject2).setText((CharSequence)this.kiF.getContext().getString(b.j.finder_live_quit_but_not_close_sub_title));
-            ((TextView)localObject2).setTextSize(1, 12.0F);
-            localObject2 = this.kCR;
-            if (localObject2 != null) {
-              ((e)localObject2).Z((View)localObject1, true);
-            }
-            localObject1 = this.kCR;
-            if (localObject1 != null) {
-              ((e)localObject1).icy();
-            }
-            localObject1 = this.kCR;
-            if (localObject1 != null) {
-              ((e)localObject1).a((q.f)new f(this, paramc, paramBundle));
-            }
-            paramc = this.kCR;
-            if (paramc != null) {
-              paramc.a(this.kCT);
-            }
-            paramc = this.kCR;
-            if (paramc != null) {
-              paramc.b((e.b)new g(this));
-            }
-          }
-          paramc = this.kCR;
-          if (paramc == null) {
-            break;
-          }
-          paramc.eik();
-          AppMethodBeat.o(289677);
-          return;
+        localObject1 = null;
+        if (paramIntent != null) {
+          break label197;
         }
-        AppMethodBeat.o(289677);
-        return;
+        paramIntent = "";
       }
-      paramc = new ArrayList();
-      paramBundle = new ArrayList();
-      Object localObject1 = this.kiF.getContext();
-      p.j(localObject1, "root.context");
-      paramc.add(((Context)localObject1).getResources().getString(b.h.live_menu_item_quit_live));
-      localObject1 = com.tencent.mm.live.b.l.f.kuF;
-      paramBundle.add(Integer.valueOf(com.tencent.mm.live.b.l.f.aNL()));
-      if (this.kCR == null) {
-        this.kCR = new e(this.kiF.getContext(), 1, false);
-      }
-      localObject1 = this.kCR;
-      if (localObject1 != null) {
-        ((e)localObject1).icy();
-      }
-      localObject1 = this.kCR;
-      if (localObject1 != null) {
-        ((e)localObject1).a((q.f)new b(this, paramc, paramBundle));
-      }
-      paramc = this.kCR;
-      if (paramc != null) {
-        paramc.a(this.kCT);
-      }
-      paramc = this.kCR;
-      if (paramc != null) {
-        paramc.b((e.b)new c(this));
-      }
-      paramc = this.kCR;
-      if (paramc != null)
+      for (;;)
       {
-        paramc.eik();
-        AppMethodBeat.o(289677);
+        if ((paramInt2 != -1) || (localObject1 == null)) {
+          break label220;
+        }
+        localObject2 = ((Bundle)localObject1).getString("go_next", "");
+        Object localObject3 = ((Bundle)localObject1).getString("result_json");
+        if (Util.isNullOrNil((String)localObject3)) {
+          break label220;
+        }
+        paramInt1 = new i((String)localObject3).getInt("code");
+        if ((!s.p(localObject2, "roomlive_verify")) || (paramInt1 != 0)) {
+          break label220;
+        }
+        localObject1 = this.nfT;
+        localObject2 = b.c.ndi;
+        localObject3 = new Bundle();
+        ((Bundle)localObject3).putBoolean("PARAM_FINDER_LIVE_POST_AFTER_FACE_VERIFY", true);
+        ah localah = ah.aiuX;
+        ((com.tencent.mm.live.b.b)localObject1).statusChange((b.c)localObject2, (Bundle)localObject3);
+        localObject1 = j.Dob;
+        j.a(q.ax.DAg, paramIntent);
+        AppMethodBeat.o(354664);
         return;
+        localObject1 = paramIntent.getBundleExtra("result_data");
+        break;
+        label197:
+        localObject2 = paramIntent.getStringExtra("srcUsername");
+        paramIntent = (Intent)localObject2;
+        if (localObject2 == null) {
+          paramIntent = "";
+        }
       }
-      AppMethodBeat.o(289677);
-      return;
-      tU(8);
-      AppMethodBeat.o(289677);
-      return;
-      tU(0);
-      AppMethodBeat.o(289677);
-      return;
-      paramc = com.tencent.mm.plugin.finder.live.utils.a.yRm;
-      com.tencent.mm.plugin.finder.live.utils.a.a((d)this, false);
-      paramc = com.tencent.mm.plugin.finder.live.utils.a.yRm;
-      com.tencent.mm.plugin.finder.live.utils.a.a((d)this);
+      label220:
+      Object localObject2 = j.Dob;
+      j.a(q.ax.DAh, paramIntent);
+      b.b.a(this.nfT, b.c.nch);
+      paramIntent = bc.GkH;
+      paramIntent = bc.fhI();
+      localObject1 = String.valueOf(localObject1);
+      getBuContext();
+      bc.it(paramIntent, (String)localObject1);
     }
+    AppMethodBeat.o(354664);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "licenseUrl", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    implements q.g
+    extends u
+    implements kotlin.g.a.b<String, ah>
   {
-    a(l paraml, ViewGroup paramViewGroup) {}
-    
-    public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
+    a(l paraml)
     {
-      AppMethodBeat.i(273196);
-      p.j(paramMenuItem, "menuItem");
-      paramInt = paramMenuItem.getItemId();
-      paramMenuItem = com.tencent.mm.live.b.l.f.kuF;
-      if (paramInt == com.tencent.mm.live.b.l.f.aNL())
-      {
-        if (this.ymh.ymg)
-        {
-          l.d(this.ymh);
-          AppMethodBeat.o(273196);
-          return;
-        }
-        l.a(this.ymh);
-        AppMethodBeat.o(273196);
-        return;
-      }
-      paramMenuItem = com.tencent.mm.live.b.l.f.kuF;
-      if (paramInt == com.tencent.mm.live.b.l.f.aNN())
-      {
-        if (((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)this.ymh.business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).zgy)
-        {
-          com.tencent.mm.plugin.gamelive.d locald = (com.tencent.mm.plugin.gamelive.d)h.ae(com.tencent.mm.plugin.gamelive.d.class);
-          Context localContext = paramViewGroup.getContext();
-          Object localObject = ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)this.ymh.business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).zgz;
-          paramMenuItem = (MenuItem)localObject;
-          if (localObject == null) {
-            paramMenuItem = ((c)this.ymh.business(c.class)).liveInfo.CqZ;
-          }
-          localObject = paramMenuItem;
-          if (paramMenuItem == null) {
-            localObject = "";
-          }
-          paramInt = ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)this.ymh.business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).zgA;
-          paramMenuItem = Boolean.FALSE;
-          locald.a(localContext, (String)localObject, paramInt, paramMenuItem, paramMenuItem, Long.valueOf(((c)this.ymh.business(c.class)).liveInfo.liveId));
-          localObject = paramViewGroup.getContext();
-          paramMenuItem = (MenuItem)localObject;
-          if (!(localObject instanceof AppCompatActivity)) {
-            paramMenuItem = null;
-          }
-          paramMenuItem = (AppCompatActivity)paramMenuItem;
-          if (paramMenuItem != null)
-          {
-            paramMenuItem.finish();
-            AppMethodBeat.o(273196);
-            return;
-          }
-          AppMethodBeat.o(273196);
-          return;
-        }
-        paramMenuItem = new Bundle();
-        paramMenuItem.putBoolean("PARAM_FINDER_LIVE_LIVE_FINISH_MANUAL", true);
-        paramMenuItem.putBoolean("PARAM_FINDER_LIVE_LIVE_FINISH_IF_CLOSE_LIVE", false);
-        l.e(this.ymh).statusChange(b.c.kzn, paramMenuItem);
-      }
-      AppMethodBeat.o(273196);
+      super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "ok", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    implements q.f
+    extends u
+    implements kotlin.g.a.b<Boolean, ah>
   {
-    b(l paraml, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
-    
-    public final void onCreateMMMenu(o paramo)
+    b(l paraml)
     {
-      AppMethodBeat.i(281471);
-      Object localObject = l.b(this.ymh);
-      if (localObject != null) {
-        ((e)localObject).setFooterView(null);
-      }
-      paramo.clear();
-      int i = 0;
-      int j = ((Collection)paramc).size();
-      while (i < j)
-      {
-        localObject = paramBundle.get(i);
-        p.j(localObject, "ids[i]");
-        int k = ((Number)localObject).intValue();
-        localObject = this.ymh.kiF.getContext();
-        p.j(localObject, "root.context");
-        paramo.a(k, ((Context)localObject).getResources().getColor(com.tencent.mm.live.b.b.live_title_host_close_btn_color), (CharSequence)paramc.get(i));
-        i += 1;
-      }
-      AppMethodBeat.o(281471);
+      super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onDismiss"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "ok", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    implements e.b
+    extends u
+    implements kotlin.g.a.b<Boolean, ah>
   {
-    c(l paraml) {}
-    
-    public final void onDismiss()
+    c(l paraml)
     {
-      AppMethodBeat.i(289036);
-      l.c(this.ymh);
-      AppMethodBeat.o(289036);
+      super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "verify", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    implements q.f
+    extends u
+    implements kotlin.g.a.b<Boolean, ah>
   {
-    d(l paraml) {}
-    
-    public final void onCreateMMMenu(o paramo)
+    d(l paraml, String paramString)
     {
-      AppMethodBeat.i(249098);
-      p.j(paramo, "it");
-      if (paramo.hJO())
-      {
-        Object localObject = com.tencent.mm.live.b.l.f.kuF;
-        int i = com.tencent.mm.live.b.l.f.aNL();
-        localObject = this.ymh.kiF.getContext();
-        p.j(localObject, "root.context");
-        int j = ((Context)localObject).getResources().getColor(com.tencent.mm.live.b.b.Red);
-        localObject = this.ymh.kiF.getContext();
-        p.j(localObject, "root.context");
-        paramo.a(i, j, (CharSequence)((Context)localObject).getResources().getString(b.h.live_menu_item_quit_live));
-      }
-      AppMethodBeat.o(249098);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
-  static final class e
-    implements q.g
-  {
-    e(l paraml) {}
-    
-    public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
-    {
-      AppMethodBeat.i(248005);
-      p.j(paramMenuItem, "menuItem");
-      paramInt = paramMenuItem.getItemId();
-      paramMenuItem = com.tencent.mm.live.b.l.f.kuF;
-      if (paramInt == com.tencent.mm.live.b.l.f.aNL()) {
-        l.a(this.ymh);
-      }
-      AppMethodBeat.o(248005);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
-  static final class f
-    implements q.f
-  {
-    f(l paraml, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
-    
-    public final void onCreateMMMenu(o paramo)
-    {
-      AppMethodBeat.i(283577);
-      Object localObject = l.b(this.ymh);
-      if (localObject != null) {
-        ((e)localObject).setFooterView(null);
-      }
-      paramo.clear();
-      int i = 0;
-      int j = ((Collection)paramc).size();
-      while (i < j)
-      {
-        localObject = paramBundle.get(i);
-        p.j(localObject, "ids[i]");
-        paramo.d(((Number)localObject).intValue(), (CharSequence)paramc.get(i));
-        i += 1;
-      }
-      AppMethodBeat.o(283577);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onDismiss"})
-  static final class g
-    implements e.b
-  {
-    g(l paraml) {}
-    
-    public final void onDismiss()
-    {
-      AppMethodBeat.i(279895);
-      l.c(this.ymh);
-      AppMethodBeat.o(279895);
+      super();
     }
   }
 }

@@ -3,236 +3,215 @@ package com.tencent.mm.plugin.appbrand.widget.dialog;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import android.view.Window;
+import android.widget.FrameLayout;
+import androidx.appcompat.app.e;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetBehavior.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.appbrand.ba.f;
+import com.tencent.mm.plugin.appbrand.ba.g;
+import com.tencent.mm.plugin.appbrand.ba.j;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.qqmusic.mediaplayer.UnSupportMethodException;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.k.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/widget/dialog/RequestDialogRotationHelper;", "", "()V", "applyStyleByRotation", "", "context", "Landroid/content/Context;", "rootView", "Landroid/view/View;", "buttonGroup", "rotation", "", "shouldInLargeScreenCompatMode", "", "getAppropriateLargeScreenRequestDialogWidth", "dialogMeasuredWidth", "dp2Px", "dp", "isLargeScreenEnv", "onPreDrawOnce", "block", "Lkotlin/Function0;", "postRequestLayout", "wrapScreenAdaptiveContextForRequestDialogIfNeed", "luggage-wechat-full-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/widget/dialog/HalfScreenDialog;", "Landroidx/appcompat/app/AppCompatDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "bottomSheetBehavior", "Lcom/google/android/material/bottomsheet/BottomSheetBehavior;", "Landroid/widget/FrameLayout;", "halfScreenView", "halfScreenViewContainer", "Landroid/view/View;", "isCanceledOnTouchOutside", "", "maxHeight", "", "peekHeight", "adjustBounds", "", "cancel", "isLandscape", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onStart", "setCanceledOnTouchOutside", "setContentView", "view", "params", "Landroid/view/ViewGroup$LayoutParams;", "layoutResID", "setMaxHeight", "setPeekHeight", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class m
+  extends e
 {
-  public static final m ruC;
+  public static final m.a uDe;
+  public int dqv;
+  public int maxHeight;
+  public final View uDf;
+  private final FrameLayout uDg;
+  public final BottomSheetBehavior<FrameLayout> uDh;
+  private boolean uDi;
   
   static
   {
-    AppMethodBeat.i(148269);
-    ruC = new m();
-    AppMethodBeat.o(148269);
+    AppMethodBeat.i(324706);
+    uDe = new m.a((byte)0);
+    AppMethodBeat.o(324706);
   }
   
-  public static final int S(Context paramContext, int paramInt)
+  public m(Context paramContext)
   {
-    AppMethodBeat.i(169666);
-    p.k(paramContext, "context");
-    int i = paramContext.getResources().getDimensionPixelSize(com.tencent.luggage.l.a.b.authorize_bottom_dialog_width_landscape);
-    Resources localResources = paramContext.getResources();
-    p.j(localResources, "context.resources");
-    int j = Math.max(i, localResources.getDisplayMetrics().widthPixels / 2);
-    if (paramInt < i) {}
-    for (;;)
+    super(paramContext, ba.j.AppBrandBottomSheetDialog);
+    AppMethodBeat.i(324694);
+    int i = paramContext.getResources().getDisplayMetrics().heightPixels;
+    this.dqv = ((int)(0.5F * i));
+    this.maxHeight = ((int)(1.0F * i));
+    Log.i("MicroMsg.AppBrand.HalfScreenDialog", "<init>, screenHeight: " + i + ", defaultPeekHeight: " + this.dqv + ", defaultMaxHeight: " + this.maxHeight);
+    bU();
+    paramContext = getLayoutInflater().inflate(ba.g.app_brand_half_screen_layout, null);
+    paramContext.setOnClickListener(new m..ExternalSyntheticLambda0(this));
+    View localView = paramContext.findViewById(ba.f.content_layout_container);
+    s.s(localView, "contentView.findViewById…content_layout_container)");
+    this.uDf = localView;
+    localView = this.uDf;
+    ViewGroup.LayoutParams localLayoutParams = this.uDf.getLayoutParams();
+    localLayoutParams.height = this.maxHeight;
+    ah localah = ah.aiuX;
+    localView.setLayoutParams(localLayoutParams);
+    super.setContentView(paramContext);
+    paramContext = this.uDf.findViewById(ba.f.content_layout);
+    s.s(paramContext, "halfScreenViewContainer.…ById(R.id.content_layout)");
+    this.uDg = ((FrameLayout)paramContext);
+    paramContext = BottomSheetBehavior.cC((View)this.uDg);
+    s.s(paramContext, "from(halfScreenView)");
+    this.uDh = paramContext;
+    this.uDh.setPeekHeight(this.dqv);
+    this.uDh.setState(5);
+    this.uDh.dqJ = ((BottomSheetBehavior.a)new BottomSheetBehavior.a()
     {
-      paramContext = paramContext.getResources();
-      p.j(paramContext, "context.resources");
-      paramInt = Math.min(i, paramContext.getDisplayMetrics().widthPixels);
-      AppMethodBeat.o(169666);
-      return paramInt;
-      i = paramInt;
-      if (paramInt > j) {
-        i = j;
-      }
-    }
-  }
-  
-  public static void a(final Context paramContext, View paramView1, View paramView2, int paramInt, boolean paramBoolean)
-  {
-    Object localObject2 = null;
-    AppMethodBeat.i(183080);
-    p.k(paramContext, "context");
-    p.k(paramView1, "rootView");
-    ViewGroup.LayoutParams localLayoutParams;
-    if (paramView2 != null)
-    {
-      localLayoutParams = paramView2.getLayoutParams();
-      if ((paramInt != 1) && (paramInt != 3)) {
-        break label142;
-      }
-      if (paramView2 == null) {
-        break label84;
-      }
-      paramView2 = paramView2.getParent();
-    }
-    for (;;)
-    {
-      if ((paramView2 instanceof RelativeLayout))
+      public final void cD(View paramAnonymousView)
       {
-        if (localLayoutParams == null)
-        {
-          paramContext = new t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
-          AppMethodBeat.o(183080);
-          throw paramContext;
-          localLayoutParams = null;
-          break;
-          label84:
-          paramView2 = null;
-          continue;
-        }
-        ((RelativeLayout.LayoutParams)localLayoutParams).bottomMargin = paramContext.getResources().getDimensionPixelSize(com.tencent.luggage.l.a.b.authorize_bottom_dialog_bottom_margin_bottom_landscape);
+        AppMethodBeat.i(324720);
+        s.u(paramAnonymousView, "bottomSheet");
+        AppMethodBeat.o(324720);
       }
+      
+      public final void e(View paramAnonymousView, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(324714);
+        s.u(paramAnonymousView, "bottomSheet");
+        Log.i("MicroMsg.AppBrand.HalfScreenDialog", s.X("onStateChanged, newState: ", Integer.valueOf(paramAnonymousInt)));
+        if (5 == paramAnonymousInt) {
+          m.a(this.uDj);
+        }
+        AppMethodBeat.o(324714);
+      }
+    });
+    AppMethodBeat.o(324694);
+  }
+  
+  private static final void a(m paramm, View paramView)
+  {
+    AppMethodBeat.i(324699);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramm);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/appbrand/widget/dialog/HalfScreenDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramm, "this$0");
+    boolean bool = paramm.uDi;
+    Log.i("MicroMsg.AppBrand.HalfScreenDialog", s.X("onClick, isCanceledOnTouchOutside: ", Boolean.valueOf(bool)));
+    if (bool) {
+      paramm.dismiss();
     }
-    if (!paramBoolean)
+    a.a(new Object(), "com/tencent/mm/plugin/appbrand/widget/dialog/HalfScreenDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(324699);
+  }
+  
+  public final void cancel()
+  {
+    AppMethodBeat.i(324728);
+    if (5 != this.uDh.state) {
+      this.uDh.setState(5);
+    }
+    AppMethodBeat.o(324728);
+  }
+  
+  public final void onCreate(Bundle paramBundle)
+  {
+    AppMethodBeat.i(324717);
+    super.onCreate(paramBundle);
+    paramBundle = getWindow();
+    if (paramBundle != null) {
+      paramBundle.addFlags(67108864);
+    }
+    paramBundle = getWindow();
+    if (paramBundle != null) {
+      paramBundle.setWindowAnimations(ba.j.BottomToTopSlowAnimation);
+    }
+    if (2 == getContext().getResources().getConfiguration().orientation) {}
+    for (int i = 1; i != 0; i = 0)
     {
-      paramView2 = paramView1.getLayoutParams();
-      paramView2.width = paramContext.getResources().getDimensionPixelSize(com.tencent.luggage.l.a.b.authorize_bottom_dialog_width_landscape);
-      paramView1.setLayoutParams(paramView2);
-      AppMethodBeat.o(183080);
+      paramBundle = getWindow();
+      if (paramBundle != null) {
+        paramBundle.setGravity(81);
+      }
+      paramBundle = getContext().getResources().getDisplayMetrics();
+      i = k.qv(paramBundle.heightPixels, paramBundle.widthPixels);
+      Log.i("MicroMsg.AppBrand.HalfScreenDialog", s.X("adjustBounds, width: ", Integer.valueOf(i)));
+      paramBundle = getWindow();
+      if (paramBundle == null) {
+        break label176;
+      }
+      paramBundle.setLayout(i, -1);
+      AppMethodBeat.o(324717);
       return;
-      label142:
-      Object localObject1;
-      if (paramView2 != null) {
-        localObject1 = paramView2.getParent();
-      }
-      while ((localObject1 instanceof RelativeLayout)) {
-        if (localLayoutParams == null)
-        {
-          paramContext = new t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
-          AppMethodBeat.o(183080);
-          throw paramContext;
-          localObject1 = null;
-        }
-        else
-        {
-          ((RelativeLayout.LayoutParams)localLayoutParams).bottomMargin = paramContext.getResources().getDimensionPixelSize(com.tencent.luggage.l.a.b.authorize_bottom_dialog_bottom_margin_bottom_portrait);
-        }
-      }
-      if ((!paramBoolean) && (dh(paramContext)))
-      {
-        localObject1 = (kotlin.g.a.a)new a(paramView1, paramContext);
-        ViewTreeObserver localViewTreeObserver = paramView1.getViewTreeObserver();
-        p.j(localViewTreeObserver, "this.viewTreeObserver");
-        if (localViewTreeObserver.isAlive()) {
-          paramView1.getViewTreeObserver().addOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)new m.b(paramView1, (kotlin.g.a.a)localObject1));
-        }
-        paramView1 = localObject2;
-        if (paramView2 != null) {
-          paramView1 = paramView2.getParent();
-        }
-        if ((paramView1 instanceof RelativeLayout))
-        {
-          if (localLayoutParams == null)
-          {
-            paramContext = new t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
-            AppMethodBeat.o(183080);
-            throw paramContext;
-          }
-          ((RelativeLayout.LayoutParams)localLayoutParams).bottomMargin = paramContext.getResources().getDimensionPixelSize(com.tencent.luggage.l.a.b.authorize_bottom_dialog_bottom_margin_bottom_landscape);
-          AppMethodBeat.o(183080);
-        }
-      }
-      else
-      {
-        paramContext = paramView1.getLayoutParams();
-        paramContext.width = -1;
-        paramView1.setLayoutParams(paramContext);
-      }
     }
-    AppMethodBeat.o(183080);
+    paramBundle = getWindow();
+    if (paramBundle != null) {
+      paramBundle.setGravity(80);
+    }
+    paramBundle = getWindow();
+    if (paramBundle != null) {
+      paramBundle.setLayout(-1, -1);
+    }
+    label176:
+    AppMethodBeat.o(324717);
   }
   
-  private static boolean dh(Context paramContext)
+  protected final void onStart()
   {
-    AppMethodBeat.i(183081);
-    paramContext = paramContext.getResources();
-    p.j(paramContext, "this.resources");
-    if ((paramContext.getConfiguration().screenLayout & 0xF) >= 3)
-    {
-      AppMethodBeat.o(183081);
-      return true;
+    AppMethodBeat.i(324724);
+    super.onStart();
+    if (5 == this.uDh.state) {
+      this.uDh.setState(4);
     }
-    AppMethodBeat.o(183081);
-    return false;
+    AppMethodBeat.o(324724);
   }
   
-  public static final Context eA(Context paramContext)
+  public final void setCanceledOnTouchOutside(boolean paramBoolean)
   {
-    AppMethodBeat.i(169667);
-    p.k(paramContext, "$this$wrapScreenAdaptiveContextForRequestDialogIfNeed");
-    if (!dh(paramContext))
-    {
-      AppMethodBeat.o(169667);
-      return paramContext;
-    }
-    paramContext = (Context)new com.tencent.luggage.j.a(paramContext, (com.tencent.luggage.j.a.b)d.rsL);
-    AppMethodBeat.o(169667);
-    return paramContext;
+    AppMethodBeat.i(324749);
+    super.setCanceledOnTouchOutside(paramBoolean);
+    this.uDi = paramBoolean;
+    AppMethodBeat.o(324749);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class a
-    extends q
-    implements kotlin.g.a.a<x>
+  public final void setContentView(int paramInt)
   {
-    a(View paramView, Context paramContext)
-    {
-      super();
-    }
+    AppMethodBeat.i(324732);
+    getLayoutInflater().inflate(paramInt, (ViewGroup)this.uDg);
+    AppMethodBeat.o(324732);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/util/DisplayMetrics;", "originalMetrics", "<anonymous parameter 1>", "Landroid/content/res/Configuration;", "applyScreenAdaptiveDensity"})
-  static final class d
-    implements com.tencent.luggage.j.a.b
+  public final void setContentView(View paramView)
   {
-    public static final d rsL;
-    
-    static
-    {
-      AppMethodBeat.i(169664);
-      rsL = new d();
-      AppMethodBeat.o(169664);
-    }
-    
-    public final DisplayMetrics a(DisplayMetrics paramDisplayMetrics, Configuration paramConfiguration)
-    {
-      AppMethodBeat.i(169663);
-      p.k(paramDisplayMetrics, "originalMetrics");
-      p.k(paramConfiguration, "<anonymous parameter 1>");
-      int i = Math.min(paramDisplayMetrics.widthPixels, paramDisplayMetrics.heightPixels);
-      Math.max(paramDisplayMetrics.widthPixels, paramDisplayMetrics.heightPixels);
-      float f1;
-      if (i / paramDisplayMetrics.density >= 600.0F) {
-        f1 = i / 600.0F;
-      }
-      for (;;)
-      {
-        float f2 = paramDisplayMetrics.scaledDensity / paramDisplayMetrics.density;
-        i = Math.round(160.0F * f1);
-        paramConfiguration = new DisplayMetrics();
-        paramConfiguration.setTo(paramDisplayMetrics);
-        paramConfiguration.scaledDensity = (f2 * f1);
-        paramConfiguration.densityDpi = i;
-        paramConfiguration.density = f1;
-        AppMethodBeat.o(169663);
-        return paramConfiguration;
-        if (i / paramDisplayMetrics.density <= 240.0F) {
-          f1 = i / 240.0F;
-        } else {
-          f1 = i / 450.0F;
-        }
-      }
-    }
+    AppMethodBeat.i(324737);
+    s.u(paramView, "view");
+    paramView = new UnSupportMethodException("Use setContentView(Int) instead.");
+    AppMethodBeat.o(324737);
+    throw paramView;
+  }
+  
+  public final void setContentView(View paramView, ViewGroup.LayoutParams paramLayoutParams)
+  {
+    AppMethodBeat.i(324744);
+    s.u(paramView, "view");
+    paramView = new UnSupportMethodException("Use setContentView(Int) instead.");
+    AppMethodBeat.o(324744);
+    throw paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.m
  * JD-Core Version:    0.7.0.1
  */

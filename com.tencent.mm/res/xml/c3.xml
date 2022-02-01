@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <Preference android:key="my_safe_device_list_tip" android:layout="@layout/b_8" android:title="@string/gq5" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <Preference android:key="settings_care_mode" android:layout="@layout/bdi" android:title="@string/ir1" />
 </PreferenceScreen>

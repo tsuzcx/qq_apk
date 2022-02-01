@@ -10,10 +10,10 @@ public final class c
 {
   public static boolean vivohasCutOut(Context paramContext)
   {
-    AppMethodBeat.i(259087);
+    AppMethodBeat.i(235310);
     if (paramContext == null)
     {
-      AppMethodBeat.o(259087);
+      AppMethodBeat.o(235310);
       return false;
     }
     try
@@ -21,7 +21,7 @@ public final class c
       paramContext = paramContext.getClassLoader().loadClass("android.util.FtFeature");
       boolean bool = ((Boolean)paramContext.getMethod("isFeatureSupport", new Class[] { Integer.TYPE }).invoke(paramContext, new Object[] { Integer.valueOf(32) })).booleanValue();
       b.d("MicroMsg.Vendor.Vivo", "vivo hasCutOut: %s", new Object[] { Boolean.valueOf(bool) });
-      AppMethodBeat.o(259087);
+      AppMethodBeat.o(235310);
       return bool;
     }
     catch (ClassNotFoundException paramContext)
@@ -47,7 +47,7 @@ public final class c
     finally
     {
       b.d("MicroMsg.Vendor.Vivo", "vivo hasCutOut: %s", new Object[] { Boolean.FALSE });
-      AppMethodBeat.o(259087);
+      AppMethodBeat.o(235310);
     }
     return false;
   }

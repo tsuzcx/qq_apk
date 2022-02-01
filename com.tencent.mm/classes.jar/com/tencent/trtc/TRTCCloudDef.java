@@ -125,6 +125,13 @@ public class TRTCCloudDef
   public static final int TRTC_VOICE_CHANGER_TYPE_9 = 9;
   public static final int VIDEO_QOS_CONTROL_CLIENT = 0;
   public static final int VIDEO_QOS_CONTROL_SERVER = 1;
+  
+  public static class TRTCPublishCDNParam
+  {
+    public int appId;
+    public int bizId;
+    public String url;
+  }
 }
 
 

@@ -22,7 +22,7 @@ public class PoseDetectProcessManager
   
   private int setCamera(Context paramContext, Camera paramCamera, int paramInt)
   {
-    AppMethodBeat.i(217547);
+    AppMethodBeat.i(218063);
     this.mCamera = paramCamera;
     int i = 0;
     paramInt = 3;
@@ -59,7 +59,7 @@ public class PoseDetectProcessManager
         }
       }
     }
-    AppMethodBeat.o(217547);
+    AppMethodBeat.o(218063);
     return i;
   }
   
@@ -81,10 +81,10 @@ public class PoseDetectProcessManager
   
   public int poseDetect(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int paramInt1, byte[] paramArrayOfByte, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt2)
   {
-    AppMethodBeat.i(217543);
+    AppMethodBeat.i(218080);
     int i = YTCameraSetting.getRotateTag(this.mCameraRotate, 1);
     paramInt1 = YTPoseDetectJNIInterface.poseDetect(paramArrayOfFloat1, paramArrayOfFloat2, paramInt1, paramArrayOfByte, this.mDesiredPreviewWidth, this.mDesiredPreviewHeight, i, paramFloat1, paramFloat2, paramFloat3, paramInt2);
-    AppMethodBeat.o(217543);
+    AppMethodBeat.o(218080);
     return paramInt1;
   }
   
@@ -146,7 +146,7 @@ public class PoseDetectProcessManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.youtu.ytposedetect.manager.PoseDetectProcessManager
  * JD-Core Version:    0.7.0.1
  */

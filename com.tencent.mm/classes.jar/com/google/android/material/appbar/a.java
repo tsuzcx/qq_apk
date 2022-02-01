@@ -1,15 +1,15 @@
 package com.google.android.material.appbar;
 
 import android.view.View;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a
 {
-  int bvT;
-  private int bvU;
-  int bvV;
-  int bvW;
+  int doW;
+  private int doX;
+  int doY;
+  int doZ;
   private final View view;
   
   public a(View paramView)
@@ -17,40 +17,40 @@ final class a
     this.view = paramView;
   }
   
-  public final boolean fT(int paramInt)
+  public final void VE()
   {
-    AppMethodBeat.i(234810);
-    if (this.bvV != paramInt)
+    AppMethodBeat.i(210031);
+    this.doW = this.view.getTop();
+    this.doX = this.view.getLeft();
+    VF();
+    AppMethodBeat.o(210031);
+  }
+  
+  final void VF()
+  {
+    AppMethodBeat.i(210039);
+    z.s(this.view, this.doY - (this.view.getTop() - this.doW));
+    z.u(this.view, this.doZ - (this.view.getLeft() - this.doX));
+    AppMethodBeat.o(210039);
+  }
+  
+  public final boolean ji(int paramInt)
+  {
+    AppMethodBeat.i(210047);
+    if (this.doY != paramInt)
     {
-      this.bvV = paramInt;
-      wg();
-      AppMethodBeat.o(234810);
+      this.doY = paramInt;
+      VF();
+      AppMethodBeat.o(210047);
       return true;
     }
-    AppMethodBeat.o(234810);
+    AppMethodBeat.o(210047);
     return false;
-  }
-  
-  public final void wf()
-  {
-    AppMethodBeat.i(234808);
-    this.bvT = this.view.getTop();
-    this.bvU = this.view.getLeft();
-    wg();
-    AppMethodBeat.o(234808);
-  }
-  
-  final void wg()
-  {
-    AppMethodBeat.i(234809);
-    w.s(this.view, this.bvV - (this.view.getTop() - this.bvT));
-    w.u(this.view, this.bvW - (this.view.getLeft() - this.bvU));
-    AppMethodBeat.o(234809);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.appbar.a
  * JD-Core Version:    0.7.0.1
  */

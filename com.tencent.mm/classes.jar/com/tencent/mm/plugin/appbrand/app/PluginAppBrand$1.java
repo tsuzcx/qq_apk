@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.appbrand.app;
 
-import com.tencent.e.h;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.b;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
 
 final class PluginAppBrand$1
   implements b
 {
-  public final void b(Runnable paramRunnable, String paramString)
+  public final void d(Runnable paramRunnable, String paramString)
   {
-    AppMethodBeat.i(258761);
-    h.ZvG.d(paramRunnable, paramString);
-    AppMethodBeat.o(258761);
+    AppMethodBeat.i(317727);
+    h.ahAA.g(paramRunnable, paramString);
+    AppMethodBeat.o(317727);
   }
 }
 

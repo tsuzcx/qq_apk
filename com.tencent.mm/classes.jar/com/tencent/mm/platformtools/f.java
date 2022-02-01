@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
-  public static String ZJ(String paramString)
+  public static String RZ(String paramString)
   {
     AppMethodBeat.i(132967);
     if ((paramString == null) || ("".equals(paramString.trim())))
@@ -18,7 +18,7 @@ public final class f
     int j = paramString.length;
     while (i < j)
     {
-      String str = SpellMap.D(paramString[i]);
+      String str = SpellMap.v(paramString[i]);
       if (str != null) {
         localStringBuffer.append(str);
       }
@@ -29,7 +29,7 @@ public final class f
     return paramString;
   }
   
-  public static String ZK(String paramString)
+  public static String Sa(String paramString)
   {
     AppMethodBeat.i(132968);
     if ((paramString == null) || ("".equals(paramString.trim())))
@@ -45,7 +45,7 @@ public final class f
     {
       if (!Character.isSpace(paramString[i]))
       {
-        String str = SpellMap.D(paramString[i]);
+        String str = SpellMap.v(paramString[i]);
         if ((str != null) && (str.length() > 0)) {
           localStringBuffer.append(str.charAt(0));
         }

@@ -1,88 +1,75 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.js;
-import com.tencent.mm.f.b.a.jt;
-import com.tencent.mm.f.b.a.ju;
-import com.tencent.mm.model.ab;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.fsv;
+import com.tencent.mm.protocal.protobuf.fsw;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class z
+  extends p
+  implements m
 {
-  public static void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2, String paramString3)
+  private h callback;
+  private String errMsg;
+  public String hMM;
+  public fsw lyJ;
+  private final c rr;
+  
+  public z(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(188597);
-    int i = 1;
-    if (ab.Rh(paramString1)) {
-      i = 2;
-    }
-    ju localju = new ju();
-    localju.AO(paramString1);
-    localju.giO = i;
-    localju.gLR = paramInt1;
-    localju.gzn = paramInt2;
-    localju.geB = paramInt3;
-    localju.gLU = paramInt4;
-    localju.AP(paramString2);
-    localju.AQ(paramString3);
-    localju.bpa();
-    AppMethodBeat.o(188597);
+    AppMethodBeat.i(241439);
+    Log.i("MicroMsg.NetSceneUpgradeAssociateChatRoom", "NetSceneUpgradeAssociateChatRoom roomname:%s", new Object[] { Util.nullAs(paramString1, "") });
+    Object localObject = new c.a();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/upgradeassociatechatroom";
+    ((c.a)localObject).funcId = 3927;
+    ((c.a)localObject).otE = new fsv();
+    ((c.a)localObject).otF = new fsw();
+    this.rr = ((c.a)localObject).bEF();
+    this.hMM = paramString1;
+    localObject = (fsv)c.b.b(this.rr.otB);
+    ((fsv)localObject).hMM = paramString1;
+    ((fsv)localObject).hFb = paramString2;
+    ((fsv)localObject).scene = paramInt;
+    AppMethodBeat.o(241439);
   }
   
-  public static void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(188599);
-    int i = 0;
-    if (ab.Rh(paramString1)) {
-      i = 2;
-    }
-    for (;;)
-    {
-      jt localjt = new jt();
-      localjt.AL(paramString1);
-      localjt.giO = i;
-      localjt.gzn = paramInt1;
-      localjt.geB = paramInt2;
-      localjt.gLR = paramInt3;
-      localjt.AM(paramString2);
-      localjt.AN(paramString3);
-      localjt.bpa();
-      AppMethodBeat.o(188599);
-      return;
-      if (ab.Rg(paramString1)) {
-        i = 1;
-      }
-    }
+    AppMethodBeat.i(182095);
+    this.callback = paramh;
+    this.lyJ = ((fsw)c.c.b(this.rr.otC));
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(182095);
+    return i;
   }
   
-  public static void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  public final int getType()
   {
-    AppMethodBeat.i(188598);
-    int i = 0;
-    if (ab.Rh(paramString1)) {
-      i = 2;
-    }
-    for (;;)
-    {
-      js localjs = new js();
-      localjs.AI(paramString1);
-      localjs.giO = i;
-      localjs.gzn = paramInt1;
-      localjs.gmT = paramInt2;
-      localjs.amg();
-      localjs.AJ(paramString2);
-      localjs.AK(paramString3);
-      localjs.bpa();
-      AppMethodBeat.o(188598);
-      return;
-      if (ab.Rg(paramString1)) {
-        i = 1;
-      }
-    }
+    return 3927;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(182096);
+    Log.d("MicroMsg.NetSceneUpgradeAssociateChatRoom", "onGYNetEnd:[%d,%d,%s]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    this.errMsg = paramString;
+    AppMethodBeat.o(182096);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.chatroom.d.z
  * JD-Core Version:    0.7.0.1
  */

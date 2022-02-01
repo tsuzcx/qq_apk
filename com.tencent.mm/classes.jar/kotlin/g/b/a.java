@@ -1,61 +1,105 @@
 package kotlin.g.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import kotlin.l;
+import java.io.Serializable;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/jvm/internal/ArrayIterator;", "T", "", "array", "", "([Ljava/lang/Object;)V", "getArray", "()[Ljava/lang/Object;", "[Ljava/lang/Object;", "index", "", "hasNext", "", "next", "()Ljava/lang/Object;", "kotlin-stdlib"})
-final class a<T>
-  implements Iterator<T>, kotlin.g.b.a.a
+public class a
+  implements Serializable, o
 {
-  private final T[] aaAT;
-  private int index;
+  protected final Object aiwE;
+  private final Class aiwF;
+  private final boolean aiwG;
+  private final int arity;
+  private final int flags;
+  private final String name;
+  private final String signature;
   
-  public a(T[] paramArrayOfT)
+  public a(Class paramClass, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(129329);
-    this.aaAT = paramArrayOfT;
-    AppMethodBeat.o(129329);
+    this(f.aiwK, paramClass, paramString1, paramString2);
   }
   
-  public final boolean hasNext()
+  private a(Object paramObject, Class paramClass, String paramString1, String paramString2)
   {
-    return this.index < this.aaAT.length;
+    this.aiwE = paramObject;
+    this.aiwF = paramClass;
+    this.name = paramString1;
+    this.signature = paramString2;
+    this.aiwG = false;
+    this.arity = 3;
+    this.flags = 2;
   }
   
-  public final T next()
+  public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(129328);
-    try
+    AppMethodBeat.i(190979);
+    if (this == paramObject)
     {
-      Object localObject = this.aaAT;
-      int i = this.index;
-      this.index = (i + 1);
-      localObject = localObject[i];
-      AppMethodBeat.o(129328);
-      return localObject;
+      AppMethodBeat.o(190979);
+      return true;
     }
-    catch (ArrayIndexOutOfBoundsException localArrayIndexOutOfBoundsException)
+    if (!(paramObject instanceof a))
     {
-      this.index -= 1;
-      Throwable localThrowable = (Throwable)new NoSuchElementException(localArrayIndexOutOfBoundsException.getMessage());
-      AppMethodBeat.o(129328);
-      throw localThrowable;
+      AppMethodBeat.o(190979);
+      return false;
+    }
+    paramObject = (a)paramObject;
+    if ((this.aiwG == paramObject.aiwG) && (this.arity == paramObject.arity) && (this.flags == paramObject.flags) && (s.p(this.aiwE, paramObject.aiwE)) && (s.p(this.aiwF, paramObject.aiwF)) && (this.name.equals(paramObject.name)) && (this.signature.equals(paramObject.signature)))
+    {
+      AppMethodBeat.o(190979);
+      return true;
+    }
+    AppMethodBeat.o(190979);
+    return false;
+  }
+  
+  public int getArity()
+  {
+    return this.arity;
+  }
+  
+  public int hashCode()
+  {
+    int j = 0;
+    AppMethodBeat.i(190984);
+    int i;
+    int m;
+    int n;
+    if (this.aiwE != null)
+    {
+      i = this.aiwE.hashCode();
+      if (this.aiwF != null) {
+        j = this.aiwF.hashCode();
+      }
+      m = this.name.hashCode();
+      n = this.signature.hashCode();
+      if (!this.aiwG) {
+        break label124;
+      }
+    }
+    label124:
+    for (int k = 1231;; k = 1237)
+    {
+      int i1 = this.arity;
+      int i2 = this.flags;
+      AppMethodBeat.o(190984);
+      return ((k + (((i * 31 + j) * 31 + m) * 31 + n) * 31) * 31 + i1) * 31 + i2;
+      i = 0;
+      break;
     }
   }
   
-  public final void remove()
+  public String toString()
   {
-    AppMethodBeat.i(129330);
-    UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException("Operation is not supported for read-only collection");
-    AppMethodBeat.o(129330);
-    throw localUnsupportedOperationException;
+    AppMethodBeat.i(190986);
+    String str = ai.a(this);
+    AppMethodBeat.o(190986);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlin.g.b.a
  * JD-Core Version:    0.7.0.1
  */

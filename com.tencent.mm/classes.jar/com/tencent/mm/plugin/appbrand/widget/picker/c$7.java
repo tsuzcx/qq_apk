@@ -15,8 +15,8 @@ final class c$7
   {
     AppMethodBeat.i(138047);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/appbrand/widget/picker/AppBrandPickerBottomPanelBase$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/appbrand/widget/picker/AppBrandPickerBottomPanelBase$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
     a.a(this, "com/tencent/mm/plugin/appbrand/widget/picker/AppBrandPickerBottomPanelBase$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(138047);
   }

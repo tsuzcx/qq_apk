@@ -3,67 +3,45 @@ package com.tencent.mm.plugin.finder.feed.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.e;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.r;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.a;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.live.core.core.a.b;
+import com.tencent.mm.plugin.finder.accessibility.i;
+import com.tencent.mm.plugin.finder.accessibility.j;
 import com.tencent.mm.plugin.finder.live.fragment.FinderLiveAnchorFragment;
+import com.tencent.mm.plugin.finder.live.model.aj;
+import com.tencent.mm.plugin.finder.live.p.a;
+import com.tencent.mm.plugin.finder.live.p.e;
+import com.tencent.mm.plugin.finder.live.p.f;
+import com.tencent.mm.plugin.finder.live.viewmodel.k;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.base.a;
+import com.tencent.mm.sensitive.d.c;
 import com.tencent.mm.ui.component.UIComponent;
 import com.tencent.mm.ui.component.UIComponentFragment;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
-import kotlin.a.ak;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.ar;
+import kotlin.g.b.s;
 
-@a(32)
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveAnchorWithoutAffinityUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "fragment", "Lcom/tencent/mm/plugin/finder/live/fragment/FinderLiveAnchorFragment;", "getFragment", "()Lcom/tencent/mm/plugin/finder/live/fragment/FinderLiveAnchorFragment;", "setFragment", "(Lcom/tencent/mm/plugin/finder/live/fragment/FinderLiveAnchorFragment;)V", "swipeBack", "", "getSwipeBack", "()Z", "setSwipeBack", "(Z)V", "commitFragment", "", "finish", "getLayoutId", "", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "onStart", "onStop", "onSwipeBack", "plugin-finder-live_release"})
-public final class FinderLiveAnchorWithoutAffinityUI
+@com.tencent.mm.ui.base.a(32)
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveAnchorWithoutAffinityUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "fragment", "Lcom/tencent/mm/plugin/finder/live/fragment/FinderLiveAnchorFragment;", "getFragment", "()Lcom/tencent/mm/plugin/finder/live/fragment/FinderLiveAnchorFragment;", "setFragment", "(Lcom/tencent/mm/plugin/finder/live/fragment/FinderLiveAnchorFragment;)V", "swipeBack", "", "getSwipeBack", "()Z", "setSwipeBack", "(Z)V", "commitFragment", "", "finish", "getLayoutId", "", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onBusinessPermissionDenied", "permission", "onBusinessPermissionGranted", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "onStart", "onStop", "onSwipeBack", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+public class FinderLiveAnchorWithoutAffinityUI
   extends MMFinderUI
 {
+  public boolean BoA;
+  private FinderLiveAnchorFragment BoB;
   private final String TAG = "FinderLiveAnchorWithoutAffinityUI";
-  private HashMap _$_findViewCache;
-  public boolean xOB;
-  private FinderLiveAnchorFragment xOC;
   
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(233143);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(233143);
-  }
+  public void _$_clearFindViewByIdCache() {}
   
-  public final View _$_findCachedViewById(int paramInt)
+  public void finish()
   {
-    AppMethodBeat.i(233141);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(233141);
-    return localView1;
-  }
-  
-  public final void finish()
-  {
-    AppMethodBeat.i(233140);
-    Object localObject = this.xOC;
+    AppMethodBeat.i(365083);
+    Object localObject = this.BoB;
     if (localObject != null)
     {
       localObject = ((Iterable)((UIComponentFragment)localObject).uiComponents).iterator();
@@ -72,92 +50,149 @@ public final class FinderLiveAnchorWithoutAffinityUI
       }
     }
     super.finish();
-    overridePendingTransition(b.a.anim_not_change, b.a.sight_slide_bottom_out);
-    AppMethodBeat.o(233140);
+    overridePendingTransition(p.a.anim_not_change, p.a.sight_slide_bottom_out);
+    AppMethodBeat.o(365083);
   }
   
-  public final int getLayoutId()
+  public int getLayoutId()
   {
-    return b.g.finder_live_anchor_fragment_ui;
+    return p.f.CcO;
   }
   
-  public final Set<Class<? extends UIComponent>> importUIComponents()
+  public Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(233135);
-    Set localSet = ak.setOf(com.tencent.mm.plugin.finder.live.viewmodel.i.class);
-    AppMethodBeat.o(233135);
+    AppMethodBeat.i(365059);
+    Set localSet = ar.setOf(new Class[] { k.class, j.class, i.class });
+    AppMethodBeat.o(365059);
     return localSet;
   }
   
-  public final void onCreate(Bundle paramBundle)
+  public void onBusinessPermissionDenied(String paramString)
   {
-    AppMethodBeat.i(233127);
+    AppMethodBeat.i(365097);
+    s.u(paramString, "permission");
+    if (s.p(paramString, d.c.actx.value))
+    {
+      finish();
+      AppMethodBeat.o(365097);
+      return;
+    }
+    s.p(paramString, d.c.acty.value);
+    AppMethodBeat.o(365097);
+  }
+  
+  public void onBusinessPermissionGranted(String paramString)
+  {
+    AppMethodBeat.i(365093);
+    s.u(paramString, "permission");
+    if (s.p(paramString, d.c.actx.value))
+    {
+      paramString = aj.CGT;
+      paramString = aj.getLiveCore();
+      if ((paramString instanceof b)) {}
+      for (paramString = (b)paramString; paramString != null; paramString = null)
+      {
+        Object localObject = aj.CGT;
+        localObject = aj.bhX();
+        aj localaj = aj.CGT;
+        paramString.a((com.tencent.mm.live.core.b.a)localObject, aj.bhY());
+        AppMethodBeat.o(365093);
+        return;
+      }
+    }
+    if (s.p(paramString, d.c.acty.value))
+    {
+      paramString = aj.CGT;
+      paramString = aj.getLiveCore();
+      if (!(paramString instanceof b)) {
+        break label127;
+      }
+    }
+    label127:
+    for (paramString = (b)paramString;; paramString = null)
+    {
+      if (paramString != null) {
+        paramString.startLocalAudio(true);
+      }
+      AppMethodBeat.o(365093);
+      return;
+    }
+  }
+  
+  public void onCreate(Bundle paramBundle)
+  {
+    AppMethodBeat.i(365026);
     supportRequestWindowFeature(1);
+    Object localObject = aj.CGT;
+    localObject = aj.elk();
+    if (localObject != null) {
+      ((com.tencent.mm.plugin.finder.live.view.a)localObject).checkFinishWhenDiffTask((Activity)this);
+    }
     super.onCreate(paramBundle);
     getIntent().putExtra("KEY_PARAMS_RESET_LIVE", false);
-    this.xOC = new FinderLiveAnchorFragment();
-    paramBundle = this.xOC;
+    this.BoB = new FinderLiveAnchorFragment();
+    paramBundle = this.BoB;
     if (paramBundle != null) {
-      paramBundle.yda = false;
+      paramBundle.CDr = false;
     }
-    paramBundle = this.xOC;
+    paramBundle = this.BoB;
     if (paramBundle != null)
     {
-      androidx.fragment.app.i locali = getSupportFragmentManager().beginTransaction();
-      p.j(locali, "supportFragmentManager.beginTransaction()");
-      locali.b(b.f.fragment_container, (Fragment)paramBundle);
-      locali.iq();
+      localObject = getSupportFragmentManager().beginTransaction();
+      s.s(localObject, "supportFragmentManager.beginTransaction()");
+      ((r)localObject).b(p.e.fragment_container, (Fragment)paramBundle);
+      ((r)localObject).FY();
     }
     Log.i(this.TAG, "[onCreate]");
-    AppMethodBeat.o(233127);
+    AppMethodBeat.o(365026);
   }
   
-  public final void onDestroy()
+  public void onDestroy()
   {
-    AppMethodBeat.i(233133);
+    AppMethodBeat.i(365054);
     super.onDestroy();
     Log.i(this.TAG, "[onDestroy]");
-    AppMethodBeat.o(233133);
+    AppMethodBeat.o(365054);
   }
   
-  public final void onPause()
+  public void onPause()
   {
-    AppMethodBeat.i(233131);
+    AppMethodBeat.i(365040);
     super.onPause();
     Log.i(this.TAG, "[onPause]");
-    AppMethodBeat.o(233131);
+    AppMethodBeat.o(365040);
   }
   
-  public final void onResume()
+  public void onResume()
   {
-    AppMethodBeat.i(233130);
+    AppMethodBeat.i(365035);
     super.onResume();
     Log.i(this.TAG, "[onResume]");
-    AppMethodBeat.o(233130);
+    AppMethodBeat.o(365035);
   }
   
-  public final void onStart()
+  public void onStart()
   {
-    AppMethodBeat.i(233128);
+    AppMethodBeat.i(365029);
     super.onStart();
     Log.i(this.TAG, "[onStart]");
-    AppMethodBeat.o(233128);
+    AppMethodBeat.o(365029);
   }
   
-  public final void onStop()
+  public void onStop()
   {
-    AppMethodBeat.i(233132);
+    AppMethodBeat.i(365049);
     super.onStop();
     Log.i(this.TAG, "[onStop]");
-    AppMethodBeat.o(233132);
+    AppMethodBeat.o(365049);
   }
   
-  public final void onSwipeBack()
+  public void onSwipeBack()
   {
-    AppMethodBeat.i(233137);
+    AppMethodBeat.i(365075);
     super.onSwipeBack();
-    this.xOB = true;
-    AppMethodBeat.o(233137);
+    this.BoA = true;
+    AppMethodBeat.o(365075);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -168,7 +203,7 @@ public final class FinderLiveAnchorWithoutAffinityUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.ui.FinderLiveAnchorWithoutAffinityUI
  * JD-Core Version:    0.7.0.1
  */

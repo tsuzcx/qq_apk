@@ -1,9 +1,7 @@
 package com.github.henryye.nativeiv.bitmap;
 
-import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@Keep
 public enum BitmapType
 {
   static
@@ -20,7 +18,7 @@ public enum BitmapType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.github.henryye.nativeiv.bitmap.BitmapType
  * JD-Core Version:    0.7.0.1
  */

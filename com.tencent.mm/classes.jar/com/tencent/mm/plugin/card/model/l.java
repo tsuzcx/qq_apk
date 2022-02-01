@@ -27,7 +27,7 @@ public final class l
     this.db = paramISQLiteDatabase;
   }
   
-  public final List<k> aqZ(String paramString)
+  public final List<k> akE(String paramString)
   {
     AppMethodBeat.i(112785);
     ArrayList localArrayList = new ArrayList();
@@ -66,7 +66,7 @@ public final class l
     }
   }
   
-  public final k ara(String paramString)
+  public final k akF(String paramString)
   {
     AppMethodBeat.i(112786);
     localCursor = this.db.rawQuery("select * from CardQrCodeDataInfo where card_id =? AND status=0  limit 1", new String[] { paramString });
@@ -126,7 +126,7 @@ public final class l
     }
   }
   
-  public final k arb(String paramString)
+  public final k akG(String paramString)
   {
     AppMethodBeat.i(112787);
     localCursor = this.db.rawQuery("select * from CardQrCodeDataInfo where card_id =? AND status=1  limit 1", new String[] { paramString });
@@ -186,7 +186,7 @@ public final class l
     }
   }
   
-  public final boolean fF(String paramString1, String paramString2)
+  public final boolean ge(String paramString1, String paramString2)
   {
     AppMethodBeat.i(112788);
     k localk = new k();
@@ -204,7 +204,7 @@ public final class l
     }
   }
   
-  public final boolean ho(String paramString)
+  public final boolean iP(String paramString)
   {
     AppMethodBeat.i(112789);
     k localk = new k();
@@ -223,7 +223,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.l
  * JD-Core Version:    0.7.0.1
  */

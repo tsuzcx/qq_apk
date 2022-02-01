@@ -28,11 +28,11 @@ public final class k
     this.db = paramISQLiteDatabase;
   }
   
-  public static String HL(int paramInt)
+  public static String Im(int paramInt)
   {
     AppMethodBeat.i(113013);
     Object localObject = new StringBuilder();
-    ArrayList localArrayList = b.HI(paramInt);
+    ArrayList localArrayList = b.Ij(paramInt);
     if ((localArrayList != null) && (localArrayList.size() > 0))
     {
       ((StringBuilder)localObject).append(" (");
@@ -54,7 +54,7 @@ public final class k
     return "";
   }
   
-  public final boolean HM(int paramInt)
+  public final boolean In(int paramInt)
   {
     AppMethodBeat.i(113018);
     Object localObject = new StringBuilder();
@@ -74,7 +74,7 @@ public final class k
     }
   }
   
-  public final boolean Y(String paramString, int paramInt1, int paramInt2)
+  public final boolean ac(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(113019);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -92,7 +92,7 @@ public final class k
     }
   }
   
-  public final ArrayList<String> arj(String paramString)
+  public final ArrayList<String> akO(String paramString)
   {
     AppMethodBeat.i(113014);
     Log.i("MicroMsg.ShareCardInfoStorage", "queryNameByCardtpId(), limit is 99");
@@ -139,7 +139,7 @@ public final class k
     }
   }
   
-  public final int ark(String paramString)
+  public final int akP(String paramString)
   {
     int i = 0;
     AppMethodBeat.i(113015);
@@ -163,7 +163,7 @@ public final class k
     return i;
   }
   
-  public final String arl(String paramString)
+  public final String akQ(String paramString)
   {
     AppMethodBeat.i(113016);
     Log.i("MicroMsg.ShareCardInfoStorage", "queryCardIdByCardtpId()");
@@ -197,7 +197,7 @@ public final class k
     return paramString;
   }
   
-  public final void arm(String paramString)
+  public final void akR(String paramString)
   {
     AppMethodBeat.i(113020);
     paramString = "delete from ShareCardInfo where card_id = '" + paramString + "'";
@@ -205,7 +205,7 @@ public final class k
     AppMethodBeat.o(113020);
   }
   
-  public final ShareCardInfo arn(String paramString)
+  public final ShareCardInfo akS(String paramString)
   {
     AppMethodBeat.i(113021);
     ShareCardInfo localShareCardInfo = new ShareCardInfo();
@@ -219,7 +219,7 @@ public final class k
     return null;
   }
   
-  public final String fJ(String paramString1, String paramString2)
+  public final String gi(String paramString1, String paramString2)
   {
     AppMethodBeat.i(113017);
     Log.i("MicroMsg.ShareCardInfoStorage", "queryNewCardIdByCardtpId()");
@@ -264,7 +264,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.model.k
  * JD-Core Version:    0.7.0.1
  */

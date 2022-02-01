@@ -8,130 +8,131 @@ import androidx.recyclerview.widget.RecyclerView.n;
 import androidx.recyclerview.widget.RecyclerView.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/layoutmanager/Flip3DLayoutManager;", "Landroidx/recyclerview/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "orientation", "", "reverseLayout", "", "(Landroid/content/Context;IZ)V", "enableHorizontalScroll", "enableVerticalScroll", "canScrollHorizontally", "canScrollVertically", "", "enable", "onLayoutCompleted", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "scrollHorizontallyBy", "dx", "recycler", "Landroidx/recyclerview/widget/RecyclerView$Recycler;", "Landroidx/recyclerview/widget/RecyclerView;", "scrollToPosition", "position", "smoothScrollToPosition", "recyclerView", "updateSelectedChild", "Companion", "libmmui_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/view/layoutmanager/Flip3DLayoutManager;", "Landroidx/recyclerview/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "orientation", "", "reverseLayout", "", "(Landroid/content/Context;IZ)V", "enableHorizontalScroll", "enableVerticalScroll", "canScrollHorizontally", "canScrollVertically", "", "enable", "onLayoutCompleted", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "scrollHorizontallyBy", "dx", "recycler", "Landroidx/recyclerview/widget/RecyclerView$Recycler;", "Landroidx/recyclerview/widget/RecyclerView;", "scrollToPosition", "position", "smoothScrollToPosition", "recyclerView", "updateSelectedChild", "Companion", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class Flip3DLayoutManager
   extends LinearLayoutManager
 {
-  public static final a YQT;
-  private boolean YQR;
-  public boolean YQS;
+  public static final Flip3DLayoutManager.a agMx;
+  private boolean agMy;
+  public boolean agMz;
   
   static
   {
-    AppMethodBeat.i(219128);
-    YQT = new a((byte)0);
-    AppMethodBeat.o(219128);
+    AppMethodBeat.i(234734);
+    agMx = new Flip3DLayoutManager.a((byte)0);
+    AppMethodBeat.o(234734);
   }
   
   public Flip3DLayoutManager(Context paramContext)
   {
     super(0, false);
-    AppMethodBeat.i(219127);
-    this.YQR = true;
-    this.YQS = true;
-    AppMethodBeat.o(219127);
+    AppMethodBeat.i(234728);
+    this.agMy = true;
+    this.agMz = true;
+    AppMethodBeat.o(234728);
   }
   
-  private final void ihQ()
+  private final void jNd()
   {
-    AppMethodBeat.i(219125);
-    int j = getChildCount();
+    AppMethodBeat.i(234731);
+    int k = getChildCount();
     int i = 0;
-    while (i < j)
+    if (k > 0) {}
+    for (;;)
     {
+      int j = i + 1;
       View localView = getChildAt(i);
-      if (localView == null)
+      float f2;
+      if (localView != null)
       {
-        i += 1;
-      }
-      else
-      {
-        p.j(localView, "getChildAt(i) ?: continue");
-        int k = (localView.getLeft() + localView.getRight()) / 2;
+        i = (localView.getLeft() + localView.getRight()) / 2;
         float f1 = getWidth() / 2.0F;
-        float f2 = (k - f1) / getWidth() * 45.0F;
+        f2 = (i - f1) / getWidth() * 45.0F;
         localView.setPivotX(f1);
         localView.setPivotY(getHeight() / 2.0F);
-        if (f2 < 0.0F) {
-          localView.setPivotX(getWidth());
+        if (f2 >= 0.0F) {
+          break label124;
         }
-        for (;;)
-        {
-          localView.setRotationY(f2);
-          break;
-          localView.setPivotX(0.0F);
-        }
+        localView.setPivotX(getWidth());
       }
+      for (;;)
+      {
+        localView.setRotationY(f2);
+        if (j < k) {
+          break;
+        }
+        AppMethodBeat.o(234731);
+        return;
+        label124:
+        localView.setPivotX(0.0F);
+      }
+      i = j;
     }
-    AppMethodBeat.o(219125);
   }
   
   public final boolean canScrollHorizontally()
   {
-    AppMethodBeat.i(219113);
-    if ((super.canScrollHorizontally()) && (this.YQS))
+    AppMethodBeat.i(234758);
+    if ((super.canScrollHorizontally()) && (this.agMz))
     {
-      AppMethodBeat.o(219113);
+      AppMethodBeat.o(234758);
       return true;
     }
-    AppMethodBeat.o(219113);
+    AppMethodBeat.o(234758);
     return false;
   }
   
   public final boolean canScrollVertically()
   {
-    AppMethodBeat.i(219114);
-    if ((super.canScrollVertically()) && (this.YQR))
+    AppMethodBeat.i(234761);
+    if ((super.canScrollVertically()) && (this.agMy))
     {
-      AppMethodBeat.o(219114);
+      AppMethodBeat.o(234761);
       return true;
     }
-    AppMethodBeat.o(219114);
+    AppMethodBeat.o(234761);
     return false;
   }
   
   public final void onLayoutCompleted(RecyclerView.s params)
   {
-    AppMethodBeat.i(219104);
+    AppMethodBeat.i(234738);
     super.onLayoutCompleted(params);
-    ihQ();
-    Log.i("MicroMsg.Flip3DLayoutManager", "onLayoutCompleted childCount:" + getChildCount());
-    AppMethodBeat.o(219104);
+    jNd();
+    Log.i("MicroMsg.Flip3DLayoutManager", s.X("onLayoutCompleted childCount:", Integer.valueOf(getChildCount())));
+    AppMethodBeat.o(234738);
   }
   
   public final int scrollHorizontallyBy(int paramInt, RecyclerView.n paramn, RecyclerView.s params)
   {
-    AppMethodBeat.i(219106);
-    p.k(paramn, "recycler");
-    p.k(params, "state");
+    AppMethodBeat.i(234743);
+    s.u(paramn, "recycler");
+    s.u(params, "state");
     int i = super.scrollHorizontallyBy(paramInt, paramn, params);
-    ihQ();
+    jNd();
     Log.i("MicroMsg.Flip3DLayoutManager", "scrollHorizontallyBy childCount:" + getChildCount() + ", dx:" + paramInt);
-    AppMethodBeat.o(219106);
+    AppMethodBeat.o(234743);
     return i;
   }
   
   public final void scrollToPosition(int paramInt)
   {
-    AppMethodBeat.i(219108);
+    AppMethodBeat.i(234748);
     super.scrollToPosition(paramInt);
     Log.i("MicroMsg.Flip3DLayoutManager", "scrollToPosition childCount:" + getChildCount() + ", position:" + paramInt);
-    AppMethodBeat.o(219108);
+    AppMethodBeat.o(234748);
   }
   
   public final void smoothScrollToPosition(RecyclerView paramRecyclerView, RecyclerView.s params, int paramInt)
   {
-    AppMethodBeat.i(219111);
+    AppMethodBeat.i(234754);
     super.smoothScrollToPosition(paramRecyclerView, params, paramInt);
     Log.i("MicroMsg.Flip3DLayoutManager", "smoothScrollToPosition childCount:" + getChildCount() + ", position:" + paramInt);
-    AppMethodBeat.o(219111);
+    AppMethodBeat.o(234754);
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/layoutmanager/Flip3DLayoutManager$Companion;", "", "()V", "TAG", "", "libmmui_release"})
-  public static final class a {}
 }
 
 

@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.topstory.ui.video.fs;
 
-import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.a;
@@ -11,10 +10,10 @@ public class TopStoryMultiTaskFsVideoUI
 {
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(202691);
+    AppMethodBeat.i(271798);
     super.onCreate(paramBundle);
     overridePendingTransition(0, 0);
-    AppMethodBeat.o(202691);
+    AppMethodBeat.o(271798);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -25,7 +24,7 @@ public class TopStoryMultiTaskFsVideoUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.fs.TopStoryMultiTaskFsVideoUI
  * JD-Core Version:    0.7.0.1
  */

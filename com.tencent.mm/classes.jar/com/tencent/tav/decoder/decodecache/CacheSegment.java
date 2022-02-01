@@ -17,28 +17,28 @@ class CacheSegment
   
   CacheSegment(CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(191823);
+    AppMethodBeat.i(216430);
     this.segmentTimeRange = null;
     this.cacheFrameList = new ArrayList();
     this.segmentTimeRange = paramCMTimeRange;
-    AppMethodBeat.o(191823);
+    AppMethodBeat.o(216430);
   }
   
   private boolean isCacheFrameUsable(CacheFrame paramCacheFrame)
   {
-    AppMethodBeat.i(191829);
+    AppMethodBeat.i(216444);
     if ((paramCacheFrame.sampleBuffer != null) && (paramCacheFrame.sampleBuffer.getTextureInfo() != null))
     {
-      AppMethodBeat.o(191829);
+      AppMethodBeat.o(216444);
       return true;
     }
-    AppMethodBeat.o(191829);
+    AppMethodBeat.o(216444);
     return false;
   }
   
   public void clear()
   {
-    AppMethodBeat.i(191834);
+    AppMethodBeat.i(216475);
     Iterator localIterator = this.cacheFrameList.iterator();
     while (localIterator.hasNext())
     {
@@ -50,33 +50,33 @@ class CacheSegment
       }
     }
     this.cacheFrameList.clear();
-    AppMethodBeat.o(191834);
+    AppMethodBeat.o(216475);
   }
   
   CMTime getLastFrameTime()
   {
-    AppMethodBeat.i(191836);
+    AppMethodBeat.i(216484);
     if (this.cacheFrameList.size() > 0)
     {
       localCMTime = ((CacheFrame)this.cacheFrameList.get(this.cacheFrameList.size() - 1)).frameTime;
-      AppMethodBeat.o(191836);
+      AppMethodBeat.o(216484);
       return localCMTime;
     }
     CMTime localCMTime = this.segmentTimeRange.getEnd();
-    AppMethodBeat.o(191836);
+    AppMethodBeat.o(216484);
     return localCMTime;
   }
   
   CacheFrame popFrame(CMTime paramCMTime)
   {
-    AppMethodBeat.i(191826);
+    AppMethodBeat.i(216455);
     if (this.cacheFrameList.size() > 0)
     {
       CacheFrame localCacheFrame = (CacheFrame)this.cacheFrameList.get(0);
       if (!localCacheFrame.frameTime.smallThan(paramCMTime))
       {
         paramCMTime = (CacheFrame)this.cacheFrameList.get(0);
-        AppMethodBeat.o(191826);
+        AppMethodBeat.o(216455);
         return paramCMTime;
       }
       if (isCacheFrameUsable(localCacheFrame))
@@ -95,26 +95,26 @@ class CacheSegment
         localCacheFrame.texturePool.pushTexture(localCacheFrame.sampleBuffer.getTextureInfo());
       }
     }
-    AppMethodBeat.o(191826);
+    AppMethodBeat.o(216455);
     return null;
   }
   
   void pushFrame(CacheFrame paramCacheFrame)
   {
-    AppMethodBeat.i(191831);
+    AppMethodBeat.i(216464);
     int i = 0;
     while (i < this.cacheFrameList.size())
     {
       if (((CacheFrame)this.cacheFrameList.get(i)).frameTime.bigThan(paramCacheFrame.frameTime))
       {
         this.cacheFrameList.add(i, paramCacheFrame);
-        AppMethodBeat.o(191831);
+        AppMethodBeat.o(216464);
         return;
       }
       i += 1;
     }
     this.cacheFrameList.add(paramCacheFrame);
-    AppMethodBeat.o(191831);
+    AppMethodBeat.o(216464);
   }
 }
 

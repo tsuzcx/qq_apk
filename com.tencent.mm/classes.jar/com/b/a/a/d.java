@@ -1,6 +1,14 @@
 package com.b.a.a;
 
-final class d {}
+import java.io.File;
+import java.util.Comparator;
+
+final class d
+{
+  static final class a
+    implements Comparator<File>
+  {}
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

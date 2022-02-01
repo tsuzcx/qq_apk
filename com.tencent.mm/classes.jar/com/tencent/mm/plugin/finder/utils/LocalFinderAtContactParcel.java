@@ -4,25 +4,25 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/utils/LocalFinderAtContactParcel;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "()V", "atTime", "", "getAtTime", "()J", "setAtTime", "(J)V", "authInfoByteArray", "", "getAuthInfoByteArray", "()[B", "setAuthInfoByteArray", "([B)V", "avatarUrl", "", "getAvatarUrl", "()Ljava/lang/String;", "setAvatarUrl", "(Ljava/lang/String;)V", "nickname", "getNickname", "setNickname", "username", "getUsername", "setUsername", "describeContents", "", "writeToParcel", "", "flags", "CREATOR", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/utils/LocalFinderAtContactParcel;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "()V", "atTime", "", "getAtTime", "()J", "setAtTime", "(J)V", "authInfoByteArray", "", "getAuthInfoByteArray", "()[B", "setAuthInfoByteArray", "([B)V", "avatarUrl", "", "getAvatarUrl", "()Ljava/lang/String;", "setAvatarUrl", "(Ljava/lang/String;)V", "nickname", "getNickname", "setNickname", "username", "getUsername", "setUsername", "describeContents", "", "writeToParcel", "", "flags", "CREATOR", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class LocalFinderAtContactParcel
   implements Parcelable
 {
   public static final a CREATOR;
-  byte[] AJd;
-  long AJe;
-  String nfY;
+  byte[] GlA;
+  long GlB;
+  String nVM;
   String nickname;
   String username;
   
   static
   {
-    AppMethodBeat.i(275060);
+    AppMethodBeat.i(333082);
     CREATOR = new a((byte)0);
-    AppMethodBeat.o(275060);
+    AppMethodBeat.o(333082);
   }
   
   public LocalFinderAtContactParcel() {}
@@ -30,13 +30,13 @@ public final class LocalFinderAtContactParcel
   public LocalFinderAtContactParcel(Parcel paramParcel)
   {
     this();
-    AppMethodBeat.i(275059);
+    AppMethodBeat.i(333072);
     this.username = paramParcel.readString();
-    this.nfY = paramParcel.readString();
+    this.nVM = paramParcel.readString();
     this.nickname = paramParcel.readString();
-    this.AJd = paramParcel.createByteArray();
-    this.AJe = paramParcel.readLong();
-    AppMethodBeat.o(275059);
+    this.GlA = paramParcel.createByteArray();
+    this.GlB = paramParcel.readLong();
+    AppMethodBeat.o(333072);
   }
   
   public final int describeContents()
@@ -46,17 +46,17 @@ public final class LocalFinderAtContactParcel
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(275058);
-    p.k(paramParcel, "parcel");
+    AppMethodBeat.i(333097);
+    s.u(paramParcel, "parcel");
     paramParcel.writeString(this.username);
-    paramParcel.writeString(this.nfY);
+    paramParcel.writeString(this.nVM);
     paramParcel.writeString(this.nickname);
-    paramParcel.writeByteArray(this.AJd);
-    paramParcel.writeLong(this.AJe);
-    AppMethodBeat.o(275058);
+    paramParcel.writeByteArray(this.GlA);
+    paramParcel.writeLong(this.GlB);
+    AppMethodBeat.o(333097);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/utils/LocalFinderAtContactParcel$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/finder/utils/LocalFinderAtContactParcel;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/finder/utils/LocalFinderAtContactParcel;", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/utils/LocalFinderAtContactParcel$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/finder/utils/LocalFinderAtContactParcel;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/finder/utils/LocalFinderAtContactParcel;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     implements Parcelable.Creator<LocalFinderAtContactParcel>
   {}

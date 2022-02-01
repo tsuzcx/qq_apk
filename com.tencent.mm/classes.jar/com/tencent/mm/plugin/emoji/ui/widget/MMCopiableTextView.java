@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.emoji.i.h;
+import com.tencent.mm.plugin.emoji.h.h;
 import com.tencent.mm.sdk.platformtools.ClipboardHelper;
 import com.tencent.mm.sdk.platformtools.Util;
 
@@ -19,8 +19,8 @@ public class MMCopiableTextView
   implements View.OnLongClickListener
 {
   private final String TAG;
-  private int rFF;
-  private int uQJ;
+  private int baL;
+  private int uQR;
   
   public MMCopiableTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -59,13 +59,13 @@ public class MMCopiableTextView
   {
     AppMethodBeat.i(109432);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/emoji/ui/widget/MMCopiableTextView", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aFi());
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/emoji/ui/widget/MMCopiableTextView", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aYj());
     paramView = getEditableText().toString();
-    if ((!Util.isNullOrNil(paramView)) && (this.rFF > 0) && (this.uQJ > 0) && (this.uQJ > this.rFF))
+    if ((!Util.isNullOrNil(paramView)) && (this.uQR > 0) && (this.baL > 0) && (this.baL > this.uQR))
     {
-      ClipboardHelper.setText(paramView.substring(this.rFF, this.uQJ).trim());
-      Toast.makeText(getContext(), i.h.app_copy_ok, 0).show();
+      ClipboardHelper.setText(paramView.substring(this.uQR, this.baL).trim());
+      Toast.makeText(getContext(), h.h.app_copy_ok, 0).show();
     }
     a.a(false, this, "com/tencent/mm/plugin/emoji/ui/widget/MMCopiableTextView", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
     AppMethodBeat.o(109432);
@@ -74,12 +74,12 @@ public class MMCopiableTextView
   
   public void setEndIndex(int paramInt)
   {
-    this.uQJ = paramInt;
+    this.baL = paramInt;
   }
   
   public void setStartIndex(int paramInt)
   {
-    this.rFF = paramInt;
+    this.uQR = paramInt;
   }
 }
 

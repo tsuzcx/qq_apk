@@ -1,63 +1,63 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.b.a.b;
-import com.google.b.a.e;
+import com.google.d.a.b;
+import com.google.d.a.e;
 
 public final class a$af
   extends e
 {
-  public int NOc = 0;
-  public long NOd = 0L;
-  public String ZeQ = "";
+  public int UAZ = 0;
+  public long UBa = 0L;
+  public String ahdt = "";
   public String groupId = "";
   
   public a$af()
   {
-    this.ccR = -1;
-  }
-  
-  public final int JG()
-  {
-    int j = super.JG();
-    int i = j;
-    if (!this.groupId.equals("")) {
-      i = j + b.g(1, this.groupId);
-    }
-    j = i;
-    if (this.NOc != 0) {
-      j = i + b.bM(2, this.NOc);
-    }
-    i = j;
-    if (this.NOd != 0L) {
-      i = j + b.p(3, this.NOd);
-    }
-    j = i;
-    if (!this.ZeQ.equals("")) {
-      j = i + b.g(4, this.ZeQ);
-    }
-    return j;
+    this.dXv = -1;
   }
   
   public final void a(b paramb)
   {
     if (!this.groupId.equals("")) {
-      paramb.f(1, this.groupId);
+      paramb.g(1, this.groupId);
     }
-    if (this.NOc != 0) {
-      paramb.bJ(2, this.NOc);
+    if (this.UAZ != 0) {
+      paramb.cF(2, this.UAZ);
     }
-    if (this.NOd != 0L) {
-      paramb.r(3, this.NOd);
+    if (this.UBa != 0L) {
+      paramb.t(3, this.UBa);
     }
-    if (!this.ZeQ.equals("")) {
-      paramb.f(4, this.ZeQ);
+    if (!this.ahdt.equals("")) {
+      paramb.g(4, this.ahdt);
     }
     super.a(paramb);
+  }
+  
+  public final int akc()
+  {
+    int j = super.akc();
+    int i = j;
+    if (!this.groupId.equals("")) {
+      i = j + b.h(1, this.groupId);
+    }
+    j = i;
+    if (this.UAZ != 0) {
+      j = i + b.cJ(2, this.UAZ);
+    }
+    i = j;
+    if (this.UBa != 0L) {
+      i = j + b.q(3, this.UBa);
+    }
+    j = i;
+    if (!this.ahdt.equals("")) {
+      j = i + b.h(4, this.ahdt);
+    }
+    return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.af
  * JD-Core Version:    0.7.0.1
  */

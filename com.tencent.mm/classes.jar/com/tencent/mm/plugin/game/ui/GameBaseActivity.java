@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.game.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.c.a;
@@ -10,19 +9,23 @@ import com.tencent.mm.ui.MMActivity;
 public abstract class GameBaseActivity
   extends MMActivity
 {
-  private int CSS = 1;
-  private long CvJ = 0L;
-  private long CvK = 0L;
+  private int INi = 1;
+  private long ImA = 0L;
+  private long Imz = 0L;
   private long mStartTime = 0L;
   
-  protected boolean ezp()
+  protected boolean fHl()
   {
     return true;
   }
   
-  public abstract int ezq();
+  public abstract int fHm();
   
-  public abstract int ezr();
+  public abstract int fHn();
+  
+  public abstract String fHo();
+  
+  public abstract String fHp();
   
   public abstract int getScene();
   
@@ -36,9 +39,9 @@ public abstract class GameBaseActivity
     if (this.mStartTime != 0L)
     {
       long l = System.currentTimeMillis() - this.mStartTime;
-      Log.i("MicroMsg.GameBaseActivity", "visit page(%s), stayTime:%sms, foregroundTime:%sms", new Object[] { getClass().getSimpleName(), Long.valueOf(l), Long.valueOf(this.CvJ) });
-      if (ezp()) {
-        a.a(this.CSS, getScene(), ezq(), ezr(), "", "", l / 1000L, this.CvJ / 1000L);
+      Log.i("MicroMsg.GameBaseActivity", "visit page(%s), stayTime:%sms, foregroundTime:%sms", new Object[] { getClass().getSimpleName(), Long.valueOf(l), Long.valueOf(this.Imz) });
+      if (fHl()) {
+        a.a(this.INi, getScene(), fHm(), fHn(), "", fHo(), "", l / 1000L, this.Imz / 1000L, fHp());
       }
     }
     super.onDestroy();
@@ -47,7 +50,7 @@ public abstract class GameBaseActivity
   public void onPause()
   {
     super.onPause();
-    this.CvJ += System.currentTimeMillis() - this.CvK;
+    this.Imz += System.currentTimeMillis() - this.ImA;
   }
   
   public void onResume()
@@ -55,7 +58,7 @@ public abstract class GameBaseActivity
     if (this.mStartTime == 0L) {
       this.mStartTime = System.currentTimeMillis();
     }
-    this.CvK = System.currentTimeMillis();
+    this.ImA = System.currentTimeMillis();
     super.onResume();
   }
   

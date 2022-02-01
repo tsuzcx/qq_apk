@@ -9,20 +9,40 @@ import java.util.List;
 final class b
   implements d
 {
-  private final com.google.android.exoplayer2.f.a[] bmf;
-  private final long[] bmg;
+  private final com.google.android.exoplayer2.f.a[] dga;
+  private final long[] dgb;
   
   public b(com.google.android.exoplayer2.f.a[] paramArrayOfa, long[] paramArrayOfLong)
   {
-    this.bmf = paramArrayOfa;
-    this.bmg = paramArrayOfLong;
+    this.dga = paramArrayOfa;
+    this.dgb = paramArrayOfLong;
   }
   
-  public final int al(long paramLong)
+  public final int TD()
+  {
+    return this.dgb.length;
+  }
+  
+  public final List<com.google.android.exoplayer2.f.a> cA(long paramLong)
+  {
+    AppMethodBeat.i(92813);
+    int i = x.a(this.dgb, paramLong, false);
+    if ((i == -1) || (this.dga[i] == null))
+    {
+      localList = Collections.emptyList();
+      AppMethodBeat.o(92813);
+      return localList;
+    }
+    List localList = Collections.singletonList(this.dga[i]);
+    AppMethodBeat.o(92813);
+    return localList;
+  }
+  
+  public final int cz(long paramLong)
   {
     AppMethodBeat.i(92811);
-    int i = x.a(this.bmg, paramLong, false, false);
-    if (i < this.bmg.length)
+    int i = x.a(this.dgb, paramLong, false, false);
+    if (i < this.dgb.length)
     {
       AppMethodBeat.o(92811);
       return i;
@@ -31,22 +51,7 @@ final class b
     return -1;
   }
   
-  public final List<com.google.android.exoplayer2.f.a> am(long paramLong)
-  {
-    AppMethodBeat.i(92813);
-    int i = x.a(this.bmg, paramLong, false);
-    if ((i == -1) || (this.bmf[i] == null))
-    {
-      localList = Collections.emptyList();
-      AppMethodBeat.o(92813);
-      return localList;
-    }
-    List localList = Collections.singletonList(this.bmf[i]);
-    AppMethodBeat.o(92813);
-    return localList;
-  }
-  
-  public final long eX(int paramInt)
+  public final long in(int paramInt)
   {
     boolean bool2 = true;
     AppMethodBeat.i(92812);
@@ -54,7 +59,7 @@ final class b
     {
       bool1 = true;
       com.google.android.exoplayer2.i.a.checkArgument(bool1);
-      if (paramInt >= this.bmg.length) {
+      if (paramInt >= this.dgb.length) {
         break label53;
       }
     }
@@ -62,17 +67,12 @@ final class b
     for (boolean bool1 = bool2;; bool1 = false)
     {
       com.google.android.exoplayer2.i.a.checkArgument(bool1);
-      long l = this.bmg[paramInt];
+      long l = this.dgb[paramInt];
       AppMethodBeat.o(92812);
       return l;
       bool1 = false;
       break;
     }
-  }
-  
-  public final int ua()
-  {
-    return this.bmg.length;
   }
 }
 

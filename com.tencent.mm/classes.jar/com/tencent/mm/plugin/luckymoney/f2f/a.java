@@ -17,29 +17,29 @@ import java.util.Set;
 
 public final class a
 {
-  public SoundPool Evw;
-  Hashtable<String, Integer> Evx;
-  Map<Integer, Boolean> Evy;
-  public volatile boolean aFI;
+  public SoundPool Koe;
+  Hashtable<String, Integer> Kof;
+  Map<Integer, Boolean> Kog;
+  public volatile boolean cBt;
   
   public a()
   {
     AppMethodBeat.i(65033);
-    this.aFI = false;
-    this.Evw = new SoundPool(2, 3, 0);
-    this.Evx = new Hashtable();
-    this.Evy = new HashMap();
+    this.cBt = false;
+    this.Koe = new SoundPool(2, 3, 0);
+    this.Kof = new Hashtable();
+    this.Kog = new HashMap();
     AppMethodBeat.o(65033);
   }
   
-  public final void JW(String paramString)
+  public final void aKx(String paramString)
   {
     AppMethodBeat.i(65034);
-    if (this.Evx.containsKey(paramString))
+    if (this.Kof.containsKey(paramString))
     {
-      int i = ((Integer)this.Evx.get(paramString)).intValue();
-      if ((i >= 0) && (this.Evy.containsKey(Integer.valueOf(i))) && (((Boolean)this.Evy.get(Integer.valueOf(i))).booleanValue())) {
-        this.Evw.play(i, 1.0F, 1.0F, 0, 0, 1.0F);
+      int i = ((Integer)this.Kof.get(paramString)).intValue();
+      if ((i >= 0) && (this.Kog.containsKey(Integer.valueOf(i))) && (((Boolean)this.Kog.get(Integer.valueOf(i))).booleanValue())) {
+        this.Koe.play(i, 1.0F, 1.0F, 0, 0, 1.0F);
       }
     }
     AppMethodBeat.o(65034);
@@ -47,7 +47,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.f2f.a
  * JD-Core Version:    0.7.0.1
  */

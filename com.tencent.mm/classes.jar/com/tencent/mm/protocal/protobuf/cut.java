@@ -1,121 +1,121 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
+import com.tencent.mm.bx.b;
 import java.util.LinkedList;
 
 public final class cut
-  extends dyy
+  extends com.tencent.mm.bx.a
 {
-  public int TCx;
-  public String Tkw;
-  public String Tky;
+  public LinkedList<fuw> aaAk;
+  public b aaAl;
+  public fuy aaAm;
+  
+  public cut()
+  {
+    AppMethodBeat.i(257576);
+    this.aaAk = new LinkedList();
+    AppMethodBeat.o(257576);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(117879);
+    AppMethodBeat.i(257584);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.Tkw == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.e(1, 8, this.aaAk);
+      if (this.aaAl != null) {
+        paramVarArgs.d(2, this.aaAl);
+      }
+      if (this.aaAm != null)
       {
-        paramVarArgs = new b("Not all required fields were included: Json");
-        AppMethodBeat.o(117879);
-        throw paramVarArgs;
+        paramVarArgs.qD(5, this.aaAm.computeSize());
+        this.aaAm.writeFields(paramVarArgs);
       }
-      if (this.BaseResponse != null)
-      {
-        paramVarArgs.oE(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
-      }
-      if (this.Tkw != null) {
-        paramVarArgs.f(2, this.Tkw);
-      }
-      paramVarArgs.aY(3, this.TCx);
-      if (this.Tky != null) {
-        paramVarArgs.f(4, this.Tky);
-      }
-      AppMethodBeat.o(117879);
+      AppMethodBeat.o(257584);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label500;
-      }
-    }
-    label500:
-    for (paramInt = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    int i;
+    if (paramInt == 1)
     {
-      int i = paramInt;
-      if (this.Tkw != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.Tkw);
-      }
-      i += g.a.a.b.b.a.bM(3, this.TCx);
+      i = i.a.a.a.c(1, 8, this.aaAk) + 0;
       paramInt = i;
-      if (this.Tky != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.Tky);
+      if (this.aaAl != null) {
+        paramInt = i + i.a.a.b.b.a.c(2, this.aaAl);
       }
-      AppMethodBeat.o(117879);
-      return paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
-          }
-        }
-        if (this.Tkw == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: Json");
-          AppMethodBeat.o(117879);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(117879);
-        return 0;
+      i = paramInt;
+      if (this.aaAm != null) {
+        i = paramInt + i.a.a.a.qC(5, this.aaAm.computeSize());
       }
-      if (paramInt == 3)
-      {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
-        cut localcut = (cut)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(117879);
-          return -1;
-        case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject = (byte[])paramVarArgs.get(paramInt);
-            jh localjh = new jh();
-            if ((localObject != null) && (localObject.length > 0)) {
-              localjh.parseFrom((byte[])localObject);
-            }
-            localcut.BaseResponse = localjh;
-            paramInt += 1;
-          }
-          AppMethodBeat.o(117879);
-          return 0;
-        case 2: 
-          localcut.Tkw = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(117879);
-          return 0;
-        case 3: 
-          localcut.TCx = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(117879);
-          return 0;
-        }
-        localcut.Tky = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(117879);
-        return 0;
-      }
-      AppMethodBeat.o(117879);
-      return -1;
+      AppMethodBeat.o(257584);
+      return i;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.aaAk.clear();
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(257584);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
+      cut localcut = (cut)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      Object localObject2;
+      switch (paramInt)
+      {
+      case 3: 
+      case 4: 
+      default: 
+        AppMethodBeat.o(257584);
+        return -1;
+      case 1: 
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new fuw();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((fuw)localObject2).parseFrom((byte[])localObject1);
+          }
+          localcut.aaAk.add(localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(257584);
+        return 0;
+      case 2: 
+        localcut.aaAl = ((i.a.a.a.a)localObject1).ajGk.kFX();
+        AppMethodBeat.o(257584);
+        return 0;
+      }
+      paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+      i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        localObject1 = (byte[])paramVarArgs.get(paramInt);
+        localObject2 = new fuy();
+        if ((localObject1 != null) && (localObject1.length > 0)) {
+          ((fuy)localObject2).parseFrom((byte[])localObject1);
+        }
+        localcut.aaAm = ((fuy)localObject2);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(257584);
+      return 0;
+    }
+    AppMethodBeat.o(257584);
+    return -1;
   }
 }
 

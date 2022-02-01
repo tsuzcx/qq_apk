@@ -1,1489 +1,984 @@
 package com.tencent.mm.plugin.mv.ui.uic;
 
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
+import android.graphics.SurfaceTexture;
+import android.os.Bundle;
+import android.util.LruCache;
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.r;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerView.c;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
+import androidx.recyclerview.widget.RecyclerView.l;
 import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.panel.layout.a.c;
-import com.tencent.mm.plugin.gallery.ui.h.a;
-import com.tencent.mm.plugin.music.e.k;
-import com.tencent.mm.plugin.music.f.a.d.a;
+import com.tencent.mm.plugin.finder.video.thumb.c;
 import com.tencent.mm.plugin.mv.b.e;
-import com.tencent.mm.plugin.mv.model.e.g;
+import com.tencent.mm.plugin.mv.b.h;
+import com.tencent.mm.plugin.mv.model.e.e;
+import com.tencent.mm.plugin.mv.model.e.g.a;
 import com.tencent.mm.plugin.mv.model.e.h;
-import com.tencent.mm.plugin.mv.ui.a.a.a;
+import com.tencent.mm.plugin.mv.model.e.i;
+import com.tencent.mm.plugin.mv.ui.view.MusicMvSliderSeekBar;
 import com.tencent.mm.plugin.thumbplayer.view.MMTPVideoLayout;
-import com.tencent.mm.protocal.protobuf.FinderMedia;
-import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.FinderObjectDesc;
-import com.tencent.mm.protocal.protobuf.bdp;
-import com.tencent.mm.protocal.protobuf.bdt;
-import com.tencent.mm.protocal.protobuf.dbo;
-import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.plugin.vlog.ui.thumb.FrameListView;
+import com.tencent.mm.plugin.vlog.ui.thumb.g;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.ui.component.UIComponent;
-import com.tencent.mm.ui.component.g.a;
-import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
-import com.tencent.mm.view.recyclerview.WxRecyclerView;
+import com.tencent.mm.ui.component.k.b;
+import com.tencent.mm.ui.widget.RoundedCornerFrameLayout;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.UUID;
+import kotlin.Metadata;
 import kotlin.ResultKt;
-import kotlin.g.b.q;
-import kotlin.n.n;
-import kotlin.x;
-import kotlinx.coroutines.ak;
-import kotlinx.coroutines.al;
-import kotlinx.coroutines.bc;
-import kotlinx.coroutines.br;
+import kotlin.a.p;
+import kotlin.ah;
+import kotlin.d.f;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlinx.coroutines.aq;
+import kotlinx.coroutines.ar;
+import kotlinx.coroutines.bg;
+import kotlinx.coroutines.l;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "actionCallback", "Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$MVEditActionCallback;", "getActionCallback", "()Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$MVEditActionCallback;", "setActionCallback", "(Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$MVEditActionCallback;)V", "adapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "Lcom/tencent/mm/plugin/mv/model/MusicMVVideoConvertData;", "getAdapter", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "adapter$delegate", "Lkotlin/Lazy;", "dataList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "fixMvCardRV", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "kotlin.jvm.PlatformType", "getFixMvCardRV", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "fixMvCardRV$delegate", "fromScene", "", "initMusicDataList", "isEdit", "", "()Z", "setEdit", "(Z)V", "isEditNewItem", "setEditNewItem", "itemDecoration", "Lcom/tencent/mm/plugin/music/ui/view/MusicMVDurationDecoration;", "getItemDecoration", "()Lcom/tencent/mm/plugin/music/ui/view/MusicMVDurationDecoration;", "itemDecoration$delegate", "lastPos", "layoutManager", "Landroidx/recyclerview/widget/LinearLayoutManager;", "getLayoutManager", "()Landroidx/recyclerview/widget/LinearLayoutManager;", "layoutManager$delegate", "mainScope", "Lkotlinx/coroutines/CoroutineScope;", "music", "Lcom/tencent/mm/plugin/music/model/storage/Music;", "getMusic", "()Lcom/tencent/mm/plugin/music/model/storage/Music;", "setMusic", "(Lcom/tencent/mm/plugin/music/model/storage/Music;)V", "musicProgressListener", "Lcom/tencent/mm/plugin/music/player/base/IMusicPlayer$PlayProgressListener;", "sizeResolver", "Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$MVItemSizeResolver;", "snapHelper", "Lcom/tencent/mm/emoji/panel/layout/CenterPagerSnapHelper;", "trackData", "Lcom/tencent/mm/protocal/protobuf/MusicMvData;", "getTrackData", "()Lcom/tencent/mm/protocal/protobuf/MusicMvData;", "setTrackData", "(Lcom/tencent/mm/protocal/protobuf/MusicMvData;)V", "videoLayout", "Lcom/tencent/mm/plugin/thumbplayer/view/MMTPVideoLayout;", "checkCanDoNext", "createMvData", "originTrackData", "disableCurrentSyncMusic", "", "getCurrentCardView", "Landroid/view/View;", "getCurrentEditData", "callback", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "position", "itemData", "getSamePrefixItem", "initEditUI", "makeMediaThumbTransition", "pos", "newItem", "onAnimationEnd", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/mv/model/MusicMvAnimationInfo;", "nextAnimationInfo", "moveToNextItem", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onDestroy", "onNextBtnClicked", "onPause", "onResume", "onSwitchIn", "onSwitchOut", "pauseVideo", "refreshVideo", "refreshView", "resumeVideo", "rollbackItemImpl", "item", "rollbackLastEditItem", "rollbackToInitItem", "takePhoto", "isFixMode", "minRecordDurationMs", "maxRecordDurationMs", "takePhotoFinished", "result", "updateAlbumItem", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$VideoMediaItem;", "updateFinderItem", "Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$MusicFeedsItemData;", "updateLyric", "currentPos", "totalDuration", "updateMusicItemList", "itemList", "", "originItemList", "Companion", "IMVEditItemAction", "IMVItemSizeResolver", "ItemEditActionCallback", "MVEditActionCallback", "MVItemSizeResolver", "MusicMVVideoItemConverterFactory", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerItemEditUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "actionCallback", "Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerItemEditUIC$MVItemEditActionCallback;", "getActionCallback", "()Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerItemEditUIC$MVItemEditActionCallback;", "setActionCallback", "(Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerItemEditUIC$MVItemEditActionCallback;)V", "backFirstFrame", "Landroid/graphics/Bitmap;", "backFirstRenderTime", "", "dataItem", "Lcom/tencent/mm/plugin/mv/model/MusicMVVideoConvertData;", "firstRenderFrame", "firstRenderTime", "frameAdapter", "Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerItemEditUIC$ThumbAdapter;", "getFrameAdapter", "()Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerItemEditUIC$ThumbAdapter;", "frameAdapter$delegate", "Lkotlin/Lazy;", "frameRv", "Landroidx/recyclerview/widget/RecyclerView;", "kotlin.jvm.PlatformType", "getFrameRv", "()Landroidx/recyclerview/widget/RecyclerView;", "frameRv$delegate", "frameViewHeight", "hintView", "Landroid/widget/TextView;", "getHintView", "()Landroid/widget/TextView;", "hintView$delegate", "isScrollEdit", "", "itemEditRoot", "Landroid/widget/LinearLayout;", "getItemEditRoot", "()Landroid/widget/LinearLayout;", "itemEditRoot$delegate", "itemEditStartTimeMs", "", "layoutManager", "Landroidx/recyclerview/widget/LinearLayoutManager;", "getLayoutManager", "()Landroidx/recyclerview/widget/LinearLayoutManager;", "layoutManager$delegate", "lyricView", "getLyricView", "lyricView$delegate", "previewContainer", "Lcom/tencent/mm/ui/widget/RoundedCornerFrameLayout;", "getPreviewContainer", "()Lcom/tencent/mm/ui/widget/RoundedCornerFrameLayout;", "previewContainer$delegate", "progressListener", "com/tencent/mm/plugin/mv/ui/uic/MusicMvMakerItemEditUIC$progressListener$1", "Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerItemEditUIC$progressListener$1;", "scrollListener", "com/tencent/mm/plugin/mv/ui/uic/MusicMvMakerItemEditUIC$scrollListener$1", "Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerItemEditUIC$scrollListener$1;", "seekBar", "Lcom/tencent/mm/plugin/mv/ui/view/MusicMvSliderSeekBar;", "getSeekBar", "()Lcom/tencent/mm/plugin/mv/ui/view/MusicMvSliderSeekBar;", "seekBar$delegate", "sizePerTime", "", "startMs", "targetDuration", "thumbView", "Landroid/widget/ImageView;", "getThumbView", "()Landroid/widget/ImageView;", "thumbView$delegate", "totalDuration", "videoContainer", "Landroid/widget/FrameLayout;", "getVideoContainer", "()Landroid/widget/FrameLayout;", "videoContainer$delegate", "videoDataScope", "Lkotlinx/coroutines/CoroutineScope;", "videoLayout", "Lcom/tencent/mm/plugin/thumbplayer/view/MMTPVideoLayout;", "getFirstRenderFrameInfo", "Lkotlin/Pair;", "onBackPressed", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "releaseFrameList", "setShow", "show", "setVideoData", "item", "setupLocalVideoThumb", "videoData", "Lcom/tencent/mm/plugin/mv/model/MusicMVVideoConvertData$LocalVideoData;", "setupOnlineVideoThumb", "Lcom/tencent/mm/plugin/mv/model/MusicMVVideoConvertData$FinderVideoData;", "tryCatchFirstFrame", "updateFrameView", "Companion", "MVItemEditActionCallback", "ThumbAdapter", "ThumbViewHolder", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class m
   extends UIComponent
 {
-  public static final m.a GkC;
-  private final kotlin.f BiY;
-  public com.tencent.mm.plugin.music.model.e.a FRG;
-  public dbo Geg;
-  private final kotlin.f Get;
-  public final com.tencent.mm.emoji.panel.layout.a GjI;
-  public boolean GkA;
-  public MMTPVideoLayout GkB;
-  public final ArrayList<com.tencent.mm.plugin.mv.model.e> Gkv;
-  private final kotlin.f Gkw;
-  public final f Gkx;
-  private final d.a Gky;
-  public e Gkz;
-  public int fromScene;
-  public final ArrayList<com.tencent.mm.plugin.mv.model.e> mXB;
-  private final ak oDi;
-  public int wKJ;
-  public boolean wNB;
-  private final kotlin.f zQC;
+  public static final m.a MfR;
+  private final kotlin.j EKZ;
+  private final kotlin.j FSi;
+  private final kotlin.j Gqu;
+  private final kotlin.j Mck;
+  private final kotlin.j MfS;
+  private final kotlin.j MfT;
+  private final kotlin.j MfU;
+  private final kotlin.j MfV;
+  private final kotlin.j MfW;
+  private long MfX;
+  private float MfY;
+  private com.tencent.mm.plugin.mv.model.e MfZ;
+  private MMTPVideoLayout Mfq;
+  int Mga;
+  Bitmap Mgb;
+  private int Mgc;
+  private Bitmap Mgd;
+  private boolean Mge;
+  private final int Mgf;
+  private long Mgg;
+  private final aq Mgh;
+  private final l Mgi;
+  private final m Mgj;
+  public b Mgk;
+  private final kotlin.j nWd;
+  private long startMs;
+  private long targetDuration;
   
   static
   {
-    AppMethodBeat.i(226351);
-    GkC = new m.a((byte)0);
-    AppMethodBeat.o(226351);
+    AppMethodBeat.i(288081);
+    MfR = new m.a((byte)0);
+    AppMethodBeat.o(288081);
   }
   
   public m(AppCompatActivity paramAppCompatActivity)
   {
     super(paramAppCompatActivity);
-    AppMethodBeat.i(226350);
-    this.Get = kotlin.g.ar((kotlin.g.a.a)new m.i(paramAppCompatActivity));
-    this.mXB = new ArrayList();
-    this.Gkv = new ArrayList();
-    this.BiY = kotlin.g.ar((kotlin.g.a.a)new h(this));
-    this.zQC = kotlin.g.ar((kotlin.g.a.a)new m.n(paramAppCompatActivity));
-    this.Gkw = kotlin.g.ar((kotlin.g.a.a)new m.m(paramAppCompatActivity));
-    this.GjI = new com.tencent.mm.emoji.panel.layout.a();
-    this.Gkx = new f();
-    this.wKJ = -1;
-    this.Gky = ((d.a)new p(this));
-    this.oDi = al.iRe();
-    AppMethodBeat.o(226350);
+    AppMethodBeat.i(287827);
+    this.MfS = kotlin.k.cm((kotlin.g.a.a)new m.h(paramAppCompatActivity));
+    this.nWd = kotlin.k.cm((kotlin.g.a.a)new m.k(paramAppCompatActivity));
+    this.Mck = kotlin.k.cm((kotlin.g.a.a)new m.t(paramAppCompatActivity));
+    this.Gqu = kotlin.k.cm((kotlin.g.a.a)new m.r(paramAppCompatActivity));
+    this.MfT = kotlin.k.cm((kotlin.g.a.a)new m.g(paramAppCompatActivity));
+    this.MfU = kotlin.k.cm((kotlin.g.a.a)new m.f(paramAppCompatActivity));
+    this.EKZ = kotlin.k.cm((kotlin.g.a.a)new m.i(paramAppCompatActivity));
+    this.MfV = kotlin.k.cm((kotlin.g.a.a)new e(this));
+    this.FSi = kotlin.k.cm((kotlin.g.a.a)new m.n(paramAppCompatActivity));
+    this.MfW = kotlin.k.cm((kotlin.g.a.a)new m.j(paramAppCompatActivity));
+    this.Mga = 2147483647;
+    this.Mgc = 2147483647;
+    this.Mgf = com.tencent.mm.cd.a.fromDPToPix((Context)paramAppCompatActivity, 48);
+    this.Mgg = -1L;
+    this.Mgh = ar.kBZ();
+    this.Mgi = new l(this);
+    this.Mgj = new m(this);
+    AppMethodBeat.o(287827);
   }
   
-  public final void ZS(int paramInt)
+  private static final void a(m paramm)
   {
-    AppMethodBeat.i(226343);
-    if (paramInt != this.wKJ)
+    AppMethodBeat.i(287901);
+    s.u(paramm, "this$0");
+    paramm.gqX().setVisibility(8);
+    paramm.grb();
+    AppMethodBeat.o(287901);
+  }
+  
+  private static final void a(m paramm, View paramView)
+  {
+    AppMethodBeat.i(287885);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramm);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/uic/MusicMvMakerItemEditUIC", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramm, "this$0");
+    Log.i("MicroMsg.Mv.MusicMvMakerItemEditUIC", "onCancel, firstRenderTime:" + paramm.Mga + ", firstRenderFrame:" + paramm.Mgb + ", backFirstRenderTime:" + paramm.Mgc + ", backFirstFrame:" + paramm.Mgd);
+    paramm.Mgb = paramm.Mgd;
+    paramm.Mga = paramm.Mgc;
+    paramView = paramm.Mgk;
+    if (paramView != null) {
+      paramView.zV(paramm.Mge);
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/mv/ui/uic/MusicMvMakerItemEditUIC", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(287885);
+  }
+  
+  private static final void b(m paramm, View paramView)
+  {
+    AppMethodBeat.i(287893);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramm);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/uic/MusicMvMakerItemEditUIC", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramm, "this$0");
+    if ((paramm.Mgg >= 0L) && (paramm.Mgg + paramm.targetDuration <= paramm.MfX))
     {
-      com.tencent.mm.plugin.mv.model.e locale = (com.tencent.mm.plugin.mv.model.e)kotlin.a.j.M((List)this.mXB, this.wKJ);
-      RecyclerView.v localv;
-      a.a locala;
-      if ((locale != null) && (locale.xUg))
-      {
-        locale.xUg = false;
-        locale.GaV = false;
-        localv = fhf().cK(this.wKJ);
-        if ((localv instanceof com.tencent.mm.view.recyclerview.i))
-        {
-          locala = com.tencent.mm.plugin.mv.ui.a.a.GfF;
-          a.a.a((com.tencent.mm.view.recyclerview.i)localv, locale);
-        }
-      }
-      locale = (com.tencent.mm.plugin.mv.model.e)kotlin.a.j.M((List)this.mXB, paramInt);
-      if (locale != null)
-      {
-        if (!locale.xUg)
-        {
-          locale.xUg = true;
-          locale.GaV = true;
-          localv = fhf().cK(paramInt);
-          if ((localv instanceof com.tencent.mm.view.recyclerview.i))
-          {
-            locala = com.tencent.mm.plugin.mv.ui.a.a.GfF;
-            a.a.a((com.tencent.mm.view.recyclerview.i)localv, locale);
-          }
-        }
-        AppMethodBeat.o(226343);
-        return;
+      paramView = paramm.MfZ;
+      if (paramView != null) {
+        break label158;
       }
     }
-    AppMethodBeat.o(226343);
-  }
-  
-  public final void a(int paramInt, final com.tencent.mm.plugin.mv.model.e parame, final kotlin.g.a.b<? super com.tencent.mm.plugin.mv.model.g, x> paramb)
-  {
-    AppMethodBeat.i(226319);
-    Object localObject = getLayoutManager().findViewByPosition(paramInt);
-    if (localObject != null)
+    label158:
+    for (paramView = null;; paramView = paramView.LWY)
     {
-      localObject = (ImageView)((View)localObject).findViewById(b.e.FXT);
-      if (localObject != null)
-      {
-        ((ImageView)localObject).setVisibility(0);
-        ((ImageView)localObject).setAlpha(0.0F);
-        e.g localg = parame.GaW;
-        if (localg != null)
-        {
-          localg.a((ImageView)localObject, (h.a)new o((ImageView)localObject, parame, paramb));
-          AppMethodBeat.o(226319);
-          return;
-        }
-        AppMethodBeat.o(226319);
-        return;
+      if (paramView != null) {
+        paramView.sF(paramm.Mgg);
       }
-      AppMethodBeat.o(226319);
+      paramView = paramm.Mgk;
+      if (paramView != null) {
+        paramView.zU(paramm.Mge);
+      }
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/mv/ui/uic/MusicMvMakerItemEditUIC", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(287893);
       return;
     }
-    AppMethodBeat.o(226319);
   }
   
-  public final void dmf()
+  private final LinearLayoutManager getLayoutManager()
   {
-    AppMethodBeat.i(226336);
-    Log.i("MicroMsg.Mv.MusicMvMakerFixEditUIC", "pauseVideo");
-    Object localObject1 = fhf().cK(this.wKJ);
-    if (localObject1 == null)
-    {
-      AppMethodBeat.o(226336);
-      return;
-    }
-    kotlin.g.b.p.j(localObject1, "fixMvCardRV.findViewHold…sition(lastPos) ?: return");
-    localObject1 = (MMTPVideoLayout)((RecyclerView.v)localObject1).amk.findViewById(b.e.music_video_layout);
-    if (localObject1 != null)
-    {
-      localObject2 = ((MMTPVideoLayout)localObject1).getPlayer();
-      if (localObject2 != null) {
-        com.tencent.mm.plugin.thumbplayer.f.b.b((com.tencent.mm.plugin.thumbplayer.f.b)localObject2);
-      }
-      localObject1 = ((MMTPVideoLayout)localObject1).getPlayer();
-      if (localObject1 != null) {
-        ((com.tencent.mm.plugin.thumbplayer.f.b)localObject1).stop();
-      }
-    }
-    com.tencent.mm.plugin.mv.model.e locale;
-    if (this.wKJ >= 0)
-    {
-      localObject1 = this.mXB.get(this.wKJ);
-      kotlin.g.b.p.j(localObject1, "dataList[lastPos]");
-      locale = (com.tencent.mm.plugin.mv.model.e)localObject1;
-      localObject1 = this.GkB;
-      if (localObject1 == null) {
-        break label199;
-      }
-      localObject1 = ((MMTPVideoLayout)localObject1).getPlayer();
-      if (localObject1 == null) {
-        break label199;
-      }
-      localObject1 = ((com.tencent.mm.plugin.thumbplayer.f.b)localObject1).MTd;
-      localObject2 = this.GkB;
-      if (localObject2 == null) {
-        break label204;
-      }
-      localObject2 = ((MMTPVideoLayout)localObject2).getEffector();
-      if (localObject2 == null) {
-        break label204;
-      }
-    }
-    label199:
-    label204:
-    for (Object localObject2 = ((com.tencent.mm.plugin.thumbplayer.d.g)localObject2).MRa;; localObject2 = null)
-    {
-      com.tencent.mm.plugin.mv.model.o localo = com.tencent.mm.plugin.mv.model.o.GcB;
-      com.tencent.mm.plugin.mv.model.o.a((Context)getActivity(), this.Geg, this.wKJ, locale, (com.tencent.mm.plugin.thumbplayer.e.a)localObject1, (com.tencent.mm.plugin.thumbplayer.e.b)localObject2);
-      AppMethodBeat.o(226336);
-      return;
-      localObject1 = null;
-      break;
-    }
-  }
-  
-  public final void dmg()
-  {
-    AppMethodBeat.i(226338);
-    Log.i("MicroMsg.Mv.MusicMvMakerFixEditUIC", "resumeVideo");
-    getAdapter().cL(this.GjI.jNa);
-    AppMethodBeat.o(226338);
-  }
-  
-  public final dbo e(dbo paramdbo)
-  {
-    AppMethodBeat.i(226331);
-    dbo localdbo;
-    Object localObject3;
-    int i;
-    int j;
-    if (paramdbo != null)
-    {
-      localdbo = new dbo();
-      localdbo.localId = paramdbo.localId;
-      localdbo.TIV = new FinderObject();
-      Object localObject1 = paramdbo.TIV;
-      if (localObject1 != null)
-      {
-        localObject1 = ((FinderObject)localObject1).toByteArray();
-        if (localObject1 == null) {}
-      }
-      try
-      {
-        localObject3 = localdbo.TIV;
-        if (localObject3 != null) {
-          ((FinderObject)localObject3).parseFrom((byte[])localObject1);
-        }
-      }
-      catch (Exception localException)
-      {
-        HashSet localHashSet;
-        Object localObject6;
-        Object localObject7;
-        Object localObject8;
-        for (;;)
-        {
-          int k;
-          StringBuilder localStringBuilder;
-          Log.printErrStackTrace("MicroMsg.Mv.MusicMvMakerFixEditUIC", (Throwable)localException, "createMvData", new Object[0]);
-          localObject2 = x.aazN;
-          continue;
-          long l = 0L;
-          continue;
-          localObject3 = null;
-          continue;
-          localObject4 = null;
-          continue;
-          localObject4 = null;
-          continue;
-          localObject4 = null;
-          continue;
-          localObject3 = null;
-          continue;
-          j = k;
-          continue;
-          j = k;
-        }
-        localObject3 = localdbo.SGC;
-        Object localObject4 = paramdbo.SGC;
-        kotlin.g.b.p.j(localObject4, "it.refObjectList");
-        Object localObject5 = (Iterable)localObject4;
-        localObject4 = (Collection)new ArrayList();
-        localObject5 = ((Iterable)localObject5).iterator();
-        for (;;)
-        {
-          if (!((Iterator)localObject5).hasNext()) {
-            break label1216;
-          }
-          localObject6 = ((Iterator)localObject5).next();
-          localObject7 = (FinderObject)localObject6;
-          localObject8 = paramdbo.TIX;
-          if (localObject8 != null)
-          {
-            localObject8 = ((bdp)localObject8).SOB;
-            if (localObject8 != null)
-            {
-              localObject8 = (Iterable)localObject8;
-              if ((!(localObject8 instanceof Collection)) || (!((Collection)localObject8).isEmpty()))
-              {
-                localObject8 = ((Iterable)localObject8).iterator();
-                while (((Iterator)localObject8).hasNext()) {
-                  if (kotlin.g.b.p.h(((bdt)((Iterator)localObject8).next()).SOS, ((FinderObject)localObject7).objectNonceId))
-                  {
-                    j = 1;
-                    if ((j != 1) || (!localHashSet.add(((FinderObject)localObject7).objectNonceId))) {
-                      break label1211;
-                    }
-                  }
-                }
-              }
-            }
-          }
-          for (j = 1;; j = 0)
-          {
-            if (j == 0) {
-              break label1214;
-            }
-            ((Collection)localObject4).add(localObject6);
-            break label1038;
-            i = 0;
-            localObject2 = localObject3;
-            break;
-            j = 0;
-            break label1160;
-          }
-        }
-        ((LinkedList)localObject3).addAll((Collection)localObject4);
-        localdbo.TIW = paramdbo.TIW;
-        if (this.fromScene == 0) {
-          break label1295;
-        }
-      }
-      localdbo.TIX = paramdbo.TIX;
-      localObject3 = null;
-      localObject1 = null;
-      i = 0;
-      localHashSet = new HashSet();
-      localObject4 = localdbo.TIV;
-      if (localObject4 != null)
-      {
-        localObject4 = ((FinderObject)localObject4).objectDesc;
-        if (localObject4 != null)
-        {
-          localObject4 = ((FinderObjectDesc)localObject4).mvInfo;
-          if (localObject4 != null) {
-            ((bdp)localObject4).SOF = 0;
-          }
-        }
-      }
-      localObject4 = localdbo.TIV;
-      if (localObject4 != null)
-      {
-        localObject4 = ((FinderObject)localObject4).objectDesc;
-        if (localObject4 != null)
-        {
-          localObject4 = ((FinderObjectDesc)localObject4).mvInfo;
-          if (localObject4 != null)
-          {
-            localObject4 = ((bdp)localObject4).SOE;
-            if (localObject4 != null) {
-              ((LinkedList)localObject4).clear();
-            }
-          }
-        }
-      }
-      localdbo.SGC.clear();
-      localObject4 = localdbo.TIV;
-      if (localObject4 != null)
-      {
-        localObject4 = ((FinderObject)localObject4).objectDesc;
-        if (localObject4 != null)
-        {
-          localObject4 = ((FinderObjectDesc)localObject4).mvInfo;
-          if (localObject4 != null)
-          {
-            localObject4 = ((bdp)localObject4).SOB;
-            if (localObject4 != null)
-            {
-              localObject6 = ((Iterable)localObject4).iterator();
-              j = 0;
-              if (((Iterator)localObject6).hasNext())
-              {
-                localObject3 = ((Iterator)localObject6).next();
-                k = j + 1;
-                if (j < 0) {
-                  kotlin.a.j.iBO();
-                }
-                localObject7 = (bdt)localObject3;
-                localObject8 = (com.tencent.mm.plugin.mv.model.e)kotlin.a.j.M((List)this.mXB, j);
-                if (localObject8 != null)
-                {
-                  localObject3 = ((com.tencent.mm.plugin.mv.model.e)localObject8).GaX;
-                  if (localObject3 != null)
-                  {
-                    localObject5 = ((e.h)localObject3).ffY();
-                    if (localObject5 != null)
-                    {
-                      ((bdt)localObject7).refObjectId = ((FinderObject)localObject5).id;
-                      ((bdt)localObject7).SOS = ((FinderObject)localObject5).objectNonceId;
-                      localObject3 = ((com.tencent.mm.plugin.mv.model.e)this.mXB.get(j)).GaX;
-                      if (localObject3 != null)
-                      {
-                        l = ((e.h)localObject3).ffW();
-                        ((bdt)localObject7).MSG = l;
-                        Log.i("MicroMsg.Mv.MusicMvMakerFixEditUIC", "set finderMVTrack, timeOffsetInClipMs:" + ((bdt)localObject7).MSG);
-                        if (localHashSet.add(((FinderObject)localObject5).objectNonceId))
-                        {
-                          localObject3 = ((FinderObject)localObject5).objectDesc;
-                          if (localObject3 != null) {
-                            ((FinderObjectDesc)localObject3).mvInfo = new bdp();
-                          }
-                          localObject3 = ((FinderObject)localObject5).objectDesc;
-                          if (localObject3 != null)
-                          {
-                            localObject3 = ((FinderObjectDesc)localObject3).mvInfo;
-                            if (localObject3 != null) {
-                              ((bdp)localObject3).SOF = 0;
-                            }
-                          }
-                          localObject3 = ((FinderObject)localObject5).objectDesc;
-                          if (localObject3 != null)
-                          {
-                            localObject3 = ((FinderObjectDesc)localObject3).mvInfo;
-                            if (localObject3 != null)
-                            {
-                              localObject3 = ((bdp)localObject3).SOB;
-                              if (localObject3 != null) {
-                                ((LinkedList)localObject3).add(localObject7);
-                              }
-                            }
-                          }
-                          localObject3 = ((FinderObject)localObject5).objectDesc;
-                          if (localObject3 != null) {
-                            ((FinderObjectDesc)localObject3).mediaType = 4;
-                          }
-                          localObject3 = ((FinderObject)localObject5).objectDesc;
-                          if (localObject3 != null)
-                          {
-                            localObject3 = ((FinderObjectDesc)localObject3).media;
-                            if (localObject3 != null)
-                            {
-                              localObject3 = (FinderMedia)((LinkedList)localObject3).getFirst();
-                              if (localObject3 != null) {
-                                ((FinderMedia)localObject3).mediaType = 4;
-                              }
-                            }
-                          }
-                          localObject3 = ((FinderObject)localObject5).objectDesc;
-                          if (localObject3 == null) {
-                            break label947;
-                          }
-                          localObject3 = ((FinderObjectDesc)localObject3).media;
-                          if (localObject3 == null) {
-                            break label947;
-                          }
-                          localObject3 = (FinderMedia)((LinkedList)localObject3).getFirst();
-                          localStringBuilder = new StringBuilder("ref object media size:");
-                          localObject4 = ((FinderObject)localObject5).objectDesc;
-                          if (localObject4 == null) {
-                            break label953;
-                          }
-                          localObject4 = ((FinderObjectDesc)localObject4).media;
-                          if (localObject4 == null) {
-                            break label953;
-                          }
-                          localObject4 = Integer.valueOf(((LinkedList)localObject4).size());
-                          localStringBuilder = localStringBuilder.append(localObject4).append(", ");
-                          if (localObject3 == null) {
-                            break label959;
-                          }
-                          localObject4 = ((FinderMedia)localObject3).url;
-                          localStringBuilder = localStringBuilder.append((String)localObject4).append(", [");
-                          if (localObject3 == null) {
-                            break label965;
-                          }
-                          localObject4 = Float.valueOf(((FinderMedia)localObject3).width);
-                          localObject4 = localStringBuilder.append(localObject4).append(' ');
-                          if (localObject3 == null) {
-                            break label971;
-                          }
-                          localObject3 = Float.valueOf(((FinderMedia)localObject3).height);
-                          Log.i("MicroMsg.Mv.MusicMvMakerFixEditUIC", localObject3 + ']');
-                          localdbo.SGC.add(localObject5);
-                        }
-                        if (((FinderObject)localObject5).id == 0L)
-                        {
-                          localObject3 = ((FinderObject)localObject5).objectNonceId;
-                          if ((localObject3 != null) && (n.M((String)localObject3, "local_", false) == true))
-                          {
-                            ((bdt)localObject7).SOT = 1;
-                            Log.i("MicroMsg.Mv.MusicMvMakerFixEditUIC", "createMvData isFirstUpload " + ((FinderObject)localObject5).objectNonceId);
-                          }
-                        }
-                        if ((((com.tencent.mm.plugin.mv.model.e)localObject8).GaY == null) || (localObject1 != null)) {
-                          break label1610;
-                        }
-                        i = (int)((bdt)localObject7).MSE;
-                        localObject1 = localObject5;
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    label947:
-    label953:
-    label959:
-    label965:
-    label1610:
-    for (;;)
-    {
-      j = k;
-      break;
-      Object localObject2;
-      label971:
-      paramdbo = localdbo.TIW;
-      if ((paramdbo == null) || (n.pu(paramdbo, ".auto") != true))
-      {
-        paramdbo = (CharSequence)localdbo.TIW;
-        if ((paramdbo != null) && (paramdbo.length() != 0)) {
-          break label1555;
-        }
-        j = 1;
-        if (j == 0) {}
-      }
-      else
-      {
-        paramdbo = com.tencent.mm.ui.component.g.Xox;
-        paramdbo = (p)com.tencent.mm.ui.component.g.b(getActivity()).i(p.class);
-        paramdbo = new kotlin.o(Integer.valueOf(paramdbo.GlA), paramdbo.GlB);
-        j = ((Number)paramdbo.Mx).intValue();
-        localObject3 = (Bitmap)paramdbo.My;
-        Log.i("MicroMsg.Mv.MusicMvMakerFixEditUIC", "originCoverPath:" + localdbo.TIW + ", fromScene:" + this.fromScene + ", thumbObj:" + localObject2 + ", thumbMvTime:" + i + " firstRenderTime:" + j + ", firstRenderFrame:" + localObject3);
-        if ((j > i) || (localObject3 == null)) {
-          break label1560;
-        }
-        paramdbo = com.tencent.mm.plugin.mv.ui.a.Gfi;
-        if (localObject2 != null)
-        {
-          localObject2 = ((FinderObject)localObject2).objectNonceId;
-          paramdbo = (dbo)localObject2;
-          if (localObject2 != null) {}
-        }
-        else
-        {
-          paramdbo = UUID.randomUUID().toString();
-          kotlin.g.b.p.j(paramdbo, "UUID.randomUUID().toString()");
-        }
-        paramdbo = com.tencent.mm.plugin.mv.ui.a.aSH(paramdbo);
-        paramdbo = paramdbo + ".auto";
-        BitmapUtil.saveBitmapToImage((Bitmap)localObject3, 70, Bitmap.CompressFormat.PNG, paramdbo, false);
-        localdbo.TIW = paramdbo;
-        Log.i("MicroMsg.Mv.MusicMvMakerFixEditUIC", "auto generate thumb succeed: ".concat(String.valueOf(paramdbo)));
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(226331);
-        return localdbo;
-        j = 0;
-        break;
-        Log.i("MicroMsg.Mv.MusicMvMakerFixEditUIC", "current firstRenderTime[" + j + "] large than thumbMvTime[" + i + "], do not generate thumb!");
-      }
-      AppMethodBeat.o(226331);
-      return null;
-    }
-  }
-  
-  public final WxRecyclerView fhf()
-  {
-    AppMethodBeat.i(226311);
-    WxRecyclerView localWxRecyclerView = (WxRecyclerView)this.Get.getValue();
-    AppMethodBeat.o(226311);
-    return localWxRecyclerView;
-  }
-  
-  public final com.tencent.mm.plugin.music.ui.view.b fhg()
-  {
-    AppMethodBeat.i(226315);
-    com.tencent.mm.plugin.music.ui.view.b localb = (com.tencent.mm.plugin.music.ui.view.b)this.Gkw.getValue();
-    AppMethodBeat.o(226315);
-    return localb;
-  }
-  
-  public final View fhh()
-  {
-    AppMethodBeat.i(226323);
-    View localView = getLayoutManager().findViewByPosition(this.GjI.jNa);
-    AppMethodBeat.o(226323);
-    return localView;
-  }
-  
-  public final boolean fhi()
-  {
-    AppMethodBeat.i(226324);
-    Object localObject = (Iterable)this.mXB;
-    if ((!(localObject instanceof Collection)) || (!((Collection)localObject).isEmpty()))
-    {
-      localObject = ((Iterable)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        if (((com.tencent.mm.plugin.mv.model.e)((Iterator)localObject).next()).GaY != null) {}
-        for (int i = 1; i != 0; i = 0)
-        {
-          AppMethodBeat.o(226324);
-          return true;
-        }
-      }
-    }
-    AppMethodBeat.o(226324);
-    return false;
-  }
-  
-  public final void g(kotlin.g.a.m<? super Integer, ? super com.tencent.mm.plugin.mv.model.e, x> paramm)
-  {
-    AppMethodBeat.i(226322);
-    kotlin.g.b.p.k(paramm, "callback");
-    int i = this.GjI.jNa;
-    com.tencent.mm.plugin.mv.model.e locale = (com.tencent.mm.plugin.mv.model.e)kotlin.a.j.M((List)this.mXB, i);
-    if (locale != null)
-    {
-      paramm.invoke(Integer.valueOf(i), locale);
-      AppMethodBeat.o(226322);
-      return;
-    }
-    AppMethodBeat.o(226322);
-  }
-  
-  public final WxRecyclerAdapter<com.tencent.mm.plugin.mv.model.e> getAdapter()
-  {
-    AppMethodBeat.i(226312);
-    WxRecyclerAdapter localWxRecyclerAdapter = (WxRecyclerAdapter)this.BiY.getValue();
-    AppMethodBeat.o(226312);
-    return localWxRecyclerAdapter;
-  }
-  
-  public final LinearLayoutManager getLayoutManager()
-  {
-    AppMethodBeat.i(226313);
-    LinearLayoutManager localLinearLayoutManager = (LinearLayoutManager)this.zQC.getValue();
-    AppMethodBeat.o(226313);
+    AppMethodBeat.i(287858);
+    LinearLayoutManager localLinearLayoutManager = (LinearLayoutManager)this.EKZ.getValue();
+    AppMethodBeat.o(287858);
     return localLinearLayoutManager;
   }
   
-  public final void onActivityResult(int paramInt1, final int paramInt2, final Intent paramIntent)
+  private final ImageView getThumbView()
   {
-    AppMethodBeat.i(226346);
-    Log.i("MicroMsg.Mv.MusicMvMakerFixEditUIC", "onActivityResult, requestCodec:" + paramInt1 + ", resultCodec:" + paramInt2);
-    switch (paramInt1)
-    {
-    }
+    AppMethodBeat.i(287840);
+    ImageView localImageView = (ImageView)this.Gqu.getValue();
+    AppMethodBeat.o(287840);
+    return localImageView;
+  }
+  
+  private final LinearLayout gqX()
+  {
+    AppMethodBeat.i(287833);
+    LinearLayout localLinearLayout = (LinearLayout)this.MfS.getValue();
+    AppMethodBeat.o(287833);
+    return localLinearLayout;
+  }
+  
+  private final RecyclerView gqY()
+  {
+    AppMethodBeat.i(287849);
+    RecyclerView localRecyclerView = (RecyclerView)this.MfU.getValue();
+    AppMethodBeat.o(287849);
+    return localRecyclerView;
+  }
+  
+  private final c gqZ()
+  {
+    AppMethodBeat.i(287865);
+    c localc = (c)this.MfV.getValue();
+    AppMethodBeat.o(287865);
+    return localc;
+  }
+  
+  private final MusicMvSliderSeekBar gra()
+  {
+    AppMethodBeat.i(287870);
+    MusicMvSliderSeekBar localMusicMvSliderSeekBar = (MusicMvSliderSeekBar)this.FSi.getValue();
+    AppMethodBeat.o(287870);
+    return localMusicMvSliderSeekBar;
+  }
+  
+  private final void grb()
+  {
+    AppMethodBeat.i(287876);
+    int i = 0;
+    int k = gqZ().getItemCount();
+    if (k > 0) {}
     for (;;)
     {
-      AppMethodBeat.o(226346);
-      return;
-      k localk = k.fet();
-      kotlin.g.b.p.j(localk, "MusicPlayerManager.Instance()");
-      localk.feg().resume();
-      kotlinx.coroutines.g.b((ak)br.abxo, (kotlin.d.f)bc.iRs(), (kotlin.g.a.m)new q(this, paramIntent, paramInt2, null), 2);
+      int j = i + 1;
+      Object localObject = gqY().fU(i);
+      if ((localObject instanceof d)) {}
+      for (localObject = (d)localObject;; localObject = null)
+      {
+        if (localObject != null) {
+          ((d)localObject).Mgn.release();
+        }
+        if (j < k) {
+          break;
+        }
+        gqZ().Mdf = null;
+        gqY().postInvalidate();
+        AppMethodBeat.o(287876);
+        return;
+      }
+      i = j;
     }
+  }
+  
+  public final void d(final com.tencent.mm.plugin.mv.model.e parame)
+  {
+    AppMethodBeat.i(288130);
+    s.u(parame, "item");
+    kotlinx.coroutines.j.a(this.Mgh, null, null, (kotlin.g.a.m)new p(this, parame, null), 3);
+    AppMethodBeat.o(288130);
   }
   
   public final boolean onBackPressed()
   {
-    AppMethodBeat.i(226333);
-    Object localObject = com.tencent.mm.ui.component.g.Xox;
-    localObject = com.tencent.mm.ui.component.g.b(getActivity()).i(l.class);
-    kotlin.g.b.p.j(localObject, "UICProvider.of(activity)…MakerDataUIC::class.java)");
-    localObject = (Integer)((l)localObject).fhe().getValue();
-    if (localObject == null) {}
-    while (((Integer)localObject).intValue() != 0)
+    AppMethodBeat.i(288120);
+    if (gqX().getVisibility() == 0)
     {
-      AppMethodBeat.o(226333);
-      return false;
+      b localb = this.Mgk;
+      if (localb != null) {
+        localb.zV(this.Mge);
+      }
+      AppMethodBeat.o(288120);
+      return true;
     }
-    localObject = com.tencent.mm.ui.component.g.Xox;
-    ((t)com.tencent.mm.ui.component.g.b(getActivity()).i(t.class)).a(e(this.Geg), this.wNB, 2);
-    AppMethodBeat.o(226333);
-    return true;
+    boolean bool = super.onBackPressed();
+    AppMethodBeat.o(288120);
+    return bool;
+  }
+  
+  public final void onCreate(Bundle paramBundle)
+  {
+    AppMethodBeat.i(288110);
+    super.onCreate(paramBundle);
+    gra().setCursorColor(-1);
+    gra().setCursorWidth(com.tencent.mm.cd.a.fromDPToPix((Context)getActivity(), 2));
+    ((LinearLayout)getActivity().findViewById(b.e.LTp)).setOnClickListener(new m..ExternalSyntheticLambda1(this));
+    ((LinearLayout)getActivity().findViewById(b.e.LTq)).setOnClickListener(new m..ExternalSyntheticLambda0(this));
+    gqX().setAlpha(0.0F);
+    gqY().setAdapter((RecyclerView.a)gqZ());
+    gqY().setLayoutManager((RecyclerView.LayoutManager)getLayoutManager());
+    gqY().a((RecyclerView.l)this.Mgj);
+    this.Mfq = new MMTPVideoLayout((Context)getActivity(), false);
+    paramBundle = this.Mfq;
+    if (paramBundle != null) {
+      paramBundle.hLO();
+    }
+    paramBundle = this.Mfq;
+    if (paramBundle != null) {
+      paramBundle.setKeepScreenOn(true);
+    }
+    paramBundle = this.Mfq;
+    if (paramBundle != null) {
+      paramBundle.setId(b.e.music_video_layout);
+    }
+    paramBundle = new FrameLayout.LayoutParams(-1, -1);
+    paramBundle.gravity = 17;
+    ((FrameLayout)this.Mck.getValue()).addView((View)this.Mfq, (ViewGroup.LayoutParams)paramBundle);
+    AppMethodBeat.o(288110);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(226317);
+    AppMethodBeat.i(288138);
     super.onDestroy();
-    Object localObject = this.GkB;
+    Object localObject = this.Mfq;
     if (localObject != null)
     {
       localObject = ((MMTPVideoLayout)localObject).getPlayer();
       if (localObject != null) {
-        ((com.tencent.mm.plugin.thumbplayer.f.b)localObject).recycle();
+        ((com.tencent.mm.plugin.thumbplayer.e.b)localObject).recycle();
       }
     }
-    localObject = this.GkB;
+    localObject = this.Mfq;
     if (localObject != null)
     {
       localObject = ((MMTPVideoLayout)localObject).getEffector();
-      if (localObject != null)
-      {
-        ((com.tencent.mm.plugin.thumbplayer.d.g)localObject).release();
-        AppMethodBeat.o(226317);
-        return;
+      if (localObject != null) {
+        ((com.tencent.mm.plugin.thumbplayer.c.e)localObject).release();
       }
     }
-    AppMethodBeat.o(226317);
+    localObject = com.tencent.mm.videocomposition.a.agDr;
+    com.tencent.mm.videocomposition.a.fka().evictAll();
+    localObject = com.tencent.mm.plugin.finder.video.thumb.b.GvD;
+    Log.i("MicroMsg.TPTrackThumbFetcher", "clearCache");
+    com.tencent.mm.plugin.finder.video.thumb.b.fka().evictAll();
+    AppMethodBeat.o(288138);
   }
   
-  public final void onPause()
+  public final void setShow(boolean paramBoolean)
   {
-    AppMethodBeat.i(226340);
-    super.onPause();
-    dmf();
-    k localk = k.fet();
-    kotlin.g.b.p.j(localk, "MusicPlayerManager.Instance()");
-    localk.feg().b(this.Gky);
-    AppMethodBeat.o(226340);
+    AppMethodBeat.i(288127);
+    Log.i("MicroMsg.Mv.MusicMvMakerItemEditUIC", s.X("setShow:", Boolean.valueOf(paramBoolean)));
+    if (paramBoolean)
+    {
+      getThumbView().setImageDrawable(null);
+      localObject = com.tencent.mm.ui.component.k.aeZF;
+      ((k)com.tencent.mm.ui.component.k.d(getActivity()).q(k.class)).dSW();
+      gqX().setVisibility(0);
+      gqX().animate().alpha(1.0F).setDuration(250L).setListener((Animator.AnimatorListener)new o(this)).start();
+      AppMethodBeat.o(288127);
+      return;
+    }
+    getThumbView().setImageDrawable(null);
+    Object localObject = this.Mfq;
+    if (localObject != null)
+    {
+      localObject = ((MMTPVideoLayout)localObject).getPlayer();
+      if (localObject != null) {
+        com.tencent.mm.plugin.thumbplayer.e.b.b((com.tencent.mm.plugin.thumbplayer.e.b)localObject);
+      }
+    }
+    grb();
+    localObject = com.tencent.mm.ui.component.k.aeZF;
+    ((k)com.tencent.mm.ui.component.k.d(getActivity()).q(k.class)).dSX();
+    gqX().animate().alpha(0.0F).withEndAction(new m..ExternalSyntheticLambda2(this)).start();
+    AppMethodBeat.o(288127);
   }
   
-  public final void onResume()
-  {
-    AppMethodBeat.i(226341);
-    super.onResume();
-    dmg();
-    k localk = k.fet();
-    kotlin.g.b.p.j(localk, "MusicPlayerManager.Instance()");
-    localk.feg().a(this.Gky);
-    AppMethodBeat.o(226341);
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$IMVEditItemAction;", "", "onEdit", "", "position", "", "item", "Lcom/tencent/mm/plugin/mv/model/MusicMVVideoConvertData;", "itemView", "Landroid/view/View;", "onRollback", "plugin-mv_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerItemEditUIC$MVItemEditActionCallback;", "", "onCancel", "", "isScrollEdit", "", "onConfirm", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface b
   {
-    public abstract void a(int paramInt, com.tencent.mm.plugin.mv.model.e parame, View paramView);
+    public abstract void zU(boolean paramBoolean);
     
-    public abstract void b(int paramInt, com.tencent.mm.plugin.mv.model.e parame, View paramView);
+    public abstract void zV(boolean paramBoolean);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$IMVItemSizeResolver;", "", "getItemWidth", "", "getPadding", "plugin-mv_release"})
-  public static abstract interface c
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerItemEditUIC$ThumbAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerItemEditUIC$ThumbViewHolder;", "(Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerItemEditUIC;)V", "thumbFetcherFactory", "Lcom/tencent/mm/plugin/vlog/ui/thumb/ThumbFetcherFactory;", "trackInfoList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/vlog/ui/thumb/BaseTrackThumbInfo;", "Lkotlin/collections/ArrayList;", "getTrackInfoList", "()Ljava/util/ArrayList;", "getItemCount", "", "onBindViewHolder", "", "viewHolder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "onViewDetachedFromWindow", "holder", "onViewRecycled", "setThumbFetcherFactory", "factory", "updateTrackInfo", "trackInfos", "", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public final class c
+    extends RecyclerView.a<m.d>
   {
-    public abstract int getItemWidth();
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$ItemEditActionCallback;", "Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$IMVEditItemAction;", "(Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC;)V", "onEdit", "", "position", "", "item", "Lcom/tencent/mm/plugin/mv/model/MusicMVVideoConvertData;", "itemView", "Landroid/view/View;", "onRollback", "plugin-mv_release"})
-  public final class d
-    implements m.b
-  {
-    public final void a(int paramInt, com.tencent.mm.plugin.mv.model.e parame, View paramView)
+    g Mdf;
+    final ArrayList<com.tencent.mm.plugin.vlog.ui.thumb.a> Mgl;
+    
+    public c()
     {
-      AppMethodBeat.i(228909);
-      kotlin.g.b.p.k(parame, "item");
-      kotlin.g.b.p.k(paramView, "itemView");
-      Log.i("MicroMsg.Mv.MusicMvMakerFixEditUIC", "onRollback: ".concat(String.valueOf(paramInt)));
-      m.a(this.GkD, parame, paramInt);
-      paramView = this.GkD.Gkz;
-      if (paramView != null)
-      {
-        paramView.c(parame);
-        AppMethodBeat.o(228909);
-        return;
-      }
-      AppMethodBeat.o(228909);
+      AppMethodBeat.i(287537);
+      this.Mgl = new ArrayList();
+      AppMethodBeat.o(287537);
     }
     
-    public final void b(int paramInt, com.tencent.mm.plugin.mv.model.e parame, View paramView)
+    public final int getItemCount()
     {
-      AppMethodBeat.i(228911);
-      kotlin.g.b.p.k(parame, "item");
-      kotlin.g.b.p.k(paramView, "itemView");
-      Log.i("MicroMsg.Mv.MusicMvMakerFixEditUIC", "onEdit: ".concat(String.valueOf(paramInt)));
-      paramView = (ImageView)paramView.findViewById(b.e.FXY);
-      if (paramView != null)
-      {
-        paramView = com.tencent.mm.plugin.mv.model.h.fC((View)paramView);
-        m.e locale = this.GkD.Gkz;
-        if (locale != null)
-        {
-          locale.a(parame, false, paramView);
-          AppMethodBeat.o(228911);
-          return;
-        }
-        AppMethodBeat.o(228911);
-        return;
-      }
-      AppMethodBeat.o(228911);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$MVEditActionCallback;", "", "onEditItem", "", "position", "", "item", "Lcom/tencent/mm/plugin/mv/model/MusicMVVideoConvertData;", "fromSelectNewItem", "", "animationInfo", "Lcom/tencent/mm/plugin/mv/model/MusicMvAnimationInfo;", "onItemSelected", "onRollback", "onTakePhotoFinished", "plugin-mv_release"})
-  public static abstract interface e
-  {
-    public abstract void a(com.tencent.mm.plugin.mv.model.e parame, boolean paramBoolean, com.tencent.mm.plugin.mv.model.g paramg);
-    
-    public abstract void b(com.tencent.mm.plugin.mv.model.e parame);
-    
-    public abstract void c(com.tencent.mm.plugin.mv.model.e parame);
-    
-    public abstract void fgw();
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$MVItemSizeResolver;", "Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$IMVItemSizeResolver;", "(Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC;)V", "viewWidth", "", "getViewWidth", "()I", "setViewWidth", "(I)V", "getItemWidth", "getPadding", "plugin-mv_release"})
-  public final class f
-    implements m.c
-  {
-    public int jBZ;
-    
-    public static int getPadding()
-    {
-      AppMethodBeat.i(231711);
-      int i = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 70);
-      AppMethodBeat.o(231711);
+      AppMethodBeat.i(287549);
+      int i = this.Mgl.size();
+      AppMethodBeat.o(287549);
       return i;
     }
     
-    public final int getItemWidth()
+    public final void jf(List<? extends com.tencent.mm.plugin.vlog.ui.thumb.a> paramList)
     {
-      AppMethodBeat.i(231710);
-      if (this.jBZ == 0)
-      {
-        i = com.tencent.mm.ci.a.kr((Context)this.GkD.getActivity());
-        j = getPadding();
-        AppMethodBeat.o(231710);
-        return i - j * 2;
-      }
-      int i = this.jBZ;
-      int j = getPadding();
-      AppMethodBeat.o(231710);
-      return i - j * 2;
+      AppMethodBeat.i(287543);
+      s.u(paramList, "trackInfos");
+      this.Mgl.clear();
+      this.Mgl.addAll((Collection)paramList);
+      this.bZE.notifyChanged();
+      AppMethodBeat.o(287543);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$MusicMVVideoItemConverterFactory;", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "sizeResolver", "Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$IMVItemSizeResolver;", "(Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC;Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$IMVItemSizeResolver;)V", "getSizeResolver", "()Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$IMVItemSizeResolver;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-mv_release"})
-  public final class g
-    implements com.tencent.mm.view.recyclerview.f
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerItemEditUIC$ThumbViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "parent", "Landroid/view/ViewGroup;", "(Landroid/view/ViewGroup;)V", "frameList", "Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListView;", "getFrameList", "()Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListView;", "unbind", "", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class d
+    extends RecyclerView.v
   {
-    private final m.c GfD;
+    final FrameListView Mgn;
     
-    public g()
+    public d(ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(226626);
-      this.GfD = localObject;
-      AppMethodBeat.o(226626);
+      super();
+      AppMethodBeat.i(287563);
+      this.Mgn = ((FrameListView)this.caK);
+      AppMethodBeat.o(287563);
     }
     
-    public final com.tencent.mm.view.recyclerview.e<?> yx(int paramInt)
+    public final void grc()
     {
-      AppMethodBeat.i(226623);
-      com.tencent.mm.view.recyclerview.e locale = (com.tencent.mm.view.recyclerview.e)new com.tencent.mm.plugin.mv.ui.a.a(this.GfD, (m.b)new m.d(m.this));
-      AppMethodBeat.o(226623);
-      return locale;
+      AppMethodBeat.i(287580);
+      Log.i("MicroMsg.Mv.MusicMvMakerItemEditUIC", "release frameListView");
+      this.Mgn.release();
+      AppMethodBeat.o(287580);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "Lcom/tencent/mm/plugin/mv/model/MusicMVVideoConvertData;", "invoke"})
-  static final class h
-    extends q
-    implements kotlin.g.a.a<WxRecyclerAdapter<com.tencent.mm.plugin.mv.model.e>>
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerItemEditUIC$ThumbAdapter;", "Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerItemEditUIC;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class e
+    extends u
+    implements kotlin.g.a.a<m.c>
   {
-    h(m paramm)
+    e(m paramm)
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "left", "", "top", "right", "bottom", "oldLeft", "oldTop", "oldRight", "oldBottom", "onLayoutChange"})
-  public static final class j
-    implements View.OnLayoutChangeListener
-  {
-    public j(m paramm) {}
-    
-    public final void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
-    {
-      AppMethodBeat.i(226420);
-      Log.i("MicroMsg.Mv.MusicMvMakerFixEditUIC", "initEditUI: " + paramInt2 + ", " + paramInt4 + "; " + paramInt6 + ", " + paramInt8);
-      m.a(this.GkD).jBZ = (paramInt3 - paramInt1);
-      AppMethodBeat.o(226420);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$initEditUI$2", "Lcom/tencent/mm/emoji/panel/layout/CenterPagerSnapHelper$OnPageSettledListener;", "onPageSettle", "", "position", "", "plugin-mv_release"})
-  public static final class k
-    implements a.c
-  {
-    public final void rJ(int paramInt)
-    {
-      AppMethodBeat.i(225276);
-      Log.i("MicroMsg.Mv.MusicMvMakerFixEditUIC", "onPageSettle: " + paramInt + ", last " + m.b(this.GkD));
-      if (m.b(this.GkD) == paramInt)
-      {
-        AppMethodBeat.o(225276);
-        return;
-      }
-      m.b(this.GkD, paramInt);
-      m.c(this.GkD, paramInt);
-      m.e locale = this.GkD.Gkz;
-      if (locale != null)
-      {
-        Object localObject = m.c(this.GkD).get(paramInt);
-        kotlin.g.b.p.j(localObject, "dataList[position]");
-        locale.b((com.tencent.mm.plugin.mv.model.e)localObject);
-        AppMethodBeat.o(225276);
-        return;
-      }
-      AppMethodBeat.o(225276);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$initEditUI$3", "Landroidx/recyclerview/widget/RecyclerView$AdapterDataObserver;", "onChanged", "", "onItemRangeChanged", "positionStart", "", "itemCount", "payload", "", "plugin-mv_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/mv/ui/uic/MusicMvMakerItemEditUIC$progressListener$1", "Lcom/tencent/mm/plugin/thumbplayer/view/OnPlayerProgressListener;", "lastPlayPosition", "", "onProgress", "", "media", "Lcom/tencent/mm/plugin/thumbplayer/api/TPMediaInfo;", "timeMs", "reset", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class l
-    extends RecyclerView.c
+    implements com.tencent.mm.plugin.thumbplayer.view.e
   {
-    public final void onChanged()
+    long Mgo;
+    
+    l(m paramm) {}
+    
+    public final void a(com.tencent.mm.plugin.thumbplayer.a.b paramb, final long paramLong)
     {
-      AppMethodBeat.i(233193);
-      super.onChanged();
-      Log.i("MicroMsg.Mv.MusicMvMakerFixEditUIC", "onChanged: " + m.d(this.GkD).getItemCount());
-      if (m.e(this.GkD).jNa == -1) {
-        m.f(this.GkD).post((Runnable)new a(this));
-      }
-      AppMethodBeat.o(233193);
+      AppMethodBeat.i(287494);
+      com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new a(this.Mgm, paramLong, this));
+      AppMethodBeat.o(287494);
     }
     
-    public final void onItemRangeChanged(int paramInt1, int paramInt2)
+    @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+    static final class a
+      extends u
+      implements kotlin.g.a.a<ah>
     {
-      AppMethodBeat.i(233200);
-      super.onItemRangeChanged(paramInt1, paramInt2);
-      Log.i("MicroMsg.Mv.MusicMvMakerFixEditUIC", "onItemRangeChanged, start:" + paramInt1 + ", itemCount:" + paramInt2 + ", lastPos:" + m.b(this.GkD));
-      int i = m.b(this.GkD);
-      if (paramInt1 > i)
+      a(m paramm, long paramLong, m.l paraml)
       {
-        AppMethodBeat.o(233200);
+        super();
+      }
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/mv/ui/uic/MusicMvMakerItemEditUIC$scrollListener$1", "Landroidx/recyclerview/widget/RecyclerView$OnScrollListener;", "onScrollStateChanged", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "newState", "", "onScrolled", "dx", "dy", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class m
+    extends RecyclerView.l
+  {
+    m(m paramm) {}
+    
+    public final void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+    {
+      AppMethodBeat.i(287481);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.cH(paramRecyclerView);
+      localb.sc(paramInt);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/uic/MusicMvMakerItemEditUIC$scrollListener$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aYj());
+      s.u(paramRecyclerView, "recyclerView");
+      super.onScrollStateChanged(paramRecyclerView, paramInt);
+      if (paramInt == 0)
+      {
+        if (m.e(this.Mgm).getChildCount() <= 0)
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mv/ui/uic/MusicMvMakerItemEditUIC$scrollListener$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
+          AppMethodBeat.o(287481);
+          return;
+        }
+        paramRecyclerView = m.e(this.Mgm).getChildAt(0);
+        long l = ((m.e(this.Mgm).getPaddingStart() - paramRecyclerView.getLeft()) / m.t(this.Mgm));
+        paramRecyclerView = m.g(this.Mgm);
+        if (paramRecyclerView != null)
+        {
+          paramRecyclerView = paramRecyclerView.getPlayer();
+          if (paramRecyclerView != null) {
+            paramRecyclerView.bs(l, m.r(this.Mgm) + l);
+          }
+        }
+        paramRecyclerView = m.g(this.Mgm);
+        if (paramRecyclerView != null)
+        {
+          paramRecyclerView = paramRecyclerView.getPlayer();
+          if (paramRecyclerView != null) {
+            com.tencent.mm.plugin.thumbplayer.e.b.a(paramRecyclerView, (int)l, true, 4);
+          }
+        }
+        m.q(this.Mgm);
+        paramRecyclerView = m.w(this.Mgm);
+        if (paramRecyclerView != null)
+        {
+          m.j(this.Mgm).Mgo = 0L;
+          com.tencent.mm.plugin.music.logic.j.gnw().gnj().wH(paramRecyclerView.LWU);
+        }
+        m.a(this.Mgm, true);
+      }
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mv/ui/uic/MusicMvMakerItemEditUIC$scrollListener$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
+      AppMethodBeat.o(287481);
+    }
+    
+    public final void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(287489);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.cH(paramRecyclerView);
+      localb.sc(paramInt1);
+      localb.sc(paramInt2);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/uic/MusicMvMakerItemEditUIC$scrollListener$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aYj());
+      s.u(paramRecyclerView, "recyclerView");
+      super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+      if (m.e(this.Mgm).getChildCount() <= 0)
+      {
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mv/ui/uic/MusicMvMakerItemEditUIC$scrollListener$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
+        AppMethodBeat.o(287489);
         return;
       }
-      if (paramInt1 + paramInt2 > i) {
-        m.f(this.GkD).post((Runnable)new b(this));
-      }
-      AppMethodBeat.o(233200);
-    }
-    
-    public final void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
-    {
-      AppMethodBeat.i(233197);
-      if (paramObject == null)
-      {
-        Log.i("MicroMsg.Mv.MusicMvMakerFixEditUIC", "onItemRangeChanged, start:" + paramInt1 + ", itemCount:" + paramInt2 + ", lastPos:" + m.b(this.GkD) + ", payload:" + paramObject);
-        onItemRangeChanged(paramInt1, paramInt2);
-      }
-      AppMethodBeat.o(233197);
-    }
-    
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-    static final class a
-      implements Runnable
-    {
-      a(m.l paraml) {}
-      
-      public final void run()
-      {
-        AppMethodBeat.i(231744);
-        m.e(this.GkE.GkD).a((RecyclerView)m.f(this.GkE.GkD));
-        AppMethodBeat.o(231744);
-      }
-    }
-    
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-    static final class b
-      implements Runnable
-    {
-      b(m.l paraml) {}
-      
-      public final void run()
-      {
-        AppMethodBeat.i(226375);
-        m.c(this.GkE.GkD, m.b(this.GkE.GkD));
-        AppMethodBeat.o(226375);
-      }
+      paramRecyclerView = m.e(this.Mgm).getChildAt(0);
+      long l = ((m.e(this.Mgm).getPaddingStart() - paramRecyclerView.getLeft()) / m.t(this.Mgm));
+      m.a(this.Mgm, l);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mv/ui/uic/MusicMvMakerItemEditUIC$scrollListener$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
+      AppMethodBeat.o(287489);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "attached", "com/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$makeMediaThumbTransition$1$1$1", "com/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$$special$$inlined$let$lambda$1"})
-  static final class o
-    implements h.a
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/mv/ui/uic/MusicMvMakerItemEditUIC$setShow$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "onAnimationStart", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class o
+    extends AnimatorListenerAdapter
   {
-    o(ImageView paramImageView, com.tencent.mm.plugin.mv.model.e parame, kotlin.g.a.b paramb) {}
+    o(m paramm) {}
     
-    public final void euT()
+    public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(229487);
-      com.tencent.e.h.ZvG.bc((Runnable)new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(231453);
-          this.GkH.zTz.animate().alpha(1.0F).setDuration(200L).withEndAction((Runnable)new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(228578);
-              this.GkI.GkH.zTz.setVisibility(4);
-              com.tencent.mm.plugin.mv.model.g localg = com.tencent.mm.plugin.mv.model.h.fC((View)this.GkI.GkH.zTz);
-              kotlin.g.a.b localb = this.GkI.GkH.GkG;
-              if (localb != null)
-              {
-                localb.invoke(localg);
-                AppMethodBeat.o(228578);
-                return;
-              }
-              AppMethodBeat.o(228578);
-            }
-          }).start();
-          AppMethodBeat.o(231453);
-        }
-      });
-      AppMethodBeat.o(229487);
+      AppMethodBeat.i(287500);
+      m.b(this.Mgm).setAlpha(1.0F);
+      AppMethodBeat.o(287500);
+    }
+    
+    public final void onAnimationStart(Animator paramAnimator)
+    {
+      AppMethodBeat.i(287496);
+      m.b(this.Mgm).setAlpha(0.0F);
+      AppMethodBeat.o(287496);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "currentPos", "", "totalDuration", "onProgress"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class p
-    implements d.a
-  {
-    p(m paramm) {}
-    
-    public final void fK(final int paramInt1, final int paramInt2)
-    {
-      AppMethodBeat.i(234616);
-      com.tencent.e.h.ZvG.bc((Runnable)new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(228386);
-          m.d(this.GkJ.GkD, paramInt1);
-          AppMethodBeat.o(228386);
-        }
-      });
-      AppMethodBeat.o(234616);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
-  static final class q
-    extends kotlin.d.b.a.j
-    implements kotlin.g.a.m<ak, kotlin.d.d<? super x>, Object>
+    extends kotlin.d.b.a.k
+    implements kotlin.g.a.m<aq, kotlin.d.d<? super ah>, Object>
   {
     int label;
-    private ak p$;
     
-    q(m paramm, Intent paramIntent, int paramInt, kotlin.d.d paramd)
+    p(m paramm, com.tencent.mm.plugin.mv.model.e parame, kotlin.d.d<? super p> paramd)
     {
       super(paramd);
     }
     
-    public final kotlin.d.d<x> create(Object paramObject, kotlin.d.d<?> paramd)
+    private static final void b(m paramm, com.tencent.mm.plugin.mv.model.e parame)
     {
-      AppMethodBeat.i(227404);
-      kotlin.g.b.p.k(paramd, "completion");
-      paramd = new q(this.GkD, paramIntent, paramInt2, paramd);
-      paramd.p$ = ((ak)paramObject);
-      AppMethodBeat.o(227404);
-      return paramd;
-    }
-    
-    public final Object invoke(Object paramObject1, Object paramObject2)
-    {
-      AppMethodBeat.i(227406);
-      paramObject1 = ((q)create(paramObject1, (kotlin.d.d)paramObject2)).invokeSuspend(x.aazN);
-      AppMethodBeat.o(227406);
-      return paramObject1;
-    }
-    
-    public final Object invokeSuspend(Object paramObject)
-    {
-      AppMethodBeat.i(227402);
-      kotlin.d.a.a locala = kotlin.d.a.a.aaAA;
-      switch (this.label)
+      AppMethodBeat.i(287505);
+      int i = m.e(paramm).getPaddingStart();
+      int j = m.e(paramm).getWidth() - i * 2;
+      m.a(paramm, j * 1.0F / (float)m.r(paramm));
+      m.s(paramm).bo(0, -(int)((float)m.h(paramm) * m.t(paramm)));
+      Object localObject;
+      if ((parame.LWY instanceof e.i))
       {
-      default: 
-        paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-        AppMethodBeat.o(227402);
-        throw paramObject;
+        localObject = parame.LWY;
+        if ((localObject instanceof e.i))
+        {
+          localObject = (e.i)localObject;
+          if (localObject != null)
+          {
+            parame.getDurationMs();
+            m.a(paramm, (e.i)localObject);
+          }
+        }
       }
-      ResultKt.throwOnFailure(paramObject);
-      m.a(this.GkD, paramIntent, paramInt2);
-      paramObject = x.aazN;
-      AppMethodBeat.o(227402);
+      label206:
+      for (;;)
+      {
+        m.i(paramm).aR(j, j, i);
+        m.i(paramm).b(true, i);
+        m.i(paramm).b(true, i + j);
+        AppMethodBeat.o(287505);
+        return;
+        localObject = null;
+        break;
+        if ((parame.LWY instanceof e.e))
+        {
+          localObject = parame.LWY;
+          if ((localObject instanceof e.e)) {}
+          for (localObject = (e.e)localObject;; localObject = null)
+          {
+            if (localObject == null) {
+              break label206;
+            }
+            parame.getDurationMs();
+            m.a(paramm, (e.e)localObject);
+            break;
+          }
+        }
+      }
+    }
+    
+    public final kotlin.d.d<ah> create(Object paramObject, kotlin.d.d<?> paramd)
+    {
+      AppMethodBeat.i(287526);
+      paramObject = (kotlin.d.d)new p(this.Mgm, parame, paramd);
+      AppMethodBeat.o(287526);
       return paramObject;
     }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  public static final class r
-    implements Runnable
-  {
-    public r(m paramm) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(226193);
-      m.e(this.GkD).aCV();
-      AppMethodBeat.o(226193);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
-  static final class s
-    extends kotlin.d.b.a.j
-    implements kotlin.g.a.m<ak, kotlin.d.d<? super x>, Object>
-  {
-    Object L$0;
-    int label;
-    Object oDA;
-    private ak p$;
-    Object pGq;
-    long uyU;
-    
-    s(m paramm, int paramInt, kotlin.d.d paramd)
-    {
-      super(paramd);
-    }
-    
-    public final kotlin.d.d<x> create(Object paramObject, kotlin.d.d<?> paramd)
-    {
-      AppMethodBeat.i(242543);
-      kotlin.g.b.p.k(paramd, "completion");
-      paramd = new s(this.GkD, this.jEN, paramd);
-      paramd.p$ = ((ak)paramObject);
-      AppMethodBeat.o(242543);
-      return paramd;
-    }
-    
-    public final Object invoke(Object paramObject1, Object paramObject2)
-    {
-      AppMethodBeat.i(242546);
-      paramObject1 = ((s)create(paramObject1, (kotlin.d.d)paramObject2)).invokeSuspend(x.aazN);
-      AppMethodBeat.o(242546);
-      return paramObject1;
-    }
     
     public final Object invokeSuspend(Object paramObject)
     {
-      AppMethodBeat.i(242538);
-      Object localObject3 = kotlin.d.a.a.aaAA;
-      Object localObject4;
+      AppMethodBeat.i(287522);
+      Object localObject2 = kotlin.d.a.a.aiwj;
+      Object localObject1;
+      Object localObject3;
       switch (this.label)
       {
       default: 
         paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-        AppMethodBeat.o(242538);
+        AppMethodBeat.o(287522);
         throw paramObject;
       case 0: 
         ResultKt.throwOnFailure(paramObject);
-        localObject2 = this.p$;
-        Log.printInfoStack("MicroMsg.Mv.MusicMvMakerFixEditUIC", "refreshVideo: " + this.jEN + ' ' + m.b(this.GkD), new Object[0]);
-        if (m.b(this.GkD) >= 0)
+        paramObject = (f)bg.kCi();
+        localObject1 = (kotlin.g.a.m)new a(parame, null);
+        localObject3 = (kotlin.d.d)this;
+        this.label = 1;
+        localObject1 = l.a(paramObject, (kotlin.g.a.m)localObject1, (kotlin.d.d)localObject3);
+        paramObject = localObject1;
+        if (localObject1 == localObject2)
         {
-          paramObject = m.g(this.GkD);
-          if (paramObject != null)
-          {
-            paramObject = paramObject.getPlayer();
-            if ((paramObject != null) && (paramObject.isPlaying() == true))
-            {
-              paramObject = m.c(this.GkD).get(m.b(this.GkD));
-              kotlin.g.b.p.j(paramObject, "dataList[lastPos]");
-              localObject4 = (com.tencent.mm.plugin.mv.model.e)paramObject;
-              paramObject = m.g(this.GkD);
-              if (paramObject == null) {
-                break label303;
-              }
-              paramObject = paramObject.getPlayer();
-              if (paramObject == null) {
-                break label303;
-              }
-              paramObject = paramObject.MTd;
-              localObject1 = m.g(this.GkD);
-              if (localObject1 == null) {
-                break label308;
-              }
-              localObject1 = ((MMTPVideoLayout)localObject1).getEffector();
-              if (localObject1 == null) {
-                break label308;
-              }
-            }
-          }
+          AppMethodBeat.o(287522);
+          return localObject2;
         }
-        Object localObject5;
-        label303:
-        label308:
-        for (localObject1 = ((com.tencent.mm.plugin.thumbplayer.d.g)localObject1).MRa;; localObject1 = null)
-        {
-          localObject5 = com.tencent.mm.plugin.mv.model.o.GcB;
-          com.tencent.mm.plugin.mv.model.o.a((Context)this.GkD.getActivity(), this.GkD.Geg, m.b(this.GkD), (com.tencent.mm.plugin.mv.model.e)localObject4, paramObject, (com.tencent.mm.plugin.thumbplayer.e.b)localObject1);
-          localObject1 = m.f(this.GkD).cK(this.jEN);
-          if (localObject1 != null) {
-            break label314;
-          }
-          paramObject = x.aazN;
-          AppMethodBeat.o(242538);
-          return paramObject;
-          paramObject = null;
-          break;
-        }
-        label314:
-        kotlin.g.b.p.j(localObject1, "fixMvCardRV.findViewHold…osition) ?: return@launch");
-        paramObject = m.c(this.GkD).get(this.jEN);
-        kotlin.g.b.p.j(paramObject, "dataList[position]");
-        paramObject = (com.tencent.mm.plugin.mv.model.e)paramObject;
-        m.a(this.GkD, this.jEN);
-        if (paramObject.GaV)
-        {
-          localObject4 = k.fet();
-          kotlin.g.b.p.j(localObject4, "MusicPlayerManager.Instance()");
-          ((k)localObject4).feg().wG(paramObject.GaT);
-        }
-        localObject4 = paramObject.GaX;
-        if (localObject4 != null) {}
-        for (l = kotlin.d.b.a.b.Xu(((e.h)localObject4).ffW()).longValue();; l = 0L)
-        {
-          localObject4 = (kotlin.d.f)bc.iRs();
-          localObject5 = (kotlin.g.a.m)new b(paramObject, null);
-          this.L$0 = localObject2;
-          this.oDA = localObject1;
-          this.pGq = paramObject;
-          this.uyU = l;
-          this.label = 1;
-          localObject2 = kotlinx.coroutines.i.a((kotlin.d.f)localObject4, (kotlin.g.a.m)localObject5, this);
-          if (localObject2 != localObject3) {
-            break;
-          }
-          AppMethodBeat.o(242538);
-          return localObject3;
-        }
+        break;
+      case 1: 
+        ResultKt.throwOnFailure(paramObject);
       }
-      final long l = this.uyU;
-      Object localObject2 = (com.tencent.mm.plugin.mv.model.e)this.pGq;
-      localObject3 = (RecyclerView.v)this.oDA;
-      ResultKt.throwOnFailure(paramObject);
-      Object localObject1 = paramObject;
-      paramObject = localObject2;
-      localObject2 = localObject1;
-      localObject1 = localObject3;
-      for (;;)
+      localObject2 = (com.tencent.mm.plugin.thumbplayer.a.b)paramObject;
+      if (localObject2 == null)
       {
-        localObject3 = (com.tencent.mm.plugin.thumbplayer.e.d)localObject2;
-        if (localObject3 == null)
-        {
-          paramObject = x.aazN;
-          AppMethodBeat.o(242538);
-          return paramObject;
-        }
-        Log.i("MicroMsg.Mv.MusicMvMakerFixEditUIC", "refreshVideo mediaInfo:".concat(String.valueOf(localObject3)));
-        localObject4 = (FrameLayout)((RecyclerView.v)localObject1).amk.findViewById(b.e.video_container);
-        localObject2 = m.g(this.GkD);
-        if (localObject2 != null)
-        {
-          localObject2 = ((MMTPVideoLayout)localObject2).getParent();
-          if (localObject2 == null) {
-            break label692;
-          }
-          localObject2 = m.g(this.GkD);
-          if (localObject2 == null) {
-            break label668;
-          }
-        }
-        label668:
-        for (localObject2 = ((MMTPVideoLayout)localObject2).getParent();; localObject2 = null)
-        {
-          if (localObject2 != null) {
-            break label674;
-          }
-          paramObject = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup");
-          AppMethodBeat.o(242538);
-          throw paramObject;
-          localObject2 = null;
-          break;
-        }
-        label674:
-        ((ViewGroup)localObject2).removeView((View)m.g(this.GkD));
-        label692:
-        ((FrameLayout)localObject4).removeAllViews();
-        localObject2 = new FrameLayout.LayoutParams(-1, -1);
-        ((FrameLayout.LayoutParams)localObject2).gravity = 17;
-        ((FrameLayout)localObject4).addView((View)m.g(this.GkD), (ViewGroup.LayoutParams)localObject2);
-        localObject2 = ((RecyclerView.v)localObject1).amk.findViewById(b.e.FYL);
-        kotlin.g.b.p.j(localObject2, "holder.itemView.findView…r>(R.id.part_mv_seek_bar)");
-        ((ProgressBar)localObject2).setProgress(0);
-        localObject2 = m.g(this.GkD);
-        if (localObject2 != null)
-        {
-          ((MMTPVideoLayout)localObject2).goU();
-          ((MMTPVideoLayout)localObject2).setKeepScreenOn(true);
-          localObject4 = ((MMTPVideoLayout)localObject2).getPlayer();
-          if (localObject4 != null) {
-            ((com.tencent.mm.plugin.thumbplayer.f.b)localObject4).ehf();
-          }
-          ((MMTPVideoLayout)localObject2).setMediaInfo((com.tencent.mm.plugin.thumbplayer.e.d)localObject3);
-          localObject4 = ((MMTPVideoLayout)localObject2).getPlayer();
-          if (localObject4 != null) {
-            ((com.tencent.mm.plugin.thumbplayer.f.b)localObject4).ALj = true;
-          }
-          localObject4 = ((MMTPVideoLayout)localObject2).getPlayer();
-          if (localObject4 != null) {
-            ((com.tencent.mm.plugin.thumbplayer.f.b)localObject4).setMute(true);
-          }
-          localObject4 = ((MMTPVideoLayout)localObject2).getPlayer();
-          if (localObject4 != null) {
-            ((com.tencent.mm.plugin.thumbplayer.f.b)localObject4).setLoop(true);
-          }
-          com.tencent.mm.plugin.thumbplayer.d.g.a(((MMTPVideoLayout)localObject2).getEffector());
-          localObject4 = ((MMTPVideoLayout)localObject2).getPlayer();
-          if (localObject4 != null) {
-            ((com.tencent.mm.plugin.thumbplayer.f.b)localObject4).aG(l, paramObject.getDurationMs() + l);
-          }
-          localObject4 = ((MMTPVideoLayout)localObject2).getPlayer();
-          if (localObject4 != null) {
-            ((com.tencent.mm.plugin.thumbplayer.f.b)localObject4).gos();
-          }
-          localObject2 = ((MMTPVideoLayout)localObject2).getPlayer();
-          if (localObject2 != null) {
-            ((com.tencent.mm.plugin.thumbplayer.f.b)localObject2).a((com.tencent.mm.plugin.thumbplayer.view.e)new a((com.tencent.mm.plugin.thumbplayer.e.d)localObject3, l, paramObject, (RecyclerView.v)localObject1), 30L);
-          }
-        }
-        paramObject = x.aazN;
-        AppMethodBeat.o(242538);
+        paramObject = ah.aiuX;
+        AppMethodBeat.o(287522);
         return paramObject;
       }
-    }
-    
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$refreshVideo$1$1$1", "Lcom/tencent/mm/plugin/thumbplayer/view/OnPlayerProgressListener;", "lastPlayPos", "", "onProgress", "", "media", "Lcom/tencent/mm/plugin/thumbplayer/model/TPMediaInfo;", "timeMs", "plugin-mv_release"})
-    public static final class a
-      implements com.tencent.mm.plugin.thumbplayer.view.e
-    {
-      long GkL;
-      
-      a(com.tencent.mm.plugin.thumbplayer.e.d paramd, long paramLong, com.tencent.mm.plugin.mv.model.e parame, RecyclerView.v paramv) {}
-      
-      public final void a(com.tencent.mm.plugin.thumbplayer.e.d paramd, final long paramLong)
+      Log.i("MicroMsg.Mv.MusicMvMakerItemEditUIC", s.X("setVideoData:", localObject2));
+      m.a(this.Mgm, false);
+      m.a(this.Mgm, -1L);
+      m.a(this.Mgm, parame);
+      paramObject = parame.LWX;
+      if (paramObject != null)
       {
-        AppMethodBeat.i(227945);
-        com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new q(paramLong) {});
-        AppMethodBeat.o(227945);
+        localObject1 = m.c(this.Mgm);
+        s.s(localObject1, "thumbView");
+        e.g.a.a(paramObject, (ImageView)localObject1);
+      }
+      int j = com.tencent.mm.plugin.mv.ui.a.e.adV(parame.getDurationMs());
+      paramObject = parame.LWY;
+      int i;
+      if (paramObject == null)
+      {
+        i = 0;
+        m.d(this.Mgm).setText((CharSequence)this.Mgm.getActivity().getString(b.h.music_mv_maker_item_time_crop, new Object[] { Integer.valueOf(i), Integer.valueOf(j) }));
+        paramObject = com.tencent.mm.ui.component.k.aeZF;
+        paramObject = (k)com.tencent.mm.ui.component.k.d(this.Mgm.getActivity()).q(k.class);
+        localObject3 = parame;
+        s.u(localObject3, "itemData");
+        i = paramObject.pUj.indexOf(localObject3);
+        if (i == -1) {
+          break label1202;
+        }
+        localObject1 = (com.tencent.mm.plugin.mv.model.e)p.ae((List)paramObject.pUj, i - 1);
+        if (localObject1 == null) {
+          break label1202;
+        }
+        if ((!(((com.tencent.mm.plugin.mv.model.e)localObject1).LWY instanceof e.i)) || (!(((com.tencent.mm.plugin.mv.model.e)localObject3).LWY instanceof e.i))) {
+          break label1161;
+        }
+        paramObject = ((com.tencent.mm.plugin.mv.model.e)localObject1).LWY;
+        localObject3 = ((com.tencent.mm.plugin.mv.model.e)localObject3).LWY;
+        if ((paramObject == null) || (localObject3 == null) || (!s.p(((e.i)paramObject).videoPath, ((e.i)localObject3).videoPath))) {
+          break label1202;
+        }
+        paramObject = localObject1;
+        label434:
+        localObject3 = parame.LWY;
+        if (localObject3 != null)
+        {
+          com.tencent.mm.plugin.mv.model.e locale = parame;
+          m localm = this.Mgm;
+          long l2 = ((e.h)localObject3).gpA();
+          if (paramObject != null) {
+            break label1207;
+          }
+          localObject1 = null;
+          label476:
+          long l1 = l2;
+          if (localObject1 != null)
+          {
+            localObject1 = paramObject.LWY;
+            s.checkNotNull(localObject1);
+            long l3 = ((e.h)localObject1).gpA();
+            long l4 = paramObject.getDurationMs();
+            long l5 = locale.getDurationMs();
+            localObject1 = paramObject.LWY;
+            s.checkNotNull(localObject1);
+            l1 = l2;
+            if (l3 + l4 + l5 < ((e.h)localObject1).getDurationMs())
+            {
+              localObject1 = paramObject.LWY;
+              s.checkNotNull(localObject1);
+              l1 = ((e.h)localObject1).gpA() + paramObject.getDurationMs();
+            }
+          }
+          m.c(localm, l1);
+          m.d(localm, locale.getDurationMs());
+          m.b(localm, ((e.h)localObject3).getDurationMs());
+          m.a(localm, m.h(localm));
+        }
+        m.e(this.Mgm).post(new m.p..ExternalSyntheticLambda0(this.Mgm, parame));
+        m.f(this.Mgm);
+        m.c(this.Mgm).setVisibility(0);
+        paramObject = m.g(this.Mgm);
+        if (paramObject != null) {
+          paramObject.fva();
+        }
+        paramObject = m.g(this.Mgm);
+        if (paramObject != null) {
+          paramObject.setMediaInfo((com.tencent.mm.plugin.thumbplayer.a.b)localObject2);
+        }
+        paramObject = m.g(this.Mgm);
+        if (paramObject != null)
+        {
+          paramObject = paramObject.getEffector();
+          if (paramObject != null)
+          {
+            paramObject.TDU = null;
+            paramObject.TDT = false;
+            Log.i(paramObject.TAG, "reset snapshot");
+          }
+        }
+        paramObject = m.g(this.Mgm);
+        if (paramObject != null) {
+          break label1216;
+        }
+      }
+      label1161:
+      label1202:
+      label1207:
+      label1216:
+      for (paramObject = null;; paramObject = paramObject.getPlayer())
+      {
+        if (paramObject != null) {
+          paramObject.Flr = true;
+        }
+        paramObject = m.g(this.Mgm);
+        if (paramObject != null)
+        {
+          paramObject = paramObject.getPlayer();
+          if (paramObject != null) {
+            paramObject.setMute(true);
+          }
+        }
+        paramObject = m.g(this.Mgm);
+        if (paramObject != null)
+        {
+          paramObject = paramObject.getPlayer();
+          if (paramObject != null) {
+            paramObject.setLoop(true);
+          }
+        }
+        paramObject = m.g(this.Mgm);
+        if (paramObject != null)
+        {
+          paramObject = paramObject.getEffector();
+          if (paramObject != null) {
+            com.tencent.mm.plugin.thumbplayer.c.e.a(paramObject);
+          }
+        }
+        paramObject = m.g(this.Mgm);
+        if (paramObject != null)
+        {
+          paramObject = paramObject.getPlayer();
+          if (paramObject != null) {
+            paramObject.bs(m.h(this.Mgm), m.h(this.Mgm) + parame.getDurationMs());
+          }
+        }
+        paramObject = m.g(this.Mgm);
+        if (paramObject != null)
+        {
+          paramObject = paramObject.getPlayer();
+          if (paramObject != null) {
+            paramObject.hLh();
+          }
+        }
+        m.i(this.Mgm).setCursorPos(0.0F);
+        paramObject = m.g(this.Mgm);
+        if (paramObject != null)
+        {
+          paramObject = paramObject.getPlayer();
+          if (paramObject != null) {
+            paramObject.a((com.tencent.mm.plugin.thumbplayer.view.e)m.j(this.Mgm), 30L);
+          }
+        }
+        paramObject = m.g(this.Mgm);
+        if (paramObject != null) {
+          paramObject.setOnFrameAvailable((kotlin.g.a.b)new u(this.Mgm) {});
+        }
+        m.a(this.Mgm, m.m(this.Mgm));
+        m.a(this.Mgm, m.n(this.Mgm));
+        Log.i("MicroMsg.Mv.MusicMvMakerItemEditUIC", "setVideoData, firstRenderTime:" + m.n(this.Mgm) + ", firstRenderFrame:" + m.m(this.Mgm) + ", backFirstRenderTime:" + m.o(this.Mgm) + ", backFirstFrame:" + m.p(this.Mgm));
+        m.q(this.Mgm);
+        m.j(this.Mgm).Mgo = 0L;
+        com.tencent.mm.plugin.music.logic.j.gnw().gnj().wH(parame.LWU);
+        paramObject = ah.aiuX;
+        AppMethodBeat.o(287522);
+        return paramObject;
+        i = com.tencent.mm.plugin.mv.ui.a.e.adW((int)paramObject.getDurationMs());
+        break;
+        if (((((com.tencent.mm.plugin.mv.model.e)localObject1).LWY instanceof e.e)) && ((((com.tencent.mm.plugin.mv.model.e)localObject3).LWY instanceof e.e)))
+        {
+          paramObject = localObject1;
+          if (s.p(((com.tencent.mm.plugin.mv.model.e)localObject1).gpw(), ((com.tencent.mm.plugin.mv.model.e)localObject3).gpw())) {
+            break label434;
+          }
+        }
+        paramObject = null;
+        break label434;
+        localObject1 = paramObject.LWY;
+        break label476;
       }
     }
     
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/thumbplayer/model/TPMediaInfo;", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
-    static final class b
-      extends kotlin.d.b.a.j
-      implements kotlin.g.a.m<ak, kotlin.d.d<? super com.tencent.mm.plugin.thumbplayer.e.d>, Object>
+    @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/thumbplayer/api/TPMediaInfo;", "Lkotlinx/coroutines/CoroutineScope;"}, k=3, mv={1, 5, 1}, xi=48)
+    static final class a
+      extends kotlin.d.b.a.k
+      implements kotlin.g.a.m<aq, kotlin.d.d<? super com.tencent.mm.plugin.thumbplayer.a.b>, Object>
     {
       int label;
-      private ak p$;
       
-      b(com.tencent.mm.plugin.mv.model.e parame, kotlin.d.d paramd)
+      a(com.tencent.mm.plugin.mv.model.e parame, kotlin.d.d<? super a> paramd)
       {
         super(paramd);
       }
       
-      public final kotlin.d.d<x> create(Object paramObject, kotlin.d.d<?> paramd)
+      public final kotlin.d.d<ah> create(Object paramObject, kotlin.d.d<?> paramd)
       {
-        AppMethodBeat.i(231303);
-        kotlin.g.b.p.k(paramd, "completion");
-        paramd = new b(this.GfH, paramd);
-        paramd.p$ = ((ak)paramObject);
-        AppMethodBeat.o(231303);
-        return paramd;
-      }
-      
-      public final Object invoke(Object paramObject1, Object paramObject2)
-      {
-        AppMethodBeat.i(231304);
-        paramObject1 = ((b)create(paramObject1, (kotlin.d.d)paramObject2)).invokeSuspend(x.aazN);
-        AppMethodBeat.o(231304);
-        return paramObject1;
+        AppMethodBeat.i(288142);
+        paramObject = (kotlin.d.d)new a(this.Mfv, paramd);
+        AppMethodBeat.o(288142);
+        return paramObject;
       }
       
       public final Object invokeSuspend(Object paramObject)
       {
-        AppMethodBeat.i(231299);
-        kotlin.d.a.a locala = kotlin.d.a.a.aaAA;
+        AppMethodBeat.i(288132);
+        kotlin.d.a.a locala = kotlin.d.a.a.aiwj;
         switch (this.label)
         {
         default: 
           paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-          AppMethodBeat.o(231299);
+          AppMethodBeat.o(288132);
           throw paramObject;
         }
         ResultKt.throwOnFailure(paramObject);
-        paramObject = this.GfH.GaX;
-        if (paramObject != null)
+        paramObject = this.Mfv.LWY;
+        if (paramObject == null)
         {
-          paramObject = paramObject.ffX();
-          AppMethodBeat.o(231299);
-          return paramObject;
+          AppMethodBeat.o(288132);
+          return null;
         }
-        AppMethodBeat.o(231299);
-        return null;
+        paramObject = paramObject.gpB();
+        AppMethodBeat.o(288132);
+        return paramObject;
       }
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class t
-    implements Runnable
+  @Metadata(d1={""}, d2={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class q
+    extends kotlin.d.b.a.k
+    implements kotlin.g.a.m<aq, kotlin.d.d<? super ah>, Object>
   {
-    t(m paramm, int paramInt, com.tencent.mm.plugin.mv.model.e parame) {}
+    int label;
     
-    public final void run()
+    q(m paramm, e.e parame, kotlin.d.d<? super q> paramd)
     {
-      AppMethodBeat.i(226309);
-      m.e locale = this.GkD.Gkz;
-      if (locale != null) {
-        locale.fgw();
-      }
-      locale = this.GkD.Gkz;
-      if (locale != null)
+      super(paramd);
+    }
+    
+    public final kotlin.d.d<ah> create(Object paramObject, kotlin.d.d<?> paramd)
+    {
+      AppMethodBeat.i(287498);
+      paramObject = (kotlin.d.d)new q(this.Mgm, this.Mgq, paramd);
+      AppMethodBeat.o(287498);
+      return paramObject;
+    }
+    
+    public final Object invokeSuspend(Object paramObject)
+    {
+      AppMethodBeat.i(287495);
+      kotlin.d.a.a locala = kotlin.d.a.a.aiwj;
+      switch (this.label)
       {
-        locale.a(this.GkR, true, null);
-        AppMethodBeat.o(226309);
-        return;
+      default: 
+        paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
+        AppMethodBeat.o(287495);
+        throw paramObject;
+      case 0: 
+        ResultKt.throwOnFailure(paramObject);
+        paramObject = (f)bg.kCi();
+        Object localObject = (kotlin.g.a.m)new m.q.a(this.Mgq, null);
+        kotlin.d.d locald = (kotlin.d.d)this;
+        this.label = 1;
+        localObject = l.a(paramObject, (kotlin.g.a.m)localObject, locald);
+        paramObject = localObject;
+        if (localObject == locala)
+        {
+          AppMethodBeat.o(287495);
+          return locala;
+        }
+        break;
+      case 1: 
+        ResultKt.throwOnFailure(paramObject);
       }
-      AppMethodBeat.o(226309);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "animationInfo", "Lcom/tencent/mm/plugin/mv/model/MusicMvAnimationInfo;", "invoke"})
-  public static final class u
-    extends q
-    implements kotlin.g.a.b<com.tencent.mm.plugin.mv.model.g, x>
-  {
-    public u(m paramm, int paramInt, com.tencent.mm.plugin.mv.model.e parame)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "animationInfo", "Lcom/tencent/mm/plugin/mv/model/MusicMvAnimationInfo;", "invoke"})
-  public static final class v
-    extends q
-    implements kotlin.g.a.b<com.tencent.mm.plugin.mv.model.g, x>
-  {
-    public v(m paramm, int paramInt, com.tencent.mm.plugin.mv.model.e parame)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  public static final class w
-    implements Runnable
-  {
-    public w(m paramm) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(231905);
-      m.e(this.GkD).a((RecyclerView)m.f(this.GkD));
-      AppMethodBeat.o(231905);
+      paramObject = (com.tencent.mm.plugin.thumbplayer.a.b)paramObject;
+      if (paramObject == null)
+      {
+        paramObject = ah.aiuX;
+        AppMethodBeat.o(287495);
+        return paramObject;
+      }
+      paramObject = new c(paramObject);
+      paramObject.width = 80;
+      paramObject.height = 120;
+      paramObject.UoR = (m.t(this.Mgm) * (float)m.k(this.Mgm) / (m.u(this.Mgm) * 1.0F / paramObject.height * paramObject.width));
+      paramObject.hUp();
+      m.v(this.Mgm).Mdf = ((g)new com.tencent.mm.plugin.finder.video.thumb.a());
+      m.v(this.Mgm).jf(p.listOf(paramObject));
+      paramObject = ah.aiuX;
+      AppMethodBeat.o(287495);
+      return paramObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mv.ui.uic.m
  * JD-Core Version:    0.7.0.1
  */

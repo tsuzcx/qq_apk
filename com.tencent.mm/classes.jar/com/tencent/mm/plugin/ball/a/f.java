@@ -12,13 +12,13 @@ public abstract interface f
   
   public abstract void a(f.b paramb);
   
-  public abstract boolean aOg();
+  public abstract boolean bhU();
   
-  public abstract boolean bOd();
+  public abstract ViewGroup cXB();
   
-  public abstract ViewGroup cuR();
+  public abstract int cXC();
   
-  public abstract int cuS();
+  public abstract boolean cor();
   
   public abstract Activity getActivity();
   
@@ -30,11 +30,11 @@ public abstract interface f
   
   public abstract View getMaskView();
   
-  public abstract void hS(boolean paramBoolean);
+  public abstract void iR(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.a.f
  * JD-Core Version:    0.7.0.1
  */

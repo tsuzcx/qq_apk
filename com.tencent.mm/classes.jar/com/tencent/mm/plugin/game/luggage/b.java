@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.game.luggage;
 
-import android.content.Context;
 import android.os.Parcelable;
 import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -9,8 +8,10 @@ import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.ipcinvoker.j;
 import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsMpProcessIPCService;
 import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.brandservice.api.c;
 import com.tencent.mm.sdk.platformtools.WeChatHosts;
-import com.tencent.xweb.t;
+import com.tencent.xweb.ao;
 
 public final class b
 {
@@ -18,7 +19,7 @@ public final class b
   {
     AppMethodBeat.i(82981);
     int i;
-    if ((t.bFg(WeChatHosts.domainString(j.f.host_game_weixin_qq_com))) && (!ToolsProcessIPCService.aFM()))
+    if ((ao.bHC(WeChatHosts.domainString(j.f.host_game_weixin_qq_com))) && (!ToolsProcessIPCService.aYM()))
     {
       i = 1;
       if (i == 0) {
@@ -36,16 +37,24 @@ public final class b
     }
   }
   
-  public static boolean gp(Context paramContext)
+  public static boolean fEl()
   {
-    AppMethodBeat.i(231709);
-    if ((com.tencent.mm.plugin.game.commlib.e.b.aQ(paramContext, "com.tencent.mm.plugin.game.ui.chat_tab.GameChatTabUI")) || (com.tencent.mm.plugin.game.commlib.e.b.aQ(paramContext, "com.tencent.mm.plugin.game.ui.chat_tab.GameWebTabUI")) || (com.tencent.mm.plugin.game.commlib.e.b.aQ(paramContext, "com.tencent.mm.plugin.game.ui.chat_tab.ChatRoomTabUI")))
+    AppMethodBeat.i(276945);
+    if ((com.tencent.mm.plugin.game.commlib.e.b.aFM("com.tencent.mm.plugin.game.ui.chat_tab.GameChatTabUI")) || (com.tencent.mm.plugin.game.commlib.e.b.aFM("com.tencent.mm.plugin.game.ui.chat_tab.GameWebTabUI")) || (com.tencent.mm.plugin.game.commlib.e.b.aFM("com.tencent.mm.plugin.game.ui.chat_tab.ChatRoomTabUI")))
     {
-      AppMethodBeat.o(231709);
+      AppMethodBeat.o(276945);
       return true;
     }
-    AppMethodBeat.o(231709);
+    AppMethodBeat.o(276945);
     return false;
+  }
+  
+  public static boolean fEm()
+  {
+    AppMethodBeat.i(276947);
+    boolean bool = ((c)h.ax(c.class)).dbD();
+    AppMethodBeat.o(276947);
+    return bool;
   }
 }
 

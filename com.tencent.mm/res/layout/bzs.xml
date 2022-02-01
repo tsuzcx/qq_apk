@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <androidx.recyclerview.widget.RecyclerView android:id="@id/i8z" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</LinearLayout>
+<FrameLayout android:background="@raw/show_head_toast_bg" android:layout_width="66.0dip" android:layout_height="66.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="30.0dip" android:textColor="@color/al6" android:gravity="center" android:layout_gravity="center" android:id="@id/jka" android:layout_width="66.0dip" android:layout_height="66.0dip" android:includeFontPadding="false" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/jk_" android:visibility="gone" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:src="@raw/icons_filled_search" app:iconColor="@color/al6" />
+</FrameLayout>

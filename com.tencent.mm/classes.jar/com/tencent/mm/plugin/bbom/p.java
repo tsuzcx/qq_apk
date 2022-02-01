@@ -6,12 +6,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import androidx.core.app.e.d;
+import androidx.core.app.f.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.l;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.bx.a;
+import com.tencent.mm.am.s;
+import com.tencent.mm.bq.a;
 import com.tencent.mm.model.ay;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -24,11 +23,11 @@ import com.tencent.mm.ui.MMAppMgr;
 import java.util.Map;
 
 public final class p
-  implements i
+  implements com.tencent.mm.am.h
 {
-  private static p shg;
+  private static p vtb;
   
-  private static void aoJ(String paramString)
+  private static void aif(String paramString)
   {
     AppMethodBeat.i(22379);
     Context localContext = MMApplicationContext.getContext();
@@ -61,34 +60,34 @@ public final class p
         }
       }
     }
-    paramString = a.cp(localContext, a.hfv()).k(paramString).l(null);
-    paramString.Ip = PendingIntent.getActivity(localContext, 0, localIntent, 268435456);
-    paramString = paramString.gr();
-    paramString.icon = a.fkG();
+    paramString = a.cA(localContext, a.iGp()).l(paramString).m(null);
+    paramString.bor = PendingIntent.getActivity(localContext, 0, localIntent, 268435456);
+    paramString = paramString.DA();
+    paramString.icon = a.guX();
     paramString.flags = 16;
-    bh.getNotification().c(paramString);
+    bh.getNotification().d(paramString);
     AppMethodBeat.o(22379);
   }
   
-  public static void cxH()
+  public static void dax()
   {
-    AppMethodBeat.i(279005);
-    com.tencent.mm.kernel.h.aGY().b(138, shg);
-    com.tencent.mm.kernel.h.aGY().b(39, shg);
-    com.tencent.mm.kernel.h.aGY().b(268369922, shg);
-    if (shg == null) {
-      shg = new p();
+    AppMethodBeat.i(260641);
+    com.tencent.mm.kernel.h.aZW().b(138, vtb);
+    com.tencent.mm.kernel.h.aZW().b(39, vtb);
+    com.tencent.mm.kernel.h.aZW().b(268369922, vtb);
+    if (vtb == null) {
+      vtb = new p();
     }
-    com.tencent.mm.kernel.h.aGY().a(138, shg);
-    com.tencent.mm.kernel.h.aGY().a(39, shg);
-    com.tencent.mm.kernel.h.aGY().a(268369922, shg);
-    AppMethodBeat.o(279005);
+    com.tencent.mm.kernel.h.aZW().a(138, vtb);
+    com.tencent.mm.kernel.h.aZW().a(39, vtb);
+    com.tencent.mm.kernel.h.aZW().a(268369922, vtb);
+    AppMethodBeat.o(260641);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
   {
     AppMethodBeat.i(22378);
-    if ((paramInt1 == 4) && (!bh.aGY().foreground)) {}
+    if ((paramInt1 == 4) && (!bh.aZW().foreground)) {}
     switch (paramInt2)
     {
     default: 
@@ -102,27 +101,26 @@ public final class p
     case -6: 
     case -4: 
     case -3: 
-      aoJ(MMApplicationContext.getContext().getString(R.l.main_err_relogin));
-      bh.aGF();
+      aif(MMApplicationContext.getContext().getString(R.l.main_err_relogin));
+      bh.aZH();
       AppMethodBeat.o(22378);
       return;
     case -140: 
       Log.e("MicroMsg.NewSyncErrorProcessor", "alpha need whitelist : [%s]", new Object[] { paramString });
       if (!Util.isNullOrNil(paramString)) {
-        aoJ(paramString);
+        aif(paramString);
       }
       for (;;)
       {
-        bh.aGF();
+        bh.aZH();
         AppMethodBeat.o(22378);
         return;
-        aoJ(MMApplicationContext.getContext().getString(R.l.main_err_relogin));
+        aif(MMApplicationContext.getContext().getString(R.l.main_err_relogin));
       }
     case -2023: 
     case -100: 
-      aoJ(MMApplicationContext.getContext().getString(R.l.main_err_another_place));
-      com.tencent.mm.platformtools.t.dp(MMApplicationContext.getContext());
-      bh.aGF();
+      aif(MMApplicationContext.getContext().getString(R.l.main_err_another_place));
+      bh.aZH();
       AppMethodBeat.o(22378);
       return;
     case -999999: 
@@ -131,8 +129,8 @@ public final class p
         public final void run()
         {
           AppMethodBeat.i(22377);
-          bh.aGF();
-          MMAppMgr.RP();
+          bh.aZH();
+          MMAppMgr.Lj(true);
           AppMethodBeat.o(22377);
         }
       });
@@ -150,28 +148,28 @@ public final class p
     if (paramInt2 == -17) {}
     for (paramInt1 = 2;; paramInt1 = 1)
     {
-      paramq = MMApplicationContext.getContext();
-      Object localObject = new Intent(paramq, LauncherUI.class);
+      paramp = MMApplicationContext.getContext();
+      Object localObject = new Intent(paramp, LauncherUI.class);
       ((Intent)localObject).addFlags(536870912);
       ((Intent)localObject).addFlags(67108864);
       ((Intent)localObject).putExtra("nofification_type", "update_nofification");
       ((Intent)localObject).putExtra("show_update_dialog", true);
       ((Intent)localObject).putExtra("update_type", paramInt1);
-      localObject = PendingIntent.getActivity(paramq, 0, (Intent)localObject, 0);
-      paramq = a.cp(paramq, "reminder_channel_id").n(null).e(System.currentTimeMillis()).k(paramq.getString(R.l.app_update_package_notify)).l(paramq.getString(R.l.app_recommend_update));
-      paramq.Ip = ((PendingIntent)localObject);
-      paramq = paramq.gr();
-      paramq.flags |= 0x10;
-      bh.getNotification().a(34, paramq, false);
+      localObject = PendingIntent.getActivity(paramp, 0, (Intent)localObject, 0);
+      paramp = a.cA(paramp, "reminder_channel_id").o(null).bt(System.currentTimeMillis()).l(paramp.getString(R.l.app_update_package_notify)).m(paramp.getString(R.l.app_recommend_update));
+      paramp.bor = ((PendingIntent)localObject);
+      paramp = paramp.DA();
+      paramp.flags |= 0x10;
+      bh.getNotification().a(34, paramp, false);
       paramString.edit().putLong("recomended_update_ignore", Util.nowSecond()).commit();
-      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(405L, 27L, 1L, true);
+      com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(405L, 27L, 1L, true);
       break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.bbom.p
  * JD-Core Version:    0.7.0.1
  */

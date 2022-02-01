@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.game.ui.GameInfoViewForeign android:id="@id/ddd" android:background="@drawable/a5n" android:paddingTop="@dimen/g" android:paddingBottom="@dimen/k" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <RelativeLayout android:id="@id/fmh" android:layout_width="34.0dip" android:layout_height="36.0dip" android:layout_marginRight="@dimen/g">
-            <ImageView android:id="@id/fmg" android:layout_width="28.0dip" android:layout_height="28.0dip" android:src="@drawable/bea" android:layout_alignParentBottom="true" />
-            <TextView android:textSize="11.0dip" android:textStyle="bold" android:textColor="@color/ag2" android:gravity="center" android:id="@id/dht" android:background="@drawable/b16" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-        </RelativeLayout>
-        <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:gravity="center" android:id="@id/fn2" android:layout_width="wrap_content" android:layout_height="28.0dip" android:text="@string/drk" android:layout_toRightOf="@id/fmh" android:layout_alignBottom="@id/fmh" android:layout_toEndOf="@id/fmh" />
-    </com.tencent.mm.plugin.game.ui.GameInfoViewForeign>
-</LinearLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/ivk" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintTop_toBottomOf="@id/iiy" app:loadMoreLayout="@layout/b8d">
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/cw6" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.mm.view.RefreshLoadMoreLayout>
+    <FrameLayout android:id="@id/cjf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ProgressBar android:layout_gravity="center_horizontal" android:id="@id/i7q" android:visibility="gone" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginTop="@dimen/ca" android:indeterminateDrawable="@drawable/ang" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/a7b" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/isi" android:paddingTop="@dimen/ca" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/d8n" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/a7b" android:layout_gravity="center_horizontal" android:id="@id/cj6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ca" android:text="@string/esb" />
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.ipc.c;
 import com.tencent.mm.plugin.wepkg.model.BaseWepkgProcessTask;
 import com.tencent.mm.plugin.wepkg.model.WepkgVersion;
 import com.tencent.mm.plugin.wepkg.model.i;
@@ -20,36 +21,36 @@ import java.util.Set;
 
 public final class e
 {
-  private static Map<String, com.tencent.mm.plugin.wepkg.model.h> QKS;
-  private static int QKT;
+  private static Map<String, com.tencent.mm.plugin.wepkg.model.h> XEr;
+  private static int XEs;
   private static boolean enable;
   
   static
   {
     AppMethodBeat.i(110534);
-    QKS = new HashMap();
+    XEr = new HashMap();
     enable = true;
-    QKT = 0;
+    XEs = 0;
     AppMethodBeat.o(110534);
   }
   
-  public static void aml(String paramString)
+  public static void aft(String paramString)
   {
     AppMethodBeat.i(110527);
-    QKS.remove(paramString);
+    XEr.remove(paramString);
     AppMethodBeat.o(110527);
   }
   
-  private static boolean bob(String paramString)
+  private static boolean bnP(String paramString)
   {
     AppMethodBeat.i(110524);
-    if (!com.tencent.mm.plugin.appbrand.ipc.b.isLive())
+    if (!c.isLive())
     {
       d.b("", new com.tencent.mm.plugin.wepkg.model.a()
       {
         public final void a(BaseWepkgProcessTask paramAnonymousBaseWepkgProcessTask) {}
       });
-      com.tencent.mm.plugin.wepkg.utils.a.b("EnterWeb", paramString, d.boN(paramString), null, 0L, 0L, com.tencent.mm.plugin.wepkg.utils.a.apj(10));
+      com.tencent.mm.plugin.wepkg.utils.a.b("EnterWeb", paramString, d.boB(paramString), null, 0L, 0L, com.tencent.mm.plugin.wepkg.utils.a.avh(10));
       AppMethodBeat.o(110524);
       return false;
     }
@@ -57,43 +58,43 @@ public final class e
     return true;
   }
   
-  public static com.tencent.mm.plugin.wepkg.model.h boc(String paramString)
+  public static com.tencent.mm.plugin.wepkg.model.h bnQ(String paramString)
   {
-    AppMethodBeat.i(195212);
-    if ((Util.isNullOrNil(paramString)) || (!QKS.containsKey(paramString)))
+    AppMethodBeat.i(278656);
+    if ((Util.isNullOrNil(paramString)) || (!XEr.containsKey(paramString)))
     {
-      AppMethodBeat.o(195212);
+      AppMethodBeat.o(278656);
       return null;
     }
-    paramString = (com.tencent.mm.plugin.wepkg.model.h)QKS.get(paramString);
-    AppMethodBeat.o(195212);
+    paramString = (com.tencent.mm.plugin.wepkg.model.h)XEr.get(paramString);
+    AppMethodBeat.o(278656);
     return paramString;
   }
   
-  public static com.tencent.mm.plugin.wepkg.model.h bod(String paramString)
+  public static com.tencent.mm.plugin.wepkg.model.h bnR(String paramString)
   {
     AppMethodBeat.i(110530);
-    String str1 = d.boN(paramString);
-    if (QKS.containsKey(str1))
+    String str1 = d.boB(paramString);
+    if (XEr.containsKey(str1))
     {
-      com.tencent.mm.plugin.wepkg.model.h localh = (com.tencent.mm.plugin.wepkg.model.h)QKS.get(str1);
-      String str2 = d.boO(paramString);
-      if ((localh != null) && (localh.QMA != null) && (str2.equalsIgnoreCase(localh.QMA.domain)))
+      com.tencent.mm.plugin.wepkg.model.h localh = (com.tencent.mm.plugin.wepkg.model.h)XEr.get(str1);
+      String str2 = d.boC(paramString);
+      if ((localh != null) && (localh.XFY != null) && (str2.equalsIgnoreCase(localh.XFY.domain)))
       {
-        Log.i("MicroMsg.WePkgLoader", "memory has pkgid:%s record, version:%s", new Object[] { localh.QMA.jTB, localh.QMA.version });
+        Log.i("MicroMsg.WePkgLoader", "memory has pkgid:%s record, version:%s", new Object[] { localh.XFY.mtT, localh.XFY.version });
         AppMethodBeat.o(110530);
         return localh;
       }
     }
-    paramString = i.boE(paramString);
-    if (paramString.ewT()) {
-      QKS.put(str1, paramString);
+    paramString = i.bos(paramString);
+    if ((paramString != null) && (paramString.fEO())) {
+      XEr.put(str1, paramString);
     }
     AppMethodBeat.o(110530);
     return paramString;
   }
   
-  public static String boe(String paramString)
+  public static String bnS(String paramString)
   {
     AppMethodBeat.i(110532);
     try
@@ -110,7 +111,7 @@ public final class e
     return null;
   }
   
-  public static String bof(String paramString)
+  public static String bnT(String paramString)
   {
     AppMethodBeat.i(110533);
     if (Util.isNullOrNil(paramString))
@@ -118,22 +119,22 @@ public final class e
       AppMethodBeat.o(110533);
       return "";
     }
-    if (paramString.equals(Util.nullAsNil(a.hed())))
+    if (paramString.equals(Util.nullAsNil(a.iEL())))
     {
-      paramString = a.hee();
+      paramString = a.iEM();
       AppMethodBeat.o(110533);
       return paramString;
     }
     if (paramString.equals("jscore_lib"))
     {
-      paramString = b.hee();
+      paramString = b.iEM();
       AppMethodBeat.o(110533);
       return paramString;
     }
-    paramString = (com.tencent.mm.plugin.wepkg.model.h)QKS.get(paramString);
-    if ((paramString != null) && (paramString.QMA != null))
+    paramString = (com.tencent.mm.plugin.wepkg.model.h)XEr.get(paramString);
+    if ((paramString != null) && (paramString.XFY != null))
     {
-      paramString = paramString.QMA.version;
+      paramString = paramString.XFY.version;
       AppMethodBeat.o(110533);
       return paramString;
     }
@@ -141,27 +142,19 @@ public final class e
     return "";
   }
   
-  public static void cQJ()
-  {
-    AppMethodBeat.i(110522);
-    heg();
-    a.cQJ();
-    AppMethodBeat.o(110522);
-  }
-  
-  public static com.tencent.mm.plugin.wepkg.model.h di(String paramString, boolean paramBoolean)
+  public static com.tencent.mm.plugin.wepkg.model.h dS(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(110529);
     Log.d("MicroMsg.WePkgLoader", "load, url: %s", new Object[] { paramString });
-    if (!bob(paramString))
+    if (!bnP(paramString))
     {
       Log.e("MicroMsg.WePkgLoader", "wepkg service is dead, start");
-      com.tencent.mm.plugin.report.service.h.IzE.el(859, 36);
+      com.tencent.mm.plugin.report.service.h.OAn.kJ(859, 36);
       paramString = new com.tencent.mm.plugin.wepkg.model.h(10, false, "");
       AppMethodBeat.o(110529);
       return paramString;
     }
-    int i = hek();
+    int i = iES();
     if (i != 0)
     {
       Log.e("MicroMsg.WePkgLoader", "load enable false");
@@ -169,22 +162,22 @@ public final class e
       AppMethodBeat.o(110529);
       return paramString;
     }
-    String str = d.boN(paramString);
+    String str = d.boB(paramString);
     if (paramBoolean)
     {
       Log.d("MicroMsg.WePkgLoader", "updateWePkg Bgn: %d", new Object[] { Long.valueOf(System.currentTimeMillis()) });
-      d.cMC().postToWorker(new Runnable()
+      d.dqg().postToWorker(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(110521);
-          String str = this.QKU;
+          String str = e.this;
           HashSet localHashSet = new HashSet();
           if (!Util.isNullOrNil(str)) {
             localHashSet.add(str);
           }
-          if (!Util.isNullOrNil(a.hed())) {
-            localHashSet.add(a.hed());
+          if (!Util.isNullOrNil(a.iEL())) {
+            localHashSet.add(a.iEL());
           }
           WepkgVersionUpdater.a(localHashSet, 0, false);
           AppMethodBeat.o(110521);
@@ -197,15 +190,23 @@ public final class e
       AppMethodBeat.o(110529);
       return paramString;
     }
-    paramString = bod(paramString);
+    paramString = bnR(paramString);
     AppMethodBeat.o(110529);
     return paramString;
   }
   
-  public static void heg()
+  public static void dvc()
+  {
+    AppMethodBeat.i(110522);
+    iEO();
+    a.dvc();
+    AppMethodBeat.o(110522);
+  }
+  
+  public static void iEO()
   {
     AppMethodBeat.i(110523);
-    if (!com.tencent.mm.plugin.appbrand.ipc.b.isLive()) {
+    if (!c.isLive()) {
       d.b("", new com.tencent.mm.plugin.wepkg.model.a()
       {
         public final void a(BaseWepkgProcessTask paramAnonymousBaseWepkgProcessTask) {}
@@ -214,35 +215,35 @@ public final class e
     AppMethodBeat.o(110523);
   }
   
-  public static void heh()
+  public static void iEP()
   {
     AppMethodBeat.i(110525);
-    if (QKT == 0) {
-      a.tA();
+    if (XEs == 0) {
+      a.Td();
     }
-    QKT += 1;
+    XEs += 1;
     AppMethodBeat.o(110525);
   }
   
-  public static int hei()
+  public static int iEQ()
   {
-    return QKT;
+    return XEs;
   }
   
-  public static void hej()
+  public static void iER()
   {
     AppMethodBeat.i(110526);
-    int i = QKT - 1;
-    QKT = i;
+    int i = XEs - 1;
+    XEs = i;
     if (i == 0)
     {
-      QKS.clear();
-      a.tA();
+      XEr.clear();
+      a.Td();
     }
     AppMethodBeat.o(110526);
   }
   
-  public static int hek()
+  public static int iES()
   {
     AppMethodBeat.i(184498);
     if (!enable)
@@ -250,7 +251,7 @@ public final class e
       AppMethodBeat.o(184498);
       return 12;
     }
-    if (com.tencent.mm.plugin.game.commlib.a.ewd())
+    if (com.tencent.mm.plugin.game.commlib.a.fDT())
     {
       Log.i("MicroMsg.WePkgLoader", "config wepkg disable");
       enable = false;
@@ -269,7 +270,7 @@ public final class e
     return 0;
   }
   
-  public static void hel()
+  public static void iET()
   {
     enable = false;
   }

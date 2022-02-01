@@ -17,30 +17,30 @@ import javax.microedition.khronos.opengles.GL10;
 public class b
   implements GLSurfaceView.Renderer
 {
-  static float[] laj = { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
-  private static final float[] lak = { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
-  static float[] nqU = { -1.0F, -0.5F, 1.0F, -0.5F, -1.0F, 0.5F, 1.0F, 0.5F };
-  private int fSM;
+  static float[] nFt = { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
+  private static final float[] nFu = { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
+  static float[] qpB = { -1.0F, -0.5F, 1.0F, -0.5F, -1.0F, 0.5F, 1.0F, 0.5F };
   private byte[] frameData;
-  ByteBuffer kZC;
-  private int kZI;
-  ByteBuffer kZJ;
-  private int kZy;
-  private int ksD;
-  private int ksE;
-  private FloatBuffer ksa;
-  private FloatBuffer ksb;
-  private boolean lft;
-  boolean nqV;
-  private int nqW;
-  private int nqX;
-  private int nqY;
-  private int nqZ;
-  private int nra;
-  private float[] nrb;
-  boolean nrc;
-  private float[] nrd;
+  private int hYK;
+  private FloatBuffer mVU;
+  private FloatBuffer mVV;
+  private int mWv;
+  private int mWw;
+  private int nEF;
+  ByteBuffer nEJ;
+  private int nEP;
+  ByteBuffer nEQ;
+  private boolean nKe;
   private int programId;
+  boolean qpC;
+  private int qpD;
+  private int qpE;
+  private int qpF;
+  private int qpG;
+  private int qpH;
+  private float[] qpI;
+  boolean qpJ;
+  private float[] qpK;
   private int surfaceHeight;
   private int surfaceWidth;
   
@@ -49,18 +49,18 @@ public class b
     AppMethodBeat.i(94767);
     this.surfaceWidth = 0;
     this.surfaceHeight = 0;
-    this.nqV = false;
+    this.qpC = false;
     this.frameData = null;
-    this.nqW = 0;
-    this.nqX = 0;
-    this.fSM = 0;
-    this.nrb = new float[16];
-    this.nrc = false;
-    this.nrd = laj;
-    this.lft = false;
-    Point localPoint = d.eSY();
+    this.qpD = 0;
+    this.qpE = 0;
+    this.hYK = 0;
+    this.qpI = new float[16];
+    this.qpJ = false;
+    this.qpK = nFt;
+    this.nKe = false;
+    Point localPoint = d.gbR();
     float f = localPoint.x / localPoint.y / 2.0F;
-    nqU = new float[] { -1.0F, -f, 1.0F, -f, -1.0F, f, 1.0F, f };
+    qpB = new float[] { -1.0F, -f, 1.0F, -f, -1.0F, f, 1.0F, f };
     AppMethodBeat.o(94767);
   }
   
@@ -71,10 +71,10 @@ public class b
     {
       try
       {
-        if ((this.nqX != paramInt2) || (this.nqW != paramInt1) || (this.fSM != paramInt3)) {
+        if ((this.qpE != paramInt2) || (this.qpD != paramInt1) || (this.hYK != paramInt3)) {
           break label329;
         }
-        if (this.lft == paramBoolean) {
+        if (this.nKe == paramBoolean) {
           break label323;
         }
       }
@@ -88,36 +88,36 @@ public class b
         Log.d("MicroMsg.MMSightCameraGLRenderer", "setDrawFrame, frameData: %s, frameWidth: %s, frameHeight: %s, rotate: %s, isLandScape, frameSizeChange: %s, this %s", new Object[] { paramArrayOfByte, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Boolean.valueOf(paramBoolean), Boolean.TRUE, this });
       }
       this.frameData = paramArrayOfByte;
-      this.nqW = paramInt1;
-      this.nqX = paramInt2;
-      this.fSM = paramInt3;
-      this.lft = paramBoolean;
+      this.qpD = paramInt1;
+      this.qpE = paramInt2;
+      this.hYK = paramInt3;
+      this.nKe = paramBoolean;
       if (i != 0)
       {
-        this.kZC = ByteBuffer.allocateDirect(paramInt2 * paramInt1);
-        this.kZJ = ByteBuffer.allocateDirect(paramInt1 * paramInt2 / 2);
-        this.kZC.order(ByteOrder.nativeOrder());
-        this.kZJ.order(ByteOrder.nativeOrder());
+        this.nEJ = ByteBuffer.allocateDirect(paramInt2 * paramInt1);
+        this.nEQ = ByteBuffer.allocateDirect(paramInt1 * paramInt2 / 2);
+        this.nEJ.order(ByteOrder.nativeOrder());
+        this.nEQ.order(ByteOrder.nativeOrder());
         if (paramBoolean) {
           continue;
         }
-        this.nrd = laj;
-        if (this.nrd != null)
+        this.qpK = nFt;
+        if (this.qpK != null)
         {
-          this.ksb.put(this.nrd);
-          this.ksb.position(0);
+          this.mVV.put(this.qpK);
+          this.mVV.position(0);
         }
       }
-      if ((this.kZC != null) && (this.kZJ != null))
+      if ((this.nEJ != null) && (this.nEQ != null))
       {
-        this.kZC.put(paramArrayOfByte, 0, paramInt1 * paramInt2);
-        this.kZC.position(0);
-        this.kZJ.put(paramArrayOfByte, paramInt1 * paramInt2, paramInt1 * paramInt2 / 2);
-        this.kZJ.position(0);
+        this.nEJ.put(paramArrayOfByte, 0, paramInt1 * paramInt2);
+        this.nEJ.position(0);
+        this.nEQ.put(paramArrayOfByte, paramInt1 * paramInt2, paramInt1 * paramInt2 / 2);
+        this.nEQ.position(0);
       }
       AppMethodBeat.o(94768);
       return;
-      this.nrd = nqU;
+      this.qpK = qpB;
       continue;
       label323:
       int i = 0;
@@ -131,54 +131,54 @@ public class b
   {
     AppMethodBeat.i(94771);
     Util.currentTicks();
-    this.nqV = true;
+    this.qpC = true;
     GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
     GLES20.glClear(16640);
-    if (this.nrc)
+    if (this.qpJ)
     {
       Log.i("MicroMsg.MMSightCameraGLRenderer", "clearFrameRequest");
-      this.nrc = false;
-      this.nqV = false;
+      this.qpJ = false;
+      this.qpC = false;
       this.frameData = null;
-      this.nqW = -1;
-      this.nqX = -1;
+      this.qpD = -1;
+      this.qpE = -1;
       AppMethodBeat.o(94771);
       return;
     }
-    if ((this.programId != 0) && (this.nqY != -1) && (this.nqZ != -1) && (this.nqW > 0) && (this.nqX > 0) && (this.frameData != null))
+    if ((this.programId != 0) && (this.qpF != -1) && (this.qpG != -1) && (this.qpD > 0) && (this.qpE > 0) && (this.frameData != null))
     {
       GLES20.glUseProgram(this.programId);
       GLES20.glActiveTexture(33984);
-      GLES20.glBindTexture(3553, this.nqY);
-      GLES20.glTexImage2D(3553, 0, 6409, this.nqW, this.nqX, 0, 6409, 5121, this.kZC);
+      GLES20.glBindTexture(3553, this.qpF);
+      GLES20.glTexImage2D(3553, 0, 6409, this.qpD, this.qpE, 0, 6409, 5121, this.nEJ);
       GLES20.glTexParameterf(3553, 10241, 9729.0F);
       GLES20.glTexParameterf(3553, 10240, 9729.0F);
       GLES20.glTexParameterf(3553, 10242, 33071.0F);
       GLES20.glTexParameterf(3553, 10243, 33071.0F);
-      GLES20.glUniform1i(this.kZy, 0);
+      GLES20.glUniform1i(this.nEF, 0);
       GLES20.glActiveTexture(33985);
-      GLES20.glBindTexture(3553, this.nqZ);
-      GLES20.glTexImage2D(3553, 0, 6410, this.nqW / 2, this.nqX / 2, 0, 6410, 5121, this.kZJ);
+      GLES20.glBindTexture(3553, this.qpG);
+      GLES20.glTexImage2D(3553, 0, 6410, this.qpD / 2, this.qpE / 2, 0, 6410, 5121, this.nEQ);
       GLES20.glTexParameterf(3553, 10241, 9729.0F);
       GLES20.glTexParameterf(3553, 10240, 9729.0F);
       GLES20.glTexParameterf(3553, 10242, 33071.0F);
       GLES20.glTexParameterf(3553, 10243, 33071.0F);
-      GLES20.glUniform1i(this.kZI, 1);
-      Matrix.setIdentityM(this.nrb, 0);
-      Matrix.setRotateM(this.nrb, 0, this.fSM, 0.0F, 0.0F, -1.0F);
-      GLES20.glUniformMatrix4fv(this.nra, 1, false, this.nrb, 0);
-      this.ksb.position(0);
-      GLES20.glVertexAttribPointer(this.ksD, 2, 5126, false, 0, this.ksb);
-      GLES20.glEnableVertexAttribArray(this.ksD);
-      this.ksa.position(0);
-      GLES20.glVertexAttribPointer(this.ksE, 2, 5126, false, 0, this.ksa);
-      GLES20.glEnableVertexAttribArray(this.ksE);
+      GLES20.glUniform1i(this.nEP, 1);
+      Matrix.setIdentityM(this.qpI, 0);
+      Matrix.setRotateM(this.qpI, 0, this.hYK, 0.0F, 0.0F, -1.0F);
+      GLES20.glUniformMatrix4fv(this.qpH, 1, false, this.qpI, 0);
+      this.mVV.position(0);
+      GLES20.glVertexAttribPointer(this.mWv, 2, 5126, false, 0, this.mVV);
+      GLES20.glEnableVertexAttribArray(this.mWv);
+      this.mVU.position(0);
+      GLES20.glVertexAttribPointer(this.mWw, 2, 5126, false, 0, this.mVU);
+      GLES20.glEnableVertexAttribArray(this.mWw);
       GLES20.glDrawArrays(5, 0, 4);
-      GLES20.glDisableVertexAttribArray(this.ksD);
-      GLES20.glDisableVertexAttribArray(this.ksE);
+      GLES20.glDisableVertexAttribArray(this.mWv);
+      GLES20.glDisableVertexAttribArray(this.mWw);
       GLES20.glBindTexture(3553, 0);
     }
-    this.nqV = false;
+    this.qpC = false;
     AppMethodBeat.o(94771);
   }
   
@@ -202,30 +202,30 @@ public class b
     Log.i("MicroMsg.MMSightCameraGLRenderer", "onSurfaceCreated this %s", new Object[] { this });
     GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
     GLES20.glDisable(2929);
-    this.programId = com.tencent.mm.plugin.api.recordView.b.aE("attribute vec4 a_position;                         \nattribute vec2 a_texCoord;                         \nvarying vec2 v_texCoord;                           \nuniform mat4 uMatrix;                              \nvoid main() {                                      \n   gl_Position = uMatrix * a_position;             \n   v_texCoord = a_texCoord;                        \n}                                                  \n", "#ifdef GL_ES                                       \nprecision highp float;                             \n#endif                                             \nvarying vec2 v_texCoord;                           \nuniform sampler2D y_texture;                       \nuniform sampler2D uv_texture;                      \nvoid main (void) {                                 \n   float r, g, b, y, u, v;                         \n   y = texture2D(y_texture, v_texCoord).r;         \n   u = texture2D(uv_texture, v_texCoord).a;        \n   v = texture2D(uv_texture, v_texCoord).r;        \n   u = u - 0.5;                                    \n   v = v - 0.5;                                    \n   r = y + 1.370705 * v;                           \n   g = y - 0.337633 * u - 0.698001 * v;            \n   b = y + 1.732446 * u;                           \n   gl_FragColor = vec4(r, g, b, 1.0);              \n}                                                  \n");
+    this.programId = com.tencent.mm.plugin.api.recordView.b.aN("attribute vec4 a_position;                         \nattribute vec2 a_texCoord;                         \nvarying vec2 v_texCoord;                           \nuniform mat4 uMatrix;                              \nvoid main() {                                      \n   gl_Position = uMatrix * a_position;             \n   v_texCoord = a_texCoord;                        \n}                                                  \n", "#ifdef GL_ES                                       \nprecision highp float;                             \n#endif                                             \nvarying vec2 v_texCoord;                           \nuniform sampler2D y_texture;                       \nuniform sampler2D uv_texture;                      \nvoid main (void) {                                 \n   float r, g, b, y, u, v;                         \n   y = texture2D(y_texture, v_texCoord).r;         \n   u = texture2D(uv_texture, v_texCoord).a;        \n   v = texture2D(uv_texture, v_texCoord).r;        \n   u = u - 0.5;                                    \n   v = v - 0.5;                                    \n   r = y + 1.370705 * v;                           \n   g = y - 0.337633 * u - 0.698001 * v;            \n   b = y + 1.732446 * u;                           \n   gl_FragColor = vec4(r, g, b, 1.0);              \n}                                                  \n");
     if (this.programId == 0) {
       Log.e("MicroMsg.MMSightCameraGLRenderer", "onSurfaceCreated, load program failed!");
     }
-    this.ksD = GLES20.glGetAttribLocation(this.programId, "a_position");
-    this.ksE = GLES20.glGetAttribLocation(this.programId, "a_texCoord");
-    this.kZy = GLES20.glGetUniformLocation(this.programId, "y_texture");
-    this.kZI = GLES20.glGetUniformLocation(this.programId, "uv_texture");
-    this.nra = GLES20.glGetUniformLocation(this.programId, "uMatrix");
-    this.nqY = com.tencent.mm.plugin.api.recordView.b.aVC();
-    this.nqZ = com.tencent.mm.plugin.api.recordView.b.aVC();
-    this.ksb = ByteBuffer.allocateDirect(this.nrd.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    this.ksb.put(this.nrd);
-    this.ksb.position(0);
-    this.ksa = ByteBuffer.allocateDirect(lak.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    this.ksa.put(lak);
-    this.ksa.position(0);
-    Log.i("MicroMsg.MMSightCameraGLRenderer", "onSurfaceCreated, yTextureId: %s, uvTextureId: %s this %s", new Object[] { Integer.valueOf(this.nqY), Integer.valueOf(this.nqZ), this });
+    this.mWv = GLES20.glGetAttribLocation(this.programId, "a_position");
+    this.mWw = GLES20.glGetAttribLocation(this.programId, "a_texCoord");
+    this.nEF = GLES20.glGetUniformLocation(this.programId, "y_texture");
+    this.nEP = GLES20.glGetUniformLocation(this.programId, "uv_texture");
+    this.qpH = GLES20.glGetUniformLocation(this.programId, "uMatrix");
+    this.qpF = com.tencent.mm.plugin.api.recordView.b.bql();
+    this.qpG = com.tencent.mm.plugin.api.recordView.b.bql();
+    this.mVV = ByteBuffer.allocateDirect(this.qpK.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    this.mVV.put(this.qpK);
+    this.mVV.position(0);
+    this.mVU = ByteBuffer.allocateDirect(nFu.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    this.mVU.put(nFu);
+    this.mVU.position(0);
+    Log.i("MicroMsg.MMSightCameraGLRenderer", "onSurfaceCreated, yTextureId: %s, uvTextureId: %s this %s", new Object[] { Integer.valueOf(this.qpF), Integer.valueOf(this.qpG), this });
     AppMethodBeat.o(94769);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.ui.cameraglview.b
  * JD-Core Version:    0.7.0.1
  */

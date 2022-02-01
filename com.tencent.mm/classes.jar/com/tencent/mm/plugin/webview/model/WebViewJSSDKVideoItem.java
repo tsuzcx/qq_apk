@@ -34,10 +34,10 @@ public class WebViewJSSDKVideoItem
     AppMethodBeat.o(79022);
   }
   
-  public final void cm(JSONObject paramJSONObject)
+  public final void cT(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(182697);
-    super.cm(paramJSONObject);
+    super.cT(paramJSONObject);
     if (paramJSONObject != null) {
       this.duration = paramJSONObject.optInt("duration");
     }
@@ -49,10 +49,15 @@ public class WebViewJSSDKVideoItem
     return 0;
   }
   
-  public final JSONObject gVK()
+  public final String getFileType()
+  {
+    return "video";
+  }
+  
+  public final JSONObject kLR()
   {
     AppMethodBeat.i(182698);
-    JSONObject localJSONObject = super.gVK();
+    JSONObject localJSONObject = super.kLR();
     try
     {
       localJSONObject.put("duration", this.duration);
@@ -66,22 +71,17 @@ public class WebViewJSSDKVideoItem
     }
   }
   
-  public final WebViewJSSDKFileItem gVL()
+  public final WebViewJSSDKFileItem kLS()
   {
     AppMethodBeat.i(79021);
-    this.fCM = az.bkS(this.nVa);
+    this.hHB = az.bkB(this.qUK);
     AppMethodBeat.o(79021);
     return this;
   }
   
-  public final String gVM()
+  public final String kLT()
   {
     return "mp4";
-  }
-  
-  public final String getFileType()
-  {
-    return "video";
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

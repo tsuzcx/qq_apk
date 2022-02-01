@@ -6,12 +6,12 @@ public enum f$i$a
 {
   static
   {
-    AppMethodBeat.i(194947);
-    VSj = new a("NO_LANDSCAPE", 0);
-    VSk = new a("LANDSCAPE", 1);
-    VSl = new a("REVERSE_LANDSCAPE", 2);
-    VSm = new a[] { VSj, VSk, VSl };
-    AppMethodBeat.o(194947);
+    AppMethodBeat.i(249362);
+    adwn = new a("NO_LANDSCAPE", 0);
+    adwo = new a("LANDSCAPE", 1);
+    adwp = new a("REVERSE_LANDSCAPE", 2);
+    adwq = new a[] { adwn, adwo, adwp };
+    AppMethodBeat.o(249362);
   }
   
   private f$i$a() {}

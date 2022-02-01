@@ -16,34 +16,34 @@ public class StaticCluster<T extends ClusterItem>
   
   public StaticCluster(LatLng paramLatLng)
   {
-    AppMethodBeat.i(246933);
+    AppMethodBeat.i(217711);
     this.b = new ArrayList();
     this.a = paramLatLng;
-    AppMethodBeat.o(246933);
+    AppMethodBeat.o(217711);
   }
   
   public boolean add(T paramT)
   {
-    AppMethodBeat.i(246934);
+    AppMethodBeat.i(217722);
     boolean bool = this.b.add(paramT);
-    AppMethodBeat.o(246934);
+    AppMethodBeat.o(217722);
     return bool;
   }
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(246943);
+    AppMethodBeat.i(217774);
     if (!(paramObject instanceof StaticCluster))
     {
-      AppMethodBeat.o(246943);
+      AppMethodBeat.o(217774);
       return false;
     }
     if ((((StaticCluster)paramObject).a.equals(this.a)) && (((StaticCluster)paramObject).b.equals(this.b)))
     {
-      AppMethodBeat.o(246943);
+      AppMethodBeat.o(217774);
       return true;
     }
-    AppMethodBeat.o(246943);
+    AppMethodBeat.o(217774);
     return false;
   }
   
@@ -59,31 +59,31 @@ public class StaticCluster<T extends ClusterItem>
   
   public int getSize()
   {
-    AppMethodBeat.i(246939);
+    AppMethodBeat.i(217759);
     int i = this.b.size();
-    AppMethodBeat.o(246939);
+    AppMethodBeat.o(217759);
     return i;
   }
   
   public boolean remove(T paramT)
   {
-    AppMethodBeat.i(246936);
+    AppMethodBeat.i(217739);
     boolean bool = this.b.remove(paramT);
-    AppMethodBeat.o(246936);
+    AppMethodBeat.o(217739);
     return bool;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(246941);
+    AppMethodBeat.i(217765);
     String str = "StaticCluster{mCenter=" + this.a + ", mItems.size=" + this.b.size() + '}';
-    AppMethodBeat.o(246941);
+    AppMethodBeat.o(217765);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.vector.compat.utils.clustering.algo.StaticCluster
  * JD-Core Version:    0.7.0.1
  */

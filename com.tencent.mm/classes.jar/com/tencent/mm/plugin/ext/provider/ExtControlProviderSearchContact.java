@@ -5,58 +5,54 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.net.Uri;
-import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.q;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.autogen.b.fi;
 import com.tencent.mm.contact.d;
-import com.tencent.mm.f.c.ax;
-import com.tencent.mm.f.c.et;
 import com.tencent.mm.model.ab;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.cb;
+import com.tencent.mm.modelavatar.q;
 import com.tencent.mm.plugin.ext.key.AESUtil;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.ca;
+import com.tencent.mm.storage.au;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-@JgClassChecked(author=32, fComment="checked", lastDate="20141016", reviewer=20, vComment={com.jg.EType.PROVIDERCHECK})
 public class ExtControlProviderSearchContact
   extends ExtContentProviderBase
 {
-  private static List<String> jkb;
-  private static final String[] wtA;
-  private Cursor wtE = null;
+  private static List<String> lMF;
+  private static final String[] zPG;
+  private Cursor zPK = null;
   
   static
   {
     int i = 0;
     AppMethodBeat.i(24467);
-    wtA = new String[] { "userId", "nickname", "avatar", "content", "msgId", "msgType" };
-    jkb = new ArrayList();
-    String[] arrayOfString = ab.lsO;
+    zPG = new String[] { "userId", "nickname", "avatar", "content", "msgId", "msgType" };
+    lMF = new ArrayList();
+    String[] arrayOfString = ab.oko;
     int j = arrayOfString.length;
     while (i < j)
     {
       String str = arrayOfString[i];
-      jkb.add(str);
+      lMF.add(str);
       i += 1;
     }
-    jkb.add("officialaccounts");
-    jkb.add("helper_entry");
+    lMF.add("officialaccounts");
+    lMF.add("helper_entry");
     AppMethodBeat.o(24467);
   }
   
-  public static Cursor g(Cursor paramCursor)
+  public static Cursor h(Cursor paramCursor)
   {
     AppMethodBeat.i(24466);
-    com.tencent.mm.storagebase.e locale = new com.tencent.mm.storagebase.e(wtA, (byte)0);
+    com.tencent.mm.storagebase.e locale = new com.tencent.mm.storagebase.e(zPG, (byte)0);
     for (;;)
     {
       try
@@ -65,37 +61,37 @@ public class ExtControlProviderSearchContact
         {
           int i = 0;
           i += 1;
-          localObject2 = new as();
-          ((as)localObject2).convertFrom(paramCursor);
-          if (!ab.Lj(((ax)localObject2).field_username))
+          localObject2 = new au();
+          ((au)localObject2).convertFrom(paramCursor);
+          if (!au.bwE(((az)localObject2).field_username))
           {
-            localObject3 = q.bhR().M(((ax)localObject2).field_username, true);
+            localObject3 = q.bFG().b(((az)localObject2).field_username, true, 0, null);
             if (localObject3 != null)
             {
               localObject1 = new ByteArrayOutputStream();
               ((Bitmap)localObject3).compress(Bitmap.CompressFormat.PNG, 100, (OutputStream)localObject1);
-              bh.beI();
-              localObject3 = c.bbO().fi(((ax)localObject2).field_username, 1);
+              bh.bCz();
+              localObject3 = c.bzD().gb(((az)localObject2).field_username, 1);
               if ((localObject3 == null) || (localObject3.length != 1)) {
                 continue;
               }
-              String str1 = AESUtil.JQ((int)((d)localObject2).jxt);
-              String str2 = ((as)localObject2).ays();
+              String str1 = AESUtil.mo((int)((d)localObject2).maN);
+              String str2 = ((au)localObject2).aSV();
               if (localObject1 != null) {
                 continue;
               }
               localObject1 = null;
               if (localObject3[0].getType() != 1) {
-                break label400;
+                break label402;
               }
               localObject2 = localObject3[0].field_content;
-              locale.addRow(new Object[] { str1, str2, localObject1, localObject2, AESUtil.JQ(localObject3[0].field_msgId), Integer.valueOf(com.tencent.mm.plugin.ext.b.b.aD(localObject3[0])) });
+              locale.addRow(new Object[] { str1, str2, localObject1, localObject2, AESUtil.mo(localObject3[0].field_msgId), Integer.valueOf(com.tencent.mm.plugin.ext.b.b.aR(localObject3[0])) });
             }
           }
           else
           {
             if ((paramCursor.moveToNext()) && (i < 15)) {
-              break label397;
+              break label399;
             }
           }
         }
@@ -111,8 +107,8 @@ public class ExtControlProviderSearchContact
         localObject1 = ((ByteArrayOutputStream)localObject1).toByteArray();
         continue;
         Log.w("MicroMsg.ExtControlProviderSearchContact", "get msginfo failed");
-        Object localObject3 = AESUtil.JQ((int)((d)localObject2).jxt);
-        localObject2 = ((as)localObject2).ays();
+        Object localObject3 = AESUtil.mo((int)((d)localObject2).maN);
+        localObject2 = ((au)localObject2).aSV();
         if (localObject1 == null)
         {
           localObject1 = null;
@@ -133,9 +129,9 @@ public class ExtControlProviderSearchContact
         return null;
       }
       continue;
-      label397:
+      label399:
       continue;
-      label400:
+      label402:
       Object localObject2 = "";
     }
   }
@@ -167,34 +163,34 @@ public class ExtControlProviderSearchContact
     a(paramUri, getContext(), 16);
     if (paramUri == null)
     {
-      Lp(3);
+      Mm(3);
       AppMethodBeat.o(24465);
       return null;
     }
-    if ((Util.isNullOrNil(this.wsU)) || (Util.isNullOrNil(dht())))
+    if ((Util.isNullOrNil(this.zPa)) || (Util.isNullOrNil(dOe())))
     {
-      Lp(3);
+      Mm(3);
       AppMethodBeat.o(24465);
       return null;
     }
-    if (!cxw())
+    if (!dak())
     {
-      Lp(1);
-      paramUri = this.sgp;
+      Mm(1);
+      paramUri = this.vsh;
       AppMethodBeat.o(24465);
       return paramUri;
     }
-    if (!fj(getContext()))
+    if (!gh(getContext()))
     {
       Log.w("MicroMsg.ExtControlProviderSearchContact", "invalid appid ! return null");
-      Lp(2);
+      Mm(2);
       AppMethodBeat.o(24465);
       return null;
     }
     if ((paramArrayOfString2 == null) || (paramArrayOfString2.length == 0))
     {
       Log.e("MicroMsg.ExtControlProviderSearchContact", "invaild selections");
-      Lp(3);
+      Mm(3);
       AppMethodBeat.o(24465);
       return null;
     }
@@ -202,38 +198,38 @@ public class ExtControlProviderSearchContact
     if (Util.isNullOrNil(paramUri))
     {
       Log.e("MicroMsg.ExtControlProviderSearchContact", "filter should not be null or nil");
-      Lp(3);
+      Mm(3);
       AppMethodBeat.o(24465);
       return null;
     }
-    paramUri = bh.beI().lqT.a(paramUri, "@micromsg.no.verify.biz.qq.com", jkb, false, 1, null);
+    paramUri = bh.bCz().oiu.a(paramUri, "@micromsg.no.verify.biz.qq.com", lMF, false, 1, null);
     if (paramUri == null)
     {
       Log.e("MicroMsg.ExtControlProviderSearchContact", "cursor is null");
-      Lp(3);
+      Mm(3);
       AppMethodBeat.o(24465);
       return null;
     }
-    paramArrayOfString1 = new com.tencent.mm.pluginsdk.e.a.b();
+    paramArrayOfString1 = new com.tencent.mm.pluginsdk.d.a.b();
     paramArrayOfString1.c(4000L, new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(24464);
-        ExtControlProviderSearchContact.a(ExtControlProviderSearchContact.this, ExtControlProviderSearchContact.g(paramUri));
-        paramArrayOfString1.Sz();
+        ExtControlProviderSearchContact.a(ExtControlProviderSearchContact.this, ExtControlProviderSearchContact.h(paramUri));
+        paramArrayOfString1.asP();
         AppMethodBeat.o(24464);
       }
     });
-    if (this.wtE != null) {
-      Lp(0);
+    if (this.zPK != null) {
+      Mm(0);
     }
     for (;;)
     {
-      paramUri = this.wtE;
+      paramUri = this.zPK;
       AppMethodBeat.o(24465);
       return paramUri;
-      Lp(4);
+      Mm(4);
     }
   }
   

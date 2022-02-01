@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.canvas.action;
 import android.graphics.Canvas;
 import android.graphics.DashPathEffect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.g;
+import com.tencent.mm.plugin.appbrand.af.i;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
@@ -18,7 +18,7 @@ public final class y
   {
     AppMethodBeat.i(144947);
     if ((paramArrayOfFloat != null) && (paramFloat != 1.4E-45F)) {
-      paramd.nTw.setPathEffect(new DashPathEffect(paramArrayOfFloat, paramFloat));
+      paramd.qTi.setPathEffect(new DashPathEffect(paramArrayOfFloat, paramFloat));
     }
     AppMethodBeat.o(144947);
     return true;
@@ -33,7 +33,7 @@ public final class y
       AppMethodBeat.o(144948);
       return false;
     }
-    boolean bool = a(paramd, paramCanvas.nTW, paramCanvas.nTX);
+    boolean bool = a(paramd, paramCanvas.qTH, paramCanvas.qTI);
     AppMethodBeat.o(144948);
     return bool;
   }
@@ -58,10 +58,10 @@ public final class y
       int i = 0;
       while (i < arrayOfFloat.length)
       {
-        arrayOfFloat[i] = g.f(paramCanvas, i);
+        arrayOfFloat[i] = i.f(paramCanvas, i);
         i += 1;
       }
-      float f = g.f(paramJSONArray, 1);
+      float f = i.f(paramJSONArray, 1);
       boolean bool = a(paramd, arrayOfFloat, f);
       AppMethodBeat.o(144946);
       return bool;
@@ -73,7 +73,7 @@ public final class y
     return false;
   }
   
-  public final BaseDrawActionArg bKy()
+  public final BaseDrawActionArg cjY()
   {
     AppMethodBeat.i(144945);
     SetLineDashActionArg localSetLineDashActionArg = new SetLineDashActionArg();
@@ -88,7 +88,7 @@ public final class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.y
  * JD-Core Version:    0.7.0.1
  */

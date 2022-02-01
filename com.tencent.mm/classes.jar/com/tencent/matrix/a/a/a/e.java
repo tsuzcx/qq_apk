@@ -9,78 +9,73 @@ import com.tencent.matrix.a.b.c.a;
 public final class e
   extends a
 {
-  public final b cVl = new b();
-  c.a cVm;
+  public final b eQM = new b();
+  c.a eQN;
   
-  public final void VZ()
+  public final void awI()
   {
-    super.VZ();
+    super.awI();
     if (Build.VERSION.SDK_INT < 26) {
       com.tencent.matrix.e.c.w("Matrix.battery.BlueToothMonitorFeature", "only support >= android 8.0 for the moment", new Object[0]);
     }
-    while ((!this.cSI.cUb.cTQ) && ((this.cSI.cUb.cTR & 0x1) != 1)) {
+    while ((!this.eNY.ePD.ePs) && ((this.eNY.ePD.ePt & 0x1) != 1)) {
       return;
     }
-    this.cVm = new c.a()
+    this.eQN = new c.a()
     {
-      public final void Wl()
+      public final void awT()
       {
-        if (e.this.Wb()) {}
+        if (e.this.awK()) {}
         for (Object localObject = b.stackTraceToString(new Throwable().getStackTrace());; localObject = "")
         {
           com.tencent.matrix.e.c.i("Matrix.battery.BlueToothMonitorFeature", "#onRegisterScanner, stack = ".concat(String.valueOf(localObject)), new Object[0]);
-          e.this.cVl.eU((String)localObject);
-          localObject = e.this.cVl;
-          ((e.b)localObject).cVs += 1;
+          e.this.eQM.gs((String)localObject);
+          localObject = e.this.eQM;
+          ((e.b)localObject).eQT += 1;
           return;
         }
       }
       
-      public final void Wm()
+      public final void awU()
       {
-        if (e.this.Wb()) {}
+        if (e.this.awK()) {}
         for (String str = b.stackTraceToString(new Throwable().getStackTrace());; str = "")
         {
           com.tencent.matrix.e.c.i("Matrix.battery.BlueToothMonitorFeature", "#onStartDiscovery, stack = ".concat(String.valueOf(str)), new Object[0]);
-          e.this.cVl.eU(str);
-          e.this.cVl.Wm();
+          e.this.eQM.gs(str);
+          e.this.eQM.awU();
           return;
         }
       }
       
-      public final void Wn()
+      public final void awV()
       {
         com.tencent.matrix.e.c.i("Matrix.battery.BlueToothMonitorFeature", "#onStartScanForIntent", new Object[0]);
-        e.this.cVl.Wo();
+        e.this.eQM.awW();
       }
       
-      public final void jt(int paramAnonymousInt)
+      public final void mV(int paramAnonymousInt)
       {
         com.tencent.matrix.e.c.i("Matrix.battery.BlueToothMonitorFeature", "#onStartScan, id = ".concat(String.valueOf(paramAnonymousInt)), new Object[0]);
-        e.this.cVl.Wo();
+        e.this.eQM.awW();
       }
     };
-    com.tencent.matrix.a.b.c.a(this.cVm);
+    com.tencent.matrix.a.b.c.a(this.eQN);
   }
   
-  public final void Wa()
+  public final void awJ()
   {
-    super.Wa();
-    com.tencent.matrix.a.b.c.b(this.cVm);
-    b localb = this.cVl;
-    localb.cVs = 0;
-    localb.cVt = 0;
-    localb.cVu = 0;
+    super.awJ();
+    com.tencent.matrix.a.b.c.b(this.eQN);
+    b localb = this.eQM;
+    localb.eQT = 0;
+    localb.eQU = 0;
+    localb.eQV = 0;
   }
   
-  public final int Wh()
+  public final int awQ()
   {
     return -2147483648;
-  }
-  
-  public final b Wk()
-  {
-    return this.cVl;
   }
   
   protected final String getTag()
@@ -88,53 +83,53 @@ public final class e
     return "Matrix.battery.BlueToothMonitorFeature";
   }
   
-  public static final class a
-    extends j.a<a>
+  public static class a
+    extends m.a<a>
   {
-    public j.a.c.b<Integer> cVo;
-    public j.a.c.b<Integer> cVp;
-    public j.a.c.b<Integer> cVq;
+    public m.a.c.b<Integer> eQP;
+    public m.a.c.b<Integer> eQQ;
+    public m.a.c.b<Integer> eQR;
     public String stack;
   }
   
   public static final class b
   {
-    int cVs;
-    int cVt;
-    int cVu;
-    private String cVv = "";
+    int eQT;
+    int eQU;
+    int eQV;
+    private String eQW = "";
     
-    public final void Wm()
+    public final void awU()
     {
-      this.cVt += 1;
+      this.eQU += 1;
     }
     
-    public final void Wo()
+    public final void awW()
     {
-      this.cVu += 1;
+      this.eQV += 1;
     }
     
-    public final e.a Wp()
+    public final e.a awX()
     {
       e.a locala = new e.a();
-      locala.cVo = j.a.c.b.c(Integer.valueOf(this.cVs));
-      locala.cVp = j.a.c.b.c(Integer.valueOf(this.cVt));
-      locala.cVq = j.a.c.b.c(Integer.valueOf(this.cVu));
-      locala.stack = this.cVv;
+      locala.eQP = m.a.c.b.c(Integer.valueOf(this.eQT));
+      locala.eQQ = m.a.c.b.c(Integer.valueOf(this.eQU));
+      locala.eQR = m.a.c.b.c(Integer.valueOf(this.eQV));
+      locala.stack = this.eQW;
       return locala;
     }
     
-    public final void eU(String paramString)
+    public final void gs(String paramString)
     {
       if (!TextUtils.isEmpty(paramString)) {
-        this.cVv = paramString;
+        this.eQW = paramString;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.a.a.a.e
  * JD-Core Version:    0.7.0.1
  */

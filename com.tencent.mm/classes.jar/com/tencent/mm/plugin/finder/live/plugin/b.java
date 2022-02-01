@@ -1,288 +1,301 @@
 package com.tencent.mm.plugin.finder.live.plugin;
 
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-import android.animation.TimeInterpolator;
-import android.animation.TypeEvaluator;
+import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.CharacterStyle;
-import android.view.View;
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.os.Build.VERSION;
+import android.os.Bundle;
 import android.view.ViewGroup;
-import android.view.ViewPropertyAnimator;
-import android.view.animation.DecelerateInterpolator;
-import android.widget.TextView;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.lifecycle.af;
+import androidx.lifecycle.j.b;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.d;
-import com.tencent.mm.ae.g;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.utils.aj;
-import com.tencent.mm.protocal.protobuf.bbd;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import java.util.ArrayList;
-import java.util.List;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
+import com.tencent.mm.plugin.finder.live.model.aj;
+import com.tencent.mm.plugin.finder.live.model.ap;
+import com.tencent.mm.plugin.finder.live.sidebar.d;
+import com.tencent.mm.plugin.finder.live.viewmodel.data.business.e;
+import com.tencent.mm.plugin.finder.live.viewmodel.data.c;
+import com.tencent.mm.plugin.finder.live.viewmodel.data.f;
+import com.tencent.mm.protocal.protobuf.bui;
+import com.tencent.mm.ui.component.k.b;
+import kotlin.Metadata;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/plugin/BulletCommentWidget;", "", "bullet", "Landroid/view/ViewGroup;", "commentList", "Landroidx/recyclerview/widget/RecyclerView;", "(Landroid/view/ViewGroup;Landroidx/recyclerview/widget/RecyclerView;)V", "bulletContentTv", "Landroid/widget/TextView;", "getBulletContentTv", "()Landroid/widget/TextView;", "setBulletContentTv", "(Landroid/widget/TextView;)V", "bulletInAnim", "Landroid/animation/ObjectAnimator;", "getBulletInAnim", "()Landroid/animation/ObjectAnimator;", "setBulletInAnim", "(Landroid/animation/ObjectAnimator;)V", "bulletOutAnim", "getBulletOutAnim", "setBulletOutAnim", "bulletUpdateAnim", "Landroid/view/ViewPropertyAnimator;", "getBulletUpdateAnim", "()Landroid/view/ViewPropertyAnimator;", "setBulletUpdateAnim", "(Landroid/view/ViewPropertyAnimator;)V", "container", "getContainer", "()Landroid/view/ViewGroup;", "setContainer", "(Landroid/view/ViewGroup;)V", "haveNextBullet", "", "getHaveNextBullet", "()Z", "setHaveNextBullet", "(Z)V", "localBullet", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveMsg;", "Lkotlin/collections/ArrayList;", "getLocalBullet", "()Ljava/util/ArrayList;", "setLocalBullet", "(Ljava/util/ArrayList;)V", "shoppingIconSize", "", "getShoppingIconSize", "()I", "setShoppingIconSize", "(I)V", "sysSpan", "com/tencent/mm/plugin/finder/live/plugin/BulletCommentWidget$sysSpan$1", "Lcom/tencent/mm/plugin/finder/live/plugin/BulletCommentWidget$sysSpan$1;", "adjustMargin", "", "clearLocalBullet", "getNextBulletComment", "getPrintMsg", "", "item", "getShoppingSpan", "Landroid/text/style/ImageSpan;", "hideBulletComment", "mergeBulletComment", "remote", "", "printMsgList", "prefix", "msgList", "", "debugPrint", "setBulletComment", "liveMsg", "setContent", "msg", "showBulletComment", "pushAnim", "showNextBullet", "updateBulletComment", "bulletCommentList", "Companion", "plugin-finder_release"})
-public final class b
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "Lcom/tencent/mm/plugin/finder/live/plugin/IFinderLivePlugin;", "Lcom/tencent/mm/plugin/finder/live/model/context/IFinderLiveStore;", "Landroidx/lifecycle/LifecycleOwner;", "vg", "Landroid/view/ViewGroup;", "liveStatus", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "reportObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "basePluginLayout", "Lcom/tencent/mm/plugin/finder/live/view/FinderBaseLivePluginLayout;", "getBasePluginLayout", "()Lcom/tencent/mm/plugin/finder/live/view/FinderBaseLivePluginLayout;", "basePluginLayout$delegate", "Lkotlin/Lazy;", "buContext", "Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "getBuContext", "()Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "cacheVisibility", "", "getCacheVisibility", "()I", "setCacheVisibility", "(I)V", "clearStatus", "getClearStatus", "setClearStatus", "data", "Lcom/tencent/mm/plugin/finder/live/viewmodel/data/FinderLiveData;", "getData", "()Lcom/tencent/mm/plugin/finder/live/viewmodel/data/FinderLiveData;", "finderLiveAssistant", "Lcom/tencent/mm/plugin/finder/live/model/IFinderLiveAssistant;", "getFinderLiveAssistant", "()Lcom/tencent/mm/plugin/finder/live/model/IFinderLiveAssistant;", "lifeCycleRegistry", "Landroidx/lifecycle/LifecycleRegistry;", "getLifeCycleRegistry", "()Landroidx/lifecycle/LifecycleRegistry;", "setLifeCycleRegistry", "(Landroidx/lifecycle/LifecycleRegistry;)V", "getLiveStatus", "()Lcom/tencent/mm/live/plugin/ILiveStatus;", "overlapOptimize", "getOverlapOptimize", "setOverlapOptimize", "getReportObj", "()Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "getVg", "()Landroid/view/ViewGroup;", "business", "T", "Landroidx/lifecycle/ViewModel;", "bu", "Ljava/lang/Class;", "(Ljava/lang/Class;)Landroidx/lifecycle/ViewModel;", "canClearScreen", "", "canClearScreenWhenSideBarShow", "getLifecycle", "Landroidx/lifecycle/Lifecycle;", "getPlugin", "modelClass", "(Ljava/lang/Class;)Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "getPluginLayout", "isFinished", "mount", "", "name", "", "onClearForSideBar", "clear", "onClearScreenEnd", "onClearScreenStart", "onClearScreenUpdate", "value", "", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onFollowChanged", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "isFollow", "onLandscapeAction", "extraMsg", "Landroid/os/Bundle;", "onLandscapeDelayAction", "delayMs", "", "onNetworkChange", "status", "onNewIntent", "intent", "Landroid/content/Intent;", "onPortraitAction", "extraData", "", "onPortraitDelayAction", "postLandscapeAction", "action", "postPortraitAction", "postPortraitActionDelay", "reset", "setVisible", "visible", "unMount", "visibleInCurrentLiveMode", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+public class b
+  extends com.tencent.mm.live.b.a
+  implements q
 {
-  static final int ygm;
-  static final int ygn;
-  private static final int ykO;
-  static final int ykP;
-  private static final int ykQ;
-  private static final int ykR;
-  public static final a ykS;
-  ViewGroup ybY;
-  TextView ykE;
-  ObjectAnimator ykF;
-  ObjectAnimator ykG;
-  ViewPropertyAnimator ykH;
-  ArrayList<bbd> ykI;
-  boolean ykJ;
-  int ykK;
-  private final c ykL;
-  final ViewGroup ykM;
-  final RecyclerView ykN;
+  public final ViewGroup CTi;
+  public final com.tencent.mm.live.b.b CTj;
+  private final kotlin.j CTk;
+  public int CTl;
+  public int CTm;
+  public int CTn;
+  private androidx.lifecycle.s HnN;
+  public final bui reportObj;
   
-  static
+  public b(ViewGroup paramViewGroup, com.tencent.mm.live.b.b paramb, bui parambui)
   {
-    AppMethodBeat.i(267989);
-    ykS = new a((byte)0);
-    Object localObject = com.tencent.c.a.a.a.a.a.Zlt;
-    ykO = com.tencent.c.a.a.a.a.a.imR();
-    localObject = MMApplicationContext.getContext();
-    p.j(localObject, "MMApplicationContext.getContext()");
-    ygn = ((Context)localObject).getResources().getDimensionPixelSize(com.tencent.mm.plugin.finder.b.d.Edge_0_5_A);
-    localObject = MMApplicationContext.getContext();
-    p.j(localObject, "MMApplicationContext.getContext()");
-    ygm = ((Context)localObject).getResources().getDimensionPixelSize(com.tencent.mm.plugin.finder.b.d.Edge_A);
-    localObject = MMApplicationContext.getContext();
-    p.j(localObject, "MMApplicationContext.getContext()");
-    ykP = ((Context)localObject).getResources().getDimensionPixelSize(com.tencent.mm.plugin.finder.b.d.Edge_1_5_A);
-    localObject = MMApplicationContext.getContext();
-    p.j(localObject, "MMApplicationContext.getContext()");
-    ykQ = ((Context)localObject).getResources().getDimensionPixelSize(com.tencent.mm.plugin.finder.b.d.Edge_2A);
-    localObject = MMApplicationContext.getContext();
-    p.j(localObject, "MMApplicationContext.getContext()");
-    ykR = ((Context)localObject).getResources().getDimensionPixelSize(com.tencent.mm.plugin.finder.b.d.Edge_2_5_A);
-    AppMethodBeat.o(267989);
+    super(paramViewGroup, paramb);
+    AppMethodBeat.i(354415);
+    this.CTi = paramViewGroup;
+    this.CTj = paramb;
+    this.reportObj = parambui;
+    this.CTk = kotlin.k.cm((kotlin.g.a.a)new a(this));
+    this.CTl = this.mJe.getVisibility();
+    this.CTm = 65535;
+    paramViewGroup = com.tencent.d.a.a.a.a.a.ahiX;
+    this.CTn = ((Number)com.tencent.d.a.a.a.a.a.jTP().bmg()).intValue();
+    this.HnN = new androidx.lifecycle.s((q)this);
+    AppMethodBeat.o(354415);
   }
   
-  public b(ViewGroup paramViewGroup, RecyclerView paramRecyclerView)
+  private void b(String paramString, Object paramObject, int paramInt)
   {
-    AppMethodBeat.i(267988);
-    this.ykM = paramViewGroup;
-    this.ykN = paramRecyclerView;
-    this.ybY = this.ykM;
-    paramViewGroup = this.ybY.findViewById(b.f.bullet_comment_item_content_tv);
-    p.j(paramViewGroup, "container.findViewById(R…_comment_item_content_tv)");
-    this.ykE = ((TextView)paramViewGroup);
-    this.ykI = new ArrayList();
-    this.ykK = ykQ;
-    this.ykL = new c();
-    this.ybY.setVisibility(8);
-    paramViewGroup = ObjectAnimator.ofFloat(this.ybY, "alpha", new float[] { 1.0F, 0.0F });
-    p.j(paramViewGroup, "ObjectAnimator.ofFloat(container, \"alpha\", 1f, 0f)");
-    this.ykG = paramViewGroup;
-    this.ykG.setDuration(500L);
-    this.ykG.addListener((Animator.AnimatorListener)new Animator.AnimatorListener()
+    AppMethodBeat.i(354453);
+    kotlin.g.b.s.u(paramString, "action");
+    Bundle localBundle = new Bundle();
+    localBundle.putString("ACTION_POST_PORTRAIT", paramString);
+    if (paramInt > 0) {
+      localBundle.putInt("ACTION_POST_PORTRAIT_DELAY", paramInt);
+    }
+    ((e)business(e.class)).a(new c("EVENT_POST_PORTRAIT_ACTION", localBundle, paramObject));
+    eoH().onPortraitAction(((e)business(e.class)).EcT, ((e)business(e.class)).EcS, localBundle, paramObject);
+    AppMethodBeat.o(354453);
+  }
+  
+  public static ap getFinderLiveAssistant()
+  {
+    AppMethodBeat.i(354434);
+    Object localObject = aj.CGT;
+    localObject = aj.getFinderLiveAssistant();
+    AppMethodBeat.o(354434);
+    return localObject;
+  }
+  
+  public final void D(String paramString, Object paramObject)
+  {
+    AppMethodBeat.i(354584);
+    kotlin.g.b.s.u(paramString, "action");
+    b(paramString, paramObject, 0);
+    AppMethodBeat.o(354584);
+  }
+  
+  public void a(Bundle paramBundle, Object paramObject, long paramLong) {}
+  
+  public void aq(Bundle paramBundle) {}
+  
+  public final <T extends af> T business(Class<T> paramClass)
+  {
+    AppMethodBeat.i(354496);
+    kotlin.g.b.s.u(paramClass, "bu");
+    paramClass = getBuContext().business(paramClass);
+    AppMethodBeat.o(354496);
+    return paramClass;
+  }
+  
+  public void c(Bundle paramBundle, Object paramObject) {}
+  
+  public final com.tencent.mm.plugin.finder.live.view.a ehM()
+  {
+    if ((this.CTj instanceof com.tencent.mm.plugin.finder.live.view.a)) {
+      return (com.tencent.mm.plugin.finder.live.view.a)this.CTj;
+    }
+    return null;
+  }
+  
+  public boolean enH()
+  {
+    return true;
+  }
+  
+  public final com.tencent.mm.plugin.finder.live.view.a eoH()
+  {
+    AppMethodBeat.i(354486);
+    com.tencent.mm.plugin.finder.live.view.a locala = (com.tencent.mm.plugin.finder.live.view.a)this.CTk.getValue();
+    AppMethodBeat.o(354486);
+    return locala;
+  }
+  
+  public boolean eoI()
+  {
+    return false;
+  }
+  
+  public boolean eoJ()
+  {
+    AppMethodBeat.i(354551);
+    if (((e)business(e.class)).EcR != 1)
     {
-      public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
-      
-      public final void onAnimationEnd(Animator paramAnonymousAnimator)
-      {
-        AppMethodBeat.i(275488);
-        paramAnonymousAnimator = this.ykT.ykG.getTarget();
-        if (paramAnonymousAnimator == null)
-        {
-          paramAnonymousAnimator = new t("null cannot be cast to non-null type android.view.View");
-          AppMethodBeat.o(275488);
-          throw paramAnonymousAnimator;
-        }
-        ((View)paramAnonymousAnimator).setVisibility(8);
-        AppMethodBeat.o(275488);
-      }
-      
-      public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
-      
-      public final void onAnimationStart(Animator paramAnonymousAnimator) {}
-    });
-    paramViewGroup = ObjectAnimator.ofFloat(this.ybY, "translationX", new float[] { -500.0F, 0.0F });
-    p.j(paramViewGroup, "ObjectAnimator.ofFloat(c… BULLET_FLY_DISTANCE, 0f)");
-    this.ykF = paramViewGroup;
-    this.ykF.setDuration(2500L);
-    this.ykF.setInterpolator((TimeInterpolator)new DecelerateInterpolator());
-    this.ykF.setEvaluator((TypeEvaluator)new c());
-    this.ykF.addListener((Animator.AnimatorListener)new Animator.AnimatorListener()
+      AppMethodBeat.o(354551);
+      return true;
+    }
+    AppMethodBeat.o(354551);
+    return false;
+  }
+  
+  public final com.tencent.mm.plugin.finder.live.model.context.a getBuContext()
+  {
+    AppMethodBeat.i(354480);
+    com.tencent.mm.plugin.finder.live.model.context.a locala = ((com.tencent.mm.plugin.finder.live.view.a)this.CTj).getBuContext();
+    AppMethodBeat.o(354480);
+    return locala;
+  }
+  
+  public final f getData()
+  {
+    AppMethodBeat.i(354473);
+    f localf = ((com.tencent.mm.plugin.finder.live.view.a)this.CTj).getData();
+    AppMethodBeat.o(354473);
+    return localf;
+  }
+  
+  public androidx.lifecycle.j getLifecycle()
+  {
+    return (androidx.lifecycle.j)this.HnN;
+  }
+  
+  public final <T extends b> T getPlugin(Class<T> paramClass)
+  {
+    AppMethodBeat.i(354637);
+    kotlin.g.b.s.u(paramClass, "modelClass");
+    Object localObject = this.CTj;
+    if ((localObject instanceof com.tencent.mm.plugin.finder.live.view.a)) {}
+    for (localObject = (com.tencent.mm.plugin.finder.live.view.a)localObject; localObject == null; localObject = null)
     {
-      public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
-      
-      public final void onAnimationEnd(Animator paramAnonymousAnimator)
-      {
-        AppMethodBeat.i(279783);
-        if (!this.ykT.ykJ)
-        {
-          this.ykT.ykG.start();
-          AppMethodBeat.o(279783);
-          return;
-        }
-        this.ykT.oS(false);
-        AppMethodBeat.o(279783);
-      }
-      
-      public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
-      
-      public final void onAnimationStart(Animator paramAnonymousAnimator)
-      {
-        AppMethodBeat.i(279784);
-        paramAnonymousAnimator = this.ykT.ykF.getTarget();
-        if (paramAnonymousAnimator == null)
-        {
-          paramAnonymousAnimator = new t("null cannot be cast to non-null type android.view.View");
-          AppMethodBeat.o(279784);
-          throw paramAnonymousAnimator;
-        }
-        paramAnonymousAnimator = (View)paramAnonymousAnimator;
-        paramAnonymousAnimator.setAlpha(1.0F);
-        paramAnonymousAnimator.setVisibility(0);
-        AppMethodBeat.o(279784);
-      }
-    });
-    paramViewGroup = this.ybY.animate().setDuration(1000L).setListener((Animator.AnimatorListener)new AnimatorListenerAdapter()
+      AppMethodBeat.o(354637);
+      return null;
+    }
+    paramClass = ((com.tencent.mm.plugin.finder.live.view.a)localObject).getPlugin(paramClass);
+    AppMethodBeat.o(354637);
+    return paramClass;
+  }
+  
+  public final boolean isFinished()
+  {
+    AppMethodBeat.i(354618);
+    Context localContext = this.CTi.getContext();
+    if ((localContext != null) && ((localContext instanceof Activity)))
     {
-      public final void onAnimationEnd(Animator paramAnonymousAnimator)
-      {
-        AppMethodBeat.i(291604);
-        if (!this.ykT.ykJ)
-        {
-          this.ykT.ykG.start();
-          AppMethodBeat.o(291604);
-          return;
-        }
-        this.ykT.oS(false);
-        AppMethodBeat.o(291604);
-      }
-      
-      public final void onAnimationStart(Animator paramAnonymousAnimator)
-      {
-        AppMethodBeat.i(291605);
-        this.ykT.ybY.setAlpha(1.0F);
-        this.ykT.ybY.setVisibility(0);
-        AppMethodBeat.o(291605);
-      }
-    });
-    p.j(paramViewGroup, "container.animate().setD…            }\n\n        })");
-    this.ykH = paramViewGroup;
-    paramViewGroup = com.tencent.mm.plugin.finder.live.utils.a.yRm;
-    if (com.tencent.mm.plugin.finder.live.utils.a.dEy())
+      boolean bool1 = ((Activity)localContext).isFinishing();
+      boolean bool2 = ((Activity)localContext).isDestroyed();
+      AppMethodBeat.o(354618);
+      return bool1 | bool2;
+    }
+    AppMethodBeat.o(354618);
+    return false;
+  }
+  
+  public void mount()
+  {
+    AppMethodBeat.i(371424);
+    super.mount();
+    this.HnN.f(j.b.bHk);
+    AppMethodBeat.o(371424);
+  }
+  
+  public final String name()
+  {
+    AppMethodBeat.i(354509);
+    String str = getClass().getSimpleName() + '@' + hashCode();
+    AppMethodBeat.o(354509);
+    return str;
+  }
+  
+  public void onConfigurationChanged(Configuration paramConfiguration) {}
+  
+  public void onNetworkChange(int paramInt) {}
+  
+  public void onNewIntent(Intent paramIntent) {}
+  
+  public void qU(boolean paramBoolean) {}
+  
+  public final void qV(boolean paramBoolean)
+  {
+    AppMethodBeat.i(354568);
+    if ((this.CTn == 1) && (Build.VERSION.SDK_INT >= 24)) {
+      this.mJe.forceHasOverlappingRendering(false);
+    }
+    if (!paramBoolean) {
+      tO(this.CTl);
+    }
+    AppMethodBeat.o(354568);
+  }
+  
+  public final void qW(boolean paramBoolean)
+  {
+    AppMethodBeat.i(354575);
+    if ((this.CTn == 1) && (Build.VERSION.SDK_INT >= 24)) {
+      this.mJe.forceHasOverlappingRendering(this.mJe.hasOverlappingRendering());
+    }
+    if (paramBoolean) {
+      tO(this.CTl);
+    }
+    AppMethodBeat.o(354575);
+  }
+  
+  public void qX(boolean paramBoolean) {}
+  
+  public void reset() {}
+  
+  public void tO(int paramInt)
+  {
+    AppMethodBeat.i(354657);
+    this.CTl = paramInt;
+    Object localObject;
+    int i;
+    if (!eoJ())
     {
-      this.ykE.setTextSize(1, 17.0F);
-      this.ykK = ykR;
-      AppMethodBeat.o(267988);
+      localObject = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+      com.tencent.mm.plugin.finder.live.utils.a.hQ("plugin visible", getClass().getSimpleName() + " invisible in liveMode:" + ((e)business(e.class)).EcR);
+      i = 8;
+    }
+    for (;;)
+    {
+      super.tO(i);
+      if (i == 0) {
+        this.mJe.setAlpha(1.0F);
+      }
+      AppMethodBeat.o(354657);
       return;
-    }
-    this.ykE.setTextSize(1, 15.0F);
-    this.ykK = ykQ;
-    AppMethodBeat.o(267988);
-  }
-  
-  private static void b(String paramString, List<? extends bbd> paramList, boolean paramBoolean)
-  {
-    AppMethodBeat.i(267987);
-    aj localaj = aj.AGc;
-    if ((!aj.eej()) || (!paramBoolean) || (paramList.isEmpty()))
-    {
-      AppMethodBeat.o(267987);
-      return;
-    }
-    int j = paramList.size();
-    int i = 0;
-    while (i < j)
-    {
-      Log.i("Finder.LiveCommentPlugin", paramString + " msg:" + g.bN(paramList.get(i)));
-      i += 1;
-    }
-    AppMethodBeat.o(267987);
-  }
-  
-  public final void dAm()
-  {
-    AppMethodBeat.i(267982);
-    this.ybY.setVisibility(8);
-    this.ykF.cancel();
-    this.ykG.cancel();
-    this.ykH.cancel();
-    AppMethodBeat.o(267982);
-  }
-  
-  public final void eo(final List<bbd> paramList)
-  {
-    AppMethodBeat.i(267983);
-    p.k(paramList, "bulletCommentList");
-    d.uiThread((kotlin.g.a.a)new d(this, paramList));
-    AppMethodBeat.o(267983);
-  }
-  
-  public final void oS(final boolean paramBoolean)
-  {
-    AppMethodBeat.i(267985);
-    d.uiThread((kotlin.g.a.a)new b(this, paramBoolean));
-    AppMethodBeat.o(267985);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/plugin/BulletCommentWidget$Companion;", "", "()V", "ANIMATION_DURATION", "", "BULLET_COMMENT_MAX_LENGTH", "getBULLET_COMMENT_MAX_LENGTH", "()I", "BULLET_FLY_DISTANCE", "", "D_0_5_A", "getD_0_5_A", "D_1_5_A", "getD_1_5_A", "D_2A", "getD_2A", "D_2_5_A", "getD_2_5_A", "D_A", "getD_A", "STAY_DURATION", "UPDATE_DURATION", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class b
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    b(b paramb, boolean paramBoolean)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/plugin/BulletCommentWidget$sysSpan$1", "Landroid/text/style/CharacterStyle;", "updateDrawState", "", "tp", "Landroid/text/TextPaint;", "plugin-finder_release"})
-  public static final class c
-    extends CharacterStyle
-  {
-    public final void updateDrawState(TextPaint paramTextPaint)
-    {
-      AppMethodBeat.i(291221);
-      Context localContext = MMApplicationContext.getContext();
-      p.j(localContext, "MMApplicationContext.getContext()");
-      int i = localContext.getResources().getColor(com.tencent.mm.plugin.finder.b.c.half_alpha_white);
-      if (paramTextPaint != null) {
-        paramTextPaint.setColor(i);
-      }
-      if (paramTextPaint != null)
+      localObject = com.tencent.mm.ui.component.k.aeZF;
+      localObject = this.mJe.getContext();
+      kotlin.g.b.s.s(localObject, "root.context");
+      if ((((d)com.tencent.mm.ui.component.k.nq((Context)localObject).q(d.class)).DGD) && (enH()))
       {
-        paramTextPaint.setUnderlineText(false);
-        AppMethodBeat.o(291221);
-        return;
+        i = 8;
       }
-      AppMethodBeat.o(291221);
+      else
+      {
+        i = paramInt;
+        if (eoI())
+        {
+          i = paramInt;
+          if (this.CTm == 8) {
+            i = 8;
+          }
+        }
+      }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class d
-    extends q
-    implements kotlin.g.a.a<x>
+  public void unMount()
   {
-    d(b paramb, List paramList)
+    AppMethodBeat.i(371425);
+    super.unMount();
+    this.HnN.f(j.b.bHg);
+    this.HnN = new androidx.lifecycle.s((q)this);
+    AppMethodBeat.o(371425);
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/finder/live/view/FinderBaseLivePluginLayout;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements kotlin.g.a.a<com.tencent.mm.plugin.finder.live.view.a>
+  {
+    a(b paramb)
     {
       super();
     }

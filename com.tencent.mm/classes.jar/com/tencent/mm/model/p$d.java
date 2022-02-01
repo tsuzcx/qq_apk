@@ -1,29 +1,27 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.a.a;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/model/BizTLRecFeedsDataUtil$EnRecommendFeedsInfoSwitchOption;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "RECOMMEND_FEEDS_UNDEFINED", "RECOMMEND_FEEDS_CLOSE", "RECOMMEND_FEEDS_OPEN", "plugin-biz_release"})
-public enum p$d
+@Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+final class p$d
+  extends u
+  implements a<Boolean>
 {
-  public final int value;
+  public static final d ojo;
   
   static
   {
-    AppMethodBeat.i(206308);
-    d locald1 = new d("RECOMMEND_FEEDS_UNDEFINED", 0, 0);
-    lrP = locald1;
-    d locald2 = new d("RECOMMEND_FEEDS_CLOSE", 1, 1);
-    lrQ = locald2;
-    d locald3 = new d("RECOMMEND_FEEDS_OPEN", 2, 2);
-    lrR = locald3;
-    lrS = new d[] { locald1, locald2, locald3 };
-    AppMethodBeat.o(206308);
+    AppMethodBeat.i(242054);
+    ojo = new d();
+    AppMethodBeat.o(242054);
   }
   
-  private p$d(int paramInt)
+  p$d()
   {
-    this.value = paramInt;
+    super(0);
   }
 }
 

@@ -1,96 +1,145 @@
 package com.tencent.mm.plugin.appbrand.jsapi.j;
 
-import android.app.Activity;
-import com.tencent.luggage.k.f;
-import com.tencent.luggage.k.f.f;
-import com.tencent.luggage.k.i;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.TextView;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
+import com.tencent.mm.ah.a.e;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.h;
+import com.tencent.mm.plugin.appbrand.ba.h;
+import com.tencent.mm.plugin.appbrand.ba.i;
+import com.tencent.mm.plugin.appbrand.u;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.widget.imageview.WeImageView;
+import com.tencent.threadpool.i;
 import org.json.JSONObject;
 
-abstract class a<CONTEXT extends e>
-  extends c<CONTEXT>
+public final class a
 {
-  boolean oUD;
+  private static int qvo = -1;
+  private static int qvp = 0;
+  private static boolean qvq = false;
+  public static int[] rZf = { ba.i.appbrand_handoffFail_NotSupported, ba.i.appbrand_handoffFail_NotSupported, ba.i.appbrand_handoffFail_InvalidLogin, ba.i.appbrand_handoffFail_LowVersion, ba.i.appbrand_handoffFail_NotSupported };
   
-  static boolean s(CONTEXT paramCONTEXT)
+  public static void ab(Context paramContext, final String paramString)
   {
-    return i.o(paramCONTEXT.getContext(), "android.permission.ACCESS_FINE_LOCATION");
+    AppMethodBeat.i(329743);
+    com.tencent.threadpool.h.ahAA.bk(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(329742);
+        Toast localToast = Toast.makeText(a.this, "", 3000);
+        View localView = View.inflate(a.this, a.h.text_toast, null);
+        ((TextView)localView.findViewById(a.g.toast_text)).setText(paramString);
+        localToast.setGravity(17, 0, 0);
+        localToast.setView(localView);
+        localToast.show();
+        AppMethodBeat.o(329742);
+      }
+    });
+    AppMethodBeat.o(329743);
   }
   
-  public void a(final CONTEXT paramCONTEXT, final JSONObject paramJSONObject, final int paramInt)
+  public static void eK(Context paramContext)
   {
-    Activity localActivity;
-    boolean bool;
-    if ((paramCONTEXT.getContext() instanceof Activity))
+    AppMethodBeat.i(329738);
+    com.tencent.threadpool.h.ahAA.bk(new Runnable()
     {
-      localActivity = (Activity)paramCONTEXT.getContext();
-      if (localActivity != null) {
-        break label82;
-      }
-      Log.e("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "operateRecorder, pageContext is null");
-      paramCONTEXT.j(paramInt, h("fail:internal error invalid android context", null));
-      bool = false;
-    }
-    for (;;)
-    {
-      if (bool) {
-        break label148;
-      }
-      Log.e("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "%s requestPermission fail", new Object[] { getName() });
-      return;
-      localActivity = null;
-      break;
-      label82:
-      if (s(paramCONTEXT))
+      public final void run()
       {
-        bool = true;
-      }
-      else if (this.oUD)
-      {
-        paramCONTEXT.j(paramInt, h("fail:system permission denied", null));
-        bool = false;
-      }
-      else
-      {
-        bool = f.aI(localActivity).a("android.permission.ACCESS_FINE_LOCATION", new f.f()
+        AppMethodBeat.i(329741);
+        Toast localToast = Toast.makeText(a.this, "", 3000);
+        View localView = View.inflate(a.this, a.h.center_toast, null);
+        ((WeImageView)localView.findViewById(a.g.toast_img)).setImageResource(ba.h.icons_outlined_colorful_handoff_success);
+        final TextView localTextView = (TextView)localView.findViewById(a.g.toast_text);
+        localTextView.setText(a.this.getString(ba.i.appbrand_handoffOk));
+        localTextView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
         {
-          public final void q(int[] paramAnonymousArrayOfInt)
+          public final void onGlobalLayout()
           {
-            AppMethodBeat.i(143625);
-            if ((paramAnonymousArrayOfInt != null) && (paramAnonymousArrayOfInt.length > 0) && (paramAnonymousArrayOfInt[0] == 0))
-            {
-              Log.i("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "PERMISSION_GRANTED, do invoke again");
-              a.this.a(paramCONTEXT, paramJSONObject, paramInt);
-              AppMethodBeat.o(143625);
-              return;
+            AppMethodBeat.i(329733);
+            if (localTextView.getLineCount() > 1) {
+              localTextView.setTextSize(0, com.tencent.mm.cd.a.br(a.this, a.e.DescTextSize));
             }
-            Log.e("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "SYS_PERM_DENIED");
-            a.this.oUD = true;
-            paramCONTEXT.j(paramInt, a.this.h("fail:system permission denied", null));
-            AppMethodBeat.o(143625);
+            localTextView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+            AppMethodBeat.o(329733);
           }
         });
+        localToast.setGravity(17, 0, 0);
+        localToast.setView(localView);
+        localToast.show();
+        AppMethodBeat.o(329741);
       }
-    }
-    label148:
-    if (paramJSONObject == null)
-    {
-      Log.e("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "%s invalid data", new Object[] { getName() });
-      paramCONTEXT.j(paramInt, h("fail:invalid data", null));
-      return;
-    }
-    c(paramCONTEXT, paramJSONObject, paramInt);
+    });
+    AppMethodBeat.o(329738);
   }
   
-  protected abstract void c(CONTEXT paramCONTEXT, JSONObject paramJSONObject, int paramInt);
+  public static int p(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    AppMethodBeat.i(329735);
+    qvo = u.Uy(paramString2).qvo;
+    qvp = u.Uy(paramString2).qvp;
+    boolean bool = u.Uy(paramString2).qvq;
+    qvq = bool;
+    if ((!bool) || (qvo == -1) || (qvp == 0))
+    {
+      Log.i(paramString1, "invalid login,isWXOnline: %b , iconType : %d ,clientVersion: %d", new Object[] { Boolean.valueOf(qvq), Integer.valueOf(qvo), Integer.valueOf(qvp) });
+      AppMethodBeat.o(329735);
+      return 2;
+    }
+    if ((qvo == 1) || (qvo == 2))
+    {
+      JSONObject localJSONObject = com.tencent.mm.plugin.webview.luggage.c.c.ZL(((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.zsd, ""));
+      if (qvo == 2) {}
+      String str;
+      for (paramString2 = "mac_appbrand";; paramString2 = "windows_appbrand")
+      {
+        str = paramString2;
+        if (paramBoolean) {
+          str = paramString2 + "_game";
+        }
+        paramString2 = str + "_version";
+        if ((localJSONObject != null) && (localJSONObject.has(str)) && (localJSONObject.has(paramString2))) {
+          break;
+        }
+        Log.i(paramString1, "xclient data format wrong ,jsonObject:".concat(String.valueOf(localJSONObject)));
+        AppMethodBeat.o(329735);
+        return 4;
+      }
+      int i = localJSONObject.optInt(str, 0);
+      int j = localJSONObject.optInt(paramString2, 0);
+      if ((1 != i) || (j == 0))
+      {
+        Log.i(paramString1, "pc not supported ,iconType: %d ,isGame :%b", new Object[] { Integer.valueOf(qvo), Boolean.valueOf(paramBoolean) });
+        AppMethodBeat.o(329735);
+        return 4;
+      }
+      if (qvp < j)
+      {
+        Log.i(paramString1, "version is old,clientVersion: %d ,isGame :%b", new Object[] { Integer.valueOf(qvp), Boolean.valueOf(paramBoolean) });
+        AppMethodBeat.o(329735);
+        return 3;
+      }
+    }
+    else
+    {
+      Log.i(paramString1, "invalid login,iconType:" + qvo);
+      AppMethodBeat.o(329735);
+      return 2;
+    }
+    AppMethodBeat.o(329735);
+    return 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.j.a
  * JD-Core Version:    0.7.0.1
  */

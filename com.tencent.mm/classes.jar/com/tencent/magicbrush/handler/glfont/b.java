@@ -4,9 +4,9 @@ import android.graphics.Typeface;
 
 public abstract interface b
 {
-  public abstract Typeface dB(String paramString);
+  public abstract Typeface eM(String paramString);
   
-  public abstract String dC(String paramString);
+  public abstract String eN(String paramString);
 }
 
 

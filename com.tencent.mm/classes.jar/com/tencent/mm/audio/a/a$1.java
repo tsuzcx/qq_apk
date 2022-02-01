@@ -1,10 +1,10 @@
 package com.tencent.mm.audio.a;
 
+import kotlin.ah;
 import kotlin.g.a.b;
-import kotlin.x;
 
 final class a$1
-  implements b<Integer, x>
+  implements b<Integer, ah>
 {
   a$1(a parama) {}
 }

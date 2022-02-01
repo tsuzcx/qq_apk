@@ -4,39 +4,41 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelive/PluginGameLive$IPCLiveControlData;", "Landroid/os/Parcelable;", "action", "Lcom/tencent/mm/plugin/gamelive/PluginGameLive$IPCLiveControlData$IPCLiveControlAction;", "appId", "", "versionType", "", "payload", "(Lcom/tencent/mm/plugin/gamelive/PluginGameLive$IPCLiveControlData$IPCLiveControlAction;Ljava/lang/String;ILandroid/os/Parcelable;)V", "getAction", "()Lcom/tencent/mm/plugin/gamelive/PluginGameLive$IPCLiveControlData$IPCLiveControlAction;", "getAppId", "()Ljava/lang/String;", "getPayload", "()Landroid/os/Parcelable;", "getVersionType", "()I", "component1", "component2", "component3", "component4", "copy", "describeContents", "equals", "", "other", "", "hashCode", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "IPCLiveControlAction", "plugin-gamelive_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/gamelive/PluginGameLive$IPCLiveControlData;", "Landroid/os/Parcelable;", "action", "Lcom/tencent/mm/plugin/gamelive/PluginGameLive$IPCLiveControlData$IPCLiveControlAction;", "appId", "", "versionType", "", "payload", "(Lcom/tencent/mm/plugin/gamelive/PluginGameLive$IPCLiveControlData$IPCLiveControlAction;Ljava/lang/String;ILandroid/os/Parcelable;)V", "getAction", "()Lcom/tencent/mm/plugin/gamelive/PluginGameLive$IPCLiveControlData$IPCLiveControlAction;", "getAppId", "()Ljava/lang/String;", "getPayload", "()Landroid/os/Parcelable;", "getVersionType", "()I", "component1", "component2", "component3", "component4", "copy", "describeContents", "equals", "", "other", "", "hashCode", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "IPCLiveControlAction", "plugin-gamelive_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class PluginGameLive$IPCLiveControlData
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR;
-  final PluginGameLive.IPCLiveControlData.b Dkt;
-  public final Parcelable Dku;
+  public static final Parcelable.Creator<IPCLiveControlData> CREATOR;
+  final PluginGameLive.IPCLiveControlData.b JdA;
+  public final Parcelable JdB;
   private final String appId;
-  private final int cBU;
+  private final int euz;
   
   static
   {
-    AppMethodBeat.i(208400);
-    CREATOR = new a();
-    AppMethodBeat.o(208400);
+    AppMethodBeat.i(277192);
+    CREATOR = (Parcelable.Creator)new a();
+    AppMethodBeat.o(277192);
   }
   
   public PluginGameLive$IPCLiveControlData(PluginGameLive.IPCLiveControlData.b paramb)
   {
     this(paramb, null, null, 14);
+    AppMethodBeat.i(277186);
+    AppMethodBeat.o(277186);
   }
   
   public PluginGameLive$IPCLiveControlData(PluginGameLive.IPCLiveControlData.b paramb, String paramString, int paramInt, Parcelable paramParcelable)
   {
-    AppMethodBeat.i(208392);
-    this.Dkt = paramb;
+    AppMethodBeat.i(277180);
+    this.JdA = paramb;
     this.appId = paramString;
-    this.cBU = paramInt;
-    this.Dku = paramParcelable;
-    AppMethodBeat.o(208392);
+    this.euz = paramInt;
+    this.JdB = paramParcelable;
+    AppMethodBeat.o(277180);
   }
   
   public final int describeContents()
@@ -46,94 +48,95 @@ public final class PluginGameLive$IPCLiveControlData
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(208398);
-    if (this != paramObject)
+    AppMethodBeat.i(277209);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof IPCLiveControlData))
-      {
-        paramObject = (IPCLiveControlData)paramObject;
-        if ((!p.h(this.Dkt, paramObject.Dkt)) || (!p.h(this.appId, paramObject.appId)) || (this.cBU != paramObject.cBU) || (!p.h(this.Dku, paramObject.Dku))) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(208398);
+      AppMethodBeat.o(277209);
       return true;
     }
-    AppMethodBeat.o(208398);
-    return false;
+    if (!(paramObject instanceof IPCLiveControlData))
+    {
+      AppMethodBeat.o(277209);
+      return false;
+    }
+    paramObject = (IPCLiveControlData)paramObject;
+    if (this.JdA != paramObject.JdA)
+    {
+      AppMethodBeat.o(277209);
+      return false;
+    }
+    if (!s.p(this.appId, paramObject.appId))
+    {
+      AppMethodBeat.o(277209);
+      return false;
+    }
+    if (this.euz != paramObject.euz)
+    {
+      AppMethodBeat.o(277209);
+      return false;
+    }
+    if (!s.p(this.JdB, paramObject.JdB))
+    {
+      AppMethodBeat.o(277209);
+      return false;
+    }
+    AppMethodBeat.o(277209);
+    return true;
   }
   
   public final int hashCode()
   {
-    int k = 0;
-    AppMethodBeat.i(208397);
-    Object localObject = this.Dkt;
+    int j = 0;
+    AppMethodBeat.i(277205);
+    int k = this.JdA.hashCode();
     int i;
-    if (localObject != null)
+    int m;
+    if (this.appId == null)
     {
-      i = localObject.hashCode();
-      localObject = this.appId;
-      if (localObject == null) {
-        break label92;
+      i = 0;
+      m = this.euz;
+      if (this.JdB != null) {
+        break label71;
       }
     }
-    label92:
-    for (int j = localObject.hashCode();; j = 0)
+    for (;;)
     {
-      int m = this.cBU;
-      localObject = this.Dku;
-      if (localObject != null) {
-        k = localObject.hashCode();
-      }
-      AppMethodBeat.o(208397);
-      return ((j + i * 31) * 31 + m) * 31 + k;
-      i = 0;
+      AppMethodBeat.o(277205);
+      return ((i + k * 31) * 31 + m) * 31 + j;
+      i = this.appId.hashCode();
       break;
+      label71:
+      j = this.JdB.hashCode();
     }
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(208396);
-    String str = "IPCLiveControlData(action=" + this.Dkt + ", appId=" + this.appId + ", versionType=" + this.cBU + ", payload=" + this.Dku + ")";
-    AppMethodBeat.o(208396);
+    AppMethodBeat.i(277198);
+    String str = "IPCLiveControlData(action=" + this.JdA + ", appId=" + this.appId + ", versionType=" + this.euz + ", payload=" + this.JdB + ')';
+    AppMethodBeat.o(277198);
     return str;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(208399);
-    p.k(paramParcel, "parcel");
-    paramParcel.writeString(this.Dkt.name());
+    AppMethodBeat.i(277215);
+    s.u(paramParcel, "out");
+    paramParcel.writeString(this.JdA.name());
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.cBU);
-    paramParcel.writeParcelable(this.Dku, paramInt);
-    AppMethodBeat.o(208399);
+    paramParcel.writeInt(this.euz);
+    paramParcel.writeParcelable(this.JdB, paramInt);
+    AppMethodBeat.o(277215);
   }
   
-  @l(iBK={1, 1, 16})
+  @Metadata(k=3, mv={1, 5, 1}, xi=48)
   public static final class a
-    implements Parcelable.Creator
-  {
-    public final Object createFromParcel(Parcel paramParcel)
-    {
-      AppMethodBeat.i(208414);
-      p.k(paramParcel, "in");
-      paramParcel = new PluginGameLive.IPCLiveControlData((PluginGameLive.IPCLiveControlData.b)Enum.valueOf(PluginGameLive.IPCLiveControlData.b.class, paramParcel.readString()), paramParcel.readString(), paramParcel.readInt(), paramParcel.readParcelable(PluginGameLive.IPCLiveControlData.class.getClassLoader()));
-      AppMethodBeat.o(208414);
-      return paramParcel;
-    }
-    
-    public final Object[] newArray(int paramInt)
-    {
-      return new PluginGameLive.IPCLiveControlData[paramInt];
-    }
-  }
+    implements Parcelable.Creator<PluginGameLive.IPCLiveControlData>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelive.PluginGameLive.IPCLiveControlData
  * JD-Core Version:    0.7.0.1
  */

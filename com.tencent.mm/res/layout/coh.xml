@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="@dimen/d4"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:id="@id/k24" android:background="@drawable/d0d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_weight="1.0">
-        <com.tencent.mm.ui.widget.MMRoundCornerImageView android:id="@id/kve" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_margin="8.0dip" android:scaleType="fitXY" app:radius="16.0dip" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/kvb" android:layout_width="wrap_content" android:layout_height="18.0dip" android:layout_marginRight="16.0dip" android:layout_toRightOf="@id/kve">
-            <TextView android:textSize="12.0sp" android:textColor="@color/BW_100_Alpha_0_5" android:id="@id/kvc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
-            <TextView android:textSize="12.0sp" android:textColor="@color/BW_100_Alpha_0_5" android:id="@id/kvi" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-            <TextView android:textSize="10.0sp" android:textColor="@color/BW_100_Alpha_0_5" android:gravity="center" android:id="@id/kvd" android:background="@drawable/bdz" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="4.0dip" android:singleLine="true" />
-        </LinearLayout>
-        <FrameLayout android:id="@id/kro" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="8.0dip" android:layout_below="@id/kvb" android:layout_alignLeft="@id/kvb" />
-        <FrameLayout android:id="@id/krk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/kve" />
-    </RelativeLayout>
-    <FrameLayout android:layout_gravity="center_vertical" android:id="@id/krn" android:layout_width="32.0dip" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip">
-        <ProgressBar android:id="@id/krm" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a72" />
-        <ImageView android:id="@id/krl" android:background="@drawable/awi" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </FrameLayout>
-</LinearLayout>
+    <TextView android:textSize="@dimen/hn" android:textStyle="bold" android:textColor="@color/al5" android:ellipsize="end" android:gravity="center" android:id="@id/kd0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/kcx" android:visibility="gone" android:layout_width="@dimen/df" android:layout_height="@dimen/df" android:layout_marginLeft="6.0dip" android:layout_toRightOf="@id/kd0" android:layout_centerVertical="true" style="@style/zi" />
+</RelativeLayout>

@@ -5,31 +5,31 @@ import com.tencent.mm.sdk.platformtools.SimpleObjectPool;
 
 public abstract class b
 {
-  private SimpleObjectPool<a> nUi = new SimpleObjectPool(100);
+  private SimpleObjectPool<a> qTS = new SimpleObjectPool(100);
   
   public void a(a parama)
   {
     if (parama == null) {
       return;
     }
-    this.nUi.release(parama);
+    this.qTS.release(parama);
   }
   
-  public final a bKA()
+  public final a cka()
   {
-    a locala2 = (a)this.nUi.acquire();
+    a locala2 = (a)this.qTS.acquire();
     a locala1 = locala2;
     if (locala2 == null) {
-      locala1 = bKB();
+      locala1 = ckb();
     }
     return locala1;
   }
   
-  public abstract a bKB();
+  public abstract a ckb();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.a.b
  * JD-Core Version:    0.7.0.1
  */

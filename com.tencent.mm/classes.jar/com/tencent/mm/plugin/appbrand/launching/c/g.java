@@ -6,74 +6,74 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.loader.a;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.appbrand.service.r;
-import com.tencent.mm.plugin.appbrand.service.s;
+import com.tencent.mm.plugin.appbrand.service.t;
+import com.tencent.mm.plugin.appbrand.service.u;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.au;
 
 public final class g
-  implements s
+  implements u
 {
-  private static final int[] pYR = { 1025, 1031, 1032 };
-  private static final int[] pYS = { 1011, 1012, 1013, 1047, 1049, 1048, 1050, 1124, 1125, 1126 };
-  private final d pYT;
-  private final f pYU;
-  private final c pYV;
+  public static final int[] tdE = { 1025, 1031, 1032 };
+  public static final int[] tdF = { 1011, 1012, 1013, 1047, 1049, 1048, 1050, 1124, 1125, 1126 };
+  private final d tdG;
+  private final f tdH;
+  private final c tdI;
   
   public g()
   {
     AppMethodBeat.i(47416);
-    this.pYT = new d();
-    this.pYU = new f();
-    this.pYV = new c();
+    this.tdG = new d();
+    this.tdH = new f();
+    this.tdI = new c();
     AppMethodBeat.o(47416);
   }
   
   public final boolean b(Context paramContext, String paramString, int paramInt, Bundle paramBundle1, Bundle paramBundle2)
   {
-    AppMethodBeat.i(280631);
-    if (a.contains(pYR, paramInt))
+    AppMethodBeat.i(321043);
+    if (a.contains(tdE, paramInt))
     {
-      if (a.a.pYI == this.pYT.a(paramContext, paramString, paramInt, paramBundle1, paramBundle2))
+      if (a.a.tdv == this.tdG.a(paramContext, paramString, paramInt, paramBundle1, paramBundle2))
       {
-        AppMethodBeat.o(280631);
+        AppMethodBeat.o(321043);
         return true;
       }
-      AppMethodBeat.o(280631);
+      AppMethodBeat.o(321043);
       return false;
     }
-    if (a.contains(pYS, paramInt))
+    if (a.contains(tdF, paramInt))
     {
-      if (a.a.pYI == this.pYU.a(paramContext, paramString, paramInt, paramBundle1, paramBundle2))
+      if (a.a.tdv == this.tdH.a(paramContext, paramString, paramInt, paramBundle1, paramBundle2))
       {
-        AppMethodBeat.o(280631);
+        AppMethodBeat.o(321043);
         return true;
       }
-      AppMethodBeat.o(280631);
+      AppMethodBeat.o(321043);
       return false;
     }
     if ((1064 == paramInt) || (1078 == paramInt))
     {
-      if (a.a.pYI == this.pYV.a(paramContext, paramString, paramInt, paramBundle1, paramBundle2))
+      if (a.a.tdv == this.tdI.a(paramContext, paramString, paramInt, paramBundle1, paramBundle2))
       {
-        AppMethodBeat.o(280631);
+        AppMethodBeat.o(321043);
         return true;
       }
-      AppMethodBeat.o(280631);
+      AppMethodBeat.o(321043);
       return false;
     }
     Log.e("MicroMsg.WeAppLinkOpener", "handleScanCodeLink, unhandled case link[ %s ], scene[ %d ]", new Object[] { paramString, Integer.valueOf(paramInt) });
-    AppMethodBeat.o(280631);
+    AppMethodBeat.o(321043);
     return false;
   }
   
   public final boolean s(String paramString, Bundle paramBundle)
   {
-    AppMethodBeat.i(280630);
+    AppMethodBeat.i(321042);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(280630);
+      AppMethodBeat.o(321042);
       return false;
     }
     Log.i("MicroMsg.WeAppLinkOpener", "handle appLink = %s", new Object[] { paramString });
@@ -113,32 +113,32 @@ public final class g
           }
           String str1 = paramString.getQueryParameter("username");
           String str2 = paramString.getQueryParameter("path");
-          if ((!Util.isNullOrNil(str1)) && (as.OS(str1))) {
+          if ((!Util.isNullOrNil(str1)) && (au.Hh(str1))) {
             break label189;
           }
-          AppMethodBeat.o(280630);
+          AppMethodBeat.o(321042);
           return false;
           paramString = new com.tencent.mm.plugin.appbrand.api.g();
           paramString.username = str1;
           paramString.version = -1;
-          paramString.cBU = 0;
-          paramString.nBq = str2;
+          paramString.euz = 0;
+          paramString.qAF = str2;
           paramString.scene = localObject1.scene;
-          paramString.fvd = b.cau();
-          paramString.nBt = 0;
-          paramString.nBu = b.cav();
-          paramBundle = b.T(paramBundle);
+          paramString.hzx = b.cAK();
+          paramString.qAI = b.cAL();
+          paramString.qAJ = b.cAM();
+          paramBundle = b.ae(paramBundle);
           if (paramBundle == null) {
-            break label261;
+            break label263;
           }
-          paramString.nBC = paramBundle;
-          ((r)h.ae(r.class)).a(null, paramString);
-          AppMethodBeat.o(280630);
+          paramString.qAR = paramBundle;
+          ((t)h.ax(t.class)).a(null, paramString);
+          AppMethodBeat.o(321042);
           return true;
         }
         if (paramString == null)
         {
-          AppMethodBeat.o(280630);
+          AppMethodBeat.o(321042);
           return false;
           j = 0;
           break label80;
@@ -147,8 +147,8 @@ public final class g
         }
       }
       label189:
-      AppMethodBeat.o(280630);
-      label261:
+      AppMethodBeat.o(321042);
+      label263:
       return false;
       localObject1 = null;
     }
@@ -156,7 +156,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.c.g
  * JD-Core Version:    0.7.0.1
  */

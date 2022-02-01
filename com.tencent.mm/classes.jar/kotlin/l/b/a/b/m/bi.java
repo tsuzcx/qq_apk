@@ -1,70 +1,81 @@
 package kotlin.l.b.a.b.m;
 
-import java.util.List;
-import kotlin.l.b.a.b.b.a.g;
-import kotlin.l.b.a.b.j.f.h;
-import kotlin.t;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.g.a.b;
+import kotlin.g.b.s;
+import kotlin.p;
 
-public abstract class bi
-  extends ab
+public final class bi
 {
-  public bi()
+  public static final bk a(bk parambk, ad paramad)
   {
-    super((byte)0);
+    AppMethodBeat.i(60904);
+    s.u(parambk, "<this>");
+    s.u(paramad, "origin");
+    parambk = b(parambk, aC(paramad));
+    AppMethodBeat.o(60904);
+    return parambk;
   }
   
-  public final g iDY()
+  public static final bk a(bk parambk, ad paramad, b<? super ad, ? extends ad> paramb)
   {
-    return iPY().iDY();
-  }
-  
-  public final h iEC()
-  {
-    return iPY().iEC();
-  }
-  
-  public final boolean iIu()
-  {
-    return iPY().iIu();
-  }
-  
-  public final List<av> iOR()
-  {
-    return iPY().iOR();
-  }
-  
-  public final at iOU()
-  {
-    return iPY().iOU();
-  }
-  
-  public boolean iPL()
-  {
-    return true;
-  }
-  
-  public final bg iPX()
-  {
-    for (ab localab = iPY(); (localab instanceof bi); localab = ((bi)localab).iPY()) {}
-    if (localab == null) {
-      throw new t("null cannot be cast to non-null type org.jetbrains.kotlin.types.UnwrappedType");
+    AppMethodBeat.i(191573);
+    s.u(parambk, "<this>");
+    s.u(paramad, "origin");
+    s.u(paramb, "transform");
+    paramad = aC(paramad);
+    if (paramad == null) {}
+    for (paramad = null;; paramad = (ad)paramb.invoke(paramad))
+    {
+      parambk = b(parambk, paramad);
+      AppMethodBeat.o(191573);
+      return parambk;
     }
-    return (bg)localab;
   }
   
-  protected abstract ab iPY();
-  
-  public String toString()
+  public static final ad aC(ad paramad)
   {
-    if (iPL()) {
-      return iPY().toString();
+    AppMethodBeat.i(60903);
+    s.u(paramad, "<this>");
+    if ((paramad instanceof bh))
+    {
+      paramad = ((bh)paramad).kAG();
+      AppMethodBeat.o(60903);
+      return paramad;
     }
-    return "<Not computed yet>";
+    AppMethodBeat.o(60903);
+    return null;
+  }
+  
+  public static final bk b(bk parambk, ad paramad)
+  {
+    AppMethodBeat.i(60905);
+    s.u(parambk, "<this>");
+    if (paramad == null)
+    {
+      AppMethodBeat.o(60905);
+      return parambk;
+    }
+    if ((parambk instanceof al))
+    {
+      parambk = (bk)new an((al)parambk, paramad);
+      AppMethodBeat.o(60905);
+      return parambk;
+    }
+    if ((parambk instanceof x))
+    {
+      parambk = (bk)new z((x)parambk, paramad);
+      AppMethodBeat.o(60905);
+      return parambk;
+    }
+    parambk = new p();
+    AppMethodBeat.o(60905);
+    throw parambk;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.m.bi
  * JD-Core Version:    0.7.0.1
  */

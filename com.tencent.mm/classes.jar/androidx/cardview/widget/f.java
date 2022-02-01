@@ -15,108 +15,108 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class f
   extends Drawable
 {
-  private PorterDuff.Mode jF;
+  float Ri;
+  private final RectF Rj;
+  private final Rect Rk;
+  float Rl;
+  private boolean Rm;
+  private boolean Rn;
+  ColorStateList Ro;
+  private PorterDuffColorFilter Rp;
+  private ColorStateList Rq;
+  private PorterDuff.Mode kA;
   private final Paint mPaint;
-  float yT;
-  private final RectF yU;
-  private final Rect yV;
-  float yW;
-  private boolean yX;
-  private boolean yY;
-  ColorStateList yZ;
-  private PorterDuffColorFilter za;
-  private ColorStateList zb;
   
   f(ColorStateList paramColorStateList, float paramFloat)
   {
-    AppMethodBeat.i(188187);
-    this.yX = false;
-    this.yY = true;
-    this.jF = PorterDuff.Mode.SRC_IN;
-    this.yT = paramFloat;
+    AppMethodBeat.i(192426);
+    this.Rm = false;
+    this.Rn = true;
+    this.kA = PorterDuff.Mode.SRC_IN;
+    this.Ri = paramFloat;
     this.mPaint = new Paint(5);
     b(paramColorStateList);
-    this.yU = new RectF();
-    this.yV = new Rect();
-    AppMethodBeat.o(188187);
+    this.Rj = new RectF();
+    this.Rk = new Rect();
+    AppMethodBeat.o(192426);
   }
   
   private PorterDuffColorFilter a(ColorStateList paramColorStateList, PorterDuff.Mode paramMode)
   {
-    AppMethodBeat.i(188211);
+    AppMethodBeat.i(192433);
     if ((paramColorStateList == null) || (paramMode == null))
     {
-      AppMethodBeat.o(188211);
+      AppMethodBeat.o(192433);
       return null;
     }
     paramColorStateList = new PorterDuffColorFilter(paramColorStateList.getColorForState(getState(), 0), paramMode);
-    AppMethodBeat.o(188211);
+    AppMethodBeat.o(192433);
     return paramColorStateList;
   }
   
   final void a(float paramFloat, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(188189);
-    if ((paramFloat == this.yW) && (this.yX == paramBoolean1) && (this.yY == paramBoolean2))
+    AppMethodBeat.i(192453);
+    if ((paramFloat == this.Rl) && (this.Rm == paramBoolean1) && (this.Rn == paramBoolean2))
     {
-      AppMethodBeat.o(188189);
+      AppMethodBeat.o(192453);
       return;
     }
-    this.yW = paramFloat;
-    this.yX = paramBoolean1;
-    this.yY = paramBoolean2;
-    c(null);
+    this.Rl = paramFloat;
+    this.Rm = paramBoolean1;
+    this.Rn = paramBoolean2;
+    g(null);
     invalidateSelf();
-    AppMethodBeat.o(188189);
+    AppMethodBeat.o(192453);
   }
   
   final void b(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(188188);
+    AppMethodBeat.i(192444);
     ColorStateList localColorStateList = paramColorStateList;
     if (paramColorStateList == null) {
       localColorStateList = ColorStateList.valueOf(0);
     }
-    this.yZ = localColorStateList;
-    this.mPaint.setColor(this.yZ.getColorForState(getState(), this.yZ.getDefaultColor()));
-    AppMethodBeat.o(188188);
-  }
-  
-  final void c(Rect paramRect)
-  {
-    AppMethodBeat.i(188193);
-    Rect localRect = paramRect;
-    if (paramRect == null) {
-      localRect = getBounds();
-    }
-    this.yU.set(localRect.left, localRect.top, localRect.right, localRect.bottom);
-    this.yV.set(localRect);
-    if (this.yX)
-    {
-      float f1 = g.a(this.yW, this.yT, this.yY);
-      float f2 = g.b(this.yW, this.yT, this.yY);
-      this.yV.inset((int)Math.ceil(f2), (int)Math.ceil(f1));
-      this.yU.set(this.yV);
-    }
-    AppMethodBeat.o(188193);
+    this.Ro = localColorStateList;
+    this.mPaint.setColor(this.Ro.getColorForState(getState(), this.Ro.getDefaultColor()));
+    AppMethodBeat.o(192444);
   }
   
   public final void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(188191);
+    AppMethodBeat.i(192458);
     Paint localPaint = this.mPaint;
-    if ((this.za != null) && (localPaint.getColorFilter() == null)) {
-      localPaint.setColorFilter(this.za);
+    if ((this.Rp != null) && (localPaint.getColorFilter() == null)) {
+      localPaint.setColorFilter(this.Rp);
     }
     for (int i = 1;; i = 0)
     {
-      paramCanvas.drawRoundRect(this.yU, this.yT, this.yT, localPaint);
+      paramCanvas.drawRoundRect(this.Rj, this.Ri, this.Ri, localPaint);
       if (i != 0) {
         localPaint.setColorFilter(null);
       }
-      AppMethodBeat.o(188191);
+      AppMethodBeat.o(192458);
       return;
     }
+  }
+  
+  final void g(Rect paramRect)
+  {
+    AppMethodBeat.i(192466);
+    Rect localRect = paramRect;
+    if (paramRect == null) {
+      localRect = getBounds();
+    }
+    this.Rj.set(localRect.left, localRect.top, localRect.right, localRect.bottom);
+    this.Rk.set(localRect);
+    if (this.Rm)
+    {
+      float f1 = g.d(this.Rl, this.Ri, this.Rn);
+      float f2 = g.e(this.Rl, this.Ri, this.Rn);
+      this.Rk.inset((int)Math.ceil(f2), (int)Math.ceil(f1));
+      this.Rj.set(this.Rk);
+    }
+    AppMethodBeat.o(192466);
   }
   
   public final int getOpacity()
@@ -126,87 +126,87 @@ final class f
   
   public final void getOutline(Outline paramOutline)
   {
-    AppMethodBeat.i(188196);
-    paramOutline.setRoundRect(this.yV, this.yT);
-    AppMethodBeat.o(188196);
+    AppMethodBeat.i(192485);
+    paramOutline.setRoundRect(this.Rk, this.Ri);
+    AppMethodBeat.o(192485);
   }
   
   public final boolean isStateful()
   {
-    AppMethodBeat.i(188208);
-    if (((this.zb != null) && (this.zb.isStateful())) || ((this.yZ != null) && (this.yZ.isStateful())) || (super.isStateful()))
+    AppMethodBeat.i(192567);
+    if (((this.Rq != null) && (this.Rq.isStateful())) || ((this.Ro != null) && (this.Ro.isStateful())) || (super.isStateful()))
     {
-      AppMethodBeat.o(188208);
+      AppMethodBeat.o(192567);
       return true;
     }
-    AppMethodBeat.o(188208);
+    AppMethodBeat.o(192567);
     return false;
   }
   
   protected final void onBoundsChange(Rect paramRect)
   {
-    AppMethodBeat.i(188194);
+    AppMethodBeat.i(192476);
     super.onBoundsChange(paramRect);
-    c(paramRect);
-    AppMethodBeat.o(188194);
+    g(paramRect);
+    AppMethodBeat.o(192476);
   }
   
   protected final boolean onStateChange(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(188206);
-    int i = this.yZ.getColorForState(paramArrayOfInt, this.yZ.getDefaultColor());
+    AppMethodBeat.i(192554);
+    int i = this.Ro.getColorForState(paramArrayOfInt, this.Ro.getDefaultColor());
     if (i != this.mPaint.getColor()) {}
     for (boolean bool = true;; bool = false)
     {
       if (bool) {
         this.mPaint.setColor(i);
       }
-      if ((this.zb == null) || (this.jF == null)) {
+      if ((this.Rq == null) || (this.kA == null)) {
         break;
       }
-      this.za = a(this.zb, this.jF);
-      AppMethodBeat.o(188206);
+      this.Rp = a(this.Rq, this.kA);
+      AppMethodBeat.o(192554);
       return true;
     }
-    AppMethodBeat.o(188206);
+    AppMethodBeat.o(192554);
     return bool;
   }
   
   public final void setAlpha(int paramInt)
   {
-    AppMethodBeat.i(188198);
+    AppMethodBeat.i(192494);
     this.mPaint.setAlpha(paramInt);
-    AppMethodBeat.o(188198);
+    AppMethodBeat.o(192494);
   }
   
   public final void setColorFilter(ColorFilter paramColorFilter)
   {
-    AppMethodBeat.i(188199);
+    AppMethodBeat.i(192507);
     this.mPaint.setColorFilter(paramColorFilter);
-    AppMethodBeat.o(188199);
+    AppMethodBeat.o(192507);
   }
   
   public final void setTintList(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(188202);
-    this.zb = paramColorStateList;
-    this.za = a(this.zb, this.jF);
+    AppMethodBeat.i(192529);
+    this.Rq = paramColorStateList;
+    this.Rp = a(this.Rq, this.kA);
     invalidateSelf();
-    AppMethodBeat.o(188202);
+    AppMethodBeat.o(192529);
   }
   
   public final void setTintMode(PorterDuff.Mode paramMode)
   {
-    AppMethodBeat.i(188205);
-    this.jF = paramMode;
-    this.za = a(this.zb, this.jF);
+    AppMethodBeat.i(192543);
+    this.kA = paramMode;
+    this.Rp = a(this.Rq, this.kA);
     invalidateSelf();
-    AppMethodBeat.o(188205);
+    AppMethodBeat.o(192543);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.cardview.widget.f
  * JD-Core Version:    0.7.0.1
  */

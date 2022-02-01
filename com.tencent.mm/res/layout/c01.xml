@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="horizontal" android:background="@drawable/g_" android:layout_width="fill_parent" android:layout_height="@dimen/bu" android:layout_centerVertical="true"
+<RelativeLayout android:orientation="horizontal" android:background="@null" android:paddingTop="@dimen/iq" android:paddingBottom="@dimen/iq" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/h38" android:background="@drawable/avz" android:visibility="gone" android:layout_centerVertical="true" android:layout_marginStart="24.0dip" android:layout_marginEnd="24.0dip" android:layout_alignParentEnd="true" style="@style/zr" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/be9" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toStartOf="@id/h38" android:layout_alignParentStart="true">
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/x1" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:layout_marginTop="@dimen/k" android:layout_marginBottom="@dimen/k" android:src="@raw/default_avatar" android:layout_marginStart="24.0dip" />
-        <TextView android:textSize="@dimen/l" android:textColor="#ffededed" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/j1l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{user}" android:singleLine="true" android:layout_marginStart="@dimen/hs" style="@style/mk" />
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/i4b" android:visibility="invisible" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@drawable/c0a" android:layout_marginStart="10.0dip" />
-    </LinearLayout>
+    <RelativeLayout android:id="@id/z5" android:layout_width="@dimen/j4" android:layout_height="@dimen/j4">
+        <ImageView android:id="@id/z4" android:layout_width="@dimen/m0" android:layout_height="@dimen/j4" android:src="@raw/sight_icon_mention" android:scaleType="fitCenter" />
+        <TextView android:id="@id/z6" android:visibility="gone" android:layout_marginRight="@dimen/m7" android:layout_alignParentTop="true" android:layout_alignParentRight="true" style="@style/ag" />
+    </RelativeLayout>
 </RelativeLayout>

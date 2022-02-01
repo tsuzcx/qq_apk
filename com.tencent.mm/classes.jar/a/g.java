@@ -4,19 +4,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g<TResult>
 {
-  final f<TResult> awt;
+  final f<TResult> ckQ;
   
   public g()
   {
     AppMethodBeat.i(53005);
-    this.awt = new f();
+    this.ckQ = new f();
     AppMethodBeat.o(53005);
   }
   
   private boolean b(Exception paramException)
   {
     AppMethodBeat.i(53007);
-    boolean bool = this.awt.b(paramException);
+    boolean bool = this.ckQ.b(paramException);
     AppMethodBeat.o(53007);
     return bool;
   }
@@ -24,9 +24,21 @@ public final class g<TResult>
   private boolean trySetResult(TResult paramTResult)
   {
     AppMethodBeat.i(53006);
-    boolean bool = this.awt.trySetResult(paramTResult);
+    boolean bool = this.ckQ.trySetResult(paramTResult);
     AppMethodBeat.o(53006);
     return bool;
+  }
+  
+  public final void Mz()
+  {
+    AppMethodBeat.i(53008);
+    if (!this.ckQ.My())
+    {
+      IllegalStateException localIllegalStateException = new IllegalStateException("Cannot cancel a completed task.");
+      AppMethodBeat.o(53008);
+      throw localIllegalStateException;
+    }
+    AppMethodBeat.o(53008);
   }
   
   public final void c(Exception paramException)
@@ -39,18 +51,6 @@ public final class g<TResult>
       throw paramException;
     }
     AppMethodBeat.o(53010);
-  }
-  
-  public final void nT()
-  {
-    AppMethodBeat.i(53008);
-    if (!this.awt.nS())
-    {
-      IllegalStateException localIllegalStateException = new IllegalStateException("Cannot cancel a completed task.");
-      AppMethodBeat.o(53008);
-      throw localIllegalStateException;
-    }
-    AppMethodBeat.o(53008);
   }
   
   public final void setResult(TResult paramTResult)
@@ -67,7 +67,7 @@ public final class g<TResult>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     a.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:paddingLeft="@dimen/df" android:paddingRight="@dimen/cp" android:layout_width="@dimen/d6" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textAppearance="@style/w4" android:textColor="?a3i" android:ellipsize="end" android:id="@id/fdt" android:background="?a3j" android:paddingLeft="@dimen/amn" android:paddingTop="@dimen/amr" android:paddingRight="@dimen/amn" android:paddingBottom="@dimen/amr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/amo" android:maxWidth="256.0dip" android:maxLines="3" android:paddingStart="@dimen/amn" android:paddingEnd="@dimen/amn" />
-</LinearLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/f1c" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:scaleType="center" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/kn8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m2" android:src="@drawable/azm" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+</RelativeLayout>

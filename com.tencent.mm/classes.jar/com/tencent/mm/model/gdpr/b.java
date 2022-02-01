@@ -2,7 +2,7 @@ package com.tencent.mm.model.gdpr;
 
 public abstract interface b
 {
-  public abstract void vu(int paramInt);
+  public abstract void onPermissionReturn(int paramInt);
 }
 
 

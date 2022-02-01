@@ -8,82 +8,93 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract interface a
 {
-  public abstract i.a a(b paramb);
+  public abstract m.a a(b paramb);
   
-  public abstract int cfu();
+  public abstract m.a a(b paramb, boolean paramBoolean, String paramString);
+  
+  public abstract void afa(String paramString);
+  
+  public abstract int cGf();
   
   public static final class a
   {
-    private static final a qwJ;
+    private static final a tBI;
     
     static
     {
-      AppMethodBeat.i(242760);
-      qwJ = new a()
+      AppMethodBeat.i(325230);
+      tBI = new a()
       {
-        public final i.a a(a.b paramAnonymousb)
+        public final m.a a(a.b paramAnonymousb)
         {
-          return i.qxA;
+          return m.tCD;
         }
         
-        public final int cfu()
+        public final m.a a(a.b paramAnonymousb, boolean paramAnonymousBoolean, String paramAnonymousString)
+        {
+          return m.tCD;
+        }
+        
+        public final void afa(String paramAnonymousString) {}
+        
+        public final int cGf()
         {
           return -2147483648;
         }
       };
-      AppMethodBeat.o(242760);
+      AppMethodBeat.o(325230);
     }
     
-    public static a a(AppBrandRuntime paramAppBrandRuntime, i.a parama)
+    public static a a(AppBrandRuntime paramAppBrandRuntime, m.a parama)
     {
-      AppMethodBeat.i(242758);
+      AppMethodBeat.i(325225);
       paramAppBrandRuntime = new b(paramAppBrandRuntime, parama);
-      AppMethodBeat.o(242758);
+      AppMethodBeat.o(325225);
       return paramAppBrandRuntime;
     }
     
-    public static a ah(AppBrandRuntime paramAppBrandRuntime)
+    public static a av(AppBrandRuntime paramAppBrandRuntime)
     {
-      AppMethodBeat.i(242756);
-      if ((paramAppBrandRuntime == null) || (paramAppBrandRuntime.ntU.get()) || (paramAppBrandRuntime.aol))
+      AppMethodBeat.i(325220);
+      if ((paramAppBrandRuntime == null) || (paramAppBrandRuntime.qsE.get()) || (paramAppBrandRuntime.ccV))
       {
-        paramAppBrandRuntime = qwJ;
-        AppMethodBeat.o(242756);
+        paramAppBrandRuntime = tBI;
+        AppMethodBeat.o(325220);
         return paramAppBrandRuntime;
       }
-      paramAppBrandRuntime = paramAppBrandRuntime.ntG.qxh;
-      AppMethodBeat.o(242756);
+      paramAppBrandRuntime = paramAppBrandRuntime.qsp.cGm();
+      AppMethodBeat.o(325220);
       return paramAppBrandRuntime;
     }
   }
   
   public static enum b
   {
-    final int qwP;
-    final int qwQ;
+    final int tBO;
+    final int tBP;
     
     static
     {
-      AppMethodBeat.i(244705);
-      qwK = new b("NORMAL", 0, -1, -1);
-      qwL = new b("LBS", 1, a.g.luggage_app_brand_jsapi_getting_location, a.c.app_brand_actionbar_capsule_lbs_dark);
-      qwM = new b("VOICE", 2, a.g.luggage_app_brand_jsapi_recording, a.c.app_brand_actionbar_capsule_voice_dark);
-      qwN = new b("VIDEO", 3, -1, a.c.app_brand_actionbar_capsule_video_dark);
-      qwO = new b("LOADING", 4, -1, -1);
-      qwR = new b[] { qwK, qwL, qwM, qwN, qwO };
-      AppMethodBeat.o(244705);
+      AppMethodBeat.i(325237);
+      tBJ = new b("NORMAL", 0, -1, -1);
+      tBK = new b("LBS", 1, a.g.luggage_app_brand_jsapi_getting_location, a.c.app_brand_actionbar_capsule_lbs_dark);
+      tBL = new b("VOICE", 2, a.g.luggage_app_brand_jsapi_recording, a.c.app_brand_actionbar_capsule_voice_dark);
+      tBM = new b("VIDEO", 3, -1, a.c.app_brand_actionbar_capsule_video_dark);
+      tBN = new b("LOADING", 4, -1, -1);
+      tBQ = new b[] { tBJ, tBK, tBL, tBM, tBN };
+      AppMethodBeat.o(325237);
     }
     
     private b(int paramInt1, int paramInt2)
     {
-      this.qwP = paramInt1;
-      this.qwQ = paramInt2;
+      this.tBO = paramInt1;
+      this.tBP = paramInt2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.capsulebar.a
  * JD-Core Version:    0.7.0.1
  */

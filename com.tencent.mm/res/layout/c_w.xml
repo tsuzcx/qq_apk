@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.wallet_core.ui.MMScrollView android:orientation="vertical" android:id="@id/ji9" android:background="@color/ae1" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:paddingTop="0.0dip" style="@style/a05">
-        <TextView android:autoLink="phone" android:id="@id/ji4" android:text="@string/iqx" style="@style/a0h" />
-        <LinearLayout style="@style/a0y">
-            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/a1j" app:contentHint="@string/iqs" app:titleText="@string/iqs" style="@style/sy" />
-            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/bkj" android:visibility="gone" app:contentHint="@string/i9o" app:titleText="@string/i9t" style="@style/a0f" />
-            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/bk5" android:visibility="gone" app:contentHint="@string/i9l" app:titleText="@string/i9m" style="@style/a0e" />
-            <com.tencent.mm.plugin.wallet_core.ui.view.WalletPhoneInputView android:id="@id/fh1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" app:phoneHint="@string/i_h" app:phoneTitle="@string/iqv" />
-        </LinearLayout>
-        <Button android:id="@id/fz0" android:layout_marginTop="15.0dip" android:text="@string/x5" style="@style/a0u" />
-    </LinearLayout>
-</com.tencent.mm.wallet_core.ui.MMScrollView>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="@dimen/d_" android:layout_height="@dimen/dc" android:layout_weight="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/f1c" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:scaleType="fitXY" app:iconColor="@color/BW_BG_100" />
+    <TextView android:textSize="@dimen/m_" android:textColor="@color/BW_BG_100" android:id="@id/ko8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" />
+</LinearLayout>

@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.festival.ui.bak;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -8,292 +7,243 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.p;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.c;
-import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.festival.a.a;
 import com.tencent.mm.plugin.festival.a.b;
 import com.tencent.mm.plugin.festival.a.c;
 import com.tencent.mm.plugin.festival.a.d;
 import com.tencent.mm.plugin.festival.ui.FestivalActivityBase;
-import com.tencent.mm.plugin.finder.cgi.cr;
-import com.tencent.mm.plugin.finder.utils.m;
+import com.tencent.mm.plugin.finder.cgi.dt;
+import com.tencent.mm.plugin.finder.utils.r;
+import com.tencent.mm.plugin.findersdk.a.cn;
 import com.tencent.mm.protocal.protobuf.FinderAuthInfo;
 import com.tencent.mm.protocal.protobuf.FinderContact;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import java.util.Calendar;
-import java.util.HashMap;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
 
 @com.tencent.mm.ui.base.a(32)
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/festival/ui/bak/FestivalSecondBakUI;", "Lcom/tencent/mm/plugin/festival/ui/FestivalActivityBase;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "anchorUserName", "", "getContentLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "setAuthInfo", "authProfession", "setFriendFollowCnt", "friendFollowCount", "showLiveEnd", "showLiveNotStart", "Companion", "plugin-festival_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/festival/ui/bak/FestivalSecondBakUI;", "Lcom/tencent/mm/plugin/festival/ui/FestivalActivityBase;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "anchorUserName", "", "getContentLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "setAuthInfo", "authProfession", "setFriendFollowCnt", "friendFollowCount", "showLiveEnd", "showLiveNotStart", "Companion", "plugin-festival_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FestivalSecondBakUI
   extends FestivalActivityBase
-  implements i
+  implements com.tencent.mm.am.h
 {
-  public static final a wUD;
-  private HashMap _$_findViewCache;
-  private String kvQ;
+  public static final FestivalSecondBakUI.a Arj;
+  private String mZs;
   
   static
   {
-    AppMethodBeat.i(258658);
-    wUD = new a((byte)0);
-    AppMethodBeat.o(258658);
+    AppMethodBeat.i(260916);
+    Arj = new FestivalSecondBakUI.a((byte)0);
+    AppMethodBeat.o(260916);
   }
   
-  private final void LS(int paramInt)
+  private final void MP(int paramInt)
   {
-    AppMethodBeat.i(258657);
-    Object localObject = (TextView)_$_findCachedViewById(a.b.anchor_ext_info_friend_floow_count);
-    p.j(localObject, "anchor_ext_info_friend_floow_count");
-    AppCompatActivity localAppCompatActivity = getContext();
-    p.j(localAppCompatActivity, "context");
-    ((TextView)localObject).setText((CharSequence)localAppCompatActivity.getResources().getString(a.d.finder_friend_follow, new Object[] { m.QF(paramInt) }));
+    AppMethodBeat.i(260908);
+    ((TextView)findViewById(a.b.AqQ)).setText((CharSequence)getContext().getResources().getString(a.d.finder_friend_follow, new Object[] { r.TP(paramInt) }));
     if (paramInt > 0) {}
     for (paramInt = 0;; paramInt = 8)
     {
-      localObject = (TextView)_$_findCachedViewById(a.b.anchor_ext_info_friend_floow_count);
-      p.j(localObject, "anchor_ext_info_friend_floow_count");
-      ((TextView)localObject).setVisibility(paramInt);
-      localObject = (LinearLayout)_$_findCachedViewById(a.b.anchor_ext_info_layout);
-      p.j(localObject, "anchor_ext_info_layout");
-      ((LinearLayout)localObject).setVisibility(paramInt);
-      AppMethodBeat.o(258657);
+      ((TextView)findViewById(a.b.AqQ)).setVisibility(paramInt);
+      ((LinearLayout)findViewById(a.b.AqR)).setVisibility(paramInt);
+      AppMethodBeat.o(260908);
       return;
     }
   }
   
-  public final void _$_clearFindViewByIdCache()
+  private static final void a(FestivalSecondBakUI paramFestivalSecondBakUI, View paramView)
   {
-    AppMethodBeat.i(258662);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(258662);
-  }
-  
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(258660);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
+    AppMethodBeat.i(260913);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramFestivalSecondBakUI);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/festival/ui/bak/FestivalSecondBakUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    kotlin.g.b.s.u(paramFestivalSecondBakUI, "this$0");
+    paramView = paramFestivalSecondBakUI.mZs;
+    if (paramView != null)
     {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("finder_username", paramView);
+      ((Intent)localObject).putExtra("key_enter_profile_type", 11);
+      ((cn)com.tencent.mm.kernel.h.az(cn.class)).enterFinderProfileUI((Context)paramFestivalSecondBakUI.getContext(), (Intent)localObject);
     }
-    AppMethodBeat.o(258660);
-    return localView1;
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/festival/ui/bak/FestivalSecondBakUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(260913);
   }
   
-  public final int dmv()
+  public final void _$_clearFindViewByIdCache() {}
+  
+  public final int dTn()
   {
-    return a.c.wUr;
+    return a.c.Ara;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(258647);
+    AppMethodBeat.i(260927);
     super.onCreate(paramBundle);
     switch (getIntent().getIntExtra("IntentKeyStatusErrorType", 1))
     {
     default: 
       finish();
-      AppMethodBeat.o(258647);
+      AppMethodBeat.o(260927);
       return;
     case 1: 
-      paramBundle = (RelativeLayout)_$_findCachedViewById(a.b.wUo);
-      p.j(paramBundle, "liveStatusEndRoot");
-      paramBundle.setVisibility(0);
-      paramBundle = (LinearLayout)_$_findCachedViewById(a.b.wUp);
-      p.j(paramBundle, "liveStatusNotStartRoot");
-      paramBundle.setVisibility(8);
-      paramBundle = (RelativeLayout)_$_findCachedViewById(a.b.wUl);
-      p.j(paramBundle, "bgRoot");
-      Object localObject = com.tencent.mm.plugin.festival.ui.a.wUC;
+      ((RelativeLayout)findViewById(a.b.AqV)).setVisibility(0);
+      ((LinearLayout)findViewById(a.b.AqW)).setVisibility(8);
+      paramBundle = (RelativeLayout)findViewById(a.b.AqS);
+      Object localObject = com.tencent.mm.plugin.festival.ui.a.Arh;
       localObject = (Context)this;
-      p.k(localObject, "context");
-      Calendar localCalendar = com.tencent.mm.plugin.festival.ui.a.wUB;
-      p.j(localCalendar, "calender");
-      localCalendar.setTimeInMillis(System.currentTimeMillis());
-      int i = com.tencent.mm.plugin.festival.ui.a.wUB.get(11);
-      label171:
-      label179:
-      label255:
+      kotlin.g.b.s.u(localObject, "context");
+      com.tencent.mm.plugin.festival.ui.a.Ari.setTimeInMillis(System.currentTimeMillis());
+      int i = com.tencent.mm.plugin.festival.ui.a.Ari.get(11);
+      label152:
+      label225:
       int j;
-      if (6 > i)
-      {
-        i = 0;
-        if (i == 0) {
-          break label515;
-        }
-        i = a.a.wUh;
-        localObject = androidx.core.content.a.m((Context)localObject, i);
-        if (localObject == null) {
-          p.iCn();
-        }
-        paramBundle.setBackground((Drawable)new LayerDrawable(new Drawable[] { localObject }));
-        this.kvQ = getIntent().getStringExtra("IntentKeyAnchorUsrName");
-        paramBundle = (CharSequence)this.kvQ;
-        if ((paramBundle != null) && (paramBundle.length() != 0)) {
-          break label522;
-        }
-        i = 1;
-        if (i != 0) {
-          this.kvQ = "v2_060000231003b20faec8cae38c11c0d5c60de432b07725973fcf0b69006c0940e35c83f58db4@finder";
-        }
-        paramBundle = (CharSequence)this.kvQ;
-        if ((paramBundle != null) && (paramBundle.length() != 0)) {
-          break label527;
-        }
-        i = 1;
-        label289:
-        if (i != 0) {
-          break label532;
-        }
-        ((TextView)_$_findCachedViewById(a.b.visit_anchor_profile)).setOnClickListener((View.OnClickListener)new FestivalSecondBakUI.b(this));
-        paramBundle = (WeImageView)_$_findCachedViewById(a.b.visit_anchor_profile_icon);
-        p.j(paramBundle, "visit_anchor_profile_icon");
-        paramBundle.setVisibility(0);
-        paramBundle = (TextView)_$_findCachedViewById(a.b.visit_anchor_profile);
-        p.j(paramBundle, "visit_anchor_profile");
-        paramBundle.setVisibility(0);
-        label363:
-        ((ImageView)_$_findCachedViewById(a.b.anchor_avatar)).setImageResource(a.a.wUk);
-        j = getIntent().getIntExtra("IntentKeyFriendFollowCnt", 0);
-        paramBundle = (CharSequence)this.kvQ;
-        if ((paramBundle != null) && (paramBundle.length() != 0)) {
-          break label583;
+      if (6 <= i) {
+        if (i < 18)
+        {
+          i = 1;
+          if (i == 0) {
+            break label462;
+          }
+          i = a.a.AqK;
+          localObject = androidx.core.content.a.m((Context)localObject, i);
+          kotlin.g.b.s.checkNotNull(localObject);
+          paramBundle.setBackground((Drawable)new LayerDrawable(new Drawable[] { localObject }));
+          this.mZs = getIntent().getStringExtra("IntentKeyAnchorUsrName");
+          paramBundle = (CharSequence)this.mZs;
+          if ((paramBundle != null) && (paramBundle.length() != 0)) {
+            break label469;
+          }
+          i = 1;
+          if (i != 0) {
+            this.mZs = "v2_060000231003b20faec8cae38c11c0d5c60de432b07725973fcf0b69006c0940e35c83f58db4@finder";
+          }
+          paramBundle = (CharSequence)this.mZs;
+          if ((paramBundle != null) && (paramBundle.length() != 0)) {
+            break label474;
+          }
+          i = 1;
+          label259:
+          if (i != 0) {
+            break label479;
+          }
+          ((TextView)findViewById(a.b.AqX)).setOnClickListener(new FestivalSecondBakUI..ExternalSyntheticLambda0(this));
+          ((WeImageView)findViewById(a.b.AqY)).setVisibility(0);
+          ((TextView)findViewById(a.b.AqX)).setVisibility(0);
+          label312:
+          ((ImageView)findViewById(a.b.AqO)).setImageResource(a.a.AqN);
+          j = getIntent().getIntExtra("IntentKeyFriendFollowCnt", 0);
+          paramBundle = (CharSequence)this.mZs;
+          if ((paramBundle != null) && (paramBundle.length() != 0)) {
+            break label512;
+          }
         }
       }
-      label515:
-      label522:
-      label527:
-      label532:
-      label583:
+      label512:
       for (i = 1;; i = 0)
       {
         if ((i != 0) || (j > 0)) {
-          break label588;
+          break label517;
         }
-        paramBundle = h.aHF();
-        p.j(paramBundle, "MMKernel.network()");
-        paramBundle.aGY().a(3736, (i)this);
-        localObject = this.kvQ;
+        com.tencent.mm.kernel.h.baD().mCm.a(3736, (com.tencent.mm.am.h)this);
+        localObject = this.mZs;
         paramBundle = (Bundle)localObject;
         if (localObject == null) {
           paramBundle = "";
         }
-        paramBundle = new cr(paramBundle, 0L, null, 0, null, 0, 0L, 104);
-        paramBundle.xer = true;
-        h.aGY().b((q)paramBundle);
-        AppMethodBeat.o(258647);
+        paramBundle = new dt(paramBundle, 0L, null, 0, null, 0, 0L, false, null, 0L, null, null, null, 8168);
+        paramBundle.ADC = true;
+        com.tencent.mm.kernel.h.aZW().a((p)paramBundle, 0);
+        AppMethodBeat.o(260927);
         return;
-        if (18 <= i) {
-          break;
-        }
-        i = 1;
-        break label171;
-        i = a.a.wUi;
-        break label179;
         i = 0;
-        break label255;
+        break;
         i = 0;
-        break label289;
-        paramBundle = (WeImageView)_$_findCachedViewById(a.b.visit_anchor_profile_icon);
-        p.j(paramBundle, "visit_anchor_profile_icon");
-        paramBundle.setVisibility(8);
-        paramBundle = (TextView)_$_findCachedViewById(a.b.visit_anchor_profile);
-        p.j(paramBundle, "visit_anchor_profile");
-        paramBundle.setVisibility(8);
-        break label363;
+        break;
+        label462:
+        i = a.a.AqL;
+        break label152;
+        label469:
+        i = 0;
+        break label225;
+        label474:
+        i = 0;
+        break label259;
+        label479:
+        ((WeImageView)findViewById(a.b.AqY)).setVisibility(8);
+        ((TextView)findViewById(a.b.AqX)).setVisibility(8);
+        break label312;
       }
-      label588:
-      LS(j);
-      AppMethodBeat.o(258647);
+      label517:
+      MP(j);
+      AppMethodBeat.o(260927);
       return;
     }
-    paramBundle = (RelativeLayout)_$_findCachedViewById(a.b.wUl);
-    p.j(paramBundle, "bgRoot");
-    paramBundle.setBackground(getResources().getDrawable(a.a.wUj));
-    paramBundle = (RelativeLayout)_$_findCachedViewById(a.b.wUo);
-    p.j(paramBundle, "liveStatusEndRoot");
-    paramBundle.setVisibility(8);
-    paramBundle = (LinearLayout)_$_findCachedViewById(a.b.wUp);
-    p.j(paramBundle, "liveStatusNotStartRoot");
-    paramBundle.setVisibility(0);
-    AppMethodBeat.o(258647);
+    ((RelativeLayout)findViewById(a.b.AqS)).setBackground(getResources().getDrawable(a.a.AqM));
+    ((RelativeLayout)findViewById(a.b.AqV)).setVisibility(8);
+    ((LinearLayout)findViewById(a.b.AqW)).setVisibility(0);
+    AppMethodBeat.o(260927);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(258655);
-    Log.i("FestivalSecondBakUI", "onSceneEnd errType:" + paramInt1 + ", errCode:" + paramInt2 + ", scene:" + paramq);
-    if ((paramq instanceof cr))
+    AppMethodBeat.i(260930);
+    Log.i("FestivalSecondBakUI", "onSceneEnd errType:" + paramInt1 + ", errCode:" + paramInt2 + ", scene:" + paramp);
+    if ((paramp instanceof dt))
     {
-      paramString = ((cr)paramq).dpc();
-      if ((((cr)paramq).xer) && (p.h(((cr)paramq).xcq, this.kvQ)))
+      paramString = ((dt)paramp).caK();
+      if ((((dt)paramp).ADC) && (kotlin.g.b.s.p(((dt)paramp).ABB, this.mZs)))
       {
-        paramq = h.aHF();
-        p.j(paramq, "MMKernel.network()");
-        paramq.aGY().b(3736, (i)this);
-        if (paramString != null)
+        com.tencent.mm.kernel.h.baD().mCm.b(3736, (com.tencent.mm.am.h)this);
+        if (paramString == null)
         {
-          paramInt1 = paramString.friend_follow_count;
-          LS(paramInt1);
-          if (paramString == null) {
-            break label267;
+          paramInt1 = 0;
+          MP(paramInt1);
+          if (paramString != null) {
+            break label211;
           }
-          paramString = paramString.authInfo;
-          if (paramString == null) {
-            break label267;
-          }
+          paramString = null;
         }
-        label267:
-        for (paramString = paramString.authProfession;; paramString = null)
+        for (;;)
         {
           if (Util.isNullOrNil(paramString)) {
-            break label272;
+            break label233;
           }
-          paramq = getContext();
-          p.j(paramq, "context");
-          paramString = paramq.getResources().getString(a.d.finder_contact_auth, new Object[] { paramString });
-          p.j(paramString, "context.resources.getStr…act_auth, authProfession)");
-          paramq = (TextView)_$_findCachedViewById(a.b.anchor_ext_info_auth);
-          p.j(paramq, "anchor_ext_info_auth");
-          paramq.setText((CharSequence)paramString);
-          paramString = (TextView)_$_findCachedViewById(a.b.anchor_ext_info_auth);
-          p.j(paramString, "anchor_ext_info_auth");
-          paramString.setVisibility(0);
-          AppMethodBeat.o(258655);
+          paramString = getContext().getResources().getString(a.d.finder_contact_auth, new Object[] { paramString });
+          kotlin.g.b.s.s(paramString, "context.resources.getStr…act_auth, authProfession)");
+          ((TextView)findViewById(a.b.AqP)).setText((CharSequence)paramString);
+          ((TextView)findViewById(a.b.AqP)).setVisibility(0);
+          AppMethodBeat.o(260930);
           return;
-          paramInt1 = 0;
+          paramInt1 = paramString.friend_follow_count;
           break;
+          label211:
+          paramString = paramString.authInfo;
+          if (paramString == null) {
+            paramString = null;
+          } else {
+            paramString = paramString.authProfession;
+          }
         }
-        label272:
-        paramString = (TextView)_$_findCachedViewById(a.b.anchor_ext_info_auth);
-        p.j(paramString, "anchor_ext_info_auth");
-        paramString.setVisibility(8);
+        label233:
+        ((TextView)findViewById(a.b.AqP)).setVisibility(8);
       }
     }
-    AppMethodBeat.o(258655);
+    AppMethodBeat.o(260930);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -301,13 +251,10 @@ public final class FestivalSecondBakUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/festival/ui/bak/FestivalSecondBakUI$Companion;", "", "()V", "BakAnchorUserName", "", "IntentKeyAnchorUsrName", "IntentKeyFriendFollowCnt", "IntentKeyStatusErrorType", "StatusErrorTypeLiveEnd", "", "StatusErrorTypeLiveNotStart", "TAG", "plugin-festival_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.festival.ui.bak.FestivalSecondBakUI
  * JD-Core Version:    0.7.0.1
  */

@@ -8,32 +8,53 @@ import rx.internal.c.m;
 
 public final class Schedulers
 {
-  private static final AtomicReference<Schedulers> abRD;
-  private final rx.g abRA;
-  private final rx.g abRB;
-  private final rx.g abRC;
+  private static final AtomicReference<Schedulers> akev;
+  private final rx.g akes;
+  private final rx.g aket;
+  private final rx.g akeu;
   
   static
   {
     AppMethodBeat.i(90101);
-    abRD = new AtomicReference();
+    akev = new AtomicReference();
     AppMethodBeat.o(90101);
   }
   
   private Schedulers()
   {
     AppMethodBeat.i(90090);
-    rx.d.f.iWg().iWl();
-    this.abRA = rx.d.g.iWm();
-    this.abRB = rx.d.g.iWn();
-    this.abRC = rx.d.g.iWo();
+    rx.d.f.kKE().kKJ();
+    rx.g localg = rx.d.g.kKN();
+    if (localg != null)
+    {
+      this.akes = localg;
+      localg = rx.d.g.kKO();
+      if (localg == null) {
+        break label71;
+      }
+    }
+    label71:
+    for (this.aket = localg;; this.aket = rx.d.g.kKL())
+    {
+      localg = rx.d.g.kKP();
+      if (localg == null) {
+        break label81;
+      }
+      this.akeu = localg;
+      AppMethodBeat.o(90090);
+      return;
+      this.akes = rx.d.g.kKK();
+      break;
+    }
+    label81:
+    this.akeu = rx.d.g.kKM();
     AppMethodBeat.o(90090);
   }
   
   public static rx.g computation()
   {
     AppMethodBeat.i(90092);
-    rx.g localg = rx.d.c.b(iWr().abRA);
+    rx.g localg = rx.d.c.b(kKS().akes);
     AppMethodBeat.o(90092);
     return localg;
   }
@@ -46,40 +67,53 @@ public final class Schedulers
     return paramExecutor;
   }
   
-  private static Schedulers iWr()
+  public static rx.g immediate()
+  {
+    return rx.internal.c.f.akcy;
+  }
+  
+  public static rx.g io()
+  {
+    AppMethodBeat.i(90093);
+    rx.g localg = rx.d.c.c(kKS().aket);
+    AppMethodBeat.o(90093);
+    return localg;
+  }
+  
+  private static Schedulers kKS()
   {
     AppMethodBeat.i(90089);
     for (;;)
     {
-      Schedulers localSchedulers = (Schedulers)abRD.get();
+      Schedulers localSchedulers = (Schedulers)akev.get();
       if (localSchedulers != null)
       {
         AppMethodBeat.o(90089);
         return localSchedulers;
       }
       localSchedulers = new Schedulers();
-      if (abRD.compareAndSet(null, localSchedulers))
+      if (akev.compareAndSet(null, localSchedulers))
       {
         AppMethodBeat.o(90089);
         return localSchedulers;
       }
-      localSchedulers.iWt();
+      localSchedulers.kKU();
     }
   }
   
-  private void iWs()
+  private void kKT()
   {
     try
     {
       AppMethodBeat.i(90099);
-      if ((this.abRA instanceof j)) {
-        ((j)this.abRA).start();
+      if ((this.akes instanceof j)) {
+        ((j)this.akes).start();
       }
-      if ((this.abRB instanceof j)) {
-        ((j)this.abRB).start();
+      if ((this.aket instanceof j)) {
+        ((j)this.aket).start();
       }
-      if ((this.abRC instanceof j)) {
-        ((j)this.abRC).start();
+      if ((this.akeu instanceof j)) {
+        ((j)this.akeu).start();
       }
       AppMethodBeat.o(90099);
       return;
@@ -87,19 +121,19 @@ public final class Schedulers
     finally {}
   }
   
-  private void iWt()
+  private void kKU()
   {
     try
     {
       AppMethodBeat.i(90100);
-      if ((this.abRA instanceof j)) {
-        ((j)this.abRA).shutdown();
+      if ((this.akes instanceof j)) {
+        ((j)this.akes).shutdown();
       }
-      if ((this.abRB instanceof j)) {
-        ((j)this.abRB).shutdown();
+      if ((this.aket instanceof j)) {
+        ((j)this.aket).shutdown();
       }
-      if ((this.abRC instanceof j)) {
-        ((j)this.abRC).shutdown();
+      if ((this.akeu instanceof j)) {
+        ((j)this.akeu).shutdown();
       }
       AppMethodBeat.o(90100);
       return;
@@ -107,23 +141,10 @@ public final class Schedulers
     finally {}
   }
   
-  public static rx.g immediate()
-  {
-    return rx.internal.c.f.abPG;
-  }
-  
-  public static rx.g io()
-  {
-    AppMethodBeat.i(90093);
-    rx.g localg = rx.d.c.c(iWr().abRB);
-    AppMethodBeat.o(90093);
-    return localg;
-  }
-  
   public static rx.g newThread()
   {
     AppMethodBeat.i(90091);
-    rx.g localg = rx.d.c.d(iWr().abRC);
+    rx.g localg = rx.d.c.d(kKS().akeu);
     AppMethodBeat.o(90091);
     return localg;
   }
@@ -131,9 +152,9 @@ public final class Schedulers
   public static void reset()
   {
     AppMethodBeat.i(90096);
-    Schedulers localSchedulers = (Schedulers)abRD.getAndSet(null);
+    Schedulers localSchedulers = (Schedulers)akev.getAndSet(null);
     if (localSchedulers != null) {
-      localSchedulers.iWt();
+      localSchedulers.kKU();
     }
     AppMethodBeat.o(90096);
   }
@@ -141,13 +162,13 @@ public final class Schedulers
   public static void shutdown()
   {
     AppMethodBeat.i(90098);
-    Schedulers localSchedulers = iWr();
-    localSchedulers.iWt();
+    Schedulers localSchedulers = kKS();
+    localSchedulers.kKU();
     try
     {
-      rx.internal.c.d.abPB.shutdown();
-      rx.internal.util.f.abQK.shutdown();
-      rx.internal.util.f.abQL.shutdown();
+      rx.internal.c.d.akct.shutdown();
+      rx.internal.util.f.akdC.shutdown();
+      rx.internal.util.f.akdD.shutdown();
       return;
     }
     finally
@@ -159,13 +180,13 @@ public final class Schedulers
   public static void start()
   {
     AppMethodBeat.i(90097);
-    Schedulers localSchedulers = iWr();
-    localSchedulers.iWs();
+    Schedulers localSchedulers = kKS();
+    localSchedulers.kKT();
     try
     {
-      rx.internal.c.d.abPB.start();
-      rx.internal.util.f.abQK.start();
-      rx.internal.util.f.abQL.start();
+      rx.internal.c.d.akct.start();
+      rx.internal.util.f.akdC.start();
+      rx.internal.util.f.akdD.start();
       return;
     }
     finally
@@ -184,12 +205,12 @@ public final class Schedulers
   
   public static rx.g trampoline()
   {
-    return m.abQl;
+    return m.akdd;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     rx.schedulers.Schedulers
  * JD-Core Version:    0.7.0.1
  */

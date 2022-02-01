@@ -7,11 +7,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.b.c;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
+import com.tencent.mm.plugin.sns.b.j;
 import com.tencent.mm.plugin.sns.data.e;
-import com.tencent.mm.plugin.sns.i.c;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.plugin.sns.i.j;
 import com.tencent.mm.plugin.sns.storage.ADInfo;
 import com.tencent.mm.plugin.sns.storage.ADInfo.c;
 import com.tencent.mm.plugin.sns.storage.ADInfo.c.a;
@@ -26,35 +26,35 @@ import java.util.List;
 public final class c
   extends BaseAdapter
 {
-  private String Ejr;
-  public e KAz;
+  private String Kca;
+  public e Rag;
   private final Context mContext;
-  public int oxQ;
+  public int rBp;
   
   public c(Context paramContext, e parame)
   {
     AppMethodBeat.i(97694);
-    this.KAz = null;
-    this.Ejr = null;
-    this.oxQ = 0;
+    this.Rag = null;
+    this.Kca = null;
+    this.rBp = 0;
     this.mContext = paramContext;
-    this.KAz = parame;
-    this.Ejr = LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext());
+    this.Rag = parame;
+    this.Kca = LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext());
     AppMethodBeat.o(97694);
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(97695);
-    if (this.oxQ == 1)
+    if (this.rBp == 1)
     {
-      i = this.KAz.JPW.LeY.adUnlikeInfo.fQA().size();
+      i = this.Rag.QmD.RFi.adUnlikeInfo.hiy().size();
       AppMethodBeat.o(97695);
       return i;
     }
     int i = 0;
-    if (this.KAz.JPW.LeX.adFeedbackInfo != null) {
-      i = this.KAz.JPW.LeX.adFeedbackInfo.list.size();
+    if (this.Rag.QmD.RFh.adFeedbackInfo != null) {
+      i = this.Rag.QmD.RFh.adFeedbackInfo.list.size();
     }
     AppMethodBeat.o(97695);
     return i + 1;
@@ -63,7 +63,7 @@ public final class c
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(97697);
-    Object localObject = this.KAz.JPW.LeY.adUnlikeInfo.fQA().get(paramInt);
+    Object localObject = this.Rag.QmD.RFi.adUnlikeInfo.hiy().get(paramInt);
     AppMethodBeat.o(97697);
     return localObject;
   }
@@ -78,30 +78,30 @@ public final class c
     AppMethodBeat.i(97696);
     View localView = paramView;
     if (paramView == null) {
-      localView = View.inflate(this.mContext, i.g.ad_unlike_reason_item, null);
+      localView = View.inflate(this.mContext, b.g.ad_unlike_reason_item, null);
     }
-    localView.setTag(this.KAz);
+    localView.setTag(this.Rag);
     paramViewGroup = "";
     Object localObject;
-    if (this.oxQ == 1)
+    if (this.rBp == 1)
     {
       localObject = (ADInfo.c.a)getItem(paramInt);
-      if ("zh_CN".equals(this.Ejr))
+      if ("zh_CN".equals(this.Kca))
       {
-        paramViewGroup = ((ADInfo.c.a)localObject).Kjk;
+        paramViewGroup = ((ADInfo.c.a)localObject).QHh;
         paramView = paramViewGroup;
         if (Util.isNullOrNil(paramViewGroup)) {
-          paramView = ((ADInfo.c.a)localObject).Kjm;
+          paramView = ((ADInfo.c.a)localObject).QHj;
         }
         label88:
-        paramViewGroup = (TextView)localView.findViewById(i.f.ad_unlike_reason_tv);
-        if (!this.KAz.JPW.LeY.forbidClick) {
+        paramViewGroup = (TextView)localView.findViewById(b.f.ad_unlike_reason_tv);
+        if (!this.Rag.QmD.RFi.forbidClick) {
           break label469;
         }
-        paramViewGroup.setTextColor(this.mContext.getResources().getColor(i.c.BW_0_Alpha_0_2));
+        paramViewGroup.setTextColor(this.mContext.getResources().getColor(b.c.BW_0_Alpha_0_2));
         label133:
         paramViewGroup.setText(paramView);
-        paramView = localView.findViewById(i.f.ad_unlike_reason_sep);
+        paramView = localView.findViewById(b.f.ad_unlike_reason_sep);
         if (paramInt != getCount() - 1) {
           break label489;
         }
@@ -115,25 +115,25 @@ public final class c
       paramView.setVisibility(paramInt);
       AppMethodBeat.o(97696);
       return localView;
-      if (("zh_TW".equals(this.Ejr)) || ("zh_HK".equals(this.Ejr)))
+      if (("zh_TW".equals(this.Kca)) || ("zh_HK".equals(this.Kca)))
       {
-        paramViewGroup = ((ADInfo.c.a)localObject).Kjl;
+        paramViewGroup = ((ADInfo.c.a)localObject).QHi;
         break;
       }
-      paramViewGroup = ((ADInfo.c.a)localObject).Kjm;
+      paramViewGroup = ((ADInfo.c.a)localObject).QHj;
       break;
       if (paramInt == 0)
       {
         paramView = paramViewGroup;
-        if (this.KAz == null) {
+        if (this.Rag == null) {
           break label88;
         }
         paramView = paramViewGroup;
-        if (this.KAz.JPW.LeX == null) {
+        if (this.Rag.QmD.RFh == null) {
           break label88;
         }
-        paramView = this.KAz.JPW.LeY;
-        if ("zh_CN".equals(this.Ejr)) {
+        paramView = this.Rag.QmD.RFi;
+        if ("zh_CN".equals(this.Kca)) {
           paramView = paramView.adDislikeInfoTitle_cn;
         }
         for (;;)
@@ -142,16 +142,16 @@ public final class c
             break label321;
           }
           break;
-          if (("zh_TW".equals(this.Ejr)) || ("zh_HK".equals(this.Ejr))) {
+          if (("zh_TW".equals(this.Kca)) || ("zh_HK".equals(this.Kca))) {
             paramView = paramView.adDislikeInfoTitle_tw;
           } else {
             paramView = paramView.adDislikeInfoTitle_en;
           }
         }
-        paramView = this.mContext.getString(i.j.sns_ad_unlike);
+        paramView = this.mContext.getString(b.j.sns_ad_unlike);
         break label88;
       }
-      localObject = this.KAz.JPW.LeX.adFeedbackInfo;
+      localObject = this.Rag.QmD.RFh.adFeedbackInfo;
       paramView = paramViewGroup;
       if (localObject == null) {
         break label88;
@@ -161,8 +161,8 @@ public final class c
         break label88;
       }
       localObject = (ADXml.f)((ADXml.e)localObject).list.get(paramInt - 1);
-      if ("zh_CN".equals(this.Ejr)) {
-        paramViewGroup = ((ADXml.f)localObject).KjF;
+      if ("zh_CN".equals(this.Kca)) {
+        paramViewGroup = ((ADXml.f)localObject).QHC;
       }
       for (;;)
       {
@@ -170,22 +170,22 @@ public final class c
         if (!Util.isNullOrNil(paramViewGroup)) {
           break;
         }
-        paramView = ((ADXml.f)localObject).Kdw;
+        paramView = ((ADXml.f)localObject).QBc;
         break;
-        if (("zh_TW".equals(this.Ejr)) || ("zh_HK".equals(this.Ejr))) {
-          paramViewGroup = ((ADXml.f)localObject).KjG;
+        if (("zh_TW".equals(this.Kca)) || ("zh_HK".equals(this.Kca))) {
+          paramViewGroup = ((ADXml.f)localObject).QHD;
         } else {
-          paramViewGroup = ((ADXml.f)localObject).Kdw;
+          paramViewGroup = ((ADXml.f)localObject).QBc;
         }
       }
-      paramViewGroup.setTextColor(this.mContext.getResources().getColor(i.c.Link));
+      paramViewGroup.setTextColor(this.mContext.getResources().getColor(b.c.Link));
       break label133;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.c
  * JD-Core Version:    0.7.0.1
  */

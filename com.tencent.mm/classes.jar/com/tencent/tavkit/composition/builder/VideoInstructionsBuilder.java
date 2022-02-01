@@ -21,15 +21,15 @@ class VideoInstructionsBuilder
   
   VideoInstructionsBuilder(BuilderModel paramBuilderModel)
   {
-    AppMethodBeat.i(212306);
+    AppMethodBeat.i(218841);
     this.builderModel = paramBuilderModel;
     this.outputInstructions = new ArrayList();
-    AppMethodBeat.o(212306);
+    AppMethodBeat.o(218841);
   }
   
   private TAVVideoCompositionInstruction buildInstruction(Slice paramSlice, List<TAVVideoCompositionLayerInstruction> paramList, List<List<TAVVideoCompositionLayerInstruction>> paramList1)
   {
-    AppMethodBeat.i(212323);
+    AppMethodBeat.i(218894);
     TAVVideoCompositionInstruction localTAVVideoCompositionInstruction = new TAVVideoCompositionInstruction(trackIDsByLayers(paramSlice.layerInstructions), paramSlice.timeRange);
     localTAVVideoCompositionInstruction.setChannelLayers(selectChannels(paramList1, paramSlice.layerInstructions));
     localTAVVideoCompositionInstruction.setOverlayLayers(selectLayers(paramList, paramSlice.layerInstructions));
@@ -37,32 +37,32 @@ class VideoInstructionsBuilder
     localTAVVideoCompositionInstruction.setGlobalVideoEffect(this.builderModel.getTavComposition().getGlobalVideoEffect());
     localTAVVideoCompositionInstruction.setVideoMixEffect(this.builderModel.getTavComposition().getVideoMixEffect());
     localTAVVideoCompositionInstruction.setSourceVideoEffect(this.builderModel.getTavComposition().getSourceVideoEffect());
-    AppMethodBeat.o(212323);
+    AppMethodBeat.o(218894);
     return localTAVVideoCompositionInstruction;
   }
   
   private void buildInstructions(List<List<TAVVideoCompositionLayerInstruction>> paramList, List<TAVVideoCompositionLayerInstruction> paramList1, List<Slice> paramList2)
   {
-    AppMethodBeat.i(212322);
+    AppMethodBeat.i(218884);
     paramList2 = paramList2.iterator();
     while (paramList2.hasNext())
     {
       TAVVideoCompositionInstruction localTAVVideoCompositionInstruction = buildInstruction((Slice)paramList2.next(), paramList1, paramList);
       this.outputInstructions.add(localTAVVideoCompositionInstruction);
     }
-    AppMethodBeat.o(212322);
+    AppMethodBeat.o(218884);
   }
   
   private static List<Slice> calculateSlicesForLayerInstructions(List<TAVVideoCompositionLayerInstruction> paramList)
   {
-    AppMethodBeat.i(212318);
+    AppMethodBeat.i(218864);
     Object localObject2 = new TreeSet(new Comparator()
     {
       public final int compare(CMTime paramAnonymousCMTime1, CMTime paramAnonymousCMTime2)
       {
-        AppMethodBeat.i(212194);
+        AppMethodBeat.i(218837);
         int i = (int)paramAnonymousCMTime1.sub(paramAnonymousCMTime2).getValue();
-        AppMethodBeat.o(212194);
+        AppMethodBeat.o(218837);
         return i;
       }
     });
@@ -92,13 +92,13 @@ class VideoInstructionsBuilder
       ((ArrayList)localObject3).add(new Slice(localCMTimeRange, localArrayList));
       localObject1 = localObject2;
     }
-    AppMethodBeat.o(212318);
+    AppMethodBeat.o(218864);
     return localObject3;
   }
   
   private List<TAVVideoCompositionLayerInstruction> concatAndSortLayers(List<List<TAVVideoCompositionLayerInstruction>> paramList, List<TAVVideoCompositionLayerInstruction> paramList1)
   {
-    AppMethodBeat.i(212320);
+    AppMethodBeat.i(218873);
     ArrayList localArrayList = new ArrayList();
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
@@ -109,39 +109,39 @@ class VideoInstructionsBuilder
     {
       public int compare(TAVVideoCompositionLayerInstruction paramAnonymousTAVVideoCompositionLayerInstruction1, TAVVideoCompositionLayerInstruction paramAnonymousTAVVideoCompositionLayerInstruction2)
       {
-        AppMethodBeat.i(212227);
+        AppMethodBeat.i(218839);
         paramAnonymousTAVVideoCompositionLayerInstruction1 = paramAnonymousTAVVideoCompositionLayerInstruction1.getTimeRange().getStart();
         paramAnonymousTAVVideoCompositionLayerInstruction2 = paramAnonymousTAVVideoCompositionLayerInstruction2.getTimeRange().getStart();
         if (paramAnonymousTAVVideoCompositionLayerInstruction1.equalsTo(paramAnonymousTAVVideoCompositionLayerInstruction2))
         {
-          AppMethodBeat.o(212227);
+          AppMethodBeat.o(218839);
           return 0;
         }
         if (paramAnonymousTAVVideoCompositionLayerInstruction1.smallThan(paramAnonymousTAVVideoCompositionLayerInstruction2))
         {
-          AppMethodBeat.o(212227);
+          AppMethodBeat.o(218839);
           return -1;
         }
-        AppMethodBeat.o(212227);
+        AppMethodBeat.o(218839);
         return 1;
       }
     });
-    AppMethodBeat.o(212320);
+    AppMethodBeat.o(218873);
     return localArrayList;
   }
   
   private void fixLastLayerDuration(List<List<TAVVideoCompositionLayerInstruction>> paramList)
   {
-    AppMethodBeat.i(212312);
+    AppMethodBeat.i(218852);
     if ((paramList == null) || (paramList.size() != 1))
     {
-      AppMethodBeat.o(212312);
+      AppMethodBeat.o(218852);
       return;
     }
     paramList = (List)paramList.get(0);
     if ((paramList == null) || (paramList.isEmpty()))
     {
-      AppMethodBeat.o(212312);
+      AppMethodBeat.o(218852);
       return;
     }
     TAVVideoCompositionLayerInstruction localTAVVideoCompositionLayerInstruction = (TAVVideoCompositionLayerInstruction)paramList.get(paramList.size() - 1);
@@ -151,12 +151,12 @@ class VideoInstructionsBuilder
       paramList = new CMTime(1L, 30);
     }
     localTAVVideoCompositionLayerInstruction.setTimeRange(new CMTimeRange(localTAVVideoCompositionLayerInstruction.getTimeRange().getStart(), localTAVVideoCompositionLayerInstruction.getTimeRange().getDuration().add(paramList)));
-    AppMethodBeat.o(212312);
+    AppMethodBeat.o(218852);
   }
   
   private List<List<TAVVideoCompositionLayerInstruction>> selectChannels(List<List<TAVVideoCompositionLayerInstruction>> paramList, List<TAVVideoCompositionLayerInstruction> paramList1)
   {
-    AppMethodBeat.i(212329);
+    AppMethodBeat.i(218911);
     ArrayList localArrayList = new ArrayList();
     paramList = paramList.iterator();
     while (paramList.hasNext())
@@ -166,13 +166,13 @@ class VideoInstructionsBuilder
         localArrayList.add(localList);
       }
     }
-    AppMethodBeat.o(212329);
+    AppMethodBeat.o(218911);
     return localArrayList;
   }
   
   private List<TAVVideoCompositionLayerInstruction> selectLayers(List<TAVVideoCompositionLayerInstruction> paramList1, List<TAVVideoCompositionLayerInstruction> paramList2)
   {
-    AppMethodBeat.i(212331);
+    AppMethodBeat.i(218917);
     ArrayList localArrayList = new ArrayList();
     paramList1 = paramList1.iterator();
     while (paramList1.hasNext())
@@ -182,36 +182,36 @@ class VideoInstructionsBuilder
         localArrayList.add(localTAVVideoCompositionLayerInstruction);
       }
     }
-    AppMethodBeat.o(212331);
+    AppMethodBeat.o(218917);
     return localArrayList;
   }
   
   private List<Integer> trackIDsByLayers(List<TAVVideoCompositionLayerInstruction> paramList)
   {
-    AppMethodBeat.i(212326);
+    AppMethodBeat.i(218902);
     ArrayList localArrayList = new ArrayList();
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
       localArrayList.add(Integer.valueOf(((TAVVideoCompositionLayerInstruction)paramList.next()).getTrackID()));
     }
-    AppMethodBeat.o(212326);
+    AppMethodBeat.o(218902);
     return localArrayList;
   }
   
   List<TAVVideoCompositionInstruction> build()
   {
-    AppMethodBeat.i(212308);
+    AppMethodBeat.i(218924);
     List localList1 = buildMainLayerInstructions();
     List localList2 = buildOverlayLayerInstructions();
     buildInstructions(localList1, localList2, calculateSlicesForLayerInstructions(concatAndSortLayers(localList1, localList2)));
     localList1 = this.outputInstructions;
-    AppMethodBeat.o(212308);
+    AppMethodBeat.o(218924);
     return localList1;
   }
   
   List<List<TAVVideoCompositionLayerInstruction>> buildMainLayerInstructions()
   {
-    AppMethodBeat.i(212311);
+    AppMethodBeat.i(218935);
     ArrayList localArrayList1 = new ArrayList();
     Iterator localIterator = this.builderModel.getMainVideoTrackInfo().iterator();
     while (localIterator.hasNext())
@@ -227,19 +227,19 @@ class VideoInstructionsBuilder
       localArrayList1.add(localArrayList2);
     }
     fixLastLayerDuration(localArrayList1);
-    AppMethodBeat.o(212311);
+    AppMethodBeat.o(218935);
     return localArrayList1;
   }
   
   List<TAVVideoCompositionLayerInstruction> buildOverlayLayerInstructions()
   {
-    AppMethodBeat.i(212315);
+    AppMethodBeat.i(218943);
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = this.builderModel.getOverlayTrackInfo().iterator();
     while (localIterator.hasNext()) {
       localArrayList.add(((VideoOverlayInfo)localIterator.next()).convertToLayerInstruction());
     }
-    AppMethodBeat.o(212315);
+    AppMethodBeat.o(218943);
     return localArrayList;
   }
   

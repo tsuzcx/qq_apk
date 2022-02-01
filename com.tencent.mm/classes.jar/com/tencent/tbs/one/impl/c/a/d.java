@@ -12,7 +12,7 @@ public final class d
   final char[] b;
   boolean c;
   j[] d;
-  l[] e;
+  d.l[] e;
   byte[] f;
   private final a g;
   private final a h;
@@ -144,88 +144,77 @@ public final class d
   public static boolean a(File paramFile)
   {
     // Byte code:
-    //   0: ldc 234
-    //   2: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 236	java/io/RandomAccessFile
+    //   0: ldc 232
+    //   2: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 234	java/io/RandomAccessFile
     //   8: dup
     //   9: aload_0
-    //   10: ldc 238
-    //   12: invokespecial 241	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   15: astore 5
-    //   17: aload 5
-    //   19: astore 4
-    //   21: aload 5
-    //   23: invokevirtual 244	java/io/RandomAccessFile:readInt	()I
-    //   26: istore_1
-    //   27: iload_1
-    //   28: i2l
-    //   29: lstore_2
-    //   30: aload 5
-    //   32: invokestatic 249	com/tencent/tbs/one/impl/a/c:a	(Ljava/io/Closeable;)V
-    //   35: lload_2
-    //   36: ldc2_w 250
-    //   39: lcmp
-    //   40: ifne +66 -> 106
-    //   43: ldc 234
-    //   45: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   48: iconst_1
-    //   49: ireturn
-    //   50: astore 6
-    //   52: aconst_null
-    //   53: astore 5
-    //   55: aload 5
-    //   57: astore 4
-    //   59: ldc 253
-    //   61: iconst_2
-    //   62: anewarray 4	java/lang/Object
-    //   65: dup
-    //   66: iconst_0
-    //   67: aload_0
-    //   68: invokevirtual 258	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   71: aastore
-    //   72: dup
-    //   73: iconst_1
-    //   74: aload 6
-    //   76: aastore
-    //   77: invokestatic 263	com/tencent/tbs/one/impl/a/f:c	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   80: aload 5
-    //   82: invokestatic 249	com/tencent/tbs/one/impl/a/c:a	(Ljava/io/Closeable;)V
-    //   85: lconst_0
-    //   86: lstore_2
-    //   87: goto -52 -> 35
-    //   90: astore_0
-    //   91: aconst_null
-    //   92: astore 4
-    //   94: aload 4
-    //   96: invokestatic 249	com/tencent/tbs/one/impl/a/c:a	(Ljava/io/Closeable;)V
-    //   99: ldc 234
-    //   101: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   104: aload_0
-    //   105: athrow
-    //   106: ldc 234
-    //   108: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   111: iconst_0
-    //   112: ireturn
-    //   113: astore_0
-    //   114: goto -20 -> 94
-    //   117: astore 6
-    //   119: goto -64 -> 55
+    //   10: ldc 236
+    //   12: invokespecial 239	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   15: astore 4
+    //   17: aload 4
+    //   19: invokevirtual 242	java/io/RandomAccessFile:readInt	()I
+    //   22: istore_1
+    //   23: iload_1
+    //   24: i2l
+    //   25: lstore_2
+    //   26: aload 4
+    //   28: invokestatic 247	com/tencent/tbs/one/impl/a/c:a	(Ljava/io/Closeable;)V
+    //   31: lload_2
+    //   32: ldc2_w 248
+    //   35: lcmp
+    //   36: ifne +59 -> 95
+    //   39: ldc 232
+    //   41: invokestatic 100	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   44: iconst_1
+    //   45: ireturn
+    //   46: astore 5
+    //   48: aconst_null
+    //   49: astore 4
+    //   51: ldc 251
+    //   53: iconst_2
+    //   54: anewarray 4	java/lang/Object
+    //   57: dup
+    //   58: iconst_0
+    //   59: aload_0
+    //   60: invokevirtual 256	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   63: aastore
+    //   64: dup
+    //   65: iconst_1
+    //   66: aload 5
+    //   68: aastore
+    //   69: invokestatic 261	com/tencent/tbs/one/impl/a/f:c	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   72: aload 4
+    //   74: invokestatic 247	com/tencent/tbs/one/impl/a/c:a	(Ljava/io/Closeable;)V
+    //   77: lconst_0
+    //   78: lstore_2
+    //   79: goto -48 -> 31
+    //   82: astore_0
+    //   83: aload 4
+    //   85: invokestatic 247	com/tencent/tbs/one/impl/a/c:a	(Ljava/io/Closeable;)V
+    //   88: ldc 232
+    //   90: invokestatic 100	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   93: aload_0
+    //   94: athrow
+    //   95: ldc 232
+    //   97: invokestatic 100	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   100: iconst_0
+    //   101: ireturn
+    //   102: astore 5
+    //   104: goto -53 -> 51
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	122	0	paramFile	File
-    //   26	2	1	k	int
-    //   29	58	2	l	long
-    //   19	76	4	localRandomAccessFile1	java.io.RandomAccessFile
-    //   15	66	5	localRandomAccessFile2	java.io.RandomAccessFile
-    //   50	25	6	localThrowable1	java.lang.Throwable
-    //   117	1	6	localThrowable2	java.lang.Throwable
+    //   0	107	0	paramFile	File
+    //   22	2	1	k	int
+    //   25	54	2	l	long
+    //   15	69	4	localRandomAccessFile	java.io.RandomAccessFile
+    //   46	21	5	localObject1	Object
+    //   102	1	5	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   5	17	50	java/lang/Throwable
-    //   5	17	90	finally
-    //   21	27	113	finally
-    //   59	80	113	finally
-    //   21	27	117	java/lang/Throwable
+    //   5	17	46	finally
+    //   51	72	82	finally
+    //   17	23	102	finally
   }
   
   private void b()
@@ -264,7 +253,7 @@ public final class d
         k = 24;
         label108:
         m /= k;
-        this.e = new l[m];
+        this.e = new d.l[m];
         arrayOfChar = new char[1];
         k = 0;
         label127:
@@ -274,15 +263,15 @@ public final class d
         if (!bool) {
           break label292;
         }
-        localObject2 = new i();
-        ((i)localObject2).c = locala1.b();
+        localObject2 = new d.i();
+        ((d.i)localObject2).c = locala1.b();
         locala1.a(arrayOfChar);
-        ((i)localObject2).d = arrayOfChar[0];
+        ((d.i)localObject2).d = arrayOfChar[0];
         locala1.a(arrayOfChar);
-        ((i)localObject2).e = arrayOfChar[0];
-        ((i)localObject2).a = locala1.c();
-        ((i)localObject2).b = locala1.c();
-        ((i)localObject2).f = locala1.a();
+        ((d.i)localObject2).e = arrayOfChar[0];
+        ((d.i)localObject2).a = locala1.c();
+        ((d.i)localObject2).b = locala1.c();
+        ((d.i)localObject2).f = locala1.a();
         this.e[k] = localObject2;
       }
     }
@@ -305,15 +294,15 @@ public final class d
       k = 16;
       break label108;
       label292:
-      localObject2 = new e();
-      ((e)localObject2).c = locala1.b();
-      ((e)localObject2).a = locala1.b();
-      ((e)localObject2).b = locala1.b();
+      localObject2 = new d.e();
+      ((d.e)localObject2).c = locala1.b();
+      ((d.e)localObject2).a = locala1.b();
+      ((d.e)localObject2).b = locala1.b();
       locala1.a(arrayOfChar);
-      ((e)localObject2).d = arrayOfChar[0];
+      ((d.e)localObject2).d = arrayOfChar[0];
       locala1.a(arrayOfChar);
-      ((e)localObject2).e = arrayOfChar[0];
-      ((e)localObject2).f = locala1.a();
+      ((d.e)localObject2).e = arrayOfChar[0];
+      ((d.e)localObject2).f = locala1.a();
       this.e[k] = localObject2;
     }
     label386:
@@ -434,13 +423,6 @@ public final class d
     }
   }
   
-  static final class e
-    extends d.l
-  {
-    int a;
-    int b;
-  }
-  
   static final class f
     extends d.a
   {
@@ -491,13 +473,6 @@ public final class d
     }
   }
   
-  static final class i
-    extends d.l
-  {
-    long a;
-    long b;
-  }
-  
   static abstract class j
   {
     int g;
@@ -515,18 +490,10 @@ public final class d
     
     public abstract long b();
   }
-  
-  static abstract class l
-  {
-    int c;
-    char d;
-    char e;
-    short f;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.tbs.one.impl.c.a.d
  * JD-Core Version:    0.7.0.1
  */

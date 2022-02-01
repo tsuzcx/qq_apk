@@ -9,17 +9,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.google.android.gms.common.annotation.KeepName;
 import com.google.android.gms.common.internal.Asserts;
 import com.google.android.gms.common.internal.Objects;
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
 import com.google.android.gms.common.sqlite.CursorWrapper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.Closeable;
@@ -32,8 +26,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-@KeepName
-@SafeParcelable.Class(creator="DataHolderCreator", validate=true)
 public final class DataHolder
   extends AbstractSafeParcelable
   implements Closeable
@@ -41,16 +33,11 @@ public final class DataHolder
   public static final Parcelable.Creator<DataHolder> CREATOR;
   private static final Builder zznt;
   private boolean mClosed;
-  @SafeParcelable.VersionField(id=1000)
   private final int zzal;
-  @SafeParcelable.Field(getter="getStatusCode", id=3)
   private final int zzam;
-  @SafeParcelable.Field(getter="getColumns", id=1)
   private final String[] zznm;
   private Bundle zznn;
-  @SafeParcelable.Field(getter="getWindows", id=2)
   private final CursorWindow[] zzno;
-  @SafeParcelable.Field(getter="getMetadata", id=4)
   private final Bundle zznp;
   private int[] zznq;
   private int zznr;
@@ -64,8 +51,7 @@ public final class DataHolder
     AppMethodBeat.o(11614);
   }
   
-  @SafeParcelable.Constructor
-  DataHolder(@SafeParcelable.Param(id=1000) int paramInt1, @SafeParcelable.Param(id=1) String[] paramArrayOfString, @SafeParcelable.Param(id=2) CursorWindow[] paramArrayOfCursorWindow, @SafeParcelable.Param(id=3) int paramInt2, @SafeParcelable.Param(id=4) Bundle paramBundle)
+  DataHolder(int paramInt1, String[] paramArrayOfString, CursorWindow[] paramArrayOfCursorWindow, int paramInt2, Bundle paramBundle)
   {
     this.mClosed = false;
     this.zzns = true;
@@ -943,7 +929,7 @@ public final class DataHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.data.DataHolder
  * JD-Core Version:    0.7.0.1
  */

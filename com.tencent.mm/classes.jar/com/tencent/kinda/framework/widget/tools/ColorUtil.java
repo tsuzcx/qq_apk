@@ -4,12 +4,12 @@ import android.util.Pair;
 import com.tencent.kinda.gen.DynamicColor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.aw;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -92,7 +92,12 @@ public class ColorUtil
       AppMethodBeat.o(19326);
       return paramDynamicColor;
     }
-    int i = ((b)h.ae(b.class)).a(b.a.vFq, 1);
+    if (paramDynamicColor.getNormalColor() == paramDynamicColor.getDarkmodeColor())
+    {
+      AppMethodBeat.o(19326);
+      return paramDynamicColor;
+    }
+    int i = ((c)h.ax(c.class)).a(c.a.yUO, 1);
     if (i == 1) {
       switch (1.$SwitchMap$com$tencent$kinda$framework$widget$tools$ColorUtil$MMViewType[paramMMViewType.ordinal()])
       {
@@ -128,7 +133,7 @@ public class ColorUtil
   private static boolean compatKindaDarkModeDefaultColorSw()
   {
     AppMethodBeat.i(19327);
-    if (((b)h.ae(b.class)).a(b.a.vFs, 1) == 1)
+    if (((c)h.ax(c.class)).a(c.a.yUQ, 1) == 1)
     {
       AppMethodBeat.o(19327);
       return true;
@@ -169,7 +174,7 @@ public class ColorUtil
     if (BuildInfo.DEBUG) {
       Log.d("base_MMKView", "getColorByMode(mNormalColor:%s mDarkmodeColor:%s) %s", new Object[] { Long.toHexString(absColor(paramDynamicColor.mNormalColor)), Long.toHexString(absColor(paramDynamicColor.mDarkmodeColor)), Util.getStack() });
     }
-    if (ar.isDarkMode())
+    if (aw.isDarkMode())
     {
       l = compatKindaDarkMode(paramDynamicColor, paramMMViewType).getDarkmodeColor();
       AppMethodBeat.o(19325);
@@ -184,9 +189,9 @@ public class ColorUtil
   {
     AppMethodBeat.i(162116);
     long l = getColorByMode(paramDynamicColor, MMViewType.NONE);
-    if ((paramBoolean) && (l == -1L) && (ar.isDarkMode()))
+    if ((paramBoolean) && (l == -1L) && (aw.isDarkMode()))
     {
-      l = ar.iV((int)paramDynamicColor.mNormalColor);
+      l = aw.mx((int)paramDynamicColor.mNormalColor);
       AppMethodBeat.o(162116);
       return l;
     }
@@ -216,7 +221,7 @@ public class ColorUtil
       AppMethodBeat.o(19322);
       return 0L;
     }
-    if (ar.isDarkMode())
+    if (aw.isDarkMode())
     {
       l = paramDynamicColor.getDarkmodeColor();
       AppMethodBeat.o(19322);
@@ -240,7 +245,7 @@ public class ColorUtil
   public static boolean ifCompatKindaDarkModeDefaultColor()
   {
     AppMethodBeat.i(19328);
-    if ((ar.isDarkMode()) && (compatKindaDarkModeDefaultColorSw()))
+    if ((aw.isDarkMode()) && (compatKindaDarkModeDefaultColorSw()))
     {
       AppMethodBeat.o(19328);
       return true;
@@ -269,7 +274,7 @@ public class ColorUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.tools.ColorUtil
  * JD-Core Version:    0.7.0.1
  */

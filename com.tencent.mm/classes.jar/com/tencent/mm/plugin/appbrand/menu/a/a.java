@@ -1,31 +1,26 @@
 package com.tencent.mm.plugin.appbrand.menu.a;
 
 import android.content.Context;
-import com.tencent.mm.plugin.appbrand.menu.v;
+import com.tencent.mm.plugin.appbrand.menu.w;
 import com.tencent.mm.plugin.appbrand.page.ad;
-import com.tencent.mm.ui.base.o;
+import com.tencent.mm.ui.base.s;
 
 public abstract class a<T extends ad>
 {
-  public final int qgq;
+  public final int tlb;
   
   public a(int paramInt)
   {
-    this.qgq = paramInt;
+    this.tlb = paramInt;
   }
   
-  public void a(Context paramContext, T paramT, o paramo, String paramString) {}
+  public void a(Context paramContext, T paramT, s params, String paramString) {}
   
-  public abstract void a(Context paramContext, T paramT, String paramString, v paramv);
-  
-  public final int cbA()
-  {
-    return this.qgq;
-  }
+  public abstract void a(Context paramContext, T paramT, String paramString, w paramw);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.a.a
  * JD-Core Version:    0.7.0.1
  */

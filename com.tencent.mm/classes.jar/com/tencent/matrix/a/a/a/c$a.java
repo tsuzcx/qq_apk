@@ -2,22 +2,22 @@ package com.tencent.matrix.a.a.a;
 
 public final class c$a
 {
-  public final long cUM;
-  public final long cUN;
-  public final long cUO;
-  public final int cUP;
-  public final long cUQ;
+  public final long eQm;
+  public final long eQn;
+  public final long eQo;
+  public final int eQp;
+  public final long eQq;
   public final String stack;
   public final int type;
   
   public c$a(int paramInt1, long paramLong1, long paramLong2, long paramLong3, int paramInt2, String paramString)
   {
     this.type = paramInt1;
-    this.cUM = paramLong1;
-    this.cUN = paramLong2;
-    this.cUO = paramLong3;
-    this.cUP = paramInt2;
-    this.cUQ = System.currentTimeMillis();
+    this.eQm = paramLong1;
+    this.eQn = paramLong2;
+    this.eQo = paramLong3;
+    this.eQp = paramInt2;
+    this.eQq = System.currentTimeMillis();
     this.stack = paramString;
   }
   
@@ -37,12 +37,12 @@ public final class c$a
   
   public final String toString()
   {
-    return "AlarmRecord{type=" + this.type + ", triggerAtMillis=" + this.cUM + ", windowMillis=" + this.cUN + ", intervalMillis=" + this.cUO + ", flag=" + this.cUP + ", timeBgn=" + this.cUQ + ", stack='" + this.stack + '\'' + '}';
+    return "AlarmRecord{type=" + this.type + ", triggerAtMillis=" + this.eQm + ", windowMillis=" + this.eQn + ", intervalMillis=" + this.eQo + ", flag=" + this.eQp + ", timeBgn=" + this.eQq + ", stack='" + this.stack + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.matrix.a.a.a.c.a
  * JD-Core Version:    0.7.0.1
  */

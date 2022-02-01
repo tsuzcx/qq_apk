@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.mmsight.model;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.ImageFormat;
 import android.graphics.Point;
@@ -22,25 +21,24 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Size;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.a.rw;
+import com.tencent.mm.autogen.a.rw.b;
 import com.tencent.mm.compatible.deviceinfo.af;
 import com.tencent.mm.compatible.deviceinfo.d.a.a;
 import com.tencent.mm.compatible.deviceinfo.m;
 import com.tencent.mm.compatible.deviceinfo.w;
 import com.tencent.mm.compatible.deviceinfo.y;
-import com.tencent.mm.f.a.qj;
-import com.tencent.mm.f.a.qj.b;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.plugin.base.model.a;
 import com.tencent.mm.plugin.mmsight.SightParams;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.plugin.v.a.a;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.widget.a.e;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -49,101 +47,101 @@ import java.util.List;
 public final class f
   implements SensorEventListener
 {
-  static boolean EZE = true;
-  protected static int EZm = 2147483647;
-  private c EZA;
-  protected VideoTransPara EZB;
-  public boolean EZC;
-  private boolean EZD;
-  public c EZF;
-  protected boolean EZj;
-  protected boolean EZk;
-  protected int EZl;
-  protected Sensor EZn;
-  protected float EZo;
-  protected float EZp;
-  protected float EZq;
-  protected Point EZr;
-  protected Point EZs;
-  protected int EZt;
-  protected byte[] EZu;
-  protected boolean EZv;
-  protected a EZw;
-  protected boolean EZx;
-  protected boolean EZy;
-  private f.a EZz;
-  protected boolean aHx;
-  protected w jqD;
-  protected boolean laM;
-  protected p laR;
-  protected Size laU;
-  protected Point laW;
-  protected int laX;
-  protected int laY;
-  protected List<g> lbj;
-  protected d.a.a lbk;
-  Camera.AutoFocusCallback lbl;
-  private c lbm;
-  private c lbn;
-  private c lbo;
-  private c lbp;
-  private c lbq;
-  public volatile boolean lbr;
-  public volatile byte[] lbt;
+  protected static int KUY = 2147483647;
+  static boolean KVq = true;
+  protected boolean KUV;
+  protected boolean KUW;
+  protected int KUX;
+  protected Sensor KUZ;
+  protected float KVa;
+  protected float KVb;
+  protected float KVc;
+  protected Point KVd;
+  protected Point KVe;
+  protected int KVf;
+  protected byte[] KVg;
+  protected boolean KVh;
+  protected a KVi;
+  protected boolean KVj;
+  protected boolean KVk;
+  private a KVl;
+  private c KVm;
+  protected VideoTransPara KVn;
+  public boolean KVo;
+  private boolean KVp;
+  public c KVr;
+  protected boolean isZooming;
+  protected w lTN;
   protected Context mContext;
   protected SensorManager mSensorManager;
+  protected boolean nFR;
+  protected p nFW;
+  protected Size nFZ;
+  protected Point nGb;
+  protected int nGc;
+  protected int nGd;
+  protected List<g> nGq;
+  protected d.a.a nGr;
+  private c nGs;
+  private c nGt;
+  private c nGu;
+  private c nGv;
+  private c nGw;
+  public volatile boolean nGx;
+  public volatile byte[] nGy;
+  Camera.AutoFocusCallback nuM;
   private int scene;
   
   public f(VideoTransPara paramVideoTransPara, int paramInt)
   {
     AppMethodBeat.i(89371);
-    this.laY = -1;
-    this.laX = -1;
-    this.EZj = false;
-    this.aHx = false;
-    this.jqD = null;
-    this.EZk = false;
-    this.EZl = 0;
-    this.EZo = 0.0F;
-    this.EZp = 0.0F;
-    this.EZq = 0.0F;
+    this.nGd = -1;
+    this.nGc = -1;
+    this.KUV = false;
+    this.isZooming = false;
+    this.lTN = null;
+    this.KUW = false;
+    this.KUX = 0;
+    this.KVa = 0.0F;
+    this.KVb = 0.0F;
+    this.KVc = 0.0F;
     this.mContext = null;
-    this.EZr = null;
-    this.EZs = null;
-    this.laW = null;
-    this.EZt = 0;
-    this.EZv = false;
-    this.EZw = new a();
-    this.EZx = false;
-    this.lbj = new ArrayList();
-    this.EZy = false;
-    this.laU = null;
-    this.EZz = f.a.EZH;
-    this.lbm = new c("prevcameraCallback");
-    this.lbn = new c("cameraCallback");
-    this.lbo = new c("cameraPreviewCallback");
-    this.lbp = new c("cameraCropCallback");
-    this.EZA = new c("mirrorCameraCallback");
-    this.lbq = new c("finishCallbackTimeCallback");
+    this.KVd = null;
+    this.KVe = null;
+    this.nGb = null;
+    this.KVf = 0;
+    this.KVh = false;
+    this.KVi = new a();
+    this.KVj = false;
+    this.nGq = new ArrayList();
+    this.KVk = false;
+    this.nFZ = null;
+    this.KVl = a.KVt;
+    this.nGs = new c("prevcameraCallback");
+    this.nGt = new c("cameraCallback");
+    this.nGu = new c("cameraPreviewCallback");
+    this.nGv = new c("cameraCropCallback");
+    this.KVm = new c("mirrorCameraCallback");
+    this.nGw = new c("finishCallbackTimeCallback");
     this.scene = 0;
-    this.lbt = null;
-    this.lbr = false;
-    this.EZC = false;
-    this.EZD = false;
-    this.lbl = new Camera.AutoFocusCallback()
+    this.nGy = null;
+    this.nGx = false;
+    this.KVo = false;
+    this.KVp = false;
+    this.nuM = new Camera.AutoFocusCallback()
     {
       public final void onAutoFocus(boolean paramAnonymousBoolean, Camera paramAnonymousCamera)
       {
         AppMethodBeat.i(89362);
         Log.v("MicroMsg.MMSightCamera", "auto focus callback success %s, status: %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean), f.f(f.this) });
-        f.EZE = true;
+        f.KVq = true;
         AppMethodBeat.o(89362);
       }
     };
-    this.EZF = new c(Looper.getMainLooper());
-    this.laM = true;
-    this.laR = p.eTA();
-    this.EZB = paramVideoTransPara;
+    this.KVr = new c(Looper.getMainLooper());
+    this.nFR = true;
+    this.nFW = p.gct();
+    this.KVn = paramVideoTransPara;
     this.scene = paramInt;
     AppMethodBeat.o(89371);
   }
@@ -162,7 +160,7 @@ public final class f
       List localList;
       try
       {
-        localParameters = paramw.avd();
+        localParameters = paramw.aPy();
         localList = localParameters.getSupportedFocusModes();
         if ((localList != null) && (localList.contains("continuous-picture")))
         {
@@ -214,12 +212,12 @@ public final class f
       float f2;
       try
       {
-        Camera.Parameters localParameters = paramw.avd();
+        Camera.Parameters localParameters = paramw.aPy();
         new Point(paramInt, (int)(paramInt / paramFloat));
         Object localObject;
-        if (this.laU == null)
+        if (this.nFZ == null)
         {
-          localObject = ar.au(MMApplicationContext.getContext());
+          localObject = aw.bf(MMApplicationContext.getContext());
           Point localPoint = new Point(Math.min(((Point)localObject).x, ((Point)localObject).y), Math.max(((Point)localObject).x, ((Point)localObject).y));
           Log.i("MicroMsg.MMSightCamera", "screenSize: %s, currentScreenSize: %s", new Object[] { localPoint, localObject });
           float f1 = Math.min(localPoint.x, localPoint.y) / Math.max(localPoint.x, localPoint.y);
@@ -229,10 +227,10 @@ public final class f
           }
           i = paramInt;
           Log.i("MicroMsg.MMSightCamera", "safeSetPreviewSizeWithLimitAndRatio, shortSize: %s, displayRatio: %s, screenRatio: %s", new Object[] { Integer.valueOf(i), Float.valueOf(paramFloat), Float.valueOf(f1) });
-          if (this.lbk.fSM == 90) {
+          if (this.nGr.hYK == 90) {
             break label756;
           }
-          if (this.lbk.fSM != 270) {
+          if (this.nGr.hYK != 270) {
             break label768;
           }
           break label756;
@@ -240,54 +238,54 @@ public final class f
           if (localc != null)
           {
             localObject = localc;
-            if (localc.EZN != null) {}
+            if (localc.KVz != null) {}
           }
           else
           {
             Log.e("MicroMsg.MMSightCamera", "fuck, preview size still null!!");
-            if (this.lbk.fSM == 90) {
+            if (this.nGr.hYK == 90) {
               break label762;
             }
-            if (this.lbk.fSM != 270) {
+            if (this.nGr.hYK != 270) {
               break label774;
             }
             break label762;
             localObject = h.d(localParameters, localPoint, paramInt, bool);
-            this.EZC = false;
+            this.KVo = false;
           }
-          if ((localObject != null) && (((h.c)localObject).EZN != null))
+          if ((localObject != null) && (((h.c)localObject).KVz != null))
           {
-            paramInt = (int)(((h.c)localObject).EZN.x * paramFloat);
-            Log.i("MicroMsg.MMSightCamera", "safeSetPreviewSizeWithLimitAndRatio result preview size: %s, cropHeight: %s", new Object[] { ((h.c)localObject).EZN, Integer.valueOf(paramInt) });
-            if (paramInt > ((h.c)localObject).EZN.y) {
+            paramInt = (int)(((h.c)localObject).KVz.x * paramFloat);
+            Log.i("MicroMsg.MMSightCamera", "safeSetPreviewSizeWithLimitAndRatio result preview size: %s, cropHeight: %s", new Object[] { ((h.c)localObject).KVz, Integer.valueOf(paramInt) });
+            if (paramInt > ((h.c)localObject).KVz.y) {
               break label726;
             }
-            this.EZC = false;
+            this.KVo = false;
           }
-          if ((localObject != null) && (((h.c)localObject).EZN != null))
+          if ((localObject != null) && (((h.c)localObject).KVz != null))
           {
-            localObject = ((h.c)localObject).EZN;
-            this.laR.wAw = ((Point)localObject).x;
-            this.laR.wAx = ((Point)localObject).y;
-            this.EZs = ((Point)localObject);
-            this.laW = null;
+            localObject = ((h.c)localObject).KVz;
+            this.nFW.zWH = ((Point)localObject).x;
+            this.nFW.zWI = ((Point)localObject).y;
+            this.KVe = ((Point)localObject);
+            this.nGb = null;
             if (!paramBoolean)
             {
-              if ((j.EZX.jth != 2) || (com.tencent.mm.plugin.mmsight.d.WW(this.EZs.y))) {
+              if ((j.KVJ.lWy != 2) || (com.tencent.mm.plugin.mmsight.d.aaY(this.KVe.y))) {
                 break label745;
               }
-              paramInt = com.tencent.mm.plugin.mmsight.d.WX(this.EZs.y);
-              if (Math.abs(paramInt - this.EZs.y) > 16) {
+              paramInt = com.tencent.mm.plugin.mmsight.d.aaZ(this.KVe.y);
+              if (Math.abs(paramInt - this.KVe.y) > 16) {
                 break label734;
               }
-              Log.i("MicroMsg.MMSightCamera", "padding 16 for encode video best size: %s, alignY: %s", new Object[] { this.EZs, Integer.valueOf(paramInt) });
-              this.EZr = new Point(this.EZs.x, this.EZs.y);
-              this.EZs.y = paramInt;
-              this.EZv = true;
-              this.EZu = new byte[this.EZs.x * this.EZs.y * 3 / 2];
+              Log.i("MicroMsg.MMSightCamera", "padding 16 for encode video best size: %s, alignY: %s", new Object[] { this.KVe, Integer.valueOf(paramInt) });
+              this.KVd = new Point(this.KVe.x, this.KVe.y);
+              this.KVe.y = paramInt;
+              this.KVh = true;
+              this.KVg = new byte[this.KVe.x * this.KVe.y * 3 / 2];
             }
-            Log.i("MicroMsg.MMSightCameraSetting", "final set camera preview size: %s, encodeVideoBestSize: %s, cropSize: %s, cropWidth: %s", new Object[] { localObject, this.EZs, this.laW, Boolean.valueOf(this.EZC) });
-            localParameters.setPreviewSize(this.laR.wAw, this.laR.wAx);
+            Log.i("MicroMsg.MMSightCameraSetting", "final set camera preview size: %s, encodeVideoBestSize: %s, cropSize: %s, cropWidth: %s", new Object[] { localObject, this.KVe, this.nGb, Boolean.valueOf(this.KVo) });
+            localParameters.setPreviewSize(this.nFW.zWH, this.nFW.zWI);
             paramw.c(localParameters);
             AppMethodBeat.o(89377);
             return true;
@@ -295,7 +293,7 @@ public final class f
         }
         else
         {
-          localObject = new Point(this.laU.getWidth(), this.laU.getHeight());
+          localObject = new Point(this.nFZ.getWidth(), this.nFZ.getHeight());
           continue;
         }
         f2 = paramInt / f2;
@@ -310,13 +308,13 @@ public final class f
       int i = Math.round(f2);
       continue;
       label726:
-      this.EZC = true;
+      this.KVo = true;
       continue;
       label734:
-      j.i(this.EZs);
+      j.k(this.KVe);
       continue;
       label745:
-      j.i(this.EZs);
+      j.k(this.KVe);
       continue;
       label756:
       boolean bool = true;
@@ -349,11 +347,11 @@ public final class f
       {
         try
         {
-          localParameters = paramw.avd();
+          localParameters = paramw.aPy();
           if (!paramBoolean) {
             break label235;
           }
-          if (af.juH.jpZ > 0)
+          if (af.lXY.lTg > 0)
           {
             Log.i("MicroMsg.MMSightCameraSetting", "set frame rate > 0, do not try set preview frame rate");
             Log.i("MicroMsg.MMSightCameraSetting", "use fix mode %B, supported preview frame rates %s", new Object[] { Boolean.valueOf(paramBoolean), localParameters.getSupportedPreviewFrameRates() });
@@ -388,7 +386,7 @@ public final class f
           return false;
         }
         continue;
-        if (af.juH.jpZ <= 0) {
+        if (af.lXY.lTg <= 0) {
           break;
         }
         Log.i("MicroMsg.MMSightCameraSetting", "set frame rate > 0, do not try set preview fps range");
@@ -485,10 +483,10 @@ public final class f
   
   private boolean a(w paramw, boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(253358);
+    AppMethodBeat.i(303565);
     if (paramw == null)
     {
-      AppMethodBeat.o(253358);
+      AppMethodBeat.o(303565);
       return false;
     }
     Camera.Parameters localParameters;
@@ -500,41 +498,41 @@ public final class f
     {
       try
       {
-        localParameters = paramw.avd();
-        if (this.laU == null)
+        localParameters = paramw.aPy();
+        if (this.nFZ == null)
         {
-          localPoint = com.tencent.mm.plugin.mmsight.d.hv(this.mContext);
-          if (this.laM)
+          localPoint = com.tencent.mm.plugin.mmsight.d.iQ(this.mContext);
+          if (this.nFR)
           {
-            localObject1 = b.eTa();
+            localObject1 = b.gbT();
             localObject2 = localParameters.getSupportedPreviewSizes();
             localObject3 = localParameters.getSupportedPictureSizes();
-            paramInt = this.lbk.fSM;
-            if (Util.isNullOrNil(((b)localObject1).EYI)) {
-              ((b)localObject1).EYI = com.tencent.mm.plugin.mmsight.d.fZ((List)localObject2);
+            paramInt = this.nGr.hYK;
+            if (Util.isNullOrNil(((b)localObject1).KUu)) {
+              ((b)localObject1).KUu = com.tencent.mm.plugin.mmsight.d.iW((List)localObject2);
             }
-            if (Util.isNullOrNil(((b)localObject1).EYJ)) {
-              ((b)localObject1).EYJ = com.tencent.mm.plugin.mmsight.d.fZ((List)localObject3);
+            if (Util.isNullOrNil(((b)localObject1).KUv)) {
+              ((b)localObject1).KUv = com.tencent.mm.plugin.mmsight.d.iW((List)localObject3);
             }
-            ((b)localObject1).fSM = paramInt;
-            ((b)localObject1).EZd = 1;
+            ((b)localObject1).hYK = paramInt;
+            ((b)localObject1).KUP = 1;
             if (paramBoolean)
             {
-              if (this.lbk.fSM == 90) {
+              if (this.nGr.hYK == 90) {
                 break label2473;
               }
-              if (this.lbk.fSM != 270) {
+              if (this.nGr.hYK != 270) {
                 break label495;
               }
               break label2473;
               j.a(localParameters, bool);
             }
-            com.tencent.mm.plugin.mmsight.model.a.k.eTI();
-            paramInt = com.tencent.mm.plugin.mmsight.model.a.k.eTL();
-            if (this.lbk.fSM == 90) {
+            com.tencent.mm.plugin.mmsight.model.a.k.gcB();
+            paramInt = com.tencent.mm.plugin.mmsight.model.a.k.gcD();
+            if (this.nGr.hYK == 90) {
               break label2479;
             }
-            if (this.lbk.fSM != 270) {
+            if (this.nGr.hYK != 270) {
               break label501;
             }
             break label2479;
@@ -543,57 +541,57 @@ public final class f
             if (localObject2 != null)
             {
               localObject1 = localObject2;
-              if (((h.c)localObject2).EZN != null) {}
+              if (((h.c)localObject2).KVz != null) {}
             }
             else
             {
               Log.e("MicroMsg.MMSightCamera", "fuck, preview size still null!!");
               localPoint = new Point(Math.min(localPoint.x, localPoint.y), Math.max(localPoint.x, localPoint.y));
-              if (this.lbk.fSM == 90) {
+              if (this.nGr.hYK == 90) {
                 break label2485;
               }
-              if (this.lbk.fSM != 270) {
+              if (this.nGr.hYK != 270) {
                 break label507;
               }
               break label2485;
               label304:
               localObject1 = h.d(localParameters, localPoint, 2100, bool);
-              this.EZC = false;
+              this.KVo = false;
             }
             j.a((h.c)localObject1);
-            localPoint = ((h.c)localObject1).EZN;
+            localPoint = ((h.c)localObject1).KVz;
             if (localPoint != null) {
               break;
             }
-            k.eTu();
-            AppMethodBeat.o(253358);
+            k.gcn();
+            AppMethodBeat.o(303565);
             return false;
           }
         }
         else
         {
-          localPoint = new Point(this.laU.getWidth(), this.laU.getHeight());
+          localPoint = new Point(this.nFZ.getWidth(), this.nFZ.getHeight());
           continue;
         }
-        localObject1 = b.eTa();
+        localObject1 = b.gbT();
         localObject2 = localParameters.getSupportedPreviewSizes();
         localObject3 = localParameters.getSupportedPictureSizes();
-        paramInt = this.lbk.fSM;
-        if (Util.isNullOrNil(((b)localObject1).EYK)) {
-          ((b)localObject1).EYK = com.tencent.mm.plugin.mmsight.d.fZ((List)localObject2);
+        paramInt = this.nGr.hYK;
+        if (Util.isNullOrNil(((b)localObject1).KUw)) {
+          ((b)localObject1).KUw = com.tencent.mm.plugin.mmsight.d.iW((List)localObject2);
         }
-        if (Util.isNullOrNil(((b)localObject1).EYL)) {
-          ((b)localObject1).EYL = com.tencent.mm.plugin.mmsight.d.fZ((List)localObject3);
+        if (Util.isNullOrNil(((b)localObject1).KUx)) {
+          ((b)localObject1).KUx = com.tencent.mm.plugin.mmsight.d.iW((List)localObject3);
         }
-        ((b)localObject1).fSM = paramInt;
-        ((b)localObject1).EZd = 2;
+        ((b)localObject1).hYK = paramInt;
+        ((b)localObject1).KUP = 2;
         continue;
         bool = false;
       }
       catch (Exception paramw)
       {
         Log.i("MicroMsg.MMSightCameraSetting", "setPreviewSize Exception, %s, %s", new Object[] { Looper.myLooper(), paramw.getMessage() });
-        AppMethodBeat.o(253358);
+        AppMethodBeat.o(303565);
         return false;
       }
       label495:
@@ -604,21 +602,21 @@ public final class f
       label507:
       bool = false;
     }
-    this.laR.wAw = localPoint.x;
-    this.laR.wAx = localPoint.y;
-    this.EZs = localPoint;
+    this.nFW.zWH = localPoint.x;
+    this.nFW.zWI = localPoint.y;
+    this.KVe = localPoint;
     Object localObject2 = this.mContext;
-    if (this.lbk.fSM != 90) {
-      if (this.lbk.fSM == 270)
+    if (this.nGr.hYK != 90) {
+      if (this.nGr.hYK == 270)
       {
         break label2491;
         label577:
         bool = com.tencent.mm.plugin.mmsight.d.a((Context)localObject2, localPoint, bool);
         paramInt = 1;
-        if ((this.lbk.fSM != 90) && (this.lbk.fSM != 270)) {
+        if ((this.nGr.hYK != 90) && (this.nGr.hYK != 270)) {
           break label1333;
         }
-        if ((localPoint.y < this.EZB.width) || (localPoint.x < this.EZB.height))
+        if ((localPoint.y < this.KVn.width) || (localPoint.x < this.KVn.height))
         {
           paramInt = 0;
           Log.w("MicroMsg.MMSightCamera", "previewSize %s not support real scale", new Object[] { localPoint });
@@ -628,21 +626,21 @@ public final class f
         if (!bool) {
           break label1418;
         }
-        if (j.EZX.jth != 2) {
+        if (j.KVJ.lWy != 2) {
           break label1406;
         }
-        this.laW = ((h.c)localObject1).EZP;
-        if ((this.laW.x < localPoint.x) || (this.laW.y < localPoint.y))
+        this.nGb = ((h.c)localObject1).KVB;
+        if ((this.nGb.x < localPoint.x) || (this.nGb.y < localPoint.y))
         {
-          if ((this.lbk.fSM != 90) && (this.lbk.fSM != 270)) {
+          if ((this.nGr.hYK != 90) && (this.nGr.hYK != 270)) {
             break label1386;
           }
-          this.laW.y = com.tencent.mm.plugin.mmsight.d.WY(this.laW.y);
+          this.nGb.y = com.tencent.mm.plugin.mmsight.d.aba(this.nGb.y);
         }
         label781:
-        this.EZs = new Point(this.laW.x, this.laW.y);
-        this.EZt = (this.laW.x * this.laW.y * 3 / 2);
-        Log.i("MicroMsg.MMSightCameraSetting", "cropSize: %s", new Object[] { this.laW });
+        this.KVe = new Point(this.nGb.x, this.nGb.y);
+        this.KVf = (this.nGb.x * this.nGb.y * 3 / 2);
+        Log.i("MicroMsg.MMSightCameraSetting", "cropSize: %s", new Object[] { this.nGb });
       }
     }
     label914:
@@ -658,256 +656,256 @@ public final class f
       label848:
       int i;
       int j;
-      if (j.EZX.Fak)
+      if (j.KVJ.KVU)
       {
-        if ((this.lbk.fSM != 90) && (this.lbk.fSM != 270)) {
+        if ((this.nGr.hYK != 90) && (this.nGr.hYK != 270)) {
           break label2017;
         }
         if (paramInt != 0)
         {
-          if (j.EZX.laT != 1080) {
+          if (j.KVJ.nFY != 1080) {
             break label1845;
           }
-          if (this.laW != null) {
+          if (this.nGb != null) {
             break label1794;
           }
           i = localPoint.x / 2;
-          if (this.laW != null) {
+          if (this.nGb != null) {
             break label1808;
           }
           paramInt = localPoint.y / 2;
-          if (this.laW != null) {
+          if (this.nGb != null) {
             break label1821;
           }
           j = localPoint.x;
-          j = com.tencent.mm.plugin.mmsight.d.id(i, j);
-          if (this.laW != null) {
+          j = com.tencent.mm.plugin.mmsight.d.jI(i, j);
+          if (this.nGb != null) {
             break label1833;
           }
           i = localPoint.y;
           label966:
-          this.EZs = new Point(j, com.tencent.mm.plugin.mmsight.d.id(paramInt, i));
+          this.KVe = new Point(j, com.tencent.mm.plugin.mmsight.d.jI(paramInt, i));
         }
       }
       label985:
-      localObject1 = b.eTa();
-      localObject2 = this.laW;
-      localObject3 = this.EZs;
-      ((b)localObject1).EYR = -1;
-      ((b)localObject1).EYQ = -1;
-      ((b)localObject1).EYN = -1;
-      ((b)localObject1).EYM = -1;
-      ((b)localObject1).EYP = -1;
-      ((b)localObject1).EYO = -1;
+      localObject1 = b.gbT();
+      localObject2 = this.nGb;
+      localObject3 = this.KVe;
+      ((b)localObject1).KUD = -1;
+      ((b)localObject1).KUC = -1;
+      ((b)localObject1).KUz = -1;
+      ((b)localObject1).KUy = -1;
+      ((b)localObject1).KUB = -1;
+      ((b)localObject1).KUA = -1;
       if (localPoint != null)
       {
-        ((b)localObject1).EYO = localPoint.x;
-        ((b)localObject1).EYP = localPoint.y;
+        ((b)localObject1).KUA = localPoint.x;
+        ((b)localObject1).KUB = localPoint.y;
       }
       if (localObject2 != null)
       {
-        ((b)localObject1).EYM = ((Point)localObject2).x;
-        ((b)localObject1).EYN = ((Point)localObject2).y;
+        ((b)localObject1).KUy = ((Point)localObject2).x;
+        ((b)localObject1).KUz = ((Point)localObject2).y;
       }
       if (localObject3 != null)
       {
-        ((b)localObject1).EYQ = ((Point)localObject3).x;
-        ((b)localObject1).EYR = ((Point)localObject3).y;
+        ((b)localObject1).KUC = ((Point)localObject3).x;
+        ((b)localObject1).KUD = ((Point)localObject3).y;
       }
       if (paramBoolean) {
-        if ((!bool) && (j.EZX.jth == 2) && (!com.tencent.mm.plugin.mmsight.d.WW(this.EZs.y)))
+        if ((!bool) && (j.KVJ.lWy == 2) && (!com.tencent.mm.plugin.mmsight.d.aaY(this.KVe.y)))
         {
-          paramInt = com.tencent.mm.plugin.mmsight.d.WX(this.EZs.y);
-          if (Math.abs(paramInt - this.EZs.y) <= 16)
+          paramInt = com.tencent.mm.plugin.mmsight.d.aaZ(this.KVe.y);
+          if (Math.abs(paramInt - this.KVe.y) <= 16)
           {
-            Log.i("MicroMsg.MMSightCamera", "padding 16 for encode video best size: %s, alignY: %s", new Object[] { this.EZs, Integer.valueOf(paramInt) });
-            this.EZr = new Point(this.EZs.x, this.EZs.y);
-            this.EZs.y = paramInt;
-            this.EZv = true;
-            this.EZu = new byte[this.EZs.x * this.EZs.y * 3 / 2];
+            Log.i("MicroMsg.MMSightCamera", "padding 16 for encode video best size: %s, alignY: %s", new Object[] { this.KVe, Integer.valueOf(paramInt) });
+            this.KVd = new Point(this.KVe.x, this.KVe.y);
+            this.KVe.y = paramInt;
+            this.KVh = true;
+            this.KVg = new byte[this.KVe.x * this.KVe.y * 3 / 2];
           }
         }
       }
       for (;;)
       {
-        Log.i("MicroMsg.MMSightCameraSetting", "final set camera preview size: %s, encodeVideoBestSize: %s, cropSize: %s", new Object[] { localPoint, this.EZs, this.laW });
-        localParameters.setPreviewSize(this.laR.wAw, this.laR.wAx);
+        Log.i("MicroMsg.MMSightCameraSetting", "final set camera preview size: %s, encodeVideoBestSize: %s, cropSize: %s", new Object[] { localPoint, this.KVe, this.nGb });
+        localParameters.setPreviewSize(this.nFW.zWH, this.nFW.zWI);
         paramw.c(localParameters);
-        AppMethodBeat.o(253358);
+        AppMethodBeat.o(303565);
         return true;
         bool = false;
         break;
-        if ((localPoint.x >= this.EZB.width) && (localPoint.y >= this.EZB.height)) {
+        if ((localPoint.x >= this.KVn.width) && (localPoint.y >= this.KVn.height)) {
           break label665;
         }
         paramInt = 0;
         Log.w("MicroMsg.MMSightCamera", "previewSize %s not support real scale", new Object[] { localPoint });
         break label665;
         label1386:
-        this.laW.x = com.tencent.mm.plugin.mmsight.d.WY(this.laW.x);
+        this.nGb.x = com.tencent.mm.plugin.mmsight.d.aba(this.nGb.x);
         break label781;
         label1406:
-        this.laW = ((h.c)localObject1).EZO;
+        this.nGb = ((h.c)localObject1).KVA;
         break label781;
-        if ((!j.EZX.Fak) || (j.EZX.laT != 1080) || (paramInt == 0)) {
+        if ((!j.KVJ.KVU) || (j.KVJ.nFY != 1080) || (paramInt == 0)) {
           break label2470;
         }
-        if ((this.lbk.fSM == 90) || (this.lbk.fSM == 270))
+        if ((this.nGr.hYK == 90) || (this.nGr.hYK == 270))
         {
           i = localPoint.y / 2;
-          j = com.tencent.mm.plugin.mmsight.d.WX(i);
+          j = com.tencent.mm.plugin.mmsight.d.aaZ(i);
           k = localPoint.x / 2;
-          m = com.tencent.mm.plugin.mmsight.d.WX(k);
+          m = com.tencent.mm.plugin.mmsight.d.aaZ(k);
           if ((Math.abs(j - i) < 8) && (Math.abs(m - k) < 8)) {
             break label2497;
           }
-          this.laW = new Point(localPoint.x, localPoint.y);
-          this.laW.y = com.tencent.mm.plugin.mmsight.d.WY(localPoint.y);
-          this.laW.x = com.tencent.mm.plugin.mmsight.d.WY(localPoint.x);
-          this.EZs = new Point(this.laW.x, this.laW.y);
-          this.EZt = (this.laW.x * this.laW.y * 3 / 2);
+          this.nGb = new Point(localPoint.x, localPoint.y);
+          this.nGb.y = com.tencent.mm.plugin.mmsight.d.aba(localPoint.y);
+          this.nGb.x = com.tencent.mm.plugin.mmsight.d.aba(localPoint.x);
+          this.KVe = new Point(this.nGb.x, this.nGb.y);
+          this.KVf = (this.nGb.x * this.nGb.y * 3 / 2);
           bool = true;
           break label2497;
         }
         i = localPoint.x / 2;
-        j = com.tencent.mm.plugin.mmsight.d.WX(i);
+        j = com.tencent.mm.plugin.mmsight.d.aaZ(i);
         int k = localPoint.y / 2;
-        int m = com.tencent.mm.plugin.mmsight.d.WX(k);
+        int m = com.tencent.mm.plugin.mmsight.d.aaZ(k);
         if ((Math.abs(j - i) < 8) && (Math.abs(m - k) < 8)) {
           break label2470;
         }
-        this.laW = new Point(localPoint.x, localPoint.y);
-        this.laW.y = com.tencent.mm.plugin.mmsight.d.WY(localPoint.x);
-        this.laW.x = com.tencent.mm.plugin.mmsight.d.WY(localPoint.y);
-        this.EZs = new Point(this.laW.x, this.laW.y);
-        this.EZt = (this.laW.x * this.laW.y * 3 / 2);
+        this.nGb = new Point(localPoint.x, localPoint.y);
+        this.nGb.y = com.tencent.mm.plugin.mmsight.d.aba(localPoint.x);
+        this.nGb.x = com.tencent.mm.plugin.mmsight.d.aba(localPoint.y);
+        this.KVe = new Point(this.nGb.x, this.nGb.y);
+        this.KVf = (this.nGb.x * this.nGb.y * 3 / 2);
         bool = true;
         break label848;
-        i = this.laW.x / 2;
+        i = this.nGb.x / 2;
         break label914;
-        paramInt = this.laW.y / 2;
+        paramInt = this.nGb.y / 2;
         break label929;
-        j = this.laW.x;
+        j = this.nGb.x;
         break label943;
-        i = this.laW.y;
+        i = this.nGb.y;
         break label966;
-        if (j.EZX.laT != 720) {
+        if (j.KVJ.nFY != 720) {
           break label985;
         }
         float f;
-        if (this.laW == null)
+        if (this.nGb == null)
         {
           f = localPoint.x * 0.75F;
           label1876:
           j = (int)f;
-          if (this.laW != null) {
+          if (this.nGb != null) {
             break label1978;
           }
           f = localPoint.y * 0.75F;
           label1900:
           i = (int)f;
-          if (this.laW != null) {
+          if (this.nGb != null) {
             break label1995;
           }
           paramInt = localPoint.x;
           label1918:
-          j = com.tencent.mm.plugin.mmsight.d.id(j, paramInt);
-          if (this.laW != null) {
+          j = com.tencent.mm.plugin.mmsight.d.jI(j, paramInt);
+          if (this.nGb != null) {
             break label2006;
           }
         }
         label1995:
         label2006:
-        for (paramInt = localPoint.y;; paramInt = this.laW.y)
+        for (paramInt = localPoint.y;; paramInt = this.nGb.y)
         {
-          this.EZs = new Point(j, com.tencent.mm.plugin.mmsight.d.id(i, paramInt));
+          this.KVe = new Point(j, com.tencent.mm.plugin.mmsight.d.jI(i, paramInt));
           break;
-          f = this.laW.x * 0.75F;
+          f = this.nGb.x * 0.75F;
           break label1876;
-          f = this.laW.y * 0.75F;
+          f = this.nGb.y * 0.75F;
           break label1900;
-          paramInt = this.laW.x;
+          paramInt = this.nGb.x;
           break label1918;
         }
         label2017:
         if (paramInt == 0) {
           break label985;
         }
-        if (j.EZX.laT == 1080)
+        if (j.KVJ.nFY == 1080)
         {
-          if (this.laW == null)
+          if (this.nGb == null)
           {
             i = localPoint.y / 2;
-            if (this.laW != null) {
+            if (this.nGb != null) {
               break label2137;
             }
             paramInt = localPoint.x / 2;
-            if (this.laW != null) {
+            if (this.nGb != null) {
               break label2150;
             }
             j = localPoint.y;
-            j = com.tencent.mm.plugin.mmsight.d.id(i, j);
-            if (this.laW != null) {
+            j = com.tencent.mm.plugin.mmsight.d.jI(i, j);
+            if (this.nGb != null) {
               break label2162;
             }
           }
           label2137:
           label2150:
           label2162:
-          for (i = localPoint.x;; i = this.laW.x)
+          for (i = localPoint.x;; i = this.nGb.x)
           {
-            this.EZs = new Point(j, com.tencent.mm.plugin.mmsight.d.id(paramInt, i));
+            this.KVe = new Point(j, com.tencent.mm.plugin.mmsight.d.jI(paramInt, i));
             break;
-            i = this.laW.y / 2;
+            i = this.nGb.y / 2;
             break label2049;
-            paramInt = this.laW.x / 2;
+            paramInt = this.nGb.x / 2;
             break label2064;
-            j = this.laW.y;
+            j = this.nGb.y;
             break label2078;
           }
         }
-        if (j.EZX.laT != 720) {
+        if (j.KVJ.nFY != 720) {
           break label985;
         }
-        if (this.laW == null)
+        if (this.nGb == null)
         {
           f = localPoint.y * 0.75F;
           j = (int)f;
-          if (this.laW != null) {
+          if (this.nGb != null) {
             break label2307;
           }
           f = localPoint.x * 0.75F;
           i = (int)f;
-          if (this.laW != null) {
+          if (this.nGb != null) {
             break label2324;
           }
           paramInt = localPoint.y;
           label2247:
-          j = com.tencent.mm.plugin.mmsight.d.id(j, paramInt);
-          if (this.laW != null) {
+          j = com.tencent.mm.plugin.mmsight.d.jI(j, paramInt);
+          if (this.nGb != null) {
             break label2335;
           }
         }
-        for (paramInt = localPoint.x;; paramInt = this.laW.x)
+        for (paramInt = localPoint.x;; paramInt = this.nGb.x)
         {
-          this.EZs = new Point(j, com.tencent.mm.plugin.mmsight.d.id(i, paramInt));
+          this.KVe = new Point(j, com.tencent.mm.plugin.mmsight.d.jI(i, paramInt));
           break;
-          f = this.laW.y * 0.75F;
+          f = this.nGb.y * 0.75F;
           break label2205;
-          f = this.laW.x * 0.75F;
+          f = this.nGb.x * 0.75F;
           break label2229;
-          paramInt = this.laW.y;
+          paramInt = this.nGb.y;
           break label2247;
         }
-        j.i(this.EZs);
+        j.k(this.KVe);
         continue;
-        j.i(this.EZs);
+        j.k(this.KVe);
         continue;
-        if ((!bool) && (j.EZX.jth == 2) && (!com.tencent.mm.plugin.mmsight.d.WW(this.EZs.y)) && (this.EZv) && (this.EZu != null) && (this.EZr.y == this.EZs.y))
+        if ((!bool) && (j.KVJ.lWy == 2) && (!com.tencent.mm.plugin.mmsight.d.aaY(this.KVe.y)) && (this.KVh) && (this.KVg != null) && (this.KVd.y == this.KVe.y))
         {
-          paramInt = com.tencent.mm.plugin.mmsight.d.WX(this.EZs.y);
-          if (this.EZu.length == this.EZs.x * paramInt * 3 / 2) {
-            this.EZs.y = paramInt;
+          paramInt = com.tencent.mm.plugin.mmsight.d.aaZ(this.KVe.y);
+          if (this.KVg.length == this.KVe.x * paramInt * 3 / 2) {
+            this.KVe.y = paramInt;
           }
         }
       }
@@ -923,10 +921,39 @@ public final class f
     }
   }
   
-  private void aXO()
+  private static boolean b(w paramw)
+  {
+    AppMethodBeat.i(89380);
+    if (paramw == null)
+    {
+      AppMethodBeat.o(89380);
+      return false;
+    }
+    try
+    {
+      Log.i("MicroMsg.MMSightCameraSetting", "safeSetPreviewFormat");
+      Camera.Parameters localParameters = paramw.aPy();
+      List localList = localParameters.getSupportedPreviewFormats();
+      if ((localList == null) || (!localList.contains(Integer.valueOf(17)))) {
+        Log.e("MicroMsg.MMSightCameraSetting", "not support YCbCr_420_SP");
+      }
+      localParameters.setPreviewFormat(17);
+      paramw.c(localParameters);
+      AppMethodBeat.o(89380);
+      return true;
+    }
+    catch (Exception paramw)
+    {
+      Log.i("MicroMsg.MMSightCameraSetting", "setPreviewFormat Exception, %s, %s", new Object[] { Looper.myLooper(), paramw.getMessage() });
+      AppMethodBeat.o(89380);
+    }
+    return false;
+  }
+  
+  private void bsB()
   {
     AppMethodBeat.i(89388);
-    if (true == this.EZD)
+    if (true == this.KVp)
     {
       AppMethodBeat.o(89388);
       return;
@@ -936,65 +963,65 @@ public final class f
       AppMethodBeat.o(89388);
       return;
     }
-    if ((Build.MANUFACTURER.equalsIgnoreCase("meizu")) && (!com.tencent.mm.compatible.e.b.avv()))
+    if ((Build.MANUFACTURER.equalsIgnoreCase("meizu")) && (!com.tencent.mm.compatible.e.b.aPP()))
     {
       AppMethodBeat.o(89388);
       return;
     }
-    Object localObject = new qj();
-    ((qj)localObject).fPf.type = 2;
-    EventCenter.instance.publish((IEvent)localObject);
-    if (((qj)localObject).fPg.fPe)
+    Object localObject = new rw();
+    ((rw)localObject).hUY.type = 2;
+    ((rw)localObject).publish();
+    if (((rw)localObject).hUZ.hUX)
     {
-      this.EZD = true;
+      this.KVp = true;
       AppMethodBeat.o(89388);
       return;
     }
-    localObject = com.tencent.mm.ui.base.h.p(this.mContext, a.a.short_video_no_record_video_permission, a.a.app_tip);
+    localObject = com.tencent.mm.ui.base.k.s(this.mContext, a.a.short_video_no_record_video_permission, a.a.app_tip);
     if (localObject != null)
     {
-      ((com.tencent.mm.ui.widget.a.d)localObject).setCancelable(false);
-      ((com.tencent.mm.ui.widget.a.d)localObject).setCanceledOnTouchOutside(false);
-      ((com.tencent.mm.ui.widget.a.d)localObject).show();
-      this.EZD = true;
+      ((e)localObject).setCancelable(false);
+      ((e)localObject).setCanceledOnTouchOutside(false);
+      ((e)localObject).show();
+      this.KVp = true;
     }
     AppMethodBeat.o(89388);
   }
   
-  private void aYg()
+  private void btd()
   {
     AppMethodBeat.i(89384);
-    if (this.jqD != null) {
+    if (this.lTN != null) {
       try
       {
-        Object localObject = this.jqD.avd();
+        Object localObject = this.lTN.aPy();
         Log.i("MicroMsg.MMSightCamera", "setPreviewCallbackImpl");
-        int i = this.laR.wAw;
-        int j = this.laR.wAx;
+        int i = this.nFW.zWH;
+        int j = this.nFW.zWI;
         j = ImageFormat.getBitsPerPixel(((Camera.Parameters)localObject).getPreviewFormat()) * (i * j) / 8;
         i = 0;
         while (i < 5)
         {
-          localObject = com.tencent.mm.plugin.mmsight.model.a.j.FbH.k(Integer.valueOf(j));
-          this.jqD.aj((byte[])localObject);
+          localObject = com.tencent.mm.plugin.mmsight.model.a.j.KXq.m(Integer.valueOf(j));
+          this.lTN.aj((byte[])localObject);
           i += 1;
         }
-        this.lbm.reset();
-        this.lbn.reset();
-        this.lbo.reset();
-        this.lbp.reset();
-        this.EZA.reset();
-        this.lbq.reset();
-        this.EZw = new a();
-        this.jqD.b(new Camera.PreviewCallback()
+        this.nGs.reset();
+        this.nGt.reset();
+        this.nGu.reset();
+        this.nGv.reset();
+        this.KVm.reset();
+        this.nGw.reset();
+        this.KVi = new a();
+        this.lTN.b(new Camera.PreviewCallback()
         {
           public final void onPreviewFrame(byte[] paramAnonymousArrayOfByte, Camera paramAnonymousCamera)
           {
             AppMethodBeat.i(89361);
-            if (!f.this.EZy)
+            if (!f.this.KVk)
             {
-              Log.i("MicroMsg.MMSightCamera", "onPreviewFrame: %s %s", new Object[] { paramAnonymousArrayOfByte, f.this.jqD });
-              f.this.EZy = true;
+              Log.i("MicroMsg.MMSightCamera", "onPreviewFrame: %s %s", new Object[] { paramAnonymousArrayOfByte, f.this.lTN });
+              f.this.KVk = true;
             }
             if ((paramAnonymousArrayOfByte == null) || (paramAnonymousArrayOfByte.length <= 0))
             {
@@ -1002,13 +1029,13 @@ public final class f
               AppMethodBeat.o(89361);
               return;
             }
-            paramAnonymousCamera = f.this.EZw;
-            if (paramAnonymousCamera.sfh == 0)
+            paramAnonymousCamera = f.this.KVi;
+            if (paramAnonymousCamera.vqU == 0)
             {
-              paramAnonymousCamera.sfg += 1;
-              paramAnonymousCamera.sff = Util.safeParseInt(m.auu());
+              paramAnonymousCamera.vqT += 1;
+              paramAnonymousCamera.vqS = Util.safeParseInt(m.aON());
             }
-            paramAnonymousCamera.sfh += 1;
+            paramAnonymousCamera.vqU += 1;
             int i;
             long l1;
             byte[] arrayOfByte;
@@ -1016,61 +1043,61 @@ public final class f
             long l2;
             int j;
             boolean bool;
-            if (paramAnonymousCamera.sfh >= 90)
+            if (paramAnonymousCamera.vqU >= 90)
             {
               i = 0;
-              paramAnonymousCamera.sfh = i;
-              if ((f.a(f.this)) || (f.this.lbj == null) || (f.this.lbj.size() <= 0)) {
+              paramAnonymousCamera.vqU = i;
+              if ((f.a(f.this)) || (f.this.nGq == null) || (f.this.nGq.size() <= 0)) {
                 break label944;
               }
-              if (f.this.laW == null) {
+              if (f.this.nGb == null) {
                 break label584;
               }
-              paramAnonymousCamera = com.tencent.mm.plugin.mmsight.model.a.j.FbH.k(Integer.valueOf(f.this.laR.wAw * f.this.laW.y * 3 / 2));
-              f.b(f.this).Ox(1L);
+              paramAnonymousCamera = com.tencent.mm.plugin.mmsight.model.a.j.KXq.m(Integer.valueOf(f.this.nFW.zWH * f.this.nGb.y * 3 / 2));
+              f.b(f.this).ss(1L);
               l1 = Util.currentTicks();
-              SightVideoJNI.cropCameraData(paramAnonymousArrayOfByte, paramAnonymousCamera, f.this.laR.wAw, f.this.laR.wAx, f.this.laW.y);
-              if (f.this.laW.x >= f.this.laR.wAw) {
+              SightVideoJNI.cropCameraData(paramAnonymousArrayOfByte, paramAnonymousCamera, f.this.nFW.zWH, f.this.nFW.zWI, f.this.nGb.y);
+              if (f.this.nGb.x >= f.this.nFW.zWH) {
                 break label941;
               }
-              arrayOfByte = com.tencent.mm.plugin.mmsight.model.a.j.FbH.k(Integer.valueOf(f.this.laW.x * f.this.laW.y * 3 / 2));
-              SightVideoJNI.cropCameraDataLongEdge(paramAnonymousCamera, arrayOfByte, f.this.laR.wAw, f.this.laW.x, f.this.laW.y);
-              com.tencent.mm.plugin.mmsight.model.a.j.FbH.as(paramAnonymousCamera);
+              arrayOfByte = com.tencent.mm.plugin.mmsight.model.a.j.KXq.m(Integer.valueOf(f.this.nGb.x * f.this.nGb.y * 3 / 2));
+              SightVideoJNI.cropCameraDataLongEdge(paramAnonymousCamera, arrayOfByte, f.this.nFW.zWH, f.this.nGb.x, f.this.nGb.y);
+              com.tencent.mm.plugin.mmsight.model.a.j.KXq.as(paramAnonymousCamera);
               paramAnonymousCamera = arrayOfByte;
               l2 = Util.ticksToNow(l1);
-              f.c(f.this).Ox(l2);
-              if (!f.this.laM)
+              f.c(f.this).ss(l2);
+              if (!f.this.nFR)
               {
                 l1 = Util.currentTicks();
-                i = f.this.laW.x;
-                j = f.this.laW.y;
-                if ((f.this.lbk.fSM != 270) && (f.this.lbk.fSM != 90)) {
+                i = f.this.nGb.x;
+                j = f.this.nGb.y;
+                if ((f.this.nGr.hYK != 270) && (f.this.nGr.hYK != 90)) {
                   break label578;
                 }
                 bool = true;
                 label458:
                 SightVideoJNI.mirrorCameraData(paramAnonymousCamera, i, j, bool);
                 l2 = Util.ticksToNow(l1);
-                f.d(f.this).Ox(l2);
+                f.d(f.this).ss(l2);
               }
               bool = f.a(f.this, paramAnonymousCamera);
               l1 = Util.ticksToNow(l1);
               if (bool) {
-                f.e(f.this).Ox(l1);
+                f.e(f.this).ss(l1);
               }
             }
             for (;;)
             {
               f.b(f.this, paramAnonymousCamera);
-              if (f.f(f.this) == f.a.EZH) {
-                f.g(f.this).Ox(1L);
+              if (f.f(f.this) == f.a.KVt) {
+                f.g(f.this).ss(1L);
               }
               for (;;)
               {
-                f.this.jqD.aj(paramAnonymousArrayOfByte);
+                f.this.lTN.aj(paramAnonymousArrayOfByte);
                 AppMethodBeat.o(89361);
                 return;
-                i = paramAnonymousCamera.sfh;
+                i = paramAnonymousCamera.vqU;
                 break;
                 label578:
                 bool = false;
@@ -1080,43 +1107,43 @@ public final class f
                 label656:
                 label753:
                 f localf;
-                if (!f.this.laM)
+                if (!f.this.nFR)
                 {
-                  i = f.this.laR.wAw;
-                  j = f.this.laR.wAx;
-                  if ((f.this.lbk.fSM == 270) || (f.this.lbk.fSM == 90))
+                  i = f.this.nFW.zWH;
+                  j = f.this.nFW.zWI;
+                  if ((f.this.nGr.hYK == 270) || (f.this.nGr.hYK == 90))
                   {
                     bool = true;
                     SightVideoJNI.mirrorCameraData(paramAnonymousArrayOfByte, i, j, bool);
                     l2 = Util.ticksToNow(l1);
-                    f.d(f.this).Ox(l2);
+                    f.d(f.this).ss(l2);
                   }
                 }
                 else
                 {
-                  if ((!f.this.EZv) || (f.this.EZu == null)) {
+                  if ((!f.this.KVh) || (f.this.KVg == null)) {
                     break label898;
                   }
-                  SightVideoJNI.paddingYuvData16(paramAnonymousArrayOfByte, f.this.EZu, f.this.EZs.x, f.this.EZr.y, f.this.EZs.y);
-                  paramAnonymousCamera = f.this.EZu;
+                  SightVideoJNI.paddingYuvData16(paramAnonymousArrayOfByte, f.this.KVg, f.this.KVe.x, f.this.KVd.y, f.this.KVe.y);
+                  paramAnonymousCamera = f.this.KVg;
                   bool = f.a(f.this, paramAnonymousCamera);
                   l1 = Util.ticksToNow(l1);
                   if (bool) {
-                    f.e(f.this).Ox(l1);
+                    f.e(f.this).ss(l1);
                   }
-                  if (f.this.EZv)
+                  if (f.this.KVh)
                   {
                     arrayOfByte = paramAnonymousArrayOfByte;
-                    if (f.this.EZu != null) {}
+                    if (f.this.KVg != null) {}
                   }
                   else
                   {
                     arrayOfByte = paramAnonymousArrayOfByte;
                     if (bool) {
-                      arrayOfByte = com.tencent.mm.plugin.mmsight.model.a.j.FbH.k(Integer.valueOf(paramAnonymousArrayOfByte.length));
+                      arrayOfByte = com.tencent.mm.plugin.mmsight.model.a.j.KXq.m(Integer.valueOf(paramAnonymousArrayOfByte.length));
                     }
                   }
-                  if ((f.this.EZv) && (f.this.EZu != null))
+                  if ((f.this.KVh) && (f.this.KVg != null))
                   {
                     localf = f.this;
                     if (!bool) {
@@ -1126,9 +1153,9 @@ public final class f
                 }
                 label898:
                 label903:
-                for (paramAnonymousArrayOfByte = com.tencent.mm.plugin.mmsight.model.a.j.FbH.k(Integer.valueOf(f.this.EZu.length));; paramAnonymousArrayOfByte = f.this.EZu)
+                for (paramAnonymousArrayOfByte = com.tencent.mm.plugin.mmsight.model.a.j.KXq.m(Integer.valueOf(f.this.KVg.length));; paramAnonymousArrayOfByte = f.this.KVg)
                 {
-                  localf.EZu = paramAnonymousArrayOfByte;
+                  localf.KVg = paramAnonymousArrayOfByte;
                   paramAnonymousArrayOfByte = arrayOfByte;
                   break;
                   bool = false;
@@ -1136,8 +1163,8 @@ public final class f
                   paramAnonymousCamera = paramAnonymousArrayOfByte;
                   break label753;
                 }
-                if (f.f(f.this) == f.a.EZI) {
-                  f.h(f.this).Ox(1L);
+                if (f.f(f.this) == f.a.KVu) {
+                  f.h(f.this).ss(1L);
                 }
               }
               label941:
@@ -1160,36 +1187,6 @@ public final class f
     AppMethodBeat.o(89384);
   }
   
-  private static boolean b(w paramw)
-  {
-    AppMethodBeat.i(89380);
-    if (paramw == null)
-    {
-      AppMethodBeat.o(89380);
-      return false;
-    }
-    try
-    {
-      Log.i("MicroMsg.MMSightCameraSetting", "safeSetPreviewFormat");
-      Camera.Parameters localParameters = paramw.avd();
-      List localList = localParameters.getSupportedPreviewFormats();
-      if ((localList == null) || (!localList.contains(Integer.valueOf(17)))) {
-        Log.e("MicroMsg.MMSightCameraSetting", "not support YCbCr_420_SP");
-      }
-      localParameters.setPreviewFormat(17);
-      paramw.c(localParameters);
-      AppMethodBeat.o(89380);
-      return true;
-    }
-    catch (Exception paramw)
-    {
-      Log.i("MicroMsg.MMSightCameraSetting", "setPreviewFormat Exception, %s, %s", new Object[] { Looper.myLooper(), paramw.getMessage() });
-      AppMethodBeat.o(89380);
-    }
-    return false;
-  }
-  
-  @TargetApi(14)
   private static boolean c(w paramw)
   {
     AppMethodBeat.i(89378);
@@ -1201,7 +1198,7 @@ public final class f
     try
     {
       Log.i("MicroMsg.MMSightCameraSetting", "safeSetMetering");
-      Camera.Parameters localParameters = paramw.avd();
+      Camera.Parameters localParameters = paramw.aPy();
       if (localParameters.getMaxNumMeteringAreas() > 0)
       {
         ArrayList localArrayList = new ArrayList();
@@ -1225,7 +1222,7 @@ public final class f
     AppMethodBeat.i(89387);
     try
     {
-      Camera.Parameters localParameters = paramw.avd();
+      Camera.Parameters localParameters = paramw.aPy();
       if (localParameters.isZoomSupported()) {
         localParameters.setZoom(0);
       }
@@ -1240,44 +1237,44 @@ public final class f
     }
   }
   
-  private void eTe()
+  private void gbX()
   {
     AppMethodBeat.i(89375);
     try
     {
-      if ((this.mSensorManager != null) && (this.EZn != null)) {
+      if ((this.mSensorManager != null) && (this.KUZ != null)) {
         this.mSensorManager.unregisterListener(this);
       }
-      Log.i("MicroMsg.MMSightCamera", this.lbm.getValue());
-      Log.i("MicroMsg.MMSightCamera", this.lbn.getValue());
-      Log.i("MicroMsg.MMSightCamera", this.lbo.getValue());
-      Log.i("MicroMsg.MMSightCamera", this.lbp.getValue());
-      Log.i("MicroMsg.MMSightCamera", this.EZA.getValue());
-      Log.i("MicroMsg.MMSightCamera", this.lbq.getValue());
-      if (this.jqD != null)
+      Log.i("MicroMsg.MMSightCamera", this.nGs.getValue());
+      Log.i("MicroMsg.MMSightCamera", this.nGt.getValue());
+      Log.i("MicroMsg.MMSightCamera", this.nGu.getValue());
+      Log.i("MicroMsg.MMSightCamera", this.nGv.getValue());
+      Log.i("MicroMsg.MMSightCamera", this.KVm.getValue());
+      Log.i("MicroMsg.MMSightCamera", this.nGw.getValue());
+      if (this.lTN != null)
       {
         long l = Util.currentTicks();
         Log.i("MicroMsg.MMSightCamera", "release camera beg, %s", new Object[] { Looper.myLooper() });
-        this.EZF.removeCallbacksAndMessages(null);
-        this.EZF.lbw = true;
-        this.jqD.a(null);
-        this.jqD.TL();
-        this.jqD.release();
-        this.jqD = null;
-        this.EZk = false;
+        this.KVr.removeCallbacksAndMessages(null);
+        this.KVr.nGA = true;
+        this.lTN.a(null);
+        this.lTN.auq();
+        this.lTN.release();
+        this.lTN = null;
+        this.KUW = false;
         Log.i("MicroMsg.MMSightCamera", "release camera end, use %dms, %s", new Object[] { Long.valueOf(Util.ticksToNow(l)), Looper.myLooper() });
       }
-      this.EZj = false;
-      this.EZo = 0.0F;
-      this.EZp = 0.0F;
-      this.EZq = 0.0F;
-      EZE = true;
+      this.KUV = false;
+      this.KVa = 0.0F;
+      this.KVb = 0.0F;
+      this.KVc = 0.0F;
+      KVq = true;
       this.mContext = null;
-      this.EZD = false;
-      this.EZs = null;
-      this.laW = null;
-      this.lbt = null;
-      this.EZy = false;
+      this.KVp = false;
+      this.KVe = null;
+      this.nGb = null;
+      this.nGy = null;
+      this.KVk = false;
       AppMethodBeat.o(89375);
       return;
     }
@@ -1288,33 +1285,33 @@ public final class f
     }
   }
   
-  public final boolean G(Context paramContext, boolean paramBoolean)
+  public final boolean N(Context paramContext, boolean paramBoolean)
   {
     AppMethodBeat.i(89398);
-    if ((!j.EZX.Fal) || ((af.juH.jqh == 0) && (this.mSensorManager == null) && (this.EZn == null)))
+    if ((!j.KVJ.KVV) || ((af.lXY.lTo == 0) && (this.mSensorManager == null) && (this.KUZ == null)))
     {
       this.mSensorManager = ((SensorManager)MMApplicationContext.getContext().getSystemService("sensor"));
-      this.EZn = this.mSensorManager.getDefaultSensor(1);
+      this.KUZ = this.mSensorManager.getDefaultSensor(1);
     }
-    if (this.jqD == null)
+    if (this.lTN == null)
     {
-      eTe();
-      this.laM = paramBoolean;
+      gbX();
+      this.nFR = paramBoolean;
       if (paramBoolean) {}
       try
       {
-        for (this.EZl = com.tencent.mm.compatible.deviceinfo.d.auk();; this.EZl = com.tencent.mm.compatible.deviceinfo.d.aul())
+        for (this.KUX = com.tencent.mm.compatible.deviceinfo.d.aOr();; this.KUX = com.tencent.mm.compatible.deviceinfo.d.aOs())
         {
-          Log.i("MicroMsg.MMSightCamera", "use camera id %d, SrvDeviceInfo id %d", new Object[] { Integer.valueOf(this.EZl), Integer.valueOf(af.juH.jqk) });
-          this.EZD = false;
+          Log.i("MicroMsg.MMSightCamera", "use camera id %d, SrvDeviceInfo id %d", new Object[] { Integer.valueOf(this.KUX), Integer.valueOf(af.lXY.lTr) });
+          this.KVp = false;
           this.mContext = paramContext;
-          this.lbk = new n().D(paramContext, this.EZl);
+          this.nGr = new n().G(paramContext, this.KUX);
           Log.i("MicroMsg.MMSightCamera", "open camera end, %s", new Object[] { Looper.myLooper() });
-          if (this.lbk != null) {
+          if (this.nGr != null) {
             break;
           }
           Log.i("MicroMsg.MMSightCamera", "open camera FAILED, %s", new Object[] { Looper.myLooper() });
-          aXO();
+          bsB();
           AppMethodBeat.o(89398);
           return false;
         }
@@ -1323,16 +1320,16 @@ public final class f
       {
         for (;;)
         {
-          Log.printErrStackTrace("MicroMsg.MMSightCamera", localException, "try to get cameraid error %s, useBackCamera: %s", new Object[] { localException.getMessage(), Boolean.valueOf(this.laM) });
-          this.EZl = 0;
+          Log.printErrStackTrace("MicroMsg.MMSightCamera", localException, "try to get cameraid error %s, useBackCamera: %s", new Object[] { localException.getMessage(), Boolean.valueOf(this.nFR) });
+          this.KUX = 0;
         }
-        this.jqD = this.lbk.jqD;
-        this.EZF.lbw = false;
-        this.laR.fSM = this.lbk.fSM;
-        if (this.jqD == null)
+        this.lTN = this.nGr.lTN;
+        this.KVr.nGA = false;
+        this.nFW.hYK = this.nGr.hYK;
+        if (this.lTN == null)
         {
           Log.e("MicroMsg.MMSightCamera", "start camera FAILED!");
-          aXO();
+          bsB();
           AppMethodBeat.o(89398);
           return false;
         }
@@ -1342,57 +1339,13 @@ public final class f
     return true;
   }
   
-  public final void Xa(int paramInt)
-  {
-    AppMethodBeat.i(89395);
-    if (this.jqD != null) {
-      try
-      {
-        Camera.Parameters localParameters = this.jqD.avd();
-        boolean bool = localParameters.isZoomSupported();
-        if (!bool) {
-          return;
-        }
-        if (paramInt >= 0)
-        {
-          int i = localParameters.getMaxZoom();
-          if (paramInt <= i) {}
-        }
-        else
-        {
-          return;
-        }
-        if (this.aHx)
-        {
-          Log.d("MicroMsg.MMSightCamera", "setForceZoomTargetRatio, zooming, ignore");
-          return;
-        }
-        this.aHx = true;
-        localParameters.setZoom(paramInt);
-        this.jqD.c(localParameters);
-        return;
-      }
-      catch (Exception localException)
-      {
-        Log.e("MicroMsg.MMSightCamera", "getZoom error: %s", new Object[] { localException.getMessage() });
-        return;
-      }
-      finally
-      {
-        this.aHx = false;
-        AppMethodBeat.o(89395);
-      }
-    }
-    AppMethodBeat.o(89395);
-  }
-  
   public final int a(SurfaceTexture paramSurfaceTexture, int paramInt, float paramFloat, boolean paramBoolean)
   {
     AppMethodBeat.i(89386);
     long l = Util.currentTicks();
-    this.EZy = false;
-    Log.i("MicroMsg.MMSightCamera", "start preview, previewing %B, %s %s", new Object[] { Boolean.valueOf(this.EZk), Looper.myLooper(), paramSurfaceTexture });
-    if (this.EZk)
+    this.KVk = false;
+    Log.i("MicroMsg.MMSightCamera", "start preview, previewing %B, %s %s", new Object[] { Boolean.valueOf(this.KUW), Looper.myLooper(), paramSurfaceTexture });
+    if (this.KUW)
     {
       AppMethodBeat.o(89386);
       return 0;
@@ -1408,57 +1361,57 @@ public final class f
     {
       try
       {
-        a(this.jqD, paramInt, paramFloat, paramBoolean);
-        if (com.tencent.mm.plugin.mmsight.model.a.k.eTI().FbJ == null) {
+        a(this.lTN, paramInt, paramFloat, paramBoolean);
+        if (com.tencent.mm.plugin.mmsight.model.a.k.gcB().KXs == null) {
           break label654;
         }
-        localInteger = Integer.valueOf(com.tencent.mm.plugin.mmsight.model.a.k.eTI().FbJ.EYs);
-        if (af.juH.jqe == 1)
+        localInteger = Integer.valueOf(com.tencent.mm.plugin.mmsight.model.a.k.gcB().KXs.KUe);
+        if (af.lXY.lTl == 1)
         {
           str = "Range";
-          if (af.juH.jqf != 1) {
+          if (af.lXY.lTm != 1) {
             break label671;
           }
           paramBoolean = true;
-          if (af.juH.jqg != 1) {
+          if (af.lXY.lTn != 1) {
             break label677;
           }
           bool1 = true;
-          if (af.juH.jqh != 1) {
+          if (af.lXY.lTo != 1) {
             break label683;
           }
           bool2 = true;
-          if (af.juH.jqi != 1) {
+          if (af.lXY.lTp != 1) {
             break label689;
           }
           bool3 = true;
           Log.i("MicroMsg.MMSightCamera", "startPreview Texture:: sightTest %s, config list: setFPS[%s], setYUV420SP[%B], useMetering[%B], useContinueFocus[%B] mUseContinueVideoFocusMode[%B]", new Object[] { localInteger, str, Boolean.valueOf(paramBoolean), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
-          if ((af.juH.jqe == 1) && ((localInteger.intValue() == 0) || (localInteger.intValue() == 1)))
+          if ((af.lXY.lTl == 1) && ((localInteger.intValue() == 0) || (localInteger.intValue() == 1)))
           {
-            a(this.jqD, false);
-            if ((af.juH.jqf == 1) && ((localInteger.intValue() == 0) || (localInteger.intValue() == 2))) {
-              b(this.jqD);
+            a(this.lTN, false);
+            if ((af.lXY.lTm == 1) && ((localInteger.intValue() == 0) || (localInteger.intValue() == 2))) {
+              b(this.lTN);
             }
-            if ((af.juO.jtp != -1) && (af.juO.jtp == 1) && (com.tencent.mm.compatible.util.d.qX(14))) {
-              c(this.jqD);
+            if ((af.lYf.lWG != -1) && (af.lYf.lWG == 1) && (com.tencent.mm.compatible.util.d.rd(14))) {
+              c(this.lTN);
             }
-            if ((af.juH.jqh == 1) && ((localInteger.intValue() == 0) || (localInteger.intValue() == 4))) {
-              a(this.jqD);
+            if ((af.lXY.lTo == 1) && ((localInteger.intValue() == 0) || (localInteger.intValue() == 4))) {
+              a(this.lTN);
             }
-            if ((af.juH.jqi == 1) && (localInteger.intValue() != 0)) {
+            if ((af.lXY.lTp == 1) && (localInteger.intValue() != 0)) {
               localInteger.intValue();
             }
-            d(this.jqD);
-            aYg();
-            this.jqD.f(paramSurfaceTexture);
-            this.jqD.ave();
-            if (!j.EZX.Fal) {
+            d(this.lTN);
+            btd();
+            this.lTN.f(paramSurfaceTexture);
+            this.lTN.aPz();
+            if (!j.KVJ.KVV) {
               break label637;
             }
-            if ((af.juH.jqh == 0) && (this.mSensorManager != null) && (this.EZn != null)) {
-              this.mSensorManager.registerListener(this, this.EZn, 2);
+            if ((af.lXY.lTo == 0) && (this.mSensorManager != null) && (this.KUZ != null)) {
+              this.mSensorManager.registerListener(this, this.KUZ, 2);
             }
-            this.EZk = true;
+            this.KUW = true;
             Log.i("MicroMsg.MMSightCamera", "start preview end, use %dms %s", new Object[] { Long.valueOf(Util.ticksToNow(l)), Looper.myLooper() });
             AppMethodBeat.o(89386);
             return 0;
@@ -1466,18 +1419,18 @@ public final class f
         }
         else
         {
-          if (af.juH.jqd != 1) {
+          if (af.lXY.lTk != 1) {
             break label663;
           }
           str = "Fix";
           continue;
         }
-        if ((af.juH.jqd != 1) || ((localInteger.intValue() != 0) && (localInteger.intValue() != 5))) {
+        if ((af.lXY.lTk != 1) || ((localInteger.intValue() != 0) && (localInteger.intValue() != 5))) {
           continue;
         }
-        a(this.jqD, true);
+        a(this.lTN, true);
         continue;
-        this.mSensorManager.registerListener(this, this.EZn, 2);
+        this.mSensorManager.registerListener(this, this.KUZ, 2);
       }
       catch (Exception paramSurfaceTexture)
       {
@@ -1508,14 +1461,13 @@ public final class f
     }
   }
   
-  @TargetApi(11)
   public final int a(SurfaceTexture paramSurfaceTexture, boolean paramBoolean)
   {
     AppMethodBeat.i(89385);
     long l = Util.currentTicks();
-    this.EZy = false;
-    Log.i("MicroMsg.MMSightCamera", "start preview, previewing %B, %s %s autoConfig %s", new Object[] { Boolean.valueOf(this.EZk), Looper.myLooper(), paramSurfaceTexture, Boolean.valueOf(paramBoolean) });
-    if (this.EZk)
+    this.KVk = false;
+    Log.i("MicroMsg.MMSightCamera", "start preview, previewing %B, %s %s autoConfig %s", new Object[] { Boolean.valueOf(this.KUW), Looper.myLooper(), paramSurfaceTexture, Boolean.valueOf(paramBoolean) });
+    if (this.KUW)
     {
       AppMethodBeat.o(89385);
       return 0;
@@ -1532,57 +1484,57 @@ public final class f
     {
       try
       {
-        a(this.jqD, paramBoolean, 0);
-        if (com.tencent.mm.plugin.mmsight.model.a.k.eTI().FbJ == null) {
+        a(this.lTN, paramBoolean, 0);
+        if (com.tencent.mm.plugin.mmsight.model.a.k.gcB().KXs == null) {
           break label657;
         }
-        localInteger = Integer.valueOf(com.tencent.mm.plugin.mmsight.model.a.k.eTI().FbJ.EYs);
-        if (af.juH.jqe == 1)
+        localInteger = Integer.valueOf(com.tencent.mm.plugin.mmsight.model.a.k.gcB().KXs.KUe);
+        if (af.lXY.lTl == 1)
         {
           str = "Range";
-          if (af.juH.jqf != 1) {
+          if (af.lXY.lTm != 1) {
             break label674;
           }
           paramBoolean = true;
-          if (af.juH.jqg != 1) {
+          if (af.lXY.lTn != 1) {
             break label679;
           }
           bool1 = true;
-          if (af.juH.jqh != 1) {
+          if (af.lXY.lTo != 1) {
             break label685;
           }
           bool2 = true;
-          if (af.juH.jqi != 1) {
+          if (af.lXY.lTp != 1) {
             break label691;
           }
           bool3 = true;
           Log.i("MicroMsg.MMSightCamera", "startPreview Texture:: sightTest %s, config list: setFPS[%s], setYUV420SP[%B], useMetering[%B], useContinueFocus[%B] mUseContinueVideoFocusMode[%B]", new Object[] { localInteger, str, Boolean.valueOf(paramBoolean), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
-          if ((af.juH.jqe == 1) && ((localInteger.intValue() == 0) || (localInteger.intValue() == 1)))
+          if ((af.lXY.lTl == 1) && ((localInteger.intValue() == 0) || (localInteger.intValue() == 1)))
           {
-            a(this.jqD, false);
-            if ((af.juH.jqf == 1) && ((localInteger.intValue() == 0) || (localInteger.intValue() == 2))) {
-              b(this.jqD);
+            a(this.lTN, false);
+            if ((af.lXY.lTm == 1) && ((localInteger.intValue() == 0) || (localInteger.intValue() == 2))) {
+              b(this.lTN);
             }
-            if ((af.juO.jtp != -1) && (af.juO.jtp == 1) && (com.tencent.mm.compatible.util.d.qX(14))) {
-              c(this.jqD);
+            if ((af.lYf.lWG != -1) && (af.lYf.lWG == 1) && (com.tencent.mm.compatible.util.d.rd(14))) {
+              c(this.lTN);
             }
-            if ((af.juH.jqh == 1) && ((localInteger.intValue() == 0) || (localInteger.intValue() == 4))) {
-              a(this.jqD);
+            if ((af.lXY.lTo == 1) && ((localInteger.intValue() == 0) || (localInteger.intValue() == 4))) {
+              a(this.lTN);
             }
-            if ((af.juH.jqi == 1) && (localInteger.intValue() != 0)) {
+            if ((af.lXY.lTp == 1) && (localInteger.intValue() != 0)) {
               localInteger.intValue();
             }
-            d(this.jqD);
-            aYg();
-            this.jqD.f(paramSurfaceTexture);
-            this.jqD.ave();
-            if (!j.EZX.Fal) {
+            d(this.lTN);
+            btd();
+            this.lTN.f(paramSurfaceTexture);
+            this.lTN.aPz();
+            if (!j.KVJ.KVV) {
               break label640;
             }
-            if ((af.juH.jqh == 0) && (this.mSensorManager != null) && (this.EZn != null)) {
-              this.mSensorManager.registerListener(this, this.EZn, 2);
+            if ((af.lXY.lTo == 0) && (this.mSensorManager != null) && (this.KUZ != null)) {
+              this.mSensorManager.registerListener(this, this.KUZ, 2);
             }
-            this.EZk = true;
+            this.KUW = true;
             Log.i("MicroMsg.MMSightCamera", "start preview end, use %dms %s", new Object[] { Long.valueOf(Util.ticksToNow(l)), Looper.myLooper() });
             AppMethodBeat.o(89385);
             return 0;
@@ -1590,18 +1542,18 @@ public final class f
         }
         else
         {
-          if (af.juH.jqd != 1) {
+          if (af.lXY.lTk != 1) {
             break label666;
           }
           str = "Fix";
           continue;
         }
-        if ((af.juH.jqd != 1) || ((localInteger.intValue() != 0) && (localInteger.intValue() != 5))) {
+        if ((af.lXY.lTk != 1) || ((localInteger.intValue() != 0) && (localInteger.intValue() != 5))) {
           continue;
         }
-        a(this.jqD, true);
+        a(this.lTN, true);
         continue;
-        this.mSensorManager.registerListener(this, this.EZn, 2);
+        this.mSensorManager.registerListener(this, this.KUZ, 2);
       }
       catch (Exception paramSurfaceTexture)
       {
@@ -1632,29 +1584,29 @@ public final class f
     }
   }
   
-  public final void a(f.a parama)
+  public final void a(a parama)
   {
     AppMethodBeat.i(89374);
-    this.EZz = parama;
+    this.KVl = parama;
     String str1;
     String str2;
     a locala;
-    if (parama == f.a.EZJ)
+    if (parama == a.KVv)
     {
-      parama = b.eTa();
-      str1 = this.lbn.eTc();
-      str2 = this.lbm.eTc();
-      locala = this.EZw;
-      if (locala.sfg != 0) {
+      parama = b.gbT();
+      str1 = this.nGt.gbV();
+      str2 = this.nGs.gbV();
+      locala = this.KVi;
+      if (locala.vqT != 0) {
         break label94;
       }
     }
     label94:
-    for (int i = 0;; i = locala.sff / locala.sfg)
+    for (int i = 0;; i = locala.vqS / locala.vqT)
     {
-      parama.EYS = ((int)(Util.safeParseDouble(str1) * 10.0D));
-      parama.EYT = ((int)(Util.safeParseDouble(str2) * 10.0D));
-      parama.EYY = i;
+      parama.KUE = ((int)(Util.safeParseDouble(str1) * 10.0D));
+      parama.KUF = ((int)(Util.safeParseDouble(str2) * 10.0D));
+      parama.KUK = i;
       AppMethodBeat.o(89374);
       return;
     }
@@ -1663,26 +1615,26 @@ public final class f
   public final void a(b paramb, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(89390);
-    Log.i("MicroMsg.MMSightCamera", "takePicture, callback: %s, currentFrameData: %s, isLandscape: %s, degree: %s", new Object[] { paramb, this.lbt, Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
-    if (this.lbt != null) {
+    Log.i("MicroMsg.MMSightCamera", "takePicture, callback: %s, currentFrameData: %s, isLandscape: %s, degree: %s", new Object[] { paramb, this.nGy, Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
+    if (this.nGy != null) {
       try
       {
-        this.lbr = true;
+        this.nGx = true;
         Point localPoint = new Point();
-        if (this.laW != null) {
-          localPoint.x = this.laW.x;
+        if (this.nGb != null) {
+          localPoint.x = this.nGb.x;
         }
-        for (localPoint.y = this.laW.y;; localPoint.y = this.EZs.y)
+        for (localPoint.y = this.nGb.y;; localPoint.y = this.KVe.y)
         {
-          byte[] arrayOfByte = com.tencent.mm.plugin.mmsight.model.a.j.FbH.k(Integer.valueOf(this.lbt.length));
-          System.arraycopy(this.lbt, 0, arrayOfByte, 0, this.lbt.length);
-          int i = this.lbk.fSM;
+          byte[] arrayOfByte = com.tencent.mm.plugin.mmsight.model.a.j.KXq.m(Integer.valueOf(this.nGy.length));
+          System.arraycopy(this.nGy, 0, arrayOfByte, 0, this.nGy.length);
+          int i = this.nGr.hYK;
           paramb.a(arrayOfByte, localPoint.x, localPoint.y, i, paramInt);
           return;
-          if ((this.EZu == null) || (!this.EZv)) {
+          if ((this.KVg == null) || (!this.KVh)) {
             break;
           }
-          localPoint.x = this.EZs.x;
+          localPoint.x = this.KVe.x;
         }
       }
       catch (Exception localException)
@@ -1690,16 +1642,16 @@ public final class f
         for (;;)
         {
           Log.e("MicroMsg.MMSightCamera", "takePicture error: %s", new Object[] { localException.getMessage() });
-          this.lbr = false;
+          this.nGx = false;
           paramb.a(null, 0, 0, -1, 0);
           return;
-          localException.x = this.laR.wAw;
-          localException.y = this.laR.wAx;
+          localException.x = this.nFW.zWH;
+          localException.y = this.nFW.zWI;
         }
       }
       finally
       {
-        this.lbr = false;
+        this.nGx = false;
         AppMethodBeat.o(89390);
       }
     }
@@ -1711,7 +1663,7 @@ public final class f
   {
     AppMethodBeat.i(89372);
     if (paramg != null) {
-      this.lbj.add(paramg);
+      this.nGq.add(paramg);
     }
     AppMethodBeat.o(89372);
   }
@@ -1719,14 +1671,14 @@ public final class f
   public final boolean a(Context paramContext, SurfaceTexture paramSurfaceTexture, int paramInt, float paramFloat, boolean paramBoolean)
   {
     AppMethodBeat.i(89400);
-    Log.i("MicroMsg.MMSightCamera", "switch camera with limit, current useBack: %s", new Object[] { Boolean.valueOf(this.laM) });
+    Log.i("MicroMsg.MMSightCamera", "switch camera with limit, current useBack: %s", new Object[] { Boolean.valueOf(this.nFR) });
     try
     {
-      eTk();
-      if (!this.laM) {}
+      gcd();
+      if (!this.nFR) {}
       for (boolean bool = true;; bool = false)
       {
-        G(paramContext, bool);
+        N(paramContext, bool);
         a(paramSurfaceTexture, paramInt, paramFloat, paramBoolean);
         AppMethodBeat.o(89400);
         return true;
@@ -1743,14 +1695,14 @@ public final class f
   public final boolean a(Context paramContext, SurfaceTexture paramSurfaceTexture, boolean paramBoolean)
   {
     AppMethodBeat.i(89399);
-    Log.i("MicroMsg.MMSightCamera", "switch camera, current useBack: %s", new Object[] { Boolean.valueOf(this.laM) });
+    Log.i("MicroMsg.MMSightCamera", "switch camera, current useBack: %s", new Object[] { Boolean.valueOf(this.nFR) });
     try
     {
-      eTk();
-      if (!this.laM) {}
+      gcd();
+      if (!this.nFR) {}
       for (boolean bool = true;; bool = false)
       {
-        G(paramContext, bool);
+        N(paramContext, bool);
         a(paramSurfaceTexture, paramBoolean);
         AppMethodBeat.o(89399);
         return true;
@@ -1764,25 +1716,64 @@ public final class f
     }
   }
   
-  public final boolean aYp()
+  public final void abc(int paramInt)
   {
-    return this.laM;
+    AppMethodBeat.i(89395);
+    if (this.lTN != null) {
+      try
+      {
+        Camera.Parameters localParameters = this.lTN.aPy();
+        boolean bool = localParameters.isZoomSupported();
+        if (!bool) {
+          return;
+        }
+        if (paramInt >= 0)
+        {
+          int i = localParameters.getMaxZoom();
+          if (paramInt <= i) {}
+        }
+        else
+        {
+          return;
+        }
+        if (this.isZooming)
+        {
+          Log.d("MicroMsg.MMSightCamera", "setForceZoomTargetRatio, zooming, ignore");
+          return;
+        }
+        this.isZooming = true;
+        localParameters.setZoom(paramInt);
+        this.lTN.c(localParameters);
+        return;
+      }
+      catch (Exception localException)
+      {
+        Log.e("MicroMsg.MMSightCamera", "getZoom error: %s", new Object[] { localException.getMessage() });
+        return;
+      }
+      finally
+      {
+        this.isZooming = false;
+        AppMethodBeat.o(89395);
+      }
+    }
+    AppMethodBeat.o(89395);
   }
   
   public final void b(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(89392);
-    if (com.tencent.mm.compatible.util.d.qW(14))
+    if (com.tencent.mm.compatible.util.d.rc(14))
     {
       AppMethodBeat.o(89392);
       return;
     }
-    this.EZF.removeMessages(4354);
-    this.EZF.jLa = paramFloat1;
-    this.EZF.jLb = paramFloat2;
-    this.EZF.lbP = paramInt1;
-    this.EZF.lbQ = paramInt2;
-    this.EZF.sendMessageDelayed(this.EZF.obtainMessage(4354, this.jqD), 400L);
+    this.KVr.removeMessages(4354);
+    this.KVr.mkm = paramFloat1;
+    this.KVr.mkn = paramFloat2;
+    this.KVr.nGM = paramInt1;
+    this.KVr.nGN = paramInt2;
+    this.KVr.sendMessageDelayed(this.KVr.obtainMessage(4354, this.lTN), 400L);
     AppMethodBeat.o(89392);
   }
   
@@ -1790,15 +1781,30 @@ public final class f
   {
     AppMethodBeat.i(89373);
     if (paramg != null) {
-      this.lbj.remove(paramg);
+      this.nGq.remove(paramg);
     }
     AppMethodBeat.o(89373);
   }
   
-  public final void d(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public final boolean boa()
+  {
+    return this.KUW;
+  }
+  
+  public final boolean btn()
+  {
+    return this.nFR;
+  }
+  
+  public final Point dPz()
+  {
+    return this.KVe;
+  }
+  
+  public final void e(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
     AppMethodBeat.i(89396);
-    if ((this.jqD != null) && (this.EZk)) {}
+    if ((this.lTN != null) && (this.KUW)) {}
     for (;;)
     {
       int m;
@@ -1807,28 +1813,28 @@ public final class f
       try
       {
         Log.d("MicroMsg.MMSightCamera", "triggerSmallZoom, zoom: %s", new Object[] { Boolean.valueOf(paramBoolean1) });
-        if (this.aHx)
+        if (this.isZooming)
         {
           Log.d("MicroMsg.MMSightCamera", "triggerSmallZoom, zooming, ignore");
           return;
         }
-        Camera.Parameters localParameters = this.jqD.avd();
+        Camera.Parameters localParameters = this.lTN.aPy();
         if (localParameters.isZoomSupported())
         {
-          this.aHx = true;
+          this.isZooming = true;
           m = localParameters.getZoom();
           k = localParameters.getMaxZoom();
           if (!paramBoolean2)
           {
-            if (this.laY <= 0)
+            if (this.nGd <= 0)
             {
-              this.laY = Math.round(k / 15.0F);
-              if (this.laY > 5) {
-                this.laY = 5;
+              this.nGd = Math.round(k / 15.0F);
+              if (this.nGd > 5) {
+                this.nGd = 5;
               }
             }
-            i = this.laY;
-            Log.d("MicroMsg.MMSightCamera", "triggerSmallZoom, currentZoom: %s, maxZoom: %s, smallZoomStep: %s, scrollSmallZoomStep: %s, factor: %s", new Object[] { Integer.valueOf(m), Integer.valueOf(k), Integer.valueOf(this.laY), Integer.valueOf(this.laX), Integer.valueOf(paramInt) });
+            i = this.nGd;
+            Log.d("MicroMsg.MMSightCamera", "triggerSmallZoom, currentZoom: %s, maxZoom: %s, smallZoomStep: %s, scrollSmallZoomStep: %s, factor: %s", new Object[] { Integer.valueOf(m), Integer.valueOf(k), Integer.valueOf(this.nGd), Integer.valueOf(this.nGc), Integer.valueOf(paramInt) });
             j = i;
             if (paramInt > 0) {
               j = i * paramInt;
@@ -1841,16 +1847,16 @@ public final class f
           }
           else
           {
-            if (this.laX <= 0)
+            if (this.nGc <= 0)
             {
-              Log.e("MicroMsg.MMSightCamera", "scroll zoom error, scrollSmallZoomStep: %s", new Object[] { Integer.valueOf(this.laX) });
+              Log.e("MicroMsg.MMSightCamera", "scroll zoom error, scrollSmallZoomStep: %s", new Object[] { Integer.valueOf(this.nGc) });
               return;
             }
-            i = this.laX;
+            i = this.nGc;
             continue;
             Log.d("MicroMsg.MMSightCamera", "triggerSmallZoom, nextZoom: %s", new Object[] { Integer.valueOf(paramInt) });
             localParameters.setZoom(paramInt);
-            this.jqD.c(localParameters);
+            this.lTN.c(localParameters);
           }
         }
         else
@@ -1876,7 +1882,7 @@ public final class f
       }
       finally
       {
-        this.aHx = false;
+        this.isZooming = false;
         AppMethodBeat.o(89396);
       }
       return;
@@ -1890,26 +1896,21 @@ public final class f
     }
   }
   
-  public final Point diO()
-  {
-    return this.EZs;
-  }
-  
-  public final void eTf()
+  public final void gbY()
   {
     AppMethodBeat.i(89382);
     Log.i("MicroMsg.MMSightCamera", "switchToVideoFocusMode");
-    if ((this.jqD != null) && (this.EZk)) {
+    if ((this.lTN != null) && (this.KUW)) {
       try
       {
-        Camera.Parameters localParameters = this.jqD.avd();
+        Camera.Parameters localParameters = this.lTN.aPy();
         List localList = localParameters.getSupportedFocusModes();
         if ((localList != null) && (localList.contains("continuous-video")))
         {
           Log.i("MicroMsg.MMSightCameraSetting", "support continuous video");
           localParameters.setFocusMode("continuous-video");
         }
-        this.jqD.c(localParameters);
+        this.lTN.c(localParameters);
         AppMethodBeat.o(89382);
         return;
       }
@@ -1921,21 +1922,21 @@ public final class f
     AppMethodBeat.o(89382);
   }
   
-  public final void eTg()
+  public final void gbZ()
   {
     AppMethodBeat.i(89383);
     Log.i("MicroMsg.MMSightCamera", "switchToPictureFocusMode");
-    if ((this.jqD != null) && (this.EZk)) {
+    if ((this.lTN != null) && (this.KUW)) {
       try
       {
-        Camera.Parameters localParameters = this.jqD.avd();
+        Camera.Parameters localParameters = this.lTN.aPy();
         List localList = localParameters.getSupportedFocusModes();
         if ((localList != null) && (localList.contains("continuous-picture")))
         {
           Log.i("MicroMsg.MMSightCameraSetting", "support continuous picture");
           localParameters.setFocusMode("continuous-picture");
         }
-        this.jqD.c(localParameters);
+        this.lTN.c(localParameters);
         AppMethodBeat.o(89383);
         return;
       }
@@ -1947,10 +1948,10 @@ public final class f
     AppMethodBeat.o(89383);
   }
   
-  public final String eTh()
+  public final String gca()
   {
     AppMethodBeat.i(89389);
-    if (this.jqD == null)
+    if (this.lTN == null)
     {
       AppMethodBeat.o(89389);
       return "";
@@ -1963,10 +1964,10 @@ public final class f
       try
       {
         localStringBuffer = new StringBuffer();
-        localObject3 = com.tencent.mm.plugin.mmsight.d.f(this.jqD.avd());
-        if (this.laU == null)
+        localObject3 = com.tencent.mm.plugin.mmsight.d.h(this.lTN.aPy());
+        if (this.nFZ == null)
         {
-          Object localObject1 = com.tencent.mm.plugin.mmsight.d.hv(this.mContext);
+          Object localObject1 = com.tencent.mm.plugin.mmsight.d.iQ(this.mContext);
           localStringBuffer.append(String.format("Screen size %d %d r:%.4f\n", new Object[] { Integer.valueOf(((Point)localObject1).x), Integer.valueOf(((Point)localObject1).y), Double.valueOf(((Point)localObject1).x * 1.0D / ((Point)localObject1).y) }));
           localObject1 = ((ArrayList)localObject3).iterator();
           if (!((Iterator)localObject1).hasNext()) {
@@ -1979,7 +1980,7 @@ public final class f
           localStringBuffer.append(String.format("%s*%s √ r:%.4f\n", new Object[] { Integer.valueOf(((Camera.Size)localObject3).width), Integer.valueOf(((Camera.Size)localObject3).height), Double.valueOf(((Camera.Size)localObject3).height * 1.0D / ((Camera.Size)localObject3).width) }));
           continue;
         }
-        localObject2 = new Point(this.laU.getWidth(), this.laU.getHeight());
+        localObject2 = new Point(this.nFZ.getWidth(), this.nFZ.getHeight());
       }
       catch (Exception localException)
       {
@@ -1991,13 +1992,13 @@ public final class f
       label290:
       localStringBuffer.append(String.format("%s*%s X r:%.4f\n", new Object[] { Integer.valueOf(((Camera.Size)localObject3).width), Integer.valueOf(((Camera.Size)localObject3).height), Double.valueOf(((Camera.Size)localObject3).height * 1.0D / ((Camera.Size)localObject3).width) }));
     }
-    if (this.laW != null) {
-      localStringBuffer.append("\nSIGHTCROPMODE:  " + this.laW.x + " " + this.laW.y + " from " + this.laR.wAw + " " + this.laR.wAx);
+    if (this.nGb != null) {
+      localStringBuffer.append("\nSIGHTCROPMODE:  " + this.nGb.x + " " + this.nGb.y + " from " + this.nFW.zWH + " " + this.nFW.zWI);
     }
     for (;;)
     {
       localStringBuffer.append("\ngetOrientation:" + getOrientation());
-      localStringBuffer.append("\nrecorderOption: " + af.juO.jto);
+      localStringBuffer.append("\nrecorderOption: " + af.lYf.lWF);
       localObject2 = localStringBuffer.toString();
       AppMethodBeat.o(89389);
       return localObject2;
@@ -2005,21 +2006,21 @@ public final class f
     }
   }
   
-  public final void eTi()
+  public final void gcb()
   {
     AppMethodBeat.i(89393);
-    if ((this.jqD != null) && (this.EZk)) {
+    if ((this.lTN != null) && (this.KUW)) {
       try
       {
-        Camera.Parameters localParameters = this.jqD.avd();
+        Camera.Parameters localParameters = this.lTN.aPy();
         List localList = localParameters.getSupportedFocusModes();
         if ((localList != null) && (localList.contains("auto")))
         {
           Log.i("MicroMsg.MMSightCameraSetting", "support auto focus");
           localParameters.setFocusMode("auto");
-          this.jqD.c(localParameters);
+          this.lTN.c(localParameters);
         }
-        this.jqD.avf();
+        this.lTN.aPA();
         AppMethodBeat.o(89393);
       }
       catch (Exception localException1)
@@ -2028,12 +2029,12 @@ public final class f
         {
           try
           {
-            this.jqD.a(new Camera.AutoFocusCallback()
+            this.lTN.a(new Camera.AutoFocusCallback()
             {
               public final void onAutoFocus(boolean paramAnonymousBoolean, Camera paramAnonymousCamera)
               {
                 AppMethodBeat.i(89363);
-                if ((paramAnonymousCamera != null) && (f.this.egx())) {
+                if ((paramAnonymousCamera != null) && (f.this.boa())) {
                   try
                   {
                     Camera.Parameters localParameters = paramAnonymousCamera.getParameters();
@@ -2069,13 +2070,13 @@ public final class f
     }
   }
   
-  public final List<Integer> eTj()
+  public final List<Integer> gcc()
   {
     AppMethodBeat.i(89394);
-    if (this.jqD != null) {
+    if (this.lTN != null) {
       try
       {
-        Object localObject = this.jqD.avd();
+        Object localObject = this.lTN.aPy();
         boolean bool = ((Camera.Parameters)localObject).isZoomSupported();
         if (!bool)
         {
@@ -2095,27 +2096,27 @@ public final class f
     return null;
   }
   
-  public final int eTk()
+  public final int gcd()
   {
     AppMethodBeat.i(89401);
-    eTe();
+    gbX();
     AppMethodBeat.o(89401);
     return 0;
   }
   
-  public final void eTl()
+  public final void gce()
   {
     AppMethodBeat.i(89402);
-    Log.i("MicroMsg.MMSightCamera", "openFlash, camera: %s, isPreviewing: %s", new Object[] { this.jqD, Boolean.valueOf(this.EZk) });
-    if ((this.jqD != null) && (this.EZk)) {
+    Log.i("MicroMsg.MMSightCamera", "openFlash, camera: %s, isPreviewing: %s", new Object[] { this.lTN, Boolean.valueOf(this.KUW) });
+    if ((this.lTN != null) && (this.KUW)) {
       try
       {
-        this.EZx = true;
-        Camera.Parameters localParameters = this.jqD.avd();
+        this.KVj = true;
+        Camera.Parameters localParameters = this.lTN.aPy();
         if ((!Util.isNullOrNil(localParameters.getSupportedFlashModes())) && (localParameters.getSupportedFlashModes().contains("torch")))
         {
           localParameters.setFlashMode("torch");
-          this.jqD.c(localParameters);
+          this.lTN.c(localParameters);
           Log.i("MicroMsg.MMSightCamera", "open flash");
           AppMethodBeat.o(89402);
           return;
@@ -2132,19 +2133,19 @@ public final class f
     AppMethodBeat.o(89402);
   }
   
-  public final void eTm()
+  public final void gcf()
   {
     AppMethodBeat.i(89403);
-    Log.i("MicroMsg.MMSightCamera", "closeFlash, camera: %s, isPreviewing: %s", new Object[] { this.jqD, Boolean.valueOf(this.EZk) });
-    if ((this.jqD != null) && (this.EZk)) {
+    Log.i("MicroMsg.MMSightCamera", "closeFlash, camera: %s, isPreviewing: %s", new Object[] { this.lTN, Boolean.valueOf(this.KUW) });
+    if ((this.lTN != null) && (this.KUW)) {
       try
       {
-        this.EZx = false;
-        Camera.Parameters localParameters = this.jqD.avd();
+        this.KVj = false;
+        Camera.Parameters localParameters = this.lTN.aPy();
         if ((!Util.isNullOrNil(localParameters.getSupportedFlashModes())) && (localParameters.getSupportedFlashModes().contains("off")))
         {
           localParameters.setFlashMode("off");
-          this.jqD.c(localParameters);
+          this.lTN.c(localParameters);
           Log.i("MicroMsg.MMSightCamera", "close flash");
           AppMethodBeat.o(89403);
           return;
@@ -2161,19 +2162,19 @@ public final class f
     AppMethodBeat.o(89403);
   }
   
-  public final void eTn()
+  public final void gcg()
   {
     AppMethodBeat.i(89404);
-    Log.i("MicroMsg.MMSightCamera", "autoFlash, camera: %s, isPreviewing: %s", new Object[] { this.jqD, Boolean.valueOf(this.EZk) });
-    if ((this.jqD != null) && (this.EZk)) {
+    Log.i("MicroMsg.MMSightCamera", "autoFlash, camera: %s, isPreviewing: %s", new Object[] { this.lTN, Boolean.valueOf(this.KUW) });
+    if ((this.lTN != null) && (this.KUW)) {
       try
       {
-        this.EZx = true;
-        Camera.Parameters localParameters = this.jqD.avd();
+        this.KVj = true;
+        Camera.Parameters localParameters = this.lTN.aPy();
         if ((!Util.isNullOrNil(localParameters.getSupportedFlashModes())) && (localParameters.getSupportedFlashModes().contains("auto")))
         {
           localParameters.setFlashMode("auto");
-          this.jqD.c(localParameters);
+          this.lTN.c(localParameters);
           Log.i("MicroMsg.MMSightCamera", "auto flash");
           AppMethodBeat.o(89404);
           return;
@@ -2190,15 +2191,10 @@ public final class f
     AppMethodBeat.o(89404);
   }
   
-  public final boolean egx()
-  {
-    return this.EZk;
-  }
-  
   public final int getOrientation()
   {
-    if ((this.lbk != null) && (this.EZk)) {
-      return this.lbk.fSM;
+    if ((this.nGr != null) && (this.KUW)) {
+      return this.nGr.hYK;
     }
     return -1;
   }
@@ -2206,38 +2202,38 @@ public final class f
   public final int getPreviewHeight()
   {
     AppMethodBeat.i(89406);
-    if (this.jqD == null)
+    if (this.lTN == null)
     {
       AppMethodBeat.o(89406);
       return 0;
     }
-    if (this.lbk != null) {
+    if (this.nGr != null) {
       try
       {
         int i;
-        if ((this.EZv) && (this.EZu != null)) {
-          if ((this.lbk.fSM == 0) || (this.lbk.fSM == 180)) {
-            i = this.EZs.y;
+        if ((this.KVh) && (this.KVg != null)) {
+          if ((this.nGr.hYK == 0) || (this.nGr.hYK == 180)) {
+            i = this.KVe.y;
           }
         }
         for (;;)
         {
           AppMethodBeat.o(89406);
           return i;
-          i = this.EZs.x;
+          i = this.KVe.x;
           continue;
-          if (this.laW == null)
+          if (this.nGb == null)
           {
-            if ((this.lbk.fSM == 0) || (this.lbk.fSM == 180)) {
-              i = this.laR.wAx;
+            if ((this.nGr.hYK == 0) || (this.nGr.hYK == 180)) {
+              i = this.nFW.zWI;
             } else {
-              i = this.laR.wAw;
+              i = this.nFW.zWH;
             }
           }
-          else if ((this.lbk.fSM == 0) || (this.lbk.fSM == 180)) {
-            i = this.laW.y;
+          else if ((this.nGr.hYK == 0) || (this.nGr.hYK == 180)) {
+            i = this.nGb.y;
           } else {
-            i = this.laW.x;
+            i = this.nGb.x;
           }
         }
         AppMethodBeat.o(89406);
@@ -2253,38 +2249,38 @@ public final class f
   public final int getPreviewWidth()
   {
     AppMethodBeat.i(89405);
-    if (this.jqD == null)
+    if (this.lTN == null)
     {
       AppMethodBeat.o(89405);
       return 0;
     }
-    if (this.lbk != null) {
+    if (this.nGr != null) {
       try
       {
         int i;
-        if ((this.EZv) && (this.EZu != null)) {
-          if ((this.lbk.fSM == 0) || (this.lbk.fSM == 180)) {
-            i = this.EZs.x;
+        if ((this.KVh) && (this.KVg != null)) {
+          if ((this.nGr.hYK == 0) || (this.nGr.hYK == 180)) {
+            i = this.KVe.x;
           }
         }
         for (;;)
         {
           AppMethodBeat.o(89405);
           return i;
-          i = this.EZs.y;
+          i = this.KVe.y;
           continue;
-          if (this.laW == null)
+          if (this.nGb == null)
           {
-            if ((this.lbk.fSM == 0) || (this.lbk.fSM == 180)) {
-              i = this.laR.wAw;
+            if ((this.nGr.hYK == 0) || (this.nGr.hYK == 180)) {
+              i = this.nFW.zWH;
             } else {
-              i = this.laR.wAx;
+              i = this.nFW.zWI;
             }
           }
-          else if ((this.lbk.fSM == 0) || (this.lbk.fSM == 180)) {
-            i = this.laW.x;
+          else if ((this.nGr.hYK == 0) || (this.nGr.hYK == 180)) {
+            i = this.nGb.x;
           } else {
-            i = this.laW.y;
+            i = this.nGb.y;
           }
         }
         AppMethodBeat.o(89405);
@@ -2305,13 +2301,13 @@ public final class f
     float f1 = paramSensorEvent.values[0];
     float f2 = paramSensorEvent.values[1];
     float f3 = paramSensorEvent.values[2];
-    if ((Math.abs(this.EZo - f1) > 5.0F) || (Math.abs(this.EZp - f2) > 5.0F) || (Math.abs(this.EZq - f3) > 5.0F))
+    if ((Math.abs(this.KVa - f1) > 5.0F) || (Math.abs(this.KVb - f2) > 5.0F) || (Math.abs(this.KVc - f3) > 5.0F))
     {
       Log.i("MicroMsg.MMSightCamera", "match accel limit %f, try auto focus x %s y %s z %s", new Object[] { Float.valueOf(5.0F), Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(f3) });
-      this.EZF.e(this.jqD);
-      this.EZo = f1;
-      this.EZp = f2;
-      this.EZq = f3;
+      this.KVr.e(this.lTN);
+      this.KVa = f1;
+      this.KVb = f2;
+      this.KVc = f3;
     }
     AppMethodBeat.o(89391);
   }
@@ -2319,14 +2315,14 @@ public final class f
   public final void up(int paramInt)
   {
     AppMethodBeat.i(89397);
-    if (this.laX > 0)
+    if (this.nGc > 0)
     {
       AppMethodBeat.o(89397);
       return;
     }
-    if (this.laU == null) {}
+    if (this.nFZ == null) {}
     int i;
-    for (Point localPoint = ar.au(MMApplicationContext.getContext());; localPoint = new Point(this.laU.getWidth(), this.laU.getHeight()))
+    for (Point localPoint = aw.bf(MMApplicationContext.getContext());; localPoint = new Point(this.nFZ.getWidth(), this.nFZ.getHeight()))
     {
       i = localPoint.y;
       Log.i("MicroMsg.MMSightCamera", "calcScrollZoomStep, recordButtonTopLocation: %s, screenSize: %s", new Object[] { Integer.valueOf(paramInt), localPoint });
@@ -2338,11 +2334,11 @@ public final class f
     }
     try
     {
-      if (this.jqD != null)
+      if (this.lTN != null)
       {
-        i = this.jqD.avd().getMaxZoom();
-        this.laX = ((int)(i / (paramInt / 3.0D / 10.0D)) + 1);
-        Log.i("MicroMsg.MMSightCamera", "scrollSmallZoomStep: %s, maxZoom: %s", new Object[] { Integer.valueOf(this.laX), Integer.valueOf(i) });
+        i = this.lTN.aPy().getMaxZoom();
+        this.nGc = ((int)(i / (paramInt / 3.0D / 10.0D)) + 1);
+        Log.i("MicroMsg.MMSightCamera", "scrollSmallZoomStep: %s, maxZoom: %s", new Object[] { Integer.valueOf(this.nGc), Integer.valueOf(i) });
       }
       AppMethodBeat.o(89397);
       return;
@@ -2354,6 +2350,21 @@ public final class f
     }
   }
   
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(89366);
+      KVt = new a("Preview", 0);
+      KVu = new a("Recording", 1);
+      KVv = new a("Stoping", 2);
+      KVw = new a[] { KVt, KVu, KVv };
+      AppMethodBeat.o(89366);
+    }
+    
+    private a() {}
+  }
+  
   public static abstract interface b
   {
     public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
@@ -2362,21 +2373,36 @@ public final class f
   public final class c
     extends MMHandler
   {
-    int EZL = 0;
-    boolean EZM = false;
-    boolean EZj = false;
-    float jLa;
-    float jLb;
-    int lbP;
-    int lbQ;
-    boolean lbw = false;
+    boolean KUV = false;
+    int KVx = 0;
+    boolean KVy = false;
+    float mkm;
+    float mkn;
+    boolean nGA = false;
+    int nGM;
+    int nGN;
     
     public c(Looper paramLooper)
     {
       super();
     }
     
-    private static int Xb(int paramInt)
+    private static Rect a(float paramFloat1, float paramFloat2, float paramFloat3, int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(89367);
+      paramFloat3 = 80.0F * paramFloat3;
+      paramFloat1 /= paramInt1;
+      paramFloat2 /= paramInt2;
+      paramFloat1 = paramFloat1 * 2000.0F - 1000.0F - paramFloat3 / 2.0F;
+      paramFloat2 = paramFloat2 * 2000.0F - 1000.0F - paramFloat3 / 2.0F;
+      Object localObject = new RectF();
+      ((RectF)localObject).set(paramFloat1, paramFloat2, paramFloat1 + paramFloat3, paramFloat3 + paramFloat2);
+      localObject = new Rect(abd(Math.round(((RectF)localObject).left)), abd(Math.round(((RectF)localObject).top)), abd(Math.round(((RectF)localObject).right)), abd(Math.round(((RectF)localObject).bottom)));
+      AppMethodBeat.o(89367);
+      return localObject;
+    }
+    
+    private static int abd(int paramInt)
     {
       int i;
       if (paramInt > 1000) {
@@ -2390,22 +2416,7 @@ public final class f
       return -1000;
     }
     
-    private static Rect a(float paramFloat1, float paramFloat2, float paramFloat3, int paramInt1, int paramInt2)
-    {
-      AppMethodBeat.i(89367);
-      paramFloat3 = 80.0F * paramFloat3;
-      paramFloat1 /= paramInt1;
-      paramFloat2 /= paramInt2;
-      paramFloat1 = paramFloat1 * 2000.0F - 1000.0F - paramFloat3 / 2.0F;
-      paramFloat2 = paramFloat2 * 2000.0F - 1000.0F - paramFloat3 / 2.0F;
-      Object localObject = new RectF();
-      ((RectF)localObject).set(paramFloat1, paramFloat2, paramFloat1 + paramFloat3, paramFloat3 + paramFloat2);
-      localObject = new Rect(Xb(Math.round(((RectF)localObject).left)), Xb(Math.round(((RectF)localObject).top)), Xb(Math.round(((RectF)localObject).right)), Xb(Math.round(((RectF)localObject).bottom)));
-      AppMethodBeat.o(89367);
-      return localObject;
-    }
-    
-    private static int g(Camera.Parameters paramParameters)
+    private static int i(Camera.Parameters paramParameters)
     {
       AppMethodBeat.i(89369);
       if (paramParameters == null)
@@ -2442,25 +2453,25 @@ public final class f
         AppMethodBeat.o(89368);
         return;
       }
-      if (!f.EZE)
+      if (!f.KVq)
       {
         Log.w("MicroMsg.MMSightCamera", "auto focus not back");
         AppMethodBeat.o(89368);
         return;
       }
-      f.EZE = false;
+      f.KVq = false;
       try
       {
         Log.i("MicroMsg.MMSightCamera", "triggerAutoFocus");
-        paramw.avf();
-        paramw.a(f.this.lbl);
+        paramw.aPA();
+        paramw.a(f.this.nuM);
         AppMethodBeat.o(89368);
         return;
       }
       catch (Exception paramw)
       {
         Log.w("MicroMsg.MMSightCamera", "autofocus fail, exception %s", new Object[] { paramw.getMessage() });
-        f.EZE = true;
+        f.KVq = true;
         AppMethodBeat.o(89368);
       }
     }
@@ -2477,37 +2488,37 @@ public final class f
         AppMethodBeat.o(89370);
         return;
         paramMessage = (w)paramMessage.obj;
-        if ((this.lbP == 0) || (this.lbQ == 0) || (com.tencent.mm.compatible.util.d.qW(14)))
+        if ((this.nGM == 0) || (this.nGN == 0) || (com.tencent.mm.compatible.util.d.rc(14)))
         {
           e(paramMessage);
           AppMethodBeat.o(89370);
           return;
         }
-        float f1 = this.jLa;
-        float f2 = this.jLb;
-        int i = this.lbP;
-        j = this.lbQ;
+        float f1 = this.mkm;
+        float f2 = this.mkn;
+        int i = this.nGM;
+        j = this.nGN;
         if (paramMessage == null)
         {
           Log.w("MicroMsg.MMSightCamera", "want to auto focus, but camera is null, do nothing");
           AppMethodBeat.o(89370);
           return;
         }
-        if (!f.EZE)
+        if (!f.KVq)
         {
           Log.w("MicroMsg.MMSightCamera", "auto focus not back");
           AppMethodBeat.o(89370);
           return;
         }
-        f.EZE = false;
+        f.KVq = false;
         try
         {
-          paramMessage.avf();
+          paramMessage.aPA();
           Log.i("MicroMsg.MMSightCamera", "ashutest:: touch %f %f, display %d %d", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(i), Integer.valueOf(j) });
           Object localObject2 = a(f1, f2, 1.0F, i, j);
           localObject1 = a(f1, f2, 1.5F, i, j);
           Log.i("MicroMsg.MMSightCamera", "ashutest:: focus rect %s, meter rect %s", new Object[] { localObject2, localObject1 });
-          localParameters = paramMessage.avd();
+          localParameters = paramMessage.aPy();
           Object localObject3 = localParameters.getSupportedFocusModes();
           if ((localObject3 != null) && (((List)localObject3).contains("auto"))) {
             localParameters.setFocusMode("auto");
@@ -2525,29 +2536,29 @@ public final class f
             localParameters.setMeteringAreas((List)localObject2);
           }
           paramMessage.c(localParameters);
-          paramMessage.a(f.this.lbl);
+          paramMessage.a(f.this.nuM);
           AppMethodBeat.o(89370);
           return;
         }
         catch (Exception paramMessage)
         {
           Log.w("MicroMsg.MMSightCamera", "autofocus with area fail, exception %s", new Object[] { paramMessage.getMessage() });
-          f.EZE = true;
+          f.KVq = true;
           AppMethodBeat.o(89370);
           return;
         }
-        if (this.lbw)
+        if (this.nGA)
         {
           AppMethodBeat.o(89370);
           return;
         }
         Object localObject1 = (Camera)paramMessage.obj;
         Camera.Parameters localParameters = ((Camera)localObject1).getParameters();
-        Log.i("MicroMsg.MMSightCamera", "zoomed %s curZoomStep %s params.getZoom() %s", new Object[] { Boolean.valueOf(this.EZj), Integer.valueOf(this.EZL), Integer.valueOf(localParameters.getZoom()) });
-        i = localParameters.getZoom() + this.EZL;
-        if (this.EZj)
+        Log.i("MicroMsg.MMSightCamera", "zoomed %s curZoomStep %s params.getZoom() %s", new Object[] { Boolean.valueOf(this.KUV), Integer.valueOf(this.KVx), Integer.valueOf(localParameters.getZoom()) });
+        i = localParameters.getZoom() + this.KVx;
+        if (this.KUV)
         {
-          int k = g(localParameters);
+          int k = i(localParameters);
           if (i >= k)
           {
             i = k;
@@ -2562,11 +2573,11 @@ public final class f
           if (j == 0) {
             continue;
           }
-          this.lbP = 0;
-          this.lbQ = 0;
+          this.nGM = 0;
+          this.nGN = 0;
           continue;
           paramMessage = obtainMessage(4353, paramMessage.obj);
-          if (this.EZM) {}
+          if (this.KVy) {}
           for (long l = 10L;; l = 20L)
           {
             sendMessageDelayed(paramMessage, l);
@@ -2579,7 +2590,7 @@ public final class f
             break label519;
           }
           paramMessage = obtainMessage(4353, paramMessage.obj);
-          if (this.EZM) {}
+          if (this.KVy) {}
           for (l = 10L;; l = 20L)
           {
             sendMessageDelayed(paramMessage, l);

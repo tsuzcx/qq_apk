@@ -1,218 +1,143 @@
 package com.tencent.mm.plugin.finder.live.plugin;
 
-import android.content.Intent;
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.i;
-import com.tencent.mm.live.c.b.b;
-import com.tencent.mm.live.c.b.c;
-import com.tencent.mm.plugin.finder.live.report.k;
-import com.tencent.mm.plugin.finder.live.report.s.am;
-import com.tencent.mm.plugin.finder.live.widget.o;
-import com.tencent.mm.plugin.finder.live.widget.o.c;
-import com.tencent.mm.plugin.finder.utils.aq;
-import com.tencent.mm.protocal.protobuf.aze;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.live.b.b.c;
+import com.tencent.mm.plugin.finder.live.viewmodel.data.business.e;
+import com.tencent.mm.plugin.finder.live.widget.ad;
+import com.tencent.mm.protocal.protobuf.bmw;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorExceptionPlugin;", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "REQUEST_CODE_FACE_VERIFY", "", "TAG", "", "exceptionWidget", "Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveExceptionWidget;", "initWidget", "", "anchorUserName", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "showAnchorForceQuit", "errorPage", "Lcom/tencent/mm/protocal/protobuf/FinderLiveErrorPage;", "errCode", "showCreateLiveDynamicErrPage", "showFaceVerify", "verifyUrl", "userName", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorFastCommentPlugin;", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "activity", "Landroid/app/Activity;", "getActivity", "()Landroid/app/Activity;", "fastCommentWidget", "Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveFastCommentWidget;", "checkIfShowViolationMsg", "", "createFastCommentWidget", "mount", "showWidget", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "unMount", "Companion", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class n
-  extends d
+  extends b
 {
-  private final String TAG;
-  private final com.tencent.mm.live.c.b kCL;
-  private final int ymi;
-  private o ymj;
+  public static final a CUM;
+  private ad CUN;
+  private final Activity activity;
+  private final com.tencent.mm.live.b.b nfT;
   
-  public n(ViewGroup paramViewGroup, com.tencent.mm.live.c.b paramb)
+  static
+  {
+    AppMethodBeat.i(353792);
+    CUM = new a((byte)0);
+    AppMethodBeat.o(353792);
+  }
+  
+  public n(ViewGroup paramViewGroup, com.tencent.mm.live.b.b paramb)
   {
     super(paramViewGroup, paramb);
-    AppMethodBeat.i(283303);
-    this.kCL = paramb;
-    this.TAG = "Finder.LiveAnchorExceptionPlugin";
-    this.ymi = 10000;
-    AppMethodBeat.o(283303);
+    AppMethodBeat.i(353785);
+    this.nfT = paramb;
+    paramViewGroup = paramViewGroup.getContext();
+    if (paramViewGroup == null)
+    {
+      paramViewGroup = new NullPointerException("null cannot be cast to non-null type android.app.Activity");
+      AppMethodBeat.o(353785);
+      throw paramViewGroup;
+    }
+    this.activity = ((Activity)paramViewGroup);
+    AppMethodBeat.o(353785);
   }
   
-  private final void aCl(String paramString)
+  public final void mount()
   {
-    AppMethodBeat.i(283298);
-    if (this.ymj == null)
+    AppMethodBeat.i(353812);
+    ad localad = this.CUN;
+    if (localad != null) {
+      localad.c((b)this);
+    }
+    AppMethodBeat.o(353812);
+  }
+  
+  public final void statusChange(b.c paramc, Bundle paramBundle)
+  {
+    AppMethodBeat.i(353808);
+    s.u(paramc, "status");
+    switch (b.$EnumSwitchMapping$0[paramc.ordinal()])
     {
-      this.ymj = new o((View)this.kiF, paramString, ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)getBuContext().business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).dGE());
-      paramString = this.ymj;
-      if (paramString != null)
+    }
+    ad localad;
+    do
+    {
+      AppMethodBeat.o(353808);
+      return;
+      if (this.CUN == null)
       {
-        paramString.zny = ((kotlin.g.a.b)new a(this));
-        AppMethodBeat.o(283298);
-        return;
+        this.CUN = new ad((Context)this.activity, getBuContext());
+        this.mJe.addView((View)this.CUN);
+        paramc = this.CUN;
+        if (paramc != null) {
+          paramc.c((b)this);
+        }
+      }
+      paramc = this.CUN;
+      if (paramc != null) {
+        paramc.show();
+      }
+      AppMethodBeat.o(353808);
+      return;
+      localad = this.CUN;
+    } while (localad == null);
+    paramc = ((e)localad.buContext.business(e.class)).EdT;
+    label159:
+    int i;
+    if (paramc == null)
+    {
+      paramc = null;
+      if (paramc != null) {
+        break label204;
+      }
+      i = 0;
+      label165:
+      if (i == 0) {
+        break label210;
+      }
+      if (paramc != null) {
+        break label212;
       }
     }
-    AppMethodBeat.o(283298);
-  }
-  
-  public final void a(String paramString, aze paramaze, int paramInt)
-  {
-    AppMethodBeat.i(283301);
-    p.k(paramString, "anchorUserName");
-    Log.i(this.TAG, "showAnchorForceQuit anchorUserName:".concat(String.valueOf(paramString)));
-    aCl(paramString);
-    paramString = this.ymj;
-    if (paramString != null)
+    label204:
+    label210:
+    label212:
+    for (paramBundle = null;; paramBundle = paramc.ZVC)
     {
-      o.c localc = o.znK;
-      paramString.a(o.dIf(), paramaze, paramInt, (kotlin.g.a.b)new b(this));
-      AppMethodBeat.o(283301);
-      return;
-    }
-    AppMethodBeat.o(283301);
-  }
-  
-  public final void a(final String paramString1, final String paramString2, aze paramaze)
-  {
-    AppMethodBeat.i(283299);
-    Log.i(this.TAG, "showFaceVerify:".concat(String.valueOf(paramString1)));
-    Object localObject = k.yBj;
-    k.a(s.am.yJm, paramString2);
-    aCl("");
-    localObject = this.ymj;
-    if (localObject != null)
-    {
-      o.c localc = o.znK;
-      o.a((o)localObject, o.dIe(), paramaze, (kotlin.g.a.b)new d(this, paramString1, paramString2), 4);
-      AppMethodBeat.o(283299);
-      return;
-    }
-    AppMethodBeat.o(283299);
-  }
-  
-  public final void b(String paramString, aze paramaze, int paramInt)
-  {
-    AppMethodBeat.i(283302);
-    p.k(paramString, "anchorUserName");
-    Log.i(this.TAG, "showCreateLiveDynamicErrPage anchorUserName:".concat(String.valueOf(paramString)));
-    aCl(paramString);
-    paramString = this.ymj;
-    if (paramString != null)
-    {
-      o.c localc = o.znK;
-      paramString.a(o.dIi(), paramaze, paramInt, (kotlin.g.a.b)new c(this));
-      AppMethodBeat.o(283302);
-      return;
-    }
-    AppMethodBeat.o(283302);
-  }
-  
-  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    AppMethodBeat.i(283300);
-    super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (paramInt1 == this.ymi)
-    {
-      Object localObject1 = this.ymj;
-      if (localObject1 != null) {
-        ((o)localObject1).hide();
+      localad.ayA(paramBundle);
+      if (paramc == null) {
+        break;
       }
-      if (paramIntent != null) {}
-      for (localObject1 = paramIntent.getBundleExtra("result_data");; localObject1 = null)
-      {
-        if (paramIntent != null)
-        {
-          localObject2 = paramIntent.getStringExtra("srcUsername");
-          paramIntent = (Intent)localObject2;
-          if (localObject2 != null) {}
-        }
-        else
-        {
-          paramIntent = "";
-        }
-        if ((paramInt2 != -1) || (localObject1 == null)) {
-          break;
-        }
-        localObject2 = ((Bundle)localObject1).getString("go_next", "");
-        Object localObject3 = ((Bundle)localObject1).getString("result_json");
-        if (Util.isNullOrNil((String)localObject3)) {
-          break;
-        }
-        paramInt1 = new i((String)localObject3).getInt("code");
-        if ((!p.h(localObject2, "roomlive_verify")) || (paramInt1 != 0)) {
-          break;
-        }
-        localObject1 = this.kCL;
-        localObject2 = b.c.kzS;
-        localObject3 = new Bundle();
-        ((Bundle)localObject3).putBoolean("PARAM_FINDER_LIVE_POST_AFTER_FACE_VERIFY", true);
-        ((com.tencent.mm.live.c.b)localObject1).statusChange((b.c)localObject2, (Bundle)localObject3);
-        localObject1 = k.yBj;
-        k.a(s.am.yJo, paramIntent);
-        AppMethodBeat.o(283300);
-        return;
-      }
-      Object localObject2 = k.yBj;
-      k.a(s.am.yJp, paramIntent);
-      b.b.a(this.kCL, b.c.kyS);
-      paramIntent = aq.AIJ;
-      paramIntent = aq.efL();
-      localObject1 = String.valueOf(localObject1);
-      getBuContext();
-      aq.hw(paramIntent, (String)localObject1);
-    }
-    AppMethodBeat.o(283300);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "licenseUrl", "", "invoke"})
-  static final class a
-    extends q
-    implements kotlin.g.a.b<String, x>
-  {
-    a(n paramn)
-    {
-      super();
+      paramc.ZVB = 0;
+      break;
+      paramc = (bmw)p.oL(paramc);
+      break label159;
+      i = paramc.ZVB;
+      break label165;
+      break;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "ok", "", "invoke"})
-  static final class b
-    extends q
-    implements kotlin.g.a.b<Boolean, x>
+  public final void unMount()
   {
-    b(n paramn)
-    {
-      super();
+    AppMethodBeat.i(353819);
+    ad localad = this.CUN;
+    if (localad != null) {
+      localad.unMount();
     }
+    AppMethodBeat.o(353819);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "ok", "", "invoke"})
-  static final class c
-    extends q
-    implements kotlin.g.a.b<Boolean, x>
-  {
-    c(n paramn)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "verify", "", "invoke"})
-  static final class d
-    extends q
-    implements kotlin.g.a.b<Boolean, x>
-  {
-    d(n paramn, String paramString1, String paramString2)
-    {
-      super();
-    }
-  }
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorFastCommentPlugin$Companion;", "", "()V", "TAG", "", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.plugin.n
  * JD-Core Version:    0.7.0.1
  */

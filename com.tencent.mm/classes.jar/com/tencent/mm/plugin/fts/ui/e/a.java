@@ -1,166 +1,159 @@
 package com.tencent.mm.plugin.fts.ui.e;
 
-import android.webkit.JavascriptInterface;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
-import com.tencent.mm.plugin.fts.ui.widget.d;
-import com.tencent.mm.plugin.report.f;
-import com.tencent.mm.plugin.websearch.api.ad;
-import com.tencent.mm.plugin.websearch.webview.b;
-import com.tencent.mm.plugin.websearch.webview.c;
-import com.tencent.mm.protocal.protobuf.dxu;
-import com.tencent.mm.protocal.protobuf.fll;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.fts.a.a.l;
+import com.tencent.mm.plugin.fts.a.a.m;
+import com.tencent.mm.plugin.fts.a.a.o;
+import com.tencent.mm.plugin.fts.a.c.b;
+import com.tencent.mm.plugin.fts.a.d;
+import com.tencent.mm.plugin.fts.a.d.e.a;
+import com.tencent.mm.plugin.fts.a.d.e.b;
+import com.tencent.mm.plugin.fts.a.n;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.g.b.p;
-import kotlin.l;
-import org.json.JSONObject;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.storage.aq;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/fts/ui/webview/PardusJSApi;", "Lcom/tencent/mm/plugin/websearch/webview/WebSearchImageJSApi;", "Lcom/tencent/mm/protocal/protobuf/WebSearchHomeContext;", "uiComponent", "Lcom/tencent/mm/plugin/fts/ui/widget/IPardusUIComponent;", "(Lcom/tencent/mm/plugin/fts/ui/widget/IPardusUIComponent;)V", "TAG", "", "getPardusUIComponent", "getReportType", "", "pardusAction", "", "params", "pardusReport", "renderFinish", "reportKV", "showFTSSearchBar", "webViewReady", "ui-fts_release"})
 public final class a
-  extends com.tencent.mm.plugin.websearch.webview.h<fll>
+  extends com.tencent.mm.plugin.fts.ui.a
 {
-  private final String TAG;
+  private boolean HCD;
   
-  public a(d paramd)
+  public a(Context paramContext, e.b paramb, int paramInt)
   {
-    super((c)paramd);
-    AppMethodBeat.i(190812);
-    this.TAG = "MicroMsg.FTS.PardusJSApi";
-    AppMethodBeat.o(190812);
-  }
-  
-  private final d esi()
-  {
-    AppMethodBeat.i(190783);
-    Object localObject = this.PBs;
-    if (localObject == null)
+    super(paramContext, paramb, paramInt);
+    AppMethodBeat.i(112163);
+    paramContext = (String)h.baE().ban().d(6, null);
+    if ((paramContext != null) && (paramContext.length() > 0)) {}
+    for (boolean bool = true;; bool = false)
     {
-      localObject = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.fts.ui.widget.IPardusUIComponent");
-      AppMethodBeat.o(190783);
-      throw ((Throwable)localObject);
-    }
-    localObject = (d)localObject;
-    AppMethodBeat.o(190783);
-    return localObject;
-  }
-  
-  public final int duR()
-  {
-    return 1;
-  }
-  
-  @JavascriptInterface
-  public final void pardusAction(String paramString)
-  {
-    AppMethodBeat.i(190800);
-    try
-    {
-      paramString = new JSONObject(paramString);
-      int i = paramString.optInt("area", 0);
-      esi().b(i, paramString);
-      AppMethodBeat.o(190800);
+      this.HCD = bool;
+      Log.d("MicroMsg.FTS.FTSAddFriendUIUnit", "[FTSAddFriendUIUnit doSearchMobile : %s]", new Object[] { Boolean.valueOf(this.HCD) });
+      AppMethodBeat.o(112163);
       return;
     }
-    catch (Exception paramString)
-    {
-      AppMethodBeat.o(190800);
-    }
   }
   
-  @JavascriptInterface
-  public final void pardusReport(String paramString)
+  private int[] fze()
   {
-    AppMethodBeat.i(190792);
-    Log.i(this.TAG, "pardusReport %s", new Object[] { paramString });
-    try
+    AppMethodBeat.i(112165);
+    ArrayList localArrayList = new ArrayList();
+    if (this.HCD) {
+      localArrayList.add(Integer.valueOf(16));
+    }
+    int[] arrayOfInt = new int[localArrayList.size()];
+    int i = 0;
+    while (i < localArrayList.size())
     {
-      paramString = new JSONObject(paramString).optString("logStr", "");
-      if (!Util.isNullOrNil(paramString))
-      {
-        dxu localdxu = new dxu();
-        localdxu.Udk = paramString;
-        paramString = new ad(localdxu);
-        com.tencent.mm.kernel.h.aGY().b((q)paramString);
-        AppMethodBeat.o(190792);
-        return;
+      arrayOfInt[i] = ((Integer)localArrayList.get(i)).intValue();
+      i += 1;
+    }
+    AppMethodBeat.o(112165);
+    return arrayOfInt;
+  }
+  
+  public final com.tencent.mm.plugin.fts.a.a.c a(MMHandler paramMMHandler, HashSet<String> paramHashSet)
+  {
+    AppMethodBeat.i(112164);
+    String str = getQuery();
+    ArrayList localArrayList = new ArrayList();
+    if (this.HCD)
+    {
+      localArrayList.add(Integer.valueOf(131073));
+      localArrayList.add(Integer.valueOf(131074));
+    }
+    int[] arrayOfInt = new int[localArrayList.size()];
+    int i = 0;
+    while (i < localArrayList.size())
+    {
+      arrayOfInt[i] = ((Integer)localArrayList.get(i)).intValue();
+      i += 1;
+    }
+    paramMMHandler = l.a(str, arrayOfInt, fze(), -1, paramHashSet, b.Hue, this, paramMMHandler);
+    paramMMHandler = ((n)h.az(n.class)).search(9, paramMMHandler);
+    AppMethodBeat.o(112164);
+    return paramMMHandler;
+  }
+  
+  public final com.tencent.mm.plugin.fts.a.d.a.a a(int paramInt, e.a parama)
+  {
+    AppMethodBeat.i(112167);
+    int i = paramInt - parama.Huj - 1;
+    Object localObject2 = null;
+    Object localObject1;
+    if ((i < parama.tbH.size()) && (i >= 0))
+    {
+      localObject1 = (o)parama.tbH.get(i);
+      if ((((o)localObject1).type != 131073) && (((o)localObject1).type != 131074)) {
+        break label177;
       }
     }
-    catch (Exception paramString)
+    label177:
+    for (parama = ((com.tencent.mm.plugin.fts.ui.a)((n)h.az(n.class)).createFTSUIUnit(33, getContext(), fxE(), fxF())).a(((o)localObject1).type, paramInt, (o)localObject1, parama);; parama = null)
     {
-      AppMethodBeat.o(190792);
+      localObject1 = parama;
+      for (;;)
+      {
+        if (localObject1 != null) {
+          ((com.tencent.mm.plugin.fts.a.d.a.a)localObject1).Hur = (i + 1);
+        }
+        AppMethodBeat.o(112167);
+        return localObject1;
+        localObject1 = localObject2;
+        if (!parama.Huk)
+        {
+          localObject1 = localObject2;
+          if (paramInt == 0)
+          {
+            localObject1 = new com.tencent.mm.plugin.fts.ui.b.a(paramInt);
+            ((com.tencent.mm.plugin.fts.ui.b.a)localObject1).FWt = parama.FWt;
+          }
+        }
+      }
     }
   }
   
-  @JavascriptInterface
-  public final void renderFinish(String paramString)
+  public final void a(m paramm, HashSet<String> paramHashSet)
   {
-    AppMethodBeat.i(190804);
-    Log.i(this.TAG, "renderFinish %s", new Object[] { paramString });
-    try
+    AppMethodBeat.i(112166);
+    paramHashSet = paramm.HtF;
+    this.HwJ.clear();
+    e.a locala = new e.a();
+    locala.businessType = -4;
+    locala.Huk = false;
+    locala.Hun = 1;
+    locala.FWt = paramm.FWt;
+    locala.tbH = new LinkedList();
+    this.HwJ.add(locala);
+    if (hS(paramHashSet))
     {
-      paramString = new JSONObject(paramString);
-      esi().aW(paramString);
-      AppMethodBeat.o(190804);
-      return;
+      paramHashSet = d.b(paramHashSet, com.tencent.mm.plugin.fts.a.c.Hrq);
+      if (hS(paramHashSet))
+      {
+        locala = new e.a();
+        locala.businessType = -11;
+        locala.tbH = paramHashSet;
+        locala.FWt = paramm.FWt;
+        this.HwJ.add(locala);
+      }
     }
-    catch (Exception paramString)
-    {
-      Log.printErrStackTrace(this.TAG, (Throwable)paramString, "pardusAction", new Object[0]);
-      AppMethodBeat.o(190804);
-    }
+    AppMethodBeat.o(112166);
   }
   
-  @JavascriptInterface
-  public final void reportKV(String paramString)
+  public final int getType()
   {
-    AppMethodBeat.i(190797);
-    Log.i(this.TAG, "pardusReport %s", new Object[] { paramString });
-    try
-    {
-      paramString = new JSONObject(paramString);
-      int i = paramString.optInt("logid");
-      paramString = paramString.optString("msg", "");
-      f.Iyx.kvStat(i, paramString);
-      AppMethodBeat.o(190797);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      AppMethodBeat.o(190797);
-    }
-  }
-  
-  @JavascriptInterface
-  public final void showFTSSearchBar(String paramString)
-  {
-    AppMethodBeat.i(190810);
-    Log.i(this.TAG, "showFTSSearchBar %s", new Object[] { paramString });
-    try
-    {
-      esi().esA();
-      AppMethodBeat.o(190810);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      Log.printErrStackTrace(this.TAG, (Throwable)paramString, "pardusAction", new Object[0]);
-      AppMethodBeat.o(190810);
-    }
-  }
-  
-  @JavascriptInterface
-  public final void webViewReady(String paramString)
-  {
-    AppMethodBeat.i(190787);
-    p.k(paramString, "params");
-    Log.i(this.TAG, "webViewReady ".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(190787);
+    return 8192;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.e.a
  * JD-Core Version:    0.7.0.1
  */

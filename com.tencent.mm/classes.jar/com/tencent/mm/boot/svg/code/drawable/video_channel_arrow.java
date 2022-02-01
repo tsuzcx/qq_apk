@@ -91,7 +91,7 @@ public class video_channel_arrow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.video_channel_arrow
  * JD-Core Version:    0.7.0.1
  */

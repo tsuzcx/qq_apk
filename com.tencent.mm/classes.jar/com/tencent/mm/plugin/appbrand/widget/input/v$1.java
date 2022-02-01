@@ -15,17 +15,17 @@ final class v$1
   {
     AppMethodBeat.i(136476);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/appbrand/widget/input/AppBrandNumberKeyboardPanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    v.a(this.rwf);
-    this.rwf.setVisibility(8);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/appbrand/widget/input/AppBrandNumberKeyboardPanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    v.a(this.uHm);
+    this.uHm.setVisibility(8);
     a.a(this, "com/tencent/mm/plugin/appbrand/widget/input/AppBrandNumberKeyboardPanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(136476);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.v.1
  * JD-Core Version:    0.7.0.1
  */

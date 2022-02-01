@@ -6,39 +6,38 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.api.d;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/WechatNativeExtraDataInvokeFunctionalPage;", "Landroid/os/Parcelable;", "Lcom/tencent/mm/plugin/appbrand/api/IWeAppOpenNativeExtraData;", "obj", "Lorg/json/JSONObject;", "(Lorg/json/JSONObject;)V", "invokeTicket", "", "apiName", "args", "jsapiType", "isGame", "", "wxa_scene", "", "packageName", "callbackActivity", "transitiveData", "sessionId", "instanceId", "debugMode", "pageTitle", "currentH5Url", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V", "getApiName", "()Ljava/lang/String;", "setApiName", "(Ljava/lang/String;)V", "getArgs", "setArgs", "getCallbackActivity", "setCallbackActivity", "getCurrentH5Url", "setCurrentH5Url", "getDebugMode", "()I", "setDebugMode", "(I)V", "getInstanceId", "setInstanceId", "getInvokeTicket", "setInvokeTicket", "()Z", "setGame", "(Z)V", "getJsapiType", "setJsapiType", "getPackageName", "setPackageName", "getPageTitle", "setPageTitle", "getSessionId", "setSessionId", "getTransitiveData", "setTransitiveData", "getWxa_scene", "setWxa_scene", "describeContents", "fromJson", "", "fromJsonString", "jsonString", "toJsonString", "writeToParcel", "parcel", "Landroid/os/Parcel;", "flags", "Companion", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/WechatNativeExtraDataInvokeFunctionalPage;", "Landroid/os/Parcelable;", "Lcom/tencent/mm/plugin/appbrand/api/IWeAppOpenNativeExtraData;", "obj", "Lorg/json/JSONObject;", "(Lorg/json/JSONObject;)V", "invokeTicket", "", "apiName", "args", "jsapiType", "isGame", "", "wxa_scene", "", "packageName", "callbackActivity", "transitiveData", "sessionId", "instanceId", "debugMode", "pageTitle", "currentH5Url", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V", "getApiName", "()Ljava/lang/String;", "setApiName", "(Ljava/lang/String;)V", "getArgs", "setArgs", "getCallbackActivity", "setCallbackActivity", "getCurrentH5Url", "setCurrentH5Url", "getDebugMode", "()I", "setDebugMode", "(I)V", "getInstanceId", "setInstanceId", "getInvokeTicket", "setInvokeTicket", "()Z", "setGame", "(Z)V", "getJsapiType", "setJsapiType", "getPackageName", "setPackageName", "getPageTitle", "setPageTitle", "getSessionId", "setSessionId", "getTransitiveData", "setTransitiveData", "getWxa_scene", "setWxa_scene", "describeContents", "fromJson", "", "fromJsonString", "jsonString", "toJsonString", "writeToParcel", "parcel", "Landroid/os/Parcel;", "flags", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class WechatNativeExtraDataInvokeFunctionalPage
   implements Parcelable, d
 {
-  public static final Parcelable.Creator CREATOR;
-  @Deprecated
-  public static final a qbx;
-  private String cBH;
+  public static final Parcelable.Creator<WechatNativeExtraDataInvokeFunctionalPage> CREATOR;
+  private static final WechatNativeExtraDataInvokeFunctionalPage.a tgr;
   public String callbackActivity;
-  boolean csz;
+  public String efV;
+  boolean ekt;
+  private String eup;
   public String invokeTicket;
-  String nYF;
   public String packageName;
-  public String qbq;
-  public String qbr;
-  String qbs;
-  int qbt;
-  public int qbu;
-  String qbv;
-  String qbw;
+  String qYI;
   private String sessionId;
+  public String tgs;
+  String tgt;
+  int tgu;
+  public int tgv;
+  String tgw;
+  String tgx;
   
   static
   {
-    AppMethodBeat.i(280435);
-    qbx = new a((byte)0);
-    CREATOR = new b();
-    AppMethodBeat.o(280435);
+    AppMethodBeat.i(320159);
+    tgr = new WechatNativeExtraDataInvokeFunctionalPage.a((byte)0);
+    CREATOR = (Parcelable.Creator)new b();
+    AppMethodBeat.o(320159);
   }
   
   private WechatNativeExtraDataInvokeFunctionalPage(byte paramByte)
@@ -49,73 +48,78 @@ public final class WechatNativeExtraDataInvokeFunctionalPage
   public WechatNativeExtraDataInvokeFunctionalPage(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, int paramInt1, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, int paramInt2, String paramString10, String paramString11)
   {
     this.invokeTicket = paramString1;
-    this.qbq = paramString2;
-    this.qbr = paramString3;
-    this.qbs = paramString4;
-    this.csz = paramBoolean;
-    this.qbt = paramInt1;
+    this.efV = paramString2;
+    this.tgs = paramString3;
+    this.tgt = paramString4;
+    this.ekt = paramBoolean;
+    this.tgu = paramInt1;
     this.packageName = paramString5;
     this.callbackActivity = paramString6;
-    this.nYF = paramString7;
+    this.qYI = paramString7;
     this.sessionId = paramString8;
-    this.cBH = paramString9;
-    this.qbu = paramInt2;
-    this.qbv = paramString10;
-    this.qbw = paramString11;
+    this.eup = paramString9;
+    this.tgv = paramInt2;
+    this.tgw = paramString10;
+    this.tgx = paramString11;
   }
   
   public WechatNativeExtraDataInvokeFunctionalPage(JSONObject paramJSONObject)
   {
     this();
-    AppMethodBeat.i(280434);
-    aq(paramJSONObject);
-    AppMethodBeat.o(280434);
+    AppMethodBeat.i(320152);
+    aA(paramJSONObject);
+    AppMethodBeat.o(320152);
   }
   
-  public final void aq(JSONObject paramJSONObject)
+  public final void aA(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(280431);
-    p.k(paramJSONObject, "obj");
+    AppMethodBeat.i(320166);
+    s.u(paramJSONObject, "obj");
     this.invokeTicket = paramJSONObject.getString("invokeTicket");
-    this.qbq = paramJSONObject.getString("name");
+    this.efV = paramJSONObject.getString("name");
     this.packageName = paramJSONObject.getString("packageName");
-    this.qbr = paramJSONObject.getString("args");
-    this.qbs = paramJSONObject.getString("jsapiType");
-    this.csz = paramJSONObject.optBoolean("isGame");
-    this.qbt = paramJSONObject.getInt("wxa_scene");
+    this.tgs = paramJSONObject.getString("args");
+    this.tgt = paramJSONObject.getString("jsapiType");
+    this.ekt = paramJSONObject.optBoolean("isGame");
+    this.tgu = paramJSONObject.getInt("wxa_scene");
     this.callbackActivity = paramJSONObject.getString("callbackActivity");
-    this.nYF = paramJSONObject.optString("transitiveData");
+    this.qYI = paramJSONObject.optString("transitiveData");
     this.sessionId = paramJSONObject.optString("sessionId");
-    this.cBH = paramJSONObject.optString("instanceId");
-    this.qbu = paramJSONObject.optInt("debugMode");
-    this.qbv = paramJSONObject.optString("title");
-    this.qbw = paramJSONObject.optString("currentH5Url");
-    AppMethodBeat.o(280431);
+    this.eup = paramJSONObject.optString("instanceId");
+    this.tgv = paramJSONObject.optInt("debugMode");
+    this.tgw = paramJSONObject.optString("title");
+    this.tgx = paramJSONObject.optString("currentH5Url");
+    AppMethodBeat.o(320166);
   }
   
-  public final String bFa()
+  public final int describeContents()
   {
-    AppMethodBeat.i(280433);
+    return 0;
+  }
+  
+  public final String toJsonString()
+  {
+    AppMethodBeat.i(320173);
     try
     {
       Object localObject = new JSONObject();
       ((JSONObject)localObject).put("invokeTicket", this.invokeTicket);
-      ((JSONObject)localObject).put("name", this.qbq);
-      ((JSONObject)localObject).put("args", this.qbr);
-      ((JSONObject)localObject).put("jsapiType", this.qbs);
-      ((JSONObject)localObject).put("isGame", this.csz);
-      ((JSONObject)localObject).put("wxa_scene", this.qbt);
+      ((JSONObject)localObject).put("name", this.efV);
+      ((JSONObject)localObject).put("args", this.tgs);
+      ((JSONObject)localObject).put("jsapiType", this.tgt);
+      ((JSONObject)localObject).put("isGame", this.ekt);
+      ((JSONObject)localObject).put("wxa_scene", this.tgu);
       ((JSONObject)localObject).put("packageName", this.packageName);
       ((JSONObject)localObject).put("callbackActivity", this.callbackActivity);
-      ((JSONObject)localObject).put("transitiveData", this.nYF);
+      ((JSONObject)localObject).put("transitiveData", this.qYI);
       ((JSONObject)localObject).put("sessionId", this.sessionId);
-      ((JSONObject)localObject).put("instanceId", this.cBH);
-      ((JSONObject)localObject).put("debugMode", this.qbu);
-      ((JSONObject)localObject).put("title", this.qbv);
-      ((JSONObject)localObject).put("currentH5Url", this.qbw);
+      ((JSONObject)localObject).put("instanceId", this.eup);
+      ((JSONObject)localObject).put("debugMode", this.tgv);
+      ((JSONObject)localObject).put("title", this.tgw);
+      ((JSONObject)localObject).put("currentH5Url", this.tgx);
       localObject = ((JSONObject)localObject).toString();
-      p.j(localObject, "obj.toString()");
-      AppMethodBeat.o(280433);
+      s.s(localObject, "{\n            val obj = … obj.toString()\n        }");
+      AppMethodBeat.o(320173);
       return localObject;
     }
     catch (JSONException localJSONException)
@@ -128,49 +132,40 @@ public final class WechatNativeExtraDataInvokeFunctionalPage
     }
   }
   
-  public final int describeContents()
-  {
-    return 0;
-  }
-  
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+    AppMethodBeat.i(320184);
+    s.u(paramParcel, "out");
+    paramParcel.writeString(this.invokeTicket);
+    paramParcel.writeString(this.efV);
+    paramParcel.writeString(this.tgs);
+    paramParcel.writeString(this.tgt);
+    if (this.ekt) {}
+    for (paramInt = 1;; paramInt = 0)
+    {
+      paramParcel.writeInt(paramInt);
+      paramParcel.writeInt(this.tgu);
+      paramParcel.writeString(this.packageName);
+      paramParcel.writeString(this.callbackActivity);
+      paramParcel.writeString(this.qYI);
+      paramParcel.writeString(this.sessionId);
+      paramParcel.writeString(this.eup);
+      paramParcel.writeInt(this.tgv);
+      paramParcel.writeString(this.tgw);
+      paramParcel.writeString(this.tgx);
+      AppMethodBeat.o(320184);
+      return;
+    }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/WechatNativeExtraDataInvokeFunctionalPage$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
-  static final class a {}
-  
-  @l(iBK={1, 1, 16})
+  @Metadata(k=3, mv={1, 5, 1}, xi=48)
   public static final class b
-    implements Parcelable.Creator
-  {
-    public final Object createFromParcel(Parcel paramParcel)
-    {
-      AppMethodBeat.i(276288);
-      p.k(paramParcel, "in");
-      String str1 = paramParcel.readString();
-      String str2 = paramParcel.readString();
-      String str3 = paramParcel.readString();
-      String str4 = paramParcel.readString();
-      if (paramParcel.readInt() != 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramParcel = new WechatNativeExtraDataInvokeFunctionalPage(str1, str2, str3, str4, bool, paramParcel.readInt(), paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readString());
-        AppMethodBeat.o(276288);
-        return paramParcel;
-      }
-    }
-    
-    public final Object[] newArray(int paramInt)
-    {
-      return new WechatNativeExtraDataInvokeFunctionalPage[paramInt];
-    }
-  }
+    implements Parcelable.Creator<WechatNativeExtraDataInvokeFunctionalPage>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.WechatNativeExtraDataInvokeFunctionalPage
  * JD-Core Version:    0.7.0.1
  */

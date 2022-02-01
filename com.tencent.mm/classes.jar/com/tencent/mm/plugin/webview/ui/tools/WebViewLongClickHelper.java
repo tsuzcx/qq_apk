@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
 import android.content.Context;
+import android.graphics.PointF;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -11,44 +12,47 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.Window;
+import android.webkit.ValueCallback;
 import android.webkit.WebView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.ry;
-import com.tencent.mm.f.a.rz;
-import com.tencent.mm.f.a.rz.a;
+import com.tencent.mm.autogen.a.tn;
+import com.tencent.mm.autogen.a.to;
+import com.tencent.mm.autogen.a.to.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.brandservice.a.c;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.plugin.scanner.ImageQBarDataBean;
 import com.tencent.mm.plugin.scanner.MultiCodeMaskView.b;
 import com.tencent.mm.plugin.scanner.ScanCodeSheetItemLogic;
 import com.tencent.mm.plugin.scanner.ScanCodeSheetItemLogic.a;
+import com.tencent.mm.plugin.scanner.e.a;
+import com.tencent.mm.plugin.scanner.i;
 import com.tencent.mm.plugin.scanner.j;
-import com.tencent.mm.plugin.scanner.k;
-import com.tencent.mm.plugin.webview.k.m;
-import com.tencent.mm.plugin.webview.modeltools.g.c;
-import com.tencent.mm.pluginsdk.ui.tools.ab.a;
-import com.tencent.mm.pluginsdk.ui.tools.p;
+import com.tencent.mm.plugin.webview.core.BaseWebViewController;
+import com.tencent.mm.plugin.webview.e.g;
+import com.tencent.mm.plugin.webview.k.h.c;
+import com.tencent.mm.plugin.webview.stub.e;
+import com.tencent.mm.pluginsdk.ui.tools.aa;
+import com.tencent.mm.pluginsdk.ui.tools.aa.a;
+import com.tencent.mm.pluginsdk.ui.tools.o;
 import com.tencent.mm.protocal.GeneralControlWrapper;
-import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ax;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.q.f;
-import com.tencent.mm.ui.base.q.g;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.u.g;
+import com.tencent.mm.ui.base.u.i;
+import com.tencent.mm.ui.bf;
 import com.tencent.mm.ui.widget.MMWebView;
-import com.tencent.mm.ui.widget.a.e.b;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.ui.widget.a.f.b;
+import com.tencent.mm.vfs.y;
 import com.tencent.xweb.WebView.b;
-import com.tencent.xweb.aa;
+import com.tencent.xweb.ad;
+import com.tencent.xweb.ao;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -57,31 +61,31 @@ import java.util.Map;
 public final class WebViewLongClickHelper
   extends a
 {
-  static Map<String, Boolean> BrL;
-  private static long BrM;
-  private static IListener BrS;
+  static Map<String, Boolean> GYh;
+  private static long GYi;
+  private static IListener GYo;
   private static long mSessionId;
-  private ArrayList<ImageQBarDataBean> BrI;
-  private String BrJ;
-  private m BrK;
-  private HashMap<String, Long> BrN;
-  public Long BrO;
-  public Long BrP;
-  private Long BrQ;
-  com.tencent.mm.ui.widget.a.e oxl;
-  ScanCodeSheetItemLogic oxq;
-  com.tencent.mm.plugin.webview.modeltools.g pGJ;
-  private WebView.b pGK;
-  private WebView.b pGL;
-  private g.c pGQ;
-  String pHO;
+  private ArrayList<ImageQBarDataBean> GYe;
+  private String GYf;
+  private com.tencent.mm.plugin.webview.k.q GYg;
+  private HashMap<String, Long> GYj;
+  public Long GYk;
+  public Long GYl;
+  private Long GYm;
+  com.tencent.mm.ui.widget.a.f rAK;
+  ScanCodeSheetItemLogic rAP;
+  com.tencent.mm.plugin.webview.k.h sLJ;
+  private WebView.b sLK;
+  private WebView.b sLL;
+  private h.c sLQ;
+  String sML;
   
   static
   {
     AppMethodBeat.i(175784);
-    BrL = new HashMap();
+    GYh = new HashMap();
     mSessionId = 0L;
-    BrM = 0L;
+    GYi = 0L;
     AppMethodBeat.o(175784);
   }
   
@@ -89,34 +93,34 @@ public final class WebViewLongClickHelper
   {
     super(paramWebViewUI);
     AppMethodBeat.i(79848);
-    this.BrI = new ArrayList();
-    this.pHO = "";
-    this.BrN = new HashMap();
-    this.BrO = Long.valueOf(0L);
-    this.BrP = Long.valueOf(0L);
-    this.BrQ = Long.valueOf(0L);
-    this.pGQ = new g.c()
+    this.GYe = new ArrayList();
+    this.sML = "";
+    this.GYj = new HashMap();
+    this.GYk = Long.valueOf(0L);
+    this.GYl = Long.valueOf(0L);
+    this.GYm = Long.valueOf(0L);
+    this.sLQ = new h.c()
     {
-      public final void ajA(String paramAnonymousString)
+      public final void acB(String paramAnonymousString)
       {
         AppMethodBeat.i(79838);
-        if (WebViewLongClickHelper.this.elX())
+        if (WebViewLongClickHelper.this.bpe())
         {
           AppMethodBeat.o(79838);
           return;
         }
         Log.i("MicroMsg.WebViewLongClickHelper", "onCaptureFinish:".concat(String.valueOf(paramAnonymousString)));
-        WebViewLongClickHelper.bq(System.currentTimeMillis());
-        WebViewLongClickHelper.a(WebViewLongClickHelper.this).put(paramAnonymousString, Long.valueOf(WebViewLongClickHelper.BrM));
-        XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new WebViewLongClickHelper.ScanImageData(paramAnonymousString, WebViewLongClickHelper.BrM, WebViewLongClickHelper.this.gXq().syc, WebViewLongClickHelper.this.gXq().syd, WebViewLongClickHelper.this.gXq().pHS.getMeasuredWidth(), WebViewLongClickHelper.this.gXq().pHS.getMeasuredHeight()), WebViewLongClickHelper.c.class, new WebViewLongClickHelper.b(new WeakReference(WebViewLongClickHelper.this), paramAnonymousString));
+        WebViewLongClickHelper.dL(System.currentTimeMillis());
+        WebViewLongClickHelper.a(WebViewLongClickHelper.this).put(paramAnonymousString, Long.valueOf(WebViewLongClickHelper.GYi));
+        XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new WebViewLongClickHelper.ScanImageData(paramAnonymousString, WebViewLongClickHelper.GYi, WebViewLongClickHelper.this.iwO().x_down, WebViewLongClickHelper.this.iwO().y_down, WebViewLongClickHelper.this.iwO().sMP.getMeasuredWidth(), WebViewLongClickHelper.this.iwO().sMP.getMeasuredHeight()), WebViewLongClickHelper.c.class, new WebViewLongClickHelper.b(new WeakReference(WebViewLongClickHelper.this), paramAnonymousString));
         WebViewLongClickHelper.a(WebViewLongClickHelper.this, Long.valueOf(System.currentTimeMillis()));
         AppMethodBeat.o(79838);
       }
     };
-    emd();
-    this.oxq = new ScanCodeSheetItemLogic(paramWebViewUI, new ScanCodeSheetItemLogic.a()
+    fqh();
+    this.rAP = new ScanCodeSheetItemLogic(paramWebViewUI, new ScanCodeSheetItemLogic.a()
     {
-      public final void bPS()
+      public final void onFetchedCodeInfo()
       {
         AppMethodBeat.i(79840);
         if ((WebViewLongClickHelper.f(WebViewLongClickHelper.this) != null) && (WebViewLongClickHelper.f(WebViewLongClickHelper.this).isShowing())) {
@@ -128,52 +132,47 @@ public final class WebViewLongClickHelper
     AppMethodBeat.o(79848);
   }
   
-  public static void TE(long paramLong)
-  {
-    mSessionId = paramLong;
-  }
-  
   private boolean a(WebView.b paramb)
   {
     AppMethodBeat.i(79851);
-    boolean bool = aGF(paramb.mExtra);
-    if ((Util.isNullOrNil(this.BrI)) && (gXq().pGD.gWJ().hoT()) && (emg()))
+    boolean bool = aCU(paramb.mExtra);
+    if ((Util.isNullOrNil(this.GYe)) && (iwO().sLD.iwp().iPP()) && (fqk()))
     {
-      this.pGL = paramb;
-      this.pGJ = new com.tencent.mm.plugin.webview.modeltools.g();
-      this.pGJ.a(gXq().pHS, this.pGQ);
+      this.sLL = paramb;
+      this.sLJ = new com.tencent.mm.plugin.webview.k.h();
+      this.sLJ.a(iwO().sMP, this.sLQ);
     }
     AppMethodBeat.o(79851);
     return bool;
   }
   
-  private boolean aGF(final String paramString)
+  private boolean aCU(final String paramString)
   {
     AppMethodBeat.i(79853);
-    if (elX())
+    if (bpe())
     {
       AppMethodBeat.o(79853);
       return false;
     }
-    if (!eme())
+    if (!fqi())
     {
       AppMethodBeat.o(79853);
       return true;
     }
-    this.BrJ = paramString;
-    if (this.oxl == null) {
-      this.oxl = new com.tencent.mm.ui.widget.a.e(gXq(), 1, false);
+    this.GYf = paramString;
+    if (this.rAK == null) {
+      this.rAK = new com.tencent.mm.ui.widget.a.f(iwO(), 1, false);
     }
-    this.oxl.ODT = new q.f()
+    this.rAK.Vtg = new u.g()
     {
-      public final void onCreateMMMenu(o paramAnonymouso)
+      public final void onCreateMMMenu(s paramAnonymouss)
       {
         AppMethodBeat.i(79843);
-        WebViewLongClickHelper.a(WebViewLongClickHelper.this, paramAnonymouso);
+        WebViewLongClickHelper.a(WebViewLongClickHelper.this, paramAnonymouss);
         AppMethodBeat.o(79843);
       }
     };
-    this.oxl.ODU = new q.g()
+    this.rAK.GAC = new u.i()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
@@ -202,19 +201,19 @@ public final class WebViewLongClickHelper
         }
       }
     };
-    this.oxl.XbB = new e.b()
+    this.rAK.aeLi = new f.b()
     {
       public final void onDismiss()
       {
         AppMethodBeat.i(79845);
         WebViewLongClickHelper.a(WebViewLongClickHelper.this, 5, null);
-        if ((WebViewLongClickHelper.this.pGJ != null) && (WebViewLongClickHelper.this.gXq().pGC != null)) {
+        if ((WebViewLongClickHelper.this.sLJ != null) && (WebViewLongClickHelper.this.iwO().sLC != null)) {
           try
           {
             WebViewLongClickHelper.c(WebViewLongClickHelper.this).clear();
             WebViewLongClickHelper.m(WebViewLongClickHelper.this).onDismiss();
-            WebViewLongClickHelper.f(WebViewLongClickHelper.this, WebViewLongClickHelper.this.pGJ.PXC);
-            WebViewLongClickHelper.this.pGJ.gWy();
+            WebViewLongClickHelper.f(WebViewLongClickHelper.this, WebViewLongClickHelper.this.sLJ.XsV);
+            WebViewLongClickHelper.this.sLJ.iCR();
             AppMethodBeat.o(79845);
             return;
           }
@@ -226,28 +225,15 @@ public final class WebViewLongClickHelper
         AppMethodBeat.o(79845);
       }
     };
-    if ((!gXq().isFinishing()) && (gXO())) {
-      this.oxl.eik();
+    if ((!iwO().isFinishing()) && (hBj())) {
+      this.rAK.dDn();
     }
-    boolean bool = this.oxl.isShowing();
+    boolean bool = this.rAK.isShowing();
     AppMethodBeat.o(79853);
     return bool;
   }
   
-  private static boolean apb(String paramString)
-  {
-    AppMethodBeat.i(266512);
-    if ((paramString == null) || (h.ae(c.class) == null))
-    {
-      AppMethodBeat.o(266512);
-      return false;
-    }
-    boolean bool = ((c)h.ae(c.class)).apb(paramString);
-    AppMethodBeat.o(266512);
-    return bool;
-  }
-  
-  static String apf(String paramString)
+  static String aiC(String paramString)
   {
     AppMethodBeat.i(175768);
     if (Util.isNullOrNil(paramString))
@@ -255,25 +241,38 @@ public final class WebViewLongClickHelper
       AppMethodBeat.o(175768);
       return "";
     }
-    if (!apb(paramString))
+    if (!aiy(paramString))
     {
       AppMethodBeat.o(175768);
       return paramString;
     }
-    paramString = ((c)h.ae(c.class)).apf(paramString);
+    paramString = ((com.tencent.mm.plugin.brandservice.api.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.brandservice.api.c.class)).aiC(paramString);
     AppMethodBeat.o(175768);
     return paramString;
+  }
+  
+  private static boolean aiy(String paramString)
+  {
+    AppMethodBeat.i(296362);
+    if ((paramString == null) || (com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.brandservice.api.c.class) == null))
+    {
+      AppMethodBeat.o(296362);
+      return false;
+    }
+    boolean bool = ((com.tencent.mm.plugin.brandservice.api.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.brandservice.api.c.class)).aiy(paramString);
+    AppMethodBeat.o(296362);
+    return bool;
   }
   
   private boolean b(WebView.b paramb)
   {
     AppMethodBeat.i(79852);
-    boolean bool = aGF(paramb.mExtra);
-    if ((Util.isNullOrNil(this.BrI)) && (gXq().pGD.gWJ().hoT()) && (emg()))
+    boolean bool = aCU(paramb.mExtra);
+    if ((Util.isNullOrNil(this.GYe)) && (iwO().sLD.iwp().iPP()) && (fqk()))
     {
-      this.pGK = paramb;
-      this.pGJ = new com.tencent.mm.plugin.webview.modeltools.g();
-      this.pGJ.a(gXq().pHS, this.pGQ);
+      this.sLK = paramb;
+      this.sLJ = new com.tencent.mm.plugin.webview.k.h();
+      this.sLJ.a(iwO().sMP, this.sLQ);
     }
     AppMethodBeat.o(79852);
     return bool;
@@ -281,30 +280,115 @@ public final class WebViewLongClickHelper
   
   public static void d(MMWebView paramMMWebView)
   {
-    AppMethodBeat.i(266513);
-    if (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vzy, 0) == 1) {}
+    AppMethodBeat.i(296366);
+    if (((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yNd, 0) == 1) {}
     for (int i = 1; i == 0; i = 0)
     {
-      AppMethodBeat.o(266513);
+      AppMethodBeat.o(296366);
       return;
     }
     Log.i("MicroMsg.WebViewLongClickHelper", "WebViewLongPress AB Test Enabled");
-    i = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vzz, 500);
+    i = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yNe, 500);
     if ((i < 150) || (i > 2500))
     {
       Log.w("MicroMsg.WebViewLongClickHelper", "WebViewLongPress  is invalid, time = %d", new Object[] { Integer.valueOf(i) });
-      AppMethodBeat.o(266513);
+      AppMethodBeat.o(296366);
       return;
     }
     Log.i("MicroMsg.WebViewLongClickHelper", "WebViewLongPress Set Time: %d", new Object[] { Integer.valueOf(i) });
     paramMMWebView.getSettings().enableCustomizedLongPressTimeout(i);
-    AppMethodBeat.o(266513);
+    AppMethodBeat.o(296366);
   }
   
-  private boolean eX(View paramView)
+  private boolean fqi()
+  {
+    AppMethodBeat.i(79854);
+    boolean bool1 = false;
+    try
+    {
+      boolean bool2 = iwO().sLC.isSDCardAvailable();
+      bool1 = bool2;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.WebViewLongClickHelper", "onCreateContextMenu fail, ex = " + localException.getMessage());
+      }
+    }
+    AppMethodBeat.o(79854);
+    return bool1;
+  }
+  
+  private boolean fqj()
+  {
+    boolean bool1 = false;
+    AppMethodBeat.i(79855);
+    try
+    {
+      boolean bool2 = iwO().sLC.iwU();
+      bool1 = bool2;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.WebViewLongClickHelper", "get has setuin failed : %s", new Object[] { localException.getMessage() });
+      }
+    }
+    AppMethodBeat.o(79855);
+    return bool1;
+  }
+  
+  private boolean fqk()
+  {
+    boolean bool1 = false;
+    AppMethodBeat.i(79856);
+    int i = iwO().avS(Util.nullAsNil(iwO().WXR));
+    if ((i == 53) || (i == 52))
+    {
+      Log.i("MicroMsg.WebViewLongClickHelper", "isAllowScanQRCode open link not allow to ScanQRCode");
+      AppMethodBeat.o(79856);
+      return false;
+    }
+    try
+    {
+      if (iwO().sLC == null)
+      {
+        Log.w("MicroMsg.WebViewLongClickHelper", "invoker is null");
+        AppMethodBeat.o(79856);
+        return false;
+      }
+      boolean bool2 = iwO().sLC.ixf();
+      bool1 = bool2;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.WebViewLongClickHelper", "unable get config for Scan QRCode" + localRemoteException.getMessage());
+      }
+    }
+    AppMethodBeat.o(79856);
+    return bool1;
+  }
+  
+  private boolean hBj()
+  {
+    AppMethodBeat.i(175767);
+    if ((!ixJ()) || (!Util.isNullOrNil(this.GYe)))
+    {
+      AppMethodBeat.o(175767);
+      return true;
+    }
+    AppMethodBeat.o(175767);
+    return false;
+  }
+  
+  private boolean ho(View paramView)
   {
     AppMethodBeat.i(79850);
-    if (elX())
+    if (bpe())
     {
       AppMethodBeat.o(79850);
       return false;
@@ -316,7 +400,7 @@ public final class WebViewLongClickHelper
         if (!(paramView instanceof WebView)) {
           continue;
         }
-        paramView = gXq().pHS.getHitTestResult();
+        paramView = iwO().sMP.getHitTestResult();
         if (paramView == null)
         {
           AppMethodBeat.o(79850);
@@ -348,146 +432,66 @@ public final class WebViewLongClickHelper
     }
   }
   
-  private boolean eme()
-  {
-    AppMethodBeat.i(79854);
-    boolean bool1 = false;
-    try
-    {
-      boolean bool2 = gXq().pGC.isSDCardAvailable();
-      bool1 = bool2;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Log.e("MicroMsg.WebViewLongClickHelper", "onCreateContextMenu fail, ex = " + localException.getMessage());
-      }
-    }
-    AppMethodBeat.o(79854);
-    return bool1;
-  }
-  
-  private boolean emf()
-  {
-    boolean bool1 = false;
-    AppMethodBeat.i(79855);
-    try
-    {
-      boolean bool2 = gXq().pGC.gWY();
-      bool1 = bool2;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Log.e("MicroMsg.WebViewLongClickHelper", "get has setuin failed : %s", new Object[] { localException.getMessage() });
-      }
-    }
-    AppMethodBeat.o(79855);
-    return bool1;
-  }
-  
-  private boolean emg()
-  {
-    boolean bool1 = false;
-    AppMethodBeat.i(79856);
-    int i = gXq().bjD(Util.nullAsNil(gXq().QfT));
-    if ((i == 53) || (i == 52))
-    {
-      Log.i("MicroMsg.WebViewLongClickHelper", "isAllowScanQRCode open link not allow to ScanQRCode");
-      AppMethodBeat.o(79856);
-      return false;
-    }
-    try
-    {
-      if (gXq().pGC == null)
-      {
-        Log.w("MicroMsg.WebViewLongClickHelper", "invoker is null");
-        AppMethodBeat.o(79856);
-        return false;
-      }
-      boolean bool2 = gXq().pGC.gXj();
-      bool1 = bool2;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      for (;;)
-      {
-        Log.e("MicroMsg.WebViewLongClickHelper", "unable get config for Scan QRCode" + localRemoteException.getMessage());
-      }
-    }
-    AppMethodBeat.o(79856);
-    return bool1;
-  }
-  
-  public static long gXK()
+  public static long ixG()
   {
     return mSessionId;
   }
   
-  private boolean gXM()
+  private boolean ixI()
   {
     AppMethodBeat.i(175765);
-    boolean bool = BrL.containsKey(apf(this.pHO));
+    boolean bool = GYh.containsKey(aiC(this.sML));
     AppMethodBeat.o(175765);
     return bool;
   }
   
-  private boolean gXN()
+  private boolean ixJ()
   {
     AppMethodBeat.i(175766);
-    if (!gXM())
+    if (!ixI())
     {
       AppMethodBeat.o(175766);
       return false;
     }
-    boolean bool = ((Boolean)BrL.get(apf(this.pHO))).booleanValue();
+    boolean bool = ((Boolean)GYh.get(aiC(this.sML))).booleanValue();
     AppMethodBeat.o(175766);
     return bool;
   }
   
-  private boolean gXO()
+  public static void xO(long paramLong)
   {
-    AppMethodBeat.i(175767);
-    if ((!gXN()) || (!Util.isNullOrNil(this.BrI)))
-    {
-      AppMethodBeat.o(175767);
-      return true;
-    }
-    AppMethodBeat.o(175767);
-    return false;
+    mSessionId = paramLong;
   }
   
-  public final void emd()
+  public final void fqh()
   {
-    AppMethodBeat.i(266507);
-    if (gXq().pHS == null)
+    AppMethodBeat.i(296452);
+    if (iwO().sMP == null)
     {
-      AppMethodBeat.o(266507);
+      AppMethodBeat.o(296452);
       return;
     }
-    gXq().pHS.setOnLongClickListener(new View.OnLongClickListener()
+    iwO().sMP.setOnLongClickListener(new View.OnLongClickListener()
     {
-      public final boolean onLongClick(View paramAnonymousView)
+      public final boolean onLongClick(final View paramAnonymousView)
       {
         AppMethodBeat.i(79842);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/webview/ui/tools/WebViewLongClickHelper$4", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aFi());
-        WebViewLongClickHelper.a(WebViewLongClickHelper.this, new m());
-        WebViewLongClickHelper.i(WebViewLongClickHelper.this).fs(1);
+        b localb = new b();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/webview/ui/tools/WebViewLongClickHelper$4", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aYj());
+        WebViewLongClickHelper.a(WebViewLongClickHelper.this, new com.tencent.mm.plugin.webview.k.q());
+        WebViewLongClickHelper.i(WebViewLongClickHelper.this).iF(1);
         Log.v("MicroMsg.WebViewLongClickHelper", "registerForContextMenu normal view long click");
         WebViewLongClickHelper.j(WebViewLongClickHelper.this);
-        if (WebViewLongClickHelper.this.gXq().pHS == null)
+        if (WebViewLongClickHelper.this.iwO().sMP == null)
         {
           com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/webview/ui/tools/WebViewLongClickHelper$4", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
           AppMethodBeat.o(79842);
           return false;
         }
-        WebViewLongClickHelper.a(WebViewLongClickHelper.this, WebViewLongClickHelper.this.gXq().elY());
-        if ((!WebViewLongClickHelper.k(WebViewLongClickHelper.this)) && (WebViewLongClickHelper.bmf(WebViewLongClickHelper.l(WebViewLongClickHelper.this)))) {
-          WebViewLongClickHelper.this.gXq().pHS.evaluateJavascript("javascript:(typeof window.getWXLongPressImageEventConfig === 'function')?window.getWXLongPressImageEventConfig():{}", new WebViewLongClickHelper.8.1(this, paramAnonymousView));
+        WebViewLongClickHelper.a(WebViewLongClickHelper.this, WebViewLongClickHelper.this.iwO().fqa());
+        if ((!WebViewLongClickHelper.k(WebViewLongClickHelper.this)) && (WebViewLongClickHelper.blG(WebViewLongClickHelper.l(WebViewLongClickHelper.this)))) {
+          WebViewLongClickHelper.this.iwO().sMP.evaluateJavascript("javascript:(typeof window.getWXLongPressImageEventConfig === 'function')?window.getWXLongPressImageEventConfig():{}", new ValueCallback() {});
         }
         for (;;)
         {
@@ -498,10 +502,10 @@ public final class WebViewLongClickHelper
         }
       }
     });
-    AppMethodBeat.o(266507);
+    AppMethodBeat.o(296452);
   }
   
-  final void gUZ()
+  final void iuK()
   {
     AppMethodBeat.i(79849);
     MMHandlerThread.postToMainThread(new Runnable()
@@ -524,29 +528,29 @@ public final class WebViewLongClickHelper
     AppMethodBeat.o(79849);
   }
   
-  final void gXL()
+  final void ixH()
   {
-    AppMethodBeat.i(266505);
-    if (Util.isNullOrNil(this.BrI))
+    AppMethodBeat.i(296447);
+    if (Util.isNullOrNil(this.GYe))
     {
       Log.w("MicroMsg.WebViewLongClickHelper", "processGetWXACodeNickName mImageQBarDataList nil");
-      AppMethodBeat.o(266505);
+      AppMethodBeat.o(296447);
       return;
     }
-    if (this.BrI.size() != 1)
+    if (this.GYe.size() != 1)
     {
-      AppMethodBeat.o(266505);
+      AppMethodBeat.o(296447);
       return;
     }
-    ImageQBarDataBean localImageQBarDataBean = (ImageQBarDataBean)this.BrI.get(0);
-    if (!k.ci(localImageQBarDataBean.fys, localImageQBarDataBean.IAH))
+    ImageQBarDataBean localImageQBarDataBean = (ImageQBarDataBean)this.GYe.get(0);
+    if (!com.tencent.mm.plugin.scanner.k.cU(localImageQBarDataBean.hDb, localImageQBarDataBean.OGQ))
     {
-      AppMethodBeat.o(266505);
+      AppMethodBeat.o(296447);
       return;
     }
     Log.i("MicroMsg.WebViewLongClickHelper", "processGetWXACodeNickName");
-    this.oxq.cl(localImageQBarDataBean.fys, localImageQBarDataBean.IAH);
-    AppMethodBeat.o(266505);
+    this.rAP.c(localImageQBarDataBean.hDb, e.a.lE(localImageQBarDataBean.OGQ, this.sML));
+    AppMethodBeat.o(296447);
   }
   
   static class CancelRecogQBarData
@@ -554,27 +558,27 @@ public final class WebViewLongClickHelper
   {
     public static final Parcelable.Creator<CancelRecogQBarData> CREATOR;
     String filePath;
-    long fwK;
+    long hBk;
     
     static
     {
-      AppMethodBeat.i(267533);
+      AppMethodBeat.i(296257);
       CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(267533);
+      AppMethodBeat.o(296257);
     }
     
     protected CancelRecogQBarData(Parcel paramParcel)
     {
-      AppMethodBeat.i(267530);
+      AppMethodBeat.i(296253);
       this.filePath = paramParcel.readString();
-      this.fwK = paramParcel.readLong();
-      AppMethodBeat.o(267530);
+      this.hBk = paramParcel.readLong();
+      AppMethodBeat.o(296253);
     }
     
     public CancelRecogQBarData(String paramString, long paramLong)
     {
       this.filePath = paramString;
-      this.fwK = paramLong;
+      this.hBk = paramLong;
     }
     
     public int describeContents()
@@ -584,10 +588,10 @@ public final class WebViewLongClickHelper
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(267532);
+      AppMethodBeat.i(296263);
       paramParcel.writeString(this.filePath);
-      paramParcel.writeLong(this.fwK);
-      AppMethodBeat.o(267532);
+      paramParcel.writeLong(this.hBk);
+      AppMethodBeat.o(296263);
     }
   }
   
@@ -595,38 +599,38 @@ public final class WebViewLongClickHelper
     implements Parcelable
   {
     public static final Parcelable.Creator<ImageQBarData> CREATOR;
-    String BrW;
-    boolean BrX;
+    String GYs;
+    boolean GYt;
     ArrayList<ImageQBarDataBean> mDataList;
     
     static
     {
-      AppMethodBeat.i(224564);
+      AppMethodBeat.i(297509);
       CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(224564);
+      AppMethodBeat.o(297509);
     }
     
     protected ImageQBarData(Parcel paramParcel)
     {
-      AppMethodBeat.i(224555);
+      AppMethodBeat.i(297505);
       this.mDataList = paramParcel.createTypedArrayList(ImageQBarDataBean.CREATOR);
-      this.BrW = paramParcel.readString();
+      this.GYs = paramParcel.readString();
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.BrX = bool;
-        AppMethodBeat.o(224555);
+        this.GYt = bool;
+        AppMethodBeat.o(297505);
         return;
       }
     }
     
     public ImageQBarData(ArrayList<ImageQBarDataBean> paramArrayList, String paramString, Boolean paramBoolean)
     {
-      AppMethodBeat.i(224552);
+      AppMethodBeat.i(297498);
       this.mDataList = paramArrayList;
-      this.BrW = paramString;
-      this.BrX = paramBoolean.booleanValue();
-      AppMethodBeat.o(224552);
+      this.GYs = paramString;
+      this.GYt = paramBoolean.booleanValue();
+      AppMethodBeat.o(297498);
     }
     
     public int describeContents()
@@ -636,14 +640,14 @@ public final class WebViewLongClickHelper
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(224559);
+      AppMethodBeat.i(297512);
       paramParcel.writeTypedList(this.mDataList);
-      paramParcel.writeString(this.BrW);
-      if (this.BrX) {}
+      paramParcel.writeString(this.GYs);
+      if (this.GYt) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeByte((byte)paramInt);
-        AppMethodBeat.o(224559);
+        AppMethodBeat.o(297512);
         return;
       }
     }
@@ -654,37 +658,37 @@ public final class WebViewLongClickHelper
   {
     public static final Parcelable.Creator<ScanImageData> CREATOR;
     String filePath;
-    long fwK;
+    long hBk;
     int height;
-    float qUk;
-    float qUl;
+    float tZl;
+    float tZm;
     int width;
     
     static
     {
-      AppMethodBeat.i(218837);
+      AppMethodBeat.i(296778);
       CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(218837);
+      AppMethodBeat.o(296778);
     }
     
     protected ScanImageData(Parcel paramParcel)
     {
-      AppMethodBeat.i(218833);
+      AppMethodBeat.i(296772);
       this.filePath = paramParcel.readString();
-      this.fwK = paramParcel.readLong();
-      this.qUk = paramParcel.readFloat();
-      this.qUl = paramParcel.readFloat();
+      this.hBk = paramParcel.readLong();
+      this.tZl = paramParcel.readFloat();
+      this.tZm = paramParcel.readFloat();
       this.width = paramParcel.readInt();
       this.height = paramParcel.readInt();
-      AppMethodBeat.o(218833);
+      AppMethodBeat.o(296772);
     }
     
     public ScanImageData(String paramString, long paramLong, float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
     {
       this.filePath = paramString;
-      this.fwK = paramLong;
-      this.qUk = paramFloat1;
-      this.qUl = paramFloat2;
+      this.hBk = paramLong;
+      this.tZl = paramFloat1;
+      this.tZm = paramFloat2;
       this.width = paramInt1;
       this.height = paramInt2;
     }
@@ -696,14 +700,14 @@ public final class WebViewLongClickHelper
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(218835);
+      AppMethodBeat.i(296787);
       paramParcel.writeString(this.filePath);
-      paramParcel.writeLong(this.fwK);
-      paramParcel.writeFloat(this.qUk);
-      paramParcel.writeFloat(this.qUl);
+      paramParcel.writeLong(this.hBk);
+      paramParcel.writeFloat(this.tZl);
+      paramParcel.writeFloat(this.tZm);
       paramParcel.writeInt(this.width);
       paramParcel.writeInt(this.height);
-      AppMethodBeat.o(218835);
+      AppMethodBeat.o(296787);
     }
   }
   
@@ -720,14 +724,14 @@ public final class WebViewLongClickHelper
   }
   
   static final class b
-    implements f<WebViewLongClickHelper.ImageQBarData>
+    implements com.tencent.mm.ipcinvoker.f<WebViewLongClickHelper.ImageQBarData>
   {
-    private WeakReference<WebViewLongClickHelper> BrY;
+    private WeakReference<WebViewLongClickHelper> GYu;
     private String mPath;
     
     public b(WeakReference<WebViewLongClickHelper> paramWeakReference, String paramString)
     {
-      this.BrY = paramWeakReference;
+      this.GYu = paramWeakReference;
       this.mPath = paramString;
     }
   }

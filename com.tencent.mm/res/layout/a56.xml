@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/m1" style="@style/mk"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:textSize="@dimen/is" android:textColor="@color/ag2" android:gravity="center" android:id="@id/aqs" android:background="@drawable/bck" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/c1j" android:shadowColor="@color/fm" android:shadowDx="1.0" android:shadowDy="1.0" android:shadowRadius="1.0" android:layout_centerInParent="true" />
-    </RelativeLayout>
-</merge>
+    <LinearLayout android:gravity="center|left" android:orientation="vertical" android:id="@id/br7" android:paddingLeft="@dimen/iw" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/m1" android:layout_weight="1.0">
+        <ImageView android:background="@color/a1e" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/a78" android:id="@android:id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/m4" />
+        <TextView android:id="@android:id/summary" android:paddingTop="@dimen/m2" android:paddingRight="@dimen/iw" android:paddingBottom="@dimen/m2" android:singleLine="true" style="@style/m7" />
+    </LinearLayout>
+</LinearLayout>

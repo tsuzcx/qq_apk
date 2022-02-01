@@ -5,38 +5,38 @@ import android.content.pm.ApplicationInfo;
 import com.tencent.matrix.a.a.d;
 
 public abstract class a
-  implements j
+  implements m
 {
-  public d cSI;
+  public d eNY;
   
-  public void VZ()
+  public void awI()
   {
     com.tencent.matrix.e.c.i(getTag(), "#onTurnOn", new Object[0]);
   }
   
-  public void Wa()
+  public void awJ()
   {
     com.tencent.matrix.e.c.i(getTag(), "#onTurnOff", new Object[0]);
   }
   
-  protected final boolean Wb()
+  protected final boolean awK()
   {
-    if (this.cSI.cUb.cTS) {}
+    if (this.eNY.ePD.ePu) {}
     while ((d.getContext().getApplicationInfo().flags & 0x2) != 0) {
       return true;
     }
     return false;
   }
   
-  public void bm(long paramLong)
+  public void dE(long paramLong)
   {
     com.tencent.matrix.e.c.i(getTag(), "#onBackgroundCheck, since background started millis = ".concat(String.valueOf(paramLong)), new Object[0]);
   }
   
-  public void f(d paramd)
+  public void g(d paramd)
   {
     com.tencent.matrix.e.c.i(getTag(), "#configure", new Object[0]);
-    this.cSI = paramd;
+    this.eNY = paramd;
   }
   
   protected String getTag()
@@ -56,7 +56,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.a.a.a.a
  * JD-Core Version:    0.7.0.1
  */

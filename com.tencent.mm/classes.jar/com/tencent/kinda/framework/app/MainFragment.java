@@ -1,6 +1,7 @@
 package com.tencent.kinda.framework.app;
 
 import android.content.Intent;
+import android.os.Bundle;
 import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.FragmentActivity;
 import com.tencent.kinda.framework.R.layout;
@@ -12,9 +13,9 @@ import com.tencent.kinda.gen.IUIPage;
 import com.tencent.kinda.gen.NavigationBarConfig;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.w;
 import com.tencent.mm.ui.widget.SwipeBackLayout;
 import com.tencent.mm.ui.widget.pulldown.c;
+import com.tencent.mm.ui.y;
 
 @c(0)
 public class MainFragment
@@ -46,7 +47,9 @@ public class MainFragment
   private void setSystemUIByFullMode()
   {
     AppMethodBeat.i(178763);
-    setActionBarColor((int)ColorUtil.getColorByMode(this.page.defaultNavigationBarConfig().mBackgroundColor));
+    int i = (int)ColorUtil.getColorByMode(this.page.defaultNavigationBarConfig().mBackgroundColor);
+    setActionBarColor(i);
+    getController().setNavigationbarColor(i);
     AppMethodBeat.o(178763);
   }
   
@@ -63,22 +66,22 @@ public class MainFragment
     AppMethodBeat.o(18539);
   }
   
-  public int getIUIHashCode()
-  {
-    AppMethodBeat.i(18544);
-    if (this.page != null)
-    {
-      int i = this.page.hashCode();
-      AppMethodBeat.o(18544);
-      return i;
-    }
-    AppMethodBeat.o(18544);
-    return 0;
-  }
-  
   public int getLayoutId()
   {
     return R.layout.kinda_main_container_layout_with_keyboard;
+  }
+  
+  public String getReportUrl()
+  {
+    AppMethodBeat.i(226404);
+    if (this.page != null)
+    {
+      String str = this.page.getReportUrl();
+      AppMethodBeat.o(226404);
+      return str;
+    }
+    AppMethodBeat.o(226404);
+    return "";
   }
   
   public String getTagName()
@@ -100,14 +103,14 @@ public class MainFragment
   
   public void initPagePlatformDelegate()
   {
-    AppMethodBeat.i(265202);
+    AppMethodBeat.i(226367);
     super.initPagePlatformDelegate();
     if (this.page != null)
     {
       this.page.setPlatformFuncDelegate(this.pagePlatformFuncDelegate);
       this.page.setPlatformDelegate(this.pagePlatformDelegate);
     }
-    AppMethodBeat.o(265202);
+    AppMethodBeat.o(226367);
   }
   
   public boolean onBackPressed()
@@ -121,6 +124,16 @@ public class MainFragment
     }
     AppMethodBeat.o(18541);
     return false;
+  }
+  
+  public void onCreate(Bundle paramBundle)
+  {
+    AppMethodBeat.i(226375);
+    if ((this.mCustomActioinBarController != null) && (this.page != null) && (this.page.forceShowInLightMode())) {
+      this.mCustomActioinBarController.adEj = false;
+    }
+    super.onCreate(paramBundle);
+    AppMethodBeat.o(226375);
   }
   
   public void onCreateLayout(PlatformWrapLayout paramPlatformWrapLayout)
@@ -144,6 +157,15 @@ public class MainFragment
     AppMethodBeat.o(18536);
   }
   
+  public void onFirstLayoutFinished()
+  {
+    AppMethodBeat.i(226386);
+    if (this.page != null) {
+      this.page.onFirstLayoutFinished();
+    }
+    AppMethodBeat.o(226386);
+  }
+  
   public void onFragmentOnResume()
   {
     AppMethodBeat.i(178762);
@@ -154,11 +176,18 @@ public class MainFragment
   
   public void onKeyboardShow(boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(265204);
+    AppMethodBeat.i(226395);
     if (this.pagePlatformFuncDelegate != null) {
       this.pagePlatformFuncDelegate.onKeyboardShow(paramBoolean, paramInt);
     }
-    AppMethodBeat.o(265204);
+    if (paramBoolean)
+    {
+      this.page.keyboardWillShow(paramInt);
+      AppMethodBeat.o(226395);
+      return;
+    }
+    this.page.keyboardWillHide();
+    AppMethodBeat.o(226395);
   }
   
   public void onPause()
@@ -206,15 +235,17 @@ public class MainFragment
   {
     AppMethodBeat.i(18533);
     super.willDeActive();
-    if (this.page != null) {
+    if (this.page != null)
+    {
       this.page.onInvisible();
+      hideKeyboard();
     }
     AppMethodBeat.o(18533);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.kinda.framework.app.MainFragment
  * JD-Core Version:    0.7.0.1
  */

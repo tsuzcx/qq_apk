@@ -1,254 +1,147 @@
 package com.tencent.xweb.util;
 
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.os.Looper;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.File;
-import java.io.InputStream;
-import java.security.MessageDigest;
+import org.xwalk.core.Log;
+import org.xwalk.core.XWalkEnvironment;
 
 public final class d
 {
-  private static String b(InputStream paramInputStream, int paramInt)
+  private static int aimy = -1;
+  
+  private static int bHX(String paramString)
   {
-    int i = 0;
-    AppMethodBeat.i(157004);
-    if (paramInt <= 0)
+    AppMethodBeat.i(212636);
+    if ((paramString == null) || (paramString.isEmpty()))
     {
-      AppMethodBeat.o(157004);
-      return null;
+      AppMethodBeat.o(212636);
+      return 0;
     }
-    StringBuilder localStringBuilder;
+    String[] arrayOfString = paramString.split("\\.");
     try
     {
-      MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
-      localStringBuilder = new StringBuilder(32);
-      byte[] arrayOfByte = new byte[paramInt];
-      for (;;)
+      int i = Integer.parseInt(arrayOfString[0]);
+      AppMethodBeat.o(212636);
+      return i;
+    }
+    finally
+    {
+      Log.e("ChromiumVersionUtil", "getVersionFromVersionName failed, versionName:" + paramString + ", error:" + localObject);
+      AppMethodBeat.o(212636);
+    }
+    return 0;
+  }
+  
+  @Deprecated
+  public static int kgg()
+  {
+    AppMethodBeat.i(212591);
+    if (aimy < 0)
+    {
+      i = khA();
+      if (i > 0)
       {
-        paramInt = paramInputStream.read(arrayOfByte);
-        if (paramInt == -1) {
-          break;
-        }
-        localMessageDigest.update(arrayOfByte, 0, paramInt);
+        aimy = i;
+        AppMethodBeat.o(212591);
+        return i;
       }
-      paramInputStream = localMessageDigest.digest();
     }
-    catch (Exception paramInputStream)
-    {
-      AppMethodBeat.o(157004);
-      return null;
-    }
-    paramInt = i;
-    while (paramInt < paramInputStream.length)
-    {
-      localStringBuilder.append(Integer.toString((paramInputStream[paramInt] & 0xFF) + 256, 16).substring(1));
-      paramInt += 1;
-    }
-    paramInputStream = localStringBuilder.toString();
-    AppMethodBeat.o(157004);
-    return paramInputStream;
+    int i = aimy;
+    AppMethodBeat.o(212591);
+    return i;
   }
   
-  public static String getMD5(String paramString)
+  private static int khA()
   {
-    AppMethodBeat.i(157005);
-    if (paramString == null)
+    AppMethodBeat.i(212626);
+    if (XWalkEnvironment.getApplicationContext() != null)
     {
-      AppMethodBeat.o(157005);
-      return null;
-    }
-    paramString = new File(paramString);
-    if (paramString.exists())
-    {
-      paramString = v(paramString);
-      AppMethodBeat.o(157005);
-      return paramString;
-    }
-    AppMethodBeat.o(157005);
-    return null;
-  }
-  
-  public static final String getMessageDigest(byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(157002);
-    char[] arrayOfChar = new char[16];
-    char[] tmp13_11 = arrayOfChar;
-    tmp13_11[0] = 48;
-    char[] tmp18_13 = tmp13_11;
-    tmp18_13[1] = 49;
-    char[] tmp23_18 = tmp18_13;
-    tmp23_18[2] = 50;
-    char[] tmp28_23 = tmp23_18;
-    tmp28_23[3] = 51;
-    char[] tmp33_28 = tmp28_23;
-    tmp33_28[4] = 52;
-    char[] tmp38_33 = tmp33_28;
-    tmp38_33[5] = 53;
-    char[] tmp43_38 = tmp38_33;
-    tmp43_38[6] = 54;
-    char[] tmp49_43 = tmp43_38;
-    tmp49_43[7] = 55;
-    char[] tmp55_49 = tmp49_43;
-    tmp55_49[8] = 56;
-    char[] tmp61_55 = tmp55_49;
-    tmp61_55[9] = 57;
-    char[] tmp67_61 = tmp61_55;
-    tmp67_61[10] = 97;
-    char[] tmp73_67 = tmp67_61;
-    tmp73_67[11] = 98;
-    char[] tmp79_73 = tmp73_67;
-    tmp79_73[12] = 99;
-    char[] tmp85_79 = tmp79_73;
-    tmp85_79[13] = 100;
-    char[] tmp91_85 = tmp85_79;
-    tmp91_85[14] = 101;
-    char[] tmp97_91 = tmp91_85;
-    tmp97_91[15] = 102;
-    tmp97_91;
-    for (;;)
-    {
-      Object localObject;
-      int k;
-      int i;
-      int j;
+      Object localObject1 = XWalkEnvironment.getApplicationContext().getPackageManager();
       try
       {
-        localObject = MessageDigest.getInstance("MD5");
-        ((MessageDigest)localObject).update(paramArrayOfByte);
-        paramArrayOfByte = ((MessageDigest)localObject).digest();
-        k = paramArrayOfByte.length;
-        localObject = new char[k * 2];
-        i = 0;
-        j = 0;
+        localObject1 = ((PackageManager)localObject1).getPackageInfo("com.google.android.webview", 0);
+        if (localObject1 != null)
+        {
+          int i = bHX(((PackageInfo)localObject1).versionName);
+          if (i > 0)
+          {
+            AppMethodBeat.o(212626);
+            return i;
+          }
+        }
       }
-      catch (Exception paramArrayOfByte)
+      finally
       {
-        AppMethodBeat.o(157002);
-        return null;
-      }
-      paramArrayOfByte = new String((char[])localObject);
-      AppMethodBeat.o(157002);
-      return paramArrayOfByte;
-      while (i < k)
-      {
-        int n = paramArrayOfByte[i];
-        int m = j + 1;
-        localObject[j] = arrayOfChar[(n >>> 4 & 0xF)];
-        localObject[m] = arrayOfChar[(n & 0xF)];
-        i += 1;
-        j = m + 1;
+        Log.e("ChromiumVersionUtil", "getChromiumVersionFromPackageInfo failed, Android System WebView not found, error:".concat(String.valueOf(localObject2)));
       }
     }
+    AppMethodBeat.o(212626);
+    return 0;
   }
   
-  public static boolean pe(String paramString1, String paramString2)
+  public static int khy()
   {
-    AppMethodBeat.i(157007);
-    paramString1 = getMD5(paramString1);
-    if ((paramString1 != null) && (paramString2 != null) && (paramString2.equalsIgnoreCase(paramString1)))
+    AppMethodBeat.i(212599);
+    if (aimy < 0) {
+      aimy = khz();
+    }
+    int i = aimy;
+    AppMethodBeat.o(212599);
+    return i;
+  }
+  
+  private static int khz()
+  {
+    AppMethodBeat.i(212614);
+    int i = khA();
+    if (i > 0)
     {
-      AppMethodBeat.o(157007);
-      return true;
+      AppMethodBeat.o(212614);
+      return i;
     }
-    AppMethodBeat.o(157007);
-    return false;
-  }
-  
-  /* Error */
-  public static String v(File paramFile)
-  {
-    // Byte code:
-    //   0: ldc2_w 118
-    //   3: lstore_1
-    //   4: ldc 120
-    //   6: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: aload_0
-    //   10: invokevirtual 77	java/io/File:exists	()Z
-    //   13: ifne +10 -> 23
-    //   16: ldc 120
-    //   18: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   21: aconst_null
-    //   22: areturn
-    //   23: new 122	java/io/FileInputStream
-    //   26: dup
-    //   27: aload_0
-    //   28: invokespecial 125	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   31: astore_3
-    //   32: ldc2_w 118
-    //   35: aload_0
-    //   36: invokevirtual 129	java/io/File:length	()J
-    //   39: lcmp
-    //   40: ifgt +25 -> 65
-    //   43: aload_3
-    //   44: lload_1
-    //   45: l2i
-    //   46: invokestatic 131	com/tencent/xweb/util/d:b	(Ljava/io/InputStream;I)Ljava/lang/String;
-    //   49: astore_0
-    //   50: aload_3
-    //   51: invokevirtual 135	java/io/FileInputStream:close	()V
-    //   54: aload_3
-    //   55: invokevirtual 135	java/io/FileInputStream:close	()V
-    //   58: ldc 120
-    //   60: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   63: aload_0
-    //   64: areturn
-    //   65: aload_0
-    //   66: invokevirtual 129	java/io/File:length	()J
-    //   69: lstore_1
-    //   70: goto -27 -> 43
-    //   73: astore_0
-    //   74: aconst_null
-    //   75: astore_0
-    //   76: aload_0
-    //   77: ifnull +7 -> 84
-    //   80: aload_0
-    //   81: invokevirtual 135	java/io/FileInputStream:close	()V
-    //   84: ldc 120
-    //   86: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   89: aconst_null
-    //   90: areturn
-    //   91: astore_0
-    //   92: aconst_null
-    //   93: astore_3
-    //   94: aload_3
-    //   95: ifnull +7 -> 102
-    //   98: aload_3
-    //   99: invokevirtual 135	java/io/FileInputStream:close	()V
-    //   102: ldc 120
-    //   104: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   107: aload_0
-    //   108: athrow
-    //   109: astore_3
-    //   110: goto -52 -> 58
-    //   113: astore_0
-    //   114: goto -30 -> 84
-    //   117: astore_3
-    //   118: goto -16 -> 102
-    //   121: astore_0
-    //   122: goto -28 -> 94
-    //   125: astore_0
-    //   126: aload_3
-    //   127: astore_0
-    //   128: goto -52 -> 76
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	131	0	paramFile	File
-    //   3	67	1	l	long
-    //   31	68	3	localFileInputStream	java.io.FileInputStream
-    //   109	1	3	localIOException1	java.io.IOException
-    //   117	10	3	localIOException2	java.io.IOException
-    // Exception table:
-    //   from	to	target	type
-    //   23	32	73	java/lang/Exception
-    //   23	32	91	finally
-    //   54	58	109	java/io/IOException
-    //   80	84	113	java/io/IOException
-    //   98	102	117	java/io/IOException
-    //   32	43	121	finally
-    //   43	54	121	finally
-    //   65	70	121	finally
-    //   32	43	125	java/lang/Exception
-    //   43	54	125	java/lang/Exception
-    //   65	70	125	java/lang/Exception
+    try
+    {
+      if (Looper.getMainLooper() == Looper.myLooper()) {}
+      for (i = 1; i == 0; i = 0)
+      {
+        Log.e("ChromiumVersionUtil", "getChromiumVersionInternal NOT IN UI THREAD");
+        AppMethodBeat.o(212614);
+        return 0;
+      }
+      String str = new WebView(XWalkEnvironment.getApplicationContext()).getSettings().getUserAgentString();
+      if (str != null)
+      {
+        String[] arrayOfString = str.split("Chrome/");
+        if ((arrayOfString != null) && (arrayOfString.length != 0))
+        {
+          if (arrayOfString.length == 1)
+          {
+            i = arrayOfString[0].length();
+            int j = str.length();
+            if (i != j) {}
+          }
+        }
+        else
+        {
+          AppMethodBeat.o(212614);
+          return 0;
+        }
+        i = bHX(arrayOfString[1]);
+        AppMethodBeat.o(212614);
+        return i;
+      }
+    }
+    finally
+    {
+      Log.e("ChromiumVersionUtil", "getChromiumVersionInternal failed, Android System WebView not found, error:".concat(String.valueOf(localObject)));
+      AppMethodBeat.o(212614);
+    }
+    return 0;
   }
 }
 

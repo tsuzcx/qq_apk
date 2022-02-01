@@ -8,6 +8,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface c
   extends b.a
 {
+  public abstract void Wl();
+  
+  public abstract void Wm();
+  
   public abstract int getCircularRevealScrimColor();
   
   public abstract d getRevealInfo();
@@ -18,41 +22,37 @@ public abstract interface c
   
   public abstract void setRevealInfo(d paramd);
   
-  public abstract void wM();
-  
-  public abstract void wN();
-  
   public static final class a
     implements TypeEvaluator<c.d>
   {
-    public static final TypeEvaluator<c.d> bAf;
-    private final c.d bAb;
+    public static final TypeEvaluator<c.d> dtg;
+    private final c.d dtc;
     
     static
     {
-      AppMethodBeat.i(236808);
-      bAf = new a();
-      AppMethodBeat.o(236808);
+      AppMethodBeat.i(209032);
+      dtg = new a();
+      AppMethodBeat.o(209032);
     }
     
     public a()
     {
-      AppMethodBeat.i(236805);
-      this.bAb = new c.d((byte)0);
-      AppMethodBeat.o(236805);
+      AppMethodBeat.i(209029);
+      this.dtc = new c.d((byte)0);
+      AppMethodBeat.o(209029);
     }
   }
   
   public static final class b
     extends Property<c, c.d>
   {
-    public static final Property<c, c.d> bAg;
+    public static final Property<c, c.d> dth;
     
     static
     {
-      AppMethodBeat.i(236823);
-      bAg = new b("circularReveal");
-      AppMethodBeat.o(236823);
+      AppMethodBeat.i(209035);
+      dth = new b("circularReveal");
+      AppMethodBeat.o(209035);
     }
     
     private b(String paramString)
@@ -64,13 +64,13 @@ public abstract interface c
   public static final class c
     extends Property<c, Integer>
   {
-    public static final Property<c, Integer> bAh;
+    public static final Property<c, Integer> dti;
     
     static
     {
-      AppMethodBeat.i(236857);
-      bAh = new c("circularRevealScrimColor");
-      AppMethodBeat.o(236857);
+      AppMethodBeat.i(209046);
+      dti = new c("circularRevealScrimColor");
+      AppMethodBeat.o(209046);
     }
     
     private c(String paramString)
@@ -81,29 +81,29 @@ public abstract interface c
   
   public static class d
   {
-    public float aGt;
-    public float aGu;
+    public float centerX;
+    public float centerY;
     public float radius;
     
     private d() {}
     
     public d(float paramFloat1, float paramFloat2, float paramFloat3)
     {
-      this.aGt = paramFloat1;
-      this.aGu = paramFloat2;
+      this.centerX = paramFloat1;
+      this.centerY = paramFloat2;
       this.radius = paramFloat3;
     }
     
     public d(d paramd)
     {
-      this(paramd.aGt, paramd.aGu, paramd.radius);
+      this(paramd.centerX, paramd.centerY, paramd.radius);
     }
     
     public final void b(d paramd)
     {
-      AppMethodBeat.i(236905);
-      k(paramd.aGt, paramd.aGu, paramd.radius);
-      AppMethodBeat.o(236905);
+      AppMethodBeat.i(209109);
+      n(paramd.centerX, paramd.centerY, paramd.radius);
+      AppMethodBeat.o(209109);
     }
     
     public final boolean isInvalid()
@@ -111,17 +111,17 @@ public abstract interface c
       return this.radius == 3.4028235E+38F;
     }
     
-    public final void k(float paramFloat1, float paramFloat2, float paramFloat3)
+    public final void n(float paramFloat1, float paramFloat2, float paramFloat3)
     {
-      this.aGt = paramFloat1;
-      this.aGu = paramFloat2;
+      this.centerX = paramFloat1;
+      this.centerY = paramFloat2;
       this.radius = paramFloat3;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.circularreveal.c
  * JD-Core Version:    0.7.0.1
  */

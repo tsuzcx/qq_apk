@@ -1,6 +1,5 @@
 package com.google.android.gms.common.util;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -25,7 +24,6 @@ public final class DeviceStateUtils
     AppMethodBeat.o(5217);
   }
   
-  @TargetApi(20)
   public static int getDeviceState(Context paramContext)
   {
     int k = 1;
@@ -82,14 +80,14 @@ public final class DeviceStateUtils
     //   2: monitorenter
     //   3: sipush 5213
     //   6: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: invokestatic 81	android/os/SystemClock:elapsedRealtime	()J
-    //   12: getstatic 83	com/google/android/gms/common/util/DeviceStateUtils:zzzw	J
+    //   9: invokestatic 77	android/os/SystemClock:elapsedRealtime	()J
+    //   12: getstatic 79	com/google/android/gms/common/util/DeviceStateUtils:zzzw	J
     //   15: lsub
-    //   16: ldc2_w 84
+    //   16: ldc2_w 80
     //   19: lcmp
     //   20: ifge +27 -> 47
     //   23: getstatic 31	com/google/android/gms/common/util/DeviceStateUtils:zzzx	F
-    //   26: invokestatic 91	java/lang/Float:isNaN	(F)Z
+    //   26: invokestatic 87	java/lang/Float:isNaN	(F)Z
     //   29: ifne +18 -> 47
     //   32: getstatic 31	com/google/android/gms/common/util/DeviceStateUtils:zzzx	F
     //   35: fstore_1
@@ -100,22 +98,22 @@ public final class DeviceStateUtils
     //   45: fload_1
     //   46: freturn
     //   47: aload_0
-    //   48: invokevirtual 48	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   48: invokevirtual 45	android/content/Context:getApplicationContext	()Landroid/content/Context;
     //   51: aconst_null
     //   52: getstatic 28	com/google/android/gms/common/util/DeviceStateUtils:filter	Landroid/content/IntentFilter;
-    //   55: invokevirtual 52	android/content/Context:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
+    //   55: invokevirtual 49	android/content/Context:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
     //   58: astore_0
     //   59: aload_0
     //   60: ifnull +27 -> 87
     //   63: aload_0
-    //   64: ldc 93
+    //   64: ldc 89
     //   66: iconst_m1
-    //   67: invokevirtual 68	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   67: invokevirtual 65	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
     //   70: istore_2
     //   71: aload_0
-    //   72: ldc 95
+    //   72: ldc 91
     //   74: iconst_m1
-    //   75: invokevirtual 68	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   75: invokevirtual 65	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
     //   78: istore_3
     //   79: iload_2
     //   80: i2f
@@ -123,8 +121,8 @@ public final class DeviceStateUtils
     //   82: i2f
     //   83: fdiv
     //   84: putstatic 31	com/google/android/gms/common/util/DeviceStateUtils:zzzx	F
-    //   87: invokestatic 81	android/os/SystemClock:elapsedRealtime	()J
-    //   90: putstatic 83	com/google/android/gms/common/util/DeviceStateUtils:zzzw	J
+    //   87: invokestatic 77	android/os/SystemClock:elapsedRealtime	()J
+    //   90: putstatic 79	com/google/android/gms/common/util/DeviceStateUtils:zzzw	J
     //   93: getstatic 31	com/google/android/gms/common/util/DeviceStateUtils:zzzx	F
     //   96: fstore_1
     //   97: sipush 5213
@@ -181,7 +179,6 @@ public final class DeviceStateUtils
     return bool;
   }
   
-  @TargetApi(20)
   public static boolean isInteractive(PowerManager paramPowerManager)
   {
     AppMethodBeat.i(5212);
@@ -208,7 +205,6 @@ public final class DeviceStateUtils
     return false;
   }
   
-  @VisibleForTesting
   public static void resetForTest()
   {
     try
@@ -226,7 +222,7 @@ public final class DeviceStateUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.util.DeviceStateUtils
  * JD-Core Version:    0.7.0.1
  */

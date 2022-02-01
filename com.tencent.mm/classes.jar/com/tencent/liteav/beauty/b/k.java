@@ -38,19 +38,19 @@ public class k
   
   private int s()
   {
-    AppMethodBeat.i(233012);
+    AppMethodBeat.i(229855);
     GLES20.glBindTexture(3553, this.x[0]);
     if (this.r != null) {
       GLES20.glTexImage2D(3553, 0, 6408, this.e, this.f, 0, 6408, 5121, this.r);
     }
     int i = this.x[0];
-    AppMethodBeat.o(233012);
+    AppMethodBeat.o(229855);
     return i;
   }
   
   private void t()
   {
-    AppMethodBeat.i(233013);
+    AppMethodBeat.i(229858);
     if ((this.t != null) && (this.t[0] > 0))
     {
       GLES20.glDeleteTextures(1, this.t, 0);
@@ -66,7 +66,7 @@ public class k
       GLES20.glDeleteTextures(1, this.x, 0);
       this.x = null;
     }
-    AppMethodBeat.o(233013);
+    AppMethodBeat.o(229858);
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -124,11 +124,11 @@ public class k
   
   public void a(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(233007);
+    AppMethodBeat.i(229872);
     if (paramArrayOfByte != null) {
       this.r = ByteBuffer.wrap(paramArrayOfByte);
     }
-    AppMethodBeat.o(233007);
+    AppMethodBeat.o(229872);
   }
   
   public boolean a()
@@ -234,7 +234,7 @@ public class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.k
  * JD-Core Version:    0.7.0.1
  */

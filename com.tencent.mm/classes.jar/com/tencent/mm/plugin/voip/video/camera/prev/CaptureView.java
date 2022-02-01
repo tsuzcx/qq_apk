@@ -12,39 +12,39 @@ public class CaptureView
   public CaptureView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(241216);
+    AppMethodBeat.i(292906);
     init();
-    AppMethodBeat.o(241216);
+    AppMethodBeat.o(292906);
   }
   
   public CaptureView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(241221);
+    AppMethodBeat.i(292908);
     init();
-    AppMethodBeat.o(241221);
+    AppMethodBeat.o(292908);
   }
   
   public CaptureView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(241225);
+    AppMethodBeat.i(292912);
     init();
-    AppMethodBeat.o(241225);
+    AppMethodBeat.o(292912);
   }
   
   private void init()
   {
-    AppMethodBeat.i(241228);
-    if (d.gDJ()) {
+    AppMethodBeat.i(292917);
+    if (d.icD()) {
       setNeedSetType(true);
     }
-    AppMethodBeat.o(241228);
+    AppMethodBeat.o(292917);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.camera.prev.CaptureView
  * JD-Core Version:    0.7.0.1
  */

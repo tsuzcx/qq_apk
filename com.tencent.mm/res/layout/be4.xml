@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/h93" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bt" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb">
-        <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/k6" android:textColor="@color/BW_100_Alpha_0_9" android:textColorHint="@color/BW_100_Alpha_0_5" android:layout_gravity="bottom" android:id="@id/b8m" android:background="@drawable/akq" android:paddingLeft="@dimen/c5" android:paddingRight="@dimen/c5" android:layout_width="0.0dip" android:layout_marginTop="@dimen/ct" android:maxHeight="@dimen/ae" android:minHeight="@dimen/ag" android:hint="@string/f7v" android:singleLine="false" android:layout_weight="1.0" android:inputType="textCapSentences|textMultiLine" android:textCursorDrawable="@drawable/a70" style="@style/nn" />
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="bottom" android:id="@id/b97" android:background="@null" android:layout_width="@dimen/cf" android:layout_height="@dimen/cf" android:layout_marginLeft="@dimen/ct" android:layout_marginBottom="@dimen/c5" android:src="@raw/icons_filled_add_emoji" android:scaleType="fitXY" android:contentDescription="@string/auf" app:iconColor="@color/am" />
+<LinearLayout android:gravity="center|left" android:id="@id/gvc" android:layout_width="wrap_content" android:layout_height="80.0dip" android:layout_weight="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_width="73.0dip" android:layout_height="fill_parent">
+        <ImageView android:gravity="left" android:id="@id/f4p" android:background="@raw/default_avatar" android:layout_width="60.0dip" android:layout_height="60.0dip" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <TextView android:id="@android:id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:singleLine="true" style="@style/m4" />
     </LinearLayout>
 </LinearLayout>

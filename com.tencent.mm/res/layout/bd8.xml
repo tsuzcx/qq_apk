@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_gravity="top" android:background="@color/y" android:layout_width="fill_parent" android:layout_height="48.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_gravity="end|center" android:id="@id/g98" android:background="@drawable/a73" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="@dimen/cc">
-        <TextView android:textSize="@dimen/cb" android:textColor="#ffffffff" android:layout_gravity="center_horizontal" android:id="@id/g99" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/bt" android:layout_marginRight="@dimen/c5" android:layout_marginBottom="@dimen/bt" android:text="@string/ges" android:layout_centerVertical="true" />
-    </FrameLayout>
-</FrameLayout>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView android:id="@id/ko8" style="@style/mf" />
+    <RelativeLayout android:layout_width="0.0dip" android:layout_height="@dimen/m1" android:layout_weight="1.0">
+        <com.tencent.mm.plugin.account.sdk.MMImeClearEditText android:id="@id/cd6" android:layout_width="fill_parent" android:layout_centerVertical="true" style="@style/me" />
+        <View android:id="@id/bdh" android:background="@color/ahb" android:visibility="gone" android:layout_width="@dimen/d9" android:layout_height="@dimen/d_" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/bf8" android:importantForAccessibility="yes" />
+    </RelativeLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/g6u" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/safe_keyboard" android:layout_centerVertical="true" android:layout_marginStart="-8.0dip" app:iconColor="@color/FG_1" />
+</merge>

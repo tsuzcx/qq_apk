@@ -1,15 +1,35 @@
 package com.tencent.mm.plugin.thumbplayer.f;
 
-import com.tencent.thumbplayer.api.ITPPlayer;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/thumbplayer/player/IMMTPPlayer;", "Lcom/tencent/thumbplayer/api/ITPPlayer;", "prepareCostTime", "", "setMediaId", "", "mediaId", "", "plugin-thumbplayer_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/thumbplayer/reporter/DownloadReporter;", "", "onDownloadError", "", "ret", "", "onDownloadStarted", "timestamp", "", "onDownloadSucceed", "onDuplicateFileFound", "onMoovLack", "onMoovParseFailed", "onMoovParseSucceed", "onMoovReady", "offset", "length", "onNeedCompletion", "onRequestAllData", "onRequestH264", "onStartDownload", "onStopDownload", "plugin-thumbplayer_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface a
-  extends ITPPlayer
 {
-  public abstract long goq();
+  public abstract void aoF(int paramInt);
   
-  public abstract void setMediaId(String paramString);
+  public abstract void bq(long paramLong1, long paramLong2);
+  
+  public abstract void gZM();
+  
+  public abstract void hLA();
+  
+  public abstract void hLs();
+  
+  public abstract void hLt();
+  
+  public abstract void hLu();
+  
+  public abstract void hLv();
+  
+  public abstract void hLw();
+  
+  public abstract void hLx();
+  
+  public abstract void hLy();
+  
+  public abstract void hLz();
+  
+  public abstract void jy(long paramLong);
 }
 
 

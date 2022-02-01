@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.widget.WXActionMenuView android:id="@id/d_o" android:layout_width="@dimen/b9" android:layout_height="@dimen/b9"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout style="@style/r8"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/ae5" android:background="@color/fv" style="@style/na" />
+    <TextView android:id="@id/cj1" android:visibility="gone" style="@style/m3" />
+</LinearLayout>

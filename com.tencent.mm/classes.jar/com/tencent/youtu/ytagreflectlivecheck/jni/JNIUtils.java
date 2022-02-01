@@ -9,15 +9,15 @@ public class JNIUtils
   
   public static Timeval getTimeval(long paramLong)
   {
-    AppMethodBeat.i(231591);
+    AppMethodBeat.i(218050);
     Timeval localTimeval = new Timeval(paramLong / 1000L, (int)(1000L * paramLong % 1000000L));
-    AppMethodBeat.o(231591);
+    AppMethodBeat.o(218050);
     return localTimeval;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.youtu.ytagreflectlivecheck.jni.JNIUtils
  * JD-Core Version:    0.7.0.1
  */

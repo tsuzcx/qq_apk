@@ -1,87 +1,72 @@
 package com.tencent.mm.plugin.webview.luggage;
 
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.LocaleUtil;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.plugin.webview.ui.tools.jsapi.a.d;
 import com.tencent.mm.sdk.platformtools.Util;
+import java.util.HashMap;
 
 public final class x
 {
-  private boolean PRC;
-  private String PRD;
-  private String PRE;
-  private String PRF;
-  private String PRG;
-  private String PRH;
-  private String PRI;
-  private String lang;
+  public g WFG;
+  public final HashMap<String, String> WHW;
+  public final HashMap<String, a.d> WHX;
+  public final HashMap<String, String> WHY;
   
-  public x(Bundle paramBundle)
+  public x(g paramg)
   {
-    AppMethodBeat.i(78478);
-    this.PRC = paramBundle.getBoolean("close_window_confirm_dialog_switch");
-    this.PRD = paramBundle.getString("close_window_confirm_dialog_title_cn");
-    this.PRE = paramBundle.getString("close_window_confirm_dialog_title_eng");
-    this.PRF = paramBundle.getString("close_window_confirm_dialog_ok_cn");
-    this.PRG = paramBundle.getString("close_window_confirm_dialog_ok_eng");
-    this.PRH = paramBundle.getString("close_window_confirm_dialog_cancel_cn");
-    this.PRI = paramBundle.getString("close_window_confirm_dialog_cancel_eng");
-    this.lang = LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext());
-    AppMethodBeat.o(78478);
+    AppMethodBeat.i(78474);
+    this.WHW = new HashMap();
+    this.WHX = new HashMap();
+    this.WHY = new HashMap();
+    this.WFG = paramg;
+    AppMethodBeat.o(78474);
   }
   
-  public final boolean gVc()
+  public static String bkc(String paramString)
   {
-    AppMethodBeat.i(78479);
-    if ((this.PRC) && (!Util.isNullOrNil(gVd())) && (!Util.isNullOrNil(gVe())) && (!Util.isNullOrNil(gVf())))
+    AppMethodBeat.i(78476);
+    if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(78479);
-      return true;
+      AppMethodBeat.o(78476);
+      return paramString;
     }
-    AppMethodBeat.o(78479);
-    return false;
+    int i = paramString.indexOf("#");
+    if (i < 0)
+    {
+      AppMethodBeat.o(78476);
+      return paramString;
+    }
+    paramString = paramString.substring(0, i);
+    AppMethodBeat.o(78476);
+    return paramString;
   }
   
-  public final String gVd()
+  public final String getAppId()
   {
-    AppMethodBeat.i(78480);
-    if ("zh_CN".equals(this.lang))
+    AppMethodBeat.i(78475);
+    String str = this.WFG.getUrl();
+    if (Util.isNullOrNil(str))
     {
-      str = this.PRD;
-      AppMethodBeat.o(78480);
-      return str;
+      AppMethodBeat.o(78475);
+      return null;
     }
-    String str = this.PRE;
-    AppMethodBeat.o(78480);
+    str = bkc(str);
+    str = (String)this.WHW.get(str);
+    AppMethodBeat.o(78475);
     return str;
   }
   
-  public final String gVe()
+  public final String getIcon()
   {
-    AppMethodBeat.i(78481);
-    if ("zh_CN".equals(this.lang))
+    AppMethodBeat.i(78477);
+    String str = getAppId();
+    if (Util.isNullOrNil(str))
     {
-      str = this.PRF;
-      AppMethodBeat.o(78481);
-      return str;
+      AppMethodBeat.o(78477);
+      return null;
     }
-    String str = this.PRG;
-    AppMethodBeat.o(78481);
-    return str;
-  }
-  
-  public final String gVf()
-  {
-    AppMethodBeat.i(78482);
-    if ("zh_CN".equals(this.lang))
-    {
-      str = this.PRH;
-      AppMethodBeat.o(78482);
-      return str;
-    }
-    String str = this.PRI;
-    AppMethodBeat.o(78482);
+    str = (String)this.WHY.get(str);
+    AppMethodBeat.o(78477);
     return str;
   }
 }

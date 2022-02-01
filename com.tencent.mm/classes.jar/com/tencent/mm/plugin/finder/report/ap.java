@@ -1,113 +1,71 @@
 package com.tencent.mm.plugin.finder.report;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.conv.d;
-import com.tencent.mm.plugin.finder.conv.h;
-import kotlin.g.b.p;
-import kotlin.k.i;
-import kotlin.l;
-import kotlin.t;
+import com.tencent.mm.plugin.report.f;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/report/SystemMsgScrollListener;", "Lcom/tencent/mm/plugin/finder/report/ScrollStatisticListener;", "", "Lcom/tencent/mm/plugin/finder/conv/FinderConversation;", "()V", "adapter", "Lcom/tencent/mm/plugin/finder/conv/FinderConversationFirstFixAdapter;", "attachRecyclerView", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "isStatistic", "", "detachRecyclerView", "getData", "index", "", "getId", "isSystemMsgExpose", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/report/IDKey1298;", "", "()V", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ap
-  extends an<String, d>
 {
-  private h zZR;
+  public static final a FtP;
+  private static final int FtQ;
+  private static final int FtR;
+  private static final int FtS;
+  private static final int FtT;
+  private static final int FtU;
+  private static final int FtV;
+  private static final int FtW;
+  private static final int FtX;
+  private static final int FtY;
+  private static final int FtZ;
+  private static final int Fua;
+  private static final int Fub;
+  private static final int Fuc;
+  private static final int Fud;
+  private static final int Fue;
+  private static final int Fuf;
+  private static final int Fug;
+  private static final int hjP;
   
-  public ap()
+  static
   {
-    AppMethodBeat.i(285396);
-    a locala = new a();
-    locala.zTE = ((af)new a());
-    this.zZO = locala;
-    AppMethodBeat.o(285396);
+    AppMethodBeat.i(166708);
+    FtP = new a((byte)0);
+    hjP = 1298;
+    FtQ = 1;
+    FtR = 2;
+    FtS = 3;
+    FtT = 4;
+    FtU = 5;
+    FtV = 6;
+    FtW = 7;
+    FtX = 8;
+    FtY = 9;
+    FtZ = 10;
+    Fua = 11;
+    Fub = 12;
+    Fuc = 13;
+    Fud = 14;
+    Fue = 15;
+    Fuf = 16;
+    Fug = 255;
+    AppMethodBeat.o(166708);
   }
   
-  private d PT(int paramInt)
-  {
-    AppMethodBeat.i(285395);
-    Object localObject = this.zZR;
-    if (localObject != null)
-    {
-      localObject = ((h)localObject).Ma(paramInt);
-      AppMethodBeat.o(285395);
-      return localObject;
-    }
-    AppMethodBeat.o(285395);
-    return null;
-  }
-  
-  public final void b(RecyclerView paramRecyclerView, boolean paramBoolean)
-  {
-    AppMethodBeat.i(285391);
-    p.k(paramRecyclerView, "recyclerView");
-    super.b(paramRecyclerView, paramBoolean);
-    if ((paramRecyclerView.getAdapter() instanceof h))
-    {
-      paramRecyclerView = paramRecyclerView.getAdapter();
-      if (paramRecyclerView == null)
-      {
-        paramRecyclerView = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.conv.FinderConversationFirstFixAdapter");
-        AppMethodBeat.o(285391);
-        throw paramRecyclerView;
-      }
-      this.zZR = ((h)paramRecyclerView);
-    }
-    AppMethodBeat.o(285391);
-  }
-  
-  public final void dQB()
-  {
-    AppMethodBeat.i(285393);
-    super.dQB();
-    this.zZR = null;
-    AppMethodBeat.o(285393);
-  }
-  
-  public final boolean dQC()
-  {
-    AppMethodBeat.i(285392);
-    Object localObject = getRecyclerView();
-    if (localObject != null)
-    {
-      localObject = ((RecyclerView)localObject).getLayoutManager();
-      if ((localObject instanceof LinearLayoutManager))
-      {
-        this.xrh = i.ov(0, ((LinearLayoutManager)localObject).kJ());
-        this.xrj = i.ov(0, ((LinearLayoutManager)localObject).kL());
-        int i = this.xrh;
-        int j = this.xrj;
-        if (i <= j) {
-          for (;;)
-          {
-            localObject = PT(i);
-            if ((localObject != null) && (p.h(((d)localObject).field_sessionId, "finder_system_message")))
-            {
-              AppMethodBeat.o(285392);
-              return true;
-            }
-            if (i == j) {
-              break;
-            }
-            i += 1;
-          }
-        }
-      }
-    }
-    AppMethodBeat.o(285392);
-    return false;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/report/SystemMsgScrollListener$1$condition$1", "Lcom/tencent/mm/plugin/finder/report/IStatisticCondition;", "", "filter", "", "id", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/report/IDKey1298$Companion;", "", "()V", "ID", "", "getID", "()I", "PlayerError_403", "getPlayerError_403", "PlayerError_404", "getPlayerError_404", "PlayerError_405", "getPlayerError_405", "PlayerError_416", "getPlayerError_416", "PlayerError_502", "getPlayerError_502", "PlayerError_503", "getPlayerError_503", "PlayerError_CDNCOM_TIMEOUT_TRANSFOR", "getPlayerError_CDNCOM_TIMEOUT_TRANSFOR", "PlayerError_CNDCOM_MEDIA_OPEN_FAILED", "getPlayerError_CNDCOM_MEDIA_OPEN_FAILED", "PlayerError_CNDCOM_NET_ERROR", "getPlayerError_CNDCOM_NET_ERROR", "PlayerError_CNDCOM_WRITE_MEDIA_FILE_FAILED", "getPlayerError_CNDCOM_WRITE_MEDIA_FILE_FAILED", "PlayerError_IO", "getPlayerError_IO", "PlayerError_MALFORMED", "getPlayerError_MALFORMED", "PlayerError_Other", "getPlayerError_Other", "PlayerError_PREPARE", "getPlayerError_PREPARE", "PlayerError_READ", "getPlayerError_READ", "PlayerError_REQ_ALL", "getPlayerError_REQ_ALL", "PlayerError_UNSUPPORT", "getPlayerError_UNSUPPORT", "report", "", "errorCode", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
-    implements af<String>
-  {}
+  {
+    public static void rG(int paramInt)
+    {
+      AppMethodBeat.i(166707);
+      f.Ozc.idkeyStat(ap.eNB(), paramInt, 1L, false);
+      AppMethodBeat.o(166707);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.report.ap
  * JD-Core Version:    0.7.0.1
  */

@@ -7,53 +7,53 @@ import com.tencent.mm.msgsubscription.api.ISubscribeMsgService.Companion.Subscri
 import com.tencent.mm.msgsubscription.d.d;
 import java.util.ArrayList;
 import java.util.Iterator;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/msgsubscription/task/GetLocalSubscribeListTask;", "Lcom/tencent/mm/msgsubscription/task/BaseSubscribeMsgTask;", "username", "", "storageManager", "Lcom/tencent/mm/msgsubscription/storage/ISubscribeStorageManager;", "callback", "Lcom/tencent/mm/msgsubscription/api/SubscribeMsgOpCallback;", "(Ljava/lang/String;Lcom/tencent/mm/msgsubscription/storage/ISubscribeStorageManager;Lcom/tencent/mm/msgsubscription/api/SubscribeMsgOpCallback;)V", "bizUsername", "(Ljava/lang/String;)V", "mCallback", "getType", "", "run", "", "Companion", "plugin-comm_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/msgsubscription/task/GetLocalSubscribeListTask;", "Lcom/tencent/mm/msgsubscription/task/BaseSubscribeMsgTask;", "username", "", "storageManager", "Lcom/tencent/mm/msgsubscription/storage/ISubscribeStorageManager;", "callback", "Lcom/tencent/mm/msgsubscription/api/SubscribeMsgOpCallback;", "(Ljava/lang/String;Lcom/tencent/mm/msgsubscription/storage/ISubscribeStorageManager;Lcom/tencent/mm/msgsubscription/api/SubscribeMsgOpCallback;)V", "bizUsername", "(Ljava/lang/String;)V", "mCallback", "getType", "", "run", "", "Companion", "plugin-comm_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
   extends a
 {
-  public static final c.a mqK;
-  private com.tencent.mm.msgsubscription.d.a mpb;
-  private com.tencent.mm.msgsubscription.api.a mqF;
+  public static final c.a pkn;
+  private com.tencent.mm.msgsubscription.d.a piQ;
+  private com.tencent.mm.msgsubscription.api.a pkl;
   
   static
   {
-    AppMethodBeat.i(232871);
-    mqK = new c.a((byte)0);
-    AppMethodBeat.o(232871);
+    AppMethodBeat.i(236399);
+    pkn = new c.a((byte)0);
+    AppMethodBeat.o(236399);
   }
   
   private c(String paramString)
   {
     super(paramString);
-    AppMethodBeat.i(232866);
-    AppMethodBeat.o(232866);
+    AppMethodBeat.i(236388);
+    AppMethodBeat.o(236388);
   }
   
   public c(String paramString, com.tencent.mm.msgsubscription.d.a parama, com.tencent.mm.msgsubscription.api.a parama1)
   {
     this(paramString);
-    AppMethodBeat.i(232868);
-    this.mpb = parama;
-    this.mqF = parama1;
-    AppMethodBeat.o(232868);
+    AppMethodBeat.i(236393);
+    this.piQ = parama;
+    this.pkl = parama1;
+    AppMethodBeat.o(236393);
   }
   
   public final void run()
   {
-    AppMethodBeat.i(232865);
-    Object localObject1 = this.mpb;
-    if (localObject1 != null) {}
+    AppMethodBeat.i(236410);
+    Object localObject1 = this.piQ;
+    if (localObject1 == null) {}
     ArrayList localArrayList;
     Object localObject3;
-    for (localObject1 = ((com.tencent.mm.msgsubscription.d.a)localObject1).YZ(this.fOX);; localObject1 = null)
+    for (localObject1 = null;; localObject1 = ((com.tencent.mm.msgsubscription.d.a)localObject1).Re(this.hUQ))
     {
       localArrayList = new ArrayList();
       if (localObject1 == null) {
         break;
       }
-      localObject2 = ((ISubscribeMsgService.Companion.SubscribeMsgListWrapper)localObject1).moB;
+      localObject2 = ((ISubscribeMsgService.Companion.SubscribeMsgListWrapper)localObject1).pis;
       if (localObject2 == null) {
         break;
       }
@@ -61,33 +61,33 @@ public final class c
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (SubscribeMsgTmpItem)((Iterator)localObject2).next();
-        if (((SubscribeMsgTmpItem)localObject3).mod == 3) {
+        if (((SubscribeMsgTmpItem)localObject3).phR == 3) {
           localArrayList.add(localObject3);
         }
       }
     }
-    Object localObject2 = this.mqF;
+    Object localObject2 = this.pkl;
     if (localObject2 != null)
     {
-      localObject3 = this.fOX;
-      if (localObject1 == null) {
-        break label167;
+      localObject3 = this.hUQ;
+      if (localObject1 != null) {
+        break label164;
       }
     }
-    label167:
-    for (boolean bool = ((ISubscribeMsgService.Companion.SubscribeMsgListWrapper)localObject1).moC;; bool = false)
+    label164:
+    for (boolean bool = false;; bool = ((ISubscribeMsgService.Companion.SubscribeMsgListWrapper)localObject1).pit)
     {
       ((com.tencent.mm.msgsubscription.api.a)localObject2).a((String)localObject3, new SubscribeMsgRequestResult(localArrayList, bool));
-      localObject1 = d.mqz;
+      localObject1 = d.pkg;
       d.a((a)this);
-      AppMethodBeat.o(232865);
+      AppMethodBeat.o(236410);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.msgsubscription.e.c
  * JD-Core Version:    0.7.0.1
  */

@@ -9,70 +9,54 @@ import android.os.HandlerThread;
 import android.view.Surface;
 import com.tencent.magicbrush.ui.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.media.k.c.a;
-import com.tencent.mm.media.k.c.b;
+import com.tencent.mm.media.util.c.a;
+import com.tencent.mm.media.util.c.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
-import kotlin.x;
+import kotlin.ah;
 
 public abstract class b
   extends h
   implements e
 {
-  private HandlerThread kVN = com.tencent.e.c.d.ij("GameTextureView_renderThread", -2);
-  private MMHandler kVO;
-  private com.tencent.mm.media.j.a kWg;
-  private com.tencent.mm.media.widget.camerarecordview.preview.a.a krm;
-  private SurfaceTexture ool;
-  private c.b oom;
-  private AtomicBoolean oon = new AtomicBoolean(false);
-  private e.a ooo;
+  private com.tencent.mm.media.widget.camerarecordview.preview.a.a mVj;
+  private com.tencent.mm.media.j.a nBj;
+  private MMHandler nBk;
+  private HandlerThread nty = com.tencent.threadpool.c.d.jv("GameTextureView_renderThread", -2);
+  private SurfaceTexture rrU;
+  private c.b rrV;
+  private AtomicBoolean rrW = new AtomicBoolean(false);
+  private e.a rrX;
   private int surfaceHeight;
   private int surfaceWidth;
   
   public b(Context paramContext)
   {
     super(paramContext);
-    this.kVN.start();
-    this.kVO = new MMHandler(this.kVN.getLooper());
+    this.nty.start();
+    this.nBk = new MMHandler(this.nty.getLooper());
   }
   
-  private void aa(Runnable paramRunnable)
+  private void ag(Runnable paramRunnable)
   {
-    if (Thread.currentThread().getId() == this.kVN.getId())
+    if (Thread.currentThread().getId() == this.nty.getId())
     {
       paramRunnable.run();
       return;
     }
-    this.kVO.post(paramRunnable);
+    this.nBk.post(paramRunnable);
   }
   
-  public EGLContext getEGLContext()
+  public final void H(final kotlin.g.a.a<ah> parama)
   {
-    if (this.oom == null) {
-      return null;
-    }
-    return this.oom.lau;
-  }
-  
-  public int getPreviewTextureId()
-  {
-    if ((this.krm == null) || (this.krm.aZm() == null)) {
-      return -1;
-    }
-    return this.krm.aZm().kVj;
-  }
-  
-  public final void i(final kotlin.g.a.a<x> parama)
-  {
-    if (Thread.currentThread().getId() == this.kVN.getId())
+    if (Thread.currentThread().getId() == this.nty.getId())
     {
       parama.invoke();
       return;
     }
-    this.kVO.post(new Runnable()
+    this.nBk.post(new Runnable()
     {
       public final void run()
       {
@@ -83,10 +67,26 @@ public abstract class b
     });
   }
   
+  public EGLContext getEGLContext()
+  {
+    if (this.rrV == null) {
+      return null;
+    }
+    return this.rrV.eXL;
+  }
+  
+  public int getPreviewTextureId()
+  {
+    if ((this.mVj == null) || (this.mVj.bul() == null)) {
+      return -1;
+    }
+    return this.mVj.bul().nAF;
+  }
+  
   public void onSurfaceTextureAvailable(final SurfaceTexture paramSurfaceTexture, final int paramInt1, final int paramInt2)
   {
     Log.i("MicroMsg.CameraPreviewGLTextureView", "onSurfaceTextureAvailable, surfaceTexture:%s, width:%d, height:%d", new Object[] { paramSurfaceTexture, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    aa(new Runnable()
+    ag(new Runnable()
     {
       public final void run()
       {
@@ -95,14 +95,14 @@ public abstract class b
         b.b(b.this, paramInt2);
         b.a(b.this, paramSurfaceTexture);
         b localb = b.this;
-        c.a locala = com.tencent.mm.media.k.c.lar;
+        c.a locala = com.tencent.mm.media.util.c.nFs;
         b.a(localb, c.a.a(new Surface(paramSurfaceTexture), null, 0, 0, EGL14.EGL_NO_CONTEXT));
         if (b.a(b.this) != null)
         {
           b.a(b.this).onSurfaceCreated(null, null);
-          b.a(b.this).du(paramInt1, paramInt2);
-          b.a(b.this).dv(paramInt1, paramInt2);
-          b.a(b.this).fF(true);
+          b.a(b.this).ek(paramInt1, paramInt2);
+          b.a(b.this).el(paramInt1, paramInt2);
+          b.a(b.this).gp(true);
         }
         b.a(b.this, b.b(b.this).getSurfaceTexture(), paramInt1, paramInt2);
         b.c(b.this).getAndSet(true);
@@ -119,7 +119,7 @@ public abstract class b
   public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
     Log.i("MicroMsg.CameraPreviewGLTextureView", "onSurfaceTextureDestroyed");
-    aa(new Runnable()
+    ag(new Runnable()
     {
       public final void run()
       {
@@ -140,8 +140,8 @@ public abstract class b
           {
             if (b.g(b.this) != null)
             {
-              EGL14.eglDestroyContext(b.g(b.this).las, b.g(b.this).lau);
-              EGL14.eglDestroySurface(b.g(b.this).las, b.g(b.this).eglSurface);
+              EGL14.eglDestroyContext(b.g(b.this).nFB, b.g(b.this).eXL);
+              EGL14.eglDestroySurface(b.g(b.this).nFB, b.g(b.this).eglSurface);
               b.h(b.this).release();
             }
             AppMethodBeat.o(45198);
@@ -151,7 +151,7 @@ public abstract class b
           }
           return;
         }
-        catch (Throwable localThrowable)
+        finally
         {
           Log.printErrStackTrace("MicroMsg.CameraPreviewGLTextureView", localThrowable, "hy: error in surface destroy!!", new Object[0]);
           AppMethodBeat.o(45198);
@@ -164,7 +164,7 @@ public abstract class b
   public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, final int paramInt1, final int paramInt2)
   {
     Log.i("MicroMsg.CameraPreviewGLTextureView", "onSurfaceTextureSizeChanged, surfaceTexture:%s, width:%d, height:%d", new Object[] { paramSurfaceTexture, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    aa(new Runnable()
+    ag(new Runnable()
     {
       public final void run()
       {
@@ -172,7 +172,7 @@ public abstract class b
         b.b(b.this, b.b(b.this).getSurfaceTexture(), paramInt1, paramInt2);
         b.a(b.this, paramInt1);
         b.b(b.this, paramInt2);
-        b.a(b.this).du(b.e(b.this), b.f(b.this));
+        b.a(b.this).ek(b.e(b.this), b.f(b.this));
         AppMethodBeat.o(45195);
       }
     });
@@ -180,14 +180,14 @@ public abstract class b
   
   public void requestRender()
   {
-    aa(new Runnable()
+    ag(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(45197);
         try
         {
-          if (b.a(b.this).kYl)
+          if (b.a(b.this).nDv)
           {
             ((SurfaceTexture)Objects.requireNonNull(b.b(b.this).getSurfaceTexture())).updateTexImage();
             b.a(b.this).onDrawFrame(null);
@@ -197,18 +197,18 @@ public abstract class b
             if (b.g(b.this) == null) {
               break label194;
             }
-            EGLExt.eglPresentationTimeANDROID(b.g(b.this).las, b.g(b.this).eglSurface, System.nanoTime());
-            EGL14.eglSwapBuffers(b.g(b.this).las, b.g(b.this).eglSurface);
+            EGLExt.eglPresentationTimeANDROID(b.g(b.this).nFB, b.g(b.this).eglSurface, System.nanoTime());
+            EGL14.eglSwapBuffers(b.g(b.this).nFB, b.g(b.this).eglSurface);
             AppMethodBeat.o(45197);
             return;
             Log.w("MicroMsg.CameraPreviewGLTextureView", "hy: renderer already released!");
           }
           Log.w("MicroMsg.CameraPreviewGLTextureView", "hy: can not render because already destroyed");
         }
-        catch (Throwable localThrowable)
+        finally
         {
           Log.printErrStackTrace("MicroMsg.CameraPreviewGLTextureView", localThrowable, "hy: encounter exception! gl get error: %d", new Object[] { Integer.valueOf(EGL14.eglGetError()) });
-          ((com.tencent.mm.plugin.appbrand.w.a)com.tencent.luggage.a.e.L(com.tencent.mm.plugin.appbrand.w.a.class)).idkeyStat(808L, 2L, 1L, true);
+          ((com.tencent.mm.plugin.appbrand.x.a)com.tencent.luggage.a.e.U(com.tencent.mm.plugin.appbrand.x.a.class)).idkeyStat(808L, 2L, 1L, true);
           AppMethodBeat.o(45197);
           return;
         }
@@ -220,28 +220,28 @@ public abstract class b
   
   public void setOnSurfaceTextureAvailableDelegate(e.a parama)
   {
-    this.ooo = parama;
-    if (this.oon.get()) {
-      this.krm.getSurfaceTexture();
+    this.rrX = parama;
+    if (this.rrW.get()) {
+      this.mVj.getSurfaceTexture();
     }
   }
   
-  public void setOnTextureDrawFinishDelegate(kotlin.g.a.b<com.tencent.mm.media.g.d, x> paramb)
+  public void setOnTextureDrawFinishDelegate(kotlin.g.a.b<com.tencent.mm.media.g.d, ah> paramb)
   {
-    this.krm.lfQ = paramb;
+    this.mVj.nKB = paramb;
   }
   
   public void setPreviewRenderer(final com.tencent.mm.media.j.a parama)
   {
     Log.i("MicroMsg.CameraPreviewGLTextureView", "setRenderer: %d", new Object[] { Integer.valueOf(parama.hashCode()) });
-    if (this.krm != null)
+    if (this.mVj != null)
     {
-      this.krm.release(true);
-      this.krm = new com.tencent.mm.media.widget.camerarecordview.preview.a.c(this);
+      this.mVj.t(true, false);
+      this.mVj = new com.tencent.mm.media.widget.camerarecordview.preview.a.c(this);
     }
-    this.krm = new com.tencent.mm.media.widget.camerarecordview.preview.a.c(this);
-    this.krm.b(parama);
-    aa(new Runnable()
+    this.mVj = new com.tencent.mm.media.widget.camerarecordview.preview.a.c(this);
+    this.mVj.b(parama);
+    ag(new Runnable()
     {
       public final void run()
       {

@@ -9,22 +9,22 @@ import java.util.HashMap;
 public abstract class b<T extends a>
   extends SQLiteClosable
 {
-  SparseArray<Object> VJI = new SparseArray();
-  int VJJ;
-  HashMap<Object, T> VJK = new HashMap();
-  ArrayList<Object> VJL;
-  T VJM;
+  SparseArray<Object> adnM = new SparseArray();
+  int adnN;
+  HashMap<Object, T> adnO = new HashMap();
+  ArrayList<Object> adnP;
+  T adnQ;
   int mStartPos = 0;
   
-  final void E(Object[] paramArrayOfObject)
+  final void I(Object[] paramArrayOfObject)
   {
     SparseArray localSparseArray = new SparseArray();
     int i = 0;
     int j = 0;
-    if (i < this.VJI.size())
+    if (i < this.adnM.size())
     {
-      int i2 = this.VJI.keyAt(i);
-      Object localObject = this.VJI.valueAt(i);
+      int i2 = this.adnM.keyAt(i);
+      Object localObject = this.adnM.valueAt(i);
       int i1 = 1;
       int i3 = paramArrayOfObject.length;
       int n = 0;
@@ -57,58 +57,58 @@ public abstract class b<T extends a>
         Log.i("MicroMsg.CursorDataWindow", "newcursor delete index : " + i + " obj : " + localObject);
       }
     }
-    if (this.VJI.size() != localSparseArray.size()) {
-      Log.i("MicroMsg.CursorDataWindow", "newcursor oldposition size :" + this.VJI.size() + " newposistion Size : " + localSparseArray.size());
+    if (this.adnM.size() != localSparseArray.size()) {
+      Log.i("MicroMsg.CursorDataWindow", "newcursor oldposition size :" + this.adnM.size() + " newposistion Size : " + localSparseArray.size());
     }
-    this.VJI = localSparseArray;
+    this.adnM = localSparseArray;
   }
   
-  public final boolean asY(int paramInt)
+  public final boolean azo(int paramInt)
   {
-    return this.VJI.indexOfKey(paramInt) >= 0;
+    return this.adnM.indexOfKey(paramInt) >= 0;
   }
   
   final void b(Object paramObject, T paramT)
   {
-    this.VJK.put(paramObject, paramT);
+    this.adnO.put(paramObject, paramT);
   }
   
-  public abstract ArrayList<T> bD(ArrayList<Object> paramArrayList);
+  public abstract ArrayList<T> ce(ArrayList<Object> paramArrayList);
   
   public final void clearData()
   {
     Log.i("MicroMsg.CursorDataWindow", "clearData");
-    this.VJI.clear();
-    this.VJK.clear();
+    this.adnM.clear();
+    this.adnO.clear();
   }
   
-  public final boolean eh(Object paramObject)
+  public final boolean gF(Object paramObject)
   {
     if ((paramObject instanceof Object[]))
     {
       Object[] arrayOfObject = (Object[])paramObject;
       if (arrayOfObject.length == 1) {
-        return (this.VJK != null) && (this.VJK.containsKey(arrayOfObject[0]));
+        return (this.adnO != null) && (this.adnO.containsKey(arrayOfObject[0]));
       }
     }
-    return (this.VJK != null) && (this.VJK.containsKey(paramObject));
+    return (this.adnO != null) && (this.adnO.containsKey(paramObject));
   }
   
-  public abstract T hCa();
+  public abstract T jeg();
   
-  public final void mf(int paramInt1, int paramInt2)
+  public final void nV(int paramInt1, int paramInt2)
   {
     if (paramInt2 != 0)
     {
       Log.e("MicroMsg.CursorDataWindow", "newcursor rowEnd with error %d rowNum : %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
-      this.VJI.remove(paramInt1);
+      this.adnM.remove(paramInt1);
     }
-    while (this.VJM == null) {
+    while (this.adnQ == null) {
       return;
     }
-    Object localObject = this.VJM.getKey();
-    b(localObject, this.VJM);
-    this.VJI.put(paramInt1, localObject);
+    Object localObject = this.adnQ.getKey();
+    b(localObject, this.adnQ);
+    this.adnM.put(paramInt1, localObject);
   }
   
   protected void onAllReferencesReleased()
@@ -118,7 +118,7 @@ public abstract class b<T extends a>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.storagebase.a.b
  * JD-Core Version:    0.7.0.1
  */

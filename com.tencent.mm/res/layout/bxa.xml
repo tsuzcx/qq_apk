@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="vertical" android:id="@id/i0e" android:background="@drawable/qa" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/ct" android:paddingEnd="@dimen/ct">
-        <View android:id="@id/i0r" android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="0.5dip" />
-        <RelativeLayout android:paddingLeft="@dimen/bt" android:paddingRight="@dimen/bt" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/i0b" android:padding="2.0dip" android:layout_width="16.0dip" android:layout_height="32.0dip" android:src="@raw/icons_outlined_arrow" android:layout_centerVertical="true" android:layout_marginStart="8.0dip" android:layout_marginEnd="-2.0px" android:layout_alignParentEnd="true" app:iconColor="@color/FG_2" />
-            <TextView android:textSize="@dimen/t" android:textColor="#e6000000" android:id="@id/i0f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_marginBottom="16.0dip" android:minHeight="24.0dip" android:layout_centerVertical="true" android:paddingStart="4.0dip" android:paddingEnd="4.0dip" android:layout_toStartOf="@id/i0b" />
-            <com.tencent.mm.ui.widget.StoryAvatarDotsView android:id="@id/i0c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginEnd="8.0dip" android:layout_toStartOf="@id/i0f" />
-            <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_toStartOf="@id/i0c">
-                <TextView android:textSize="@dimen/t" android:textColor="@color/a2x" android:id="@id/i0q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_marginBottom="16.0dip" android:minHeight="24.0dip" />
-                <TextView android:id="@id/i0g" android:background="@drawable/avz" android:visibility="gone" android:layout_marginStart="8.0dip" android:layout_marginEnd="8.0dip" style="@style/zr" />
-            </LinearLayout>
-        </RelativeLayout>
-        <View android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    </LinearLayout>
-</merge>
+<LinearLayout android:orientation="horizontal" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@drawable/p5" android:paddingLeft="@dimen/j6" android:paddingTop="@dimen/m2" android:paddingRight="@dimen/j6" android:paddingBottom="@dimen/m2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/m1">
+        <ImageView android:id="@id/a1r" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/lx" android:textColor="@color/al6" android:gravity="center" android:id="@id/isa" android:background="@drawable/j8" android:paddingLeft="@dimen/iq" android:paddingTop="@dimen/ig" android:paddingRight="@dimen/iq" android:paddingBottom="@dimen/ig" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="94.0dip" android:minHeight="32.0dip" android:text="@string/hd7" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:ellipsize="end" android:id="@id/kob" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:layout_marginRight="@dimen/cp" android:singleLine="true" android:layout_toLeftOf="@id/isa" android:layout_toRightOf="@id/a1r" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</LinearLayout>

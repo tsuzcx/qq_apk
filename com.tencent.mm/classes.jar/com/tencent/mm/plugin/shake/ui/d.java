@@ -12,19 +12,19 @@ import com.tencent.mm.R.i;
 import com.tencent.mm.R.j;
 import com.tencent.mm.R.k;
 import com.tencent.mm.R.l;
-import com.tencent.mm.plugin.shake.b.f;
-import com.tencent.mm.plugin.shake.b.g;
-import com.tencent.mm.plugin.shake.b.m;
-import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.plugin.shake.model.f;
+import com.tencent.mm.plugin.shake.model.g;
+import com.tencent.mm.plugin.shake.model.m;
+import com.tencent.mm.pluginsdk.ui.span.p;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMImageView;
-import com.tencent.mm.ui.v;
+import com.tencent.mm.ui.x;
 import java.util.GregorianCalendar;
 
 final class d
-  extends v<f>
+  extends x<f>
 {
-  int Jpo;
+  int PCl;
   private Context mContext;
   private LayoutInflater mInflater;
   
@@ -32,34 +32,34 @@ final class d
   {
     super(paramContext, new f());
     AppMethodBeat.i(28416);
-    this.Jpo = 20;
+    this.PCl = 20;
     this.mContext = paramContext;
     this.mInflater = LayoutInflater.from(paramContext);
     AppMethodBeat.o(28416);
   }
   
-  public final void aeA(int paramInt)
-  {
-    AppMethodBeat.i(28417);
-    eKd();
-    this.Jpo = paramInt;
-    atr();
-    AppMethodBeat.o(28417);
-  }
-  
-  public final void atr()
+  public final void aNy()
   {
     AppMethodBeat.i(28419);
-    v(m.fHp().aev(this.Jpo));
+    w(m.gXe().ajc(this.PCl));
     super.notifyDataSetChanged();
     AppMethodBeat.o(28419);
   }
   
-  public final void ats()
+  public final void aNz()
   {
     AppMethodBeat.i(28418);
-    atr();
+    aNy();
     AppMethodBeat.o(28418);
+  }
+  
+  public final void ajh(int paramInt)
+  {
+    AppMethodBeat.i(28417);
+    fSd();
+    this.PCl = paramInt;
+    aNy();
+    AppMethodBeat.o(28417);
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -72,24 +72,24 @@ final class d
     long l1;
     if (paramView == null)
     {
-      paramViewGroup = this.mInflater.inflate(R.i.ekV, paramViewGroup, false);
+      paramViewGroup = this.mInflater.inflate(R.i.god, paramViewGroup, false);
       localObject1 = new a();
-      ((a)localObject1).Jpp = ((MMImageView)paramViewGroup.findViewById(R.h.dUi));
-      ((a)localObject1).pPT = ((TextView)paramViewGroup.findViewById(R.h.dUk));
-      ((a)localObject1).mMA = ((TextView)paramViewGroup.findViewById(R.h.dUh));
-      ((a)localObject1).Eui = ((TextView)paramViewGroup.findViewById(R.h.dUj));
+      ((a)localObject1).PCm = ((MMImageView)paramViewGroup.findViewById(R.h.fWq));
+      ((a)localObject1).sUt = ((TextView)paramViewGroup.findViewById(R.h.fWs));
+      ((a)localObject1).pJi = ((TextView)paramViewGroup.findViewById(R.h.fWp));
+      ((a)localObject1).KmP = ((TextView)paramViewGroup.findViewById(R.h.fWr));
       paramViewGroup.setTag(localObject1);
       localObject2 = (f)getItem(paramInt);
-      e.a(((a)localObject1).Jpp, ((f)localObject2).field_thumburl, R.k.app_attach_file_icon_webpage, false);
+      e.a(((a)localObject1).PCm, ((f)localObject2).field_thumburl, R.k.app_attach_file_icon_webpage, false);
       if (!Util.isNullOrNil(((f)localObject2).field_title)) {
         break label240;
       }
-      ((a)localObject1).pPT.setVisibility(8);
+      ((a)localObject1).sUt.setVisibility(8);
       if (!Util.isNullOrNil(((f)localObject2).field_desc)) {
         break label280;
       }
-      ((a)localObject1).mMA.setVisibility(8);
-      localObject1 = ((a)localObject1).Eui;
+      ((a)localObject1).pJi.setVisibility(8);
+      localObject1 = ((a)localObject1).KmP;
       paramView = this.mContext;
       l1 = ((f)localObject2).field_createtime * 1000L;
       localObject2 = new GregorianCalendar();
@@ -107,12 +107,12 @@ final class d
       paramViewGroup = paramView;
       break;
       label240:
-      ((a)localObject1).pPT.setText(l.b(this.mContext, ((f)localObject2).field_title, ((a)localObject1).pPT.getTextSize()));
-      ((a)localObject1).pPT.setVisibility(0);
+      ((a)localObject1).sUt.setText(p.b(this.mContext, ((f)localObject2).field_title, ((a)localObject1).sUt.getTextSize()));
+      ((a)localObject1).sUt.setVisibility(0);
       break label147;
       label280:
-      ((a)localObject1).mMA.setText(l.b(this.mContext, ((f)localObject2).field_desc, ((a)localObject1).mMA.getTextSize()));
-      ((a)localObject1).mMA.setVisibility(0);
+      ((a)localObject1).pJi.setText(p.b(this.mContext, ((f)localObject2).field_desc, ((a)localObject1).pJi.getTextSize()));
+      ((a)localObject1).pJi.setVisibility(0);
       break label168;
       label320:
       long l2 = ((GregorianCalendar)localObject2).getTimeInMillis();
@@ -162,10 +162,10 @@ final class d
   
   final class a
   {
-    TextView Eui;
-    MMImageView Jpp;
-    TextView mMA;
-    TextView pPT;
+    TextView KmP;
+    MMImageView PCm;
+    TextView pJi;
+    TextView sUt;
     
     a() {}
   }

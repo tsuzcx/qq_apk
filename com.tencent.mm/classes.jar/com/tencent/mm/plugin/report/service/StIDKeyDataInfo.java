@@ -9,9 +9,9 @@ class StIDKeyDataInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<StIDKeyDataInfo> CREATOR;
-  public boolean IyX;
+  public long ID;
+  public boolean OzE;
   public long key;
-  public long rJY;
   public long value;
   
   static
@@ -26,13 +26,13 @@ class StIDKeyDataInfo
   protected StIDKeyDataInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(143929);
-    this.rJY = paramParcel.readLong();
+    this.ID = paramParcel.readLong();
     this.key = paramParcel.readLong();
     this.value = paramParcel.readLong();
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.IyX = bool;
+      this.OzE = bool;
       AppMethodBeat.o(143929);
       return;
       bool = false;
@@ -47,10 +47,10 @@ class StIDKeyDataInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(143928);
-    paramParcel.writeLong(this.rJY);
+    paramParcel.writeLong(this.ID);
     paramParcel.writeLong(this.key);
     paramParcel.writeLong(this.value);
-    if (this.IyX) {}
+    if (this.OzE) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
@@ -61,7 +61,7 @@ class StIDKeyDataInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.report.service.StIDKeyDataInfo
  * JD-Core Version:    0.7.0.1
  */

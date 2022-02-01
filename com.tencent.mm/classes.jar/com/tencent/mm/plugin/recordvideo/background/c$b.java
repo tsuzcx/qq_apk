@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.recordvideo.background;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData$STATUS;", "", "()V", "FAIL", "", "getFAIL", "()I", "INIT", "getINIT", "OK", "getOK", "plugin-recordvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData$STATUS_;", "", "()V", "FAIL", "", "getFAIL", "()I", "INIT", "getINIT", "OK", "getOK", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c$b
 {
-  private static final int HGs = 1;
-  private static final int HGt = 3;
-  public static final b HGu;
-  private static final int OK = 2;
+  public static final b NDQ;
+  private static final int NDR;
+  private static final int NDS;
+  private static final int OK;
   
   static
   {
-    AppMethodBeat.i(75175);
-    HGu = new b();
-    HGs = 1;
+    AppMethodBeat.i(279444);
+    NDQ = new b();
+    NDR = 1;
     OK = 2;
-    HGt = 3;
-    AppMethodBeat.o(75175);
+    NDS = 3;
+    AppMethodBeat.o(279444);
   }
   
-  public static int cgp()
+  public static int cHj()
   {
     return OK;
   }
   
-  public static int fuS()
+  public static int gGI()
   {
-    return HGs;
+    return NDR;
   }
   
-  public static int fuT()
+  public static int gGJ()
   {
-    return HGt;
+    return NDS;
   }
 }
 

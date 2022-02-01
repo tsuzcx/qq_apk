@@ -1,22 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:background="@color/afz" android:paddingLeft="@dimen/ir" android:paddingRight="@dimen/ir" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
-        <RelativeLayout android:background="@drawable/b9w" android:paddingTop="20.0dip" android:paddingBottom="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <RelativeLayout android:id="@id/d9r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/k">
-                <ImageView android:layout_gravity="center" android:id="@id/wn" android:layout_width="50.0dip" android:layout_height="50.0dip" android:src="@drawable/bd0" android:scaleType="fitXY" android:layout_centerInParent="true" android:contentDescription="@string/a4u" />
-            </RelativeLayout>
-            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/d9r" android:layout_alignTop="@id/d9r" android:layout_alignBottom="@id/d9r">
-                <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:ellipsize="end" android:id="@id/ft9" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="{nick_name}" android:singleLine="true" android:layout_weight="1.0" />
-                    <TextView android:textSize="@dimen/ka" android:textColor="@color/Link" android:id="@id/bvl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k5" android:text="@string/c05" android:singleLine="true" />
-                </LinearLayout>
-                <TextView android:textSize="@dimen/ka" android:textColor="@color/Link" android:ellipsize="end" android:id="@id/bvk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/c07" android:singleLine="true" />
-                <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:ellipsize="end" android:id="@id/bow" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-            </LinearLayout>
-        </RelativeLayout>
-        <LinearLayout android:orientation="horizontal" android:paddingTop="20.0dip" android:paddingBottom="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/is" android:textColor="@color/a2t" android:ellipsize="end" android:id="@id/bov" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="5" android:singleLine="false" />
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+    <ListView android:id="@id/fpo" android:background="@color/o_" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ahb" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="1.0px" />
+</FrameLayout>

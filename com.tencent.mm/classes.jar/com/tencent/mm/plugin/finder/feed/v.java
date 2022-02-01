@@ -1,20 +1,9 @@
 package com.tencent.mm.plugin.finder.feed;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/FinderLbsStreamFeedUIContract;", "", "()V", "LbsStreamFeedPresenter", "LbsStreamFeedViewCallback", "plugin-finder_release"})
-public final class v
-{
-  public static final v xyT;
-  
-  static
-  {
-    AppMethodBeat.i(283697);
-    xyT = new v();
-    AppMethodBeat.o(283697);
-  }
-}
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/FinderHotWordFeedUIContract;", "", "()V", "HotWordFeedPresenter", "HotWordFeedViewCallback", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class v {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

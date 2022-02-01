@@ -1,68 +1,188 @@
 package com.tencent.mm.plugin.game.chatroom.f;
 
-import android.graphics.Bitmap;
+import android.content.ContentValues;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.c.e;
-import com.tencent.mm.vfs.u;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.plugin.game.chatroom.b.c;
+import com.tencent.mm.plugin.game.chatroom.e;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import com.tencent.mm.storagebase.h;
+import java.io.Closeable;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/game/chatroom/loader/ChatRoomAvatarDiskCache;", "Lcom/tencent/mm/loader/cache/disk/BitmapDiskCache;", "Lcom/tencent/mm/plugin/game/chatroom/loader/ChatRoomAvatarData;", "()V", "buildFilePath", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "Landroid/graphics/Bitmap;", "clear", "", "get", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "onSaveCompleted", "", "diskResource", "Lcom/tencent/mm/loader/model/Resource;", "onSaveStarted", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "resource", "game-chatroom_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/game/chatroom/db/GameChatRoomContactStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/game/chatroom/db/GameChatRoomContact;", "storage", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getStorage", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "getContact", "Lcom/tencent/mm/plugin/game/chatroom/callback/IGameChatRoomContact;", "userName", "", "", "userNameList", "", "insertContact", "", "contact", "replaceContact", "", "updateContact", "Companion", "game-chatroom_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends com.tencent.mm.loader.b.a.a<a>
+  extends MAutoStorage<a>
 {
-  public final boolean a(com.tencent.mm.loader.h.a.a<a> parama, e parame, com.tencent.mm.loader.f<?, Bitmap> paramf)
+  public static final b.a IkA;
+  public static final String[] SQL_CREATE;
+  private final ISQLiteDatabase psb;
+  
+  static
   {
-    AppMethodBeat.i(212632);
-    p.k(parama, "url");
-    p.k(parame, "opts");
-    p.k(paramf, "reaper");
-    AppMethodBeat.o(212632);
-    return true;
+    AppMethodBeat.i(275702);
+    IkA = new b.a((byte)0);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(a.nVV, "GameChatRoomContact") };
+    AppMethodBeat.o(275702);
   }
   
-  public final boolean a(com.tencent.mm.loader.h.a.a<a> parama, com.tencent.mm.loader.h.f<?> paramf, e parame, com.tencent.mm.loader.f<?, Bitmap> paramf1)
+  public b(ISQLiteDatabase paramISQLiteDatabase)
   {
-    AppMethodBeat.i(212630);
-    p.k(parama, "url");
-    p.k(paramf, "httpResponse");
-    p.k(parame, "opts");
-    p.k(paramf1, "reaper");
-    AppMethodBeat.o(212630);
-    return true;
+    super(paramISQLiteDatabase, a.nVV, "GameChatRoomContact", a.INDEX_CREATE);
+    AppMethodBeat.i(275683);
+    this.psb = paramISQLiteDatabase;
+    AppMethodBeat.o(275683);
   }
   
-  public final com.tencent.mm.loader.h.b.a b(com.tencent.mm.loader.h.a.a<a> parama, e parame, com.tencent.mm.loader.f<?, Bitmap> paramf)
+  private final int b(a parama)
   {
-    AppMethodBeat.i(212636);
-    p.k(parama, "url");
-    p.k(parame, "opts");
-    p.k(paramf, "reaper");
-    parama = ((a)parama.aSr()).getPath();
-    if (u.agG(parama))
-    {
-      parama = com.tencent.mm.loader.h.b.a.Ov(parama);
-      AppMethodBeat.o(212636);
-      return parama;
+    AppMethodBeat.i(275691);
+    ContentValues localContentValues = parama.convertTo();
+    int i = this.psb.update("GameChatRoomContact", localContentValues, "userName=?", new String[] { parama.field_userName });
+    Log.i("GameChatRoom.GameChatRoomContactStorage", "updateContact[" + i + "] " + parama.print());
+    if (i > 0) {
+      doNotify("single", 3, parama.field_userName);
     }
-    AppMethodBeat.o(212636);
-    return null;
+    AppMethodBeat.o(275691);
+    return i;
   }
   
-  public final String c(com.tencent.mm.loader.h.a.a<a> parama, e parame, com.tencent.mm.loader.f<?, Bitmap> paramf)
+  private final int c(a parama)
   {
-    AppMethodBeat.i(212635);
-    p.k(parama, "url");
-    p.k(parame, "opts");
-    p.k(paramf, "reaper");
-    parama = ((a)parama.aSr()).getPath();
-    AppMethodBeat.o(212635);
-    return parama;
+    AppMethodBeat.i(275698);
+    ContentValues localContentValues = parama.convertTo();
+    int i = (int)this.psb.insert("GameChatRoomContact", "userName", localContentValues);
+    Log.i("GameChatRoom.GameChatRoomContactStorage", "insertContact[" + i + "] " + parama.print());
+    if (i > 0) {
+      doNotify("single", 2, parama.field_userName);
+    }
+    AppMethodBeat.o(275698);
+    return i;
+  }
+  
+  public final boolean a(a parama)
+  {
+    AppMethodBeat.i(275728);
+    s.u(parama, "contact");
+    if (parama.field_userName == null)
+    {
+      AppMethodBeat.o(275728);
+      return false;
+    }
+    parama.field_updateTime = cn.bDw();
+    String str = parama.field_userName;
+    s.s(str, "contact.userName");
+    if (aFv(str) == null) {}
+    for (int i = c(parama); i > 0; i = b(parama))
+    {
+      AppMethodBeat.o(275728);
+      return true;
+    }
+    AppMethodBeat.o(275728);
+    return false;
+  }
+  
+  public final c aFv(String paramString)
+  {
+    int i = 1;
+    AppMethodBeat.i(275710);
+    s.u(paramString, "userName");
+    paramString = s.X("SELECT * FROM GameChatRoomContact WHERE userName = ", h.EQ(paramString));
+    localCloseable = (Closeable)this.psb.rawQuery(paramString, null, 2);
+    for (;;)
+    {
+      try
+      {
+        localObject1 = (Cursor)localCloseable;
+        if ((localObject1 == null) || (((Cursor)localObject1).moveToFirst() != true)) {
+          continue;
+        }
+        if (i == 0) {
+          continue;
+        }
+        paramString = new a();
+        paramString.convertFrom((Cursor)localObject1);
+      }
+      finally
+      {
+        try
+        {
+          Object localObject1;
+          AppMethodBeat.o(275710);
+          throw paramString;
+        }
+        finally
+        {
+          kotlin.f.b.a(localCloseable, paramString);
+          AppMethodBeat.o(275710);
+        }
+        paramString = null;
+        continue;
+      }
+      localObject1 = ah.aiuX;
+      kotlin.f.b.a(localCloseable, null);
+      paramString = (c)paramString;
+      AppMethodBeat.o(275710);
+      return paramString;
+      i = 0;
+    }
+  }
+  
+  public final Map<String, c> ij(List<String> paramList)
+  {
+    AppMethodBeat.i(275718);
+    s.u(paramList, "userNameList");
+    paramList = s.X("SELECT * FROM GameChatRoomContact WHERE userName IN ", e.ig(paramList));
+    HashMap localHashMap = new HashMap();
+    paramList = (Closeable)this.psb.rawQuery(paramList, null, 2);
+    try
+    {
+      Cursor localCursor = (Cursor)paramList;
+      if (localCursor.moveToFirst()) {
+        while (!localCursor.isAfterLast())
+        {
+          a locala = new a();
+          locala.convertFrom(localCursor);
+          Map localMap = (Map)localHashMap;
+          String str = locala.field_userName;
+          s.s(str, "field_userName");
+          localMap.put(str, locala);
+          localCursor.moveToNext();
+        }
+      }
+      ah localah;
+      return paramList;
+    }
+    finally
+    {
+      try
+      {
+        AppMethodBeat.o(275718);
+        throw localThrowable;
+      }
+      finally
+      {
+        kotlin.f.b.a(paramList, localThrowable);
+        AppMethodBeat.o(275718);
+      }
+      localah = ah.aiuX;
+      kotlin.f.b.a(paramList, null);
+      paramList = (Map)localThrowable;
+      AppMethodBeat.o(275718);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.chatroom.f.b
  * JD-Core Version:    0.7.0.1
  */

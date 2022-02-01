@@ -15,9 +15,9 @@ final class BindLinkedInUI$9
   {
     AppMethodBeat.i(109824);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/account/bind/ui/BindLinkedInUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    BindLinkedInUI.a(this.mRO);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/account/bind/ui/BindLinkedInUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    BindLinkedInUI.a(this.pOv);
     a.a(this, "com/tencent/mm/plugin/account/bind/ui/BindLinkedInUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(109824);
   }

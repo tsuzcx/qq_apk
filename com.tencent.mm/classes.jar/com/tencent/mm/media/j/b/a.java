@@ -7,7 +7,7 @@ import android.opengl.GLES20;
 import android.opengl.GLES30;
 import android.opengl.Matrix;
 import com.tencent.mm.media.g.d;
-import com.tencent.mm.media.k.c.a;
+import com.tencent.mm.media.util.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.nio.Buffer;
@@ -17,89 +17,98 @@ import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.util.Arrays;
 import java.util.concurrent.LinkedBlockingQueue;
-import kotlin.g.a.b;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.q;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "renderOutputType", "scaleType", "(IIIIII)V", "cubeBuffer", "Ljava/nio/FloatBuffer;", "getCubeBuffer", "()Ljava/nio/FloatBuffer;", "setCubeBuffer", "(Ljava/nio/FloatBuffer;)V", "getDrawHeight", "()I", "setDrawHeight", "(I)V", "getDrawWidth", "setDrawWidth", "enableSnapshot", "", "flip", "glFrameBufferObject", "Lcom/tencent/mm/media/globject/GLFrameBufferObject;", "getGlFrameBufferObject", "()Lcom/tencent/mm/media/globject/GLFrameBufferObject;", "setGlFrameBufferObject", "(Lcom/tencent/mm/media/globject/GLFrameBufferObject;)V", "glTextureObject", "Lcom/tencent/mm/media/globject/GLTextureObject;", "getGlTextureObject", "()Lcom/tencent/mm/media/globject/GLTextureObject;", "setGlTextureObject", "(Lcom/tencent/mm/media/globject/GLTextureObject;)V", "mirror", "getMirror", "()Z", "setMirror", "(Z)V", "needProfile", "getNeedProfile", "setNeedProfile", "onFBOAvailableListener", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "texture", "", "getOnFBOAvailableListener", "()Lkotlin/jvm/functions/Function1;", "setOnFBOAvailableListener", "(Lkotlin/jvm/functions/Function1;)V", "onRGBByteBufferAvailableListener", "Ljava/nio/ByteBuffer;", "buffer", "getOnRGBByteBufferAvailableListener", "setOnRGBByteBufferAvailableListener", "onRGBByteBufferAvailableWithSizeListener", "Lkotlin/Function3;", "width", "height", "getOnRGBByteBufferAvailableWithSizeListener", "()Lkotlin/jvm/functions/Function3;", "setOnRGBByteBufferAvailableWithSizeListener", "(Lkotlin/jvm/functions/Function3;)V", "onRGBDataAvailableListener", "Ljava/nio/IntBuffer;", "getOnRGBDataAvailableListener", "setOnRGBDataAvailableListener", "renderCost", "", "getRenderCost", "()J", "setRenderCost", "(J)V", "renderOutputBuffer", "getRenderOutputBuffer", "()Ljava/nio/ByteBuffer;", "setRenderOutputBuffer", "(Ljava/nio/ByteBuffer;)V", "getRenderOutputType", "setRenderOutputType", "rotateDegree", "getRotateDegree", "setRotateDegree", "getScaleType", "setScaleType", "snapShotBuffer", "snapShotHeight", "getSnapShotHeight", "setSnapShotHeight", "snapShotWidth", "getSnapShotWidth", "setSnapShotWidth", "snapshotBufferQueue", "Ljava/util/concurrent/LinkedBlockingQueue;", "snapshotCost", "getSnapshotCost", "setSnapshotCost", "snapshotDirectBuffer", "getSnapshotDirectBuffer", "setSnapshotDirectBuffer", "takeSnapshot", "textureCoordBuff", "getTextureCoordBuff", "setTextureCoordBuff", "textureCropRect", "Landroid/graphics/Rect;", "getTextureHeight", "setTextureHeight", "getTextureWidth", "setTextureWidth", "transformMatrix", "", "getTransformMatrix", "()[F", "setTransformMatrix", "([F)V", "validLeftTopPoint", "Landroid/graphics/Point;", "getValidLeftTopPoint", "()Landroid/graphics/Point;", "setValidLeftTopPoint", "(Landroid/graphics/Point;)V", "validRightBottomPoint", "getValidRightBottomPoint", "setValidRightBottomPoint", "afterRender", "beforeRender", "checkInitRenderOutputBuffer", "checkInitSnapShotBuffer", "checkInitSnapShotMatrix", "fitCenter", "aspectPlane", "", "aspectTexture", "flipUpsideDown", "frameMirror", "getOutputBuffer", "getOutputByteBuffer", "getOutputTexture", "getOutputTextureObj", "getRotate", "getSnapshotOutputByteBuffer", "getTextureCropRect", "getValidTextureArea", "Landroid/graphics/RectF;", "initDrawCoordBuffer", "initMatrix", "initWithoutMatrix", "array", "isMirror", "release", "render", "renderImpl", "setFrame", "frame", "", "setInputTexture", "setRotate", "degree", "setSnapshotSize", "setTextureCropRect", "rect", "takeSnapShot", "updateDrawViewSize", "updateRenderTypeStatus", "updateTextureSize", "updateTextureValidPoint", "leftTop", "rightBottom", "Companion", "plugin-mediaeditor_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "renderOutputType", "scaleType", "(IIIIII)V", "cubeBuffer", "Ljava/nio/FloatBuffer;", "getCubeBuffer", "()Ljava/nio/FloatBuffer;", "setCubeBuffer", "(Ljava/nio/FloatBuffer;)V", "getDrawHeight", "()I", "setDrawHeight", "(I)V", "getDrawWidth", "setDrawWidth", "enableSnapshot", "", "flip", "glFrameBufferObject", "Lcom/tencent/mm/media/globject/GLFrameBufferObject;", "getGlFrameBufferObject", "()Lcom/tencent/mm/media/globject/GLFrameBufferObject;", "setGlFrameBufferObject", "(Lcom/tencent/mm/media/globject/GLFrameBufferObject;)V", "glTextureObject", "Lcom/tencent/mm/media/globject/GLTextureObject;", "getGlTextureObject", "()Lcom/tencent/mm/media/globject/GLTextureObject;", "setGlTextureObject", "(Lcom/tencent/mm/media/globject/GLTextureObject;)V", "mirror", "getMirror", "()Z", "setMirror", "(Z)V", "needProfile", "getNeedProfile", "setNeedProfile", "onFBOAvailableListener", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "texture", "", "getOnFBOAvailableListener", "()Lkotlin/jvm/functions/Function1;", "setOnFBOAvailableListener", "(Lkotlin/jvm/functions/Function1;)V", "onRGBByteBufferAvailableListener", "Ljava/nio/ByteBuffer;", "buffer", "getOnRGBByteBufferAvailableListener", "setOnRGBByteBufferAvailableListener", "onRGBByteBufferAvailableWithSizeListener", "Lkotlin/Function3;", "width", "height", "getOnRGBByteBufferAvailableWithSizeListener", "()Lkotlin/jvm/functions/Function3;", "setOnRGBByteBufferAvailableWithSizeListener", "(Lkotlin/jvm/functions/Function3;)V", "onRGBDataAvailableListener", "Ljava/nio/IntBuffer;", "getOnRGBDataAvailableListener", "setOnRGBDataAvailableListener", "renderCost", "", "getRenderCost", "()J", "setRenderCost", "(J)V", "renderOutputBuffer", "getRenderOutputBuffer", "()Ljava/nio/ByteBuffer;", "setRenderOutputBuffer", "(Ljava/nio/ByteBuffer;)V", "getRenderOutputType", "setRenderOutputType", "rotateDegree", "getRotateDegree", "setRotateDegree", "getScaleType", "setScaleType", "snapShotBuffer", "snapShotHeight", "getSnapShotHeight", "setSnapShotHeight", "snapShotWidth", "getSnapShotWidth", "setSnapShotWidth", "snapshotBufferQueue", "Ljava/util/concurrent/LinkedBlockingQueue;", "snapshotCost", "getSnapshotCost", "setSnapshotCost", "snapshotDirectBuffer", "getSnapshotDirectBuffer", "setSnapshotDirectBuffer", "takeSnapshot", "textureCoordBuff", "getTextureCoordBuff", "setTextureCoordBuff", "textureCropRect", "Landroid/graphics/Rect;", "getTextureHeight", "setTextureHeight", "getTextureWidth", "setTextureWidth", "transformMatrix", "", "getTransformMatrix", "()[F", "setTransformMatrix", "([F)V", "validLeftTopPoint", "Landroid/graphics/Point;", "getValidLeftTopPoint", "()Landroid/graphics/Point;", "setValidLeftTopPoint", "(Landroid/graphics/Point;)V", "validRightBottomPoint", "getValidRightBottomPoint", "setValidRightBottomPoint", "afterRender", "beforeRender", "checkInitRenderOutputBuffer", "checkInitSnapShotBuffer", "checkInitSnapShotMatrix", "fitCenter", "aspectPlane", "", "aspectTexture", "flipUpsideDown", "frameMirror", "getOutputBuffer", "getOutputByteBuffer", "getOutputTexture", "getOutputTextureObj", "getRotate", "getSnapshotOutputByteBuffer", "getTextureCropRect", "getValidTextureArea", "Landroid/graphics/RectF;", "initDrawCoordBuffer", "initMatrix", "initWithoutMatrix", "array", "isMirror", "release", "render", "renderImpl", "setFrame", "frame", "", "setInputTexture", "setRotate", "degree", "setSnapshotSize", "setTextureCropRect", "rect", "takeSnapShot", "updateDrawViewSize", "updateRenderTypeStatus", "updateTextureSize", "updateTextureValidPoint", "leftTop", "rightBottom", "Companion", "plugin-mediaeditor_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class a
 {
-  public static final a kYR = new a((byte)0);
-  private float[] kYA;
-  public boolean kYB;
-  private b<? super d, x> kYC;
-  public b<? super IntBuffer, x> kYD;
-  public b<? super ByteBuffer, x> kYE;
-  public q<? super ByteBuffer, ? super Integer, ? super Integer, x> kYF;
-  public boolean kYG;
-  public volatile boolean kYH;
-  private boolean kYI;
-  public int kYJ;
-  public int kYK;
-  private LinkedBlockingQueue<ByteBuffer> kYL;
-  public ByteBuffer kYM;
-  public Point kYN;
-  public Point kYO;
-  private long kYP;
-  private boolean kYQ;
-  private int kYg;
-  public boolean kYh;
-  private int kYm;
-  private int kYn;
-  public Rect kYu;
-  public d kYx;
-  private com.tencent.mm.media.g.a kYy;
-  public ByteBuffer kYz;
-  private int krg;
-  private int krh;
-  private FloatBuffer ksa;
-  private FloatBuffer ksb;
-  private int ksu;
-  private int ksv;
+  public static final a.a nDE = new a.a((byte)0);
+  private FloatBuffer mVU;
+  private FloatBuffer mVV;
+  private int mVd;
+  private int mVe;
+  private int mWn;
+  private int mWo;
+  public Rect nDB;
+  public d nDF;
+  private com.tencent.mm.media.g.a nDG;
+  public ByteBuffer nDH;
+  private float[] nDI;
+  private boolean nDJ;
+  private kotlin.g.a.b<? super d, ah> nDK;
+  public kotlin.g.a.b<? super IntBuffer, ah> nDL;
+  public kotlin.g.a.b<? super ByteBuffer, ah> nDM;
+  public q<? super ByteBuffer, ? super Integer, ? super Integer, ah> nDN;
+  public boolean nDO;
+  public volatile boolean nDP;
+  private boolean nDQ;
+  public int nDR;
+  public int nDS;
+  private LinkedBlockingQueue<ByteBuffer> nDT;
+  public ByteBuffer nDU;
+  public Point nDV;
+  public Point nDW;
+  private boolean nDX;
+  private int nDk;
+  private int nDl;
+  public int nDr;
+  private boolean nvG;
+  private long renderCost;
   
   public a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    this.krg = paramInt1;
-    this.krh = paramInt2;
-    this.ksu = paramInt3;
-    this.ksv = paramInt4;
-    this.kYm = paramInt5;
-    this.kYn = paramInt6;
-    Object localObject = ByteBuffer.allocateDirect(com.tencent.mm.media.k.c.lak.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    p.j(localObject, "ByteBuffer.allocateDirec…eOrder()).asFloatBuffer()");
-    this.ksa = ((FloatBuffer)localObject);
-    localObject = ByteBuffer.allocateDirect(com.tencent.mm.media.k.c.laj.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    p.j(localObject, "ByteBuffer.allocateDirec…eOrder()).asFloatBuffer()");
-    this.ksb = ((FloatBuffer)localObject);
-    this.kYA = new float[16];
-    this.kYG = true;
-    this.kYJ = -1;
-    this.kYK = -1;
-    this.kYL = new LinkedBlockingQueue();
-    this.kYN = new Point(0, this.krh);
-    this.kYO = new Point(this.krg, 0);
-    if (this.kYm == 2)
+    this.mVd = paramInt1;
+    this.mVe = paramInt2;
+    this.mWn = paramInt3;
+    this.mWo = paramInt4;
+    this.nDk = paramInt5;
+    this.nDl = paramInt6;
+    Object localObject = ByteBuffer.allocateDirect(com.tencent.mm.media.util.c.nFu.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    s.s(localObject, "allocateDirect(GLEnviron…eOrder()).asFloatBuffer()");
+    this.mVU = ((FloatBuffer)localObject);
+    localObject = ByteBuffer.allocateDirect(com.tencent.mm.media.util.c.nFt.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    s.s(localObject, "allocateDirect(GLEnviron…eOrder()).asFloatBuffer()");
+    this.mVV = ((FloatBuffer)localObject);
+    this.nDI = new float[16];
+    this.nDO = true;
+    this.nDR = -1;
+    this.nDS = -1;
+    this.nDT = new LinkedBlockingQueue();
+    this.nDV = new Point(0, this.mVe);
+    this.nDW = new Point(this.mVd, 0);
+    if (this.nDk == 2)
     {
-      this.kYx = com.tencent.mm.media.g.c.a(true, 3L);
-      localObject = com.tencent.mm.media.g.c.kVi;
-      this.kYy = com.tencent.mm.media.g.c.FP(3L);
+      this.nDF = com.tencent.mm.media.g.c.d(true, 3L);
+      localObject = com.tencent.mm.media.g.c.nAB;
+      this.nDG = com.tencent.mm.media.g.c.hX(3L);
     }
-    while (this.kYm != 3) {
+    while (this.nDk != 3) {
       return;
     }
-    aVq();
+    bqa();
   }
   
-  private void aVq()
+  private void bqa()
   {
-    if ((this.ksu > 0) && (this.ksv > 0) && (this.kYz == null)) {
-      this.kYz = ByteBuffer.allocateDirect(this.ksu * this.ksv * 4).order(ByteOrder.nativeOrder());
+    if ((this.mWn > 0) && (this.mWo > 0) && (this.nDH == null)) {
+      this.nDH = ByteBuffer.allocateDirect(this.mWn * this.mWo * 4).order(ByteOrder.nativeOrder());
     }
   }
   
-  public final void G(float paramFloat1, float paramFloat2)
+  protected final void a(com.tencent.mm.media.g.a parama)
+  {
+    this.nDG = parama;
+  }
+  
+  public void a(d paramd)
+  {
+    s.u(paramd, "texture");
+  }
+  
+  public final void am(float paramFloat1, float paramFloat2)
   {
     float f2;
     float f1;
@@ -112,7 +121,7 @@ public abstract class a
     }
     for (;;)
     {
-      Matrix.orthoM(this.kYA, 0, paramFloat1, paramFloat2, f1, f2, 1.0F, -1.0F);
+      Matrix.orthoM(this.nDI, 0, paramFloat1, paramFloat2, f1, f2, 1.0F, -1.0F);
       return;
       paramFloat1 = -paramFloat1 / paramFloat2;
       paramFloat2 = -paramFloat1;
@@ -121,89 +130,99 @@ public abstract class a
     }
   }
   
-  protected final void a(com.tencent.mm.media.g.a parama)
+  public void ap(byte[] paramArrayOfByte)
   {
-    this.kYy = parama;
+    s.u(paramArrayOfByte, "frame");
   }
   
-  protected void aMR()
+  protected void bgB()
   {
-    Matrix.setIdentityM(this.kYA, 0);
-    Matrix.setRotateM(this.kYA, 0, this.kYg, 0.0F, 0.0F, -1.0F);
-    if ((this.kYB) || (this.kYm == 3)) {
-      if ((this.kYg == 90) || (this.kYg == 270)) {
-        Matrix.scaleM(this.kYA, 0, -1.0F, 1.0F, 1.0F);
+    Matrix.setIdentityM(this.nDI, 0);
+    Matrix.setRotateM(this.nDI, 0, this.nDr, 0.0F, 0.0F, -1.0F);
+    if ((this.nDJ) || (this.nDk == 3)) {
+      if ((this.nDr == 90) || (this.nDr == 270)) {
+        Matrix.scaleM(this.nDI, 0, -1.0F, 1.0F, 1.0F);
       }
     }
     for (;;)
     {
-      if (this.kYh) {
-        Matrix.scaleM(this.kYA, 0, 1.0F, -1.0F, 1.0F);
+      if (this.nvG) {
+        Matrix.scaleM(this.nDI, 0, 1.0F, -1.0F, 1.0F);
       }
-      if (this.kYn == 5) {
-        G(this.ksu / this.ksv, this.krg / this.krh);
+      if (this.nDl == 5) {
+        am(this.mWn / this.mWo, this.mVd / this.mVe);
       }
-      aVt();
-      aVu();
+      bqd();
+      bqe();
       return;
-      Matrix.scaleM(this.kYA, 0, 1.0F, -1.0F, 1.0F);
+      Matrix.scaleM(this.nDI, 0, 1.0F, -1.0F, 1.0F);
       continue;
-      Matrix.scaleM(this.kYA, 0, 1.0F, 1.0F, 1.0F);
+      Matrix.scaleM(this.nDI, 0, 1.0F, 1.0F, 1.0F);
     }
   }
   
-  public final void aMU()
+  public final void bgE()
   {
-    aMR();
-    if (this.kYQ) {
+    bgB();
+    if (this.nDX) {
       GLES20.glFinish();
     }
     long l = Util.currentTicks();
-    aVw();
-    if (this.kYQ)
+    bqg();
+    if (this.nDX)
     {
       GLES20.glFinish();
-      this.kYP = Util.ticksToNow(l);
+      this.renderCost = Util.ticksToNow(l);
     }
-    aVv();
+    bqf();
   }
   
-  protected final FloatBuffer aVl()
+  protected final int bpT()
   {
-    return this.ksa;
+    return this.mVd;
   }
   
-  protected final FloatBuffer aVm()
+  protected final int bpU()
   {
-    return this.ksb;
+    return this.mVe;
   }
   
-  protected final com.tencent.mm.media.g.a aVn()
+  protected final FloatBuffer bpV()
   {
-    return this.kYy;
+    return this.mVU;
   }
   
-  public final float[] aVo()
+  protected final FloatBuffer bpW()
   {
-    return this.kYA;
+    return this.mVV;
   }
   
-  protected final int aVp()
+  protected final com.tencent.mm.media.g.a bpX()
   {
-    return this.kYg;
+    return this.nDG;
   }
   
-  public final int aVr()
+  public final float[] bpY()
   {
-    return this.kYg;
+    return this.nDI;
   }
   
-  protected final RectF aVs()
+  protected final boolean bpZ()
   {
-    return new RectF(this.kYN.x / this.krg, (this.kYN.y - 1.0F) / this.krh, (this.kYO.x - 1.0F) / this.krg, this.kYO.y / this.krh);
+    return this.nvG;
   }
   
-  protected void aVt()
+  public final boolean bqb()
+  {
+    return this.nvG;
+  }
+  
+  protected final RectF bqc()
+  {
+    return new RectF(this.nDV.x / this.mVd, (this.nDV.y - 1.0F) / this.mVe, (this.nDW.x - 1.0F) / this.mVd, this.nDW.y / this.mVe);
+  }
+  
+  protected void bqd()
   {
     int j;
     label30:
@@ -217,14 +236,14 @@ public abstract class a
     float f3;
     float f2;
     float f1;
-    if (this.kYn == 2)
+    if (this.nDl == 2)
     {
-      if ((this.kYg != 90) && (this.kYg != 270)) {
+      if ((this.nDr != 90) && (this.nDr != 270)) {
         break label450;
       }
       j = 1;
-      k = this.kYO.x - this.kYN.x;
-      m = this.kYN.y - this.kYO.y;
+      k = this.nDW.x - this.nDV.x;
+      m = this.nDV.y - this.nDW.y;
       if (j == 0) {
         break label456;
       }
@@ -232,42 +251,42 @@ public abstract class a
       if (j == 0) {
         break label463;
       }
-      f4 = this.ksu / i;
-      f5 = this.ksv / k;
+      f4 = this.mWn / i;
+      f5 = this.mWo / k;
       f3 = 0.0F;
       f2 = 0.0F;
       if (f4 >= f5) {
         break label470;
       }
-      f1 = i - this.ksu / f5;
+      f1 = i - this.mWn / f5;
     }
-    Object localObject1;
-    Object localObject2;
+    Object localObject;
     Point localPoint;
     int n;
     int i1;
+    Rect localRect;
     float f6;
     for (;;)
     {
-      this.kYJ = (i - (int)f1);
-      this.kYK = (k - (int)f2);
-      this.ksa.position(0);
-      FloatBuffer localFloatBuffer = this.ksa;
-      localObject1 = com.tencent.mm.media.j.c.a.lag;
-      k = this.kYn;
-      i = this.krg;
-      j = this.krh;
-      localObject2 = this.kYN;
-      localPoint = this.kYO;
-      m = this.kYg;
-      n = this.ksu;
-      i1 = this.ksv;
-      localObject1 = this.kYu;
-      p.k(localObject2, "textureValidLTPoint");
-      p.k(localPoint, "textureValidRBPoint");
-      float[] arrayOfFloat = Arrays.copyOf(com.tencent.mm.media.k.c.lak, com.tencent.mm.media.k.c.lak.length);
-      p.j(arrayOfFloat, "java.util.Arrays.copyOf(this, newSize)");
-      RectF localRectF = com.tencent.mm.media.j.c.a.a((Point)localObject2, localPoint, i, j);
+      this.nDR = (i - (int)f1);
+      this.nDS = (k - (int)f2);
+      this.mVU.position(0);
+      FloatBuffer localFloatBuffer = this.mVU;
+      localObject = com.tencent.mm.media.j.c.b.nFq;
+      k = this.nDl;
+      i = this.mVd;
+      j = this.mVe;
+      localObject = this.nDV;
+      localPoint = this.nDW;
+      m = this.nDr;
+      n = this.mWn;
+      i1 = this.mWo;
+      localRect = this.nDB;
+      s.u(localObject, "textureValidLTPoint");
+      s.u(localPoint, "textureValidRBPoint");
+      float[] arrayOfFloat = Arrays.copyOf(com.tencent.mm.media.util.c.nFu, com.tencent.mm.media.util.c.nFu.length);
+      s.s(arrayOfFloat, "java.util.Arrays.copyOf(this, newSize)");
+      RectF localRectF = com.tencent.mm.media.j.c.b.a((Point)localObject, localPoint, i, j);
       f6 = localRectF.left;
       f5 = localRectF.top;
       f4 = localRectF.right;
@@ -287,12 +306,12 @@ public abstract class a
         arrayOfFloat[6] = f4;
         arrayOfFloat[7] = f3;
         localFloatBuffer.put(arrayOfFloat);
-        this.ksa.position(0);
-        this.ksb.position(0);
-        localFloatBuffer = this.ksb;
-        localObject1 = com.tencent.mm.media.j.c.a.lag;
-        localFloatBuffer.put(com.tencent.mm.media.j.c.a.a(this.kYn, this.kYN, this.kYO, this.kYg, this.ksu, this.ksv));
-        this.ksb.position(0);
+        this.mVU.position(0);
+        this.mVV.position(0);
+        localFloatBuffer = this.mVV;
+        localObject = com.tencent.mm.media.j.c.b.nFq;
+        localFloatBuffer.put(com.tencent.mm.media.j.c.b.a(this.nDl, this.nDV, this.nDW, this.nDr, this.mWn, this.mWo));
+        this.mVV.position(0);
         return;
         label450:
         j = 0;
@@ -307,7 +326,7 @@ public abstract class a
         f1 = f3;
         if (f4 > f5)
         {
-          f2 = k - this.ksv / f4;
+          f2 = k - this.mWo / f4;
           f1 = f3;
         }
         break;
@@ -320,34 +339,32 @@ public abstract class a
     if ((m == 90) || (m == 270))
     {
       i = 1;
-      k = localPoint.x - ((Point)localObject2).x;
-      m = ((Point)localObject2).y - localPoint.y;
+      k = localPoint.x - ((Point)localObject).x;
+      m = ((Point)localObject).y - localPoint.y;
       if (i == 0) {
-        break label655;
+        break label647;
       }
       j = m;
       if (i == 0) {
-        break label662;
+        break label654;
       }
       f1 = n / j;
       f7 = i1 / k;
       f2 = 0.0F;
       if (f1 >= f7) {
-        break label669;
+        break label661;
       }
-      f2 = j - n / f7;
-      f1 = 0.0F;
+      f1 = j - n / f7;
     }
     for (;;)
     {
-      label595:
+      label593:
       if (i != 0)
       {
-        f1 = f1 / 2.0F / k;
-        f7 = f2 / 2.0F / j;
-        f2 = f1;
+        f2 = f2 / 2.0F / k;
+        f1 = f1 / 2.0F / j;
       }
-      for (f1 = f7;; f1 = f1 / 2.0F / k)
+      for (;;)
       {
         f6 += f2;
         f3 += f1;
@@ -357,34 +374,37 @@ public abstract class a
         break;
         i = 0;
         break label516;
-        label655:
+        label647:
         j = k;
         break label551;
-        label662:
+        label654:
         k = m;
         break label556;
-        label669:
+        label661:
         if (f1 <= f7) {
-          break label963;
+          break label956;
         }
-        f1 = k - i1 / f1;
-        break label595;
-        f2 = f2 / 2.0F / j;
+        f2 = k - i1 / f1;
+        f1 = 0.0F;
+        break label593;
+        f7 = f1 / 2.0F / j;
+        f1 = f2 / 2.0F / k;
+        f2 = f7;
       }
-      if (localObject1 == null) {
+      if (localRect == null) {
         break;
       }
-      k = ((Rect)localObject1).width();
-      m = ((Rect)localObject1).height();
-      if (((Rect)localObject1).left == 0)
+      k = localRect.width();
+      m = localRect.height();
+      if (localRect.left == 0)
       {
         f1 = (i - k) / i;
         f4 = 1.0F - f1;
       }
       for (;;)
       {
-        if (((Rect)localObject1).top != 0) {
-          break label807;
+        if (localRect.top != 0) {
+          break label805;
         }
         f2 = (j - m) / j;
         f5 = 1.0F - f2;
@@ -396,20 +416,19 @@ public abstract class a
         f4 = (i - k) / i;
         f1 = 1.0F - f4;
       }
-      label807:
+      label805:
       f3 = (j - m) / j;
       f5 = 1.0F - f3;
       f2 = f1;
       f1 = f5;
       break label326;
-      if (localObject1 == null) {
+      if (localRect == null) {
         break;
       }
-      localObject2 = com.tencent.mm.media.j.c.a.a.lah;
-      f2 = com.tencent.mm.media.j.c.a.a.au(((Rect)localObject1).left / i);
-      float f9 = com.tencent.mm.media.j.c.a.a.au(((Rect)localObject1).right / i);
-      f7 = com.tencent.mm.media.j.c.a.a.au(((Rect)localObject1).bottom / j);
-      f1 = com.tencent.mm.media.j.c.a.a.au(((Rect)localObject1).top / j);
+      f2 = com.tencent.mm.media.j.c.b.bp(localRect.left / i);
+      float f9 = com.tencent.mm.media.j.c.b.bp(localRect.right / i);
+      f7 = com.tencent.mm.media.j.c.b.bp(localRect.bottom / j);
+      f1 = com.tencent.mm.media.j.c.b.bp(localRect.top / j);
       f4 = Math.abs(f4 - f6);
       float f8 = Math.abs(f3 - f5);
       f2 = f6 + f2 * f4;
@@ -417,163 +436,167 @@ public abstract class a
       f3 = Math.min(f5, f3) + f8 * f7;
       f1 = Math.min(f5, f3) + f8 * f1;
       break label326;
-      label963:
+      label956:
       f1 = 0.0F;
     }
   }
   
-  protected final void aVu()
+  protected final void bqe()
   {
     Object localObject;
-    if (this.kYm == 2)
+    if (this.nDk == 2)
     {
-      if (this.kYx == null)
+      if (this.nDF == null)
       {
-        this.kYx = com.tencent.mm.media.g.c.a(true, 3L);
-        localObject = com.tencent.mm.media.g.c.kVi;
-        this.kYy = com.tencent.mm.media.g.c.FP(3L);
+        this.nDF = com.tencent.mm.media.g.c.d(true, 3L);
+        localObject = com.tencent.mm.media.g.c.nAB;
+        this.nDG = com.tencent.mm.media.g.c.hX(3L);
       }
-      localObject = com.tencent.mm.media.k.c.lar;
-      c.a.a(this.kYy, this.kYx, this.ksu, this.ksv);
+      localObject = com.tencent.mm.media.util.c.nFs;
+      c.a.a(this.nDG, this.nDF, this.mWn, this.mWo);
     }
-    GLES20.glViewport(0, 0, this.ksu, this.ksv);
-    if (this.kYH)
+    GLES20.glViewport(0, 0, this.mWn, this.mWo);
+    if (this.nDP)
     {
-      if (this.kYx == null)
+      if (this.nDF == null)
       {
-        this.kYx = com.tencent.mm.media.g.c.a(true, 3L);
-        localObject = com.tencent.mm.media.g.c.kVi;
-        this.kYy = com.tencent.mm.media.g.c.FP(3L);
+        this.nDF = com.tencent.mm.media.g.c.d(true, 3L);
+        localObject = com.tencent.mm.media.g.c.nAB;
+        this.nDG = com.tencent.mm.media.g.c.hX(3L);
       }
-      localObject = com.tencent.mm.media.k.c.lar;
-      c.a.a(this.kYy, this.kYx, this.kYJ, this.kYK);
-      GLES20.glViewport(0, 0, this.kYJ, this.kYK);
-      if ((this.kYg != 90) && (this.kYg != 270)) {
+      localObject = com.tencent.mm.media.util.c.nFs;
+      c.a.a(this.nDG, this.nDF, this.nDR, this.nDS);
+      GLES20.glViewport(0, 0, this.nDR, this.nDS);
+      if ((this.nDr != 90) && (this.nDr != 270)) {
         break label189;
       }
-      Matrix.scaleM(this.kYA, 0, -1.0F, 1.0F, 1.0F);
+      Matrix.scaleM(this.nDI, 0, -1.0F, 1.0F, 1.0F);
     }
     for (;;)
     {
-      this.kYI = true;
+      this.nDQ = true;
       return;
       label189:
-      Matrix.scaleM(this.kYA, 0, 1.0F, -1.0F, 1.0F);
+      Matrix.scaleM(this.nDI, 0, 1.0F, -1.0F, 1.0F);
     }
   }
   
-  protected void aVv()
+  protected void bqf()
   {
+    label152:
     Object localObject1;
     Object localObject2;
-    if ((this.kYH) && (this.kYI))
+    if ((this.nDP) && (this.nDQ))
     {
       Util.currentTicks();
-      this.kYI = false;
-      if ((this.kYL.size() < 2) && (this.kYJ > 0) && (this.kYK > 0) && (this.kYL.size() < 2))
+      this.nDQ = false;
+      int k;
+      int i;
+      int j;
+      if ((this.nDT.size() < 2) && (this.nDR > 0) && (this.nDS > 0) && (this.nDT.size() < 2))
       {
-        if (this.kYG)
+        if (!this.nDO) {
+          break label152;
+        }
+        k = 2 - this.nDT.size();
+        if (k > 0)
         {
-          j = this.kYL.size();
           i = 0;
-          while (i < 2 - j)
+          do
           {
-            this.kYL.add(ByteBuffer.allocateDirect(this.kYJ * this.kYK * 4).order(ByteOrder.nativeOrder()));
-            i += 1;
-          }
-        }
-        int j = this.kYL.size();
-        int i = 0;
-        while (i < 2 - j)
-        {
-          this.kYL.add(ByteBuffer.allocate(this.kYJ * this.kYK * 4).order(ByteOrder.nativeOrder()));
-          i += 1;
+            j = i + 1;
+            this.nDT.add(ByteBuffer.allocateDirect(this.nDR * this.nDS * 4).order(ByteOrder.nativeOrder()));
+            i = j;
+          } while (j < k);
         }
       }
-      if ((this.kYL.size() < 2) || (this.kYJ < 0) || (this.kYK < 0))
+      while ((this.nDT.size() < 2) || (this.nDR < 0) || (this.nDS < 0))
       {
-        this.kYH = false;
+        this.nDP = false;
         return;
+        k = 2 - this.nDT.size();
+        if (k > 0)
+        {
+          i = 0;
+          do
+          {
+            j = i + 1;
+            this.nDT.add(ByteBuffer.allocate(this.nDR * this.nDS * 4).order(ByteOrder.nativeOrder()));
+            i = j;
+          } while (j < k);
+        }
       }
-      localObject1 = this.kYy;
+      localObject1 = this.nDG;
       if (localObject1 != null) {
-        GLES20.glBindFramebuffer(36160, ((com.tencent.mm.media.g.a)localObject1).kVc);
+        GLES20.glBindFramebuffer(36160, ((com.tencent.mm.media.g.a)localObject1).nAy);
       }
-      b localb;
-      if (this.kYL.size() > 0)
+      kotlin.g.a.b localb;
+      if (this.nDT.size() > 0)
       {
-        localObject1 = (ByteBuffer)this.kYL.remove();
+        localObject1 = (ByteBuffer)this.nDT.take();
         if (localObject1 != null) {
           ((ByteBuffer)localObject1).position(0);
         }
-        GLES20.glReadPixels(0, 0, this.kYJ, this.kYK, 6408, 5121, (Buffer)localObject1);
+        GLES20.glReadPixels(0, 0, this.nDR, this.nDS, 6408, 5121, (Buffer)localObject1);
         GLES20.glFinish();
-        localObject2 = this.kYE;
+        localObject2 = this.nDM;
         if (localObject2 != null)
         {
-          if (localObject1 == null) {
-            p.iCn();
-          }
-          ((b)localObject2).invoke(localObject1);
+          s.checkNotNull(localObject1);
+          ((kotlin.g.a.b)localObject2).invoke(localObject1);
         }
-        localObject2 = this.kYF;
+        localObject2 = this.nDN;
         if (localObject2 != null)
         {
-          if (localObject1 == null) {
-            p.iCn();
-          }
-          ((q)localObject2).c(localObject1, Integer.valueOf(this.kYJ), Integer.valueOf(this.kYK));
+          s.checkNotNull(localObject1);
+          ((q)localObject2).invoke(localObject1, Integer.valueOf(this.nDR), Integer.valueOf(this.nDS));
         }
-        localb = this.kYD;
+        localb = this.nDL;
         if (localb != null) {
-          if (localObject1 == null) {
-            break label446;
+          if (localObject1 != null) {
+            break label458;
           }
         }
       }
-      label446:
-      for (localObject2 = ((ByteBuffer)localObject1).asIntBuffer();; localObject2 = null)
+      label458:
+      for (localObject2 = null;; localObject2 = ((ByteBuffer)localObject1).asIntBuffer())
       {
-        if (localObject2 == null) {
-          p.iCn();
-        }
+        s.checkNotNull(localObject2);
         localb.invoke(localObject2);
         GLES30.glBindFramebuffer(36160, 0);
-        this.kYH = false;
-        if (this.kYL.size() < 2) {
-          this.kYL.add(localObject1);
+        this.nDP = false;
+        if (this.nDT.size() < 2) {
+          this.nDT.add(localObject1);
         }
-        this.kYM = ((ByteBuffer)localObject1);
+        this.nDU = ((ByteBuffer)localObject1);
         return;
-        localObject1 = ByteBuffer.allocate(this.kYJ * this.kYK * 4).order(ByteOrder.nativeOrder());
+        localObject1 = ByteBuffer.allocate(this.nDR * this.nDS * 4).order(ByteOrder.nativeOrder());
         break;
       }
     }
-    if (this.kYm == 3)
+    if (this.nDk == 3)
     {
-      if (this.kYz == null) {
-        aVq();
+      if (this.nDH == null) {
+        bqa();
       }
-      if (this.kYz != null)
+      if (this.nDH != null)
       {
-        localObject1 = this.kYz;
+        localObject1 = this.nDH;
         if (localObject1 != null) {
           ((ByteBuffer)localObject1).clear();
         }
-        GLES20.glReadPixels(0, 0, this.ksu, this.ksv, 6408, 5121, (Buffer)this.kYz);
+        GLES20.glReadPixels(0, 0, this.mWn, this.mWo, 6408, 5121, (Buffer)this.nDH);
         GLES20.glFinish();
-        localObject2 = this.kYD;
+        localObject2 = this.nDL;
         if (localObject2 != null)
         {
-          localObject1 = this.kYz;
-          if (localObject1 == null) {
-            break label574;
+          localObject1 = this.nDH;
+          if (localObject1 != null) {
+            break label592;
           }
-          localObject1 = ((ByteBuffer)localObject1).asIntBuffer();
-          if (localObject1 == null) {
-            p.iCn();
-          }
-          ((b)localObject2).invoke(localObject1);
+          localObject1 = null;
+          s.checkNotNull(localObject1);
+          ((kotlin.g.a.b)localObject2).invoke(localObject1);
         }
       }
     }
@@ -582,108 +605,84 @@ public abstract class a
       GLES20.glUseProgram(0);
       GLES30.glBindFramebuffer(36160, 0);
       return;
-      label574:
-      localObject1 = null;
+      label592:
+      localObject1 = ((ByteBuffer)localObject1).asIntBuffer();
       break;
-      if (this.kYm == 2)
+      if (this.nDk == 2)
       {
         GLES20.glBindFramebuffer(36160, 0);
-        localObject1 = this.kYC;
+        localObject1 = this.nDK;
         if (localObject1 != null) {
-          ((b)localObject1).invoke(this.kYx);
+          ((kotlin.g.a.b)localObject1).invoke(this.nDF);
         }
       }
     }
   }
   
-  protected abstract void aVw();
+  protected abstract void bqg();
   
-  protected final int aVx()
+  public void ek(int paramInt1, int paramInt2)
   {
-    return this.krg;
-  }
-  
-  protected final int aVy()
-  {
-    return this.krh;
-  }
-  
-  public void ap(byte[] paramArrayOfByte)
-  {
-    p.k(paramArrayOfByte, "frame");
-  }
-  
-  public void du(int paramInt1, int paramInt2)
-  {
-    this.ksv = paramInt2;
-    this.ksu = paramInt1;
-    dy(paramInt1, paramInt2);
-    if (this.kYm == 3) {
-      aVq();
+    this.mWo = paramInt2;
+    this.mWn = paramInt1;
+    es(paramInt1, paramInt2);
+    if (this.nDk == 3) {
+      bqa();
     }
   }
   
-  public void dv(int paramInt1, int paramInt2)
+  public void el(int paramInt1, int paramInt2)
   {
-    this.krg = paramInt1;
-    this.krh = paramInt2;
-    this.kYN.x = 0;
-    this.kYN.y = paramInt2;
-    this.kYO.x = paramInt1;
-    this.kYO.y = 0;
+    this.mVd = paramInt1;
+    this.mVe = paramInt2;
+    this.nDV.x = 0;
+    this.nDV.y = paramInt2;
+    this.nDW.x = paramInt1;
+    this.nDW.y = 0;
   }
   
-  public final void dy(int paramInt1, int paramInt2)
+  public final void es(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 != this.kYJ) || (paramInt2 != this.kYK))
-    {
-      Log.i("MicroMsg.GLTextureRenderProc", "SnapshotSize Changed: res: " + paramInt1 + " x " + paramInt2 + " ori: " + this.kYJ + " x " + this.kYK + " buffQuesize: " + this.kYL.size());
-      this.kYL.clear();
+    if ((paramInt1 != this.nDR) || (paramInt2 != this.nDS)) {
+      this.nDT.clear();
     }
-    this.kYJ = paramInt1;
-    this.kYK = paramInt2;
+    this.nDR = paramInt1;
+    this.nDS = paramInt2;
   }
   
   protected final int getDrawHeight()
   {
-    return this.ksv;
+    return this.mWo;
   }
   
   protected final int getDrawWidth()
   {
-    return this.ksu;
+    return this.mWn;
   }
   
   protected final int getScaleType()
   {
-    return this.kYn;
+    return this.nDl;
   }
   
-  public final float[] k(float[] paramArrayOfFloat)
+  public void gq(boolean paramBoolean)
   {
-    p.k(paramArrayOfFloat, "array");
-    c.a locala = com.tencent.mm.media.k.c.lar;
-    c.a.e(this.kYg, paramArrayOfFloat);
-    if (this.kYh)
-    {
-      locala = com.tencent.mm.media.k.c.lar;
-      p.k(paramArrayOfFloat, "textureCoords");
-      paramArrayOfFloat[1] = (1.0F - paramArrayOfFloat[1]);
-      paramArrayOfFloat[3] = (1.0F - paramArrayOfFloat[3]);
-      paramArrayOfFloat[5] = (1.0F - paramArrayOfFloat[5]);
-      paramArrayOfFloat[7] = (1.0F - paramArrayOfFloat[7]);
-    }
-    return paramArrayOfFloat;
+    this.nDJ = paramBoolean;
+  }
+  
+  public void gr(boolean paramBoolean)
+  {
+    this.nvG = paramBoolean;
   }
   
   public void release()
   {
-    Log.i("MicroMsg.GLTextureRenderProc", hashCode() + " release renderOutputTexture:" + this.kYx + ", renderOutputTextureFbo:" + this.kYy + ", drawWidth:" + this.ksu + ", drawHeight:" + this.ksv);
-    Object localObject = this.kYx;
+    Log.i("MicroMsg.GLTextureRenderProc", hashCode() + " release renderOutputTexture:" + this.nDF + ", renderOutputTextureFbo:" + this.nDG + ", drawWidth:" + this.mWn + ", drawHeight:" + this.mWo);
+    Object localObject = this.nDF;
     if (localObject != null) {
       ((d)localObject).close();
     }
-    localObject = this.kYy;
+    localObject = this.nDG;
     if (localObject != null) {
       ((com.tencent.mm.media.g.a)localObject).close();
     }
@@ -691,37 +690,34 @@ public abstract class a
   
   protected final void setScaleType(int paramInt)
   {
-    this.kYn = paramInt;
+    this.nDl = paramInt;
   }
   
-  public void tm(int paramInt)
+  protected final void tZ(int paramInt)
   {
-    this.kYg = paramInt;
+    this.mWn = paramInt;
   }
   
-  public void ua(int paramInt) {}
+  public void th(int paramInt)
+  {
+    this.nDr = paramInt;
+  }
+  
+  protected final void ua(int paramInt)
+  {
+    this.mWo = paramInt;
+  }
   
   protected final void ub(int paramInt)
   {
-    this.ksu = paramInt;
+    this.nDk = paramInt;
   }
   
-  protected final void uc(int paramInt)
-  {
-    this.ksv = paramInt;
-  }
-  
-  protected final void ud(int paramInt)
-  {
-    this.kYm = paramInt;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/render/proc/GLTextureRenderProc$Companion;", "", "()V", "RENDER_OUTPUT_RGB_BUFFER", "", "RENDER_OUTPUT_SCREEN", "RENDER_OUTPUT_TEXTURE", "SCALE_TYPE_CENTER_CROP", "SCALE_TYPE_CENTER_INSIDE", "SCALE_TYPE_CROP_RECT", "SCALE_TYPE_CROP_RECT_ALIGN_ONE_SIDE", "SCALE_TYPE_FIT_MODE", "SCALE_TYPE_NOT_SCALE", "SnapshotBufferQueueSize", "TAG", "", "plugin-mediaeditor_release"})
-  public static final class a {}
+  public void uc(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.media.j.b.a
  * JD-Core Version:    0.7.0.1
  */

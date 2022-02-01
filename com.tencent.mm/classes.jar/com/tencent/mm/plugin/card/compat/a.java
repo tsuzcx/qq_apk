@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.card.compat;
 
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.k.b;
 import com.tencent.mm.compatible.util.f;
-import com.tencent.mm.pluginsdk.model.app.m;
+import com.tencent.mm.message.k.b;
+import com.tencent.mm.pluginsdk.model.app.n;
 
 public final class a
   implements com.tencent.mm.plugin.card.compat.a.a
@@ -12,7 +12,7 @@ public final class a
   public final int a(k.b paramb, String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(22756);
-    paramb = m.a(paramb, paramString1, paramString2, paramString3, null, paramArrayOfByte);
+    paramb = n.a(paramb, paramString1, paramString2, paramString3, null, paramArrayOfByte);
     if (paramb != null)
     {
       i = ((Integer)paramb.first).intValue();
@@ -26,7 +26,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.card.compat.a
  * JD-Core Version:    0.7.0.1
  */

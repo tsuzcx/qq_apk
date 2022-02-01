@@ -7,18 +7,18 @@ import java.util.Map;
 import org.json.JSONObject;
 
 public final class a
-  extends com.tencent.mm.wallet_core.e.a.a
+  extends com.tencent.mm.wallet_core.d.a.a
 {
-  public boolean Jip;
-  public String Pmg;
-  public String Pmh;
-  public String fLj;
+  public boolean Puv;
+  public String Wds;
+  public String Wdt;
+  public String hQR;
   
   public a(String paramString1, String paramString2)
   {
     AppMethodBeat.i(72047);
-    this.Pmg = paramString1;
-    this.fLj = paramString2;
+    this.Wds = paramString1;
+    this.hQR = paramString2;
     HashMap localHashMap = new HashMap();
     localHashMap.put("otp", paramString1);
     localHashMap.put("payu_reference", String.valueOf(paramString2));
@@ -26,7 +26,7 @@ public final class a
     AppMethodBeat.o(72047);
   }
   
-  public final int gIA()
+  public final int ihO()
   {
     return 4;
   }
@@ -35,8 +35,8 @@ public final class a
   {
     AppMethodBeat.i(72048);
     Log.d("MicroMsg.NetScenePayUComfirmOtp", "hy: get NetScenePayUCreateUser info. errCode: %d, errMsg:%s, json:%s", new Object[] { Integer.valueOf(paramInt), paramString, paramJSONObject.toString() });
-    this.Jip = paramJSONObject.optBoolean("verified");
-    this.Pmh = paramJSONObject.optString("payu_reference");
+    this.Puv = paramJSONObject.optBoolean("verified");
+    this.Wdt = paramJSONObject.optString("payu_reference");
     AppMethodBeat.o(72048);
   }
 }

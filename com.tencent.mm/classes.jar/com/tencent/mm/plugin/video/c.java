@@ -6,7 +6,7 @@ import java.math.BigInteger;
 
 public final class c
 {
-  public static String bfp(String paramString)
+  public static String beW(String paramString)
   {
     AppMethodBeat.i(127140);
     if (Util.isNullOrNil(paramString))
@@ -21,7 +21,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.video.c
  * JD-Core Version:    0.7.0.1
  */

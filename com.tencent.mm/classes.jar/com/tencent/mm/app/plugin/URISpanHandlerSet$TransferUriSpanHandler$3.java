@@ -1,13 +1,13 @@
 package com.tencent.mm.app.plugin;
 
-import com.tencent.mm.ui.widget.a.f.c;
+import com.tencent.mm.ui.widget.a.g.c;
 
 final class URISpanHandlerSet$TransferUriSpanHandler$3
-  implements f.c
+  implements g.c
 {
   URISpanHandlerSet$TransferUriSpanHandler$3(URISpanHandlerSet.TransferUriSpanHandler paramTransferUriSpanHandler) {}
   
-  public final void g(boolean paramBoolean, String paramString) {}
+  public final void onDialogClick(boolean paramBoolean, String paramString) {}
 }
 
 

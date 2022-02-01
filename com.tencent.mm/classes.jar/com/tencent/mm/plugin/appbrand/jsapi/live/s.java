@@ -22,43 +22,43 @@ import org.json.JSONObject;
 public final class s
   implements b, ITXLivePushListener, TXLivePusher.ITXAudioVolumeEvaluationListener, TXLivePusher.OnBGMNotify
 {
-  private String cGe;
-  private boolean cGk;
-  private boolean cGl;
-  private boolean cGn;
-  private String cHV;
-  private WXLivePushConfig cIB;
-  private WXLivePusher cIC;
-  private String cID;
-  private boolean cIE;
-  private String cIF;
-  private boolean cIG;
-  private boolean cIH;
-  private boolean cII;
-  private boolean cIJ;
-  private boolean cIK;
-  private int cIL;
-  private int cIM;
-  private int cIN;
-  private int cIO;
-  private boolean cIP;
-  private boolean cIQ;
-  private String cIR;
-  private int cIS;
-  private int cIT;
-  private String cIU;
-  private String cIV;
-  private boolean cIW;
-  private boolean cIX;
-  private boolean cIY;
-  private boolean cIZ;
-  private String cJa;
-  private float cJb;
-  private float cJc;
-  private String cJd;
-  private boolean cJe;
-  private String cJf;
-  private int cJg;
+  private String eBs;
+  private String eCA;
+  private String eCB;
+  private boolean eCC;
+  private boolean eCD;
+  private boolean eCE;
+  private boolean eCF;
+  private String eCG;
+  private float eCH;
+  private float eCI;
+  private String eCJ;
+  private boolean eCK;
+  private String eCL;
+  private int eCM;
+  private WXLivePushConfig eCh;
+  private WXLivePusher eCi;
+  private String eCj;
+  private boolean eCk;
+  private String eCl;
+  private boolean eCm;
+  private boolean eCn;
+  private boolean eCo;
+  private boolean eCp;
+  private boolean eCq;
+  private int eCr;
+  private int eCs;
+  private int eCt;
+  private int eCu;
+  private boolean eCv;
+  private boolean eCw;
+  private String eCx;
+  private int eCy;
+  private int eCz;
+  private boolean ezB;
+  private String ezs;
+  private boolean ezy;
+  private boolean ezz;
   private TXLivePusher.ITXAudioVolumeEvaluationListener mAudioVolumeListener;
   private TXLivePusher.OnBGMNotify mBGMNotifyListener;
   private Context mContext;
@@ -80,77 +80,69 @@ public final class s
   
   public s(Context paramContext)
   {
-    AppMethodBeat.i(212560);
+    AppMethodBeat.i(326147);
     this.mLastAngle = 0;
     this.mInited = false;
-    this.cIE = false;
+    this.eCk = false;
     this.mFrontCamera = true;
-    this.cIF = "front";
-    this.cIG = false;
-    this.cIH = false;
-    this.cII = false;
-    this.cIJ = false;
-    this.cIK = false;
+    this.eCl = "front";
+    this.eCm = false;
+    this.eCn = false;
+    this.eCo = false;
+    this.eCp = false;
+    this.eCq = false;
     this.mMode = 1;
-    this.cIL = 2;
-    this.cIM = -1;
-    this.cIN = -1;
+    this.eCr = 2;
+    this.eCs = -1;
+    this.eCt = -1;
     this.mMute = false;
-    this.cIO = 0;
-    this.cIP = true;
-    this.cIQ = true;
-    this.cGe = "vertical";
-    this.cIR = "high";
-    this.cIS = 5;
-    this.cIT = 3;
-    this.cIU = "smooth";
-    this.cHV = "";
-    this.cIV = "";
-    this.cIW = false;
-    this.cIX = false;
+    this.eCu = 0;
+    this.eCv = true;
+    this.eCw = true;
+    this.ezs = "vertical";
+    this.eCx = "high";
+    this.eCy = 5;
+    this.eCz = 3;
+    this.eCA = "smooth";
+    this.eBs = "";
+    this.eCB = "";
+    this.eCC = false;
+    this.eCD = false;
     this.mEnableZoom = true;
-    this.cGk = false;
-    this.cIY = false;
-    this.cGn = false;
-    this.cIZ = false;
-    this.cJa = "auto";
-    this.cJb = 0.0F;
-    this.cJc = 0.0F;
+    this.ezy = false;
+    this.eCE = false;
+    this.ezB = false;
+    this.eCF = false;
+    this.eCG = "auto";
+    this.eCH = 0.0F;
+    this.eCI = 0.0F;
     this.mWatermarkWidth = 0.1F;
-    this.cJd = "";
+    this.eCJ = "";
     this.mEnableAgc = false;
     this.mEnableAns = false;
-    this.cJe = false;
-    this.cJf = "auto";
-    this.cJg = 0;
+    this.eCK = false;
+    this.eCL = "auto";
+    this.eCM = 0;
     this.mVideoWidth = 368;
     this.mVideoHeight = 640;
-    this.cGl = false;
+    this.ezz = false;
     this.mContext = paramContext;
     this.mHandler = new Handler(this.mContext.getMainLooper());
-    this.cIB = new WXLivePushConfig();
-    this.cIC = new WXLivePusher(paramContext);
-    this.cIC.setConfig(this.cIB);
-    this.cIC.setPushListener(this);
-    this.cIC.setBGMNofify(this);
-    this.cIC.setAudioVolumeEvaluationListener(this);
-    AppMethodBeat.o(212560);
-  }
-  
-  private void TL()
-  {
-    AppMethodBeat.i(212598);
-    this.cIC.stopCameraPreview(true);
-    this.cIE = false;
-    AppMethodBeat.o(212598);
+    this.eCh = new WXLivePushConfig();
+    this.eCi = new WXLivePusher(paramContext);
+    this.eCi.setConfig(this.eCh);
+    this.eCi.setPushListener(this);
+    this.eCi.setBGMNofify(this);
+    this.eCi.setAudioVolumeEvaluationListener(this);
+    AppMethodBeat.o(326147);
   }
   
   private void a(Bundle paramBundle, boolean paramBoolean)
   {
-    AppMethodBeat.i(212639);
+    AppMethodBeat.i(326192);
     if ((!paramBoolean) && (paramBundle.keySet().size() == 0))
     {
-      AppMethodBeat.o(212639);
+      AppMethodBeat.o(326192);
       return;
     }
     int i2 = paramBundle.getInt("mode", this.mMode);
@@ -163,8 +155,8 @@ public final class s
     switch (i2)
     {
     default: 
-      m = this.cIM;
-      n = this.cIN;
+      m = this.eCs;
+      n = this.eCt;
       i = paramBundle.getInt("minBitrate", -1);
       j = paramBundle.getInt("maxBitrate", -1);
       if (i > j)
@@ -210,8 +202,8 @@ public final class s
               i1 = m;
               if (m <= i)
               {
-                this.cIB.setMinVideoBitrate(m);
-                this.cIB.setMaxVideoBitrate(i);
+                this.eCh.setMinVideoBitrate(m);
+                this.eCh.setMaxVideoBitrate(i);
                 i1 = m;
                 j = i;
               }
@@ -219,20 +211,20 @@ public final class s
           }
         }
       }
-      k = paramBundle.getInt("aspect", this.cIL);
+      k = paramBundle.getInt("aspect", this.eCr);
       m = paramBundle.getInt("videoWidth", this.mVideoWidth);
       n = paramBundle.getInt("videoHeight", this.mVideoHeight);
-      Object localObject1 = paramBundle.getString("audioQuality", this.cIR);
-      label402:
-      label460:
+      Object localObject1 = paramBundle.getString("audioQuality", this.eCx);
+      label398:
+      label456:
       Object localObject2;
       boolean bool1;
-      label487:
+      label483:
       boolean bool2;
-      label618:
+      label614:
       String str1;
-      label661:
-      label721:
+      label657:
+      label717:
       float f1;
       float f2;
       float f3;
@@ -241,22 +233,22 @@ public final class s
       {
         if (k == 1)
         {
-          this.cIB.setVideoResolution(13);
+          this.eCh.setVideoResolution(13);
           if ((m > 0) && (m <= 1920) && (n > 0) && (n <= 1920)) {
-            this.cIB.setVideoResolution(m, n);
+            this.eCh.setVideoResolution(m, n);
           }
           if (!((String)localObject1).equalsIgnoreCase("low")) {
-            break label1991;
+            break label1986;
           }
-          this.cIB.setAudioSampleRate(16000);
+          this.eCh.setAudioSampleRate(16000);
         }
       }
       else
       {
-        int i3 = paramBundle.getInt("focusMode", this.cIO);
-        localObject2 = this.cIB;
+        int i3 = paramBundle.getInt("focusMode", this.eCu);
+        localObject2 = this.eCh;
         if (i3 == 0) {
-          break label2014;
+          break label2009;
         }
         bool1 = true;
         ((WXLivePushConfig)localObject2).setTouchFocus(bool1);
@@ -264,338 +256,346 @@ public final class s
         bool1 = bool2;
         if (paramBundle.keySet().contains("devicePosition"))
         {
-          this.cIF = paramBundle.getString("devicePosition", this.cIF);
+          this.eCl = paramBundle.getString("devicePosition", this.eCl);
           bool1 = bool2;
-          if (this.cIF.equalsIgnoreCase("back")) {
+          if (this.eCl.equalsIgnoreCase("back")) {
             bool1 = false;
           }
-          this.cIB.setFrontCamera(bool1);
+          this.eCh.setFrontCamera(bool1);
         }
-        localObject2 = paramBundle.getString("orientation", this.cGe);
-        if (!((String)localObject2).equalsIgnoreCase(this.cGe))
+        localObject2 = paramBundle.getString("orientation", this.ezs);
+        if (!((String)localObject2).equalsIgnoreCase(this.ezs))
         {
           if (!((String)localObject2).equalsIgnoreCase("horizontal")) {
-            break label2020;
+            break label2015;
           }
           m(this.mLastAngle, (String)localObject2);
-          this.cIC.setRenderRotation(90);
+          this.eCi.setRenderRotation(90);
         }
-        str1 = paramBundle.getString("localMirror", this.cJa);
-        if (!str1.equalsIgnoreCase(this.cJa))
+        str1 = paramBundle.getString("localMirror", this.eCG);
+        if (!str1.equalsIgnoreCase(this.eCG))
         {
           if (!str1.equalsIgnoreCase("auto")) {
-            break label2051;
+            break label2046;
           }
-          this.cIB.setLocalVideoMirrorType(0);
+          this.eCh.setLocalVideoMirrorType(0);
         }
-        String str2 = paramBundle.getString("backgroundImage", this.cIV);
+        String str2 = paramBundle.getString("backgroundImage", this.eCB);
         Object localObject3 = BitmapFactory.decodeFile(str2);
         if (localObject3 != null) {
-          this.cIB.setPauseImg((Bitmap)localObject3);
+          this.eCh.setPauseImg((Bitmap)localObject3);
         }
-        boolean bool3 = paramBundle.getBoolean("backgroundMute", this.cIW);
+        boolean bool3 = paramBundle.getBoolean("backgroundMute", this.eCC);
         if (!bool3) {
-          break label2095;
+          break label2090;
         }
-        this.cIB.setPauseFlag(3);
+        this.eCh.setPauseFlag(3);
         boolean bool4 = paramBundle.getBoolean("zoom", this.mEnableZoom);
-        this.cIB.setEnableZoom(bool4);
-        f1 = paramBundle.getFloat("watermarkLeft", this.cJb);
-        f2 = paramBundle.getFloat("watermarkTop", this.cJc);
+        this.eCh.setEnableZoom(bool4);
+        f1 = paramBundle.getFloat("watermarkLeft", this.eCH);
+        f2 = paramBundle.getFloat("watermarkTop", this.eCI);
         f3 = paramBundle.getFloat("watermarkWidth", this.mWatermarkWidth);
-        localObject3 = paramBundle.getString("watermarkImage", this.cJd);
+        localObject3 = paramBundle.getString("watermarkImage", this.eCJ);
         localObject4 = BitmapFactory.decodeFile((String)localObject3);
         if (localObject4 == null) {
-          break label2106;
+          break label2101;
         }
-        this.cIB.setWatermark((Bitmap)localObject4, f1, f2, f3);
-        label820:
+        this.eCh.setWatermark((Bitmap)localObject4, f1, f2, f3);
+        label816:
         boolean bool5 = paramBundle.getBoolean("enableAGC", this.mEnableAgc);
-        this.cIB.enableAGC(bool5);
+        this.eCh.enableAGC(bool5);
         boolean bool6 = paramBundle.getBoolean("enableANS", this.mEnableAns);
-        this.cIB.enableANS(bool6);
-        boolean bool7 = paramBundle.getBoolean("enableEarMonitor", this.cJe);
-        this.cIB.enableAudioEarMonitoring(bool7);
-        localObject4 = paramBundle.getString("audioVolumeType", this.cJf);
+        this.eCh.enableANS(bool6);
+        boolean bool7 = paramBundle.getBoolean("enableEarMonitor", this.eCK);
+        this.eCh.enableAudioEarMonitoring(bool7);
+        localObject4 = paramBundle.getString("audioVolumeType", this.eCL);
         if (!((String)localObject4).equalsIgnoreCase("voicecall")) {
-          break label2148;
+          break label2143;
         }
-        this.cIB.setVolumeType(2);
-        label918:
-        boolean bool8 = paramBundle.getBoolean("enableCamera", this.cIP);
-        Object localObject5 = this.cIB;
+        this.eCh.setVolumeType(2);
+        label914:
+        boolean bool8 = paramBundle.getBoolean("enableCamera", this.eCv);
+        Object localObject5 = this.eCh;
         if (bool8) {
-          break label2181;
+          break label2176;
         }
         bool2 = true;
-        label945:
+        label941:
         ((WXLivePushConfig)localObject5).enablePureAudioPush(bool2);
         i = 0;
-        if ((k != this.cIL) || (i1 != this.cIM) || (j != this.cIN) || (i3 != this.cIO) || (bool1 != this.mFrontCamera) || (bool3 != this.cIW) || (bool4 != this.mEnableZoom) || (bool5 != this.mEnableAgc) || (bool6 != this.mEnableAns) || (bool7 != this.cJe) || (bool8 != this.cIP) || (m != this.mVideoWidth) || (n != this.mVideoHeight) || (f1 != this.cJb) || (f2 != this.cJc) || (f3 != this.mWatermarkWidth) || (!str1.equalsIgnoreCase(this.cJa)) || (!((String)localObject4).equalsIgnoreCase(this.cJf)) || (!str2.equalsIgnoreCase(this.cIV)) || (!((String)localObject2).equalsIgnoreCase(this.cGe)) || (!((String)localObject1).equalsIgnoreCase(this.cIR)) || (!((String)localObject3).equalsIgnoreCase(this.cJd))) {
+        if ((k != this.eCr) || (i1 != this.eCs) || (j != this.eCt) || (i3 != this.eCu) || (bool1 != this.mFrontCamera) || (bool3 != this.eCC) || (bool4 != this.mEnableZoom) || (bool5 != this.mEnableAgc) || (bool6 != this.mEnableAns) || (bool7 != this.eCK) || (bool8 != this.eCv) || (m != this.mVideoWidth) || (n != this.mVideoHeight) || (f1 != this.eCH) || (f2 != this.eCI) || (f3 != this.mWatermarkWidth) || (!str1.equalsIgnoreCase(this.eCG)) || (!((String)localObject4).equalsIgnoreCase(this.eCL)) || (!str2.equalsIgnoreCase(this.eCB)) || (!((String)localObject2).equalsIgnoreCase(this.ezs)) || (!((String)localObject1).equalsIgnoreCase(this.eCx)) || (!((String)localObject3).equalsIgnoreCase(this.eCJ))) {
           i = 1;
         }
         if ((paramBoolean) || (i != 0)) {
-          this.cIC.setConfig(this.cIB);
+          this.eCi.setConfig(this.eCh);
         }
-        if (bool8 != this.cIP)
+        if (bool8 != this.eCv)
         {
           if (!bool8) {
-            break label2187;
+            break label2182;
           }
-          TL();
-          co(bool8);
+          auq();
+          cU(bool8);
         }
-        label1220:
+        label1216:
         if (!paramBundle.keySet().contains("enableMic")) {
-          break label2216;
+          break label2211;
         }
-        boolean bool9 = paramBundle.getBoolean("enableMic", this.cIQ);
-        if (bool9 != this.cIQ)
+        boolean bool9 = paramBundle.getBoolean("enableMic", this.eCw);
+        if (bool9 != this.eCw)
         {
           if (!bool9) {
-            break label2194;
+            break label2189;
           }
-          this.cIC.stopAudioRecord();
-          cp(true);
+          this.eCi.stopAudioRecord();
+          cV(true);
         }
-        label1274:
-        if ((paramBoolean) || (bool9 != this.cIQ))
+        label1270:
+        if ((paramBoolean) || (bool9 != this.eCw))
         {
-          localObject5 = this.cIC;
+          localObject5 = this.eCi;
           if (bool9) {
-            break label2204;
+            break label2199;
           }
           bool2 = true;
           ((WXLivePusher)localObject5).setMute(bool2);
           if (bool9) {
-            break label2210;
+            break label2205;
           }
           bool2 = true;
           this.mMute = bool2;
         }
-        label1301:
-        label1316:
-        this.cIQ = bool9;
-        label1328:
+        label1297:
+        label1312:
+        this.eCw = bool9;
+        label1324:
         this.mMode = i2;
-        this.cIL = k;
-        this.cIO = i3;
-        this.cIP = bool8;
+        this.eCr = k;
+        this.eCu = i3;
+        this.eCv = bool8;
         this.mEnableAgc = bool5;
         this.mEnableAns = bool6;
-        this.cJe = bool7;
-        this.cJa = str1;
-        this.cJf = ((String)localObject4);
+        this.eCK = bool7;
+        this.eCG = str1;
+        this.eCL = ((String)localObject4);
         this.mVideoWidth = m;
         this.mVideoHeight = n;
         this.mFrontCamera = bool1;
-        this.cGe = ((String)localObject2);
-        this.cIW = bool3;
-        this.cIV = str2;
-        this.cIM = i1;
-        this.cIN = j;
-        this.cIR = ((String)localObject1);
+        this.ezs = ((String)localObject2);
+        this.eCC = bool3;
+        this.eCB = str2;
+        this.eCs = i1;
+        this.eCt = j;
+        this.eCx = ((String)localObject1);
         this.mEnableZoom = bool4;
-        this.cJb = f1;
-        this.cJc = f2;
+        this.eCH = f1;
+        this.eCI = f2;
         this.mWatermarkWidth = f3;
-        this.cJd = ((String)localObject3);
-        this.cGk = paramBundle.getBoolean("needEvent", this.cGk);
-        this.cIY = paramBundle.getBoolean("needBGMEvent", this.cIY);
-        bool1 = this.cIZ;
+        this.eCJ = ((String)localObject3);
+        this.ezy = paramBundle.getBoolean("needEvent", this.ezy);
+        this.eCE = paramBundle.getBoolean("needBGMEvent", this.eCE);
+        bool1 = this.eCF;
         if (!paramBundle.keySet().contains("remoteMirror")) {
-          break label2317;
+          break label2312;
         }
         bool1 = paramBundle.getBoolean("remoteMirror");
-        label1525:
-        if (bool1 != this.cIZ) {
-          this.cIC.setMirror(bool1);
+        label1521:
+        if (bool1 != this.eCF) {
+          this.eCi.setMirror(bool1);
         }
-        this.cIZ = bool1;
-        i = paramBundle.getInt("beauty", this.cIS);
-        j = paramBundle.getInt("whiteness", this.cIT);
-        localObject1 = paramBundle.getString("beautyStyle", this.cIU);
-        if ((paramBoolean) || (i != this.cIS) || (j != this.cIT) || (!((String)localObject1).equalsIgnoreCase(this.cIU)))
+        this.eCF = bool1;
+        i = paramBundle.getInt("beauty", this.eCy);
+        j = paramBundle.getInt("whiteness", this.eCz);
+        localObject1 = paramBundle.getString("beautyStyle", this.eCA);
+        if ((paramBoolean) || (i != this.eCy) || (j != this.eCz) || (!((String)localObject1).equalsIgnoreCase(this.eCA)))
         {
           if (!((String)localObject1).equalsIgnoreCase("nature")) {
-            break label2344;
+            break label2339;
           }
-          this.cIC.setBeautyFilter(1, i, j, 2);
+          this.eCi.setBeautyFilter(1, i, j, 2);
         }
-        label1648:
-        this.cIS = i;
-        this.cIT = j;
-        this.cIU = ((String)localObject1);
-        localObject1 = paramBundle.getString("filterImage", this.cHV);
-        if (!((String)localObject1).equalsIgnoreCase(this.cHV))
+        label1644:
+        this.eCy = i;
+        this.eCz = j;
+        this.eCA = ((String)localObject1);
+        localObject1 = paramBundle.getString("filterImage", this.eBs);
+        if (!((String)localObject1).equalsIgnoreCase(this.eBs))
         {
           localObject2 = BitmapFactory.decodeFile((String)localObject1);
-          this.cIC.setFilter((Bitmap)localObject2);
+          this.eCi.setFilter((Bitmap)localObject2);
         }
-        this.cHV = ((String)localObject1);
-        i = paramBundle.getInt("audioReverbType", this.cJg);
-        if (i != this.cJg) {
-          this.cIC.setReverb(i);
+        this.eBs = ((String)localObject1);
+        i = paramBundle.getInt("audioReverbType", this.eCM);
+        if (i != this.eCM) {
+          this.eCi.setReverb(i);
         }
-        this.cJg = i;
-        bool1 = paramBundle.getBoolean("needAudioVolume", this.cGl);
-        if (bool1 != this.cGl)
+        this.eCM = i;
+        bool1 = paramBundle.getBoolean("needAudioVolume", this.ezz);
+        if (bool1 != this.ezz)
         {
-          localObject1 = this.cIC;
+          localObject1 = this.eCi;
           if (!bool1) {
-            break label2361;
+            break label2356;
           }
         }
       }
-      label2051:
-      label2095:
-      label2361:
+      label2090:
+      label2356:
       for (i = 300;; i = 0)
       {
         ((WXLivePusher)localObject1).enableAudioVolumeEvaluation(i);
-        this.cGl = bool1;
-        bool1 = paramBundle.getBoolean("debug", this.cGn);
-        if ((paramBoolean) || (bool1 != this.cGn)) {
-          this.cIC.showDebugLog(bool1);
+        this.ezz = bool1;
+        bool1 = paramBundle.getBoolean("debug", this.ezB);
+        if ((paramBoolean) || (bool1 != this.ezB)) {
+          this.eCi.showDebugLog(bool1);
         }
-        this.cGn = bool1;
-        AppMethodBeat.o(212639);
+        this.ezB = bool1;
+        AppMethodBeat.o(326192);
         return;
-        this.cIC.setVideoQuality(1, true, false);
-        this.cIB.setVideoEncodeGop(5);
+        this.eCi.setVideoQuality(1, true, false);
+        this.eCh.setVideoEncodeGop(5);
         break;
-        this.cIC.setVideoQuality(2, true, false);
-        this.cIB.setVideoEncodeGop(5);
+        this.eCi.setVideoQuality(2, true, false);
+        this.eCh.setVideoEncodeGop(5);
         break;
-        this.cIC.setVideoQuality(3, true, false);
-        this.cIB.setVideoEncodeGop(5);
+        this.eCi.setVideoQuality(3, true, false);
+        this.eCh.setVideoEncodeGop(5);
         break;
-        this.cIC.setVideoQuality(4, true, false);
+        this.eCi.setVideoQuality(4, true, false);
         break;
-        this.cIC.setVideoQuality(5, true, false);
+        this.eCi.setVideoQuality(5, true, false);
         break;
-        this.cIC.setVideoQuality(6, false, false);
+        this.eCi.setVideoQuality(6, false, false);
         break;
-        this.cIC.setVideoQuality(7, true, false);
-        this.cIB.setVideoEncodeGop(5);
+        this.eCi.setVideoQuality(7, true, false);
+        this.eCh.setVideoEncodeGop(5);
         break;
         if (k != 2) {
-          break label402;
+          break label398;
         }
-        this.cIB.setVideoResolution(0);
-        break label402;
-        label1991:
+        this.eCh.setVideoResolution(0);
+        break label398;
+        label1986:
         if (!((String)localObject1).equalsIgnoreCase("high")) {
-          break label460;
+          break label456;
         }
-        this.cIB.setAudioSampleRate(48000);
-        break label460;
-        label2014:
+        this.eCh.setAudioSampleRate(48000);
+        break label456;
+        label2009:
         bool1 = false;
-        break label487;
-        label2020:
+        break label483;
+        label2015:
         if (!((String)localObject2).equalsIgnoreCase("vertical")) {
-          break label618;
+          break label614;
         }
         m(this.mLastAngle, (String)localObject2);
-        this.cIC.setRenderRotation(0);
-        break label618;
+        this.eCi.setRenderRotation(0);
+        break label614;
+        label2046:
         if (str1.equalsIgnoreCase("enable"))
         {
-          this.cIB.setLocalVideoMirrorType(1);
-          break label661;
+          this.eCh.setLocalVideoMirrorType(1);
+          break label657;
         }
         if (!str1.equalsIgnoreCase("disable")) {
-          break label661;
+          break label657;
         }
-        this.cIB.setLocalVideoMirrorType(2);
-        break label661;
-        this.cIB.setPauseFlag(1);
-        break label721;
-        label2106:
-        if ((!this.cIC.isPushing()) || (!paramBundle.keySet().contains("watermarkImage"))) {
-          break label820;
+        this.eCh.setLocalVideoMirrorType(2);
+        break label657;
+        this.eCh.setPauseFlag(1);
+        break label717;
+        label2101:
+        if ((!this.eCi.isPushing()) || (!paramBundle.keySet().contains("watermarkImage"))) {
+          break label816;
         }
-        this.cIB.setWatermark((Bitmap)localObject4, f1, f2, f3);
-        break label820;
-        label2148:
+        this.eCh.setWatermark((Bitmap)localObject4, f1, f2, f3);
+        break label816;
+        label2143:
         if (((String)localObject4).equalsIgnoreCase("media"))
         {
-          this.cIB.setVolumeType(1);
-          break label918;
+          this.eCh.setVolumeType(1);
+          break label914;
         }
-        this.cIB.setVolumeType(0);
-        break label918;
+        this.eCh.setVolumeType(0);
+        break label914;
         bool2 = false;
-        break label945;
-        TL();
-        break label1220;
-        this.cIC.stopAudioRecord();
-        break label1274;
+        break label941;
+        auq();
+        break label1216;
+        this.eCi.stopAudioRecord();
+        break label1270;
         bool2 = false;
-        break label1301;
+        break label1297;
         bool2 = false;
-        break label1316;
+        break label1312;
         if (!paramBundle.keySet().contains("muted")) {
-          break label1328;
+          break label1324;
         }
         bool2 = paramBundle.getBoolean("muted", this.mMute);
-        if (!this.cIQ)
+        if (!this.eCw)
         {
           Log.i("TXLivePusherJSAdapterV1", String.format("parseAndApplyParams, enableMic: %b, mute: %b", new Object[] { Boolean.FALSE, Boolean.valueOf(this.mMute) }));
           bool2 = true;
         }
         if ((paramBoolean) || (bool2 != this.mMute)) {
-          this.cIC.setMute(bool2);
+          this.eCi.setMute(bool2);
         }
         this.mMute = bool2;
-        break label1328;
+        break label1324;
         if (!paramBundle.keySet().contains("mirror")) {
-          break label1525;
+          break label1521;
         }
         bool1 = paramBundle.getBoolean("mirror");
-        break label1525;
-        this.cIC.setBeautyFilter(0, i, j, 2);
-        break label1648;
+        break label1521;
+        this.eCi.setBeautyFilter(0, i, j, 2);
+        break label1644;
       }
-      label2181:
-      label2187:
-      label2194:
-      label2204:
-      label2210:
-      label2216:
-      label2344:
+      label2176:
+      label2182:
+      label2189:
+      label2199:
+      label2205:
+      label2211:
+      label2339:
       k = i;
-      label2317:
+      label2312:
       i = j;
     }
   }
   
-  private void co(boolean paramBoolean)
+  private void auq()
   {
-    AppMethodBeat.i(212594);
-    if ((!this.cIE) && (paramBoolean))
-    {
-      this.mVideoView.setVisibility(0);
-      this.cIC.startCameraPreview(this.mVideoView);
-      this.cIE = true;
-    }
-    AppMethodBeat.o(212594);
+    AppMethodBeat.i(326164);
+    this.eCi.stopCameraPreview(true);
+    this.eCk = false;
+    AppMethodBeat.o(326164);
   }
   
-  private void cp(boolean paramBoolean)
+  private void cU(boolean paramBoolean)
   {
-    AppMethodBeat.i(212601);
-    if (paramBoolean) {
-      this.cIC.startAudioRecord();
+    AppMethodBeat.i(326159);
+    if ((!this.eCk) && (paramBoolean))
+    {
+      this.mVideoView.setVisibility(0);
+      this.eCi.startCameraPreview(this.mVideoView);
+      this.eCk = true;
     }
-    AppMethodBeat.o(212601);
+    AppMethodBeat.o(326159);
+  }
+  
+  private void cV(boolean paramBoolean)
+  {
+    AppMethodBeat.i(326168);
+    if (paramBoolean) {
+      this.eCi.startAudioRecord();
+    }
+    AppMethodBeat.o(326168);
   }
   
   private void m(int paramInt, String paramString)
   {
     int i = 0;
-    AppMethodBeat.i(212565);
+    AppMethodBeat.i(326153);
     Log.i("TXLivePusherJSAdapterV1", "adjustHomeOrientation, angle:" + paramInt + ", orientation:" + paramString);
     if (paramInt == 1)
     {
@@ -609,10 +609,10 @@ public final class s
       Log.i("TXLivePusherJSAdapterV1", "adjustHomeOrientation, homeOrientation:".concat(String.valueOf(paramInt)));
       if (paramInt != -2147483648)
       {
-        this.cIB.setHomeOrientation(paramInt);
-        this.cIC.setConfig(this.cIB);
+        this.eCh.setHomeOrientation(paramInt);
+        this.eCi.setConfig(this.eCh);
       }
-      AppMethodBeat.o(212565);
+      AppMethodBeat.o(326153);
       return;
       if (paramInt == 3)
       {
@@ -647,7 +647,7 @@ public final class s
   
   private static void q(String paramString, Bundle paramBundle)
   {
-    AppMethodBeat.i(212643);
+    AppMethodBeat.i(326198);
     Iterator localIterator = paramBundle.keySet().iterator();
     while (localIterator.hasNext())
     {
@@ -663,100 +663,100 @@ public final class s
       }
     }
     Log.i("TXLivePusherJSAdapterV1", paramString);
-    AppMethodBeat.o(212643);
+    AppMethodBeat.o(326198);
   }
   
-  public final k TK()
+  public final k aud()
   {
-    AppMethodBeat.i(212604);
-    if (!this.mInited)
+    AppMethodBeat.i(326250);
+    if (this.eCm)
     {
-      localk = new k(-3, "uninited livePusher");
-      AppMethodBeat.o(212604);
-      return localk;
-    }
-    this.cIC.stopBGM();
-    TL();
-    this.cIC.stopAudioRecord();
-    this.cIC.stopPusher();
-    this.cIC.setPushListener(null);
-    this.mInited = false;
-    k localk = new k();
-    AppMethodBeat.o(212604);
-    return localk;
-  }
-  
-  public final k Ty()
-  {
-    AppMethodBeat.i(212611);
-    if (this.cIG)
-    {
-      if (this.cIH)
+      if (this.eCn)
       {
         localk = e("start", null);
-        AppMethodBeat.o(212611);
+        AppMethodBeat.o(326250);
         return localk;
       }
       localk = e("resume", null);
-      AppMethodBeat.o(212611);
+      AppMethodBeat.o(326250);
       return localk;
     }
     k localk = new k();
-    AppMethodBeat.o(212611);
+    AppMethodBeat.o(326250);
+    return localk;
+  }
+  
+  public final k aup()
+  {
+    AppMethodBeat.i(326242);
+    if (!this.mInited)
+    {
+      localk = new k(-3, "uninited livePusher");
+      AppMethodBeat.o(326242);
+      return localk;
+    }
+    this.eCi.stopBGM();
+    auq();
+    this.eCi.stopAudioRecord();
+    this.eCi.stopPusher();
+    this.eCi.setPushListener(null);
+    this.mInited = false;
+    k localk = new k();
+    AppMethodBeat.o(326242);
     return localk;
   }
   
   public final k b(TXCloudVideoView paramTXCloudVideoView, Bundle paramBundle)
   {
-    AppMethodBeat.i(212577);
+    AppMethodBeat.i(326221);
     if ((paramTXCloudVideoView == null) || (paramBundle == null))
     {
       paramTXCloudVideoView = new k(-1, "invalid params");
-      AppMethodBeat.o(212577);
+      AppMethodBeat.o(326221);
       return paramTXCloudVideoView;
     }
     q("InitLivePusher", paramBundle);
     this.mVideoView = paramTXCloudVideoView;
     this.mVideoView.disableLog(false);
-    this.cID = paramBundle.getString("pushUrl", "");
-    this.cIC.setPusherUrl(this.cID);
+    this.eCj = paramBundle.getString("pushUrl", "");
+    this.eCi.setPusherUrl(this.eCj);
     a(paramBundle, true);
-    this.cIK = paramBundle.getBoolean("autopush", this.cIK);
-    if ((this.cIK) && (this.cID != null) && (!this.cID.isEmpty()) && (!this.cIC.isPushing()))
+    this.eCq = paramBundle.getBoolean("autopush", this.eCq);
+    if ((this.eCq) && (this.eCj != null) && (!this.eCj.isEmpty()) && (!this.eCi.isPushing()))
     {
       Log.i("TXLivePusherJSAdapterV1", "initLivePusher: startPusher");
-      co(this.cIP);
-      cp(this.cIQ);
-      this.cIC.startPusher(this.cID);
+      cU(this.eCv);
+      cV(this.eCw);
+      this.eCi.startPusher(this.eCj);
     }
     this.mInited = true;
     paramTXCloudVideoView = new k();
-    AppMethodBeat.o(212577);
+    AppMethodBeat.o(326221);
     return paramTXCloudVideoView;
   }
   
-  public final k cn(boolean paramBoolean)
+  public final k cT(boolean paramBoolean)
   {
-    AppMethodBeat.i(212607);
-    this.cIG = this.cIC.isPushing();
-    if (this.cIG)
+    AppMethodBeat.i(326244);
+    this.eCm = this.eCi.isPushing();
+    if (this.eCm)
     {
       if (paramBoolean)
       {
-        this.cIH = paramBoolean;
-        if ((this.cGk) && (this.mLivePushListener != null)) {
+        this.eCn = paramBoolean;
+        if ((this.ezy) && (this.mLivePushListener != null)) {
           this.mLivePushListener.onPushEvent(5000, new Bundle());
         }
         localk = e("stop", null);
-        AppMethodBeat.o(212607);
+        AppMethodBeat.o(326244);
         return localk;
       }
       localk = e("pause", null);
-      AppMethodBeat.o(212607);
+      AppMethodBeat.o(326244);
       return localk;
     }
     k localk = new k();
-    AppMethodBeat.o(212607);
+    AppMethodBeat.o(326244);
     return localk;
   }
   
@@ -767,17 +767,17 @@ public final class s
     int i = 0;
     int j = 0;
     boolean bool2 = false;
-    AppMethodBeat.i(212592);
+    AppMethodBeat.i(326238);
     if (paramString == null)
     {
       paramString = new k(-1, "invalid params");
-      AppMethodBeat.o(212592);
+      AppMethodBeat.o(326238);
       return paramString;
     }
     if (!this.mInited)
     {
       paramString = new k(-3, "uninited livePusher");
-      AppMethodBeat.o(212592);
+      AppMethodBeat.o(326238);
       return paramString;
     }
     String str = "";
@@ -786,62 +786,62 @@ public final class s
     }
     Log.i("TXLivePusherJSAdapterV1", "operateLivePusher: type = " + paramString + " params = " + str);
     if (paramString.equalsIgnoreCase("start")) {
-      if ((this.cID != null) && (!this.cID.isEmpty()) && (!this.cIC.isPushing()))
+      if ((this.eCj != null) && (!this.eCj.isEmpty()) && (!this.eCi.isPushing()))
       {
-        co(this.cIP);
-        cp(this.cIQ);
-        this.cIC.startPusher(this.cID);
+        cU(this.eCv);
+        cV(this.eCw);
+        this.eCi.startPusher(this.eCj);
       }
     }
     for (;;)
     {
       paramString = new k();
-      AppMethodBeat.o(212592);
+      AppMethodBeat.o(326238);
       return paramString;
       if (paramString.equalsIgnoreCase("stop"))
       {
-        this.cIX = false;
-        this.cIC.stopBGM();
-        TL();
-        this.cIC.stopAudioRecord();
-        this.cIC.stopPusher();
+        this.eCD = false;
+        this.eCi.stopBGM();
+        auq();
+        this.eCi.stopAudioRecord();
+        this.eCi.stopPusher();
       }
       else if (paramString.equalsIgnoreCase("pause"))
       {
-        if ((this.cIX) && (this.cIC.isPushing())) {
-          this.cIC.turnOnFlashLight(false);
+        if ((this.eCD) && (this.eCi.isPushing())) {
+          this.eCi.turnOnFlashLight(false);
         }
-        this.cIC.pausePusher();
-        this.cIJ = this.cII;
-        if (this.cIJ) {
+        this.eCi.pausePusher();
+        this.eCp = this.eCo;
+        if (this.eCp) {
           e("pauseBGM", null);
         }
       }
       else if (paramString.equalsIgnoreCase("resume"))
       {
-        this.cIC.resumePusher();
-        if (this.cIJ) {
+        this.eCi.resumePusher();
+        if (this.eCp) {
           e("resumeBGM", null);
         }
       }
       else if (paramString.equalsIgnoreCase("startPreview"))
       {
-        if (this.cIC.isPushing())
+        if (this.eCi.isPushing())
         {
           Log.i("TXLivePusherJSAdapterV1", "do not support startPreview when pushing");
         }
         else
         {
-          TL();
-          co(this.cIP);
+          auq();
+          cU(this.eCv);
         }
       }
       else if (paramString.equalsIgnoreCase("stopPreview"))
       {
-        if (this.cIC.isPushing()) {
+        if (this.eCi.isPushing()) {
           Log.i("TXLivePusherJSAdapterV1", "do not support stopPreview when pushing");
         } else {
-          TL();
+          auq();
         }
       }
       else
@@ -852,8 +852,8 @@ public final class s
           for (bool1 = true;; bool1 = false)
           {
             this.mFrontCamera = bool1;
-            this.cIB.setFrontCamera(this.mFrontCamera);
-            this.cIC.switchCamera();
+            this.eCh.setFrontCamera(this.mFrontCamera);
+            this.eCi.switchCamera();
             break;
           }
         }
@@ -873,12 +873,12 @@ public final class s
             }
           }
           paramString = this.mSnapshotListener;
-          if ((this.cIC != null) && (this.cIC.isPushing())) {
-            this.cIC.snapshot(new TXLivePusher.ITXSnapshotListener()
+          if ((this.eCi != null) && (this.eCi.isPushing())) {
+            this.eCi.snapshot(new TXLivePusher.ITXSnapshotListener()
             {
               public final void onSnapshot(Bitmap paramAnonymousBitmap)
               {
-                AppMethodBeat.i(212741);
+                AppMethodBeat.i(326163);
                 if (paramString != null)
                 {
                   if (bool1)
@@ -891,17 +891,17 @@ public final class s
                       ((Matrix)localObject).setScale(0.5F, 0.5F);
                       localObject = Bitmap.createBitmap(paramAnonymousBitmap, 0, 0, i, j, (Matrix)localObject, false);
                       paramString.onSnapshot((Bitmap)localObject);
-                      s.S(paramAnonymousBitmap);
-                      AppMethodBeat.o(212741);
+                      s.aa(paramAnonymousBitmap);
+                      AppMethodBeat.o(326163);
                       return;
                     }
                     paramString.onSnapshot(paramAnonymousBitmap);
-                    AppMethodBeat.o(212741);
+                    AppMethodBeat.o(326163);
                     return;
                   }
                   paramString.onSnapshot(paramAnonymousBitmap);
                 }
-                AppMethodBeat.o(212741);
+                AppMethodBeat.o(326163);
               }
             });
           }
@@ -910,16 +910,16 @@ public final class s
         {
           if (paramString.equalsIgnoreCase("toggleTorch"))
           {
-            if (this.cIC.isPushing())
+            if (this.eCi.isPushing())
             {
-              if (!this.cIX)
+              if (!this.eCD)
               {
-                bool2 = this.cIC.turnOnFlashLight(bool1);
+                bool2 = this.eCi.turnOnFlashLight(bool1);
                 if (!bool2) {
                   break label672;
                 }
                 label627:
-                this.cIX = bool1;
+                this.eCD = bool1;
                 if (!bool2) {
                   break label681;
                 }
@@ -934,18 +934,18 @@ public final class s
               for (paramString = "Success";; paramString = "Failed")
               {
                 paramString = new k(i, paramString);
-                AppMethodBeat.o(212592);
+                AppMethodBeat.o(326238);
                 return paramString;
                 bool1 = false;
                 break;
-                bool1 = this.cIX;
+                bool1 = this.eCD;
                 break label627;
                 i = -2;
                 break label638;
               }
             }
             paramString = new k(-2, "fail");
-            AppMethodBeat.o(212592);
+            AppMethodBeat.o(326238);
             return paramString;
           }
           if (paramString.equalsIgnoreCase("playBGM"))
@@ -957,32 +957,32 @@ public final class s
             Log.i("TXLivePusherJSAdapterV1", "playBGM filePath = ".concat(String.valueOf(paramString)));
             if ((paramString != null) && (paramString.length() > 0))
             {
-              this.cIC.playBGM(paramString);
+              this.eCi.playBGM(paramString);
             }
             else
             {
               paramString = new k(-2, "fail");
-              AppMethodBeat.o(212592);
+              AppMethodBeat.o(326238);
               return paramString;
             }
           }
           else if (paramString.equalsIgnoreCase("stopBGM"))
           {
-            this.cIC.stopBGM();
-            this.cII = false;
+            this.eCi.stopBGM();
+            this.eCo = false;
           }
           else if (paramString.equalsIgnoreCase("pauseBGM"))
           {
-            this.cIC.pauseBGM();
-            this.cII = false;
+            this.eCi.pauseBGM();
+            this.eCo = false;
           }
           else
           {
             if (!paramString.equalsIgnoreCase("resumeBGM")) {
               break;
             }
-            this.cIC.resumeBGM();
-            this.cII = true;
+            this.eCi.resumeBGM();
+            this.eCo = true;
           }
         }
       }
@@ -996,14 +996,14 @@ public final class s
     label1087:
     for (d = paramJSONObject.optDouble("volume", 1.0D);; d = 1.0D)
     {
-      this.cIC.setBGMVolume((float)d);
+      this.eCi.setBGMVolume((float)d);
       break;
       if (paramString.equalsIgnoreCase("setMICVolume"))
       {
         if (paramJSONObject != null) {
           d = paramJSONObject.optDouble("volume", 1.0D);
         }
-        this.cIC.setMicVolume((float)d);
+        this.eCi.setMicVolume((float)d);
         break;
       }
       if (paramString.equalsIgnoreCase("sendMessage"))
@@ -1014,7 +1014,7 @@ public final class s
         }
         if (paramString != null)
         {
-          bool1 = this.cIC.sendMessageEx(paramString.getBytes());
+          bool1 = this.eCi.sendMessageEx(paramString.getBytes());
           if (bool1)
           {
             i = j;
@@ -1025,104 +1025,104 @@ public final class s
           for (paramString = "Success";; paramString = "Failed")
           {
             paramString = new k(i, paramString);
-            AppMethodBeat.o(212592);
+            AppMethodBeat.o(326238);
             return paramString;
             i = -2;
             break;
           }
         }
         paramString = new k(-2, "fail");
-        AppMethodBeat.o(212592);
+        AppMethodBeat.o(326238);
         return paramString;
       }
       paramString = new k(-4, "invalid operate command");
-      AppMethodBeat.o(212592);
+      AppMethodBeat.o(326238);
       return paramString;
     }
   }
   
   public final void notifyOrientationChanged(final int paramInt)
   {
-    AppMethodBeat.i(212562);
+    AppMethodBeat.i(326210);
     this.mHandler.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(212834);
+        AppMethodBeat.i(326174);
         s.a(s.this, paramInt);
         Log.i("TXLivePusherJSAdapterV1", "notifyOrientationChanged, angle:" + paramInt + ", orientation:" + s.a(s.this));
         s.a(s.this, paramInt, s.a(s.this));
-        AppMethodBeat.o(212834);
+        AppMethodBeat.o(326174);
       }
     });
-    AppMethodBeat.o(212562);
+    AppMethodBeat.o(326210);
   }
   
   public final void onAudioVolumeEvaluationNotify(int paramInt)
   {
-    AppMethodBeat.i(212627);
-    if ((this.cGl) && (this.mAudioVolumeListener != null)) {
+    AppMethodBeat.i(326289);
+    if ((this.ezz) && (this.mAudioVolumeListener != null)) {
       this.mAudioVolumeListener.onAudioVolumeEvaluationNotify(paramInt);
     }
-    AppMethodBeat.o(212627);
+    AppMethodBeat.o(326289);
   }
   
   public final void onBGMComplete(int paramInt)
   {
-    AppMethodBeat.i(212624);
-    this.cII = false;
-    if ((this.cIY) && (this.mBGMNotifyListener != null)) {
+    AppMethodBeat.i(326282);
+    this.eCo = false;
+    if ((this.eCE) && (this.mBGMNotifyListener != null)) {
       this.mBGMNotifyListener.onBGMComplete(paramInt);
     }
-    AppMethodBeat.o(212624);
+    AppMethodBeat.o(326282);
   }
   
   public final void onBGMProgress(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(212622);
-    if ((this.cIY) && (this.mBGMNotifyListener != null)) {
+    AppMethodBeat.i(326279);
+    if ((this.eCE) && (this.mBGMNotifyListener != null)) {
       this.mBGMNotifyListener.onBGMProgress(paramLong1, paramLong2);
     }
-    AppMethodBeat.o(212622);
+    AppMethodBeat.o(326279);
   }
   
   public final void onBGMStart()
   {
-    AppMethodBeat.i(212620);
-    this.cII = true;
-    if ((this.cIY) && (this.mBGMNotifyListener != null)) {
+    AppMethodBeat.i(326271);
+    this.eCo = true;
+    if ((this.eCE) && (this.mBGMNotifyListener != null)) {
       this.mBGMNotifyListener.onBGMStart();
     }
-    AppMethodBeat.o(212620);
+    AppMethodBeat.o(326271);
   }
   
   public final void onNetStatus(Bundle paramBundle)
   {
-    AppMethodBeat.i(212618);
+    AppMethodBeat.i(326265);
     if (this.mLivePushListener != null) {
       this.mLivePushListener.onNetStatus(paramBundle);
     }
     Log.i("TXLivePusherJSAdapterV1", "onNetStatus:".concat(String.valueOf(String.format("%-16s %-16s %-16s %-12s %-12s %-12s %-12s %-14s %-14s %-14s %-16s %-16s", new Object[] { "CPU:" + paramBundle.getString("CPU_USAGE"), "RES:" + paramBundle.getInt("VIDEO_WIDTH") + "*" + paramBundle.getInt("VIDEO_HEIGHT"), "SPD:" + paramBundle.getInt("NET_SPEED") + "Kbps", "JIT:" + paramBundle.getInt("NET_JITTER"), "FPS:" + paramBundle.getInt("VIDEO_FPS"), "GOP:" + paramBundle.getInt("VIDEO_GOP") + "s", "ARA:" + paramBundle.getInt("AUDIO_BITRATE") + "Kbps", "QUE:" + paramBundle.getInt("AUDIO_CACHE") + " | " + paramBundle.getInt("VIDEO_CACHE") + "," + paramBundle.getInt("V_SUM_CACHE_SIZE") + "," + paramBundle.getInt("V_DEC_CACHE_SIZE") + " | " + paramBundle.getInt("AV_RECV_INTERVAL") + "," + paramBundle.getInt("AV_PLAY_INTERVAL") + "," + String.format("%.1f", new Object[] { Float.valueOf(paramBundle.getFloat("AUDIO_CACHE_THRESHOLD")) }).toString(), "VRA:" + paramBundle.getInt("VIDEO_BITRATE") + "Kbps", "DRP:" + paramBundle.getInt("AUDIO_DROP") + "|" + paramBundle.getInt("VIDEO_DROP"), "SVR:" + paramBundle.getString("SERVER_IP"), "AUDIO:" + paramBundle.getString("AUDIO_PLAY_INFO") }))));
-    AppMethodBeat.o(212618);
+    AppMethodBeat.o(326265);
   }
   
   public final void onPushEvent(int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(212614);
+    AppMethodBeat.i(326255);
     if ((paramInt == -1307) || (paramInt == -1313)) {
       e("stop", null);
     }
     for (;;)
     {
-      if ((this.cGk) && (this.mLivePushListener != null)) {
+      if ((this.ezy) && (this.mLivePushListener != null)) {
         this.mLivePushListener.onPushEvent(paramInt, paramBundle);
       }
       paramBundle = paramBundle.getString("EVT_MSG");
       Log.i("TXLivePusherJSAdapterV1", "onPushEvent: event = " + paramInt + " message = " + paramBundle);
-      AppMethodBeat.o(212614);
+      AppMethodBeat.o(326255);
       return;
-      if ((paramInt == 1003) && (this.cIX)) {
-        this.cIC.turnOnFlashLight(this.cIX);
+      if ((paramInt == 1003) && (this.eCD)) {
+        this.eCi.turnOnFlashLight(this.eCD);
       }
     }
   }
@@ -1147,58 +1147,58 @@ public final class s
     this.mSnapshotListener = paramITXSnapshotListener;
   }
   
-  public final k u(Bundle paramBundle)
+  public final k z(Bundle paramBundle)
   {
     boolean bool = true;
-    AppMethodBeat.i(212583);
+    AppMethodBeat.i(326225);
     if (paramBundle == null)
     {
       paramBundle = new k(-1, "invalid params");
-      AppMethodBeat.o(212583);
+      AppMethodBeat.o(326225);
       return paramBundle;
     }
     q("updateLivePusher", paramBundle);
     if (!this.mInited)
     {
       paramBundle = new k(-3, "uninited livePusher");
-      AppMethodBeat.o(212583);
+      AppMethodBeat.o(326225);
       return paramBundle;
     }
     a(paramBundle, false);
-    String str = paramBundle.getString("pushUrl", this.cID);
-    if ((str != null) && (!str.isEmpty()) && (this.cID != null) && (!this.cID.equalsIgnoreCase(str)) && (this.cIC.isPushing()))
+    String str = paramBundle.getString("pushUrl", this.eCj);
+    if ((str != null) && (!str.isEmpty()) && (this.eCj != null) && (!this.eCj.equalsIgnoreCase(str)) && (this.eCi.isPushing()))
     {
       Log.i("TXLivePusherJSAdapterV1", "updateLivePusher: stopPusher");
-      TL();
-      this.cIC.stopAudioRecord();
-      this.cIC.stopPusher();
+      auq();
+      this.eCi.stopAudioRecord();
+      this.eCi.stopPusher();
     }
-    this.cID = str;
-    this.cIC.setPusherUrl(this.cID);
-    this.cIK = paramBundle.getBoolean("autopush", this.cIK);
-    if ((this.cIK) && (this.cID != null) && (!this.cID.isEmpty()) && (!this.cIC.isPushing()))
+    this.eCj = str;
+    this.eCi.setPusherUrl(this.eCj);
+    this.eCq = paramBundle.getBoolean("autopush", this.eCq);
+    if ((this.eCq) && (this.eCj != null) && (!this.eCj.isEmpty()) && (!this.eCi.isPushing()))
     {
       Log.i("TXLivePusherJSAdapterV1", "updateLivePusher: startPusher");
-      co(this.cIP);
-      if (!this.cIQ) {
+      cU(this.eCv);
+      if (!this.eCw) {
         break label297;
       }
-      this.cIC.stopAudioRecord();
-      cp(true);
-      paramBundle = this.cIC;
-      if (this.cIQ) {
+      this.eCi.stopAudioRecord();
+      cV(true);
+      paramBundle = this.eCi;
+      if (this.eCw) {
         break label307;
       }
     }
     for (;;)
     {
       paramBundle.setMute(bool);
-      this.cIC.startPusher(this.cID);
+      this.eCi.startPusher(this.eCj);
       paramBundle = new k();
-      AppMethodBeat.o(212583);
+      AppMethodBeat.o(326225);
       return paramBundle;
       label297:
-      this.cIC.stopAudioRecord();
+      this.eCi.stopAudioRecord();
       break;
       label307:
       bool = false;
@@ -1207,7 +1207,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.live.s
  * JD-Core Version:    0.7.0.1
  */

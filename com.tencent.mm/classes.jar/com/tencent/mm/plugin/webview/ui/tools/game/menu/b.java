@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools.game.menu;
 
 import android.view.MenuItem;
-import com.tencent.mm.ui.base.o;
+import com.tencent.mm.ui.base.s;
 
 public final class b
 {
@@ -12,12 +12,12 @@ public final class b
   
   public static abstract interface b
   {
-    public abstract void onCreateMMMenu(o paramo);
+    public abstract void onCreateMMMenu(s params);
   }
   
   public static abstract interface c
   {
-    public abstract void d(MenuItem paramMenuItem);
+    public abstract void f(MenuItem paramMenuItem);
   }
 }
 

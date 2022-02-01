@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.finder.feed;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class f$i
-  extends q
-  implements a<x>
+  extends u
+  implements a<ah>
 {
-  public static final i xxi;
+  public static final i AUH;
   
   static
   {
     AppMethodBeat.i(178226);
-    xxi = new i();
+    AUH = new i();
     AppMethodBeat.o(178226);
   }
   

@@ -1,259 +1,166 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Parcelable;
-import android.os.PersistableBundle;
-import android.util.SparseArray;
-import com.tencent.luggage.sdk.launching.a;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.type.IPCString;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.modelappbrand.LaunchParamsOptional;
-import com.tencent.mm.plugin.appbrand.api.d;
-import com.tencent.mm.plugin.appbrand.api.g;
-import com.tencent.mm.plugin.appbrand.app.PluginAppBrand;
-import com.tencent.mm.plugin.appbrand.appcache.j.a;
-import com.tencent.mm.plugin.appbrand.config.HalfScreenConfig;
-import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import java.util.Collection;
-import java.util.List;
-import kotlin.a.e;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.n.n;
-import kotlin.x;
+import com.tencent.mm.plugin.appbrand.appcache.bk;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/launching/ExportWxaInstrumentation;", "", "()V", "TAG", "", "value", "", "isForcedOpenWxaAppForTypedDemo", "()Z", "setForcedOpenWxaAppForTypedDemo", "(Z)V", "mWeAppOpenBundleHashMap", "Landroid/util/SparseArray;", "Lcom/tencent/mm/plugin/appbrand/api/WeAppOpenBundle;", "executeStartAppForResult", "", "context", "Landroid/content/Context;", "openBundle", "pollOpenBundle", "hash", "", "assertValid", "toInternalParcel", "Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;", "plugin-appbrand-integration_release"})
 public final class t
+  extends MAutoStorage<r>
 {
-  private static boolean pUC;
-  private static final SparseArray<g> pUD;
-  public static final t pUE;
+  public static final String[] nVW;
   
   static
   {
-    AppMethodBeat.i(50758);
-    pUE = new t();
-    pUD = new SparseArray();
-    AppMethodBeat.o(50758);
+    AppMethodBeat.i(146069);
+    nVW = new String[] { MAutoStorage.getCreateSQLs(r.DB_INFO, "DevPkgLaunchExtInfo") };
+    AppMethodBeat.o(146069);
   }
   
-  public static g BI(int paramInt)
+  public t(ISQLiteDatabase paramISQLiteDatabase)
   {
-    AppMethodBeat.i(280076);
-    synchronized (pUD)
-    {
-      paramInt = pUD.indexOfKey(paramInt);
-      if (paramInt >= 0)
-      {
-        localObject1 = (g)pUD.valueAt(paramInt);
-        if (localObject1 != null) {
-          pUD.removeAt(paramInt);
-        }
-        for (;;)
-        {
-          AppMethodBeat.o(280076);
-          return localObject1;
-          localObject1 = null;
-        }
-      }
-      Object localObject1 = x.aazN;
-      AppMethodBeat.o(280076);
-      return null;
-    }
+    super(paramISQLiteDatabase, r.DB_INFO, "DevPkgLaunchExtInfo", r.INDEX_CREATE);
   }
   
-  public static void a(g paramg)
+  public final boolean D(String paramString1, int paramInt, String paramString2)
   {
-    AppMethodBeat.i(280077);
-    if (paramg == null)
-    {
-      paramg = (Throwable)new IllegalArgumentException((Throwable)new NullPointerException());
-      AppMethodBeat.o(280077);
-      throw paramg;
-    }
-    Object localObject = (CharSequence)paramg.username;
-    if ((localObject == null) || (((CharSequence)localObject).length() == 0))
-    {
-      i = 1;
-      if (i == 0) {
-        break label121;
-      }
-      localObject = (CharSequence)paramg.appId;
-      if ((localObject != null) && (((CharSequence)localObject).length() != 0)) {
-        break label116;
-      }
-    }
-    label116:
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0) {
-        break label121;
-      }
-      paramg = (Throwable)new IllegalArgumentException("Both username & appId is EMPTY");
-      AppMethodBeat.o(280077);
-      throw paramg;
-      i = 0;
-      break;
-    }
-    label121:
-    localObject = (CharSequence)paramg.username;
-    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
-    for (i = 1; i == 0; i = 0)
-    {
-      localObject = paramg.username;
-      p.j(localObject, "username");
-      if (n.pu((String)localObject, "@app")) {
-        break;
-      }
-      paramg = (Throwable)new IllegalArgumentException("Invalid weapp username " + paramg.username);
-      AppMethodBeat.o(280077);
-      throw paramg;
-    }
-    if ((!j.a.za(paramg.cBU)) && (!j.a.vB(paramg.cBU)))
-    {
-      paramg = (Throwable)new IllegalArgumentException("Invalid weapp versionType " + paramg.cBU);
-      AppMethodBeat.o(280077);
-      throw paramg;
-    }
-    if (paramg.scene <= 1000)
-    {
-      paramg = (Throwable)new IllegalArgumentException("Invalid weapp enter scene " + paramg.scene);
-      AppMethodBeat.o(280077);
-      throw paramg;
-    }
-    AppMethodBeat.o(280077);
+    AppMethodBeat.i(146067);
+    boolean bool = d(paramString1, paramInt, paramString2, true);
+    AppMethodBeat.o(146067);
+    return bool;
   }
   
-  public static LaunchParcel b(g paramg)
+  public final String cR(String paramString, int paramInt)
   {
-    AppMethodBeat.i(280078);
-    p.k(paramg, "$this$toInternalParcel");
-    if (paramg.nBE.isEnable()) {
-      paramg.launchMode = 2;
-    }
-    LaunchParcel localLaunchParcel = new LaunchParcel();
-    localLaunchParcel.username = paramg.username;
-    localLaunchParcel.appId = paramg.appId;
-    localLaunchParcel.version = paramg.version;
-    localLaunchParcel.cBU = paramg.cBU;
-    localLaunchParcel.nBq = paramg.nBq;
-    int i = paramg.scene;
-    if (e.contains(new Integer[] { Integer.valueOf(1176), Integer.valueOf(1177) }, Integer.valueOf(i))) {
-      localLaunchParcel.nBq = LaunchParcel.ake(localLaunchParcel.nBq);
-    }
-    ??? = paramg.nBr;
-    if (??? != null)
+    AppMethodBeat.i(146068);
+    if (Util.isNullOrNil(paramString))
     {
-      ??? = ((d)???).bFa();
-      localLaunchParcel.nYf = ((String)???);
-      localLaunchParcel.nYe = paramg.nBs;
-      ??? = new AppBrandStatObject();
-      ((AppBrandStatObject)???).scene = paramg.scene;
-      ((AppBrandStatObject)???).fvd = paramg.fvd;
-      ((AppBrandStatObject)???).fXa = paramg.nBt;
-      ((AppBrandStatObject)???).fXb = paramg.nBu;
-      localLaunchParcel.pdk = ((AppBrandStatObject)???);
-      localLaunchParcel.cwV = paramg.nBz;
-      if (paramg.nBv == null) {
-        break label507;
+      AppMethodBeat.o(146068);
+      return "";
+    }
+    r localr = new r();
+    localr.field_appId = paramString;
+    localr.field_versionType = paramInt;
+    if (super.get(localr, r.qDJ))
+    {
+      paramString = localr.field_extJson;
+      AppMethodBeat.o(146068);
+      return paramString;
+    }
+    AppMethodBeat.o(146068);
+    return "";
+  }
+  
+  public final boolean d(String paramString1, int paramInt, String paramString2, boolean paramBoolean)
+  {
+    AppMethodBeat.i(182793);
+    boolean bool;
+    if (Util.isNullOrNil(paramString1))
+    {
+      bool = false;
+      Log.i("MicroMsg.AppBrand.DevPkgLaunchExtInfoStorage", "setExtInfo() appId:%s,versionType:%s,ret:%b,updatePkgManifests:%b,extInfo:%s", new Object[] { paramString1, Integer.valueOf(paramInt), Boolean.valueOf(bool), Boolean.valueOf(paramBoolean), paramString2 });
+      if ((bool) && (paramBoolean) && (TextUtils.isEmpty(paramString2))) {
+        break label405;
       }
-      ??? = (a)new a(paramg);
-      localLaunchParcel.pZl = ((a)???);
-      localLaunchParcel.nBw = paramg.nBw;
-      localLaunchParcel.fWY = paramg.fWY;
-      localLaunchParcel.launchMode = paramg.launchMode;
-      ??? = new PersistableBundle();
-      ((PersistableBundle)???).putString("KEY_OPENSDK_AD_TRACE_KEY", paramg.nBy);
-      localLaunchParcel.pZn = ((PersistableBundle)???);
-      localLaunchParcel.nBB = paramg.nBB;
-      localLaunchParcel.pZo = ((Parcelable)paramg.nBC);
-      localLaunchParcel.nBE = paramg.nBE;
-      localLaunchParcel.nBF = paramg.nBF;
-      localLaunchParcel.nBJ = paramg.nBJ;
-      localLaunchParcel.pdk.chatType = paramg.chatType;
-      localLaunchParcel.pZq = paramg.hashCode();
     }
     for (;;)
     {
-      synchronized (pUD)
+      try
       {
-        pUD.put(localLaunchParcel.pZq, paramg);
-        x localx = x.aazN;
-        localLaunchParcel.pZj = new LaunchParamsOptional();
-        ??? = (CharSequence)paramg.cwU;
-        if ((??? == null) || (((CharSequence)???).length() == 0))
+        paramString2 = new JSONObject(paramString2);
+        if (paramString2 == null) {}
+      }
+      catch (Exception localException3)
+      {
+        try
         {
-          i = 1;
-          if (i != 0)
+          localObject1 = paramString2.optJSONArray("module_list");
+          if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
           {
-            ??? = (CharSequence)paramg.cwT;
-            if ((??? != null) && (((CharSequence)???).length() != 0)) {
-              break label527;
+            bk.cha();
+            bk.t(paramString1, paramInt, ((JSONArray)localObject1).toString());
+          }
+        }
+        catch (Exception localException3)
+        {
+          try
+          {
+            localObject1 = paramString2.optString("without_lib_md5");
+          }
+          catch (Exception localException3)
+          {
+            try
+            {
+              if (!Util.isNullOrNil((String)localObject1))
+              {
+                bk.cha();
+                bk.b(paramString1, "__WITHOUT_PLUGINCODE__", paramInt, (String)localObject1);
+              }
             }
-            i = 1;
-            if (i != 0) {}
+            catch (Exception localException3)
+            {
+              try
+              {
+                paramString2 = paramString2.optString("widget_list");
+                if (!TextUtils.isEmpty(paramString2))
+                {
+                  bk.cha();
+                  bk.c(paramString1, "", paramInt, paramString2);
+                }
+                AppMethodBeat.o(182793);
+                return bool;
+                Object localObject1 = new r();
+                ((r)localObject1).field_appId = paramString1;
+                ((r)localObject1).field_versionType = paramInt;
+                if (super.get((IAutoDBItem)localObject1, r.qDJ))
+                {
+                  ((r)localObject1).field_extJson = Util.nullAs(paramString2, "{}");
+                  bool = super.update((IAutoDBItem)localObject1, new String[0]);
+                  break;
+                }
+                ((r)localObject1).field_extJson = Util.nullAs(paramString2, "{}");
+                bool = super.insert((IAutoDBItem)localObject1);
+                break;
+                paramString2 = paramString2;
+                Log.e("MicroMsg.AppBrand.DevPkgLaunchExtInfoStorage", "setExtInfo parse failed, appId[%s], type[%d], e[%s]", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
+                paramString2 = null;
+                continue;
+                bk.cha();
+                bk.bD(paramString1, paramInt);
+                continue;
+                localException1 = localException1;
+                Log.printErrStackTrace("MicroMsg.AppBrand.DevPkgLaunchExtInfoStorage", localException1, "extract module_list with appId[%s], type[%d]", new Object[] { paramString1, Integer.valueOf(paramInt) });
+                continue;
+                localException2 = localException2;
+                Object localObject2 = null;
+                continue;
+                localException3 = localException3;
+                Log.printErrStackTrace("MicroMsg.AppBrand.DevPkgLaunchExtInfoStorage", localException3, "extract withoutLibMd5 with appId[%s], type[%d]", new Object[] { paramString1, Integer.valueOf(paramInt) });
+                continue;
+              }
+              catch (Exception paramString2)
+              {
+                Log.printErrStackTrace("MicroMsg.AppBrand.DevPkgLaunchExtInfoStorage", paramString2, "extract widget_list with appId[%s], type[%d]", new Object[] { paramString1, Integer.valueOf(paramInt) });
+                continue;
+              }
+            }
           }
-          else
-          {
-            localLaunchParcel.pZj.cwU = paramg.cwU;
-            localLaunchParcel.pZj.cwT = paramg.cwT;
-          }
-          localLaunchParcel.pZj.lyw = paramg.lyw;
-          if (paramg.lyw != 0) {
-            localLaunchParcel.launchMode = 1;
-          }
-          paramg = paramg.nBD;
-          if (paramg != null) {
-            localLaunchParcel.nBD.addAll((Collection)paramg);
-          }
-          AppMethodBeat.o(280078);
-          return localLaunchParcel;
-          ??? = null;
-          break;
-          label507:
-          ??? = null;
         }
       }
-      label527:
-      i = 0;
+      label405:
+      paramString2 = null;
     }
-  }
-  
-  public static boolean bZQ()
-  {
-    AppMethodBeat.i(280073);
-    com.tencent.mm.plugin.appbrand.service.t localt = (com.tencent.mm.plugin.appbrand.service.t)h.ae(com.tencent.mm.plugin.appbrand.service.t.class);
-    if ((localt != null) && (localt.bFs() == true))
-    {
-      boolean bool = PluginAppBrand.getProcessSharedPrefs().getBoolean("com.tencent.mm.plugin.appbrand.launching.isForcedOpenWxaAppForTypedDemo", false);
-      AppMethodBeat.o(280073);
-      return bool;
-    }
-    AppMethodBeat.o(280073);
-    return false;
-  }
-  
-  public static void iQ(boolean paramBoolean)
-  {
-    AppMethodBeat.i(280074);
-    pUC = paramBoolean;
-    PluginAppBrand.getProcessSharedPrefs().edit().putBoolean("com.tencent.mm.plugin.appbrand.launching.isForcedOpenWxaAppForTypedDemo", paramBoolean).apply();
-    AppMethodBeat.o(280074);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "result", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "onWXAppResult", "com/tencent/mm/plugin/appbrand/launching/ExportWxaInstrumentation$toInternalParcel$1$2"})
-  static final class a<R extends Parcelable>
-    implements a<IPCString>
-  {
-    a(g paramg) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.t
  * JD-Core Version:    0.7.0.1
  */

@@ -19,12 +19,12 @@ public class AssetTrackSegment
   
   protected AssetTrackSegment(CMTimeRange paramCMTimeRange1, CMTimeRange paramCMTimeRange2)
   {
-    AppMethodBeat.i(188351);
+    AppMethodBeat.i(215869);
     this.scaleDuration = CMTime.CMTimeZero;
     this.timeMapping = new CMTimeMapping(paramCMTimeRange1, paramCMTimeRange2);
     this.scaleDuration = paramCMTimeRange2.getDuration().clone();
     this.timeRange = paramCMTimeRange2.clone();
-    AppMethodBeat.o(188351);
+    AppMethodBeat.o(215869);
   }
   
   public CMTime getScaleDuration()

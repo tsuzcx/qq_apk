@@ -81,11 +81,11 @@ public class DataRangeTracker
   
   public void addRange(long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    AppMethodBeat.i(244613);
+    AppMethodBeat.i(212359);
     if (paramLong1 > paramLong2)
     {
       Logger.e("DataRangeTracker", "[addRange] illegal arguments! beginPos(%s) > endPos(%s)", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
-      AppMethodBeat.o(244613);
+      AppMethodBeat.o(212359);
       return;
     }
     this.lock.writeLock().lock();
@@ -125,7 +125,7 @@ public class DataRangeTracker
       finally
       {
         this.lock.writeLock().unlock();
-        AppMethodBeat.o(244613);
+        AppMethodBeat.o(212359);
       }
       this.mDownloadDataList.addAll(localArrayList);
       label291:
@@ -151,10 +151,10 @@ public class DataRangeTracker
         }
         finally
         {
-          AppMethodBeat.o(244613);
+          AppMethodBeat.o(212359);
         }
       }
-      AppMethodBeat.o(244613);
+      AppMethodBeat.o(212359);
       return;
       label433:
       i += 1;
@@ -324,7 +324,7 @@ public class DataRangeTracker
       int i;
       try
       {
-        AppMethodBeat.i(244623);
+        AppMethodBeat.i(212361);
         Logger.i("DataRangeTracker", "[lock] position = [" + paramLong1 + "]. size = [" + paramInt + "]. timeout = [" + paramLong2 + "].");
         this.waitingPosition = paramLong1;
         this.waitingSize = paramInt;
@@ -345,7 +345,7 @@ public class DataRangeTracker
       }
       else
       {
-        AppMethodBeat.o(244623);
+        AppMethodBeat.o(212361);
         return true;
       }
       if (isCached(this.waitingPosition, this.waitingSize))
@@ -402,7 +402,7 @@ public class DataRangeTracker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.DataRangeTracker
  * JD-Core Version:    0.7.0.1
  */

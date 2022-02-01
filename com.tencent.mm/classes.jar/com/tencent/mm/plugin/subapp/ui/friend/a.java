@@ -8,167 +8,252 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.l;
-import com.tencent.mm.f.c.ax;
-import com.tencent.mm.model.aq;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.k.f;
+import com.tencent.mm.model.ar;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.model.cn;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatBrands.Business.Entries;
-import com.tencent.mm.storage.ah;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bl;
-import com.tencent.mm.storage.bm;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.au;
 import com.tencent.mm.storage.bn;
 import com.tencent.mm.storage.bo;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.ca.a;
-import com.tencent.mm.storage.ca.d;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.cc.a;
+import com.tencent.mm.storage.cc.f;
 import junit.framework.Assert;
 
 public final class a
   implements AdapterView.OnItemClickListener
 {
-  private b Met;
+  private b SFJ;
   private Context context;
-  private boolean lBX = false;
+  private boolean otH = false;
   
   public a(Context paramContext, b paramb, boolean paramBoolean)
   {
     this.context = paramContext;
-    this.Met = paramb;
-    this.lBX = paramBoolean;
+    this.SFJ = paramb;
+    this.otH = paramBoolean;
   }
   
-  private static void a(Context paramContext, bl parambl, bn parambn, boolean paramBoolean)
+  private static void a(Context paramContext, bn parambn, bp parambp, boolean paramBoolean1, boolean paramBoolean2)
   {
-    boolean bool2 = true;
-    AppMethodBeat.i(29023);
-    String str = parambn.field_msgContent;
+    AppMethodBeat.i(292044);
+    String str = parambp.field_msgContent;
     Log.w("MicroMsg.FConversationOnItemClickListener", "dealClickVerifyMsgEvent : ".concat(String.valueOf(str)));
     if ((str == null) || (str.length() <= 0))
     {
-      AppMethodBeat.o(29023);
+      AppMethodBeat.o(292044);
       return;
     }
-    bh.beI();
-    ca.d locald = com.tencent.mm.model.c.bbO().aOT(str);
-    if ((locald != null) && (!Util.isNullOrNil(locald.fcC)))
+    bh.bCz();
+    cc.f localf = com.tencent.mm.model.c.bzD().aLT(str);
+    Intent localIntent;
+    if ((localf != null) && (!Util.isNullOrNil(localf.hgk)))
     {
-      boolean bool1;
-      as localas;
-      Intent localIntent;
-      if (locald.fcC.length() > 0)
+      boolean bool;
+      au localau;
+      label251:
+      int j;
+      if (localf.hgk.length() > 0)
       {
-        bool1 = true;
-        Assert.assertTrue(bool1);
-        bh.beI();
-        localas = com.tencent.mm.model.c.bbL().RG(locald.fcC);
+        bool = true;
+        Assert.assertTrue(bool);
+        bh.bCz();
+        localau = com.tencent.mm.model.c.bzA().JE(localf.hgk);
         localIntent = new Intent();
-        if (paramBoolean == true) {
+        if (paramBoolean1 == true) {
           localIntent.putExtra("Accept_NewFriend_FromOutside", true);
         }
         localIntent.putExtra("Contact_ShowUserName", false);
         localIntent.putExtra("Contact_ShowFMessageList", true);
-        localIntent.putExtra("Contact_Scene", locald.scene);
-        localIntent.putExtra("Verify_ticket", locald.BLy);
-        localIntent.putExtra("Contact_Source_FMessage", locald.scene);
-        if ((localas == null) || ((int)localas.jxt <= 0) || (!com.tencent.mm.contact.d.rk(localas.field_type))) {
-          break label745;
+        localIntent.putExtra("Contact_Scene", localf.scene);
+        localIntent.putExtra("Verify_ticket", localf.pPi);
+        localIntent.putExtra("Contact_Source_FMessage", localf.scene);
+        if (((parambp.field_isSend != 1) || (parambp.field_type != 1)) && ((!parambp.jbg()) || (parambp.field_type != 3)) && ((parambp.field_isSend != 1) || (parambp.field_type != 2))) {
+          break label989;
         }
-        localIntent.putExtra("Contact_User", localas.field_username);
-        com.tencent.mm.plugin.subapp.b.mIH.a(localIntent, localas.field_username);
-        label253:
-        str = locald.content;
-        parambn = str;
+        localIntent.putExtra("Contact_Conversation_IsSelfSendAdd", true);
+        if ((parambn != null) && (!com.tencent.mm.contact.d.rs(localau.field_type)))
+        {
+          l = com.tencent.mm.k.i.aRC().getInt("VerifyUserTicketTimeExceed", 259200) * 1000L;
+          Log.i("MicroMsg.FConversationOnItemClickListener", "expired time , defaultExpireTime = ".concat(String.valueOf(l)));
+          if (((parambn.field_state != 0) && (parambn.field_state != 2)) || (cn.bDv() - parambn.field_lastModifiedTime < l)) {
+            break label1047;
+          }
+          i = 1;
+          label330:
+          if ((au.bwO(localau.field_username)) && (i != 0))
+          {
+            localIntent.putExtra("Contact_Conversation_IsExpireTimeAndOpenIm", true);
+            Log.i("MicroMsg.FConversationOnItemClickListener", "dealVerifyMsg is openim need hide reply.");
+          }
+        }
+        if (au.bwO(localau.field_username))
+        {
+          paramBoolean2 = true;
+          Log.i("MicroMsg.FConversationOnItemClickListener", "dealVerifyMsg is openim need hide reply.");
+        }
+        localIntent.putExtra("Contact_Conversation_IsFromNewFriendToProfile", true);
+        localIntent.putExtra("Contact_Conversation_IsForceHideReplyBtn", paramBoolean2);
+        j = 0;
+        i = 0;
+        if ((localau == null) || ((int)localau.maN <= 0) || (!com.tencent.mm.contact.d.rs(localau.field_type))) {
+          break label1053;
+        }
+        localIntent.putExtra("Contact_User", localau.field_username);
+        com.tencent.mm.plugin.subapp.a.pFo.a(localIntent, localau.field_username);
+        localIntent.putExtra("Contact_Conversation_IsContact", true);
+        j = i;
+        label474:
+        str = localf.content;
+        parambp = str;
         if (Util.nullAsNil(str).length() <= 0) {}
-        switch (locald.scene)
+        switch (localf.scene)
         {
         case 19: 
         case 20: 
         case 21: 
         default: 
-          parambn = paramContext.getString(R.l.euW);
-          label348:
-          localIntent.putExtra("Contact_Content", parambn);
-          if ((locald.VGW == 1) && (!Util.isNullOrNil(locald.VGY))) {
-            localIntent.putExtra("Safety_Warning_Detail", locald.VGY);
+          parambp = paramContext.getString(R.l.gxw);
+          label572:
+          localIntent.putExtra("Contact_Content", parambp);
+          if ((localf.adkR == 1) && (!Util.isNullOrNil(localf.adkT))) {
+            localIntent.putExtra("Safety_Warning_Detail", localf.adkT);
           }
-          localIntent.putExtra("Contact_verify_Scene", locald.scene);
-          if (((locald.scene == 14) || (locald.scene == 8)) && (!Util.isNullOrNil(locald.chatroomName)))
+          localIntent.putExtra("Contact_verify_Scene", localf.scene);
+          if (((localf.scene == 14) || (localf.scene == 8)) && (!Util.isNullOrNil(localf.chatroomName)))
           {
-            bh.beI();
-            parambn = com.tencent.mm.model.c.bbV().Rw(locald.chatroomName);
-            if (parambn != null) {
-              localIntent.putExtra("Contact_RoomNickname", parambn.PJ(locald.fcC));
+            bh.bCz();
+            parambp = com.tencent.mm.model.c.bzK().Ju(localf.chatroomName);
+            if (parambp != null) {
+              localIntent.putExtra("Contact_RoomNickname", parambp.getDisplayName(localf.hgk));
             }
           }
-          localIntent.putExtra("Contact_Uin", locald.GZN);
-          localIntent.putExtra("Contact_QQNick", locald.mXr);
-          localIntent.putExtra("Contact_Mobile_MD5", locald.VGG);
+          localIntent.putExtra("Contact_Uin", localf.MXS);
+          localIntent.putExtra("Contact_QQNick", localf.pTZ);
+          localIntent.putExtra("Contact_Mobile_MD5", localf.adkz);
           localIntent.putExtra("User_From_Fmessage", true);
           localIntent.putExtra("Contact_from_msgType", 37);
-          if ((localas == null) || (!com.tencent.mm.contact.d.rk(localas.field_type))) {
+          if ((localau == null) || (!com.tencent.mm.contact.d.rs(localau.field_type))) {
             localIntent.putExtra("Contact_KSnsIFlag", 0);
           }
-          localIntent.putExtra("Contact_KSnsBgUrl", locald.VGU);
-          localIntent.putExtra("verify_gmail", locald.mTO);
-          localIntent.putExtra("source_from_user_name", locald.sourceUserName);
-          localIntent.putExtra("source_from_nick_name", locald.sourceNickName);
-          localIntent.putExtra("share_card_username", locald.VGZ);
-          localIntent.putExtra("share_card_nickname", locald.VHa);
-          localIntent.putExtra("room_name", locald.chatroomName);
-          if (parambl != null) {
-            if (cm.bfD() - parambl.field_lastModifiedTime < 259200000L) {
-              break label960;
+          localIntent.putExtra("Contact_KSnsBgUrl", localf.adkP);
+          localIntent.putExtra("verify_gmail", localf.pQw);
+          localIntent.putExtra("source_from_user_name", localf.sourceUserName);
+          localIntent.putExtra("source_from_nick_name", localf.sourceNickName);
+          localIntent.putExtra("share_card_username", localf.adkU);
+          localIntent.putExtra("share_card_nickname", localf.adkV);
+          localIntent.putExtra("room_name", localf.chatroomName);
+          if (parambn != null) {
+            if (cn.bDv() - parambn.field_lastModifiedTime < 259200000L) {
+              break label1325;
             }
           }
           break;
         }
       }
-      label960:
-      for (paramBoolean = bool2;; paramBoolean = false)
+      label1047:
+      label1053:
+      label1325:
+      for (paramBoolean1 = true;; paramBoolean1 = false)
       {
-        localIntent.putExtra("isVerifyExpired", paramBoolean);
+        localIntent.putExtra("isVerifyExpired", paramBoolean1);
         localIntent.putExtra("CONTACT_INFO_UI_SOURCE", 7);
-        if ((localas == null) || ((!as.bvK(localas.field_username)) && (!as.bvL(localas.field_username))) || (WeChatBrands.Business.Entries.ContactNewFriendWeWeCom.checkAvailable(paramContext))) {
-          break label965;
+        localIntent.putExtra("Contact_ToProfilePageFromSource", true);
+        if ((localau == null) || ((!au.bwO(localau.field_username)) && (!au.bwP(localau.field_username))) || (WeChatBrands.Business.Entries.ContactNewFriendWeWeCom.checkAvailable(paramContext))) {
+          break label1330;
         }
-        AppMethodBeat.o(29023);
+        AppMethodBeat.o(292044);
         return;
-        bool1 = false;
+        bool = false;
         break;
-        label745:
-        if ((parambn.field_type == 1) || (parambn.field_type == 2)) {
-          localIntent.putExtra("User_Verify", true);
+        label989:
+        if (((parambp.field_isSend != 1) || (parambp.field_type != 3)) && ((!parambp.jbg()) || (parambp.field_type != 1)) && ((!parambp.jbg()) || (parambp.field_type != 2))) {
+          break label251;
         }
-        localIntent.putExtra("Contact_User", locald.fcC);
-        localIntent.putExtra("Contact_Alias", locald.idS);
-        localIntent.putExtra("Contact_Nick", locald.nickname);
-        localIntent.putExtra("Contact_QuanPin", locald.mXq);
-        localIntent.putExtra("Contact_PyInitial", locald.mXp);
-        localIntent.putExtra("Contact_Sex", locald.sex);
-        localIntent.putExtra("Contact_Signature", locald.signature);
+        localIntent.putExtra("Contact_Conversation_IsSelfSendAdd", false);
+        break label251;
+        i = 0;
+        break label330;
+        i = j;
+        if (parambp.field_type == 2)
+        {
+          i = j;
+          if (parambp.jbg())
+          {
+            localIntent.putExtra("User_Verify", true);
+            i = 1;
+          }
+        }
+        j = i;
+        if (parambp.field_type == 1)
+        {
+          j = i;
+          if (parambp.jbg())
+          {
+            localIntent.putExtra("User_Verify", true);
+            j = 1;
+          }
+        }
+        localIntent.putExtra("Contact_Conversation_IsContact", false);
+        localIntent.putExtra("Contact_User", localf.hgk);
+        localIntent.putExtra("Contact_Alias", localf.kDc);
+        localIntent.putExtra("Contact_Nick", localf.nickname);
+        localIntent.putExtra("Contact_QuanPin", localf.pTY);
+        localIntent.putExtra("Contact_PyInitial", localf.pTX);
+        localIntent.putExtra("Contact_Sex", localf.sex);
+        localIntent.putExtra("Contact_Signature", localf.signature);
         localIntent.putExtra("Contact_FMessageCard", true);
-        localIntent.putExtra("Contact_City", locald.getCity());
-        localIntent.putExtra("Contact_Province", locald.getProvince());
-        localIntent.putExtra("Contact_Mobile_MD5", locald.VGG);
-        localIntent.putExtra("Contact_full_Mobile_MD5", locald.VGH);
-        localIntent.putExtra("Contact_KSnsBgUrl", locald.VGU);
-        break label253;
-        parambn = paramContext.getString(R.l.chatting_from_verify_lbs_tip);
-        break label348;
+        localIntent.putExtra("Contact_City", localf.getCity());
+        localIntent.putExtra("Contact_Province", localf.getProvince());
+        localIntent.putExtra("Contact_Mobile_MD5", localf.adkz);
+        localIntent.putExtra("Contact_full_Mobile_MD5", localf.adkA);
+        localIntent.putExtra("Contact_KSnsBgUrl", localf.adkP);
+        break label474;
+        parambp = paramContext.getString(R.l.chatting_from_verify_lbs_tip);
+        break label572;
       }
-      label965:
-      com.tencent.mm.by.c.b(paramContext, "profile", ".ui.ContactInfoUI", localIntent);
+      label1330:
+      long l = com.tencent.mm.k.i.aRC().getInt("VerifyUserTicketTimeExceed", 259200) * 1000L;
+      Log.i("MicroMsg.FConversationOnItemClickListener", "expired time, defaultExpireTime = ".concat(String.valueOf(l)));
+      if (parambn != null)
+      {
+        if (cn.bDv() - parambn.field_lastModifiedTime < l) {
+          break label1466;
+        }
+        localIntent.putExtra("Contact_Conversation_Isexpired", true);
+      }
+      if ((parambn != null) && (j != 0)) {
+        if (((parambn.field_state != 0) && (parambn.field_state != 2)) || (cn.bDv() - parambn.field_lastModifiedTime < l)) {
+          break label1479;
+        }
+      }
     }
-    AppMethodBeat.o(29023);
+    label1466:
+    label1479:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        localIntent.putExtra("Contact_Scene", 184);
+      }
+      com.tencent.mm.br.c.b(paramContext, "profile", ".ui.ContactInfoUI", localIntent);
+      AppMethodBeat.o(292044);
+      return;
+      localIntent.putExtra("Contact_Conversation_Isexpired", false);
+      break;
+    }
   }
   
-  private static void a(Context paramContext, bl parambl, String paramString, boolean paramBoolean)
+  private static void a(Context paramContext, bn parambn, String paramString, boolean paramBoolean)
   {
+    boolean bool = true;
     AppMethodBeat.i(29020);
     if ((paramString == null) || (paramString.length() == 0))
     {
@@ -177,35 +262,39 @@ public final class a
       return;
     }
     Log.d("MicroMsg.FConversationOnItemClickListener", "dealOnClick, talker = ".concat(String.valueOf(paramString)));
-    com.tencent.mm.bl.d.bqc().bwR(paramString);
-    bn localbn = com.tencent.mm.bl.d.bqb().bwU(paramString);
-    if (localbn == null)
+    com.tencent.mm.modelverify.d.bNI().byk(paramString);
+    bp localbp = com.tencent.mm.modelverify.d.bNH().aLv(paramString);
+    if ((localbp != null) && (localbp.field_isSend == 1) && (localbp.field_type == 1)) {}
+    while (localbp == null)
     {
       Log.e("MicroMsg.FConversationOnItemClickListener", "onItemClick, lastRecvFmsg is null, talker = ".concat(String.valueOf(paramString)));
       AppMethodBeat.o(29020);
       return;
+      localbp = com.tencent.mm.modelverify.d.bNH().byn(paramString);
+      bool = false;
     }
-    if (localbn.field_type == 0)
+    Log.i("MicroMsg.FConversationOnItemClickListener", "isforceHideReply = ".concat(String.valueOf(bool)));
+    if (localbp.field_type == 0)
     {
-      a(paramContext, localbn);
+      a(paramContext, localbp);
       AppMethodBeat.o(29020);
       return;
     }
-    a(paramContext, parambl, localbn, paramBoolean);
+    a(paramContext, parambn, localbp, paramBoolean, bool);
     AppMethodBeat.o(29020);
   }
   
-  private static void a(Context paramContext, bn parambn)
+  private static void a(Context paramContext, bp parambp)
   {
     AppMethodBeat.i(29021);
-    bh.beI();
-    ca.a locala1 = com.tencent.mm.model.c.bbO().aOU(parambn.field_msgContent);
+    bh.bCz();
+    cc.a locala1 = com.tencent.mm.model.c.bzD().aLU(parambp.field_msgContent);
     if (locala1 == null)
     {
       AppMethodBeat.o(29021);
       return;
     }
-    if (locala1.fcC.length() <= 0)
+    if (locala1.hgk.length() <= 0)
     {
       AppMethodBeat.o(29021);
       return;
@@ -213,76 +302,76 @@ public final class a
     Bundle localBundle = new Bundle();
     localBundle.putBoolean("Contact_ShowFMessageList", true);
     localBundle.putInt("Contact_Source_FMessage", locala1.scene);
-    bh.beI();
-    as localas = com.tencent.mm.model.c.bbL().RG(locala1.fcC);
-    if ((localas != null) && ((int)localas.jxt > 0) && (com.tencent.mm.contact.d.rk(localas.field_type)))
+    bh.bCz();
+    au localau = com.tencent.mm.model.c.bzA().JE(locala1.hgk);
+    if ((localau != null) && ((int)localau.maN > 0) && (com.tencent.mm.contact.d.rs(localau.field_type)))
     {
-      com.tencent.mm.plugin.subapp.b.mIH.a(paramContext, localas, locala1, localBundle, "");
+      com.tencent.mm.plugin.subapp.a.pFo.a(paramContext, localau, locala1, localBundle, "");
       AppMethodBeat.o(29021);
       return;
     }
-    if (locala1.GZN > 0L)
+    if (locala1.MXS > 0L)
     {
-      if ((Util.isNullOrNil(locala1.mXu)) && (Util.isNullOrNil(locala1.mXr)) && (!Util.isNullOrNil(locala1.nickname))) {
+      if ((Util.isNullOrNil(locala1.pUc)) && (Util.isNullOrNil(locala1.pTZ)) && (!Util.isNullOrNil(locala1.nickname))) {
         localBundle.putString("Contact_QQNick", locala1.nickname);
       }
-      com.tencent.mm.plugin.subapp.b.mIH.a(paramContext, locala1, localBundle);
+      com.tencent.mm.plugin.subapp.a.pFo.a(paramContext, locala1, localBundle);
       AppMethodBeat.o(29021);
       return;
     }
-    if ((!Util.isNullOrNil(locala1.VGG)) || (!Util.isNullOrNil(locala1.VGH)))
+    if ((!Util.isNullOrNil(locala1.adkz)) || (!Util.isNullOrNil(locala1.adkA)))
     {
-      com.tencent.mm.plugin.account.friend.a.a locala = com.tencent.mm.plugin.account.b.getAddrUploadStg().aaA(locala1.VGG);
+      com.tencent.mm.plugin.account.friend.model.a locala = com.tencent.mm.plugin.account.b.getAddrUploadStg().SU(locala1.adkz);
       if ((locala != null) && (locala.getMd5() != null))
       {
-        parambn = locala;
+        parambp = locala;
         if (locala.getMd5().length() > 0) {}
       }
       else
       {
-        locala = com.tencent.mm.plugin.account.b.getAddrUploadStg().aaA(locala1.VGH);
+        locala = com.tencent.mm.plugin.account.b.getAddrUploadStg().SU(locala1.adkA);
         if ((locala != null) && (locala.getMd5() != null))
         {
-          parambn = locala;
+          parambp = locala;
           if (locala.getMd5().length() > 0) {}
         }
         else
         {
-          if ((localas != null) && ((int)localas.jxt > 0)) {
-            com.tencent.mm.plugin.subapp.b.mIH.a(paramContext, localas, locala1, localBundle, "");
+          if ((localau != null) && ((int)localau.maN > 0)) {
+            com.tencent.mm.plugin.subapp.a.pFo.a(paramContext, localau, locala1, localBundle, "");
           }
           for (;;)
           {
-            Log.e("MicroMsg.FConversationOnItemClickListener", "error : this is not the mobile contact, MD5 = " + locala1.VGG + " fullMD5:" + locala1.VGH);
+            Log.e("MicroMsg.FConversationOnItemClickListener", "error : this is not the mobile contact, MD5 = " + locala1.adkz + " fullMD5:" + locala1.adkA);
             AppMethodBeat.o(29021);
             return;
-            com.tencent.mm.plugin.subapp.b.mIH.a(paramContext, locala1, localBundle);
+            com.tencent.mm.plugin.subapp.a.pFo.a(paramContext, locala1, localBundle);
           }
         }
       }
-      if ((parambn.getUsername() == null) || (parambn.getUsername().length() <= 0))
+      if ((parambp.getUsername() == null) || (parambp.getUsername().length() <= 0))
       {
-        parambn.username = locala1.fcC;
-        parambn.cUP = 128;
-        if (com.tencent.mm.plugin.account.b.getAddrUploadStg().a(parambn.getMd5(), parambn) == -1)
+        parambp.username = locala1.hgk;
+        parambp.eQp = 128;
+        if (com.tencent.mm.plugin.account.b.getAddrUploadStg().a(parambp.getMd5(), parambp) == -1)
         {
           Log.e("MicroMsg.FConversationOnItemClickListener", "update mobile contact username failed");
           AppMethodBeat.o(29021);
           return;
         }
       }
-      com.tencent.mm.plugin.subapp.b.mIH.a(paramContext, locala1, localBundle);
+      com.tencent.mm.plugin.subapp.a.pFo.a(paramContext, locala1, localBundle);
       AppMethodBeat.o(29021);
       return;
     }
-    com.tencent.mm.plugin.subapp.b.mIH.a(paramContext, locala1, localBundle);
+    com.tencent.mm.plugin.subapp.a.pFo.a(paramContext, locala1, localBundle);
     AppMethodBeat.o(29021);
   }
   
-  public static void b(Context paramContext, bn parambn)
+  public static void b(Context paramContext, bp parambp)
   {
     AppMethodBeat.i(29022);
-    a(paramContext, null, parambn, false);
+    a(paramContext, null, parambp, false, false);
     AppMethodBeat.o(29022);
   }
   
@@ -297,16 +386,16 @@ public final class a
   {
     AppMethodBeat.i(29018);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bn(paramAdapterView);
-    localb.bn(paramView);
-    localb.sg(paramInt);
-    localb.Fs(paramLong);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/subapp/ui/friend/FConversationOnItemClickListener", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
+    localb.cH(paramAdapterView);
+    localb.cH(paramView);
+    localb.sc(paramInt);
+    localb.hB(paramLong);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/subapp/ui/friend/FConversationOnItemClickListener", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aYj());
     int i = paramInt;
-    if (this.lBX) {
+    if (this.otH) {
       i = paramInt - 2;
     }
-    paramAdapterView = (bl)this.Met.getItem(i);
+    paramAdapterView = (bn)this.SFJ.getItem(i);
     if (paramAdapterView == null)
     {
       Log.e("MicroMsg.FConversationOnItemClickListener", "onItemClick, item is null, pos = ".concat(String.valueOf(i)));

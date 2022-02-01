@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingTop="@dimen/hs" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingBottom="@dimen/hs" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <RelativeLayout android:layout_width="64.0dip" android:layout_height="64.0dip">
-            <ImageView android:id="@id/baa" android:layout_width="53.299988dip" android:layout_height="53.299988dip" android:layout_centerInParent="true" />
-        </RelativeLayout>
-        <View android:layout_width="@dimen/ir" style="@style/p7" />
-        <TextView android:textStyle="bold" android:id="@id/bb8" android:layout_weight="1.0" style="@style/mj" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/w6" android:background="@color/b" android:layout_width="fill_parent" android:layout_height="215.0dip">
+        <com.tencent.mm.ui.base.MMFlipper android:gravity="center" android:layout_gravity="center" android:id="@id/w8" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <com.tencent.mm.ui.base.MMDotView android:gravity="center" android:orientation="horizontal" android:id="@id/w7" android:paddingBottom="@dimen/i6" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     </LinearLayout>
-    <TextView android:id="@id/bau" android:background="@drawable/ckd" android:padding="6.0dip" android:minHeight="@dimen/k4" android:singleLine="false" style="@style/m0" />
 </LinearLayout>

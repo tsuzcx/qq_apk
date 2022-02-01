@@ -13,28 +13,28 @@ import com.tencent.mm.R.d;
 import com.tencent.mm.R.e;
 import com.tencent.mm.R.g;
 import com.tencent.mm.R.k;
-import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.bd;
 
 public class AnimImageView
   extends TextView
 {
-  private boolean Whh;
-  private AnimationDrawable Whi;
+  private boolean Uz;
+  private AnimationDrawable adOd;
   private Context context;
-  private boolean isRunning;
+  private boolean hBF;
   private int type;
-  private AlphaAnimation uwn;
-  private AnimationDrawable uwo;
+  private AlphaAnimation xCM;
+  private AnimationDrawable xCN;
   
   public AnimImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(33857);
-    this.isRunning = false;
-    this.Whh = false;
+    this.Uz = false;
+    this.hBF = false;
     this.type = 1;
     this.context = paramContext;
-    buR();
+    bTa();
     AppMethodBeat.o(33857);
   }
   
@@ -42,65 +42,49 @@ public class AnimImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(33858);
-    this.isRunning = false;
-    this.Whh = false;
+    this.Uz = false;
+    this.hBF = false;
     this.type = 1;
     this.context = paramContext;
-    buR();
+    bTa();
     AppMethodBeat.o(33858);
   }
   
-  private void buR()
+  private void bTa()
   {
     AppMethodBeat.i(33859);
-    this.uwn = new AlphaAnimation(0.1F, 1.0F);
-    this.uwn.setDuration(1000L);
-    this.uwn.setRepeatCount(-1);
-    this.uwn.setRepeatMode(2);
-    this.uwo = new com.tencent.mm.ui.g.a();
-    Drawable localDrawable = aw.bf(getContext(), R.d.chatfrom_voice_playing_f1);
+    this.xCM = new AlphaAnimation(0.1F, 1.0F);
+    this.xCM.setDuration(1000L);
+    this.xCM.setRepeatCount(-1);
+    this.xCM.setRepeatMode(2);
+    this.xCN = new com.tencent.mm.ui.g.a();
+    Drawable localDrawable = bd.by(getContext(), R.d.chatfrom_voice_playing_f1);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.uwo.addFrame(localDrawable, 300);
-    localDrawable = aw.bf(getContext(), R.d.chatfrom_voice_playing_f2);
+    this.xCN.addFrame(localDrawable, 300);
+    localDrawable = bd.by(getContext(), R.d.chatfrom_voice_playing_f2);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.uwo.addFrame(localDrawable, 300);
-    localDrawable = aw.bf(getContext(), R.d.chatfrom_voice_playing_f3);
+    this.xCN.addFrame(localDrawable, 300);
+    localDrawable = bd.by(getContext(), R.d.chatfrom_voice_playing_f3);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.uwo.addFrame(localDrawable, 300);
-    this.uwo.setOneShot(false);
-    this.uwo.setVisible(true, true);
-    this.Whi = new com.tencent.mm.ui.g.a();
+    this.xCN.addFrame(localDrawable, 300);
+    this.xCN.setOneShot(false);
+    this.xCN.setVisible(true, true);
+    this.adOd = new com.tencent.mm.ui.g.a();
     localDrawable = getResources().getDrawable(R.k.chatto_voice_playing_f1);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.Whi.addFrame(localDrawable, 300);
+    this.adOd.addFrame(localDrawable, 300);
     localDrawable = getResources().getDrawable(R.k.chatto_voice_playing_f2);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.Whi.addFrame(localDrawable, 300);
+    this.adOd.addFrame(localDrawable, 300);
     localDrawable = getResources().getDrawable(R.k.chatto_voice_playing_f3);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.Whi.addFrame(localDrawable, 300);
-    this.Whi.setOneShot(false);
-    this.Whi.setVisible(true, true);
+    this.adOd.addFrame(localDrawable, 300);
+    this.adOd.setOneShot(false);
+    this.adOd.setVisible(true, true);
     AppMethodBeat.o(33859);
   }
   
-  public final void cTg()
-  {
-    AppMethodBeat.i(33856);
-    if ((this.uwn != null) && (this.uwn.isInitialized())) {
-      setAnimation(null);
-    }
-    if ((this.type == 1) || (this.type == 2))
-    {
-      this.isRunning = false;
-      setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-      this.uwo.stop();
-      this.Whi.stop();
-    }
-    AppMethodBeat.o(33856);
-  }
-  
-  public final void cjx()
+  public final void cKI()
   {
     AppMethodBeat.i(33855);
     switch (this.type)
@@ -109,40 +93,56 @@ public class AnimImageView
       AppMethodBeat.o(33855);
       return;
     case 2: 
-      if (this.Whh) {
+      if (this.hBF) {
         setBackgroundResource(R.e.bubble_chat_from_bg_color);
       }
     case 1: 
-      while (!this.isRunning)
+      while (!this.Uz)
       {
-        this.isRunning = true;
-        if (!this.Whh) {
+        this.Uz = true;
+        if (!this.hBF) {
           break label116;
         }
-        setCompoundDrawablesWithIntrinsicBounds(this.uwo, null, null, null);
-        this.uwo.stop();
-        this.uwo.start();
+        setCompoundDrawablesWithIntrinsicBounds(this.xCN, null, null, null);
+        this.xCN.stop();
+        this.xCN.start();
         AppMethodBeat.o(33855);
         return;
         setBackgroundResource(R.e.bubble_chat_to_bg_color);
       }
       label116:
-      setCompoundDrawablesWithIntrinsicBounds(null, null, this.Whi, null);
-      this.Whi.stop();
-      this.Whi.start();
+      setCompoundDrawablesWithIntrinsicBounds(null, null, this.adOd, null);
+      this.adOd.stop();
+      this.adOd.start();
       AppMethodBeat.o(33855);
       return;
     }
-    if (this.Whh) {
-      setBackgroundDrawable(com.tencent.mm.ci.a.m(this.context, R.g.chatfrom_bg));
+    if (this.hBF) {
+      setBackgroundDrawable(com.tencent.mm.cd.a.m(this.context, R.g.chatfrom_bg));
     }
     for (;;)
     {
-      setAnimation(this.uwn);
-      this.uwn.startNow();
+      setAnimation(this.xCM);
+      this.xCM.startNow();
       break;
-      setBackgroundDrawable(com.tencent.mm.ci.a.m(this.context, R.g.chatto_bg));
+      setBackgroundDrawable(com.tencent.mm.cd.a.m(this.context, R.g.chatto_bg));
     }
+  }
+  
+  public final void dxz()
+  {
+    AppMethodBeat.i(33856);
+    if ((this.xCM != null) && (this.xCM.isInitialized())) {
+      setAnimation(null);
+    }
+    if ((this.type == 1) || (this.type == 2))
+    {
+      this.Uz = false;
+      setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+      this.xCN.stop();
+      this.adOd.stop();
+    }
+    AppMethodBeat.o(33856);
   }
   
   public int getBaseline()
@@ -151,10 +151,9 @@ public class AnimImageView
     try
     {
       int i = super.getBaseline();
-      AppMethodBeat.o(33862);
       return i;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       AppMethodBeat.o(33862);
     }
@@ -167,10 +166,9 @@ public class AnimImageView
     try
     {
       super.onDraw(paramCanvas);
-      AppMethodBeat.o(33861);
       return;
     }
-    catch (Throwable paramCanvas)
+    finally
     {
       AppMethodBeat.o(33861);
     }
@@ -182,10 +180,9 @@ public class AnimImageView
     try
     {
       super.onMeasure(paramInt1, paramInt2);
-      AppMethodBeat.o(33860);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       AppMethodBeat.o(33860);
     }
@@ -197,10 +194,9 @@ public class AnimImageView
     try
     {
       boolean bool = super.onPreDraw();
-      AppMethodBeat.o(33863);
       return bool;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       AppMethodBeat.o(33863);
     }
@@ -211,14 +207,14 @@ public class AnimImageView
   
   public void setFromVoice(boolean paramBoolean)
   {
-    this.Whh = paramBoolean;
+    this.hBF = paramBoolean;
   }
   
   public void setType(int paramInt)
   {
     AppMethodBeat.i(33854);
     this.type = paramInt;
-    if (this.Whh)
+    if (this.hBF)
     {
       if (paramInt == 2)
       {
@@ -226,7 +222,7 @@ public class AnimImageView
         AppMethodBeat.o(33854);
         return;
       }
-      setBackgroundDrawable(com.tencent.mm.ci.a.m(this.context, R.g.chatfrom_bg));
+      setBackgroundDrawable(com.tencent.mm.cd.a.m(this.context, R.g.chatfrom_bg));
       AppMethodBeat.o(33854);
       return;
     }
@@ -236,13 +232,13 @@ public class AnimImageView
       AppMethodBeat.o(33854);
       return;
     }
-    setBackgroundDrawable(com.tencent.mm.ci.a.m(this.context, R.g.chatto_bg));
+    setBackgroundDrawable(com.tencent.mm.cd.a.m(this.context, R.g.chatto_bg));
     AppMethodBeat.o(33854);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.base.AnimImageView
  * JD-Core Version:    0.7.0.1
  */

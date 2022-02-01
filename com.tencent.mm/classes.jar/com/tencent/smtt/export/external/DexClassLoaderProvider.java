@@ -157,7 +157,7 @@ public class DexClassLoaderProvider
         AppMethodBeat.o(53113);
         return;
       }
-      catch (Throwable paramString1) {}
+      finally {}
     }
     AppMethodBeat.o(53113);
   }
@@ -270,42 +270,42 @@ public class DexClassLoaderProvider
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 256
-    //   5: invokestatic 59	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: aload_0
-    //   9: invokespecial 215	com/tencent/smtt/export/external/DexClassLoaderProvider:useSelfClassloader	()Z
-    //   12: ifeq +19 -> 31
-    //   15: aload_0
-    //   16: aload_1
-    //   17: invokespecial 258	dalvik/system/DexClassLoader:getPackage	(Ljava/lang/String;)Ljava/lang/Package;
-    //   20: astore_1
-    //   21: ldc_w 256
-    //   24: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   27: aload_0
-    //   28: monitorexit
-    //   29: aload_1
-    //   30: areturn
-    //   31: aload_0
-    //   32: getfield 61	com/tencent/smtt/export/external/DexClassLoaderProvider:mClassLoader	Lcom/tencent/smtt/export/external/DexClassLoaderProvider$SpeedyDexClassLoader;
-    //   35: aload_1
-    //   36: invokevirtual 259	com/tencent/smtt/export/external/DexClassLoaderProvider$SpeedyDexClassLoader:getPackage	(Ljava/lang/String;)Ljava/lang/Package;
-    //   39: astore_1
-    //   40: ldc_w 256
-    //   43: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   46: goto -19 -> 27
-    //   49: astore_1
-    //   50: aload_0
-    //   51: monitorexit
-    //   52: aload_1
-    //   53: athrow
+    //   2: ldc 254
+    //   4: invokestatic 59	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_0
+    //   8: invokespecial 213	com/tencent/smtt/export/external/DexClassLoaderProvider:useSelfClassloader	()Z
+    //   11: ifeq +18 -> 29
+    //   14: aload_0
+    //   15: aload_1
+    //   16: invokespecial 256	dalvik/system/DexClassLoader:getPackage	(Ljava/lang/String;)Ljava/lang/Package;
+    //   19: astore_1
+    //   20: ldc 254
+    //   22: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   25: aload_0
+    //   26: monitorexit
+    //   27: aload_1
+    //   28: areturn
+    //   29: aload_0
+    //   30: getfield 61	com/tencent/smtt/export/external/DexClassLoaderProvider:mClassLoader	Lcom/tencent/smtt/export/external/DexClassLoaderProvider$SpeedyDexClassLoader;
+    //   33: aload_1
+    //   34: invokevirtual 257	com/tencent/smtt/export/external/DexClassLoaderProvider$SpeedyDexClassLoader:getPackage	(Ljava/lang/String;)Ljava/lang/Package;
+    //   37: astore_1
+    //   38: ldc 254
+    //   40: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   43: goto -18 -> 25
+    //   46: astore_1
+    //   47: aload_0
+    //   48: monitorexit
+    //   49: aload_1
+    //   50: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	54	0	this	DexClassLoaderProvider
-    //   0	54	1	paramString	String
+    //   0	51	0	this	DexClassLoaderProvider
+    //   0	51	1	paramString	String
     // Exception table:
     //   from	to	target	type
-    //   2	27	49	finally
-    //   31	46	49	finally
+    //   2	25	46	finally
+    //   29	43	46	finally
   }
   
   protected Package[] getPackages()
@@ -525,7 +525,7 @@ public class DexClassLoaderProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.export.external.DexClassLoaderProvider
  * JD-Core Version:    0.7.0.1
  */

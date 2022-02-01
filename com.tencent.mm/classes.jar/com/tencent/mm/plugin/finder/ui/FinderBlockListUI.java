@@ -1,24 +1,21 @@
 package com.tencent.mm.plugin.finder.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.i;
-import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.e.g;
+import com.tencent.mm.plugin.finder.e.h;
 import com.tencent.mm.plugin.finder.presenter.contract.FinderBlockListContract.BlockListPresenter;
 import com.tencent.mm.plugin.finder.presenter.contract.FinderBlockListContract.BlockListViewCallback;
-import com.tencent.mm.plugin.finder.storage.ab;
-import com.tencent.mm.plugin.finder.storage.ac;
-import com.tencent.mm.plugin.finder.storage.aj;
+import com.tencent.mm.plugin.finder.storage.ae;
+import com.tencent.mm.plugin.finder.storage.af;
+import com.tencent.mm.plugin.finder.storage.ar;
 import com.tencent.mm.plugin.finder.storage.c;
 import com.tencent.mm.protocal.protobuf.FinderContact;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -27,71 +24,83 @@ import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.contact.w;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderBlockListUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "config", "Lcom/tencent/mm/plugin/finder/storage/IFinderBlockListConfig;", "presenter", "Lcom/tencent/mm/plugin/finder/presenter/contract/FinderBlockListContract$BlockListPresenter;", "type", "", "viewCallback", "Lcom/tencent/mm/plugin/finder/presenter/contract/FinderBlockListContract$BlockListViewCallback;", "getLayoutId", "initView", "", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onResume", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/ui/FinderBlockListUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "config", "Lcom/tencent/mm/plugin/finder/storage/IFinderBlockListConfig;", "presenter", "Lcom/tencent/mm/plugin/finder/presenter/contract/FinderBlockListContract$BlockListPresenter;", "type", "", "viewCallback", "Lcom/tencent/mm/plugin/finder/presenter/contract/FinderBlockListContract$BlockListViewCallback;", "getLayoutId", "initView", "", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onResume", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderBlockListUI
   extends MMFinderUI
 {
-  private static final int Aow = 1;
-  private static final int Aox = 20;
-  private static final int Aoy = 1;
-  public static final a Aoz;
+  public static final FinderBlockListUI.a FOL;
+  private static final int FOM;
+  private static final int FON;
+  private static final int FOO;
+  private ar ECo;
+  private FinderBlockListContract.BlockListViewCallback EXw;
+  private FinderBlockListContract.BlockListPresenter EXy;
   private final String TAG = "Finder.FinderBlockListUI";
-  private HashMap _$_findViewCache;
   private int type;
-  private aj zAg;
-  private FinderBlockListContract.BlockListViewCallback zME;
-  private FinderBlockListContract.BlockListPresenter zMG;
   
   static
   {
-    AppMethodBeat.i(281782);
-    Aoz = new a((byte)0);
-    Aow = 1;
-    Aox = 20;
-    Aoy = 1;
-    AppMethodBeat.o(281782);
+    AppMethodBeat.i(346482);
+    FOL = new FinderBlockListUI.a((byte)0);
+    FOM = 1;
+    FON = 20;
+    FOO = 1;
+    AppMethodBeat.o(346482);
   }
   
-  public final void _$_clearFindViewByIdCache()
+  private static final boolean a(FinderBlockListUI paramFinderBlockListUI, MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(281786);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(281786);
+    AppMethodBeat.i(346469);
+    s.u(paramFinderBlockListUI, "this$0");
+    paramFinderBlockListUI.finish();
+    AppMethodBeat.o(346469);
+    return true;
   }
   
-  public final View _$_findCachedViewById(int paramInt)
+  private static final boolean b(FinderBlockListUI paramFinderBlockListUI, MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(281785);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
+    AppMethodBeat.i(346477);
+    s.u(paramFinderBlockListUI, "this$0");
+    Log.i(paramFinderBlockListUI.TAG, "doCallSelectContactUIForMultiRetransmit");
+    paramMenuItem = new Intent();
+    paramMenuItem.setClassName((Context)paramFinderBlockListUI, "com.tencent.mm.ui.contact.SelectContactUI");
+    paramMenuItem.putExtra("list_type", 1);
+    paramMenuItem.putExtra("titile", paramFinderBlockListUI.getString(e.h.finder_mod_block_select_user));
+    paramMenuItem.putExtra("list_attr", w.affp);
+    Object localObject1 = paramFinderBlockListUI.EXy;
+    s.checkNotNull(localObject1);
+    Object localObject2 = (Iterable)((FinderBlockListContract.BlockListPresenter)localObject1).pUj;
+    localObject1 = (Collection)new ArrayList(kotlin.a.p.a((Iterable)localObject2, 10));
+    localObject2 = ((Iterable)localObject2).iterator();
+    while (((Iterator)localObject2).hasNext()) {
+      ((Collection)localObject1).add(((com.tencent.mm.plugin.finder.model.p)((Iterator)localObject2).next()).contact.username);
     }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(281785);
-    return localView1;
+    paramMenuItem.putExtra("always_select_contact", Util.listToString((List)localObject1, ","));
+    paramMenuItem.putExtra("block_contact", z.bAM());
+    paramMenuItem.putExtra("max_limit_num", FON);
+    paramMenuItem.putExtra("Forbid_SelectChatRoom", true);
+    paramMenuItem.putExtra("show_too_many_member", false);
+    paramFinderBlockListUI.getContext().startActivityForResult(paramMenuItem, FOO);
+    AppMethodBeat.o(346477);
+    return true;
   }
+  
+  public final void _$_clearFindViewByIdCache() {}
   
   public final int getLayoutId()
   {
-    return b.g.finder_block_list_layout;
+    return e.f.finder_block_list_layout;
   }
   
   public final void initView()
   {
-    AppMethodBeat.i(281777);
+    AppMethodBeat.i(346506);
     this.type = getIntent().getIntExtra("BLOCK_LIST_TYPE", 0);
     Object localObject1;
     switch (this.type)
@@ -101,66 +110,57 @@ public final class FinderBlockListUI
     }
     for (;;)
     {
-      this.zAg = ((aj)localObject1);
-      if (this.zAg == null) {
+      this.ECo = ((ar)localObject1);
+      if (this.ECo == null) {
         finish();
       }
-      localObject1 = this.zAg;
-      if (localObject1 == null) {
-        kotlin.g.b.p.iCn();
-      }
-      setMMTitle(((aj)localObject1).dRw());
-      setBackBtn((MenuItem.OnMenuItemClickListener)new b(this));
-      localObject1 = this.zAg;
-      if (localObject1 == null) {
-        kotlin.g.b.p.iCn();
-      }
-      this.zMG = new FinderBlockListContract.BlockListPresenter((aj)localObject1);
+      localObject1 = this.ECo;
+      s.checkNotNull(localObject1);
+      setMMTitle(((ar)localObject1).ePJ());
+      setBackBtn(new FinderBlockListUI..ExternalSyntheticLambda0(this));
+      localObject1 = this.ECo;
+      s.checkNotNull(localObject1);
+      this.EXy = new FinderBlockListContract.BlockListPresenter((ar)localObject1);
       localObject1 = (MMActivity)this;
       Object localObject2 = getContentView();
-      kotlin.g.b.p.j(localObject2, "contentView");
-      FinderBlockListContract.BlockListPresenter localBlockListPresenter = this.zMG;
-      if (localBlockListPresenter == null) {
-        kotlin.g.b.p.iCn();
-      }
+      s.s(localObject2, "contentView");
+      FinderBlockListContract.BlockListPresenter localBlockListPresenter = this.EXy;
+      s.checkNotNull(localBlockListPresenter);
       localObject1 = new FinderBlockListContract.BlockListViewCallback((MMActivity)localObject1, (View)localObject2, localBlockListPresenter);
-      localObject2 = this.zMG;
-      if (localObject2 == null) {
-        kotlin.g.b.p.iCn();
-      }
+      localObject2 = this.EXy;
+      s.checkNotNull(localObject2);
       ((FinderBlockListContract.BlockListPresenter)localObject2).a((FinderBlockListContract.BlockListViewCallback)localObject1);
       ((FinderBlockListContract.BlockListViewCallback)localObject1).initView();
-      this.zME = ((FinderBlockListContract.BlockListViewCallback)localObject1);
-      localObject1 = this.zAg;
-      if (localObject1 == null) {
-        kotlin.g.b.p.iCn();
+      localObject2 = ah.aiuX;
+      this.EXw = ((FinderBlockListContract.BlockListViewCallback)localObject1);
+      localObject1 = this.ECo;
+      s.checkNotNull(localObject1);
+      if (((ar)localObject1).ePK()) {
+        addIconOptionMenu(0, e.g.icons_outlined_add_friends, new FinderBlockListUI..ExternalSyntheticLambda1(this));
       }
-      if (((aj)localObject1).dRz()) {
-        addIconOptionMenu(0, b.i.icons_outlined_add_friends, (MenuItem.OnMenuItemClickListener)new c(this));
-      }
-      AppMethodBeat.o(281777);
+      AppMethodBeat.o(346506);
       return;
-      localObject1 = (aj)new c();
+      localObject1 = (ar)new c();
       continue;
-      localObject1 = (aj)new ab();
+      localObject1 = (ar)new ae();
       continue;
-      localObject1 = (aj)new ac();
+      localObject1 = (ar)new af();
     }
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(281778);
+    AppMethodBeat.i(346514);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (paramInt1 == Aoy)
+    if (paramInt1 == FOO)
     {
-      if (paramIntent != null) {}
-      for (paramIntent = paramIntent.getStringExtra("Select_Contact");; paramIntent = null)
+      if (paramIntent == null) {}
+      for (paramIntent = null;; paramIntent = paramIntent.getStringExtra("Select_Contact"))
       {
         paramIntent = Util.stringToList(paramIntent, ",");
-        kotlin.g.b.p.j(paramIntent, "nameList");
+        s.s(paramIntent, "nameList");
         localObject = (Iterable)paramIntent;
-        paramIntent = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
+        paramIntent = (Collection)new ArrayList(kotlin.a.p.a((Iterable)localObject, 10));
         localObject = ((Iterable)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
@@ -171,51 +171,42 @@ public final class FinderBlockListUI
         }
       }
       paramIntent = (List)paramIntent;
-      Object localObject = this.zMG;
-      if (localObject != null)
-      {
-        ((FinderBlockListContract.BlockListPresenter)localObject).eF(paramIntent);
-        AppMethodBeat.o(281778);
-        return;
+      Object localObject = this.EXy;
+      if (localObject != null) {
+        ((FinderBlockListContract.BlockListPresenter)localObject).hn(paramIntent);
       }
     }
-    AppMethodBeat.o(281778);
+    AppMethodBeat.o(346514);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(281775);
+    AppMethodBeat.i(346497);
     super.onCreate(paramBundle);
     initView();
-    AppMethodBeat.o(281775);
+    AppMethodBeat.o(346497);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(281780);
+    AppMethodBeat.i(346525);
     super.onDestroy();
-    FinderBlockListContract.BlockListPresenter localBlockListPresenter = this.zMG;
-    if (localBlockListPresenter != null)
-    {
+    FinderBlockListContract.BlockListPresenter localBlockListPresenter = this.EXy;
+    if (localBlockListPresenter != null) {
       localBlockListPresenter.onDetach();
-      AppMethodBeat.o(281780);
-      return;
     }
-    AppMethodBeat.o(281780);
+    AppMethodBeat.o(346525);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(281781);
+    AppMethodBeat.i(346529);
     super.onResume();
-    FinderBlockListContract.BlockListPresenter localBlockListPresenter = this.zMG;
-    if (localBlockListPresenter != null)
-    {
-      localBlockListPresenter.ata();
-      AppMethodBeat.o(281781);
-      return;
+    FinderBlockListContract.BlockListPresenter localBlockListPresenter = this.EXy;
+    if (localBlockListPresenter != null) {
+      localBlockListPresenter.aNi();
     }
-    AppMethodBeat.o(281781);
+    AppMethodBeat.o(346529);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -223,67 +214,10 @@ public final class FinderBlockListUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderBlockListUI$Companion;", "", "()V", "MAX_MULTI_SELECTED_USER", "", "getMAX_MULTI_SELECTED_USER", "()I", "MENU_ID_ADD_USER", "getMENU_ID_ADD_USER", "REQUEST_CODE_MULTI_ADDR", "getREQUEST_CODE_MULTI_ADDR", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class b
-    implements MenuItem.OnMenuItemClickListener
-  {
-    b(FinderBlockListUI paramFinderBlockListUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(276184);
-      this.AoA.finish();
-      AppMethodBeat.o(276184);
-      return true;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class c
-    implements MenuItem.OnMenuItemClickListener
-  {
-    c(FinderBlockListUI paramFinderBlockListUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(290461);
-      Log.i(FinderBlockListUI.a(this.AoA), "doCallSelectContactUIForMultiRetransmit");
-      paramMenuItem = new Intent();
-      paramMenuItem.setClassName((Context)this.AoA, "com.tencent.mm.ui.contact.SelectContactUI");
-      paramMenuItem.putExtra("list_type", 1);
-      paramMenuItem.putExtra("titile", this.AoA.getString(b.j.finder_mod_block_select_user));
-      paramMenuItem.putExtra("list_attr", w.XtL);
-      Object localObject1 = FinderBlockListUI.b(this.AoA);
-      if (localObject1 == null) {
-        kotlin.g.b.p.iCn();
-      }
-      Object localObject2 = (Iterable)((FinderBlockListContract.BlockListPresenter)localObject1).mXB;
-      localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
-      localObject2 = ((Iterable)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext()) {
-        ((Collection)localObject1).add(((com.tencent.mm.plugin.finder.model.p)((Iterator)localObject2).next()).contact.username);
-      }
-      paramMenuItem.putExtra("always_select_contact", Util.listToString((List)localObject1, ","));
-      paramMenuItem.putExtra("block_contact", z.bcZ());
-      localObject1 = FinderBlockListUI.Aoz;
-      paramMenuItem.putExtra("max_limit_num", FinderBlockListUI.dZO());
-      paramMenuItem.putExtra("Forbid_SelectChatRoom", true);
-      paramMenuItem.putExtra("show_too_many_member", false);
-      localObject1 = this.AoA.getContext();
-      localObject2 = FinderBlockListUI.Aoz;
-      ((AppCompatActivity)localObject1).startActivityForResult(paramMenuItem, FinderBlockListUI.dZP());
-      AppMethodBeat.o(290461);
-      return true;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderBlockListUI
  * JD-Core Version:    0.7.0.1
  */

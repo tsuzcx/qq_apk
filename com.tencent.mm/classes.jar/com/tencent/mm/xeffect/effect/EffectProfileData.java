@@ -1,9 +1,9 @@
 package com.tencent.mm.xeffect.effect;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/xeffect/effect/EffectProfileData;", "", "ptr", "", "(J)V", "getPtr", "()J", "array2ProfileRecorder", "Lcom/tencent/mm/xeffect/effect/EffectProfileData$ProfileRecorder;", "array", "", "getCreatePAGFile", "getCreatePAGSurface", "getRenderPAG", "nGetCreatePAGFile", "nGetCreatePAGSurface", "nGetRenderPAG", "nReset", "", "reset", "ProfileRecorder", "renderlib_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mm/xeffect/effect/EffectProfileData;", "", "ptr", "", "(J)V", "getPtr", "()J", "array2ProfileRecorder", "Lcom/tencent/mm/xeffect/effect/EffectProfileData$ProfileRecorder;", "array", "", "getCreatePAGFile", "getCreatePAGSurface", "getRenderPAG", "nGetCreatePAGFile", "nGetCreatePAGSurface", "nGetRenderPAG", "nReset", "", "reset", "ProfileRecorder", "renderlib_release"}, k=1, mv={1, 1, 15})
 public final class EffectProfileData
 {
   public final long ptr;
@@ -13,17 +13,17 @@ public final class EffectProfileData
     this.ptr = paramLong;
   }
   
-  public static a g(long[] paramArrayOfLong)
+  public static a i(long[] paramArrayOfLong)
   {
-    AppMethodBeat.i(195753);
+    AppMethodBeat.i(234584);
     a locala = new a((byte)0);
     if (paramArrayOfLong.length >= 3)
     {
-      locala.QQz = ((int)paramArrayOfLong[0]);
+      locala.XMo = ((int)paramArrayOfLong[0]);
       locala.successCount = ((int)paramArrayOfLong[1]);
-      locala.YZz = paramArrayOfLong[2];
+      locala.agXL = paramArrayOfLong[2];
     }
-    AppMethodBeat.o(195753);
+    AppMethodBeat.o(234584);
     return locala;
   }
   
@@ -35,11 +35,11 @@ public final class EffectProfileData
   
   public final native long[] nGetRenderPAG(long paramLong);
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/xeffect/effect/EffectProfileData$ProfileRecorder;", "", "startCount", "", "successCount", "costAvg", "", "(IIJ)V", "getCostAvg", "()J", "setCostAvg", "(J)V", "getStartCount", "()I", "setStartCount", "(I)V", "getSuccessCount", "setSuccessCount", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "toString", "", "renderlib_release"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mm/xeffect/effect/EffectProfileData$ProfileRecorder;", "", "startCount", "", "successCount", "costAvg", "", "(IIJ)V", "getCostAvg", "()J", "setCostAvg", "(J)V", "getStartCount", "()I", "setStartCount", "(I)V", "getSuccessCount", "setSuccessCount", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "toString", "", "renderlib_release"}, k=1, mv={1, 1, 15})
   public static final class a
   {
-    public int QQz = 0;
-    public long YZz = 0L;
+    public int XMo = 0;
+    public long agXL = 0L;
     public int successCount = 0;
     
     public final boolean equals(Object paramObject)
@@ -53,7 +53,7 @@ public final class EffectProfileData
           break label86;
         }
         paramObject = (a)paramObject;
-        if (this.QQz != paramObject.QQz) {
+        if (this.XMo != paramObject.XMo) {
           break label88;
         }
         i = 1;
@@ -70,7 +70,7 @@ public final class EffectProfileData
         if (i == 0) {
           break label86;
         }
-        if (this.YZz != paramObject.YZz) {
+        if (this.agXL != paramObject.agXL) {
           break label98;
         }
       }
@@ -94,24 +94,24 @@ public final class EffectProfileData
     
     public final int hashCode()
     {
-      int i = this.QQz;
+      int i = this.XMo;
       int j = this.successCount;
-      long l = this.YZz;
+      long l = this.agXL;
       return (i * 31 + j) * 31 + (int)(l ^ l >>> 32);
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(195748);
-      String str = "ProfileRecorder(startCount=" + this.QQz + ", successCount=" + this.successCount + ", costAvg=" + this.YZz + ")";
-      AppMethodBeat.o(195748);
+      AppMethodBeat.i(234579);
+      String str = "ProfileRecorder(startCount=" + this.XMo + ", successCount=" + this.successCount + ", costAvg=" + this.agXL + ")";
+      AppMethodBeat.o(234579);
       return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.xeffect.effect.EffectProfileData
  * JD-Core Version:    0.7.0.1
  */

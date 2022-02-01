@@ -13,9 +13,9 @@ import java.util.LinkedList;
 
 public final class j
 {
-  private static j CFk;
+  private static j Izo;
   private static Object lock;
-  ContentResolver kiH;
+  ContentResolver mJn;
   
   static
   {
@@ -27,7 +27,7 @@ public final class j
   private j()
   {
     AppMethodBeat.i(41030);
-    this.kiH = MMApplicationContext.getContext().getContentResolver();
+    this.mJn = MMApplicationContext.getContext().getContentResolver();
     AppMethodBeat.o(41030);
   }
   
@@ -55,40 +55,40 @@ public final class j
     }
   }
   
-  public static String[] esT()
-  {
-    return new String[] { "_data", "datetaken", "date_modified", "duration", "description", "mime_type", "title", "_size", "bucket_display_name" };
-  }
-  
-  public static j exw()
+  public static j fFs()
   {
     AppMethodBeat.i(41029);
-    if (CFk == null) {}
+    if (Izo == null) {}
     synchronized (lock)
     {
-      if (CFk == null) {
-        CFk = new j();
+      if (Izo == null) {
+        Izo = new j();
       }
-      ??? = CFk;
+      ??? = Izo;
       AppMethodBeat.o(41029);
       return ???;
     }
   }
   
-  public static Uri exx()
+  public static Uri fFt()
   {
     return MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
   }
   
-  public static String exy()
+  public static String fFu()
   {
     return "datetaken desc";
+  }
+  
+  public static String[] fzV()
+  {
+    return new String[] { "_data", "datetaken", "date_modified", "duration", "description", "mime_type", "title", "_size", "bucket_display_name" };
   }
   
   public final int b(LinkedList<String> paramLinkedList, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(41032);
-    ContentResolver localContentResolver = this.kiH;
+    ContentResolver localContentResolver = this.mJn;
     Uri localUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
     paramLinkedList = a(paramLinkedList, paramLong1, paramLong2);
     paramLinkedList = localContentResolver.query(localUri, new String[] { "_id" }, paramLinkedList, null, null);
@@ -105,7 +105,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.j
  * JD-Core Version:    0.7.0.1
  */

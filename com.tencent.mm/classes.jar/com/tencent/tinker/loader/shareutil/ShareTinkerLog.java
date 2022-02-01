@@ -2,36 +2,84 @@ package com.tencent.tinker.loader.shareutil;
 
 import android.os.Handler;
 import android.os.Message;
-import java.lang.reflect.Constructor;
 
 public class ShareTinkerLog
 {
   public static final int FN_LOG_PRINT_PENDING_LOGS = 4002;
   public static final int FN_LOG_PRINT_STACKTRACE = 4001;
   private static final String TAG = "Tinker.ShareTinkerLog";
-  private static final TinkerLogImp debugLog = new ShareTinkerLog.1();
-  private static final TinkerLogImp[] tinkerLogImpRef = { debugLog };
-  private static final Handler[] tinkerLogInlineFenceRef = { null };
+  private static final TinkerLogImp debugLog;
+  private static final TinkerLogImp[] tinkerLogImpRef;
+  private static final Handler[] tinkerLogInlineFenceRef;
   
+  /* Error */
   static
   {
-    synchronized (tinkerLogInlineFenceRef)
-    {
-      try
-      {
-        Constructor localConstructor = Class.forName("com.tencent.tinker.loader.shareutil.TinkerLogInlineFence").getDeclaredConstructor(new Class[0]);
-        localConstructor.setAccessible(true);
-        tinkerLogInlineFenceRef[0] = ((Handler)localConstructor.newInstance(new Object[0]));
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          tinkerLogInlineFenceRef[0] = null;
-        }
-      }
-    }
+    // Byte code:
+    //   0: iconst_1
+    //   1: anewarray 26	android/os/Handler
+    //   4: dup
+    //   5: iconst_0
+    //   6: aconst_null
+    //   7: aastore
+    //   8: putstatic 28	com/tencent/tinker/loader/shareutil/ShareTinkerLog:tinkerLogInlineFenceRef	[Landroid/os/Handler;
+    //   11: new 30	com/tencent/tinker/loader/shareutil/ShareTinkerLog$1
+    //   14: dup
+    //   15: invokespecial 33	com/tencent/tinker/loader/shareutil/ShareTinkerLog$1:<init>	()V
+    //   18: putstatic 35	com/tencent/tinker/loader/shareutil/ShareTinkerLog:debugLog	Lcom/tencent/tinker/loader/shareutil/ShareTinkerLog$TinkerLogImp;
+    //   21: iconst_1
+    //   22: anewarray 6	com/tencent/tinker/loader/shareutil/ShareTinkerLog$TinkerLogImp
+    //   25: dup
+    //   26: iconst_0
+    //   27: getstatic 35	com/tencent/tinker/loader/shareutil/ShareTinkerLog:debugLog	Lcom/tencent/tinker/loader/shareutil/ShareTinkerLog$TinkerLogImp;
+    //   30: aastore
+    //   31: putstatic 37	com/tencent/tinker/loader/shareutil/ShareTinkerLog:tinkerLogImpRef	[Lcom/tencent/tinker/loader/shareutil/ShareTinkerLog$TinkerLogImp;
+    //   34: getstatic 28	com/tencent/tinker/loader/shareutil/ShareTinkerLog:tinkerLogInlineFenceRef	[Landroid/os/Handler;
+    //   37: astore_0
+    //   38: aload_0
+    //   39: monitorenter
+    //   40: ldc 39
+    //   42: invokestatic 45	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   45: iconst_0
+    //   46: anewarray 41	java/lang/Class
+    //   49: invokevirtual 49	java/lang/Class:getDeclaredConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+    //   52: astore_1
+    //   53: aload_1
+    //   54: iconst_1
+    //   55: invokevirtual 55	java/lang/reflect/Constructor:setAccessible	(Z)V
+    //   58: getstatic 28	com/tencent/tinker/loader/shareutil/ShareTinkerLog:tinkerLogInlineFenceRef	[Landroid/os/Handler;
+    //   61: iconst_0
+    //   62: aload_1
+    //   63: iconst_0
+    //   64: anewarray 4	java/lang/Object
+    //   67: invokevirtual 59	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
+    //   70: checkcast 26	android/os/Handler
+    //   73: aastore
+    //   74: aload_0
+    //   75: monitorexit
+    //   76: return
+    //   77: astore_1
+    //   78: getstatic 28	com/tencent/tinker/loader/shareutil/ShareTinkerLog:tinkerLogInlineFenceRef	[Landroid/os/Handler;
+    //   81: iconst_0
+    //   82: aconst_null
+    //   83: aastore
+    //   84: goto -10 -> 74
+    //   87: astore_1
+    //   88: aload_0
+    //   89: monitorexit
+    //   90: aload_1
+    //   91: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   37	52	0	arrayOfHandler	Handler[]
+    //   52	11	1	localConstructor	java.lang.reflect.Constructor
+    //   77	1	1	localObject1	Object
+    //   87	4	1	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   40	74	77	finally
+    //   74	76	87	finally
+    //   78	84	87	finally
   }
   
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
@@ -155,7 +203,7 @@ public class ShareTinkerLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.loader.shareutil.ShareTinkerLog
  * JD-Core Version:    0.7.0.1
  */

@@ -3,54 +3,66 @@ package com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.jsapi;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.ck;
-import com.tencent.mm.plugin.appbrand.jsapi.j;
+import com.tencent.mm.plugin.appbrand.jsapi.cp;
+import com.tencent.mm.plugin.appbrand.jsapi.k;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.MMActivity.a;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.b;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.x;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/jsapi/FunctionalPrivateOpenUrl;", "Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiPrivateOpenUrl;", "()V", "startWebViewUI", "", "context", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWithExtra;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/jsapi/FunctionalPrivateOpenUrl;", "Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiPrivateOpenUrl;", "()V", "startWebViewUI", "", "context", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWithExtra;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class l
-  extends ck
+  extends cp
 {
-  public static final int CTRL_INDEX = 406;
-  public static final String NAME = "private_openUrl";
   @Deprecated
-  public static final l.a qbU;
+  public static final int CTRL_INDEX = 406;
+  @Deprecated
+  public static final String NAME = "private_openUrl";
+  private static final l.a tgO;
   
   static
   {
-    AppMethodBeat.i(274788);
-    qbU = new l.a((byte)0);
-    AppMethodBeat.o(274788);
+    AppMethodBeat.i(320106);
+    tgO = new l.a((byte)0);
+    AppMethodBeat.o(320106);
   }
   
-  public final void a(Context paramContext, final Intent paramIntent, final j paramj, final int paramInt)
+  public final void a(Context paramContext, Intent paramIntent, final k paramk, final int paramInt)
   {
-    AppMethodBeat.i(274785);
-    p.k(paramIntent, "intent");
-    p.k(paramj, "component");
-    d.b(paramContext, (b)new b(this, paramj, paramInt, paramIntent));
-    AppMethodBeat.o(274785);
+    AppMethodBeat.i(320114);
+    s.u(paramIntent, "intent");
+    s.u(paramk, "component");
+    d.b(paramContext, (b)new b(paramIntent, this, paramk, paramInt));
+    AppMethodBeat.o(320114);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "activity", "Lcom/tencent/mm/ui/MMActivity;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "activity", "Lcom/tencent/mm/ui/MMActivity;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
-    implements b<MMActivity, x>
+    extends u
+    implements b<MMActivity, ah>
   {
-    b(l paraml, j paramj, int paramInt, Intent paramIntent)
+    b(Intent paramIntent, l paraml, k paramk, int paramInt)
     {
       super();
+    }
+    
+    private static final void a(k paramk, int paramInt1, l paraml, MMActivity paramMMActivity, int paramInt2, int paramInt3, Intent paramIntent)
+    {
+      AppMethodBeat.i(320145);
+      s.u(paramk, "$component");
+      s.u(paraml, "this$0");
+      s.u(paramMMActivity, "$activity");
+      paramk.callback(paramInt1, paraml.ZP("ok"));
+      paramMMActivity.finish();
+      AppMethodBeat.o(320145);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.jsapi.l
  * JD-Core Version:    0.7.0.1
  */

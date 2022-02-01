@@ -1,44 +1,133 @@
 package com.tencent.mm.plugin.finder.live.component;
 
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.live.p.f;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.component.UIComponent;
+import com.tencent.mm.ui.tools.i;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/component/LotteryUpdateStatus;", "", "statusChange", "", "newLottery", "localStatus", "", "lotteryStatus", "resumeState", "(ZZIIZ)V", "getLocalStatus", "()I", "setLocalStatus", "(I)V", "getLotteryStatus", "setLotteryStatus", "getNewLottery", "()Z", "setNewLottery", "(Z)V", "getResumeState", "setResumeState", "getStatusChange", "setStatusChange", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "other", "hashCode", "toString", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/component/FinderLiveLotteryCreateUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "isKeyBoardShow", "", "keyboardHeightProvider", "Lcom/tencent/mm/ui/tools/KeyboardHeightProvider;", "presenter", "Lcom/tencent/mm/plugin/finder/live/component/FinderLiveLotteryCreateContract$Presenter;", "getPresenter", "()Lcom/tencent/mm/plugin/finder/live/component/FinderLiveLotteryCreateContract$Presenter;", "setPresenter", "(Lcom/tencent/mm/plugin/finder/live/component/FinderLiveLotteryCreateContract$Presenter;)V", "viewCallback", "Lcom/tencent/mm/plugin/finder/live/component/FinderLiveLotteryCreateContract$ViewCallback;", "getViewCallback", "()Lcom/tencent/mm/plugin/finder/live/component/FinderLiveLotteryCreateContract$ViewCallback;", "setViewCallback", "(Lcom/tencent/mm/plugin/finder/live/component/FinderLiveLotteryCreateContract$ViewCallback;)V", "getLayoutId", "", "keyboardChange", "", "show", "height", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ag
+  extends UIComponent
 {
-  boolean ycM = false;
-  boolean ycN = false;
-  int ycO = 0;
-  int ycP = 0;
-  boolean ycQ = false;
+  private ae.b Czl;
+  private ae.a Czu;
+  private final String TAG;
+  private i lKz;
+  private boolean mJk;
   
-  public final boolean equals(Object paramObject)
+  public ag(AppCompatActivity paramAppCompatActivity)
   {
-    if (this != paramObject)
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(353058);
+    this.TAG = "FinderLiveLotteryCreateUIC";
+    AppMethodBeat.o(353058);
+  }
+  
+  private static final void a(ag paramag)
+  {
+    AppMethodBeat.i(353080);
+    s.u(paramag, "this$0");
+    if (paramag.lKz == null)
     {
-      if ((paramObject instanceof ag))
-      {
-        paramObject = (ag)paramObject;
-        if ((this.ycM != paramObject.ycM) || (this.ycN != paramObject.ycN) || (this.ycO != paramObject.ycO) || (this.ycP != paramObject.ycP) || (this.ycQ != paramObject.ycQ)) {}
+      paramag.lKz = new i((Activity)paramag.getActivity());
+      i locali = paramag.lKz;
+      if (locali != null) {
+        locali.afIL = new ag..ExternalSyntheticLambda0(paramag);
       }
     }
-    else {
-      return true;
+    paramag = paramag.lKz;
+    if (paramag != null) {
+      paramag.start();
     }
-    return false;
+    AppMethodBeat.o(353080);
   }
   
-  public final int hashCode()
+  private static final void a(ag paramag, int paramInt, boolean paramBoolean)
   {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+    AppMethodBeat.i(353068);
+    s.u(paramag, "this$0");
+    Log.i(paramag.TAG, "onKeyboardHeightChanged, height:" + paramInt + ", isResized:" + paramBoolean);
+    if (paramInt > 0) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      if (paramag.mJk != paramBoolean)
+      {
+        paramag.mJk = paramBoolean;
+        paramag = paramag.Czl;
+        if (paramag != null) {
+          paramag.keyboardChange(paramBoolean, paramInt);
+        }
+      }
+      AppMethodBeat.o(353068);
+      return;
+    }
   }
   
-  public final String toString()
+  public final int getLayoutId()
   {
-    AppMethodBeat.i(288644);
-    String str = "LotteryUpdateStatus localStatus:" + this.ycO + ",lotteryStatus:" + this.ycP + ",statusChange:" + this.ycM + ",newLottery:" + this.ycN + ",resumeState:" + this.ycQ;
-    AppMethodBeat.o(288644);
-    return str;
+    return p.f.Cdw;
+  }
+  
+  public final void onCreate(Bundle paramBundle)
+  {
+    AppMethodBeat.i(353120);
+    super.onCreate(paramBundle);
+    this.Czu = ((ae.a)new af((Activity)getActivity()));
+    this.Czl = ((ae.b)new ah(getRootView(), (MMActivity)getActivity(), this.Czu));
+    paramBundle = this.Czu;
+    if (paramBundle != null)
+    {
+      ae.b localb = this.Czl;
+      s.checkNotNull(localb);
+      paramBundle.onAttach(localb);
+    }
+    AppMethodBeat.o(353120);
+  }
+  
+  public final void onDestroy()
+  {
+    AppMethodBeat.i(353144);
+    super.onDestroy();
+    ae.a locala = this.Czu;
+    if (locala != null) {
+      locala.onDetach();
+    }
+    AppMethodBeat.o(353144);
+  }
+  
+  public final void onPause()
+  {
+    AppMethodBeat.i(353137);
+    super.onPause();
+    i locali = this.lKz;
+    if (locali != null) {
+      locali.close();
+    }
+    AppMethodBeat.o(353137);
+  }
+  
+  public final void onResume()
+  {
+    AppMethodBeat.i(353130);
+    super.onResume();
+    Object localObject = getActivity().getWindow();
+    if (localObject != null)
+    {
+      localObject = ((Window)localObject).getDecorView();
+      if (localObject != null) {
+        ((View)localObject).post(new ag..ExternalSyntheticLambda1(this));
+      }
+    }
+    AppMethodBeat.o(353130);
   }
 }
 

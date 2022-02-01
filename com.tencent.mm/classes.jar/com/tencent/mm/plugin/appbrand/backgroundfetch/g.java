@@ -8,21 +8,21 @@ import com.tencent.mm.sdk.storage.MAutoStorage;
 public class g
   extends MAutoStorage<f>
 {
-  public static final String[] lqL;
+  public static final String[] nVW;
   
   static
   {
     AppMethodBeat.i(44743);
-    lqL = new String[] { MAutoStorage.getCreateSQLs(f.lqK, "AppBrandBackgroundFetchDataToken") };
+    nVW = new String[] { MAutoStorage.getCreateSQLs(f.nVV, "AppBrandBackgroundFetchDataToken") };
     AppMethodBeat.o(44743);
   }
   
   public g(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramISQLiteDatabase, f.lqK, "AppBrandBackgroundFetchDataToken", null);
+    super(paramISQLiteDatabase, f.nVV, "AppBrandBackgroundFetchDataToken", null);
   }
   
-  public final AppBrandBackgroundFetchDataTokenParcel aek(String paramString)
+  public final AppBrandBackgroundFetchDataTokenParcel WN(String paramString)
   {
     AppMethodBeat.i(44741);
     if (Util.isNullOrNil(paramString))
@@ -44,7 +44,7 @@ public class g
     return null;
   }
   
-  public final boolean cW(String paramString1, String paramString2)
+  public final boolean dn(String paramString1, String paramString2)
   {
     AppMethodBeat.i(44740);
     if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
@@ -72,7 +72,7 @@ public class g
     return bool;
   }
   
-  public final boolean ho(String paramString)
+  public final boolean iP(String paramString)
   {
     AppMethodBeat.i(44742);
     if (Util.isNullOrNil(paramString))

@@ -1,42 +1,55 @@
 package kotlin.j;
 
 import java.util.Random;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/random/AbstractPlatformRandom;", "Lkotlin/random/Random;", "()V", "impl", "Ljava/util/Random;", "getImpl", "()Ljava/util/Random;", "nextBits", "", "bitCount", "nextBoolean", "", "nextBytes", "", "array", "nextDouble", "", "nextFloat", "", "nextInt", "until", "nextLong", "", "kotlin-stdlib"})
+@Metadata(d1={""}, d2={"Lkotlin/random/AbstractPlatformRandom;", "Lkotlin/random/Random;", "()V", "impl", "Ljava/util/Random;", "getImpl", "()Ljava/util/Random;", "nextBits", "", "bitCount", "nextBoolean", "", "nextBytes", "", "array", "nextDouble", "", "nextFloat", "", "nextInt", "until", "nextLong", "", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
 public abstract class a
   extends c
 {
-  public final int Nz(int paramInt)
+  public final float OB()
   {
-    return iCs().nextInt(paramInt);
+    return klH().nextFloat();
   }
   
-  public final int aDE(int paramInt)
+  public final int Pa(int paramInt)
   {
-    return d.ot(iCs().nextInt(), paramInt);
+    return klH().nextInt(paramInt);
   }
   
-  public abstract Random iCs();
-  
-  public final double zB()
+  public final double Zm()
   {
-    return iCs().nextDouble();
+    return klH().nextDouble();
   }
   
-  public final long zC()
+  public final long Zn()
   {
-    return iCs().nextLong();
+    return klH().nextLong();
   }
   
-  public final int zD()
+  public final int Zo()
   {
-    return iCs().nextInt();
+    return klH().nextInt();
   }
+  
+  public final int aKr(int paramInt)
+  {
+    return d.qr(klH().nextInt(), paramInt);
+  }
+  
+  public final byte[] dG(byte[] paramArrayOfByte)
+  {
+    s.u(paramArrayOfByte, "array");
+    klH().nextBytes(paramArrayOfByte);
+    return paramArrayOfByte;
+  }
+  
+  public abstract Random klH();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     kotlin.j.a
  * JD-Core Version:    0.7.0.1
  */

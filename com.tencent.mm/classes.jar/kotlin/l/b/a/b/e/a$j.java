@@ -7,18 +7,18 @@ import kotlin.l.b.a.b.h.k.b;
 public enum a$j
   implements k.a
 {
-  private static k.b<j> abag;
+  private static k.b<j> aiYE;
   private final int value;
   
   static
   {
     AppMethodBeat.i(58626);
-    abbz = new j("FINAL", 0, 0);
-    abbA = new j("OPEN", 1, 1);
-    abbB = new j("ABSTRACT", 2, 2);
-    abbC = new j("SEALED", 3, 3);
-    abbD = new j[] { abbz, abbA, abbB, abbC };
-    abag = new k.b() {};
+    ajaa = new j("FINAL", 0, 0);
+    ajab = new j("OPEN", 1, 1);
+    ajac = new j("ABSTRACT", 2, 2);
+    ajad = new j("SEALED", 3, 3);
+    ajae = new j[] { ajaa, ajab, ajac, ajad };
+    aiYE = new k.b() {};
     AppMethodBeat.o(58626);
   }
   
@@ -27,20 +27,20 @@ public enum a$j
     this.value = paramInt;
   }
   
-  public static j aEo(int paramInt)
+  public static j aLf(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     case 0: 
-      return abbz;
+      return ajaa;
     case 1: 
-      return abbA;
+      return ajab;
     case 2: 
-      return abbB;
+      return ajac;
     }
-    return abbC;
+    return ajad;
   }
   
   public final int getNumber()
@@ -50,7 +50,7 @@ public enum a$j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.e.a.j
  * JD-Core Version:    0.7.0.1
  */

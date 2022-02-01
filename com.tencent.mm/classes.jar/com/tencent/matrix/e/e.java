@@ -4,8 +4,8 @@ import java.lang.reflect.Field;
 
 public final class e<Type>
 {
-  private Class<?> dji;
-  private String djj;
+  private Class<?> fjd;
+  private String fje;
   private Field mField;
   private boolean mInit;
   
@@ -14,11 +14,11 @@ public final class e<Type>
     if ((paramClass == null) || (paramString == null) || (paramString.length() == 0)) {
       throw new IllegalArgumentException("Both of invoker and fieldName can not be null or nil.");
     }
-    this.dji = paramClass;
-    this.djj = paramString;
+    this.fjd = paramClass;
+    this.fje = paramString;
   }
   
-  private Type aT(Object paramObject)
+  private Type cp(Object paramObject)
   {
     try
     {
@@ -54,7 +54,7 @@ public final class e<Type>
       {
         label14:
         Class localClass1;
-        Field localField = localClass1.getDeclaredField(this.djj);
+        Field localField = localClass1.getDeclaredField(this.fje);
         localField.setAccessible(true);
         this.mField = localField;
         this.mInit = true;
@@ -66,7 +66,7 @@ public final class e<Type>
       localObject = finally;
     }
     return;
-    localClass1 = this.dji;
+    localClass1 = this.fjd;
     for (;;)
     {
       if (localClass1 == null) {}
@@ -77,7 +77,7 @@ public final class e<Type>
   {
     try
     {
-      paramObject = aT(paramObject);
+      paramObject = cp(paramObject);
       return paramObject;
     }
     finally
@@ -89,7 +89,7 @@ public final class e<Type>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.matrix.e.e
  * JD-Core Version:    0.7.0.1
  */

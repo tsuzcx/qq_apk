@@ -15,19 +15,19 @@ public class APX5
 {
   private static String getTbsVersion()
   {
-    AppMethodBeat.i(253083);
+    AppMethodBeat.i(217096);
     try
     {
       Object localObject = Class.forName("com.tencent.smtt.sdk.TbsConfig");
       Field localField = ((Class)localObject).getField("TBS_SDK_VERSIONNAME");
       localField.setAccessible(true);
       localObject = (String)localField.get(localObject);
-      AppMethodBeat.o(253083);
+      AppMethodBeat.o(217096);
       return localObject;
     }
     catch (IllegalAccessException localIllegalAccessException)
     {
-      AppMethodBeat.o(253083);
+      AppMethodBeat.o(217096);
       return "unknown";
     }
     catch (NoSuchFieldException localNoSuchFieldException)
@@ -43,20 +43,20 @@ public class APX5
   
   private static boolean hasInitX5Method()
   {
-    AppMethodBeat.i(253073);
+    AppMethodBeat.i(217054);
     try
     {
       if (Class.forName("com.tencent.smtt.sdk.QbSdk").getMethod("initX5Environment", new Class[] { Context.class, Class.forName("com.tencent.smtt.sdk.QbSdk$PreInitCallback") }) != null)
       {
-        AppMethodBeat.o(253073);
+        AppMethodBeat.o(217054);
         return true;
       }
-      AppMethodBeat.o(253073);
+      AppMethodBeat.o(217054);
       return false;
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      AppMethodBeat.o(253073);
+      AppMethodBeat.o(217054);
       return false;
     }
     catch (ClassNotFoundException localClassNotFoundException)
@@ -70,7 +70,7 @@ public class APX5
   {
     boolean bool3 = false;
     boolean bool2 = false;
-    AppMethodBeat.i(253070);
+    AppMethodBeat.i(217029);
     APLog.e("APX5", "init Tbs Start");
     APPluginReportManager.getInstance().insertData(APPluginDataInterface.singleton().getLaunchInterface(), "sdk.plugin.x5.init", "", "");
     for (boolean bool1 = bool3;; bool1 = bool2)
@@ -93,7 +93,7 @@ public class APX5
         APLog.e("APX5", "init Tbs Success. use X5 instead of Native WebView");
         bool1 = bool2;
       }
-      catch (Throwable paramContext)
+      finally
       {
         for (;;)
         {
@@ -114,7 +114,7 @@ public class APX5
       }
       paramContext = "sdk.plugin.x5.init.success";
       ((APPluginReportManager)localObject).insertData(str, paramContext, "", "");
-      AppMethodBeat.o(253070);
+      AppMethodBeat.o(217029);
       return bool1;
       bool1 = bool3;
       APLog.e("APX5", "tbs has no initX5 method");
@@ -125,28 +125,28 @@ public class APX5
   
   public static void initX5(Context paramContext)
   {
-    AppMethodBeat.i(253067);
+    AppMethodBeat.i(217022);
     APLog.e("APX5", ">>>>>>> initX5 Start <<<<<<<");
     if (!isX5Enabled(paramContext))
     {
       APLog.e("APX5", ">>>>>>> X5 is missed or disabled, use native WebView");
-      AppMethodBeat.o(253067);
+      AppMethodBeat.o(217022);
       return;
     }
     APLog.e("APX5", ">>>>>>> initX5 End <<<<<<<");
-    AppMethodBeat.o(253067);
+    AppMethodBeat.o(217022);
   }
   
   private static void initX5Environment(Context paramContext)
   {
-    AppMethodBeat.i(253075);
+    AppMethodBeat.i(217063);
     new Thread(new APX5.1(paramContext)).start();
-    AppMethodBeat.o(253075);
+    AppMethodBeat.o(217063);
   }
   
   public static boolean isX5Enabled(Context paramContext)
   {
-    AppMethodBeat.i(253071);
+    AppMethodBeat.i(217040);
     paramContext = paramContext.getApplicationContext();
     String str = paramContext.getSharedPreferences("TencentUnipay", 4).getString("enableX5", "1");
     int i;
@@ -160,13 +160,13 @@ public class APX5
       APLog.e("APX5", "is enable X5: ".concat(String.valueOf(str)));
       if ((i != 0) && (initTbs(paramContext)))
       {
-        AppMethodBeat.o(253071);
+        AppMethodBeat.o(217040);
         return true;
         i = 0;
       }
       else
       {
-        AppMethodBeat.o(253071);
+        AppMethodBeat.o(217040);
         return false;
         i = 1;
       }
@@ -175,7 +175,7 @@ public class APX5
   
   private static boolean needDownloadTbs(Context paramContext)
   {
-    AppMethodBeat.i(253078);
+    AppMethodBeat.i(217079);
     try
     {
       Method localMethod = Class.forName("com.tencent.smtt.sdk.TbsDownloader").getMethod("needDownload", new Class[] { Context.class });
@@ -183,13 +183,13 @@ public class APX5
       {
         localMethod.setAccessible(true);
         boolean bool = ((Boolean)localMethod.invoke(null, new Object[] { paramContext })).booleanValue();
-        AppMethodBeat.o(253078);
+        AppMethodBeat.o(217079);
         return bool;
       }
     }
     catch (IllegalAccessException paramContext)
     {
-      AppMethodBeat.o(253078);
+      AppMethodBeat.o(217079);
       return false;
     }
     catch (InvocationTargetException paramContext)
@@ -209,7 +209,7 @@ public class APX5
   
   private static void preInit(Context paramContext)
   {
-    AppMethodBeat.i(253080);
+    AppMethodBeat.i(217086);
     try
     {
       Method localMethod = Class.forName("com.tencent.smtt.sdk.QbSdk").getMethod("preInit", new Class[] { Context.class });
@@ -218,33 +218,33 @@ public class APX5
         localMethod.setAccessible(true);
         localMethod.invoke(null, new Object[] { paramContext });
       }
-      AppMethodBeat.o(253080);
+      AppMethodBeat.o(217086);
       return;
     }
     catch (ClassNotFoundException paramContext)
     {
-      AppMethodBeat.o(253080);
+      AppMethodBeat.o(217086);
       return;
     }
     catch (NoSuchMethodException paramContext)
     {
-      AppMethodBeat.o(253080);
+      AppMethodBeat.o(217086);
       return;
     }
     catch (InvocationTargetException paramContext)
     {
-      AppMethodBeat.o(253080);
+      AppMethodBeat.o(217086);
       return;
     }
     catch (IllegalAccessException paramContext)
     {
-      AppMethodBeat.o(253080);
+      AppMethodBeat.o(217086);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.midas.jsbridge.APX5
  * JD-Core Version:    0.7.0.1
  */

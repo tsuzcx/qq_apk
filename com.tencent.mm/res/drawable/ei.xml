@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true" android:state_pressed="true" android:drawable="@raw/appitem_del_btn_pressed" />
-    <item android:state_focused="false" android:state_pressed="true" android:drawable="@raw/appitem_del_btn_pressed" />
-    <item android:state_focused="false" android:drawable="@raw/appitem_del_btn_normal" />
-</selector>
+    <item>
+        <shape>
+            <solid android:color="@color/abn" />
+        </shape>
+    </item>
+    <item android:top="1.0px" android:bottom="1.0px">
+        <shape>
+            <solid android:color="@color/al2" />
+        </shape>
+    </item>
+</layer-list>

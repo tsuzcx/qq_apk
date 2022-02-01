@@ -9,9 +9,9 @@ public class ScanSettingsCompat
   implements Parcelable
 {
   public static final Parcelable.Creator<ScanSettingsCompat> CREATOR;
-  final int oLk;
-  private final int oLl;
-  final long oLm;
+  final int rPd;
+  private final int rPe;
+  final long rPf;
   
   static
   {
@@ -22,17 +22,17 @@ public class ScanSettingsCompat
   
   private ScanSettingsCompat(int paramInt, long paramLong)
   {
-    this.oLk = paramInt;
-    this.oLl = 1;
-    this.oLm = paramLong;
+    this.rPd = paramInt;
+    this.rPe = 1;
+    this.rPf = paramLong;
   }
   
   private ScanSettingsCompat(Parcel paramParcel)
   {
     AppMethodBeat.i(144650);
-    this.oLk = paramParcel.readInt();
-    this.oLl = paramParcel.readInt();
-    this.oLm = paramParcel.readLong();
+    this.rPd = paramParcel.readInt();
+    this.rPe = paramParcel.readInt();
+    this.rPf = paramParcel.readLong();
     AppMethodBeat.o(144650);
   }
   
@@ -44,19 +44,19 @@ public class ScanSettingsCompat
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(144651);
-    paramParcel.writeInt(this.oLk);
-    paramParcel.writeInt(this.oLl);
-    paramParcel.writeLong(this.oLm);
+    paramParcel.writeInt(this.rPd);
+    paramParcel.writeInt(this.rPe);
+    paramParcel.writeLong(this.rPf);
     AppMethodBeat.o(144651);
   }
   
   public static final class a
   {
-    private int oLk = 0;
-    private final int oLl = 1;
-    private long oLm = 0L;
+    private int rPd = 0;
+    private final int rPe = 1;
+    private long rPf = 0L;
     
-    public final a Aj(int paramInt)
+    public final a AA(int paramInt)
     {
       AppMethodBeat.i(144648);
       if ((paramInt < 0) || (paramInt > 2))
@@ -65,15 +65,15 @@ public class ScanSettingsCompat
         AppMethodBeat.o(144648);
         throw localIllegalArgumentException;
       }
-      this.oLk = paramInt;
+      this.rPd = paramInt;
       AppMethodBeat.o(144648);
       return this;
     }
     
-    public final ScanSettingsCompat bRg()
+    public final ScanSettingsCompat cro()
     {
       AppMethodBeat.i(144649);
-      ScanSettingsCompat localScanSettingsCompat = new ScanSettingsCompat(this.oLk, this.oLm, (byte)0);
+      ScanSettingsCompat localScanSettingsCompat = new ScanSettingsCompat(this.rPd, this.rPf, (byte)0);
       AppMethodBeat.o(144649);
       return localScanSettingsCompat;
     }
@@ -81,7 +81,7 @@ public class ScanSettingsCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.ScanSettingsCompat
  * JD-Core Version:    0.7.0.1
  */

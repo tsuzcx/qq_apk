@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import com.google.android.gms.common.R.string;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import javax.annotation.Nullable;
 
 public class StringResourceValueReader
 {
@@ -20,7 +19,6 @@ public class StringResourceValueReader
     AppMethodBeat.o(4743);
   }
   
-  @Nullable
   public String getString(String paramString)
   {
     AppMethodBeat.i(4744);
@@ -37,7 +35,7 @@ public class StringResourceValueReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.StringResourceValueReader
  * JD-Core Version:    0.7.0.1
  */

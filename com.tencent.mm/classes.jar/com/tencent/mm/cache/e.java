@@ -4,31 +4,31 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ab.d;
-import com.tencent.mm.z.a;
-import com.tencent.mm.z.a.a;
+import com.tencent.mm.y.a;
+import com.tencent.mm.y.a.a;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/cache/FilterCache;", "Lcom/tencent/mm/cache/IBaseArtistCache;", "Lcom/tencent/mm/items/FilterItem;", "()V", "curColorWeight", "", "getCurColorWeight", "()F", "setCurColorWeight", "(F)V", "curSeletedTypeIndex", "", "getCurSeletedTypeIndex", "()I", "setCurSeletedTypeIndex", "(I)V", "effects", "", "getEffects", "()Ljava/util/List;", "preBitmap", "Landroid/graphics/Bitmap;", "getPreBitmap", "()Landroid/graphics/Bitmap;", "setPreBitmap", "(Landroid/graphics/Bitmap;)V", "add", "", "item", "clear", "clone", "", "getCacheFromLocal", "getUndoCount", "isUndoEnable", "", "onCreate", "onDestroy", "onDrawCache", "canvas", "Landroid/graphics/Canvas;", "isOverDraw", "onFinalGenerate", "onRestore", "isExit", "onSave", "peek", "pop", "saveCacheToLocal", "bitmap", "size", "isAlive", "undo", "plugin-photoedit-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/cache/FilterCache;", "Lcom/tencent/mm/cache/IBaseArtistCache;", "Lcom/tencent/mm/items/FilterItem;", "()V", "curColorWeight", "", "getCurColorWeight", "()F", "setCurColorWeight", "(F)V", "curSeletedTypeIndex", "", "getCurSeletedTypeIndex", "()I", "setCurSeletedTypeIndex", "(I)V", "effects", "", "getEffects", "()Ljava/util/List;", "preBitmap", "Landroid/graphics/Bitmap;", "getPreBitmap", "()Landroid/graphics/Bitmap;", "setPreBitmap", "(Landroid/graphics/Bitmap;)V", "add", "", "item", "clear", "clone", "", "getCacheFromLocal", "getUndoCount", "isUndoEnable", "", "onCreate", "onDestroy", "onDrawCache", "canvas", "Landroid/graphics/Canvas;", "isOverDraw", "onFinalGenerate", "onRestore", "isExit", "onSave", "peek", "pop", "saveCacheToLocal", "bitmap", "size", "isAlive", "undo", "plugin-photoedit-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
   implements f<d>
 {
   private final List<d> effects;
-  public int iTK;
-  public float iTL;
-  public Bitmap iTM;
+  public int lvQ;
+  public float lvR;
+  public Bitmap lvS;
   
   public e()
   {
     AppMethodBeat.i(163146);
-    Object localObject1 = a.jUw;
-    Object localObject2 = (Iterable)a.aEE();
-    localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
+    Object localObject1 = a.muK;
+    Object localObject2 = (Iterable)a.aXH();
+    localObject1 = (Collection)new ArrayList(p.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((Collection)localObject1).add(new d(((a.a)((Iterator)localObject2).next()).type));
@@ -37,28 +37,25 @@ public final class e
     AppMethodBeat.o(163146);
   }
   
-  public final void a(Canvas paramCanvas, boolean paramBoolean)
-  {
-    AppMethodBeat.i(163142);
-    p.k(paramCanvas, "canvas");
-    Bitmap localBitmap = this.iTM;
-    if (localBitmap != null)
-    {
-      ((d)this.effects.get(this.iTK)).a(paramCanvas, localBitmap, this.iTL);
-      AppMethodBeat.o(163142);
-      return;
-    }
-    AppMethodBeat.o(163142);
-  }
+  public final void aEG() {}
   
-  public final void acG() {}
+  public final void aLx() {}
   
-  public final int ai(boolean paramBoolean)
+  public final int aR(boolean paramBoolean)
   {
     return 0;
   }
   
-  public final void arB() {}
+  public final void b(Canvas paramCanvas, boolean paramBoolean)
+  {
+    AppMethodBeat.i(163142);
+    s.u(paramCanvas, "canvas");
+    Bitmap localBitmap = this.lvS;
+    if (localBitmap != null) {
+      ((d)this.effects.get(this.lvQ)).a(paramCanvas, localBitmap, this.lvR);
+    }
+    AppMethodBeat.o(163142);
+  }
   
   public final void clear() {}
   
@@ -70,22 +67,19 @@ public final class e
     return localObject;
   }
   
-  public final void dL(boolean paramBoolean)
+  public final void ex(boolean paramBoolean)
   {
-    this.iTK = 0;
-    this.iTL = 0.0F;
+    this.lvQ = 0;
+    this.lvR = 0.0F;
   }
   
-  public final void f(Canvas paramCanvas)
+  public final void i(Canvas paramCanvas)
   {
     AppMethodBeat.i(163143);
-    p.k(paramCanvas, "canvas");
-    Bitmap localBitmap = this.iTM;
-    if (localBitmap != null)
-    {
-      ((d)this.effects.get(this.iTK)).a(paramCanvas, localBitmap, this.iTL);
-      AppMethodBeat.o(163143);
-      return;
+    s.u(paramCanvas, "canvas");
+    Bitmap localBitmap = this.lvS;
+    if (localBitmap != null) {
+      ((d)this.effects.get(this.lvQ)).a(paramCanvas, localBitmap, this.lvR);
     }
     AppMethodBeat.o(163143);
   }

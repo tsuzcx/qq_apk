@@ -8,12 +8,12 @@ public abstract interface p
   {
     public abstract void done();
     
-    public abstract void hur();
+    public abstract void iVU();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.splash.p
  * JD-Core Version:    0.7.0.1
  */

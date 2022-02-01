@@ -1,151 +1,80 @@
 package com.tencent.matrix.c;
 
-import android.app.Activity;
-import android.app.Application;
-import android.app.Application.ActivityLifecycleCallbacks;
 import android.os.Bundle;
-import com.tencent.matrix.a.a.a.g.b;
-import com.tencent.matrix.a.a.d.b;
-import com.tencent.mm.sdk.platformtools.ApplicationGlobal;
+import com.tencent.matrix.a.a.a.b;
+import com.tencent.matrix.a.a.a.b.a;
+import com.tencent.matrix.a.a.a.f;
+import com.tencent.matrix.a.a.a.m.a;
+import com.tencent.matrix.a.a.a.m.a.a;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public final class e
-  extends com.tencent.matrix.a.a.a.a
+  extends f
 {
-  final Map<String, g.b> cZu = new HashMap();
-  Application.ActivityLifecycleCallbacks cZv;
+  Map<Class<? extends b>, List<m.a.a<b.a>>> eWr = new HashMap();
+  final Bundle mExtras = new Bundle();
   
-  public static void fo(String paramString)
+  public e(com.tencent.matrix.a.a.d paramd)
   {
-    e locale = (e)com.tencent.matrix.a.a.Z(e.class);
-    if (locale != null) {
-      locale.fq(paramString);
-    }
+    super(paramd);
   }
   
-  public static void fp(String paramString)
+  public final void a(Class<? extends b> paramClass, List<m.a.a<b.a>> paramList)
   {
-    e locale = (e)com.tencent.matrix.a.a.Z(e.class);
-    if (locale != null) {
-      locale.fr(paramString);
-    }
+    this.eWr.put(paramClass, paramList);
   }
   
-  public final void VZ()
+  public final m.a<?> aq(Class<? extends m.a<?>> paramClass)
   {
-    super.VZ();
-    this.cZv = new Application.ActivityLifecycleCallbacks()
+    if (paramClass == a.a.class)
     {
-      private static String l(Activity paramAnonymousActivity)
-      {
-        paramAnonymousActivity = paramAnonymousActivity.getClass().getName();
-        int i = -1;
-        switch (paramAnonymousActivity.hashCode())
-        {
-        }
-        for (;;)
-        {
-          switch (i)
-          {
-          default: 
-            return null;
-            if (paramAnonymousActivity.equals("com.tencent.mm.plugin.finder.ui.FinderHomeUI"))
-            {
-              i = 0;
-              continue;
-              if (paramAnonymousActivity.equals("com.tencent.mm.plugin.finder.feed.ui.FinderLiveVisitorWithoutAffinityUI"))
-              {
-                i = 1;
-                continue;
-                if (paramAnonymousActivity.equals("com.tencent.mm.plugin.finder.feed.ui.FinderLiveAnchorWithoutAffinityUI"))
-                {
-                  i = 2;
-                  continue;
-                  if (paramAnonymousActivity.equals("com.tencent.mm.plugin.voip.ui.VideoActivity"))
-                  {
-                    i = 3;
-                    continue;
-                    if (paramAnonymousActivity.equals("com.tencent.mm.plugin.multitalk.ui.MultiTalkMainUI")) {
-                      i = 4;
-                    }
-                  }
-                }
-              }
-            }
-            break;
-          }
-        }
-        return "Finder";
-        return "FinderLive";
-        return "FinderLiveAnchor";
-        return "VoIp";
-        return "VoIpMulti";
-      }
-      
-      public final void onActivityCreated(Activity paramAnonymousActivity, Bundle paramAnonymousBundle)
-      {
-        paramAnonymousActivity = l(paramAnonymousActivity);
-        if (paramAnonymousActivity != null) {
-          e.this.fq(paramAnonymousActivity);
-        }
-      }
-      
-      public final void onActivityDestroyed(Activity paramAnonymousActivity)
-      {
-        paramAnonymousActivity = l(paramAnonymousActivity);
-        if (paramAnonymousActivity != null) {
-          e.this.fr(paramAnonymousActivity);
-        }
-      }
-      
-      public final void onActivityPaused(Activity paramAnonymousActivity) {}
-      
-      public final void onActivityResumed(Activity paramAnonymousActivity) {}
-      
-      public final void onActivitySaveInstanceState(Activity paramAnonymousActivity, Bundle paramAnonymousBundle) {}
-      
-      public final void onActivityStarted(Activity paramAnonymousActivity) {}
-      
-      public final void onActivityStopped(Activity paramAnonymousActivity) {}
-    };
-    ApplicationGlobal.context().registerActivityLifecycleCallbacks(this.cZv);
-  }
-  
-  public final void Wa()
-  {
-    super.Wa();
-    if (this.cZv != null) {
-      ApplicationGlobal.context().unregisterActivityLifecycleCallbacks(this.cZv);
+      a.a locala = a.a.ayw();
+      this.eQY.put(paramClass, locala);
+      return locala;
     }
-    this.cZu.clear();
+    return super.aq(paramClass);
   }
   
-  public final int Wh()
+  public final void ar(Class<? extends b> paramClass)
   {
-    return 0;
+    a(paramClass, new e..ExternalSyntheticLambda0(this, paramClass));
   }
   
-  public final void fq(final String paramString)
+  public final List<m.a.a<b.a>> as(Class<? extends b> paramClass)
   {
-    com.tencent.matrix.a.a.a(new d.b() {});
+    List localList = (List)this.eWr.get(paramClass);
+    paramClass = localList;
+    if (localList == null) {
+      paramClass = Collections.emptyList();
+    }
+    return paramClass;
   }
   
-  public final void fr(final String paramString)
+  public final void clear()
   {
-    if (this.cZu.containsKey(paramString)) {
-      com.tencent.matrix.a.a.a(new d.b() {});
+    super.clear();
+    this.eWr.clear();
+  }
+  
+  public final void e(Class<? extends b> paramClass, com.tencent.matrix.a.b.d<List<m.a.a<b.a>>> paramd)
+  {
+    paramClass = (List)this.eWr.get(paramClass);
+    if (paramClass != null) {
+      paramd.accept(paramClass);
     }
   }
   
-  public final String getTag()
+  public final String getModuleName()
   {
-    return "Matrix.battery.ModuleJiffiesMonitor";
+    return this.mExtras.getString("extra_module_name", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.c.e
  * JD-Core Version:    0.7.0.1
  */

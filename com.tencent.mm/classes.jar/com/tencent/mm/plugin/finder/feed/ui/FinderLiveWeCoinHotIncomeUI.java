@@ -1,20 +1,17 @@
 package com.tencent.mm.plugin.finder.feed.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.view.View;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.e;
-import androidx.fragment.app.i;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.r;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
 import com.tencent.mm.plugin.finder.live.fragment.FinderLiveWeCoinHotFragment;
-import com.tencent.mm.plugin.finder.live.report.m;
+import com.tencent.mm.plugin.finder.live.p.e;
+import com.tencent.mm.plugin.finder.live.p.f;
+import com.tencent.mm.plugin.finder.live.report.k;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -22,74 +19,45 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.ui.component.UIComponent;
 import com.tencent.mm.ui.component.UIComponentFragment;
-import java.util.HashMap;
 import java.util.Iterator;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
 @a(32)
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveWeCoinHotIncomeUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "fragment", "Lcom/tencent/mm/plugin/finder/live/fragment/FinderLiveWeCoinHotFragment;", "getFragment", "()Lcom/tencent/mm/plugin/finder/live/fragment/FinderLiveWeCoinHotFragment;", "setFragment", "(Lcom/tencent/mm/plugin/finder/live/fragment/FinderLiveWeCoinHotFragment;)V", "lastOrientation", "", "commitFragment", "", "finish", "getLayoutId", "getReportTag", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "onStart", "onStop", "resetFragment", "plugin-finder-live_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveWeCoinHotIncomeUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "fragment", "Lcom/tencent/mm/plugin/finder/live/fragment/FinderLiveWeCoinHotFragment;", "getFragment", "()Lcom/tencent/mm/plugin/finder/live/fragment/FinderLiveWeCoinHotFragment;", "setFragment", "(Lcom/tencent/mm/plugin/finder/live/fragment/FinderLiveWeCoinHotFragment;)V", "lastOrientation", "", "commitFragment", "", "finish", "getLayoutId", "getReportTag", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "onStart", "onStop", "resetFragment", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderLiveWeCoinHotIncomeUI
   extends MMFinderUI
 {
+  private FinderLiveWeCoinHotFragment BpU;
   private final String TAG = "FinderLiveWeCoinHotIncomeUI";
-  private HashMap _$_findViewCache;
   private int lastOrientation = -1;
-  private FinderLiveWeCoinHotFragment xQv;
   
-  private final void dvk()
+  private final void efd()
   {
-    AppMethodBeat.i(232988);
-    this.xQv = new FinderLiveWeCoinHotFragment();
-    FinderLiveWeCoinHotFragment localFinderLiveWeCoinHotFragment = this.xQv;
+    AppMethodBeat.i(364229);
+    this.BpU = new FinderLiveWeCoinHotFragment();
+    FinderLiveWeCoinHotFragment localFinderLiveWeCoinHotFragment = this.BpU;
     if (localFinderLiveWeCoinHotFragment != null)
     {
-      i locali = getSupportFragmentManager().beginTransaction();
-      p.j(locali, "supportFragmentManager.beginTransaction()");
-      locali.b(b.f.fragment_container, (Fragment)localFinderLiveWeCoinHotFragment);
-      locali.iq();
-      AppMethodBeat.o(232988);
-      return;
+      r localr = getSupportFragmentManager().beginTransaction();
+      s.s(localr, "supportFragmentManager.beginTransaction()");
+      localr.b(p.e.fragment_container, (Fragment)localFinderLiveWeCoinHotFragment);
+      localr.FY();
     }
-    AppMethodBeat.o(232988);
+    AppMethodBeat.o(364229);
   }
   
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(232992);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(232992);
-  }
+  public final void _$_clearFindViewByIdCache() {}
   
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(232990);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(232990);
-    return localView1;
-  }
-  
-  public final String dvl()
+  public final String efe()
   {
     return this.TAG;
   }
   
   public final void finish()
   {
-    AppMethodBeat.i(232986);
-    Object localObject = this.xQv;
+    AppMethodBeat.i(364305);
+    Object localObject = this.BpU;
     if (localObject != null)
     {
       localObject = ((Iterable)((UIComponentFragment)localObject).uiComponents).iterator();
@@ -98,18 +66,18 @@ public final class FinderLiveWeCoinHotIncomeUI
       }
     }
     super.finish();
-    AppMethodBeat.o(232986);
+    AppMethodBeat.o(364305);
   }
   
   public final int getLayoutId()
   {
-    return b.g.finder_live_visitor_fragment_ui;
+    return p.f.CfY;
   }
   
   public final void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(232982);
-    p.k(paramConfiguration, "newConfig");
+    AppMethodBeat.i(364291);
+    s.u(paramConfiguration, "newConfig");
     super.onConfigurationChanged(paramConfiguration);
     Log.i(this.TAG, "[onConfigurationChanged] lastOrientation：" + this.lastOrientation + ",newConfig.orientation:" + paramConfiguration.orientation);
     if (this.lastOrientation != paramConfiguration.orientation)
@@ -119,68 +87,68 @@ public final class FinderLiveWeCoinHotIncomeUI
       Parcelable localParcelable = getIntent().getParcelableExtra("KEY_PARAMS_CONFIG");
       if (localParcelable == null)
       {
-        paramConfiguration = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.live.model.FinderLiveBundle");
-        AppMethodBeat.o(232982);
+        paramConfiguration = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.finder.live.model.FinderLiveBundle");
+        AppMethodBeat.o(364291);
         throw paramConfiguration;
       }
       localIntent.putExtra("KEY_PARAMS_CONFIG", (Parcelable)localParcelable);
       getIntent().putExtra("KEY_PARAMS_RESET_LIVE", true);
-      dvk();
-      m.yCt.O(true, paramConfiguration.orientation);
+      efd();
+      k.Doi.N(true, paramConfiguration.orientation);
     }
     LocaleUtil.initLanguage(MMApplicationContext.getContext());
-    AppMethodBeat.o(232982);
+    AppMethodBeat.o(364291);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(232974);
+    AppMethodBeat.i(364239);
     supportRequestWindowFeature(1);
     super.onCreate(paramBundle);
     getIntent().putExtra("KEY_PARAMS_RESET_LIVE", false);
-    dvk();
+    efd();
     Log.i(this.TAG, "[onCreate]");
-    AppMethodBeat.o(232974);
+    AppMethodBeat.o(364239);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(232980);
+    AppMethodBeat.i(364277);
     super.onDestroy();
     Log.i(this.TAG, "[onDestroy]");
-    AppMethodBeat.o(232980);
+    AppMethodBeat.o(364277);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(232977);
+    AppMethodBeat.i(364261);
     super.onPause();
     Log.i(this.TAG, "[onPause]");
-    AppMethodBeat.o(232977);
+    AppMethodBeat.o(364261);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(232976);
+    AppMethodBeat.i(364254);
     super.onResume();
     Log.i(this.TAG, "[onResume]");
-    AppMethodBeat.o(232976);
+    AppMethodBeat.o(364254);
   }
   
   public final void onStart()
   {
-    AppMethodBeat.i(232975);
+    AppMethodBeat.i(364246);
     super.onStart();
     Log.i(this.TAG, "[onStart]");
-    AppMethodBeat.o(232975);
+    AppMethodBeat.o(364246);
   }
   
   public final void onStop()
   {
-    AppMethodBeat.i(232978);
+    AppMethodBeat.i(364269);
     super.onStop();
     Log.i(this.TAG, "[onStop]");
-    AppMethodBeat.o(232978);
+    AppMethodBeat.o(364269);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -191,7 +159,7 @@ public final class FinderLiveWeCoinHotIncomeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.ui.FinderLiveWeCoinHotIncomeUI
  * JD-Core Version:    0.7.0.1
  */

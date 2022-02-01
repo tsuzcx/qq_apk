@@ -22,38 +22,38 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ag
 {
-  private final TextView eN;
+  private final TextView fP;
   private final View mContentView;
   private final Context mContext;
-  private final WindowManager.LayoutParams xL;
-  private final Rect xM;
-  private final int[] xN;
-  private final int[] xO;
+  private final WindowManager.LayoutParams yG;
+  private final Rect yH;
+  private final int[] yI;
+  private final int[] yJ;
   
   ag(Context paramContext)
   {
-    AppMethodBeat.i(242474);
-    this.xL = new WindowManager.LayoutParams();
-    this.xM = new Rect();
-    this.xN = new int[2];
-    this.xO = new int[2];
+    AppMethodBeat.i(199636);
+    this.yG = new WindowManager.LayoutParams();
+    this.yH = new Rect();
+    this.yI = new int[2];
+    this.yJ = new int[2];
     this.mContext = paramContext;
     this.mContentView = LayoutInflater.from(this.mContext).inflate(a.g.abc_tooltip, null);
-    this.eN = ((TextView)this.mContentView.findViewById(a.f.message));
-    this.xL.setTitle(getClass().getSimpleName());
-    this.xL.packageName = this.mContext.getPackageName();
-    this.xL.type = 1002;
-    this.xL.width = -2;
-    this.xL.height = -2;
-    this.xL.format = -3;
-    this.xL.windowAnimations = a.i.Animation_AppCompat_Tooltip;
-    this.xL.flags = 24;
-    AppMethodBeat.o(242474);
+    this.fP = ((TextView)this.mContentView.findViewById(a.f.message));
+    this.yG.setTitle(getClass().getSimpleName());
+    this.yG.packageName = this.mContext.getPackageName();
+    this.yG.type = 1002;
+    this.yG.width = -2;
+    this.yG.height = -2;
+    this.yG.format = -3;
+    this.yG.windowAnimations = a.i.Animation_AppCompat_Tooltip;
+    this.yG.flags = 24;
+    AppMethodBeat.o(199636);
   }
   
   private void a(View paramView, int paramInt1, int paramInt2, boolean paramBoolean, WindowManager.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(242480);
+    AppMethodBeat.i(199664);
     paramLayoutParams.token = paramView.getApplicationWindowToken();
     int i = this.mContext.getResources().getDimensionPixelOffset(a.d.tooltip_precise_anchor_threshold);
     if (paramView.getWidth() < i) {
@@ -81,16 +81,16 @@ final class ag
       if (localObject1 != null) {
         break label155;
       }
-      AppMethodBeat.o(242480);
+      AppMethodBeat.o(199664);
       return;
       paramInt2 = paramView.getHeight();
       i = 0;
       break;
     }
     label155:
-    ((View)localObject1).getWindowVisibleDisplayFrame(this.xM);
+    ((View)localObject1).getWindowVisibleDisplayFrame(this.yH);
     Object localObject2;
-    if ((this.xM.left < 0) && (this.xM.top < 0))
+    if ((this.yH.left < 0) && (this.yH.top < 0))
     {
       localObject2 = this.mContext.getResources();
       j = ((Resources)localObject2).getIdentifier("status_bar_height", "dimen", "android");
@@ -102,19 +102,19 @@ final class ag
     for (j = ((Resources)localObject2).getDimensionPixelSize(j);; j = 0)
     {
       localObject2 = ((Resources)localObject2).getDisplayMetrics();
-      this.xM.set(0, j, ((DisplayMetrics)localObject2).widthPixels, ((DisplayMetrics)localObject2).heightPixels);
-      ((View)localObject1).getLocationOnScreen(this.xO);
-      paramView.getLocationOnScreen(this.xN);
-      paramView = this.xN;
-      paramView[0] -= this.xO[0];
-      paramView = this.xN;
-      paramView[1] -= this.xO[1];
-      paramLayoutParams.x = (this.xN[0] + paramInt1 - ((View)localObject1).getWidth() / 2);
+      this.yH.set(0, j, ((DisplayMetrics)localObject2).widthPixels, ((DisplayMetrics)localObject2).heightPixels);
+      ((View)localObject1).getLocationOnScreen(this.yJ);
+      paramView.getLocationOnScreen(this.yI);
+      paramView = this.yI;
+      paramView[0] -= this.yJ[0];
+      paramView = this.yI;
+      paramView[1] -= this.yJ[1];
+      paramLayoutParams.x = (this.yI[0] + paramInt1 - ((View)localObject1).getWidth() / 2);
       paramInt1 = View.MeasureSpec.makeMeasureSpec(0, 0);
       this.mContentView.measure(paramInt1, paramInt1);
       paramInt1 = this.mContentView.getMeasuredHeight();
-      i = i + this.xN[1] - k - paramInt1;
-      paramInt2 = paramInt2 + this.xN[1] + k;
+      i = i + this.yI[1] - k - paramInt1;
+      paramInt2 = paramInt2 + this.yI[1] + k;
       if (!paramBoolean) {
         break;
       }
@@ -122,81 +122,81 @@ final class ag
         break label425;
       }
       paramLayoutParams.y = paramInt2;
-      AppMethodBeat.o(242480);
+      AppMethodBeat.o(199664);
       return;
     }
-    if (paramInt1 + paramInt2 <= this.xM.height())
+    if (paramInt1 + paramInt2 <= this.yH.height())
     {
       paramLayoutParams.y = paramInt2;
-      AppMethodBeat.o(242480);
+      AppMethodBeat.o(199664);
       return;
     }
     label425:
     paramLayoutParams.y = i;
-    AppMethodBeat.o(242480);
+    AppMethodBeat.o(199664);
   }
   
   private boolean isShowing()
   {
-    AppMethodBeat.i(242479);
+    AppMethodBeat.i(199648);
     if (this.mContentView.getParent() != null)
     {
-      AppMethodBeat.o(242479);
+      AppMethodBeat.o(199648);
       return true;
     }
-    AppMethodBeat.o(242479);
+    AppMethodBeat.o(199648);
     return false;
   }
   
   private static View r(View paramView)
   {
-    AppMethodBeat.i(242482);
+    AppMethodBeat.i(199670);
     View localView = paramView.getRootView();
     ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
     if (((localLayoutParams instanceof WindowManager.LayoutParams)) && (((WindowManager.LayoutParams)localLayoutParams).type == 2))
     {
-      AppMethodBeat.o(242482);
+      AppMethodBeat.o(199670);
       return localView;
     }
     for (paramView = paramView.getContext(); (paramView instanceof ContextWrapper); paramView = ((ContextWrapper)paramView).getBaseContext()) {
       if ((paramView instanceof Activity))
       {
         paramView = ((Activity)paramView).getWindow().getDecorView();
-        AppMethodBeat.o(242482);
+        AppMethodBeat.o(199670);
         return paramView;
       }
     }
-    AppMethodBeat.o(242482);
+    AppMethodBeat.o(199670);
     return localView;
   }
   
   final void a(View paramView, int paramInt1, int paramInt2, boolean paramBoolean, CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(242477);
+    AppMethodBeat.i(199680);
     if (isShowing()) {
       hide();
     }
-    this.eN.setText(paramCharSequence);
-    a(paramView, paramInt1, paramInt2, paramBoolean, this.xL);
-    ((WindowManager)this.mContext.getSystemService("window")).addView(this.mContentView, this.xL);
-    AppMethodBeat.o(242477);
+    this.fP.setText(paramCharSequence);
+    a(paramView, paramInt1, paramInt2, paramBoolean, this.yG);
+    ((WindowManager)this.mContext.getSystemService("window")).addView(this.mContentView, this.yG);
+    AppMethodBeat.o(199680);
   }
   
   final void hide()
   {
-    AppMethodBeat.i(242478);
+    AppMethodBeat.i(199686);
     if (!isShowing())
     {
-      AppMethodBeat.o(242478);
+      AppMethodBeat.o(199686);
       return;
     }
     ((WindowManager)this.mContext.getSystemService("window")).removeView(this.mContentView);
-    AppMethodBeat.o(242478);
+    AppMethodBeat.o(199686);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     androidx.appcompat.widget.ag
  * JD-Core Version:    0.7.0.1
  */

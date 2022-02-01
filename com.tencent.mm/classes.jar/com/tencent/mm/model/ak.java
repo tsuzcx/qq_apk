@@ -2,240 +2,247 @@ package com.tencent.mm.model;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.R.l;
+import com.tencent.mm.autogen.b.az;
 import com.tencent.mm.contact.d;
-import com.tencent.mm.f.c.ax;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.messenger.b.e;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.bw;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.by;
 
 public final class ak
 {
-  private c ltn;
-  
-  public ak(c paramc)
-  {
-    this.ltn = paramc;
-  }
-  
-  public static void S(as paramas)
+  public static void T(au paramau)
   {
     AppMethodBeat.i(20319);
-    as localas = paramas;
-    if (paramas == null) {
-      localas = new as();
+    au localau = paramau;
+    if (paramau == null) {
+      localau = new au();
     }
-    if ((int)localas.jxt == 0)
+    if ((int)localau.maN == 0)
     {
-      localas.setUsername("filehelper");
-      bh.beI();
-      if (c.bbR().bwx(localas.field_username) != null) {
-        break label83;
+      localau.setUsername("filehelper");
+      if (((n)h.ax(n.class)).bzG().bxM(localau.field_username) != null) {
+        break label95;
       }
-      localas.axl();
+      localau.aRL();
     }
     for (;;)
     {
-      localas.pv(3);
-      bh.beI();
-      c.bbL().au(localas);
+      localau.pu(3);
+      ((n)h.ax(n.class)).bzA().aA(localau);
       AppMethodBeat.o(20319);
       return;
-      label83:
-      localas.axk();
+      label95:
+      localau.aRK();
     }
   }
   
-  static void T(as paramas)
+  static void U(au paramau)
   {
     AppMethodBeat.i(20320);
-    String str = paramas.field_username;
+    String str = paramau.field_username;
     Context localContext = MMApplicationContext.getContext();
     if (str.equals("qqsync"))
     {
-      paramas.setNickname(localContext.getString(R.l.eHw));
-      paramas.It(localContext.getString(R.l.eHx));
-      paramas.Iu(localContext.getString(R.l.eHy));
+      paramau.setNickname(localContext.getString(b.e.hardcode_plugin_qqsync_nick));
+      paramau.AY(localContext.getString(b.e.hardcode_plugin_qqsync_pyinitial));
+      paramau.AZ(localContext.getString(b.e.hardcode_plugin_qqsync_quanpin));
     }
     if (str.equals("floatbottle"))
     {
-      paramas.setNickname(localContext.getString(R.l.eGC));
-      paramas.It(localContext.getString(R.l.eGD));
-      paramas.Iu(localContext.getString(R.l.eGE));
+      paramau.setNickname(localContext.getString(b.e.hardcode_plugin_bottle_nick));
+      paramau.AY(localContext.getString(b.e.hardcode_plugin_bottle_pyinitial));
+      paramau.AZ(localContext.getString(b.e.hardcode_plugin_bottle_quanpin));
     }
     if (str.equals("shakeapp"))
     {
-      paramas.setNickname(localContext.getString(R.l.eHC));
-      paramas.It(localContext.getString(R.l.eHD));
-      paramas.Iu(localContext.getString(R.l.eHE));
+      paramau.setNickname(localContext.getString(b.e.hardcode_plugin_shake_nick));
+      paramau.AY(localContext.getString(b.e.hardcode_plugin_shake_pyinitial));
+      paramau.AZ(localContext.getString(b.e.hardcode_plugin_shake_quanpin));
     }
     if (str.equals("lbsapp"))
     {
-      paramas.setNickname(localContext.getString(R.l.eGV));
-      paramas.It(localContext.getString(R.l.eGW));
-      paramas.Iu(localContext.getString(R.l.eGX));
+      paramau.setNickname(localContext.getString(b.e.hardcode_plugin_lbs_nick));
+      paramau.AY(localContext.getString(b.e.hardcode_plugin_lbs_pyinitial));
+      paramau.AZ(localContext.getString(b.e.hardcode_plugin_lbs_quanpin));
     }
     if (str.equals("medianote"))
     {
-      paramas.setNickname(localContext.getString(R.l.eHe));
-      paramas.It(localContext.getString(R.l.eHf));
-      paramas.Iu(localContext.getString(R.l.eHg));
+      paramau.setNickname(localContext.getString(b.e.hardcode_plugin_medianote_nick));
+      paramau.AY(localContext.getString(b.e.hardcode_plugin_medianote_pyinitial));
+      paramau.AZ(localContext.getString(b.e.hardcode_plugin_medianote_quanpin));
     }
     if (str.equals("newsapp"))
     {
-      paramas.setNickname(localContext.getString(R.l.eHz));
-      paramas.It(localContext.getString(R.l.eHA));
-      paramas.Iu(localContext.getString(R.l.eHB));
+      paramau.setNickname(localContext.getString(b.e.hardcode_plugin_readerappnews_nick));
+      paramau.AY(localContext.getString(b.e.hardcode_plugin_readerappnews_pyinitial));
+      paramau.AZ(localContext.getString(b.e.hardcode_plugin_readerappnews_quanpin));
     }
     if (str.equals("facebookapp"))
     {
-      paramas.setNickname(localContext.getString(R.l.hardcode_plugin_facebookapp_nick));
-      paramas.It(localContext.getString(R.l.eGL));
-      paramas.Iu(localContext.getString(R.l.eGM));
+      paramau.setNickname(localContext.getString(b.e.hardcode_plugin_facebookapp_nick));
+      paramau.AY(localContext.getString(b.e.hardcode_plugin_facebookapp_pyinitial));
+      paramau.AZ(localContext.getString(b.e.hardcode_plugin_facebookapp_quanpin));
     }
     if (str.equals("qqfriend"))
     {
-      paramas.setNickname(localContext.getString(R.l.hardcode_plugin_qqfriend_nick));
-      paramas.It(localContext.getString(R.l.eHr));
-      paramas.Iu(localContext.getString(R.l.eHs));
+      paramau.setNickname(localContext.getString(b.e.hardcode_plugin_qqfriend_nick_title));
+      paramau.AY(localContext.getString(b.e.hardcode_plugin_qqfriend_pyinitial));
+      paramau.AZ(localContext.getString(b.e.hardcode_plugin_qqfriend_quanpin));
     }
     if (str.equals("masssendapp"))
     {
-      paramas.setNickname(localContext.getString(R.l.eHb));
-      paramas.It(localContext.getString(R.l.eHc));
-      paramas.Iu(localContext.getString(R.l.eHd));
+      paramau.setNickname(localContext.getString(b.e.hardcode_plugin_masssend_nick));
+      paramau.AY(localContext.getString(b.e.hardcode_plugin_masssend_pyinitial));
+      paramau.AZ(localContext.getString(b.e.hardcode_plugin_masssend_quanpin));
     }
     if (str.equals("feedsapp"))
     {
-      paramas.setNickname(localContext.getString(R.l.hardcode_plugin_feedsapp_nick));
-      paramas.It(localContext.getString(R.l.eGN));
-      paramas.Iu(localContext.getString(R.l.eGO));
+      paramau.setNickname(localContext.getString(b.e.hardcode_plugin_feedsapp_nick));
+      paramau.AY(localContext.getString(b.e.hardcode_plugin_feedsapp_pyinitial));
+      paramau.AZ(localContext.getString(b.e.hardcode_plugin_feedsapp_quanpin));
     }
     if (str.equals("fmessage"))
     {
-      paramas.setNickname(localContext.getString(R.l.eGP));
-      paramas.It(localContext.getString(R.l.eGQ));
-      paramas.Iu(localContext.getString(R.l.eGR));
+      paramau.setNickname(localContext.getString(b.e.hardcode_plugin_fmessage_nick));
+      paramau.AY(localContext.getString(b.e.hardcode_plugin_fmessage_pyinitial));
+      paramau.AZ(localContext.getString(b.e.hardcode_plugin_fmessage_quanpin));
     }
     if (str.equals("voipapp"))
     {
-      paramas.setNickname(localContext.getString(R.l.eHI));
-      paramas.It(localContext.getString(R.l.eHJ));
-      paramas.Iu(localContext.getString(R.l.eHK));
+      paramau.setNickname(localContext.getString(b.e.hardcode_plugin_voip_nick));
+      paramau.AY(localContext.getString(b.e.hardcode_plugin_voip_pyinitial));
+      paramau.AZ(localContext.getString(b.e.hardcode_plugin_voip_quanpin));
     }
     if (str.equals("officialaccounts"))
     {
-      paramas.setNickname(localContext.getString(R.l.eHl));
-      paramas.It(localContext.getString(R.l.eHm));
-      paramas.Iu(localContext.getString(R.l.eHn));
+      paramau.setNickname(localContext.getString(b.e.hardcode_plugin_official_accounts_nick));
+      paramau.AY(localContext.getString(b.e.hardcode_plugin_official_accounts_pyinitial));
+      paramau.AZ(localContext.getString(b.e.hardcode_plugin_official_accounts_quanpin));
     }
     if (str.equals("findersayhisessionholder"))
     {
-      paramas.setNickname(localContext.getString(R.l.eHo));
-      paramas.It(localContext.getString(R.l.eHp));
-      paramas.Iu(localContext.getString(R.l.eHq));
+      paramau.setNickname(localContext.getString(b.e.hardcode_plugin_official_finder_nick));
+      paramau.AY(localContext.getString(b.e.hardcode_plugin_official_finder_pyinitial));
+      paramau.AZ(localContext.getString(b.e.hardcode_plugin_official_finder_quanpin));
     }
     if (str.equals("helper_entry"))
     {
-      paramas.setNickname(localContext.getString(R.l.eGS));
-      paramas.It(localContext.getString(R.l.eGT));
-      paramas.Iu(localContext.getString(R.l.eGU));
+      paramau.setNickname(localContext.getString(b.e.hardcode_plugin_helper_entry_nick));
+      paramau.AY(localContext.getString(b.e.hardcode_plugin_helper_entry_pyinitial));
+      paramau.AZ(localContext.getString(b.e.hardcode_plugin_helper_entry_quanpin));
     }
     if (str.equals("cardpackage"))
     {
-      paramas.setNickname(localContext.getString(R.l.eGF));
-      paramas.It(localContext.getString(R.l.eGG));
-      paramas.Iu(localContext.getString(R.l.eGH));
+      paramau.setNickname(localContext.getString(b.e.hardcode_plugin_card_package_nick));
+      paramau.AY(localContext.getString(b.e.hardcode_plugin_card_package_pyinitial));
+      paramau.AZ(localContext.getString(b.e.hardcode_plugin_card_package_quanpin));
     }
     if (str.equals("voicevoipapp"))
     {
-      paramas.setNickname(localContext.getString(R.l.eHL));
-      paramas.It(localContext.getString(R.l.eHM));
-      paramas.Iu(localContext.getString(R.l.eHN));
+      paramau.setNickname(localContext.getString(b.e.hardcode_plugin_voipaudio_nick));
+      paramau.AY(localContext.getString(b.e.hardcode_plugin_voipaudio_pyinitial));
+      paramau.AZ(localContext.getString(b.e.hardcode_plugin_voipaudio_quanpin));
     }
     if (str.equals("voiceinputapp"))
     {
-      paramas.setNickname(localContext.getString(R.l.eHF));
-      paramas.It(localContext.getString(R.l.eHG));
-      paramas.Iu(localContext.getString(R.l.eHH));
+      paramau.setNickname(localContext.getString(b.e.hardcode_plugin_voiceinput_nick));
+      paramau.AY(localContext.getString(b.e.hardcode_plugin_voiceinput_pyinitial));
+      paramau.AZ(localContext.getString(b.e.hardcode_plugin_voiceinput_quanpin));
     }
     if (str.equals("qqmail"))
     {
-      paramas.setNickname(localContext.getString(R.l.eHt));
-      paramas.It(localContext.getString(R.l.eHu));
-      paramas.Iu(localContext.getString(R.l.eHv));
+      paramau.setNickname(localContext.getString(b.e.hardcode_plugin_qqmail_nick));
+      paramau.AY(localContext.getString(b.e.hardcode_plugin_qqmail_pyinitial));
+      paramau.AZ(localContext.getString(b.e.hardcode_plugin_qqmail_quanpin));
     }
     if (str.equals("linkedinplugin"))
     {
-      paramas.setNickname(localContext.getString(R.l.eGY));
-      paramas.It(localContext.getString(R.l.eGZ));
-      paramas.Iu(localContext.getString(R.l.eHa));
+      paramau.setNickname(localContext.getString(b.e.hardcode_plugin_linkedin_nick));
+      paramau.AY(localContext.getString(b.e.hardcode_plugin_linkedin_pyinitial));
+      paramau.AZ(localContext.getString(b.e.hardcode_plugin_linkedin_quanpin));
     }
     if (str.equals("notifymessage"))
     {
-      paramas.setNickname(localContext.getString(R.l.eHi));
-      paramas.It(localContext.getString(R.l.eHj));
-      paramas.Iu(localContext.getString(R.l.eHk));
+      paramau.setNickname(localContext.getString(b.e.hardcode_plugin_notify_message_nick));
+      paramau.AY(localContext.getString(b.e.hardcode_plugin_notify_message_pyinitial));
+      paramau.AZ(localContext.getString(b.e.hardcode_plugin_notify_message_quanpin));
     }
     if (str.equals("appbrandcustomerservicemsg"))
     {
-      paramas.setNickname(localContext.getString(R.l.eGw));
-      paramas.It(localContext.getString(R.l.eGx));
-      paramas.Iu(localContext.getString(R.l.eGy));
+      paramau.setNickname(localContext.getString(b.e.hardcode_plugin_app_brand_customer_service_message_nick));
+      paramau.AY(localContext.getString(b.e.hardcode_plugin_app_brand_customer_service_message_pyinitial));
+      paramau.AZ(localContext.getString(b.e.hardcode_plugin_app_brand_customer_service_message_quanpin));
+    }
+    if (str.equals("conversationboxservice"))
+    {
+      paramau.setNickname(localContext.getString(b.e.hardcode_plugin_conv_box_message_nick));
+      paramau.AY(localContext.getString(b.e.hardcode_plugin_conv_box_message_pyinitial));
+      paramau.AZ(localContext.getString(b.e.hardcode_plugin_conv_box_message_quanpin));
     }
     if (str.equals("downloaderapp"))
     {
-      paramas.setNickname(localContext.getString(R.l.eGI));
-      paramas.It(localContext.getString(R.l.eGJ));
-      paramas.Iu(localContext.getString(R.l.eGK));
+      paramau.setNickname(localContext.getString(b.e.hardcode_plugin_downloaderapp_nick));
+      paramau.AY(localContext.getString(b.e.hardcode_plugin_downloaderapp_pyinitial));
+      paramau.AZ(localContext.getString(b.e.hardcode_plugin_downloaderapp_quanpin));
     }
     if (str.equals("appbrand_notify_message"))
     {
-      paramas.setNickname(localContext.getString(R.l.eGz));
-      paramas.It(localContext.getString(R.l.eGA));
-      paramas.Iu(localContext.getString(R.l.eGB));
+      paramau.setNickname(localContext.getString(b.e.hardcode_plugin_app_brand_notify_message_nick));
+      paramau.AY(localContext.getString(b.e.hardcode_plugin_app_brand_notify_message_pyinitial));
+      paramau.AZ(localContext.getString(b.e.hardcode_plugin_app_brand_notify_message_quanpin));
+    }
+    if (str.equals("opencustomerservicemsg"))
+    {
+      paramau.setNickname(localContext.getString(b.e.hardcode_plugin_open_im_kefu_message_nick));
+      paramau.AY(localContext.getString(b.e.hardcode_plugin_open_im_kefu_message_pyinitial));
+      paramau.AZ(localContext.getString(b.e.hardcode_plugin_open_im_kefu_message_quanpin));
     }
     AppMethodBeat.o(20320);
   }
   
   static int a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    int i = 3;
     AppMethodBeat.i(20318);
-    as localas2 = c.bbL().RG(paramString);
-    as localas1 = localas2;
-    if (localas2 == null) {
-      localas1 = new as();
+    au localau = ((n)h.ax(n.class)).bzA().JE(paramString);
+    if (localau == null) {
+      localau = new au();
     }
-    if ((int)localas1.jxt == 0)
+    for (;;)
     {
-      localas1.setUsername(paramString);
-      localas1.axk();
-      T(localas1);
-      if (paramBoolean2) {
-        i = 4;
+      if ((int)localau.maN == 0)
+      {
+        localau.setUsername(paramString);
+        localau.aRK();
+        U(localau);
+        if (paramBoolean2) {}
+        for (int i = 4;; i = 3)
+        {
+          localau.pu(i);
+          localau.aRZ();
+          ((n)h.ax(n.class)).bzA().aB(localau);
+          AppMethodBeat.o(20318);
+          return 1;
+        }
       }
-      localas1.pv(i);
-      localas1.axx();
-      c.bbL().av(localas1);
+      if (paramBoolean1)
+      {
+        localau.aRZ();
+        ((n)h.ax(n.class)).bzA().d(paramString, localau);
+        AppMethodBeat.o(20318);
+        return 2;
+      }
       AppMethodBeat.o(20318);
-      return 1;
+      return 3;
     }
-    if (paramBoolean1)
-    {
-      localas1.axx();
-      c.bbL().c(paramString, localas1);
-      AppMethodBeat.o(20318);
-      return 2;
-    }
-    AppMethodBeat.o(20318);
-    return 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.model.ak
  * JD-Core Version:    0.7.0.1
  */

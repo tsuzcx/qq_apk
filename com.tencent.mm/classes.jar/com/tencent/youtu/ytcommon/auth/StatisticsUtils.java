@@ -7,7 +7,6 @@ import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -107,7 +106,7 @@ public class StatisticsUtils
     paramContext = (WifiManager)paramContext.getApplicationContext().getSystemService("wifi");
     if (paramContext != null)
     {
-      paramContext = (WifiInfo)a.a(paramContext, "com/tencent/youtu/ytcommon/auth/StatisticsUtils", "getMacAddr", "(Landroid/content/Context;)Ljava/lang/String;", "android/net/wifi/WifiManager", "getConnectionInfo", "()Landroid/net/wifi/WifiInfo;");
+      paramContext = paramContext.getConnectionInfo();
       if (paramContext == null) {}
     }
     for (paramContext = paramContext.getMacAddress();; paramContext = null)
@@ -156,7 +155,7 @@ public class StatisticsUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.youtu.ytcommon.auth.StatisticsUtils
  * JD-Core Version:    0.7.0.1
  */

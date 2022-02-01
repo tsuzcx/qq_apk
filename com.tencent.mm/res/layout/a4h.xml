@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" style="@style/rj"
+<LinearLayout android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" style="@style/lz">
-        <com.tencent.mm.plugin.exdevice.ui.ExdeviceConnectedRouterStateView android:id="@id/c5o" style="@style/i8" />
-        <TextView android:id="@id/c5n" style="@style/i7" />
-        <TextView android:id="@id/c5p" style="@style/i9" />
-    </LinearLayout>
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/bqz" android:background="@drawable/p5" android:padding="@dimen/j6" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/c16" android:visibility="gone" android:layout_width="@dimen/m0" android:layout_height="@dimen/m0" android:layout_marginRight="@dimen/m2" android:src="@drawable/e5" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/f1j" android:layout_width="@dimen/iy" android:layout_height="@dimen/iy" android:src="@drawable/b_r" android:layout_toRightOf="@id/c16" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:gravity="left" android:id="@id/h__" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m2" android:layout_toRightOf="@id/f1j" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
 </LinearLayout>

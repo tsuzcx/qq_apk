@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/BW_100_Alpha_0_5" />
-    <size android:height="@dimen/ct" android:width="@dimen/ct" />
-    <corners android:radius="@dimen/bt" />
-</shape>
+    <item android:state_enabled="false" android:drawable="@drawable/c3x" />
+    <item android:state_checked="true" android:drawable="@drawable/c3z" />
+    <item android:state_pressed="true" android:drawable="@drawable/c3z" />
+    <item android:drawable="@drawable/c3y" />
+</selector>

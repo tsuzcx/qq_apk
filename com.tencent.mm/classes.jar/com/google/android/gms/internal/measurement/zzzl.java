@@ -21,7 +21,7 @@ final class zzzl
     AppMethodBeat.i(40359);
     try
     {
-      zzzj localzzzj = (zzzj)Class.forName("com.google.b.ar").getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
+      zzzj localzzzj = (zzzj)Class.forName("com.google.d.av").getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
       AppMethodBeat.o(40359);
       return localzzzj;
     }
@@ -53,7 +53,7 @@ final class zzzl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzzl
  * JD-Core Version:    0.7.0.1
  */

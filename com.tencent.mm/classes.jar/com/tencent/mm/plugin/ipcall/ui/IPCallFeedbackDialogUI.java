@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.ipcall.ui;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
@@ -15,16 +14,16 @@ import com.tencent.mm.ui.base.a;
 public class IPCallFeedbackDialogUI
   extends MMActivity
 {
-  private g DWm;
+  private g JNv;
   
   public void finish()
   {
     AppMethodBeat.i(25795);
     Log.i("MicroMsg.IPCallFeedbackDialogUI", "finish");
-    if ((this.DWm != null) && (this.DWm.isShowing()))
+    if ((this.JNv != null) && (this.JNv.isShowing()))
     {
-      this.DWm.dismiss();
-      this.DWm = null;
+      this.JNv.dismiss();
+      this.JNv = null;
     }
     super.finish();
     AppMethodBeat.o(25795);
@@ -40,8 +39,8 @@ public class IPCallFeedbackDialogUI
     AppMethodBeat.i(25791);
     super.onCreate(paramBundle);
     Log.i("MicroMsg.IPCallFeedbackDialogUI", "onCreate");
-    this.DWm = new g(this, getContext(), getIntent().getIntExtra("IPCallFeedbackDialogUI_KRoomId", 0), getIntent().getLongExtra("IPCallFeedbackDialogUI_KCallseq", 0L));
-    this.DWm.setOnDismissListener(new DialogInterface.OnDismissListener()
+    this.JNv = new g(this, getContext(), getIntent().getIntExtra("IPCallFeedbackDialogUI_KRoomId", 0), getIntent().getLongExtra("IPCallFeedbackDialogUI_KCallseq", 0L));
+    this.JNv.setOnDismissListener(new DialogInterface.OnDismissListener()
     {
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
@@ -50,8 +49,8 @@ public class IPCallFeedbackDialogUI
         AppMethodBeat.o(25790);
       }
     });
-    this.DWm.getWindow().setSoftInputMode(16);
-    this.DWm.show();
+    this.JNv.getWindow().setSoftInputMode(16);
+    this.JNv.show();
     AppMethodBeat.o(25791);
   }
   
@@ -87,7 +86,7 @@ public class IPCallFeedbackDialogUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallFeedbackDialogUI
  * JD-Core Version:    0.7.0.1
  */

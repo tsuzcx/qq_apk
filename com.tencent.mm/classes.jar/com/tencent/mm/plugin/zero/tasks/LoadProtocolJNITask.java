@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.zero.tasks;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.j;
+import com.tencent.mm.compatible.util.k;
 import com.tencent.mm.kernel.a.c.a;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.protocal.MMProtocalJni;
@@ -14,13 +14,7 @@ public class LoadProtocolJNITask
   private void retryOnce(Runnable paramRunnable)
   {
     AppMethodBeat.i(133035);
-    try
-    {
-      paramRunnable.run();
-      AppMethodBeat.o(133035);
-      return;
-    }
-    catch (Throwable localThrowable)
+    try {}finally
     {
       paramRunnable.run();
       AppMethodBeat.o(133035);
@@ -31,13 +25,13 @@ public class LoadProtocolJNITask
   {
     AppMethodBeat.i(133034);
     getClass().getClassLoader();
-    j.KW("MMProtocalJni");
+    k.DA("MMProtocalJni");
     retryOnce(new Runnable()
     {
       public void run()
       {
         AppMethodBeat.i(133031);
-        MMProtocalJni.setClientPackVersion(d.RAD);
+        MMProtocalJni.setClientPackVersion(d.Yxh);
         AppMethodBeat.o(133031);
       }
     });
@@ -69,7 +63,7 @@ public class LoadProtocolJNITask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.zero.tasks.LoadProtocolJNITask
  * JD-Core Version:    0.7.0.1
  */

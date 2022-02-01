@@ -55,9 +55,9 @@ public class TbsVideo
     paramString.setFlags(268435456);
     paramString.setPackage(paramContext.getPackageName());
     paramString.putExtra("extraData", localBundle);
-    paramString = new com.tencent.mm.hellhoundlib.b.a().bm(paramString);
-    com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramString.aFh(), "com/tencent/smtt/sdk/TbsVideo", "openVideo", "(Landroid/content/Context;Ljava/lang/String;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramString.sf(0));
+    paramString = new com.tencent.mm.hellhoundlib.b.a().cG(paramString);
+    com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramString.aYi(), "com/tencent/smtt/sdk/TbsVideo", "openVideo", "(Landroid/content/Context;Ljava/lang/String;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramString.sb(0));
     com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/smtt/sdk/TbsVideo", "openVideo", "(Landroid/content/Context;Ljava/lang/String;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(54556);
   }
@@ -77,7 +77,7 @@ public class TbsVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsVideo
  * JD-Core Version:    0.7.0.1
  */

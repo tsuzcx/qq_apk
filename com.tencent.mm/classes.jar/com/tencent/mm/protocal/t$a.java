@@ -1,20 +1,20 @@
 package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bse;
-import com.tencent.mm.protocal.protobuf.eae;
+import com.tencent.mm.protocal.protobuf.cgx;
+import com.tencent.mm.protocal.protobuf.gol;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class t$a
   extends l.d
   implements l.b
 {
-  public bse RBS;
+  public cgx Yyv;
   
   public t$a()
   {
     AppMethodBeat.i(133107);
-    this.RBS = new bse();
+    this.Yyv = new cgx();
     AppMethodBeat.o(133107);
   }
   
@@ -31,18 +31,18 @@ public final class t$a
   public final byte[] toProtoBuf()
   {
     AppMethodBeat.i(133108);
-    setRsaInfo(ac.hpj());
-    this.RBS.RQU = new eae().dc(Util.getUuidRandom());
-    this.RBS.Tcs = ac.hph().ver;
-    this.RBS.setBaseRequest(l.a(this));
-    byte[] arrayOfByte = this.RBS.toByteArray();
+    setRsaInfo(ac.iQe());
+    this.Yyv.YOj = new gol().df(Util.getUuidRandom());
+    this.Yyv.aapH = ac.iQc().ver;
+    this.Yyv.setBaseRequest(l.a(this));
+    byte[] arrayOfByte = this.Yyv.toByteArray();
     AppMethodBeat.o(133108);
     return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.t.a
  * JD-Core Version:    0.7.0.1
  */

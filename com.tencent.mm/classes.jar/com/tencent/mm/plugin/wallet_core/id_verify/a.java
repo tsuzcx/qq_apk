@@ -9,20 +9,21 @@ import android.os.Bundle;
 import android.text.SpannableString;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.c.a;
-import com.tencent.mm.an.q;
-import com.tencent.mm.f.a.abc;
-import com.tencent.mm.f.a.abo;
-import com.tencent.mm.f.a.ma;
-import com.tencent.mm.f.a.tf;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.am.b.a;
+import com.tencent.mm.am.p;
+import com.tencent.mm.autogen.a.acz;
+import com.tencent.mm.autogen.a.adl;
+import com.tencent.mm.autogen.a.ng;
+import com.tencent.mm.autogen.a.uu;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.plugin.wallet_core.c.ae;
 import com.tencent.mm.plugin.wallet_core.id_verify.model.RealNameBundle;
-import com.tencent.mm.plugin.wallet_core.id_verify.model.f;
 import com.tencent.mm.plugin.wallet_core.id_verify.model.j;
-import com.tencent.mm.plugin.wallet_core.id_verify.model.k;
+import com.tencent.mm.plugin.wallet_core.id_verify.model.m;
 import com.tencent.mm.plugin.wallet_core.model.Authen;
-import com.tencent.mm.plugin.wallet_core.model.ao;
+import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.plugin.wallet_core.model.u;
 import com.tencent.mm.plugin.wallet_core.model.v;
 import com.tencent.mm.plugin.wallet_core.ui.WalletBankcardIdUI;
@@ -32,32 +33,31 @@ import com.tencent.mm.plugin.wallet_core.ui.WalletCheckPwdUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletPwdConfirmUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletSetPasswordUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletVerifyCodeUI;
+import com.tencent.mm.plugin.wallet_core.ui.n;
 import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.protocal.protobuf.dtl;
-import com.tencent.mm.protocal.protobuf.dtn;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.protocal.protobuf.emg;
+import com.tencent.mm.protocal.protobuf.emi;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.wallet_core.c.ab;
-import com.tencent.mm.wallet_core.c.z;
-import com.tencent.mm.wallet_core.d;
-import com.tencent.mm.wallet_core.d.g;
-import com.tencent.mm.wallet_core.d.i;
+import com.tencent.mm.wallet_core.c.g;
+import com.tencent.mm.wallet_core.c.i;
+import com.tencent.mm.wallet_core.e;
+import com.tencent.mm.wallet_core.model.aa;
+import com.tencent.mm.wallet_core.model.ac;
 
 public class a
   extends com.tencent.mm.plugin.wallet_core.b.b
 {
-  private IListener<ma> GCj;
-  private boolean OIU;
-  private int OIV;
-  public a OIW;
-  private boolean kSa;
+  private IListener<ng> Myr;
+  private boolean VyG;
+  private int VyH;
+  public a VyI;
   private String mActivityName;
   private int mMode;
   private String mPluginName;
+  private boolean nxG;
   private int resultCode;
   
   public a()
@@ -65,46 +65,46 @@ public class a
     AppMethodBeat.i(69999);
     this.mPluginName = null;
     this.mActivityName = null;
-    this.OIU = false;
+    this.VyG = false;
     this.resultCode = 0;
-    this.OIV = -1;
-    this.kSa = false;
-    this.GCj = new IListener() {};
+    this.VyH = -1;
+    this.nxG = false;
+    this.Myr = new RealNameVerifyProcess.6(this, com.tencent.mm.app.f.hfK);
     AppMethodBeat.o(69999);
   }
   
-  private boolean gIB()
+  private boolean ihP()
   {
     AppMethodBeat.i(70002);
-    boolean bool = "rename".equals(this.fKb.getString("key_realname_scene"));
+    boolean bool = "rename".equals(this.hPH.getString("key_realname_scene"));
     AppMethodBeat.o(70002);
     return bool;
   }
   
-  private boolean h(Context paramContext, Bundle paramBundle)
+  private boolean j(Context paramContext, Bundle paramBundle)
   {
     AppMethodBeat.i(70006);
-    com.tencent.mm.wallet_core.b.iie();
-    if (com.tencent.mm.wallet_core.b.b(b.a.vGW, true))
+    com.tencent.mm.wallet_core.b.jNX();
+    if (com.tencent.mm.wallet_core.b.b(c.a.yWP, true))
     {
-      EventCenter.instance.add(this.GCj);
+      this.Myr.alive();
       Log.d("MicroMsg.RealNameVerifyProcess", "startKindaBindCard:true");
       if (paramBundle != null)
       {
-        ab.ny(6, paramBundle.getInt("key_bind_scene"));
-        z.azF(paramBundle.getInt("key_bind_scene"));
+        ac.pu(6, paramBundle.getInt("key_bind_scene"));
+        aa.aGq(paramBundle.getInt("key_bind_scene"));
       }
       for (;;)
       {
         paramBundle.putInt("key_bind_scene", 10);
-        if (gIB()) {
+        if (ihP()) {
           paramBundle.putInt("reg_flag", 0);
         }
-        ((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.pluginsdk.wallet.a.class)).startBindCardUseCase(paramContext, paramBundle);
+        ((com.tencent.mm.pluginsdk.wallet.a)h.ax(com.tencent.mm.pluginsdk.wallet.a.class)).startBindCardUseCase(paramContext, paramBundle);
         AppMethodBeat.o(70006);
         return true;
-        ab.ny(6, 0);
-        z.azF(0);
+        ac.pu(6, 0);
+        aa.aGq(0);
       }
     }
     Log.d("MicroMsg.RealNameVerifyProcess", "startKindaBindCard:false");
@@ -126,24 +126,24 @@ public class a
       {
         paramMMActivity = new g(paramMMActivity, parami)
         {
-          public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+          public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
           {
             AppMethodBeat.i(69986);
-            if ((paramAnonymousq instanceof f))
+            if ((paramAnonymousp instanceof com.tencent.mm.plugin.wallet_core.id_verify.model.f))
             {
               if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
               {
-                if (((f)paramAnonymousq).OHJ == 0) {
+                if (((com.tencent.mm.plugin.wallet_core.id_verify.model.f)paramAnonymousp).Vxv == 0) {
                   a.k(a.this).putInt("realname_verify_process_ret", -1);
                 }
-                a.l(a.this).putString("realname_verify_process_finish_title", ((f)paramAnonymousq).title);
-                a.m(a.this).putString("realname_verify_process_finish_desc", ((f)paramAnonymousq).desc);
-                a.n(a.this).putString("realname_verify_process_finish_page", ((f)paramAnonymousq).cpm);
-                a.o(a.this).putInt("realname_verify_process_finish_err_jump", ((f)paramAnonymousq).OHJ);
+                a.l(a.this).putString("realname_verify_process_finish_title", ((com.tencent.mm.plugin.wallet_core.id_verify.model.f)paramAnonymousp).title);
+                a.m(a.this).putString("realname_verify_process_finish_desc", ((com.tencent.mm.plugin.wallet_core.id_verify.model.f)paramAnonymousp).desc);
+                a.n(a.this).putString("realname_verify_process_finish_page", ((com.tencent.mm.plugin.wallet_core.id_verify.model.f)paramAnonymousp).egj);
+                a.o(a.this).putInt("realname_verify_process_finish_err_jump", ((com.tencent.mm.plugin.wallet_core.id_verify.model.f)paramAnonymousp).Vxv);
                 Log.i("MicroMsg.RealNameVerifyProcess", "real name reg succ ,update user info");
-                u.gJo().ate();
-                paramAnonymousString = new abc();
-                paramAnonymousString.gah.scene = 16;
+                u.iiC().aNm();
+                paramAnonymousString = new acz();
+                paramAnonymousString.igq.scene = 16;
                 paramAnonymousString.callback = new Runnable()
                 {
                   public final void run()
@@ -153,8 +153,8 @@ public class a
                     AppMethodBeat.o(69983);
                   }
                 };
-                EventCenter.instance.publish(paramAnonymousString);
-                a.a(a.this, this.YVX);
+                paramAnonymousString.publish();
+                a.a(a.this, this.agTR);
                 if (a.p(a.this) == 2) {
                   a.this.b(this.activity, a.q(a.this));
                 }
@@ -166,24 +166,24 @@ public class a
                 }
               }
             }
-            else if ((paramAnonymousq instanceof com.tencent.mm.plugin.wallet_core.b.a.b))
+            else if ((paramAnonymousp instanceof com.tencent.mm.plugin.wallet_core.b.a.b))
             {
               if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
               {
-                if (((com.tencent.mm.plugin.wallet_core.b.a.b)paramAnonymousq).OHJ == 0) {
+                if (((com.tencent.mm.plugin.wallet_core.b.a.b)paramAnonymousp).Vxv == 0) {
                   a.s(a.this).putInt("realname_verify_process_ret", -1);
                 }
-                a.t(a.this).putString("realname_verify_process_finish_title", ((com.tencent.mm.plugin.wallet_core.b.a.b)paramAnonymousq).title);
-                a.u(a.this).putString("realname_verify_process_finish_desc", ((com.tencent.mm.plugin.wallet_core.b.a.b)paramAnonymousq).desc);
-                a.v(a.this).putString("realname_verify_process_finish_page", ((com.tencent.mm.plugin.wallet_core.b.a.b)paramAnonymousq).cpm);
-                a.w(a.this).putInt("realname_verify_process_finish_err_jump", ((com.tencent.mm.plugin.wallet_core.b.a.b)paramAnonymousq).OHJ);
+                a.t(a.this).putString("realname_verify_process_finish_title", ((com.tencent.mm.plugin.wallet_core.b.a.b)paramAnonymousp).title);
+                a.u(a.this).putString("realname_verify_process_finish_desc", ((com.tencent.mm.plugin.wallet_core.b.a.b)paramAnonymousp).desc);
+                a.v(a.this).putString("realname_verify_process_finish_page", ((com.tencent.mm.plugin.wallet_core.b.a.b)paramAnonymousp).egj);
+                a.w(a.this).putInt("realname_verify_process_finish_err_jump", ((com.tencent.mm.plugin.wallet_core.b.a.b)paramAnonymousp).Vxv);
                 Log.i("MicroMsg.RealNameVerifyProcess", "bind card verify succ ,update user info");
-                if (((com.tencent.mm.plugin.wallet_core.b.a.b)paramAnonymousq).OHI != null) {
-                  a.x(a.this).putParcelable("key_bindcard_value_result", ((com.tencent.mm.plugin.wallet_core.b.a.b)paramAnonymousq).OHI);
+                if (((com.tencent.mm.plugin.wallet_core.b.a.b)paramAnonymousp).Vxu != null) {
+                  a.x(a.this).putParcelable("key_bindcard_value_result", ((com.tencent.mm.plugin.wallet_core.b.a.b)paramAnonymousp).Vxu);
                 }
-                u.gJo().ate();
-                paramAnonymousString = new abc();
-                paramAnonymousString.gah.scene = 16;
+                u.iiC().aNm();
+                paramAnonymousString = new acz();
+                paramAnonymousString.igq.scene = 16;
                 paramAnonymousString.callback = new Runnable()
                 {
                   public final void run()
@@ -193,8 +193,8 @@ public class a
                     AppMethodBeat.o(69984);
                   }
                 };
-                EventCenter.instance.publish(paramAnonymousString);
-                a.b(a.this, this.YVX);
+                paramAnonymousString.publish();
+                a.b(a.this, this.agTR);
                 if (a.p(a.this) == 2) {
                   a.this.b(this.activity, a.y(a.this));
                 }
@@ -206,7 +206,7 @@ public class a
                 }
               }
             }
-            else if ((paramAnonymousq instanceof com.tencent.mm.plugin.wallet_core.id_verify.model.m))
+            else if ((paramAnonymousp instanceof m))
             {
               AppMethodBeat.o(69986);
               return true;
@@ -215,7 +215,7 @@ public class a
             return false;
           }
           
-          public final boolean r(Object... paramAnonymousVarArgs)
+          public final boolean t(Object... paramAnonymousVarArgs)
           {
             AppMethodBeat.i(69985);
             paramAnonymousVarArgs = (com.tencent.mm.plugin.wallet_core.model.w)paramAnonymousVarArgs[0];
@@ -223,7 +223,7 @@ public class a
             String str2 = a.g(a.this).getString("realname_verify_process_face_token");
             String str3 = a.h(a.this).getString("key_realname_sessionid");
             RealNameBundle localRealNameBundle = (RealNameBundle)a.i(a.this).getParcelable("realname_verify_process_bundle");
-            if ((paramAnonymousVarArgs == null) || (Util.isNullOrNil(paramAnonymousVarArgs.mVf))) {
+            if ((paramAnonymousVarArgs == null) || (Util.isNullOrNil(paramAnonymousVarArgs.pRM))) {
               Log.e("MicroMsg.RealNameVerifyProcess", "get pwd error");
             }
             for (;;)
@@ -233,12 +233,12 @@ public class a
               if (a.j(a.this).containsKey("kreq_token"))
               {
                 Log.i("MicroMsg.RealNameVerifyProcess", "bindcard verify");
-                this.YVX.b(new com.tencent.mm.plugin.wallet_core.b.a.b(paramAnonymousVarArgs, a.this.fKb.getInt("entry_scene", -1), str3, localRealNameBundle), true);
+                this.agTR.b(new com.tencent.mm.plugin.wallet_core.b.a.b(paramAnonymousVarArgs, a.this.hPH.getInt("entry_scene", -1), str3, localRealNameBundle), true);
               }
               else
               {
-                paramAnonymousVarArgs = new f(paramAnonymousVarArgs.mVf, str1, str2, a.this.fKb.getInt("entry_scene", -1), str3, localRealNameBundle);
-                this.YVX.b(paramAnonymousVarArgs, true);
+                paramAnonymousVarArgs = new com.tencent.mm.plugin.wallet_core.id_verify.model.f(paramAnonymousVarArgs.pRM, str1, str2, a.this.hPH.getInt("entry_scene", -1), str3, localRealNameBundle);
+                this.agTR.b(paramAnonymousVarArgs, true);
               }
             }
           }
@@ -263,21 +263,21 @@ public class a
             String str = this.activity.getString(a.i.wallet_real_name_verify_cur_verify_id_tip);
             localObject = this.activity.getString(a.i.wallet_real_name_verify_change_to_bindcard);
             str = this.activity.getString(a.i.wallet_real_name_verify_tip, new Object[] { str, localObject });
-            com.tencent.mm.plugin.wallet_core.ui.m localm = new com.tencent.mm.plugin.wallet_core.ui.m(this.activity);
+            n localn = new n(this.activity);
             SpannableString localSpannableString = new SpannableString(str);
-            localSpannableString.setSpan(localm, str.length() - ((String)localObject).length(), str.length(), 33);
+            localSpannableString.setSpan(localn, str.length() - ((String)localObject).length(), str.length(), 33);
             localObject = localSpannableString.subSequence(0, localSpannableString.length());
           }
           AppMethodBeat.o(69987);
           return localObject;
         }
         
-        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
         {
           return false;
         }
         
-        public final boolean r(Object... paramAnonymousVarArgs)
+        public final boolean t(Object... paramAnonymousVarArgs)
         {
           return false;
         }
@@ -289,7 +289,7 @@ public class a
     {
       paramMMActivity = new g(paramMMActivity, parami)
       {
-        private Authen OxB;
+        private Authen VmM;
         
         public final void onActivityResult(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
         {
@@ -300,8 +300,8 @@ public class a
             if ((paramAnonymousInt2 == -1) && (paramAnonymousIntent != null) && (paramAnonymousIntent.getExtras() != null))
             {
               paramAnonymousIntent = paramAnonymousIntent.getExtras().getString("token");
-              a.this.fKb.putString("realname_verify_process_face_token", paramAnonymousIntent);
-              a.this.a(this.activity, 0, a.this.fKb);
+              a.this.hPH.putString("realname_verify_process_face_token", paramAnonymousIntent);
+              a.this.a(this.activity, 0, a.this.hPH);
               AppMethodBeat.o(69993);
             }
           }
@@ -311,21 +311,21 @@ public class a
           AppMethodBeat.o(69993);
         }
         
-        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
         {
           AppMethodBeat.i(69990);
           if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
           {
-            if ((paramAnonymousq instanceof com.tencent.mm.plugin.wallet_core.b.a.a))
+            if ((paramAnonymousp instanceof com.tencent.mm.plugin.wallet_core.b.a.a))
             {
-              paramAnonymousString = (com.tencent.mm.plugin.wallet_core.b.a.a)paramAnonymousq;
-              if (paramAnonymousString.OHH == null)
+              paramAnonymousString = (com.tencent.mm.plugin.wallet_core.b.a.a)paramAnonymousp;
+              if (paramAnonymousString.Vxt == null)
               {
                 a.A(a.this).putString("kreq_token", paramAnonymousString.getToken());
                 if (a.this.c(this.activity, a.B(a.this)))
                 {
                   Log.i("MicroMsg.RealNameVerifyProcess", "need update bankcardlist");
-                  this.YVX.b(new ae(null, 12), true);
+                  this.agTR.b(new ae(null, 12), true);
                 }
               }
               for (;;)
@@ -336,7 +336,7 @@ public class a
                 a.this.a(this.activity, 0, a.C(a.this));
                 continue;
                 Log.i("MicroMsg.RealNameVerifyProcess", "NetSceneTenpayBindBankcard show juveniles dialog");
-                com.tencent.mm.ui.base.h.c(this.activity, paramAnonymousString.OHH.wording, "", paramAnonymousString.OHH.OTg, paramAnonymousString.OHH.OTf, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+                com.tencent.mm.ui.base.k.b(this.activity, paramAnonymousString.Vxt.wording, "", paramAnonymousString.Vxt.VJn, paramAnonymousString.Vxt.VJm, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
                 {
                   public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                   {
@@ -344,7 +344,7 @@ public class a
                     Log.i("MicroMsg.RealNameVerifyProcess", "NetSceneTenpayBindBankcard dialog lOk");
                     paramAnonymous2DialogInterface = a.D(a.this).getString("key_realname_sessionid");
                     a.4.b(a.4.this).a(new com.tencent.mm.plugin.wallet_core.b.a.a(a.4.a(a.4.this), "1", paramAnonymous2DialogInterface), true, 1);
-                    v.Bv(1);
+                    v.BI(1);
                     AppMethodBeat.o(69988);
                   }
                 }, new DialogInterface.OnClickListener()
@@ -353,13 +353,13 @@ public class a
                   {
                     AppMethodBeat.i(69989);
                     Log.i("MicroMsg.RealNameVerifyProcess", "NetSceneTenpayBindBankcard dialog lCancel");
-                    v.Bv(0);
+                    v.BI(0);
                     AppMethodBeat.o(69989);
                   }
                 });
               }
             }
-            if ((paramAnonymousq instanceof ae))
+            if ((paramAnonymousp instanceof ae))
             {
               Log.i("MicroMsg.RealNameVerifyProcess", "update bankcardlist success!");
               a.this.a(this.activity, 0, a.E(a.this));
@@ -371,14 +371,14 @@ public class a
           return false;
         }
         
-        public final boolean r(Object... paramAnonymousVarArgs)
+        public final boolean t(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(69992);
-          a.this.L(new Object[] { "onNext", paramAnonymousVarArgs });
-          this.OxB = ((Authen)paramAnonymousVarArgs[0]);
-          this.OxB.cUP = a.F(a.this);
+          a.this.P(new Object[] { "onNext", paramAnonymousVarArgs });
+          this.VmM = ((Authen)paramAnonymousVarArgs[0]);
+          this.VmM.eQp = a.F(a.this);
           paramAnonymousVarArgs = a.G(a.this).getString("key_realname_sessionid");
-          this.YVX.a(new com.tencent.mm.plugin.wallet_core.b.a.a(this.OxB, "", paramAnonymousVarArgs), true, 1);
+          this.agTR.a(new com.tencent.mm.plugin.wallet_core.b.a.a(this.VmM, "", paramAnonymousVarArgs), true, 1);
           AppMethodBeat.o(69992);
           return true;
         }
@@ -407,8 +407,8 @@ public class a
             if ((paramAnonymousInt2 == -1) && (paramAnonymousIntent != null) && (paramAnonymousIntent.getExtras() != null))
             {
               paramAnonymousIntent = paramAnonymousIntent.getExtras().getString("token");
-              a.this.fKb.putString("realname_verify_process_face_token", paramAnonymousIntent);
-              a.this.a(this.activity, 0, a.this.fKb);
+              a.this.hPH.putString("realname_verify_process_face_token", paramAnonymousIntent);
+              a.this.a(this.activity, 0, a.this.hPH);
               AppMethodBeat.o(69995);
             }
           }
@@ -418,37 +418,37 @@ public class a
           AppMethodBeat.o(69995);
         }
         
-        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
         {
           AppMethodBeat.i(69994);
           if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
           {
-            if ((paramAnonymousq instanceof com.tencent.mm.plugin.wallet_core.b.a.a))
+            if ((paramAnonymousp instanceof com.tencent.mm.plugin.wallet_core.b.a.a))
             {
               Log.i("MicroMsg.RealNameVerifyProcess", "verify code success!");
-              paramAnonymousString = (com.tencent.mm.plugin.wallet_core.b.a.a)paramAnonymousq;
+              paramAnonymousString = (com.tencent.mm.plugin.wallet_core.b.a.a)paramAnonymousp;
               a.H(a.this).putString("kreq_token", paramAnonymousString.getToken());
               AppMethodBeat.o(69994);
               return true;
             }
-            if ((paramAnonymousq instanceof com.tencent.mm.plugin.wallet_core.c.w))
+            if ((paramAnonymousp instanceof com.tencent.mm.plugin.wallet_core.c.w))
             {
-              a.c(a.this, this.YVX);
-              if (((com.tencent.mm.plugin.wallet_core.c.w)paramAnonymousq).OHI != null) {
-                a.I(a.this).putParcelable("key_bindcard_value_result", ((com.tencent.mm.plugin.wallet_core.c.w)paramAnonymousq).OHI);
+              a.c(a.this, this.agTR);
+              if (((com.tencent.mm.plugin.wallet_core.c.w)paramAnonymousp).Vxu != null) {
+                a.I(a.this).putParcelable("key_bindcard_value_result", ((com.tencent.mm.plugin.wallet_core.c.w)paramAnonymousp).Vxu);
               }
-              a.J(a.this).putString("key_resetpwd", ((com.tencent.mm.plugin.wallet_core.c.w)paramAnonymousq).action);
+              a.J(a.this).putString("key_resetpwd", ((com.tencent.mm.plugin.wallet_core.c.w)paramAnonymousp).action);
               boolean bool = a.K(a.this).getBoolean("realname_verify_process_need_face", false);
               Log.i("MicroMsg.RealNameVerifyProcess", "forward: %s", new Object[] { Boolean.valueOf(bool) });
               if (bool)
               {
-                paramAnonymousString = new tf();
-                paramAnonymousString.fSA.fDf = this.activity;
-                paramAnonymousString.fSA.scene = ((int)a.L(a.this).getLong("realname_verify_process_face_scene"));
-                paramAnonymousString.fSA.packageName = a.M(a.this).getString("realname_verify_process_face_package");
-                paramAnonymousString.fSA.fSC = a.N(a.this).getString("realname_verify_process_face_package_sign");
-                paramAnonymousString.fSA.requestCode = 1;
-                EventCenter.instance.publish(paramAnonymousString);
+                paramAnonymousString = new uu();
+                paramAnonymousString.hYx.hHU = this.activity;
+                paramAnonymousString.hYx.scene = ((int)a.L(a.this).getLong("realname_verify_process_face_scene"));
+                paramAnonymousString.hYx.packageName = a.M(a.this).getString("realname_verify_process_face_package");
+                paramAnonymousString.hYx.hYz = a.N(a.this).getString("realname_verify_process_face_package_sign");
+                paramAnonymousString.hYx.hPm = 1;
+                paramAnonymousString.publish();
               }
               for (;;)
               {
@@ -457,7 +457,7 @@ public class a
                 a.this.a(this.activity, 0, a.O(a.this));
               }
             }
-            if ((paramAnonymousq instanceof com.tencent.mm.plugin.wallet_core.id_verify.model.m))
+            if ((paramAnonymousp instanceof m))
             {
               AppMethodBeat.o(69994);
               return true;
@@ -467,17 +467,17 @@ public class a
           return false;
         }
         
-        public final boolean r(Object... paramAnonymousVarArgs)
+        public final boolean t(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(69996);
-          a.this.L(new Object[] { "WalletVerifyCodeUI onNext", paramAnonymousVarArgs });
+          a.this.P(new Object[] { "WalletVerifyCodeUI onNext", paramAnonymousVarArgs });
           Log.i("MicroMsg.RealNameVerifyProcess", "onNext, do bind verify!");
           paramAnonymousVarArgs = (com.tencent.mm.plugin.wallet_core.model.w)paramAnonymousVarArgs[1];
-          if ((u.gJo().gJQ()) && (!a.P(a.this))) {}
+          if ((u.iiC().ijf()) && (!a.P(a.this))) {}
           for (paramAnonymousVarArgs.flag = "2";; paramAnonymousVarArgs.flag = "1")
           {
             String str = a.Q(a.this).getString("key_realname_sessionid");
-            this.YVX.a(new com.tencent.mm.plugin.wallet_core.c.w(paramAnonymousVarArgs, a.this.fKb.getInt("entry_scene", -1), str), true, 1);
+            this.agTR.a(new com.tencent.mm.plugin.wallet_core.c.w(paramAnonymousVarArgs, a.this.hPH.getInt("entry_scene", -1), str), true, 1);
             AppMethodBeat.o(69996);
             return true;
           }
@@ -497,12 +497,12 @@ public class a
     return paramMMActivity;
   }
   
-  public final d a(Activity paramActivity, Bundle paramBundle)
+  public final e a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(70000);
-    L(new Object[] { "start", paramActivity, paramBundle });
-    if (this.fKb == null) {
-      this.fKb = new Bundle();
+    P(new Object[] { "start", paramActivity, paramBundle });
+    if (this.hPH == null) {
+      this.hPH = new Bundle();
     }
     b(paramActivity, WcPayRealnameProxyUI.class, paramBundle);
     AppMethodBeat.o(70000);
@@ -512,8 +512,8 @@ public class a
   public final void a(Activity paramActivity, int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(70003);
-    L(new Object[] { "forward", paramActivity, "actionCode:".concat(String.valueOf(paramInt)), paramBundle });
-    int i = this.fKb.getInt("real_name_verify_mode", this.mMode);
+    P(new Object[] { "forward", paramActivity, "actionCode:".concat(String.valueOf(paramInt)), paramBundle });
+    int i = this.hPH.getInt("real_name_verify_mode", this.mMode);
     if (this.mMode != i) {
       this.mMode = i;
     }
@@ -523,12 +523,12 @@ public class a
     {
       localObject = paramBundle;
       if (paramBundle == null) {
-        localObject = this.fKb;
+        localObject = this.hPH;
       }
       if (localObject != null)
       {
         this.mMode = ((Bundle)localObject).getInt("real_name_verify_mode", 0);
-        this.OIV = this.mMode;
+        this.VyH = this.mMode;
         ((Bundle)localObject).putBoolean("key_is_realname_verify_process", true);
         this.mPluginName = ((Bundle)localObject).getString("realname_verify_process_jump_plugin", "");
         this.mActivityName = ((Bundle)localObject).getString("realname_verify_process_jump_activity", "");
@@ -537,8 +537,8 @@ public class a
         }
         bool = true;
         label173:
-        this.OIU = bool;
-        Log.i("MicroMsg.RealNameVerifyProcess", "mAllowIdVerify is  mAllowIdVerify: %s,mPluginName %s, mActivityName %s ", new Object[] { Boolean.valueOf(this.OIU), this.mPluginName, this.mActivityName });
+        this.VyG = bool;
+        Log.i("MicroMsg.RealNameVerifyProcess", "mAllowIdVerify is  mAllowIdVerify: %s,mPluginName %s, mActivityName %s ", new Object[] { Boolean.valueOf(this.VyG), this.mPluginName, this.mActivityName });
         switch (this.mMode)
         {
         }
@@ -553,20 +553,20 @@ public class a
         bool = false;
         break label173;
         ((Bundle)localObject).putBoolean("key_need_bind_response", true);
-        if (!h(paramActivity, (Bundle)localObject))
+        if (!j(paramActivity, (Bundle)localObject))
         {
-          z.azF(10);
+          aa.aGq(10);
           super.a(paramActivity, (Bundle)localObject);
           AppMethodBeat.o(70003);
           return;
-          z.azF(10);
+          aa.aGq(10);
           b(paramActivity, SwitchRealnameVerifyModeUI.class, (Bundle)localObject);
           AppMethodBeat.o(70003);
           return;
           b(paramActivity, WalletRealNameVerifyUI.class, (Bundle)localObject);
           AppMethodBeat.o(70003);
           return;
-          paramBundle = this.fKb.getString("key_realname_scene");
+          paramBundle = this.hPH.getString("key_realname_scene");
           Log.i("MicroMsg.RealNameVerifyProcess", "realname scene: %s", new Object[] { paramBundle });
           if ("rename".equals(paramBundle))
           {
@@ -588,7 +588,18 @@ public class a
       }
       if ((paramActivity instanceof WalletSetPasswordUI))
       {
-        b(paramActivity, WalletPwdConfirmUI.class, paramBundle);
+        localObject = paramBundle;
+        if (((c)h.ax(c.class)).a(c.a.yXx, false))
+        {
+          Log.i("MicroMsg.RealNameVerifyProcess", "Abtest need Sm2Encrypt 1");
+          localObject = paramBundle;
+          if (paramBundle == null) {
+            localObject = new Bundle();
+          }
+          ((Bundle)localObject).putBoolean("isNeedSm2Encrypt", true);
+          ((Bundle)localObject).putInt("Sm2EncryptType", 5);
+        }
+        b(paramActivity, WalletPwdConfirmUI.class, (Bundle)localObject);
         AppMethodBeat.o(70003);
         return;
       }
@@ -605,7 +616,7 @@ public class a
       {
         if ((paramActivity instanceof SwitchRealnameVerifyModeUI))
         {
-          if (u.gJo().gJQ())
+          if (u.iiC().ijf())
           {
             b(paramActivity, WalletCheckPwdUI.class, paramBundle);
             AppMethodBeat.o(70003);
@@ -637,12 +648,12 @@ public class a
         {
           if (paramBundle.getBoolean("realname_verify_process_need_bind_card", false))
           {
-            if (h(paramActivity, paramBundle))
+            if (j(paramActivity, paramBundle))
             {
               AppMethodBeat.o(70003);
               return;
             }
-            if ((u.gJo().gJQ()) && (!gIB()))
+            if ((u.iiC().ijf()) && (!ihP()))
             {
               b(paramActivity, WalletCheckPwdUI.class, paramBundle);
               AppMethodBeat.o(70003);
@@ -652,7 +663,7 @@ public class a
             AppMethodBeat.o(70003);
             return;
           }
-          bool = this.fKb.getBoolean("realname_verify_process_show_bindcard_page", false);
+          bool = this.hPH.getBoolean("realname_verify_process_show_bindcard_page", false);
           Log.i("MicroMsg.RealNameVerifyProcess", "show bind page: %s", new Object[] { Boolean.valueOf(bool) });
           if (bool)
           {
@@ -668,12 +679,12 @@ public class a
         {
           if (paramBundle.getBoolean("realname_verify_process_do_bind", false))
           {
-            if (h(paramActivity, paramBundle))
+            if (j(paramActivity, paramBundle))
             {
               AppMethodBeat.o(70003);
               return;
             }
-            if ((u.gJo().gJQ()) && (!gIB()))
+            if ((u.iiC().ijf()) && (!ihP()))
             {
               b(paramActivity, WalletCheckPwdUI.class, paramBundle);
               AppMethodBeat.o(70003);
@@ -683,7 +694,7 @@ public class a
             AppMethodBeat.o(70003);
             return;
           }
-          if (this.fKb.getBoolean("realname_verify_process_verify_sms_without_bindcard", false))
+          if (this.hPH.getBoolean("realname_verify_process_verify_sms_without_bindcard", false))
           {
             b(paramActivity, WcPayRealnameVerifyCodeUI.class, paramBundle);
             AppMethodBeat.o(70003);
@@ -701,7 +712,18 @@ public class a
         }
         if ((paramActivity instanceof WalletSetPasswordUI))
         {
-          b(paramActivity, WalletPwdConfirmUI.class, paramBundle);
+          localObject = paramBundle;
+          if (((c)h.ax(c.class)).a(c.a.yXx, false))
+          {
+            Log.i("MicroMsg.RealNameVerifyProcess", "Abtest need Sm2Encrypt 2");
+            localObject = paramBundle;
+            if (paramBundle == null) {
+              localObject = new Bundle();
+            }
+            ((Bundle)localObject).putBoolean("isNeedSm2Encrypt", true);
+            ((Bundle)localObject).putInt("Sm2EncryptType", 5);
+          }
+          b(paramActivity, WalletPwdConfirmUI.class, (Bundle)localObject);
           AppMethodBeat.o(70003);
           return;
         }
@@ -713,7 +735,7 @@ public class a
         }
         if ((paramActivity instanceof WalletVerifyCodeUI))
         {
-          localObject = this.fKb.getString("key_resetpwd");
+          localObject = this.hPH.getString("key_resetpwd");
           Log.i("MicroMsg.RealNameVerifyProcess", "resetpwd: %s", new Object[] { localObject });
           if ("resetpwd".equals(localObject))
           {
@@ -744,10 +766,10 @@ public class a
   public final void b(final Activity paramActivity, final Bundle paramBundle)
   {
     AppMethodBeat.i(70004);
-    L(new Object[] { "end", paramActivity, paramBundle });
-    z.iiU();
+    P(new Object[] { "end", paramActivity, paramBundle });
+    aa.jOQ();
     if (paramBundle == null) {
-      paramBundle = this.fKb;
+      paramBundle = this.hPH;
     }
     for (;;)
     {
@@ -755,10 +777,10 @@ public class a
       if (paramBundle == null) {
         localBundle = new Bundle();
       }
-      final abc localabc;
+      final acz localacz;
       if (this.mMode == 1)
       {
-        iio();
+        jOj();
         if (localBundle.getBoolean("intent_bind_end", false))
         {
           this.resultCode = -1;
@@ -774,22 +796,22 @@ public class a
           if (this.resultCode == -1) {
             Toast.makeText(paramActivity, paramActivity.getString(a.i.realname_verify_succ), 0).show();
           }
-          localabc = new abc();
+          localacz = new acz();
           if (this.resultCode != -1) {
             break label268;
           }
-          localabc.gah.scene = 17;
+          localacz.igq.scene = 17;
         }
       }
       for (;;)
       {
-        localabc.callback = new Runnable()
+        localacz.callback = new Runnable()
         {
           public final void run()
           {
             Object localObject1 = null;
             AppMethodBeat.i(69982);
-            localabc.callback = null;
+            localacz.callback = null;
             a.a(a.this);
             boolean bool1;
             boolean bool2;
@@ -797,7 +819,7 @@ public class a
             if ((!Util.isNullOrNil(a.b(a.this))) && (!Util.isNullOrNil(a.c(a.this))))
             {
               Log.i("MicroMsg.RealNameVerifyProcess", "real name verify process end,jump to " + a.b(a.this) + a.c(a.this));
-              bool1 = a.this.fKb.getBoolean("process_finish_stay_orgpage", true);
+              bool1 = a.this.hPH.getBoolean("process_finish_stay_orgpage", true);
               paramBundle.putExtra("key_process_is_end", true);
               paramBundle.putExtra("key_process_is_stay", bool1);
               bool2 = paramBundle.getExtras().getBoolean("is_from_new_cashier");
@@ -831,23 +853,23 @@ public class a
             a.b(a.this, paramActivity, a.b(a.this), a.c(a.this), a.d(a.this), paramBundle, bool1);
             if (a.d(a.this) == -1)
             {
-              localObject1 = new abo();
-              ((abo)localObject1).gbv.result = a.d(a.this);
-              EventCenter.instance.publish((IEvent)localObject1);
+              localObject1 = new adl();
+              ((adl)localObject1).ihF.result = a.d(a.this);
+              ((adl)localObject1).publish();
             }
             AppMethodBeat.o(69982);
             return;
             a.this.b(paramActivity, a.d(a.this), localBundle);
             if (a.d(a.this) == -1)
             {
-              localObject1 = new abo();
-              ((abo)localObject1).gbv.result = a.d(a.this);
-              EventCenter.instance.publish((IEvent)localObject1);
+              localObject1 = new adl();
+              ((adl)localObject1).ihF.result = a.d(a.this);
+              ((adl)localObject1).publish();
             }
             AppMethodBeat.o(69982);
           }
         };
-        localabc.callback.run();
+        localacz.callback.run();
         AppMethodBeat.o(70004);
         return;
         this.resultCode = 0;
@@ -861,37 +883,37 @@ public class a
         break;
         label268:
         if (this.resultCode == 0) {
-          localabc.gah.scene = 18;
+          localacz.igq.scene = 18;
         } else {
-          localabc.gah.scene = 0;
+          localacz.igq.scene = 0;
         }
       }
     }
   }
   
-  public final String epb()
+  public final String fud()
   {
     return "realname_verify_process";
   }
   
-  public final void h(Activity paramActivity, int paramInt)
+  public final void i(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(70001);
-    L(new Object[] { "back", paramActivity, Integer.valueOf(paramInt) });
-    z.iiU();
+    P(new Object[] { "back", paramActivity, Integer.valueOf(paramInt) });
+    aa.jOQ();
     if (((paramActivity instanceof SwitchRealnameVerifyModeUI)) || ((paramActivity instanceof WcPayRealnameVerifyMainUI)))
     {
       if (paramInt == 0)
       {
-        b(paramActivity, this.fKb);
+        b(paramActivity, this.hPH);
         AppMethodBeat.o(70001);
       }
     }
     else if (((paramActivity instanceof WalletRealNameVerifyUI)) || ((paramActivity instanceof WalletBankcardIdUI)))
     {
-      if (this.OIV != 0)
+      if (this.VyH != 0)
       {
-        b(paramActivity, this.fKb);
+        b(paramActivity, this.hPH);
         AppMethodBeat.o(70001);
       }
     }
@@ -899,7 +921,7 @@ public class a
     {
       if ((paramActivity instanceof WalletCheckPwdUI))
       {
-        b(paramActivity, this.fKb);
+        b(paramActivity, this.hPH);
         AppMethodBeat.o(70001);
         return;
       }
@@ -930,17 +952,17 @@ public class a
   final class b
     extends g
   {
-    int OJb = 0;
+    int VyN = 0;
     
     public b(MMActivity paramMMActivity, i parami)
     {
       super(parami);
     }
     
-    public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+    public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
     {
       AppMethodBeat.i(174440);
-      if ((paramq instanceof j))
+      if ((paramp instanceof j))
       {
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
@@ -948,7 +970,7 @@ public class a
           return true;
         }
       }
-      else if (((paramq instanceof k)) && (paramInt1 == 0) && (paramInt2 == 0))
+      else if (((paramp instanceof com.tencent.mm.plugin.wallet_core.id_verify.model.k)) && (paramInt1 == 0) && (paramInt2 == 0))
       {
         a.this.a(this.activity, 0, new Bundle());
         AppMethodBeat.o(174440);
@@ -958,7 +980,7 @@ public class a
       return false;
     }
     
-    public final boolean r(Object... paramVarArgs)
+    public final boolean t(Object... paramVarArgs)
     {
       return false;
     }
@@ -966,7 +988,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.id_verify.a
  * JD-Core Version:    0.7.0.1
  */

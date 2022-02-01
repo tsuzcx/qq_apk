@@ -13,37 +13,37 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract class b<T extends f>
 {
-  public static final b fkI = new b()
+  public static final b hoV = new b()
   {
-    public final a acy()
+    public final a aEy()
     {
-      return a.fkw;
+      return a.hoJ;
     }
     
-    public final void acz() {}
+    public final void aEz() {}
     
     public final void onDraw(Canvas paramAnonymousCanvas) {}
   };
-  public boolean dfI;
-  private boolean dfl;
-  public com.tencent.mm.ca.b fkE;
-  private Matrix fkF;
-  private Rect fkG;
-  public Bitmap fkH;
-  private Canvas fkJ = new Canvas();
-  private Runnable fkK;
-  private PointF fkL = new PointF();
-  private PointF fkM = new PointF();
-  float[] fkN = new float[9];
-  protected a fkO;
+  public boolean feX;
+  private boolean fez;
+  public com.tencent.mm.bt.b hoR;
+  private Matrix hoS;
+  private Rect hoT;
+  public Bitmap hoU;
+  private Canvas hoW = new Canvas();
+  private Runnable hoX;
+  private PointF hoY = new PointF();
+  private PointF hoZ = new PointF();
+  float[] hpa = new float[9];
+  protected a hpb;
   
   private float a(Matrix paramMatrix, int paramInt)
   {
-    paramMatrix.getValues(this.fkN);
-    return this.fkN[paramInt];
+    paramMatrix.getValues(this.hpa);
+    return this.hpa[paramInt];
   }
   
-  protected static int r(MotionEvent paramMotionEvent)
+  protected static int q(MotionEvent paramMotionEvent)
   {
     int i = 0;
     if (paramMotionEvent.getPointerCount() > 1)
@@ -55,7 +55,7 @@ public abstract class b<T extends f>
     return i;
   }
   
-  protected static int[] s(MotionEvent paramMotionEvent)
+  protected static int[] r(MotionEvent paramMotionEvent)
   {
     int[] arrayOfInt = new int[2];
     if (paramMotionEvent.getPointerCount() > 1)
@@ -66,252 +66,267 @@ public abstract class b<T extends f>
     return arrayOfInt;
   }
   
-  public void a(com.tencent.mm.ca.b paramb, Matrix paramMatrix, Rect paramRect)
+  protected final void A(Bitmap paramBitmap)
   {
-    Log.i("MicroMsg.BaseArtist" + acy(), "[onCreate]");
-    this.dfI = true;
-    this.fkE = paramb;
-    this.fkF = paramMatrix;
-    this.fkG = paramRect;
+    if ((aEE() != null) && (!aEE().isRecycled())) {
+      aEE().recycle();
+    }
+    this.hoU = paramBitmap;
+  }
+  
+  public void a(com.tencent.mm.bt.b paramb, Matrix paramMatrix, Rect paramRect)
+  {
+    Log.i("MicroMsg.BaseArtist" + aEy(), "[onCreate]");
+    this.feX = true;
+    this.hoR = paramb;
+    this.hoS = paramMatrix;
+    this.hoT = paramRect;
   }
   
   public final void a(a parama)
   {
-    this.fkO = parama;
+    this.hpb = parama;
   }
   
-  public T acA()
+  public T aEA()
   {
-    return this.fkE.a(acy());
+    return this.hoR.a(aEy());
   }
   
-  public void acB()
+  public void aEB()
   {
-    Log.i("MicroMsg.BaseArtist" + acy(), "[onSelected] ");
+    Log.i("MicroMsg.BaseArtist" + aEy(), "[onSelected] ");
   }
   
-  public final void acC()
+  public final void aEC()
   {
-    if ((this.fkH != null) && (!this.fkH.isRecycled())) {
-      this.fkH.recycle();
+    if ((this.hoU != null) && (!this.hoU.isRecycled())) {
+      this.hoU.recycle();
     }
   }
   
-  public boolean acD()
+  public boolean aED()
   {
     try
     {
-      int i = acA().ai(true);
+      int i = aEA().aR(true);
       return i > 0;
     }
     catch (Exception localException) {}
     return false;
   }
   
-  protected final Bitmap acE()
+  protected final Bitmap aEE()
   {
     Rect localRect;
     int i;
-    if ((this.fkH == null) || (this.fkH.isRecycled()))
+    if ((this.hoU == null) || (this.hoU.isRecycled()))
     {
-      localRect = this.fkE.hou().getBaseBoardView().getImageBitmapRect();
-      if ((!localRect.isEmpty()) && (this.fkE.hou().getBaseBoardView().ihB())) {
+      localRect = this.hoR.iPo().getBaseBoardView().getImageBitmapRect();
+      if ((!localRect.isEmpty()) && (this.hoR.iPo().getBaseBoardView().jMO())) {
         break label121;
       }
-      i = this.fkE.hou().getBaseBoardView().getBoardRect().width();
+      i = this.hoR.iPo().getBaseBoardView().getBoardRect().width();
     }
-    for (int j = this.fkE.hou().getBaseBoardView().getBoardRect().height(); (i > 0) && (j > 0); j = localRect.height())
+    for (int j = this.hoR.iPo().getBaseBoardView().getBoardRect().height(); (i > 0) && (j > 0); j = localRect.height())
     {
-      this.fkH = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_4444);
-      return this.fkH;
+      this.hoU = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_4444);
+      return this.hoU;
       label121:
       i = localRect.width();
     }
     return null;
   }
   
-  protected final boolean acF()
+  protected final boolean aEF()
   {
-    return this.fkE.hov().acy() == acy();
+    return this.hoR.iPp().aEy() == aEy();
   }
   
-  public final void acG()
+  public final void aEG()
   {
-    if (acA().pop() != null) {
-      acA().acG();
+    if (aEA().pop() != null) {
+      aEA().aEG();
     }
-    this.fkE.hou().removeCallbacks(this.fkK);
-    com.tencent.mm.view.a locala = this.fkE.hou();
+    this.hoR.iPo().removeCallbacks(this.hoX);
+    com.tencent.mm.view.a locala = this.hoR.iPo();
     Runnable local2 = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(9118);
-        b.this.acz();
-        b.this.acH();
+        b.this.aEz();
+        b.this.aEH();
         b.a(b.this);
         AppMethodBeat.o(9118);
       }
     };
-    this.fkK = local2;
+    this.hoX = local2;
     locala.postDelayed(local2, 66L);
   }
   
-  public final void acH()
+  public final void aEH()
   {
-    this.fkE.hou().getBaseBoardView().postInvalidate();
+    this.hoR.iPo().getBaseBoardView().postInvalidate();
   }
   
-  public final void acI()
+  public final void aEI()
   {
-    this.fkE.hou().getBaseFooterView().postInvalidate();
+    this.hoR.iPo().getBaseFooterView().postInvalidate();
   }
   
-  public abstract a acy();
+  public abstract a aEy();
   
-  public abstract void acz();
+  public abstract void aEz();
   
-  public final float b(Matrix paramMatrix)
+  protected final float[] ad(float paramFloat1, float paramFloat2)
+  {
+    Matrix localMatrix = new Matrix(this.hoS);
+    this.hoS.invert(localMatrix);
+    float[] arrayOfFloat = new float[2];
+    arrayOfFloat[0] = paramFloat1;
+    arrayOfFloat[1] = paramFloat2;
+    localMatrix.mapPoints(arrayOfFloat);
+    return arrayOfFloat;
+  }
+  
+  protected final float[] ae(float paramFloat1, float paramFloat2)
+  {
+    float[] arrayOfFloat = new float[2];
+    arrayOfFloat[0] = paramFloat1;
+    arrayOfFloat[1] = paramFloat2;
+    this.hoS.mapPoints(arrayOfFloat);
+    return arrayOfFloat;
+  }
+  
+  public final float d(Matrix paramMatrix)
   {
     return (float)Math.round(Math.atan2(a(paramMatrix, 1), a(paramMatrix, 0)) * 57.295779513082323D);
   }
   
-  public void dq(boolean paramBoolean)
+  public void ec(boolean paramBoolean)
   {
-    this.fkJ.setBitmap(acE());
-    f localf = acA();
+    this.hoW.setBitmap(aEE());
+    f localf = aEA();
     if (localf != null)
     {
-      localf.a(this.fkJ, paramBoolean);
+      localf.b(this.hoW, paramBoolean);
       return;
     }
     Log.i("MicroMsg.BaseArtist", "updateCache: cache is null");
   }
   
-  public void e(Canvas paramCanvas)
-  {
-    if ((this.fkH != null) && (!this.fkH.isRecycled())) {
-      paramCanvas.drawBitmap(this.fkH, 0.0F, 0.0F, null);
-    }
-  }
-  
   public final Rect getAliveRect()
   {
-    return this.fkG;
+    return this.hoT;
   }
   
   protected final Rect getBoardRect()
   {
-    return this.fkE.hou().getBaseBoardView().getBoardRect();
+    return this.hoR.iPo().getBaseBoardView().getBoardRect();
   }
   
   public final Matrix getMainMatrix()
   {
-    return this.fkE.hou().getBaseBoardView().getMainMatrix();
-  }
-  
-  public final com.tencent.mm.ca.b getPresenter()
-  {
-    return this.fkE;
+    return this.hoR.iPo().getBaseBoardView().getMainMatrix();
   }
   
   public final float getRotation()
   {
-    return (float)Math.round(Math.atan2(a(this.fkF, 1), a(this.fkF, 0)) * 57.295779513082323D);
+    return (float)Math.round(Math.atan2(a(this.hoS, 1), a(this.hoS, 0)) * 57.295779513082323D);
   }
   
   public final float getScale()
   {
-    float f1 = a(this.fkF, 3);
-    float f2 = a(this.fkF, 0);
+    float f1 = a(this.hoS, 3);
+    float f2 = a(this.hoS, 0);
     return (float)Math.sqrt(f1 * f1 + f2 * f2);
+  }
+  
+  public void h(Canvas paramCanvas)
+  {
+    if ((this.hoU != null) && (!this.hoU.isRecycled())) {
+      paramCanvas.drawBitmap(this.hoU, 0.0F, 0.0F, null);
+    }
   }
   
   public final boolean isAlive()
   {
-    return (this.dfI) && (this.dfl);
-  }
-  
-  protected final void o(Bitmap paramBitmap)
-  {
-    if ((acE() != null) && (!acE().isRecycled())) {
-      acE().recycle();
-    }
-    this.fkH = paramBitmap;
+    return (this.feX) && (this.fez);
   }
   
   public void onAlive()
   {
-    Log.i("MicroMsg.BaseArtist" + acy(), "[onAlive] isAlive:%s", new Object[] { Boolean.valueOf(this.dfl) });
-    if (this.dfl) {
+    Log.i("MicroMsg.BaseArtist" + aEy(), "[onAlive] isAlive:%s", new Object[] { Boolean.valueOf(this.fez) });
+    if (this.fez) {
       return;
     }
-    this.dfl = true;
-    f localf = acA();
+    this.fez = true;
+    f localf = aEA();
     if (localf != null)
     {
-      localf.arB();
-      localf.dL(false);
+      localf.aLx();
+      localf.ex(false);
     }
     for (;;)
     {
-      this.fkH = acE();
+      this.hoU = aEE();
       return;
-      Log.e("MicroMsg.BaseArtist", "[onAlive] type:%s cache is null", new Object[] { acy() });
+      Log.e("MicroMsg.BaseArtist", "[onAlive] type:%s cache is null", new Object[] { aEy() });
     }
   }
   
   public void onDestroy()
   {
-    this.dfI = false;
-    this.dfl = false;
-    Log.i("MicroMsg.BaseArtist" + acy(), "[onDestroy]");
-    acC();
+    this.feX = false;
+    this.fez = false;
+    Log.i("MicroMsg.BaseArtist" + aEy(), "[onDestroy]");
+    aEC();
+  }
+  
+  public boolean onDispatchTouch(MotionEvent paramMotionEvent)
+  {
+    if (u(paramMotionEvent)) {
+      t(paramMotionEvent);
+    }
+    return false;
   }
   
   public abstract void onDraw(Canvas paramCanvas);
   
   public final void onFinish()
   {
-    Log.i("MicroMsg.BaseArtist", "[onFinish] type:%s", new Object[] { acy() });
-    this.dfl = false;
-    this.dfI = false;
-    f localf = acA();
+    Log.i("MicroMsg.BaseArtist", "[onFinish] type:%s", new Object[] { aEy() });
+    this.fez = false;
+    this.feX = false;
+    f localf = aEA();
     if (localf != null) {
-      localf.dL(true);
+      localf.ex(true);
     }
     for (;;)
     {
-      acC();
+      aEC();
       return;
-      Log.e("MicroMsg.BaseArtist", "[onFinish] type:%s cache is null", new Object[] { acy() });
+      Log.e("MicroMsg.BaseArtist", "[onFinish] type:%s cache is null", new Object[] { aEy() });
     }
   }
   
-  public boolean q(MotionEvent paramMotionEvent)
+  protected final int[] s(MotionEvent paramMotionEvent)
   {
-    if (v(paramMotionEvent)) {
-      u(paramMotionEvent);
-    }
-    return false;
+    return new int[] { (int)(paramMotionEvent.getX(0) - this.hoY.x), (int)(paramMotionEvent.getY(0) - this.hoY.y) };
   }
   
   public final void setOneFingerMoveEnable(boolean paramBoolean)
   {
-    this.fkE.hou().getBaseBoardView().setOneFingerMoveEnable(paramBoolean);
+    this.hoR.iPo().getBaseBoardView().setOneFingerMoveEnable(paramBoolean);
   }
   
-  protected final int[] t(MotionEvent paramMotionEvent)
-  {
-    return new int[] { (int)(paramMotionEvent.getX(0) - this.fkL.x), (int)(paramMotionEvent.getY(0) - this.fkL.y) };
-  }
-  
-  protected final void u(MotionEvent paramMotionEvent)
+  protected final void t(MotionEvent paramMotionEvent)
   {
     if (paramMotionEvent.getPointerCount() > 1)
     {
-      this.fkM.x = paramMotionEvent.getX(1);
-      this.fkM.y = paramMotionEvent.getY(1);
+      this.hoZ.x = paramMotionEvent.getX(1);
+      this.hoZ.y = paramMotionEvent.getY(1);
     }
     for (;;)
     {
@@ -320,29 +335,29 @@ public abstract class b<T extends f>
         if ((paramMotionEvent.getPointerCount() <= 1) || (1 - paramMotionEvent.getActionIndex() < 0) || (1 - paramMotionEvent.getActionIndex() >= paramMotionEvent.getPointerCount())) {
           break;
         }
-        this.fkL.x = paramMotionEvent.getX(1 - paramMotionEvent.getActionIndex());
-        this.fkL.y = paramMotionEvent.getY(1 - paramMotionEvent.getActionIndex());
+        this.hoY.x = paramMotionEvent.getX(1 - paramMotionEvent.getActionIndex());
+        this.hoY.y = paramMotionEvent.getY(1 - paramMotionEvent.getActionIndex());
       }
       return;
       if (paramMotionEvent.getPointerCount() == 1)
       {
-        this.fkL.x = paramMotionEvent.getX(0);
-        this.fkL.y = paramMotionEvent.getY(0);
+        this.hoY.x = paramMotionEvent.getX(0);
+        this.hoY.y = paramMotionEvent.getY(0);
       }
     }
-    this.fkL.x = paramMotionEvent.getX(0);
-    this.fkL.y = paramMotionEvent.getY(0);
+    this.hoY.x = paramMotionEvent.getX(0);
+    this.hoY.y = paramMotionEvent.getY(0);
   }
   
-  protected final boolean v(MotionEvent paramMotionEvent)
+  protected final boolean u(MotionEvent paramMotionEvent)
   {
     boolean bool2 = false;
     boolean bool1;
     if (paramMotionEvent.getPointerCount() > 1) {
-      if ((Math.abs(this.fkL.x - paramMotionEvent.getX(0)) <= 3.0F) && (Math.abs(this.fkL.y - paramMotionEvent.getY(0)) <= 3.0F) && (Math.abs(this.fkM.x - paramMotionEvent.getX(1)) <= 3.0F))
+      if ((Math.abs(this.hoY.x - paramMotionEvent.getX(0)) <= 3.0F) && (Math.abs(this.hoY.y - paramMotionEvent.getY(0)) <= 3.0F) && (Math.abs(this.hoZ.x - paramMotionEvent.getX(1)) <= 3.0F))
       {
         bool1 = bool2;
-        if (Math.abs(this.fkM.y - paramMotionEvent.getY(1)) <= 3.0F) {}
+        if (Math.abs(this.hoZ.y - paramMotionEvent.getY(1)) <= 3.0F) {}
       }
       else
       {
@@ -356,42 +371,22 @@ public abstract class b<T extends f>
         return bool1;
         bool1 = bool2;
       } while (paramMotionEvent.getPointerCount() != 1);
-      if (Math.abs(this.fkL.x - paramMotionEvent.getX(0)) > 3.0F) {
+      if (Math.abs(this.hoY.x - paramMotionEvent.getX(0)) > 3.0F) {
         break;
       }
       bool1 = bool2;
-    } while (Math.abs(this.fkL.y - paramMotionEvent.getY(0)) <= 3.0F);
+    } while (Math.abs(this.hoY.y - paramMotionEvent.getY(0)) <= 3.0F);
     return true;
-  }
-  
-  protected final float[] x(float paramFloat1, float paramFloat2)
-  {
-    Matrix localMatrix = new Matrix(this.fkF);
-    this.fkF.invert(localMatrix);
-    float[] arrayOfFloat = new float[2];
-    arrayOfFloat[0] = paramFloat1;
-    arrayOfFloat[1] = paramFloat2;
-    localMatrix.mapPoints(arrayOfFloat);
-    return arrayOfFloat;
-  }
-  
-  protected final float[] y(float paramFloat1, float paramFloat2)
-  {
-    float[] arrayOfFloat = new float[2];
-    arrayOfFloat[0] = paramFloat1;
-    arrayOfFloat[1] = paramFloat2;
-    this.fkF.mapPoints(arrayOfFloat);
-    return arrayOfFloat;
   }
   
   public static abstract interface a
   {
-    public abstract boolean q(MotionEvent paramMotionEvent);
+    public abstract boolean onDispatchTouch(MotionEvent paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.e.b
  * JD-Core Version:    0.7.0.1
  */

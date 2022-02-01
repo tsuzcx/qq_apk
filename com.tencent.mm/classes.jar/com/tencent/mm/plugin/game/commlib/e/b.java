@@ -1,95 +1,99 @@
 package com.tencent.mm.plugin.game.commlib.e;
 
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningTaskInfo;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ck.a;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.j;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.vending.h.g;
-import java.util.Iterator;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public final class b
 {
-  private static volatile MMHandler Czq;
-  private static final Object rim;
+  private static volatile MMHandler Itf;
+  private static Set<String> Itg;
+  private static final Object uqi;
   
   static
   {
     AppMethodBeat.i(89962);
-    rim = new Object();
+    uqi = new Object();
+    Itg = new HashSet();
     AppMethodBeat.o(89962);
   }
   
-  public static boolean aQ(Context paramContext, String paramString)
+  public static boolean aFM(String paramString)
   {
-    AppMethodBeat.i(207207);
-    try
-    {
-      paramString = new Intent(paramContext, Class.forName(paramString)).resolveActivity(paramContext.getPackageManager());
-      if (paramString != null)
-      {
-        paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningTasks(10).iterator();
-        while (paramContext.hasNext())
-        {
-          boolean bool = ((ActivityManager.RunningTaskInfo)paramContext.next()).baseActivity.equals(paramString);
-          if (bool)
-          {
-            AppMethodBeat.o(207207);
-            return true;
-          }
-        }
-      }
-    }
-    catch (ClassNotFoundException paramContext)
-    {
-      Log.e("MicroMsg.GameCommLibUtil", "err: %s", new Object[] { paramContext.getMessage() });
-      AppMethodBeat.o(207207);
-    }
-    return false;
+    AppMethodBeat.i(275373);
+    boolean bool = Itg.contains(paramString);
+    AppMethodBeat.o(275373);
+    return bool;
   }
   
-  public static void clU()
+  public static void cNl()
   {
     AppMethodBeat.i(89960);
-    if (Czq == null)
+    if (Itf == null)
     {
       AppMethodBeat.o(89960);
       return;
     }
-    synchronized (rim)
+    synchronized (uqi)
     {
-      if (Czq != null)
+      if (Itf != null)
       {
-        g.bBw("GameCommLib#WorkThread");
-        Czq.quit();
-        Czq = null;
+        g.bDQ("GameCommLib#WorkThread");
+        Itf.quit();
+        Itf = null;
       }
       AppMethodBeat.o(89960);
       return;
     }
+  }
+  
+  public static void fM(Object paramObject)
+  {
+    AppMethodBeat.i(275363);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("action_id", 1);
+    localBundle.putString("action_param", paramObject.getClass().getName());
+    j.a(MainProcessIPCService.PROCESS_NAME, localBundle, a.class, null);
+    AppMethodBeat.o(275363);
+  }
+  
+  public static void fN(Object paramObject)
+  {
+    AppMethodBeat.i(275368);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("action_id", 2);
+    localBundle.putString("action_param", paramObject.getClass().getName());
+    j.a(MainProcessIPCService.PROCESS_NAME, localBundle, a.class, null);
+    AppMethodBeat.o(275368);
   }
   
   public static MMHandler getWorkerHandler()
   {
     AppMethodBeat.i(184541);
-    if (Czq == null) {}
-    synchronized (rim)
+    if (Itf == null) {}
+    synchronized (uqi)
     {
-      if (Czq == null)
+      if (Itf == null)
       {
-        Czq = new MMHandler("GameCommLib#WorkThread");
-        g.a("GameCommLib#WorkThread", new a("GameCommLib#WorkThread"));
+        Itf = new MMHandler("GameCommLib#WorkThread");
+        g.a("GameCommLib#WorkThread", new com.tencent.mm.cf.a("GameCommLib#WorkThread"));
       }
-      ??? = Czq;
+      ??? = Itf;
       AppMethodBeat.o(184541);
       return ???;
     }
   }
+  
+  @com.tencent.mm.ipcinvoker.c.a
+  static class a
+    implements d<Bundle, Bundle>
+  {}
 }
 
 

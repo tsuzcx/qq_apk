@@ -446,37 +446,37 @@ public final class a
   public final View a(String paramString, AttributeSet paramAttributeSet)
   {
     AppMethodBeat.i(173854);
-    Object localObject3 = null;
-    Object localObject1 = localObject3;
+    Object localObject4 = null;
+    Object localObject1 = localObject4;
     if (-1 != paramString.indexOf('.')) {}
     try
     {
       localObject1 = b(paramString, paramAttributeSet);
-      localObject3 = localObject1;
+      localObject4 = localObject1;
       if (localObject1 != null) {}
     }
-    catch (Throwable localThrowable)
+    finally
     {
       try
       {
         if (-1 == paramString.indexOf('.')) {}
-        for (localObject3 = onCreateView(paramString, paramAttributeSet);; localObject3 = createView(paramString, null, paramAttributeSet))
+        for (localObject4 = onCreateView(paramString, paramAttributeSet);; localObject4 = createView(paramString, null, paramAttributeSet))
         {
           AppMethodBeat.o(173854);
-          return localObject3;
-          localThrowable = localThrowable;
-          f.b("Failed to create view %s", new Object[] { paramString, localThrowable });
-          localObject2 = localObject3;
+          return localObject4;
+          localObject2 = finally;
+          f.b("Failed to create view %s", new Object[] { paramString, localObject2 });
+          localObject3 = localObject4;
           break;
         }
       }
-      catch (Throwable paramAttributeSet)
+      finally
       {
         for (;;)
         {
-          Object localObject2;
+          Object localObject3;
           f.b("Failed to create view %s", new Object[] { paramString, paramAttributeSet });
-          localObject3 = localObject2;
+          localObject4 = localObject3;
         }
       }
     }
@@ -502,7 +502,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tbs.one.impl.c.b.a
  * JD-Core Version:    0.7.0.1
  */

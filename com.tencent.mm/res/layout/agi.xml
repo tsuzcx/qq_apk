@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.view.HardTouchableLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/b3p" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:background="@drawable/z3" android:layout_width="fill_parent" android:layout_height="@dimen/bx" android:layout_marginLeft="@dimen/cv" android:layout_marginRight="@dimen/cv" android:layout_marginBottom="@dimen/cd"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/dcj" android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mm.plugin.finder.view.FinderMediaBanner android:layout_gravity="center" android:id="@id/fbd" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/b46" android:layout_width="@dimen/cf" android:layout_height="@dimen/cf" android:layout_marginTop="60.0dip" android:layout_marginBottom="22.0dip" android:src="@raw/icons_filled_close2" android:layout_marginStart="@dimen/cb" app:iconColor="@android:color/white" />
-    <com.tencent.mm.plugin.finder.video.FinderLongVideoPlayerSeekBar android:layout_gravity="bottom" android:id="@id/j6f" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:layout_marginRight="@dimen/c5" android:layout_marginBottom="122.0dip" />
-    <com.tencent.mm.plugin.finder.music.FinderImgFeedMusicTag android:layout_gravity="end|bottom|center" android:id="@id/dwe" android:visibility="gone" android:layout_width="@dimen/cn" android:layout_height="@dimen/cn" android:layout_marginEnd="@dimen/c5" />
-</com.tencent.mm.view.HardTouchableLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_gravity="center_vertical" android:id="@id/f71" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/uy" android:textColor="@color/az" android:id="@id/kg_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_5" android:id="@id/kg6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:layout_marginTop="@dimen/bv" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toBottomOf="@id/kg_" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_3" android:id="@id/kg7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:layout_marginRight="@dimen/cp" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

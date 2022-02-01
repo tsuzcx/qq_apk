@@ -18,58 +18,58 @@ import org.json.JSONObject;
 
 public final class f
 {
-  private static Map<String, String> pQe;
-  private static Map<String, List<j>> pQf;
-  private static Map<String, h> pQg;
+  private static Map<String, String> sUE;
+  private static Map<String, List<j>> sUF;
+  private static Map<String, h> sUG;
   
   static
   {
-    AppMethodBeat.i(208536);
-    pQe = new HashMap();
-    pQf = new HashMap();
-    pQg = new HashMap();
-    AppMethodBeat.o(208536);
+    AppMethodBeat.i(319521);
+    sUE = new HashMap();
+    sUF = new HashMap();
+    sUG = new HashMap();
+    AppMethodBeat.o(319521);
   }
   
   static void a(Class paramClass, h.b paramb, String paramString)
   {
-    AppMethodBeat.i(208535);
+    AppMethodBeat.i(319518);
     h.a(g(paramClass, paramString), paramb);
-    AppMethodBeat.o(208535);
+    AppMethodBeat.o(319518);
   }
   
-  static String aB(Class paramClass)
+  static String aV(Class paramClass)
   {
-    AppMethodBeat.i(208531);
+    AppMethodBeat.i(319501);
     String str = paramClass.getName();
-    if (pQe.containsKey(str))
+    if (sUE.containsKey(str))
     {
-      paramClass = (String)pQe.get(str);
-      AppMethodBeat.o(208531);
+      paramClass = (String)sUE.get(str);
+      AppMethodBeat.o(319501);
       return paramClass;
     }
     try
     {
       paramClass = (String)paramClass.getDeclaredField("NAME").get(null);
-      pQe.put(str, paramClass);
-      AppMethodBeat.o(208531);
+      sUE.put(str, paramClass);
+      AppMethodBeat.o(319501);
       return paramClass;
     }
     catch (NoSuchFieldException paramClass)
     {
-      AppMethodBeat.o(208531);
+      AppMethodBeat.o(319501);
       return null;
     }
     catch (IllegalAccessException paramClass)
     {
-      AppMethodBeat.o(208531);
+      AppMethodBeat.o(319501);
     }
     return null;
   }
   
-  public static boolean ajO(String paramString)
+  public static boolean acO(String paramString)
   {
-    AppMethodBeat.i(208528);
+    AppMethodBeat.i(319492);
     paramString = MultiProcessMMKV.getMMKV("Luggage.KeyStepUtils", 2).getString(String.format("KeyStepLoggerSwitch_%s", new Object[] { paramString }), "");
     try
     {
@@ -79,28 +79,28 @@ public final class f
       long l3 = System.currentTimeMillis();
       if ((l2 > 0L) && (l3 - l2 < l1))
       {
-        AppMethodBeat.o(208528);
+        AppMethodBeat.o(319492);
         return true;
       }
-      AppMethodBeat.o(208528);
+      AppMethodBeat.o(319492);
       return false;
     }
     catch (JSONException paramString)
     {
-      AppMethodBeat.o(208528);
+      AppMethodBeat.o(319492);
     }
     return false;
   }
   
   static List<j> f(Class paramClass, String paramString)
   {
-    AppMethodBeat.i(208532);
+    AppMethodBeat.i(319508);
     String str = paramClass.getName();
     str = str + "_" + paramString;
-    if (pQf.containsKey(str))
+    if (sUF.containsKey(str))
     {
-      paramClass = (List)pQf.get(str);
-      AppMethodBeat.o(208532);
+      paramClass = (List)sUF.get(str);
+      AppMethodBeat.o(319508);
       return paramClass;
     }
     ArrayList localArrayList = new ArrayList();
@@ -108,55 +108,60 @@ public final class f
     {
       public final void a(h paramAnonymoush)
       {
-        AppMethodBeat.i(208288);
-        com.tencent.mm.plugin.appbrand.keylogger.base.a locala = paramAnonymoush.bZt();
+        AppMethodBeat.i(319458);
+        com.tencent.mm.plugin.appbrand.keylogger.base.a locala = paramAnonymoush.czE();
         if (locala == null)
         {
-          AppMethodBeat.o(208288);
+          AppMethodBeat.o(319458);
           return;
         }
-        this.pQh.add(new j(locala, paramAnonymoush.pQy));
-        AppMethodBeat.o(208288);
+        f.this.add(new j(locala, paramAnonymoush.sUY));
+        AppMethodBeat.o(319458);
       }
     }, paramString);
-    pQf.put(str, localArrayList);
-    AppMethodBeat.o(208532);
+    sUF.put(str, localArrayList);
+    AppMethodBeat.o(319508);
     return localArrayList;
   }
   
   public static h g(Class paramClass, String paramString)
   {
-    AppMethodBeat.i(208534);
+    AppMethodBeat.i(319513);
     String str = paramClass.getName() + "—" + paramString;
-    if (pQg.containsKey(str))
+    if (sUG.containsKey(str))
     {
-      paramClass = (h)pQg.get(str);
-      AppMethodBeat.o(208534);
+      paramClass = (h)sUG.get(str);
+      AppMethodBeat.o(319513);
       return paramClass;
     }
     try
     {
-      paramClass = (List)org.a.a.ce(paramClass).get("sStepNodes");
+      paramClass = (List)org.a.a.cQ(paramClass).get("sStepNodes");
       if (paramClass == null)
       {
-        AppMethodBeat.o(208534);
+        AppMethodBeat.o(319513);
         return null;
       }
-      paramClass = h.f(paramClass, paramString);
-      pQg.put(str, paramClass);
-      AppMethodBeat.o(208534);
+      paramClass = h.h(paramClass, paramString);
+      if (paramClass == null)
+      {
+        AppMethodBeat.o(319513);
+        return null;
+      }
+      sUG.put(str, paramClass);
+      AppMethodBeat.o(319513);
       return paramClass;
     }
     catch (b paramClass)
     {
-      AppMethodBeat.o(208534);
+      AppMethodBeat.o(319513);
     }
     return null;
   }
   
   public static Pattern r(String... paramVarArgs)
   {
-    AppMethodBeat.i(208526);
+    AppMethodBeat.i(319481);
     StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
     while (i < 2)
@@ -169,13 +174,13 @@ public final class f
     }
     localStringBuilder.append(".*");
     paramVarArgs = Pattern.compile(localStringBuilder.toString());
-    AppMethodBeat.o(208526);
+    AppMethodBeat.o(319481);
     return paramVarArgs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keylogger.f
  * JD-Core Version:    0.7.0.1
  */

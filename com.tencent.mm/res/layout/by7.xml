@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/i1y" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:layout_gravity="center" android:id="@id/i1x" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a63" />
-    <com.tencent.mm.ui.KeyboardLinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ListView android:id="@id/i1w" android:background="@color/a8u" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="#00000000" android:scrollingCache="false" android:divider="@null" android:layout_weight="1.0" android:overScrollMode="never" />
-        <com.tencent.mm.plugin.sns.ui.SnsCommentFooter android:id="@id/b8y" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </com.tencent.mm.ui.KeyboardLinearLayout>
-</FrameLayout>
+    <ScrollView style="@style/o8">
+        <LinearLayout style="@style/lj">
+            <com.tencent.mm.ui.widget.MMEditText android:id="@id/jf7" style="@style/n9" />
+            <View style="@style/n5" />
+            <TextView android:id="@id/jf8" android:text="@string/iuk" android:layout_weight="1.0" style="@style/n_" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

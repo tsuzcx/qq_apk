@@ -16,12 +16,12 @@ final class g$1
   {
     AppMethodBeat.i(113472);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/card/ui/CardListAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/card/ui/CardListAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
     int i = ((Integer)paramView.getTag()).intValue();
-    paramView = this.tyv;
-    if (((Boolean)paramView.tyt.get(i)).booleanValue()) {
-      paramView.tyt.set(i, Boolean.FALSE);
+    paramView = this.wCS;
+    if (((Boolean)paramView.wCQ.get(i)).booleanValue()) {
+      paramView.wCQ.set(i, Boolean.FALSE);
     }
     for (;;)
     {
@@ -29,7 +29,7 @@ final class g$1
       a.a(this, "com/tencent/mm/plugin/card/ui/CardListAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(113472);
       return;
-      paramView.tyt.set(i, Boolean.TRUE);
+      paramView.wCQ.set(i, Boolean.TRUE);
     }
   }
 }

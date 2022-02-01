@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.nearby.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -11,6 +10,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.d.a.b.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.messenger.foundation.a.a.g;
@@ -20,19 +20,19 @@ import com.tencent.mm.plugin.nearby.b.d;
 import com.tencent.mm.plugin.nearby.b.e;
 import com.tencent.mm.plugin.nearby.b.g;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.bz;
 import com.tencent.mm.ui.MMActivity;
 
 public class NearbyFriendShowSayHiUI
   extends MMActivity
 {
-  String GsY = "";
-  View GsZ = null;
-  ImageView iZG;
+  String MoY = "";
+  View MoZ = null;
+  ImageView lBC;
   
   public int getLayoutId()
   {
-    return b.d.nearby_friend_show_sayhi;
+    return b.d.Moi;
   }
   
   public void initView()
@@ -49,34 +49,36 @@ public class NearbyFriendShowSayHiUI
         return true;
       }
     });
-    ((Button)findViewById(b.c.nearby_friend_intro_start_btn)).setOnClickListener(new View.OnClickListener()
+    ((Button)findViewById(b.c.Moc)).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(89826);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/nearby/ui/NearbyFriendShowSayHiUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/nearby/ui/NearbyFriendShowSayHiUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
+        ((e)h.az(e.class)).nearbyReport(14L);
         paramAnonymousView = NearbyFriendShowSayHiUI.this;
         localObject = new Intent(NearbyFriendShowSayHiUI.this, NearbyFriendsUI.class);
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-        com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/nearby/ui/NearbyFriendShowSayHiUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+        com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/nearby/ui/NearbyFriendShowSayHiUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
         com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/mm/plugin/nearby/ui/NearbyFriendShowSayHiUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/nearby/ui/NearbyFriendShowSayHiUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(89826);
       }
     });
-    this.GsZ = findViewById(b.c.goto_sayhi_btn);
-    this.GsZ.setVisibility(0);
-    this.GsZ.setOnClickListener(new View.OnClickListener()
+    ((e)h.az(e.class)).nearbyReport(13L);
+    this.MoZ = findViewById(b.c.goto_sayhi_btn);
+    this.MoZ.setVisibility(0);
+    this.MoZ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(89827);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/nearby/ui/NearbyFriendShowSayHiUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/nearby/ui/NearbyFriendShowSayHiUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         paramAnonymousView = new Intent(NearbyFriendShowSayHiUI.this, NearbySayHiListUI.class);
         paramAnonymousView.putExtra("k_say_hi_type", 2);
         paramAnonymousView.putExtra("show_clear_header", true);
@@ -118,21 +120,21 @@ public class NearbyFriendShowSayHiUI
     AppMethodBeat.i(89829);
     super.onResume();
     Object localObject = (TextView)findViewById(b.c.say_hi_count);
-    h.aHE().aGH();
-    int i = ((n)h.ae(n.class)).eSb().cHo();
+    h.baC().aZJ();
+    int i = ((n)h.ax(n.class)).gaW().dkF();
     if (i == 0)
     {
-      this.GsZ.setVisibility(4);
+      this.MoZ.setVisibility(4);
       AppMethodBeat.o(89829);
       return;
     }
     ((TextView)localObject).setText(getResources().getQuantityString(b.e.say_hi_count_text_quantity, i, new Object[] { Integer.valueOf(i) }));
-    this.iZG = ((ImageView)findViewById(b.c.match_dlg_img));
-    localObject = ((n)h.ae(n.class)).eSb().eSm();
+    this.lBC = ((ImageView)findViewById(b.c.match_dlg_img));
+    localObject = ((n)h.ax(n.class)).gaW().gbh();
     if (localObject != null)
     {
-      this.GsY = ((bx)localObject).field_sayhiuser;
-      a.b.c(this.iZG, this.GsY);
+      this.MoY = ((bz)localObject).field_sayhiuser;
+      a.b.g(this.lBC, this.MoY);
     }
     AppMethodBeat.o(89829);
   }
@@ -145,7 +147,7 @@ public class NearbyFriendShowSayHiUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.nearby.ui.NearbyFriendShowSayHiUI
  * JD-Core Version:    0.7.0.1
  */

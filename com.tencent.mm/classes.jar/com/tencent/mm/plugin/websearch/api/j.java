@@ -5,17 +5,17 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface j
   extends a
 {
-  public abstract void anb(int paramInt);
+  public abstract void asS(int paramInt);
   
-  public abstract String biH(String paramString);
+  public abstract String bip(String paramString);
   
-  public abstract void cM(int paramInt, String paramString);
+  public abstract void dB(int paramInt, String paramString);
   
-  public abstract int gQk();
+  public abstract int ipB();
   
-  public abstract String gQl();
+  public abstract String ipC();
   
-  public abstract void me(String paramString1, String paramString2);
+  public abstract void nQ(String paramString1, String paramString2);
 }
 
 

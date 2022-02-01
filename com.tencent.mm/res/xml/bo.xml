@@ -1,32 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.profile.ui.NormalProfileHeaderPreference android:key="contact_profile_header_normal" android:layout="@layout/y4" />
-    <PreferenceSmallCategory android:key="contact_profile_set_des_category" />
-    <Preference android:key="contact_profile_setting_desc" android:layout="@layout/b8j" android:title="@string/bic" />
-    <com.tencent.mm.plugin.profile.ui.MultiSummaryPreference android:key="contact_profile_setting_permission" android:layout="@layout/b8j" />
-    <com.tencent.mm.pluginsdk.ui.preference.PhoneNumPreference android:key="contact_profile_phone" android:layout="@layout/b8j" />
-    <com.tencent.mm.pluginsdk.ui.preference.LabelPreference android:key="contact_profile_label" android:layout="@layout/b8j" />
-    <com.tencent.mm.pluginsdk.ui.preference.ProfileDescribePreference android:key="contact_profile_desc" android:layout="@layout/b8j" />
-    <PreferenceSmallCategory android:key="contact_info_category_1" />
-    <KeyValuePreference android:key="contact_info_signature" android:layout="@layout/b8j" android:title="@string/bfk" />
-    <com.tencent.mm.pluginsdk.ui.preference.SnsPreference android:key="contact_profile_sns" android:layout="@layout/b8j" android:title="@string/bfl" />
-    <com.tencent.mm.pluginsdk.ui.preference.FinderPreference android:key="contact_profile_finder" android:layout="@layout/b8j" android:title="@string/ceo" />
-    <com.tencent.mm.pluginsdk.ui.preference.FinderRecentLikePreference android:key="contact_profile_finder_recent_like" android:layout="@layout/b8j" android:title="@string/cf9" />
-    <com.tencent.mm.plugin.story.ui.view.StoryPreference android:key="contact_profile_story" android:layout="@layout/b8j" android:title="@string/bh3" />
-    <KeyValuePreference android:key="contact_profile_source" android:layout="@layout/b8j" android:title="@string/bgz" />
-    <KeyValuePreference android:key="contact_info_invite_source" android:layout="@layout/b8j" android:title="@string/bbu" />
-    <Preference android:key="contact_profile_info_more" android:layout="@layout/b8j" android:title="@string/bd5" />
-    <PreferenceSmallCategory android:key="line1" />
-    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_icon="@raw/profile_chat_icon" android:btn_title="@string/fqh" android:icon_color="@color/g7" android:key="contact_profile_send" android:layout="@layout/b8j" android:title_color="@color/g7" />
-    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/bf3" android:key="contact_profile_say_hi" android:layout="@layout/b8j" android:title_color="@color/g7" />
-    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_icon="@raw/profile_video_icon" android:btn_title="@string/fqv" android:icon_color="@color/g7" android:key="contact_profile_voip" android:layout="@layout/b8j" android:title_color="@color/g7" />
-    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/b9o" android:key="contact_profile_add_contact" android:layout="@layout/b8j" android:title_color="@color/g7" />
-    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/bhg" android:key="contact_profile_accept_contact" android:layout="@layout/b8j" android:title_color="@color/g7" />
-    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/bhh" android:key="contact_profile_accept_contact_by_wework" android:layout="@layout/b8j" android:title_color="@color/g7" />
-    <PreferenceSmallCategory android:key="line2" />
-    <PreferenceSmallCategory android:key="line4" />
-    <com.tencent.mm.ui.base.preference.TextPreference android:key="contact_profile_hint" />
-    <PreferenceCategory android:key="line3" />
-    <com.tencent.mm.plugin.profile.ui.MultiButtonPreference android:key="contact_profile_multi_button" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <Preference android:key="settings_room_size" android:layout="@layout/bdi" android:title="@string/iyc" />
+    <Preference android:key="room_right_max_tip" android:layout="@layout/bf0" android:title="@string/i8q" />
+    <PreferenceCategory />
+    <com.tencent.mm.chatroom.ui.RoomGrantPreference android:key="settings_room_grant" android:layout="@layout/bdi" android:title="@string/iy_" />
+    <PreferenceCategory />
+    <Preference android:key="room_grant_to_friend" android:layout="@layout/az3" android:title="@string/i8m" />
+    <PreferenceCategory />
+    <Preference android:key="room_right_grant_tip" android:layout="@layout/bf0" android:title="@string/i8n" />
 </PreferenceScreen>

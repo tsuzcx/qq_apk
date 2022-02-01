@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.q.g;
+import com.tencent.mm.ui.base.u.i;
 
 final class j$2
-  implements q.g
+  implements u.i
 {
   j$2(j paramj) {}
   
@@ -19,16 +19,16 @@ final class j$2
     {
       AppMethodBeat.o(128275);
       return;
-      j.a(this.nfj);
+      j.a(this.qcr);
       AppMethodBeat.o(128275);
       return;
-      j.b(this.nfj);
+      j.b(this.qcr);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.j.2
  * JD-Core Version:    0.7.0.1
  */

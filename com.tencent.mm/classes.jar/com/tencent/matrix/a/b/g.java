@@ -1,7 +1,5 @@
 package com.tencent.matrix.a.b;
 
-import android.os.IBinder;
-import android.os.WorkSource;
 import com.tencent.matrix.e.c;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -9,90 +7,126 @@ import java.util.List;
 
 public final class g
 {
-  private static boolean cXl;
-  private static j.b cXm = new j.b()
+  private static boolean eTs;
+  private static n.b eTt = new n.b()
   {
-    public final Object b(Object paramAnonymousObject, Method paramAnonymousMethod, Object[] paramAnonymousArrayOfObject)
+    public final Object a(Object paramAnonymousObject, Method paramAnonymousMethod, Object[] paramAnonymousArrayOfObject)
     {
       return null;
     }
     
     public final void b(Method paramAnonymousMethod, Object[] paramAnonymousArrayOfObject)
     {
-      c.v("Matrix.battery.PowerHooker", "onServiceMethodInvoke: method name %s", new Object[] { paramAnonymousMethod.getName() });
-      g.a(paramAnonymousMethod, paramAnonymousArrayOfObject);
+      long l1;
+      float f1;
+      long l2;
+      float f2;
+      int i;
+      if ("requestLocationUpdates".equals(paramAnonymousMethod.getName()))
+      {
+        l1 = -1L;
+        f1 = -1.0F;
+        l2 = l1;
+        f2 = f1;
+        if (paramAnonymousArrayOfObject != null)
+        {
+          int j = paramAnonymousArrayOfObject.length;
+          i = 0;
+          l2 = l1;
+          f2 = f1;
+          if (i < j)
+          {
+            paramAnonymousMethod = paramAnonymousArrayOfObject[i];
+            if ((paramAnonymousMethod == null) || (!"android.location.LocationRequest".equals(paramAnonymousMethod.getClass().getName()))) {
+              break label218;
+            }
+            l2 = l1;
+          }
+        }
+      }
+      label218:
+      for (;;)
+      {
+        try
+        {
+          Method localMethod = paramAnonymousMethod.getClass().getDeclaredMethod("getFastestInterval", new Class[0]);
+          l2 = l1;
+          localMethod.setAccessible(true);
+          l2 = l1;
+          l1 = ((Long)localMethod.invoke(paramAnonymousMethod, new Object[0])).longValue();
+          l2 = l1;
+          localMethod = paramAnonymousMethod.getClass().getDeclaredMethod("getSmallestDisplacement", new Class[0]);
+          l2 = l1;
+          localMethod.setAccessible(true);
+          l2 = l1;
+          f2 = ((Float)localMethod.invoke(paramAnonymousMethod, new Object[0])).floatValue();
+          f1 = f2;
+        }
+        finally
+        {
+          l1 = l2;
+          c.printErrStackTrace("Matrix.battery.LocationHooker", paramAnonymousMethod, "", new Object[0]);
+          continue;
+        }
+        i += 1;
+        break;
+        g.k(l2, f2);
+        return;
+      }
     }
   };
-  private static j cXn = new j("power", "android.os.IPowerManager", cXm);
-  private static List<b> cXo = new ArrayList();
+  private static n eTu = new n("location", "android.location.ILocationManager", eTt);
+  private static List<a> eTv = new ArrayList();
   
-  public static void a(b paramb)
+  public static void a(a parama)
   {
-    if (paramb == null) {}
+    if (parama == null) {}
     for (;;)
     {
       return;
       try
       {
-        if (cXo.contains(paramb)) {
+        if (eTv.contains(parama)) {
           continue;
         }
-        cXo.add(paramb);
-        if ((cXl) || (cXo.isEmpty())) {
+        eTv.add(parama);
+        if ((eTs) || (eTv.isEmpty())) {
           continue;
         }
-        c.i("Matrix.battery.PowerHooker", "checkHook hookRet:%b", new Object[] { Boolean.valueOf(cXn.doHook()) });
-        cXl = true;
+        c.i("Matrix.battery.LocationHooker", "checkHook hookRet:%b", new Object[] { Boolean.valueOf(eTu.doHook()) });
+        eTs = true;
       }
       finally {}
     }
   }
   
-  public static void b(b paramb)
+  public static void b(a parama)
   {
-    if (paramb == null) {}
+    if (parama == null) {}
     for (;;)
     {
       return;
       try
       {
-        cXo.remove(paramb);
-        if ((!cXl) || (!cXo.isEmpty())) {
+        eTv.remove(parama);
+        if ((!eTs) || (!eTv.isEmpty())) {
           continue;
         }
-        c.i("Matrix.battery.PowerHooker", "checkUnHook unHookRet:%b", new Object[] { Boolean.valueOf(cXn.doUnHook()) });
-        cXl = false;
+        c.i("Matrix.battery.LocationHooker", "checkUnHook unHookRet:%b", new Object[] { Boolean.valueOf(eTu.doUnHook()) });
+        eTs = false;
       }
       finally {}
     }
   }
   
-  static final class a
+  public static abstract interface a
   {
-    IBinder cWV;
-    WorkSource cXx;
-    String cXy;
-    int flags;
-    String packageName;
-    String tag;
-  }
-  
-  public static abstract interface b
-  {
-    public abstract void a(IBinder paramIBinder, int paramInt);
-    
-    public abstract void a(IBinder paramIBinder, int paramInt, String paramString1, String paramString2, WorkSource paramWorkSource, String paramString3);
-  }
-  
-  static final class c
-  {
-    IBinder cWV;
-    int flags;
+    public abstract void j(long paramLong, float paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.a.b.g
  * JD-Core Version:    0.7.0.1
  */

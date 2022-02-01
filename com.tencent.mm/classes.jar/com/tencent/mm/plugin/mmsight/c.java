@@ -6,16 +6,16 @@ import java.util.concurrent.ConcurrentSkipListSet;
 
 public final class c
 {
-  private static ConcurrentSkipListSet<Integer> EXR;
+  private static ConcurrentSkipListSet<Integer> KTD;
   
   static
   {
     AppMethodBeat.i(148776);
-    EXR = new ConcurrentSkipListSet();
+    KTD = new ConcurrentSkipListSet();
     AppMethodBeat.o(148776);
   }
   
-  public static void WS(int paramInt)
+  public static void aaU(int paramInt)
   {
     try
     {
@@ -23,7 +23,7 @@ public final class c
       try
       {
         Log.i("MicroMsg.MMSightCaptureVideoRemuxStatus", "markMsgRemuxing: %s", new Object[] { Integer.valueOf(paramInt) });
-        EXR.add(Integer.valueOf(paramInt));
+        KTD.add(Integer.valueOf(paramInt));
         AppMethodBeat.o(148773);
       }
       catch (Exception localException)
@@ -39,7 +39,7 @@ public final class c
     finally {}
   }
   
-  public static void WT(int paramInt)
+  public static void aaV(int paramInt)
   {
     try
     {
@@ -47,7 +47,7 @@ public final class c
       try
       {
         Log.i("MicroMsg.MMSightCaptureVideoRemuxStatus", "markMsgRemuxingFinish: %s", new Object[] { Integer.valueOf(paramInt) });
-        EXR.remove(Integer.valueOf(paramInt));
+        KTD.remove(Integer.valueOf(paramInt));
         AppMethodBeat.o(148774);
       }
       catch (Exception localException)
@@ -63,14 +63,14 @@ public final class c
     finally {}
   }
   
-  public static boolean WU(int paramInt)
+  public static boolean aaW(int paramInt)
   {
     try
     {
       AppMethodBeat.i(148775);
       try
       {
-        bool = EXR.contains(Integer.valueOf(paramInt));
+        bool = KTD.contains(Integer.valueOf(paramInt));
         Log.d("MicroMsg.MMSightCaptureVideoRemuxStatus", "isMsgRemuxing: %s, %s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) });
         AppMethodBeat.o(148775);
       }

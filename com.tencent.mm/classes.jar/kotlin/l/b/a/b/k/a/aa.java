@@ -1,210 +1,85 @@
 package kotlin.l.b.a.b.k.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.b.az;
 import kotlin.l.b.a.b.b.b.a;
-import kotlin.l.b.a.b.b.ba;
-import kotlin.l.b.a.b.b.f;
-import kotlin.l.b.a.b.b.w;
-import kotlin.l.b.a.b.e.a.b.b;
+import kotlin.l.b.a.b.b.t;
 import kotlin.l.b.a.b.e.a.i;
-import kotlin.l.b.a.b.e.a.j;
-import kotlin.l.b.a.b.e.a.p.a.b;
-import kotlin.l.b.a.b.e.a.r.b;
 import kotlin.l.b.a.b.e.a.w;
-import kotlin.l.b.a.b.m.bh;
-import kotlin.m;
 
 public final class aa
 {
-  public static final aa abof;
-  
-  static
+  public static final b.a a(z paramz, a.i parami)
   {
-    AppMethodBeat.i(60356);
-    abof = new aa();
-    AppMethodBeat.o(60356);
-  }
-  
-  public static b.a a(a.i parami)
-  {
-    AppMethodBeat.i(60350);
+    AppMethodBeat.i(192258);
+    kotlin.g.b.s.u(paramz, "<this>");
     if (parami == null) {}
-    for (;;)
-    {
-      parami = b.a.aaJQ;
-      AppMethodBeat.o(60350);
-      return parami;
-      switch (ab.$EnumSwitchMapping$0[parami.ordinal()])
-      {
-      }
-    }
-    parami = b.a.aaJQ;
-    AppMethodBeat.o(60350);
-    return parami;
-    parami = b.a.aaJR;
-    AppMethodBeat.o(60350);
-    return parami;
-    parami = b.a.aaJS;
-    AppMethodBeat.o(60350);
-    return parami;
-    parami = b.a.aaJT;
-    AppMethodBeat.o(60350);
-    return parami;
-  }
-  
-  public static ba a(a.w paramw)
-  {
-    AppMethodBeat.i(60352);
-    if (paramw == null) {
-      paramw = az.aaKK;
-    }
-    for (;;)
-    {
-      p.j(paramw, "when (visibility) {\n    …isibilities.PRIVATE\n    }");
-      AppMethodBeat.o(60352);
-      return paramw;
-      switch (ab.yBl[paramw.ordinal()])
+    for (int i = -1;; i = a.$EnumSwitchMapping$0[parami.ordinal()]) {
+      switch (i)
       {
       default: 
-        break;
-      case 1: 
-        paramw = az.aaKN;
-        break;
-      case 2: 
-        paramw = az.aaKK;
-        break;
-      case 3: 
-        paramw = az.aaKL;
-        break;
-      case 4: 
-        paramw = az.aaKM;
-        break;
-      case 5: 
-        paramw = az.aaKO;
-        break;
-      case 6: 
-        paramw = az.aaKP;
+        paramz = b.a.aiGl;
+        AppMethodBeat.o(192258);
+        return paramz;
       }
     }
+    paramz = b.a.aiGl;
+    AppMethodBeat.o(192258);
+    return paramz;
+    paramz = b.a.aiGm;
+    AppMethodBeat.o(192258);
+    return paramz;
+    paramz = b.a.aiGn;
+    AppMethodBeat.o(192258);
+    return paramz;
+    paramz = b.a.aiGo;
+    AppMethodBeat.o(192258);
+    return paramz;
   }
   
-  public static f a(a.b.b paramb)
+  public static final t a(z paramz, a.w paramw)
   {
-    AppMethodBeat.i(60353);
-    if (paramb == null) {}
-    for (;;)
-    {
-      paramb = f.aaJY;
-      AppMethodBeat.o(60353);
-      return paramb;
-      switch (ab.yBm[paramb.ordinal()])
+    AppMethodBeat.i(192261);
+    kotlin.g.b.s.u(paramz, "<this>");
+    if (paramw == null) {}
+    for (int i = -1;; i = a.avM[paramw.ordinal()]) {
+      switch (i)
       {
+      default: 
+        paramz = kotlin.l.b.a.b.b.s.aiGC;
+        kotlin.g.b.s.s(paramz, "PRIVATE");
+        AppMethodBeat.o(192261);
+        return paramz;
       }
     }
-    paramb = f.aaJY;
-    AppMethodBeat.o(60353);
-    return paramb;
-    paramb = f.aaJZ;
-    AppMethodBeat.o(60353);
-    return paramb;
-    paramb = f.aaKa;
-    AppMethodBeat.o(60353);
-    return paramb;
-    paramb = f.aaKb;
-    AppMethodBeat.o(60353);
-    return paramb;
-    paramb = f.aaKc;
-    AppMethodBeat.o(60353);
-    return paramb;
-    paramb = f.aaKd;
-    AppMethodBeat.o(60353);
-    return paramb;
-  }
-  
-  public static w a(a.j paramj)
-  {
-    AppMethodBeat.i(60351);
-    if (paramj == null) {}
-    for (;;)
-    {
-      paramj = w.aaKi;
-      AppMethodBeat.o(60351);
-      return paramj;
-      switch (ab.tKM[paramj.ordinal()])
-      {
-      }
-    }
-    paramj = w.aaKi;
-    AppMethodBeat.o(60351);
-    return paramj;
-    paramj = w.aaKk;
-    AppMethodBeat.o(60351);
-    return paramj;
-    paramj = w.aaKl;
-    AppMethodBeat.o(60351);
-    return paramj;
-    paramj = w.aaKj;
-    AppMethodBeat.o(60351);
-    return paramj;
-  }
-  
-  public static bh b(a.p.a.b paramb)
-  {
-    AppMethodBeat.i(60355);
-    p.k(paramb, "projection");
-    switch (ab.yCu[paramb.ordinal()])
-    {
-    default: 
-      paramb = new m();
-      AppMethodBeat.o(60355);
-      throw paramb;
-    case 1: 
-      paramb = bh.abrq;
-      AppMethodBeat.o(60355);
-      return paramb;
-    case 2: 
-      paramb = bh.abrr;
-      AppMethodBeat.o(60355);
-      return paramb;
-    case 3: 
-      paramb = bh.abrp;
-      AppMethodBeat.o(60355);
-      return paramb;
-    }
-    paramb = (Throwable)new IllegalArgumentException("Only IN, OUT and INV are supported. Actual argument: ".concat(String.valueOf(paramb)));
-    AppMethodBeat.o(60355);
-    throw paramb;
-  }
-  
-  public static bh b(a.r.b paramb)
-  {
-    AppMethodBeat.i(60354);
-    p.k(paramb, "variance");
-    switch (ab.yBo[paramb.ordinal()])
-    {
-    default: 
-      paramb = new m();
-      AppMethodBeat.o(60354);
-      throw paramb;
-    case 1: 
-      paramb = bh.abrq;
-      AppMethodBeat.o(60354);
-      return paramb;
-    case 2: 
-      paramb = bh.abrr;
-      AppMethodBeat.o(60354);
-      return paramb;
-    }
-    paramb = bh.abrp;
-    AppMethodBeat.o(60354);
-    return paramb;
+    paramz = kotlin.l.b.a.b.b.s.aiGF;
+    kotlin.g.b.s.s(paramz, "INTERNAL");
+    AppMethodBeat.o(192261);
+    return paramz;
+    paramz = kotlin.l.b.a.b.b.s.aiGC;
+    kotlin.g.b.s.s(paramz, "PRIVATE");
+    AppMethodBeat.o(192261);
+    return paramz;
+    paramz = kotlin.l.b.a.b.b.s.aiGD;
+    kotlin.g.b.s.s(paramz, "PRIVATE_TO_THIS");
+    AppMethodBeat.o(192261);
+    return paramz;
+    paramz = kotlin.l.b.a.b.b.s.aiGE;
+    kotlin.g.b.s.s(paramz, "PROTECTED");
+    AppMethodBeat.o(192261);
+    return paramz;
+    paramz = kotlin.l.b.a.b.b.s.aiGG;
+    kotlin.g.b.s.s(paramz, "PUBLIC");
+    AppMethodBeat.o(192261);
+    return paramz;
+    paramz = kotlin.l.b.a.b.b.s.aiGH;
+    kotlin.g.b.s.s(paramz, "LOCAL");
+    AppMethodBeat.o(192261);
+    return paramz;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.k.a.aa
  * JD-Core Version:    0.7.0.1
  */

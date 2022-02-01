@@ -4,22 +4,22 @@
     <item android:state_enabled="false">
         <shape android:shape="rectangle">
             <corners android:radius="@dimen/a0" />
-            <solid android:color="@color/gn" />
-            <stroke android:width="@dimen/a2" android:color="@color/gq" />
+            <solid android:color="@color/hh" />
+            <stroke android:width="@dimen/a2" android:color="@color/hk" />
         </shape>
     </item>
     <item android:state_pressed="true">
         <shape android:shape="rectangle">
             <corners android:radius="@dimen/a0" />
-            <solid android:color="@color/gp" />
-            <stroke android:width="@dimen/a2" android:color="@color/gs" />
+            <solid android:color="@color/hj" />
+            <stroke android:width="@dimen/a2" android:color="@color/hm" />
         </shape>
     </item>
     <item>
         <shape android:shape="rectangle">
             <corners android:radius="@dimen/a0" />
-            <solid android:color="@color/go" />
-            <stroke android:width="@dimen/a2" android:color="@color/gr" />
+            <solid android:color="@color/hi" />
+            <stroke android:width="@dimen/a2" android:color="@color/hl" />
         </shape>
     </item>
 </selector>

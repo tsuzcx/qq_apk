@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/pg" android:paddingLeft="@dimen/i1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="70.0dip"
+<RelativeLayout android:background="@drawable/oe" android:paddingLeft="@dimen/if" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="70.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/be9" android:paddingRight="@dimen/i1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="70.0dip">
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/br7" android:paddingRight="@dimen/if" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="70.0dip">
         <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/hc" android:textColor="@color/a2x" android:id="@id/b60" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
-            <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:id="@id/b6g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/a7b" android:id="@id/bgk" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
+            <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:id="@id/bh1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
         </LinearLayout>
-        <TextView android:textSize="@dimen/kc" android:textColor="@color/l" android:ellipsize="end" android:id="@id/b61" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:text="" android:lines="1" />
+        <TextView android:textSize="@dimen/m_" android:textColor="@color/q" android:ellipsize="end" android:id="@id/bgl" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:text="" android:lines="1" />
     </LinearLayout>
-    <View android:background="@color/a7t" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
+    <View android:background="@color/abn" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
 </RelativeLayout>

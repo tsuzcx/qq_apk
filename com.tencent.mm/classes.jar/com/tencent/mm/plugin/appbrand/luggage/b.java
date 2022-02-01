@@ -11,12 +11,12 @@ import com.tencent.mm.plugin.appbrand.luggage.b.o;
 public final class b
   extends a
 {
-  private final g qao;
+  private final g tft;
   
   public b()
   {
     AppMethodBeat.i(121605);
-    this.qao = new o();
+    this.tft = new o();
     AppMethodBeat.o(121605);
   }
   
@@ -24,7 +24,7 @@ public final class b
   {
     AppMethodBeat.i(121607);
     super.a(parama);
-    parama.a(g.class, this.qao);
+    parama.a(g.class, this.tft);
     AppMethodBeat.o(121607);
   }
   
@@ -32,14 +32,14 @@ public final class b
   {
     AppMethodBeat.i(121606);
     super.a(paramc);
-    paramc.a(g.class, this.qao);
-    paramc.a(e.class, com.tencent.mm.plugin.appbrand.dynamic.b.b.bNt());
+    paramc.a(g.class, this.tft);
+    paramc.a(e.class, com.tencent.mm.plugin.appbrand.dynamic.b.b.cnI());
     AppMethodBeat.o(121606);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.b
  * JD-Core Version:    0.7.0.1
  */

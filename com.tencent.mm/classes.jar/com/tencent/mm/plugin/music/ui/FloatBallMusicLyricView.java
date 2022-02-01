@@ -5,39 +5,36 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bb.f;
-import com.tencent.mm.f.a.np;
-import com.tencent.mm.f.a.np.a;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.autogen.a.ox;
+import com.tencent.mm.autogen.a.ox.a;
 import com.tencent.mm.plugin.music.a.e;
 import com.tencent.mm.plugin.music.a.g;
-import com.tencent.mm.plugin.music.e.k;
-import com.tencent.mm.plugin.music.f.a.d;
-import com.tencent.mm.plugin.music.f.a.d.a;
+import com.tencent.mm.plugin.music.e.a.d;
+import com.tencent.mm.plugin.music.e.a.d.a;
+import com.tencent.mm.plugin.music.e.c.b;
+import com.tencent.mm.plugin.music.logic.j;
 import com.tencent.mm.plugin.music.model.e.a;
 import com.tencent.mm.plugin.music.model.e.a;
-import com.tencent.mm.plugin.music.model.o;
 import com.tencent.mm.plugin.music.ui.view.MarqueeLyricView;
 import com.tencent.mm.sdk.event.IListener;
-import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ad;
+import com.tencent.mm.ui.af;
 import java.util.ArrayList;
 
 public class FloatBallMusicLyricView
   extends LinearLayout
 {
-  public d.a FOE;
-  private a FRG;
-  private MarqueeLyricView FTA;
-  private com.tencent.mm.plugin.music.model.e FTB;
-  private int FTC;
-  private TextView FTz;
-  public IListener ozM;
+  public d.a LJz;
+  private a LMB;
+  private com.tencent.mm.plugin.music.model.e LOA;
+  private int LOB;
+  private TextView LOy;
+  private MarqueeLyricView LOz;
+  public IListener rDF;
   
   public FloatBallMusicLyricView(Context paramContext)
   {
@@ -57,133 +54,89 @@ public class FloatBallMusicLyricView
   private FloatBallMusicLyricView(Context paramContext, AttributeSet paramAttributeSet, int paramInt, byte paramByte)
   {
     super(paramContext, paramAttributeSet, paramInt, 0);
-    AppMethodBeat.i(259703);
-    this.FRG = null;
-    this.FTB = null;
-    this.FTC = -1;
-    this.FOE = new d.a()
+    AppMethodBeat.i(270971);
+    this.LMB = null;
+    this.LOA = null;
+    this.LOB = -1;
+    this.LJz = new d.a()
     {
-      public final void fK(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void onProgress(int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(260117);
+        AppMethodBeat.i(270944);
         if ((paramAnonymousInt1 >= 0) && (paramAnonymousInt2 > 0)) {
           MMHandlerThread.postToMainThread(new FloatBallMusicLyricView.2(FloatBallMusicLyricView.this, paramAnonymousInt1));
         }
-        AppMethodBeat.o(260117);
+        AppMethodBeat.o(270944);
       }
     };
-    this.ozM = new IListener() {};
-    ad.kS(paramContext).inflate(a.g.float_ball_music_lyric_view, this, true);
-    this.FTz = ((TextView)findViewById(a.e.music_title));
-    this.FTA = ((MarqueeLyricView)findViewById(a.e.music_lyric));
+    this.rDF = new IListener(com.tencent.mm.app.f.hfK) {};
+    af.mU(paramContext).inflate(a.g.float_ball_music_lyric_view, this, true);
+    this.LOy = ((TextView)findViewById(a.e.music_title));
+    this.LOz = ((MarqueeLyricView)findViewById(a.e.music_lyric));
     onResume();
-    AppMethodBeat.o(259703);
+    AppMethodBeat.o(270971);
   }
   
-  private static boolean ffv()
+  private void goK()
   {
-    AppMethodBeat.i(259705);
-    if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_PURPLE))
-    {
-      AppMethodBeat.o(259705);
-      return true;
-    }
-    if (1 == ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vWT, 0))
-    {
-      AppMethodBeat.o(259705);
-      return true;
-    }
-    AppMethodBeat.o(259705);
-    return false;
-  }
-  
-  private boolean ffw()
-  {
-    AppMethodBeat.i(259711);
-    if ((this.FTB == null) || (this.FTB.FRr.size() <= 2))
-    {
-      AppMethodBeat.o(259711);
-      return true;
-    }
-    AppMethodBeat.o(259711);
-    return false;
-  }
-  
-  private void j(a parama)
-  {
-    AppMethodBeat.i(259710);
-    if (!ffv())
-    {
-      this.FTA.setVisibility(8);
-      AppMethodBeat.o(259710);
-      return;
-    }
-    this.FTB = o.feW().i(parama);
-    if (ffw())
-    {
-      this.FTA.setVisibility(8);
-      AppMethodBeat.o(259710);
-      return;
-    }
-    this.FTC = -1;
-    this.FTA.setLyricObj(this.FTB);
-    this.FTA.setVisibility(0);
-    AppMethodBeat.o(259710);
+    AppMethodBeat.i(270987);
+    this.LOz.setVisibility(8);
+    AppMethodBeat.o(270987);
   }
   
   private void setMusicLyric(String paramString)
   {
-    AppMethodBeat.i(259708);
+    AppMethodBeat.i(270982);
     Log.i("MicroMsg.FloatBallMusicLyricView", "alvinluo setMusicLyric: %s", new Object[] { paramString });
-    if (this.FTA != null)
+    if (this.LOz != null)
     {
-      this.FRG = ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.bm(com.tencent.mm.plugin.music.e.e.class)).fei();
-      if (this.FRG == null)
+      this.LMB = ((com.tencent.mm.plugin.music.logic.e)b.bU(com.tencent.mm.plugin.music.logic.e.class)).gnl();
+      if (this.LMB == null)
       {
-        this.FTA.setVisibility(8);
-        AppMethodBeat.o(259708);
+        this.LOz.setVisibility(8);
+        AppMethodBeat.o(270982);
         return;
       }
-      if (Util.isNullOrNil(this.FRG.field_songHAlbumUrl))
+      if (Util.isNullOrNil(this.LMB.field_songHAlbumUrl))
       {
-        this.FTA.setVisibility(8);
-        ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.bm(com.tencent.mm.plugin.music.e.e.class)).a(this.FRG, false, false);
-        AppMethodBeat.o(259708);
+        this.LOz.setVisibility(8);
+        ((com.tencent.mm.plugin.music.logic.e)b.bU(com.tencent.mm.plugin.music.logic.e.class)).a(this.LMB, false, false);
+        AppMethodBeat.o(270982);
         return;
       }
-      j(this.FRG);
+      goK();
     }
-    AppMethodBeat.o(259708);
+    AppMethodBeat.o(270982);
   }
   
   private void setMusicTitle(String paramString)
   {
-    AppMethodBeat.i(259706);
-    if (this.FTz != null) {
-      this.FTz.setText(paramString);
+    AppMethodBeat.i(270974);
+    if (this.LOy != null) {
+      this.LOy.setText(paramString);
     }
-    AppMethodBeat.o(259706);
+    AppMethodBeat.o(270974);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(259704);
-    this.ozM.alive();
-    k.fet().feg().a(this.FOE);
-    AppMethodBeat.o(259704);
+    AppMethodBeat.i(271024);
+    this.rDF.alive();
+    j.gnw().gnj().a(this.LJz);
+    AppMethodBeat.o(271024);
   }
   
-  public void setMusicWrapper(f paramf)
+  public void setMusicWrapper(com.tencent.mm.aw.f paramf)
   {
-    AppMethodBeat.i(259707);
-    setMusicTitle(paramf.lVv);
-    setMusicLyric(paramf.lVC);
-    AppMethodBeat.o(259707);
+    AppMethodBeat.i(271031);
+    setMusicTitle(paramf.oOx);
+    setMusicLyric(paramf.oOE);
+    AppMethodBeat.o(271031);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.music.ui.FloatBallMusicLyricView
  * JD-Core Version:    0.7.0.1
  */

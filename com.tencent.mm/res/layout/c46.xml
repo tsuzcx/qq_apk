@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <FrameLayout android:id="@id/jkn" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/i3q" android:background="@color/BW_93" android:paddingTop="200.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ep9" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginBottom="20.0dip" android:src="@raw/top_story_loading_logo" android:scaleType="fitCenter" app:iconColor="@color/xv" />
-        <com.tencent.mm.ui.widget.ThreeDotsLoadingView android:id="@id/epy" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+<LinearLayout android:orientation="horizontal" android:background="@drawable/au1" android:padding="3.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="50.0dip">
+        <com.tencent.mm.ui.MMImageView android:id="@id/f4x" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_margin="3.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
+        <ImageView android:layout_gravity="center" android:id="@id/k13" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:maxHeight="350.0dip" />
+    </FrameLayout>
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/it6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="6.0dip">
+        <TextView android:textSize="14.0dip" android:textColor="@color/ad4" android:ellipsize="end" android:id="@id/kq1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" android:singleLine="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/adx" android:id="@id/iuk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
     </LinearLayout>
-</FrameLayout>
+</LinearLayout>

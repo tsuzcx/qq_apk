@@ -12,59 +12,51 @@ import java.util.Map;
 public final class a
   extends c.a
 {
-  private final String GMZ;
-  private final String GNa;
-  private final String GNb;
-  private final String GNc;
-  private final String GNd;
-  private final String GNe;
-  private final String GNf;
-  private final String GNg;
-  private final String GNh;
+  private final String MKr;
+  private final String MKs;
+  private final String MKt;
+  private final String MKu;
+  private final String MKv;
+  private final String MKw;
+  private final String MKx;
+  private final String MKy;
+  private final String MKz;
   
   public a(c<? extends com.tencent.matrix.hook.a, ? extends c.a> paramc)
   {
     super(paramc);
-    AppMethodBeat.i(201404);
-    this.GMZ = (paramc.fnm() + ".$hook");
-    this.GNa = (paramc.fnm() + ".$ignore");
-    this.GNb = (paramc.fnm() + ".$stack");
-    this.GNc = (paramc.fnm() + ".$min");
-    this.GNd = (paramc.fnm() + ".$max");
-    this.GNe = (paramc.fnm() + ".$sampling");
-    this.GNf = (paramc.fnm() + ".$extreme");
-    this.GNg = (paramc.fnm() + ".$mmap");
-    this.GNh = (paramc.fnm() + ".$stacklog");
-    AppMethodBeat.o(201404);
+    AppMethodBeat.i(300871);
+    this.MKr = (paramc.gxZ() + ".$hook");
+    this.MKs = (paramc.gxZ() + ".$ignore");
+    this.MKt = (paramc.gxZ() + ".$stack");
+    this.MKu = (paramc.gxZ() + ".$min");
+    this.MKv = (paramc.gxZ() + ".$max");
+    this.MKw = (paramc.gxZ() + ".$sampling");
+    this.MKx = (paramc.gxZ() + ".$extreme");
+    this.MKy = (paramc.gxZ() + ".$mmap");
+    this.MKz = (paramc.gxZ() + ".$stacklog");
+    AppMethodBeat.o(300871);
   }
   
-  public final String aUr(String paramString)
+  public final void aL(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(201419);
-    paramString = this.fbr.decodeString(this.GMZ, paramString);
-    AppMethodBeat.o(201419);
-    return paramString;
-  }
-  
-  public final void av(Map<String, String> paramMap)
-  {
-    AppMethodBeat.i(201415);
-    super.av(paramMap);
-    String str2 = (String)paramMap.get(this.GMZ);
+    AppMethodBeat.i(300887);
+    super.aL(paramMap);
+    String str2 = (String)paramMap.get(this.MKr);
     if (TextUtils.isEmpty(str2))
     {
       Log.e("MicroMsg.MemoryHookConfigStg", "ERROR(MemoryHook): hook regex is blank");
-      AppMethodBeat.o(201415);
+      AppMethodBeat.o(300887);
       return;
     }
-    String str1 = (String)paramMap.get(this.GNa);
-    boolean bool1 = "1".equals(paramMap.get(this.GNb));
-    int k = Util.getInt((String)paramMap.get(this.GNc), 0);
-    int m = Util.getInt((String)paramMap.get(this.GNd), 0);
-    double d = Util.getDouble((String)paramMap.get(this.GNe), 1.0D);
-    boolean bool2 = "1".equals(paramMap.get(this.GNf));
-    boolean bool3 = "1".equals(paramMap.get(this.GNg));
-    int i = Util.getInt((String)paramMap.get(this.GNh), 52428800);
+    String str1 = (String)paramMap.get(this.MKs);
+    boolean bool1 = "1".equals(paramMap.get(this.MKt));
+    int k = Util.getInt((String)paramMap.get(this.MKu), 0);
+    int m = Util.getInt((String)paramMap.get(this.MKv), 0);
+    double d = Util.getDouble((String)paramMap.get(this.MKw), 1.0D);
+    boolean bool2 = "1".equals(paramMap.get(this.MKx));
+    boolean bool3 = "1".equals(paramMap.get(this.MKy));
+    int i = Util.getInt((String)paramMap.get(this.MKz), 52428800);
     if (!bool2) {
       if (str1 == null) {
         paramMap = ".*libutils\\.so$;.*libcutils\\.so$;.*libskia\\.so$;.*libbinder.*\\.so$;.*libhwbinder\\.so$;.*libicuuc\\.so$;.*libicui18n\\.so$;.*libart.*\\.so$;.*libandroidfw\\.so$;.*libandroid_runtime\\.so$;.*libjavacore\\.so$;.*libopenjdk.*\\.so$;.*libmemfence\\.so$";
@@ -81,16 +73,16 @@ public final class a
         if (i < 0) {
           j = 0;
         }
-        this.fbr.encode(this.GMZ, str2);
-        this.fbr.encode(this.GNa, paramMap);
-        this.fbr.encode(this.GNb, bool1);
-        this.fbr.encode(this.GNc, k);
-        this.fbr.encode(this.GNd, m);
-        this.fbr.encode(this.GNe, d);
-        this.fbr.encode(this.GNf, bool2);
-        this.fbr.encode(this.GNg, bool3);
-        this.fbr.encode(this.GNh, j);
-        AppMethodBeat.o(201415);
+        this.evW.encode(this.MKr, str2);
+        this.evW.encode(this.MKs, paramMap);
+        this.evW.encode(this.MKt, bool1);
+        this.evW.encode(this.MKu, k);
+        this.evW.encode(this.MKv, m);
+        this.evW.encode(this.MKw, d);
+        this.evW.encode(this.MKx, bool2);
+        this.evW.encode(this.MKy, bool3);
+        this.evW.encode(this.MKz, j);
+        AppMethodBeat.o(300887);
         return;
         paramMap = str1;
         if (!TextUtils.isEmpty(str1))
@@ -107,81 +99,89 @@ public final class a
     }
   }
   
-  public final String fnM()
+  public final String aRz(String paramString)
   {
-    AppMethodBeat.i(201417);
-    String str = aUr("");
-    AppMethodBeat.o(201417);
+    AppMethodBeat.i(300906);
+    paramString = this.evW.decodeString(this.MKr, paramString);
+    AppMethodBeat.o(300906);
+    return paramString;
+  }
+  
+  public final String gyI()
+  {
+    AppMethodBeat.i(300892);
+    String str = aRz("");
+    AppMethodBeat.o(300892);
     return str;
   }
   
-  public final String fnN()
+  public final String gyJ()
   {
-    AppMethodBeat.i(201420);
-    String str = this.fbr.decodeString(this.GNa, "");
-    AppMethodBeat.o(201420);
+    AppMethodBeat.i(300911);
+    String str = this.evW.decodeString(this.MKs, "");
+    AppMethodBeat.o(300911);
     return str;
   }
   
-  public final boolean fnO()
+  public final boolean gyK()
   {
-    AppMethodBeat.i(201421);
-    boolean bool = this.fbr.decodeBool(this.GNb, false);
-    AppMethodBeat.o(201421);
+    AppMethodBeat.i(300920);
+    boolean bool = this.evW.decodeBool(this.MKt, false);
+    AppMethodBeat.o(300920);
     return bool;
   }
   
-  public final int fnP()
+  public final int gyL()
   {
-    AppMethodBeat.i(201422);
-    int i = this.fbr.decodeInt(this.GNc, 0);
-    AppMethodBeat.o(201422);
+    AppMethodBeat.i(300924);
+    int i = this.evW.decodeInt(this.MKu, 0);
+    AppMethodBeat.o(300924);
     return i;
   }
   
-  public final int fnQ()
+  public final int gyM()
   {
-    AppMethodBeat.i(201425);
-    int i = this.fbr.decodeInt(this.GNd, 0);
-    AppMethodBeat.o(201425);
+    AppMethodBeat.i(300928);
+    int i = this.evW.decodeInt(this.MKv, 0);
+    AppMethodBeat.o(300928);
     return i;
   }
   
-  public final double fnR()
+  public final double gyN()
   {
-    AppMethodBeat.i(201426);
-    double d = this.fbr.decodeDouble(this.GNe, 1.0D);
-    AppMethodBeat.o(201426);
+    AppMethodBeat.i(300932);
+    double d = this.evW.decodeDouble(this.MKw, 1.0D);
+    AppMethodBeat.o(300932);
     return d;
   }
   
-  public final boolean fnS()
+  public final boolean gyO()
   {
-    AppMethodBeat.i(201427);
-    boolean bool = this.fbr.decodeBool(this.GNf, false);
-    AppMethodBeat.o(201427);
+    AppMethodBeat.i(300939);
+    boolean bool = this.evW.decodeBool(this.MKx, false);
+    AppMethodBeat.o(300939);
     return bool;
   }
   
-  public final boolean fnT()
+  public final boolean gyP()
   {
-    AppMethodBeat.i(201428);
-    boolean bool = this.fbr.decodeBool(this.GNg, false);
-    AppMethodBeat.o(201428);
+    AppMethodBeat.i(300944);
+    boolean bool = this.evW.decodeBool(this.MKy, false);
+    AppMethodBeat.o(300944);
     return bool;
   }
   
-  public final int fnU()
+  public final int gyQ()
   {
-    AppMethodBeat.i(201429);
-    int i = this.fbr.decodeInt(this.GNh, 52428800);
-    AppMethodBeat.o(201429);
+    AppMethodBeat.i(300955);
+    int i = this.evW.decodeInt(this.MKz, 52428800);
+    AppMethodBeat.o(300955);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.diagnostic.b.a
  * JD-Core Version:    0.7.0.1
  */

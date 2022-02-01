@@ -3,135 +3,161 @@ package com.tencent.mm.plugin.vlog.ui.timelineeditor;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
-import com.tencent.mm.plugin.recordvideo.plugin.parent.d.b;
+import com.tencent.mm.plugin.recordvideo.plugin.parent.a.b;
+import com.tencent.mm.plugin.recordvideo.plugin.parent.a.c;
 import com.tencent.mm.plugin.recordvideo.ui.editor.EditorPanelHolder;
 import com.tencent.mm.plugin.vlog.a.i;
+import com.tencent.mm.plugin.vlog.ui.plugin.d.c;
 import com.tencent.mm.plugin.vlog.ui.plugin.d.e;
 import com.tencent.mm.plugin.vlog.ui.thumb.TrackCropView;
 import com.tencent.mm.plugin.vlog.ui.thumb.TrackCropView.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/timelineeditor/TimelineEditorTrackEditPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/AutoRegisterPlugin;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$PreviewSeekCallback;", "holder", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "TAG", "", "cancelView", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "getCancelView", "()Landroid/widget/ImageView;", "cancelView$delegate", "Lkotlin/Lazy;", "confirmed", "", "cropEnd", "", "cropStart", "hintText", "Landroid/widget/TextView;", "getHintText", "()Landroid/widget/TextView;", "hintText$delegate", "getHolder", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder;", "inited", "lastSeekTime", "okView", "getOkView", "okView$delegate", "onCropCallback", "com/tencent/mm/plugin/vlog/ui/timelineeditor/TimelineEditorTrackEditPlugin$onCropCallback$1", "Lcom/tencent/mm/plugin/vlog/ui/timelineeditor/TimelineEditorTrackEditPlugin$onCropCallback$1;", "originEnd", "originPlayRate", "", "originStart", "panelRoot", "Landroid/view/ViewGroup;", "getPanelRoot", "()Landroid/view/ViewGroup;", "panelRoot$delegate", "playStartOffset", "sourceDuration", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "trackCropView", "Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackCropView;", "getTrackCropView", "()Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackCropView;", "trackCropView$delegate", "cancel", "", "checkInit", "isShowing", "onBackPress", "onFinish", "onProgress", "timeMs", "onStart", "seekable", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$Seekable;", "setEnableLengthEdit", "enable", "setTrack", "track", "Lcom/tencent/mm/videocomposition/CompositionTrack;", "init", "maxTrackEnd", "setVisibility", "visibility", "", "updateHint", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/timelineeditor/TimelineEditorTrackEditPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/AutoRegisterPlugin;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$PreviewSeekCallback;", "holder", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "TAG", "", "cancelView", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "getCancelView", "()Landroid/widget/ImageView;", "cancelView$delegate", "Lkotlin/Lazy;", "confirmed", "", "cropEnd", "", "cropStart", "hintText", "Landroid/widget/TextView;", "getHintText", "()Landroid/widget/TextView;", "hintText$delegate", "getHolder", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder;", "inited", "lastSeekTime", "okView", "getOkView", "okView$delegate", "onCropCallback", "com/tencent/mm/plugin/vlog/ui/timelineeditor/TimelineEditorTrackEditPlugin$onCropCallback$1", "Lcom/tencent/mm/plugin/vlog/ui/timelineeditor/TimelineEditorTrackEditPlugin$onCropCallback$1;", "originEnd", "originPlayRate", "", "originStart", "panelRoot", "Landroid/view/ViewGroup;", "getPanelRoot", "()Landroid/view/ViewGroup;", "panelRoot$delegate", "playStartOffset", "sourceDuration", "trackCropView", "Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackCropView;", "getTrackCropView", "()Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackCropView;", "trackCropView$delegate", "cancel", "", "checkInit", "isShowing", "onBackPress", "onFinish", "onProgress", "timeMs", "onStart", "seekable", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$Seekable;", "setEnableLengthEdit", "enable", "setTrack", "track", "Lcom/tencent/mm/videocomposition/CompositionTrack;", "init", "maxTrackEnd", "setVisibility", "visibility", "", "updateHint", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class h
   extends com.tencent.mm.plugin.recordvideo.plugin.a
-  implements com.tencent.mm.plugin.vlog.ui.plugin.d.c
+  implements d.c
 {
-  final d APl;
-  final EditorPanelHolder ATq;
-  private long KIe;
-  private final g NEs;
-  private final f Nua;
-  private final f Nub;
-  private final f Nuc;
-  private final f Nud;
-  private final f Nue;
-  private boolean Nuj;
-  private long Nvc;
-  private long Nvd;
-  private long Nve;
-  private long Nvf;
-  private long NwQ;
-  private float NwR;
-  private long NwS;
+  final EditorPanelHolder Gvm;
+  private long RhE;
   private final String TAG;
-  private boolean jvb;
+  private boolean UhB;
+  private final j Uhs;
+  private final j Uht;
+  private final j Uhu;
+  private final j Uhv;
+  private final j Uhw;
+  private long Uis;
+  private long Uit;
+  private long Uiu;
+  private long Uiv;
+  private long UjX;
+  private float UjY;
+  private long UjZ;
+  private final e UqF;
+  private boolean lYs;
   
-  public h(EditorPanelHolder paramEditorPanelHolder, d paramd)
+  public h(EditorPanelHolder paramEditorPanelHolder, final com.tencent.mm.plugin.recordvideo.plugin.parent.a parama)
   {
-    super(paramd, (byte)0);
-    AppMethodBeat.i(231353);
-    this.ATq = paramEditorPanelHolder;
-    this.APl = paramd;
+    super(parama);
+    AppMethodBeat.i(282254);
+    this.Gvm = paramEditorPanelHolder;
     this.TAG = "MicroMsg.VLogTrackEditPlugin";
-    this.Nua = g.ar((kotlin.g.a.a)new h(this));
-    this.Nub = g.ar((kotlin.g.a.a)new i(this));
-    this.Nuc = g.ar((kotlin.g.a.a)new e(this));
-    this.Nud = g.ar((kotlin.g.a.a)new a(this));
-    this.Nue = g.ar((kotlin.g.a.a)new f(this));
-    this.NwR = 1.0F;
-    this.NEs = new g(this);
-    AppMethodBeat.o(231353);
+    this.Uhs = k.cm((kotlin.g.a.a)new f(this));
+    this.Uht = k.cm((kotlin.g.a.a)new g(this));
+    this.Uhu = k.cm((kotlin.g.a.a)new c(this));
+    this.Uhv = k.cm((kotlin.g.a.a)new a(this));
+    this.Uhw = k.cm((kotlin.g.a.a)new d(this));
+    this.UjY = 1.0F;
+    this.UqF = new e(this, parama);
+    AppMethodBeat.o(282254);
   }
   
-  private final TextView dQW()
+  private static final void a(h paramh, View paramView)
   {
-    AppMethodBeat.i(231329);
-    TextView localTextView = (TextView)this.Nuc.getValue();
-    AppMethodBeat.o(231329);
+    AppMethodBeat.i(282305);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramh);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/timelineeditor/TimelineEditorTrackEditPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramh, "this$0");
+    paramh.Uiu = paramh.Uis;
+    paramh.Uiv = paramh.Uit;
+    paramh.Gvm.setShow(false);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/vlog/ui/timelineeditor/TimelineEditorTrackEditPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(282305);
+  }
+  
+  private static final void b(h paramh, View paramView)
+  {
+    AppMethodBeat.i(282313);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramh);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/timelineeditor/TimelineEditorTrackEditPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramh, "this$0");
+    paramh.Gvm.setShow(false);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/vlog/ui/timelineeditor/TimelineEditorTrackEditPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(282313);
+  }
+  
+  private final TextView eOX()
+  {
+    AppMethodBeat.i(282269);
+    TextView localTextView = (TextView)this.Uhu.getValue();
+    AppMethodBeat.o(282269);
     return localTextView;
   }
   
-  private final void fGj()
+  private final void gVJ()
   {
-    AppMethodBeat.i(231346);
-    int i = kotlin.h.a.dm((float)(this.Nvf - this.Nve) / 1000.0F);
-    TextView localTextView = dQW();
-    p.j(localTextView, "hintText");
-    localTextView.setText((CharSequence)this.ATq.getContext().getString(a.i.video_track_edit_duration_cut_off, new Object[] { Integer.valueOf(i) }));
-    AppMethodBeat.o(231346);
+    AppMethodBeat.i(282297);
+    int i = kotlin.h.a.eH((float)(this.Uiv - this.Uiu) / 1000.0F);
+    eOX().setText((CharSequence)this.Gvm.getContext().getString(a.i.video_track_edit_duration_cut_off, new Object[] { Integer.valueOf(i) }));
+    AppMethodBeat.o(282297);
   }
   
-  private final TrackCropView gvQ()
+  private final TrackCropView hTF()
   {
-    AppMethodBeat.i(231326);
-    TrackCropView localTrackCropView = (TrackCropView)this.Nub.getValue();
-    AppMethodBeat.o(231326);
+    AppMethodBeat.i(282262);
+    TrackCropView localTrackCropView = (TrackCropView)this.Uht.getValue();
+    AppMethodBeat.o(282262);
     return localTrackCropView;
-  }
-  
-  public final void LX(long paramLong)
-  {
-    AppMethodBeat.i(231351);
-    if (this.ATq.bVd()) {
-      gvQ().setProgress(paramLong);
-    }
-    AppMethodBeat.o(231351);
   }
   
   public final void a(d.e parame) {}
   
   public final boolean onBackPress()
   {
-    AppMethodBeat.i(231337);
-    if (this.ATq.bVd())
+    AppMethodBeat.i(282404);
+    if (this.Gvm.cvt())
     {
-      this.Nuj = false;
-      this.ATq.setShow(false);
-      AppMethodBeat.o(231337);
+      this.UhB = false;
+      this.Gvm.setShow(false);
+      AppMethodBeat.o(282404);
       return true;
     }
     boolean bool = super.onBackPress();
-    AppMethodBeat.o(231337);
+    AppMethodBeat.o(282404);
     return bool;
+  }
+  
+  public final void qU(long paramLong)
+  {
+    AppMethodBeat.i(282414);
+    if (this.Gvm.cvt()) {
+      hTF().setProgress(paramLong);
+    }
+    AppMethodBeat.o(282414);
   }
   
   public final void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(231333);
+    AppMethodBeat.i(282397);
     super.setVisibility(paramInt);
     if (paramInt == 8)
     {
-      this.Nuj = false;
-      this.ATq.setShow(false);
+      this.UhB = false;
+      this.Gvm.setShow(false);
     }
-    AppMethodBeat.o(231333);
+    AppMethodBeat.o(282397);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    extends q
+    extends u
     implements kotlin.g.a.a<ImageView>
   {
     a(h paramh)
@@ -140,48 +166,32 @@ public final class h
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    implements View.OnClickListener
+    extends u
+    implements kotlin.g.a.b<Boolean, ah>
   {
-    b(h paramh) {}
-    
-    public final void onClick(View paramView)
+    b(h paramh)
     {
-      AppMethodBeat.i(225857);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/timelineeditor/TimelineEditorTrackEditPlugin$checkInit$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      h.a(this.NEt, h.b(this.NEt));
-      h.b(this.NEt, h.d(this.NEt));
-      this.NEt.ATq.setShow(false);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/timelineeditor/TimelineEditorTrackEditPlugin$checkInit$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(225857);
+      super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    implements View.OnClickListener
+    extends u
+    implements kotlin.g.a.a<TextView>
   {
-    c(h paramh) {}
-    
-    public final void onClick(View paramView)
+    c(h paramh)
     {
-      AppMethodBeat.i(247467);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/timelineeditor/TimelineEditorTrackEditPlugin$checkInit$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      this.NEt.ATq.setShow(false);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/timelineeditor/TimelineEditorTrackEditPlugin$checkInit$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(247467);
+      super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    extends q
-    implements kotlin.g.a.b<Boolean, x>
+    extends u
+    implements kotlin.g.a.a<ImageView>
   {
     d(h paramh)
     {
@@ -189,21 +199,60 @@ public final class h
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class e
-    extends q
-    implements kotlin.g.a.a<TextView>
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/vlog/ui/timelineeditor/TimelineEditorTrackEditPlugin$onCropCallback$1", "Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackCropView$OnCropCallback;", "onCrop", "", "start", "", "end", "onUpdate", "pause", "seekTo", "time", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class e
+    implements TrackCropView.a
   {
-    e(h paramh)
+    e(h paramh, com.tencent.mm.plugin.recordvideo.plugin.parent.a parama) {}
+    
+    public final void bA(long paramLong1, long paramLong2)
     {
-      super();
+      AppMethodBeat.i(282059);
+      h.a(this.UqG, paramLong1);
+      h.b(this.UqG, paramLong2);
+      h.d(this.UqG);
+      AppMethodBeat.o(282059);
+    }
+    
+    public final void bz(long paramLong1, long paramLong2)
+    {
+      AppMethodBeat.i(282063);
+      Log.i(h.e(this.UqG), "onScrollStateChanged: " + paramLong1 + ", " + paramLong2);
+      Bundle localBundle = new Bundle();
+      h.a(this.UqG, paramLong1);
+      h.b(this.UqG, paramLong2);
+      h.d(this.UqG);
+      localBundle.putLong("EDIT_VLOG_TRACK_CROP_START", paramLong1);
+      localBundle.putLong("EDIT_VLOG_TRAKC_CROP_END", paramLong2);
+      parama.a(a.c.NPx, localBundle);
+      AppMethodBeat.o(282063);
+    }
+    
+    public final void pause()
+    {
+      AppMethodBeat.i(282068);
+      a.b.a(parama, a.c.NOL);
+      AppMethodBeat.o(282068);
+    }
+    
+    public final void seekTo(long paramLong)
+    {
+      AppMethodBeat.i(282073);
+      if (System.currentTimeMillis() - h.f(this.UqG) > 15L)
+      {
+        h.c(this.UqG, System.currentTimeMillis());
+        Bundle localBundle = new Bundle();
+        localBundle.putLong("PARAM_1_LONG", paramLong);
+        parama.a(a.c.NOp, localBundle);
+      }
+      AppMethodBeat.o(282073);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/view/ViewGroup;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class f
-    extends q
-    implements kotlin.g.a.a<ImageView>
+    extends u
+    implements kotlin.g.a.a<ViewGroup>
   {
     f(h paramh)
     {
@@ -211,71 +260,12 @@ public final class h
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/vlog/ui/timelineeditor/TimelineEditorTrackEditPlugin$onCropCallback$1", "Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackCropView$OnCropCallback;", "onCrop", "", "start", "", "end", "onUpdate", "pause", "seekTo", "time", "plugin-vlog_release"})
-  public static final class g
-    implements TrackCropView.a
-  {
-    public final void aN(long paramLong1, long paramLong2)
-    {
-      AppMethodBeat.i(229134);
-      Log.i(h.g(this.NEt), "onScrollStateChanged: " + paramLong1 + ", " + paramLong2);
-      Bundle localBundle = new Bundle();
-      h.a(this.NEt, paramLong1);
-      h.b(this.NEt, paramLong2);
-      h.f(this.NEt);
-      localBundle.putLong("EDIT_VLOG_TRACK_CROP_START", paramLong1);
-      localBundle.putLong("EDIT_VLOG_TRAKC_CROP_END", paramLong2);
-      this.NEt.APl.a(com.tencent.mm.plugin.recordvideo.plugin.parent.d.c.HSR, localBundle);
-      AppMethodBeat.o(229134);
-    }
-    
-    public final void aO(long paramLong1, long paramLong2)
-    {
-      AppMethodBeat.i(229132);
-      h.a(this.NEt, paramLong1);
-      h.b(this.NEt, paramLong2);
-      h.f(this.NEt);
-      AppMethodBeat.o(229132);
-    }
-    
-    public final void pause()
-    {
-      AppMethodBeat.i(229135);
-      d.b.a(this.NEt.APl, com.tencent.mm.plugin.recordvideo.plugin.parent.d.c.HSf);
-      AppMethodBeat.o(229135);
-    }
-    
-    public final void seekTo(long paramLong)
-    {
-      AppMethodBeat.i(229136);
-      if (System.currentTimeMillis() - h.h(this.NEt) > 15L)
-      {
-        h.c(this.NEt, System.currentTimeMillis());
-        Bundle localBundle = new Bundle();
-        localBundle.putLong("PARAM_1_LONG", paramLong);
-        this.NEt.APl.a(com.tencent.mm.plugin.recordvideo.plugin.parent.d.c.HRJ, localBundle);
-      }
-      AppMethodBeat.o(229136);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/ViewGroup;", "invoke"})
-  static final class h
-    extends q
-    implements kotlin.g.a.a<ViewGroup>
-  {
-    h(h paramh)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackCropView;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class i
-    extends q
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackCropView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class g
+    extends u
     implements kotlin.g.a.a<TrackCropView>
   {
-    i(h paramh)
+    g(h paramh)
     {
       super();
     }
@@ -283,7 +273,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.timelineeditor.h
  * JD-Core Version:    0.7.0.1
  */

@@ -312,13 +312,13 @@ public class MatrixCursor
     return false;
   }
   
-  public RowBuilder newRow()
+  public MatrixCursor.RowBuilder newRow()
   {
     AppMethodBeat.i(2858);
     this.rowCount += 1;
     int i = this.rowCount * this.columnCount;
     ensureCapacity(i);
-    RowBuilder localRowBuilder = new RowBuilder(i - this.columnCount, i);
+    MatrixCursor.RowBuilder localRowBuilder = new MatrixCursor.RowBuilder(this, i - this.columnCount, i);
     AppMethodBeat.o(2858);
     return localRowBuilder;
   }
@@ -330,39 +330,10 @@ public class MatrixCursor
   public void unregisterContentObserver(ContentObserver paramContentObserver) {}
   
   public void unregisterDataSetObserver(DataSetObserver paramDataSetObserver) {}
-  
-  public class RowBuilder
-  {
-    private final int endIndex;
-    private int index;
-    
-    RowBuilder(int paramInt1, int paramInt2)
-    {
-      this.index = paramInt1;
-      this.endIndex = paramInt2;
-    }
-    
-    public RowBuilder add(Object paramObject)
-    {
-      AppMethodBeat.i(2855);
-      if (this.index == this.endIndex)
-      {
-        paramObject = new CursorIndexOutOfBoundsException("No more columns left.");
-        AppMethodBeat.o(2855);
-        throw paramObject;
-      }
-      Object[] arrayOfObject = MatrixCursor.this.data;
-      int i = this.index;
-      this.index = (i + 1);
-      arrayOfObject[i] = paramObject;
-      AppMethodBeat.o(2855);
-      return this;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wcdb.MatrixCursor
  * JD-Core Version:    0.7.0.1
  */

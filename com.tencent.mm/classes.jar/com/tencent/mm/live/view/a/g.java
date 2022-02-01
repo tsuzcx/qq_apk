@@ -1,60 +1,65 @@
 package com.tencent.mm.live.view.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/view/adapter/MembersData;", "", "username", "", "(Ljava/lang/String;)V", "getUsername", "()Ljava/lang/String;", "setUsername", "component1", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-logic_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/view/adapter/ShareRoomItem;", "", "username", "", "memberCount", "", "(Ljava/lang/String;I)V", "getMemberCount", "()I", "setMemberCount", "(I)V", "getUsername", "()Ljava/lang/String;", "setUsername", "(Ljava/lang/String;)V", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "plugin-logic_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class g
 {
+  int hQS;
   String username;
   
-  public g(String paramString)
+  public g(String paramString, int paramInt)
   {
-    AppMethodBeat.i(201865);
+    AppMethodBeat.i(246197);
     this.username = paramString;
-    AppMethodBeat.o(201865);
+    this.hQS = paramInt;
+    AppMethodBeat.o(246197);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(201872);
-    if (this != paramObject)
+    AppMethodBeat.i(246220);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof g))
-      {
-        paramObject = (g)paramObject;
-        if (!p.h(this.username, paramObject.username)) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(201872);
+      AppMethodBeat.o(246220);
       return true;
     }
-    AppMethodBeat.o(201872);
-    return false;
+    if (!(paramObject instanceof g))
+    {
+      AppMethodBeat.o(246220);
+      return false;
+    }
+    paramObject = (g)paramObject;
+    if (!s.p(this.username, paramObject.username))
+    {
+      AppMethodBeat.o(246220);
+      return false;
+    }
+    if (this.hQS != paramObject.hQS)
+    {
+      AppMethodBeat.o(246220);
+      return false;
+    }
+    AppMethodBeat.o(246220);
+    return true;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(201871);
-    String str = this.username;
-    if (str != null)
-    {
-      int i = str.hashCode();
-      AppMethodBeat.o(201871);
-      return i;
-    }
-    AppMethodBeat.o(201871);
-    return 0;
+    AppMethodBeat.i(246207);
+    int i = this.username.hashCode();
+    int j = this.hQS;
+    AppMethodBeat.o(246207);
+    return i * 31 + j;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(201869);
-    String str = "MembersData(username=" + this.username + ")";
-    AppMethodBeat.o(201869);
+    AppMethodBeat.i(246202);
+    String str = "ShareRoomItem(username=" + this.username + ", memberCount=" + this.hQS + ')';
+    AppMethodBeat.o(246202);
     return str;
   }
 }

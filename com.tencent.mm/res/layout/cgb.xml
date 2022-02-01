@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/k5_" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout android:gravity="center_vertical" android:paddingLeft="0.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/j5" android:layout_marginTop="@dimen/j6"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bx">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/k5d" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:src="@raw/icons_outlined_error" app:iconColor="@color/q5" />
-        <TextView android:textSize="22.0dip" android:textColor="@color/FG_0" android:id="@id/k5e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" />
-        <TextView android:textSize="17.0dip" android:textColor="@color/FG_0" android:gravity="center" android:id="@id/k5c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:layout_marginTop="@dimen/cc" android:layout_marginRight="@dimen/ci" />
-    </LinearLayout>
-    <TextView android:textSize="@dimen/cb" android:textColor="@color/Brand" android:gravity="center" android:id="@id/d4y" android:background="@drawable/cw6" android:layout_width="@dimen/c8" android:layout_height="@dimen/cl" android:layout_marginBottom="@dimen/c2" android:text="@string/e2u" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/lim" android:layout_width="@dimen/iy" android:layout_height="@dimen/iy" android:layout_marginTop="@dimen/j6" android:layout_marginRight="@dimen/j6" android:layout_marginBottom="@dimen/j6" />
+    <TextView android:textSize="@dimen/j7" android:textColor="#ff535353" android:gravity="center|left" android:id="@id/lio" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/a0t" android:layout_weight="1.0" />
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/hi" android:gravity="center|right" android:id="@id/li8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/m0" android:text="@string/a0t" style="@style/lh" />
+    <CheckBox android:textSize="@dimen/hq" android:textColor="@color/xo" android:gravity="center|right" android:layout_gravity="center|left" android:id="@id/l5" android:paddingLeft="@dimen/i9" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/m0" android:text="@string/kzy" android:drawablePadding="@dimen/g" style="@style/ov" />
+</LinearLayout>

@@ -3,26 +3,26 @@ package com.tencent.mm.plugin.sns.model;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import androidx.h.a.a;
+import androidx.i.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class AdlandingRemoteServiceConnectedReceiver
   extends BroadcastReceiver
 {
-  private Runnable fKd;
+  private Runnable hPJ;
   
   public static void a(a parama)
   {
-    AppMethodBeat.i(195929);
-    parama.c(new Intent("com.tencnet.mm.action.adlanding.connected"));
-    AppMethodBeat.o(195929);
+    AppMethodBeat.i(309508);
+    parama.d(new Intent("com.tencnet.mm.action.adlanding.connected"));
+    AppMethodBeat.o(309508);
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(95411);
-    if ((paramIntent != null) && ("com.tencnet.mm.action.adlanding.connected".equals(paramIntent.getAction())) && (this.fKd != null)) {
-      this.fKd.run();
+    if ((paramIntent != null) && ("com.tencnet.mm.action.adlanding.connected".equals(paramIntent.getAction())) && (this.hPJ != null)) {
+      this.hPJ.run();
     }
     AppMethodBeat.o(95411);
   }

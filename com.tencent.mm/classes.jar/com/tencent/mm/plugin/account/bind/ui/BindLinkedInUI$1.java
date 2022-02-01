@@ -12,7 +12,7 @@ final class BindLinkedInUI$1
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(109815);
-    BindLinkedInUI.a(this.mRO);
+    BindLinkedInUI.a(this.pOv);
     AppMethodBeat.o(109815);
   }
 }

@@ -32,23 +32,23 @@ public class WebViewJSSDKVoiceItem
     return 0;
   }
   
-  public final WebViewJSSDKFileItem gVL()
+  public final String getFileType()
+  {
+    return "voice";
+  }
+  
+  public final WebViewJSSDKFileItem kLS()
   {
     AppMethodBeat.i(79026);
-    this.nVa = s.getFullPath(this.fileName);
-    this.fCM = az.bkS(this.nVa);
+    this.qUK = s.getFullPath(this.fileName);
+    this.hHB = az.bkB(this.qUK);
     AppMethodBeat.o(79026);
     return this;
   }
   
-  public final String gVM()
+  public final String kLT()
   {
     return "speex";
-  }
-  
-  public final String getFileType()
-  {
-    return "voice";
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

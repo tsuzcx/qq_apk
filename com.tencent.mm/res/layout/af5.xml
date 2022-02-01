@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/cwh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/adk" />
-    <include android:id="@id/k57" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/cgj" />
-    <ProgressBar android:id="@id/cr7" android:visibility="gone" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:indeterminateDrawable="@drawable/apb" android:layout_centerInParent="true" />
-</RelativeLayout>
+    <TextView android:id="@id/ay6" android:background="@color/a1e" android:paddingLeft="@dimen/cp" android:paddingRight="@dimen/e" android:visibility="gone" android:layout_width="fill_parent" android:layout_alignParentStart="true" style="@style/nb" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/fa8" android:background="@drawable/p5" android:paddingLeft="@dimen/cp" android:layout_width="fill_parent" android:layout_height="@dimen/d_">
+        <com.tencent.mm.ui.base.MaskLayout android:id="@id/zh" android:layout_width="@dimen/d6" android:layout_height="@dimen/d6">
+            <ImageView android:id="@id/br7" android:layout_width="@dimen/d4" android:layout_height="@dimen/d4" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
+        </com.tencent.mm.ui.base.MaskLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/zg" android:background="@drawable/abu" android:paddingRight="@dimen/cp" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/d_" android:layout_weight="1.0">
+            <com.tencent.mm.ui.base.EllipsizeTextView android:ellipsize="end" android:gravity="center|left" android:id="@id/zi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m7" android:text="{nick}" android:singleLine="true" style="@style/ma" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

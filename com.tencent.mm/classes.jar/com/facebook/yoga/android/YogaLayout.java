@@ -484,7 +484,7 @@ public class YogaLayout
   
   public void addView(View paramView, YogaNode paramYogaNode)
   {
-    AppMethodBeat.i(219247);
+    AppMethodBeat.i(208217);
     this.mYogaNode.setMeasureFunction(null);
     if (!(paramView instanceof YogaLayout))
     {
@@ -494,7 +494,7 @@ public class YogaLayout
     this.mYogaNodes.put(paramView, paramYogaNode);
     this.mYogaNode.addChildAt(paramYogaNode, this.mYogaNode.getChildCount());
     super.addView(paramView, getChildCount(), new LayoutParams(-1, -1));
-    AppMethodBeat.o(219247);
+    AppMethodBeat.o(208217);
   }
   
   protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
@@ -775,7 +775,7 @@ public class YogaLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.facebook.yoga.android.YogaLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -63,7 +63,6 @@ public class TMAssistantDownloadSDKService
             TMLog.i("TMAssistantDownloadSDKService", "OnDownloadProgressChanged,clientKey:" + paramString1 + ",receivedLen:" + paramLong1 + ",url:" + paramString2);
             localITMAssistantDownloadSDKServiceCallback.OnDownloadSDKServiceTaskProgressChanged(paramString1, paramString2, paramLong1, paramLong2);
             this.mCallbacks.finishBroadcast();
-            AppMethodBeat.o(102041);
             return;
           }
         }
@@ -74,7 +73,7 @@ public class TMAssistantDownloadSDKService
       }
       return;
     }
-    catch (Throwable paramString1)
+    finally
     {
       AppMethodBeat.o(102041);
     }
@@ -99,7 +98,6 @@ public class TMAssistantDownloadSDKService
             TMLog.i("TMAssistantDownloadSDKService", "OnDownloadStateChanged,clientKey:" + paramString1 + ",state:" + paramInt1 + ",url:" + paramString2);
             localITMAssistantDownloadSDKServiceCallback.OnDownloadSDKServiceTaskStateChanged(paramString1, paramString2, paramInt1, paramInt2, paramString3, paramBoolean1, paramBoolean2);
             this.mCallbacks.finishBroadcast();
-            AppMethodBeat.o(102040);
             return;
           }
         }
@@ -110,7 +108,7 @@ public class TMAssistantDownloadSDKService
       }
       return;
     }
-    catch (Throwable paramString1)
+    finally
     {
       AppMethodBeat.o(102040);
     }
@@ -156,8 +154,8 @@ public class TMAssistantDownloadSDKService
     SystemClock.sleep(300L);
     com.tencent.mm.hellhoundlib.b.a locala = c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
     Object localObject = new Object();
-    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aFh(), "com/tencent/tmassistantsdk/downloadservice/TMAssistantDownloadSDKService", "onDestroy", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
-    Process.killProcess(((Integer)locala.sf(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/tmassistantsdk/downloadservice/TMAssistantDownloadSDKService", "onDestroy", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+    Process.killProcess(((Integer)locala.sb(0)).intValue());
     com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/tmassistantsdk/downloadservice/TMAssistantDownloadSDKService", "onDestroy", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
     AppMethodBeat.o(102039);
   }
@@ -313,7 +311,7 @@ public class TMAssistantDownloadSDKService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadservice.TMAssistantDownloadSDKService
  * JD-Core Version:    0.7.0.1
  */

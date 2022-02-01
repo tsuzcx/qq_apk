@@ -1,34 +1,39 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 final class LuckyMoneyNotHookReceiveUI$13
-  implements View.OnClickListener
+  implements Runnable
 {
   LuckyMoneyNotHookReceiveUI$13(LuckyMoneyNotHookReceiveUI paramLuckyMoneyNotHookReceiveUI) {}
   
-  public final void onClick(View paramView)
+  public final void run()
   {
-    AppMethodBeat.i(65736);
-    b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyNotHookReceiveUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    LuckyMoneyNotHookReceiveUI.e(this.ELl);
-    this.ELl.finish();
-    h.IzE.a(22105, new Object[] { Integer.valueOf(4), Long.valueOf(Util.ticksToNow(LuckyMoneyNotHookReceiveUI.f(this.ELl)) / 1000L) });
-    a.a(this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyNotHookReceiveUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(65736);
+    AppMethodBeat.i(284526);
+    Object localObject = (RelativeLayout.LayoutParams)LuckyMoneyNotHookReceiveUI.t(this.KFB).getLayoutParams();
+    float f = LuckyMoneyNotHookReceiveUI.u(this.KFB).getWidth() * 1.0993F;
+    ((RelativeLayout.LayoutParams)localObject).width = Math.round(f);
+    ((RelativeLayout.LayoutParams)localObject).height = Math.round(f * 1.72F);
+    LuckyMoneyNotHookReceiveUI.t(this.KFB).setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localObject = LuckyMoneyNotHookReceiveUI.u(this.KFB).getLayoutParams();
+    if (localObject != null)
+    {
+      ((ViewGroup.LayoutParams)localObject).width += (int)(a.getScaleSize(MMApplicationContext.getContext()) * 1.0F);
+      ((ViewGroup.LayoutParams)localObject).height -= (int)(a.getScaleSize(MMApplicationContext.getContext()) * 1.0F);
+      LuckyMoneyNotHookReceiveUI.u(this.KFB).setLayoutParams((ViewGroup.LayoutParams)localObject);
+    }
+    AppMethodBeat.o(284526);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyNotHookReceiveUI.13
  * JD-Core Version:    0.7.0.1
  */

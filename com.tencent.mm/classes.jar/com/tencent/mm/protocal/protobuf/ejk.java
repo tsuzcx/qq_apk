@@ -2,104 +2,71 @@ package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public class ejk
-  extends com.tencent.mm.cd.a
+public final class ejk
+  extends com.tencent.mm.bx.a
 {
-  public String TaD;
-  public int TxQ;
-  public String Ulx;
-  public int Uly;
-  public int Ulz;
-  public String UserName;
+  public String data;
+  public String wum;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(125773);
+    AppMethodBeat.i(114056);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.Ulx != null) {
-        paramVarArgs.f(1, this.Ulx);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.wum != null) {
+        paramVarArgs.g(1, this.wum);
       }
-      paramVarArgs.aY(2, this.Uly);
-      if (this.UserName != null) {
-        paramVarArgs.f(3, this.UserName);
+      if (this.data != null) {
+        paramVarArgs.g(2, this.data);
       }
-      if (this.TaD != null) {
-        paramVarArgs.f(4, this.TaD);
-      }
-      paramVarArgs.aY(5, this.TxQ);
-      paramVarArgs.aY(6, this.Ulz);
-      AppMethodBeat.o(125773);
+      AppMethodBeat.o(114056);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Ulx == null) {
-        break label470;
+      if (this.wum == null) {
+        break label270;
       }
     }
-    label470:
-    for (paramInt = g.a.a.b.b.a.g(1, this.Ulx) + 0;; paramInt = 0)
+    label270:
+    for (paramInt = i.a.a.b.b.a.h(1, this.wum) + 0;; paramInt = 0)
     {
-      int i = paramInt + g.a.a.b.b.a.bM(2, this.Uly);
-      paramInt = i;
-      if (this.UserName != null) {
-        paramInt = i + g.a.a.b.b.a.g(3, this.UserName);
+      int i = paramInt;
+      if (this.data != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.data);
       }
-      i = paramInt;
-      if (this.TaD != null) {
-        i = paramInt + g.a.a.b.b.a.g(4, this.TaD);
-      }
-      paramInt = g.a.a.b.b.a.bM(5, this.TxQ);
-      int j = g.a.a.b.b.a.bM(6, this.Ulz);
-      AppMethodBeat.o(125773);
-      return i + paramInt + j;
+      AppMethodBeat.o(114056);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(125773);
+        AppMethodBeat.o(114056);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         ejk localejk = (ejk)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(125773);
+          AppMethodBeat.o(114056);
           return -1;
         case 1: 
-          localejk.Ulx = locala.abFh.readString();
-          AppMethodBeat.o(125773);
-          return 0;
-        case 2: 
-          localejk.Uly = locala.abFh.AK();
-          AppMethodBeat.o(125773);
-          return 0;
-        case 3: 
-          localejk.UserName = locala.abFh.readString();
-          AppMethodBeat.o(125773);
-          return 0;
-        case 4: 
-          localejk.TaD = locala.abFh.readString();
-          AppMethodBeat.o(125773);
-          return 0;
-        case 5: 
-          localejk.TxQ = locala.abFh.AK();
-          AppMethodBeat.o(125773);
+          localejk.wum = locala.ajGk.readString();
+          AppMethodBeat.o(114056);
           return 0;
         }
-        localejk.Ulz = locala.abFh.AK();
-        AppMethodBeat.o(125773);
+        localejk.data = locala.ajGk.readString();
+        AppMethodBeat.o(114056);
         return 0;
       }
-      AppMethodBeat.o(125773);
+      AppMethodBeat.o(114056);
       return -1;
     }
   }

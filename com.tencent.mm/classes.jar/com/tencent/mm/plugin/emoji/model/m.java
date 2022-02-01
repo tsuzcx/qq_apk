@@ -1,94 +1,80 @@
 package com.tencent.mm.plugin.emoji.model;
 
-import android.content.Context;
-import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.b.g;
-import com.tencent.mm.f.a.gy;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IListener;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.plugin.emoji.a.a.f;
+import com.tencent.mm.protocal.protobuf.anh;
+import com.tencent.mm.protocal.protobuf.anj;
+import com.tencent.mm.protocal.protobuf.cjb;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.storage.emotion.f;
-import com.tencent.mm.vfs.q;
-import com.tencent.mm.vfs.u;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.mm.storage.emotion.EmojiGroupInfo;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class m
 {
-  Set<String> uEC;
-  IListener<gy> uED;
-  private i.a uEE;
+  public int xMT;
+  public List<f> xMU;
+  public anh xMV;
+  public List<anh> xMW;
+  public List<anj> xMX;
+  public List<anj> xMY;
   
-  public m()
+  public final void Kq(int paramInt)
   {
-    AppMethodBeat.i(108591);
-    this.uED = new IListener() {};
-    this.uEE = new i.a()
+    this.xMT += paramInt;
+  }
+  
+  public final void dzS()
+  {
+    AppMethodBeat.i(108587);
+    if (this.xMY == null)
     {
-      public final void a(boolean paramAnonymousBoolean, EmojiInfo paramAnonymousEmojiInfo)
+      AppMethodBeat.o(108587);
+      return;
+    }
+    if (this.xMY.isEmpty())
+    {
+      AppMethodBeat.o(108587);
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(this.xMY);
+    int i = localArrayList.size() - 1;
+    while (i >= 0)
+    {
+      this.xMU.add(0, new f((anj)localArrayList.get(i)));
+      this.xMT += 1;
+      this.xMY.remove(localArrayList.get(i));
+      i -= 1;
+    }
+    AppMethodBeat.o(108587);
+  }
+  
+  public final void fb(List<f> paramList)
+  {
+    AppMethodBeat.i(108588);
+    if (this.xMU == null) {
+      this.xMU = new ArrayList();
+    }
+    for (;;)
+    {
+      this.xMU.addAll(paramList);
+      AppMethodBeat.o(108588);
+      return;
+      int i = this.xMU.size() - 1;
+      if ((i >= 0) && (i < this.xMU.size()))
       {
-        AppMethodBeat.i(108590);
-        if ((paramAnonymousEmojiInfo != null) && (paramAnonymousBoolean) && (!Util.isNullOrNil(paramAnonymousEmojiInfo.field_md5)) && (m.this.uEC.remove(paramAnonymousEmojiInfo.getMd5())))
-        {
-          Log.i("MicroMsg.FTS.FTSEmojiLogic", "emojiServiceCallback onDownload %s", new Object[] { paramAnonymousEmojiInfo.getMd5() });
-          gy localgy = new gy();
-          localgy.fDw.fvK = 2;
-          localgy.fDw.fDy = paramAnonymousEmojiInfo.field_designerID;
-          localgy.fDw.name = paramAnonymousEmojiInfo.field_name;
-          localgy.fDw.aeskey = paramAnonymousEmojiInfo.field_aeskey;
-          localgy.fDw.fDz = paramAnonymousEmojiInfo.field_encrypturl;
-          localgy.fDw.thumbUrl = paramAnonymousEmojiInfo.field_thumbUrl;
-          localgy.fDw.md5 = paramAnonymousEmojiInfo.field_md5;
-          localgy.fDw.productId = paramAnonymousEmojiInfo.field_groupId;
-          Object localObject = paramAnonymousEmojiInfo.ifh();
-          EmojiInfo localEmojiInfo = p.getEmojiStorageMgr().VFH.bxK(paramAnonymousEmojiInfo.getMd5());
-          if ((localEmojiInfo != null) && ((localEmojiInfo.field_reserved4 & EmojiInfo.ZuM) == EmojiInfo.ZuM))
-          {
-            if (MMApplicationContext.getContext().getExternalCacheDir() == null)
-            {
-              AppMethodBeat.o(108590);
-              return;
-            }
-            paramAnonymousEmojiInfo = new q(MMApplicationContext.getContext().getExternalCacheDir(), g.getMessageDigest(paramAnonymousEmojiInfo.getMd5().getBytes())).bOF();
-            if ((u.agG((String)localObject)) && (!u.agG(paramAnonymousEmojiInfo)))
-            {
-              localObject = ((com.tencent.mm.plugin.emoji.b.d)h.ag(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().a(localEmojiInfo);
-              if (localObject == null) {
-                break label309;
-              }
-              u.F(paramAnonymousEmojiInfo, (byte[])localObject);
-            }
-          }
-          for (localgy.fDx.path = paramAnonymousEmojiInfo;; localgy.fDx.path = ((String)localObject))
-          {
-            EventCenter.instance.asyncPublish(localgy, Looper.getMainLooper());
-            AppMethodBeat.o(108590);
-            return;
-            label309:
-            Log.w("MicroMsg.FTS.FTSEmojiLogic", "onDownload: decrypt failed");
-            break;
-          }
+        f localf = (f)this.xMU.get(i);
+        if ((localf != null) && (localf.xHE != null) && (!Util.isNullOrNil(localf.xHE.ProductID)) && (localf.xHE.ProductID.equals(EmojiGroupInfo.aklD))) {
+          this.xMU.remove(localf);
         }
-        Log.i("MicroMsg.FTS.FTSEmojiLogic", "somethings error.");
-        AppMethodBeat.o(108590);
       }
-    };
-    this.uEC = Collections.synchronizedSet(new HashSet());
-    p.cUM().uEk = this.uEE;
-    this.uED.alive();
-    AppMethodBeat.o(108591);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.model.m
  * JD-Core Version:    0.7.0.1
  */

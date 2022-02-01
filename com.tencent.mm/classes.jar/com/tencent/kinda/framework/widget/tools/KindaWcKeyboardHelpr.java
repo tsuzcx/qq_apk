@@ -16,7 +16,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.wallet_core.keyboard.WcPayKeyboard;
-import com.tencent.mm.wallet_core.ui.g;
+import com.tencent.mm.wallet_core.ui.i;
 
 public class KindaWcKeyboardHelpr
 {
@@ -24,8 +24,8 @@ public class KindaWcKeyboardHelpr
   
   public static WcPayKeyboard bind(UIPageFragmentActivity paramUIPageFragmentActivity, final EditText paramEditText, String paramString, final BaseFrActivity.IWalletTenpayKBStateCallBackListener paramIWalletTenpayKBStateCallBackListener)
   {
-    AppMethodBeat.i(264177);
-    final WcPayKeyboard localWcPayKeyboard = (WcPayKeyboard)paramUIPageFragmentActivity.jSp.getCurrent().findViewById(R.id.wc_pay_keyboard);
+    AppMethodBeat.i(226450);
+    final WcPayKeyboard localWcPayKeyboard = (WcPayKeyboard)paramUIPageFragmentActivity.msG.getCurrent().findViewById(R.id.wc_pay_keyboard);
     if (localWcPayKeyboard != null) {
       Log.i(TAG, "has exist keyboard");
     }
@@ -34,22 +34,22 @@ public class KindaWcKeyboardHelpr
       if (!Util.isNullOrNil(paramString)) {
         localWcPayKeyboard.setActionText(paramString);
       }
-      g.setNoSystemInputOnEditText(paramEditText);
+      i.setNoSystemInputOnEditText(paramEditText);
       paramEditText.setOnFocusChangeListener(new View.OnFocusChangeListener()
       {
         private boolean firstTime = true;
         
-        public final void onFocusChange(final View paramAnonymousView, boolean paramAnonymousBoolean)
+        public void onFocusChange(final View paramAnonymousView, boolean paramAnonymousBoolean)
         {
-          AppMethodBeat.i(264061);
+          AppMethodBeat.i(226459);
           if (paramAnonymousBoolean)
           {
-            ((InputMethodManager)this.val$activity.getSystemService("input_method")).hideSoftInputFromWindow(paramAnonymousView.getWindowToken(), 0);
+            ((InputMethodManager)KindaWcKeyboardHelpr.this.getSystemService("input_method")).hideSoftInputFromWindow(paramAnonymousView.getWindowToken(), 0);
             new MMHandler().postDelayed(new Runnable()
             {
               public void run()
               {
-                AppMethodBeat.i(264065);
+                AppMethodBeat.i(226452);
                 if ((!KindaWcKeyboardHelpr.1.this.val$finalKeyboard.isShown()) && (paramAnonymousView.isShown()))
                 {
                   KindaWcKeyboardHelpr.1.this.val$finalKeyboard.showNormalStWcKb();
@@ -57,8 +57,8 @@ public class KindaWcKeyboardHelpr
                   KindaWcKeyboardHelpr.1.access$002(KindaWcKeyboardHelpr.1.this, false);
                 }
                 KindaWcKeyboardHelpr.1.this.val$finalKeyboard.setInputEditText(KindaWcKeyboardHelpr.1.this.val$editText);
-                ((InputMethodManager)KindaWcKeyboardHelpr.1.this.val$activity.getSystemService("input_method")).hideSoftInputFromWindow(paramAnonymousView.getWindowToken(), 0);
-                AppMethodBeat.o(264065);
+                ((InputMethodManager)KindaWcKeyboardHelpr.this.getSystemService("input_method")).hideSoftInputFromWindow(paramAnonymousView.getWindowToken(), 0);
+                AppMethodBeat.o(226452);
               }
             }, 200L);
           }
@@ -67,30 +67,30 @@ public class KindaWcKeyboardHelpr
             if (this.val$finalOrigFocusListener != null) {
               this.val$finalOrigFocusListener.onFocusChange(paramAnonymousView, paramAnonymousBoolean);
             }
-            AppMethodBeat.o(264061);
+            AppMethodBeat.o(226459);
             return;
             new MMHandler().postDelayed(new Runnable()
             {
               public void run()
               {
-                AppMethodBeat.i(264932);
+                AppMethodBeat.i(226442);
                 KindaWcKeyboardHelpr.1.this.val$finalKeyboard1.hideWcKb();
                 KindaWcKeyboardHelpr.1.this.val$keyboardListener.onCallBackKinda(false, 0.0F);
-                AppMethodBeat.o(264932);
+                AppMethodBeat.o(226442);
               }
             }, 200L);
           }
         }
       });
-      AppMethodBeat.o(264177);
+      AppMethodBeat.o(226450);
       return localWcPayKeyboard;
       localWcPayKeyboard = new WcPayKeyboard(paramUIPageFragmentActivity);
       localWcPayKeyboard.setId(R.id.wc_pay_keyboard);
-      FrameLayout localFrameLayout = (FrameLayout)paramUIPageFragmentActivity.jSp.getCurrent().findViewById(R.id.container_layout);
+      FrameLayout localFrameLayout = (FrameLayout)paramUIPageFragmentActivity.msG.getCurrent().findViewById(R.id.container_layout);
       if (localFrameLayout == null)
       {
         Log.w(TAG, "can not find content layout");
-        AppMethodBeat.o(264177);
+        AppMethodBeat.o(226450);
         return null;
       }
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -2);
@@ -102,7 +102,7 @@ public class KindaWcKeyboardHelpr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.tools.KindaWcKeyboardHelpr
  * JD-Core Version:    0.7.0.1
  */

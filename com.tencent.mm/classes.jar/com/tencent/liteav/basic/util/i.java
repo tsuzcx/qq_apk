@@ -14,14 +14,14 @@ public class i
   
   public i(String paramString)
   {
-    AppMethodBeat.i(240888);
+    AppMethodBeat.i(230120);
     paramString = new HandlerThread(paramString);
     this.c = true;
     paramString.start();
     this.b = paramString.getLooper();
     this.a = new Handler(this.b);
     this.d = paramString;
-    AppMethodBeat.o(240888);
+    AppMethodBeat.o(230120);
   }
   
   public Handler a()
@@ -31,12 +31,12 @@ public class i
   
   public void a(final Runnable paramRunnable)
   {
-    AppMethodBeat.i(240894);
+    AppMethodBeat.i(230157);
     final boolean[] arrayOfBoolean = new boolean[1];
     if (Thread.currentThread().equals(this.d))
     {
       paramRunnable.run();
-      AppMethodBeat.o(240894);
+      AppMethodBeat.o(230157);
       return;
     }
     Handler localHandler = this.a;
@@ -47,13 +47,13 @@ public class i
       {
         public void run()
         {
-          AppMethodBeat.i(241004);
+          AppMethodBeat.i(230158);
           paramRunnable.run();
           arrayOfBoolean[0] = true;
           synchronized (i.a(i.this))
           {
             i.a(i.this).notifyAll();
-            AppMethodBeat.o(241004);
+            AppMethodBeat.o(230158);
             return;
           }
         }
@@ -74,37 +74,37 @@ public class i
     }
     finally
     {
-      AppMethodBeat.o(240894);
+      AppMethodBeat.o(230157);
     }
   }
   
   public void a(Runnable paramRunnable, long paramLong)
   {
-    AppMethodBeat.i(240899);
+    AppMethodBeat.i(230171);
     this.a.postDelayed(paramRunnable, paramLong);
-    AppMethodBeat.o(240899);
+    AppMethodBeat.o(230171);
   }
   
   public void b(Runnable paramRunnable)
   {
-    AppMethodBeat.i(240896);
+    AppMethodBeat.i(230164);
     this.a.post(paramRunnable);
-    AppMethodBeat.o(240896);
+    AppMethodBeat.o(230164);
   }
   
   protected void finalize()
   {
-    AppMethodBeat.i(240891);
+    AppMethodBeat.i(230145);
     if (this.c) {
       this.a.getLooper().quit();
     }
     super.finalize();
-    AppMethodBeat.o(240891);
+    AppMethodBeat.o(230145);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.basic.util.i
  * JD-Core Version:    0.7.0.1
  */

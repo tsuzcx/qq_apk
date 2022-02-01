@@ -1,114 +1,51 @@
 package com.tencent.mm.plugin.sns.ad.adxml;
 
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ad.i.d;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.plugin.sns.ad.j.d;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Map;
 
 public class j
 {
-  public int JyE;
-  public int JyF;
-  public List<i> Jym;
+  public String PMS;
+  public int PMT;
+  public String PMU;
+  public String PMV;
+  public long endTime;
+  public String qWk;
+  public long startTime;
   
-  public static j H(Map<String, String> paramMap, String paramString)
+  public static j R(Map<String, String> paramMap, String paramString)
   {
-    AppMethodBeat.i(210010);
+    AppMethodBeat.i(309846);
     if (d.isEmpty(paramMap))
     {
-      AppMethodBeat.o(210010);
+      AppMethodBeat.o(309846);
       return null;
     }
-    for (;;)
+    Object localObject = (String)paramMap.get(paramString + ".endTime");
+    long l = Util.safeParseLong((String)localObject);
+    if ((TextUtils.isEmpty((CharSequence)localObject)) || (l == 0L))
     {
-      j localj;
-      int i;
-      try
-      {
-        localj = new j();
-        localj.Jym = I(paramMap, paramString + ".sliderCardList");
-        localj.JyE = localj.Jym.size();
-        localj.JyF = localj.JyE;
-        if ((localj.JyE > 0) && (localj.JyE <= 4)) {
-          if (localj.JyF < 6)
-          {
-            i = 0;
-            if (i >= localj.JyE) {
-              continue;
-            }
-            paramMap = (i)localj.Jym.get(i);
-            if (paramMap == null) {
-              break label211;
-            }
-            if (localj.JyE < 4)
-            {
-              paramMap = i.a(paramMap, localj.JyF);
-              if (paramMap != null)
-              {
-                localj.Jym.add(paramMap);
-                localj.JyF += 1;
-              }
-            }
-            else
-            {
-              localj.Jym.add(paramMap);
-              localj.JyF += 1;
-            }
-          }
-        }
-      }
-      catch (Throwable paramMap)
-      {
-        AppMethodBeat.o(210010);
-        return null;
-      }
-      AppMethodBeat.o(210010);
-      return localj;
-      label211:
-      i += 1;
+      AppMethodBeat.o(309846);
+      return null;
     }
-  }
-  
-  private static List<i> I(Map<String, String> paramMap, String paramString)
-  {
-    AppMethodBeat.i(210011);
-    String str = paramString + ".sliderCardItem";
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    StringBuilder localStringBuilder = new StringBuilder().append(str);
-    if (i == 0) {}
-    for (paramString = "";; paramString = Integer.valueOf(i))
-    {
-      paramString = paramString;
-      if (!paramMap.containsKey(paramString)) {
-        break label110;
-      }
-      paramString = i.G(paramMap, paramString);
-      if (paramString == null) {
-        break label110;
-      }
-      localArrayList.add(paramString);
-      i += 1;
-      break;
-    }
-    label110:
-    AppMethodBeat.o(210011);
-    return localArrayList;
-  }
-  
-  public final int aeI(int paramInt)
-  {
-    int i = paramInt;
-    if (this.JyE <= 4) {
-      i = paramInt % this.JyE;
-    }
-    return i;
+    localObject = new j();
+    ((j)localObject).endTime = (l * 1000L);
+    ((j)localObject).startTime = (Util.safeParseLong((String)paramMap.get(paramString + ".startTime")) * 1000L);
+    ((j)localObject).qWk = Util.nullAs((String)paramMap.get(paramString + ".barBgColor"), "");
+    ((j)localObject).PMS = Util.nullAs((String)paramMap.get(paramString + ".barBgAlpha"), "");
+    ((j)localObject).PMT = Util.safeParseInt((String)paramMap.get(paramString + ".leftTitleType"));
+    ((j)localObject).PMU = Util.nullAs((String)paramMap.get(paramString + ".leftTitle"), "");
+    ((j)localObject).PMV = Util.nullAs((String)paramMap.get(paramString + ".rightTitle"), "");
+    AppMethodBeat.o(309846);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.adxml.j
  * JD-Core Version:    0.7.0.1
  */

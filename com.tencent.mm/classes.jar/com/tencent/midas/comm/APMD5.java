@@ -8,7 +8,7 @@ public class APMD5
 {
   public static String parseByte2HexStr(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(253595);
+    AppMethodBeat.i(217155);
     StringBuffer localStringBuffer = new StringBuffer();
     int i = 0;
     while (i < paramArrayOfByte.length)
@@ -22,25 +22,25 @@ public class APMD5
       i += 1;
     }
     paramArrayOfByte = localStringBuffer.toString();
-    AppMethodBeat.o(253595);
+    AppMethodBeat.o(217155);
     return paramArrayOfByte;
   }
   
   public static String toMd5(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(253592);
+    AppMethodBeat.i(217145);
     try
     {
       MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
       localMessageDigest.reset();
       localMessageDigest.update(paramArrayOfByte);
       paramArrayOfByte = parseByte2HexStr(localMessageDigest.digest());
-      AppMethodBeat.o(253592);
+      AppMethodBeat.o(217145);
       return paramArrayOfByte;
     }
     catch (NoSuchAlgorithmException paramArrayOfByte)
     {
-      AppMethodBeat.o(253592);
+      AppMethodBeat.o(217145);
     }
     return null;
   }

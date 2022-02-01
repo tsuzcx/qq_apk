@@ -1,228 +1,281 @@
 package kotlin.l.b.a.b.e.c.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import kotlin.a.ae;
-import kotlin.a.j;
-import kotlin.a.x;
-import kotlin.a.y;
-import kotlin.g.b.p;
-import kotlin.k.i;
-import kotlin.l.b.a.b.e.b.c;
+import kotlin.a.p;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.e.a.h;
+import kotlin.l.b.a.b.e.a.k;
+import kotlin.l.b.a.b.e.a.m;
+import kotlin.l.b.a.b.e.a.p;
+import kotlin.l.b.a.b.e.a.t;
+import kotlin.l.b.a.b.e.b.b.a;
+import kotlin.l.b.a.b.e.b.e;
+import kotlin.l.b.a.b.e.c.a.a;
 import kotlin.l.b.a.b.e.c.a.d;
-import kotlin.l.b.a.b.e.c.a.d.b;
-import kotlin.l.b.a.b.e.c.a.d.b.b;
-import kotlin.l.b.a.b.h.d;
-import kotlin.n.n;
-import kotlin.t;
+import kotlin.l.b.a.b.h.i.c;
+import kotlin.l.b.a.b.h.i.e;
+import kotlin.r;
 
 public final class g
-  implements c
 {
-  private static final List<String> abfx;
-  private static final Map<String, Integer> abfy;
-  public static final a abfz;
-  private final String[] aaZg;
-  private final Set<Integer> abfv;
-  private final a.d abfw;
-  private final List<a.d.b> tVI;
+  public static final g ajem;
+  private static final kotlin.l.b.a.b.h.g ajen;
   
   static
   {
-    AppMethodBeat.i(59250);
-    abfz = new a((byte)0);
-    Object localObject1 = j.listOf(new String[] { "kotlin/Any", "kotlin/Nothing", "kotlin/Unit", "kotlin/Throwable", "kotlin/Number", "kotlin/Byte", "kotlin/Double", "kotlin/Float", "kotlin/Int", "kotlin/Long", "kotlin/Short", "kotlin/Boolean", "kotlin/Char", "kotlin/CharSequence", "kotlin/String", "kotlin/Comparable", "kotlin/Enum", "kotlin/Array", "kotlin/ByteArray", "kotlin/DoubleArray", "kotlin/FloatArray", "kotlin/IntArray", "kotlin/LongArray", "kotlin/ShortArray", "kotlin/BooleanArray", "kotlin/CharArray", "kotlin/Cloneable", "kotlin/Annotation", "kotlin/collections/Iterable", "kotlin/collections/MutableIterable", "kotlin/collections/Collection", "kotlin/collections/MutableCollection", "kotlin/collections/List", "kotlin/collections/MutableList", "kotlin/collections/Set", "kotlin/collections/MutableSet", "kotlin/collections/Map", "kotlin/collections/MutableMap", "kotlin/collections/Map.Entry", "kotlin/collections/MutableMap.MutableEntry", "kotlin/collections/Iterator", "kotlin/collections/MutableIterator", "kotlin/collections/ListIterator", "kotlin/collections/MutableListIterator" });
-    abfx = (List)localObject1;
-    Object localObject2 = j.s((Iterable)localObject1);
-    localObject1 = (Map)new LinkedHashMap(i.ov(ae.aDD(j.a((Iterable)localObject2, 10)), 16));
-    localObject2 = ((Iterable)localObject2).iterator();
-    while (((Iterator)localObject2).hasNext())
-    {
-      Object localObject3 = ((Iterator)localObject2).next();
-      ((Map)localObject1).put((String)((y)localObject3).value, Integer.valueOf(((y)localObject3).index));
-    }
-    abfy = (Map)localObject1;
-    AppMethodBeat.o(59250);
+    AppMethodBeat.i(59261);
+    ajem = new g();
+    kotlin.l.b.a.b.h.g localg = kotlin.l.b.a.b.h.g.kyf();
+    kotlin.l.b.a.b.e.c.a.a(localg);
+    s.s(localg, "newInstance().apply(JvmP…f::registerAllExtensions)");
+    ajen = localg;
+    AppMethodBeat.o(59261);
   }
   
-  public g(a.d paramd, String[] paramArrayOfString)
+  public static d.a a(a.m paramm, kotlin.l.b.a.b.e.b.c paramc, kotlin.l.b.a.b.e.b.g paramg, boolean paramBoolean)
   {
-    AppMethodBeat.i(59249);
-    this.abfw = paramd;
-    this.aaZg = paramArrayOfString;
-    paramd = this.abfw.abeU;
-    if (paramd.isEmpty()) {}
-    for (paramd = (Set)x.aaAf;; paramd = j.r((Iterable)paramd))
+    AppMethodBeat.i(59257);
+    s.u(paramm, "proto");
+    s.u(paramc, "nameResolver");
+    s.u(paramg, "typeTable");
+    Object localObject = (i.c)paramm;
+    i.e locale = kotlin.l.b.a.b.e.c.a.ajdo;
+    s.s(locale, "propertySignature");
+    localObject = (kotlin.l.b.a.b.e.c.a.c)e.a((i.c)localObject, locale);
+    if (localObject == null)
     {
-      this.abfv = paramd;
-      paramd = new ArrayList();
-      paramArrayOfString = this.abfw.abeT;
-      paramd.ensureCapacity(paramArrayOfString.size());
-      paramArrayOfString = paramArrayOfString.iterator();
-      while (paramArrayOfString.hasNext())
-      {
-        a.d.b localb = (a.d.b)paramArrayOfString.next();
-        p.j(localb, "record");
-        int j = localb.abeX;
-        int i = 0;
-        while (i < j)
-        {
-          paramd.add(localb);
-          i += 1;
-        }
+      AppMethodBeat.o(59257);
+      return null;
+    }
+    if (((kotlin.l.b.a.b.e.c.a.c)localObject).kxl()) {}
+    for (localObject = ((kotlin.l.b.a.b.e.c.a.c)localObject).ajdB; (localObject == null) && (paramBoolean); localObject = null)
+    {
+      AppMethodBeat.o(59257);
+      return null;
+    }
+    int i;
+    if ((localObject != null) && (((a.a)localObject).hasName()))
+    {
+      i = ((a.a)localObject).aiZC;
+      if ((localObject == null) || (!((a.a)localObject).kxa())) {
+        break label180;
+      }
+      paramm = paramc.getString(((a.a)localObject).ajdy);
+    }
+    label180:
+    do
+    {
+      paramm = new d.a(paramc.getString(i), paramm);
+      AppMethodBeat.o(59257);
+      return paramm;
+      i = paramm.aiZC;
+      break;
+      paramg = b(kotlin.l.b.a.b.e.b.f.a(paramm, paramg), paramc);
+      paramm = paramg;
+    } while (paramg != null);
+    AppMethodBeat.o(59257);
+    return null;
+  }
+  
+  public static d.b a(kotlin.l.b.a.b.e.a.c paramc, kotlin.l.b.a.b.e.b.c paramc1, kotlin.l.b.a.b.e.b.g paramg)
+  {
+    AppMethodBeat.i(59256);
+    s.u(paramc, "proto");
+    s.u(paramc1, "nameResolver");
+    s.u(paramg, "typeTable");
+    Object localObject1 = (i.c)paramc;
+    Object localObject2 = kotlin.l.b.a.b.e.c.a.ajdl;
+    s.s(localObject2, "constructorSignature");
+    localObject2 = (kotlin.l.b.a.b.e.c.a.b)e.a((i.c)localObject1, (i.e)localObject2);
+    if ((localObject2 != null) && (((kotlin.l.b.a.b.e.c.a.b)localObject2).hasName()))
+    {
+      localObject1 = paramc1.getString(((kotlin.l.b.a.b.e.c.a.b)localObject2).aiZC);
+      if ((localObject2 == null) || (!((kotlin.l.b.a.b.e.c.a.b)localObject2).kxa())) {
+        break label124;
       }
     }
-    paramd.trimToSize();
-    this.tVI = ((List)paramd);
-    AppMethodBeat.o(59249);
+    for (paramc = paramc1.getString(((kotlin.l.b.a.b.e.c.a.b)localObject2).ajdy);; paramc = p.a((Iterable)paramc, (CharSequence)"", (CharSequence)"(", (CharSequence)")V", 0, null, null, 56))
+    {
+      paramc = new d.b((String)localObject1, paramc);
+      AppMethodBeat.o(59256);
+      return paramc;
+      localObject1 = "<init>";
+      break;
+      label124:
+      paramc = paramc.aiZl;
+      s.s(paramc, "proto.valueParameterList");
+      localObject2 = (Iterable)paramc;
+      paramc = (Collection)new ArrayList(p.a((Iterable)localObject2, 10));
+      localObject2 = ((Iterable)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        Object localObject3 = (a.t)((Iterator)localObject2).next();
+        s.s(localObject3, "it");
+        localObject3 = b(kotlin.l.b.a.b.e.b.f.a((a.t)localObject3, paramg), paramc1);
+        if (localObject3 == null)
+        {
+          AppMethodBeat.o(59256);
+          return null;
+        }
+        paramc.add(localObject3);
+      }
+    }
   }
   
-  public final String aFf(int paramInt)
+  public static d.b a(a.h paramh, kotlin.l.b.a.b.e.b.c paramc, kotlin.l.b.a.b.e.b.g paramg)
   {
-    AppMethodBeat.i(59247);
-    String str = getString(paramInt);
-    AppMethodBeat.o(59247);
-    return str;
+    AppMethodBeat.i(59255);
+    s.u(paramh, "proto");
+    s.u(paramc, "nameResolver");
+    s.u(paramg, "typeTable");
+    Object localObject1 = (i.c)paramh;
+    Object localObject2 = kotlin.l.b.a.b.e.c.a.ajdm;
+    s.s(localObject2, "methodSignature");
+    localObject1 = (kotlin.l.b.a.b.e.c.a.b)e.a((i.c)localObject1, (i.e)localObject2);
+    int i;
+    if ((localObject1 != null) && (((kotlin.l.b.a.b.e.c.a.b)localObject1).hasName()))
+    {
+      i = ((kotlin.l.b.a.b.e.c.a.b)localObject1).aiZC;
+      if ((localObject1 == null) || (!((kotlin.l.b.a.b.e.c.a.b)localObject1).kxa())) {
+        break label128;
+      }
+    }
+    for (paramh = paramc.getString(((kotlin.l.b.a.b.e.c.a.b)localObject1).ajdy);; paramh = s.X(p.a((Iterable)localObject1, (CharSequence)"", (CharSequence)"(", (CharSequence)")", 0, null, null, 56), paramh))
+    {
+      paramh = new d.b(paramc.getString(i), paramh);
+      AppMethodBeat.o(59255);
+      return paramh;
+      i = paramh.aiZC;
+      break;
+      label128:
+      localObject1 = (Collection)p.hs(kotlin.l.b.a.b.e.b.f.b(paramh, paramg));
+      localObject2 = paramh.aiZl;
+      s.s(localObject2, "proto.valueParameterList");
+      Object localObject3 = (Iterable)localObject2;
+      localObject2 = (Collection)new ArrayList(p.a((Iterable)localObject3, 10));
+      localObject3 = ((Iterable)localObject3).iterator();
+      while (((Iterator)localObject3).hasNext())
+      {
+        a.t localt = (a.t)((Iterator)localObject3).next();
+        s.s(localt, "it");
+        ((Collection)localObject2).add(kotlin.l.b.a.b.e.b.f.a(localt, paramg));
+      }
+      localObject2 = (Iterable)p.b((Collection)localObject1, (Iterable)localObject2);
+      localObject1 = (Collection)new ArrayList(p.a((Iterable)localObject2, 10));
+      localObject2 = ((Iterable)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject3 = b((a.p)((Iterator)localObject2).next(), paramc);
+        if (localObject3 == null)
+        {
+          AppMethodBeat.o(59255);
+          return null;
+        }
+        ((Collection)localObject1).add(localObject3);
+      }
+      localObject1 = (List)localObject1;
+      paramh = b(kotlin.l.b.a.b.e.b.f.a(paramh, paramg), paramc);
+      if (paramh == null)
+      {
+        AppMethodBeat.o(59255);
+        return null;
+      }
+    }
   }
   
-  public final boolean aFg(int paramInt)
+  private static f a(InputStream paramInputStream, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(59248);
-    boolean bool = this.abfv.contains(Integer.valueOf(paramInt));
-    AppMethodBeat.o(59248);
+    AppMethodBeat.i(59254);
+    paramInputStream = a.d.f(paramInputStream, ajen);
+    s.s(paramInputStream, "parseDelimitedFrom(this, EXTENSION_REGISTRY)");
+    paramInputStream = new f(paramInputStream, paramArrayOfString);
+    AppMethodBeat.o(59254);
+    return paramInputStream;
+  }
+  
+  private static String b(a.p paramp, kotlin.l.b.a.b.e.b.c paramc)
+  {
+    AppMethodBeat.i(59259);
+    if (paramp.kvM())
+    {
+      paramp = b.bJc(paramc.aLW(paramp.ajaG));
+      AppMethodBeat.o(59259);
+      return paramp;
+    }
+    AppMethodBeat.o(59259);
+    return null;
+  }
+  
+  public static final r<f, kotlin.l.b.a.b.e.a.b> f(String[] paramArrayOfString1, String[] paramArrayOfString2)
+  {
+    AppMethodBeat.i(59251);
+    s.u(paramArrayOfString1, "data");
+    s.u(paramArrayOfString2, "strings");
+    paramArrayOfString1 = a.an(paramArrayOfString1);
+    s.s(paramArrayOfString1, "decodeBytes(data)");
+    s.u(paramArrayOfString1, "bytes");
+    s.u(paramArrayOfString2, "strings");
+    paramArrayOfString1 = new ByteArrayInputStream(paramArrayOfString1);
+    paramArrayOfString1 = new r(a((InputStream)paramArrayOfString1, paramArrayOfString2), kotlin.l.b.a.b.e.a.b.a((InputStream)paramArrayOfString1, ajen));
+    AppMethodBeat.o(59251);
+    return paramArrayOfString1;
+  }
+  
+  public static final boolean f(a.m paramm)
+  {
+    AppMethodBeat.i(59260);
+    s.u(paramm, "proto");
+    Object localObject = c.ajdZ;
+    localObject = c.kxJ();
+    paramm = paramm.e(kotlin.l.b.a.b.e.c.a.ajdp);
+    s.s(paramm, "proto.getExtension(JvmProtoBuf.flags)");
+    paramm = ((b.a)localObject).aLV(((Number)paramm).intValue());
+    s.s(paramm, "JvmFlags.IS_MOVED_FROM_I…nsion(JvmProtoBuf.flags))");
+    boolean bool = paramm.booleanValue();
+    AppMethodBeat.o(59260);
     return bool;
   }
   
-  public final String getString(int paramInt)
+  public static final r<f, a.k> g(String[] paramArrayOfString1, String[] paramArrayOfString2)
   {
-    AppMethodBeat.i(59246);
-    Object localObject3 = (a.d.b)this.tVI.get(paramInt);
-    if (((a.d.b)localObject3).iNi())
-    {
-      localObject1 = ((a.d.b)localObject3).abeZ;
-      if ((localObject1 instanceof String)) {
-        localObject1 = (String)localObject1;
-      }
-    }
-    Object localObject4;
-    int i;
-    for (;;)
-    {
-      localObject2 = localObject1;
-      if (((a.d.b)localObject3).abfb.size() < 2) {
-        break label338;
-      }
-      localObject2 = ((a.d.b)localObject3).abfb;
-      localObject4 = (Integer)((List)localObject2).get(0);
-      Integer localInteger = (Integer)((List)localObject2).get(1);
-      p.j(localObject4, "begin");
-      localObject2 = localObject1;
-      if (p.compare(0, ((Integer)localObject4).intValue()) > 0) {
-        break label338;
-      }
-      paramInt = ((Integer)localObject4).intValue();
-      p.j(localInteger, "end");
-      localObject2 = localObject1;
-      if (p.compare(paramInt, localInteger.intValue()) > 0) {
-        break label338;
-      }
-      localObject2 = localObject1;
-      if (p.compare(localInteger.intValue(), ((String)localObject1).length()) > 0) {
-        break label338;
-      }
-      p.j(localObject1, "string");
-      paramInt = ((Integer)localObject4).intValue();
-      i = localInteger.intValue();
-      if (localObject1 != null) {
-        break;
-      }
-      localObject1 = new t("null cannot be cast to non-null type java.lang.String");
-      AppMethodBeat.o(59246);
-      throw ((Throwable)localObject1);
-      localObject2 = (d)localObject1;
-      localObject1 = ((d)localObject2).Ap();
-      if (((d)localObject2).Aq()) {
-        ((a.d.b)localObject3).abeZ = localObject1;
-      }
-      continue;
-      int j;
-      if (((a.d.b)localObject3).iNh())
-      {
-        i = ((Collection)abfx).size();
-        j = ((a.d.b)localObject3).abeY;
-        if (j >= 0) {
-          break label295;
-        }
-      }
-      label295:
-      while (i <= j)
-      {
-        localObject1 = this.aaZg[paramInt];
-        break;
-      }
-      localObject1 = (String)abfx.get(((a.d.b)localObject3).abeY);
-    }
-    Object localObject2 = ((String)localObject1).substring(paramInt, i);
-    p.j(localObject2, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-    label338:
-    Object localObject1 = localObject2;
-    if (((a.d.b)localObject3).abfd.size() >= 2)
-    {
-      localObject4 = ((a.d.b)localObject3).abfd;
-      localObject1 = (Integer)((List)localObject4).get(0);
-      localObject4 = (Integer)((List)localObject4).get(1);
-      p.j(localObject2, "string");
-      localObject1 = n.a((String)localObject2, (char)((Integer)localObject1).intValue(), (char)((Integer)localObject4).intValue());
-    }
-    localObject2 = ((a.d.b)localObject3).abfa;
-    localObject3 = localObject2;
-    if (localObject2 == null) {
-      localObject3 = a.d.b.b.abff;
-    }
-    localObject2 = localObject1;
-    switch (h.$EnumSwitchMapping$0[localObject3.ordinal()])
-    {
-    default: 
-      localObject2 = localObject1;
-    }
-    for (;;)
-    {
-      p.j(localObject2, "string");
-      AppMethodBeat.o(59246);
-      return localObject2;
-      p.j(localObject1, "string");
-      localObject2 = n.a((String)localObject1, '$', '.');
-      continue;
-      localObject2 = localObject1;
-      if (((String)localObject1).length() >= 2)
-      {
-        p.j(localObject1, "string");
-        paramInt = ((String)localObject1).length();
-        if (localObject1 == null)
-        {
-          localObject1 = new t("null cannot be cast to non-null type java.lang.String");
-          AppMethodBeat.o(59246);
-          throw ((Throwable)localObject1);
-        }
-        localObject2 = ((String)localObject1).substring(1, paramInt - 1);
-        p.j(localObject2, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-      }
-      p.j(localObject2, "string");
-      localObject2 = n.a((String)localObject2, '$', '.');
-    }
+    AppMethodBeat.i(59252);
+    s.u(paramArrayOfString1, "data");
+    s.u(paramArrayOfString2, "strings");
+    paramArrayOfString1 = a.an(paramArrayOfString1);
+    s.s(paramArrayOfString1, "decodeBytes(data)");
+    s.u(paramArrayOfString1, "bytes");
+    s.u(paramArrayOfString2, "strings");
+    paramArrayOfString1 = new ByteArrayInputStream(paramArrayOfString1);
+    paramArrayOfString1 = new r(a((InputStream)paramArrayOfString1, paramArrayOfString2), a.k.c((InputStream)paramArrayOfString1, ajen));
+    AppMethodBeat.o(59252);
+    return paramArrayOfString1;
   }
   
-  public static final class a {}
+  public static final r<f, a.h> h(String[] paramArrayOfString1, String[] paramArrayOfString2)
+  {
+    AppMethodBeat.i(59253);
+    s.u(paramArrayOfString1, "data");
+    s.u(paramArrayOfString2, "strings");
+    paramArrayOfString1 = new ByteArrayInputStream(a.an(paramArrayOfString1));
+    paramArrayOfString1 = new r(a((InputStream)paramArrayOfString1, paramArrayOfString2), a.h.b((InputStream)paramArrayOfString1, ajen));
+    AppMethodBeat.o(59253);
+    return paramArrayOfString1;
+  }
+  
+  public static kotlin.l.b.a.b.h.g kxK()
+  {
+    return ajen;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.e.c.a.g
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.h;
 import androidx.recyclerview.widget.RecyclerView.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.plugin.music.a.b;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -18,82 +18,86 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/music/ui/view/MusicMVDurationDecoration;", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getContext", "()Landroid/content/Context;", "drawingContent", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "textPaint", "Landroid/graphics/Paint;", "textWidth", "", "onDrawOver", "", "c", "Landroid/graphics/Canvas;", "parent", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "updateContent", "tickMsList", "", "", "plugin-music_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/music/ui/view/MusicMVDurationDecoration;", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getContext", "()Landroid/content/Context;", "drawingContent", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "textPaint", "Landroid/graphics/Paint;", "textWidth", "", "onDrawOver", "", "c", "Landroid/graphics/Canvas;", "parent", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "updateContent", "tickMsList", "", "", "plugin-music_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
   extends RecyclerView.h
 {
-  private final ArrayList<String> FVq;
-  private float bzI;
-  private final Paint ciV;
+  private final ArrayList<String> LQp;
   private final Context context;
+  private final Paint dZu;
+  private float dsJ;
   
   public b(Context paramContext)
   {
-    AppMethodBeat.i(259551);
+    AppMethodBeat.i(270976);
     this.context = paramContext;
-    this.ciV = new Paint(1);
-    this.FVq = new ArrayList();
-    this.ciV.setColor(this.context.getResources().getColor(a.b.BW_100_Alpha_0_3));
-    this.ciV.setTextSize(a.fromDPToPix(this.context, 10));
-    this.bzI = this.ciV.measureText("00:00");
-    AppMethodBeat.o(259551);
+    this.dZu = new Paint(1);
+    this.LQp = new ArrayList();
+    this.dZu.setColor(this.context.getResources().getColor(a.b.BW_100_Alpha_0_3));
+    this.dZu.setTextSize(a.fromDPToPix(this.context, 10));
+    this.dsJ = this.dZu.measureText("00:00");
+    AppMethodBeat.o(270976);
   }
   
   public final void b(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.s params)
   {
-    AppMethodBeat.i(259549);
-    p.k(paramCanvas, "c");
-    p.k(paramRecyclerView, "parent");
-    p.k(params, "state");
-    int j = paramRecyclerView.getChildCount();
-    int i = 0;
-    while (i < j)
+    AppMethodBeat.i(270992);
+    s.u(paramCanvas, "c");
+    s.u(paramRecyclerView, "parent");
+    s.u(params, "state");
+    int k = paramRecyclerView.getChildCount();
+    if (k > 0) {}
+    int j;
+    for (int i = 0;; i = j)
     {
+      j = i + 1;
       View localView = paramRecyclerView.getChildAt(i);
-      int k = RecyclerView.bh(localView);
-      p.j(localView, "child");
-      float f1 = localView.getBottom() - this.ciV.getFontMetrics().descent;
-      int m = localView.getLeft();
-      int n = localView.getRight();
+      int m = RecyclerView.bA(localView);
+      float f1 = localView.getBottom() - this.dZu.getFontMetrics().descent;
+      int n = localView.getLeft();
+      int i1 = localView.getRight();
       float f2;
       float f3;
-      if (m > -this.bzI / 2.0F)
-      {
-        f2 = m;
-        f3 = this.bzI / 2.0F;
-        paramCanvas.drawText((String)this.FVq.get(k), f2 - f3, f1, this.ciV);
-      }
-      if ((i == j - 1) && (k + 1 < this.FVq.size()) && (n < paramRecyclerView.getWidth() + this.bzI / 2.0F))
+      if (n > -this.dsJ / 2.0F)
       {
         f2 = n;
-        f3 = this.bzI / 2.0F;
-        paramCanvas.drawText((String)this.FVq.get(k + 1), f2 - f3, f1 - this.ciV.getFontMetrics().descent, this.ciV);
+        f3 = this.dsJ / 2.0F;
+        paramCanvas.drawText((String)this.LQp.get(m), f2 - f3, f1, this.dZu);
       }
-      i += 1;
+      if ((i == k - 1) && (m + 1 < this.LQp.size()) && (i1 < paramRecyclerView.getWidth() + this.dsJ / 2.0F))
+      {
+        f2 = i1;
+        f3 = this.dsJ / 2.0F;
+        paramCanvas.drawText((String)this.LQp.get(m + 1), f2 - f3, f1 - this.dZu.getFontMetrics().descent, this.dZu);
+      }
+      if (j >= k)
+      {
+        super.b(paramCanvas, paramRecyclerView, params);
+        AppMethodBeat.o(270992);
+        return;
+      }
     }
-    super.b(paramCanvas, paramRecyclerView, params);
-    AppMethodBeat.o(259549);
   }
   
-  public final void gf(List<Long> paramList)
+  public final void je(List<Long> paramList)
   {
-    AppMethodBeat.i(259548);
-    p.k(paramList, "tickMsList");
-    this.FVq.clear();
+    AppMethodBeat.i(270983);
+    s.u(paramList, "tickMsList");
+    this.LQp.clear();
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("mm:ss", Locale.getDefault());
-    ArrayList localArrayList = this.FVq;
+    ArrayList localArrayList = this.LQp;
     Object localObject = (Iterable)paramList;
-    paramList = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
+    paramList = (Collection)new ArrayList(p.a((Iterable)localObject, 10));
     localObject = ((Iterable)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
       paramList.add(localSimpleDateFormat.format(Long.valueOf(((Number)((Iterator)localObject).next()).longValue())));
     }
     localArrayList.addAll((Collection)paramList);
-    AppMethodBeat.o(259548);
+    AppMethodBeat.o(270983);
   }
 }
 

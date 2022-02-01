@@ -17,8 +17,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.game.d.c;
-import com.tencent.mm.plugin.game.g.e;
-import com.tencent.mm.plugin.game.g.f;
+import com.tencent.mm.plugin.game.h.e;
+import com.tencent.mm.plugin.game.h.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
@@ -30,22 +30,22 @@ public class GameBannerView
   extends LinearLayout
   implements View.OnClickListener, ViewPager.OnPageChangeListener
 {
-  private int CKU;
-  private b CSN;
-  LinkedList<a> CSO;
-  MTimerHandler CSP;
-  private float aCa;
-  private float aCb;
+  private int IFc;
+  private b INd;
+  LinkedList<a> INe;
+  MTimerHandler INf;
+  private float cxM;
+  private float cxN;
   private Context mContext;
-  private MMDotView uLP;
-  private ViewPager uLQ;
+  private MMDotView xUq;
+  private ViewPager xUr;
   
   public GameBannerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(41882);
-    this.CKU = 0;
-    this.CSP = new MTimerHandler(new MTimerHandler.CallBack()
+    this.IFc = 0;
+    this.INf = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -61,15 +61,15 @@ public class GameBannerView
         return false;
       }
     }, true);
-    this.aCa = 0.0F;
-    this.aCb = 0.0F;
+    this.cxM = 0.0F;
+    this.cxN = 0.0F;
     this.mContext = paramContext;
-    inflate(paramContext, g.f.Cml, this);
-    this.CSO = new LinkedList();
+    inflate(paramContext, h.f.HYt, this);
+    this.INe = new LinkedList();
     AppMethodBeat.o(41882);
   }
   
-  private void sq(boolean paramBoolean)
+  private void ww(boolean paramBoolean)
   {
     AppMethodBeat.i(41887);
     ViewParent localViewParent = getParent();
@@ -83,8 +83,8 @@ public class GameBannerView
   {
     AppMethodBeat.i(41888);
     Object localObject = new b();
-    ((b)localObject).bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/game/ui/GameBannerView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+    ((b)localObject).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/game/ui/GameBannerView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
     if (!(paramView.getTag() instanceof a))
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameBannerView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -92,13 +92,13 @@ public class GameBannerView
       return;
     }
     localObject = (a)paramView.getTag();
-    paramView = ((a)localObject).CSR;
+    paramView = ((a)localObject).INh;
     int i;
-    if (!Util.isNullOrNil(((a)localObject).CHY))
+    if (!Util.isNullOrNil(((a)localObject).ICi))
     {
-      paramView = ((a)localObject).CHY;
-      i = c.aY(this.mContext, paramView);
-      com.tencent.mm.game.report.g.a(this.mContext, 11, 1101, 1, i, this.CKU, null);
+      paramView = ((a)localObject).ICi;
+      i = c.ba(this.mContext, paramView);
+      com.tencent.mm.game.report.g.a(this.mContext, 11, 1101, 1, i, this.IFc, null);
     }
     for (;;)
     {
@@ -110,7 +110,7 @@ public class GameBannerView
       ((Bundle)localObject).putCharSequence("game_app_id", paramView.field_appId);
       ((Bundle)localObject).putInt("game_report_from_scene", 5);
       i = c.b(this.mContext, paramView.field_appId, null, (Bundle)localObject);
-      com.tencent.mm.game.report.g.a(this.mContext, 11, 1101, 1, i, this.CKU, null);
+      com.tencent.mm.game.report.g.a(this.mContext, 11, 1101, 1, i, this.IFc, null);
     }
   }
   
@@ -118,10 +118,10 @@ public class GameBannerView
   {
     AppMethodBeat.i(41883);
     super.onFinishInflate();
-    this.uLP = ((MMDotView)findViewById(g.e.ChM));
-    this.uLQ = ((ViewPager)findViewById(g.e.ChN));
-    this.uLQ.setOnPageChangeListener(this);
-    this.CSN = new b((byte)0);
+    this.xUq = ((MMDotView)findViewById(h.e.HTU));
+    this.xUr = ((ViewPager)findViewById(h.e.HTV));
+    this.xUr.setOnPageChangeListener(this);
+    this.INd = new b((byte)0);
     AppMethodBeat.o(41883);
   }
   
@@ -144,23 +144,23 @@ public class GameBannerView
       boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
       AppMethodBeat.o(41886);
       return bool;
-      this.aCa = f1;
-      this.aCb = f2;
+      this.cxM = f1;
+      this.cxN = f2;
       break;
-      i = (int)(f1 - this.aCa);
-      int j = (int)(f2 - this.aCb);
+      i = (int)(f1 - this.cxM);
+      int j = (int)(f2 - this.cxN);
       if (Math.abs(i) <= Math.abs(j)) {
         break;
       }
-      sq(true);
+      ww(true);
       break;
-      sq(false);
-      this.aCa = 0.0F;
-      this.aCb = 0.0F;
+      ww(false);
+      this.cxM = 0.0F;
+      this.cxN = 0.0F;
       break;
-      this.CSP.stopTimer();
+      this.INf.stopTimer();
       continue;
-      this.CSP.startTimer(5000L);
+      this.INf.startTimer(5000L);
     }
   }
   
@@ -171,10 +171,10 @@ public class GameBannerView
   public void onPageSelected(int paramInt)
   {
     AppMethodBeat.i(41885);
-    int i = paramInt % this.CSO.size();
+    int i = paramInt % this.INe.size();
     Log.i("MicroMsg.GameBannerView", "now selected page %d, now exactly positon : %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
-    if ((((a)this.CSO.get(i)).CSR != null) && (h.aHB())) {
-      com.tencent.mm.game.report.g.a(this.mContext, 11, 1101, i + 1, 1, this.CKU, null);
+    if ((((a)this.INe.get(i)).INh != null) && (h.baz())) {
+      com.tencent.mm.game.report.g.a(this.mContext, 11, 1101, i + 1, 1, this.IFc, null);
     }
     AppMethodBeat.o(41885);
   }
@@ -190,30 +190,30 @@ public class GameBannerView
       return;
     }
     Log.i("MicroMsg.GameBannerView", "bannerList size", new Object[] { Integer.valueOf(paramLinkedList.size()) });
-    this.CSP.stopTimer();
-    this.CSO.clear();
-    this.CSO.addAll(paramLinkedList);
-    this.uLQ.setAdapter(this.CSN);
-    this.uLQ.setCurrentItem(paramLinkedList.size() * 1000, false);
-    if (this.CSO.size() > 1) {
-      this.CSP.startTimer(5000L);
+    this.INf.stopTimer();
+    this.INe.clear();
+    this.INe.addAll(paramLinkedList);
+    this.xUr.setAdapter(this.INd);
+    this.xUr.setCurrentItem(paramLinkedList.size() * 1000, false);
+    if (this.INe.size() > 1) {
+      this.INf.startTimer(5000L);
     }
-    this.uLP.setVisibility(8);
+    this.xUq.setVisibility(8);
     setVisibility(0);
     AppMethodBeat.o(41884);
   }
   
   public void setSourceScene(int paramInt)
   {
-    this.CKU = paramInt;
+    this.IFc = paramInt;
   }
   
   public static final class a
   {
-    public String CHY;
-    public com.tencent.mm.pluginsdk.model.app.g CSR;
+    public String ICi;
+    public com.tencent.mm.pluginsdk.model.app.g INh;
     public int index;
-    public String lzB;
+    public String orc;
   }
   
   final class b
@@ -248,11 +248,11 @@ public class GameBannerView
     {
       AppMethodBeat.i(41880);
       int i = paramInt % GameBannerView.b(GameBannerView.this).size();
-      View localView = View.inflate(GameBannerView.d(GameBannerView.this), g.f.Cmm, null);
+      View localView = View.inflate(GameBannerView.d(GameBannerView.this), h.f.HYu, null);
       localView.setTag(GameBannerView.b(GameBannerView.this).get(i));
       localView.setOnClickListener(GameBannerView.this);
-      ImageView localImageView = (ImageView)localView.findViewById(g.e.ChO);
-      String str = ((GameBannerView.a)GameBannerView.b(GameBannerView.this).get(i)).lzB;
+      ImageView localImageView = (ImageView)localView.findViewById(h.e.HTW);
+      String str = ((GameBannerView.a)GameBannerView.b(GameBannerView.this).get(i)).orc;
       Drawable localDrawable = localImageView.getDrawable();
       if ((localDrawable != null) && ((localDrawable instanceof j))) {
         ((j)localDrawable).setUrl(str);
@@ -285,7 +285,7 @@ public class GameBannerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameBannerView
  * JD-Core Version:    0.7.0.1
  */

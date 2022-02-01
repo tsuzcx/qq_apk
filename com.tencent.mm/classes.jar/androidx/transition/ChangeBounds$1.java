@@ -14,14 +14,14 @@ final class ChangeBounds$1
   ChangeBounds$1(Class paramClass, String paramString)
   {
     super(paramClass, paramString);
-    AppMethodBeat.i(191685);
+    AppMethodBeat.i(201416);
     this.mBounds = new Rect();
-    AppMethodBeat.o(191685);
+    AppMethodBeat.o(201416);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     androidx.transition.ChangeBounds.1
  * JD-Core Version:    0.7.0.1
  */

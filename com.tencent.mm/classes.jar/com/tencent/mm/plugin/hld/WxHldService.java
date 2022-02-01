@@ -25,171 +25,323 @@ import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.hld.a.d;
 import com.tencent.mm.plugin.hld.candidate.ImeCandidateView;
+import com.tencent.mm.plugin.hld.e.a;
+import com.tencent.mm.plugin.hld.f.l;
 import com.tencent.mm.plugin.hld.model.f;
-import com.tencent.mm.plugin.hld.model.k.m;
-import com.tencent.mm.plugin.hld.model.k.n;
-import com.tencent.mm.plugin.hld.model.k.o;
-import com.tencent.mm.plugin.hld.model.k.p;
+import com.tencent.mm.plugin.hld.model.g;
+import com.tencent.mm.plugin.hld.model.o;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.aw;
 import com.tencent.wxhld.WxhldApi;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.g.b.aa.d;
-import kotlin.g.b.aa.f;
-import kotlin.t;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.ah.f;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/WxHldService;", "Landroid/inputmethodservice/InputMethodService;", "Lcom/tencent/mm/plugin/hld/api/IImeService;", "()V", "keyboardShow", "", "mAttribute", "Landroid/view/inputmethod/EditorInfo;", "mImeKeyboardActionListener", "Lcom/tencent/mm/plugin/hld/key/ImeKeyboardActionListener;", "switchToAnotherIme", "getSwitchToAnotherIme", "()Z", "setSwitchToAnotherIme", "(Z)V", "commitEmojiToWX", "", "emojiStr", "", "commitEnglishText", "text", "", "lastPending", "isEnglishSP", "commitText", "checkPairSymbol", "deleteText", "deleteLen", "", "getActionType", "getAroundText", "Lcom/tencent/mm/plugin/hld/api/ImeAroundText;", "num", "getBeforeText", "getContext", "Landroid/content/Context;", "getCurrentPackageName", "getCurrentSelection", "Lcom/tencent/mm/plugin/hld/api/ImeSelection;", "getEndSpaceLength", "str", "getImeKeyboardActionListener", "getImeResources", "Landroid/content/res/Resources;", "getResources", "getWechatScene", "handleActionKey", "handleBack", "keyCode", "handleNewLine", "ifActionNewLine", "isKeyboardShow", "isSafetyKeyboard", "isWeChat", "moveSelection", "index", "onComputeInsets", "outInsets", "Landroid/inputmethodservice/InputMethodService$Insets;", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "onCreateCandidatesView", "Landroid/view/View;", "onCreateInputMethodSessionInterface", "Landroid/inputmethodservice/AbstractInputMethodService$AbstractInputMethodSessionImpl;", "Landroid/inputmethodservice/AbstractInputMethodService;", "onCreateInputView", "onDestroy", "onEvaluateFullscreenMode", "onFinishInput", "onKeyDown", "event", "Landroid/view/KeyEvent;", "onKeyUp", "onStartInput", "attribute", "restarting", "onStartInputView", "info", "onUpdateSelection", "oldSelStart", "oldSelEnd", "newSelStart", "newSelEnd", "candidatesStart", "candidatesEnd", "onWindowHidden", "onWindowShown", "reset", "supportWxEmoji", "switchToDefaultIme", "updateEditorInfo", "updateEnglishStrikeView", "lastPendingInput", "updateKeyboard", "Companion", "InputMethodSessionImpls", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/WxHldService;", "Landroid/inputmethodservice/InputMethodService;", "Lcom/tencent/mm/plugin/hld/api/IImeService;", "()V", "keyboardShow", "", "mAttribute", "Landroid/view/inputmethod/EditorInfo;", "mImeKeyboardActionListener", "Lcom/tencent/mm/plugin/hld/key/ImeKeyboardActionListener;", "switchToAnotherIme", "getSwitchToAnotherIme", "()Z", "setSwitchToAnotherIme", "(Z)V", "commitEmojiToWX", "", "emojiStr", "", "commitEnglishText", "text", "", "lastPending", "isEnglishSP", "commitText", "checkPairSymbol", "deleteText", "deleteLen", "", "getActionType", "getAroundText", "Lcom/tencent/mm/plugin/hld/api/ImeAroundText;", "num", "getBeforeText", "getContext", "Landroid/content/Context;", "getCurrentPackageName", "getCurrentSelection", "Lcom/tencent/mm/plugin/hld/api/ImeSelection;", "getEndSpaceLength", "str", "getImeKeyboardActionListener", "getImeResources", "Landroid/content/res/Resources;", "getResources", "getWechatScene", "handleActionKey", "handleBack", "keyCode", "handleNewLine", "ifActionNewLine", "isKeyboardShow", "isSafetyKeyboard", "isWeChat", "moveSelection", "index", "onComputeInsets", "outInsets", "Landroid/inputmethodservice/InputMethodService$Insets;", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "onCreateCandidatesView", "Landroid/view/View;", "onCreateInputMethodSessionInterface", "Landroid/inputmethodservice/AbstractInputMethodService$AbstractInputMethodSessionImpl;", "Landroid/inputmethodservice/AbstractInputMethodService;", "onCreateInputView", "onDestroy", "onEvaluateFullscreenMode", "onFinishInput", "onKeyDown", "event", "Landroid/view/KeyEvent;", "onKeyUp", "onStartInput", "attribute", "restarting", "onStartInputView", "info", "onUpdateSelection", "oldSelStart", "oldSelEnd", "newSelStart", "newSelEnd", "candidatesStart", "candidatesEnd", "onWindowHidden", "onWindowShown", "reset", "supportWxEmoji", "switchToDefaultIme", "updateEditorInfo", "updateEnglishStrikeView", "lastPendingInput", "updateKeyboard", "Companion", "InputMethodSessionImpls", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class WxHldService
   extends InputMethodService
   implements com.tencent.mm.plugin.hld.a.b
 {
-  public static final b DtA;
-  private static com.tencent.mm.plugin.hld.a.b Dtz;
-  public boolean Dtv;
-  private boolean Dtw;
-  private EditorInfo Dtx;
-  private com.tencent.mm.plugin.hld.e.a Dty;
+  public static final WxHldService.a Jnb;
+  private static com.tencent.mm.plugin.hld.a.b Jng;
+  public boolean Jnc;
+  private boolean Jnd;
+  private EditorInfo Jne;
+  private a Jnf;
   
   static
   {
-    AppMethodBeat.i(216507);
-    DtA = new b((byte)0);
-    AppMethodBeat.o(216507);
+    AppMethodBeat.i(311484);
+    Jnb = new WxHldService.a((byte)0);
+    AppMethodBeat.o(311484);
   }
   
-  public static int Z(CharSequence paramCharSequence)
+  private static final void a(InputConnection paramInputConnection, ah.f paramf)
   {
-    AppMethodBeat.i(216483);
-    kotlin.g.b.p.k(paramCharSequence, "str");
+    AppMethodBeat.i(311455);
+    s.u(paramInputConnection, "$connection");
+    s.u(paramf, "$commitText");
+    paramInputConnection.commitText((CharSequence)paramf.aqH, 1);
+    AppMethodBeat.o(311455);
+  }
+  
+  private static final void a(WxHldService paramWxHldService)
+  {
+    AppMethodBeat.i(311451);
+    s.u(paramWxHldService, "this$0");
+    paramWxHldService.fKw();
+    AppMethodBeat.o(311451);
+  }
+  
+  private static final void a(CharSequence paramCharSequence, boolean paramBoolean, WxHldService paramWxHldService)
+  {
+    AppMethodBeat.i(311463);
+    s.u(paramWxHldService, "this$0");
+    ah.f localf;
+    Object localObject1;
+    int i;
+    int j;
+    if (paramCharSequence != null)
+    {
+      localf = new ah.f();
+      if (!paramBoolean) {
+        break label305;
+      }
+      localObject1 = paramCharSequence.subSequence(paramCharSequence.length() - 1, paramCharSequence.length()).toString();
+      Object localObject2 = com.tencent.mm.plugin.hld.f.b.Jyf;
+      localObject1 = com.tencent.mm.plugin.hld.f.b.bf(getContext(), (String)localObject1);
+      if (Util.isNullOrNil((String)localObject1)) {
+        break label297;
+      }
+      localObject2 = paramWxHldService.fKv();
+      if (localObject2 == null) {
+        break label351;
+      }
+      i = ((com.tencent.mm.plugin.hld.a.h)localObject2).start;
+      j = paramCharSequence.length();
+      localObject2 = ah.aiuX;
+      i += j;
+    }
+    for (;;)
+    {
+      localObject1 = (CharSequence)new StringBuilder(paramCharSequence).append((String)localObject1);
+      localf.aqH = localObject1;
+      localObject1 = g.JuL;
+      if (g.fMj())
+      {
+        localObject1 = com.tencent.mm.plugin.hld.f.b.Jyf;
+        if (com.tencent.mm.plugin.hld.f.b.ak(paramCharSequence))
+        {
+          paramCharSequence = paramWxHldService.fKA();
+          if ((paramCharSequence == null) || (ai(paramCharSequence) != 1)) {}
+        }
+      }
+      for (j = 1;; j = 0)
+      {
+        paramCharSequence = paramWxHldService.getCurrentInputConnection();
+        if (paramCharSequence != null)
+        {
+          if (j <= 0) {
+            break label326;
+          }
+          paramCharSequence.commitText((CharSequence)"", 1);
+          if (Build.VERSION.SDK_INT < 24) {
+            break label313;
+          }
+          paramCharSequence.deleteSurroundingTextInCodePoints(j, 0);
+          label225:
+          com.tencent.threadpool.h.ahAA.o(new WxHldService..ExternalSyntheticLambda1(paramCharSequence, localf), 1L);
+        }
+        for (;;)
+        {
+          if (i != 0) {
+            paramWxHldService.Yj(i);
+          }
+          paramCharSequence = l.JyV;
+          if (l.fOH())
+          {
+            paramCharSequence = g.JuL;
+            g.fMk();
+          }
+          paramCharSequence = com.tencent.mm.plugin.hld.model.k.JvH;
+          com.tencent.mm.plugin.hld.model.k.YB(((CharSequence)localf.aqH).length());
+          AppMethodBeat.o(311463);
+          return;
+          label297:
+          localObject1 = paramCharSequence;
+          i = 0;
+          break;
+          label305:
+          localObject1 = paramCharSequence;
+          i = 0;
+          break;
+          label313:
+          paramCharSequence.deleteSurroundingText(j, 0);
+          break label225;
+          label326:
+          paramCharSequence.commitText((CharSequence)localf.aqH, 1);
+        }
+      }
+      label351:
+      i = 0;
+    }
+  }
+  
+  private static int ai(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(311438);
+    s.u(paramCharSequence, "str");
     Object localObject = paramCharSequence.toString();
     if (localObject == null)
     {
-      paramCharSequence = new t("null cannot be cast to non-null type java.lang.String");
-      AppMethodBeat.o(216483);
+      paramCharSequence = new NullPointerException("null cannot be cast to non-null type java.lang.String");
+      AppMethodBeat.o(311438);
       throw paramCharSequence;
     }
     localObject = ((String)localObject).toCharArray();
-    kotlin.g.b.p.j(localObject, "(this as java.lang.String).toCharArray()");
+    s.s(localObject, "(this as java.lang.String).toCharArray()");
     int i = localObject.length;
-    while ((i > 0) && (localObject[(i - 1)] <= ' ')) {
+    while ((i > 0) && (s.compare(localObject[(i - 1)], 32) <= 0)) {
       i -= 1;
     }
     if (i < localObject.length)
     {
       int j = paramCharSequence.toString().length();
-      AppMethodBeat.o(216483);
+      AppMethodBeat.o(311438);
       return j - i;
     }
-    AppMethodBeat.o(216483);
+    AppMethodBeat.o(311438);
     return 0;
   }
   
-  private static void eCl()
+  private static final void b(InputConnection paramInputConnection, ah.f paramf)
   {
-    AppMethodBeat.i(216467);
-    Object localObject = com.tencent.mm.plugin.hld.f.i.DHq;
-    com.tencent.mm.plugin.hld.f.i.eGF();
-    com.tencent.mm.plugin.hld.model.g.DCm.eDW();
-    localObject = com.tencent.mm.plugin.hld.model.n.DEn;
-    com.tencent.mm.plugin.hld.model.n.eEF();
-    localObject = com.tencent.mm.plugin.hld.model.g.DCm;
-    com.tencent.mm.plugin.hld.model.g.eEb();
-    localObject = com.tencent.mm.plugin.hld.model.g.DCm;
-    com.tencent.mm.plugin.hld.model.g.eEi();
-    localObject = com.tencent.mm.plugin.hld.candidate.e.DuU;
-    if (com.tencent.mm.plugin.hld.candidate.e.eCO())
-    {
-      localObject = com.tencent.mm.plugin.hld.model.g.DCm;
-      localObject = com.tencent.mm.plugin.hld.model.g.eEl();
-      if (localObject != null) {
-        ((ImeCandidateView)localObject).eCJ();
-      }
-    }
-    localObject = com.tencent.mm.plugin.hld.model.g.DCm;
-    if (!com.tencent.mm.plugin.hld.model.g.eDV())
-    {
-      localObject = com.tencent.mm.plugin.hld.model.g.DCm;
-      com.tencent.mm.plugin.hld.model.g.gP(getContext());
-    }
-    localObject = com.tencent.mm.plugin.hld.model.g.DCm;
-    localObject = com.tencent.mm.plugin.hld.model.g.eEl();
-    if (localObject != null)
-    {
-      ((ImeCandidateView)localObject).eCK();
-      AppMethodBeat.o(216467);
-      return;
-    }
-    AppMethodBeat.o(216467);
+    AppMethodBeat.i(311468);
+    s.u(paramInputConnection, "$connection");
+    s.u(paramf, "$commitText");
+    paramInputConnection.commitText((CharSequence)paramf.aqH, 1);
+    AppMethodBeat.o(311468);
   }
   
-  private static Resources eCy()
+  private static final void c(InputConnection paramInputConnection, ah.f paramf)
   {
-    AppMethodBeat.i(216505);
+    AppMethodBeat.i(311475);
+    s.u(paramInputConnection, "$connection");
+    s.u(paramf, "$commitText");
+    paramInputConnection.commitText((CharSequence)paramf.aqH, 1);
+    AppMethodBeat.o(311475);
+  }
+  
+  private CharSequence fKA()
+  {
+    AppMethodBeat.i(311442);
+    Object localObject = getCurrentInputConnection();
+    if (localObject == null)
+    {
+      localObject = (CharSequence)"";
+      AppMethodBeat.o(311442);
+      return localObject;
+    }
+    localObject = ((InputConnection)localObject).getTextBeforeCursor(2147483647, 0);
+    if (localObject == null)
+    {
+      localObject = (CharSequence)"";
+      AppMethodBeat.o(311442);
+      return localObject;
+    }
+    AppMethodBeat.o(311442);
+    return localObject;
+  }
+  
+  private static Resources fKB()
+  {
+    AppMethodBeat.i(311446);
     Resources localResources = getContext().getResources();
-    kotlin.g.b.p.j(localResources, "getContext().resources");
-    AppMethodBeat.o(216505);
+    s.s(localResources, "getContext().resources");
+    AppMethodBeat.o(311446);
     return localResources;
+  }
+  
+  private static void fKp()
+  {
+    AppMethodBeat.i(311434);
+    Object localObject = com.tencent.mm.plugin.hld.f.i.JyA;
+    com.tencent.mm.plugin.hld.f.i.fOr();
+    g.JuL.fLY();
+    localObject = com.tencent.mm.plugin.hld.model.n.JvW;
+    com.tencent.mm.plugin.hld.model.n.fMI();
+    localObject = g.JuL;
+    g.fMd();
+    localObject = g.JuL;
+    g.fMk();
+    localObject = com.tencent.mm.plugin.hld.candidate.e.Jon;
+    if (com.tencent.mm.plugin.hld.candidate.e.fKQ())
+    {
+      localObject = g.JuL;
+      localObject = g.fMn();
+      if (localObject != null) {
+        ((ImeCandidateView)localObject).fKM();
+      }
+    }
+    localObject = g.JuL;
+    if (!g.fLX())
+    {
+      localObject = g.JuL;
+      g.ij(getContext());
+    }
+    localObject = g.JuL;
+    localObject = g.fMn();
+    if (localObject != null) {
+      ((ImeCandidateView)localObject).fKN();
+    }
+    AppMethodBeat.o(311434);
   }
   
   private static Context getContext()
   {
-    AppMethodBeat.i(216499);
+    AppMethodBeat.i(311444);
     Context localContext = MMApplicationContext.getContext();
-    kotlin.g.b.p.j(localContext, "MMApplicationContext.getContext()");
-    AppMethodBeat.o(216499);
+    s.s(localContext, "getContext()");
+    AppMethodBeat.o(311444);
     return localContext;
   }
   
-  public final void Um(int paramInt)
+  public final void Yi(int paramInt)
   {
     int i = 0;
-    AppMethodBeat.i(216486);
-    Log.i("WxIme.WxHldService", "deleteText ".concat(String.valueOf(paramInt)));
+    AppMethodBeat.i(311729);
+    Log.i("WxIme.WxHldService", s.X("deleteText ", Integer.valueOf(paramInt)));
     Object localObject = getCurrentInputConnection();
     if (localObject != null)
     {
-      if (Util.isNullOrNil(((InputConnection)localObject).getSelectedText(0))) {
-        while (i < paramInt)
-        {
-          sendDownUpKeyEvents(67);
-          i += 1;
-        }
+      if (!Util.isNullOrNil(((InputConnection)localObject).getSelectedText(0))) {
+        break label96;
       }
-      ((InputConnection)localObject).commitText((CharSequence)"", 1);
-      localObject = com.tencent.mm.plugin.hld.f.l.DHK;
-      if (com.tencent.mm.plugin.hld.f.l.eGY())
+      if (paramInt > 0)
       {
-        localObject = com.tencent.mm.plugin.hld.model.g.DCm;
-        com.tencent.mm.plugin.hld.model.g.eEi();
+        int j;
+        do
+        {
+          j = i + 1;
+          sendDownUpKeyEvents(67);
+          i = j;
+        } while (j < paramInt);
       }
-      AppMethodBeat.o(216486);
-      return;
     }
-    AppMethodBeat.o(216486);
-  }
-  
-  public final void Un(int paramInt)
-  {
-    AppMethodBeat.i(216491);
-    InputConnection localInputConnection = getCurrentInputConnection();
-    if (localInputConnection != null)
+    for (;;)
     {
-      localInputConnection.setSelection(paramInt, paramInt);
-      AppMethodBeat.o(216491);
+      localObject = l.JyV;
+      if (l.fOH())
+      {
+        localObject = g.JuL;
+        g.fMk();
+      }
+      AppMethodBeat.o(311729);
       return;
+      label96:
+      ((InputConnection)localObject).commitText((CharSequence)"", 1);
     }
-    AppMethodBeat.o(216491);
   }
   
-  public final com.tencent.mm.plugin.hld.a.e Uo(int paramInt)
+  public final void Yj(int paramInt)
   {
-    AppMethodBeat.i(216497);
+    AppMethodBeat.i(311746);
+    InputConnection localInputConnection = getCurrentInputConnection();
+    if (localInputConnection != null) {
+      localInputConnection.setSelection(paramInt, paramInt);
+    }
+    AppMethodBeat.o(311746);
+  }
+  
+  public final com.tencent.mm.plugin.hld.a.e Yk(int paramInt)
+  {
+    AppMethodBeat.i(311789);
     Object localObject = null;
     InputConnection localInputConnection = getCurrentInputConnection();
     if (localInputConnection != null)
@@ -198,620 +350,609 @@ public class WxHldService
       CharSequence localCharSequence = localInputConnection.getTextAfterCursor(paramInt, 0);
       localObject = new com.tencent.mm.plugin.hld.a.e((CharSequence)localObject, localInputConnection.getSelectedText(0), localCharSequence);
     }
-    AppMethodBeat.o(216497);
+    AppMethodBeat.o(311789);
     return localObject;
   }
   
   public final void a(CharSequence paramCharSequence1, CharSequence paramCharSequence2)
   {
-    AppMethodBeat.i(216479);
-    Object localObject = com.tencent.mm.plugin.hld.f.l.DHK;
-    com.tencent.mm.plugin.hld.f.l.it("WxIme.WxHldService", "commitEnglishText " + paramCharSequence2);
+    AppMethodBeat.i(311668);
+    Object localObject = l.JyV;
+    l.jC("WxIme.WxHldService", s.X("commitEnglishText ", paramCharSequence2));
     if (Util.isNullOrNil(paramCharSequence1))
     {
       Log.i("WxIme.WxHldService", "commitText null");
-      AppMethodBeat.o(216479);
+      AppMethodBeat.o(311668);
       return;
     }
+    int i;
     if (paramCharSequence1 != null)
     {
-      localObject = new aa.f();
-      ((aa.f)localObject).aaBC = paramCharSequence1;
-      final aa.d locald = new aa.d();
-      locald.aaBA = 0;
-      int j;
-      int i;
-      if (paramCharSequence2 != null)
+      localObject = new ah.f();
+      ((ah.f)localObject).aqH = paramCharSequence1;
+      if (paramCharSequence2 == null)
       {
-        int k = Math.min(paramCharSequence2.length(), ((CharSequence)((aa.f)localObject).aaBC).length());
-        j = 0;
-        i = 0;
-        while ((j < k) && (Util.isEqual(Character.valueOf(paramCharSequence2.charAt(j)), Character.valueOf(((CharSequence)((aa.f)localObject).aaBC).charAt(j)))))
-        {
-          i += 1;
-          j += 1;
+        paramCharSequence2 = null;
+        if (paramCharSequence2 != null) {
+          break label508;
         }
-        if (i == paramCharSequence2.length()) {
-          if (((CharSequence)((aa.f)localObject).aaBC).length() == i)
-          {
-            paramCharSequence1 = (CharSequence)"";
-            ((aa.f)localObject).aaBC = paramCharSequence1;
-            label219:
-            paramCharSequence1 = getCurrentInputConnection();
-            if (paramCharSequence1 != null)
-            {
-              if (locald.aaBA <= 0) {
-                break label515;
-              }
-              paramCharSequence1.commitText((CharSequence)"", 1);
-              if (Build.VERSION.SDK_INT < 24) {
-                break label499;
-              }
-              paramCharSequence1.deleteSurroundingTextInCodePoints(locald.aaBA, 0);
-              label271:
-              com.tencent.e.h.ZvG.n((Runnable)new a(paramCharSequence1, locald, (aa.f)localObject), 1L);
-            }
-          }
+        paramCharSequence2 = (WxHldService)this;
+        com.tencent.mm.plugin.hld.f.b localb = com.tencent.mm.plugin.hld.f.b.Jyf;
+        if (!com.tencent.mm.plugin.hld.f.b.ak(paramCharSequence1)) {
+          break label508;
         }
-      }
-      for (;;)
-      {
-        paramCharSequence1 = com.tencent.mm.plugin.hld.f.l.DHK;
-        if (com.tencent.mm.plugin.hld.f.l.eGY())
-        {
-          paramCharSequence1 = com.tencent.mm.plugin.hld.model.g.DCm;
-          com.tencent.mm.plugin.hld.model.g.eEi();
+        paramCharSequence1 = paramCharSequence2.fKA();
+        if ((paramCharSequence1 == null) || (ai(paramCharSequence1) != 1)) {
+          break label508;
         }
-        paramCharSequence1 = com.tencent.mm.plugin.hld.model.k.DDb;
-        com.tencent.mm.plugin.hld.model.k.UD(((CharSequence)((aa.f)localObject).aaBC).length());
-        AppMethodBeat.o(216479);
-        return;
-        paramCharSequence1 = ((CharSequence)((aa.f)localObject).aaBC).subSequence(i, ((CharSequence)((aa.f)localObject).aaBC).length());
-        break;
-        j = paramCharSequence2.length() - i;
+        i = 1;
+        label112:
         paramCharSequence1 = getCurrentInputConnection();
         if (paramCharSequence1 != null)
         {
-          if (Build.VERSION.SDK_INT < 24) {
-            break label443;
+          if (i <= 0) {
+            break label489;
           }
-          paramCharSequence1.deleteSurroundingTextInCodePoints(j, 0);
+          paramCharSequence1.commitText((CharSequence)"", 1);
+          if (Build.VERSION.SDK_INT < 24) {
+            break label477;
+          }
+          paramCharSequence1.deleteSurroundingTextInCodePoints(i, 0);
+          label156:
+          com.tencent.threadpool.h.ahAA.o(new WxHldService..ExternalSyntheticLambda0(paramCharSequence1, (ah.f)localObject), 1L);
         }
-        for (;;)
+        label176:
+        paramCharSequence1 = l.JyV;
+        if (l.fOH())
         {
-          ((aa.f)localObject).aaBC = ((CharSequence)((aa.f)localObject).aaBC).subSequence(i, ((CharSequence)((aa.f)localObject).aaBC).length());
-          break;
-          label443:
-          paramCharSequence1.deleteSurroundingText(j, 0);
+          paramCharSequence1 = g.JuL;
+          g.fMk();
         }
-        paramCharSequence2 = (WxHldService)this;
-        com.tencent.mm.plugin.hld.f.b localb = com.tencent.mm.plugin.hld.f.b.DGL;
-        if (!com.tencent.mm.plugin.hld.f.b.ab(paramCharSequence1)) {
-          break label219;
-        }
-        paramCharSequence1 = paramCharSequence2.eCx();
-        if ((paramCharSequence1 == null) || (Z(paramCharSequence1) != 1)) {
-          break label219;
-        }
-        locald.aaBA = 1;
-        break label219;
-        label499:
-        paramCharSequence1.deleteSurroundingText(locald.aaBA, 0);
-        break label271;
-        label515:
-        paramCharSequence1.commitText((CharSequence)((aa.f)localObject).aaBC, 1);
+        paramCharSequence1 = com.tencent.mm.plugin.hld.model.k.JvH;
+        com.tencent.mm.plugin.hld.model.k.YB(((CharSequence)((ah.f)localObject).aqH).length());
       }
     }
-    AppMethodBeat.o(216479);
+    else
+    {
+      AppMethodBeat.o(311668);
+      return;
+    }
+    int n = Math.min(paramCharSequence2.length(), ((CharSequence)((ah.f)localObject).aqH).length());
+    int k;
+    label254:
+    int m;
+    if (n > 0)
+    {
+      k = 0;
+      i = 0;
+      m = k + 1;
+      j = i;
+      if (Util.isEqual(Character.valueOf(paramCharSequence2.charAt(k)), Character.valueOf(((CharSequence)((ah.f)localObject).aqH).charAt(k))))
+      {
+        i += 1;
+        if (m < n) {
+          break label513;
+        }
+      }
+    }
+    for (int j = i;; j = 0)
+    {
+      if (j == paramCharSequence2.length())
+      {
+        if (((CharSequence)((ah.f)localObject).aqH).length() == j) {}
+        for (paramCharSequence2 = (CharSequence)"";; paramCharSequence2 = ((CharSequence)((ah.f)localObject).aqH).subSequence(j, ((CharSequence)((ah.f)localObject).aqH).length()))
+        {
+          ((ah.f)localObject).aqH = paramCharSequence2;
+          paramCharSequence2 = ah.aiuX;
+          break;
+        }
+      }
+      i = paramCharSequence2.length() - j;
+      paramCharSequence2 = getCurrentInputConnection();
+      if (paramCharSequence2 != null)
+      {
+        if (Build.VERSION.SDK_INT < 24) {
+          break label465;
+        }
+        paramCharSequence2.deleteSurroundingTextInCodePoints(i, 0);
+      }
+      for (;;)
+      {
+        ((ah.f)localObject).aqH = ((CharSequence)((ah.f)localObject).aqH).subSequence(j, ((CharSequence)((ah.f)localObject).aqH).length());
+        break;
+        label465:
+        paramCharSequence2.deleteSurroundingText(i, 0);
+      }
+      label477:
+      paramCharSequence1.deleteSurroundingText(i, 0);
+      break label156;
+      label489:
+      paramCharSequence1.commitText((CharSequence)((ah.f)localObject).aqH, 1);
+      break label176;
+      label508:
+      i = 0;
+      break label112;
+      label513:
+      k = m;
+      break label254;
+    }
   }
   
-  public final void aa(CharSequence paramCharSequence)
+  public final void aj(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(292915);
+    AppMethodBeat.i(369992);
     c(paramCharSequence, false);
-    AppMethodBeat.o(292915);
+    AppMethodBeat.o(369992);
   }
   
   public final void b(CharSequence paramCharSequence1, CharSequence paramCharSequence2)
   {
-    int i = 0;
-    AppMethodBeat.i(216481);
-    Object localObject = com.tencent.mm.plugin.hld.f.l.DHK;
-    com.tencent.mm.plugin.hld.f.l.it("WxIme.WxHldService", "updateEnglishStrikeView " + paramCharSequence2);
-    int j;
+    AppMethodBeat.i(311686);
+    Object localObject = l.JyV;
+    l.jC("WxIme.WxHldService", s.X("updateEnglishStrikeView ", paramCharSequence2));
+    int k;
+    int i;
     if (Util.isNullOrNil(paramCharSequence1))
     {
       if (paramCharSequence2 != null)
       {
-        j = paramCharSequence2.length();
-        while (i < j)
+        k = paramCharSequence2.length() - 1;
+        if (k >= 0)
         {
-          sendDownUpKeyEvents(67);
-          i += 1;
+          i = 0;
+          do
+          {
+            j = i + 1;
+            sendDownUpKeyEvents(67);
+            i = j;
+          } while (j <= k);
         }
-        AppMethodBeat.o(216481);
-        return;
       }
-      AppMethodBeat.o(216481);
+      AppMethodBeat.o(311686);
       return;
     }
-    localObject = new aa.d();
-    ((aa.d)localObject).aaBA = 0;
-    final aa.f localf = new aa.f();
-    if (paramCharSequence1 == null) {
-      kotlin.g.b.p.iCn();
-    }
-    localf.aaBC = paramCharSequence1;
+    localObject = new ah.f();
+    s.checkNotNull(paramCharSequence1);
+    ((ah.f)localObject).aqH = paramCharSequence1;
+    int m;
     if (!Util.isNullOrNil(paramCharSequence2))
     {
-      if (paramCharSequence2 == null) {
-        kotlin.g.b.p.iCn();
+      s.checkNotNull(paramCharSequence2);
+      int n = Math.min(paramCharSequence2.length(), ((CharSequence)((ah.f)localObject).aqH).length());
+      if (n <= 0) {
+        break label528;
       }
-      int k = Math.min(paramCharSequence2.length(), ((CharSequence)localf.aaBC).length());
-      j = 0;
+      k = 0;
       i = 0;
-      while ((j < k) && (Util.isEqual(Character.valueOf(paramCharSequence2.charAt(j)), Character.valueOf(((CharSequence)localf.aaBC).charAt(j)))))
+      m = k + 1;
+      j = i;
+      if (Util.isEqual(Character.valueOf(paramCharSequence2.charAt(k)), Character.valueOf(((CharSequence)((ah.f)localObject).aqH).charAt(k))))
       {
         i += 1;
-        j += 1;
-      }
-      if (i == paramCharSequence2.length()) {
-        if (((CharSequence)localf.aaBC).length() == i)
-        {
-          paramCharSequence1 = (CharSequence)"";
-          localf.aaBC = paramCharSequence1;
-          label263:
-          paramCharSequence1 = getCurrentInputConnection();
-          if (paramCharSequence1 != null)
-          {
-            if (((aa.d)localObject).aaBA <= 0) {
-              break label533;
-            }
-            paramCharSequence1.commitText((CharSequence)"", 1);
-            if (Build.VERSION.SDK_INT < 24) {
-              break label517;
-            }
-            paramCharSequence1.deleteSurroundingTextInCodePoints(((aa.d)localObject).aaBA, 0);
-            label315:
-            com.tencent.e.h.ZvG.n((Runnable)new f(paramCharSequence1, (aa.d)localObject, localf), 1L);
-          }
+        if (m < n) {
+          break label521;
         }
       }
     }
-    for (;;)
+    label516:
+    label521:
+    label528:
+    for (int j = i;; j = 0)
     {
-      paramCharSequence1 = com.tencent.mm.plugin.hld.f.l.DHK;
-      if (com.tencent.mm.plugin.hld.f.l.eGY())
-      {
-        paramCharSequence1 = com.tencent.mm.plugin.hld.model.g.DCm;
-        com.tencent.mm.plugin.hld.model.g.eEi();
-      }
-      AppMethodBeat.o(216481);
-      return;
-      paramCharSequence1 = ((CharSequence)localf.aaBC).subSequence(i, ((CharSequence)localf.aaBC).length());
-      break;
-      j = paramCharSequence2.length() - i;
-      paramCharSequence1 = getCurrentInputConnection();
-      if (paramCharSequence1 != null)
-      {
-        if (Build.VERSION.SDK_INT < 24) {
-          break label467;
+      if (j == paramCharSequence2.length()) {
+        if (((CharSequence)((ah.f)localObject).aqH).length() == j)
+        {
+          paramCharSequence1 = (CharSequence)"";
+          ((ah.f)localObject).aqH = paramCharSequence1;
+          i = 0;
         }
-        paramCharSequence1.deleteSurroundingTextInCodePoints(j, 0);
       }
       for (;;)
       {
-        localf.aaBC = ((CharSequence)localf.aaBC).subSequence(i, ((CharSequence)localf.aaBC).length());
-        break;
-        label467:
-        paramCharSequence1.deleteSurroundingText(j, 0);
+        label246:
+        paramCharSequence1 = getCurrentInputConnection();
+        if (paramCharSequence1 != null)
+        {
+          if (i <= 0) {
+            break label497;
+          }
+          paramCharSequence1.commitText((CharSequence)"", 1);
+          if (Build.VERSION.SDK_INT < 24) {
+            break label485;
+          }
+          paramCharSequence1.deleteSurroundingTextInCodePoints(i, 0);
+          label290:
+          com.tencent.threadpool.h.ahAA.o(new WxHldService..ExternalSyntheticLambda2(paramCharSequence1, (ah.f)localObject), 1L);
+        }
+        for (;;)
+        {
+          paramCharSequence1 = l.JyV;
+          if (l.fOH())
+          {
+            paramCharSequence1 = g.JuL;
+            g.fMk();
+          }
+          AppMethodBeat.o(311686);
+          return;
+          paramCharSequence1 = ((CharSequence)((ah.f)localObject).aqH).subSequence(j, ((CharSequence)((ah.f)localObject).aqH).length());
+          break;
+          i = paramCharSequence2.length() - j;
+          paramCharSequence1 = getCurrentInputConnection();
+          if (paramCharSequence1 != null)
+          {
+            if (Build.VERSION.SDK_INT < 24) {
+              break label440;
+            }
+            paramCharSequence1.deleteSurroundingTextInCodePoints(i, 0);
+          }
+          for (;;)
+          {
+            ((ah.f)localObject).aqH = ((CharSequence)((ah.f)localObject).aqH).subSequence(j, ((CharSequence)((ah.f)localObject).aqH).length());
+            i = 0;
+            break;
+            label440:
+            paramCharSequence1.deleteSurroundingText(i, 0);
+          }
+          paramCharSequence2 = com.tencent.mm.plugin.hld.f.b.Jyf;
+          if (!com.tencent.mm.plugin.hld.f.b.ak(paramCharSequence1)) {
+            break label516;
+          }
+          paramCharSequence1 = fKA();
+          if ((paramCharSequence1 == null) || (ai(paramCharSequence1) != 1)) {
+            break label516;
+          }
+          i = 1;
+          break label246;
+          label485:
+          paramCharSequence1.deleteSurroundingText(i, 0);
+          break label290;
+          label497:
+          paramCharSequence1.commitText((CharSequence)((ah.f)localObject).aqH, 1);
+        }
+        i = 0;
       }
-      paramCharSequence2 = com.tencent.mm.plugin.hld.f.b.DGL;
-      if (!com.tencent.mm.plugin.hld.f.b.ab(paramCharSequence1)) {
-        break label263;
-      }
-      paramCharSequence1 = eCx();
-      if ((paramCharSequence1 == null) || (Z(paramCharSequence1) != 1)) {
-        break label263;
-      }
-      ((aa.d)localObject).aaBA = 1;
-      break label263;
-      label517:
-      paramCharSequence1.deleteSurroundingText(((aa.d)localObject).aaBA, 0);
-      break label315;
-      label533:
-      paramCharSequence1.commitText((CharSequence)localf.aaBC, 1);
+      k = m;
+      break;
     }
   }
   
-  public final void c(final CharSequence paramCharSequence, final boolean paramBoolean)
+  public final void c(CharSequence paramCharSequence, boolean paramBoolean)
   {
-    AppMethodBeat.i(216478);
+    AppMethodBeat.i(311657);
     if (Util.isNullOrNil(paramCharSequence))
     {
       Log.i("WxIme.WxHldService", "commitText null");
-      AppMethodBeat.o(216478);
+      AppMethodBeat.o(311657);
       return;
     }
-    com.tencent.e.h.ZvG.be((Runnable)new d(this, paramCharSequence, paramBoolean));
-    AppMethodBeat.o(216478);
+    com.tencent.threadpool.h.ahAA.bm(new WxHldService..ExternalSyntheticLambda4(paramCharSequence, paramBoolean, this));
+    AppMethodBeat.o(311657);
   }
   
-  public final void eCm()
+  public final void fKq()
   {
-    AppMethodBeat.i(216475);
-    Log.d("WxIme.WxHldService", "handleActionKey " + eCp());
-    switch (eCp())
+    AppMethodBeat.i(311635);
+    Log.d("WxIme.WxHldService", s.X("handleActionKey ", Integer.valueOf(fKt())));
+    switch (fKt())
     {
     case 6: 
     default: 
-      eCo();
-      AppMethodBeat.o(216475);
-      return;
+      fKs();
     }
-    InputConnection localInputConnection = getCurrentInputConnection();
-    if (localInputConnection != null)
+    InputConnection localInputConnection;
+    do
     {
-      localInputConnection.performEditorAction(eCp());
-      AppMethodBeat.o(216475);
+      AppMethodBeat.o(311635);
       return;
-    }
-    AppMethodBeat.o(216475);
+      localInputConnection = getCurrentInputConnection();
+    } while (localInputConnection == null);
+    localInputConnection.performEditorAction(fKt());
+    AppMethodBeat.o(311635);
   }
   
-  public final boolean eCn()
+  public final boolean fKr()
   {
-    AppMethodBeat.i(216476);
-    Log.d("WxIme.WxHldService", "handleActionKey " + eCp());
-    switch (eCp())
+    AppMethodBeat.i(311643);
+    Log.d("WxIme.WxHldService", s.X("handleActionKey ", Integer.valueOf(fKt())));
+    switch (fKt())
     {
     case 6: 
     default: 
-      AppMethodBeat.o(216476);
+      AppMethodBeat.o(311643);
       return true;
     }
-    AppMethodBeat.o(216476);
+    AppMethodBeat.o(311643);
     return false;
   }
   
-  public final void eCo()
+  public final void fKs()
   {
-    AppMethodBeat.i(216477);
+    AppMethodBeat.i(311650);
     c((CharSequence)"\n", false);
-    AppMethodBeat.o(216477);
+    AppMethodBeat.o(311650);
   }
   
-  public final int eCp()
+  public final int fKt()
   {
     int j = 1;
-    EditorInfo localEditorInfo = this.Dtx;
-    if (localEditorInfo != null) {}
-    for (int i = localEditorInfo.imeOptions; (i & 0x40000000) == 1073741824; i = 0) {
+    EditorInfo localEditorInfo = this.Jne;
+    if (localEditorInfo == null) {}
+    for (int i = 0; (i & 0x40000000) == 1073741824; i = localEditorInfo.imeOptions) {
       return 1;
     }
-    localEditorInfo = this.Dtx;
-    i = j;
-    if (localEditorInfo != null) {
-      i = localEditorInfo.imeOptions;
+    localEditorInfo = this.Jne;
+    if (localEditorInfo == null) {}
+    for (i = j;; i = localEditorInfo.imeOptions) {
+      return i & 0xFF;
     }
-    return i & 0xFF;
   }
   
-  public final boolean eCq()
+  public final boolean fKu()
   {
-    return this.Dtw;
+    return this.Jnd;
   }
   
-  public final com.tencent.mm.plugin.hld.a.h eCs()
+  public final com.tencent.mm.plugin.hld.a.h fKv()
   {
-    AppMethodBeat.i(216489);
+    AppMethodBeat.i(311736);
     Object localObject = getCurrentInputConnection();
-    if (localObject != null)
+    if (localObject == null)
     {
-      localObject = ((InputConnection)localObject).getExtractedText(new ExtractedTextRequest(), 0);
-      if (localObject != null)
-      {
-        localObject = new com.tencent.mm.plugin.hld.a.h(((ExtractedText)localObject).selectionStart, ((ExtractedText)localObject).selectionEnd);
-        AppMethodBeat.o(216489);
-        return localObject;
-      }
-      AppMethodBeat.o(216489);
+      AppMethodBeat.o(311736);
       return null;
     }
-    AppMethodBeat.o(216489);
-    return null;
+    localObject = ((InputConnection)localObject).getExtractedText(new ExtractedTextRequest(), 0);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(311736);
+      return null;
+    }
+    localObject = new com.tencent.mm.plugin.hld.a.h(((ExtractedText)localObject).selectionStart, ((ExtractedText)localObject).selectionEnd);
+    AppMethodBeat.o(311736);
+    return localObject;
   }
   
-  public final void eCt()
+  public final void fKw()
   {
-    AppMethodBeat.i(216493);
+    AppMethodBeat.i(311760);
     Object localObject = getSystemService("input_method");
     if (localObject == null)
     {
-      localObject = new t("null cannot be cast to non-null type android.view.inputmethod.InputMethodManager");
-      AppMethodBeat.o(216493);
+      localObject = new NullPointerException("null cannot be cast to non-null type android.view.inputmethod.InputMethodManager");
+      AppMethodBeat.o(311760);
       throw ((Throwable)localObject);
     }
     localObject = ((InputMethodManager)localObject).getEnabledInputMethodList();
     if (((List)localObject).size() == 1)
     {
       Log.e("WxIme.WxHldService", "only wxime!!");
-      AppMethodBeat.o(216493);
+      AppMethodBeat.o(311760);
       return;
     }
     if (Build.VERSION.SDK_INT >= 28)
     {
-      Log.w("WxIme.WxHldService", "switchToNextInputMethod ".concat(String.valueOf(switchToNextInputMethod(false))));
-      AppMethodBeat.o(216493);
+      Log.w("WxIme.WxHldService", s.X("switchToNextInputMethod ", Boolean.valueOf(switchToNextInputMethod(false))));
+      AppMethodBeat.o(311760);
       return;
     }
     localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
       InputMethodInfo localInputMethodInfo = (InputMethodInfo)((Iterator)localObject).next();
-      kotlin.g.b.p.j(localInputMethodInfo, "imi");
       String str = localInputMethodInfo.getId();
-      com.tencent.mm.plugin.hld.model.p localp = com.tencent.mm.plugin.hld.model.p.DEH;
-      if ((kotlin.g.b.p.h(str, com.tencent.mm.plugin.hld.model.p.eFo()) ^ true))
+      o localo = o.Jwm;
+      if (!s.p(str, o.fNf()))
       {
         str = localInputMethodInfo.getId();
-        localp = com.tencent.mm.plugin.hld.model.p.DEH;
-        if ((kotlin.g.b.p.h(str, com.tencent.mm.plugin.hld.model.p.eFp()) ^ true))
+        localo = o.Jwm;
+        if (!s.p(str, o.fNg()))
         {
-          Log.i("WxIme.WxHldService", "switch to " + localInputMethodInfo.getId());
+          Log.i("WxIme.WxHldService", s.X("switch to ", localInputMethodInfo.getId()));
           switchInputMethod(localInputMethodInfo.getId());
-          AppMethodBeat.o(216493);
-          return;
         }
       }
     }
-    AppMethodBeat.o(216493);
+    AppMethodBeat.o(311760);
   }
   
-  public final boolean eCu()
+  public final boolean fKx()
   {
-    AppMethodBeat.i(216494);
+    AppMethodBeat.i(311765);
     boolean bool = Util.isEqual(getCurrentInputEditorInfo().packageName, MMApplicationContext.getApplicationId());
-    AppMethodBeat.o(216494);
+    AppMethodBeat.o(311765);
     return bool;
   }
   
-  public final boolean eCv()
+  public final boolean fKy()
   {
-    AppMethodBeat.i(216495);
+    AppMethodBeat.i(311775);
     Object localObject = getCurrentInputEditorInfo();
-    if (localObject != null)
+    if (localObject == null)
     {
-      localObject = ((EditorInfo)localObject).extras;
-      if (localObject != null)
-      {
-        boolean bool = ((Bundle)localObject).getBoolean("if_support_wx_emoji");
-        AppMethodBeat.o(216495);
-        return bool;
-      }
-      AppMethodBeat.o(216495);
+      AppMethodBeat.o(311775);
       return false;
     }
-    AppMethodBeat.o(216495);
-    return false;
+    localObject = ((EditorInfo)localObject).extras;
+    if (localObject == null)
+    {
+      AppMethodBeat.o(311775);
+      return false;
+    }
+    boolean bool = ((Bundle)localObject).getBoolean("if_support_wx_emoji");
+    AppMethodBeat.o(311775);
+    return bool;
   }
   
-  public final int eCw()
+  public final int fKz()
   {
-    AppMethodBeat.i(216496);
+    AppMethodBeat.i(311780);
     Object localObject = getCurrentInputEditorInfo();
-    if (localObject != null)
+    if (localObject == null)
     {
-      localObject = ((EditorInfo)localObject).extras;
-      if (localObject != null)
-      {
-        int i = ((Bundle)localObject).getInt("wechat_scene");
-        AppMethodBeat.o(216496);
-        return i;
-      }
-      AppMethodBeat.o(216496);
+      AppMethodBeat.o(311780);
       return 5;
     }
-    AppMethodBeat.o(216496);
-    return 5;
-  }
-  
-  public final CharSequence eCx()
-  {
-    AppMethodBeat.i(216498);
-    Object localObject = getCurrentInputConnection();
-    if (localObject != null)
+    localObject = ((EditorInfo)localObject).extras;
+    if (localObject == null)
     {
-      CharSequence localCharSequence = ((InputConnection)localObject).getTextBeforeCursor(2147483647, 0);
-      localObject = localCharSequence;
-      if (localCharSequence != null) {}
+      AppMethodBeat.o(311780);
+      return 5;
     }
-    else
-    {
-      localObject = (CharSequence)"";
-    }
-    AppMethodBeat.o(216498);
-    return localObject;
+    int i = ((Bundle)localObject).getInt("wechat_scene");
+    AppMethodBeat.o(311780);
+    return i;
   }
   
   public Resources getResources()
   {
-    AppMethodBeat.i(216500);
+    AppMethodBeat.i(311798);
     if (getBaseContext() != null)
     {
-      localObject1 = getBaseContext();
-      kotlin.g.b.p.j(localObject1, "getBaseContext()");
-      Object localObject2 = ((Context)localObject1).getResources();
-      localObject1 = super.getResources();
-      if (((localObject1 instanceof com.tencent.mm.cj.b)) && (localObject2 != null))
+      Object localObject = getBaseContext().getResources();
+      localResources = super.getResources();
+      if (((localResources instanceof com.tencent.mm.ce.d)) && (localObject != null))
       {
-        localObject2 = ((com.tencent.mm.cj.b)localObject1).hrv().f(((Resources)localObject2).getConfiguration());
-        com.tencent.mm.cj.c.a((Configuration)localObject2, ar.f((Resources)localObject1));
-        ((com.tencent.mm.cj.b)localObject1).getConfiguration().updateFrom((Configuration)localObject2);
+        localObject = ((com.tencent.mm.ce.d)localResources).acma.h(((Resources)localObject).getConfiguration());
+        com.tencent.mm.ce.e.a((Configuration)localObject, aw.f(localResources));
+        ((com.tencent.mm.ce.d)localResources).getConfiguration().updateFrom((Configuration)localObject);
       }
-      AppMethodBeat.o(216500);
-      return localObject1;
+      AppMethodBeat.o(311798);
+      return localResources;
     }
     Log.e("WxIme.WxHldService", "no base context!!");
-    Object localObject1 = super.getResources();
-    AppMethodBeat.o(216500);
-    return localObject1;
+    Resources localResources = super.getResources();
+    AppMethodBeat.o(311798);
+    return localResources;
   }
   
   public void onComputeInsets(InputMethodService.Insets paramInsets)
   {
-    AppMethodBeat.i(216455);
-    kotlin.g.b.p.k(paramInsets, "outInsets");
+    AppMethodBeat.i(311537);
+    s.u(paramInsets, "outInsets");
     super.onComputeInsets(paramInsets);
     paramInsets.contentTopInsets = paramInsets.visibleTopInsets;
-    AppMethodBeat.o(216455);
+    AppMethodBeat.o(311537);
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(216461);
+    AppMethodBeat.i(311564);
+    s.u(paramConfiguration, "newConfig");
     Object localObject1 = new StringBuilder("onConfigurationChanged lastOrientation:");
-    Object localObject2 = com.tencent.mm.plugin.hld.f.k.DHH;
-    localObject2 = ((StringBuilder)localObject1).append(com.tencent.mm.plugin.hld.f.k.eGL()).append(" orientation:");
-    if (paramConfiguration != null) {}
-    for (localObject1 = Integer.valueOf(paramConfiguration.orientation);; localObject1 = "")
+    Object localObject2 = com.tencent.mm.plugin.hld.f.k.JyF;
+    localObject1 = ((StringBuilder)localObject1).append(com.tencent.mm.plugin.hld.f.k.fOu()).append(" orientation:").append(Integer.valueOf(paramConfiguration.orientation)).append(" darkMode:").append(aw.isDarkMode()).append(' ');
+    localObject2 = MMApplicationContext.getContext().getResources();
+    if (localObject2 == null)
     {
-      localObject1 = ((StringBuilder)localObject2).append(localObject1).append(" darkMode:").append(ar.isDarkMode()).append(' ');
-      localObject2 = MMApplicationContext.getContext();
-      kotlin.g.b.p.j(localObject2, "MMApplicationContext.getContext()");
-      localObject2 = ((Context)localObject2).getResources();
-      if (localObject2 != null) {
-        break;
-      }
-      paramConfiguration = new t("null cannot be cast to non-null type com.tencent.mm.resources.MMResources");
-      AppMethodBeat.o(216461);
+      paramConfiguration = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.resources.MMResources");
+      AppMethodBeat.o(311564);
       throw paramConfiguration;
     }
-    localObject2 = ((com.tencent.mm.cj.b)localObject2).hrw();
-    kotlin.g.b.p.j(localObject2, "(MMApplicationContext.ge…esources).systemResources");
-    Log.i("WxIme.WxHldService", ((Resources)localObject2).getConfiguration().uiMode);
-    int i;
-    if (paramConfiguration != null)
-    {
-      localObject1 = com.tencent.mm.plugin.hld.f.k.DHH;
-      localObject1 = getContext();
-      i = paramConfiguration.orientation;
-      kotlin.g.b.p.k(localObject1, "context");
-      Log.i("WxIme.WxImeUIUtil", "updateConfiguration " + com.tencent.mm.plugin.hld.f.k.DHs + ' ' + i + ' ' + com.tencent.mm.plugin.hld.f.k.DHu + ' ' + ar.isDarkMode());
-      localObject2 = com.tencent.mm.plugin.hld.f.k.DHs;
-      if (localObject2 != null) {
-        break label331;
-      }
-    }
+    Log.i("WxIme.WxHldService", ((com.tencent.mm.ce.d)localObject2).mResources.getConfiguration().uiMode);
+    localObject1 = com.tencent.mm.plugin.hld.f.k.JyF;
+    localObject1 = getContext();
+    int i = paramConfiguration.orientation;
+    s.u(localObject1, "context");
+    Log.i("WxIme.WxImeUIUtil", "updateConfiguration " + com.tencent.mm.plugin.hld.f.k.JyG + ' ' + i + ' ' + com.tencent.mm.plugin.hld.f.k.JyI + ' ' + aw.isDarkMode());
+    localObject2 = com.tencent.mm.plugin.hld.f.k.JyG;
+    if (localObject2 == null) {}
     for (;;)
     {
-      com.tencent.mm.plugin.hld.f.k.DHt = com.tencent.mm.plugin.hld.f.k.DHs;
-      com.tencent.mm.plugin.hld.f.k.DHs = Integer.valueOf(i);
-      com.tencent.mm.plugin.hld.f.k.DHu = ar.isDarkMode();
+      com.tencent.mm.plugin.hld.f.k.JyH = com.tencent.mm.plugin.hld.f.k.JyG;
+      com.tencent.mm.plugin.hld.f.k.JyG = Integer.valueOf(i);
+      com.tencent.mm.plugin.hld.f.k.JyI = aw.isDarkMode();
       com.tencent.mm.plugin.hld.f.k.reset((Context)localObject1);
-      label331:
       do
       {
         super.onConfigurationChanged(paramConfiguration);
-        paramConfiguration = new StringBuilder("onConfigurationChanged  ");
-        localObject1 = MMApplicationContext.getContext();
-        kotlin.g.b.p.j(localObject1, "MMApplicationContext.getContext()");
-        localObject1 = ((Context)localObject1).getResources();
-        if (localObject1 != null) {
-          break label352;
+        paramConfiguration = MMApplicationContext.getContext().getResources();
+        if (paramConfiguration != null) {
+          break label294;
         }
-        paramConfiguration = new t("null cannot be cast to non-null type com.tencent.mm.resources.MMResources");
-        AppMethodBeat.o(216461);
+        paramConfiguration = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.resources.MMResources");
+        AppMethodBeat.o(311564);
         throw paramConfiguration;
         if (((Integer)localObject2).intValue() != i) {
           break;
         }
-      } while (com.tencent.mm.plugin.hld.f.k.DHu == ar.isDarkMode());
+      } while (com.tencent.mm.plugin.hld.f.k.JyI == aw.isDarkMode());
     }
-    label352:
-    localObject1 = ((com.tencent.mm.cj.b)localObject1).hrw();
-    kotlin.g.b.p.j(localObject1, "(MMApplicationContext.ge…esources).systemResources");
-    Log.d("WxIme.WxHldService", ((Resources)localObject1).getConfiguration().uiMode);
-    AppMethodBeat.o(216461);
+    label294:
+    Log.d("WxIme.WxHldService", s.X("onConfigurationChanged  ", Integer.valueOf(((com.tencent.mm.ce.d)paramConfiguration).mResources.getConfiguration().uiMode)));
+    AppMethodBeat.o(311564);
   }
   
   public void onCreate()
   {
     boolean bool = false;
-    AppMethodBeat.i(216445);
+    AppMethodBeat.i(311526);
     super.onCreate();
     long l1 = System.currentTimeMillis();
-    Log.i("WxIme.WxHldService", "onCreate ".concat(String.valueOf(l1)));
-    Object localObject = getWindow();
-    kotlin.g.b.p.j(localObject, "window");
-    localObject = ((Dialog)localObject).getWindow();
+    Log.i("WxIme.WxHldService", s.X("onCreate ", Long.valueOf(l1)));
+    Object localObject = getWindow().getWindow();
     if (localObject != null) {
-      ((Window)localObject).setNavigationBarColor(eCy().getColor(a.c.ime_keyboard_end_color));
+      ((Window)localObject).setNavigationBarColor(fKB().getColor(a.c.ime_keyboard_end_color));
     }
-    Dtz = (com.tencent.mm.plugin.hld.a.b)this;
-    localObject = com.tencent.mm.plugin.hld.model.a.b.DFe;
+    Jng = (com.tencent.mm.plugin.hld.a.b)this;
+    localObject = com.tencent.mm.plugin.hld.model.a.b.JwG;
     long l2 = System.currentTimeMillis();
-    localObject = com.tencent.mm.plugin.hld.f.l.DHK;
-    localObject = kotlin.n.n.a((CharSequence)com.tencent.mm.plugin.hld.f.l.eHb(), new String[] { "_" });
+    localObject = l.JyV;
+    localObject = kotlin.n.n.a((CharSequence)l.fOK(), new String[] { "_" });
     int i;
     if (((List)localObject).size() == 2)
     {
       i = 1;
       if (i == 0) {
-        break label473;
+        break label433;
       }
-      label132:
+      label120:
       if (localObject != null)
       {
-        com.tencent.mm.plugin.hld.model.a.b.DFa = Util.safeParseLong((String)((List)localObject).get(0));
-        com.tencent.mm.plugin.hld.model.a.b.DFb = Util.safeParseLong((String)((List)localObject).get(1));
+        com.tencent.mm.plugin.hld.model.a.b.JwI = Util.safeParseLong((String)((List)localObject).get(0));
+        com.tencent.mm.plugin.hld.model.a.b.JwJ = Util.safeParseLong((String)((List)localObject).get(1));
       }
-      if ((l2 - com.tencent.mm.plugin.hld.model.a.b.DFc > com.tencent.mm.plugin.hld.model.a.b.DFa) || (com.tencent.mm.plugin.hld.model.a.b.DFd < com.tencent.mm.plugin.hld.model.a.b.DFb)) {
-        break label496;
+      if ((l2 - com.tencent.mm.plugin.hld.model.a.b.JwK > com.tencent.mm.plugin.hld.model.a.b.JwI) || (com.tencent.mm.plugin.hld.model.a.b.JwL < com.tencent.mm.plugin.hld.model.a.b.JwJ)) {
+        break label456;
       }
       com.tencent.mm.plugin.hld.model.a.b.reset();
     }
     for (;;)
     {
-      Log.i("WxIme.ImeRecovery", "initRecovery initResult:" + bool + " monitorTime:" + com.tencent.mm.plugin.hld.model.a.b.DFa + " maxCrashNum:" + com.tencent.mm.plugin.hld.model.a.b.DFb + " nowTime:" + l2);
+      Log.i("WxIme.ImeRecovery", "initRecovery initResult:" + bool + " monitorTime:" + com.tencent.mm.plugin.hld.model.a.b.JwI + " maxCrashNum:" + com.tencent.mm.plugin.hld.model.a.b.JwJ + " nowTime:" + l2);
       if (bool)
       {
-        this.Dty = new com.tencent.mm.plugin.hld.e.a(getContext(), eCy());
-        localObject = com.tencent.mm.plugin.hld.model.n.DEn;
-        com.tencent.mm.plugin.hld.model.n.gR(getContext());
-        localObject = com.tencent.mm.plugin.hld.f.k.DHH;
-        com.tencent.mm.plugin.hld.f.k.init(eCy().getConfiguration().orientation);
-        localObject = f.DBL;
+        this.Jnf = new a(getContext(), fKB());
+        localObject = com.tencent.mm.plugin.hld.model.n.JvW;
+        com.tencent.mm.plugin.hld.model.n.im(getContext());
+        localObject = com.tencent.mm.plugin.hld.f.k.JyF;
+        com.tencent.mm.plugin.hld.f.k.sE(fKB().getConfiguration().orientation);
+        localObject = f.JuH;
         f.init(getContext());
-        localObject = com.tencent.mm.plugin.hld.model.g.DCm;
+        localObject = g.JuL;
         localObject = getContext();
-        com.tencent.mm.plugin.hld.e.a locala = this.Dty;
-        if (locala == null) {
-          kotlin.g.b.p.iCn();
-        }
-        com.tencent.mm.plugin.hld.model.g.a((Context)localObject, (com.tencent.mm.plugin.hld.a.c)locala);
-        com.tencent.mm.plugin.hld.candidate.e.DuU.eCN();
-        com.tencent.mm.plugin.hld.model.g.DCm.gO(getContext());
+        a locala = this.Jnf;
+        s.checkNotNull(locala);
+        g.a((Context)localObject, (com.tencent.mm.plugin.hld.a.c)locala);
+        com.tencent.mm.plugin.hld.candidate.e.Jon.fKP();
+        g.JuL.ii(getContext());
       }
       for (;;)
       {
         l2 = System.currentTimeMillis();
-        localObject = com.tencent.mm.plugin.hld.model.k.DDb;
-        if (!com.tencent.mm.plugin.hld.model.k.eEz()) {
-          com.tencent.e.h.ZvG.d((Runnable)new k.m(l1, l2), "WxIme.ImeReporter");
-        }
+        localObject = com.tencent.mm.plugin.hld.model.k.JvH;
+        com.tencent.mm.plugin.hld.model.k.aM(l1, l2);
         Log.i("WxIme.WxHldService", "onCreate " + bool + ' ' + l1 + ' ' + (l2 - l1) + ' ' + hashCode());
-        AppMethodBeat.o(216445);
+        AppMethodBeat.o(311526);
         return;
         i = 0;
         break;
-        label473:
+        label433:
         localObject = null;
-        break label132;
-        this.Dtv = true;
+        break label120;
+        this.Jnc = true;
         Log.e("WxIme.WxHldService", "repeatedly crash, switch to another ime!!");
       }
-      label496:
+      label456:
       bool = true;
     }
   }
@@ -823,67 +964,67 @@ public class WxHldService
   
   public AbstractInputMethodService.AbstractInputMethodSessionImpl onCreateInputMethodSessionInterface()
   {
-    AppMethodBeat.i(216474);
-    AbstractInputMethodService.AbstractInputMethodSessionImpl localAbstractInputMethodSessionImpl = (AbstractInputMethodService.AbstractInputMethodSessionImpl)new c();
-    AppMethodBeat.o(216474);
+    AppMethodBeat.i(311628);
+    AbstractInputMethodService.AbstractInputMethodSessionImpl localAbstractInputMethodSessionImpl = (AbstractInputMethodService.AbstractInputMethodSessionImpl)new b();
+    AppMethodBeat.o(311628);
     return localAbstractInputMethodSessionImpl;
   }
   
   public View onCreateInputView()
   {
-    AppMethodBeat.i(216451);
-    Log.i("WxIme.WxHldService", "onCreateInputView " + System.currentTimeMillis());
-    Object localObject = com.tencent.mm.plugin.hld.model.g.DCm;
-    localObject = com.tencent.mm.plugin.hld.model.g.eEa();
+    AppMethodBeat.i(311531);
+    Log.i("WxIme.WxHldService", s.X("onCreateInputView ", Long.valueOf(System.currentTimeMillis())));
+    Object localObject = g.JuL;
+    localObject = g.fMc();
     if (((View)localObject).getParent() != null)
     {
       if (!(((View)localObject).getParent() instanceof ViewGroup)) {
-        break label100;
+        break label93;
       }
       ViewParent localViewParent = ((View)localObject).getParent();
       if (localViewParent == null)
       {
-        localObject = new t("null cannot be cast to non-null type android.view.ViewGroup");
-        AppMethodBeat.o(216451);
+        localObject = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+        AppMethodBeat.o(311531);
         throw ((Throwable)localObject);
       }
       ((ViewGroup)localViewParent).removeView((View)localObject);
     }
     for (;;)
     {
-      AppMethodBeat.o(216451);
+      AppMethodBeat.o(311531);
       return localObject;
-      label100:
-      Log.e("WxIme.WxHldService", "onCreateInputView " + ((View)localObject).getParent());
+      label93:
+      Log.e("WxIme.WxHldService", s.X("onCreateInputView ", ((View)localObject).getParent()));
     }
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(216463);
+    AppMethodBeat.i(311580);
     super.onDestroy();
-    Log.i("WxIme.WxHldService", "onDestroy " + hashCode());
+    Log.i("WxIme.WxHldService", s.X("onDestroy ", Integer.valueOf(hashCode())));
     WxhldApi.finalize1();
-    Object localObject1 = com.tencent.mm.plugin.hld.candidate.e.DuU;
+    Object localObject1 = com.tencent.mm.plugin.hld.candidate.e.Jon;
     Object localObject2;
     try
     {
       localObject2 = MMApplicationContext.getContext().getSystemService("clipboard");
       if (localObject2 == null)
       {
-        localObject1 = new t("null cannot be cast to non-null type android.content.ClipboardManager");
-        AppMethodBeat.o(216463);
+        localObject1 = new NullPointerException("null cannot be cast to non-null type android.content.ClipboardManager");
+        AppMethodBeat.o(311580);
         throw ((Throwable)localObject1);
       }
     }
     catch (Exception localException)
     {
-      Log.e("WxIme.ImeClipBoardListener", "releaseListener " + localException.getMessage());
+      Log.e("WxIme.ImeClipBoardListener", s.X("releaseListener ", localException.getMessage()));
     }
     for (;;)
     {
-      com.tencent.mm.app.g.jZ(Process.myPid());
-      AppMethodBeat.o(216463);
+      com.tencent.mm.app.i.nI(Process.myPid());
+      AppMethodBeat.o(311580);
       return;
       ((ClipboardManager)localObject2).removePrimaryClipChangedListener((ClipboardManager.OnPrimaryClipChangedListener)localException);
     }
@@ -891,83 +1032,79 @@ public class WxHldService
   
   public boolean onEvaluateFullscreenMode()
   {
-    AppMethodBeat.i(216462);
+    AppMethodBeat.i(311571);
     Log.i("WxIme.WxHldService", "onEvaluateFullscreenMode");
-    AppMethodBeat.o(216462);
+    AppMethodBeat.o(311571);
     return false;
   }
   
   public void onFinishInput()
   {
-    AppMethodBeat.i(216460);
+    AppMethodBeat.i(311553);
     super.onFinishInput();
-    AppMethodBeat.o(216460);
+    AppMethodBeat.o(311553);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     int i = 0;
-    AppMethodBeat.i(216472);
+    AppMethodBeat.i(311614);
     Log.i("WxIme.WxHldService", "onKeyDown keyCoed:" + paramInt + ", event:" + paramKeyEvent);
-    if (!this.Dtw)
+    if (!this.Jnd)
     {
-      AppMethodBeat.o(216472);
+      AppMethodBeat.o(311614);
       return false;
     }
-    if ((paramInt == 4) || (paramInt == 111))
+    switch (paramInt)
     {
+    }
+    while (i != 0)
+    {
+      AppMethodBeat.o(311614);
+      return true;
       requestHideSelf(0);
       i = 1;
     }
-    if (i != 0)
-    {
-      AppMethodBeat.o(216472);
-      return true;
-    }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(216472);
+    AppMethodBeat.o(311614);
     return bool;
   }
   
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(216473);
+    AppMethodBeat.i(311620);
     Log.i("WxIme.WxHldService", "onKeyUp keyCoed:" + paramInt + ", event:" + paramKeyEvent);
     boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
-    AppMethodBeat.o(216473);
+    AppMethodBeat.o(311620);
     return bool;
   }
   
   public void onStartInput(EditorInfo paramEditorInfo, boolean paramBoolean)
   {
-    AppMethodBeat.i(216448);
+    AppMethodBeat.i(311528);
     long l1 = System.currentTimeMillis();
     super.onStartInput(paramEditorInfo, paramBoolean);
-    if ((this.Dtx == null) || (paramEditorInfo == null))
+    if ((this.Jne == null) || (paramEditorInfo == null))
     {
-      this.Dtx = paramEditorInfo;
-      paramEditorInfo = com.tencent.mm.plugin.hld.model.g.DCm;
-      com.tencent.mm.plugin.hld.model.g.eEi();
+      this.Jne = paramEditorInfo;
+      paramEditorInfo = g.JuL;
+      g.fMk();
     }
     for (;;)
     {
       long l2 = System.currentTimeMillis();
-      paramEditorInfo = com.tencent.mm.plugin.hld.model.k.DDb;
-      if (!com.tencent.mm.plugin.hld.model.k.eEz()) {
-        com.tencent.e.h.ZvG.d((Runnable)new k.n(l1, l2), "WxIme.ImeReporter");
-      }
-      Log.i("WxIme.WxHldService", "onStartInput " + (l2 - l1));
-      AppMethodBeat.o(216448);
+      paramEditorInfo = com.tencent.mm.plugin.hld.model.k.JvH;
+      com.tencent.mm.plugin.hld.model.k.aN(l1, l2);
+      Log.i("WxIme.WxHldService", s.X("onStartInput ", Long.valueOf(l2 - l1)));
+      AppMethodBeat.o(311528);
       return;
-      EditorInfo localEditorInfo = this.Dtx;
-      if (localEditorInfo == null) {
-        kotlin.g.b.p.iCn();
-      }
+      EditorInfo localEditorInfo = this.Jne;
+      s.checkNotNull(localEditorInfo);
       if ((localEditorInfo.imeOptions & 0xFF) != (paramEditorInfo.imeOptions & 0xFF))
       {
-        this.Dtx = paramEditorInfo;
-        paramEditorInfo = com.tencent.mm.plugin.hld.model.g.DCm;
-        com.tencent.mm.plugin.hld.model.g.eEi();
+        this.Jne = paramEditorInfo;
+        paramEditorInfo = g.JuL;
+        g.fMk();
       }
     }
   }
@@ -975,355 +1112,190 @@ public class WxHldService
   public void onStartInputView(EditorInfo paramEditorInfo, boolean paramBoolean)
   {
     Object localObject2 = null;
-    AppMethodBeat.i(216458);
+    AppMethodBeat.i(311545);
     long l1 = System.currentTimeMillis();
     super.onStartInputView(paramEditorInfo, paramBoolean);
-    Object localObject1 = com.tencent.mm.plugin.hld.f.k.DHH;
-    if (paramEditorInfo != null)
+    Object localObject1 = com.tencent.mm.plugin.hld.f.k.JyF;
+    if (paramEditorInfo == null)
     {
-      localObject1 = Integer.valueOf(paramEditorInfo.inputType);
-      com.tencent.mm.plugin.hld.f.k.q((Integer)localObject1);
-      localObject1 = com.tencent.mm.plugin.hld.model.k.DDb;
-      long l2 = System.currentTimeMillis();
-      if (!com.tencent.mm.plugin.hld.model.k.eEz()) {
-        com.tencent.e.h.ZvG.d((Runnable)new k.o(l2), "WxIme.ImeReporter");
+      localObject1 = null;
+      com.tencent.mm.plugin.hld.f.k.x((Integer)localObject1);
+      localObject1 = com.tencent.mm.plugin.hld.model.k.JvH;
+      com.tencent.mm.plugin.hld.model.k.rQ(System.currentTimeMillis());
+      if (this.Jnd) {
+        break label205;
       }
-      if (this.Dtw) {
-        break label275;
-      }
-      this.Dtw = true;
-      eCl();
-      localObject1 = com.tencent.mm.plugin.hld.model.k.DDb;
-      com.tencent.mm.plugin.hld.model.k.gQ(getContext());
-      localObject1 = (d)com.tencent.mm.kernel.h.ae(d.class);
+      this.Jnd = true;
+      fKp();
+      localObject1 = com.tencent.mm.plugin.hld.model.k.JvH;
+      com.tencent.mm.plugin.hld.model.k.il(getContext());
+      localObject1 = (com.tencent.mm.plugin.hld.a.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.hld.a.d.class);
       if (localObject1 != null) {
-        ((d)localObject1).eCB();
+        ((com.tencent.mm.plugin.hld.a.d)localObject1).fKE();
       }
-      l2 = System.currentTimeMillis();
-      localObject1 = com.tencent.mm.plugin.hld.model.k.DDb;
-      localObject1 = com.tencent.mm.plugin.hld.model.g.DCm;
-      int i = com.tencent.mm.plugin.hld.model.g.eEm();
-      if (!com.tencent.mm.plugin.hld.model.k.eEz()) {
-        com.tencent.e.h.ZvG.d((Runnable)new k.p(l1, l2, i), "WxIme.ImeReporter");
+      long l2 = System.currentTimeMillis();
+      localObject1 = com.tencent.mm.plugin.hld.model.k.JvH;
+      localObject1 = g.JuL;
+      com.tencent.mm.plugin.hld.model.k.k(l1, l2, g.fMo());
+      label120:
+      localObject1 = new StringBuilder("onStartInputView newType:");
+      if (paramEditorInfo != null) {
+        break label353;
       }
     }
-    for (;;)
+    label205:
+    label353:
+    for (paramEditorInfo = localObject2;; paramEditorInfo = Integer.valueOf(paramEditorInfo.inputType))
     {
-      Object localObject3 = new StringBuilder("onStartInputView newType:");
-      localObject1 = localObject2;
-      if (paramEditorInfo != null) {
-        localObject1 = Integer.valueOf(paramEditorInfo.inputType);
-      }
-      paramEditorInfo = ((StringBuilder)localObject3).append(localObject1).append(" oldType:");
-      localObject1 = com.tencent.mm.plugin.hld.f.k.DHH;
-      Log.i("WxIme.WxHldService", com.tencent.mm.plugin.hld.f.k.eGP() + ' ' + (l1 - System.currentTimeMillis()));
-      AppMethodBeat.o(216458);
+      paramEditorInfo = ((StringBuilder)localObject1).append(paramEditorInfo).append(" oldType:");
+      localObject1 = com.tencent.mm.plugin.hld.f.k.JyF;
+      Log.i("WxIme.WxHldService", com.tencent.mm.plugin.hld.f.k.fOy() + ' ' + (l1 - System.currentTimeMillis()));
+      AppMethodBeat.o(311545);
       return;
-      localObject1 = null;
+      localObject1 = Integer.valueOf(paramEditorInfo.inputType);
       break;
-      label275:
-      Log.w("WxIme.WxHldService", "onWindowShown last:" + this.Dtw + " why????");
-      localObject1 = com.tencent.mm.plugin.hld.f.k.DHH;
-      localObject1 = com.tencent.mm.plugin.hld.f.k.eGO();
-      localObject3 = com.tencent.mm.plugin.hld.f.k.DHH;
-      if (!(kotlin.g.b.p.h(localObject1, com.tencent.mm.plugin.hld.f.k.eGP()) ^ true))
+      Log.w("WxIme.WxHldService", "onWindowShown last:" + this.Jnd + " why????");
+      localObject1 = com.tencent.mm.plugin.hld.f.k.JyF;
+      localObject1 = com.tencent.mm.plugin.hld.f.k.fOx();
+      com.tencent.mm.plugin.hld.f.k localk = com.tencent.mm.plugin.hld.f.k.JyF;
+      if (s.p(localObject1, com.tencent.mm.plugin.hld.f.k.fOy()))
       {
-        localObject1 = com.tencent.mm.plugin.hld.f.k.DHH;
-        localObject1 = com.tencent.mm.plugin.hld.f.k.eGM();
-        localObject3 = com.tencent.mm.plugin.hld.f.k.DHH;
-        if (!(kotlin.g.b.p.h(localObject1, com.tencent.mm.plugin.hld.f.k.eGL()) ^ true)) {}
+        localObject1 = com.tencent.mm.plugin.hld.f.k.JyF;
+        localObject1 = com.tencent.mm.plugin.hld.f.k.fOv();
+        localk = com.tencent.mm.plugin.hld.f.k.JyF;
+        if (s.p(localObject1, com.tencent.mm.plugin.hld.f.k.fOu())) {}
       }
       else
       {
-        localObject1 = com.tencent.mm.plugin.hld.model.n.DEn;
-        com.tencent.mm.plugin.hld.model.n.eEG();
-        localObject1 = f.DBL;
-        f.eDS();
-        localObject1 = com.tencent.mm.plugin.hld.model.g.DCm;
-        localObject1 = com.tencent.mm.plugin.hld.model.g.eEl();
+        localObject1 = com.tencent.mm.plugin.hld.model.n.JvW;
+        com.tencent.mm.plugin.hld.model.n.fMJ();
+        localObject1 = f.JuH;
+        f.fLV();
+        localObject1 = g.JuL;
+        localObject1 = g.fMn();
         if (localObject1 != null) {
           ((ImeCandidateView)localObject1).reset();
         }
-        eCl();
+        fKp();
       }
-      localObject1 = com.tencent.mm.plugin.hld.model.g.DCm;
-      if (!com.tencent.mm.plugin.hld.model.g.eDV())
-      {
-        localObject1 = com.tencent.mm.plugin.hld.model.g.DCm;
-        com.tencent.mm.plugin.hld.model.g.gP(getContext());
+      localObject1 = g.JuL;
+      if (g.fLX()) {
+        break label120;
       }
+      localObject1 = g.JuL;
+      g.ij(getContext());
+      break label120;
     }
   }
   
   public void onUpdateSelection(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    AppMethodBeat.i(216470);
+    AppMethodBeat.i(311605);
     super.onUpdateSelection(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
-    com.tencent.mm.plugin.hld.model.g localg = com.tencent.mm.plugin.hld.model.g.DCm;
-    com.tencent.mm.plugin.hld.model.g.eEp();
-    AppMethodBeat.o(216470);
+    g localg = g.JuL;
+    g.fMr();
+    AppMethodBeat.o(311605);
   }
   
   public void onWindowHidden()
   {
-    AppMethodBeat.i(216468);
-    Log.i("WxIme.WxHldService", "onWindowHidden " + System.currentTimeMillis());
+    AppMethodBeat.i(311597);
+    Log.i("WxIme.WxHldService", s.X("onWindowHidden ", Long.valueOf(System.currentTimeMillis())));
     super.onWindowHidden();
-    Object localObject = com.tencent.mm.plugin.hld.model.n.DEn;
-    Log.i("WxIme.WxEngineMgr", "onWindowHidden needReInitEngine:" + com.tencent.mm.plugin.hld.model.n.DEl);
-    com.tencent.mm.plugin.hld.model.n.eEG();
-    if (com.tencent.mm.plugin.hld.model.n.DEl) {
+    Object localObject = com.tencent.mm.plugin.hld.model.n.JvW;
+    Log.i("WxIme.WxEngineMgr", s.X("onWindowHidden needReInitEngine:", Boolean.valueOf(com.tencent.mm.plugin.hld.model.n.Jwk)));
+    com.tencent.mm.plugin.hld.model.n.fMJ();
+    if (com.tencent.mm.plugin.hld.model.n.Jwk) {
       com.tencent.mm.plugin.hld.model.n.finalize1();
     }
-    localObject = f.DBL;
-    f.eDS();
-    com.tencent.mm.plugin.hld.model.g.DCm.eDY();
-    localObject = com.tencent.mm.plugin.hld.model.g.DCm;
-    localObject = com.tencent.mm.plugin.hld.model.g.eEl();
+    localObject = f.JuH;
+    f.fLV();
+    g.JuL.fMa();
+    localObject = g.JuL;
+    localObject = g.fMn();
     if (localObject != null) {
       ((ImeCandidateView)localObject).reset();
     }
-    localObject = com.tencent.mm.plugin.hld.model.k.DDb;
-    com.tencent.mm.plugin.hld.model.k.eEx();
-    this.Dtw = false;
-    AppMethodBeat.o(216468);
+    localObject = com.tencent.mm.plugin.hld.model.k.JvH;
+    com.tencent.mm.plugin.hld.model.k.fMA();
+    this.Jnd = false;
+    AppMethodBeat.o(311597);
   }
   
   public void onWindowShown()
   {
-    AppMethodBeat.i(216465);
+    AppMethodBeat.i(311590);
     long l = System.currentTimeMillis();
     super.onWindowShown();
-    Object localObject = com.tencent.mm.plugin.hld.f.k.DHH;
-    localObject = com.tencent.mm.plugin.hld.f.k.DHH;
-    com.tencent.mm.plugin.hld.f.k.q(com.tencent.mm.plugin.hld.f.k.eGO());
-    localObject = com.tencent.mm.plugin.hld.f.k.DHH;
-    com.tencent.mm.plugin.hld.f.k.eGN();
-    if (this.Dtv) {
-      com.tencent.e.h.ZvG.bc((Runnable)new e(this));
+    Object localObject = com.tencent.mm.plugin.hld.f.k.JyF;
+    localObject = com.tencent.mm.plugin.hld.f.k.JyF;
+    com.tencent.mm.plugin.hld.f.k.x(com.tencent.mm.plugin.hld.f.k.fOx());
+    localObject = com.tencent.mm.plugin.hld.f.k.JyF;
+    com.tencent.mm.plugin.hld.f.k.fOw();
+    if (this.Jnc) {
+      com.tencent.threadpool.h.ahAA.bk(new WxHldService..ExternalSyntheticLambda3(this));
     }
-    StringBuilder localStringBuilder = new StringBuilder("onWindowShown ").append(this.Dtv).append(' ');
+    StringBuilder localStringBuilder = new StringBuilder("onWindowShown ").append(this.Jnc).append(' ');
     localObject = getCurrentInputEditorInfo();
-    if (localObject != null) {}
-    for (localObject = ((EditorInfo)localObject).packageName;; localObject = null)
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ((EditorInfo)localObject).packageName)
     {
-      Log.i("WxIme.WxHldService", (String)localObject + ' ' + l + ' ' + (System.currentTimeMillis() - l));
-      AppMethodBeat.o(216465);
+      Log.i("WxIme.WxHldService", localObject + ' ' + l + ' ' + (System.currentTimeMillis() - l));
+      AppMethodBeat.o(311590);
       return;
     }
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(216503);
-    Object localObject = getWindow();
-    kotlin.g.b.p.j(localObject, "window");
-    localObject = ((Dialog)localObject).getWindow();
-    if (localObject != null)
-    {
-      ((Window)localObject).setNavigationBarColor(eCy().getColor(a.c.ime_keyboard_end_color));
-      AppMethodBeat.o(216503);
-      return;
+    AppMethodBeat.i(311805);
+    Window localWindow = getWindow().getWindow();
+    if (localWindow != null) {
+      localWindow.setNavigationBarColor(fKB().getColor(a.c.ime_keyboard_end_color));
     }
-    AppMethodBeat.o(216503);
+    AppMethodBeat.o(311805);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/hld/WxHldService$commitEnglishText$1$3$1"})
-  static final class a
-    implements Runnable
-  {
-    a(InputConnection paramInputConnection, aa.d paramd, aa.f paramf) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(213435);
-      this.DtB.commitText((CharSequence)this.DtD.aaBC, 1);
-      AppMethodBeat.o(213435);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/WxHldService$Companion;", "", "()V", "TAG", "", "wxHldService", "Lcom/tencent/mm/plugin/hld/api/IImeService;", "getService", "plugin-hld_release"})
-  public static final class b {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/WxHldService$InputMethodSessionImpls;", "Landroid/inputmethodservice/InputMethodService$InputMethodSessionImpl;", "Landroid/inputmethodservice/InputMethodService;", "(Lcom/tencent/mm/plugin/hld/WxHldService;)V", "updateSelection", "", "oldSelStart", "", "oldSelEnd", "newSelStart", "newSelEnd", "candidatesStart", "candidatesEnd", "plugin-hld_release"})
-  public final class c
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/WxHldService$InputMethodSessionImpls;", "Landroid/inputmethodservice/InputMethodService$InputMethodSessionImpl;", "Landroid/inputmethodservice/InputMethodService;", "(Lcom/tencent/mm/plugin/hld/WxHldService;)V", "updateSelection", "", "oldSelStart", "", "oldSelEnd", "newSelStart", "newSelEnd", "candidatesStart", "candidatesEnd", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public final class b
     extends InputMethodService.InputMethodSessionImpl
   {
-    public c()
+    public b()
     {
       super();
+      AppMethodBeat.i(311574);
+      AppMethodBeat.o(311574);
     }
     
     public final void updateSelection(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
     {
-      AppMethodBeat.i(214019);
+      AppMethodBeat.i(311582);
       super.updateSelection(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
       Log.d("WxIme.WxHldService", "updateSelection " + paramInt1 + ' ' + paramInt2 + ' ' + paramInt3 + ' ' + paramInt4 + ' ' + paramInt5 + ' ' + paramInt6);
-      Object localObject = com.tencent.mm.plugin.hld.model.g.DCm;
-      if (com.tencent.mm.plugin.hld.model.g.eEh())
+      Object localObject = g.JuL;
+      if (g.fMj())
       {
-        localObject = com.tencent.mm.plugin.hld.model.n.DEn;
-        if (!com.tencent.mm.plugin.hld.model.n.eEE())
+        localObject = com.tencent.mm.plugin.hld.model.n.JvW;
+        if (!com.tencent.mm.plugin.hld.model.n.fMH())
         {
-          AppMethodBeat.o(214019);
+          AppMethodBeat.o(311582);
           return;
         }
       }
-      localObject = com.tencent.mm.plugin.hld.model.n.DEn;
-      com.tencent.mm.plugin.hld.model.n.eEL();
-      localObject = com.tencent.mm.plugin.hld.model.n.DEn;
-      if (com.tencent.mm.plugin.hld.model.n.eEE())
+      localObject = com.tencent.mm.plugin.hld.model.n.JvW;
+      com.tencent.mm.plugin.hld.model.n.fMO();
+      localObject = com.tencent.mm.plugin.hld.model.n.JvW;
+      if (com.tencent.mm.plugin.hld.model.n.fMH())
       {
-        localObject = com.tencent.mm.plugin.hld.model.n.DEn;
-        com.tencent.mm.plugin.hld.model.n.eEQ();
+        localObject = com.tencent.mm.plugin.hld.model.n.JvW;
+        com.tencent.mm.plugin.hld.model.n.fMT();
       }
-      localObject = com.tencent.mm.plugin.hld.model.g.DCm;
-      localObject = com.tencent.mm.plugin.hld.model.g.eEl();
-      if (localObject != null)
-      {
-        ((ImeCandidateView)localObject).eCK();
-        AppMethodBeat.o(214019);
-        return;
+      localObject = g.JuL;
+      localObject = g.fMn();
+      if (localObject != null) {
+        ((ImeCandidateView)localObject).fKN();
       }
-      AppMethodBeat.o(214019);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class d
-    implements Runnable
-  {
-    d(WxHldService paramWxHldService, CharSequence paramCharSequence, boolean paramBoolean) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(212801);
-      Object localObject1 = paramCharSequence;
-      if (localObject1 != null)
-      {
-        final aa.d locald = new aa.d();
-        locald.aaBA = 0;
-        final aa.f localf = new aa.f();
-        int i;
-        if (paramBoolean)
-        {
-          String str = paramCharSequence.subSequence(paramCharSequence.length() - 1, paramCharSequence.length()).toString();
-          Object localObject2 = com.tencent.mm.plugin.hld.f.b.DGL;
-          str = com.tencent.mm.plugin.hld.f.b.bd(WxHldService.eCz(), str);
-          if (!Util.isNullOrNil(str))
-          {
-            localObject2 = this.DtE.eCs();
-            if (localObject2 != null)
-            {
-              i = ((com.tencent.mm.plugin.hld.a.h)localObject2).start;
-              int j = ((CharSequence)localObject1).length();
-              localObject2 = x.aazN;
-              i += j;
-              localObject1 = new StringBuilder((CharSequence)localObject1).append(str);
-              kotlin.g.b.p.j(localObject1, "StringBuilder(it).append(pairChar)");
-              localObject1 = (CharSequence)localObject1;
-              label163:
-              localf.aaBC = localObject1;
-              localObject1 = com.tencent.mm.plugin.hld.model.g.DCm;
-              if (com.tencent.mm.plugin.hld.model.g.eEh())
-              {
-                localObject1 = com.tencent.mm.plugin.hld.f.b.DGL;
-                if (com.tencent.mm.plugin.hld.f.b.ab(paramCharSequence))
-                {
-                  localObject1 = this.DtE.eCx();
-                  if ((localObject1 != null) && (WxHldService.Z((CharSequence)localObject1) == 1)) {
-                    locald.aaBA = 1;
-                  }
-                }
-              }
-              localObject1 = this.DtE.getCurrentInputConnection();
-              if (localObject1 != null)
-              {
-                if (locald.aaBA <= 0) {
-                  break label384;
-                }
-                ((InputConnection)localObject1).commitText((CharSequence)"", 1);
-                if (Build.VERSION.SDK_INT < 24) {
-                  break label368;
-                }
-                ((InputConnection)localObject1).deleteSurroundingTextInCodePoints(locald.aaBA, 0);
-                label273:
-                com.tencent.e.h.ZvG.n((Runnable)new a((InputConnection)localObject1, locald, localf), 1L);
-              }
-            }
-          }
-        }
-        for (;;)
-        {
-          if (i != 0) {
-            this.DtE.Un(i);
-          }
-          localObject1 = com.tencent.mm.plugin.hld.f.l.DHK;
-          if (com.tencent.mm.plugin.hld.f.l.eGY())
-          {
-            localObject1 = com.tencent.mm.plugin.hld.model.g.DCm;
-            com.tencent.mm.plugin.hld.model.g.eEi();
-          }
-          localObject1 = com.tencent.mm.plugin.hld.model.k.DDb;
-          com.tencent.mm.plugin.hld.model.k.UD(((CharSequence)localf.aaBC).length());
-          AppMethodBeat.o(212801);
-          return;
-          i = 0;
-          break;
-          i = 0;
-          break label163;
-          i = 0;
-          break label163;
-          label368:
-          ((InputConnection)localObject1).deleteSurroundingText(locald.aaBA, 0);
-          break label273;
-          label384:
-          ((InputConnection)localObject1).commitText((CharSequence)localf.aaBC, 1);
-        }
-      }
-      AppMethodBeat.o(212801);
-    }
-    
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/hld/WxHldService$commitText$1$1$2$1"})
-    static final class a
-      implements Runnable
-    {
-      a(InputConnection paramInputConnection, aa.d paramd, aa.f paramf) {}
-      
-      public final void run()
-      {
-        AppMethodBeat.i(210953);
-        this.DtB.commitText((CharSequence)localf.aaBC, 1);
-        AppMethodBeat.o(210953);
-      }
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class e
-    implements Runnable
-  {
-    e(WxHldService paramWxHldService) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(211523);
-      this.DtE.eCt();
-      AppMethodBeat.o(211523);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/hld/WxHldService$updateEnglishStrikeView$4$1"})
-  static final class f
-    implements Runnable
-  {
-    f(InputConnection paramInputConnection, aa.d paramd, aa.f paramf) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(213799);
-      this.DtB.commitText((CharSequence)localf.aaBC, 1);
-      AppMethodBeat.o(213799);
+      AppMethodBeat.o(311582);
     }
   }
 }

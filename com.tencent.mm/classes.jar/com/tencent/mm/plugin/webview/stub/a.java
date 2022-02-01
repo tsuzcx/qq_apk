@@ -4,15 +4,15 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.ay.a.a;
-import com.tencent.mm.pluginsdk.ui.tools.ab;
+import com.tencent.mm.plugin.ba.a.e;
+import com.tencent.mm.pluginsdk.ui.tools.aa;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatHosts;
 
 public final class a
 {
-  public static final boolean ch(Context paramContext, String paramString)
+  public static final boolean cs(Context paramContext, String paramString)
   {
     AppMethodBeat.i(79247);
     if (Util.isNullOrNil(paramString))
@@ -22,7 +22,7 @@ public final class a
     }
     try
     {
-      paramContext = ab.getPackageInfo(paramContext, "com.tencent.weread");
+      paramContext = aa.getPackageInfo(paramContext, "com.tencent.weread");
       if (paramContext != null) {}
       for (boolean bool = true;; bool = false)
       {
@@ -33,7 +33,7 @@ public final class a
         AppMethodBeat.o(79247);
         return false;
       }
-      bool = Uri.parse(paramString).getHost().startsWith(WeChatHosts.domainString(a.a.host_mp_weixin_qq_com));
+      bool = Uri.parse(paramString).getHost().startsWith(WeChatHosts.domainString(a.e.host_mp_weixin_qq_com));
       if (!bool)
       {
         AppMethodBeat.o(79247);
@@ -54,12 +54,12 @@ public final class a
     return false;
   }
   
-  public static final boolean jb(Context paramContext)
+  public static final boolean kS(Context paramContext)
   {
     AppMethodBeat.i(79246);
     try
     {
-      paramContext = ab.getPackageInfo(paramContext, "com.tencent.mobileqq");
+      paramContext = aa.getPackageInfo(paramContext, "com.tencent.mobileqq");
       if (paramContext != null) {}
       for (boolean bool = true;; bool = false)
       {

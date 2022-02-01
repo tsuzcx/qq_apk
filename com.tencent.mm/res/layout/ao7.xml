@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<AbsoluteLayout android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:animateLayoutChanges="false"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/epz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:animateLayoutChanges="false">
-        <com.tencent.mm.ui.widget.ThreeDotsLoadingView android:layout_gravity="center" android:id="@id/epy" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <ImageView android:layout_gravity="center" android:id="@id/bh7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/app_brand_share_page_cover_default" android:scaleType="centerInside" />
-    </FrameLayout>
-</AbsoluteLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.viewpager.widget.ViewPager android:orientation="horizontal" android:id="@id/l8u" android:layout_width="fill_parent" android:layout_height="fill_parent" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+</androidx.constraintlayout.widget.ConstraintLayout>

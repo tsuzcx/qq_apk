@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/h93" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/mc" android:padding="@dimen/ct" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/cn">
-        <com.tencent.mm.ui.widget.imageview.WeImageButton android:id="@id/byx" android:background="@null" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:src="@raw/icons_outlined_emoji" android:scaleType="fitXY" />
-        <com.tencent.mm.ui.widget.imageview.WeImageButton android:id="@id/lt" android:background="@null" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginLeft="@dimen/ct" android:src="@raw/icons_outlined_alignment_left" android:scaleType="fitXY" />
-    </LinearLayout>
-</LinearLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="9.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/d8e" android:background="@drawable/w5" android:padding="@dimen/bv" android:layout_width="@dimen/d_" android:layout_height="@dimen/d_" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <View android:id="@id/d8g" android:background="@drawable/w4" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="@id/d8e" app:layout_constraintEnd_toEndOf="@id/d8e" app:layout_constraintStart_toStartOf="@id/d8e" app:layout_constraintTop_toTopOf="@id/d8e" />
+    <ProgressBar android:id="@id/d8f" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="@id/d8e" app:layout_constraintEnd_toEndOf="@id/d8e" app:layout_constraintStart_toStartOf="@id/d8e" app:layout_constraintTop_toTopOf="@id/d8e" style="@style/a87" />
+</androidx.constraintlayout.widget.ConstraintLayout>

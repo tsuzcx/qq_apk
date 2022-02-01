@@ -1,9 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@drawable/a_1" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/a9x" android:paddingLeft="@dimen/cb" android:paddingTop="@dimen/ce" android:paddingRight="@dimen/cb" android:paddingBottom="@dimen/ce" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/eww" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="8.0dip" />
-        <TextView android:textSize="@dimen/l" android:textColor="@color/UN_BW_0_Alpha_0_9" android:id="@id/ex6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:text="{test}" android:singleLine="false" android:layout_weight="1.0" />
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="12.0dip" android:layout_height="24.0dip" android:src="@raw/icons_outlined_arrow" app:iconColor="@color/UN_BW_0_Alpha_0_3" />
+<RelativeLayout android:id="@id/czg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
+    <ScrollView android:orientation="vertical" android:id="@id/czh" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true" android:layout_centerInParent="true">
+        <LinearLayout android:orientation="vertical" android:id="@id/fjp" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/rz">
+            <LinearLayout android:orientation="vertical" android:paddingTop="@dimen/i9" android:paddingBottom="@dimen/i9" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+                <LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/i9" android:paddingRight="@dimen/i9" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="@dimen/bm" android:id="@id/blo" android:layout_marginBottom="@dimen/i9" android:text="@string/fwa" style="@style/hu" />
+                    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/i9">
+                        <RelativeLayout android:id="@id/fjy" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                            <ImageView android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@raw/ipcall_feedback_star" />
+                            <ImageView android:id="@id/f65" android:visibility="invisible" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@raw/ipcall_feedback_star_hl" />
+                        </RelativeLayout>
+                        <RelativeLayout android:id="@id/fjz" android:paddingLeft="@dimen/if" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                            <ImageView android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@raw/ipcall_feedback_star" />
+                            <ImageView android:id="@id/f66" android:visibility="invisible" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@raw/ipcall_feedback_star_hl" />
+                        </RelativeLayout>
+                        <RelativeLayout android:id="@id/fk0" android:paddingLeft="@dimen/if" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                            <ImageView android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@raw/ipcall_feedback_star" />
+                            <ImageView android:id="@id/f67" android:visibility="invisible" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@raw/ipcall_feedback_star_hl" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                <FrameLayout android:id="@id/eat" android:layout_width="fill_parent" android:layout_height="0.0dip">
+                    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                        <com.tencent.mm.plugin.ipcall.ui.IPCallFeedbackScrollView android:id="@id/j4h" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fadeScrollbars="false">
+                            <com.tencent.mm.ui.base.FlowLayout android:id="@id/eas" android:paddingLeft="@dimen/i9" android:paddingRight="@dimen/i9" android:layout_width="fill_parent" android:layout_height="wrap_content" flowlayout:horizontalSpacing="10.0dip" flowlayout:verticalSpacing="10.0dip" />
+                        </com.tencent.mm.plugin.ipcall.ui.IPCallFeedbackScrollView>
+                        <com.tencent.mm.ui.widget.edittext.PasterEditText android:id="@id/bll" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i9" android:layout_marginTop="@dimen/i6" android:layout_marginRight="@dimen/i9" android:hint="@string/fw6" style="@style/hp" />
+                    </LinearLayout>
+                </FrameLayout>
+            </LinearLayout>
+            <LinearLayout android:gravity="right" android:orientation="horizontal" android:paddingLeft="@dimen/if" android:paddingRight="@dimen/i6" android:paddingBottom="@dimen/i6" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <Button android:textSize="@dimen/j7" android:textColor="@color/ib" android:id="@id/bl8" android:background="@drawable/c1" android:layout_width="wrap_content" android:minWidth="@dimen/av" android:text="@string/fw5" style="@style/or" />
+                <Button android:textSize="@dimen/j7" android:textColor="@color/gz" android:id="@id/bl9" android:background="@drawable/c1" android:layout_width="wrap_content" android:minWidth="@dimen/av" android:text="@string/fw7" style="@style/or" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout android:orientation="vertical" android:id="@id/fjq" android:paddingTop="@dimen/if" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/rz">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:paddingLeft="@dimen/if" android:paddingRight="@dimen/if" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginTop="@dimen/i6" android:layout_marginBottom="@dimen/i6" android:layout_weight="1.0">
+            <ImageView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/dialogs_successful" />
+            <TextView android:textSize="@dimen/bm" android:textColor="@color/a7b" android:gravity="center" android:id="@id/f91" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m2" android:text="@string/fw_" />
+            <TextView android:textSize="@dimen/bj" android:textColor="@color/m4" android:gravity="center" android:id="@id/f92" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/if" android:layout_marginBottom="@dimen/i6" />
+        </LinearLayout>
+        <LinearLayout android:gravity="right" android:orientation="horizontal" android:paddingLeft="@dimen/if" android:paddingRight="@dimen/i6" android:paddingBottom="@dimen/i6" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:textSize="@dimen/j7" android:textColor="@color/ib" android:id="@id/f8z" android:background="@drawable/c1" android:layout_width="wrap_content" android:minWidth="@dimen/av" android:text="@string/fw5" style="@style/or" />
+            <Button android:textSize="@dimen/j7" android:textColor="@color/wv" android:id="@id/f90" android:background="@drawable/c1" android:layout_width="wrap_content" android:minWidth="@dimen/av" android:text="@string/fw9" style="@style/or" />
+        </LinearLayout>
     </LinearLayout>
-</FrameLayout>
+</RelativeLayout>

@@ -1,7 +1,7 @@
 package com.tencent.matrix.d;
 
 import android.content.Context;
-import com.tencent.matrix.report.f;
+import com.tencent.matrix.report.g;
 
 public class a
   implements c
@@ -13,10 +13,10 @@ public class a
     this.context = paramContext;
   }
   
-  public void a(f paramf)
+  public void a(g paramg)
   {
-    Object localObject = paramf;
-    if (paramf == null) {
+    Object localObject = paramg;
+    if (paramg == null) {
       localObject = "";
     }
     com.tencent.matrix.e.c.i("Matrix.DefaultPluginListener", "report issue content: %s", new Object[] { localObject });
@@ -44,7 +44,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.d.a
  * JD-Core Version:    0.7.0.1
  */

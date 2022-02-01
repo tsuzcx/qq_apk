@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.gamelive.event;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.r;
-import kotlin.l;
+import com.tencent.mm.plugin.appbrand.jsapi.s;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelive/event/GameLiveAppbrandEventService$EventOnGameLiveMicStateChange;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApiEvent;", "()V", "CTRL_INDEX", "", "NAME", "", "plugin-gamelive_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/gamelive/event/GameLiveAppbrandEventService$EventOnGameLiveMicStateChange;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApiEvent;", "()V", "CTRL_INDEX", "", "NAME", "", "plugin-gamelive_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class GameLiveAppbrandEventService$c
-  extends r
+  extends s
 {
   private static final int CTRL_INDEX = 1037;
-  public static final c Dmd;
+  public static final c Jfm;
   public static final String NAME = "onGameLiveMicStateChange";
   
   static
   {
-    AppMethodBeat.i(208713);
-    Dmd = new c();
-    AppMethodBeat.o(208713);
+    AppMethodBeat.i(277384);
+    Jfm = new c();
+    AppMethodBeat.o(277384);
   }
 }
 

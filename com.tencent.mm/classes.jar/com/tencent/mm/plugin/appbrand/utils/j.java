@@ -1,94 +1,86 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
 import android.app.Activity;
-import android.app.Application;
-import android.app.Application.ActivityLifecycleCallbacks;
 import android.content.Context;
-import android.os.Bundle;
+import com.tencent.luggage.l.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Queue;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import kotlin.Metadata;
+import kotlin.g.a.a;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.k;
 
-public class j
-  implements Application.ActivityLifecycleCallbacks
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/utils/AppBrandPermissionDelegateLogic;", "", "()V", "SystemAuthFrequencyLimitFlagLocation", "", "SystemAuthFrequencyLimitFlagNone", "TAG", "", "delegate", "com/tencent/mm/plugin/appbrand/utils/AppBrandPermissionDelegateLogic$delegate$2$1", "getDelegate", "()Lcom/tencent/mm/plugin/appbrand/utils/AppBrandPermissionDelegateLogic$delegate$2$1;", "delegate$delegate", "Lkotlin/Lazy;", "installDelegate", "", "requestPermission", "activity", "Landroid/content/Context;", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "permission", "onGrant", "Ljava/lang/Runnable;", "onDenied", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class j
 {
-  public Application app;
-  public final Queue<a> rix;
-  private int riy;
-  public boolean riz;
+  public static final j uqy;
+  private static final kotlin.j uqz;
   
-  public j()
+  static
   {
-    AppMethodBeat.i(137911);
-    this.rix = new LinkedList();
-    this.riy = 0;
-    this.riz = false;
-    AppMethodBeat.o(137911);
+    AppMethodBeat.i(317321);
+    uqy = new j();
+    uqz = k.cm((a)a.uqA);
+    AppMethodBeat.o(317321);
   }
   
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
+  public static void a(Context paramContext, f paramf, String paramString, Runnable paramRunnable1, Runnable paramRunnable2)
   {
-    AppMethodBeat.i(137912);
-    this.riy += 1;
-    if (this.riy == 1)
+    AppMethodBeat.i(317313);
+    s.u(paramContext, "activity");
+    s.u(paramf, "component");
+    s.u(paramString, "permission");
+    if (!(paramContext instanceof Activity))
     {
-      Log.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.notifyOnActivityCreated ");
-      paramBundle = this.rix.iterator();
-      while (paramBundle.hasNext()) {
-        ((a)paramBundle.next()).er(paramActivity);
+      if (paramRunnable2 != null) {
+        paramRunnable2.run();
       }
+      AppMethodBeat.o(317313);
+      return;
     }
-    AppMethodBeat.o(137912);
+    cNx().a((Activity)paramContext, paramf, paramString, new j..ExternalSyntheticLambda0(paramRunnable1, paramRunnable2));
+    AppMethodBeat.o(317313);
   }
   
-  public void onActivityDestroyed(Activity paramActivity)
+  private static final void a(Runnable paramRunnable1, Runnable paramRunnable2, int paramInt)
   {
-    AppMethodBeat.i(137913);
-    this.riy -= 1;
-    if (this.riy == 0)
-    {
-      Log.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.notifyOnNoActivityLeft ");
-      paramActivity = this.rix.iterator();
-      while (paramActivity.hasNext()) {
-        ((a)paramActivity.next()).cmf();
-      }
-      if ((this.riz) && (this.app != null))
-      {
-        paramActivity = this.app;
-        Log.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.release ");
-        paramActivity.unregisterActivityLifecycleCallbacks(this);
-        this.rix.clear();
-        this.app = null;
-        this.riz = false;
-        this.riz = false;
-        this.app = null;
-      }
-    }
-    AppMethodBeat.o(137913);
+    AppMethodBeat.i(317317);
+    c.uiThread((a)new j.b(paramInt, paramRunnable1, paramRunnable2));
+    AppMethodBeat.o(317317);
   }
   
-  public void onActivityPaused(Activity paramActivity) {}
-  
-  public void onActivityResumed(Activity paramActivity) {}
-  
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityStarted(Activity paramActivity) {}
-  
-  public void onActivityStopped(Activity paramActivity) {}
-  
-  public static abstract interface a
+  public static j.a.1 cNx()
   {
-    public abstract void cmf();
+    AppMethodBeat.i(317307);
+    j.a.1 local1 = (j.a.1)uqz.getValue();
+    AppMethodBeat.o(317307);
+    return local1;
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "com/tencent/mm/plugin/appbrand/utils/AppBrandPermissionDelegateLogic$delegate$2$1"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements a<j.a.1>
+  {
+    public static final a uqA;
     
-    public abstract void er(Context paramContext);
+    static
+    {
+      AppMethodBeat.i(317383);
+      uqA = new a();
+      AppMethodBeat.o(317383);
+    }
+    
+    a()
+    {
+      super();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.j
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,24 @@
 package com.tencent.mm.app;
 
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.t;
-import com.tencent.mm.model.bh;
-import com.tencent.mm.plugin.report.b.d;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.autogen.a.xp;
+import com.tencent.mm.sdk.event.IListener;
 
-final class WorkerProfile$28
-  implements Runnable
+class WorkerProfile$28
+  extends IListener<xp>
 {
-  WorkerProfile$28(WorkerProfile paramWorkerProfile, int paramInt, byte[] paramArrayOfByte) {}
-  
-  public final void run()
+  WorkerProfile$28(WorkerProfile paramWorkerProfile, q paramq)
   {
-    AppMethodBeat.i(19584);
-    if (bh.beB())
-    {
-      AppMethodBeat.o(19584);
-      return;
-    }
-    Log.i("MicroMsg.WorkerProfile", "summeranrt onReportKVDataReady channel:" + this.ffT);
-    d locald = new d(this.ffU, this.ffT);
-    bh.aGY().a(locald, 0);
-    AppMethodBeat.o(19584);
+    super(paramq);
+    AppMethodBeat.i(239028);
+    this.__eventId = xp.class.getName().hashCode();
+    AppMethodBeat.o(239028);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.app.WorkerProfile.28
  * JD-Core Version:    0.7.0.1
  */

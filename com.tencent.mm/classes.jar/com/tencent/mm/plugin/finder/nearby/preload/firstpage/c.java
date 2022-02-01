@@ -4,49 +4,85 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.t;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.nearby.live.square.tab.e;
-import com.tencent.mm.plugin.finder.viewmodel.b;
-import com.tencent.mm.plugin.findersdk.b.g;
-import com.tencent.mm.protocal.protobuf.bid;
+import com.tencent.mm.am.p;
+import com.tencent.mm.plugin.finder.e.h;
+import com.tencent.mm.plugin.finder.nearby.report.b;
+import com.tencent.mm.plugin.finder.viewmodel.n;
+import com.tencent.mm.plugin.findersdk.b.i;
+import com.tencent.mm.protocal.protobuf.bui;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/preload/firstpage/NearbySquareTabsPreload;", "Lcom/tencent/mm/plugin/finder/nearby/preload/firstpage/FirstPagePreload;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "enterType", "", "netSceneFetchSquareTabs", "Lcom/tencent/mm/plugin/finder/nearby/live/square/tab/NetSceneFetchSquareTabs;", "preloadCacheManager", "Lcom/tencent/mm/plugin/finder/nearby/preload/cache/PreloadCacheManager;", "checkIfStartPreload", "", "fetchInternal", "", "fetchLiveSquareTabs", "fetchTabsInternal", "initFinderReportContextObj", "intent", "Landroid/content/Intent;", "onSceneEnd", "errType", "", "errCode", "errMsg", "scene", "startPreload", "stopPreload", "plugin-finder-nearby_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/preload/firstpage/NearbySquareTabsPreload;", "Lcom/tencent/mm/plugin/finder/nearby/preload/firstpage/FirstPagePreload;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "enterType", "", "netSceneFetchSquareTabs", "Lcom/tencent/mm/plugin/finder/nearby/live/square/tab/NetSceneFetchSquareTabs;", "preloadCacheManager", "Lcom/tencent/mm/plugin/finder/nearby/preload/cache/PreloadCacheManager;", "scene", "", "checkIfStartPreload", "", "fetchInternal", "", "fetchLiveSquareTabs", "fetchTabsInternal", "initFinderReportContextObj", "intent", "Landroid/content/Intent;", "onSceneEnd", "errType", "errCode", "errMsg", "startPreload", "stopPreload", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
-  extends a<com.tencent.mm.an.q>
-  implements i
+  extends a<p>
+  implements com.tencent.mm.am.h
 {
-  public bid xbu;
-  private e zGI;
-  private com.tencent.mm.plugin.finder.nearby.preload.cache.a zIL;
-  public String zIP;
+  public bui Auc;
+  private com.tencent.mm.plugin.finder.nearby.live.square.tab.c EMe;
+  private com.tencent.mm.plugin.finder.nearby.preload.cache.a EQe;
+  public String EQi;
+  public int scene;
   
   public c()
   {
-    AppMethodBeat.i(200888);
-    this.zIP = "12";
-    this.zIL = new com.tencent.mm.plugin.finder.nearby.preload.cache.a();
-    AppMethodBeat.o(200888);
+    AppMethodBeat.i(339992);
+    this.EQi = "12";
+    this.EQe = new com.tencent.mm.plugin.finder.nearby.preload.cache.a();
+    AppMethodBeat.o(339992);
   }
   
-  public final void dMs()
+  public final void eGA()
   {
-    AppMethodBeat.i(200874);
-    Object localObject2 = this.zIL;
-    Object localObject1 = this.zIP;
-    p.k(localObject1, "memoryCacheFlag");
-    Log.i("PreloadCacheManager", "getPreloadSquareTabsCache memoryCacheFlag:".concat(String.valueOf(localObject1)));
+    AppMethodBeat.i(340010);
+    Object localObject2 = this.Auc;
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      kotlin.g.b.s.bIx("contextObj");
+      localObject1 = null;
+    }
+    Log.i(getTAG(), kotlin.g.b.s.X("fetchLiveSquareTabs, contextObj:", localObject1));
+    eGx().aDn("doScene");
+    localObject2 = b.EQs;
+    b.eGF();
+    this.EMe = new com.tencent.mm.plugin.finder.nearby.live.square.tab.c((bui)localObject1, this.scene);
+    localObject1 = this.EMe;
+    if (localObject1 != null)
+    {
+      localObject1 = (com.tencent.mm.plugin.findersdk.b.h)localObject1;
+      localObject2 = MMApplicationContext.getContext();
+      kotlin.g.b.s.s(localObject2, "getContext()");
+      com.tencent.mm.plugin.findersdk.b.h.a((com.tencent.mm.plugin.findersdk.b.h)localObject1, (Context)localObject2, MMApplicationContext.getContext().getResources().getString(e.h.finder_waiting));
+    }
+    com.tencent.mm.kernel.h.aZW().a(4210, (com.tencent.mm.am.h)this);
+    com.tencent.mm.kernel.h.aZW().a((p)this.EMe, 0);
+    AppMethodBeat.o(340010);
+  }
+  
+  public final void eGB()
+  {
+    AppMethodBeat.i(340013);
+    com.tencent.mm.kernel.h.aZW().b(4210, (com.tencent.mm.am.h)this);
+    super.eGB();
+    AppMethodBeat.o(340013);
+  }
+  
+  public final void eGy()
+  {
+    AppMethodBeat.i(339998);
+    Object localObject2 = this.EQe;
+    Object localObject1 = this.EQi;
+    kotlin.g.b.s.u(localObject1, "memoryCacheFlag");
+    Log.i("PreloadCacheManager", kotlin.g.b.s.X("getPreloadSquareTabsCache memoryCacheFlag:", localObject1));
     localObject2 = ((com.tencent.mm.plugin.finder.nearby.preload.cache.a)localObject2).tlCache;
-    p.k(localObject1, "memoryCacheFlag");
-    localObject1 = (com.tencent.mm.plugin.findersdk.b.h)((b)localObject2).Bgo.get(localObject1);
+    kotlin.g.b.s.u(localObject1, "memoryCacheFlag");
+    localObject1 = (i)((n)localObject2).GKn.get(localObject1);
     int i;
     if (localObject1 == null) {
       i = 1;
@@ -54,94 +90,64 @@ public final class c
     while (i == 0)
     {
       Log.i(getTAG(), "startPreload return for use cache tabs.");
-      AppMethodBeat.o(200874);
+      AppMethodBeat.o(339998);
       return;
-      if (b((com.tencent.mm.plugin.findersdk.b.h)localObject1))
+      if (c((i)localObject1))
       {
         i = 1;
       }
       else
       {
-        a((com.tencent.mm.plugin.findersdk.b.h)localObject1);
-        a(dMq(), (kotlin.g.a.a)a.zIQ);
+        a((i)localObject1);
+        a(eGw(), (kotlin.g.a.a)a.EQj);
         i = 0;
       }
     }
-    super.dMs();
-    AppMethodBeat.o(200874);
+    super.eGy();
+    AppMethodBeat.o(339998);
   }
   
-  public final void dMu()
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(200876);
-    Object localObject = this.xbu;
-    if (localObject == null) {
-      p.bGy("contextObj");
-    }
-    Log.i(getTAG(), "fetchLiveSquareTabs, contextObj:".concat(String.valueOf(localObject)));
-    dMr().aGV("doScene");
-    this.zGI = new e((bid)localObject);
-    localObject = this.zGI;
-    if (localObject != null)
-    {
-      Context localContext1 = MMApplicationContext.getContext();
-      p.j(localContext1, "MMApplicationContext.getContext()");
-      Context localContext2 = MMApplicationContext.getContext();
-      p.j(localContext2, "MMApplicationContext.getContext()");
-      g.a((g)localObject, localContext1, localContext2.getResources().getString(b.j.finder_waiting));
-    }
-    com.tencent.mm.kernel.h.aGY().a(4210, (i)this);
-    com.tencent.mm.kernel.h.aGY().b((com.tencent.mm.an.q)this.zGI);
-    AppMethodBeat.o(200876);
-  }
-  
-  public final void dMv()
-  {
-    AppMethodBeat.i(200879);
-    com.tencent.mm.kernel.h.aGY().b(4210, (i)this);
-    super.dMv();
-    AppMethodBeat.o(200879);
-  }
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
-  {
-    AppMethodBeat.i(200884);
-    p.k(paramq, "scene");
-    Log.i(getTAG(), "onSceneEnd errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString + " scene:" + paramq);
-    dMr().aGV("onSceneEnd");
-    a(new com.tencent.mm.plugin.findersdk.b.h(paramInt1, paramInt2, paramString, paramq, SystemClock.elapsedRealtime()));
-    Object localObject = this.zIL;
-    paramString = this.zIP;
-    paramq = dMq();
-    p.k(paramString, "memoryCacheFlag");
-    if (paramq == null) {
+    AppMethodBeat.i(340021);
+    kotlin.g.b.s.u(paramp, "scene");
+    Log.i(getTAG(), "onSceneEnd errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString + " scene:" + paramp);
+    eGx().aDn("onSceneEnd");
+    Object localObject = b.EQs;
+    b.eGG();
+    a(new i(paramInt1, paramInt2, paramString, paramp, SystemClock.elapsedRealtime()));
+    localObject = this.EQe;
+    paramString = this.EQi;
+    paramp = eGw();
+    kotlin.g.b.s.u(paramString, "memoryCacheFlag");
+    if (paramp == null) {
       Log.w("PreloadCacheManager", "storePreloadSquareTabsCache memoryCacheFlag:" + paramString + " return for null.");
     }
     for (;;)
     {
-      a(dMq(), (kotlin.g.a.a)new b(this));
-      AppMethodBeat.o(200884);
+      a(eGw(), (kotlin.g.a.a)new b(this));
+      AppMethodBeat.o(340021);
       return;
-      Log.i("PreloadCacheManager", "storePreloadSquareTabsCache memoryCacheFlag:".concat(String.valueOf(paramString)));
+      Log.i("PreloadCacheManager", kotlin.g.b.s.X("storePreloadSquareTabsCache memoryCacheFlag:", paramString));
       localObject = ((com.tencent.mm.plugin.finder.nearby.preload.cache.a)localObject).tlCache;
-      p.k(paramString, "memoryCacheFlag");
-      p.k(paramq, "response");
-      ((Map)((b)localObject).Bgo).put(paramString, paramq);
+      kotlin.g.b.s.u(paramString, "memoryCacheFlag");
+      kotlin.g.b.s.u(paramp, "response");
+      ((Map)((n)localObject).GKn).put(paramString, paramp);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    public static final a zIQ;
+    public static final a EQj;
     
     static
     {
-      AppMethodBeat.i(200999);
-      zIQ = new a();
-      AppMethodBeat.o(200999);
+      AppMethodBeat.i(339987);
+      EQj = new a();
+      AppMethodBeat.o(339987);
     }
     
     a()
@@ -150,10 +156,10 @@ public final class c
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
     b(c paramc)
     {
@@ -163,7 +169,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.nearby.preload.firstpage.c
  * JD-Core Version:    0.7.0.1
  */

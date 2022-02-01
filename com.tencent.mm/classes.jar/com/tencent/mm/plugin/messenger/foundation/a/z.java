@@ -6,10 +6,7 @@ public abstract interface z
 {
   public abstract void a(Activity paramActivity, String paramString1, String paramString2, a parama);
   
-  public static abstract interface a
-  {
-    public abstract void ub(boolean paramBoolean);
-  }
+  public static abstract interface a {}
 }
 
 

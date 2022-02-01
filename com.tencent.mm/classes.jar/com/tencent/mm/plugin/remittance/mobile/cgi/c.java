@@ -1,33 +1,32 @@
 package com.tencent.mm.plugin.remittance.mobile.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.etz;
-import com.tencent.mm.protocal.protobuf.eua;
+import com.tencent.mm.protocal.protobuf.fpm;
+import com.tencent.mm.protocal.protobuf.fpn;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
   extends a
 {
-  public eua IiK;
+  public fpn Ofv;
   private final String TAG;
   
   public c(String paramString)
   {
     AppMethodBeat.i(67628);
     this.TAG = "MicroMsg.mobileRemit.NetSceneMobileRemitGetHomePage";
-    d.a locala = new d.a();
-    locala.lBU = new etz();
-    locala.lBV = new eua();
+    c.a locala = new c.a();
+    locala.otE = new fpm();
+    locala.otF = new fpn();
     locala.funcId = 1275;
     locala.uri = "/cgi-bin/mmpay-bin/transferphonedelhisrcvr";
-    this.rr = locala.bgN();
-    ((etz)d.b.b(this.rr.lBR)).UvP = paramString;
+    this.rr = locala.bEF();
+    ((fpm)c.b.b(this.rr.otB)).abPu = paramString;
     Log.i("MicroMsg.mobileRemit.NetSceneMobileRemitGetHomePage", "do scene NetSceneMobileRemitDeleteRecord rcvr_id:%s ", new Object[] { paramString });
     AppMethodBeat.o(67628);
   }
@@ -36,8 +35,8 @@ public final class c
   {
     AppMethodBeat.i(67629);
     Log.i("MicroMsg.mobileRemit.NetSceneMobileRemitGetHomePage", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.IiK = ((eua)d.c.b(((d)params).lBS));
-    Log.i("MicroMsg.mobileRemit.NetSceneMobileRemitGetHomePage", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.IiK.tqa), this.IiK.tqb });
+    this.Ofv = ((fpn)c.c.b(((com.tencent.mm.am.c)params).otC));
+    Log.i("MicroMsg.mobileRemit.NetSceneMobileRemitGetHomePage", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.Ofv.wuz), this.Ofv.wuA });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
@@ -46,11 +45,11 @@ public final class c
   
   public final void f(s params)
   {
-    AppMethodBeat.i(270282);
-    params = (eua)d.c.b(((d)params).lBS);
-    this.YVy = params.tqa;
-    this.YVz = params.tqb;
-    AppMethodBeat.o(270282);
+    AppMethodBeat.i(288857);
+    params = (fpn)c.c.b(((com.tencent.mm.am.c)params).otC);
+    this.agTs = params.wuz;
+    this.agTt = params.wuA;
+    AppMethodBeat.o(288857);
   }
   
   public final int getType()

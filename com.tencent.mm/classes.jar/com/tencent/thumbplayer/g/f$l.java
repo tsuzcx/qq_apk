@@ -5,12 +5,12 @@ import com.tencent.thumbplayer.api.TPCaptureParams;
 
 final class f$l
 {
-  TPCaptureParams ZEy;
-  TPCaptureCallBack ZEz;
+  TPCaptureParams ahJB;
+  TPCaptureCallBack ahJC;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.g.f.l
  * JD-Core Version:    0.7.0.1
  */

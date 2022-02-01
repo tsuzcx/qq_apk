@@ -1,18 +1,69 @@
 package com.tencent.mm.plugin.sns.k;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.f;
-import com.tencent.mm.sdk.platformtools.Log;
 
 public final class h
+  extends com.tencent.mm.bx.a
 {
-  public static void u(int paramInt1, String paramString, int paramInt2)
+  public String PzX;
+  public int state;
+  
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(125685);
-    paramString = String.format("%s,%s,%s,%s", new Object[] { Integer.valueOf(paramInt1), paramString, Integer.valueOf(paramInt2), Long.valueOf(System.currentTimeMillis()) });
-    Log.i("MicroMsg.SNS.SnsReportLogic", "snsRedDotAction 16172 report %s", new Object[] { paramString });
-    f.Iyx.kvStat(16172, paramString);
-    AppMethodBeat.o(125685);
+    AppMethodBeat.i(96159);
+    if (paramInt == 0)
+    {
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.PzX != null) {
+        paramVarArgs.g(1, this.PzX);
+      }
+      paramVarArgs.bS(2, this.state);
+      AppMethodBeat.o(96159);
+      return 0;
+    }
+    if (paramInt == 1) {
+      if (this.PzX == null) {
+        break label254;
+      }
+    }
+    label254:
+    for (paramInt = i.a.a.b.b.a.h(1, this.PzX) + 0;; paramInt = 0)
+    {
+      int i = i.a.a.b.b.a.cJ(2, this.state);
+      AppMethodBeat.o(96159);
+      return paramInt + i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(96159);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+        h localh = (h)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(96159);
+          return -1;
+        case 1: 
+          localh.PzX = locala.ajGk.readString();
+          AppMethodBeat.o(96159);
+          return 0;
+        }
+        localh.state = locala.ajGk.aar();
+        AppMethodBeat.o(96159);
+        return 0;
+      }
+      AppMethodBeat.o(96159);
+      return -1;
+    }
   }
 }
 

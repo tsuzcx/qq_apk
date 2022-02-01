@@ -9,19 +9,21 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.sdk.systemservicecache.NetworkCache;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.storage.au;
 
 public final class a
 {
-  public static final boolean aUy(String paramString)
+  public static final boolean aRG(String paramString)
   {
     AppMethodBeat.i(40497);
     int i;
-    if ((ab.Ql(paramString)) && (ab.Rc(paramString)))
+    if ((ab.IR(paramString)) && (ab.Ja(paramString)))
     {
       i = 1;
-      if ((!ab.Lj(paramString)) || (ab.Rb(paramString))) {
+      if ((!au.bwE(paramString)) || (ab.IZ(paramString))) {
         break label57;
       }
     }
@@ -41,15 +43,15 @@ public final class a
     return false;
   }
   
-  public static final boolean foK()
+  public static final boolean gzN()
   {
     AppMethodBeat.i(40498);
-    if (!foL())
+    if (!gzO())
     {
       AppMethodBeat.o(40498);
       return false;
     }
-    if (!foM())
+    if (!gzP())
     {
       AppMethodBeat.o(40498);
       return false;
@@ -58,10 +60,10 @@ public final class a
     return true;
   }
   
-  public static final boolean foL()
+  public static final boolean gzO()
   {
     AppMethodBeat.i(40499);
-    if (!b.bki())
+    if (!b.bHZ())
     {
       AppMethodBeat.o(40499);
       return true;
@@ -70,10 +72,10 @@ public final class a
     return false;
   }
   
-  public static final boolean foM()
+  public static final boolean gzP()
   {
     AppMethodBeat.i(40500);
-    int i = Util.getInt(((com.tencent.mm.plugin.zero.b.a)h.ae(com.tencent.mm.plugin.zero.b.a.class)).axc().getValue("ChatImgAutoDownload"), 1);
+    int i = Util.getInt(((com.tencent.mm.plugin.zero.b.a)h.ax(com.tencent.mm.plugin.zero.b.a.class)).aRC().getValue("ChatImgAutoDownload"), 1);
     if (i == 3)
     {
       Log.i("MicroMsg.Priority.C2CMsgImgAutoDownloadControlLogic", "settings is not auto download C2C image. ChatImgAutoDownload : ".concat(String.valueOf(i)));
@@ -87,9 +89,9 @@ public final class a
     }
     if (i == 1)
     {
-      if (!NetStatusUtil.isWifi(MMApplicationContext.getContext()))
+      if (!NetworkCache.INSTANCE.isWifiFromCache(MMApplicationContext.getContext()))
       {
-        boolean bool = foN();
+        boolean bool = gzQ();
         AppMethodBeat.o(40500);
         return bool;
       }
@@ -100,19 +102,19 @@ public final class a
     return false;
   }
   
-  private static boolean foN()
+  private static boolean gzQ()
   {
     AppMethodBeat.i(40501);
-    long l2 = Util.getInt(((com.tencent.mm.plugin.zero.b.a)h.ae(com.tencent.mm.plugin.zero.b.a.class)).axc().getValue("ChatImgAutoDownloadMax"), 0);
-    long l1 = Util.nullAs((Long)h.aHG().aHp().get(ar.a.VhI, null), 0L);
+    long l2 = Util.getInt(((com.tencent.mm.plugin.zero.b.a)h.ax(com.tencent.mm.plugin.zero.b.a.class)).aRC().getValue("ChatImgAutoDownloadMax"), 0);
+    long l1 = Util.nullAs((Long)h.baE().ban().get(at.a.acJc, null), 0L);
     long l3 = Util.safeParseLong((String)DateFormat.format("M", System.currentTimeMillis()));
-    long l4 = Util.nullAs((Long)h.aHG().aHp().get(ar.a.VhJ, null), 0L);
+    long l4 = Util.nullAs((Long)h.baE().ban().get(at.a.acJd, null), 0L);
     Log.d("MicroMsg.Priority.C2CMsgImgAutoDownloadControlLogic", "currentmonth " + l3 + " month " + l4 + " maxcount " + l2 + " current " + l1);
     if (l3 != l4)
     {
       Log.i("MicroMsg.Priority.C2CMsgImgAutoDownloadControlLogic", "update month %d ", new Object[] { Long.valueOf(l3) });
-      h.aHG().aHp().set(ar.a.VhI, Long.valueOf(0L));
-      h.aHG().aHp().set(ar.a.VhJ, Long.valueOf(l3));
+      h.baE().ban().set(at.a.acJc, Long.valueOf(0L));
+      h.baE().ban().set(at.a.acJd, Long.valueOf(l3));
       l1 = 0L;
     }
     if ((l1 > l2) && (l2 > 0L))

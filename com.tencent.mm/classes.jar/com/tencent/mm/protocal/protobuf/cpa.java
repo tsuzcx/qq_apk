@@ -4,157 +4,91 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class cpa
-  extends com.tencent.mm.cd.a
+  extends esc
 {
-  public int CPw;
-  public String RYJ;
-  public String SessionId;
-  public int Tkv;
-  public String Tkx;
-  public cqh TwK;
-  public aam TwL;
+  public String hUv;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(212401);
+    AppMethodBeat.i(152587);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.RYJ != null) {
-        paramVarArgs.f(1, this.RYJ);
-      }
-      if (this.TwK != null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse != null)
       {
-        paramVarArgs.oE(2, this.TwK.computeSize());
-        this.TwK.writeFields(paramVarArgs);
+        paramVarArgs.qD(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      paramVarArgs.aY(3, this.CPw);
-      if (this.TwL != null)
-      {
-        paramVarArgs.oE(4, this.TwL.computeSize());
-        this.TwL.writeFields(paramVarArgs);
+      if (this.hUv != null) {
+        paramVarArgs.g(2, this.hUv);
       }
-      paramVarArgs.aY(5, this.Tkv);
-      if (this.Tkx != null) {
-        paramVarArgs.f(6, this.Tkx);
-      }
-      if (this.SessionId != null) {
-        paramVarArgs.f(7, this.SessionId);
-      }
-      AppMethodBeat.o(212401);
+      AppMethodBeat.o(152587);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.RYJ == null) {
-        break label694;
+      if (this.BaseResponse == null) {
+        break label344;
       }
     }
-    label694:
-    for (paramInt = g.a.a.b.b.a.g(1, this.RYJ) + 0;; paramInt = 0)
+    label344:
+    for (paramInt = i.a.a.a.qC(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.TwK != null) {
-        i = paramInt + g.a.a.a.oD(2, this.TwK.computeSize());
+      if (this.hUv != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.hUv);
       }
-      i += g.a.a.b.b.a.bM(3, this.CPw);
-      paramInt = i;
-      if (this.TwL != null) {
-        paramInt = i + g.a.a.a.oD(4, this.TwL.computeSize());
-      }
-      i = paramInt + g.a.a.b.b.a.bM(5, this.Tkv);
-      paramInt = i;
-      if (this.Tkx != null) {
-        paramInt = i + g.a.a.b.b.a.g(6, this.Tkx);
-      }
-      i = paramInt;
-      if (this.SessionId != null) {
-        i = paramInt + g.a.a.b.b.a.g(7, this.SessionId);
-      }
-      AppMethodBeat.o(212401);
+      AppMethodBeat.o(152587);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = esc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = esc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(212401);
+        AppMethodBeat.o(152587);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         cpa localcpa = (cpa)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(212401);
+          AppMethodBeat.o(152587);
           return -1;
         case 1: 
-          localcpa.RYJ = ((g.a.a.a.a)localObject1).abFh.readString();
-          AppMethodBeat.o(212401);
-          return 0;
-        case 2: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new cqh();
-            if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((cqh)localObject2).parseFrom((byte[])localObject1);
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kd localkd = new kd();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkd.parseFrom((byte[])localObject);
             }
-            localcpa.TwK = ((cqh)localObject2);
+            localcpa.BaseResponse = localkd;
             paramInt += 1;
           }
-          AppMethodBeat.o(212401);
-          return 0;
-        case 3: 
-          localcpa.CPw = ((g.a.a.a.a)localObject1).abFh.AK();
-          AppMethodBeat.o(212401);
-          return 0;
-        case 4: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new aam();
-            if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((aam)localObject2).parseFrom((byte[])localObject1);
-            }
-            localcpa.TwL = ((aam)localObject2);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(212401);
-          return 0;
-        case 5: 
-          localcpa.Tkv = ((g.a.a.a.a)localObject1).abFh.AK();
-          AppMethodBeat.o(212401);
-          return 0;
-        case 6: 
-          localcpa.Tkx = ((g.a.a.a.a)localObject1).abFh.readString();
-          AppMethodBeat.o(212401);
+          AppMethodBeat.o(152587);
           return 0;
         }
-        localcpa.SessionId = ((g.a.a.a.a)localObject1).abFh.readString();
-        AppMethodBeat.o(212401);
+        localcpa.hUv = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(152587);
         return 0;
       }
-      AppMethodBeat.o(212401);
+      AppMethodBeat.o(152587);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cpa
  * JD-Core Version:    0.7.0.1
  */

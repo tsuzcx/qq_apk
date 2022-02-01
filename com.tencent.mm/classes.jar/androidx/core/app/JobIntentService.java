@@ -6,13 +6,14 @@ import android.os.Build.VERSION;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+@Deprecated
 public abstract class JobIntentService
   extends Service
 {
-  static final HashMap<ComponentName, Object> HX = new HashMap();
+  static final HashMap<ComponentName, Object> boa = new HashMap();
   static final Object sLock = new Object();
-  boolean HV = false;
-  final ArrayList<Object> HW;
+  boolean bnY = false;
+  final ArrayList<Object> bnZ;
   boolean mDestroyed = false;
   boolean mStopped = false;
   
@@ -20,10 +21,10 @@ public abstract class JobIntentService
   {
     if (Build.VERSION.SDK_INT >= 26)
     {
-      this.HW = null;
+      this.bnZ = null;
       return;
     }
-    this.HW = new ArrayList();
+    this.bnZ = new ArrayList();
   }
 }
 

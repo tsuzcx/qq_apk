@@ -1,11 +1,13 @@
 package com.tencent.thumbplayer.api;
 
+import android.content.res.AssetFileDescriptor;
 import android.os.Looper;
 import android.os.ParcelFileDescriptor;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import com.tencent.thumbplayer.a.b.b.a.h;
 import com.tencent.thumbplayer.a.b.b.a.i;
+import com.tencent.thumbplayer.a.b.b.a.j;
 import com.tencent.thumbplayer.api.composition.ITPMediaAsset;
 import com.tencent.thumbplayer.api.proxy.ITPPlayerProxy;
 import com.tencent.thumbplayer.api.proxy.TPDownloadParamData;
@@ -29,12 +31,18 @@ public abstract interface ITPPlayer
   public static final int TP_PLAYER_SEEK_MODE_NEXT_CLIP = 4;
   @a.h(2)
   public static final int TP_PLAYER_SEEK_MODE_NEXT_KFRAME = 2;
-  @a.i(3)
+  @a.j(3)
   public static final int TP_PLAYER_SWITCH_DEF_AFTER_ALL_RESOURCE_CONSUME = 3;
-  @a.i(2)
+  @a.j(2)
   public static final int TP_PLAYER_SWITCH_DEF_FAST_WITH_KEEP_NO_BUFFERING = 2;
-  @a.i(1)
+  @a.j(1)
   public static final int TP_PLAYER_SWITCH_DEF_IMMEDIATELY = 1;
+  @a.i(2)
+  public static final int TP_PLAYER_VIDEO_SURFACE_FROM_SURFACEVIEW = 2;
+  @a.i(1)
+  public static final int TP_PLAYER_VIDEO_SURFACE_FROM_TEXTUREVIEW = 1;
+  @a.i(0)
+  public static final int TP_PLAYER_VIDEO_SURFACE_UNSPECIFIED = 0;
   
   public abstract void addAudioTrackSource(String paramString1, String paramString2);
   
@@ -104,6 +112,8 @@ public abstract interface ITPPlayer
   
   public abstract void setAudioNormalizeVolumeParams(String paramString);
   
+  public abstract void setDataSource(AssetFileDescriptor paramAssetFileDescriptor);
+  
   public abstract void setDataSource(ParcelFileDescriptor paramParcelFileDescriptor);
   
   public abstract void setDataSource(ITPMediaAsset paramITPMediaAsset);
@@ -146,11 +156,15 @@ public abstract interface ITPPlayer
   
   public abstract void setOutputMute(boolean paramBoolean);
   
+  public abstract void setPlaySharpenSwitch();
+  
   public abstract void setPlaySpeedRatio(float paramFloat);
   
   public abstract void setPlayerOptionalParam(TPOptionalParam paramTPOptionalParam);
   
   public abstract void setSurface(Surface paramSurface);
+  
+  public abstract void setSurface(Surface paramSurface, @TPCommonEnum.TPSurfaceType int paramInt);
   
   public abstract void setSurfaceHolder(SurfaceHolder paramSurfaceHolder);
   

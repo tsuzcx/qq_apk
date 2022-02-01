@@ -1,58 +1,58 @@
 package com.tencent.mm.plugin.topstory.a.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.adv;
-import com.tencent.mm.protocal.protobuf.dun;
-import com.tencent.mm.protocal.protobuf.duo;
-import com.tencent.mm.protocal.protobuf.esv;
+import com.tencent.mm.protocal.protobuf.agg;
+import com.tencent.mm.protocal.protobuf.enl;
+import com.tencent.mm.protocal.protobuf.enm;
+import com.tencent.mm.protocal.protobuf.foe;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class e
-  extends q
+  extends p
   implements m
 {
-  private esv MWu;
-  private i callback;
-  public d rr;
+  private foe TIY;
+  private h callback;
+  public c rr;
   
-  public e(esv paramesv, List<String> paramList)
+  public e(foe paramfoe, List<String> paramList)
   {
     AppMethodBeat.i(91011);
     Log.i("MicroMsg.TopStory.NetSceneTopStoryGetVideoUrl", "Create NetSceneTopStoryGetVideoUrl Video");
-    this.MWu = paramesv;
-    paramesv = new d.a();
-    paramesv.funcId = getType();
-    paramesv.uri = "/cgi-bin/mmsearch-bin/recommendgetvideourl";
-    paramesv.lBU = new dun();
-    paramesv.lBV = new duo();
-    this.rr = paramesv.bgN();
-    paramesv = (dun)d.b.b(this.rr.lBR);
+    this.TIY = paramfoe;
+    paramfoe = new c.a();
+    paramfoe.funcId = getType();
+    paramfoe.uri = "/cgi-bin/mmsearch-bin/recommendgetvideourl";
+    paramfoe.otE = new enl();
+    paramfoe.otF = new enm();
+    this.rr = paramfoe.bEF();
+    paramfoe = (enl)c.b.b(this.rr.otB);
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       String str = (String)paramList.next();
-      adv localadv = new adv();
-      localadv.sSY = str;
-      paramesv.UaQ.add(localadv);
+      agg localagg = new agg();
+      localagg.vYo = str;
+      paramfoe.abrX.add(localagg);
     }
     AppMethodBeat.o(91011);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(91012);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(91012);
     return i;

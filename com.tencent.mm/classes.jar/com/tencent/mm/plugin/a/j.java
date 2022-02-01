@@ -1,12 +1,11 @@
 package com.tencent.mm.plugin.a;
 
-import android.annotation.TargetApi;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pointers.PInt;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.q;
 import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.List;
@@ -16,13 +15,13 @@ public final class j
 {
   private long duration;
   private String filePath;
-  private long iVj;
-  private long mHC;
-  private long[] mHF;
-  public int mHG;
-  private List<n> mHH;
-  private List<Pair> mHI;
-  public int mHL = 0;
+  private long lxo;
+  private long pEc;
+  private long[] pEf;
+  public int pEg;
+  private List<n> pEh;
+  private List<Pair> pEi;
+  public int pEl = 0;
   
   private static p a(RandomAccessFile paramRandomAccessFile, byte[] paramArrayOfByte, long paramLong)
   {
@@ -33,37 +32,37 @@ public final class j
       AppMethodBeat.o(133872);
       return null;
     }
-    paramRandomAccessFile = (p)c.a(paramRandomAccessFile, paramArrayOfByte, a.aUO);
+    paramRandomAccessFile = (p)c.a(paramRandomAccessFile, paramArrayOfByte, a.cOK);
     AppMethodBeat.o(133872);
     return paramRandomAccessFile;
   }
   
   private void reset()
   {
-    AppMethodBeat.i(204929);
+    AppMethodBeat.i(262675);
     this.filePath = null;
-    this.mHF = null;
-    this.mHG = 0;
+    this.pEf = null;
+    this.pEg = 0;
     this.duration = 0L;
-    this.mHC = 0L;
-    this.iVj = 0L;
-    if (this.mHH != null) {
-      this.mHH.clear();
+    this.pEc = 0L;
+    this.lxo = 0L;
+    if (this.pEh != null) {
+      this.pEh.clear();
     }
-    if (this.mHI != null) {
-      this.mHI.clear();
+    if (this.pEi != null) {
+      this.pEi.clear();
     }
-    this.mHL = 0;
-    AppMethodBeat.o(204929);
+    this.pEl = 0;
+    AppMethodBeat.o(262675);
   }
   
-  public final boolean K(String paramString, long paramLong)
+  public final boolean O(String paramString, long paramLong)
   {
     AppMethodBeat.i(133871);
     reset();
     this.filePath = paramString;
-    this.iVj = paramLong;
-    if (!new q(this.filePath).ifE())
+    this.lxo = paramLong;
+    if (!new u(this.filePath).jKS())
     {
       AppMethodBeat.o(133871);
       return false;
@@ -79,16 +78,16 @@ public final class j
         arrayOfByte = new byte[8];
         localObject1 = localObject3;
         paramString = localRandomAccessFile;
-        localRandomAccessFile = u.dO(this.filePath, false);
+        localRandomAccessFile = y.eA(this.filePath, false);
         localObject1 = localRandomAccessFile;
         paramString = localRandomAccessFile;
-        localObject3 = a(localRandomAccessFile, arrayOfByte, this.iVj);
+        localObject3 = a(localRandomAccessFile, arrayOfByte, this.lxo);
         if (localObject3 == null) {
           continue;
         }
         localObject1 = localRandomAccessFile;
         paramString = localRandomAccessFile;
-        Log.d("MicroMsg.Mp4Parser", "last trak atom file pos : " + ((a)localObject3).mHf);
+        Log.d("MicroMsg.Mp4Parser", "last trak atom file pos : " + ((a)localObject3).pDG);
         localObject1 = localRandomAccessFile;
         paramString = localRandomAccessFile;
         localg = p.b(localRandomAccessFile, arrayOfByte);
@@ -102,7 +101,7 @@ public final class j
         }
         localObject1 = localRandomAccessFile;
         paramString = localRandomAccessFile;
-        if (localg.mHD != g.mHz) {
+        if (localg.pEd != g.pDZ) {
           continue;
         }
         i = 1;
@@ -164,19 +163,19 @@ public final class j
       }
       localObject1 = localRandomAccessFile;
       paramString = localRandomAccessFile;
-      this.mHC = localg.mHC;
+      this.pEc = localg.pEc;
       localObject1 = localRandomAccessFile;
       paramString = localRandomAccessFile;
       this.duration = localg.duration;
       localObject1 = localRandomAccessFile;
       paramString = localRandomAccessFile;
-      Log.d("MicroMsg.Mp4Parser", "this trak atom is video trak. timeScale: " + this.mHC + " duration: " + this.duration);
+      Log.d("MicroMsg.Mp4Parser", "this trak atom is video trak. timeScale: " + this.pEc + " duration: " + this.duration);
       localObject1 = localRandomAccessFile;
       paramString = localRandomAccessFile;
-      localRandomAccessFile.seek(localg.mHE);
+      localRandomAccessFile.seek(localg.pEe);
       localObject1 = localRandomAccessFile;
       paramString = localRandomAccessFile;
-      localObject3 = (o)c.a(localRandomAccessFile, arrayOfByte, a.aUR);
+      localObject3 = (o)c.a(localRandomAccessFile, arrayOfByte, a.cON);
       if (localObject3 != null)
       {
         localObject1 = localRandomAccessFile;
@@ -184,22 +183,22 @@ public final class j
         ((o)localObject3).duration = this.duration;
         localObject1 = localRandomAccessFile;
         paramString = localRandomAccessFile;
-        ((o)localObject3).mHC = this.mHC;
+        ((o)localObject3).pEc = this.pEc;
         localObject1 = localRandomAccessFile;
         paramString = localRandomAccessFile;
         ((o)localObject3).f(localRandomAccessFile);
         localObject1 = localRandomAccessFile;
         paramString = localRandomAccessFile;
-        this.mHF = ((o)localObject3).mHF;
+        this.pEf = ((o)localObject3).pEf;
         localObject1 = localRandomAccessFile;
         paramString = localRandomAccessFile;
-        this.mHG = (this.mHF.length - 2);
+        this.pEg = (this.pEf.length - 2);
         localObject1 = localRandomAccessFile;
         paramString = localRandomAccessFile;
-        this.mHH = ((o)localObject3).mHH;
+        this.pEh = ((o)localObject3).pEh;
         localObject1 = localRandomAccessFile;
         paramString = localRandomAccessFile;
-        this.mHI = ((o)localObject3).mHI;
+        this.pEi = ((o)localObject3).pEi;
       }
       if (localRandomAccessFile != null) {}
       try
@@ -221,14 +220,14 @@ public final class j
   
   public final boolean a(int paramInt1, int paramInt2, PInt paramPInt1, PInt paramPInt2)
   {
-    if (this.mHF == null) {
+    if (this.pEf == null) {
       return false;
     }
     int i = paramInt1;
     if (paramInt1 < 0) {
       i = 0;
     }
-    int j = this.mHF.length;
+    int j = this.pEf.length;
     if (i < j)
     {
       paramInt1 = paramInt2;
@@ -239,8 +238,8 @@ public final class j
       i = j - 2;
       paramInt1 = j - 1;
     }
-    long l1 = this.mHF[i];
-    long l2 = this.mHF[paramInt1];
+    long l1 = this.pEf[i];
+    long l2 = this.pEf[paramInt1];
     if (i == 0) {
       paramPInt1.value = 0;
     }
@@ -251,18 +250,17 @@ public final class j
     }
   }
   
-  @TargetApi(5)
   public final boolean b(int paramInt, PInt paramPInt1, PInt paramPInt2)
   {
-    AppMethodBeat.i(204931);
+    AppMethodBeat.i(262680);
     for (;;)
     {
       try
       {
-        if (this.mHI == null) {
+        if (this.pEi == null) {
           continue;
         }
-        j = this.mHI.size();
+        j = this.pEi.size();
         long l = paramInt;
         paramPInt2.value = 0;
         paramPInt1.value = 0;
@@ -270,7 +268,7 @@ public final class j
         if (i >= j) {
           continue;
         }
-        localPair = (Pair)this.mHI.get(i);
+        localPair = (Pair)this.pEi.get(i);
         if (((Long)localPair.second).longValue() <= 1000L * (l * 1000L)) {
           continue;
         }
@@ -294,11 +292,11 @@ public final class j
       }
       try
       {
-        paramPInt1.value = ((int)(((Long)((Pair)this.mHI.get(j - 1)).second).longValue() / 1000L / 1000L));
+        paramPInt1.value = ((int)(((Long)((Pair)this.pEi.get(j - 1)).second).longValue() / 1000L / 1000L));
         paramPInt2.value = paramInt;
         bool = true;
         Log.i("MicroMsg.Mp4Parser", "seek key Frame seekTime[%d] pre[%d] next[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramPInt1.value), Integer.valueOf(paramPInt2.value) });
-        AppMethodBeat.o(204931);
+        AppMethodBeat.o(262680);
         return bool;
       }
       catch (Exception localException2)
@@ -308,24 +306,24 @@ public final class j
       paramPInt1.value = ((int)(((Long)localPair.second).longValue() / 1000L / 1000L));
       i += 1;
     }
-    AppMethodBeat.o(204931);
+    AppMethodBeat.o(262680);
     return false;
   }
   
-  public final int bvH()
+  public final int bTT()
   {
-    AppMethodBeat.i(204930);
+    AppMethodBeat.i(262678);
     for (;;)
     {
       try
       {
-        if (this.mHI == null) {
+        if (this.pEi == null) {
           continue;
         }
-        if (this.mHL == 0) {
-          this.mHL = ((int)(((Long)((Pair)this.mHI.get(this.mHI.size() - 1)).second).longValue() / 1000L / 1000L));
+        if (this.pEl == 0) {
+          this.pEl = ((int)(((Long)((Pair)this.pEi.get(this.pEi.size() - 1)).second).longValue() / 1000L / 1000L));
         }
-        i = this.mHL;
+        i = this.pEl;
       }
       catch (Exception localException)
       {
@@ -333,29 +331,29 @@ public final class j
         int i = 0;
         continue;
       }
-      AppMethodBeat.o(204930);
+      AppMethodBeat.o(262678);
       return i;
       i = 0;
     }
   }
   
-  public final int bvI()
+  public final int bTU()
   {
-    return this.mHG;
+    return this.pEg;
   }
   
-  public final int ee(int paramInt1, int paramInt2)
+  public final int eX(int paramInt1, int paramInt2)
   {
-    if (this.mHF == null) {
+    if (this.pEf == null) {
       return 0;
     }
     long l = paramInt1 + paramInt2;
     paramInt1 = 0;
     paramInt2 = 0;
     int i = paramInt2;
-    if (paramInt1 < this.mHF.length)
+    if (paramInt1 < this.pEf.length)
     {
-      if (this.mHF[paramInt1] == l) {
+      if (this.pEf[paramInt1] == l) {
         i = paramInt1;
       }
     }
@@ -363,7 +361,7 @@ public final class j
       label44:
       return i;
     }
-    if (this.mHF[paramInt1] < l) {
+    if (this.pEf[paramInt1] < l) {
       paramInt2 = paramInt1;
     }
     for (;;)
@@ -371,7 +369,7 @@ public final class j
       paramInt1 += 1;
       break;
       i = paramInt2;
-      if (this.mHF[paramInt1] > l) {
+      if (this.pEf[paramInt1] > l) {
         break label44;
       }
     }
@@ -379,14 +377,14 @@ public final class j
   
   public final void release()
   {
-    AppMethodBeat.i(204934);
+    AppMethodBeat.i(262683);
     reset();
-    AppMethodBeat.o(204934);
+    AppMethodBeat.o(262683);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.plugin.a.j
  * JD-Core Version:    0.7.0.1
  */

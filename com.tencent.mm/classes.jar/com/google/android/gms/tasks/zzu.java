@@ -1,22 +1,24 @@
 package com.google.android.gms.tasks;
 
 import android.app.Activity;
+import com.google.android.gms.common.api.internal.LifecycleCallback;
+import com.google.android.gms.common.api.internal.LifecycleFragment;
 import com.google.android.gms.common.internal.Preconditions;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.Executor;
-import javax.annotation.concurrent.GuardedBy;
 
 final class zzu<TResult>
   extends Task<TResult>
 {
   private final Object mLock;
   private final zzr<TResult> zzage;
-  @GuardedBy("mLock")
   private boolean zzagf;
-  @GuardedBy("mLock")
   private TResult zzagg;
-  @GuardedBy("mLock")
   private Exception zzagh;
   private volatile boolean zzfi;
   
@@ -28,7 +30,6 @@ final class zzu<TResult>
     AppMethodBeat.o(13416);
   }
   
-  @GuardedBy("mLock")
   private final void zzdq()
   {
     AppMethodBeat.i(13442);
@@ -36,7 +37,6 @@ final class zzu<TResult>
     AppMethodBeat.o(13442);
   }
   
-  @GuardedBy("mLock")
   private final void zzdr()
   {
     AppMethodBeat.i(13443);
@@ -49,7 +49,6 @@ final class zzu<TResult>
     }
   }
   
-  @GuardedBy("mLock")
   private final void zzds()
   {
     AppMethodBeat.i(13444);
@@ -83,7 +82,7 @@ final class zzu<TResult>
     AppMethodBeat.i(13433);
     paramOnCanceledListener = new zzg(TaskExecutors.MAIN_THREAD, paramOnCanceledListener);
     this.zzage.zza(paramOnCanceledListener);
-    zzu.zza.zze(paramActivity).zzb(paramOnCanceledListener);
+    zza.zze(paramActivity).zzb(paramOnCanceledListener);
     zzdt();
     AppMethodBeat.o(13433);
     return this;
@@ -111,7 +110,7 @@ final class zzu<TResult>
     AppMethodBeat.i(13427);
     paramOnCompleteListener = new zzi(TaskExecutors.MAIN_THREAD, paramOnCompleteListener);
     this.zzage.zza(paramOnCompleteListener);
-    zzu.zza.zze(paramActivity).zzb(paramOnCompleteListener);
+    zza.zze(paramActivity).zzb(paramOnCompleteListener);
     zzdt();
     AppMethodBeat.o(13427);
     return this;
@@ -139,7 +138,7 @@ final class zzu<TResult>
     AppMethodBeat.i(13424);
     paramOnFailureListener = new zzk(TaskExecutors.MAIN_THREAD, paramOnFailureListener);
     this.zzage.zza(paramOnFailureListener);
-    zzu.zza.zze(paramActivity).zzb(paramOnFailureListener);
+    zza.zze(paramActivity).zzb(paramOnFailureListener);
     zzdt();
     AppMethodBeat.o(13424);
     return this;
@@ -167,7 +166,7 @@ final class zzu<TResult>
     AppMethodBeat.i(13421);
     paramOnSuccessListener = new zzm(TaskExecutors.MAIN_THREAD, paramOnSuccessListener);
     this.zzage.zza(paramOnSuccessListener);
-    zzu.zza.zze(paramActivity).zzb(paramOnSuccessListener);
+    zza.zze(paramActivity).zzb(paramOnSuccessListener);
     zzdt();
     AppMethodBeat.o(13421);
     return this;
@@ -407,10 +406,67 @@ final class zzu<TResult>
       return true;
     }
   }
+  
+  static class zza
+    extends LifecycleCallback
+  {
+    private final List<WeakReference<zzq<?>>> zzagi;
+    
+    private zza(LifecycleFragment paramLifecycleFragment)
+    {
+      super();
+      AppMethodBeat.i(13413);
+      this.zzagi = new ArrayList();
+      this.mLifecycleFragment.addCallback("TaskOnStopCallback", this);
+      AppMethodBeat.o(13413);
+    }
+    
+    public static zza zze(Activity paramActivity)
+    {
+      AppMethodBeat.i(13412);
+      LifecycleFragment localLifecycleFragment = getFragment(paramActivity);
+      zza localzza = (zza)localLifecycleFragment.getCallbackOrNull("TaskOnStopCallback", zza.class);
+      paramActivity = localzza;
+      if (localzza == null) {
+        paramActivity = new zza(localLifecycleFragment);
+      }
+      AppMethodBeat.o(13412);
+      return paramActivity;
+    }
+    
+    public void onStop()
+    {
+      AppMethodBeat.i(13415);
+      synchronized (this.zzagi)
+      {
+        Iterator localIterator = this.zzagi.iterator();
+        while (localIterator.hasNext())
+        {
+          zzq localzzq = (zzq)((WeakReference)localIterator.next()).get();
+          if (localzzq != null) {
+            localzzq.cancel();
+          }
+        }
+      }
+      this.zzagi.clear();
+      AppMethodBeat.o(13415);
+    }
+    
+    public final <T> void zzb(zzq<T> paramzzq)
+    {
+      AppMethodBeat.i(13414);
+      synchronized (this.zzagi)
+      {
+        this.zzagi.add(new WeakReference(paramzzq));
+        AppMethodBeat.o(13414);
+        return;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.tasks.zzu
  * JD-Core Version:    0.7.0.1
  */

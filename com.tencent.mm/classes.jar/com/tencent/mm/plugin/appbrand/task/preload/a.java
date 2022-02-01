@@ -3,49 +3,49 @@ package com.tencent.mm.plugin.appbrand.task.preload;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.app.f;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/task/preload/AppBrandPreloadDowngradeTestShortcut;", "", "()V", "MMKV_HARD_CODE_LEVEL_TAG", "", "NON_HARD_CODE", "", "hardcodeLevel", "setHardLevel", "", "level", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/task/preload/AppBrandPreloadDowngradeTestShortcut;", "", "()V", "MMKV_HARD_CODE_LEVEL_TAG", "", "NON_HARD_CODE", "", "hardcodeLevel", "setHardLevel", "", "level", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public static final a qSt;
+  public static final a tWY;
   
   static
   {
-    AppMethodBeat.i(277735);
-    qSt = new a();
-    AppMethodBeat.o(277735);
+    AppMethodBeat.i(318713);
+    tWY = new a();
+    AppMethodBeat.o(318713);
   }
   
-  public static void CQ(int paramInt)
+  public static void Dj(int paramInt)
   {
-    AppMethodBeat.i(277734);
-    MultiProcessMMKV localMultiProcessMMKV = f.nCi.aal();
-    if (localMultiProcessMMKV == null) {
-      p.iCn();
-    }
-    localMultiProcessMMKV.putInt("AppBrandPreloadDowngradeSwitcher.MMKV_HARD_CODE_LEVEL_TAG", paramInt);
-    AppMethodBeat.o(277734);
+    AppMethodBeat.i(318710);
+    Object localObject = f.qBv;
+    localObject = f.aBP();
+    s.checkNotNull(localObject);
+    ((MultiProcessMMKV)localObject).putInt("AppBrandPreloadDowngradeSwitcher.MMKV_HARD_CODE_LEVEL_TAG", paramInt);
+    AppMethodBeat.o(318710);
   }
   
-  public static int cji()
+  public static int cKi()
   {
-    AppMethodBeat.i(277733);
-    MultiProcessMMKV localMultiProcessMMKV = f.nCi.aal();
-    if (localMultiProcessMMKV != null)
+    AppMethodBeat.i(318706);
+    Object localObject = f.qBv;
+    localObject = f.aBP();
+    if (localObject == null)
     {
-      int i = localMultiProcessMMKV.getInt("AppBrandPreloadDowngradeSwitcher.MMKV_HARD_CODE_LEVEL_TAG", -2);
-      AppMethodBeat.o(277733);
-      return i;
+      AppMethodBeat.o(318706);
+      return -2;
     }
-    AppMethodBeat.o(277733);
-    return -2;
+    int i = ((MultiProcessMMKV)localObject).getInt("AppBrandPreloadDowngradeSwitcher.MMKV_HARD_CODE_LEVEL_TAG", -2);
+    AppMethodBeat.o(318706);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.task.preload.a
  * JD-Core Version:    0.7.0.1
  */

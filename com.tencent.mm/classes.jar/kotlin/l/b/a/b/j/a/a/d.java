@@ -1,117 +1,113 @@
 package kotlin.l.b.a.b.j.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l.b.a.b.b.as;
-import kotlin.l.b.a.b.m.ab;
-import kotlin.l.b.a.b.m.ae;
-import kotlin.l.b.a.b.m.at;
-import kotlin.l.b.a.b.m.av;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.l.b.a.b.b.ba;
+import kotlin.l.b.a.b.l.e;
+import kotlin.l.b.a.b.m.ad;
+import kotlin.l.b.a.b.m.ag;
 import kotlin.l.b.a.b.m.ax;
-import kotlin.l.b.a.b.m.ay;
-import kotlin.l.b.a.b.m.bh;
-import kotlin.l.b.a.b.m.m;
+import kotlin.l.b.a.b.m.az;
+import kotlin.l.b.a.b.m.bb;
+import kotlin.l.b.a.b.m.bc;
+import kotlin.l.b.a.b.m.bl;
+import kotlin.l.b.a.b.m.n;
 
 public final class d
 {
-  static final av a(av paramav, as paramas)
-  {
-    AppMethodBeat.i(60037);
-    if ((paramas == null) || (paramav.iQa() == bh.abrp))
-    {
-      AppMethodBeat.o(60037);
-      return paramav;
-    }
-    if (paramas.iEW() == paramav.iQa())
-    {
-      if (paramav.iPZ())
-      {
-        paramas = kotlin.l.b.a.b.l.b.abpp;
-        p.j(paramas, "LockBasedStorageManager.NO_LOCKS");
-        paramav = (av)new ax((ab)new ae(paramas, (kotlin.g.a.a)new a(paramav)));
-        AppMethodBeat.o(60037);
-        return paramav;
-      }
-      paramav = (av)new ax(paramav.iFN());
-      AppMethodBeat.o(60037);
-      return paramav;
-    }
-    paramav = (av)new ax(b(paramav));
-    AppMethodBeat.o(60037);
-    return paramav;
-  }
-  
-  public static final boolean ad(ab paramab)
+  public static final boolean T(ad paramad)
   {
     AppMethodBeat.i(60035);
-    p.k(paramab, "$this$isCaptured");
-    boolean bool = paramab.iOU() instanceof b;
+    s.u(paramad, "<this>");
+    boolean bool = paramad.kzm() instanceof b;
     AppMethodBeat.o(60035);
     return bool;
   }
   
-  private static ab b(av paramav)
+  static final az a(az paramaz, ba paramba)
+  {
+    AppMethodBeat.i(60037);
+    if ((paramba == null) || (paramaz.kAN() == bl.ajqM))
+    {
+      AppMethodBeat.o(60037);
+      return paramaz;
+    }
+    if (paramba.kom() == paramaz.kAN())
+    {
+      if (paramaz.kAM())
+      {
+        paramba = e.ajos;
+        s.s(paramba, "NO_LOCKS");
+        paramaz = (az)new bb((ad)new ag(paramba, (kotlin.g.a.a)new a(paramaz)));
+        AppMethodBeat.o(60037);
+        return paramaz;
+      }
+      paramaz = (az)new bb(paramaz.koG());
+      AppMethodBeat.o(60037);
+      return paramaz;
+    }
+    paramaz = (az)new bb(b(paramaz));
+    AppMethodBeat.o(60037);
+    return paramaz;
+  }
+  
+  private static ad b(az paramaz)
   {
     AppMethodBeat.i(60034);
-    p.k(paramav, "typeProjection");
-    paramav = (ab)new a(paramav);
+    s.u(paramaz, "typeProjection");
+    paramaz = (ad)new a(paramaz);
     AppMethodBeat.o(60034);
-    return paramav;
+    return paramaz;
   }
   
   static final class a
-    extends q
-    implements kotlin.g.a.a<ab>
+    extends u
+    implements kotlin.g.a.a<ad>
   {
-    a(av paramav)
+    a(az paramaz)
     {
       super();
     }
   }
   
   public static final class b
-    extends m
+    extends n
   {
-    b(ay paramay1, ay paramay2)
+    b(bc parambc)
     {
       super();
     }
     
-    public final av N(ab paramab)
+    public final az G(ad paramad)
     {
-      Object localObject = null;
       AppMethodBeat.i(60033);
-      p.k(paramab, "key");
-      av localav = super.N(paramab);
-      if (localav != null)
+      s.u(paramad, "key");
+      az localaz = super.G(paramad);
+      if (localaz == null)
       {
-        paramab = paramab.iOU().iEf();
-        if ((paramab instanceof as)) {
-          break label65;
-        }
-        paramab = localObject;
-      }
-      label65:
-      for (;;)
-      {
-        paramab = d.a(localav, (as)paramab);
-        AppMethodBeat.o(60033);
-        return paramab;
         AppMethodBeat.o(60033);
         return null;
       }
+      paramad = paramad.kzm().knA();
+      if ((paramad instanceof ba)) {}
+      for (paramad = (ba)paramad;; paramad = null)
+      {
+        paramad = d.a(localaz, paramad);
+        AppMethodBeat.o(60033);
+        return paramad;
+      }
     }
     
-    public final boolean iOW()
+    public final boolean kzo()
     {
-      return this.abkV;
+      return this.ajjA;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.j.a.a.d
  * JD-Core Version:    0.7.0.1
  */

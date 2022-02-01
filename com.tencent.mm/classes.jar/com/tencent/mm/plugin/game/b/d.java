@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.game.b;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.di;
+import com.tencent.mm.autogen.b.ds;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.game.api.f;
 import com.tencent.mm.plugin.game.autogen.a.c;
@@ -12,40 +12,40 @@ import com.tencent.mm.sdk.storage.IAutoDBItem;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.Iterator;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/game/download/GameResourceDownloadStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/game/download/GameResourceDownload;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "allowCleanPkg", "", "packageName", "", "delDownloadInfo", "getDownloadInfo", "getDownloadStage", "", "getMinCheckInterval", "", "()Ljava/lang/Long;", "getNeedCheckItems", "", "insertDownloadInfo", "", "appId", "interval", "expiredTime", "gameResDownloadList", "Lcom/tencent/mm/plugin/game/autogen/download/GameResDownloadList;", "updateDownloadTaskFinishedTime", "updateItemTime", "intervalTime", "checkCgiTime", "Companion", "plugin-game_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/game/download/GameResourceDownloadStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/game/download/GameResourceDownload;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "allowCleanPkg", "", "packageName", "", "delDownloadInfo", "getDownloadInfo", "getDownloadStage", "", "getMinCheckInterval", "", "()Ljava/lang/Long;", "getNeedCheckItems", "", "insertDownloadInfo", "", "appId", "interval", "expiredTime", "gameResDownloadList", "Lcom/tencent/mm/plugin/game/autogen/download/GameResDownloadList;", "updateDownloadTaskFinishedTime", "updateItemTime", "intervalTime", "checkCgiTime", "Companion", "plugin-game_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
   extends MAutoStorage<a>
 {
-  public static final a CzN;
+  public static final d.a Ity;
   private static final String[] SQL_CREATE;
   private final ISQLiteDatabase db;
   
   static
   {
-    AppMethodBeat.i(205335);
-    CzN = new a((byte)0);
-    a.a locala = a.CzE;
+    AppMethodBeat.i(275338);
+    Ity = new d.a((byte)0);
+    a.a locala = a.Itv;
     SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(a.access$getInfo$cp(), "GameResourceDownload") };
-    AppMethodBeat.o(205335);
+    AppMethodBeat.o(275338);
   }
   
   public d(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramISQLiteDatabase, a.access$getInfo$cp(), "GameResourceDownload", di.INDEX_CREATE);
-    AppMethodBeat.i(205334);
+    super(paramISQLiteDatabase, a.access$getInfo$cp(), "GameResourceDownload", ds.INDEX_CREATE);
+    AppMethodBeat.i(275325);
     this.db = paramISQLiteDatabase;
-    AppMethodBeat.o(205334);
+    AppMethodBeat.o(275325);
   }
   
   public static void a(String paramString1, String paramString2, int paramInt1, int paramInt2, com.tencent.mm.plugin.game.autogen.a.d paramd)
   {
-    AppMethodBeat.i(205330);
-    p.k(paramString1, "packageName");
-    p.k(paramString2, "appId");
-    p.k(paramd, "gameResDownloadList");
+    AppMethodBeat.i(275330);
+    s.u(paramString1, "packageName");
+    s.u(paramString2, "appId");
+    s.u(paramd, "gameResDownloadList");
     a locala = new a();
     locala.field_packageName = paramString1;
     locala.field_appId = paramString2;
@@ -55,23 +55,21 @@ public final class d
     locala.field_checkCgiTime = Util.nowSecond();
     locala.field_finishDownloadTime = Util.nowSecond();
     locala.field_downloadItemList = paramd.toByteArray();
-    paramString2 = h.ae(f.class);
-    p.j(paramString2, "MMKernel.service(IGameStorage::class.java)");
-    boolean bool = ((f)paramString2).evt().insert((IAutoDBItem)locala);
+    boolean bool = ((f)h.ax(f.class)).fCm().insert((IAutoDBItem)locala);
     Log.i("MicroMsg.GameResourceDownloadStorage", "insert db ret:" + bool + ", packageName:" + paramString1 + ", interval:" + paramInt1 + ", expiredTime:" + paramInt2);
-    paramString1 = b.CzF;
-    b.ewq();
-    AppMethodBeat.o(205330);
+    paramString1 = b.Itw;
+    b.fEh();
+    AppMethodBeat.o(275330);
   }
   
-  public final a aJg(String paramString)
+  public final a aFS(String paramString)
   {
-    AppMethodBeat.i(205328);
-    p.k(paramString, "packageName");
+    AppMethodBeat.i(275342);
+    s.u(paramString, "packageName");
     if (((CharSequence)paramString).length() == 0) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(205328);
+      AppMethodBeat.o(275342);
       return null;
     }
     paramString = "select * from GameResourceDownload where packageName=\"" + paramString + '"';
@@ -79,7 +77,7 @@ public final class d
     Cursor localCursor = rawQuery(paramString, new String[0]);
     if (localCursor == null)
     {
-      AppMethodBeat.o(205328);
+      AppMethodBeat.o(275342);
       return null;
     }
     if (localCursor.moveToNext())
@@ -90,20 +88,20 @@ public final class d
     for (;;)
     {
       localCursor.close();
-      AppMethodBeat.o(205328);
+      AppMethodBeat.o(275342);
       return paramString;
       paramString = null;
     }
   }
   
-  public final int aJh(String paramString)
+  public final int aFT(String paramString)
   {
-    AppMethodBeat.i(205332);
-    p.k(paramString, "packageName");
-    paramString = aJg(paramString);
+    AppMethodBeat.i(275350);
+    s.u(paramString, "packageName");
+    paramString = aFS(paramString);
     if (paramString == null)
     {
-      AppMethodBeat.o(205332);
+      AppMethodBeat.o(275350);
       return 0;
     }
     Object localObject = new com.tencent.mm.plugin.game.autogen.a.d();
@@ -112,7 +110,7 @@ public final class d
       try
       {
         ((com.tencent.mm.plugin.game.autogen.a.d)localObject).parseFrom(paramString.field_downloadItemList);
-        paramString = ((com.tencent.mm.plugin.game.autogen.a.d)localObject).CqD;
+        paramString = ((com.tencent.mm.plugin.game.autogen.a.d)localObject).IcM;
         if (paramString == null) {
           break;
         }
@@ -121,55 +119,50 @@ public final class d
           break;
         }
         localObject = (c)paramString.next();
-        if (((c)localObject).Cqx == 0L)
+        if (((c)localObject).IcG == 0L)
         {
-          AppMethodBeat.o(205332);
+          AppMethodBeat.o(275350);
           return 1;
         }
       }
       catch (Exception paramString)
       {
-        Log.i("MicroMsg.GameResourceDownloadStorage", "catch err:" + paramString.getMessage());
-        AppMethodBeat.o(205332);
+        Log.i("MicroMsg.GameResourceDownloadStorage", s.X("catch err:", paramString.getMessage()));
+        AppMethodBeat.o(275350);
         return 0;
       }
-      localObject = com.tencent.mm.plugin.downloader.model.d.IF(((c)localObject).Cqx);
+      localObject = com.tencent.mm.plugin.downloader.model.d.la(((c)localObject).IcG);
       if (localObject != null)
       {
-        Log.i("MicroMsg.GameResourceDownloadStorage", "downloadUrl:" + ((com.tencent.mm.plugin.downloader.g.a)localObject).field_downloadUrl + ", status:" + ((com.tencent.mm.plugin.downloader.g.a)localObject).field_status);
-        switch (((com.tencent.mm.plugin.downloader.g.a)localObject).field_status)
+        Log.i("MicroMsg.GameResourceDownloadStorage", "downloadUrl:" + ((com.tencent.mm.plugin.downloader.f.a)localObject).field_downloadUrl + ", status:" + ((com.tencent.mm.plugin.downloader.f.a)localObject).field_status);
+        switch (((com.tencent.mm.plugin.downloader.f.a)localObject).field_status)
         {
         }
-        AppMethodBeat.o(205332);
+        AppMethodBeat.o(275350);
         return 1;
       }
     }
-    AppMethodBeat.o(205332);
+    AppMethodBeat.o(275350);
     return 2;
   }
   
-  public final void aJi(String paramString)
+  public final void aFU(String paramString)
   {
-    AppMethodBeat.i(205333);
-    p.k(paramString, "packageName");
-    Log.i("MicroMsg.GameResourceDownloadStorage", "updateDownloadTaskFinishedTime, packageName:".concat(String.valueOf(paramString)));
-    paramString = aJg(paramString);
+    AppMethodBeat.i(275358);
+    s.u(paramString, "packageName");
+    Log.i("MicroMsg.GameResourceDownloadStorage", s.X("updateDownloadTaskFinishedTime, packageName:", paramString));
+    paramString = aFS(paramString);
     if (paramString != null)
     {
       paramString.field_finishDownloadTime = Util.nowSecond();
       update((IAutoDBItem)paramString, new String[0]);
-      AppMethodBeat.o(205333);
-      return;
     }
-    AppMethodBeat.o(205333);
+    AppMethodBeat.o(275358);
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/game/download/GameResourceDownloadStorage$Companion;", "", "()V", "SQL_CREATE", "", "", "kotlin.jvm.PlatformType", "getSQL_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "TABLE", "TAG", "plugin-game_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.b.d
  * JD-Core Version:    0.7.0.1
  */

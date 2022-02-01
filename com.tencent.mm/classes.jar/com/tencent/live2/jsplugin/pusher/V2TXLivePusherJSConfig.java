@@ -31,6 +31,7 @@ public class V2TXLivePusherJSConfig
   public boolean isAutoPush = false;
   public boolean isFrontCamera = true;
   public boolean isMuteAudio = false;
+  public boolean isVOIP = false;
   public boolean isVerticalOrientation = true;
   public int maxBitrate = 0;
   public int minBitrate = 0;
@@ -56,6 +57,7 @@ public class V2TXLivePusherJSConfig
     this.isAutoPush = paramV2TXLivePusherJSConfig.isAutoPush;
     this.enableBGMEventCallback = paramV2TXLivePusherJSConfig.enableBGMEventCallback;
     this.enableDebugView = paramV2TXLivePusherJSConfig.enableDebugView;
+    this.isVOIP = paramV2TXLivePusherJSConfig.isVOIP;
     this.enableCamera = paramV2TXLivePusherJSConfig.enableCamera;
     this.isFrontCamera = paramV2TXLivePusherJSConfig.isFrontCamera;
     this.enableAutoFocus = paramV2TXLivePusherJSConfig.enableAutoFocus;
@@ -90,13 +92,16 @@ public class V2TXLivePusherJSConfig
   
   public String diffConfig(V2TXLivePusherJSConfig paramV2TXLivePusherJSConfig)
   {
-    AppMethodBeat.i(215349);
+    AppMethodBeat.i(211376);
     StringBuilder localStringBuilder = new StringBuilder();
     if (this.url != paramV2TXLivePusherJSConfig.url) {
       localStringBuilder.append("[url:" + b.b(this.url) + "]");
     }
     if (this.mode != paramV2TXLivePusherJSConfig.mode) {
       localStringBuilder.append("[mode:" + this.mode + "]");
+    }
+    if (this.isVOIP != paramV2TXLivePusherJSConfig.isVOIP) {
+      localStringBuilder.append("[isVOIP:" + this.isVOIP + "]");
     }
     if (this.enableCamera != paramV2TXLivePusherJSConfig.enableCamera) {
       localStringBuilder.append("[enableCamera:" + this.enableCamera + "]");
@@ -134,7 +139,7 @@ public class V2TXLivePusherJSConfig
     if (this.enableANS != paramV2TXLivePusherJSConfig.enableANS) {
       localStringBuilder.append("[enableANS:" + this.enableANS + "]");
     }
-    if (this.enableEarMonitor != this.enableEarMonitor) {
+    if (this.enableEarMonitor != paramV2TXLivePusherJSConfig.enableEarMonitor) {
       localStringBuilder.append("[enableEarMonitor:" + this.enableEarMonitor + "]");
     }
     if (this.volumeType != paramV2TXLivePusherJSConfig.volumeType) {
@@ -144,21 +149,21 @@ public class V2TXLivePusherJSConfig
       localStringBuilder.append("[audioQuality:" + this.audioQuality + "]");
     }
     paramV2TXLivePusherJSConfig = localStringBuilder.toString();
-    AppMethodBeat.o(215349);
+    AppMethodBeat.o(211376);
     return paramV2TXLivePusherJSConfig;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(215351);
-    String str = "[url:" + b.b(this.url) + "][mode:" + this.mode + "][isAutoPush:" + this.isAutoPush + "][enableCamera:" + this.enableCamera + "][isVerticalOrientation:" + this.isVerticalOrientation + "][aspect:" + this.aspect + "][width:" + this.width + "][height:" + this.height + "][minBitrate:" + this.minBitrate + "][maxBitrate:" + this.maxBitrate + "][enableMicrophone:" + this.enableMicrophone + "][isMuteAudio:" + this.isMuteAudio + "][enableAGC:" + this.enableAGC + "][enableANS:" + this.enableANS + "][enableEarMonitor:" + this.enableEarMonitor + "][volumeType:" + this.volumeType + "][audioQuality:" + this.audioQuality + ']';
-    AppMethodBeat.o(215351);
+    AppMethodBeat.i(211382);
+    String str = "[url:" + b.b(this.url) + "][mode:" + this.mode + "][isVOIP:" + this.isVOIP + "][isAutoPush:" + this.isAutoPush + "][enableCamera:" + this.enableCamera + "][isVerticalOrientation:" + this.isVerticalOrientation + "][aspect:" + this.aspect + "][width:" + this.width + "][height:" + this.height + "][minBitrate:" + this.minBitrate + "][maxBitrate:" + this.maxBitrate + "][enableMicrophone:" + this.enableMicrophone + "][isMuteAudio:" + this.isMuteAudio + "][enableAGC:" + this.enableAGC + "][enableANS:" + this.enableANS + "][enableEarMonitor:" + this.enableEarMonitor + "][volumeType:" + this.volumeType + "][audioQuality:" + this.audioQuality + ']';
+    AppMethodBeat.o(211382);
     return str;
   }
   
   public void updateFromBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(215348);
+    AppMethodBeat.i(211368);
     if (paramBundle.containsKey("pushUrl")) {
       this.url = paramBundle.getString("pushUrl", "");
     }
@@ -174,14 +179,17 @@ public class V2TXLivePusherJSConfig
     if (paramBundle.containsKey("debug")) {
       this.enableDebugView = paramBundle.getBoolean("debug");
     }
+    if (paramBundle.containsKey("isVoip")) {
+      this.isVOIP = paramBundle.getBoolean("isVoip");
+    }
     if (paramBundle.containsKey("enableCamera")) {
       this.enableCamera = paramBundle.getBoolean("enableCamera");
     }
     boolean bool;
-    label191:
-    label226:
+    label212:
+    label247:
     String str;
-    label452:
+    label472:
     int i;
     if (paramBundle.containsKey("devicePosition"))
     {
@@ -196,7 +204,7 @@ public class V2TXLivePusherJSConfig
       if (paramBundle.containsKey("focusMode"))
       {
         if (paramBundle.getInt("focusMode") != 0) {
-          break label1067;
+          break label1087;
         }
         bool = true;
         this.enableAutoFocus = bool;
@@ -204,7 +212,7 @@ public class V2TXLivePusherJSConfig
       if (paramBundle.containsKey("orientation"))
       {
         if ("horizontal".equals(paramBundle.getString("orientation", ""))) {
-          break label1072;
+          break label1092;
         }
         bool = true;
         this.isVerticalOrientation = bool;
@@ -243,9 +251,9 @@ public class V2TXLivePusherJSConfig
         switch (i)
         {
         default: 
-          label454:
+          label474:
           this.mirrorType = V2TXLiveDef.V2TXLiveMirrorType.V2TXLiveMirrorTypeAuto;
-          label483:
+          label503:
           if (paramBundle.containsKey("muted")) {
             this.isMuteAudio = paramBundle.getBoolean("muted");
           }
@@ -258,14 +266,14 @@ public class V2TXLivePusherJSConfig
           switch (str.hashCode())
           {
           default: 
-            label568:
+            label588:
             i = -1;
             switch (i)
             {
             default: 
-              label570:
+              label590:
               this.audioQuality = V2TXLiveDef.V2TXLiveAudioQuality.V2TXLiveAudioQualityDefault;
-              label595:
+              label615:
               if (paramBundle.containsKey("enableAGC")) {
                 this.enableAGC = paramBundle.getBoolean("enableAGC");
               }
@@ -281,14 +289,14 @@ public class V2TXLivePusherJSConfig
               switch (str.hashCode())
               {
               default: 
-                label712:
+                label732:
                 i = -1;
                 switch (i)
                 {
                 default: 
-                  label714:
+                  label734:
                   this.volumeType = TXDeviceManager.TXSystemVolumeType.TXSystemVolumeTypeAuto;
-                  label743:
+                  label763:
                   if (paramBundle.containsKey("audioReverbType"))
                   {
                     i = paramBundle.getInt("audioReverbType");
@@ -301,7 +309,7 @@ public class V2TXLivePusherJSConfig
                     if (paramBundle.getBoolean("needAudioVolume"))
                     {
                       i = 300;
-                      label806:
+                      label826:
                       this.volumeNotifyIntervals = i;
                     }
                   }
@@ -311,9 +319,9 @@ public class V2TXLivePusherJSConfig
                     switch (str.hashCode())
                     {
                     default: 
-                      label856:
+                      label876:
                       i = -1;
-                      label858:
+                      label878:
                       switch (i)
                       {
                       }
@@ -359,64 +367,64 @@ public class V2TXLivePusherJSConfig
       if (paramBundle.containsKey("backgroundImage")) {
         this.backgroundImagePath = paramBundle.getString("backgroundImage", "");
       }
-      AppMethodBeat.o(215348);
+      AppMethodBeat.o(211368);
       return;
       bool = false;
       break;
-      label1067:
+      label1087:
       bool = false;
-      break label191;
-      label1072:
+      break label212;
+      label1092:
       bool = false;
-      break label226;
+      break label247;
       if (!str.equals("enable")) {
-        break label452;
+        break label472;
       }
       i = 0;
-      break label454;
+      break label474;
       if (!str.equals("disable")) {
-        break label452;
+        break label472;
       }
       i = 1;
-      break label454;
+      break label474;
       this.mirrorType = V2TXLiveDef.V2TXLiveMirrorType.V2TXLiveMirrorTypeEnable;
-      break label483;
+      break label503;
       this.mirrorType = V2TXLiveDef.V2TXLiveMirrorType.V2TXLiveMirrorTypeDisable;
-      break label483;
+      break label503;
       if (!str.equals("low")) {
-        break label568;
+        break label588;
       }
       i = 0;
-      break label570;
+      break label590;
       this.audioQuality = V2TXLiveDef.V2TXLiveAudioQuality.V2TXLiveAudioQualitySpeech;
-      break label595;
+      break label615;
       if (!str.equals("voicecall")) {
-        break label712;
+        break label732;
       }
       i = 0;
-      break label714;
+      break label734;
       if (!str.equals("media")) {
-        break label712;
+        break label732;
       }
       i = 1;
-      break label714;
+      break label734;
       this.volumeType = TXDeviceManager.TXSystemVolumeType.TXSystemVolumeTypeVOIP;
-      break label743;
+      break label763;
       this.volumeType = TXDeviceManager.TXSystemVolumeType.TXSystemVolumeTypeMedia;
-      break label743;
+      break label763;
       i = 0;
-      break label806;
+      break label826;
       if (!str.equals("nature")) {
-        break label856;
+        break label876;
       }
       i = 0;
-      break label858;
+      break label878;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.live2.jsplugin.pusher.V2TXLivePusherJSConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.nfc;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,12 +13,12 @@ public final class d
   public static final int CTRL_INDEX = 358;
   public static final String NAME = "getHCEState";
   
-  public final void a(final e parame, JSONObject paramJSONObject, final int paramInt)
+  public final void a(final f paramf, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(136103);
     a(new JsApiAppBrandNFCBase.a()
     {
-      public final void B(int paramAnonymousInt, String paramAnonymousString)
+      public final void onResult(int paramAnonymousInt, String paramAnonymousString)
       {
         AppMethodBeat.i(136102);
         Log.i("MicroMsg.JsApiGetHCEState", "alvinluo checkIsSupport onResult errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
@@ -26,11 +26,11 @@ public final class d
         localHashMap.put("errCode", Integer.valueOf(paramAnonymousInt));
         if (paramAnonymousInt == 0)
         {
-          parame.j(paramInt, d.this.m("ok", localHashMap));
+          paramf.callback(paramInt, j.a(d.this, paramAnonymousInt, "ok", localHashMap));
           AppMethodBeat.o(136102);
           return;
         }
-        parame.j(paramInt, d.this.m("fail ".concat(String.valueOf(paramAnonymousString)), localHashMap));
+        paramf.callback(paramInt, j.a(d.this, paramAnonymousInt, "fail ".concat(String.valueOf(paramAnonymousString)), localHashMap));
         AppMethodBeat.o(136102);
       }
     }, true);
@@ -39,7 +39,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.nfc.d
  * JD-Core Version:    0.7.0.1
  */

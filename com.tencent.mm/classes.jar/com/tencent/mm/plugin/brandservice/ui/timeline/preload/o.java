@@ -9,7 +9,7 @@ import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
 
 public final class o
 {
-  public static void fv(String paramString1, String paramString2)
+  public static void fQ(String paramString1, String paramString2)
   {
     AppMethodBeat.i(6185);
     if ((Log.getLogLevel() == 0) && (WeChatEnvironment.hasDebugger())) {
@@ -18,20 +18,13 @@ public final class o
         public final void run()
         {
           AppMethodBeat.i(6183);
-          Toast.makeText(MMApplicationContext.getContext(), this.val$content, 0).show();
+          Toast.makeText(MMApplicationContext.getContext(), o.this, 0).show();
           AppMethodBeat.o(6183);
         }
       });
     }
     Log.i(paramString1, paramString2);
     AppMethodBeat.o(6185);
-  }
-  
-  public static void showToast(String paramString)
-  {
-    AppMethodBeat.i(6184);
-    fv("MicroMsg.PreloadUtil", paramString);
-    AppMethodBeat.o(6184);
   }
 }
 

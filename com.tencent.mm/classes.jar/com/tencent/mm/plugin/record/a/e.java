@@ -12,13 +12,15 @@ public abstract interface e
   
   public abstract void a(d paramd);
   
+  public abstract boolean a(long paramLong, j paramj);
+  
   public abstract boolean a(j paramj);
   
   public abstract boolean a(j paramj, String... paramVarArgs);
   
-  public abstract j aVy(String paramString);
+  public abstract j aSG(String paramString);
   
-  public abstract List<j> acb(int paramInt);
+  public abstract List<j> agp(int paramInt);
   
   public abstract void b(d paramd);
   
@@ -26,11 +28,11 @@ public abstract interface e
   
   public abstract boolean b(j paramj, String... paramVarArgs);
   
-  public abstract List<j> fup();
+  public abstract List<j> gGe();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.record.a.e
  * JD-Core Version:    0.7.0.1
  */

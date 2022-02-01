@@ -1,82 +1,50 @@
 package com.tencent.mm.plugin.fav.ui.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.ball.f.b;
-import com.tencent.mm.plugin.multitask.b.c;
-import com.tencent.mm.protocal.protobuf.apf;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.u;
-import java.io.IOException;
 
 public final class a
-  extends c
 {
-  private String mFilePath;
-  private apf qhY;
-  private String qia;
-  private int tOb;
+  public int AcJ;
+  private long Acx = 0L;
+  public int AoY;
+  public int AoZ;
+  private String Apa = "0";
+  public String Apb;
+  private int Apc = 0;
+  public int Apd;
+  private String Ape = "0";
+  public long Apf;
+  public long Apg;
+  public boolean Aph = false;
+  public int actionType = 1;
+  public int idY;
+  public String mpa;
+  private int position = 0;
+  public String query;
+  public int scene;
   
-  public a(com.tencent.mm.plugin.multitask.a.a parama)
+  public static String getSearchId()
   {
-    super(parama);
-    AppMethodBeat.i(233587);
-    this.mFilePath = "";
-    this.qia = "";
-    this.tOb = 0;
-    this.qhY = new apf();
-    AppMethodBeat.o(233587);
+    AppMethodBeat.i(274373);
+    String str = String.format("%s_%s", new Object[] { z.bAM(), Long.valueOf(System.currentTimeMillis()) });
+    AppMethodBeat.o(274373);
+    return str;
   }
   
-  public final boolean cbG()
+  public final void report()
   {
-    AppMethodBeat.i(233589);
-    if ((!Util.isNullOrNil(this.mFilePath)) && (!u.agG(this.mFilePath)))
-    {
-      AppMethodBeat.o(233589);
-      return false;
-    }
-    AppMethodBeat.o(233589);
-    return true;
-  }
-  
-  public final boolean cbH()
-  {
-    return true;
-  }
-  
-  public final void gV(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(233593);
-    Log.i("MicroMsg.FilesFloatBall.FavoriteFilePMultiTaskHelper", "onCreate, filePath:%s fileExt:%s sence:%s", new Object[] { paramString1, paramString2, Integer.valueOf(2) });
-    this.mFilePath = paramString1;
-    this.qia = paramString2;
-    this.tOb = 2;
-    super.I(4, b.aoC(paramString1));
-    this.qhY.filePath = paramString1;
-    this.qhY.Rwe = u.bBQ(paramString1);
-    this.qhY.jmx = paramString2;
-    this.qhY.tNG = 2;
-    this.qhY.SCl = false;
-    try
-    {
-      this.FHd.field_data = this.qhY.toByteArray();
-      faR();
-      AppMethodBeat.o(233593);
-      return;
-    }
-    catch (IOException paramString1)
-    {
-      for (;;)
-      {
-        Log.e("MicroMsg.FilesFloatBall.FavoriteFilePMultiTaskHelper", "handleMultiTaskInfoClicked", new Object[] { paramString1 });
-      }
-    }
+    AppMethodBeat.i(274375);
+    Log.d("MicroMsg.ReportSearchCTR", String.format("zst, 15488 on report, actionType %s, scene %s, subScene %s, actionTime %s, query %s, tabId %s, searchId:%s, searchCost:%s, localPosition %s, localResultCount %s", new Object[] { Integer.valueOf(this.actionType), Integer.valueOf(this.AcJ), Integer.valueOf(this.scene), Integer.valueOf(this.AoY), this.query, Integer.valueOf(this.idY), this.mpa, Integer.valueOf(this.AoZ), this.Apb, Integer.valueOf(this.Apd) }));
+    h.OAn.b(15488, new Object[] { Integer.valueOf(this.actionType), Integer.valueOf(this.AcJ), Integer.valueOf(this.scene), Integer.valueOf(this.position), Integer.valueOf(this.AoY), this.query, Long.valueOf(this.Acx), Integer.valueOf(this.idY), this.mpa, Integer.valueOf(this.AoZ), this.Apa, this.Apb, Integer.valueOf(this.Apc), Integer.valueOf(this.Apd), this.Ape });
+    AppMethodBeat.o(274375);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.f.a
  * JD-Core Version:    0.7.0.1
  */

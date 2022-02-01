@@ -9,49 +9,49 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class c
 {
-  private float FhD;
-  float FhE;
-  float FhF;
-  float FhG;
-  a FhH;
+  private float Lde;
+  float Ldf;
+  a Ldg;
+  float adl;
+  float adm;
   int duration;
   boolean isStart;
-  long jID;
-  MTimerHandler lUQ;
+  long moe;
+  MTimerHandler oNL;
   
   public c(float paramFloat1, float paramFloat2, int paramInt)
   {
     AppMethodBeat.i(94630);
-    this.lUQ = null;
-    this.FhD = 0.0F;
-    this.FhE = paramFloat1;
-    this.FhF = paramFloat2;
+    this.oNL = null;
+    this.Lde = 0.0F;
+    this.adl = paramFloat1;
+    this.adm = paramFloat2;
     this.duration = paramInt;
-    this.FhD = (100.0F / this.duration * 20.0F);
-    Log.i("MicroMsg.ProgressHandlerAnimator", "create ProgressHandlerAnimator, start: %s, end: %s, duration: %s, updateStep: %s", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Integer.valueOf(paramInt), Float.valueOf(this.FhD) });
+    this.Lde = (100.0F / this.duration * 20.0F);
+    Log.i("MicroMsg.ProgressHandlerAnimator", "create ProgressHandlerAnimator, start: %s, end: %s, duration: %s, updateStep: %s", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Integer.valueOf(paramInt), Float.valueOf(this.Lde) });
     this.isStart = false;
-    this.jID = 0L;
-    this.lUQ = new MTimerHandler(Looper.getMainLooper(), new MTimerHandler.CallBack()
+    this.moe = 0L;
+    this.oNL = new MTimerHandler(Looper.getMainLooper(), new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(94628);
         c localc = c.this;
-        localc.FhG = ((float)Util.ticksToNow(localc.jID) / localc.duration * 100.0F + localc.FhE);
-        if (localc.FhH != null) {
-          localc.FhH.bx(localc.FhG);
+        localc.Ldf = ((float)Util.ticksToNow(localc.moe) / localc.duration * 100.0F + localc.adl);
+        if (localc.Ldg != null) {
+          localc.Ldg.cB(localc.Ldf);
         }
         if (c.this.isStart)
         {
-          if (c.this.FhG < c.this.FhF)
+          if (c.this.Ldf < c.this.adm)
           {
             AppMethodBeat.o(94628);
             return true;
           }
           c.this.isStart = false;
-          Log.i("MicroMsg.ProgressHandlerAnimator", "reach end, currentValue: %s, end: %s, callback: %s", new Object[] { Float.valueOf(c.this.FhG), Float.valueOf(c.this.FhF), c.this.FhH });
-          if (c.this.FhH != null) {
-            c.this.FhH.onAnimationEnd();
+          Log.i("MicroMsg.ProgressHandlerAnimator", "reach end, currentValue: %s, end: %s, callback: %s", new Object[] { Float.valueOf(c.this.Ldf), Float.valueOf(c.this.adm), c.this.Ldg });
+          if (c.this.Ldg != null) {
+            c.this.Ldg.onAnimationEnd();
           }
           AppMethodBeat.o(94628);
           return false;
@@ -67,12 +67,12 @@ public final class c
   public final void cancel()
   {
     this.isStart = false;
-    this.jID = 0L;
+    this.moe = 0L;
   }
   
   public static abstract interface a
   {
-    public abstract void bx(float paramFloat);
+    public abstract void cB(float paramFloat);
     
     public abstract void onAnimationEnd();
   }

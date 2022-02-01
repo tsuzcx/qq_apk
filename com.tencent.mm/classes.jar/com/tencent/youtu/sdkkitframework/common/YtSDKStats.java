@@ -20,9 +20,9 @@ public class YtSDKStats
   
   public YtSDKStats()
   {
-    AppMethodBeat.i(256635);
+    AppMethodBeat.i(218319);
     this.stateNameMap = new HashMap();
-    AppMethodBeat.o(256635);
+    AppMethodBeat.o(218319);
   }
   
   public static void clearInstance()
@@ -85,15 +85,15 @@ public class YtSDKStats
   
   public static String getNowTimeStamp()
   {
-    AppMethodBeat.i(256653);
+    AppMethodBeat.i(218392);
     long l = System.currentTimeMillis();
-    AppMethodBeat.o(256653);
+    AppMethodBeat.o(218392);
     return String.valueOf(l);
   }
   
   private void makeReport(String paramString1, String paramString2, HashMap<String, Object> paramHashMap, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(256651);
+    AppMethodBeat.i(218367);
     HashMap localHashMap1 = new HashMap();
     HashMap localHashMap2 = new HashMap();
     localHashMap2.put("state_id", paramString1);
@@ -109,27 +109,27 @@ public class YtSDKStats
     }
     localHashMap1.put("state_stats", localHashMap2);
     sendStateEvent(localHashMap1);
-    AppMethodBeat.o(256651);
+    AppMethodBeat.o(218367);
   }
   
   private void sendStateEvent(HashMap<String, Object> paramHashMap)
   {
-    AppMethodBeat.i(256652);
+    AppMethodBeat.i(218378);
     if (paramHashMap != null) {
       YtFSM.getInstance().sendFSMEvent(paramHashMap);
     }
-    AppMethodBeat.o(256652);
+    AppMethodBeat.o(218378);
   }
   
   public void enterFirst() {}
   
   public void enterState(String paramString)
   {
-    AppMethodBeat.i(256642);
+    AppMethodBeat.i(218406);
     Object localObject = this.stateNameMap.get(paramString);
     if (localObject == null)
     {
-      AppMethodBeat.o(256642);
+      AppMethodBeat.o(218406);
       return;
     }
     this.currentAction = "enter";
@@ -145,50 +145,50 @@ public class YtSDKStats
       }
     }
     this.stateNameMap.put(paramString, Integer.valueOf(i + 1));
-    AppMethodBeat.o(256642);
+    AppMethodBeat.o(218406);
   }
   
   public void exitState()
   {
-    AppMethodBeat.i(256644);
+    AppMethodBeat.i(218419);
     if (this.currentState != null)
     {
       String str = Long.toString(System.currentTimeMillis() - this.currentEnterTimeStampMS);
       makeReport(this.currentState, "exit", null, str, null);
     }
-    AppMethodBeat.o(256644);
+    AppMethodBeat.o(218419);
   }
   
   public void registerStateName(String paramString)
   {
-    AppMethodBeat.i(256640);
+    AppMethodBeat.i(218401);
     this.stateNameMap.put(paramString, Integer.valueOf(0));
-    AppMethodBeat.o(256640);
+    AppMethodBeat.o(218401);
   }
   
   public void reportError(int paramInt, String paramString)
   {
-    AppMethodBeat.i(256646);
+    AppMethodBeat.i(218421);
     HashMap localHashMap = new HashMap();
     localHashMap.put("error_code", Integer.valueOf(paramInt));
     localHashMap.put("error_msg", paramString);
     makeReport(this.currentState, this.currentAction, localHashMap, null, null);
-    AppMethodBeat.o(256646);
+    AppMethodBeat.o(218421);
   }
   
   public void reportInfo(String paramString)
   {
-    AppMethodBeat.i(256647);
+    AppMethodBeat.i(218424);
     if ((this.preInfo == null) || (!this.preInfo.equals(paramString))) {
       this.preInfo = paramString;
     }
     makeReport(this.currentState, this.currentAction, null, null, paramString);
-    AppMethodBeat.o(256647);
+    AppMethodBeat.o(218424);
   }
   
   public void reset()
   {
-    AppMethodBeat.i(256649);
+    AppMethodBeat.i(218428);
     Iterator localIterator = this.stateNameMap.keySet().iterator();
     while (localIterator.hasNext())
     {
@@ -198,24 +198,24 @@ public class YtSDKStats
     this.currentState = null;
     this.preUpdateState = null;
     this.preInfo = null;
-    AppMethodBeat.o(256649);
+    AppMethodBeat.o(218428);
   }
   
   public void updateState(String paramString)
   {
-    AppMethodBeat.i(256643);
+    AppMethodBeat.i(218413);
     this.currentAction = "update";
     if ((this.preUpdateState == null) || (!this.preUpdateState.equals(this.currentState)))
     {
       this.preUpdateState = this.currentState;
       makeReport(this.currentState, this.currentAction, null, null, null);
     }
-    AppMethodBeat.o(256643);
+    AppMethodBeat.o(218413);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.common.YtSDKStats
  * JD-Core Version:    0.7.0.1
  */

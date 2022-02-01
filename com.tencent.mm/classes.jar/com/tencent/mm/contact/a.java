@@ -1,46 +1,46 @@
 package com.tencent.mm.contact;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.ax;
+import com.tencent.mm.autogen.b.az;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class a
 {
-  public static void a(as paramas, String paramString, ArrayList<String> paramArrayList)
+  public static void a(au paramau, String paramString, ArrayList<String> paramArrayList)
   {
     AppMethodBeat.i(116828);
-    as localas = paramas;
-    if (paramas == null) {
-      localas = ((n)h.ae(n.class)).bbL().RG(paramString);
+    au localau = paramau;
+    if (paramau == null) {
+      localau = ((n)h.ax(n.class)).bzA().JE(paramString);
     }
-    if ((localas != null) && ((int)localas.jxt > 0) && (d.rk(localas.field_type)))
+    if ((localau != null) && ((int)localau.maN > 0) && (d.rs(localau.field_type)))
     {
-      localas.IW(j(paramArrayList));
-      g(localas);
-      ((n)h.ae(n.class)).bbL().au(localas);
+      localau.BB(m(paramArrayList));
+      h(localau);
+      ((n)h.ax(n.class)).bzA().aA(localau);
     }
     AppMethodBeat.o(116828);
   }
   
-  public static String[] a(as paramas, String paramString)
+  public static String[] a(au paramau, String paramString)
   {
     AppMethodBeat.i(116825);
     if (paramString != null)
     {
-      paramas = paramString.split(d(paramas));
+      paramau = paramString.split(e(paramau));
       AppMethodBeat.o(116825);
-      return paramas;
+      return paramau;
     }
     AppMethodBeat.o(116825);
     return null;
   }
   
-  public static String[] aq(String paramString1, String paramString2)
+  public static String[] av(String paramString1, String paramString2)
   {
     AppMethodBeat.i(116826);
     if (paramString1 != null)
@@ -53,64 +53,64 @@ public final class a
     return null;
   }
   
-  public static String d(as paramas)
+  public static String e(au paramau)
   {
-    if (paramas == null) {
+    if (paramau == null) {
       return ",";
     }
-    if (paramas.hDB == 0) {
+    if (paramau.kaw == 0) {
       return ",";
     }
     return "，";
   }
   
-  public static String[] e(as paramas)
+  public static String[] f(au paramau)
   {
     AppMethodBeat.i(116824);
-    if (paramas == null)
+    if (paramau == null)
     {
       AppMethodBeat.o(116824);
       return null;
     }
-    if (paramas.hDw != null)
+    if (paramau.kar != null)
     {
-      paramas = paramas.hDw.split(d(paramas));
+      paramau = paramau.kar.split(e(paramau));
       AppMethodBeat.o(116824);
-      return paramas;
+      return paramau;
     }
     AppMethodBeat.o(116824);
     return null;
   }
   
-  public static int f(as paramas)
+  public static int g(au paramau)
   {
     AppMethodBeat.i(116829);
-    paramas = e(paramas);
-    if (paramas == null)
+    paramau = f(paramau);
+    if (paramau == null)
     {
       AppMethodBeat.o(116829);
       return 0;
     }
-    if (paramas.length >= 5)
+    if (paramau.length >= 5)
     {
       AppMethodBeat.o(116829);
       return 5;
     }
-    int i = paramas.length;
+    int i = paramau.length;
     AppMethodBeat.o(116829);
     return i;
   }
   
-  public static void g(as paramas)
+  public static void h(au paramau)
   {
     AppMethodBeat.i(116830);
-    if (paramas != null) {
-      paramas.apy();
+    if (paramau != null) {
+      paramau.aJC();
     }
     AppMethodBeat.o(116830);
   }
   
-  public static String j(ArrayList<String> paramArrayList)
+  public static String m(ArrayList<String> paramArrayList)
   {
     AppMethodBeat.i(116827);
     if (paramArrayList == null)

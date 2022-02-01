@@ -1,72 +1,74 @@
 package com.tencent.mm.plugin.appbrand.luggage.export.functionalpage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.c;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.protocal.protobuf.ewh;
-import com.tencent.mm.protocal.protobuf.ewi;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.protocal.protobuf.fry;
+import com.tencent.mm.protocal.protobuf.frz;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/CgiUpdateRuntimeQrcode;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/UpdateRuntimeQrcodeResponse;", "uuid", "", "status", "", "respData", "(Ljava/lang/String;ILjava/lang/String;)V", "onCgiBack", "", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/CgiUpdateRuntimeQrcode;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/UpdateRuntimeQrcodeResponse;", "uuid", "", "status", "", "respData", "(Ljava/lang/String;ILjava/lang/String;)V", "onCgiBack", "", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends c<ewi>
+  extends com.tencent.mm.am.b<frz>
 {
-  public static final a qaF;
+  public static final a tfL;
   
   static
   {
     AppMethodBeat.i(50857);
-    qaF = new a((byte)0);
+    tfL = new a((byte)0);
     AppMethodBeat.o(50857);
   }
   
   private b(String paramString1, int paramInt, String paramString2)
   {
     AppMethodBeat.i(50856);
-    d.a locala = new d.a();
-    ewh localewh = new ewh();
-    localewh.uuid = paramString1;
-    localewh.status = paramInt;
-    localewh.Uxr = paramString2;
-    locala.c((a)localewh);
-    locala.d((a)new ewi());
-    locala.vD(2578);
-    locala.TW("/cgi-bin/mmbiz-bin/wxabusiness/updateruntimeqrcode");
-    c(locala.bgN());
+    c.a locala = new c.a();
+    fry localfry = new fry();
+    localfry.uuid = paramString1;
+    localfry.status = paramInt;
+    localfry.Zmi = paramString2;
+    paramString1 = ah.aiuX;
+    locala.otE = ((a)localfry);
+    locala.otF = ((a)new frz());
+    locala.funcId = 2578;
+    locala.uri = "/cgi-bin/mmbiz-bin/wxabusiness/updateruntimeqrcode";
+    paramString1 = ah.aiuX;
+    c(locala.bEF());
     AppMethodBeat.o(50856);
   }
   
-  public static final b akm(String paramString)
+  public static final b ads(String paramString)
   {
     AppMethodBeat.i(50858);
-    p.k(paramString, "uuid");
+    s.u(paramString, "uuid");
     paramString = new b(paramString, 4);
     AppMethodBeat.o(50858);
     return paramString;
   }
   
-  public static final b akn(String paramString)
+  public static final b adt(String paramString)
   {
     AppMethodBeat.i(50859);
-    p.k(paramString, "uuid");
+    s.u(paramString, "uuid");
     paramString = new b(paramString, 1);
     AppMethodBeat.o(50859);
     return paramString;
   }
   
-  public static final b eA(String paramString1, String paramString2)
+  public static final b eR(String paramString1, String paramString2)
   {
     AppMethodBeat.i(50860);
-    p.k(paramString1, "uuid");
-    p.k(paramString2, "respData");
+    s.u(paramString1, "uuid");
+    s.u(paramString2, "respData");
     paramString1 = new b(paramString1, paramString2);
     AppMethodBeat.o(50860);
     return paramString1;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/CgiUpdateRuntimeQrcode$Companion;", "", "()V", "CANCELLED", "", "CONFIRMED", "SCANNED", "TAG", "", "cancel", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/CgiUpdateRuntimeQrcode;", "uuid", "confirm", "respData", "scanned", "plugin-appbrand-integration_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/CgiUpdateRuntimeQrcode$Companion;", "", "()V", "CANCELLED", "", "CONFIRMED", "SCANNED", "TAG", "", "cancel", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/CgiUpdateRuntimeQrcode;", "uuid", "confirm", "respData", "scanned", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

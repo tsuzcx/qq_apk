@@ -4,381 +4,380 @@ import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
+import kotlin.Metadata;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/utils/WxImeConfigUtil;", "", "()V", "TAG", "", "getCanPrintClickDataConfig", "", "getCanPrintEngineLogConfig", "getDeleteKeyRepeatDelayTime", "", "getDeleteKeyRepeatInterTime", "getEnableMoveCursorConfig", "getEnablePreInputConfig", "getEnableSelfdrawKeyboardConfig", "getImeCloudDictOpenConfig", "getImeEmojiUnicodeOpenConfig", "getImeFaultExchangeOpenConfig", "getImeFaultInsertAtMiddleOpenConfig", "getImeFaultOpenConfig", "getImeFaultSkipOpenConfig", "getImeFuzzySyllablesOpenConfig", "getImeILinkLoginOpenConfig", "saveCanPrintClickDataConfig", "", "open", "saveCanPrintEngineLogConfig", "saveDeleteKeyRepeatDelayTime", "interTime", "saveDeleteKeyRepeatInterTime", "saveEnableMoveCursorConfig", "saveEnablePreInputConfig", "saveEnableSelfdrawKeyboardConfig", "saveImeCloudDictOpenConfig", "saveImeEmojiUnicodeOpenConfig", "saveImeFaultExchangeOpenConfig", "saveImeFaultInsertAtMiddleOpenConfig", "saveImeFaultOpenConfig", "saveImeFaultSkipOpenConfig", "saveImeFuzzySyllablesOpenConfig", "saveImeILinkLoginOpenConfig", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/utils/WxImeConfigUtil;", "", "()V", "TAG", "", "getCanPrintClickDataConfig", "", "getCanPrintEngineLogConfig", "getDeleteKeyRepeatDelayTime", "", "getDeleteKeyRepeatInterTime", "getEnableMoveCursorConfig", "getEnablePreInputConfig", "getEnableSelfdrawKeyboardConfig", "getImeCloudDictOpenConfig", "getImeEmojiUnicodeOpenConfig", "getImeFaultExchangeOpenConfig", "getImeFaultInsertAtMiddleOpenConfig", "getImeFaultOpenConfig", "getImeFaultSkipOpenConfig", "getImeFuzzySyllablesOpenConfig", "getImeILinkLoginOpenConfig", "saveCanPrintClickDataConfig", "", "open", "saveCanPrintEngineLogConfig", "saveDeleteKeyRepeatDelayTime", "interTime", "saveDeleteKeyRepeatInterTime", "saveEnableMoveCursorConfig", "saveEnablePreInputConfig", "saveEnableSelfdrawKeyboardConfig", "saveImeCloudDictOpenConfig", "saveImeEmojiUnicodeOpenConfig", "saveImeFaultExchangeOpenConfig", "saveImeFaultInsertAtMiddleOpenConfig", "saveImeFaultOpenConfig", "saveImeFaultSkipOpenConfig", "saveImeFuzzySyllablesOpenConfig", "saveImeILinkLoginOpenConfig", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
 {
-  public static final e DGW;
-  private static final String TAG = "WxIme.WxImeConfigUtil";
+  public static final e Jym;
+  private static final String TAG;
   
   static
   {
-    AppMethodBeat.i(215936);
-    DGW = new e();
+    AppMethodBeat.i(311755);
+    Jym = new e();
     TAG = "WxIme.WxImeConfigUtil";
-    AppMethodBeat.o(215936);
+    AppMethodBeat.o(311755);
   }
   
-  public static void Ob(long paramLong)
+  public static boolean fNQ()
   {
-    AppMethodBeat.i(215930);
-    Object localObject = l.DHK;
-    localObject = l.getKV();
-    if (localObject != null)
-    {
-      localObject = ((MultiProcessMMKV)localObject).edit();
-      if (localObject != null)
-      {
-        ((SharedPreferences.Editor)localObject).putLong("ime_delete_key_repeat_inter_time", paramLong);
-        AppMethodBeat.o(215930);
-        return;
-      }
-    }
-    AppMethodBeat.o(215930);
+    return true;
   }
   
-  public static void Oc(long paramLong)
+  public static boolean fNR()
   {
-    AppMethodBeat.i(215934);
-    Object localObject = l.DHK;
-    localObject = l.getKV();
-    if (localObject != null)
-    {
-      localObject = ((MultiProcessMMKV)localObject).edit();
-      if (localObject != null)
-      {
-        ((SharedPreferences.Editor)localObject).putLong("ime_delete_key_repeat_delay_time", paramLong);
-        AppMethodBeat.o(215934);
-        return;
-      }
-    }
-    AppMethodBeat.o(215934);
+    return true;
   }
   
-  public static void eGe()
+  public static boolean fNS()
   {
-    AppMethodBeat.i(215895);
-    Object localObject = l.DHK;
-    localObject = l.getKV();
-    if (localObject != null)
-    {
-      localObject = ((MultiProcessMMKV)localObject).edit();
-      if (localObject != null)
-      {
-        ((SharedPreferences.Editor)localObject).putBoolean("ime_fault_open", false);
-        AppMethodBeat.o(215895);
-        return;
-      }
-    }
-    AppMethodBeat.o(215895);
+    return true;
   }
   
-  public static void eGf()
+  public static boolean fNT()
   {
-    AppMethodBeat.i(215898);
-    Object localObject = l.DHK;
-    localObject = l.getKV();
-    if (localObject != null)
-    {
-      localObject = ((MultiProcessMMKV)localObject).edit();
-      if (localObject != null)
-      {
-        ((SharedPreferences.Editor)localObject).putBoolean("ime_fault_exchange_open", false);
-        AppMethodBeat.o(215898);
-        return;
-      }
-    }
-    AppMethodBeat.o(215898);
+    return false;
   }
   
-  public static void eGg()
+  public static boolean fNU()
   {
-    AppMethodBeat.i(215900);
-    Object localObject = l.DHK;
-    localObject = l.getKV();
-    if (localObject != null)
-    {
-      localObject = ((MultiProcessMMKV)localObject).edit();
-      if (localObject != null)
-      {
-        ((SharedPreferences.Editor)localObject).putBoolean("ime_fault_insert_at_middle_open", false);
-        AppMethodBeat.o(215900);
-        return;
-      }
-    }
-    AppMethodBeat.o(215900);
+    return false;
   }
   
-  public static void eGh()
+  public static boolean fNV()
   {
-    AppMethodBeat.i(215901);
-    Object localObject = l.DHK;
-    localObject = l.getKV();
-    if (localObject != null)
-    {
-      localObject = ((MultiProcessMMKV)localObject).edit();
-      if (localObject != null)
-      {
-        ((SharedPreferences.Editor)localObject).putBoolean("ime_fault_skip_open", true);
-        AppMethodBeat.o(215901);
-        return;
-      }
-    }
-    AppMethodBeat.o(215901);
+    return false;
   }
   
-  public static void eGi()
+  public static boolean fNW()
   {
-    AppMethodBeat.i(215903);
-    Object localObject = l.DHK;
-    localObject = l.getKV();
-    if (localObject != null)
-    {
-      localObject = ((MultiProcessMMKV)localObject).edit();
-      if (localObject != null)
-      {
-        ((SharedPreferences.Editor)localObject).putBoolean("ime_fuzzy_syllables_open", true);
-        AppMethodBeat.o(215903);
-        return;
-      }
-    }
-    AppMethodBeat.o(215903);
+    return false;
   }
   
-  public static void eGj()
+  public static boolean fNX()
   {
-    AppMethodBeat.i(215905);
-    Object localObject = l.DHK;
-    localObject = l.getKV();
-    if (localObject != null)
-    {
-      localObject = ((MultiProcessMMKV)localObject).edit();
-      if (localObject != null)
-      {
-        ((SharedPreferences.Editor)localObject).putBoolean("ime_emoji_unicode_open", true);
-        AppMethodBeat.o(215905);
-        return;
-      }
-    }
-    AppMethodBeat.o(215905);
-  }
-  
-  public static void eGk()
-  {
-    AppMethodBeat.i(215907);
-    Object localObject = l.DHK;
-    localObject = l.getKV();
-    if (localObject != null)
-    {
-      localObject = ((MultiProcessMMKV)localObject).edit();
-      if (localObject != null)
-      {
-        ((SharedPreferences.Editor)localObject).putBoolean("ime_ilink_login_open", true);
-        AppMethodBeat.o(215907);
-        return;
-      }
-    }
-    AppMethodBeat.o(215907);
-  }
-  
-  public static boolean eGl()
-  {
-    AppMethodBeat.i(215911);
+    AppMethodBeat.i(311641);
     if (!WeChatEnvironment.hasDebugger())
     {
-      AppMethodBeat.o(215911);
+      AppMethodBeat.o(311641);
       return false;
     }
-    Object localObject = l.DHK;
+    Object localObject = l.JyV;
     localObject = l.getKV();
-    if (localObject != null)
+    if (localObject == null)
     {
-      boolean bool = ((MultiProcessMMKV)localObject).getBoolean("ime_can_print_click_data", false);
-      AppMethodBeat.o(215911);
-      return bool;
+      AppMethodBeat.o(311641);
+      return false;
     }
-    AppMethodBeat.o(215911);
-    return false;
+    boolean bool = ((MultiProcessMMKV)localObject).getBoolean("ime_can_print_click_data", false);
+    AppMethodBeat.o(311641);
+    return bool;
   }
   
-  public static boolean eGm()
+  public static boolean fNY()
   {
-    AppMethodBeat.i(215914);
-    Object localObject = l.DHK;
+    AppMethodBeat.i(311656);
+    Object localObject = l.JyV;
     localObject = l.getKV();
-    if (localObject != null)
+    if (localObject == null)
     {
-      boolean bool = ((MultiProcessMMKV)localObject).getBoolean("ime_can_print_engine_log", false);
-      AppMethodBeat.o(215914);
-      return bool;
+      AppMethodBeat.o(311656);
+      return false;
     }
-    AppMethodBeat.o(215914);
-    return false;
+    boolean bool = ((MultiProcessMMKV)localObject).getBoolean("ime_can_print_engine_log", false);
+    AppMethodBeat.o(311656);
+    return bool;
   }
   
-  public static boolean eGn()
+  public static boolean fNZ()
   {
-    AppMethodBeat.i(215919);
-    Object localObject = l.DHK;
+    AppMethodBeat.i(311664);
+    Object localObject = l.JyV;
     localObject = l.getKV();
-    if (localObject != null)
+    if (localObject == null)
     {
-      boolean bool = ((MultiProcessMMKV)localObject).getBoolean("ime_enable_pre_input", true);
-      AppMethodBeat.o(215919);
-      return bool;
+      AppMethodBeat.o(311664);
+      return true;
     }
-    AppMethodBeat.o(215919);
+    boolean bool = ((MultiProcessMMKV)localObject).getBoolean("ime_enable_pre_input", true);
+    AppMethodBeat.o(311664);
+    return bool;
+  }
+  
+  public static boolean fOa()
+  {
+    AppMethodBeat.i(311679);
+    Object localObject = l.JyV;
+    localObject = l.getKV();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(311679);
+      return true;
+    }
+    boolean bool = ((MultiProcessMMKV)localObject).getBoolean("ime_enable_selfdraw_keyboard", true);
+    AppMethodBeat.o(311679);
+    return bool;
+  }
+  
+  public static boolean fOb()
+  {
+    AppMethodBeat.i(311700);
+    Object localObject = l.JyV;
+    localObject = l.getKV();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(311700);
+      return false;
+    }
+    boolean bool = ((MultiProcessMMKV)localObject).getBoolean("ime_enable_move_cursor", false);
+    AppMethodBeat.o(311700);
+    return bool;
+  }
+  
+  public static boolean fOc()
+  {
     return true;
   }
   
-  public static boolean eGo()
+  public static long fOd()
   {
-    AppMethodBeat.i(215923);
-    Object localObject = l.DHK;
+    AppMethodBeat.i(311717);
+    Object localObject = l.JyV;
     localObject = l.getKV();
-    if (localObject != null)
+    if (localObject == null)
     {
-      boolean bool = ((MultiProcessMMKV)localObject).getBoolean("ime_enable_selfdraw_keyboard", true);
-      AppMethodBeat.o(215923);
-      return bool;
+      AppMethodBeat.o(311717);
+      return 100L;
     }
-    AppMethodBeat.o(215923);
-    return true;
+    long l = ((MultiProcessMMKV)localObject).getLong("ime_delete_key_repeat_inter_time", 100L);
+    AppMethodBeat.o(311717);
+    return l;
   }
   
-  public static boolean eGp()
+  public static long fOe()
   {
-    AppMethodBeat.i(215926);
-    Object localObject = l.DHK;
+    AppMethodBeat.i(311737);
+    Object localObject = l.JyV;
     localObject = l.getKV();
-    if (localObject != null)
+    if (localObject == null)
     {
-      boolean bool = ((MultiProcessMMKV)localObject).getBoolean("ime_enable_move_cursor", false);
-      AppMethodBeat.o(215926);
-      return bool;
+      AppMethodBeat.o(311737);
+      return 300L;
     }
-    AppMethodBeat.o(215926);
-    return false;
+    long l = ((MultiProcessMMKV)localObject).getLong("ime_delete_key_repeat_delay_time", 300L);
+    AppMethodBeat.o(311737);
+    return l;
   }
   
-  public static long eGq()
+  public static void rW(long paramLong)
   {
-    AppMethodBeat.i(215928);
-    Object localObject = l.DHK;
-    localObject = l.getKV();
-    if (localObject != null)
-    {
-      long l = ((MultiProcessMMKV)localObject).getLong("ime_delete_key_repeat_inter_time", 100L);
-      AppMethodBeat.o(215928);
-      return l;
-    }
-    AppMethodBeat.o(215928);
-    return 100L;
-  }
-  
-  public static long eGr()
-  {
-    AppMethodBeat.i(215932);
-    Object localObject = l.DHK;
-    localObject = l.getKV();
-    if (localObject != null)
-    {
-      long l = ((MultiProcessMMKV)localObject).getLong("ime_delete_key_repeat_delay_time", 300L);
-      AppMethodBeat.o(215932);
-      return l;
-    }
-    AppMethodBeat.o(215932);
-    return 300L;
-  }
-  
-  public static void sX(boolean paramBoolean)
-  {
-    AppMethodBeat.i(215909);
-    Object localObject = l.DHK;
+    AppMethodBeat.i(311730);
+    Object localObject = l.JyV;
     localObject = l.getKV();
     if (localObject != null)
     {
       localObject = ((MultiProcessMMKV)localObject).edit();
-      if (localObject != null)
-      {
+      if (localObject != null) {
+        ((SharedPreferences.Editor)localObject).putLong("ime_delete_key_repeat_inter_time", paramLong);
+      }
+    }
+    AppMethodBeat.o(311730);
+  }
+  
+  public static void rX(long paramLong)
+  {
+    AppMethodBeat.i(311748);
+    Object localObject = l.JyV;
+    localObject = l.getKV();
+    if (localObject != null)
+    {
+      localObject = ((MultiProcessMMKV)localObject).edit();
+      if (localObject != null) {
+        ((SharedPreferences.Editor)localObject).putLong("ime_delete_key_repeat_delay_time", paramLong);
+      }
+    }
+    AppMethodBeat.o(311748);
+  }
+  
+  public static void xc(boolean paramBoolean)
+  {
+    AppMethodBeat.i(311538);
+    Object localObject = l.JyV;
+    localObject = l.getKV();
+    if (localObject != null)
+    {
+      localObject = ((MultiProcessMMKV)localObject).edit();
+      if (localObject != null) {
+        ((SharedPreferences.Editor)localObject).putBoolean("ime_fault_open", paramBoolean);
+      }
+    }
+    AppMethodBeat.o(311538);
+  }
+  
+  public static void xd(boolean paramBoolean)
+  {
+    AppMethodBeat.i(311548);
+    Object localObject = l.JyV;
+    localObject = l.getKV();
+    if (localObject != null)
+    {
+      localObject = ((MultiProcessMMKV)localObject).edit();
+      if (localObject != null) {
+        ((SharedPreferences.Editor)localObject).putBoolean("ime_fault_exchange_open", paramBoolean);
+      }
+    }
+    AppMethodBeat.o(311548);
+  }
+  
+  public static void xe(boolean paramBoolean)
+  {
+    AppMethodBeat.i(311563);
+    Object localObject = l.JyV;
+    localObject = l.getKV();
+    if (localObject != null)
+    {
+      localObject = ((MultiProcessMMKV)localObject).edit();
+      if (localObject != null) {
+        ((SharedPreferences.Editor)localObject).putBoolean("ime_fault_insert_at_middle_open", paramBoolean);
+      }
+    }
+    AppMethodBeat.o(311563);
+  }
+  
+  public static void xf(boolean paramBoolean)
+  {
+    AppMethodBeat.i(311578);
+    Object localObject = l.JyV;
+    localObject = l.getKV();
+    if (localObject != null)
+    {
+      localObject = ((MultiProcessMMKV)localObject).edit();
+      if (localObject != null) {
+        ((SharedPreferences.Editor)localObject).putBoolean("ime_fault_skip_open", paramBoolean);
+      }
+    }
+    AppMethodBeat.o(311578);
+  }
+  
+  public static void xg(boolean paramBoolean)
+  {
+    AppMethodBeat.i(311593);
+    Object localObject = l.JyV;
+    localObject = l.getKV();
+    if (localObject != null)
+    {
+      localObject = ((MultiProcessMMKV)localObject).edit();
+      if (localObject != null) {
+        ((SharedPreferences.Editor)localObject).putBoolean("ime_fuzzy_syllables_open", paramBoolean);
+      }
+    }
+    AppMethodBeat.o(311593);
+  }
+  
+  public static void xh(boolean paramBoolean)
+  {
+    AppMethodBeat.i(311607);
+    Object localObject = l.JyV;
+    localObject = l.getKV();
+    if (localObject != null)
+    {
+      localObject = ((MultiProcessMMKV)localObject).edit();
+      if (localObject != null) {
+        ((SharedPreferences.Editor)localObject).putBoolean("ime_emoji_unicode_open", paramBoolean);
+      }
+    }
+    AppMethodBeat.o(311607);
+  }
+  
+  public static void xi(boolean paramBoolean)
+  {
+    AppMethodBeat.i(311617);
+    Object localObject = l.JyV;
+    localObject = l.getKV();
+    if (localObject != null)
+    {
+      localObject = ((MultiProcessMMKV)localObject).edit();
+      if (localObject != null) {
+        ((SharedPreferences.Editor)localObject).putBoolean("ime_ilink_login_open", paramBoolean);
+      }
+    }
+    AppMethodBeat.o(311617);
+  }
+  
+  public static void xj(boolean paramBoolean)
+  {
+    AppMethodBeat.i(311632);
+    Object localObject = l.JyV;
+    localObject = l.getKV();
+    if (localObject != null)
+    {
+      localObject = ((MultiProcessMMKV)localObject).edit();
+      if (localObject != null) {
         ((SharedPreferences.Editor)localObject).putBoolean("ime_can_print_click_data", paramBoolean);
-        AppMethodBeat.o(215909);
-        return;
       }
     }
-    AppMethodBeat.o(215909);
+    AppMethodBeat.o(311632);
   }
   
-  public static void sY(boolean paramBoolean)
+  public static void xk(boolean paramBoolean)
   {
-    AppMethodBeat.i(215913);
-    Object localObject = l.DHK;
+    AppMethodBeat.i(311649);
+    Object localObject = l.JyV;
     localObject = l.getKV();
     if (localObject != null)
     {
       localObject = ((MultiProcessMMKV)localObject).edit();
-      if (localObject != null)
-      {
+      if (localObject != null) {
         ((SharedPreferences.Editor)localObject).putBoolean("ime_can_print_engine_log", paramBoolean);
-        AppMethodBeat.o(215913);
-        return;
       }
     }
-    AppMethodBeat.o(215913);
+    AppMethodBeat.o(311649);
   }
   
-  public static void sZ(boolean paramBoolean)
+  public static void xl(boolean paramBoolean)
   {
-    AppMethodBeat.i(215917);
-    Object localObject = l.DHK;
+    AppMethodBeat.i(311661);
+    Object localObject = l.JyV;
     localObject = l.getKV();
     if (localObject != null)
     {
       localObject = ((MultiProcessMMKV)localObject).edit();
-      if (localObject != null)
-      {
+      if (localObject != null) {
         ((SharedPreferences.Editor)localObject).putBoolean("ime_enable_pre_input", paramBoolean);
-        AppMethodBeat.o(215917);
-        return;
       }
     }
-    AppMethodBeat.o(215917);
+    AppMethodBeat.o(311661);
   }
   
-  public static void ta(boolean paramBoolean)
+  public static void xm(boolean paramBoolean)
   {
-    AppMethodBeat.i(215921);
-    Object localObject = l.DHK;
+    AppMethodBeat.i(311670);
+    Object localObject = l.JyV;
     localObject = l.getKV();
     if (localObject != null)
     {
       localObject = ((MultiProcessMMKV)localObject).edit();
-      if (localObject != null)
-      {
+      if (localObject != null) {
         ((SharedPreferences.Editor)localObject).putBoolean("ime_enable_selfdraw_keyboard", paramBoolean);
-        AppMethodBeat.o(215921);
-        return;
       }
     }
-    AppMethodBeat.o(215921);
+    AppMethodBeat.o(311670);
   }
   
-  public static void tb(boolean paramBoolean)
+  public static void xn(boolean paramBoolean)
   {
-    AppMethodBeat.i(215924);
-    Object localObject = l.DHK;
+    AppMethodBeat.i(311691);
+    Object localObject = l.JyV;
     localObject = l.getKV();
     if (localObject != null)
     {
       localObject = ((MultiProcessMMKV)localObject).edit();
-      if (localObject != null)
-      {
+      if (localObject != null) {
         ((SharedPreferences.Editor)localObject).putBoolean("ime_enable_move_cursor", paramBoolean);
-        AppMethodBeat.o(215924);
-        return;
       }
     }
-    AppMethodBeat.o(215924);
+    AppMethodBeat.o(311691);
   }
 }
 

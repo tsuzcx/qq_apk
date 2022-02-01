@@ -17,14 +17,14 @@ import com.tencent.mm.sdk.platformtools.BitmapUtil;
 public class TabIconView
   extends ImageView
 {
-  private Bitmap WeT;
-  private Bitmap WeU;
-  private Bitmap WeV;
-  private Rect WeW;
-  private Rect WeX;
-  private Rect WeY;
-  private int WeZ = 0;
-  private Paint bll;
+  private Bitmap adKA;
+  private Bitmap adKB;
+  private Bitmap adKC;
+  private Rect adKD;
+  private Rect adKE;
+  private Rect adKF;
+  private int adKG = 0;
+  private Paint dfh;
   private Context mContext;
   private Paint paint;
   private float scale = 1.166667F;
@@ -41,27 +41,27 @@ public class TabIconView
     this.mContext = paramContext;
   }
   
-  public final void i(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  public final void h(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
     AppMethodBeat.i(33778);
     if (paramBoolean) {
       this.scale *= 1.2F;
     }
-    this.WeT = BitmapUtil.getBitmapNative(paramInt1, this.scale);
-    this.WeU = BitmapUtil.getBitmapNative(paramInt3, this.scale);
-    this.WeV = BitmapUtil.getBitmapNative(paramInt2, this.scale);
-    if (this.WeT != null) {
-      this.WeW = new Rect(0, 0, this.WeT.getWidth(), this.WeT.getHeight());
+    this.adKA = BitmapUtil.getBitmapNative(paramInt1, this.scale);
+    this.adKB = BitmapUtil.getBitmapNative(paramInt3, this.scale);
+    this.adKC = BitmapUtil.getBitmapNative(paramInt2, this.scale);
+    if (this.adKA != null) {
+      this.adKD = new Rect(0, 0, this.adKA.getWidth(), this.adKA.getHeight());
     }
-    if (this.WeU != null) {
-      this.WeX = new Rect(0, 0, this.WeU.getWidth(), this.WeU.getHeight());
+    if (this.adKB != null) {
+      this.adKE = new Rect(0, 0, this.adKB.getWidth(), this.adKB.getHeight());
     }
-    if (this.WeV != null) {
-      this.WeY = new Rect(0, 0, this.WeV.getWidth(), this.WeV.getHeight());
+    if (this.adKC != null) {
+      this.adKF = new Rect(0, 0, this.adKC.getWidth(), this.adKC.getHeight());
     }
     this.paint = new Paint(1);
-    this.bll = new Paint(1);
-    this.bll.setColorFilter(new PorterDuffColorFilter(this.mContext.getResources().getColor(R.e.FG_0), PorterDuff.Mode.SRC_ATOP));
+    this.dfh = new Paint(1);
+    this.dfh.setColorFilter(new PorterDuffColorFilter(this.mContext.getResources().getColor(R.e.FG_0), PorterDuff.Mode.SRC_ATOP));
     this.paint.setColorFilter(new PorterDuffColorFilter(this.mContext.getResources().getColor(R.e.wechat_green), PorterDuff.Mode.SRC_ATOP));
     AppMethodBeat.o(33778);
   }
@@ -75,33 +75,33 @@ public class TabIconView
       AppMethodBeat.o(33780);
       return;
     }
-    if (this.WeZ < 128)
+    if (this.adKG < 128)
     {
-      this.bll.setAlpha(255 - this.WeZ);
-      paramCanvas.drawBitmap(this.WeU, null, this.WeX, this.bll);
-      this.paint.setAlpha(this.WeZ);
-      paramCanvas.drawBitmap(this.WeV, null, this.WeY, this.paint);
+      this.dfh.setAlpha(255 - this.adKG);
+      paramCanvas.drawBitmap(this.adKB, null, this.adKE, this.dfh);
+      this.paint.setAlpha(this.adKG);
+      paramCanvas.drawBitmap(this.adKC, null, this.adKF, this.paint);
       AppMethodBeat.o(33780);
       return;
     }
-    this.paint.setAlpha(255 - this.WeZ);
-    paramCanvas.drawBitmap(this.WeV, null, this.WeY, this.paint);
-    this.paint.setAlpha(this.WeZ);
-    paramCanvas.drawBitmap(this.WeT, null, this.WeW, this.paint);
+    this.paint.setAlpha(255 - this.adKG);
+    paramCanvas.drawBitmap(this.adKC, null, this.adKF, this.paint);
+    this.paint.setAlpha(this.adKG);
+    paramCanvas.drawBitmap(this.adKA, null, this.adKD, this.paint);
     AppMethodBeat.o(33780);
   }
   
   public void setFocusAlpha(int paramInt)
   {
     AppMethodBeat.i(33779);
-    this.WeZ = paramInt;
+    this.adKG = paramInt;
     invalidate();
     AppMethodBeat.o(33779);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.TabIconView
  * JD-Core Version:    0.7.0.1
  */

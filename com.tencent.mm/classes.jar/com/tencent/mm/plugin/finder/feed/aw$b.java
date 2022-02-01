@@ -1,25 +1,33 @@
 package com.tencent.mm.plugin.finder.feed;
 
+import android.view.View;
 import androidx.recyclerview.widget.RecyclerView;
-import com.tencent.mm.plugin.finder.model.bu;
-import com.tencent.mm.plugin.finder.presenter.base.b;
+import com.tencent.mm.plugin.finder.model.cc;
 import com.tencent.mm.plugin.finder.presenter.base.c;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
-import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
 import java.util.ArrayList;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/FinderTimelineMachineContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/presenter/base/IViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderTimelineMachineContract$Presenter;", "Lcom/tencent/mm/plugin/finder/presenter/base/IViewCallBackTagWrapper;", "getRecyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "getRefreshLoadMoreLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "getWxRecyclerAdapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "initView", "", "data", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/FinderTimelineContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/presenter/base/IViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderTimelineContract$Presenter;", "autoFlingToRefresh", "", "delayStart", "", "isSilence", "", "isHideLoading", "getRecyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "getRefreshLoadMoreLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "getRootView", "Landroid/view/View;", "initView", "data", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lkotlin/collections/ArrayList;", "tabType", "", "onBackPressed", "setOnItemClickListener", "listener", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$OnItemClickListener;", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "showEmptyView", "showProgress", "isShow", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface aw$b
-  extends b, c<aw.a>
+  extends c<aw.a>
 {
-  public abstract void ab(ArrayList<bu> paramArrayList);
+  public abstract RefreshLoadMoreLayout aNL();
   
-  public abstract RefreshLoadMoreLayout dtq();
+  public abstract void c(long paramLong, boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract WxRecyclerAdapter<bu> dtv();
+  public abstract void f(ArrayList<cc> paramArrayList, int paramInt);
   
   public abstract RecyclerView getRecyclerView();
+  
+  public abstract View getRootView();
+  
+  public abstract boolean onBackPressed();
+  
+  public abstract void pZ(boolean paramBoolean);
+  
+  @Metadata(k=3, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 

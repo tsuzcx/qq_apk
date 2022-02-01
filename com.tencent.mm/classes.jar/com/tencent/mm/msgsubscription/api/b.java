@@ -4,39 +4,39 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.msgsubscription.b.a;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/msgsubscription/api/SubscribeMsgServiceFactory;", "", "()V", "NAME_BIZ", "", "NAME_WXA", "imps", "", "Lcom/tencent/mm/msgsubscription/model/SubscribeMsgService;", "getInstance", "name", "register", "", "implement", "unregister", "plugin-comm_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/msgsubscription/api/SubscribeMsgServiceFactory;", "", "()V", "NAME_BIZ", "", "NAME_WXA", "imps", "", "Lcom/tencent/mm/msgsubscription/model/SubscribeMsgService;", "getInstance", "name", "register", "", "implement", "unregister", "plugin-comm_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  private static final Map<String, a> moF;
-  public static final b moG;
+  public static final b piw;
+  private static final Map<String, a> pix;
   
   static
   {
-    AppMethodBeat.i(212303);
-    moG = new b();
-    moF = (Map)new LinkedHashMap();
-    AppMethodBeat.o(212303);
+    AppMethodBeat.i(236672);
+    piw = new b();
+    pix = (Map)new LinkedHashMap();
+    AppMethodBeat.o(236672);
   }
   
-  public static a YR(String paramString)
+  public static a QW(String paramString)
   {
-    AppMethodBeat.i(212297);
-    p.k(paramString, "name");
-    paramString = (a)moF.get(paramString);
-    AppMethodBeat.o(212297);
+    AppMethodBeat.i(236661);
+    s.u(paramString, "name");
+    paramString = (a)pix.get(paramString);
+    AppMethodBeat.o(236661);
     return paramString;
   }
   
   public static void a(String paramString, a parama)
   {
-    AppMethodBeat.i(212300);
-    p.k(paramString, "name");
-    p.k(parama, "implement");
-    moF.put(paramString, parama);
-    AppMethodBeat.o(212300);
+    AppMethodBeat.i(236668);
+    s.u(paramString, "name");
+    s.u(parama, "implement");
+    pix.put(paramString, parama);
+    AppMethodBeat.o(236668);
   }
 }
 

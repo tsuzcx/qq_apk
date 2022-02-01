@@ -13,12 +13,12 @@ import org.json.JSONObject;
 
 public final class e
 {
-  public Map<String, a> nUE;
+  public Map<String, a> qUo;
   
   public e()
   {
     AppMethodBeat.i(145360);
-    this.nUE = new HashMap();
+    this.qUo = new HashMap();
     a(new h());
     a(new f());
     a(new g());
@@ -33,7 +33,7 @@ public final class e
   private void a(a parama)
   {
     AppMethodBeat.i(145365);
-    this.nUE.put(parama.getMethod(), parama);
+    this.qUo.put(parama.getMethod(), parama);
     AppMethodBeat.o(145365);
   }
   
@@ -42,7 +42,7 @@ public final class e
     AppMethodBeat.i(145364);
     Object localObject = paramJSONObject.optString("method");
     paramJSONObject = paramJSONObject.optJSONArray("data");
-    localObject = (a)this.nUE.get(localObject);
+    localObject = (a)this.qUo.get(localObject);
     if (localObject == null)
     {
       AppMethodBeat.o(145364);
@@ -57,7 +57,7 @@ public final class e
   {
     AppMethodBeat.i(145362);
     Object localObject = paramBasePathActionArg.method;
-    localObject = (a)this.nUE.get(localObject);
+    localObject = (a)this.qUo.get(localObject);
     if (localObject == null)
     {
       AppMethodBeat.o(145362);
@@ -72,7 +72,7 @@ public final class e
   {
     AppMethodBeat.i(145361);
     Path localPath = new Path();
-    paramPathActionArgWrapper = paramPathActionArgWrapper.nUh;
+    paramPathActionArgWrapper = paramPathActionArgWrapper.qTR;
     if ((paramPathActionArgWrapper == null) || (paramPathActionArgWrapper.size() == 0))
     {
       AppMethodBeat.o(145361);
@@ -90,7 +90,7 @@ public final class e
     return localPath;
   }
   
-  public final Path g(JSONArray paramJSONArray)
+  public final Path j(JSONArray paramJSONArray)
   {
     AppMethodBeat.i(145363);
     Path localPath = new Path();
@@ -114,19 +114,19 @@ public final class e
   
   public static final class a
   {
-    public static e nUF;
+    public static e qUp;
     
     static
     {
       AppMethodBeat.i(145359);
-      nUF = new e();
+      qUp = new e();
       AppMethodBeat.o(145359);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.b.e
  * JD-Core Version:    0.7.0.1
  */

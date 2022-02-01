@@ -1,38 +1,32 @@
 package com.tencent.mm.plugin.finder.live.component;
 
-import kotlin.g.a.b;
-import kotlin.l;
-import kotlin.x;
+import android.view.View;
+import com.tencent.mm.plugin.finder.live.model.at;
+import com.tencent.mm.plugin.finder.presenter.base.c;
+import java.util.List;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/component/FinderLiveCastScreenContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/presenter/base/IViewCallback;", "Lcom/tencent/mm/plugin/finder/live/component/FinderLiveCastScreenContract$Presenter;", "hidePanel", "", "afterAction", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "visible", "initView", "landscapeLayout", "onAddDevice", "mrDevice", "Lcom/tencent/mm/plugin/appbrand/dlna/device/MRDevice;", "onLinkBreakDevice", "onLinkError", "errCode", "", "onLinkedDevice", "onLinkingDevice", "onRemoveDevice", "onSearchTimeout", "onUpdateDevice", "portraitLayout", "release", "showPanel", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/component/FinderLiveAnchorMusicContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/presenter/base/IViewCallback;", "Lcom/tencent/mm/plugin/finder/live/component/FinderLiveAnchorMusicContract$Presenter;", "getTouchLoc", "", "hideEditView", "", "hideVolumeView", "withAnim", "", "initView", "showEmptyView", "showLoadingView", "showMusicView", "musicData", "", "Lcom/tencent/mm/plugin/finder/live/model/MusicItem;", "showPopupMemu", "view", "Landroid/view/View;", "pos", "", "musicItem", "anchorPosX", "anchorPosY", "volumeAction", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface j$b
-  extends com.tencent.mm.plugin.finder.presenter.base.c<j.a>
+  extends c<j.a>
 {
-  public abstract void J(b<? super Boolean, x> paramb);
+  public abstract void a(View paramView, int paramInt1, at paramat, int paramInt2, int paramInt3);
   
-  public abstract void Nc(int paramInt);
+  public abstract void ehE();
   
-  public abstract void a(com.tencent.mm.plugin.appbrand.g.b.c paramc);
+  public abstract void ehG();
   
-  public abstract void b(com.tencent.mm.plugin.appbrand.g.b.c paramc);
+  public abstract int[] ehH();
   
-  public abstract void c(com.tencent.mm.plugin.appbrand.g.b.c paramc);
+  public abstract void ehI();
   
-  public abstract void dxo();
-  
-  public abstract void dxp();
-  
-  public abstract void dxq();
-  
-  public abstract void dxr();
-  
-  public abstract void i(com.tencent.mm.plugin.appbrand.g.b.c paramc);
+  public abstract void gl(List<at> paramList);
   
   public abstract void initView();
   
-  public abstract void j(com.tencent.mm.plugin.appbrand.g.b.c paramc);
+  public abstract void po(boolean paramBoolean);
   
-  public abstract void k(com.tencent.mm.plugin.appbrand.g.b.c paramc);
+  public abstract void qp(boolean paramBoolean);
 }
 
 

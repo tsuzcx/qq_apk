@@ -1,42 +1,38 @@
 package com.tencent.mm.plugin.finder.view;
 
-import android.graphics.Paint.FontMetricsInt;
-import android.text.style.LineHeightSpan;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.h.a;
-import kotlin.l;
+import com.tencent.mm.protocal.protobuf.avo;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/LineHeightStandard;", "Landroid/text/style/LineHeightSpan;", "height", "", "(I)V", "getHeight", "()I", "chooseHeight", "", "text", "", "start", "end", "spanstartv", "lineHeight", "fm", "Landroid/graphics/Paint$FontMetricsInt;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"safeParseFrom", "Lcom/tencent/mm/protocal/protobuf/FinderContactMsgInfo;", "byteArray", "", "plugin-finder_release"}, k=2, mv={1, 5, 1}, xi=48)
 public final class x
-  implements LineHeightSpan
 {
-  private final int height;
-  
-  public x(int paramInt)
+  public static final avo a(avo paramavo, byte[] paramArrayOfByte)
   {
-    this.height = paramInt;
-  }
-  
-  public final void chooseHeight(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3, int paramInt4, Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    AppMethodBeat.i(266841);
-    p.k(paramCharSequence, "text");
-    p.k(paramFontMetricsInt, "fm");
-    paramInt1 = paramFontMetricsInt.descent - paramFontMetricsInt.ascent;
-    if (paramInt1 <= 0)
+    AppMethodBeat.i(344307);
+    s.u(paramavo, "<this>");
+    if (paramArrayOfByte == null)
     {
-      AppMethodBeat.o(266841);
-      return;
+      AppMethodBeat.o(344307);
+      return paramavo;
     }
-    paramFontMetricsInt.descent = a.dm(this.height * 1.0F / paramInt1 * paramFontMetricsInt.descent);
-    paramFontMetricsInt.ascent = (paramFontMetricsInt.descent - this.height);
-    AppMethodBeat.o(266841);
+    try
+    {
+      paramavo.parseFrom(paramArrayOfByte);
+      label28:
+      AppMethodBeat.o(344307);
+      return paramavo;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      break label28;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.x
  * JD-Core Version:    0.7.0.1
  */

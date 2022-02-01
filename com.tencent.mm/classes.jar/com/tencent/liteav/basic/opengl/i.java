@@ -1,12 +1,12 @@
 package com.tencent.liteav.basic.opengl;
 
-import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
 import android.view.Surface;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.util.TXCBuild;
 import com.tencent.liteav.basic.util.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
@@ -30,10 +30,10 @@ public class i
   
   public static void a(Handler paramHandler, final HandlerThread paramHandlerThread)
   {
-    AppMethodBeat.i(236734);
+    AppMethodBeat.i(230182);
     if ((paramHandler == null) || (paramHandlerThread == null))
     {
-      AppMethodBeat.o(236734);
+      AppMethodBeat.o(230182);
       return;
     }
     Message localMessage = new Message();
@@ -42,87 +42,87 @@ public class i
     {
       public final void run()
       {
-        AppMethodBeat.i(236278);
+        AppMethodBeat.i(230266);
         new Handler(Looper.getMainLooper()).post(new Runnable()
         {
           public void run()
           {
-            AppMethodBeat.i(236215);
+            AppMethodBeat.i(230221);
             if (i.1.this.a != null) {
               i.1.this.a.removeCallbacksAndMessages(null);
             }
             if (i.1.this.b != null)
             {
-              if (Build.VERSION.SDK_INT >= 18)
+              if (TXCBuild.VersionInt() >= 18)
               {
                 i.1.this.b.quitSafely();
-                AppMethodBeat.o(236215);
+                AppMethodBeat.o(230221);
                 return;
               }
               i.1.this.b.quit();
             }
-            AppMethodBeat.o(236215);
+            AppMethodBeat.o(230221);
           }
         });
-        AppMethodBeat.o(236278);
+        AppMethodBeat.o(230266);
       }
     };
     paramHandler.sendMessage(localMessage);
-    AppMethodBeat.o(236734);
+    AppMethodBeat.o(230182);
   }
   
   private void a(Message paramMessage)
   {
-    AppMethodBeat.i(236759);
+    AppMethodBeat.i(230193);
     try
     {
       e();
-      AppMethodBeat.o(236759);
+      AppMethodBeat.o(230193);
       return;
     }
     catch (Exception paramMessage)
     {
       TXCLog.e("TXGLThreadHandler", "surface-render: init egl context exception " + this.c);
       this.c = null;
-      AppMethodBeat.o(236759);
+      AppMethodBeat.o(230193);
     }
   }
   
   private void b(Message paramMessage)
   {
-    AppMethodBeat.i(236761);
+    AppMethodBeat.i(230197);
     f();
-    AppMethodBeat.o(236761);
+    AppMethodBeat.o(230197);
   }
   
   private void c(Message paramMessage)
   {
-    AppMethodBeat.i(236762);
+    AppMethodBeat.i(230204);
     try
     {
       if (this.i != null) {
         this.i.d();
       }
-      AppMethodBeat.o(236762);
+      AppMethodBeat.o(230204);
       return;
     }
     catch (Exception paramMessage)
     {
       TXCLog.e("TXGLThreadHandler", "onMsgRend Exception " + paramMessage.getMessage());
-      AppMethodBeat.o(236762);
+      AppMethodBeat.o(230204);
     }
   }
   
   private boolean e()
   {
-    AppMethodBeat.i(236764);
+    AppMethodBeat.i(230214);
     TXCLog.i("TXGLThreadHandler", String.format("init egl size[%d/%d]", new Object[] { Integer.valueOf(this.a), Integer.valueOf(this.b) }));
     if (!this.d) {
       this.g = b.a(null, this.h, this.c, this.a, this.b);
     }
     while ((this.g == null) && (this.e == null))
     {
-      AppMethodBeat.o(236764);
+      AppMethodBeat.o(230214);
       return false;
       this.e = c.a(null, this.f, this.c, this.a, this.b);
     }
@@ -130,13 +130,13 @@ public class i
     if (this.i != null) {
       this.i.c();
     }
-    AppMethodBeat.o(236764);
+    AppMethodBeat.o(230214);
     return true;
   }
   
   private void f()
   {
-    AppMethodBeat.i(236765);
+    AppMethodBeat.i(230219);
     TXCLog.w("TXGLThreadHandler", "surface-render: destroy egl context " + this.c);
     this.d = false;
     if (this.i != null) {
@@ -153,19 +153,19 @@ public class i
       this.e = null;
     }
     this.c = null;
-    AppMethodBeat.o(236765);
+    AppMethodBeat.o(230219);
   }
   
   public javax.microedition.khronos.egl.EGLContext a()
   {
-    AppMethodBeat.i(236746);
+    AppMethodBeat.i(230230);
     if (this.g != null)
     {
       javax.microedition.khronos.egl.EGLContext localEGLContext = this.g.d();
-      AppMethodBeat.o(236746);
+      AppMethodBeat.o(230230);
       return localEGLContext;
     }
-    AppMethodBeat.o(236746);
+    AppMethodBeat.o(230230);
     return null;
   }
   
@@ -181,34 +181,34 @@ public class i
   
   public void c()
   {
-    AppMethodBeat.i(236750);
+    AppMethodBeat.i(230242);
     if (this.g != null) {
       this.g.a();
     }
     if (this.e != null) {
       this.e.e();
     }
-    AppMethodBeat.o(236750);
+    AppMethodBeat.o(230242);
   }
   
   public void d()
   {
-    AppMethodBeat.i(236753);
+    AppMethodBeat.i(230245);
     if (this.g != null) {
       this.g.b();
     }
     if (this.e != null) {
       this.e.b();
     }
-    AppMethodBeat.o(236753);
+    AppMethodBeat.o(230245);
   }
   
   public void handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(236755);
+    AppMethodBeat.i(230254);
     if (paramMessage == null)
     {
-      AppMethodBeat.o(236755);
+      AppMethodBeat.o(230254);
       return;
     }
     switch (paramMessage.what)
@@ -219,7 +219,7 @@ public class i
       if ((paramMessage != null) && (paramMessage.obj != null)) {
         ((Runnable)paramMessage.obj).run();
       }
-      AppMethodBeat.o(236755);
+      AppMethodBeat.o(230254);
       return;
       a(paramMessage);
       continue;
@@ -240,7 +240,7 @@ public class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.basic.opengl.i
  * JD-Core Version:    0.7.0.1
  */

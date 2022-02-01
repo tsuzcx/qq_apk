@@ -8,28 +8,25 @@ import android.media.MediaFormat;
 import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.plugin.vlog.model.aj;
-import com.tencent.mm.plugin.vlog.model.s;
+import com.tencent.mm.plugin.vlog.model.ak;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.nio.ByteBuffer;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
 import kotlin.n.n;
-import kotlin.t;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/player/VLogMediaCodecPlayer;", "Lcom/tencent/mm/plugin/vlog/player/MaterialPlayer;", "texture", "", "drawWidth", "drawHeight", "material", "Lcom/tencent/mm/plugin/vlog/model/VideoMaterial;", "(IIILcom/tencent/mm/plugin/vlog/model/VideoMaterial;)V", "decoder", "Landroid/media/MediaCodec;", "info", "Landroid/media/MediaCodec$BufferInfo;", "inputDone", "", "lastBufferId", "lastPts", "", "mediaExtractor", "Landroid/media/MediaExtractor;", "mime", "", "outputDone", "surface", "Landroid/view/Surface;", "surfaceTexture", "Landroid/graphics/SurfaceTexture;", "trackId", "videoFormat", "Landroid/media/MediaFormat;", "drainOutputBuffer", "curTime", "enableMute", "", "mute", "feedInputBuffer", "getOffsetPts", "pts", "isMirror", "isOES", "pause", "playing", "updateTex", "prepare", "readyAt", "seekTime", "release", "resume", "stop", "Companion", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/player/VLogMediaCodecPlayer;", "Lcom/tencent/mm/plugin/vlog/player/MaterialPlayer;", "texture", "", "drawWidth", "drawHeight", "material", "Lcom/tencent/mm/plugin/vlog/model/VideoMaterial;", "(IIILcom/tencent/mm/plugin/vlog/model/VideoMaterial;)V", "decoder", "Landroid/media/MediaCodec;", "info", "Landroid/media/MediaCodec$BufferInfo;", "inputDone", "", "lastBufferId", "lastPts", "", "mediaExtractor", "Landroid/media/MediaExtractor;", "mime", "", "outputDone", "surface", "Landroid/view/Surface;", "surfaceTexture", "Landroid/graphics/SurfaceTexture;", "trackId", "videoFormat", "Landroid/media/MediaFormat;", "drainOutputBuffer", "curTime", "enableMute", "", "mute", "feedInputBuffer", "getOffsetPts", "pts", "isMirror", "isOES", "pause", "playing", "updateTex", "prepare", "readyAt", "seekTime", "release", "resume", "stop", "Companion", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
   extends b
 {
-  public static final a Npw;
-  private boolean Npt;
-  private boolean Npu;
-  private int Npv;
-  private String aFM;
+  public static final a Udm;
+  private boolean Udn;
+  private boolean Udo;
+  private int Udp;
+  private String cBw;
   private MediaCodec decoder;
   private final MediaCodec.BufferInfo info;
-  private long kSy;
   private MediaExtractor mediaExtractor;
+  private long nyj;
   private Surface surface;
   private SurfaceTexture surfaceTexture;
   private int trackId;
@@ -38,38 +35,77 @@ public final class f
   static
   {
     AppMethodBeat.i(110987);
-    Npw = new a((byte)0);
+    Udm = new a((byte)0);
     AppMethodBeat.o(110987);
   }
   
-  public f(int paramInt1, int paramInt2, int paramInt3, aj paramaj)
+  public f(int paramInt1, int paramInt2, int paramInt3, ak paramak)
   {
-    super(paramInt1, paramInt2, paramInt3, (s)paramaj);
+    super(paramInt1, paramInt2, paramInt3, (com.tencent.mm.plugin.vlog.model.s)paramak);
     AppMethodBeat.i(110986);
-    this.aFM = "";
+    this.cBw = "";
     this.trackId = -1;
     this.info = new MediaCodec.BufferInfo();
-    this.Npv = -1;
-    this.kSy = -1L;
+    this.Udp = -1;
+    this.nyj = -1L;
     AppMethodBeat.o(110986);
   }
   
-  private final long St(long paramLong)
+  private final boolean SC()
+  {
+    AppMethodBeat.i(110983);
+    try
+    {
+      MediaExtractor localMediaExtractor = this.mediaExtractor;
+      if (localMediaExtractor != null)
+      {
+        MediaCodec localMediaCodec = this.decoder;
+        if ((localMediaCodec != null) && (!this.Udn))
+        {
+          int i = localMediaCodec.dequeueInputBuffer(10000L);
+          Log.d("MicroMsg.VLogVideoPlayer", kotlin.g.b.s.X("feedInputBuffer bufferIndex :", Integer.valueOf(i)));
+          if (i >= 0)
+          {
+            ByteBuffer localByteBuffer = localMediaCodec.getInputBuffer(i);
+            kotlin.g.b.s.checkNotNull(localByteBuffer);
+            kotlin.g.b.s.s(localByteBuffer, "decoder.getInputBuffer(bufferIndex)!!");
+            int j = localMediaExtractor.readSampleData(localByteBuffer, 0);
+            long l = localMediaExtractor.getSampleTime();
+            Log.d("MicroMsg.VLogVideoPlayer", kotlin.g.b.s.X("[debug video] [decode] input pts = ", Long.valueOf(l)));
+            localMediaExtractor.advance();
+            if (j > 0)
+            {
+              localMediaCodec.queueInputBuffer(i, 0, j, l, 0);
+              AppMethodBeat.o(110983);
+              return true;
+            }
+            this.Udn = true;
+            localMediaCodec.queueInputBuffer(i, 0, 0, 0L, 4);
+            Log.d("MicroMsg.VLogVideoPlayer", kotlin.g.b.s.X("[debug video] [decode] input done, pts = ", Long.valueOf(l)));
+          }
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.VLogVideoPlayer", (Throwable)localException, "feedInputBuffer error", new Object[0]);
+      }
+    }
+    AppMethodBeat.o(110983);
+    return false;
+  }
+  
+  private final long wH(long paramLong)
   {
     AppMethodBeat.i(110978);
-    Object localObject = this.NoY;
-    if (localObject == null)
-    {
-      localObject = new t("null cannot be cast to non-null type com.tencent.mm.plugin.vlog.model.VideoMaterial");
-      AppMethodBeat.o(110978);
-      throw ((Throwable)localObject);
-    }
-    long l = ((aj)localObject).NnC;
+    long l = ((ak)this.UcR).Ubf;
     AppMethodBeat.o(110978);
     return l + paramLong;
   }
   
-  private final boolean Su(long paramLong)
+  private final boolean wI(long paramLong)
   {
     AppMethodBeat.i(110982);
     for (;;)
@@ -79,28 +115,28 @@ public final class f
         localObject = this.decoder;
         if (localObject != null)
         {
-          if (this.kSy != -1L)
+          if (this.nyj != -1L)
           {
-            long l = this.kSy / 1000L;
+            long l = this.nyj / 1000L;
             if (paramLong - l <= 0L)
             {
               Log.d("MicroMsg.VLogVideoPlayer", "[debug video] [draw] dura1 = " + paramLong + ", dura2 = " + l);
-              if (this.Npv != -1)
+              if (this.Udp != -1)
               {
-                ((MediaCodec)localObject).releaseOutputBuffer(this.Npv, true);
-                this.Npv = -1;
+                ((MediaCodec)localObject).releaseOutputBuffer(this.Udp, true);
+                this.Udp = -1;
               }
               AppMethodBeat.o(110982);
               return true;
             }
             Log.d("MicroMsg.VLogVideoPlayer", "[debug video] [drop] dura1 = " + paramLong + ", dura2 = " + l);
-            if (this.Npv != -1)
+            if (this.Udp != -1)
             {
-              ((MediaCodec)localObject).releaseOutputBuffer(this.Npv, false);
-              this.Npv = -1;
+              ((MediaCodec)localObject).releaseOutputBuffer(this.Udp, false);
+              this.Udp = -1;
             }
           }
-          if (this.Npu) {
+          if (this.Udo) {
             continue;
           }
           i = ((MediaCodec)localObject).dequeueOutputBuffer(this.info, 10000L);
@@ -148,9 +184,9 @@ public final class f
         Log.printErrStackTrace("MicroMsg.VLogVideoPlayer", (Throwable)localException, "drainOutputBuffer error", new Object[0]);
         continue;
         paramLong = this.info.presentationTimeUs;
-        Log.d("MicroMsg.VLogVideoPlayer", "[debug video] [decode] lastPts = " + this.kSy + ", pts = " + paramLong);
-        this.kSy = paramLong;
-        this.Npv = i;
+        Log.d("MicroMsg.VLogVideoPlayer", "[debug video] [decode] lastPts = " + this.nyj + ", pts = " + paramLong);
+        this.nyj = paramLong;
+        this.Udp = i;
         continue;
         AppMethodBeat.o(110982);
       }
@@ -167,9 +203,9 @@ public final class f
       if (i >= 0) {
         if ((this.info.flags & 0x4) != 0)
         {
-          this.Npu = true;
+          this.Udo = true;
           ((MediaCodec)localObject).releaseOutputBuffer(i, false);
-          Log.d("MicroMsg.VLogVideoPlayer", "[debug video] [decode] output done, lastPts = " + this.kSy);
+          Log.d("MicroMsg.VLogVideoPlayer", kotlin.g.b.s.X("[debug video] [decode] output done, lastPts = ", Long.valueOf(this.nyj)));
           AppMethodBeat.o(110982);
           return true;
         }
@@ -178,125 +214,23 @@ public final class f
     return true;
   }
   
-  private final boolean sZ()
-  {
-    AppMethodBeat.i(110983);
-    try
-    {
-      MediaExtractor localMediaExtractor = this.mediaExtractor;
-      if (localMediaExtractor != null)
-      {
-        MediaCodec localMediaCodec = this.decoder;
-        if ((localMediaCodec != null) && (!this.Npt))
-        {
-          int i = localMediaCodec.dequeueInputBuffer(10000L);
-          Log.d("MicroMsg.VLogVideoPlayer", "feedInputBuffer bufferIndex :".concat(String.valueOf(i)));
-          if (i >= 0)
-          {
-            ByteBuffer localByteBuffer = localMediaCodec.getInputBuffer(i);
-            if (localByteBuffer == null) {
-              p.iCn();
-            }
-            p.j(localByteBuffer, "decoder.getInputBuffer(bufferIndex)!!");
-            int j = localMediaExtractor.readSampleData(localByteBuffer, 0);
-            long l = localMediaExtractor.getSampleTime();
-            Log.d("MicroMsg.VLogVideoPlayer", "[debug video] [decode] input pts = ".concat(String.valueOf(l)));
-            localMediaExtractor.advance();
-            if (j > 0)
-            {
-              localMediaCodec.queueInputBuffer(i, 0, j, l, 0);
-              AppMethodBeat.o(110983);
-              return true;
-            }
-            this.Npt = true;
-            localMediaCodec.queueInputBuffer(i, 0, 0, 0L, 4);
-            Log.d("MicroMsg.VLogVideoPlayer", "[debug video] [decode] input done, pts = ".concat(String.valueOf(l)));
-          }
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Log.printErrStackTrace("MicroMsg.VLogVideoPlayer", (Throwable)localException, "feedInputBuffer error", new Object[0]);
-      }
-    }
-    AppMethodBeat.o(110983);
-    return false;
-  }
+  public final void FP(boolean paramBoolean) {}
   
-  public final void Aq(boolean paramBoolean) {}
-  
-  public final void O(long paramLong, boolean paramBoolean)
+  public final void Z(long paramLong, boolean paramBoolean)
   {
     AppMethodBeat.i(110981);
-    Log.d("MicroMsg.VLogVideoPlayer", "VideoPlayer playing : " + St(paramLong));
-    while (!Su(St(paramLong))) {
-      sZ();
+    Log.d("MicroMsg.VLogVideoPlayer", kotlin.g.b.s.X("VideoPlayer playing : ", Long.valueOf(wH(paramLong))));
+    while (!wI(wH(paramLong))) {
+      SC();
     }
     if (paramBoolean)
     {
       SurfaceTexture localSurfaceTexture = this.surfaceTexture;
-      if (localSurfaceTexture != null)
-      {
+      if (localSurfaceTexture != null) {
         localSurfaceTexture.updateTexImage();
-        AppMethodBeat.o(110981);
-        return;
       }
     }
     AppMethodBeat.o(110981);
-  }
-  
-  public final void Ss(long paramLong)
-  {
-    AppMethodBeat.i(183780);
-    if (this.NoX)
-    {
-      AppMethodBeat.o(183780);
-      return;
-    }
-    this.NoX = true;
-    long l = System.currentTimeMillis();
-    this.mediaExtractor = new MediaExtractor();
-    Object localObject = this.mediaExtractor;
-    if (localObject != null) {
-      ((MediaExtractor)localObject).setDataSource(this.NoY.path);
-    }
-    localObject = this.mediaExtractor;
-    if (localObject != null) {
-      ((MediaExtractor)localObject).selectTrack(this.trackId);
-    }
-    localObject = this.mediaExtractor;
-    if (localObject != null) {
-      ((MediaExtractor)localObject).seekTo(St(paramLong) * 1000L, 0);
-    }
-    StringBuilder localStringBuilder = new StringBuilder("[debug video] play seekTime :").append(St(paramLong)).append(", real seekTime: ");
-    localObject = this.mediaExtractor;
-    if (localObject != null) {}
-    for (localObject = Long.valueOf(((MediaExtractor)localObject).getSampleTime());; localObject = null)
-    {
-      Log.i("MicroMsg.VLogVideoPlayer", localObject);
-      if (this.videoFormat != null)
-      {
-        this.decoder = MediaCodec.createDecoderByType(this.aFM);
-        localObject = this.decoder;
-        if (localObject != null) {
-          ((MediaCodec)localObject).configure(this.videoFormat, this.surface, null, 0);
-        }
-        localObject = this.decoder;
-        if (localObject != null) {
-          ((MediaCodec)localObject).start();
-        }
-      }
-      this.kSy = -1L;
-      this.Npv = -1;
-      this.Npt = false;
-      this.Npu = false;
-      Log.d("MicroMsg.VLogVideoPlayer", "[prepare] video play time = ".concat(String.valueOf(System.currentTimeMillis() - l)));
-      AppMethodBeat.o(183780);
-      return;
-    }
   }
   
   public final void pause() {}
@@ -304,74 +238,64 @@ public final class f
   public final void prepare()
   {
     AppMethodBeat.i(110979);
-    this.aMy = true;
-    this.surfaceTexture = new SurfaceTexture(this.NkK);
+    this.cGv = true;
+    this.surfaceTexture = new SurfaceTexture(this.TXY);
     this.surface = new Surface(this.surfaceTexture);
-    tm(SightVideoJNI.getMp4RotateVFS(this.NoY.path));
-    Object localObject1;
-    int j;
-    int i;
-    if (aVr() == 90)
+    th(SightVideoJNI.getMp4RotateVFS(this.UcR.path));
+    MediaExtractor localMediaExtractor;
+    int k;
+    if (hRY() == 90)
     {
-      tm(3);
-      localObject1 = new MediaExtractor();
-      ((MediaExtractor)localObject1).setDataSource(this.NoY.path);
-      j = ((MediaExtractor)localObject1).getTrackCount();
-      i = 0;
+      th(3);
+      localMediaExtractor = new MediaExtractor();
+      localMediaExtractor.setDataSource(this.UcR.path);
+      k = localMediaExtractor.getTrackCount();
+      if (k <= 0) {}
     }
-    Object localObject2;
-    for (;;)
+    int j;
+    for (int i = 0;; i = j)
     {
-      if (i < j)
+      j = i + 1;
+      MediaFormat localMediaFormat = localMediaExtractor.getTrackFormat(i);
+      kotlin.g.b.s.s(localMediaFormat, "mediaExtractor.getTrackFormat(i)");
+      String str = localMediaFormat.getString("mime");
+      kotlin.g.b.s.checkNotNull(str);
+      kotlin.g.b.s.s(str, "mediaFormat.getString(MediaFormat.KEY_MIME)!!");
+      if (n.U(str, "video", false))
       {
-        localObject2 = ((MediaExtractor)localObject1).getTrackFormat(i);
-        p.j(localObject2, "mediaExtractor.getTrackFormat(i)");
-        String str = ((MediaFormat)localObject2).getString("mime");
-        p.j(str, "mediaFormat.getString(MediaFormat.KEY_MIME)");
-        if (n.M(str, "video", false))
-        {
-          this.width = ((MediaFormat)localObject2).getInteger("width");
-          this.height = ((MediaFormat)localObject2).getInteger("height");
-          str = ((MediaFormat)localObject2).getString("mime");
-          p.j(str, "mediaFormat.getString(MediaFormat.KEY_MIME)");
-          this.aFM = str;
-          this.videoFormat = ((MediaFormat)localObject2);
-          this.trackId = i;
-        }
+        this.width = localMediaFormat.getInteger("width");
+        this.height = localMediaFormat.getInteger("height");
+        str = localMediaFormat.getString("mime");
+        kotlin.g.b.s.checkNotNull(str);
+        kotlin.g.b.s.s(str, "mediaFormat.getString(MediaFormat.KEY_MIME)!!");
+        this.cBw = str;
+        this.videoFormat = localMediaFormat;
+        this.trackId = i;
       }
-      else
+      while (j >= k)
       {
-        ((MediaExtractor)localObject1).release();
-        localObject1 = new StringBuilder("prepare video, rotate = ").append(aVr()).append(", width = ").append(this.width).append(", height = ").append(this.height).append(", startTime = ").append(this.NoY.startTime).append(", endTime = ").append(this.NoY.endTime).append(", videoStartTime = ");
-        localObject2 = this.NoY;
-        if (localObject2 != null) {
-          break label360;
-        }
-        localObject1 = new t("null cannot be cast to non-null type com.tencent.mm.plugin.vlog.model.VideoMaterial");
+        localMediaExtractor.release();
+        Log.i("MicroMsg.VLogVideoPlayer", "prepare video, rotate = " + hRY() + ", width = " + this.width + ", height = " + this.height + ", startTime = " + this.UcR.startTime + ", endTime = " + this.UcR.endTime + ", videoStartTime = " + ((ak)this.UcR).Ubf + ", videoEndTime = " + ((ak)this.UcR).Ubg);
         AppMethodBeat.o(110979);
-        throw ((Throwable)localObject1);
-        if (aVr() == 180)
+        return;
+        if (hRY() == 180)
         {
-          tm(2);
+          th(2);
           break;
         }
-        if (aVr() != 270) {
+        if (hRY() != 270) {
           break;
         }
-        tm(1);
+        th(1);
         break;
       }
-      i += 1;
     }
-    label360:
-    Log.i("MicroMsg.VLogVideoPlayer", ((aj)localObject2).NnC + ", videoEndTime = " + ((aj)this.NoY).NnD);
-    AppMethodBeat.o(110979);
   }
   
   public final void release()
   {
     AppMethodBeat.i(110985);
-    this.NoX = false;
+    this.UcS = false;
     try
     {
       Object localObject = this.mediaExtractor;
@@ -407,7 +331,7 @@ public final class f
     this.mediaExtractor = null;
     this.decoder = null;
     this.videoFormat = null;
-    this.aMy = false;
+    this.cGv = false;
     Log.d("MicroMsg.VLogVideoPlayer", "video player release");
     AppMethodBeat.o(110985);
   }
@@ -417,7 +341,7 @@ public final class f
   public final void stop()
   {
     AppMethodBeat.i(110984);
-    this.NoX = false;
+    this.UcS = false;
     try
     {
       Object localObject = this.decoder;
@@ -446,12 +370,63 @@ public final class f
     AppMethodBeat.o(110984);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/player/VLogMediaCodecPlayer$Companion;", "", "()V", "TAG", "", "plugin-vlog_release"})
+  public final void wG(long paramLong)
+  {
+    AppMethodBeat.i(183780);
+    if (this.UcS)
+    {
+      AppMethodBeat.o(183780);
+      return;
+    }
+    this.UcS = true;
+    long l = System.currentTimeMillis();
+    this.mediaExtractor = new MediaExtractor();
+    Object localObject = this.mediaExtractor;
+    if (localObject != null) {
+      ((MediaExtractor)localObject).setDataSource(this.UcR.path);
+    }
+    localObject = this.mediaExtractor;
+    if (localObject != null) {
+      ((MediaExtractor)localObject).selectTrack(this.trackId);
+    }
+    localObject = this.mediaExtractor;
+    if (localObject != null) {
+      ((MediaExtractor)localObject).seekTo(wH(paramLong) * 1000L, 0);
+    }
+    StringBuilder localStringBuilder = new StringBuilder("[debug video] play seekTime :").append(wH(paramLong)).append(", real seekTime: ");
+    localObject = this.mediaExtractor;
+    if (localObject == null) {}
+    for (localObject = null;; localObject = Long.valueOf(((MediaExtractor)localObject).getSampleTime()))
+    {
+      Log.i("MicroMsg.VLogVideoPlayer", localObject);
+      if (this.videoFormat != null)
+      {
+        this.decoder = MediaCodec.createDecoderByType(this.cBw);
+        localObject = this.decoder;
+        if (localObject != null) {
+          ((MediaCodec)localObject).configure(this.videoFormat, this.surface, null, 0);
+        }
+        localObject = this.decoder;
+        if (localObject != null) {
+          ((MediaCodec)localObject).start();
+        }
+      }
+      this.nyj = -1L;
+      this.Udp = -1;
+      this.Udn = false;
+      this.Udo = false;
+      Log.d("MicroMsg.VLogVideoPlayer", kotlin.g.b.s.X("[prepare] video play time = ", Long.valueOf(System.currentTimeMillis() - l)));
+      AppMethodBeat.o(183780);
+      return;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/player/VLogMediaCodecPlayer$Companion;", "", "()V", "TAG", "", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.player.f
  * JD-Core Version:    0.7.0.1
  */

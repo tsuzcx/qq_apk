@@ -1,48 +1,48 @@
 package com.tencent.mm.plugin.order.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.wallet_core.model.k;
-import com.tencent.mm.protocal.protobuf.akv;
-import com.tencent.mm.protocal.protobuf.akw;
+import com.tencent.mm.protocal.protobuf.aof;
+import com.tencent.mm.protocal.protobuf.aog;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.wallet_core.c.w;
+import com.tencent.mm.wallet_core.model.w;
 
 public final class f
   extends w
 {
-  private i callback;
-  private d rr;
+  private h callback;
+  private c rr;
   
   public f(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(66683);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new akv();
-    ((d.a)localObject).lBV = new akw();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/evaluateorder";
-    ((d.a)localObject).funcId = 583;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (akv)d.b.b(this.rr.lBR);
-    ((akv)localObject).SvD = paramString1;
-    ((akv)localObject).lVG = paramString2;
-    ((akv)localObject).Iza = paramInt;
-    ((akv)localObject).Sdp = k.gJe();
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new aof();
+    ((c.a)localObject).otF = new aog();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/evaluateorder";
+    ((c.a)localObject).funcId = 583;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (aof)c.b.b(this.rr.otB);
+    ((aof)localObject).ZvJ = paramString1;
+    ((aof)localObject).oOI = paramString2;
+    ((aof)localObject).OzH = paramInt;
+    ((aof)localObject).Zbi = k.iis();
     AppMethodBeat.o(66683);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(66685);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(66685);
     return i;
@@ -58,7 +58,7 @@ public final class f
     AppMethodBeat.i(66684);
     Log.d("MicroMsg.NetSceneEvaluateOrder", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      d.c.b(((d)params).lBS);
+      c.c.b(((c)params).otC);
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(66684);

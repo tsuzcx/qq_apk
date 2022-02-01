@@ -13,29 +13,29 @@ public final class c
   public final String a(org.b.d.c paramc)
   {
     AppMethodBeat.i(40510);
-    d.n(paramc, "Cannot extract base string from null object");
-    if ((paramc.abLF == null) || (paramc.abLF.size() <= 0))
+    d.x(paramc, "Cannot extract base string from null object");
+    if ((paramc.ajYy == null) || (paramc.ajYy.size() <= 0))
     {
       paramc = new org.b.b.c(paramc);
       AppMethodBeat.o(40510);
       throw paramc;
     }
-    String str1 = org.b.g.c.aT(paramc.iVl().name());
-    String str2 = org.b.g.c.aT(paramc.iVq());
+    String str1 = org.b.g.c.cg(paramc.kJJ().name());
+    String str2 = org.b.g.c.cg(paramc.kJO());
     e locale = new e();
-    locale.a(paramc.iVk());
-    locale.a(paramc.iVp());
-    locale.a(new e(paramc.abLF));
-    paramc = new e(locale.abLG);
-    Collections.sort(paramc.abLG);
-    paramc = String.format("%s&%s&%s", new Object[] { str1, str2, org.b.g.c.aT(paramc.iVs()) });
+    locale.a(paramc.kJI());
+    locale.a(paramc.kJN());
+    locale.a(new e(paramc.ajYy));
+    paramc = new e(locale.ajYz);
+    Collections.sort(paramc.ajYz);
+    paramc = String.format("%s&%s&%s", new Object[] { str1, str2, org.b.g.c.cg(paramc.kJQ()) });
     AppMethodBeat.o(40510);
     return paramc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.b.c.c
  * JD-Core Version:    0.7.0.1
  */

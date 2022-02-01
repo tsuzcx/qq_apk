@@ -6,16 +6,17 @@ import android.os.Process;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.hook.memory.MemoryHook;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.performance.b.a.a;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.plugin.performance.diagnostic.c.d;
 import com.tencent.mm.plugin.performance.diagnostic.e;
-import com.tencent.mm.plugin.performance.watchdogs.c.b;
+import com.tencent.mm.plugin.performance.dice.a.a;
+import com.tencent.mm.plugin.performance.watchdogs.d.b;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.ah;
+import com.tencent.mm.vfs.u;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,25 +29,25 @@ public class b
   extends com.tencent.mm.plugin.performance.diagnostic.c<MemoryHook, a>
   implements a.a
 {
-  private static final q GNi;
-  private static final q GNj;
-  private static final q GNk;
+  private static final u MKA;
+  private static final u MKB;
+  private static final u MKC;
   private static String TAG;
-  public final a GNl;
-  private c.b GNm;
+  public final a MKD;
+  private d.b MKE;
   
   static
   {
     AppMethodBeat.i(124967);
     TAG = "MicroMsg.MemoryHookLogic";
-    String str3 = fnr();
+    String str3 = gye();
     TAG += str3;
     String str1 = MMApplicationContext.getContext().getFilesDir().getAbsolutePath() + "/memory_hook";
     String str2 = str1 + "/" + str3 + Process.myPid() + "_memory_hook.log";
     str3 = str1 + "/" + str3 + Process.myPid() + "_memory_hook.json";
-    GNi = new q(str1);
-    GNj = new q(str2);
-    GNk = new q(str3);
+    MKA = new u(str1);
+    MKB = new u(str2);
+    MKC = new u(str3);
     Log.i(TAG, "init dump file path = %s", new Object[] { str2 });
     Log.i(TAG, "init json file path = %s", new Object[] { str3 });
     AppMethodBeat.o(124967);
@@ -55,48 +56,53 @@ public class b
   public b()
   {
     AppMethodBeat.i(124959);
-    this.GNl = new a(this);
+    this.MKD = new a(this);
     AppMethodBeat.o(124959);
   }
   
-  private void fnV()
+  private void gyR()
   {
-    AppMethodBeat.i(200911);
-    Object localObject1 = com.tencent.mm.plugin.performance.c.aUl(GNk.bOF());
+    AppMethodBeat.i(300896);
+    Object localObject1 = com.tencent.mm.plugin.performance.c.aRp(ah.v(MKC.jKT()));
     try
     {
       localObject1 = new JSONObject((String)localObject1);
-      n((JSONObject)localObject1, "NativeHeap");
-      n((JSONObject)localObject1, "mmap");
-      o((JSONObject)localObject1, "SoNativeSize");
-      o((JSONObject)localObject1, "SoMmapSize");
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      Log.printErrStackTrace(TAG, localThrowable, "reportKV", new Object[0]);
+      o((JSONObject)localObject1, "NativeHeap");
+      o((JSONObject)localObject1, "mmap");
+      p((JSONObject)localObject1, "SoNativeSize");
+      p((JSONObject)localObject1, "SoMmapSize");
+      MKC.diJ();
+      AppMethodBeat.o(300896);
       return;
     }
     finally
     {
-      GNk.cFq();
-      AppMethodBeat.o(200911);
+      try
+      {
+        Log.printErrStackTrace(TAG, localThrowable, "reportKV", new Object[0]);
+        return;
+      }
+      finally
+      {
+        MKC.diJ();
+        AppMethodBeat.o(300896);
+      }
     }
   }
   
-  private static void jz(String paramString1, String paramString2)
+  private static void kT(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(200891);
+    AppMethodBeat.i(300870);
     Log.i(TAG, "memory dump begin");
     long l = System.currentTimeMillis();
     try
     {
-      q localq = GNi;
-      if (!localq.ifE()) {
-        localq.ifK();
+      u localu = MKA;
+      if (!localu.jKS()) {
+        localu.jKY();
       }
-      MemoryHook.cYl.dump(paramString1, paramString2);
-      Log.i(TAG, "dump path = %s, json path = %s", new Object[] { GNj.bOF(), GNk.bOF() });
+      MemoryHook.eVb.dump(paramString1, paramString2);
+      Log.i(TAG, "dump path = %s, json path = %s", new Object[] { ah.v(MKB.jKT()), ah.v(MKC.jKT()) });
     }
     catch (Exception paramString1)
     {
@@ -106,12 +112,12 @@ public class b
       }
     }
     Log.i(TAG, "memory dump end, cost = %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-    AppMethodBeat.o(200891);
+    AppMethodBeat.o(300870);
   }
   
-  private void n(JSONObject paramJSONObject, String paramString)
+  private void o(JSONObject paramJSONObject, String paramString)
   {
-    AppMethodBeat.i(200896);
+    AppMethodBeat.i(300881);
     ArrayList localArrayList;
     for (;;)
     {
@@ -121,7 +127,7 @@ public class b
         if (paramJSONObject.length() <= 0)
         {
           Log.i(TAG, "reportStacktraceJson: report nothing");
-          AppMethodBeat.o(200896);
+          AppMethodBeat.o(300881);
           return;
         }
         localArrayList = new ArrayList();
@@ -159,10 +165,10 @@ public class b
         }
         i += 1;
       }
-      catch (Throwable paramJSONObject)
+      finally
       {
         Log.printErrStackTrace(TAG, paramJSONObject, "reportStacktraceJson", new Object[0]);
-        AppMethodBeat.o(200896);
+        AppMethodBeat.o(300881);
         return;
       }
     }
@@ -170,45 +176,45 @@ public class b
       localArrayList.add("");
     }
     localArrayList.add(String.valueOf(Debug.getNativeHeapAllocatedSize()));
-    if (this.GNm != null)
+    if (this.MKE != null)
     {
-      if (this.GNm.cQt) {
-        break label499;
+      if (this.MKE.eLx) {
+        break label500;
       }
-      if (!this.GNm.GQW.isEmpty()) {
-        break label499;
+      if (!this.MKE.MOu.isEmpty()) {
+        break label500;
       }
     }
     for (;;)
     {
       localArrayList.add(paramJSONObject);
-      localArrayList.add(String.valueOf(this.GNm.GRi));
-      Log.i(TAG, "dumpAndReport: isForeground=%s, bgDuration=%s", new Object[] { Boolean.valueOf(bool), Long.valueOf(this.GNm.GRi) });
-      label381:
+      localArrayList.add(String.valueOf(this.MKE.MOH));
+      Log.i(TAG, "dumpAndReport: isForeground=%s, bgDuration=%s", new Object[] { Boolean.valueOf(bool), Long.valueOf(this.MKE.MOH) });
+      label382:
       localArrayList.add(String.valueOf(Process.myPid()));
       localArrayList.add(BuildInfo.BUILD_TAG);
       localArrayList.add(BuildInfo.REV);
-      paramJSONObject = com.tencent.mm.plugin.report.service.h.IzE;
-      com.tencent.mm.plugin.report.service.h.u(21217, localArrayList);
+      paramJSONObject = com.tencent.mm.plugin.report.service.h.OAn;
+      com.tencent.mm.plugin.report.service.h.P(21217, localArrayList);
       Log.d(TAG, "report: %s", new Object[] { Arrays.toString(localArrayList.toArray()) });
-      AppMethodBeat.o(200896);
+      AppMethodBeat.o(300881);
       return;
-      label499:
+      label500:
       for (boolean bool = false; !bool; bool = true)
       {
         paramJSONObject = "2";
         break;
         localArrayList.add("");
         localArrayList.add("");
-        break label381;
+        break label382;
       }
       paramJSONObject = "1";
     }
   }
   
-  private static void o(JSONObject paramJSONObject, String paramString)
+  private static void p(JSONObject paramJSONObject, String paramString)
   {
-    AppMethodBeat.i(200908);
+    AppMethodBeat.i(300890);
     for (;;)
     {
       long l;
@@ -238,7 +244,7 @@ public class b
           if (Util.getInt((String)localObject, 0) < 1048576)
           {
             Log.i(TAG, "so size %s < 1M", new Object[] { localObject });
-            AppMethodBeat.o(200908);
+            AppMethodBeat.o(300890);
           }
         }
         else
@@ -253,10 +259,10 @@ public class b
           break label246;
         }
       }
-      catch (Throwable paramJSONObject)
+      finally
       {
         Log.printErrStackTrace(TAG, paramJSONObject, "reportSoSizeJson", new Object[0]);
-        AppMethodBeat.o(200908);
+        AppMethodBeat.o(300890);
         return;
       }
       for (;;)
@@ -270,17 +276,17 @@ public class b
       localArrayList.add(String.valueOf(Process.myPid()));
       localArrayList.add(BuildInfo.BUILD_TAG);
       localArrayList.add(BuildInfo.REV);
-      Object localObject = com.tencent.mm.plugin.report.service.h.IzE;
-      com.tencent.mm.plugin.report.service.h.u(21217, localArrayList);
+      Object localObject = com.tencent.mm.plugin.report.service.h.OAn;
+      com.tencent.mm.plugin.report.service.h.P(21217, localArrayList);
       Log.d(TAG, "report -> %s", new Object[] { Arrays.toString(localArrayList.toArray()) });
       i += 1;
     }
-    AppMethodBeat.o(200908);
+    AppMethodBeat.o(300890);
   }
   
   public final void a(c.d paramd)
   {
-    AppMethodBeat.i(200882);
+    AppMethodBeat.i(300912);
     Log.i(TAG, "onHookEnabled: source = %s", new Object[] { paramd.name() });
     super.a(paramd);
     paramd = new ArrayList();
@@ -294,8 +300,8 @@ public class b
       IDKey localIDKey2 = new IDKey(1571, i, 1);
       paramd.add(localIDKey1);
       paramd.add(localIDKey2);
-      com.tencent.mm.plugin.report.service.h.IzE.b(paramd, false);
-      AppMethodBeat.o(200882);
+      com.tencent.mm.plugin.report.service.h.OAn.b(paramd, false);
+      AppMethodBeat.o(300912);
       return;
       if (MMApplicationContext.isAppBrandProcess()) {
         i = 41;
@@ -309,12 +315,12 @@ public class b
   
   public void action(double paramDouble)
   {
-    AppMethodBeat.i(200926);
+    AppMethodBeat.i(300930);
     Log.i(TAG, "dice action !");
-    Object localObject = fnz();
-    localObject = "<cmd><diagnostic><MemoryHook enable='1' source='expt' process='" + (String)localObject + "' duration='24' hook='.*com\\.tencent\\.mm.*\\.so$' stack='1' min='0' max='0' force='1' enableExpt='0' sampling='1' mmap='0'/></diagnostic></cmd>";
-    localObject = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vRg, (String)localObject);
-    com.tencent.mm.plugin.performance.a.a.GLp.aUm((String)localObject);
+    Object localObject = gym();
+    localObject = "<cmd><diagnostic><MemoryHook enable='1' source='expt' process='" + (String)localObject + "' duration='24' hook='.*com\\.tencent\\.mm.*\\.so$;.*libhwui\\.so$;.*libstagefright_foundation\\.so$;.*libstagefright\\.so$' stack='1' min='0' max='0' force='1' enableExpt='0' sampling='1' mmap='0'/></diagnostic></cmd>";
+    localObject = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.zjP, (String)localObject);
+    com.tencent.mm.plugin.performance.a.a.MIk.aRq((String)localObject);
     localObject = new ArrayList();
     IDKey localIDKey1 = new IDKey(1571, 0, 1);
     int i;
@@ -326,8 +332,8 @@ public class b
       IDKey localIDKey2 = new IDKey(1571, i, 1);
       ((ArrayList)localObject).add(localIDKey1);
       ((ArrayList)localObject).add(localIDKey2);
-      com.tencent.mm.plugin.report.service.h.IzE.b((ArrayList)localObject, false);
-      AppMethodBeat.o(200926);
+      com.tencent.mm.plugin.report.service.h.OAn.b((ArrayList)localObject, false);
+      AppMethodBeat.o(300930);
       return;
       if (MMApplicationContext.isAppBrandProcess()) {
         i = 21;
@@ -339,62 +345,62 @@ public class b
     }
   }
   
-  public final void b(c.b paramb)
+  public final void b(d.b paramb)
   {
-    AppMethodBeat.i(200887);
-    this.GNm = paramb;
-    hU(false);
-    AppMethodBeat.o(200887);
+    AppMethodBeat.i(300921);
+    this.MKE = paramb;
+    iT(false);
+    AppMethodBeat.o(300921);
   }
   
   public long cycleMinutes()
   {
-    AppMethodBeat.i(200931);
+    AppMethodBeat.i(300940);
     long l = TimeUnit.DAYS.toMinutes(1L);
-    AppMethodBeat.o(200931);
+    AppMethodBeat.o(300940);
     return l;
   }
   
-  public final void fnn()
+  public final void gya()
   {
-    AppMethodBeat.i(200878);
+    AppMethodBeat.i(300908);
     Log.i(TAG, "onRegistered: %s", new Object[] { "MemoryHook" });
-    e.GMC.a("memory", this);
-    com.tencent.mm.plugin.performance.b.a.GNv.b(this);
-    AppMethodBeat.o(200878);
+    e.MJy.a("memory", this);
+    com.tencent.mm.plugin.performance.dice.a.MKN.b(this);
+    AppMethodBeat.o(300908);
   }
   
-  public final String fnu()
+  public final String gyh()
   {
-    AppMethodBeat.i(200915);
+    AppMethodBeat.i(300926);
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("hook=").append(this.GNl.fnM()).append(",stack=").append(this.GNl.fnO()).append(",mmap=").append(this.GNl.fnT()).append("\t");
+    ((StringBuilder)localObject).append("hook=").append(this.MKD.gyI()).append(",stack=").append(this.MKD.gyK()).append(",mmap=").append(this.MKD.gyP()).append("\t");
     localObject = ((StringBuilder)localObject).toString();
-    AppMethodBeat.o(200915);
+    AppMethodBeat.o(300926);
     return localObject;
   }
   
-  public final String fnv()
+  public final String gyi()
   {
     return "MemoryHook";
   }
   
-  public final void hU(boolean paramBoolean)
+  public final void iT(boolean paramBoolean)
   {
-    AppMethodBeat.i(200885);
+    AppMethodBeat.i(300918);
     if (paramBoolean)
     {
       if (Debug.getNativeHeapAllocatedSize() > 524288000L) {
-        jz(null, GNk.bOF());
+        kT(null, ah.v(MKC.jKT()));
       }
-      fnV();
-      AppMethodBeat.o(200885);
+      gyR();
+      AppMethodBeat.o(300918);
       return;
     }
-    jz(GNj.bOF(), GNk.bOF());
-    fnV();
-    com.tencent.mm.plugin.performance.c.g(TAG, GNj);
-    AppMethodBeat.o(200885);
+    kT(ah.v(MKB.jKT()), ah.v(MKC.jKT()));
+    gyR();
+    com.tencent.mm.plugin.performance.c.g(TAG, MKB);
+    AppMethodBeat.o(300918);
   }
   
   public String key()
@@ -404,15 +410,21 @@ public class b
   
   public double rate()
   {
-    AppMethodBeat.i(200929);
-    double d = 1.0D / ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vRe, -1L);
-    AppMethodBeat.o(200929);
+    AppMethodBeat.i(300936);
+    if (BuildInfo.ENABLE_MATRIX_MEMORY_HOOK)
+    {
+      Log.i(TAG, "enable memory hook by build config");
+      AppMethodBeat.o(300936);
+      return 1.0D;
+    }
+    double d = 1.0D / ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.zjN, -1L);
+    AppMethodBeat.o(300936);
     return d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.diagnostic.b.b
  * JD-Core Version:    0.7.0.1
  */

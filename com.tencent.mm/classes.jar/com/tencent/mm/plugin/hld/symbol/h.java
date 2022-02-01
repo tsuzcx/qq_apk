@@ -8,80 +8,77 @@ import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.hld.a.d;
 import com.tencent.mm.plugin.hld.a.f;
-import com.tencent.mm.plugin.hld.view.g;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolTypesViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "Landroid/view/View$OnClickListener;", "itemView", "Landroid/view/View;", "listener", "Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolTypesViewHolder$ISymbolTypesViewListener;", "(Landroid/view/View;Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolTypesViewHolder$ISymbolTypesViewListener;)V", "mListener", "rootView", "Landroid/widget/RelativeLayout;", "kotlin.jvm.PlatformType", "symbolKeyTv", "Landroid/widget/TextView;", "symbolType", "Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolTypeData;", "fillContent", "", "onClick", "v", "onSelect", "select", "", "ISymbolTypesViewListener", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolTypesViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "Landroid/view/View$OnClickListener;", "itemView", "Landroid/view/View;", "listener", "Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolTypesViewHolder$ISymbolTypesViewListener;", "(Landroid/view/View;Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolTypesViewHolder$ISymbolTypesViewListener;)V", "mListener", "rootView", "Landroid/widget/RelativeLayout;", "kotlin.jvm.PlatformType", "symbolKeyTv", "Landroid/widget/TextView;", "symbolType", "Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolTypeData;", "fillContent", "", "onClick", "v", "onSelect", "select", "", "ISymbolTypesViewListener", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class h
   extends RecyclerView.v
   implements View.OnClickListener
 {
-  f DFB;
-  TextView DFl;
-  private final a DFw;
-  private final RelativeLayout DtO;
+  private final RelativeLayout Ikt;
+  TextView JwS;
+  private final a Jxf;
+  f Jxi;
   
   public h(View paramView, a parama)
   {
     super(paramView);
-    AppMethodBeat.i(210863);
-    this.DtO = ((RelativeLayout)paramView.findViewById(a.f.root));
+    AppMethodBeat.i(312131);
+    this.Ikt = ((RelativeLayout)paramView.findViewById(a.f.root));
     View localView = paramView.findViewById(a.f.symbol_keys_item_tv);
-    p.j(localView, "itemView.findViewById(R.id.symbol_keys_item_tv)");
-    this.DFl = ((TextView)localView);
-    this.DFw = parama;
-    this.DFl.setTextSize(0, com.tencent.mm.ci.a.aZ(paramView.getContext(), a.d.S5_keys_button_text_size_small));
-    parama = g.DIP;
-    g.a(paramView, (View.OnClickListener)this);
-    AppMethodBeat.o(210863);
+    s.s(localView, "itemView.findViewById(R.id.symbol_keys_item_tv)");
+    this.JwS = ((TextView)localView);
+    this.Jxf = parama;
+    this.JwS.setTextSize(0, com.tencent.mm.cd.a.bs(paramView.getContext(), a.d.S5_keys_button_text_size_small));
+    com.tencent.mm.plugin.hld.view.f.JzR.a(paramView, (View.OnClickListener)this);
+    AppMethodBeat.o(312131);
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(210861);
+    AppMethodBeat.i(312140);
     Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-    ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/hld/symbol/ImeSymbolTypesViewHolder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-    if (this.DFw != null)
+    ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/hld/symbol/ImeSymbolTypesViewHolder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
+    a locala;
+    if (this.Jxf != null)
     {
-      a locala = this.DFw;
-      paramView = this.DFB;
-      if (paramView != null)
-      {
-        localObject = paramView.typeName;
-        paramView = (View)localObject;
-        if (localObject != null) {}
+      locala = this.Jxf;
+      paramView = this.Jxi;
+      if (paramView != null) {
+        break label96;
       }
-      else
-      {
-        paramView = com.tencent.mm.plugin.hld.f.b.DGL;
-        paramView = com.tencent.mm.plugin.hld.f.b.eFU();
-      }
-      locala.azH(paramView);
     }
-    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/hld/symbol/ImeSymbolTypesViewHolder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(210861);
+    label96:
+    for (paramView = null;; paramView = paramView.typeName)
+    {
+      localObject = paramView;
+      if (paramView == null)
+      {
+        paramView = com.tencent.mm.plugin.hld.f.b.Jyf;
+        localObject = com.tencent.mm.plugin.hld.f.b.fNN();
+      }
+      locala.onClick((String)localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/hld/symbol/ImeSymbolTypesViewHolder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(312140);
+      return;
+    }
   }
   
-  public final void sF(boolean paramBoolean)
+  public final void wL(boolean paramBoolean)
   {
-    AppMethodBeat.i(210862);
-    RelativeLayout localRelativeLayout = this.DtO;
-    p.j(localRelativeLayout, "rootView");
-    if (localRelativeLayout.isSelected() != paramBoolean)
-    {
-      localRelativeLayout = this.DtO;
-      p.j(localRelativeLayout, "rootView");
-      localRelativeLayout.setSelected(paramBoolean);
+    AppMethodBeat.i(312148);
+    if (this.Ikt.isSelected() != paramBoolean) {
+      this.Ikt.setSelected(paramBoolean);
     }
-    AppMethodBeat.o(210862);
+    AppMethodBeat.o(312148);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolTypesViewHolder$ISymbolTypesViewListener;", "", "onClick", "", "typeName", "", "plugin-hld_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolTypesViewHolder$ISymbolTypesViewListener;", "", "onClick", "", "typeName", "", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface a
   {
-    public abstract void azH(String paramString);
+    public abstract void onClick(String paramString);
   }
 }
 

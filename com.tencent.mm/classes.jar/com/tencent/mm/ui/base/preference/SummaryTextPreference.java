@@ -13,9 +13,9 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 public class SummaryTextPreference
   extends Preference
 {
-  protected TextView WsX;
-  private Typeface WsY = null;
-  public String WsZ = null;
+  protected TextView aeaq;
+  private Typeface aear = null;
+  public String aeas = null;
   
   public SummaryTextPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,14 +29,14 @@ public class SummaryTextPreference
   
   protected final void onBindView(View paramView)
   {
-    AppMethodBeat.i(189676);
+    AppMethodBeat.i(251500);
     super.onBindView(paramView);
-    this.WsX = ((TextView)paramView.findViewById(16908304));
-    if (this.WsY != null) {
+    this.aeaq = ((TextView)paramView.findViewById(16908304));
+    if (this.aear != null) {
       try
       {
-        this.WsX.setTypeface(this.WsY);
-        AppMethodBeat.o(189676);
+        this.aeaq.setTypeface(this.aear);
+        AppMethodBeat.o(251500);
         return;
       }
       catch (Exception paramView)
@@ -44,12 +44,12 @@ public class SummaryTextPreference
         Log.e("MicroMsg.SummaryTextPreference", "setTypeface() Exception:%s %s", new Object[] { paramView.getClass().getSimpleName(), paramView.getMessage() });
       }
     }
-    if (!TextUtils.isEmpty(this.WsZ)) {
+    if (!TextUtils.isEmpty(this.aeas)) {
       try
       {
-        this.WsX.setTypeface(Typeface.createFromAsset(MMApplicationContext.getContext().getAssets(), this.WsZ));
-        Log.i("MicroMsg.SummaryTextPreference", "setTypeface assets: %s", new Object[] { this.WsZ });
-        AppMethodBeat.o(189676);
+        this.aeaq.setTypeface(Typeface.createFromAsset(MMApplicationContext.getContext().getAssets(), this.aeas));
+        Log.i("MicroMsg.SummaryTextPreference", "setTypeface assets: %s", new Object[] { this.aeas });
+        AppMethodBeat.o(251500);
         return;
       }
       catch (Exception paramView)
@@ -57,7 +57,7 @@ public class SummaryTextPreference
         Log.e("MicroMsg.SummaryTextPreference", "setTypeface assets path exception:%s %s", new Object[] { paramView.getClass().getSimpleName(), paramView.getMessage() });
       }
     }
-    AppMethodBeat.o(189676);
+    AppMethodBeat.o(251500);
   }
 }
 

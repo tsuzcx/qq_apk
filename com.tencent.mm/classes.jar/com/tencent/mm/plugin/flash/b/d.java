@@ -3,132 +3,110 @@ package com.tencent.mm.plugin.flash.b;
 import android.content.Intent;
 import android.hardware.Camera.Parameters;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
+import com.tencent.mm.br.c;
 import com.tencent.mm.plugin.facedetect.e.a;
-import com.tencent.mm.plugin.facedetect.e.a.b;
-import com.tencent.mm.plugin.facedetect.service.FaceUploadVideoService;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.u;
 
 public final class d
 {
-  Intent BBG;
-  private boolean BBH = false;
-  private Camera.Parameters BBI;
-  protected boolean BBu = false;
+  protected boolean Hja = false;
+  Intent Hjn;
+  private boolean Hjo = false;
+  private Camera.Parameters Hjp;
   protected String mAppId;
   long startTimeMs = 0L;
   int type = -1;
   
-  public final void ND(final long paramLong)
+  public final void btV()
   {
-    AppMethodBeat.i(193677);
-    if ((this.BBu) && (a.diK().isStarted())) {
-      a.diK().a(new a.b()
-      {
-        public final void azE(String paramAnonymousString)
-        {
-          AppMethodBeat.i(194776);
-          Log.i("MicroMsg.FaceFlashManagerRecorder", "hy: video release done. using: %d ms. file path: %s", new Object[] { Long.valueOf(Util.ticksToNow(d.this.startTimeMs)), paramAnonymousString });
-          if ((Util.isNullOrNil(paramAnonymousString)) && (u.agG(paramAnonymousString)))
-          {
-            AppMethodBeat.o(194776);
-            return;
-          }
-          d.this.BBG = new Intent(MMApplicationContext.getContext(), FaceUploadVideoService.class);
-          d.this.BBG.putExtra("key_video_file_name", paramAnonymousString);
-          d.this.BBG.putExtra("k_bio_id", paramLong);
-          d.this.BBG.putExtra("key_face_type", d.this.type);
-          d.this.BBG.putExtra("key_app_id", d.this.mAppId);
-          AppMethodBeat.o(194776);
-        }
-      });
-    }
-    AppMethodBeat.o(193677);
-  }
-  
-  public final void aYW()
-  {
-    AppMethodBeat.i(193678);
-    if ((this.BBu) && (this.BBI != null))
+    AppMethodBeat.i(264828);
+    if ((this.Hja) && (this.Hjp != null))
     {
       Log.i("MicroMsg.FaceFlashManagerRecorder", "resetRecord");
-      if ((this.BBu) && (a.diK().isStarted()))
+      if ((this.Hja) && (a.dPv().isStarted()))
       {
         Log.i("MicroMsg.FaceFlashManagerRecorder", "releaseRecord");
-        a.diK().diM();
+        a.dPv().dPx();
       }
-      e(this.BBI);
+      g(this.Hjp);
     }
-    AppMethodBeat.o(193678);
+    AppMethodBeat.o(264828);
   }
   
-  public final void bRC()
+  public final void dpe()
   {
-    AppMethodBeat.i(193676);
-    if ((this.BBu) && (!a.diK().isStarted()))
+    AppMethodBeat.i(264810);
+    if ((this.Hja) && (!a.dPv().isStarted()))
     {
       Log.i("MicroMsg.FaceFlashManagerRecorder", "releaseRecord");
-      a.diK().aeU();
+      a.dPv().aGR();
       this.startTimeMs = Util.currentTicks();
     }
-    AppMethodBeat.o(193676);
+    AppMethodBeat.o(264810);
   }
   
-  public final void e(Camera.Parameters paramParameters)
+  public final void e(Intent paramIntent, int paramInt)
   {
-    AppMethodBeat.i(193673);
-    if (this.BBu) {
+    AppMethodBeat.i(264783);
+    this.Hja = paramIntent.getBooleanExtra("needVideo", false);
+    a.dPv().zWF = this.Hja;
+    this.mAppId = paramIntent.getStringExtra("appId");
+    this.type = paramInt;
+    if (paramInt == 0) {
+      this.Hjo = true;
+    }
+    Log.i("MicroMsg.FaceFlashManagerRecorder", "needVideo %s,mAppId %s acceptVoiceFromOutSide:%s", new Object[] { Boolean.valueOf(this.Hja), this.mAppId, Boolean.valueOf(this.Hjo) });
+    AppMethodBeat.o(264783);
+  }
+  
+  public final boolean fuJ()
+  {
+    return this.Hja;
+  }
+  
+  public final void fuK()
+  {
+    AppMethodBeat.i(264837);
+    if (this.Hjn != null)
+    {
+      Log.i("MicroMsg.FaceFlashManagerRecorder", "sendRequestUploadVideo");
+      c.startService(this.Hjn);
+      this.Hjn = null;
+    }
+    AppMethodBeat.o(264837);
+  }
+  
+  public final void g(Camera.Parameters paramParameters)
+  {
+    AppMethodBeat.i(264791);
+    if (this.Hja) {
       try
       {
-        this.BBI = paramParameters;
+        this.Hjp = paramParameters;
         int i = paramParameters.getInt("rotation");
         paramParameters = paramParameters.get("preview-size").split("x");
-        a.diK().a(i, Integer.parseInt(paramParameters[0]), Integer.parseInt(paramParameters[1]), Integer.parseInt(paramParameters[0]), Integer.parseInt(paramParameters[1]), this.BBH);
-        AppMethodBeat.o(193673);
+        a.dPv().a(i, Integer.parseInt(paramParameters[0]), Integer.parseInt(paramParameters[1]), Integer.parseInt(paramParameters[0]), Integer.parseInt(paramParameters[1]), this.Hjo);
+        AppMethodBeat.o(264791);
         return;
       }
       catch (Exception paramParameters) {}
     }
-    AppMethodBeat.o(193673);
+    AppMethodBeat.o(264791);
   }
   
-  public final boolean epH()
+  public final void rn(long paramLong)
   {
-    return this.BBu;
-  }
-  
-  public final void epI()
-  {
-    AppMethodBeat.i(193681);
-    if (this.BBG != null)
-    {
-      Log.i("MicroMsg.FaceFlashManagerRecorder", "sendRequestUploadVideo");
-      c.startService(this.BBG);
-      this.BBG = null;
+    AppMethodBeat.i(264815);
+    if ((this.Hja) && (a.dPv().isStarted())) {
+      a.dPv().a(new d.1(this, paramLong));
     }
-    AppMethodBeat.o(193681);
-  }
-  
-  public final void f(Intent paramIntent, int paramInt)
-  {
-    AppMethodBeat.i(193667);
-    this.BBu = paramIntent.getBooleanExtra("needVideo", false);
-    a.diK().wAu = this.BBu;
-    this.mAppId = paramIntent.getStringExtra("appId");
-    this.type = paramInt;
-    if (paramInt == 0) {
-      this.BBH = true;
-    }
-    Log.i("MicroMsg.FaceFlashManagerRecorder", "needVideo %s,mAppId %s acceptVoiceFromOutSide:%s", new Object[] { Boolean.valueOf(this.BBu), this.mAppId, Boolean.valueOf(this.BBH) });
-    AppMethodBeat.o(193667);
+    AppMethodBeat.o(264815);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.flash.b.d
  * JD-Core Version:    0.7.0.1
  */

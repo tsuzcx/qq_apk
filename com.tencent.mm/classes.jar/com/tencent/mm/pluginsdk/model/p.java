@@ -1,82 +1,126 @@
 package com.tencent.mm.pluginsdk.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.plugin.openapi.a.a.a;
+import com.tencent.mm.pluginsdk.model.app.ae;
+import com.tencent.mm.pluginsdk.model.app.as;
+import com.tencent.mm.pluginsdk.model.app.e;
+import com.tencent.mm.pluginsdk.model.app.y;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import com.tencent.mm.util.i;
-import kotlin.l;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import java.util.Map;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/pluginsdk/model/ImportVideoHevcChecker;", "", "()V", "TAG", "", "importVideoEnableHevc", "", "queryGpuRating", "", "plugin-videologic_release"})
 public final class p
+  implements y
 {
-  public static final p QVp;
+  public static boolean XRc = false;
+  private static p XRd;
+  public a XRe;
   
-  static
+  public static b bpw(String paramString)
   {
-    AppMethodBeat.i(216983);
-    QVp = new p();
-    AppMethodBeat.o(216983);
+    AppMethodBeat.i(30992);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(30992);
+      return null;
+    }
+    paramString = XmlParser.parseXml(paramString, "PersonalAppSetting", null);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(30992);
+      return null;
+    }
+    paramString = (String)paramString.get(".PersonalAppSetting.OpenID");
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(30992);
+      return null;
+    }
+    b localb = new b();
+    localb.XRf = paramString;
+    AppMethodBeat.o(30992);
+    return localb;
   }
   
-  public static boolean hgZ()
+  public static p iHP()
   {
-    boolean bool3 = true;
-    boolean bool4 = false;
-    AppMethodBeat.i(216982);
-    if (!BuildInfo.IS_ARM64)
-    {
-      AppMethodBeat.o(216982);
-      return false;
+    AppMethodBeat.i(30989);
+    if (XRd == null) {
+      XRd = new p();
     }
-    i locali = i.YyX;
-    int i = i.a(com.tencent.mm.util.b.a.Yyl, 0);
-    boolean bool2;
-    int j;
-    boolean bool1;
-    if (((b)h.ae(b.class)).a(com.tencent.mm.plugin.expt.b.b.a.wcw, 0) == 1)
+    p localp = XRd;
+    AppMethodBeat.o(30989);
+    return localp;
+  }
+  
+  public final void a(int paramInt1, int paramInt2, String paramString, ae paramae)
+  {
+    AppMethodBeat.i(30991);
+    if (!bh.baz())
     {
-      bool2 = true;
-      Log.i("MicroMsg.ImportVideoHevcChecker", "importVideoEnableHevc software encode enable:".concat(String.valueOf(bool2)));
-      j = MultiProcessMMKV.getMMKV("mmkv_gpu_info").getInt("gpu_info_rating", -1);
-      bool1 = bool2;
-      if (bool2)
+      AppMethodBeat.o(30991);
+      return;
+    }
+    Log.d("MicroMsg.GetUserInfoInAppLogic", "onSceneEnd errType=%s errCode=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if (paramae == null)
+    {
+      Log.e("MicroMsg.GetUserInfoInAppLogic", "scene == null");
+      AppMethodBeat.o(30991);
+      return;
+    }
+    if ((paramInt1 == 0) && (paramInt2 == 0)) {
+      switch (paramae.getType())
       {
-        int k = ((b)h.ae(b.class)).a(com.tencent.mm.plugin.expt.b.b.a.wcx, -1);
-        Log.i("MicroMsg.ImportVideoHevcChecker", "importVideoEnableHevc software encode gpu rating limit:" + k + ", gpuRating:" + j);
-        if (k <= 0) {
-          break label218;
-        }
-        bool1 = bool4;
-        if (j >= k) {
-          bool1 = true;
-        }
       }
-      label158:
-      if (i != 1) {
-        break label223;
-      }
-      bool1 = bool3;
     }
-    label218:
-    label223:
     for (;;)
     {
-      Log.i("MicroMsg.ImportVideoHevcChecker", "importVideoEnableHevc software encode enable:" + bool1 + ", repairerConfig:" + i + ", gpuRating:" + j);
-      AppMethodBeat.o(216982);
-      return bool1;
-      bool2 = false;
-      break;
-      bool1 = false;
-      break label158;
+      AppMethodBeat.o(30991);
+      return;
+      if ((MMApplicationContext.getContext() == null) || (a.a.gxu() == null))
+      {
+        Log.e("MicroMsg.GetUserInfoInAppLogic", "wrong environment");
+        AppMethodBeat.o(30991);
+        return;
+      }
+      Log.e("MicroMsg.GetUserInfoInAppLogic", "NetSceneGetUserInfoInApp come back", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      paramString = (u)paramae;
+      if (this.XRe != null) {
+        this.XRe.a(paramString);
+      }
     }
+  }
+  
+  public final void iHQ()
+  {
+    AppMethodBeat.i(30990);
+    if (!bh.baz())
+    {
+      AppMethodBeat.o(30990);
+      return;
+    }
+    as.gxq().a(14, this);
+    XRc = true;
+    AppMethodBeat.o(30990);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(u paramu);
+  }
+  
+  public static final class b
+  {
+    public String XRf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.p
  * JD-Core Version:    0.7.0.1
  */

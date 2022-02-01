@@ -4,25 +4,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  private TRVADNative Znq;
-  private int mTimeout;
-  private int mlL;
+  private TRVADNative ahrY;
+  private int pfx;
+  private int tnN;
   
   public c()
   {
     AppMethodBeat.i(87690);
-    this.Znq = new TRVADNative();
-    this.mlL = 500000;
-    this.mTimeout = 10000000;
+    this.ahrY = new TRVADNative();
+    this.pfx = 500000;
+    this.tnN = 10000000;
     AppMethodBeat.o(87690);
   }
   
   public c(int paramInt)
   {
     AppMethodBeat.i(87689);
-    this.Znq = new TRVADNative();
-    this.mlL = paramInt;
-    this.mTimeout = 5000000;
+    this.ahrY = new TRVADNative();
+    this.pfx = paramInt;
+    this.tnN = 5000000;
     AppMethodBeat.o(87689);
   }
   
@@ -41,22 +41,22 @@ public final class c
           AppMethodBeat.o(87693);
           return;
         }
-        switch (this.Znq.mfeSendData(paramArrayOfShort, paramInt))
+        switch (this.ahrY.mfeSendData(paramArrayOfShort, paramInt))
         {
         case 1: 
-          parama.Znr = 0;
+          parama.ahrZ = 0;
         }
       }
       finally {}
-      parama.Znv = ((int)d1);
-      new StringBuilder("volumn：").append(parama.Znv);
+      parama.ahsd = ((int)d1);
+      new StringBuilder("volumn：").append(parama.ahsd);
       AppMethodBeat.o(87693);
       break;
-      parama.Znr = 1;
+      parama.ahrZ = 1;
       break label200;
-      parama.Znr = 2;
+      parama.ahrZ = 2;
       break label200;
-      parama.Znr = 3;
+      parama.ahrZ = 3;
       int j;
       int i;
       label200:
@@ -83,21 +83,21 @@ public final class c
     }
   }
   
-  public final int inR()
+  public final int jXc()
   {
     AppMethodBeat.i(87691);
-    int j = this.Znq.mfeInit(this.mlL, this.mTimeout);
+    int j = this.ahrY.mfeInit(this.pfx, this.tnN);
     int i = j;
     if (j == 0)
     {
-      j = this.Znq.mfeOpen();
+      j = this.ahrY.mfeOpen();
       i = j;
       if (j == 0)
       {
-        j = this.Znq.mfeEnableNoiseDetection(true);
+        j = this.ahrY.mfeEnableNoiseDetection(true);
         i = j;
         if (j == 0) {
-          i = this.Znq.mfeStart();
+          i = this.ahrY.mfeStart();
         }
       }
     }
@@ -113,14 +113,14 @@ public final class c
   public final int stop()
   {
     AppMethodBeat.i(87692);
-    int j = this.Znq.mfeStop();
+    int j = this.ahrY.mfeStop();
     int i = j;
     if (j == 0)
     {
-      j = this.Znq.mfeClose();
+      j = this.ahrY.mfeClose();
       i = j;
       if (j == 0) {
-        i = this.Znq.mfeExit();
+        i = this.ahrY.mfeExit();
       }
     }
     if (i == 0)
@@ -134,7 +134,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.qqpinyin.voicerecoapi.c
  * JD-Core Version:    0.7.0.1
  */

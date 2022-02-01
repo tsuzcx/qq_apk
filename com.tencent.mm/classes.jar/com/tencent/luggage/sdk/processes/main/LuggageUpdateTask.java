@@ -1,69 +1,54 @@
 package com.tencent.luggage.sdk.processes.main;
 
 import android.os.Parcel;
-import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/luggage/sdk/processes/main/LuggageUpdateTask;", "Lcom/tencent/luggage/sdk/processes/main/LuggageRegisterTask;", "rt", "Lcom/tencent/luggage/sdk/runtime/AppBrandRuntimeLU;", "(Lcom/tencent/luggage/sdk/runtime/AppBrandRuntimeLU;)V", "runtimeInfo", "Lcom/tencent/luggage/sdk/processes/main/RuntimeInfo;", "(Lcom/tencent/luggage/sdk/processes/main/RuntimeInfo;)V", "getRuntimeInfo", "()Lcom/tencent/luggage/sdk/processes/main/RuntimeInfo;", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "", "luggage-wechat-full-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/luggage/sdk/processes/main/LuggageUpdateTask;", "Lcom/tencent/luggage/sdk/processes/main/LuggageRegisterTask;", "rt", "Lcom/tencent/luggage/sdk/runtime/AppBrandRuntimeLU;", "(Lcom/tencent/luggage/sdk/runtime/AppBrandRuntimeLU;)V", "runtimeInfo", "Lcom/tencent/luggage/sdk/processes/main/RuntimeInfo;", "(Lcom/tencent/luggage/sdk/processes/main/RuntimeInfo;)V", "getRuntimeInfo", "()Lcom/tencent/luggage/sdk/processes/main/RuntimeInfo;", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class LuggageUpdateTask
   extends LuggageRegisterTask
 {
-  public static final Parcelable.Creator CREATOR;
-  private final RuntimeInfo cCa;
+  public static final Parcelable.Creator<LuggageUpdateTask> CREATOR;
+  private final RuntimeInfo euF;
   
   static
   {
-    AppMethodBeat.i(246665);
-    CREATOR = new a();
-    AppMethodBeat.o(246665);
+    AppMethodBeat.i(220475);
+    CREATOR = (Parcelable.Creator)new a();
+    AppMethodBeat.o(220475);
   }
   
   public LuggageUpdateTask(RuntimeInfo paramRuntimeInfo)
   {
     super(paramRuntimeInfo);
-    AppMethodBeat.i(246663);
-    this.cCa = paramRuntimeInfo;
-    AppMethodBeat.o(246663);
+    AppMethodBeat.i(220470);
+    this.euF = paramRuntimeInfo;
+    AppMethodBeat.o(220470);
   }
   
-  public final RuntimeInfo RX()
+  public final RuntimeInfo asm()
   {
-    return this.cCa;
+    return this.euF;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(246664);
-    p.k(paramParcel, "parcel");
-    this.cCa.writeToParcel(paramParcel, 0);
-    AppMethodBeat.o(246664);
+    AppMethodBeat.i(220482);
+    s.u(paramParcel, "out");
+    this.euF.writeToParcel(paramParcel, paramInt);
+    AppMethodBeat.o(220482);
   }
   
-  @l(iBK={1, 1, 16})
+  @Metadata(k=3, mv={1, 5, 1}, xi=48)
   public static final class a
-    implements Parcelable.Creator
-  {
-    public final Object createFromParcel(Parcel paramParcel)
-    {
-      AppMethodBeat.i(248872);
-      p.k(paramParcel, "in");
-      paramParcel = new LuggageUpdateTask((RuntimeInfo)RuntimeInfo.CREATOR.createFromParcel(paramParcel));
-      AppMethodBeat.o(248872);
-      return paramParcel;
-    }
-    
-    public final Object[] newArray(int paramInt)
-    {
-      return new LuggageUpdateTask[paramInt];
-    }
-  }
+    implements Parcelable.Creator<LuggageUpdateTask>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.sdk.processes.main.LuggageUpdateTask
  * JD-Core Version:    0.7.0.1
  */

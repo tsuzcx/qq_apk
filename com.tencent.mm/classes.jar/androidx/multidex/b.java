@@ -25,12 +25,12 @@ import java.util.zip.ZipOutputStream;
 final class b
   implements Closeable
 {
-  private final File acF;
-  private final long acG;
-  private final File acH;
-  private final RandomAccessFile acI;
-  private final FileChannel acJ;
-  private final FileLock acK;
+  private final File bKo;
+  private final long bKp;
+  private final File bKq;
+  private final RandomAccessFile bKr;
+  private final FileChannel bKs;
+  private final FileLock bKt;
   
   /* Error */
   b(File paramFile1, File paramFile2)
@@ -57,14 +57,14 @@ final class b
     //   42: pop
     //   43: aload_0
     //   44: aload_1
-    //   45: putfield 63	androidx/multidex/b:acF	Ljava/io/File;
+    //   45: putfield 63	androidx/multidex/b:bKo	Ljava/io/File;
     //   48: aload_0
     //   49: aload_2
-    //   50: putfield 65	androidx/multidex/b:acH	Ljava/io/File;
+    //   50: putfield 65	androidx/multidex/b:bKq	Ljava/io/File;
     //   53: aload_0
     //   54: aload_1
     //   55: invokestatic 69	androidx/multidex/b:p	(Ljava/io/File;)J
-    //   58: putfield 71	androidx/multidex/b:acG	J
+    //   58: putfield 71	androidx/multidex/b:bKp	J
     //   61: new 49	java/io/File
     //   64: dup
     //   65: aload_2
@@ -77,12 +77,12 @@ final class b
     //   77: aload_1
     //   78: ldc 80
     //   80: invokespecial 81	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   83: putfield 83	androidx/multidex/b:acI	Ljava/io/RandomAccessFile;
+    //   83: putfield 83	androidx/multidex/b:bKr	Ljava/io/RandomAccessFile;
     //   86: aload_0
     //   87: aload_0
-    //   88: getfield 83	androidx/multidex/b:acI	Ljava/io/RandomAccessFile;
+    //   88: getfield 83	androidx/multidex/b:bKr	Ljava/io/RandomAccessFile;
     //   91: invokevirtual 87	java/io/RandomAccessFile:getChannel	()Ljava/nio/channels/FileChannel;
-    //   94: putfield 89	androidx/multidex/b:acJ	Ljava/nio/channels/FileChannel;
+    //   94: putfield 89	androidx/multidex/b:bKs	Ljava/nio/channels/FileChannel;
     //   97: new 42	java/lang/StringBuilder
     //   100: dup
     //   101: ldc 91
@@ -93,9 +93,9 @@ final class b
     //   113: pop
     //   114: aload_0
     //   115: aload_0
-    //   116: getfield 89	androidx/multidex/b:acJ	Ljava/nio/channels/FileChannel;
+    //   116: getfield 89	androidx/multidex/b:bKs	Ljava/nio/channels/FileChannel;
     //   119: invokevirtual 97	java/nio/channels/FileChannel:lock	()Ljava/nio/channels/FileLock;
-    //   122: putfield 99	androidx/multidex/b:acK	Ljava/nio/channels/FileLock;
+    //   122: putfield 99	androidx/multidex/b:bKt	Ljava/nio/channels/FileLock;
     //   125: new 42	java/lang/StringBuilder
     //   128: dup
     //   129: invokespecial 100	java/lang/StringBuilder:<init>	()V
@@ -110,7 +110,7 @@ final class b
     //   150: return
     //   151: astore_1
     //   152: aload_0
-    //   153: getfield 89	androidx/multidex/b:acJ	Ljava/nio/channels/FileChannel;
+    //   153: getfield 89	androidx/multidex/b:bKs	Ljava/nio/channels/FileChannel;
     //   156: invokestatic 109	androidx/multidex/b:closeQuietly	(Ljava/io/Closeable;)V
     //   159: ldc 34
     //   161: invokestatic 105	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -118,7 +118,7 @@ final class b
     //   165: athrow
     //   166: astore_1
     //   167: aload_0
-    //   168: getfield 83	androidx/multidex/b:acI	Ljava/io/RandomAccessFile;
+    //   168: getfield 83	androidx/multidex/b:bKr	Ljava/io/RandomAccessFile;
     //   171: invokestatic 109	androidx/multidex/b:closeQuietly	(Ljava/io/Closeable;)V
     //   174: ldc 34
     //   176: invokestatic 105	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -153,22 +153,155 @@ final class b
     //   97	125	193	java/io/IOException
   }
   
-  private static SharedPreferences Z(Context paramContext)
+  private List<a> HA()
   {
-    AppMethodBeat.i(260710);
-    if (Build.VERSION.SDK_INT < 11) {}
-    for (int i = 0;; i = 4)
+    AppMethodBeat.i(201202);
+    String str3 = this.bKo.getName() + ".classes";
+    HB();
+    localArrayList = new ArrayList();
+    localZipFile = new ZipFile(this.bKo);
+    try
     {
-      paramContext = paramContext.getSharedPreferences("multidex.version", i);
-      AppMethodBeat.o(260710);
-      return paramContext;
+      localObject1 = localZipFile.getEntry("classes2.dex");
+      k = 2;
     }
+    finally
+    {
+      for (;;)
+      {
+        try
+        {
+          Object localObject1;
+          int k;
+          String str1;
+          a locala;
+          int i;
+          int j;
+          label325:
+          localZipFile.close();
+          AppMethodBeat.o(201202);
+          throw localObject2;
+          k += 1;
+          ZipEntry localZipEntry = localZipFile.getEntry("classes" + k + ".dex");
+          continue;
+          try
+          {
+            localZipFile.close();
+            AppMethodBeat.o(201202);
+            return localArrayList;
+          }
+          catch (IOException localIOException1)
+          {
+            continue;
+          }
+        }
+        catch (IOException localIOException3)
+        {
+          continue;
+        }
+        continue;
+        String str2 = "failed";
+      }
+    }
+    if (localObject1 != null)
+    {
+      str1 = str3 + k + ".zip";
+      locala = new a(this.bKq, str1);
+      localArrayList.add(locala);
+      new StringBuilder("Extraction is needed for file ").append(locala);
+      i = 0;
+      j = 0;
+      for (;;)
+      {
+        if ((j >= 3) || (i != 0)) {
+          break label325;
+        }
+        j += 1;
+        a(localZipFile, (ZipEntry)localObject1, locala, str3);
+        try
+        {
+          locala.crc = p(locala);
+          i = 1;
+        }
+        catch (IOException localIOException2)
+        {
+          for (;;)
+          {
+            StringBuilder localStringBuilder;
+            new StringBuilder("Failed to read crc from ").append(locala.getAbsolutePath());
+            i = 0;
+          }
+        }
+        localStringBuilder = new StringBuilder("Extraction ");
+        if (i == 0) {
+          break label456;
+        }
+        str1 = "succeeded";
+        localStringBuilder.append(str1).append(" '").append(locala.getAbsolutePath()).append("': length ").append(locala.length()).append(" - crc: ").append(locala.crc);
+        if (i != 0) {
+          break label453;
+        }
+        locala.delete();
+        if (!locala.exists()) {
+          break label453;
+        }
+        new StringBuilder("Failed to delete corrupted secondary dex '").append(locala.getPath()).append("'");
+      }
+      if (i == 0)
+      {
+        localObject1 = new IOException("Could not create zip file " + locala.getAbsolutePath() + " for secondary dex (" + k + ")");
+        AppMethodBeat.o(201202);
+        throw ((Throwable)localObject1);
+      }
+    }
+  }
+  
+  private void HB()
+  {
+    AppMethodBeat.i(201235);
+    File[] arrayOfFile = this.bKq.listFiles(new FileFilter()
+    {
+      public final boolean accept(File paramAnonymousFile)
+      {
+        AppMethodBeat.i(201167);
+        if (!paramAnonymousFile.getName().equals("MultiDex.lock"))
+        {
+          AppMethodBeat.o(201167);
+          return true;
+        }
+        AppMethodBeat.o(201167);
+        return false;
+      }
+    });
+    if (arrayOfFile == null)
+    {
+      new StringBuilder("Failed to list secondary dex dir content (").append(this.bKq.getPath()).append(").");
+      AppMethodBeat.o(201235);
+      return;
+    }
+    int j = arrayOfFile.length;
+    int i = 0;
+    if (i < j)
+    {
+      File localFile = arrayOfFile[i];
+      new StringBuilder("Trying to delete old file ").append(localFile.getPath()).append(" of size ").append(localFile.length());
+      if (!localFile.delete()) {
+        new StringBuilder("Failed to delete old file ").append(localFile.getPath());
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        new StringBuilder("Deleted old file ").append(localFile.getPath());
+      }
+    }
+    AppMethodBeat.o(201235);
   }
   
   private static void a(Context paramContext, String paramString, long paramLong1, long paramLong2, List<a> paramList)
   {
-    AppMethodBeat.i(260707);
-    paramContext = Z(paramContext).edit();
+    AppMethodBeat.i(201213);
+    paramContext = ao(paramContext).edit();
     paramContext.putLong(paramString + "timestamp", paramLong1);
     paramContext.putLong(paramString + "crc", paramLong2);
     paramContext.putInt(paramString + "dex.number", paramList.size() + 1);
@@ -182,12 +315,12 @@ final class b
       i += 1;
     }
     paramContext.commit();
-    AppMethodBeat.o(260707);
+    AppMethodBeat.o(201213);
   }
   
   private static void a(ZipFile paramZipFile, ZipEntry paramZipEntry, File paramFile, String paramString)
   {
-    AppMethodBeat.i(260717);
+    AppMethodBeat.i(201249);
     paramZipFile = paramZipFile.getInputStream(paramZipEntry);
     paramString = File.createTempFile("tmp-".concat(String.valueOf(paramString)), ".zip", paramFile.getParentFile());
     new StringBuilder("Extracting ").append(paramString.getPath());
@@ -212,61 +345,73 @@ final class b
         localZipOutputStream.closeEntry();
         localZipOutputStream.close();
         if (paramString.setReadOnly()) {
-          break label237;
+          break label244;
         }
         paramZipEntry = new IOException("Failed to mark readonly \"" + paramString.getAbsolutePath() + "\" (tmp of \"" + paramFile.getAbsolutePath() + "\")");
-        AppMethodBeat.o(260717);
+        AppMethodBeat.o(201249);
         throw paramZipEntry;
       }
       finally
       {
         localZipOutputStream.close();
-        AppMethodBeat.o(260717);
+        AppMethodBeat.o(201249);
       }
       paramZipEntry = finally;
       closeQuietly(paramZipFile);
       paramString.delete();
-      AppMethodBeat.o(260717);
+      AppMethodBeat.o(201249);
     }
-    label237:
+    label244:
     if (!paramString.renameTo(paramFile))
     {
       paramZipEntry = new IOException("Failed to rename \"" + paramString.getAbsolutePath() + "\" to \"" + paramFile.getAbsolutePath() + "\"");
-      AppMethodBeat.o(260717);
+      AppMethodBeat.o(201249);
       throw paramZipEntry;
     }
     closeQuietly(paramZipFile);
     paramString.delete();
-    AppMethodBeat.o(260717);
+    AppMethodBeat.o(201249);
+  }
+  
+  private static SharedPreferences ao(Context paramContext)
+  {
+    AppMethodBeat.i(201221);
+    if (Build.VERSION.SDK_INT < 11) {}
+    for (int i = 0;; i = 4)
+    {
+      paramContext = paramContext.getSharedPreferences("multidex.version", i);
+      AppMethodBeat.o(201221);
+      return paramContext;
+    }
   }
   
   private static void closeQuietly(Closeable paramCloseable)
   {
-    AppMethodBeat.i(260720);
+    AppMethodBeat.i(201259);
     try
     {
       paramCloseable.close();
-      AppMethodBeat.o(260720);
+      AppMethodBeat.o(201259);
       return;
     }
     catch (IOException paramCloseable)
     {
-      AppMethodBeat.o(260720);
+      AppMethodBeat.o(201259);
     }
   }
   
-  private List<a> h(Context paramContext, String paramString)
+  private List<a> k(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(260694);
-    String str = this.acF.getName() + ".classes";
-    paramContext = Z(paramContext);
+    AppMethodBeat.i(201170);
+    String str = this.bKo.getName() + ".classes";
+    paramContext = ao(paramContext);
     int j = paramContext.getInt(paramString + "dex.number", 1);
     ArrayList localArrayList = new ArrayList(j - 1);
     int i = 2;
     while (i <= j)
     {
       Object localObject = str + i + ".zip";
-      localObject = new a(this.acH, (String)localObject);
+      localObject = new a(this.bKq, (String)localObject);
       if (((a)localObject).isFile())
       {
         ((a)localObject).crc = p((File)localObject);
@@ -276,7 +421,7 @@ final class b
         if ((l2 != l3) || (l1 != ((a)localObject).crc))
         {
           paramContext = new IOException("Invalid extracted dex: " + localObject + " (key \"" + paramString + "\"), expected modification time: " + l2 + ", modification time: " + l3 + ", expected crc: " + l1 + ", file crc: " + ((a)localObject).crc);
-          AppMethodBeat.o(260694);
+          AppMethodBeat.o(201170);
           throw paramContext;
         }
         localArrayList.add(localObject);
@@ -285,200 +430,55 @@ final class b
       else
       {
         paramContext = new IOException("Missing extracted secondary dex file '" + ((a)localObject).getPath() + "'");
-        AppMethodBeat.o(260694);
+        AppMethodBeat.o(201170);
         throw paramContext;
       }
     }
-    AppMethodBeat.o(260694);
+    AppMethodBeat.o(201170);
     return localArrayList;
-  }
-  
-  private List<a> jw()
-  {
-    AppMethodBeat.i(260704);
-    String str3 = this.acF.getName() + ".classes";
-    jx();
-    localArrayList = new ArrayList();
-    localZipFile = new ZipFile(this.acF);
-    try
-    {
-      localObject1 = localZipFile.getEntry("classes2.dex");
-      k = 2;
-    }
-    finally
-    {
-      for (;;)
-      {
-        try
-        {
-          Object localObject1;
-          int k;
-          String str1;
-          a locala;
-          int i;
-          int j;
-          label337:
-          localZipFile.close();
-          AppMethodBeat.o(260704);
-          throw localObject2;
-          k += 1;
-          ZipEntry localZipEntry = localZipFile.getEntry("classes" + k + ".dex");
-          continue;
-          try
-          {
-            localZipFile.close();
-            AppMethodBeat.o(260704);
-            return localArrayList;
-          }
-          catch (IOException localIOException1)
-          {
-            continue;
-          }
-        }
-        catch (IOException localIOException3)
-        {
-          continue;
-        }
-        continue;
-        String str2 = "failed";
-      }
-    }
-    if (localObject1 != null)
-    {
-      str1 = str3 + k + ".zip";
-      locala = new a(this.acH, str1);
-      localArrayList.add(locala);
-      new StringBuilder("Extraction is needed for file ").append(locala);
-      i = 0;
-      j = 0;
-      for (;;)
-      {
-        if ((j >= 3) || (i != 0)) {
-          break label337;
-        }
-        j += 1;
-        a(localZipFile, (ZipEntry)localObject1, locala, str3);
-        try
-        {
-          locala.crc = p(locala);
-          i = 1;
-        }
-        catch (IOException localIOException2)
-        {
-          for (;;)
-          {
-            StringBuilder localStringBuilder;
-            new StringBuilder("Failed to read crc from ").append(locala.getAbsolutePath());
-            i = 0;
-          }
-        }
-        localStringBuilder = new StringBuilder("Extraction ");
-        if (i == 0) {
-          break label475;
-        }
-        str1 = "succeeded";
-        localStringBuilder.append(str1).append(" '").append(locala.getAbsolutePath()).append("': length ").append(locala.length()).append(" - crc: ").append(locala.crc);
-        if (i != 0) {
-          break label472;
-        }
-        locala.delete();
-        if (!locala.exists()) {
-          break label472;
-        }
-        new StringBuilder("Failed to delete corrupted secondary dex '").append(locala.getPath()).append("'");
-      }
-      if (i == 0)
-      {
-        localObject1 = new IOException("Could not create zip file " + locala.getAbsolutePath() + " for secondary dex (" + k + ")");
-        AppMethodBeat.o(260704);
-        throw ((Throwable)localObject1);
-      }
-    }
-  }
-  
-  private void jx()
-  {
-    AppMethodBeat.i(260712);
-    File[] arrayOfFile = this.acH.listFiles(new FileFilter()
-    {
-      public final boolean accept(File paramAnonymousFile)
-      {
-        AppMethodBeat.i(260756);
-        if (!paramAnonymousFile.getName().equals("MultiDex.lock"))
-        {
-          AppMethodBeat.o(260756);
-          return true;
-        }
-        AppMethodBeat.o(260756);
-        return false;
-      }
-    });
-    if (arrayOfFile == null)
-    {
-      new StringBuilder("Failed to list secondary dex dir content (").append(this.acH.getPath()).append(").");
-      AppMethodBeat.o(260712);
-      return;
-    }
-    int j = arrayOfFile.length;
-    int i = 0;
-    if (i < j)
-    {
-      File localFile = arrayOfFile[i];
-      new StringBuilder("Trying to delete old file ").append(localFile.getPath()).append(" of size ").append(localFile.length());
-      if (!localFile.delete()) {
-        new StringBuilder("Failed to delete old file ").append(localFile.getPath());
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        new StringBuilder("Deleted old file ").append(localFile.getPath());
-      }
-    }
-    AppMethodBeat.o(260712);
   }
   
   private static long o(File paramFile)
   {
-    AppMethodBeat.i(260697);
+    AppMethodBeat.i(201178);
     long l2 = paramFile.lastModified();
     long l1 = l2;
     if (l2 == -1L) {
       l1 = l2 - 1L;
     }
-    AppMethodBeat.o(260697);
+    AppMethodBeat.o(201178);
     return l1;
   }
   
   private static long p(File paramFile)
   {
-    AppMethodBeat.i(260699);
+    AppMethodBeat.i(201188);
     long l2 = c.p(paramFile);
     long l1 = l2;
     if (l2 == -1L) {
       l1 = l2 - 1L;
     }
-    AppMethodBeat.o(260699);
+    AppMethodBeat.o(201188);
     return l1;
   }
   
   final List<? extends File> a(Context paramContext, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(260688);
-    new StringBuilder("MultiDexExtractor.load(").append(this.acF.getPath()).append(", ").append(paramBoolean).append(", ").append(paramString).append(")");
-    if (!this.acK.isValid())
+    AppMethodBeat.i(201272);
+    new StringBuilder("MultiDexExtractor.load(").append(this.bKo.getPath()).append(", ").append(paramBoolean).append(", ").append(paramString).append(")");
+    if (!this.bKt.isValid())
     {
       paramContext = new IllegalStateException("MultiDexExtractor was closed");
-      AppMethodBeat.o(260688);
+      AppMethodBeat.o(201272);
       throw paramContext;
     }
     Object localObject;
     int i;
     if (!paramBoolean)
     {
-      localObject = this.acF;
-      long l = this.acG;
-      SharedPreferences localSharedPreferences = Z(paramContext);
+      localObject = this.bKo;
+      long l = this.bKp;
+      SharedPreferences localSharedPreferences = ao(paramContext);
       if ((localSharedPreferences.getLong(paramString + "timestamp", -1L) != o((File)localObject)) || (localSharedPreferences.getLong(paramString + "crc", -1L) != l))
       {
         i = 1;
@@ -491,29 +491,29 @@ final class b
     {
       try
       {
-        localObject = h(paramContext, paramString);
+        localObject = k(paramContext, paramString);
         paramContext = (Context)localObject;
         new StringBuilder("load found ").append(paramContext.size()).append(" secondary dex files");
-        AppMethodBeat.o(260688);
+        AppMethodBeat.o(201272);
         return paramContext;
       }
       catch (IOException localIOException) {}
       i = 0;
       break;
       label235:
-      List localList = jw();
-      a(paramContext, paramString, o(this.acF), this.acG, localList);
+      List localList = HA();
+      a(paramContext, paramString, o(this.bKo), this.bKp, localList);
       paramContext = localList;
     }
   }
   
   public final void close()
   {
-    AppMethodBeat.i(260691);
-    this.acK.release();
-    this.acJ.close();
-    this.acI.close();
-    AppMethodBeat.o(260691);
+    AppMethodBeat.i(201280);
+    this.bKt.release();
+    this.bKs.close();
+    this.bKr.close();
+    AppMethodBeat.o(201280);
   }
   
   static final class a
@@ -529,7 +529,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     androidx.multidex.b
  * JD-Core Version:    0.7.0.1
  */

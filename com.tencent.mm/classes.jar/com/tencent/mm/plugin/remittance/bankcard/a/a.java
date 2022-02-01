@@ -1,85 +1,143 @@
 package com.tencent.mm.plugin.remittance.bankcard.a;
 
+import android.view.View;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.network.g;
-import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.gm;
-import com.tencent.mm.protocal.protobuf.gn;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig.ConfigHelper;
+import com.tencent.mm.accessibility.base.ViewSetter;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import kotlin.Metadata;
+import kotlin.g.a.b;
+import kotlin.g.b.u;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/remittance/bankcard/accessibility/BankRemitDetailUIAccessibilityConfig;", "Lcom/tencent/mm/accessibility/base/MMBaseAccessibilityConfig;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "initConfig", "", "plugin-wxpay_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends b
+  extends MMBaseAccessibilityConfig
 {
-  public gn IfB;
-  public String IfC;
-  private final String TAG;
-  private i callback;
-  private d rr;
-  
-  public a(String paramString1, String paramString2, String paramString3)
+  public a(AppCompatActivity paramAppCompatActivity)
   {
-    AppMethodBeat.i(67352);
-    this.TAG = "MicroMsg.NetSceneBankRemitAppointBank";
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new gm();
-    ((d.a)localObject).lBV = new gn();
-    ((d.a)localObject).funcId = 1348;
-    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/appointbank_tsbc";
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (gm)d.b.b(this.rr.lBR);
-    ((gm)localObject).Igm = paramString1;
-    ((gm)localObject).RLy = paramString2;
-    ((gm)localObject).fvP = paramString3;
-    this.IfC = paramString1;
-    Log.i("MicroMsg.NetSceneBankRemitAppointBank", "seqno: %s, timing_id: %s, bankType: %s", new Object[] { paramString1, paramString2, paramString3 });
-    AppMethodBeat.o(67352);
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(288714);
+    AppMethodBeat.o(288714);
   }
   
-  public final void b(int paramInt1, int paramInt2, String paramString, s params)
+  public final void initConfig()
   {
-    AppMethodBeat.i(67354);
-    Log.i("MicroMsg.NetSceneBankRemitAppointBank", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.IfB = ((gn)d.c.b(((d)params).lBS));
-    Log.i("MicroMsg.NetSceneBankRemitAppointBank", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.IfB.fwx), this.IfB.tVo });
-    if (this.callback != null) {
-      this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
+    AppMethodBeat.i(288725);
+    MMBaseAccessibilityConfig.ConfigHelper localConfigHelper = root(a.g.bank_remit_detail_ui);
+    localConfigHelper.view(a.f.brdu_state_title_1_layout).disableChildren().desc((b)a.ObV);
+    localConfigHelper.view(a.f.brdu_state_title_2_layout).disableChildren().desc((b)b.ObW);
+    localConfigHelper.view(a.f.brdu_state_title_3_layout).disableChildren().desc((b)c.ObX);
+    root(a.g.bank_remit_detail_item_comm_layout).view(a.f.bank_remit_detail_item_layout).disableChildren().desc((b)d.ObY);
+    root(a.g.bank_remit_detail_item_money_layout).view(a.f.bank_remit_detail_item_layout).disableChildren().desc((b)e.ObZ);
+    AppMethodBeat.o(288725);
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements b<View, String>
+  {
+    public static final a ObV;
+    
+    static
+    {
+      AppMethodBeat.i(288708);
+      ObV = new a();
+      AppMethodBeat.o(288708);
     }
-    AppMethodBeat.o(67354);
+    
+    a()
+    {
+      super();
+    }
   }
   
-  public final int doScene(g paramg, i parami)
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements b<View, String>
   {
-    AppMethodBeat.i(67353);
-    this.callback = parami;
-    int i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(67353);
-    return i;
+    public static final b ObW;
+    
+    static
+    {
+      AppMethodBeat.i(288709);
+      ObW = new b();
+      AppMethodBeat.o(288709);
+    }
+    
+    b()
+    {
+      super();
+    }
   }
   
-  public final void f(s params)
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends u
+    implements b<View, String>
   {
-    AppMethodBeat.i(225687);
-    params = (gn)d.c.b(((d)params).lBS);
-    this.YVy = params.fwx;
-    this.YVz = params.tVo;
-    AppMethodBeat.o(225687);
+    public static final c ObX;
+    
+    static
+    {
+      AppMethodBeat.i(288713);
+      ObX = new c();
+      AppMethodBeat.o(288713);
+    }
+    
+    c()
+    {
+      super();
+    }
   }
   
-  public final int getType()
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class d
+    extends u
+    implements b<View, String>
   {
-    return 1348;
+    public static final d ObY;
+    
+    static
+    {
+      AppMethodBeat.i(288718);
+      ObY = new d();
+      AppMethodBeat.o(288718);
+    }
+    
+    d()
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class e
+    extends u
+    implements b<View, String>
+  {
+    public static final e ObZ;
+    
+    static
+    {
+      AppMethodBeat.i(288723);
+      ObZ = new e();
+      AppMethodBeat.o(288723);
+    }
+    
+    e()
+    {
+      super();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.a.a
  * JD-Core Version:    0.7.0.1
  */

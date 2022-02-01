@@ -15,35 +15,34 @@ class EncoderUtils
   
   public static void addADTStoPacket(byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(189572);
+    AppMethodBeat.i(215459);
     byte[] arrayOfByte = generateADTSHeader(paramArrayOfByte.length, paramInt);
     System.arraycopy(arrayOfByte, 0, paramArrayOfByte, 0, arrayOfByte.length);
-    AppMethodBeat.o(189572);
+    AppMethodBeat.o(215459);
   }
   
   public static void close(Closeable paramCloseable)
   {
-    AppMethodBeat.i(189586);
+    AppMethodBeat.i(215518);
     if (paramCloseable == null)
     {
-      AppMethodBeat.o(189586);
+      AppMethodBeat.o(215518);
       return;
     }
     try
     {
       paramCloseable.close();
-      AppMethodBeat.o(189586);
       return;
     }
-    catch (Throwable paramCloseable)
+    finally
     {
-      AppMethodBeat.o(189586);
+      AppMethodBeat.o(215518);
     }
   }
   
   static void deleteAllTmpFiles(String paramString1, int paramInt, String paramString2)
   {
-    AppMethodBeat.i(189580);
+    AppMethodBeat.i(215494);
     Logger.d("EncoderUtils", "deleteAllTmpFiles " + paramInt + " sessionId = " + paramString2);
     int i = 1;
     while (i <= paramInt)
@@ -53,7 +52,7 @@ class EncoderUtils
       Logger.d("EncoderUtils", "delete file " + localFile.getAbsolutePath() + " deleteResult = " + bool);
       i += 1;
     }
-    AppMethodBeat.o(189580);
+    AppMethodBeat.o(215494);
   }
   
   public static byte[] generateADTSHeader(int paramInt1, int paramInt2)
@@ -63,34 +62,34 @@ class EncoderUtils
   
   static String getAudioOutSaveFilePath(String paramString1, int paramInt, String paramString2)
   {
-    AppMethodBeat.i(189575);
+    AppMethodBeat.i(215475);
     int i = paramString1.lastIndexOf(".");
     if (i > 0)
     {
       paramString1 = paramString1.substring(0, i) + "_" + paramString2 + "_" + paramInt + paramString1.substring(i);
-      AppMethodBeat.o(189575);
+      AppMethodBeat.o(215475);
       return paramString1;
     }
     paramString1 = paramString1 + "_" + paramString2 + "_" + paramInt;
-    AppMethodBeat.o(189575);
+    AppMethodBeat.o(215475);
     return paramString1;
   }
   
   private static boolean isValidFile(File paramFile)
   {
-    AppMethodBeat.i(189582);
+    AppMethodBeat.i(215505);
     if ((paramFile.createNewFile()) || ((paramFile.exists()) && (paramFile.isFile())))
     {
-      AppMethodBeat.o(189582);
+      AppMethodBeat.o(215505);
       return true;
     }
-    AppMethodBeat.o(189582);
+    AppMethodBeat.o(215505);
     return false;
   }
   
   static boolean mergeAllFiles(String paramString1, int paramInt, String paramString2)
   {
-    AppMethodBeat.i(189579);
+    AppMethodBeat.i(215484);
     Logger.d("EncoderUtils", "mergeAllFiles " + paramInt + " sessionId = " + paramString2);
     try
     {
@@ -106,20 +105,20 @@ class EncoderUtils
           i += 1;
         }
         close((Closeable)localObject);
-        AppMethodBeat.o(189579);
+        AppMethodBeat.o(215484);
         return true;
       }
     }
     catch (Exception paramString1)
     {
-      AppMethodBeat.o(189579);
+      AppMethodBeat.o(215484);
     }
     return false;
   }
   
   private static byte[] readFromFile(String paramString)
   {
-    AppMethodBeat.i(189585);
+    AppMethodBeat.i(215513);
     paramString = new FileInputStream(paramString);
     try
     {
@@ -130,13 +129,13 @@ class EncoderUtils
     finally
     {
       close(paramString);
-      AppMethodBeat.o(189585);
+      AppMethodBeat.o(215513);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tav.core.audio.EncoderUtils
  * JD-Core Version:    0.7.0.1
  */

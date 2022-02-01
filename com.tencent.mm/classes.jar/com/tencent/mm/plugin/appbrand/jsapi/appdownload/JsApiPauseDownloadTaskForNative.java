@@ -4,9 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
-import com.tencent.mm.plugin.appbrand.v;
-import com.tencent.mm.plugin.downloader.g.a;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.y;
+import com.tencent.mm.plugin.downloader.f.a;
 import com.tencent.mm.plugin.downloader.model.d;
 import com.tencent.mm.plugin.downloader.model.f;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -23,12 +23,12 @@ public final class JsApiPauseDownloadTaskForNative
     extends MainProcessTask
   {
     public static final Parcelable.Creator<PauseDownloadTask> CREATOR;
-    private int cqA;
-    private v ntA;
-    private boolean ovH;
-    private String ovI;
-    private long ovJ;
-    private o ovz;
+    private int eit;
+    private y qsi;
+    private p ryT;
+    private boolean rzb;
+    private String rzc;
+    private long rzd;
     
     static
     {
@@ -40,34 +40,34 @@ public final class JsApiPauseDownloadTaskForNative
     public PauseDownloadTask(Parcel paramParcel)
     {
       AppMethodBeat.i(45861);
-      f(paramParcel);
+      h(paramParcel);
       AppMethodBeat.o(45861);
     }
     
-    public PauseDownloadTask(o paramo, v paramv, int paramInt, JSONObject paramJSONObject)
+    public PauseDownloadTask(p paramp, y paramy, int paramInt, JSONObject paramJSONObject)
     {
       AppMethodBeat.i(45860);
-      this.ovz = paramo;
-      this.ntA = paramv;
-      this.cqA = paramInt;
-      this.ovJ = paramJSONObject.optLong("downloadId");
-      this.ovH = true;
+      this.ryT = paramp;
+      this.qsi = paramy;
+      this.eit = paramInt;
+      this.rzd = paramJSONObject.optLong("downloadId");
+      this.rzb = true;
       AppMethodBeat.o(45860);
     }
     
-    public final void RW()
+    public final void asn()
     {
       boolean bool = true;
       AppMethodBeat.i(45862);
-      Log.i("MicroMsg.JsApiPauseDownloadTaskForNative", "doPauseDownloadTask, downloadId = %d", new Object[] { Long.valueOf(this.ovJ) });
-      if (this.ovJ <= 0L) {}
+      Log.i("MicroMsg.JsApiPauseDownloadTaskForNative", "doPauseDownloadTask, downloadId = %d", new Object[] { Long.valueOf(this.rzd) });
+      if (this.rzd <= 0L) {}
       a locala;
-      for (this.ovI = "downloadId invalid";; this.ovI = "downloadId invalid")
+      for (this.rzc = "downloadId invalid";; this.rzc = "downloadId invalid")
       {
-        bPt();
+        cpA();
         AppMethodBeat.o(45862);
         return;
-        locala = d.IF(this.ovJ);
+        locala = d.la(this.rzd);
         if (locala != null) {
           break;
         }
@@ -77,42 +77,42 @@ public final class JsApiPauseDownloadTaskForNative
         locala.field_downloadInWifi = false;
         d.e(locala);
       }
-      if (!f.cPZ().Iy(this.ovJ)) {}
+      if (!f.duv().kT(this.rzd)) {}
       for (;;)
       {
-        this.ovH = bool;
+        this.rzb = bool;
         break;
         bool = false;
       }
     }
     
-    public final void bsK()
+    public final void bQr()
     {
       AppMethodBeat.i(45863);
-      if (this.ovH)
+      if (this.rzb)
       {
-        if (Util.isNullOrNil(this.ovI)) {}
-        for (String str = "fail";; str = String.format("fail:%s", new Object[] { this.ovI }))
+        if (Util.isNullOrNil(this.rzc)) {}
+        for (String str = "fail";; str = String.format("fail:%s", new Object[] { this.rzc }))
         {
-          this.ntA.j(this.cqA, this.ovz.h(str, null));
+          this.qsi.callback(this.eit, this.ryT.ZP(str));
           AppMethodBeat.o(45863);
           return;
         }
       }
-      this.ntA.j(this.cqA, this.ovz.h("ok", null));
+      this.qsi.callback(this.eit, this.ryT.ZP("ok"));
       AppMethodBeat.o(45863);
     }
     
-    public final void f(Parcel paramParcel)
+    public final void h(Parcel paramParcel)
     {
       boolean bool = true;
       AppMethodBeat.i(45864);
-      this.ovJ = paramParcel.readLong();
+      this.rzd = paramParcel.readLong();
       if (paramParcel.readInt() == 1) {}
       for (;;)
       {
-        this.ovH = bool;
-        this.ovI = paramParcel.readString();
+        this.rzb = bool;
+        this.rzc = paramParcel.readString();
         AppMethodBeat.o(45864);
         return;
         bool = false;
@@ -122,12 +122,12 @@ public final class JsApiPauseDownloadTaskForNative
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(45865);
-      paramParcel.writeLong(this.ovJ);
-      if (this.ovH) {}
+      paramParcel.writeLong(this.rzd);
+      if (this.rzb) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeInt(paramInt);
-        paramParcel.writeString(this.ovI);
+        paramParcel.writeString(this.rzc);
         AppMethodBeat.o(45865);
         return;
       }

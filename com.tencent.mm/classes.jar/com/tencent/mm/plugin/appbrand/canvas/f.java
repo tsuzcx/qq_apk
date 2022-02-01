@@ -20,7 +20,7 @@ public final class f
     this.mBitmap = paramBitmap;
   }
   
-  public final void m(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public final void q(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     AppMethodBeat.i(144853);
     Bitmap localBitmap1 = this.mBitmap;

@@ -25,15 +25,15 @@ class AudioSourceTrack
   
   public AudioSourceTrack(AssetTrack paramAssetTrack)
   {
-    AppMethodBeat.i(189540);
+    AppMethodBeat.i(215492);
     this.mAudioInfo = new AudioInfo(44100, 1, 2);
     this.mAssetTrack = paramAssetTrack;
-    AppMethodBeat.o(189540);
+    AppMethodBeat.o(215492);
   }
   
   private DecoderTrackSegment createDecoderTrackSegment(AssetTrack paramAssetTrack, AssetTrackSegment paramAssetTrackSegment)
   {
-    AppMethodBeat.i(189547);
+    AppMethodBeat.i(215514);
     DecoderAssetTrack localDecoderAssetTrack = null;
     if (!paramAssetTrackSegment.isEmpty())
     {
@@ -49,13 +49,13 @@ class AudioSourceTrack
     paramAssetTrack = paramAssetTrackSegment.getTimeMapping().getSource();
     paramAssetTrack = new DecoderTrackSegment(new CMTimeRange(paramAssetTrack.getStart(), paramAssetTrack.getDuration()), localDecoderAssetTrack);
     paramAssetTrack.setScaledDuration(paramAssetTrackSegment.getScaleDuration());
-    AppMethodBeat.o(189547);
+    AppMethodBeat.o(215514);
     return paramAssetTrack;
   }
   
   private DecoderTrackSegment createDecoderTrackSegment(AssetTrack paramAssetTrack, CompositionTrackSegment paramCompositionTrackSegment)
   {
-    AppMethodBeat.i(189550);
+    AppMethodBeat.i(215525);
     DecoderAssetTrack localDecoderAssetTrack = null;
     if (!paramCompositionTrackSegment.isEmpty())
     {
@@ -71,21 +71,21 @@ class AudioSourceTrack
     paramAssetTrack = paramCompositionTrackSegment.getTimeMapping().getSource();
     paramAssetTrack = new DecoderTrackSegment(new CMTimeRange(paramAssetTrack.getStart(), paramAssetTrack.getDuration()), localDecoderAssetTrack);
     paramAssetTrack.setScaledDuration(paramCompositionTrackSegment.getScaleDuration());
-    AppMethodBeat.o(189550);
+    AppMethodBeat.o(215525);
     return paramAssetTrack;
   }
   
   public CMTime getDuration()
   {
-    AppMethodBeat.i(189559);
+    AppMethodBeat.i(215548);
     CMTime localCMTime = this.mAssetTrack.getDuration();
-    AppMethodBeat.o(189559);
+    AppMethodBeat.o(215548);
     return localCMTime;
   }
   
   public AudioDecoderTrack getSourceAudioDecoder(CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(189557);
+    AppMethodBeat.i(215537);
     AudioDecoderTrack localAudioDecoderTrack1 = new AudioDecoderTrack();
     if (this.mAssetTrack.getMediaType() == 2)
     {
@@ -109,10 +109,10 @@ class AudioSourceTrack
       localAudioDecoderTrack2.setDecodeType(IDecoder.DecodeType.Audio);
       localAudioDecoderTrack2.setAudioInfo(this.mAudioInfo);
       localAudioDecoderTrack2.clipRangeAndClearRange(new CMTimeRange(CMTime.CMTimeZero, paramCMTimeRange.getEnd()));
-      AppMethodBeat.o(189557);
+      AppMethodBeat.o(215537);
       return localAudioDecoderTrack1;
     }
-    AppMethodBeat.o(189557);
+    AppMethodBeat.o(215537);
     return null;
   }
 }

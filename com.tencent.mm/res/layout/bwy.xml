@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/be3" android:padding="@dimen/akd" android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/e44" android:duplicateParentState="true" android:layout_width="@dimen/ake" android:layout_height="@dimen/akc" android:scaleType="centerCrop" />
-</LinearLayout>
+<RelativeLayout android:id="@id/iwl" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/evs" android:background="@drawable/a8u" android:layout_width="fill_parent" android:layout_height="@dimen/d5" android:layout_marginTop="@dimen/cp">
+        <LinearLayout android:id="@id/bs3" android:background="@drawable/a8u" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginTop="@dimen/cd" android:layout_centerVertical="true" android:layout_alignParentEnd="true">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/f2i" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@raw/icons_filled_add" android:layout_marginEnd="@dimen/bv" app:iconColor="@color/Link_100" />
+            <TextView android:textSize="@dimen/ce" android:textColor="@color/Link_100" android:layout_gravity="center_vertical" android:id="@id/bsj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="@dimen/cr" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/ce" android:textColor="@color/gg" android:id="@id/evm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cd" android:text="@string/iik" android:layout_centerVertical="true" android:layout_marginStart="@dimen/cp" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.voip.video.camera.a;
 
 public abstract interface c
 {
-  public abstract void IA(int paramInt);
+  public abstract void Jd(int paramInt);
   
   public abstract void a(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  public abstract void cNy();
+  public abstract void dre();
   
-  public abstract void fP(int paramInt1, int paramInt2);
+  public abstract void gG(int paramInt1, int paramInt2);
 }
 
 

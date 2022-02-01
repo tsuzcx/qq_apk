@@ -1,20 +1,19 @@
 package com.tencent.mm.plugin.hld.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/model/ImeRawDictType;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "RawDictTypeMP", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/model/ImeRawDictType;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "RawDictTypeMP", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public enum i
 {
   public final int value = 1;
   
   static
   {
-    AppMethodBeat.i(214152);
-    i locali = new i("RawDictTypeMP");
-    DCT = locali;
-    DCU = new i[] { locali };
-    AppMethodBeat.o(214152);
+    AppMethodBeat.i(311888);
+    JvC = new i("RawDictTypeMP");
+    JvD = new i[] { JvC };
+    AppMethodBeat.o(311888);
   }
   
   private i() {}

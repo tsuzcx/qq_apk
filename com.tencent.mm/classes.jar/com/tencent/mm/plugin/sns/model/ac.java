@@ -1,214 +1,69 @@
 package com.tencent.mm.plugin.sns.model;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.Looper;
-import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.sns.storage.l;
-import com.tencent.mm.plugin.sns.storage.m;
-import com.tencent.mm.pluginsdk.model.r;
-import com.tencent.mm.pointers.PInt;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.sns.storage.u;
+import com.tencent.mm.protocal.protobuf.fgc;
+import com.tencent.mm.protocal.protobuf.fgd;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.MMHandler;
-import java.util.concurrent.ExecutorService;
 
 public final class ac
+  extends p
+  implements m
 {
-  public static boolean Elw;
-  public static char[] JWJ;
-  public boolean JWG;
-  public long JWH;
-  private int JWI;
-  private MMHandler handler;
+  public h callback;
+  private c rr;
   
-  static
+  public ac(String paramString, u paramu)
   {
-    int i = 0;
-    Elw = false;
-    JWJ = new char[36];
-    int j = 48;
-    while (j <= 57)
-    {
-      JWJ[i] = ((char)j);
-      j += 1;
-      i += 1;
-    }
-    j = 97;
-    while (j <= 122)
-    {
-      JWJ[i] = ((char)j);
-      j += 1;
-      i += 1;
-    }
+    AppMethodBeat.i(309398);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new fgc();
+    ((c.a)localObject).otF = new fgd();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/mmsnswwlikecover";
+    ((c.a)localObject).funcId = 4051;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (fgc)c.b.b(this.rr.otB);
+    ((fgc)localObject).Username = paramString;
+    ((fgc)localObject).abGa = paramu.field_bgUrl;
+    ((fgc)localObject).abGb = paramu.field_imBGmd5sum;
+    ((fgc)localObject).abGc = paramu.field_imBGfileid;
+    Log.i("MicroMsg.NetSceneSnsWwLikeCover", "SnsWwLikeCover username:%s, bgUrl:%s, bgMd5:%s, fileId:%s", new Object[] { paramString, paramu.field_bgUrl, paramu.field_imBGmd5sum, paramu.field_imBGfileid });
+    AppMethodBeat.o(309398);
   }
   
-  public ac()
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(95695);
-    this.JWG = false;
-    this.JWH = 0L;
-    this.JWI = 0;
-    this.handler = new MMHandler(Looper.getMainLooper())
-    {
-      public final void handleMessage(Message paramAnonymousMessage)
-      {
-        AppMethodBeat.i(95689);
-        super.handleMessage(paramAnonymousMessage);
-        if ((ac.a(ac.this) >= 5) || (System.currentTimeMillis() - ac.b(ac.this) > 300000L))
-        {
-          Log.d("MicroMsg.RemoveSnsTask", "cleanCount: " + ac.a(ac.this));
-          ac.Elw = false;
-          AppMethodBeat.o(95689);
-          return;
-        }
-        if (ac.c(ac.this))
-        {
-          AppMethodBeat.o(95689);
-          return;
-        }
-        if (ac.Elw) {
-          new ac.a(ac.this).y(new String[] { "" });
-        }
-        AppMethodBeat.o(95689);
-      }
-    };
-    AppMethodBeat.o(95695);
+    AppMethodBeat.i(309400);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(309400);
+    return i;
   }
   
-  public static void b(PInt paramPInt1, PInt paramPInt2)
+  public final int getType()
   {
-    if (paramPInt2.value + 1 >= 36)
-    {
-      paramPInt2.value = 0;
-      paramPInt1.value = ((paramPInt1.value + 1) % 36);
-      return;
-    }
-    paramPInt2.value = ((paramPInt2.value + 1) % 36);
+    return 4051;
   }
   
-  public final class a
-    extends r<String, String, Boolean>
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    private String JWL;
-    PInt JWM;
-    PInt JWN;
-    private String JWO;
-    private String key;
-    private SharedPreferences sp;
-    private String username;
-    
-    public a()
-    {
-      AppMethodBeat.i(95690);
-      this.sp = null;
-      this.JWL = "";
-      this.key = "";
-      this.JWM = new PInt();
-      this.JWN = new PInt();
-      this.sp = MMApplicationContext.getContext().getSharedPreferences("preferences_remove_task", 0);
-      h.aHH();
-      if (!h.aHE().aGM())
-      {
-        AppMethodBeat.o(95690);
-        return;
-      }
-      this.username = z.bcZ();
-      this.JWL = ("remove_key_base" + this.username);
-      this.key = ("remove_key" + this.username);
-      h.aHH();
-      if (!h.aHE().aGM())
-      {
-        AppMethodBeat.o(95690);
-        return;
-      }
-      if (aj.isInValid())
-      {
-        AppMethodBeat.o(95690);
-        return;
-      }
-      if (aj.getDataDB() == null)
-      {
-        AppMethodBeat.o(95690);
-        return;
-      }
-      if (aj.fOM() == null)
-      {
-        AppMethodBeat.o(95690);
-        return;
-      }
-      l locall = aj.fOM().bbr(this.username);
-      if (locall != null) {
-        this.JWO = locall.field_bgId;
-      }
-      Log.d("MicroMsg.RemoveSnsTask", "my bgid %s", new Object[] { this.JWO });
-      ac.a(ac.this, true);
-      AppMethodBeat.o(95690);
-    }
-    
-    private Boolean fOg()
-    {
-      AppMethodBeat.i(95691);
-      Log.d("MicroMsg.RemoveSnsTask", "simpleCleans sns");
-      if (!ac.Elw)
-      {
-        localObject = Boolean.FALSE;
-        AppMethodBeat.o(95691);
-        return localObject;
-      }
-      if (!ac.c(ac.this))
-      {
-        localObject = Boolean.FALSE;
-        AppMethodBeat.o(95691);
-        return localObject;
-      }
-      if (aj.isInValid())
-      {
-        ac.Elw = false;
-        localObject = Boolean.FALSE;
-        AppMethodBeat.o(95691);
-        return localObject;
-      }
-      this.JWM.value = this.sp.getInt(this.JWL, 0);
-      this.JWN.value = this.sp.getInt(this.key, 0);
-      Object localObject = aj.getAccSnsPath();
-      try
-      {
-        long l = System.currentTimeMillis();
-        if (!ac.aG((String)localObject + ac.JWJ[(this.JWM.value % 36)] + "/" + ac.JWJ[(this.JWN.value % 36)], this.JWO, this.username))
-        {
-          localObject = Boolean.FALSE;
-          AppMethodBeat.o(95691);
-          return localObject;
-        }
-        Log.d("MicroMsg.RemoveSnsTask", "clean sns uses time : " + (System.currentTimeMillis() - l) + " " + this.JWM.value + " " + this.JWN.value);
-      }
-      catch (Exception localException)
-      {
-        label254:
-        break label254;
-      }
-      localObject = Boolean.TRUE;
-      AppMethodBeat.o(95691);
-      return localObject;
-    }
-    
-    public final ExecutorService fsl()
-    {
-      AppMethodBeat.i(179088);
-      ExecutorService localExecutorService = aj.fOu();
-      AppMethodBeat.o(179088);
-      return localExecutorService;
-    }
+    AppMethodBeat.i(309405);
+    Log.i("MicroMsg.NetSceneSnsWwLikeCover", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(309405);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.ac
  * JD-Core Version:    0.7.0.1
  */

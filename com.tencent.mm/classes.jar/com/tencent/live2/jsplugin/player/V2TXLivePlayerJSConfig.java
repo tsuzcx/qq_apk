@@ -46,7 +46,7 @@ public class V2TXLivePlayerJSConfig
   
   public String diffConfig(V2TXLivePlayerJSConfig paramV2TXLivePlayerJSConfig)
   {
-    AppMethodBeat.i(215614);
+    AppMethodBeat.i(211362);
     StringBuilder localStringBuilder1 = new StringBuilder();
     if ((this.url != null) && (!this.url.equals(paramV2TXLivePlayerJSConfig.url))) {
       localStringBuilder1.append("[url:").append(b.b(this.url)).append("]");
@@ -97,27 +97,27 @@ public class V2TXLivePlayerJSConfig
         localStringBuilder1.append("[renderRotation:").append(this.renderRotation).append("]");
       }
       paramV2TXLivePlayerJSConfig = localStringBuilder1.toString();
-      AppMethodBeat.o(215614);
+      AppMethodBeat.o(211362);
       return paramV2TXLivePlayerJSConfig;
     }
   }
   
   public String toString()
   {
-    AppMethodBeat.i(215620);
+    AppMethodBeat.i(211377);
     StringBuilder localStringBuilder = new StringBuilder("[url:").append(b.b(this.url)).append("][mode:").append(this.mode).append("][isAutoPlay:").append(this.isAutoPlay).append("][isCanAutoPlay:").append(this.isCanAutoPlay).append("][isMuteVideo:").append(this.isMuteVideo).append("][isMuteAudio:").append(this.isMuteAudio).append("][enableDebugView:").append(this.enableDebugView).append("][enableRecvSEIMessage:").append(this.enableRecvSEIMessage).append("][minCache:").append(this.minCache).append("][maxCache:").append(this.maxCache).append("][volumeNotifyIntervals:").append(this.volumeNotifyIntervals).append("][audioRoute:");
     if (this.audioRoute == 0) {}
     for (String str = "speaker";; str = "ear")
     {
       str = str + "][fillMode:" + this.fillMode + "][renderRotation:" + this.renderRotation + ']';
-      AppMethodBeat.o(215620);
+      AppMethodBeat.o(211377);
       return str;
     }
   }
   
   public void updateFromBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(215617);
+    AppMethodBeat.i(211369);
     if (paramBundle.containsKey("playUrl")) {
       this.url = paramBundle.getString("playUrl", "");
     }
@@ -192,7 +192,7 @@ public class V2TXLivePlayerJSConfig
     for (;;)
     {
       sAudioRoute = this.audioRoute;
-      AppMethodBeat.o(215617);
+      AppMethodBeat.o(211369);
       return;
       if (!str.equalsIgnoreCase("vertical")) {
         break;
@@ -217,7 +217,7 @@ public class V2TXLivePlayerJSConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.live2.jsplugin.player.V2TXLivePlayerJSConfig
  * JD-Core Version:    0.7.0.1
  */

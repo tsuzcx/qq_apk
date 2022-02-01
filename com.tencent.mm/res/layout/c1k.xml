@@ -1,3 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.base.TalkRoomPopupNav android:id="@id/ihu" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/bei" android:layout_width="fill_parent" android:layout_height="54.0dip">
+        <FrameLayout android:layout_width="52.0dip" android:layout_height="fill_parent">
+            <ImageView android:layout_gravity="center" android:background="@drawable/ik" android:layout_width="12.0dip" android:layout_height="12.0dip" android:scaleType="centerInside" />
+        </FrameLayout>
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:paddingLeft="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <ImageView android:layout_gravity="center_vertical" android:id="@id/knn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" />
+                <TextView android:textSize="15.0sp" android:textColor="@color/a7b" android:layout_gravity="center_vertical" android:id="@id/ahl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+            </LinearLayout>
+        </FrameLayout>
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/bkq" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <View android:background="#ffe5e5e5" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+    <RelativeLayout android:gravity="center" android:id="@id/aha" android:layout_width="fill_parent" android:layout_height="40.0dip">
+        <TextView android:textSize="15.0sp" android:textColor="@color/a7b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jd1" />
+    </RelativeLayout>
+</LinearLayout>

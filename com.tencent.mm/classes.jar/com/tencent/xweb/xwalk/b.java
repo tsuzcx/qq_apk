@@ -7,32 +7,32 @@ import org.xwalk.core.Log;
 
 public final class b
 {
-  private static final String[] aaha = { "_id" };
-  private final Object aahb;
+  private static final String[] ainG = { "_id" };
+  private final Object ainH;
   SQLiteDatabase mDatabase;
   private boolean mInitialized;
   
   private b()
   {
-    AppMethodBeat.i(208354);
-    this.aahb = new Object();
-    AppMethodBeat.o(208354);
+    AppMethodBeat.i(212871);
+    this.ainH = new Object();
+    AppMethodBeat.o(212871);
   }
   
-  public static b dk(final Context paramContext, final String paramString)
+  public static b dt(final Context paramContext, final String paramString)
   {
-    AppMethodBeat.i(208353);
+    AppMethodBeat.i(212866);
     b localb = new b();
     new Thread()
     {
       public final void run()
       {
-        AppMethodBeat.i(204663);
-        b.a(this.aahc, paramContext, paramString);
-        AppMethodBeat.o(204663);
+        AppMethodBeat.i(212936);
+        b.a(b.this, paramContext, paramString);
+        AppMethodBeat.o(212936);
       }
     }.start();
-    AppMethodBeat.o(208353);
+    AppMethodBeat.o(212866);
     return localb;
   }
   
@@ -47,7 +47,7 @@ public final class b
     //   9: aload_2
     //   10: ifnull +10 -> 20
     //   13: aload_0
-    //   14: invokevirtual 120	com/tencent/xweb/xwalk/b:iyy	()Z
+    //   14: invokevirtual 120	com/tencent/xweb/xwalk/b:kja	()Z
     //   17: ifne +10 -> 27
     //   20: ldc 116
     //   22: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -188,10 +188,10 @@ public final class b
     //   107	124	199	java/lang/IllegalStateException
   }
   
-  final boolean iyy()
+  final boolean kja()
   {
-    AppMethodBeat.i(208357);
-    synchronized (this.aahb)
+    AppMethodBeat.i(212893);
+    synchronized (this.ainH)
     {
       for (;;)
       {
@@ -199,7 +199,7 @@ public final class b
         if (!bool) {
           try
           {
-            this.aahb.wait();
+            this.ainH.wait();
           }
           catch (InterruptedException localInterruptedException)
           {
@@ -210,16 +210,16 @@ public final class b
     }
     if (this.mDatabase != null)
     {
-      AppMethodBeat.o(208357);
+      AppMethodBeat.o(212893);
       return true;
     }
-    AppMethodBeat.o(208357);
+    AppMethodBeat.o(212893);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.xwalk.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,68 @@
 package com.tencent.mm.plugin.finder.live.util;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
-import kotlin.l;
+import java.util.Collection;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/util/NetJitStatisticsCache;", "", "()V", "averageCachePair", "Lcom/tencent/mm/plugin/finder/live/util/AverageCachePair;", "getAverageCachePair", "()Lcom/tencent/mm/plugin/finder/live/util/AverageCachePair;", "setAverageCachePair", "(Lcom/tencent/mm/plugin/finder/live/util/AverageCachePair;)V", "levelList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/live/util/CachePair;", "Lkotlin/collections/ArrayList;", "getLevelList", "()Ljava/util/ArrayList;", "setLevelList", "(Ljava/util/ArrayList;)V", "realtimeCachePair", "getRealtimeCachePair", "()Lcom/tencent/mm/plugin/finder/live/util/CachePair;", "setRealtimeCachePair", "(Lcom/tencent/mm/plugin/finder/live/util/CachePair;)V", "getCache", "Lcom/tencent/mm/plugin/finder/live/util/StatisticsCache;", "plugin-finder-base_release"})
-public final class s
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/util/IGiftQueue;", "", "addAll", "", "collection", "", "Lcom/tencent/mm/plugin/finder/live/util/IGiftQueue$GiftShowInfo;", "clear", "", "getNextGiftType", "Lcom/tencent/mm/plugin/finder/live/util/IGiftQueue$GiftType;", "hasNext", "offer", "giftShowInfo", "peek", "peekByComboId", "comboId", "", "peekByTargetUserName", "targetUserName", "peekNonPrecious", "poll", "pollByComboId", "pollByTargetUserName", "pollNonPrecious", "registerObserver", "observer", "Lcom/tencent/mm/plugin/finder/live/util/IGiftQueue$GiftAddingObserver;", "remove", "resetMsgIdList", "size", "", "unregisterObserver", "GiftAddingObserver", "GiftShowInfo", "GiftType", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface s
 {
-  i yPA;
-  e yPB;
-  ArrayList<i> yPC;
+  public abstract void a(a parama);
   
-  public s()
+  public abstract boolean addAll(Collection<s.b> paramCollection);
+  
+  public abstract s.b axN(String paramString);
+  
+  public abstract s.b axO(String paramString);
+  
+  public abstract s.b axQ(String paramString);
+  
+  public abstract void b(a parama);
+  
+  public abstract boolean b(s.b paramb);
+  
+  public abstract boolean c(s.b paramb);
+  
+  public abstract void clear();
+  
+  public abstract c euw();
+  
+  public abstract s.b eux();
+  
+  public abstract boolean hasNext();
+  
+  public abstract int size();
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/util/IGiftQueue$GiftAddingObserver;", "", "onGiftAdding", "", "giftType", "Lcom/tencent/mm/plugin/finder/live/util/IGiftQueue$GiftType;", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static abstract interface a
   {
-    AppMethodBeat.i(263689);
-    this.yPA = new i("NetJit", 0, 6);
-    this.yPB = new e("AverageNetJit", 14);
-    this.yPC = new ArrayList();
-    AppMethodBeat.o(263689);
+    public abstract void a(s.c paramc);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/util/IGiftQueue$GiftType;", "", "(Ljava/lang/String;I)V", "SELF_PRECIOUS_GIFT_COMBO", "SELF_PRECIOUS_GIFT_SOLO", "SELF_NORMAL_GIFT_COMBO", "SELF_NORMAL_GIFT_SOLO", "PRECIOUS_GIFT_COMBO", "PRECIOUS_GIFT_SOLO", "NORMAL_GIFT_COMBO", "NORMAL_GIFT_SOLO", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static enum c
+  {
+    static
+    {
+      AppMethodBeat.i(351370);
+      DJq = new c("SELF_PRECIOUS_GIFT_COMBO", 0);
+      DJr = new c("SELF_PRECIOUS_GIFT_SOLO", 1);
+      DJs = new c("SELF_NORMAL_GIFT_COMBO", 2);
+      DJt = new c("SELF_NORMAL_GIFT_SOLO", 3);
+      DJu = new c("PRECIOUS_GIFT_COMBO", 4);
+      DJv = new c("PRECIOUS_GIFT_SOLO", 5);
+      DJw = new c("NORMAL_GIFT_COMBO", 6);
+      DJx = new c("NORMAL_GIFT_SOLO", 7);
+      DJy = new c[] { DJq, DJr, DJs, DJt, DJu, DJv, DJw, DJx };
+      AppMethodBeat.o(351370);
+    }
+    
+    private c() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.util.s
  * JD-Core Version:    0.7.0.1
  */

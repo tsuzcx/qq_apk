@@ -18,49 +18,49 @@ import org.xmlpull.v1.XmlSerializer;
 public final class d
   implements ITPMediaTrack, Serializable
 {
-  private int ZBD;
-  private int ZBE;
-  private List<ITPMediaTrackClip> ZBF;
+  private int ahGG;
+  private int ahGH;
+  private List<ITPMediaTrackClip> ahGI;
   
   public d(int paramInt)
   {
-    AppMethodBeat.i(220141);
-    this.ZBD = -1;
-    this.ZBE = paramInt;
-    this.ZBF = new ArrayList();
-    AppMethodBeat.o(220141);
+    AppMethodBeat.i(226947);
+    this.ahGG = -1;
+    this.ahGH = paramInt;
+    this.ahGI = new ArrayList();
+    AppMethodBeat.o(226947);
   }
   
   public d(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(220142);
-    this.ZBD = -1;
-    this.ZBD = paramInt1;
-    this.ZBE = paramInt2;
-    this.ZBF = new ArrayList();
-    AppMethodBeat.o(220142);
+    AppMethodBeat.i(226952);
+    this.ahGG = -1;
+    this.ahGG = paramInt1;
+    this.ahGH = paramInt2;
+    this.ahGI = new ArrayList();
+    AppMethodBeat.o(226952);
   }
   
   private void a(ITPMediaTrackClip paramITPMediaTrackClip)
   {
     try
     {
-      AppMethodBeat.i(220170);
+      AppMethodBeat.i(226956);
       if (paramITPMediaTrackClip == null)
       {
         paramITPMediaTrackClip = new IllegalArgumentException("add track clip , clip can not be null");
-        AppMethodBeat.o(220170);
+        AppMethodBeat.o(226956);
         throw paramITPMediaTrackClip;
       }
     }
     finally {}
-    if (paramITPMediaTrackClip.getMediaType() != this.ZBE)
+    if (paramITPMediaTrackClip.getMediaType() != this.ahGH)
     {
       paramITPMediaTrackClip = new IllegalArgumentException("add track clip failed, media type is not same");
-      AppMethodBeat.o(220170);
+      AppMethodBeat.o(226956);
       throw paramITPMediaTrackClip;
     }
-    AppMethodBeat.o(220170);
+    AppMethodBeat.o(226956);
   }
   
   /* Error */
@@ -75,7 +75,7 @@ public final class d
     //   8: aload_1
     //   9: invokespecial 63	com/tencent/thumbplayer/c/d:a	(Lcom/tencent/thumbplayer/api/composition/ITPMediaTrackClip;)V
     //   12: aload_0
-    //   13: getfield 34	com/tencent/thumbplayer/c/d:ZBF	Ljava/util/List;
+    //   13: getfield 34	com/tencent/thumbplayer/c/d:ahGI	Ljava/util/List;
     //   16: aload_1
     //   17: invokeinterface 69 2 0
     //   22: ifeq +45 -> 67
@@ -99,7 +99,7 @@ public final class d
     //   65: iload_2
     //   66: ireturn
     //   67: aload_0
-    //   68: getfield 34	com/tencent/thumbplayer/c/d:ZBF	Ljava/util/List;
+    //   68: getfield 34	com/tencent/thumbplayer/c/d:ahGI	Ljava/util/List;
     //   71: aload_1
     //   72: invokeinterface 95 2 0
     //   77: pop
@@ -129,7 +129,7 @@ public final class d
   {
     try
     {
-      List localList = this.ZBF;
+      List localList = this.ahGI;
       return localList;
     }
     finally
@@ -143,7 +143,7 @@ public final class d
   {
     try
     {
-      int i = this.ZBE;
+      int i = this.ahGH;
       return i;
     }
     finally
@@ -157,10 +157,10 @@ public final class d
   {
     try
     {
-      AppMethodBeat.i(220167);
-      Iterator localIterator = this.ZBF.iterator();
+      AppMethodBeat.i(227004);
+      Iterator localIterator = this.ahGI.iterator();
       for (long l = 0L; localIterator.hasNext(); l = ((ITPMediaTrackClip)localIterator.next()).getOriginalDurationMs() + l) {}
-      AppMethodBeat.o(220167);
+      AppMethodBeat.o(227004);
       return l;
     }
     finally {}
@@ -175,7 +175,7 @@ public final class d
     //   2: ldc 122
     //   4: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 34	com/tencent/thumbplayer/c/d:ZBF	Ljava/util/List;
+    //   8: getfield 34	com/tencent/thumbplayer/c/d:ahGI	Ljava/util/List;
     //   11: invokeinterface 106 1 0
     //   16: astore_3
     //   17: aload_3
@@ -223,7 +223,7 @@ public final class d
   {
     try
     {
-      int i = this.ZBD;
+      int i = this.ahGG;
       return i;
     }
     finally
@@ -241,18 +241,18 @@ public final class d
       String str1;
       try
       {
-        AppMethodBeat.i(220166);
+        AppMethodBeat.i(227001);
       }
       finally {}
       try
       {
-        localList = this.ZBF;
-        i = this.ZBE;
+        localList = this.ahGI;
+        i = this.ahGH;
         if (!b.isEmpty(localList)) {
           continue;
         }
         str1 = "";
-        AppMethodBeat.o(220166);
+        AppMethodBeat.o(227001);
       }
       catch (IOException localIOException)
       {
@@ -261,7 +261,7 @@ public final class d
           String str2;
           g.e("TPMediaCompositionTrack", localIOException);
           str3 = null;
-          AppMethodBeat.o(220166);
+          AppMethodBeat.o(227001);
           break;
         } while (i != 3);
         str4 = "audio_tracks";
@@ -282,7 +282,7 @@ public final class d
         localXmlSerializer.endTag("", "assets");
         localXmlSerializer.endDocument();
         str1 = localStringWriter.toString();
-        AppMethodBeat.o(220166);
+        AppMethodBeat.o(227001);
       }
       else
       {
@@ -293,7 +293,7 @@ public final class d
         str2 = "video_track";
         continue;
         str2 = "";
-        AppMethodBeat.o(220166);
+        AppMethodBeat.o(227001);
       }
     }
   }
@@ -302,13 +302,13 @@ public final class d
   {
     try
     {
-      AppMethodBeat.i(220151);
+      AppMethodBeat.i(226966);
       a(paramITPMediaTrackClip);
-      if (this.ZBF.contains(paramITPMediaTrackClip))
+      if (this.ahGI.contains(paramITPMediaTrackClip))
       {
         g.i("TPMediaCompositionTrack", "add track clip failed, clip already exists : " + paramITPMediaTrackClip.getClipId());
         paramInt = paramITPMediaTrackClip.getClipId();
-        AppMethodBeat.o(220151);
+        AppMethodBeat.o(226966);
       }
       for (;;)
       {
@@ -316,11 +316,11 @@ public final class d
         if (paramInt != -1) {
           break;
         }
-        this.ZBF.add(0, paramITPMediaTrackClip);
+        this.ahGI.add(0, paramITPMediaTrackClip);
         paramInt = paramITPMediaTrackClip.getClipId();
-        AppMethodBeat.o(220151);
+        AppMethodBeat.o(226966);
       }
-      j = this.ZBF.size();
+      j = this.ahGI.size();
     }
     finally {}
     int j;
@@ -329,18 +329,18 @@ public final class d
     {
       if (i < j)
       {
-        if (((ITPMediaTrackClip)this.ZBF.get(i)).getClipId() != paramInt) {
+        if (((ITPMediaTrackClip)this.ahGI.get(i)).getClipId() != paramInt) {
           break label212;
         }
-        this.ZBF.add(i + 1, paramITPMediaTrackClip);
+        this.ahGI.add(i + 1, paramITPMediaTrackClip);
         paramInt = paramITPMediaTrackClip.getClipId();
-        AppMethodBeat.o(220151);
+        AppMethodBeat.o(226966);
         break;
       }
-      this.ZBF.add(paramITPMediaTrackClip);
+      this.ahGI.add(paramITPMediaTrackClip);
       g.i("TPMediaCompositionTrack", "insert track clip into the end, coz after clip not found :".concat(String.valueOf(paramInt)));
       paramInt = paramITPMediaTrackClip.getClipId();
-      AppMethodBeat.o(220151);
+      AppMethodBeat.o(226966);
       break;
       label212:
       i += 1;
@@ -351,9 +351,9 @@ public final class d
   {
     try
     {
-      AppMethodBeat.i(220158);
-      this.ZBF.clear();
-      AppMethodBeat.o(220158);
+      AppMethodBeat.i(226984);
+      this.ahGI.clear();
+      AppMethodBeat.o(226984);
       return;
     }
     finally
@@ -367,17 +367,17 @@ public final class d
   {
     try
     {
-      AppMethodBeat.i(220157);
+      AppMethodBeat.i(226975);
       if (paramITPMediaTrackClip == null)
       {
         paramITPMediaTrackClip = new IllegalArgumentException("remove track clip , clip can not be null");
-        AppMethodBeat.o(220157);
+        AppMethodBeat.o(226975);
         throw paramITPMediaTrackClip;
       }
     }
     finally {}
-    boolean bool = this.ZBF.remove(paramITPMediaTrackClip);
-    AppMethodBeat.o(220157);
+    boolean bool = this.ahGI.remove(paramITPMediaTrackClip);
+    AppMethodBeat.o(226975);
     return bool;
   }
   
@@ -388,30 +388,30 @@ public final class d
     {
       try
       {
-        AppMethodBeat.i(220155);
-        if ((paramInt1 < 0) || (paramInt1 >= this.ZBF.size()))
+        AppMethodBeat.i(226972);
+        if ((paramInt1 < 0) || (paramInt1 >= this.ahGI.size()))
         {
           g.w("TPMediaCompositionTrack", "swap clip failed, from pos invalid , from pos : ".concat(String.valueOf(paramInt1)));
-          AppMethodBeat.o(220155);
+          AppMethodBeat.o(226972);
           return bool;
         }
-        if ((paramInt2 < 0) || (paramInt2 >= this.ZBF.size()))
+        if ((paramInt2 < 0) || (paramInt2 >= this.ahGI.size()))
         {
           g.w("TPMediaCompositionTrack", "swap clip failed, to pos invalid , to pos :".concat(String.valueOf(paramInt2)));
-          AppMethodBeat.o(220155);
+          AppMethodBeat.o(226972);
           continue;
         }
-        Collections.swap(this.ZBF, paramInt1, paramInt2);
+        Collections.swap(this.ahGI, paramInt1, paramInt2);
       }
       finally {}
       bool = true;
-      AppMethodBeat.o(220155);
+      AppMethodBeat.o(226972);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.thumbplayer.c.d
  * JD-Core Version:    0.7.0.1
  */

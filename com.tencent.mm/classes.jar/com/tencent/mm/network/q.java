@@ -20,9 +20,9 @@ public abstract interface q
       attachInterface(this, "com.tencent.mm.network.IOnReportKV_AIDL");
     }
     
-    public static q btm()
+    public static q bQV()
     {
-      return a.muB;
+      return a.pnV;
     }
     
     public IBinder asBinder()
@@ -65,7 +65,7 @@ public abstract interface q
     static final class a
       implements q
     {
-      public static q muB;
+      public static q pnV;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -96,10 +96,10 @@ public abstract interface q
           for (int i = j;; i = 0)
           {
             localParcel1.writeInt(i);
-            if ((this.mRemote.transact(1, localParcel1, localParcel2, 0)) || (q.a.btm() == null)) {
+            if ((this.mRemote.transact(1, localParcel1, localParcel2, 0)) || (q.a.bQV() == null)) {
               break label134;
             }
-            q.a.btm().a(paramLong, paramString, paramBoolean1, paramBoolean2);
+            q.a.bQV().a(paramLong, paramString, paramBoolean1, paramBoolean2);
             return;
             i = 0;
             break;
@@ -125,7 +125,7 @@ public abstract interface q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.network.q
  * JD-Core Version:    0.7.0.1
  */

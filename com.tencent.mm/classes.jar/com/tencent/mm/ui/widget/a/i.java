@@ -1,216 +1,203 @@
 package com.tencent.mm.ui.widget.a;
 
+import android.app.Dialog;
 import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.content.res.Resources.Theme;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.util.TypedValue;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.FrameLayout;
-import androidx.appcompat.app.e;
-import androidx.coordinatorlayout.widget.CoordinatorLayout.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cr.a.f;
-import com.tencent.mm.cr.a.g;
-import com.tencent.mm.cr.a.j;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.ui.ax;
+import com.tencent.mm.ui.bc;
 
-public final class i
-  extends e
+public class i
+  extends Dialog
 {
-  private FrameLayout JMG;
-  private Context mContext;
+  private static final String TAG = "MicroMsg.MMDialog";
+  private d iOnDialogDismissListener;
+  private Runnable mHijackDismissAction;
+  private final Runnable mReplaceRunnable;
+  
+  public i(Context paramContext)
+  {
+    super(paramContext);
+    AppMethodBeat.i(251782);
+    this.mReplaceRunnable = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(251778);
+        try
+        {
+          bc.i("MicroMsg.MMDialog", "run on hijack runnable", new Object[0]);
+          i.this.mHijackDismissAction.run();
+          AppMethodBeat.o(251778);
+          return;
+        }
+        catch (Exception localException)
+        {
+          bc.e("MicroMsg.MMDialog", "protect : " + localException.getMessage(), new Object[0]);
+          AppMethodBeat.o(251778);
+        }
+      }
+    };
+    hijackDismissAction();
+    AppMethodBeat.o(251782);
+  }
   
   public i(Context paramContext, int paramInt)
   {
-    super(paramContext, i);
-    AppMethodBeat.i(250965);
-    this.mContext = paramContext;
-    bb();
-    AppMethodBeat.o(250965);
-  }
-  
-  private View b(int paramInt, View paramView, ViewGroup.LayoutParams paramLayoutParams)
-  {
-    AppMethodBeat.i(250979);
-    Object localObject1 = getWindow();
-    Object localObject2;
-    label72:
-    View localView;
-    if (isLandscape())
+    super(paramContext, paramInt);
+    AppMethodBeat.i(251783);
+    this.mReplaceRunnable = new Runnable()
     {
-      ((Window)localObject1).setGravity(1);
-      ((Window)localObject1).setWindowAnimations(a.j.BottomToTopSlowAnimation);
-      ((Window)localObject1).getDecorView().setPadding(0, 0, 0, 0);
-      localObject2 = ((Window)localObject1).getAttributes();
-      if (!isLandscape()) {
-        break label224;
-      }
-      ((WindowManager.LayoutParams)localObject2).width = -2;
-      ((WindowManager.LayoutParams)localObject2).height = -2;
-      ((Window)localObject1).setAttributes((WindowManager.LayoutParams)localObject2);
-      localObject2 = (ViewGroup)LayoutInflater.from(this.mContext).inflate(a.g.new_menu_sheet_dialog, null);
-      localView = ((ViewGroup)localObject2).findViewById(a.f.touch_outside);
-      localObject1 = paramView;
-      if (paramInt != 0)
+      public final void run()
       {
-        localObject1 = paramView;
-        if (paramView == null) {
-          localObject1 = getLayoutInflater().inflate(paramInt, (ViewGroup)localObject2, false);
+        AppMethodBeat.i(251778);
+        try
+        {
+          bc.i("MicroMsg.MMDialog", "run on hijack runnable", new Object[0]);
+          i.this.mHijackDismissAction.run();
+          AppMethodBeat.o(251778);
+          return;
+        }
+        catch (Exception localException)
+        {
+          bc.e("MicroMsg.MMDialog", "protect : " + localException.getMessage(), new Object[0]);
+          AppMethodBeat.o(251778);
         }
       }
-      if (!isLandscape()) {
-        break label240;
-      }
-      this.JMG = ((FrameLayout)((ViewGroup)localObject2).findViewById(a.f.menu_sheet_center_container));
-      label157:
-      this.JMG.setVisibility(0);
-      if (paramLayoutParams != null) {
-        break label262;
-      }
-      this.JMG.addView((View)localObject1);
-    }
-    for (;;)
-    {
-      if (haG()) {
-        localView.setOnClickListener(new View.OnClickListener()
-        {
-          public final void onClick(View paramAnonymousView)
-          {
-            AppMethodBeat.i(249767);
-            b localb = new b();
-            localb.bn(paramAnonymousView);
-            a.c("com/tencent/mm/ui/widget/dialog/NewBottomSheetDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-            if (i.this.isShowing()) {
-              i.this.cancel();
-            }
-            a.a(this, "com/tencent/mm/ui/widget/dialog/NewBottomSheetDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(249767);
-          }
-        });
-      }
-      AppMethodBeat.o(250979);
-      return localObject2;
-      ((Window)localObject1).setGravity(80);
-      ((Window)localObject1).setWindowAnimations(a.j.BottomToTopSlowAnimation);
-      break;
-      label224:
-      ((WindowManager.LayoutParams)localObject2).width = -1;
-      ((WindowManager.LayoutParams)localObject2).height = -2;
-      break label72;
-      label240:
-      this.JMG = ((FrameLayout)((ViewGroup)localObject2).findViewById(a.f.menu_sheet_bottom_container));
-      ico();
-      break label157;
-      label262:
-      this.JMG.addView((View)localObject1, paramLayoutParams);
-    }
+    };
+    hijackDismissAction();
+    AppMethodBeat.o(251783);
   }
   
-  private boolean haG()
+  /* Error */
+  private void hijackDismissAction()
   {
-    AppMethodBeat.i(250981);
-    if (Build.VERSION.SDK_INT < 11)
-    {
-      AppMethodBeat.o(250981);
-      return true;
-    }
-    TypedValue localTypedValue = new TypedValue();
-    if (getContext().getTheme().resolveAttribute(16843611, localTypedValue, true))
-    {
-      if (localTypedValue.data != 0)
-      {
-        AppMethodBeat.o(250981);
-        return true;
-      }
-      AppMethodBeat.o(250981);
-      return false;
-    }
-    AppMethodBeat.o(250981);
-    return false;
+    // Byte code:
+    //   0: ldc 54
+    //   2: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: getstatic 60	android/os/Build$VERSION:SDK_INT	I
+    //   8: bipush 28
+    //   10: if_icmple +9 -> 19
+    //   13: ldc 54
+    //   15: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   18: return
+    //   19: ldc 4
+    //   21: ldc 62
+    //   23: invokevirtual 68	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   26: astore_1
+    //   27: aload_1
+    //   28: iconst_1
+    //   29: invokevirtual 74	java/lang/reflect/Field:setAccessible	(Z)V
+    //   32: ldc 70
+    //   34: ldc 76
+    //   36: invokevirtual 68	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   39: astore_2
+    //   40: aload_2
+    //   41: iconst_1
+    //   42: invokevirtual 74	java/lang/reflect/Field:setAccessible	(Z)V
+    //   45: aload_2
+    //   46: aload_1
+    //   47: aload_1
+    //   48: invokevirtual 80	java/lang/reflect/Field:getModifiers	()I
+    //   51: bipush 239
+    //   53: iand
+    //   54: invokevirtual 84	java/lang/reflect/Field:setInt	(Ljava/lang/Object;I)V
+    //   57: aload_0
+    //   58: aload_1
+    //   59: aload_0
+    //   60: invokevirtual 88	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   63: checkcast 90	java/lang/Runnable
+    //   66: putfield 47	com/tencent/mm/ui/widget/a/i:mHijackDismissAction	Ljava/lang/Runnable;
+    //   69: aload_1
+    //   70: aload_0
+    //   71: aload_0
+    //   72: getfield 31	com/tencent/mm/ui/widget/a/i:mReplaceRunnable	Ljava/lang/Runnable;
+    //   75: invokevirtual 94	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   78: ldc 54
+    //   80: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   83: return
+    //   84: astore_1
+    //   85: ldc 10
+    //   87: ldc 96
+    //   89: iconst_0
+    //   90: anewarray 98	java/lang/Object
+    //   93: invokestatic 104	com/tencent/mm/ui/bc:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   96: ldc 54
+    //   98: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   101: return
+    //   102: astore_1
+    //   103: ldc 10
+    //   105: ldc 106
+    //   107: iconst_0
+    //   108: anewarray 98	java/lang/Object
+    //   111: invokestatic 104	com/tencent/mm/ui/bc:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   114: ldc 54
+    //   116: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   119: return
+    //   120: astore_2
+    //   121: goto -64 -> 57
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	124	0	this	i
+    //   26	44	1	localField1	java.lang.reflect.Field
+    //   84	1	1	localNoSuchFieldException	java.lang.NoSuchFieldException
+    //   102	1	1	localIllegalAccessException	java.lang.IllegalAccessException
+    //   39	7	2	localField2	java.lang.reflect.Field
+    //   120	1	2	localException	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   19	32	84	java/lang/NoSuchFieldException
+    //   32	57	84	java/lang/NoSuchFieldException
+    //   57	78	84	java/lang/NoSuchFieldException
+    //   19	32	102	java/lang/IllegalAccessException
+    //   32	57	102	java/lang/IllegalAccessException
+    //   57	78	102	java/lang/IllegalAccessException
+    //   32	57	120	java/lang/Exception
   }
   
-  private void ico()
+  public void dismiss()
   {
-    AppMethodBeat.i(250984);
-    if ((this.JMG != null) && (!isLandscape())) {
-      if ((!ax.av(this.mContext)) || (Build.VERSION.SDK_INT >= 30)) {
-        break label78;
-      }
-    }
-    label78:
-    for (int i = ax.aB(this.mContext);; i = 0)
+    AppMethodBeat.i(251796);
+    try
     {
-      CoordinatorLayout.d locald = (CoordinatorLayout.d)this.JMG.getLayoutParams();
-      locald.setMargins(0, 0, 0, i);
-      this.JMG.setLayoutParams(locald);
-      AppMethodBeat.o(250984);
+      super.dismiss();
+      if (this.iOnDialogDismissListener != null) {
+        this.iOnDialogDismissListener.onDialogDismiss(this);
+      }
+      AppMethodBeat.o(251796);
       return;
     }
-  }
-  
-  private boolean isLandscape()
-  {
-    AppMethodBeat.i(250983);
-    if (this.mContext.getResources().getConfiguration().orientation == 2)
+    catch (Exception localException)
     {
-      AppMethodBeat.o(250983);
-      return true;
+      for (;;)
+      {
+        bc.printErrStackTrace("MicroMsg.MMDialog", localException, "", new Object[0]);
+      }
     }
-    AppMethodBeat.o(250983);
-    return false;
   }
   
-  public final void onAttachedToWindow()
+  public void setiOnDialogDismissListener(d paramd)
   {
-    AppMethodBeat.i(250967);
-    super.onAttachedToWindow();
-    ico();
-    AppMethodBeat.o(250967);
+    this.iOnDialogDismissListener = paramd;
   }
   
-  public final void onCreate(Bundle paramBundle)
+  public void show()
   {
-    AppMethodBeat.i(250975);
-    super.onCreate(paramBundle);
-    getWindow().setLayout(-1, -1);
-    AppMethodBeat.o(250975);
-  }
-  
-  public final void setContentView(int paramInt)
-  {
-    AppMethodBeat.i(250973);
-    super.setContentView(b(paramInt, null, null));
-    AppMethodBeat.o(250973);
-  }
-  
-  public final void setContentView(View paramView)
-  {
-    AppMethodBeat.i(250969);
-    super.setContentView(b(0, paramView, null));
-    AppMethodBeat.o(250969);
-  }
-  
-  public final void setContentView(View paramView, ViewGroup.LayoutParams paramLayoutParams)
-  {
-    AppMethodBeat.i(250971);
-    super.setContentView(b(0, paramView, paramLayoutParams));
-    AppMethodBeat.o(250971);
+    AppMethodBeat.i(251801);
+    try
+    {
+      super.show();
+      AppMethodBeat.o(251801);
+      return;
+    }
+    catch (Exception localException)
+    {
+      bc.printErrStackTrace("MicroMsg.MMDialog", localException, "", new Object[0]);
+      AppMethodBeat.o(251801);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.widget.a.i
  * JD-Core Version:    0.7.0.1
  */

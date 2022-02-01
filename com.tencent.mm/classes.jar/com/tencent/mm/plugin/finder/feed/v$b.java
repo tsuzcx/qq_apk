@@ -7,138 +7,152 @@ import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 import androidx.recyclerview.widget.RecyclerView.a;
 import androidx.recyclerview.widget.RecyclerView.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.PluginFinder;
+import com.tencent.mm.plugin.finder.e.e;
 import com.tencent.mm.plugin.finder.feed.model.BaseFinderFeedLoader;
+import com.tencent.mm.plugin.finder.feed.model.FinderHotWordFeedLoader;
 import com.tencent.mm.plugin.finder.feed.model.internal.BaseFeedLoader;
-import com.tencent.mm.plugin.finder.feed.model.internal.DataBuffer;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.model.bu;
-import com.tencent.mm.plugin.finder.report.n;
+import com.tencent.mm.plugin.finder.report.z;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.ak;
 import com.tencent.mm.plugin.finder.utils.a;
-import com.tencent.mm.plugin.finder.viewmodel.component.aj;
-import com.tencent.mm.plugin.finder.viewmodel.component.aj.a;
+import com.tencent.mm.plugin.finder.viewmodel.b;
+import com.tencent.mm.plugin.finder.viewmodel.component.as.a;
+import com.tencent.mm.protocal.protobuf.FinderObject;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.component.k;
+import com.tencent.mm.ui.component.k.b;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
-import com.tencent.mm.view.RefreshLoadMoreLayout.c;
-import com.tencent.mm.view.recyclerview.h;
+import com.tencent.mm.view.RefreshLoadMoreLayout.d;
+import com.tencent.mm.view.recyclerview.i;
 import java.util.ArrayList;
-import kotlin.g.b.p;
-import kotlin.l;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.r;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/FinderLbsStreamFeedUIContract$LbsStreamFeedViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$ViewCallback;", "context", "Lcom/tencent/mm/ui/MMActivity;", "scene", "", "commentScene", "title", "", "(Lcom/tencent/mm/ui/MMActivity;IILjava/lang/String;)V", "TAG", "getTitle", "()Ljava/lang/String;", "getActivity", "getDescStringID", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "", "getEmptyView", "Landroid/view/View;", "getHeaderView", "getItemDecoration", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getLayoutManager", "Landroidx/recyclerview/widget/RecyclerView$LayoutManager;", "Landroid/content/Context;", "getTitleStringId", "onGridItemClick", "", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "view", "position", "onItemDelete", "refreshWhenEnter", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/FinderHotWordFeedUIContract$HotWordFeedViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$ViewCallback;", "context", "Lcom/tencent/mm/ui/MMActivity;", "scene", "", "commentScene", "commentSafeMode", "", "(Lcom/tencent/mm/ui/MMActivity;IIZ)V", "TAG", "", "hotWordHeader", "Landroid/view/View;", "getHotWordHeader", "()Landroid/view/View;", "setHotWordHeader", "(Landroid/view/View;)V", "needRefreshWhenEnter", "getNeedRefreshWhenEnter", "()Z", "setNeedRefreshWhenEnter", "(Z)V", "topic", "getTopic", "()Ljava/lang/String;", "setTopic", "(Ljava/lang/String;)V", "type", "getType", "()I", "setType", "(I)V", "getActivity", "getDescStringID", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "", "getEmptyView", "getHeaderView", "getItemDecoration", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getLayoutManager", "Landroidx/recyclerview/widget/RecyclerView$LayoutManager;", "Landroid/content/Context;", "getTitleStringId", "onGridItemClick", "", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "view", "position", "onItemDelete", "refreshWhenEnter", "showHeaderOnDataEmpty", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class v$b
   extends c.b
 {
+  private View AWc;
+  private boolean AWd;
   private final String TAG;
-  private final String title;
+  public String topic;
+  public int type;
   
-  public v$b(MMActivity paramMMActivity, int paramInt1, int paramInt2, String paramString)
+  private v$b(MMActivity paramMMActivity, int paramInt)
   {
-    super(paramMMActivity, paramInt1, paramInt2);
-    AppMethodBeat.i(289524);
-    this.title = paramString;
-    this.TAG = "Finder.LbsStreamFeedUIContract.LbsStreamFeedViewCallback";
-    AppMethodBeat.o(289524);
+    super(paramMMActivity, 2, 115, false);
+    AppMethodBeat.i(362571);
+    this.TAG = "Finder.FinderHotWordFeedUIContract.HotWordFeedViewCallback";
+    this.topic = "";
+    this.AWd = true;
+    AppMethodBeat.o(362571);
   }
   
   public final void a(RecyclerView.a<?> parama, View paramView, int paramInt)
   {
-    AppMethodBeat.i(289521);
-    p.k(parama, "adapter");
-    p.k(paramView, "view");
-    paramInt -= ((h)parama).YSk.size();
-    if ((paramInt >= 0) && (paramInt < dsG().xnX.getSize()))
+    AppMethodBeat.i(362606);
+    s.u(parama, "adapter");
+    s.u(paramView, "view");
+    paramInt -= ((i)parama).agOb.size();
+    if ((paramInt >= 0) && (paramInt < ebL().ALH.getSize()))
     {
-      parama = (bu)dsG().xnX.getDataListJustForAdapter().get(paramInt);
-      if (!(parama instanceof BaseFinderFeed))
-      {
-        AppMethodBeat.o(289521);
-        return;
-      }
-      Log.i(this.TAG, "onClick " + paramInt + " id:" + ((BaseFinderFeed)parama).feedObject.getId() + ", pos:" + paramInt);
-      Object localObject1 = new Intent();
-      BaseFeedLoader.saveCache$default(dsG().xnX, (Intent)localObject1, paramInt, null, 4, null);
-      ((Intent)localObject1).putExtra("KEY_UI_TITLE", this.title);
-      Object localObject2 = aj.Bnu;
-      localObject2 = paramView.getContext();
-      p.j(localObject2, "view.context");
-      aj.a.a((Context)localObject2, (Intent)localObject1, 0L, 0, false, 124);
-      localObject2 = a.ACH;
-      localObject2 = paramView.getContext();
-      p.j(localObject2, "view.context");
-      a.Q((Context)localObject2, (Intent)localObject1);
-      localObject1 = aj.Bnu;
+      parama = ((BaseFinderFeed)ebL().ALH.getListOfType(BaseFinderFeed.class).get(paramInt)).feedObject;
+      Log.i(this.TAG, "onClick " + paramInt + " id:" + parama.getId() + ", pos:" + paramInt);
+      Object localObject1 = k.aeZF;
+      Object localObject2 = ((b)k.cn(PluginFinder.class).q(b.class)).dUh();
+      localObject1 = new Intent();
+      ((Intent)localObject1).putExtra("key_topic_type", this.type);
+      ((Intent)localObject1).putExtra("key_topic_title", this.topic);
+      ((Intent)localObject1).putExtra("FEED_ID", parama.getId());
+      ((Intent)localObject1).putExtra("FEED_NONCE_ID", parama.getFeedObject().objectNonceId);
+      ((Intent)localObject1).putExtra("TITLE_WORDING", "");
+      ((Intent)localObject1).putExtra("GET_REL_SCENE", 24);
+      ((Intent)localObject1).putExtra("POI_LATITUDE", ((Number)((r)localObject2).bsD).floatValue());
+      ((Intent)localObject1).putExtra("POI_LONGITUDE", ((Number)((r)localObject2).bsC).floatValue());
+      BaseFeedLoader.saveCache$default((BaseFeedLoader)ebL().ALH, (Intent)localObject1, paramInt, null, 4, null);
+      ((FinderHotWordFeedLoader)ebL().ALH).BgA = null;
+      Log.i(this.TAG, s.X("enterTimelineUI, fixPos:", Integer.valueOf(paramInt)));
+      localObject2 = com.tencent.mm.plugin.finder.viewmodel.component.as.GSQ;
+      as.a.a((Context)this.lzt, (Intent)localObject1, 0L, 0, false, 124);
+      a.GfO.m((Context)this.lzt, (Intent)localObject1);
+      localObject1 = z.FrZ;
+      z.ab(parama.getId(), getScene());
+      localObject1 = com.tencent.mm.plugin.finder.viewmodel.component.as.GSQ;
       paramView = paramView.getContext();
-      p.j(paramView, "view.context");
-      paramView = aj.a.fZ(paramView);
+      s.s(paramView, "view.context");
+      paramView = as.a.hu(paramView);
       if (paramView != null)
       {
-        paramView = paramView.ekY();
+        paramView = paramView.fou();
         if (paramView != null)
         {
-          localObject1 = n.zWF;
-          n.a(paramView, ((BaseFinderFeed)parama).feedObject.getId(), this.xvJ.getRecyclerView());
-          AppMethodBeat.o(289521);
-          return;
+          localObject1 = z.FrZ;
+          z.a(paramView, parama.getId(), this.ATx.getRecyclerView(), this.type, null, 16);
         }
       }
     }
-    AppMethodBeat.o(289521);
+    AppMethodBeat.o(362606);
   }
   
-  public final boolean dsJ()
+  public final String b(RefreshLoadMoreLayout.d<Object> paramd)
+  {
+    AppMethodBeat.i(362642);
+    s.u(paramd, "reason");
+    AppMethodBeat.o(362642);
+    return null;
+  }
+  
+  public final String c(RefreshLoadMoreLayout.d<Object> paramd)
+  {
+    AppMethodBeat.i(362649);
+    s.u(paramd, "reason");
+    AppMethodBeat.o(362649);
+    return null;
+  }
+  
+  public final void dUO() {}
+  
+  public final boolean ebM()
+  {
+    return this.AWd;
+  }
+  
+  public final boolean ebN()
   {
     return false;
   }
   
-  public final void dsL() {}
-  
-  public final RecyclerView.LayoutManager eW(Context paramContext)
+  public final RecyclerView.LayoutManager fT(Context paramContext)
   {
-    AppMethodBeat.i(289520);
-    p.k(paramContext, "context");
-    paramContext = dsI().eW(paramContext);
-    AppMethodBeat.o(289520);
+    AppMethodBeat.i(362613);
+    s.u(paramContext, "context");
+    paramContext = dUN().fT(paramContext);
+    AppMethodBeat.o(362613);
     return paramContext;
-  }
-  
-  public final String f(RefreshLoadMoreLayout.c<Object> paramc)
-  {
-    AppMethodBeat.i(289522);
-    p.k(paramc, "reason");
-    AppMethodBeat.o(289522);
-    return null;
-  }
-  
-  public final String g(RefreshLoadMoreLayout.c<Object> paramc)
-  {
-    AppMethodBeat.i(289523);
-    p.k(paramc, "reason");
-    AppMethodBeat.o(289523);
-    return null;
   }
   
   public final View getEmptyView()
   {
-    AppMethodBeat.i(289519);
-    View localView = this.iXq.findViewById(b.f.empty_view);
-    AppMethodBeat.o(289519);
+    AppMethodBeat.i(362630);
+    View localView = this.lzt.findViewById(e.e.empty_view);
+    AppMethodBeat.o(362630);
     return localView;
   }
   
   public final View getHeaderView()
   {
-    return null;
+    return this.AWc;
   }
   
   public final RecyclerView.h getItemDecoration()
   {
-    AppMethodBeat.i(289518);
-    RecyclerView.h localh = dsI().getItemDecoration();
-    AppMethodBeat.o(289518);
+    AppMethodBeat.i(362621);
+    RecyclerView.h localh = dUN().getItemDecoration();
+    AppMethodBeat.o(362621);
     return localh;
   }
 }

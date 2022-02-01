@@ -1,96 +1,96 @@
 package com.tencent.mm.videocomposition;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.videocomposition.c.b;
+import com.tencent.mm.videocomposition.d.b;
 import com.tencent.tav.decoder.logger.ILog;
 import com.tencent.tav.decoder.logger.Logger;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/videocomposition/TAVKitLog;", "", "()V", "TAG", "", "setUp", "", "video_composition_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mm/videocomposition/TAVKitLog;", "", "()V", "TAG", "", "setUp", "", "video_composition_release"}, k=1, mv={1, 1, 15})
 public final class d
 {
   private static final String TAG = "MicroMsg.TAVKit";
-  public static final d YHZ;
+  public static final d agDG;
   
   static
   {
-    AppMethodBeat.i(247945);
-    YHZ = new d();
+    AppMethodBeat.i(233488);
+    agDG = new d();
     TAG = "MicroMsg.TAVKit";
-    AppMethodBeat.o(247945);
+    AppMethodBeat.o(233488);
   }
   
-  public static void eON()
+  public static void fXr()
   {
-    AppMethodBeat.i(247943);
+    AppMethodBeat.i(233472);
     Logger.setLogProxy((ILog)new a());
     Logger.setLevel(2);
-    AppMethodBeat.o(247943);
+    AppMethodBeat.o(233472);
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"com/tencent/mm/videocomposition/TAVKitLog$setUp$1", "Lcom/tencent/tav/decoder/logger/ILog;", "d", "", "tag", "", "message", "e", "t", "", "i", "v", "msg", "w", "video_composition_release"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mm/videocomposition/TAVKitLog$setUp$1", "Lcom/tencent/tav/decoder/logger/ILog;", "d", "", "tag", "", "message", "e", "t", "", "i", "v", "msg", "w", "video_composition_release"}, k=1, mv={1, 1, 15})
   public static final class a
     implements ILog
   {
     public final void d(String paramString1, String paramString2)
     {
-      AppMethodBeat.i(247938);
+      AppMethodBeat.i(233482);
       StringBuilder localStringBuilder = new StringBuilder();
-      d locald = d.YHZ;
-      b.d(d.igD() + ':' + paramString1, String.valueOf(paramString2), new Object[0]);
-      AppMethodBeat.o(247938);
+      d locald = d.agDG;
+      b.d(d.jLR() + ':' + paramString1, String.valueOf(paramString2), new Object[0]);
+      AppMethodBeat.o(233482);
     }
     
     public final void e(String paramString1, String paramString2)
     {
-      AppMethodBeat.i(247934);
+      AppMethodBeat.i(233473);
       StringBuilder localStringBuilder = new StringBuilder();
-      d locald = d.YHZ;
-      b.e(d.igD() + ':' + paramString1, String.valueOf(paramString2), new Object[0]);
-      AppMethodBeat.o(247934);
+      d locald = d.agDG;
+      b.e(d.jLR() + ':' + paramString1, String.valueOf(paramString2), new Object[0]);
+      AppMethodBeat.o(233473);
     }
     
     public final void e(String paramString1, String paramString2, Throwable paramThrowable)
     {
-      AppMethodBeat.i(247937);
+      AppMethodBeat.i(233478);
       StringBuilder localStringBuilder = new StringBuilder();
-      d locald = d.YHZ;
-      b.printErrStackTrace(d.igD() + ':' + paramString1, paramThrowable, String.valueOf(paramString2), new Object[0]);
-      AppMethodBeat.o(247937);
+      d locald = d.agDG;
+      b.printErrStackTrace(d.jLR() + ':' + paramString1, paramThrowable, String.valueOf(paramString2), new Object[0]);
+      AppMethodBeat.o(233478);
     }
     
     public final void i(String paramString1, String paramString2)
     {
-      AppMethodBeat.i(247928);
+      AppMethodBeat.i(233459);
       StringBuilder localStringBuilder = new StringBuilder();
-      d locald = d.YHZ;
-      b.i(d.igD() + ':' + paramString1, String.valueOf(paramString2), new Object[0]);
-      AppMethodBeat.o(247928);
+      d locald = d.agDG;
+      b.i(d.jLR() + ':' + paramString1, String.valueOf(paramString2), new Object[0]);
+      AppMethodBeat.o(233459);
     }
     
     public final void v(String paramString1, String paramString2)
     {
-      AppMethodBeat.i(247933);
+      AppMethodBeat.i(233471);
       StringBuilder localStringBuilder = new StringBuilder();
-      d locald = d.YHZ;
-      b.v(d.igD() + ':' + paramString1, String.valueOf(paramString2), new Object[0]);
-      AppMethodBeat.o(247933);
+      d locald = d.agDG;
+      b.v(d.jLR() + ':' + paramString1, String.valueOf(paramString2), new Object[0]);
+      AppMethodBeat.o(233471);
     }
     
     public final void w(String paramString1, String paramString2)
     {
-      AppMethodBeat.i(247931);
+      AppMethodBeat.i(233464);
       StringBuilder localStringBuilder = new StringBuilder();
-      d locald = d.YHZ;
-      localStringBuilder.append(d.igD()).append(':').append(paramString1);
-      b.r(String.valueOf(paramString2), new Object[0]);
-      AppMethodBeat.o(247931);
+      d locald = d.agDG;
+      localStringBuilder.append(d.jLR()).append(':').append(paramString1);
+      b.s(String.valueOf(paramString2), new Object[0]);
+      AppMethodBeat.o(233464);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.videocomposition.d
  * JD-Core Version:    0.7.0.1
  */

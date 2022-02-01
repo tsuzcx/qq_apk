@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.sns.ad.c.a;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.ad.adxml.AdClickActionInfo;
-import com.tencent.mm.plugin.sns.ad.adxml.i;
-import com.tencent.mm.plugin.sns.ad.adxml.j;
-import com.tencent.mm.plugin.sns.ad.adxml.k;
 import com.tencent.mm.plugin.sns.ad.adxml.l;
-import com.tencent.mm.plugin.sns.ad.i.d;
+import com.tencent.mm.plugin.sns.ad.adxml.m;
+import com.tencent.mm.plugin.sns.ad.adxml.n;
+import com.tencent.mm.plugin.sns.ad.adxml.o;
+import com.tencent.mm.plugin.sns.ad.j.d;
 import com.tencent.mm.plugin.sns.data.t;
 import com.tencent.mm.plugin.sns.storage.ADInfo;
 import com.tencent.mm.plugin.sns.storage.ADXml;
@@ -25,112 +25,124 @@ import java.util.Map;
 public final class b
   implements Runnable
 {
-  private final c Jze;
-  private final String Jzg;
+  private final c PNC;
+  private final String PNE;
   
   b(c paramc, String paramString)
   {
-    this.Jze = paramc;
-    this.Jzg = paramString;
+    this.PNC = paramc;
+    this.PNE = paramString;
   }
   
   private static String a(int paramInt, AdClickActionInfo paramAdClickActionInfo, SnsInfo paramSnsInfo)
   {
-    AppMethodBeat.i(268791);
+    AppMethodBeat.i(309921);
     if (paramAdClickActionInfo == null)
     {
-      AppMethodBeat.o(268791);
+      AppMethodBeat.o(309921);
       return "";
     }
-    if (paramAdClickActionInfo.Jxx != 0)
+    if (paramAdClickActionInfo.PLm != 0)
     {
-      AppMethodBeat.o(268791);
+      AppMethodBeat.o(309921);
       return "";
     }
-    String str = paramAdClickActionInfo.Jxy;
+    String str = paramAdClickActionInfo.PLn;
     if (TextUtils.isEmpty(str))
     {
-      AppMethodBeat.o(268791);
+      AppMethodBeat.o(309921);
       return "";
     }
     paramSnsInfo = paramSnsInfo.getAdInfo(paramInt);
     paramAdClickActionInfo = str;
     if (paramSnsInfo != null) {
-      paramAdClickActionInfo = t.kw(str, paramSnsInfo.uxInfo);
+      paramAdClickActionInfo = t.lY(str, paramSnsInfo.uxInfo);
     }
-    paramAdClickActionInfo = a.aYn(paramAdClickActionInfo);
+    paramAdClickActionInfo = a.aWi(paramAdClickActionInfo);
     Log.d("SnsAd.H5PrefetchTask", "doClickBtnUrl: the url is ".concat(String.valueOf(paramAdClickActionInfo)));
-    AppMethodBeat.o(268791);
+    AppMethodBeat.o(309921);
     return paramAdClickActionInfo;
   }
   
-  private static void a(String paramString, List<String> paramList, SnsInfo paramSnsInfo)
+  private static List<String> a(int paramInt, SnsInfo paramSnsInfo)
   {
-    AppMethodBeat.i(268793);
-    if ((!TextUtils.isEmpty(paramString)) && (!paramList.contains(paramString)))
-    {
-      ADInfo localADInfo = paramSnsInfo.getAdInfo();
-      paramSnsInfo = paramString;
-      if (localADInfo != null) {
-        paramSnsInfo = t.kw(paramString, localADInfo.uxInfo);
-      }
-      paramString = a.aYn(paramSnsInfo);
-      if (!TextUtils.isEmpty(paramString))
-      {
-        Log.d("SnsAd.H5PrefetchTask", "doSlideFullCardUrl: the url is ".concat(String.valueOf(paramString)));
-        paramList.add(paramString);
-      }
-    }
-    AppMethodBeat.o(268793);
-  }
-  
-  private static List<String> f(SnsInfo paramSnsInfo)
-  {
-    AppMethodBeat.i(268792);
+    AppMethodBeat.i(309931);
     LinkedList localLinkedList = new LinkedList();
-    Object localObject = paramSnsInfo.getAdXml();
-    if ((localObject != null) && (((ADXml)localObject).adSliderFullCardInfo != null) && (((ADXml)localObject).adSliderFullCardInfo.Jym != null))
+    Object localObject1 = paramSnsInfo.getAdXml();
+    if ((localObject1 != null) && (((ADXml)localObject1).adSliderFullCardInfo != null) && (((ADXml)localObject1).adSliderFullCardInfo.PMG != null))
     {
-      localObject = ((ADXml)localObject).adSliderFullCardInfo.Jym;
-      if (d.isEmpty((Collection)localObject))
+      localObject1 = ((ADXml)localObject1).adSliderFullCardInfo.PMG;
+      if (d.isEmpty((Collection)localObject1))
       {
-        AppMethodBeat.o(268792);
+        AppMethodBeat.o(309931);
         return localLinkedList;
       }
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        i locali = (i)((Iterator)localObject).next();
-        if (locali != null)
+        Object localObject2 = (l)((Iterator)localObject1).next();
+        if (localObject2 != null)
         {
-          if (locali.clickActionInfo != null) {
-            a(locali.clickActionInfo.Jxy, localLinkedList, paramSnsInfo);
+          if (((l)localObject2).clickActionInfo != null)
+          {
+            String str = a(paramInt, ((l)localObject2).clickActionInfo, paramSnsInfo);
+            if ((!TextUtils.isEmpty(str)) && (!localLinkedList.contains(str))) {
+              localLinkedList.add(str);
+            }
           }
-          if ((locali.JyD != null) && (locali.JyD.JyK != null)) {
-            a(locali.JyD.JyK.Jxy, localLinkedList, paramSnsInfo);
+          if ((((l)localObject2).PMY != null) && (((l)localObject2).PMY.PNj != null))
+          {
+            localObject2 = a(paramInt, ((l)localObject2).PMY.PNj, paramSnsInfo);
+            if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!localLinkedList.contains(localObject2))) {
+              localLinkedList.add(localObject2);
+            }
           }
         }
       }
     }
-    AppMethodBeat.o(268792);
+    AppMethodBeat.o(309931);
+    return localLinkedList;
+  }
+  
+  private static List<String> b(int paramInt, SnsInfo paramSnsInfo)
+  {
+    AppMethodBeat.i(309936);
+    LinkedList localLinkedList = new LinkedList();
+    Object localObject1 = paramSnsInfo.getAdInfo(paramInt);
+    if ((localObject1 != null) && (!d.isEmpty(((ADInfo)localObject1).adClickActionInfoList)))
+    {
+      localObject1 = ((ADInfo)localObject1).adClickActionInfoList.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        Object localObject2 = (AdClickActionInfo)((Iterator)localObject1).next();
+        if (localObject2 != null)
+        {
+          localObject2 = a(paramInt, (AdClickActionInfo)localObject2, paramSnsInfo);
+          if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!localLinkedList.contains(localObject2))) {
+            localLinkedList.add(localObject2);
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(309936);
     return localLinkedList;
   }
   
   public final void run()
   {
     Object localObject3 = null;
-    AppMethodBeat.i(268789);
-    Log.d("SnsAd.H5PrefetchTask", "AdH5PrefetchTask is running, the task key is " + this.Jzg);
-    if (TextUtils.isEmpty(this.Jzg))
+    AppMethodBeat.i(309945);
+    Log.d("SnsAd.H5PrefetchTask", "AdH5PrefetchTask is running, the task key is " + this.PNE);
+    if (TextUtils.isEmpty(this.PNE))
     {
       Log.w("SnsAd.H5PrefetchTask", "AdH5PrefetchTask: the task key is empty");
-      AppMethodBeat.o(268789);
+      AppMethodBeat.o(309945);
       return;
     }
-    Object localObject1 = this.Jze;
-    Object localObject2 = this.Jzg;
+    Object localObject1 = this.PNC;
+    Object localObject2 = this.PNE;
     if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = (c.b)((c)localObject1).Jzh.remove(localObject2);
+      localObject1 = (c.b)((c)localObject1).PNF.remove(localObject2);
     }
     int i;
     SnsInfo localSnsInfo;
@@ -138,14 +150,14 @@ public final class b
     {
       if (localObject1 != null)
       {
-        localObject2 = this.Jze;
+        localObject2 = this.PNC;
         Object localObject4;
-        if ((localObject1 != null) && (!TextUtils.isEmpty(((c.b)localObject1).jHH)))
+        if ((localObject1 != null) && (!TextUtils.isEmpty(((c.b)localObject1).mhl)))
         {
           localObject4 = new c.a();
-          ((c.a)localObject4).jHH = ((c.b)localObject1).jHH;
-          ((c.a)localObject4).Jzj = System.currentTimeMillis();
-          ((c)localObject2).Jzi.put(((c.a)localObject4).jHH, localObject4);
+          ((c.a)localObject4).mhl = ((c.b)localObject1).mhl;
+          ((c.a)localObject4).PNH = System.currentTimeMillis();
+          ((c)localObject2).PNG.put(((c.a)localObject4).mhl, localObject4);
           Log.i("SnsAd.H5Prefetch", "the prefetch info is recorded");
         }
         if (localObject1 != null)
@@ -154,11 +166,11 @@ public final class b
           if (i == 0)
           {
             i = ((c.b)localObject1).source;
-            localSnsInfo = ((c.b)localObject1).Jzk;
+            localSnsInfo = ((c.b)localObject1).PNI;
             if (localSnsInfo == null)
             {
               Log.w("SnsAd.H5PrefetchTask", "doPrefetch: the snsInfo is null");
-              AppMethodBeat.o(268789);
+              AppMethodBeat.o(309945);
               return;
               localObject1 = null;
               continue;
@@ -172,9 +184,9 @@ public final class b
             ADInfo localADInfo = localSnsInfo.getAdInfo(i);
             localObject2 = localObject1;
             if (localADInfo != null) {
-              localObject2 = t.kw((String)localObject1, localADInfo.uxInfo);
+              localObject2 = t.lY((String)localObject1, localADInfo.uxInfo);
             }
-            localObject1 = a.aYn((String)localObject2);
+            localObject1 = a.aWi((String)localObject2);
             Log.d("SnsAd.H5PrefetchTask", "doTextAdLink: the url is ".concat(String.valueOf(localObject1)));
             if (!TextUtils.isEmpty((CharSequence)localObject1)) {
               ((List)localObject4).add(localObject1);
@@ -202,9 +214,9 @@ public final class b
                   localObject1 = localObject2;
                   if (((ADXml)localObject3).adFloatWebViewInfo != null)
                   {
-                    localObject2 = ((ADXml)localObject3).adFloatWebViewInfo.ozt;
+                    localObject2 = ((ADXml)localObject3).adFloatWebViewInfo.rDm;
                     if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-                      break label504;
+                      break label528;
                     }
                     localObject1 = "";
                   }
@@ -213,25 +225,30 @@ public final class b
                 if (!TextUtils.isEmpty((CharSequence)localObject1)) {
                   ((List)localObject4).add(localObject1);
                 }
-                localObject1 = f(localSnsInfo);
+                localObject1 = a(i, localSnsInfo);
                 if (!d.isEmpty((Collection)localObject1)) {
                   ((List)localObject4).addAll((Collection)localObject1);
                 }
-                a.hr((List)localObject4);
-                AppMethodBeat.o(268789);
+                localObject1 = b(i, localSnsInfo);
+                if (!d.isEmpty((Collection)localObject1)) {
+                  ((List)localObject4).addAll((Collection)localObject1);
+                }
+                a.kt((List)localObject4);
+                AppMethodBeat.o(309945);
               }
             }
             else
             {
               if (((ADXml)localObject1).adCardActionBtnInfo == null) {
-                break label600;
+                break label624;
               }
             }
           }
         }
       }
     }
-    label600:
+    label528:
+    label624:
     for (localObject1 = ((ADXml)localObject1).adCardActionBtnInfo.clickActionInfo;; localObject1 = null)
     {
       localObject1 = a(i, (AdClickActionInfo)localObject1, localSnsInfo);
@@ -242,33 +259,32 @@ public final class b
       }
       localObject1 = a(i, (AdClickActionInfo)localObject1, localSnsInfo);
       break label338;
-      label504:
       localObject3 = localSnsInfo.getAdInfo();
       localObject1 = localObject2;
       if (localObject3 != null) {
-        localObject1 = t.kw((String)localObject2, ((ADInfo)localObject3).uxInfo);
+        localObject1 = t.lY((String)localObject2, ((ADInfo)localObject3).uxInfo);
       }
-      localObject1 = a.aYn((String)localObject1);
+      localObject1 = a.aWi((String)localObject1);
       Log.d("SnsAd.H5PrefetchTask", "doWebViewOnePlusOne: the url is ".concat(String.valueOf(localObject1)));
       break label400;
       if (i == 1)
       {
-        if ((localObject1 == null) || (d.w(((c.b)localObject1).cxM)))
+        if ((localObject1 == null) || (d.y(((c.b)localObject1).eqg)))
         {
           Log.w("SnsAd.H5PrefetchTask", "doPrefetchNativeLanding: the task is null or urls is empty");
-          AppMethodBeat.o(268789);
+          AppMethodBeat.o(309945);
           return;
         }
-        a.hr(Arrays.asList(((c.b)localObject1).cxM));
+        a.kt(Arrays.asList(((c.b)localObject1).eqg));
       }
-      AppMethodBeat.o(268789);
+      AppMethodBeat.o(309945);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.c.a.b
  * JD-Core Version:    0.7.0.1
  */

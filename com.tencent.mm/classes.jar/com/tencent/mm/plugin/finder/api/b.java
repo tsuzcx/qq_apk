@@ -1,9 +1,7 @@
 package com.tencent.mm.plugin.finder.api;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.hm;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.autogen.a.hx;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMStack;
@@ -11,150 +9,152 @@ import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/api/FinderContactCache;", "", "()V", "cacheItems", "", "", "kotlin.jvm.PlatformType", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "", "isDebug", "", "()Z", "get", "key", "remove", "", "set", "contact", "finder-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/api/FinderContactCache;", "", "()V", "cacheItems", "", "", "kotlin.jvm.PlatformType", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "", "isDebug", "", "()Z", "get", "key", "remove", "", "set", "contact", "finder-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  private final boolean dal;
-  public final Map<String, i> wZM;
+  public final Map<String, m> AwX;
+  private final boolean eYL;
   
   public b()
   {
     AppMethodBeat.i(165128);
-    this.wZM = Collections.synchronizedMap((Map)new HashMap());
+    this.AwX = Collections.synchronizedMap((Map)new HashMap());
     if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE)) {}
     for (boolean bool = true;; bool = false)
     {
-      this.dal = bool;
+      this.eYL = bool;
       AppMethodBeat.o(165128);
       return;
     }
   }
   
-  public final void a(String paramString, i parami)
+  public final void a(String paramString, m paramm)
   {
     Boolean localBoolean = null;
     AppMethodBeat.i(165127);
-    p.k(paramString, "key");
-    p.k(parami, "contact");
-    if (aAI(parami.getUsername()) == null) {}
+    s.u(paramString, "key");
+    s.u(paramm, "contact");
+    if (auR(paramm.getUsername()) == null) {}
     for (boolean bool = true;; bool = false)
     {
-      Object localObject1 = (i)this.wZM.get(paramString);
+      Object localObject1 = (m)this.AwX.get(paramString);
       Object localObject2;
-      label91:
+      label80:
       Object localObject3;
+      label100:
       int i;
-      if (localObject1 != null)
+      if (localObject1 == null)
       {
-        localObject1 = Integer.valueOf(((i)localObject1).xac);
-        localObject2 = (i)this.wZM.get(paramString);
-        if (localObject2 == null) {
-          break label440;
+        localObject1 = null;
+        localObject2 = (m)this.AwX.get(paramString);
+        if (localObject2 != null) {
+          break label400;
         }
-        localObject2 = ((i)localObject2).xad;
-        localObject3 = (i)this.wZM.get(paramString);
+        localObject2 = null;
+        localObject3 = (m)this.AwX.get(paramString);
         if (localObject3 != null) {
-          localBoolean = Boolean.valueOf(((i)localObject3).xae);
+          break label410;
         }
         if (!bool)
         {
-          i = parami.field_follow_Flag;
+          i = paramm.field_follow_Flag;
           if (localObject1 != null) {
-            break label446;
+            break label423;
           }
         }
-        label136:
-        StringBuilder localStringBuilder = new StringBuilder("contact is change new contact ").append(parami.dnp()).append(" oldFlag :").append(localObject1).append(" isFirstUpdate ").append(bool).append(' ');
-        if (!this.dal) {
-          break label458;
+        label115:
+        StringBuilder localStringBuilder = new StringBuilder("contact is change new contact ").append(paramm.bRT()).append(" oldFlag :").append(localObject1).append(" isFirstUpdate ").append(bool).append(' ');
+        if (!this.eYL) {
+          break label435;
         }
         localObject3 = Util.getStack().toString();
-        label194:
+        label173:
         Log.i("Finder.Contact", (String)localObject3);
-        label209:
-        localObject3 = this.wZM;
-        p.j(localObject3, "cacheItems");
-        ((Map)localObject3).put(paramString, parami);
-        localObject3 = (i)this.wZM.get(paramString);
+        label188:
+        localObject3 = this.AwX;
+        s.s(localObject3, "cacheItems");
+        ((Map)localObject3).put(paramString, paramm);
+        localObject3 = (m)this.AwX.get(paramString);
         if (localObject3 != null) {
-          ((i)localObject3).xac = parami.field_follow_Flag;
+          ((m)localObject3).Axn = paramm.field_follow_Flag;
         }
-        localObject3 = (i)this.wZM.get(paramString);
+        localObject3 = (m)this.AwX.get(paramString);
         if (localObject3 != null) {
-          ((i)localObject3).xad = parami.field_avatarUrl;
+          ((m)localObject3).Axo = paramm.field_avatarUrl;
         }
-        paramString = (i)this.wZM.get(paramString);
+        paramString = (m)this.AwX.get(paramString);
         if (paramString != null) {
-          paramString.xae = parami.isNeedShowUnFollow;
+          paramString.Axp = paramm.isNeedShowUnFollow;
         }
-        i = parami.field_follow_Flag;
+        i = paramm.field_follow_Flag;
         if (localObject1 != null) {
-          break label465;
+          break label442;
         }
       }
       for (;;)
       {
-        label326:
-        paramString = EventCenter.instance;
-        localObject1 = new hm();
-        ((hm)localObject1).fEx.username = parami.getUsername();
-        ((hm)localObject1).fEx.contact = parami;
-        paramString.publish((IEvent)localObject1);
-        label440:
-        label446:
-        label458:
-        label465:
+        label305:
+        paramString = new hx();
+        paramString.hJn.username = paramm.getUsername();
+        paramString.hJn.contact = paramm;
+        paramString.publish();
+        label400:
+        label410:
+        label423:
+        label435:
+        label442:
         do
         {
-          if ((p.h(localObject2, parami.xad) ^ true))
+          if (!s.p(localObject2, paramm.Axo))
           {
-            paramString = EventCenter.instance;
-            localObject1 = new hm();
-            ((hm)localObject1).fEx.username = parami.getUsername();
-            ((hm)localObject1).fEx.contact = parami;
-            paramString.publish((IEvent)localObject1);
+            paramString = new hx();
+            paramString.hJn.username = paramm.getUsername();
+            paramString.hJn.contact = paramm;
+            paramString.publish();
           }
           AppMethodBeat.o(165127);
           return;
-          localObject1 = null;
+          localObject1 = Integer.valueOf(((m)localObject1).Axn);
           break;
-          localObject2 = null;
-          break label91;
+          localObject2 = ((m)localObject2).Axo;
+          break label80;
+          localBoolean = Boolean.valueOf(((m)localObject3).Axp);
+          break label100;
           if (((Integer)localObject1).intValue() == i) {
-            break label209;
+            break label188;
           }
-          break label136;
+          break label115;
           localObject3 = "";
-          break label194;
+          break label173;
           if (((Integer)localObject1).intValue() != i) {
-            break label326;
+            break label305;
           }
-        } while (!(p.h(localBoolean, Boolean.valueOf(parami.isNeedShowUnFollow)) ^ true));
+        } while (s.p(localBoolean, Boolean.valueOf(paramm.isNeedShowUnFollow)));
       }
     }
   }
   
-  public final i aAI(String paramString)
+  public final m auR(String paramString)
   {
     AppMethodBeat.i(165126);
-    p.k(paramString, "key");
-    paramString = (i)this.wZM.get(paramString);
-    if (paramString != null)
+    s.u(paramString, "key");
+    paramString = (m)this.AwX.get(paramString);
+    if (paramString == null)
     {
-      paramString = paramString.dnw();
       AppMethodBeat.o(165126);
-      return paramString;
+      return null;
     }
+    paramString = paramString.dUE();
     AppMethodBeat.o(165126);
-    return null;
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.api.b
  * JD-Core Version:    0.7.0.1
  */

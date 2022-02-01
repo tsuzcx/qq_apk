@@ -21,7 +21,7 @@ public class TMAssistantDownloadTaskInfo
     AppMethodBeat.i(101925);
     CREATOR = new Parcelable.Creator()
     {
-      public final TMAssistantDownloadTaskInfo createFromParcel(Parcel paramAnonymousParcel)
+      public TMAssistantDownloadTaskInfo createFromParcel(Parcel paramAnonymousParcel)
       {
         AppMethodBeat.i(101921);
         paramAnonymousParcel = new TMAssistantDownloadTaskInfo(paramAnonymousParcel.readString(), paramAnonymousParcel.readString(), paramAnonymousParcel.readInt(), paramAnonymousParcel.readLong(), paramAnonymousParcel.readLong(), paramAnonymousParcel.readString());
@@ -29,7 +29,7 @@ public class TMAssistantDownloadTaskInfo
         return paramAnonymousParcel;
       }
       
-      public final TMAssistantDownloadTaskInfo[] newArray(int paramAnonymousInt)
+      public TMAssistantDownloadTaskInfo[] newArray(int paramAnonymousInt)
       {
         return new TMAssistantDownloadTaskInfo[paramAnonymousInt];
       }

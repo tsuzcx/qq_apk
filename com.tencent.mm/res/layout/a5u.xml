@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/gyb" android:background="@color/am" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="22.0dip" android:textColor="@color/UN_BW_0_Alpha_0_9" android:gravity="center" android:id="@id/c9n" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="100.0dip" android:layout_marginRight="24.0dip" android:layout_centerHorizontal="true" />
-    <RelativeLayout android:gravity="center" android:id="@id/k52" android:layout_width="fill_parent" android:layout_height="@dimen/c_" android:layout_marginTop="@dimen/cn" android:layout_below="@id/c9n" android:layout_centerHorizontal="true">
-        <ImageView android:id="@id/c9l" android:layout_width="@dimen/bu" android:layout_height="@dimen/bu" android:layout_centerInParent="true" />
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/c9m" android:layout_width="@dimen/cm" android:layout_height="@dimen/cm" android:layout_centerInParent="true" app:iconColor="@color/am" />
+<merge>
+    <RelativeLayout android:background="@color/p0" android:layout_width="fill_parent" android:layout_height="fill_parent"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <TextView android:textSize="@dimen/a62" android:textColor="@color/al6" android:id="@id/ewi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i6" android:text="@string/ci8" android:layout_centerHorizontal="true" android:fontFamily="sans-serif-thin" />
+        <Button android:textSize="@dimen/io" android:id="@id/cqf" android:layout_height="wrap_content" android:layout_marginBottom="36.0dip" android:text="@string/ci6" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/oh" />
     </RelativeLayout>
-    <TextView android:textSize="@dimen/hc" android:textColor="@color/Link" android:id="@id/c9i" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ce" android:text="@string/c5c" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    <Button android:textStyle="bold" android:textColor="@color/ahc" android:id="@id/c9h" android:background="@drawable/cwb" android:visibility="invisible" android:layout_marginBottom="@dimen/bx" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/p3" />
-    <Button android:textStyle="bold" android:textColor="@color/ahb" android:id="@id/c9j" android:background="@drawable/cwa" android:layout_marginBottom="11.0dip" android:layout_above="@id/c9h" android:layout_centerHorizontal="true" style="@style/ov" />
-</RelativeLayout>
+</merge>

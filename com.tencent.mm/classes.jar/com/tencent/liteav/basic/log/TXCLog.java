@@ -24,7 +24,7 @@ public class TXCLog
   private static boolean mEnableCompress;
   private static boolean mEnableConsole;
   private static boolean mHasInit;
-  private static TXCLog.a mListener;
+  private static a mListener;
   private static String mLogCacheDir;
   public static String mLogDir;
   private static int mLogLevel;
@@ -47,11 +47,11 @@ public class TXCLog
   
   public static void copyLogFile()
   {
-    AppMethodBeat.i(238419);
+    AppMethodBeat.i(230063);
     if (mHasInit) {
       nativeLogOpen(0, mLogDir, mLogCacheDir, "LiteAV", mEnableCompress);
     }
-    AppMethodBeat.o(238419);
+    AppMethodBeat.o(230063);
   }
   
   public static void d(String paramString1, String paramString2)
@@ -63,9 +63,9 @@ public class TXCLog
   
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(238424);
+    AppMethodBeat.i(230081);
     log(1, paramString1, String.format(paramString2, paramVarArgs));
-    AppMethodBeat.o(238424);
+    AppMethodBeat.o(230081);
   }
   
   public static void e(String paramString1, String paramString2)
@@ -77,7 +77,7 @@ public class TXCLog
   
   public static void e(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    AppMethodBeat.i(238438);
+    AppMethodBeat.i(230115);
     StringWriter localStringWriter = new StringWriter();
     PrintWriter localPrintWriter = new PrintWriter(localStringWriter);
     paramThrowable.printStackTrace(localPrintWriter);
@@ -86,14 +86,14 @@ public class TXCLog
     }
     localPrintWriter.close();
     e(paramString1, paramString2 + "\n" + localStringWriter.toString());
-    AppMethodBeat.o(238438);
+    AppMethodBeat.o(230115);
   }
   
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(238429);
+    AppMethodBeat.i(230092);
     log(4, paramString1, String.format(paramString2, paramVarArgs));
-    AppMethodBeat.o(238429);
+    AppMethodBeat.o(230092);
   }
   
   public static void i(String paramString1, String paramString2)
@@ -105,9 +105,9 @@ public class TXCLog
   
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(238425);
+    AppMethodBeat.i(230085);
     log(2, paramString1, String.format(paramString2, paramVarArgs));
-    AppMethodBeat.o(238425);
+    AppMethodBeat.o(230085);
   }
   
   public static boolean init()
@@ -125,7 +125,7 @@ public class TXCLog
         AppMethodBeat.o(14766);
         return true;
       }
-      boolean bool = h.f();
+      boolean bool = h.d();
       Context localContext = TXCCommonUtil.getAppContext();
       if ((bool) && (localContext != null))
       {
@@ -204,7 +204,7 @@ public class TXCLog
     AppMethodBeat.o(14768);
   }
   
-  public static void setListener(TXCLog.a parama)
+  public static void setListener(a parama)
   {
     AppMethodBeat.i(14773);
     mListener = parama;
@@ -273,9 +273,9 @@ public class TXCLog
   
   public static void v(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(238422);
+    AppMethodBeat.i(230077);
     log(0, paramString1, String.format(paramString2, paramVarArgs));
-    AppMethodBeat.o(238422);
+    AppMethodBeat.o(230077);
   }
   
   public static void w(String paramString1, String paramString2)
@@ -287,14 +287,19 @@ public class TXCLog
   
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(238427);
+    AppMethodBeat.i(230089);
     log(3, paramString1, String.format(paramString2, paramVarArgs));
-    AppMethodBeat.o(238427);
+    AppMethodBeat.o(230089);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(int paramInt, String paramString1, String paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.basic.log.TXCLog
  * JD-Core Version:    0.7.0.1
  */

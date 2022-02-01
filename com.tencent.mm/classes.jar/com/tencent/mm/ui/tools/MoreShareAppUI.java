@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.tools;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -24,23 +23,23 @@ import java.util.List;
 public class MoreShareAppUI
   extends MMActivity
 {
-  private List<g> WeF;
-  private a XTq;
-  private DragSortListView uKp;
+  private List<g> adKm;
+  private a afJF;
+  private DragSortListView xSK;
   
   public int getLayoutId()
   {
-    return R.i.ejj;
+    return R.i.gmk;
   }
   
   public void initView()
   {
     AppMethodBeat.i(39083);
     setMMTitle(R.l.bottom_sheet_more_share);
-    this.uKp = ((DragSortListView)findViewById(R.h.listview));
-    this.uKp.setDropListener(new DragSortListView.h()
+    this.xSK = ((DragSortListView)findViewById(R.h.listview));
+    this.xSK.setDropListener(new DragSortListView.h()
     {
-      public final void eX(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void drop(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(39078);
         g localg = (g)MoreShareAppUI.a(MoreShareAppUI.this).getItem(paramAnonymousInt1);
@@ -75,8 +74,8 @@ public class MoreShareAppUI
         return false;
       }
     });
-    this.XTq = new a(this, this.WeF);
-    this.uKp.setAdapter(this.XTq);
+    this.afJF = new a(this, this.adKm);
+    this.xSK.setAdapter(this.afJF);
     AppMethodBeat.o(39082);
   }
   
@@ -90,13 +89,13 @@ public class MoreShareAppUI
     extends ArrayAdapter<g>
   {
     private Context mContext;
-    private List<g> uAd;
+    private List<g> xGG;
     
     public a(Context paramContext, List<g> paramList)
     {
-      super(R.i.ejk, paramList);
+      super(R.i.gml, paramList);
       this.mContext = paramContext;
-      this.uAd = paramList;
+      this.xGG = paramList;
     }
     
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -104,14 +103,14 @@ public class MoreShareAppUI
       AppMethodBeat.i(39081);
       if (paramView == null)
       {
-        paramView = View.inflate(this.mContext, R.i.ejk, null);
+        paramView = View.inflate(this.mContext, R.i.gml, null);
         paramViewGroup = new a(paramView);
         paramView.setTag(paramViewGroup);
       }
       for (;;)
       {
         g localg = (g)getItem(paramInt);
-        paramViewGroup.mNb.setText(localg.field_appName);
+        paramViewGroup.pJJ.setText(localg.field_appName);
         paramView.setVisibility(0);
         AppMethodBeat.o(39081);
         return paramView;
@@ -121,20 +120,20 @@ public class MoreShareAppUI
     
     static final class a
     {
-      TextView mNb;
-      ImageView qps;
-      View uAe;
-      ImageView uAf;
-      MMSwitchBtn wrR;
+      TextView pJJ;
+      ImageView ttT;
+      View xGH;
+      ImageView xGI;
+      MMSwitchBtn zNX;
       
       public a(View paramView)
       {
         AppMethodBeat.i(39080);
-        this.uAf = ((ImageView)paramView.findViewById(R.h.dIv));
-        this.qps = ((ImageView)paramView.findViewById(R.h.dIy));
-        this.mNb = ((TextView)paramView.findViewById(R.h.dXx));
-        this.wrR = ((MMSwitchBtn)paramView.findViewById(R.h.dVX));
-        this.uAe = paramView.findViewById(R.h.container);
+        this.xGI = ((ImageView)paramView.findViewById(R.h.fJN));
+        this.ttT = ((ImageView)paramView.findViewById(R.h.iconIV));
+        this.pJJ = ((TextView)paramView.findViewById(R.h.gac));
+        this.zNX = ((MMSwitchBtn)paramView.findViewById(R.h.fYx));
+        this.xGH = paramView.findViewById(R.h.container);
         AppMethodBeat.o(39080);
       }
     }
@@ -142,7 +141,7 @@ public class MoreShareAppUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.tools.MoreShareAppUI
  * JD-Core Version:    0.7.0.1
  */

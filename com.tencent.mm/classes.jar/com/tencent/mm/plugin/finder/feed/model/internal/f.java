@@ -2,142 +2,141 @@ package com.tencent.mm.plugin.finder.feed.model.internal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ae.d;
-import com.tencent.mm.view.RefreshLoadMoreLayout.c;
-import com.tencent.mm.view.j;
+import com.tencent.mm.view.RefreshLoadMoreLayout.d;
 import java.util.LinkedList;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.a;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/internal/DispatcherMachine;", "R", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "", "viewCallbacks", "Ljava/util/LinkedList;", "Lcom/tencent/mm/view/IViewActionCallback;", "(Ljava/util/LinkedList;)V", "onChanged", "", "onItemRangeChanged", "positionStart", "", "itemCount", "payload", "onItemRangeInserted", "onItemRangeMoved", "fromPosition", "toPosition", "onItemRangeRemoved", "onPreFinishInserted", "op", "Lcom/tencent/mm/plugin/finder/feed/model/internal/UpdateOp;", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "onPreFinishLoadMore", "isSmooth", "", "onPreFinishRefresh", "plugin-finder-base_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/model/internal/DispatcherMachine;", "R", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "", "viewCallbacks", "Ljava/util/LinkedList;", "Lcom/tencent/mm/view/IViewActionCallback;", "(Ljava/util/LinkedList;)V", "onChanged", "", "onItemRangeChanged", "positionStart", "", "itemCount", "payload", "onItemRangeInserted", "onItemRangeMoved", "fromPosition", "toPosition", "onItemRangeRemoved", "onPreFinishInserted", "op", "Lcom/tencent/mm/plugin/finder/feed/model/internal/UpdateOp;", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "onPreFinishLoadMore", "isSmooth", "", "onPreFinishRefresh", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f<R extends k>
 {
-  private final LinkedList<j> viewCallbacks;
+  private final LinkedList<com.tencent.mm.view.k> viewCallbacks;
   
-  public f(LinkedList<j> paramLinkedList)
+  public f(LinkedList<com.tencent.mm.view.k> paramLinkedList)
   {
-    AppMethodBeat.i(259646);
+    AppMethodBeat.i(366557);
     this.viewCallbacks = paramLinkedList;
-    AppMethodBeat.o(259646);
+    AppMethodBeat.o(366557);
   }
   
-  public final void MF(final int paramInt)
+  public final void Oc(final int paramInt)
   {
-    AppMethodBeat.i(259635);
+    AppMethodBeat.i(366586);
     d.uiThread((a)new b(this, paramInt));
-    AppMethodBeat.o(259635);
+    AppMethodBeat.o(366586);
   }
   
   public final void onChanged()
   {
-    AppMethodBeat.i(259634);
+    AppMethodBeat.i(366581);
     d.uiThread((a)new a(this));
-    AppMethodBeat.o(259634);
+    AppMethodBeat.o(366581);
   }
   
   public final void onItemRangeChanged(final int paramInt1, final int paramInt2, final Object paramObject)
   {
-    AppMethodBeat.i(259636);
+    AppMethodBeat.i(366591);
     d.uiThread((a)new c(this, paramInt1, paramInt2, paramObject));
-    AppMethodBeat.o(259636);
+    AppMethodBeat.o(366591);
   }
   
   public final void onItemRangeInserted(final int paramInt1, final int paramInt2)
   {
-    AppMethodBeat.i(259637);
+    AppMethodBeat.i(366594);
     d.uiThread((a)new d(this, paramInt1, paramInt2));
-    AppMethodBeat.o(259637);
+    AppMethodBeat.o(366594);
   }
   
   public final void onItemRangeRemoved(final int paramInt1, final int paramInt2)
   {
-    AppMethodBeat.i(259639);
+    AppMethodBeat.i(366599);
     d.uiThread((a)new e(this, paramInt1, paramInt2));
-    AppMethodBeat.o(259639);
+    AppMethodBeat.o(366599);
   }
   
-  public final void onPreFinishRefresh(final RefreshLoadMoreLayout.c<Object> paramc)
+  public final void onPreFinishRefresh(final RefreshLoadMoreLayout.d<Object> paramd)
   {
-    AppMethodBeat.i(259642);
-    p.k(paramc, "reason");
-    d.uiThread((a)new g(this, paramc));
-    AppMethodBeat.o(259642);
+    AppMethodBeat.i(366604);
+    s.u(paramd, "reason");
+    d.uiThread((a)new g(this, paramd));
+    AppMethodBeat.o(366604);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "R", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "R", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    extends q
-    implements a<x>
+    extends u
+    implements a<ah>
   {
-    a(f paramf)
+    a(f<R> paramf)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "R", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "R", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
-    implements a<x>
+    extends u
+    implements a<ah>
   {
-    b(f paramf, int paramInt)
+    b(f<R> paramf, int paramInt)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "R", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "R", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends q
-    implements a<x>
+    extends u
+    implements a<ah>
   {
-    c(f paramf, int paramInt1, int paramInt2, Object paramObject)
+    c(f<R> paramf, int paramInt1, int paramInt2, Object paramObject)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "R", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "R", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    extends q
-    implements a<x>
+    extends u
+    implements a<ah>
   {
-    d(f paramf, int paramInt1, int paramInt2)
+    d(f<R> paramf, int paramInt1, int paramInt2)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "R", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "R", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class e
-    extends q
-    implements a<x>
+    extends u
+    implements a<ah>
   {
-    e(f paramf, int paramInt1, int paramInt2)
+    e(f<R> paramf, int paramInt1, int paramInt2)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "R", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "R", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class f
-    extends q
-    implements a<x>
+    extends u
+    implements a<ah>
   {
-    f(f paramf, RefreshLoadMoreLayout.c paramc)
+    f(f<R> paramf, RefreshLoadMoreLayout.d<Object> paramd)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "R", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "R", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class g
-    extends q
-    implements a<x>
+    extends u
+    implements a<ah>
   {
-    g(f paramf, RefreshLoadMoreLayout.c paramc)
+    g(f<R> paramf, RefreshLoadMoreLayout.d<Object> paramd)
     {
       super();
     }

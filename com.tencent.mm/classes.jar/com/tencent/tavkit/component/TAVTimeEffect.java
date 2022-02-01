@@ -14,9 +14,9 @@ public class TAVTimeEffect
   
   public int getLoopCount()
   {
-    AppMethodBeat.i(211483);
+    AppMethodBeat.i(218701);
     int i = Math.abs(this.loopCount);
-    AppMethodBeat.o(211483);
+    AppMethodBeat.o(218701);
     return i;
   }
   

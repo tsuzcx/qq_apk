@@ -1,13 +1,12 @@
 package com.tencent.mm.plugin.facedetect.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q.a;
-import com.tencent.mm.an.q.b;
+import com.tencent.mm.am.p.a;
+import com.tencent.mm.am.p.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dcb;
-import com.tencent.mm.protocal.protobuf.ezx;
+import com.tencent.mm.protocal.protobuf.dtt;
+import com.tencent.mm.protocal.protobuf.fwb;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
@@ -15,28 +14,28 @@ public final class u
   extends q
   implements f
 {
-  private final s lCW;
-  private boolean wvU;
-  private String wvZ;
+  private final s ouH;
+  private boolean zSb;
+  private String zSg;
   
   public u(long paramLong, String paramString1, String paramString2)
   {
     AppMethodBeat.i(103629);
-    this.wvU = false;
-    this.wvZ = "";
-    this.lCW = new h();
-    l.a locala = (l.a)this.lCW.getReqObj();
-    locala.wvF.TbJ = bkW();
-    locala.wvF.TbM = paramLong;
-    locala.wvF.UbP = paramString2;
-    locala.wvF.UbO = paramString1;
+    this.zSb = false;
+    this.zSg = "";
+    this.ouH = new h();
+    l.a locala = (l.a)this.ouH.getReqObj();
+    locala.zRK.aaoV = bIQ();
+    locala.zRK.aaoY = paramLong;
+    locala.zRK.abta = paramString2;
+    locala.zRK.absZ = paramString1;
     AppMethodBeat.o(103629);
   }
   
-  final void azz(String paramString)
+  final void atG(String paramString)
   {
     AppMethodBeat.i(103632);
-    ((l.a)this.lCW.getReqObj()).wvF.TbJ = paramString;
+    ((l.a)this.ouH.getReqObj()).zRK.aaoV = paramString;
     AppMethodBeat.o(103632);
   }
   
@@ -50,19 +49,19 @@ public final class u
     label119:
     int i;
     if ((paramInt1 == 0) && (paramInt2 == 0)) {
-      if (params.wvG.UbR == 0)
+      if (params.zRL.abtc == 0)
       {
         bool1 = true;
-        this.wvU = bool1;
-        this.wvZ = params.wvG.UbQ;
-        boolean bool3 = this.wvU;
-        paramInt2 = params.wvG.UbR;
-        if (Util.isNullOrNil(this.wvZ)) {
+        this.zSb = bool1;
+        this.zSg = params.zRL.abtb;
+        boolean bool3 = this.zSb;
+        paramInt2 = params.zRL.abtc;
+        if (Util.isNullOrNil(this.zSg)) {
           break label189;
         }
         bool1 = bool2;
         Log.i("MicroMsg.NetSceneFaceVerifyFaceRsa", "hy: is verify ok: %b, youtuRet: %d, has random pwd: %b", new Object[] { Boolean.valueOf(bool3), Integer.valueOf(paramInt2), Boolean.valueOf(bool1) });
-        i = params.wvG.UbR;
+        i = params.zRL.abtc;
       }
     }
     for (;;)
@@ -79,42 +78,42 @@ public final class u
       if (params != null)
       {
         i = paramInt2;
-        if (params.wvG != null)
+        if (params.zRL != null)
         {
           i = paramInt2;
-          if (params.wvG.UbR != 0)
+          if (params.zRL.abtc != 0)
           {
             Log.i("MicroMsg.NetSceneFaceVerifyFaceRsa", "hy: has detail ret. use");
-            i = params.wvG.UbR;
+            i = params.zRL.abtc;
           }
         }
       }
     }
   }
   
-  public final boolean dhS()
+  public final boolean dOD()
   {
     return true;
   }
   
-  public final String dhT()
+  public final String dOE()
   {
-    return this.wvZ;
+    return this.zSg;
   }
   
-  final int f(g paramg)
+  final int g(g paramg)
   {
     AppMethodBeat.i(103630);
-    this.lCW.getReqObj();
-    int i = dispatch(paramg, this.lCW, this);
+    this.ouH.getReqObj();
+    int i = dispatch(paramg, this.ouH, this);
     AppMethodBeat.o(103630);
     return i;
   }
   
-  protected final dcb g(s params)
+  protected final dtt g(s params)
   {
     AppMethodBeat.i(103633);
-    params = ((l.b)params.getRespObj()).wvG.TbO;
+    params = ((l.b)params.getRespObj()).zRL.aapa;
     AppMethodBeat.o(103633);
     return params;
   }
@@ -129,16 +128,16 @@ public final class u
     return 3;
   }
   
-  public final q.b securityVerificationChecked(s params)
+  public final p.b securityVerificationChecked(s params)
   {
-    return q.b.lCx;
+    return p.b.ouh;
   }
   
-  public final void setSecurityCheckError(q.a parama) {}
+  public final void setSecurityCheckError(p.a parama) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.b.u
  * JD-Core Version:    0.7.0.1
  */

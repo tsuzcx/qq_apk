@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.wallet_ecard.ui;
 
-import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -10,24 +9,23 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
-import com.tencent.mm.f.a.ps;
+import com.tencent.mm.am.p;
+import com.tencent.mm.autogen.a.rf;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.wxpay.a.c;
 import com.tencent.mm.plugin.wxpay.a.f;
 import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.protocal.protobuf.dgm;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.protocal.protobuf.dyt;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.wallet_core.d;
+import com.tencent.mm.wallet_core.e;
 
 @com.tencent.mm.ui.base.a(19)
 public class WalletECardFinishUI
   extends WalletECardBaseUI
 {
-  private TextView mMA;
-  private Button qCl;
+  private TextView pJi;
+  private Button tHj;
   
   public int getLayoutId()
   {
@@ -37,16 +35,16 @@ public class WalletECardFinishUI
   public void initView()
   {
     AppMethodBeat.i(71781);
-    this.mMA = ((TextView)findViewById(a.f.desc_tv));
-    Object localObject = getInput().getByteArray(com.tencent.mm.plugin.wallet_ecard.a.a.Pir);
+    this.pJi = ((TextView)findViewById(a.f.desc_tv));
+    Object localObject = getInput().getByteArray(com.tencent.mm.plugin.wallet_ecard.a.a.VZf);
     if (localObject != null) {}
     try
     {
       if (localObject.length != 0)
       {
-        localObject = (dgm)new dgm().parseFrom((byte[])localObject);
-        if ((localObject != null) && (!Util.isNullOrNil(((dgm)localObject).desc))) {
-          this.mMA.setText(((dgm)localObject).desc);
+        localObject = (dyt)new dyt().parseFrom((byte[])localObject);
+        if ((localObject != null) && (!Util.isNullOrNil(((dyt)localObject).desc))) {
+          this.pJi.setText(((dyt)localObject).desc);
         }
       }
     }
@@ -57,18 +55,17 @@ public class WalletECardFinishUI
         Log.printErrStackTrace("MicroMsg.WalletECardFinishUI", localException, "", new Object[0]);
       }
     }
-    this.qCl = ((Button)findViewById(a.f.finish_btn));
-    this.qCl.setOnClickListener(new View.OnClickListener()
+    this.tHj = ((Button)findViewById(a.f.finish_btn));
+    this.tHj.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(71779);
         Object localObject = new b();
-        ((b)localObject).bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet_ecard/ui/WalletECardFinishUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+        ((b)localObject).cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet_ecard/ui/WalletECardFinishUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
         Log.i("MicroMsg.WalletECardFinishUI", "click finish");
-        paramAnonymousView = new ps();
-        EventCenter.instance.publish(paramAnonymousView);
+        new rf().publish();
         paramAnonymousView = WalletECardFinishUI.this.getProcess();
         if (paramAnonymousView != null)
         {
@@ -113,7 +110,7 @@ public class WalletECardFinishUI
     AppMethodBeat.o(71780);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     return false;
   }
@@ -126,7 +123,7 @@ public class WalletECardFinishUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_ecard.ui.WalletECardFinishUI
  * JD-Core Version:    0.7.0.1
  */

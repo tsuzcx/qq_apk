@@ -27,23 +27,23 @@ import java.util.LinkedList;
 public final class d
   implements f
 {
-  private g PPn;
+  private g WFG;
   private Intent mIntent;
   
   public d(g paramg)
   {
     AppMethodBeat.i(78201);
     this.mIntent = new Intent();
-    this.PPn = paramg;
-    this.mIntent.putExtras(paramg.mParams);
+    this.WFG = paramg;
+    this.mIntent.putExtras(paramg.ejT);
     AppMethodBeat.o(78201);
   }
   
-  private boolean gUr()
+  private boolean itZ()
   {
     AppMethodBeat.i(78211);
-    Log.i("MicroMsg.LuggageFloatBallPageAdapter", "useActivityEnv: " + this.PPn.crm.On().size());
-    if (this.PPn.crm.On().size() <= 1)
+    Log.i("MicroMsg.LuggageFloatBallPageAdapter", "useActivityEnv: " + this.WFG.eje.aov().size());
+    if (this.WFG.eje.aov().size() <= 1)
     {
       AppMethodBeat.o(78211);
       return true;
@@ -61,52 +61,47 @@ public final class d
   public final void a(final f.b paramb)
   {
     AppMethodBeat.i(78210);
-    if (gUr())
+    if (itZ())
     {
       b.a(getActivity(), new b.b()
       {
-        public final void eG(boolean paramAnonymousBoolean)
+        public final void onComplete(boolean paramAnonymousBoolean)
         {
-          AppMethodBeat.i(224252);
-          paramb.eG(paramAnonymousBoolean);
-          AppMethodBeat.o(224252);
+          AppMethodBeat.i(295905);
+          paramb.onComplete(paramAnonymousBoolean);
+          AppMethodBeat.o(295905);
         }
       });
       AppMethodBeat.o(78210);
       return;
     }
-    paramb.eG(true);
+    paramb.onComplete(true);
     AppMethodBeat.o(78210);
   }
   
-  public final boolean aOg()
+  public final boolean bhU()
   {
-    return this.PPn.mContentView != null;
+    return this.WFG.mContentView != null;
   }
   
-  public final boolean bOd()
-  {
-    return true;
-  }
-  
-  public final ViewGroup cuR()
+  public final ViewGroup cXB()
   {
     AppMethodBeat.i(78203);
-    if (gUr())
+    if (itZ())
     {
       localViewGroup = (ViewGroup)getActivity().getWindow().getDecorView();
       AppMethodBeat.o(78203);
       return localViewGroup;
     }
-    ViewGroup localViewGroup = (ViewGroup)this.PPn.mContentView.getParent();
+    ViewGroup localViewGroup = (ViewGroup)this.WFG.mContentView.getParent();
     AppMethodBeat.o(78203);
     return localViewGroup;
   }
   
-  public final int cuS()
+  public final int cXC()
   {
     AppMethodBeat.i(78207);
-    if (gUr())
+    if (itZ())
     {
       AppMethodBeat.o(78207);
       return -1;
@@ -115,9 +110,14 @@ public final class d
     return 0;
   }
   
+  public final boolean cor()
+  {
+    return true;
+  }
+  
   public final Activity getActivity()
   {
-    return (Activity)this.PPn.mContext;
+    return (Activity)this.WFG.mContext;
   }
   
   public final Bitmap getBitmap()
@@ -131,7 +131,7 @@ public final class d
   public final View getContentView()
   {
     AppMethodBeat.i(78204);
-    if (gUr())
+    if (itZ())
     {
       if (((MMActivity)getActivity()).getSwipeBackLayout() != null)
       {
@@ -142,7 +142,7 @@ public final class d
       AppMethodBeat.o(78204);
       return null;
     }
-    View localView = ((me.imid.swipebacklayout.lib.SwipeBackLayout)this.PPn.mContentView).getTargetView();
+    View localView = ((me.imid.swipebacklayout.lib.SwipeBackLayout)this.WFG.mContentView).getTargetView();
     AppMethodBeat.o(78204);
     return localView;
   }
@@ -150,8 +150,8 @@ public final class d
   public final Intent getIntent()
   {
     AppMethodBeat.i(78202);
-    if (!Util.isNullOrNil(this.PPn.getTitle())) {
-      this.mIntent.putExtra("title", this.PPn.getTitle());
+    if (!Util.isNullOrNil(this.WFG.getTitle())) {
+      this.mIntent.putExtra("title", this.WFG.getTitle());
     }
     Intent localIntent = this.mIntent;
     AppMethodBeat.o(78202);
@@ -166,13 +166,13 @@ public final class d
     return localView;
   }
   
-  public final void hS(boolean paramBoolean)
+  public final void iR(boolean paramBoolean)
   {
     AppMethodBeat.i(78208);
     Activity localActivity;
-    if (!this.PPn.crm.Oo().cb(false))
+    if (!this.WFG.eje.aow().cH(false))
     {
-      localActivity = (Activity)this.PPn.mContext;
+      localActivity = (Activity)this.WFG.mContext;
       if (!paramBoolean) {
         break label75;
       }

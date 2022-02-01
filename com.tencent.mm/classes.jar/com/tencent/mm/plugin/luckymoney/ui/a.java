@@ -13,21 +13,21 @@ import com.tencent.mm.plugin.wxpay.a.j;
 public final class a
   extends e
 {
-  a EFM;
+  a.a KyS;
   
   public a(Context paramContext)
   {
     super(paramContext, a.j.CustomSheetStyle);
     AppMethodBeat.i(65412);
-    bb();
+    bU();
     AppMethodBeat.o(65412);
   }
   
   public final void onBackPressed()
   {
     AppMethodBeat.i(65414);
-    if (this.EFM != null) {
-      this.EFM.ePv();
+    if (this.KyS != null) {
+      this.KyS.fXZ();
     }
     AppMethodBeat.o(65414);
   }
@@ -43,15 +43,10 @@ public final class a
     getWindow().setAttributes(localLayoutParams);
     AppMethodBeat.o(65413);
   }
-  
-  static abstract interface a
-  {
-    public abstract void ePv();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.a
  * JD-Core Version:    0.7.0.1
  */

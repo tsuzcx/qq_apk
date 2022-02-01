@@ -1,79 +1,81 @@
 package com.tencent.mm.plugin.webview.f;
 
-import com.tencent.luggage.k.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.a.a;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/permission/GetA8KeyReasonManager;", "", "()V", "TAG", "", "forceGetA8keyPaths", "", "getForceGetA8keyPaths", "()Ljava/util/List;", "forceGetA8keyPaths$delegate", "Lkotlin/Lazy;", "hasForceGetA8keyList", "Ljava/util/LinkedList;", "shouldForceGetA8key", "", "url", "webview-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/prefecher/WebPrefetcherJsApiConfigManager;", "", "()V", "TAG", "", "canUpdateRandomStr", "", "Ljava/lang/Integer;", "enableDigestVerify", "enablePrefetcherJsWebCodeCache", "", "enablePrefetcherJsXWebCodeCache", "webView", "Lcom/tencent/xweb/WebView;", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  private static final LinkedList<String> PYl;
-  private static final f PYm;
-  public static final b PYn;
-  private static final String TAG = "MicroMsg.GetA8KeyReasonManager";
+  public static final b WPQ;
+  private static Integer WPR;
+  private static Integer WPS;
   
   static
   {
-    AppMethodBeat.i(206987);
-    PYn = new b();
-    TAG = "MicroMsg.GetA8KeyReasonManager";
-    PYl = new LinkedList();
-    PYm = g.ar((a)a.PYo);
-    AppMethodBeat.o(206987);
+    AppMethodBeat.i(294598);
+    WPQ = new b();
+    AppMethodBeat.o(294598);
   }
   
-  public static final boolean blt(String paramString)
+  public static final boolean iwv()
   {
-    AppMethodBeat.i(206986);
-    p.k(paramString, "url");
-    if (PYl.contains(paramString))
+    AppMethodBeat.i(294590);
+    if (WPR != null)
     {
-      AppMethodBeat.o(206986);
+      localInteger = WPR;
+      if (localInteger == null) {}
+      while (localInteger.intValue() != 1)
+      {
+        AppMethodBeat.o(294590);
+        return false;
+      }
+      AppMethodBeat.o(294590);
       return true;
     }
-    Iterator localIterator = ((Iterable)PYm.getValue()).iterator();
-    while (localIterator.hasNext())
+    WPR = Integer.valueOf(((c)h.ax(c.class)).a(c.a.zgC, 1));
+    Log.i("MicroMsg.WebPrefetcherJsApiConfigManager ", s.X("enableDigestVerify ", WPR));
+    Integer localInteger = WPR;
+    if (localInteger == null) {}
+    while (localInteger.intValue() != 1)
     {
-      String str = (String)localIterator.next();
-      Log.i(TAG, "force geta8key path = %s", new Object[] { str });
-      if (c.a(paramString, str, false))
-      {
-        PYl.add(paramString);
-        AppMethodBeat.o(206986);
-        return true;
-      }
+      AppMethodBeat.o(294590);
+      return false;
     }
-    AppMethodBeat.o(206986);
-    return false;
+    AppMethodBeat.o(294590);
+    return true;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "", "invoke"})
-  static final class a
-    extends q
-    implements a<List<? extends String>>
+  public static final boolean iww()
   {
-    public static final a PYo;
-    
-    static
+    AppMethodBeat.i(294593);
+    if (WPS != null)
     {
-      AppMethodBeat.i(205657);
-      PYo = new a();
-      AppMethodBeat.o(205657);
+      localInteger = WPS;
+      if (localInteger == null) {}
+      while (localInteger.intValue() != 1)
+      {
+        AppMethodBeat.o(294593);
+        return false;
+      }
+      AppMethodBeat.o(294593);
+      return true;
     }
-    
-    a()
+    WPS = Integer.valueOf(((c)h.ax(c.class)).a(c.a.zgD, 1));
+    Log.i("MicroMsg.WebPrefetcherJsApiConfigManager ", s.X("canUpdateRandomStr ", WPS));
+    Integer localInteger = WPS;
+    if (localInteger == null) {}
+    while (localInteger.intValue() != 1)
     {
-      super();
+      AppMethodBeat.o(294593);
+      return false;
     }
+    AppMethodBeat.o(294593);
+    return true;
   }
 }
 

@@ -1,100 +1,35 @@
 package com.tencent.mm.plugin.webview.modeltools;
 
-import android.content.ClipData;
-import android.content.ClipData.Item;
-import android.content.ClipboardManager;
-import android.content.ClipboardManager.OnPrimaryClipChangedListener;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.c.a;
 import com.tencent.mm.ipcinvoker.d;
-import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.Util;
 import java.lang.ref.WeakReference;
-import java.nio.charset.Charset;
 
 public final class WebViewClipBoardHelper
-  implements ClipboardManager.OnPrimaryClipChangedListener
 {
-  private WeakReference<WebViewUI> PXH;
-  private long lastReportTime;
+  public WeakReference<WebViewUI> WOf;
+  public long lastReportTime;
   
   public WebViewClipBoardHelper(WebViewUI paramWebViewUI)
   {
     AppMethodBeat.i(79200);
     this.lastReportTime = 0L;
-    this.PXH = new WeakReference(paramWebViewUI);
-    paramWebViewUI = (ClipboardManager)paramWebViewUI.getApplicationContext().getSystemService("clipboard");
-    try
-    {
-      paramWebViewUI.addPrimaryClipChangedListener(this);
-      AppMethodBeat.o(79200);
-      return;
-    }
-    catch (Exception paramWebViewUI)
-    {
-      AppMethodBeat.o(79200);
-    }
+    this.WOf = new WeakReference(paramWebViewUI);
+    AppMethodBeat.o(79200);
   }
   
-  public final void onPrimaryClipChanged()
-  {
-    AppMethodBeat.i(79201);
-    if (this.PXH.get() == null)
-    {
-      AppMethodBeat.o(79201);
-      return;
-    }
-    long l = System.currentTimeMillis();
-    if (l - this.lastReportTime < 200L)
-    {
-      AppMethodBeat.o(79201);
-      return;
-    }
-    this.lastReportTime = l;
-    Object localObject = ((ClipboardManager)MMApplicationContext.getContext().getSystemService("clipboard")).getPrimaryClip();
-    if (localObject == null)
-    {
-      AppMethodBeat.o(79201);
-      return;
-    }
-    localObject = ((ClipData)localObject).getItemAt(0);
-    if (localObject == null)
-    {
-      AppMethodBeat.o(79201);
-      return;
-    }
-    ClipBoardDataWrapper localClipBoardDataWrapper = new ClipBoardDataWrapper();
-    localClipBoardDataWrapper.url = ((WebViewUI)this.PXH.get()).elY();
-    if (Util.isNullOrNil(((ClipData.Item)localObject).getText()))
-    {
-      Log.w("MicroMsg.WebViewClipBoardHelper", "onPrimaryClipChanged text is null");
-      AppMethodBeat.o(79201);
-      return;
-    }
-    localClipBoardDataWrapper.length = ((ClipData.Item)localObject).getText().toString().getBytes(Charset.forName("UTF-8")).length;
-    localClipBoardDataWrapper.fromScene = ((WebViewUI)this.PXH.get()).getIntent().getIntExtra("from_scence", 0);
-    localClipBoardDataWrapper.username = ((WebViewUI)this.PXH.get()).getIntent().getStringExtra("geta8key_username");
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, localClipBoardDataWrapper, a.class, null);
-    AppMethodBeat.o(79201);
-  }
-  
-  static final class ClipBoardDataWrapper
+  public static final class ClipBoardDataWrapper
     implements Parcelable
   {
     public static final Parcelable.Creator<ClipBoardDataWrapper> CREATOR;
-    int fromScene;
-    int length;
-    String url;
-    String username;
+    public int fromScene;
+    public int length;
+    public String url;
+    public String username;
     
     static
     {
@@ -103,7 +38,7 @@ public final class WebViewClipBoardHelper
       AppMethodBeat.o(79198);
     }
     
-    ClipBoardDataWrapper() {}
+    public ClipBoardDataWrapper() {}
     
     ClipBoardDataWrapper(Parcel paramParcel)
     {
@@ -132,7 +67,7 @@ public final class WebViewClipBoardHelper
   }
   
   @a
-  static final class a
+  public static final class a
     implements d<WebViewClipBoardHelper.ClipBoardDataWrapper, Object>
   {}
 }

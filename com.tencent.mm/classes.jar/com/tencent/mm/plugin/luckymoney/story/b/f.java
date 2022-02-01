@@ -12,9 +12,9 @@ public final class f
   
   static
   {
-    AppMethodBeat.i(231736);
+    AppMethodBeat.i(284025);
     SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(e.info, "LuckyMoneyDetailOpenRecord") };
-    AppMethodBeat.o(231736);
+    AppMethodBeat.o(284025);
   }
   
   public f(ISQLiteDatabase paramISQLiteDatabase)
@@ -25,7 +25,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.story.b.f
  * JD-Core Version:    0.7.0.1
  */

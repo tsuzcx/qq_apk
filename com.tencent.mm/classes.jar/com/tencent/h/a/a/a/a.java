@@ -5,17 +5,17 @@ import java.lang.ref.SoftReference;
 
 public final class a
 {
-  c ZSy;
-  SoftReference<Object> ZSz = null;
+  public c ahWY;
+  SoftReference<Object> ahWZ = null;
   
   public a(c paramc)
   {
-    this.ZSy = paramc;
+    this.ahWY = paramc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.h.a.a.a.a
  * JD-Core Version:    0.7.0.1
  */

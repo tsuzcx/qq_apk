@@ -7,12 +7,12 @@ public enum o
   static
   {
     AppMethodBeat.i(114733);
-    FzF = new o("Init", 0);
-    FzG = new o("Inviting", 1);
-    FzH = new o("Creating", 2);
-    FzI = new o("Starting", 3);
-    FzJ = new o("Talking", 4);
-    FzK = new o[] { FzF, FzG, FzH, FzI, FzJ };
+    LvJ = new o("Init", 0);
+    LvK = new o("Inviting", 1);
+    LvL = new o("Creating", 2);
+    LvM = new o("Starting", 3);
+    LvN = new o("Talking", 4);
+    LvO = new o[] { LvJ, LvK, LvL, LvM, LvN };
     AppMethodBeat.o(114733);
   }
   
@@ -20,7 +20,7 @@ public enum o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.widget.o
  * JD-Core Version:    0.7.0.1
  */

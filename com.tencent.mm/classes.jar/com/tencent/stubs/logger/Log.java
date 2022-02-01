@@ -1,7 +1,6 @@
 package com.tencent.stubs.logger;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.StringTokenizer;
@@ -35,20 +34,7 @@ public final class Log
       for (;;)
       {
         AndroidLogcat localAndroidLogcat;
-        Logger local1 = new Logger()
-        {
-          public final boolean isLoggable(String paramAnonymousString, int paramAnonymousInt)
-          {
-            return true;
-          }
-          
-          public final void println(int paramAnonymousInt, String paramAnonymousString1, String paramAnonymousString2)
-          {
-            AppMethodBeat.i(73525);
-            System.out.println("[" + paramAnonymousString1 + "] " + paramAnonymousString2);
-            AppMethodBeat.o(73525);
-          }
-        };
+        Log.1 local1 = new Log.1();
         long l = 1L;
       }
     }
@@ -337,7 +323,7 @@ public final class Log
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.stubs.logger.Log
  * JD-Core Version:    0.7.0.1
  */

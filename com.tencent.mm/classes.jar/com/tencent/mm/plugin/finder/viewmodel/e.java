@@ -1,138 +1,112 @@
 package com.tencent.mm.plugin.finder.viewmodel;
 
+import androidx.lifecycle.af;
+import androidx.recyclerview.widget.RecyclerView.m;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.extension.reddot.f;
-import com.tencent.mm.protocal.protobuf.bkn;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.component.i;
-import java.util.concurrent.ConcurrentHashMap;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.o;
+import com.tencent.mm.plugin.finder.model.t;
+import kotlin.Metadata;
+import kotlin.ah;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderTabStateCacheVM;", "Lcom/tencent/mm/ui/component/UIComponentPlugin;", "Lcom/tencent/mm/plugin/finder/PluginFinder;", "()V", "cachedTabIndex", "", "cachedTimeStamp", "", "caches", "Ljava/util/concurrent/ConcurrentHashMap;", "getCachedIndex", "type", "getEnterTabIndex", "getRedDotCount", "Lkotlin/Pair;", "redDotFlags", "", "", "([Ljava/lang/Boolean;)Lkotlin/Pair;", "isExistRedDot", "showInfo", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "setRedDotFlags", "", "([Ljava/lang/Boolean;)V", "store", "tabIndex", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderRecyclerViewPool;", "Landroidx/lifecycle/ViewModel;", "()V", "bulletSubtitleViewPool", "Landroidx/recyclerview/widget/RecyclerView$RecycledViewPool;", "getBulletSubtitleViewPool", "()Landroidx/recyclerview/widget/RecyclerView$RecycledViewPool;", "setBulletSubtitleViewPool", "(Landroidx/recyclerview/widget/RecyclerView$RecycledViewPool;)V", "commentDrawerDarkViewPool", "getCommentDrawerDarkViewPool", "setCommentDrawerDarkViewPool", "commentDrawerViewPool", "getCommentDrawerViewPool", "setCommentDrawerViewPool", "foldedLayoutViewPool", "getFoldedLayoutViewPool", "setFoldedLayoutViewPool", "fullFoldedLayoutViewPool", "getFullFoldedLayoutViewPool", "setFullFoldedLayoutViewPool", "fullTimeLinePool", "getFullTimeLinePool", "gridViewPool", "getGridViewPool", "setGridViewPool", "mediaBannerViewPool", "getMediaBannerViewPool", "setMediaBannerViewPool", "staggeredViewPool", "getStaggeredViewPool", "setStaggeredViewPool", "timelinePool", "getTimelinePool", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
-  extends i<PluginFinder>
+  extends af
 {
-  public static final a Bhi;
-  public final ConcurrentHashMap<Integer, Integer> Bgm;
-  public int Bhh;
+  public static final a GKS;
+  public RecyclerView.m ATp;
+  private final RecyclerView.m GKT;
+  public final RecyclerView.m GKU;
+  public RecyclerView.m GKV;
+  public RecyclerView.m GKW;
+  public RecyclerView.m GKX;
+  public RecyclerView.m GKY;
+  public RecyclerView.m GKZ;
+  private RecyclerView.m GLa;
+  private RecyclerView.m GLb;
   
   static
   {
-    AppMethodBeat.i(287865);
-    Bhi = new a((byte)0);
-    AppMethodBeat.o(287865);
+    AppMethodBeat.i(337188);
+    GKS = new a((byte)0);
+    AppMethodBeat.o(337188);
   }
   
   public e()
   {
-    AppMethodBeat.i(287864);
-    this.Bgm = new ConcurrentHashMap();
-    this.Bhh = -1;
-    AppMethodBeat.o(287864);
+    AppMethodBeat.i(337179);
+    Object localObject1 = new c();
+    ((c)localObject1).bD(4, 18);
+    ((c)localObject1).bD(2, 6);
+    ((c)localObject1).bD(2003, 0);
+    Object localObject2 = ah.aiuX;
+    this.GKT = ((RecyclerView.m)localObject1);
+    localObject1 = new b();
+    ((b)localObject1).bD(4, 18);
+    ((b)localObject1).bD(2, 6);
+    localObject2 = ah.aiuX;
+    this.GKU = ((RecyclerView.m)localObject1);
+    localObject1 = new RecyclerView.m();
+    ((RecyclerView.m)localObject1).bD(2, 16);
+    ((RecyclerView.m)localObject1).bD(4, 12);
+    localObject2 = ah.aiuX;
+    this.ATp = ((RecyclerView.m)localObject1);
+    localObject1 = new RecyclerView.m();
+    ((RecyclerView.m)localObject1).bD(4, 20);
+    ((RecyclerView.m)localObject1).bD(2, 20);
+    ((RecyclerView.m)localObject1).bD(-3, 2);
+    ((RecyclerView.m)localObject1).bD(2003, 0);
+    localObject2 = ah.aiuX;
+    this.GKV = ((RecyclerView.m)localObject1);
+    localObject1 = new RecyclerView.m();
+    ((RecyclerView.m)localObject1).bD(4, 20);
+    ((RecyclerView.m)localObject1).bD(2, 20);
+    ((RecyclerView.m)localObject1).bD(-3, 2);
+    localObject2 = ah.aiuX;
+    this.GKW = ((RecyclerView.m)localObject1);
+    localObject1 = new RecyclerView.m();
+    localObject2 = t.ECt;
+    ((RecyclerView.m)localObject1).bD(t.eDj(), 10);
+    localObject2 = t.ECt;
+    ((RecyclerView.m)localObject1).bD(t.eDk(), 10);
+    localObject2 = ah.aiuX;
+    this.GKX = ((RecyclerView.m)localObject1);
+    localObject1 = new RecyclerView.m();
+    localObject2 = t.ECt;
+    ((RecyclerView.m)localObject1).bD(t.eDj(), 10);
+    localObject2 = t.ECt;
+    ((RecyclerView.m)localObject1).bD(t.eDk(), 10);
+    localObject2 = ah.aiuX;
+    this.GKY = ((RecyclerView.m)localObject1);
+    localObject1 = new RecyclerView.m();
+    localObject2 = t.ECt;
+    ((RecyclerView.m)localObject1).bD(t.eDj(), 10);
+    localObject2 = t.ECt;
+    ((RecyclerView.m)localObject1).bD(t.eDk(), 5);
+    localObject2 = ah.aiuX;
+    this.GKZ = ((RecyclerView.m)localObject1);
+    localObject1 = new RecyclerView.m();
+    ((RecyclerView.m)localObject1).bD(4, 10);
+    ((RecyclerView.m)localObject1).bD(2, 10);
+    localObject2 = ah.aiuX;
+    this.GLa = ((RecyclerView.m)localObject1);
+    localObject1 = new RecyclerView.m();
+    ((RecyclerView.m)localObject1).bD(4, 10);
+    localObject2 = ah.aiuX;
+    this.GLb = ((RecyclerView.m)localObject1);
+    AppMethodBeat.o(337179);
   }
   
-  private static boolean b(bkn parambkn)
-  {
-    return (parambkn != null) && (parambkn.count > 0);
-  }
-  
-  public final int eke()
-  {
-    int i3 = 0;
-    AppMethodBeat.i(287863);
-    if (this.Bhh != -1)
-    {
-      i = this.Bhh;
-      AppMethodBeat.o(287863);
-      return i;
-    }
-    Object localObject1 = (Integer)this.Bgm.get(Integer.valueOf(1));
-    if (localObject1 != null) {}
-    Boolean[] arrayOfBoolean;
-    int n;
-    int i1;
-    for (int j = ((Integer)localObject1).intValue();; j = 0)
-    {
-      arrayOfBoolean = new Boolean[3];
-      arrayOfBoolean[0] = Boolean.FALSE;
-      arrayOfBoolean[1] = Boolean.FALSE;
-      arrayOfBoolean[2] = Boolean.FALSE;
-      localObject1 = h.ag(PluginFinder.class);
-      p.j(localObject1, "MMKernel.plugin(PluginFinder::class.java)");
-      localObject1 = ((PluginFinder)localObject1).getRedDotManager().aBe("NotificationCenterLike");
-      localObject2 = h.ag(PluginFinder.class);
-      p.j(localObject2, "MMKernel.plugin(PluginFinder::class.java)");
-      localObject2 = ((PluginFinder)localObject2).getRedDotManager().aBe("NotificationCenterComment");
-      Object localObject3 = h.ag(PluginFinder.class);
-      p.j(localObject3, "MMKernel.plugin(PluginFinder::class.java)");
-      localObject3 = ((PluginFinder)localObject3).getRedDotManager().aBe("NotificationCenterFollow");
-      arrayOfBoolean[0] = Boolean.valueOf(b((bkn)localObject1));
-      arrayOfBoolean[1] = Boolean.valueOf(b((bkn)localObject2));
-      arrayOfBoolean[2] = Boolean.valueOf(b((bkn)localObject3));
-      int k = 0;
-      n = -1;
-      i1 = 0;
-      i = 0;
-      while (k < 3)
-      {
-        int i2 = n;
-        int m = i1;
-        if (arrayOfBoolean[k].booleanValue())
-        {
-          i1 += 1;
-          i2 = n;
-          m = i1;
-          if (n == -1)
-          {
-            i2 = i;
-            m = i1;
-          }
-        }
-        k += 1;
-        i += 1;
-        n = i2;
-        i1 = m;
-      }
-    }
-    Object localObject2 = new o(Integer.valueOf(i1), Integer.valueOf(n));
-    this.Bhh = j;
-    if (((Number)((o)localObject2).Mx).intValue() == 0)
-    {
-      AppMethodBeat.o(287863);
-      return j;
-    }
-    int i = i3;
-    if (j >= 0)
-    {
-      i = i3;
-      if (j < 3) {
-        i = 1;
-      }
-    }
-    if (i != 0) {}
-    for (localObject1 = arrayOfBoolean; (localObject1 != null) && (arrayOfBoolean[j].booleanValue()); localObject1 = null)
-    {
-      Log.i("Finder.FinderTabStateCacheVM", "red dot index == cachedIndex");
-      AppMethodBeat.o(287863);
-      return j;
-    }
-    if ((((Number)((o)localObject2).Mx).intValue() == 2) || (((Number)((o)localObject2).Mx).intValue() == 1))
-    {
-      this.Bhh = ((Number)((o)localObject2).My).intValue();
-      i = ((Number)((o)localObject2).My).intValue();
-      AppMethodBeat.o(287863);
-      return i;
-    }
-    AppMethodBeat.o(287863);
-    return j;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderTabStateCacheVM$Companion;", "", "()V", "TAG", "", "TYPE_NOTIFY_TAB", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderRecyclerViewPool$Companion;", "", "()V", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/viewmodel/FinderRecyclerViewPool$fullTimeLinePool$1", "Landroidx/recyclerview/widget/RecyclerView$RecycledViewPool;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+    extends RecyclerView.m
+  {}
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/viewmodel/FinderRecyclerViewPool$timelinePool$1", "Landroidx/recyclerview/widget/RecyclerView$RecycledViewPool;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
+    extends RecyclerView.m
+  {}
 }
 
 

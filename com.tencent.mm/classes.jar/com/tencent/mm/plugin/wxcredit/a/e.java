@@ -14,8 +14,8 @@ import org.json.JSONObject;
 public final class e
   extends m
 {
-  public List<l> QOa;
-  public int QOb;
+  public List<l> XHy;
+  public int XHz;
   public String token;
   
   public e(String paramString)
@@ -46,7 +46,7 @@ public final class e
       try
       {
         this.token = paramJSONObject.getString("session_key");
-        this.QOb = paramJSONObject.optInt("answer_times_left", -1);
+        this.XHz = paramJSONObject.optInt("answer_times_left", -1);
         paramString = paramJSONObject.getJSONArray("Array");
         if ((paramString == null) || (paramString.length() <= 0)) {
           break label314;
@@ -59,14 +59,14 @@ public final class e
           JSONObject localJSONObject = paramString.getJSONObject(paramInt);
           l locall = new l();
           locall.id = localJSONObject.getString("qt_id");
-          locall.QOt = localJSONObject.getString("parent_id");
+          locall.XHR = localJSONObject.getString("parent_id");
           locall.type = localJSONObject.getString("qt_type");
           locall.desc = localJSONObject.getString("qt_cont");
-          locall.QOu = localJSONObject.getInt("ans_len");
-          locall.tsf = localJSONObject.getString("wording");
+          locall.XHS = localJSONObject.getInt("ans_len");
+          locall.lym = localJSONObject.getString("wording");
           locall.level = localJSONObject.getInt("level");
-          if ((paramJSONObject.containsKey(locall.QOt)) && (!"0".equals(locall.QOt))) {
-            ((l)paramJSONObject.get(locall.QOt)).QOv = locall;
+          if ((paramJSONObject.containsKey(locall.XHR)) && (!"0".equals(locall.XHR))) {
+            ((l)paramJSONObject.get(locall.XHR)).XHT = locall;
           } else {
             paramJSONObject.put(locall.id, locall);
           }
@@ -78,7 +78,7 @@ public final class e
         AppMethodBeat.o(72306);
         return;
       }
-      this.QOa = new ArrayList(paramJSONObject.values());
+      this.XHy = new ArrayList(paramJSONObject.values());
       paramJSONObject.clear();
       label314:
       AppMethodBeat.o(72306);
@@ -89,7 +89,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.a.e
  * JD-Core Version:    0.7.0.1
  */

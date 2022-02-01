@@ -1,104 +1,103 @@
 package com.tencent.mm.plugin.game.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
 
 public final class ek
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String CRR;
-  public String CRS;
+  public String IGI;
+  public String IHI;
+  public String IHo;
+  public String hAP;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(41844);
+    AppMethodBeat.i(41839);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.CRR == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: FromUserName");
-        AppMethodBeat.o(41844);
-        throw paramVarArgs;
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.IHo != null) {
+        paramVarArgs.g(1, this.IHo);
       }
-      if (this.CRS == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: TimeDesc");
-        AppMethodBeat.o(41844);
-        throw paramVarArgs;
+      if (this.hAP != null) {
+        paramVarArgs.g(2, this.hAP);
       }
-      if (this.CRR != null) {
-        paramVarArgs.f(1, this.CRR);
+      if (this.IGI != null) {
+        paramVarArgs.g(3, this.IGI);
       }
-      if (this.CRS != null) {
-        paramVarArgs.f(2, this.CRS);
+      if (this.IHI != null) {
+        paramVarArgs.g(4, this.IHI);
       }
-      AppMethodBeat.o(41844);
+      AppMethodBeat.o(41839);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.CRR == null) {
-        break label370;
+      if (this.IHo == null) {
+        break label390;
       }
     }
-    label370:
-    for (paramInt = g.a.a.b.b.a.g(1, this.CRR) + 0;; paramInt = 0)
+    label390:
+    for (int i = i.a.a.b.b.a.h(1, this.IHo) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.CRS != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.CRS);
+      paramInt = i;
+      if (this.hAP != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.hAP);
       }
-      AppMethodBeat.o(41844);
-      return i;
+      i = paramInt;
+      if (this.IGI != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.IGI);
+      }
+      paramInt = i;
+      if (this.IHI != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.IHI);
+      }
+      AppMethodBeat.o(41839);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.CRR == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: FromUserName");
-          AppMethodBeat.o(41844);
-          throw paramVarArgs;
-        }
-        if (this.CRS == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: TimeDesc");
-          AppMethodBeat.o(41844);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(41844);
+        AppMethodBeat.o(41839);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         ek localek = (ek)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(41844);
+          AppMethodBeat.o(41839);
           return -1;
         case 1: 
-          localek.CRR = locala.abFh.readString();
-          AppMethodBeat.o(41844);
+          localek.IHo = locala.ajGk.readString();
+          AppMethodBeat.o(41839);
+          return 0;
+        case 2: 
+          localek.hAP = locala.ajGk.readString();
+          AppMethodBeat.o(41839);
+          return 0;
+        case 3: 
+          localek.IGI = locala.ajGk.readString();
+          AppMethodBeat.o(41839);
           return 0;
         }
-        localek.CRS = locala.abFh.readString();
-        AppMethodBeat.o(41844);
+        localek.IHI = locala.ajGk.readString();
+        AppMethodBeat.o(41839);
         return 0;
       }
-      AppMethodBeat.o(41844);
+      AppMethodBeat.o(41839);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.protobuf.ek
  * JD-Core Version:    0.7.0.1
  */

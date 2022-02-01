@@ -16,17 +16,17 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class WebViewBagBgView
   extends View
 {
-  int MhM;
-  private int Qic;
-  private int Qid;
-  private float Qie;
-  private float Qif;
-  private float Qig;
-  private int Qih;
-  private int Qii;
-  boolean Qij;
-  private RectF Qik;
-  int alM;
+  private int Xag;
+  private int Xah;
+  private float Xai;
+  private float Xaj;
+  private float Xak;
+  private int Xal;
+  private int Xam;
+  boolean Xan;
+  private RectF Xao;
+  int cam;
+  int cqG;
   private Paint mPaint;
   long mStartTime;
   
@@ -34,87 +34,51 @@ public class WebViewBagBgView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(80429);
-    this.Qic = -7829368;
-    this.Qid = -65536;
-    this.Qie = 0.0F;
+    this.Xag = -7829368;
+    this.Xah = -65536;
+    this.Xai = 0.0F;
     this.mPaint = new Paint();
     this.mPaint.setAntiAlias(true);
-    this.Qii = -1;
+    this.Xam = -1;
     AppMethodBeat.o(80429);
-  }
-  
-  final void TG(long paramLong)
-  {
-    AppMethodBeat.i(80432);
-    if (this.Qii < 0)
-    {
-      Log.i("MicroMsg.WebViewBagBgView", "doUpdateAngryInfo not measured, mDiameter:%d", new Object[] { Integer.valueOf(this.Qii) });
-      AppMethodBeat.o(80432);
-      return;
-    }
-    this.Qie = (this.Qii * 2 / (this.alM / this.MhM));
-    if (paramLong - this.mStartTime <= 0L)
-    {
-      f = this.Qii;
-      this.Qif = f;
-      if (this.Qii - this.Qif >= this.Qih) {
-        break label188;
-      }
-    }
-    label188:
-    for (float f = this.Qii;; f = this.Qif + this.Qih)
-    {
-      this.Qig = f;
-      AppMethodBeat.o(80432);
-      return;
-      int i = (int)((float)(paramLong - this.mStartTime) / this.MhM);
-      this.Qif = (this.Qii - (i + 1) * this.Qie);
-      if (this.Qif < -this.Qih)
-      {
-        f = -this.Qih;
-        break;
-      }
-      f = this.Qif;
-      break;
-    }
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(80430);
     super.onDraw(paramCanvas);
-    if (this.Qig == this.Qif) {
-      this.Qif -= 0.001F;
+    if (this.Xak == this.Xaj) {
+      this.Xaj -= 0.001F;
     }
-    float f1 = this.Qif;
-    float f2 = this.Qig;
-    int i = this.Qic;
-    int j = this.Qid;
+    float f1 = this.Xaj;
+    float f2 = this.Xak;
+    int i = this.Xag;
+    int j = this.Xah;
     Object localObject = Shader.TileMode.CLAMP;
     localObject = new LinearGradient(0.0F, f1, 0.0F, f2, new int[] { i, j }, null, (Shader.TileMode)localObject);
     this.mPaint.setShader((Shader)localObject);
-    paramCanvas.drawOval(this.Qik, this.mPaint);
-    if ((this.Qij) && (this.Qig > 0.0F))
+    paramCanvas.drawOval(this.Xao, this.mPaint);
+    if ((this.Xan) && (this.Xak > 0.0F))
     {
-      this.Qif -= this.Qie;
-      if (this.Qif >= -this.Qih) {
+      this.Xaj -= this.Xai;
+      if (this.Xaj >= -this.Xal) {
         break label211;
       }
-      f1 = -this.Qih;
-      this.Qif = f1;
-      if (this.Qii - this.Qif >= this.Qih) {
+      f1 = -this.Xal;
+      this.Xaj = f1;
+      if (this.Xam - this.Xaj >= this.Xal) {
         break label219;
       }
     }
     label211:
     label219:
-    for (f1 = this.Qii;; f1 = this.Qif + this.Qih)
+    for (f1 = this.Xam;; f1 = this.Xaj + this.Xal)
     {
-      this.Qig = f1;
-      postInvalidateDelayed(this.MhM);
+      this.Xak = f1;
+      postInvalidateDelayed(this.cqG);
       AppMethodBeat.o(80430);
       return;
-      f1 = this.Qif;
+      f1 = this.Xaj;
       break;
     }
   }
@@ -123,21 +87,57 @@ public class WebViewBagBgView
   {
     AppMethodBeat.i(80431);
     super.onMeasure(paramInt1, paramInt2);
-    this.Qii = View.MeasureSpec.getSize(paramInt1);
-    this.Qik = new RectF(0.0F, 0.0F, this.Qii, this.Qii);
-    this.Qih = (this.Qii / 2);
-    TG(System.currentTimeMillis());
+    this.Xam = View.MeasureSpec.getSize(paramInt1);
+    this.Xao = new RectF(0.0F, 0.0F, this.Xam, this.Xam);
+    this.Xal = (this.Xam / 2);
+    xP(System.currentTimeMillis());
     AppMethodBeat.o(80431);
   }
   
   public void setAngryColor(int paramInt)
   {
-    this.Qid = paramInt;
+    this.Xah = paramInt;
   }
   
   public void setStartColor(int paramInt)
   {
-    this.Qic = paramInt;
+    this.Xag = paramInt;
+  }
+  
+  final void xP(long paramLong)
+  {
+    AppMethodBeat.i(80432);
+    if (this.Xam < 0)
+    {
+      Log.i("MicroMsg.WebViewBagBgView", "doUpdateAngryInfo not measured, mDiameter:%d", new Object[] { Integer.valueOf(this.Xam) });
+      AppMethodBeat.o(80432);
+      return;
+    }
+    this.Xai = (this.Xam * 2 / (this.cam / this.cqG));
+    if (paramLong - this.mStartTime <= 0L)
+    {
+      f = this.Xam;
+      this.Xaj = f;
+      if (this.Xam - this.Xaj >= this.Xal) {
+        break label188;
+      }
+    }
+    label188:
+    for (float f = this.Xam;; f = this.Xaj + this.Xal)
+    {
+      this.Xak = f;
+      AppMethodBeat.o(80432);
+      return;
+      int i = (int)((float)(paramLong - this.mStartTime) / this.cqG);
+      this.Xaj = (this.Xam - (i + 1) * this.Xai);
+      if (this.Xaj < -this.Xal)
+      {
+        f = -this.Xal;
+        break;
+      }
+      f = this.Xaj;
+      break;
+    }
   }
 }
 

@@ -9,9 +9,9 @@ import com.tencent.kinda.gen.ITransmitKvData;
 import com.tencent.kinda.gen.KindaJSEventType;
 import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.mc;
-import com.tencent.mm.f.a.mc.a;
-import com.tencent.mm.f.a.mc.b;
+import com.tencent.mm.autogen.a.ni;
+import com.tencent.mm.autogen.a.ni.a;
+import com.tencent.mm.autogen.a.ni.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 
@@ -20,37 +20,37 @@ public class PhoneBindCardVerifySmsJSHandler
 {
   public int type;
   
-  public void handle(final mc parammc)
+  public void handle(final ni paramni)
   {
-    AppMethodBeat.i(263256);
+    AppMethodBeat.i(226314);
     KindaJSEvent localKindaJSEvent = new KindaJSEvent();
     localKindaJSEvent.setDelegate(new KindaJSEvent.KindaJsEventDelegate()
     {
       public void kindaCloseWebViewImpl(boolean paramAnonymousBoolean, VoidCallback paramAnonymousVoidCallback)
       {
-        AppMethodBeat.i(263119);
-        if (parammc.fKa.result == null) {
-          parammc.fKa.result = new Bundle();
+        AppMethodBeat.i(226333);
+        if (paramni.hPG.result == null) {
+          paramni.hPG.result = new Bundle();
         }
-        parammc.fKa.result.putInt("closeWindow", 1);
-        AppMethodBeat.o(263119);
+        paramni.hPG.result.putInt("closeWindow", 1);
+        AppMethodBeat.o(226333);
       }
       
       public void kindaEndWithResult(String paramAnonymousString, HashMap<String, String> paramAnonymousHashMap)
       {
-        AppMethodBeat.i(263118);
+        AppMethodBeat.i(226328);
         Log.i("PhoneBindCardVerifySmsJSHandler", "callback: %s", new Object[] { paramAnonymousString });
-        if (parammc.fKa.result == null) {
-          parammc.fKa.result = new Bundle();
+        if (paramni.hPG.result == null) {
+          paramni.hPG.result = new Bundle();
         }
-        parammc.fKa.result.putString("ret", paramAnonymousString);
-        parammc.fJZ.fKd.run();
-        AppMethodBeat.o(263118);
+        paramni.hPG.result.putString("ret", paramAnonymousString);
+        paramni.hPF.hPJ.run();
+        AppMethodBeat.o(226328);
       }
       
       public KindaJSEventType kindaGetType()
       {
-        if (parammc.fJZ.type == 1) {
+        if (paramni.hPF.type == 1) {
           return KindaJSEventType.TINYAPP;
         }
         return KindaJSEventType.WEB;
@@ -59,24 +59,24 @@ public class PhoneBindCardVerifySmsJSHandler
     ITransmitKvData localITransmitKvData = ITransmitKvData.create();
     localITransmitKvData.putJSEvent("jsEvent", localKindaJSEvent);
     localITransmitKvData.putString("notifyType", "fastBindCard");
-    localITransmitKvData.putString("app_id", parammc.fJZ.fKb.getString("app_id"));
-    localITransmitKvData.putString("nonce_str", parammc.fJZ.fKb.getString("nonce_str"));
-    localITransmitKvData.putString("timeStamp", parammc.fJZ.fKb.getString("timeStamp"));
-    localITransmitKvData.putString("package", parammc.fJZ.fKb.getString("package"));
-    localITransmitKvData.putString("paySign", parammc.fJZ.fKb.getString("paySign"));
-    localITransmitKvData.putString("signType", parammc.fJZ.fKb.getString("signType"));
-    localITransmitKvData.putString("sessionid", parammc.fJZ.fKb.getString("sessionid"));
-    localITransmitKvData.putString("jsApiName", parammc.fJZ.fKc);
-    if (parammc.fJZ.type == 1) {
+    localITransmitKvData.putString("app_id", paramni.hPF.hPH.getString("app_id"));
+    localITransmitKvData.putString("nonce_str", paramni.hPF.hPH.getString("nonce_str"));
+    localITransmitKvData.putString("timeStamp", paramni.hPF.hPH.getString("timeStamp"));
+    localITransmitKvData.putString("package", paramni.hPF.hPH.getString("package"));
+    localITransmitKvData.putString("paySign", paramni.hPF.hPH.getString("paySign"));
+    localITransmitKvData.putString("signType", paramni.hPF.hPH.getString("signType"));
+    localITransmitKvData.putString("sessionid", paramni.hPF.hPH.getString("sessionid"));
+    localITransmitKvData.putString("jsApiName", paramni.hPF.hPI);
+    if (paramni.hPF.type == 1) {
       localITransmitKvData.putInt("jsApiScene", 1);
     }
     for (;;)
     {
-      Log.d("PhoneBindCardVerifySmsJSHandler", "data: %s", new Object[] { parammc.fJZ.fKb.toString() });
+      Log.d("PhoneBindCardVerifySmsJSHandler", "data: %s", new Object[] { paramni.hPF.hPH.toString() });
       KindaApp.appKinda().notifyAllUseCases(localITransmitKvData);
-      AppMethodBeat.o(263256);
+      AppMethodBeat.o(226314);
       return;
-      if (parammc.fJZ.type == 0) {
+      if (paramni.hPF.type == 0) {
         localITransmitKvData.putInt("jsApiScene", 2);
       }
     }
@@ -94,7 +94,7 @@ public class PhoneBindCardVerifySmsJSHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.jsapi.PhoneBindCardVerifySmsJSHandler
  * JD-Core Version:    0.7.0.1
  */

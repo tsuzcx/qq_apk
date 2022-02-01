@@ -87,6 +87,40 @@ public class JsonUtils
             localCollection.add(parseToModel((JSONObject)localObject, paramClass1, paramVarArgs));
           } else if (localObject.getClass() == paramClass1) {
             localCollection.add(localObject);
+          } else if ((localObject instanceof Integer))
+          {
+            if (paramClass1 == Double.class) {
+              localCollection.add(Double.valueOf(((Integer)localObject).doubleValue()));
+            } else if (paramClass1 == Long.class) {
+              localCollection.add(Long.valueOf(((Integer)localObject).longValue()));
+            } else if (paramClass1 == Float.class) {
+              localCollection.add(Float.valueOf(((Integer)localObject).floatValue()));
+            } else if (paramClass1 == String.class) {
+              localCollection.add(localObject.toString());
+            }
+          }
+          else if ((localObject instanceof Double))
+          {
+            if (paramClass1 == Integer.class) {
+              localCollection.add(Integer.valueOf(((Double)localObject).intValue()));
+            } else if (paramClass1 == Long.class) {
+              localCollection.add(Long.valueOf(((Double)localObject).longValue()));
+            } else if (paramClass1 == Float.class) {
+              localCollection.add(Float.valueOf(((Double)localObject).floatValue()));
+            } else if (paramClass1 == String.class) {
+              localCollection.add(localObject.toString());
+            }
+          }
+          else if ((localObject instanceof Long)) {
+            if (paramClass1 == Integer.class) {
+              localCollection.add(Integer.valueOf(((Long)localObject).intValue()));
+            } else if (paramClass1 == Double.class) {
+              localCollection.add(Double.valueOf(((Long)localObject).doubleValue()));
+            } else if (paramClass1 == Float.class) {
+              localCollection.add(Float.valueOf(((Long)localObject).floatValue()));
+            } else if (paramClass1 == String.class) {
+              localCollection.add(localObject.toString());
+            }
           }
         }
       }
@@ -210,7 +244,7 @@ public class JsonUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.map.tools.json.JsonUtils
  * JD-Core Version:    0.7.0.1
  */

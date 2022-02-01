@@ -9,63 +9,63 @@ import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.game.g.e;
-import com.tencent.mm.plugin.game.g.f;
+import com.tencent.mm.plugin.game.h.e;
+import com.tencent.mm.plugin.game.h.f;
 import com.tencent.mm.plugin.gamelife.ui.GameLifeConversationUI;
 
 public class ChatTabTopArea
   extends LinearLayout
 {
-  GameHotMsgView Dbm;
+  GameHotMsgView IVA;
   
   public ChatTabTopArea(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(189671);
+    AppMethodBeat.i(276662);
     init();
-    AppMethodBeat.o(189671);
+    AppMethodBeat.o(276662);
   }
   
   public ChatTabTopArea(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(189673);
+    AppMethodBeat.i(276671);
     init();
-    AppMethodBeat.o(189673);
+    AppMethodBeat.o(276671);
   }
   
   public ChatTabTopArea(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(189678);
+    AppMethodBeat.i(276681);
     init();
-    AppMethodBeat.o(189678);
+    AppMethodBeat.o(276681);
   }
   
   private void init()
   {
-    AppMethodBeat.i(189679);
-    LayoutInflater.from(getContext()).inflate(g.f.CmK, this);
-    findViewById(g.e.CkR).setOnClickListener(new View.OnClickListener()
+    AppMethodBeat.i(276689);
+    LayoutInflater.from(getContext()).inflate(h.f.HYS, this);
+    findViewById(h.e.HWZ).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(194146);
+        AppMethodBeat.i(276656);
         Object localObject = new b();
-        ((b)localObject).bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/game/ui/chat_tab/ChatTabTopArea$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+        ((b)localObject).cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/game/ui/chat_tab/ChatTabTopArea$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
         localObject = new Intent(ChatTabTopArea.this.getContext(), GameLifeConversationUI.class);
         paramAnonymousView = ChatTabTopArea.this.getContext();
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-        com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/game/ui/chat_tab/ChatTabTopArea$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+        com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/game/ui/chat_tab/ChatTabTopArea$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
         com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/mm/plugin/game/ui/chat_tab/ChatTabTopArea$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/chat_tab/ChatTabTopArea$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(194146);
+        AppMethodBeat.o(276656);
       }
     });
-    this.Dbm = ((GameHotMsgView)findViewById(g.e.Cjr));
-    AppMethodBeat.o(189679);
+    this.IVA = ((GameHotMsgView)findViewById(h.e.HVz));
+    AppMethodBeat.o(276689);
   }
 }
 

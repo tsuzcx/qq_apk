@@ -7,9 +7,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(111452);
-    Cbi = new b("CREATE", 0);
-    Cbj = new b("SKIP", 1);
-    Cbk = new b[] { Cbi, Cbj };
+    HNk = new b("CREATE", 0);
+    HNl = new b("SKIP", 1);
+    HNm = new b[] { HNk, HNl };
     AppMethodBeat.o(111452);
   }
   
@@ -17,7 +17,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.AlbumPreviewUI.b
  * JD-Core Version:    0.7.0.1
  */

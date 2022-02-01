@@ -22,12 +22,12 @@ public final class q
   
   public q(ISQLiteDatabase paramISQLiteDatabase)
   {
-    this(paramISQLiteDatabase, p.info, "EmotionRewardTipInfo", null);
+    this(paramISQLiteDatabase, p.info, "EmotionRewardTipInfo");
   }
   
-  public q(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString, String[] paramArrayOfString)
+  private q(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString)
   {
-    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, paramArrayOfString);
+    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, null);
     this.db = paramISQLiteDatabase;
   }
   
@@ -54,51 +54,67 @@ public final class q
     return false;
   }
   
+  public final boolean iK(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(105123);
+    if (Util.isNullOrNil(paramString))
+    {
+      Log.w("MicroMsg.emoji.EmotionRewardTipStorage", "product id is null.");
+      AppMethodBeat.o(105123);
+      return false;
+    }
+    paramString = "UPDATE EmotionRewardTipInfo SET flag=" + paramInt + ",setFlagTime=" + System.currentTimeMillis() + " WHERE prodcutID='" + paramString + "'";
+    boolean bool = this.db.execSQL("EmotionRewardTipInfo", paramString);
+    Log.i("MicroMsg.emoji.EmotionRewardTipStorage", "updateFlag result:%b", new Object[] { Boolean.valueOf(bool) });
+    AppMethodBeat.o(105123);
+    return bool;
+  }
+  
   /* Error */
-  public final p hBJ()
+  public final p jdJ()
   {
     // Byte code:
-    //   0: ldc 82
+    //   0: ldc 145
     //   2: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: getfield 46	com/tencent/mm/storage/emotion/q:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
-    //   9: ldc 84
+    //   6: getfield 48	com/tencent/mm/storage/emotion/q:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
+    //   9: ldc 147
     //   11: iconst_0
     //   12: anewarray 20	java/lang/String
     //   15: iconst_2
-    //   16: invokeinterface 88 4 0
+    //   16: invokeinterface 151 4 0
     //   21: astore_2
     //   22: aload_2
     //   23: ifnull +48 -> 71
     //   26: aload_2
     //   27: astore_1
     //   28: aload_2
-    //   29: invokeinterface 94 1 0
+    //   29: invokeinterface 157 1 0
     //   34: ifeq +37 -> 71
     //   37: aload_2
     //   38: astore_1
     //   39: new 22	com/tencent/mm/storage/emotion/p
     //   42: dup
-    //   43: invokespecial 96	com/tencent/mm/storage/emotion/p:<init>	()V
+    //   43: invokespecial 159	com/tencent/mm/storage/emotion/p:<init>	()V
     //   46: astore_3
     //   47: aload_2
     //   48: astore_1
     //   49: aload_3
     //   50: aload_2
-    //   51: invokevirtual 100	com/tencent/mm/storage/emotion/p:convertFrom	(Landroid/database/Cursor;)V
+    //   51: invokevirtual 163	com/tencent/mm/storage/emotion/p:convertFrom	(Landroid/database/Cursor;)V
     //   54: aload_2
     //   55: ifnull +9 -> 64
     //   58: aload_2
-    //   59: invokeinterface 103 1 0
-    //   64: ldc 82
+    //   59: invokeinterface 166 1 0
+    //   64: ldc 145
     //   66: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   69: aload_3
     //   70: areturn
     //   71: aload_2
     //   72: ifnull +9 -> 81
     //   75: aload_2
-    //   76: invokeinterface 103 1 0
-    //   81: ldc 82
+    //   76: invokeinterface 166 1 0
+    //   81: ldc 145
     //   83: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   86: aconst_null
     //   87: areturn
@@ -107,20 +123,20 @@ public final class q
     //   90: astore_2
     //   91: aload_2
     //   92: astore_1
-    //   93: ldc 51
-    //   95: ldc 105
+    //   93: ldc 53
+    //   95: ldc 168
     //   97: iconst_1
-    //   98: anewarray 107	java/lang/Object
+    //   98: anewarray 131	java/lang/Object
     //   101: dup
     //   102: iconst_0
     //   103: aload_3
-    //   104: invokestatic 113	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   104: invokestatic 172	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   107: aastore
-    //   108: invokestatic 117	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   108: invokestatic 175	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   111: aload_2
     //   112: ifnull -31 -> 81
     //   115: aload_2
-    //   116: invokeinterface 103 1 0
+    //   116: invokeinterface 166 1 0
     //   121: goto -40 -> 81
     //   124: astore_2
     //   125: aconst_null
@@ -128,8 +144,8 @@ public final class q
     //   127: aload_1
     //   128: ifnull +9 -> 137
     //   131: aload_1
-    //   132: invokeinterface 103 1 0
-    //   137: ldc 82
+    //   132: invokeinterface 166 1 0
+    //   137: ldc 145
     //   139: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   142: aload_2
     //   143: athrow
@@ -158,22 +174,6 @@ public final class q
     //   28	37	148	java/lang/Exception
     //   39	47	148	java/lang/Exception
     //   49	54	148	java/lang/Exception
-  }
-  
-  public final boolean hD(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(105123);
-    if (Util.isNullOrNil(paramString))
-    {
-      Log.w("MicroMsg.emoji.EmotionRewardTipStorage", "product id is null.");
-      AppMethodBeat.o(105123);
-      return false;
-    }
-    paramString = "UPDATE EmotionRewardTipInfo SET flag=" + paramInt + ",setFlagTime=" + System.currentTimeMillis() + " WHERE prodcutID='" + paramString + "'";
-    boolean bool = this.db.execSQL("EmotionRewardTipInfo", paramString);
-    Log.i("MicroMsg.emoji.EmotionRewardTipStorage", "updateFlag result:%b", new Object[] { Boolean.valueOf(bool) });
-    AppMethodBeat.o(105123);
-    return bool;
   }
 }
 

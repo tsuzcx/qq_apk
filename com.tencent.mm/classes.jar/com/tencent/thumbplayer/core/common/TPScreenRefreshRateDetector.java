@@ -31,7 +31,7 @@ public class TPScreenRefreshRateDetector
   
   static
   {
-    AppMethodBeat.i(223069);
+    AppMethodBeat.i(227678);
     TAG = "TPScreenRefreshRateDetector";
     isInitted = false;
     mContext = null;
@@ -45,22 +45,22 @@ public class TPScreenRefreshRateDetector
       
       public final void onDisplayChanged(int paramAnonymousInt)
       {
-        AppMethodBeat.i(223035);
+        AppMethodBeat.i(227781);
         if (paramAnonymousInt == 0) {
           TPScreenRefreshRateDetector.mHandler.sendEmptyMessage(10001);
         }
         TPNativeLog.printLog(2, TPScreenRefreshRateDetector.TAG, "onDisplayChanged displayId:".concat(String.valueOf(paramAnonymousInt)));
-        AppMethodBeat.o(223035);
+        AppMethodBeat.o(227781);
       }
       
       public final void onDisplayRemoved(int paramAnonymousInt) {}
     };
-    AppMethodBeat.o(223069);
+    AppMethodBeat.o(227678);
   }
   
   public static void addListener(ScreenRefreshRateChangedListener paramScreenRefreshRateChangedListener)
   {
-    AppMethodBeat.i(223054);
+    AppMethodBeat.i(227628);
     try
     {
       listeners.add(paramScreenRefreshRateChangedListener);
@@ -68,13 +68,13 @@ public class TPScreenRefreshRateDetector
     }
     finally
     {
-      AppMethodBeat.o(223054);
+      AppMethodBeat.o(227628);
     }
   }
   
   public static void deinit()
   {
-    AppMethodBeat.i(223052);
+    AppMethodBeat.i(227621);
     try
     {
       if ((!isInitted) || (mContext == null)) {
@@ -87,39 +87,39 @@ public class TPScreenRefreshRateDetector
     }
     finally
     {
-      AppMethodBeat.o(223052);
+      AppMethodBeat.o(227621);
     }
   }
   
   private static Looper getLooper()
   {
-    AppMethodBeat.i(223040);
+    AppMethodBeat.i(227582);
     Looper localLooper = Looper.myLooper();
     if (localLooper != null)
     {
-      AppMethodBeat.o(223040);
+      AppMethodBeat.o(227582);
       return localLooper;
     }
     localLooper = Looper.getMainLooper();
-    AppMethodBeat.o(223040);
+    AppMethodBeat.o(227582);
     return localLooper;
   }
   
   public static float getScreenRefreshRate()
   {
-    AppMethodBeat.i(223064);
+    AppMethodBeat.i(227645);
     if (Build.VERSION.SDK_INT < 23)
     {
       TPNativeLog.printLog(4, TAG, "Current version can not get screen refresh rate, set default.");
       f = mCurScreenRefreshRate;
-      AppMethodBeat.o(223064);
+      AppMethodBeat.o(227645);
       return f;
     }
     if (mContext == null)
     {
       TPNativeLog.printLog(4, TAG, "Current mContext is null, set default.");
       f = mCurScreenRefreshRate;
-      AppMethodBeat.o(223064);
+      AppMethodBeat.o(227645);
       return f;
     }
     Object localObject1 = (Context)mContext.get();
@@ -151,13 +151,13 @@ public class TPScreenRefreshRateDetector
       }
     }
     float f = mCurScreenRefreshRate;
-    AppMethodBeat.o(223064);
+    AppMethodBeat.o(227645);
     return f;
   }
   
   public static void init(Context paramContext)
   {
-    AppMethodBeat.i(223049);
+    AppMethodBeat.i(227611);
     try
     {
       TPNativeLog.printLog(2, TAG, "TPScreenRefreshRateDetector init enter!");
@@ -172,25 +172,25 @@ public class TPScreenRefreshRateDetector
     }
     finally
     {
-      AppMethodBeat.o(223049);
+      AppMethodBeat.o(227611);
     }
   }
   
   public static void initHandleMsg()
   {
-    AppMethodBeat.i(223047);
+    AppMethodBeat.i(227602);
     mHandler = new Handler(getLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
-        AppMethodBeat.i(223032);
+        AppMethodBeat.i(227762);
         switch (paramAnonymousMessage.what)
         {
         }
         for (;;)
         {
           super.handleMessage(paramAnonymousMessage);
-          AppMethodBeat.o(223032);
+          AppMethodBeat.o(227762);
           return;
           if (TPScreenRefreshRateDetector.mDisplayManager != null)
           {
@@ -202,12 +202,12 @@ public class TPScreenRefreshRateDetector
         }
       }
     };
-    AppMethodBeat.o(223047);
+    AppMethodBeat.o(227602);
   }
   
   private static void notifyScreenRefreshRateChange(float paramFloat)
   {
-    AppMethodBeat.i(223046);
+    AppMethodBeat.i(227594);
     int i = 0;
     if (Math.abs(paramFloat - mCurScreenRefreshRate) >= 1.0F)
     {
@@ -216,7 +216,7 @@ public class TPScreenRefreshRateDetector
     }
     if (i == 0)
     {
-      AppMethodBeat.o(223046);
+      AppMethodBeat.o(227594);
       return;
     }
     mCurScreenRefreshRate = paramFloat;
@@ -229,14 +229,14 @@ public class TPScreenRefreshRateDetector
     }
     finally
     {
-      AppMethodBeat.o(223046);
+      AppMethodBeat.o(227594);
     }
-    AppMethodBeat.o(223046);
+    AppMethodBeat.o(227594);
   }
   
   public static void removeListener(ScreenRefreshRateChangedListener paramScreenRefreshRateChangedListener)
   {
-    AppMethodBeat.i(223056);
+    AppMethodBeat.i(227634);
     try
     {
       listeners.remove(paramScreenRefreshRateChangedListener);
@@ -244,7 +244,7 @@ public class TPScreenRefreshRateDetector
     }
     finally
     {
-      AppMethodBeat.o(223056);
+      AppMethodBeat.o(227634);
     }
   }
   

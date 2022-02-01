@@ -5,29 +5,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f$a
 {
-  public long jvB;
+  public long lYS;
   
   public f$a()
   {
     AppMethodBeat.i(155878);
-    this.jvB = SystemClock.elapsedRealtime();
+    this.lYS = SystemClock.elapsedRealtime();
     AppMethodBeat.o(155878);
   }
   
-  public final long avE()
+  public final long aPY()
   {
     AppMethodBeat.i(155880);
     long l1 = SystemClock.elapsedRealtime();
-    long l2 = this.jvB;
+    long l2 = this.lYS;
     AppMethodBeat.o(155880);
     return l1 - l2;
-  }
-  
-  public final void reset()
-  {
-    AppMethodBeat.i(292745);
-    this.jvB = SystemClock.elapsedRealtime();
-    AppMethodBeat.o(292745);
   }
 }
 

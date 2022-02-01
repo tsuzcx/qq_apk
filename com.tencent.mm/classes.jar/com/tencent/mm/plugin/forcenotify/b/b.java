@@ -1,55 +1,33 @@
 package com.tencent.mm.plugin.forcenotify.b;
 
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.forcenotify.a.e;
 import com.tencent.mm.plugin.forcenotify.a.f;
-import com.tencent.mm.plugin.forcenotify.a.h;
-import com.tencent.mm.plugin.forcenotify.d.e;
-import com.tencent.mm.plugin.forcenotify.d.g;
-import com.tencent.mm.view.recyclerview.i;
-import java.util.List;
-import kotlin.g.b.p;
+import com.tencent.mm.plugin.forcenotify.c.e;
+import com.tencent.mm.view.recyclerview.j;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/forcenotify/convert/ForceNotifyLiveConvert;", "Lcom/tencent/mm/plugin/forcenotify/convert/ForceNotifyBaseConvert;", "Lcom/tencent/mm/plugin/forcenotify/model/ForceNotifyLiveItem;", "()V", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "plugin-force-notify_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/forcenotify/convert/CommonMsgConvert;", "Lcom/tencent/mm/plugin/forcenotify/convert/BaseMsgCardConvert;", "Lcom/tencent/mm/plugin/forcenotify/model/FinderBaseMsgItem;", "()V", "getContentLayoutId", "", "onBindContentViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateContentViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-force-notify_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends a<g>
+  extends a<e>
 {
-  private void a(i parami, g paramg, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
+  public final void a(RecyclerView paramRecyclerView, j paramj)
   {
-    AppMethodBeat.i(253976);
-    p.k(parami, "holder");
-    p.k(paramg, "item");
-    super.a(parami, (e)paramg, paramInt1, paramInt2, paramBoolean, paramList);
-    paramList = (TextView)parami.amk.findViewById(a.e.title_tv);
-    p.j(paramList, "titleTv");
-    paramList.setText((CharSequence)paramList.getResources().getString(a.h.force_notify_live_tip, new Object[] { paramg.nickname }));
-    parami = (TextView)parami.amk.findViewById(a.e.force_notify_desc);
-    paramList = (CharSequence)paramg.BDX;
-    if ((paramList == null) || (paramList.length() == 0)) {}
-    for (paramInt1 = 1; paramInt1 != 0; paramInt1 = 0)
-    {
-      p.j(parami, "descTv");
-      parami.setVisibility(8);
-      AppMethodBeat.o(253976);
-      return;
-    }
-    p.j(parami, "descTv");
-    parami.setVisibility(0);
-    parami.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.b(parami.getContext(), (CharSequence)paramg.BDX, parami.getTextSize()));
-    AppMethodBeat.o(253976);
+    AppMethodBeat.i(274838);
+    s.u(paramRecyclerView, "recyclerView");
+    s.u(paramj, "holder");
+    AppMethodBeat.o(274838);
   }
   
-  public final int getLayoutId()
+  public final int dTn()
   {
-    return a.f.force_notify_popup_item_live;
+    return a.f.force_notify_content_item_common_msg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.forcenotify.b.b
  * JD-Core Version:    0.7.0.1
  */

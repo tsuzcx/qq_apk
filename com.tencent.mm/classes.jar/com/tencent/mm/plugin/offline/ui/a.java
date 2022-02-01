@@ -4,17 +4,17 @@ public abstract interface a
 {
   public abstract void f(int paramInt, String paramString1, String paramString2, String paramString3);
   
-  public abstract void flc();
+  public abstract void gvt();
   
-  public abstract void fld();
+  public abstract void gvu();
   
-  public abstract String fle();
+  public abstract String gvv();
   
-  public abstract void flf();
+  public abstract void gvw();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.ui.a
  * JD-Core Version:    0.7.0.1
  */

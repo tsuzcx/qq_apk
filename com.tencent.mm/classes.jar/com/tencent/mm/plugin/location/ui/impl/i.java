@@ -5,28 +5,28 @@ import android.graphics.Bitmap.CompressFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.loader.j.b;
-import com.tencent.mm.platformtools.s;
-import com.tencent.mm.platformtools.s.a;
-import com.tencent.mm.platformtools.s.b;
+import com.tencent.mm.loader.i.b;
+import com.tencent.mm.platformtools.p;
+import com.tencent.mm.platformtools.p.a;
+import com.tencent.mm.platformtools.p.b;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.IOException;
 
 public final class i
-  implements s
+  implements p
 {
   private String iconUrl;
-  private s.b tUD;
+  private p.b wXZ;
   
   public i(String paramString)
   {
     AppMethodBeat.i(56143);
-    this.tUD = new s.b()
+    this.wXZ = new p.b()
     {
-      public final Bitmap ZQ(String paramAnonymousString)
+      public final Bitmap Se(String paramAnonymousString)
       {
         AppMethodBeat.i(56142);
         paramAnonymousString = BitmapUtil.decodeFile(paramAnonymousString, null);
@@ -35,13 +35,13 @@ public final class i
       }
     };
     this.iconUrl = paramString;
-    h.aHJ().postToWorker(new Runnable()
+    h.baH().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(56141);
-        if (!u.agG(i.eNv())) {
-          u.bBD(i.eNv());
+        if (!y.ZC(i.fVO())) {
+          y.bDX(i.fVO());
         }
         AppMethodBeat.o(56141);
       }
@@ -49,29 +49,29 @@ public final class i
     AppMethodBeat.o(56143);
   }
   
-  public static String eNv()
+  public static String fVO()
   {
     AppMethodBeat.i(56144);
-    String str = b.aSL() + "taxi_icon";
+    String str = b.bmz() + "taxi_icon";
     AppMethodBeat.o(56144);
     return str;
   }
   
-  public final Bitmap a(Bitmap paramBitmap, s.a parama, String paramString)
+  public final Bitmap a(Bitmap paramBitmap, p.a parama, String paramString)
   {
     AppMethodBeat.i(56146);
-    if (s.a.mEp == parama) {
+    if (p.a.pAS == parama) {
       if ((paramBitmap != null) && (paramBitmap.getNinePatchChunk() != null))
       {
         Log.v("MicroMsg.TaxiWeappIconStrategy", "get ninePatch chChunk.");
-        u.on(paramString, bvq());
+        y.O(paramString, bTC(), false);
         AppMethodBeat.o(56146);
         return paramBitmap;
       }
     }
     try
     {
-      BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, bvq(), false);
+      BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, bTC(), false);
       Log.d("MicroMsg.TaxiWeappIconStrategy", "get bitmap, from %s.", new Object[] { parama.toString() });
       AppMethodBeat.o(56146);
       return paramBitmap;
@@ -82,9 +82,9 @@ public final class i
       {
         try
         {
-          u.bBD(eNv());
+          y.bDX(fVO());
           Log.w("MicroMsg.TaxiWeappIconStrategy", "retry saving bitmap.");
-          BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, bvq(), false);
+          BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, bTC(), false);
         }
         catch (IOException paramString)
         {
@@ -95,44 +95,49 @@ public final class i
     }
   }
   
-  public final void a(s.a parama) {}
+  public final void a(p.a parama) {}
   
-  public final s.b bvp()
+  public final p.b bTB()
   {
-    return this.tUD;
+    return this.wXZ;
   }
   
-  public final String bvq()
+  public final String bTC()
   {
     AppMethodBeat.i(56145);
-    String str = String.format("%s/%s", new Object[] { eNv(), g.getMessageDigest(this.iconUrl.getBytes()) });
+    String str = String.format("%s/%s", new Object[] { fVO(), g.getMessageDigest(this.iconUrl.getBytes()) });
     AppMethodBeat.o(56145);
     return str;
   }
   
-  public final String bvr()
+  public final String bTD()
   {
     return this.iconUrl;
   }
   
-  public final String bvs()
+  public final String bTE()
   {
     return this.iconUrl;
   }
   
-  public final boolean bvt()
+  public final boolean bTF()
   {
     return true;
   }
   
-  public final Bitmap bvu()
+  public final boolean bTG()
+  {
+    return false;
+  }
+  
+  public final Bitmap bTH()
   {
     return null;
   }
   
-  public final void bvv() {}
+  public final void bTI() {}
   
-  public final void bvw() {}
+  public final void bTJ() {}
   
   public final String getCacheKey()
   {
@@ -141,7 +146,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.impl.i
  * JD-Core Version:    0.7.0.1
  */

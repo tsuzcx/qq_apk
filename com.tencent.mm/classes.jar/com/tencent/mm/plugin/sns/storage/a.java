@@ -1,49 +1,44 @@
 package com.tencent.mm.plugin.sns.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.ap;
-import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.plugin.sns.ad.adxml.AdClickActionInfo;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/sns/storage/AdBreakFrameClickInfo;", "", "areaLeft", "", "areaTop", "areaWidth", "areaHeight", "clickStartTime", "", "clickEndTime", "clickActionInfo", "Lcom/tencent/mm/plugin/sns/ad/adxml/AdClickActionInfo;", "(IIIIFFLcom/tencent/mm/plugin/sns/ad/adxml/AdClickActionInfo;)V", "getAreaHeight", "()I", "getAreaLeft", "getAreaTop", "getAreaWidth", "getClickActionInfo", "()Lcom/tencent/mm/plugin/sns/ad/adxml/AdClickActionInfo;", "getClickEndTime", "()F", "getClickStartTime", "Companion", "plugin-sns_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends ap
 {
-  protected static IAutoDBItem.MAutoDBInfo info;
+  public static final a.a QIn;
+  public final int QIo;
+  public final int QIp;
+  public final int QIq;
+  public final int QIr;
+  public final float QIs;
+  public final float QIt;
+  public final AdClickActionInfo clickActionInfo;
   
   static
   {
-    AppMethodBeat.i(96280);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[3];
-    localMAutoDBInfo.columns = new String[4];
-    StringBuilder localStringBuilder = new StringBuilder();
-    localMAutoDBInfo.columns[0] = "canvasId";
-    localMAutoDBInfo.colsMap.put("canvasId", "LONG PRIMARY KEY ");
-    localStringBuilder.append(" canvasId LONG PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.primaryKey = "canvasId";
-    localMAutoDBInfo.columns[1] = "canvasXml";
-    localMAutoDBInfo.colsMap.put("canvasXml", "TEXT");
-    localStringBuilder.append(" canvasXml TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[2] = "createTime";
-    localMAutoDBInfo.colsMap.put("createTime", "LONG");
-    localStringBuilder.append(" createTime LONG");
-    localMAutoDBInfo.columns[3] = "rowid";
-    localMAutoDBInfo.sql = localStringBuilder.toString();
-    info = localMAutoDBInfo;
-    AppMethodBeat.o(96280);
+    AppMethodBeat.i(306612);
+    QIn = new a.a((byte)0);
+    AppMethodBeat.o(306612);
   }
   
-  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  public a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat1, float paramFloat2, AdClickActionInfo paramAdClickActionInfo)
   {
-    return info;
+    AppMethodBeat.i(306608);
+    this.QIo = paramInt1;
+    this.QIp = paramInt2;
+    this.QIq = paramInt3;
+    this.QIr = paramInt4;
+    this.QIs = paramFloat1;
+    this.QIt = paramFloat2;
+    this.clickActionInfo = paramAdClickActionInfo;
+    AppMethodBeat.o(306608);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.a
  * JD-Core Version:    0.7.0.1
  */

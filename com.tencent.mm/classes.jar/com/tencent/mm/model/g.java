@@ -1,18 +1,18 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ao.a.c;
-import com.tencent.mm.ao.a.d;
-import com.tencent.mm.ao.af;
-import com.tencent.mm.api.k;
+import com.tencent.mm.an.a.c;
+import com.tencent.mm.an.a.d;
+import com.tencent.mm.an.af;
+import com.tencent.mm.api.l;
 
 public final class g
-  implements k
+  implements l
 {
-  public final c bF(long paramLong)
+  public final c dW(long paramLong)
   {
     AppMethodBeat.i(123953);
-    c localc = af.bjx().bF(paramLong);
+    c localc = af.bHh().dW(paramLong);
     AppMethodBeat.o(123953);
     return localc;
   }

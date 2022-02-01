@@ -6,7 +6,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.graphics.Canvas;
 import android.os.SystemClock;
-import androidx.annotation.Keep;
 import com.github.henryye.nativeiv.a.b;
 import com.github.henryye.nativeiv.bitmap.BitmapType;
 import com.github.henryye.nativeiv.bitmap.IBitmap;
@@ -17,12 +16,12 @@ import java.io.InputStream;
 public class LegacyBitmap
   implements IBitmap<Bitmap>
 {
-  private Bitmap aKg = null;
+  private Bitmap cEc = null;
   private long lastDecodeUsing = -1L;
   
   protected Bitmap a(InputStream paramInputStream, ImageDecodeConfig paramImageDecodeConfig, c paramc)
   {
-    AppMethodBeat.i(219740);
+    AppMethodBeat.i(208235);
     paramc = new BitmapFactory.Options();
     paramc.inPreferredConfig = paramImageDecodeConfig.mConfig;
     paramc.inPremultiplied = paramImageDecodeConfig.mPremultiplyAlpha;
@@ -37,7 +36,7 @@ public class LegacyBitmap
     }
     for (;;)
     {
-      AppMethodBeat.o(219740);
+      AppMethodBeat.o(208235);
       return paramInputStream;
     }
   }
@@ -46,7 +45,7 @@ public class LegacyBitmap
   {
     AppMethodBeat.i(127349);
     long l = SystemClock.elapsedRealtime();
-    this.aKg = a(paramInputStream, paramImageDecodeConfig, paramc);
+    this.cEc = a(paramInputStream, paramImageDecodeConfig, paramc);
     this.lastDecodeUsing = (SystemClock.elapsedRealtime() - l);
     AppMethodBeat.o(127349);
   }
@@ -56,31 +55,28 @@ public class LegacyBitmap
     return this.lastDecodeUsing;
   }
   
-  @Keep
   public BitmapType getType()
   {
     return BitmapType.Legacy;
   }
   
-  @Keep
   public Bitmap provide()
   {
-    return this.aKg;
+    return this.cEc;
   }
   
-  @Keep
   public void recycle()
   {
     AppMethodBeat.i(127350);
-    if (this.aKg != null) {
-      this.aKg.recycle();
+    if (this.cEc != null) {
+      this.cEc.recycle();
     }
     AppMethodBeat.o(127350);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.github.henryye.nativeiv.LegacyBitmap
  * JD-Core Version:    0.7.0.1
  */

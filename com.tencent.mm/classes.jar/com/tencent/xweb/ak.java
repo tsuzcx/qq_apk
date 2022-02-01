@@ -1,72 +1,38 @@
 package com.tencent.xweb;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import org.xwalk.core.XWalkEnvironment;
+import org.xwalk.core.Log;
 
 public final class ak
 {
-  static String aabM;
-  static boolean aabN = true;
-  static boolean aabO;
+  private static boolean aifX = true;
+  private static boolean aifY;
   
-  public static void IM(boolean paramBoolean)
+  @Deprecated
+  public static void OT(boolean paramBoolean)
   {
     try
     {
-      AppMethodBeat.i(197842);
-      XWalkEnvironment.addXWalkInitializeLog("XWebUpdaterSetting", "setIsEmbedDirReady: ".concat(String.valueOf(paramBoolean)));
-      aabN = paramBoolean;
-      AppMethodBeat.o(197842);
+      AppMethodBeat.i(212437);
+      Log.i("XWebEmbedSetting", "setForbidDownloadCode:".concat(String.valueOf(paramBoolean)));
+      aifY = paramBoolean;
+      AppMethodBeat.o(212437);
       return;
     }
     finally
     {
       localObject = finally;
       throw localObject;
-    }
-  }
-  
-  public static void IN(boolean paramBoolean)
-  {
-    try
-    {
-      AppMethodBeat.i(197843);
-      XWalkEnvironment.addXWalkInitializeLog("XWebUpdaterSetting", "setForbidDownloadCode: ".concat(String.valueOf(paramBoolean)));
-      aabO = paramBoolean;
-      AppMethodBeat.o(197843);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static void bFr(String paramString)
-  {
-    try
-    {
-      AppMethodBeat.i(197840);
-      XWalkEnvironment.addXWalkInitializeLog("XWebUpdaterSetting", "setEmbedInstallLibDir: ".concat(String.valueOf(paramString)));
-      aabM = paramString;
-      AppMethodBeat.o(197840);
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
     }
   }
   
   /* Error */
-  public static boolean iwQ()
+  public static boolean kgd()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 52	com/tencent/xweb/ak:aabO	Z
+    //   3: getstatic 43	com/tencent/xweb/ak:aifY	Z
     //   6: istore_0
     //   7: iload_0
     //   8: ifeq +10 -> 18
@@ -95,7 +61,7 @@ public final class ak
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.ak
  * JD-Core Version:    0.7.0.1
  */

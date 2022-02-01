@@ -14,22 +14,22 @@ import java.util.HashMap;
 public final class c
   implements Comparable<c>
 {
-  private Uri VOE;
-  Uri VOF;
-  File VOG;
-  public File VOH;
-  boolean VOI;
-  boolean VOJ;
-  boolean VOK;
-  int VOL;
-  long VOM;
-  long VON;
-  private c.a VOO;
-  HashMap<String, String> VOP;
-  public f VOQ;
-  private e VOR;
-  public b VOS;
-  private d VOT;
+  private Uri adsJ;
+  Uri adsK;
+  File adsL;
+  public File adsM;
+  boolean adsN;
+  boolean adsO;
+  boolean adsP;
+  int adsQ;
+  long adsR;
+  long adsS;
+  private c.a adsT;
+  HashMap<String, String> adsU;
+  public f adsV;
+  private e adsW;
+  public b adsX;
+  private d adsY;
   boolean mCancelled;
   public long mContentLength;
   int mId;
@@ -37,62 +37,62 @@ public final class c
   
   public c(String paramString)
   {
-    AppMethodBeat.i(220786);
+    AppMethodBeat.i(231997);
     this.mCancelled = false;
-    this.VOI = true;
-    this.VOJ = true;
-    this.VOK = false;
-    this.VOL = 0;
-    this.VOM = 0L;
+    this.adsN = true;
+    this.adsO = true;
+    this.adsP = false;
+    this.adsQ = 0;
+    this.adsR = 0L;
     this.mContentLength = -1L;
-    this.VON = 1000L;
-    this.VOO = c.a.VOV;
+    this.adsS = 1000L;
+    this.adsT = c.a.adta;
     if (TextUtils.isEmpty(paramString))
     {
       paramString = new NullPointerException("uri is invalid!");
-      AppMethodBeat.o(220786);
+      AppMethodBeat.o(231997);
       throw paramString;
     }
     paramString = Uri.parse(paramString);
-    this.VOP = new HashMap();
+    this.adsU = new HashMap();
     this.mState = 2000;
-    this.VOE = paramString;
-    this.VOF = paramString;
-    AppMethodBeat.o(220786);
+    this.adsJ = paramString;
+    this.adsK = paramString;
+    AppMethodBeat.o(231997);
   }
   
-  public final c L(File paramFile)
+  public final c Q(File paramFile)
   {
-    AppMethodBeat.i(220787);
-    this.VOH = paramFile;
-    this.VOG = new File(paramFile.getAbsolutePath() + ".tmp");
-    AppMethodBeat.o(220787);
+    AppMethodBeat.i(232000);
+    this.adsM = paramFile;
+    this.adsL = new File(paramFile.getAbsolutePath() + ".tmp");
+    AppMethodBeat.o(232000);
     return this;
   }
   
   final void finish()
   {
-    AppMethodBeat.i(220790);
-    if (this.VOT != null) {
-      this.VOT.f(this);
+    AppMethodBeat.i(232010);
+    if (this.adsY != null) {
+      this.adsY.f(this);
     }
-    AppMethodBeat.o(220790);
+    AppMethodBeat.o(232010);
   }
   
-  final e hEP()
+  final e jhc()
   {
-    AppMethodBeat.i(220788);
-    while (this.VOR == null) {
-      this.VOR = new e.a();
+    AppMethodBeat.i(232006);
+    while (this.adsW == null) {
+      this.adsW = new e.a();
     }
-    e locale = this.VOR;
-    AppMethodBeat.o(220788);
+    e locale = this.adsW;
+    AppMethodBeat.o(232006);
     return locale;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.toolkit.a.c
  * JD-Core Version:    0.7.0.1
  */

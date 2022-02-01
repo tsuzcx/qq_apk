@@ -57,7 +57,7 @@ public final class g
     }
     catch (JSONException paramString1)
     {
-      paramString1 = com.tencent.mm.game.report.e.a.Md(localJSONObject.toString());
+      paramString1 = com.tencent.mm.game.report.e.a.EM(localJSONObject.toString());
       AppMethodBeat.o(108265);
     }
   }
@@ -78,10 +78,10 @@ public final class g
   
   public static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString1, int paramInt6, int paramInt7, String paramString2, String paramString3, String paramString4, long paramLong1, long paramLong2, long paramLong3)
   {
-    AppMethodBeat.i(199212);
-    paramContext = b.d(12909, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), paramString1, Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), paramString2, Integer.valueOf(Util.getInt(paramString3, 0)), Integer.valueOf(com.tencent.mm.game.report.e.a.getNetworkType(paramContext)), paramString4, "", "", Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3) });
-    com.tencent.mm.game.report.api.a.jTp.a(paramContext);
-    AppMethodBeat.o(199212);
+    AppMethodBeat.i(240732);
+    paramContext = b.e(12909, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), paramString1, Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), paramString2, Integer.valueOf(Util.getInt(paramString3, 0)), Integer.valueOf(com.tencent.mm.game.report.e.a.dt(paramContext)), paramString4, "", "", Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3) });
+    com.tencent.mm.game.report.api.a.mtH.a(paramContext);
+    AppMethodBeat.o(240732);
   }
   
   public static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, int paramInt5, String paramString2)
@@ -98,7 +98,7 @@ public final class g
     AppMethodBeat.o(108262);
   }
   
-  public static String at(String paramString1, String paramString2)
+  public static String aB(String paramString1, String paramString2)
   {
     AppMethodBeat.i(108264);
     JSONObject localJSONObject = new JSONObject();
@@ -107,7 +107,7 @@ public final class g
       localJSONObject.put("function_type", paramString1);
       localJSONObject.put("function_value", paramString2);
       label29:
-      paramString1 = com.tencent.mm.game.report.e.a.Md(localJSONObject.toString());
+      paramString1 = com.tencent.mm.game.report.e.a.EM(localJSONObject.toString());
       AppMethodBeat.o(108264);
       return paramString1;
     }
@@ -117,7 +117,7 @@ public final class g
     }
   }
   
-  public static String au(String paramString1, String paramString2)
+  public static String aC(String paramString1, String paramString2)
   {
     AppMethodBeat.i(108266);
     JSONObject localJSONObject = new JSONObject();
@@ -125,7 +125,7 @@ public final class g
     {
       localJSONObject.put(paramString1, paramString2);
       label20:
-      paramString1 = com.tencent.mm.game.report.e.a.Md(localJSONObject.toString());
+      paramString1 = com.tencent.mm.game.report.e.a.EM(localJSONObject.toString());
       AppMethodBeat.o(108266);
       return paramString1;
     }
@@ -135,7 +135,7 @@ public final class g
     }
   }
   
-  public static String l(Map paramMap)
+  public static String s(Map paramMap)
   {
     AppMethodBeat.i(184813);
     if (paramMap == null)
@@ -158,7 +158,7 @@ public final class g
         return "";
       }
     }
-    paramMap = com.tencent.mm.game.report.e.a.Md(localJSONObject.toString());
+    paramMap = com.tencent.mm.game.report.e.a.EM(localJSONObject.toString());
     AppMethodBeat.o(184813);
     return paramMap;
   }

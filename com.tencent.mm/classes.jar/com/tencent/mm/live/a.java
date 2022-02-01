@@ -2,7 +2,7 @@ package com.tencent.mm.live;
 
 import android.content.Context;
 import com.tencent.mm.kernel.b.d;
-import com.tencent.mm.live.b.c.c;
+import com.tencent.mm.live.model.c.c;
 
 public abstract interface a
   extends d

@@ -17,33 +17,33 @@ import com.tencent.xweb.WebView;
 public class EmbedWebView
   extends MMWebView
 {
-  private GestureDetector HpL;
-  private boolean HpM;
-  private float[] HpN;
-  private float[] HpO;
-  private float[] HpP;
-  private float[] HpQ;
+  private boolean NnA;
+  private float[] NnB;
+  private float[] NnC;
+  private float[] NnD;
+  private float[] NnE;
+  private GestureDetector Nnz;
   
   public EmbedWebView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(123006);
-    this.HpM = false;
-    this.HpN = new float[2];
-    this.HpO = new float[2];
-    this.HpP = new float[2];
-    this.HpQ = new float[2];
-    this.HpL = new GestureDetector(new GestureDetector.SimpleOnGestureListener()
+    this.NnA = false;
+    this.NnB = new float[2];
+    this.NnC = new float[2];
+    this.NnD = new float[2];
+    this.NnE = new float[2];
+    this.Nnz = new GestureDetector(new GestureDetector.SimpleOnGestureListener()
     {
       public final boolean onContextClick(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(249688);
+        AppMethodBeat.i(266966);
         b localb = new b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/EmbedWebView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
+        localb.cH(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/EmbedWebView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.aYj());
         boolean bool = super.onContextClick(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/qqmail/ui/EmbedWebView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(249688);
+        AppMethodBeat.o(266966);
         return bool;
       }
       
@@ -51,8 +51,8 @@ public class EmbedWebView
       {
         AppMethodBeat.i(123003);
         b localb = new b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/EmbedWebView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
+        localb.cH(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/EmbedWebView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.aYj());
         paramAnonymousMotionEvent = EmbedWebView.this;
         Log.d("MicroMsg.EmbedWebView", "onDoubleTapm, before scale:" + paramAnonymousMotionEvent.getScale());
         int i = 10;
@@ -76,24 +76,24 @@ public class EmbedWebView
       
       public final void onLongPress(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(249687);
+        AppMethodBeat.i(266963);
         b localb = new b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/EmbedWebView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aFi());
+        localb.cH(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/EmbedWebView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aYj());
         super.onLongPress(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/EmbedWebView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-        AppMethodBeat.o(249687);
+        AppMethodBeat.o(266963);
       }
       
       public final boolean onSingleTapUp(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(249686);
+        AppMethodBeat.i(266959);
         b localb = new b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/EmbedWebView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
+        localb.cH(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/EmbedWebView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aYj());
         boolean bool = super.onSingleTapUp(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/qqmail/ui/EmbedWebView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(249686);
+        AppMethodBeat.o(266959);
         return bool;
       }
     });
@@ -134,13 +134,13 @@ public class EmbedWebView
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(123007);
-    GestureDetector localGestureDetector = this.HpL;
-    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bm(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.b(localGestureDetector, locala.aFh(), "com/tencent/mm/plugin/qqmail/ui/EmbedWebView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)locala.sf(0)), "com/tencent/mm/plugin/qqmail/ui/EmbedWebView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    GestureDetector localGestureDetector = this.Nnz;
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.b(localGestureDetector, locala.aYi(), "com/tencent/mm/plugin/qqmail/ui/EmbedWebView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)locala.sb(0)), "com/tencent/mm/plugin/qqmail/ui/EmbedWebView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
     int i;
     int j;
-    if (this.HpM)
+    if (this.NnA)
     {
       i = paramMotionEvent.getAction();
       j = paramMotionEvent.getPointerCount();
@@ -166,29 +166,29 @@ public class EmbedWebView
         i = 0;
         while (i < j)
         {
-          this.HpN[i] = paramMotionEvent.getX(i);
-          this.HpO[i] = paramMotionEvent.getY(i);
+          this.NnB[i] = paramMotionEvent.getX(i);
+          this.NnC[i] = paramMotionEvent.getY(i);
           i += 1;
         }
       case 2: 
         i = 0;
         while (i < j)
         {
-          this.HpP[i] = paramMotionEvent.getX(i);
-          this.HpQ[i] = paramMotionEvent.getY(i);
+          this.NnD[i] = paramMotionEvent.getX(i);
+          this.NnE[i] = paramMotionEvent.getY(i);
           i += 1;
         }
-        float f1 = (float)(Math.pow(this.HpN[1] - this.HpN[0], 2.0D) + Math.pow(this.HpO[1] - this.HpO[0], 2.0D));
-        float f2 = (float)(Math.pow(this.HpP[1] - this.HpP[0], 2.0D) + Math.pow(this.HpQ[1] - this.HpQ[0], 2.0D));
+        float f1 = (float)(Math.pow(this.NnB[1] - this.NnB[0], 2.0D) + Math.pow(this.NnC[1] - this.NnC[0], 2.0D));
+        float f2 = (float)(Math.pow(this.NnD[1] - this.NnD[0], 2.0D) + Math.pow(this.NnE[1] - this.NnE[0], 2.0D));
         if (f1 - f2 > 20000.0F) {
           zoomOut();
         }
         for (;;)
         {
-          this.HpN[0] = this.HpP[0];
-          this.HpN[1] = this.HpP[1];
-          this.HpO[0] = this.HpQ[0];
-          this.HpO[1] = this.HpQ[1];
+          this.NnB[0] = this.NnD[0];
+          this.NnB[1] = this.NnD[1];
+          this.NnC[0] = this.NnE[0];
+          this.NnC[1] = this.NnE[1];
           break;
           if (f2 - f1 > 20000.0F) {
             zoomIn();
@@ -202,7 +202,7 @@ public class EmbedWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.EmbedWebView
  * JD-Core Version:    0.7.0.1
  */

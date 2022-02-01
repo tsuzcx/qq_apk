@@ -9,42 +9,42 @@ import java.util.ArrayList;
 
 final class f
 {
-  private d CcL;
-  private int lL = -1;
+  private d HOO;
+  private int mI = -1;
   
   public f(d paramd)
   {
-    this.CcL = paramd;
+    this.HOO = paramd;
   }
   
-  private void Tj(int paramInt)
+  private void WR(int paramInt)
   {
     AppMethodBeat.i(111557);
-    d locald = this.CcL;
-    if ((locald.BZG == null) || (locald.BZG.size() <= paramInt) || (paramInt < 0))
+    d locald = this.HOO;
+    if ((locald.HLA == null) || (locald.HLA.size() <= paramInt) || (paramInt < 0))
     {
       AppMethodBeat.o(111557);
       return;
     }
-    long l = ((GalleryItem.MediaItem)locald.BZG.get(paramInt)).BVl;
-    String str3 = ((GalleryItem.MediaItem)locald.BZG.get(paramInt)).wAy;
-    String str2 = ((GalleryItem.MediaItem)locald.BZG.get(paramInt)).AAz;
+    long l = ((GalleryItem.MediaItem)locald.HLA.get(paramInt)).HHJ;
+    String str3 = ((GalleryItem.MediaItem)locald.HLA.get(paramInt)).zWJ;
+    String str2 = ((GalleryItem.MediaItem)locald.HLA.get(paramInt)).Gcc;
     String str1 = str3;
     if (Util.isNullOrNil(str3)) {
       str1 = str2;
     }
-    e.etk().a(str1, ((GalleryItem.MediaItem)locald.BZG.get(paramInt)).getType(), str2, l, ((GalleryItem.MediaItem)locald.BZG.get(paramInt)).BVm);
+    e.fAm().a(str1, ((GalleryItem.MediaItem)locald.HLA.get(paramInt)).getType(), str2, l, ((GalleryItem.MediaItem)locald.HLA.get(paramInt)).HHK);
     AppMethodBeat.o(111557);
   }
   
   public final void onPageSelected(int paramInt)
   {
     AppMethodBeat.i(111558);
-    if (this.lL == -1)
+    if (this.mI == -1)
     {
       int i = 0;
       if (i == 0) {
-        Tj(paramInt);
+        WR(paramInt);
       }
       for (;;)
       {
@@ -54,31 +54,31 @@ final class f
           break label111;
         }
         if (paramInt + i <= paramInt + 3) {
-          Tj(paramInt + i);
+          WR(paramInt + i);
         }
         if (paramInt - i >= Math.max(paramInt - 3, 0)) {
-          Tj(paramInt - i);
+          WR(paramInt - i);
         }
       }
     }
-    if (this.lL > paramInt) {
-      Tj(Math.max(paramInt - 3, 0));
+    if (this.mI > paramInt) {
+      WR(Math.max(paramInt - 3, 0));
     }
     for (;;)
     {
       label111:
-      this.lL = paramInt;
+      this.mI = paramInt;
       AppMethodBeat.o(111558);
       return;
-      if (this.lL < paramInt) {
-        Tj(paramInt + 3);
+      if (this.mI < paramInt) {
+        WR(paramInt + 3);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.f
  * JD-Core Version:    0.7.0.1
  */

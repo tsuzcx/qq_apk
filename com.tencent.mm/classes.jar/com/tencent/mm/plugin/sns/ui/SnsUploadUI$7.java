@@ -1,25 +1,27 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class SnsUploadUI$7
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
   SnsUploadUI$7(SnsUploadUI paramSnsUploadUI) {}
   
-  public final void onClick(View paramView)
+  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(176368);
-    b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/sns/ui/SnsUploadUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    SnsUploadUI.M(this.LdU);
-    a.a(this, "com/tencent/mm/plugin/sns/ui/SnsUploadUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(176368);
+    AppMethodBeat.i(369953);
+    Log.d("MicroMsg.SnsUploadUI", "upload_content onTouch");
+    if (SnsUploadUI.M(this.REd))
+    {
+      AppMethodBeat.o(369953);
+      return true;
+    }
+    AppMethodBeat.o(369953);
+    return false;
   }
 }
 

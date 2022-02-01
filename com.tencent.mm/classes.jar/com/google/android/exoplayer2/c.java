@@ -10,14 +10,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class c
   implements m
 {
-  private final k aLm;
-  private final long aLn;
-  private final long aLo;
-  private final long aLp;
-  private final long aLq;
-  private final p aLr;
-  private int aLs;
-  private boolean aLt;
+  private final k cFj;
+  private final long cFk;
+  private final long cFl;
+  private final long cFm;
+  private final long cFn;
+  private final p cFo;
+  private int cFp;
+  private boolean cFq;
   
   public c()
   {
@@ -39,54 +39,96 @@ public final class c
   private c(k paramk, int paramInt1, int paramInt2, long paramLong1, long paramLong2, byte paramByte)
   {
     AppMethodBeat.i(91858);
-    this.aLm = paramk;
-    this.aLn = (paramInt1 * 1000L);
-    this.aLo = (paramInt2 * 1000L);
-    this.aLp = (paramLong1 * 1000L);
-    this.aLq = (paramLong2 * 1000L);
-    this.aLr = null;
+    this.cFj = paramk;
+    this.cFk = (paramInt1 * 1000L);
+    this.cFl = (paramInt2 * 1000L);
+    this.cFm = (paramLong1 * 1000L);
+    this.cFn = (paramLong2 * 1000L);
+    this.cFo = null;
     AppMethodBeat.o(91858);
   }
   
   private void reset(boolean paramBoolean)
   {
     AppMethodBeat.i(91864);
-    this.aLs = 0;
-    if ((this.aLr != null) && (this.aLt))
+    this.cFp = 0;
+    if ((this.cFo != null) && (this.cFq))
     {
       AppMethodBeat.o(91864);
       throw null;
     }
-    this.aLt = false;
+    this.cFq = false;
     if (paramBoolean) {
-      this.aLm.reset();
+      this.cFj.reset();
     }
     AppMethodBeat.o(91864);
   }
   
-  public final boolean A(long paramLong)
+  public final void QA()
+  {
+    AppMethodBeat.i(91862);
+    reset(true);
+    AppMethodBeat.o(91862);
+  }
+  
+  public final b QB()
+  {
+    return this.cFj;
+  }
+  
+  public final void Qv()
+  {
+    AppMethodBeat.i(91861);
+    reset(true);
+    AppMethodBeat.o(91861);
+  }
+  
+  public final void Qz()
+  {
+    AppMethodBeat.i(91859);
+    reset(false);
+    AppMethodBeat.o(91859);
+  }
+  
+  public final void a(r[] paramArrayOfr, g paramg)
+  {
+    int i = 0;
+    AppMethodBeat.i(91860);
+    this.cFp = 0;
+    while (i < paramArrayOfr.length)
+    {
+      if (paramg.dhY[i] != null) {
+        this.cFp += x.iQ(paramArrayOfr[i].getTrackType());
+      }
+      i += 1;
+    }
+    this.cFj.iD(this.cFp);
+    AppMethodBeat.o(91860);
+  }
+  
+  public final boolean bO(long paramLong)
   {
     boolean bool2 = false;
     AppMethodBeat.i(91863);
     int i;
-    if (paramLong > this.aLo)
+    if (paramLong > this.cFl)
     {
       i = 0;
-      if (this.aLm.uJ() < this.aLs) {
+      if (this.cFj.Uk() < this.cFp) {
         break label134;
       }
     }
     label134:
     for (int j = 1;; j = 0)
     {
-      boolean bool3 = this.aLt;
+      boolean bool3 = this.cFq;
       if (i != 2)
       {
         bool1 = bool2;
         if (i == 1)
         {
           bool1 = bool2;
-          if (this.aLt)
+          if (this.cFq)
           {
             bool1 = bool2;
             if (j != 0) {}
@@ -97,16 +139,16 @@ public final class c
       {
         bool1 = true;
       }
-      this.aLt = bool1;
-      if ((this.aLr == null) || (this.aLt == bool3)) {
+      this.cFq = bool1;
+      if ((this.cFo == null) || (this.cFq == bool3)) {
         break label147;
       }
-      if (!this.aLt) {
+      if (!this.cFq) {
         break label140;
       }
       AppMethodBeat.o(91863);
       throw null;
-      if (paramLong < this.aLn)
+      if (paramLong < this.cFk)
       {
         i = 2;
         break;
@@ -118,60 +160,18 @@ public final class c
     AppMethodBeat.o(91863);
     throw null;
     label147:
-    boolean bool1 = this.aLt;
+    boolean bool1 = this.cFq;
     AppMethodBeat.o(91863);
     return bool1;
   }
   
-  public final void a(r[] paramArrayOfr, g paramg)
-  {
-    int i = 0;
-    AppMethodBeat.i(91860);
-    this.aLs = 0;
-    while (i < paramArrayOfr.length)
-    {
-      if (paramg.bof[i] != null) {
-        this.aLs += x.fB(paramArrayOfr[i].getTrackType());
-      }
-      i += 1;
-    }
-    this.aLm.fq(this.aLs);
-    AppMethodBeat.o(91860);
-  }
-  
-  public final boolean b(long paramLong, boolean paramBoolean)
+  public final boolean g(long paramLong, boolean paramBoolean)
   {
     if (paramBoolean) {}
-    for (long l = this.aLq; (l <= 0L) || (paramLong >= l); l = this.aLp) {
+    for (long l = this.cFn; (l <= 0L) || (paramLong >= l); l = this.cFm) {
       return true;
     }
     return false;
-  }
-  
-  public final void qT()
-  {
-    AppMethodBeat.i(91861);
-    reset(true);
-    AppMethodBeat.o(91861);
-  }
-  
-  public final void qX()
-  {
-    AppMethodBeat.i(91859);
-    reset(false);
-    AppMethodBeat.o(91859);
-  }
-  
-  public final void qY()
-  {
-    AppMethodBeat.i(91862);
-    reset(true);
-    AppMethodBeat.o(91862);
-  }
-  
-  public final b qZ()
-  {
-    return this.aLm;
   }
 }
 

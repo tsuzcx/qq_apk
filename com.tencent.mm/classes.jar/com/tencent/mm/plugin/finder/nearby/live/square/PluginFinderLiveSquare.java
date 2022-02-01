@@ -2,111 +2,129 @@ package com.tencent.mm.plugin.finder.nearby.live.square;
 
 import android.content.Context;
 import android.content.Intent;
-import androidx.lifecycle.aa;
-import androidx.lifecycle.ab;
-import com.tencent.c.a.b.a.d;
+import androidx.lifecycle.aj;
+import androidx.lifecycle.ak;
+import com.tencent.d.a.b.a.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.api.c;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.kernel.f.c;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.nearby.live.square.page.b;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/live/square/PluginFinderLiveSquare;", "Lcom/tencent/mm/kernel/plugin/Plugin;", "Lcom/tencent/plugin/finder/nearby/api/IPluginFinderLiveSquare;", "Landroidx/lifecycle/ViewModelStoreOwner;", "Lcom/tencent/mm/kernel/api/ICoreAccountCallback;", "()V", "viewModelStore", "Landroidx/lifecycle/ViewModelStore;", "enterFinderLiveOperationUI", "", "context", "Landroid/content/Context;", "i", "Landroid/content/Intent;", "enterFinderLiveSquare", "execute", "profile", "Lcom/tencent/mm/kernel/plugin/ProcessProfile;", "getTargetCommentScene", "", "commentScene", "getTargetLiveTabId", "getViewModelStore", "isEnableMoreEntrencePlugin", "", "isFinderLiveSquareCommentScene", "isFinderLiveSquareMoreCommentScene", "onAccountInitialized", "upgrade", "Lcom/tencent/mm/kernel/CoreStorage$UpgradeInfo;", "onAccountRelease", "parseTabCommentScene", "tabId", "plugin-finder-nearby_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/live/square/PluginFinderLiveSquare;", "Lcom/tencent/mm/kernel/plugin/Plugin;", "Lcom/tencent/plugin/finder/nearby/api/IPluginFinderLiveSquare;", "Landroidx/lifecycle/ViewModelStoreOwner;", "Lcom/tencent/mm/kernel/api/ICoreAccountCallback;", "()V", "viewModelStore", "Landroidx/lifecycle/ViewModelStore;", "enterFinderLiveEntrance", "", "context", "Landroid/content/Context;", "i", "Landroid/content/Intent;", "enterFinderLiveOperationUI", "enterFinderLiveSquare", "execute", "profile", "Lcom/tencent/mm/kernel/plugin/ProcessProfile;", "getTargetCommentScene", "", "commentScene", "tabId", "getTargetLiveTabId", "getViewModelStore", "isEnableMoreEntrencePlugin", "", "isFinderLiveSquareCommentScene", "isFinderLiveSquareMoreCommentScene", "onAccountInitialized", "upgrade", "Lcom/tencent/mm/kernel/CoreStorage$UpgradeInfo;", "onAccountRelease", "parseTabCommentScene", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class PluginFinderLiveSquare
   extends f
-  implements ab, d, c
+  implements ak, d, c
 {
-  private final aa VK;
+  private final aj er;
   
   public PluginFinderLiveSquare()
   {
-    AppMethodBeat.i(203477);
-    this.VK = new aa();
-    AppMethodBeat.o(203477);
+    AppMethodBeat.i(341090);
+    this.er = new aj();
+    AppMethodBeat.o(341090);
+  }
+  
+  public final void enterFinderLiveEntrance(Context paramContext, Intent paramIntent)
+  {
+    AppMethodBeat.i(341102);
+    s.u(paramContext, "context");
+    com.tencent.mm.plugin.finder.nearby.a locala = com.tencent.mm.plugin.finder.nearby.a.EFh;
+    com.tencent.mm.plugin.finder.nearby.a.P(paramContext, paramIntent);
+    AppMethodBeat.o(341102);
   }
   
   public final void enterFinderLiveOperationUI(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(203457);
-    p.k(paramContext, "context");
-    com.tencent.mm.plugin.finder.nearby.a locala = com.tencent.mm.plugin.finder.nearby.a.zCs;
+    AppMethodBeat.i(341108);
+    s.u(paramContext, "context");
+    com.tencent.mm.plugin.finder.nearby.a locala = com.tencent.mm.plugin.finder.nearby.a.EFh;
     com.tencent.mm.plugin.finder.nearby.a.enterFinderLiveOperationUI(paramContext, paramIntent);
-    AppMethodBeat.o(203457);
+    AppMethodBeat.o(341108);
   }
   
   public final void enterFinderLiveSquare(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(203453);
-    p.k(paramContext, "context");
-    com.tencent.mm.plugin.finder.nearby.a locala = com.tencent.mm.plugin.finder.nearby.a.zCs;
-    com.tencent.mm.plugin.finder.nearby.a.u(paramContext, paramIntent);
-    AppMethodBeat.o(203453);
+    AppMethodBeat.i(341097);
+    s.u(paramContext, "context");
+    com.tencent.mm.plugin.finder.nearby.a locala = com.tencent.mm.plugin.finder.nearby.a.EFh;
+    com.tencent.mm.plugin.finder.nearby.a.O(paramContext, paramIntent);
+    AppMethodBeat.o(341097);
   }
   
   public final void execute(g paramg) {}
   
   public final int getTargetCommentScene(int paramInt)
   {
-    AppMethodBeat.i(203470);
-    Object localObject = a.zGd;
-    localObject = com.tencent.mm.plugin.finder.nearby.live.square.page.a.zGC;
-    paramInt = com.tencent.mm.plugin.finder.nearby.live.square.page.a.parseTabCommentScene(paramInt, a.getTargetLiveTabId());
-    AppMethodBeat.o(203470);
+    AppMethodBeat.i(341138);
+    paramInt = getTargetCommentScene(paramInt, 0);
+    AppMethodBeat.o(341138);
     return paramInt;
+  }
+  
+  public final int getTargetCommentScene(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(341144);
+    Object localObject = a.ELB;
+    localObject = b.ELW;
+    paramInt1 = b.parseTabCommentScene(paramInt1, a.hW(paramInt1, paramInt2));
+    AppMethodBeat.o(341144);
+    return paramInt1;
   }
   
   public final int getTargetLiveTabId()
   {
-    AppMethodBeat.i(203468);
-    a locala = a.zGd;
-    int i = a.getTargetLiveTabId();
-    AppMethodBeat.o(203468);
+    AppMethodBeat.i(341133);
+    a locala = a.ELB;
+    int i = a.eFA();
+    AppMethodBeat.o(341133);
     return i;
   }
   
-  public final aa getViewModelStore()
+  public final aj getViewModelStore()
   {
-    return this.VK;
+    return this.er;
   }
   
   public final boolean isEnableMoreEntrencePlugin(int paramInt)
   {
-    AppMethodBeat.i(203467);
-    com.tencent.mm.plugin.finder.nearby.live.square.page.a locala = com.tencent.mm.plugin.finder.nearby.live.square.page.a.zGC;
-    if (!com.tencent.mm.plugin.finder.nearby.live.square.page.a.isFinderLiveSquareCommentScene(paramInt))
+    AppMethodBeat.i(341130);
+    b localb = b.ELW;
+    if (!b.isFinderLiveSquareCommentScene(paramInt))
     {
-      locala = com.tencent.mm.plugin.finder.nearby.live.square.page.a.zGC;
-      if (!com.tencent.mm.plugin.finder.nearby.live.square.page.a.isFinderLiveSquareMoreCommentScene(paramInt))
+      localb = b.ELW;
+      if (!b.isFinderLiveSquareMoreCommentScene(paramInt))
       {
-        locala = com.tencent.mm.plugin.finder.nearby.live.square.page.a.zGC;
-        if (!com.tencent.mm.plugin.finder.nearby.live.square.page.a.Ov(paramInt))
+        localb = b.ELW;
+        if (!b.QN(paramInt))
         {
-          AppMethodBeat.o(203467);
+          AppMethodBeat.o(341130);
           return true;
         }
       }
     }
-    AppMethodBeat.o(203467);
+    AppMethodBeat.o(341130);
     return false;
   }
   
   public final boolean isFinderLiveSquareCommentScene(int paramInt)
   {
-    AppMethodBeat.i(203460);
-    com.tencent.mm.plugin.finder.nearby.live.square.page.a locala = com.tencent.mm.plugin.finder.nearby.live.square.page.a.zGC;
-    boolean bool = com.tencent.mm.plugin.finder.nearby.live.square.page.a.isFinderLiveSquareCommentScene(paramInt);
-    AppMethodBeat.o(203460);
+    AppMethodBeat.i(341117);
+    b localb = b.ELW;
+    boolean bool = b.isFinderLiveSquareCommentScene(paramInt);
+    AppMethodBeat.o(341117);
     return bool;
   }
   
   public final boolean isFinderLiveSquareMoreCommentScene(int paramInt)
   {
-    AppMethodBeat.i(203461);
-    com.tencent.mm.plugin.finder.nearby.live.square.page.a locala = com.tencent.mm.plugin.finder.nearby.live.square.page.a.zGC;
-    boolean bool = com.tencent.mm.plugin.finder.nearby.live.square.page.a.isFinderLiveSquareMoreCommentScene(paramInt);
-    AppMethodBeat.o(203461);
+    AppMethodBeat.i(341121);
+    b localb = b.ELW;
+    boolean bool = b.isFinderLiveSquareMoreCommentScene(paramInt);
+    AppMethodBeat.o(341121);
     return bool;
   }
   
@@ -116,10 +134,10 @@ public final class PluginFinderLiveSquare
   
   public final int parseTabCommentScene(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(203471);
-    com.tencent.mm.plugin.finder.nearby.live.square.page.a locala = com.tencent.mm.plugin.finder.nearby.live.square.page.a.zGC;
-    paramInt1 = com.tencent.mm.plugin.finder.nearby.live.square.page.a.parseTabCommentScene(paramInt1, paramInt2);
-    AppMethodBeat.o(203471);
+    AppMethodBeat.i(341150);
+    b localb = b.ELW;
+    paramInt1 = b.parseTabCommentScene(paramInt1, paramInt2);
+    AppMethodBeat.o(341150);
     return paramInt1;
   }
 }

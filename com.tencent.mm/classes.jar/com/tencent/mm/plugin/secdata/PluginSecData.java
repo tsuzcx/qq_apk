@@ -2,22 +2,22 @@ package com.tencent.mm.plugin.secdata;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.f.c;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.plugin.p.d.a;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.plugin.ac.a.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.IAutoDBItem;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.vfs.y;
 import java.util.HashMap;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/secdata/PluginSecData;", "Lcom/tencent/mm/kernel/plugin/Plugin;", "Lcom/tencent/mm/plugin/secdata/IPluginSecData;", "Lcom/tencent/mm/kernel/api/bucket/ICoreAccountCallbackBucket;", "Lcom/tencent/mm/kernel/boot/parallels/IParallelsDependency;", "()V", "TAG", "", "configure", "", "profile", "Lcom/tencent/mm/kernel/plugin/ProcessProfile;", "dependency", "execute", "getOnlyMemory", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "subType", "", "id", "(ILjava/lang/String;)Lcom/tencent/mm/protobuf/BaseProtoBuf;", "getWithClear", "clazz", "Ljava/lang/Class;", "callback", "Lcom/tencent/mm/plugin/secdata/ISecReportDataCallback;", "getWithClearSync", "(ILjava/lang/String;Ljava/lang/Class;)Lcom/tencent/mm/protobuf/BaseProtoBuf;", "getWithoutClear", "getWithoutClearSync", "installed", "name", "onAccountInitialized", "upgrade", "Lcom/tencent/mm/kernel/CoreStorage$UpgradeInfo;", "onAccountRelease", "parallelsDependency", "removeFromMemory", "removeFromStorage", "removeFromStorageSync", "", "updateOnlyMemory", "value", "(ILjava/lang/String;Lcom/tencent/mm/protobuf/BaseProtoBuf;)V", "updateWithSave", "(ILjava/lang/String;Lcom/tencent/mm/protobuf/BaseProtoBuf;Lcom/tencent/mm/plugin/secdata/ISecReportDataCallback;)V", "updateWithSaveSync", "(ILjava/lang/String;Lcom/tencent/mm/protobuf/BaseProtoBuf;)Z", "plugin-sec-data_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/secdata/PluginSecData;", "Lcom/tencent/mm/kernel/plugin/Plugin;", "Lcom/tencent/mm/plugin/secdata/IPluginSecData;", "Lcom/tencent/mm/kernel/api/bucket/ICoreAccountCallbackBucket;", "Lcom/tencent/mm/kernel/boot/parallels/IParallelsDependency;", "()V", "TAG", "", "configure", "", "profile", "Lcom/tencent/mm/kernel/plugin/ProcessProfile;", "dependency", "execute", "getOnlyMemory", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "subType", "", "id", "(ILjava/lang/String;)Lcom/tencent/mm/protobuf/BaseProtoBuf;", "getWithClear", "clazz", "Ljava/lang/Class;", "callback", "Lcom/tencent/mm/plugin/secdata/ISecReportDataCallback;", "getWithClearSync", "(ILjava/lang/String;Ljava/lang/Class;)Lcom/tencent/mm/protobuf/BaseProtoBuf;", "getWithoutClear", "getWithoutClearSync", "installed", "name", "onAccountInitialized", "upgrade", "Lcom/tencent/mm/kernel/CoreStorage$UpgradeInfo;", "onAccountRelease", "parallelsDependency", "removeFromMemory", "removeFromStorage", "removeFromStorageSync", "", "updateOnlyMemory", "value", "(ILjava/lang/String;Lcom/tencent/mm/protobuf/BaseProtoBuf;)V", "updateWithSave", "(ILjava/lang/String;Lcom/tencent/mm/protobuf/BaseProtoBuf;Lcom/tencent/mm/plugin/secdata/ISecReportDataCallback;)V", "expireTime", "", "(ILjava/lang/String;Lcom/tencent/mm/protobuf/BaseProtoBuf;JLcom/tencent/mm/plugin/secdata/ISecReportDataCallback;)V", "updateWithSaveSync", "(ILjava/lang/String;Lcom/tencent/mm/protobuf/BaseProtoBuf;)Z", "plugin-sec-data_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class PluginSecData
   extends com.tencent.mm.kernel.b.f
   implements com.tencent.mm.kernel.a.b.b, com.tencent.mm.kernel.api.bucket.c, g
@@ -30,47 +30,49 @@ public final class PluginSecData
   
   public final void execute(com.tencent.mm.kernel.b.g paramg) {}
   
-  public final <T extends com.tencent.mm.cd.a> T getOnlyMemory(int paramInt, String paramString)
+  public final <T extends com.tencent.mm.bx.a> T getOnlyMemory(int paramInt, String paramString)
   {
-    AppMethodBeat.i(198164);
+    AppMethodBeat.i(261502);
     if (paramString != null)
     {
       paramString = paramInt + '_' + paramString;
-      com.tencent.mm.plugin.secdata.a.c localc = com.tencent.mm.plugin.secdata.a.c.JbR;
-      paramString = (com.tencent.mm.cd.a)com.tencent.mm.plugin.secdata.a.c.fFr().get(paramString);
-      AppMethodBeat.o(198164);
+      com.tencent.mm.plugin.secdata.a.c localc = com.tencent.mm.plugin.secdata.a.c.PlH;
+      paramString = (com.tencent.mm.bx.a)com.tencent.mm.plugin.secdata.a.c.gUz().get(paramString);
+      AppMethodBeat.o(261502);
       return paramString;
     }
-    AppMethodBeat.o(198164);
+    AppMethodBeat.o(261502);
     return null;
   }
   
-  public final <T extends com.tencent.mm.cd.a> void getWithClear(final int paramInt, String paramString, final Class<T> paramClass, final i<T> parami)
+  public final <T extends com.tencent.mm.bx.a> void getWithClear(int paramInt, final String paramString, final Class<T> paramClass, final i<T> parami)
   {
-    AppMethodBeat.i(198172);
-    if (paramString != null)
+    AppMethodBeat.i(261528);
+    if (paramString == null) {}
+    for (paramString = null;; paramString = ah.aiuX)
     {
-      com.tencent.mm.ae.d.c("SecDBTag", (kotlin.g.a.a)new a(paramString, this, paramInt, paramClass, parami));
-      AppMethodBeat.o(198172);
+      if (paramString == null) {
+        com.tencent.mm.ae.d.e("SecDBTag", (kotlin.g.a.a)new b(parami));
+      }
+      AppMethodBeat.o(261528);
       return;
+      com.tencent.mm.ae.d.e("SecDBTag", (kotlin.g.a.a)new a(paramInt, paramString, this, paramClass, parami));
     }
-    com.tencent.mm.ae.d.c("SecDBTag", (kotlin.g.a.a)new b(parami));
-    AppMethodBeat.o(198172);
   }
   
-  public final <T extends com.tencent.mm.cd.a> T getWithClearSync(int paramInt, String paramString, Class<T> paramClass)
+  public final <T extends com.tencent.mm.bx.a> T getWithClearSync(int paramInt, String paramString, Class<T> paramClass)
   {
-    AppMethodBeat.i(198184);
+    AppMethodBeat.i(261560);
     Object localObject;
     com.tencent.mm.plugin.secdata.a.b localb;
     if (paramString != null)
     {
-      localObject = com.tencent.mm.plugin.p.d.EiT;
-      localObject = (com.tencent.mm.plugin.secdata.a.d)((com.tencent.mm.plugin.secdata.a.a)d.a.bj(com.tencent.mm.plugin.secdata.a.a.class)).bi(com.tencent.mm.plugin.secdata.a.d.class);
-      localb = ((com.tencent.mm.plugin.secdata.a.d)localObject).aXJ(paramInt + '_' + paramString);
+      localObject = com.tencent.mm.plugin.ac.a.MnH;
+      localObject = (com.tencent.mm.plugin.secdata.a.d)((com.tencent.mm.plugin.secdata.a.a)a.a.bW(com.tencent.mm.plugin.secdata.a.a.class)).bV(com.tencent.mm.plugin.secdata.a.d.class);
+      localb = ((com.tencent.mm.plugin.secdata.a.d)localObject).aVs(paramInt + '_' + paramString);
       if (localb != null) {
-        if (paramClass != null) {
-          paramString = (com.tencent.mm.cd.a)paramClass.newInstance();
+        if (paramClass == null) {
+          paramString = null;
         }
       }
     }
@@ -80,49 +82,51 @@ public final class PluginSecData
       try
       {
         paramString.parseFrom(localb.field_data);
-        label93:
-        com.tencent.mm.plugin.p.h.b((com.tencent.mm.plugin.p.h)localObject, (IAutoDBItem)localb, false, false, 6);
-        AppMethodBeat.o(198184);
+        label87:
+        com.tencent.mm.plugin.ac.g.b((com.tencent.mm.plugin.ac.g)localObject, (IAutoDBItem)localb, false, false, 6);
+        AppMethodBeat.o(261560);
         return paramString;
-        paramString = null;
+        paramString = (com.tencent.mm.bx.a)paramClass.newInstance();
         continue;
-        AppMethodBeat.o(198184);
+        AppMethodBeat.o(261560);
         return null;
-        AppMethodBeat.o(198184);
+        AppMethodBeat.o(261560);
         return null;
       }
       catch (Exception paramClass)
       {
-        break label93;
+        break label87;
       }
     }
   }
   
-  public final <T extends com.tencent.mm.cd.a> void getWithoutClear(final int paramInt, String paramString, final Class<T> paramClass, final i<T> parami)
+  public final <T extends com.tencent.mm.bx.a> void getWithoutClear(int paramInt, final String paramString, final Class<T> paramClass, final i<T> parami)
   {
-    AppMethodBeat.i(198177);
+    AppMethodBeat.i(261535);
     Log.i(this.TAG, "getWithoutClear subType:" + paramInt + " id:" + paramString);
-    if (paramString != null)
+    if (paramString == null) {}
+    for (paramString = null;; paramString = ah.aiuX)
     {
-      com.tencent.mm.ae.d.c("SecDBTag", (kotlin.g.a.a)new c(paramString, this, paramInt, paramClass, parami));
-      AppMethodBeat.o(198177);
+      if (paramString == null) {
+        com.tencent.mm.ae.d.e("SecDBTag", (kotlin.g.a.a)new d(parami));
+      }
+      AppMethodBeat.o(261535);
       return;
+      com.tencent.mm.ae.d.e("SecDBTag", (kotlin.g.a.a)new c(paramInt, paramString, this, paramClass, parami));
     }
-    com.tencent.mm.ae.d.c("SecDBTag", (kotlin.g.a.a)new d(parami));
-    AppMethodBeat.o(198177);
   }
   
-  public final <T extends com.tencent.mm.cd.a> T getWithoutClearSync(int paramInt, String paramString, Class<T> paramClass)
+  public final <T extends com.tencent.mm.bx.a> T getWithoutClearSync(int paramInt, String paramString, Class<T> paramClass)
   {
-    AppMethodBeat.i(198187);
+    AppMethodBeat.i(261565);
     Object localObject;
     if (paramString != null)
     {
-      localObject = com.tencent.mm.plugin.p.d.EiT;
-      localObject = ((com.tencent.mm.plugin.secdata.a.d)((com.tencent.mm.plugin.secdata.a.a)d.a.bj(com.tencent.mm.plugin.secdata.a.a.class)).bi(com.tencent.mm.plugin.secdata.a.d.class)).aXJ(paramInt + '_' + paramString);
+      localObject = com.tencent.mm.plugin.ac.a.MnH;
+      localObject = ((com.tencent.mm.plugin.secdata.a.d)((com.tencent.mm.plugin.secdata.a.a)a.a.bW(com.tencent.mm.plugin.secdata.a.a.class)).bV(com.tencent.mm.plugin.secdata.a.d.class)).aVs(paramInt + '_' + paramString);
       if (localObject != null) {
-        if (paramClass != null) {
-          paramString = (com.tencent.mm.cd.a)paramClass.newInstance();
+        if (paramClass == null) {
+          paramString = null;
         }
       }
     }
@@ -132,19 +136,19 @@ public final class PluginSecData
       try
       {
         paramString.parseFrom(((com.tencent.mm.plugin.secdata.a.b)localObject).field_data);
-        label89:
-        AppMethodBeat.o(198187);
+        label83:
+        AppMethodBeat.o(261565);
         return paramString;
-        paramString = null;
+        paramString = (com.tencent.mm.bx.a)paramClass.newInstance();
         continue;
-        AppMethodBeat.o(198187);
+        AppMethodBeat.o(261565);
         return null;
-        AppMethodBeat.o(198187);
+        AppMethodBeat.o(261565);
         return null;
       }
       catch (Exception paramClass)
       {
-        break label89;
+        break label83;
       }
     }
   }
@@ -158,273 +162,261 @@ public final class PluginSecData
   
   public final void onAccountInitialized(f.c paramc)
   {
-    AppMethodBeat.i(198162);
+    AppMethodBeat.i(261497);
     try
     {
-      paramc = com.tencent.mm.kernel.h.aHG();
-      p.j(paramc, "MMKernel.storage()");
-      paramc = paramc.aHp().get(ar.a.VwE, Integer.valueOf(0));
-      Object localObject1 = new StringBuilder();
-      Object localObject2 = com.tencent.mm.kernel.h.aHG();
-      p.j(localObject2, "MMKernel.storage()");
-      localObject2 = ((com.tencent.mm.kernel.f)localObject2).aHl() + "secdata/";
-      localObject1 = (String)localObject2 + "SecData.db";
-      if ((p.h(paramc, Integer.valueOf(2)) ^ true))
+      Object localObject = h.baE().ban().get(at.a.acYp, Integer.valueOf(0));
+      String str = s.X(h.baE().cachePath, "secdata/");
+      paramc = s.X(str, "SecData.db");
+      if (!s.p(localObject, Integer.valueOf(2)))
       {
         Log.i(this.TAG, "diff version, delete old db;");
-        u.deleteDir((String)localObject2);
+        y.ew(str, true);
       }
-      paramc = com.tencent.mm.plugin.p.d.EiT;
-      if (((com.tencent.mm.plugin.secdata.a.a)d.a.bj(com.tencent.mm.plugin.secdata.a.a.class)).aNf((String)localObject1))
-      {
-        paramc = com.tencent.mm.kernel.h.aHG();
-        p.j(paramc, "MMKernel.storage()");
-        paramc.aHp().set(ar.a.VwE, Integer.valueOf(2));
+      localObject = com.tencent.mm.plugin.ac.a.MnH;
+      if (((com.tencent.mm.plugin.secdata.a.a)a.a.bW(com.tencent.mm.plugin.secdata.a.a.class)).aPK(paramc)) {
+        h.baE().ban().set(at.a.acYp, Integer.valueOf(2));
       }
-      com.tencent.mm.ae.d.c("SecDBTag", (kotlin.g.a.a)new e(this));
-      AppMethodBeat.o(198162);
+      com.tencent.mm.ae.d.e("SecDBTag", (kotlin.g.a.a)new PluginSecData.e(this));
+      AppMethodBeat.o(261497);
       return;
     }
     catch (Exception paramc)
     {
       Log.printErrStackTrace(this.TAG, (Throwable)paramc, "create sec data db", new Object[0]);
-      AppMethodBeat.o(198162);
+      AppMethodBeat.o(261497);
     }
   }
   
   public final void onAccountRelease()
   {
-    AppMethodBeat.i(198156);
-    com.tencent.mm.plugin.secdata.a.c localc = com.tencent.mm.plugin.secdata.a.c.JbR;
+    AppMethodBeat.i(261490);
+    com.tencent.mm.plugin.secdata.a.c localc = com.tencent.mm.plugin.secdata.a.c.PlH;
     com.tencent.mm.plugin.secdata.a.c.clear();
-    AppMethodBeat.o(198156);
+    AppMethodBeat.o(261490);
   }
   
   public final void parallelsDependency() {}
   
   public final void removeFromMemory(int paramInt, String paramString)
   {
-    AppMethodBeat.i(198169);
+    AppMethodBeat.i(261520);
     if (paramString != null)
     {
       paramString = paramInt + '_' + paramString;
-      com.tencent.mm.plugin.secdata.a.c localc = com.tencent.mm.plugin.secdata.a.c.JbR;
-      com.tencent.mm.plugin.secdata.a.c.fFr().remove(paramString);
-      AppMethodBeat.o(198169);
-      return;
+      com.tencent.mm.plugin.secdata.a.c localc = com.tencent.mm.plugin.secdata.a.c.PlH;
+      com.tencent.mm.plugin.secdata.a.c.gUz().remove(paramString);
     }
-    AppMethodBeat.o(198169);
+    AppMethodBeat.o(261520);
   }
   
-  public final <T extends com.tencent.mm.cd.a> void removeFromStorage(final int paramInt, String paramString, final i<T> parami)
+  public final <T extends com.tencent.mm.bx.a> void removeFromStorage(int paramInt, final String paramString, final i<T> parami)
   {
-    AppMethodBeat.i(198190);
-    if (paramString != null)
+    AppMethodBeat.i(261578);
+    if (paramString == null) {}
+    for (paramString = null;; paramString = ah.aiuX)
     {
-      com.tencent.mm.ae.d.c("SecDBTag", (kotlin.g.a.a)new f(paramString, paramInt, parami));
-      AppMethodBeat.o(198190);
+      if (paramString == null) {
+        com.tencent.mm.ae.d.e("SecDBTag", (kotlin.g.a.a)new g(parami));
+      }
+      AppMethodBeat.o(261578);
       return;
+      com.tencent.mm.ae.d.e("SecDBTag", (kotlin.g.a.a)new f(paramInt, paramString, parami));
     }
-    com.tencent.mm.ae.d.c("SecDBTag", (kotlin.g.a.a)new g(parami));
-    AppMethodBeat.o(198190);
   }
   
   public final boolean removeFromStorageSync(int paramInt, String paramString)
   {
-    AppMethodBeat.i(198189);
+    AppMethodBeat.i(261572);
     if (paramString != null)
     {
-      d.a locala = com.tencent.mm.plugin.p.d.EiT;
-      if (((com.tencent.mm.plugin.secdata.a.d)((com.tencent.mm.plugin.secdata.a.a)d.a.bj(com.tencent.mm.plugin.secdata.a.a.class)).bi(com.tencent.mm.plugin.secdata.a.d.class)).aXK(paramInt + '_' + paramString) > 0)
+      a.a locala = com.tencent.mm.plugin.ac.a.MnH;
+      if (((com.tencent.mm.plugin.secdata.a.d)((com.tencent.mm.plugin.secdata.a.a)a.a.bW(com.tencent.mm.plugin.secdata.a.a.class)).bV(com.tencent.mm.plugin.secdata.a.d.class)).aVt(paramInt + '_' + paramString) > 0)
       {
-        AppMethodBeat.o(198189);
+        AppMethodBeat.o(261572);
         return true;
       }
-      AppMethodBeat.o(198189);
+      AppMethodBeat.o(261572);
       return false;
     }
-    AppMethodBeat.o(198189);
+    AppMethodBeat.o(261572);
     return false;
   }
   
-  public final <T extends com.tencent.mm.cd.a> void updateOnlyMemory(int paramInt, String paramString, T paramT)
+  public final <T extends com.tencent.mm.bx.a> void updateOnlyMemory(int paramInt, String paramString, T paramT)
   {
-    AppMethodBeat.i(198168);
+    AppMethodBeat.i(261512);
     if (paramString != null)
     {
       paramString = paramInt + '_' + paramString;
-      Object localObject = com.tencent.mm.plugin.secdata.a.c.JbR;
-      localObject = (Map)com.tencent.mm.plugin.secdata.a.c.fFr();
+      Object localObject = com.tencent.mm.plugin.secdata.a.c.PlH;
+      localObject = (Map)com.tencent.mm.plugin.secdata.a.c.gUz();
       if (paramT == null)
       {
-        paramString = new t("null cannot be cast to non-null type com.tencent.mm.protobuf.BaseProtoBuf");
-        AppMethodBeat.o(198168);
+        paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protobuf.BaseProtoBuf");
+        AppMethodBeat.o(261512);
         throw paramString;
       }
       ((Map)localObject).put(paramString, paramT);
-      AppMethodBeat.o(198168);
-      return;
     }
-    AppMethodBeat.o(198168);
+    AppMethodBeat.o(261512);
   }
   
-  public final <T extends com.tencent.mm.cd.a> void updateWithSave(final int paramInt, final String paramString, final T paramT, final i<T> parami)
+  public final <T extends com.tencent.mm.bx.a> void updateWithSave(int paramInt, final String paramString, final T paramT, final long paramLong, i<T> parami)
   {
-    AppMethodBeat.i(198179);
-    if (paramString != null)
+    AppMethodBeat.i(261550);
+    if (paramString == null) {}
+    for (paramString = null;; paramString = ah.aiuX)
     {
-      com.tencent.mm.ae.d.c("SecDBTag", (kotlin.g.a.a)new h(paramString, this, paramInt, paramString, paramT, parami));
-      AppMethodBeat.o(198179);
+      if (paramString == null) {
+        com.tencent.mm.ae.d.e("SecDBTag", (kotlin.g.a.a)new i(parami, paramT));
+      }
+      AppMethodBeat.o(261550);
       return;
+      com.tencent.mm.ae.d.e("SecDBTag", (kotlin.g.a.a)new h(paramInt, paramString, this, paramString, paramT, paramLong, parami));
     }
-    com.tencent.mm.ae.d.c("SecDBTag", (kotlin.g.a.a)new i(parami, paramT));
-    AppMethodBeat.o(198179);
   }
   
-  public final <T extends com.tencent.mm.cd.a> boolean updateWithSaveSync(int paramInt, String paramString, T paramT)
+  public final <T extends com.tencent.mm.bx.a> void updateWithSave(int paramInt, String paramString, T paramT, i<T> parami)
+  {
+    AppMethodBeat.i(261542);
+    updateWithSave(paramInt, paramString, paramT, 259200000L, parami);
+    AppMethodBeat.o(261542);
+  }
+  
+  public final <T extends com.tencent.mm.bx.a> boolean updateWithSaveSync(int paramInt, String paramString, T paramT)
   {
     Object localObject1 = null;
     com.tencent.mm.plugin.secdata.a.b localb1 = null;
-    AppMethodBeat.i(198182);
+    AppMethodBeat.i(261556);
     if (paramString != null)
     {
-      Object localObject2 = com.tencent.mm.plugin.p.d.EiT;
-      localObject2 = (com.tencent.mm.plugin.secdata.a.d)((com.tencent.mm.plugin.secdata.a.a)d.a.bj(com.tencent.mm.plugin.secdata.a.a.class)).bi(com.tencent.mm.plugin.secdata.a.d.class);
+      Object localObject2 = com.tencent.mm.plugin.ac.a.MnH;
+      localObject2 = (com.tencent.mm.plugin.secdata.a.d)((com.tencent.mm.plugin.secdata.a.a)a.a.bW(com.tencent.mm.plugin.secdata.a.a.class)).bV(com.tencent.mm.plugin.secdata.a.d.class);
       String str = paramInt + '_' + paramString;
-      com.tencent.mm.plugin.secdata.a.b localb2 = ((com.tencent.mm.plugin.secdata.a.d)localObject2).aXJ(str);
+      com.tencent.mm.plugin.secdata.a.b localb2 = ((com.tencent.mm.plugin.secdata.a.d)localObject2).aVs(str);
       if (localb2 != null)
       {
         localb2.field_originId = paramString;
         localb2.field_type = paramInt;
-        paramString = localb1;
-        if (paramT != null) {
-          paramString = paramT.toByteArray();
-        }
-        localb2.field_data = paramString;
-        localb2.field_updateTime = cm.bfE();
-        localb2.field_expireTime = (localb2.field_updateTime + 259200000L);
-        if (com.tencent.mm.plugin.p.h.b((com.tencent.mm.plugin.p.h)localObject2, (IAutoDBItem)localb2) > 0L)
+        if (paramT == null) {}
+        for (paramString = localb1;; paramString = paramT.toByteArray())
         {
-          AppMethodBeat.o(198182);
+          localb2.field_data = paramString;
+          localb2.field_updateTime = cn.bDw();
+          localb2.field_expireTime = (localb2.field_updateTime + 259200000L);
+          if (com.tencent.mm.plugin.ac.g.b((com.tencent.mm.plugin.ac.g)localObject2, (IAutoDBItem)localb2) <= 0L) {
+            break;
+          }
+          AppMethodBeat.o(261556);
           return true;
         }
-        AppMethodBeat.o(198182);
+        AppMethodBeat.o(261556);
         return false;
       }
       localb1 = new com.tencent.mm.plugin.secdata.a.b();
       localb1.field_id = str;
       localb1.field_originId = paramString;
-      localb1.field_createTime = cm.bfE();
+      localb1.field_createTime = cn.bDw();
       localb1.field_updateTime = localb1.field_createTime;
       localb1.field_expireTime = (localb1.field_updateTime + 259200000L);
       localb1.field_type = paramInt;
-      paramString = localObject1;
-      if (paramT != null) {
-        paramString = paramT.toByteArray();
+      if (paramT == null) {}
+      for (paramString = localObject1;; paramString = paramT.toByteArray())
+      {
+        localb1.field_data = paramString;
+        boolean bool = com.tencent.mm.plugin.ac.g.a((com.tencent.mm.plugin.ac.g)localObject2, (IAutoDBItem)localb1, false, false, 6);
+        AppMethodBeat.o(261556);
+        return bool;
       }
-      localb1.field_data = paramString;
-      boolean bool = com.tencent.mm.plugin.p.h.a((com.tencent.mm.plugin.p.h)localObject2, (IAutoDBItem)localb1, false, false, 6);
-      AppMethodBeat.o(198182);
-      return bool;
     }
-    AppMethodBeat.o(198182);
+    AppMethodBeat.o(261556);
     return false;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "invoke", "com/tencent/mm/plugin/secdata/PluginSecData$getWithClear$1$1"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    a(String paramString, PluginSecData paramPluginSecData, int paramInt, Class paramClass, i parami)
+    a(int paramInt, String paramString, PluginSecData paramPluginSecData, Class<T> paramClass, i<T> parami)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "invoke", "com/tencent/mm/plugin/secdata/PluginSecData$getWithClear$2$1"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    b(i parami)
+    b(i<T> parami)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "invoke", "com/tencent/mm/plugin/secdata/PluginSecData$getWithoutClear$1$1"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    c(String paramString, PluginSecData paramPluginSecData, int paramInt, Class paramClass, i parami)
+    c(int paramInt, String paramString, PluginSecData paramPluginSecData, Class<T> paramClass, i<T> parami)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "invoke", "com/tencent/mm/plugin/secdata/PluginSecData$getWithoutClear$2$1"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    d(i parami)
+    d(i<T> parami)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class e
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    e(PluginSecData paramPluginSecData)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "invoke", "com/tencent/mm/plugin/secdata/PluginSecData$removeFromStorage$1$1"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class f
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    f(String paramString, int paramInt, i parami)
+    f(int paramInt, String paramString, i<T> parami)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "invoke", "com/tencent/mm/plugin/secdata/PluginSecData$removeFromStorage$2$1"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class g
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    g(i parami)
+    g(i<T> parami)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "invoke", "com/tencent/mm/plugin/secdata/PluginSecData$updateWithSave$1$1"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class h
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    h(String paramString1, PluginSecData paramPluginSecData, int paramInt, String paramString2, com.tencent.mm.cd.a parama, i parami)
+    h(int paramInt, String paramString1, PluginSecData paramPluginSecData, String paramString2, T paramT, long paramLong, i<T> parami)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "invoke", "com/tencent/mm/plugin/secdata/PluginSecData$updateWithSave$2$1"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class i
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    i(i parami, com.tencent.mm.cd.a parama)
+    i(i<T> parami, T paramT)
     {
       super();
     }
@@ -432,7 +424,7 @@ public final class PluginSecData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.secdata.PluginSecData
  * JD-Core Version:    0.7.0.1
  */

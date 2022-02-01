@@ -10,21 +10,21 @@ public abstract interface b
   
   public abstract void b(int paramInt1, int paramInt2, Bundle paramBundle);
   
-  public abstract void cq(int paramInt1, int paramInt2);
+  public abstract void df(int paramInt1, int paramInt2);
   
-  public abstract void cr(int paramInt1, int paramInt2);
-  
-  public abstract void f(int paramInt, Bundle paramBundle);
+  public abstract void dg(int paramInt1, int paramInt2);
   
   public abstract void g(int paramInt, long paramLong1, long paramLong2);
   
-  public abstract void jf(int paramInt);
+  public abstract void g(int paramInt, Bundle paramBundle);
   
   public abstract void m(a parama);
+  
+  public abstract void mI(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.a.b
  * JD-Core Version:    0.7.0.1
  */

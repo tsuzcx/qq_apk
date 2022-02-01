@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/emp" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.live.core.view.LiveVideoView android:id="@id/emo" android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</RelativeLayout>
+<com.tencent.mm.plugin.hld.keyboard.S5SymbolKeyboard android:orientation="vertical" android:id="@id/iwl" android:background="@color/z_" android:layout_width="fill_parent" android:layout_height="@dimen/adp"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:keybutton="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/adp">
+        <com.tencent.mm.plugin.hld.symbol.ImeSymbolTypesScrollView android:id="@id/j0g" android:background="@color/a01" android:layout_width="0.0dip" android:layout_height="fill_parent" keybutton:imeKeyboardType="@integer/y" keybutton:layout_constraintBottom_toBottomOf="hr_" keybutton:layout_constraintEnd_toStartOf="@id/j0i" keybutton:layout_constraintHorizontal_chainStyle="k03" keybutton:layout_constraintHorizontal_weight="1.0" keybutton:layout_constraintStart_toStartOf="hr_" keybutton:layout_constraintTop_toTopOf="hr_" />
+        <RelativeLayout android:id="@id/j0i" android:layout_width="0.0dip" android:layout_height="fill_parent" keybutton:layout_constraintEnd_toEndOf="hr_" keybutton:layout_constraintHorizontal_weight="4.0" keybutton:layout_constraintStart_toEndOf="@id/j0g" keybutton:layout_constraintTop_toTopOf="@id/j0g">
+            <com.tencent.mm.plugin.hld.symbol.ImeSymbolGridScrollView android:id="@id/j0h" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <com.tencent.mm.plugin.hld.emoji.ImeEmojiView android:id="@id/j0d" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.tencent.mm.plugin.hld.keyboard.S5SymbolKeyboard>

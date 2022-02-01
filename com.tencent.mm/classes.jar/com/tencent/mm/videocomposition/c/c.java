@@ -1,36 +1,63 @@
 package com.tencent.mm.videocomposition.c;
 
-import android.os.Handler;
-import android.os.Looper;
+import android.opengl.GLES20;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.a.a;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.tav.decoder.logger.Logger;
+import java.util.Arrays;
 
-@l(iBK={1, 1, 15}, iBL={""}, iBM={"currentTicks", "", "stackTraceToString", "", "throwable", "", "ticksToNow", "before", "uiThread", "", "block", "Lkotlin/Function0;", "wxRemoveIf", "", "T", "Ljava/util/LinkedList;", "func", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "t", "video_composition_release"})
-public final class c
+final class c
 {
-  public static final void uiThread(a<x> parama)
+  private final int[] pNames;
+  private final int[] params;
+  
+  c()
   {
-    AppMethodBeat.i(248598);
-    p.k(parama, "block");
-    Thread localThread = Thread.currentThread();
-    Looper localLooper = Looper.getMainLooper();
-    p.j(localLooper, "Looper.getMainLooper()");
-    if (p.h(localThread, localLooper.getThread()))
+    AppMethodBeat.i(233495);
+    this.pNames = new int[] { 32777, 32777, 34877, 32969, 32968, 32971, 32970 };
+    this.params = new int[7];
+    AppMethodBeat.o(233495);
+  }
+  
+  final void cache()
+  {
+    try
     {
-      parama.invoke();
-      AppMethodBeat.o(248598);
+      AppMethodBeat.i(233502);
+      int i = 0;
+      while (i < this.pNames.length)
+      {
+        GLES20.glGetIntegerv(this.pNames[i], this.params, i);
+        i += 1;
+      }
+      AppMethodBeat.o(233502);
       return;
     }
-    new Handler(Looper.getMainLooper()).post((Runnable)new d(parama));
-    AppMethodBeat.o(248598);
+    finally {}
+  }
+  
+  final void restore()
+  {
+    try
+    {
+      AppMethodBeat.i(233507);
+      Logger.v("GLBlendStateCache", "restore: params = " + Arrays.toString(this.params));
+      GLES20.glEnable(3042);
+      GLES20.glBlendEquation(this.params[0]);
+      GLES20.glBlendEquationSeparate(this.params[1], this.params[2]);
+      GLES20.glBlendFuncSeparate(this.params[3], this.params[4], this.params[5], this.params[6]);
+      AppMethodBeat.o(233507);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.videocomposition.c.c
  * JD-Core Version:    0.7.0.1
  */

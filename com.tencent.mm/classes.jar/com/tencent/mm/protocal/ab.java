@@ -9,9 +9,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface ab
   extends IInterface
 {
-  public abstract byte[] aHa();
+  public abstract byte[] aZY();
   
-  public abstract byte[] aHb();
+  public abstract byte[] aZZ();
   
   public abstract int ak(byte[] paramArrayOfByte);
   
@@ -24,9 +24,9 @@ public abstract interface ab
       attachInterface(this, "com.tencent.mm.protocal.MMSyncCheckCoder_AIDL");
     }
     
-    public static ab hpg()
+    public static ab iQb()
     {
-      return a.RCl;
+      return a.YyN;
     }
     
     public IBinder asBinder()
@@ -45,13 +45,13 @@ public abstract interface ab
         return true;
       case 1: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.MMSyncCheckCoder_AIDL");
-        paramParcel1 = aHa();
+        paramParcel1 = aZY();
         paramParcel2.writeNoException();
         paramParcel2.writeByteArray(paramParcel1);
         return true;
       case 2: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.MMSyncCheckCoder_AIDL");
-        paramParcel1 = aHb();
+        paramParcel1 = aZZ();
         paramParcel2.writeNoException();
         paramParcel2.writeByteArray(paramParcel1);
         return true;
@@ -66,7 +66,7 @@ public abstract interface ab
     public static final class a
       implements ab
     {
-      public static ab RCl;
+      public static ab YyN;
       private IBinder mRemote;
       
       public a(IBinder paramIBinder)
@@ -74,7 +74,7 @@ public abstract interface ab
         this.mRemote = paramIBinder;
       }
       
-      public final byte[] aHa()
+      public final byte[] aZY()
       {
         AppMethodBeat.i(133129);
         Parcel localParcel1 = Parcel.obtain();
@@ -82,9 +82,9 @@ public abstract interface ab
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.protocal.MMSyncCheckCoder_AIDL");
-          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (ab.a.hpg() != null))
+          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (ab.a.iQb() != null))
           {
-            arrayOfByte = ab.a.hpg().aHa();
+            arrayOfByte = ab.a.iQb().aZY();
             return arrayOfByte;
           }
           localParcel2.readException();
@@ -99,7 +99,7 @@ public abstract interface ab
         }
       }
       
-      public final byte[] aHb()
+      public final byte[] aZZ()
       {
         AppMethodBeat.i(133130);
         Parcel localParcel1 = Parcel.obtain();
@@ -107,9 +107,9 @@ public abstract interface ab
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.protocal.MMSyncCheckCoder_AIDL");
-          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (ab.a.hpg() != null))
+          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (ab.a.iQb() != null))
           {
-            arrayOfByte = ab.a.hpg().aHb();
+            arrayOfByte = ab.a.iQb().aZZ();
             return arrayOfByte;
           }
           localParcel2.readException();
@@ -133,9 +133,9 @@ public abstract interface ab
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.protocal.MMSyncCheckCoder_AIDL");
           localParcel1.writeByteArray(paramArrayOfByte);
-          if ((!this.mRemote.transact(3, localParcel1, localParcel2, 0)) && (ab.a.hpg() != null))
+          if ((!this.mRemote.transact(3, localParcel1, localParcel2, 0)) && (ab.a.iQb() != null))
           {
-            i = ab.a.hpg().ak(paramArrayOfByte);
+            i = ab.a.iQb().ak(paramArrayOfByte);
             return i;
           }
           localParcel2.readException();
@@ -159,7 +159,7 @@ public abstract interface ab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.protocal.ab
  * JD-Core Version:    0.7.0.1
  */

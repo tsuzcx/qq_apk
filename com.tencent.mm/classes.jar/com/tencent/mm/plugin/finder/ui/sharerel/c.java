@@ -3,7 +3,6 @@ package com.tencent.mm.plugin.finder.ui.sharerel;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -14,243 +13,254 @@ import android.view.Window;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.am.p;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.plugin.finder.b.c;
-import com.tencent.mm.plugin.finder.b.d;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.i;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.cgi.cd;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.plugin.finder.cgi.dc;
+import com.tencent.mm.plugin.finder.e.b;
+import com.tencent.mm.plugin.finder.e.c;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.e.g;
+import com.tencent.mm.plugin.finder.e.h;
 import com.tencent.mm.plugin.finder.feed.b.a;
-import com.tencent.mm.plugin.finder.loader.ac;
-import com.tencent.mm.plugin.finder.ui.i;
-import com.tencent.mm.plugin.finder.viewmodel.component.aj;
-import com.tencent.mm.plugin.finder.viewmodel.component.aj.a;
-import com.tencent.mm.plugin.finder.viewmodel.component.au;
-import com.tencent.mm.protocal.protobuf.blp;
+import com.tencent.mm.plugin.finder.loader.x;
+import com.tencent.mm.plugin.finder.ui.j;
+import com.tencent.mm.plugin.finder.video.l;
+import com.tencent.mm.plugin.finder.viewmodel.component.as;
+import com.tencent.mm.plugin.finder.viewmodel.component.as.a;
+import com.tencent.mm.plugin.finder.viewmodel.component.bi;
+import com.tencent.mm.plugin.findersdk.a.bn;
+import com.tencent.mm.protocal.protobuf.bzg;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.ad;
-import com.tencent.mm.ui.ax;
+import com.tencent.mm.ui.af;
+import com.tencent.mm.ui.bf;
 import com.tencent.mm.ui.component.UIComponent;
-import com.tencent.mm.ui.widget.a.f.a;
-import com.tencent.mm.ui.widget.a.f.c;
+import com.tencent.mm.ui.widget.a.g.a;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
-import kotlin.g.b.p;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.u;
 import org.json.JSONObject;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/sharerel/WxaAdUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "TAG", "", "countDownOk", "", "getCountDownOk", "()Z", "setCountDownOk", "(Z)V", "countTimeSec", "", "getCountTimeSec", "()I", "setCountTimeSec", "(I)V", "feedbackWidget", "Lcom/tencent/mm/plugin/finder/ui/sharerel/WxaAdFeedbackWidget;", "getFeedbackWidget", "()Lcom/tencent/mm/plugin/finder/ui/sharerel/WxaAdFeedbackWidget;", "setFeedbackWidget", "(Lcom/tencent/mm/plugin/finder/ui/sharerel/WxaAdFeedbackWidget;)V", "hasPlay", "getHasPlay", "setHasPlay", "lastOffset", "getLastOffset", "setLastOffset", "lastPlayVideo", "Lcom/tencent/mm/plugin/finder/loader/IFinderMediaLoaderData;", "getLastPlayVideo", "()Lcom/tencent/mm/plugin/finder/loader/IFinderMediaLoaderData;", "setLastPlayVideo", "(Lcom/tencent/mm/plugin/finder/loader/IFinderMediaLoaderData;)V", "miniAppAdInfo", "Lcom/tencent/mm/protocal/protobuf/FinderWxaAdFlowInfo;", "getMiniAppAdInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderWxaAdFlowInfo;", "setMiniAppAdInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderWxaAdFlowInfo;)V", "presenter", "Lcom/tencent/mm/plugin/finder/ui/ShareRelPresenter;", "getPresenter", "()Lcom/tencent/mm/plugin/finder/ui/ShareRelPresenter;", "setPresenter", "(Lcom/tencent/mm/plugin/finder/ui/ShareRelPresenter;)V", "reporter", "Lcom/tencent/mm/plugin/finder/ui/sharerel/WxaAdReporter;", "getReporter", "()Lcom/tencent/mm/plugin/finder/ui/sharerel/WxaAdReporter;", "setReporter", "(Lcom/tencent/mm/plugin/finder/ui/sharerel/WxaAdReporter;)V", "titleTv", "Landroid/widget/TextView;", "getTitleTv", "()Landroid/widget/TextView;", "setTitleTv", "(Landroid/widget/TextView;)V", "totalCountDown", "getTotalCountDown", "doCallback", "", "fixActionBarStatus", "root", "Landroid/view/View;", "getRemainSec", "isAdFlow", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onCreateBefore", "refreshCountDownProgress", "reportAvatarClick", "reportCommentClick", "reportFollowClick", "reportForwardClick", "reportLikeClick", "reportNicknameClick", "showExitTips", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/ui/sharerel/WxaAdUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "TAG", "", "countDownOk", "", "getCountDownOk", "()Z", "setCountDownOk", "(Z)V", "countTimeSec", "", "getCountTimeSec", "()I", "setCountTimeSec", "(I)V", "feedbackWidget", "Lcom/tencent/mm/plugin/finder/ui/sharerel/WxaAdFeedbackWidget;", "getFeedbackWidget", "()Lcom/tencent/mm/plugin/finder/ui/sharerel/WxaAdFeedbackWidget;", "setFeedbackWidget", "(Lcom/tencent/mm/plugin/finder/ui/sharerel/WxaAdFeedbackWidget;)V", "hasPlay", "getHasPlay", "setHasPlay", "lastOffset", "getLastOffset", "setLastOffset", "lastPlayVideo", "Lcom/tencent/mm/plugin/finder/loader/IFinderMediaLoaderData;", "getLastPlayVideo", "()Lcom/tencent/mm/plugin/finder/loader/IFinderMediaLoaderData;", "setLastPlayVideo", "(Lcom/tencent/mm/plugin/finder/loader/IFinderMediaLoaderData;)V", "miniAppAdInfo", "Lcom/tencent/mm/protocal/protobuf/FinderWxaAdFlowInfo;", "getMiniAppAdInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderWxaAdFlowInfo;", "setMiniAppAdInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderWxaAdFlowInfo;)V", "presenter", "Lcom/tencent/mm/plugin/finder/ui/ShareRelPresenter;", "getPresenter", "()Lcom/tencent/mm/plugin/finder/ui/ShareRelPresenter;", "setPresenter", "(Lcom/tencent/mm/plugin/finder/ui/ShareRelPresenter;)V", "reporter", "Lcom/tencent/mm/plugin/finder/ui/sharerel/WxaAdReporter;", "getReporter", "()Lcom/tencent/mm/plugin/finder/ui/sharerel/WxaAdReporter;", "setReporter", "(Lcom/tencent/mm/plugin/finder/ui/sharerel/WxaAdReporter;)V", "titleTv", "Landroid/widget/TextView;", "getTitleTv", "()Landroid/widget/TextView;", "setTitleTv", "(Landroid/widget/TextView;)V", "totalCountDown", "getTotalCountDown", "doCallback", "", "fixActionBarStatus", "root", "Landroid/view/View;", "getRemainSec", "isAdFlow", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onCreateBefore", "refreshCountDownProgress", "reportAvatarClick", "reportCommentClick", "reportFollowClick", "reportForwardClick", "reportLikeClick", "reportNicknameClick", "showExitTips", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
   extends UIComponent
 {
-  public i AvA;
-  private blp AyM;
-  public b AyN;
-  private a AyY;
-  private final int AyZ;
-  boolean Aza;
-  public int Azb;
-  boolean Azc;
-  ac Azd;
-  int Aze;
+  int ESj;
+  public j FUF;
+  private bzg FXZ;
+  public b FYa;
+  private a FYn;
+  private final int FYo;
+  boolean FYp;
+  public int FYq;
+  boolean FYr;
+  x FYs;
   public final String TAG;
   TextView titleTv;
   
   public c(AppCompatActivity paramAppCompatActivity)
   {
     super(paramAppCompatActivity);
-    AppMethodBeat.i(240265);
+    AppMethodBeat.i(347814);
     this.TAG = "Finder.WxaAdUIC";
-    paramAppCompatActivity = com.tencent.mm.plugin.finder.storage.d.AjH;
-    this.AyZ = ((Number)com.tencent.mm.plugin.finder.storage.d.dSO().aSr()).intValue();
-    AppMethodBeat.o(240265);
+    paramAppCompatActivity = com.tencent.mm.plugin.finder.storage.d.FAy;
+    this.FYo = ((Number)com.tencent.mm.plugin.finder.storage.d.eQZ().bmg()).intValue();
+    AppMethodBeat.o(347814);
   }
   
-  private final void ebV()
+  private static final void a(c paramc, DialogInterface paramDialogInterface)
   {
-    AppMethodBeat.i(240253);
+    AppMethodBeat.i(347841);
+    kotlin.g.b.s.u(paramc, "this$0");
+    paramc = paramc.FUF;
+    if (paramc != null)
+    {
+      paramc = paramc.AJn;
+      if (paramc != null)
+      {
+        paramc = paramc.fjp();
+        if (paramc != null) {
+          paramc.hx(MMApplicationContext.getContext());
+        }
+      }
+    }
+    AppMethodBeat.o(347841);
+  }
+  
+  private static final void a(c paramc, boolean paramBoolean, String paramString)
+  {
+    AppMethodBeat.i(347833);
+    kotlin.g.b.s.u(paramc, "this$0");
+    paramc.getContext().finish();
+    AppMethodBeat.o(347833);
+  }
+  
+  private static final void ac(boolean paramBoolean, String paramString) {}
+  
+  private final void fdd()
+  {
+    AppMethodBeat.i(347823);
     com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new b(this));
-    AppMethodBeat.o(240253);
+    AppMethodBeat.o(347823);
   }
   
-  public final void ebR()
+  public final void fcZ()
   {
-    AppMethodBeat.i(240261);
-    b localb = this.AyN;
-    if (localb != null)
-    {
-      localb.ebR();
-      AppMethodBeat.o(240261);
-      return;
+    AppMethodBeat.i(347909);
+    b localb = this.FYa;
+    if (localb != null) {
+      localb.fcZ();
     }
-    AppMethodBeat.o(240261);
+    AppMethodBeat.o(347909);
   }
   
-  public final void ebS()
+  public final void fda()
   {
-    AppMethodBeat.i(240264);
-    b localb = this.AyN;
-    if (localb != null)
-    {
-      localb.ebS();
-      AppMethodBeat.o(240264);
-      return;
+    AppMethodBeat.i(347912);
+    b localb = this.FYa;
+    if (localb != null) {
+      localb.fda();
     }
-    AppMethodBeat.o(240264);
+    AppMethodBeat.o(347912);
   }
   
-  public final boolean ebU()
+  public final boolean fdc()
   {
-    return this.AyM != null;
+    return this.FXZ != null;
   }
   
-  public final int ebW()
+  public final int fde()
   {
-    AppMethodBeat.i(240258);
-    int i = Math.max(this.AyZ - this.Azb, 0);
-    AppMethodBeat.o(240258);
+    AppMethodBeat.i(347902);
+    int i = Math.max(this.FYo - this.FYq, 0);
+    AppMethodBeat.o(347902);
     return i;
   }
   
   public final boolean onBackPressed()
   {
-    AppMethodBeat.i(240256);
-    if ((!ebU()) || (this.Aza))
+    AppMethodBeat.i(347898);
+    if ((!fdc()) || (this.FYp))
     {
       boolean bool = super.onBackPressed();
-      AppMethodBeat.o(240256);
+      AppMethodBeat.o(347898);
       return bool;
     }
-    Object localObject = this.AvA;
+    Object localObject = this.FUF;
     if (localObject != null)
     {
-      localObject = ((b.a)localObject).xkW;
+      localObject = ((b.a)localObject).AJn;
       if (localObject != null)
       {
-        localObject = ((com.tencent.mm.plugin.finder.video.l)localObject).ehl();
+        localObject = ((l)localObject).fjp();
         if (localObject != null) {
-          ((au)localObject).gb(MMApplicationContext.getContext());
+          ((bi)localObject).hw(MMApplicationContext.getContext());
         }
       }
     }
-    new f.a((Context)getContext()).bBl(getResources().getString(b.j.finder_ad_back_tips)).bBp(getResources().getString(b.j.app_continue)).b((f.c)c.Azg).bBq(getResources().getString(b.j.finder_black_list_setting_not_save)).a((f.c)new d(this)).b((DialogInterface.OnDismissListener)new e(this)).show();
-    AppMethodBeat.o(240256);
+    new g.a((Context)getContext()).bDE(getResources().getString(e.h.finder_ad_back_tips)).bDI(getResources().getString(e.h.app_continue)).b(c..ExternalSyntheticLambda2.INSTANCE).bDJ(getResources().getString(e.h.finder_black_list_setting_not_save)).a(new c..ExternalSyntheticLambda1(this)).d(new c..ExternalSyntheticLambda0(this)).show();
+    AppMethodBeat.o(347898);
     return true;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(240248);
+    AppMethodBeat.i(347885);
     super.onCreate(paramBundle);
-    paramBundle = findViewById(b.f.full_actionbar);
-    b localb;
-    if (ebU())
+    paramBundle = findViewById(e.e.full_actionbar);
+    View localView;
+    bzg localbzg;
+    if (fdc())
     {
-      paramBundle = (WeImageView)paramBundle.findViewById(b.f.backBtnIv);
+      paramBundle = (WeImageView)paramBundle.findViewById(e.e.backBtnIv);
       if (paramBundle != null) {
-        paramBundle.setImageResource(b.i.icons_filled_close);
+        paramBundle.setImageResource(e.g.icons_filled_close);
       }
       if (paramBundle != null) {
-        paramBundle.setIconColor(getResources().getColor(b.c.hot_tab_selected_color));
+        paramBundle.setIconColor(getResources().getColor(e.b.hot_tab_selected_color));
       }
-      p.j(paramBundle, "backIv");
-      paramBundle.getLayoutParams().width = ((int)getResources().getDimension(b.d.Edge_3A));
-      paramBundle.getLayoutParams().height = ((int)getResources().getDimension(b.d.Edge_3A));
-      paramBundle = ad.kS((Context)getContext());
-      int i = b.g.finder_ad_count_down_layout;
-      Object localObject = getActivity().getWindow();
-      p.j(localObject, "activity.window");
-      localObject = ((Window)localObject).getDecorView();
-      if (localObject == null)
+      paramBundle.getLayoutParams().width = ((int)getResources().getDimension(e.c.Edge_3A));
+      paramBundle.getLayoutParams().height = ((int)getResources().getDimension(e.c.Edge_3A));
+      af.mU((Context)getContext()).inflate(e.f.finder_ad_count_down_layout, (ViewGroup)getActivity().getWindow().getDecorView(), true);
+      localView = findViewById(e.e.ad_count_down_layout_root);
+      this.titleTv = ((TextView)localView.findViewById(e.e.ad_desc_tv));
+      kotlin.g.b.s.s(localView, "root");
+      kotlin.g.b.s.u(localView, "root");
+      localView.setPadding(0, bf.getStatusBarHeight((Context)getActivity()), 0, 0);
+      fdd();
+      localbzg = this.FXZ;
+      if (localbzg != null)
       {
-        paramBundle = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup");
-        AppMethodBeat.o(240248);
-        throw paramBundle;
-      }
-      paramBundle.inflate(i, (ViewGroup)localObject, true);
-      View localView = findViewById(b.f.ad_count_down_layout_root);
-      this.titleTv = ((TextView)localView.findViewById(b.f.ad_desc_tv));
-      p.j(localView, "root");
-      p.k(localView, "root");
-      localView.setPadding(0, ax.getStatusBarHeight((Context)getActivity()), 0, 0);
-      ebV();
-      blp localblp = this.AyM;
-      if (localblp != null)
-      {
-        this.AyN = new b(getContext(), localblp);
-        localb = this.AyN;
+        this.FYa = new b(getContext(), localbzg);
+        localb = this.FYa;
         if (localb != null) {
-          localb.AyT = cm.bfE();
-        }
-      }
-      try
-      {
-        localObject = localb.AyX.jXW;
-        paramBundle = (Bundle)localObject;
-        if (localObject == null) {
-          paramBundle = "";
-        }
-        JSONObject localJSONObject = new JSONObject(paramBundle);
-        localObject = localJSONObject.optJSONObject("weapp_extra_data");
-        paramBundle = (Bundle)localObject;
-        if (localObject == null) {
-          paramBundle = new JSONObject();
-        }
-        localJSONObject.put("report_type", 1);
-        localJSONObject.put("report_link", localb.AyX.SWE);
-        localJSONObject.put("viewable", false);
-        localJSONObject.put("exposure_type", 0);
-        paramBundle.put("exp_time", localb.AyT);
-        paramBundle.put("clk_time", 0);
-        localJSONObject.put("weapp_extra_data", paramBundle.toString());
-        paramBundle = localJSONObject.toString();
-        p.j(paramBundle, "json.toString()");
-        paramBundle = new cd(paramBundle);
-        h.aGY().b((com.tencent.mm.an.q)paramBundle);
-      }
-      catch (Throwable paramBundle)
-      {
-        for (;;)
-        {
-          Log.printErrStackTrace(localb.TAG, paramBundle, "reportExpose", new Object[0]);
-        }
-      }
-      paramBundle = getContext();
-      localObject = this.AyN;
-      if (localObject == null) {
-        p.iCn();
-      }
-      this.AyY = new a(paramBundle, localView, localblp, (b)localObject);
-      paramBundle = aj.Bnu;
-      paramBundle = aj.a.fZ((Context)getContext());
-      if (paramBundle != null)
-      {
-        paramBundle = aj.a(paramBundle);
-        if (paramBundle != null)
-        {
-          paramBundle.a((com.tencent.mm.plugin.finder.event.base.d)new a(this));
-          AppMethodBeat.o(240248);
-          return;
+          localb.FYj = cn.bDw();
         }
       }
     }
-    AppMethodBeat.o(240248);
+    try
+    {
+      localObject = localb.FYg.mxQ;
+      paramBundle = (Bundle)localObject;
+      if (localObject == null) {
+        paramBundle = "";
+      }
+      JSONObject localJSONObject = new JSONObject(paramBundle);
+      localObject = localJSONObject.optJSONObject("weapp_extra_data");
+      paramBundle = (Bundle)localObject;
+      if (localObject == null) {
+        paramBundle = new JSONObject();
+      }
+      localJSONObject.put("report_type", 1);
+      localJSONObject.put("report_link", localb.FYg.aaiu);
+      localJSONObject.put("viewable", false);
+      localJSONObject.put("exposure_type", 0);
+      paramBundle.put("exp_time", localb.FYj);
+      paramBundle.put("clk_time", 0);
+      localJSONObject.put("weapp_extra_data", paramBundle.toString());
+      paramBundle = localJSONObject.toString();
+      kotlin.g.b.s.s(paramBundle, "json.toString()");
+      paramBundle = new dc(paramBundle);
+      h.aZW().a((p)paramBundle, 0);
+    }
+    finally
+    {
+      for (;;)
+      {
+        Object localObject;
+        Log.printErrStackTrace(localb.TAG, paramBundle, "reportExpose", new Object[0]);
+      }
+    }
+    paramBundle = getContext();
+    localObject = this.FYa;
+    kotlin.g.b.s.checkNotNull(localObject);
+    this.FYn = new a(paramBundle, localView, localbzg, (b)localObject);
+    paramBundle = as.GSQ;
+    paramBundle = as.a.hu((Context)getContext());
+    if (paramBundle != null)
+    {
+      paramBundle = ((bn)paramBundle).Vm(-1);
+      if (paramBundle != null) {
+        paramBundle.a((com.tencent.mm.plugin.finder.event.base.d)new a(this));
+      }
+    }
+    AppMethodBeat.o(347885);
   }
   
   public final void onCreateBefore(Bundle paramBundle)
   {
-    AppMethodBeat.i(240243);
+    AppMethodBeat.i(347874);
     super.onCreateBefore(paramBundle);
-    paramBundle = (com.tencent.mm.cd.a)new blp();
+    paramBundle = (com.tencent.mm.bx.a)new bzg();
     byte[] arrayOfByte = getIntent().getByteArrayExtra("KEY_MINI_APP_AD_FLOW_INFO");
     try
     {
       paramBundle.parseFrom(arrayOfByte);
-      this.AyM = ((blp)paramBundle);
-      AppMethodBeat.o(240243);
+      this.FXZ = ((bzg)paramBundle);
+      AppMethodBeat.o(347874);
       return;
     }
     catch (Exception paramBundle)
@@ -263,46 +273,48 @@ public final class c
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/ui/sharerel/WxaAdUIC$onCreate$2", "Lcom/tencent/mm/plugin/finder/event/base/EventObserver;", "isCareEvent", "", "dispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "event", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "onEventHappen", "", "ev", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/ui/sharerel/WxaAdUIC$onCreate$2", "Lcom/tencent/mm/plugin/finder/event/base/EventObserver;", "isCareEvent", "", "dispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "event", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "onEventHappen", "", "ev", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     extends com.tencent.mm.plugin.finder.event.base.d
   {
+    a(c paramc) {}
+    
     public final void a(com.tencent.mm.plugin.finder.event.base.b paramb)
     {
-      AppMethodBeat.i(270784);
-      p.k(paramb, "ev");
+      AppMethodBeat.i(347854);
+      kotlin.g.b.s.u(paramb, "ev");
       Object localObject1;
       Object localObject3;
       if (((paramb instanceof com.tencent.mm.plugin.finder.event.c.a)) && (((com.tencent.mm.plugin.finder.event.c.a)paramb).type == 3))
       {
-        localObject1 = c.a(this.Azf);
+        localObject1 = c.a(this.FYt);
         localObject2 = new StringBuilder("PlayEvent ev.video:");
-        localObject3 = ((com.tencent.mm.plugin.finder.event.c.a)paramb).xqx;
+        localObject3 = ((com.tencent.mm.plugin.finder.event.c.a)paramb).ANK;
         if (localObject3 == null) {
-          break label402;
+          break label401;
         }
       }
-      label402:
+      label401:
       for (int i = localObject3.hashCode();; i = 0)
       {
         Log.i((String)localObject1, i + ", offset:" + ((com.tencent.mm.plugin.finder.event.c.a)paramb).offset);
-        if ((!(p.h(this.Azf.Azd, ((com.tencent.mm.plugin.finder.event.c.a)paramb).xqx) ^ true)) && (Math.abs(((com.tencent.mm.plugin.finder.event.c.a)paramb).offset - this.Azf.Aze) <= 2000))
+        if ((kotlin.g.b.s.p(this.FYt.FYs, ((com.tencent.mm.plugin.finder.event.c.a)paramb).ANK)) && (Math.abs(((com.tencent.mm.plugin.finder.event.c.a)paramb).offset - this.FYt.ESj) <= 2000))
         {
-          localObject1 = this.Azf;
-          ((c)localObject1).Azb += 1;
+          localObject1 = this.FYt;
+          ((c)localObject1).FYq += 1;
         }
-        this.Azf.Azd = ((com.tencent.mm.plugin.finder.event.c.a)paramb).xqx;
-        this.Azf.Aze = ((com.tencent.mm.plugin.finder.event.c.a)paramb).offset;
-        if ((this.Azf.ebW() > 0) && (!this.Azf.Azc))
+        this.FYt.FYs = ((com.tencent.mm.plugin.finder.event.c.a)paramb).ANK;
+        this.FYt.ESj = ((com.tencent.mm.plugin.finder.event.c.a)paramb).offset;
+        if ((this.FYt.fde() > 0) && (!this.FYt.FYr))
         {
-          localObject2 = this.Azf.AyN;
+          localObject2 = this.FYt.FYa;
           if (localObject2 != null) {
-            ((b)localObject2).ebT();
+            ((b)localObject2).fdb();
           }
         }
         try
         {
-          localObject1 = ((b)localObject2).AyX.jXW;
+          localObject1 = ((b)localObject2).FYg.mxQ;
           paramb = (com.tencent.mm.plugin.finder.event.base.b)localObject1;
           if (localObject1 == null) {
             paramb = "";
@@ -314,114 +326,56 @@ public final class c
             paramb = new JSONObject();
           }
           ((JSONObject)localObject3).put("report_type", 1);
-          ((JSONObject)localObject3).put("report_link", ((b)localObject2).AyX.SWE);
+          ((JSONObject)localObject3).put("report_link", ((b)localObject2).FYg.aaiu);
           ((JSONObject)localObject3).put("viewable", true);
           ((JSONObject)localObject3).put("exposure_type", 1);
-          paramb.put("exp_time", ((b)localObject2).AyT);
+          paramb.put("exp_time", ((b)localObject2).FYj);
           paramb.put("clk_time", 0);
           ((JSONObject)localObject3).put("weapp_extra_data", paramb.toString());
           paramb = ((JSONObject)localObject3).toString();
-          p.j(paramb, "json.toString()");
-          paramb = new cd(paramb);
-          h.aGY().b((com.tencent.mm.an.q)paramb);
+          kotlin.g.b.s.s(paramb, "json.toString()");
+          paramb = new dc(paramb);
+          h.aZW().a((p)paramb, 0);
         }
-        catch (Throwable paramb)
+        finally
         {
           for (;;)
           {
             Log.printErrStackTrace(((b)localObject2).TAG, paramb, "reportFirstPlay", new Object[0]);
           }
         }
-        this.Azf.Azc = true;
-        c.b(this.Azf);
-        AppMethodBeat.o(270784);
+        this.FYt.FYr = true;
+        c.b(this.FYt);
+        AppMethodBeat.o(347854);
         return;
       }
     }
     
     public final boolean a(com.tencent.mm.plugin.finder.event.base.c paramc, com.tencent.mm.plugin.finder.event.base.b paramb)
     {
-      AppMethodBeat.i(270783);
-      p.k(paramc, "dispatcher");
-      p.k(paramb, "event");
+      AppMethodBeat.i(347812);
+      kotlin.g.b.s.u(paramc, "dispatcher");
+      kotlin.g.b.s.u(paramb, "event");
       boolean bool = paramb instanceof com.tencent.mm.plugin.finder.event.c.a;
-      AppMethodBeat.o(270783);
+      AppMethodBeat.o(347812);
       return bool;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
     b(c paramc)
     {
       super();
     }
   }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "onDialogClick"})
-  static final class c
-    implements f.c
-  {
-    public static final c Azg;
-    
-    static
-    {
-      AppMethodBeat.i(269972);
-      Azg = new c();
-      AppMethodBeat.o(269972);
-    }
-    
-    public final void g(boolean paramBoolean, String paramString) {}
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "onDialogClick"})
-  static final class d
-    implements f.c
-  {
-    d(c paramc) {}
-    
-    public final void g(boolean paramBoolean, String paramString)
-    {
-      AppMethodBeat.i(290381);
-      this.Azf.getContext().finish();
-      AppMethodBeat.o(290381);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
-  static final class e
-    implements DialogInterface.OnDismissListener
-  {
-    e(c paramc) {}
-    
-    public final void onDismiss(DialogInterface paramDialogInterface)
-    {
-      AppMethodBeat.i(280509);
-      paramDialogInterface = this.Azf.AvA;
-      if (paramDialogInterface != null)
-      {
-        paramDialogInterface = paramDialogInterface.xkW;
-        if (paramDialogInterface != null)
-        {
-          paramDialogInterface = paramDialogInterface.ehl();
-          if (paramDialogInterface != null)
-          {
-            paramDialogInterface.gc(MMApplicationContext.getContext());
-            AppMethodBeat.o(280509);
-            return;
-          }
-        }
-      }
-      AppMethodBeat.o(280509);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.sharerel.c
  * JD-Core Version:    0.7.0.1
  */

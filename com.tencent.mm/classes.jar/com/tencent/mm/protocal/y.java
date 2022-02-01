@@ -1,41 +1,41 @@
 package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.o;
-import com.tencent.mm.cd.b;
+import com.tencent.mm.am.n;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.jni.utils.UtilsJni;
-import com.tencent.mm.protocal.protobuf.eae;
-import com.tencent.mm.protocal.protobuf.fgr;
-import com.tencent.mm.protocal.protobuf.ht;
-import com.tencent.mm.protocal.protobuf.hu;
-import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.protocal.protobuf.gdd;
+import com.tencent.mm.protocal.protobuf.gol;
+import com.tencent.mm.protocal.protobuf.ip;
+import com.tencent.mm.protocal.protobuf.iq;
+import com.tencent.mm.protocal.protobuf.kd;
 import com.tencent.mm.sdk.platformtools.ChannelUtil;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.cl;
+import com.tencent.mm.storage.co;
 
 public final class y
-  extends o
+  extends n
 {
-  private final a RCa;
-  private final b RCb;
+  private final a YyD;
+  private final b YyE;
   private final int funcId;
   private final String uri;
   
-  public y(int paramInt1, String paramString, int paramInt2, eae parameae, byte[] paramArrayOfByte)
+  public y(int paramInt1, String paramString, int paramInt2, gol paramgol, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(134242);
-    this.RCa = new a();
-    this.RCb = new b();
+    this.YyD = new a();
+    this.YyE = new b();
     this.funcId = paramInt1;
     this.uri = paramString;
-    this.RCa.funcId = paramInt1;
-    this.RCa.RCd = paramArrayOfByte;
-    this.RCa.RCc.CQK = paramInt2;
-    this.RCa.RCc.RNl = parameae;
+    this.YyD.funcId = paramInt1;
+    this.YyD.randomKey = paramArrayOfByte;
+    this.YyD.YyF.IKW = paramInt2;
+    this.YyD.YyF.YKz = paramgol;
     AppMethodBeat.o(134242);
   }
   
@@ -46,12 +46,12 @@ public final class y
   
   public final l.d getReqObjImp()
   {
-    return this.RCa;
+    return this.YyD;
   }
   
   public final l.e getRespObj()
   {
-    return this.RCb;
+    return this.YyE;
   }
   
   public final int getType()
@@ -68,14 +68,14 @@ public final class y
     extends l.d
     implements l.b
   {
-    public ht RCc;
-    byte[] RCd;
+    public ip YyF;
     int funcId;
+    byte[] randomKey;
     
     public a()
     {
       AppMethodBeat.i(134238);
-      this.RCc = new ht();
+      this.YyF = new ip();
       AppMethodBeat.o(134238);
     }
     
@@ -93,36 +93,36 @@ public final class y
     {
       int j = -1;
       AppMethodBeat.i(134239);
-      this.RCc.setBaseRequest(l.a(this));
-      this.RCc.Dtb = q.auE();
-      this.RCc.RMH = com.tencent.mm.plugin.normsg.a.d.GxJ.aax(0);
-      this.RCc.mVB = Util.getSourceeMd5(MMApplicationContext.getContext());
-      this.RCc.rVG = d.RAB;
-      this.RCc.RMK = cl.hAM();
-      this.RCc.vhq = LocaleUtil.getApplicationLanguage();
-      this.RCc.vhp = Util.getTimeZoneOffset();
-      this.RCc.RML = ChannelUtil.channelId;
+      this.YyF.setBaseRequest(l.a(this));
+      this.YyF.Jmq = q.aOY();
+      this.YyF.YJV = com.tencent.mm.plugin.normsg.a.d.MtP.aeQ(0);
+      this.YyF.pSi = Util.getSourceeMd5(MMApplicationContext.getContext());
+      this.YyF.vgW = d.Yxf;
+      this.YyF.YJY = co.jcP();
+      this.YyF.yts = LocaleUtil.getApplicationLanguage();
+      this.YyF.ytr = Util.getTimeZoneOffset();
+      this.YyF.YJZ = ChannelUtil.channelId;
       for (;;)
       {
         try
         {
-          arrayOfByte = com.tencent.mm.plugin.normsg.a.d.GxJ.fjn();
+          arrayOfByte = com.tencent.mm.plugin.normsg.a.d.MtP.gtE();
           if (arrayOfByte == null) {
             continue;
           }
           i = arrayOfByte.length;
           Log.d("MicroMsg.MMReqRespAxAuth", "[debug] ccd set on axauth, len: %s", new Object[] { Integer.valueOf(i) });
-          fgr localfgr = new fgr();
-          localfgr.UGO = new eae().dc(arrayOfByte);
-          localfgr.UGS = new eae().dc(com.tencent.mm.plugin.normsg.a.d.GxJ.fjq());
+          gdd localgdd = new gdd();
+          localgdd.acaX = new gol().df(arrayOfByte);
+          localgdd.acbb = new gol().df(com.tencent.mm.plugin.normsg.a.d.MtP.gtH());
           i = j;
-          if (localfgr.UGS != null) {
-            i = localfgr.UGS.Ufv;
+          if (localgdd.acbb != null) {
+            i = localgdd.acbb.abwJ;
           }
           Log.d("MicroMsg.MMReqRespAxAuth", "[debug] devtok on axauth, len: %s", new Object[] { Integer.valueOf(i) });
-          this.RCc.RMN = new eae().dc(localfgr.toByteArray());
+          this.YyF.YKb = new gol().df(localgdd.toByteArray());
         }
-        catch (Throwable localThrowable)
+        finally
         {
           byte[] arrayOfByte;
           int i;
@@ -130,9 +130,9 @@ public final class y
           Log.printErrStackTrace("MicroMsg.MMReqRespAxAuth", localThrowable, "cc throws exception.", new Object[0]);
           continue;
         }
-        l = UtilsJni.CreateAxEcdhCryptoEngine(this.RCc.CQK, this.RCd, this.RCc.RNl.Tkb.UH);
+        l = UtilsJni.CreateAxEcdhCryptoEngine(this.YyF.IKW, this.randomKey, this.YyF.YKz.aaxD.Op);
         setEcdhEngine(l);
-        arrayOfByte = UtilsJni.AxEcdhEncrypt(l, this.RCc.toByteArray());
+        arrayOfByte = UtilsJni.AxEcdhEncrypt(l, this.YyF.toByteArray());
         AppMethodBeat.o(134239);
         return arrayOfByte;
         i = -1;
@@ -144,21 +144,21 @@ public final class y
     extends l.e
     implements l.c
   {
-    public hu RCe;
+    public iq YyG;
     
     public b()
     {
       AppMethodBeat.i(134240);
-      this.RCe = new hu();
+      this.YyG = new iq();
       AppMethodBeat.o(134240);
     }
     
     public final int fromProtoBuf(byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(134241);
-      this.RCe = ((hu)new hu().parseFrom(paramArrayOfByte));
-      l.a(this, this.RCe.getBaseResponse());
-      int i = this.RCe.getBaseResponse().CqV;
+      this.YyG = ((iq)new iq().parseFrom(paramArrayOfByte));
+      l.a(this, this.YyG.getBaseResponse());
+      int i = this.YyG.getBaseResponse().Idd;
       AppMethodBeat.o(134241);
       return i;
     }
@@ -166,7 +166,7 @@ public final class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.y
  * JD-Core Version:    0.7.0.1
  */

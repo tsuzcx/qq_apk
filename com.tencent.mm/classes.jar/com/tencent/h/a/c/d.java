@@ -1,6 +1,5 @@
 package com.tencent.h.a.c;
 
-import android.os.HandlerThread;
 import com.tencent.g.c.i;
 import com.tencent.h.a.h.a;
 import com.tencent.h.a.i.a;
@@ -9,73 +8,61 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class d
   implements b
 {
-  private com.tencent.h.a.a.c ZTg;
-  private com.tencent.h.a.b.a ZTh;
+  private com.tencent.h.a.a.c ahXG;
+  private com.tencent.h.a.b.a ahXH;
   
   public d(com.tencent.h.a.a.c paramc)
   {
-    this.ZTg = paramc;
+    this.ahXG = paramc;
   }
   
   public final boolean a(i.a parama)
   {
     long l2 = 0L;
-    AppMethodBeat.i(207681);
-    if (this.ZTh != null)
+    AppMethodBeat.i(212160);
+    if (this.ahXH != null)
     {
-      h.a locala = this.ZTh.itO();
+      h.a locala = this.ahXH.kdk();
       long l1 = l2;
       if (locala != null)
       {
         l1 = l2;
-        if (locala.ZRU == com.tencent.h.a.c.ZRP) {
+        if (locala.ahWr == com.tencent.h.a.c.ahWm) {
           l1 = 30L;
         }
       }
-      boolean bool = this.ZTh.a(parama, l1);
-      AppMethodBeat.o(207681);
+      boolean bool = this.ahXH.a(parama, l1);
+      AppMethodBeat.o(212160);
       return bool;
     }
-    AppMethodBeat.o(207681);
+    AppMethodBeat.o(212160);
     return false;
   }
   
   public final boolean b(h.a parama, a parama1)
   {
-    AppMethodBeat.i(207679);
-    boolean bool;
-    if (this.ZTh != null)
+    AppMethodBeat.i(212152);
+    if ((this.ahXH != null) && (!this.ahXH.isAlive()))
     {
-      com.tencent.h.a.b.a locala = this.ZTh;
-      if (locala.mHandlerThread == null) {
-        break label116;
-      }
-      bool = locala.mHandlerThread.isAlive();
-      if (!bool)
-      {
-        i.i("sensor_MasterManager", "[method: start ] mEngine is not Alive : ");
-        this.ZTh = null;
+      i.i("sensor_MasterManager", "[method: start ] mEngine is not Alive : ");
+      this.ahXH = null;
+    }
+    if (this.ahXH != null) {
+      if (parama.ahWr != this.ahXH.kdk().ahWr) {
+        this.ahXH.destroy();
       }
     }
-    if (this.ZTh != null) {
-      if (parama.ZRU != this.ZTh.itO().ZRU) {
-        this.ZTh.destroy();
-      }
-    }
-    for (this.ZTh = new c("master_engine", this.ZTg);; this.ZTh = new c("master_engine", this.ZTg))
+    for (this.ahXH = new c("master_engine", this.ahXG);; this.ahXH = new c("master_engine", this.ahXG))
     {
-      bool = this.ZTh.a(parama, parama1);
-      AppMethodBeat.o(207679);
+      boolean bool = this.ahXH.a(parama, parama1);
+      AppMethodBeat.o(212152);
       return bool;
-      label116:
-      bool = false;
-      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.h.a.c.d
  * JD-Core Version:    0.7.0.1
  */

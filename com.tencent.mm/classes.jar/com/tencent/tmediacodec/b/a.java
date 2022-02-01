@@ -14,23 +14,23 @@ public final class a
   
   public final a.b a(e parame)
   {
-    AppMethodBeat.i(224223);
+    AppMethodBeat.i(210806);
     if (com.tencent.tmediacodec.e.a.a(this, parame))
     {
-      parame = a.b.ZPp;
-      AppMethodBeat.o(224223);
+      parame = a.b.ahUq;
+      AppMethodBeat.o(210806);
       return parame;
     }
-    parame = a.b.ZPm;
-    AppMethodBeat.o(224223);
+    parame = a.b.ahUn;
+    AppMethodBeat.o(210806);
     return parame;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(224226);
+    AppMethodBeat.i(210811);
     String str = "AudioCodecWrapper[" + hashCode() + ']';
-    AppMethodBeat.o(224226);
+    AppMethodBeat.o(210811);
     return str;
   }
 }

@@ -1,28 +1,24 @@
 package com.tencent.mm.plugin.appbrand.config;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/config/ActionSheetControlIndex;", "", "index", "", "(Ljava/lang/String;II)V", "getIndex", "()I", "setIndex", "(I)V", "getControlByte", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandSysConfigWC;", "ShareToWeWork", "ShareToFriend", "CopyShortLink", "SecFlagForSinglePageMode", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/config/ActionSheetControlIndex;", "", "index", "", "(Ljava/lang/String;II)V", "getIndex", "()I", "setIndex", "(I)V", "getControlByte", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandSysConfigWC;", "defaultValue", "ShareToWeWork", "ShareToFriend", "CopyShortLink", "SecFlagForSinglePageMode", "ShowTradeComplaint", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public enum a
 {
   private int index;
   
   static
   {
-    AppMethodBeat.i(257069);
-    a locala1 = new a("ShareToWeWork", 0, 0);
-    nVL = locala1;
-    a locala2 = new a("ShareToFriend", 1, 1);
-    nVM = locala2;
-    a locala3 = new a("CopyShortLink", 2, 2);
-    nVN = locala3;
-    a locala4 = new a("SecFlagForSinglePageMode", 3, 3);
-    nVO = locala4;
-    nVP = new a[] { locala1, locala2, locala3, locala4 };
-    AppMethodBeat.o(257069);
+    AppMethodBeat.i(323387);
+    qVt = new a("ShareToWeWork", 0, 0);
+    qVu = new a("ShareToFriend", 1, 1);
+    qVv = new a("CopyShortLink", 2, 2);
+    qVw = new a("SecFlagForSinglePageMode", 3, 3);
+    qVx = new a("ShowTradeComplaint", 4, 4);
+    qVy = new a[] { qVt, qVu, qVv, qVw, qVx };
+    AppMethodBeat.o(323387);
   }
   
   private a(int paramInt)
@@ -32,39 +28,16 @@ public enum a
   
   public final int a(AppBrandSysConfigWC paramAppBrandSysConfigWC)
   {
-    AppMethodBeat.i(257070);
-    p.k(paramAppBrandSysConfigWC, "config");
-    paramAppBrandSysConfigWC = paramAppBrandSysConfigWC.nYY;
-    int i;
-    if (paramAppBrandSysConfigWC == null)
-    {
-      i = 1;
-      if ((i == 0) && (paramAppBrandSysConfigWC.length - 1 >= this.index)) {
-        break label89;
-      }
-      i = 0;
-    }
-    for (;;)
-    {
-      Log.i("MicroMsg.ActionSheetControlIndex", "getControlByte for " + name() + " [" + i + ']');
-      AppMethodBeat.o(257070);
-      return i;
-      i = 0;
-      break;
-      label89:
-      i = paramAppBrandSysConfigWC[this.index];
-      if (i < 0) {}
-      while (3 < i)
-      {
-        i = 0;
-        break;
-      }
-    }
+    AppMethodBeat.i(323391);
+    s.u(paramAppBrandSysConfigWC, "config");
+    int i = a(this, paramAppBrandSysConfigWC);
+    AppMethodBeat.o(323391);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.a
  * JD-Core Version:    0.7.0.1
  */

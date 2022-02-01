@@ -10,15 +10,15 @@ public class LocationIntent
   implements Parcelable
 {
   public static final Parcelable.Creator<LocationIntent> CREATOR;
-  public String Ejs;
-  public String Eju;
-  public String QSw = "";
-  public int QSx = 0;
-  public int fKJ = 0;
-  public Addr lLB = null;
+  public String Kcb;
+  public String Kcd;
+  public String XOv = "";
+  public int XOw = 0;
+  public int hQp = 0;
   public String label = "";
   public double lat;
   public double lng;
+  public Addr oEd = null;
   public String poiName = "";
   
   static
@@ -28,22 +28,22 @@ public class LocationIntent
     AppMethodBeat.o(151630);
   }
   
-  public final String aJc()
+  public final String bbZ()
   {
     AppMethodBeat.i(151628);
     Object localObject = new StringBuffer();
     ((StringBuffer)localObject).append("lat " + this.lat + ";");
     ((StringBuffer)localObject).append("lng " + this.lng + ";");
-    ((StringBuffer)localObject).append("scale " + this.fKJ + ";");
+    ((StringBuffer)localObject).append("scale " + this.hQp + ";");
     ((StringBuffer)localObject).append("label " + this.label + ";");
     ((StringBuffer)localObject).append("poiname " + this.poiName + ";");
-    ((StringBuffer)localObject).append("infourl " + this.QSw + ";");
-    ((StringBuffer)localObject).append("locTypeId " + this.Ejs + ";");
-    ((StringBuffer)localObject).append("poiType " + this.QSx + ";");
-    if (this.lLB != null) {
-      ((StringBuffer)localObject).append("addr " + this.lLB.toString() + ";");
+    ((StringBuffer)localObject).append("infourl " + this.XOv + ";");
+    ((StringBuffer)localObject).append("locTypeId " + this.Kcb + ";");
+    ((StringBuffer)localObject).append("poiType " + this.XOw + ";");
+    if (this.oEd != null) {
+      ((StringBuffer)localObject).append("addr " + this.oEd.toString() + ";");
     }
-    ((StringBuffer)localObject).append("poiid " + this.Eju + ";");
+    ((StringBuffer)localObject).append("poiid " + this.Kcd + ";");
     localObject = ((StringBuffer)localObject).toString();
     AppMethodBeat.o(151628);
     return localObject;
@@ -59,14 +59,14 @@ public class LocationIntent
     AppMethodBeat.i(151629);
     paramParcel.writeDouble(this.lat);
     paramParcel.writeDouble(this.lng);
-    paramParcel.writeInt(this.fKJ);
+    paramParcel.writeInt(this.hQp);
     paramParcel.writeString(this.label);
     paramParcel.writeString(this.poiName);
-    paramParcel.writeString(this.QSw);
-    paramParcel.writeString(this.Ejs);
-    paramParcel.writeInt(this.QSx);
-    paramParcel.writeParcelable(this.lLB, paramInt);
-    paramParcel.writeString(this.Eju);
+    paramParcel.writeString(this.XOv);
+    paramParcel.writeString(this.Kcb);
+    paramParcel.writeInt(this.XOw);
+    paramParcel.writeParcelable(this.oEd, paramInt);
+    paramParcel.writeString(this.Kcd);
     AppMethodBeat.o(151629);
   }
 }

@@ -13,7 +13,7 @@ public abstract interface f
   
   public abstract int getBackgroundColor();
   
-  public abstract void hk(boolean paramBoolean);
+  public abstract void hZ(boolean paramBoolean);
   
   public abstract void setBackButtonClickListener(View.OnClickListener paramOnClickListener);
   
@@ -29,35 +29,37 @@ public abstract interface f
   
   public abstract void setMainTitle(CharSequence paramCharSequence);
   
+  public abstract void setNavHidden(boolean paramBoolean);
+  
   public static enum a
   {
-    public final int roW;
+    public final int uzh;
     
     static
     {
-      AppMethodBeat.i(244974);
-      roU = new a("BLACK", 0, -16777216);
-      roV = new a("WHITE", 1, -1);
-      roX = new a[] { roU, roV };
-      AppMethodBeat.o(244974);
+      AppMethodBeat.i(324179);
+      uzf = new a("BLACK", 0, -16777216);
+      uzg = new a("WHITE", 1, -1);
+      uzi = new a[] { uzf, uzg };
+      AppMethodBeat.o(324179);
     }
     
     private a(int paramInt)
     {
-      this.roW = paramInt;
+      this.uzh = paramInt;
     }
     
-    public static a Dy(int paramInt)
+    public static a DX(int paramInt)
     {
       if (paramInt == -1) {
-        return roV;
+        return uzg;
       }
-      return roU;
+      return uzf;
     }
     
-    public static a anB(String paramString)
+    public static a agY(String paramString)
     {
-      AppMethodBeat.i(244970);
+      AppMethodBeat.i(324175);
       if (!TextUtils.isEmpty(paramString))
       {
         a[] arrayOfa = values();
@@ -68,21 +70,21 @@ public abstract interface f
           a locala = arrayOfa[i];
           if (locala.name().equalsIgnoreCase(paramString))
           {
-            AppMethodBeat.o(244970);
+            AppMethodBeat.o(324175);
             return locala;
           }
           i += 1;
         }
       }
-      paramString = roV;
-      AppMethodBeat.o(244970);
+      paramString = uzg;
+      AppMethodBeat.o(324175);
       return paramString;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.actionbar.f
  * JD-Core Version:    0.7.0.1
  */

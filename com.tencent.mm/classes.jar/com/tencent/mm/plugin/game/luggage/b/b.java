@@ -5,35 +5,35 @@ import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader.model.o;
 import com.tencent.mm.plugin.downloader.model.o.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class b
-  extends br
+  extends bv
 {
-  public final void a(Context paramContext, String paramString, final br.a parama)
+  public final void a(Context paramContext, String paramString, final bv.a parama)
   {
     AppMethodBeat.i(83052);
-    if (com.tencent.mm.plugin.webview.luggage.c.a.gVm())
+    if (com.tencent.mm.plugin.webview.luggage.c.a.iuX())
     {
       Log.i("MicroMsg.JsApiAddGameDownloadTask", "addGameDownloadTask isTeenMode and ignore");
-      com.tencent.mm.plugin.webview.luggage.c.a.ja(paramContext);
-      parama.i("cancel", null);
+      com.tencent.mm.plugin.webview.luggage.c.a.kQ(paramContext);
+      parama.j("cancel", null);
       AppMethodBeat.o(83052);
       return;
     }
     try
     {
       paramString = new JSONObject(paramString);
-      o.a(paramContext, com.tencent.mm.plugin.downloader_app.a.a.aO(paramString), new o.a()
+      o.a(paramContext, com.tencent.mm.plugin.downloader_app.a.a.aZ(paramString), new o.a()
       {
-        public final void i(String paramAnonymousString, JSONObject paramAnonymousJSONObject)
+        public final void j(String paramAnonymousString, JSONObject paramAnonymousJSONObject)
         {
           AppMethodBeat.i(83051);
-          parama.i(paramAnonymousString, paramAnonymousJSONObject);
+          parama.j(paramAnonymousString, paramAnonymousJSONObject);
           AppMethodBeat.o(83051);
         }
       });
@@ -42,14 +42,14 @@ public class b
     }
     catch (JSONException paramContext)
     {
-      parama.i("fail", null);
+      parama.j("fail", null);
       AppMethodBeat.o(83052);
     }
   }
   
   public final void b(b.a parama) {}
   
-  public final int cDj()
+  public final int dgI()
   {
     return 2;
   }

@@ -33,7 +33,7 @@ public class ShareIntentUtil
       paramIntent.setExtrasClassLoader(paramClassLoader);
       return;
     }
-    catch (Throwable paramIntent) {}
+    finally {}
   }
   
   public static boolean getBooleanExtra(Intent paramIntent, String paramString, boolean paramBoolean)
@@ -205,7 +205,7 @@ public class ShareIntentUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.loader.shareutil.ShareIntentUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -6,57 +6,75 @@ import android.view.View;
 import android.view.View.OnAttachStateChangeListener;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerView.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.a.g;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import kotlin.a.v;
-import kotlin.g.b.aa.d;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.a;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"exposedDataSet", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/view/ExposedData;", "Lkotlin/collections/HashMap;", "uiHandler", "Landroid/os/Handler;", "addExposedData", "", "key", "data", "removeExposedData", "getExposedInfo", "Landroid/view/View;", "setOnRecyclerViewChildExposedListener", "Landroidx/recyclerview/widget/RecyclerView;", "listener", "Lcom/tencent/mm/view/ExposeElves$OnRecyclerViewChildExposedListener;", "setOnViewExposedListener", "Lcom/tencent/mm/view/ExposeElves$OnViewExposedListener;", "setOnViewGroupChildExposedListener", "Landroid/view/ViewGroup;", "Lcom/tencent/mm/view/ExposeElves$OnViewGroupChildExposedListener;", "libmmui_release"})
+@Metadata(d1={""}, d2={"exposedDataSet", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/view/ExposedData;", "Lkotlin/collections/HashMap;", "uiHandler", "Landroid/os/Handler;", "addExposedData", "", "key", "data", "removeExposedData", "runOnUI", "call", "Lkotlin/Function0;", "getExposedInfo", "Landroid/view/View;", "setOnRecyclerViewChildExposedListener", "Landroidx/recyclerview/widget/RecyclerView;", "listener", "Lcom/tencent/mm/view/ExposeElves$OnRecyclerViewChildExposedListener;", "setOnViewExposedListener", "Lcom/tencent/mm/view/ExposeElves$OnViewExposedListener;", "setOnViewGroupChildExposedListener", "Landroid/view/ViewGroup;", "Lcom/tencent/mm/view/ExposeElves$OnViewGroupChildExposedListener;", "libmmui_release"}, k=2, mv={1, 5, 1}, xi=48)
 public final class f
 {
-  private static final HashMap<Integer, g> YKC;
-  private static final Handler cQo;
+  private static final HashMap<Integer, g> agGs;
+  private static final Handler eLs;
   
   static
   {
-    AppMethodBeat.i(203130);
-    cQo = new Handler(Looper.getMainLooper());
-    YKC = new HashMap();
-    AppMethodBeat.o(203130);
+    AppMethodBeat.i(234717);
+    eLs = new Handler(Looper.getMainLooper());
+    agGs = new HashMap();
+    AppMethodBeat.o(234717);
   }
   
-  public static final void a(View paramView, final e.b paramb)
+  public static final void a(final View paramView, e.b paramb)
   {
-    AppMethodBeat.i(203123);
-    p.k(paramView, "$this$setOnViewExposedListener");
-    cQo.post((Runnable)new c(paramView, paramb));
-    AppMethodBeat.o(203123);
+    AppMethodBeat.i(234690);
+    s.u(paramView, "<this>");
+    bt((a)new c(paramb, paramView));
+    AppMethodBeat.o(234690);
   }
   
-  public static final void a(ViewGroup paramViewGroup, final e.c paramc)
+  public static final void a(final ViewGroup paramViewGroup, e.c paramc)
   {
-    AppMethodBeat.i(203125);
-    p.k(paramViewGroup, "$this$setOnViewGroupChildExposedListener");
-    cQo.post((Runnable)new d(paramViewGroup, paramc));
-    AppMethodBeat.o(203125);
+    AppMethodBeat.i(234694);
+    s.u(paramViewGroup, "<this>");
+    bt((a)new d(paramc, paramViewGroup));
+    AppMethodBeat.o(234694);
   }
   
-  public static final void a(RecyclerView paramRecyclerView, final e.a parama)
+  public static final void a(RecyclerView paramRecyclerView, e.a parama)
   {
-    AppMethodBeat.i(203127);
-    p.k(paramRecyclerView, "$this$setOnRecyclerViewChildExposedListener");
-    cQo.post((Runnable)new b(paramRecyclerView, parama));
-    AppMethodBeat.o(203127);
+    AppMethodBeat.i(234698);
+    s.u(paramRecyclerView, "<this>");
+    bt((a)new f.b(parama, paramRecyclerView));
+    AppMethodBeat.o(234698);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/view/ExposeElvesKt$addExposedData$attachStateChangeListener$1", "Landroid/view/View$OnAttachStateChangeListener;", "onViewAttachedToWindow", "", "v", "Landroid/view/View;", "onViewDetachedFromWindow", "libmmui_release"})
+  public static final void bt(a<ah> parama)
+  {
+    AppMethodBeat.i(234702);
+    s.u(parama, "call");
+    if (Thread.currentThread().getId() == eLs.getLooper().getThread().getId())
+    {
+      parama.invoke();
+      AppMethodBeat.o(234702);
+      return;
+    }
+    eLs.post(new f..ExternalSyntheticLambda0(parama));
+    AppMethodBeat.o(234702);
+  }
+  
+  private static final void cg(a parama)
+  {
+    AppMethodBeat.i(234704);
+    s.u(parama, "$call");
+    parama.invoke();
+    AppMethodBeat.o(234704);
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/view/ExposeElvesKt$addExposedData$attachStateChangeListener$1", "Landroid/view/View$OnAttachStateChangeListener;", "onViewAttachedToWindow", "", "v", "Landroid/view/View;", "onViewDetachedFromWindow", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     implements View.OnAttachStateChangeListener
   {
@@ -64,195 +82,56 @@ public final class f
     
     public final void onViewAttachedToWindow(View paramView)
     {
-      AppMethodBeat.i(223484);
-      p.k(paramView, "v");
-      if (p.h(this.YKD.view, paramView)) {
-        f.a(paramView.hashCode(), this.YKD);
+      AppMethodBeat.i(234835);
+      s.u(paramView, "v");
+      if (s.p(this.agGt.view, paramView))
+      {
+        this.agGt.agGJ = false;
+        f.a(paramView.hashCode(), this.agGt);
       }
-      AppMethodBeat.o(223484);
+      AppMethodBeat.o(234835);
     }
     
     public final void onViewDetachedFromWindow(View paramView)
     {
-      AppMethodBeat.i(223487);
-      p.k(paramView, "v");
-      if (p.h(this.YKD.view, paramView))
+      AppMethodBeat.i(234843);
+      s.u(paramView, "v");
+      if (s.p(this.agGt.view, paramView))
       {
-        f.azm(paramView.hashCode());
-        Object localObject = this.YKD.YKP;
-        if (localObject != null) {
-          ((e.b)localObject).p(paramView, false);
-        }
-        localObject = this.YKD.YKQ;
-        if (localObject != null)
-        {
-          ((e.c)localObject).b(paramView, (List)v.aaAd);
-          AppMethodBeat.o(223487);
-          return;
+        paramView = f.my(paramView);
+        if (paramView != null) {
+          paramView.agGJ = true;
         }
       }
-      AppMethodBeat.o(223487);
+      AppMethodBeat.o(234843);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
-  {
-    b(RecyclerView paramRecyclerView, e.a parama) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(214249);
-      if (parama == null)
-      {
-        f.a((ViewGroup)this.YKE, null);
-        localObject1 = this.YKE.getTag(a.g.expose_elves_scroll_listener);
-        if (localObject1 != null)
-        {
-          if ((localObject1 instanceof RecyclerView.l)) {
-            this.YKE.b((RecyclerView.l)localObject1);
-          }
-          AppMethodBeat.o(214249);
-          return;
-        }
-        AppMethodBeat.o(214249);
-        return;
-      }
-      Object localObject1 = new aa.d();
-      ((aa.d)localObject1).aaBA = 0;
-      final boolean bool = parama.dpC();
-      Object localObject2 = this.YKE.getTag(a.g.expose_elves_scroll_listener);
-      if ((localObject2 != null) && ((localObject2 instanceof RecyclerView.l))) {
-        this.YKE.b((RecyclerView.l)localObject2);
-      }
-      localObject2 = new f.b.a((aa.d)localObject1);
-      this.YKE.a((RecyclerView.l)localObject2);
-      this.YKE.setTag(a.g.expose_elves_scroll_listener, localObject2);
-      f.a((ViewGroup)this.YKE, (e.c)new e.c()
-      {
-        public final void b(View paramAnonymousView, List<? extends View> paramAnonymousList)
-        {
-          AppMethodBeat.i(200307);
-          p.k(paramAnonymousView, "parent");
-          p.k(paramAnonymousList, "exposedChildren");
-          paramAnonymousView = new LinkedList();
-          paramAnonymousList = ((Iterable)paramAnonymousList).iterator();
-          while (paramAnonymousList.hasNext())
-          {
-            Object localObject = (View)paramAnonymousList.next();
-            localObject = this.YKG.YKE.bf((View)localObject);
-            if (localObject != null) {
-              paramAnonymousView.add(localObject);
-            }
-          }
-          this.YKG.YKF.b((View)this.YKG.YKE, (List)paramAnonymousView);
-          AppMethodBeat.o(200307);
-        }
-        
-        public final long er(View paramAnonymousView)
-        {
-          AppMethodBeat.i(200311);
-          p.k(paramAnonymousView, "view");
-          long l = this.YKG.YKF.af(this.YKG.YKE.bf(paramAnonymousView));
-          AppMethodBeat.o(200311);
-          return l;
-        }
-        
-        public final boolean igW()
-        {
-          return (bool) && (this.YKI.aaBA == 2);
-        }
-      });
-      AppMethodBeat.o(214249);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    implements Runnable
+    extends u
+    implements a<ah>
   {
-    c(View paramView, e.b paramb) {}
-    
-    public final void run()
+    c(e.b paramb, View paramView)
     {
-      AppMethodBeat.i(187665);
-      if (paramb != null)
-      {
-        localObject = f.ja(this.YKJ);
-        if (localObject != null)
-        {
-          ((g)localObject).YKP = paramb;
-          AppMethodBeat.o(187665);
-          return;
-        }
-        localObject = this.YKJ;
-        g localg = new g(this.YKJ);
-        localg.YKP = paramb;
-        f.a(((View)localObject).hashCode(), localg);
-        AppMethodBeat.o(187665);
-        return;
-      }
-      Object localObject = f.ja(this.YKJ);
-      if (localObject != null)
-      {
-        ((g)localObject).YKP = null;
-        if ((((g)localObject).YKP == null) && (((g)localObject).YKQ == null))
-        {
-          ((g)localObject).view.removeOnAttachStateChangeListener(((g)localObject).YKO);
-          f.azm(this.YKJ.hashCode());
-        }
-        AppMethodBeat.o(187665);
-        return;
-      }
-      AppMethodBeat.o(187665);
+      super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    implements Runnable
+    extends u
+    implements a<ah>
   {
-    d(ViewGroup paramViewGroup, e.c paramc) {}
-    
-    public final void run()
+    d(e.c paramc, ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(199741);
-      if (paramc != null)
-      {
-        localObject = f.ja((View)this.YKL);
-        if (localObject != null)
-        {
-          ((g)localObject).YKQ = paramc;
-          AppMethodBeat.o(199741);
-          return;
-        }
-        localObject = this.YKL;
-        g localg = new g((View)this.YKL);
-        localg.YKQ = paramc;
-        f.a(((ViewGroup)localObject).hashCode(), localg);
-        AppMethodBeat.o(199741);
-        return;
-      }
-      Object localObject = f.ja((View)this.YKL);
-      if (localObject != null)
-      {
-        ((g)localObject).YKQ = null;
-        if ((((g)localObject).YKP == null) && (((g)localObject).YKQ == null))
-        {
-          ((g)localObject).view.removeOnAttachStateChangeListener(((g)localObject).YKO);
-          f.azm(this.YKL.hashCode());
-        }
-        AppMethodBeat.o(199741);
-        return;
-      }
-      AppMethodBeat.o(199741);
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.view.f
  * JD-Core Version:    0.7.0.1
  */

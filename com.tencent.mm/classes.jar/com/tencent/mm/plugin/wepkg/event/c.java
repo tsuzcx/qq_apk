@@ -12,12 +12,12 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public final class c
 {
-  private static ConcurrentLinkedQueue<WeakReference<a>> QMh;
+  private static ConcurrentLinkedQueue<WeakReference<a>> XFF;
   
   static
   {
     AppMethodBeat.i(110644);
-    QMh = new ConcurrentLinkedQueue();
+    XFF = new ConcurrentLinkedQueue();
     AppMethodBeat.o(110644);
   }
   
@@ -26,7 +26,7 @@ public final class c
     AppMethodBeat.i(110643);
     if (MMApplicationContext.isMainProcess())
     {
-      Iterator localIterator = QMh.iterator();
+      Iterator localIterator = XFF.iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -37,11 +37,11 @@ public final class c
     }
     ToolsProcessIPCService.a(paramT, b.class, new f()
     {
-      public final void aH(Object paramAnonymousObject)
+      public final void onCallback(Object paramAnonymousObject)
       {
         AppMethodBeat.i(110638);
-        if (this.QMi != null) {
-          this.QMi.fiS();
+        if (c.this != null) {
+          c.this.gtj();
         }
         AppMethodBeat.o(110638);
       }
@@ -52,19 +52,19 @@ public final class c
   public static void a(a parama)
   {
     AppMethodBeat.i(110640);
-    QMh.add(new WeakReference(parama));
+    XFF.add(new WeakReference(parama));
     AppMethodBeat.o(110640);
   }
   
   public static void b(a parama)
   {
     AppMethodBeat.i(110641);
-    Iterator localIterator = QMh.iterator();
+    Iterator localIterator = XFF.iterator();
     while (localIterator.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();
       if (localWeakReference.get() == parama) {
-        QMh.remove(localWeakReference);
+        XFF.remove(localWeakReference);
       }
     }
     AppMethodBeat.o(110641);
@@ -73,13 +73,13 @@ public final class c
   public static void clear()
   {
     AppMethodBeat.i(110642);
-    QMh.clear();
+    XFF.clear();
     AppMethodBeat.o(110642);
   }
   
   public static abstract interface a
   {
-    public abstract void fiS();
+    public abstract void gtj();
   }
   
   static class b
@@ -88,7 +88,7 @@ public final class c
     public void invoke(Object paramObject, f paramf)
     {
       AppMethodBeat.i(110639);
-      Iterator localIterator = c.bek().iterator();
+      Iterator localIterator = c.bCd().iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -96,7 +96,7 @@ public final class c
           ((a)localWeakReference.get()).notify(paramObject);
         }
       }
-      paramf.aH(null);
+      paramf.onCallback(null);
       AppMethodBeat.o(110639);
     }
   }

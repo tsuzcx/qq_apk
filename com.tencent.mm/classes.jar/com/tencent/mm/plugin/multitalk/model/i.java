@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.multitalk.model;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/model/IScreenCastUiCallback;", "", "markPause", "", "wxUserName", "", "markRestart", "markResume", "markStart", "markStop", "plugin-multitalk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitalk/model/IScreenCastUiCallback;", "", "markPause", "", "wxUserName", "", "markRestart", "markResume", "markStart", "markStop", "plugin-multitalk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface i
 {
-  public abstract void aPN(String paramString);
+  public abstract void aMI(String paramString);
   
-  public abstract void aPO(String paramString);
+  public abstract void aMJ(String paramString);
   
-  public abstract void aPP(String paramString);
+  public abstract void aMK(String paramString);
   
-  public abstract void aPQ(String paramString);
+  public abstract void aML(String paramString);
   
-  public abstract void aPR(String paramString);
+  public abstract void aMM(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.model.i
  * JD-Core Version:    0.7.0.1
  */

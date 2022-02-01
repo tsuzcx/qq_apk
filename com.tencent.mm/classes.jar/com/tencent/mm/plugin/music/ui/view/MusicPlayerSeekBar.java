@@ -16,247 +16,170 @@ import com.tencent.mm.plugin.music.a.d;
 import com.tencent.mm.plugin.music.a.e;
 import com.tencent.mm.plugin.music.a.g;
 import com.tencent.mm.sdk.platformtools.Util;
-import java.util.HashMap;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/music/ui/view/MusicPlayerSeekBar;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "isSeeking", "", "()Z", "setSeeking", "(Z)V", "onSeekBarChange", "Lcom/tencent/mm/plugin/music/ui/view/MusicPlayerSeekBar$OnSeekBarChange;", "thumbDrawable", "Landroid/graphics/drawable/Drawable;", "getThumbDrawable", "()Landroid/graphics/drawable/Drawable;", "setThumbDrawable", "(Landroid/graphics/drawable/Drawable;)V", "enableLoading", "", "enable", "initView", "setColor", "color", "setGravityNoSpan", "setMaxProgress", "totalDuration", "setOnSeekBarChange", "setProgress", "currentPos", "setTextSize", "textSize", "Companion", "OnSeekBarChange", "plugin-music_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/music/ui/view/MusicPlayerSeekBar;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "isSeeking", "", "()Z", "setSeeking", "(Z)V", "onSeekBarChange", "Lcom/tencent/mm/plugin/music/ui/view/MusicPlayerSeekBar$OnSeekBarChange;", "thumbDrawable", "Landroid/graphics/drawable/Drawable;", "getThumbDrawable", "()Landroid/graphics/drawable/Drawable;", "setThumbDrawable", "(Landroid/graphics/drawable/Drawable;)V", "enableLoading", "", "enable", "initView", "setColor", "color", "setGravityNoSpan", "setMaxProgress", "totalDuration", "setOnSeekBarChange", "setProgress", "currentPos", "setTextSize", "textSize", "Companion", "OnSeekBarChange", "plugin-music_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class MusicPlayerSeekBar
   extends FrameLayout
 {
-  public static final a FWd;
-  private b FWc;
-  private HashMap _$_findViewCache;
-  private Drawable rBA;
-  private boolean rjZ;
+  public static final MusicPlayerSeekBar.a LRb;
+  private MusicPlayerSeekBar.b LRc;
+  private boolean msx;
+  private Drawable uMP;
   
   static
   {
-    AppMethodBeat.i(259424);
-    FWd = new a((byte)0);
-    AppMethodBeat.o(259424);
+    AppMethodBeat.i(270978);
+    LRb = new MusicPlayerSeekBar.a((byte)0);
+    AppMethodBeat.o(270978);
   }
   
   public MusicPlayerSeekBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(259422);
-    AppMethodBeat.o(259422);
+    AppMethodBeat.i(270969);
+    AppMethodBeat.o(270969);
   }
   
   public MusicPlayerSeekBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(259421);
+    AppMethodBeat.i(270967);
     View.inflate(getContext(), a.g.music_player_seek_bar, (ViewGroup)this);
-    paramContext = (TextView)_$_findCachedViewById(a.e.currentTime);
-    if (paramContext == null) {
-      p.iCn();
-    }
+    paramContext = (TextView)findViewById(a.e.currentTime);
+    s.checkNotNull(paramContext);
     paramContext.setText((CharSequence)"00:00");
-    paramContext = (TextView)_$_findCachedViewById(a.e.endTime);
-    if (paramContext == null) {
-      p.iCn();
-    }
+    paramContext = (TextView)findViewById(a.e.endTime);
+    s.checkNotNull(paramContext);
     paramContext.setText((CharSequence)"--:--");
-    this.rBA = getResources().getDrawable(a.d.music_seek_bar_tumb);
-    Util.expandViewTouchArea((SeekBar)_$_findCachedViewById(a.e.mpSeekBar), 100, 100, 100, 100);
-    ((SeekBar)_$_findCachedViewById(a.e.mpSeekBar)).setOnSeekBarChangeListener((SeekBar.OnSeekBarChangeListener)new c(this));
-    AppMethodBeat.o(259421);
-  }
-  
-  private View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(259425);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(259425);
-    return localView1;
+    this.uMP = getResources().getDrawable(a.d.music_seek_bar_tumb);
+    Util.expandViewTouchArea((View)findViewById(a.e.mpSeekBar), 100, 100, 100, 100);
+    ((SeekBar)findViewById(a.e.mpSeekBar)).setOnSeekBarChangeListener((SeekBar.OnSeekBarChangeListener)new c(this));
+    AppMethodBeat.o(270967);
   }
   
   public final Drawable getThumbDrawable()
   {
-    return this.rBA;
+    return this.uMP;
   }
   
   public final void setColor(int paramInt)
   {
-    AppMethodBeat.i(259417);
-    Object localObject = (TextView)_$_findCachedViewById(a.e.currentTime);
-    if (localObject == null) {
-      p.iCn();
-    }
+    AppMethodBeat.i(271008);
+    Object localObject = (TextView)findViewById(a.e.currentTime);
+    s.checkNotNull(localObject);
     ((TextView)localObject).setTextColor(paramInt);
-    localObject = (TextView)_$_findCachedViewById(a.e.endTime);
-    if (localObject == null) {
-      p.iCn();
-    }
+    localObject = (TextView)findViewById(a.e.endTime);
+    s.checkNotNull(localObject);
     ((TextView)localObject).setTextColor(paramInt);
-    localObject = (SeekBar)_$_findCachedViewById(a.e.mpSeekBar);
-    if (localObject == null) {
-      p.iCn();
-    }
+    localObject = (SeekBar)findViewById(a.e.mpSeekBar);
+    s.checkNotNull(localObject);
     ((SeekBar)localObject).getProgressDrawable().setColorFilter(paramInt, PorterDuff.Mode.MULTIPLY);
-    localObject = (SeekBar)_$_findCachedViewById(a.e.mpSeekBar);
-    if (localObject == null) {
-      p.iCn();
-    }
+    localObject = (SeekBar)findViewById(a.e.mpSeekBar);
+    s.checkNotNull(localObject);
     ((SeekBar)localObject).getThumb().setColorFilter(paramInt, PorterDuff.Mode.MULTIPLY);
-    localObject = this.rBA;
-    if (localObject == null) {
-      p.iCn();
-    }
+    localObject = this.uMP;
+    s.checkNotNull(localObject);
     ((Drawable)localObject).setColorFilter(paramInt, PorterDuff.Mode.MULTIPLY);
-    _$_findCachedViewById(a.e.firstPart).setBackgroundColor(paramInt);
-    AppMethodBeat.o(259417);
+    findViewById(a.e.firstPart).setBackgroundColor(paramInt);
+    AppMethodBeat.o(271008);
   }
   
   public final void setMaxProgress(int paramInt)
   {
-    AppMethodBeat.i(259420);
-    Object localObject = (TextView)_$_findCachedViewById(a.e.endTime);
-    if (localObject == null) {
-      p.iCn();
-    }
-    ((TextView)localObject).setText((CharSequence)a.DY(paramInt));
-    localObject = (SeekBar)_$_findCachedViewById(a.e.mpSeekBar);
-    if (localObject == null) {
-      p.iCn();
-    }
+    AppMethodBeat.i(271020);
+    Object localObject = (TextView)findViewById(a.e.endTime);
+    s.checkNotNull(localObject);
+    ((TextView)localObject).setText((CharSequence)MusicPlayerSeekBar.a.Ey(paramInt));
+    localObject = (SeekBar)findViewById(a.e.mpSeekBar);
+    s.checkNotNull(localObject);
     ((SeekBar)localObject).setMax(paramInt);
-    AppMethodBeat.o(259420);
+    AppMethodBeat.o(271020);
   }
   
-  public final void setOnSeekBarChange(b paramb)
+  public final void setOnSeekBarChange(MusicPlayerSeekBar.b paramb)
   {
-    AppMethodBeat.i(259414);
-    p.k(paramb, "onSeekBarChange");
-    this.FWc = paramb;
-    AppMethodBeat.o(259414);
+    AppMethodBeat.i(270999);
+    s.u(paramb, "onSeekBarChange");
+    this.LRc = paramb;
+    AppMethodBeat.o(270999);
   }
   
   public final void setProgress(int paramInt)
   {
-    AppMethodBeat.i(259419);
-    if (this.rjZ)
+    AppMethodBeat.i(271015);
+    if (this.msx)
     {
-      AppMethodBeat.o(259419);
+      AppMethodBeat.o(271015);
       return;
     }
-    Object localObject = (TextView)_$_findCachedViewById(a.e.currentTime);
-    if (localObject == null) {
-      p.iCn();
-    }
-    ((TextView)localObject).setText((CharSequence)a.DY(paramInt));
-    localObject = (SeekBar)_$_findCachedViewById(a.e.mpSeekBar);
-    if (localObject == null) {
-      p.iCn();
-    }
+    Object localObject = (TextView)findViewById(a.e.currentTime);
+    s.checkNotNull(localObject);
+    ((TextView)localObject).setText((CharSequence)MusicPlayerSeekBar.a.Ey(paramInt));
+    localObject = (SeekBar)findViewById(a.e.mpSeekBar);
+    s.checkNotNull(localObject);
     ((SeekBar)localObject).setProgress(paramInt);
-    if (paramInt > 0)
-    {
-      localObject = _$_findCachedViewById(a.e.firstPart);
-      p.j(localObject, "firstPart");
-      ((View)localObject).setAlpha(1.0F);
+    if (paramInt > 0) {
+      findViewById(a.e.firstPart).setAlpha(1.0F);
     }
-    AppMethodBeat.o(259419);
+    AppMethodBeat.o(271015);
   }
   
   public final void setSeeking(boolean paramBoolean)
   {
-    this.rjZ = paramBoolean;
+    this.msx = paramBoolean;
   }
   
   public final void setTextSize(int paramInt)
   {
-    AppMethodBeat.i(259415);
-    TextView localTextView = (TextView)_$_findCachedViewById(a.e.currentTime);
-    if (localTextView == null) {
-      p.iCn();
-    }
+    AppMethodBeat.i(271004);
+    TextView localTextView = (TextView)findViewById(a.e.currentTime);
+    s.checkNotNull(localTextView);
     localTextView.setTextSize(0, paramInt);
-    localTextView = (TextView)_$_findCachedViewById(a.e.endTime);
-    if (localTextView == null) {
-      p.iCn();
-    }
+    localTextView = (TextView)findViewById(a.e.endTime);
+    s.checkNotNull(localTextView);
     localTextView.setTextSize(0, paramInt);
-    AppMethodBeat.o(259415);
+    AppMethodBeat.o(271004);
   }
   
   public final void setThumbDrawable(Drawable paramDrawable)
   {
-    this.rBA = paramDrawable;
+    this.uMP = paramDrawable;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/music/ui/view/MusicPlayerSeekBar$Companion;", "", "()V", "TAG", "", "timeParse", "duration", "", "plugin-music_release"})
-  public static final class a
-  {
-    public static String DY(int paramInt)
-    {
-      AppMethodBeat.i(259912);
-      Object localObject = new StringBuilder();
-      long l1 = paramInt / 60000L;
-      long l2 = Math.floor(paramInt % 60000L / 1000.0D);
-      if (l1 < 10L) {
-        ((StringBuilder)localObject).append("0");
-      }
-      ((StringBuilder)localObject).append(l1 + ':');
-      if (l2 < 10L) {
-        ((StringBuilder)localObject).append("0");
-      }
-      ((StringBuilder)localObject).append(l2);
-      localObject = ((StringBuilder)localObject).toString();
-      p.j(localObject, "time.toString()");
-      AppMethodBeat.o(259912);
-      return localObject;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/music/ui/view/MusicPlayerSeekBar$OnSeekBarChange;", "", "onSeekBarChange", "", "seekPosition", "", "plugin-music_release"})
-  public static abstract interface b {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/music/ui/view/MusicPlayerSeekBar$initView$1", "Landroid/widget/SeekBar$OnSeekBarChangeListener;", "onProgressChanged", "", "mpSeekBar", "Landroid/widget/SeekBar;", "progress", "", "fromUser", "", "onStartTrackingTouch", "onStopTrackingTouch", "plugin-music_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/music/ui/view/MusicPlayerSeekBar$initView$1", "Landroid/widget/SeekBar$OnSeekBarChangeListener;", "onProgressChanged", "", "mpSeekBar", "Landroid/widget/SeekBar;", "progress", "", "fromUser", "", "onStartTrackingTouch", "onStopTrackingTouch", "plugin-music_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class c
     implements SeekBar.OnSeekBarChangeListener
   {
+    c(MusicPlayerSeekBar paramMusicPlayerSeekBar) {}
+    
     public final void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
     
     public final void onStartTrackingTouch(SeekBar paramSeekBar)
     {
-      AppMethodBeat.i(260599);
-      this.FWe.setSeeking(true);
-      AppMethodBeat.o(260599);
+      AppMethodBeat.i(270972);
+      this.LRd.setSeeking(true);
+      AppMethodBeat.o(270972);
     }
     
     public final void onStopTrackingTouch(SeekBar paramSeekBar)
     {
-      AppMethodBeat.i(260602);
-      this.FWe.setSeeking(false);
-      if (MusicPlayerSeekBar.a(this.FWe) != null)
+      AppMethodBeat.i(270979);
+      this.LRd.setSeeking(false);
+      if (MusicPlayerSeekBar.a(this.LRd) != null)
       {
-        if (MusicPlayerSeekBar.a(this.FWe) == null) {
-          p.iCn();
-        }
-        if (paramSeekBar == null) {
-          p.iCn();
-        }
+        s.checkNotNull(MusicPlayerSeekBar.a(this.LRd));
+        s.checkNotNull(paramSeekBar);
         paramSeekBar.getProgress();
       }
-      AppMethodBeat.o(260602);
+      AppMethodBeat.o(270979);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.music.ui.view.MusicPlayerSeekBar
  * JD-Core Version:    0.7.0.1
  */

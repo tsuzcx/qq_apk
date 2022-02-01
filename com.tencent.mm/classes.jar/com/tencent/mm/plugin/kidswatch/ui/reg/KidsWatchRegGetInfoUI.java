@@ -10,14 +10,13 @@ import android.text.Editable;
 import android.text.SpannableStringBuilder;
 import android.text.TextWatcher;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -25,230 +24,410 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aq.f;
+import com.tencent.mm.am.p;
 import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.i.g;
-import com.tencent.mm.platformtools.y;
+import com.tencent.mm.modelavatar.i.b;
+import com.tencent.mm.platformtools.v;
 import com.tencent.mm.plugin.account.ui.r.j;
 import com.tencent.mm.plugin.kidswatch.b.a;
+import com.tencent.mm.plugin.kidswatch.b.b;
 import com.tencent.mm.plugin.kidswatch.b.c;
 import com.tencent.mm.plugin.kidswatch.b.e;
 import com.tencent.mm.plugin.kidswatch.b.f;
 import com.tencent.mm.plugin.kidswatch.b.h;
 import com.tencent.mm.plugin.kidswatch.ui.login.KidsWatchHeadComponent;
-import com.tencent.mm.pluginsdk.ui.span.o;
+import com.tencent.mm.plugin.normsg.a.d;
+import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.protocal.protobuf.eou;
+import com.tencent.mm.protocal.protobuf.gdd;
+import com.tencent.mm.protocal.protobuf.gol;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MD5Util;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread.IWaitWorkThread;
 import com.tencent.mm.sdk.platformtools.PhoneFormater;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMClearEditText;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.w;
 import com.tencent.mm.ui.tools.b.c;
 import com.tencent.mm.ui.widget.InputPanelLinearLayout;
 import com.tencent.mm.ui.widget.RoundCornerImageView;
-import java.util.HashMap;
-import kotlin.g.b.p;
+import java.io.IOException;
+import java.util.TimeZone;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.n.n;
 
 @com.tencent.mm.ui.base.a(35)
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegGetInfoUI;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mm/ui/widget/InputPanelHelper$OnInputPanelChange;", "Lcom/tencent/mm/plugin/kidswatch/model/KidsWatchHeadImageUploader$IImgUploadCallback;", "()V", "adjustedMobile", "", "avatarBitmap", "Landroid/graphics/Bitmap;", "hasSetAvatar", "", "inputMobileRetrys", "", "lastInputMobile", "loginUrl", "mMobile", "needShowAgreements", "permissionCheckHelper", "Lcom/tencent/mm/platformtools/PermissionCheckHelper;", "plusCountryCode", "proDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "regSessionId", "changeAvatar", "", "checkMobileState", "mNumber", "checkMobileStateFun", "finish", "getForceOrientation", "getLayoutId", "gotoLawLink", "gotoMobileVerifyCodePage", "fileId", "aesKey", "initView", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onError", "errType", "errCode", "errMsg", "onInputPanelChange", "isKeyboardShow", "keyboardHeight", "onKeyBoardHidden", "onPause", "onRequestPermissionsResult", "permissions", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onResume", "onSceneEnd", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onSuccess", "fileID", "uploadHeadImg", "Companion", "plugin-kidswatch_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegGetInfoUI;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mm/ui/widget/InputPanelHelper$OnInputPanelChange;", "Lcom/tencent/mm/modelavatar/HeadImageUploader$IImgUploadCallback;", "()V", "adjustedMobile", "", "avatarBitmap", "Landroid/graphics/Bitmap;", "hasSetAvatar", "", "inputMobileRetrys", "", "lastInputMobile", "loginUrl", "mMobile", "needShowAgreements", "permissionCheckHelper", "Lcom/tencent/mm/platformtools/PermissionCheckHelper;", "plusCountryCode", "proDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "regSessionId", "changeAvatar", "", "checkMobileState", "mNumber", "checkMobileStateFun", "finish", "getForceOrientation", "getLayoutId", "gotoLawLink", "gotoMobileVerifyCodePage", "fileId", "aesKey", "initView", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onError", "errType", "errCode", "errMsg", "onInputPanelChange", "isKeyboardShow", "keyboardHeight", "onKeyBoardHidden", "onPause", "onRequestPermissionsResult", "permissions", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onResume", "onSceneEnd", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onSuccess", "fileID", "uploadHeadImg", "Companion", "plugin-kidswatch_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class KidsWatchRegGetInfoUI
   extends MMActivity
-  implements com.tencent.mm.an.i, com.tencent.mm.plugin.kidswatch.model.b.b, com.tencent.mm.ui.widget.c.a
+  implements com.tencent.mm.am.h, i.b, com.tencent.mm.ui.widget.c.a
 {
-  public static final KidsWatchRegGetInfoUI.a EcJ;
-  private HashMap _$_findViewCache;
-  private String fTQ;
-  private s mUN;
-  private final com.tencent.mm.platformtools.x nex;
-  private String nfH;
-  private String nfe;
-  private String nff;
-  private int nfg;
-  private String nfm;
-  private final String nhJ;
-  private Bitmap nhP;
-  private boolean nhV;
-  private boolean nhv;
+  public static final KidsWatchRegGetInfoUI.a JTJ;
+  private String hZO;
+  private w pRu;
+  private final com.tencent.mm.platformtools.u qbk;
+  private String qcQ;
+  private String qcm;
+  private String qcn;
+  private int qco;
+  private String qcu;
+  private boolean qeQ;
+  private final String qfe;
+  private Bitmap qfk;
+  private boolean qfp;
   
   static
   {
-    AppMethodBeat.i(251534);
-    EcJ = new KidsWatchRegGetInfoUI.a((byte)0);
-    AppMethodBeat.o(251534);
+    AppMethodBeat.i(262269);
+    JTJ = new KidsWatchRegGetInfoUI.a((byte)0);
+    AppMethodBeat.o(262269);
   }
   
   public KidsWatchRegGetInfoUI()
   {
-    AppMethodBeat.i(251532);
-    this.nhJ = "+86";
-    this.nhV = true;
-    this.nex = new com.tencent.mm.platformtools.x();
-    AppMethodBeat.o(251532);
+    AppMethodBeat.i(262110);
+    this.qfe = "+86";
+    this.qfp = true;
+    this.qbk = new com.tencent.mm.platformtools.u();
+    AppMethodBeat.o(262110);
   }
   
-  private final void abb(final String paramString)
+  private final void Tv(String paramString)
   {
-    AppMethodBeat.i(251517);
-    this.nex.b((Activity)this, (Runnable)new b(this, paramString));
-    AppMethodBeat.o(251517);
+    AppMethodBeat.i(262117);
+    this.qbk.b((Activity)this, new KidsWatchRegGetInfoUI..ExternalSyntheticLambda6(this, paramString));
+    AppMethodBeat.o(262117);
   }
   
-  private final void eKW()
+  private static final void a(KidsWatchRegGetInfoUI paramKidsWatchRegGetInfoUI)
   {
-    AppMethodBeat.i(251519);
-    if (!this.nhv)
+    AppMethodBeat.i(262192);
+    kotlin.g.b.s.u(paramKidsWatchRegGetInfoUI, "this$0");
+    paramKidsWatchRegGetInfoUI = paramKidsWatchRegGetInfoUI.pRu;
+    if (paramKidsWatchRegGetInfoUI != null) {
+      paramKidsWatchRegGetInfoUI.dismiss();
+    }
+    AppMethodBeat.o(262192);
+  }
+  
+  private static final void a(KidsWatchRegGetInfoUI paramKidsWatchRegGetInfoUI, int paramInt)
+  {
+    AppMethodBeat.i(262183);
+    kotlin.g.b.s.u(paramKidsWatchRegGetInfoUI, "this$0");
+    Log.i("MicroMsg.KidsWatchRegGetInfoUI", "inputContainer.height: %d, screenHeight: %d", new Object[] { Integer.valueOf(((InputPanelLinearLayout)paramKidsWatchRegGetInfoUI.findViewById(b.e.JRR)).getHeight()), Integer.valueOf(paramInt) });
+    if (((InputPanelLinearLayout)paramKidsWatchRegGetInfoUI.findViewById(b.e.JRR)).getHeight() > paramInt) {
+      ((ScrollView)paramKidsWatchRegGetInfoUI.findViewById(b.e.scrollView)).scrollBy(0, ((InputPanelLinearLayout)paramKidsWatchRegGetInfoUI.findViewById(b.e.JRR)).getHeight() - paramInt);
+    }
+    AppMethodBeat.o(262183);
+  }
+  
+  private static final void a(KidsWatchRegGetInfoUI paramKidsWatchRegGetInfoUI, View paramView)
+  {
+    AppMethodBeat.i(262162);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramKidsWatchRegGetInfoUI);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegGetInfoUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    kotlin.g.b.s.u(paramKidsWatchRegGetInfoUI, "this$0");
+    boolean bool = com.tencent.mm.pluginsdk.permission.b.a((Activity)paramKidsWatchRegGetInfoUI, "android.permission.WRITE_EXTERNAL_STORAGE", 34, "");
+    Log.i("MicroMsg.KidsWatchRegGetInfoUI", kotlin.g.b.s.X("changeAvatar, checkStorage:", Boolean.valueOf(bool)));
+    if (bool) {
+      com.tencent.mm.plugin.account.sdk.a.pFo.t((Activity)paramKidsWatchRegGetInfoUI);
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegGetInfoUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(262162);
+  }
+  
+  private static final void a(KidsWatchRegGetInfoUI paramKidsWatchRegGetInfoUI, CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    AppMethodBeat.i(262170);
+    kotlin.g.b.s.u(paramKidsWatchRegGetInfoUI, "this$0");
+    if ((!Util.isNullOrNil(((MMClearEditText)paramKidsWatchRegGetInfoUI.findViewById(b.e.JSf)).getText().toString())) && (!Util.isNullOrNil(((MMClearEditText)paramKidsWatchRegGetInfoUI.findViewById(b.e.JSd)).getText().toString())) && (paramBoolean)) {
+      ((Button)paramKidsWatchRegGetInfoUI.findViewById(b.e.JSj)).setEnabled(paramBoolean);
+    }
+    if (!paramBoolean) {
+      ((Button)paramKidsWatchRegGetInfoUI.findViewById(b.e.JSj)).setEnabled(paramBoolean);
+    }
+    AppMethodBeat.o(262170);
+  }
+  
+  private static final void a(KidsWatchRegGetInfoUI paramKidsWatchRegGetInfoUI, String paramString)
+  {
+    AppMethodBeat.i(262154);
+    kotlin.g.b.s.u(paramKidsWatchRegGetInfoUI, "this$0");
+    kotlin.g.b.s.u(paramString, "$mNumber");
+    com.tencent.mm.kernel.h.aZW().a(145, (com.tencent.mm.am.h)paramKidsWatchRegGetInfoUI);
+    Object localObject = (CharSequence)((MMClearEditText)paramKidsWatchRegGetInfoUI.findViewById(b.e.JSd)).getText().toString();
+    int i = ((CharSequence)localObject).length() - 1;
+    int k = 0;
+    int j = 0;
+    int m;
+    while (j <= i)
     {
-      Log.i("MicroMsg.KidsWatchRegGetInfoUI", "uploadHeadImg, gotoMobileVerifyCodePage, " + this.nhv);
-      iE("", "");
-      AppMethodBeat.o(251519);
+      if (k == 0)
+      {
+        m = j;
+        label81:
+        if (kotlin.g.b.s.compare(((CharSequence)localObject).charAt(m), 32) > 0) {
+          break label123;
+        }
+        m = 1;
+      }
+      for (;;)
+      {
+        if (k == 0)
+        {
+          if (m == 0)
+          {
+            k = 1;
+            break;
+            m = i;
+            break label81;
+            label123:
+            m = 0;
+            continue;
+          }
+          j += 1;
+          break;
+        }
+      }
+      if (m == 0) {
+        break;
+      }
+      i -= 1;
+    }
+    localObject = PhoneFormater.pureNumber(((CharSequence)localObject).subSequence(j, i + 1).toString());
+    if ((paramKidsWatchRegGetInfoUI.qcm != null) && (paramKidsWatchRegGetInfoUI.qcn != null) && (!kotlin.g.b.s.p(localObject, paramKidsWatchRegGetInfoUI.qcm)) && (kotlin.g.b.s.p(localObject, paramKidsWatchRegGetInfoUI.qcn))) {
+      i = 1;
+    }
+    for (;;)
+    {
+      Log.i("MicroMsg.KidsWatchRegGetInfoUI", "checkMobileStateFun, adJust:" + i + ", opCode:22, " + paramKidsWatchRegGetInfoUI.qco);
+      com.tencent.mm.modelfriend.a locala = new com.tencent.mm.modelfriend.a(paramString, 22, "", 0, "");
+      locala.wd(paramKidsWatchRegGetInfoUI.qco);
+      locala.we(i);
+      if (d.MtP.aQk("ie_reg")) {
+        d.MtP.aQj("ie_reg");
+      }
+      localObject = new eou();
+      ((eou)localObject).vhX = ((MMClearEditText)paramKidsWatchRegGetInfoUI.findViewById(b.e.JSf)).getText().toString();
+      if ((paramKidsWatchRegGetInfoUI.qeQ) && (paramKidsWatchRegGetInfoUI.qfk != null))
+      {
+        Bitmap localBitmap = paramKidsWatchRegGetInfoUI.qfk;
+        kotlin.g.b.s.checkNotNull(localBitmap);
+        if (!localBitmap.isRecycled()) {
+          ((eou)localObject).aaVQ = MD5Util.getMD5String(BitmapUtil.Bitmap2Bytes(paramKidsWatchRegGetInfoUI.qfk));
+        }
+      }
+      ((eou)localObject).absX = paramString;
+      ((eou)localObject).ytr = Util.getTimeZoneOffset();
+      ((eou)localObject).absY = TimeZone.getDefault().getID();
+      Log.i("MicroMsg.KidsWatchRegGetInfoUI", "%s,%s", new Object[] { ((eou)localObject).ytr, ((eou)localObject).absY });
+      paramString = new gdd();
+      paramString.acaV = new gol().df(d.MtP.aQl("ie_reg"));
+      paramString.acaW = new gol().df(d.MtP.aQo("ce_reg"));
+      paramString.acaX = new gol().df(d.MtP.aeP(16));
+      paramString.acbb = new gol().df(d.MtP.gtH());
+      try
+      {
+        paramString.acaY = new gol().df(((eou)localObject).toByteArray());
+        locala.a(paramString);
+        localObject = paramKidsWatchRegGetInfoUI.hZO;
+        paramString = (String)localObject;
+        if (localObject == null)
+        {
+          kotlin.g.b.s.bIx("loginUrl");
+          paramString = null;
+        }
+        locala.NG(paramString);
+        com.tencent.mm.kernel.h.aZW().a((p)locala, 0);
+        paramString = (CharSequence)((MMClearEditText)paramKidsWatchRegGetInfoUI.findViewById(b.e.JSd)).getText().toString();
+        i = paramString.length() - 1;
+        j = 0;
+        k = 0;
+        for (;;)
+        {
+          if (j <= i) {
+            if (k == 0)
+            {
+              m = j;
+              if (kotlin.g.b.s.compare(paramString.charAt(m), 32) > 0) {
+                break label758;
+              }
+              m = 1;
+              if (k != 0) {
+                break label771;
+              }
+              if (m != 0) {
+                break label764;
+              }
+              k = 1;
+              continue;
+              if ((paramKidsWatchRegGetInfoUI.qcm != null) && (paramKidsWatchRegGetInfoUI.qcn != null) && (!kotlin.g.b.s.p(paramKidsWatchRegGetInfoUI.qcn, paramKidsWatchRegGetInfoUI.qcm)) && (!kotlin.g.b.s.p(localObject, paramKidsWatchRegGetInfoUI.qcn)))
+              {
+                i = 2;
+                break;
+              }
+              i = 0;
+            }
+          }
+        }
+      }
+      catch (IOException localIOException)
+      {
+        for (;;)
+        {
+          Log.printErrStackTrace("MicroMsg.KidsWatchRegGetInfoUI", (Throwable)localIOException, "convert to byte error ! %s", new Object[] { localIOException.getMessage() });
+          continue;
+          m = i;
+          continue;
+          label758:
+          m = 0;
+          continue;
+          label764:
+          j += 1;
+          continue;
+          label771:
+          if (m == 0) {
+            break;
+          }
+          i -= 1;
+        }
+        paramKidsWatchRegGetInfoUI.qcm = PhoneFormater.pureNumber(paramString.subSequence(j, i + 1).toString());
+        paramKidsWatchRegGetInfoUI.qco += 1;
+        AppMethodBeat.o(262154);
+      }
+    }
+  }
+  
+  private static final void b(KidsWatchRegGetInfoUI paramKidsWatchRegGetInfoUI)
+  {
+    AppMethodBeat.i(262200);
+    kotlin.g.b.s.u(paramKidsWatchRegGetInfoUI, "this$0");
+    paramKidsWatchRegGetInfoUI = paramKidsWatchRegGetInfoUI.pRu;
+    if (paramKidsWatchRegGetInfoUI != null) {
+      paramKidsWatchRegGetInfoUI.dismiss();
+    }
+    AppMethodBeat.o(262200);
+  }
+  
+  private static final void b(KidsWatchRegGetInfoUI paramKidsWatchRegGetInfoUI, View paramView)
+  {
+    AppMethodBeat.i(262176);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramKidsWatchRegGetInfoUI);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegGetInfoUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    kotlin.g.b.s.u(paramKidsWatchRegGetInfoUI, "this$0");
+    Log.i("MicroMsg.KidsWatchRegGetInfoUI", "click reg button");
+    paramView = (Context)paramKidsWatchRegGetInfoUI;
+    paramKidsWatchRegGetInfoUI.getString(b.h.app_tip);
+    paramKidsWatchRegGetInfoUI.pRu = k.a(paramView, paramKidsWatchRegGetInfoUI.getString(b.h.app_waiting), true, null);
+    c.i((EditText)paramKidsWatchRegGetInfoUI.findViewById(b.e.JSf)).oF(1, 32).Nc(true).a((com.tencent.mm.ui.tools.b.c.a)new g(paramKidsWatchRegGetInfoUI));
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegGetInfoUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(262176);
+  }
+  
+  private final void fST()
+  {
+    AppMethodBeat.i(262123);
+    if (!this.qeQ)
+    {
+      Log.i("MicroMsg.KidsWatchRegGetInfoUI", kotlin.g.b.s.X("uploadHeadImg, gotoMobileVerifyCodePage, ", Boolean.valueOf(this.qeQ)));
+      jO("", "");
+      AppMethodBeat.o(262123);
       return;
     }
-    Object localObject = (Context)this;
+    Context localContext = (Context)this;
     getString(b.h.app_tip);
-    this.mUN = com.tencent.mm.ui.base.h.a((Context)localObject, getString(b.h.app_waiting), true, null);
-    localObject = new com.tencent.mm.plugin.kidswatch.model.b(com.tencent.mm.loader.j.b.aST() + "temp.avatar", (com.tencent.mm.plugin.kidswatch.model.b.b)this);
-    g localg = new g();
-    localg.taskName = "task_KidsWatchHeadImageUpload";
-    localg.iUG = ((com.tencent.mm.plugin.kidswatch.model.b)localObject).lPx;
-    localg.field_mediaId = ((com.tencent.mm.plugin.kidswatch.model.b)localObject).mediaId;
-    localg.field_fullpath = ((com.tencent.mm.plugin.kidswatch.model.b)localObject).fKH;
-    localg.field_thumbpath = "";
-    localg.field_fileType = com.tencent.mm.plugin.kidswatch.model.b.mJz;
-    localg.field_talker = "";
-    localg.field_priority = com.tencent.mm.i.a.iTU;
-    localg.field_needStorage = false;
-    localg.field_isStreamMedia = false;
-    localg.field_appType = 1;
-    localg.field_bzScene = 0;
-    localg.hDp = 5;
-    localg.field_trysafecdn = true;
-    localg.field_enable_hitcheck = false;
-    if (!f.bkg().f(localg)) {
-      Log.e("MicroMsg.KidsWatch.KidsWatchHeadImageUploader", "cdntra addSendTask failed. mediaId:%s", new Object[] { ((com.tencent.mm.plugin.kidswatch.model.b)localObject).mediaId });
-    }
-    AppMethodBeat.o(251519);
+    this.pRu = k.a(localContext, getString(b.h.app_waiting), true, null);
+    new com.tencent.mm.modelavatar.i(kotlin.g.b.s.X(com.tencent.mm.loader.i.b.bmH(), "temp.avatar"), (i.b)this).bFu();
+    AppMethodBeat.o(262123);
   }
   
-  private final void eKX()
+  private final void fSU()
   {
-    AppMethodBeat.i(251527);
-    Object localObject1 = (LinearLayout)_$_findCachedViewById(b.e.EaI);
-    p.j(localObject1, "imgLL");
-    ((LinearLayout)localObject1).setVisibility(0);
-    localObject1 = (LinearLayout)_$_findCachedViewById(b.e.Eav);
-    p.j(localObject1, "bottomLL");
-    localObject1 = ((LinearLayout)localObject1).getLayoutParams();
-    if (localObject1 == null)
+    AppMethodBeat.i(262143);
+    ((LinearLayout)findViewById(b.e.JRQ)).setVisibility(0);
+    Object localObject = ((LinearLayout)findViewById(b.e.JRD)).getLayoutParams();
+    if (localObject == null)
     {
-      localObject1 = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-      AppMethodBeat.o(251527);
-      throw ((Throwable)localObject1);
+      localObject = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
+      AppMethodBeat.o(262143);
+      throw ((Throwable)localObject);
     }
-    localObject1 = (ViewGroup.MarginLayoutParams)localObject1;
-    ((ViewGroup.MarginLayoutParams)localObject1).bottomMargin = getResources().getDimensionPixelSize(b.c.Edge_12A);
-    ((ViewGroup.MarginLayoutParams)localObject1).topMargin = 0;
-    Object localObject2 = (LinearLayout)_$_findCachedViewById(b.e.Eav);
-    p.j(localObject2, "bottomLL");
-    ((LinearLayout)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-    localObject1 = (InputPanelLinearLayout)_$_findCachedViewById(b.e.EaJ);
-    localObject2 = (InputPanelLinearLayout)_$_findCachedViewById(b.e.EaJ);
-    p.j(localObject2, "inputContainer");
-    int i = ((InputPanelLinearLayout)localObject2).getPaddingLeft();
-    localObject2 = (InputPanelLinearLayout)_$_findCachedViewById(b.e.EaJ);
-    p.j(localObject2, "inputContainer");
-    int j = ((InputPanelLinearLayout)localObject2).getPaddingTop();
-    localObject2 = (InputPanelLinearLayout)_$_findCachedViewById(b.e.EaJ);
-    p.j(localObject2, "inputContainer");
-    ((InputPanelLinearLayout)localObject1).setPadding(i, j, ((InputPanelLinearLayout)localObject2).getPaddingRight(), 0);
-    ((ScrollView)_$_findCachedViewById(b.e.scrollView)).scrollBy(0, 0);
-    AppMethodBeat.o(251527);
+    localObject = (ViewGroup.MarginLayoutParams)localObject;
+    ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = getResources().getDimensionPixelSize(b.c.Edge_12A);
+    ((ViewGroup.MarginLayoutParams)localObject).topMargin = 0;
+    ((LinearLayout)findViewById(b.e.JRD)).setLayoutParams((ViewGroup.LayoutParams)localObject);
+    ((InputPanelLinearLayout)findViewById(b.e.JRR)).setPadding(((InputPanelLinearLayout)findViewById(b.e.JRR)).getPaddingLeft(), ((InputPanelLinearLayout)findViewById(b.e.JRR)).getPaddingTop(), ((InputPanelLinearLayout)findViewById(b.e.JRR)).getPaddingRight(), 0);
+    ((ScrollView)findViewById(b.e.scrollView)).scrollBy(0, 0);
+    AppMethodBeat.o(262143);
   }
   
-  private final void iE(String paramString1, String paramString2)
+  private final void jO(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(251520);
+    AppMethodBeat.i(262134);
     Intent localIntent = new Intent((Context)this, KidsWatchRegMobileVerifyUI.class);
-    Object localObject = this.fTQ;
-    if (localObject == null) {
-      p.bGy("loginUrl");
+    String str2 = this.hZO;
+    String str1 = str2;
+    if (str2 == null)
+    {
+      kotlin.g.b.s.bIx("loginUrl");
+      str1 = null;
     }
-    localIntent.putExtra("intent.key.login.url", (String)localObject);
-    localObject = (MMClearEditText)_$_findCachedViewById(b.e.EaX);
-    p.j(localObject, "nickFIV");
-    localIntent.putExtra("intent.key.reg.nickname", ((MMClearEditText)localObject).getText().toString());
-    localObject = (MMClearEditText)_$_findCachedViewById(b.e.EaV);
-    p.j(localObject, "mobileFIV");
-    localIntent.putExtra("intent.key.reg.mobile", ((MMClearEditText)localObject).getText().toString());
-    localIntent.putExtra("intent.key.reg.session.id", this.nfm);
-    localIntent.putExtra("intent.key.hasSetAvatar", this.nhv);
+    localIntent.putExtra("intent.key.login.url", str1);
+    localIntent.putExtra("intent.key.reg.nickname", ((MMClearEditText)findViewById(b.e.JSf)).getText().toString());
+    localIntent.putExtra("intent.key.reg.mobile", ((MMClearEditText)findViewById(b.e.JSd)).getText().toString());
+    localIntent.putExtra("intent.key.reg.session.id", this.qcu);
+    localIntent.putExtra("intent.key.hasSetAvatar", this.qeQ);
     localIntent.putExtra("intent.key.reg.head_img.file.id", paramString1);
     localIntent.putExtra("intent.key.reg.head_img.aes.key", paramString2);
     Log.i("MicroMsg.KidsWatchRegGetInfoUI", "get info page:(fileId:" + paramString1 + ") , (aesKey:" + paramString2 + ')');
-    paramString1 = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.b(this, paramString1.aFh(), "com/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegGetInfoUI", "gotoMobileVerifyCodePage", "(Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)paramString1.sf(0));
+    paramString1 = new com.tencent.mm.hellhoundlib.b.a().cG(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.b(this, paramString1.aYi(), "com/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegGetInfoUI", "gotoMobileVerifyCodePage", "(Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)paramString1.sb(0));
     com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegGetInfoUI", "gotoMobileVerifyCodePage", "(Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(251520);
+    AppMethodBeat.o(262134);
   }
   
-  public final void R(String paramString1, String paramString2)
+  public final void LR(String paramString)
   {
-    AppMethodBeat.i(251528);
-    p.k(paramString1, "fileID");
-    p.k(paramString2, "aesKey");
-    com.tencent.e.h.ZvG.bc((Runnable)new m(this));
-    Log.i("MicroMsg.KidsWatchRegGetInfoUI", "IImgUploadCallback, ok, fileId:" + paramString1 + ", aesKey:" + paramString2);
-    iE(paramString1, paramString2);
-    AppMethodBeat.o(251528);
-  }
-  
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(251555);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(251555);
-  }
-  
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(251554);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(251554);
-    return localView1;
-  }
-  
-  public final void aMM(String paramString)
-  {
-    AppMethodBeat.i(251530);
-    com.tencent.e.h.ZvG.bc((Runnable)new k(this));
+    AppMethodBeat.i(262385);
+    com.tencent.threadpool.h.ahAA.bk(new KidsWatchRegGetInfoUI..ExternalSyntheticLambda3(this));
     Log.e("MicroMsg.KidsWatchRegGetInfoUI", "upload head fail, errType:%s, errCode:%s, errMsg:%s", new Object[] { Integer.valueOf(3), Integer.valueOf(-1), paramString });
-    iE("", "");
-    AppMethodBeat.o(251530);
+    jO("", "");
+    AppMethodBeat.o(262385);
+  }
+  
+  public final void _$_clearFindViewByIdCache() {}
+  
+  public final void br(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(262382);
+    kotlin.g.b.s.u(paramString1, "fileID");
+    kotlin.g.b.s.u(paramString2, "aesKey");
+    com.tencent.threadpool.h.ahAA.bk(new KidsWatchRegGetInfoUI..ExternalSyntheticLambda4(this));
+    Log.i("MicroMsg.KidsWatchRegGetInfoUI", "IImgUploadCallback, ok, fileId:" + paramString1 + ", aesKey:" + paramString2);
+    jO(paramString1, paramString2);
+    AppMethodBeat.o(262382);
   }
   
   public final void finish()
   {
-    AppMethodBeat.i(251515);
+    AppMethodBeat.i(262351);
     super.finish();
     overridePendingTransition(b.a.anim_not_change, b.a.push_down_out);
-    AppMethodBeat.o(251515);
+    AppMethodBeat.o(262351);
   }
   
   public final int getForceOrientation()
@@ -258,201 +437,163 @@ public final class KidsWatchRegGetInfoUI
   
   public final int getLayoutId()
   {
-    return b.f.Ebm;
-  }
-  
-  public final void h(boolean paramBoolean, final int paramInt)
-  {
-    AppMethodBeat.i(251525);
-    Log.i("MicroMsg.KidsWatchRegGetInfoUI", "keyboard show %s, keyboardHeight %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
-    if (paramBoolean)
-    {
-      Object localObject1 = (LinearLayout)_$_findCachedViewById(b.e.EaI);
-      p.j(localObject1, "imgLL");
-      ((LinearLayout)localObject1).setVisibility(8);
-      localObject1 = (LinearLayout)_$_findCachedViewById(b.e.Eav);
-      p.j(localObject1, "bottomLL");
-      localObject1 = ((LinearLayout)localObject1).getLayoutParams();
-      if (localObject1 == null)
-      {
-        localObject1 = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-        AppMethodBeat.o(251525);
-        throw ((Throwable)localObject1);
-      }
-      localObject1 = (ViewGroup.MarginLayoutParams)localObject1;
-      ((ViewGroup.MarginLayoutParams)localObject1).bottomMargin = getResources().getDimensionPixelSize(b.c.Edge_3A);
-      ((ViewGroup.MarginLayoutParams)localObject1).topMargin = getResources().getDimensionPixelSize(b.c.Edge_4A);
-      Object localObject2 = (LinearLayout)_$_findCachedViewById(b.e.Eav);
-      p.j(localObject2, "bottomLL");
-      ((LinearLayout)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      localObject1 = (InputPanelLinearLayout)_$_findCachedViewById(b.e.EaJ);
-      localObject2 = (InputPanelLinearLayout)_$_findCachedViewById(b.e.EaJ);
-      p.j(localObject2, "inputContainer");
-      int i = ((InputPanelLinearLayout)localObject2).getPaddingLeft();
-      localObject2 = (InputPanelLinearLayout)_$_findCachedViewById(b.e.EaJ);
-      p.j(localObject2, "inputContainer");
-      int j = ((InputPanelLinearLayout)localObject2).getPaddingTop();
-      localObject2 = (InputPanelLinearLayout)_$_findCachedViewById(b.e.EaJ);
-      p.j(localObject2, "inputContainer");
-      ((InputPanelLinearLayout)localObject1).setPadding(i, j, ((InputPanelLinearLayout)localObject2).getPaddingRight(), paramInt);
-      localObject1 = (ScrollView)_$_findCachedViewById(b.e.scrollView);
-      p.j(localObject1, "scrollView");
-      paramInt = ((ScrollView)localObject1).getHeight();
-      ((InputPanelLinearLayout)_$_findCachedViewById(b.e.EaJ)).requestLayout();
-      ((InputPanelLinearLayout)_$_findCachedViewById(b.e.EaJ)).post((Runnable)new l(this, paramInt));
-      AppMethodBeat.o(251525);
-      return;
-    }
-    eKX();
-    AppMethodBeat.o(251525);
+    return b.f.JSu;
   }
   
   public final void initView()
   {
-    AppMethodBeat.i(251518);
+    AppMethodBeat.i(262362);
     setMMTitle("");
     hideActionbarLine();
-    Object localObject1 = (KidsWatchHeadComponent)_$_findCachedViewById(b.e.EaG);
-    Object localObject2 = getString(b.h.Eby);
-    p.j(localObject2, "getString(R.string.kids_…ogin_enter_loading_title)");
-    ((KidsWatchHeadComponent)localObject1).setTitle((String)localObject2);
-    ((KidsWatchHeadComponent)_$_findCachedViewById(b.e.EaG)).eKU();
-    ((KidsWatchHeadComponent)_$_findCachedViewById(b.e.EaG)).setCloseBtnCallBack((kotlin.g.a.a)new c(this));
-    ((InputPanelLinearLayout)_$_findCachedViewById(b.e.EaJ)).setExternalListener((com.tencent.mm.ui.widget.c.a)this);
-    ((RelativeLayout)_$_findCachedViewById(b.e.Eaz)).setOnClickListener((View.OnClickListener)new d(this));
-    localObject1 = (ImageView)_$_findCachedViewById(b.e.Eat);
-    p.j(localObject1, "addAvatarIV");
-    ((ImageView)localObject1).setVisibility(0);
-    localObject1 = (RoundCornerImageView)_$_findCachedViewById(b.e.dsd);
-    p.j(localObject1, "avatarIV");
-    ((RoundCornerImageView)localObject1).setVisibility(8);
-    ((RoundCornerImageView)_$_findCachedViewById(b.e.dsd)).mQ(com.tencent.mm.ci.a.fromDPToPix((Context)getContext(), 22), com.tencent.mm.ci.a.fromDPToPix((Context)getContext(), 22));
-    ((MMClearEditText)_$_findCachedViewById(b.e.EaX)).addTextChangedListener((TextWatcher)new e(this));
-    ((MMClearEditText)_$_findCachedViewById(b.e.EaV)).addTextChangedListener((TextWatcher)new f(this));
-    com.tencent.mm.kernel.h.aHJ().postAtFrontOfWorker((MMHandlerThread.IWaitWorkThread)new g(this));
-    Util.expandViewTouchArea((CheckBox)_$_findCachedViewById(b.e.EaN), 250, 250, 250, 250);
-    localObject1 = (Button)_$_findCachedViewById(b.e.Ebb);
-    p.j(localObject1, "regBtn");
-    ((Button)localObject1).setEnabled(false);
-    ((CheckBox)_$_findCachedViewById(b.e.EaN)).setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener)new h(this));
-    localObject1 = getString(b.h.EbF);
-    p.j(localObject1, "getString(R.string.kids_…eg_intro_get_info_cb_tip)");
-    localObject2 = getString(b.h.EbG);
-    p.j(localObject2, "getString(R.string.kids_…tro_get_info_cb_tip_link)");
-    int i = n.g((CharSequence)localObject1, (String)localObject2);
+    Object localObject = (KidsWatchHeadComponent)findViewById(b.e.JRO);
+    String str = getString(b.h.JSG);
+    kotlin.g.b.s.s(str, "getString(R.string.kids_…ogin_enter_loading_title)");
+    ((KidsWatchHeadComponent)localObject).setTitle(str);
+    ((KidsWatchHeadComponent)findViewById(b.e.JRO)).fSR();
+    ((KidsWatchHeadComponent)findViewById(b.e.JRO)).setCloseBtnCallBack((kotlin.g.a.a)new b(this));
+    ((InputPanelLinearLayout)findViewById(b.e.JRR)).setExternalListener((com.tencent.mm.ui.widget.c.a)this);
+    ((RelativeLayout)findViewById(b.e.JRH)).setOnClickListener(new KidsWatchRegGetInfoUI..ExternalSyntheticLambda0(this));
+    ((ImageView)findViewById(b.e.JRB)).setVisibility(0);
+    ((RoundCornerImageView)findViewById(b.e.avatarIV)).setVisibility(8);
+    ((RoundCornerImageView)findViewById(b.e.avatarIV)).oJ(com.tencent.mm.cd.a.fromDPToPix((Context)getContext(), 22), com.tencent.mm.cd.a.fromDPToPix((Context)getContext(), 22));
+    ((MMClearEditText)findViewById(b.e.JSf)).addTextChangedListener((TextWatcher)new c(this));
+    ((MMClearEditText)findViewById(b.e.JSd)).addTextChangedListener((TextWatcher)new d(this));
+    com.tencent.mm.kernel.h.baH().postAtFrontOfWorker((MMHandlerThread.IWaitWorkThread)new e(this));
+    Util.expandViewTouchArea((View)findViewById(b.e.JRV), 250, 250, 250, 250);
+    ((Button)findViewById(b.e.JSj)).setEnabled(false);
+    ((CheckBox)findViewById(b.e.JRV)).setOnCheckedChangeListener(new KidsWatchRegGetInfoUI..ExternalSyntheticLambda2(this));
+    localObject = getString(b.h.JSN);
+    kotlin.g.b.s.s(localObject, "getString(R.string.kids_…eg_intro_get_info_cb_tip)");
+    str = getString(b.h.JSO);
+    kotlin.g.b.s.s(str, "getString(R.string.kids_…tro_get_info_cb_tip_link)");
+    int i = n.g((CharSequence)localObject, str);
     if (i < 0)
     {
-      AppMethodBeat.o(251518);
+      AppMethodBeat.o(262362);
       return;
     }
-    int j = ((String)localObject2).length();
-    localObject1 = new SpannableStringBuilder((CharSequence)localObject1);
-    ((SpannableStringBuilder)localObject1).setSpan(new i(this), i, j + i, 18);
-    ((TextView)_$_findCachedViewById(b.e.EaO)).setOnTouchListener((View.OnTouchListener)new o((Context)this));
-    localObject2 = (TextView)_$_findCachedViewById(b.e.EaO);
-    p.j(localObject2, "lawDetailTV");
-    ((TextView)localObject2).setClickable(true);
-    localObject2 = (TextView)_$_findCachedViewById(b.e.EaO);
-    p.j(localObject2, "lawDetailTV");
-    ((TextView)localObject2).setText((CharSequence)localObject1);
-    localObject1 = getIntent().getStringExtra("intent.key.login.url");
-    p.j(localObject1, "intent.getStringExtra(Co…tch.INTENT_KEY_LOGIN_URL)");
-    this.fTQ = ((String)localObject1);
-    ((Button)_$_findCachedViewById(b.e.Ebb)).setOnClickListener((View.OnClickListener)new j(this));
-    localObject1 = com.tencent.mm.plugin.kidswatch.b.a.Edb;
-    localObject1 = getContext();
-    p.j(localObject1, "context");
-    com.tencent.mm.plugin.kidswatch.b.a.a((Context)localObject1, (LinearLayout)_$_findCachedViewById(b.e.Eax), (LinearLayout)_$_findCachedViewById(b.e.Eav));
-    AppMethodBeat.o(251518);
+    int j = str.length();
+    localObject = new SpannableStringBuilder((CharSequence)localObject);
+    ((SpannableStringBuilder)localObject).setSpan(new f(this), i, j + i, 18);
+    ((TextView)findViewById(b.e.JRW)).setOnTouchListener((View.OnTouchListener)new com.tencent.mm.pluginsdk.ui.span.s((Context)this));
+    ((TextView)findViewById(b.e.JRW)).setClickable(true);
+    ((TextView)findViewById(b.e.JRW)).setText((CharSequence)localObject);
+    localObject = getIntent().getStringExtra("intent.key.login.url");
+    kotlin.g.b.s.checkNotNull(localObject);
+    kotlin.g.b.s.s(localObject, "intent.getStringExtra(Co…h.INTENT_KEY_LOGIN_URL)!!");
+    this.hZO = ((String)localObject);
+    ((Button)findViewById(b.e.JSj)).setOnClickListener(new KidsWatchRegGetInfoUI..ExternalSyntheticLambda1(this));
+    localObject = com.tencent.mm.plugin.kidswatch.b.a.JTW;
+    localObject = getContext();
+    kotlin.g.b.s.s(localObject, "context");
+    com.tencent.mm.plugin.kidswatch.b.a.a((Context)localObject, (LinearLayout)findViewById(b.e.JRF), (LinearLayout)findViewById(b.e.JRD));
+    AppMethodBeat.o(262362);
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     Object localObject2 = null;
     Object localObject1 = null;
-    AppMethodBeat.i(251521);
+    AppMethodBeat.i(262366);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     Log.i("MicroMsg.KidsWatchRegGetInfoUI", "onActivityResult, requestCode:" + paramInt1 + ", resultCode: " + paramInt2);
-    if (paramInt1 == 30846)
+    switch (paramInt1)
     {
-      if (paramInt2 == -1)
+    default: 
+      this.qfk = com.tencent.mm.plugin.account.sdk.a.pFo.b((Activity)this, paramInt1, paramInt2, paramIntent);
+      if (this.qfk != null)
       {
+        ((RoundCornerImageView)findViewById(b.e.avatarIV)).setImageBitmap(this.qfk);
+        this.qeQ = true;
+        ((RoundCornerImageView)findViewById(b.e.avatarIV)).setVisibility(0);
+        ((ImageView)findViewById(b.e.JRB)).setVisibility(8);
+      }
+      break;
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          AppMethodBeat.o(262366);
+          return;
+        } while (paramInt2 != -1);
         if (paramIntent != null) {
           localObject1 = paramIntent.getBundleExtra("result_data");
         }
-        if ((localObject1 != null) && (p.h(((Bundle)localObject1).getString("go_next", ""), "get_reg_verify_code")))
-        {
-          eKW();
-          AppMethodBeat.o(251521);
-        }
-      }
-    }
-    else if (paramInt1 == 30847)
-    {
+      } while ((localObject1 == null) || (!kotlin.g.b.s.p(((Bundle)localObject1).getString("go_next", ""), "get_reg_verify_code")));
+      fST();
+      AppMethodBeat.o(262366);
+      return;
       localObject1 = localObject2;
       if (paramIntent != null) {
         localObject1 = paramIntent.getBundleExtra("result_data");
       }
-      if ((localObject1 != null) && (p.h(((Bundle)localObject1).getString("go_next", ""), "agree_privacy")))
-      {
-        this.nhV = false;
-        abb(this.nhJ + this.nfH);
-        AppMethodBeat.o(251521);
-      }
-    }
-    else
-    {
-      this.nhP = com.tencent.mm.plugin.account.sdk.a.mIH.b((Activity)this, paramInt1, paramInt2, paramIntent);
-      if (this.nhP != null)
-      {
-        ((RoundCornerImageView)_$_findCachedViewById(b.e.dsd)).setImageBitmap(this.nhP);
-        this.nhv = true;
-        paramIntent = (RoundCornerImageView)_$_findCachedViewById(b.e.dsd);
-        p.j(paramIntent, "avatarIV");
-        paramIntent.setVisibility(0);
-        paramIntent = (ImageView)_$_findCachedViewById(b.e.Eat);
-        p.j(paramIntent, "addAvatarIV");
-        paramIntent.setVisibility(8);
-      }
-    }
-    AppMethodBeat.o(251521);
+    } while ((localObject1 == null) || (!kotlin.g.b.s.p(((Bundle)localObject1).getString("go_next", ""), "agree_privacy")));
+    this.qfp = false;
+    Tv(kotlin.g.b.s.X(this.qfe, this.qcQ));
+    AppMethodBeat.o(262366);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(251512);
+    AppMethodBeat.i(262324);
     super.onCreate(paramBundle);
     paramBundle = getSupportActionBar();
-    if (paramBundle == null) {
-      p.iCn();
-    }
+    kotlin.g.b.s.checkNotNull(paramBundle);
     paramBundle.hide();
     setSelfNavigationBarVisible(8);
-    paramBundle = getContext();
-    p.j(paramBundle, "context");
-    setActionbarColor(paramBundle.getResources().getColor(com.tencent.mm.plugin.kidswatch.b.b.Eap));
-    paramBundle = getContext();
-    p.j(paramBundle, "context");
-    setNavigationbarColor(paramBundle.getResources().getColor(com.tencent.mm.plugin.kidswatch.b.b.Eap));
+    setActionbarColor(getContext().getResources().getColor(b.b.JRx));
+    setNavigationbarColor(getContext().getResources().getColor(b.b.JRx));
     initView();
     overridePendingTransition(b.a.push_up_in, b.a.anim_not_change);
-    AppMethodBeat.o(251512);
+    AppMethodBeat.o(262324);
+  }
+  
+  public final void onInputPanelChange(boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(262378);
+    Log.i("MicroMsg.KidsWatchRegGetInfoUI", "keyboard show %s, keyboardHeight %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
+    if (paramBoolean)
+    {
+      ((LinearLayout)findViewById(b.e.JRQ)).setVisibility(8);
+      Object localObject = ((LinearLayout)findViewById(b.e.JRD)).getLayoutParams();
+      if (localObject == null)
+      {
+        localObject = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
+        AppMethodBeat.o(262378);
+        throw ((Throwable)localObject);
+      }
+      localObject = (ViewGroup.MarginLayoutParams)localObject;
+      ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = getResources().getDimensionPixelSize(b.c.Edge_3A);
+      ((ViewGroup.MarginLayoutParams)localObject).topMargin = getResources().getDimensionPixelSize(b.c.Edge_4A);
+      ((LinearLayout)findViewById(b.e.JRD)).setLayoutParams((ViewGroup.LayoutParams)localObject);
+      ((InputPanelLinearLayout)findViewById(b.e.JRR)).setPadding(((InputPanelLinearLayout)findViewById(b.e.JRR)).getPaddingLeft(), ((InputPanelLinearLayout)findViewById(b.e.JRR)).getPaddingTop(), ((InputPanelLinearLayout)findViewById(b.e.JRR)).getPaddingRight(), paramInt);
+      paramInt = ((ScrollView)findViewById(b.e.scrollView)).getHeight();
+      ((InputPanelLinearLayout)findViewById(b.e.JRR)).requestLayout();
+      ((InputPanelLinearLayout)findViewById(b.e.JRR)).post(new KidsWatchRegGetInfoUI..ExternalSyntheticLambda5(this, paramInt));
+      AppMethodBeat.o(262378);
+      return;
+    }
+    fSU();
+    AppMethodBeat.o(262378);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(251514);
+    AppMethodBeat.i(262347);
     super.onPause();
-    ((InputPanelLinearLayout)_$_findCachedViewById(b.e.EaJ)).setExternalListener(null);
-    AppMethodBeat.o(251514);
+    ((InputPanelLinearLayout)findViewById(b.e.JRR)).setExternalListener(null);
+    AppMethodBeat.o(262347);
   }
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     int i = 1;
-    AppMethodBeat.i(251516);
-    p.k(paramArrayOfString, "permissions");
-    p.k(paramArrayOfInt, "grantResults");
+    AppMethodBeat.i(262355);
+    kotlin.g.b.s.u(paramArrayOfString, "permissions");
+    kotlin.g.b.s.u(paramArrayOfInt, "grantResults");
     if (paramInt == 34)
     {
       if (paramArrayOfInt.length == 0)
@@ -469,78 +610,91 @@ public final class KidsWatchRegGetInfoUI
           break label106;
         }
         Log.i("MicroMsg.KidsWatchRegGetInfoUI", "PERMISSION_GRANTED");
-        com.tencent.mm.plugin.account.sdk.a.mIH.r((Activity)this);
-        AppMethodBeat.o(251516);
+        com.tencent.mm.plugin.account.sdk.a.pFo.t((Activity)this);
+        AppMethodBeat.o(262355);
         return;
         paramInt = 0;
         break;
       }
     }
-    this.nex.a((Activity)this, paramInt, paramArrayOfString, paramArrayOfInt);
+    this.qbk.a((Activity)this, paramInt, paramArrayOfString, paramArrayOfInt);
     label106:
-    AppMethodBeat.o(251516);
+    AppMethodBeat.o(262355);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(251513);
+    AppMethodBeat.i(262342);
     super.onResume();
-    ((InputPanelLinearLayout)_$_findCachedViewById(b.e.EaJ)).setExternalListener((com.tencent.mm.ui.widget.c.a)this);
-    eKX();
-    AppMethodBeat.o(251513);
+    ((InputPanelLinearLayout)findViewById(b.e.JRR)).setExternalListener((com.tencent.mm.ui.widget.c.a)this);
+    fSU();
+    AppMethodBeat.o(262342);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(251524);
-    s locals = this.mUN;
-    if (locals != null) {
-      locals.dismiss();
+    Object localObject = null;
+    AppMethodBeat.i(262375);
+    w localw = this.pRu;
+    if (localw != null) {
+      localw.dismiss();
     }
     if (paramInt2 == -75)
     {
-      com.tencent.mm.ui.base.h.p((Context)this, r.j.alpha_version_tip_reg, r.j.reg_username_exist_title);
-      AppMethodBeat.o(251524);
+      k.s((Context)this, r.j.alpha_version_tip_reg, r.j.reg_username_exist_title);
+      AppMethodBeat.o(262375);
       return;
     }
-    if ((paramq instanceof com.tencent.mm.modelfriend.a))
+    if ((paramp instanceof com.tencent.mm.modelfriend.a))
     {
       Log.i("MicroMsg.KidsWatchRegGetInfoUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-      com.tencent.mm.kernel.h.aGY().b(145, (com.tencent.mm.an.i)this);
-      int i = ((com.tencent.mm.modelfriend.a)paramq).ZB();
-      this.nfm = ((com.tencent.mm.modelfriend.a)paramq).blk();
+      com.tencent.mm.kernel.h.aZW().b(145, (com.tencent.mm.am.h)this);
+      int i = ((com.tencent.mm.modelfriend.a)paramp).bIO();
+      this.qcu = ((com.tencent.mm.modelfriend.a)paramp).bJe();
       if (i == 22)
       {
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          eKW();
-          AppMethodBeat.o(251524);
+          fST();
+          AppMethodBeat.o(262375);
           return;
         }
-        if ((paramInt2 == -41) || (paramInt2 == -59))
+        switch (paramInt2)
         {
-          paramString = com.tencent.mm.h.a.Kb(paramString);
-          if (paramString != null)
+        default: 
+          this.qcQ = PhoneFormater.pureNumber(this.qcQ);
+          this.qcn = kotlin.g.b.s.X(this.qfe, this.qcQ);
+          this.qcu = ((com.tencent.mm.modelfriend.a)paramp).bJe();
+          switch (paramInt2)
           {
-            paramString.a((Context)this, null, null);
-            AppMethodBeat.o(251524);
+          default: 
+            if (paramInt2 == -355)
+            {
+              Log.i("MicroMsg.KidsWatchRegGetInfoUI", "showBlockBySpam");
+              v.f((Context)this, paramString, 30846);
+              AppMethodBeat.o(262375);
+              return;
+            }
+            break;
+          }
+        case -59: 
+        case -41: 
+          paramString = com.tencent.mm.broadcast.a.CH(paramString);
+          if (paramString == null) {}
+          for (paramString = localObject;; paramString = Boolean.valueOf(paramString.a((Context)this, null, null)))
+          {
+            if (paramString == null) {
+              k.s((Context)this, b.h.regbymobile_reg_mobile_format_err_msg, b.h.regbymobile_reg_mobile_format_err_title);
+            }
+            AppMethodBeat.o(262375);
             return;
           }
-          com.tencent.mm.ui.base.h.p((Context)this, b.h.regbymobile_reg_mobile_format_err_msg, b.h.regbymobile_reg_mobile_format_err_title);
-          AppMethodBeat.o(251524);
-          return;
-        }
-        this.nfH = PhoneFormater.pureNumber(this.nfH);
-        this.nff = (this.nhJ + this.nfH);
-        this.nfm = ((com.tencent.mm.modelfriend.a)paramq).blk();
-        if ((paramInt2 == -36) || (paramInt2 == -35) || (paramInt2 == -3))
-        {
-          paramq = ((com.tencent.mm.modelfriend.a)paramq).bkY();
-          if (!Util.isNullOrNil(paramq))
+          paramp = ((com.tencent.mm.modelfriend.a)paramp).bIS();
+          if (!Util.isNullOrNil(paramp))
           {
-            p.j(paramq, "pureMobile");
-            paramq = (CharSequence)paramq;
-            i = paramq.length() - 1;
+            kotlin.g.b.s.s(paramp, "pureMobile");
+            paramp = (CharSequence)paramp;
+            i = paramp.length() - 1;
             int k = 0;
             int j = 0;
             while (j <= i)
@@ -549,9 +703,9 @@ public final class KidsWatchRegGetInfoUI
               if (k == 0)
               {
                 m = j;
-                label355:
-                if (paramq.charAt(m) > ' ') {
-                  break label395;
+                label417:
+                if (kotlin.g.b.s.compare(paramp.charAt(m), 32) > 0) {
+                  break label460;
                 }
                 m = 1;
               }
@@ -564,8 +718,8 @@ public final class KidsWatchRegGetInfoUI
                     k = 1;
                     break;
                     m = i;
-                    break label355;
-                    label395:
+                    break label417;
+                    label460:
                     m = 0;
                     continue;
                   }
@@ -578,46 +732,39 @@ public final class KidsWatchRegGetInfoUI
               }
               i -= 1;
             }
-            this.nfH = paramq.subSequence(j, i + 1).toString();
+            this.qcQ = paramp.subSequence(j, i + 1).toString();
           }
           if (paramInt2 == -36)
           {
-            eKW();
-            AppMethodBeat.o(251524);
+            fST();
+            AppMethodBeat.o(262375);
             return;
           }
-          paramString = com.tencent.mm.h.a.Kb(paramString);
-          if (paramString != null)
+          paramString = com.tencent.mm.broadcast.a.CH(paramString);
+          if (paramString == null) {}
+          for (paramString = null;; paramString = Boolean.valueOf(paramString.a((Context)getContext(), null, null)))
           {
-            paramString.a((Context)getContext(), null, null);
-            AppMethodBeat.o(251524);
+            if (paramString == null) {
+              k.c((Context)this, getString(b.h.bind_mcontact_verify_err, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), "", true);
+            }
+            AppMethodBeat.o(262375);
             return;
           }
-          com.tencent.mm.ui.base.h.af((Context)this, getString(b.h.bind_mcontact_verify_err, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), "");
-          AppMethodBeat.o(251524);
-          return;
-        }
-        if (paramInt2 == -355)
-        {
-          Log.i("MicroMsg.KidsWatchRegGetInfoUI", "showBlockBySpam");
-          y.f((Context)this, paramString, 30846);
-          AppMethodBeat.o(251524);
-          return;
         }
         if (paramInt2 == -34)
         {
-          com.tencent.mm.ui.base.h.af((Context)this, getString(b.h.bind_mcontact_err_freq_limit), "");
-          AppMethodBeat.o(251524);
+          k.c((Context)this, getString(b.h.bind_mcontact_err_freq_limit), "", true);
+          AppMethodBeat.o(262375);
           return;
         }
-        if (com.tencent.mm.plugin.account.sdk.a.mIH.a((Context)this, paramInt1, paramInt2, paramString))
+        if (com.tencent.mm.plugin.account.sdk.a.pFo.a((Context)this, paramInt1, paramInt2, paramString))
         {
-          AppMethodBeat.o(251524);
+          AppMethodBeat.o(262375);
           return;
         }
       }
     }
-    AppMethodBeat.o(251524);
+    AppMethodBeat.o(262375);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -626,142 +773,94 @@ public final class KidsWatchRegGetInfoUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    implements Runnable
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<ah>
   {
-    b(KidsWatchRegGetInfoUI paramKidsWatchRegGetInfoUI, String paramString) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(251587);
-      KidsWatchRegGetInfoUI.a(this.EcK, paramString);
-      AppMethodBeat.o(251587);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class c
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<kotlin.x>
-  {
-    c(KidsWatchRegGetInfoUI paramKidsWatchRegGetInfoUI)
+    b(KidsWatchRegGetInfoUI paramKidsWatchRegGetInfoUI)
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class d
-    implements View.OnClickListener
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegGetInfoUI$initView$3", "Landroid/text/TextWatcher;", "afterTextChanged", "", "s", "Landroid/text/Editable;", "beforeTextChanged", "", "start", "", "count", "after", "onTextChanged", "before", "plugin-kidswatch_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
+    implements TextWatcher
+  {
+    c(KidsWatchRegGetInfoUI paramKidsWatchRegGetInfoUI) {}
+    
+    public final void afterTextChanged(Editable paramEditable)
+    {
+      AppMethodBeat.i(262144);
+      kotlin.g.b.s.u(paramEditable, "s");
+      Button localButton = (Button)this.JTK.findViewById(b.e.JSj);
+      if ((!Util.isNullOrNil(paramEditable.toString())) && (!Util.isNullOrNil((CharSequence)((MMClearEditText)this.JTK.findViewById(b.e.JSd)).getText())) && (((CheckBox)this.JTK.findViewById(b.e.JRV)).isChecked())) {}
+      for (boolean bool = true;; bool = false)
+      {
+        localButton.setEnabled(bool);
+        AppMethodBeat.o(262144);
+        return;
+      }
+    }
+    
+    public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+    {
+      AppMethodBeat.i(262131);
+      kotlin.g.b.s.u(paramCharSequence, "s");
+      AppMethodBeat.o(262131);
+    }
+    
+    public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+    {
+      AppMethodBeat.i(262139);
+      kotlin.g.b.s.u(paramCharSequence, "s");
+      AppMethodBeat.o(262139);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegGetInfoUI$initView$4", "Landroid/text/TextWatcher;", "afterTextChanged", "", "s", "Landroid/text/Editable;", "beforeTextChanged", "", "start", "", "count", "after", "onTextChanged", "before", "plugin-kidswatch_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class d
+    implements TextWatcher
   {
     d(KidsWatchRegGetInfoUI paramKidsWatchRegGetInfoUI) {}
     
-    public final void onClick(View paramView)
+    public final void afterTextChanged(Editable paramEditable)
     {
-      AppMethodBeat.i(251461);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegGetInfoUI$initView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      KidsWatchRegGetInfoUI.a(this.EcK);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegGetInfoUI$initView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(251461);
+      AppMethodBeat.i(262127);
+      kotlin.g.b.s.u(paramEditable, "s");
+      Button localButton = (Button)this.JTK.findViewById(b.e.JSj);
+      if ((!Util.isNullOrNil(paramEditable.toString())) && (!Util.isNullOrNil((CharSequence)((MMClearEditText)this.JTK.findViewById(b.e.JSf)).getText())) && (((CheckBox)this.JTK.findViewById(b.e.JRV)).isChecked())) {}
+      for (boolean bool = true;; bool = false)
+      {
+        localButton.setEnabled(bool);
+        AppMethodBeat.o(262127);
+        return;
+      }
+    }
+    
+    public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+    {
+      AppMethodBeat.i(262114);
+      kotlin.g.b.s.u(paramCharSequence, "s");
+      AppMethodBeat.o(262114);
+    }
+    
+    public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+    {
+      AppMethodBeat.i(262120);
+      kotlin.g.b.s.u(paramCharSequence, "s");
+      AppMethodBeat.o(262120);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegGetInfoUI$initView$3", "Landroid/text/TextWatcher;", "afterTextChanged", "", "s", "Landroid/text/Editable;", "beforeTextChanged", "", "start", "", "count", "after", "onTextChanged", "before", "plugin-kidswatch_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegGetInfoUI$initView$5", "Lcom/tencent/mm/sdk/platformtools/MMHandlerThread$IWaitWorkThread;", "nickname", "", "getNickname", "()Ljava/lang/String;", "setNickname", "(Ljava/lang/String;)V", "doInBackground", "", "onPostExecute", "toString", "plugin-kidswatch_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class e
-    implements TextWatcher
-  {
-    public final void afterTextChanged(Editable paramEditable)
-    {
-      AppMethodBeat.i(252261);
-      p.k(paramEditable, "s");
-      Button localButton = (Button)this.EcK._$_findCachedViewById(b.e.Ebb);
-      p.j(localButton, "regBtn");
-      if (!Util.isNullOrNil(paramEditable.toString()))
-      {
-        paramEditable = (MMClearEditText)this.EcK._$_findCachedViewById(b.e.EaV);
-        p.j(paramEditable, "mobileFIV");
-        if (!Util.isNullOrNil((CharSequence)paramEditable.getText()))
-        {
-          paramEditable = (CheckBox)this.EcK._$_findCachedViewById(b.e.EaN);
-          p.j(paramEditable, "lawDetailCB");
-          if (!paramEditable.isChecked()) {}
-        }
-      }
-      for (boolean bool = true;; bool = false)
-      {
-        localButton.setEnabled(bool);
-        AppMethodBeat.o(252261);
-        return;
-      }
-    }
-    
-    public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-    {
-      AppMethodBeat.i(252258);
-      p.k(paramCharSequence, "s");
-      AppMethodBeat.o(252258);
-    }
-    
-    public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-    {
-      AppMethodBeat.i(252260);
-      p.k(paramCharSequence, "s");
-      AppMethodBeat.o(252260);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegGetInfoUI$initView$4", "Landroid/text/TextWatcher;", "afterTextChanged", "", "s", "Landroid/text/Editable;", "beforeTextChanged", "", "start", "", "count", "after", "onTextChanged", "before", "plugin-kidswatch_release"})
-  public static final class f
-    implements TextWatcher
-  {
-    public final void afterTextChanged(Editable paramEditable)
-    {
-      AppMethodBeat.i(252057);
-      p.k(paramEditable, "s");
-      Button localButton = (Button)this.EcK._$_findCachedViewById(b.e.Ebb);
-      p.j(localButton, "regBtn");
-      if (!Util.isNullOrNil(paramEditable.toString()))
-      {
-        paramEditable = (MMClearEditText)this.EcK._$_findCachedViewById(b.e.EaX);
-        p.j(paramEditable, "nickFIV");
-        if (!Util.isNullOrNil((CharSequence)paramEditable.getText()))
-        {
-          paramEditable = (CheckBox)this.EcK._$_findCachedViewById(b.e.EaN);
-          p.j(paramEditable, "lawDetailCB");
-          if (!paramEditable.isChecked()) {}
-        }
-      }
-      for (boolean bool = true;; bool = false)
-      {
-        localButton.setEnabled(bool);
-        AppMethodBeat.o(252057);
-        return;
-      }
-    }
-    
-    public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-    {
-      AppMethodBeat.i(252054);
-      p.k(paramCharSequence, "s");
-      AppMethodBeat.o(252054);
-    }
-    
-    public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-    {
-      AppMethodBeat.i(252056);
-      p.k(paramCharSequence, "s");
-      AppMethodBeat.o(252056);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegGetInfoUI$initView$5", "Lcom/tencent/mm/sdk/platformtools/MMHandlerThread$IWaitWorkThread;", "nickname", "", "getNickname", "()Ljava/lang/String;", "setNickname", "(Ljava/lang/String;)V", "doInBackground", "", "onPostExecute", "toString", "plugin-kidswatch_release"})
-  public static final class g
     implements MMHandlerThread.IWaitWorkThread
   {
     private String nickname;
+    
+    e(KidsWatchRegGetInfoUI paramKidsWatchRegGetInfoUI) {}
     
     public final boolean doInBackground()
     {
@@ -770,14 +869,11 @@ public final class KidsWatchRegGetInfoUI
     
     public final boolean onPostExecute()
     {
-      AppMethodBeat.i(251434);
+      AppMethodBeat.i(262126);
       Object localObject;
       if (!Util.isNullOrNil(this.nickname))
       {
-        localObject = new StringBuilder();
-        MMClearEditText localMMClearEditText = (MMClearEditText)this.EcK._$_findCachedViewById(b.e.EaX);
-        p.j(localMMClearEditText, "nickFIV");
-        localObject = (CharSequence)localMMClearEditText.getText();
+        localObject = (CharSequence)kotlin.g.b.s.X("", ((MMClearEditText)this.JTK.findViewById(b.e.JSf)).getText());
         int i = ((CharSequence)localObject).length() - 1;
         int k = 0;
         int j = 0;
@@ -787,9 +883,9 @@ public final class KidsWatchRegGetInfoUI
           if (k == 0)
           {
             m = j;
-            label90:
-            if (((CharSequence)localObject).charAt(m) > ' ') {
-              break label127;
+            label67:
+            if (kotlin.g.b.s.compare(((CharSequence)localObject).charAt(m), 32) > 0) {
+              break label107;
             }
             m = 1;
           }
@@ -802,8 +898,8 @@ public final class KidsWatchRegGetInfoUI
                 k = 1;
                 break;
                 m = i;
-                break label90;
-                label127:
+                break label67;
+                label107:
                 m = 0;
                 continue;
               }
@@ -817,232 +913,111 @@ public final class KidsWatchRegGetInfoUI
           i -= 1;
         }
         if (Util.isNullOrNil(((CharSequence)localObject).subSequence(j, i + 1).toString())) {
-          ((MMClearEditText)this.EcK._$_findCachedViewById(b.e.EaX)).setText((CharSequence)this.nickname);
+          ((MMClearEditText)this.JTK.findViewById(b.e.JSf)).setText((CharSequence)this.nickname);
         }
       }
-      if (!e.avA())
+      if (!e.aPU())
       {
         Log.e("MicroMsg.KidsWatchRegGetInfoUI", "SDcard is not available");
-        AppMethodBeat.o(251434);
+        AppMethodBeat.o(262126);
         return false;
       }
-      if (KidsWatchRegGetInfoUI.b(this.EcK) != null)
+      if (KidsWatchRegGetInfoUI.c(this.JTK) != null)
       {
-        localObject = KidsWatchRegGetInfoUI.b(this.EcK);
-        if (localObject == null) {
-          p.iCn();
-        }
-        if ((!((Bitmap)localObject).isRecycled()) && (!KidsWatchRegGetInfoUI.c(this.EcK)))
+        localObject = KidsWatchRegGetInfoUI.c(this.JTK);
+        kotlin.g.b.s.checkNotNull(localObject);
+        if ((!((Bitmap)localObject).isRecycled()) && (!KidsWatchRegGetInfoUI.d(this.JTK)))
         {
-          ((RoundCornerImageView)this.EcK._$_findCachedViewById(b.e.dsd)).setImageBitmap(KidsWatchRegGetInfoUI.b(this.EcK));
-          localObject = (RoundCornerImageView)this.EcK._$_findCachedViewById(b.e.dsd);
-          p.j(localObject, "avatarIV");
-          ((RoundCornerImageView)localObject).setVisibility(0);
-          localObject = (ImageView)this.EcK._$_findCachedViewById(b.e.Eat);
-          p.j(localObject, "addAvatarIV");
-          ((ImageView)localObject).setVisibility(8);
-          KidsWatchRegGetInfoUI.d(this.EcK);
+          ((RoundCornerImageView)this.JTK.findViewById(b.e.avatarIV)).setImageBitmap(KidsWatchRegGetInfoUI.c(this.JTK));
+          ((RoundCornerImageView)this.JTK.findViewById(b.e.avatarIV)).setVisibility(0);
+          ((ImageView)this.JTK.findViewById(b.e.JRB)).setVisibility(8);
+          KidsWatchRegGetInfoUI.e(this.JTK);
         }
       }
-      AppMethodBeat.o(251434);
+      AppMethodBeat.o(262126);
       return true;
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(251437);
-      String str = super.toString() + "|initView2";
-      AppMethodBeat.o(251437);
+      AppMethodBeat.i(262138);
+      String str = kotlin.g.b.s.X(super.toString(), "|initView2");
+      AppMethodBeat.o(262138);
       return str;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/widget/CompoundButton;", "kotlin.jvm.PlatformType", "isChecked", "", "onCheckedChanged"})
-  static final class h
-    implements CompoundButton.OnCheckedChangeListener
-  {
-    h(KidsWatchRegGetInfoUI paramKidsWatchRegGetInfoUI) {}
-    
-    public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-    {
-      AppMethodBeat.i(251817);
-      paramCompoundButton = (MMClearEditText)this.EcK._$_findCachedViewById(b.e.EaX);
-      p.j(paramCompoundButton, "nickFIV");
-      if (!Util.isNullOrNil(paramCompoundButton.getText().toString()))
-      {
-        paramCompoundButton = (MMClearEditText)this.EcK._$_findCachedViewById(b.e.EaV);
-        p.j(paramCompoundButton, "mobileFIV");
-        if ((!Util.isNullOrNil(paramCompoundButton.getText().toString())) && (paramBoolean))
-        {
-          paramCompoundButton = (Button)this.EcK._$_findCachedViewById(b.e.Ebb);
-          p.j(paramCompoundButton, "regBtn");
-          paramCompoundButton.setEnabled(paramBoolean);
-        }
-      }
-      if (!paramBoolean)
-      {
-        paramCompoundButton = (Button)this.EcK._$_findCachedViewById(b.e.Ebb);
-        p.j(paramCompoundButton, "regBtn");
-        paramCompoundButton.setEnabled(paramBoolean);
-      }
-      AppMethodBeat.o(251817);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegGetInfoUI$initView$7", "Lcom/tencent/mm/plugin/kidswatch/model/KidsWatchAvoidDuplicatedPressableSpan;", "onClickImp", "", "widget", "Landroid/view/View;", "plugin-kidswatch_release"})
-  public static final class i
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegGetInfoUI$initView$7", "Lcom/tencent/mm/plugin/kidswatch/model/KidsWatchAvoidDuplicatedPressableSpan;", "onClickImp", "", "widget", "Landroid/view/View;", "plugin-kidswatch_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class f
     extends com.tencent.mm.plugin.kidswatch.model.a
   {
-    public final void eKQ()
+    f(KidsWatchRegGetInfoUI paramKidsWatchRegGetInfoUI) {}
+    
+    public final void fSP()
     {
-      AppMethodBeat.i(251589);
-      KidsWatchRegGetInfoUI.e(this.EcK);
-      AppMethodBeat.o(251589);
+      AppMethodBeat.i(262105);
+      KidsWatchRegGetInfoUI.f(this.JTK);
+      AppMethodBeat.o(262105);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class j
-    implements View.OnClickListener
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegGetInfoUI$initView$8$1", "Lcom/tencent/mm/ui/tools/legalchecker/InputTextBoundaryCheck$DoAfterCheck;", "doWhenLess", "", "text", "", "doWhenMore", "doWhenOK", "plugin-kidswatch_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class g
+    implements com.tencent.mm.ui.tools.b.c.a
   {
-    j(KidsWatchRegGetInfoUI paramKidsWatchRegGetInfoUI) {}
+    g(KidsWatchRegGetInfoUI paramKidsWatchRegGetInfoUI) {}
     
-    public final void onClick(View paramView)
+    public final void Tw(String paramString)
     {
-      AppMethodBeat.i(251570);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegGetInfoUI$initView$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-      Log.i("MicroMsg.KidsWatchRegGetInfoUI", "click reg button");
-      paramView = this.EcK;
-      localObject = (Context)this.EcK;
-      this.EcK.getString(b.h.app_tip);
-      KidsWatchRegGetInfoUI.a(paramView, com.tencent.mm.ui.base.h.a((Context)localObject, this.EcK.getString(b.h.app_waiting), true, null));
-      c.i((MMClearEditText)this.EcK._$_findCachedViewById(b.e.EaX)).mM(1, 32).Hh(true).a((com.tencent.mm.ui.tools.b.c.a)new com.tencent.mm.ui.tools.b.c.a()
+      AppMethodBeat.i(262118);
+      kotlin.g.b.s.u(paramString, "text");
+      KidsWatchRegGetInfoUI.b(this.JTK, PhoneFormater.pureNumber(((MMClearEditText)this.JTK.findViewById(b.e.JSd)).getText().toString()));
+      paramString = kotlin.g.b.s.X(KidsWatchRegGetInfoUI.g(this.JTK), KidsWatchRegGetInfoUI.h(this.JTK));
+      this.JTK.hideVKB();
+      if (KidsWatchRegGetInfoUI.i(this.JTK))
       {
-        public final void abc(String paramAnonymousString)
-        {
-          AppMethodBeat.i(252275);
-          p.k(paramAnonymousString, "text");
-          paramAnonymousString = this.EcM.EcK;
-          MMClearEditText localMMClearEditText = (MMClearEditText)this.EcM.EcK._$_findCachedViewById(b.e.EaV);
-          p.j(localMMClearEditText, "mobileFIV");
-          KidsWatchRegGetInfoUI.b(paramAnonymousString, PhoneFormater.pureNumber(localMMClearEditText.getText().toString()));
-          paramAnonymousString = KidsWatchRegGetInfoUI.h(this.EcM.EcK) + KidsWatchRegGetInfoUI.g(this.EcM.EcK);
-          this.EcM.EcK.hideVKB();
-          if (KidsWatchRegGetInfoUI.i(this.EcM.EcK))
-          {
-            paramAnonymousString = KidsWatchRegGetInfoUI.f(this.EcM.EcK);
-            if (paramAnonymousString != null) {
-              paramAnonymousString.dismiss();
-            }
-            paramAnonymousString = this.EcM.EcK.getString(b.h.license_read_url, new Object[] { LocaleUtil.getApplicationLanguage(), "CN", "kidswatchreg", Integer.valueOf(1), Integer.valueOf(0) });
-            p.j(paramAnonymousString, "getString(R.string.licen…N\", \"kidswatchreg\", 1, 0)");
-            com.tencent.mm.plugin.account.sdk.b.a.b((Context)this.EcM.EcK.getContext(), paramAnonymousString, 30847, false);
-            AppMethodBeat.o(252275);
-            return;
-          }
-          KidsWatchRegGetInfoUI.c(this.EcM.EcK, paramAnonymousString);
-          AppMethodBeat.o(252275);
+        paramString = KidsWatchRegGetInfoUI.j(this.JTK);
+        if (paramString != null) {
+          paramString.dismiss();
         }
-        
-        public final void abd(String paramAnonymousString)
-        {
-          AppMethodBeat.i(252276);
-          p.k(paramAnonymousString, "text");
-          paramAnonymousString = KidsWatchRegGetInfoUI.f(this.EcM.EcK);
-          if (paramAnonymousString != null) {
-            paramAnonymousString.dismiss();
-          }
-          com.tencent.mm.ui.base.h.p((Context)this.EcM.EcK.getContext(), b.h.settings_modify_name_invalid_less, b.h.settings_modify_name_title);
-          AppMethodBeat.o(252276);
-        }
-        
-        public final void dN(String paramAnonymousString)
-        {
-          AppMethodBeat.i(252278);
-          p.k(paramAnonymousString, "text");
-          paramAnonymousString = KidsWatchRegGetInfoUI.f(this.EcM.EcK);
-          if (paramAnonymousString != null) {
-            paramAnonymousString.dismiss();
-          }
-          com.tencent.mm.ui.base.h.p((Context)this.EcM.EcK.getContext(), b.h.settings_modify_name_invalid_more, b.h.settings_modify_name_title);
-          AppMethodBeat.o(252278);
-        }
-      });
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegGetInfoUI$initView$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(251570);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class k
-    implements Runnable
-  {
-    k(KidsWatchRegGetInfoUI paramKidsWatchRegGetInfoUI) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(252236);
-      s locals = KidsWatchRegGetInfoUI.f(this.EcK);
-      if (locals != null)
-      {
-        locals.dismiss();
-        AppMethodBeat.o(252236);
+        paramString = this.JTK.getString(b.h.license_read_url, new Object[] { LocaleUtil.getApplicationLanguage(), "CN", "kidswatchreg", Integer.valueOf(1), Integer.valueOf(0) });
+        kotlin.g.b.s.s(paramString, "getString(R.string.licen…N\", \"kidswatchreg\", 1, 0)");
+        com.tencent.mm.plugin.account.sdk.c.a.b((Context)this.JTK.getContext(), paramString, 30847, false);
+        AppMethodBeat.o(262118);
         return;
       }
-      AppMethodBeat.o(252236);
+      KidsWatchRegGetInfoUI.c(this.JTK, paramString);
+      AppMethodBeat.o(262118);
     }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class l
-    implements Runnable
-  {
-    l(KidsWatchRegGetInfoUI paramKidsWatchRegGetInfoUI, int paramInt) {}
     
-    public final void run()
+    public final void Tx(String paramString)
     {
-      AppMethodBeat.i(252187);
-      Object localObject = (InputPanelLinearLayout)this.EcK._$_findCachedViewById(b.e.EaJ);
-      p.j(localObject, "inputContainer");
-      Log.i("MicroMsg.KidsWatchRegGetInfoUI", "inputContainer.height: %d, screenHeight: %d", new Object[] { Integer.valueOf(((InputPanelLinearLayout)localObject).getHeight()), Integer.valueOf(paramInt) });
-      localObject = (InputPanelLinearLayout)this.EcK._$_findCachedViewById(b.e.EaJ);
-      p.j(localObject, "inputContainer");
-      if (((InputPanelLinearLayout)localObject).getHeight() > paramInt)
-      {
-        localObject = (ScrollView)this.EcK._$_findCachedViewById(b.e.scrollView);
-        InputPanelLinearLayout localInputPanelLinearLayout = (InputPanelLinearLayout)this.EcK._$_findCachedViewById(b.e.EaJ);
-        p.j(localInputPanelLinearLayout, "inputContainer");
-        ((ScrollView)localObject).scrollBy(0, localInputPanelLinearLayout.getHeight() - paramInt);
+      AppMethodBeat.i(262122);
+      kotlin.g.b.s.u(paramString, "text");
+      paramString = KidsWatchRegGetInfoUI.j(this.JTK);
+      if (paramString != null) {
+        paramString.dismiss();
       }
-      AppMethodBeat.o(252187);
+      k.s((Context)this.JTK.getContext(), b.h.settings_modify_name_invalid_less, b.h.settings_modify_name_title);
+      AppMethodBeat.o(262122);
     }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class m
-    implements Runnable
-  {
-    m(KidsWatchRegGetInfoUI paramKidsWatchRegGetInfoUI) {}
     
-    public final void run()
+    public final void eY(String paramString)
     {
-      AppMethodBeat.i(252089);
-      s locals = KidsWatchRegGetInfoUI.f(this.EcK);
-      if (locals != null)
-      {
-        locals.dismiss();
-        AppMethodBeat.o(252089);
-        return;
+      AppMethodBeat.i(262128);
+      kotlin.g.b.s.u(paramString, "text");
+      paramString = KidsWatchRegGetInfoUI.j(this.JTK);
+      if (paramString != null) {
+        paramString.dismiss();
       }
-      AppMethodBeat.o(252089);
+      k.s((Context)this.JTK.getContext(), b.h.settings_modify_name_invalid_more, b.h.settings_modify_name_title);
+      AppMethodBeat.o(262128);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.kidswatch.ui.reg.KidsWatchRegGetInfoUI
  * JD-Core Version:    0.7.0.1
  */

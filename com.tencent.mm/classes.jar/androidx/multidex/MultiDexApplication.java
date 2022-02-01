@@ -9,15 +9,15 @@ public class MultiDexApplication
 {
   protected void attachBaseContext(Context paramContext)
   {
-    AppMethodBeat.i(260724);
+    AppMethodBeat.i(201159);
     super.attachBaseContext(paramContext);
-    a.W(this);
-    AppMethodBeat.o(260724);
+    a.am(this);
+    AppMethodBeat.o(201159);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     androidx.multidex.MultiDexApplication
  * JD-Core Version:    0.7.0.1
  */

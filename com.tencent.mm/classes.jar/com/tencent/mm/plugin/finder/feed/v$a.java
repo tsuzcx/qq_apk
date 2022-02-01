@@ -1,104 +1,415 @@
 package com.tencent.mm.plugin.finder.feed;
 
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.plugin.finder.e.b;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.h;
 import com.tencent.mm.plugin.finder.feed.model.BaseFinderFeedLoader;
-import com.tencent.mm.plugin.finder.feed.model.FinderLbsStreamFeedLoader;
-import com.tencent.mm.plugin.finder.feed.model.FinderLbsStreamFeedLoader.a;
+import com.tencent.mm.plugin.finder.feed.model.FinderHotWordFeedLoader;
+import com.tencent.mm.plugin.finder.feed.model.FinderHotWordFeedLoader.c;
+import com.tencent.mm.plugin.finder.feed.model.FinderHotWordFeedLoader.d;
+import com.tencent.mm.plugin.finder.feed.model.FinderHotWordFeedLoader.e;
 import com.tencent.mm.plugin.finder.feed.model.internal.BaseFeedLoader;
-import com.tencent.mm.plugin.finder.storage.ak;
+import com.tencent.mm.plugin.finder.storage.as;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.view.recyclerview.f;
+import com.tencent.mm.view.RefreshLoadMoreLayout;
+import com.tencent.mm.view.RefreshLoadMoreLayout.d;
+import com.tencent.mm.view.k;
+import com.tencent.mm.view.recyclerview.g;
+import com.tencent.mm.view.recyclerview.i;
 import java.util.ArrayList;
-import java.util.concurrent.ConcurrentHashMap;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.a;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/FinderLbsStreamFeedUIContract$LbsStreamFeedPresenter;", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$Presenter;", "context", "Lcom/tencent/mm/ui/MMActivity;", "scene", "", "commentScene", "loader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "(Lcom/tencent/mm/ui/MMActivity;IILcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;)V", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "initViewCallback", "", "loadInitData", "loadMoreData", "onAttach", "callback", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$ViewCallback;", "onDetach", "requestRefresh", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/FinderHotWordFeedUIContract$HotWordFeedPresenter;", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$Presenter;", "context", "Lcom/tencent/mm/ui/MMActivity;", "scene", "", "commentScene", "loader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "(Lcom/tencent/mm/ui/MMActivity;IILcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;)V", "TAG", "", "iconUrl", "getIconUrl", "()Ljava/lang/String;", "setIconUrl", "(Ljava/lang/String;)V", "onRequestFinished", "Lkotlin/Function0;", "", "getOnRequestFinished", "()Lkotlin/jvm/functions/Function0;", "setOnRequestFinished", "(Lkotlin/jvm/functions/Function0;)V", "topic", "getTopic", "setTopic", "topicRLayout", "Lcom/tencent/mm/view/IViewActionCallback;", "getTopicRLayout", "()Lcom/tencent/mm/view/IViewActionCallback;", "setTopicRLayout", "(Lcom/tencent/mm/view/IViewActionCallback;)V", "type", "getType", "()I", "setType", "(I)V", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "distinctResponseList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "incrementList", "", "getIViewActionCallback", "initViewCallback", "loadMoreData", "requestRefresh", "scrollToTop", "endCallBack", "showNoMoreView", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class v$a
   extends c.a
 {
-  public static final a xyU;
-  
-  static
-  {
-    AppMethodBeat.i(281290);
-    xyU = new a((byte)0);
-    AppMethodBeat.o(281290);
-  }
+  private k AWa;
+  private final String TAG;
+  private String iconUrl;
+  public String topic;
+  public int type;
   
   public v$a(MMActivity paramMMActivity, BaseFinderFeedLoader paramBaseFinderFeedLoader)
   {
-    super(paramMMActivity, paramBaseFinderFeedLoader);
-    AppMethodBeat.i(281289);
-    AppMethodBeat.o(281289);
-  }
-  
-  public final void a(c.b paramb)
-  {
-    AppMethodBeat.i(281285);
-    p.k(paramb, "callback");
-    super.a(paramb);
-    AppMethodBeat.o(281285);
-  }
-  
-  public final void byN()
-  {
-    AppMethodBeat.i(281282);
-    this.xnX.requestLoadMore();
-    AppMethodBeat.o(281282);
-  }
-  
-  public final void dsF()
-  {
-    AppMethodBeat.i(281283);
-    BaseFeedLoader.requestInit$default(this.xnX, false, 1, null);
-    AppMethodBeat.o(281283);
-  }
-  
-  public final void dsr()
-  {
-    AppMethodBeat.i(281281);
-    c.b localb = this.xvU;
-    if (localb != null)
+    super(paramMMActivity, 115, paramBaseFinderFeedLoader);
+    AppMethodBeat.i(362519);
+    this.TAG = "Finder.FinderHotWordFeedUIContract.HotWordFeedPresenter";
+    this.topic = "";
+    this.iconUrl = "";
+    this.AWa = ((k)new k()
     {
-      localb.ab((ArrayList)this.xnX.getDataListJustForAdapter());
-      AppMethodBeat.o(281281);
+      public final void onChanged()
+      {
+        AppMethodBeat.i(363983);
+        Object localObject = this.AWb.ATE;
+        if (localObject != null)
+        {
+          localObject = (k)((c.b)localObject).ATx;
+          if (localObject != null) {
+            ((k)localObject).onChanged();
+          }
+        }
+        AppMethodBeat.o(363983);
+      }
+      
+      public final void onItemRangeChanged(int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        int i = 0;
+        AppMethodBeat.i(363988);
+        Object localObject1 = this.AWb.ATE;
+        Object localObject2;
+        if (localObject1 != null)
+        {
+          localObject1 = (k)((c.b)localObject1).ATx;
+          if (localObject1 != null)
+          {
+            localObject2 = this.AWb.ATE;
+            if (localObject2 != null) {
+              break label67;
+            }
+          }
+        }
+        for (;;)
+        {
+          ((k)localObject1).onItemRangeChanged(i + paramAnonymousInt1, paramAnonymousInt2);
+          AppMethodBeat.o(363988);
+          return;
+          label67:
+          localObject2 = ((c.b)localObject2).getAdapter();
+          if (localObject2 != null) {
+            i = ((i)localObject2).agOb.size();
+          }
+        }
+      }
+      
+      public final void onItemRangeChanged(int paramAnonymousInt1, int paramAnonymousInt2, Object paramAnonymousObject)
+      {
+        int i = 0;
+        AppMethodBeat.i(363994);
+        Object localObject1 = this.AWb.ATE;
+        Object localObject2;
+        if (localObject1 != null)
+        {
+          localObject1 = (k)((c.b)localObject1).ATx;
+          if (localObject1 != null)
+          {
+            localObject2 = this.AWb.ATE;
+            if (localObject2 != null) {
+              break label70;
+            }
+          }
+        }
+        for (;;)
+        {
+          ((k)localObject1).onItemRangeChanged(i + paramAnonymousInt1, paramAnonymousInt2, paramAnonymousObject);
+          AppMethodBeat.o(363994);
+          return;
+          label70:
+          localObject2 = ((c.b)localObject2).getAdapter();
+          if (localObject2 != null) {
+            i = ((i)localObject2).agOb.size();
+          }
+        }
+      }
+      
+      public final void onItemRangeInserted(int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        int i = 0;
+        AppMethodBeat.i(364000);
+        Object localObject1 = this.AWb.ATE;
+        Object localObject2;
+        if (localObject1 != null)
+        {
+          localObject1 = (k)((c.b)localObject1).ATx;
+          if (localObject1 != null)
+          {
+            localObject2 = this.AWb.ATE;
+            if (localObject2 != null) {
+              break label67;
+            }
+          }
+        }
+        for (;;)
+        {
+          ((k)localObject1).onItemRangeInserted(i + paramAnonymousInt1, paramAnonymousInt2);
+          AppMethodBeat.o(364000);
+          return;
+          label67:
+          localObject2 = ((c.b)localObject2).getAdapter();
+          if (localObject2 != null) {
+            i = ((i)localObject2).agOb.size();
+          }
+        }
+      }
+      
+      public final void onItemRangeRemoved(int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        int i = 0;
+        AppMethodBeat.i(364006);
+        Object localObject1 = this.AWb.ATE;
+        Object localObject2;
+        if (localObject1 != null)
+        {
+          localObject1 = (k)((c.b)localObject1).ATx;
+          if (localObject1 != null)
+          {
+            localObject2 = this.AWb.ATE;
+            if (localObject2 != null) {
+              break label86;
+            }
+          }
+        }
+        for (;;)
+        {
+          ((k)localObject1).onItemRangeRemoved(i + paramAnonymousInt1, paramAnonymousInt2);
+          localObject1 = this.AWb.ATE;
+          if (localObject1 != null) {
+            ((c.b)localObject1).dUO();
+          }
+          AppMethodBeat.o(364006);
+          return;
+          label86:
+          localObject2 = ((c.b)localObject2).getAdapter();
+          if (localObject2 != null) {
+            i = ((i)localObject2).agOb.size();
+          }
+        }
+      }
+      
+      public final void onPreFinishLoadMore(final RefreshLoadMoreLayout.d<Object> paramAnonymousd)
+      {
+        AppMethodBeat.i(363972);
+        s.u(paramAnonymousd, "reason");
+        Object localObject = this.AWb.ATE;
+        if (localObject != null)
+        {
+          localObject = (k)((c.b)localObject).ATx;
+          if (localObject != null) {
+            ((k)localObject).onPreFinishLoadMore(paramAnonymousd);
+          }
+        }
+        com.tencent.mm.ae.d.uiThread((a)new a(this.AWb, paramAnonymousd));
+        AppMethodBeat.o(363972);
+      }
+      
+      public final void onPreFinishLoadMoreSmooth(final RefreshLoadMoreLayout.d<Object> paramAnonymousd)
+      {
+        AppMethodBeat.i(363981);
+        s.u(paramAnonymousd, "reason");
+        Object localObject = this.AWb.ATE;
+        if (localObject != null)
+        {
+          localObject = (k)((c.b)localObject).ATx;
+          if (localObject != null) {
+            ((k)localObject).onPreFinishLoadMoreSmooth(paramAnonymousd);
+          }
+        }
+        com.tencent.mm.ae.d.uiThread((a)new b(this.AWb, paramAnonymousd));
+        AppMethodBeat.o(363981);
+      }
+      
+      public final void onPreFinishRefresh(final RefreshLoadMoreLayout.d<Object> paramAnonymousd)
+      {
+        AppMethodBeat.i(363965);
+        s.u(paramAnonymousd, "reason");
+        com.tencent.mm.ae.d.uiThread((a)new c(this.AWb, paramAnonymousd));
+        AppMethodBeat.o(363965);
+      }
+      
+      @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+      static final class a
+        extends u
+        implements a<ah>
+      {
+        a(v.a parama, RefreshLoadMoreLayout.d<Object> paramd)
+        {
+          super();
+        }
+      }
+      
+      @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+      static final class b
+        extends u
+        implements a<ah>
+      {
+        b(v.a parama, RefreshLoadMoreLayout.d<Object> paramd)
+        {
+          super();
+        }
+      }
+      
+      @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+      static final class c
+        extends u
+        implements a<ah>
+      {
+        c(v.a parama, RefreshLoadMoreLayout.d<Object> paramd)
+        {
+          super();
+        }
+      }
+    });
+    AppMethodBeat.o(362519);
+  }
+  
+  public final void bXB()
+  {
+    AppMethodBeat.i(362550);
+    BaseFeedLoader.requestLoadMore$default((BaseFeedLoader)this.ALH, false, 1, null);
+    AppMethodBeat.o(362550);
+  }
+  
+  public final g dUK()
+  {
+    AppMethodBeat.i(362527);
+    Object localObject = this.ATE;
+    s.checkNotNull(localObject);
+    localObject = ((c.b)localObject).dUN().ech();
+    AppMethodBeat.o(362527);
+    return localObject;
+  }
+  
+  public final void dUM()
+  {
+    AppMethodBeat.i(362535);
+    c.b localb = this.ATE;
+    if (localb != null) {
+      localb.ae((ArrayList)this.ALH.getDataListJustForAdapter());
+    }
+    AppMethodBeat.o(362535);
+  }
+  
+  public final k ebJ()
+  {
+    return this.AWa;
+  }
+  
+  public final void i(RefreshLoadMoreLayout.d<Object> paramd)
+  {
+    Object localObject = null;
+    AppMethodBeat.i(362561);
+    s.u(paramd, "reason");
+    paramd = paramd.extraData;
+    if (paramd == null)
+    {
+      paramd = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.finder.feed.model.FinderHotWordFeedLoader.HotWordResponse");
+      AppMethodBeat.o(362561);
+      throw paramd;
+    }
+    if (!((FinderHotWordFeedLoader.e)paramd).getHasMore())
+    {
+      paramd = this.ATE;
+      if (paramd == null)
+      {
+        paramd = localObject;
+        if (paramd != null) {
+          if (this.ALH.getSize() <= 10) {
+            break label205;
+          }
+        }
+      }
+      label205:
+      for (boolean bool = true;; bool = false)
+      {
+        paramd.setEnableLoadMore(bool);
+        paramd = this.ATE;
+        if (paramd != null)
+        {
+          paramd = paramd.ATx;
+          if (paramd != null)
+          {
+            paramd = paramd.getLoadMoreFooter();
+            if (paramd != null)
+            {
+              paramd = (TextView)paramd.findViewById(e.e.load_more_footer_tip_tv);
+              if (paramd != null) {
+                paramd.setText(e.h.finder_load_more_no_result_tip);
+              }
+            }
+          }
+        }
+        paramd = this.ATE;
+        if (paramd == null) {
+          break label230;
+        }
+        paramd = paramd.ATx;
+        if (paramd == null) {
+          break label230;
+        }
+        paramd = paramd.getLoadMoreFooter();
+        if (paramd == null) {
+          break label230;
+        }
+        paramd = (TextView)paramd.findViewById(e.e.load_more_footer_tip_tv);
+        if (paramd == null) {
+          break label230;
+        }
+        paramd.setTextColor(this.lzt.getResources().getColor(e.b.FG_2));
+        AppMethodBeat.o(362561);
+        return;
+        paramd = paramd.ATx;
+        break;
+      }
+    }
+    paramd = this.ATE;
+    if (paramd == null) {}
+    for (paramd = null;; paramd = paramd.ATx)
+    {
+      if (paramd != null) {
+        paramd.setEnableLoadMore(true);
+      }
+      label230:
+      AppMethodBeat.o(362561);
       return;
     }
-    AppMethodBeat.o(281281);
   }
   
-  public final f dsu()
+  public final void requestRefresh()
   {
-    AppMethodBeat.i(281287);
-    Object localObject = this.xvU;
-    if (localObject != null) {}
-    for (localObject = ((c.b)localObject).dsI();; localObject = null)
+    AppMethodBeat.i(362546);
+    FinderHotWordFeedLoader localFinderHotWordFeedLoader = (FinderHotWordFeedLoader)this.ALH;
+    Log.i(localFinderHotWordFeedLoader.getTAG(), "requestRefresh");
+    Object localObject = (CharSequence)localFinderHotWordFeedLoader.BgC;
+    int i;
+    if ((localObject == null) || (((CharSequence)localObject).length() == 0))
     {
-      if (localObject == null) {
-        p.iCn();
+      i = 1;
+      if (i != 0) {
+        break label141;
       }
-      localObject = ((ak)localObject).dtg();
-      AppMethodBeat.o(281287);
-      return localObject;
+      localObject = localFinderHotWordFeedLoader.BgC;
+      if (localObject != null) {
+        break label123;
+      }
+      localObject = null;
+    }
+    label62:
+    for (localObject = new b((byte[])localObject);; localObject = null)
+    {
+      localObject = new FinderHotWordFeedLoader.c(localFinderHotWordFeedLoader.sceneType, (b)localObject, localFinderHotWordFeedLoader.getContextObj());
+      ((FinderHotWordFeedLoader.c)localObject).edT();
+      BaseFeedLoader.request$default((BaseFeedLoader)localFinderHotWordFeedLoader, localObject, null, 2, null);
+      localFinderHotWordFeedLoader.BgA = ((FinderHotWordFeedLoader.d)localObject);
+      AppMethodBeat.o(362546);
+      return;
+      i = 0;
+      break;
+      label123:
+      localObject = ((String)localObject).getBytes(kotlin.n.d.UTF_8);
+      s.s(localObject, "(this as java.lang.String).getBytes(charset)");
+      break label62;
     }
   }
-  
-  public final void onDetach()
-  {
-    AppMethodBeat.i(281288);
-    super.onDetach();
-    FinderLbsStreamFeedLoader.a locala = FinderLbsStreamFeedLoader.xHD;
-    Log.i(FinderLbsStreamFeedLoader.access$getTAG$cp(), "clearCache");
-    FinderLbsStreamFeedLoader.dut().clear();
-    AppMethodBeat.o(281288);
-  }
-  
-  public final void requestRefresh() {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/FinderLbsStreamFeedUIContract$LbsStreamFeedPresenter$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
 }
 
 

@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@color/afz" style="@style/rj"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/bfs" android:layout_width="fill_parent" android:layout_height="@dimen/k4">
-        <LinearLayout android:orientation="vertical" android:background="@drawable/b6_" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:gravity="center" android:id="@id/h98" android:layout_width="fill_parent" android:layout_height="0.0dip" android:text="@string/fo8" android:layout_weight="1.0" />
-            <View android:id="@id/h99" android:background="@color/afp" android:layout_width="fill_parent" android:layout_height="@dimen/kb" />
+<FrameLayout android:layout_width="@dimen/aat" android:layout_height="@dimen/aab"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:layout_gravity="start|center" android:padding="@dimen/aar" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.tencent.mm.plugin.ball.view.CircleAnimateView android:layout_gravity="center" android:id="@id/f1h" android:layout_width="@dimen/aad" android:layout_height="@dimen/aad" />
+            <com.tencent.mm.plugin.ball.view.CircleImageView android:layout_gravity="center" android:id="@id/f1k" android:layout_width="@dimen/aad" android:layout_height="@dimen/aad" />
+        </FrameLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/gs3" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <com.tencent.mm.ui.widget.EllipsizeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/h_9" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" android:layout_marginStart="@dimen/m2">
+                <TextView android:textSize="15.0dip" android:textColor="@color/BW_0_Alpha_0_5" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/h_b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" />
+                <TextView android:textSize="10.0dip" android:textColor="@color/al6" android:layout_gravity="center_vertical" android:id="@id/h_a" android:background="@drawable/eg" android:paddingTop="1.5dip" android:paddingBottom="1.5dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="4.0dip" android:paddingEnd="4.0dip" android:layout_marginStart="8.0dip" />
+            </com.tencent.mm.ui.widget.EllipsizeLayout>
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="end|center" android:id="@id/yk" android:layout_width="8.0dip" android:layout_height="16.0dip" android:layout_marginLeft="4.0dip" android:layout_marginRight="16.0dip" android:src="@raw/icons_filled_back" android:rotation="180.0" app:iconColor="@color/BW_0_Alpha_0_3" />
         </LinearLayout>
-        <LinearLayout android:orientation="vertical" android:background="@drawable/b6_" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:gravity="center" android:id="@id/hcx" android:layout_width="fill_parent" android:layout_height="0.0dip" android:text="@string/fo9" android:layout_weight="1.0" />
-            <View android:id="@id/hcy" android:background="@color/afp" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="@dimen/kb" />
-        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/gs5" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" android:layout_marginStart="@dimen/m2" />
+        <FrameLayout android:layout_gravity="end|center" android:id="@id/ioc" android:padding="@dimen/aam" android:layout_width="wrap_content" android:layout_height="fill_parent" android:contentDescription="@string/ju3">
+            <ImageView android:layout_gravity="center" android:id="@id/iod" android:layout_width="@dimen/aan" android:layout_height="@dimen/aan" android:src="@raw/icons_filled_close" />
+        </FrameLayout>
     </LinearLayout>
-    <ListView android:id="@id/gnr" android:layout_weight="1.0" style="@style/np" />
-</LinearLayout>
+</FrameLayout>

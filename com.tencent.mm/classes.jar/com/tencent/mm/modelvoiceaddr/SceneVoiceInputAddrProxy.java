@@ -5,6 +5,7 @@ import com.tencent.mm.remoteservice.a;
 import com.tencent.mm.remoteservice.d;
 import com.tencent.mm.remoteservice.e;
 import com.tencent.mm.remoteservice.f;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.List;
 
@@ -12,10 +13,10 @@ public class SceneVoiceInputAddrProxy
   extends a
   implements b
 {
-  private static SceneVoiceInputAddrProxy mmk;
-  private d jGJ;
-  private b mml;
-  private g.b mmm;
+  private static SceneVoiceInputAddrProxy pfW;
+  private b pfX;
+  private g.b pfY;
+  private d pfZ;
   
   public SceneVoiceInputAddrProxy(d paramd)
   {
@@ -26,25 +27,33 @@ public class SceneVoiceInputAddrProxy
       AppMethodBeat.o(148571);
       return;
     }
-    this.jGJ = paramd;
-    paramd.connect(new SceneVoiceInputAddrProxy.1(this));
+    this.pfZ = paramd;
+    paramd.connect(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(148564);
+        Log.i("SceneVoiceInputAddrProxy", "remote service connected");
+        AppMethodBeat.o(148564);
+      }
+    });
     AppMethodBeat.o(148571);
   }
   
   public static void create(d paramd)
   {
     AppMethodBeat.i(148569);
-    mmk = new SceneVoiceInputAddrProxy(paramd);
+    pfW = new SceneVoiceInputAddrProxy(paramd);
     AppMethodBeat.o(148569);
   }
   
   public static SceneVoiceInputAddrProxy getInstance()
   {
     AppMethodBeat.i(148570);
-    if (mmk == null) {
+    if (pfW == null) {
       create(new d(MMApplicationContext.getContext()));
     }
-    SceneVoiceInputAddrProxy localSceneVoiceInputAddrProxy = mmk;
+    SceneVoiceInputAddrProxy localSceneVoiceInputAddrProxy = pfW;
     AppMethodBeat.o(148570);
     return localSceneVoiceInputAddrProxy;
   }
@@ -61,8 +70,8 @@ public class SceneVoiceInputAddrProxy
   public void cancelMM(boolean paramBoolean)
   {
     AppMethodBeat.i(148575);
-    if (getInstance().mml != null) {
-      getInstance().mml.cancel(paramBoolean);
+    if (getInstance().pfX != null) {
+      getInstance().pfX.cancel(paramBoolean);
     }
     AppMethodBeat.o(148575);
   }
@@ -70,12 +79,12 @@ public class SceneVoiceInputAddrProxy
   public void connect(Runnable paramRunnable)
   {
     AppMethodBeat.i(148573);
-    if (this.jGJ == null)
+    if (this.pfZ == null)
     {
       AppMethodBeat.o(148573);
       return;
     }
-    this.jGJ.connect(paramRunnable);
+    this.pfZ.connect(paramRunnable);
     AppMethodBeat.o(148573);
   }
   
@@ -98,9 +107,9 @@ public class SceneVoiceInputAddrProxy
   public int getMaxAmplitudeRateMM()
   {
     AppMethodBeat.i(148583);
-    if (getInstance().mml != null)
+    if (getInstance().pfX != null)
     {
-      int i = getInstance().mml.getMaxAmplitudeRate();
+      int i = getInstance().pfX.getMaxAmplitudeRate();
       AppMethodBeat.o(148583);
       return i;
     }
@@ -111,7 +120,7 @@ public class SceneVoiceInputAddrProxy
   public void init(int paramInt1, int paramInt2, g.b paramb)
   {
     AppMethodBeat.i(148581);
-    getInstance().mmm = paramb;
+    getInstance().pfY = paramb;
     REMOTE_CALL("initMM", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(148581);
   }
@@ -120,7 +129,7 @@ public class SceneVoiceInputAddrProxy
   public void initMM(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(148582);
-    getInstance().mml = new g(paramInt1, paramInt2, new g.b()
+    getInstance().pfX = new g(paramInt1, paramInt2, new g.b()
     {
       public final void b(String[] paramAnonymousArrayOfString, List<String> paramAnonymousList)
       {
@@ -129,18 +138,18 @@ public class SceneVoiceInputAddrProxy
         AppMethodBeat.o(148565);
       }
       
-      public final void brT()
-      {
-        AppMethodBeat.i(148567);
-        SceneVoiceInputAddrProxy.this.CLIENT_CALL("onRecordFinCli", new Object[0]);
-        AppMethodBeat.o(148567);
-      }
-      
-      public final void brX()
+      public final void bPD()
       {
         AppMethodBeat.i(148568);
         SceneVoiceInputAddrProxy.this.CLIENT_CALL("onRecognizeFinishCli", new Object[0]);
         AppMethodBeat.o(148568);
+      }
+      
+      public final void bPz()
+      {
+        AppMethodBeat.i(148567);
+        SceneVoiceInputAddrProxy.this.CLIENT_CALL("onRecordFinCli", new Object[0]);
+        AppMethodBeat.o(148567);
       }
       
       public final void c(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, long paramAnonymousLong)
@@ -156,12 +165,12 @@ public class SceneVoiceInputAddrProxy
   public boolean isConnected()
   {
     AppMethodBeat.i(148572);
-    if (this.jGJ == null)
+    if (this.pfZ == null)
     {
       AppMethodBeat.o(148572);
       return false;
     }
-    boolean bool = this.jGJ.isConnected();
+    boolean bool = this.pfZ.isConnected();
     AppMethodBeat.o(148572);
     return bool;
   }
@@ -170,8 +179,8 @@ public class SceneVoiceInputAddrProxy
   public void onErrorCli(int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
     AppMethodBeat.i(148585);
-    if (getInstance().mmm != null) {
-      getInstance().mmm.c(paramInt1, paramInt2, paramInt3, paramLong);
+    if (getInstance().pfY != null) {
+      getInstance().pfY.c(paramInt1, paramInt2, paramInt3, paramLong);
     }
     AppMethodBeat.o(148585);
   }
@@ -180,8 +189,8 @@ public class SceneVoiceInputAddrProxy
   public void onRecognizeFinishCli()
   {
     AppMethodBeat.i(148587);
-    if (getInstance().mmm != null) {
-      getInstance().mmm.brX();
+    if (getInstance().pfY != null) {
+      getInstance().pfY.bPD();
     }
     AppMethodBeat.o(148587);
   }
@@ -190,8 +199,8 @@ public class SceneVoiceInputAddrProxy
   public void onRecordFinCli()
   {
     AppMethodBeat.i(148586);
-    if (getInstance().mmm != null) {
-      getInstance().mmm.brT();
+    if (getInstance().pfY != null) {
+      getInstance().pfY.bPz();
     }
     AppMethodBeat.o(148586);
   }
@@ -200,8 +209,8 @@ public class SceneVoiceInputAddrProxy
   public void onResCli(String[] paramArrayOfString, List<String> paramList)
   {
     AppMethodBeat.i(148584);
-    if (getInstance().mmm != null) {
-      getInstance().mmm.b(paramArrayOfString, paramList);
+    if (getInstance().pfY != null) {
+      getInstance().pfY.b(paramArrayOfString, paramList);
     }
     AppMethodBeat.o(148584);
   }
@@ -218,8 +227,8 @@ public class SceneVoiceInputAddrProxy
   public void startMM()
   {
     AppMethodBeat.i(148579);
-    if (getInstance().mml != null) {
-      getInstance().mml.start();
+    if (getInstance().pfX != null) {
+      getInstance().pfX.start();
     }
     AppMethodBeat.o(148579);
   }
@@ -236,15 +245,15 @@ public class SceneVoiceInputAddrProxy
   public void stopMM(boolean paramBoolean)
   {
     AppMethodBeat.i(148577);
-    if (getInstance().mml != null) {
-      getInstance().mml.stop(paramBoolean);
+    if (getInstance().pfX != null) {
+      getInstance().pfX.stop(paramBoolean);
     }
     AppMethodBeat.o(148577);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelvoiceaddr.SceneVoiceInputAddrProxy
  * JD-Core Version:    0.7.0.1
  */

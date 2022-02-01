@@ -83,15 +83,15 @@ public class j
   
   public void a(b paramb)
   {
-    AppMethodBeat.i(232439);
+    AppMethodBeat.i(229863);
     TXCLog.i(j, "set notify");
     this.k = paramb;
-    AppMethodBeat.o(232439);
+    AppMethodBeat.o(229863);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.j
  * JD-Core Version:    0.7.0.1
  */

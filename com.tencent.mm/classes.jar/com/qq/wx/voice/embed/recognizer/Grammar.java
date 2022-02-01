@@ -47,13 +47,13 @@ public class Grammar
         localObject = ((StringBuffer)localObject).toString();
         AppMethodBeat.o(76762);
         return localObject;
-        ((d)this.e.get(i)).ciq = a(((d)this.e.get(i)).userName);
-        ((d)this.e.get(i)).cir = a(((d)this.e.get(i)).nickName);
-        ((d)this.e.get(i)).cis = a(((d)this.e.get(i)).cip);
+        ((d)this.e.get(i)).dYP = a(((d)this.e.get(i)).userName);
+        ((d)this.e.get(i)).dYQ = a(((d)this.e.get(i)).nickName);
+        ((d)this.e.get(i)).dYR = a(((d)this.e.get(i)).dYO);
         i += 1;
         break;
       }
-      String str = ((d)this.e.get(i)).ciq;
+      String str = ((d)this.e.get(i)).dYP;
       if (!str.isEmpty())
       {
         if (((StringBuffer)localObject).length() > 0) {
@@ -61,7 +61,7 @@ public class Grammar
         }
         ((StringBuffer)localObject).append(str);
       }
-      str = ((d)this.e.get(i)).cir;
+      str = ((d)this.e.get(i)).dYQ;
       if (!str.isEmpty())
       {
         if (((StringBuffer)localObject).length() > 0) {
@@ -69,7 +69,7 @@ public class Grammar
         }
         ((StringBuffer)localObject).append(str);
       }
-      str = ((d)this.e.get(i)).cis;
+      str = ((d)this.e.get(i)).dYR;
       if (!str.isEmpty())
       {
         if (((StringBuffer)localObject).length() > 0) {
@@ -112,11 +112,11 @@ public class Grammar
     }
     if (Build.VERSION.SDK_INT >= 24)
     {
-      int j = this.a.d("/vendor/lib/", paramString2, paramString3);
+      int j = this.a.i("/vendor/lib/", paramString2, paramString3);
       i = j;
       if (j >= 0) {}
     }
-    for (int i = this.a.a(paramContext, paramString1, paramString2, paramString3);; i = this.a.d(paramString1, paramString2, paramString3))
+    for (int i = this.a.b(paramContext, paramString1, paramString2, paramString3);; i = this.a.i(paramString1, paramString2, paramString3))
     {
       if (i >= 0) {
         break label137;
@@ -168,17 +168,17 @@ public class Grammar
       {
         AppMethodBeat.o(76767);
         return 0;
-        if (((d)this.e.get(i)).ciq.compareTo(this.b.name) == 0)
+        if (((d)this.e.get(i)).dYP.compareTo(this.b.name) == 0)
         {
           parama.name = ((d)this.e.get(i)).userName;
         }
-        else if (((d)this.e.get(i)).cir.compareTo(this.b.name) == 0)
+        else if (((d)this.e.get(i)).dYQ.compareTo(this.b.name) == 0)
         {
           parama.name = ((d)this.e.get(i)).userName;
         }
         else
         {
-          if (((d)this.e.get(i)).cis.compareTo(this.b.name) != 0) {
+          if (((d)this.e.get(i)).dYR.compareTo(this.b.name) != 0) {
             break;
           }
           parama.name = ((d)this.e.get(i)).userName;
@@ -299,7 +299,7 @@ public class Grammar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.qq.wx.voice.embed.recognizer.Grammar
  * JD-Core Version:    0.7.0.1
  */

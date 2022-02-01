@@ -6,20 +6,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class e
 {
   byte[] c;
-  public Grammar cit;
-  g ciu;
   public boolean d;
+  public Grammar dYS;
+  g dYT;
   public boolean e;
   
   public e()
   {
     AppMethodBeat.i(76756);
-    this.cit = null;
-    this.ciu = new g();
+    this.dYS = null;
+    this.dYT = new g();
     this.c = null;
     this.d = false;
     this.e = false;
-    this.cit = new Grammar();
+    this.dYS = new Grammar();
     AppMethodBeat.o(76756);
   }
   
@@ -36,7 +36,7 @@ public final class e
       AppMethodBeat.o(76757);
       return -302;
     }
-    this.ciu.civ = paramc;
+    this.dYT.dYU = paramc;
     this.c = paramArrayOfByte;
     if (this.c == null)
     {
@@ -64,29 +64,29 @@ public final class e
     public final void run()
     {
       AppMethodBeat.i(76755);
-      if (e.this.cit.begin() != 0)
+      if (e.this.dYS.begin() != 0)
       {
-        e.this.ciu.a(-102);
+        e.this.dYT.a(-102);
         AppMethodBeat.o(76755);
         return;
       }
-      if (e.this.cit.recognize(e.this.c, e.this.c.length) != 0)
+      if (e.this.dYS.recognize(e.this.c, e.this.c.length) != 0)
       {
-        e.this.ciu.a(-103);
+        e.this.dYT.a(-103);
         AppMethodBeat.o(76755);
         return;
       }
-      if (e.this.cit.end() != 0)
+      if (e.this.dYS.end() != 0)
       {
-        e.this.ciu.a(-104);
+        e.this.dYT.a(-104);
         AppMethodBeat.o(76755);
         return;
       }
       a locala = new a();
-      if (e.this.cit.getResult(locala) != 0) {
-        e.this.ciu.a(-105);
+      if (e.this.dYS.getResult(locala) != 0) {
+        e.this.dYT.a(-105);
       }
-      g localg = e.this.ciu;
+      g localg = e.this.dYT;
       localg.b.sendMessage(localg.b.obtainMessage(200, locala));
       AppMethodBeat.o(76755);
     }
@@ -94,7 +94,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.qq.wx.voice.embed.recognizer.e
  * JD-Core Version:    0.7.0.1
  */

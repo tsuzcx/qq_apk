@@ -42,7 +42,7 @@ public final class FileSelectorFolderView$b
     AppMethodBeat.i(31952);
     if ((paramView == null) || (paramView.getTag() == null))
     {
-      paramView = LayoutInflater.from(this.mContext).inflate(R.i.ehh, null);
+      paramView = LayoutInflater.from(this.mContext).inflate(R.i.gkc, null);
       paramViewGroup = new FileSelectorFolderView.c(paramView);
       paramView.setTag(paramViewGroup);
       switch (paramInt)
@@ -57,9 +57,9 @@ public final class FileSelectorFolderView$b
       return paramView;
       paramViewGroup = (FileSelectorFolderView.c)paramView.getTag();
       break;
-      paramViewGroup.titleTv.setText(R.l.eEB);
+      paramViewGroup.titleTv.setText(R.l.gHu);
       continue;
-      paramViewGroup.titleTv.setText(R.l.eEC);
+      paramViewGroup.titleTv.setText(R.l.gHv);
     }
   }
 }

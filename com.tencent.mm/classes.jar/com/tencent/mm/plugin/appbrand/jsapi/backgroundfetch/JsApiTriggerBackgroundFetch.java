@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.c.a;
 import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 
@@ -56,8 +56,9 @@ public final class JsApiTriggerBackgroundFetch
     }
   }
   
+  @a
   static class a
-    implements d<JsApiTriggerBackgroundFetch.TriggerBackgroundFetchParcel, IPCString>
+    implements com.tencent.mm.ipcinvoker.c<JsApiTriggerBackgroundFetch.TriggerBackgroundFetchParcel, IPCString>
   {}
 }
 

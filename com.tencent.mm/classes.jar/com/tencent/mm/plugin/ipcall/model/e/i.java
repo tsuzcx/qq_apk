@@ -1,65 +1,66 @@
 package com.tencent.mm.plugin.ipcall.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.model.z;
-import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.ipcall.a.c;
-import com.tencent.mm.protocal.protobuf.dpf;
-import com.tencent.mm.protocal.protobuf.dpg;
+import com.tencent.mm.protocal.protobuf.ehz;
+import com.tencent.mm.protocal.protobuf.eia;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class i
-  extends q
+  extends p
   implements m
 {
-  public dpf DRG;
-  public dpg DRH;
-  private com.tencent.mm.an.i callback;
-  private d rr;
+  public ehz JIQ;
+  public eia JIR;
+  private h callback;
+  private c rr;
   
   public i(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(25475);
     this.rr = null;
-    this.DRG = null;
-    this.DRH = null;
+    this.JIQ = null;
+    this.JIR = null;
     this.callback = null;
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new dpf();
-    ((d.a)localObject).lBV = new dpg();
-    ((d.a)localObject).funcId = 991;
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/pstninvite";
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new ehz();
+    ((c.a)localObject).otF = new eia();
+    ((c.a)localObject).funcId = 991;
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/pstninvite";
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
     long l = System.currentTimeMillis();
-    int i = c.eKK();
-    localObject = (dpf)d.b.b(this.rr.lBR);
-    ((dpf)localObject).CRR = z.bcZ();
-    ((dpf)localObject).TWb = paramString2;
-    ((dpf)localObject).CRQ = paramString1;
-    ((dpf)localObject).TWa = paramInt1;
-    ((dpf)localObject).SmH = i;
-    ((dpf)localObject).TWj = 1;
-    ((dpf)localObject).TVZ = l;
-    ((dpf)localObject).TWi = paramInt2;
-    ((dpf)localObject).TWk = paramInt3;
-    this.DRG = ((dpf)localObject);
+    MMApplicationContext.getContext();
+    int i = com.tencent.mm.plugin.voip.f.g.ibq();
+    localObject = (ehz)c.b.b(this.rr.otB);
+    ((ehz)localObject).IMh = z.bAM();
+    ((ehz)localObject).abmQ = paramString2;
+    ((ehz)localObject).IMg = paramString1;
+    ((ehz)localObject).abmP = paramInt1;
+    ((ehz)localObject).ZkT = i;
+    ((ehz)localObject).abmY = 1;
+    ((ehz)localObject).abmO = l;
+    ((ehz)localObject).abmX = paramInt2;
+    ((ehz)localObject).abmZ = paramInt3;
+    this.JIQ = ((ehz)localObject);
     Log.i("MicroMsg.NetSceneIPCallInvite", "toUsername: %s, phoneNumber: %s, invitedId: %s, netType: %d, dialScene: %d, countryType: %d", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(i), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     AppMethodBeat.o(25475);
   }
   
-  public final int doScene(g paramg, com.tencent.mm.an.i parami)
+  public final int doScene(com.tencent.mm.network.g paramg, h paramh)
   {
     AppMethodBeat.i(25476);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(25476);
     return i;
@@ -74,7 +75,7 @@ public final class i
   {
     AppMethodBeat.i(25477);
     Log.i("MicroMsg.NetSceneIPCallInvite", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.DRH = ((dpg)d.c.b(((d)params).lBS));
+    this.JIR = ((eia)c.c.b(((c)params).otC));
     if ((paramInt2 != 0) && (paramInt3 != 0))
     {
       if (this.callback != null) {
@@ -91,7 +92,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.e.i
  * JD-Core Version:    0.7.0.1
  */

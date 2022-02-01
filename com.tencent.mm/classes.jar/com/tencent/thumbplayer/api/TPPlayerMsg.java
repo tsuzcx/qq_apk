@@ -37,6 +37,8 @@ public class TPPlayerMsg
   public static final int TP_PLAYER_INFO_LONG0_FIRST_VIDEO_DECODER_START = 104;
   @a.e(106)
   public static final int TP_PLAYER_INFO_LONG0_FIRST_VIDEO_FRAME_RENDERED = 106;
+  @a.e(108)
+  public static final int TP_PLAYER_INFO_LONG0_FIRST_VIDEO_FRAME_RENDERED_AFTER_SURFACE_CHANGE = 108;
   public static final int TP_PLAYER_INFO_LONG0_PREPARE_TIMEOUT = 5001;
   public static final int TP_PLAYER_INFO_LONG0_UNKNOWN = -1;
   @a.e(208)
@@ -77,13 +79,15 @@ public class TPPlayerMsg
   public static final int TP_PLAYER_INFO_OBJECT_URL_EXPIRED = 1007;
   @a.e(500)
   public static final int TP_PLAYER_INFO_OBJECT_VIDEO_CROP = 500;
+  @a.e(503)
+  public static final int TP_PLAYER_INFO_OBJECT_VIDEO_SEI = 503;
   public static final int TP_PLAYER_INFO_RETRY_PLAYER_START = 1013;
   public static final int TP_PLAYER_INFO_RETRY_PLAYER_STOP = 1014;
   public static final int TP_PLAYER_INFO_SELECT_AUDIO_TRACK = 1011;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPPlayerMsg
  * JD-Core Version:    0.7.0.1
  */

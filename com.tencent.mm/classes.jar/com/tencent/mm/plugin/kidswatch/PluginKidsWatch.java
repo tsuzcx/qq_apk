@@ -17,44 +17,44 @@ public class PluginKidsWatch
 {
   public void configure(g paramg)
   {
-    AppMethodBeat.i(251951);
-    if (!paramg.aIE())
+    AppMethodBeat.i(262101);
+    if (!paramg.bbA())
     {
-      AppMethodBeat.o(251951);
+      AppMethodBeat.o(262101);
       return;
     }
     Log.v("PluginKidsWatch", "configure");
-    AppMethodBeat.o(251951);
+    AppMethodBeat.o(262101);
   }
   
   public void dependency()
   {
-    AppMethodBeat.i(251950);
+    AppMethodBeat.i(262097);
     dependsOn(v.class);
-    AppMethodBeat.o(251950);
+    AppMethodBeat.o(262097);
   }
   
   public void execute(g paramg)
   {
-    AppMethodBeat.i(251952);
+    AppMethodBeat.i(262104);
     Log.v("PluginKidsWatch", "execute");
-    AppMethodBeat.o(251952);
+    AppMethodBeat.o(262104);
   }
   
   public void installed()
   {
-    AppMethodBeat.i(251949);
+    AppMethodBeat.i(262091);
     alias(a.class);
-    AppMethodBeat.o(251949);
+    AppMethodBeat.o(262091);
   }
   
   public void onAccountInitialized(f.c paramc) {}
   
   public void onAccountRelease()
   {
-    AppMethodBeat.i(251956);
+    AppMethodBeat.i(262130);
     Log.v("PluginKidsWatch", "onAccountRelease");
-    AppMethodBeat.o(251956);
+    AppMethodBeat.o(262130);
   }
   
   public void onDataBaseClosed(h paramh1, h paramh2) {}

@@ -16,95 +16,117 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import kotlin.a.j;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.ah;
 import kotlin.g.a.m;
-import kotlin.g.b.aa.e;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.ah.e;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/videocomposition/CompositionThumbGenerator;", "Lcom/tencent/mm/videocomposition/ITrackThumbFetcher;", "source", "Lcom/tencent/tavkit/composition/TAVSource;", "cacheKey", "", "(Lcom/tencent/tavkit/composition/TAVSource;Ljava/lang/String;)V", "sourceBuilder", "Lkotlin/Function0;", "(Lkotlin/jvm/functions/Function0;Ljava/lang/String;)V", "generateCallback", "Lcom/tencent/tav/core/AssetImageGenerator$ImageGeneratorListener;", "generator", "Lcom/tencent/tavkit/component/TAVSourceImageGenerator;", "isRunning", "", "requests", "Ljava/util/LinkedList;", "Lcom/tencent/mm/videocomposition/CompositionThumbGenerator$Request;", "size", "Lcom/tencent/tav/coremedia/CGSize;", "getSourceBuilder", "()Lkotlin/jvm/functions/Function0;", "cancel", "", "callback", "Lkotlin/Function2;", "", "Landroid/graphics/Bitmap;", "Lcom/tencent/mm/videocomposition/ThumbCallback;", "time", "destroy", "destroyGenerator", "ensureGenerator", "requestFrames", "times", "", "requestNext", "setSize", "width", "", "height", "Companion", "Request", "video_composition_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mm/videocomposition/CompositionThumbGenerator;", "Lcom/tencent/mm/videocomposition/ITrackThumbFetcher;", "source", "Lcom/tencent/tavkit/composition/TAVSource;", "cacheKey", "", "(Lcom/tencent/tavkit/composition/TAVSource;Ljava/lang/String;)V", "sourceBuilder", "Lkotlin/Function0;", "(Lkotlin/jvm/functions/Function0;Ljava/lang/String;)V", "generateCallback", "Lcom/tencent/tav/core/AssetImageGenerator$ImageGeneratorListener;", "generator", "Lcom/tencent/tavkit/component/TAVSourceImageGenerator;", "isRunning", "", "requests", "Ljava/util/LinkedList;", "Lcom/tencent/mm/videocomposition/CompositionThumbGenerator$Request;", "size", "Lcom/tencent/tav/coremedia/CGSize;", "getSourceBuilder", "()Lkotlin/jvm/functions/Function0;", "cancel", "", "callback", "Lkotlin/Function2;", "", "Landroid/graphics/Bitmap;", "Lcom/tencent/mm/videocomposition/ThumbCallback;", "time", "destroy", "destroyGenerator", "ensureGenerator", "requestFrames", "times", "", "requestNext", "setSize", "width", "", "height", "Companion", "Request", "video_composition_release"}, k=1, mv={1, 1, 15})
 public final class a
   implements c
 {
-  private static final LruCache<String, Bitmap> Ghx;
-  public static final a.a YHM;
-  private final LinkedList<b> Ghs;
-  private TAVSourceImageGenerator YHJ;
-  private final AssetImageGenerator.ImageGeneratorListener YHK;
-  private final kotlin.g.a.a<TAVSource> YHL;
-  private final String cacheKey;
-  private boolean isRunning;
+  private static final LruCache<String, Bitmap> GvK;
+  public static final a agDr;
+  private final LinkedList<a.b> GvG;
+  private boolean Uz;
+  private TAVSourceImageGenerator agDo;
+  private final AssetImageGenerator.ImageGeneratorListener agDp;
+  private final kotlin.g.a.a<TAVSource> agDq;
+  private final String mgR;
   private final CGSize size;
   
   static
   {
-    AppMethodBeat.i(247898);
-    YHM = new a.a((byte)0);
-    Ghx = new LruCache(200);
-    AppMethodBeat.o(247898);
+    AppMethodBeat.i(233533);
+    agDr = new a((byte)0);
+    GvK = new LruCache(200);
+    AppMethodBeat.o(233533);
   }
   
   private a(TAVSource paramTAVSource, String paramString)
   {
-    this((kotlin.g.a.a)new q(paramTAVSource) {}, paramString);
-    AppMethodBeat.i(247897);
-    AppMethodBeat.o(247897);
+    this((kotlin.g.a.a)new u(paramTAVSource) {}, paramString);
+    AppMethodBeat.i(233530);
+    AppMethodBeat.o(233530);
   }
   
   private a(kotlin.g.a.a<? extends TAVSource> parama, String paramString)
   {
-    AppMethodBeat.i(247896);
-    this.YHL = parama;
-    this.cacheKey = paramString;
+    AppMethodBeat.i(233525);
+    this.agDq = parama;
+    this.mgR = paramString;
     this.size = new CGSize(300.0F, 300.0F);
-    this.Ghs = new LinkedList();
-    this.YHK = ((AssetImageGenerator.ImageGeneratorListener)new d(this));
-    com.tencent.mm.videocomposition.c.b.i("MicroMsg.VLogCompositionCoverGenerator", "init: " + hashCode(), new Object[0]);
-    AppMethodBeat.o(247896);
+    this.GvG = new LinkedList();
+    this.agDp = ((AssetImageGenerator.ImageGeneratorListener)new d(this));
+    com.tencent.mm.videocomposition.d.b.i("MicroMsg.VLogCompositionCoverGenerator", "init: " + hashCode(), new Object[0]);
+    AppMethodBeat.o(233525);
   }
   
-  private final void aDw()
+  private final void aWx()
   {
-    AppMethodBeat.i(247893);
-    synchronized (this.Ghs)
+    AppMethodBeat.i(233503);
+    synchronized (this.GvG)
     {
-      boolean bool = this.isRunning;
+      boolean bool = this.Uz;
       if (bool)
       {
-        AppMethodBeat.o(247893);
+        AppMethodBeat.o(233503);
         return;
       }
-      if (!((Collection)this.Ghs).isEmpty()) {}
+      if (!((Collection)this.GvG).isEmpty()) {}
       for (int i = 1; i != 0; i = 0)
       {
-        localObject1 = this.Ghs.get(0);
-        p.j(localObject1, "requests[0]");
-        localObject1 = (b)localObject1;
-        igz();
-        this.isRunning = true;
-        TAVSourceImageGenerator localTAVSourceImageGenerator = this.YHJ;
+        localObject1 = this.GvG.get(0);
+        s.r(localObject1, "requests[0]");
+        localObject1 = (a.b)localObject1;
+        jLM();
+        this.Uz = true;
+        TAVSourceImageGenerator localTAVSourceImageGenerator = this.agDo;
         if (localTAVSourceImageGenerator != null)
         {
-          localTAVSourceImageGenerator.generateThumbnailAtTime(((b)localObject1).GhB, this.YHK);
-          localObject1 = x.aazN;
+          localTAVSourceImageGenerator.generateThumbnailAtTime(((a.b)localObject1).GvN, this.agDp);
+          localObject1 = ah.aiuX;
         }
-        AppMethodBeat.o(247893);
+        AppMethodBeat.o(233503);
         return;
       }
-      igA();
-      Object localObject1 = x.aazN;
+      jLN();
+      Object localObject1 = ah.aiuX;
     }
   }
   
-  private final void igA()
+  private final void jLM()
   {
-    AppMethodBeat.i(247895);
-    if (this.YHJ != null)
+    AppMethodBeat.i(233512);
+    if (this.agDo == null)
     {
-      com.tencent.mm.videocomposition.c.b.i("MicroMsg.VLogCompositionCoverGenerator", "destroy generator: " + this.YHJ, new Object[0]);
-      Object localObject = this.YHJ;
+      this.agDo = new TAVSourceImageGenerator((TAVSource)this.agDq.invoke(), this.size);
+      com.tencent.mm.videocomposition.d.b.i("MicroMsg.VLogCompositionCoverGenerator", "create generator " + this.agDo, new Object[0]);
+      Object localObject = this.agDo;
+      if (localObject != null)
+      {
+        localObject = ((TAVSourceImageGenerator)localObject).getAssetImageGenerator();
+        if (localObject != null)
+        {
+          ((AssetImageGenerator)localObject).setApertureMode(AssetImageGenerator.ApertureMode.aspectFill);
+          AppMethodBeat.o(233512);
+          return;
+        }
+      }
+    }
+    AppMethodBeat.o(233512);
+  }
+  
+  private final void jLN()
+  {
+    AppMethodBeat.i(233517);
+    if (this.agDo != null)
+    {
+      com.tencent.mm.videocomposition.d.b.i("MicroMsg.VLogCompositionCoverGenerator", "destroy generator: " + this.agDo, new Object[0]);
+      Object localObject = this.agDo;
       if (localObject != null)
       {
         localObject = ((TAVSourceImageGenerator)localObject).getAssetImageGenerator();
@@ -112,38 +134,16 @@ public final class a
           ((AssetImageGenerator)localObject).release();
         }
       }
-      this.YHJ = null;
+      this.agDo = null;
     }
-    AppMethodBeat.o(247895);
+    AppMethodBeat.o(233517);
   }
   
-  private final void igz()
+  public final void b(List<Long> arg1, m<? super Long, ? super Bitmap, ah> paramm)
   {
-    AppMethodBeat.i(247894);
-    if (this.YHJ == null)
-    {
-      this.YHJ = new TAVSourceImageGenerator((TAVSource)this.YHL.invoke(), this.size);
-      com.tencent.mm.videocomposition.c.b.i("MicroMsg.VLogCompositionCoverGenerator", "create generator " + this.YHJ, new Object[0]);
-      Object localObject = this.YHJ;
-      if (localObject != null)
-      {
-        localObject = ((TAVSourceImageGenerator)localObject).getAssetImageGenerator();
-        if (localObject != null)
-        {
-          ((AssetImageGenerator)localObject).setApertureMode(AssetImageGenerator.ApertureMode.aspectFill);
-          AppMethodBeat.o(247894);
-          return;
-        }
-      }
-    }
-    AppMethodBeat.o(247894);
-  }
-  
-  public final void b(List<Long> arg1, m<? super Long, ? super Bitmap, x> paramm)
-  {
-    AppMethodBeat.i(247890);
-    p.k(???, "times");
-    p.k(paramm, "callback");
+    AppMethodBeat.i(233582);
+    s.t(???, "times");
+    s.t(paramm, "callback");
     Object localObject1 = (Iterable)???;
     ??? = (Collection)new ArrayList();
     localObject1 = ((Iterable)localObject1).iterator();
@@ -152,8 +152,8 @@ public final class a
     {
       Object localObject2 = ((Iterator)localObject1).next();
       long l = ((Number)localObject2).longValue();
-      com.tencent.mm.videocomposition.c.b.i("MicroMsg.VLogCompositionCoverGenerator", "requestFrames: ".concat(String.valueOf(l)), new Object[0]);
-      Bitmap localBitmap = (Bitmap)Ghx.get(this.cacheKey + '-' + l);
+      com.tencent.mm.videocomposition.d.b.i("MicroMsg.VLogCompositionCoverGenerator", "requestFrames: ".concat(String.valueOf(l)), new Object[0]);
+      Bitmap localBitmap = (Bitmap)GvK.get(this.mgR + '-' + l);
       if (localBitmap != null) {
         paramm.invoke(Long.valueOf(l), localBitmap);
       }
@@ -166,49 +166,49 @@ public final class a
         break;
       }
     }
-    localObject1 = (Iterable)j.t((Iterable)???);
-    ??? = (Collection)new ArrayList(j.a((Iterable)localObject1, 10));
+    localObject1 = (Iterable)p.t((Iterable)???);
+    ??? = (Collection)new ArrayList(p.a((Iterable)localObject1, 10));
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext()) {
-      ???.add(new b(((Number)((Iterator)localObject1).next()).longValue(), paramm));
+      ???.add(new a.b(((Number)((Iterator)localObject1).next()).longValue(), paramm));
     }
     paramm = (List)???;
     if (paramm.isEmpty())
     {
-      com.tencent.mm.videocomposition.c.b.i("MicroMsg.VLogCompositionCoverGenerator", "requestFrames: no new request", new Object[0]);
-      AppMethodBeat.o(247890);
+      com.tencent.mm.videocomposition.d.b.i("MicroMsg.VLogCompositionCoverGenerator", "requestFrames: no new request", new Object[0]);
+      AppMethodBeat.o(233582);
       return;
     }
-    synchronized (this.Ghs)
+    synchronized (this.GvG)
     {
-      this.Ghs.addAll((Collection)paramm);
-      aDw();
-      AppMethodBeat.o(247890);
+      this.GvG.addAll((Collection)paramm);
+      aWx();
+      AppMethodBeat.o(233582);
       return;
     }
   }
   
-  public final void cancel(final long paramLong)
+  public final void cancel(long paramLong)
   {
-    AppMethodBeat.i(247891);
-    synchronized (this.Ghs)
+    AppMethodBeat.i(233590);
+    synchronized (this.GvG)
     {
-      j.c((List)this.Ghs, (kotlin.g.a.b)new c(this, paramLong));
-      AppMethodBeat.o(247891);
+      p.e((List)this.GvG, (kotlin.g.a.b)new a.c(this, paramLong));
+      AppMethodBeat.o(233590);
       return;
     }
   }
   
   public final void destroy()
   {
-    AppMethodBeat.i(247892);
-    com.tencent.mm.videocomposition.c.b.i("MicroMsg.VLogCompositionCoverGenerator", "destroy: " + hashCode(), new Object[0]);
-    synchronized (this.Ghs)
+    AppMethodBeat.i(233594);
+    com.tencent.mm.videocomposition.d.b.i("MicroMsg.VLogCompositionCoverGenerator", "destroy: " + hashCode(), new Object[0]);
+    synchronized (this.GvG)
     {
-      this.Ghs.clear();
-      x localx = x.aazN;
-      igA();
-      AppMethodBeat.o(247892);
+      this.GvG.clear();
+      ah localah = ah.aiuX;
+      jLN();
+      AppMethodBeat.o(233594);
       return;
     }
   }
@@ -219,132 +219,75 @@ public final class a
     this.size.height = paramInt2;
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/videocomposition/CompositionThumbGenerator$Request;", "", "timeMs", "", "callback", "Lkotlin/Function2;", "Landroid/graphics/Bitmap;", "", "Lcom/tencent/mm/videocomposition/ThumbCallback;", "cmTime", "Lcom/tencent/tav/coremedia/CMTime;", "(JLkotlin/jvm/functions/Function2;Lcom/tencent/tav/coremedia/CMTime;)V", "getCallback", "()Lkotlin/jvm/functions/Function2;", "getCmTime", "()Lcom/tencent/tav/coremedia/CMTime;", "getTimeMs", "()J", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "", "toString", "", "video_composition_release"})
-  public static final class b
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mm/videocomposition/CompositionThumbGenerator$Companion;", "", "()V", "DefaultMaxImageSize", "", "TAG", "", "thumbCache", "Landroid/util/LruCache;", "Landroid/graphics/Bitmap;", "getThumbCache", "()Landroid/util/LruCache;", "clearCache", "", "fromCompositionTrack", "Lcom/tencent/mm/videocomposition/CompositionThumbGenerator;", "track", "Lcom/tencent/mm/videocomposition/CompositionTrack;", "fromVideoComposition", "composition", "Lcom/tencent/mm/videocomposition/VideoComposition;", "video_composition_release"}, k=1, mv={1, 1, 15})
+  public static final class a
   {
-    final long GhA;
-    final CMTime GhB;
-    final m<Long, Bitmap, x> jHk;
-    
-    private b(long paramLong, m<? super Long, ? super Bitmap, x> paramm, CMTime paramCMTime)
+    public static a d(b paramb)
     {
-      AppMethodBeat.i(247862);
-      this.GhA = paramLong;
-      this.jHk = paramm;
-      this.GhB = paramCMTime;
-      AppMethodBeat.o(247862);
+      AppMethodBeat.i(233463);
+      s.t(paramb, "track");
+      paramb = new a(paramb.jLP(), paramb.path, (byte)0);
+      AppMethodBeat.o(233463);
+      return paramb;
     }
     
-    public final boolean equals(Object paramObject)
+    public static a e(j paramj)
     {
-      AppMethodBeat.i(247871);
-      if (this != paramObject)
-      {
-        if (!(paramObject instanceof b)) {
-          break label80;
-        }
-        paramObject = (b)paramObject;
-        if (this.GhA != paramObject.GhA) {
-          break label75;
-        }
-      }
-      label75:
-      for (int i = 1; (i != 0) && (p.h(this.jHk, paramObject.jHk)) && (p.h(this.GhB, paramObject.GhB)); i = 0)
-      {
-        AppMethodBeat.o(247871);
-        return true;
-      }
-      label80:
-      AppMethodBeat.o(247871);
-      return false;
+      AppMethodBeat.i(233470);
+      s.t(paramj, "composition");
+      paramj = new a((kotlin.g.a.a)new a(paramj), String.valueOf(paramj.hashCode()), (byte)0);
+      AppMethodBeat.o(233470);
+      return paramj;
     }
     
-    public final int hashCode()
+    @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/tavkit/composition/TAVSource;", "invoke"}, k=3, mv={1, 1, 15})
+    static final class a
+      extends u
+      implements kotlin.g.a.a<TAVSource>
     {
-      int j = 0;
-      AppMethodBeat.i(247868);
-      long l = this.GhA;
-      int k = (int)(l ^ l >>> 32);
-      Object localObject = this.jHk;
-      if (localObject != null) {}
-      for (int i = localObject.hashCode();; i = 0)
+      a(j paramj)
       {
-        localObject = this.GhB;
-        if (localObject != null) {
-          j = localObject.hashCode();
-        }
-        AppMethodBeat.o(247868);
-        return (i + k * 31) * 31 + j;
+        super();
       }
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(247865);
-      String str = "Request(timeMs=" + this.GhA + ", callback=" + this.jHk + ", cmTime=" + this.GhB + ")";
-      AppMethodBeat.o(247865);
-      return str;
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/videocomposition/CompositionThumbGenerator$Request;", "invoke", "com/tencent/mm/videocomposition/CompositionThumbGenerator$cancel$1$1"})
-  static final class c
-    extends q
-    implements kotlin.g.a.b<a.b, Boolean>
-  {
-    c(a parama, long paramLong)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "", "requestedTime", "Lcom/tencent/tav/coremedia/CMTime;", "bitmap", "Landroid/graphics/Bitmap;", "actualTime", "result", "Lcom/tencent/tav/core/AssetImageGenerator$AssetImageGeneratorResult;", "onCompletion"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "requestedTime", "Lcom/tencent/tav/coremedia/CMTime;", "bitmap", "Landroid/graphics/Bitmap;", "actualTime", "result", "Lcom/tencent/tav/core/AssetImageGenerator$AssetImageGeneratorResult;", "onCompletion"}, k=3, mv={1, 1, 15})
   static final class d
     implements AssetImageGenerator.ImageGeneratorListener
   {
     d(a parama) {}
     
-    public final void onCompletion(final CMTime paramCMTime1, final Bitmap paramBitmap, final CMTime paramCMTime2, AssetImageGenerator.AssetImageGeneratorResult arg4)
+    public final void onCompletion(CMTime paramCMTime1, Bitmap paramBitmap, CMTime paramCMTime2, AssetImageGenerator.AssetImageGeneratorResult arg4)
     {
-      AppMethodBeat.i(247885);
-      p.k(paramCMTime1, "requestedTime");
-      p.k(???, "result");
+      AppMethodBeat.i(233466);
+      s.t(paramCMTime1, "requestedTime");
+      s.t(???, "result");
       if (??? != AssetImageGenerator.AssetImageGeneratorResult.AssetImageGeneratorSucceeded) {
         paramBitmap = null;
       }
-      paramCMTime2 = new aa.e();
-      paramCMTime2.aaBB = -1L;
-      synchronized (a.a(this.YHO))
+      paramCMTime2 = new ah.e();
+      paramCMTime2.aixc = -1L;
+      synchronized (a.a(this.agDt))
       {
-        j.c((List)a.a(this.YHO), (kotlin.g.a.b)new a(this, paramCMTime1, paramCMTime2, paramBitmap));
-        com.tencent.mm.videocomposition.c.b.i("MicroMsg.VLogCompositionCoverGenerator", "get " + this.YHO.hashCode() + ": " + paramCMTime2.aaBB + 65292 + paramCMTime1.getTimeUs() / 1000L, new Object[0]);
-        a.b(this.YHO);
-        a.c(this.YHO);
-        if ((paramCMTime2.aaBB >= 0L) && (paramBitmap != null))
+        p.e((List)a.a(this.agDt), (kotlin.g.a.b)new a.d.a(this, paramCMTime1, paramCMTime2, paramBitmap));
+        com.tencent.mm.videocomposition.d.b.i("MicroMsg.VLogCompositionCoverGenerator", "get " + this.agDt.hashCode() + ": " + paramCMTime2.aixc + 65292 + paramCMTime1.getTimeUs() / 1000L, new Object[0]);
+        a.b(this.agDt);
+        a.c(this.agDt);
+        if ((paramCMTime2.aixc >= 0L) && (paramBitmap != null))
         {
-          paramCMTime1 = a.YHM;
-          a.fgL().put(a.d(this.YHO) + '-' + paramCMTime2.aaBB, paramBitmap);
+          paramCMTime1 = a.agDr;
+          a.fka().put(a.d(this.agDt) + '-' + paramCMTime2.aixc, paramBitmap);
         }
-        AppMethodBeat.o(247885);
+        AppMethodBeat.o(233466);
         return;
-      }
-    }
-    
-    @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/videocomposition/CompositionThumbGenerator$Request;", "invoke", "com/tencent/mm/videocomposition/CompositionThumbGenerator$generateCallback$1$1$1"})
-    static final class a
-      extends q
-      implements kotlin.g.a.b<a.b, Boolean>
-    {
-      a(a.d paramd, CMTime paramCMTime, aa.e parame, Bitmap paramBitmap)
-      {
-        super();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.videocomposition.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mm.pluginsdk.wallet;
 
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.protocal.protobuf.dji;
+import com.tencent.mm.protocal.protobuf.ebs;
 import java.util.Map;
 
 public abstract interface b
@@ -9,13 +9,13 @@ public abstract interface b
 {
   public abstract void a(Map<String, Object> paramMap, String paramString1, String paramString2, int paramInt, a parama);
   
-  public abstract dji eUT();
+  public abstract ebs gdF();
   
-  public abstract void ij(int paramInt1, int paramInt2);
+  public abstract void jO(int paramInt1, int paramInt2);
   
   public static abstract interface a
   {
-    public abstract void aij(String paramString);
+    public abstract void abh(String paramString);
     
     public abstract void onSuccess(String paramString);
   }

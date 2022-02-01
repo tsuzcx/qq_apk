@@ -18,41 +18,41 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 final class ActionBarSearchView$d
   extends Drawable
 {
-  private Paint EFQ;
-  private RectF Qik;
-  private int XNk;
-  private float XNl;
-  private float XNm;
+  private Paint KyZ;
+  private RectF Xao;
+  private float afDA;
+  private int afDy;
+  private float afDz;
   private String mText;
   
   ActionBarSearchView$d(ActionBarSearchView paramActionBarSearchView, EditText paramEditText, String paramString)
   {
     AppMethodBeat.i(142997);
-    this.XNk = BackwardSupportUtil.BitmapFactory.fromDPToPix(MMApplicationContext.getContext(), 2.0F);
-    this.EFQ = new Paint(paramEditText.getPaint());
+    this.afDy = BackwardSupportUtil.BitmapFactory.fromDPToPix(MMApplicationContext.getContext(), 2.0F);
+    this.KyZ = new Paint(paramEditText.getPaint());
     this.mText = paramString;
-    this.EFQ.setColor(MMApplicationContext.getResources().getColor(a.d.brand_text_color));
-    this.XNl = this.EFQ.measureText(this.mText);
-    paramActionBarSearchView = this.EFQ.getFontMetrics();
-    this.XNm = ((float)Math.ceil(paramActionBarSearchView.bottom - paramActionBarSearchView.top));
-    float f = this.XNm;
-    setBounds(0, 0, (int)(this.XNl + this.XNk * 2 + this.XNk * 2 + 2.0F), (int)f);
+    this.KyZ.setColor(MMApplicationContext.getResources().getColor(a.d.brand_text_color));
+    this.afDz = this.KyZ.measureText(this.mText);
+    paramActionBarSearchView = this.KyZ.getFontMetrics();
+    this.afDA = ((float)Math.ceil(paramActionBarSearchView.bottom - paramActionBarSearchView.top));
+    float f = this.afDA;
+    setBounds(0, 0, (int)(this.afDz + this.afDy * 2 + this.afDy * 2 + 2.0F), (int)f);
     AppMethodBeat.o(142997);
   }
   
   public final void draw(Canvas paramCanvas)
   {
     AppMethodBeat.i(142998);
-    Paint.FontMetricsInt localFontMetricsInt = this.EFQ.getFontMetricsInt();
+    Paint.FontMetricsInt localFontMetricsInt = this.KyZ.getFontMetricsInt();
     Rect localRect = getBounds();
     int i = localRect.right;
     i = localRect.left;
-    float f = this.Qik.right;
-    f = this.Qik.left;
+    float f = this.Xao.right;
+    f = this.Xao.left;
     i = localRect.top;
     int j = (localRect.bottom - localRect.top - localFontMetricsInt.bottom + localFontMetricsInt.top) / 2;
     int k = localFontMetricsInt.top;
-    paramCanvas.drawText(this.mText, localRect.left + 2, i + j - k, this.EFQ);
+    paramCanvas.drawText(this.mText, localRect.left + 2, i + j - k, this.KyZ);
     AppMethodBeat.o(142998);
   }
   
@@ -67,10 +67,10 @@ final class ActionBarSearchView$d
   {
     AppMethodBeat.i(142999);
     super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
-    Paint.FontMetrics localFontMetrics = this.EFQ.getFontMetrics();
-    float f1 = this.XNk + paramInt1;
+    Paint.FontMetrics localFontMetrics = this.KyZ.getFontMetrics();
+    float f1 = this.afDy + paramInt1;
     float f2 = paramInt2;
-    this.Qik = new RectF(f1, localFontMetrics.ascent - localFontMetrics.top + f2, paramInt3 - this.XNk, paramInt4);
+    this.Xao = new RectF(f1, localFontMetrics.ascent - localFontMetrics.top + f2, paramInt3 - this.afDy, paramInt4);
     invalidateSelf();
     AppMethodBeat.o(142999);
   }

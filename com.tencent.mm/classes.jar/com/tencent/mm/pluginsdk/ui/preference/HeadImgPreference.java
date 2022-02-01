@@ -16,10 +16,10 @@ import com.tencent.mm.ui.base.preference.Preference;
 public final class HeadImgPreference
   extends Preference
 {
-  private View.OnClickListener Fms;
-  private Bitmap Rqi;
-  private ImageView bwJ;
+  private Bitmap Ymz;
+  private ImageView dpM;
   private int height;
+  private View.OnClickListener tyA;
   
   public HeadImgPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -39,16 +39,16 @@ public final class HeadImgPreference
   {
     AppMethodBeat.i(31855);
     super.onBindView(paramView);
-    if (this.bwJ == null) {
-      this.bwJ = ((ImageView)paramView.findViewById(R.h.image_headimg));
+    if (this.dpM == null) {
+      this.dpM = ((ImageView)paramView.findViewById(R.h.image_headimg));
     }
-    if (this.Fms != null) {
-      this.bwJ.setOnClickListener(this.Fms);
+    if (this.tyA != null) {
+      this.dpM.setOnClickListener(this.tyA);
     }
-    if (this.Rqi != null)
+    if (this.Ymz != null)
     {
-      this.bwJ.setImageBitmap(this.Rqi);
-      this.Rqi = null;
+      this.dpM.setImageBitmap(this.Ymz);
+      this.Ymz = null;
     }
     paramView = (LinearLayout)paramView.findViewById(R.h.mm_preference_ll_id);
     if (this.height != -1) {
@@ -63,8 +63,8 @@ public final class HeadImgPreference
     paramViewGroup = super.onCreateView(paramViewGroup);
     ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, R.i.eiS, localViewGroup);
-    this.bwJ = ((ImageView)paramViewGroup.findViewById(R.h.image_headimg));
+    View.inflate(this.mContext, R.i.glR, localViewGroup);
+    this.dpM = ((ImageView)paramViewGroup.findViewById(R.h.image_headimg));
     AppMethodBeat.o(31854);
     return paramViewGroup;
   }

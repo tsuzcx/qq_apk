@@ -1,95 +1,105 @@
 package com.google.c.b.a;
 
+import com.google.c.d.c;
+import com.google.c.e;
+import com.google.c.r;
+import com.google.c.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.lang.reflect.Array;
+import java.lang.reflect.GenericArrayType;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class a
+public final class a<E>
+  extends r<Object>
 {
-  public static final a ceJ;
-  public static final a ceK;
-  public static final a ceL;
-  public static final a ceM;
-  public static final a ceN;
-  public static final a ceO;
-  public static final a ceP;
-  public static final a ceQ;
-  final int[] ceR;
-  final int[] ceS;
-  final b ceT;
-  private final b ceU;
-  private final int ceV;
-  final int ceW;
-  final int size;
+  public static final s dFZ;
+  private final Class<E> dGa;
+  private final r<E> dGb;
   
   static
   {
-    AppMethodBeat.i(12338);
-    ceJ = new a(4201, 4096, 1);
-    ceK = new a(1033, 1024, 1);
-    ceL = new a(67, 64, 1);
-    ceM = new a(19, 16, 1);
-    ceN = new a(285, 256, 0);
-    a locala = new a(301, 256, 1);
-    ceO = locala;
-    ceP = locala;
-    ceQ = ceL;
-    AppMethodBeat.o(12338);
+    AppMethodBeat.i(108089);
+    dFZ = new s()
+    {
+      public final <T> r<T> a(e paramAnonymouse, com.google.c.c.a<T> paramAnonymousa)
+      {
+        AppMethodBeat.i(108045);
+        paramAnonymousa = paramAnonymousa.dGJ;
+        if ((!(paramAnonymousa instanceof GenericArrayType)) && ((!(paramAnonymousa instanceof Class)) || (!((Class)paramAnonymousa).isArray())))
+        {
+          AppMethodBeat.o(108045);
+          return null;
+        }
+        paramAnonymousa = com.google.c.b.b.e(paramAnonymousa);
+        paramAnonymouse = new a(paramAnonymouse, paramAnonymouse.a(com.google.c.c.a.h(paramAnonymousa)), com.google.c.b.b.c(paramAnonymousa));
+        AppMethodBeat.o(108045);
+        return paramAnonymouse;
+      }
+    };
+    AppMethodBeat.o(108089);
   }
   
-  private a(int paramInt1, int paramInt2, int paramInt3)
+  public a(e parame, r<E> paramr, Class<E> paramClass)
   {
-    AppMethodBeat.i(12336);
-    this.ceV = paramInt1;
-    this.size = paramInt2;
-    this.ceW = paramInt3;
-    this.ceR = new int[paramInt2];
-    this.ceS = new int[paramInt2];
-    int i = 0;
-    paramInt3 = 1;
-    while (i < paramInt2)
+    AppMethodBeat.i(108087);
+    this.dGb = new m(parame, paramr, paramClass);
+    this.dGa = paramClass;
+    AppMethodBeat.o(108087);
+  }
+  
+  public final Object a(com.google.c.d.a parama)
+  {
+    AppMethodBeat.i(208886);
+    if (parama.Zh() == com.google.c.d.b.dIv)
     {
-      this.ceR[i] = paramInt3;
-      int j = paramInt3 << 1;
-      paramInt3 = j;
-      if (j >= paramInt2) {
-        paramInt3 = (j ^ paramInt1) & paramInt2 - 1;
-      }
+      parama.Zl();
+      AppMethodBeat.o(208886);
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    parama.Zd();
+    while (parama.hasNext()) {
+      localArrayList.add(this.dGb.a(parama));
+    }
+    parama.Ze();
+    int j = localArrayList.size();
+    parama = Array.newInstance(this.dGa, j);
+    int i = 0;
+    while (i < j)
+    {
+      Array.set(parama, i, localArrayList.get(i));
       i += 1;
     }
-    paramInt1 = 0;
-    while (paramInt1 < paramInt2 - 1)
+    AppMethodBeat.o(208886);
+    return parama;
+  }
+  
+  public final void a(c paramc, Object paramObject)
+  {
+    AppMethodBeat.i(108088);
+    if (paramObject == null)
     {
-      this.ceS[this.ceR[paramInt1]] = paramInt1;
-      paramInt1 += 1;
+      paramc.Zv();
+      AppMethodBeat.o(108088);
+      return;
     }
-    this.ceT = new b(this, new int[] { 0 });
-    this.ceU = new b(this, new int[] { 1 });
-    AppMethodBeat.o(12336);
-  }
-  
-  static int cb(int paramInt1, int paramInt2)
-  {
-    return paramInt1 ^ paramInt2;
-  }
-  
-  final int cc(int paramInt1, int paramInt2)
-  {
-    if ((paramInt1 == 0) || (paramInt2 == 0)) {
-      return 0;
+    paramc.Zr();
+    int i = 0;
+    int j = Array.getLength(paramObject);
+    while (i < j)
+    {
+      Object localObject = Array.get(paramObject, i);
+      this.dGb.a(paramc, localObject);
+      i += 1;
     }
-    return this.ceR[((this.ceS[paramInt1] + this.ceS[paramInt2]) % (this.size - 1))];
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(12337);
-    String str = "GF(0x" + Integer.toHexString(this.ceV) + ',' + this.size + ')';
-    AppMethodBeat.o(12337);
-    return str;
+    paramc.Zs();
+    AppMethodBeat.o(108088);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.c.b.a.a
  * JD-Core Version:    0.7.0.1
  */

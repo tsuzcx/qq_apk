@@ -4,21 +4,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  private static c YYq;
-  public Runnable YYe;
-  private String YYr;
+  private static c agWB;
+  private String agWC;
+  public Runnable agWp;
   
   static
   {
-    AppMethodBeat.i(189394);
-    YYq = new c();
-    AppMethodBeat.o(189394);
+    AppMethodBeat.i(231314);
+    agWB = new c();
+    AppMethodBeat.o(231314);
   }
   
   private c()
   {
-    AppMethodBeat.i(189377);
-    this.YYe = new Runnable()
+    AppMethodBeat.i(231298);
+    this.agWp = new Runnable()
     {
       /* Error */
       public final void run()
@@ -28,7 +28,7 @@ public final class c
         //   2: istore_1
         //   3: ldc 22
         //   5: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-        //   8: invokestatic 32	com/tencent/mm/wlogcat/b/c:ijN	()Ljava/lang/String;
+        //   8: invokestatic 32	com/tencent/mm/wlogcat/b/c:jPV	()Ljava/lang/String;
         //   11: invokestatic 38	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
         //   14: ifeq +16 -> 30
         //   17: ldc 40
@@ -37,11 +37,11 @@ public final class c
         //   24: ldc 22
         //   26: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   29: return
-        //   30: invokestatic 32	com/tencent/mm/wlogcat/b/c:ijN	()Ljava/lang/String;
+        //   30: invokestatic 32	com/tencent/mm/wlogcat/b/c:jPV	()Ljava/lang/String;
         //   33: invokestatic 57	com/tencent/mm/sdk/platformtools/MultiProcessMMKV:getSingleMMKV	(Ljava/lang/String;)Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;
         //   36: astore_3
         //   37: aload_0
-        //   38: getfield 14	com/tencent/mm/wlogcat/b/c$1:YYs	Lcom/tencent/mm/wlogcat/b/c;
+        //   38: getfield 14	com/tencent/mm/wlogcat/b/c$1:agWD	Lcom/tencent/mm/wlogcat/b/c;
         //   41: aload_3
         //   42: ldc 59
         //   44: ldc 61
@@ -63,13 +63,13 @@ public final class c
         //   77: ldc 93
         //   79: invokespecial 96	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
         //   82: aload_0
-        //   83: getfield 14	com/tencent/mm/wlogcat/b/c$1:YYs	Lcom/tencent/mm/wlogcat/b/c;
+        //   83: getfield 14	com/tencent/mm/wlogcat/b/c$1:agWD	Lcom/tencent/mm/wlogcat/b/c;
         //   86: invokestatic 99	com/tencent/mm/wlogcat/b/c:a	(Lcom/tencent/mm/wlogcat/b/c;)Ljava/lang/String;
         //   89: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
         //   92: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
         //   95: invokestatic 108	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
         //   98: aload_0
-        //   99: getfield 14	com/tencent/mm/wlogcat/b/c$1:YYs	Lcom/tencent/mm/wlogcat/b/c;
+        //   99: getfield 14	com/tencent/mm/wlogcat/b/c$1:agWD	Lcom/tencent/mm/wlogcat/b/c;
         //   102: invokestatic 99	com/tencent/mm/wlogcat/b/c:a	(Lcom/tencent/mm/wlogcat/b/c;)Ljava/lang/String;
         //   105: invokestatic 38	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
         //   108: ifeq +9 -> 117
@@ -129,7 +129,7 @@ public final class c
         //   222: astore 7
         //   224: aload 10
         //   226: aload_0
-        //   227: getfield 14	com/tencent/mm/wlogcat/b/c$1:YYs	Lcom/tencent/mm/wlogcat/b/c;
+        //   227: getfield 14	com/tencent/mm/wlogcat/b/c$1:agWD	Lcom/tencent/mm/wlogcat/b/c;
         //   230: invokestatic 99	com/tencent/mm/wlogcat/b/c:a	(Lcom/tencent/mm/wlogcat/b/c;)Ljava/lang/String;
         //   233: invokevirtual 156	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
         //   236: ifeq -65 -> 171
@@ -400,17 +400,17 @@ public final class c
         //   141	151	628	java/lang/Exception
       }
     };
-    AppMethodBeat.o(189377);
+    AppMethodBeat.o(231298);
   }
   
-  public static c ijM()
+  public static c jPU()
   {
-    return YYq;
+    return agWB;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.wlogcat.b.c
  * JD-Core Version:    0.7.0.1
  */

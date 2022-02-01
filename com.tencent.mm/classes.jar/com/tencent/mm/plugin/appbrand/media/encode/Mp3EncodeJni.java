@@ -10,7 +10,7 @@ public class Mp3EncodeJni
   {
     AppMethodBeat.i(146314);
     Mp3EncodeJni.class.getClassLoader();
-    h.cbw().eG("mp3lame");
+    h.cBQ().ge("mp3lame");
     AppMethodBeat.o(146314);
   }
   
@@ -30,7 +30,7 @@ public class Mp3EncodeJni
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.encode.Mp3EncodeJni
  * JD-Core Version:    0.7.0.1
  */

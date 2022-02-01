@@ -2,37 +2,41 @@ package com.tencent.mm.plugin.byp;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.p;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/byp/BypConstants$BypBizSyncKeyType;", "", "()V", "BYP_GAME_LIFE_KEY", "", "BYP_MSG_AVATAR_KEY", "BYP_MSG_FINDER_KEY", "BYP_MSG_NEW_FINDER_KEY", "SELECTOR_FINDER", "", "getSELECTOR_FINDER", "()Ljava/util/List;", "SELECTOR_GAME", "getSELECTOR_GAME", "SELECTOR_SUPPORTED", "Ljava/util/ArrayList;", "kotlin.jvm.PlatformType", "Lkotlin/collections/ArrayList;", "getSELECTOR_SUPPORTED", "()Ljava/util/ArrayList;", "plugin-byp_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/byp/BypConstants$BypBizSyncKeyType;", "", "()V", "BYP_GAME_LIFE_KEY", "", "BYP_MSG_AVATAR_KEY", "BYP_MSG_FINDER_KEY", "BYP_MSG_NEW_FINDER_KEY", "BYP_MSG_TEXT_STATUS_KEY", "SELECTOR_FINDER", "", "getSELECTOR_FINDER", "()Ljava/util/List;", "SELECTOR_GAME", "getSELECTOR_GAME", "SELECTOR_SUPPORTED", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getSELECTOR_SUPPORTED", "()Ljava/util/ArrayList;", "SELECTOR_TEXT_STATUS", "getSELECTOR_TEXT_STATUS", "plugin-byp_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a$a
 {
-  private static final List<Integer> sVQ;
-  private static final List<Integer> sVR;
-  private static final ArrayList<Integer> sVS;
-  public static final a sVT;
+  public static final a wab;
+  private static final List<Integer> wac;
+  private static final List<Integer> wad;
+  private static final List<Integer> wae;
+  private static final ArrayList<Integer> waf;
   
   static
   {
-    AppMethodBeat.i(213467);
-    sVT = new a();
-    sVQ = j.listOf(new Integer[] { Integer.valueOf(1), Integer.valueOf(5) });
-    sVR = j.listOf(Integer.valueOf(3));
-    sVS = new ArrayList((Collection)sVR);
-    AppMethodBeat.o(213467);
+    AppMethodBeat.i(271966);
+    wab = new a();
+    wac = p.listOf(new Integer[] { Integer.valueOf(1), Integer.valueOf(5) });
+    wad = p.listOf(Integer.valueOf(3));
+    wae = p.listOf(Integer.valueOf(4));
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(Integer.valueOf(3));
+    localArrayList.add(Integer.valueOf(4));
+    waf = localArrayList;
+    AppMethodBeat.o(271966);
   }
   
-  public static List<Integer> cEX()
+  public static List<Integer> dih()
   {
-    return sVQ;
+    return wac;
   }
   
-  public static ArrayList<Integer> cEY()
+  public static ArrayList<Integer> dii()
   {
-    return sVS;
+    return waf;
   }
 }
 

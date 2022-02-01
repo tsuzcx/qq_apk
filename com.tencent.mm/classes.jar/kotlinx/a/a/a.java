@@ -1,249 +1,54 @@
 package kotlinx.a.a;
 
-import kotlin.g.b.ab;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlinx.a.c;
-import kotlinx.a.c.a;
-import kotlinx.a.d.b;
-import kotlinx.a.f;
-import kotlinx.a.h;
-import kotlinx.a.n;
-import kotlinx.a.z;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.Set;
+import kotlin.Metadata;
+import kotlin.g.b.am;
+import kotlin.g.b.s;
+import kotlinx.a.b;
+import kotlinx.a.b.e;
+import kotlinx.a.d.ac;
+import kotlinx.a.d.al;
+import kotlinx.a.d.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/serialization/builtins/AbstractDecoder;", "Lkotlinx/serialization/Decoder;", "Lkotlinx/serialization/CompositeDecoder;", "()V", "context", "Lkotlinx/serialization/modules/SerialModule;", "getContext", "()Lkotlinx/serialization/modules/SerialModule;", "updateMode", "Lkotlinx/serialization/UpdateMode;", "getUpdateMode", "()Lkotlinx/serialization/UpdateMode;", "beginStructure", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "typeParams", "", "Lkotlinx/serialization/KSerializer;", "(Lkotlinx/serialization/SerialDescriptor;[Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/CompositeDecoder;", "decodeBoolean", "", "decodeBooleanElement", "index", "", "decodeByte", "", "decodeByteElement", "decodeChar", "", "decodeCharElement", "decodeDouble", "", "decodeDoubleElement", "decodeEnum", "enumDescriptor", "decodeFloat", "", "decodeFloatElement", "decodeInt", "decodeIntElement", "decodeLong", "", "decodeLongElement", "decodeNotNullMark", "decodeNull", "", "decodeNullableSerializableElement", "T", "", "deserializer", "Lkotlinx/serialization/DeserializationStrategy;", "(Lkotlinx/serialization/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;)Ljava/lang/Object;", "decodeSerializableElement", "decodeShort", "", "decodeShortElement", "decodeString", "", "decodeStringElement", "decodeUnit", "", "decodeUnitElement", "decodeValue", "endStructure", "updateNullableSerializableElement", "old", "(Lkotlinx/serialization/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;", "updateSerializableElement", "kotlinx-serialization-runtime"})
-public abstract class a
-  implements kotlinx.a.a, c
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"nullable", "Lkotlinx/serialization/KSerializer;", "T", "", "getNullable", "(Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;", "ArraySerializer", "", "E", "kClass", "Lkotlin/reflect/KClass;", "elementSerializer", "BooleanArraySerializer", "", "ByteArraySerializer", "", "CharArraySerializer", "", "DoubleArraySerializer", "", "FloatArraySerializer", "", "IntArraySerializer", "", "ListSerializer", "", "LongArraySerializer", "", "MapEntrySerializer", "", "K", "V", "keySerializer", "valueSerializer", "MapSerializer", "", "PairSerializer", "Lkotlin/Pair;", "SetSerializer", "", "ShortArraySerializer", "", "TripleSerializer", "Lkotlin/Triple;", "A", "B", "C", "aSerializer", "bSerializer", "cSerializer", "serializer", "", "Lkotlin/Boolean$Companion;", "(Lkotlin/jvm/internal/BooleanCompanionObject;)Lkotlinx/serialization/KSerializer;", "", "Lkotlin/Byte$Companion;", "", "Lkotlin/Char$Companion;", "", "Lkotlin/Double$Companion;", "", "Lkotlin/Float$Companion;", "", "Lkotlin/Int$Companion;", "", "Lkotlin/Long$Companion;", "", "Lkotlin/Short$Companion;", "", "Lkotlin/String$Companion;", "", "(Lkotlin/Unit;)Lkotlinx/serialization/KSerializer;", "kotlinx-serialization-runtime"}, k=2, mv={1, 4, 0})
+public final class a
 {
-  private final z abBt = z.abBr;
-  
-  private Object iTJ()
+  public static final b<String> a(am paramam)
   {
-    throw ((Throwable)new kotlinx.a.t(ab.bO(getClass()) + " can't retrieve untyped values", (byte)0));
+    AppMethodBeat.i(188424);
+    s.u(paramam, "$this$serializer");
+    paramam = (b)al.ajDU;
+    AppMethodBeat.o(188424);
+    return paramam;
   }
   
-  public <T> T a(f<T> paramf)
+  public static final <T> b<T> a(b<T> paramb)
   {
-    p.k(paramf, "deserializer");
-    return c.a.a(this, paramf);
-  }
-  
-  public <T> T a(f<T> paramf, T paramT)
-  {
-    p.k(paramf, "deserializer");
-    return c.a.a(this, paramf, paramT);
-  }
-  
-  public final <T> T a(n paramn, int paramInt, f<T> paramf)
-  {
-    p.k(paramn, "descriptor");
-    p.k(paramf, "deserializer");
-    return a(paramf);
-  }
-  
-  public final <T> T a(n paramn, int paramInt, f<T> paramf, T paramT)
-  {
-    p.k(paramn, "descriptor");
-    p.k(paramf, "deserializer");
-    return a(paramf, paramT);
-  }
-  
-  public final <T> T a(n paramn, f<T> paramf)
-  {
-    p.k(paramn, "descriptor");
-    p.k(paramf, "deserializer");
-    return b(paramf);
-  }
-  
-  public final <T> T a(n paramn, f<T> paramf, T paramT)
-  {
-    p.k(paramn, "descriptor");
-    p.k(paramf, "deserializer");
-    return b(paramf, paramT);
-  }
-  
-  public kotlinx.a.a a(n paramn, h<?>... paramVarArgs)
-  {
-    p.k(paramn, "descriptor");
-    p.k(paramVarArgs, "typeParams");
-    return (kotlinx.a.a)this;
-  }
-  
-  public void a(n paramn)
-  {
-    p.k(paramn, "descriptor");
-  }
-  
-  public final boolean a(n paramn, int paramInt)
-  {
-    p.k(paramn, "descriptor");
-    return iTu();
-  }
-  
-  public final byte b(n paramn, int paramInt)
-  {
-    p.k(paramn, "descriptor");
-    return iTv();
-  }
-  
-  public <T> T b(f<T> paramf)
-  {
-    p.k(paramf, "deserializer");
-    return c.a.b(this, paramf);
-  }
-  
-  public <T> T b(f<T> paramf, T paramT)
-  {
-    p.k(paramf, "deserializer");
-    return c.a.b(this, paramf, paramT);
-  }
-  
-  public final char c(n paramn, int paramInt)
-  {
-    p.k(paramn, "descriptor");
-    return iTx();
-  }
-  
-  public final short d(n paramn, int paramInt)
-  {
-    p.k(paramn, "descriptor");
-    return iTw();
-  }
-  
-  public final int e(n paramn, int paramInt)
-  {
-    p.k(paramn, "descriptor");
-    return iTy();
-  }
-  
-  public final long f(n paramn, int paramInt)
-  {
-    p.k(paramn, "descriptor");
-    return iTz();
-  }
-  
-  public final float g(n paramn, int paramInt)
-  {
-    p.k(paramn, "descriptor");
-    return iTA();
-  }
-  
-  public final double h(n paramn, int paramInt)
-  {
-    p.k(paramn, "descriptor");
-    return iTB();
-  }
-  
-  public final String i(n paramn, int paramInt)
-  {
-    p.k(paramn, "descriptor");
-    return iTC();
-  }
-  
-  public float iTA()
-  {
-    Object localObject = iTJ();
-    if (localObject == null) {
-      throw new kotlin.t("null cannot be cast to non-null type kotlin.Float");
+    AppMethodBeat.i(188421);
+    s.u(paramb, "$this$nullable");
+    if (paramb.iou().kFc())
+    {
+      AppMethodBeat.o(188421);
+      return paramb;
     }
-    return ((Float)localObject).floatValue();
+    paramb = (b)new ac(paramb);
+    AppMethodBeat.o(188421);
+    return paramb;
   }
   
-  public double iTB()
+  public static final <T> b<Set<T>> b(b<T> paramb)
   {
-    Object localObject = iTJ();
-    if (localObject == null) {
-      throw new kotlin.t("null cannot be cast to non-null type kotlin.Double");
-    }
-    return ((Double)localObject).doubleValue();
-  }
-  
-  public String iTC()
-  {
-    Object localObject = iTJ();
-    if (localObject == null) {
-      throw new kotlin.t("null cannot be cast to non-null type kotlin.String");
-    }
-    return (String)localObject;
-  }
-  
-  public b iTq()
-  {
-    return (b)kotlinx.a.d.a.abDW;
-  }
-  
-  public z iTr()
-  {
-    return this.abBt;
-  }
-  
-  public boolean iTs()
-  {
-    return true;
-  }
-  
-  public Void iTt()
-  {
-    return null;
-  }
-  
-  public boolean iTu()
-  {
-    Object localObject = iTJ();
-    if (localObject == null) {
-      throw new kotlin.t("null cannot be cast to non-null type kotlin.Boolean");
-    }
-    return ((Boolean)localObject).booleanValue();
-  }
-  
-  public byte iTv()
-  {
-    Object localObject = iTJ();
-    if (localObject == null) {
-      throw new kotlin.t("null cannot be cast to non-null type kotlin.Byte");
-    }
-    return ((Byte)localObject).byteValue();
-  }
-  
-  public short iTw()
-  {
-    Object localObject = iTJ();
-    if (localObject == null) {
-      throw new kotlin.t("null cannot be cast to non-null type kotlin.Short");
-    }
-    return ((Short)localObject).shortValue();
-  }
-  
-  public char iTx()
-  {
-    Object localObject = iTJ();
-    if (localObject == null) {
-      throw new kotlin.t("null cannot be cast to non-null type kotlin.Char");
-    }
-    return ((Character)localObject).charValue();
-  }
-  
-  public int iTy()
-  {
-    Object localObject = iTJ();
-    if (localObject == null) {
-      throw new kotlin.t("null cannot be cast to non-null type kotlin.Int");
-    }
-    return ((Integer)localObject).intValue();
-  }
-  
-  public long iTz()
-  {
-    Object localObject = iTJ();
-    if (localObject == null) {
-      throw new kotlin.t("null cannot be cast to non-null type kotlin.Long");
-    }
-    return ((Long)localObject).longValue();
+    AppMethodBeat.i(188428);
+    s.u(paramb, "elementSerializer");
+    paramb = (b)new u(paramb);
+    AppMethodBeat.o(188428);
+    return paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlinx.a.a.a
  * JD-Core Version:    0.7.0.1
  */

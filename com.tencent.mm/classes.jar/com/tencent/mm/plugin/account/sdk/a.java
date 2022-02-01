@@ -9,20 +9,20 @@ import com.tencent.mm.sdk.platformtools.Log;
 public final class a
   implements n
 {
-  public static volatile m mIG;
-  public static volatile l mIH;
+  public static volatile m pFn;
+  public static volatile l pFo;
   
   public final void a(l paraml)
   {
     AppMethodBeat.i(155379);
     Log.i("MicroMsg.AccountSyncApplication", "regitMMModelCallback %s", new Object[] { paraml });
-    mIH = paraml;
+    pFo = paraml;
     AppMethodBeat.o(155379);
   }
   
   public final void a(m paramm)
   {
-    mIG = paramm;
+    pFn = paramm;
   }
 }
 

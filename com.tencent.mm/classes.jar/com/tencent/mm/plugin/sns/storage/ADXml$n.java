@@ -7,12 +7,12 @@ import java.util.Map;
 
 public class ADXml$n
 {
-  public String ozt;
+  public String rDm;
   public int type;
   
-  public static n W(Map<String, String> paramMap, String paramString)
+  public static n an(Map<String, String> paramMap, String paramString)
   {
-    AppMethodBeat.i(267096);
+    AppMethodBeat.i(306623);
     int i = 0;
     for (;;)
     {
@@ -29,14 +29,14 @@ public class ADXml$n
         }
         paramString = new n();
         paramString.type = j;
-        paramString.ozt = ((String)paramMap.get(str1 + ".webViewUrl"));
-        AppMethodBeat.o(267096);
+        paramString.rDm = ((String)paramMap.get(str1 + ".webViewUrl"));
+        AppMethodBeat.o(306623);
         return paramString;
       }
       i += 1;
     }
     label149:
-    AppMethodBeat.o(267096);
+    AppMethodBeat.o(306623);
     return null;
   }
 }

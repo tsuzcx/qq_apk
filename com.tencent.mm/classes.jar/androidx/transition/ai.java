@@ -10,56 +10,56 @@ import java.lang.reflect.Field;
 
 final class ai
 {
-  private static final am ata;
-  private static Field atb;
-  private static boolean atc;
-  static final Property<View, Float> atd;
-  static final Property<View, Rect> ate;
+  private static final am chJ;
+  private static Field chK;
+  private static boolean chL;
+  static final Property<View, Float> chM;
+  static final Property<View, Rect> chN;
   
   static
   {
-    AppMethodBeat.i(193258);
+    AppMethodBeat.i(201635);
     if (Build.VERSION.SDK_INT >= 22) {
-      ata = new al();
+      chJ = new al();
     }
     for (;;)
     {
-      atd = new Property(Float.class, "translationAlpha") {};
-      ate = new Property(Rect.class, "clipBounds") {};
-      AppMethodBeat.o(193258);
+      chM = new Property(Float.class, "translationAlpha") {};
+      chN = new Property(Rect.class, "clipBounds") {};
+      AppMethodBeat.o(201635);
       return;
       if (Build.VERSION.SDK_INT >= 21) {
-        ata = new ak();
+        chJ = new ak();
       } else if (Build.VERSION.SDK_INT >= 19) {
-        ata = new aj();
+        chJ = new aj();
       } else {
-        ata = new am();
+        chJ = new am();
       }
     }
   }
   
-  static void G(View paramView, int paramInt)
+  static void K(View paramView, int paramInt)
   {
-    AppMethodBeat.i(193243);
-    if (!atc) {}
+    AppMethodBeat.i(201597);
+    if (!chL) {}
     try
     {
       Field localField = View.class.getDeclaredField("mViewFlags");
-      atb = localField;
+      chK = localField;
       localField.setAccessible(true);
       label28:
-      atc = true;
-      if (atb != null) {
+      chL = true;
+      if (chK != null) {
         try
         {
-          int i = atb.getInt(paramView);
-          atb.setInt(paramView, i & 0xFFFFFFF3 | paramInt);
-          AppMethodBeat.o(193243);
+          int i = chK.getInt(paramView);
+          chK.setInt(paramView, i & 0xFFFFFFF3 | paramInt);
+          AppMethodBeat.o(201597);
           return;
         }
         catch (IllegalAccessException paramView) {}
       }
-      AppMethodBeat.o(193243);
+      AppMethodBeat.o(201597);
       return;
     }
     catch (NoSuchFieldException localNoSuchFieldException)
@@ -70,92 +70,92 @@ final class ai
   
   static void a(View paramView, Matrix paramMatrix)
   {
-    AppMethodBeat.i(193244);
-    ata.a(paramView, paramMatrix);
-    AppMethodBeat.o(193244);
+    AppMethodBeat.i(201604);
+    chJ.a(paramView, paramMatrix);
+    AppMethodBeat.o(201604);
   }
   
   static void b(View paramView, Matrix paramMatrix)
   {
-    AppMethodBeat.i(193249);
-    ata.b(paramView, paramMatrix);
-    AppMethodBeat.o(193249);
-  }
-  
-  static ah bM(View paramView)
-  {
-    AppMethodBeat.i(193227);
-    if (Build.VERSION.SDK_INT >= 18)
-    {
-      paramView = new ag(paramView);
-      AppMethodBeat.o(193227);
-      return paramView;
-    }
-    paramView = af.bL(paramView);
-    AppMethodBeat.o(193227);
-    return paramView;
-  }
-  
-  static aq bN(View paramView)
-  {
-    AppMethodBeat.i(193231);
-    if (Build.VERSION.SDK_INT >= 18)
-    {
-      paramView = new ap(paramView);
-      AppMethodBeat.o(193231);
-      return paramView;
-    }
-    paramView = new ao(paramView.getWindowToken());
-    AppMethodBeat.o(193231);
-    return paramView;
-  }
-  
-  static float bO(View paramView)
-  {
-    AppMethodBeat.i(193236);
-    float f = ata.bO(paramView);
-    AppMethodBeat.o(193236);
-    return f;
-  }
-  
-  static void bP(View paramView)
-  {
-    AppMethodBeat.i(193238);
-    ata.bP(paramView);
-    AppMethodBeat.o(193238);
-  }
-  
-  static void bQ(View paramView)
-  {
-    AppMethodBeat.i(193239);
-    ata.bQ(paramView);
-    AppMethodBeat.o(193239);
+    AppMethodBeat.i(201613);
+    chJ.b(paramView, paramMatrix);
+    AppMethodBeat.o(201613);
   }
   
   static void c(View paramView, Matrix paramMatrix)
   {
-    AppMethodBeat.i(193252);
-    ata.c(paramView, paramMatrix);
-    AppMethodBeat.o(193252);
+    AppMethodBeat.i(201620);
+    chJ.c(paramView, paramMatrix);
+    AppMethodBeat.o(201620);
+  }
+  
+  static ah cg(View paramView)
+  {
+    AppMethodBeat.i(201559);
+    if (Build.VERSION.SDK_INT >= 18)
+    {
+      paramView = new ag(paramView);
+      AppMethodBeat.o(201559);
+      return paramView;
+    }
+    paramView = af.cf(paramView);
+    AppMethodBeat.o(201559);
+    return paramView;
+  }
+  
+  static aq ch(View paramView)
+  {
+    AppMethodBeat.i(201568);
+    if (Build.VERSION.SDK_INT >= 18)
+    {
+      paramView = new ap(paramView);
+      AppMethodBeat.o(201568);
+      return paramView;
+    }
+    paramView = new ao(paramView.getWindowToken());
+    AppMethodBeat.o(201568);
+    return paramView;
+  }
+  
+  static float ci(View paramView)
+  {
+    AppMethodBeat.i(201580);
+    float f = chJ.ci(paramView);
+    AppMethodBeat.o(201580);
+    return f;
+  }
+  
+  static void cj(View paramView)
+  {
+    AppMethodBeat.i(201584);
+    chJ.cj(paramView);
+    AppMethodBeat.o(201584);
+  }
+  
+  static void ck(View paramView)
+  {
+    AppMethodBeat.i(201590);
+    chJ.ck(paramView);
+    AppMethodBeat.o(201590);
   }
   
   static void j(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(193255);
-    ata.j(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
-    AppMethodBeat.o(193255);
+    AppMethodBeat.i(201628);
+    chJ.j(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
+    AppMethodBeat.o(201628);
   }
   
-  static void n(View paramView, float paramFloat)
+  static void o(View paramView, float paramFloat)
   {
-    AppMethodBeat.i(193234);
-    ata.n(paramView, paramFloat);
-    AppMethodBeat.o(193234);
+    AppMethodBeat.i(201575);
+    chJ.o(paramView, paramFloat);
+    AppMethodBeat.o(201575);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     androidx.transition.ai
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="60.0dip"
+<com.tencent.mm.ui.widget.RoundCornerRelativeLayout android:layout_width="@dimen/c9" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/hc" android:textColor="@color/g7" android:gravity="center" android:id="@id/ipm" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</LinearLayout>
+    <ImageView android:id="@id/hmr" android:background="@color/BW_BG_19" android:layout_width="fill_parent" android:layout_height="@dimen/cg" android:scaleType="centerCrop" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/BW_F_Alpha_0_8" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/hmp" android:background="@color/BW_BG_19" android:layout_width="fill_parent" android:layout_height="@dimen/d1" android:maxLines="1" android:layout_below="@id/hmr" android:paddingStart="@dimen/df" android:paddingEnd="@dimen/cp" />
+    <TextView android:textSize="11.0dip" android:textColor="@color/BW_F_Alpha_0_8" android:gravity="center_vertical" android:id="@id/hmq" android:background="@drawable/a8h" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/df" android:layout_alignBottom="@id/hmr" android:paddingStart="@dimen/bv" android:paddingEnd="@dimen/bv" android:layout_marginEnd="@dimen/df" android:layout_alignParentEnd="true" />
+</com.tencent.mm.ui.widget.RoundCornerRelativeLayout>

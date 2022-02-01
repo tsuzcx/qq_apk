@@ -3,47 +3,49 @@ package com.tencent.mm.plugin.sns.model.b;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.protocal.protobuf.cvt;
+import com.tencent.mm.modelcontrol.b;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.protocal.protobuf.dmz;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.systemservicecache.NetworkCache;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public final class a
 {
-  private static int Kdg = 6;
-  private static int Kdh = 3;
-  private static int Kdi = 1000;
-  private static boolean Kdj = true;
-  private static String Kdk = "";
-  private static int Kdl = 0;
-  private static int Kdm = 60;
-  private static int Kdn = 1200;
-  private static float Kdo = 4.0F;
-  private static float Kdp = 8.0F;
-  private static int Kdq = 1;
-  private static int Kdr = 3;
-  private static String Kds = "20:00-23:59";
+  private static int QAA = 3;
+  private static int QAB = 1000;
+  private static boolean QAC = true;
+  private static String QAD = "";
+  private static int QAE = 0;
+  private static int QAF = 60;
+  private static int QAG = 1200;
+  private static float QAH = 4.0F;
+  private static float QAI = 8.0F;
+  private static int QAJ = 1;
+  private static int QAK = 3;
+  private static String QAL = "20:00-23:59";
+  private static int QAz = 6;
   
-  public static int a(cvt paramcvt, int paramInt)
+  public static int a(dmz paramdmz, int paramInt)
   {
     AppMethodBeat.i(96082);
-    if (paramcvt.TDZ > 0.0F)
+    if (paramdmz.aaTF > 0.0F)
     {
-      float f = paramcvt.TDZ * paramInt / 100.0F;
-      if (f < Kdo)
+      float f = paramdmz.aaTF * paramInt / 100.0F;
+      if (f < QAH)
       {
-        paramInt = (int)(Math.min(Kdo, paramcvt.TDZ) * 100.0F / paramcvt.TDZ);
+        paramInt = (int)(Math.min(QAH, paramdmz.aaTF) * 100.0F / paramdmz.aaTF);
         AppMethodBeat.o(96082);
         return paramInt;
       }
-      if (f > Kdp)
+      if (f > QAI)
       {
-        paramInt = (int)(Kdp * 100.0F / paramcvt.TDZ);
+        paramInt = (int)(QAI * 100.0F / paramdmz.aaTF);
         AppMethodBeat.o(96082);
         return paramInt;
       }
@@ -52,7 +54,7 @@ public final class a
     return paramInt;
   }
   
-  public static boolean agf(int paramInt)
+  public static boolean akU(int paramInt)
   {
     AppMethodBeat.i(96080);
     String str1 = SimpleDateFormat.getDateInstance().format(new Date());
@@ -67,7 +69,7 @@ public final class a
       return true;
     }
     int i = localMultiProcessMMKV.decodeInt("SnsPreloadSwitch_KEY_COUNT", 0);
-    if (paramInt + i < Kdi)
+    if (paramInt + i < QAB)
     {
       localMultiProcessMMKV.encode("SnsPreloadSwitch_KEY_COUNT", i + paramInt);
       AppMethodBeat.o(96080);
@@ -77,40 +79,40 @@ public final class a
     return false;
   }
   
-  public static void fPW()
+  public static void hhO()
   {
     AppMethodBeat.i(96078);
-    Kdj = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vGl, true);
-    Kdk = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vGm, "20:00-23:59");
-    Kdl = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vGn, 1);
-    Kdg = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vGo, 6);
-    Kdh = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vGp, 3);
-    Kdi = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vGq, 1000);
-    Kdm = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vGr, 60);
-    Kdo = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vGt, 4.0F);
-    Kdp = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vGu, 8.0F);
-    Kdq = fQc();
-    Kdr = fQd();
-    Log.printInfoStack("MicroMsg.SnsPreloadSwitch", "TIMELINE_MAIN_SWITCH:%b\nTIMELINE_DAY_UNABLE_PRELOAD_TIME_INTERVAL:%s\nTIMELINE_PRELOAD_NET_TYPE:%d\nTIMELINE_MAX_PRELOAD_IN_QUEUE:%d\nTIMELINE_MAX_PARALLEL_IN_QUEUE:%d\n TIMELINE_MAX_PRELOAD_COUNT:%d\nTIMELINE_PRELOAD_PERCENT:%d\nTIMELINE_OUT_PRELOAD_INTERVAL:%d\nSNS_RED_DOT_PRELOAD:%d\n SNS_PRELOAD_VIDEO_EXPIRED_TIME:%d\nSNS_RED_DOT_PRELOAD_BUSY_TIME:%s", new Object[] { Boolean.valueOf(Kdj), Kdk, Integer.valueOf(Kdl), Integer.valueOf(Kdg), Integer.valueOf(Kdh), Integer.valueOf(Kdi), Integer.valueOf(Kdm), Integer.valueOf(Kdn), Integer.valueOf(Kdq), Integer.valueOf(Kdr), Kds });
+    QAC = ((c)h.ax(c.class)).a(c.a.yVT, true);
+    QAD = ((c)h.ax(c.class)).a(c.a.yVU, "20:00-23:59");
+    QAE = ((c)h.ax(c.class)).a(c.a.yVV, 1);
+    QAz = ((c)h.ax(c.class)).a(c.a.yVW, 6);
+    QAA = ((c)h.ax(c.class)).a(c.a.yVX, 3);
+    QAB = ((c)h.ax(c.class)).a(c.a.yVY, 1000);
+    QAF = ((c)h.ax(c.class)).a(c.a.yVZ, 60);
+    QAH = ((c)h.ax(c.class)).a(c.a.yWb, 4.0F);
+    QAI = ((c)h.ax(c.class)).a(c.a.yWc, 8.0F);
+    QAJ = hhU();
+    QAK = hhV();
+    Log.printInfoStack("MicroMsg.SnsPreloadSwitch", "TIMELINE_MAIN_SWITCH:%b\nTIMELINE_DAY_UNABLE_PRELOAD_TIME_INTERVAL:%s\nTIMELINE_PRELOAD_NET_TYPE:%d\nTIMELINE_MAX_PRELOAD_IN_QUEUE:%d\nTIMELINE_MAX_PARALLEL_IN_QUEUE:%d\n TIMELINE_MAX_PRELOAD_COUNT:%d\nTIMELINE_PRELOAD_PERCENT:%d\nTIMELINE_OUT_PRELOAD_INTERVAL:%d\nSNS_RED_DOT_PRELOAD:%d\n SNS_PRELOAD_VIDEO_EXPIRED_TIME:%d\nSNS_RED_DOT_PRELOAD_BUSY_TIME:%s", new Object[] { Boolean.valueOf(QAC), QAD, Integer.valueOf(QAE), Integer.valueOf(QAz), Integer.valueOf(QAA), Integer.valueOf(QAB), Integer.valueOf(QAF), Integer.valueOf(QAG), Integer.valueOf(QAJ), Integer.valueOf(QAK), QAL });
     AppMethodBeat.o(96078);
   }
   
-  public static boolean fPX()
+  public static boolean hhP()
   {
     AppMethodBeat.i(96079);
-    if (!Kdj)
+    if (!QAC)
     {
       Log.printInfoStack("MicroMsg.SnsPreloadSwitch", "disable by TIMELINE_MAIN_SWITCH", new Object[0]);
       AppMethodBeat.o(96079);
       return false;
     }
-    int i = NetStatusUtil.getIOSNetType(MMApplicationContext.getContext());
-    switch (Kdl)
+    int i = NetworkCache.INSTANCE.getIOSNetTypeFromCache(MMApplicationContext.getContext());
+    switch (QAE)
     {
     }
-    while ((!TextUtils.isEmpty(Kdk)) && (com.tencent.mm.modelcontrol.b.VC(Kdk)))
+    while ((!TextUtils.isEmpty(QAD)) && (b.NB(QAD)))
     {
-      Log.printInfoStack("MicroMsg.SnsPreloadSwitch", "disable by TIMELINE_DAY_UNABLE_PRELOAD_TIME_INTERVAL %s", new Object[] { Kdk });
+      Log.printInfoStack("MicroMsg.SnsPreloadSwitch", "disable by TIMELINE_DAY_UNABLE_PRELOAD_TIME_INTERVAL %s", new Object[] { QAD });
       AppMethodBeat.o(96079);
       return false;
       if (i != 1)
@@ -134,7 +136,7 @@ public final class a
         }
       }
     }
-    if (!agf(0))
+    if (!akU(0))
     {
       Log.printInfoStack("MicroMsg.SnsPreloadSwitch", "disable by TIMELINE_MAX_PRELOAD_COUNT", new Object[0]);
       AppMethodBeat.o(96079);
@@ -144,51 +146,51 @@ public final class a
     return true;
   }
   
-  public static int fPY()
+  public static int hhQ()
   {
-    return Kdg;
+    return QAz;
   }
   
-  public static int fPZ()
+  public static int hhR()
   {
-    return Kdh;
+    return QAA;
   }
   
-  public static int fQa()
+  public static int hhS()
   {
-    return Kdm;
+    return QAF;
   }
   
-  public static int fQb()
+  public static int hhT()
   {
     AppMethodBeat.i(96081);
-    int i = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vGs, 1200);
-    Kdn = i;
+    int i = ((c)h.ax(c.class)).a(c.a.yWa, 1200);
+    QAG = i;
     AppMethodBeat.o(96081);
     return i;
   }
   
-  public static int fQc()
+  public static int hhU()
   {
     AppMethodBeat.i(96083);
-    int i = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vGv, 1);
-    Kdq = i;
+    int i = ((c)h.ax(c.class)).a(c.a.yWd, 1);
+    QAJ = i;
     AppMethodBeat.o(96083);
     return i;
   }
   
-  public static int fQd()
+  public static int hhV()
   {
     AppMethodBeat.i(96084);
-    int i = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vGw, 3);
-    Kdr = i;
+    int i = ((c)h.ax(c.class)).a(c.a.yWe, 3);
+    QAK = i;
     AppMethodBeat.o(96084);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.b.a
  * JD-Core Version:    0.7.0.1
  */

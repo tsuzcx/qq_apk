@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/ff3" android:background="@drawable/arl" android:paddingLeft="@dimen/cp" android:paddingRight="@dimen/cp" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/d_">
+        <LinearLayout android:gravity="center_vertical" android:background="@drawable/b7q" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:gravity="center_vertical" android:text="@string/etz" android:layout_weight="1.0" style="@style/m4" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:src="@raw/arrow_right" android:tint="@color/BW_50" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/fes" android:background="@drawable/arl" android:paddingLeft="@dimen/cp" android:paddingRight="@dimen/cp" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/d_">
+        <LinearLayout android:gravity="center_vertical" android:background="@drawable/b7q" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:gravity="center_vertical" android:text="@string/de1" android:layout_weight="1.0" style="@style/m4" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:src="@raw/arrow_right" android:tint="@color/BW_50" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

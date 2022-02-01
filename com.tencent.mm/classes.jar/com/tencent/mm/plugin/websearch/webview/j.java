@@ -1,46 +1,187 @@
 package com.tencent.mm.plugin.websearch.webview;
 
+import android.net.Uri;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.websearch.api.aj;
+import com.tencent.mm.plugin.websearch.api.au;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.y;
+import com.tencent.xweb.WebResourceRequest;
+import com.tencent.xweb.WebResourceResponse;
+import com.tencent.xweb.WebView;
+import com.tencent.xweb.ag;
+import com.tencent.xweb.an;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/websearch/webview/WebSearchUtils;", "", "()V", "Companion", "ui-websearch_release"})
-public final class j
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/websearch/webview/WebSearchClient;", "Lcom/tencent/xweb/WebViewClient;", "templateType", "", "(I)V", "TAG", "", "handleRequest", "Lcom/tencent/xweb/WebResourceResponse;", "view", "Lcom/tencent/xweb/WebView;", "request", "Lcom/tencent/xweb/WebResourceRequest;", "shouldInterceptRequest", "bundle", "Landroid/os/Bundle;", "wrapResponse", "url", "ui-websearch_release"}, k=1, mv={1, 5, 1}, xi=48)
+public class j
+  extends ag
 {
-  private static final int PBD = -1;
-  private static final int PBE = -2;
-  private static final int PBF = 1;
-  private static final int PBG = 2;
-  private static final int PBH = 3;
-  public static final j.a PBI;
-  private static final String TAG = "MicroMsg.WebSearch.WebSearchUtils";
+  private final String TAG;
+  private final int phR;
   
-  static
+  public j(int paramInt)
   {
-    AppMethodBeat.i(198201);
-    PBI = new j.a((byte)0);
-    TAG = "MicroMsg.WebSearch.WebSearchUtils";
-    PBD = -1;
-    PBE = -2;
-    PBF = 1;
-    PBG = 2;
-    PBH = 3;
-    AppMethodBeat.o(198201);
+    this.phR = paramInt;
+    this.TAG = "MicroMsg.WebSearch.WebSearchClient";
   }
   
-  public static final boolean bjd(String paramString)
+  private final WebResourceResponse biK(String paramString)
   {
-    AppMethodBeat.i(198205);
-    boolean bool = j.a.bjd(paramString);
-    AppMethodBeat.o(198205);
-    return bool;
+    AppMethodBeat.i(315252);
+    Log.i(this.TAG, "url=%s | thread=%d", new Object[] { paramString, Long.valueOf(Thread.currentThread().getId()) });
+    paramString = Uri.parse(paramString);
+    try
+    {
+      paramString = paramString.getQueryParameter("path");
+      if (paramString == null) {
+        break label80;
+      }
+      paramString = y.Lh(paramString);
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        paramString = null;
+      }
+      AppMethodBeat.o(315252);
+    }
+    if (paramString != null)
+    {
+      paramString = new WebResourceResponse("image/*", "utf8", paramString);
+      AppMethodBeat.o(315252);
+      return paramString;
+    }
+    label80:
+    return null;
   }
   
-  public static final void d(JSONObject paramJSONObject, boolean paramBoolean)
+  private final WebResourceResponse d(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
   {
-    AppMethodBeat.i(198207);
-    j.a.d(paramJSONObject, paramBoolean);
-    AppMethodBeat.o(198207);
+    AppMethodBeat.i(315248);
+    if (paramWebResourceRequest != null)
+    {
+      paramWebResourceRequest = paramWebResourceRequest.getUrl();
+      if (paramWebResourceRequest != null)
+      {
+        String str = paramWebResourceRequest.toString();
+        if (str != null)
+        {
+          if (n.U(str, "weixin://fts", false)) {}
+          for (paramWebResourceRequest = str; paramWebResourceRequest != null; paramWebResourceRequest = null)
+          {
+            paramWebView = biK(paramWebResourceRequest);
+            AppMethodBeat.o(315248);
+            return paramWebView;
+          }
+          if (this.phR >= 0)
+          {
+            au localau;
+            if ((paramWebView != null) && (paramWebView.supportFeature(2002) == true))
+            {
+              i = 1;
+              if ((i == 0) || (Util.isNullOrNil(str)) || (str.length() <= 7)) {
+                break label392;
+              }
+              localau = aj.asW(this.phR);
+              paramWebResourceRequest = Integer.valueOf(n.a((CharSequence)str, "?", 0, false, 6));
+              if (((Number)paramWebResourceRequest).intValue() <= 7) {
+                break label345;
+              }
+              i = 1;
+              label154:
+              if (i == 0) {
+                break label350;
+              }
+              label158:
+              if (paramWebResourceRequest != null) {
+                break label355;
+              }
+            }
+            label345:
+            label350:
+            label355:
+            for (int i = str.length();; i = paramWebResourceRequest.intValue())
+            {
+              paramWebResourceRequest = str.substring(7, i);
+              s.s(paramWebResourceRequest, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+              str = (String)localau.iqt().get(paramWebResourceRequest);
+              if (str == null) {
+                break label392;
+              }
+              if (Util.isNullOrNil(str)) {
+                break label363;
+              }
+              Log.i(this.TAG, "hit js xweb script %s %s", new Object[] { str, paramWebResourceRequest });
+              paramWebView = new an(2, 0, paramWebView);
+              paramWebView.mgR = (paramWebResourceRequest + '.' + str);
+              paramWebView.qU(paramWebResourceRequest, "path");
+              paramWebView = paramWebView.toString();
+              s.s(paramWebView, "script.toString()");
+              paramWebResourceRequest = StandardCharsets.UTF_8;
+              s.s(paramWebResourceRequest, "UTF_8");
+              paramWebView = paramWebView.getBytes(paramWebResourceRequest);
+              s.s(paramWebView, "(this as java.lang.String).getBytes(charset)");
+              paramWebView = new WebResourceResponse(null, "UTF-8", (InputStream)new ByteArrayInputStream(paramWebView));
+              AppMethodBeat.o(315248);
+              return paramWebView;
+              i = 0;
+              break;
+              i = 0;
+              break label154;
+              paramWebResourceRequest = null;
+              break label158;
+            }
+            label363:
+            Log.i(this.TAG, "not hit js xweb script %s %s", new Object[] { str, paramWebResourceRequest });
+            AppMethodBeat.o(315248);
+            return null;
+          }
+          label392:
+          AppMethodBeat.o(315248);
+          return null;
+        }
+      }
+    }
+    AppMethodBeat.o(315248);
+    return null;
+  }
+  
+  public final WebResourceResponse a(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  {
+    AppMethodBeat.i(315254);
+    WebResourceResponse localWebResourceResponse = d(paramWebView, paramWebResourceRequest);
+    if (localWebResourceResponse == null)
+    {
+      paramWebView = super.a(paramWebView, paramWebResourceRequest);
+      AppMethodBeat.o(315254);
+      return paramWebView;
+    }
+    AppMethodBeat.o(315254);
+    return localWebResourceResponse;
+  }
+  
+  public final WebResourceResponse a(WebView paramWebView, WebResourceRequest paramWebResourceRequest, Bundle paramBundle)
+  {
+    AppMethodBeat.i(315261);
+    WebResourceResponse localWebResourceResponse = d(paramWebView, paramWebResourceRequest);
+    if (localWebResourceResponse == null)
+    {
+      paramWebView = super.a(paramWebView, paramWebResourceRequest, paramBundle);
+      AppMethodBeat.o(315261);
+      return paramWebView;
+    }
+    AppMethodBeat.o(315261);
+    return localWebResourceResponse;
   }
 }
 

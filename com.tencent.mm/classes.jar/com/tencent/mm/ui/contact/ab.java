@@ -1,90 +1,148 @@
 package com.tencent.mm.ui.contact;
 
 import android.content.Context;
-import android.content.Intent;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.d;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
-import com.tencent.mm.R.k;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.openim.a.a.a;
-import com.tencent.mm.sdk.platformtools.WeChatBrands.Business.Entries;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.MaskLayout;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.c;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.ui.bd;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
+import java.util.List;
 
 public final class ab
   extends LinearLayout
 {
-  private String XuW;
+  private LinearLayout Api;
+  private List<String> afdO;
+  private a afgW;
+  private b afgX;
   private Context context;
   
-  public ab(Context paramContext, String paramString)
+  public ab(Context paramContext, a parama)
   {
     super(paramContext);
-    AppMethodBeat.i(37933);
+    AppMethodBeat.i(37926);
+    this.Api = null;
     this.context = paramContext;
-    this.XuW = paramString;
-    paramContext = View.inflate(getContext(), R.i.ejN, this);
-    paramString = findViewById(R.h.dFD);
-    paramContext.setOnClickListener(new View.OnClickListener()
+    this.afgW = parama;
+    h.ahAA.bm(new Runnable()
     {
-      public final void onClick(View paramAnonymousView)
+      public final void run()
       {
-        AppMethodBeat.i(37931);
-        Object localObject = new b();
-        ((b)localObject).bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/contact/OpenIMListViewItem$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
-        if (!WeChatBrands.Business.Entries.ContactWeCom.checkAvailable(paramAnonymousView.getContext()))
+        AppMethodBeat.i(252937);
+        ab localab = ab.this;
+        bh.bCz();
+        ab.a(localab, c.bzA().iZS());
+        ab.this.post(new Runnable()
         {
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/OpenIMListViewItem$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(37931);
-          return;
-        }
-        paramAnonymousView = paramAnonymousView.getContext();
-        localObject = new Intent(paramAnonymousView, OpenIMAddressUI.class);
-        ((Intent)localObject).addFlags(67108864);
-        ((Intent)localObject).putExtra("key_openim_acctype_id", ab.a(ab.this));
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-        com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/ui/contact/OpenIMListViewItem$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
-        com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/mm/ui/contact/OpenIMListViewItem$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/OpenIMListViewItem$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(37931);
+          public final void run()
+          {
+            AppMethodBeat.i(253012);
+            if ((ab.a(ab.this) == null) || (ab.a(ab.this).size() <= 0))
+            {
+              Log.i("MicroMsg.OpenIMListHeaderView", "openimIdList is null");
+              AppMethodBeat.o(253012);
+              return;
+            }
+            ab.a(ab.this).remove("wework");
+            Log.i("MicroMsg.OpenIMListHeaderView", "openim list size = %s", new Object[] { Integer.valueOf(ab.a(ab.this).size()) });
+            if (ab.b(ab.this) == null)
+            {
+              View.inflate(ab.this.getContext(), R.i.gmP, ab.this);
+              ab.a(ab.this, (LinearLayout)ab.this.findViewById(R.h.container));
+            }
+            ab.b(ab.this).removeAllViews();
+            int i = 0;
+            if (i < ab.a(ab.this).size())
+            {
+              Object localObject = (String)ab.a(ab.this).get(i);
+              localObject = new ac(ab.this.getContext(), (String)localObject);
+              ab.b(ab.this).addView((View)localObject);
+              if (i == ab.a(ab.this).size() - 1)
+              {
+                localObject = ((ac)localObject).findViewById(R.h.fGJ);
+                int j = ((View)localObject).getPaddingLeft();
+                ((View)localObject).setBackground(bd.by(ab.c(ab.this), R.d.list_item_divider));
+                ((View)localObject).findViewById(R.h.fGL).setBackground(null);
+                ((View)localObject).setPadding(j, 0, 0, 0);
+              }
+              for (;;)
+              {
+                i += 1;
+                break;
+                ((ac)localObject).findViewById(R.h.fGJ).setBackground(null);
+                ((ac)localObject).findViewById(R.h.fGJ).findViewById(R.h.fGL).setBackground(bd.by(ab.c(ab.this), R.d.list_item_divider));
+              }
+            }
+            ab.d(ab.this).onOpenIMListHeaderViewChange(ab.a(ab.this).size());
+            AppMethodBeat.o(253012);
+          }
+        });
+        AppMethodBeat.o(252937);
       }
     });
-    paramString.setOnTouchListener(new View.OnTouchListener()
+    AppMethodBeat.o(37926);
+  }
+  
+  public final int getOpenIMCount()
+  {
+    AppMethodBeat.i(37927);
+    if (this.afdO == null)
     {
-      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(37932);
-        if ((ab.b(ab.this) instanceof MMActivity)) {
-          ((MMActivity)ab.b(ab.this)).hideVKB();
-        }
-        AppMethodBeat.o(37932);
-        return false;
-      }
-    });
-    paramContext = (MaskLayout)paramString.findViewById(R.h.dtj);
-    ((com.tencent.mm.openim.a.a)h.ae(com.tencent.mm.openim.a.a.class)).b(this.XuW, "openim_acct_type_icon", a.a.mxY);
-    if (this.XuW.equals("cloudim")) {
-      ((ImageView)paramContext.getContentView()).setImageResource(R.k.avatar_wechat_frame);
+      AppMethodBeat.o(37927);
+      return 0;
     }
-    paramContext = ((com.tencent.mm.openim.a.a)h.ae(com.tencent.mm.openim.a.a.class)).b(this.XuW, "openim_acct_type_title", a.a.mxX);
-    ((TextView)findViewById(R.h.dFE)).setText(paramContext);
-    AppMethodBeat.o(37933);
+    int i = this.afdO.size();
+    AppMethodBeat.o(37927);
+    return i;
+  }
+  
+  public final void setOnVisibilityChangeListener(b paramb)
+  {
+    this.afgX = paramb;
+  }
+  
+  public final void setVisibility(int paramInt)
+  {
+    AppMethodBeat.i(37929);
+    b localb;
+    if ((this.afgX != null) && (paramInt != getVisibility()))
+    {
+      localb = this.afgX;
+      if (paramInt != 0) {
+        break label49;
+      }
+    }
+    label49:
+    for (boolean bool = true;; bool = false)
+    {
+      localb.onVisibilityChange(bool);
+      super.setVisibility(paramInt);
+      AppMethodBeat.o(37929);
+      return;
+    }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void onOpenIMListHeaderViewChange(int paramInt);
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void onVisibilityChange(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.contact.ab
  * JD-Core Version:    0.7.0.1
  */

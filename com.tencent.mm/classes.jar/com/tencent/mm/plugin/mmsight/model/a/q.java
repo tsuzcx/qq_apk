@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.mmsight.model.a;
 
-import android.annotation.TargetApi;
 import android.media.MediaCodec.BufferInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
@@ -8,7 +7,6 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.nio.ByteBuffer;
 
-@TargetApi(16)
 public final class q
   extends r
 {
@@ -17,6 +15,11 @@ public final class q
   public q(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, boolean paramBoolean)
   {
     super(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramBoolean);
+  }
+  
+  protected final boolean boY()
+  {
+    return false;
   }
   
   public final void clear()
@@ -39,11 +42,11 @@ public final class q
     AppMethodBeat.o(89584);
   }
   
-  public final int ie(int paramInt1, int paramInt2)
+  public final int jJ(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(89583);
     this.bufId = paramInt1;
-    paramInt1 = super.ie(paramInt1, paramInt2);
+    paramInt1 = super.jJ(paramInt1, paramInt2);
     AppMethodBeat.o(89583);
     return paramInt1;
   }

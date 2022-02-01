@@ -3,17 +3,17 @@ package com.tencent.mm.plugin.mv.ui.adapter;
 import android.view.View;
 import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/adapter/MusicMvAlbumAdapter$CameraHeaderViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/adapter/MusicMvAlbumAdapter$CameraHeaderViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b$b
   extends RecyclerView.v
 {
   public b$b(View paramView)
   {
     super(paramView);
-    AppMethodBeat.i(227526);
-    AppMethodBeat.o(227526);
+    AppMethodBeat.i(287281);
+    AppMethodBeat.o(287281);
   }
 }
 

@@ -4,9 +4,9 @@ import java.util.List;
 
 public final class WxaAttributes$b$a
 {
-  public String fve;
+  public String hzy;
   public String name;
-  public List<a> obe;
+  public List<a> rbQ;
   public int type;
   public String userName;
   public int version;

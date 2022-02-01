@@ -107,7 +107,7 @@ class StaticDecodeDataComponent
           Logger.d("StaticDecodeDataComponent", axiliary("new AudioTrack succeed"));
         }
       }
-      catch (Throwable localThrowable)
+      finally
       {
         for (;;)
         {
@@ -207,7 +207,7 @@ class StaticDecodeDataComponent
         AppMethodBeat.o(76743);
         return false;
       }
-      catch (Throwable localThrowable)
+      finally
       {
         Logger.e("StaticDecodeDataComponent", localThrowable);
         this.mStateRunner.transfer(Integer.valueOf(9));
@@ -312,9 +312,9 @@ class StaticDecodeDataComponent
             {
               public void run()
               {
-                AppMethodBeat.i(245399);
+                AppMethodBeat.i(212345);
                 StaticDecodeDataComponent.this.mCallback.playerEnded(StaticDecodeDataComponent.this.mCorePlayer);
-                AppMethodBeat.o(245399);
+                AppMethodBeat.o(212345);
               }
             }, 20);
           }
@@ -517,13 +517,13 @@ class StaticDecodeDataComponent
       {
         public boolean keepWaiting()
         {
-          AppMethodBeat.i(245346);
+          AppMethodBeat.i(212346);
           if (StaticDecodeDataComponent.this.getPlayerState() == 2)
           {
-            AppMethodBeat.o(245346);
+            AppMethodBeat.o(212346);
             return true;
           }
-          AppMethodBeat.o(245346);
+          AppMethodBeat.o(212346);
           return false;
         }
       });
@@ -540,7 +540,7 @@ class StaticDecodeDataComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.StaticDecodeDataComponent
  * JD-Core Version:    0.7.0.1
  */

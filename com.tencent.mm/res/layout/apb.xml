@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/ja9" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <TextView android:id="@id/iij" android:background="@drawable/vy" android:layout_width="@dimen/bv" android:layout_height="@dimen/bv" android:layout_marginBottom="@dimen/df" android:layout_below="@id/ja9" android:layout_centerHorizontal="true" />
+</RelativeLayout>

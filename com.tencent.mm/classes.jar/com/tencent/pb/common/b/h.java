@@ -8,17 +8,32 @@ import com.tencent.pb.common.c.c;
 
 public final class h
 {
-  public static boolean ZeF = true;
-  private static long ZeG = -1L;
-  public static h.a ZeH = h.a.ZeJ;
-  private static h.a ZeI = h.a.ZeJ;
+  public static boolean ahdi = true;
+  private static long ahdj = -1L;
+  public static h.a ahdk = h.a.ahdm;
+  private static h.a ahdl = h.a.ahdm;
   
-  private static NetworkInfo ikK()
+  public static boolean isNetworkConnected()
+  {
+    try
+    {
+      NetworkInfo localNetworkInfo = jRb();
+      if (localNetworkInfo == null) {
+        return false;
+      }
+      boolean bool = localNetworkInfo.isConnected();
+      return bool;
+    }
+    catch (Exception localException) {}
+    return true;
+  }
+  
+  private static NetworkInfo jRb()
   {
     NetworkInfo localNetworkInfo;
     try
     {
-      ConnectivityManager localConnectivityManager = (ConnectivityManager)c.NYh.getSystemService("connectivity");
+      ConnectivityManager localConnectivityManager = (ConnectivityManager)c.UMe.getSystemService("connectivity");
       if (localConnectivityManager == null)
       {
         b.w("getSystemService(Context.CONNECTIVITY_SERVICE) null", new Object[0]);
@@ -37,34 +52,19 @@ public final class h
       localNetworkInfo = localNetworkInfo.getActiveNetworkInfo();
       return localNetworkInfo;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
-        b.w("getActiveNetworkInfo exception:", new Object[] { localThrowable });
-        Object localObject = null;
+        b.w("getActiveNetworkInfo exception:", new Object[] { localObject1 });
+        Object localObject2 = null;
       }
     }
-  }
-  
-  public static boolean isNetworkConnected()
-  {
-    try
-    {
-      NetworkInfo localNetworkInfo = ikK();
-      if (localNetworkInfo == null) {
-        return false;
-      }
-      boolean bool = localNetworkInfo.isConnected();
-      return bool;
-    }
-    catch (Exception localException) {}
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.pb.common.b.h
  * JD-Core Version:    0.7.0.1
  */

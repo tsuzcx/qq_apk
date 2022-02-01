@@ -1,7 +1,6 @@
 package com.tencent.mm.plugin.cdndownloader.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
 
@@ -22,12 +21,7 @@ public final class c
     super(paramISQLiteDatabase, a.info, "CdnDownloadInfo", null);
   }
   
-  public c(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString, String[] paramArrayOfString)
-  {
-    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, paramArrayOfString);
-  }
-  
-  public final boolean ask(String paramString)
+  public final boolean alO(String paramString)
   {
     AppMethodBeat.i(120814);
     boolean bool = execSQL("CdnDownloadInfo", String.format("delete from %s where %s=%s", new Object[] { "CdnDownloadInfo", "downloadUrlHashCode", Integer.valueOf(paramString.hashCode()) }));

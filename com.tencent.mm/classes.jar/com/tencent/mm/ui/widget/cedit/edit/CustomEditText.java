@@ -29,16 +29,16 @@ public class CustomEditText
     super(paramContext, paramAttributeSet, paramInt1, paramInt2);
   }
   
-  protected final boolean dC()
+  protected final boolean eB()
   {
     return false;
   }
   
   public CharSequence getAccessibilityClassName()
   {
-    AppMethodBeat.i(187654);
+    AppMethodBeat.i(252409);
     String str = CustomEditText.class.getName();
-    AppMethodBeat.o(187654);
+    AppMethodBeat.o(252409);
     return str;
   }
   
@@ -49,9 +49,9 @@ public class CustomEditText
   
   protected d getDefaultMovementMethod()
   {
-    AppMethodBeat.i(187648);
-    d locald = a.ibX();
-    AppMethodBeat.o(187648);
+    AppMethodBeat.i(252361);
+    d locald = a.jHj();
+    AppMethodBeat.o(252361);
     return locald;
   }
   
@@ -62,55 +62,55 @@ public class CustomEditText
   
   public Editable getText()
   {
-    AppMethodBeat.i(187649);
+    AppMethodBeat.i(252375);
     Object localObject = super.getText();
     if (localObject == null)
     {
-      AppMethodBeat.o(187649);
+      AppMethodBeat.o(252375);
       return null;
     }
     if ((localObject instanceof Editable))
     {
       localObject = (Editable)super.getText();
-      AppMethodBeat.o(187649);
+      AppMethodBeat.o(252375);
       return localObject;
     }
     super.setText((CharSequence)localObject, TextView.BufferType.EDITABLE);
     localObject = (Editable)super.getText();
-    AppMethodBeat.o(187649);
+    AppMethodBeat.o(252375);
     return localObject;
   }
   
   public void setEllipsize(TextUtils.TruncateAt paramTruncateAt)
   {
-    AppMethodBeat.i(187653);
+    AppMethodBeat.i(252402);
     if (paramTruncateAt == TextUtils.TruncateAt.MARQUEE)
     {
       paramTruncateAt = new IllegalArgumentException("EditText cannot use the ellipsize mode TextUtils.TruncateAt.MARQUEE");
-      AppMethodBeat.o(187653);
+      AppMethodBeat.o(252402);
       throw paramTruncateAt;
     }
     super.setEllipsize(paramTruncateAt);
-    AppMethodBeat.o(187653);
+    AppMethodBeat.o(252402);
   }
   
   public void setSelection(int paramInt)
   {
-    AppMethodBeat.i(187652);
+    AppMethodBeat.i(252394);
     Selection.setSelection(getText(), paramInt);
-    AppMethodBeat.o(187652);
+    AppMethodBeat.o(252394);
   }
   
   public final void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
-    AppMethodBeat.i(187650);
+    AppMethodBeat.i(252383);
     super.setText(paramCharSequence, TextView.BufferType.EDITABLE);
-    AppMethodBeat.o(187650);
+    AppMethodBeat.o(252383);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.widget.cedit.edit.CustomEditText
  * JD-Core Version:    0.7.0.1
  */

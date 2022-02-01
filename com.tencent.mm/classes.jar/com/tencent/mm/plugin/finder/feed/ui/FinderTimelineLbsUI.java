@@ -1,153 +1,110 @@
 package com.tencent.mm.plugin.finder.feed.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import android.view.View;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.extension.reddot.f;
+import com.tencent.mm.plugin.finder.e.h;
+import com.tencent.mm.plugin.finder.extension.reddot.i;
+import com.tencent.mm.plugin.finder.feed.az;
 import com.tencent.mm.plugin.finder.storage.d;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
-import com.tencent.mm.plugin.finder.viewmodel.component.ap;
-import com.tencent.mm.plugin.findersdk.d.a.a.b;
+import com.tencent.mm.plugin.findersdk.storage.config.base.b;
 import com.tencent.mm.ui.component.UIComponent;
-import java.util.HashMap;
 import java.util.Set;
-import kotlin.a.ak;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.ar;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderTimelineLbsUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "getCommentScene", "", "getReportType", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onActionbarClick", "", "onActionbarDoubleClick", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderTimelineLbsUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "getCommentScene", "", "getReportType", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onActionbarClick", "", "onActionbarDoubleClick", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderTimelineLbsUI
   extends MMFinderUI
 {
-  private HashMap _$_findViewCache;
-  
-  public final void _$_clearFindViewByIdCache()
+  private static final void a(FinderTimelineLbsUI paramFinderTimelineLbsUI)
   {
-    AppMethodBeat.i(276286);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
+    AppMethodBeat.i(364918);
+    s.u(paramFinderTimelineLbsUI, "this$0");
+    paramFinderTimelineLbsUI = (com.tencent.mm.plugin.finder.viewmodel.component.bb)paramFinderTimelineLbsUI.component(com.tencent.mm.plugin.finder.viewmodel.component.bb.class);
+    com.tencent.mm.plugin.finder.feed.bb localbb = paramFinderTimelineLbsUI.GVu;
+    if (localbb != null) {
+      localbb.onActionbarClick(false);
     }
-    AppMethodBeat.o(276286);
+    paramFinderTimelineLbsUI = paramFinderTimelineLbsUI.GVv;
+    if (paramFinderTimelineLbsUI != null) {
+      paramFinderTimelineLbsUI.onActionbarClick(false);
+    }
+    AppMethodBeat.o(364918);
   }
   
-  public final View _$_findCachedViewById(int paramInt)
+  private static final boolean a(FinderTimelineLbsUI paramFinderTimelineLbsUI, MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(276285);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(276285);
-    return localView1;
+    AppMethodBeat.i(364912);
+    s.u(paramFinderTimelineLbsUI, "this$0");
+    paramFinderTimelineLbsUI.finish();
+    AppMethodBeat.o(364912);
+    return true;
   }
   
-  public final int duR()
+  private static final void b(FinderTimelineLbsUI paramFinderTimelineLbsUI)
   {
-    AppMethodBeat.i(276280);
-    d locald = d.AjH;
-    if (((Number)d.dTI().aSr()).intValue() == 1)
+    AppMethodBeat.i(364924);
+    s.u(paramFinderTimelineLbsUI, "this$0");
+    ((com.tencent.mm.plugin.finder.viewmodel.component.bb)paramFinderTimelineLbsUI.component(com.tencent.mm.plugin.finder.viewmodel.component.bb.class)).eEr();
+    AppMethodBeat.o(364924);
+  }
+  
+  public final void _$_clearFindViewByIdCache() {}
+  
+  public final int edC()
+  {
+    AppMethodBeat.i(364976);
+    d locald = d.FAy;
+    if (((Number)d.eRZ().bmg()).intValue() == 1)
     {
-      AppMethodBeat.o(276280);
+      AppMethodBeat.o(364976);
       return 3;
     }
-    AppMethodBeat.o(276280);
+    AppMethodBeat.o(364976);
     return 5;
   }
   
   public final int getCommentScene()
   {
-    AppMethodBeat.i(276279);
-    d locald = d.AjH;
-    if (((Number)d.dTI().aSr()).intValue() == 1)
+    AppMethodBeat.i(364968);
+    d locald = d.FAy;
+    if (((Number)d.eRZ().bmg()).intValue() == 1)
     {
-      AppMethodBeat.o(276279);
+      AppMethodBeat.o(364968);
       return 15;
     }
-    AppMethodBeat.o(276279);
+    AppMethodBeat.o(364968);
     return 34;
   }
   
   public final Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(276278);
-    Set localSet = ak.setOf(ap.class);
-    AppMethodBeat.o(276278);
+    AppMethodBeat.i(364958);
+    Set localSet = ar.setOf(com.tencent.mm.plugin.finder.viewmodel.component.bb.class);
+    AppMethodBeat.o(364958);
     return localSet;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(276277);
+    AppMethodBeat.i(364948);
     super.onCreate(paramBundle);
-    setMMTitle(b.j.finder_tab_lbs);
-    paramBundle = h.ag(PluginFinder.class);
-    p.j(paramBundle, "MMKernel.plugin(PluginFinder::class.java)");
-    ((PluginFinder)paramBundle).getRedDotManager().aBd("finder_tl_nearby_tab");
-    setBackBtn((MenuItem.OnMenuItemClickListener)new a(this));
-    setTitleBarClickListener((Runnable)new b(this), (Runnable)new c(this));
-    AppMethodBeat.o(276277);
+    setMMTitle(e.h.finder_tab_lbs);
+    ((PluginFinder)h.az(PluginFinder.class)).getRedDotManager().TL("finder_tl_nearby_tab");
+    setBackBtn(new FinderTimelineLbsUI..ExternalSyntheticLambda0(this));
+    setTitleBarClickListener(new FinderTimelineLbsUI..ExternalSyntheticLambda2(this), new FinderTimelineLbsUI..ExternalSyntheticLambda1(this));
+    AppMethodBeat.o(364948);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class a
-    implements MenuItem.OnMenuItemClickListener
-  {
-    a(FinderTimelineLbsUI paramFinderTimelineLbsUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(289395);
-      this.xSI.finish();
-      AppMethodBeat.o(289395);
-      return true;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
-  {
-    b(FinderTimelineLbsUI paramFinderTimelineLbsUI) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(274042);
-      FinderTimelineLbsUI.a(this.xSI);
-      AppMethodBeat.o(274042);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class c
-    implements Runnable
-  {
-    c(FinderTimelineLbsUI paramFinderTimelineLbsUI) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(274203);
-      FinderTimelineLbsUI.b(this.xSI);
-      AppMethodBeat.o(274203);
-    }
   }
 }
 

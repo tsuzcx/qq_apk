@@ -15,34 +15,34 @@ public class ThreadLocalTextureCache
   
   static
   {
-    AppMethodBeat.i(211251);
+    AppMethodBeat.i(218577);
     TEXTURE_CACHE = new ThreadLocal()
     {
       protected final ThreadLocalTextureCache initialValue()
       {
-        AppMethodBeat.i(211243);
+        AppMethodBeat.i(218584);
         ThreadLocalTextureCache localThreadLocalTextureCache = new ThreadLocalTextureCache(null);
-        AppMethodBeat.o(211243);
+        AppMethodBeat.o(218584);
         return localThreadLocalTextureCache;
       }
     };
-    AppMethodBeat.o(211251);
+    AppMethodBeat.o(218577);
   }
   
   private ThreadLocalTextureCache()
   {
-    AppMethodBeat.i(211246);
+    AppMethodBeat.i(218566);
     this.TAG = ("ThreadLocalTextureCache@" + Integer.toHexString(hashCode()));
     Logger.d(this.TAG, "ThreadLocalTextureCache() called, thread = " + Thread.currentThread().getName());
     this.textureCache = new HashMap();
-    AppMethodBeat.o(211246);
+    AppMethodBeat.o(218566);
   }
   
   public static ThreadLocalTextureCache getInstance()
   {
-    AppMethodBeat.i(211245);
+    AppMethodBeat.i(218559);
     ThreadLocalTextureCache localThreadLocalTextureCache = (ThreadLocalTextureCache)TEXTURE_CACHE.get();
-    AppMethodBeat.o(211245);
+    AppMethodBeat.o(218559);
     return localThreadLocalTextureCache;
   }
   
@@ -50,9 +50,9 @@ public class ThreadLocalTextureCache
   {
     try
     {
-      AppMethodBeat.i(211248);
+      AppMethodBeat.i(218594);
       paramString = (TextureInfo)this.textureCache.get(paramString);
-      AppMethodBeat.o(211248);
+      AppMethodBeat.o(218594);
       return paramString;
     }
     finally
@@ -66,10 +66,10 @@ public class ThreadLocalTextureCache
   {
     try
     {
-      AppMethodBeat.i(211247);
+      AppMethodBeat.i(218585);
       Logger.d(this.TAG, "putTextureInfo() called with: key = [" + paramString + "], textureInfo = [" + paramTextureInfo + "]");
       this.textureCache.put(paramString, paramTextureInfo);
-      AppMethodBeat.o(211247);
+      AppMethodBeat.o(218585);
       return;
     }
     finally
@@ -83,7 +83,7 @@ public class ThreadLocalTextureCache
   {
     try
     {
-      AppMethodBeat.i(211250);
+      AppMethodBeat.i(218603);
       Logger.d(this.TAG, "release() called, textureCache = " + this.textureCache);
       Iterator localIterator = this.textureCache.values().iterator();
       while (localIterator.hasNext()) {
@@ -92,16 +92,16 @@ public class ThreadLocalTextureCache
       this.textureCache.clear();
     }
     finally {}
-    AppMethodBeat.o(211250);
+    AppMethodBeat.o(218603);
   }
   
   public void remove(String paramString)
   {
     try
     {
-      AppMethodBeat.i(211249);
+      AppMethodBeat.i(218597);
       this.textureCache.remove(paramString);
-      AppMethodBeat.o(211249);
+      AppMethodBeat.o(218597);
       return;
     }
     finally

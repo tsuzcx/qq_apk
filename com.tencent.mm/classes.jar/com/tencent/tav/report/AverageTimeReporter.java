@@ -15,13 +15,13 @@ public class AverageTimeReporter
   
   public void add(AverageTimeReporter paramAverageTimeReporter)
   {
-    AppMethodBeat.i(193347);
+    AppMethodBeat.i(214923);
     if (paramAverageTimeReporter != null)
     {
       this.total += paramAverageTimeReporter.getTotal();
       this.count += paramAverageTimeReporter.getCount();
     }
-    AppMethodBeat.o(193347);
+    AppMethodBeat.o(214923);
   }
   
   public long average()
@@ -58,9 +58,9 @@ public class AverageTimeReporter
   
   public String toString()
   {
-    AppMethodBeat.i(193364);
+    AppMethodBeat.i(214979);
     String str = "AverageTimeReporter{total=" + this.total + ", count=" + this.count + ", average=" + averageDouble() + '}';
-    AppMethodBeat.o(193364);
+    AppMethodBeat.o(214979);
     return str;
   }
 }

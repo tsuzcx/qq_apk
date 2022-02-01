@@ -18,27 +18,27 @@ public abstract class o
     this.mKey = paramString;
   }
   
-  final o a(m paramm)
+  protected abstract void b(m paramm, V8Object paramV8Object);
+  
+  abstract void cleanup();
+  
+  final o f(m paramm)
   {
     if (TextUtils.isEmpty(this.mKey))
     {
-      a(paramm, paramm.acm().getGlobalObject());
+      b(paramm, paramm.aEm().getGlobalObject());
       return this;
     }
-    V8Object localV8Object = paramm.acm().newV8Object();
-    paramm.acm().add(this.mKey, localV8Object);
-    a(paramm, localV8Object);
+    V8Object localV8Object = paramm.aEm().newV8Object();
+    paramm.aEm().add(this.mKey, localV8Object);
+    b(paramm, localV8Object);
     localV8Object.release();
     return this;
   }
-  
-  protected abstract void a(m paramm, V8Object paramV8Object);
-  
-  abstract void cleanup();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.o
  * JD-Core Version:    0.7.0.1
  */

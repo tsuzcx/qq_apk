@@ -1,71 +1,81 @@
 package com.tencent.mm.plugin.finder.convert;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.text.TextPaint;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.model.a;
-import com.tencent.mm.plugin.finder.model.ay;
-import com.tencent.mm.plugin.finder.storage.an;
-import com.tencent.mm.plugin.finder.utils.m;
-import com.tencent.mm.protocal.protobuf.beg;
-import com.tencent.mm.view.recyclerview.i;
-import kotlin.g.b.p;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.loader.d.b.g;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.e.h;
+import com.tencent.mm.plugin.finder.model.bg;
+import com.tencent.mm.plugin.finder.storage.av;
+import com.tencent.mm.plugin.finder.utils.r;
+import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.protocal.protobuf.bpe;
+import com.tencent.mm.ui.widget.imageview.WeImageView;
+import com.tencent.mm.view.recyclerview.j;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.ah.f;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/convert/FinderMsgFollowConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderMsgConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderMsgFollow;", "scene", "", "(I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getScene", "()I", "convertMsg", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/convert/FinderMsgFriendObjectRecommendLikeConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderMsgConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderMsgFriendObjectRecommendLike;", "scene", "", "(I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getScene", "()I", "convertMsg", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class bl
-  extends bj<ay>
+  extends bf<bg>
 {
   private final String TAG;
   private final int scene;
   
   public bl(int paramInt)
   {
-    super(b.g.finder_msg_item_of_follow, paramInt);
+    super(e.f.finder_msg_item_of_friend_object_recommend_like, paramInt);
     this.scene = paramInt;
-    this.TAG = "Finder.FinderMsgFollowConvert";
+    this.TAG = "Finder.FinderMsgFriendObjectRecommendLikeConvert";
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class a
-    implements Runnable
+  private static final void a(j paramj, TextView paramTextView1, String paramString, TextView paramTextView2, bg parambg)
   {
-    a(i parami, TextView paramTextView1, String paramString, TextView paramTextView2, ay paramay) {}
-    
-    public final void run()
+    AppMethodBeat.i(350364);
+    s.u(paramj, "$holder");
+    s.u(paramString, "$nickNameStr");
+    s.u(parambg, "$item");
+    int i = paramj.UH(e.e.name_container).getWidth();
+    float f = paramTextView1.getPaint().measureText(paramString);
+    if (i > f)
     {
-      AppMethodBeat.i(223207);
-      Object localObject = this.tDl.RD(b.f.name_container);
-      p.j(localObject, "holder.getView<View>(R.id.name_container)");
-      int i = ((View)localObject).getWidth();
-      localObject = this.xkm;
-      p.j(localObject, "nickTv");
-      float f = ((TextView)localObject).getPaint().measureText(this.xnu);
-      if (i > f)
-      {
-        localObject = this.xnv;
-        p.j(localObject, "suffixTv");
-        ((TextView)localObject).setVisibility(8);
-        localObject = this.xkm;
-        p.j(localObject, "nickTv");
-        ((TextView)localObject).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c(this.tDl.getContext(), (CharSequence)this.xnu));
-        AppMethodBeat.o(223207);
-        return;
-      }
-      localObject = this.xnv;
-      p.j(localObject, "suffixTv");
-      ((TextView)localObject).setVisibility(0);
-      localObject = this.xnv;
-      p.j(localObject, "suffixTv");
-      ((TextView)localObject).setText((CharSequence)this.tDl.getContext().getString(b.j.finder_msg_suffix_desc, new Object[] { m.QG(this.xnA.zzT.field_aggregatedContacts.SPu) }));
-      localObject = this.xkm;
-      p.j(localObject, "nickTv");
-      ((TextView)localObject).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c(this.tDl.getContext(), (CharSequence)this.xnu));
-      AppMethodBeat.o(223207);
+      paramTextView2.setVisibility(8);
+      paramTextView1.setText((CharSequence)p.b(paramj.context, (CharSequence)paramString));
+      AppMethodBeat.o(350364);
+      return;
+    }
+    paramTextView2.setVisibility(0);
+    paramTextView2.setText((CharSequence)paramj.context.getString(e.h.finder_msg_suffix_desc, new Object[] { r.TQ(parambg.ECa.field_aggregatedContacts.ZXF) }));
+    paramTextView1.setText((CharSequence)p.b(paramj.context, (CharSequence)paramString));
+    AppMethodBeat.o(350364);
+  }
+  
+  private static final void a(final ah.f paramf, final j paramj, com.tencent.mm.loader.g.a.a parama, g paramg, Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(350367);
+    s.u(paramf, "$likeIv");
+    s.u(paramj, "$holder");
+    d.uiThread((kotlin.g.a.a)new a(paramBitmap, paramf, paramj));
+    AppMethodBeat.o(350367);
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    a(Bitmap paramBitmap, ah.f<WeImageView> paramf, j paramj)
+    {
+      super();
     }
   }
 }

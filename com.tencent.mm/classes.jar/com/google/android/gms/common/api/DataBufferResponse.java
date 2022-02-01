@@ -1,21 +1,17 @@
 package com.google.android.gms.common.api;
 
 import android.os.Bundle;
-import com.google.android.gms.common.annotation.KeepForSdk;
 import com.google.android.gms.common.data.AbstractDataBuffer;
 import com.google.android.gms.common.data.DataBuffer;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 
-@KeepForSdk
 public class DataBufferResponse<T, R extends AbstractDataBuffer<T>,  extends Result>
   extends Response<R>
   implements DataBuffer<T>
 {
-  @KeepForSdk
   public DataBufferResponse() {}
   
-  @KeepForSdk
   public DataBufferResponse(R paramR)
   {
     super(paramR);
@@ -85,7 +81,7 @@ public class DataBufferResponse<T, R extends AbstractDataBuffer<T>,  extends Res
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.DataBufferResponse
  * JD-Core Version:    0.7.0.1
  */

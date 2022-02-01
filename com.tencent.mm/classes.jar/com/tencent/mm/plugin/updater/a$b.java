@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.updater;
 
 public final class a$b
 {
-  public static final int auto_update_dialog_setting_ui = 2131493169;
+  public static final int auto_update_dialog_setting_ui = 2131493164;
 }
 
 

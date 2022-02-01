@@ -1,61 +1,65 @@
 package com.tencent.mm.plugin.multitalk.ui.widget.projector;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenConfig$MoreItem;", "", "name", "", "func", "", "(Ljava/lang/String;I)V", "getFunc", "()I", "setFunc", "(I)V", "getName", "()Ljava/lang/String;", "setName", "(Ljava/lang/String;)V", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "plugin-multitalk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenConfig$MoreItem;", "", "name", "", "func", "", "(Ljava/lang/String;I)V", "getFunc", "()I", "setFunc", "(I)V", "getName", "()Ljava/lang/String;", "setName", "(Ljava/lang/String;)V", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "plugin-multitalk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e$c
 {
-  int FBR;
+  int LxR;
   String name;
   
   public e$c(String paramString)
   {
-    AppMethodBeat.i(196854);
+    AppMethodBeat.i(285962);
     this.name = paramString;
-    this.FBR = 8;
-    AppMethodBeat.o(196854);
+    this.LxR = 8;
+    AppMethodBeat.o(285962);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(196858);
-    if (this != paramObject)
+    AppMethodBeat.i(285978);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof c))
-      {
-        paramObject = (c)paramObject;
-        if ((!p.h(this.name, paramObject.name)) || (this.FBR != paramObject.FBR)) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(196858);
+      AppMethodBeat.o(285978);
       return true;
     }
-    AppMethodBeat.o(196858);
-    return false;
+    if (!(paramObject instanceof c))
+    {
+      AppMethodBeat.o(285978);
+      return false;
+    }
+    paramObject = (c)paramObject;
+    if (!s.p(this.name, paramObject.name))
+    {
+      AppMethodBeat.o(285978);
+      return false;
+    }
+    if (this.LxR != paramObject.LxR)
+    {
+      AppMethodBeat.o(285978);
+      return false;
+    }
+    AppMethodBeat.o(285978);
+    return true;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(196857);
-    String str = this.name;
-    if (str != null) {}
-    for (int i = str.hashCode();; i = 0)
-    {
-      int j = this.FBR;
-      AppMethodBeat.o(196857);
-      return i * 31 + j;
-    }
+    AppMethodBeat.i(285972);
+    int i = this.name.hashCode();
+    int j = this.LxR;
+    AppMethodBeat.o(285972);
+    return i * 31 + j;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(196856);
-    String str = "MoreItem(name=" + this.name + ", func=" + this.FBR + ")";
-    AppMethodBeat.o(196856);
+    AppMethodBeat.i(285966);
+    String str = "MoreItem(name=" + this.name + ", func=" + this.LxR + ')';
+    AppMethodBeat.o(285966);
     return str;
   }
 }

@@ -4,13 +4,12 @@ import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.Context;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
 import android.view.animation.Animation;
@@ -20,105 +19,336 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.scanner.l.f;
 import com.tencent.mm.plugin.scanner.l.g;
+import com.tencent.mm.plugin.scanner.view.a.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ar;
-import kotlin.g.b.aa.c;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
+import com.tencent.mm.ui.aw;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.ah.c;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanInfoMaskView;", "Landroid/widget/LinearLayout;", "Lcom/tencent/mm/plugin/scanner/view/IScanInfoView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "hasGetInfoIconLocation", "", "hasGetLoadingIconLocation", "infoIcon", "Landroid/widget/ImageView;", "infoIconLocation", "", "infoLayout", "Landroid/view/View;", "isInfoLayoutShowing", "isLoadingShow", "loadingAnimation", "Landroid/view/animation/Animation;", "loadingIcon", "loadingIconLocation", "loadingIconTranslating", "loadingLayout", "needTranslateInfoIcon", "opButton", "Landroid/widget/TextView;", "pendingShowInfoLayout", "pendingShowLoading", "pendingShowLoadingWithAnimation", "root", "successMark", "animateSwitch", "", "animationListener", "Landroid/animation/AnimatorListenerAdapter;", "animateViewAlpha", "view", "show", "duration", "", "cancelLoadingAnimation", "dismissInfoView", "withAnimation", "init", "isShowLoadingView", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "setAnchorView", "showInfoView", "viewParams", "Lcom/tencent/mm/plugin/scanner/view/IScanInfoView$ScanInfoViewParams;", "showInfoViewInternal", "showInfoViewWithAnimation", "showLoadingView", "showLoadingViewInternal", "updateInfoLayout", "updateOpButton", "Companion", "plugin-scan_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanInfoMaskView;", "Landroid/widget/LinearLayout;", "Lcom/tencent/mm/plugin/scanner/view/IScanInfoView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "hasGetInfoIconLocation", "", "hasGetLoadingIconLocation", "infoIcon", "Landroid/widget/ImageView;", "infoIconLocation", "", "infoLayout", "Landroid/view/View;", "isInfoLayoutShowing", "isLoadingShow", "loadingAnimation", "Landroid/view/animation/Animation;", "loadingIcon", "loadingIconLocation", "loadingIconTranslating", "loadingLayout", "needTranslateInfoIcon", "opButton", "Landroid/widget/TextView;", "pendingShowInfoLayout", "pendingShowLoading", "pendingShowLoadingWithAnimation", "root", "successMark", "animateSwitch", "", "animationListener", "Landroid/animation/AnimatorListenerAdapter;", "animateViewAlpha", "view", "show", "duration", "", "cancelLoadingAnimation", "dismissInfoView", "withAnimation", "getInfoLayout", "init", "isShowLoadingView", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "setAnchorView", "showInfoView", "viewParams", "Lcom/tencent/mm/plugin/scanner/view/IScanInfoView$ScanInfoViewParams;", "showInfoViewInternal", "showInfoViewWithAnimation", "showLoadingView", "showLoadingViewInternal", "updateInfoLayout", "updateOpButton", "Companion", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ScanInfoMaskView
   extends LinearLayout
   implements com.tencent.mm.plugin.scanner.view.a
 {
-  public static final ScanInfoMaskView.a IXy;
-  public View BOd;
-  public View HyS;
-  public boolean ILR;
-  private View IXk;
-  private View IXl;
-  public TextView IXm;
-  private int[] IXn;
-  private Animation IXo;
-  public boolean IXp;
-  private boolean IXq;
-  private int[] IXr;
-  public boolean IXs;
-  public boolean IXt;
-  private boolean IXu;
-  public boolean IXv;
-  public boolean IXw;
-  public boolean IXx;
-  private View jac;
-  public ImageView mrD;
+  public static final ScanInfoMaskView.a PfS;
+  public View HxV;
+  public View Nwy;
+  private boolean OSR;
+  private View PfT;
+  private View PfU;
+  private TextView PfV;
+  private int[] PfW;
+  private Animation PfX;
+  private boolean PfY;
+  private boolean PfZ;
+  private int[] Pga;
+  private boolean Pgb;
+  private boolean Pgc;
+  private boolean Pgd;
+  private boolean Pge;
+  private boolean Pgf;
+  public boolean Pgg;
+  private View lBX;
+  private ImageView pli;
   
   static
   {
-    AppMethodBeat.i(218335);
-    IXy = new ScanInfoMaskView.a((byte)0);
-    AppMethodBeat.o(218335);
+    AppMethodBeat.i(314947);
+    PfS = new ScanInfoMaskView.a((byte)0);
+    AppMethodBeat.o(314947);
   }
   
   public ScanInfoMaskView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(218331);
-    AppMethodBeat.o(218331);
+    AppMethodBeat.i(314839);
+    AppMethodBeat.o(314839);
   }
   
   public ScanInfoMaskView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(218334);
-    this.IXn = new int[2];
-    this.IXr = new int[2];
-    this.IXx = true;
-    paramContext = LayoutInflater.from(paramContext).inflate(l.g.IDZ, (ViewGroup)this);
+    AppMethodBeat.i(314845);
+    this.PfW = new int[2];
+    this.Pga = new int[2];
+    this.Pgg = true;
+    paramContext = LayoutInflater.from(paramContext).inflate(l.g.OKc, (ViewGroup)this);
     paramAttributeSet = paramContext.findViewById(l.f.root_container);
-    p.j(paramAttributeSet, "view.findViewById(R.id.root_container)");
-    this.jac = paramAttributeSet;
-    paramAttributeSet = paramContext.findViewById(l.f.IDo);
-    p.j(paramAttributeSet, "view.findViewById(R.id.scan_loading_layout)");
-    this.BOd = paramAttributeSet;
-    paramAttributeSet = paramContext.findViewById(l.f.IDn);
-    p.j(paramAttributeSet, "view.findViewById(R.id.scan_loading_icon)");
-    this.IXl = paramAttributeSet;
-    paramAttributeSet = paramContext.findViewById(l.f.IDs);
-    p.j(paramAttributeSet, "view.findViewById(R.id.scan_result_info_layout)");
-    this.HyS = paramAttributeSet;
-    paramAttributeSet = paramContext.findViewById(l.f.IDr);
-    p.j(paramAttributeSet, "view.findViewById(R.id.scan_result_info_icon)");
-    this.mrD = ((ImageView)paramAttributeSet);
-    paramContext = paramContext.findViewById(l.f.IDt);
-    p.j(paramContext, "view.findViewById(R.id.scan_result_info_op_button)");
-    this.IXm = ((TextView)paramContext);
-    paramContext = this.jac;
-    if (paramContext == null) {
-      p.bGy("root");
+    s.s(paramAttributeSet, "view.findViewById(R.id.root_container)");
+    this.lBX = paramAttributeSet;
+    paramAttributeSet = paramContext.findViewById(l.f.OJp);
+    s.s(paramAttributeSet, "view.findViewById(R.id.scan_loading_layout)");
+    this.HxV = paramAttributeSet;
+    paramAttributeSet = paramContext.findViewById(l.f.OJo);
+    s.s(paramAttributeSet, "view.findViewById(R.id.scan_loading_icon)");
+    this.PfU = paramAttributeSet;
+    paramAttributeSet = paramContext.findViewById(l.f.OJu);
+    s.s(paramAttributeSet, "view.findViewById(R.id.scan_result_info_layout)");
+    this.Nwy = paramAttributeSet;
+    paramAttributeSet = paramContext.findViewById(l.f.OJt);
+    s.s(paramAttributeSet, "view.findViewById(R.id.scan_result_info_icon)");
+    this.pli = ((ImageView)paramAttributeSet);
+    paramContext = paramContext.findViewById(l.f.OJv);
+    s.s(paramContext, "view.findViewById(R.id.scan_result_info_op_button)");
+    this.PfV = ((TextView)paramContext);
+    paramAttributeSet = this.lBX;
+    paramContext = paramAttributeSet;
+    if (paramAttributeSet == null)
+    {
+      s.bIx("root");
+      paramContext = null;
     }
-    paramContext.setOnTouchListener((View.OnTouchListener)ScanInfoMaskView.c.IXA);
-    paramContext = this.HyS;
-    if (paramContext == null) {
-      p.bGy("infoLayout");
+    paramContext.setOnTouchListener(ScanInfoMaskView..ExternalSyntheticLambda2.INSTANCE);
+    paramAttributeSet = this.Nwy;
+    paramContext = paramAttributeSet;
+    if (paramAttributeSet == null)
+    {
+      s.bIx("infoLayout");
+      paramContext = null;
     }
-    paramContext = (TextView)paramContext.findViewById(l.f.IDv);
+    paramContext = (TextView)paramContext.findViewById(l.f.OJx);
     if (paramContext != null) {
-      ar.a((Paint)paramContext.getPaint(), 0.8F);
+      aw.a((Paint)paramContext.getPaint(), 0.8F);
     }
-    paramContext = this.IXm;
-    if (paramContext == null) {
-      p.bGy("opButton");
+    paramContext = this.PfV;
+    if (paramContext == null)
+    {
+      s.bIx("opButton");
+      paramContext = localObject;
     }
-    ar.a((Paint)paramContext.getPaint(), 0.8F);
-    AppMethodBeat.o(218334);
+    for (;;)
+    {
+      aw.a((Paint)paramContext.getPaint(), 0.8F);
+      AppMethodBeat.o(314845);
+      return;
+    }
+  }
+  
+  private final void Cp(boolean paramBoolean)
+  {
+    Object localObject2 = null;
+    AppMethodBeat.i(314854);
+    this.Pgc = false;
+    this.Pgd = true;
+    setVisibility(0);
+    View localView = this.Nwy;
+    Object localObject1 = localView;
+    if (localView == null)
+    {
+      s.bIx("infoLayout");
+      localObject1 = null;
+    }
+    ((View)localObject1).setVisibility(0);
+    localView = this.HxV;
+    localObject1 = localView;
+    if (localView == null)
+    {
+      s.bIx("loadingLayout");
+      localObject1 = null;
+    }
+    ((View)localObject1).setVisibility(8);
+    localObject1 = this.PfT;
+    if (localObject1 != null) {
+      ((View)localObject1).setVisibility(8);
+    }
+    if (!paramBoolean)
+    {
+      setVisibility(0);
+      localObject1 = this.Nwy;
+      if (localObject1 == null)
+      {
+        s.bIx("infoLayout");
+        localObject1 = localObject2;
+      }
+      for (;;)
+      {
+        ((View)localObject1).setAlpha(1.0F);
+        AppMethodBeat.o(314854);
+        return;
+      }
+    }
+    gTq();
+    AppMethodBeat.o(314854);
+  }
+  
+  private final void Cq(final boolean paramBoolean)
+  {
+    Object localObject2 = null;
+    View localView = null;
+    AppMethodBeat.i(314876);
+    Log.d("MicroMsg.ScanInfoMaskView", "alvinluo showLoadingViewInternal withAnimation: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.Pge = false;
+    this.Pgf = false;
+    this.OSR = true;
+    this.Pgg = false;
+    final kotlin.g.a.a locala = (kotlin.g.a.a)new d(this);
+    setVisibility(0);
+    Object localObject3 = this.Nwy;
+    Object localObject1 = localObject3;
+    if (localObject3 == null)
+    {
+      s.bIx("infoLayout");
+      localObject1 = null;
+    }
+    ((View)localObject1).setVisibility(8);
+    localObject3 = this.HxV;
+    localObject1 = localObject3;
+    if (localObject3 == null)
+    {
+      s.bIx("loadingLayout");
+      localObject1 = null;
+    }
+    ((View)localObject1).setVisibility(0);
+    localObject1 = this.PfX;
+    if (localObject1 != null) {
+      ((Animation)localObject1).cancel();
+    }
+    if (!paramBoolean)
+    {
+      localObject1 = this.HxV;
+      if (localObject1 == null)
+      {
+        s.bIx("loadingLayout");
+        localObject1 = localView;
+      }
+      for (;;)
+      {
+        ((View)localObject1).setAlpha(1.0F);
+        if (!this.PfZ) {
+          locala.invoke();
+        }
+        AppMethodBeat.o(314876);
+        return;
+      }
+    }
+    localView = this.HxV;
+    localObject1 = localView;
+    if (localView == null)
+    {
+      s.bIx("loadingLayout");
+      localObject1 = null;
+    }
+    ((View)localObject1).setAlpha(0.0F);
+    ah.c localc;
+    float f1;
+    if (this.PfT != null)
+    {
+      localObject1 = this.PfT;
+      s.checkNotNull(localObject1);
+      if (((View)localObject1).getVisibility() == 0)
+      {
+        paramBoolean = true;
+        localObject3 = new ah.c();
+        localc = new ah.c();
+        if (!paramBoolean) {
+          break label731;
+        }
+        localObject1 = this.PfT;
+        s.checkNotNull(localObject1);
+        f1 = ((View)localObject1).getTranslationX();
+        float f2 = this.PfW[0];
+        localObject1 = this.PfT;
+        s.checkNotNull(localObject1);
+        ((ah.c)localObject3).aixa = (f1 - f2 + ((View)localObject1).getPaddingLeft());
+        localObject1 = this.PfT;
+        s.checkNotNull(localObject1);
+        f1 = ((View)localObject1).getTranslationY();
+        f2 = this.PfW[1];
+        localObject1 = this.PfT;
+        s.checkNotNull(localObject1);
+        localc.aixa = (f1 - f2 + ((View)localObject1).getPaddingTop());
+        localView = this.PfU;
+        localObject1 = localView;
+        if (localView == null)
+        {
+          s.bIx("loadingIcon");
+          localObject1 = null;
+        }
+        ((View)localObject1).setTranslationX(((ah.c)localObject3).aixa);
+        localObject1 = this.PfU;
+        if (localObject1 != null) {
+          break label728;
+        }
+        s.bIx("loadingIcon");
+        localObject1 = localObject2;
+        label440:
+        ((View)localObject1).setTranslationY(localc.aixa);
+      }
+    }
+    for (;;)
+    {
+      Log.d("MicroMsg.ScanInfoMaskView", "alvinluo showLoadingViewInternal needDoTranslation: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+      localObject1 = this.PfT;
+      if (localObject1 != null)
+      {
+        ((View)localObject1).setVisibility(0);
+        ((View)localObject1).setAlpha(1.0F);
+        ((View)localObject1).setScaleX(1.0F);
+        ((View)localObject1).setScaleY(1.0F);
+      }
+      localObject1 = this.PfT;
+      if (localObject1 != null)
+      {
+        localObject1 = ((View)localObject1).animate();
+        if (localObject1 != null) {
+          ((ViewPropertyAnimator)localObject1).cancel();
+        }
+      }
+      localObject1 = this.PfT;
+      if (localObject1 != null)
+      {
+        localObject1 = ((View)localObject1).animate();
+        if (localObject1 != null)
+        {
+          if (paramBoolean)
+          {
+            f1 = this.PfW[1];
+            localObject2 = this.PfT;
+            s.checkNotNull(localObject2);
+            localObject2 = ((ViewPropertyAnimator)localObject1).translationY(f1 - ((View)localObject2).getPaddingTop());
+            if (localObject2 != null)
+            {
+              f1 = this.PfW[0];
+              localView = this.PfT;
+              s.checkNotNull(localView);
+              ((ViewPropertyAnimator)localObject2).translationX(f1 - localView.getPaddingLeft());
+            }
+          }
+          localObject1 = ((ViewPropertyAnimator)localObject1).alpha(0.0F);
+          if (localObject1 != null)
+          {
+            localObject1 = ((ViewPropertyAnimator)localObject1).setDuration(300L);
+            if (localObject1 != null)
+            {
+              localObject1 = ((ViewPropertyAnimator)localObject1).setListener((Animator.AnimatorListener)new c(this, paramBoolean, locala));
+              if (localObject1 != null)
+              {
+                localObject1 = ((ViewPropertyAnimator)localObject1).setUpdateListener(new ScanInfoMaskView..ExternalSyntheticLambda1(this, paramBoolean, (ah.c)localObject3, localc));
+                if (localObject1 != null) {
+                  ((ViewPropertyAnimator)localObject1).start();
+                }
+              }
+            }
+          }
+        }
+      }
+      AppMethodBeat.o(314876);
+      return;
+      paramBoolean = false;
+      break;
+      label728:
+      break label440;
+      label731:
+      locala.invoke();
+    }
   }
   
   public static void a(View paramView, AnimatorListenerAdapter paramAnimatorListenerAdapter)
   {
-    AppMethodBeat.i(218323);
+    AppMethodBeat.i(314850);
     paramView.setAlpha(1.0F);
     Log.i("MicroMsg.ScanInfoMaskView", "alvinluo animateViewAlpha view: %s, show: %b", new Object[] { paramView, Boolean.FALSE });
     ViewPropertyAnimator localViewPropertyAnimator = paramView.animate();
@@ -131,110 +361,224 @@ public final class ScanInfoMaskView
         if (localViewPropertyAnimator != null)
         {
           paramView = localViewPropertyAnimator.setListener((Animator.AnimatorListener)new ScanInfoMaskView.b(paramView, paramAnimatorListenerAdapter));
-          if (paramView != null)
-          {
+          if (paramView != null) {
             paramView.start();
-            AppMethodBeat.o(218323);
-            return;
           }
         }
       }
     }
-    AppMethodBeat.o(218323);
+    AppMethodBeat.o(314850);
   }
   
-  private final void fEA()
+  private static final void a(ScanInfoMaskView paramScanInfoMaskView)
   {
-    AppMethodBeat.i(218327);
-    Log.v("MicroMsg.ScanInfoMaskView", "alvinluo showInfoViewWithAnimation");
-    if (this.IXk == null)
+    AppMethodBeat.i(314887);
+    s.u(paramScanInfoMaskView, "this$0");
+    paramScanInfoMaskView.requestLayout();
+    AppMethodBeat.o(314887);
+  }
+  
+  private static final void a(ScanInfoMaskView paramScanInfoMaskView, float paramFloat1, float paramFloat2, ValueAnimator paramValueAnimator)
+  {
+    Object localObject1 = null;
+    AppMethodBeat.i(314894);
+    s.u(paramScanInfoMaskView, "this$0");
+    paramValueAnimator = paramValueAnimator.getAnimatedValue();
+    if (paramValueAnimator == null)
     {
-      AppMethodBeat.o(218327);
+      paramScanInfoMaskView = new NullPointerException("null cannot be cast to non-null type kotlin.Float");
+      AppMethodBeat.o(314894);
+      throw paramScanInfoMaskView;
+    }
+    float f = ((Float)paramValueAnimator).floatValue();
+    Object localObject2 = paramScanInfoMaskView.Nwy;
+    paramValueAnimator = (ValueAnimator)localObject2;
+    if (localObject2 == null)
+    {
+      s.bIx("infoLayout");
+      paramValueAnimator = null;
+    }
+    paramValueAnimator.setAlpha(f);
+    localObject2 = paramScanInfoMaskView.PfV;
+    paramValueAnimator = (ValueAnimator)localObject2;
+    if (localObject2 == null)
+    {
+      s.bIx("opButton");
+      paramValueAnimator = null;
+    }
+    paramValueAnimator.setAlpha(f);
+    localObject2 = paramScanInfoMaskView.pli;
+    paramValueAnimator = (ValueAnimator)localObject2;
+    if (localObject2 == null)
+    {
+      s.bIx("infoIcon");
+      paramValueAnimator = null;
+    }
+    paramValueAnimator.setTranslationX(paramFloat1 + (0.0F - paramFloat1) * f);
+    paramScanInfoMaskView = paramScanInfoMaskView.pli;
+    if (paramScanInfoMaskView == null)
+    {
+      s.bIx("infoIcon");
+      paramScanInfoMaskView = localObject1;
+    }
+    for (;;)
+    {
+      paramScanInfoMaskView.setTranslationY(paramFloat2 + (0.0F - paramFloat2) * f);
+      AppMethodBeat.o(314894);
       return;
     }
-    Object localObject = this.IXk;
-    if (localObject == null) {
-      p.iCn();
-    }
-    final float f1 = ((View)localObject).getTranslationX();
-    final float f2 = this.IXr[0];
-    localObject = this.IXk;
-    if (localObject == null) {
-      p.iCn();
-    }
-    f1 = ((View)localObject).getPaddingLeft() + (f1 - f2);
-    localObject = this.IXk;
-    if (localObject == null) {
-      p.iCn();
-    }
-    f2 = ((View)localObject).getTranslationY();
-    float f3 = this.IXr[1];
-    localObject = this.IXk;
-    if (localObject == null) {
-      p.iCn();
-    }
-    f2 = ((View)localObject).getPaddingTop() + (f2 - f3);
-    localObject = this.mrD;
-    if (localObject == null) {
-      p.bGy("infoIcon");
-    }
-    ((ImageView)localObject).setTranslationX(f1);
-    localObject = this.mrD;
-    if (localObject == null) {
-      p.bGy("infoIcon");
-    }
-    ((ImageView)localObject).setTranslationY(f2);
-    localObject = this.HyS;
-    if (localObject == null) {
-      p.bGy("infoLayout");
-    }
-    ((View)localObject).setAlpha(0.0F);
-    localObject = this.IXk;
-    if (localObject == null) {
-      p.iCn();
-    }
-    ((View)localObject).setVisibility(0);
-    ((View)localObject).setAlpha(1.0F);
-    ((View)localObject).setScaleX(1.0F);
-    ((View)localObject).setScaleY(1.0F);
-    localObject = this.IXk;
-    if (localObject == null) {
-      p.iCn();
-    }
-    localObject = ((View)localObject).animate();
-    if (localObject != null)
+  }
+  
+  private static final void a(ScanInfoMaskView paramScanInfoMaskView, boolean paramBoolean, ah.c paramc1, ah.c paramc2, ValueAnimator paramValueAnimator)
+  {
+    Object localObject = null;
+    AppMethodBeat.i(314906);
+    s.u(paramScanInfoMaskView, "this$0");
+    s.u(paramc1, "$startTransX");
+    s.u(paramc2, "$startTransY");
+    paramValueAnimator = paramValueAnimator.getAnimatedValue();
+    if (paramValueAnimator == null)
     {
-      localObject = ((ViewPropertyAnimator)localObject).alpha(0.0F);
-      if (localObject != null)
+      paramScanInfoMaskView = new NullPointerException("null cannot be cast to non-null type kotlin.Float");
+      AppMethodBeat.o(314906);
+      throw paramScanInfoMaskView;
+    }
+    float f1 = ((Float)paramValueAnimator).floatValue();
+    View localView = paramScanInfoMaskView.HxV;
+    paramValueAnimator = localView;
+    if (localView == null)
+    {
+      s.bIx("loadingLayout");
+      paramValueAnimator = null;
+    }
+    paramValueAnimator.setAlpha(f1);
+    paramValueAnimator = paramScanInfoMaskView.PfT;
+    if (paramValueAnimator != null) {
+      paramValueAnimator.setVisibility(0);
+    }
+    float f4;
+    float f5;
+    if (paramBoolean)
+    {
+      paramScanInfoMaskView.PfZ = true;
+      float f2 = paramc1.aixa;
+      float f3 = paramc1.aixa;
+      f4 = paramc2.aixa;
+      f5 = paramc2.aixa;
+      paramc2 = paramScanInfoMaskView.PfU;
+      paramc1 = paramc2;
+      if (paramc2 == null)
       {
-        f3 = this.IXr[1];
-        View localView = this.IXk;
-        if (localView == null) {
-          p.iCn();
-        }
-        localObject = ((ViewPropertyAnimator)localObject).translationY(f3 - localView.getPaddingTop());
-        if (localObject != null)
+        s.bIx("loadingIcon");
+        paramc1 = null;
+      }
+      paramc1.setTranslationX((0.0F - f3) * f1 + f2);
+      paramScanInfoMaskView = paramScanInfoMaskView.PfU;
+      if (paramScanInfoMaskView != null) {
+        break label224;
+      }
+      s.bIx("loadingIcon");
+      paramScanInfoMaskView = localObject;
+    }
+    label224:
+    for (;;)
+    {
+      paramScanInfoMaskView.setTranslationY(f1 * (0.0F - f5) + f4);
+      AppMethodBeat.o(314906);
+      return;
+    }
+  }
+  
+  private static final void b(ScanInfoMaskView paramScanInfoMaskView)
+  {
+    AppMethodBeat.i(314898);
+    s.u(paramScanInfoMaskView, "this$0");
+    paramScanInfoMaskView.requestLayout();
+    AppMethodBeat.o(314898);
+  }
+  
+  private final void gTq()
+  {
+    AppMethodBeat.i(314862);
+    Log.v("MicroMsg.ScanInfoMaskView", "alvinluo showInfoViewWithAnimation");
+    if (this.PfT == null)
+    {
+      AppMethodBeat.o(314862);
+      return;
+    }
+    Object localObject1 = this.PfT;
+    s.checkNotNull(localObject1);
+    float f1 = ((View)localObject1).getTranslationX();
+    float f2 = this.Pga[0];
+    localObject1 = this.PfT;
+    s.checkNotNull(localObject1);
+    f1 = ((View)localObject1).getPaddingLeft() + (f1 - f2);
+    localObject1 = this.PfT;
+    s.checkNotNull(localObject1);
+    f2 = ((View)localObject1).getTranslationY();
+    float f3 = this.Pga[1];
+    localObject1 = this.PfT;
+    s.checkNotNull(localObject1);
+    f2 = ((View)localObject1).getPaddingTop() + (f2 - f3);
+    Object localObject2 = this.pli;
+    localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      s.bIx("infoIcon");
+      localObject1 = null;
+    }
+    ((ImageView)localObject1).setTranslationX(f1);
+    localObject2 = this.pli;
+    localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      s.bIx("infoIcon");
+      localObject1 = null;
+    }
+    ((ImageView)localObject1).setTranslationY(f2);
+    localObject2 = this.Nwy;
+    localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      s.bIx("infoLayout");
+      localObject1 = null;
+    }
+    ((View)localObject1).setAlpha(0.0F);
+    localObject1 = this.PfT;
+    s.checkNotNull(localObject1);
+    ((View)localObject1).setVisibility(0);
+    ((View)localObject1).setAlpha(1.0F);
+    ((View)localObject1).setScaleX(1.0F);
+    ((View)localObject1).setScaleY(1.0F);
+    localObject1 = this.PfT;
+    s.checkNotNull(localObject1);
+    localObject1 = ((View)localObject1).animate();
+    if (localObject1 != null)
+    {
+      localObject1 = ((ViewPropertyAnimator)localObject1).alpha(0.0F);
+      if (localObject1 != null)
+      {
+        f3 = this.Pga[1];
+        localObject2 = this.PfT;
+        s.checkNotNull(localObject2);
+        localObject1 = ((ViewPropertyAnimator)localObject1).translationY(f3 - ((View)localObject2).getPaddingTop());
+        if (localObject1 != null)
         {
-          f3 = this.IXr[0];
-          localView = this.IXk;
-          if (localView == null) {
-            p.iCn();
-          }
-          localObject = ((ViewPropertyAnimator)localObject).translationX(f3 - localView.getPaddingLeft());
-          if (localObject != null)
+          f3 = this.Pga[0];
+          localObject2 = this.PfT;
+          s.checkNotNull(localObject2);
+          localObject1 = ((ViewPropertyAnimator)localObject1).translationX(f3 - ((View)localObject2).getPaddingLeft());
+          if (localObject1 != null)
           {
-            localObject = ((ViewPropertyAnimator)localObject).setDuration(300L);
-            if (localObject != null)
+            localObject1 = ((ViewPropertyAnimator)localObject1).setDuration(300L);
+            if (localObject1 != null)
             {
-              localObject = ((ViewPropertyAnimator)localObject).setListener(null);
-              if (localObject != null)
+              localObject1 = ((ViewPropertyAnimator)localObject1).setListener(null);
+              if (localObject1 != null)
               {
-                localObject = ((ViewPropertyAnimator)localObject).setUpdateListener((ValueAnimator.AnimatorUpdateListener)new e(this, f1, f2));
-                if (localObject != null)
-                {
-                  ((ViewPropertyAnimator)localObject).start();
-                  AppMethodBeat.o(218327);
-                  return;
+                localObject1 = ((ViewPropertyAnimator)localObject1).setUpdateListener(new ScanInfoMaskView..ExternalSyntheticLambda0(this, f1, f2));
+                if (localObject1 != null) {
+                  ((ViewPropertyAnimator)localObject1).start();
                 }
               }
             }
@@ -242,375 +586,314 @@ public final class ScanInfoMaskView
         }
       }
     }
-    AppMethodBeat.o(218327);
+    AppMethodBeat.o(314862);
   }
   
-  public final void fEB()
+  private final void gTr()
   {
-    AppMethodBeat.i(218328);
-    Object localObject = this.IXo;
+    AppMethodBeat.i(314867);
+    Object localObject = this.PfX;
     if (localObject != null) {
       ((Animation)localObject).cancel();
     }
-    localObject = this.IXl;
-    if (localObject == null) {
-      p.bGy("loadingIcon");
+    View localView = this.PfU;
+    localObject = localView;
+    if (localView == null)
+    {
+      s.bIx("loadingIcon");
+      localObject = null;
     }
     ((View)localObject).clearAnimation();
-    AppMethodBeat.o(218328);
+    AppMethodBeat.o(314867);
+  }
+  
+  private static final boolean m(View paramView, MotionEvent paramMotionEvent)
+  {
+    return true;
+  }
+  
+  public final void a(a.a parama)
+  {
+    Object localObject2 = null;
+    AppMethodBeat.i(314986);
+    s.u(parama, "viewParams");
+    boolean bool = parama.Pko;
+    Log.i("MicroMsg.ScanInfoMaskView", "alvinluo showInfoView needTranslateInfoIcon: %b, showTips: %b, title: %s, subTitle: %s", new Object[] { Boolean.valueOf(this.Pgg), Boolean.valueOf(bool), parama.title, parama.lym });
+    Object localObject1 = this.Nwy;
+    Object localObject3;
+    if (localObject1 == null)
+    {
+      s.bIx("infoLayout");
+      localObject1 = null;
+      localObject3 = (TextView)((View)localObject1).findViewById(l.f.OJx);
+      if (localObject3 != null) {
+        ((TextView)localObject3).setText((CharSequence)parama.title);
+      }
+      localObject1 = (TextView)((View)localObject1).findViewById(l.f.OJw);
+      if (localObject1 != null)
+      {
+        ((TextView)localObject1).setText((CharSequence)parama.lym);
+        if (!parama.Pko) {
+          break label320;
+        }
+        i = 0;
+        label154:
+        ((TextView)localObject1).setVisibility(i);
+      }
+      localObject3 = this.pli;
+      localObject1 = localObject3;
+      if (localObject3 == null)
+      {
+        s.bIx("infoIcon");
+        localObject1 = null;
+      }
+      ((ImageView)localObject1).setImageResource(parama.Pkp);
+      localObject3 = this.PfV;
+      localObject1 = localObject3;
+      if (localObject3 == null)
+      {
+        s.bIx("opButton");
+        localObject1 = null;
+      }
+      if (!parama.Pkq) {
+        break label326;
+      }
+    }
+    label320:
+    label326:
+    for (int i = 0;; i = 8)
+    {
+      ((TextView)localObject1).setVisibility(i);
+      localObject3 = this.PfV;
+      localObject1 = localObject3;
+      if (localObject3 == null)
+      {
+        s.bIx("opButton");
+        localObject1 = null;
+      }
+      ((TextView)localObject1).setOnClickListener(parama.Pkr);
+      localObject1 = this.HxV;
+      parama = (a.a)localObject1;
+      if (localObject1 == null)
+      {
+        s.bIx("loadingLayout");
+        parama = null;
+      }
+      parama.setVisibility(8);
+      if (this.Pgg) {
+        break label332;
+      }
+      this.Pgg = false;
+      Cp(false);
+      AppMethodBeat.o(314986);
+      return;
+      break;
+      i = 8;
+      break label154;
+    }
+    label332:
+    this.Pgb = false;
+    this.Pgc = true;
+    parama = this.Nwy;
+    if (parama == null)
+    {
+      s.bIx("infoLayout");
+      parama = localObject2;
+    }
+    for (;;)
+    {
+      parama.setVisibility(0);
+      setVisibility(4);
+      post(new ScanInfoMaskView..ExternalSyntheticLambda4(this));
+      AppMethodBeat.o(314986);
+      return;
+    }
+  }
+  
+  public final void aL(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    Object localObject3 = null;
+    Object localObject2 = null;
+    AppMethodBeat.i(314992);
+    Log.v("MicroMsg.ScanInfoMaskView", "alvinluo showLoadingView show: %b, withAnimation: %b", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
+    Object localObject4 = this.Nwy;
+    Object localObject1 = localObject4;
+    if (localObject4 == null)
+    {
+      s.bIx("infoLayout");
+      localObject1 = null;
+    }
+    ((View)localObject1).setVisibility(8);
+    localObject4 = this.PfV;
+    localObject1 = localObject4;
+    if (localObject4 == null)
+    {
+      s.bIx("opButton");
+      localObject1 = null;
+    }
+    ((TextView)localObject1).setVisibility(8);
+    if (paramBoolean1)
+    {
+      if (!paramBoolean2)
+      {
+        Cq(false);
+        AppMethodBeat.o(314992);
+        return;
+      }
+      this.PfY = false;
+      this.Pge = true;
+      this.Pgf = paramBoolean2;
+      localObject1 = this.HxV;
+      if (localObject1 == null)
+      {
+        s.bIx("loadingLayout");
+        localObject1 = localObject2;
+      }
+      for (;;)
+      {
+        ((View)localObject1).setVisibility(0);
+        setVisibility(4);
+        post(new ScanInfoMaskView..ExternalSyntheticLambda3(this));
+        AppMethodBeat.o(314992);
+        return;
+      }
+    }
+    setVisibility(8);
+    this.OSR = false;
+    localObject1 = this.HxV;
+    if (localObject1 == null)
+    {
+      s.bIx("loadingLayout");
+      localObject1 = localObject3;
+    }
+    for (;;)
+    {
+      ((View)localObject1).setVisibility(8);
+      gTr();
+      AppMethodBeat.o(314992);
+      return;
+    }
+  }
+  
+  public final View getInfoLayout()
+  {
+    AppMethodBeat.i(314994);
+    View localView = this.Nwy;
+    if (localView == null)
+    {
+      s.bIx("infoLayout");
+      AppMethodBeat.o(314994);
+      return null;
+    }
+    AppMethodBeat.o(314994);
+    return localView;
   }
   
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(218321);
+    Object localObject2 = null;
+    AppMethodBeat.i(314978);
     super.onMeasure(paramInt1, paramInt2);
-    Object localObject;
-    if (!this.IXs)
+    Object localObject3;
+    Object localObject1;
+    if (!this.Pgb)
     {
-      localObject = this.mrD;
-      if (localObject == null) {
-        p.bGy("infoIcon");
-      }
-      ((ImageView)localObject).getLocationInWindow(this.IXr);
-    }
-    if (!this.IXp)
-    {
-      localObject = this.IXl;
-      if (localObject == null) {
-        p.bGy("loadingIcon");
-      }
-      ((View)localObject).getLocationInWindow(this.IXn);
-    }
-    Log.d("MicroMsg.ScanInfoMaskView", "alvinluo onMeasure infoIcon location: %d, %d, loadingIcon location: %d, %d, pendingShowInfoLayout: %b, pendingShowLoading: %b, hasGetInfoIconLocation: %b, hasGetLoadingIconLocation: %b", new Object[] { Integer.valueOf(this.IXr[0]), Integer.valueOf(this.IXr[1]), Integer.valueOf(this.IXn[0]), Integer.valueOf(this.IXn[1]), Boolean.valueOf(this.IXt), Boolean.valueOf(this.IXv), Boolean.valueOf(this.IXs), Boolean.valueOf(this.IXp) });
-    if ((this.IXr[0] != 0) || (this.IXr[1] != 0))
-    {
-      this.IXs = true;
-      if (!this.IXt) {
-        break label256;
-      }
-      xB(true);
-    }
-    while ((this.IXn[0] != 0) || (this.IXn[1] != 0))
-    {
-      this.IXp = true;
-      if (this.IXv)
+      localObject3 = this.pli;
+      localObject1 = localObject3;
+      if (localObject3 == null)
       {
-        xC(this.IXw);
-        AppMethodBeat.o(218321);
+        s.bIx("infoIcon");
+        localObject1 = null;
+      }
+      ((ImageView)localObject1).getLocationInWindow(this.Pga);
+    }
+    if (!this.PfY)
+    {
+      localObject3 = this.PfU;
+      localObject1 = localObject3;
+      if (localObject3 == null)
+      {
+        s.bIx("loadingIcon");
+        localObject1 = null;
+      }
+      ((View)localObject1).getLocationInWindow(this.PfW);
+    }
+    Log.d("MicroMsg.ScanInfoMaskView", "alvinluo onMeasure infoIcon location: %d, %d, loadingIcon location: %d, %d, pendingShowInfoLayout: %b, pendingShowLoading: %b, hasGetInfoIconLocation: %b, hasGetLoadingIconLocation: %b", new Object[] { Integer.valueOf(this.Pga[0]), Integer.valueOf(this.Pga[1]), Integer.valueOf(this.PfW[0]), Integer.valueOf(this.PfW[1]), Boolean.valueOf(this.Pgc), Boolean.valueOf(this.Pge), Boolean.valueOf(this.Pgb), Boolean.valueOf(this.PfY) });
+    if ((this.Pga[0] != 0) || (this.Pga[1] != 0))
+    {
+      this.Pgb = true;
+      if (!this.Pgc) {
+        break label273;
+      }
+      Cp(true);
+    }
+    while ((this.PfW[0] != 0) || (this.PfW[1] != 0))
+    {
+      this.PfY = true;
+      if (this.Pge)
+      {
+        Cq(this.Pgf);
+        AppMethodBeat.o(314978);
         return;
-        label256:
-        if (!this.IXu)
+        label273:
+        if (!this.Pgd)
         {
-          localObject = this.HyS;
-          if (localObject == null) {
-            p.bGy("infoLayout");
+          localObject3 = this.Nwy;
+          localObject1 = localObject3;
+          if (localObject3 == null)
+          {
+            s.bIx("infoLayout");
+            localObject1 = null;
           }
-          ((View)localObject).setVisibility(8);
+          ((View)localObject1).setVisibility(8);
         }
       }
-      else if (!this.ILR)
+      else if (!this.OSR)
       {
-        localObject = this.BOd;
-        if (localObject == null) {
-          p.bGy("loadingLayout");
+        localObject1 = this.HxV;
+        if (localObject1 != null) {
+          break label349;
         }
-        ((View)localObject).setVisibility(8);
+        s.bIx("loadingLayout");
+        localObject1 = localObject2;
       }
     }
-    AppMethodBeat.o(218321);
+    label349:
+    for (;;)
+    {
+      ((View)localObject1).setVisibility(8);
+      AppMethodBeat.o(314978);
+      return;
+    }
   }
   
   public final void setAnchorView(View paramView)
   {
-    this.IXk = paramView;
+    this.PfT = paramView;
   }
   
-  public final void xB(boolean paramBoolean)
-  {
-    AppMethodBeat.i(218324);
-    this.IXt = false;
-    this.IXu = true;
-    setVisibility(0);
-    View localView = this.HyS;
-    if (localView == null) {
-      p.bGy("infoLayout");
-    }
-    localView.setVisibility(0);
-    localView = this.BOd;
-    if (localView == null) {
-      p.bGy("loadingLayout");
-    }
-    localView.setVisibility(8);
-    localView = this.IXk;
-    if (localView != null) {
-      localView.setVisibility(8);
-    }
-    if (!paramBoolean)
-    {
-      setVisibility(0);
-      localView = this.HyS;
-      if (localView == null) {
-        p.bGy("infoLayout");
-      }
-      localView.setAlpha(1.0F);
-      AppMethodBeat.o(218324);
-      return;
-    }
-    fEA();
-    AppMethodBeat.o(218324);
-  }
-  
-  public final void xC(final boolean paramBoolean)
-  {
-    AppMethodBeat.i(218329);
-    Log.d("MicroMsg.ScanInfoMaskView", "alvinluo showLoadingViewInternal withAnimation: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.IXv = false;
-    this.IXw = false;
-    this.ILR = true;
-    this.IXx = false;
-    Object localObject1 = (kotlin.g.a.a)new i(this);
-    setVisibility(0);
-    Object localObject2 = this.HyS;
-    if (localObject2 == null) {
-      p.bGy("infoLayout");
-    }
-    ((View)localObject2).setVisibility(8);
-    localObject2 = this.BOd;
-    if (localObject2 == null) {
-      p.bGy("loadingLayout");
-    }
-    ((View)localObject2).setVisibility(0);
-    localObject2 = this.IXo;
-    if (localObject2 != null) {
-      ((Animation)localObject2).cancel();
-    }
-    if (!paramBoolean)
-    {
-      localObject2 = this.BOd;
-      if (localObject2 == null) {
-        p.bGy("loadingLayout");
-      }
-      ((View)localObject2).setAlpha(1.0F);
-      if (!this.IXq) {
-        ((kotlin.g.a.a)localObject1).invoke();
-      }
-      AppMethodBeat.o(218329);
-      return;
-    }
-    localObject2 = this.BOd;
-    if (localObject2 == null) {
-      p.bGy("loadingLayout");
-    }
-    ((View)localObject2).setAlpha(0.0F);
-    final aa.c localc;
-    Object localObject3;
-    float f1;
-    if (this.IXk != null)
-    {
-      localObject2 = this.IXk;
-      if (localObject2 == null) {
-        p.iCn();
-      }
-      if (((View)localObject2).getVisibility() == 0)
-      {
-        paramBoolean = true;
-        localObject2 = new aa.c();
-        ((aa.c)localObject2).aaBz = 0.0F;
-        localc = new aa.c();
-        localc.aaBz = 0.0F;
-        if (!paramBoolean) {
-          break label723;
-        }
-        localObject3 = this.IXk;
-        if (localObject3 == null) {
-          p.iCn();
-        }
-        f1 = ((View)localObject3).getTranslationX();
-        float f2 = this.IXn[0];
-        localObject3 = this.IXk;
-        if (localObject3 == null) {
-          p.iCn();
-        }
-        ((aa.c)localObject2).aaBz = (f1 - f2 + ((View)localObject3).getPaddingLeft());
-        localObject3 = this.IXk;
-        if (localObject3 == null) {
-          p.iCn();
-        }
-        f1 = ((View)localObject3).getTranslationY();
-        f2 = this.IXn[1];
-        localObject3 = this.IXk;
-        if (localObject3 == null) {
-          p.iCn();
-        }
-        localc.aaBz = (f1 - f2 + ((View)localObject3).getPaddingTop());
-        localObject3 = this.IXl;
-        if (localObject3 == null) {
-          p.bGy("loadingIcon");
-        }
-        ((View)localObject3).setTranslationX(((aa.c)localObject2).aaBz);
-        localObject3 = this.IXl;
-        if (localObject3 == null) {
-          p.bGy("loadingIcon");
-        }
-        ((View)localObject3).setTranslationY(localc.aaBz);
-      }
-    }
-    for (;;)
-    {
-      Log.d("MicroMsg.ScanInfoMaskView", "alvinluo showLoadingViewInternal needDoTranslation: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-      localObject3 = this.IXk;
-      if (localObject3 != null)
-      {
-        ((View)localObject3).setVisibility(0);
-        ((View)localObject3).setAlpha(1.0F);
-        ((View)localObject3).setScaleX(1.0F);
-        ((View)localObject3).setScaleY(1.0F);
-      }
-      localObject3 = this.IXk;
-      if (localObject3 != null)
-      {
-        localObject3 = ((View)localObject3).animate();
-        if (localObject3 != null) {
-          ((ViewPropertyAnimator)localObject3).cancel();
-        }
-      }
-      localObject3 = this.IXk;
-      if (localObject3 == null) {
-        break label734;
-      }
-      localObject3 = ((View)localObject3).animate();
-      if (localObject3 == null) {
-        break label734;
-      }
-      if (paramBoolean)
-      {
-        f1 = this.IXn[1];
-        Object localObject4 = this.IXk;
-        if (localObject4 == null) {
-          p.iCn();
-        }
-        localObject4 = ((ViewPropertyAnimator)localObject3).translationY(f1 - ((View)localObject4).getPaddingTop());
-        if (localObject4 != null)
-        {
-          f1 = this.IXn[0];
-          View localView = this.IXk;
-          if (localView == null) {
-            p.iCn();
-          }
-          ((ViewPropertyAnimator)localObject4).translationX(f1 - localView.getPaddingLeft());
-        }
-      }
-      if (localObject3 == null) {
-        break label734;
-      }
-      localObject3 = ((ViewPropertyAnimator)localObject3).alpha(0.0F);
-      if (localObject3 == null) {
-        break label734;
-      }
-      localObject3 = ((ViewPropertyAnimator)localObject3).setDuration(300L);
-      if (localObject3 == null) {
-        break label734;
-      }
-      localObject1 = ((ViewPropertyAnimator)localObject3).setListener((Animator.AnimatorListener)new g(this, paramBoolean, (kotlin.g.a.a)localObject1));
-      if (localObject1 == null) {
-        break label734;
-      }
-      localObject1 = ((ViewPropertyAnimator)localObject1).setUpdateListener((ValueAnimator.AnimatorUpdateListener)new h(this, paramBoolean, (aa.c)localObject2, localc));
-      if (localObject1 == null) {
-        break label734;
-      }
-      ((ViewPropertyAnimator)localObject1).start();
-      AppMethodBeat.o(218329);
-      return;
-      paramBoolean = false;
-      break;
-      label723:
-      ((kotlin.g.a.a)localObject1).invoke();
-    }
-    label734:
-    AppMethodBeat.o(218329);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  public static final class d
-    implements Runnable
-  {
-    public d(ScanInfoMaskView paramScanInfoMaskView) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(217940);
-      this.IXB.requestLayout();
-      AppMethodBeat.o(217940);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
-  static final class e
-    implements ValueAnimator.AnimatorUpdateListener
-  {
-    e(ScanInfoMaskView paramScanInfoMaskView, float paramFloat1, float paramFloat2) {}
-    
-    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
-    {
-      AppMethodBeat.i(218112);
-      p.j(paramValueAnimator, "animation");
-      paramValueAnimator = paramValueAnimator.getAnimatedValue();
-      if (paramValueAnimator == null)
-      {
-        paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
-        AppMethodBeat.o(218112);
-        throw paramValueAnimator;
-      }
-      float f1 = ((Float)paramValueAnimator).floatValue();
-      ScanInfoMaskView.a(this.IXB).setAlpha(f1);
-      ScanInfoMaskView.b(this.IXB).setAlpha(f1);
-      float f2 = f1;
-      float f3 = f1;
-      float f4 = f2;
-      float f5 = f2;
-      ScanInfoMaskView.c(this.IXB).setTranslationX(f2 + (0.0F - f3) * f1);
-      ScanInfoMaskView.c(this.IXB).setTranslationY(f1 * (0.0F - f5) + f4);
-      AppMethodBeat.o(218112);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  public static final class f
-    implements Runnable
-  {
-    public f(ScanInfoMaskView paramScanInfoMaskView) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(218008);
-      this.IXB.requestLayout();
-      AppMethodBeat.o(218008);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/scanner/ui/widget/ScanInfoMaskView$showLoadingViewInternal$3", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "plugin-scan_release"})
-  public static final class g
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/scanner/ui/widget/ScanInfoMaskView$showLoadingViewInternal$3", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
     extends AnimatorListenerAdapter
   {
-    g(boolean paramBoolean, kotlin.g.a.a parama) {}
+    c(ScanInfoMaskView paramScanInfoMaskView, boolean paramBoolean, kotlin.g.a.a<ah> parama) {}
     
     public final void onAnimationCancel(Animator paramAnimator)
     {
-      AppMethodBeat.i(218996);
+      AppMethodBeat.i(314718);
       super.onAnimationCancel(paramAnimator);
-      ScanInfoMaskView.a(this.IXB, false);
-      AppMethodBeat.o(218996);
+      ScanInfoMaskView.g(this.Pgi);
+      AppMethodBeat.o(314718);
     }
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(218994);
-      paramAnimator = ScanInfoMaskView.g(this.IXB);
+      AppMethodBeat.i(314715);
+      paramAnimator = ScanInfoMaskView.f(this.Pgi);
       if (paramAnimator != null) {
         paramAnimator.setVisibility(8);
       }
-      paramAnimator = ScanInfoMaskView.g(this.IXB);
+      paramAnimator = ScanInfoMaskView.f(this.Pgi);
       if (paramAnimator != null)
       {
         paramAnimator = paramAnimator.animate();
@@ -618,57 +901,20 @@ public final class ScanInfoMaskView
           paramAnimator.setListener(null);
         }
       }
-      ScanInfoMaskView.a(this.IXB, false);
+      ScanInfoMaskView.g(this.Pgi);
       if (paramBoolean) {
-        this.IXE.invoke();
+        locala.invoke();
       }
-      AppMethodBeat.o(218994);
+      AppMethodBeat.o(314715);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
-  static final class h
-    implements ValueAnimator.AnimatorUpdateListener
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class d
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    h(ScanInfoMaskView paramScanInfoMaskView, boolean paramBoolean, aa.c paramc1, aa.c paramc2) {}
-    
-    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
-    {
-      AppMethodBeat.i(219292);
-      p.j(paramValueAnimator, "animation");
-      paramValueAnimator = paramValueAnimator.getAnimatedValue();
-      if (paramValueAnimator == null)
-      {
-        paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
-        AppMethodBeat.o(219292);
-        throw paramValueAnimator;
-      }
-      float f1 = ((Float)paramValueAnimator).floatValue();
-      ScanInfoMaskView.h(this.IXB).setAlpha(f1);
-      paramValueAnimator = ScanInfoMaskView.g(this.IXB);
-      if (paramValueAnimator != null) {
-        paramValueAnimator.setVisibility(0);
-      }
-      if (paramBoolean)
-      {
-        ScanInfoMaskView.a(this.IXB, true);
-        float f2 = this.IXF.aaBz;
-        float f3 = this.IXF.aaBz;
-        float f4 = localc.aaBz;
-        float f5 = localc.aaBz;
-        ScanInfoMaskView.f(this.IXB).setTranslationX(f2 + (0.0F - f3) * f1);
-        ScanInfoMaskView.f(this.IXB).setTranslationY(f1 * (0.0F - f5) + f4);
-      }
-      AppMethodBeat.o(219292);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class i
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    i(ScanInfoMaskView paramScanInfoMaskView)
+    d(ScanInfoMaskView paramScanInfoMaskView)
     {
       super();
     }
@@ -676,7 +922,7 @@ public final class ScanInfoMaskView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.widget.ScanInfoMaskView
  * JD-Core Version:    0.7.0.1
  */

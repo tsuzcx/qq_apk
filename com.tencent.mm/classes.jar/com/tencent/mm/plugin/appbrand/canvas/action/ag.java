@@ -17,8 +17,8 @@ public final class ag
     AppMethodBeat.i(144975);
     if ("left".equalsIgnoreCase(paramString))
     {
-      paramd.nTw.setTextAlign(Paint.Align.LEFT);
-      paramd.nTx.setTextAlign(Paint.Align.LEFT);
+      paramd.qTi.setTextAlign(Paint.Align.LEFT);
+      paramd.qTj.setTextAlign(Paint.Align.LEFT);
     }
     for (;;)
     {
@@ -26,13 +26,13 @@ public final class ag
       return true;
       if ("right".equalsIgnoreCase(paramString))
       {
-        paramd.nTw.setTextAlign(Paint.Align.RIGHT);
-        paramd.nTx.setTextAlign(Paint.Align.RIGHT);
+        paramd.qTi.setTextAlign(Paint.Align.RIGHT);
+        paramd.qTj.setTextAlign(Paint.Align.RIGHT);
       }
       else if ("center".equalsIgnoreCase(paramString))
       {
-        paramd.nTw.setTextAlign(Paint.Align.CENTER);
-        paramd.nTx.setTextAlign(Paint.Align.CENTER);
+        paramd.qTi.setTextAlign(Paint.Align.CENTER);
+        paramd.qTj.setTextAlign(Paint.Align.CENTER);
       }
     }
   }
@@ -46,7 +46,7 @@ public final class ag
       AppMethodBeat.o(144976);
       return false;
     }
-    boolean bool = b(paramd, paramCanvas.nUc);
+    boolean bool = b(paramd, paramCanvas.qTN);
     AppMethodBeat.o(144976);
     return bool;
   }
@@ -64,7 +64,7 @@ public final class ag
     return bool;
   }
   
-  public final BaseDrawActionArg bKy()
+  public final BaseDrawActionArg cjY()
   {
     AppMethodBeat.i(144973);
     SetTextAlignActionArg localSetTextAlignActionArg = new SetTextAlignActionArg();
@@ -79,7 +79,7 @@ public final class ag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.ag
  * JD-Core Version:    0.7.0.1
  */

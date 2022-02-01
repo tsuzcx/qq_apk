@@ -2,19 +2,16 @@ package com.tencent.mm.plugin.vlog.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ae.d;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.t;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.protocal.protobuf.aaw;
-import com.tencent.mm.protocal.protobuf.boh;
-import com.tencent.mm.protocal.protobuf.boi;
-import com.tencent.mm.protocal.protobuf.bss;
-import com.tencent.mm.protocal.protobuf.cum;
-import com.tencent.mm.protocal.protobuf.cvl;
-import com.tencent.mm.protocal.protobuf.cvm;
-import com.tencent.mm.protocal.protobuf.dbp;
-import com.tencent.mm.protocal.protobuf.etr;
-import com.tencent.mm.protocal.protobuf.fbs;
+import com.tencent.mm.protocal.protobuf.acw;
+import com.tencent.mm.protocal.protobuf.ccs;
+import com.tencent.mm.protocal.protobuf.cct;
+import com.tencent.mm.protocal.protobuf.chl;
+import com.tencent.mm.protocal.protobuf.dls;
+import com.tencent.mm.protocal.protobuf.dmr;
+import com.tencent.mm.protocal.protobuf.dms;
+import com.tencent.mm.protocal.protobuf.dtg;
+import com.tencent.mm.protocal.protobuf.fpc;
+import com.tencent.mm.protocal.protobuf.fyd;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import java.util.ArrayList;
@@ -24,359 +21,355 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/model/VLogDataManager;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "currentIndex", "", "id2path", "", "", "", "isAllImageMaterial", "", "materials", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/MaterialReq;", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "netScriptCallback", "Lkotlin/Function1;", "Lcom/tencent/mm/protocal/protobuf/GenerateVlogRespBody;", "Lkotlin/ParameterName;", "name", "result", "", "previewHeight", "previewWidth", "scripts", "", "Lcom/tencent/mm/protocal/protobuf/VlogResp;", "sid", "sourceList", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "vLogConf", "Lcom/tencent/mm/protocal/protobuf/ClientConfFromServer;", "currentScript", "Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;", "generateVlog", "", "getIndexScript", "index", "getMusicList", "Lcom/tencent/mm/protocal/protobuf/MMSPRRecommendedMusicInfo;", "getPreviewSize", "Landroid/util/Size;", "hasPrepared", "isAllImageMaterials", "loadPlayScript", "fid", "callback", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "release", "renderScript", "Lcom/tencent/mm/plugin/vlog/model/Material;", "script", "setPreviewSize", "width", "height", "setSource", "sourceTrackList", "Companion", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/model/VLogDataManager;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "currentIndex", "", "id2path", "", "", "", "isAllImageMaterial", "", "materials", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/MaterialReq;", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "netScriptCallback", "Lkotlin/Function1;", "Lcom/tencent/mm/protocal/protobuf/GenerateVlogRespBody;", "Lkotlin/ParameterName;", "name", "result", "", "previewHeight", "previewWidth", "scripts", "", "Lcom/tencent/mm/protocal/protobuf/VlogResp;", "sid", "sourceList", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "vLogConf", "Lcom/tencent/mm/protocal/protobuf/ClientConfFromServer;", "currentScript", "Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;", "generateVlog", "", "getIndexScript", "index", "getMusicList", "Lcom/tencent/mm/protocal/protobuf/MMSPRRecommendedMusicInfo;", "getPreviewSize", "Landroid/util/Size;", "hasPrepared", "isAllImageMaterials", "loadPlayScript", "fid", "callback", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "release", "renderScript", "Lcom/tencent/mm/plugin/vlog/model/Material;", "script", "setPreviewSize", "width", "height", "setSource", "sourceTrackList", "Companion", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ae
-  implements i
+  implements com.tencent.mm.am.h
 {
-  public static final a Nno;
-  public int KlE;
-  public final LinkedList<ad> NlY;
-  private LinkedList<cvl> Nni;
-  public aaw Nnj;
-  private Map<Long, String> Nnk;
-  public kotlin.g.a.b<? super boi, x> Nnl;
-  public List<fbs> Nnm;
-  public boolean Nnn;
-  public final MultiProcessMMKV cQO;
+  public static final a UaJ;
+  public final LinkedList<ad> TZE;
+  private LinkedList<dmr> UaK;
+  public acw UaL;
+  private Map<Long, String> UaM;
+  public kotlin.g.a.b<? super cct, ah> UaN;
+  public List<fyd> UaO;
+  public boolean UaP;
   public int currentIndex;
+  public final MultiProcessMMKV eMf;
+  public int oeO;
   int previewHeight;
   int previewWidth;
   
   static
   {
-    AppMethodBeat.i(243759);
-    Nno = new a((byte)0);
-    AppMethodBeat.o(243759);
+    AppMethodBeat.i(283648);
+    UaJ = new a((byte)0);
+    AppMethodBeat.o(283648);
   }
   
   public ae()
   {
-    AppMethodBeat.i(243758);
-    this.cQO = MultiProcessMMKV.getSingleMMKV("MicroMsg.VLogDataManager");
-    this.Nni = new LinkedList();
-    this.Nnk = ((Map)new LinkedHashMap());
-    this.NlY = new LinkedList();
-    this.Nnm = ((List)new ArrayList());
-    h.aGY().a(1469, (i)this);
-    h.aGY().a(2972, (i)this);
-    AppMethodBeat.o(243758);
+    AppMethodBeat.i(283605);
+    this.eMf = MultiProcessMMKV.getSingleMMKV("MicroMsg.VLogDataManager");
+    this.UaK = new LinkedList();
+    this.UaM = ((Map)new LinkedHashMap());
+    this.TZE = new LinkedList();
+    this.UaO = ((List)new ArrayList());
+    com.tencent.mm.kernel.h.aZW().a(1469, (com.tencent.mm.am.h)this);
+    com.tencent.mm.kernel.h.aZW().a(2972, (com.tencent.mm.am.h)this);
+    AppMethodBeat.o(283605);
   }
   
-  public final List<s> a(fbs paramfbs)
+  public static boolean hRi()
   {
-    AppMethodBeat.i(243757);
-    paramfbs = paramfbs.Nni;
-    p.j(paramfbs, "script.materials");
-    paramfbs = (Iterable)paramfbs;
+    return true;
+  }
+  
+  public final List<s> a(fyd paramfyd)
+  {
+    AppMethodBeat.i(283692);
+    paramfyd = paramfyd.UaK;
+    kotlin.g.b.s.s(paramfyd, "script.materials");
+    paramfyd = (Iterable)paramfyd;
     Collection localCollection = (Collection)new ArrayList();
-    Iterator localIterator = paramfbs.iterator();
-    cvm localcvm;
+    Iterator localIterator = paramfyd.iterator();
+    dms localdms;
     Object localObject;
-    long l;
     if (localIterator.hasNext())
     {
-      localcvm = (cvm)localIterator.next();
-      localObject = (String)this.Nnk.get(Long.valueOf(localcvm.id));
-      paramfbs = (fbs)localObject;
+      localdms = (dms)localIterator.next();
+      localObject = (String)this.UaM.get(Long.valueOf(localdms.id));
+      paramfyd = (fyd)localObject;
       if (localObject == null) {
-        paramfbs = "";
+        paramfyd = "";
       }
-      localcvm.path = paramfbs;
-      l = localcvm.fwf;
+      localdms.path = paramfyd;
+      long l = localdms.beV;
       if (l == 2L)
       {
-        localObject = (String)this.Nnk.get(Long.valueOf(localcvm.id));
-        paramfbs = (fbs)localObject;
+        localObject = (String)this.UaM.get(Long.valueOf(localdms.id));
+        paramfyd = (fyd)localObject;
         if (localObject == null) {
-          paramfbs = "";
+          paramfyd = "";
         }
-        paramfbs = (s)new aj(paramfbs, localcvm.TDu, localcvm.TDv, (float)localcvm.TDw, localcvm.begin_time, localcvm.begin_time + localcvm.duration);
-        label193:
-        if (paramfbs == null) {
-          break label392;
-        }
-        if (localcvm.TDs != 3L) {
-          break label358;
-        }
-        localObject = y.NmD;
-        label214:
-        paramfbs.a((y)localObject);
-        if (localcvm.TDz != null) {
-          break label366;
-        }
+        paramfyd = (s)new ak(paramfyd, localdms.aaTa, localdms.aaTb, (float)localdms.aaTc, localdms.begin_time, localdms.begin_time + localdms.duration);
       }
-    }
-    label392:
-    label395:
-    label410:
-    for (;;)
-    {
-      localObject = aa.NmL;
-      fbs localfbs = paramfbs;
-      label236:
-      localfbs.a((aa)localObject);
-      paramfbs.NlV = ((List)localcvm.TDx);
-      paramfbs.NlW = ((List)localcvm.TDy);
       for (;;)
       {
-        if (paramfbs == null) {
-          break label395;
+        if (paramfyd != null) {
+          break label290;
         }
-        localCollection.add(paramfbs);
+        paramfyd = null;
+        label199:
+        if (paramfyd == null) {
+          break label361;
+        }
+        localCollection.add(paramfyd);
         break;
         if (l == 1L)
         {
-          localObject = (String)this.Nnk.get(Long.valueOf(localcvm.id));
-          paramfbs = (fbs)localObject;
+          localObject = (String)this.UaM.get(Long.valueOf(localdms.id));
+          paramfyd = (fyd)localObject;
           if (localObject == null) {
-            paramfbs = "";
+            paramfyd = "";
           }
-          paramfbs = (s)new q(paramfbs, localcvm.begin_time, localcvm.begin_time + localcvm.duration);
-          break label193;
+          paramfyd = (s)new q(paramfyd, localdms.begin_time, localdms.begin_time + localdms.duration);
         }
-        paramfbs = null;
-        break label193;
-        label358:
-        localObject = y.NmC;
-        break label214;
-        label366:
-        if (localcvm.TDz.TDq != 2L) {
+        else
+        {
+          paramfyd = null;
+        }
+      }
+      label290:
+      if (localdms.aaSY == 3L)
+      {
+        localObject = y.Uaf;
+        label307:
+        paramfyd.a((y)localObject);
+        if (localdms.aaTf != null) {
+          break label371;
+        }
+      }
+    }
+    label410:
+    for (;;)
+    {
+      localObject = aa.Uao;
+      for (fyd localfyd = paramfyd;; localfyd = paramfyd)
+      {
+        localfyd.a((aa)localObject);
+        paramfyd.TZB = ((List)localdms.aaTd);
+        paramfyd.TZC = ((List)localdms.aaTe);
+        break label199;
+        label361:
+        break;
+        localObject = y.Uae;
+        break label307;
+        label371:
+        if (localdms.aaTf.aaSW != 2L) {
           break label410;
         }
-        localObject = aa.NmM;
-        localfbs = paramfbs;
-        break label236;
-        paramfbs = null;
+        localObject = aa.Uap;
       }
-      break;
-      paramfbs = (List)localCollection;
-      AppMethodBeat.o(243757);
-      return paramfbs;
+      paramfyd = (List)localCollection;
+      AppMethodBeat.o(283692);
+      return paramfyd;
     }
   }
   
-  public final List<cum> fek()
+  public final List<dls> gnn()
   {
-    AppMethodBeat.i(243751);
+    AppMethodBeat.i(283654);
     ArrayList localArrayList = new ArrayList();
-    Object localObject = (Iterable)this.Nnm;
+    Object localObject = (Iterable)this.UaO;
     int i = 0;
     Iterator localIterator = ((Iterable)localObject).iterator();
     while (localIterator.hasNext())
     {
       localObject = localIterator.next();
       if (i < 0) {
-        j.iBO();
+        kotlin.a.p.kkW();
       }
-      fbs localfbs = (fbs)localObject;
-      cum localcum = new cum();
-      String str = localfbs.UBQ.TCi;
+      fyd localfyd = (fyd)localObject;
+      dls localdls = new dls();
+      String str = localfyd.abVZ.aaRO;
       localObject = str;
       if (str == null) {
         localObject = "";
       }
-      localcum.TCi = ((String)localObject);
-      localcum.TCc = ((int)localfbs.UBQ.SZm);
-      localcum.TCk = localfbs.UBQ.TCk;
-      str = localfbs.UBQ.SMU;
+      localdls.aaRO = ((String)localObject);
+      localdls.aaRI = ((int)localfyd.abVZ.aame);
+      localdls.aaRQ = localfyd.abVZ.aaRQ;
+      str = localfyd.abVZ.ZTw;
       localObject = str;
       if (str == null) {
         localObject = "";
       }
-      localcum.SMU = ((String)localObject);
-      localcum.TCl = localfbs.UBQ.TCl;
-      localArrayList.add(localcum);
+      localdls.ZTw = ((String)localObject);
+      localdls.aaRR = localfyd.abVZ.aaRR;
+      localArrayList.add(localdls);
       i += 1;
     }
     localObject = (List)localArrayList;
-    AppMethodBeat.o(243751);
+    AppMethodBeat.o(283654);
     return localObject;
   }
   
-  public final void iC(final List<ad> paramList)
+  public final void lI(List<ad> paramList)
   {
-    AppMethodBeat.i(243755);
-    d.b("generateVLog", (kotlin.g.a.a)new b(this, paramList));
-    AppMethodBeat.o(243755);
+    AppMethodBeat.i(283680);
+    d.d("generateVLog", (kotlin.g.a.a)new ae.b(this, paramList));
+    AppMethodBeat.o(283680);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
   {
-    AppMethodBeat.i(243753);
-    if ((paramq instanceof com.tencent.mm.plugin.vlog.model.cgi.b))
+    AppMethodBeat.i(283671);
+    if ((paramp instanceof com.tencent.mm.plugin.vlog.model.cgi.b))
     {
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
         Log.w("MicroMsg.VLogDataManager", "get client from server error, errType = " + paramInt1 + ", errCode = " + paramInt2);
-        AppMethodBeat.o(243753);
+        AppMethodBeat.o(283671);
         return;
       }
-      paramString = ((com.tencent.mm.plugin.vlog.model.cgi.b)paramq).NnN;
-      if (paramString == null) {
-        p.bGy("response");
+      paramp = ((com.tencent.mm.plugin.vlog.model.cgi.b)paramp).Ubr;
+      paramString = paramp;
+      if (paramp == null)
+      {
+        kotlin.g.b.s.bIx("response");
+        paramString = null;
       }
-      this.Nnj = paramString.TcX;
-      paramString = this.cQO;
-      paramq = this.Nnj;
-      if (paramq == null) {
-        p.iCn();
-      }
-      paramString.encode("VLOG_CONF", paramq.toByteArray());
-      iC((List)this.NlY);
-      AppMethodBeat.o(243753);
+      this.UaL = paramString.aaqm;
+      paramString = this.eMf;
+      paramp = this.UaL;
+      kotlin.g.b.s.checkNotNull(paramp);
+      paramString.encode("VLOG_CONF", paramp.toByteArray());
+      lI((List)this.TZE);
+      AppMethodBeat.o(283671);
       return;
     }
-    if ((paramq instanceof com.tencent.mm.plugin.vlog.model.cgi.a))
+    if ((paramp instanceof com.tencent.mm.plugin.vlog.model.cgi.a))
     {
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
         Log.w("MicroMsg.VLogDataManager", "generate vlog from server error, errType = " + paramInt1 + ", errCode = " + paramInt2);
-        AppMethodBeat.o(243753);
+        AppMethodBeat.o(283671);
         return;
       }
-      paramString = ((com.tencent.mm.plugin.vlog.model.cgi.a)paramq).NnK;
-      if (paramString == null) {
-        p.bGy("response");
+      paramp = ((com.tencent.mm.plugin.vlog.model.cgi.a)paramp).Ubo;
+      paramString = paramp;
+      if (paramp == null)
+      {
+        kotlin.g.b.s.bIx("response");
+        paramString = null;
       }
-      paramString = paramString.SZo;
-      long l = paramString.RQn;
-      paramq = paramString.SZp;
-      Log.i("MicroMsg.VLogDataManager", "generate vlog response, ret = " + l + ", scripts = " + paramq);
+      paramString = paramString.aamg;
+      long l = paramString.YNE;
+      paramp = paramString.aamh;
+      Log.i("MicroMsg.VLogDataManager", "generate vlog response, ret = " + l + ", scripts = " + paramp);
       this.currentIndex = 0;
-      List localList = this.Nnm;
-      p.j(paramq, "scripts");
-      localList.addAll(0, (Collection)paramq);
-      if (((Collection)paramq).isEmpty()) {
-        break label347;
+      List localList = this.UaO;
+      kotlin.g.b.s.s(paramp, "scripts");
+      localList.addAll(0, (Collection)paramp);
+      if (((Collection)paramp).isEmpty()) {
+        break label358;
       }
       paramInt1 = 1;
       if (paramInt1 == 0) {
-        break label352;
+        break label363;
       }
-      paramq = this.Nnl;
-      if (paramq != null) {
-        paramq.invoke(paramString);
+      paramp = this.UaN;
+      if (paramp != null) {
+        paramp.invoke(paramString);
       }
     }
     for (;;)
     {
-      this.Nnl = null;
-      AppMethodBeat.o(243753);
+      this.UaN = null;
+      AppMethodBeat.o(283671);
       return;
-      label347:
+      label358:
       paramInt1 = 0;
       break;
-      label352:
-      paramString = this.Nnl;
+      label363:
+      paramString = this.UaN;
       if (paramString != null) {
         paramString.invoke(null);
       }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/model/VLogDataManager$Companion;", "", "()V", "KEY_VLOG_CONF", "", "TAG", "renderScript", "", "Lcom/tencent/mm/plugin/vlog/model/Material;", "script", "Lcom/tencent/mm/protocal/protobuf/VlogResp;", "plugin-vlog_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/model/VLogDataManager$Companion;", "", "()V", "KEY_VLOG_CONF", "", "TAG", "renderScript", "", "Lcom/tencent/mm/plugin/vlog/model/Material;", "script", "Lcom/tencent/mm/protocal/protobuf/VlogResp;", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
-    public static List<s> a(fbs paramfbs)
+    public static List<s> a(fyd paramfyd)
     {
-      AppMethodBeat.i(240245);
-      p.k(paramfbs, "script");
-      paramfbs = paramfbs.Nni;
-      p.j(paramfbs, "script.materials");
-      paramfbs = (Iterable)paramfbs;
+      AppMethodBeat.i(283523);
+      kotlin.g.b.s.u(paramfyd, "script");
+      paramfyd = paramfyd.UaK;
+      kotlin.g.b.s.s(paramfyd, "script.materials");
+      paramfyd = (Iterable)paramfyd;
       Collection localCollection = (Collection)new ArrayList();
-      Iterator localIterator = paramfbs.iterator();
-      cvm localcvm;
-      long l;
-      label139:
+      Iterator localIterator = paramfyd.iterator();
+      dms localdms;
+      label145:
+      label215:
       Object localObject;
       if (localIterator.hasNext())
       {
-        localcvm = (cvm)localIterator.next();
-        l = localcvm.fwf;
+        localdms = (dms)localIterator.next();
+        long l = localdms.beV;
         if (l == 2L)
         {
-          paramfbs = localcvm.path;
-          p.j(paramfbs, "materialResp.path");
-          paramfbs = (s)new aj(paramfbs, localcvm.TDu, localcvm.TDv, (float)localcvm.TDw, localcvm.begin_time, localcvm.begin_time + localcvm.duration);
-          if (paramfbs == null) {
-            break label311;
-          }
-          if (localcvm.TDs != 3L) {
-            break label279;
-          }
-          localObject = y.NmD;
-          label159:
-          paramfbs.a((y)localObject);
-          if (localcvm.TDz != null) {
-            break label286;
-          }
+          paramfyd = localdms.path;
+          kotlin.g.b.s.s(paramfyd, "materialResp.path");
+          paramfyd = (s)new ak(paramfyd, localdms.aaTa, localdms.aaTb, (float)localdms.aaTc, localdms.begin_time, localdms.begin_time + localdms.duration);
         }
-      }
-      label179:
-      label311:
-      label314:
-      label329:
-      for (;;)
-      {
-        localObject = aa.NmL;
-        fbs localfbs = paramfbs;
-        localfbs.a((aa)localObject);
-        paramfbs.NlV = ((List)localcvm.TDx);
-        paramfbs.NlW = ((List)localcvm.TDy);
         for (;;)
         {
-          if (paramfbs == null) {
-            break label314;
+          if (paramfyd != null) {
+            break label215;
           }
-          localCollection.add(paramfbs);
+          paramfyd = null;
+          if (paramfyd == null) {
+            break label282;
+          }
+          localCollection.add(paramfyd);
           break;
           if (l == 1L)
           {
-            paramfbs = localcvm.path;
-            p.j(paramfbs, "materialResp.path");
-            paramfbs = (s)new q(paramfbs, localcvm.begin_time, localcvm.begin_time + localcvm.duration);
-            break label139;
+            paramfyd = localdms.path;
+            kotlin.g.b.s.s(paramfyd, "materialResp.path");
+            paramfyd = (s)new q(paramfyd, localdms.begin_time, localdms.begin_time + localdms.duration);
           }
-          paramfbs = null;
-          break label139;
-          localObject = y.NmC;
-          break label159;
-          if (localcvm.TDz.TDq != 2L) {
+          else
+          {
+            paramfyd = null;
+          }
+        }
+        if (localdms.aaSY == 3L)
+        {
+          localObject = y.Uaf;
+          label231:
+          paramfyd.a((y)localObject);
+          if (localdms.aaTf != null) {
+            break label291;
+          }
+        }
+      }
+      label282:
+      label291:
+      label329:
+      for (;;)
+      {
+        localObject = aa.Uao;
+        for (fyd localfyd = paramfyd;; localfyd = paramfyd)
+        {
+          localfyd.a((aa)localObject);
+          paramfyd.TZB = ((List)localdms.aaTd);
+          paramfyd.TZC = ((List)localdms.aaTe);
+          break label145;
+          break;
+          localObject = y.Uae;
+          break label231;
+          if (localdms.aaTf.aaSW != 2L) {
             break label329;
           }
-          localObject = aa.NmM;
-          localfbs = paramfbs;
-          break label179;
-          paramfbs = null;
+          localObject = aa.Uap;
         }
-        break;
-        paramfbs = (List)localCollection;
-        AppMethodBeat.o(240245);
-        return paramfbs;
+        paramfyd = (List)localCollection;
+        AppMethodBeat.o(283523);
+        return paramfyd;
       }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class b
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
-  {
-    b(ae paramae, List paramList)
-    {
-      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.ae
  * JD-Core Version:    0.7.0.1
  */

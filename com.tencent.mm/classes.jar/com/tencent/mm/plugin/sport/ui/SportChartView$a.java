@@ -7,9 +7,9 @@ public enum SportChartView$a
   static
   {
     AppMethodBeat.i(103528);
-    LyN = new a("WEEK", 0);
-    LyO = new a("MONTH", 1);
-    LyP = new a[] { LyN, LyO };
+    ScC = new a("WEEK", 0);
+    ScD = new a("MONTH", 1);
+    ScE = new a[] { ScC, ScD };
     AppMethodBeat.o(103528);
   }
   

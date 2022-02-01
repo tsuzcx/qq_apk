@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/auc" style="@style/rj"
+<FrameLayout android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/ark" android:background="@color/a2h" android:scrollbars="vertical" style="@style/np" />
-    <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:gravity="center_horizontal" android:id="@id/c3d" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/c6" />
+    <LinearLayout android:layout_gravity="top" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="50.0dip">
+        <com.tencent.mm.ui.MMImageView android:layout_gravity="center_horizontal" android:id="@id/c_l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" />
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/c_b" android:paddingLeft="30.0dip" android:paddingRight="30.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ProgressBar android:id="@id/c__" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" style="?android:progressBarStyleHorizontal" />
+            <ImageView android:id="@id/c_g" android:background="@drawable/an_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ao8" />
+            <ImageView android:id="@id/c_f" android:background="@drawable/b_i" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-8.0dip" />
+        </LinearLayout>
+        <TextView android:textColor="@color/al6" android:layout_gravity="center_horizontal" android:id="@id/zl" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:layout_gravity="center_horizontal" android:id="@id/zn" android:visibility="visible" android:layout_width="220.0dip" android:text="@string/glc" style="@style/og" />
+        <Button android:layout_gravity="center_horizontal" android:id="@id/zk" android:visibility="gone" android:layout_width="220.0dip" android:text="@string/gl8" style="@style/og" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:layout_gravity="bottom|center" android:orientation="vertical" android:id="@id/zj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="120.0dip">
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/m4" android:gravity="center_horizontal" android:id="@id/zm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gl_" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/Link" android:id="@id/zo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" />
+    </LinearLayout>
 </FrameLayout>

@@ -12,68 +12,62 @@ import java.nio.FloatBuffer;
 
 public final class c
 {
-  public static float[] Oct = { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
-  public static final float[] laj = { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
-  d NSP;
-  int Ocr;
-  FloatBuffer Ocs;
+  public static float[] UQt = { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
+  public static final float[] nFt = { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
+  public d UFV;
+  int UQr;
+  FloatBuffer UQs;
   FloatBuffer mVertexBuffer;
-  SurfaceTexture surfaceTexture;
+  public SurfaceTexture surfaceTexture;
   
   public c()
   {
     AppMethodBeat.i(115724);
-    this.Ocr = 0;
-    this.Ocr = f.createProgram("attribute vec4 vPosition;attribute vec2 vTexCoord;varying vec2 tc;void main() {  gl_Position = vPosition;  tc = vTexCoord;}", "#extension GL_OES_EGL_image_external : require\nprecision highp float;varying vec2 tc;uniform samplerExternalOES sTexture;void main() {   gl_FragColor = texture2D(sTexture, tc);}");
+    this.UQr = 0;
+    this.UQr = f.createProgram("attribute vec4 vPosition;attribute vec2 vTexCoord;varying vec2 tc;void main() {  gl_Position = vPosition;  tc = vTexCoord;}", "#extension GL_OES_EGL_image_external : require\nprecision highp float;varying vec2 tc;uniform samplerExternalOES sTexture;void main() {   gl_FragColor = texture2D(sTexture, tc);}");
     AppMethodBeat.o(115724);
   }
   
-  public static void gEg()
+  public static void icY()
   {
     AppMethodBeat.i(115728);
     Log.i("MicroMsg.VoipGLHProgram", "attachGLContext");
     long l = Util.currentTicks();
-    e.gEk().gEm();
+    e.idb().idd();
     Log.i("MicroMsg.VoipGLHProgram", "attachGLContext done, used %sms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
     AppMethodBeat.o(115728);
   }
   
-  public static void gEh()
+  public static void icZ()
   {
     AppMethodBeat.i(115729);
     Log.i("MicroMsg.VoipGLHProgram", "detachGLContext");
     long l = Util.currentTicks();
-    e.gEk().gEh();
+    e.idb().icZ();
     Log.i("MicroMsg.VoipGLHProgram", "detachGLContext done, used %sms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
     AppMethodBeat.o(115729);
   }
   
-  public final void a(SurfaceTexture paramSurfaceTexture, d paramd)
-  {
-    this.surfaceTexture = paramSurfaceTexture;
-    this.NSP = paramd;
-  }
-  
-  public final void c(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  public final void h(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
     AppMethodBeat.i(115725);
     this.mVertexBuffer = ByteBuffer.allocateDirect(paramArrayOfFloat1.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
     this.mVertexBuffer.put(paramArrayOfFloat1);
     this.mVertexBuffer.position(0);
-    this.Ocs = ByteBuffer.allocateDirect(paramArrayOfFloat2.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    this.Ocs.put(paramArrayOfFloat2);
-    this.Ocs.position(0);
+    this.UQs = ByteBuffer.allocateDirect(paramArrayOfFloat2.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    this.UQs.put(paramArrayOfFloat2);
+    this.UQs.position(0);
     AppMethodBeat.o(115725);
   }
   
-  public final void gEf()
+  public final void icX()
   {
     try
     {
       AppMethodBeat.i(115727);
       Log.i("MicroMsg.VoipGLHProgram", "%s do destroy", new Object[] { Integer.valueOf(hashCode()) });
-      GLES20.glDeleteProgram(this.Ocr);
-      this.Ocr = -1;
+      GLES20.glDeleteProgram(this.UQr);
+      this.UQr = -1;
       AppMethodBeat.o(115727);
       return;
     }
@@ -102,7 +96,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.b.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:gravity="center_horizontal" android:id="@id/k0t" android:background="@color/BW_97" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/kzi" android:layout_width="fill_parent" android:layout_height="fill_parent" app:loadMoreLayout="@layout/b21">
-        <androidx.recyclerview.widget.RecyclerView android:id="@id/k0d" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </com.tencent.mm.view.RefreshLoadMoreLayout>
-</FrameLayout>
+<com.tencent.mm.wallet_core.ui.CustomerScrollView android:id="@id/hli" android:background="@color/ajh" android:fitsSystemWindows="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:overScrollMode="never"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/hlf" android:layout_width="fill_parent" android:layout_height="fill_parent" android:importantForAccessibility="no">
+        <TextView android:textSize="@dimen/m_" android:textColor="@color/al6" android:ellipsize="end" android:gravity="left" android:id="@id/a7l" android:background="#1a000000" android:paddingLeft="@dimen/j6" android:paddingTop="@dimen/j6" android:paddingRight="@dimen/j6" android:paddingBottom="@dimen/j6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" />
+        <include android:id="@id/lhr" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/cfz" />
+    </LinearLayout>
+</com.tencent.mm.wallet_core.ui.CustomerScrollView>

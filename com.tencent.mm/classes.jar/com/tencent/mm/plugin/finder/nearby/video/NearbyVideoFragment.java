@@ -1,82 +1,73 @@
 package com.tencent.mm.plugin.finder.nearby.video;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.finder.e.h;
 import com.tencent.mm.plugin.finder.nearby.base.AbsNearByFragment;
-import com.tencent.mm.plugin.finder.nearby.report.e;
-import com.tencent.mm.plugin.finder.viewmodel.component.aj;
+import com.tencent.mm.plugin.finder.nearby.report.g;
+import com.tencent.mm.plugin.finder.viewmodel.component.as;
 import com.tencent.mm.ui.component.UIComponent;
-import java.util.HashMap;
 import java.util.Set;
-import kotlin.a.ak;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.ar;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoFragment;", "Lcom/tencent/mm/plugin/finder/nearby/base/AbsNearByFragment;", "()V", "getClickTabId", "", "getCommentScene", "", "getPageName", "getReportType", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onActionbarClick", "", "onActionbarDoubleClick", "onMenuClick", "onUserVisibleFocused", "onUserVisibleUnFocused", "plugin-finder-nearby_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoFragment;", "Lcom/tencent/mm/plugin/finder/nearby/base/AbsNearByFragment;", "()V", "getClickTabId", "", "getCommentScene", "", "getPageName", "getReportType", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "isNeedSwitchTabOnResume", "", "onActionbarClick", "", "onActionbarDoubleClick", "onMenuClick", "onUserVisibleFocused", "onUserVisibleUnFocused", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class NearbyVideoFragment
   extends AbsNearByFragment
 {
-  private HashMap _$_findViewCache;
-  
   public NearbyVideoFragment()
   {
-    super(b.j.nearby_tab_video, 1002);
+    super(e.h.nearby_tab_video, 1002);
   }
   
-  public final void _$_clearFindViewByIdCache()
+  public final void eEp()
   {
-    AppMethodBeat.i(201409);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(201409);
+    AppMethodBeat.i(340200);
+    super.eEp();
+    AppMethodBeat.o(340200);
   }
   
-  public final String akA()
+  public final void eEq()
   {
-    return "15-1002";
-  }
-  
-  public final void dLs()
-  {
-    AppMethodBeat.i(201401);
-    super.dLs();
-    AppMethodBeat.o(201401);
-  }
-  
-  public final void dLt()
-  {
-    AppMethodBeat.i(201398);
-    super.dLt();
-    NearbyVideoPresenter localNearbyVideoPresenter = ((d)component(d.class)).zJO;
-    if (localNearbyVideoPresenter != null)
-    {
+    AppMethodBeat.i(340181);
+    super.eEq();
+    NearbyVideoPresenter localNearbyVideoPresenter = ((d)component(d.class)).ERO;
+    if (localNearbyVideoPresenter != null) {
       localNearbyVideoPresenter.onActionbarClick(false);
-      AppMethodBeat.o(201398);
-      return;
     }
-    AppMethodBeat.o(201398);
+    AppMethodBeat.o(340181);
   }
   
-  public final void dLu()
+  public final void eEr()
   {
-    AppMethodBeat.i(201400);
-    super.dLu();
-    NearbyVideoPresenter localNearbyVideoPresenter = ((d)component(d.class)).zJO;
-    if (localNearbyVideoPresenter != null)
-    {
+    AppMethodBeat.i(340192);
+    super.eEr();
+    NearbyVideoPresenter localNearbyVideoPresenter = ((d)component(d.class)).ERO;
+    if (localNearbyVideoPresenter != null) {
       localNearbyVideoPresenter.onActionbarClick(true);
-      AppMethodBeat.o(201400);
-      return;
     }
-    AppMethodBeat.o(201400);
+    AppMethodBeat.o(340192);
   }
   
-  public final String dLv()
+  public final boolean eEs()
+  {
+    return false;
+  }
+  
+  public final String eEt()
   {
     return "1002";
   }
   
-  public final int duR()
+  public final String eEw()
+  {
+    AppMethodBeat.i(340234);
+    String str = s.X("15-", "1002");
+    AppMethodBeat.o(340234);
+    return str;
+  }
+  
+  public final int edC()
   {
     return 3;
   }
@@ -88,28 +79,28 @@ public final class NearbyVideoFragment
   
   public final Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(201396);
-    Set localSet = ak.setOf(new Class[] { aj.class, d.class });
-    AppMethodBeat.o(201396);
+    AppMethodBeat.i(340175);
+    Set localSet = ar.setOf(new Class[] { as.class, d.class });
+    AppMethodBeat.o(340175);
     return localSet;
   }
   
   public final void onUserVisibleFocused()
   {
-    AppMethodBeat.i(201405);
+    AppMethodBeat.i(340207);
     super.onUserVisibleFocused();
-    e locale = e.zJs;
-    e.d((AbsNearByFragment)this);
-    AppMethodBeat.o(201405);
+    g localg = g.ERj;
+    g.d((AbsNearByFragment)this);
+    AppMethodBeat.o(340207);
   }
   
   public final void onUserVisibleUnFocused()
   {
-    AppMethodBeat.i(201407);
+    AppMethodBeat.i(340214);
     super.onUserVisibleUnFocused();
-    e locale = e.zJs;
-    e.e((AbsNearByFragment)this);
-    AppMethodBeat.o(201407);
+    g localg = g.ERj;
+    g.e((AbsNearByFragment)this);
+    AppMethodBeat.o(340214);
   }
 }
 

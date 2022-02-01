@@ -1,79 +1,47 @@
 package kotlinx.coroutines;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import java.util.concurrent.CancellationException;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.d.d;
+import kotlin.d.f.b;
+import kotlin.g.a.b;
+import kotlin.m.h;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/JobImpl;", "Lkotlinx/coroutines/JobSupport;", "Lkotlinx/coroutines/CompletableJob;", "parent", "Lkotlinx/coroutines/Job;", "(Lkotlinx/coroutines/Job;)V", "handlesException", "", "getHandlesException$kotlinx_coroutines_core", "()Z", "onCancelComplete", "getOnCancelComplete$kotlinx_coroutines_core", "complete", "completeExceptionally", "exception", "", "kotlinx-coroutines-core"})
-public class cb
-  extends ce
-  implements w
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/Job;", "Lkotlin/coroutines/CoroutineContext$Element;", "children", "Lkotlin/sequences/Sequence;", "getChildren", "()Lkotlin/sequences/Sequence;", "isActive", "", "()Z", "isCancelled", "isCompleted", "onJoin", "Lkotlinx/coroutines/selects/SelectClause0;", "getOnJoin", "()Lkotlinx/coroutines/selects/SelectClause0;", "attachChild", "Lkotlinx/coroutines/ChildHandle;", "child", "Lkotlinx/coroutines/ChildJob;", "cancel", "", "cause", "", "Ljava/util/concurrent/CancellationException;", "Lkotlinx/coroutines/CancellationException;", "getCancellationException", "invokeOnCompletion", "Lkotlinx/coroutines/DisposableHandle;", "onCancelling", "invokeImmediately", "handler", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "Lkotlinx/coroutines/CompletionHandler;", "join", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "plus", "other", "start", "Key", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface cb
+  extends f.b
 {
-  private final boolean abxu;
+  public static final cb.b ajws = cb.b.ajwt;
   
-  public cb(by paramby)
-  {
-    super(true);
-    AppMethodBeat.i(204904);
-    c(paramby);
-    Object localObject = iRI();
-    paramby = (by)localObject;
-    if (!(localObject instanceof t)) {
-      paramby = null;
-    }
-    paramby = (t)paramby;
-    boolean bool;
-    if (paramby != null)
-    {
-      localObject = (ce)paramby.Gib;
-      paramby = (by)localObject;
-      if (localObject != null) {}
-    }
-    else
-    {
-      bool = false;
-    }
-    for (;;)
-    {
-      this.abxu = bool;
-      AppMethodBeat.o(204904);
-      return;
-      do
-      {
-        if (paramby.iRH())
-        {
-          bool = true;
-          break;
-        }
-        localObject = paramby.iRI();
-        paramby = (by)localObject;
-        if (!(localObject instanceof t)) {
-          paramby = null;
-        }
-        paramby = (t)paramby;
-        if (paramby == null) {
-          break label118;
-        }
-        localObject = (ce)paramby.Gib;
-        paramby = (by)localObject;
-      } while (localObject != null);
-      label118:
-      bool = false;
-    }
-  }
+  public abstract bi a(boolean paramBoolean1, boolean paramBoolean2, b<? super Throwable, ah> paramb);
   
-  public final boolean iRG()
-  {
-    return true;
-  }
+  public abstract v a(x paramx);
   
-  public final boolean iRH()
-  {
-    return this.abxu;
-  }
+  public abstract void a(CancellationException paramCancellationException);
+  
+  public abstract Object ay(d<? super ah> paramd);
+  
+  public abstract bi bh(b<? super Throwable, ah> paramb);
+  
+  public abstract boolean isActive();
+  
+  public abstract boolean isCancelled();
+  
+  public abstract boolean isCompleted();
+  
+  public abstract CancellationException kCu();
+  
+  public abstract h<cb> kCv();
+  
+  public abstract boolean start();
+  
+  @Metadata(k=3, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.cb
  * JD-Core Version:    0.7.0.1
  */

@@ -6,28 +6,28 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.emoji.i.e;
+import com.tencent.mm.plugin.emoji.h.e;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ad;
+import com.tencent.mm.ui.af;
 
 public final class b
 {
   private final String TAG;
   public Context mContext;
-  public View nBk;
-  public TextView txT;
-  public String uzW;
-  public ImageView uzX;
-  public ImageView uzY;
+  public View qAv;
+  public TextView wCq;
+  public ImageView xGA;
+  public ImageView xGB;
+  public String xGz;
   
   public b(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(258058);
+    AppMethodBeat.i(269934);
     this.TAG = "MicroMsg.emoji.BaseEmojiStoreItemViewHolder";
     this.mContext = paramContext;
-    this.nBk = ad.kS(this.mContext).inflate(paramInt, null);
-    cTK();
-    AppMethodBeat.o(258058);
+    this.qAv = af.mU(this.mContext).inflate(paramInt, null);
+    dyf();
+    AppMethodBeat.o(269934);
   }
   
   public b(Context paramContext, View paramView)
@@ -35,23 +35,23 @@ public final class b
     AppMethodBeat.i(108296);
     this.TAG = "MicroMsg.emoji.BaseEmojiStoreItemViewHolder";
     this.mContext = paramContext;
-    this.nBk = paramView;
-    cTK();
+    this.qAv = paramView;
+    dyf();
     AppMethodBeat.o(108296);
   }
   
-  private void cTK()
+  private void dyf()
   {
     AppMethodBeat.i(108297);
-    if (this.nBk == null)
+    if (this.qAv == null)
     {
       Log.w("MicroMsg.emoji.BaseEmojiStoreItemViewHolder", "initView failed. root is null.");
       AppMethodBeat.o(108297);
       return;
     }
-    this.uzX = ((ImageView)this.nBk.findViewById(i.e.item_icon));
-    this.txT = ((TextView)this.nBk.findViewById(i.e.item_title));
-    this.uzY = ((ImageView)this.nBk.findViewById(i.e.item_fg));
+    this.xGA = ((ImageView)this.qAv.findViewById(h.e.item_icon));
+    this.wCq = ((TextView)this.qAv.findViewById(h.e.item_title));
+    this.xGB = ((ImageView)this.qAv.findViewById(h.e.item_fg));
     AppMethodBeat.o(108297);
   }
 }

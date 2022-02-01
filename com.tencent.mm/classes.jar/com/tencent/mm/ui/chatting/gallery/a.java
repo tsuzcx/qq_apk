@@ -1,56 +1,56 @@
 package com.tencent.mm.ui.chatting.gallery;
 
 import android.view.View;
-import com.tencent.mm.storage.ca;
+import com.tencent.mm.storage.cc;
 
 public abstract class a
 {
-  protected f WQM;
+  protected h aeAg;
   
-  public a(f paramf)
+  public a(h paramh)
   {
-    this.WQM = paramf;
+    this.aeAg = paramh;
   }
   
-  public boolean a(p paramp, ca paramca, int paramInt)
+  public boolean a(r paramr, cc paramcc, int paramInt)
   {
     return false;
   }
   
-  public p avN(int paramInt)
+  public r aCt(int paramInt)
   {
-    if (this.WQM == null) {
+    if (this.aeAg == null) {
       return null;
     }
-    View localView = this.WQM.aiI(paramInt);
+    View localView = this.aeAg.aAZ(paramInt);
     if (localView == null) {
       return null;
     }
-    return (p)((View)localView).getTag();
+    return (r)((View)localView).getTag();
   }
   
-  public final void avO(int paramInt)
+  public final void aCu(int paramInt)
   {
-    if (this.WQM == null) {}
+    if (this.aeAg == null) {}
     View localView;
     do
     {
       return;
-      localView = this.WQM.aiI(paramInt);
+      localView = this.aeAg.aAZ(paramInt);
     } while ((localView == null) || (localView.getTag() == null));
-    a((p)localView.getTag(), this.WQM.avt(paramInt), paramInt);
+    a((r)localView.getTag(), this.aeAg.aBV(paramInt), paramInt);
   }
   
   public void detach()
   {
-    this.WQM = null;
+    this.aeAg = null;
   }
   
   protected void onPause() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.a
  * JD-Core Version:    0.7.0.1
  */

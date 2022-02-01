@@ -27,7 +27,7 @@ public class KindaAnimatorWatch
     pendingObj = paramInt;
     MMHandlerThread.postToMainThreadDelayed(new Runnable()
     {
-      public final void run()
+      public void run()
       {
         AppMethodBeat.i(18321);
         if (this.val$hash_code == KindaAnimatorWatch.pendingObj)
@@ -60,7 +60,7 @@ public class KindaAnimatorWatch
     pendingObj = 0;
     MMHandlerThread.postToMainThread(new Runnable()
     {
-      public final void run()
+      public void run()
       {
         AppMethodBeat.i(18322);
         new StringBuilder("post: pendingObj=").append(this.val$tempObj).append(", run actions.");
@@ -87,10 +87,10 @@ public class KindaAnimatorWatch
     }
     MMHandlerThread.postToMainThread(new Runnable()
     {
-      public final void run()
+      public void run()
       {
         AppMethodBeat.i(18320);
-        this.val$action.run();
+        KindaAnimatorWatch.this.run();
         AppMethodBeat.o(18320);
       }
     });
@@ -99,7 +99,7 @@ public class KindaAnimatorWatch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.animate.KindaAnimatorWatch
  * JD-Core Version:    0.7.0.1
  */

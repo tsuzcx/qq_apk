@@ -10,16 +10,16 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.memory.ui.QPictureView;
-import com.tencent.mm.modelvideo.s;
-import com.tencent.mm.plugin.aq.a.a;
-import com.tencent.mm.plugin.aq.a.d;
-import com.tencent.mm.plugin.sight.decode.a.b;
-import com.tencent.mm.plugin.sight.decode.a.b.e;
-import com.tencent.mm.plugin.sight.decode.a.b.f;
-import com.tencent.mm.plugin.sight.decode.a.b.g;
-import com.tencent.mm.plugin.sight.decode.a.b.i;
-import com.tencent.mm.pluginsdk.ui.tools.k.a;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.modelvideo.v;
+import com.tencent.mm.plugin.ar.a.a;
+import com.tencent.mm.plugin.ar.a.d;
+import com.tencent.mm.plugin.sight.decode.model.SightPlayController;
+import com.tencent.mm.plugin.sight.decode.model.SightPlayController.d;
+import com.tencent.mm.plugin.sight.decode.model.SightPlayController.e;
+import com.tencent.mm.plugin.sight.decode.model.SightPlayController.f;
+import com.tencent.mm.plugin.sight.decode.model.SightPlayController.h;
+import com.tencent.mm.pluginsdk.ui.tools.i.a;
+import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.MMStack;
@@ -28,18 +28,18 @@ import java.lang.ref.WeakReference;
 
 public class SightPlayImageView
   extends QPictureView
-  implements com.tencent.mm.plugin.sight.decode.a.a
+  implements com.tencent.mm.plugin.sight.decode.model.a
 {
-  public b JsW;
-  private int JsY;
-  private int JsZ;
-  private int Jta;
-  private int Jtb;
-  public boolean Jtc;
-  private boolean Jtd;
-  public boolean Jte;
-  int Jtf;
-  public k.a uXU;
+  private int GnQ;
+  private int GnR;
+  private int PGA;
+  private int PGB;
+  public boolean PGC;
+  private boolean PGD;
+  public boolean PGE;
+  int PGF;
+  public SightPlayController PGy;
+  public i.a yki;
   
   public SightPlayImageView(Context paramContext)
   {
@@ -55,16 +55,41 @@ public class SightPlayImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(116102);
-    this.Jtc = true;
-    this.Jtd = false;
-    this.Jte = false;
-    this.Jtf = 0;
-    this.JsW = new a(this);
+    this.PGC = true;
+    this.PGD = false;
+    this.PGE = false;
+    this.PGF = 0;
+    this.PGy = new a(this);
     Log.i("MicroMsg.SightPlayImageView", "mController %s", new Object[] { Util.getStack().toString() });
     AppMethodBeat.o(116102);
   }
   
-  public final void ar(Bitmap paramBitmap)
+  public final void Dg(boolean paramBoolean)
+  {
+    AppMethodBeat.i(116120);
+    SightPlayController localSightPlayController = this.PGy;
+    Log.i("MicroMsg.SightPlayController", "configure: need sound %B", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (paramBoolean)
+    {
+      if (localSightPlayController.PFM == null)
+      {
+        localSightPlayController.PFM = new SightPlayController.h(localSightPlayController, (byte)0);
+        AppMethodBeat.o(116120);
+      }
+    }
+    else
+    {
+      if (localSightPlayController.PFM != null)
+      {
+        localSightPlayController.PFM.type = 0;
+        v.h(localSightPlayController.PFM, 0L);
+      }
+      localSightPlayController.PFM = null;
+    }
+    AppMethodBeat.o(116120);
+  }
+  
+  public final void aG(Bitmap paramBitmap)
   {
     AppMethodBeat.i(116105);
     super.setImageBitmap(paramBitmap);
@@ -74,46 +99,38 @@ public class SightPlayImageView
   public final void clear()
   {
     AppMethodBeat.i(116106);
-    this.JsW.clear();
+    this.PGy.clear();
     AppMethodBeat.o(116106);
   }
   
   public final void detach()
   {
-    AppMethodBeat.i(187489);
-    EventCenter.instance.removeListener(this.JsW.fIE());
-    AppMethodBeat.o(187489);
+    AppMethodBeat.i(291993);
+    this.PGy.gYx().dead();
+    AppMethodBeat.o(291993);
   }
   
-  public void f(String paramString, boolean paramBoolean, int paramInt)
+  public void e(String paramString, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(177100);
-    this.JsW.cm(paramString, paramBoolean);
+    this.PGy.cM(paramString, paramBoolean);
     AppMethodBeat.o(177100);
   }
   
-  public final boolean fIB()
+  public final void gYG()
   {
-    AppMethodBeat.i(187488);
-    boolean bool = this.JsW.fIB();
-    AppMethodBeat.o(187488);
-    return bool;
+    this.PGE = true;
   }
   
-  public final void fIN()
-  {
-    this.Jte = true;
-  }
-  
-  public final boolean fIO()
+  public final boolean gYH()
   {
     AppMethodBeat.i(116108);
-    boolean bool = this.JsW.fIC();
+    boolean bool = this.PGy.gYv();
     AppMethodBeat.o(116108);
     return bool;
   }
   
-  public final void fIz()
+  public final void gYs()
   {
     AppMethodBeat.i(116113);
     setImageBitmap(null);
@@ -121,20 +138,28 @@ public class SightPlayImageView
     AppMethodBeat.o(116113);
   }
   
-  public b getController()
+  public final boolean gYu()
   {
-    return this.JsW;
+    AppMethodBeat.i(291991);
+    boolean bool = this.PGy.gYu();
+    AppMethodBeat.o(291991);
+    return bool;
+  }
+  
+  public SightPlayController getController()
+  {
+    return this.PGy;
   }
   
   public int getDuration()
   {
     AppMethodBeat.i(116121);
-    if (this.JsW == null)
+    if (this.PGy == null)
     {
       AppMethodBeat.o(116121);
       return 0;
     }
-    int i = (int)this.JsW.fIF();
+    int i = (int)this.PGy.gYy();
     AppMethodBeat.o(116121);
     return i;
   }
@@ -157,18 +182,18 @@ public class SightPlayImageView
   
   public String getVideoPath()
   {
-    return this.JsW.cJT;
+    return this.PGy.eDC;
   }
   
-  public void ju(int paramInt1, int paramInt2)
+  public void ld(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(116117);
-    this.Jtc = false;
+    this.PGC = false;
     ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
-    this.JsY = paramInt1;
-    this.JsZ = (this.JsY * paramInt2 / paramInt1);
-    localLayoutParams.width = this.JsY;
-    localLayoutParams.height = this.JsZ;
+    this.PGA = paramInt1;
+    this.PGB = (this.PGA * paramInt2 / paramInt1);
+    localLayoutParams.width = this.PGA;
+    localLayoutParams.height = this.PGB;
     setLayoutParams(localLayoutParams);
     postInvalidate();
     AppMethodBeat.o(116117);
@@ -179,7 +204,7 @@ public class SightPlayImageView
     AppMethodBeat.i(116110);
     Log.d("MicroMsg.SightPlayImageView", "#0x%x on attached from window", new Object[] { Integer.valueOf(hashCode()) });
     super.onAttachedToWindow();
-    EventCenter.instance.addListener(this.JsW.fIE());
+    this.PGy.gYx().alive();
     AppMethodBeat.o(116110);
   }
   
@@ -188,8 +213,8 @@ public class SightPlayImageView
     AppMethodBeat.i(116109);
     super.onDetachedFromWindow();
     Log.i("MicroMsg.SightPlayImageView", "#0x%x clear, on deattached to window", new Object[] { Integer.valueOf(hashCode()) });
-    this.JsW.clear();
-    EventCenter.instance.removeListener(this.JsW.fIE());
+    this.PGy.clear();
+    this.PGy.gYx().dead();
     AppMethodBeat.o(116109);
   }
   
@@ -202,27 +227,27 @@ public class SightPlayImageView
   
   public void setCanPlay(boolean paramBoolean)
   {
-    this.JsW.Jsr = paramBoolean;
+    this.PGy.PFT = paramBoolean;
   }
   
   public void setDrawWidthAndHeightFix(boolean paramBoolean)
   {
-    this.Jte = paramBoolean;
+    this.PGE = paramBoolean;
   }
   
   public void setDrawableWidth(int paramInt)
   {
     AppMethodBeat.i(116111);
-    this.Jtc = false;
-    this.JsY = paramInt;
-    if ((this.Jta > 0) && (this.Jtb > 0))
+    this.PGC = false;
+    this.PGA = paramInt;
+    if ((this.GnR > 0) && (this.GnQ > 0))
     {
       ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
-      this.JsZ = (this.JsY * this.Jtb / this.Jta);
-      if ((localLayoutParams.width != this.JsY) || (localLayoutParams.height != this.JsZ))
+      this.PGB = (this.PGA * this.GnQ / this.GnR);
+      if ((localLayoutParams.width != this.PGA) || (localLayoutParams.height != this.PGB))
       {
-        localLayoutParams.width = this.JsY;
-        localLayoutParams.height = this.JsZ;
+        localLayoutParams.width = this.PGA;
+        localLayoutParams.height = this.PGB;
         setLayoutParams(localLayoutParams);
       }
     }
@@ -235,7 +260,7 @@ public class SightPlayImageView
   {
     AppMethodBeat.i(116103);
     super.setImageBitmap(paramBitmap);
-    if (this.Jte)
+    if (this.PGE)
     {
       AppMethodBeat.o(116103);
       return;
@@ -243,14 +268,14 @@ public class SightPlayImageView
     int i;
     int j;
     if (paramBitmap == null) {
-      if (this.JsZ == 0)
+      if (this.PGB == 0)
       {
         i = 240;
         if (paramBitmap != null) {
-          break label141;
+          break label144;
         }
-        if (this.JsY != 0) {
-          break label132;
+        if (this.PGA != 0) {
+          break label135;
         }
         j = 320;
       }
@@ -258,23 +283,23 @@ public class SightPlayImageView
     for (;;)
     {
       paramBitmap = getLayoutParams();
-      if (paramBitmap.height != (int)(this.JsY * i / j))
+      if (paramBitmap.height != (int)(this.PGA * i / j))
       {
-        paramBitmap.width = this.JsY;
-        float f = this.JsY;
+        paramBitmap.width = this.PGA;
+        float f = this.PGA;
         paramBitmap.height = ((int)(i * f / j));
         setLayoutParams(paramBitmap);
       }
       AppMethodBeat.o(116103);
       return;
-      i = this.JsZ;
+      i = this.PGB;
       break;
       i = paramBitmap.getHeight();
       break;
-      label132:
-      j = this.JsY;
+      label135:
+      j = this.PGA;
       continue;
-      label141:
+      label144:
       j = paramBitmap.getWidth();
     }
   }
@@ -283,7 +308,7 @@ public class SightPlayImageView
   {
     AppMethodBeat.i(116104);
     super.setImageDrawable(paramDrawable);
-    if (this.Jte)
+    if (this.PGE)
     {
       AppMethodBeat.o(116104);
       return;
@@ -291,14 +316,14 @@ public class SightPlayImageView
     int i;
     int j;
     if (paramDrawable == null) {
-      if (this.JsZ == 0)
+      if (this.PGB == 0)
       {
         i = 240;
         if (paramDrawable != null) {
-          break label158;
+          break label161;
         }
-        if (this.JsY != 0) {
-          break label149;
+        if (this.PGA != 0) {
+          break label152;
         }
         j = 320;
       }
@@ -308,87 +333,87 @@ public class SightPlayImageView
       if ((i != 0) && (j != 0))
       {
         paramDrawable = getLayoutParams();
-        if ((paramDrawable.height != (int)(this.JsY * i / j)) && (this.Jtf == 0))
+        if ((paramDrawable.height != (int)(this.PGA * i / j)) && (this.PGF == 0))
         {
-          paramDrawable.width = this.JsY;
-          float f = this.JsY;
+          paramDrawable.width = this.PGA;
+          float f = this.PGA;
           paramDrawable.height = ((int)(i * f / j));
           setLayoutParams(paramDrawable);
         }
       }
       AppMethodBeat.o(116104);
       return;
-      i = this.JsZ;
+      i = this.PGB;
       break;
       i = paramDrawable.getIntrinsicHeight();
       break;
-      label149:
-      j = this.JsY;
+      label152:
+      j = this.PGA;
       continue;
-      label158:
+      label161:
       j = paramDrawable.getIntrinsicWidth();
     }
   }
   
   public void setIsAdVideo(boolean paramBoolean)
   {
-    if (this.JsW != null) {
-      this.JsW.Jst = paramBoolean;
+    if (this.PGy != null) {
+      this.PGy.PFV = paramBoolean;
     }
   }
   
   public void setIsForbidLoopAnim(boolean paramBoolean)
   {
-    if (this.JsW != null) {
-      this.JsW.Jsu = paramBoolean;
+    if (this.PGy != null) {
+      this.PGy.PFW = paramBoolean;
     }
   }
   
   public void setIsWhatsNew(boolean paramBoolean)
   {
-    this.JsW.Jsw = paramBoolean;
+    this.PGy.PFY = paramBoolean;
   }
   
   public void setLoopImp(boolean paramBoolean)
   {
-    if (this.JsW != null) {
-      this.JsW.mfK = paramBoolean;
+    if (this.PGy != null) {
+      this.PGy.oYG = paramBoolean;
     }
   }
   
   public void setMaskID(int paramInt) {}
   
-  public void setOnCompletionListener(b.e parame)
+  public void setOnCompletionListener(SightPlayController.d paramd)
   {
-    this.JsW.JsE = parame;
+    this.PGy.PGg = paramd;
   }
   
-  public void setOnDecodeDurationListener(b.f paramf)
+  public void setOnDecodeDurationListener(SightPlayController.e parame)
   {
-    AppMethodBeat.i(187484);
-    this.JsW.setOnDecodeDurationListener(paramf);
-    AppMethodBeat.o(187484);
+    AppMethodBeat.i(291985);
+    this.PGy.setOnDecodeDurationListener(parame);
+    AppMethodBeat.o(291985);
   }
   
-  public void setOnSightCompletionAction(b.g paramg)
+  public void setOnSightCompletionAction(SightPlayController.f paramf)
   {
-    this.JsW.JsG = paramg;
+    this.PGy.PGi = paramf;
   }
   
   public void setPosition(int paramInt)
   {
-    this.JsW.position = paramInt;
+    this.PGy.position = paramInt;
   }
   
   public void setScaleMode(int paramInt)
   {
-    this.Jtf = paramInt;
+    this.PGF = paramInt;
   }
   
   public void setSightInfoView(TextView paramTextView)
   {
     AppMethodBeat.i(116119);
-    this.JsW.setSightInfoView(paramTextView);
+    this.PGy.setSightInfoView(paramTextView);
     AppMethodBeat.o(116119);
   }
   
@@ -402,7 +427,7 @@ public class SightPlayImageView
   public void setThumbBgView(View paramView)
   {
     AppMethodBeat.i(116118);
-    this.JsW.setThumbBgView(paramView);
+    this.PGy.setThumbBgView(paramView);
     AppMethodBeat.o(116118);
   }
   
@@ -413,48 +438,23 @@ public class SightPlayImageView
     AppMethodBeat.o(116112);
   }
   
-  public final void yc(boolean paramBoolean)
-  {
-    AppMethodBeat.i(116120);
-    b localb = this.JsW;
-    Log.i("MicroMsg.SightPlayController", "configure: need sound %B", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (paramBoolean)
-    {
-      if (localb.Jsk == null)
-      {
-        localb.Jsk = new b.i(localb, (byte)0);
-        AppMethodBeat.o(116120);
-      }
-    }
-    else
-    {
-      if (localb.Jsk != null)
-      {
-        localb.Jsk.type = 0;
-        s.g(localb.Jsk, 0L);
-      }
-      localb.Jsk = null;
-    }
-    AppMethodBeat.o(116120);
-  }
-  
   static final class a
-    extends b
+    extends SightPlayController
   {
-    private WeakReference<SightPlayImageView> JsX;
+    private WeakReference<SightPlayImageView> PGz;
     
     public a(SightPlayImageView paramSightPlayImageView)
     {
       super(paramSightPlayImageView);
       AppMethodBeat.i(116099);
-      this.JsX = new WeakReference(paramSightPlayImageView);
+      this.PGz = new WeakReference(paramSightPlayImageView);
       AppMethodBeat.o(116099);
     }
     
-    public final void aq(Bitmap paramBitmap)
+    public final void aF(Bitmap paramBitmap)
     {
       AppMethodBeat.i(116101);
-      SightPlayImageView localSightPlayImageView = (SightPlayImageView)this.JsX.get();
+      SightPlayImageView localSightPlayImageView = (SightPlayImageView)this.PGz.get();
       if (localSightPlayImageView == null)
       {
         Log.e("MicroMsg.SightPlayImageView", "onGetFrameBmp, imageView is null, do clear");
@@ -466,10 +466,10 @@ public class SightPlayImageView
       AppMethodBeat.o(116101);
     }
     
-    public final void eM(int paramInt1, int paramInt2)
+    public final void fG(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(116100);
-      final SightPlayImageView localSightPlayImageView = (SightPlayImageView)this.JsX.get();
+      final SightPlayImageView localSightPlayImageView = (SightPlayImageView)this.PGz.get();
       if (localSightPlayImageView == null)
       {
         Log.e("MicroMsg.SightPlayImageView", "onGetVideoSizeEnd, imageView is null, do clear");
@@ -484,15 +484,15 @@ public class SightPlayImageView
       }
       SightPlayImageView.a(localSightPlayImageView, paramInt1);
       SightPlayImageView.b(localSightPlayImageView, paramInt2);
-      if (localSightPlayImageView.uXU != null) {
-        localSightPlayImageView.uXU.eM(paramInt1, paramInt2);
+      if (localSightPlayImageView.yki != null) {
+        localSightPlayImageView.yki.fG(paramInt1, paramInt2);
       }
       if (SightPlayImageView.b(localSightPlayImageView))
       {
         if (SightPlayImageView.c(localSightPlayImageView) < SightPlayImageView.d(localSightPlayImageView)) {
           break label268;
         }
-        SightPlayImageView.c(localSightPlayImageView, com.tencent.mm.ci.a.fromDPToPix(localSightPlayImageView.getContext(), 150));
+        SightPlayImageView.c(localSightPlayImageView, com.tencent.mm.cd.a.fromDPToPix(localSightPlayImageView.getContext(), 150));
       }
       for (;;)
       {
@@ -520,11 +520,11 @@ public class SightPlayImageView
         AppMethodBeat.o(116100);
         return;
         label268:
-        SightPlayImageView.c(localSightPlayImageView, com.tencent.mm.ci.a.fromDPToPix(localSightPlayImageView.getContext(), 85));
+        SightPlayImageView.c(localSightPlayImageView, com.tencent.mm.cd.a.fromDPToPix(localSightPlayImageView.getContext(), 85));
       }
     }
     
-    public final int fIA()
+    public final int gYt()
     {
       return a.a.sight_loop;
     }
@@ -532,7 +532,7 @@ public class SightPlayImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.decode.ui.SightPlayImageView
  * JD-Core Version:    0.7.0.1
  */

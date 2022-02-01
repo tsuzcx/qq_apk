@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="@dimen/ep" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" xmlns:app="http://schemas.android.com/apk/res-auto">
-        <com.tencent.mm.ui.widget.MMRoundCornerImageView android:id="@id/kkh" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginTop="12.0dip" android:src="@drawable/bca" android:scaleType="fitXY" android:layout_centerHorizontal="true" app:radius="24.0dip" />
-        <TextView android:textSize="12.0sp" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/kki" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:maxEms="6" android:singleLine="true" android:layout_below="@id/kkh" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="12.0sp" android:id="@id/kv_" android:visibility="gone" android:layout_marginTop="-2.0dip" android:minWidth="18.0dip" android:minHeight="18.0dip" android:layout_alignTop="@id/kkh" android:layout_alignRight="@id/kkh" android:layout_marginEnd="-4.0dip" style="@style/zr" />
-        <TextView android:ellipsize="end" android:id="@id/j0_" android:visibility="gone" android:singleLine="true" android:layout_alignTop="@id/kkh" android:layout_alignRight="@id/kkh" style="@style/zs" />
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/euh" android:layout_width="fill_parent" android:layout_height="64.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip">
+        <FrameLayout android:layout_gravity="center_vertical" android:id="@id/m2i" android:background="@drawable/caj" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_centerVertical="true">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@raw/icons_outlined_arrow" android:rotation="90.0" app:iconColor="@color/gb" />
+        </FrameLayout>
+        <TextView android:textSize="15.0dip" android:textColor="@color/FG_0" android:id="@id/m0h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+        <TextView android:textSize="15.0dip" android:textColor="#ff576b95" android:id="@id/m0c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
     </RelativeLayout>
-</LinearLayout>
+    <com.tencent.mm.view.refreshLayout.WxRefreshLayout android:id="@id/ijl" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/euh">
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/iiv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
+    </com.tencent.mm.view.refreshLayout.WxRefreshLayout>
+</RelativeLayout>

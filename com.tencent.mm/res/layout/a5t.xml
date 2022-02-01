@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.flash.action.FaceFlashActionPreviewLayout android:id="@id/d5x" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mm.plugin.flash.action.FaceFlashActionProcessLayout android:id="@id/d5y" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/d5u" android:padding="@dimen/ct" android:layout_width="@dimen/cl" android:layout_height="@dimen/cl" android:src="@raw/icons_filled_close" app:iconColor="@color/BW_0" />
-</RelativeLayout>
+<merge>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <TextView android:textSize="@dimen/a62" android:textColor="@color/al6" android:id="@id/ewi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a61" android:layout_centerHorizontal="true" android:fontFamily="sans-serif-thin" />
+    </RelativeLayout>
+</merge>

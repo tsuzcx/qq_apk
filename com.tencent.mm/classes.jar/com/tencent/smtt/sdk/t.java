@@ -30,12 +30,12 @@ class t
   {
     try
     {
-      AppMethodBeat.i(191785);
+      AppMethodBeat.i(219499);
       if (e == null) {
         e = new t(paramContext);
       }
       paramContext = e;
-      AppMethodBeat.o(191785);
+      AppMethodBeat.o(219499);
       return paramContext;
     }
     finally {}
@@ -52,16 +52,16 @@ class t
   
   public boolean a()
   {
-    AppMethodBeat.i(191796);
+    AppMethodBeat.i(219544);
     this.a.a();
     boolean bool = this.a.b();
-    AppMethodBeat.o(191796);
+    AppMethodBeat.o(219544);
     return bool;
   }
   
   public boolean a(String paramString, Bundle paramBundle, b paramb)
   {
-    AppMethodBeat.i(191793);
+    AppMethodBeat.i(219529);
     Bundle localBundle = paramBundle;
     if (paramBundle == null) {
       localBundle = new Bundle();
@@ -74,7 +74,7 @@ class t
       this.a.a();
       if (!this.a.b())
       {
-        AppMethodBeat.o(191793);
+        AppMethodBeat.o(219529);
         return false;
       }
       this.c = paramb;
@@ -82,9 +82,9 @@ class t
       {
         public void onUserStateChanged()
         {
-          AppMethodBeat.i(194513);
+          AppMethodBeat.i(219779);
           t.this.a.c();
-          AppMethodBeat.o(194513);
+          AppMethodBeat.o(219779);
         }
       };
       localBundle.putInt("callMode", 3);
@@ -97,7 +97,7 @@ class t
         paramString = null;
       }
       paramBundle.a(localBundle, paramString);
-      AppMethodBeat.o(191793);
+      AppMethodBeat.o(219529);
       return true;
       localBundle.putInt("callMode", 1);
     }
@@ -105,7 +105,7 @@ class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.sdk.t
  * JD-Core Version:    0.7.0.1
  */

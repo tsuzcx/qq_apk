@@ -6,73 +6,90 @@ import android.hardware.Camera.CameraInfo;
 import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraManager;
 import android.media.MediaCodecList;
-import com.tencent.e.h;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
 import java.util.ArrayList;
-import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/compatible/camera/PluginCamera;", "", "()V", "CAMERA2_NUMBER_INFO_CACHE", "", "CAMERA2_SUPPORT_LEVELS_CACHE", "CAMERA_NUMBER_CACHE", "TAG", "cameraInfoList", "Ljava/util/ArrayList;", "Landroid/hardware/Camera$CameraInfo;", "Lkotlin/collections/ArrayList;", "futureTask", "Ljava/util/concurrent/FutureTask;", "", "mBackCameraId", "mCameraNumber", "mCameraNumberInApi2", "mCameraSupportLevels", "mFrontCameraId", "useMMKVCache", "", "getBackCameraId", "getCamera2LevelListInfoFromDevice", "", "getCamera2NumberInfo", "getCamera2NumbersInfoFromDevice", "getCamera2SupportLevelLists", "getCameraInfo", "id", "getCameraNumbers", "getFrontCameraId", "initCameraNumbers", "initCodecCount", "makeCameraInfoCache", "libcompatible_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/compatible/camera/PluginCamera;", "", "()V", "CAMERA2_NUMBER_INFO_CACHE", "", "CAMERA2_SUPPORT_LEVELS_CACHE", "CAMERA_NUMBER_CACHE", "TAG", "cameraInfoList", "Ljava/util/ArrayList;", "Landroid/hardware/Camera$CameraInfo;", "Lkotlin/collections/ArrayList;", "futureTask", "Ljava/util/concurrent/FutureTask;", "", "mBackCameraId", "mCameraNumber", "mCameraNumberInApi2", "mCameraSupportLevels", "mFrontCameraId", "useMMKVCache", "", "getBackCameraId", "getCamera2LevelListInfoFromDevice", "", "getCamera2NumberInfo", "getCamera2NumbersInfoFromDevice", "getCamera2SupportLevelLists", "getCameraInfo", "id", "getCameraNumbers", "getFrontCameraId", "initCameraNumbers", "initCodecCount", "makeCameraInfoCache", "updateBackCameraId", "backCameraId", "updateCameraInfoCache", "cameraInfo", "updateFrontCameraId", "frontCameraId", "libcompatible_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  private static FutureTask<Integer> cCU;
-  public static int jnA;
-  public static int jnB;
-  public static final a jnC;
-  private static int jnv;
-  private static boolean jnw;
-  private static int jnx;
-  private static String jny;
-  private static ArrayList<Camera.CameraInfo> jnz;
+  private static FutureTask<Integer> evy;
+  public static final a lQF;
+  private static int lQG;
+  private static boolean lQH;
+  private static int lQI;
+  private static String lQJ;
+  private static ArrayList<Camera.CameraInfo> lQK;
+  private static int lQL;
+  private static int lQM;
   
   static
   {
-    AppMethodBeat.i(262435);
-    jnC = new a();
-    jnv = -1;
-    jnx = -1;
-    jnz = new ArrayList();
-    jnA = -1;
-    jnB = -1;
-    AppMethodBeat.o(262435);
+    AppMethodBeat.i(240825);
+    lQF = new a();
+    lQG = -1;
+    lQI = -1;
+    lQK = new ArrayList();
+    lQL = -1;
+    lQM = -1;
+    AppMethodBeat.o(240825);
   }
   
-  public static int atL()
+  public static void a(int paramInt, Camera.CameraInfo paramCameraInfo)
   {
-    AppMethodBeat.i(262422);
+    AppMethodBeat.i(240814);
+    s.u(paramCameraInfo, "cameraInfo");
+    Log.i("MicroMsg.PluginCamera", s.X("updateCameraInfoCache ", Integer.valueOf(paramInt)));
+    lQK.set(paramInt, paramCameraInfo);
+    AppMethodBeat.o(240814);
+  }
+  
+  public static void aOj()
+  {
+    AppMethodBeat.i(240781);
+    lQH = true;
+    Log.i("MicroMsg.PluginCamera", s.X("initCameraNumbers start, useMMKVCache : ", Boolean.TRUE));
+    evy = new FutureTask(a..ExternalSyntheticLambda1.INSTANCE);
+    h.ahAA.bm(a..ExternalSyntheticLambda0.INSTANCE);
+    AppMethodBeat.o(240781);
+  }
+  
+  public static int aOk()
+  {
+    AppMethodBeat.i(240788);
     int i;
-    if (jnv == -1)
+    if (lQG == -1)
     {
       Log.i("MicroMsg.PluginCamera", "mCameraNumber == -1，slow initCameraNumbers, use MMKV cache");
       i = MultiProcessMMKV.getDefault().getInt("cameraNumberCache", -1);
-      Log.i("MicroMsg.PluginCamera", "get cameraNumberCache from MMKV cameraNumberCache is ".concat(String.valueOf(i)));
+      Log.i("MicroMsg.PluginCamera", s.X("get cameraNumberCache from MMKV cameraNumberCache is ", Integer.valueOf(i)));
       if (i == -1)
       {
         Log.i("MicroMsg.PluginCamera", "cameraNumberCache from MMKV failed, just getNumberOfCameras freshly");
-        jnv = Camera.getNumberOfCameras();
+        lQG = Camera.getNumberOfCameras();
         Log.i("MicroMsg.PluginCamera", "cameraNumberCache from MMKV failed, just getNumberOfCameras freshly DONE");
-        MultiProcessMMKV.getDefault().putInt("cameraNumberCache", jnv);
+        MultiProcessMMKV.getDefault().putInt("cameraNumberCache", lQG);
         Log.i("MicroMsg.PluginCamera", "cameraNumberCache from MMKV failed, just getNumberOfCameras freshly save cache done");
       }
     }
     for (;;)
     {
-      Log.i("MicroMsg.PluginCamera", "mCameraNumber is " + jnv);
-      i = jnv;
-      AppMethodBeat.o(262422);
+      Log.i("MicroMsg.PluginCamera", s.X("mCameraNumber is ", Integer.valueOf(lQG)));
+      i = lQG;
+      AppMethodBeat.o(240788);
       return i;
-      Log.i("MicroMsg.PluginCamera", "cameraNumberCache from MMKV successful, return cameraNumberCache : ".concat(String.valueOf(i)));
-      if (jnw)
+      Log.i("MicroMsg.PluginCamera", s.X("cameraNumberCache from MMKV successful, return cameraNumberCache : ", Integer.valueOf(i)));
+      if (lQH)
       {
         if (i == 0) {
           Log.i("MicroMsg.PluginCamera", "cameraNumberCache from MMKV is 0, error, getNumberOfCameras freshly ");
@@ -81,342 +98,396 @@ public final class a
       else
       {
         i = Camera.getNumberOfCameras();
-        jnv = i;
-        AppMethodBeat.o(262422);
+        lQG = i;
+        AppMethodBeat.o(240788);
         return i;
       }
-      jnv = i;
-      AppMethodBeat.o(262422);
+      lQG = i;
+      AppMethodBeat.o(240788);
       return i;
-      if (jnv == 0)
+      if (lQG == 0)
       {
         Log.i("MicroMsg.PluginCamera", "mCameraNumber == 0， happened error to get camera number and try again");
-        jnv = Camera.getNumberOfCameras();
+        lQG = Camera.getNumberOfCameras();
         Log.i("MicroMsg.PluginCamera", "mCameraNumber == 0， happened error to get camera number and try again DONE");
-        MultiProcessMMKV.getDefault().putInt("cameraNumberCache", jnv);
+        MultiProcessMMKV.getDefault().putInt("cameraNumberCache", lQG);
       }
     }
   }
   
-  public static int atM()
+  public static int aOl()
   {
-    AppMethodBeat.i(262425);
+    AppMethodBeat.i(240793);
     int i;
-    if (jnx == -1)
+    if (lQI == -1)
     {
       i = MultiProcessMMKV.getDefault().getInt("camera2NumberInfoCache", -1);
       if (i == -1)
       {
-        atO();
-        MultiProcessMMKV.getDefault().putInt("camera2NumberInfoCache", jnx);
+        aOn();
+        MultiProcessMMKV.getDefault().putInt("camera2NumberInfoCache", lQI);
       }
     }
     for (;;)
     {
-      i = jnx;
-      AppMethodBeat.o(262425);
+      i = lQI;
+      AppMethodBeat.o(240793);
       return i;
-      if ((jnw) && (i != 0))
+      if ((lQH) && (i != 0))
       {
-        jnx = i;
-        AppMethodBeat.o(262425);
+        lQI = i;
+        AppMethodBeat.o(240793);
         return i;
       }
-      atO();
-      i = jnx;
-      AppMethodBeat.o(262425);
+      aOn();
+      i = lQI;
+      AppMethodBeat.o(240793);
       return i;
-      if (jnx == 0)
+      if (lQI == 0)
       {
-        atO();
-        MultiProcessMMKV.getDefault().putInt("camera2NumberInfoCache", jnx);
+        aOn();
+        MultiProcessMMKV.getDefault().putInt("camera2NumberInfoCache", lQI);
       }
     }
   }
   
-  public static String atN()
+  public static String aOm()
   {
-    AppMethodBeat.i(262426);
+    AppMethodBeat.i(240800);
     String str;
-    if (jny == null)
+    if (lQJ == null)
     {
       str = MultiProcessMMKV.getDefault().getString("camera2SupportLevelsCache", null);
       if (str == null)
       {
-        atP();
-        MultiProcessMMKV.getDefault().putString("camera2SupportLevelsCache", jny);
+        aOo();
+        MultiProcessMMKV.getDefault().putString("camera2SupportLevelsCache", lQJ);
       }
     }
     for (;;)
     {
-      str = jny;
-      AppMethodBeat.o(262426);
+      str = lQJ;
+      AppMethodBeat.o(240800);
       return str;
-      if (jnw)
+      if (lQH)
       {
-        jny = str;
-        AppMethodBeat.o(262426);
+        lQJ = str;
+        AppMethodBeat.o(240800);
         return str;
       }
-      atP();
-      str = jny;
-      AppMethodBeat.o(262426);
+      aOo();
+      str = lQJ;
+      AppMethodBeat.o(240800);
       return str;
-      if (jnx == 0)
+      if (lQI == 0)
       {
-        atP();
-        MultiProcessMMKV.getDefault().putString("camera2SupportLevelsCache", jny);
+        aOo();
+        MultiProcessMMKV.getDefault().putString("camera2SupportLevelsCache", lQJ);
       }
     }
   }
   
-  private static void atO()
+  private static void aOn()
   {
-    AppMethodBeat.i(262427);
+    AppMethodBeat.i(240806);
     try
     {
       Object localObject = MMApplicationContext.getContext().getSystemService("camera");
       if (localObject == null)
       {
-        localObject = new t("null cannot be cast to non-null type android.hardware.camera2.CameraManager");
-        AppMethodBeat.o(262427);
+        localObject = new NullPointerException("null cannot be cast to non-null type android.hardware.camera2.CameraManager");
+        AppMethodBeat.o(240806);
         throw ((Throwable)localObject);
       }
     }
     catch (Exception localException)
     {
       Log.e("MicroMsg.PluginCamera", "a camera access exception happend");
-      AppMethodBeat.o(262427);
+      AppMethodBeat.o(240806);
       return;
-      jnx = ((CameraManager)localException).getCameraIdList().length;
-      AppMethodBeat.o(262427);
+      lQI = ((CameraManager)localException).getCameraIdList().length;
+      AppMethodBeat.o(240806);
       return;
     }
     catch (AssertionError localAssertionError)
     {
       Log.e("MicroMsg.PluginCamera", "some device has some problem in LegecyCamera ");
-      AppMethodBeat.o(262427);
+      AppMethodBeat.o(240806);
     }
   }
   
-  private static void atP()
+  private static void aOo()
   {
-    AppMethodBeat.i(262429);
+    AppMethodBeat.i(240810);
     for (;;)
     {
       int i;
       try
       {
-        jny = null;
-        Object localObject = MMApplicationContext.getContext().getSystemService("camera");
-        if (localObject == null)
+        lQJ = null;
+        Object localObject1 = MMApplicationContext.getContext().getSystemService("camera");
+        if (localObject1 == null)
         {
-          localObject = new t("null cannot be cast to non-null type android.hardware.camera2.CameraManager");
-          AppMethodBeat.o(262429);
-          throw ((Throwable)localObject);
+          localObject1 = new NullPointerException("null cannot be cast to non-null type android.hardware.camera2.CameraManager");
+          AppMethodBeat.o(240810);
+          throw ((Throwable)localObject1);
         }
       }
       catch (Exception localException)
       {
         Log.e("MicroMsg.PluginCamera", "a camera access exception happend");
-        AppMethodBeat.o(262429);
+        AppMethodBeat.o(240810);
         return;
         CameraManager localCameraManager = (CameraManager)localException;
-        String[] arrayOfString = localCameraManager.getCameraIdList();
-        p.j(arrayOfString, "manager.cameraIdList");
-        int j = arrayOfString.length;
+        Object localObject2 = localCameraManager.getCameraIdList();
+        s.s(localObject2, "manager.cameraIdList");
+        localObject2 = (Object[])localObject2;
+        int j = localObject2.length;
         i = 0;
         if (i < j)
         {
-          String str = arrayOfString[i];
-          if (jny == null) {
-            jny = str + '-' + (Integer)localCameraManager.getCameraCharacteristics(str).get(CameraCharacteristics.INFO_SUPPORTED_HARDWARE_LEVEL) + '-' + (Integer)localCameraManager.getCameraCharacteristics(str).get(CameraCharacteristics.LENS_FACING) + '+';
+          String str = (String)localObject2[i];
+          if (lQJ == null) {
+            lQJ = str + '-' + localCameraManager.getCameraCharacteristics(str).get(CameraCharacteristics.INFO_SUPPORTED_HARDWARE_LEVEL) + '-' + localCameraManager.getCameraCharacteristics(str).get(CameraCharacteristics.LENS_FACING) + '+';
           } else {
-            jny = p.I(jny, str + '-' + (Integer)localCameraManager.getCameraCharacteristics(str).get(CameraCharacteristics.INFO_SUPPORTED_HARDWARE_LEVEL) + '-' + (Integer)localCameraManager.getCameraCharacteristics(str).get(CameraCharacteristics.LENS_FACING) + '+');
+            lQJ = lQJ + str + '-' + localCameraManager.getCameraCharacteristics(str).get(CameraCharacteristics.INFO_SUPPORTED_HARDWARE_LEVEL) + '-' + localCameraManager.getCameraCharacteristics(str).get(CameraCharacteristics.LENS_FACING) + '+';
           }
         }
       }
       catch (AssertionError localAssertionError)
       {
         Log.e("MicroMsg.PluginCamera", "some device has some problem in LegecyCamera ");
-        AppMethodBeat.o(262429);
+        AppMethodBeat.o(240810);
         return;
       }
-      AppMethodBeat.o(262429);
+      AppMethodBeat.o(240810);
       return;
       i += 1;
     }
   }
   
-  public static void atQ()
+  public static void aOp()
   {
-    AppMethodBeat.i(262430);
+    AppMethodBeat.i(240813);
     try
     {
       Log.i("MicroMsg.PluginCamera", "initCodecCount start");
       long l = System.currentTimeMillis();
       MediaCodecList.getCodecCount();
-      Log.i("MicroMsg.PluginCamera", "initCodecCount end, duration : ".concat(String.valueOf(System.currentTimeMillis() - l)));
-      AppMethodBeat.o(262430);
+      Log.i("MicroMsg.PluginCamera", s.X("initCodecCount end, duration : ", Long.valueOf(System.currentTimeMillis() - l)));
+      AppMethodBeat.o(240813);
       return;
     }
     catch (Exception localException)
     {
       Log.e("MicroMsg.PluginCamera", "initCodecCount error");
-      AppMethodBeat.o(262430);
+      AppMethodBeat.o(240813);
     }
   }
   
-  public static void dP(boolean paramBoolean)
+  private static final Integer aOt()
   {
-    AppMethodBeat.i(262420);
-    jnw = paramBoolean;
-    Log.i("MicroMsg.PluginCamera", "initCameraNumbers start, useMMKVCache : ".concat(String.valueOf(paramBoolean)));
-    cCU = new FutureTask((Callable)a.jnD);
-    h.ZvG.be((Runnable)b.jnE);
-    AppMethodBeat.o(262420);
+    AppMethodBeat.i(240822);
+    Log.i("MicroMsg.PluginCamera", "initCameraNumbers getNumberOfCameras start");
+    lQG = Camera.getNumberOfCameras();
+    Log.i("MicroMsg.PluginCamera", s.X("initCameraNumbers getNumberOfCameras Done mCameraNumber is ", Integer.valueOf(lQG)));
+    aOn();
+    aOo();
+    MultiProcessMMKV.getDefault().putInt("cameraNumberCache", lQG);
+    MultiProcessMMKV.getDefault().putInt("camera2NumberInfoCache", lQI);
+    MultiProcessMMKV.getDefault().putString("camera2SupportLevelsCache", lQJ);
+    int i = lQG;
+    AppMethodBeat.o(240822);
+    return Integer.valueOf(i);
   }
   
-  public final void atR()
+  private static final void aOu()
   {
-    AppMethodBeat.i(262433);
-    Log.i("MicroMsg.PluginCamera", "makeCameraInfoCache");
+    Object localObject2 = null;
+    AppMethodBeat.i(240824);
+    i locali = h.ahAA;
+    FutureTask localFutureTask2 = evy;
+    FutureTask localFutureTask1 = localFutureTask2;
+    if (localFutureTask2 == null)
+    {
+      s.bIx("futureTask");
+      localFutureTask1 = null;
+    }
+    locali.bm((Runnable)localFutureTask1);
     try
     {
-      int j = Camera.getNumberOfCameras();
-      int i = 0;
-      while (i < j)
+      localFutureTask2 = evy;
+      localFutureTask1 = localFutureTask2;
+      if (localFutureTask2 == null)
       {
-        localObject1 = new Camera.CameraInfo();
-        Camera.getCameraInfo(i, (Camera.CameraInfo)localObject1);
-        jnz.add(localObject1);
-        if ((jnA == -1) && (((Camera.CameraInfo)jnz.get(i)).facing == 0)) {
-          jnA = i;
-        }
-        if ((jnB == -1) && (((Camera.CameraInfo)jnz.get(i)).facing == 1)) {
-          jnB = i;
-        }
-        Log.i("MicroMsg.PluginCamera", "makeCameraInfoCache, id = " + i + ", facint = " + ((Camera.CameraInfo)localObject1).facing);
-        i += 1;
+        s.bIx("futureTask");
+        localFutureTask1 = null;
       }
-      Log.i("MicroMsg.PluginCamera", "makeCameraInfoCache mBackCameraId = " + jnA + ", mFrontCameraId = " + jnB);
+      localFutureTask1.get(10L, TimeUnit.SECONDS);
+      AppMethodBeat.o(240824);
+      return;
     }
-    catch (Throwable localThrowable)
+    catch (TimeoutException localTimeoutException)
     {
-      for (;;)
+      Log.e("MicroMsg.PluginCamera", "futureTask TimeoutException cancel");
+      localFutureTask2 = evy;
+      Object localObject1 = localFutureTask2;
+      if (localFutureTask2 == null)
       {
-        Object localObject1;
-        Log.e("MicroMsg.PluginCamera", "makeCameraInfoCache failed : " + localThrowable.getMessage() + ", clear cameraInfoList");
-        jnz.clear();
+        s.bIx("futureTask");
+        localObject1 = null;
       }
-    }
-    finally
-    {
-      AppMethodBeat.o(262433);
-    }
-    localObject1 = x.aazN;
-    AppMethodBeat.o(262433);
-  }
-  
-  public final Camera.CameraInfo qJ(int paramInt)
-  {
-    AppMethodBeat.i(262434);
-    try
-    {
-      if (jnz.isEmpty())
+      if (!((FutureTask)localObject1).isCancelled())
       {
-        Log.i("MicroMsg.PluginCamera", "cameraInfoList is empty, miss Cache, to make CameraInfo Cache");
-        jnC.atR();
-      }
-      Object localObject1 = x.aazN;
-      localObject1 = jnz.get(paramInt);
-      p.j(localObject1, "cameraInfoList[id]");
-      localObject1 = (Camera.CameraInfo)localObject1;
-      Log.i("MicroMsg.PluginCamera", "getCameraInfo cameraInfoList.size = " + jnz.size());
-      if (jnz.size() != 2)
-      {
-        localObject1 = new Camera.CameraInfo();
-        Camera.getCameraInfo(paramInt, (Camera.CameraInfo)localObject1);
-        AppMethodBeat.o(262434);
-        return localObject1;
-      }
-    }
-    finally
-    {
-      AppMethodBeat.o(262434);
-    }
-    Log.i("MicroMsg.PluginCamera", "getCameraInfo id = " + paramInt + ", ret = " + localObject2);
-    AppMethodBeat.o(262434);
-    return localObject2;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "call"})
-  static final class a<V>
-    implements Callable<Integer>
-  {
-    public static final a jnD;
-    
-    static
-    {
-      AppMethodBeat.i(261944);
-      jnD = new a();
-      AppMethodBeat.o(261944);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
-  {
-    public static final b jnE;
-    
-    static
-    {
-      AppMethodBeat.i(262237);
-      jnE = new b();
-      AppMethodBeat.o(262237);
-    }
-    
-    public final void run()
-    {
-      AppMethodBeat.i(262233);
-      Object localObject = h.ZvG;
-      a locala2 = a.jnC;
-      ((i)localObject).be((Runnable)a.atX());
-      try
-      {
-        localObject = a.jnC;
-        a.atX().get(10L, TimeUnit.SECONDS);
-        AppMethodBeat.o(262233);
-        return;
-      }
-      catch (TimeoutException localTimeoutException)
-      {
-        Log.e("MicroMsg.PluginCamera", "futureTask TimeoutException cancel");
-        a locala1 = a.jnC;
-        if (!a.atX().isCancelled())
+        localFutureTask2 = evy;
+        localObject1 = localFutureTask2;
+        if (localFutureTask2 == null)
         {
-          locala1 = a.jnC;
-          if (!a.atX().isDone())
+          s.bIx("futureTask");
+          localObject1 = null;
+        }
+        if (!((FutureTask)localObject1).isDone())
+        {
+          localObject1 = evy;
+          if (localObject1 == null)
           {
-            locala1 = a.jnC;
-            a.atX().cancel(true);
-            AppMethodBeat.o(262233);
+            s.bIx("futureTask");
+            localObject1 = localObject2;
+          }
+          for (;;)
+          {
+            ((FutureTask)localObject1).cancel(true);
+            AppMethodBeat.o(240824);
             return;
           }
         }
       }
-      catch (Exception localException)
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.PluginCamera", "futureTask Exception");
+      AppMethodBeat.o(240824);
+    }
+  }
+  
+  public static void qQ(int paramInt)
+  {
+    AppMethodBeat.i(240816);
+    Log.i("MicroMsg.PluginCamera", s.X("updateBackCameraId ", Integer.valueOf(paramInt)));
+    lQL = paramInt;
+    AppMethodBeat.o(240816);
+  }
+  
+  public static void qR(int paramInt)
+  {
+    AppMethodBeat.i(240818);
+    Log.i("MicroMsg.PluginCamera", s.X("updateFrontCameraId ", Integer.valueOf(paramInt)));
+    lQM = paramInt;
+    AppMethodBeat.o(240818);
+  }
+  
+  public final void aOq()
+  {
+    AppMethodBeat.i(240836);
+    Log.i("MicroMsg.PluginCamera", "makeCameraInfoCache");
+    for (;;)
+    {
+      try
       {
-        Log.e("MicroMsg.PluginCamera", "futureTask Exception");
-        AppMethodBeat.o(262233);
+        int k = Camera.getNumberOfCameras();
+        int j;
+        Object localObject1;
+        if (k > 0)
+        {
+          i = 0;
+          j = i + 1;
+          localObject1 = new Camera.CameraInfo();
+          Camera.getCameraInfo(i, (Camera.CameraInfo)localObject1);
+          lQK.add(localObject1);
+          if ((lQL == -1) && (((Camera.CameraInfo)lQK.get(i)).facing == 0)) {
+            lQL = i;
+          }
+          if ((lQM == -1) && (((Camera.CameraInfo)lQK.get(i)).facing == 1)) {
+            lQM = i;
+          }
+          Log.i("MicroMsg.PluginCamera", "makeCameraInfoCache, id = " + i + ", facint = " + ((Camera.CameraInfo)localObject1).facing);
+          if (j < k) {}
+        }
+        else
+        {
+          Log.i("MicroMsg.PluginCamera", "makeCameraInfoCache mBackCameraId = " + lQL + ", mFrontCameraId = " + lQM);
+        }
+        int i = j;
+      }
+      finally
+      {
+        try
+        {
+          localObject1 = ah.aiuX;
+          return;
+        }
+        finally
+        {
+          AppMethodBeat.o(240836);
+        }
+        localObject2 = finally;
+        Log.e("MicroMsg.PluginCamera", "makeCameraInfoCache failed : " + localObject2.getMessage() + ", clear cameraInfoList");
+        lQK.clear();
       }
     }
+  }
+  
+  public final int aOr()
+  {
+    AppMethodBeat.i(240842);
+    Log.i("MicroMsg.PluginCamera", s.X("getBackCameraId mBackCameraId = ", Integer.valueOf(lQL)));
+    if (lQL == -1) {
+      aOq();
+    }
+    int i = lQL;
+    AppMethodBeat.o(240842);
+    return i;
+  }
+  
+  public final int aOs()
+  {
+    AppMethodBeat.i(240845);
+    Log.i("MicroMsg.PluginCamera", s.X("getBackCameraId mFrontCameraId = ", Integer.valueOf(lQM)));
+    if (lQM == -1) {
+      aOq();
+    }
+    int i = lQM;
+    AppMethodBeat.o(240845);
+    return i;
+  }
+  
+  public final Camera.CameraInfo qP(int paramInt)
+  {
+    AppMethodBeat.i(240841);
+    if (lQK.isEmpty())
+    {
+      Log.i("MicroMsg.PluginCamera", "cameraInfoList is empty, miss Cache, to make CameraInfo Cache");
+      aOq();
+    }
+    Object localObject = lQK.get(paramInt);
+    s.s(localObject, "cameraInfoList[id]");
+    localObject = (Camera.CameraInfo)localObject;
+    Log.i("MicroMsg.PluginCamera", s.X("getCameraInfo cameraInfoList.size = ", Integer.valueOf(lQK.size())));
+    if (lQK.size() != 2)
+    {
+      localObject = new Camera.CameraInfo();
+      Camera.getCameraInfo(paramInt, (Camera.CameraInfo)localObject);
+      AppMethodBeat.o(240841);
+      return localObject;
+    }
+    Log.i("MicroMsg.PluginCamera", "getCameraInfo id = " + paramInt + ", ret = " + localObject);
+    AppMethodBeat.o(240841);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.compatible.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -8,69 +8,69 @@ import com.tencent.mm.model.ad.b;
 
 public final class c
 {
-  private static final SparseIntArray XWj;
+  private static final SparseIntArray afMA;
   
   static
   {
-    AppMethodBeat.i(272550);
-    XWj = new SparseIntArray();
-    AppMethodBeat.o(272550);
+    AppMethodBeat.i(250934);
+    afMA = new SparseIntArray();
+    AppMethodBeat.o(250934);
   }
   
-  public static ad.b bAK(String paramString)
+  public static ad.b bCJ(String paramString)
   {
-    AppMethodBeat.i(272549);
+    AppMethodBeat.i(250932);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(272549);
+      AppMethodBeat.o(250932);
       return null;
     }
     int j = paramString.hashCode();
-    synchronized (XWj)
+    synchronized (afMA)
     {
-      int i = XWj.get(j, 0) - 1;
+      int i = afMA.get(j, 0) - 1;
       if (i <= 0)
       {
         i = 1;
-        XWj.delete(j);
+        afMA.delete(j);
         if (i != 0)
         {
-          paramString = ad.beh().Ro(paramString);
-          AppMethodBeat.o(272549);
+          paramString = ad.bCb().Jn(paramString);
+          AppMethodBeat.o(250932);
           return paramString;
         }
       }
       else
       {
-        XWj.put(j, i);
+        afMA.put(j, i);
         i = 0;
       }
     }
-    paramString = ad.beh().I(paramString, false);
-    AppMethodBeat.o(272549);
+    paramString = ad.bCb().M(paramString, false);
+    AppMethodBeat.o(250932);
     return paramString;
   }
   
-  public static void hW(String arg0, int paramInt)
+  public static void jg(String arg0, int paramInt)
   {
-    AppMethodBeat.i(272548);
+    AppMethodBeat.i(250928);
     if (TextUtils.isEmpty(???))
     {
-      AppMethodBeat.o(272548);
+      AppMethodBeat.o(250928);
       return;
     }
     int i = ???.hashCode();
-    synchronized (XWj)
+    synchronized (afMA)
     {
-      XWj.put(i, Math.max(paramInt, 1));
-      AppMethodBeat.o(272548);
+      afMA.put(i, Math.max(paramInt, 1));
+      AppMethodBeat.o(250928);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.transmit.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.downloader_app.search;
 
-import android.app.Activity;
 import android.content.pm.PackageInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.aa;
-import com.tencent.mm.an.aa.a;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.z;
+import com.tencent.mm.am.z.a;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.MRecyclerView.a;
-import com.tencent.mm.plugin.downloader.c.a.a.i;
-import com.tencent.mm.plugin.downloader.c.a.a.l;
-import com.tencent.mm.plugin.downloader.c.a.a.m;
-import com.tencent.mm.plugin.downloader.c.a.a.o;
-import com.tencent.mm.plugin.downloader.c.b.e;
-import com.tencent.mm.plugin.downloader.c.b.g;
-import com.tencent.mm.plugin.downloader.c.b.k;
+import com.tencent.mm.plugin.downloader.b.a.a.i;
+import com.tencent.mm.plugin.downloader.b.a.a.l;
+import com.tencent.mm.plugin.downloader.b.a.a.m;
+import com.tencent.mm.plugin.downloader.b.a.a.o;
+import com.tencent.mm.plugin.downloader.b.b.e;
+import com.tencent.mm.plugin.downloader.b.b.g;
+import com.tencent.mm.plugin.downloader.b.b.k;
 import com.tencent.mm.plugin.downloader_app.e.e;
 import com.tencent.mm.plugin.downloader_app.e.f;
 import com.tencent.mm.plugin.downloader_app.e.h;
@@ -28,9 +28,9 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.tools.t;
-import com.tencent.mm.ui.tools.t.b;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.ui.tools.s;
+import com.tencent.mm.ui.tools.s.c;
+import com.tencent.mm.vfs.y;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -38,16 +38,16 @@ import java.util.List;
 
 public class DownloadSearchUI
   extends MMActivity
-  implements t.b
+  implements s.c
 {
-  private t jjS;
-  private ProgressBar njo;
-  private DownloadSearchListView umU;
-  private TextView umV;
-  private String umW;
-  private boolean umX;
+  private s lMw;
+  private ProgressBar qgC;
+  private DownloadSearchListView xtm;
+  private TextView xtn;
+  private String xto;
+  private boolean xtp;
   
-  public final boolean aat(String paramString)
+  public final boolean SN(String paramString)
   {
     AppMethodBeat.i(8951);
     Log.i("MicroMsg.DownloadSearchUI", "onSearchKeyDown");
@@ -56,54 +56,54 @@ public class DownloadSearchUI
       AppMethodBeat.o(8951);
       return true;
     }
-    this.umU.atv(paramString);
+    this.xtm.ank(paramString);
     AppMethodBeat.o(8951);
     return true;
   }
   
-  public final void aau(final String paramString)
+  public final void SO(final String paramString)
   {
     AppMethodBeat.i(8950);
     Log.i("MicroMsg.DownloadSearchUI", "onSearchChange");
-    this.umV.setVisibility(8);
-    if ((this.umW != null) && (this.umW.equals(Util.nullAsNil(paramString))))
+    this.xtn.setVisibility(8);
+    if ((this.xto != null) && (this.xto.equals(Util.nullAsNil(paramString))))
     {
       Log.d("MicroMsg.DownloadSearchUI", "repeat searchChange");
       AppMethodBeat.o(8950);
       return;
     }
-    this.umW = paramString;
+    this.xto = paramString;
     if (Util.isNullOrNil(paramString))
     {
-      this.njo.setVisibility(8);
-      paramString = this.umU;
+      this.qgC.setVisibility(8);
+      paramString = this.xtm;
       paramString.setVisibility(0);
-      if (Util.isNullOrNil(paramString.umQ)) {
-        paramString.umQ = b.fb(paramString.mContext);
+      if (Util.isNullOrNil(paramString.xti)) {
+        paramString.xti = b.fY(paramString.mContext);
       }
-      paramString.setData(paramString.umQ);
-      this.umX = true;
+      paramString.setData(paramString.xti);
+      this.xtp = true;
       AppMethodBeat.o(8950);
       return;
     }
-    this.umU.setData(null);
-    this.umX = false;
-    this.umU.setData(null);
-    this.njo.setVisibility(0);
-    d.a locala = new d.a();
+    this.xtm.setData(null);
+    this.xtp = false;
+    this.xtm.setData(null);
+    this.qgC.setVisibility(0);
+    c.a locala = new c.a();
     l locall = new l();
-    locall.ufe = paramString;
+    locall.xlf = paramString;
     o localo = new o();
     localo.offset = 0;
     localo.limit = 5;
-    locall.uff = localo;
-    locala.lBU = locall;
-    locala.lBV = new m();
+    locall.xlg = localo;
+    locala.otE = locall;
+    locala.otF = new m();
     locala.uri = "/cgi-bin/mmgame-bin/getgamesearch";
     locala.funcId = 2688;
-    aa.a(locala.bgN(), new aa.a()
+    z.a(locala.bEF(), new z.a()
     {
-      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.an.d paramAnonymousd, q paramAnonymousq)
+      public final int callback(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.am.c paramAnonymousc, p paramAnonymousp)
       {
         AppMethodBeat.i(8943);
         Log.i("MicroMsg.DownloadSearchUI", "errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
@@ -116,140 +116,132 @@ public class DownloadSearchUI
         Object localObject1;
         if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
         {
-          paramAnonymousString = (m)d.c.b(paramAnonymousd.lBS);
-          if ((paramAnonymousString == null) || (paramAnonymousString.ufh == null) || (Util.isNullOrNil(paramAnonymousString.ufh.ufa))) {
-            break label626;
+          paramAnonymousString = (m)c.c.b(paramAnonymousc.otC);
+          if ((paramAnonymousString == null) || (paramAnonymousString.xli == null) || (Util.isNullOrNil(paramAnonymousString.xli.xlb))) {
+            break label663;
           }
-          paramAnonymousq = new ArrayList();
+          paramAnonymousp = new ArrayList();
           paramAnonymousInt1 = 0;
-          Iterator localIterator = paramAnonymousString.ufh.ufa.iterator();
+          Iterator localIterator = paramAnonymousString.xli.xlb.iterator();
           if (localIterator.hasNext())
           {
-            paramAnonymousString = (com.tencent.mm.plugin.downloader.c.a.a.h)localIterator.next();
+            paramAnonymousString = (com.tencent.mm.plugin.downloader.b.a.a.h)localIterator.next();
             localObject1 = paramString;
             if (paramAnonymousString == null)
             {
               paramAnonymousString = null;
               label171:
               if (paramAnonymousString == null) {
-                break label702;
+                break label739;
               }
               paramAnonymousInt1 += 1;
               paramAnonymousString.position = paramAnonymousInt1;
-              paramAnonymousq.add(paramAnonymousString);
+              paramAnonymousp.add(paramAnonymousString);
             }
           }
         }
-        label702:
+        label663:
+        label739:
         for (;;)
         {
           break;
-          paramAnonymousd = new b();
-          paramAnonymousd.type = 3;
-          Object localObject3 = paramAnonymousString.ueY;
+          paramAnonymousc = new b();
+          paramAnonymousc.type = 3;
+          Object localObject3 = paramAnonymousString.xkZ;
           if (localObject3 == null)
           {
             paramAnonymousString = null;
             break label171;
           }
-          Object localObject2 = ((com.tencent.mm.plugin.downloader.c.a.a.d)localObject3).ueR;
-          localObject3 = ((com.tencent.mm.plugin.downloader.c.a.a.d)localObject3).ueT;
+          Object localObject2 = ((com.tencent.mm.plugin.downloader.b.a.a.d)localObject3).xkS;
+          localObject3 = ((com.tencent.mm.plugin.downloader.b.a.a.d)localObject3).xkU;
           if (localObject3 != null) {
-            paramAnonymousd.jumpUrl = ((com.tencent.mm.plugin.downloader.c.a.a.c)localObject3).ueQ;
+            paramAnonymousc.jumpUrl = ((com.tencent.mm.plugin.downloader.b.a.a.c)localObject3).xkR;
           }
           if (localObject2 == null)
           {
             paramAnonymousString = null;
             break label171;
           }
-          localObject3 = ((k)localObject2).ufZ;
-          e locale = ((k)localObject2).uga;
-          localObject2 = ((k)localObject2).ugb;
+          localObject3 = ((k)localObject2).xmf;
+          e locale = ((k)localObject2).xmg;
+          localObject2 = ((k)localObject2).xmh;
           if (localObject3 == null)
           {
             paramAnonymousString = null;
             break label171;
           }
-          if (((com.tencent.mm.plugin.downloader.c.b.d)localObject3).status != 0)
+          if (((com.tencent.mm.plugin.downloader.b.b.d)localObject3).status != 0)
           {
             paramAnonymousString = null;
             break label171;
           }
-          paramAnonymousd.appId = ((com.tencent.mm.plugin.downloader.c.b.d)localObject3).appid;
-          paramAnonymousd.unb = paramAnonymousString.ueZ;
-          paramAnonymousd.iconUrl = ((com.tencent.mm.plugin.downloader.c.b.d)localObject3).ufC;
-          if ((locale != null) && (!Util.isNullOrNil(locale.ufI))) {
-            paramAnonymousd.unc = locale.ufI;
+          paramAnonymousc.appId = ((com.tencent.mm.plugin.downloader.b.b.d)localObject3).appid;
+          paramAnonymousc.xtt = paramAnonymousString.xla;
+          paramAnonymousc.iconUrl = ((com.tencent.mm.plugin.downloader.b.b.d)localObject3).icon_url;
+          if ((locale != null) && (!Util.isNullOrNil(locale.xlP))) {
+            paramAnonymousc.xtu = locale.xlP;
           }
-          if ((localObject2 != null) && (((g)localObject2).ufQ != null)) {
-            paramAnonymousd.size = ((g)localObject2).ufQ.ufr;
+          if ((localObject2 != null) && (((g)localObject2).xlW != null)) {
+            paramAnonymousc.size = ((g)localObject2).xlW.xls;
           }
-          paramAnonymousd.una = ((String)localObject1);
-          paramAnonymousd.state = 1;
-          paramAnonymousString = paramAnonymousd;
+          paramAnonymousc.xts = ((String)localObject1);
+          paramAnonymousc.state = 1;
+          paramAnonymousString = paramAnonymousc;
           if (localObject2 == null) {
             break label171;
           }
-          paramAnonymousString = paramAnonymousd;
-          if (((g)localObject2).ufQ == null) {
+          paramAnonymousString = paramAnonymousc;
+          if (((g)localObject2).xlW == null) {
             break label171;
           }
-          paramAnonymousString = com.tencent.mm.plugin.appbrand.ac.b.getPackageInfo(MMApplicationContext.getContext(), ((g)localObject2).ufQ.ufq);
-          localObject1 = com.tencent.mm.plugin.downloader.model.d.asU(paramAnonymousd.appId);
-          if (paramAnonymousString == null)
+          paramAnonymousString = com.tencent.mm.plugin.appbrand.af.b.getPackageInfo(MMApplicationContext.getContext(), ((g)localObject2).xlW.xlr);
+          localObject1 = com.tencent.mm.plugin.downloader.model.d.amJ(paramAnonymousc.appId);
+          if (paramAnonymousString == null) {
+            if ((localObject1 != null) && (((com.tencent.mm.plugin.downloader.f.a)localObject1).field_status == 3) && (y.ZC(((com.tencent.mm.plugin.downloader.f.a)localObject1).field_filePath))) {
+              paramAnonymousc.state = 4;
+            }
+          }
+          for (;;)
           {
-            paramAnonymousString = paramAnonymousd;
-            if (localObject1 == null) {
-              break label171;
+            paramAnonymousc.xtv = ((g)localObject2).xlW.xlI;
+            paramAnonymousc.version = ((g)localObject2).xlW.xlC;
+            paramAnonymousc.xtw = ((g)localObject2).xlW.xlG;
+            paramAnonymousc.xtx = ((g)localObject2).xlW.xlH;
+            paramAnonymousString = paramAnonymousc;
+            break;
+            if (paramAnonymousString.versionCode < ((g)localObject2).xlW.xlv) {
+              paramAnonymousc.state = 3;
+            } else {
+              paramAnonymousc.state = 2;
             }
-            paramAnonymousString = paramAnonymousd;
-            if (((com.tencent.mm.plugin.downloader.g.a)localObject1).field_status != 3) {
-              break label171;
-            }
-            paramAnonymousString = paramAnonymousd;
-            if (!u.agG(((com.tencent.mm.plugin.downloader.g.a)localObject1).field_filePath)) {
-              break label171;
-            }
-            paramAnonymousd.state = 4;
-            paramAnonymousString = paramAnonymousd;
-            break label171;
           }
-          if (paramAnonymousString.versionCode < ((g)localObject2).ufQ.ufu)
-          {
-            paramAnonymousd.state = 3;
-            paramAnonymousString = paramAnonymousd;
-            break label171;
-          }
-          paramAnonymousd.state = 2;
-          paramAnonymousString = paramAnonymousd;
-          break label171;
           DownloadSearchUI.e(DownloadSearchUI.this).setVisibility(8);
           paramAnonymousString = DownloadSearchUI.a(DownloadSearchUI.this);
           paramAnonymousString.setVisibility(0);
-          paramAnonymousString.umR.clear();
-          if (!Util.isNullOrNil(paramAnonymousq)) {
-            paramAnonymousString.umR.addAll(paramAnonymousq);
+          paramAnonymousString.xtj.clear();
+          if (!Util.isNullOrNil(paramAnonymousp)) {
+            paramAnonymousString.xtj.addAll(paramAnonymousp);
           }
-          paramAnonymousString.setData(paramAnonymousString.umR);
+          paramAnonymousString.setData(paramAnonymousString.xtj);
           com.tencent.mm.plugin.downloader_app.b.a.a(13, 1303, 0, 1, "", "", "");
           for (;;)
           {
             AppMethodBeat.o(8943);
             return 0;
-            label626:
             DownloadSearchUI.a(DownloadSearchUI.this).setVisibility(8);
             DownloadSearchUI.e(DownloadSearchUI.this).setVisibility(0);
-            DownloadSearchUI.e(DownloadSearchUI.this).setText(DownloadSearchUI.this.getString(e.h.ukX, new Object[] { paramString }));
+            DownloadSearchUI.e(DownloadSearchUI.this).setText(DownloadSearchUI.this.getString(e.h.xrj, new Object[] { paramString }));
             com.tencent.mm.plugin.downloader_app.b.a.a(13, 1304, 0, 1, "", "", "");
           }
         }
       }
     });
-    com.tencent.mm.plugin.downloader_app.b.a.a(13, 1301, 1, 2, "", "", com.tencent.mm.plugin.downloader_app.b.a.fV("search_key_word", paramString));
+    com.tencent.mm.plugin.downloader_app.b.a.a(13, 1301, 1, 2, "", "", com.tencent.mm.plugin.downloader_app.b.a.gy("search_key_word", paramString));
     AppMethodBeat.o(8950);
   }
   
-  public final void bxH()
+  public final void bWw()
   {
     AppMethodBeat.i(8949);
     Log.i("MicroMsg.DownloadSearchUI", "onQuitSearch");
@@ -258,14 +250,14 @@ public class DownloadSearchUI
     AppMethodBeat.o(8949);
   }
   
-  public final void bxI()
+  public final void bWx()
   {
     AppMethodBeat.i(8948);
     Log.i("MicroMsg.DownloadSearchUI", "onEnterSearch");
     AppMethodBeat.o(8948);
   }
   
-  public final void bxJ()
+  public final void bWy()
   {
     AppMethodBeat.i(8952);
     Log.i("MicroMsg.DownloadSearchUI", "onClickClearText");
@@ -273,7 +265,7 @@ public class DownloadSearchUI
     AppMethodBeat.o(8952);
   }
   
-  public final void bxK()
+  public final void bWz()
   {
     AppMethodBeat.i(8953);
     Log.i("MicroMsg.DownloadSearchUI", "onSearchEditTextReady");
@@ -282,51 +274,51 @@ public class DownloadSearchUI
   
   public int getLayoutId()
   {
-    return e.f.ukC;
+    return e.f.xqO;
   }
   
   public void initView()
   {
     AppMethodBeat.i(8945);
     super.initView();
-    this.umU = ((DownloadSearchListView)findViewById(e.e.ukr));
-    this.njo = ((ProgressBar)findViewById(e.e.ukq));
-    this.umV = ((TextView)findViewById(e.e.no_result));
-    this.jjS = new t();
-    this.jjS.He(true);
-    this.jjS.XUl = this;
-    this.umU.setOnItemClickListener(new MRecyclerView.a()
+    this.xtm = ((DownloadSearchListView)findViewById(e.e.xqD));
+    this.qgC = ((ProgressBar)findViewById(e.e.xqC));
+    this.xtn = ((TextView)findViewById(e.e.no_result));
+    this.lMw = new s();
+    this.lMw.MY(true);
+    this.lMw.afKz = this;
+    this.xtm.setOnItemClickListener(new MRecyclerView.a()
     {
-      public final void U(View paramAnonymousView, int paramAnonymousInt)
+      public final void onItemClick(RecyclerView paramAnonymousRecyclerView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
-        AppMethodBeat.i(242845);
-        paramAnonymousView = DownloadSearchUI.a(DownloadSearchUI.this).umP.mDataList;
-        if ((paramAnonymousView != null) && (paramAnonymousInt >= 0) && (paramAnonymousInt < paramAnonymousView.size())) {}
-        for (paramAnonymousView = (b)paramAnonymousView.get(paramAnonymousInt); paramAnonymousView == null; paramAnonymousView = null)
+        AppMethodBeat.i(269691);
+        paramAnonymousRecyclerView = DownloadSearchUI.a(DownloadSearchUI.this).xth.mDataList;
+        if ((paramAnonymousRecyclerView != null) && (paramAnonymousInt >= 0) && (paramAnonymousInt < paramAnonymousRecyclerView.size())) {}
+        for (paramAnonymousRecyclerView = (b)paramAnonymousRecyclerView.get(paramAnonymousInt); paramAnonymousRecyclerView == null; paramAnonymousRecyclerView = null)
         {
-          AppMethodBeat.o(242845);
+          AppMethodBeat.o(269691);
           return;
         }
-        if (paramAnonymousView.type == 2)
+        if (paramAnonymousRecyclerView.type == 2)
         {
-          DownloadSearchUI.a(DownloadSearchUI.this).atv(paramAnonymousView.una);
-          DownloadSearchUI.b(DownloadSearchUI.this).setSearchContent(paramAnonymousView.una);
-          com.tencent.mm.plugin.downloader_app.b.a.a(13, 1302, paramAnonymousView.position, 2, "", "", com.tencent.mm.plugin.downloader_app.b.a.fV("search_key_word", paramAnonymousView.una));
-          AppMethodBeat.o(242845);
+          DownloadSearchUI.a(DownloadSearchUI.this).ank(paramAnonymousRecyclerView.xts);
+          DownloadSearchUI.b(DownloadSearchUI.this).setSearchContent(paramAnonymousRecyclerView.xts);
+          com.tencent.mm.plugin.downloader_app.b.a.a(13, 1302, paramAnonymousRecyclerView.position, 2, "", "", com.tencent.mm.plugin.downloader_app.b.a.gy("search_key_word", paramAnonymousRecyclerView.xts));
+          AppMethodBeat.o(269691);
           return;
         }
-        if (paramAnonymousView.type == 3)
+        if (paramAnonymousRecyclerView.type == 3)
         {
-          DownloadSearchUI.a(DownloadSearchUI.this).atv(DownloadSearchUI.b(DownloadSearchUI.this).getSearchContent());
-          if (!Util.isNullOrNil(paramAnonymousView.jumpUrl))
+          DownloadSearchUI.a(DownloadSearchUI.this).ank(DownloadSearchUI.b(DownloadSearchUI.this).getSearchContent());
+          if (!Util.isNullOrNil(paramAnonymousRecyclerView.jumpUrl))
           {
-            Bundle localBundle = new Bundle();
-            localBundle.putString("rawUrl", paramAnonymousView.jumpUrl);
-            ((com.tencent.mm.plugin.downloader_app.api.c)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.downloader_app.api.c.class)).f(DownloadSearchUI.this.getContext(), localBundle);
+            paramAnonymousView = new Bundle();
+            paramAnonymousView.putString("rawUrl", paramAnonymousRecyclerView.jumpUrl);
+            ((com.tencent.mm.plugin.downloader_app.api.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.downloader_app.api.c.class)).f(DownloadSearchUI.this.getContext(), paramAnonymousView);
           }
-          com.tencent.mm.plugin.downloader_app.b.a.a(13, 1303, paramAnonymousView.position, 40, paramAnonymousView.appId, "", "");
+          com.tencent.mm.plugin.downloader_app.b.a.a(13, 1303, paramAnonymousRecyclerView.position, 40, paramAnonymousRecyclerView.appId, "", "");
         }
-        AppMethodBeat.o(242845);
+        AppMethodBeat.o(269691);
       }
     });
     AppMethodBeat.o(8945);
@@ -344,8 +336,8 @@ public class DownloadSearchUI
   public boolean onCreateOptionsMenu(Menu paramMenu)
   {
     AppMethodBeat.i(8946);
-    this.jjS.a(this, paramMenu);
-    this.jjS.setHint(getString(e.h.ukY));
+    this.lMw.a(this, paramMenu);
+    this.lMw.setHint(getString(e.h.xrk));
     AppMethodBeat.o(8946);
     return true;
   }
@@ -353,7 +345,7 @@ public class DownloadSearchUI
   public boolean onPrepareOptionsMenu(Menu paramMenu)
   {
     AppMethodBeat.i(8947);
-    this.jjS.a(this, paramMenu);
+    this.lMw.a(this, paramMenu);
     AppMethodBeat.o(8947);
     return true;
   }

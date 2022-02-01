@@ -7,81 +7,83 @@ import com.tencent.mm.msgsubscription.e.g;
 import com.tencent.mm.msgsubscription.e.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/msgsubscription/storage/SubscribeMsgDataLoader;", "", "subscribeStorageManager", "Lcom/tencent/mm/msgsubscription/storage/ISubscribeStorageManager;", "(Lcom/tencent/mm/msgsubscription/storage/ISubscribeStorageManager;)V", "getLocalSubscribeList", "", "username", "", "callback", "Lcom/tencent/mm/msgsubscription/api/SubscribeMsgOpCallback;", "getLocalSubscribeSwitchOpened", "", "bizUsername", "getLocalSubscribeTemplate", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "templateId", "getSubscribeListByAppId", "appId", "subscribeUrl", "templateIdList", "", "extInfo", "getSubscribeListByUsername", "getSubscribeStatus", "", "updateLocalSubscribeStatus", "toSaveList", "switchOpened", "needUpdateSwitch", "needUpdateTimestamp", "updateLocalSubscribeStatusTimestamp", "timestamp", "", "updateLocalSubscribeSwitchOpened", "isOpened", "updateSubscribeList", "updateRequest", "Lcom/tencent/mm/msgsubscription/api/SubscribeMsgUpdateRequest;", "Companion", "plugin-comm_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/msgsubscription/storage/SubscribeMsgDataLoader;", "", "subscribeStorageManager", "Lcom/tencent/mm/msgsubscription/storage/ISubscribeStorageManager;", "(Lcom/tencent/mm/msgsubscription/storage/ISubscribeStorageManager;)V", "getLocalSubscribeList", "", "username", "", "callback", "Lcom/tencent/mm/msgsubscription/api/SubscribeMsgOpCallback;", "getLocalSubscribeSwitchOpened", "", "bizUsername", "getLocalSubscribeTemplate", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "templateId", "getSubscribeListByAppId", "appId", "subscribeUrl", "templateIdList", "", "extInfo", "getSubscribeListByUsername", "getSubscribeStatus", "", "updateLocalSubscribeStatus", "toSaveList", "switchOpened", "needUpdateSwitch", "needUpdateTimestamp", "updateLocalSubscribeStatusTimestamp", "timestamp", "", "updateLocalSubscribeSwitchOpened", "isOpened", "updateSubscribeList", "updateRequest", "Lcom/tencent/mm/msgsubscription/api/SubscribeMsgUpdateRequest;", "Companion", "plugin-comm_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  public static final b.a mqk;
-  public final a mqj;
+  public static final b.a pjV;
+  public final a pjW;
   
   static
   {
     AppMethodBeat.i(149650);
-    mqk = new b.a((byte)0);
+    pjV = new b.a((byte)0);
     AppMethodBeat.o(149650);
   }
   
   public b(a parama)
   {
     AppMethodBeat.i(149649);
-    this.mqj = parama;
+    this.pjW = parama;
     AppMethodBeat.o(149649);
   }
   
   public final void a(c paramc)
   {
-    AppMethodBeat.i(234367);
-    p.k(paramc, "updateRequest");
-    if (this.mqj == null)
+    AppMethodBeat.i(236272);
+    s.u(paramc, "updateRequest");
+    if (this.pjW == null)
     {
-      AppMethodBeat.o(234367);
+      AppMethodBeat.o(236272);
       return;
     }
-    Log.i("MicroMsg.SubscribeMsgDataLoader", "alvinluo updateSubscribeList username: " + paramc.username + ", appId: " + paramc.appId + ", size: " + paramc.moB.size());
-    Object localObject = d.mqz;
-    localObject = this.mqj;
-    h localh = new h(paramc, this.mqj);
-    localh.moL = paramc.moL;
-    localh.moM = paramc.moM;
+    Log.i("MicroMsg.SubscribeMsgDataLoader", "alvinluo updateSubscribeList username: " + paramc.username + ", appId: " + paramc.appId + ", size: " + paramc.pis.size());
+    Object localObject = d.pkg;
+    localObject = this.pjW;
+    h localh = new h(paramc, this.pjW);
+    localh.piC = paramc.piC;
+    localh.piD = paramc.piD;
+    paramc = ah.aiuX;
     d.a((a)localObject, (com.tencent.mm.msgsubscription.e.a)localh);
-    AppMethodBeat.o(234367);
+    AppMethodBeat.o(236272);
   }
   
   public final void a(String paramString, com.tencent.mm.msgsubscription.api.a parama)
   {
-    AppMethodBeat.i(234366);
-    p.k(paramString, "username");
+    AppMethodBeat.i(236266);
+    s.u(paramString, "username");
     Log.i("MicroMsg.SubscribeMsgDataLoader", "alvinluo getSubscribeMsgListByUsername %s", new Object[] { paramString });
-    if (this.mqj == null)
+    if (this.pjW == null)
     {
-      AppMethodBeat.o(234366);
+      AppMethodBeat.o(236266);
       return;
     }
-    d locald = d.mqz;
-    d.a(this.mqj, (com.tencent.mm.msgsubscription.e.a)new com.tencent.mm.msgsubscription.e.b(paramString, this.mqj, parama));
-    AppMethodBeat.o(234366);
+    d locald = d.pkg;
+    d.a(this.pjW, (com.tencent.mm.msgsubscription.e.a)new com.tencent.mm.msgsubscription.e.b(paramString, this.pjW, parama));
+    AppMethodBeat.o(236266);
   }
   
   public final void a(String paramString, List<SubscribeMsgTmpItem> paramList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    AppMethodBeat.i(234365);
-    p.k(paramString, "bizUsername");
-    p.k(paramList, "toSaveList");
-    if (this.mqj == null)
+    AppMethodBeat.i(236265);
+    s.u(paramString, "bizUsername");
+    s.u(paramList, "toSaveList");
+    if (this.pjW == null)
     {
-      AppMethodBeat.o(234365);
+      AppMethodBeat.o(236265);
       return;
     }
-    d locald = d.mqz;
-    d.a(this.mqj, (com.tencent.mm.msgsubscription.e.a)new g(paramString, paramList, paramBoolean1, paramBoolean2, paramBoolean3, this.mqj, (byte)0));
-    AppMethodBeat.o(234365);
+    d locald = d.pkg;
+    d.a(this.pjW, (com.tencent.mm.msgsubscription.e.a)new g(paramString, paramList, paramBoolean1, paramBoolean2, paramBoolean3, this.pjW, (byte)0));
+    AppMethodBeat.o(236265);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.msgsubscription.d.b
  * JD-Core Version:    0.7.0.1
  */

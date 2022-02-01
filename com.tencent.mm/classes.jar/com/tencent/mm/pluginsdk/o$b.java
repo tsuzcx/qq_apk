@@ -2,21 +2,21 @@ package com.tencent.mm.pluginsdk;
 
 public abstract interface o$b
 {
-  public abstract int fHh();
+  public abstract int gWV();
   
-  public abstract void fHi();
+  public abstract void gWW();
   
-  public abstract boolean fHj();
+  public abstract boolean gWX();
   
-  public abstract void fHk();
+  public abstract void gWY();
   
-  public abstract void fHl();
+  public abstract void gWZ();
   
-  public abstract boolean fHm();
+  public abstract boolean gXa();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.o.b
  * JD-Core Version:    0.7.0.1
  */

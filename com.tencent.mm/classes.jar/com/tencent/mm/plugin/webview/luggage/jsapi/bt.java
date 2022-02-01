@@ -1,101 +1,58 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
+import android.content.Context;
+import android.os.Looper;
+import com.tencent.luggage.d.b;
+import com.tencent.luggage.d.b.a;
+import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.plugin.webview.luggage.g.9;
+import com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewInputFooter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.SyncTask;
+import java.util.HashMap;
+import java.util.Map;
 
-public final class bt
+public class bt
+  extends bw<g>
 {
-  private static LinkedList<Class<? extends com.tencent.luggage.d.b>> CAI;
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
   
-  private static void bh(Class<? extends com.tencent.luggage.d.b> paramClass)
+  public final void b(b<g>.a paramb)
   {
-    AppMethodBeat.i(78643);
-    CAI.add(paramClass);
-    AppMethodBeat.o(78643);
+    int i = 0;
+    AppMethodBeat.i(78638);
+    Log.i("MicroMsg.JsApiShowSmileyPanel", "invokeInOwn");
+    Object localObject = (g)paramb.eiY;
+    if (((g)localObject).WFS != null) {
+      if (Thread.currentThread().getId() != ((g)localObject).mHandler.getLooper().getThread().getId()) {
+        break label111;
+      }
+    }
+    label111:
+    for (i = ((g)localObject).WFS.iCC(); i > 0; i = ((Integer)new g.9((g)localObject, Integer.valueOf(0)).exec(((g)localObject).mHandler)).intValue())
+    {
+      localObject = new HashMap();
+      ((Map)localObject).put("height", Integer.valueOf(a.K(((g)paramb.eiY).mContext, i)));
+      paramb.d("", (Map)localObject);
+      AppMethodBeat.o(78638);
+      return;
+    }
+    paramb.a("fail", null);
+    AppMethodBeat.o(78638);
   }
   
-  public static LinkedList<Class<? extends com.tencent.luggage.d.b>> ewB()
+  public final int dgI()
   {
-    try
-    {
-      AppMethodBeat.i(78642);
-      CAI = new LinkedList();
-      bh(an.class);
-      bh(bb.class);
-      bh(bm.class);
-      bh(ar.class);
-      bh(ah.class);
-      bh(a.class);
-      bh(aq.class);
-      bh(ba.class);
-      bh(t.class);
-      bh(av.class);
-      bh(z.class);
-      bh(al.class);
-      bh(w.class);
-      bh(u.class);
-      bh(m.class);
-      bh(b.class);
-      bh(c.class);
-      bh(g.class);
-      bh(h.class);
-      bh(i.class);
-      bh(j.class);
-      bh(k.class);
-      bh(l.class);
-      bh(o.class);
-      bh(s.class);
-      bh(x.class);
-      bh(aa.class);
-      bh(ab.class);
-      bh(ac.class);
-      bh(af.class);
-      bh(ag.class);
-      bh(aj.class);
-      bh(as.class);
-      bh(aw.class);
-      bh(bc.class);
-      bh(bd.class);
-      bh(bh.class);
-      bh(bi.class);
-      bh(bj.class);
-      bh(bl.class);
-      bh(bn.class);
-      bh(bo.class);
-      bh(bq.class);
-      bh(bp.class);
-      bh(y.class);
-      bh(f.class);
-      bh(n.class);
-      bh(ai.class);
-      bh(ak.class);
-      bh(ad.class);
-      bh(au.class);
-      bh(bg.class);
-      bh(ae.class);
-      bh(ax.class);
-      bh(p.class);
-      bh(ao.class);
-      bh(ap.class);
-      bh(at.class);
-      bh(q.class);
-      bh(e.class);
-      bh(r.class);
-      bh(d.class);
-      bh(bk.class);
-      bh(bf.class);
-      bh(v.class);
-      bh(ay.class);
-      bh(am.class);
-      LinkedList localLinkedList = CAI;
-      AppMethodBeat.o(78642);
-      return localLinkedList;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return 0;
+  }
+  
+  public final String name()
+  {
+    return "showSmileyPanel";
   }
 }
 

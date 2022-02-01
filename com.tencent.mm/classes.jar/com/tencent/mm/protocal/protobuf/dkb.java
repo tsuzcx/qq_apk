@@ -1,90 +1,91 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class dkb
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public LinkedList<dka> Nrf;
-  public String title;
-  
-  public dkb()
-  {
-    AppMethodBeat.i(72543);
-    this.Nrf = new LinkedList();
-    AppMethodBeat.o(72543);
-  }
+  public int aaPU;
+  public String devicename;
+  public String devicetype;
+  public String uuid;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(72544);
+    AppMethodBeat.i(155438);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.title != null) {
-        paramVarArgs.f(1, this.title);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.uuid != null) {
+        paramVarArgs.g(1, this.uuid);
       }
-      paramVarArgs.e(2, 8, this.Nrf);
-      AppMethodBeat.o(72544);
+      if (this.devicename != null) {
+        paramVarArgs.g(2, this.devicename);
+      }
+      if (this.devicetype != null) {
+        paramVarArgs.g(3, this.devicetype);
+      }
+      paramVarArgs.bS(4, this.aaPU);
+      AppMethodBeat.o(155438);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.title == null) {
-        break label336;
+      if (this.uuid == null) {
+        break label374;
       }
     }
-    label336:
-    for (paramInt = g.a.a.b.b.a.g(1, this.title) + 0;; paramInt = 0)
+    label374:
+    for (int i = i.a.a.b.b.a.h(1, this.uuid) + 0;; i = 0)
     {
-      int i = g.a.a.a.c(2, 8, this.Nrf);
-      AppMethodBeat.o(72544);
-      return paramInt + i;
+      paramInt = i;
+      if (this.devicename != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.devicename);
+      }
+      i = paramInt;
+      if (this.devicetype != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.devicetype);
+      }
+      paramInt = i.a.a.b.b.a.cJ(4, this.aaPU);
+      AppMethodBeat.o(155438);
+      return i + paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.Nrf.clear();
-        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(72544);
+        AppMethodBeat.o(155438);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         dkb localdkb = (dkb)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(72544);
+          AppMethodBeat.o(155438);
           return -1;
         case 1: 
-          localdkb.title = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(72544);
+          localdkb.uuid = locala.ajGk.readString();
+          AppMethodBeat.o(155438);
+          return 0;
+        case 2: 
+          localdkb.devicename = locala.ajGk.readString();
+          AppMethodBeat.o(155438);
+          return 0;
+        case 3: 
+          localdkb.devicetype = locala.ajGk.readString();
+          AppMethodBeat.o(155438);
           return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject = (byte[])paramVarArgs.get(paramInt);
-          dka localdka = new dka();
-          if ((localObject != null) && (localObject.length > 0)) {
-            localdka.parseFrom((byte[])localObject);
-          }
-          localdkb.Nrf.add(localdka);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(72544);
+        localdkb.aaPU = locala.ajGk.aar();
+        AppMethodBeat.o(155438);
         return 0;
       }
-      AppMethodBeat.o(72544);
+      AppMethodBeat.o(155438);
       return -1;
     }
   }

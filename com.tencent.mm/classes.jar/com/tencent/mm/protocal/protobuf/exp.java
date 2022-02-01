@@ -1,99 +1,128 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import i.a.a.b;
 
 public final class exp
-  extends dyy
+  extends com.tencent.mm.bx.a
 {
-  public com.tencent.mm.cd.b UxU;
+  public String YFT;
+  public long YFU;
+  public String abzp;
+  public String psp;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(104844);
+    AppMethodBeat.i(152690);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.psp == null)
       {
-        paramVarArgs = new g.a.a.b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(104844);
+        paramVarArgs = new b("Not all required fields were included: tp_username");
+        AppMethodBeat.o(152690);
         throw paramVarArgs;
       }
-      if (this.BaseResponse != null)
+      if (this.abzp == null)
       {
-        paramVarArgs.oE(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+        paramVarArgs = new b("Not all required fields were included: verify_content");
+        AppMethodBeat.o(152690);
+        throw paramVarArgs;
       }
-      if (this.UxU != null) {
-        paramVarArgs.c(2, this.UxU);
+      if (this.YFT == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: antispam_ticket");
+        AppMethodBeat.o(152690);
+        throw paramVarArgs;
       }
-      AppMethodBeat.o(104844);
+      if (this.psp != null) {
+        paramVarArgs.g(1, this.psp);
+      }
+      if (this.abzp != null) {
+        paramVarArgs.g(2, this.abzp);
+      }
+      if (this.YFT != null) {
+        paramVarArgs.g(3, this.YFT);
+      }
+      paramVarArgs.bv(4, this.YFU);
+      AppMethodBeat.o(152690);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label396;
+      if (this.psp == null) {
+        break label518;
       }
     }
-    label396:
-    for (paramInt = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label518:
+    for (int i = i.a.a.b.b.a.h(1, this.psp) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.UxU != null) {
-        i = paramInt + g.a.a.b.b.a.b(2, this.UxU);
+      paramInt = i;
+      if (this.abzp != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.abzp);
       }
-      AppMethodBeat.o(104844);
-      return i;
+      i = paramInt;
+      if (this.YFT != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.YFT);
+      }
+      paramInt = i.a.a.b.b.a.q(4, this.YFU);
+      AppMethodBeat.o(152690);
+      return i + paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.BaseResponse == null)
+        if (this.psp == null)
         {
-          paramVarArgs = new g.a.a.b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(104844);
+          paramVarArgs = new b("Not all required fields were included: tp_username");
+          AppMethodBeat.o(152690);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(104844);
+        if (this.abzp == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: verify_content");
+          AppMethodBeat.o(152690);
+          throw paramVarArgs;
+        }
+        if (this.YFT == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: antispam_ticket");
+          AppMethodBeat.o(152690);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(152690);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         exp localexp = (exp)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(104844);
+          AppMethodBeat.o(152690);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject = (byte[])paramVarArgs.get(paramInt);
-            jh localjh = new jh();
-            if ((localObject != null) && (localObject.length > 0)) {
-              localjh.parseFrom((byte[])localObject);
-            }
-            localexp.BaseResponse = localjh;
-            paramInt += 1;
-          }
-          AppMethodBeat.o(104844);
+          localexp.psp = locala.ajGk.readString();
+          AppMethodBeat.o(152690);
+          return 0;
+        case 2: 
+          localexp.abzp = locala.ajGk.readString();
+          AppMethodBeat.o(152690);
+          return 0;
+        case 3: 
+          localexp.YFT = locala.ajGk.readString();
+          AppMethodBeat.o(152690);
           return 0;
         }
-        localexp.UxU = ((g.a.a.a.a)localObject).abFh.iUw();
-        AppMethodBeat.o(104844);
+        localexp.YFU = locala.ajGk.aaw();
+        AppMethodBeat.o(152690);
         return 0;
       }
-      AppMethodBeat.o(104844);
+      AppMethodBeat.o(152690);
       return -1;
     }
   }

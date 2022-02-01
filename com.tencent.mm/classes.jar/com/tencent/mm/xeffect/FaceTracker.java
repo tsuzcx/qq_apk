@@ -5,30 +5,31 @@ import android.graphics.RectF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.Buffer;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.a.k;
 
-@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/xeffect/FaceTracker;", "", "modelRoot", "", "(Ljava/lang/String;)V", "nPtr", "", "getNPtr", "()J", "setNPtr", "(J)V", "destroy", "", "detect", "", "data", "Ljava/nio/Buffer;", "width", "height", "getAlignments", "", "", "Landroid/graphics/PointF;", "getFaceAngles", "Lcom/tencent/mm/xeffect/FacePosAngle;", "getFacePartConf", "", "getFaceRect", "Landroid/graphics/RectF;", "getFaceRects", "getPoints", "()[Landroid/graphics/PointF;", "nDestroy", "nDetect", "nGetAlignments", "nGetFaceAngles", "nGetFacePartConf", "nGetFaceRect", "nGetFaceRects", "nInit", "Companion", "renderlib_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mm/xeffect/FaceTracker;", "", "modelMap", "", "", "(Ljava/util/Map;)V", "nPtr", "", "getNPtr", "()J", "setNPtr", "(J)V", "destroy", "", "detect", "", "data", "Ljava/nio/Buffer;", "width", "height", "getAlignments", "", "", "Landroid/graphics/PointF;", "getFaceAngles", "Lcom/tencent/mm/xeffect/FacePosAngle;", "getFacePartConf", "", "getFaceRect", "Landroid/graphics/RectF;", "getFaceRects", "getPoints", "()[Landroid/graphics/PointF;", "nDestroy", "nDetect", "nGetAlignments", "nGetFaceAngles", "nGetFacePartConf", "nGetFaceRect", "nGetFaceRects", "nInitWithMap", "([Ljava/lang/String;)J", "Companion", "renderlib_release"}, k=1, mv={1, 1, 15})
 public final class FaceTracker
 {
-  public static final a YYD;
-  public long NmO;
+  public static final FaceTracker.a agWO;
+  public long nNg;
   
   static
   {
-    AppMethodBeat.i(195610);
-    YYD = new a((byte)0);
-    e.load("xlabeffect");
-    AppMethodBeat.o(195610);
+    AppMethodBeat.i(234544);
+    agWO = new FaceTracker.a((byte)0);
+    f.load("xlabeffect");
+    AppMethodBeat.o(234544);
   }
   
-  public FaceTracker(String paramString)
+  public FaceTracker(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(195607);
-    this.NmO = nInit(paramString);
-    AppMethodBeat.o(195607);
+    AppMethodBeat.i(234539);
+    d.a locala = d.agXC;
+    this.nNg = nInitWithMap(d.a.cX(paramMap));
+    AppMethodBeat.o(234539);
   }
   
   private final native float[] nGetAlignments(long paramLong);
@@ -41,18 +42,18 @@ public final class FaceTracker
   
   private final native float[] nGetFaceRects(long paramLong);
   
-  private final native long nInit(String paramString);
+  private final native long nInitWithMap(String[] paramArrayOfString);
   
-  public final List<a> ijS()
+  public final List<a> jQa()
   {
     int i = 0;
-    AppMethodBeat.i(195587);
+    AppMethodBeat.i(234552);
     Object localObject = new ArrayList();
-    float[] arrayOfFloat = nGetFaceAngles(this.NmO);
+    float[] arrayOfFloat = nGetFaceAngles(this.nNg);
     if (arrayOfFloat == null)
     {
       localObject = (List)localObject;
-      AppMethodBeat.o(195587);
+      AppMethodBeat.o(234552);
       return localObject;
     }
     int j = arrayOfFloat.length;
@@ -66,20 +67,20 @@ public final class FaceTracker
       i += 1;
     }
     localObject = (List)localObject;
-    AppMethodBeat.o(195587);
+    AppMethodBeat.o(234552);
     return localObject;
   }
   
-  public final List<RectF> ijT()
+  public final List<RectF> jQb()
   {
     int i = 0;
-    AppMethodBeat.i(195593);
+    AppMethodBeat.i(234555);
     Object localObject = new ArrayList();
-    float[] arrayOfFloat = nGetFaceRects(this.NmO);
+    float[] arrayOfFloat = nGetFaceRects(this.nNg);
     if (arrayOfFloat == null)
     {
       localObject = (List)localObject;
-      AppMethodBeat.o(195593);
+      AppMethodBeat.o(234555);
       return localObject;
     }
     int j = arrayOfFloat.length;
@@ -95,19 +96,19 @@ public final class FaceTracker
       i += 1;
     }
     localObject = (List)localObject;
-    AppMethodBeat.o(195593);
+    AppMethodBeat.o(234555);
     return localObject;
   }
   
-  public final List<PointF[]> ijU()
+  public final List<PointF[]> jQc()
   {
-    AppMethodBeat.i(195595);
+    AppMethodBeat.i(234563);
     Object localObject = new ArrayList();
-    float[] arrayOfFloat = nGetAlignments(this.NmO);
+    float[] arrayOfFloat = nGetAlignments(this.nNg);
     if (arrayOfFloat == null)
     {
       localObject = (List)localObject;
-      AppMethodBeat.o(195595);
+      AppMethodBeat.o(234563);
       return localObject;
     }
     int i = arrayOfFloat.length;
@@ -141,64 +142,56 @@ public final class FaceTracker
       i += 1;
     }
     localObject = (List)localObject;
-    AppMethodBeat.o(195595);
+    AppMethodBeat.o(234563);
     return localObject;
   }
   
-  public final List<float[]> ijV()
+  public final List<float[]> jQd()
   {
     int i = 0;
-    AppMethodBeat.i(195600);
+    AppMethodBeat.i(234571);
     Object localObject = new ArrayList();
-    float[] arrayOfFloat1 = nGetFacePartConf(this.NmO);
-    if (arrayOfFloat1 == null)
+    float[] arrayOfFloat = nGetFacePartConf(this.nNg);
+    if (arrayOfFloat == null)
     {
       localObject = (List)localObject;
-      AppMethodBeat.o(195600);
+      AppMethodBeat.o(234571);
       return localObject;
     }
-    int m = arrayOfFloat1.length;
+    int m = arrayOfFloat.length;
     if (m < 2)
     {
       XEffectLog.w("FaceTracker", "part conf data no face count", new Object[0]);
       localObject = (List)localObject;
-      AppMethodBeat.o(195600);
+      AppMethodBeat.o(234571);
       return localObject;
     }
-    int j = (int)arrayOfFloat1[0];
-    int k = (int)arrayOfFloat1[1];
+    int j = (int)arrayOfFloat[0];
+    int k = (int)arrayOfFloat[1];
     if (m != j * k + 2)
     {
       XEffectLog.w("FaceTracker", "part conf data size error, face:" + j + ", conf:" + k + ", float:" + m, new Object[0]);
       localObject = (List)localObject;
-      AppMethodBeat.o(195600);
+      AppMethodBeat.o(234571);
       return localObject;
     }
     while (i < j)
     {
-      m = i * j + 2 + k;
-      p.k(arrayOfFloat1, "$this$copyOfRangeImpl");
-      kotlin.a.e.oq(m, arrayOfFloat1.length);
-      float[] arrayOfFloat2 = Arrays.copyOfRange(arrayOfFloat1, i * j + 2, m);
-      p.j(arrayOfFloat2, "java.util.Arrays.copyOfR…this, fromIndex, toIndex)");
-      ((ArrayList)localObject).add(arrayOfFloat2);
+      ((ArrayList)localObject).add(k.a(arrayOfFloat, i * j + 2, i * j + 2 + k));
       i += 1;
     }
     localObject = (List)localObject;
-    AppMethodBeat.o(195600);
+    AppMethodBeat.o(234571);
     return localObject;
   }
   
   public final native void nDestroy(long paramLong);
   
   public final native int nDetect(long paramLong, Buffer paramBuffer, int paramInt1, int paramInt2);
-  
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/xeffect/FaceTracker$Companion;", "", "()V", "TAG", "", "renderlib_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.xeffect.FaceTracker
  * JD-Core Version:    0.7.0.1
  */

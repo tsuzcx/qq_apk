@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.webview;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.j.b;
-import com.tencent.mm.plugin.ay.a.a;
+import com.tencent.mm.loader.i.b;
+import com.tencent.mm.plugin.ba.a.e;
 import com.tencent.mm.sdk.platformtools.WeChatHosts;
 import java.util.regex.Pattern;
 
 public final class a
 {
-  public static final Pattern PDC;
-  public static final String PDD;
+  public static final Pattern Wuh;
+  public static final String Wui;
   
   static
   {
     AppMethodBeat.i(77805);
-    PDC = Pattern.compile("(http|https)://" + WeChatHosts.domainString(a.a.host_mp_weixin_qq_com) + ".*");
-    PDD = b.aSL() + "vproxy";
+    Wuh = Pattern.compile("(http|https)://" + WeChatHosts.domainString(a.e.host_mp_weixin_qq_com) + ".*");
+    Wui = b.bmz() + "vproxy";
     AppMethodBeat.o(77805);
   }
 }

@@ -1,23 +1,23 @@
 package com.tencent.liteapp.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/liteapp/mgr/WxaLiteAppPath;", "", "()V", "Companion", "wxa_lite_app_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/liteapp/mgr/WxaLiteAppPath;", "", "()V", "Companion", "wxa_lite_app_release"}, k=1, mv={1, 1, 16})
 public final class h
 {
   private static final String TAG = "WxaLiteApp.WxaLiteAppPath";
-  public static final a coW;
+  public static final a egi;
   
   static
   {
-    AppMethodBeat.i(259213);
-    coW = new a((byte)0);
+    AppMethodBeat.i(219044);
+    egi = new a((byte)0);
     TAG = "WxaLiteApp.WxaLiteAppPath";
-    AppMethodBeat.o(259213);
+    AppMethodBeat.o(219044);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/liteapp/mgr/WxaLiteAppPath$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getLiteAppPath", "appId", "pid", "md5", "getLiteAppPathRoot", "getLiteAppTmpPath", "wxa_lite_app_release"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/liteapp/mgr/WxaLiteAppPath$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getLiteAppCachePath", "getLiteAppPath", "appId", "pid", "md5", "getLiteAppPathRoot", "getLiteAppRootTmpPath", "getLiteAppTmpPath", "wxa_lite_app_release"}, k=1, mv={1, 1, 16})
   public static final class a {}
 }
 

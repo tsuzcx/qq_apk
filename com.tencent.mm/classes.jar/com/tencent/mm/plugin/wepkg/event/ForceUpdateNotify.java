@@ -11,13 +11,13 @@ public class ForceUpdateNotify
   implements Parcelable
 {
   public static Parcelable.Creator<ForceUpdateNotify> CREATOR;
-  public static Set<String> QMf;
-  public String[] QMg;
+  public static Set<String> XFD;
+  public String[] XFE;
   
   static
   {
     AppMethodBeat.i(110637);
-    QMf = new HashSet();
+    XFD = new HashSet();
     CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(110637);
   }
@@ -25,34 +25,34 @@ public class ForceUpdateNotify
   private ForceUpdateNotify(Parcel paramParcel)
   {
     AppMethodBeat.i(110636);
-    this.QMg = paramParcel.createStringArray();
+    this.XFE = paramParcel.createStringArray();
     AppMethodBeat.o(110636);
   }
   
   private ForceUpdateNotify(String[] paramArrayOfString)
   {
-    this.QMg = paramArrayOfString;
+    this.XFE = paramArrayOfString;
   }
   
   public static void add(String paramString)
   {
     AppMethodBeat.i(110633);
-    QMf.add(paramString);
+    XFD.add(paramString);
     AppMethodBeat.o(110633);
   }
   
-  public static void dRf()
+  public static void eGV()
   {
     AppMethodBeat.i(110634);
-    if (QMf.size() != 0)
+    if (XFD.size() != 0)
     {
-      Set localSet = QMf;
+      Set localSet = XFD;
       c.a(new ForceUpdateNotify((String[])localSet.toArray(new String[localSet.size()])), new c.a()
       {
-        public final void fiS()
+        public final void gtj()
         {
           AppMethodBeat.i(110631);
-          ForceUpdateNotify.QMf.clear();
+          ForceUpdateNotify.XFD.clear();
           AppMethodBeat.o(110631);
         }
       });
@@ -68,7 +68,7 @@ public class ForceUpdateNotify
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(110635);
-    paramParcel.writeStringArray(this.QMg);
+    paramParcel.writeStringArray(this.XFE);
     AppMethodBeat.o(110635);
   }
 }

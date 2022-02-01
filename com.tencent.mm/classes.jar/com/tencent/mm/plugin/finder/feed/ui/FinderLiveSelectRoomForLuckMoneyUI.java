@@ -1,229 +1,230 @@
 package com.tencent.mm.plugin.finder.feed.ui;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.c;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.b.k;
-import com.tencent.mm.plugin.finder.live.view.adapter.u;
-import com.tencent.mm.plugin.finder.live.view.adapter.v;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.plugin.finder.live.p.b;
+import com.tencent.mm.plugin.finder.live.p.e;
+import com.tencent.mm.plugin.finder.live.p.f;
+import com.tencent.mm.plugin.finder.live.p.h;
+import com.tencent.mm.plugin.finder.live.p.i;
+import com.tencent.mm.plugin.finder.live.view.adapter.aa;
+import com.tencent.mm.plugin.finder.live.view.adapter.ab;
 import com.tencent.mm.pluginsdk.ui.MultiSelectContactView;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.as;
 import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
-import com.tencent.mm.ui.contact.a.a;
+import com.tencent.mm.ui.contact.p;
 import com.tencent.mm.ui.contact.q;
 import com.tencent.mm.ui.contact.r;
-import com.tencent.mm.ui.w.b;
+import com.tencent.mm.ui.y;
+import com.tencent.mm.ui.y.a;
+import com.tencent.mm.ui.y.b;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.g.b.ag;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.an;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveSelectRoomForLuckMoneyUI;", "Lcom/tencent/mm/ui/contact/MMBaseSelectContactUI;", "()V", "inputView", "Lcom/tencent/mm/pluginsdk/ui/MultiSelectContactView;", "maxRoomCount", "", "selectUserSet", "Ljava/util/HashSet;", "", "createInitAdapter", "Lcom/tencent/mm/ui/contact/MMInitContactAdapter;", "createSearchAdapter", "Lcom/tencent/mm/ui/contact/MMBaseSearchContactAdapter;", "fakeDarkMode", "", "getLayoutId", "getSearchRange", "", "getTitleString", "handleItemClick", "parent", "Landroid/widget/AdapterView;", "view", "Landroid/view/View;", "position", "id", "", "handleSelect", "initData", "initMenu", "initSelectView", "initViews", "isItemCheck", "", "item", "Lcom/tencent/mm/ui/contact/item/BaseContactDataItem;", "isSearchBarInTop", "isShowAlphabetScrollBar", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onSelectChange", "action", "userName", "selectUser", "contact", "Lcom/tencent/mm/storage/Contact;", "username", "setSubTitle", "updateMenu", "Companion", "plugin-finder-live_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveSelectRoomForLuckMoneyUI;", "Lcom/tencent/mm/ui/contact/MMBaseSelectContactUI;", "()V", "inputView", "Lcom/tencent/mm/pluginsdk/ui/MultiSelectContactView;", "maxRoomCount", "", "selectUserSet", "Ljava/util/HashSet;", "", "createInitAdapter", "Lcom/tencent/mm/ui/contact/MMInitContactAdapter;", "createSearchAdapter", "Lcom/tencent/mm/ui/contact/MMBaseSearchContactAdapter;", "fakeDarkMode", "", "getLayoutId", "getSearchRange", "", "getTitleString", "handleItemClick", "parent", "Landroid/widget/AdapterView;", "view", "Landroid/view/View;", "position", "id", "", "handleSelect", "initData", "initMenu", "initSelectView", "initViews", "isItemCheck", "", "item", "Lcom/tencent/mm/ui/contact/item/BaseContactDataItem;", "isSearchBarInTop", "isShowAlphabetScrollBar", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onSelectChange", "action", "userName", "selectUser", "contact", "Lcom/tencent/mm/storage/Contact;", "username", "setFixTextSize", "setSubTitle", "updateMenu", "Companion", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderLiveSelectRoomForLuckMoneyUI
   extends MMBaseSelectContactUI
 {
-  private static final String TAG = "Finder.FinderLiveSelectRoomForLuckMoneyUI";
-  public static final FinderLiveSelectRoomForLuckMoneyUI.a xPR;
-  private HashMap _$_findViewCache;
-  private final HashSet<String> mNi;
-  private MultiSelectContactView xPP;
-  private int xPQ;
+  public static final FinderLiveSelectRoomForLuckMoneyUI.a BpF;
+  private static final String TAG;
+  private MultiSelectContactView BpG;
+  private int BpH;
+  private final HashSet<String> pJQ;
   
   static
   {
-    AppMethodBeat.i(233179);
-    xPR = new FinderLiveSelectRoomForLuckMoneyUI.a((byte)0);
+    AppMethodBeat.i(364846);
+    BpF = new FinderLiveSelectRoomForLuckMoneyUI.a((byte)0);
     TAG = "Finder.FinderLiveSelectRoomForLuckMoneyUI";
-    AppMethodBeat.o(233179);
+    AppMethodBeat.o(364846);
   }
   
   public FinderLiveSelectRoomForLuckMoneyUI()
   {
-    AppMethodBeat.i(233176);
-    this.mNi = new HashSet();
-    AppMethodBeat.o(233176);
+    AppMethodBeat.i(364814);
+    this.pJQ = new HashSet();
+    AppMethodBeat.o(364814);
   }
   
-  private final void atk()
+  private static final void a(FinderLiveSelectRoomForLuckMoneyUI paramFinderLiveSelectRoomForLuckMoneyUI)
   {
-    AppMethodBeat.i(233151);
-    Object localObject = (Collection)this.mNi;
-    if ((localObject == null) || (((Collection)localObject).isEmpty())) {}
-    for (int i = 1; i == 0; i = 0)
+    AppMethodBeat.i(364840);
+    s.u(paramFinderLiveSelectRoomForLuckMoneyUI, "this$0");
+    Object localObject = paramFinderLiveSelectRoomForLuckMoneyUI.mController.aAm(1);
+    if (localObject != null)
     {
-      enableOptionMenu(1, true);
-      localObject = getContext();
-      kotlin.g.b.p.j(localObject, "context");
-      updateOptionMenuText(1, ((AppCompatActivity)localObject).getResources().getString(b.j.finder_live_visibility_finish_numbers_tips, new Object[] { Integer.valueOf(this.mNi.size()) }));
-      AppMethodBeat.o(233151);
-      return;
-    }
-    enableOptionMenu(1, false);
-    updateOptionMenuText(1, getString(b.j.finder_live_visibility_finish_btn));
-    AppMethodBeat.o(233151);
-  }
-  
-  public final void N(View paramView, int paramInt)
-  {
-    AppMethodBeat.i(233169);
-    paramView = getContentLV();
-    kotlin.g.b.p.j(paramView, "getContentLV()");
-    int i = paramInt - paramView.getHeaderViewsCount();
-    if (i < 0)
-    {
-      Log.i(TAG, "offsetPosition is Smaller than 0, offsetPosition=%d | position=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
-      AppMethodBeat.o(233169);
-      return;
-    }
-    paramView = hUP().awM(i);
-    if (paramView == null)
-    {
-      AppMethodBeat.o(233169);
-      return;
-    }
-    if (paramView.fqR() == null)
-    {
-      AppMethodBeat.o(233169);
-      return;
-    }
-    Object localObject = paramView.fqR();
-    kotlin.g.b.p.j(localObject, "baseContactDataItem.contact");
-    if (((as)localObject).app() == 1)
-    {
-      AppMethodBeat.o(233169);
-      return;
-    }
-    paramView = paramView.fqR();
-    kotlin.g.b.p.j(paramView, "contact");
-    localObject = paramView.getUsername();
-    paramView = (View)localObject;
-    if (localObject == null) {
-      paramView = "";
-    }
-    hUZ();
-    if (this.mNi.contains(paramView))
-    {
-      this.mNi.remove(paramView);
-      hUR().bqR(paramView);
+      if (((y.a)localObject).advs == null) {
+        break label90;
+      }
+      localObject = ((y.a)localObject).advs;
     }
     for (;;)
     {
-      hUZ();
-      hUQ().notifyDataSetChanged();
-      atk();
-      AppMethodBeat.o(233169);
+      if (localObject != null)
+      {
+        localObject = (Button)((View)localObject).findViewById(a.g.action_option_btn);
+        if (localObject != null)
+        {
+          com.tencent.mm.plugin.finder.accessibility.a locala = com.tencent.mm.plugin.finder.accessibility.a.Ate;
+          paramFinderLiveSelectRoomForLuckMoneyUI = paramFinderLiveSelectRoomForLuckMoneyUI.getContext();
+          s.s(paramFinderLiveSelectRoomForLuckMoneyUI, "context");
+          ((Button)localObject).setTextSize(1, com.tencent.mm.plugin.finder.accessibility.a.g((Context)paramFinderLiveSelectRoomForLuckMoneyUI, 16.0F));
+        }
+      }
+      AppMethodBeat.o(364840);
       return;
-      if (this.mNi.size() < this.xPQ)
-      {
-        this.mNi.add(paramView);
-        hUR().bqR(paramView);
+      label90:
+      if (((y.a)localObject).advr != null) {
+        localObject = ((y.a)localObject).advr;
+      } else {
+        localObject = null;
       }
     }
   }
   
-  public final void V(int paramInt, String paramString)
+  private static final boolean a(FinderLiveSelectRoomForLuckMoneyUI paramFinderLiveSelectRoomForLuckMoneyUI, MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(233171);
-    if (paramInt == 1)
+    AppMethodBeat.i(364832);
+    s.u(paramFinderLiveSelectRoomForLuckMoneyUI, "this$0");
+    paramMenuItem = new ArrayList();
+    paramMenuItem.addAll((Collection)paramFinderLiveSelectRoomForLuckMoneyUI.pJQ);
+    Intent localIntent = new Intent();
+    localIntent.putStringArrayListExtra("KEY_LUCKY_MONEY_CHAT_ROOM_USERNAME", paramMenuItem);
+    paramFinderLiveSelectRoomForLuckMoneyUI.setResult(-1, localIntent);
+    paramFinderLiveSelectRoomForLuckMoneyUI.finish();
+    paramFinderLiveSelectRoomForLuckMoneyUI.aNr();
+    paramFinderLiveSelectRoomForLuckMoneyUI.jyE().notifyDataSetChanged();
+    AppMethodBeat.o(364832);
+    return true;
+  }
+  
+  private final void aNr()
+  {
+    AppMethodBeat.i(364821);
+    Collection localCollection = (Collection)this.pJQ;
+    if ((localCollection == null) || (localCollection.isEmpty())) {}
+    for (int i = 1; i == 0; i = 0)
     {
-      Collection localCollection = (Collection)this.mNi;
-      if (localCollection == null)
+      enableOptionMenu(1, true);
+      updateOptionMenuText(1, getContext().getResources().getString(p.h.Ctu, new Object[] { Integer.valueOf(this.pJQ.size()) }));
+      AppMethodBeat.o(364821);
+      return;
+    }
+    enableOptionMenu(1, false);
+    updateOptionMenuText(1, getString(p.h.finder_live_visibility_finish_btn));
+    AppMethodBeat.o(364821);
+  }
+  
+  public final void _$_clearFindViewByIdCache() {}
+  
+  public final void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(364915);
+    int i = paramInt - getContentLV().getHeaderViewsCount();
+    if (i < 0)
+    {
+      Log.i(TAG, "offsetPosition is Smaller than 0, offsetPosition=%d | position=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
+      AppMethodBeat.o(364915);
+      return;
+    }
+    paramAdapterView = jyE().aDt(i);
+    if (paramAdapterView == null)
+    {
+      AppMethodBeat.o(364915);
+      return;
+    }
+    if (paramAdapterView.contact == null)
+    {
+      AppMethodBeat.o(364915);
+      return;
+    }
+    if (paramAdapterView.contact.field_deleteFlag == 1)
+    {
+      AppMethodBeat.o(364915);
+      return;
+    }
+    paramAdapterView = paramAdapterView.contact;
+    s.s(paramAdapterView, "contact");
+    paramView = paramAdapterView.field_username;
+    paramAdapterView = paramView;
+    if (paramView == null) {
+      paramAdapterView = "";
+    }
+    iKA();
+    if (this.pJQ.contains(paramAdapterView))
+    {
+      this.pJQ.remove(paramAdapterView);
+      this.KOt.bqG(paramAdapterView);
+    }
+    for (;;)
+    {
+      iKA();
+      jyF().notifyDataSetChanged();
+      aNr();
+      AppMethodBeat.o(364915);
+      return;
+      if (this.pJQ.size() < this.BpH)
       {
-        paramString = new t("null cannot be cast to non-null type kotlin.collections.MutableCollection<T>");
-        AppMethodBeat.o(233171);
-        throw paramString;
+        this.pJQ.add(paramAdapterView);
+        this.KOt.bqG(paramAdapterView);
       }
-      ag.fc(localCollection).remove(paramString);
-      hUP().notifyDataSetChanged();
-      atk();
     }
-    AppMethodBeat.o(233171);
   }
   
-  public final void _$_clearFindViewByIdCache()
+  public final boolean a(com.tencent.mm.ui.contact.a.a parama)
   {
-    AppMethodBeat.i(233182);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(233182);
-  }
-  
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(233181);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
+    AppMethodBeat.i(364936);
+    if ((parama != null) && (parama.afey) && (parama.contact != null))
     {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(233181);
-    return localView1;
-  }
-  
-  public final boolean a(a parama)
-  {
-    AppMethodBeat.i(233175);
-    if ((parama != null) && (parama.fJk()) && (parama.fqR() != null))
-    {
-      Object localObject1 = (Iterable)this.mNi;
+      Object localObject1 = (Iterable)this.pJQ;
       Collection localCollection = (Collection)new ArrayList();
       localObject1 = ((Iterable)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
         Object localObject2 = ((Iterator)localObject1).next();
-        String str = (String)localObject2;
-        as localas = parama.fqR();
-        kotlin.g.b.p.j(localas, "item.contact");
-        if (Util.isEqual(str, localas.getUsername())) {
+        if (Util.isEqual((String)localObject2, parama.contact.field_username)) {
           localCollection.add(localObject2);
         }
       }
       if (((Collection)localCollection).isEmpty()) {}
       for (int i = 1; i == 0; i = 0)
       {
-        AppMethodBeat.o(233175);
+        AppMethodBeat.o(364936);
         return true;
       }
-      AppMethodBeat.o(233175);
+      AppMethodBeat.o(364936);
       return false;
     }
-    AppMethodBeat.o(233175);
+    AppMethodBeat.o(364936);
     return false;
   }
   
-  public final void ata()
+  public final void aNi()
   {
-    AppMethodBeat.i(233153);
-    super.ata();
-    this.xPQ = getIntent().getIntExtra("KEY_LUCKY_MONEY_CHAT_ROOM_MAX_COUNT", 0);
+    AppMethodBeat.i(364872);
+    super.aNi();
+    this.BpH = getIntent().getIntExtra("KEY_LUCKY_MONEY_CHAT_ROOM_MAX_COUNT", 0);
     Object localObject = getIntent().getStringArrayListExtra("KEY_LUCKY_MONEY_CHAT_ROOM_USERNAME");
-    this.mNi.clear();
+    this.pJQ.clear();
     if (localObject != null)
     {
       localObject = ((Iterable)localObject).iterator();
@@ -238,112 +239,120 @@ public final class FinderLiveSelectRoomForLuckMoneyUI
           if (i != 0) {
             break label117;
           }
-          this.mNi.add(str);
+          this.pJQ.add(str);
           break;
         }
       }
     }
-    Log.i(TAG, "initData maxRoomCount:" + this.xPQ + ",selectUserSet size:" + this.mNi.size());
-    AppMethodBeat.o(233153);
+    Log.i(TAG, "initData maxRoomCount:" + this.BpH + ",selectUserSet size:" + this.pJQ.size());
+    AppMethodBeat.o(364872);
   }
   
-  public final boolean bwH()
+  public final void ad(int paramInt, String paramString)
   {
-    return false;
+    AppMethodBeat.i(364920);
+    if (paramInt == 1)
+    {
+      Collection localCollection = (Collection)this.pJQ;
+      if (localCollection == null)
+      {
+        paramString = new NullPointerException("null cannot be cast to non-null type kotlin.collections.MutableCollection<T>");
+        AppMethodBeat.o(364920);
+        throw paramString;
+      }
+      an.hA(localCollection).remove(paramString);
+      jyE().notifyDataSetChanged();
+      aNr();
+    }
+    AppMethodBeat.o(364920);
   }
   
-  public final boolean bwI()
+  public final r bVA()
   {
-    return false;
-  }
-  
-  public final String bwJ()
-  {
-    AppMethodBeat.i(233165);
-    String str = getContext().getString(b.j.finder_live_select_room_lucky_money_title);
-    kotlin.g.b.p.j(str, "context.getString(R.stri…t_room_lucky_money_title)");
-    AppMethodBeat.o(233165);
-    return str;
-  }
-  
-  public final r bwK()
-  {
-    AppMethodBeat.i(233162);
-    Object localObject = new u((MMBaseSelectContactUI)this);
-    ((u)localObject).hUN();
+    AppMethodBeat.i(364896);
+    Object localObject = new aa((MMBaseSelectContactUI)this);
+    ((q)localObject).afey = true;
     localObject = (r)localObject;
-    AppMethodBeat.o(233162);
+    AppMethodBeat.o(364896);
     return localObject;
   }
   
-  public final com.tencent.mm.ui.contact.p bwL()
+  public final p bVB()
   {
-    AppMethodBeat.i(233159);
-    com.tencent.mm.ui.contact.p localp = (com.tencent.mm.ui.contact.p)new v((MMBaseSelectContactUI)this);
-    AppMethodBeat.o(233159);
+    AppMethodBeat.i(364886);
+    p localp = (p)new ab((MMBaseSelectContactUI)this);
+    AppMethodBeat.o(364886);
     return localp;
   }
   
-  public final int[] dvA()
+  public final boolean bVx()
+  {
+    return false;
+  }
+  
+  public final boolean bVy()
+  {
+    return false;
+  }
+  
+  public final String bVz()
+  {
+    AppMethodBeat.i(364905);
+    String str = getContext().getString(p.h.Csn);
+    s.s(str, "context.getString(R.stri…t_room_lucky_money_title)");
+    AppMethodBeat.o(364905);
+    return str;
+  }
+  
+  public final int[] efu()
   {
     return new int[] { 131075 };
   }
   
   public final int getLayoutId()
   {
-    return b.g.finder_live_select_contact_ui;
+    return p.f.Cfx;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(233157);
+    AppMethodBeat.i(364883);
     super.onCreate(paramBundle);
-    setTheme(b.k.AppTheme_DarkMode);
-    setActionbarColor(getResources().getColor(b.c.Dark_0));
-    setNavigationbarColor(getResources().getColor(b.c.Dark_0));
-    hUU();
-    hUV();
-    addTextOptionMenu(1, getString(b.j.finder_live_visibility_finish_btn), (MenuItem.OnMenuItemClickListener)new b(this), null, w.b.WaE);
-    atk();
-    this.xPP = ((MultiSelectContactView)findViewById(b.f.contact_multiselect));
-    paramBundle = this.xPP;
+    setTheme(p.i.AppTheme_DarkMode);
+    setActionbarColor(getResources().getColor(p.b.Dark_0));
+    setNavigationbarColor(getResources().getColor(p.b.Dark_0));
+    jyI();
+    jyJ();
+    addTextOptionMenu(1, getString(p.h.finder_live_visibility_finish_btn), new FinderLiveSelectRoomForLuckMoneyUI..ExternalSyntheticLambda0(this), null, y.b.adEZ);
+    aNr();
+    this.BpG = ((MultiSelectContactView)findViewById(p.e.contact_multiselect));
+    paramBundle = this.BpG;
     if (paramBundle != null) {
-      paramBundle.hjD();
+      paramBundle.iKv();
     }
-    paramBundle = this.xPP;
+    paramBundle = this.BpG;
     if (paramBundle != null) {
-      paramBundle.hjE();
+      paramBundle.iKw();
     }
-    paramBundle = (List)new ArrayList((Collection)this.mNi);
-    hUR().jk(paramBundle);
+    paramBundle = (List)new ArrayList((Collection)this.pJQ);
+    this.KOt.mv(paramBundle);
     paramBundle = getMMSubTitle();
     if (paramBundle != null)
     {
-      setMMSubTitle(getString(b.j.finder_live_select_room_lucky_money_subtitle));
-      paramBundle.setTextColor(getResources().getColor(b.c.BW_100_Alpha_0_5));
+      setMMSubTitle(getString(p.h.Csm));
+      paramBundle.setTextColor(getResources().getColor(p.b.BW_100_Alpha_0_5));
     }
-    AppMethodBeat.o(233157);
+    paramBundle = this.BpG;
+    if (paramBundle != null) {
+      paramBundle.post(new FinderLiveSelectRoomForLuckMoneyUI..ExternalSyntheticLambda1(this));
+    }
+    AppMethodBeat.o(364883);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class b
-    implements MenuItem.OnMenuItemClickListener
-  {
-    b(FinderLiveSelectRoomForLuckMoneyUI paramFinderLiveSelectRoomForLuckMoneyUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(233443);
-      FinderLiveSelectRoomForLuckMoneyUI.a(this.xPS);
-      AppMethodBeat.o(233443);
-      return true;
-    }
   }
 }
 

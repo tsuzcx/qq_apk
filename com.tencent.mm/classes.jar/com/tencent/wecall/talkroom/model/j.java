@@ -9,7 +9,7 @@ import java.io.BufferedOutputStream;
 
 public final class j
 {
-  public static boolean NXK = false;
+  public static boolean ULJ = false;
   static BufferedOutputStream mOutputStream = null;
   
   private static int getNetType(Context paramContext)
@@ -69,10 +69,10 @@ public final class j
     return 2;
   }
   
-  public static boolean ivk()
+  public static boolean keG()
   {
     AppMethodBeat.i(62691);
-    if (getNetType(c.NYh) == 4)
+    if (getNetType(c.UMe) == 4)
     {
       AppMethodBeat.o(62691);
       return true;
@@ -81,7 +81,7 @@ public final class j
     return false;
   }
   
-  public static int mv(Context paramContext)
+  public static int oL(Context paramContext)
   {
     AppMethodBeat.i(62689);
     try
@@ -140,7 +140,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wecall.talkroom.model.j
  * JD-Core Version:    0.7.0.1
  */

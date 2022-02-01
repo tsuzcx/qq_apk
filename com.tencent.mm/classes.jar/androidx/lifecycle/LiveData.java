@@ -10,36 +10,42 @@ import java.util.Map.Entry;
 
 public abstract class LiveData<T>
 {
-  static final Object aaj = new Object();
-  final Object aai = new Object();
-  public b<s<? super T>, LiveData<T>.b> aak = new b();
-  int aal = 0;
-  volatile Object aam = aaj;
-  int aan = -1;
-  private boolean aao;
-  private boolean aap;
-  private final Runnable aaq = new Runnable()
+  static final Object bHD = new Object();
+  final Object bHC = new Object();
+  public b<y<? super T>, LiveData<T>.b> bHE = new b();
+  int bHF = 0;
+  private boolean bHG;
+  volatile Object bHH = bHD;
+  int bHI;
+  private boolean bHJ;
+  private boolean bHK;
+  private final Runnable bHL = new Runnable()
   {
     public final void run()
     {
-      AppMethodBeat.i(241191);
-      synchronized (LiveData.this.aai)
+      AppMethodBeat.i(194327);
+      synchronized (LiveData.this.bHC)
       {
-        Object localObject2 = LiveData.this.aam;
-        LiveData.this.aam = LiveData.aaj;
+        Object localObject2 = LiveData.this.bHH;
+        LiveData.this.bHH = LiveData.bHD;
         LiveData.this.setValue(localObject2);
-        AppMethodBeat.o(241191);
+        AppMethodBeat.o(194327);
         return;
       }
     }
   };
-  private volatile Object mData = aaj;
+  private volatile Object mData;
   
-  private static void P(String paramString)
+  public LiveData()
   {
-    if (!a.eJ().xW.isMainThread()) {
-      throw new IllegalStateException("Cannot invoke " + paramString + " on a background thread");
-    }
+    this.mData = bHD;
+    this.bHI = -1;
+  }
+  
+  public LiveData(T paramT)
+  {
+    this.mData = paramT;
+    this.bHI = 0;
   }
   
   private void a(LiveData<T>.b paramLiveData)
@@ -50,73 +56,70 @@ public abstract class LiveData<T>
       return;
       if (!paramLiveData.shouldBeActive())
       {
-        paramLiveData.an(false);
+        paramLiveData.aW(false);
         return;
       }
-    } while (paramLiveData.aau >= this.aan);
-    paramLiveData.aau = this.aan;
-    paramLiveData.aat.onChanged(this.mData);
+    } while (paramLiveData.bHO >= this.bHI);
+    paramLiveData.bHO = this.bHI;
+    paramLiveData.mObserver.onChanged(this.mData);
   }
   
-  protected void L(T paramT)
+  private static void aM(String paramString)
   {
-    synchronized (this.aai)
-    {
-      int i;
-      if (this.aam == aaj)
-      {
-        i = 1;
-        this.aam = paramT;
-        if (i != 0) {}
-      }
-      else
-      {
-        i = 0;
-      }
+    if (!a.fG().yR.isMainThread()) {
+      throw new IllegalStateException("Cannot invoke " + paramString + " on a background thread");
     }
-    a.eJ().postToMainThread(this.aaq);
   }
   
-  public final void a(l paraml, s<? super T> params)
+  protected void Hf() {}
+  
+  protected void Hk() {}
+  
+  public final boolean Hl()
   {
-    P("observe");
-    if (paraml.getLifecycle().jc() == h.b.ZO) {}
+    return this.bHF > 0;
+  }
+  
+  public final void a(q paramq, y<? super T> paramy)
+  {
+    aM("observe");
+    if (paramq.getLifecycle().getCurrentState() == j.b.bHg) {}
     LifecycleBoundObserver localLifecycleBoundObserver;
     do
     {
       return;
-      localLifecycleBoundObserver = new LifecycleBoundObserver(paraml, params);
-      params = (b)this.aak.putIfAbsent(params, localLifecycleBoundObserver);
-      if ((params != null) && (!params.d(paraml))) {
+      localLifecycleBoundObserver = new LifecycleBoundObserver(paramq, paramy);
+      paramy = (b)this.bHE.putIfAbsent(paramy, localLifecycleBoundObserver);
+      if ((paramy != null) && (!paramy.k(paramq))) {
         throw new IllegalArgumentException("Cannot add the same observer with different lifecycles");
       }
-    } while (params != null);
-    paraml.getLifecycle().a(localLifecycleBoundObserver);
+    } while (paramy != null);
+    paramq.getLifecycle().addObserver(localLifecycleBoundObserver);
   }
   
-  public final void a(s<? super T> params)
+  public final void a(y<? super T> paramy)
   {
-    P("observeForever");
-    a locala = new a(params);
-    params = (b)this.aak.putIfAbsent(params, locala);
-    if ((params != null) && ((params instanceof LifecycleBoundObserver))) {
+    aM("observeForever");
+    a locala = new a(paramy);
+    paramy = (b)this.bHE.putIfAbsent(paramy, locala);
+    if ((paramy instanceof LifecycleBoundObserver)) {
       throw new IllegalArgumentException("Cannot add the same observer with different lifecycles");
     }
-    if (params != null) {
+    if (paramy != null) {
       return;
     }
-    locala.an(true);
+    locala.aW(true);
   }
   
   final void b(LiveData<T>.b paramLiveData)
   {
-    if (this.aao)
+    if (this.bHJ)
     {
-      this.aap = true;
+      this.bHK = true;
       return;
     }
-    this.aao = true;
-    this.aap = false;
+    this.bHJ = true;
+    this.bHK = false;
     LiveData<T>.b localLiveData;
     if (paramLiveData != null)
     {
@@ -126,12 +129,12 @@ public abstract class LiveData<T>
     for (;;)
     {
       paramLiveData = localLiveData;
-      if (this.aap) {
+      if (this.bHK) {
         break;
       }
-      this.aao = false;
+      this.bHJ = false;
       return;
-      b.d locald = this.aak.eM();
+      b.d locald = this.bHE.fJ();
       do
       {
         localLiveData = paramLiveData;
@@ -139,103 +142,171 @@ public abstract class LiveData<T>
           break;
         }
         a((b)((Map.Entry)locald.next()).getValue());
-      } while (!this.aap);
+      } while (!this.bHK);
       localLiveData = paramLiveData;
     }
   }
   
-  public void b(s<? super T> params)
+  public void b(y<? super T> paramy)
   {
-    P("removeObserver");
-    params = (b)this.aak.remove(params);
-    if (params == null) {
+    aM("removeObserver");
+    paramy = (b)this.bHE.remove(paramy);
+    if (paramy == null) {
       return;
     }
-    params.detachObserver();
-    params.an(false);
+    paramy.detachObserver();
+    paramy.aW(false);
   }
   
-  public final void c(l paraml)
+  final void fa(int paramInt)
   {
-    P("removeObservers");
-    Iterator localIterator = this.aak.iterator();
-    while (localIterator.hasNext())
+    int i = this.bHF;
+    this.bHF += paramInt;
+    if (this.bHG) {
+      return;
+    }
+    this.bHG = true;
+    paramInt = i;
+    for (;;)
     {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if (((b)localEntry.getValue()).d(paraml)) {
-        b((s)localEntry.getKey());
+      try
+      {
+        if (paramInt != this.bHF)
+        {
+          if ((paramInt == 0) && (this.bHF > 0))
+          {
+            i = 1;
+            if ((paramInt <= 0) || (this.bHF != 0)) {
+              break label116;
+            }
+            paramInt = 1;
+            int j = this.bHF;
+            if (i != 0)
+            {
+              Hf();
+              paramInt = j;
+              continue;
+            }
+            if (paramInt != 0) {
+              Hk();
+            }
+            paramInt = j;
+          }
+        }
+        else {
+          return;
+        }
       }
+      finally
+      {
+        this.bHG = false;
+      }
+      i = 0;
+      continue;
+      label116:
+      paramInt = 0;
     }
   }
   
-  public final T getValue()
+  public T getValue()
   {
     Object localObject = this.mData;
-    if (localObject != aaj) {
+    if (localObject != bHD) {
       return localObject;
     }
     return null;
   }
   
-  protected void jb() {}
-  
-  protected void jh() {}
-  
-  public final boolean ji()
+  public final void j(q paramq)
   {
-    return this.aal > 0;
+    aM("removeObservers");
+    Iterator localIterator = this.bHE.iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if (((b)localEntry.getValue()).k(paramq)) {
+        b((y)localEntry.getKey());
+      }
+    }
   }
   
   protected void setValue(T paramT)
   {
-    P("setValue");
-    this.aan += 1;
+    aM("setValue");
+    this.bHI += 1;
     this.mData = paramT;
     b(null);
   }
   
+  protected void t(T paramT)
+  {
+    synchronized (this.bHC)
+    {
+      int i;
+      if (this.bHH == bHD)
+      {
+        i = 1;
+        this.bHH = paramT;
+        if (i != 0) {}
+      }
+      else
+      {
+        i = 0;
+      }
+    }
+    a.fG().postToMainThread(this.bHL);
+  }
+  
   class LifecycleBoundObserver
     extends LiveData<T>.b
-    implements g
+    implements o
   {
-    final l aas;
+    final q bHN;
     
-    LifecycleBoundObserver(s<? super T> params)
+    LifecycleBoundObserver(y<? super T> paramy)
     {
-      super(locals);
-      this.aas = params;
-    }
-    
-    public final void a(l paraml, h.a parama)
-    {
-      AppMethodBeat.i(241200);
-      if (this.aas.getLifecycle().jc() == h.b.ZO)
-      {
-        LiveData.this.b(this.aat);
-        AppMethodBeat.o(241200);
-        return;
-      }
-      an(shouldBeActive());
-      AppMethodBeat.o(241200);
-    }
-    
-    final boolean d(l paraml)
-    {
-      return this.aas == paraml;
+      super(localy);
+      this.bHN = paramy;
     }
     
     final void detachObserver()
     {
-      AppMethodBeat.i(241204);
-      this.aas.getLifecycle().b(this);
-      AppMethodBeat.o(241204);
+      AppMethodBeat.i(194377);
+      this.bHN.getLifecycle().removeObserver(this);
+      AppMethodBeat.o(194377);
+    }
+    
+    final boolean k(q paramq)
+    {
+      return this.bHN == paramq;
+    }
+    
+    public void onStateChanged(q paramq, j.a parama)
+    {
+      AppMethodBeat.i(194359);
+      paramq = this.bHN.getLifecycle().getCurrentState();
+      if (paramq == j.b.bHg)
+      {
+        LiveData.this.b(this.mObserver);
+        AppMethodBeat.o(194359);
+        return;
+      }
+      parama = null;
+      while (parama != paramq)
+      {
+        aW(shouldBeActive());
+        j.b localb = this.bHN.getLifecycle().getCurrentState();
+        parama = paramq;
+        paramq = localb;
+      }
+      AppMethodBeat.o(194359);
     }
     
     final boolean shouldBeActive()
     {
-      AppMethodBeat.i(241196);
-      boolean bool = this.aas.getLifecycle().jc().a(h.b.ZR);
-      AppMethodBeat.o(241196);
+      AppMethodBeat.i(194349);
+      boolean bool = this.bHN.getLifecycle().getCurrentState().d(j.b.bHj);
+      AppMethodBeat.o(194349);
       return bool;
     }
   }
@@ -245,7 +316,7 @@ public abstract class LiveData<T>
   {
     a()
     {
-      super(locals);
+      super(localy);
     }
     
     final boolean shouldBeActive()
@@ -256,70 +327,48 @@ public abstract class LiveData<T>
   
   abstract class b
   {
-    final s<? super T> aat;
-    int aau = -1;
+    int bHO = -1;
     boolean mActive;
+    final y<? super T> mObserver;
     
     b()
     {
       Object localObject;
-      this.aat = localObject;
+      this.mObserver = localObject;
     }
     
-    final void an(boolean paramBoolean)
+    final void aW(boolean paramBoolean)
     {
-      int j = 1;
       if (paramBoolean == this.mActive) {
         return;
       }
       this.mActive = paramBoolean;
-      int i;
-      label28:
-      LiveData localLiveData;
-      int k;
-      if (LiveData.this.aal == 0)
+      LiveData localLiveData = LiveData.this;
+      if (this.mActive) {}
+      for (int i = 1;; i = -1)
       {
-        i = 1;
-        localLiveData = LiveData.this;
-        k = localLiveData.aal;
-        if (!this.mActive) {
-          break label120;
-        }
-      }
-      for (;;)
-      {
-        localLiveData.aal = (j + k);
-        if ((i != 0) && (this.mActive)) {
-          LiveData.this.jb();
-        }
-        if ((LiveData.this.aal == 0) && (!this.mActive)) {
-          LiveData.this.jh();
-        }
+        localLiveData.fa(i);
         if (!this.mActive) {
           break;
         }
         LiveData.this.b(this);
         return;
-        i = 0;
-        break label28;
-        label120:
-        j = -1;
       }
     }
     
-    boolean d(l paraml)
+    void detachObserver() {}
+    
+    boolean k(q paramq)
     {
       return false;
     }
-    
-    void detachObserver() {}
     
     abstract boolean shouldBeActive();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     androidx.lifecycle.LiveData
  * JD-Core Version:    0.7.0.1
  */

@@ -1,204 +1,281 @@
 package com.tencent.mm.plugin.expt.e;
 
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.f.a.al;
-import com.tencent.mm.f.a.me;
-import com.tencent.mm.f.a.xz;
-import com.tencent.mm.kernel.f.c;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.expt.ui.KvInfoUI;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
-import com.tencent.mm.sdk.event.IListener;
-import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
 import java.util.HashMap;
-import java.util.List;
+import org.json.JSONObject;
 
 public final class a
-  implements Application.ActivityLifecycleCallbacks, com.tencent.mm.kernel.api.c, com.tencent.mm.plugin.expt.b.a
 {
-  private static a wpL;
-  private IListener<me> noa;
-  private IListener rXj;
-  public String wpM;
-  public boolean wpN;
-  public HashMap<String, List<b>> wpO;
+  public HashMap<String, String> cache = null;
+  public long endTime;
+  public int kW;
+  public long startTime;
+  public int subType;
+  public int zNd;
+  public int zNe;
+  public String zNf;
+  public int zNg;
+  public int zNh;
+  public String zNi;
   
-  public a()
+  private void a(HashMap<String, String> paramHashMap, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(251401);
-    this.rXj = new IListener() {};
-    this.noa = new IListener() {};
-    this.wpN = false;
-    this.wpO = new HashMap();
-    AppMethodBeat.o(251401);
-  }
-  
-  public static a dga()
-  {
-    AppMethodBeat.i(251402);
-    if (wpL == null) {
-      wpL = new a();
-    }
-    a locala = wpL;
-    AppMethodBeat.o(251402);
-    return locala;
-  }
-  
-  private void dgc()
-  {
-    AppMethodBeat.i(251414);
-    Log.i("MicroMsg.ExptReportService", "%d sendStopMonitor [%s]", new Object[] { Integer.valueOf(hashCode()), this.wpM });
-    if ((MMApplicationContext.isMMProcess()) && (!Util.isNullOrNil(this.wpM)))
+    AppMethodBeat.i(299497);
+    if (paramJSONObject == null)
     {
-      c localc = new c();
-      localc.content = this.wpM;
-      localc.type = 10000;
-      localc.key = 2;
-      h.aGY().a(localc, 0);
+      AppMethodBeat.o(299497);
+      return;
     }
-    this.wpM = null;
-    AppMethodBeat.o(251414);
-  }
-  
-  public final void awb(String paramString)
-  {
-    AppMethodBeat.i(251415);
-    long l = Util.currentTicks();
-    if (((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE) || (WeChatEnvironment.hasDebugger())) && (!Util.isNullOrNil(paramString)) && (paramString.startsWith(":exptdebug/")))
+    String str = paramJSONObject.optString("Key");
+    paramJSONObject = paramJSONObject.optString("Val");
+    Object localObject;
+    if ((!Util.isNullOrNil(str)) && (!Util.isNullOrNil(paramJSONObject)))
     {
-      paramString = paramString.substring(11);
-      Log.i("MicroMsg.ExptReportService", "%d sendStartMonitor [%s]", new Object[] { Integer.valueOf(hashCode()), paramString });
-      this.wpM = paramString;
-      if (MMApplicationContext.isMMProcess())
-      {
-        localObject = new c();
-        ((c)localObject).content = paramString;
-        ((c)localObject).type = 10000;
-        ((c)localObject).key = 1;
-        h.aGY().a((q)localObject, 0);
+      localObject = Base64.decode(paramJSONObject, 0);
+      if ((localObject == null) || (localObject.length <= 0)) {
+        break label164;
       }
-      Object localObject = new xz();
-      ((xz)localObject).fXn.fXo = paramString;
-      EventCenter.instance.publish((IEvent)localObject);
-      this.wpN = true;
+      if (localObject.length > 1048576) {
+        break label142;
+      }
     }
-    Log.i("MicroMsg.ExptReportService", "start expt Debug tools cost time [%d]", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
-    AppMethodBeat.o(251415);
-  }
-  
-  public final void dbq()
-  {
-    AppMethodBeat.i(251417);
-    dgc();
-    xz localxz = new xz();
-    localxz.fXn.fXo = "";
-    EventCenter.instance.publish(localxz);
-    AppMethodBeat.o(251417);
-  }
-  
-  public final boolean dgb()
-  {
-    AppMethodBeat.i(251403);
-    if (!Util.isNullOrNil(this.wpM))
+    label142:
+    label164:
+    for (;;)
     {
-      AppMethodBeat.o(251403);
+      try
+      {
+        localObject = new String((byte[])localObject, "UTF-8");
+        paramJSONObject = (JSONObject)localObject;
+      }
+      catch (Exception localException)
+      {
+        continue;
+      }
+      catch (Error localError)
+      {
+        continue;
+      }
+      paramHashMap.put(str, paramJSONObject);
+      if ((str != null) && (Util.isEqual(str, "ECSubType_" + this.zNd))) {
+        this.subType = Integer.parseInt(paramJSONObject);
+      }
+      AppMethodBeat.o(299497);
+      return;
+      Log.e("MicroMsg.ExptAppItem", "data length more 1M don't parse, reset value. key[%s]", new Object[] { str });
+      paramJSONObject = "";
+    }
+  }
+  
+  public final boolean TZ(String paramString)
+  {
+    AppMethodBeat.i(299502);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(299502);
+      return false;
+    }
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(paramString);
+      this.zNd = localJSONObject.optInt("ExptId");
+      this.kW = localJSONObject.optInt("GroupId");
+      this.zNe = localJSONObject.optInt("ExptSequence");
+      this.zNf = paramString;
+      this.startTime = localJSONObject.optLong("StartTime");
+      this.endTime = localJSONObject.optLong("EndTime");
+      this.zNg = localJSONObject.optInt("ExptType");
+      this.zNh = localJSONObject.optInt("SvrType");
+      this.zNi = localJSONObject.optString("ExptCheckSum");
+      dNo();
+      Log.v("MicroMsg.ExptAppItem", "convertFrom new [%s] args[%s]", new Object[] { toString(), paramString });
+      AppMethodBeat.o(299502);
       return true;
     }
-    AppMethodBeat.o(251403);
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.ExptAppItem", "%d convertFrom [%s] error [%s]", new Object[] { Integer.valueOf(hashCode()), paramString, localException.toString() });
+      AppMethodBeat.o(299502);
+    }
     return false;
   }
   
-  public final void onAccountInitialized(f.c paramc)
+  /* Error */
+  public final HashMap<String, String> dNo()
   {
-    AppMethodBeat.i(251404);
-    if (MMApplicationContext.isMainProcess())
+    // Byte code:
+    //   0: ldc 186
+    //   2: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: getfield 26	com/tencent/mm/plugin/expt/e/a:cache	Ljava/util/HashMap;
+    //   9: ifnull +15 -> 24
+    //   12: aload_0
+    //   13: getfield 26	com/tencent/mm/plugin/expt/e/a:cache	Ljava/util/HashMap;
+    //   16: astore_2
+    //   17: ldc 186
+    //   19: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   22: aload_2
+    //   23: areturn
+    //   24: aload_0
+    //   25: getfield 140	com/tencent/mm/plugin/expt/e/a:zNf	Ljava/lang/String;
+    //   28: invokestatic 59	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   31: ifne +156 -> 187
+    //   34: new 47	org/json/JSONObject
+    //   37: dup
+    //   38: aload_0
+    //   39: getfield 140	com/tencent/mm/plugin/expt/e/a:zNf	Ljava/lang/String;
+    //   42: invokespecial 125	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   45: ldc 188
+    //   47: invokevirtual 192	org/json/JSONObject:get	(Ljava/lang/String;)Ljava/lang/Object;
+    //   50: astore_3
+    //   51: aload_3
+    //   52: ifnonnull +10 -> 62
+    //   55: ldc 186
+    //   57: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   60: aconst_null
+    //   61: areturn
+    //   62: new 75	java/util/HashMap
+    //   65: dup
+    //   66: invokespecial 193	java/util/HashMap:<init>	()V
+    //   69: astore_2
+    //   70: aload_3
+    //   71: instanceof 195
+    //   74: ifeq +56 -> 130
+    //   77: aload_3
+    //   78: checkcast 195	org/json/JSONArray
+    //   81: astore_3
+    //   82: aload_3
+    //   83: ifnull +30 -> 113
+    //   86: iconst_0
+    //   87: istore_1
+    //   88: iload_1
+    //   89: aload_3
+    //   90: invokevirtual 198	org/json/JSONArray:length	()I
+    //   93: if_icmpge +20 -> 113
+    //   96: aload_0
+    //   97: aload_2
+    //   98: aload_3
+    //   99: iload_1
+    //   100: invokevirtual 202	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   103: invokespecial 204	com/tencent/mm/plugin/expt/e/a:a	(Ljava/util/HashMap;Lorg/json/JSONObject;)V
+    //   106: iload_1
+    //   107: iconst_1
+    //   108: iadd
+    //   109: istore_1
+    //   110: goto -22 -> 88
+    //   113: aload_0
+    //   114: aload_2
+    //   115: putfield 26	com/tencent/mm/plugin/expt/e/a:cache	Ljava/util/HashMap;
+    //   118: aload_0
+    //   119: getfield 26	com/tencent/mm/plugin/expt/e/a:cache	Ljava/util/HashMap;
+    //   122: astore_2
+    //   123: ldc 186
+    //   125: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   128: aload_2
+    //   129: areturn
+    //   130: aload_3
+    //   131: instanceof 47
+    //   134: ifeq +12 -> 146
+    //   137: aload_0
+    //   138: aload_2
+    //   139: aload_3
+    //   140: checkcast 47	org/json/JSONObject
+    //   143: invokespecial 204	com/tencent/mm/plugin/expt/e/a:a	(Ljava/util/HashMap;Lorg/json/JSONObject;)V
+    //   146: goto -33 -> 113
+    //   149: astore_3
+    //   150: aconst_null
+    //   151: astore_2
+    //   152: ldc 110
+    //   154: ldc 206
+    //   156: iconst_2
+    //   157: anewarray 4	java/lang/Object
+    //   160: dup
+    //   161: iconst_0
+    //   162: aload_3
+    //   163: invokevirtual 185	java/lang/Exception:toString	()Ljava/lang/String;
+    //   166: aastore
+    //   167: dup
+    //   168: iconst_1
+    //   169: aload_0
+    //   170: getfield 88	com/tencent/mm/plugin/expt/e/a:zNd	I
+    //   173: invokestatic 184	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   176: aastore
+    //   177: invokestatic 118	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   180: goto -67 -> 113
+    //   183: astore_3
+    //   184: goto -32 -> 152
+    //   187: aconst_null
+    //   188: astore_2
+    //   189: goto -76 -> 113
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	192	0	this	a
+    //   87	23	1	i	int
+    //   16	173	2	localHashMap	HashMap
+    //   50	90	3	localObject	Object
+    //   149	14	3	localException1	Exception
+    //   183	1	3	localException2	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   34	51	149	java/lang/Exception
+    //   62	70	149	java/lang/Exception
+    //   70	82	183	java/lang/Exception
+    //   88	106	183	java/lang/Exception
+    //   130	146	183	java/lang/Exception
+  }
+  
+  public final boolean dNp()
+  {
+    return this.subType == 7;
+  }
+  
+  public final boolean dNq()
+  {
+    return this.subType == 8;
+  }
+  
+  public final boolean isReady()
+  {
+    boolean bool2 = false;
+    AppMethodBeat.i(299518);
+    boolean bool1;
+    if (this.zNe < 0) {
+      bool1 = bool2;
+    }
+    for (;;)
     {
-      EventCenter.instance.add(this.noa);
-      EventCenter.instance.add(this.rXj);
+      AppMethodBeat.o(299518);
+      return bool1;
+      long l = Util.nowSecond();
+      bool1 = bool2;
+      if (l >= this.startTime) {
+        if (this.endTime > 0L)
+        {
+          bool1 = bool2;
+          if (l > this.endTime) {}
+        }
+        else
+        {
+          bool1 = true;
+        }
+      }
     }
-    AppMethodBeat.o(251404);
   }
   
-  public final void onAccountRelease()
+  public final String toString()
   {
-    AppMethodBeat.i(251407);
-    dbq();
-    EventCenter.instance.removeListener(this.noa);
-    EventCenter.instance.removeListener(this.rXj);
-    if (this.wpO != null) {
-      this.wpO.clear();
-    }
-    this.wpN = false;
-    AppMethodBeat.o(251407);
-  }
-  
-  public final void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
-  
-  public final void onActivityDestroyed(Activity paramActivity) {}
-  
-  public final void onActivityPaused(Activity paramActivity)
-  {
-    AppMethodBeat.i(251410);
-    paramActivity = paramActivity.getComponentName().getClassName();
-    if ((MMApplicationContext.isMMProcess()) && (dgb()))
-    {
-      c localc = new c();
-      localc.content = paramActivity;
-      localc.type = 10002;
-      localc.key = 2;
-      h.aGY().a(localc, 0);
-    }
-    AppMethodBeat.o(251410);
-  }
-  
-  public final void onActivityResumed(Activity paramActivity)
-  {
-    AppMethodBeat.i(251409);
-    paramActivity = paramActivity.getComponentName().getClassName();
-    if ((MMApplicationContext.isMMProcess()) && (dgb()))
-    {
-      c localc = new c();
-      localc.content = paramActivity;
-      localc.type = 10002;
-      localc.key = 1;
-      h.aGY().a(localc, 0);
-    }
-    AppMethodBeat.o(251409);
-  }
-  
-  public final void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public final void onActivityStarted(Activity paramActivity) {}
-  
-  public final void onActivityStopped(Activity paramActivity) {}
-  
-  public final void q(Context paramContext, Intent paramIntent)
-  {
-    AppMethodBeat.i(251418);
-    paramIntent.setClass(paramContext, KvInfoUI.class);
-    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bm(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramIntent.aFh(), "com/tencent/mm/plugin/expt/kvdebug/ExptReportService", "showKvDebugUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramIntent.sf(0));
-    com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/expt/kvdebug/ExptReportService", "showKvDebugUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(251418);
+    AppMethodBeat.i(299513);
+    String str = "ExptAppItem{exptId=" + this.zNd + ", groupId=" + this.kW + ", exptSeq=" + this.zNe + ", exptContent='" + this.zNf + '\'' + ", startTime=" + this.startTime + ", endTime=" + this.endTime + ", exptType=" + this.zNg + ", svrType=" + this.zNh + ", exptCheckSum='" + this.zNi + '\'' + '}';
+    AppMethodBeat.o(299513);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.e.a
  * JD-Core Version:    0.7.0.1
  */

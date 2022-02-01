@@ -5,22 +5,46 @@
     this.NativeGlobal.clearInterval = this.clearInterval;
 };
 
-var WeixinJSCoreAndroid = (function(global) {
-    if (typeof global.WeixinJSCoreAndroid !== 'undefined') {
-        return global.WeixinJSCoreAndroid
-    }
-
-    var WeixinJSCore = global.WeixinJSCore;
-
-    if (!WeixinJSCore) {
-        console.error('No WeixinJSCore in this env!');
+var WeixinJSCore = (function(global) {
+    var _WeixinJSCore = global.WeixinJSCore
+    if (!_WeixinJSCore) {
         return undefined;
     }
 
-    if (!global.disableNativeInvokeHandler && global.NativeGlobal && global.NativeGlobal.invokeHandler) {
-        WeixinJSCore.invokeHandler = global.NativeGlobal.invokeHandler;
+    var __invokeHandler__ = _WeixinJSCore.invokeHandler
+    var __invokeHandler2__ = _WeixinJSCore.invokeHandler2
+    if (global.NativeGlobal && global.NativeGlobal.invokeHandler) {
+        __invokeHandler2__ = global.NativeGlobal.invokeHandler
     } else if (global.workerInvokeJsApi) {
-        WeixinJSCore.invokeHandler = global.workerInvokeJsApi;
+        __invokeHandler2__ = global.workerInvokeJsApi
+    }
+
+    var ret = {};
+    ret.publishHandler = function(event, data, dst) {
+        _WeixinJSCore.publishHandler(event, data, dst)
+    }
+
+    ret.invokeHandler = function(api, args, callbackId, privateArgs) {
+        if (__invokeHandler2__) {
+            privateArgs = privateArgs || ""
+            if (typeof privateArgs !== 'string') {
+                privateArgs = JSON.stringify(privateArgs)
+            }
+            return __invokeHandler2__(api, args, callbackId, privateArgs)
+        } else {
+            return __invokeHandler__(api, args, callbackId)
+        }
+    }
+    if (global.workerInvokeJsApi) {
+        global.workerInvokeJsApi = ret.invokeHandler
+    }
+
+    return ret
+})(this);
+
+var WeixinJSCoreAndroid = (function(global) {
+    if (typeof global.WeixinJSCoreAndroid !== 'undefined') {
+        return global.WeixinJSCoreAndroid
     }
 
     var ret = {};

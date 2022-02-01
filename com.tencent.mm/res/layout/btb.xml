@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/zn">
-        <ImageView android:id="@id/ea_" android:background="@null" android:padding="4.0dip" android:visibility="gone" android:layout_width="@dimen/ig" android:layout_height="@dimen/ig" android:layout_marginRight="@dimen/k" />
-        <TextView android:id="@android:id/title" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/k5" android:singleLine="true" style="@style/zp" />
-        <TextView android:id="@id/ikj" android:visibility="gone" android:text="@string/hrt" style="@style/zr" />
-        <ImageView android:id="@id/dwi" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b1a" />
-        <ImageView android:id="@id/h76" android:background="@null" android:padding="4.0dip" android:visibility="gone" android:layout_width="@dimen/ig" android:layout_height="@dimen/ig" android:layout_marginRight="@dimen/k" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="0.0dip" style="@style/zn">
-        <TextView android:id="@id/ied" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:text="summary" style="@style/zo" />
-    </LinearLayout>
+    <com.tencent.mm.ui.widget.MMEditText android:id="@id/ix2" android:layout_width="fill_parent" android:layout_height="@dimen/d6" android:hint="输入url" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/hls" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" android:text="跳转" style="@style/oh" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/ir5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" android:text="重置" style="@style/oh" />
 </LinearLayout>

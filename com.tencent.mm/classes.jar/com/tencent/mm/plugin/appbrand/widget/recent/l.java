@@ -2,74 +2,74 @@ package com.tencent.mm.plugin.appbrand.widget.recent;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Arrays;
-import kotlin.a.e;
+import kotlin.Metadata;
+import kotlin.a.k;
 import kotlin.g.a.b;
-import kotlin.g.b.q;
-import kotlin.t;
+import kotlin.g.b.u;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/widget/recent/QueryCacheConfig;", "", "args", "", "([Ljava/lang/Object;)V", "getArgs", "()[Ljava/lang/Object;", "[Ljava/lang/Object;", "equals", "", "other", "hashCode", "", "toString", "", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/widget/recent/QueryCacheConfig;", "", "args", "", "([Ljava/lang/Object;)V", "getArgs", "()[Ljava/lang/Object;", "[Ljava/lang/Object;", "equals", "", "other", "hashCode", "", "toString", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class l
 {
   final Object[] args;
   
   public l(Object... paramVarArgs)
   {
-    AppMethodBeat.i(272257);
+    AppMethodBeat.i(324035);
     this.args = paramVarArgs;
-    AppMethodBeat.o(272257);
+    AppMethodBeat.o(324035);
   }
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(272256);
-    if ((l)this == paramObject)
+    AppMethodBeat.i(324052);
+    if (this == paramObject)
     {
-      AppMethodBeat.o(272256);
+      AppMethodBeat.o(324052);
       return true;
     }
     if (paramObject == null)
     {
-      paramObject = new t("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.widget.recent.QueryCacheConfig");
-      AppMethodBeat.o(272256);
+      paramObject = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.widget.recent.QueryCacheConfig");
+      AppMethodBeat.o(324052);
       throw paramObject;
     }
     if (!Arrays.equals(this.args, ((l)paramObject).args))
     {
-      AppMethodBeat.o(272256);
+      AppMethodBeat.o(324052);
       return false;
     }
-    AppMethodBeat.o(272256);
+    AppMethodBeat.o(324052);
     return true;
   }
   
   public int hashCode()
   {
-    AppMethodBeat.i(272255);
+    AppMethodBeat.i(324045);
     int i = toString().hashCode();
-    AppMethodBeat.o(272255);
+    AppMethodBeat.o(324045);
     return i;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(272254);
-    String str = e.a(this.args, null, null, null, 0, null, (b)a.rFu, 31);
-    AppMethodBeat.o(272254);
+    AppMethodBeat.i(324041);
+    String str = k.a(this.args, null, null, null, 0, null, (b)a.uQG, 31);
+    AppMethodBeat.o(324041);
     return str;
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    extends q
+    extends u
     implements b<Object, CharSequence>
   {
-    public static final a rFu;
+    public static final a uQG;
     
     static
     {
-      AppMethodBeat.i(278514);
-      rFu = new a();
-      AppMethodBeat.o(278514);
+      AppMethodBeat.i(323995);
+      uQG = new a();
+      AppMethodBeat.o(323995);
     }
     
     a()

@@ -5,41 +5,41 @@ import java.util.List;
 
 public abstract interface a
 {
-  public abstract void Xr(int paramInt);
+  public abstract void L(int paramInt, Object paramObject);
   
-  public abstract void Xw(int paramInt);
+  public abstract void a(MultiTalkGroup paramMultiTalkGroup, long paramLong);
   
-  public abstract void ay(String paramString, int paramInt1, int paramInt2);
+  public abstract void aF(String paramString, int paramInt1, int paramInt2);
+  
+  public abstract void abC(int paramInt);
+  
+  public abstract void abH(int paramInt);
   
   public abstract void b(MultiTalkGroup paramMultiTalkGroup);
   
+  public abstract void b(MultiTalkGroup paramMultiTalkGroup, long paramLong);
+  
   public abstract void c(MultiTalkGroup paramMultiTalkGroup);
-  
-  public abstract void d(MultiTalkGroup paramMultiTalkGroup);
-  
-  public abstract void e(MultiTalkGroup paramMultiTalkGroup);
-  
-  public abstract void eXu();
-  
-  public abstract void eXv();
-  
-  public abstract void eXw();
-  
-  public abstract void eXx();
-  
-  public abstract void eXy();
   
   public abstract void f(MultiTalkGroup paramMultiTalkGroup);
   
-  public abstract void gb(List<a.ar> paramList);
+  public abstract void ggk();
   
-  public abstract void r(int paramInt, Object paramObject);
+  public abstract void ggl();
   
-  public abstract void uy(boolean paramBoolean);
+  public abstract void ggm();
+  
+  public abstract void ggn();
+  
+  public abstract void ggo();
+  
+  public abstract void iY(List<a.ar> paramList);
+  
+  public abstract void yN(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.pb.talkroom.sdk.a
  * JD-Core Version:    0.7.0.1
  */

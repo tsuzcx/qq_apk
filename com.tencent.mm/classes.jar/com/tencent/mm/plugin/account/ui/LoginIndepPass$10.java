@@ -12,7 +12,7 @@ final class LoginIndepPass$10
   public final void afterTextChanged(Editable paramEditable)
   {
     AppMethodBeat.i(128154);
-    LoginIndepPass.b(this.nes);
+    LoginIndepPass.b(this.qbg);
     AppMethodBeat.o(128154);
   }
   

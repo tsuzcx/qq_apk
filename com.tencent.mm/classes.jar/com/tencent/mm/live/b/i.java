@@ -1,277 +1,258 @@
 package com.tencent.mm.live.b;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.kernel.c;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.live.core.core.e.b;
-import com.tencent.mm.live.core.core.model.f;
-import com.tencent.mm.live.core.core.model.g;
-import com.tencent.mm.live.core.debug.a;
-import com.tencent.mm.protocal.protobuf.aep;
-import com.tencent.mm.protocal.protobuf.cnx;
-import com.tencent.mm.protocal.protobuf.crq;
-import com.tencent.mm.protocal.protobuf.crw;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
-import com.tencent.trtc.TRTCCloudDef.TRTCParams;
-import kotlin.g.a.s;
-import kotlin.g.b.p;
-import kotlin.x;
+import com.tencent.mm.live.b.e;
+import com.tencent.mm.live.b.g;
+import com.tencent.mm.live.b.h;
+import com.tencent.mm.live.c.f;
+import com.tencent.mm.live.core.core.a.b.a;
+import com.tencent.mm.live.core.core.e.o;
+import com.tencent.mm.live.model.r;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import java.util.Arrays;
+import kotlin.Metadata;
+import kotlin.g.b.am;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/model/LaunchLiveRoom;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "name", "", "roomId", "context", "Landroid/content/Context;", "(Ljava/lang/String;Ljava/lang/String;Landroid/content/Context;)V", "getContext", "()Landroid/content/Context;", "createCallback", "Lkotlin/Function5;", "", "Lkotlin/ParameterName;", "success", "needFaceVerify", "verifyUrl", "", "errCode", "errMsg", "", "joinCallback", "Lcom/tencent/mm/live/core/core/model/LiveRoomInfo;", "liveRoomInfo", "Lcom/tencent/trtc/TRTCCloudDef$TRTCParams;", "trtcParams", "getName", "()Ljava/lang/String;", "getRoomId", "createLive", "callback", "joinLive", "launch", "Lkotlin/Function6;", "onSceneEnd", "errType", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "processCreateLiveResponse", "response", "Lcom/tencent/mm/protocal/protobuf/CreateLiveResponse;", "processJoinLiveResponse", "Lcom/tencent/mm/protocal/protobuf/JoinLiveResponse;", "Companion", "plugin-logic_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/plugin/LiveCommonInfoPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "TAG", "", "curNetStatus", "", "durationGroup", "Landroid/view/View;", "durationIcon", "Landroid/widget/ImageView;", "durationText", "durationTv", "Landroid/widget/TextView;", "isAnchor", "", "likeGroup", "likeTv", "membersGroup", "membersIcon", "membersTv", "netBadIcon", "Landroid/graphics/drawable/Drawable;", "netGoodIcon", "netNormalIcon", "checkDuration", "", "createTime", "checkNetwork", "getNetStatusIcon", "resId", "refreshViews", "onlineCnt", "likeCnt", "setVisible", "visible", "setupConfig", "config", "Lcom/tencent/mm/live/api/LiveConfig;", "start", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "stop", "unMount", "plugin-logic_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class i
-  implements com.tencent.mm.an.i
+  extends a
 {
-  public static final a ktY;
-  private final Context context;
-  public s<? super Boolean, ? super Boolean, ? super String, ? super Integer, ? super String, x> ktW;
-  public s<? super Boolean, ? super Integer, ? super String, ? super f, ? super TRTCCloudDef.TRTCParams, x> ktX;
-  public final String name;
-  public final String roomId;
+  private final String TAG;
+  public boolean hKC;
+  private final b nfT;
+  public String nhA;
+  private final TextView nho;
+  private final TextView nhp;
+  private final TextView nhq;
+  private final View nhr;
+  private final View nhs;
+  private final View nht;
+  private final ImageView nhu;
+  private final ImageView nhv;
+  private final Drawable nhw;
+  private final Drawable nhx;
+  private final Drawable nhy;
+  public int nhz;
   
-  static
+  public i(ViewGroup paramViewGroup, b paramb)
   {
-    AppMethodBeat.i(189193);
-    ktY = new a((byte)0);
-    AppMethodBeat.o(189193);
+    super(paramViewGroup, paramb);
+    AppMethodBeat.i(247037);
+    this.nfT = paramb;
+    this.TAG = "MicroMsg.LiveCommonInfoPlugin";
+    paramb = paramViewGroup.findViewById(b.e.live_common_info_members_tv);
+    s.s(paramb, "root.findViewById(R.id.l…e_common_info_members_tv)");
+    this.nho = ((TextView)paramb);
+    paramb = paramViewGroup.findViewById(b.e.live_common_info_duration_tv);
+    s.s(paramb, "root.findViewById(R.id.l…_common_info_duration_tv)");
+    this.nhp = ((TextView)paramb);
+    paramb = paramViewGroup.findViewById(b.e.live_common_info_like_tv);
+    s.s(paramb, "root.findViewById(R.id.live_common_info_like_tv)");
+    this.nhq = ((TextView)paramb);
+    paramb = paramViewGroup.findViewById(b.e.live_common_info_members_group);
+    s.s(paramb, "root.findViewById(R.id.l…ommon_info_members_group)");
+    this.nhr = paramb;
+    paramb = paramViewGroup.findViewById(b.e.live_common_info_duration_group);
+    s.s(paramb, "root.findViewById(R.id.l…mmon_info_duration_group)");
+    this.nhs = paramb;
+    paramb = paramViewGroup.findViewById(b.e.live_common_info_like_group);
+    s.s(paramb, "root.findViewById(R.id.l…e_common_info_like_group)");
+    this.nht = paramb;
+    paramb = paramViewGroup.findViewById(b.e.live_common_info_duration_icon);
+    s.s(paramb, "root.findViewById(R.id.l…ommon_info_duration_icon)");
+    this.nhu = ((ImageView)paramb);
+    paramViewGroup = paramViewGroup.findViewById(b.e.live_common_info_arrow_icon);
+    s.s(paramViewGroup, "root.findViewById(R.id.l…e_common_info_arrow_icon)");
+    this.nhv = ((ImageView)paramViewGroup);
+    this.nhw = tP(b.g.live_net_good_icon);
+    this.nhx = tP(b.g.live_net_normal_icon);
+    this.nhy = tP(b.g.live_net_bad_icon);
+    paramViewGroup = e.o.mLz;
+    this.nhz = e.o.bdC();
+    this.nhA = "00:00:00";
+    this.nhr.setOnClickListener(new i..ExternalSyntheticLambda0(this));
+    AppMethodBeat.o(247037);
   }
   
-  public i(String paramString1, String paramString2, Context paramContext)
+  private static final void a(i parami, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(189191);
-    this.name = paramString1;
-    this.roomId = paramString2;
-    this.context = paramContext;
-    AppMethodBeat.o(189191);
-  }
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
-  {
-    AppMethodBeat.i(189185);
-    Object localObject1;
-    if ((paramq instanceof com.tencent.mm.live.b.a.l))
+    AppMethodBeat.i(247071);
+    s.u(parami, "this$0");
+    int i = parami.nhz;
+    Object localObject1 = e.o.mLz;
+    if (i == e.o.bdC())
     {
-      localObject1 = a.kqB;
-      a.NN("anchor create live error:" + paramInt1 + " code:" + paramInt2 + " msg:" + paramString);
-      if ((paramInt1 != 0) || (paramInt2 != 0))
-      {
-        Log.i("MicroMsg.LaunchLiveRoom", "launch live room failed");
-        paramq = this.ktW;
-        if (paramq != null)
-        {
-          localObject1 = Boolean.FALSE;
-          if (paramString != null) {
-            break label948;
-          }
-          paramString = "";
-        }
+      parami.nhu.setImageDrawable(parami.nhw);
+      localObject1 = parami.nho;
+      Object localObject2 = am.aixg;
+      localObject2 = parami.mJe.getContext().getString(b.h.live_members_tip);
+      s.s(localObject2, "root.context.getString(R.string.live_members_tip)");
+      localObject2 = String.format((String)localObject2, Arrays.copyOf(new Object[] { Integer.valueOf(paramInt1) }, 1));
+      s.s(localObject2, "java.lang.String.format(format, *args)");
+      ((TextView)localObject1).setText((CharSequence)String.valueOf(localObject2));
+      parami.nhp.setText((CharSequence)String.valueOf(parami.nhA));
+      localObject1 = parami.nhq;
+      parami = r.mZi;
+      if (paramInt2 > 0) {
+        break label218;
       }
+      parami = "0";
     }
-    label933:
-    label942:
-    label948:
     for (;;)
     {
-      paramq.a(localObject1, localObject1, "", Integer.valueOf(paramInt2), paramString);
-      Object localObject3;
-      label195:
-      do
+      ((TextView)localObject1).setText((CharSequence)parami);
+      AppMethodBeat.o(247071);
+      return;
+      localObject1 = e.o.mLz;
+      if (i == e.o.bdD())
       {
-        paramString = h.aHF();
-        p.j(paramString, "MMKernel.network()");
-        paramString.aGY().b(3501, (com.tencent.mm.an.i)this);
-        AppMethodBeat.o(189185);
-        return;
-        localObject3 = ((com.tencent.mm.live.b.a.l)paramq).kxz;
-        if (localObject3 == null) {
-          break label440;
-        }
-        if (!WeChatEnvironment.hasDebugger()) {
-          break;
-        }
-        paramq = l.e.kuB;
-        paramq = MultiProcessMMKV.getSingleMMKV(l.e.aNJ());
-        localObject1 = l.g.kuI;
-        if (!paramq.getBoolean(l.g.aNO(), false)) {
-          break;
-        }
-        paramInt1 = 1;
-        if ((paramInt1 != 0) || (!((aep)localObject3).RLw)) {
-          break label319;
-        }
-        paramq = ((aep)localObject3).Src;
-        if (paramq != null)
-        {
-          localObject1 = u.kwz;
-          u.a(paramq);
-          paramq = new StringBuilder("processCreateLiveResponse live_id:");
-          localObject1 = u.kwz;
-          Log.i("MicroMsg.LaunchLiveRoom", u.aOr().klE);
-        }
-        paramq = this.ktW;
-      } while (paramq == null);
-      localObject1 = Boolean.TRUE;
-      Object localObject2 = Boolean.FALSE;
-      if (paramString == null) {
-        paramString = "";
-      }
-      for (;;)
-      {
-        paramq.a(localObject1, localObject2, "", Integer.valueOf(paramInt2), paramString);
+        parami.nhu.setImageDrawable(parami.nhx);
         break;
-        paramInt1 = 0;
-        break label195;
-        label319:
-        if (Util.isNullOrNil(((aep)localObject3).RLx))
-        {
-          paramq = this.ktW;
-          if (paramq == null) {
-            break;
-          }
-          localObject1 = Boolean.FALSE;
-          if (paramString != null) {
-            break label942;
-          }
-          paramString = "";
-        }
-        for (;;)
-        {
-          paramq.a(localObject1, localObject1, "", Integer.valueOf(paramInt2), paramString);
-          break;
-          paramq = this.ktW;
-          if (paramq == null) {
-            break;
-          }
-          localObject1 = Boolean.FALSE;
-          localObject2 = Boolean.TRUE;
-          localObject3 = ((aep)localObject3).RLx;
-          p.j(localObject3, "response.verify_url");
-          if (paramString == null) {
-            paramString = "";
-          }
-          for (;;)
-          {
-            paramq.a(localObject1, localObject2, localObject3, Integer.valueOf(paramInt2), paramString);
-            break;
-            label440:
-            paramq = this.ktW;
-            if (paramq == null) {
-              break;
-            }
-            localObject1 = Boolean.FALSE;
-            if (paramString == null) {
-              paramString = "";
-            }
-            for (;;)
-            {
-              paramq.a(localObject1, localObject1, "", Integer.valueOf(paramInt2), paramString);
-              break;
-              if ((paramq instanceof com.tencent.mm.live.b.a.o))
-              {
-                localObject1 = a.kqB;
-                a.NN("visitor join live error:" + paramInt1 + " code:" + paramInt2 + " msg:" + paramString);
-                if ((paramInt1 == 0) && (paramInt2 == 0)) {
-                  break label639;
-                }
-                Log.i("MicroMsg.LaunchLiveRoom", "launch live room failed");
-                paramq = this.ktX;
-                if (paramq != null)
-                {
-                  localObject1 = Boolean.FALSE;
-                  if (paramString != null) {
-                    break label933;
-                  }
-                  paramString = "";
-                }
-              }
-              for (;;)
-              {
-                localObject2 = g.kmu;
-                localObject2 = g.aLk();
-                localObject3 = g.kmu;
-                paramq.a(localObject1, Integer.valueOf(paramInt2), paramString, localObject2, g.aLj());
-                label639:
-                do
-                {
-                  do
-                  {
-                    paramString = h.aHF();
-                    p.j(paramString, "MMKernel.network()");
-                    paramString.aGY().b(3797, (com.tencent.mm.an.i)this);
-                    AppMethodBeat.o(189185);
-                    return;
-                    paramq = ((com.tencent.mm.live.b.a.o)paramq).kxI;
-                    if (paramq == null) {
-                      break;
-                    }
-                    paramString = paramq.SJL;
-                  } while (paramString == null);
-                  paramq = u.kwz;
-                  u.a(paramString);
-                  localObject1 = new TRTCCloudDef.TRTCParams();
-                  paramString = this.name;
-                  paramq = u.kwz;
-                  localObject2 = new f(paramString, u.aOr().klE, 0, null, 0L, 0L, null, null, 0L, null, 8188);
-                  paramString = k.kuf;
-                  localObject3 = this.name;
-                  paramString = u.kwz;
-                  crq localcrq = u.aOr();
-                  paramString = u.kwz;
-                  paramq = u.aOs();
-                  paramString = paramq;
-                  if (paramq == null) {
-                    paramString = new crw();
-                  }
-                  k.a((String)localObject3, paramString, localcrq, (TRTCCloudDef.TRTCParams)localObject1, (f)localObject2);
-                  paramString = e.b.kjz;
-                  ((f)localObject2).kmi = e.b.aJJ();
-                  paramString = u.kwz;
-                  paramString = u.aOs();
-                  if (paramString != null) {}
-                  for (long l = paramString.Tzr;; l = 0L)
-                  {
-                    l = kotlin.k.i.be((l - 60L) * 1000L, 60000L);
-                    o.kvA.FG(l);
-                    paramString = this.ktX;
-                    if (paramString == null) {
-                      break;
-                    }
-                    paramString.a(Boolean.TRUE, Integer.valueOf(0), "", localObject2, localObject1);
-                    break;
-                  }
-                  paramq = this.ktX;
-                } while (paramq == null);
-                localObject1 = Boolean.FALSE;
-                if (paramString == null) {
-                  paramString = "";
-                }
-                for (;;)
-                {
-                  localObject2 = g.kmu;
-                  localObject2 = g.aLk();
-                  localObject3 = g.kmu;
-                  paramq.a(localObject1, Integer.valueOf(paramInt2), paramString, localObject2, g.aLj());
-                  break;
-                }
-              }
-            }
-          }
-        }
+      }
+      localObject1 = e.o.mLz;
+      if (i != e.o.bdE()) {
+        break;
+      }
+      parami.nhu.setImageDrawable(parami.nhy);
+      break;
+      label218:
+      if (paramInt2 < 10000)
+      {
+        parami = String.valueOf(paramInt2);
+      }
+      else if (paramInt2 % 10000 >= 1000)
+      {
+        parami = am.aixg;
+        parami = MMApplicationContext.getContext().getResources().getString(b.h.live_like_count_format);
+        s.s(parami, "getContext().resources.g…g.live_like_count_format)");
+        parami = String.format(parami, Arrays.copyOf(new Object[] { Float.valueOf(paramInt2 / 10000.0F) }, 1));
+        s.s(parami, "java.lang.String.format(format, *args)");
+      }
+      else
+      {
+        parami = am.aixg;
+        parami = MMApplicationContext.getContext().getResources().getString(b.h.live_like_count_int_format);
+        s.s(parami, "getContext().resources.g…ve_like_count_int_format)");
+        parami = String.format(parami, Arrays.copyOf(new Object[] { Integer.valueOf(paramInt2 / 10000) }, 1));
+        s.s(parami, "java.lang.String.format(format, *args)");
       }
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/model/LaunchLiveRoom$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
-  public static final class a {}
+  private static final void a(i parami, View paramView)
+  {
+    AppMethodBeat.i(247055);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(parami);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/plugin/LiveCommonInfoPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(parami, "this$0");
+    if (parami.nfT.getLiveRole() == 0) {
+      f.bky();
+    }
+    for (;;)
+    {
+      b.b.a(parami.nfT, b.c.ncv);
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/live/plugin/LiveCommonInfoPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(247055);
+      return;
+      com.tencent.mm.live.c.a.bjN();
+    }
+  }
+  
+  private final Drawable tP(int paramInt)
+  {
+    AppMethodBeat.i(247047);
+    Drawable localDrawable = this.mJe.getContext().getResources().getDrawable(paramInt);
+    s.s(localDrawable, "root.context.resources.getDrawable(resId)");
+    AppMethodBeat.o(247047);
+    return localDrawable;
+  }
+  
+  public final void bjl()
+  {
+    AppMethodBeat.i(247108);
+    b.a locala = com.tencent.mm.live.core.core.a.b.mMo;
+    this.hKC = b.a.bek();
+    if (this.hKC)
+    {
+      this.nhr.setVisibility(0);
+      this.nhs.setVisibility(0);
+      this.nht.setVisibility(0);
+      AppMethodBeat.o(247108);
+      return;
+    }
+    this.nhr.setVisibility(0);
+    this.nhs.setVisibility(8);
+    this.nht.setVisibility(8);
+    AppMethodBeat.o(247108);
+  }
+  
+  public final void eo(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(247100);
+    this.mJe.post(new i..ExternalSyntheticLambda1(this, paramInt1, paramInt2));
+    AppMethodBeat.o(247100);
+  }
+  
+  public final void statusChange(b.c paramc, Bundle paramBundle)
+  {
+    int i = 1;
+    AppMethodBeat.i(247145);
+    s.u(paramc, "status");
+    super.statusChange(paramc, paramBundle);
+    switch (i.a.$EnumSwitchMapping$0[paramc.ordinal()])
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(247145);
+      return;
+      super.tO(0);
+      AppMethodBeat.o(247145);
+      return;
+      super.tO(8);
+      AppMethodBeat.o(247145);
+      return;
+      if (this.nfT.getLiveRole() == 0)
+      {
+        if ((paramBundle != null) && (paramBundle.getBoolean("PARAM_IS_ENTERING_COMMENT") == true)) {}
+        while (i != 0)
+        {
+          super.tO(4);
+          AppMethodBeat.o(247145);
+          return;
+          i = 0;
+        }
+        super.tO(0);
+      }
+    }
+  }
+  
+  public final void stop() {}
+  
+  public final void tO(int paramInt)
+  {
+    AppMethodBeat.i(247114);
+    super.tO(paramInt);
+    AppMethodBeat.o(247114);
+  }
+  
+  public final void unMount() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.live.b.i
  * JD-Core Version:    0.7.0.1
  */

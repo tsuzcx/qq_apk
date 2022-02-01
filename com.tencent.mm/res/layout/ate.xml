@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@color/ti" style="@style/rj"
+<FrameLayout android:background="@color/lz" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/djf" android:background="@color/afz" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ac_" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" />
-    <TextView android:gravity="center" android:layout_gravity="center" android:id="@id/c2g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/dty" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/xo" android:gravity="center_horizontal" android:id="@id/hh0" android:background="@color/lz" android:paddingTop="@dimen/ic" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ListView android:id="@id/j77" android:background="@color/lz" android:focusable="false" android:visibility="gone" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:transcriptMode="disabled" style="@style/na" />
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/j72" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="48.0dip" android:layout_marginRight="30.0dip">
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:id="@id/j7d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="14.0dip" android:text="@string/ih_" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/eps" android:layout_width="wrap_content" android:layout_height="fill_parent" android:overScrollMode="never" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/lby" android:background="@color/lz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/j6k" android:paddingTop="20.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ProgressBar android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a85" />
+        <TextView android:textSize="14.0dip" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/gav" />
+    </LinearLayout>
 </FrameLayout>

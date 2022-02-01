@@ -1,39 +1,29 @@
 package com.tencent.mm.plugin.appbrand.openmaterial;
 
-import com.tencent.mm.vending.e.a;
+import com.tencent.mm.plugin.appbrand.openmaterial.model.AppBrandOpenMaterialModel;
+import com.tencent.mm.plugin.appbrand.openmaterial.model.b;
 
 public abstract interface h
-  extends a
 {
-  public static final h qmK = new h()
-  {
-    public final void a(h.b paramAnonymousb) {}
-    
-    public final void ccF() {}
-    
-    public final void dead() {}
-    
-    public final void hide() {}
-    
-    public final void show() {}
-  };
+  public abstract void b(AppBrandOpenMaterialModel paramAppBrandOpenMaterialModel);
   
-  public abstract void a(b paramb);
+  public abstract void c(AppBrandOpenMaterialModel paramAppBrandOpenMaterialModel);
   
-  public abstract void ccF();
+  public abstract b cDo();
   
-  public abstract void hide();
+  public abstract void cDp();
   
-  public abstract void show();
+  public abstract void cDq();
   
-  public static abstract interface b
-  {
-    public abstract void ccP();
-  }
+  public abstract void cDr();
+  
+  public abstract void cDs();
+  
+  public abstract String getSessionId();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.openmaterial.h
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.mv.ui.view;
 
 import androidx.recyclerview.widget.RecyclerView;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.b;
-import kotlin.g.b.aa.d;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.ah.d;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "progress", "", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", "", "progress", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class MusicMVCardChooseView$e$a
-  extends q
-  implements b<Float, x>
+  extends u
+  implements b<Float, ah>
 {
-  MusicMVCardChooseView$e$a(aa.d paramd1, aa.d paramd2, RecyclerView paramRecyclerView)
+  MusicMVCardChooseView$e$a(ah.d paramd1, ah.d paramd2, RecyclerView paramRecyclerView)
   {
     super(1);
   }

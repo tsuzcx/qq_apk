@@ -1,20 +1,18 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.dd;
-import com.tencent.mm.f.a.dd.b;
-import com.tencent.mm.f.a.hi;
+import com.tencent.mm.autogen.a.dn;
+import com.tencent.mm.autogen.a.dn.b;
+import com.tencent.mm.autogen.a.ht;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
 import com.tencent.mm.plugin.fav.a.b;
 import com.tencent.mm.plugin.fav.ui.e;
-import com.tencent.mm.protocal.protobuf.ank;
-import com.tencent.mm.protocal.protobuf.anm;
-import com.tencent.mm.protocal.protobuf.aoc;
-import com.tencent.mm.protocal.protobuf.aoi;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.protocal.protobuf.ard;
+import com.tencent.mm.protocal.protobuf.arf;
+import com.tencent.mm.protocal.protobuf.arv;
+import com.tencent.mm.protocal.protobuf.asb;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.widget.snackbar.a.b;
@@ -24,80 +22,80 @@ import java.util.LinkedList;
 final class JsApiAddToFavorites$a
   extends AppBrandProxyUIProcessTask
 {
-  public final void a(final AppBrandProxyUIProcessTask.ProcessRequest paramProcessRequest)
+  public final void handleRequest(final AppBrandProxyUIProcessTask.ProcessRequest paramProcessRequest)
   {
-    AppMethodBeat.i(280942);
+    AppMethodBeat.i(325592);
     paramProcessRequest = (JsApiAddToFavorites.IPCFavRequest)paramProcessRequest;
-    Object localObject = new anm();
-    ((anm)localObject).arq(19);
-    ((anm)localObject).bsM(paramProcessRequest.otD);
-    if (Util.isNullOrNil(paramProcessRequest.otD)) {
-      ((anm)localObject).Ey(true);
+    Object localObject = new arf();
+    ((arf)localObject).axy(19);
+    ((arf)localObject).bsD(paramProcessRequest.rxr);
+    if (Util.isNullOrNil(paramProcessRequest.rxr)) {
+      ((arf)localObject).Kk(true);
     }
-    ((anm)localObject).bsL(paramProcessRequest.otD);
-    ((anm)localObject).bsx(paramProcessRequest.title);
-    ((anm)localObject).bsy(paramProcessRequest.title);
-    ((anm)localObject).bsK(b.dN(localObject.toString(), 19));
-    aoi localaoi = new aoi();
-    localaoi.btx(z.bcZ());
-    localaoi.Ue(Util.nowMilliSecond());
-    localaoi.arz(paramProcessRequest.scene);
-    ank localank = new ank();
-    localank.appId = paramProcessRequest.appId;
-    localank.iconUrl = paramProcessRequest.iconUrl;
-    localank.fve = paramProcessRequest.fve;
-    localank.fES = paramProcessRequest.cBU;
-    localank.version = paramProcessRequest.version;
-    localank.username = paramProcessRequest.username;
-    localank.otE = paramProcessRequest.otE;
-    localank.nYp = paramProcessRequest.nYp;
-    localank.fXg = paramProcessRequest.fXg;
-    localank.subType = paramProcessRequest.subType;
-    aoc localaoc = new aoc();
-    localaoc.syG.add(localObject);
-    localaoc.c(localank);
-    localaoc.a(localaoi);
-    localObject = new dd();
-    localaoc.btv(paramProcessRequest.title);
-    ((dd)localObject).fyI.desc = paramProcessRequest.title;
-    ((dd)localObject).fyI.title = paramProcessRequest.title;
-    ((dd)localObject).fyI.fyK = localaoc;
-    ((dd)localObject).fyI.type = 19;
-    EventCenter.instance.publish((IEvent)localObject);
-    int i = ((dd)localObject).fyJ.ret;
+    ((arf)localObject).bsC(paramProcessRequest.rxr);
+    ((arf)localObject).bso(paramProcessRequest.title);
+    ((arf)localObject).bsp(paramProcessRequest.title);
+    ((arf)localObject).bsB(b.er(localObject.toString(), 19));
+    asb localasb = new asb();
+    localasb.bto(z.bAM());
+    localasb.yu(Util.nowMilliSecond());
+    localasb.axH(paramProcessRequest.scene);
+    ard localard = new ard();
+    localard.appId = paramProcessRequest.appId;
+    localard.iconUrl = paramProcessRequest.iconUrl;
+    localard.hzy = paramProcessRequest.hzy;
+    localard.hJK = paramProcessRequest.euz;
+    localard.version = paramProcessRequest.version;
+    localard.username = paramProcessRequest.username;
+    localard.rxs = paramProcessRequest.rxs;
+    localard.nOX = paramProcessRequest.nOX;
+    localard.idf = paramProcessRequest.idf;
+    localard.subType = paramProcessRequest.subType;
+    arv localarv = new arv();
+    localarv.vEn.add(localObject);
+    localarv.c(localard);
+    localarv.a(localasb);
+    localObject = new dn();
+    localarv.btm(paramProcessRequest.title);
+    ((dn)localObject).hDr.desc = paramProcessRequest.title;
+    ((dn)localObject).hDr.title = paramProcessRequest.title;
+    ((dn)localObject).hDr.hDt = localarv;
+    ((dn)localObject).hDr.type = 19;
+    ((dn)localObject).publish();
+    int i = ((dn)localObject).hDs.ret;
     paramProcessRequest = new JsApiAddToFavorites.IPCFavResult();
     paramProcessRequest.ret = i;
     Log.i("MicroMsg.JsApiAddToFavorites", "fav result:%d", new Object[] { Integer.valueOf(i) });
-    e.a(i, bPf(), new a.c()
+    e.a(i, getActivityContext(), new a.c()
     {
-      public final void bPL() {}
+      public final void cpT() {}
       
       public final void onHide()
       {
-        AppMethodBeat.i(282939);
+        AppMethodBeat.i(325734);
         JsApiAddToFavorites.a.a(JsApiAddToFavorites.a.this, paramProcessRequest);
-        AppMethodBeat.o(282939);
+        AppMethodBeat.o(325734);
       }
       
       public final void onShow() {}
     }, null, new a.b()
     {
-      public final void bPM()
+      public final void onMessageClick()
       {
-        AppMethodBeat.i(271171);
-        hi localhi = new hi();
-        localhi.fEb.type = 35;
-        localhi.fEb.context = JsApiAddToFavorites.a.a(JsApiAddToFavorites.a.this);
-        EventCenter.instance.publish(localhi);
-        AppMethodBeat.o(271171);
+        AppMethodBeat.i(325718);
+        ht localht = new ht();
+        localht.hIR.type = 35;
+        localht.hIR.context = JsApiAddToFavorites.a.a(JsApiAddToFavorites.a.this);
+        localht.publish();
+        AppMethodBeat.o(325718);
       }
     });
-    AppMethodBeat.o(280942);
+    AppMethodBeat.o(325592);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.JsApiAddToFavorites.a
  * JD-Core Version:    0.7.0.1
  */

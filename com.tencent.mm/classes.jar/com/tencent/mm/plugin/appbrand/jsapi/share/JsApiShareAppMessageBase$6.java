@@ -3,7 +3,6 @@ package com.tencent.mm.plugin.appbrand.jsapi.share;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.f.a.b;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
 import com.tencent.mm.plugin.appbrand.service.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.wework.api.IWWAPI;
@@ -16,24 +15,24 @@ final class JsApiShareAppMessageBase$6
 {
   JsApiShareAppMessageBase$6(JsApiShareAppMessageBase paramJsApiShareAppMessageBase, WWMediaMiniProgram paramWWMediaMiniProgram, c paramc, int paramInt) {}
   
-  public final void O(Bitmap paramBitmap)
+  public final void W(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(272638);
+    AppMethodBeat.i(326434);
     if (paramBitmap != null)
     {
       Log.i("MicroMsg.JsApiShareAppMessageBase", "load bitmap onResult success");
-      JsApiShareAppMessageBase.a(paramBitmap, this.ppn);
+      JsApiShareAppMessageBase.a(paramBitmap, this.sub);
     }
     try
     {
       for (;;)
       {
-        WWAPIFactory.mw(this.nAX.getContext()).a(this.ppn, IWWAPI.WWAppType.ZYb);
-        this.nAX.j(this.cuf, this.ppj.h("ok", null));
-        AppMethodBeat.o(272638);
+        WWAPIFactory.oM(this.qAj.getContext()).a(this.sub, IWWAPI.WWAppType.aicA);
+        this.qAj.callback(this.elZ, this.stX.ZP("ok"));
+        AppMethodBeat.o(326434);
         return;
         Log.i("MicroMsg.JsApiShareAppMessageBase", "load bitmap onResult fail");
-        this.ppn.ZYw = new byte[1];
+        this.sub.aida = new byte[1];
       }
     }
     catch (Exception paramBitmap)

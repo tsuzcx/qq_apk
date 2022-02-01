@@ -1,180 +1,303 @@
 package androidx.recyclerview.widget;
 
-import android.content.Context;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.animation.DecelerateInterpolator;
-import android.widget.Scroller;
+import androidx.b.a;
+import androidx.b.d;
+import androidx.core.f.e.a;
+import androidx.core.f.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public abstract class z
-  extends RecyclerView.j
+final class z
 {
-  private final RecyclerView.l akM = new RecyclerView.l()
+  final a<RecyclerView.v, a> cbX;
+  final d<RecyclerView.v> cbY;
+  
+  z()
   {
-    boolean amF = false;
-    
-    public final void onScrollStateChanged(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt)
-    {
-      AppMethodBeat.i(262772);
-      super.onScrollStateChanged(paramAnonymousRecyclerView, paramAnonymousInt);
-      if ((paramAnonymousInt == 0) && (this.amF))
-      {
-        this.amF = false;
-        z.this.mv();
-      }
-      AppMethodBeat.o(262772);
-    }
-    
-    public final void onScrolled(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
-    {
-      if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0)) {
-        this.amF = true;
-      }
-    }
-  };
-  private Scroller amE;
-  RecyclerView mRecyclerView;
-  
-  public abstract int a(RecyclerView.LayoutManager paramLayoutManager, int paramInt1, int paramInt2);
-  
-  public abstract View a(RecyclerView.LayoutManager paramLayoutManager);
-  
-  public void a(RecyclerView paramRecyclerView)
-  {
-    if (this.mRecyclerView == paramRecyclerView) {}
-    do
-    {
-      return;
-      if (this.mRecyclerView != null)
-      {
-        this.mRecyclerView.b(this.akM);
-        this.mRecyclerView.setOnFlingListener(null);
-      }
-      this.mRecyclerView = paramRecyclerView;
-    } while (this.mRecyclerView == null);
-    if (this.mRecyclerView.getOnFlingListener() != null) {
-      throw new IllegalStateException("An instance of OnFlingListener already set.");
-    }
-    this.mRecyclerView.a(this.akM);
-    this.mRecyclerView.setOnFlingListener(this);
-    this.amE = new Scroller(this.mRecyclerView.getContext(), new DecelerateInterpolator());
-    mv();
+    AppMethodBeat.i(194916);
+    this.cbX = new a();
+    this.cbY = new d();
+    AppMethodBeat.o(194916);
   }
   
-  public abstract int[] a(RecyclerView.LayoutManager paramLayoutManager, View paramView);
-  
-  public final boolean aI(int paramInt1, int paramInt2)
+  final boolean G(RecyclerView.v paramv)
   {
-    RecyclerView.LayoutManager localLayoutManager = this.mRecyclerView.getLayoutManager();
-    if (localLayoutManager == null) {}
+    AppMethodBeat.i(194943);
+    paramv = (a)this.cbX.get(paramv);
+    if ((paramv != null) && ((paramv.flags & 0x1) != 0))
+    {
+      AppMethodBeat.o(194943);
+      return true;
+    }
+    AppMethodBeat.o(194943);
+    return false;
+  }
+  
+  final boolean H(RecyclerView.v paramv)
+  {
+    AppMethodBeat.i(194973);
+    paramv = (a)this.cbX.get(paramv);
+    if ((paramv != null) && ((paramv.flags & 0x4) != 0))
+    {
+      AppMethodBeat.o(194973);
+      return true;
+    }
+    AppMethodBeat.o(194973);
+    return false;
+  }
+  
+  final void I(RecyclerView.v paramv)
+  {
+    AppMethodBeat.i(194995);
+    a locala2 = (a)this.cbX.get(paramv);
+    a locala1 = locala2;
+    if (locala2 == null)
+    {
+      locala1 = a.Ls();
+      this.cbX.put(paramv, locala1);
+    }
+    locala1.flags |= 0x1;
+    AppMethodBeat.o(194995);
+  }
+  
+  final void J(RecyclerView.v paramv)
+  {
+    AppMethodBeat.i(195001);
+    paramv = (a)this.cbX.get(paramv);
+    if (paramv == null)
+    {
+      AppMethodBeat.o(195001);
+      return;
+    }
+    paramv.flags &= 0xFFFFFFFE;
+    AppMethodBeat.o(195001);
+  }
+  
+  final void K(RecyclerView.v paramv)
+  {
+    AppMethodBeat.i(195019);
+    int i = this.cbY.size() - 1;
     for (;;)
     {
-      return false;
-      if (this.mRecyclerView.getAdapter() != null)
+      if (i >= 0)
       {
-        int i = this.mRecyclerView.getMinFlingVelocity();
-        if ((Math.abs(paramInt2) > i) || (Math.abs(paramInt1) > i))
-        {
-          if (!(localLayoutManager instanceof RecyclerView.r.b)) {
-            paramInt1 = 0;
-          }
-          while (paramInt1 != 0)
-          {
-            return true;
-            RecyclerView.r localr = g(localLayoutManager);
-            if (localr == null)
-            {
-              paramInt1 = 0;
-            }
-            else
-            {
-              paramInt1 = a(localLayoutManager, paramInt1, paramInt2);
-              if (paramInt1 == -1)
-              {
-                paramInt1 = 0;
-              }
-              else
-              {
-                localr.alG = paramInt1;
-                localLayoutManager.startSmoothScroll(localr);
-                paramInt1 = 1;
-              }
-            }
-          }
+        if (paramv == this.cbY.bl(i)) {
+          this.cbY.bj(i);
         }
       }
+      else
+      {
+        paramv = (a)this.cbX.remove(paramv);
+        if (paramv != null) {
+          a.a(paramv);
+        }
+        AppMethodBeat.o(195019);
+        return;
+      }
+      i -= 1;
     }
   }
   
-  public final int[] aO(int paramInt1, int paramInt2)
+  final void a(long paramLong, RecyclerView.v paramv)
   {
-    this.amE.fling(0, 0, paramInt1, paramInt2, -2147483648, 2147483647, -2147483648, 2147483647);
-    return new int[] { this.amE.getFinalX(), this.amE.getFinalY() };
+    AppMethodBeat.i(194959);
+    this.cbY.a(paramLong, paramv);
+    AppMethodBeat.o(194959);
   }
   
-  @Deprecated
-  protected p f(RecyclerView.LayoutManager paramLayoutManager)
+  final void a(b paramb)
   {
-    if (!(paramLayoutManager instanceof RecyclerView.r.b)) {
+    AppMethodBeat.i(195011);
+    int i = this.cbX.size() - 1;
+    if (i >= 0)
+    {
+      RecyclerView.v localv = (RecyclerView.v)this.cbX.bn(i);
+      a locala = (a)this.cbX.removeAt(i);
+      if ((locala.flags & 0x3) == 3) {
+        paramb.m(localv);
+      }
+      for (;;)
+      {
+        a.a(locala);
+        i -= 1;
+        break;
+        if ((locala.flags & 0x1) != 0)
+        {
+          if (locala.cbZ == null) {
+            paramb.m(localv);
+          } else {
+            paramb.a(localv, locala.cbZ, locala.cca);
+          }
+        }
+        else if ((locala.flags & 0xE) == 14) {
+          paramb.b(localv, locala.cbZ, locala.cca);
+        } else if ((locala.flags & 0xC) == 12) {
+          paramb.c(localv, locala.cbZ, locala.cca);
+        } else if ((locala.flags & 0x4) != 0) {
+          paramb.a(localv, locala.cbZ, null);
+        } else if ((locala.flags & 0x8) != 0) {
+          paramb.b(localv, locala.cbZ, locala.cca);
+        }
+      }
+    }
+    AppMethodBeat.o(195011);
+  }
+  
+  final void b(RecyclerView.v paramv, RecyclerView.f.c paramc)
+  {
+    AppMethodBeat.i(194933);
+    a locala2 = (a)this.cbX.get(paramv);
+    a locala1 = locala2;
+    if (locala2 == null)
+    {
+      locala1 = a.Ls();
+      this.cbX.put(paramv, locala1);
+    }
+    locala1.cbZ = paramc;
+    locala1.flags |= 0x4;
+    AppMethodBeat.o(194933);
+  }
+  
+  final RecyclerView.v bA(long paramLong)
+  {
+    AppMethodBeat.i(194981);
+    RecyclerView.v localv = (RecyclerView.v)this.cbY.get(paramLong, null);
+    AppMethodBeat.o(194981);
+    return localv;
+  }
+  
+  final void c(RecyclerView.v paramv, RecyclerView.f.c paramc)
+  {
+    AppMethodBeat.i(194967);
+    a locala2 = (a)this.cbX.get(paramv);
+    a locala1 = locala2;
+    if (locala2 == null)
+    {
+      locala1 = a.Ls();
+      this.cbX.put(paramv, locala1);
+    }
+    locala1.flags |= 0x2;
+    locala1.cbZ = paramc;
+    AppMethodBeat.o(194967);
+  }
+  
+  final void clear()
+  {
+    AppMethodBeat.i(194923);
+    this.cbX.clear();
+    this.cbY.clear();
+    AppMethodBeat.o(194923);
+  }
+  
+  final void d(RecyclerView.v paramv, RecyclerView.f.c paramc)
+  {
+    AppMethodBeat.i(194988);
+    a locala2 = (a)this.cbX.get(paramv);
+    a locala1 = locala2;
+    if (locala2 == null)
+    {
+      locala1 = a.Ls();
+      this.cbX.put(paramv, locala1);
+    }
+    locala1.cca = paramc;
+    locala1.flags |= 0x8;
+    AppMethodBeat.o(194988);
+  }
+  
+  final RecyclerView.f.c f(RecyclerView.v paramv, int paramInt)
+  {
+    AppMethodBeat.i(194952);
+    int i = this.cbX.y(paramv);
+    if (i < 0)
+    {
+      AppMethodBeat.o(194952);
       return null;
     }
-    new p(this.mRecyclerView.getContext())
+    a locala = (a)this.cbX.bl(i);
+    if ((locala != null) && ((locala.flags & paramInt) != 0))
     {
-      protected final float a(DisplayMetrics paramAnonymousDisplayMetrics)
+      locala.flags &= (paramInt ^ 0xFFFFFFFF);
+      if (paramInt == 4) {}
+      for (paramv = locala.cbZ;; paramv = locala.cca)
       {
-        return 100.0F / paramAnonymousDisplayMetrics.densityDpi;
-      }
-      
-      protected final void a(View paramAnonymousView, RecyclerView.s paramAnonymouss, RecyclerView.r.a paramAnonymousa)
-      {
-        AppMethodBeat.i(262776);
-        if (z.this.mRecyclerView == null)
+        if ((locala.flags & 0xC) == 0)
         {
-          AppMethodBeat.o(262776);
-          return;
+          this.cbX.removeAt(i);
+          a.a(locala);
         }
-        paramAnonymousView = z.this.a(z.this.mRecyclerView.getLayoutManager(), paramAnonymousView);
-        int i = paramAnonymousView[0];
-        int j = paramAnonymousView[1];
-        int k = cE(Math.max(Math.abs(i), Math.abs(j)));
-        if (k > 0) {
-          paramAnonymousa.a(i, j, k, this.aju);
+        AppMethodBeat.o(194952);
+        return paramv;
+        if (paramInt != 8) {
+          break;
         }
-        AppMethodBeat.o(262776);
       }
-    };
+      paramv = new IllegalArgumentException("Must provide flag PRE or POST");
+      AppMethodBeat.o(194952);
+      throw paramv;
+    }
+    AppMethodBeat.o(194952);
+    return null;
   }
   
-  protected RecyclerView.r g(RecyclerView.LayoutManager paramLayoutManager)
+  static final class a
   {
-    return f(paramLayoutManager);
+    static e.a<a> ccb;
+    RecyclerView.f.c cbZ;
+    RecyclerView.f.c cca;
+    int flags;
+    
+    static
+    {
+      AppMethodBeat.i(194971);
+      ccb = new e.b(20);
+      AppMethodBeat.o(194971);
+    }
+    
+    static a Ls()
+    {
+      AppMethodBeat.i(194946);
+      a locala = (a)ccb.acquire();
+      if (locala == null)
+      {
+        locala = new a();
+        AppMethodBeat.o(194946);
+        return locala;
+      }
+      AppMethodBeat.o(194946);
+      return locala;
+    }
+    
+    static void Lt()
+    {
+      AppMethodBeat.i(194963);
+      while (ccb.acquire() != null) {}
+      AppMethodBeat.o(194963);
+    }
+    
+    static void a(a parama)
+    {
+      AppMethodBeat.i(194956);
+      parama.flags = 0;
+      parama.cbZ = null;
+      parama.cca = null;
+      ccb.release(parama);
+      AppMethodBeat.o(194956);
+    }
   }
   
-  final void mv()
+  static abstract interface b
   {
-    if (this.mRecyclerView == null) {}
-    Object localObject;
-    do
-    {
-      View localView;
-      do
-      {
-        do
-        {
-          return;
-          localObject = this.mRecyclerView.getLayoutManager();
-        } while (localObject == null);
-        localView = a((RecyclerView.LayoutManager)localObject);
-      } while (localView == null);
-      localObject = a((RecyclerView.LayoutManager)localObject, localView);
-    } while ((localObject[0] == 0) && (localObject[1] == 0));
-    this.mRecyclerView.a(localObject[0], localObject[1], null);
+    public abstract void a(RecyclerView.v paramv, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2);
+    
+    public abstract void b(RecyclerView.v paramv, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2);
+    
+    public abstract void c(RecyclerView.v paramv, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2);
+    
+    public abstract void m(RecyclerView.v paramv);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.recyclerview.widget.z
  * JD-Core Version:    0.7.0.1
  */

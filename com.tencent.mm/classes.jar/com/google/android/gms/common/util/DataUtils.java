@@ -49,7 +49,6 @@ public final class DataUtils
     }
   }
   
-  @VisibleForTesting
   public static byte[] loadImageBytes(Resources paramResources, int paramInt)
   {
     AppMethodBeat.i(5166);
@@ -95,7 +94,7 @@ public final class DataUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.util.DataUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ import org.json.JSONObject;
 
 public final class a
 {
-  public static String apj(int paramInt)
+  public static String avh(int paramInt)
   {
     AppMethodBeat.i(110785);
     Object localObject = new JSONObject();
@@ -40,11 +40,11 @@ public final class a
   public static void b(String paramString1, int paramInt, String paramString2, long paramLong)
   {
     AppMethodBeat.i(110782);
-    com.tencent.mm.plugin.wepkg.b.a locala = com.tencent.mm.plugin.wepkg.b.b.heu().boj(paramString1);
+    com.tencent.mm.plugin.wepkg.b.a locala = com.tencent.mm.plugin.wepkg.b.b.iFc().bnX(paramString1);
     if (locala != null)
     {
-      paramString1 = s(new Object[] { paramString1, locala.field_version, Integer.valueOf(0), Integer.valueOf(paramInt), Integer.valueOf(0), Integer.valueOf(0), paramString2, "", locala.field_oldVersion, Integer.valueOf(4), Long.valueOf(paramLong), Integer.valueOf(locala.field_pkgSize) });
-      com.tencent.mm.game.report.api.a.jTp.a(new com.tencent.mm.game.report.api.b(14229, paramString1));
+      paramString1 = u(new Object[] { paramString1, locala.field_version, Integer.valueOf(0), Integer.valueOf(paramInt), Integer.valueOf(0), Integer.valueOf(0), paramString2, "", locala.field_oldVersion, Integer.valueOf(4), Long.valueOf(paramLong), Integer.valueOf(locala.field_pkgSize) });
+      com.tencent.mm.game.report.api.a.mtH.a(new com.tencent.mm.game.report.api.b(14229, paramString1));
     }
     AppMethodBeat.o(110782);
   }
@@ -88,7 +88,7 @@ public final class a
         str3 = paramString2;
         continue;
       }
-      h.IzE.a(13980, new Object[] { paramString1, str3, paramString3, paramString4, Long.valueOf(paramLong1), localObject, Long.valueOf(paramLong2) });
+      h.OAn.b(13980, new Object[] { paramString1, str3, paramString3, paramString4, Long.valueOf(paramLong1), localObject, Long.valueOf(paramLong2) });
       AppMethodBeat.o(110781);
       return;
       localObject = new JSONObject(URLDecoder.decode(paramString5, "UTF-8"));
@@ -98,7 +98,7 @@ public final class a
     }
   }
   
-  public static String boM(String paramString)
+  public static String boA(String paramString)
   {
     AppMethodBeat.i(110784);
     if (paramString == null)
@@ -129,7 +129,7 @@ public final class a
     }
   }
   
-  public static String s(Object... paramVarArgs)
+  public static String u(Object... paramVarArgs)
   {
     AppMethodBeat.i(110783);
     StringBuilder localStringBuilder = new StringBuilder();

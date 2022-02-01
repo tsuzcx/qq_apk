@@ -2,10 +2,10 @@ package com.tencent.mm.pluginsdk;
 
 public final class e$b
 {
-  public static int QRK = 15;
-  public static int QRL = 5;
-  public static int QRM = 5;
-  public static int QRN = 3;
+  public static int XNA = 5;
+  public static int XNB = 3;
+  public static int XNy = 15;
+  public static int XNz = 5;
 }
 
 

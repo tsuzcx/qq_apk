@@ -1,62 +1,53 @@
 package com.tencent.mm.plugin.finder.live.model.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.plugin.finder.cgi.ao;
-import com.tencent.mm.plugin.finder.live.viewmodel.data.business.b;
-import com.tencent.mm.plugin.finder.live.viewmodel.data.business.c;
-import com.tencent.mm.protocal.protobuf.azv;
-import com.tencent.mm.protocal.protobuf.azw;
-import com.tencent.mm.protocal.protobuf.bac;
-import com.tencent.mm.protocal.protobuf.eaf;
-import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.plugin.finder.cgi.bi;
+import com.tencent.mm.plugin.findersdk.b.c;
+import com.tencent.mm.protocal.protobuf.bhb;
+import com.tencent.mm.protocal.protobuf.bhc;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.kd;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveGetProductDetail;", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLive;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveGetShopProductDetailResponse;", "liveData", "Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "productId", "", "callback", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveGetProductDetail$CallBack;", "(Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;JLcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveGetProductDetail$CallBack;)V", "TAG", "", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLiveGetShopProductDetailRequest;", "initReqResp", "", "onCgiEnd", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "CallBack", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveGamePopScene;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveGamePopSceneResponse;", "scene", "", "(I)V", "TAG", "", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLiveGamePopSceneRequest;", "getScene", "()I", "onCgiEnd", "", "errType", "errCode", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class z
-  extends n<azw>
+  extends c<bhc>
 {
+  private bhb CJL;
   private final String TAG;
-  private a yjG;
-  private azv yjH;
+  private final int scene;
   
-  public z(com.tencent.mm.plugin.finder.live.model.context.a parama, long paramLong, a parama1)
+  public z()
   {
-    AppMethodBeat.i(291706);
-    this.TAG = "Finder.CgiFinderLiveGetProductDetail";
-    this.yjG = parama1;
-    this.yjH = new azv();
-    this.yjH.klE = ((c)parama.business(c.class)).liveInfo.liveId;
-    this.yjH.object_id = ((c)parama.business(c.class)).xbk;
-    this.yjH.object_nonce_id = ((c)parama.business(c.class)).nonceId;
-    this.yjH.zaO = paramLong;
-    this.yjH.SLt = ((b)parama.business(b.class)).fIY;
-    parama = this.yjH;
-    parama1 = ao.xcj;
-    parama.SDi = ao.dnO();
-    parama = new d.a();
-    parama.c((com.tencent.mm.cd.a)this.yjH);
-    parama1 = new azw();
-    parama1.setBaseResponse(new jh());
-    parama1.getBaseResponse().Tef = new eaf();
-    parama.d((com.tencent.mm.cd.a)parama1);
-    parama.TW("/cgi-bin/micromsg-bin/finderlivegetshopproductdetail");
-    parama.vD(6211);
-    c(parama.bgN());
-    Log.i(this.TAG, "CgiFinderLiveGetProductDetail init " + this.yjH.klE + ',' + this.yjH.zaO + ',' + this.yjH.SLt);
-    AppMethodBeat.o(291706);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveGetProductDetail$CallBack;", "", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderLiveGetShopProductDetailResponse;", "plugin-finder_release"})
-  public static abstract interface a
-  {
-    public abstract void a(int paramInt1, int paramInt2, azw paramazw);
+    super(null);
+    AppMethodBeat.i(360279);
+    this.scene = 1;
+    this.TAG = "Finder.CgiFinderLiveGamePopScene";
+    this.CJL = new bhb();
+    Object localObject1 = this.CJL;
+    Object localObject2 = bi.ABn;
+    ((bhb)localObject1).YIY = bi.a(this.Auc);
+    this.CJL.scene = this.scene;
+    localObject1 = new c.a();
+    ((c.a)localObject1).otE = ((a)this.CJL);
+    localObject2 = new bhc();
+    ((bhc)localObject2).setBaseResponse(new kd());
+    ((bhc)localObject2).getBaseResponse().akjO = new etl();
+    ((c.a)localObject1).otF = ((a)localObject2);
+    ((c.a)localObject1).uri = "/cgi-bin/micromsg-bin/finderlivegamepopscene";
+    ((c.a)localObject1).funcId = 6965;
+    c(((c.a)localObject1).bEF());
+    Log.i(this.TAG, s.X("init scene:", Integer.valueOf(this.scene)));
+    AppMethodBeat.o(360279);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.model.cgi.z
  * JD-Core Version:    0.7.0.1
  */

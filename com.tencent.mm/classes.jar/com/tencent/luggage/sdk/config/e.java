@@ -1,36 +1,31 @@
 package com.tencent.luggage.sdk.config;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import com.tencent.mm.sdk.platformtools.Util;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/luggage/sdk/config/WxaLabelConstant;", "", "()V", "Companion", "luggage-wechat-full-sdk_release"})
-public final class e
+public abstract interface e
 {
-  public static final a cxW;
-  
-  static
+  public static final e eqp = new e()
   {
-    AppMethodBeat.i(234004);
-    cxW = new a((byte)0);
-    AppMethodBeat.o(234004);
-  }
+    public final String aqQ()
+    {
+      AppMethodBeat.i(220236);
+      String str = "SessionId@" + hashCode() + "#" + Util.nowMilliSecond();
+      AppMethodBeat.o(220236);
+      return str;
+    }
+  };
   
-  public static final boolean iO(int paramInt)
+  public abstract String aqQ();
+  
+  public static final class a
   {
-    return paramInt != 0;
+    public static e eqq;
   }
-  
-  public static final boolean iP(int paramInt)
-  {
-    return paramInt != 0;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/luggage/sdk/config/WxaLabelConstant$Companion;", "", "()V", "OFFICIAL_FLAG_COMMON", "", "OFFICIAL_FLAG_E_COMMERCE", "OFFICIAL_FLAG_NONE", "TRADING_GUARANTEE_FLAG_NONE", "TRADING_GUARANTEE_FLAG_SHOW", "showBrandOfficialLabel", "", "flag", "showTradingGuaranteeLabel", "luggage-wechat-full-sdk_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.luggage.sdk.config.e
  * JD-Core Version:    0.7.0.1
  */

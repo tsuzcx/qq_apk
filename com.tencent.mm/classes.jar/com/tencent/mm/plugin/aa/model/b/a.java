@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.aa.model.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.c.a;
+import com.tencent.mm.am.b.a;
 import com.tencent.mm.protocal.protobuf.ab;
 import com.tencent.mm.vending.g.b;
 
 public final class a
   extends com.tencent.mm.vending.app.a
 {
-  int mKW = 0;
-  String mKX;
-  int mKY;
-  int mKZ;
-  String mLa;
-  boolean mLb = false;
-  int mLc;
+  int pHD = 0;
+  String pHE;
+  int pHF;
+  int pHG;
+  String pHH;
+  boolean pHI = false;
+  int pHJ;
   
   public final void onCreate()
   {
@@ -25,7 +25,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.b.a
  * JD-Core Version:    0.7.0.1
  */

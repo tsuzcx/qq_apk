@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class XWalkNativeExtensionLoader
 {
+  private static final String TAG = "XWalkNativeExtensionLoader";
   private Object bridge;
   private ArrayList<Object> constructorParams;
   private ArrayList<Object> constructorTypes;
@@ -34,22 +35,16 @@ public class XWalkNativeExtensionLoader
     AppMethodBeat.o(154805);
   }
   
-  protected Object getBridge()
-  {
-    return this.bridge;
-  }
-  
-  void reflectionInit()
+  private void reflectionInit()
   {
     AppMethodBeat.i(154807);
-    XWalkCoreWrapper.initEmbeddedMode();
-    this.coreWrapper = XWalkCoreWrapper.getInstance();
-    if (this.coreWrapper == null)
+    if (XWalkCoreWrapper.getInstance() == null)
     {
-      XWalkCoreWrapper.reserveReflectObject(this);
+      XWalkReflectionInitHandler.reserveReflectObject(this);
       AppMethodBeat.o(154807);
       return;
     }
+    this.coreWrapper = XWalkCoreWrapper.getInstance();
     int j = this.constructorTypes.size();
     Object localObject1 = new Class[j + 1];
     int i = 0;
@@ -61,7 +56,7 @@ public class XWalkNativeExtensionLoader
         localObject1[i] = this.coreWrapper.getBridgeClass((String)localObject2);
         this.constructorParams.set(i, this.coreWrapper.getBridgeObject(this.constructorParams.get(i)));
       }
-      label137:
+      label133:
       do
       {
         for (;;)
@@ -69,7 +64,7 @@ public class XWalkNativeExtensionLoader
           i += 1;
           break;
           if (!(localObject2 instanceof Class)) {
-            break label137;
+            break label133;
           }
           localObject1[i] = ((Class)localObject2);
         }
@@ -93,8 +88,14 @@ public class XWalkNativeExtensionLoader
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
     {
+      Log.e("XWalkNativeExtensionLoader", "reflectionInit, error:".concat(String.valueOf(localUnsupportedOperationException)));
       AppMethodBeat.o(154807);
     }
+  }
+  
+  protected Object getBridge()
+  {
+    return this.bridge;
   }
   
   public void registerNativeExtensionsInPath(String paramString)
@@ -121,7 +122,7 @@ public class XWalkNativeExtensionLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.XWalkNativeExtensionLoader
  * JD-Core Version:    0.7.0.1
  */

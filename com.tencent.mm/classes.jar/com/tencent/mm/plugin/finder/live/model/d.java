@@ -1,625 +1,351 @@
 package com.tencent.mm.plugin.finder.live.model;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.b;
-import com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.d;
+import com.tencent.mm.plugin.finder.live.model.cgi.au.a;
+import com.tencent.mm.plugin.finder.live.p.h;
 import com.tencent.mm.plugin.finder.live.viewmodel.data.business.e;
-import com.tencent.mm.plugin.finder.live.viewmodel.data.business.f;
-import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.aww;
-import com.tencent.mm.protocal.protobuf.axe;
-import com.tencent.mm.protocal.protobuf.axi;
-import com.tencent.mm.protocal.protobuf.aye;
-import com.tencent.mm.protocal.protobuf.ayr;
-import com.tencent.mm.protocal.protobuf.aza;
-import com.tencent.mm.protocal.protobuf.bal;
-import com.tencent.mm.protocal.protobuf.bbe;
-import com.tencent.mm.protocal.protobuf.bbx;
-import com.tencent.mm.protocal.protobuf.bdb;
+import com.tencent.mm.protocal.protobuf.biw;
+import com.tencent.mm.protocal.protobuf.bng;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.LinkedList<Lcom.tencent.mm.protocal.protobuf.axe;>;
-import java.util.LinkedList<Lcom.tencent.mm.protocal.protobuf.bdb;>;
-import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/FinderLiveAppMsgManager;", "", "()V", "TAG", "", "chooseAlertInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveMsgBoxInfo;", "info1", "info2", "handleAlertMsg", "", "roomData", "Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "appMsgList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveAppMsg;", "updateTemplateInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveTemplateInfo;", "fromJoinLive", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/model/FinderLiveAnchorVerifyManager;", "", "curLiveContext", "Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "curLiveLayout", "Lcom/tencent/mm/plugin/finder/live/view/FinderBaseLivePluginLayout;", "(Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;Lcom/tencent/mm/plugin/finder/live/view/FinderBaseLivePluginLayout;)V", "buttonColdingRemainingTime", "", "buttonWordingNormal", "", "buttonWordingWithCountDown", "callback", "Lkotlin/Function1;", "", "", "countDownNumberSpan", "Lcom/tencent/mm/plugin/finder/live/view/span/FinderLiveFixWidthTextSpan;", "countDownWording", "countDownWordingThreshold", "currentVerifyId", "currentVerifyMode", "remainingTime", "timer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "verificationUrl", "addSystemMsg", "isVerifying", "checkAnchorVerify", "forceUpdate", "checkTimer", "serverCountDownTime", "finishAnchorVerify", "getShowWordingWithPlaceholder", "", "wording", "time", "gotoVerificationH5", "postVerifyRequest", "success", "recoveryLive", "release", "reset", "showRecoveryToast", "updateButtonState", "updateCountDownTip", "updateCurLiveLayout", "layout", "updateLayerShowView", "info", "Lcom/tencent/mm/protocal/protobuf/FinderLiveLayerAnchorVerificationShowInfo;", "updateVerifyInfo", "Companion", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
 {
-  private static final String TAG = "FinderLiveAppMsgManager";
-  public static final d ydx;
+  public static final d.a CDM;
+  public final com.tencent.mm.plugin.finder.live.model.context.a CDN;
+  com.tencent.mm.plugin.finder.live.view.a CDO;
+  public int CDP;
+  public String CDQ;
+  private String CDR;
+  private int CDS;
+  private String CDT;
+  private int CDU;
+  private String CDV;
+  private String CDW;
+  private int CDX;
+  private final com.tencent.mm.plugin.finder.live.view.span.d CDY;
+  private final kotlin.g.a.b<Boolean, ah> callback;
+  MTimerHandler timer;
   
   static
   {
-    AppMethodBeat.i(289441);
-    ydx = new d();
-    TAG = "FinderLiveAppMsgManager";
-    AppMethodBeat.o(289441);
+    AppMethodBeat.i(359511);
+    CDM = new d.a((byte)0);
+    AppMethodBeat.o(359511);
   }
   
-  private static bbe a(bbe parambbe1, bbe parambbe2)
+  public d(com.tencent.mm.plugin.finder.live.model.context.a parama, com.tencent.mm.plugin.finder.live.view.a parama1)
   {
-    switch (parambbe1.type)
+    AppMethodBeat.i(359302);
+    this.CDN = parama;
+    this.CDO = parama1;
+    this.callback = ((kotlin.g.a.b)new b(this));
+    this.timer = new MTimerHandler("FinderLiveAnchorVerifyManager::Timer", (MTimerHandler.CallBack)new MTimerHandler.CallBack()
     {
-    }
-    do
-    {
-      do
+      public final boolean onTimerExpired()
       {
-        return parambbe1;
-      } while ((parambbe2.type != 20011) && (parambbe2.type != 20007));
-      return parambbe2;
-    } while (parambbe2.type != 20007);
-    return parambbe2;
-  }
-  
-  public static void a(com.tencent.mm.plugin.finder.live.model.context.a parama, LinkedList<axe> paramLinkedList)
-  {
-    AppMethodBeat.i(289437);
-    p.k(parama, "roomData");
-    StringBuilder localStringBuilder1 = new StringBuilder("handleAlertMsg:");
-    int i;
-    label41:
-    Object localObject1;
-    int j;
-    Object localObject4;
-    label116:
-    label378:
-    StringBuilder localStringBuilder2;
-    if (paramLinkedList != null)
-    {
-      Iterator localIterator = ((Iterable)paramLinkedList).iterator();
-      i = 0;
-      paramLinkedList = null;
-      localObject1 = paramLinkedList;
-      if (!localIterator.hasNext()) {
-        break label702;
-      }
-      localObject1 = localIterator.next();
-      j = i + 1;
-      if (i < 0) {
-        j.iBO();
-      }
-      localObject4 = (axe)localObject1;
-      localObject3 = new StringBuilder("(").append(i).append(")[msgType:");
-      label145:
-      boolean bool;
-      if (localObject4 != null)
-      {
-        localObject1 = Integer.valueOf(((axe)localObject4).msg_type);
-        localObject3 = ((StringBuilder)localObject3).append(((Integer)localObject1).intValue()).append(",payload is empty:");
-        if (localObject4 == null) {
-          break label323;
-        }
-        localObject1 = ((axe)localObject4).SJE;
-        if (localObject1 != null) {
-          break label329;
-        }
-        bool = true;
-        label153:
-        localObject3 = ((StringBuilder)localObject3).append(bool).append(",fromUser:");
-        if (localObject4 == null) {
-          break label335;
-        }
-        localObject1 = ((axe)localObject4).SJH;
-        if (localObject1 == null) {
-          break label335;
-        }
-        localObject1 = ((aza)localObject1).contact;
-        if (localObject1 == null) {
-          break label335;
-        }
-        localObject1 = ((FinderContact)localObject1).nickname;
-        label203:
-        localObject3 = ((StringBuilder)localObject3).append((String)localObject1).append(",toUser:");
-        if (localObject4 == null) {
-          break label341;
-        }
-        localObject1 = ((axe)localObject4).SJC;
-        if (localObject1 == null) {
-          break label341;
-        }
-        localObject1 = ((aza)localObject1).contact;
-        if (localObject1 == null) {
-          break label341;
-        }
-      }
-      label312:
-      label323:
-      label329:
-      label335:
-      label341:
-      for (localObject1 = ((FinderContact)localObject1).nickname;; localObject1 = null)
-      {
-        localStringBuilder1.append((String)localObject1 + "] ");
-        if (localObject4 != null) {}
-        switch (((axe)localObject4).msg_type)
+        AppMethodBeat.i(359722);
+        d locald = this.CDZ;
+        d.d(locald, d.g(locald) - 1);
+        if (d.g(this.CDZ) >= 0)
         {
-        default: 
-          i = j;
-          break label41;
-          localObject1 = null;
-          break label116;
-          localObject1 = null;
-          break label145;
-          bool = false;
-          break label153;
-          localObject1 = null;
-          break label203;
+          if (d.h(this.CDZ) == 5)
+          {
+            if (d.m(this.CDZ) >= 0)
+            {
+              d.b(this.CDZ, d.n(this.CDZ), d.m(this.CDZ));
+              locald = this.CDZ;
+              d.b(locald, d.m(locald) - 1);
+            }
+            if ((d.o(this.CDZ) <= 0) || (d.g(this.CDZ) > d.o(this.CDZ))) {}
+          }
+          else
+          {
+            d.p(this.CDZ);
+          }
+          AppMethodBeat.o(359722);
+          return true;
         }
-      }
-      localObject3 = (com.tencent.mm.cd.a)new aye();
-      localObject1 = ((axe)localObject4).SJE;
-      if (localObject1 != null) {
-        localObject1 = ((com.tencent.mm.cd.b)localObject1).toByteArray();
-      }
-      try
-      {
-        ((com.tencent.mm.cd.a)localObject3).parseFrom((byte[])localObject1);
-        localObject1 = localObject3;
-      }
-      catch (Exception localException1)
-      {
+        Log.i("Finder.FinderLiveAnchorVerifyManager", "backupTimer onTimerExpired: currentVerifyMode:" + d.h(this.CDZ) + ", currentVerifyId:" + d.q(this.CDZ));
+        switch (d.h(this.CDZ))
+        {
+        }
         for (;;)
         {
-          Log.printDebugStack("safeParser", "", new Object[] { localException1 });
-          localObject2 = null;
-          continue;
-          localObject2 = null;
+          AppMethodBeat.o(359722);
+          return false;
+          d.a(this.CDZ, false);
         }
       }
-      localObject1 = (aye)localObject1;
-      if (localObject1 != null)
+    }, true);
+    this.CDY = new com.tencent.mm.plugin.finder.live.view.span.d(com.tencent.mm.view.d.e(MMApplicationContext.getContext(), 22.0F));
+    AppMethodBeat.o(359302);
+  }
+  
+  private final void ekh()
+  {
+    AppMethodBeat.i(359316);
+    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new g(this));
+    AppMethodBeat.o(359316);
+  }
+  
+  private final void qA(boolean paramBoolean)
+  {
+    AppMethodBeat.i(359326);
+    if ((paramBoolean) && (((com.tencent.mm.plugin.finder.live.viewmodel.data.business.i)this.CDN.business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.i.class)).qag))
+    {
+      AppMethodBeat.o(359326);
+      return;
+    }
+    Object localObject;
+    if (paramBoolean)
+    {
+      localObject = MMApplicationContext.getContext().getResources().getString(p.h.finder_live_pause_comment_tips);
+      s.s(localObject, "if (isVerifying) {\n     …y_comment_tips)\n        }");
+      switch (this.CDP)
       {
-        localObject1 = ((aye)localObject1).SJV;
-        localObject4 = TAG;
-        localStringBuilder2 = new StringBuilder("parseMsgBoxInfo:");
-        if (localObject1 != null) {
-          break label758;
-        }
       }
     }
-    label555:
-    bbe localbbe;
-    label702:
-    label748:
-    label758:
-    for (Object localObject3 = "";; localObject3 = localbbe)
+    for (;;)
     {
-      Log.i((String)localObject4, com.tencent.mm.ae.g.bN(localObject3));
-      if (paramLinkedList == null)
+      AppMethodBeat.o(359326);
+      return;
+      localObject = MMApplicationContext.getContext().getResources().getString(p.h.finder_live_pause_recovery_comment_tips);
+      break;
+      com.tencent.mm.plugin.finder.live.utils.a locala = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+      com.tencent.mm.plugin.finder.live.utils.a.a((String)localObject, this.CDN);
+      if (paramBoolean)
       {
-        i = j;
-        paramLinkedList = (LinkedList<axe>)localObject1;
-        break;
-        localObject1 = null;
-        break label378;
+        localObject = aj.CGT;
+        localObject = aj.getLiveCore();
+        if (localObject != null)
+        {
+          ((com.tencent.mm.live.core.core.trtc.a)localObject).sY(2);
+          AppMethodBeat.o(359326);
+        }
       }
-      Object localObject2;
-      if (localObject2 != null)
+      else
       {
-        if (paramLinkedList == null) {
-          p.iCn();
-        }
-        paramLinkedList = a(paramLinkedList, (bbe)localObject2);
-      }
-      for (;;)
-      {
-        i = j;
-        break;
-        localObject3 = (com.tencent.mm.cd.a)new axi();
-        localObject2 = ((axe)localObject4).SJE;
-        if (localObject2 != null) {
-          localObject2 = ((com.tencent.mm.cd.b)localObject2).toByteArray();
-        }
-        try
-        {
-          ((com.tencent.mm.cd.a)localObject3).parseFrom((byte[])localObject2);
-          localObject2 = localObject3;
-        }
-        catch (Exception localException2)
-        {
-          for (;;)
-          {
-            Log.printDebugStack("safeParser", "", new Object[] { localException2 });
-            localbbe = null;
-            continue;
-            localbbe = null;
-          }
-        }
-        localObject2 = (axi)localObject2;
-        if (localObject2 != null)
-        {
-          localObject2 = ((axi)localObject2).SJV;
-          localObject4 = TAG;
-          localStringBuilder2 = new StringBuilder("parseMsgBoxInfo:");
-          if (localObject2 != null) {
-            break label748;
-          }
-        }
-        for (localObject3 = "";; localObject3 = localbbe)
-        {
-          Log.i((String)localObject4, com.tencent.mm.ae.g.bN(localObject3));
-          if (paramLinkedList == null)
-          {
-            i = j;
-            paramLinkedList = (LinkedList<axe>)localObject2;
-            break;
-            localObject2 = null;
-            break label555;
-          }
-          if (localbbe == null) {
-            break label312;
-          }
-          if (paramLinkedList == null) {
-            p.iCn();
-          }
-          paramLinkedList = a(paramLinkedList, localbbe);
-          break label312;
-          localbbe = null;
-          if (localbbe != null) {
-            com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new b.d((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)parama.business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class), localbbe));
-          }
-          Log.i(TAG, localStringBuilder1.toString());
-          AppMethodBeat.o(289437);
-          return;
+        localObject = aj.CGT;
+        localObject = aj.getLiveCore();
+        if (localObject != null) {
+          ((com.tencent.mm.live.core.core.trtc.a)localObject).sZ(2);
         }
       }
     }
   }
   
-  public static void a(com.tencent.mm.plugin.finder.live.model.context.a parama, LinkedList<bdb> paramLinkedList, boolean paramBoolean)
+  public final void qz(boolean paramBoolean)
   {
-    AppMethodBeat.i(289439);
-    p.k(parama, "roomData");
-    StringBuilder localStringBuilder1 = new StringBuilder("updateTemplateInfo(fromJoinLive:" + paramBoolean + "):");
-    LinkedList localLinkedList2 = new LinkedList();
-    LinkedList localLinkedList1 = new LinkedList();
-    label146:
-    label173:
-    label302:
-    if (paramLinkedList != null)
+    AppMethodBeat.i(359519);
+    Object localObject;
+    if (((e)this.CDN.business(e.class)).isLiveStarted())
     {
-      Iterator localIterator = ((Iterable)paramLinkedList).iterator();
-      i = 0;
-      label180:
-      label1223:
-      for (;;)
+      localObject = ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.i)this.CDN.business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.i.class)).Efj;
+      if (localObject == null)
       {
-        label76:
-        if (localIterator.hasNext())
-        {
-          paramLinkedList = localIterator.next();
-          int j = i + 1;
-          if (i < 0) {
-            j.iBO();
-          }
-          Object localObject2 = (bdb)paramLinkedList;
-          Object localObject1 = new StringBuilder("(").append(i).append(")[msgType:");
-          boolean bool;
-          if (localObject2 != null)
-          {
-            paramLinkedList = Integer.valueOf(((bdb)localObject2).infoType);
-            localObject1 = ((StringBuilder)localObject1).append(paramLinkedList.intValue()).append(",payload is empty:");
-            if (localObject2 == null) {
-              break label291;
-            }
-            paramLinkedList = ((bdb)localObject2).SOn;
-            if (paramLinkedList != null) {
-              break label296;
-            }
-            bool = true;
-            localObject1 = ((StringBuilder)localObject1).append(bool).append(",versionWording:");
-            if (localObject2 == null) {
-              break label302;
-            }
-          }
-          for (paramLinkedList = ((bdb)localObject2).SOo;; paramLinkedList = null)
-          {
-            localStringBuilder1.append(paramLinkedList + ",seq:" + ((bdb)localObject2).mbp + "}] ");
-            if (localObject2 != null) {}
-            switch (((bdb)localObject2).infoType)
-            {
-            default: 
-              i = j;
-              break label76;
-              paramLinkedList = null;
-              break label146;
-              paramLinkedList = null;
-              break label173;
-              bool = false;
-              break label180;
-            }
-          }
-          localObject1 = (com.tencent.mm.cd.a)new bal();
-          paramLinkedList = ((bdb)localObject2).SOn;
-          if (paramLinkedList != null) {}
-          for (paramLinkedList = paramLinkedList.toByteArray();; paramLinkedList = null)
-          {
-            try
-            {
-              ((com.tencent.mm.cd.a)localObject1).parseFrom(paramLinkedList);
-              paramLinkedList = (LinkedList<bdb>)localObject1;
-            }
-            catch (Exception paramLinkedList)
-            {
-              for (;;)
-              {
-                Log.printDebugStack("safeParser", "", new Object[] { paramLinkedList });
-                paramLinkedList = null;
-                continue;
-                paramLinkedList = null;
-                continue;
-                i = 2147483647;
-                continue;
-                paramLinkedList = null;
-              }
-              if (!com.tencent.mm.ae.d.a(localLinkedList2, (kotlin.g.a.b)new a((bal)localObject2))) {
-                break label600;
-              }
-              Log.i(TAG, "updateTemplateInfo remove the last same item id:" + ((bal)localObject2).id + '!');
-              localLinkedList2.add(localObject2);
-              i = j;
-            }
-            localObject2 = (bal)paramLinkedList;
-            if (localObject2 == null) {
-              break label531;
-            }
-            paramLinkedList = ((bal)localObject2).id;
-            if ((paramLinkedList == null) || (((com.tencent.mm.plugin.finder.live.viewmodel.data.business.g)parama.business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.g.class)).aDd(paramLinkedList))) {
-              break label614;
-            }
-            paramLinkedList = ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.g)parama.business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.g.class)).zic;
-            if (paramLinkedList == null) {
-              break label536;
-            }
-            paramLinkedList = paramLinkedList.xHW;
-            if (paramLinkedList == null) {
-              break label536;
-            }
-            i = paramLinkedList.ynN;
-            paramLinkedList = ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.g)parama.business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.g.class)).zic;
-            if (paramLinkedList == null) {
-              break label543;
-            }
-            paramLinkedList = paramLinkedList.xHW;
-            if (paramLinkedList == null) {
-              break label543;
-            }
-            paramLinkedList = paramLinkedList.id;
-            if ((!p.h(((bal)localObject2).id, paramLinkedList)) || (((bal)localObject2).ynN <= i)) {
-              break label548;
-            }
-            Log.i(TAG, "updateTemplateInfo drop the old time lottteryInfo:" + com.tencent.mm.ae.g.bN(localObject2) + '!');
-            i = j;
-            break;
-          }
-          label600:
-          continue;
-          label614:
-          Object localObject3 = TAG;
-          StringBuilder localStringBuilder2 = new StringBuilder("updateTemplateInfo ");
-          localObject1 = localObject2;
-          if (localObject2 == null) {
-            localObject1 = "";
-          }
-          Log.e((String)localObject3, com.tencent.mm.ae.g.bN(localObject1) + " fail," + paramLinkedList + " have show!");
-          i = j;
-          continue;
-          localObject1 = (com.tencent.mm.cd.a)new bbx();
-          paramLinkedList = ((bdb)localObject2).SOn;
-          if (paramLinkedList != null) {}
-          for (paramLinkedList = paramLinkedList.toByteArray();; paramLinkedList = null)
-          {
-            try
-            {
-              ((com.tencent.mm.cd.a)localObject1).parseFrom(paramLinkedList);
-              paramLinkedList = (LinkedList<bdb>)localObject1;
-            }
-            catch (Exception paramLinkedList)
-            {
-              for (;;)
-              {
-                Log.printDebugStack("safeParser", "", new Object[] { paramLinkedList });
-                paramLinkedList = null;
-              }
-              Log.i(TAG, "updateTemplateInfo redPackInfo is null!");
-              i = j;
-            }
-            paramLinkedList = (bbx)paramLinkedList;
-            if (paramLinkedList == null) {
-              break label800;
-            }
-            Log.i(TAG, "updateTemplateInfo redPackInfo:" + com.tencent.mm.ae.g.bN(paramLinkedList) + '!');
-            localLinkedList1.add(paramLinkedList);
-            i = j;
-            break;
-          }
-          continue;
-          localObject1 = (com.tencent.mm.cd.a)new ayr();
-          paramLinkedList = ((bdb)localObject2).SOn;
-          if (paramLinkedList != null) {}
-          for (paramLinkedList = paramLinkedList.toByteArray();; paramLinkedList = null)
-          {
-            try
-            {
-              ((com.tencent.mm.cd.a)localObject1).parseFrom(paramLinkedList);
-              paramLinkedList = (LinkedList<bdb>)localObject1;
-            }
-            catch (Exception paramLinkedList)
-            {
-              for (;;)
-              {
-                Log.printDebugStack("safeParser", "", new Object[] { paramLinkedList });
-                paramLinkedList = null;
-                continue;
-                paramLinkedList = null;
-                continue;
-                paramLinkedList = null;
-                continue;
-                paramLinkedList = null;
-                continue;
-                paramLinkedList = null;
-                continue;
-                paramLinkedList = null;
-                continue;
-                paramLinkedList = null;
-              }
-              i = j;
-            }
-            localObject1 = (ayr)paramLinkedList;
-            localObject2 = TAG;
-            localObject3 = new StringBuilder("updateTemplateInfo battleInfo:[");
-            if (localObject1 == null) {
-              break label1223;
-            }
-            paramLinkedList = ((ayr)localObject1).SKH;
-            localObject3 = ((StringBuilder)localObject3).append(paramLinkedList).append(", ");
-            if (localObject1 == null) {
-              break label1228;
-            }
-            paramLinkedList = Long.valueOf(((ayr)localObject1).SJY);
-            localObject3 = ((StringBuilder)localObject3).append(paramLinkedList).append(", ");
-            if (localObject1 == null) {
-              break label1233;
-            }
-            paramLinkedList = Integer.valueOf(((ayr)localObject1).status);
-            localObject3 = ((StringBuilder)localObject3).append(paramLinkedList).append(", ");
-            if (localObject1 == null) {
-              break label1238;
-            }
-            paramLinkedList = Integer.valueOf(((ayr)localObject1).SKI);
-            localObject3 = ((StringBuilder)localObject3).append(paramLinkedList).append(", ");
-            if (localObject1 == null) {
-              break label1243;
-            }
-            paramLinkedList = Integer.valueOf(((ayr)localObject1).result);
-            localObject3 = ((StringBuilder)localObject3).append(paramLinkedList).append(", ");
-            if (localObject1 == null) {
-              break label1248;
-            }
-            paramLinkedList = ((ayr)localObject1).SKJ;
-            if (paramLinkedList == null) {
-              break label1248;
-            }
-            paramLinkedList = Integer.valueOf(paramLinkedList.size());
-            Log.i((String)localObject2, paramLinkedList + ']');
-            if (localObject1 == null) {
-              break label1259;
-            }
-            Log.i(TAG, "updateTemplateInfo curBattleInfo:" + ((f)parama.business(f.class)).zhz);
-            paramLinkedList = ((f)parama.business(f.class)).zhz;
-            if (paramLinkedList == null) {
-              break label1253;
-            }
-            if ((paramLinkedList.yey != 3) && (Util.isEqual(paramLinkedList.yeu, ((ayr)localObject1).SKH)))
-            {
-              if (paramLinkedList.yew - ((ayr)localObject1).SKI >= 3) {
-                paramLinkedList.yew = ((ayr)localObject1).SKI;
-              }
-              paramLinkedList.yex = ((ayr)localObject1).result;
-              localObject1 = ((ayr)localObject1).SKJ;
-              p.j(localObject1, "battleInfo.player_info");
-              paramLinkedList.en((List)localObject1);
-            }
-            i = j;
-            break;
-          }
-          label1228:
-          label1233:
-          label1238:
-          label1243:
-          label1248:
-          label1253:
-          continue;
-          label1259:
-          i = j;
-          continue;
-          localObject1 = (com.tencent.mm.cd.a)new aww();
-          paramLinkedList = ((bdb)localObject2).SOn;
-          if (paramLinkedList != null) {}
-          for (paramLinkedList = paramLinkedList.toByteArray();; paramLinkedList = null)
-          {
-            try
-            {
-              ((com.tencent.mm.cd.a)localObject1).parseFrom(paramLinkedList);
-              paramLinkedList = (LinkedList<bdb>)localObject1;
-            }
-            catch (Exception paramLinkedList)
-            {
-              for (;;)
-              {
-                Log.printDebugStack("safeParser", "", new Object[] { paramLinkedList });
-                paramLinkedList = null;
-                continue;
-                paramLinkedList = null;
-                continue;
-                paramLinkedList = null;
-              }
-            }
-            localObject1 = (aww)paramLinkedList;
-            localObject2 = TAG;
-            localObject3 = new StringBuilder("updateTemplateInfo pageInfo: ");
-            if (localObject1 == null) {
-              break label1448;
-            }
-            paramLinkedList = ((aww)localObject1).title;
-            localObject3 = ((StringBuilder)localObject3).append(paramLinkedList).append(", ");
-            if (localObject1 == null) {
-              break label1453;
-            }
-            paramLinkedList = ((aww)localObject1).wording;
-            Log.i((String)localObject2, paramLinkedList);
-            if (localObject1 == null) {
-              break label280;
-            }
-            ((e)parama.business(e.class)).zhc = ((aww)localObject1).title;
-            ((e)parama.business(e.class)).zhd = ((aww)localObject1).wording;
-            i = j;
-            break;
-          }
-        }
+        AppMethodBeat.o(359519);
+        return;
+      }
+      if ((TextUtils.equals((CharSequence)this.CDQ, (CharSequence)((biw)localObject).ZSt)) && (this.CDP == ((biw)localObject).ZSr) && (!paramBoolean))
+      {
+        Log.i("Finder.FinderLiveAnchorVerifyManager", "checkAnchorVerify: same id and mode, ignore. currentVerifyMode:" + this.CDP + ", currentVerifyId:" + this.CDQ);
+        AppMethodBeat.o(359519);
+        return;
+      }
+      if (localObject != null) {
+        break label220;
+      }
+      Log.i("Finder.FinderLiveAnchorVerifyManager", "updateVerifyInfo: info is null");
+      ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.i)this.CDN.business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.i.class)).qag = true;
+      localObject = aj.CGT;
+      localObject = aj.elM();
+      if (localObject == null) {
+        break label318;
+      }
+      localObject = ((com.tencent.mm.live.core.core.trtc.a)localObject).mRB;
+      if ((localObject == null) || (((com.tencent.mm.live.core.core.model.i)localObject).pause != true)) {
+        break label318;
       }
     }
-    label280:
-    label291:
-    label296:
-    label1448:
-    label1453:
-    Log.i(TAG, localStringBuilder1.toString());
-    label531:
-    label536:
-    label543:
-    label548:
-    if (localLinkedList2.size() > 0) {
-      ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.g)parama.business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.g.class)).c(localLinkedList2, paramBoolean);
-    }
-    label800:
-    if (((Collection)localLinkedList1).isEmpty()) {}
+    label318:
     for (int i = 1;; i = 0)
     {
       if (i == 0)
       {
-        parama = (com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)parama.business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class);
-        p.k(localLinkedList1, "liveMsgRedPacketInfoList");
-        com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new b.b(parama, localLinkedList1, paramBoolean));
+        localObject = aj.CGT;
+        localObject = aj.elM();
+        if (localObject != null) {
+          ((com.tencent.mm.live.core.core.a.b)localObject).bfe();
+        }
       }
-      AppMethodBeat.o(289439);
+      AppMethodBeat.o(359519);
       return;
+      label220:
+      Log.i("Finder.FinderLiveAnchorVerifyManager", "updateVerifyInfo: verify_mode:" + ((biw)localObject).ZSr + ", verification_id:" + ((biw)localObject).ZSt + ", remaining_seconds:" + ((biw)localObject).ZSu);
+      this.CDP = ((biw)localObject).ZSr;
+      this.CDQ = ((biw)localObject).ZSt;
+      this.CDR = ((biw)localObject).YIJ;
+      com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new k((biw)localObject, this));
+      qA(true);
+      break;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "item", "Lcom/tencent/mm/protocal/protobuf/FinderLiveLotteryInfo;", "invoke"})
-  static final class a
-    extends q
-    implements kotlin.g.a.b<bal, Boolean>
+  public final void reset()
   {
-    a(bal parambal)
+    AppMethodBeat.i(359528);
+    Log.i("Finder.FinderLiveAnchorVerifyManager", "reset");
+    this.CDP = 0;
+    this.CDQ = null;
+    this.CDR = null;
+    this.CDS = 0;
+    this.CDT = null;
+    this.CDU = 0;
+    this.CDV = null;
+    this.CDW = null;
+    this.CDX = 0;
+    MTimerHandler localMTimerHandler = this.timer;
+    if (localMTimerHandler != null) {
+      localMTimerHandler.stopTimer();
+    }
+    AppMethodBeat.o(359528);
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "success", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements kotlin.g.a.b<Boolean, ah>
+  {
+    b(d paramd)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  public static final class c
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    public c(d paramd)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class d
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    d(d paramd)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class e
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    e(d paramd)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/live/model/FinderLiveAnchorVerifyManager$postVerifyRequest$callback$1", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveSuspiciousVerify$CallBack;", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderLiveSuspiciousVerifyResponse;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class f
+    implements au.a
+  {
+    f(boolean paramBoolean, d paramd) {}
+    
+    public final void a(int paramInt1, int paramInt2, bng parambng)
+    {
+      AppMethodBeat.i(359653);
+      s.u(parambng, "resp");
+      if (!this.mgW)
+      {
+        d.j(this.CDZ);
+        AppMethodBeat.o(359653);
+        return;
+      }
+      if ((paramInt1 == 0) && (paramInt2 == 0))
+      {
+        if (d.h(this.CDZ) == 4)
+        {
+          d.k(this.CDZ);
+          AppMethodBeat.o(359653);
+          return;
+        }
+        d.b(this.CDZ);
+      }
+      AppMethodBeat.o(359653);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class g
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    g(d paramd)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class h
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    h(Context paramContext, d paramd)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class i
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    i(d paramd, int paramInt, String paramString)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class j
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    j(d paramd)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class k
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    k(biw parambiw, d paramd)
     {
       super();
     }
@@ -627,7 +353,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.model.d
  * JD-Core Version:    0.7.0.1
  */

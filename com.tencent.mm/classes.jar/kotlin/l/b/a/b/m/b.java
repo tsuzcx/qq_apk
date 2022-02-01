@@ -2,146 +2,124 @@ package kotlin.l.b.a.b.m;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
-import kotlin.l.b.a.b.a.g;
-import kotlin.l.b.a.b.b.e;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.b.ae;
+import kotlin.l.b.a.b.b.ah;
 import kotlin.l.b.a.b.b.l;
-import kotlin.l.b.a.b.b.y;
-import kotlin.l.b.a.b.f.f;
 import kotlin.l.b.a.b.j.d.a;
-import kotlin.l.b.a.b.l.j;
+import kotlin.l.b.a.b.l.m;
 
 public abstract class b
   extends h
 {
-  private int aNf = 0;
-  
-  public b(j paramj)
+  public b(m paramm)
   {
-    super(paramj);
+    super(paramm);
   }
   
-  private static boolean d(kotlin.l.b.a.b.b.h paramh)
+  protected final Collection<ad> PE(boolean paramBoolean)
   {
-    if (paramh == null) {
-      aDG(2);
-    }
-    return (!u.L(paramh)) && (!kotlin.l.b.a.b.j.c.m(paramh));
-  }
-  
-  protected final Collection<ab> JB(boolean paramBoolean)
-  {
-    Object localObject2 = iEg().iDJ();
-    if (!(localObject2 instanceof e))
+    Object localObject2 = knz().knp();
+    if (!(localObject2 instanceof kotlin.l.b.a.b.b.e))
     {
       localObject1 = Collections.emptyList();
       if (localObject1 == null) {
-        aDG(3);
+        aKu(3);
       }
       return localObject1;
     }
-    Object localObject1 = new kotlin.l.b.a.b.o.h();
-    localObject2 = (e)localObject2;
-    ((Collection)localObject1).add(((e)localObject2).iET());
-    localObject2 = ((e)localObject2).iDM();
+    Object localObject1 = new kotlin.l.b.a.b.o.e();
+    localObject2 = (kotlin.l.b.a.b.b.e)localObject2;
+    ((Collection)localObject1).add(((kotlin.l.b.a.b.b.e)localObject2).koj());
+    localObject2 = ((kotlin.l.b.a.b.b.e)localObject2).knr();
     if ((paramBoolean) && (localObject2 != null)) {
-      ((Collection)localObject1).add(((e)localObject2).iET());
+      ((Collection)localObject1).add(((kotlin.l.b.a.b.b.e)localObject2).koj());
     }
     return localObject1;
   }
   
-  public final boolean equals(Object paramObject)
+  protected final boolean a(kotlin.l.b.a.b.b.h paramh)
   {
-    if (this == paramObject) {
-      return true;
+    if (paramh == null) {
+      aKu(2);
     }
-    if (!(paramObject instanceof at)) {
-      return false;
-    }
-    if (paramObject.hashCode() != hashCode()) {
-      return false;
-    }
-    if (((at)paramObject).iCb().size() != iCb().size()) {
-      return false;
-    }
-    Object localObject = iEg();
-    paramObject = ((at)paramObject).iEf();
-    if ((!d((kotlin.l.b.a.b.b.h)localObject)) || ((paramObject != null) && (!d(paramObject)))) {
-      return false;
-    }
-    if ((paramObject instanceof e))
+    if ((paramh instanceof kotlin.l.b.a.b.b.e))
     {
-      localObject = (e)localObject;
-      paramObject = (e)paramObject;
-      if (!((e)localObject).iEU().equals(paramObject.iEU())) {
-        return false;
+      Object localObject = knz();
+      s.u(localObject, "first");
+      s.u(paramh, "second");
+      boolean bool;
+      if (!s.p(((kotlin.l.b.a.b.b.h)localObject).kok(), paramh.kok())) {
+        bool = false;
       }
-      localObject = ((e)localObject).iDJ();
-      for (paramObject = paramObject.iDJ(); (localObject != null) && (paramObject != null); paramObject = paramObject.iDJ())
+      while (bool)
       {
-        if ((localObject instanceof y)) {
-          return paramObject instanceof y;
-        }
-        if ((paramObject instanceof y)) {
-          return false;
-        }
-        if ((localObject instanceof kotlin.l.b.a.b.b.ab))
+        return true;
+        localObject = ((kotlin.l.b.a.b.b.h)localObject).knp();
+        for (paramh = paramh.knp();; paramh = paramh.knp())
         {
-          if (((paramObject instanceof kotlin.l.b.a.b.b.ab)) && (((kotlin.l.b.a.b.b.ab)localObject).iFy().equals(((kotlin.l.b.a.b.b.ab)paramObject).iFy()))) {
+          if ((localObject == null) || (paramh == null)) {
+            break label202;
+          }
+          if ((localObject instanceof ae))
+          {
+            bool = paramh instanceof ae;
             break;
           }
-          return false;
+          if ((paramh instanceof ae))
+          {
+            bool = false;
+            break;
+          }
+          if ((localObject instanceof ah))
+          {
+            if (((paramh instanceof ah)) && (s.p(((ah)localObject).koY(), ((ah)paramh).koY()))) {
+              break label202;
+            }
+            bool = false;
+            break;
+          }
+          if ((paramh instanceof ah))
+          {
+            bool = false;
+            break;
+          }
+          if (!s.p(((l)localObject).kok(), paramh.kok()))
+          {
+            bool = false;
+            break;
+          }
+          localObject = ((l)localObject).knp();
         }
-        if ((paramObject instanceof kotlin.l.b.a.b.b.ab)) {
-          return false;
-        }
-        if (!((l)localObject).iEU().equals(paramObject.iEU())) {
-          return false;
-        }
-        localObject = ((l)localObject).iDJ();
+        label202:
+        bool = true;
       }
-      return true;
     }
     return false;
   }
   
-  public final int hashCode()
+  public abstract kotlin.l.b.a.b.b.e knz();
+  
+  public final kotlin.l.b.a.b.a.h koV()
   {
-    int i = this.aNf;
-    if (i != 0) {
-      return i;
+    kotlin.l.b.a.b.a.h localh = a.G(knz());
+    if (localh == null) {
+      aKu(1);
     }
-    e locale = iEg();
-    if (d(locale)) {}
-    for (i = kotlin.l.b.a.b.j.c.n(locale).hashCode();; i = System.identityHashCode(this))
-    {
-      this.aNf = i;
-      return i;
-    }
+    return localh;
   }
   
-  public abstract e iEg();
-  
-  public final g iFv()
+  protected final ad kpI()
   {
-    g localg = a.G(iEg());
-    if (localg == null) {
-      aDG(1);
-    }
-    return localg;
-  }
-  
-  protected final ab iGm()
-  {
-    if (g.e(iEg())) {
+    if (kotlin.l.b.a.b.a.h.e(knz())) {
       return null;
     }
-    return iFv().iDu();
+    return koV().kmO();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.m.b
  * JD-Core Version:    0.7.0.1
  */

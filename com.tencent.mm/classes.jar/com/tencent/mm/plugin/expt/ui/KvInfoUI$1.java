@@ -11,15 +11,15 @@ final class KvInfoUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(255911);
-    this.wrT.finish();
-    AppMethodBeat.o(255911);
+    AppMethodBeat.i(299598);
+    this.zNZ.finish();
+    AppMethodBeat.o(299598);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.ui.KvInfoUI.1
  * JD-Core Version:    0.7.0.1
  */

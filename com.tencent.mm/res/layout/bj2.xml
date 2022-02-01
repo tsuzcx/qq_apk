@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/ac1"
+<LinearLayout android:orientation="vertical" android:id="@id/ahg" android:background="@drawable/aix" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:background="@drawable/qa" android:paddingLeft="@dimen/ac2" android:paddingRight="@dimen/ac2" android:layout_width="fill_parent" android:layout_height="@dimen/i6">
-        <TextView android:gravity="center|left" android:id="@id/ir3" android:paddingRight="5.0dip" android:focusable="false" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minWidth="80.0dip" android:singleLine="true" style="@style/r5" />
-        <TextView android:textSize="14.0dip" android:textColor="#ff999999" android:gravity="center|right" android:id="@id/iek" android:layout_width="0.0dip" android:layout_height="fill_parent" android:minHeight="@dimen/ac1" android:layout_weight="1.0" />
-        <ImageView android:id="@id/dxq" android:focusable="false" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="5.0dip" android:src="@drawable/aie" android:scaleType="center" />
-    </LinearLayout>
-    <com.tencent.mm.plugin.product.ui.HtmlTextView android:id="@id/boa" android:visibility="gone" android:scrollbars="none" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:gravity="bottom" android:orientation="vertical" android:id="@id/ahc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </LinearLayout>

@@ -12,7 +12,7 @@ public class p
   
   public static byte[] a(String paramString)
   {
-    AppMethodBeat.i(254800);
+    AppMethodBeat.i(186136);
     Object localObject;
     try
     {
@@ -32,11 +32,11 @@ public class p
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(254800);
+      AppMethodBeat.o(186136);
       return null;
     }
     paramString.close();
-    AppMethodBeat.o(254800);
+    AppMethodBeat.o(186136);
     return localObject;
   }
   

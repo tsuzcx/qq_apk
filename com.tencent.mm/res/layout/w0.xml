@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ble" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginBottom="@dimen/hs" android:layout_weight="1.0">
-        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-            <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/b_i" style="@style/hk" />
-            <ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
-                <TextView android:textSize="@dimen/is" android:ellipsize="end" android:id="@id/b_g" android:layout_marginTop="0.0dip" android:text="message" android:maxLines="3" style="@style/hi" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:minHeight="@dimen/ir" android:layout_weight="1.0">
+        <TextView android:gravity="center_horizontal" android:id="@id/blo" android:text="hello" style="@style/hu" />
+        <FrameLayout android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cv">
+            <ImageView android:layout_gravity="center" android:id="@id/blm" android:layout_width="@dimen/im" android:layout_height="@dimen/im" android:src="@drawable/b94" />
+        </FrameLayout>
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df">
+            <ScrollView android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+                <TextView android:gravity="center_horizontal" android:id="@id/blk" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m2" android:layout_marginRight="@dimen/m2" android:text="message" android:maxLines="4" style="@style/hu" />
             </ScrollView>
         </LinearLayout>
-        <TextView android:id="@id/b_c" android:layout_marginLeft="0.0dip" android:text="source" style="@style/hj" />
-        <com.tencent.mm.ui.widget.edittext.PasterEditText android:id="@id/b_h" style="@style/hg" />
+        <com.tencent.mm.ui.widget.edittext.PasterEditText android:id="@id/bll" style="@style/hp" />
     </LinearLayout>
 </LinearLayout>

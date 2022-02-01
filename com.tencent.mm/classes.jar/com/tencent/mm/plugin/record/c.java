@@ -6,12 +6,12 @@ import com.tencent.mm.kernel.h;
 
 public final class c
 {
-  public static String bbZ()
+  public static String bzO()
   {
     AppMethodBeat.i(94807);
     Object localObject = new StringBuilder();
-    h.aHH();
-    localObject = h.aHG().kcB + "recbiz/";
+    h.baF();
+    localObject = h.baE().mCJ + "recbiz/";
     AppMethodBeat.o(94807);
     return localObject;
   }

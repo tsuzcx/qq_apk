@@ -1,3 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="@dimen/is" android:textColor="#ff576b95" android:ellipsize="end" android:gravity="center" android:background="@drawable/qa" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="45.0dip" android:text="@string/exl" android:singleLine="true"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/l4t" android:background="@color/py" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/buo" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+        <RelativeLayout android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/ct" android:textColor="@color/g_" android:gravity="center" android:id="@id/jyc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:layout_marginTop="@dimen/cw" android:layout_marginRight="@dimen/cp" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="@dimen/ce" android:textColor="#9a000000" android:id="@id/jlx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:layout_below="@id/jyc" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="@dimen/ce" android:textColor="#9a000000" android:id="@id/jze" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/db" android:layout_below="@id/jlx" android:layout_centerHorizontal="true" />
+            <com.tencent.mm.plugin.mv.ui.view.MusicLyricTouchLineView android:id="@id/gk1" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="90.0dip" android:layout_marginBottom="@dimen/cw" android:layout_above="@id/aua" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp" />
+            <RelativeLayout android:id="@id/aua" android:paddingLeft="@dimen/cp" android:paddingRight="@dimen/cp" android:layout_width="fill_parent" android:layout_height="@dimen/cw" android:layout_marginBottom="@dimen/cd" android:layout_alignParentBottom="true">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/lks" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@raw/icons_outlined_error" android:layout_alignParentBottom="true" app:iconColor="#80000000" />
+                <TextView android:textSize="@dimen/cd" android:textColor="#80000000" android:id="@id/bjq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bv" android:text="该歌曲暂无版权" android:layout_toRightOf="@id/lks" android:layout_alignParentBottom="true" />
+                <View android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentTop="true" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

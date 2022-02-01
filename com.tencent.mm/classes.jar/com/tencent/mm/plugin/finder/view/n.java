@@ -1,125 +1,64 @@
 package com.tencent.mm.plugin.finder.view;
 
-import android.app.Dialog;
-import android.content.Context;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import androidx.appcompat.app.AppCompatActivity;
+import android.animation.ObjectAnimator;
+import android.graphics.Point;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
-import com.tencent.mm.f.b.a.ew;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.k;
-import com.tencent.mm.plugin.finder.viewmodel.component.aj;
-import com.tencent.mm.protocal.protobuf.bid;
-import com.tencent.mm.ui.component.g;
-import com.tencent.mm.ui.component.g.a;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.utils.aw;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.ui.bf;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderTeensGuideDialog;", "Landroid/app/Dialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "getActivity", "()Landroidx/appcompat/app/AppCompatActivity;", "setActivity", "(Landroidx/appcompat/app/AppCompatActivity;)V", "gotoTeensLaout", "Landroid/widget/LinearLayout;", "getGotoTeensLaout", "()Landroid/widget/LinearLayout;", "rootView", "Landroid/view/View;", "getRootView", "()Landroid/view/View;", "teensGuideMsg", "Landroid/widget/TextView;", "getTeensGuideMsg", "()Landroid/widget/TextView;", "teensGuideOk", "getTeensGuideOk", "gotoTeensHome", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "setAppCompatActivity", "setTeensGuideMsg", "msg", "", "show", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/FinderSlideAnimHelper;", "", "()V", "HEIGHT", "", "getHEIGHT", "()F", "WIDTH", "getWIDTH", "slideFromLeftAnim", "Landroid/animation/ObjectAnimator;", "slideFromLeftListener", "Lcom/tencent/mm/plugin/finder/view/HorizontalAnimationListener;", "slideFromRightAnim", "slideFromRightListener", "slideToBottomAnim", "slideToBottomListener", "Lcom/tencent/mm/plugin/finder/view/VerticalAnimationListener;", "slideToLeftAnim", "slideToLeftListener", "slideToRightAnim", "slideToRightListener", "printDebugMsg", "", "tag", "", "msg", "slideFromLeft", "view", "Landroid/view/View;", "animEndCallback", "Lkotlin/Function0;", "width", "slideFromRight", "slideToBottom", "slideToLeft", "slideToRight", "Companion", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class n
-  extends Dialog
 {
-  private final LinearLayout BaO;
-  public final TextView BaP;
-  private final TextView BaQ;
-  private final View oFW;
-  public AppCompatActivity xGq;
+  public static final n.a GCe;
+  public ObjectAnimator GCf;
+  public ad GCg;
+  public ObjectAnimator GCh;
+  public ad GCi;
+  public ObjectAnimator GCj;
+  public ai GCk;
   
-  public n(Context paramContext)
+  static
   {
-    super(paramContext, b.k.mmtipsdialog);
-    AppMethodBeat.i(270451);
-    paramContext = View.inflate(paramContext, b.g.finder_teens_guide_customer_view, null);
-    p.j(paramContext, "View.inflate(context, R.…uide_customer_view, null)");
-    this.oFW = paramContext;
-    paramContext = this.oFW.findViewById(b.f.ll_goto_teens);
-    p.j(paramContext, "rootView.findViewById<Li…yout>(R.id.ll_goto_teens)");
-    this.BaO = ((LinearLayout)paramContext);
-    paramContext = this.oFW.findViewById(b.f.tv_teens_gudie_msg);
-    p.j(paramContext, "rootView.findViewById<Te…(R.id.tv_teens_gudie_msg)");
-    this.BaP = ((TextView)paramContext);
-    paramContext = this.oFW.findViewById(b.f.tv_teens_gudie_ok);
-    p.j(paramContext, "rootView.findViewById<Te…>(R.id.tv_teens_gudie_ok)");
-    this.BaQ = ((TextView)paramContext);
-    setCanceledOnTouchOutside(true);
-    this.BaO.setOnClickListener((View.OnClickListener)new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(272190);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderTeensGuideDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        paramAnonymousView = this.BaR;
-        ((com.tencent.mm.plugin.teenmode.a.b)h.ae(com.tencent.mm.plugin.teenmode.a.b.class)).setScene(2);
-        ((com.tencent.mm.plugin.teenmode.a.b)h.ae(com.tencent.mm.plugin.teenmode.a.b.class)).rE(1);
-        c.ad(paramAnonymousView.getContext(), "teenmode", ".ui.SettingsTeenModeIntro");
-        paramAnonymousView.dismiss();
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/view/FinderTeensGuideDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(272190);
-      }
-    });
-    this.BaQ.setOnClickListener((View.OnClickListener)new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(284844);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderTeensGuideDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        this.BaR.dismiss();
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/view/FinderTeensGuideDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(284844);
-      }
-    });
-    AppMethodBeat.o(270451);
+    AppMethodBeat.i(344213);
+    GCe = new n.a((byte)0);
+    AppMethodBeat.o(344213);
   }
   
-  protected final void onCreate(Bundle paramBundle)
+  public static float getHEIGHT()
   {
-    AppMethodBeat.i(270448);
-    super.onCreate(paramBundle);
-    setContentView(this.oFW);
-    AppMethodBeat.o(270448);
+    AppMethodBeat.i(344200);
+    float f = bf.bf(MMApplicationContext.getContext()).y;
+    AppMethodBeat.o(344200);
+    return f;
   }
   
-  public final void show()
+  public static float getWIDTH()
   {
-    AppMethodBeat.i(270449);
-    super.show();
-    Object localObject1 = com.tencent.mm.plugin.finder.report.n.zWF;
-    localObject1 = this.xGq;
-    if (localObject1 == null) {
-      p.bGy("activity");
+    AppMethodBeat.i(344195);
+    float f = bf.bf(MMApplicationContext.getContext()).x;
+    AppMethodBeat.o(344195);
+    return f;
+  }
+  
+  public static void hQ(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(344205);
+    s.u(paramString1, "tag");
+    s.u(paramString2, "msg");
+    aw localaw = aw.Gjk;
+    if (aw.bgV()) {
+      Log.i(s.X(paramString1, "(Debug)"), paramString2);
     }
-    localObject1 = (Context)localObject1;
-    p.k(localObject1, "context");
-    Object localObject2 = g.Xox;
-    localObject1 = ((aj)g.lm((Context)localObject1).i(aj.class)).ekY();
-    localObject2 = new ew();
-    ((ew)localObject2).th(((bid)localObject1).sessionId);
-    ((ew)localObject2).ti(((bid)localObject1).wmL);
-    ((ew)localObject2).tj(String.valueOf(((bid)localObject1).xkX));
-    ((ew)localObject2).tn(((bid)localObject1).wmz);
-    ((ew)localObject2).mq(0);
-    ((ew)localObject2).tl("teenagemode_set");
-    ((ew)localObject2).tk(String.valueOf(cm.bfE()));
-    ((ew)localObject2).bpa();
-    com.tencent.mm.plugin.finder.report.n.a((com.tencent.mm.plugin.report.a)localObject2);
-    AppMethodBeat.o(270449);
+    AppMethodBeat.o(344205);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.n
  * JD-Core Version:    0.7.0.1
  */

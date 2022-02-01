@@ -1,81 +1,101 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class cyc
-  extends com.tencent.mm.cd.a
+  extends esc
 {
-  public int TGA;
-  public int TGB;
-  public String UserName;
+  public String aaDg;
+  public int aaiS;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(241254);
+    AppMethodBeat.i(259373);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.UserName != null) {
-        paramVarArgs.f(1, this.UserName);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.qD(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      paramVarArgs.aY(2, this.TGA);
-      paramVarArgs.aY(3, this.TGB);
-      AppMethodBeat.o(241254);
+      if (this.aaDg != null) {
+        paramVarArgs.g(2, this.aaDg);
+      }
+      paramVarArgs.bS(3, this.aaiS);
+      AppMethodBeat.o(259373);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.UserName == null) {
-        break label306;
+      if (this.BaseResponse == null) {
+        break label388;
       }
     }
-    label306:
-    for (paramInt = g.a.a.b.b.a.g(1, this.UserName) + 0;; paramInt = 0)
+    label388:
+    for (paramInt = i.a.a.a.qC(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.bM(2, this.TGA);
-      int j = g.a.a.b.b.a.bM(3, this.TGB);
-      AppMethodBeat.o(241254);
-      return paramInt + i + j;
+      int i = paramInt;
+      if (this.aaDg != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.aaDg);
+      }
+      paramInt = i.a.a.b.b.a.cJ(3, this.aaiS);
+      AppMethodBeat.o(259373);
+      return i + paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = esc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = esc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(241254);
+        AppMethodBeat.o(259373);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         cyc localcyc = (cyc)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(241254);
+          AppMethodBeat.o(259373);
           return -1;
         case 1: 
-          localcyc.UserName = locala.abFh.readString();
-          AppMethodBeat.o(241254);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kd localkd = new kd();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkd.parseFrom((byte[])localObject);
+            }
+            localcyc.BaseResponse = localkd;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(259373);
           return 0;
         case 2: 
-          localcyc.TGA = locala.abFh.AK();
-          AppMethodBeat.o(241254);
+          localcyc.aaDg = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(259373);
           return 0;
         }
-        localcyc.TGB = locala.abFh.AK();
-        AppMethodBeat.o(241254);
+        localcyc.aaiS = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(259373);
         return 0;
       }
-      AppMethodBeat.o(241254);
+      AppMethodBeat.o(259373);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cyc
  * JD-Core Version:    0.7.0.1
  */

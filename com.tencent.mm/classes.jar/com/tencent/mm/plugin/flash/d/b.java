@@ -10,16 +10,16 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class b
 {
-  public a BBZ;
+  public a HjG;
   private boolean mHasStarted = false;
   private SensorManager mSensorManager;
   
-  public final void epP()
+  public final void fuR()
   {
-    AppMethodBeat.i(194132);
+    AppMethodBeat.i(264519);
     if (this.mHasStarted)
     {
-      AppMethodBeat.o(194132);
+      AppMethodBeat.o(264519);
       return;
     }
     this.mHasStarted = true;
@@ -28,23 +28,23 @@ public final class b
     Sensor localSensor = this.mSensorManager.getDefaultSensor(5);
     if (localSensor != null)
     {
-      this.BBZ = new a((byte)0);
-      this.mSensorManager.registerListener(this.BBZ, localSensor, 3);
+      this.HjG = new a((byte)0);
+      this.mSensorManager.registerListener(this.HjG, localSensor, 3);
     }
-    AppMethodBeat.o(194132);
+    AppMethodBeat.o(264519);
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(194133);
+    AppMethodBeat.i(264528);
     if ((!this.mHasStarted) || (this.mSensorManager == null))
     {
-      AppMethodBeat.o(194133);
+      AppMethodBeat.o(264528);
       return;
     }
     this.mHasStarted = false;
-    this.mSensorManager.unregisterListener(this.BBZ);
-    AppMethodBeat.o(194133);
+    this.mSensorManager.unregisterListener(this.HjG);
+    AppMethodBeat.o(264528);
   }
   
   public final class a
@@ -58,29 +58,29 @@ public final class b
     
     public final void onSensorChanged(SensorEvent paramSensorEvent)
     {
-      AppMethodBeat.i(197151);
+      AppMethodBeat.i(264531);
       if (paramSensorEvent.sensor.getType() == 5) {
         this.lux = paramSensorEvent.values[0];
       }
-      AppMethodBeat.o(197151);
+      AppMethodBeat.o(264531);
     }
   }
   
   public static final class b
   {
-    private static b BCb;
+    private static b HjI;
     
     static
     {
-      AppMethodBeat.i(192033);
-      BCb = new b((byte)0);
-      AppMethodBeat.o(192033);
+      AppMethodBeat.i(264515);
+      HjI = new b((byte)0);
+      AppMethodBeat.o(264515);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.flash.d.b
  * JD-Core Version:    0.7.0.1
  */

@@ -14,19 +14,19 @@ import java.io.InputStream;
 public final class e
   implements g
 {
-  private InputStream aFw;
-  private final w<? super e> bol;
-  private long bom;
-  private final ContentResolver bon;
-  private AssetFileDescriptor boo;
+  private final w<? super e> did;
+  private long die;
+  private final ContentResolver dif;
+  private AssetFileDescriptor dig;
+  private InputStream inputStream;
   private boolean opened;
   private Uri uri;
   
   public e(Context paramContext, w<? super e> paramw)
   {
     AppMethodBeat.i(93033);
-    this.bon = paramContext.getContentResolver();
-    this.bol = paramw;
+    this.dif = paramContext.getContentResolver();
+    this.did = paramw;
     AppMethodBeat.o(93033);
   }
   
@@ -36,8 +36,8 @@ public final class e
     try
     {
       this.uri = paramj.uri;
-      this.boo = this.bon.openAssetFileDescriptor(this.uri, "r");
-      if (this.boo == null)
+      this.dig = this.dif.openAssetFileDescriptor(this.uri, "r");
+      if (this.dig == null)
       {
         paramj = new FileNotFoundException("Could not open file descriptor for: " + this.uri);
         AppMethodBeat.o(93034);
@@ -50,38 +50,38 @@ public final class e
       AppMethodBeat.o(93034);
       throw paramj;
     }
-    this.aFw = new FileInputStream(this.boo.getFileDescriptor());
-    long l1 = this.boo.getStartOffset();
-    l1 = this.aFw.skip(paramj.position + l1) - l1;
+    this.inputStream = new FileInputStream(this.dig.getFileDescriptor());
+    long l1 = this.dig.getStartOffset();
+    l1 = this.inputStream.skip(paramj.position + l1) - l1;
     if (l1 != paramj.position)
     {
       paramj = new EOFException();
       AppMethodBeat.o(93034);
       throw paramj;
     }
-    if (paramj.aFL != -1L) {
-      this.bom = paramj.aFL;
+    if (paramj.length != -1L) {
+      this.die = paramj.length;
     }
     for (;;)
     {
       this.opened = true;
-      if (this.bol != null) {
-        this.bol.a(this, paramj);
+      if (this.did != null) {
+        this.did.a(this, paramj);
       }
-      l1 = this.bom;
+      l1 = this.die;
       AppMethodBeat.o(93034);
       return l1;
-      long l2 = this.boo.getLength();
+      long l2 = this.dig.getLength();
       if (l2 == -1L)
       {
-        this.bom = this.aFw.available();
-        if (this.bom == 0L) {
-          this.bom = -1L;
+        this.die = this.inputStream.available();
+        if (this.die == 0L) {
+          this.die = -1L;
         }
       }
       else
       {
-        this.bom = (l2 - l1);
+        this.die = (l2 - l1);
       }
     }
   }
@@ -92,14 +92,14 @@ public final class e
     this.uri = null;
     try
     {
-      if (this.aFw != null) {
-        this.aFw.close();
+      if (this.inputStream != null) {
+        this.inputStream.close();
       }
-      this.aFw = null;
+      this.inputStream = null;
       try
       {
-        if (this.boo != null) {
-          this.boo.close();
+        if (this.dig != null) {
+          this.dig.close();
         }
         return;
       }
@@ -111,12 +111,12 @@ public final class e
       }
       finally
       {
-        this.boo = null;
+        this.dig = null;
         if (this.opened)
         {
           this.opened = false;
-          if (this.bol != null) {
-            this.bol.aa(this);
+          if (this.did != null) {
+            this.did.bj(this);
           }
         }
         AppMethodBeat.o(93036);
@@ -132,11 +132,11 @@ public final class e
     }
     finally
     {
-      this.aFw = null;
+      this.inputStream = null;
       try
       {
-        if (this.boo != null) {
-          this.boo.close();
+        if (this.dig != null) {
+          this.dig.close();
         }
         throw localObject2;
       }
@@ -148,12 +148,12 @@ public final class e
       }
       finally
       {
-        this.boo = null;
+        this.dig = null;
         if (this.opened)
         {
           this.opened = false;
-          if (this.bol != null) {
-            this.bol.aa(this);
+          if (this.did != null) {
+            this.did.bj(this);
           }
         }
         AppMethodBeat.o(93036);
@@ -174,27 +174,27 @@ public final class e
       AppMethodBeat.o(93035);
       return 0;
     }
-    if (this.bom == 0L)
+    if (this.die == 0L)
     {
       AppMethodBeat.o(93035);
       return -1;
     }
     try
     {
-      if (this.bom == -1L) {}
+      if (this.die == -1L) {}
       for (;;)
       {
-        paramInt1 = this.aFw.read(paramArrayOfByte, paramInt1, paramInt2);
+        paramInt1 = this.inputStream.read(paramArrayOfByte, paramInt1, paramInt2);
         if (paramInt1 != -1) {
           break label134;
         }
-        if (this.bom == -1L) {
+        if (this.die == -1L) {
           break;
         }
         paramArrayOfByte = new a(new EOFException());
         AppMethodBeat.o(93035);
         throw paramArrayOfByte;
-        long l = Math.min(this.bom, paramInt2);
+        long l = Math.min(this.die, paramInt2);
         paramInt2 = (int)l;
       }
       AppMethodBeat.o(93035);
@@ -207,11 +207,11 @@ public final class e
     }
     return -1;
     label134:
-    if (this.bom != -1L) {
-      this.bom -= paramInt1;
+    if (this.die != -1L) {
+      this.die -= paramInt1;
     }
-    if (this.bol != null) {
-      this.bol.e(this, paramInt1);
+    if (this.did != null) {
+      this.did.f(this, paramInt1);
     }
     AppMethodBeat.o(93035);
     return paramInt1;
@@ -228,7 +228,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.h.e
  * JD-Core Version:    0.7.0.1
  */

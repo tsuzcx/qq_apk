@@ -1,102 +1,55 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.model.z;
-import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bci;
-import com.tencent.mm.protocal.protobuf.bcj;
+import com.tencent.mm.am.b;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.protocal.protobuf.avo;
+import com.tencent.mm.protocal.protobuf.baq;
+import com.tencent.mm.protocal.protobuf.bar;
+import com.tencent.mm.protocal.protobuf.kd;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
-import kotlin.t;
+import java.util.LinkedList;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderGameSearch;", "Lcom/tencent/mm/plugin/findersdk/cgi/NetSceneFinderBase;", "query", "", "offset", "scene", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Ljava/lang/String;Ljava/lang/String;ILcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "commReqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "response", "Lcom/tencent/mm/protocal/protobuf/FinderLiveSearchMoreGamesResponse;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getResponse", "getType", "onCgiEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/cgi/CgiPrivateMsgContactExtInfo;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/FinderGetPrivateMsgContactExtInfoListResponse;", "userList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderContactMsgInfo;", "(Ljava/util/LinkedList;)V", "getUserList", "()Ljava/util/LinkedList;", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class bf
-  extends com.tencent.mm.plugin.findersdk.b.g
+  extends b<bar>
 {
-  public static final a xcN;
-  private i callback;
-  private d lKU;
-  public bcj xcM;
+  public static final bf.a ABj;
+  private final LinkedList<avo> ABk;
   
   static
   {
-    AppMethodBeat.i(285913);
-    xcN = new a((byte)0);
-    AppMethodBeat.o(285913);
+    AppMethodBeat.i(336486);
+    ABj = new bf.a((byte)0);
+    AppMethodBeat.o(336486);
   }
   
-  private bf(String paramString1, String paramString2)
+  public bf(LinkedList<avo> paramLinkedList)
   {
-    super(null);
-    AppMethodBeat.i(285912);
-    this.xcM = new bcj();
-    Object localObject = new d.a();
-    ((d.a)localObject).vD(getType());
-    ((d.a)localObject).TW("/cgi-bin/micromsg-bin/finderlivesearchmoregames");
-    bci localbci = new bci();
-    localbci.RLN = z.bdh();
-    localbci.SNL = paramString1;
-    localbci.SNM = paramString2;
-    localbci.scene = 0;
-    com.tencent.mm.plugin.finder.utils.p localp = com.tencent.mm.plugin.finder.utils.p.ADF;
-    localbci.SLA = com.tencent.mm.plugin.finder.utils.p.ecZ();
-    ((d.a)localObject).c((a)localbci);
-    ((d.a)localObject).d((a)new bcj());
-    localObject = ((d.a)localObject).bgN();
-    kotlin.g.b.p.j(localObject, "builder.buildInstance()");
-    this.lKU = ((d)localObject);
-    Log.i("Finder.NetSceneFinderGameSearch", "NetSceneFinderGameSearch init: query = " + paramString1 + ", offset = " + paramString2 + ", scene = 0");
-    AppMethodBeat.o(285912);
+    AppMethodBeat.i(336483);
+    this.ABk = paramLinkedList;
+    paramLinkedList = new baq();
+    Object localObject = bi.ABn;
+    paramLinkedList.YIY = bi.dVu();
+    paramLinkedList.ZLx = this.ABk;
+    localObject = new c.a();
+    ((c.a)localObject).otE = ((a)paramLinkedList);
+    paramLinkedList = new bar();
+    paramLinkedList.setBaseResponse(new kd());
+    ((c.a)localObject).otF = ((a)paramLinkedList);
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/findergetprivatemsgcontactextinfolist";
+    ((c.a)localObject).funcId = 6688;
+    c(((c.a)localObject).bEF());
+    Log.i("Cgi.CgiPrivateMsgContactExtInfo", s.X("CgiPrivateMsgContactExtInfo init userNameList.size = ", Integer.valueOf(this.ABk.size())));
+    AppMethodBeat.o(336483);
   }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, s params)
-  {
-    AppMethodBeat.i(285911);
-    Log.i("Finder.NetSceneFinderGameSearch", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    params = this.lKU.bhY();
-    if (params == null)
-    {
-      paramString = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderLiveSearchMoreGamesResponse");
-      AppMethodBeat.o(285911);
-      throw paramString;
-    }
-    this.xcM = ((bcj)params);
-    params = this.callback;
-    if (params != null)
-    {
-      params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
-      AppMethodBeat.o(285911);
-      return;
-    }
-    AppMethodBeat.o(285911);
-  }
-  
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
-  {
-    AppMethodBeat.i(285910);
-    this.callback = parami;
-    int i = dispatch(paramg, (s)this.lKU, (m)this);
-    AppMethodBeat.o(285910);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 4140;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderGameSearch$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.bf
  * JD-Core Version:    0.7.0.1
  */

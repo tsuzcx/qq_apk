@@ -16,18 +16,18 @@ public class TPTrackInfo
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(219917);
+    AppMethodBeat.i(228470);
     if ((paramObject == null) || (!(paramObject instanceof TPTrackInfo)))
     {
-      AppMethodBeat.o(219917);
+      AppMethodBeat.o(228470);
       return false;
     }
     if ((this.name.equals(((TPTrackInfo)paramObject).name)) && (this.trackType == ((TPTrackInfo)paramObject).trackType))
     {
-      AppMethodBeat.o(219917);
+      AppMethodBeat.o(228470);
       return true;
     }
-    AppMethodBeat.o(219917);
+    AppMethodBeat.o(228470);
     return false;
   }
   
@@ -43,7 +43,7 @@ public class TPTrackInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPTrackInfo
  * JD-Core Version:    0.7.0.1
  */

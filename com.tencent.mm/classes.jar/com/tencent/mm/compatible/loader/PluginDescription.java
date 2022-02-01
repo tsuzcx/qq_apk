@@ -4,14 +4,14 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.m;
+import com.tencent.mm.compatible.util.n;
 import java.io.Serializable;
 
 public class PluginDescription
   implements Parcelable, Serializable
 {
   public static final Parcelable.Creator<PluginDescription> CREATOR;
-  public final int jvd;
+  public final int lYu;
   public final String md5;
   public final String name;
   public final int size;
@@ -28,12 +28,12 @@ public class PluginDescription
   protected PluginDescription(Parcel paramParcel)
   {
     AppMethodBeat.i(155831);
-    this.name = ((String)m.checkNotNull(paramParcel.readString()));
-    this.url = ((String)m.checkNotNull(paramParcel.readString()));
-    this.md5 = ((String)m.checkNotNull(paramParcel.readString()));
-    this.version = ((String)m.checkNotNull(paramParcel.readString()));
+    this.name = ((String)n.checkNotNull(paramParcel.readString()));
+    this.url = ((String)n.checkNotNull(paramParcel.readString()));
+    this.md5 = ((String)n.checkNotNull(paramParcel.readString()));
+    this.version = ((String)n.checkNotNull(paramParcel.readString()));
     this.size = paramParcel.readInt();
-    this.jvd = paramParcel.readInt();
+    this.lYu = paramParcel.readInt();
     AppMethodBeat.o(155831);
   }
   
@@ -45,7 +45,7 @@ public class PluginDescription
   public String toString()
   {
     AppMethodBeat.i(155832);
-    String str = String.format("PluginDescription = [name=%s, url=%s, md5=%s, version=%s, size=%d, downloadType=%d]", new Object[] { this.name, this.url, this.md5, this.version, Integer.valueOf(this.size), Integer.valueOf(this.jvd) });
+    String str = String.format("PluginDescription = [name=%s, url=%s, md5=%s, version=%s, size=%d, downloadType=%d]", new Object[] { this.name, this.url, this.md5, this.version, Integer.valueOf(this.size), Integer.valueOf(this.lYu) });
     AppMethodBeat.o(155832);
     return str;
   }
@@ -58,7 +58,7 @@ public class PluginDescription
     paramParcel.writeString(this.md5);
     paramParcel.writeString(this.version);
     paramParcel.writeInt(this.size);
-    paramParcel.writeInt(this.jvd);
+    paramParcel.writeInt(this.lYu);
     AppMethodBeat.o(155830);
   }
 }

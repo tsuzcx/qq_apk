@@ -649,7 +649,7 @@ public class SharePatchInfo
     //   88: astore 4
     //   90: aload_1
     //   91: getfield 54	com/tencent/tinker/loader/shareutil/SharePatchInfo:isProtectedApp	Z
-    //   94: ifeq +361 -> 455
+    //   94: ifeq +379 -> 473
     //   97: iconst_1
     //   98: istore_2
     //   99: aload 4
@@ -660,7 +660,7 @@ public class SharePatchInfo
     //   110: astore 4
     //   112: aload_1
     //   113: getfield 56	com/tencent/tinker/loader/shareutil/SharePatchInfo:isRemoveNewVersion	Z
-    //   116: ifeq +344 -> 460
+    //   116: ifeq +362 -> 478
     //   119: iconst_1
     //   120: istore_2
     //   121: aload 4
@@ -681,216 +681,223 @@ public class SharePatchInfo
     //   156: astore 4
     //   158: aload_1
     //   159: getfield 62	com/tencent/tinker/loader/shareutil/SharePatchInfo:isRemoveInterpretOATDir	Z
-    //   162: ifeq +303 -> 465
+    //   162: ifeq +321 -> 483
     //   165: iconst_1
     //   166: istore_2
     //   167: ldc 35
     //   169: aload 4
     //   171: iload_2
     //   172: invokevirtual 201	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   175: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   178: iconst_0
-    //   179: anewarray 4	java/lang/Object
-    //   182: invokestatic 212	com/tencent/tinker/loader/shareutil/ShareTinkerLog:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   185: aload_0
-    //   186: invokevirtual 152	java/io/File:getParentFile	()Ljava/io/File;
-    //   189: astore 4
-    //   191: aload 4
-    //   193: invokevirtual 155	java/io/File:exists	()Z
-    //   196: ifne +9 -> 205
-    //   199: aload 4
-    //   201: invokevirtual 158	java/io/File:mkdirs	()Z
-    //   204: pop
-    //   205: iconst_0
-    //   206: istore_2
-    //   207: iconst_0
-    //   208: istore_3
-    //   209: iload_2
-    //   210: iconst_2
-    //   211: if_icmpge +332 -> 543
-    //   214: iload_3
-    //   215: ifne +328 -> 543
-    //   218: new 69	java/util/Properties
-    //   221: dup
-    //   222: invokespecial 70	java/util/Properties:<init>	()V
-    //   225: astore 6
-    //   227: aload 6
-    //   229: ldc 32
-    //   231: aload_1
-    //   232: getfield 50	com/tencent/tinker/loader/shareutil/SharePatchInfo:oldVersion	Ljava/lang/String;
-    //   235: invokevirtual 216	java/util/Properties:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   238: pop
-    //   239: aload 6
-    //   241: ldc 26
-    //   243: aload_1
-    //   244: getfield 52	com/tencent/tinker/loader/shareutil/SharePatchInfo:newVersion	Ljava/lang/String;
-    //   247: invokevirtual 216	java/util/Properties:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   250: pop
-    //   251: aload_1
-    //   252: getfield 54	com/tencent/tinker/loader/shareutil/SharePatchInfo:isProtectedApp	Z
-    //   255: ifeq +215 -> 470
-    //   258: ldc 218
-    //   260: astore 4
-    //   262: aload 6
-    //   264: ldc 14
-    //   266: aload 4
-    //   268: invokevirtual 216	java/util/Properties:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   271: pop
-    //   272: aload_1
-    //   273: getfield 56	com/tencent/tinker/loader/shareutil/SharePatchInfo:isRemoveNewVersion	Z
-    //   276: ifeq +201 -> 477
-    //   279: ldc 218
-    //   281: astore 4
-    //   283: aload 6
-    //   285: ldc 20
-    //   287: aload 4
-    //   289: invokevirtual 216	java/util/Properties:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   292: pop
-    //   293: aload 6
-    //   295: ldc 11
-    //   297: aload_1
-    //   298: getfield 58	com/tencent/tinker/loader/shareutil/SharePatchInfo:fingerPrint	Ljava/lang/String;
-    //   301: invokevirtual 216	java/util/Properties:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   304: pop
-    //   305: aload 6
-    //   307: ldc 29
-    //   309: aload_1
-    //   310: getfield 60	com/tencent/tinker/loader/shareutil/SharePatchInfo:oatDir	Ljava/lang/String;
-    //   313: invokevirtual 216	java/util/Properties:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   316: pop
-    //   317: aload_1
-    //   318: getfield 62	com/tencent/tinker/loader/shareutil/SharePatchInfo:isRemoveInterpretOATDir	Z
-    //   321: ifeq +163 -> 484
-    //   324: ldc 218
-    //   326: astore 4
-    //   328: aload 6
-    //   330: ldc 17
-    //   332: aload 4
-    //   334: invokevirtual 216	java/util/Properties:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   337: pop
-    //   338: new 220	java/io/FileOutputStream
-    //   341: dup
-    //   342: aload_0
-    //   343: iconst_0
-    //   344: invokespecial 223	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
-    //   347: astore 5
-    //   349: aload 5
-    //   351: astore 4
-    //   353: aload 6
-    //   355: aload 5
-    //   357: new 109	java/lang/StringBuilder
-    //   360: dup
-    //   361: ldc 225
-    //   363: invokespecial 114	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   366: aload_1
-    //   367: getfield 50	com/tencent/tinker/loader/shareutil/SharePatchInfo:oldVersion	Ljava/lang/String;
-    //   370: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   373: ldc 227
-    //   375: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   378: aload_1
-    //   379: getfield 52	com/tencent/tinker/loader/shareutil/SharePatchInfo:newVersion	Ljava/lang/String;
-    //   382: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   385: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   388: invokevirtual 231	java/util/Properties:store	(Ljava/io/OutputStream;Ljava/lang/String;)V
-    //   391: aload 5
-    //   393: invokestatic 101	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeQuietly	(Ljava/lang/Object;)V
-    //   396: aload_0
-    //   397: invokestatic 166	com/tencent/tinker/loader/shareutil/SharePatchInfo:readAndCheckProperty	(Ljava/io/File;)Lcom/tencent/tinker/loader/shareutil/SharePatchInfo;
-    //   400: astore 4
-    //   402: aload 4
-    //   404: ifnull +134 -> 538
-    //   407: aload 4
-    //   409: getfield 50	com/tencent/tinker/loader/shareutil/SharePatchInfo:oldVersion	Ljava/lang/String;
-    //   412: aload_1
-    //   413: getfield 50	com/tencent/tinker/loader/shareutil/SharePatchInfo:oldVersion	Ljava/lang/String;
-    //   416: invokevirtual 95	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   419: ifeq +119 -> 538
-    //   422: aload 4
-    //   424: getfield 52	com/tencent/tinker/loader/shareutil/SharePatchInfo:newVersion	Ljava/lang/String;
-    //   427: aload_1
-    //   428: getfield 52	com/tencent/tinker/loader/shareutil/SharePatchInfo:newVersion	Ljava/lang/String;
-    //   431: invokevirtual 95	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   434: ifeq +104 -> 538
-    //   437: iconst_1
-    //   438: istore_3
-    //   439: iload_3
-    //   440: ifne +8 -> 448
-    //   443: aload_0
-    //   444: invokevirtual 234	java/io/File:delete	()Z
-    //   447: pop
-    //   448: iload_2
-    //   449: iconst_1
-    //   450: iadd
-    //   451: istore_2
-    //   452: goto -243 -> 209
-    //   455: iconst_0
-    //   456: istore_2
-    //   457: goto -358 -> 99
-    //   460: iconst_0
-    //   461: istore_2
-    //   462: goto -341 -> 121
-    //   465: iconst_0
-    //   466: istore_2
-    //   467: goto -300 -> 167
-    //   470: ldc 91
-    //   472: astore 4
-    //   474: goto -212 -> 262
-    //   477: ldc 91
-    //   479: astore 4
-    //   481: goto -198 -> 283
-    //   484: ldc 91
-    //   486: astore 4
-    //   488: goto -160 -> 328
-    //   491: astore 6
-    //   493: aconst_null
-    //   494: astore 5
-    //   496: aload 5
-    //   498: astore 4
-    //   500: ldc 35
-    //   502: ldc 236
-    //   504: aload 6
-    //   506: invokestatic 139	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   509: invokevirtual 142	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   512: iconst_0
-    //   513: anewarray 4	java/lang/Object
-    //   516: invokestatic 133	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   519: aload 5
-    //   521: invokestatic 101	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeQuietly	(Ljava/lang/Object;)V
-    //   524: goto -128 -> 396
-    //   527: astore_0
-    //   528: aconst_null
-    //   529: astore 4
-    //   531: aload 4
-    //   533: invokestatic 101	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeQuietly	(Ljava/lang/Object;)V
-    //   536: aload_0
-    //   537: athrow
-    //   538: iconst_0
-    //   539: istore_3
-    //   540: goto -101 -> 439
-    //   543: iload_3
-    //   544: ireturn
+    //   175: ldc 211
+    //   177: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   180: new 213	java/lang/Throwable
+    //   183: dup
+    //   184: invokespecial 214	java/lang/Throwable:<init>	()V
+    //   187: invokestatic 220	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   190: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   193: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   196: iconst_0
+    //   197: anewarray 4	java/lang/Object
+    //   200: invokestatic 223	com/tencent/tinker/loader/shareutil/ShareTinkerLog:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   203: aload_0
+    //   204: invokevirtual 152	java/io/File:getParentFile	()Ljava/io/File;
+    //   207: astore 4
+    //   209: aload 4
+    //   211: invokevirtual 155	java/io/File:exists	()Z
+    //   214: ifne +9 -> 223
+    //   217: aload 4
+    //   219: invokevirtual 158	java/io/File:mkdirs	()Z
+    //   222: pop
+    //   223: iconst_0
+    //   224: istore_2
+    //   225: iconst_0
+    //   226: istore_3
+    //   227: iload_2
+    //   228: iconst_2
+    //   229: if_icmpge +332 -> 561
+    //   232: iload_3
+    //   233: ifne +328 -> 561
+    //   236: new 69	java/util/Properties
+    //   239: dup
+    //   240: invokespecial 70	java/util/Properties:<init>	()V
+    //   243: astore 6
+    //   245: aload 6
+    //   247: ldc 32
+    //   249: aload_1
+    //   250: getfield 50	com/tencent/tinker/loader/shareutil/SharePatchInfo:oldVersion	Ljava/lang/String;
+    //   253: invokevirtual 227	java/util/Properties:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   256: pop
+    //   257: aload 6
+    //   259: ldc 26
+    //   261: aload_1
+    //   262: getfield 52	com/tencent/tinker/loader/shareutil/SharePatchInfo:newVersion	Ljava/lang/String;
+    //   265: invokevirtual 227	java/util/Properties:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   268: pop
+    //   269: aload_1
+    //   270: getfield 54	com/tencent/tinker/loader/shareutil/SharePatchInfo:isProtectedApp	Z
+    //   273: ifeq +215 -> 488
+    //   276: ldc 229
+    //   278: astore 4
+    //   280: aload 6
+    //   282: ldc 14
+    //   284: aload 4
+    //   286: invokevirtual 227	java/util/Properties:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   289: pop
+    //   290: aload_1
+    //   291: getfield 56	com/tencent/tinker/loader/shareutil/SharePatchInfo:isRemoveNewVersion	Z
+    //   294: ifeq +201 -> 495
+    //   297: ldc 229
+    //   299: astore 4
+    //   301: aload 6
+    //   303: ldc 20
+    //   305: aload 4
+    //   307: invokevirtual 227	java/util/Properties:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   310: pop
+    //   311: aload 6
+    //   313: ldc 11
+    //   315: aload_1
+    //   316: getfield 58	com/tencent/tinker/loader/shareutil/SharePatchInfo:fingerPrint	Ljava/lang/String;
+    //   319: invokevirtual 227	java/util/Properties:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   322: pop
+    //   323: aload 6
+    //   325: ldc 29
+    //   327: aload_1
+    //   328: getfield 60	com/tencent/tinker/loader/shareutil/SharePatchInfo:oatDir	Ljava/lang/String;
+    //   331: invokevirtual 227	java/util/Properties:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   334: pop
+    //   335: aload_1
+    //   336: getfield 62	com/tencent/tinker/loader/shareutil/SharePatchInfo:isRemoveInterpretOATDir	Z
+    //   339: ifeq +163 -> 502
+    //   342: ldc 229
+    //   344: astore 4
+    //   346: aload 6
+    //   348: ldc 17
+    //   350: aload 4
+    //   352: invokevirtual 227	java/util/Properties:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   355: pop
+    //   356: new 231	java/io/FileOutputStream
+    //   359: dup
+    //   360: aload_0
+    //   361: iconst_0
+    //   362: invokespecial 234	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   365: astore 5
+    //   367: aload 5
+    //   369: astore 4
+    //   371: aload 6
+    //   373: aload 5
+    //   375: new 109	java/lang/StringBuilder
+    //   378: dup
+    //   379: ldc 236
+    //   381: invokespecial 114	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   384: aload_1
+    //   385: getfield 50	com/tencent/tinker/loader/shareutil/SharePatchInfo:oldVersion	Ljava/lang/String;
+    //   388: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   391: ldc 238
+    //   393: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   396: aload_1
+    //   397: getfield 52	com/tencent/tinker/loader/shareutil/SharePatchInfo:newVersion	Ljava/lang/String;
+    //   400: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   403: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   406: invokevirtual 242	java/util/Properties:store	(Ljava/io/OutputStream;Ljava/lang/String;)V
+    //   409: aload 5
+    //   411: invokestatic 101	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeQuietly	(Ljava/lang/Object;)V
+    //   414: aload_0
+    //   415: invokestatic 166	com/tencent/tinker/loader/shareutil/SharePatchInfo:readAndCheckProperty	(Ljava/io/File;)Lcom/tencent/tinker/loader/shareutil/SharePatchInfo;
+    //   418: astore 4
+    //   420: aload 4
+    //   422: ifnull +134 -> 556
+    //   425: aload 4
+    //   427: getfield 50	com/tencent/tinker/loader/shareutil/SharePatchInfo:oldVersion	Ljava/lang/String;
+    //   430: aload_1
+    //   431: getfield 50	com/tencent/tinker/loader/shareutil/SharePatchInfo:oldVersion	Ljava/lang/String;
+    //   434: invokevirtual 95	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   437: ifeq +119 -> 556
+    //   440: aload 4
+    //   442: getfield 52	com/tencent/tinker/loader/shareutil/SharePatchInfo:newVersion	Ljava/lang/String;
+    //   445: aload_1
+    //   446: getfield 52	com/tencent/tinker/loader/shareutil/SharePatchInfo:newVersion	Ljava/lang/String;
+    //   449: invokevirtual 95	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   452: ifeq +104 -> 556
+    //   455: iconst_1
+    //   456: istore_3
+    //   457: iload_3
+    //   458: ifne +8 -> 466
+    //   461: aload_0
+    //   462: invokevirtual 245	java/io/File:delete	()Z
+    //   465: pop
+    //   466: iload_2
+    //   467: iconst_1
+    //   468: iadd
+    //   469: istore_2
+    //   470: goto -243 -> 227
+    //   473: iconst_0
+    //   474: istore_2
+    //   475: goto -376 -> 99
+    //   478: iconst_0
+    //   479: istore_2
+    //   480: goto -359 -> 121
+    //   483: iconst_0
+    //   484: istore_2
+    //   485: goto -318 -> 167
+    //   488: ldc 91
+    //   490: astore 4
+    //   492: goto -212 -> 280
+    //   495: ldc 91
+    //   497: astore 4
+    //   499: goto -198 -> 301
+    //   502: ldc 91
+    //   504: astore 4
+    //   506: goto -160 -> 346
+    //   509: astore 6
+    //   511: aconst_null
+    //   512: astore 5
+    //   514: aload 5
+    //   516: astore 4
+    //   518: ldc 35
+    //   520: ldc 247
+    //   522: aload 6
+    //   524: invokestatic 139	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   527: invokevirtual 142	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   530: iconst_0
+    //   531: anewarray 4	java/lang/Object
+    //   534: invokestatic 133	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   537: aload 5
+    //   539: invokestatic 101	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeQuietly	(Ljava/lang/Object;)V
+    //   542: goto -128 -> 414
     //   545: astore_0
-    //   546: goto -15 -> 531
-    //   549: astore 6
-    //   551: goto -55 -> 496
+    //   546: aconst_null
+    //   547: astore 4
+    //   549: aload 4
+    //   551: invokestatic 101	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeQuietly	(Ljava/lang/Object;)V
+    //   554: aload_0
+    //   555: athrow
+    //   556: iconst_0
+    //   557: istore_3
+    //   558: goto -101 -> 457
+    //   561: iload_3
+    //   562: ireturn
+    //   563: astore_0
+    //   564: goto -15 -> 549
+    //   567: astore 6
+    //   569: goto -55 -> 514
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	554	0	paramFile	File
-    //   0	554	1	paramSharePatchInfo	SharePatchInfo
-    //   98	369	2	i	int
-    //   208	336	3	bool	boolean
-    //   88	444	4	localObject	Object
-    //   347	173	5	localFileOutputStream	java.io.FileOutputStream
-    //   225	129	6	localProperties	java.util.Properties
-    //   491	14	6	localException1	Exception
-    //   549	1	6	localException2	Exception
+    //   0	572	0	paramFile	File
+    //   0	572	1	paramSharePatchInfo	SharePatchInfo
+    //   98	387	2	i	int
+    //   226	336	3	bool	boolean
+    //   88	462	4	localObject	Object
+    //   365	173	5	localFileOutputStream	java.io.FileOutputStream
+    //   243	129	6	localProperties	java.util.Properties
+    //   509	14	6	localException1	Exception
+    //   567	1	6	localException2	Exception
     // Exception table:
     //   from	to	target	type
-    //   338	349	491	java/lang/Exception
-    //   338	349	527	finally
-    //   353	391	545	finally
-    //   500	519	545	finally
-    //   353	391	549	java/lang/Exception
+    //   356	367	509	java/lang/Exception
+    //   356	367	545	finally
+    //   371	409	563	finally
+    //   518	537	563	finally
+    //   371	409	567	java/lang/Exception
   }
   
   public static boolean rewritePatchInfoFileWithLock(File paramFile1, SharePatchInfo paramSharePatchInfo, File paramFile2)
@@ -955,7 +962,7 @@ public class SharePatchInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.loader.shareutil.SharePatchInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,18 @@
 package com.tencent.mm.plugin.recordvideo.ui.editor.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/TouchTracker$PivotType;", "", "(Ljava/lang/String;I)V", "FREE", "CENTER", "plugin-recordvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/TouchTracker$PivotType;", "", "(Ljava/lang/String;I)V", "FREE", "CENTER", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public enum c$a
 {
   static
   {
-    AppMethodBeat.i(223383);
-    a locala1 = new a("FREE", 0);
-    Ieg = locala1;
-    a locala2 = new a("CENTER", 1);
-    Ieh = locala2;
-    Iei = new a[] { locala1, locala2 };
-    AppMethodBeat.o(223383);
+    AppMethodBeat.i(280195);
+    Oaw = new a("FREE", 0);
+    Oax = new a("CENTER", 1);
+    Oay = new a[] { Oaw, Oax };
+    AppMethodBeat.o(280195);
   }
   
   private c$a() {}

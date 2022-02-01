@@ -13,17 +13,18 @@ import com.tencent.mm.ah.a.m;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.ListViewInScrollView;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.widget.a.d.a;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.widget.a.e;
+import com.tencent.mm.ui.widget.a.e.a;
 import java.util.HashMap;
 
 public final class DialogPreference
   extends Preference
 {
-  private Preference.a WqI;
-  private final d WqK;
-  a WqL;
-  private com.tencent.mm.ui.widget.a.d mUO;
+  private Preference.a adXX;
+  private final d adXZ;
+  a adYa;
+  private e pRv;
   
   public DialogPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,24 +35,24 @@ public final class DialogPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142532);
-    this.WqK = new d(paramContext);
+    this.adXZ = new d(paramContext);
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.m.ChoicePreference, paramInt, 0);
     paramInt = paramAttributeSet.getResourceId(a.m.ChoicePreference_entries, -1);
     if (paramInt != -1) {
-      this.WqK.WqG = paramContext.getResources().getStringArray(paramInt);
+      this.adXZ.adXV = paramContext.getResources().getStringArray(paramInt);
     }
-    this.WqK.WqH = paramAttributeSet.getTextArray(a.m.ChoicePreference_entryValues);
+    this.adXZ.adXW = paramAttributeSet.getTextArray(a.m.ChoicePreference_entryValues);
     paramAttributeSet.recycle();
-    this.WqK.hKE();
+    this.adXZ.jni();
     AppMethodBeat.o(142532);
   }
   
   public final void a(Preference.a parama)
   {
-    this.WqI = parama;
+    this.adXX = parama;
   }
   
-  protected final void elK()
+  protected final void fpM()
   {
     AppMethodBeat.i(142535);
     ListViewInScrollView localListViewInScrollView = (ListViewInScrollView)View.inflate(this.mContext, a.h.mm_list, null);
@@ -61,17 +62,17 @@ public final class DialogPreference
       {
         AppMethodBeat.i(142531);
         b localb = new b();
-        localb.bn(paramAnonymousAdapterView);
-        localb.bn(paramAnonymousView);
-        localb.sg(paramAnonymousInt);
-        localb.Fs(paramAnonymousLong);
-        a.c("com/tencent/mm/ui/base/preference/DialogPreference$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
+        localb.cH(paramAnonymousAdapterView);
+        localb.cH(paramAnonymousView);
+        localb.sc(paramAnonymousInt);
+        localb.hB(paramAnonymousLong);
+        a.c("com/tencent/mm/ui/base/preference/DialogPreference$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aYj());
         if (DialogPreference.a(DialogPreference.this) != null) {
           DialogPreference.a(DialogPreference.this).dismiss();
         }
-        DialogPreference.this.setValue((String)DialogPreference.b(DialogPreference.this).WqH[paramAnonymousInt]);
+        DialogPreference.this.setValue((String)DialogPreference.b(DialogPreference.this).adXW[paramAnonymousInt]);
         if (DialogPreference.c(DialogPreference.this) != null) {
-          DialogPreference.c(DialogPreference.this).hKF();
+          DialogPreference.c(DialogPreference.this).jnj();
         }
         if (DialogPreference.d(DialogPreference.this) != null) {
           DialogPreference.d(DialogPreference.this).a(DialogPreference.this, DialogPreference.this.getValue());
@@ -80,27 +81,27 @@ public final class DialogPreference
         AppMethodBeat.o(142531);
       }
     });
-    localListViewInScrollView.setAdapter(this.WqK);
-    d.a locala = new d.a(this.mContext);
-    locala.bBc(getTitle().toString());
-    locala.iI(localListViewInScrollView);
-    this.mUO = locala.icu();
-    this.mUO.show();
-    h.a(this.mContext, this.mUO);
+    localListViewInScrollView.setAdapter(this.adXZ);
+    e.a locala = new e.a(this.mContext);
+    locala.bDv(getTitle().toString());
+    locala.md(localListViewInScrollView);
+    this.pRv = locala.jHH();
+    this.pRv.show();
+    k.a(this.mContext, this.pRv);
     AppMethodBeat.o(142535);
   }
   
   public final String getValue()
   {
-    return this.WqK.value;
+    return this.adXZ.value;
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(142534);
-    c localc = (c)this.WqK.values.get(this.WqK.value);
+    c localc = (c)this.adXZ.values.get(this.adXZ.value);
     if (localc != null) {
-      aF(localc.LV);
+      aS(localc.bba);
     }
     super.onBindView(paramView);
     AppMethodBeat.o(142534);
@@ -109,26 +110,26 @@ public final class DialogPreference
   public final void setValue(String paramString)
   {
     AppMethodBeat.i(142533);
-    this.WqK.value = paramString;
-    paramString = (c)this.WqK.values.get(paramString);
+    this.adXZ.value = paramString;
+    paramString = (c)this.adXZ.values.get(paramString);
     if (paramString == null)
     {
-      this.WqK.GUG = -1;
+      this.adXZ.MSi = -1;
       AppMethodBeat.o(142533);
       return;
     }
-    this.WqK.GUG = paramString.id;
+    this.adXZ.MSi = paramString.id;
     AppMethodBeat.o(142533);
   }
   
   public static abstract interface a
   {
-    public abstract void hKF();
+    public abstract void jnj();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.DialogPreference
  * JD-Core Version:    0.7.0.1
  */

@@ -2,112 +2,159 @@ package com.tencent.mm.plugin.finder.nearby;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import com.tencent.c.a.b.a.d;
-import com.tencent.c.a.b.a.e;
+import com.tencent.d.a.b.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.finder.PluginFinder;
+import com.tencent.mm.plugin.finder.extension.reddot.i;
+import com.tencent.mm.plugin.finder.extension.reddot.p;
 import com.tencent.mm.plugin.finder.nearby.abtest.a;
-import com.tencent.mm.plugin.finder.viewmodel.b.a;
-import com.tencent.mm.plugin.finder.viewmodel.b.e;
-import com.tencent.mm.plugin.finder.viewmodel.component.ai;
-import com.tencent.mm.plugin.findersdk.a.ak;
-import com.tencent.mm.plugin.findersdk.a.z;
-import com.tencent.mm.protocal.protobuf.bhx;
+import com.tencent.mm.plugin.finder.viewmodel.component.ar;
+import com.tencent.mm.plugin.finder.viewmodel.d.a;
+import com.tencent.mm.plugin.finder.viewmodel.d.d;
+import com.tencent.mm.plugin.findersdk.a.bl;
+import com.tencent.mm.plugin.findersdk.a.cn;
+import com.tencent.mm.protocal.protobuf.btx;
+import com.tencent.mm.protocal.protobuf.bxq;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/NearByRedDotUIJumpUIC;", "Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderRedDotUIJumpUIC;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "fragment", "Landroidx/fragment/app/Fragment;", "(Landroidx/fragment/app/Fragment;)V", "getEnterPath", "", "isIgnore", "", "markHardRefresh", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/NearByRedDotUIJumpUIC;", "Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderRedDotUIJumpUIC;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "fragment", "Landroidx/fragment/app/Fragment;", "(Landroidx/fragment/app/Fragment;)V", "ctrInfoNullable", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "getCtrInfoNullable", "()Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "setCtrInfoNullable", "(Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;)V", "showInfoNullable", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "getShowInfoNullable", "()Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "setShowInfoNullable", "(Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;)V", "getEnterPath", "", "isIgnore", "", "markHardRefresh", "", "setupRedInfo", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends ai
+  extends ar
 {
+  public bxq EFi;
+  public p EFj;
+  
   public b(AppCompatActivity paramAppCompatActivity)
   {
     super(paramAppCompatActivity);
-    AppMethodBeat.i(279044);
-    AppMethodBeat.o(279044);
+    AppMethodBeat.i(339580);
+    AppMethodBeat.o(339580);
   }
   
   public b(Fragment paramFragment)
   {
     super(paramFragment);
-    AppMethodBeat.i(279045);
-    AppMethodBeat.o(279045);
+    AppMethodBeat.i(339585);
+    AppMethodBeat.o(339585);
   }
   
-  public final String dLg()
+  public final String eDX()
   {
-    AppMethodBeat.i(279040);
-    a locala = a.zDp;
-    if (!a.dLo())
+    AppMethodBeat.i(339593);
+    a locala = a.EHr;
+    if (!a.eEi())
     {
-      AppMethodBeat.o(279040);
+      AppMethodBeat.o(339593);
       return "NearbyEntrance";
     }
-    AppMethodBeat.o(279040);
+    AppMethodBeat.o(339593);
     return "FinderLiveEntrance";
   }
   
-  public final void dLh()
+  public final void eDY()
   {
-    AppMethodBeat.i(279042);
-    Object localObject = ekS();
-    if (localObject != null) {}
-    for (int i = ((bhx)localObject).SSv;; i = 0)
+    AppMethodBeat.i(339603);
+    Object localObject = fon();
+    if (localObject == null) {}
+    for (int i = 0;; i = ((btx)localObject).aabK)
     {
       int j = i;
       if (i == 0)
       {
-        j = ((e)h.ag(e.class)).getExitLiveTabId();
-        Log.i("Finder.RedDotUIJumpUIC", "prepareLiveSquare use last cache targetTabId=".concat(String.valueOf(j)));
+        j = ((e)h.az(e.class)).getExitLiveTabId(94);
+        Log.i("Finder.RedDotUIJumpUIC", s.X("prepareLiveSquare use last cache targetTabId=", Integer.valueOf(j)));
       }
-      i = ((d)h.ag(d.class)).getTargetCommentScene(94);
-      i = ((e)h.ag(e.class)).parseTabIdFlag(i, j);
-      if (!dLi())
+      i = ((com.tencent.d.a.b.a.d)h.az(com.tencent.d.a.b.a.d.class)).getTargetCommentScene(94);
+      i = ((e)h.az(e.class)).parseTabIdFlag(i, j);
+      if (!eDZ())
       {
-        localObject = dMI().RI(i);
-        ((b.a)localObject).a(b.e.BgO);
-        ((b.a)localObject).BgA = 0L;
-        ((e)h.ag(e.class)).resetLiveFirstPagePreload(j);
+        localObject = eHM().UV(i);
+        ((d.a)localObject).a(d.d.GKM);
+        ((d.a)localObject).GKz = 0L;
+        ((e)h.az(e.class)).resetLiveFirstPagePreload(j);
       }
-      AppMethodBeat.o(279042);
+      AppMethodBeat.o(339603);
       return;
     }
   }
   
-  public final boolean dLi()
+  public final boolean eDZ()
   {
-    AppMethodBeat.i(279043);
-    Object localObject = a.zDp;
-    if (!a.dLo())
+    AppMethodBeat.i(339614);
+    a locala = a.EHr;
+    if (!a.eEi())
     {
-      localObject = h.ag(ak.class);
-      p.j(localObject, "MMKernel.plugin(IPluginFinder::class.java)");
-      localObject = ((ak)localObject).getRedDotManager();
-      p.j(localObject, "MMKernel.plugin(IPluginF…class.java).redDotManager");
-      bool = ((z)localObject).dqJ();
-      Log.i("Finder.RedDotUIJumpUIC", "[isIgnore] isEnableShowNearByEntranceRedDot=".concat(String.valueOf(bool)));
+      bool = ((cn)h.az(cn.class)).getRedDotManager().dZt();
+      Log.i("Finder.RedDotUIJumpUIC", s.X("[isIgnore] isEnableShowNearByEntranceRedDot=", Boolean.valueOf(bool)));
       if (!bool)
       {
-        AppMethodBeat.o(279043);
+        AppMethodBeat.o(339614);
         return true;
       }
-      AppMethodBeat.o(279043);
+      AppMethodBeat.o(339614);
       return false;
     }
-    localObject = h.ag(ak.class);
-    p.j(localObject, "MMKernel.plugin(IPluginFinder::class.java)");
-    localObject = ((ak)localObject).getRedDotManager();
-    p.j(localObject, "MMKernel.plugin(IPluginF…class.java).redDotManager");
-    boolean bool = ((z)localObject).dqK();
-    Log.i("Finder.RedDotUIJumpUIC", "[isIgnore] isEnableShowFinderLiveEntranceRedDot=".concat(String.valueOf(bool)));
+    boolean bool = ((cn)h.az(cn.class)).getRedDotManager().dZv();
+    Log.i("Finder.RedDotUIJumpUIC", s.X("[isIgnore] isEnableShowFinderLiveEntranceRedDot=", Boolean.valueOf(bool)));
     if (!bool)
     {
-      AppMethodBeat.o(279043);
+      AppMethodBeat.o(339614);
       return true;
     }
-    AppMethodBeat.o(279043);
+    AppMethodBeat.o(339614);
     return false;
+  }
+  
+  public final void eEa()
+  {
+    Object localObject3 = null;
+    Object localObject2 = null;
+    AppMethodBeat.i(339621);
+    Object localObject1 = a.EHr;
+    if (a.eEi())
+    {
+      localObject1 = ((PluginFinder)h.az(PluginFinder.class)).getRedDotManager();
+      if (localObject1 == null)
+      {
+        localObject1 = null;
+        this.EFi = ((bxq)localObject1);
+        localObject1 = ((PluginFinder)h.az(PluginFinder.class)).getRedDotManager();
+        if (localObject1 != null) {
+          break label81;
+        }
+      }
+      label81:
+      for (localObject1 = localObject2;; localObject1 = ((i)localObject1).Su("FinderLiveEntrance"))
+      {
+        this.EFj = ((p)localObject1);
+        AppMethodBeat.o(339621);
+        return;
+        localObject1 = ((i)localObject1).avp("FinderLiveEntrance");
+        break;
+      }
+    }
+    localObject1 = ((PluginFinder)h.az(PluginFinder.class)).getRedDotManager();
+    if (localObject1 == null)
+    {
+      localObject1 = null;
+      this.EFi = ((bxq)localObject1);
+      localObject1 = ((PluginFinder)h.az(PluginFinder.class)).getRedDotManager();
+      if (localObject1 != null) {
+        break label153;
+      }
+    }
+    label153:
+    for (localObject1 = localObject3;; localObject1 = ((i)localObject1).Su("NearbyEntrance"))
+    {
+      this.EFj = ((p)localObject1);
+      AppMethodBeat.o(339621);
+      return;
+      localObject1 = ((i)localObject1).avp("NearbyEntrance");
+      break;
+    }
   }
 }
 

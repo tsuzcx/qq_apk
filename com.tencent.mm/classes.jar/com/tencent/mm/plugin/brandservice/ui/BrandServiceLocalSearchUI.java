@@ -1,12 +1,11 @@
 package com.tencent.mm.plugin.brandservice.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.be.o;
 import com.tencent.mm.kernel.h;
+import com.tencent.mm.modelpackage.p;
 import com.tencent.mm.modelvoiceaddr.ui.b;
 import com.tencent.mm.modelvoiceaddr.ui.b.a;
 import com.tencent.mm.plugin.brandservice.d.b;
@@ -22,12 +21,10 @@ public class BrandServiceLocalSearchUI
   extends MMActivity
   implements b.a, BrandServiceSortView.a
 {
-  private b sxL;
-  private BrandServiceSortView sxM;
+  private b vDu;
+  private BrandServiceSortView vDv;
   
-  public final void a(boolean paramBoolean, String[] paramArrayOfString, long paramLong, int paramInt) {}
-  
-  public final boolean aat(String paramString)
+  public final boolean SN(String paramString)
   {
     AppMethodBeat.i(5670);
     hideVKB();
@@ -35,35 +32,37 @@ public class BrandServiceLocalSearchUI
     return true;
   }
   
-  public final void aau(String paramString)
+  public final void SO(String paramString)
   {
     AppMethodBeat.i(5669);
     Log.i("MicroMsg.BrandServiceLocalSearchUI", "search biz, key word : %s", new Object[] { paramString });
-    this.sxM.byL(paramString);
+    this.vDv.bAo(paramString);
     AppMethodBeat.o(5669);
   }
   
-  public final void bsk()
+  public final void a(boolean paramBoolean, String[] paramArrayOfString, long paramLong, int paramInt) {}
+  
+  public final void bPQ()
   {
     AppMethodBeat.i(5671);
     hideVKB();
     AppMethodBeat.o(5671);
   }
   
-  public final void bxH()
+  public final void bWw()
   {
     AppMethodBeat.i(5668);
     finish();
     AppMethodBeat.o(5668);
   }
   
-  public final void bxI() {}
+  public final void bWx() {}
   
-  public final void bxJ() {}
+  public final void bWy() {}
   
-  public final void bxK() {}
+  public final void bWz() {}
   
-  public final boolean czC()
+  public final boolean dcu()
   {
     AppMethodBeat.i(5676);
     hideVKB();
@@ -73,23 +72,23 @@ public class BrandServiceLocalSearchUI
   
   public int getLayoutId()
   {
-    return d.f.sue;
+    return d.f.brand_service_local_search;
   }
   
   public void initView()
   {
     AppMethodBeat.i(5667);
-    this.sxM = ((BrandServiceSortView)findViewById(d.e.ssW));
-    this.sxM.setMode(1);
-    this.sxM.setReturnResult(getIntent().getBooleanExtra("is_return_result", false));
-    this.sxM.hLd();
-    this.sxM.FZ(false);
-    this.sxM.setShowFooterView(false);
-    this.sxM.setITransferToChildOnTouchListener(this);
-    this.sxL = new b();
-    this.sxL.He(true);
-    this.sxL.a(this);
-    this.sxL.mni = false;
+    this.vDv = ((BrandServiceSortView)findViewById(d.e.sort_and_search_view));
+    this.vDv.setMode(1);
+    this.vDv.setReturnResult(getIntent().getBooleanExtra("is_return_result", false));
+    this.vDv.jnG();
+    this.vDv.LL(false);
+    this.vDv.setShowFooterView(false);
+    this.vDv.setITransferToChildOnTouchListener(this);
+    this.vDu = new b();
+    this.vDu.MY(true);
+    this.vDu.a(this);
+    this.vDu.pgU = false;
     AppMethodBeat.o(5667);
   }
   
@@ -99,15 +98,15 @@ public class BrandServiceLocalSearchUI
     super.onCreate(paramBundle);
     setActionbarColor(androidx.core.content.a.w(getContext(), d.b.normal_actionbar_color));
     initView();
-    paramBundle = new o(18);
-    h.aGY().a(paramBundle, 0);
+    paramBundle = new p(18);
+    h.aZW().a(paramBundle, 0);
     AppMethodBeat.o(5666);
   }
   
   public boolean onCreateOptionsMenu(Menu paramMenu)
   {
     AppMethodBeat.i(5674);
-    this.sxL.a(this, paramMenu);
+    this.vDu.a(this, paramMenu);
     AppMethodBeat.o(5674);
     return true;
   }
@@ -116,7 +115,7 @@ public class BrandServiceLocalSearchUI
   {
     AppMethodBeat.i(5673);
     super.onDestroy();
-    this.sxM.release();
+    this.vDv.release();
     AppMethodBeat.o(5673);
   }
   
@@ -124,15 +123,15 @@ public class BrandServiceLocalSearchUI
   {
     AppMethodBeat.i(5672);
     super.onPause();
-    this.sxL.cancel();
-    this.sxL.clearFocus();
+    this.vDu.cancel();
+    this.vDu.clearFocus();
     AppMethodBeat.o(5672);
   }
   
   public boolean onPrepareOptionsMenu(Menu paramMenu)
   {
     AppMethodBeat.i(5675);
-    this.sxL.a(this, paramMenu);
+    this.vDu.a(this, paramMenu);
     AppMethodBeat.o(5675);
     return true;
   }

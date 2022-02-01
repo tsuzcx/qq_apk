@@ -21,17 +21,17 @@ import java.util.Set;
 
 public enum a
 {
-  public boolean cQt = false;
-  public String cQu = "default";
-  a cQv = new a((byte)0);
-  public String cQw;
+  public String eLA;
+  public boolean eLx = false;
+  public String eLy = "default";
+  a eLz = new a((byte)0);
   Handler handler;
   boolean isInit = false;
   public final Set<com.tencent.matrix.b.a> listeners = new HashSet();
   
   private a() {}
   
-  public static String Vs()
+  public static String avV()
   {
     l = System.currentTimeMillis();
     try
@@ -88,17 +88,17 @@ public enum a
     }
   }
   
-  public final void eH(String paramString)
+  public final void gf(String paramString)
   {
     c.i("Matrix.AppActiveDelegate", "[setCurrentFragmentName] fragmentName:%s", new Object[] { paramString });
-    this.cQw = paramString;
+    this.eLA = paramString;
     StringBuilder localStringBuilder = new StringBuilder();
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
       str = "?";
     }
     localStringBuilder.append(str);
-    this.cQu = localStringBuilder.toString();
+    this.eLy = localStringBuilder.toString();
   }
   
   final class a
@@ -119,13 +119,13 @@ public enum a
     public final void onActivityStarted(Activity paramActivity)
     {
       a.a(a.this, paramActivity);
-      a.a(a.this, a.this.cQu);
+      a.a(a.this, a.this.eLy);
     }
     
     public final void onActivityStopped(Activity paramActivity)
     {
-      if (a.Vs() == null) {
-        a.b(a.this, a.this.cQu);
+      if (a.avV() == null) {
+        a.b(a.this, a.this.eLy);
       }
     }
     
@@ -144,7 +144,7 @@ public enum a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.a
  * JD-Core Version:    0.7.0.1
  */

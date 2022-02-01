@@ -1,13 +1,26 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.os.Bundle;
-import com.tencent.mm.ipcinvoker.f;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.luggage.l.e.c;
+import com.tencent.luggage.sdk.h.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.pluginsdk.wallet.e;
 
 public final class ci
-  extends c<j>
+  extends c<k>
 {
-  public static final int CTRL_INDEX = 829;
-  public static final String NAME = "phoneBindCardVerifySms";
+  public static final int CTRL_INDEX = 619;
+  public static final String NAME = "openWCPayLQTDepositPlanAdd";
+  final int rzK;
+  
+  public ci()
+  {
+    AppMethodBeat.i(174763);
+    this.rzK = a.ce(this);
+    AppMethodBeat.o(174763);
+  }
 }
 
 

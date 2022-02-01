@@ -1,149 +1,121 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.h.a;
-import com.tencent.mm.an.h.c;
-import com.tencent.mm.model.ck.a;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.db;
+import com.tencent.mm.autogen.b.in;
+import com.tencent.mm.platformtools.w;
+import com.tencent.mm.protocal.protobuf.ecd;
+import com.tencent.mm.protocal.protobuf.gec;
+import com.tencent.mm.protocal.protobuf.gei;
+import com.tencent.mm.protocal.protobuf.gej;
+import com.tencent.mm.protocal.protobuf.gel;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.platformtools.XmlParser;
-import com.tencent.mm.wallet_core.ui.g;
-import com.tencent.mm.wallet_core.ui.g.a;
-import com.tencent.mm.wallet_core.ui.g.c;
-import java.util.ArrayList;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.util.Iterator;
-import java.util.Map;
+import java.util.LinkedList;
 
 public final class ai
+  extends in
 {
-  private static ai OTv = null;
-  static ArrayList<l> aeb = null;
-  ck.a tUv;
+  public static IAutoDBItem.MAutoDBInfo info;
+  public String Kuq;
+  private ecd VJN;
+  public gec VJO;
+  public gej VJP;
+  public boolean VJQ;
+  public String VJR;
+  public String VJS;
+  public String VJT;
+  public String VJU;
   
-  private ai()
+  static
   {
-    AppMethodBeat.i(70439);
-    this.tUv = new ck.a()
-    {
-      public final void a(h.a paramAnonymousa)
-      {
-        AppMethodBeat.i(70436);
-        paramAnonymousa = z.a(paramAnonymousa.jQG.RIF);
-        Log.d("MicroMsg.WalletPushNotifyManager", "PayMsg:".concat(String.valueOf(paramAnonymousa)));
-        Map localMap = XmlParser.parseXml(paramAnonymousa, "sysmsg", null);
-        int i = Util.getInt((String)localMap.get(".sysmsg.paymsg.PayMsgType"), -1);
-        Object[] arrayOfObject = new Object[1];
-        if (!ai.a(ai.this, i, localMap, paramAnonymousa, arrayOfObject)) {
-          ai.a(i, localMap, arrayOfObject);
-        }
-        AppMethodBeat.o(70436);
-      }
-      
-      public final void a(h.c paramAnonymousc) {}
-    };
-    AppMethodBeat.o(70439);
+    AppMethodBeat.i(70471);
+    info = aJm();
+    AppMethodBeat.o(70471);
   }
   
-  private boolean a(int paramInt, final Map<String, String> paramMap, String paramString, Object[] paramArrayOfObject)
+  public ai()
   {
-    AppMethodBeat.i(70441);
-    if (paramMap == null)
-    {
-      Log.w("MicroMsg.WalletPushNotifyManager", "hy: log is null. handle failed");
-      AppMethodBeat.o(70441);
-      return true;
+    AppMethodBeat.i(70469);
+    this.VJN = new ecd();
+    this.VJO = null;
+    this.VJP = null;
+    this.VJQ = false;
+    this.VJR = "";
+    this.VJS = "";
+    this.VJT = "";
+    this.Kuq = "";
+    this.VJU = "";
+    if (this.VJO == null) {
+      this.VJO = new gec();
     }
-    if (paramInt < 0)
-    {
-      Log.w("MicroMsg.WalletPushNotifyManager", "hy: paymsgtype error. maybe not found in xml");
-      AppMethodBeat.o(70441);
-      return true;
+    if (this.VJP == null) {
+      this.VJP = new gej();
     }
-    Log.i("MicroMsg.WalletPushNotifyManager", "handle paymsg type: %s", new Object[] { Integer.valueOf(paramInt) });
-    if (paramInt == 12)
+    AppMethodBeat.o(70469);
+  }
+  
+  public final void convertFrom(Cursor paramCursor)
+  {
+    AppMethodBeat.i(70470);
+    super.convertFrom(paramCursor);
+    this.VJN = new ecd();
+    try
     {
-      final int i = Util.getInt((String)paramMap.get(".sysmsg.paymsg.avail_balance"), -1);
-      long l = Util.getLong((String)paramMap.get(".sysmsg.paymsg.balance_version"), -1L);
-      paramMap = new g.a()
+      this.VJN = ((ecd)this.VJN.parseFrom(this.field_wallet_grey_item_buf));
+      this.VJO = this.VJN.abhD;
+      this.VJP = this.VJN.abhE;
+      this.VJQ = this.VJN.abhF;
+      this.VJU = "";
+      paramCursor = this.VJN.abhG.iterator();
+      for (;;)
       {
-        public final void aV(Map<String, Object> paramAnonymousMap)
+        if (paramCursor.hasNext())
         {
-          AppMethodBeat.i(70438);
-          if (paramAnonymousMap != null)
-          {
-            long l1 = Util.nullAs((Long)paramAnonymousMap.get("wallet_balance_version"), -1L);
-            long l2 = Util.nullAs((Long)paramAnonymousMap.get("wallet_balance_last_update_time"), -1L);
-            if ((l2 < 0L) || (l1 < 0L) || (l2 + this.OTy > Util.currentTicks()) || (i >= l1))
-            {
-              g.a(new g.c[] { new g.c("wallet_balance_version", Long.valueOf(i)), new g.c("wallet_balance_last_update_time", Long.valueOf(Util.currentTicks())), new g.c("wallet_balance", Double.valueOf(paramMap / 100.0D)) });
-              ai.a(this.OTB, this.quj, null);
-              AppMethodBeat.o(70438);
-              return;
-            }
-            Log.w("MicroMsg.WalletPushNotifyManager", "hy: new balance comes but last msg is not timeout and balance version is smaller than before");
+          String str = (String)paramCursor.next();
+          this.VJU = (this.VJU + str + "\n");
+          continue;
+          if (this.VJO != null) {
+            break;
           }
-          AppMethodBeat.o(70438);
         }
-      };
-      g.a(new String[] { "wallet_balance_version", "wallet_balance_last_update_time", "wallet_balance" }, paramMap);
-      AppMethodBeat.o(70441);
-      return true;
-    }
-    if (paramInt == 43)
-    {
-      paramMap = x.aU(paramMap);
-      if (paramMap != null) {
-        paramArrayOfObject[0] = paramMap;
       }
-      x.bgQ(paramString);
-      AppMethodBeat.o(70441);
-      return false;
     }
-    AppMethodBeat.o(70441);
-    return false;
-  }
-  
-  public static boolean a(l paraml)
-  {
-    AppMethodBeat.i(70442);
-    if (aeb == null) {
-      aeb = new ArrayList();
-    }
-    aeb.add(paraml);
-    AppMethodBeat.o(70442);
-    return true;
-  }
-  
-  public static boolean b(l paraml)
-  {
-    AppMethodBeat.i(70443);
-    if (aeb == null)
+    catch (Exception paramCursor)
     {
-      Log.e("MicroMsg.WalletPushNotifyManager", "hy: callback pool is null. release failed");
-      AppMethodBeat.o(70443);
-      return false;
+      Log.e("WalletRegionGreyItem", "parser PayIBGGetOverseaWalletRsp error");
     }
-    aeb.remove(paraml);
-    AppMethodBeat.o(70443);
-    return true;
+    for (;;)
+    {
+      this.VJO = new gec();
+      if (this.VJP == null) {
+        this.VJP = new gej();
+      }
+      AppMethodBeat.o(70470);
+      return;
+      if (this.VJN.abhB != null)
+      {
+        this.VJR = w.a(this.VJN.abhB.acbY);
+        this.VJS = w.a(this.VJN.abhB.acbZ);
+      }
+      if (this.VJN.abhC != null)
+      {
+        this.VJT = w.a(this.VJN.abhC.acbW);
+        this.Kuq = w.a(this.VJN.abhC.acbX);
+      }
+      Log.v("WalletRegionGreyItem", "noticeContent %s", new Object[] { this.VJT });
+    }
   }
   
-  public static ai gJA()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    AppMethodBeat.i(70440);
-    if (OTv == null) {
-      OTv = new ai();
-    }
-    ai localai = OTv;
-    AppMethodBeat.o(70440);
-    return localai;
+    return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.ai
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 final class c$a
 {
   Bitmap bitmap;
-  String fNU;
+  String hTM;
   
   c$a(c paramc) {}
 }

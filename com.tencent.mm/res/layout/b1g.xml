@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/emr" android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<merge android:layout_width="wrap_content" android:layout_height="@dimen/aco"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/itw" android:background="@drawable/a_5" android:layout_width="@dimen/adf" android:layout_height="@dimen/ade" android:layout_toRightOf="@id/ayp" />
+    <RelativeLayout android:id="@id/ayp" android:background="@drawable/a_4" android:layout_width="wrap_content" android:layout_height="@dimen/aco" />
+</merge>

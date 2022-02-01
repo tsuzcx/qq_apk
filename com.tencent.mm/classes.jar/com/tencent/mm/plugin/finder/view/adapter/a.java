@@ -3,66 +3,65 @@ package com.tencent.mm.plugin.finder.view.adapter;
 import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.Fragment.SavedState;
-import androidx.fragment.app.e;
-import androidx.fragment.app.i;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.r;
 import androidx.viewpager.widget.ViewPager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.ui.fragment.FinderHomeTabFragment;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/adapter/DynamicPagerAdapter;", "FragmentType", "Lcom/tencent/mm/plugin/finder/view/adapter/StatePagerAdapterCp;", "viewPager", "Landroidx/viewpager/widget/ViewPager;", "manager", "Landroidx/fragment/app/FragmentManager;", "pageFragments", "", "(Landroidx/viewpager/widget/ViewPager;Landroidx/fragment/app/FragmentManager;Ljava/util/List;)V", "action", "Lcom/tencent/mm/plugin/finder/view/adapter/DynamicPagerAdapter$ChangeAction;", "isUpdating", "", "getManager", "()Landroidx/fragment/app/FragmentManager;", "pendingAction", "pendingActionRunnable", "Ljava/lang/Runnable;", "pendingFragment", "addPendingActon", "", "fragment", "(Lcom/tencent/mm/plugin/finder/view/adapter/DynamicPagerAdapter$ChangeAction;Ljava/lang/Object;)V", "checkPendingAction", "finishUpdate", "container", "Landroid/view/ViewGroup;", "getCount", "", "getItem", "Landroidx/fragment/app/Fragment;", "position", "getItemPosition", "object", "", "handleNextPendingAction", "instantiateItem", "instantiateItemInner", "notifyAddItem", "(ILjava/lang/Object;)V", "notifyDataSetChanged", "notifyItemChange", "notifyRemoveItem", "onDestroy", "removePendingActions", "setPrimaryItem", "startUpdate", "ChangeAction", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/adapter/DynamicPagerAdapter;", "FragmentType", "Lcom/tencent/mm/plugin/finder/view/adapter/StatePagerAdapterCp;", "viewPager", "Landroidx/viewpager/widget/ViewPager;", "manager", "Landroidx/fragment/app/FragmentManager;", "pageFragments", "", "(Landroidx/viewpager/widget/ViewPager;Landroidx/fragment/app/FragmentManager;Ljava/util/List;)V", "action", "Lcom/tencent/mm/plugin/finder/view/adapter/DynamicPagerAdapter$ChangeAction;", "isUpdating", "", "getManager", "()Landroidx/fragment/app/FragmentManager;", "pendingAction", "pendingActionRunnable", "Ljava/lang/Runnable;", "pendingFragment", "addPendingActon", "", "fragment", "(Lcom/tencent/mm/plugin/finder/view/adapter/DynamicPagerAdapter$ChangeAction;Ljava/lang/Object;)V", "checkPendingAction", "finishUpdate", "container", "Landroid/view/ViewGroup;", "getCount", "", "getItem", "Landroidx/fragment/app/Fragment;", "position", "getItemPosition", "object", "", "handleNextPendingAction", "instantiateItem", "instantiateItemInner", "notifyAddItem", "(ILjava/lang/Object;)V", "notifyDataSetChanged", "notifyItemChange", "notifyRemoveItem", "onDestroy", "removePendingActions", "setPrimaryItem", "startUpdate", "ChangeAction", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a<FragmentType>
   extends d
 {
-  public static final b Bdk;
-  private a Bde;
-  public List<a> Bdf;
-  public List<FragmentType> Bdg;
-  public Runnable Bdh;
-  private final e Bdi;
-  private final List<FragmentType> Bdj;
-  public final ViewPager bFl;
-  private boolean jJQ;
+  public static final a.b GFR;
+  private final FragmentManager GFS;
+  private final List<FragmentType> GFT;
+  private a GFU;
+  public List<a> GFV;
+  public List<FragmentType> GFW;
+  public Runnable GFX;
+  public final ViewPager dyl;
+  private boolean mjj;
   
   static
   {
-    AppMethodBeat.i(288107);
-    Bdk = new b((byte)0);
-    AppMethodBeat.o(288107);
+    AppMethodBeat.i(345463);
+    GFR = new a.b((byte)0);
+    AppMethodBeat.o(345463);
   }
   
-  public a(ViewPager paramViewPager, e parame, List<FragmentType> paramList)
+  public a(ViewPager paramViewPager, FragmentManager paramFragmentManager, List<FragmentType> paramList)
   {
-    super(parame);
-    AppMethodBeat.i(288106);
-    this.bFl = paramViewPager;
-    this.Bdi = parame;
-    this.Bdj = paramList;
-    this.Bdf = ((List)new ArrayList());
-    this.Bdg = ((List)new ArrayList());
-    AppMethodBeat.o(288106);
+    super(paramFragmentManager);
+    AppMethodBeat.i(345457);
+    this.dyl = paramViewPager;
+    this.GFS = paramFragmentManager;
+    this.GFT = paramList;
+    this.GFV = ((List)new ArrayList());
+    this.GFW = ((List)new ArrayList());
+    AppMethodBeat.o(345457);
   }
   
   public final void a(a parama, FragmentType paramFragmentType)
   {
-    AppMethodBeat.i(288105);
-    p.k(parama, "action");
-    this.Bde = parama;
-    Log.i("Finder.DynamicAdapter", "notifyItemChange isAdd:" + parama.oxR + " position " + parama.Bdl);
-    if (parama.oxR)
+    AppMethodBeat.i(345525);
+    s.u(parama, "action");
+    this.GFU = parama;
+    Log.i("Finder.DynamicAdapter", "notifyItemChange isAdd:" + parama.rBq + " position " + parama.GFY);
+    if (parama.rBq)
     {
-      int j = parama.Bdl;
+      int j = parama.GFY;
       if (paramFragmentType != null)
       {
-        if ((j >= 0) && (j <= this.Bdj.size()))
+        if ((j >= 0) && (j <= this.GFT.size()))
         {
-          parama = this.Bdj;
-          if (!this.Bdj.contains(paramFragmentType))
+          parama = this.GFT;
+          if (!this.GFT.contains(paramFragmentType))
           {
             i = 1;
             if (i == 0) {
@@ -75,7 +74,7 @@ public final class a<FragmentType>
               parama.add(j, paramFragmentType);
             }
             notifyDataSetChanged();
-            AppMethodBeat.o(288105);
+            AppMethodBeat.o(345525);
             return;
             i = 0;
             break;
@@ -85,73 +84,73 @@ public final class a<FragmentType>
         }
         Log.e("Finder.DynamicAdapter", "notifyAddItem index out of range");
       }
-      AppMethodBeat.o(288105);
+      AppMethodBeat.o(345525);
       return;
     }
-    int i = parama.Bdl;
-    if ((i >= 0) && (i < this.Bdj.size()))
+    int i = parama.GFY;
+    if ((i >= 0) && (i < this.GFT.size()))
     {
-      this.Bdj.remove(i);
+      this.GFT.remove(i);
       notifyDataSetChanged();
-      AppMethodBeat.o(288105);
+      AppMethodBeat.o(345525);
       return;
     }
     Log.e("Finder.DynamicAdapter", "notifyRemoveItem index out of range");
-    AppMethodBeat.o(288105);
+    AppMethodBeat.o(345525);
   }
   
   public final void finishUpdate(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(288102);
-    p.k(paramViewGroup, "container");
+    AppMethodBeat.i(345504);
+    s.u(paramViewGroup, "container");
     super.finishUpdate(paramViewGroup);
     Log.i("Finder.DynamicAdapter", "finishUpdate");
-    this.jJQ = false;
-    AppMethodBeat.o(288102);
+    this.mjj = false;
+    AppMethodBeat.o(345504);
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(288098);
-    int i = this.Bdj.size();
-    AppMethodBeat.o(288098);
+    AppMethodBeat.i(345473);
+    int i = this.GFT.size();
+    AppMethodBeat.o(345473);
     return i;
   }
   
   public final Fragment getItem(int paramInt)
   {
-    AppMethodBeat.i(288097);
-    Object localObject = this.Bdj.get(paramInt);
+    AppMethodBeat.i(345470);
+    Object localObject = this.GFT.get(paramInt);
     if (localObject == null)
     {
-      localObject = new t("null cannot be cast to non-null type androidx.fragment.app.Fragment");
-      AppMethodBeat.o(288097);
+      localObject = new NullPointerException("null cannot be cast to non-null type androidx.fragment.app.Fragment");
+      AppMethodBeat.o(345470);
       throw ((Throwable)localObject);
     }
     localObject = (Fragment)localObject;
     if ((localObject instanceof FinderHomeTabFragment)) {
-      Log.i("Finder.DynamicAdapter", "getItem " + paramInt + " fragment:" + ((FinderHomeTabFragment)localObject).title + " tabType:" + ((FinderHomeTabFragment)localObject).fEH);
+      Log.i("Finder.DynamicAdapter", "getItem " + paramInt + " fragment:" + ((FinderHomeTabFragment)localObject).title + " tabType:" + ((FinderHomeTabFragment)localObject).hJx);
     }
-    AppMethodBeat.o(288097);
+    AppMethodBeat.o(345470);
     return localObject;
   }
   
   public final int getItemPosition(Object paramObject)
   {
-    AppMethodBeat.i(288101);
-    p.k(paramObject, "object");
+    AppMethodBeat.i(345496);
+    s.u(paramObject, "object");
     int j = super.getItemPosition(paramObject);
-    Log.i("Finder.DynamicAdapter", "getItemPosition : position ".concat(String.valueOf(j)));
+    Log.i("Finder.DynamicAdapter", s.X("getItemPosition : position ", Integer.valueOf(j)));
     int i = j;
     a locala;
     if ((paramObject instanceof Fragment))
     {
-      locala = this.Bde;
+      locala = this.GFU;
       i = j;
       if (locala != null)
       {
-        i = this.Bdj.indexOf(paramObject);
-        Log.i("Finder.DynamicAdapter", "getItemPosition : newPosition " + i + " changePosition :" + locala.Bdl);
+        i = this.GFT.indexOf(paramObject);
+        Log.i("Finder.DynamicAdapter", "getItemPosition : newPosition " + i + " changePosition :" + locala.GFY);
         if (i != -1) {
           break label115;
         }
@@ -160,12 +159,12 @@ public final class a<FragmentType>
     }
     for (;;)
     {
-      AppMethodBeat.o(288101);
+      AppMethodBeat.o(345496);
       return i;
       label115:
-      if (i >= locala.Bdl)
+      if (i >= locala.GFY)
       {
-        Log.i("Finder.DynamicAdapter", "use new ".concat(String.valueOf(i)));
+        Log.i("Finder.DynamicAdapter", s.X("use new ", Integer.valueOf(i)));
       }
       else
       {
@@ -177,28 +176,28 @@ public final class a<FragmentType>
   
   public final Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    AppMethodBeat.i(288099);
-    p.k(paramViewGroup, "container");
-    Log.i("Finder.DynamicAdapter", "instantiateItem " + paramInt + " action:" + this.Bde);
-    Object localObject1 = this.Bde;
-    if ((localObject1 != null) && (((a)localObject1).oxR))
+    AppMethodBeat.i(345482);
+    s.u(paramViewGroup, "container");
+    Log.i("Finder.DynamicAdapter", "instantiateItem " + paramInt + " action:" + this.GFU);
+    Object localObject1 = this.GFU;
+    if ((localObject1 != null) && (((a)localObject1).rBq))
     {
-      if (paramInt == ejx().size())
+      if (paramInt == flL().size())
       {
         paramViewGroup = super.instantiateItem(paramViewGroup, paramInt);
-        AppMethodBeat.o(288099);
+        AppMethodBeat.o(345482);
         return paramViewGroup;
       }
-      Object localObject2 = ejx();
+      Object localObject2 = flL();
       if (paramInt < ((ArrayList)localObject2).size())
       {
-        if (ejv() == null) {
-          b(ejy().beginTransaction());
+        if (flJ() == null) {
+          b(flI().beginTransaction());
         }
         localObject1 = getItem(paramInt);
-        if (ejw().size() > paramInt)
+        if (flK().size() > paramInt)
         {
-          Fragment.SavedState localSavedState = (Fragment.SavedState)ejw().get(paramInt);
+          Fragment.SavedState localSavedState = (Fragment.SavedState)flK().get(paramInt);
           if (localSavedState != null) {
             ((Fragment)localObject1).setInitialSavedState(localSavedState);
           }
@@ -206,100 +205,85 @@ public final class a<FragmentType>
         ((Fragment)localObject1).setMenuVisibility(false);
         ((Fragment)localObject1).setUserVisibleHint(false);
         ((ArrayList)localObject2).add(paramInt, localObject1);
-        localObject2 = new StringBuilder("instantiateItemInner: title:");
-        if (localObject1 == null)
-        {
-          paramViewGroup = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.ui.fragment.FinderHomeTabFragment");
-          AppMethodBeat.o(288099);
-          throw paramViewGroup;
-        }
-        Log.i("Finder.DynamicAdapter", ((FinderHomeTabFragment)localObject1).title + " tabType:" + ((FinderHomeTabFragment)localObject1).fEH);
-        localObject2 = ejv();
+        Log.i("Finder.DynamicAdapter", "instantiateItemInner: title:" + ((FinderHomeTabFragment)localObject1).title + " tabType:" + ((FinderHomeTabFragment)localObject1).hJx);
+        localObject2 = flJ();
         if (localObject2 != null) {
-          ((i)localObject2).a(paramViewGroup.getId(), (Fragment)localObject1);
+          ((r)localObject2).a(paramViewGroup.getId(), (Fragment)localObject1);
         }
       }
-      for (;;)
+      while (localObject1 == null)
       {
-        localObject2 = localObject1;
-        if (localObject1 == null) {
-          localObject2 = super.instantiateItem(paramViewGroup, paramInt);
-        }
-        AppMethodBeat.o(288099);
-        return localObject2;
+        paramViewGroup = super.instantiateItem(paramViewGroup, paramInt);
+        AppMethodBeat.o(345482);
+        return paramViewGroup;
         localObject1 = null;
       }
+      AppMethodBeat.o(345482);
+      return localObject1;
     }
     paramViewGroup = super.instantiateItem(paramViewGroup, paramInt);
-    AppMethodBeat.o(288099);
+    AppMethodBeat.o(345482);
     return paramViewGroup;
   }
   
   public final void notifyDataSetChanged()
   {
-    AppMethodBeat.i(288104);
-    this.jJQ = true;
+    AppMethodBeat.i(345518);
+    this.mjj = true;
     Log.i("Finder.DynamicAdapter", "notifyDataSetChanged");
     super.notifyDataSetChanged();
-    AppMethodBeat.o(288104);
+    AppMethodBeat.o(345518);
   }
   
   public final void setPrimaryItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    AppMethodBeat.i(288100);
-    p.k(paramViewGroup, "container");
-    p.k(paramObject, "object");
+    AppMethodBeat.i(345488);
+    s.u(paramViewGroup, "container");
+    s.u(paramObject, "object");
     StringBuilder localStringBuilder = new StringBuilder("setPrimaryItem ").append(paramInt).append("  changePosition ");
-    Object localObject = this.Bde;
-    if (localObject != null) {}
-    for (localObject = Integer.valueOf(((a)localObject).Bdl);; localObject = null)
+    Object localObject = this.GFU;
+    if (localObject == null) {}
+    for (localObject = null;; localObject = Integer.valueOf(((a)localObject).GFY))
     {
-      Log.i("Finder.DynamicAdapter", localObject + ", obj:" + paramObject + ' ' + "title:" + ((FinderHomeTabFragment)paramObject).title + " tabType:" + ((FinderHomeTabFragment)paramObject).fEH);
+      Log.i("Finder.DynamicAdapter", localObject + ", obj:" + paramObject + " title:" + ((FinderHomeTabFragment)paramObject).title + " tabType:" + ((FinderHomeTabFragment)paramObject).hJx);
       super.setPrimaryItem(paramViewGroup, paramInt, paramObject);
-      paramViewGroup = this.Bde;
-      if (paramViewGroup == null) {
-        break;
-      }
-      if (paramViewGroup.Bdl == paramInt)
+      paramViewGroup = this.GFU;
+      if ((paramViewGroup != null) && (paramViewGroup.GFY == paramInt))
       {
         Log.i("Finder.DynamicAdapter", "setPrimaryItem action null");
-        this.Bde = null;
+        this.GFU = null;
       }
-      AppMethodBeat.o(288100);
+      AppMethodBeat.o(345488);
       return;
     }
-    AppMethodBeat.o(288100);
   }
   
   public final void startUpdate(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(288103);
-    p.k(paramViewGroup, "container");
-    this.jJQ = true;
+    AppMethodBeat.i(345512);
+    s.u(paramViewGroup, "container");
+    this.mjj = true;
     super.startUpdate(paramViewGroup);
     Log.i("Finder.DynamicAdapter", "startUpdate");
-    AppMethodBeat.o(288103);
+    AppMethodBeat.o(345512);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/adapter/DynamicPagerAdapter$ChangeAction;", "", "isAdd", "", "changePosition", "", "(ZI)V", "getChangePosition", "()I", "()Z", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/adapter/DynamicPagerAdapter$ChangeAction;", "", "isAdd", "", "changePosition", "", "(ZI)V", "getChangePosition", "()I", "()Z", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
-    final int Bdl;
-    final boolean oxR;
+    final int GFY;
+    final boolean rBq;
     
     public a(boolean paramBoolean, int paramInt)
     {
-      this.oxR = paramBoolean;
-      this.Bdl = paramInt;
+      this.rBq = paramBoolean;
+      this.GFY = paramInt;
     }
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/adapter/DynamicPagerAdapter$Companion;", "", "()V", "IS_ENABLE_PENDING", "", "PENDING_LIMIT", "", "PENDING_TIME_LIMIT", "TAG", "", "plugin-finder_release"})
-  public static final class b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.adapter.a
  * JD-Core Version:    0.7.0.1
  */

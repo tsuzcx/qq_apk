@@ -10,12 +10,7 @@ import java.util.HashMap;
 public final class d
   implements a, com.tencent.mm.kernel.api.bucket.d, com.tencent.mm.plugin.downloader_app.api.d
 {
-  private c ujr;
-  
-  public final c cQy()
-  {
-    return this.ujr;
-  }
+  private c xpu;
   
   public final HashMap<Integer, h.b> collectDatabaseFactory()
   {
@@ -32,12 +27,17 @@ public final class d
     return localHashMap;
   }
   
+  public final c duR()
+  {
+    return this.xpu;
+  }
+  
   public final void onDataBaseClosed(h paramh1, h paramh2) {}
   
   public final void onDataBaseOpened(h paramh1, h paramh2)
   {
     AppMethodBeat.i(8781);
-    this.ujr = new c(paramh1);
+    this.xpu = new c(paramh1);
     AppMethodBeat.o(8781);
   }
 }

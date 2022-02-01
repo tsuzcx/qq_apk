@@ -1,38 +1,47 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlinx.coroutines.d.b;
+import kotlinx.coroutines.internal.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/DisposeOnCompletion;", "Lkotlinx/coroutines/JobNode;", "Lkotlinx/coroutines/Job;", "job", "handle", "Lkotlinx/coroutines/DisposableHandle;", "(Lkotlinx/coroutines/Job;Lkotlinx/coroutines/DisposableHandle;)V", "invoke", "", "cause", "", "toString", "", "kotlinx-coroutines-core"})
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/Dispatchers;", "", "()V", "Default", "Lkotlinx/coroutines/CoroutineDispatcher;", "getDefault$annotations", "getDefault", "()Lkotlinx/coroutines/CoroutineDispatcher;", "IO", "getIO$annotations", "getIO", "Main", "Lkotlinx/coroutines/MainCoroutineDispatcher;", "getMain$annotations", "getMain", "()Lkotlinx/coroutines/MainCoroutineDispatcher;", "Unconfined", "getUnconfined$annotations", "getUnconfined", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
 public final class bg
-  extends cd<by>
 {
-  private final be abwb;
+  public static final bg ajvV;
+  public static final al ajvW;
+  private static final al ajvX;
+  public static final al ajvY;
   
-  public bg(by paramby, be parambe)
+  static
   {
-    super(paramby);
-    this.abwb = parambe;
+    AppMethodBeat.i(118048);
+    ajvV = new bg();
+    ajvW = ak.kBX();
+    ajvX = (al)dd.ajwQ;
+    b localb = b.ajBA;
+    ajvY = b.kCi();
+    AppMethodBeat.o(118048);
   }
   
-  public final String toString()
+  public static final al kCg()
   {
-    AppMethodBeat.i(204801);
-    String str = "DisposeOnCompletion[" + this.abwb + ']';
-    AppMethodBeat.o(204801);
-    return str;
+    return ajvW;
   }
   
-  public final void y(Throwable paramThrowable)
+  public static final cm kCh()
   {
-    AppMethodBeat.i(204799);
-    this.abwb.dispose();
-    AppMethodBeat.o(204799);
+    return s.ajAJ;
+  }
+  
+  public static final al kCi()
+  {
+    return ajvY;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.bg
  * JD-Core Version:    0.7.0.1
  */

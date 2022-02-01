@@ -16,15 +16,15 @@ public class MHardwareAccelerateDrawableView
   extends View
   implements a
 {
-  private final b nUR;
-  private final Set<View.OnAttachStateChangeListener> nUS;
+  private final b qUB;
+  private final Set<View.OnAttachStateChangeListener> qUC;
   
   public MHardwareAccelerateDrawableView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(145444);
-    this.nUR = new b(this);
-    this.nUS = new LinkedHashSet();
+    this.qUB = new b(this);
+    this.qUC = new LinkedHashSet();
     setLayerType(2, null);
     AppMethodBeat.o(145444);
   }
@@ -33,8 +33,8 @@ public class MHardwareAccelerateDrawableView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(145445);
-    this.nUR = new b(this);
-    this.nUS = new LinkedHashSet();
+    this.qUB = new b(this);
+    this.qUC = new LinkedHashSet();
     setLayerType(2, null);
     AppMethodBeat.o(145445);
   }
@@ -43,42 +43,42 @@ public class MHardwareAccelerateDrawableView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(145446);
-    this.nUR = new b(this);
-    this.nUS = new LinkedHashSet();
+    this.qUB = new b(this);
+    this.qUC = new LinkedHashSet();
     setLayerType(2, null);
     AppMethodBeat.o(145446);
-  }
-  
-  public final void V(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(145451);
-    this.nUR.V(paramRunnable);
-    AppMethodBeat.o(145451);
   }
   
   public final void a(DrawCanvasArg paramDrawCanvasArg, a.a parama)
   {
     AppMethodBeat.i(145457);
-    this.nUR.a(paramDrawCanvasArg, parama);
+    this.qUB.a(paramDrawCanvasArg, parama);
     AppMethodBeat.o(145457);
   }
   
   public final void a(JSONArray paramJSONArray, a.a parama)
   {
     AppMethodBeat.i(145455);
-    this.nUR.a(paramJSONArray, parama);
+    this.qUB.a(paramJSONArray, parama);
     AppMethodBeat.o(145455);
+  }
+  
+  public final void ab(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(145451);
+    this.qUB.ab(paramRunnable);
+    AppMethodBeat.o(145451);
   }
   
   public void addOnAttachStateChangeListener(View.OnAttachStateChangeListener paramOnAttachStateChangeListener)
   {
     AppMethodBeat.i(145460);
-    if (this.nUS.contains(paramOnAttachStateChangeListener))
+    if (this.qUC.contains(paramOnAttachStateChangeListener))
     {
       AppMethodBeat.o(145460);
       return;
     }
-    this.nUS.add(paramOnAttachStateChangeListener);
+    this.qUC.add(paramOnAttachStateChangeListener);
     super.addOnAttachStateChangeListener(paramOnAttachStateChangeListener);
     AppMethodBeat.o(145460);
   }
@@ -86,42 +86,42 @@ public class MHardwareAccelerateDrawableView
   public final void b(DrawCanvasArg paramDrawCanvasArg, a.a parama)
   {
     AppMethodBeat.i(145458);
-    this.nUR.b(paramDrawCanvasArg, parama);
+    this.qUB.b(paramDrawCanvasArg, parama);
     AppMethodBeat.o(145458);
   }
   
   public final void b(JSONArray paramJSONArray, a.a parama)
   {
     AppMethodBeat.i(145456);
-    this.nUR.b(paramJSONArray, parama);
+    this.qUB.b(paramJSONArray, parama);
     AppMethodBeat.o(145456);
   }
   
-  public final void bKv()
+  public final void cjV()
   {
     AppMethodBeat.i(145450);
     postInvalidate();
     AppMethodBeat.o(145450);
   }
   
-  public final void bKw()
+  public final void cjW()
   {
     AppMethodBeat.i(145459);
-    this.nUR.bKw();
+    this.qUB.cjW();
     AppMethodBeat.o(145459);
   }
   
-  public final void bKx()
+  public final void cjX()
   {
     AppMethodBeat.i(145466);
-    this.nUR.bKx();
+    this.qUB.cjX();
     AppMethodBeat.o(145466);
   }
   
   public d getDrawContext()
   {
     AppMethodBeat.i(145452);
-    d locald = this.nUR.getDrawContext();
+    d locald = this.qUB.getDrawContext();
     AppMethodBeat.o(145452);
     return locald;
   }
@@ -129,7 +129,7 @@ public class MHardwareAccelerateDrawableView
   public String getSessionId()
   {
     AppMethodBeat.i(145463);
-    String str = this.nUR.getSessionId();
+    String str = this.qUB.getSessionId();
     AppMethodBeat.o(145463);
     return str;
   }
@@ -137,42 +137,42 @@ public class MHardwareAccelerateDrawableView
   public String getTraceId()
   {
     AppMethodBeat.i(145449);
-    String str = this.nUR.getTraceId();
+    String str = this.qUB.getTraceId();
     AppMethodBeat.o(145449);
     return str;
   }
   
   public final boolean isPaused()
   {
-    return this.nUR.mPause;
+    return this.qUB.mPause;
+  }
+  
+  public final boolean l(Canvas paramCanvas)
+  {
+    AppMethodBeat.i(145454);
+    boolean bool = this.qUB.l(paramCanvas);
+    AppMethodBeat.o(145454);
+    return bool;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(145447);
-    q(paramCanvas);
+    l(paramCanvas);
     AppMethodBeat.o(145447);
   }
   
   public final void onResume()
   {
     AppMethodBeat.i(145462);
-    this.nUR.onResume();
+    this.qUB.onResume();
     AppMethodBeat.o(145462);
-  }
-  
-  public final boolean q(Canvas paramCanvas)
-  {
-    AppMethodBeat.i(145454);
-    boolean bool = this.nUR.q(paramCanvas);
-    AppMethodBeat.o(145454);
-    return bool;
   }
   
   public void removeOnAttachStateChangeListener(View.OnAttachStateChangeListener paramOnAttachStateChangeListener)
   {
     AppMethodBeat.i(145461);
-    this.nUS.remove(paramOnAttachStateChangeListener);
+    this.qUC.remove(paramOnAttachStateChangeListener);
     super.removeOnAttachStateChangeListener(paramOnAttachStateChangeListener);
     AppMethodBeat.o(145461);
   }
@@ -180,34 +180,34 @@ public class MHardwareAccelerateDrawableView
   public void setDrawActionReportable(com.tencent.mm.plugin.appbrand.canvas.c.a parama)
   {
     AppMethodBeat.i(145453);
-    this.nUR.setDrawActionReportable(parama);
+    this.qUB.setDrawActionReportable(parama);
     AppMethodBeat.o(145453);
   }
   
   public void setSessionId(String paramString)
   {
     AppMethodBeat.i(145464);
-    this.nUR.setSessionId(paramString);
+    this.qUB.setSessionId(paramString);
     AppMethodBeat.o(145464);
   }
   
   public void setStartTime(long paramLong)
   {
     AppMethodBeat.i(145465);
-    this.nUR.setStartTime(paramLong);
+    this.qUB.setStartTime(paramLong);
     AppMethodBeat.o(145465);
   }
   
   public void setTraceId(String paramString)
   {
     AppMethodBeat.i(145448);
-    this.nUR.setTraceId(paramString);
+    this.qUB.setTraceId(paramString);
     AppMethodBeat.o(145448);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.widget.MHardwareAccelerateDrawableView
  * JD-Core Version:    0.7.0.1
  */

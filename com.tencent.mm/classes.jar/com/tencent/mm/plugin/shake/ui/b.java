@@ -11,118 +11,118 @@ import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.pluginsdk.ui.span.p;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ca.d;
-import com.tencent.mm.storage.cm;
-import com.tencent.mm.storage.cn;
+import com.tencent.mm.storage.cc.f;
+import com.tencent.mm.storage.cp;
+import com.tencent.mm.storage.cq;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMSlideDelView;
 import com.tencent.mm.ui.base.MMSlideDelView.c;
 import com.tencent.mm.ui.base.MMSlideDelView.d;
 import com.tencent.mm.ui.base.MMSlideDelView.f;
 import com.tencent.mm.ui.base.MMSlideDelView.g;
-import com.tencent.mm.ui.v;
+import com.tencent.mm.ui.x;
 
 final class b
-  extends v<cm>
+  extends x<cp>
 {
-  protected MMSlideDelView.f GtD;
-  private cn JoM;
-  private MMActivity iXq;
+  protected MMSlideDelView.f MpD;
+  private cq PBJ;
   private int limit;
-  protected MMSlideDelView.g snh;
-  protected MMSlideDelView.c sni;
-  protected MMSlideDelView.d snk;
+  private MMActivity lzt;
+  protected MMSlideDelView.g vzf;
+  protected MMSlideDelView.c vzg;
+  protected MMSlideDelView.d vzi;
   
-  public b(Context paramContext, cn paramcn, int paramInt)
+  public b(Context paramContext, cq paramcq, int paramInt)
   {
-    super(paramContext, new cm());
+    super(paramContext, new cp());
     AppMethodBeat.i(28371);
     this.limit = -1;
-    this.snk = MMSlideDelView.getItemStatusCallBack();
-    this.iXq = ((MMActivity)paramContext);
+    this.vzi = MMSlideDelView.getItemStatusCallBack();
+    this.lzt = ((MMActivity)paramContext);
     this.limit = paramInt;
-    this.JoM = paramcn;
+    this.PBJ = paramcq;
     AppMethodBeat.o(28371);
   }
   
   public final void a(MMSlideDelView.f paramf)
   {
-    this.GtD = paramf;
+    this.MpD = paramf;
   }
   
-  public final void aeA(int paramInt)
-  {
-    AppMethodBeat.i(28372);
-    eKd();
-    this.limit = paramInt;
-    atr();
-    AppMethodBeat.o(28372);
-  }
-  
-  public final void atr()
+  public final void aNy()
   {
     AppMethodBeat.i(28374);
-    v(this.JoM.Vo(this.limit));
+    w(this.PBJ.Zj(this.limit));
     super.notifyDataSetChanged();
     AppMethodBeat.o(28374);
   }
   
-  public final void ats()
+  public final void aNz()
   {
     AppMethodBeat.i(28373);
-    atr();
+    aNy();
     AppMethodBeat.o(28373);
+  }
+  
+  public final void ajh(int paramInt)
+  {
+    AppMethodBeat.i(28372);
+    fSd();
+    this.limit = paramInt;
+    aNy();
+    AppMethodBeat.o(28372);
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(28375);
-    cm localcm = (cm)getItem(paramInt);
+    cp localcp = (cp)getItem(paramInt);
     Object localObject;
     if (paramView == null)
     {
-      localObject = (MMSlideDelView)View.inflate(this.iXq, R.i.base_slide_del_view, null);
+      localObject = (MMSlideDelView)View.inflate(this.lzt, R.i.base_slide_del_view, null);
       paramView = new a();
-      paramViewGroup = View.inflate(this.iXq, R.i.say_hi_item, null);
-      paramView.jiu = ((ImageView)paramViewGroup.findViewById(R.h.contactitem_avatar_iv));
-      paramView.mUr = ((TextView)paramViewGroup.findViewById(R.h.display_name));
-      paramView.ETn = ((TextView)paramViewGroup.findViewById(R.h.sayhi_content));
-      paramView.snp = ((MMSlideDelView)localObject).findViewById(R.h.slide_del_del_view);
-      paramView.snq = ((TextView)((MMSlideDelView)localObject).findViewById(R.h.slide_del_view_del_word));
+      paramViewGroup = View.inflate(this.lzt, R.i.say_hi_item, null);
+      paramView.lKK = ((ImageView)paramViewGroup.findViewById(R.h.contactitem_avatar_iv));
+      paramView.pQZ = ((TextView)paramViewGroup.findViewById(R.h.display_name));
+      paramView.KNR = ((TextView)paramViewGroup.findViewById(R.h.sayhi_content));
+      paramView.vzn = ((MMSlideDelView)localObject).findViewById(R.h.slide_del_del_view);
+      paramView.vzo = ((TextView)((MMSlideDelView)localObject).findViewById(R.h.slide_del_view_del_word));
       ((MMSlideDelView)localObject).setView(paramViewGroup);
-      ((MMSlideDelView)localObject).setPerformItemClickListener(this.snh);
-      ((MMSlideDelView)localObject).setGetViewPositionCallback(this.sni);
-      ((MMSlideDelView)localObject).setItemStatusCallBack(this.snk);
+      ((MMSlideDelView)localObject).setPerformItemClickListener(this.vzf);
+      ((MMSlideDelView)localObject).setGetViewPositionCallback(this.vzg);
+      ((MMSlideDelView)localObject).setItemStatusCallBack(this.vzi);
       ((MMSlideDelView)localObject).setEnable(false);
       ((View)localObject).setTag(paramView);
       paramViewGroup = paramView;
     }
     for (;;)
     {
-      paramViewGroup.snp.setTag(Long.valueOf(localcm.field_svrid));
-      paramViewGroup.snp.setOnClickListener(new View.OnClickListener()
+      paramViewGroup.vzn.setTag(Long.valueOf(localcp.field_svrid));
+      paramViewGroup.vzn.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(28370);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          a.c("com/tencent/mm/plugin/shake/ui/SayHiAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          a.c("com/tencent/mm/plugin/shake/ui/SayHiAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           Log.v("MicroMsg.SayHiAdapter", "on delView clicked");
-          b.this.snk.eKn();
-          if (b.this.GtD != null) {
-            b.this.GtD.cW(paramAnonymousView.getTag());
+          b.this.vzi.fSn();
+          if (b.this.MpD != null) {
+            b.this.MpD.es(paramAnonymousView.getTag());
           }
           a.a(this, "com/tencent/mm/plugin/shake/ui/SayHiAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(28370);
         }
       });
-      paramView = ca.d.bxc(localcm.field_content);
-      paramViewGroup.mUr.setText(l.b(this.iXq, paramView.getDisplayName(), paramViewGroup.mUr.getTextSize()));
-      paramViewGroup.ETn.setText(localcm.field_sayhicontent);
-      a.b.c(paramViewGroup.jiu, localcm.field_sayhiuser);
+      paramView = cc.f.byv(localcp.field_content);
+      paramViewGroup.pQZ.setText(p.b(this.lzt, paramView.getDisplayName(), paramViewGroup.pQZ.getTextSize()));
+      paramViewGroup.KNR.setText(localcp.field_sayhicontent);
+      a.b.g(paramViewGroup.lKK, localcp.field_sayhiuser);
       AppMethodBeat.o(28375);
       return localObject;
       paramViewGroup = (a)paramView.getTag();
@@ -132,21 +132,21 @@ final class b
   
   public final void setGetViewPositionCallback(MMSlideDelView.c paramc)
   {
-    this.sni = paramc;
+    this.vzg = paramc;
   }
   
   public final void setPerformItemClickListener(MMSlideDelView.g paramg)
   {
-    this.snh = paramg;
+    this.vzf = paramg;
   }
   
   static final class a
   {
-    TextView ETn;
-    ImageView jiu;
-    TextView mUr;
-    View snp;
-    TextView snq;
+    TextView KNR;
+    ImageView lKK;
+    TextView pQZ;
+    View vzn;
+    TextView vzo;
   }
 }
 

@@ -20,11 +20,11 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class GameBlockView
   extends LinearLayout
 {
-  LinearLayout.LayoutParams CTe;
-  k CTf;
-  a CTg;
+  LinearLayout Api;
+  LinearLayout.LayoutParams INu;
+  k INv;
+  a INw;
   LayoutInflater mInflater;
-  LinearLayout wSF;
   
   public GameBlockView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,25 +37,25 @@ public class GameBlockView
     super.onFinishInflate();
     setOrientation(1);
     this.mInflater = ((LayoutInflater)getContext().getSystemService("layout_inflater"));
-    this.CTe = new LinearLayout.LayoutParams(-1, -2);
-    this.wSF = this;
-    this.CTf = new k();
+    this.INu = new LinearLayout.LayoutParams(-1, -2);
+    this.Api = this;
+    this.INv = new k();
     Log.i("MicroMsg.GameBlockView", "initView finished");
     AppMethodBeat.o(41910);
   }
   
   static final class a
   {
-    public ImageView CSU;
-    public TextView CSV;
-    public ViewGroup CTj;
-    public TextView CTk;
-    public GameDownloadView CTl;
+    public TextView INA;
+    public GameDownloadView INB;
+    public ImageView INk;
+    public TextView INl;
+    public ViewGroup INz;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameBlockView
  * JD-Core Version:    0.7.0.1
  */

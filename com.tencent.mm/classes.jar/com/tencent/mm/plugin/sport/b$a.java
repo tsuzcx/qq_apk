@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.sport;
 
 public final class b$a
 {
-  public static final int Red = 2131099821;
+  public static final int Red = 2131099888;
 }
 
 

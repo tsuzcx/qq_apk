@@ -6,49 +6,49 @@ import java.util.List;
 
 public final class b
 {
-  private List<Object> jXw;
+  private List<Object> mxq;
   
   public b()
   {
     AppMethodBeat.i(168726);
-    this.jXw = new ArrayList();
+    this.mxq = new ArrayList();
     AppMethodBeat.o(168726);
   }
   
-  public final void Fs(long paramLong)
-  {
-    AppMethodBeat.i(215288);
-    bn(Long.valueOf(paramLong));
-    AppMethodBeat.o(215288);
-  }
-  
-  public final Object[] aFi()
+  public final Object[] aYj()
   {
     AppMethodBeat.i(168730);
-    Object[] arrayOfObject = this.jXw.toArray();
-    this.jXw.clear();
+    Object[] arrayOfObject = this.mxq.toArray();
+    this.mxq.clear();
     AppMethodBeat.o(168730);
     return arrayOfObject;
   }
   
-  public final void bn(Object paramObject)
+  public final void cH(Object paramObject)
   {
     AppMethodBeat.i(168729);
-    this.jXw.add(paramObject);
+    this.mxq.add(paramObject);
     AppMethodBeat.o(168729);
   }
   
-  public final void eL(boolean paramBoolean)
+  public final void fv(boolean paramBoolean)
   {
     AppMethodBeat.i(168728);
-    bn(Boolean.valueOf(paramBoolean));
+    cH(Boolean.valueOf(paramBoolean));
     AppMethodBeat.o(168728);
   }
   
-  public final void sg(int paramInt)
+  public final void hB(long paramLong)
+  {
+    AppMethodBeat.i(231508);
+    cH(Long.valueOf(paramLong));
+    AppMethodBeat.o(231508);
+  }
+  
+  public final void sc(int paramInt)
   {
     AppMethodBeat.i(168727);
-    bn(Integer.valueOf(paramInt));
+    cH(Integer.valueOf(paramInt));
     AppMethodBeat.o(168727);
   }
 }

@@ -3,38 +3,37 @@ package com.tencent.mm.plugin.topstory;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
-import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.kernel.f.c;
-import com.tencent.mm.model.ck;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.cl;
 import com.tencent.mm.plugin.messenger.foundation.a.v;
-import com.tencent.mm.protocal.protobuf.esv;
+import com.tencent.mm.plugin.topstory.a.b.a;
+import com.tencent.mm.protocal.protobuf.foe;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.thread.ThreadPool;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.ah;
 import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import com.tencent.xweb.WebView.PreInitCallback;
-import com.tencent.xweb.WebView.c;
-import java.util.Map;
+import com.tencent.xweb.WebView.WebViewKind;
 
 public class PluginTopStory
   extends f
   implements com.tencent.mm.kernel.a.b.b, com.tencent.mm.kernel.api.bucket.c, com.tencent.mm.plugin.topstory.a.b
 {
-  private c MVq;
-  private b MVr;
-  private a MVs;
-  private WebView.c MVt = WebView.c.aabm;
+  private d THU;
+  private c THV;
+  private WebView.WebViewKind THW = WebView.WebViewKind.aifI;
   
   private void preInitXWebView()
   {
     AppMethodBeat.i(88412);
-    com.tencent.mm.xwebutil.c.a(this.MVt, new WebView.PreInitCallback()
+    com.tencent.mm.xwebutil.c.a(this.THW, new WebView.PreInitCallback()
     {
-      public final void bEj()
+      public final void aDm()
       {
         AppMethodBeat.i(88408);
         Log.i("MicroMsg.TopStory.PluginTopStory", "onCoreInitFailed");
@@ -48,38 +47,32 @@ public class PluginTopStory
         AppMethodBeat.o(88407);
       }
     });
-    Log.i("MicroMsg.TopStory.PluginTopStory", "Start To Load WebView %s", new Object[] { this.MVt.name() });
+    Log.i("MicroMsg.TopStory.PluginTopStory", "Start To Load WebView %s", new Object[] { this.THW.name() });
     AppMethodBeat.o(88412);
   }
   
-  public void execute(g paramg) {}
+  public void execute(com.tencent.mm.kernel.b.g paramg) {}
   
-  public a getPerformTracer()
+  public c getRedDotMgr()
   {
-    return this.MVs;
+    return this.THV;
   }
   
-  public b getRedDotMgr()
+  public d getReporter()
   {
-    return this.MVr;
+    return this.THU;
   }
   
-  public c getReporter()
+  public WebView.WebViewKind getWebViewType()
   {
-    return this.MVq;
-  }
-  
-  public WebView.c getWebViewType()
-  {
-    return this.MVt;
+    return this.THW;
   }
   
   public void onAccountInitialized(f.c paramc)
   {
     AppMethodBeat.i(88410);
-    this.MVq = new c();
-    this.MVr = new b();
-    this.MVs = new a();
+    this.THU = new d();
+    this.THV = new c();
     ThreadPool.post(new a((byte)0), "TopStory.InitTopStoryCacheFolderTask");
     if ((!MMApplicationContext.isMainProcess()) || (BuildInfo.IS_ARM64)) {
       preInitXWebView();
@@ -91,31 +84,26 @@ public class PluginTopStory
   {
     AppMethodBeat.i(88411);
     Object localObject;
-    if (this.MVq != null)
+    if (this.THU != null)
     {
-      localObject = this.MVq;
-      ((c)localObject).KMg.removeCallbacksAndMessages(null);
-      ((c)localObject).KMg.quit();
-      this.MVq = null;
+      localObject = this.THU;
+      ((d)localObject).RlS.removeCallbacksAndMessages(null);
+      ((d)localObject).RlS.quit();
+      this.THU = null;
     }
-    if (this.MVr != null)
+    if (this.THV != null)
     {
-      localObject = this.MVr;
-      ((v)com.tencent.mm.kernel.h.ag(v.class)).getSysCmdMsgExtension().b("mmsearch_reddot_new", ((b)localObject).MVC);
-      this.MVr = null;
+      localObject = this.THV;
+      ((v)h.az(v.class)).getSysCmdMsgExtension().b("mmsearch_reddot_new", ((c)localObject).TIf);
+      this.THV = null;
     }
-    if (this.MVs != null)
-    {
-      this.MVs.MVv.clear();
-      this.MVs = null;
-    }
-    com.tencent.mm.plugin.topstory.a.b.a.onFinish();
+    a.onFinish();
     AppMethodBeat.o(88411);
   }
   
   public void onVideoListUICreate() {}
   
-  public void onVideoListUIDestroy(esv paramesv) {}
+  public void onVideoListUIDestroy(foe paramfoe) {}
   
   public void onVideoListUIPause() {}
   
@@ -123,14 +111,7 @@ public class PluginTopStory
   
   public boolean openJsAccelerate()
   {
-    AppMethodBeat.i(262120);
-    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vRp, 1) == 1)
-    {
-      AppMethodBeat.o(262120);
-      return true;
-    }
-    AppMethodBeat.o(262120);
-    return false;
+    return true;
   }
   
   public void parallelsDependency() {}
@@ -143,13 +124,13 @@ public class PluginTopStory
     public final void run()
     {
       AppMethodBeat.i(88409);
-      Log.i("MicroMsg.TopStory.PluginTopStory", "Delete sdcard ftsrecommendVideo folder %b", new Object[] { Boolean.valueOf(u.deleteDir(com.tencent.mm.loader.j.b.aSL() + "ftsrecommendVideo/")) });
-      Log.i("MicroMsg.TopStory.PluginTopStory", "Delete sdcard topstory folder %b", new Object[] { Boolean.valueOf(u.deleteDir(com.tencent.mm.loader.j.b.aSL() + "topstory/")) });
-      Log.i("MicroMsg.TopStory.PluginTopStory", "Delete sdcard cache topstory folder %b", new Object[] { Boolean.valueOf(u.deleteDir(MMApplicationContext.getContext().getCacheDir() + "topstory/")) });
-      Object localObject1 = new q(com.tencent.mm.plugin.topstory.a.h.gpL());
-      if (((q)localObject1).ifE())
+      Log.i("MicroMsg.TopStory.PluginTopStory", "Delete sdcard ftsrecommendVideo folder %b", new Object[] { Boolean.valueOf(y.ew(com.tencent.mm.loader.i.b.bmz() + "ftsrecommendVideo/", true)) });
+      Log.i("MicroMsg.TopStory.PluginTopStory", "Delete sdcard topstory folder %b", new Object[] { Boolean.valueOf(y.ew(com.tencent.mm.loader.i.b.bmz() + "topstory/", true)) });
+      Log.i("MicroMsg.TopStory.PluginTopStory", "Delete sdcard cache topstory folder %b", new Object[] { Boolean.valueOf(y.ew(MMApplicationContext.getContext().getCacheDir() + "topstory/", true)) });
+      Object localObject1 = new u(com.tencent.mm.plugin.topstory.a.g.hMH());
+      if (((u)localObject1).jKS())
       {
-        localObject1 = ((q)localObject1).ifJ();
+        localObject1 = ((u)localObject1).jKX();
         if (localObject1 != null)
         {
           int j = localObject1.length;
@@ -157,17 +138,17 @@ public class PluginTopStory
           while (i < j)
           {
             Object localObject2 = localObject1[i];
-            boolean bool = u.deleteDir(localObject2.bOF());
-            Log.i("MicroMsg.TopStory.PluginTopStory", "Delete Cache File %s %b", new Object[] { localObject2.bOF(), Boolean.valueOf(bool) });
+            boolean bool = y.ew(ah.v(localObject2.jKT()), true);
+            Log.i("MicroMsg.TopStory.PluginTopStory", "Delete Cache File %s %b", new Object[] { ah.v(localObject2.jKT()), Boolean.valueOf(bool) });
             i += 1;
           }
         }
-        u.bBD(com.tencent.mm.plugin.topstory.a.h.gpL() + ".nomedia/");
+        y.bDX(com.tencent.mm.plugin.topstory.a.g.hMH() + ".nomedia/");
         AppMethodBeat.o(88409);
         return;
       }
-      u.bBD(com.tencent.mm.plugin.topstory.a.h.gpL());
-      u.bBD(com.tencent.mm.plugin.topstory.a.h.gpL() + ".nomedia/");
+      y.bDX(com.tencent.mm.plugin.topstory.a.g.hMH());
+      y.bDX(com.tencent.mm.plugin.topstory.a.g.hMH() + ".nomedia/");
       Log.i("MicroMsg.TopStory.PluginTopStory", "Create TopStoryCacheFolder");
       AppMethodBeat.o(88409);
     }

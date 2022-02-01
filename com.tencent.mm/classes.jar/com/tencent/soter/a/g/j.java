@@ -1,6 +1,5 @@
 package com.tencent.soter.a.g;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -19,38 +18,38 @@ import java.nio.charset.Charset;
 public class j
   extends d
 {
-  private static final String Zun;
-  private static final String Zuo;
-  private com.tencent.soter.a.f.d ZtD;
-  private String ZtE;
-  private int[] ZtF;
-  private boolean Zup;
-  private String Zuq;
-  private h.a Zur;
+  private static final String ahzg;
+  private static final String ahzh;
+  private com.tencent.soter.a.f.d ahyw;
+  private String ahyx;
+  private int[] ahyy;
+  private boolean ahzi;
+  private String ahzj;
+  private h.a ahzk;
   
   static
   {
     AppMethodBeat.i(112);
-    Zun = "soter_triggered_oom" + com.tencent.soter.core.c.g.getMessageDigest(a.ioO().getBytes(Charset.forName("UTF-8")));
-    Zuo = "soter_triggered_oom_count" + com.tencent.soter.core.c.g.getMessageDigest(a.ioO().getBytes(Charset.forName("UTF-8")));
+    ahzg = "soter_triggered_oom" + com.tencent.soter.core.c.g.getMessageDigest(a.jYb().getBytes(Charset.forName("UTF-8")));
+    ahzh = "soter_triggered_oom_count" + com.tencent.soter.core.c.g.getMessageDigest(a.jYb().getBytes(Charset.forName("UTF-8")));
     AppMethodBeat.o(112);
   }
   
   public j(Context paramContext, e parame)
   {
     AppMethodBeat.i(107);
-    this.Zup = false;
-    this.ZtE = "";
-    this.Zuq = "";
-    this.Zur = new h.a()
+    this.ahzi = false;
+    this.ahyx = "";
+    this.ahzj = "";
+    this.ahzk = new h.a()
     {
-      public final boolean ioU()
+      public final boolean jYh()
       {
         AppMethodBeat.i(103);
-        SharedPreferences localSharedPreferences = com.tencent.soter.a.c.b.ipf().ipi();
+        SharedPreferences localSharedPreferences = com.tencent.soter.a.c.b.jYt().jYw();
         if (localSharedPreferences != null)
         {
-          int i = localSharedPreferences.getInt(j.Zuo, 0);
+          int i = localSharedPreferences.getInt(j.ahzh, 0);
           com.tencent.soter.core.c.d.i("Soter.TaskInit", "soter: is triggered OOM: %b", new Object[] { Integer.valueOf(i) });
           if (i >= 10)
           {
@@ -64,17 +63,16 @@ public class j
         return false;
       }
       
-      @SuppressLint({"ApplySharedPref"})
-      public final void ioV()
+      public final void jYi()
       {
         AppMethodBeat.i(102);
         com.tencent.soter.core.c.d.w("Soter.TaskInit", "soter: on trigger OOM, using wrapper implement", new Object[0]);
-        SharedPreferences localSharedPreferences = com.tencent.soter.a.c.b.ipf().ipi();
+        SharedPreferences localSharedPreferences = com.tencent.soter.a.c.b.jYt().jYw();
         if (localSharedPreferences != null)
         {
           SharedPreferences.Editor localEditor = localSharedPreferences.edit();
-          int i = localSharedPreferences.getInt(j.Zuo, 0);
-          localEditor.putInt(j.Zuo, i + 1);
+          int i = localSharedPreferences.getInt(j.ahzh, 0);
+          localEditor.putInt(j.ahzh, i + 1);
           localEditor.commit();
         }
         AppMethodBeat.o(102);
@@ -83,59 +81,59 @@ public class j
       public final void reset()
       {
         AppMethodBeat.i(104);
-        SharedPreferences localSharedPreferences = com.tencent.soter.a.c.b.ipf().ipi();
+        SharedPreferences localSharedPreferences = com.tencent.soter.a.c.b.jYt().jYw();
         if (localSharedPreferences != null) {
-          localSharedPreferences.edit().putInt(j.Zuo, 0).apply();
+          localSharedPreferences.edit().putInt(j.ahzh, 0).apply();
         }
         AppMethodBeat.o(104);
       }
     };
-    Object localObject1 = parame.ZtG;
+    Object localObject1 = parame.ahyz;
     if (localObject1 != null) {
       com.tencent.soter.core.c.d.a((c)localObject1);
     }
-    localObject1 = parame.ZtI;
+    localObject1 = parame.ahyB;
     if (localObject1 != null)
     {
-      localObject2 = g.ipq();
-      if ((((g)localObject2).ZtQ != null) && (((g)localObject2).ZtQ.isAlive()))
+      localObject2 = g.jYG();
+      if ((((g)localObject2).ahyJ != null) && (((g)localObject2).ahyJ.isAlive()))
       {
         com.tencent.soter.core.c.d.i("Soter.SoterTaskThread", "quit the previous thread", new Object[0]);
-        ((g)localObject2).ZtQ.quit();
+        ((g)localObject2).ahyJ.quit();
       }
-      ((g)localObject2).ZtQ = ((HandlerThread)localObject1);
-      ((g)localObject2).ZtQ.setName("SoterGenKeyHandlerThreadName");
+      ((g)localObject2).ahyJ = ((HandlerThread)localObject1);
+      ((g)localObject2).ahyJ.setName("SoterGenKeyHandlerThreadName");
       if (!((HandlerThread)localObject1).isAlive()) {
         ((HandlerThread)localObject1).start();
       }
-      ((g)localObject2).ZtR = new Handler(((g)localObject2).ZtQ.getLooper());
+      ((g)localObject2).ahyK = new Handler(((g)localObject2).ahyJ.getLooper());
     }
-    localObject1 = com.tencent.soter.a.c.b.ipf();
+    localObject1 = com.tencent.soter.a.c.b.jYt();
     Object localObject2 = paramContext.getSharedPreferences("soter_status", 0);
     try
     {
-      ((com.tencent.soter.a.c.b)localObject1).Ztd = ((SharedPreferences)localObject2);
-      h.a(this.Zur);
-      a.ioD();
-      a.ma(paramContext);
-      a.eON();
+      ((com.tencent.soter.a.c.b)localObject1).ahxR = ((SharedPreferences)localObject2);
+      h.a(this.ahzk);
+      a.jXQ();
+      a.on(paramContext);
+      a.fXr();
       boolean bool1 = bool2;
-      if (a.ioI()) {
-        if (!a.gh(paramContext))
+      if (a.jXV()) {
+        if (!a.hC(paramContext))
         {
           bool1 = bool2;
-          if (!a.bn(paramContext, 2)) {}
+          if (!a.bH(paramContext, 2)) {}
         }
         else
         {
           bool1 = true;
         }
       }
-      this.Zup = bool1;
-      this.ZtD = parame.ZtD;
-      this.ZtF = parame.ZtF;
-      this.ZtE = parame.ZtE;
-      this.Zuq = parame.ZtH;
+      this.ahzi = bool1;
+      this.ahyw = parame.ahyw;
+      this.ahyy = parame.ahyy;
+      this.ahyx = parame.ahyx;
+      this.ahzj = parame.ahyA;
       AppMethodBeat.o(107);
       return;
     }
@@ -147,7 +145,6 @@ public class j
   
   final void b(com.tencent.soter.a.b.e parame) {}
   
-  @SuppressLint({"DefaultLocale"})
   protected void e(String paramString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(110);
@@ -157,7 +154,7 @@ public class j
     {
       int k = paramArrayOfInt[i];
       String str = String.format("%suid%d_%s_scene%d", new Object[] { "Wechat", Integer.valueOf(Process.myUid()), com.tencent.soter.core.c.g.nullAsNil(paramString), Integer.valueOf(k) });
-      com.tencent.soter.a.c.b.ipf().iph().put(k, str);
+      com.tencent.soter.a.c.b.jYt().jYv().put(k, str);
       i += 1;
     }
     AppMethodBeat.o(110);
@@ -166,29 +163,29 @@ public class j
   final void execute()
   {
     AppMethodBeat.i(109);
-    if (this.Zup)
+    if (this.ahzi)
     {
-      if (this.ZtD == null)
+      if (this.ahyw == null)
       {
-        com.tencent.soter.a.c.b.ipf().Ir(true);
-        com.tencent.soter.a.c.b.ipf().ipg();
+        com.tencent.soter.a.c.b.jYt().Ot(true);
+        com.tencent.soter.a.c.b.jYt().jYu();
         c(new com.tencent.soter.a.b.d(0));
         AppMethodBeat.o(109);
         return;
       }
-      String str = a.ioO();
-      this.ZtD.setRequest(new d.a(str));
-      this.ZtD.a(new com.tencent.soter.a.f.b() {});
-      this.ZtD.execute();
+      String str = a.jYb();
+      this.ahyw.setRequest(new d.a(str));
+      this.ahyw.a(new com.tencent.soter.a.f.b() {});
+      this.ahyw.execute();
       AppMethodBeat.o(109);
       return;
     }
-    com.tencent.soter.core.c.d.w("Soter.TaskInit", "soter: TaskInit check isNativeSupport[" + this.Zup + "]", new Object[0]);
+    com.tencent.soter.core.c.d.w("Soter.TaskInit", "soter: TaskInit check isNativeSupport[" + this.ahzi + "]", new Object[0]);
     c(new com.tencent.soter.a.b.d(2));
     try
     {
-      com.tencent.soter.a.c.b.ipf().Ir(false);
-      com.tencent.soter.a.c.b.ipf().ipg();
+      com.tencent.soter.a.c.b.jYt().Ot(false);
+      com.tencent.soter.a.c.b.jYt().jYu();
       return;
     }
     finally
@@ -197,17 +194,17 @@ public class j
     }
   }
   
-  final boolean ipl()
+  final boolean jYA()
   {
     AppMethodBeat.i(108);
-    if (com.tencent.soter.a.c.b.ipf().ipb())
+    if (com.tencent.soter.a.c.b.jYt().jYp())
     {
       com.tencent.soter.core.c.d.e("Soter.TaskInit", "soter: duplicate initialize soter", new Object[0]);
       c(new com.tencent.soter.a.b.d(1028, "soter already have initialized"));
       AppMethodBeat.o(108);
       return true;
     }
-    Object localObject = this.ZtF;
+    Object localObject = this.ahyy;
     if ((localObject == null) || (localObject.length <= 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
@@ -216,10 +213,10 @@ public class j
       AppMethodBeat.o(108);
       return true;
     }
-    if (com.tencent.soter.core.c.g.nullAsNil(this.ZtE).length() > 16)
+    if (com.tencent.soter.core.c.g.nullAsNil(this.ahyx).length() > 16)
     {
       com.tencent.soter.core.c.d.w("Soter.TaskInit", "soter: the salt string used to distinguish is longer than 24. soter will try to make it compat", new Object[0]);
-      localObject = com.tencent.soter.core.c.g.getMessageDigest(this.ZtE.getBytes(Charset.forName("UTF-8")));
+      localObject = com.tencent.soter.core.c.g.getMessageDigest(this.ahyx.getBytes(Charset.forName("UTF-8")));
       if ((!com.tencent.soter.core.c.g.isNullOrNil((String)localObject)) && (((String)localObject).length() >= 16)) {}
       for (localObject = ((String)localObject).substring(0, 16); com.tencent.soter.core.c.g.isNullOrNil((String)localObject); localObject = null)
       {
@@ -228,24 +225,24 @@ public class j
         AppMethodBeat.o(108);
         return true;
       }
-      this.ZtE = ((String)localObject);
+      this.ahyx = ((String)localObject);
     }
-    if ((!com.tencent.soter.core.c.g.isNullOrNil(this.Zuq)) && (this.Zuq.length() > 24))
+    if ((!com.tencent.soter.core.c.g.isNullOrNil(this.ahzj)) && (this.ahzj.length() > 24))
     {
       com.tencent.soter.core.c.d.e("Soter.TaskInit", "soter: the passed ask name is too long (larger than 24).", new Object[0]);
       c(new com.tencent.soter.a.b.d(1026, "the passed ask name is too long (larger than 24)"));
       AppMethodBeat.o(108);
       return true;
     }
-    if (this.ZtD == null) {
+    if (this.ahyw == null) {
       com.tencent.soter.core.c.d.w("Soter.TaskInit", "soter: it is strongly recommended to check device support from server, so you'd better provider a net wrapper to check it", new Object[0]);
     }
-    if (!com.tencent.soter.core.c.g.isNullOrNil(this.Zuq))
+    if (!com.tencent.soter.core.c.g.isNullOrNil(this.ahzj))
     {
       com.tencent.soter.core.c.d.i("Soter.TaskInit", "soter: provided valid ASK name", new Object[0]);
-      com.tencent.soter.core.c.e.ioS().Zsq = this.Zuq;
+      com.tencent.soter.core.c.e.jYf().ahxe = this.ahzj;
     }
-    g.ipq().am(new Runnable()
+    g.jYG().au(new Runnable()
     {
       public final void run()
       {
@@ -259,11 +256,16 @@ public class j
     return false;
   }
   
-  final void ipm() {}
+  final boolean jYB()
+  {
+    return true;
+  }
+  
+  final void jYC() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.soter.a.g.j
  * JD-Core Version:    0.7.0.1
  */

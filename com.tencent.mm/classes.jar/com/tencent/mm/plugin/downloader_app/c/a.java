@@ -1,38 +1,18 @@
 package com.tencent.mm.plugin.downloader_app.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.be;
+import com.tencent.mm.autogen.b.bg;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import java.lang.reflect.Field;
-import java.util.Map;
 
 public final class a
-  extends be
+  extends bg
 {
   protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(8961);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[3];
-    localMAutoDBInfo.columns = new String[4];
-    StringBuilder localStringBuilder = new StringBuilder();
-    localMAutoDBInfo.columns[0] = "appId";
-    localMAutoDBInfo.colsMap.put("appId", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" appId TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.primaryKey = "appId";
-    localMAutoDBInfo.columns[1] = "status";
-    localMAutoDBInfo.colsMap.put("status", "INTEGER");
-    localStringBuilder.append(" status INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[2] = "modifyTime";
-    localMAutoDBInfo.colsMap.put("modifyTime", "LONG");
-    localStringBuilder.append(" modifyTime LONG");
-    localMAutoDBInfo.columns[3] = "rowid";
-    localMAutoDBInfo.sql = localStringBuilder.toString();
-    info = localMAutoDBInfo;
+    info = bg.aJm();
     AppMethodBeat.o(8961);
   }
   

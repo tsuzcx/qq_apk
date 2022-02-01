@@ -1,62 +1,59 @@
 package com.tencent.mm.plugin.websearch.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.websearch.api.ai;
-import com.tencent.mm.plugin.websearch.api.at;
+import com.tencent.mm.plugin.websearch.api.aj;
+import com.tencent.mm.plugin.websearch.api.au;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/websearch/tagsearch/TagSearchUILogic;", "", "()V", "TAG", "", "genTagSearchUrl", "params", "", "putCommonUrlParams", "", "startTagSearchDialog", "Lcom/tencent/mm/plugin/websearch/tagsearch/ui/TagSearchDialog;", "context", "Landroid/content/Context;", "talker", "enterType", "", "listener", "Lcom/tencent/mm/plugin/websearch/tagsearch/ui/ITagSearchDialogListener;", "query", "sessionId", "cursorIndex", "ui-websearch_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/websearch/emojisearch/EmojiSearchUILogic;", "", "()V", "TAG", "", "genEmojiSearchUrl", "params", "", "putCommonUrlParams", "", "startEmojiSearchDialog", "Lcom/tencent/mm/plugin/websearch/emojisearch/ui/EmojiSearchDialog;", "context", "Landroid/content/Context;", "talker", "toSendText", "listener", "Lcom/tencent/mm/emojisearch/ui/IEmojiSearchDialogListener;", "sessionId", "ui-websearch_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
 {
-  public static final c PAp;
-  public static final String TAG = "MicroMsg.WebSearch.TagSearchUILogic";
+  public static final c WqA;
   
   static
   {
-    AppMethodBeat.i(198696);
-    PAp = new c();
-    TAG = "MicroMsg.WebSearch.TagSearchUILogic";
-    AppMethodBeat.o(198696);
+    AppMethodBeat.i(315048);
+    WqA = new c();
+    AppMethodBeat.o(315048);
   }
   
-  public static String aZ(Map<String, String> paramMap)
+  public static String bq(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(198689);
-    p.k(paramMap, "params");
-    Object localObject = ai.anf(6);
-    p.j(localObject, "WebSearchApiLogic.getSea….TEMPLATE_TYPE_TAGSEARCH)");
-    localObject = ((at)localObject).gRg();
-    ba(paramMap);
+    AppMethodBeat.i(315037);
+    s.u(paramMap, "params");
+    String str = aj.asW(10).iqs();
+    br(paramMap);
     StringBuffer localStringBuffer = new StringBuffer();
     localStringBuffer.append("file://");
-    localStringBuffer.append((String)localObject);
+    localStringBuffer.append(str);
     localStringBuffer.append("?");
-    localStringBuffer.append(ai.toUrlParams(paramMap));
+    localStringBuffer.append(aj.toUrlParams(paramMap));
     paramMap = localStringBuffer.toString();
-    AppMethodBeat.o(198689);
+    s.s(paramMap, "urlBuffer.toString()");
+    AppMethodBeat.o(315037);
     return paramMap;
   }
   
-  public static void ba(Map<String, String> paramMap)
+  static void br(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(198693);
+    AppMethodBeat.i(315044);
     String str = LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext());
-    p.j(str, "LocaleUtil.getCurrentLan…tionContext.getContext())");
+    s.s(str, "getCurrentLanguage(MMApp…tionContext.getContext())");
     paramMap.put("lang", str);
     paramMap.put("platform", "android");
-    paramMap.put("version", String.valueOf(ai.anh(6)));
-    str = ai.anV();
-    p.j(str, "WebSearchApiLogic.getNetType()");
+    paramMap.put("version", String.valueOf(aj.asY(10)));
+    str = aj.gtA();
+    s.s(str, "getNetType()");
     paramMap.put("netType", str);
     str = BuildInfo.CLIENT_VERSION;
-    p.j(str, "BuildInfo.CLIENT_VERSION");
+    s.s(str, "CLIENT_VERSION");
     paramMap.put("wechatVersion", str);
-    AppMethodBeat.o(198693);
+    AppMethodBeat.o(315044);
   }
 }
 

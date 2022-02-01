@@ -1,159 +1,176 @@
 package com.tencent.xweb;
 
-import android.content.Context;
-import android.webkit.ValueCallback;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.x5.sdk.d;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.xwalk.core.Log;
+import org.xwalk.core.XWalkSharedPreferenceUtil;
 
 public final class g
 {
-  private static Map<String, Integer> oSy;
+  private static final Object aieq;
   
   static
   {
-    AppMethodBeat.i(156755);
-    oSy = new HashMap();
-    AppMethodBeat.o(156755);
+    AppMethodBeat.i(156731);
+    aieq = new Object();
+    AppMethodBeat.o(156731);
   }
   
-  private static void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, boolean paramBoolean, HashMap<String, String> paramHashMap, ValueCallback<String> paramValueCallback, ValueCallback<Integer> paramValueCallback1)
+  public static void GO(String arg0)
   {
-    AppMethodBeat.i(156750);
-    HashMap localHashMap = new HashMap(2);
-    localHashMap.put("local", "true");
-    localHashMap.put("style", "1");
-    if (paramHashMap != null) {
-      try
+    AppMethodBeat.i(156728);
+    if ((??? == null) || (???.isEmpty()))
+    {
+      Log.e("FileReaderCrashDetector", "onFinish param is empty");
+      AppMethodBeat.o(156728);
+      return;
+    }
+    String str = ???.toLowerCase();
+    synchronized (aieq)
+    {
+      Object localObject2 = XWalkSharedPreferenceUtil.getSharedPreferencesForFileReaderRecord();
+      if (localObject2 == null)
       {
-        paramHashMap = paramHashMap.entrySet().iterator();
-        while (paramHashMap.hasNext())
+        Log.e("FileReaderCrashDetector", "onFinish sp is null");
+        AppMethodBeat.o(156728);
+        return;
+      }
+      localObject2 = ((SharedPreferences)localObject2).edit();
+      if (localObject2 == null)
+      {
+        Log.e("FileReaderCrashDetector", "onFinish editor is null");
+        AppMethodBeat.o(156728);
+        return;
+      }
+      ((SharedPreferences.Editor)localObject2).putLong(str + "_count", 0L);
+      ((SharedPreferences.Editor)localObject2).putLong(str + "_time", System.currentTimeMillis());
+      ((SharedPreferences.Editor)localObject2).commit();
+      AppMethodBeat.o(156728);
+      return;
+    }
+  }
+  
+  public static void aNZ(String arg0)
+  {
+    AppMethodBeat.i(156727);
+    if ((??? == null) || (???.isEmpty()))
+    {
+      Log.e("FileReaderCrashDetector", "onStart param is empty");
+      AppMethodBeat.o(156727);
+      return;
+    }
+    String str = ???.toLowerCase();
+    synchronized (aieq)
+    {
+      Object localObject2 = XWalkSharedPreferenceUtil.getSharedPreferencesForFileReaderRecord();
+      if (localObject2 == null)
+      {
+        Log.e("FileReaderCrashDetector", "onStart sp is null");
+        AppMethodBeat.o(156727);
+        return;
+      }
+      long l = ((SharedPreferences)localObject2).getLong(str + "_count", 0L);
+      localObject2 = ((SharedPreferences)localObject2).edit();
+      if (localObject2 == null)
+      {
+        Log.e("FileReaderCrashDetector", "onStart editor is null");
+        AppMethodBeat.o(156727);
+        return;
+      }
+      ((SharedPreferences.Editor)localObject2).putLong(str + "_count", l + 1L);
+      ((SharedPreferences.Editor)localObject2).putLong(str + "_time", System.currentTimeMillis());
+      ((SharedPreferences.Editor)localObject2).commit();
+      AppMethodBeat.o(156727);
+      return;
+    }
+  }
+  
+  public static void aj(String[] paramArrayOfString)
+  {
+    AppMethodBeat.i(156730);
+    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0))
+    {
+      AppMethodBeat.o(156730);
+      return;
+    }
+    for (;;)
+    {
+      int i;
+      synchronized (aieq)
+      {
+        Object localObject2 = XWalkSharedPreferenceUtil.getSharedPreferencesForFileReaderRecord();
+        if (localObject2 == null)
         {
-          Map.Entry localEntry = (Map.Entry)paramHashMap.next();
-          localHashMap.put((String)localEntry.getKey(), (String)localEntry.getValue());
-        }
-        try
-        {
-          paramHashMap = new JSONObject();
-          paramHashMap.put("path", paramString1);
-          paramHashMap.put("ext", paramString2);
-          paramHashMap.put("token", paramString3);
-          paramHashMap = paramHashMap.toString();
-          int i = d.startMiniQBToLoadUrl(paramContext, paramHashMap, localHashMap, paramValueCallback);
-          oSy.put(paramString3 + paramString1, Integer.valueOf(i));
-          Log.i("XFilesReaderX5", "loadByMiniQB, ret = " + i + ", isSecondTime = " + String.valueOf(paramBoolean));
-          a(paramString2, paramValueCallback1, i, paramInt);
-          AppMethodBeat.o(156750);
+          Log.e("FileReaderCrashDetector", "resetCrashInfo sp is null");
+          AppMethodBeat.o(156730);
           return;
         }
-        catch (Exception paramContext)
+        localObject2 = ((SharedPreferences)localObject2).edit();
+        if (localObject2 == null)
         {
-          Log.e("XFilesReaderX5", "loadByMiniQB jsonObject error, isSecondTime = " + String.valueOf(paramBoolean) + ", msg: " + paramContext.getMessage());
-          b(paramString2, paramValueCallback1, -100001, paramInt);
-          AppMethodBeat.o(156750);
+          Log.e("FileReaderCrashDetector", "resetCrashInfo editor is null");
+          AppMethodBeat.o(156730);
+          return;
+        }
+        int j = paramArrayOfString.length;
+        i = 0;
+        if (i < j)
+        {
+          String str = paramArrayOfString[i];
+          if ((str != null) && (!str.isEmpty()))
+          {
+            str = str.toLowerCase();
+            ((SharedPreferences.Editor)localObject2).remove(str + "_count");
+            ((SharedPreferences.Editor)localObject2).remove(str + "_time");
+          }
+        }
+        else
+        {
+          ((SharedPreferences.Editor)localObject2).commit();
+          AppMethodBeat.o(156730);
+          return;
         }
       }
-      catch (Exception paramHashMap)
-      {
-        Log.e("XFilesReaderX5", "loadByMiniQB extraParams error, isSecondTime = " + String.valueOf(paramBoolean) + ", msg: " + paramHashMap.getMessage());
-      }
+      i += 1;
     }
   }
   
-  private static void a(String paramString, ValueCallback<Integer> paramValueCallback, int paramInt1, int paramInt2)
+  public static boolean bHq(String arg0)
   {
-    AppMethodBeat.i(156751);
-    f.b(paramString, paramInt1, false, paramInt2);
-    paramValueCallback.onReceiveValue(Integer.valueOf(paramInt1));
-    AppMethodBeat.o(156751);
-  }
-  
-  private static void b(String paramString, ValueCallback<Integer> paramValueCallback, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(156752);
-    f.b(paramString, paramInt1, true, paramInt2);
-    paramValueCallback.onReceiveValue(Integer.valueOf(-102));
-    AppMethodBeat.o(156752);
-  }
-  
-  public static void e(final int paramInt, final Context paramContext, final String paramString1, String paramString2, final String paramString3, boolean paramBoolean, final HashMap<String, String> paramHashMap, final ValueCallback<String> paramValueCallback, final ValueCallback<Integer> paramValueCallback1)
-  {
-    AppMethodBeat.i(156748);
-    if (paramBoolean)
+    AppMethodBeat.i(156729);
+    if ((??? == null) || (???.isEmpty()))
     {
-      Log.i("XFilesReaderX5", "readFile by x5, second time, skip all report except failure, directly go to loadByMiniQB");
-      a(paramContext, paramString1, paramString2, paramString3, paramInt, true, paramHashMap, paramValueCallback, paramValueCallback1);
-      AppMethodBeat.o(156748);
-      return;
+      Log.e("FileReaderCrashDetector", "isRecentCrashed fileExt is empty");
+      AppMethodBeat.o(156729);
+      return false;
     }
-    Object localObject2 = new StringBuilder("readFile by x5, fileExt: ");
-    if (paramString2 != null) {}
-    for (Object localObject1 = paramString2;; localObject1 = "null")
+    String str = ???.toLowerCase();
+    synchronized (aieq)
     {
-      Log.i("XFilesReaderX5", (String)localObject1);
-      f.oU(paramString2, f.a.ZZM.name());
-      f.iv(paramString2, paramInt);
-      try
+      SharedPreferences localSharedPreferences = XWalkSharedPreferenceUtil.getSharedPreferencesForFileReaderRecord();
+      if (localSharedPreferences == null)
       {
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).putOpt("path", paramString1);
-        ((JSONObject)localObject1).putOpt("ext", paramString2);
-        localObject1 = ((JSONObject)localObject1).toString();
-        localObject2 = paramContext.getApplicationContext();
-        d.disableAutoCreateX5Webview();
-        d.a((Context)localObject2, (String)localObject1, new ValueCallback() {});
-        AppMethodBeat.o(156748);
-        return;
+        Log.e("FileReaderCrashDetector", "isRecentCrashed sp is null");
+        AppMethodBeat.o(156729);
+        return false;
       }
-      catch (JSONException paramContext)
+      long l1 = localSharedPreferences.getLong(str + "_count", 0L);
+      long l2 = localSharedPreferences.getLong(str + "_time", 0L);
+      long l3 = System.currentTimeMillis();
+      if ((l1 >= 3L) && (l3 - l2 < 86400000L))
       {
-        Log.e("XFilesReaderX5", "readFile jsonObject error" + paramContext.getMessage());
-        b(paramString2, paramValueCallback1, -100001, paramInt);
-        AppMethodBeat.o(156748);
+        AppMethodBeat.o(156729);
+        return true;
       }
+      AppMethodBeat.o(156729);
+      return false;
     }
-  }
-  
-  public static void r(Context paramContext, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(156749);
-    try
-    {
-      Integer localInteger = (Integer)oSy.get(paramString1 + paramString2);
-      if (localInteger == null)
-      {
-        AppMethodBeat.o(156749);
-        return;
-      }
-      oSy.remove(paramString1 + paramString2);
-      if (localInteger.intValue() == 0)
-      {
-        Log.i("XFilesReaderX5", "finishReadFile");
-        d.closeFileReader(paramContext);
-        AppMethodBeat.o(156749);
-        return;
-      }
-    }
-    catch (Exception paramContext)
-    {
-      Log.e("XFilesReaderX5", "finishReadFile error: " + paramContext.getMessage());
-      AppMethodBeat.o(156749);
-      return;
-    }
-    Log.i("XFilesReaderX5", "finishReadFile ret != 0, skip");
-    AppMethodBeat.o(156749);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.g
  * JD-Core Version:    0.7.0.1
  */

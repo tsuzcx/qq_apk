@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@drawable/ca9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/df" android:paddingEnd="@dimen/bv"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/kpq" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="@dimen/cp" android:paddingBottom="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/vl" android:layout_width="@dimen/ayw" android:layout_height="@dimen/ayw" android:importantForAccessibility="no" />
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:paddingStart="@dimen/cp" android:paddingEnd="@dimen/cp">
+            <TextView android:textSize="@dimen/l" android:textColor="@color/FG_0" android:ellipsize="end" android:gravity="start" android:id="@id/w5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bv" android:singleLine="true" />
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/FG_1" android:ellipsize="end" android:gravity="start" android:id="@id/lw5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
+        </LinearLayout>
+        <ImageView android:layout_width="@dimen/cd" android:layout_height="@dimen/cv" android:src="@drawable/pp" android:scaleType="fitCenter" />
+    </LinearLayout>
+    <View android:id="@id/c8l" android:layout_marginStart="@dimen/ayx" style="@style/i7" />
+</LinearLayout>

@@ -1,40 +1,38 @@
 package com.tencent.mm.plugin.appbrand.game.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.expt.b.b.a;
-import kotlin.l;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigSyncSurfaceDestroy;", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig;", "", "()V", "enableABTest", "Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;", "enableAlert", "enableKv", "", "getConfigDefaultValue", "()Ljava/lang/Boolean;", "onProcessConfig", "input", "(Ljava/lang/String;)Ljava/lang/Boolean;", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigSupportMultiInstancesInProcess;", "", "()V", "SUPPORT", "", "()Z", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class o
-  extends x<Boolean>
 {
-  public static final o omK;
+  public static final o rqt;
   
   static
   {
-    AppMethodBeat.i(281668);
-    omK = new o();
-    AppMethodBeat.o(281668);
+    AppMethodBeat.i(318403);
+    rqt = new o();
+    AppMethodBeat.o(318403);
   }
   
-  protected final String bOt()
+  public static final boolean coO()
   {
-    return "ssd";
-  }
-  
-  protected final b.a bOu()
-  {
-    return b.a.vCA;
-  }
-  
-  protected final boolean bOv()
-  {
-    return true;
+    AppMethodBeat.i(318399);
+    if (((c)h.ax(c.class)).a(c.a.zmW, 0) == 1)
+    {
+      AppMethodBeat.o(318399);
+      return true;
+    }
+    AppMethodBeat.o(318399);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.a.o
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import java.util.List;
 
 public final class k
 {
-  public final m bIw;
+  public final m dCe;
   public final Context mContext;
   
   public k(Context paramContext)
@@ -21,10 +21,10 @@ public final class k
   private k(Context paramContext, m paramm)
   {
     this.mContext = paramContext;
-    this.bIw = paramm;
+    this.dCe = paramm;
   }
   
-  public static List<e> x(List<String> paramList)
+  public static List<e> aq(List<String> paramList)
   {
     AppMethodBeat.i(4083);
     ArrayList localArrayList = new ArrayList();
@@ -60,7 +60,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.firebase.components.k
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ final class IPCallShareCouponUI$7
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(25944);
-    this.DYL.finish();
+    this.JPU.finish();
     AppMethodBeat.o(25944);
   }
 }

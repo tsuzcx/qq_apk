@@ -1,8 +1,8 @@
 package androidx.coordinatorlayout.widget;
 
 import androidx.b.g;
-import androidx.core.f.f.a;
-import androidx.core.f.f.b;
+import androidx.core.f.e.a;
+import androidx.core.f.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -10,37 +10,37 @@ import java.util.List;
 
 public final class a<T>
 {
-  final f.a<ArrayList<T>> HG;
-  final g<T, ArrayList<T>> HH;
-  private final ArrayList<T> HI;
-  private final HashSet<T> HJ;
+  final e.a<ArrayList<T>> bnH;
+  final g<T, ArrayList<T>> bnI;
+  private final ArrayList<T> bnJ;
+  private final HashSet<T> bnK;
   
   public a()
   {
-    AppMethodBeat.i(263443);
-    this.HG = new f.b(10);
-    this.HH = new g();
-    this.HI = new ArrayList();
-    this.HJ = new HashSet();
-    AppMethodBeat.o(263443);
+    AppMethodBeat.i(193116);
+    this.bnH = new e.b(10);
+    this.bnI = new g();
+    this.bnJ = new ArrayList();
+    this.bnK = new HashSet();
+    AppMethodBeat.o(193116);
   }
   
   private void a(T paramT, ArrayList<T> paramArrayList, HashSet<T> paramHashSet)
   {
-    AppMethodBeat.i(263449);
+    AppMethodBeat.i(193123);
     if (paramArrayList.contains(paramT))
     {
-      AppMethodBeat.o(263449);
+      AppMethodBeat.o(193123);
       return;
     }
     if (paramHashSet.contains(paramT))
     {
       paramT = new RuntimeException("This graph contains cyclic dependencies");
-      AppMethodBeat.o(263449);
+      AppMethodBeat.o(193123);
       throw paramT;
     }
     paramHashSet.add(paramT);
-    ArrayList localArrayList = (ArrayList)this.HH.get(paramT);
+    ArrayList localArrayList = (ArrayList)this.bnI.get(paramT);
     if (localArrayList != null)
     {
       int i = 0;
@@ -53,46 +53,46 @@ public final class a<T>
     }
     paramHashSet.remove(paramT);
     paramArrayList.add(paramT);
-    AppMethodBeat.o(263449);
+    AppMethodBeat.o(193123);
   }
   
-  public final ArrayList<T> gh()
+  public final ArrayList<T> Dt()
   {
-    AppMethodBeat.i(263447);
-    this.HI.clear();
-    this.HJ.clear();
+    AppMethodBeat.i(193143);
+    this.bnJ.clear();
+    this.bnK.clear();
     int i = 0;
-    int j = this.HH.size();
+    int j = this.bnI.size();
     while (i < j)
     {
-      a(this.HH.aO(i), this.HI, this.HJ);
+      a(this.bnI.bn(i), this.bnJ, this.bnK);
       i += 1;
     }
-    ArrayList localArrayList = this.HI;
-    AppMethodBeat.o(263447);
+    ArrayList localArrayList = this.bnJ;
+    AppMethodBeat.o(193143);
     return localArrayList;
   }
   
-  public final void v(T paramT)
+  public final void au(T paramT)
   {
-    AppMethodBeat.i(263444);
-    if (!this.HH.containsKey(paramT)) {
-      this.HH.put(paramT, null);
+    AppMethodBeat.i(193131);
+    if (!this.bnI.containsKey(paramT)) {
+      this.bnI.put(paramT, null);
     }
-    AppMethodBeat.o(263444);
+    AppMethodBeat.o(193131);
   }
   
-  public final List w(T paramT)
+  public final List av(T paramT)
   {
-    AppMethodBeat.i(263446);
-    paramT = (List)this.HH.get(paramT);
-    AppMethodBeat.o(263446);
+    AppMethodBeat.i(193138);
+    paramT = (List)this.bnI.get(paramT);
+    AppMethodBeat.o(193138);
     return paramT;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.coordinatorlayout.widget.a
  * JD-Core Version:    0.7.0.1
  */

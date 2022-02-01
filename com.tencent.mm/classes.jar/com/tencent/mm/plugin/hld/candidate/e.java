@@ -13,165 +13,163 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/candidate/ImeClipBoardListener;", "Landroid/content/ClipboardManager$OnPrimaryClipChangedListener;", "()V", "TAG", "", "mClipboardContent", "", "mEmojiFilterMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "mHasClipBoard", "", "addFilterEmoji", "", "emojiStr", "closeClipContent", "getClipboardContent", "hasClipBoard", "onPrimaryClipChanged", "registerListener", "releaseListener", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/candidate/ImeClipBoardListener;", "Landroid/content/ClipboardManager$OnPrimaryClipChangedListener;", "()V", "TAG", "", "mClipboardContent", "", "mEmojiFilterMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "mHasClipBoard", "", "addFilterEmoji", "", "emojiStr", "closeClipContent", "getClipboardContent", "hasClipBoard", "onPrimaryClipChanged", "registerListener", "releaseListener", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
   implements ClipboardManager.OnPrimaryClipChangedListener
 {
-  private static boolean DuR;
-  private static CharSequence DuS;
-  private static HashMap<String, Integer> DuT;
-  public static final e DuU;
+  public static final e Jon;
+  private static boolean Joo;
+  private static CharSequence Jop;
+  private static HashMap<String, Integer> Joq;
   
   static
   {
-    AppMethodBeat.i(210124);
-    DuU = new e();
-    DuS = (CharSequence)"";
-    DuT = new HashMap();
-    AppMethodBeat.o(210124);
+    AppMethodBeat.i(312862);
+    Jon = new e();
+    Jop = (CharSequence)"";
+    Joq = new HashMap();
+    AppMethodBeat.o(312862);
   }
   
-  public static boolean eCO()
+  public static boolean fKQ()
   {
-    return DuR;
+    return Joo;
   }
   
-  public static void eCP()
+  public static void fKR()
   {
-    AppMethodBeat.i(210113);
-    DuR = false;
-    Object localObject = com.tencent.mm.plugin.hld.f.d.DGV;
-    com.tencent.mm.plugin.hld.f.d.ac(DuS);
-    DuS = (CharSequence)"";
-    localObject = (com.tencent.mm.plugin.hld.a.d)h.ae(com.tencent.mm.plugin.hld.a.d.class);
+    AppMethodBeat.i(312853);
+    Joo = false;
+    Object localObject = com.tencent.mm.plugin.hld.f.d.Jyl;
+    com.tencent.mm.plugin.hld.f.d.al(Jop);
+    Jop = (CharSequence)"";
+    localObject = (com.tencent.mm.plugin.hld.a.d)h.ax(com.tencent.mm.plugin.hld.a.d.class);
     if (localObject != null)
     {
-      localObject = ((com.tencent.mm.plugin.hld.a.d)localObject).eCD();
-      if (localObject != null)
-      {
-        if (((b)localObject).eCq() != true) {
-          break label89;
-        }
-        localObject = g.DCm;
-        localObject = g.eEl();
-        if (localObject == null) {
-          break label89;
-        }
-        ((ImeCandidateView)localObject).eCJ();
-        AppMethodBeat.o(210113);
-        return;
-      }
+      localObject = ((com.tencent.mm.plugin.hld.a.d)localObject).fKG();
+      if ((localObject == null) || (((b)localObject).fKu() != true)) {}
     }
-    AppMethodBeat.o(210113);
-    return;
-    label89:
-    AppMethodBeat.o(210113);
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        localObject = g.JuL;
+        localObject = g.fMn();
+        if (localObject != null) {
+          ((ImeCandidateView)localObject).fKM();
+        }
+      }
+      AppMethodBeat.o(312853);
+      return;
+    }
   }
   
-  public static CharSequence eCQ()
+  public static CharSequence fKS()
   {
-    return DuS;
+    return Jop;
   }
   
-  public final void eCN()
+  public final void fKP()
   {
-    AppMethodBeat.i(210110);
-    DuS = (CharSequence)"";
-    DuR = false;
+    AppMethodBeat.i(312868);
+    Jop = (CharSequence)"";
+    Joo = false;
     Object localObject = MMApplicationContext.getContext().getSystemService("clipboard");
     if (localObject == null)
     {
-      localObject = new t("null cannot be cast to non-null type android.content.ClipboardManager");
-      AppMethodBeat.o(210110);
+      localObject = new NullPointerException("null cannot be cast to non-null type android.content.ClipboardManager");
+      AppMethodBeat.o(312868);
       throw ((Throwable)localObject);
     }
     localObject = (ClipboardManager)localObject;
     try
     {
       ((ClipboardManager)localObject).addPrimaryClipChangedListener((ClipboardManager.OnPrimaryClipChangedListener)this);
-      AppMethodBeat.o(210110);
+      AppMethodBeat.o(312868);
       return;
     }
     catch (Exception localException)
     {
-      Log.e("WxIme.ImeClipBoardListener", "registerListener " + localException.getMessage());
-      AppMethodBeat.o(210110);
+      Log.e("WxIme.ImeClipBoardListener", s.X("registerListener ", localException.getMessage()));
+      AppMethodBeat.o(312868);
     }
   }
   
   public final void onPrimaryClipChanged()
   {
-    AppMethodBeat.i(210120);
-    Object localObject = n.DEn;
-    if (!n.eEE())
+    AppMethodBeat.i(312879);
+    Object localObject = n.JvW;
+    if (!n.fMH())
     {
       Log.d("WxIme.ImeClipBoardListener", "onPrimaryClipChanged has pending input");
-      AppMethodBeat.o(210120);
+      AppMethodBeat.o(312879);
       return;
     }
-    localObject = com.tencent.mm.plugin.hld.f.d.DGV;
+    localObject = com.tencent.mm.plugin.hld.f.d.Jyl;
     localObject = com.tencent.mm.plugin.hld.f.d.getText();
-    DuS = (CharSequence)localObject;
+    Jop = (CharSequence)localObject;
     if (Util.isNullOrNil((CharSequence)localObject))
     {
-      DuS = (CharSequence)"";
-      AppMethodBeat.o(210120);
+      Jop = (CharSequence)"";
+      AppMethodBeat.o(312879);
       return;
     }
-    localObject = com.tencent.mm.plugin.hld.f.d.DGV;
-    if (Util.isEqual(com.tencent.mm.plugin.hld.f.d.eGd(), DuS))
+    localObject = com.tencent.mm.plugin.hld.f.d.Jyl;
+    if (Util.isEqual(com.tencent.mm.plugin.hld.f.d.fNP(), Jop))
     {
-      DuS = (CharSequence)"";
-      AppMethodBeat.o(210120);
+      Jop = (CharSequence)"";
+      AppMethodBeat.o(312879);
       return;
     }
-    localObject = (Map)DuT;
-    CharSequence localCharSequence = DuS;
+    localObject = (Map)Joq;
+    CharSequence localCharSequence = Jop;
     if (localObject == null)
     {
-      localObject = new t("null cannot be cast to non-null type kotlin.collections.Map<K, *>");
-      AppMethodBeat.o(210120);
+      localObject = new NullPointerException("null cannot be cast to non-null type kotlin.collections.Map<K, *>");
+      AppMethodBeat.o(312879);
       throw ((Throwable)localObject);
     }
     if (((Map)localObject).containsKey(localCharSequence))
     {
-      localObject = ((Map)DuT).get(DuS);
-      if (localObject == null) {
-        p.iCn();
-      }
+      localObject = ((Map)Joq).get(Jop);
+      s.checkNotNull(localObject);
       if (((Number)localObject).intValue() > 0)
       {
-        localObject = (Integer)((Map)DuT).get(DuS);
+        localObject = (Integer)((Map)Joq).get(Jop);
         if (localObject != null) {
           ((Integer)localObject).intValue();
         }
-        DuS = (CharSequence)"";
-        AppMethodBeat.o(210120);
+        Jop = (CharSequence)"";
+        AppMethodBeat.o(312879);
         return;
       }
     }
-    localObject = com.tencent.mm.plugin.hld.f.d.DGV;
-    com.tencent.mm.plugin.hld.f.d.ac((CharSequence)"");
-    DuR = true;
-    localObject = (com.tencent.mm.plugin.hld.a.d)h.ae(com.tencent.mm.plugin.hld.a.d.class);
+    localObject = com.tencent.mm.plugin.hld.f.d.Jyl;
+    com.tencent.mm.plugin.hld.f.d.al((CharSequence)"");
+    Joo = true;
+    localObject = (com.tencent.mm.plugin.hld.a.d)h.ax(com.tencent.mm.plugin.hld.a.d.class);
     if (localObject != null)
     {
-      localObject = ((com.tencent.mm.plugin.hld.a.d)localObject).eCD();
-      if ((localObject != null) && (((b)localObject).eCq() == true))
+      localObject = ((com.tencent.mm.plugin.hld.a.d)localObject).fKG();
+      if ((localObject == null) || (((b)localObject).fKu() != true)) {}
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
       {
-        localObject = g.DCm;
-        localObject = g.eEl();
+        localObject = g.JuL;
+        localObject = g.fMn();
         if (localObject != null) {
-          ((ImeCandidateView)localObject).eCJ();
+          ((ImeCandidateView)localObject).fKM();
         }
       }
+      Log.d("WxIme.ImeClipBoardListener", "onPrimaryClipChanged " + Jop + ' ' + Joo);
+      AppMethodBeat.o(312879);
+      return;
     }
-    Log.d("WxIme.ImeClipBoardListener", "onPrimaryClipChanged " + DuS + ' ' + DuR);
-    AppMethodBeat.o(210120);
   }
 }
 

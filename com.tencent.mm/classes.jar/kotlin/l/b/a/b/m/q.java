@@ -1,115 +1,113 @@
 package kotlin.l.b.a.b.m;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.b.a.g;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import kotlin.l.b.a.b.b.av;
+import kotlin.l.b.a.b.b.ba;
+import kotlin.l.b.a.b.b.c.aj;
+import kotlin.l.b.a.b.b.l;
+import kotlin.l.b.a.b.m.d.a;
 
 public final class q
-  extends ay
 {
-  public static final a abqk;
-  private final ay abqi;
-  private final ay abqj;
-  
-  static
+  public static be a(List<ba> paramList1, bc parambc, l paraml, List<ba> paramList2)
   {
-    AppMethodBeat.i(60647);
-    abqk = new a((byte)0);
-    AppMethodBeat.o(60647);
-  }
-  
-  private q(ay paramay1, ay paramay2)
-  {
-    this.abqi = paramay1;
-    this.abqj = paramay2;
-  }
-  
-  public static final ay a(ay paramay1, ay paramay2)
-  {
-    AppMethodBeat.i(60648);
-    p.k(paramay1, "first");
-    p.k(paramay2, "second");
-    if (paramay1.isEmpty())
+    AppMethodBeat.i(60639);
+    if (paramList1 == null) {
+      aKu(0);
+    }
+    if (parambc == null) {
+      aKu(1);
+    }
+    if (paraml == null) {
+      aKu(2);
+    }
+    if (paramList2 == null) {
+      aKu(3);
+    }
+    paramList1 = a(paramList1, parambc, paraml, paramList2, null);
+    if (paramList1 == null)
     {
-      AppMethodBeat.o(60648);
-      return paramay2;
+      paramList1 = new AssertionError("Substitution failed");
+      AppMethodBeat.o(60639);
+      throw paramList1;
     }
-    if (paramay2.isEmpty())
+    if (paramList1 == null) {
+      aKu(4);
+    }
+    AppMethodBeat.o(60639);
+    return paramList1;
+  }
+  
+  public static be a(List<ba> paramList1, bc parambc, l paraml, List<ba> paramList2, boolean[] paramArrayOfBoolean)
+  {
+    AppMethodBeat.i(60640);
+    if (paramList1 == null) {
+      aKu(5);
+    }
+    if (parambc == null) {
+      aKu(6);
+    }
+    if (paraml == null) {
+      aKu(7);
+    }
+    if (paramList2 == null) {
+      aKu(8);
+    }
+    Object localObject1 = new HashMap();
+    HashMap localHashMap = new HashMap();
+    int i = 0;
+    Iterator localIterator = paramList1.iterator();
+    Object localObject2;
+    while (localIterator.hasNext())
     {
-      AppMethodBeat.o(60648);
-      return paramay1;
+      localObject2 = (ba)localIterator.next();
+      aj localaj = aj.a(paraml, ((ba)localObject2).knl(), ((ba)localObject2).kon(), ((ba)localObject2).kom(), ((ba)localObject2).kok(), i, av.aiHu, ((ba)localObject2).kol());
+      ((Map)localObject1).put(((ba)localObject2).kmZ(), new bb(localaj.koj()));
+      localHashMap.put(localObject2, localaj);
+      paramList2.add(localaj);
+      i += 1;
     }
-    paramay1 = (ay)new q(paramay1, paramay2, (byte)0);
-    AppMethodBeat.o(60648);
-    return paramay1;
-  }
-  
-  public final av N(ab paramab)
-  {
-    AppMethodBeat.i(60642);
-    p.k(paramab, "key");
-    av localav2 = this.abqi.N(paramab);
-    av localav1 = localav2;
-    if (localav2 == null) {
-      localav1 = this.abqj.N(paramab);
-    }
-    AppMethodBeat.o(60642);
-    return localav1;
-  }
-  
-  public final ab a(ab paramab, bh parambh)
-  {
-    AppMethodBeat.i(60643);
-    p.k(paramab, "topLevelType");
-    p.k(parambh, "position");
-    paramab = this.abqj.a(this.abqi.a(paramab, parambh), parambh);
-    AppMethodBeat.o(60643);
-    return paramab;
-  }
-  
-  public final g h(g paramg)
-  {
-    AppMethodBeat.i(60646);
-    p.k(paramg, "annotations");
-    paramg = this.abqj.h(this.abqi.h(paramg));
-    AppMethodBeat.o(60646);
-    return paramg;
-  }
-  
-  public final boolean iOW()
-  {
-    AppMethodBeat.i(60645);
-    if ((this.abqi.iOW()) || (this.abqj.iOW()))
+    paramList2 = ay.dE((Map)localObject1);
+    paraml = be.b(parambc, paramList2);
+    parambc = be.b(parambc.kAP(), paramList2);
+    paramList2 = paramList1.iterator();
+    while (paramList2.hasNext())
     {
-      AppMethodBeat.o(60645);
-      return true;
+      paramList1 = (ba)paramList2.next();
+      localObject1 = (aj)localHashMap.get(paramList1);
+      localIterator = paramList1.klF().iterator();
+      while (localIterator.hasNext())
+      {
+        localObject2 = (ad)localIterator.next();
+        paramList1 = ((ad)localObject2).kzm().knA();
+        if (((paramList1 instanceof ba)) && (a.e((ba)paramList1))) {}
+        for (paramList1 = paraml;; paramList1 = parambc)
+        {
+          paramList1 = paramList1.c((ad)localObject2, bl.ajqO);
+          if (paramList1 != null) {
+            break;
+          }
+          AppMethodBeat.o(60640);
+          return null;
+        }
+        if ((paramList1 != localObject2) && (paramArrayOfBoolean != null)) {
+          paramArrayOfBoolean[0] = true;
+        }
+        ((aj)localObject1).D(paramList1);
+      }
+      ((aj)localObject1).kqm();
     }
-    AppMethodBeat.o(60645);
-    return false;
+    AppMethodBeat.o(60640);
+    return paraml;
   }
-  
-  public final boolean iPR()
-  {
-    AppMethodBeat.i(60644);
-    if ((this.abqi.iPR()) || (this.abqj.iPR()))
-    {
-      AppMethodBeat.o(60644);
-      return true;
-    }
-    AppMethodBeat.o(60644);
-    return false;
-  }
-  
-  public final boolean isEmpty()
-  {
-    return false;
-  }
-  
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.m.q
  * JD-Core Version:    0.7.0.1
  */

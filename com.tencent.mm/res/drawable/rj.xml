@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ripple android:color="?g6"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_focused="true" android:drawable="@drawable/bxu" />
+    <item android:drawable="@drawable/bxv" />
+</selector>

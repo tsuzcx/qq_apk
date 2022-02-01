@@ -56,9 +56,9 @@ public class RecoveryHandleService
       startService(new Intent(this, InnerService.class));
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      RecoveryLog.i("Recovery.RecoveryHandleService", "try to increase recovery process priority error:".concat(String.valueOf(localThrowable)), new Object[0]);
+      RecoveryLog.i("Recovery.RecoveryHandleService", "try to increase recovery process priority error:".concat(String.valueOf(localObject)), new Object[0]);
     }
   }
   
@@ -179,11 +179,11 @@ public class RecoveryHandleService
         stopSelf();
         return;
       }
-      catch (Throwable localThrowable)
+      finally
       {
         for (;;)
         {
-          RecoveryLog.e("Recovery.RecoveryHandleService", "InnerService set service for push exception:%s.", new Object[] { localThrowable });
+          RecoveryLog.e("Recovery.RecoveryHandleService", "InnerService set service for push exception:%s.", new Object[] { localObject });
         }
       }
     }
@@ -197,7 +197,7 @@ public class RecoveryHandleService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.recovery.service.RecoveryHandleService
  * JD-Core Version:    0.7.0.1
  */

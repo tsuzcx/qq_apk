@@ -14,36 +14,36 @@ import com.tencent.mm.R.f;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
 import com.tencent.mm.R.k;
-import com.tencent.mm.ci.a;
-import com.tencent.mm.f.c.ax;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.model.aa;
 import com.tencent.mm.model.ab;
 import com.tencent.mm.model.v;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.pluginsdk.ui.span.l;
-import com.tencent.mm.storage.as;
+import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.storage.au;
 import java.util.List;
 
 public final class n
   extends BaseAdapter
 {
-  private List<String> Xsy;
-  private boolean Xsz;
+  private List<String> afdZ;
+  private boolean afea;
   private Context context;
-  private List<as> jbu;
+  private List<au> lDu;
   
-  public n(Context paramContext, List<as> paramList, List<String> paramList1, boolean paramBoolean)
+  public n(Context paramContext, List<au> paramList, List<String> paramList1, boolean paramBoolean)
   {
-    this.jbu = paramList;
+    this.lDu = paramList;
     this.context = paramContext;
-    this.Xsz = paramBoolean;
-    this.Xsy = paramList1;
+    this.afea = paramBoolean;
+    this.afdZ = paramList1;
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(37849);
-    int i = this.jbu.size();
+    int i = this.lDu.size();
     AppMethodBeat.o(37849);
     return i;
   }
@@ -51,7 +51,7 @@ public final class n
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(37850);
-    Object localObject = this.jbu.get(paramInt);
+    Object localObject = this.lDu.get(paramInt);
     AppMethodBeat.o(37850);
     return localObject;
   }
@@ -64,33 +64,33 @@ public final class n
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(37848);
-    as localas = (as)this.jbu.get(paramInt);
+    au localau = (au)this.lDu.get(paramInt);
     if (paramView == null)
     {
       paramViewGroup = new GroupCardSelectUI.a();
-      paramView = View.inflate(this.context, R.i.ehx, null);
-      paramViewGroup.Efd = ((TextView)paramView.findViewById(R.h.dIc));
-      paramViewGroup.XsM = ((TextView)paramView.findViewById(R.h.dId));
-      paramViewGroup.mWb = ((ImageView)paramView.findViewById(R.h.dIb));
-      paramViewGroup.GUH = ((CheckBox)paramView.findViewById(R.h.select_cb));
+      paramView = View.inflate(this.context, R.i.gks, null);
+      paramViewGroup.JXk = ((TextView)paramView.findViewById(R.h.fJp));
+      paramViewGroup.afen = ((TextView)paramView.findViewById(R.h.fJq));
+      paramViewGroup.avatar = ((ImageView)paramView.findViewById(R.h.fJo));
+      paramViewGroup.MSj = ((CheckBox)paramView.findViewById(R.h.select_cb));
       paramView.setTag(paramViewGroup);
-      a.b.c(paramViewGroup.mWb, localas.field_username);
-      paramViewGroup.XsM.setText(l.d(this.context, aa.PJ(localas.field_username), a.aY(this.context, R.f.NormalTextSize)));
-      paramViewGroup.Efd.setText("(" + v.Pu(localas.field_username) + ")");
-      if (!ab.PR(localas.field_username)) {
+      a.b.g(paramViewGroup.avatar, localau.field_username);
+      paramViewGroup.afen.setText(p.d(this.context, aa.getDisplayName(localau.field_username), a.br(this.context, R.f.NormalTextSize)));
+      paramViewGroup.JXk.setText("(" + v.getMembersCountByChatRoomName(localau.field_username) + ")");
+      if (!ab.IG(localau.field_username)) {
         break label297;
       }
       Drawable localDrawable = this.context.getResources().getDrawable(R.k.open_im_main_logo);
       localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-      paramViewGroup.XsM.setCompoundDrawablesWithIntrinsicBounds(null, null, localDrawable, null);
+      paramViewGroup.afen.setCompoundDrawablesWithIntrinsicBounds(null, null, localDrawable, null);
       label239:
-      if (this.Xsz)
+      if (this.afea)
       {
-        paramViewGroup.GUH.setVisibility(0);
-        if (!this.Xsy.contains(localas.field_username)) {
+        paramViewGroup.MSj.setVisibility(0);
+        if (!this.afdZ.contains(localau.field_username)) {
           break label311;
         }
-        paramViewGroup.GUH.setChecked(true);
+        paramViewGroup.MSj.setChecked(true);
       }
     }
     for (;;)
@@ -100,16 +100,16 @@ public final class n
       paramViewGroup = (GroupCardSelectUI.a)paramView.getTag();
       break;
       label297:
-      paramViewGroup.XsM.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+      paramViewGroup.afen.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
       break label239;
       label311:
-      paramViewGroup.GUH.setChecked(false);
+      paramViewGroup.MSj.setChecked(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.contact.n
  * JD-Core Version:    0.7.0.1
  */

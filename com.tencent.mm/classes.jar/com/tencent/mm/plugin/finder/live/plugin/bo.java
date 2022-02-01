@@ -1,464 +1,306 @@
 package com.tencent.mm.plugin.finder.live.plugin;
 
-import android.graphics.PointF;
-import android.graphics.Rect;
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.ViewGroup;
-import androidx.lifecycle.r;
-import androidx.lifecycle.s;
-import com.tencent.c.a.a.a.d.e;
+import com.tencent.d.a.a.a.b.b.k;
+import com.tencent.d.a.a.a.b.b.k.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.live.c.b.c;
-import com.tencent.mm.plugin.finder.live.component.t.b;
-import com.tencent.mm.plugin.finder.live.component.t.c;
-import com.tencent.mm.plugin.finder.live.component.u;
-import com.tencent.mm.plugin.finder.live.component.v;
-import com.tencent.mm.plugin.finder.live.model.ah;
-import com.tencent.mm.plugin.finder.live.report.m;
-import com.tencent.mm.plugin.finder.live.report.s.at;
-import com.tencent.mm.plugin.finder.live.report.s.au;
-import com.tencent.mm.plugin.finder.live.viewmodel.data.business.c;
-import com.tencent.mm.plugin.finder.live.viewmodel.data.business.f;
-import com.tencent.mm.protocal.protobuf.bac;
-import com.tencent.mm.protocal.protobuf.crw;
+import com.tencent.mm.am.b.a;
+import com.tencent.mm.live.b.b.c;
+import com.tencent.mm.plugin.finder.api.g;
+import com.tencent.mm.plugin.finder.live.model.af;
+import com.tencent.mm.plugin.finder.live.model.af.c;
+import com.tencent.mm.plugin.finder.live.model.aj;
+import com.tencent.mm.plugin.finder.live.viewmodel.data.business.e;
+import com.tencent.mm.plugin.finder.live.viewmodel.data.business.n;
+import com.tencent.mm.plugin.finder.live.viewmodel.data.business.n.c;
+import com.tencent.mm.plugin.finder.utils.bi;
+import com.tencent.mm.plugin.finder.utils.bj;
+import com.tencent.mm.plugin.findersdk.a.cn;
+import com.tencent.mm.protocal.protobuf.bkq;
+import com.tencent.mm.protocal.protobuf.brs;
+import com.tencent.mm.protocal.protobuf.cds;
+import com.tencent.mm.protocal.protobuf.dcg;
+import com.tencent.mm.protocal.protobuf.dch;
+import com.tencent.mm.protocal.protobuf.eom;
+import com.tencent.mm.protocal.protobuf.eon;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.aw;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import kotlin.g.b.p;
-import kotlin.o;
-import kotlin.t;
-import kotlin.x;
+import com.tencent.mm.ui.component.k;
+import com.tencent.mm.ui.component.k.b;
+import com.tencent.mm.vending.e.c;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.m;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveLuckyMoneyBubblePlugin;", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "anchorShowingLocation", "Landroidx/lifecycle/MutableLiveData;", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveLuckyMoneyBubblePlugin$ShowingLocation;", "getAnchorShowingLocation", "()Landroidx/lifecycle/MutableLiveData;", "map", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lkotlin/Pair;", "Lcom/tencent/mm/plugin/finder/live/component/FinderLiveLuckyMoneyBubbleContract$Presenter;", "Lcom/tencent/mm/plugin/finder/live/component/FinderLiveLuckyMoneyBubbleContract$ViewCallback;", "canClearScreen", "", "getAnchorLuckyMoneyBottom", "", "onMicUserChanged", "", "micUserMap", "Ljava/util/LinkedHashMap;", "Landroid/graphics/Rect;", "Lkotlin/collections/LinkedHashMap;", "isPkAnchor", "register", "refPoint", "Landroid/graphics/PointF;", "sdkUserId", "setVisible", "visible", "", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "unregister", "updateLotteryStatus", "showingLocation", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveLotteryBubblePlugin$ShowingLocation;", "updateRedPacket", "watchLotteryBubbleShowingLocation", "Companion", "ShowingLocation", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveOlympicsPlugin;", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "reportObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "commentPoller", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveOlympicsPlugin$CommentPoller;", "getCommentPoller", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveOlympicsPlugin$CommentPoller;", "setCommentPoller", "(Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveOlympicsPlugin$CommentPoller;)V", "from", "", "getFrom", "()I", "lifeCycleKeeper", "Lcom/tencent/mm/vending/lifecycle/LifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "getLifeCycleKeeper", "()Lcom/tencent/mm/vending/lifecycle/LifeCycleKeeper;", "setLifeCycleKeeper", "(Lcom/tencent/mm/vending/lifecycle/LifeCycleKeeper;)V", "remainRetryCount", "getRemainRetryCount", "setRemainRetryCount", "(I)V", "statusListener", "Lkotlin/Function0;", "", "getStatusMonitor", "()Lcom/tencent/mm/live/plugin/ILiveStatus;", "initSport", "initTorch", "mount", "notifyStreamStatusChanged", "setVisible", "visible", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "unMount", "CommentPoller", "Companion", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class bo
-  extends d
+  extends b
 {
-  public static final a yuj;
-  private final ConcurrentHashMap<String, o<t.b, t.c>> cDe;
-  private final com.tencent.mm.live.c.b kCL;
-  public final r<b> yui;
+  public static final b Dhs;
+  private static final String TAG;
+  private c<com.tencent.mm.vending.e.a> AAh;
+  int Dht;
+  private a Dhu;
+  private final kotlin.g.a.a<ah> Dhv;
+  private final MMActivity activity;
+  private final int from;
+  final com.tencent.mm.live.b.b nfT;
   
   static
   {
-    AppMethodBeat.i(263607);
-    yuj = new a((byte)0);
-    AppMethodBeat.o(263607);
+    AppMethodBeat.i(355290);
+    Dhs = new b((byte)0);
+    TAG = "Finder.FinderLiveOlympicsPlugin";
+    AppMethodBeat.o(355290);
   }
   
-  public bo(ViewGroup paramViewGroup, com.tencent.mm.live.c.b paramb)
+  private bo(ViewGroup paramViewGroup, com.tencent.mm.live.b.b paramb, MMActivity paramMMActivity)
   {
-    super(paramViewGroup, paramb);
-    AppMethodBeat.i(263606);
-    this.kCL = paramb;
-    this.cDe = new ConcurrentHashMap();
-    this.yui = new r();
-    AppMethodBeat.o(263606);
+    super(paramViewGroup, paramb, null);
+    AppMethodBeat.i(355228);
+    this.nfT = paramb;
+    this.activity = paramMMActivity;
+    paramViewGroup = this.activity.getIntent();
+    paramb = b.k.ahpq;
+    this.from = paramViewGroup.getIntExtra("KEY_ENTER_LIVE_PARAM_LIVE_EVENT_SOURCE", b.k.a.jWl());
+    this.Dht = 2;
+    this.AAh = new c();
+    this.Dhv = ((kotlin.g.a.a)new g(this));
+    AppMethodBeat.o(355228);
   }
   
-  private final void a(PointF paramPointF, String paramString)
+  private final void eru()
   {
-    AppMethodBeat.i(263591);
-    Log.i("FinderLiveLuckyMoneyBubblePlugin", "register sdkUserId:".concat(String.valueOf(paramString)));
-    if (this.cDe.containsKey(paramString))
-    {
-      AppMethodBeat.o(263591);
-      return;
-    }
-    if (p.h(paramString, ((c)business(c.class)).kvP.Tzp)) {}
-    Object localObject2;
-    Object localObject3;
-    for (Object localObject1 = new com.tencent.mm.plugin.finder.live.viewmodel.data.h(paramString, null, null, null, 0, "", null, false, 0, null, null, 0, 0, false, null, 0L, null, 262016);; localObject1 = ((f)business(f.class)).aDb(paramString))
-    {
-      Log.i("FinderLiveLuckyMoneyBubblePlugin", "register bindMicUser:".concat(String.valueOf(localObject1)));
-      if (localObject1 == null) {
-        break label278;
-      }
-      localObject2 = getBuContext();
-      localObject3 = this.kCL;
-      ah localah = ah.yhC;
-      localObject1 = new u((com.tencent.mm.plugin.finder.live.model.context.a)localObject2, (com.tencent.mm.live.c.b)localObject3, ah.getFinderLiveAssistant(), (com.tencent.mm.plugin.finder.live.viewmodel.data.h)localObject1);
-      localObject2 = this.kiF;
-      localObject3 = this.kiF.getContext();
-      if (localObject3 != null) {
-        break;
-      }
-      paramPointF = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-      AppMethodBeat.o(263591);
-      throw paramPointF;
-    }
-    paramPointF = new v((ViewGroup)localObject2, (MMActivity)localObject3, (t.b)localObject1, paramPointF);
-    ((u)localObject1).a((t.c)paramPointF);
-    ((Map)this.cDe).put(paramString, new o(localObject1, paramPointF));
-    if (paramString.equals(((c)business(c.class)).kvP.Tzp)) {
-      paramPointF.ybX = this.yui;
-    }
-    AppMethodBeat.o(263591);
-    return;
-    label278:
-    AppMethodBeat.o(263591);
+    AppMethodBeat.i(355247);
+    Object localObject = bi.GlP;
+    localObject = (com.tencent.mm.vending.e.b)this.AAh;
+    dcg localdcg = new dcg();
+    localdcg.source = this.from;
+    ah localah = ah.aiuX;
+    bi.a((com.tencent.mm.vending.e.b)localObject, localdcg, (m)new e(this));
+    AppMethodBeat.o(355247);
   }
   
-  public final void a(LinkedHashMap<String, Rect> paramLinkedHashMap, boolean paramBoolean)
+  public final void mount()
   {
-    AppMethodBeat.i(263603);
-    p.k(paramLinkedHashMap, "micUserMap");
-    Object localObject3 = new ArrayList();
-    Object localObject4;
-    for (;;)
+    Object localObject2 = null;
+    AppMethodBeat.i(355321);
+    this.AAh = new c();
+    super.mount();
+    Object localObject1 = (com.tencent.mm.bx.a)new brs();
+    Object localObject3 = this.activity.getIntent().getByteArrayExtra("KEY_ENTER_LIVE_PARAM_OLYMPIC_FIRE_AUTHOR_INFO");
+    try
     {
-      String str;
-      synchronized ((Map)this.cDe)
+      ((com.tencent.mm.bx.a)localObject1).parseFrom((byte[])localObject3);
+      localObject3 = (brs)localObject1;
+      StringBuilder localStringBuilder = new StringBuilder("fireAuthorInfo After gotoLive AuthorId: ");
+      if (localObject3 == null)
       {
-        localObject4 = ((Map)???).entrySet().iterator();
-        if (!((Iterator)localObject4).hasNext()) {
-          break;
+        localObject1 = null;
+        localStringBuilder = localStringBuilder.append(localObject1).append(", AuthorIndex: ");
+        if (localObject3 != null) {
+          break label257;
         }
-        localObject5 = (Map.Entry)((Iterator)localObject4).next();
-        str = (String)((Map.Entry)localObject5).getKey();
-        if (str.equals(((c)business(c.class)).kvP.Tzp)) {
-          continue;
+        localObject1 = null;
+        localStringBuilder = localStringBuilder.append(localObject1).append(", byPassInfo: ");
+        if (localObject3 != null) {
+          break label266;
         }
-        ??? = ((f)business(f.class)).zhm;
-        p.j(???, "business(LiveLinkMicSlic…).audienceLinkMicUserList");
-      }
-      synchronized ((Iterable)???)
-      {
-        Iterator localIterator = ???.iterator();
-        for (;;)
-        {
-          if (localIterator.hasNext())
-          {
-            ??? = localIterator.next();
-            paramBoolean = Util.isEqual(str, ((com.tencent.mm.plugin.finder.live.viewmodel.data.h)???).ktR);
-            if (paramBoolean)
-            {
-              if (??? != null) {
-                break;
-              }
-              Log.i("FinderLiveLuckyMoneyBubblePlugin", "old mic " + (o)((Map.Entry)localObject5).getValue() + " removed");
-              ((ArrayList)localObject3).add(str);
-              break;
-              paramLinkedHashMap = finally;
-              AppMethodBeat.o(263603);
-              throw paramLinkedHashMap;
-            }
-          }
-        }
-        ??? = null;
-      }
-    }
-    ??? = x.aazN;
-    ??? = ((Iterable)localObject3).iterator();
-    while (((Iterator)???).hasNext())
-    {
-      ??? = (String)((Iterator)???).next();
-      p.k(???, "sdkUserId");
-      Log.i("FinderLiveLuckyMoneyBubblePlugin", "unregister sdkUserId:".concat(String.valueOf(???)));
-      localObject4 = (o)this.cDe.get(???);
-      if (localObject4 != null)
-      {
-        p.j(localObject4, "map[sdkUserId] ?: return");
-        localObject3 = (t.b)((o)localObject4).Mx;
-        localObject4 = (t.c)((o)localObject4).My;
-        ((t.b)localObject3).onDetach();
-        ((t.c)localObject4).release();
-        this.cDe.remove(???);
-      }
-    }
-    ??? = ((f)business(f.class)).zhm;
-    p.j(???, "business(LiveLinkMicSlic…).audienceLinkMicUserList");
-    float f1;
-    label639:
-    do
-    {
-      do
-      {
-        for (;;)
-        {
-          synchronized ((Iterable)???)
-          {
-            ??? = ((Iterable)???).iterator();
-            if (!((Iterator)???).hasNext()) {
-              break label746;
-            }
-            localObject4 = (com.tencent.mm.plugin.finder.live.viewmodel.data.h)((Iterator)???).next();
-            localObject3 = ((com.tencent.mm.plugin.finder.live.viewmodel.data.h)localObject4).ktR;
-            if (localObject3 == null) {
-              continue;
-            }
-            if (this.cDe.get(localObject3) != null) {
-              break;
-            }
-            Log.i("FinderLiveLuckyMoneyBubblePlugin", "new mic user:" + ((com.tencent.mm.plugin.finder.live.viewmodel.data.h)localObject4).nickname + " micId:" + ((com.tencent.mm.plugin.finder.live.viewmodel.data.h)localObject4).sessionId + " sdkUserId:" + ((com.tencent.mm.plugin.finder.live.viewmodel.data.h)localObject4).ktR + " added");
-            localObject4 = (Rect)paramLinkedHashMap.get(localObject3);
-            if (localObject4 != null)
-            {
-              f1 = ((Rect)localObject4).left;
-              localObject4 = (Rect)paramLinkedHashMap.get(localObject3);
-              if (localObject4 == null) {
-                break label639;
-              }
-              f2 = ((Rect)localObject4).top;
-              a(new PointF(f1, f2), (String)localObject3);
-            }
-          }
-          f1 = 0.0F;
-          continue;
-          f2 = 0.0F;
-        }
-        localObject4 = (o)this.cDe.get(localObject3);
-      } while (localObject4 == null);
-      localObject4 = (t.c)((o)localObject4).My;
-    } while (localObject4 == null);
-    Object localObject5 = (Rect)paramLinkedHashMap.get(localObject3);
-    if (localObject5 != null)
-    {
-      f1 = ((Rect)localObject5).left;
-      label702:
-      localObject3 = (Rect)paramLinkedHashMap.get(localObject3);
-      if (localObject3 == null) {
-        break label765;
-      }
-    }
-    label746:
-    label765:
-    for (float f2 = ((Rect)localObject3).top;; f2 = 0.0F)
-    {
-      ((t.c)localObject4).c(new PointF(f1, f2));
-      break;
-      paramLinkedHashMap = x.aazN;
-      AppMethodBeat.o(263603);
-      return;
-      f1 = 0.0F;
-      break label702;
-    }
-  }
-  
-  public final boolean dAo()
-  {
-    return true;
-  }
-  
-  public final void dBY()
-  {
-    boolean bool = true;
-    AppMethodBeat.i(263594);
-    Object localObject1 = "";
-    Object localObject3 = ((Map)this.cDe).entrySet().iterator();
-    int i = 0;
-    Object localObject2;
-    if (((Iterator)localObject3).hasNext())
-    {
-      localObject2 = (Map.Entry)((Iterator)localObject3).next();
-      if (!((t.b)((o)((Map.Entry)localObject2).getValue()).Mx).dxC()) {
-        break label265;
-      }
-      localObject2 = ((t.b)((o)((Map.Entry)localObject2).getValue()).Mx).dxD();
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = "";
-      }
-      i = 1;
-    }
-    label258:
-    label265:
-    for (;;)
-    {
-      break;
-      if (i != 0)
-      {
-        tU(0);
-        localObject2 = m.yCt;
-        localObject3 = s.au.yJR;
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          break label232;
-        }
-        localObject1 = s.at.yJO;
-        label150:
-        if (i == 0) {
-          break label239;
+        localObject1 = localObject2;
+        Log.i("Plugin.FinderLive", localObject1);
+        ((n)getBuContext().business(n.class)).Ehe = ((brs)localObject3);
+        localObject1 = (n)getBuContext().business(n.class);
+        if (localObject3 != null) {
+          break label275;
         }
         i = 0;
-        label156:
-        p.k(localObject3, "type");
-        p.k(localObject1, "src");
-        com.tencent.mm.plugin.finder.live.utils.a locala = com.tencent.mm.plugin.finder.live.utils.a.yRm;
-        if (com.tencent.mm.plugin.finder.live.utils.a.dEy()) {
-          break label258;
+        if (i != 1) {
+          break label284;
         }
-        if (localObject3 != s.au.yJR) {
-          break label250;
-        }
-        if ((!m.yCs) && (i == 0)) {
-          ((m)localObject2).a((s.au)localObject3, (s.at)localObject1);
-        }
-        if (i != 0) {
-          break label245;
-        }
+        bool = true;
+        ((n)localObject1).Ehg = bool;
+        this.activity.getIntent().removeExtra("KEY_ENTER_LIVE_PARAM_OLYMPIC_FIRE_AUTHOR_INFO");
+        ((e)business(e.class)).bp(this.Dhv);
+        AppMethodBeat.o(355321);
       }
+    }
+    catch (Exception localException)
+    {
       for (;;)
       {
-        m.yCs = bool;
-        AppMethodBeat.o(263594);
-        return;
-        tU(8);
-        break;
-        label232:
-        localObject1 = s.at.yJP;
-        break label150;
-        label239:
-        i = 8;
-        break label156;
-        label245:
-        bool = false;
-      }
-      label250:
-      ((m)localObject2).a((s.au)localObject3, (s.at)localObject1);
-      AppMethodBeat.o(263594);
-      return;
-    }
-  }
-  
-  public final float dBZ()
-  {
-    AppMethodBeat.i(263598);
-    Object localObject = ((c)business(c.class)).kvP.Tzp;
-    if (localObject == null)
-    {
-      AppMethodBeat.o(263598);
-      return 0.0F;
-    }
-    localObject = (o)this.cDe.get(localObject);
-    if (localObject != null)
-    {
-      localObject = (t.c)((o)localObject).My;
-      if (localObject != null)
-      {
-        float f = ((t.c)localObject).dxG();
-        AppMethodBeat.o(263598);
-        return f;
+        Log.printDebugStack("safeParser", "", new Object[] { localException });
+        String str = null;
+        continue;
+        str = ((brs)localObject3).ZVr;
+        continue;
+        label257:
+        str = ((brs)localObject3).ZVq;
+        continue;
+        label266:
+        str = ((brs)localObject3).ZVp;
+        continue;
+        label275:
+        int i = ((brs)localObject3).ZZU;
+        continue;
+        label284:
+        boolean bool = false;
       }
     }
-    AppMethodBeat.o(263598);
-    return 0.0F;
   }
   
   public final void statusChange(b.c paramc, Bundle paramBundle)
   {
-    AppMethodBeat.i(263590);
-    p.k(paramc, "status");
-    switch (bp.$EnumSwitchMapping$0[paramc.ordinal()])
+    AppMethodBeat.i(355306);
+    s.u(paramc, "status");
+    if (c.$EnumSwitchMapping$0[paramc.ordinal()] == 1)
     {
-    }
-    Object localObject;
-    do
-    {
-      do
+      paramc = bj.GlQ;
+      if (bj.y(getBuContext()))
       {
-        AppMethodBeat.o(263590);
-        return;
-        localObject = new PointF(0.0F, aw.fromDPToPix(this.kiF.getContext(), 136));
-        paramBundle = ((c)business(c.class)).kvP.Tzp;
-        paramc = paramBundle;
-        if (paramBundle == null) {
-          paramc = "";
-        }
-        a((PointF)localObject, paramc);
-        paramc = (bk)getPlugin(bk.class);
+        paramc = k.aeZF;
+        ((g)k.cn(cn.class).cq(g.class)).pH(false);
+        eru();
+        this.Dhu = new a(((n)business(n.class)).Dhw);
+        paramc = this.Dhu;
         if (paramc != null)
         {
-          paramc = paramc.ytM;
-          if (paramc != null)
-          {
-            paramBundle = this.kiF.getContext();
-            if (paramBundle == null)
-            {
-              paramc = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-              AppMethodBeat.o(263590);
-              throw paramc;
-            }
-            paramc.a((androidx.lifecycle.l)paramBundle, (s)new c(this));
-            AppMethodBeat.o(263590);
-            return;
-          }
+          a.erv();
+          paramBundle = new eom();
+          paramBundle.ZEQ = paramc.Dhw.lastBuffer;
+          aj localaj = aj.CGT;
+          aj.elm().a(9, (com.tencent.mm.bx.a)paramBundle, (af.c)new bo.a.a(paramc, eon.class));
         }
-        AppMethodBeat.o(263590);
-        return;
-        paramc = u.ybO;
-        long l = ((c)business(c.class)).liveInfo.liveId;
-        ((com.tencent.c.a.a.a.b)com.tencent.mm.kernel.h.ag(com.tencent.c.a.a.a.b.class)).getFinderLiveLuckyMoneyStorage().Ls(l);
-        AppMethodBeat.o(263590);
-        return;
-      } while (paramBundle == null);
-      paramc = paramBundle.getString("PARAM_FINDER_LIVE_LUCKY_MONEY_SEND_ID");
-    } while (paramc == null);
-    paramBundle = ((Map)this.cDe).entrySet().iterator();
-    while (paramBundle.hasNext())
-    {
-      localObject = (t.b)((o)((Map.Entry)paramBundle.next()).getValue()).Mx;
-      p.j(paramc, "sendId");
-      ((t.b)localObject).aBV(paramc);
+      }
     }
-    AppMethodBeat.o(263590);
+    AppMethodBeat.o(355306);
   }
   
-  public final void tU(int paramInt)
+  public final void tO(int paramInt) {}
+  
+  public final void unMount()
   {
-    AppMethodBeat.i(263596);
-    com.tencent.mm.kernel.c.a locala = com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.teenmode.a.b.class);
-    p.j(locala, "MMKernel.service(ITeenModeService::class.java)");
-    if (((com.tencent.mm.plugin.teenmode.a.b)locala).ZM())
-    {
-      this.kiF.setVisibility(8);
-      Log.w("FinderLiveLuckyMoneyBubblePlugin", "setVisible return for isTeenMode");
-      AppMethodBeat.o(263596);
-      return;
+    AppMethodBeat.i(355331);
+    this.AAh.dead();
+    super.unMount();
+    if (this.Dhu != null) {
+      a.erv();
     }
-    super.tU(paramInt);
-    AppMethodBeat.o(263596);
+    e locale = (e)business(e.class);
+    kotlin.g.a.a locala = this.Dhv;
+    s.u(locala, "listener");
+    locale.EcC.remove(locala);
+    this.Dht = 2;
+    AppMethodBeat.o(355331);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveLuckyMoneyBubblePlugin$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveLuckyMoneyBubblePlugin$ShowingLocation;", "", "(Ljava/lang/String;I)V", "GONE", "DEFAULT_LOCATION", "TRANSLATED_LOCATION", "plugin-finder_release"})
-  public static enum b
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveOlympicsPlugin$CommentPoller;", "", "commentStore", "Lcom/tencent/mm/plugin/finder/live/viewmodel/data/business/LiveOlympicsSlice$CommentStore;", "(Lcom/tencent/mm/plugin/finder/live/viewmodel/data/business/LiveOlympicsSlice$CommentStore;)V", "getCommentStore", "()Lcom/tencent/mm/plugin/finder/live/viewmodel/data/business/LiveOlympicsSlice$CommentStore;", "startPollComment", "", "stopPollComment", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
   {
-    static
+    final n.c Dhw;
+    
+    public a(n.c paramc)
     {
-      AppMethodBeat.i(291854);
-      b localb1 = new b("GONE", 0);
-      yuk = localb1;
-      b localb2 = new b("DEFAULT_LOCATION", 1);
-      yul = localb2;
-      b localb3 = new b("TRANSLATED_LOCATION", 2);
-      yum = localb3;
-      yun = new b[] { localb1, localb2, localb3 };
-      AppMethodBeat.o(291854);
+      AppMethodBeat.i(353669);
+      this.Dhw = paramc;
+      AppMethodBeat.o(353669);
     }
     
-    private b() {}
+    public static void erv()
+    {
+      AppMethodBeat.i(353677);
+      aj localaj = aj.CGT;
+      aj.elm().OQ(9);
+      AppMethodBeat.o(353677);
+    }
+    
+    @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/live/plugin/FinderLiveOlympicsPlugin$CommentPoller$startPollComment$1", "Lcom/tencent/mm/plugin/finder/live/model/FinderLivePollingService$PollingEventCallback;", "Lcom/tencent/mm/protocal/protobuf/RefreshCommentResponse;", "onPollingSuccess", "", "result", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+    public static final class a
+      extends af.c<eon>
+    {
+      a(bo.a parama, Class<eon> paramClass)
+      {
+        super();
+      }
+      
+      @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+      static final class a
+        extends u
+        implements kotlin.g.a.a<ah>
+      {
+        a(bo.a parama, eon parameon)
+        {
+          super();
+        }
+      }
+    }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "showingLocation", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveLotteryBubblePlugin$ShowingLocation;", "kotlin.jvm.PlatformType", "onChanged"})
-  static final class c<T>
-    implements s<bk.b>
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveOlympicsPlugin$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b {}
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "cgiBack", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveOpenTransferResponse;", "response", "Lcom/tencent/mm/protocal/protobuf/GetActivityInfoResponse;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class d
+    extends u
+    implements m<b.a<bkq>, cds, ah>
   {
-    c(bo parambo) {}
+    d(bo parambo)
+    {
+      super();
+    }
+    
+    @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+    static final class a
+      extends u
+      implements kotlin.g.a.a<ah>
+    {
+      a(bo parambo)
+      {
+        super();
+      }
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "cgiBack", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveOpenTransferResponse;", "response", "Lcom/tencent/mm/protocal/protobuf/InitTorchLiveResponse;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class e
+    extends u
+    implements m<b.a<bkq>, dch, ah>
+  {
+    e(bo parambo)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class f
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    f(bo parambo)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class g
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    g(bo parambo)
+    {
+      super();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.plugin.bo
  * JD-Core Version:    0.7.0.1
  */

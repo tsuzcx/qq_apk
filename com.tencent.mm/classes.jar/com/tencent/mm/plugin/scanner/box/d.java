@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.scanner.box;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/box/BoxDialogBackgroundViewModel;", "", "getBackgroundTransY", "", "getMarkViewHeight", "getMarkViewTransY", "setBackgroundTransY", "", "translationY", "setMarkViewTransY", "plugin-scan_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/box/BoxDialogBackgroundViewModel;", "", "getBackgroundTransY", "", "getMarkViewHeight", "getMarkViewTransY", "setBackgroundTransY", "", "translationY", "setMarkViewTransY", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface d
 {
   public abstract float getBackgroundTransY();
@@ -17,7 +17,7 @@ public abstract interface d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.box.d
  * JD-Core Version:    0.7.0.1
  */

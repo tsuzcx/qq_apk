@@ -1,83 +1,90 @@
 package com.tencent.mm.plugin.product.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.eak;
-import com.tencent.mm.protocal.protobuf.tn;
-import com.tencent.mm.protocal.protobuf.to;
-import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
 public final class f
-  extends q
-  implements m
+  extends com.tencent.mm.bx.a
 {
-  private i callback;
-  private d rr;
+  public String MRA;
+  public j MRz;
   
-  public f(LinkedList<eak> paramLinkedList, String paramString)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(66888);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new tn();
-    ((d.a)localObject).lBV = new to();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/cancelpreorder";
-    ((d.a)localObject).funcId = 555;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (tn)d.b.b(this.rr.lBR);
-    ((tn)localObject).Sdm = paramLinkedList;
-    if (paramLinkedList != null) {
-      i = paramLinkedList.size();
-    }
-    ((tn)localObject).GIu = i;
-    ((tn)localObject).Sdn = paramString;
-    Log.d("MicroMsg.NetSceneMallCancelPreOrder", "lockId ".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(66888);
-  }
-  
-  public final int doScene(g paramg, i parami)
-  {
-    AppMethodBeat.i(66890);
-    this.callback = parami;
-    int i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(66890);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 555;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(66889);
-    paramArrayOfByte = (to)d.c.b(((d)params).lBS);
-    paramInt1 = paramInt3;
-    params = paramString;
-    if (paramInt3 == 0)
+    AppMethodBeat.i(91272);
+    if (paramInt == 0)
     {
-      paramInt1 = paramInt3;
-      params = paramString;
-      if (paramArrayOfByte.RPr != 0)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.MRz != null)
       {
-        paramInt1 = paramArrayOfByte.RPr;
-        params = paramArrayOfByte.RPs;
+        paramVarArgs.qD(1, this.MRz.computeSize());
+        this.MRz.writeFields(paramVarArgs);
+      }
+      if (this.MRA != null) {
+        paramVarArgs.g(2, this.MRA);
+      }
+      AppMethodBeat.o(91272);
+      return 0;
+    }
+    if (paramInt == 1) {
+      if (this.MRz == null) {
+        break label344;
       }
     }
-    Log.d("MicroMsg.NetSceneMallCancelPreOrder", "errCode " + paramInt1 + ", errMsg " + params);
-    this.callback.onSceneEnd(paramInt2, paramInt1, params, this);
-    AppMethodBeat.o(66889);
+    label344:
+    for (paramInt = i.a.a.a.qC(1, this.MRz.computeSize()) + 0;; paramInt = 0)
+    {
+      int i = paramInt;
+      if (this.MRA != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.MRA);
+      }
+      AppMethodBeat.o(91272);
+      return i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(91272);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
+        f localf = (f)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(91272);
+          return -1;
+        case 1: 
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            j localj = new j();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localj.parseFrom((byte[])localObject);
+            }
+            localf.MRz = localj;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(91272);
+          return 0;
+        }
+        localf.MRA = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(91272);
+        return 0;
+      }
+      AppMethodBeat.o(91272);
+      return -1;
+    }
   }
 }
 

@@ -4,9 +4,9 @@ import java.util.Map;
 
 public abstract interface f
 {
-  public abstract Map<Integer, Object> ewY();
+  public abstract Map<Integer, Object> fEU();
   
-  public abstract Map<Integer, Object> ewZ();
+  public abstract Map<Integer, Object> fEV();
 }
 
 

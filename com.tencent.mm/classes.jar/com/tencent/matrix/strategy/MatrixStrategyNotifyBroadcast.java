@@ -4,9 +4,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.matrix.d;
 import com.tencent.matrix.e;
 import com.tencent.matrix.e.c;
+import com.tencent.matrix.f;
 import com.tencent.mm.sdk.platformtools.IntentUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -18,7 +18,7 @@ import java.util.Map;
 public class MatrixStrategyNotifyBroadcast
   extends BroadcastReceiver
 {
-  public static final String dez = ;
+  public static final String fdj = ;
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
@@ -29,22 +29,22 @@ public class MatrixStrategyNotifyBroadcast
       return;
     }
     paramContext = paramIntent.getAction();
-    Object localObject1 = IntentUtil.getStringExtra(paramIntent, "strategy");
-    c.i("Matrix.StrategyNotifyBroadcast", "receive MatrixStrategyNotifyBroadcast, process: %s, strategy:%s action:%s", new Object[] { MMApplicationContext.getProcessName(), localObject1, paramContext });
-    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    Object localObject = IntentUtil.getStringExtra(paramIntent, "strategy");
+    c.i("Matrix.StrategyNotifyBroadcast", "receive MatrixStrategyNotifyBroadcast, process: %s, strategy:%s action:%s", new Object[] { MMApplicationContext.getProcessName(), localObject, paramContext });
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      b.XW();
+      b.azA();
       return;
     }
     if (paramContext.equals("statusNotify"))
     {
       paramContext = new HashMap();
-      localObject1 = paramIntent.getStringArrayListExtra("StatusChangeKey");
+      localObject = paramIntent.getStringArrayListExtra("StatusChangeKey");
       paramIntent = paramIntent.getIntegerArrayListExtra("StatusChangeValue");
       boolean bool1;
-      if ((localObject1 == null) || (paramIntent == null))
+      if ((localObject == null) || (paramIntent == null))
       {
-        if (localObject1 == null) {}
+        if (localObject == null) {}
         for (bool1 = true;; bool1 = false)
         {
           if (paramIntent == null) {
@@ -54,32 +54,32 @@ public class MatrixStrategyNotifyBroadcast
           return;
         }
       }
-      if (((List)localObject1).size() != paramIntent.size())
+      if (((List)localObject).size() != paramIntent.size())
       {
-        Log.w("Matrix.StrategyNotifyBroadcast", "keys.size(%s) != values.size(%s)", new Object[] { Integer.valueOf(((List)localObject1).size()), Integer.valueOf(paramIntent.size()) });
+        Log.w("Matrix.StrategyNotifyBroadcast", "keys.size(%s) != values.size(%s)", new Object[] { Integer.valueOf(((List)localObject).size()), Integer.valueOf(paramIntent.size()) });
         return;
       }
       int i = 0;
-      if (i < ((List)localObject1).size())
+      if (i < ((List)localObject).size())
       {
-        Object localObject2 = ((List)localObject1).get(i);
+        String str = (String)((List)localObject).get(i);
         if (((Integer)paramIntent.get(i)).intValue() == 1) {}
         for (bool1 = true;; bool1 = false)
         {
-          paramContext.put(localObject2, Boolean.valueOf(bool1));
+          paramContext.put(str, Boolean.valueOf(bool1));
           i += 1;
           break;
         }
       }
-      d.cQA.cQE.h(paramContext);
+      e.eLE.eLI.o(paramContext);
       return;
     }
-    e.k(paramIntent);
+    f.l(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.strategy.MatrixStrategyNotifyBroadcast
  * JD-Core Version:    0.7.0.1
  */

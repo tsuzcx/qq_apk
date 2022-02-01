@@ -1,6 +1,5 @@
 package androidx.transition;
 
-import android.annotation.SuppressLint;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.view.View;
@@ -8,56 +7,55 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnPreDrawListener;
 import android.widget.FrameLayout;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SuppressLint({"ViewConstructor"})
 final class e
   extends View
   implements g
 {
-  private int PR;
-  private int PS;
-  ViewGroup aqA;
-  View aqB;
-  int aqC;
-  Matrix aqD;
-  private final ViewTreeObserver.OnPreDrawListener aqE;
-  private final Matrix aqj;
+  private final Matrix avQ;
+  private int bwj;
+  private int bwk;
+  ViewGroup cfj;
+  View cfk;
+  int cfl;
+  Matrix cfm;
+  private final ViewTreeObserver.OnPreDrawListener cfn;
   final View mView;
   
   private e(View paramView)
   {
     super(paramView.getContext());
-    AppMethodBeat.i(192288);
-    this.aqj = new Matrix();
-    this.aqE = new ViewTreeObserver.OnPreDrawListener()
+    AppMethodBeat.i(201585);
+    this.avQ = new Matrix();
+    this.cfn = new ViewTreeObserver.OnPreDrawListener()
     {
       public final boolean onPreDraw()
       {
-        AppMethodBeat.i(192273);
-        e.this.aqD = e.this.mView.getMatrix();
-        w.G(e.this);
-        if ((e.this.aqA != null) && (e.this.aqB != null))
+        AppMethodBeat.i(201371);
+        e.this.cfm = e.this.mView.getMatrix();
+        z.Q(e.this);
+        if ((e.this.cfj != null) && (e.this.cfk != null))
         {
-          e.this.aqA.endViewTransition(e.this.aqB);
-          w.G(e.this.aqA);
-          e.this.aqA = null;
-          e.this.aqB = null;
+          e.this.cfj.endViewTransition(e.this.cfk);
+          z.Q(e.this.cfj);
+          e.this.cfj = null;
+          e.this.cfk = null;
         }
-        AppMethodBeat.o(192273);
+        AppMethodBeat.o(201371);
         return true;
       }
     };
     this.mView = paramView;
     setLayerType(2, null);
-    AppMethodBeat.o(192288);
+    AppMethodBeat.o(201585);
   }
   
   static g a(View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(192279);
-    e locale2 = bD(paramView);
+    AppMethodBeat.i(201572);
+    e locale2 = bX(paramView);
     e locale1 = locale2;
     if (locale2 == null)
     {
@@ -71,7 +69,7 @@ final class e
         if (paramViewGroup != null) {
           break label64;
         }
-        AppMethodBeat.o(192279);
+        AppMethodBeat.o(201572);
         return null;
         paramViewGroup = (ViewGroup)paramViewGroup;
         break;
@@ -80,26 +78,26 @@ final class e
       locale1 = new e(paramView);
       paramViewGroup.addView(locale1);
     }
-    locale1.aqC += 1;
-    AppMethodBeat.o(192279);
+    locale1.cfl += 1;
+    AppMethodBeat.o(201572);
     return locale1;
   }
   
   private static void a(View paramView, e parame)
   {
-    AppMethodBeat.i(192317);
+    AppMethodBeat.i(201592);
     paramView.setTag(m.a.ghost_view, parame);
-    AppMethodBeat.o(192317);
+    AppMethodBeat.o(201592);
   }
   
-  static void bC(View paramView)
+  static void bW(View paramView)
   {
-    AppMethodBeat.i(192285);
-    paramView = bD(paramView);
+    AppMethodBeat.i(201579);
+    paramView = bX(paramView);
     if (paramView != null)
     {
-      paramView.aqC -= 1;
-      if (paramView.aqC <= 0)
+      paramView.cfl -= 1;
+      if (paramView.cfl <= 0)
       {
         Object localObject = paramView.getParent();
         if ((localObject instanceof ViewGroup))
@@ -110,26 +108,26 @@ final class e
         }
       }
     }
-    AppMethodBeat.o(192285);
+    AppMethodBeat.o(201579);
   }
   
-  private static e bD(View paramView)
+  private static e bX(View paramView)
   {
-    AppMethodBeat.i(192320);
+    AppMethodBeat.i(201598);
     paramView = (e)paramView.getTag(m.a.ghost_view);
-    AppMethodBeat.o(192320);
+    AppMethodBeat.o(201598);
     return paramView;
   }
   
   public final void a(ViewGroup paramViewGroup, View paramView)
   {
-    this.aqA = paramViewGroup;
-    this.aqB = paramView;
+    this.cfj = paramViewGroup;
+    this.cfk = paramView;
   }
   
   protected final void onAttachedToWindow()
   {
-    AppMethodBeat.i(192298);
+    AppMethodBeat.i(201608);
     super.onAttachedToWindow();
     a(this.mView, this);
     int[] arrayOfInt1 = new int[2];
@@ -138,50 +136,50 @@ final class e
     this.mView.getLocationOnScreen(arrayOfInt2);
     arrayOfInt2[0] = ((int)(arrayOfInt2[0] - this.mView.getTranslationX()));
     arrayOfInt2[1] = ((int)(arrayOfInt2[1] - this.mView.getTranslationY()));
-    this.PR = (arrayOfInt2[0] - arrayOfInt1[0]);
-    this.PS = (arrayOfInt2[1] - arrayOfInt1[1]);
-    this.mView.getViewTreeObserver().addOnPreDrawListener(this.aqE);
+    this.bwj = (arrayOfInt2[0] - arrayOfInt1[0]);
+    this.bwk = (arrayOfInt2[1] - arrayOfInt1[1]);
+    this.mView.getViewTreeObserver().addOnPreDrawListener(this.cfn);
     this.mView.setVisibility(4);
-    AppMethodBeat.o(192298);
+    AppMethodBeat.o(201608);
   }
   
   protected final void onDetachedFromWindow()
   {
-    AppMethodBeat.i(192301);
-    this.mView.getViewTreeObserver().removeOnPreDrawListener(this.aqE);
+    AppMethodBeat.i(201615);
+    this.mView.getViewTreeObserver().removeOnPreDrawListener(this.cfn);
     this.mView.setVisibility(0);
     a(this.mView, null);
     super.onDetachedFromWindow();
-    AppMethodBeat.o(192301);
+    AppMethodBeat.o(201615);
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(192305);
-    this.aqj.set(this.aqD);
-    this.aqj.postTranslate(this.PR, this.PS);
-    paramCanvas.setMatrix(this.aqj);
+    AppMethodBeat.i(201623);
+    this.avQ.set(this.cfm);
+    this.avQ.postTranslate(this.bwj, this.bwk);
+    paramCanvas.setMatrix(this.avQ);
     this.mView.draw(paramCanvas);
-    AppMethodBeat.o(192305);
+    AppMethodBeat.o(201623);
   }
   
   public final void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(192310);
+    AppMethodBeat.i(201630);
     super.setVisibility(paramInt);
     View localView = this.mView;
     if (paramInt == 0) {}
     for (paramInt = 4;; paramInt = 0)
     {
       localView.setVisibility(paramInt);
-      AppMethodBeat.o(192310);
+      AppMethodBeat.o(201630);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.transition.e
  * JD-Core Version:    0.7.0.1
  */

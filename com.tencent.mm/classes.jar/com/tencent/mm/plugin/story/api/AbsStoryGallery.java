@@ -23,25 +23,27 @@ public abstract class AbsStoryGallery
     super(paramContext, paramAttributeSet, paramInt);
   }
   
+  public abstract void ED(boolean paramBoolean);
+  
   public abstract void a(PullDownListView paramPullDownListView);
   
-  public abstract void aD(boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void afK(int paramInt);
   
-  public abstract void abq(int paramInt);
+  public abstract void amX(int paramInt);
   
-  public abstract void ahW(int paramInt);
+  public abstract void amY(int paramInt);
   
-  public abstract void ahX(int paramInt);
+  public abstract void ba(boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract void gbh();
+  public abstract void huA();
   
-  public abstract void gbi();
+  public abstract void huB();
   
-  public abstract void gbj();
+  public abstract void huC();
   
-  public abstract void gbk();
+  public abstract void huD();
   
-  public abstract void gbl();
+  public abstract void huE();
   
   public abstract boolean onBackPressed();
   
@@ -62,8 +64,6 @@ public abstract class AbsStoryGallery
   public abstract void setDataSeed(Object paramObject);
   
   public abstract void setStoryBrowseUIListener(g paramg);
-  
-  public abstract void zm(boolean paramBoolean);
 }
 
 

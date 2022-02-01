@@ -1,25 +1,18 @@
 package com.tencent.mm.plugin.finder.nearby.person;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.nearby.e;
-import com.tencent.mm.ui.component.g;
-import com.tencent.mm.ui.component.g.a;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.a;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"})
+@Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class b$f
-  implements DialogInterface.OnClickListener
+  extends u
+  implements a<ah>
 {
-  b$f(b paramb) {}
-  
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  b$f(b paramb)
   {
-    AppMethodBeat.i(202085);
-    paramDialogInterface = g.Xox;
-    ((e)g.b(this.zHO.getActivity()).i(e.class)).dLm();
-    AppMethodBeat.o(202085);
+    super(0);
   }
 }
 

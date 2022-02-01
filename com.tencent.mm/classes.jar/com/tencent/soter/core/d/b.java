@@ -10,7 +10,7 @@ import java.security.Signature;
 
 public abstract class b
 {
-  protected static i dw(byte[] paramArrayOfByte)
+  protected static i dy(byte[] paramArrayOfByte)
   {
     Object localObject = null;
     if (paramArrayOfByte == null) {
@@ -60,48 +60,48 @@ public abstract class b
     return locali;
   }
   
-  public abstract byte[] WP(long paramLong);
+  public abstract byte[] Bc(long paramLong);
   
   public void a(e parame) {}
   
-  public abstract f bCZ(String paramString);
+  public abstract f bFE(String paramString);
   
-  public abstract boolean bDa(String paramString);
+  public abstract boolean bFF(String paramString);
   
-  public abstract boolean bDb(String paramString);
+  public abstract boolean bFG(String paramString);
   
-  public abstract i bDc(String paramString);
+  public abstract i bFH(String paramString);
   
-  public abstract Signature bDd(String paramString);
+  public abstract Signature bFI(String paramString);
   
-  public abstract f dQ(String paramString, boolean paramBoolean);
+  public abstract f eF(String paramString, boolean paramBoolean);
   
-  public boolean ioG()
+  public boolean jXT()
   {
     return true;
   }
   
-  public void ioH() {}
+  public void jXU() {}
   
-  public abstract boolean ioI();
+  public abstract boolean jXV();
   
-  public abstract f ioJ();
+  public abstract f jXW();
   
-  public abstract f ioK();
+  public abstract f jXX();
   
-  public abstract boolean ioL();
+  public abstract boolean jXY();
   
-  public abstract boolean ioM();
+  public abstract boolean jXZ();
   
-  public abstract i ioN();
+  public abstract i jYa();
   
-  public abstract boolean me(Context paramContext);
+  public abstract boolean or(Context paramContext);
   
-  public abstract SoterSessionResult oE(String paramString1, String paramString2);
+  public abstract SoterSessionResult qC(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.soter.core.d.b
  * JD-Core Version:    0.7.0.1
  */

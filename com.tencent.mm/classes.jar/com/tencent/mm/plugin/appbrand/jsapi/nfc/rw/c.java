@@ -2,92 +2,96 @@ package com.tencent.mm.plugin.appbrand.jsapi.nfc.rw;
 
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.az;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.bc;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import kotlin.a.ae;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.o;
-import kotlin.s;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.a.ak;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.r;
+import kotlin.v;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiEventOnNFCDiscovered;", "Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiEvent;", "()V", "dispatch", "", "id", "", "techs", "", "", "data", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "setContext", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "Companion", "luggage-commons-jsapi-nfc-ext_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiEventOnNFCDiscovered;", "Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiEvent;", "()V", "dispatch", "", "id", "", "techs", "", "", "data", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "setContext", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "Companion", "luggage-commons-jsapi-nfc-ext_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
-  extends az
+  extends bc
 {
   public static final int CTRL_INDEX = 790;
   public static final String NAME = "onNFCDiscovered";
-  public static final a pfX;
+  public static final c.a sls;
   
   static
   {
     AppMethodBeat.i(183645);
-    pfX = new a((byte)0);
+    sls = new c.a((byte)0);
     AppMethodBeat.o(183645);
+  }
+  
+  public final c A(f paramf)
+  {
+    AppMethodBeat.i(183643);
+    paramf = super.i(paramf);
+    if (paramf == null)
+    {
+      paramf = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.jsapi.nfc.rw.JsApiEventOnNFCDiscovered");
+      AppMethodBeat.o(183643);
+      throw paramf;
+    }
+    paramf = (c)paramf;
+    AppMethodBeat.o(183643);
+    return paramf;
   }
   
   public final void a(byte[] paramArrayOfByte, List<String> paramList, HashMap<String, Object> paramHashMap)
   {
-    AppMethodBeat.i(241660);
-    p.k(paramList, "techs");
+    AppMethodBeat.i(328052);
+    s.u(paramList, "techs");
     Object localObject = paramArrayOfByte;
     if (paramArrayOfByte == null) {
       localObject = new byte[0];
     }
     paramArrayOfByte = Base64.encode((byte[])localObject, 2);
-    p.j(paramArrayOfByte, "Base64.encode(id ?: ByteArray(0), Base64.NO_WRAP)");
+    s.s(paramArrayOfByte, "encode(id ?: ByteArray(0), Base64.NO_WRAP)");
     localObject = StandardCharsets.UTF_8;
-    p.j(localObject, "StandardCharsets.UTF_8");
-    paramArrayOfByte = new String(paramArrayOfByte, (Charset)localObject);
-    if (paramHashMap != null)
+    s.s(localObject, "UTF_8");
+    localObject = new String(paramArrayOfByte, (Charset)localObject);
+    if (paramHashMap == null)
     {
-      paramHashMap.put("id", paramArrayOfByte);
-      paramHashMap.put("techs", paramList);
-      if (paramHashMap == null) {}
+      paramArrayOfByte = null;
+      if (paramArrayOfByte != null) {
+        break label137;
+      }
     }
-    for (paramArrayOfByte = (Map)paramHashMap;; paramArrayOfByte = ae.e(new o[] { s.M("id", paramArrayOfByte), s.M("techs", paramList) }))
+    label137:
+    for (paramArrayOfByte = ak.e(new r[] { v.Y("id", localObject), v.Y("techs", paramList) });; paramArrayOfByte = (Map)paramArrayOfByte)
     {
-      E(paramArrayOfByte).bPO();
-      AppMethodBeat.o(241660);
+      L(paramArrayOfByte).cpV();
+      AppMethodBeat.o(328052);
       return;
+      paramHashMap.put("id", localObject);
+      paramHashMap.put("techs", paramList);
+      paramArrayOfByte = ah.aiuX;
+      paramArrayOfByte = paramHashMap;
+      break;
     }
   }
   
-  public final void bPO()
+  public final void cpV()
   {
     AppMethodBeat.i(183642);
-    Log.d("MicroMsg.AppBrand.JsApiEventOnNFCDiscovered", "dispatch, data: " + getData());
-    super.bPO();
+    Log.d("MicroMsg.AppBrand.JsApiEventOnNFCDiscovered", s.X("dispatch, data: ", getData()));
+    super.cpV();
     AppMethodBeat.o(183642);
   }
-  
-  public final c y(e parame)
-  {
-    AppMethodBeat.i(183643);
-    parame = super.j(parame);
-    if (parame == null)
-    {
-      parame = new t("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.jsapi.nfc.rw.JsApiEventOnNFCDiscovered");
-      AppMethodBeat.o(183643);
-      throw parame;
-    }
-    parame = (c)parame;
-    AppMethodBeat.o(183643);
-    return parame;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiEventOnNFCDiscovered$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "PARAM_ID", "PARAM_TECHS", "TAG", "luggage-commons-jsapi-nfc-ext_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.nfc.rw.c
  * JD-Core Version:    0.7.0.1
  */

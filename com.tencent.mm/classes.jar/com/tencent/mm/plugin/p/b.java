@@ -1,12 +1,15 @@
 package com.tencent.mm.plugin.p;
 
-import androidx.lifecycle.x;
-import kotlin.l;
-
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/livestorage/BaseMMLiveStorage;", "Landroidx/lifecycle/ViewModel;", "()V", "plugin-livestorage_release"})
-public class b
-  extends x
-{}
+public abstract interface b
+{
+  public abstract void animateTo(double paramDouble1, double paramDouble2);
+  
+  public abstract void animateTo(double paramDouble1, double paramDouble2, int paramInt);
+  
+  public abstract void setCenter(double paramDouble1, double paramDouble2);
+  
+  public abstract void setZoom(int paramInt);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar

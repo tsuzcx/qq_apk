@@ -1,176 +1,215 @@
 package com.tencent.mm.bi;
 
+import com.tencent.mars.comm.PlatformComm.C2Java;
+import com.tencent.mars.comm.PlatformComm.SIMInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.q.b;
-import com.tencent.mm.compatible.util.f;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.p;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.eae;
-import com.tencent.mm.protocal.protobuf.eaf;
-import com.tencent.mm.protocal.protobuf.exy;
-import com.tencent.mm.protocal.protobuf.exz;
+import com.tencent.mm.protocal.d;
+import com.tencent.mm.protocal.protobuf.fgt;
+import com.tencent.mm.protocal.protobuf.fgw;
+import com.tencent.mm.protocal.protobuf.fgx;
+import com.tencent.mm.sdk.platformtools.ConnectivityCompat;
+import com.tencent.mm.sdk.platformtools.ConnectivityCompat.Companion;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MTimerHandler;
-import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.u;
+import java.net.Inet6Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.util.Enumeration;
 
 public final class a
-  extends q
+  extends p
   implements m
 {
-  private int audioFormat;
-  private i callback;
-  private String filemd5;
-  String filename;
-  MTimerHandler lAo;
-  private String mbB;
-  private int mbC;
-  private int mbD;
-  private int mbE;
-  private d rr;
-  private int sampleRate;
+  private com.tencent.mm.am.h mAY;
+  private int pqA;
+  private int pqB;
+  private int pqC;
+  private int pqD;
+  private fgt pqE;
+  private fgt pqF;
+  private String pqG;
+  private b pqz;
+  private c rr;
   
-  public a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public a(b paramb, int paramInt1, int paramInt2, int paramInt3, int paramInt4, fgt paramfgt1, fgt paramfgt2, String paramString)
   {
-    AppMethodBeat.i(148371);
-    this.mbB = null;
-    this.filemd5 = null;
-    this.filename = null;
-    this.sampleRate = 0;
-    this.mbC = 0;
-    this.audioFormat = 0;
-    this.mbD = 0;
-    this.mbE = 5;
-    this.lAo = new MTimerHandler(new MTimerHandler.CallBack()
-    {
-      public final boolean onTimerExpired()
-      {
-        AppMethodBeat.i(148370);
-        long l = u.bBQ(a.a(a.this));
-        Log.d("MicroMsg.NetSceneUploadMedia", f.avD() + " onTimerExpired: file:" + a.a(a.this) + " nowlen:" + l + " oldoff:" + a.b(a.this));
-        if (a.this.doScene(a.c(a.this), a.d(a.this)) == -1) {
-          a.d(a.this).onSceneEnd(3, -1, "doScene failed", a.this);
-        }
-        AppMethodBeat.o(148370);
-        return false;
-      }
-    }, true);
-    this.mbB = Util.nowMilliSecond();
-    this.filename = paramString;
-    this.mbE = paramInt1;
-    this.sampleRate = paramInt2;
-    this.mbC = paramInt3;
-    this.audioFormat = paramInt4;
-    paramInt1 = (int)u.bBQ(this.filename);
-    this.filemd5 = com.tencent.mm.b.g.getMessageDigest(u.aY(this.filename, 0, paramInt1));
-    AppMethodBeat.o(148371);
+    AppMethodBeat.i(20678);
+    this.rr = null;
+    this.pqz = paramb;
+    this.pqA = paramInt1;
+    this.pqB = paramInt2;
+    this.pqC = paramInt3;
+    this.pqD = paramInt4;
+    this.pqE = paramfgt1;
+    this.pqF = paramfgt2;
+    this.pqG = paramString;
+    paramb = new c.a();
+    paramb.otE = new fgw();
+    paramb.otF = new fgx();
+    paramb.funcId = 271;
+    paramb.uri = "/cgi-bin/micromsg-bin/speedtestreport";
+    paramb.otG = 996;
+    paramb.respCmdId = 1000000996;
+    paramb.newExtFlag = 0;
+    paramb.transferHeader = null;
+    this.rr = paramb.bEF();
+    AppMethodBeat.o(20678);
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  private static String bRG()
   {
-    int i = 3960;
-    AppMethodBeat.i(148372);
-    this.callback = parami;
-    int k = (int)u.bBQ(this.filename);
-    Log.d("MicroMsg.NetSceneUploadMedia", f.avD() + " read file:" + this.filename + " filelen:" + k + " oldoff:" + this.mbD + "this.filemd5 " + this.filemd5);
-    if (k <= 0)
-    {
-      Log.e("MicroMsg.NetSceneUploadMedia", "read failed :" + this.filename);
-      AppMethodBeat.o(148372);
-      return -1;
-    }
-    int j = k - this.mbD;
-    if (j > 3960) {}
+    AppMethodBeat.i(20681);
+    String str1 = "";
+    String str2 = str1;
+    label106:
     for (;;)
     {
-      Log.i("MicroMsg.NetSceneUploadMedia", f.avD() + " read file:" + this.filename + " filelen:" + k + " oldoff:" + this.mbD + "  canReadLen " + i);
-      parami = u.aY(this.filename, this.mbD, i);
-      if (parami == null)
+      try
       {
-        Log.e("MicroMsg.NetSceneUploadMedia", "read data error");
-        AppMethodBeat.o(148372);
-        return -1;
+        Enumeration localEnumeration1 = NetworkInterface.getNetworkInterfaces();
+        str2 = str1;
+        if (localEnumeration1.hasMoreElements())
+        {
+          str2 = str1;
+          Enumeration localEnumeration2 = ((NetworkInterface)localEnumeration1.nextElement()).getInetAddresses();
+          str2 = str1;
+          if (!localEnumeration2.hasMoreElements()) {
+            break label106;
+          }
+          str2 = str1;
+          InetAddress localInetAddress = (InetAddress)localEnumeration2.nextElement();
+          str2 = str1;
+          if (!(localInetAddress instanceof Inet6Address)) {
+            continue;
+          }
+          str2 = str1;
+          str1 = localInetAddress.getHostAddress().toString();
+          continue;
+        }
+        AppMethodBeat.o(20681);
       }
-      Object localObject = new d.a();
-      ((d.a)localObject).lBU = new exy();
-      ((d.a)localObject).lBV = new exz();
-      ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/mmuploadmedia";
-      ((d.a)localObject).funcId = 240;
-      ((d.a)localObject).lBW = 111;
-      ((d.a)localObject).respCmdId = 1000000111;
-      this.rr = ((d.a)localObject).bgN();
-      localObject = (exy)d.b.b(this.rr.lBR);
-      ((exy)localObject).Uyf = new eaf().btQ(this.mbB);
-      ((exy)localObject).Hnc = new eae().dc(parami);
-      ((exy)localObject).Hnb = parami.length;
-      ((exy)localObject).Uyg = new eaf().btQ(this.filemd5);
-      ((exy)localObject).HmZ = k;
-      ((exy)localObject).Hna = this.mbD;
-      ((exy)localObject).Crm = this.mbE;
-      ((exy)localObject).Uyh = 1;
-      ((exy)localObject).Uyi = this.sampleRate;
-      ((exy)localObject).Uyj = this.mbC;
-      ((exy)localObject).Uyk = this.audioFormat;
+      catch (Exception localException)
+      {
+        AppMethodBeat.o(20681);
+        return str2;
+      }
+      return localException;
+    }
+  }
+  
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
+  {
+    AppMethodBeat.i(20679);
+    this.mAY = paramh;
+    paramh = (fgw)c.b.b(this.rr.otB);
+    paramh.aaPP = this.pqz;
+    paramh.abHf = this.pqA;
+    paramh.abHg = this.pqB;
+    paramh.abHh = this.pqC;
+    paramh.abHi = this.pqD;
+    paramh.abHk = this.pqE;
+    paramh.abHj = this.pqF;
+    Object localObject;
+    int i;
+    if ("dual".equals(this.pqG))
+    {
+      localObject = paramh.abHj.ip;
+      if ((localObject == null) || (((String)localObject).length() <= 0) || (((String)localObject).contains("."))) {
+        break label515;
+      }
+      i = 1;
+      if (i != 0)
+      {
+        paramh.abHk.ip = bRG();
+        Log.d("MicroMsg.MMNewSpeedTest", "local stack is dual ip is " + paramh.abHk.ip);
+      }
+    }
+    switch (PlatformComm.C2Java.getNetInfo())
+    {
+    case 0: 
+    default: 
+      paramh.abHc = "NONET";
+    }
+    for (;;)
+    {
+      localObject = new StringBuilder("device info:");
+      ((StringBuilder)localObject).append(d.Yxa);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(d.Yxb);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(d.Yxd);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(d.Yxe);
+      paramh.abHe = ((StringBuilder)localObject).toString();
+      Log.d("MicroMsg.MMNewSpeedTest", "speed test " + paramh.abHe + ",networktype: " + paramh.abHc + ",network_info: " + paramh.abHd + ",conn_time: " + paramh.abHf + ",conn_retcode: " + paramh.abHg + ",trans_time: " + paramh.abHh + ",trans_time: " + paramh.abHi + ",cookie: " + paramh.aaPP.toString() + ",cookie size: " + paramh.aaPP.Op.length + ",size: " + paramh.computeSize() + ",client ip: " + paramh.abHk.ip + ",client port: " + paramh.abHk.port + ",server ip: " + paramh.abHj.ip + ",server port: " + paramh.abHj.port);
       i = dispatch(paramg, this.rr, this);
-      AppMethodBeat.o(148372);
+      AppMethodBeat.o(20679);
       return i;
-      i = j;
+      label515:
+      i = 0;
+      break;
+      paramh.abHc = "WIFI";
+      paramh.abHd = ConnectivityCompat.Companion.getFormattedWiFiSsid();
+      continue;
+      switch (PlatformComm.C2Java.getStatisticsNetType())
+      {
+      default: 
+        paramh.abHc = "EDGE";
+      }
+      for (;;)
+      {
+        localObject = PlatformComm.C2Java.getCurSIMInfo();
+        if (localObject == null) {
+          break label641;
+        }
+        paramh.abHd = ((PlatformComm.SIMInfo)localObject).ispCode;
+        break;
+        paramh.abHc = "2G";
+        continue;
+        paramh.abHc = "3G";
+        continue;
+        paramh.abHc = "4G";
+        continue;
+        paramh.abHc = "EDGE";
+      }
+      label641:
+      paramh.abHd = "unknown_netinfo";
+      continue;
+      paramh.abHc = "NONET";
     }
   }
   
   public final int getType()
   {
-    return 240;
+    return 271;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(148373);
-    updateDispatchId(paramInt1);
-    Log.d("MicroMsg.NetSceneUploadMedia", f.avD() + " onGYNetEnd file:" + this.filename + " errtype:" + paramInt2 + " errCode:" + paramInt3);
-    paramArrayOfByte = (exy)d.b.b(((d)params).lBR);
-    params = ((exz)d.c.b(((d)params).lBS)).lVJ;
-    Log.i("MicroMsg.NetSceneUploadMedia", "fileName:%s, md5:%s, totalLen:%d, dataLen:%d, startPos:%d", new Object[] { this.filename, params, Integer.valueOf(paramArrayOfByte.HmZ), Integer.valueOf(paramArrayOfByte.Hnb), Integer.valueOf(paramArrayOfByte.Hna) });
-    if ((paramInt2 != 0) || (paramInt3 != 0))
-    {
-      Log.e("MicroMsg.NetSceneUploadMedia", f.avD() + " onGYNetEnd file:" + this.filename + " errType:" + paramInt2 + " errCode:" + paramInt3);
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(148373);
-      return;
+    AppMethodBeat.i(20680);
+    Log.d("MicroMsg.MMNewSpeedTest", "ErrType:" + paramInt2 + "   errCode:" + paramInt3);
+    if ((paramInt3 == 0) && (paramInt2 == 0)) {
+      com.tencent.mm.plugin.report.service.h.OAn.kJ(317, 26);
     }
-    if ((paramArrayOfByte.HmZ <= paramArrayOfByte.Hnb + paramArrayOfByte.Hna) && (params != null) && (!params.equals("0")))
+    for (;;)
     {
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(148373);
+      this.mAY.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(20680);
       return;
+      com.tencent.mm.plugin.report.service.h.OAn.kJ(317, 27);
     }
-    paramInt1 = paramArrayOfByte.Hna;
-    this.mbD = (paramArrayOfByte.Hnc.Ufv + paramInt1);
-    Log.d("MicroMsg.NetSceneUploadMedia", "onGYNetEnd file:" + this.filename + " delay:500");
-    this.lAo.startTimer(500L);
-    AppMethodBeat.o(148373);
-  }
-  
-  public final int securityLimitCount()
-  {
-    return 60;
-  }
-  
-  public final q.b securityVerificationChecked(s params)
-  {
-    return q.b.lCx;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.bi.a
  * JD-Core Version:    0.7.0.1
  */

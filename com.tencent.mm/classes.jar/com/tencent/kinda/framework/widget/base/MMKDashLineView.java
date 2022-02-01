@@ -12,7 +12,7 @@ import com.tencent.kinda.framework.R.layout;
 import com.tencent.kinda.gen.DynamicColor;
 import com.tencent.kinda.gen.KDashLineView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.bd;
 
 public class MMKDashLineView
   extends MMKView<LinearLayout>
@@ -29,7 +29,7 @@ public class MMKDashLineView
     AppMethodBeat.i(170120);
     this.isVertical = false;
     this.mDashColor = new DynamicColor(-1L, 0L);
-    this.mDashWidth = aw.fromDPToPix(this.mContext, 2);
+    this.mDashWidth = bd.fromDPToPix(this.mContext, 2);
     AppMethodBeat.o(170120);
   }
   
@@ -78,8 +78,8 @@ public class MMKDashLineView
       this.contentView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       this.mLine = this.contentView.findViewById(R.id.order_info_tinyapp_splitter_1);
       localObject = this.mLine.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject).width = aw.fromDPToPix(this.mContext, 60);
-      ((ViewGroup.LayoutParams)localObject).height = aw.fromDPToPix(this.mContext, 60);
+      ((ViewGroup.LayoutParams)localObject).width = bd.fromDPToPix(this.mContext, 60);
+      ((ViewGroup.LayoutParams)localObject).height = bd.fromDPToPix(this.mContext, 60);
       this.mLine.setBackground(this.mContext.getResources().getDrawable(R.drawable.bank_remit_detail_state_line_succ));
       this.mLine.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
@@ -88,7 +88,7 @@ public class MMKDashLineView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKDashLineView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,20 @@
 package com.tencent.mm.plugin.websearch;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.aa;
-import com.tencent.mm.an.aa.a;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.q;
-import com.tencent.mm.cd.b;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.z;
+import com.tencent.mm.am.z.a;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.websearch.api.ai;
+import com.tencent.mm.plugin.websearch.api.aj;
 import com.tencent.mm.plugin.websearch.api.j;
-import com.tencent.mm.protocal.protobuf.cf;
-import com.tencent.mm.protocal.protobuf.cg;
-import com.tencent.mm.protocal.protobuf.cot;
-import com.tencent.mm.protocal.protobuf.cou;
+import com.tencent.mm.protocal.protobuf.cp;
+import com.tencent.mm.protocal.protobuf.cq;
+import com.tencent.mm.protocal.protobuf.dfn;
+import com.tencent.mm.protocal.protobuf.dfo;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
@@ -23,61 +24,61 @@ import java.util.Map;
 public final class d
   implements j
 {
-  private int PxD;
-  private Map<String, String> PxE;
+  private int WnJ;
+  private Map<String, String> WnK;
   
   public d()
   {
     AppMethodBeat.i(116549);
-    this.PxE = new HashMap();
+    this.WnK = new HashMap();
     AppMethodBeat.o(116549);
   }
   
-  public final void anb(int paramInt)
+  public final void asS(int paramInt)
   {
-    this.PxD = paramInt;
+    this.WnJ = paramInt;
   }
   
-  public final String biH(String paramString)
+  public final String bip(String paramString)
   {
     AppMethodBeat.i(116553);
-    paramString = (String)this.PxE.get(paramString);
+    paramString = (String)this.WnK.get(paramString);
     AppMethodBeat.o(116553);
     return paramString;
   }
   
-  public final void cM(int paramInt, String paramString)
+  public final void dB(int paramInt, String paramString)
   {
     AppMethodBeat.i(116550);
-    cou localcou = new cou();
-    localcou.Twy = paramInt;
-    localcou.TwG = ((int)(System.currentTimeMillis() / 1000L));
-    localcou.rVx = 1;
-    localcou.Twz = new b(paramString.getBytes());
-    paramString = new d.a();
-    paramString.lBU = new cf();
-    paramString.lBV = new cg();
+    dfo localdfo = new dfo();
+    localdfo.aaLf = paramInt;
+    localdfo.aaLn = ((int)(System.currentTimeMillis() / 1000L));
+    localdfo.vgN = 1;
+    localdfo.aaLg = new b(paramString.getBytes());
+    paramString = new c.a();
+    paramString.otE = new cp();
+    paramString.otF = new cq();
     paramString.uri = "/cgi-bin/mmux-bin/adlog";
     paramString.funcId = 1802;
-    paramString = paramString.bgN();
-    cf localcf = (cf)d.b.b(paramString.lBR);
-    cot localcot = new cot();
-    localcot.jUb = com.tencent.mm.protocal.d.RAx;
-    localcot.jUc = com.tencent.mm.protocal.d.RAw;
-    localcot.jUd = com.tencent.mm.protocal.d.RAz;
-    localcot.jUe = com.tencent.mm.protocal.d.RAA;
-    localcot.jUf = LocaleUtil.getApplicationLanguage();
-    localcot.TwF = ((int)(System.currentTimeMillis() / 1000L));
-    localcf.RHS = localcot;
-    localcf.RHT.add(localcou);
-    aa.a(paramString, new aa.a()
+    paramString = paramString.bEF();
+    cp localcp = (cp)c.b.b(paramString.otB);
+    dfn localdfn = new dfn();
+    localdfn.mut = com.tencent.mm.protocal.d.Yxb;
+    localdfn.muu = com.tencent.mm.protocal.d.Yxa;
+    localdfn.muv = com.tencent.mm.protocal.d.Yxd;
+    localdfn.muw = com.tencent.mm.protocal.d.Yxe;
+    localdfn.mux = LocaleUtil.getApplicationLanguage();
+    localdfn.aaLm = ((int)(System.currentTimeMillis() / 1000L));
+    localcp.YEV = localdfn;
+    localcp.YEW.add(localdfo);
+    z.a(paramString, new z.a()
     {
-      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.an.d paramAnonymousd, q paramAnonymousq)
+      public final int callback(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, c paramAnonymousc, p paramAnonymousp)
       {
         AppMethodBeat.i(116548);
         Log.d("WebSearchService", "onGYNetEnd oreh errType:%d errCode:%d msg:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
         if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0)) {
-          h.IzE.idkeyStat(457L, 1L, 1L, false);
+          h.OAn.idkeyStat(457L, 1L, 1L, false);
         }
         AppMethodBeat.o(116548);
         return 0;
@@ -86,23 +87,23 @@ public final class d
     AppMethodBeat.o(116550);
   }
   
-  public final int gQk()
+  public final int ipB()
   {
-    return this.PxD;
+    return this.WnJ;
   }
   
-  public final String gQl()
+  public final String ipC()
   {
     AppMethodBeat.i(116551);
-    String str = ai.ank(3);
+    String str = aj.atb(3);
     AppMethodBeat.o(116551);
     return str;
   }
   
-  public final void me(String paramString1, String paramString2)
+  public final void nQ(String paramString1, String paramString2)
   {
     AppMethodBeat.i(116552);
-    this.PxE.put(paramString1, paramString2);
+    this.WnK.put(paramString1, paramString2);
     AppMethodBeat.o(116552);
   }
 }

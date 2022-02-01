@@ -2,7 +2,6 @@ package com.tencent.liteav.videodecoder;
 
 import android.view.Surface;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
-import com.tencent.liteav.basic.util.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
@@ -12,7 +11,7 @@ public class TXCVideoFfmpegDecoder
   implements b
 {
   private boolean mFirstDec;
-  private g mListener;
+  private h mListener;
   private long mNativeDecoder;
   private long mNativeNotify;
   private ByteBuffer mPps;
@@ -24,7 +23,7 @@ public class TXCVideoFfmpegDecoder
   static
   {
     AppMethodBeat.i(16646);
-    h.f();
+    com.tencent.liteav.basic.util.h.d();
     nativeClassInit();
     AppMethodBeat.o(16646);
   }
@@ -91,9 +90,9 @@ public class TXCVideoFfmpegDecoder
     AppMethodBeat.o(16645);
   }
   
-  public void setListener(g paramg)
+  public void setListener(h paramh)
   {
-    this.mListener = paramg;
+    this.mListener = paramh;
   }
   
   public void setNotifyListener(WeakReference<com.tencent.liteav.basic.c.b> paramWeakReference) {}
@@ -120,7 +119,7 @@ public class TXCVideoFfmpegDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.videodecoder.TXCVideoFfmpegDecoder
  * JD-Core Version:    0.7.0.1
  */

@@ -17,49 +17,49 @@ public class j
   extends BitmapDrawable
   implements e.a
 {
-  protected static final MMHandler ljQ;
-  protected boolean FcG;
-  protected final a Hix;
-  protected boolean IcL;
-  protected boolean RcK;
-  private int RcL;
-  private int RcM;
-  protected boolean RcN;
-  protected float RcO;
-  private PaintFlagsDrawFilter RcP;
-  public c RcQ;
-  private Path aBZ;
-  private Rect byG;
-  protected final Paint ljP;
-  private Runnable ljS;
+  protected static final MMHandler nOB;
+  protected boolean KYp;
+  protected boolean NZh;
+  protected final a Ngk;
+  protected boolean XYQ;
+  private int XYR;
+  private int XYS;
+  protected boolean XYT;
+  protected float XYU;
+  private PaintFlagsDrawFilter XYV;
+  public c XYW;
+  protected final Paint nOA;
+  private Runnable nOD;
   private Paint paint;
+  private Path path;
+  private Rect rect;
   protected String tag;
   
   static
   {
     AppMethodBeat.i(152146);
-    ljQ = new MMHandler(Looper.getMainLooper());
+    nOB = new MMHandler(Looper.getMainLooper());
     AppMethodBeat.o(152146);
   }
   
   public j(a parama, String paramString)
   {
-    super(parama.aaC());
+    super(parama.aCj());
     AppMethodBeat.i(152139);
-    this.ljP = new Paint();
-    this.FcG = false;
-    this.RcK = false;
-    this.RcL = 0;
-    this.RcM = 0;
-    this.RcO = 1.0F;
-    this.byG = new Rect();
-    this.RcP = new PaintFlagsDrawFilter(0, 3);
+    this.nOA = new Paint();
+    this.KYp = false;
+    this.XYQ = false;
+    this.XYR = 0;
+    this.XYS = 0;
+    this.XYU = 1.0F;
+    this.rect = new Rect();
+    this.XYV = new PaintFlagsDrawFilter(0, 3);
     this.paint = new Paint();
     this.paint.setStyle(Paint.Style.STROKE);
     this.paint.setFlags(1);
     this.paint.setAntiAlias(true);
-    this.aBZ = new Path();
-    this.ljS = new Runnable()
+    this.path = new Path();
+    this.nOD = new Runnable()
     {
       public final void run()
       {
@@ -68,32 +68,32 @@ public class j
         AppMethodBeat.o(152138);
       }
     };
-    this.ljP.setAntiAlias(true);
-    this.ljP.setFilterBitmap(true);
-    this.Hix = parama;
+    this.nOA.setAntiAlias(true);
+    this.nOA.setFilterBitmap(true);
+    this.Ngk = parama;
     this.tag = paramString;
-    this.Hix.a(this);
+    this.Ngk.a(this);
     AppMethodBeat.o(152139);
   }
   
   public j(a parama, String paramString, byte paramByte)
   {
-    super(parama.aaC());
+    super(parama.aCj());
     AppMethodBeat.i(152140);
-    this.ljP = new Paint();
-    this.FcG = false;
-    this.RcK = false;
-    this.RcL = 0;
-    this.RcM = 0;
-    this.RcO = 1.0F;
-    this.byG = new Rect();
-    this.RcP = new PaintFlagsDrawFilter(0, 3);
+    this.nOA = new Paint();
+    this.KYp = false;
+    this.XYQ = false;
+    this.XYR = 0;
+    this.XYS = 0;
+    this.XYU = 1.0F;
+    this.rect = new Rect();
+    this.XYV = new PaintFlagsDrawFilter(0, 3);
     this.paint = new Paint();
     this.paint.setStyle(Paint.Style.STROKE);
     this.paint.setFlags(1);
     this.paint.setAntiAlias(true);
-    this.aBZ = new Path();
-    this.ljS = new Runnable()
+    this.path = new Path();
+    this.nOD = new Runnable()
     {
       public final void run()
       {
@@ -102,26 +102,25 @@ public class j
         AppMethodBeat.o(152138);
       }
     };
-    this.ljP.setAntiAlias(true);
-    this.ljP.setFilterBitmap(true);
-    this.FcG = false;
-    this.Hix = parama;
+    this.nOA.setAntiAlias(true);
+    this.nOA.setFilterBitmap(true);
+    this.KYp = false;
+    this.Ngk = parama;
     this.tag = paramString;
-    this.Hix.a(this);
+    this.Ngk.a(this);
     AppMethodBeat.o(152140);
   }
   
-  public final void DT(boolean paramBoolean)
+  public final void JB(boolean paramBoolean)
   {
-    this.RcK = paramBoolean;
+    this.XYQ = paramBoolean;
   }
   
-  public void TM(String paramString)
+  public void LM(String paramString)
   {
     AppMethodBeat.i(152143);
-    if (this.RcQ != null)
+    if ((this.XYW != null) && (this.XYW.ayJ(paramString)))
     {
-      this.RcQ.aDo(paramString);
       AppMethodBeat.o(152143);
       return;
     }
@@ -131,7 +130,7 @@ public class j
       return;
     }
     Log.v("MicroMsg.SDK.LazyBitmapDrawable", "notifyChanged :%s", new Object[] { paramString });
-    ljQ.post(this.ljS);
+    nOB.post(this.nOD);
     AppMethodBeat.o(152143);
   }
   
@@ -139,43 +138,43 @@ public class j
   {
     AppMethodBeat.i(152142);
     Bitmap localBitmap;
-    if (this.RcK)
+    if (this.XYQ)
     {
-      localBitmap = this.Hix.b(this.tag, paramCanvas.getWidth(), paramCanvas.getHeight(), 1);
+      localBitmap = this.Ngk.b(this.tag, paramCanvas.getWidth(), paramCanvas.getHeight(), 1);
       if ((localBitmap != null) && (!localBitmap.isRecycled())) {
         break label215;
       }
-      localBitmap = this.Hix.aaC();
-      if (!this.RcN) {
+      localBitmap = this.Ngk.aCj();
+      if (!this.XYT) {
         break label207;
       }
-      this.IcL = true;
+      this.NZh = true;
     }
     for (;;)
     {
       Rect localRect2 = getBounds();
       Rect localRect1 = null;
-      if ((this.RcO > 1.0F) || (this.FcG))
+      if ((this.XYU > 1.0F) || (this.KYp))
       {
         int i = localBitmap.getHeight() / 15 / 2;
         int j = localBitmap.getWidth() / 15 / 2;
         localRect1 = new Rect(j, i, localBitmap.getWidth() - j, localBitmap.getHeight() - i);
       }
-      paramCanvas.drawBitmap(localBitmap, localRect1, localRect2, this.ljP);
+      paramCanvas.drawBitmap(localBitmap, localRect1, localRect2, this.nOA);
       AppMethodBeat.o(152142);
       return;
-      if (this.RcN)
+      if (this.XYT)
       {
-        localBitmap = this.Hix.gK(this.tag);
+        localBitmap = this.Ngk.ik(this.tag);
         break;
       }
-      localBitmap = this.Hix.gJ(this.tag);
+      localBitmap = this.Ngk.loadBitmap(this.tag);
       break;
       label207:
-      this.IcL = false;
+      this.NZh = false;
       continue;
       label215:
-      this.IcL = false;
+      this.NZh = false;
     }
   }
   
@@ -184,30 +183,30 @@ public class j
     return this.tag;
   }
   
-  public final void hjt()
+  public final void iKl()
   {
-    AppMethodBeat.i(220468);
-    ljQ.post(this.ljS);
-    AppMethodBeat.o(220468);
+    AppMethodBeat.i(245077);
+    nOB.post(this.nOD);
+    AppMethodBeat.o(245077);
   }
   
-  public final void hju()
+  public final void iKm()
   {
-    this.RcN = true;
+    this.XYT = true;
   }
   
-  public final void hjv()
+  public final void iKn()
   {
     AppMethodBeat.i(152144);
-    if (!this.RcN)
+    if (!this.XYT)
     {
       AppMethodBeat.o(152144);
       return;
     }
-    this.RcN = false;
-    if (this.IcL)
+    this.XYT = false;
+    if (this.NZh)
     {
-      this.IcL = false;
+      this.NZh = false;
       invalidateSelf();
     }
     AppMethodBeat.o(152144);
@@ -218,11 +217,11 @@ public class j
     AppMethodBeat.i(152145);
     if (paramBoolean)
     {
-      this.RcN = true;
+      this.XYT = true;
       AppMethodBeat.o(152145);
       return;
     }
-    hjv();
+    iKn();
     AppMethodBeat.o(152145);
   }
   
@@ -237,7 +236,7 @@ public class j
     if (!paramString.equals(this.tag))
     {
       this.tag = paramString;
-      ljQ.post(this.ljS);
+      nOB.post(this.nOD);
     }
     AppMethodBeat.o(152141);
   }
@@ -246,28 +245,28 @@ public class j
   {
     public abstract void a(j paramj);
     
-    public abstract Bitmap aaC();
+    public abstract Bitmap aCj();
     
     public abstract Bitmap b(String paramString, int paramInt1, int paramInt2, int paramInt3);
     
-    public abstract Bitmap gJ(String paramString);
+    public abstract Bitmap ik(String paramString);
     
-    public abstract Bitmap gK(String paramString);
+    public abstract Bitmap loadBitmap(String paramString);
   }
   
   public static abstract interface b
   {
-    public abstract boolean aDn(String paramString);
+    public abstract boolean ayI(String paramString);
   }
   
   public static abstract interface c
   {
-    public abstract boolean aDo(String paramString);
+    public abstract boolean ayJ(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.j
  * JD-Core Version:    0.7.0.1
  */

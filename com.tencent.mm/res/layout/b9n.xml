@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/ipm" android:layout_width="@dimen/em" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i2" android:singleLine="true" style="@style/mi" />
-    <ImageView android:id="@id/dvz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/k_" android:src="@raw/card_photoicon" />
-    <TextView android:textColor="@color/x0" android:ellipsize="end" android:id="@id/ied" android:singleLine="true" style="@style/ml" />
-</LinearLayout>
+<RelativeLayout android:layout_gravity="center_vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/gaf" android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginTop="96.0dip" android:src="@raw/icons_filled_time" android:scaleType="centerCrop" android:layout_centerHorizontal="true" app:iconColor="@color/Blue" />
+    <TextView android:textSize="22.0dip" android:textStyle="bold" android:textColor="@color/a7b" android:id="@id/gah" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:text="" android:layout_below="@id/gaf" android:layout_centerHorizontal="true" />
+    <View android:id="@id/gag" android:background="@color/abn" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="24.0dip" android:layout_marginTop="40.0dip" android:layout_marginRight="24.0dip" android:layout_below="@id/gah" android:layout_centerHorizontal="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/gae" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="24.0dip" android:layout_below="@id/gag" android:layout_centerHorizontal="true" />
+    <Button android:id="@id/gad" android:layout_width="184.0dip" android:layout_height="40.0dip" android:layout_marginBottom="130.0dip" android:text="@string/ah2" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/qg" />
+</RelativeLayout>

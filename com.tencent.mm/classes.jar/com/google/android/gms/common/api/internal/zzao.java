@@ -3,7 +3,6 @@ package com.google.android.gms.common.api.internal;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.internal.BaseGmsClient.ConnectionProgressReportCallbacks;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import javax.annotation.concurrent.GuardedBy;
 
 final class zzao
   extends zzbe
@@ -13,7 +12,6 @@ final class zzao
     super(paramzzbc);
   }
   
-  @GuardedBy("mLock")
   public final void zzaq()
   {
     AppMethodBeat.i(11246);
@@ -23,7 +21,7 @@ final class zzao
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.zzao
  * JD-Core Version:    0.7.0.1
  */

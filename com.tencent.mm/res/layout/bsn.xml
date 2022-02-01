@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="bottom|center" android:id="@id/gli" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="@dimen/k_" android:layout_marginTop="@dimen/kb" android:src="@color/afp" />
-    <com.tencent.mm.plugin.mmsight.ui.CameraFrontSightView android:id="@id/db7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-</merge>
+    <com.tencent.mm.ui.widget.MMEditText android:id="@id/f37" android:layout_width="fill_parent" android:layout_height="@dimen/d6" android:layout_marginTop="@dimen/cp" android:hint="sql:" />
+    <ScrollView android:scrollbars="none" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="20.0dip" style="@style/o8">
+        <LinearLayout android:gravity="center_horizontal" style="@style/lj">
+            <TextView android:id="@id/is_" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:minHeight="@dimen/cu" android:hint="Result:" style="@style/lk" />
+        </LinearLayout>
+    </ScrollView>
+    <TextView android:layout_gravity="center_horizontal" android:id="@id/btv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:hint="Cost:" style="@style/lk" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/hls" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:text="Run" style="@style/oh" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/cn5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" android:text="Export" style="@style/oh" />
+</LinearLayout>

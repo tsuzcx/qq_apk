@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <EditText android:textColor="@color/a2x" android:id="@id/c3i" android:paddingLeft="0.0dip" android:inputType="numberDecimal" android:imeOptions="actionNone" style="@style/hg" />
-    <TextView android:textSize="@dimen/bd" android:id="@id/c3j" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="" />
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/epm" android:background="@drawable/az3" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/epn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" app:iconColor="@color/ahb" />
+    </RelativeLayout>
+    <TextView android:textSize="@dimen/m_" android:textColor="@color/al6" android:id="@id/ku3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" />
 </LinearLayout>

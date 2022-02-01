@@ -94,16 +94,16 @@ public class QueueWorkerThread
   
   public void clear()
   {
-    AppMethodBeat.i(188956);
+    AppMethodBeat.i(243905);
     this.queueToReq.clear();
-    AppMethodBeat.o(188956);
+    AppMethodBeat.o(243905);
   }
   
   public int getQueueSize()
   {
-    AppMethodBeat.i(188954);
+    AppMethodBeat.i(243901);
     int i = this.queueToReq.size();
-    AppMethodBeat.o(188954);
+    AppMethodBeat.o(243901);
     return i;
   }
   
@@ -284,7 +284,7 @@ public class QueueWorkerThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.QueueWorkerThread
  * JD-Core Version:    0.7.0.1
  */

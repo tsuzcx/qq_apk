@@ -1,155 +1,115 @@
 package com.tencent.mm.plugin.brandservice.ui;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import android.content.Context;
+import android.view.View;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.brandservice.d.h;
-import com.tencent.mm.plugin.brandservice.d.i;
-import com.tencent.mm.plugin.messenger.a.d;
-import com.tencent.mm.plugin.messenger.a.g;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.plugin.brandservice.d.e;
+import com.tencent.mm.plugin.brandservice.d.f;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.q.f;
-import com.tencent.mm.ui.base.q.g;
+import com.tencent.mm.ui.base.sortview.a;
+import com.tencent.mm.ui.base.sortview.a.a;
+import com.tencent.mm.ui.base.sortview.a.b;
 
 public final class e
+  extends a
 {
-  final Activity fDf;
-  String sxP;
-  com.tencent.mm.ui.tools.n syA;
+  private static a.b vCC;
+  String vCD;
   
-  public e(Activity paramActivity, String paramString)
+  public e(Object paramObject)
   {
-    this.fDf = paramActivity;
-    this.sxP = paramString;
+    super(1, paramObject);
   }
   
-  public final MenuItem.OnMenuItemClickListener czG()
+  public final void a(Context paramContext, a.a parama, Object... paramVarArgs)
   {
-    AppMethodBeat.i(265055);
-    MenuItem.OnMenuItemClickListener local1 = new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+    if ((this.cpt instanceof String)) {
+      this.vCD = ((String)this.cpt);
+    }
+  }
+  
+  public final a.b dco()
+  {
+    AppMethodBeat.i(5680);
+    if (vCC == null) {
+      vCC = new a.b()
       {
-        AppMethodBeat.i(266235);
-        if (e.this.syA != null)
+        public final void a(Context paramAnonymousContext, a.a paramAnonymousa, a paramAnonymousVarArgs)
         {
-          e.this.syA.dismiss();
-          e.this.syA = null;
+          AppMethodBeat.i(5678);
+          if ((paramAnonymousContext == null) || (paramAnonymousa == null) || (paramAnonymousVarArgs == null))
+          {
+            Log.e("MicroMsg.CatalogDataItem", "Context or ViewHolder or DataItem or DataItem.data is null.");
+            AppMethodBeat.o(5678);
+            return;
+          }
+          if (!(paramAnonymousa instanceof e.a))
+          {
+            Log.e("MicroMsg.CatalogDataItem", "The ViewHolder is not a instance of CatalogViewHolder.");
+            AppMethodBeat.o(5678);
+            return;
+          }
+          if (!(paramAnonymousVarArgs instanceof e))
+          {
+            Log.e("MicroMsg.CatalogDataItem", "The DataItem is not a instance of CatalogDataItem.");
+            AppMethodBeat.o(5678);
+            return;
+          }
+          paramAnonymousContext = (e.a)paramAnonymousa;
+          paramAnonymousa = (e)paramAnonymousVarArgs;
+          com.tencent.mm.plugin.brandservice.model.e.c(paramAnonymousContext.vCw, paramAnonymousa.vCD);
+          AppMethodBeat.o(5678);
         }
-        e.this.syA = new com.tencent.mm.ui.tools.n(e.this.fDf);
-        e.this.syA.ODT = new q.f()
+        
+        public final void a(View paramAnonymousView, a.a paramAnonymousa)
         {
-          public final void onCreateMMMenu(o paramAnonymous2o)
-          {
-            AppMethodBeat.i(266233);
-            ((com.tencent.mm.api.n)h.ae(com.tencent.mm.api.n.class)).gt(e.this.sxP);
-            String str;
-            if (!((com.tencent.mm.api.n)h.ae(com.tencent.mm.api.n.class)).gq(e.this.sxP))
-            {
-              str = ((com.tencent.mm.api.n)h.ae(com.tencent.mm.api.n.class)).gr(e.this.sxP);
-              if (!Util.isNullOrNil(str)) {
-                break label127;
-              }
-              paramAnonymous2o.aW(2, d.i.esY, d.h.ofm_add_icon);
-            }
-            for (;;)
-            {
-              paramAnonymous2o.aW(3, d.i.svj, d.h.actionbar_goto_disabled_biz_icon);
-              paramAnonymous2o.aW(4, d.i.actionbar_title_setting, d.h.actionbar_setting_white_icon);
-              AppMethodBeat.o(266233);
-              return;
-              label127:
-              paramAnonymous2o.b(2, str, d.h.ofm_add_icon);
-            }
+          AppMethodBeat.i(5679);
+          if ((paramAnonymousView != null) && (paramAnonymousa != null) && ((paramAnonymousa instanceof e.a))) {
+            ((e.a)paramAnonymousa).vCw = ((TextView)paramAnonymousView.findViewById(d.e.catalogTV));
           }
-        };
-        e.this.syA.ODU = new q.g()
+          AppMethodBeat.o(5679);
+        }
+        
+        public final boolean a(Context paramAnonymousContext, a paramAnonymousa, Object... paramAnonymousVarArgs)
         {
-          public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
-          {
-            AppMethodBeat.i(266355);
-            switch (paramAnonymous2MenuItem.getItemId())
-            {
-            }
-            for (;;)
-            {
-              AppMethodBeat.o(266355);
-              return;
-              paramAnonymous2MenuItem = ((com.tencent.mm.api.n)h.ae(com.tencent.mm.api.n.class)).gs(e.this.sxP);
-              if (!Util.isNullOrNil(paramAnonymous2MenuItem)) {}
-              for (paramAnonymous2Int = 1; paramAnonymous2Int != 0; paramAnonymous2Int = 0)
-              {
-                localObject = new Intent();
-                ((Intent)localObject).putExtra("rawUrl", paramAnonymous2MenuItem);
-                Log.i("EnterpriseBizEntranceListHelper", "KRawUrl :%s", new Object[] { paramAnonymous2MenuItem });
-                ((Intent)localObject).putExtra("useJs", true);
-                ((Intent)localObject).addFlags(67108864);
-                c.b(e.this.fDf, "webview", ".ui.tools.WebViewUI", (Intent)localObject, 0);
-                AppMethodBeat.o(266355);
-                return;
-              }
-              ((com.tencent.mm.api.n)h.ae(com.tencent.mm.api.n.class)).gt(e.this.sxP);
-              ((com.tencent.mm.api.n)h.ae(com.tencent.mm.api.n.class)).b(e.this.fDf, e.this.sxP);
-              AppMethodBeat.o(266355);
-              return;
-              Object localObject = new Intent(e.this.fDf, EnterpriseBizContactPlainListUI.class);
-              ((Intent)localObject).putExtra("enterprise_biz_name", e.this.sxP);
-              ((Intent)localObject).putExtra("enterprise_scene", 2);
-              paramAnonymous2MenuItem = e.this.fDf;
-              localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-              com.tencent.mm.hellhoundlib.a.a.b(paramAnonymous2MenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/brandservice/ui/EnterpriseBizEntranceListHelper$1$2", "onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              paramAnonymous2MenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
-              com.tencent.mm.hellhoundlib.a.a.c(paramAnonymous2MenuItem, "com/tencent/mm/plugin/brandservice/ui/EnterpriseBizEntranceListHelper$1$2", "onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              AppMethodBeat.o(266355);
-              return;
-              paramAnonymous2MenuItem = new Intent();
-              paramAnonymous2MenuItem.putExtra("Contact_User", e.this.sxP);
-              com.tencent.mm.plugin.brandservice.b.mIG.c(paramAnonymous2MenuItem, e.this.fDf);
-            }
+          return true;
+        }
+        
+        public final View c(Context paramAnonymousContext, View paramAnonymousView)
+        {
+          AppMethodBeat.i(5677);
+          View localView = paramAnonymousView;
+          if (paramAnonymousView == null) {
+            localView = View.inflate(paramAnonymousContext, d.f.search_result_item_catalog, null);
           }
-        };
-        e.this.syA.cB();
-        AppMethodBeat.o(266235);
-        return false;
-      }
-    };
-    AppMethodBeat.o(265055);
-    return local1;
+          AppMethodBeat.o(5677);
+          return localView;
+        }
+      };
+    }
+    a.b localb = vCC;
+    AppMethodBeat.o(5680);
+    return localb;
   }
   
-  public final boolean e(int paramInt1, int paramInt2, Intent paramIntent)
+  public final a.a dcp()
   {
-    AppMethodBeat.i(265056);
-    switch (paramInt1)
-    {
-    default: 
-      AppMethodBeat.o(265056);
-      return false;
-    }
-    if ((paramInt2 == -1) && (paramIntent != null))
-    {
-      String str1 = paramIntent.getStringExtra("be_send_card_name");
-      String str2 = paramIntent.getStringExtra("received_card_name");
-      boolean bool = paramIntent.getBooleanExtra("Is_Chatroom", false);
-      paramIntent = paramIntent.getStringExtra("custom_send_text");
-      g.eRW().u(str1, str2, bool);
-      g.eRW().iQ(paramIntent, str2);
-      com.tencent.mm.ui.widget.snackbar.b.r(this.fDf, this.fDf.getString(d.i.has_send));
-    }
-    AppMethodBeat.o(265056);
-    return true;
+    AppMethodBeat.i(5681);
+    a locala = new a();
+    AppMethodBeat.o(5681);
+    return locala;
+  }
+  
+  public static final class a
+    implements a.a
+  {
+    public TextView vCw;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/m1" style="@style/mk"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/k4">
-        <TextView android:id="@id/jia" style="@style/a0d" />
-        <TextView android:id="@id/jhs" style="@style/a0b" />
-        <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:layout_gravity="center_vertical" android:id="@id/jfw" android:background="@color/ac_" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <com.tenpay.android.wechat.TenpaySecureEditText android:id="@id/jf4" style="@style/a09" />
-        <com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView android:id="@id/jfu" android:src="@drawable/bk3" style="@style/a0_" />
+    <LinearLayout android:id="@id/bry" android:paddingTop="14.0dip" android:paddingBottom="14.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center|left" android:orientation="vertical" android:id="@id/br7" android:paddingLeft="@dimen/iw" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/m1" android:layout_weight="1.0">
+            <TextView android:textColor="@drawable/eu" android:id="@android:id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/m4" />
+            <TextView android:textSize="13.0dip" android:textColor="@drawable/eu" android:id="@android:id/summary" android:paddingRight="@dimen/iw" android:layout_marginTop="4.0dip" android:singleLine="true" style="@style/m7" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center|right" android:orientation="vertical" android:id="@android:id/widget_frame" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginEnd="14.0dip" />
     </LinearLayout>
-</merge>
+    <View android:background="@color/abn" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/bry" android:layout_alignParentBottom="true" />
+</RelativeLayout>

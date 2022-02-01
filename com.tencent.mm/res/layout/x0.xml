@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout android:id="@id/a7q" android:background="@color/a" android:paddingTop="@dimen/b7" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/bn6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cd" android:layout_marginStart="@dimen/cd" android:layout_marginEnd="@dimen/cd"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.google.android.material.appbar.AppBarLayout android:orientation="vertical" android:id="@id/a5s" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="wrap_content" app:elevation="0.0dip">
-        <com.google.android.material.appbar.CollapsingToolbarLayout android:paddingBottom="@dimen/ce" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_scrollFlags="c6i|hci" app:titleEnabled="false">
-            <include android:id="@id/a5f" layout="@layout/x3" />
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-        <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="@dimen/bo" />
-        <com.tencent.mm.plugin.profile.ui.tab.view.BizProfileTabLayout android:id="@id/a6_" android:layout_width="fill_parent" android:layout_height="46.0dip" />
-    </com.google.android.material.appbar.AppBarLayout>
-    <com.tencent.mm.plugin.profile.ui.tab.view.BizProfileViewPager android:id="@id/b8c" android:layout_width="fill_parent" android:layout_height="fill_parent" app:layout_behavior="@string/a0e" />
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <ImageView android:id="@id/aas" app:layout_constraintDimensionRatio="16:9" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" style="@style/fk" />
+    <ImageView android:id="@id/aat" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/hg" app:layout_constraintBottom_toTopOf="@id/aar" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="@id/aas" app:layout_constraintVertical_chainStyle="hqs" />
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/al6" android:id="@id/aar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ig" android:shadowColor="@color/BW_0_Alpha_0_5" android:shadowRadius="10.0" app:layout_constraintBottom_toBottomOf="@id/aas" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toBottomOf="@id/aat" />
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/al6" android:id="@id/aaq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bv" android:layout_marginStart="@dimen/cp" app:layout_constraintBottom_toBottomOf="@id/aas" app:layout_constraintStart_toStartOf="hr_" app:layout_goneMarginBottom="@dimen/df" />
+    <View android:id="@id/aap" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/d0" app:layout_constraintBottom_toBottomOf="@id/aas" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" />
+    <FrameLayout android:id="@id/aau" android:background="@drawable/gg" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintTop_toBottomOf="@id/aas">
+        <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/t" android:textColor="@color/FG_0" android:ellipsize="end" android:id="@id/aav" android:paddingTop="@dimen/ig" android:paddingBottom="@dimen/j6" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" android:lineSpacingExtra="2.0dip" android:paddingStart="@dimen/cd" android:paddingEnd="@dimen/cd" />
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

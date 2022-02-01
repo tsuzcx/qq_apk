@@ -5,110 +5,96 @@ import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.finder.activity.view.a;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.cgi.ch;
-import com.tencent.mm.plugin.finder.live.ui.post.d;
+import com.tencent.mm.plugin.finder.cgi.di;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.post.g;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.component.UIComponent;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.ah;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/activity/uic/FinderActivityHeaderNewUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "headerManager", "Lcom/tencent/mm/plugin/finder/activity/view/ActivityHeaderManager;", "headerView", "Landroid/view/View;", "isFirstResume", "", "onActivityResult", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onResume", "setCampaignFinished", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/activity/uic/FinderActivityHeaderNewUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "headerManager", "Lcom/tencent/mm/plugin/finder/activity/view/ActivityHeaderManager;", "getHeaderManager", "()Lcom/tencent/mm/plugin/finder/activity/view/ActivityHeaderManager;", "setHeaderManager", "(Lcom/tencent/mm/plugin/finder/activity/view/ActivityHeaderManager;)V", "headerView", "Landroid/view/View;", "isFirstResume", "", "addParticipateCount", "", "getParticipateCount", "", "getReportKvs", "Lorg/json/JSONObject;", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onResume", "setCampaignFinished", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
   extends UIComponent
 {
-  private View mXN;
-  a wXQ;
-  private boolean wXR;
+  public a AuO;
+  private boolean AuP;
+  private View pUv;
   
   public c(AppCompatActivity paramAppCompatActivity)
   {
     super(paramAppCompatActivity);
-    AppMethodBeat.i(282735);
-    this.wXR = true;
-    AppMethodBeat.o(282735);
+    AppMethodBeat.i(348136);
+    this.AuP = true;
+    AppMethodBeat.o(348136);
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(282734);
+    AppMethodBeat.i(348161);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if ((paramInt2 == -1) && (paramInt1 == 20000))
     {
-      paramIntent = this.wXQ;
-      if (paramIntent != null)
-      {
-        paramIntent.dmX();
-        AppMethodBeat.o(282734);
-        return;
+      paramIntent = this.AuO;
+      if (paramIntent != null) {
+        paramIntent.dTR();
       }
     }
-    AppMethodBeat.o(282734);
+    AppMethodBeat.o(348161);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(282731);
+    AppMethodBeat.i(348141);
     super.onCreate(paramBundle);
-    this.mXN = getActivity().findViewById(b.f.activity_profile_header);
-    paramBundle = getActivity();
-    if (paramBundle == null)
-    {
-      paramBundle = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-      AppMethodBeat.o(282731);
-      throw paramBundle;
-    }
-    paramBundle = new a((MMActivity)paramBundle);
-    paramBundle.ep(this.mXN);
-    this.wXQ = paramBundle;
-    AppMethodBeat.o(282731);
+    this.pUv = getActivity().findViewById(e.e.activity_profile_header);
+    paramBundle = new a((MMActivity)getActivity());
+    paramBundle.fn(this.pUv);
+    ah localah = ah.aiuX;
+    this.AuO = paramBundle;
+    AppMethodBeat.o(348141);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(282732);
+    AppMethodBeat.i(348146);
     super.onDestroy();
-    a locala = this.wXQ;
-    if (locala != null)
-    {
+    a locala = this.AuO;
+    if (locala != null) {
       locala.destroy();
-      AppMethodBeat.o(282732);
-      return;
     }
-    AppMethodBeat.o(282732);
+    AppMethodBeat.o(348146);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(282733);
+    AppMethodBeat.i(348153);
     super.onResume();
-    if (this.wXR) {
-      this.wXR = false;
+    if (this.AuP) {
+      this.AuP = false;
     }
-    Object localObject = this.wXQ;
-    if (localObject != null)
+    a locala = this.AuO;
+    if (locala != null)
     {
-      if (!this.wXR) {
-        ((a)localObject).dmV();
+      if (!this.AuP) {
+        locala.dTP();
       }
-      if (((a)localObject).wZz == null)
+      if (locala.AwM == null)
       {
-        ch localch = new ch(13);
-        h.aGY().b((q)localch);
+        localObject = new di(13);
+        h.aZW().a((p)localObject, 0);
       }
-      localObject = ((a)localObject).wZA;
-      if (localObject != null)
-      {
-        ((d)localObject).onResume();
-        AppMethodBeat.o(282733);
-        return;
+      Object localObject = locala.AwN;
+      if (localObject != null) {
+        ((g)localObject).onResume();
       }
-      AppMethodBeat.o(282733);
-      return;
+      locala.AwO = null;
     }
-    AppMethodBeat.o(282733);
+    AppMethodBeat.o(348153);
   }
 }
 

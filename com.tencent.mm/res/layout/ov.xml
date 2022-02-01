@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:padding="@dimen/hs" android:layout_width="255.0dip" android:layout_height="wrap_content" android:minHeight="220.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_horizontal" android:background="@drawable/c27" android:layout_width="220.0dip" android:layout_height="106.599976dip" />
-    <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:layout_gravity="center" android:id="@id/ap5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hs" android:text="@string/anj" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.finder.widget.record.EdgeTransparentView android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/df" app:edge_position="kr5" app:edge_width="30.0dip">
+        <ViewStub android:id="@id/l91" android:layout="@layout/avk" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="16.0dip" android:layout_marginRight="30.0dip" />
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/l0l" android:background="@drawable/aks" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="72.0dip" android:layout_marginBottom="8.0dip">
+            <TextView android:textSize="14.0dip" android:textColor="@color/UN_BW_0_Alpha_0_9" android:id="@id/l0m" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/l0k" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="4.0dip" android:src="@raw/game_chat_tips_icon_down" app:iconColor="@color/UN_BW_0_Alpha_0_9" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="end|center|top" android:orientation="horizontal" android:id="@id/ze" android:background="@drawable/e7" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginTop="100.0dip">
+            <TextView android:textSize="14.0dip" android:textColor="@color/UN_BW_0_Alpha_0_9" android:id="@id/zf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/f7i" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="4.0dip" android:src="@raw/game_chat_tips_icon_up" app:iconColor="@color/UN_BW_0_Alpha_0_9" />
+        </LinearLayout>
+    </com.tencent.mm.plugin.finder.widget.record.EdgeTransparentView>
 </LinearLayout>

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<ScrollView android:scrollbars="none" style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.sns.ui.MaskTextView android:textSize="15.0dip" android:textColor="@color/a92" android:gravity="center_vertical" android:id="@id/hys" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/hyq" android:paddingTop="2.0dip" android:paddingBottom="2.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/hys" android:layout_alignParentStart="true">
-        <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="@color/x0" android:id="@id/hyr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-        <ImageView android:id="@id/hyp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="4.0dip" />
+    <LinearLayout android:gravity="center" style="@style/lj">
+        <TextView android:gravity="center" android:id="@id/jc_" android:text="@string/iaf" style="@style/n_" />
+        <TextView android:gravity="center" android:id="@id/gwh" android:layout_marginTop="5.0dip" style="@style/n_" />
+        <EditText android:gravity="center" android:id="@id/a9x" android:layout_width="180.0dip" android:layout_marginTop="5.0dip" android:hint="@string/ia6" android:inputType="phone" style="@style/n9" />
+        <TextView android:gravity="center" android:id="@id/iqk" android:layout_marginTop="10.0dip" android:text="@string/iac" style="@style/n_" />
+        <Button android:id="@id/iqj" android:visibility="gone" android:layout_marginTop="15.0dip" android:text="@string/iac" style="@style/og" />
+        <Button android:layout_gravity="center" android:id="@id/be9" android:text="@string/iab" style="@style/ko" />
     </LinearLayout>
-</RelativeLayout>
+</ScrollView>

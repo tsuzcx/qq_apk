@@ -4,11 +4,11 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
+import com.tencent.mm.br.c;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.f.r;
+import com.tencent.mm.ui.f.s;
 
 final class j$9
   implements View.OnClickListener
@@ -19,14 +19,14 @@ final class j$9
   {
     AppMethodBeat.i(56154);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/location/ui/impl/TrackMapUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/location/ui/impl/TrackMapUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
     paramView = new Intent();
-    paramView.setClass(this.ErM.activity, f.r.class);
-    Log.d("MicroMsg.TrackMapUI", "click url %s", new Object[] { this.ErO });
-    paramView.putExtra("rawUrl", this.ErO);
+    paramView.setClass(this.Kks.activity, f.s.class);
+    Log.d("MicroMsg.TrackMapUI", "click url %s", new Object[] { this.Kku });
+    paramView.putExtra("rawUrl", this.Kku);
     paramView.putExtra("showShare", false);
-    c.f(this.ErM.activity, "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", paramView);
+    c.g(this.Kks.activity, "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", paramView);
     a.a(this, "com/tencent/mm/plugin/location/ui/impl/TrackMapUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(56154);
   }

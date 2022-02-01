@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.view.TouchableLayout android:id="@id/kls" android:layout_width="fill_parent" android:layout_height="@dimen/ci"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/czj" android:paddingTop="@dimen/bt" android:paddingBottom="@dimen/bt" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="@dimen/a4n" android:paddingEnd="@dimen/ct">
-        <com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:id="@id/klu" android:background="@drawable/czk" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" app:cornerRadius="2.0dip">
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/klr" android:visibility="gone" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:layout_centerVertical="true" />
-            <ImageView android:layout_gravity="center" android:id="@id/klt" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerVertical="true" />
-        </com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
-        <TextView android:textSize="@dimen/k6" android:textColor="@color/v9" android:gravity="start|center" android:id="@id/klv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d7a" android:includeFontPadding="false" android:layout_marginStart="@dimen/bt" />
-    </LinearLayout>
-</com.tencent.mm.view.TouchableLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:weightSum="6.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/ki4" android:text="@string/lq1" style="@style/a64" />
+    <TextView android:id="@id/ki5" android:text="@string/lq2" style="@style/a64" />
+    <TextView android:id="@id/ki6" android:text="@string/lq3" style="@style/a64" />
+    <TextView android:id="@id/ki7" android:text="@string/lq4" style="@style/a64" />
+    <TextView android:id="@id/ki8" android:text="@string/lq5" style="@style/a64" />
+    <TextView android:id="@id/ki9" android:text="@string/lq6" style="@style/a64" />
+</LinearLayout>

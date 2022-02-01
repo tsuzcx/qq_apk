@@ -9,13 +9,13 @@ import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
 public final class b
   extends MAutoStorage<a>
 {
-  public static final String[] lqL;
-  private final boolean omY;
+  public static final String[] nVW;
+  private final boolean rqI;
   
   static
   {
     AppMethodBeat.i(45098);
-    lqL = new String[] { MAutoStorage.getCreateSQLs(a.info, "WxagGameInfo") };
+    nVW = new String[] { MAutoStorage.getCreateSQLs(a.info, "WxagGameInfo") };
     AppMethodBeat.o(45098);
   }
   
@@ -26,8 +26,8 @@ public final class b
     if (paramISQLiteDatabase != null) {}
     for (boolean bool = true;; bool = false)
     {
-      this.omY = bool;
-      if (!this.omY) {
+      this.rqI = bool;
+      if (!this.rqI) {
         Log.e("MicroMsg.MiniGameInfoStorage", "storage can not work!!!");
       }
       AppMethodBeat.o(45096);
@@ -44,7 +44,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.b.a.b
  * JD-Core Version:    0.7.0.1
  */

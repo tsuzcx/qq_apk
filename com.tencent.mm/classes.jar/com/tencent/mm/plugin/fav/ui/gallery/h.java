@@ -15,14 +15,14 @@ import androidx.recyclerview.widget.RecyclerView.b;
 import androidx.recyclerview.widget.RecyclerView.h;
 import androidx.recyclerview.widget.RecyclerView.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.fav.a.ab;
-import com.tencent.mm.plugin.fav.a.ag;
+import com.tencent.mm.plugin.fav.a.ac;
+import com.tencent.mm.plugin.fav.a.ah;
 import com.tencent.mm.plugin.fav.a.g;
 import com.tencent.mm.plugin.fav.a.r;
-import com.tencent.mm.plugin.fav.ui.o;
-import com.tencent.mm.plugin.fav.ui.s.c;
-import com.tencent.mm.plugin.fav.ui.s.i;
-import com.tencent.mm.protocal.protobuf.anm;
+import com.tencent.mm.plugin.fav.ui.FavoriteImageServer;
+import com.tencent.mm.plugin.fav.ui.q.c;
+import com.tencent.mm.plugin.fav.ui.q.i;
+import com.tencent.mm.protocal.protobuf.arf;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -36,39 +36,39 @@ import java.util.List;
 public final class h
   implements e.b, g.a
 {
+  g.b AnV;
+  f AnW;
+  boolean AnX;
+  int AnY;
+  int AnZ;
+  f.b Anu;
   List<Long> idList;
   Context mContext;
   ArrayList<f.d> mDataList;
   private MMHandler mHandler;
-  private GridLayoutManager tNm;
-  f.b wQQ;
-  g.b wRs;
-  f wRt;
-  boolean wRu;
-  int wRv;
-  int wRw;
+  private GridLayoutManager wQC;
   
   public h(Context paramContext)
   {
     AppMethodBeat.i(107429);
     this.mDataList = null;
-    this.wRu = false;
+    this.AnX = false;
     this.mHandler = new MMHandler(Looper.getMainLooper());
-    this.wRv = 0;
+    this.AnY = 0;
     this.idList = new ArrayList();
-    this.wRw = 0;
+    this.AnZ = 0;
     this.mContext = paramContext;
     this.mDataList = new ArrayList();
     AppMethodBeat.o(107429);
   }
   
-  public final void K(final boolean paramBoolean, final int paramInt)
+  public final void I(final boolean paramBoolean, final int paramInt)
   {
     AppMethodBeat.i(107439);
-    this.wRt.tMZ = true;
-    this.wRs.lR(paramBoolean);
-    com.tencent.mm.kernel.h.aHH();
-    com.tencent.mm.kernel.h.aHJ().postToWorker(new Runnable()
+    this.AnW.wQp = true;
+    this.AnV.nm(paramBoolean);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baH().postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -77,30 +77,30 @@ public final class h
         if (paramBoolean)
         {
           h.this.mDataList.clear();
-          h.this.wRw = 0;
+          h.this.AnZ = 0;
           localObject1 = new ArrayList();
           ((List)localObject1).add(Integer.valueOf(21));
-          h.this.idList = ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavSearchStorage().b(null, null, (List)localObject1);
-          h.this.wRv = h.this.idList.size();
+          h.this.idList = ((ah)com.tencent.mm.kernel.h.az(ah.class)).getFavSearchStorage().b(null, null, (List)localObject1);
+          h.this.AnY = h.this.idList.size();
         }
         final int i = j;
         if (paramInt >= 0)
         {
           i = j;
-          if (h.this.wRv - paramInt > 100) {
-            i = h.this.wRv - paramInt;
+          if (h.this.AnY - paramInt > 100) {
+            i = h.this.AnY - paramInt;
           }
         }
         Log.i("MicroMsg.MediaHistoryGalleryPresenter", "offset:%s limit:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
         Object localObject1 = new LinkedList();
-        while ((((LinkedList)localObject1).size() < i) && (h.this.wRw < h.this.idList.size()))
+        while ((((LinkedList)localObject1).size() < i) && (h.this.AnZ < h.this.idList.size()))
         {
-          int k = h.this.wRw;
+          int k = h.this.AnZ;
           if (k + i > h.this.idList.size()) {}
           for (j = h.this.idList.size();; j = k + i)
           {
-            Object localObject2 = h.dU(h.this.idList.subList(k, j));
-            h.this.wRw = j;
+            Object localObject2 = h.fP(h.this.idList.subList(k, j));
+            h.this.AnZ = j;
             localObject2 = ((List)localObject2).iterator();
             while (((Iterator)localObject2).hasNext()) {
               ((LinkedList)localObject1).addAll(h.I((g)((Iterator)localObject2).next()));
@@ -118,9 +118,9 @@ public final class h
           public final void run()
           {
             AppMethodBeat.i(107427);
-            h.this.wRt.tMZ = false;
-            if (h.this.wRs != null) {
-              h.this.wRs.H(h.5.this.tNh, i);
+            h.this.AnW.wQp = false;
+            if (h.this.AnV != null) {
+              h.this.AnV.F(h.5.this.wQx, i);
             }
             AppMethodBeat.o(107427);
           }
@@ -131,11 +131,11 @@ public final class h
     AppMethodBeat.o(107439);
   }
   
-  public final void LQ(int paramInt)
+  public final void MN(int paramInt)
   {
     AppMethodBeat.i(107434);
     Log.i("MicroMsg.MediaHistoryGalleryPresenter", "[handleSelectedItem] type:%s", new Object[] { Integer.valueOf(paramInt) });
-    ArrayList localArrayList = e.a.dlV().wQK;
+    ArrayList localArrayList = e.a.dSL().Ann;
     if ((localArrayList == null) || (localArrayList.size() == 0))
     {
       Log.i("MicroMsg.MediaHistoryGalleryPresenter", "handleSelectedItem() list == null");
@@ -149,128 +149,128 @@ public final class h
     {
       AppMethodBeat.o(107434);
       return;
-      this.wRs.dS(localArrayList);
-      this.wRs.dlQ();
+      this.AnV.fN(localArrayList);
+      this.AnV.dSG();
       AppMethodBeat.o(107434);
       return;
-      this.wRs.dT(localArrayList);
-      this.wRs.dlQ();
+      this.AnV.fO(localArrayList);
+      this.AnV.dSG();
     }
   }
   
   public final void a(f.b paramb)
   {
-    this.wQQ = paramb;
+    this.Anu = paramb;
   }
   
-  public final RecyclerView.a c(o paramo)
+  public final RecyclerView.a c(FavoriteImageServer paramFavoriteImageServer)
   {
-    AppMethodBeat.i(230013);
-    this.wRt = new f(this.mContext, this.mDataList, this.wRs, paramo, new Runnable()
+    AppMethodBeat.i(274521);
+    this.AnW = new f(this.mContext, this.mDataList, this.AnV, paramFavoriteImageServer, new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(107425);
         Log.i("MicroMsg.MediaHistoryGalleryPresenter", "uiCallback()");
-        h.this.K(true, -1);
+        h.this.I(true, -1);
         AppMethodBeat.o(107425);
       }
     });
-    this.wRt.wQP = new f.c()
+    this.AnW.Ant = new f.c()
     {
       public final void a(boolean paramAnonymousBoolean, f.d paramAnonymousd, int paramAnonymousInt)
       {
         AppMethodBeat.i(107426);
         Log.i("MicroMsg.MediaHistoryGalleryPresenter", "[onCheck] isChecked :%s pos:%s", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Integer.valueOf(paramAnonymousInt) });
-        if ((paramAnonymousBoolean) && (e.a.dlV().wQK.size() >= 9))
+        if ((paramAnonymousBoolean) && (e.a.dSL().Ann.size() >= 9))
         {
-          Toast.makeText(h.this.mContext, h.this.mContext.getResources().getString(s.i.fav_filter_gallery_select_limit, new Object[] { Integer.valueOf(9) }), 1).show();
-          h.this.wRt.cL(paramAnonymousInt);
+          Toast.makeText(h.this.mContext, h.this.mContext.getResources().getString(q.i.fav_filter_gallery_select_limit, new Object[] { Integer.valueOf(9) }), 1).show();
+          h.this.AnW.fV(paramAnonymousInt);
           AppMethodBeat.o(107426);
           return;
         }
         e locale;
         if (paramAnonymousBoolean)
         {
-          locale = e.a.dlV();
-          paramAnonymousd = paramAnonymousd.wRa;
+          locale = e.a.dSL();
+          paramAnonymousd = paramAnonymousd.AnE;
           if (paramAnonymousd != null)
           {
             Log.i("MicroMsg.ImageGallerySelectedHandle", "add : %s", new Object[] { paramAnonymousd });
-            locale.wQK.remove(paramAnonymousd);
-            locale.wQK.remove(locale.aAy(paramAnonymousd.fEd.fEa));
-            locale.wQK.add(paramAnonymousd);
-            locale.dlU();
+            locale.Ann.remove(paramAnonymousd);
+            locale.Ann.remove(locale.auG(paramAnonymousd.hIT.hIQ));
+            locale.Ann.add(paramAnonymousd);
+            locale.dSK();
           }
         }
         for (;;)
         {
-          h.this.wRs.LO(e.a.dlV().wQK.size());
+          h.this.AnV.ML(e.a.dSL().Ann.size());
           AppMethodBeat.o(107426);
           return;
-          locale = e.a.dlV();
-          paramAnonymousd = paramAnonymousd.wRa;
+          locale = e.a.dSL();
+          paramAnonymousd = paramAnonymousd.AnE;
           if (paramAnonymousd != null)
           {
-            Log.i("MicroMsg.ImageGallerySelectedHandle", "remove : %s", new Object[] { paramAnonymousd.fEd.fEa });
-            locale.wQK.remove(paramAnonymousd);
-            locale.wQK.remove(locale.aAy(paramAnonymousd.fEd.fEa));
-            locale.dlU();
+            Log.i("MicroMsg.ImageGallerySelectedHandle", "remove : %s", new Object[] { paramAnonymousd.hIT.hIQ });
+            locale.Ann.remove(paramAnonymousd);
+            locale.Ann.remove(locale.auG(paramAnonymousd.hIT.hIQ));
+            locale.dSK();
           }
         }
       }
     };
-    this.wRt.wQQ = this.wQQ;
-    ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavCdnStorage().a(this.wRt.wQR);
-    paramo = this.wRt;
-    AppMethodBeat.o(230013);
-    return paramo;
+    this.AnW.Anu = this.Anu;
+    ((ah)com.tencent.mm.kernel.h.az(ah.class)).getFavCdnStorage().a(this.AnW.Anv);
+    paramFavoriteImageServer = this.AnW;
+    AppMethodBeat.o(274521);
+    return paramFavoriteImageServer;
   }
   
-  public final boolean dlO()
+  public final boolean dSE()
   {
     AppMethodBeat.i(107437);
-    boolean bool = e.a.dlV().wQL;
+    boolean bool = e.a.dSL().Ano;
     AppMethodBeat.o(107437);
     return bool;
   }
   
-  public final void dlP()
+  public final void dSF()
   {
     AppMethodBeat.i(107435);
-    this.wRt.wQS = true;
-    e.a.dlV().wQL = true;
-    GridLayoutManager localGridLayoutManager = (GridLayoutManager)eW(this.mContext);
-    int i = localGridLayoutManager.kJ();
-    int j = localGridLayoutManager.kL();
-    this.wRt.e(i, j - i + 1, Integer.valueOf(0));
+    this.AnW.Anw = true;
+    e.a.dSL().Ano = true;
+    GridLayoutManager localGridLayoutManager = (GridLayoutManager)fT(this.mContext);
+    int i = localGridLayoutManager.Ju();
+    int j = localGridLayoutManager.Jw();
+    this.AnW.e(i, j - i + 1, Integer.valueOf(0));
     AppMethodBeat.o(107435);
   }
   
-  public final void dlQ()
+  public final void dSG()
   {
     AppMethodBeat.i(107436);
-    this.wRt.wQS = false;
-    e.a.dlV().clear();
-    e.a.dlV().wQL = false;
-    this.wRt.alc.notifyChanged();
+    this.AnW.Anw = false;
+    e.a.dSL().clear();
+    e.a.dSL().Ano = false;
+    this.AnW.bZE.notifyChanged();
     AppMethodBeat.o(107436);
   }
   
-  public final void dlW()
+  public final void dSM()
   {
-    this.wRu = true;
+    this.AnX = true;
   }
   
-  public final <T extends RecyclerView.LayoutManager> T eW(Context paramContext)
+  public final <T extends RecyclerView.LayoutManager> T fT(Context paramContext)
   {
-    AppMethodBeat.i(230011);
-    if (this.tNm == null)
+    AppMethodBeat.i(274517);
+    if (this.wQC == null)
     {
-      this.tNm = new GridLayoutManager(4);
-      this.tNm.ahK = new GridLayoutManager.b()
+      this.wQC = new GridLayoutManager(4);
+      this.wQC.bWq = new GridLayoutManager.b()
       {
-        public final int cx(int paramAnonymousInt)
+        public final int fJ(int paramAnonymousInt)
         {
           AppMethodBeat.i(107423);
           if (paramAnonymousInt >= h.this.mDataList.size())
@@ -288,61 +288,61 @@ public final class h
         }
       };
     }
-    paramContext = this.tNm;
-    AppMethodBeat.o(230011);
+    paramContext = this.wQC;
+    AppMethodBeat.o(274517);
     return paramContext;
   }
   
-  public final RecyclerView.h fn(final Context paramContext)
+  public final RecyclerView.h gl(final Context paramContext)
   {
-    AppMethodBeat.i(230012);
+    AppMethodBeat.i(274519);
     paramContext = new RecyclerView.h()
     {
       public final void a(Rect paramAnonymousRect, View paramAnonymousView, RecyclerView paramAnonymousRecyclerView, RecyclerView.s paramAnonymouss)
       {
-        AppMethodBeat.i(232210);
-        int i = (int)paramContext.getResources().getDimension(s.c.OneDPPadding);
+        AppMethodBeat.i(274508);
+        int i = (int)paramContext.getResources().getDimension(q.c.OneDPPadding);
         paramAnonymousRect.bottom = i;
         paramAnonymousRect.top = i;
         paramAnonymousRect.left = i;
         paramAnonymousRect.right = i;
-        AppMethodBeat.o(232210);
+        AppMethodBeat.o(274508);
       }
     };
-    AppMethodBeat.o(230012);
+    AppMethodBeat.o(274519);
     return paramContext;
   }
   
   public final void onDetach()
   {
     AppMethodBeat.i(107430);
-    if (this.wRs != null)
+    if (this.AnV != null)
     {
-      this.wRs.a(null);
-      this.wRs = null;
+      this.AnV.a(null);
+      this.AnV = null;
     }
-    e locale = e.a.dlV();
-    locale.wQM.clear();
+    e locale = e.a.dSL();
+    locale.Anp.clear();
     locale.clear();
-    locale.wQL = false;
-    ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavCdnStorage().b(this.wRt.wQR);
+    locale.Ano = false;
+    ((ah)com.tencent.mm.kernel.h.az(ah.class)).getFavCdnStorage().b(this.AnW.Anv);
     AppMethodBeat.o(107430);
   }
   
   public final void onResume()
   {
     AppMethodBeat.i(107438);
-    if ((this.wRu) && (e.a.dlV().wQL))
+    if ((this.AnX) && (e.a.dSL().Ano))
     {
-      this.wRs.LO(e.a.dlV().wQK.size());
-      this.wRt.alc.notifyChanged();
+      this.AnV.ML(e.a.dSL().Ann.size());
+      this.AnW.bZE.notifyChanged();
     }
     AppMethodBeat.o(107438);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.gallery.h
  * JD-Core Version:    0.7.0.1
  */

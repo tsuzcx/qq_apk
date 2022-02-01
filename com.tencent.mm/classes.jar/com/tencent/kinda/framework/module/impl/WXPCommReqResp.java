@@ -2,7 +2,7 @@ package com.tencent.kinda.framework.module.impl;
 
 import com.tencent.kinda.gen.KNetworkMockManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.o;
+import com.tencent.mm.am.n;
 import com.tencent.mm.protocal.ac;
 import com.tencent.mm.protocal.l.b;
 import com.tencent.mm.protocal.l.c;
@@ -12,7 +12,7 @@ import com.tencent.mm.sdk.platformtools.Util;
 import java.lang.ref.WeakReference;
 
 public class WXPCommReqResp
-  extends o
+  extends n
 {
   private int funcId;
   public WeakReference<KNetworkMockManager> m_mockMgr;
@@ -40,6 +40,9 @@ public class WXPCommReqResp
     this.m_mockMgr = new WeakReference(paramKNetworkMockManager);
     this.newExtFlag = 0;
     this.transferHeader = null;
+    if (paramInt4 == 0) {
+      setIsUserCmd(true);
+    }
     AppMethodBeat.o(18685);
   }
   
@@ -339,7 +342,7 @@ public class WXPCommReqResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.module.impl.WXPCommReqResp
  * JD-Core Version:    0.7.0.1
  */

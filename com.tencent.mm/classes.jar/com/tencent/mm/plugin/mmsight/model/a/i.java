@@ -11,10 +11,10 @@ import com.tencent.mm.sdk.platformtools.MMHandler;
 public final class i
   implements c
 {
-  private MediaRecorder FbE;
-  private boolean FbF;
-  c.a Fbl;
-  private MMHandler Fbr;
+  c.a KWU;
+  private MMHandler KXa;
+  private MediaRecorder KXn;
+  private boolean KXo;
   private int audioBitrate;
   private int audioChannelCount;
   private int audioSampleRate;
@@ -22,16 +22,16 @@ public final class i
   public i(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(89496);
-    this.FbF = false;
-    this.Fbr = new MMHandler()
+    this.KXo = false;
+    this.KXa = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(89495);
-        if (i.this.Fbl != null)
+        if (i.this.KWU != null)
         {
-          i.this.Fbl.aZS();
-          i.this.Fbl = null;
+          i.this.KWU.buO();
+          i.this.KWU = null;
         }
         AppMethodBeat.o(89495);
       }
@@ -46,21 +46,21 @@ public final class i
     AppMethodBeat.o(89496);
   }
   
-  public final int J(int paramInt, String paramString)
+  public final int L(int paramInt, String paramString)
   {
     AppMethodBeat.i(89497);
     Log.i("MicroMsg.MMSightAACMediaRecorder", "MMSightAACMediaRecorder init tempPath[%s], sampleRate[%d]", new Object[] { paramString, Integer.valueOf(this.audioSampleRate) });
-    this.FbE = new e();
-    this.FbE.setAudioSource(1);
-    this.FbE.setOutputFormat(2);
-    this.FbE.setAudioEncoder(3);
-    this.FbE.setAudioChannels(this.audioChannelCount);
-    this.FbE.setAudioEncodingBitRate(this.audioBitrate);
-    this.FbE.setAudioSamplingRate(this.audioSampleRate);
-    this.FbE.setOutputFile(paramString);
+    this.KXn = new e();
+    this.KXn.setAudioSource(1);
+    this.KXn.setOutputFormat(2);
+    this.KXn.setAudioEncoder(3);
+    this.KXn.setAudioChannels(this.audioChannelCount);
+    this.KXn.setAudioEncodingBitRate(this.audioBitrate);
+    this.KXn.setAudioSamplingRate(this.audioSampleRate);
+    this.KXn.setOutputFile(paramString);
     try
     {
-      this.FbE.prepare();
+      this.KXn.prepare();
       AppMethodBeat.o(89497);
       return 0;
     }
@@ -76,11 +76,11 @@ public final class i
   {
     AppMethodBeat.i(89498);
     Log.i("MicroMsg.MMSightAACMediaRecorder", "start, onPcmReady: %s", new Object[] { parama });
-    this.Fbl = parama;
+    this.KWU = parama;
     try
     {
-      if ((this.FbE != null) && (!this.FbF)) {
-        this.FbE.start();
+      if ((this.KXn != null) && (!this.KXo)) {
+        this.KXn.start();
       }
       return 0;
     }
@@ -91,7 +91,7 @@ public final class i
     }
     finally
     {
-      this.Fbr.sendEmptyMessage(0);
+      this.KXa.sendEmptyMessage(0);
       AppMethodBeat.o(89498);
     }
   }
@@ -99,25 +99,25 @@ public final class i
   public final int a(c.b paramb)
   {
     AppMethodBeat.i(89499);
-    Log.i("MicroMsg.MMSightAACMediaRecorder", "stop, mediaRecorder: %s, callback: %s", new Object[] { this.FbE, paramb });
-    if (this.FbE == null)
+    Log.i("MicroMsg.MMSightAACMediaRecorder", "stop, mediaRecorder: %s, callback: %s", new Object[] { this.KXn, paramb });
+    if (this.KXn == null)
     {
       if (paramb != null) {
-        paramb.aZQ();
+        paramb.buN();
       }
       AppMethodBeat.o(89499);
       return 0;
     }
     try
     {
-      if (!this.FbF)
+      if (!this.KXo)
       {
-        this.FbE.stop();
-        this.FbE.release();
+        this.KXn.stop();
+        this.KXn.release();
       }
-      this.FbE = null;
+      this.KXn = null;
       if (paramb != null) {
-        paramb.aZQ();
+        paramb.buN();
       }
       AppMethodBeat.o(89499);
       return 0;
@@ -135,14 +135,14 @@ public final class i
     AppMethodBeat.i(89500);
     try
     {
-      if (this.FbE != null)
+      if (this.KXn != null)
       {
-        if (!this.FbF)
+        if (!this.KXo)
         {
-          this.FbE.stop();
-          this.FbE.release();
+          this.KXn.stop();
+          this.KXn.release();
         }
-        this.FbE = null;
+        this.KXn = null;
       }
       AppMethodBeat.o(89500);
       return;
@@ -154,9 +154,9 @@ public final class i
     }
   }
   
-  public final void eTD() {}
+  public final void gcw() {}
   
-  public final com.tencent.mm.audio.b.c.a eTE()
+  public final com.tencent.mm.audio.b.c.a gcx()
   {
     return null;
   }
@@ -164,8 +164,8 @@ public final class i
   public final void pause()
   {
     AppMethodBeat.i(89501);
-    if (d.qV(24)) {
-      this.FbE.pause();
+    if (d.rb(24)) {
+      this.KXn.pause();
     }
     AppMethodBeat.o(89501);
   }
@@ -173,18 +173,18 @@ public final class i
   public final void resume()
   {
     AppMethodBeat.i(89502);
-    if (d.qV(24)) {
-      this.FbE.resume();
+    if (d.rb(24)) {
+      this.KXn.resume();
     }
     AppMethodBeat.o(89502);
   }
   
-  public final void uf(boolean paramBoolean)
-  {
-    this.FbF = paramBoolean;
-  }
-  
   public final void uu(int paramInt) {}
+  
+  public final void yt(boolean paramBoolean)
+  {
+    this.KXo = paramBoolean;
+  }
 }
 
 

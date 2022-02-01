@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.wallet_payu.pwd.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.ui.WalletSetPasswordUI;
@@ -13,7 +12,7 @@ public class WalletPayUSetPasswordUI
   {
     AppMethodBeat.i(72165);
     super.onCreate(paramBundle);
-    a.a(this.DLa, false);
+    a.a(this.JCc, false);
     AppMethodBeat.o(72165);
   }
   
@@ -25,7 +24,7 @@ public class WalletPayUSetPasswordUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.pwd.ui.WalletPayUSetPasswordUI
  * JD-Core Version:    0.7.0.1
  */

@@ -6,13 +6,13 @@ public abstract interface a
 {
   public abstract void a(h paramh);
   
-  public abstract Point brg();
+  public abstract Point bOM();
   
-  public abstract int brh();
+  public abstract int bON();
   
   public abstract int e(String paramString, long paramLong1, long paramLong2, int paramInt);
   
-  public abstract void eTP();
+  public abstract void gcH();
   
   public abstract void xe(int paramInt);
 }

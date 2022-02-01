@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <shape>
-            <solid android:color="@color/FG_3" />
+    <item android:state_enabled="false">
+        <shape android:shape="rectangle">
+            <corners android:radius="3.0dip" />
+            <stroke android:width="1.3999939dip" android:color="@color/az" />
         </shape>
     </item>
-    <item android:left="0.5px" android:right="0.5px">
-        <shape>
-            <solid android:color="@color/c" />
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="3.0dip" />
+            <stroke android:width="1.3999939dip" android:color="@color/BW_100_Alpha_0_3" />
         </shape>
     </item>
-</layer-list>
+</selector>

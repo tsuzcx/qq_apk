@@ -11,22 +11,22 @@ import java.util.regex.Pattern;
 
 final class a
 {
-  private static final Pattern bmU;
-  private final m bmV;
-  private final StringBuilder bmW;
+  private static final Pattern dgP;
+  private final m dgQ;
+  private final StringBuilder dgR;
   
   static
   {
     AppMethodBeat.i(92883);
-    bmU = Pattern.compile("\\[voice=\"([^\"]*)\"\\]");
+    dgP = Pattern.compile("\\[voice=\"([^\"]*)\"\\]");
     AppMethodBeat.o(92883);
   }
   
   public a()
   {
     AppMethodBeat.i(92876);
-    this.bmV = new m();
-    this.bmW = new StringBuilder();
+    this.dgQ = new m();
+    this.dgR = new StringBuilder();
     AppMethodBeat.o(92876);
   }
   
@@ -34,7 +34,7 @@ final class a
   {
     AppMethodBeat.i(92878);
     int i = 1;
-    while ((paramm.vg() > 0) && (i != 0)) {
+    while ((paramm.UF() > 0) && (i != 0)) {
       if ((E(paramm)) || (F(paramm))) {
         i = 1;
       } else {
@@ -54,7 +54,7 @@ final class a
       AppMethodBeat.o(92880);
       return false;
     }
-    paramm.fu(1);
+    paramm.iH(1);
     AppMethodBeat.o(92880);
     return true;
   }
@@ -88,7 +88,7 @@ final class a
       }
       else
       {
-        paramm.fu(j - paramm.position);
+        paramm.iH(j - paramm.position);
         AppMethodBeat.o(92881);
         return true;
         AppMethodBeat.o(92881);
@@ -102,7 +102,7 @@ final class a
   {
     AppMethodBeat.i(92879);
     D(paramm);
-    if (paramm.vg() == 0)
+    if (paramm.UF() == 0)
     {
       AppMethodBeat.o(92879);
       return null;
@@ -138,7 +138,7 @@ final class a
         j = 1;
       }
     }
-    paramm.fu(i - paramm.position);
+    paramm.iH(i - paramm.position);
     paramm = paramStringBuilder.toString();
     AppMethodBeat.o(92882);
     return paramm;
@@ -147,19 +147,19 @@ final class a
   public final d C(m paramm)
   {
     AppMethodBeat.i(92877);
-    this.bmW.setLength(0);
+    this.dgR.setLength(0);
     int i = paramm.position;
     while (!TextUtils.isEmpty(paramm.readLine())) {}
-    this.bmV.n(paramm.data, paramm.position);
-    this.bmV.setPosition(i);
-    Object localObject1 = this.bmV;
-    Object localObject2 = this.bmW;
+    this.dgQ.n(paramm.data, paramm.position);
+    this.dgQ.setPosition(i);
+    Object localObject1 = this.dgQ;
+    Object localObject2 = this.dgR;
     D((m)localObject1);
-    if (((m)localObject1).vg() < 5) {
+    if (((m)localObject1).UF() < 5) {
       paramm = null;
     }
     int k;
-    while ((paramm == null) || (!"{".equals(a(this.bmV, this.bmW))))
+    while ((paramm == null) || (!"{".equals(a(this.dgQ, this.dgR))))
     {
       AppMethodBeat.o(92877);
       return null;
@@ -213,9 +213,9 @@ final class a
       localObject1 = paramm;
       if (i != -1)
       {
-        localObject1 = bmU.matcher(paramm.substring(i));
+        localObject1 = dgP.matcher(paramm.substring(i));
         if (((Matcher)localObject1).matches()) {
-          ((d)localObject3).bnd = ((Matcher)localObject1).group(1);
+          ((d)localObject3).dgY = ((Matcher)localObject1).group(1);
         }
         localObject1 = paramm.substring(0, i);
       }
@@ -225,10 +225,10 @@ final class a
       if (i == -1) {
         break label710;
       }
-      ((d)localObject3).bnb = ((String)localObject1).substring(0, i);
-      ((d)localObject3).ayt = ((String)localObject1).substring(i + 1);
+      ((d)localObject3).dgW = ((String)localObject1).substring(0, i);
+      ((d)localObject3).cui = ((String)localObject1).substring(i + 1);
       if (paramm.length > 1) {
-        ((d)localObject3).bnc = Arrays.asList((String[])Arrays.copyOfRange(paramm, 1, paramm.length));
+        ((d)localObject3).dgX = Arrays.asList((String[])Arrays.copyOfRange(paramm, 1, paramm.length));
       }
     }
     paramm = null;
@@ -239,8 +239,8 @@ final class a
       if (j != 0) {
         break label963;
       }
-      k = this.bmV.position;
-      localObject2 = a(this.bmV, this.bmW);
+      k = this.dgQ.position;
+      localObject2 = a(this.dgQ, this.dgR);
       label481:
       m localm;
       Object localObject4;
@@ -253,9 +253,9 @@ final class a
         if (i != 0) {
           continue;
         }
-        this.bmV.setPosition(k);
-        localm = this.bmV;
-        localObject4 = this.bmW;
+        this.dgQ.setPosition(k);
+        localm = this.dgQ;
+        localObject4 = this.dgR;
         D(localm);
         str = b(localm, (StringBuilder)localObject4);
         j = i;
@@ -310,12 +310,12 @@ final class a
         if (!"color".equals(str)) {
           break label776;
         }
-        ((d)localObject3).bmx = e.bH((String)localObject1);
-        ((d)localObject3).bmy = true;
+        ((d)localObject3).dgs = e.cZ((String)localObject1);
+        ((d)localObject3).dgt = true;
         j = i;
         paramm = (m)localObject2;
         break label438;
-        ((d)localObject3).bnb = ((String)localObject1);
+        ((d)localObject3).dgW = ((String)localObject1);
         break;
         i = 0;
         break label481;
@@ -331,8 +331,8 @@ final class a
       label776:
       if ("background-color".equals(str))
       {
-        ((d)localObject3).backgroundColor = e.bH((String)localObject1);
-        ((d)localObject3).bmz = true;
+        ((d)localObject3).backgroundColor = e.cZ((String)localObject1);
+        ((d)localObject3).dgu = true;
         j = i;
         paramm = (m)localObject2;
       }
@@ -342,14 +342,14 @@ final class a
         paramm = (m)localObject2;
         if ("underline".equals(localObject1))
         {
-          ((d)localObject3).bmB = 1;
+          ((d)localObject3).dgw = 1;
           j = i;
           paramm = (m)localObject2;
         }
       }
       else if ("font-family".equals(str))
       {
-        ((d)localObject3).fontFamily = x.bS((String)localObject1);
+        ((d)localObject3).fontFamily = x.ds((String)localObject1);
         j = i;
         paramm = (m)localObject2;
       }
@@ -359,7 +359,7 @@ final class a
         paramm = (m)localObject2;
         if ("bold".equals(localObject1))
         {
-          ((d)localObject3).bmC = 1;
+          ((d)localObject3).dgx = 1;
           j = i;
           paramm = (m)localObject2;
         }

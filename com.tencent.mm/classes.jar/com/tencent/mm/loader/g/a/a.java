@@ -1,84 +1,94 @@
 package com.tencent.mm.loader.g.a;
 
-import com.tencent.mm.loader.h.d;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.g.b.p;
-import kotlin.l;
-
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/loader/loader/cfg/DefaultRetrySg;", "Lcom/tencent/mm/loader/loader/cfg/ILoaderRetryStrategy;", "()V", "retryCount", "", "(I)V", "retryTime", "(II)V", "MAX_URL_SIZE", "mRetryMap", "Lcom/tencent/mm/loader/model/MMLRUMap;", "", "Lcom/tencent/mm/loader/loader/cfg/DefaultRetrySg$RecentDownInfo;", "canRetry", "", "task", "Lcom/tencent/mm/loader/loader/IWorkTask;", "RecentDownInfo", "libimageloader_release"})
-public final class a
-  implements c
+public final class a<T>
 {
-  private final d<String, a> kOR;
-  private final int kQl;
-  private final int kQm;
-  private final int retryCount;
+  protected b nsp;
+  protected T value;
   
-  public a()
+  public a(c paramc)
   {
-    this(5);
+    this.value = paramc;
+    this.nsp = b.nst;
   }
   
-  public a(byte paramByte)
+  public a(String paramString)
   {
-    this(2147483647);
+    this.value = paramString;
+    this.nsp = b.nst;
   }
   
-  public a(int paramInt)
+  private a(String paramString, b paramb)
   {
-    this.retryCount = paramInt;
-    this.kQm = 2147483647;
-    this.kQl = 100;
-    this.kOR = new d(this.kQl);
+    this.value = paramString;
+    this.nsp = paramb;
   }
   
-  public final boolean a(com.tencent.mm.loader.g.c paramc)
+  public static <T extends String> a<T> a(T paramT, b paramb)
   {
-    p.k(paramc, "task");
-    if (this.kOR.check(paramc.aBG()))
+    return new a(paramT, paramb);
+  }
+  
+  public static a bmj()
+  {
+    return new a("");
+  }
+  
+  public final T bmg()
+  {
+    return this.value;
+  }
+  
+  public final b bmh()
+  {
+    return this.nsp;
+  }
+  
+  public final String bmi()
+  {
+    return this.value.toString();
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    if (this.value != null)
     {
-      long l = Util.nowSecond();
-      a locala2 = (a)this.kOR.aX(paramc.aBG());
-      if ((locala2.kQn >= this.retryCount) && (l - locala2.kje < this.kQm))
-      {
-        Log.w("DefaultRetrySg", "check block by recentdown: " + paramc.aBG() + " count " + locala2.kQn + "  time: " + (l - locala2.kje));
-        return false;
+      if (((this.value instanceof c)) && ((paramObject instanceof a)) && ((((a)paramObject).value instanceof c))) {
+        return ((c)this.value).aUt().equals(((c)((a)paramObject).value).aUt());
       }
-      a locala1 = locala2;
-      if (l - locala2.kje > this.kQm)
-      {
-        Log.v("DefaultRetrySg", "reset: " + paramc.aBG());
-        locala1 = new a(l, 0);
+      if ((paramObject instanceof a)) {
+        return this.value.equals(((a)paramObject).value);
       }
-      locala1.kQn += 1;
-      locala1.kje = l;
-      this.kOR.put(paramc.aBG(), locala1);
     }
-    for (;;)
-    {
-      return true;
-      this.kOR.put(paramc.aBG(), new a(Util.nowSecond(), 1));
-    }
+    return super.equals(paramObject);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/loader/loader/cfg/DefaultRetrySg$RecentDownInfo;", "", "lastTime", "", "tryCount", "", "(Lcom/tencent/mm/loader/loader/cfg/DefaultRetrySg;JI)V", "getLastTime", "()J", "setLastTime", "(J)V", "getTryCount", "()I", "setTryCount", "(I)V", "libimageloader_release"})
-  public final class a
+  public final int hashCode()
   {
-    int kQn;
-    long kje;
-    
-    public a(int paramInt)
-    {
-      this.kje = ???;
-      int i;
-      this.kQn = i;
+    if (this.value != null) {
+      return this.value.hashCode();
     }
+    return super.hashCode();
+  }
+  
+  public final boolean isLegal()
+  {
+    return this.value != null;
+  }
+  
+  public final String toString()
+  {
+    if (this.value == null) {
+      return "";
+    }
+    if ((this.value instanceof c)) {
+      return ((c)this.value).aUt();
+    }
+    return this.value.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.loader.g.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,69 +1,47 @@
 package androidx.core.f;
 
+import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.Writer;
+import java.util.Arrays;
+import java.util.Objects;
 
-@Deprecated
 public final class c
-  extends Writer
 {
-  private StringBuilder mBuilder;
-  private final String mTag;
-  
-  public c(String paramString)
+  public static boolean equals(Object paramObject1, Object paramObject2)
   {
-    AppMethodBeat.i(251309);
-    this.mBuilder = new StringBuilder(128);
-    this.mTag = paramString;
-    AppMethodBeat.o(251309);
-  }
-  
-  private void gU()
-  {
-    AppMethodBeat.i(251313);
-    if (this.mBuilder.length() > 0) {
-      this.mBuilder.delete(0, this.mBuilder.length());
-    }
-    AppMethodBeat.o(251313);
-  }
-  
-  public final void close()
-  {
-    AppMethodBeat.i(251310);
-    gU();
-    AppMethodBeat.o(251310);
-  }
-  
-  public final void flush()
-  {
-    AppMethodBeat.i(251311);
-    gU();
-    AppMethodBeat.o(251311);
-  }
-  
-  public final void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(251312);
-    int i = 0;
-    if (i < paramInt2)
+    AppMethodBeat.i(196002);
+    if (Build.VERSION.SDK_INT >= 19)
     {
-      char c = paramArrayOfChar[(paramInt1 + i)];
-      if (c == '\n') {
-        gU();
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        this.mBuilder.append(c);
-      }
+      boolean bool = Objects.equals(paramObject1, paramObject2);
+      AppMethodBeat.o(196002);
+      return bool;
     }
-    AppMethodBeat.o(251312);
+    if ((paramObject1 == paramObject2) || ((paramObject1 != null) && (paramObject1.equals(paramObject2))))
+    {
+      AppMethodBeat.o(196002);
+      return true;
+    }
+    AppMethodBeat.o(196002);
+    return false;
+  }
+  
+  public static int hash(Object... paramVarArgs)
+  {
+    AppMethodBeat.i(196011);
+    if (Build.VERSION.SDK_INT >= 19)
+    {
+      i = Objects.hash(paramVarArgs);
+      AppMethodBeat.o(196011);
+      return i;
+    }
+    int i = Arrays.hashCode(paramVarArgs);
+    AppMethodBeat.o(196011);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     androidx.core.f.c
  * JD-Core Version:    0.7.0.1
  */

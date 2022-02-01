@@ -19,14 +19,14 @@ public class TPDownloadParamAidl
   
   static
   {
-    AppMethodBeat.i(255434);
+    AppMethodBeat.i(228181);
     CREATOR = new Parcelable.Creator()
     {
       public final TPDownloadParamAidl createFromParcel(Parcel paramAnonymousParcel)
       {
-        AppMethodBeat.i(255407);
+        AppMethodBeat.i(228153);
         paramAnonymousParcel = new TPDownloadParamAidl(paramAnonymousParcel);
-        AppMethodBeat.o(255407);
+        AppMethodBeat.o(228153);
         return paramAnonymousParcel;
       }
       
@@ -35,27 +35,27 @@ public class TPDownloadParamAidl
         return new TPDownloadParamAidl[paramAnonymousInt];
       }
     };
-    AppMethodBeat.o(255434);
+    AppMethodBeat.o(228181);
   }
   
   protected TPDownloadParamAidl(Parcel paramParcel)
   {
-    AppMethodBeat.i(255423);
+    AppMethodBeat.i(228173);
     try
     {
       this.urlList = paramParcel.createStringArrayList();
       this.dlType = paramParcel.readInt();
       this.extInfoMap = paramParcel.readHashMap(TPDownloadParamAidl.class.getClassLoader());
-      AppMethodBeat.o(255423);
+      AppMethodBeat.o(228173);
       return;
     }
-    catch (Throwable paramParcel)
+    finally
     {
       TPDLProxyLog.e("TPDownloadParamAidl", 0, "tpdlnative", paramParcel.toString());
       this.urlList = new ArrayList();
       this.dlType = 0;
       this.extInfoMap = new HashMap();
-      AppMethodBeat.o(255423);
+      AppMethodBeat.o(228173);
     }
   }
   
@@ -103,16 +103,16 @@ public class TPDownloadParamAidl
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(255425);
+    AppMethodBeat.i(228188);
     paramParcel.writeStringList(this.urlList);
     paramParcel.writeInt(this.dlType);
     paramParcel.writeMap(this.extInfoMap);
-    AppMethodBeat.o(255425);
+    AppMethodBeat.o(228188);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.aidl.TPDownloadParamAidl
  * JD-Core Version:    0.7.0.1
  */

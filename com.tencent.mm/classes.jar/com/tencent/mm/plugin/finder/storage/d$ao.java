@@ -1,29 +1,29 @@
 package com.tencent.mm.plugin.finder.storage;
 
-import android.content.Context;
+import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.a.m;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.b;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "<anonymous parameter 1>", "Landroid/content/Context;", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", "", "it", "Landroid/app/Activity;"}, k=3, mv={1, 5, 1}, xi=48)
 final class d$ao
-  extends q
-  implements m<Integer, Context, x>
+  extends u
+  implements b<Activity, ah>
 {
-  public static final ao Akt;
+  public static final ao FJu;
   
   static
   {
-    AppMethodBeat.i(261722);
-    Akt = new ao();
-    AppMethodBeat.o(261722);
+    AppMethodBeat.i(339096);
+    FJu = new ao();
+    AppMethodBeat.o(339096);
   }
   
   d$ao()
   {
-    super(2);
+    super(1);
   }
 }
 

@@ -6,11 +6,9 @@ import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.contact.d;
 import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.ay;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
-import com.tencent.mm.n.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -18,14 +16,14 @@ import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.MStorageEx;
 import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
 import com.tencent.mm.sdk.thread.ThreadPool;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 
 public final class a
   implements MStorageEx.IOnStorageChange
 {
-  private final int GzF;
-  public boolean GzG;
+  private final int MvO;
+  public boolean MvP;
   private final String TAG;
   private MMHandler mHandler;
   
@@ -33,8 +31,8 @@ public final class a
   {
     AppMethodBeat.i(26721);
     this.TAG = "MicroMsg.NotificationObserver";
-    this.GzF = 50;
-    this.GzG = false;
+    this.MvO = 50;
+    this.MvP = false;
     this.mHandler = new MMHandler(Looper.getMainLooper())
     {
       public final void handleMessage(final Message paramAnonymousMessage)
@@ -42,23 +40,23 @@ public final class a
         AppMethodBeat.i(26720);
         super.handleMessage(paramAnonymousMessage);
         paramAnonymousMessage = paramAnonymousMessage.getData().getString("com.tencent.mm.notification.observer");
-        bh.aHJ().postToWorkerDelayed(new Runnable()
+        bh.baH().postToWorkerDelayed(new Runnable()
         {
           public final void run()
           {
             final int i = 0;
             AppMethodBeat.i(26719);
-            if (!h.aHE().aGM())
+            if (!com.tencent.mm.kernel.h.baC().aZN())
             {
               Log.w("MicroMsg.NotificationObserver", "account not init.");
               AppMethodBeat.o(26719);
               return;
             }
-            final int j = g.awZ();
-            bh.beI();
-            as localas = c.bbL().RG(paramAnonymousMessage);
+            final int j = com.tencent.mm.k.h.aRz();
+            bh.bCz();
+            au localau = c.bzA().JE(paramAnonymousMessage);
             final boolean bool;
-            if (localas == null)
+            if (localau == null)
             {
               bool = false;
               if (!bool) {
@@ -74,7 +72,7 @@ public final class a
                   AppMethodBeat.i(26718);
                   bh.getNotification().qg(j);
                   if (!bool) {
-                    bh.getNotification().U(a.1.1.this.GzI, i);
+                    bh.getNotification().ad(a.1.1.this.MvR, i);
                   }
                   Log.i("MicroMsg.NotificationObserver", "NotificationObserver refresh total badge count: %d, and talker badge count: %d, talker is mute: %b", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Boolean.valueOf(bool) });
                   ThreadPool.post(new Runnable()
@@ -82,11 +80,11 @@ public final class a
                     public final void run()
                     {
                       AppMethodBeat.i(26717);
-                      bh.getNotification().s(a.1.1.1.this.GzK, a.1.1.this.GzI);
+                      bh.getNotification().s(a.1.1.1.this.MvT, a.1.1.this.MvR);
                       if (a.a(a.this))
                       {
                         a.b(a.this);
-                        bh.getNotification().dJ(false);
+                        bh.getNotification().ev(false);
                       }
                       AppMethodBeat.o(26717);
                     }
@@ -96,10 +94,10 @@ public final class a
               });
               AppMethodBeat.o(26719);
               return;
-              bool = localas.aeg();
+              bool = localau.aGe();
               break;
               label94:
-              i = g.Lh(paramAnonymousMessage);
+              i = com.tencent.mm.k.h.DO(paramAnonymousMessage);
             }
           }
         }, 500L);
@@ -121,12 +119,12 @@ public final class a
       return;
     }
     paramInt = i;
-    if (!bh.beB())
+    if (!bh.bCs())
     {
-      bh.beI();
-      paramInt = (int)c.bbL().bwg((String)paramObject).jxt;
-      bh.beI();
-      c.bbL().aHy((String)paramObject);
+      bh.bCz();
+      paramInt = (int)c.bzA().bxu((String)paramObject).maN;
+      bh.bCz();
+      c.bzA().aDW((String)paramObject);
     }
     this.mHandler.removeMessages(paramInt);
     paramMStorageEx = Message.obtain();

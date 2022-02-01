@@ -6,13 +6,13 @@ import java.util.Map;
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract String aJj(String paramString);
+  public abstract String aFV(String paramString);
   
-  public abstract boolean aJk(String paramString);
+  public abstract boolean aFW(String paramString);
   
-  public abstract Map<String, Class> ewv();
+  public abstract Map<String, Class> fEp();
   
-  public abstract LinkedList<Class> eww();
+  public abstract LinkedList<Class> fEq();
 }
 
 

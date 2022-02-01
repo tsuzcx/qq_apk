@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/ht9" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:mm="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.base.MMDotView android:orientation="horizontal" android:id="@id/htg" android:paddingBottom="@dimen/ib" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/a35" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" mm:dot_count="1" />
-    <com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewSmileyViewPager android:id="@id/htj" android:scrollbars="none" android:fadingEdge="none" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/aij" android:layout_above="@id/htg" android:layout_alignParentTop="true" android:fadeScrollbars="false" />
-</RelativeLayout>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/iio" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ViewStub android:id="@id/hwu" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mm.plugin.recordvideo.ui.editor.item.EditorItemContainer android:id="@id/ccj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+    <com.tencent.mm.plugin.recordvideo.ui.editor.EditorInputView android:id="@id/azh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include android:id="@id/bsu" android:visibility="gone" layout="@layout/cbx" />
+    <com.tencent.mm.plugin.recordvideo.ui.editor.EditorAudioView android:id="@id/cc4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:gravity="center|right" android:layout_gravity="right" android:orientation="horizontal" android:id="@id/lu7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="19.0dip" android:layout_marginRight="16.0dip">
+        <ImageView android:id="@id/fcx" android:layout_width="20.0dip" android:layout_height="20.0dip" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/al6" android:gravity="center" android:layout_gravity="center" android:id="@id/kwj" android:layout_width="wrap_content" android:layout_height="18.0dip" android:text="@string/c3g" android:textAlignment="gravity" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/fdz" android:layout_width="@dimen/df" android:layout_height="@dimen/cp" android:layout_marginStart="@dimen/bv" />
+    </LinearLayout>
+    <com.tencent.mm.plugin.recordvideo.plugin.cropvideo.EditVideoSeekBarView android:id="@id/cc_" android:background="@color/ahb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="95.0dip" android:layout_marginBottom="20.0dip" android:layout_alignParentBottom="true" />
+    <TextView android:textColor="@color/a9w" android:id="@id/l5k" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+</merge>

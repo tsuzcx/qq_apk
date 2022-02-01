@@ -2,7 +2,7 @@ package com.tencent.mm.b;
 
 public final class l
 {
-  private static byte[] W(byte[] paramArrayOfByte)
+  private static byte[] V(byte[] paramArrayOfByte)
   {
     byte[] arrayOfByte2 = new byte[256];
     int j = 0;
@@ -53,7 +53,7 @@ public final class l
   
   private static byte[] f(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    paramArrayOfByte2 = W(paramArrayOfByte2);
+    paramArrayOfByte2 = V(paramArrayOfByte2);
     byte[] arrayOfByte = new byte[paramArrayOfByte1.length];
     int j = 0;
     int k = 0;
@@ -76,7 +76,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.b.l
  * JD-Core Version:    0.7.0.1
  */

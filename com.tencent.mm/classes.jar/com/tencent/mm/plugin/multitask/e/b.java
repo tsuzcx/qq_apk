@@ -1,205 +1,257 @@
 package com.tencent.mm.plugin.multitask.e;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.graphics.Rect;
+import android.os.Build.VERSION;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.Window;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ae.d;
+import com.tencent.mm.plugin.multitask.j.d;
+import com.tencent.mm.plugin.multitask.j.e;
+import com.tencent.mm.plugin.multitask.j.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/tips/MultiTaskTipsHelper;", "", "()V", "MULTITASK_FIRST_ADD_FLAG", "", "MULTITASK_FIRST_ADD_TIME", "MULTITASK_FIRST_ENTER", "MULTITASK_PANEL_ENTER_DRAG_FLAG", "MULTITASK_PANEL_EXIT_DRAG_FLAG", "MULTITASK_TIPS_CONFIG", "MULTITASK_TIPS_SHOW", "TAG", "enterDragFlag", "", "getMultiTaskFirstAddTime", "isMultiTaskFirstAdd", "", "isMultiTaskFirstEnter", "isMultiTaskPanelEnterDrag", "isMultiTaskPanelExitDrag", "setMultiTaskFirstAddFlag", "", "firstAddDone", "setMultiTaskFirstAddTime", "firstTime", "setMultiTaskFirstEnterFlag", "firstEnter", "setMultiTaskPanelEnterDragFlag", "dragFlag", "setMultiTaskPanelExitDragFlag", "showBottomSheet", "activity", "Landroid/app/Activity;", "callback", "Lcom/tencent/mm/plugin/multitask/tips/MultiTaskTipsHelper$MultiTaskTipCallback;", "showTips", "MultiTaskTipCallback", "plugin-multitask_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitask/tips/MultiTaskTipsHelper;", "", "()V", "MULTITASK_FIRST_ADD_FLAG", "", "MULTITASK_FIRST_ADD_TIME", "MULTITASK_FIRST_ENTER", "MULTITASK_PANEL_ENTER_DRAG_FLAG", "MULTITASK_PANEL_EXIT_DRAG_FLAG", "MULTITASK_TIPS_CONFIG", "MULTITASK_TIPS_SHOW", "TAG", "enterDragFlag", "", "getMultiTaskFirstAddTime", "isMultiTaskFirstAdd", "", "isMultiTaskFirstEnter", "isMultiTaskPanelEnterDrag", "isMultiTaskPanelExitDrag", "setMultiTaskFirstAddFlag", "", "firstAddDone", "setMultiTaskFirstAddTime", "firstTime", "setMultiTaskFirstEnterFlag", "firstEnter", "setMultiTaskPanelEnterDragFlag", "dragFlag", "setMultiTaskPanelExitDragFlag", "showBottomSheet", "activity", "Landroid/app/Activity;", "callback", "Lcom/tencent/mm/plugin/multitask/tips/MultiTaskTipsHelper$MultiTaskTipCallback;", "showTips", "MultiTaskTipCallback", "plugin-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  private static long FHR;
-  public static final b FHS;
+  public static final b LDn;
+  private static long LDo;
   
   static
   {
-    AppMethodBeat.i(249136);
-    FHS = new b();
-    FHR = -1L;
-    AppMethodBeat.o(249136);
+    AppMethodBeat.i(303845);
+    LDn = new b();
+    LDo = -1L;
+    AppMethodBeat.o(303845);
   }
   
-  public static void OC(long paramLong)
+  public static void a(Activity paramActivity, a parama)
   {
-    AppMethodBeat.i(249131);
-    Log.i("MicroMsg.MultiTaskTipsHelper", "setMultiTaskFirstAddTime, time: ".concat(String.valueOf(paramLong)));
-    MultiProcessMMKV.getMMKV("multitask_tips_config").putLong("multitask_first_add_time", paramLong);
-    AppMethodBeat.o(249131);
-  }
-  
-  public static void a(Activity paramActivity, final a parama)
-  {
-    AppMethodBeat.i(249124);
+    AppMethodBeat.i(303756);
     MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("multitask_tips_config");
     boolean bool = localMultiProcessMMKV.getBoolean("multitask_tips_show", false);
-    Log.i("MicroMsg.MultiTaskTipsHelper", "showTips, flag: ".concat(String.valueOf(bool)));
+    Log.i("MicroMsg.MultiTaskTipsHelper", s.X("showTips, flag: ", Boolean.valueOf(bool)));
     if (!bool)
     {
       localMultiProcessMMKV.putBoolean("multitask_tips_show", true);
-      d.a(0L, (Runnable)new d(paramActivity, parama));
-      AppMethodBeat.o(249124);
+      d.a(0L, new b..ExternalSyntheticLambda2(paramActivity, parama));
+      AppMethodBeat.o(303756);
       return;
     }
-    parama.fbb();
-    AppMethodBeat.o(249124);
+    parama.gkg();
+    AppMethodBeat.o(303756);
   }
   
-  public static boolean fbg()
+  private static final void a(a parama, a parama1, View paramView)
   {
-    AppMethodBeat.i(249125);
+    AppMethodBeat.i(303839);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(parama);
+    localb.cH(parama1);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/multitask/tips/MultiTaskTipsHelper", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(parama, "$bottomSheet");
+    parama.cyW();
+    if (parama1 != null) {
+      parama1.gkg();
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/multitask/tips/MultiTaskTipsHelper", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(303839);
+  }
+  
+  private static final void a(a parama)
+  {
+    AppMethodBeat.i(303842);
+    if (parama != null) {
+      parama.gkg();
+    }
+    AppMethodBeat.o(303842);
+  }
+  
+  private static final void b(Activity paramActivity, a parama)
+  {
+    AppMethodBeat.i(303831);
+    Log.i("MicroMsg.MultiTaskTipsHelper", "showBottomSheet");
+    paramActivity = new a((Context)paramActivity);
+    int i = j.f.multitask_tips_bottom_sheet_layout;
+    Object localObject = (LinearLayout)paramActivity.rootView.findViewById(j.e.bottom_sheet_custom_layout);
+    LayoutInflater.from(paramActivity.rootView.getContext()).inflate(i, (ViewGroup)localObject, true);
+    paramActivity.rootView.findViewById(j.e.multitask_bottom_sheet_ok).setOnClickListener(new b..ExternalSyntheticLambda0(paramActivity, parama));
+    ((ImageView)paramActivity.rootView.findViewById(j.e.multitask_bottom_sheet_icon)).setImageResource(j.d.multitask_tips_icon);
+    paramActivity.LDl = new b..ExternalSyntheticLambda1(parama);
+    paramActivity.sRw = paramActivity.isLandscape();
+    paramActivity.sRx = paramActivity.getRotation();
+    if (paramActivity.sRs != null)
+    {
+      ((ViewGroup)paramActivity.rootView.getParent()).setVisibility(0);
+      parama = (FrameLayout.LayoutParams)paramActivity.rootView.getLayoutParams();
+      if ((paramActivity.sRw) && (paramActivity.mF != null))
+      {
+        localObject = new Rect();
+        paramActivity.mF.getWindowVisibleDisplayFrame((Rect)localObject);
+        parama.width = ((Rect)localObject).right;
+      }
+      paramActivity.rootView.setLayoutParams(parama);
+      if (Build.VERSION.SDK_INT >= 21) {
+        paramActivity.sRs.getWindow().addFlags(-2147483648);
+      }
+      if ((paramActivity.GwR) && (Build.VERSION.SDK_INT >= 23) && (paramActivity.sRs != null))
+      {
+        paramActivity.sRs.getWindow().getDecorView().setSystemUiVisibility(9216);
+        paramActivity.sRs.getWindow().setStatusBarColor(0);
+      }
+      if (!paramActivity.sRz) {
+        break label415;
+      }
+      paramActivity.sRs.getWindow().setFlags(8, 8);
+      paramActivity.sRs.getWindow().addFlags(131200);
+      paramActivity.sRs.getWindow().getDecorView().setSystemUiVisibility(6);
+      if (paramActivity.mF != null) {
+        if (paramActivity.mP != null) {
+          break label470;
+        }
+      }
+    }
+    label415:
+    label470:
+    for (i = 1;; i = 0)
+    {
+      paramActivity.mP = paramActivity.mF.getViewTreeObserver();
+      if (i != 0) {
+        paramActivity.mP.addOnGlobalLayoutListener(paramActivity);
+      }
+      if (((paramActivity.mContext instanceof Activity)) && (!((Activity)paramActivity.mContext).isFinishing())) {
+        paramActivity.sRs.show();
+      }
+      if (paramActivity.sRv != null) {
+        paramActivity.sRv.dqC = false;
+      }
+      AppMethodBeat.o(303831);
+      return;
+      paramActivity.sRs.getWindow().clearFlags(8);
+      paramActivity.sRs.getWindow().clearFlags(131072);
+      paramActivity.sRs.getWindow().clearFlags(128);
+      paramActivity.sRs.getWindow().getDecorView().setSystemUiVisibility(0);
+      break;
+    }
+  }
+  
+  public static boolean gkl()
+  {
+    AppMethodBeat.i(303761);
     boolean bool = MultiProcessMMKV.getMMKV("multitask_tips_config").getBoolean("multitask_panel_exit_drag_flag", false);
-    Log.i("MicroMsg.MultiTaskTipsHelper", "isMultiTaskPanelExitDrag, flag: ".concat(String.valueOf(bool)));
-    AppMethodBeat.o(249125);
+    Log.i("MicroMsg.MultiTaskTipsHelper", s.X("isMultiTaskPanelExitDrag, flag: ", Boolean.valueOf(bool)));
+    AppMethodBeat.o(303761);
     return bool;
   }
   
-  public static void fbh()
+  public static void gkm()
   {
-    AppMethodBeat.i(249126);
-    Log.i("MicroMsg.MultiTaskTipsHelper", "setMultiTaskPaneExitDragFlag, flag: true");
+    AppMethodBeat.i(303766);
+    Log.i("MicroMsg.MultiTaskTipsHelper", s.X("setMultiTaskPaneExitDragFlag, flag: ", Boolean.TRUE));
     MultiProcessMMKV.getMMKV("multitask_tips_config").putBoolean("multitask_panel_exit_drag_flag", true);
-    AppMethodBeat.o(249126);
+    AppMethodBeat.o(303766);
   }
   
-  public static boolean fbi()
+  public static boolean gkn()
   {
-    AppMethodBeat.i(249127);
-    if (FHR == -1L)
+    AppMethodBeat.i(303771);
+    if (LDo == -1L)
     {
-      FHR = MultiProcessMMKV.getMMKV("multitask_tips_config").getLong("multitask_panel_enter_drag_flag", 0L);
-      Log.i("MicroMsg.MultiTaskTipsHelper", "isMultiTaskPanelEnterDrag, flag: " + FHR);
+      LDo = MultiProcessMMKV.getMMKV("multitask_tips_config").getLong("multitask_panel_enter_drag_flag", 0L);
+      Log.i("MicroMsg.MultiTaskTipsHelper", s.X("isMultiTaskPanelEnterDrag, flag: ", Long.valueOf(LDo)));
     }
-    if (FHR == 1L)
+    if (LDo == 1L)
     {
-      AppMethodBeat.o(249127);
+      AppMethodBeat.o(303771);
       return true;
     }
-    AppMethodBeat.o(249127);
+    AppMethodBeat.o(303771);
     return false;
   }
   
-  public static void fbj()
+  public static void gko()
   {
-    AppMethodBeat.i(249128);
-    Log.i("MicroMsg.MultiTaskTipsHelper", "setMultiTaskPanelEnterDragFlag, flag: true");
+    AppMethodBeat.i(303776);
+    Log.i("MicroMsg.MultiTaskTipsHelper", s.X("setMultiTaskPanelEnterDragFlag, flag: ", Boolean.TRUE));
     MultiProcessMMKV.getMMKV("multitask_tips_config").putBoolean("multitask_panel_enter_drag_flag", true);
-    FHR = 1L;
-    AppMethodBeat.o(249128);
+    LDo = 1L;
+    AppMethodBeat.o(303776);
   }
   
-  public static boolean fbk()
+  public static boolean gkp()
   {
-    AppMethodBeat.i(249129);
+    AppMethodBeat.i(303781);
     boolean bool = MultiProcessMMKV.getMMKV("multitask_tips_config").getBoolean("multitask_first_add_flag", false);
-    Log.i("MicroMsg.MultiTaskTipsHelper", "isMultiTaskFirstAdd, flag: ".concat(String.valueOf(bool)));
-    AppMethodBeat.o(249129);
+    Log.i("MicroMsg.MultiTaskTipsHelper", s.X("isMultiTaskFirstAdd, flag: ", Boolean.valueOf(bool)));
+    AppMethodBeat.o(303781);
     return bool;
   }
   
-  public static long fbl()
+  public static long gkq()
   {
-    AppMethodBeat.i(249132);
+    AppMethodBeat.i(303802);
     long l = MultiProcessMMKV.getMMKV("multitask_tips_config").getLong("multitask_first_add_time", System.currentTimeMillis());
-    Log.i("MicroMsg.MultiTaskTipsHelper", "setMultiTaskFirstAddTime, time: ".concat(String.valueOf(l)));
-    AppMethodBeat.o(249132);
+    Log.i("MicroMsg.MultiTaskTipsHelper", s.X("setMultiTaskFirstAddTime, time: ", Long.valueOf(l)));
+    AppMethodBeat.o(303802);
     return l;
   }
   
-  public static void fbm()
+  public static void gkr()
   {
-    AppMethodBeat.i(249134);
-    Log.i("MicroMsg.MultiTaskTipsHelper", "setMultiTaskFirstEnter, time: true");
+    AppMethodBeat.i(303808);
+    Log.i("MicroMsg.MultiTaskTipsHelper", s.X("setMultiTaskFirstEnter, time: ", Boolean.TRUE));
     MultiProcessMMKV.getMMKV("multitask_tips_config").putBoolean("multitask_first_enter", true);
-    AppMethodBeat.o(249134);
+    AppMethodBeat.o(303808);
   }
   
-  public static boolean fbn()
+  public static boolean gks()
   {
-    AppMethodBeat.i(249135);
+    AppMethodBeat.i(303816);
     boolean bool = MultiProcessMMKV.getMMKV("multitask_tips_config").getBoolean("multitask_first_enter", false);
-    Log.i("MicroMsg.MultiTaskTipsHelper", "isMultiTaskFirstEnter, flag: ".concat(String.valueOf(bool)));
-    AppMethodBeat.o(249135);
+    Log.i("MicroMsg.MultiTaskTipsHelper", s.X("isMultiTaskFirstEnter, flag: ", Boolean.valueOf(bool)));
+    AppMethodBeat.o(303816);
     return bool;
   }
   
-  public static void vn(boolean paramBoolean)
+  public static void sz(long paramLong)
   {
-    AppMethodBeat.i(249130);
-    Log.i("MicroMsg.MultiTaskTipsHelper", "setMultiTaskFirstAdd, flag: ".concat(String.valueOf(paramBoolean)));
-    MultiProcessMMKV.getMMKV("multitask_tips_config").putBoolean("multitask_first_add_flag", paramBoolean);
-    AppMethodBeat.o(249130);
+    AppMethodBeat.i(303794);
+    Log.i("MicroMsg.MultiTaskTipsHelper", s.X("setMultiTaskFirstAddTime, time: ", Long.valueOf(paramLong)));
+    MultiProcessMMKV.getMMKV("multitask_tips_config").putLong("multitask_first_add_time", paramLong);
+    AppMethodBeat.o(303794);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/tips/MultiTaskTipsHelper$MultiTaskTipCallback;", "", "onTipCancel", "", "onTipHide", "onTipShow", "plugin-multitask_release"})
+  public static void zF(boolean paramBoolean)
+  {
+    AppMethodBeat.i(303786);
+    Log.i("MicroMsg.MultiTaskTipsHelper", s.X("setMultiTaskFirstAdd, flag: ", Boolean.valueOf(paramBoolean)));
+    MultiProcessMMKV.getMMKV("multitask_tips_config").putBoolean("multitask_first_add_flag", paramBoolean);
+    AppMethodBeat.o(303786);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitask/tips/MultiTaskTipsHelper$MultiTaskTipCallback;", "", "onTipCancel", "", "onTipHide", "onTipShow", "plugin-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface a
   {
-    public abstract void fbb();
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/multitask/tips/MultiTaskTipsHelper$showBottomSheet$1$1"})
-  static final class b
-    implements View.OnClickListener
-  {
-    b(a parama, b.a parama1) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(248238);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/multitask/tips/MultiTaskTipsHelper$showBottomSheet$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      this.FHT.bYF();
-      paramView = this.FHU;
-      if (paramView != null) {
-        paramView.fbb();
-      }
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/multitask/tips/MultiTaskTipsHelper$showBottomSheet$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(248238);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onDismiss", "com/tencent/mm/plugin/multitask/tips/MultiTaskTipsHelper$showBottomSheet$1$2"})
-  static final class c
-    implements a.a
-  {
-    c(a parama, b.a parama1) {}
-    
-    public final void onDismiss()
-    {
-      AppMethodBeat.i(248388);
-      b.a locala = this.FHU;
-      if (locala != null)
-      {
-        locala.fbb();
-        AppMethodBeat.o(248388);
-        return;
-      }
-      AppMethodBeat.o(248388);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class d
-    implements Runnable
-  {
-    d(Activity paramActivity, b.a parama) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(248276);
-      b localb = b.FHS;
-      b.b(this.otc, parama);
-      AppMethodBeat.o(248276);
-    }
+    public abstract void gkg();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.multitask.e.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,88 +1,86 @@
 package com.tencent.mm.plugin.finder.live.model.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.plugin.finder.cgi.ao;
-import com.tencent.mm.plugin.secinforeport.a.d;
-import com.tencent.mm.protocal.protobuf.aqe;
-import com.tencent.mm.protocal.protobuf.bcd;
-import com.tencent.mm.protocal.protobuf.bce;
-import com.tencent.mm.protocal.protobuf.bid;
-import com.tencent.mm.protocal.protobuf.eaf;
-import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.plugin.finder.cgi.bi;
+import com.tencent.mm.protocal.protobuf.bfk;
+import com.tencent.mm.protocal.protobuf.bjo;
+import com.tencent.mm.protocal.protobuf.bjp;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.kd;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
-import org.json.JSONObject;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveReward;", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLive;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveRewardResponse;", "liveId", "", "objectId", "rewardProductId", "", "rewardProductCount", "", "username", "wecoin", "requestId", "comboId", "sendGiftTargetUserName", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "sessionBuffer", "callback", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveReward$CallBack;", "(JJLjava/lang/String;ILjava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;Ljava/lang/String;Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveReward$CallBack;)V", "TAG", "getCallback", "()Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveReward$CallBack;", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLiveRewardRequest;", "requestExt", "Lorg/json/JSONObject;", "actionExt", "initReqResp", "", "onCgiEnd", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "CallBack", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveModBackgroundMusic;", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLive;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveModBackgroundMusicResponse;", "liveId", "", "liveCookies", "", "finderUsername", "", "objectId", "musicInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveBackgroundMusicInfo;", "times", "", "callback", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveModBackgroundMusic$CallBack;", "(J[BLjava/lang/String;JLcom/tencent/mm/protocal/protobuf/FinderLiveBackgroundMusicInfo;ILcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveModBackgroundMusic$CallBack;)V", "TAG", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLiveModBackgroundMusicRequest;", "initReqResp", "", "isEnableReport", "Lcom/tencent/mm/plugin/findersdk/cgi/report/EnableValue;", "onCgiEnd", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "CallBack", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ai
-  extends n<bce>
+  extends o<bjp>
 {
+  private a CKb;
+  private bjo CKc;
   private final String TAG;
-  private final JSONObject xcu;
-  private bcd ykb;
-  private final a ykc;
+  private int oZt;
   
-  public ai(long paramLong1, long paramLong2, String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5, bid parambid, String paramString6, a parama)
+  public ai(long paramLong1, byte[] paramArrayOfByte, String paramString, long paramLong2, bfk parambfk, int paramInt, a parama)
   {
-    AppMethodBeat.i(267309);
-    this.ykc = parama;
-    this.TAG = "Finder.CgiFinderLiveReward";
-    this.xcu = new JSONObject();
-    this.ykb = new bcd();
-    int i = paramInt2 * paramInt1;
-    parama = this.ykb;
-    ao localao = ao.xcj;
-    parama.RLM = ao.a(parambid);
-    this.ykb.klE = paramLong1;
-    this.ykb.object_id = paramLong2;
-    this.ykb.SKd = paramString1;
-    this.ykb.SKo = paramInt1;
-    this.ykb.SKp = i;
-    this.ykb.RLN = paramString2;
-    this.ykb.request_id = paramString3;
-    this.ykb.SKg = paramString4;
-    this.ykb.SNG = paramString5;
-    this.ykb.SHp = paramString6;
-    this.xcu.put("reward_product_id", this.ykb.SKd);
-    this.xcu.put("reward_product_count", this.ykb.SKo);
-    paramString4 = this.TAG;
-    paramString2 = new StringBuilder("liveId:").append(paramLong1).append(" objectId:").append(paramLong2).append(" rewardProductId:").append(paramString1).append(" rewardProductCount:").append(paramInt1).append(" fromUser:").append(paramString2).append(" toUser:").append(paramString5).append(" requestId:").append(paramString3).append(" wecoin:").append(paramInt2).append(",amountPrice:").append(i).append(",live_identity:");
-    paramString1 = this.ykb.RLM;
-    if (paramString1 != null) {}
-    for (paramString1 = Integer.valueOf(paramString1.SDv);; paramString1 = null)
+    AppMethodBeat.i(360291);
+    this.TAG = "Finder.CgiFinderLiveModBackgroundMusic";
+    this.oZt = paramInt;
+    this.CKb = parama;
+    this.CKc = new bjo();
+    parama = this.CKc;
+    bi localbi = bi.ABn;
+    parama.YIY = bi.dVu();
+    this.CKc.mMJ = paramLong1;
+    this.CKc.YJa = com.tencent.mm.bx.b.cX(paramArrayOfByte);
+    this.CKc.YIZ = paramString;
+    this.CKc.object_id = paramLong2;
+    this.CKc.ZGx = parambfk;
+    paramArrayOfByte = new c.a();
+    paramArrayOfByte.otE = ((a)this.CKc);
+    paramString = new bjp();
+    paramString.setBaseResponse(new kd());
+    paramString.getBaseResponse().akjO = new etl();
+    paramArrayOfByte.otF = ((a)paramString);
+    paramArrayOfByte.uri = "/cgi-bin/micromsg-bin/finderlivemodbackgroundmusic";
+    paramArrayOfByte.funcId = 6813;
+    c(paramArrayOfByte.bEF());
+    paramString = this.TAG;
+    parambfk = new StringBuilder("CgiFinderLiveModBackgroundMusic init ").append(this.CKc.mMJ).append(',').append(this.CKc.YIZ).append(", times:").append(this.oZt).append(", song_id_list:");
+    paramArrayOfByte = this.CKc.ZGx;
+    if (paramArrayOfByte == null)
     {
-      Log.i(paramString4, paramString1);
-      d.Jcm.jq(540999695, 7);
-      paramString1 = new d.a();
-      paramString1.c((a)this.ykb);
-      paramString2 = new bce();
-      paramString2.setBaseResponse(new jh());
-      paramString2.getBaseResponse().Tef = new eaf();
-      paramString1.d((a)paramString2);
-      paramString1.TW("/cgi-bin/micromsg-bin/finderlivereward");
-      paramString1.vD(5891);
-      c(paramString1.bgN());
-      AppMethodBeat.o(267309);
+      paramArrayOfByte = null;
+      paramArrayOfByte = parambfk.append(paramArrayOfByte).append(",liveCookies is null:");
+      if (this.CKc.YJa != null) {
+        break label329;
+      }
+    }
+    label329:
+    for (boolean bool = true;; bool = false)
+    {
+      Log.i(paramString, bool);
+      AppMethodBeat.o(360291);
       return;
+      paramArrayOfByte = paramArrayOfByte.ZPo;
+      break;
     }
   }
   
-  public final JSONObject dnI()
+  public final com.tencent.mm.plugin.findersdk.b.a.b dVi()
   {
-    return this.xcu;
+    return com.tencent.mm.plugin.findersdk.b.a.b.Hde;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveReward$CallBack;", "", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderLiveRewardResponse;", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveModBackgroundMusic$CallBack;", "", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "times", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderLiveModBackgroundMusicResponse;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface a
   {
-    public abstract void a(int paramInt1, int paramInt2, String paramString, bce parambce);
+    public abstract void a(int paramInt1, int paramInt2, int paramInt3, bjp parambjp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.model.cgi.ai
  * JD-Core Version:    0.7.0.1
  */

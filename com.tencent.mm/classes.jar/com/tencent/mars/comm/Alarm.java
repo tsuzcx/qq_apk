@@ -191,8 +191,8 @@ public class Alarm
         if (l3 <= 30000L)
         {
           l1 = 0L;
-          f.Iyx.idkeyStat(1256L, l1, 1L, false);
-          f.Iyx.a(18860, new Object[] { Long.valueOf(l3) });
+          f.Ozc.idkeyStat(1256L, l1, 1L, false);
+          f.Ozc.b(18860, new Object[] { Long.valueOf(l3) });
           if (wakerlock != null) {
             wakerlock.lock(200L, "Alarm.onReceive");
           }
@@ -244,7 +244,7 @@ public class Alarm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mars.comm.Alarm
  * JD-Core Version:    0.7.0.1
  */

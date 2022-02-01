@@ -1,6 +1,5 @@
 package com.tencent.xweb.internal;
 
-import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -12,16 +11,16 @@ import android.webkit.WebBackForwardList;
 import android.webkit.WebView.FindListener;
 import com.tencent.xweb.WebView.a;
 import com.tencent.xweb.WebView.b;
-import com.tencent.xweb.aa;
-import com.tencent.xweb.ac;
 import com.tencent.xweb.ad;
 import com.tencent.xweb.af;
-import com.tencent.xweb.ah;
-import com.tencent.xweb.i;
-import com.tencent.xweb.u;
-import com.tencent.xweb.v;
+import com.tencent.xweb.ag;
+import com.tencent.xweb.ai;
+import com.tencent.xweb.al;
+import com.tencent.xweb.k;
+import com.tencent.xweb.w;
 import com.tencent.xweb.x;
 import com.tencent.xweb.x5.export.external.extension.proxy.a;
+import com.tencent.xweb.z;
 import java.util.Map;
 
 public abstract interface IWebView
@@ -60,11 +59,11 @@ public abstract interface IWebView
   
   public abstract int getContentHeight();
   
-  public abstract x getCurWebChromeClient();
+  public abstract z getCurWebChromeClient();
   
-  public abstract ad getCurWebviewClient();
+  public abstract ag getCurWebviewClient();
   
-  public abstract e getDefalutOpProvider();
+  public abstract f getDefalutOpProvider();
   
   public abstract WebView.a getFullscreenVideoKind();
   
@@ -72,13 +71,13 @@ public abstract interface IWebView
   
   public abstract String[] getHttpAuthUsernamePassword(String paramString1, String paramString2);
   
-  public abstract boolean getImageBitmapToFile(String paramString1, String paramString2, String paramString3, i parami);
+  public abstract boolean getImageBitmapToFile(String paramString1, String paramString2, String paramString3, k paramk);
   
   public abstract float getScale();
   
   public abstract int getScrollHeight();
   
-  public abstract aa getSettings();
+  public abstract ad getSettings();
   
   public abstract String getTitle();
   
@@ -96,6 +95,8 @@ public abstract interface IWebView
   
   public abstract int getWebScrollY();
   
+  public abstract af getWebViewCallbackClient();
+  
   public abstract View getWebViewUI();
   
   public abstract Object getX5WebViewExtension();
@@ -110,8 +111,6 @@ public abstract interface IWebView
   
   public abstract boolean isOverScrollStart();
   
-  public abstract boolean isSupportExtendPluginForAppbrand();
-  
   public abstract void leaveFullscreen();
   
   public abstract void loadData(String paramString1, String paramString2, String paramString3);
@@ -120,7 +119,6 @@ public abstract interface IWebView
   
   public abstract void loadUrl(String paramString);
   
-  @TargetApi(8)
   public abstract void loadUrl(String paramString, Map<String, String> paramMap);
   
   public abstract void onHide();
@@ -149,23 +147,23 @@ public abstract interface IWebView
   
   public abstract void setHttpAuthUsernamePassword(String paramString1, String paramString2, String paramString3, String paramString4);
   
-  public abstract void setJSExceptionListener(af paramaf);
+  public abstract void setJSExceptionListener(ai paramai);
   
   public abstract void setVerticalScrollBarEnabled(boolean paramBoolean);
   
-  public abstract u setVideoJsCallback(v paramv);
+  public abstract w setVideoJsCallback(x paramx);
   
-  public abstract void setWebChromeClient(x paramx);
+  public abstract void setWebChromeClient(z paramz);
   
   public abstract void setWebContentsSize(int paramInt1, int paramInt2);
   
-  public abstract void setWebViewCallbackClient(ac paramac);
+  public abstract void setWebViewCallbackClient(af paramaf);
   
-  public abstract void setWebViewClient(ad paramad);
+  public abstract void setWebViewClient(ag paramag);
   
   public abstract void setWebViewClientExtension(a parama);
   
-  public abstract void setXWebKeyEventHandler(ah paramah);
+  public abstract void setXWebKeyEventHandler(al paramal);
   
   public abstract void smoothScroll(int paramInt1, int paramInt2, long paramLong);
   
@@ -197,7 +195,7 @@ public abstract interface IWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.internal.IWebView
  * JD-Core Version:    0.7.0.1
  */

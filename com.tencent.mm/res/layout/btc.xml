@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/dot" android:visibility="gone" android:layout_width="@dimen/sv" android:layout_height="@dimen/sw" android:layout_alignParentStart="true" />
-    <ImageView android:id="@id/wm" android:layout_width="@dimen/sw" android:layout_height="@dimen/sw" />
+    <Button android:id="@id/iox" android:layout_width="150.0dip" android:layout_height="wrap_content" android:text="强制海外用户主体" android:layout_centerInParent="true" android:onClick="onOverseaClick" />
+    <Button android:id="@id/iow" android:layout_width="150.0dip" android:layout_height="wrap_content" android:text="强制大陆用户主体" android:layout_above="@id/iox" android:layout_centerHorizontal="true" android:onClick="onMainlandClick" />
+    <Button android:id="@id/iov" android:layout_width="150.0dip" android:layout_height="wrap_content" android:text="不强制设置主体" android:layout_below="@id/iox" android:layout_centerInParent="true" android:onClick="onDefaultClick" />
+    <TextView android:textSize="20.0sp" android:textColor="@color/g_" android:gravity="center" android:id="@id/ioy" android:padding="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="当前主体：" android:layout_above="@id/iow" android:layout_centerHorizontal="true" />
 </RelativeLayout>

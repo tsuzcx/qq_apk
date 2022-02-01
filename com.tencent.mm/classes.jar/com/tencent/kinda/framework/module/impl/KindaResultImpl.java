@@ -2,8 +2,7 @@ package com.tencent.kinda.framework.module.impl;
 
 import com.tencent.kinda.gen.IKindaResult;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.abh;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.autogen.a.ade;
 
 public class KindaResultImpl
   implements IKindaResult
@@ -11,12 +10,12 @@ public class KindaResultImpl
   public void apppayEnd(int paramInt, String paramString)
   {
     AppMethodBeat.i(18646);
-    abh localabh = new abh();
+    ade localade = new ade();
     if (paramInt == 0) {}
-    for (localabh.gaZ.result = -1;; localabh.gaZ.result = 0)
+    for (localade.ihj.result = -1;; localade.ihj.result = 0)
     {
-      localabh.gaZ.fwv = paramString;
-      EventCenter.instance.publish(localabh);
+      localade.ihj.hAT = paramString;
+      localade.publish();
       AppMethodBeat.o(18646);
       return;
     }
@@ -24,7 +23,7 @@ public class KindaResultImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.module.impl.KindaResultImpl
  * JD-Core Version:    0.7.0.1
  */

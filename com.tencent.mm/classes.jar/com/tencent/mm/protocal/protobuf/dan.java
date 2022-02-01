@@ -3,94 +3,134 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class dan
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public long THM;
-  public long THN;
-  public long THO;
-  public long THP;
-  public long duration;
-  public boolean xpx;
+  public String IGU;
+  public String Md5;
+  public String Url;
+  public String YKw;
+  public String ZaN;
+  public int aaFZ;
+  public String crp;
+  public int vhE;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(205504);
+    AppMethodBeat.i(32323);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bm(12, this.THM);
-      paramVarArgs.bm(1, this.THN);
-      paramVarArgs.bm(2, this.THO);
-      paramVarArgs.bm(3, this.duration);
-      paramVarArgs.bm(4, this.THP);
-      paramVarArgs.co(5, this.xpx);
-      AppMethodBeat.o(205504);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = g.a.a.b.b.a.p(12, this.THM);
-      int i = g.a.a.b.b.a.p(1, this.THN);
-      int j = g.a.a.b.b.a.p(2, this.THO);
-      int k = g.a.a.b.b.a.p(3, this.duration);
-      int m = g.a.a.b.b.a.p(4, this.THP);
-      int n = g.a.a.b.b.a.gL(5);
-      AppMethodBeat.o(205504);
-      return paramInt + 0 + i + j + k + m + (n + 1);
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.crp != null) {
+        paramVarArgs.g(1, this.crp);
       }
-      AppMethodBeat.o(205504);
+      if (this.IGU != null) {
+        paramVarArgs.g(2, this.IGU);
+      }
+      paramVarArgs.bS(3, this.vhE);
+      if (this.Md5 != null) {
+        paramVarArgs.g(4, this.Md5);
+      }
+      if (this.YKw != null) {
+        paramVarArgs.g(5, this.YKw);
+      }
+      if (this.ZaN != null) {
+        paramVarArgs.g(6, this.ZaN);
+      }
+      if (this.Url != null) {
+        paramVarArgs.g(7, this.Url);
+      }
+      paramVarArgs.bS(8, this.aaFZ);
+      AppMethodBeat.o(32323);
       return 0;
     }
-    if (paramInt == 3)
+    if (paramInt == 1) {
+      if (this.crp == null) {
+        break label620;
+      }
+    }
+    label620:
+    for (paramInt = i.a.a.b.b.a.h(1, this.crp) + 0;; paramInt = 0)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      dan localdan = (dan)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      int i = paramInt;
+      if (this.IGU != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.IGU);
+      }
+      i += i.a.a.b.b.a.cJ(3, this.vhE);
+      paramInt = i;
+      if (this.Md5 != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.Md5);
+      }
+      i = paramInt;
+      if (this.YKw != null) {
+        i = paramInt + i.a.a.b.b.a.h(5, this.YKw);
+      }
+      paramInt = i;
+      if (this.ZaN != null) {
+        paramInt = i + i.a.a.b.b.a.h(6, this.ZaN);
+      }
+      i = paramInt;
+      if (this.Url != null) {
+        i = paramInt + i.a.a.b.b.a.h(7, this.Url);
+      }
+      paramInt = i.a.a.b.b.a.cJ(8, this.aaFZ);
+      AppMethodBeat.o(32323);
+      return i + paramInt;
+      if (paramInt == 2)
       {
-      case 6: 
-      case 7: 
-      case 8: 
-      case 9: 
-      case 10: 
-      case 11: 
-      default: 
-        AppMethodBeat.o(205504);
-        return -1;
-      case 12: 
-        localdan.THM = locala.abFh.AN();
-        AppMethodBeat.o(205504);
-        return 0;
-      case 1: 
-        localdan.THN = locala.abFh.AN();
-        AppMethodBeat.o(205504);
-        return 0;
-      case 2: 
-        localdan.THO = locala.abFh.AN();
-        AppMethodBeat.o(205504);
-        return 0;
-      case 3: 
-        localdan.duration = locala.abFh.AN();
-        AppMethodBeat.o(205504);
-        return 0;
-      case 4: 
-        localdan.THP = locala.abFh.AN();
-        AppMethodBeat.o(205504);
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(32323);
         return 0;
       }
-      localdan.xpx = locala.abFh.AB();
-      AppMethodBeat.o(205504);
-      return 0;
+      if (paramInt == 3)
+      {
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+        dan localdan = (dan)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(32323);
+          return -1;
+        case 1: 
+          localdan.crp = locala.ajGk.readString();
+          AppMethodBeat.o(32323);
+          return 0;
+        case 2: 
+          localdan.IGU = locala.ajGk.readString();
+          AppMethodBeat.o(32323);
+          return 0;
+        case 3: 
+          localdan.vhE = locala.ajGk.aar();
+          AppMethodBeat.o(32323);
+          return 0;
+        case 4: 
+          localdan.Md5 = locala.ajGk.readString();
+          AppMethodBeat.o(32323);
+          return 0;
+        case 5: 
+          localdan.YKw = locala.ajGk.readString();
+          AppMethodBeat.o(32323);
+          return 0;
+        case 6: 
+          localdan.ZaN = locala.ajGk.readString();
+          AppMethodBeat.o(32323);
+          return 0;
+        case 7: 
+          localdan.Url = locala.ajGk.readString();
+          AppMethodBeat.o(32323);
+          return 0;
+        }
+        localdan.aaFZ = locala.ajGk.aar();
+        AppMethodBeat.o(32323);
+        return 0;
+      }
+      AppMethodBeat.o(32323);
+      return -1;
     }
-    AppMethodBeat.o(205504);
-    return -1;
   }
 }
 

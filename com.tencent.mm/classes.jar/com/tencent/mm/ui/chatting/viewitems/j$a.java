@@ -12,25 +12,25 @@ import com.tencent.mm.ui.widget.MMTextView;
 final class j$a
   extends c.a
 {
-  ImageView XdI;
-  MMTextView Xfu;
-  View fyN;
+  ImageView aeNG;
+  MMTextView aePx;
+  View hDw;
   
-  public final c.a J(View paramView, boolean paramBoolean)
+  public final c.a P(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(36886);
     super.create(paramView);
-    this.timeTV = ((TextView)paramView.findViewById(R.h.dzs));
-    this.userTV = ((TextView)paramView.findViewById(R.h.chatting_user_tv));
-    this.Xfu = ((MMTextView)paramView.findViewById(R.h.chatting_content_itv));
-    this.checkBox = ((CheckBox)paramView.findViewById(R.h.dwZ));
-    this.maskView = paramView.findViewById(R.h.dyD);
-    this.fyN = paramView.findViewById(R.h.dxc);
+    this.timeTV = ((TextView)paramView.findViewById(R.h.fAm));
+    this.userTV = ((TextView)paramView.findViewById(R.h.fAr));
+    this.aePx = ((MMTextView)paramView.findViewById(R.h.fxy));
+    this.checkBox = ((CheckBox)paramView.findViewById(R.h.fxt));
+    this.maskView = paramView.findViewById(R.h.fzn);
+    this.hDw = paramView.findViewById(R.h.fxw);
     if (!paramBoolean)
     {
-      this.XdI = ((ImageView)paramView.findViewById(R.h.chatting_status_tick));
-      this.stateIV = ((ImageView)paramView.findViewById(R.h.dzp));
-      this.uploadingPB = ((ProgressBar)paramView.findViewById(R.h.dYz));
+      this.aeNG = ((ImageView)paramView.findViewById(R.h.chatting_status_tick));
+      this.stateIV = ((ImageView)paramView.findViewById(R.h.fAj));
+      this.uploadingPB = ((ProgressBar)paramView.findViewById(R.h.gbo));
     }
     AppMethodBeat.o(36886);
     return this;
@@ -38,12 +38,12 @@ final class j$a
   
   public final View getMainContainerView()
   {
-    return this.fyN;
+    return this.hDw;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.j.a
  * JD-Core Version:    0.7.0.1
  */

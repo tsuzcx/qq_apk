@@ -1,14 +1,15 @@
 package com.tencent.mm.ui.contact.a;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.fts.ui.n;
+import com.tencent.mm.plugin.fts.a.a.g;
+import com.tencent.mm.plugin.fts.a.a.h;
+import com.tencent.mm.plugin.fts.a.f;
+import com.tencent.mm.plugin.fts.ui.o;
 import com.tencent.mm.plugin.selectcontact.a.e;
 import com.tencent.mm.plugin.selectcontact.a.f;
 import com.tencent.mm.plugin.selectcontact.a.h;
@@ -16,37 +17,40 @@ import com.tencent.mm.plugin.selectcontact.a.h;
 public final class l
   extends a
 {
-  public boolean AUY;
-  a.a Xyh;
-  private b Xyj;
-  public int resId;
+  private CharSequence HBi;
+  private b afkt;
+  a.a afku;
   
   public l(int paramInt)
   {
-    super(1, paramInt);
-    AppMethodBeat.i(102967);
-    this.Xyj = new b();
-    this.Xyh = new a();
-    AppMethodBeat.o(102967);
+    super(6, paramInt);
+    AppMethodBeat.i(102963);
+    this.afkt = new b();
+    this.afku = new a();
+    AppMethodBeat.o(102963);
   }
   
-  public final void a(Context paramContext, a.a parama) {}
-  
-  public final a.b bwF()
+  public final void a(Context paramContext, a.a parama)
   {
-    return this.Xyj;
+    AppMethodBeat.i(102964);
+    this.HBi = f.a(paramContext.getString(a.h.search_contact_no_result_pre), paramContext.getString(a.h.search_contact_no_result_post), g.c(this.query, this.query)).HsX;
+    AppMethodBeat.o(102964);
   }
   
-  protected final a.a bwG()
+  public final a.b bVv()
   {
-    return this.Xyh;
+    return this.afkt;
+  }
+  
+  protected final a.a bVw()
+  {
+    return this.afku;
   }
   
   public final class a
     extends a.a
   {
-    public TextView Aba;
-    public ImageView BOy;
+    public TextView HAL;
     
     public a()
     {
@@ -64,32 +68,21 @@ public final class l
     
     public final View a(Context paramContext, ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(102965);
-      paramContext = LayoutInflater.from(paramContext).inflate(a.f.select_ui_listmoreitem, paramViewGroup, false);
-      paramViewGroup = (l.a)l.this.Xyh;
-      paramViewGroup.Aba = ((TextView)paramContext.findViewById(a.e.more_tv));
-      paramViewGroup.BOy = ((ImageView)paramContext.findViewById(a.e.more_arrow));
+      AppMethodBeat.i(102961);
+      paramContext = LayoutInflater.from(paramContext).inflate(a.f.select_ui_listinfoitem, paramViewGroup, false);
+      paramViewGroup = (l.a)l.this.afku;
+      paramViewGroup.HAL = ((TextView)paramContext.findViewById(a.e.info_tv));
       paramContext.setTag(paramViewGroup);
-      AppMethodBeat.o(102965);
+      AppMethodBeat.o(102961);
       return paramContext;
     }
     
     public final void a(Context paramContext, a.a parama, a parama1, boolean paramBoolean1, boolean paramBoolean2)
     {
-      AppMethodBeat.i(102966);
-      parama = (l.a)parama;
-      parama1 = (l)parama1;
-      paramContext = paramContext.getResources();
-      if (l.this.AUY)
-      {
-        n.a(paramContext.getString(a.h.search_more_contact, new Object[] { paramContext.getString(parama1.resId) }), parama.Aba);
-        parama.BOy.setRotation(0.0F);
-        AppMethodBeat.o(102966);
-        return;
-      }
-      n.a(paramContext.getString(a.h.search_more_contact_collapse), parama.Aba);
-      parama.BOy.setRotation(180.0F);
-      AppMethodBeat.o(102966);
+      AppMethodBeat.i(102962);
+      paramContext = (l.a)parama;
+      o.a(l.a(l.this), paramContext.HAL);
+      AppMethodBeat.o(102962);
     }
     
     public final boolean a(Context paramContext, View paramView, a parama)
@@ -100,7 +93,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.contact.a.l
  * JD-Core Version:    0.7.0.1
  */

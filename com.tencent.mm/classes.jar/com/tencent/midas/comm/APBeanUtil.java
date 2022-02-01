@@ -10,22 +10,22 @@ public class APBeanUtil
 {
   public static void copyProperties(Object paramObject1, Object paramObject2)
   {
-    AppMethodBeat.i(253573);
+    AppMethodBeat.i(217202);
     try
     {
       copyPropertiesExclude(paramObject1, paramObject2, null, true);
-      AppMethodBeat.o(253573);
+      AppMethodBeat.o(217202);
       return;
     }
     catch (Exception paramObject1)
     {
-      AppMethodBeat.o(253573);
+      AppMethodBeat.o(217202);
     }
   }
   
   public static void copyPropertiesExclude(Object paramObject1, Object paramObject2, String[] paramArrayOfString, boolean paramBoolean)
   {
-    AppMethodBeat.i(253574);
+    AppMethodBeat.i(217219);
     if ((paramArrayOfString != null) && (paramArrayOfString.length > 0)) {}
     for (paramArrayOfString = Arrays.asList(paramArrayOfString);; paramArrayOfString = null)
     {
@@ -55,14 +55,14 @@ public class APBeanUtil
         }
         arrayOfMethod2 = paramObject1.getClass().getDeclaredMethods();
       }
-      AppMethodBeat.o(253574);
+      AppMethodBeat.o(217219);
       return;
     }
   }
   
   public static void copyPropertiesInclude(Object paramObject1, Object paramObject2, String[] paramArrayOfString, boolean paramBoolean)
   {
-    AppMethodBeat.i(253575);
+    AppMethodBeat.i(217238);
     List localList;
     Method[] arrayOfMethod;
     if ((paramArrayOfString != null) && (paramArrayOfString.length > 0))
@@ -97,35 +97,35 @@ public class APBeanUtil
         }
         i += 1;
       }
-      AppMethodBeat.o(253575);
+      AppMethodBeat.o(217238);
       return;
       label227:
       arrayOfMethod = paramObject1.getClass().getDeclaredMethods();
     }
-    AppMethodBeat.o(253575);
+    AppMethodBeat.o(217238);
   }
   
   public static Method findMethodByName(Method[] paramArrayOfMethod, String paramString)
   {
-    AppMethodBeat.i(253576);
+    AppMethodBeat.i(217255);
     int i = 0;
     while (i < paramArrayOfMethod.length)
     {
       if (paramArrayOfMethod[i].getName().equals(paramString))
       {
         paramArrayOfMethod = paramArrayOfMethod[i];
-        AppMethodBeat.o(253576);
+        AppMethodBeat.o(217255);
         return paramArrayOfMethod;
       }
       i += 1;
     }
-    AppMethodBeat.o(253576);
+    AppMethodBeat.o(217255);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.midas.comm.APBeanUtil
  * JD-Core Version:    0.7.0.1
  */

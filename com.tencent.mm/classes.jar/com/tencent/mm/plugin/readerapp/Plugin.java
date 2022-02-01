@@ -12,14 +12,14 @@ import com.tencent.mm.sdk.platformtools.Log;
 public final class Plugin
   implements d
 {
-  private c smX;
+  private c vyV;
   
   public Plugin()
   {
     AppMethodBeat.i(102644);
-    this.smX = new c()
+    this.vyV = new c()
     {
-      public final com.tencent.mm.pluginsdk.c.a ak(Context paramAnonymousContext, String paramAnonymousString)
+      public final com.tencent.mm.pluginsdk.c.a al(Context paramAnonymousContext, String paramAnonymousString)
       {
         AppMethodBeat.i(102643);
         Log.i("MicroMsg.ReaderApp.Plugin", "create contact widget type[%s]", new Object[] { paramAnonymousString });
@@ -51,7 +51,7 @@ public final class Plugin
   
   public final c getContactWidgetFactory()
   {
-    return this.smX;
+    return this.vyV;
   }
 }
 

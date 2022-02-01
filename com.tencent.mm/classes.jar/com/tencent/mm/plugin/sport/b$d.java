@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.sport;
 
 public final class b$d
 {
-  public static final int icons_filled_info = 2131690591;
-  public static final int icons_outlined_close = 2131690781;
+  public static final int icons_filled_info = 2131690706;
+  public static final int icons_outlined_close = 2131690933;
 }
 
 

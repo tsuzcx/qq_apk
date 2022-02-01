@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/h8v" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:custom="http://schemas.android.com/apk/res-auto">
-    <FrameLayout android:layout_gravity="center_vertical" android:id="@id/bus" android:layout_width="fill_parent" android:layout_height="50.0dip">
-        <Button android:textSize="18.0sp" android:layout_gravity="center_vertical" android:id="@id/bto" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="download" style="@style/a56" />
-        <com.tencent.mm.plugin.sns.ui.widget.SnsTextProgressBar android:layout_gravity="center_vertical" android:id="@id/bud" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:max="100" android:progress="50" custom:textSize="18.0dip" style="@style/a57" />
-    </FrameLayout>
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/zc">
+        <ImageView android:id="@id/fmz" android:background="@null" android:padding="4.0dip" android:visibility="gone" android:layout_width="@dimen/iv" android:layout_height="@dimen/iv" android:layout_marginRight="@dimen/k" />
+        <TextView android:id="@android:id/title" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/m2" android:singleLine="true" style="@style/ze" />
+        <TextView android:id="@id/kiu" android:visibility="gone" android:text="@string/k67" style="@style/zh" />
+        <ImageView android:id="@id/f5c" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/azm" />
+        <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
+        <include android:id="@id/iu0" layout="@layout/btx" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="0.0dip" style="@style/zc">
+        <TextView android:id="@id/ka_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:text="summary" style="@style/zd" />
+    </LinearLayout>
+</LinearLayout>

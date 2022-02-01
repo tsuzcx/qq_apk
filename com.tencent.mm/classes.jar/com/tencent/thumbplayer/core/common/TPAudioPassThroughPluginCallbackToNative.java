@@ -15,39 +15,36 @@ public class TPAudioPassThroughPluginCallbackToNative
   
   private native void _onAudioPassThroughStateChanged(boolean paramBoolean);
   
-  @TPMethodCalledByNative
   private long getNativeContext()
   {
     return this.mNativeContext;
   }
   
-  @TPMethodCalledByNative
   private void registerCallback()
   {
-    AppMethodBeat.i(222383);
+    AppMethodBeat.i(227620);
     TPAudioPassThroughPluginDetector.addListener(this);
-    AppMethodBeat.o(222383);
+    AppMethodBeat.o(227620);
   }
   
-  @TPMethodCalledByNative
   private void unregisterCallback()
   {
-    AppMethodBeat.i(222384);
+    AppMethodBeat.i(227627);
     TPAudioPassThroughPluginDetector.removeListener(this);
-    AppMethodBeat.o(222384);
+    AppMethodBeat.o(227627);
   }
   
   public void onAudioPassThroughPlugin(boolean paramBoolean)
   {
-    AppMethodBeat.i(222387);
+    AppMethodBeat.i(227639);
     TPNativeLog.printLog(2, "TPAudioPassThroughPluginCallback", "onAudioPassThroughPlugin bPlugin:".concat(String.valueOf(paramBoolean)));
     _onAudioPassThroughStateChanged(paramBoolean);
-    AppMethodBeat.o(222387);
+    AppMethodBeat.o(227639);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPAudioPassThroughPluginCallbackToNative
  * JD-Core Version:    0.7.0.1
  */

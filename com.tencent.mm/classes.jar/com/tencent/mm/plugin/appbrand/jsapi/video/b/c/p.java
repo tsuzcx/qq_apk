@@ -14,35 +14,35 @@ import java.util.concurrent.TimeUnit;
 
 public final class p
 {
-  private final LinkedHashMap<String, ArrayList<n>> pxW;
+  private final LinkedHashMap<String, ArrayList<n>> sDb;
   
   p()
   {
-    AppMethodBeat.i(226981);
-    this.pxW = new LinkedHashMap(8, 0.75F);
-    AppMethodBeat.o(226981);
+    AppMethodBeat.i(328446);
+    this.sDb = new LinkedHashMap(8, 0.75F);
+    AppMethodBeat.o(328446);
   }
   
   public final void a(n paramn)
   {
     try
     {
-      AppMethodBeat.i(226989);
-      Object localObject = (ArrayList)this.pxW.get(paramn.fVx);
+      AppMethodBeat.i(328466);
+      Object localObject = (ArrayList)this.sDb.get(paramn.ibx);
       if (localObject != null)
       {
         localObject = ((ArrayList)localObject).iterator();
         while (((Iterator)localObject).hasNext()) {
           if (paramn.equals((n)((Iterator)localObject).next()))
           {
-            if (a.bVt().dal) {
+            if (a.cvH().eYL) {
               h.log(3, "RequestManager", "remove videoRequest:".concat(String.valueOf(paramn)));
             }
             ((Iterator)localObject).remove();
           }
         }
       }
-      AppMethodBeat.o(226989);
+      AppMethodBeat.o(328466);
     }
     finally {}
   }
@@ -51,17 +51,17 @@ public final class p
   {
     try
     {
-      AppMethodBeat.i(226984);
-      ArrayList localArrayList2 = (ArrayList)this.pxW.get(paramString);
+      AppMethodBeat.i(328454);
+      ArrayList localArrayList2 = (ArrayList)this.sDb.get(paramString);
       ArrayList localArrayList1 = localArrayList2;
       if (localArrayList2 == null)
       {
         localArrayList1 = new ArrayList();
-        this.pxW.put(paramString, localArrayList1);
+        this.sDb.put(paramString, localArrayList1);
         h.log(3, "RequestManager", "add videoRequest:".concat(String.valueOf(paramn)));
       }
       localArrayList1.add(paramn);
-      AppMethodBeat.o(226984);
+      AppMethodBeat.o(328454);
       return;
     }
     finally {}
@@ -69,19 +69,19 @@ public final class p
   
   public final void b(String paramString, n paramn)
   {
-    AppMethodBeat.i(226996);
-    Object localObject2 = cm(paramString, 10);
+    AppMethodBeat.i(328483);
+    Object localObject2 = cL(paramString, 10);
     Object localObject1 = new ArrayList();
     localObject2 = ((ArrayList)localObject2).iterator();
     Object localObject3;
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (n)((Iterator)localObject2).next();
-      if (((n)localObject3).AY(0)) {
+      if (((n)localObject3).Bn(0)) {
         ((ArrayList)localObject1).add(localObject3);
       }
     }
-    paramn = "VideoProxy/" + paramn.pxM + "/RequestManager";
+    paramn = "VideoProxy/" + paramn.sCR + "/RequestManager";
     h.log(4, paramn, "cancelPreloadRequestsSync, videoKey:" + paramString + ", count:" + ((ArrayList)localObject1).size());
     if (((ArrayList)localObject1).size() > 0)
     {
@@ -89,38 +89,38 @@ public final class p
       h.log(5, paramn, "start auto cancel preload requests, request count=" + ((CountDownLatch)localObject2).getCount());
       localObject3 = new o()
       {
-        public final void bVI()
+        public final void cvV()
         {
-          AppMethodBeat.i(228360);
-          this.pxX.countDown();
-          AppMethodBeat.o(228360);
+          AppMethodBeat.i(328461);
+          this.sDc.countDown();
+          AppMethodBeat.o(328461);
         }
       };
       localObject1 = ((ArrayList)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
         n localn = (n)((Iterator)localObject1).next();
-        localn.pxK = ((o)localObject3);
-        if (localn.pxF != null)
+        localn.sCQ = ((o)localObject3);
+        if (localn.sCL != null)
         {
-          if ((localn.eE(0, 1)) && (a.bVt().dal)) {
-            h.log(3, localn.getLogTag(), "cancel start, seq=" + localn.pxM);
+          if ((localn.fy(0, 1)) && (a.cvH().eYL)) {
+            h.log(3, localn.getLogTag(), "cancel start, seq=" + localn.sCR);
           }
-          localn.AX(1);
-          localn.pxF.cancel(true);
+          localn.Bm(1);
+          localn.sCL.cancel(true);
         }
       }
       try
       {
         ((CountDownLatch)localObject2).await(2000L, TimeUnit.MILLISECONDS);
-        if (cm(paramString, 10).size() == 0)
+        if (cL(paramString, 10).size() == 0)
         {
           h.log(5, paramn, "auto cancel preload requests success");
-          AppMethodBeat.o(226996);
+          AppMethodBeat.o(328483);
           return;
         }
         h.log(5, paramn, "auto cancel preload requests timeout, max wait time is 2000 seconds");
-        AppMethodBeat.o(226996);
+        AppMethodBeat.o(328483);
         return;
       }
       catch (InterruptedException paramString)
@@ -128,19 +128,19 @@ public final class p
         h.log(5, paramn, "auto cancel preload requests interrupted " + paramString.toString());
       }
     }
-    AppMethodBeat.o(226996);
+    AppMethodBeat.o(328483);
   }
   
-  public final ArrayList<n> cm(String paramString, int paramInt)
+  public final ArrayList<n> cL(String paramString, int paramInt)
   {
     ArrayList localArrayList1;
     for (;;)
     {
       try
       {
-        AppMethodBeat.i(226999);
+        AppMethodBeat.i(328489);
         localArrayList1 = new ArrayList();
-        Iterator localIterator = this.pxW.entrySet().iterator();
+        Iterator localIterator = this.sDb.entrySet().iterator();
         if (!localIterator.hasNext()) {
           break;
         }
@@ -148,7 +148,7 @@ public final class p
         if (localArrayList2.size() > 0)
         {
           n localn = (n)localArrayList2.get(0);
-          if (paramString.equals(localn.pxR)) {
+          if (paramString.equals(localn.sCW)) {
             if (paramInt != -1)
             {
               if (paramInt == localn.priority) {
@@ -163,7 +163,7 @@ public final class p
       }
       finally {}
     }
-    AppMethodBeat.o(226999);
+    AppMethodBeat.o(328489);
     return localArrayList1;
   }
   
@@ -171,10 +171,10 @@ public final class p
   {
     try
     {
-      AppMethodBeat.i(227002);
+      AppMethodBeat.i(328497);
       Object localObject1 = super.toString();
       Object localObject3 = (String)localObject1 + "[";
-      Iterator localIterator1 = this.pxW.entrySet().iterator();
+      Iterator localIterator1 = this.sDb.entrySet().iterator();
       if (localIterator1.hasNext())
       {
         Iterator localIterator2 = ((ArrayList)((Map.Entry)localIterator1.next()).getValue()).iterator();
@@ -189,7 +189,7 @@ public final class p
         }
       }
       localObject1 = (String)localObject3 + "]";
-      AppMethodBeat.o(227002);
+      AppMethodBeat.o(328497);
       return localObject1;
     }
     finally {}
@@ -197,7 +197,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.c.p
  * JD-Core Version:    0.7.0.1
  */

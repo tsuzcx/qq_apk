@@ -3,25 +3,25 @@ package com.tencent.mm.plugin.wallet_payu.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.be;
 import com.tencent.mm.plugin.wallet_payu.pwd.a.f;
+import com.tencent.mm.plugin.wallet_payu.pwd.a.g;
 import com.tencent.mm.storagebase.h.b;
-import com.tencent.mm.wallet_core.a;
 import java.util.HashMap;
 
 public class d
   implements be
 {
-  private String Pmj = null;
-  private int Pmk = -1;
+  private String Wdv = null;
+  private int Wdw = -1;
   
   static
   {
     AppMethodBeat.i(72055);
-    a.j("PayUOpenProcess", com.tencent.mm.plugin.wallet_payu.create.a.c.class);
-    a.j("PayUBindProcess", com.tencent.mm.plugin.wallet_payu.bind.model.c.class);
-    a.j("PayUForgotPwdProcess", f.class);
-    a.j("PayUModifyPasswordProcess", com.tencent.mm.plugin.wallet_payu.pwd.a.g.class);
-    a.j("PayURemittanceProcess", com.tencent.mm.plugin.wallet_payu.remittance.a.g.class);
-    a.j("PayUShowOrderProcess", com.tencent.mm.plugin.wallet_payu.order.a.d.class);
+    com.tencent.mm.wallet_core.a.n("PayUOpenProcess", com.tencent.mm.plugin.wallet_payu.create.a.c.class);
+    com.tencent.mm.wallet_core.a.n("PayUBindProcess", com.tencent.mm.plugin.wallet_payu.bind.model.c.class);
+    com.tencent.mm.wallet_core.a.n("PayUForgotPwdProcess", f.class);
+    com.tencent.mm.wallet_core.a.n("PayUModifyPasswordProcess", g.class);
+    com.tencent.mm.wallet_core.a.n("PayURemittanceProcess", com.tencent.mm.plugin.wallet_payu.remittance.a.a.class);
+    com.tencent.mm.wallet_core.a.n("PayUShowOrderProcess", com.tencent.mm.plugin.wallet_payu.order.a.d.class);
     AppMethodBeat.o(72055);
   }
   

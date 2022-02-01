@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:color="@color/x2" />
-    <item android:state_enabled="false" android:color="@color/uj" />
-    <item android:color="@color/x0" />
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/df" />
+            <solid android:color="@color/ags" />
+        </shape>
+    </item>
 </selector>

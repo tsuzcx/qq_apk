@@ -65,7 +65,7 @@ public class TenpayTTSUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tenpay.android.wechat.TenpayTTSUtil
  * JD-Core Version:    0.7.0.1
  */

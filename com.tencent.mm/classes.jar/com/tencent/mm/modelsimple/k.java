@@ -1,83 +1,64 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.cd.b;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.akq;
-import com.tencent.mm.protocal.protobuf.akr;
+import com.tencent.mm.protocal.protobuf.aiz;
+import com.tencent.mm.protocal.protobuf.aja;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class k
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  private final d rr;
+  private h callback;
+  private final c rr;
   
-  public k(String paramString1, int paramInt, String paramString2, byte[] paramArrayOfByte)
+  public k(String paramString)
   {
-    AppMethodBeat.i(20617);
-    Log.i("MicroMsg.NetSceneEnterTempSession", "NetSceneEnterTempSession %s, %s, %s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new akq();
-    ((d.a)localObject).lBV = new akr();
-    ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/entertempsession";
-    ((d.a)localObject).funcId = 1066;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    if (paramString2 != null)
-    {
-      localObject = paramString2;
-      if (paramString2.length() > 32)
-      {
-        localObject = paramString2;
-        if (paramInt == 19) {}
-      }
-    }
-    for (localObject = paramString2.substring(0, 32);; localObject = "")
-    {
-      paramString2 = (akq)d.b.b(this.rr.lBR);
-      paramString2.RTS = paramString1;
-      paramString2.Cqs = paramInt;
-      paramString2.Svz = b.bss((String)localObject);
-      if (paramArrayOfByte == null) {}
-      for (paramString2.SrO = b.cU(new byte[0]);; paramString2.SrO = b.cU(paramArrayOfByte))
-      {
-        Log.i("MicroMsg.NetSceneEnterTempSession", "NetSceneEnterTempSession %s, %s, %s", new Object[] { paramString1, Integer.valueOf(paramInt), Integer.valueOf(paramString2.SrO.UH.length) });
-        AppMethodBeat.o(20617);
-        return;
-      }
-    }
+    AppMethodBeat.i(20609);
+    Log.i("MicroMsg.NetSceneDelTempSession", "NetSceneDelTempSession %s", new Object[] { paramString });
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new aiz();
+    ((c.a)localObject).otF = new aja();
+    ((c.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/deltempsession";
+    ((c.a)localObject).funcId = 1067;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (aiz)c.b.b(this.rr.otB);
+    ((aiz)localObject).YRs = paramString;
+    ((aiz)localObject).ZqS = b.cX(new byte[0]);
+    AppMethodBeat.o(20609);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(20618);
-    this.callback = parami;
+    AppMethodBeat.i(20610);
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(20618);
+    AppMethodBeat.o(20610);
     return i;
   }
   
   public final int getType()
   {
-    return 1066;
+    return 1067;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(20619);
-    Log.i("MicroMsg.NetSceneEnterTempSession", "onGYNetEnd: %d, %d, %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(20611);
+    Log.i("MicroMsg.NetSceneDelTempSession", "onGYNetEnd: %d, %d, %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(20619);
+    AppMethodBeat.o(20611);
   }
 }
 

@@ -19,7 +19,7 @@ final class b
     return paramConfig;
   }
   
-  final c abV()
+  final c aDU()
   {
     AppMethodBeat.i(143993);
     Looper.prepare();
@@ -30,7 +30,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,24 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.item;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import kotlin.l;
+import com.tencent.mm.storage.ab;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.a;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class ad$c
-  implements View.OnClickListener
+  extends u
+  implements a<ah>
 {
-  ad$c(kotlin.g.a.b paramb) {}
-  
-  public final void onClick(View paramView)
+  ad$c(ad paramad, ab paramab)
   {
-    AppMethodBeat.i(265704);
-    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardSubscribe$refreshJumpLink$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    this.sGp.invoke(Integer.valueOf(24));
-    a.a(this, "com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardSubscribe$refreshJumpLink$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(265704);
+    super(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.item.ad.c
  * JD-Core Version:    0.7.0.1
  */

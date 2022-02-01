@@ -29,7 +29,7 @@ public class a
     AppMethodBeat.o(131407);
   }
   
-  public final int Dr(int paramInt)
+  public final int DQ(int paramInt)
   {
     AppMethodBeat.i(131420);
     paramInt = super.getDimensionPixelOffset(paramInt);
@@ -37,7 +37,7 @@ public class a
     return paramInt;
   }
   
-  public final int Ds(int paramInt)
+  public final int DR(int paramInt)
   {
     AppMethodBeat.i(131422);
     paramInt = super.getDimensionPixelSize(paramInt);
@@ -412,7 +412,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,89 +1,55 @@
 package kotlin.l.b.a.b.k.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.Iterator;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.e.a.r;
-import kotlin.l.b.a.b.e.b.a;
-import kotlin.l.b.a.b.e.b.c;
-import kotlin.l.b.a.b.e.b.h;
-import kotlin.l.b.a.b.e.b.i;
-import kotlin.l.b.a.b.k.a.b.f;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.b.ah;
+import kotlin.l.b.a.b.b.ai;
+import kotlin.l.b.a.b.b.aj;
+import kotlin.l.b.a.b.f.b;
+import kotlin.l.b.a.b.f.c;
 
 public final class n
+  implements g
 {
-  public final c aaCB;
-  public final h aaCC;
-  public final kotlin.l.b.a.b.b.l aaNi;
-  public final l aaYm;
-  public final ad abnB;
-  public final w abnC;
-  final i abnD;
-  final f abnE;
-  private final a abne;
+  private final ai ajma;
   
-  public n(l paraml, c paramc, kotlin.l.b.a.b.b.l paraml1, h paramh, i parami, a parama, f paramf, ad paramad, List<a.r> paramList)
+  public n(ai paramai)
   {
-    AppMethodBeat.i(60309);
-    this.aaYm = paraml;
-    this.aaCB = paramc;
-    this.aaNi = paraml1;
-    this.aaCC = paramh;
-    this.abnD = parami;
-    this.abne = parama;
-    this.abnE = paramf;
-    paraml1 = "Deserializer for \"" + this.aaNi.iEU() + '"';
-    paraml = this.abnE;
-    if (paraml != null)
-    {
-      paramc = paraml.iIF();
-      paraml = paramc;
-      if (paramc != null) {}
-    }
-    else
-    {
-      paraml = "[container not found]";
-    }
-    this.abnB = new ad(this, paramad, paramList, paraml1, paraml, (byte)0);
-    this.abnC = new w(this);
-    AppMethodBeat.o(60309);
+    AppMethodBeat.i(60311);
+    this.ajma = paramai;
+    AppMethodBeat.o(60311);
   }
   
-  public final n a(kotlin.l.b.a.b.b.l paraml, List<a.r> paramList, c paramc, h paramh, i parami, a parama)
+  public final f f(b paramb)
   {
-    AppMethodBeat.i(60307);
-    p.k(paraml, "descriptor");
-    p.k(paramList, "typeParameterProtos");
-    p.k(paramc, "nameResolver");
-    p.k(paramh, "typeTable");
-    p.k(parami, "versionRequirementTable");
-    p.k(parama, "metadataVersion");
-    l locall = this.aaYm;
-    p.k(parama, "version");
-    p.k(parama, "version");
-    int i;
-    if ((parama.oey == 1) && (parama.oez >= 4))
+    AppMethodBeat.i(60310);
+    s.u(paramb, "classId");
+    Object localObject1 = this.ajma;
+    Object localObject2 = paramb.kxL();
+    s.s(localObject2, "classId.packageFqName");
+    localObject1 = aj.a((ai)localObject1, (c)localObject2).iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      i = 1;
-      if (i == 0) {
-        break label130;
+      localObject2 = (ah)((Iterator)localObject1).next();
+      if ((localObject2 instanceof o))
+      {
+        localObject2 = ((o)localObject2).kzX().f(paramb);
+        if (localObject2 != null)
+        {
+          AppMethodBeat.o(60310);
+          return localObject2;
+        }
       }
     }
-    for (;;)
-    {
-      paraml = new n(locall, paramc, paraml, paramh, parami, parama, this.abnE, this.abnB, paramList);
-      AppMethodBeat.o(60307);
-      return paraml;
-      i = 0;
-      break;
-      label130:
-      parami = this.abnD;
-    }
+    AppMethodBeat.o(60310);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.k.a.n
  * JD-Core Version:    0.7.0.1
  */

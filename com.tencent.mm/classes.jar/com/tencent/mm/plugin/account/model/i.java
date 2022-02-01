@@ -1,56 +1,57 @@
 package com.tencent.mm.plugin.account.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.platformtools.z;
+import com.tencent.mm.platformtools.w;
 import com.tencent.mm.protocal.ac;
 import com.tencent.mm.protocal.l.d;
-import com.tencent.mm.protocal.protobuf.eri;
-import com.tencent.mm.protocal.protobuf.erj;
+import com.tencent.mm.protocal.protobuf.fmq;
+import com.tencent.mm.protocal.protobuf.fmr;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class i
-  extends q
+  extends p
   implements m
 {
-  private com.tencent.mm.an.i callback;
-  public d rr;
+  private h callback;
+  public c rr;
   
   public i(String paramString)
   {
     AppMethodBeat.i(127838);
-    d.a locala = new d.a();
-    locala.lBU = new eri();
-    locala.lBV = new erj();
+    c.a locala = new c.a();
+    locala.otE = new fmq();
+    locala.otF = new fmr();
     locala.uri = "/cgi-bin/micromsg-bin/thirdappverify";
     locala.funcId = 755;
-    locala.lBW = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.rr = locala.bgN();
-    ((eri)d.b.b(this.rr.lBR)).SwW = paramString;
-    ((eri)d.b.b(this.rr.lBR)).Utz = 1;
-    ((eri)d.b.b(this.rr.lBR)).vhq = LocaleUtil.getApplicationLanguage();
+    this.rr = locala.bEF();
+    ((fmq)c.b.b(this.rr.otB)).ZxK = paramString;
+    ((fmq)c.b.b(this.rr.otB)).abMU = 1;
+    ((fmq)c.b.b(this.rr.otB)).yts = LocaleUtil.getApplicationLanguage();
     paramString = Util.getUuidRandom();
-    ((eri)d.b.b(this.rr.lBR)).RQU = z.aN(paramString);
-    this.rr.setRsaInfo(ac.hpj());
+    ((fmq)c.b.b(this.rr.otB)).YOj = w.aN(paramString);
+    this.rr.setRsaInfo(ac.iQe());
     this.rr.option = 1;
     this.rr.getReqObj().setPassKey(paramString);
     this.rr.getReqObj().setSceneStatus(1);
     AppMethodBeat.o(127838);
   }
   
-  public final int doScene(g paramg, com.tencent.mm.an.i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(127839);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(127839);
     return i;

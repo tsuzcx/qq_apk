@@ -4,24 +4,24 @@ import com.tencent.mm.plugin.editor.model.nativenote.manager.WXRTEditText;
 
 public final class c
 {
-  public WXRTEditText uur = null;
-  public WXRTEditText uus = null;
-  public WXRTEditText uut = null;
+  public WXRTEditText xAO = null;
+  public WXRTEditText xAP = null;
+  public WXRTEditText xAQ = null;
   
   public c(WXRTEditText paramWXRTEditText)
   {
-    this.uur = paramWXRTEditText;
+    this.xAO = paramWXRTEditText;
   }
   
   public c(WXRTEditText paramWXRTEditText1, WXRTEditText paramWXRTEditText2)
   {
-    this.uus = paramWXRTEditText1;
-    this.uut = paramWXRTEditText2;
+    this.xAP = paramWXRTEditText1;
+    this.xAQ = paramWXRTEditText2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.c.c
  * JD-Core Version:    0.7.0.1
  */

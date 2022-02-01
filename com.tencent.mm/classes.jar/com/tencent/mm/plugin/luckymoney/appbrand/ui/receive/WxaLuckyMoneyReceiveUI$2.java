@@ -15,9 +15,9 @@ final class WxaLuckyMoneyReceiveUI$2
   {
     AppMethodBeat.i(64987);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/luckymoney/appbrand/ui/receive/WxaLuckyMoneyReceiveUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    WxaLuckyMoneyReceiveUI.c(this.Evo);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/luckymoney/appbrand/ui/receive/WxaLuckyMoneyReceiveUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    WxaLuckyMoneyReceiveUI.c(this.KnW);
     a.a(this, "com/tencent/mm/plugin/luckymoney/appbrand/ui/receive/WxaLuckyMoneyReceiveUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(64987);
   }

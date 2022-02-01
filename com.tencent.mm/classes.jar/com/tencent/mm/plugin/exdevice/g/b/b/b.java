@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.exdevice.g.b.b;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.g.b.d;
-import com.tencent.mm.plugin.exdevice.model.ae;
+import com.tencent.mm.plugin.exdevice.model.ah;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
@@ -43,14 +43,14 @@ public final class b
         break;
       }
       Log.d("MicroMsg.ExdeviceRankChampionStg", "hy: update success");
-      ae.cZH().a("HardDeviceChampionInfo", new d(null, null, parama.field_username));
+      ah.dGa().a("HardDeviceChampionInfo", new d(null, null, parama.field_username));
       AppMethodBeat.o(23573);
       return true;
     }
     if (insert(parama))
     {
       Log.d("MicroMsg.ExdeviceRankChampionStg", "hy: insert success");
-      ae.cZH().a("HardDeviceChampionInfo", new d(null, null, parama.field_username));
+      ah.dGa().a("HardDeviceChampionInfo", new d(null, null, parama.field_username));
       AppMethodBeat.o(23573);
       return true;
     }
@@ -59,7 +59,7 @@ public final class b
     return false;
   }
   
-  public final com.tencent.mm.plugin.exdevice.g.b.a.a avE(String paramString)
+  public final com.tencent.mm.plugin.exdevice.g.b.a.a apE(String paramString)
   {
     Object localObject1 = null;
     AppMethodBeat.i(23572);
@@ -88,7 +88,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.g.b.b.b
  * JD-Core Version:    0.7.0.1
  */

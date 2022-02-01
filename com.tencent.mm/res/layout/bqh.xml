@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/rj"
+<LinearLayout android:orientation="vertical" android:id="@id/ifj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i6" android:layout_marginBottom="@dimen/i6"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <CheckedTextView android:gravity="center_vertical" android:layout_gravity="left" android:id="@id/ih" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/glg" android:singleLine="true" android:drawableLeft="?android:listChoiceIndicatorMultiple" />
-    <TextView android:id="@id/fz0" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:text="@string/x5" style="@style/ou" />
+    <TextView android:padding="@dimen/m2" android:text="@string/hst" style="@style/lk" />
 </LinearLayout>

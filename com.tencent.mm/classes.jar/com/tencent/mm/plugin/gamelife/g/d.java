@@ -1,74 +1,186 @@
 package com.tencent.mm.plugin.gamelife.g;
 
+import android.graphics.Bitmap;
+import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.byp.b;
-import com.tencent.mm.plugin.byp.b.a;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i.b;
-import com.tencent.mm.sdk.storage.MAutoStorage;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.e;
-import junit.framework.Assert;
-import kotlin.l;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.modelavatar.AvatarStorage.a;
+import com.tencent.mm.plugin.gamelife.a.b.c;
+import com.tencent.mm.plugin.gamelife.a.f;
+import com.tencent.mm.pluginsdk.ui.j;
+import com.tencent.mm.pluginsdk.ui.j.a;
+import com.tencent.mm.pluginsdk.ui.j.b;
+import com.tencent.mm.pluginsdk.ui.j.c;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.au;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelife/message/GameLifeMessageStorage;", "Lcom/tencent/mm/storage/AbstractMessageStorage;", "storage", "Lcom/tencent/mm/plugin/messenger/foundation/api/storage/IMsgInfoStorage;", "(Lcom/tencent/mm/plugin/messenger/foundation/api/storage/IMsgInfoStorage;)V", "recognizeTableByTalker", "", "talker", "Companion", "plugin-gamelife_release"})
 public final class d
-  extends e
+  implements j.a, j.b
 {
-  public static final d.a DhQ;
-  private static final String[] SQL_CREATE;
+  final List<WeakReference<j>> Exg;
+  private final j.a Exh;
   
-  static
+  public d(j.a parama)
   {
-    AppMethodBeat.i(203881);
-    DhQ = new d.a((byte)0);
-    b.a locala = b.sVU;
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(b.access$getInfo$cp(), "gamelifemessage"), "CREATE INDEX IF NOT EXISTS  gamelifemessageSvrIdIndex ON gamelifemessage ( msgSvrId )", "CREATE INDEX IF NOT EXISTS  gamelifemessageTalkerIndex ON gamelifemessage ( talker )", "CREATE INDEX IF NOT EXISTS  gamelifemessageTalkerStatusIndex ON gamelifemessage ( talker,status )", "CREATE INDEX IF NOT EXISTS  gamelifemessageCreateTimeIndex ON gamelifemessage ( createTime )", "CREATE INDEX IF NOT EXISTS  gamelifemessageCreateTalkerTimeIndex ON gamelifemessage ( talker,createTime )", "CREATE INDEX IF NOT EXISTS  gamelifemessageSendCreateTimeIndex ON gamelifemessage ( status,isSend,createTime )", "CREATE INDEX IF NOT EXISTS  gamelifemessageTalkerTypeIndex ON gamelifemessage ( talker,type )" };
-    AppMethodBeat.o(203881);
+    AppMethodBeat.i(268139);
+    this.Exg = new ArrayList();
+    this.Exh = parama;
+    AppMethodBeat.o(268139);
   }
   
-  public d(i parami)
+  static Pair<String, Boolean> aHF(String paramString)
   {
-    super(parami);
-    AppMethodBeat.i(203879);
-    e(getDB(), "gamelifemessage");
-    a(new i.b(1024, "gamelifemessage", i.b.b(4500001L, 5000000L, 208000001L, 308000000L)));
-    AppMethodBeat.o(203879);
+    AppMethodBeat.i(268148);
+    if (au.bwX(paramString))
+    {
+      paramString = new Pair(paramString, Boolean.TRUE);
+      AppMethodBeat.o(268148);
+      return paramString;
+    }
+    paramString = ((f)h.ax(f.class)).aAw(paramString);
+    paramString = new Pair(paramString, Boolean.valueOf(au.bwX(paramString)));
+    AppMethodBeat.o(268148);
+    return paramString;
   }
   
-  public final String aEK(String paramString)
+  public final void a(final j paramj)
   {
-    AppMethodBeat.i(203878);
-    int i;
-    if (paramString != null) {
-      if (((CharSequence)paramString).length() > 0)
+    AppMethodBeat.i(268202);
+    if ((paramj instanceof AvatarStorage.a))
+    {
+      Object localObject = aHF(paramj.getTag());
+      boolean bool = ((Boolean)((Pair)localObject).second).booleanValue();
+      localObject = (String)((Pair)localObject).first;
+      if (bool)
       {
-        i = 1;
-        if (i != 1) {
-          break label54;
+        this.Exg.add(new WeakReference(paramj));
+        AppMethodBeat.o(268202);
+        return;
+      }
+      paramj.XYW = new j.c()
+      {
+        public final boolean ayJ(String paramAnonymousString)
+        {
+          AppMethodBeat.i(268161);
+          if (this.mae.equals(paramAnonymousString))
+          {
+            paramj.iKl();
+            paramj.XYW = null;
+          }
+          AppMethodBeat.o(268161);
+          return true;
+        }
+      };
+      this.Exh.a(paramj);
+    }
+    AppMethodBeat.o(268202);
+  }
+  
+  public final Bitmap aCj()
+  {
+    AppMethodBeat.i(268191);
+    Bitmap localBitmap = this.Exh.aCj();
+    AppMethodBeat.o(268191);
+    return localBitmap;
+  }
+  
+  public final boolean ayI(String paramString)
+  {
+    AppMethodBeat.i(268214);
+    if (!au.bwX(((f)h.ax(f.class)).aAw(paramString)))
+    {
+      AppMethodBeat.o(268214);
+      return true;
+    }
+    AppMethodBeat.o(268214);
+    return false;
+  }
+  
+  public final Bitmap b(final String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(268164);
+    Object localObject = aHF(paramString);
+    paramString = (String)((Pair)localObject).first;
+    if (((Boolean)((Pair)localObject).second).booleanValue())
+    {
+      localObject = ((com.tencent.mm.plugin.gamelife.a.b)h.ax(com.tencent.mm.plugin.gamelife.a.b.class)).aHu(paramString);
+      if (localObject != null)
+      {
+        localObject = Util.nullAsNil(((com.tencent.mm.plugin.gamelife.a.a)localObject).amx());
+        e locale = e.JbE;
+        localObject = (Bitmap)e.getLoader().dk(new a((String)localObject)).bll();
+        if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
+        {
+          AppMethodBeat.o(268164);
+          return localObject;
         }
       }
+      ((com.tencent.mm.plugin.gamelife.a.b)h.ax(com.tencent.mm.plugin.gamelife.a.b.class)).a(paramString, new b.c()
+      {
+        public final void onDone(Map<String, com.tencent.mm.plugin.gamelife.a.a> paramAnonymousMap)
+        {
+          AppMethodBeat.i(268174);
+          paramAnonymousMap = (com.tencent.mm.plugin.gamelife.a.a)paramAnonymousMap.get(paramString);
+          if (paramAnonymousMap == null)
+          {
+            Log.w("GameLife.AvatarDrawableLoader", "get contact failed");
+            AppMethodBeat.o(268174);
+            return;
+          }
+          paramAnonymousMap = paramAnonymousMap.amx();
+          e locale = e.JbE;
+          paramAnonymousMap = e.getLoader().dk(new a(paramAnonymousMap));
+          paramAnonymousMap.a(new com.tencent.mm.loader.e.e() {});
+          paramAnonymousMap.blg();
+          AppMethodBeat.o(268174);
+        }
+      });
+      AppMethodBeat.o(268164);
+      return null;
     }
-    label54:
-    for (boolean bool = true;; bool = false)
+    paramString = this.Exh.b(paramString, paramInt1, paramInt2, paramInt3);
+    AppMethodBeat.o(268164);
+    return paramString;
+  }
+  
+  public final Bitmap ik(String paramString)
+  {
+    AppMethodBeat.i(268184);
+    Pair localPair = aHF(paramString);
+    if (((Boolean)localPair.second).booleanValue())
     {
-      Assert.assertTrue(bool);
-      if (!as.bvQ(paramString)) {
-        break label59;
-      }
-      AppMethodBeat.o(203878);
-      return "gamelifemessage";
-      i = 0;
-      break;
+      paramString = b(paramString, 0, 0, 0);
+      AppMethodBeat.o(268184);
+      return paramString;
     }
-    label59:
-    AppMethodBeat.o(203878);
-    return null;
+    paramString = this.Exh.ik((String)localPair.first);
+    AppMethodBeat.o(268184);
+    return paramString;
+  }
+  
+  public final Bitmap loadBitmap(String paramString)
+  {
+    AppMethodBeat.i(268176);
+    Pair localPair = aHF(paramString);
+    if (((Boolean)localPair.second).booleanValue())
+    {
+      paramString = b(paramString, 0, 0, 0);
+      AppMethodBeat.o(268176);
+      return paramString;
+    }
+    paramString = this.Exh.loadBitmap((String)localPair.first);
+    AppMethodBeat.o(268176);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelife.g.d
  * JD-Core Version:    0.7.0.1
  */

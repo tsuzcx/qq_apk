@@ -9,45 +9,45 @@ import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 import androidx.recyclerview.widget.RecyclerView.r.a;
 import androidx.recyclerview.widget.RecyclerView.r.b;
 import androidx.recyclerview.widget.RecyclerView.s;
-import androidx.recyclerview.widget.p;
-import androidx.recyclerview.widget.u;
+import androidx.recyclerview.widget.o;
+import androidx.recyclerview.widget.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.topstory.ui.widget.f;
 
 public final class b
   extends f
 {
-  private u ajA;
-  private u ajz;
+  private s bYd;
+  private s bYe;
   
-  private static int a(RecyclerView.LayoutManager paramLayoutManager, View paramView, u paramu)
+  private static int a(RecyclerView.LayoutManager paramLayoutManager, View paramView, s params)
   {
-    AppMethodBeat.i(205941);
-    int j = paramu.aZ(paramView);
-    int k = paramu.bd(paramView) / 2;
+    AppMethodBeat.i(271805);
+    int j = params.bs(paramView);
+    int k = params.bw(paramView) / 2;
     if (paramLayoutManager.getClipToPadding()) {}
-    for (int i = paramu.kT() + paramu.kV() / 2;; i = paramu.getEnd() / 2)
+    for (int i = params.JE() + params.JG() / 2;; i = params.getEnd() / 2)
     {
-      AppMethodBeat.o(205941);
+      AppMethodBeat.o(271805);
       return k + j - i;
     }
   }
   
-  private static View a(RecyclerView.LayoutManager paramLayoutManager, u paramu)
+  private static View a(RecyclerView.LayoutManager paramLayoutManager, s params)
   {
     Object localObject = null;
-    AppMethodBeat.i(205942);
+    AppMethodBeat.i(271807);
     int n = paramLayoutManager.getChildCount();
     if (n == 0)
     {
-      AppMethodBeat.o(205942);
+      AppMethodBeat.o(271807);
       return null;
     }
     int j;
     int k;
     if (paramLayoutManager.getClipToPadding())
     {
-      j = paramu.kT() + paramu.kV() / 2;
+      j = params.JE() + params.JG() / 2;
       int i = 2147483647;
       k = 0;
       label51:
@@ -55,7 +55,7 @@ public final class b
         break label120;
       }
       View localView = paramLayoutManager.getChildAt(k);
-      int m = Math.abs(paramu.aZ(localView) + paramu.bd(localView) / 2 - j);
+      int m = Math.abs(params.bs(localView) + params.bw(localView) / 2 - j);
       if (m >= i) {
         break label128;
       }
@@ -67,33 +67,33 @@ public final class b
     {
       k += 1;
       break label51;
-      j = paramu.getEnd() / 2;
+      j = params.getEnd() / 2;
       break;
       label120:
-      AppMethodBeat.o(205942);
+      AppMethodBeat.o(271807);
       return localObject;
     }
   }
   
-  private u b(RecyclerView.LayoutManager paramLayoutManager)
+  private s b(RecyclerView.LayoutManager paramLayoutManager)
   {
-    AppMethodBeat.i(205944);
-    if ((this.ajz == null) || (this.ajz.getLayoutManager() != paramLayoutManager)) {
-      this.ajz = u.e(paramLayoutManager);
+    AppMethodBeat.i(271811);
+    if ((this.bYd == null) || (this.bYd.getLayoutManager() != paramLayoutManager)) {
+      this.bYd = s.e(paramLayoutManager);
     }
-    paramLayoutManager = this.ajz;
-    AppMethodBeat.o(205944);
+    paramLayoutManager = this.bYd;
+    AppMethodBeat.o(271811);
     return paramLayoutManager;
   }
   
-  private static View c(RecyclerView.LayoutManager paramLayoutManager, u paramu)
+  private static View c(RecyclerView.LayoutManager paramLayoutManager, s params)
   {
     Object localObject = null;
-    AppMethodBeat.i(205943);
+    AppMethodBeat.i(271809);
     int m = paramLayoutManager.getChildCount();
     if (m == 0)
     {
-      AppMethodBeat.o(205943);
+      AppMethodBeat.o(271809);
       return null;
     }
     int i = 2147483647;
@@ -101,7 +101,7 @@ public final class b
     if (j < m)
     {
       View localView = paramLayoutManager.getChildAt(j);
-      int k = paramu.aZ(localView);
+      int k = params.bs(localView);
       if (k >= i) {
         break label80;
       }
@@ -113,35 +113,35 @@ public final class b
     {
       j += 1;
       break;
-      AppMethodBeat.o(205943);
+      AppMethodBeat.o(271809);
       return localObject;
     }
   }
   
-  private u c(RecyclerView.LayoutManager paramLayoutManager)
+  private s c(RecyclerView.LayoutManager paramLayoutManager)
   {
-    AppMethodBeat.i(205945);
-    if ((this.ajA == null) || (this.ajA.getLayoutManager() != paramLayoutManager)) {
-      this.ajA = u.d(paramLayoutManager);
+    AppMethodBeat.i(271813);
+    if ((this.bYe == null) || (this.bYe.getLayoutManager() != paramLayoutManager)) {
+      this.bYe = s.d(paramLayoutManager);
     }
-    paramLayoutManager = this.ajA;
-    AppMethodBeat.o(205945);
+    paramLayoutManager = this.bYe;
+    AppMethodBeat.o(271813);
     return paramLayoutManager;
   }
   
   public final int a(RecyclerView.LayoutManager paramLayoutManager, int paramInt1, int paramInt2)
   {
     int i = 0;
-    AppMethodBeat.i(205939);
+    AppMethodBeat.i(271818);
     if ((Math.abs(paramInt2) <= 500) || (Math.abs(paramInt1) >= Math.abs(paramInt2)))
     {
-      AppMethodBeat.o(205939);
+      AppMethodBeat.o(271818);
       return -1;
     }
     int k = paramLayoutManager.getItemCount();
     if (k == 0)
     {
-      AppMethodBeat.o(205939);
+      AppMethodBeat.o(271818);
       return -1;
     }
     View localView = null;
@@ -150,7 +150,7 @@ public final class b
     }
     while (localView == null)
     {
-      AppMethodBeat.o(205939);
+      AppMethodBeat.o(271818);
       return -1;
       if (paramLayoutManager.canScrollHorizontally()) {
         localView = c(paramLayoutManager, c(paramLayoutManager));
@@ -159,7 +159,7 @@ public final class b
     int j = paramLayoutManager.getPosition(localView);
     if (j == -1)
     {
-      AppMethodBeat.o(205939);
+      AppMethodBeat.o(271818);
       return -1;
     }
     if (paramLayoutManager.canScrollHorizontally()) {
@@ -172,7 +172,7 @@ public final class b
       paramInt2 = i;
       if ((paramLayoutManager instanceof RecyclerView.r.b))
       {
-        paramLayoutManager = ((RecyclerView.r.b)paramLayoutManager).cB(k - 1);
+        paramLayoutManager = ((RecyclerView.r.b)paramLayoutManager).fM(k - 1);
         paramInt2 = i;
         if (paramLayoutManager != null) {
           if (paramLayoutManager.x >= 0.0F)
@@ -192,7 +192,7 @@ public final class b
       if (paramInt1 == 0) {
         break;
       }
-      AppMethodBeat.o(205939);
+      AppMethodBeat.o(271818);
       return j - 1;
       paramInt1 = 0;
       continue;
@@ -202,40 +202,40 @@ public final class b
         paramInt1 = 0;
       }
     }
-    AppMethodBeat.o(205939);
+    AppMethodBeat.o(271818);
     return j;
     label241:
     if (paramInt1 != 0)
     {
-      AppMethodBeat.o(205939);
+      AppMethodBeat.o(271818);
       return j + 1;
     }
-    AppMethodBeat.o(205939);
+    AppMethodBeat.o(271818);
     return j;
   }
   
   public final View a(RecyclerView.LayoutManager paramLayoutManager)
   {
-    AppMethodBeat.i(205938);
+    AppMethodBeat.i(271816);
     if (paramLayoutManager.canScrollVertically())
     {
       paramLayoutManager = a(paramLayoutManager, b(paramLayoutManager));
-      AppMethodBeat.o(205938);
+      AppMethodBeat.o(271816);
       return paramLayoutManager;
     }
     if (paramLayoutManager.canScrollHorizontally())
     {
       paramLayoutManager = a(paramLayoutManager, c(paramLayoutManager));
-      AppMethodBeat.o(205938);
+      AppMethodBeat.o(271816);
       return paramLayoutManager;
     }
-    AppMethodBeat.o(205938);
+    AppMethodBeat.o(271816);
     return null;
   }
   
   public final int[] a(RecyclerView.LayoutManager paramLayoutManager, View paramView)
   {
-    AppMethodBeat.i(205937);
+    AppMethodBeat.i(271815);
     int[] arrayOfInt = new int[2];
     if (paramLayoutManager.canScrollHorizontally())
     {
@@ -247,7 +247,7 @@ public final class b
     }
     for (;;)
     {
-      AppMethodBeat.o(205937);
+      AppMethodBeat.o(271815);
       return arrayOfInt;
       arrayOfInt[0] = 0;
       break;
@@ -256,43 +256,43 @@ public final class b
     }
   }
   
-  public final p f(RecyclerView.LayoutManager paramLayoutManager)
+  public final o f(RecyclerView.LayoutManager paramLayoutManager)
   {
-    AppMethodBeat.i(205940);
+    AppMethodBeat.i(271819);
     if (!(paramLayoutManager instanceof RecyclerView.r.b))
     {
-      AppMethodBeat.o(205940);
+      AppMethodBeat.o(271819);
       return null;
     }
-    paramLayoutManager = new p(this.mRecyclerView.getContext())
+    paramLayoutManager = new o(this.mRecyclerView.getContext())
     {
-      public final float a(DisplayMetrics paramAnonymousDisplayMetrics)
+      public final void a(View paramAnonymousView, RecyclerView.s paramAnonymouss, RecyclerView.r.a paramAnonymousa)
+      {
+        AppMethodBeat.i(271817);
+        paramAnonymousView = b.this.a(b.a(b.this).getLayoutManager(), paramAnonymousView);
+        int i = paramAnonymousView[0];
+        int j = paramAnonymousView[1];
+        int k = fO(Math.max(Math.abs(i), Math.abs(j)));
+        if (k > 0) {
+          paramAnonymousa.a(i, j, k, this.bXY);
+        }
+        AppMethodBeat.o(271817);
+      }
+      
+      public final float c(DisplayMetrics paramAnonymousDisplayMetrics)
       {
         return 100.0F / paramAnonymousDisplayMetrics.densityDpi;
       }
       
-      public final void a(View paramAnonymousView, RecyclerView.s paramAnonymouss, RecyclerView.r.a paramAnonymousa)
-      {
-        AppMethodBeat.i(204808);
-        paramAnonymousView = b.this.a(b.a(b.this).getLayoutManager(), paramAnonymousView);
-        int i = paramAnonymousView[0];
-        int j = paramAnonymousView[1];
-        int k = cE(Math.max(Math.abs(i), Math.abs(j)));
-        if (k > 0) {
-          paramAnonymousa.a(i, j, k, this.aju);
-        }
-        AppMethodBeat.o(204808);
-      }
-      
-      public final int cF(int paramAnonymousInt)
+      public final int fP(int paramAnonymousInt)
       {
         AppMethodBeat.i(126235);
-        paramAnonymousInt = Math.min(100, super.cF(paramAnonymousInt));
+        paramAnonymousInt = Math.min(100, super.fP(paramAnonymousInt));
         AppMethodBeat.o(126235);
         return paramAnonymousInt;
       }
     };
-    AppMethodBeat.o(205940);
+    AppMethodBeat.o(271819);
     return paramLayoutManager;
   }
 }

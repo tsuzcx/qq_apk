@@ -1,128 +1,123 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
+import i.a.a.b;
 import java.util.LinkedList;
 
 public final class ckb
-  extends dyl
+  extends esc
 {
-  public int TrD;
-  public int TrE;
-  public eae TrF;
+  public long YFA;
+  public int aasB;
+  public int aasC;
+  public int aasD;
+  public long vhj;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(116329);
+    AppMethodBeat.i(127496);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.TrF == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse == null)
       {
-        paramVarArgs = new b("Not all required fields were included: ReqText");
-        AppMethodBeat.o(116329);
+        paramVarArgs = new b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(127496);
         throw paramVarArgs;
       }
-      if (this.BaseRequest != null)
+      if (this.BaseResponse != null)
       {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs.qD(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      paramVarArgs.aY(2, this.TrD);
-      paramVarArgs.aY(3, this.TrE);
-      if (this.TrF != null)
-      {
-        paramVarArgs.oE(4, this.TrF.computeSize());
-        this.TrF.writeFields(paramVarArgs);
-      }
-      AppMethodBeat.o(116329);
+      paramVarArgs.bv(2, this.YFA);
+      paramVarArgs.bv(3, this.vhj);
+      paramVarArgs.bS(4, this.aasB);
+      paramVarArgs.bS(5, this.aasC);
+      paramVarArgs.bS(6, this.aasD);
+      AppMethodBeat.o(127496);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label554;
+      if (this.BaseResponse == null) {
+        break label564;
       }
     }
-    label554:
-    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label564:
+    for (paramInt = i.a.a.a.qC(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + g.a.a.b.b.a.bM(2, this.TrD) + g.a.a.b.b.a.bM(3, this.TrE);
-      paramInt = i;
-      if (this.TrF != null) {
-        paramInt = i + g.a.a.a.oD(4, this.TrF.computeSize());
-      }
-      AppMethodBeat.o(116329);
-      return paramInt;
+      int i = i.a.a.b.b.a.q(2, this.YFA);
+      int j = i.a.a.b.b.a.q(3, this.vhj);
+      int k = i.a.a.b.b.a.cJ(4, this.aasB);
+      int m = i.a.a.b.b.a.cJ(5, this.aasC);
+      int n = i.a.a.b.b.a.cJ(6, this.aasD);
+      AppMethodBeat.o(127496);
+      return paramInt + i + j + k + m + n;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = esc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = esc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.TrF == null)
+        if (this.BaseResponse == null)
         {
-          paramVarArgs = new b("Not all required fields were included: ReqText");
-          AppMethodBeat.o(116329);
+          paramVarArgs = new b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(127496);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(116329);
+        AppMethodBeat.o(127496);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         ckb localckb = (ckb)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(116329);
+          AppMethodBeat.o(127496);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new jg();
-            if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((jg)localObject2).parseFrom((byte[])localObject1);
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kd localkd = new kd();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkd.parseFrom((byte[])localObject);
             }
-            localckb.BaseRequest = ((jg)localObject2);
+            localckb.BaseResponse = localkd;
             paramInt += 1;
           }
-          AppMethodBeat.o(116329);
+          AppMethodBeat.o(127496);
           return 0;
         case 2: 
-          localckb.TrD = ((g.a.a.a.a)localObject1).abFh.AK();
-          AppMethodBeat.o(116329);
+          localckb.YFA = ((i.a.a.a.a)localObject).ajGk.aaw();
+          AppMethodBeat.o(127496);
           return 0;
         case 3: 
-          localckb.TrE = ((g.a.a.a.a)localObject1).abFh.AK();
-          AppMethodBeat.o(116329);
+          localckb.vhj = ((i.a.a.a.a)localObject).ajGk.aaw();
+          AppMethodBeat.o(127496);
+          return 0;
+        case 4: 
+          localckb.aasB = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(127496);
+          return 0;
+        case 5: 
+          localckb.aasC = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(127496);
           return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject1 = (byte[])paramVarArgs.get(paramInt);
-          localObject2 = new eae();
-          if ((localObject1 != null) && (localObject1.length > 0)) {
-            ((eae)localObject2).dd((byte[])localObject1);
-          }
-          localckb.TrF = ((eae)localObject2);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(116329);
+        localckb.aasD = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(127496);
         return 0;
       }
-      AppMethodBeat.o(116329);
+      AppMethodBeat.o(127496);
       return -1;
     }
   }

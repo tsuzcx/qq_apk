@@ -1,215 +1,345 @@
 package com.tencent.mm.plugin.sns.ad.d;
 
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.findersdk.a.ak;
-import com.tencent.mm.plugin.sns.data.t;
-import com.tencent.mm.plugin.sns.storage.ADInfo;
-import com.tencent.mm.plugin.sns.storage.ADXml;
-import com.tencent.mm.plugin.sns.storage.ADXml.a;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.net.URLEncoder;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.plugin.sns.ad.j.d;
+import com.tencent.mm.plugin.sns.ad.j.j;
+import com.tencent.mm.plugin.sns.ad.j.j.b;
+import com.tencent.mm.plugin.sns.model.al;
+import com.tencent.mm.plugin.sns.storage.f;
+import com.tencent.mm.plugin.sns.storage.n;
+import com.tencent.mm.plugin.sns.storage.p;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 import org.json.JSONObject;
 
 public final class l
 {
-  private static String Mc(String paramString)
+  private static boolean POd = false;
+  
+  public static Cursor a(Cursor paramCursor, com.tencent.mm.storagebase.h paramh, String paramString)
   {
-    AppMethodBeat.i(228025);
-    String str1 = paramString;
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
+    AppMethodBeat.i(309969);
+    Object localObject;
+    label95:
+    ArrayList localArrayList;
+    long l1;
+    label150:
+    long l2;
+    int i;
+    if (paramCursor == null)
     {
-      str1 = URLEncoder.encode(paramString, "UTF-8");
-      AppMethodBeat.o(228025);
-      return str1;
+      int j;
+      int k;
+      do
+      {
+        for (;;)
+        {
+          try
+          {
+            com.tencent.mm.sdk.platformtools.Log.i("ConsecutiveAdHelper", "the cursor is null!");
+            AppMethodBeat.o(309969);
+            return null;
+          }
+          finally
+          {
+            com.tencent.mm.sdk.platformtools.Log.e("ConsecutiveAdHelper", "there is something wrong in removeConsecutiveAd: " + android.util.Log.getStackTraceString(paramCursor));
+            com.tencent.mm.plugin.sns.data.l.a(com.tencent.mm.plugin.sns.data.l.Qnx, "", 0, 0, "");
+            paramCursor = f(paramh, paramString);
+            AppMethodBeat.o(309969);
+            return paramCursor;
+          }
+          if (!d.isEmpty((Collection)localObject)) {
+            break label258;
+          }
+          paramCursor.moveToFirst();
+          AppMethodBeat.o(309969);
+          return paramCursor;
+          j = paramCursor.getColumnIndex("snsId");
+          k = paramCursor.getColumnIndex("sourceType");
+          if ((j >= 0) && (k >= 0)) {
+            break;
+          }
+          com.tencent.mm.sdk.platformtools.Log.w("ConsecutiveAdHelper", "the snsid index or source type index is invalid!");
+          localObject = null;
+        }
+        localArrayList = new ArrayList();
+        l1 = 0L;
+        localObject = localArrayList;
+      } while (!paramCursor.moveToNext());
+      l2 = paramCursor.getLong(j);
+      if ((paramCursor.getInt(k) & 0x20) <= 0) {
+        break label341;
+      }
+      i = 1;
     }
-    catch (Exception localException)
+    label258:
+    label341:
+    label344:
+    for (;;)
     {
+      if (l1 == 0L)
+      {
+        com.tencent.mm.sdk.platformtools.Log.i("ConsecutiveAdHelper", "there is first ad sns id is ".concat(String.valueOf(l2)));
+        l1 = l2;
+        break label150;
+      }
+      com.tencent.mm.sdk.platformtools.Log.i("ConsecutiveAdHelper", "there is consecutive ad sns id is ".concat(String.valueOf(l2)));
+      localArrayList.add(new b(l1, l2));
+      break label150;
+      paramCursor.close();
+      kv((List)localObject);
+      com.tencent.mm.plugin.report.service.h.OAn.p(1612L, 30L, ((List)localObject).size());
+      j.a(new a((List)localObject));
+      com.tencent.mm.sdk.platformtools.Log.d("ConsecutiveAdHelper", "it need to query again!!");
+      paramCursor = f(paramh, paramString);
+      AppMethodBeat.o(309969);
+      return paramCursor;
+      if (paramCursor != null) {
+        break label95;
+      }
+      localObject = null;
+      break;
       for (;;)
       {
-        Log.e("FinderAdJumpHelper", "urlEncode exp=" + localException.toString());
-        String str2 = paramString;
+        if (i != 0) {
+          break label344;
+        }
+        l1 = 0L;
+        break;
+        i = 0;
       }
     }
   }
   
-  public static boolean a(Context paramContext, ADXml paramADXml, ADInfo paramADInfo, long paramLong)
+  private static Cursor f(com.tencent.mm.storagebase.h paramh, String paramString)
   {
-    AppMethodBeat.i(227985);
+    AppMethodBeat.i(309982);
+    if (paramh != null)
+    {
+      paramh = paramh.rawQuery(paramString, null);
+      AppMethodBeat.o(309982);
+      return paramh;
+    }
+    AppMethodBeat.o(309982);
+    return null;
+  }
+  
+  public static void gZO()
+  {
+    POd = true;
+  }
+  
+  public static boolean gZP()
+  {
+    AppMethodBeat.i(309951);
+    if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE))
+    {
+      com.tencent.mm.sdk.platformtools.Log.i("ConsecutiveAdHelper", "this is debug mode， isFilterValueInDebug is " + POd);
+      boolean bool = POd;
+      AppMethodBeat.o(309951);
+      return bool;
+    }
+    AppMethodBeat.o(309951);
+    return true;
+  }
+  
+  public static boolean gZQ()
+  {
+    AppMethodBeat.i(309955);
     try
     {
-      if (a(paramADXml, paramADInfo))
+      int i = ((c)com.tencent.mm.kernel.h.ax(c.class)).a(c.a.yIf, 0);
+      com.tencent.mm.sdk.platformtools.Log.i("ConsecutiveAdHelper", "isConsecutiveFilter exptValue =".concat(String.valueOf(i)));
+      return i > 0;
+    }
+    finally
+    {
+      AppMethodBeat.o(309955);
+    }
+    return true;
+  }
+  
+  private static void kv(List<b> paramList)
+  {
+    AppMethodBeat.i(309976);
+    if (d.isEmpty(paramList))
+    {
+      AppMethodBeat.o(309976);
+      return;
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      long l = ((b)paramList.next()).ibq;
+      if (l != 0L)
       {
-        String str1 = paramADXml.adFinderInfo.finderUsername;
-        String str2 = paramADXml.adFinderInfo.objectNonceId;
-        paramADXml = paramADXml.adFinderInfo.fwa;
-        boolean bool = a(paramContext, paramADInfo.uxInfo, str1, str2, paramADXml, paramLong, 3);
-        AppMethodBeat.o(227985);
-        return bool;
+        com.tencent.mm.sdk.platformtools.Log.i("ConsecutiveAdHelper", "delete sns id ".concat(String.valueOf(l)));
+        al.hgE().delete(l);
+        al.hgH().vh(l);
+        n.vg(l);
       }
     }
-    catch (Throwable paramContext)
-    {
-      Log.e("FinderAdJumpHelper", "checkJumpFinderFeedsDetailUI exp=" + paramContext.toString());
-      AppMethodBeat.o(227985);
-    }
-    return false;
+    AppMethodBeat.o(309976);
   }
   
-  public static boolean a(Context paramContext, ADXml paramADXml, ADInfo paramADInfo, long paramLong, int paramInt)
+  static final class a
+    extends j.b
   {
-    AppMethodBeat.i(228013);
-    try
+    final List<l.b> POe;
+    
+    a(List<l.b> paramList)
     {
-      if (a(paramADXml, paramADInfo))
+      this.POe = paramList;
+    }
+    
+    public final void bN(JSONObject paramJSONObject)
+    {
+      AppMethodBeat.i(310088);
+      try
       {
-        paramADXml = paramADXml.adFinderInfo;
-        String str = t.Qu(paramLong);
-        boolean bool = a(paramContext, paramADXml.finderUsername, paramADInfo.uxInfo, str, paramInt);
-        AppMethodBeat.o(228013);
-        return bool;
+        paramJSONObject.putOpt("snsId", "");
+        paramJSONObject.putOpt("uxinfo", "");
+        paramJSONObject.putOpt("adExtInfo", "");
+        paramJSONObject.putOpt("scene", Integer.valueOf(0));
+        return;
+      }
+      finally
+      {
+        AppMethodBeat.o(310088);
       }
     }
-    catch (Throwable paramContext)
+    
+    /* Error */
+    public final void bO(JSONObject paramJSONObject)
     {
-      Log.e("FinderAdJumpHelper", "checkJumpFinderProfileUI exp=" + paramContext.toString());
-      AppMethodBeat.o(228013);
+      // Byte code:
+      //   0: ldc 56
+      //   2: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+      //   5: aload_0
+      //   6: getfield 17	com/tencent/mm/plugin/sns/ad/d/l$a:POe	Ljava/util/List;
+      //   9: invokestatic 62	com/tencent/mm/plugin/sns/ad/j/d:isEmpty	(Ljava/util/Collection;)Z
+      //   12: istore_3
+      //   13: iload_3
+      //   14: ifeq +9 -> 23
+      //   17: ldc 56
+      //   19: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   22: return
+      //   23: new 64	org/json/JSONArray
+      //   26: dup
+      //   27: invokespecial 65	org/json/JSONArray:<init>	()V
+      //   30: astore 4
+      //   32: aload_1
+      //   33: ldc 67
+      //   35: aload_0
+      //   36: getfield 17	com/tencent/mm/plugin/sns/ad/d/l$a:POe	Ljava/util/List;
+      //   39: invokeinterface 73 1 0
+      //   44: invokestatic 51	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+      //   47: invokevirtual 39	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+      //   50: pop
+      //   51: aload_1
+      //   52: ldc 75
+      //   54: aload 4
+      //   56: invokevirtual 39	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+      //   59: pop
+      //   60: aload_0
+      //   61: getfield 17	com/tencent/mm/plugin/sns/ad/d/l$a:POe	Ljava/util/List;
+      //   64: invokeinterface 79 1 0
+      //   69: astore_1
+      //   70: iconst_0
+      //   71: istore_2
+      //   72: aload_1
+      //   73: invokeinterface 85 1 0
+      //   78: ifeq +78 -> 156
+      //   81: aload_1
+      //   82: invokeinterface 89 1 0
+      //   87: checkcast 91	com/tencent/mm/plugin/sns/ad/d/l$b
+      //   90: astore 5
+      //   92: aload 5
+      //   94: ifnull +52 -> 146
+      //   97: new 35	org/json/JSONObject
+      //   100: dup
+      //   101: invokespecial 92	org/json/JSONObject:<init>	()V
+      //   104: astore 6
+      //   106: aload 6
+      //   108: ldc 31
+      //   110: aload 5
+      //   112: getfield 96	com/tencent/mm/plugin/sns/ad/d/l$b:ibq	J
+      //   115: invokestatic 102	com/tencent/mm/plugin/sns/data/t:uA	(J)Ljava/lang/String;
+      //   118: invokevirtual 39	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+      //   121: pop
+      //   122: aload 6
+      //   124: ldc 104
+      //   126: aload 5
+      //   128: getfield 107	com/tencent/mm/plugin/sns/ad/d/l$b:POf	J
+      //   131: invokestatic 102	com/tencent/mm/plugin/sns/data/t:uA	(J)Ljava/lang/String;
+      //   134: invokevirtual 39	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+      //   137: pop
+      //   138: aload 4
+      //   140: aload 6
+      //   142: invokevirtual 111	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
+      //   145: pop
+      //   146: iload_2
+      //   147: iconst_1
+      //   148: iadd
+      //   149: istore_2
+      //   150: iload_2
+      //   151: bipush 10
+      //   153: if_icmplt +21 -> 174
+      //   156: ldc 56
+      //   158: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   161: return
+      //   162: astore_1
+      //   163: ldc 56
+      //   165: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   168: return
+      //   169: astore 5
+      //   171: goto -25 -> 146
+      //   174: goto -102 -> 72
+      // Local variable table:
+      //   start	length	slot	name	signature
+      //   0	177	0	this	a
+      //   0	177	1	paramJSONObject	JSONObject
+      //   71	83	2	i	int
+      //   12	2	3	bool	boolean
+      //   30	109	4	localJSONArray	org.json.JSONArray
+      //   90	37	5	localb	l.b
+      //   169	1	5	localObject	Object
+      //   104	37	6	localJSONObject	JSONObject
+      // Exception table:
+      //   from	to	target	type
+      //   5	13	162	finally
+      //   23	70	162	finally
+      //   72	92	162	finally
+      //   97	146	169	finally
     }
-    return false;
+    
+    public final String gZE()
+    {
+      return "sns_ad_remove_consecutive_ad_report";
+    }
   }
   
-  public static boolean a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt)
+  static final class b
   {
-    AppMethodBeat.i(228018);
-    try
+    final long POf;
+    final long ibq;
+    
+    b(long paramLong1, long paramLong2)
     {
-      paramString2 = an(paramString2, paramString3, paramInt);
-      Log.i("FinderAdJumpHelper", "doJumpToFinderProfileUI, finderUsername=" + paramString1 + ", adInfoExtra=" + paramString2 + ", scene=" + paramInt);
-      paramString3 = new Intent();
-      paramString3.putExtra("key_from_profile_share_scene", 3);
-      paramString3.putExtra("key_enter_profile_type", 1);
-      paramString3.putExtra("finder_username", paramString1);
-      paramString3.putExtra("key_comment_scene", 37);
-      paramString3.putExtra("is_from_ad", true);
-      paramString3.putExtra("key_extra_info", paramString2);
-      ((ak)h.ag(ak.class)).fillContextIdToIntent(4, 4, 32, paramString3);
-      ((ak)h.ag(ak.class)).enterFinderProfileUI(paramContext, paramString3);
-      AppMethodBeat.o(228018);
-      return true;
+      this.POf = paramLong1;
+      this.ibq = paramLong2;
     }
-    catch (Throwable paramContext)
-    {
-      Log.e("FinderAdJumpHelper", "doJumpToFinderProfileUI exp=" + paramContext.toString());
-      AppMethodBeat.o(228018);
-    }
-    return false;
-  }
-  
-  public static boolean a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, long paramLong, int paramInt)
-  {
-    AppMethodBeat.i(227992);
-    try
-    {
-      a(null, paramContext, paramString2, paramString3, paramString4, an(paramString1, t.Qu(paramLong), paramInt));
-      AppMethodBeat.o(227992);
-      return true;
-    }
-    catch (Throwable paramContext)
-    {
-      Log.e("FinderAdJumpHelper", "doJumpFinderFeedsDetailUI exp=" + paramContext.toString());
-      AppMethodBeat.o(227992);
-    }
-    return false;
-  }
-  
-  public static boolean a(Intent paramIntent, Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    AppMethodBeat.i(228006);
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {}
-    try
-    {
-      localIntent = new Intent();
-      localIntent.putExtra("report_scene", 3);
-      localIntent.putExtra("from_user", paramString1);
-      localIntent.putExtra("feed_encrypted_object_id", paramString3);
-      localIntent.putExtra("feed_object_nonceId", paramString2);
-      localIntent.putExtra("key_from_user_name", paramString1);
-      localIntent.putExtra("tab_type", 5);
-      localIntent.putExtra("key_detail_comment_scene", 42);
-      localIntent.putExtra("is_from_ad", true);
-      localIntent.putExtra("key_extra_info", paramString4);
-      localIntent.putExtra("key_comment_scene", 37);
-      if (!localIntent.hasExtra("key_context_id")) {
-        ((ak)h.ag(ak.class)).fillContextIdToIntent(4, 4, 42, localIntent);
-      }
-      ((ak)h.ag(ak.class)).enterFinderShareFeedUI(paramContext, localIntent);
-      Log.i("FinderAdJumpHelper", "doJumpFinderFeedsDetailUI, adInfoExtra=" + paramString4 + ", objectNonceId=" + paramString2 + ", finderUsername=" + paramString1 + ", exportId=" + paramString3);
-      AppMethodBeat.o(228006);
-      return true;
-    }
-    catch (Throwable paramIntent)
-    {
-      Log.e("FinderAdJumpHelper", "doJumpFinderFeedsDetailUI exp=" + paramIntent.toString());
-      AppMethodBeat.o(228006);
-    }
-    return false;
-  }
-  
-  public static boolean a(ADXml paramADXml, ADInfo paramADInfo)
-  {
-    return (paramADXml != null) && (paramADXml.adFinderInfo != null) && (paramADInfo != null) && (paramADInfo.adActionType == 9);
-  }
-  
-  public static int aeJ(int paramInt)
-  {
-    int i = 4;
-    switch (paramInt)
-    {
-    default: 
-      i = 0;
-    case 1: 
-    case 4: 
-      return i;
-    case 2: 
-      return 6;
-    }
-    return 3;
-  }
-  
-  public static String an(String paramString1, String paramString2, int paramInt)
-  {
-    AppMethodBeat.i(228022);
-    try
-    {
-      paramString1 = Mc(paramString1);
-      JSONObject localJSONObject1 = new JSONObject();
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("uxinfo", Util.nullAsNil(paramString1));
-      localJSONObject2.put("snsid", paramString2);
-      localJSONObject2.put("scene", paramInt);
-      localJSONObject1.put("sns_ad", localJSONObject2);
-      paramString1 = localJSONObject1.toString();
-      Log.d("FinderAdJumpHelper", "makeAdInfoExtra, ret=".concat(String.valueOf(paramString1)));
-      AppMethodBeat.o(228022);
-      return paramString1;
-    }
-    catch (Exception paramString1)
-    {
-      Log.e("FinderAdJumpHelper", "makeAdInfoExtra, exp=" + paramString1.toString());
-      AppMethodBeat.o(228022);
-    }
-    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.d.l
  * JD-Core Version:    0.7.0.1
  */

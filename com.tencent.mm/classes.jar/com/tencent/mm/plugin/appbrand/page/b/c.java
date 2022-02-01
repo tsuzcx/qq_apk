@@ -2,167 +2,154 @@ package com.tencent.mm.plugin.appbrand.page.b;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.luggage.wxa.a.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.page.u;
 import com.tencent.mm.plugin.appbrand.page.x;
 import com.tencent.mm.plugin.appbrand.widget.dialog.b;
-import com.tencent.mm.plugin.appbrand.widget.dialog.j;
+import com.tencent.mm.plugin.appbrand.widget.dialog.n;
+import com.tencent.mm.plugin.appbrand.widget.dialog.r;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.g.b.p;
+import com.tencent.mm.sdk.system.AndroidContextUtil;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/page/navigation/BaseAppBrandPageConfirmNavigateBackInterceptor;", "T", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "Lcom/tencent/mm/plugin/appbrand/page/navigation/IAppBrandPageNavigateBackInterceptor;", "()V", "getTypePageNavigateBackInterceptor", "Lcom/tencent/mm/plugin/appbrand/page/navigation/TypePageNavigateBackInterceptor;", "intercept", "", "runtime", "scene", "", "continueNavigateBack", "Ljava/lang/Runnable;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;Ljava/lang/String;Ljava/lang/Runnable;)Z", "onClickDialogLeaveButton", "", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;)V", "onClickDialogStayButton", "onCustomIntercept", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;Ljava/lang/String;)Z", "onInterceptionDialogShown", "priority", "Lcom/tencent/mm/plugin/appbrand/page/navigation/IAppBrandPageNavigateBackInterceptor$Priority;", "Companion", "luggage-wxa-app_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/page/navigation/BaseAppBrandPageConfirmNavigateBackInterceptor;", "T", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "Lcom/tencent/mm/plugin/appbrand/page/navigation/IAppBrandPageNavigateBackInterceptor;", "()V", "getTypePageNavigateBackInterceptor", "Lcom/tencent/mm/plugin/appbrand/page/navigation/TypePageNavigateBackInterceptor;", "intercept", "", "runtime", "scene", "", "continueNavigateBack", "Ljava/lang/Runnable;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;Ljava/lang/String;Ljava/lang/Runnable;)Z", "onClickDialogLeaveButton", "", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;)V", "onClickDialogStayButton", "onCustomIntercept", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;Ljava/lang/String;)Z", "onInterceptionDialogShown", "priority", "Lcom/tencent/mm/plugin/appbrand/page/navigation/IAppBrandPageNavigateBackInterceptor$Priority;", "Companion", "luggage-wxa-app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class c<T extends AppBrandRuntime>
   implements e<T>
 {
-  public static final c.a qxL;
+  public static final c.a tCP;
   
   static
   {
-    AppMethodBeat.i(246623);
-    qxL = new c.a((byte)0);
-    AppMethodBeat.o(246623);
+    AppMethodBeat.i(325108);
+    tCP = new c.a((byte)0);
+    AppMethodBeat.o(325108);
   }
   
-  public final boolean a(final T paramT, String paramString, final Runnable paramRunnable)
+  private static final void a(c paramc, AppBrandRuntime paramAppBrandRuntime, b paramb, DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(246618);
-    p.k(paramT, "runtime");
-    p.k(paramString, "scene");
-    Object localObject1 = paramT.bBX();
-    p.j(localObject1, "runtime.pageContainer");
-    localObject1 = ((x)localObject1).getCurrentPage();
-    if (localObject1 != null) {}
-    for (localObject1 = ((u)localObject1).a(i.qxY); localObject1 == null; localObject1 = null)
+    AppMethodBeat.i(325102);
+    s.u(paramc, "this$0");
+    s.u(paramAppBrandRuntime, "$runtime");
+    s.u(paramb, "$dialog");
+    Log.i("MicroMsg.BaseAppBrandPageNavigateBackInterceptor", "keep staying current page");
+    paramc.ax(paramAppBrandRuntime);
+    paramb.dismiss();
+    AppMethodBeat.o(325102);
+  }
+  
+  private static final void a(c paramc, Runnable paramRunnable, AppBrandRuntime paramAppBrandRuntime, b paramb, DialogInterface paramDialogInterface, int paramInt)
+  {
+    AppMethodBeat.i(325095);
+    s.u(paramc, "this$0");
+    s.u(paramAppBrandRuntime, "$runtime");
+    s.u(paramb, "$dialog");
+    if (paramRunnable != null) {
+      paramRunnable.run();
+    }
+    Log.i("MicroMsg.BaseAppBrandPageNavigateBackInterceptor", "dialog confirm to navigate back");
+    paramc.ay(paramAppBrandRuntime);
+    paramb.dismiss();
+    AppMethodBeat.o(325095);
+  }
+  
+  public final boolean a(T paramT, String paramString, Runnable paramRunnable)
+  {
+    AppMethodBeat.i(325127);
+    s.u(paramT, "runtime");
+    s.u(paramString, "scene");
+    Object localObject = paramT.getPageContainer().getCurrentPage();
+    if (localObject == null) {}
+    for (localObject = null; localObject == null; localObject = ((u)localObject).a(i.tCY))
     {
       Log.i("MicroMsg.BaseAppBrandPageNavigateBackInterceptor", "navigateBackInterceptionInfo is null");
-      AppMethodBeat.o(246618);
+      AppMethodBeat.o(325127);
       return false;
     }
-    if (!((g)localObject1).alT(paramString))
+    if (!((g)localObject).afc(paramString))
     {
       Log.i("MicroMsg.BaseAppBrandPageNavigateBackInterceptor", "scene:[" + paramString + "] disable");
-      AppMethodBeat.o(246618);
+      AppMethodBeat.o(325127);
       return false;
     }
-    Object localObject2 = paramT.bBX();
-    p.j(localObject2, "runtime.pageContainer");
-    if (((x)localObject2).getPageCount() <= 1)
+    if (paramT.getPageContainer().getPageCount() <= 1)
     {
       Log.i("MicroMsg.BaseAppBrandPageNavigateBackInterceptor", "leave current wxa, can't intercept");
-      AppMethodBeat.o(246618);
+      AppMethodBeat.o(325127);
       return false;
     }
     if (!m(paramT, paramString))
     {
       Log.i("MicroMsg.BaseAppBrandPageNavigateBackInterceptor", "custom intercept return false");
-      AppMethodBeat.o(246618);
+      AppMethodBeat.o(325127);
       return false;
     }
     Log.i("MicroMsg.BaseAppBrandPageNavigateBackInterceptor", "show navigate back interception dialog");
-    localObject2 = new b((Context)paramT.getContext());
-    if (Util.isNullOrNil(((g)localObject1).qxT)) {}
-    for (paramString = "";; paramString = ((g)localObject1).qxT)
+    b localb = new b((Context)AndroidContextUtil.castActivityOrNull(paramT.mContext));
+    if (Util.isNullOrNil(((g)localObject).tCT)) {}
+    for (paramString = "";; paramString = ((g)localObject).tCT)
     {
-      ((b)localObject2).setMessage((CharSequence)paramString);
-      ((b)localObject2).setCanceledOnTouchOutside(false);
-      ((b)localObject2).setCancelable(false);
-      ((b)localObject2).a(a.g.appbrand_navigate_back_confirm_dialog_leave_btn, (DialogInterface.OnClickListener)new b(this, paramRunnable, paramT, (b)localObject2));
-      ((b)localObject2).b(a.g.appbrand_navigate_back_confirm_dialog_stay_btn, (DialogInterface.OnClickListener)new c(this, paramT, (b)localObject2));
-      paramString = paramT.getDialogContainer();
+      localb.setMessage((CharSequence)paramString);
+      localb.setCanceledOnTouchOutside(false);
+      localb.setCancelable(false);
+      localb.a(a.g.appbrand_navigate_back_confirm_dialog_leave_btn, new c..ExternalSyntheticLambda1(this, paramRunnable, paramT, localb));
+      localb.b(a.g.appbrand_navigate_back_confirm_dialog_stay_btn, new c..ExternalSyntheticLambda0(this, paramT, localb));
+      paramString = paramT.pmu;
       if (paramString != null) {
-        paramString.a((j)localObject2);
+        paramString.b((n)localb);
       }
-      ai(paramT);
-      AppMethodBeat.o(246618);
+      aw(paramT);
+      AppMethodBeat.o(325127);
       return true;
     }
   }
   
-  protected void ai(T paramT)
+  protected void aw(T paramT)
   {
-    AppMethodBeat.i(246620);
-    p.k(paramT, "runtime");
-    AppMethodBeat.o(246620);
+    AppMethodBeat.i(325132);
+    s.u(paramT, "runtime");
+    AppMethodBeat.o(325132);
   }
   
-  protected void aj(T paramT)
+  protected void ax(T paramT)
   {
-    AppMethodBeat.i(246621);
-    p.k(paramT, "runtime");
-    AppMethodBeat.o(246621);
+    AppMethodBeat.i(325136);
+    s.u(paramT, "runtime");
+    AppMethodBeat.o(325136);
   }
   
-  protected void ak(T paramT)
+  protected void ay(T paramT)
   {
-    AppMethodBeat.i(246622);
-    p.k(paramT, "runtime");
-    AppMethodBeat.o(246622);
+    AppMethodBeat.i(325138);
+    s.u(paramT, "runtime");
+    AppMethodBeat.o(325138);
   }
   
-  public final e.a cfG()
+  public final e.a cGt()
   {
-    return (e.a)e.a.b.qxS;
+    return (e.a)e.a.b.tCS;
   }
   
-  public final i cfH()
+  public final i cGu()
   {
-    return i.qxY;
+    return i.tCY;
   }
   
   protected boolean m(T paramT, String paramString)
   {
-    AppMethodBeat.i(246619);
-    p.k(paramT, "runtime");
-    p.k(paramString, "scene");
-    AppMethodBeat.o(246619);
+    AppMethodBeat.i(325131);
+    s.u(paramT, "runtime");
+    s.u(paramString, "scene");
+    AppMethodBeat.o(325131);
     return true;
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"})
-  static final class b
-    implements DialogInterface.OnClickListener
-  {
-    b(c paramc, Runnable paramRunnable, AppBrandRuntime paramAppBrandRuntime, b paramb) {}
-    
-    public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-    {
-      AppMethodBeat.i(246499);
-      paramDialogInterface = this.qxM;
-      Runnable localRunnable = paramRunnable;
-      if (localRunnable != null) {
-        localRunnable.run();
-      }
-      Log.i("MicroMsg.BaseAppBrandPageNavigateBackInterceptor", "dialog confirm to navigate back");
-      paramDialogInterface.ak(paramT);
-      this.qxP.dismiss();
-      AppMethodBeat.o(246499);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"})
-  static final class c
-    implements DialogInterface.OnClickListener
-  {
-    c(c paramc, AppBrandRuntime paramAppBrandRuntime, b paramb) {}
-    
-    public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-    {
-      AppMethodBeat.i(246616);
-      paramDialogInterface = this.qxM;
-      Log.i("MicroMsg.BaseAppBrandPageNavigateBackInterceptor", "keep staying current page");
-      paramDialogInterface.aj(paramT);
-      this.qxP.dismiss();
-      AppMethodBeat.o(246616);
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.b.c
  * JD-Core Version:    0.7.0.1
  */

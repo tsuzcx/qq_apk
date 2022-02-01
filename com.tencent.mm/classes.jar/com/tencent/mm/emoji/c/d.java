@@ -1,42 +1,40 @@
 package com.tencent.mm.emoji.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.ay;
-import kotlin.l;
+import com.tencent.mm.am.b;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.protocal.protobuf.god;
+import com.tencent.mm.protocal.protobuf.goe;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/report/EmojiDesignerReport;", "", "()V", "ActionBack", "", "ActionClick", "ActionDownload", "ActionExposure", "ActionViewPackDetail", "struct", "Lcom/tencent/mm/autogen/mmdata/rpt/EmoticonBoardReddotNotificationStruct;", "getStruct", "()Lcom/tencent/mm/autogen/mmdata/rpt/EmoticonBoardReddotNotificationStruct;", "report", "", "action", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/model/CgiGetEmotionDetail;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/GetEmotionDetailResponse;", "productId", "", "(Ljava/lang/String;)V", "getProductId", "()Ljava/lang/String;", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
+  extends b<goe>
 {
-  private static final ay jNs;
-  public static final d jNt;
+  private final String productId;
   
-  static
+  public d(String paramString)
   {
-    AppMethodBeat.i(183963);
-    jNt = new d();
-    jNs = new ay();
-    AppMethodBeat.o(183963);
-  }
-  
-  public static ay aDc()
-  {
-    return jNs;
-  }
-  
-  public static void rE(int paramInt)
-  {
-    AppMethodBeat.i(183962);
-    if (jNs.getIndex() > 0)
-    {
-      jNs.lm(paramInt);
-      jNs.bpa();
-    }
-    AppMethodBeat.o(183962);
+    AppMethodBeat.i(183954);
+    this.productId = paramString;
+    paramString = new god();
+    goe localgoe = new goe();
+    paramString.ProductID = this.productId;
+    paramString.crz = -1;
+    paramString.IJG = 3;
+    c.a locala = new c.a();
+    locala.otE = ((a)paramString);
+    locala.otF = ((a)localgoe);
+    locala.uri = "/cgi-bin/micromsg-bin/getemotiondetail";
+    locala.funcId = 412;
+    c(locala.bEF());
+    AppMethodBeat.o(183954);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.emoji.c.d
  * JD-Core Version:    0.7.0.1
  */

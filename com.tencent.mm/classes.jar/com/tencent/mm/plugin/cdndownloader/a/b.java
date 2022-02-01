@@ -11,7 +11,7 @@ public abstract interface b
 {
   public abstract void g(String paramString1, int paramInt1, int paramInt2, String paramString2);
   
-  public abstract void v(String paramString, long paramLong1, long paramLong2);
+  public abstract void z(String paramString, long paramLong1, long paramLong2);
   
   public static abstract class a
     extends Binder
@@ -22,12 +22,7 @@ public abstract interface b
       attachInterface(this, "com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadServiceCallback");
     }
     
-    public static b cMt()
-    {
-      return a.tLg;
-    }
-    
-    public static b y(IBinder paramIBinder)
+    public static b B(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -37,6 +32,11 @@ public abstract interface b
         return (b)localIInterface;
       }
       return new a(paramIBinder);
+    }
+    
+    public static b dpX()
+    {
+      return a.wOv;
     }
     
     public IBinder asBinder()
@@ -60,7 +60,7 @@ public abstract interface b
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadServiceCallback");
-      v(paramParcel1.readString(), paramParcel1.readLong(), paramParcel1.readLong());
+      z(paramParcel1.readString(), paramParcel1.readLong(), paramParcel1.readLong());
       paramParcel2.writeNoException();
       return true;
     }
@@ -68,7 +68,7 @@ public abstract interface b
     static final class a
       implements b
     {
-      public static b tLg;
+      public static b wOv;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -93,9 +93,9 @@ public abstract interface b
           localParcel1.writeInt(paramInt1);
           localParcel1.writeInt(paramInt2);
           localParcel1.writeString(paramString2);
-          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (b.a.cMt() != null))
+          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (b.a.dpX() != null))
           {
-            b.a.cMt().g(paramString1, paramInt1, paramInt2, paramString2);
+            b.a.dpX().g(paramString1, paramInt1, paramInt2, paramString2);
             return;
           }
           localParcel2.readException();
@@ -109,7 +109,7 @@ public abstract interface b
         }
       }
       
-      public final void v(String paramString, long paramLong1, long paramLong2)
+      public final void z(String paramString, long paramLong1, long paramLong2)
       {
         AppMethodBeat.i(120705);
         Parcel localParcel1 = Parcel.obtain();
@@ -120,9 +120,9 @@ public abstract interface b
           localParcel1.writeString(paramString);
           localParcel1.writeLong(paramLong1);
           localParcel1.writeLong(paramLong2);
-          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (b.a.cMt() != null))
+          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (b.a.dpX() != null))
           {
-            b.a.cMt().v(paramString, paramLong1, paramLong2);
+            b.a.dpX().z(paramString, paramLong1, paramLong2);
             return;
           }
           localParcel2.readException();

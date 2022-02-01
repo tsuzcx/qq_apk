@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.collect;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.be;
-import com.tencent.mm.plugin.collect.a.a;
+import com.tencent.mm.plugin.collect.app.a;
 import com.tencent.mm.pluginsdk.c.c;
 import com.tencent.mm.pluginsdk.c.d;
 import com.tencent.mm.pluginsdk.n;

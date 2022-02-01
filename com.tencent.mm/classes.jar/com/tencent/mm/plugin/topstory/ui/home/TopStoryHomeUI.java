@@ -1,30 +1,30 @@
 package com.tencent.mm.plugin.topstory.ui.home;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.topstory.ui.c.e;
+import com.tencent.mm.plugin.secdata.ui.MMSecDataActivity;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.w;
+import com.tencent.mm.ui.component.UIComponent;
+import com.tencent.mm.ui.y;
 import com.tencent.xweb.WebView.PreInitCallback;
-import com.tencent.xweb.WebView.c;
+import com.tencent.xweb.WebView.WebViewKind;
+import java.util.HashSet;
 
 @com.tencent.mm.ui.widget.pulldown.c(0)
 public class TopStoryHomeUI
-  extends MMActivity
+  extends MMSecDataActivity
 {
-  private b MWZ;
+  private b TJB;
   
   public TopStoryHomeUI()
   {
     AppMethodBeat.i(125906);
-    this.MWZ = new b(this, true);
+    this.TJB = new b(this, true);
     AppMethodBeat.o(125906);
   }
   
@@ -50,22 +50,25 @@ public class TopStoryHomeUI
   
   public int getLayoutId()
   {
-    return c.e.top_story_home_ui;
+    AppMethodBeat.i(271761);
+    int i = b.getLayoutId();
+    AppMethodBeat.o(271761);
+    return i;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(125917);
-    this.MWZ.onActivityResult(paramInt1, paramInt2, paramIntent);
+    this.TJB.onActivityResult(paramInt1, paramInt2, paramIntent);
     AppMethodBeat.o(125917);
   }
   
   public void onBackPressed()
   {
     AppMethodBeat.i(125914);
-    b localb = this.MWZ;
-    if (localb.MXl) {
-      localb.gql();
+    b localb = this.TJB;
+    if (localb.TJM) {
+      localb.hNj();
     }
     for (int i = 0;; i = 1)
     {
@@ -92,33 +95,33 @@ public class TopStoryHomeUI
     Log.i("MicroMsg.TopStory.TopStoryHomeUI", "use TopStoryHomeUI");
     if (!BuildInfo.IS_ARM64)
     {
-      WebView.c localc = WebView.c.aabm;
-      com.tencent.mm.xwebutil.c.a(localc, new WebView.PreInitCallback()
+      WebView.WebViewKind localWebViewKind = WebView.WebViewKind.aifI;
+      com.tencent.mm.xwebutil.c.a(localWebViewKind, new WebView.PreInitCallback()
       {
-        public final void bEj()
+        public final void aDm()
         {
-          AppMethodBeat.i(202976);
+          AppMethodBeat.i(271743);
           Log.i("MicroMsg.TopStory.TopStoryHomeUI", "onCoreInitFailed");
-          AppMethodBeat.o(202976);
+          AppMethodBeat.o(271743);
         }
         
         public final void onCoreInitFinished()
         {
-          AppMethodBeat.i(202973);
+          AppMethodBeat.i(271741);
           Log.i("MicroMsg.TopStory.TopStoryHomeUI", "onCoreInitFinished");
-          AppMethodBeat.o(202973);
+          AppMethodBeat.o(271741);
         }
       });
-      Log.i("MicroMsg.TopStory.TopStoryHomeUI", "Start To Load WebView %s", new Object[] { localc.name() });
+      Log.i("MicroMsg.TopStory.TopStoryHomeUI", "Start To Load WebView %s", new Object[] { localWebViewKind.name() });
     }
-    this.MWZ.onCreate(paramBundle);
+    this.TJB.onCreate(paramBundle);
     AppMethodBeat.o(125907);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(125911);
-    this.MWZ.onDestroy();
+    this.TJB.onDestroy();
     super.onDestroy();
     AppMethodBeat.o(125911);
   }
@@ -126,7 +129,7 @@ public class TopStoryHomeUI
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(125908);
-    if (this.MWZ.ajx(paramInt))
+    if (this.TJB.aoP(paramInt))
     {
       AppMethodBeat.o(125908);
       return true;
@@ -139,7 +142,7 @@ public class TopStoryHomeUI
   public void onNewIntent(Intent paramIntent)
   {
     AppMethodBeat.i(125912);
-    this.MWZ.onNewIntent(paramIntent);
+    this.TJB.onNewIntent(paramIntent);
     super.onNewIntent(paramIntent);
     AppMethodBeat.o(125912);
   }
@@ -147,7 +150,7 @@ public class TopStoryHomeUI
   public void onPause()
   {
     AppMethodBeat.i(125910);
-    this.MWZ.onPause();
+    this.TJB.onPause();
     super.onPause();
     AppMethodBeat.o(125910);
   }
@@ -156,7 +159,7 @@ public class TopStoryHomeUI
   {
     AppMethodBeat.i(125909);
     super.onResume();
-    this.MWZ.onResume();
+    this.TJB.onResume();
     AppMethodBeat.o(125909);
   }
   
@@ -164,7 +167,7 @@ public class TopStoryHomeUI
   {
     AppMethodBeat.i(125913);
     super.onSaveInstanceState(paramBundle);
-    this.MWZ.onSaveInstanceState(paramBundle);
+    this.TJB.onSaveInstanceState(paramBundle);
     AppMethodBeat.o(125913);
   }
   
@@ -172,6 +175,14 @@ public class TopStoryHomeUI
   {
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
+  }
+  
+  public void superImportUIComponents(HashSet<Class<? extends UIComponent>> paramHashSet)
+  {
+    AppMethodBeat.i(271778);
+    super.superImportUIComponents(paramHashSet);
+    paramHashSet.add(com.tencent.mm.plugin.fav.ui.a.c.class);
+    AppMethodBeat.o(271778);
   }
 }
 

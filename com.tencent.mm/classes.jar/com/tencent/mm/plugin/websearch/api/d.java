@@ -6,15 +6,15 @@ public abstract interface d
   
   public abstract void a(WidgetData paramWidgetData, String paramString, int paramInt1, int paramInt2);
   
-  public abstract void biJ(String paramString);
+  public abstract void bir(String paramString);
   
-  public abstract void biK(String paramString);
+  public abstract void bis(String paramString);
   
-  public abstract void gQs();
+  public abstract void i(int paramInt1, int paramInt2, String paramString1, String paramString2);
   
-  public abstract void h(int paramInt1, int paramInt2, String paramString1, String paramString2);
+  public abstract void ipJ();
   
-  public abstract void mf(String paramString1, String paramString2);
+  public abstract void nR(String paramString1, String paramString2);
   
   public abstract void onDestroy();
   
@@ -22,7 +22,7 @@ public abstract interface d
   
   public abstract void onResume();
   
-  public abstract void s(String paramString1, String paramString2, int paramInt1, int paramInt2);
+  public abstract void w(String paramString1, String paramString2, int paramInt1, int paramInt2);
 }
 
 

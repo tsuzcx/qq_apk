@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="vertical" android:id="@id/bf7" android:paddingLeft="@dimen/ct" android:paddingTop="@dimen/ct" android:paddingRight="@dimen/ct" android:layout_width="360.0dip" android:layout_height="wrap_content">
-        <RelativeLayout android:orientation="horizontal" android:background="@drawable/ib" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/i_" android:textColor="@color/a2x" android:ellipsize="end" android:id="@id/a6w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/aiv" android:singleLine="true" android:layout_centerVertical="true" />
-            <Button android:enabled="false" android:id="@id/g3k" android:text="@string/x_" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/ow" />
-        </RelativeLayout>
-        <com.tencent.mm.ui.widget.happybubble.LabelsView android:id="@id/ih5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_marginBottom="@dimen/ct" android:minHeight="25.0dip" app:labelBackground="@drawable/a9j" app:labelTextColor="@drawable/a9k" app:labelTextHeight="jr2" app:labelTextPaddingBottom="@dimen/k5" app:labelTextPaddingLeft="@dimen/r" app:labelTextPaddingRight="@dimen/r" app:labelTextPaddingTop="@dimen/k5" app:labelTextSize="@dimen/hc" app:labelTextWidth="jr2" app:lineMargin="@dimen/c5" app:selectType="k" app:wordMargin="@dimen/c5" />
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/m2" android:paddingRight="@dimen/m2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/jj" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/jb" />
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/adp" android:background="@drawable/h6" android:paddingLeft="28.0dip" android:paddingRight="28.0dip" android:paddingBottom="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="174.0dip">
+            <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/j7" android:textColor="@color/BW_0_Alpha_0_9" android:ellipsize="end" android:id="@id/aek" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:maxLines="4" android:lineSpacingExtra="5.0dip" />
+            <TextView android:textSize="@dimen/j7" android:textColor="@color/Link" android:id="@id/ael" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/g" android:text="@string/ap3" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

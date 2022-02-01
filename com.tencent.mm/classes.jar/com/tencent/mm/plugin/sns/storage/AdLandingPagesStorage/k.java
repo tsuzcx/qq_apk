@@ -1,93 +1,202 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage;
 
+import android.graphics.Bitmap;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.data.t;
+import com.tencent.mm.loader.i.b;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MD5Util;
 import com.tencent.mm.sdk.platformtools.Util;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import org.json.JSONArray;
+import com.tencent.mm.vfs.y;
 
 public final class k
 {
-  public String KdZ;
-  public int Knp;
-  public int KyU;
-  public int KyV;
-  public int KyW;
-  public int KyX;
-  public int KyY;
-  public int KyZ;
-  private String Kza;
-  public String Kzb;
-  public JSONArray Kzc;
-  public long enterTime;
-  public String extra;
-  public String fLp;
-  public int favCount;
-  public int iQS;
-  public int jJH;
-  public String owd;
-  public int uQm;
-  public String uxInfo;
-  public int wGu;
-  public int wGv;
-  
-  public k()
+  public static void a(String paramString1, String paramString2, boolean paramBoolean, int paramInt, g.a parama)
   {
-    AppMethodBeat.i(97392);
-    this.extra = "";
-    this.Kzc = new JSONArray();
-    AppMethodBeat.o(97392);
+    AppMethodBeat.i(97327);
+    Log.i("MicroMsg.AdLandingPagesDownloadResourceHelper", "downloadSightForAdLandingPages, url=" + paramString2 + ", adId=" + paramString1);
+    f.a(paramString2, mD(paramString1, paramString2), paramBoolean, paramInt, 0, parama);
+    AppMethodBeat.o(97327);
   }
   
-  public final String fSu()
+  private static void a(String paramString1, String paramString2, boolean paramBoolean, g.a parama)
   {
-    AppMethodBeat.i(97393);
-    this.Kza = this.Kzc.toString();
-    Log.d("MicroMsg.AdLandingPagesReportInfo", "componentsStatStr:%s", new Object[] { this.Kza });
-    if (!Util.isNullOrNil(this.Kza)) {}
+    AppMethodBeat.i(306757);
+    Log.i("MicroMsg.AdLandingPagesDownloadResourceHelper", "start download img for " + paramString2 + " for adid:" + paramString1);
+    f.a(paramString2, mC(paramString1, paramString2), paramBoolean, 41, 0, parama);
+    AppMethodBeat.o(306757);
+  }
+  
+  public static void a(String paramString, boolean paramBoolean, g.a parama)
+  {
+    AppMethodBeat.i(306753);
+    a("adId", paramString, paramBoolean, parama);
+    AppMethodBeat.o(306753);
+  }
+  
+  public static String aZH(String paramString)
+  {
+    AppMethodBeat.i(306737);
+    paramString = hkC() + mF("adId", paramString);
+    AppMethodBeat.o(306737);
+    return paramString;
+  }
+  
+  public static void b(String paramString1, String paramString2, g.a parama)
+  {
+    AppMethodBeat.i(306758);
+    if ((Util.isNullOrNil(paramString2)) || (Util.isNullOrNil(paramString1)))
+    {
+      parama.gZN();
+      AppMethodBeat.o(306758);
+      return;
+    }
+    c(paramString1, paramString2, parama);
+    AppMethodBeat.o(306758);
+  }
+  
+  public static void c(String paramString1, String paramString2, g.a parama)
+  {
+    AppMethodBeat.i(97326);
+    if ((Util.isNullOrNil(paramString2)) || (Util.isNullOrNil(paramString1)))
+    {
+      parama.gZN();
+      AppMethodBeat.o(97326);
+      return;
+    }
+    Log.i("MicroMsg.AdLandingPagesDownloadResourceHelper", "start download new img for " + paramString2 + " for adid:" + paramString1);
+    f.a(paramString2, hkC(), mF(paramString1, paramString2), 0, parama);
+    AppMethodBeat.o(97326);
+  }
+  
+  public static void d(String paramString1, String paramString2, g.a parama)
+  {
+    AppMethodBeat.i(306763);
+    if ((Util.isNullOrNil(paramString2)) || (Util.isNullOrNil(paramString1)))
+    {
+      parama.gZN();
+      AppMethodBeat.o(306763);
+      return;
+    }
+    Log.i("MicroMsg.AdLandingPagesDownloadResourceHelper", "downloadSightForAdLandingPagesByCdn, url=" + paramString2 + ", adId=" + paramString1);
+    f.a(paramString2, hkC(), mG(paramString1, paramString2), 1, parama);
+    AppMethodBeat.o(306763);
+  }
+  
+  public static String hkC()
+  {
+    AppMethodBeat.i(97328);
+    String str = b.bmz() + "sns_ad_landingpages/";
+    AppMethodBeat.o(97328);
+    return str;
+  }
+  
+  public static String mC(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(97318);
+    paramString1 = hkC() + mF(paramString1, paramString2);
+    AppMethodBeat.o(97318);
+    return paramString1;
+  }
+  
+  public static String mD(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(97319);
+    y.bDX(hkC());
+    paramString2 = MD5Util.getMD5String(paramString2);
+    paramString1 = hkC() + paramString1 + "_sight_" + paramString2;
+    AppMethodBeat.o(97319);
+    return paramString1;
+  }
+  
+  public static String mE(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(306741);
+    String str = hkC();
+    y.bDX(str);
+    paramString2 = MD5Util.getMD5String(paramString2);
+    paramString1 = str + paramString1 + "_pag_" + paramString2;
+    AppMethodBeat.o(306741);
+    return paramString1;
+  }
+  
+  public static String mF(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(97320);
+    paramString2 = MD5Util.getMD5String(paramString2);
+    paramString1 = paramString1 + "_img_" + paramString2;
+    AppMethodBeat.o(97320);
+    return paramString1;
+  }
+  
+  private static String mG(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(306749);
+    paramString2 = MD5Util.getMD5String(paramString2);
+    paramString1 = paramString1 + "_sight_" + paramString2;
+    AppMethodBeat.o(306749);
+    return paramString1;
+  }
+  
+  public static Bitmap mH(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(97321);
+    if ((Util.isNullOrNil(paramString2)) || (Util.isNullOrNil(paramString1)))
+    {
+      AppMethodBeat.o(97321);
+      return null;
+    }
     try
     {
-      this.Kza = URLEncoder.encode(this.Kza, "UTF-8");
-      long l1 = 0L;
-      try
+      paramString1 = mC(paramString1, paramString2);
+      if ((!TextUtils.isEmpty(paramString1)) && (y.ZC(paramString1)))
       {
-        long l2 = t.aZs(this.fLp);
-        l1 = l2;
+        paramString1 = BitmapUtil.decodeFile(paramString1);
+        AppMethodBeat.o(97321);
+        return paramString1;
       }
-      catch (Exception localException)
+    }
+    catch (Exception paramString1)
+    {
+      Log.e("MicroMsg.AdLandingPagesDownloadResourceHelper", "%s", new Object[] { Util.stackTraceToString(paramString1) });
+      AppMethodBeat.o(97321);
+    }
+    return null;
+  }
+  
+  public static String mI(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(306752);
+    if ((Util.isNullOrNil(paramString2)) || (Util.isNullOrNil(paramString1)))
+    {
+      AppMethodBeat.o(306752);
+      return "";
+    }
+    try
+    {
+      paramString1 = mC(paramString1, paramString2);
+      if (!TextUtils.isEmpty(paramString1))
       {
-        for (;;)
+        boolean bool = y.ZC(paramString1);
+        if (bool)
         {
-          StringBuilder localStringBuilder;
-          String str1;
-          Log.e("AdLandingPagesReportInfo", "", new Object[] { localException });
-          continue;
-          String str2 = this.KdZ;
+          AppMethodBeat.o(306752);
+          return paramString1;
         }
       }
-      localStringBuilder = new StringBuilder().append(t.Qu(l1)).append(",").append(this.uxInfo).append(",").append(this.jJH).append(",").append(this.iQS).append(",").append(this.uQm).append(",").append(this.KyU).append(",").append(this.KyV).append(",").append(this.KyW).append(",").append(this.KyX).append(",").append(this.KyY).append(",").append(this.KyZ).append(",").append(this.wGv).append(",").append(this.wGu).append(",").append(this.favCount).append(",").append(this.Kza).append(",").append(this.enterTime).append(",").append(this.Kzb).append(",");
-      if (this.KdZ == null)
-      {
-        str1 = "";
-        str1 = str1 + "," + this.extra + "," + this.Knp + "," + this.owd;
-        AppMethodBeat.o(97393);
-        return str1;
-      }
     }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    catch (Exception paramString1)
     {
-      for (;;)
-      {
-        Log.e("MicroMsg.AdLandingPagesReportInfo", "not support encode " + localUnsupportedEncodingException.toString());
-      }
+      Log.e("MicroMsg.AdLandingPagesDownloadResourceHelper", "%s", new Object[] { Util.stackTraceToString(paramString1) });
+      AppMethodBeat.o(306752);
     }
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.k
  * JD-Core Version:    0.7.0.1
  */

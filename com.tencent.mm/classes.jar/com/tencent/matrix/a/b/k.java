@@ -1,264 +1,210 @@
 package com.tencent.matrix.a.b;
 
-import android.os.SystemClock;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.util.NoSuchElementException;
 
-public final class k
+final class k
 {
-  public static void I(List<?> paramList)
+  private boolean eSe = true;
+  private final byte[] eTS;
+  private RandomAccessFile eTT;
+  char eTU;
+  private char eTV;
+  private boolean eTW = false;
+  private int ebW;
+  private final String mPath;
+  private int mPosition = -1;
+  
+  k(String paramString, byte[] paramArrayOfByte)
   {
-    if (paramList == null) {}
-    int j;
-    int i;
-    do
-    {
-      return;
-      j = paramList.size();
-      i = j / 2;
-      j -= 1;
-    } while (i >= j);
-    paramList.subList(i, j).clear();
+    this.mPath = paramString;
+    this.eTS = paramArrayOfByte;
   }
   
-  public static c a(List<? extends a> paramList, long paramLong, k.a.a parama)
+  public final k axy()
   {
-    paramList = new ArrayList(paramList);
-    if (!paramList.isEmpty())
+    this.eSe = true;
+    if (this.eTT != null) {}
+    try
     {
-      parama = parama.eT("CURR_STAMP");
-      if (parama.cVW - ((a)paramList.get(0)).cVW > 10L) {
-        paramList.add(0, parama);
-      }
+      this.eTT.seek(0L);
+      if (this.eTT != null) {}
     }
-    Object localObject1 = new HashMap();
-    long l1 = 0L;
-    long l2 = -9223372036854775808L;
-    Object localObject2;
-    if (paramLong <= 0L)
+    catch (IOException localIOException1)
     {
-      localObject2 = paramList.iterator();
-      l3 = -9223372036854775808L;
-      l4 = l2;
       for (;;)
       {
-        l2 = l1;
-        if (!((Iterator)localObject2).hasNext()) {
-          break;
-        }
-        localObject3 = (a)((Iterator)localObject2).next();
-        l2 = l1;
-        if (l4 != -9223372036854775808L)
+        try
         {
-          l2 = l1;
-          if (l4 < ((a)localObject3).cVW) {
-            break;
-          }
-          l4 -= ((a)localObject3).cVW;
-          l2 = l1 + l4;
-          parama = (b)((Map)localObject1).get(((a)localObject3).key);
-          paramList = parama;
-          if (parama == null)
+          this.eTT = new RandomAccessFile(this.mPath, "r");
+          if (this.eSe)
           {
-            paramList = new b();
-            ((Map)localObject1).put(((a)localObject3).key, paramList);
+            this.mPosition = -1;
+            this.ebW = 0;
+            this.eTU = '\000';
+            this.eTV = '\000';
+            this.eTW = false;
           }
-          paramList.cXU = (l4 + paramList.cXU);
-          l1 = paramList.cXV;
-          paramList.cXV = (l3 - ((a)localObject3).cXT + l1);
+          return this;
         }
-        l4 = ((a)localObject3).cVW;
-        l3 = ((a)localObject3).cXT;
-        l1 = l2;
+        catch (IOException localIOException2)
+        {
+          this.eSe = false;
+          close();
+          throw new l.c("RAF err: " + localIOException2.getMessage());
+        }
+        localIOException1 = localIOException1;
+        close();
       }
     }
-    Object localObject3 = paramList.iterator();
-    long l3 = -9223372036854775808L;
-    long l4 = l2;
+  }
+  
+  public final long axz()
+  {
+    long l2 = 1L;
+    long l1 = 0L;
+    int i = 1;
+    if (hasNext())
+    {
+      next();
+      if (Character.isDigit(this.eTU)) {
+        l1 = this.eTU - '0' + 10L * l1;
+      }
+      for (;;)
+      {
+        i = 0;
+        break;
+        if (i == 0) {
+          break label79;
+        }
+        if (this.eTU != '-') {
+          break label69;
+        }
+        l2 = -1L;
+      }
+      label69:
+      throw new a("Couldn't read number!");
+      label79:
+      bh();
+    }
+    if (i != 0) {
+      throw new a("Couldn't read number because the file ended!");
+    }
+    return l2 * l1;
+  }
+  
+  final void bh()
+  {
+    if (this.eTW) {
+      throw new a("Can only rewind one step!");
+    }
+    this.mPosition -= 1;
+    this.eTU = this.eTV;
+    this.eTW = true;
+  }
+  
+  /* Error */
+  public final void close()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 44	com/tencent/matrix/a/b/k:eTT	Ljava/io/RandomAccessFile;
+    //   4: ifnull +15 -> 19
+    //   7: aload_0
+    //   8: getfield 44	com/tencent/matrix/a/b/k:eTT	Ljava/io/RandomAccessFile;
+    //   11: invokevirtual 115	java/io/RandomAccessFile:close	()V
+    //   14: aload_0
+    //   15: aconst_null
+    //   16: putfield 44	com/tencent/matrix/a/b/k:eTT	Ljava/io/RandomAccessFile;
+    //   19: return
+    //   20: astore_1
+    //   21: aload_0
+    //   22: aconst_null
+    //   23: putfield 44	com/tencent/matrix/a/b/k:eTT	Ljava/io/RandomAccessFile;
+    //   26: return
+    //   27: astore_1
+    //   28: aload_0
+    //   29: aconst_null
+    //   30: putfield 44	com/tencent/matrix/a/b/k:eTT	Ljava/io/RandomAccessFile;
+    //   33: aload_1
+    //   34: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	35	0	this	k
+    //   20	1	1	localIOException	IOException
+    //   27	7	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   7	14	20	java/io/IOException
+    //   7	14	27	finally
+  }
+  
+  protected final void finalize()
+  {
+    close();
+  }
+  
+  public final boolean hasNext()
+  {
     for (;;)
     {
-      l2 = l1;
-      if (((Iterator)localObject3).hasNext())
+      if ((!this.eSe) || (this.eTT == null) || (this.mPosition > this.ebW - 1)) {
+        return false;
+      }
+      if (this.mPosition < this.ebW - 1) {
+        return true;
+      }
+      try
       {
-        localObject2 = (a)((Iterator)localObject3).next();
-        l2 = l1;
-        if (l4 == -9223372036854775808L) {
-          break label564;
-        }
-        l2 = l1;
-        if (l4 >= ((a)localObject2).cVW)
-        {
-          l4 -= ((a)localObject2).cVW;
-          if (l1 + l4 < paramLong) {
-            break label481;
-          }
-          long l5 = paramLong - l1;
-          l2 = l1 + l5;
-          parama = (b)((Map)localObject1).get(((a)localObject2).key);
-          paramList = parama;
-          if (parama == null)
-          {
-            paramList = new b();
-            ((Map)localObject1).put(((a)localObject2).key, paramList);
-          }
-          paramList.cXU += l5;
-          float f = (float)paramList.cXV;
-          paramList.cXV = (((float)(l3 - ((a)localObject2).cXT) * ((float)l5 / (float)l4) + f));
-        }
+        this.ebW = this.eTT.read(this.eTS);
+        this.mPosition = -1;
       }
-      paramList = new c();
-      if (l2 > 0L) {
-        break;
-      }
-      paramList.cWl = false;
-      return paramList;
-      label481:
-      l2 = l1 + l4;
-      parama = (b)((Map)localObject1).get(((a)localObject2).key);
-      paramList = parama;
-      if (parama == null)
+      catch (IOException localIOException)
       {
-        paramList = new b();
-        ((Map)localObject1).put(((a)localObject2).key, paramList);
+        this.eSe = false;
+        close();
       }
-      paramList.cXU = (l4 + paramList.cXU);
-      l1 = paramList.cXV;
-      paramList.cXV = (l3 - ((a)localObject2).cXT + l1);
-      label564:
-      l4 = ((a)localObject2).cVW;
-      l3 = ((a)localObject2).cXT;
-      l1 = l2;
-    }
-    if (paramLong > l2) {
-      paramList.cWl = false;
-    }
-    paramList.cXW = l2;
-    parama = new ArrayList();
-    localObject1 = ((Map)localObject1).entrySet().iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject3 = (Map.Entry)((Iterator)localObject1).next();
-      localObject2 = (String)((Map.Entry)localObject3).getKey();
-      localObject3 = (b)((Map.Entry)localObject3).getValue();
-      localObject2 = new k.c.a((String)localObject2, p(((b)localObject3).cXU, l2));
-      ((k.c.a)localObject2).cXY = ((b)localObject3).cXV;
-      parama.add(localObject2);
-    }
-    Collections.sort(parama, new Comparator() {});
-    paramList.cXX = parama;
-    return paramList;
-  }
-  
-  private static int p(long paramLong1, long paramLong2)
-  {
-    paramLong1 = Math.round(paramLong1 / paramLong2 * 100.0D);
-    if (paramLong1 >= 100L) {
-      return 100;
-    }
-    if (paramLong1 <= 0L) {
-      return 0;
-    }
-    return (int)paramLong1;
-  }
-  
-  public static final class a
-  {
-    public final long cVW;
-    public final long cXT;
-    public final String key;
-    
-    public a(String paramString)
-    {
-      this.key = paramString;
-      this.cVW = SystemClock.uptimeMillis();
-      this.cXT = System.currentTimeMillis();
-    }
-    
-    public a(String paramString, long paramLong)
-    {
-      this.key = paramString;
-      this.cVW = paramLong;
-      this.cXT = System.currentTimeMillis();
-    }
-    
-    public static abstract interface a
-    {
-      public abstract k.a eT(String paramString);
     }
   }
   
-  static final class b
+  final void next()
   {
-    long cXU;
-    long cXV;
+    if (!hasNext()) {
+      throw new NoSuchElementException();
+    }
+    this.mPosition += 1;
+    this.eTV = this.eTU;
+    this.eTU = ((char)this.eTS[this.mPosition]);
+    this.eTW = false;
   }
   
-  public static final class c
+  public final void s(char paramChar)
   {
-    public boolean cWl = true;
-    public long cXW;
-    public List<a> cXX = Collections.emptyList();
-    
-    public static c WG()
+    int i = 0;
+    while (hasNext())
     {
-      c localc = new c();
-      localc.cWl = false;
-      return localc;
-    }
-    
-    public final a WH()
-    {
-      if (this.cXX.size() > 0) {
-        return (a)this.cXX.get(0);
+      next();
+      if (this.eTU == paramChar) {
+        i = 1;
+      } else if (i != 0) {
+        bh();
       }
-      return null;
     }
-    
-    public final a WI()
+  }
+  
+  static final class a
+    extends RuntimeException
+  {
+    a(String paramString)
     {
-      if (this.cXX.size() >= 2) {
-        return (a)this.cXX.get(1);
-      }
-      return null;
-    }
-    
-    public final int fd(String paramString)
-    {
-      Iterator localIterator = this.cXX.iterator();
-      while (localIterator.hasNext())
-      {
-        a locala = (a)localIterator.next();
-        if ((locala.key != null) && (locala.key.equals(paramString))) {
-          return locala.ratio;
-        }
-      }
-      return 0;
-    }
-    
-    public static final class a
-    {
-      public long cXY = 0L;
-      public final String key;
-      public final int ratio;
-      
-      public a(String paramString, int paramInt)
-      {
-        this.key = paramString;
-        this.ratio = paramInt;
-      }
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.a.b.k
  * JD-Core Version:    0.7.0.1
  */

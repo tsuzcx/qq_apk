@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.luckymoney.appbrand.ui.prepare;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -22,14 +21,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.luckymoney.appbrand.a.g;
 import com.tencent.mm.plugin.luckymoney.appbrand.a.h.a;
 import com.tencent.mm.plugin.luckymoney.appbrand.ui.WxaLuckyMoneyBaseUI;
 import com.tencent.mm.plugin.luckymoney.appbrand.ui.WxaLuckyMoneyMoneyInputView;
 import com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyNumInputView;
 import com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyTextInputView;
-import com.tencent.mm.plugin.wallet_core.ui.m;
-import com.tencent.mm.plugin.wallet_core.ui.m.a;
+import com.tencent.mm.plugin.luckymoney.ui.h;
+import com.tencent.mm.plugin.wallet_core.ui.n;
+import com.tencent.mm.plugin.wallet_core.ui.n.a;
 import com.tencent.mm.plugin.wxpay.a.e;
 import com.tencent.mm.plugin.wxpay.a.f;
 import com.tencent.mm.plugin.wxpay.a.g;
@@ -39,59 +39,62 @@ import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatHosts;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.aa;
-import com.tencent.mm.ui.base.w;
+import com.tencent.mm.ui.ac;
+import com.tencent.mm.ui.base.aa;
+import com.tencent.mm.ui.base.k;
 import com.tencent.mm.ui.widget.MMEditText;
+import com.tencent.mm.ui.widget.picker.b.b;
 import com.tencent.mm.wallet_core.ui.MMScrollView;
+import com.tencent.mm.wallet_core.ui.i;
 import com.tenpay.android.wechat.MyKeyboardWindow;
 import java.util.ArrayList;
 
 @com.tencent.mm.ui.base.a(19)
 public class WxaLuckyMoneyPrepareUI
   extends WxaLuckyMoneyBaseUI
-  implements c, com.tencent.mm.plugin.luckymoney.ui.h
+  implements c, h
 {
-  private static final String EuI;
-  private a EuH;
-  private LuckyMoneyNumInputView EuJ;
-  private WxaLuckyMoneyMoneyInputView EuK;
-  private LuckyMoneyTextInputView EuL;
-  private Button EuM;
-  private LinearLayout EuN;
-  private TextView EuO;
-  private MMScrollView EuP;
-  private TextView EuQ;
-  private int EuR;
-  private com.tencent.mm.plugin.luckymoney.ui.c EuS;
-  private h.a Eub;
+  private static final String Knp;
+  private h.a KmI;
+  private a Kno;
+  private LuckyMoneyNumInputView Knq;
+  private WxaLuckyMoneyMoneyInputView Knr;
+  private LuckyMoneyTextInputView Kns;
+  private Button Knt;
+  private LinearLayout Knu;
+  private TextView Knv;
+  private MMScrollView Knw;
+  private TextView Knx;
+  private int Kny;
+  private com.tencent.mm.plugin.luckymoney.ui.c Knz;
   protected View mKBLayout;
   protected MyKeyboardWindow mKeyboard;
-  private TextView qCM;
-  private TextView tZC;
+  private TextView tHK;
+  private TextView xcT;
   
   static
   {
-    AppMethodBeat.i(277394);
-    EuI = "https://" + WeChatHosts.domainString(a.i.host_kf_qq_com) + "/touch/scene_product.html?scene_id=kf7";
-    AppMethodBeat.o(277394);
+    AppMethodBeat.i(284099);
+    Knp = "https://" + WeChatHosts.domainString(a.i.host_kf_qq_com) + "/touch/scene_product.html?scene_id=kf7";
+    AppMethodBeat.o(284099);
   }
   
   public WxaLuckyMoneyPrepareUI()
   {
     AppMethodBeat.i(64965);
-    this.EuH = null;
-    this.Eub = h.a.EtD;
-    this.EuJ = null;
-    this.EuK = null;
-    this.EuL = null;
-    this.tZC = null;
-    this.EuM = null;
-    this.EuR = 0;
-    this.EuS = new com.tencent.mm.plugin.luckymoney.ui.c();
+    this.Kno = null;
+    this.KmI = h.a.Kmk;
+    this.Knq = null;
+    this.Knr = null;
+    this.Kns = null;
+    this.xcT = null;
+    this.Knt = null;
+    this.Kny = 0;
+    this.Knz = new com.tencent.mm.plugin.luckymoney.ui.c();
     AppMethodBeat.o(64965);
   }
   
-  protected final void ao(final View paramView, final int paramInt)
+  protected final void aF(final View paramView, final int paramInt)
   {
     AppMethodBeat.i(64971);
     this.mKeyboard = ((MyKeyboardWindow)findViewById(a.f.tenpay_num_keyboard));
@@ -103,7 +106,7 @@ public class WxaLuckyMoneyPrepareUI
       AppMethodBeat.o(64971);
       return;
     }
-    com.tencent.mm.wallet_core.ui.g.setNoSystemInputOnEditText(localEditText);
+    i.setNoSystemInputOnEditText(localEditText);
     localEditText.setOnFocusChangeListener(new View.OnFocusChangeListener()
     {
       public final void onFocusChange(final View paramAnonymousView, boolean paramAnonymousBoolean)
@@ -147,9 +150,9 @@ public class WxaLuckyMoneyPrepareUI
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(64952);
-        b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/luckymoney/appbrand/ui/prepare/WxaLuckyMoneyPrepareUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/luckymoney/appbrand/ui/prepare/WxaLuckyMoneyPrepareUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         if ((!WxaLuckyMoneyPrepareUI.this.mKBLayout.isShown()) && (!this.val$isShowSysKB))
         {
           WxaLuckyMoneyPrepareUI.this.mKBLayout.setVisibility(0);
@@ -176,9 +179,9 @@ public class WxaLuckyMoneyPrepareUI
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(64954);
-          b localb = new b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/luckymoney/appbrand/ui/prepare/WxaLuckyMoneyPrepareUI$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/luckymoney/appbrand/ui/prepare/WxaLuckyMoneyPrepareUI$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           if ((WxaLuckyMoneyPrepareUI.this.mKBLayout.isShown()) && (!this.val$isShowSysKB)) {
             if (WxaLuckyMoneyPrepareUI.this.mKeyboard != null) {
               WxaLuckyMoneyPrepareUI.this.mKeyboard.setInputEditText(localEditText);
@@ -221,9 +224,9 @@ public class WxaLuckyMoneyPrepareUI
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(64955);
-        b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/luckymoney/appbrand/ui/prepare/WxaLuckyMoneyPrepareUI$17", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/luckymoney/appbrand/ui/prepare/WxaLuckyMoneyPrepareUI$17", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         WxaLuckyMoneyPrepareUI.this.hideTenpayKB();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/luckymoney/appbrand/ui/prepare/WxaLuckyMoneyPrepareUI$17", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(64955);
@@ -232,14 +235,25 @@ public class WxaLuckyMoneyPrepareUI
     AppMethodBeat.o(64971);
   }
   
-  public final MMActivity eOa()
+  public final void error(String paramString)
+  {
+    AppMethodBeat.i(64967);
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = getString(a.i.wallet_unknown_err);
+    }
+    k.a(this, str, null, false, new WxaLuckyMoneyPrepareUI.1(this));
+    AppMethodBeat.o(64967);
+  }
+  
+  public final MMActivity fWt()
   {
     return this;
   }
   
-  public final void eOb() {}
+  public final void fWu() {}
   
-  public final void eOd()
+  public final void fWx()
   {
     AppMethodBeat.i(64974);
     double d4 = 0.0D;
@@ -247,45 +261,45 @@ public class WxaLuckyMoneyPrepareUI
     double d2 = d3;
     double d1 = d4;
     int i;
-    if (this.EuK.eOc() != 3)
+    if (this.Knr.fWv() != 3)
     {
       d2 = d3;
       d1 = d4;
-      if (this.EuJ.eOc() != 3)
+      if (this.Knq.fWv() != 3)
       {
-        i = this.EuJ.getInput();
-        d4 = this.EuK.getInput();
-        if (this.Eub != h.a.EtE) {
-          break label164;
+        i = this.Knq.getInput();
+        d4 = this.Knr.getInput();
+        if (this.KmI != h.a.Kml) {
+          break label166;
         }
         d1 = d4 * i;
-        d2 = this.EuK.getInput();
+        d2 = this.Knr.getInput();
       }
     }
-    boolean bool1 = this.EuS.ePM();
-    Object localObject = com.tencent.mm.plugin.luckymoney.appbrand.a.g.Ett;
+    boolean bool1 = this.Knz.fYs();
+    Object localObject = g.Kma;
     if (bool1)
     {
       Log.i("MicroMsg.WxaLuckyMoneyPrepareUI", "has error");
-      this.EuM.setClickable(false);
-      this.EuM.setEnabled(false);
+      this.Knt.setClickable(false);
+      this.Knt.setEnabled(false);
     }
     for (;;)
     {
-      localObject = ((com.tencent.mm.plugin.luckymoney.appbrand.a.g)localObject).Etz;
+      localObject = ((g)localObject).Kmg;
       if (!Util.isNullOrNil((String)localObject)) {
-        break label778;
+        break label780;
       }
-      this.tZC.setText(com.tencent.mm.wallet_core.ui.g.F(d1));
+      this.xcT.setText(i.X(d1));
       AppMethodBeat.o(64974);
       return;
-      label164:
+      label166:
       d2 = d3;
       d1 = d4;
       if (i <= 0) {
         break;
       }
-      d2 = this.EuK.getInput() / i;
+      d2 = this.Knr.getInput() / i;
       d1 = d4;
       break;
       boolean bool2 = false;
@@ -297,41 +311,41 @@ public class WxaLuckyMoneyPrepareUI
       {
         if (bool1)
         {
-          this.EuM.setClickable(false);
-          this.EuM.setEnabled(false);
+          this.Knt.setClickable(false);
+          this.Knt.setEnabled(false);
           break;
-          if ((d1 > ((com.tencent.mm.plugin.luckymoney.appbrand.a.g)localObject).Etx) && (((com.tencent.mm.plugin.luckymoney.appbrand.a.g)localObject).Etx > 0.0D))
+          if ((d1 > ((g)localObject).Kme) && (((g)localObject).Kme > 0.0D))
           {
-            this.EuS.amo(getString(a.i.lucky_money_total_amount_max_limit_tips, new Object[] { Math.round(((com.tencent.mm.plugin.luckymoney.appbrand.a.g)localObject).Etx), Util.nullAs(((com.tencent.mm.plugin.luckymoney.appbrand.a.g)localObject).EtA, "") }));
+            this.Knz.afy(getString(a.i.lucky_money_total_amount_max_limit_tips, new Object[] { Math.round(((g)localObject).Kme), Util.nullAs(((g)localObject).Kmh, "") }));
             bool1 = true;
           }
           else if (d2 > 0.0D)
           {
             Log.i("MicroMsg.WxaLuckyMoneyPrepareUI", "perAmount ".concat(String.valueOf(d2)));
-            if (this.Eub == h.a.EtE)
+            if (this.KmI == h.a.Kml)
             {
               bool1 = bool2;
-              if (d2 > ((com.tencent.mm.plugin.luckymoney.appbrand.a.g)localObject).Etv)
+              if (d2 > ((g)localObject).Kmc)
               {
                 bool1 = bool2;
-                if (((com.tencent.mm.plugin.luckymoney.appbrand.a.g)localObject).Etv > 0.0D)
+                if (((g)localObject).Kmc > 0.0D)
                 {
-                  this.EuS.amo(getString(a.i.lucky_money_per_amount_max_limit_tips, new Object[] { Math.round(((com.tencent.mm.plugin.luckymoney.appbrand.a.g)localObject).Etv), Util.nullAs(((com.tencent.mm.plugin.luckymoney.appbrand.a.g)localObject).EtA, "") }));
+                  this.Knz.afy(getString(a.i.lucky_money_per_amount_max_limit_tips, new Object[] { Math.round(((g)localObject).Kmc), Util.nullAs(((g)localObject).Kmh, "") }));
                   bool1 = true;
                 }
               }
-              label439:
+              label441:
               Log.i("MicroMsg.WxaLuckyMoneyPrepareUI", "furtherCheckHasErr:" + bool1 + " for max value");
               bool2 = bool1;
               if (!bool1)
               {
-                if (this.Eub != h.a.EtE) {
-                  break label689;
+                if (this.KmI != h.a.Kml) {
+                  break label691;
                 }
                 bool2 = bool1;
-                if (d2 < ((com.tencent.mm.plugin.luckymoney.appbrand.a.g)localObject).Etw)
+                if (d2 < ((g)localObject).Kmd)
                 {
-                  this.EuS.amo(getString(a.i.lucky_money_per_amount_min_limit_tips, new Object[] { com.tencent.mm.wallet_core.ui.g.formatMoney2f(((com.tencent.mm.plugin.luckymoney.appbrand.a.g)localObject).Etw), Util.nullAs(((com.tencent.mm.plugin.luckymoney.appbrand.a.g)localObject).EtA, "") }));
+                  this.Knz.afy(getString(a.i.lucky_money_per_amount_min_limit_tips, new Object[] { i.formatMoney2f(((g)localObject).Kmd), Util.nullAs(((g)localObject).Kmh, "") }));
                   bool2 = true;
                 }
               }
@@ -342,48 +356,37 @@ public class WxaLuckyMoneyPrepareUI
               bool1 = bool2;
               break;
               bool1 = bool2;
-              if (d2 <= ((com.tencent.mm.plugin.luckymoney.appbrand.a.g)localObject).Ety) {
-                break label439;
+              if (d2 <= ((g)localObject).Kmf) {
+                break label441;
               }
               bool1 = bool2;
-              if (((com.tencent.mm.plugin.luckymoney.appbrand.a.g)localObject).Ety <= 0.0D) {
-                break label439;
+              if (((g)localObject).Kmf <= 0.0D) {
+                break label441;
               }
-              this.EuS.amo(getString(a.i.lucky_money_per_amount_max_limit_tips, new Object[] { Math.round(((com.tencent.mm.plugin.luckymoney.appbrand.a.g)localObject).Ety), Util.nullAs(((com.tencent.mm.plugin.luckymoney.appbrand.a.g)localObject).EtA, "") }));
+              this.Knz.afy(getString(a.i.lucky_money_per_amount_max_limit_tips, new Object[] { Math.round(((g)localObject).Kmf), Util.nullAs(((g)localObject).Kmh, "") }));
               bool1 = true;
-              this.EuJ.onError();
-              this.EuK.onError();
-              break label439;
-              label689:
+              this.Knq.atR();
+              this.Knr.atR();
+              break label441;
+              label691:
               bool2 = bool1;
               if (d2 < 0.01D)
               {
-                this.EuS.amo(getString(a.i.lucky_money_per_amount_min_limit_tips, new Object[] { "0.01", Util.nullAs(((com.tencent.mm.plugin.luckymoney.appbrand.a.g)localObject).EtA, "") }));
+                this.Knz.afy(getString(a.i.lucky_money_per_amount_min_limit_tips, new Object[] { "0.01", Util.nullAs(((g)localObject).Kmh, "") }));
                 bool2 = true;
-                this.EuJ.onError();
-                this.EuK.onError();
+                this.Knq.atR();
+                this.Knr.atR();
               }
             }
           }
         }
       }
-      this.EuM.setClickable(true);
-      this.EuM.setEnabled(true);
+      this.Knt.setClickable(true);
+      this.Knt.setEnabled(true);
     }
-    label778:
-    this.tZC.setText((String)localObject + com.tencent.mm.wallet_core.ui.g.formatMoney2f(d1));
+    label780:
+    this.xcT.setText((String)localObject + i.formatMoney2f(d1));
     AppMethodBeat.o(64974);
-  }
-  
-  public final void error(String paramString)
-  {
-    AppMethodBeat.i(64967);
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      str = getString(a.i.wallet_unknown_err);
-    }
-    com.tencent.mm.ui.base.h.a(this, str, null, false, new WxaLuckyMoneyPrepareUI.1(this));
-    AppMethodBeat.o(64967);
   }
   
   public int getLayoutId()
@@ -414,41 +417,41 @@ public class WxaLuckyMoneyPrepareUI
         return true;
       }
     });
-    this.EuL = ((LuckyMoneyTextInputView)findViewById(a.f.lucky_money_wish_et));
-    this.EuL.setHintText(getString(a.i.lucky_money_default_wish));
+    this.Kns = ((LuckyMoneyTextInputView)findViewById(a.f.lucky_money_wish_et));
+    this.Kns.setHintText(getString(a.i.lucky_money_default_wish));
     Object localObject1 = getIntent().getStringExtra("defaultWishingWord");
     Log.i("MicroMsg.WxaLuckyMoneyPrepareUI", "initView defaultWishingWord = %s", new Object[] { localObject1 });
     if (!Util.isNullOrNil((String)localObject1)) {
-      this.EuL.setHintText((String)localObject1);
+      this.Kns.setHintText((String)localObject1);
     }
-    this.EuM = ((Button)findViewById(a.f.lucky_money_prepare_btn));
+    this.Knt = ((Button)findViewById(a.f.lucky_money_prepare_btn));
     this.mKeyboard = ((MyKeyboardWindow)findViewById(a.f.tenpay_num_keyboard));
     this.mKBLayout = findViewById(a.f.tenpay_keyboard_layout);
-    this.qCM = ((TextView)findViewById(a.f.lucky_money_prepare_amount_tips));
-    this.EuJ = ((LuckyMoneyNumInputView)findViewById(a.f.lucky_money_num_et));
-    this.EuK = ((WxaLuckyMoneyMoneyInputView)findViewById(a.f.lucky_money_amount_et));
-    this.tZC = ((TextView)findViewById(a.f.lucky_money_prepare_total_amount));
-    this.EuP = ((MMScrollView)findViewById(a.f.lucky_money_sv));
-    this.EuQ = ((TextView)findViewById(a.f.lucky_money_prepare_notice_tips));
-    this.EuN = ((LinearLayout)findViewById(a.f.lucky_money_range_ll));
-    this.EuO = ((TextView)findViewById(a.f.lucky_money_range_result));
+    this.tHK = ((TextView)findViewById(a.f.lucky_money_prepare_amount_tips));
+    this.Knq = ((LuckyMoneyNumInputView)findViewById(a.f.lucky_money_num_et));
+    this.Knr = ((WxaLuckyMoneyMoneyInputView)findViewById(a.f.lucky_money_amount_et));
+    this.xcT = ((TextView)findViewById(a.f.lucky_money_prepare_total_amount));
+    this.Knw = ((MMScrollView)findViewById(a.f.lucky_money_sv));
+    this.Knx = ((TextView)findViewById(a.f.lucky_money_prepare_notice_tips));
+    this.Knu = ((LinearLayout)findViewById(a.f.lucky_money_range_ll));
+    this.Knv = ((TextView)findViewById(a.f.lucky_money_range_result));
     setMMTitle(a.i.lucky_money_to_send_title);
     Object localObject2;
     Object localObject3;
     Object localObject4;
-    if (this.Eub == h.a.EtD)
+    if (this.KmI == h.a.Kmk)
     {
-      this.EuK.setTitle(getString(a.i.lucky_money_total_amount_title));
-      this.EuK.setShowGroupIcon(true);
-      this.EuK.setOnInputValidChangerListener(this);
-      this.EuK.setHint(getString(a.i.lucky_money_money_hint));
-      this.EuJ.setOnInputValidChangerListener(this);
-      this.EuJ.setHint(getString(a.i.lucky_money_num_hint));
-      this.EuJ.setNum("");
-      this.EuL.setOnInputValidChangerListener(this);
-      localObject2 = (EditText)this.EuK.findViewById(a.f.lucky_money_et);
-      localObject3 = (EditText)this.EuJ.findViewById(a.f.lucky_money_et);
-      com.tencent.mm.wallet_core.ui.g.setNoSystemInputOnEditText((EditText)localObject2);
+      this.Knr.setTitle(getString(a.i.lucky_money_total_amount_title));
+      this.Knr.setShowGroupIcon(true);
+      this.Knr.setOnInputValidChangerListener(this);
+      this.Knr.setHint(getString(a.i.lucky_money_money_hint));
+      this.Knq.setOnInputValidChangerListener(this);
+      this.Knq.setHint(getString(a.i.lucky_money_num_hint));
+      this.Knq.setNum("");
+      this.Kns.setOnInputValidChangerListener(this);
+      localObject2 = (EditText)this.Knr.findViewById(a.f.lucky_money_et);
+      localObject3 = (EditText)this.Knq.findViewById(a.f.lucky_money_et);
+      i.setNoSystemInputOnEditText((EditText)localObject2);
       ((InputMethodManager)getContext().getSystemService("input_method")).showSoftInput((View)localObject2, 0);
       ((EditText)localObject2).addTextChangedListener(new WxaLuckyMoneyPrepareUI.17(this));
       ((EditText)localObject2).setOnClickListener(new View.OnClickListener()
@@ -456,13 +459,13 @@ public class WxaLuckyMoneyPrepareUI
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(64945);
-          b localb = new b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/luckymoney/appbrand/ui/prepare/WxaLuckyMoneyPrepareUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/luckymoney/appbrand/ui/prepare/WxaLuckyMoneyPrepareUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           this.val$hintTv.setOnClickListener(null);
-          this.EuU.setOnClickListener(null);
-          WxaLuckyMoneyPrepareUI.this.ao(WxaLuckyMoneyPrepareUI.b(WxaLuckyMoneyPrepareUI.this), 2);
-          WxaLuckyMoneyPrepareUI.this.ao(WxaLuckyMoneyPrepareUI.c(WxaLuckyMoneyPrepareUI.this), 0);
+          this.KnB.setOnClickListener(null);
+          WxaLuckyMoneyPrepareUI.this.aF(WxaLuckyMoneyPrepareUI.b(WxaLuckyMoneyPrepareUI.this), 2);
+          WxaLuckyMoneyPrepareUI.this.aF(WxaLuckyMoneyPrepareUI.c(WxaLuckyMoneyPrepareUI.this), 0);
           WxaLuckyMoneyPrepareUI.this.mKeyboard.setXMode(2);
           WxaLuckyMoneyPrepareUI.this.mKeyboard.setInputEditText((EditText)paramAnonymousView);
           WxaLuckyMoneyPrepareUI.this.mKBLayout.setVisibility(0);
@@ -471,20 +474,20 @@ public class WxaLuckyMoneyPrepareUI
         }
       });
       ((EditText)localObject2).requestFocus();
-      localObject4 = (TextView)this.EuK.findViewById(a.f.lucky_money_amount_unit_title);
+      localObject4 = (TextView)this.Knr.findViewById(a.f.lucky_money_amount_unit_title);
       if (localObject4 != null) {
         ((TextView)localObject4).setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(64946);
-            b localb = new b();
-            localb.bn(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/luckymoney/appbrand/ui/prepare/WxaLuckyMoneyPrepareUI$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+            localb.cH(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/luckymoney/appbrand/ui/prepare/WxaLuckyMoneyPrepareUI$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
             this.val$hintTv.setOnClickListener(null);
-            this.EuU.setOnClickListener(null);
-            WxaLuckyMoneyPrepareUI.this.ao(WxaLuckyMoneyPrepareUI.b(WxaLuckyMoneyPrepareUI.this), 2);
-            WxaLuckyMoneyPrepareUI.this.ao(WxaLuckyMoneyPrepareUI.c(WxaLuckyMoneyPrepareUI.this), 0);
+            this.KnB.setOnClickListener(null);
+            WxaLuckyMoneyPrepareUI.this.aF(WxaLuckyMoneyPrepareUI.b(WxaLuckyMoneyPrepareUI.this), 2);
+            WxaLuckyMoneyPrepareUI.this.aF(WxaLuckyMoneyPrepareUI.c(WxaLuckyMoneyPrepareUI.this), 0);
             WxaLuckyMoneyPrepareUI.this.mKeyboard.setXMode(2);
             WxaLuckyMoneyPrepareUI.this.mKeyboard.setInputEditText(this.val$hintTv);
             WxaLuckyMoneyPrepareUI.this.mKBLayout.setVisibility(0);
@@ -493,20 +496,20 @@ public class WxaLuckyMoneyPrepareUI
           }
         });
       }
-      com.tencent.mm.wallet_core.ui.g.setNoSystemInputOnEditText((EditText)localObject3);
+      i.setNoSystemInputOnEditText((EditText)localObject3);
       ((InputMethodManager)getContext().getSystemService("input_method")).showSoftInput((View)localObject3, 0);
       ((EditText)localObject3).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(64947);
-          b localb = new b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/luckymoney/appbrand/ui/prepare/WxaLuckyMoneyPrepareUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/luckymoney/appbrand/ui/prepare/WxaLuckyMoneyPrepareUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           this.val$hintTv.setOnClickListener(null);
-          this.EuU.setOnClickListener(null);
-          WxaLuckyMoneyPrepareUI.this.ao(WxaLuckyMoneyPrepareUI.b(WxaLuckyMoneyPrepareUI.this), 2);
-          WxaLuckyMoneyPrepareUI.this.ao(WxaLuckyMoneyPrepareUI.c(WxaLuckyMoneyPrepareUI.this), 0);
+          this.KnB.setOnClickListener(null);
+          WxaLuckyMoneyPrepareUI.this.aF(WxaLuckyMoneyPrepareUI.b(WxaLuckyMoneyPrepareUI.this), 2);
+          WxaLuckyMoneyPrepareUI.this.aF(WxaLuckyMoneyPrepareUI.c(WxaLuckyMoneyPrepareUI.this), 0);
           WxaLuckyMoneyPrepareUI.this.mKeyboard.setXMode(0);
           WxaLuckyMoneyPrepareUI.this.mKeyboard.setInputEditText((EditText)paramAnonymousView);
           WxaLuckyMoneyPrepareUI.this.mKBLayout.setVisibility(0);
@@ -514,88 +517,88 @@ public class WxaLuckyMoneyPrepareUI
           AppMethodBeat.o(64947);
         }
       });
-      ((MMEditText)this.EuL.findViewById(a.f.lucky_money_text)).setOnFocusChangeListener(new View.OnFocusChangeListener()
+      ((MMEditText)this.Kns.findViewById(a.f.lucky_money_text)).setOnFocusChangeListener(new View.OnFocusChangeListener()
       {
         public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(64948);
           this.val$hintTv.setOnClickListener(null);
-          this.EuU.setOnClickListener(null);
-          WxaLuckyMoneyPrepareUI.this.ao(WxaLuckyMoneyPrepareUI.b(WxaLuckyMoneyPrepareUI.this), 2);
-          WxaLuckyMoneyPrepareUI.this.ao(WxaLuckyMoneyPrepareUI.c(WxaLuckyMoneyPrepareUI.this), 0);
+          this.KnB.setOnClickListener(null);
+          WxaLuckyMoneyPrepareUI.this.aF(WxaLuckyMoneyPrepareUI.b(WxaLuckyMoneyPrepareUI.this), 2);
+          WxaLuckyMoneyPrepareUI.this.aF(WxaLuckyMoneyPrepareUI.c(WxaLuckyMoneyPrepareUI.this), 0);
           AppMethodBeat.o(64948);
         }
       });
-      localObject2 = com.tencent.mm.plugin.luckymoney.appbrand.a.g.Ett;
-      if (this.Eub != h.a.EtD) {
+      localObject2 = g.Kma;
+      if (this.KmI != h.a.Kmk) {
         break label1029;
       }
-      this.EuK.setMaxAmount(((com.tencent.mm.plugin.luckymoney.appbrand.a.g)localObject2).Etx);
+      this.Knr.setMaxAmount(((g)localObject2).Kme);
     }
     int i;
     for (;;)
     {
-      this.EuK.setMinAmount(((com.tencent.mm.plugin.luckymoney.appbrand.a.g)localObject2).Etw);
-      this.EuJ.setMaxNum(((com.tencent.mm.plugin.luckymoney.appbrand.a.g)localObject2).Etu);
-      localObject2 = h.a.EtD;
-      this.EuJ.setMinNum(1);
-      this.EuK.setMaxLen(12);
+      this.Knr.setMinAmount(((g)localObject2).Kmd);
+      this.Knq.setMaxNum(((g)localObject2).Kmb);
+      localObject2 = h.a.Kmk;
+      this.Knq.setMinNum(1);
+      this.Knr.setMaxLen(12);
       Object localObject5 = getString(a.i.lucky_money_f2f_random_tip_prefix);
       Object localObject6 = getString(a.i.lucky_money_group_tips_change_to_fixed);
       localObject2 = getString(a.i.lucky_money_f2f_fixed_tip_prefix);
       localObject3 = getString(a.i.lucky_money_group_tips_change_to_random);
-      localObject4 = new m(this);
+      localObject4 = new n(this);
       final SpannableString localSpannableString = new SpannableString((String)localObject5 + (String)localObject6);
       localSpannableString.setSpan(localObject4, ((String)localObject5).length(), ((String)localObject5).length() + ((String)localObject6).length(), 33);
       localObject5 = new SpannableString((String)localObject2 + (String)localObject3);
-      localObject6 = new m(this);
+      localObject6 = new n(this);
       ((SpannableString)localObject5).setSpan(localObject6, ((String)localObject2).length(), ((String)localObject2).length() + ((String)localObject3).length(), 33);
-      ((m)localObject4).OYN = new m.a()
+      ((n)localObject4).VPb = new n.a()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(64960);
           int i = WxaLuckyMoneyPrepareUI.c(WxaLuckyMoneyPrepareUI.this).getInput();
           double d = WxaLuckyMoneyPrepareUI.b(WxaLuckyMoneyPrepareUI.this).getInput();
-          WxaLuckyMoneyPrepareUI.a(WxaLuckyMoneyPrepareUI.this, h.a.EtE);
+          WxaLuckyMoneyPrepareUI.a(WxaLuckyMoneyPrepareUI.this, h.a.Kml);
           WxaLuckyMoneyPrepareUI.b(WxaLuckyMoneyPrepareUI.this).setType(WxaLuckyMoneyPrepareUI.e(WxaLuckyMoneyPrepareUI.this));
           WxaLuckyMoneyPrepareUI.b(WxaLuckyMoneyPrepareUI.this).setShowGroupIcon(false);
           WxaLuckyMoneyPrepareUI.b(WxaLuckyMoneyPrepareUI.this).setTitle(WxaLuckyMoneyPrepareUI.this.getString(a.i.lucky_money_unit_amount_title));
           if ((d > 0.0D) && (i > 0)) {
-            WxaLuckyMoneyPrepareUI.b(WxaLuckyMoneyPrepareUI.this).setAmount(com.tencent.mm.wallet_core.ui.g.formatMoney2f(d / i));
+            WxaLuckyMoneyPrepareUI.b(WxaLuckyMoneyPrepareUI.this).setAmount(i.formatMoney2f(d / i));
           }
-          WxaLuckyMoneyPrepareUI.b(WxaLuckyMoneyPrepareUI.this).setMaxAmount(com.tencent.mm.plugin.luckymoney.appbrand.a.g.Ett.Etv);
-          WxaLuckyMoneyPrepareUI.g(WxaLuckyMoneyPrepareUI.this).setText(this.EuY);
+          WxaLuckyMoneyPrepareUI.b(WxaLuckyMoneyPrepareUI.this).setMaxAmount(g.Kma.Kmc);
+          WxaLuckyMoneyPrepareUI.g(WxaLuckyMoneyPrepareUI.this).setText(this.KnF);
           AppMethodBeat.o(64960);
         }
       };
-      ((m)localObject6).OYN = new m.a()
+      ((n)localObject6).VPb = new n.a()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(64961);
           int i = WxaLuckyMoneyPrepareUI.c(WxaLuckyMoneyPrepareUI.this).getInput();
           double d = WxaLuckyMoneyPrepareUI.b(WxaLuckyMoneyPrepareUI.this).getInput();
-          WxaLuckyMoneyPrepareUI.a(WxaLuckyMoneyPrepareUI.this, h.a.EtD);
+          WxaLuckyMoneyPrepareUI.a(WxaLuckyMoneyPrepareUI.this, h.a.Kmk);
           WxaLuckyMoneyPrepareUI.b(WxaLuckyMoneyPrepareUI.this).setType(WxaLuckyMoneyPrepareUI.e(WxaLuckyMoneyPrepareUI.this));
-          WxaLuckyMoneyPrepareUI.b(WxaLuckyMoneyPrepareUI.this).setMaxAmount(com.tencent.mm.plugin.luckymoney.appbrand.a.g.Ett.Etx);
+          WxaLuckyMoneyPrepareUI.b(WxaLuckyMoneyPrepareUI.this).setMaxAmount(g.Kma.Kme);
           WxaLuckyMoneyPrepareUI.b(WxaLuckyMoneyPrepareUI.this).setTitle(WxaLuckyMoneyPrepareUI.this.getString(a.i.lucky_money_total_amount_title));
           WxaLuckyMoneyPrepareUI.b(WxaLuckyMoneyPrepareUI.this).setShowGroupIcon(true);
           if ((d > 0.0D) && (i > 0)) {
-            WxaLuckyMoneyPrepareUI.b(WxaLuckyMoneyPrepareUI.this).setAmount(com.tencent.mm.wallet_core.ui.g.formatMoney2f(d * i));
+            WxaLuckyMoneyPrepareUI.b(WxaLuckyMoneyPrepareUI.this).setAmount(i.formatMoney2f(d * i));
           }
           WxaLuckyMoneyPrepareUI.g(WxaLuckyMoneyPrepareUI.this).setText(localSpannableString);
           AppMethodBeat.o(64961);
         }
       };
-      this.qCM.setMovementMethod(LinkMovementMethod.getInstance());
-      this.qCM.setText(localSpannableString);
-      this.qCM.setVisibility(0);
-      this.EuM.setClickable(false);
-      this.EuM.setEnabled(false);
-      this.EuM.setOnClickListener(new aa()
+      this.tHK.setMovementMethod(LinkMovementMethod.getInstance());
+      this.tHK.setText(localSpannableString);
+      this.tHK.setVisibility(0);
+      this.Knt.setClickable(false);
+      this.Knt.setEnabled(false);
+      this.Knt.setOnClickListener(new ac()
       {
-        public final void cOw()
+        public final void dsb()
         {
           AppMethodBeat.i(64957);
           if (WxaLuckyMoneyPrepareUI.a(WxaLuckyMoneyPrepareUI.this) == null)
@@ -604,9 +607,9 @@ public class WxaLuckyMoneyPrepareUI
             AppMethodBeat.o(64957);
             return;
           }
-          if (WxaLuckyMoneyPrepareUI.b(WxaLuckyMoneyPrepareUI.this).eOc() != 0)
+          if (WxaLuckyMoneyPrepareUI.b(WxaLuckyMoneyPrepareUI.this).fWv() != 0)
           {
-            w.makeText(WxaLuckyMoneyPrepareUI.this.getContext(), a.i.wallet_balance_save_input_invalid, 0).show();
+            aa.makeText(WxaLuckyMoneyPrepareUI.this.getContext(), a.i.wallet_balance_save_input_invalid, 0).show();
             AppMethodBeat.o(64957);
             return;
           }
@@ -615,30 +618,30 @@ public class WxaLuckyMoneyPrepareUI
           String str2 = WxaLuckyMoneyPrepareUI.d(WxaLuckyMoneyPrepareUI.this).getInput();
           String str1 = str2;
           if (Util.isNullOrNil(str2)) {
-            if (Util.isNullOrNil(this.EuX)) {
+            if (Util.isNullOrNil(this.KnE)) {
               break label172;
             }
           }
           label172:
-          for (str1 = this.EuX; WxaLuckyMoneyPrepareUI.e(WxaLuckyMoneyPrepareUI.this) == h.a.EtD; str1 = WxaLuckyMoneyPrepareUI.this.getString(a.i.lucky_money_default_wish))
+          for (str1 = this.KnE; WxaLuckyMoneyPrepareUI.e(WxaLuckyMoneyPrepareUI.this) == h.a.Kmk; str1 = WxaLuckyMoneyPrepareUI.this.getString(a.i.lucky_money_default_wish))
           {
-            WxaLuckyMoneyPrepareUI.a(WxaLuckyMoneyPrepareUI.this).e((int)com.tencent.mm.wallet_core.ui.g.G(d), i, str1, WxaLuckyMoneyPrepareUI.f(WxaLuckyMoneyPrepareUI.this));
+            WxaLuckyMoneyPrepareUI.a(WxaLuckyMoneyPrepareUI.this).e((int)i.Y(d), i, str1, WxaLuckyMoneyPrepareUI.f(WxaLuckyMoneyPrepareUI.this));
             AppMethodBeat.o(64957);
             return;
           }
-          if (WxaLuckyMoneyPrepareUI.e(WxaLuckyMoneyPrepareUI.this) == h.a.EtE) {
-            WxaLuckyMoneyPrepareUI.a(WxaLuckyMoneyPrepareUI.this).f((int)com.tencent.mm.wallet_core.ui.g.G(d), i, str1, WxaLuckyMoneyPrepareUI.f(WxaLuckyMoneyPrepareUI.this));
+          if (WxaLuckyMoneyPrepareUI.e(WxaLuckyMoneyPrepareUI.this) == h.a.Kml) {
+            WxaLuckyMoneyPrepareUI.a(WxaLuckyMoneyPrepareUI.this).f((int)i.Y(d), i, str1, WxaLuckyMoneyPrepareUI.f(WxaLuckyMoneyPrepareUI.this));
           }
           AppMethodBeat.o(64957);
         }
       });
-      this.EuS.a(this.EuJ);
-      this.EuS.a(this.EuK);
-      this.EuS.a(this.EuL);
+      this.Knz.a(this.Knq);
+      this.Knz.a(this.Knr);
+      this.Knz.a(this.Kns);
       localObject1 = (TextView)findViewById(a.f.lucky_money_prepare_error_tips);
-      this.EuS.z((TextView)localObject1);
-      if (this.EuP != null) {
-        this.EuP.setOnTouchListener(new View.OnTouchListener()
+      this.Knz.A((TextView)localObject1);
+      if (this.Knw != null) {
+        this.Knw.setOnTouchListener(new View.OnTouchListener()
         {
           public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
           {
@@ -653,45 +656,72 @@ public class WxaLuckyMoneyPrepareUI
           }
         });
       }
-      this.EuK.setType(this.Eub);
+      this.Knr.setType(this.KmI);
       addIconOptionMenu(0, a.e.lucky_money_help_btn, new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
           AppMethodBeat.i(64959);
-          com.tencent.mm.wallet_core.ui.g.p(WxaLuckyMoneyPrepareUI.this.getContext(), WxaLuckyMoneyPrepareUI.bzf(), false);
+          i.p(WxaLuckyMoneyPrepareUI.this.getContext(), WxaLuckyMoneyPrepareUI.Knp, false);
           AppMethodBeat.o(64959);
           return true;
         }
       });
       i = getIntent().getIntExtra("range", 0);
       Log.i("MicroMsg.WxaLuckyMoneyPrepareUI", "initRange range = %d", new Object[] { Integer.valueOf(i) });
-      this.EuN.setVisibility(8);
+      this.Knu.setVisibility(8);
       if (i != 0) {
         break label1043;
       }
-      this.EuR = 0;
+      this.Kny = 0;
       AppMethodBeat.o(64968);
       return;
-      this.EuK.setTitle(getString(a.i.lucky_money_unit_amount_title));
-      this.EuK.setShowGroupIcon(false);
+      this.Knr.setTitle(getString(a.i.lucky_money_unit_amount_title));
+      this.Knr.setShowGroupIcon(false);
       break;
       label1029:
-      this.EuK.setMaxAmount(((com.tencent.mm.plugin.luckymoney.appbrand.a.g)localObject2).Etv);
+      this.Knr.setMaxAmount(((g)localObject2).Kmc);
     }
     label1043:
     if (i == 1)
     {
-      this.EuR = 1;
+      this.Kny = 1;
       AppMethodBeat.o(64968);
       return;
     }
     localObject1 = new ArrayList();
     ((ArrayList)localObject1).add(getString(a.i.wxa_lucky_money_range_friend));
     ((ArrayList)localObject1).add(getString(a.i.wxa_lucky_money_range_public));
-    this.EuN.setVisibility(0);
-    this.EuO.setText((CharSequence)((ArrayList)localObject1).get(this.EuR));
-    this.EuN.setOnClickListener(new WxaLuckyMoneyPrepareUI.16(this, (ArrayList)localObject1));
+    this.Knu.setVisibility(0);
+    this.Knv.setText((CharSequence)((ArrayList)localObject1).get(this.Kny));
+    this.Knu.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(final View paramAnonymousView)
+      {
+        AppMethodBeat.i(64963);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/luckymoney/appbrand/ui/prepare/WxaLuckyMoneyPrepareUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        paramAnonymousView = new com.tencent.mm.ui.widget.picker.b(WxaLuckyMoneyPrepareUI.this.getContext(), this.zOa);
+        paramAnonymousView.aFq(WxaLuckyMoneyPrepareUI.f(WxaLuckyMoneyPrepareUI.this));
+        paramAnonymousView.agkc = new b.b()
+        {
+          public final void onResult(boolean paramAnonymous2Boolean, Object paramAnonymous2Object1, Object paramAnonymous2Object2)
+          {
+            AppMethodBeat.i(64962);
+            paramAnonymousView.hide();
+            if (paramAnonymous2Boolean) {
+              WxaLuckyMoneyPrepareUI.h(WxaLuckyMoneyPrepareUI.this).setText((CharSequence)paramAnonymous2Object1);
+            }
+            WxaLuckyMoneyPrepareUI.a(WxaLuckyMoneyPrepareUI.this, paramAnonymousView.jIz());
+            AppMethodBeat.o(64962);
+          }
+        };
+        paramAnonymousView.show();
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/luckymoney/appbrand/ui/prepare/WxaLuckyMoneyPrepareUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(64963);
+      }
+    });
     AppMethodBeat.o(64968);
   }
   
@@ -708,8 +738,8 @@ public class WxaLuckyMoneyPrepareUI
     AppMethodBeat.i(64966);
     super.onCreate(paramBundle);
     initView();
-    this.EuH = new d();
-    this.EuH.d(this, getIntent());
+    this.Kno = new d();
+    this.Kno.d(this, getIntent());
     AppMethodBeat.o(64966);
   }
   
@@ -717,9 +747,9 @@ public class WxaLuckyMoneyPrepareUI
   {
     AppMethodBeat.i(64970);
     super.onDestroy();
-    this.EuS.clear();
-    if (this.EuH != null) {
-      this.EuH.onDestroy();
+    this.Knz.clear();
+    if (this.Kno != null) {
+      this.Kno.onDestroy();
     }
     AppMethodBeat.o(64970);
   }
@@ -746,7 +776,7 @@ public class WxaLuckyMoneyPrepareUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.appbrand.ui.prepare.WxaLuckyMoneyPrepareUI
  * JD-Core Version:    0.7.0.1
  */

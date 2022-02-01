@@ -9,9 +9,9 @@ public enum b$a
   static
   {
     AppMethodBeat.i(150979);
-    mck = new a("OP_Chatting", 0, 1);
-    mcl = new a("OP_Msg", 1, 2);
-    mcm = new a[] { mck, mcl };
+    oVf = new a("OP_Chatting", 0, 1);
+    oVg = new a("OP_Msg", 1, 2);
+    oVh = new a[] { oVf, oVg };
     AppMethodBeat.o(150979);
   }
   
@@ -22,7 +22,7 @@ public enum b$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelstat.b.a
  * JD-Core Version:    0.7.0.1
  */

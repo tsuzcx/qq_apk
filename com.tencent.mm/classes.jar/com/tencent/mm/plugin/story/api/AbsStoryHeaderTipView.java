@@ -17,11 +17,11 @@ public abstract class AbsStoryHeaderTipView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public abstract void fXM();
+  public abstract void hqh();
   
-  public abstract void gbm();
+  public abstract void huF();
   
-  public abstract void gbn();
+  public abstract void huG();
   
   public abstract void onCreateView();
   
@@ -31,7 +31,7 @@ public abstract class AbsStoryHeaderTipView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.story.api.AbsStoryHeaderTipView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,49 +1,50 @@
 package com.tencent.mm.plugin.handoff.b;
 
 import com.tencent.mm.plugin.handoff.model.HandOff;
-import kotlin.g;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 import org.xmlpull.v1.XmlPullParser;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/handoff/parser/HandOffParser;", "T", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "Lcom/tencent/mm/plugin/handoff/parser/BaseXmlContent;", "Lcom/tencent/mm/plugin/handoff/parser/IHandOffParser;", "()V", "handOff", "getHandOff", "()Lcom/tencent/mm/plugin/handoff/model/HandOff;", "handOff$delegate", "Lkotlin/Lazy;", "newHandOff", "parse", "", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "parseHandOff", "api-handoff_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/handoff/parser/HandOffParser;", "T", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "Lcom/tencent/mm/plugin/handoff/parser/BaseXmlContent;", "Lcom/tencent/mm/plugin/handoff/parser/IHandOffParser;", "()V", "handOff", "getHandOff", "()Lcom/tencent/mm/plugin/handoff/model/HandOff;", "handOff$delegate", "Lkotlin/Lazy;", "newHandOff", "parse", "", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "parseHandOff", "api-handoff_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class f<T extends HandOff>
   extends a
   implements i
 {
-  private final kotlin.f DrO = g.ar((kotlin.g.a.a)new a(this));
+  private final j Jlu = k.cm((kotlin.g.a.a)new a(this));
   
-  public final void c(XmlPullParser paramXmlPullParser)
+  public final void e(XmlPullParser paramXmlPullParser)
   {
-    p.k(paramXmlPullParser, "parser");
-    String str = d(paramXmlPullParser, "id");
-    long l = f(paramXmlPullParser, "createtime");
-    eBM().setId(str);
-    eBM().setCreateTime(l);
-    super.c(paramXmlPullParser);
+    s.u(paramXmlPullParser, "parser");
+    String str = e(paramXmlPullParser, "id");
+    long l = g(paramXmlPullParser, "createtime");
+    fJO().setId(str);
+    fJO().setCreateTime(l);
+    super.e(paramXmlPullParser);
   }
   
-  protected abstract T eBL();
+  protected abstract T fJN();
   
-  protected final T eBM()
+  protected final T fJO()
   {
-    return (HandOff)this.DrO.getValue();
+    return (HandOff)this.Jlu.getValue();
   }
   
-  public final HandOff f(XmlPullParser paramXmlPullParser)
+  public final HandOff h(XmlPullParser paramXmlPullParser)
   {
-    p.k(paramXmlPullParser, "parser");
-    c(paramXmlPullParser);
-    return eBM();
+    s.u(paramXmlPullParser, "parser");
+    e(paramXmlPullParser);
+    return fJO();
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "T", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "invoke", "()Lcom/tencent/mm/plugin/handoff/model/HandOff;"})
+  @Metadata(d1={""}, d2={"<anonymous>", "T", "Lcom/tencent/mm/plugin/handoff/model/HandOff;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    extends q
+    extends u
     implements kotlin.g.a.a<T>
   {
-    a(f paramf)
+    a(f<? extends T> paramf)
     {
       super();
     }
@@ -51,7 +52,7 @@ public abstract class f<T extends HandOff>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.handoff.b.f
  * JD-Core Version:    0.7.0.1
  */

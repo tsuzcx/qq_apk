@@ -29,6 +29,7 @@
     lazyLoadModels.push(new LazyLoadModel(that.NativeGlobal, 'HeapProfiler'));
     lazyLoadModels.push(new LazyLoadModel(that.NativeGlobal, 'Box2D'));
     lazyLoadModels.push(new LazyLoadModel(that.NativeGlobal, 'Phys3D'));
+    lazyLoadModels.push(new LazyLoadModel(that.NativeGlobal, 'ARSession'));
     lazyLoadModels.push(new LazyLoadModel(that.NativeGlobal, 'Profiler'));
 
     for (const model of lazyLoadModels) {

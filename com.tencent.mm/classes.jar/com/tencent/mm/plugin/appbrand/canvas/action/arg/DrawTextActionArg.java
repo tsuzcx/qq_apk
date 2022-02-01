@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.canvas.action.arg;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.g;
+import com.tencent.mm.plugin.appbrand.af.i;
 import java.util.Objects;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -72,10 +72,10 @@ public class DrawTextActionArg
     return i;
   }
   
-  public final void i(Parcel paramParcel)
+  public final void k(Parcel paramParcel)
   {
     AppMethodBeat.i(145030);
-    super.i(paramParcel);
+    super.k(paramParcel);
     this.text = paramParcel.readString();
     this.x = paramParcel.readFloat();
     this.y = paramParcel.readFloat();
@@ -89,9 +89,9 @@ public class DrawTextActionArg
     super.parse(paramJSONObject);
     paramJSONObject = paramJSONObject.optJSONArray("data");
     this.text = paramJSONObject.optString(0);
-    this.x = g.f(paramJSONObject, 1);
-    this.y = g.f(paramJSONObject, 2);
-    this.maxWidth = g.f(paramJSONObject, 3);
+    this.x = i.f(paramJSONObject, 1);
+    this.y = i.f(paramJSONObject, 2);
+    this.maxWidth = i.f(paramJSONObject, 3);
     AppMethodBeat.o(145031);
   }
   
@@ -108,7 +108,7 @@ public class DrawTextActionArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawTextActionArg
  * JD-Core Version:    0.7.0.1
  */

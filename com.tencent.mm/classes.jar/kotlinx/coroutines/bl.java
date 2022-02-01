@@ -1,37 +1,45 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
-import kotlinx.coroutines.internal.v;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"CLOSED_EMPTY", "Lkotlinx/coroutines/internal/Symbol;", "CLOSED_EMPTY$annotations", "()V", "DISPOSED_TASK", "DISPOSED_TASK$annotations", "MAX_DELAY_NS", "", "MAX_MS", "MS_TO_NS", "SCHEDULE_COMPLETED", "", "SCHEDULE_DISPOSED", "SCHEDULE_OK", "delayNanosToMillis", "timeNanos", "delayToNanos", "timeMillis", "Queue", "T", "Lkotlinx/coroutines/internal/LockFreeTaskQueueCore;", "kotlinx-coroutines-core"})
-public final class bl
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/Empty;", "Lkotlinx/coroutines/Incomplete;", "isActive", "", "(Z)V", "()Z", "list", "Lkotlinx/coroutines/NodeList;", "getList", "()Lkotlinx/coroutines/NodeList;", "toString", "", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+final class bl
+  implements bw
 {
-  private static final v abxj;
-  private static final v abxk;
+  final boolean isActive;
   
-  static
+  public bl(boolean paramBoolean)
   {
-    AppMethodBeat.i(204224);
-    abxj = new v("REMOVED_TASK");
-    abxk = new v("CLOSED_EMPTY");
-    AppMethodBeat.o(204224);
+    this.isActive = paramBoolean;
   }
   
-  public static final long XB(long paramLong)
+  public final boolean isActive()
   {
-    if (paramLong <= 0L) {
-      return 0L;
+    return this.isActive;
+  }
+  
+  public final cn kCj()
+  {
+    return null;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(117965);
+    StringBuilder localStringBuilder = new StringBuilder("Empty{");
+    if (this.isActive) {}
+    for (String str = "Active";; str = "New")
+    {
+      str = str + '}';
+      AppMethodBeat.o(117965);
+      return str;
     }
-    if (paramLong >= 9223372036854L) {
-      return 9223372036854775807L;
-    }
-    return 1000000L * paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.bl
  * JD-Core Version:    0.7.0.1
  */

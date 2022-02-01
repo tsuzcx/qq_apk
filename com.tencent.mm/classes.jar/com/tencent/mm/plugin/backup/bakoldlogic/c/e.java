@@ -1,47 +1,47 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.cd.b;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.protocal.ac;
-import com.tencent.mm.protocal.protobuf.bqa;
-import com.tencent.mm.protocal.protobuf.bqb;
-import com.tencent.mm.protocal.protobuf.eae;
+import com.tencent.mm.protocal.protobuf.cer;
+import com.tencent.mm.protocal.protobuf.ces;
+import com.tencent.mm.protocal.protobuf.gol;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class e
-  extends q
+  extends p
   implements m
 {
-  private i callback;
+  private h callback;
   private final String id;
-  public byte[] rUu;
-  private final d rr;
+  private final c rr;
+  public byte[] vfJ;
   
   public e(String paramString)
   {
     AppMethodBeat.i(21948);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new bqa();
-    ((d.a)localObject).lBV = new bqb();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/getbakchatkey";
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    ((d.a)localObject).funcId = 596;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (bqa)d.b.b(this.rr.lBR);
-    ((bqa)localObject).ID = paramString;
-    ((bqa)localObject).Tbu = ac.hpj().ver;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new cer();
+    ((c.a)localObject).otF = new ces();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/getbakchatkey";
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    ((c.a)localObject).funcId = 596;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (cer)c.b.b(this.rr.otB);
+    ((cer)localObject).vgy = paramString;
+    ((cer)localObject).aaoG = ac.iQe().ver;
     this.id = paramString;
-    Log.i("MicroMsg.NetSceneGetBakchatkey", "init id:%s, ver:0x%x", new Object[] { ((bqa)localObject).ID, Integer.valueOf(((bqa)localObject).Tbu) });
+    Log.i("MicroMsg.NetSceneGetBakchatkey", "init id:%s, ver:0x%x", new Object[] { ((cer)localObject).vgy, Integer.valueOf(((cer)localObject).aaoG) });
     AppMethodBeat.o(21948);
   }
   
@@ -52,10 +52,10 @@ public final class e
     AppMethodBeat.o(21949);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(21950);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(21950);
     return i;
@@ -72,16 +72,16 @@ public final class e
     Log.i("MicroMsg.NetSceneGetBakchatkey", "errType %d,  errCode %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      this.rUu = ((bqb)d.c.b(this.rr.lBS)).RMR.Tkb.UH;
+      this.vfJ = ((ces)c.c.b(this.rr.otC)).YKf.aaxD.Op;
       params = this.id;
-      if (this.rUu == null) {}
-      for (paramInt1 = 0;; paramInt1 = this.rUu.length)
+      if (this.vfJ == null) {}
+      for (paramInt1 = 0;; paramInt1 = this.vfJ.length)
       {
         Log.i("MicroMsg.NetSceneGetBakchatkey", "id:%s,  key len:%d", new Object[] { params, Integer.valueOf(paramInt1) });
-        if (this.rUu == null) {
+        if (this.vfJ == null) {
           break label197;
         }
-        paramArrayOfByte = this.rUu;
+        paramArrayOfByte = this.vfJ;
         params = "";
         paramInt1 = 0;
         while (paramInt1 < paramArrayOfByte.length)

@@ -30,7 +30,7 @@ public final class AppBrandBackgroundFetchDataStorageIPC
     return false;
   }
   
-  public final long bN(String paramString, int paramInt)
+  public final long cf(String paramString, int paramInt)
   {
     AppMethodBeat.i(44729);
     Log.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageIPC", "AppBrandBackgroundFetchDataStorageIPC getUpdateTime");
@@ -45,7 +45,7 @@ public final class AppBrandBackgroundFetchDataStorageIPC
     return 0L;
   }
   
-  public final AppBrandBackgroundFetchDataParcel bO(String paramString, int paramInt)
+  public final AppBrandBackgroundFetchDataParcel cg(String paramString, int paramInt)
   {
     AppMethodBeat.i(44730);
     Log.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageIPC", "AppBrandBackgroundFetchDataStorageIPC getByAppId");
@@ -58,7 +58,7 @@ public final class AppBrandBackgroundFetchDataStorageIPC
     implements Parcelable
   {
     public static final Parcelable.Creator<WxappIdentity> CREATOR;
-    public int nSb;
+    public int qRL;
     public String username;
     
     static
@@ -74,14 +74,14 @@ public final class AppBrandBackgroundFetchDataStorageIPC
     {
       AppMethodBeat.i(44718);
       this.username = paramParcel.readString();
-      this.nSb = paramParcel.readInt();
+      this.qRL = paramParcel.readInt();
       AppMethodBeat.o(44718);
     }
     
     public WxappIdentity(String paramString, int paramInt)
     {
       this.username = paramString;
-      this.nSb = paramInt;
+      this.qRL = paramInt;
     }
     
     public int describeContents()
@@ -93,7 +93,7 @@ public final class AppBrandBackgroundFetchDataStorageIPC
     {
       AppMethodBeat.i(44717);
       paramParcel.writeString(this.username);
-      paramParcel.writeInt(this.nSb);
+      paramParcel.writeInt(this.qRL);
       AppMethodBeat.o(44717);
     }
   }
@@ -103,7 +103,7 @@ public final class AppBrandBackgroundFetchDataStorageIPC
   {
     public static final Parcelable.Creator<WxappIdentityWithAppId> CREATOR;
     public String appid;
-    public int nSb;
+    public int qRL;
     
     static
     {
@@ -118,14 +118,14 @@ public final class AppBrandBackgroundFetchDataStorageIPC
     {
       AppMethodBeat.i(44722);
       this.appid = paramParcel.readString();
-      this.nSb = paramParcel.readInt();
+      this.qRL = paramParcel.readInt();
       AppMethodBeat.o(44722);
     }
     
     public WxappIdentityWithAppId(String paramString, int paramInt)
     {
       this.appid = paramString;
-      this.nSb = paramInt;
+      this.qRL = paramInt;
     }
     
     public int describeContents()
@@ -137,7 +137,7 @@ public final class AppBrandBackgroundFetchDataStorageIPC
     {
       AppMethodBeat.i(44721);
       paramParcel.writeString(this.appid);
-      paramParcel.writeInt(this.nSb);
+      paramParcel.writeInt(this.qRL);
       AppMethodBeat.o(44721);
     }
   }
@@ -147,8 +147,8 @@ public final class AppBrandBackgroundFetchDataStorageIPC
   {
     public static final Parcelable.Creator<WxappParams> CREATOR;
     public String data;
-    public int nSb;
     public String path;
+    public int qRL;
     public String query;
     public int scene;
     public long time;
@@ -167,7 +167,7 @@ public final class AppBrandBackgroundFetchDataStorageIPC
     {
       AppMethodBeat.i(44726);
       this.username = paramParcel.readString();
-      this.nSb = paramParcel.readInt();
+      this.qRL = paramParcel.readInt();
       this.data = paramParcel.readString();
       this.path = paramParcel.readString();
       this.query = paramParcel.readString();
@@ -179,7 +179,7 @@ public final class AppBrandBackgroundFetchDataStorageIPC
     public WxappParams(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, int paramInt2, long paramLong)
     {
       this.username = paramString1;
-      this.nSb = paramInt1;
+      this.qRL = paramInt1;
       this.data = paramString2;
       this.path = paramString3;
       this.query = paramString4;
@@ -196,7 +196,7 @@ public final class AppBrandBackgroundFetchDataStorageIPC
     {
       AppMethodBeat.i(44725);
       paramParcel.writeString(this.username);
-      paramParcel.writeInt(this.nSb);
+      paramParcel.writeInt(this.qRL);
       paramParcel.writeString(this.data);
       paramParcel.writeString(this.path);
       paramParcel.writeString(this.query);
@@ -220,7 +220,7 @@ public final class AppBrandBackgroundFetchDataStorageIPC
       }
       try
       {
-        paramWxappIdentityWithAppId = ((k)h.ae(k.class)).bO(paramWxappIdentityWithAppId.appid, paramWxappIdentityWithAppId.nSb);
+        paramWxappIdentityWithAppId = ((k)h.ax(k.class)).cg(paramWxappIdentityWithAppId.appid, paramWxappIdentityWithAppId.qRL);
         AppMethodBeat.o(44710);
         return paramWxappIdentityWithAppId;
       }
@@ -248,7 +248,7 @@ public final class AppBrandBackgroundFetchDataStorageIPC
       }
       try
       {
-        paramWxappIdentity = new IPCLong(((k)h.ae(k.class)).bN(paramWxappIdentity.username, paramWxappIdentity.nSb));
+        paramWxappIdentity = new IPCLong(((k)h.ax(k.class)).cf(paramWxappIdentity.username, paramWxappIdentity.qRL));
         AppMethodBeat.o(44712);
         return paramWxappIdentity;
       }
@@ -277,7 +277,7 @@ public final class AppBrandBackgroundFetchDataStorageIPC
       }
       try
       {
-        paramWxappParams = new IPCBoolean(((k)h.ae(k.class)).a(paramWxappParams.username, paramWxappParams.nSb, paramWxappParams.data, paramWxappParams.path, paramWxappParams.query, paramWxappParams.scene, paramWxappParams.time));
+        paramWxappParams = new IPCBoolean(((k)h.ax(k.class)).a(paramWxappParams.username, paramWxappParams.qRL, paramWxappParams.data, paramWxappParams.path, paramWxappParams.query, paramWxappParams.scene, paramWxappParams.time));
         AppMethodBeat.o(44714);
         return paramWxappParams;
       }

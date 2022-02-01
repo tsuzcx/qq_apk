@@ -1,6 +1,5 @@
 package com.google.android.gms.internal.measurement;
 
-import android.annotation.TargetApi;
 import android.app.job.JobParameters;
 import android.content.Context;
 import android.content.Intent;
@@ -121,7 +120,6 @@ public final class zzjc<T extends Context,  extends zzjg>
     return 2;
   }
   
-  @TargetApi(24)
   public final boolean onStartJob(JobParameters paramJobParameters)
   {
     AppMethodBeat.i(1878);
@@ -152,7 +150,7 @@ public final class zzjc<T extends Context,  extends zzjg>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzjc
  * JD-Core Version:    0.7.0.1
  */

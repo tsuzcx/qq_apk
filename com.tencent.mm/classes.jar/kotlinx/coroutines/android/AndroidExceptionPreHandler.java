@@ -1,18 +1,16 @@
 package kotlinx.coroutines.android;
 
 import android.os.Build.VERSION;
-import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import kotlin.Metadata;
 import kotlin.d.a;
 import kotlin.d.f;
 import kotlin.d.f.c;
-import kotlin.l;
 import kotlinx.coroutines.CoroutineExceptionHandler;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/android/AndroidExceptionPreHandler;", "Lkotlin/coroutines/AbstractCoroutineContextElement;", "Lkotlinx/coroutines/CoroutineExceptionHandler;", "()V", "_preHandler", "", "handleException", "", "context", "Lkotlin/coroutines/CoroutineContext;", "exception", "", "preHandler", "Ljava/lang/reflect/Method;", "kotlinx-coroutines-android"})
-@Keep
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/android/AndroidExceptionPreHandler;", "Lkotlin/coroutines/AbstractCoroutineContextElement;", "Lkotlinx/coroutines/CoroutineExceptionHandler;", "()V", "_preHandler", "", "handleException", "", "context", "Lkotlin/coroutines/CoroutineContext;", "exception", "", "preHandler", "Ljava/lang/reflect/Method;", "kotlinx-coroutines-android"}, k=1, mv={1, 5, 1}, xi=48)
 public final class AndroidExceptionPreHandler
   extends a
   implements CoroutineExceptionHandler
@@ -21,7 +19,7 @@ public final class AndroidExceptionPreHandler
   
   public AndroidExceptionPreHandler()
   {
-    super((f.c)CoroutineExceptionHandler.abww);
+    super((f.c)CoroutineExceptionHandler.ajvG);
     AppMethodBeat.i(107783);
     this._preHandler = this;
     AppMethodBeat.o(107783);
@@ -29,12 +27,13 @@ public final class AndroidExceptionPreHandler
   
   private final Method preHandler()
   {
-    AppMethodBeat.i(243910);
+    int j = 0;
+    AppMethodBeat.i(188924);
     Object localObject1 = this._preHandler;
-    if (localObject1 != (AndroidExceptionPreHandler)this)
+    if (localObject1 != this)
     {
       localObject1 = (Method)localObject1;
-      AppMethodBeat.o(243910);
+      AppMethodBeat.o(188924);
       return localObject1;
     }
     for (;;)
@@ -42,29 +41,27 @@ public final class AndroidExceptionPreHandler
       try
       {
         localObject1 = Thread.class.getDeclaredMethod("getUncaughtExceptionPreHandler", new Class[0]);
-        if (!Modifier.isPublic(((Method)localObject1).getModifiers())) {
-          continue;
+        int i = j;
+        if (Modifier.isPublic(((Method)localObject1).getModifiers()))
+        {
+          boolean bool = Modifier.isStatic(((Method)localObject1).getModifiers());
+          i = j;
+          if (bool) {
+            i = 1;
+          }
         }
-        boolean bool = Modifier.isStatic(((Method)localObject1).getModifiers());
-        if (!bool) {
-          continue;
-        }
-        i = 1;
         if (i == 0) {
           continue;
         }
       }
-      catch (Throwable localThrowable)
+      finally
       {
-        int i;
-        Object localObject2 = null;
+        Object localObject3 = null;
         continue;
       }
       this._preHandler = localObject1;
-      AppMethodBeat.o(243910);
+      AppMethodBeat.o(188924);
       return localObject1;
-      i = 0;
-      continue;
       localObject1 = null;
     }
   }
@@ -80,27 +77,29 @@ public final class AndroidExceptionPreHandler
       return;
     }
     paramf = preHandler();
-    if (paramf != null) {}
-    for (paramf = paramf.invoke(null, new Object[0]);; paramf = null)
+    if (paramf == null)
     {
-      f localf = paramf;
+      paramf = null;
       if (!(paramf instanceof Thread.UncaughtExceptionHandler)) {
-        localf = null;
+        break label88;
       }
-      paramf = (Thread.UncaughtExceptionHandler)localf;
-      if (paramf == null) {
-        break;
+    }
+    label88:
+    for (paramf = (Thread.UncaughtExceptionHandler)paramf;; paramf = null)
+    {
+      if (paramf != null) {
+        paramf.uncaughtException(localThread, paramThrowable);
       }
-      paramf.uncaughtException(localThread, paramThrowable);
       AppMethodBeat.o(107782);
       return;
+      paramf = paramf.invoke(null, new Object[0]);
+      break;
     }
-    AppMethodBeat.o(107782);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.android.AndroidExceptionPreHandler
  * JD-Core Version:    0.7.0.1
  */

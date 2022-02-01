@@ -7,56 +7,58 @@ import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.music.a.j;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/music/ui/view/MusicMaxSizeFrameLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "maxHeight", "maxWidth", "initAttribute", "", "onMeasure", "widthSpec", "heightSpec", "setMaxHeight", "setMaxWidth", "Companion", "plugin-music_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/music/ui/view/MusicMaxSizeFrameLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "maxHeight", "maxWidth", "initAttribute", "", "onMeasure", "widthSpec", "heightSpec", "setMaxHeight", "setMaxWidth", "Companion", "plugin-music_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class MusicMaxSizeFrameLayout
   extends FrameLayout
 {
-  public static final a FVy;
+  public static final MusicMaxSizeFrameLayout.a LQw;
   private int maxHeight;
   private int maxWidth;
   
   static
   {
-    AppMethodBeat.i(260482);
-    FVy = new a((byte)0);
-    AppMethodBeat.o(260482);
+    AppMethodBeat.i(271058);
+    LQw = new MusicMaxSizeFrameLayout.a((byte)0);
+    AppMethodBeat.o(271058);
   }
   
   public MusicMaxSizeFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(260476);
+    AppMethodBeat.i(271037);
     b(paramAttributeSet, 0);
-    AppMethodBeat.o(260476);
+    AppMethodBeat.o(271037);
   }
   
   public MusicMaxSizeFrameLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(260479);
+    AppMethodBeat.i(271045);
     b(paramAttributeSet, paramInt);
-    AppMethodBeat.o(260479);
+    AppMethodBeat.o(271045);
   }
   
   private final void b(AttributeSet paramAttributeSet, int paramInt)
   {
-    AppMethodBeat.i(260473);
+    AppMethodBeat.i(271054);
     if (paramAttributeSet != null)
     {
       paramAttributeSet = getContext().obtainStyledAttributes(paramAttributeSet, a.j.MaxSizeFrameLayout, paramInt, 0);
+      s.s(paramAttributeSet, "context.obtainStyledAttr…FrameLayout, defStyle, 0)");
       this.maxHeight = ((int)paramAttributeSet.getDimension(a.j.MaxSizeFrameLayout_max_height, 0.0F));
       this.maxWidth = ((int)paramAttributeSet.getDimension(a.j.MaxSizeFrameLayout_max_height, 0.0F));
       paramAttributeSet.recycle();
       Log.i("Music.MusicMaxSizeFrameLayout", "[initAttribute],maxHeight:" + this.maxHeight + ", maxWidth:" + this.maxWidth);
     }
-    AppMethodBeat.o(260473);
+    AppMethodBeat.o(271054);
   }
   
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(260468);
+    AppMethodBeat.i(271075);
     super.onMeasure(paramInt1, paramInt2);
     paramInt1 = 0;
     if ((this.maxHeight >= 0) || (this.maxWidth >= 0)) {
@@ -74,7 +76,7 @@ public final class MusicMaxSizeFrameLayout
       }
       setMeasuredDimension(paramInt2, paramInt1);
     }
-    AppMethodBeat.o(260468);
+    AppMethodBeat.o(271075);
   }
   
   public final void setMaxHeight(int paramInt)
@@ -86,9 +88,6 @@ public final class MusicMaxSizeFrameLayout
   {
     this.maxWidth = paramInt;
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/music/ui/view/MusicMaxSizeFrameLayout$Companion;", "", "()V", "TAG", "", "plugin-music_release"})
-  public static final class a {}
 }
 
 

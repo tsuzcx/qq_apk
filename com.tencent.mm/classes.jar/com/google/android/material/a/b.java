@@ -10,7 +10,7 @@ public final class b
 {
   public static void a(AnimatorSet paramAnimatorSet, List<Animator> paramList)
   {
-    AppMethodBeat.i(234195);
+    AppMethodBeat.i(209186);
     long l = 0L;
     int j = paramList.size();
     int i = 0;
@@ -24,12 +24,12 @@ public final class b
     ((Animator)localObject).setDuration(l);
     paramList.add(0, localObject);
     paramAnimatorSet.playTogether(paramList);
-    AppMethodBeat.o(234195);
+    AppMethodBeat.o(209186);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.a.b
  * JD-Core Version:    0.7.0.1
  */

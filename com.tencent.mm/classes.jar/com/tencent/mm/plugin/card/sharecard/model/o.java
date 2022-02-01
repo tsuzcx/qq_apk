@@ -27,7 +27,7 @@ public final class o
     this.db = paramISQLiteDatabase;
   }
   
-  public final List<n> cHq()
+  public final List<n> dkH()
   {
     AppMethodBeat.i(113026);
     ArrayList localArrayList = new ArrayList();

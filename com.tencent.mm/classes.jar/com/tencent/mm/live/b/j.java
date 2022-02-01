@@ -1,146 +1,67 @@
 package com.tencent.mm.live.b;
 
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import kotlin.g.a.a;
-import kotlin.g.a.b;
-import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.live.b.e;
+import com.tencent.mm.live.model.u;
+import com.tencent.mm.protocal.protobuf.dio;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/model/LiveCallbacks;", "", "()V", "liveBanCommentCallbacks", "Ljava/util/HashMap;", "", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "sysTip", "", "Lkotlin/collections/HashMap;", "liveKickedCallbacks", "Lkotlin/Function0;", "liveMessageCallbacks", "liveOnlineCntChangeCallbacks", "livelinkMicCallbacks", "Lkotlin/Function2;", "", "linked", "callingUser", "callbackBanComment", "callbackKicked", "callbackLinkMic", "callbackLiveMessage", "callbackOnlineCntChanged", "registerLiveBanCommentCallback", "key", "callback", "registerLiveKickedCallback", "registerLiveLinkMicCallback", "registerLiveMessageCallback", "registerOnlineCntChangedCallback", "releaseCallbacks", "plugin-logic_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/plugin/LiveDebugPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "editText", "Landroid/widget/EditText;", "kotlin.jvm.PlatformType", "plugin-logic_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class j
+  extends a
 {
-  private static final HashMap<String, a<x>> ktZ;
-  private static final HashMap<String, a<x>> kua;
-  private static final HashMap<String, b<String, x>> kub;
-  private static final HashMap<String, m<Boolean, String, x>> kuc;
-  private static final HashMap<String, a<x>> kud;
-  public static final j kue;
+  private final EditText dzv;
+  private final b nfT;
   
-  static
+  public j(ViewGroup paramViewGroup, b paramb)
   {
-    AppMethodBeat.i(198695);
-    kue = new j();
-    ktZ = new HashMap();
-    kua = new HashMap();
-    kub = new HashMap();
-    kuc = new HashMap();
-    kud = new HashMap();
-    AppMethodBeat.o(198695);
-  }
-  
-  public static void NW(String paramString)
-  {
-    AppMethodBeat.i(198668);
-    p.k(paramString, "sysTip");
-    Iterator localIterator = ((Map)kub).entrySet().iterator();
-    while (localIterator.hasNext()) {
-      ((b)((Map.Entry)localIterator.next()).getValue()).invoke(paramString);
+    super(paramViewGroup, paramb);
+    AppMethodBeat.i(247035);
+    this.nfT = paramb;
+    this.dzv = ((EditText)paramViewGroup.findViewById(b.e.room_edit));
+    EditText localEditText = this.dzv;
+    paramb = u.mZl;
+    paramb = u.bie();
+    if (paramb == null) {}
+    for (paramb = null;; paramb = Long.valueOf(paramb.mMJ))
+    {
+      localEditText.setText((CharSequence)paramb.toString());
+      ((Button)paramViewGroup.findViewById(b.e.live_enter_room)).setOnClickListener(new j..ExternalSyntheticLambda0(this, paramViewGroup));
+      AppMethodBeat.o(247035);
+      return;
     }
-    AppMethodBeat.o(198668);
   }
   
-  public static void a(String paramString, b<? super String, x> paramb)
+  private static final void a(j paramj, ViewGroup paramViewGroup, View paramView)
   {
-    AppMethodBeat.i(198682);
-    p.k(paramString, "key");
-    p.k(paramb, "callback");
-    ((Map)kub).put(paramString, paramb);
-    AppMethodBeat.o(198682);
-  }
-  
-  public static void a(String paramString, m<? super Boolean, ? super String, x> paramm)
-  {
-    AppMethodBeat.i(198684);
-    p.k(paramString, "key");
-    p.k(paramm, "callback");
-    ((Map)kuc).put(paramString, paramm);
-    AppMethodBeat.o(198684);
-  }
-  
-  public static void aNv()
-  {
-    AppMethodBeat.i(198665);
-    Iterator localIterator = ((Map)kua).entrySet().iterator();
-    while (localIterator.hasNext()) {
-      ((a)((Map.Entry)localIterator.next()).getValue()).invoke();
+    AppMethodBeat.i(247046);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramj);
+    localb.cH(paramViewGroup);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/plugin/LiveDebugPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramj, "this$0");
+    s.u(paramViewGroup, "$root");
+    paramView = paramj.dzv.getText();
+    if (!Util.isNullOrNil((CharSequence)paramView))
+    {
+      localObject = u.mZl;
+      localObject = u.bie();
+      if (localObject != null) {
+        ((dio)localObject).mMJ = Long.parseLong(paramView.toString());
+      }
     }
-    AppMethodBeat.o(198665);
-  }
-  
-  public static void aNw()
-  {
-    AppMethodBeat.i(198673);
-    Iterator localIterator = ((Map)ktZ).entrySet().iterator();
-    while (localIterator.hasNext()) {
-      ((a)((Map.Entry)localIterator.next()).getValue()).invoke();
-    }
-    AppMethodBeat.o(198673);
-  }
-  
-  public static void aNx()
-  {
-    AppMethodBeat.i(198676);
-    Iterator localIterator = ((Map)kud).entrySet().iterator();
-    while (localIterator.hasNext()) {
-      ((a)((Map.Entry)localIterator.next()).getValue()).invoke();
-    }
-    AppMethodBeat.o(198676);
-  }
-  
-  public static void aNy()
-  {
-    AppMethodBeat.i(198691);
-    kua.clear();
-    kub.clear();
-    kuc.clear();
-    ktZ.clear();
-    kud.clear();
-    AppMethodBeat.o(198691);
-  }
-  
-  public static void d(String paramString, a<x> parama)
-  {
-    AppMethodBeat.i(198680);
-    p.k(paramString, "key");
-    p.k(parama, "callback");
-    ((Map)kua).put(paramString, parama);
-    AppMethodBeat.o(198680);
-  }
-  
-  public static void e(String paramString, a<x> parama)
-  {
-    AppMethodBeat.i(198686);
-    p.k(paramString, "key");
-    p.k(parama, "callback");
-    ((Map)ktZ).put(paramString, parama);
-    AppMethodBeat.o(198686);
-  }
-  
-  public static void f(String paramString, a<x> parama)
-  {
-    AppMethodBeat.i(198690);
-    p.k(paramString, "key");
-    p.k(parama, "callback");
-    ((Map)kud).put(paramString, parama);
-    AppMethodBeat.o(198690);
-  }
-  
-  public static void k(boolean paramBoolean, String paramString)
-  {
-    AppMethodBeat.i(198672);
-    p.k(paramString, "callingUser");
-    Iterator localIterator = ((Map)kuc).entrySet().iterator();
-    while (localIterator.hasNext()) {
-      ((m)((Map.Entry)localIterator.next()).getValue()).invoke(Boolean.valueOf(paramBoolean), paramString);
-    }
-    AppMethodBeat.o(198672);
+    paramViewGroup.setVisibility(8);
+    b.b.a(paramj.nfT, b.c.ncF);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/live/plugin/LiveDebugPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(247046);
   }
 }
 

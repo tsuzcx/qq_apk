@@ -6,21 +6,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class o
   implements a
 {
-  private n crL;
+  private n ejF;
   private Context mContext;
   
   public o(Context paramContext, Class<? extends g> paramClass)
   {
-    AppMethodBeat.i(209028);
+    AppMethodBeat.i(219927);
     init();
     this.mContext = paramContext;
-    this.crL = new f(paramContext, paramClass);
-    AppMethodBeat.o(209028);
+    this.ejF = new f(paramContext, paramClass);
+    AppMethodBeat.o(219927);
   }
   
-  public final n NS()
+  public final n aod()
   {
-    return this.crL;
+    return this.ejF;
   }
   
   public final Context getContext()

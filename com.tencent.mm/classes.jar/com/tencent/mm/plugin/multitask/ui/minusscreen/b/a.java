@@ -2,37 +2,37 @@ package com.tencent.mm.plugin.multitask.ui.minusscreen.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/ui/minusscreen/data/RVMultiTaskData;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "multiTaskInfoObj", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "(Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;)V", "getMultiTaskInfoObj", "()Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "getItemId", "", "getItemType", "", "ui-multitask_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitask/ui/minusscreen/data/RVMultiTaskData;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "multiTaskInfoObj", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "(Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;)V", "getMultiTaskInfoObj", "()Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "getItemId", "", "getItemType", "", "ui-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   implements com.tencent.mm.view.recyclerview.a
 {
-  public final MultiTaskInfo FKP;
+  public final MultiTaskInfo LGa;
   
   public a(MultiTaskInfo paramMultiTaskInfo)
   {
-    AppMethodBeat.i(197531);
-    this.FKP = paramMultiTaskInfo;
-    AppMethodBeat.o(197531);
+    AppMethodBeat.i(304334);
+    this.LGa = paramMultiTaskInfo;
+    AppMethodBeat.o(304334);
   }
   
-  public final int bAQ()
+  public final long bZA()
   {
-    return this.FKP.field_type;
-  }
-  
-  public final long mf()
-  {
-    AppMethodBeat.i(197529);
-    long l = this.FKP.field_id.hashCode() + Integer.valueOf(this.FKP.field_type).hashCode();
-    AppMethodBeat.o(197529);
+    AppMethodBeat.i(304339);
+    long l = this.LGa.field_id.hashCode() + this.LGa.field_type;
+    AppMethodBeat.o(304339);
     return l;
+  }
+  
+  public final int bZB()
+  {
+    return this.LGa.field_type;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.multitask.ui.minusscreen.b.a
  * JD-Core Version:    0.7.0.1
  */

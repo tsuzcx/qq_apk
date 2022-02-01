@@ -15,35 +15,35 @@ public class AppBrandOpenMaterialDetailModel
   implements Parcelable
 {
   public static final Parcelable.Creator<AppBrandOpenMaterialDetailModel> CREATOR;
-  public final List<String> obg;
-  public final String qnj;
+  public final List<String> rbS;
   public final float score;
+  public final String trQ;
   
   static
   {
-    AppMethodBeat.i(191616);
+    AppMethodBeat.i(323579);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(191616);
+    AppMethodBeat.o(323579);
   }
   
   protected AppBrandOpenMaterialDetailModel(Parcel paramParcel)
   {
     super(paramParcel);
-    AppMethodBeat.i(191610);
+    AppMethodBeat.i(323572);
     ArrayList localArrayList = new ArrayList();
-    this.obg = localArrayList;
+    this.rbS = localArrayList;
     paramParcel.readStringList(localArrayList);
     this.score = paramParcel.readFloat();
-    this.qnj = Util.nullAs(paramParcel.readString(), "");
-    AppMethodBeat.o(191610);
+    this.trQ = Util.nullAs(paramParcel.readString(), "");
+    AppMethodBeat.o(323572);
   }
   
   public AppBrandOpenMaterialDetailModel(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, List<String> paramList, float paramFloat, String paramString5)
   {
     super(paramString1, paramInt, paramString2, paramString3, paramString4);
-    this.obg = paramList;
+    this.rbS = paramList;
     this.score = paramFloat;
-    this.qnj = paramString5;
+    this.trQ = paramString5;
   }
   
   public int describeContents()
@@ -53,61 +53,61 @@ public class AppBrandOpenMaterialDetailModel
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(191604);
+    AppMethodBeat.i(323602);
     if (this == paramObject)
     {
-      AppMethodBeat.o(191604);
+      AppMethodBeat.o(323602);
       return true;
     }
     if ((paramObject == null) || (getClass() != paramObject.getClass()))
     {
-      AppMethodBeat.o(191604);
+      AppMethodBeat.o(323602);
       return false;
     }
     if (!super.equals(paramObject))
     {
-      AppMethodBeat.o(191604);
+      AppMethodBeat.o(323602);
       return false;
     }
     paramObject = (AppBrandOpenMaterialDetailModel)paramObject;
-    if ((Float.compare(paramObject.score, this.score) == 0) && (this.obg.equals(paramObject.obg)) && (this.qnj.equals(paramObject.qnj)))
+    if ((Float.compare(paramObject.score, this.score) == 0) && (this.rbS.equals(paramObject.rbS)) && (this.trQ.equals(paramObject.trQ)))
     {
-      AppMethodBeat.o(191604);
+      AppMethodBeat.o(323602);
       return true;
     }
-    AppMethodBeat.o(191604);
+    AppMethodBeat.o(323602);
     return false;
   }
   
   public int hashCode()
   {
-    AppMethodBeat.i(191608);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.obg, Float.valueOf(this.score), this.qnj });
-    AppMethodBeat.o(191608);
+    AppMethodBeat.i(323613);
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.rbS, Float.valueOf(this.score), this.trQ });
+    AppMethodBeat.o(323613);
     return i;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(191598);
-    String str = "AppBrandOpenMaterialDetailModel{categories='" + Arrays.toString(this.obg.toArray()) + '\'' + ", score=" + this.score + ", functionDesc='" + this.qnj + '\'' + ", iconUrl='" + this.iconUrl + '\'' + ", functionName='" + this.qnk + '\'' + ", appName='" + this.appName + '\'' + ", appId='" + this.appId + '\'' + ", versionType=" + this.cBU + ", enterPath='" + this.nBq + '\'' + '}';
-    AppMethodBeat.o(191598);
+    AppMethodBeat.i(323590);
+    String str = "AppBrandOpenMaterialDetailModel{categories='" + Arrays.toString(this.rbS.toArray()) + '\'' + ", score=" + this.score + ", functionDesc='" + this.trQ + '\'' + ", iconUrl='" + this.iconUrl + '\'' + ", functionName='" + this.trR + '\'' + ", appName='" + this.appName + '\'' + ", appId='" + this.appId + '\'' + ", versionType=" + this.euz + ", enterPath='" + this.qAF + '\'' + '}';
+    AppMethodBeat.o(323590);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(191614);
+    AppMethodBeat.i(323626);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeStringList(this.obg);
+    paramParcel.writeStringList(this.rbS);
     paramParcel.writeFloat(this.score);
-    paramParcel.writeString(this.qnj);
-    AppMethodBeat.o(191614);
+    paramParcel.writeString(this.trQ);
+    AppMethodBeat.o(323626);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.openmaterial.model.AppBrandOpenMaterialDetailModel
  * JD-Core Version:    0.7.0.1
  */

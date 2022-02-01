@@ -12,30 +12,29 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.b.g;
-import com.tencent.mm.platformtools.p;
+import com.tencent.mm.platformtools.ExportFileUtil;
+import com.tencent.mm.platformtools.ExportFileUtil.a;
 import com.tencent.mm.plugin.comm.c.a;
 import com.tencent.mm.plugin.comm.c.e;
 import com.tencent.mm.plugin.comm.c.f;
 import com.tencent.mm.plugin.comm.c.h;
 import com.tencent.mm.sdk.system.AndroidMediaUtil;
 import com.tencent.mm.ui.base.MultiTouchImageView;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.h.d;
-import com.tencent.mm.ui.base.r;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.k.d;
+import com.tencent.mm.ui.base.v;
 import com.tencent.mm.ui.tools.MMGestureGallery;
 import com.tencent.mm.ui.tools.MMGestureGallery.c;
 import com.tencent.mm.ui.tools.MMGestureGallery.f;
-import com.tencent.mm.vfs.u;
 
 public class GetHdHeadImageGalleryView
   extends MMGestureGallery
 {
-  private String JeT;
-  private r Rcv;
-  private Bitmap Rcw;
-  private Bitmap Rcx;
-  private a Rcy;
+  private String Ppq;
+  private v XYB;
+  private Bitmap XYC;
+  private Bitmap XYD;
+  private a XYE;
   private String username;
   
   public GetHdHeadImageGalleryView(Context paramContext, AttributeSet paramAttributeSet)
@@ -57,10 +56,10 @@ public class GetHdHeadImageGalleryView
   private void init()
   {
     AppMethodBeat.i(152135);
-    this.Rcy = new a((byte)0);
+    this.XYE = new a((byte)0);
     setVerticalFadingEdgeEnabled(false);
     setHorizontalFadingEdgeEnabled(false);
-    setAdapter(this.Rcy);
+    setAdapter(this.XYE);
     setSelection(0);
     setSingleClickOverListener(new c((byte)0));
     setLongClickOverListener(new b((byte)0));
@@ -70,26 +69,26 @@ public class GetHdHeadImageGalleryView
   public void setHdHeadImage(Bitmap paramBitmap)
   {
     AppMethodBeat.i(152137);
-    this.Rcx = paramBitmap;
-    this.Rcy.notifyDataSetChanged();
+    this.XYD = paramBitmap;
+    this.XYE.notifyDataSetChanged();
     AppMethodBeat.o(152137);
   }
   
   public void setHdHeadImagePath(String paramString)
   {
-    this.JeT = paramString;
+    this.Ppq = paramString;
   }
   
-  public void setParentWindow(r paramr)
+  public void setParentWindow(v paramv)
   {
-    this.Rcv = paramr;
+    this.XYB = paramv;
   }
   
   public void setThumbImage(Bitmap paramBitmap)
   {
     AppMethodBeat.i(152136);
-    this.Rcw = paramBitmap;
-    this.Rcy.notifyDataSetChanged();
+    this.XYC = paramBitmap;
+    this.XYE.notifyDataSetChanged();
     AppMethodBeat.o(152136);
   }
   
@@ -128,9 +127,9 @@ public class GetHdHeadImageGalleryView
       {
         paramView = new a();
         localView = View.inflate(GetHdHeadImageGalleryView.this.getContext(), c.f.view_get_hd_avatar_dialogview, null);
-        paramView.MfY = ((ProgressBar)localView.findViewById(c.e.hd_avatar_laoding_pb));
-        paramView.fIv = ((ImageView)localView.findViewById(c.e.hd_avatar_iv));
-        paramView.RcA = localView.findViewById(c.e.hd_avatar_mask_view);
+        paramView.SHw = ((ProgressBar)localView.findViewById(c.e.hd_avatar_laoding_pb));
+        paramView.hNV = ((ImageView)localView.findViewById(c.e.hd_avatar_iv));
+        paramView.XYG = localView.findViewById(c.e.hd_avatar_mask_view);
         localView.setTag(paramView);
         paramViewGroup = paramView;
       }
@@ -140,9 +139,9 @@ public class GetHdHeadImageGalleryView
         if (GetHdHeadImageGalleryView.d(GetHdHeadImageGalleryView.this) == null) {
           break;
         }
-        paramViewGroup.MfY.setVisibility(8);
-        paramViewGroup.fIv.setVisibility(8);
-        paramViewGroup.RcA.setVisibility(8);
+        paramViewGroup.SHw.setVisibility(8);
+        paramViewGroup.hNV.setVisibility(8);
+        paramViewGroup.XYG.setVisibility(8);
         paramView = new MultiTouchImageView(GetHdHeadImageGalleryView.this.getContext(), GetHdHeadImageGalleryView.d(GetHdHeadImageGalleryView.this).getWidth(), GetHdHeadImageGalleryView.d(GetHdHeadImageGalleryView.this).getHeight(), (byte)0);
         paramView.setLayoutParams(new Gallery.LayoutParams(-1, -1));
         paramView.setImageBitmap(GetHdHeadImageGalleryView.d(GetHdHeadImageGalleryView.this));
@@ -153,26 +152,26 @@ public class GetHdHeadImageGalleryView
         paramViewGroup = (a)paramView.getTag();
         localView = paramView;
       }
-      paramViewGroup.MfY.setVisibility(0);
-      paramViewGroup.RcA.setVisibility(0);
+      paramViewGroup.SHw.setVisibility(0);
+      paramViewGroup.XYG.setVisibility(0);
       if (GetHdHeadImageGalleryView.e(GetHdHeadImageGalleryView.this) != null)
       {
-        paramViewGroup.fIv.setVisibility(0);
-        paramViewGroup.fIv.setImageBitmap(GetHdHeadImageGalleryView.e(GetHdHeadImageGalleryView.this));
+        paramViewGroup.hNV.setVisibility(0);
+        paramViewGroup.hNV.setImageBitmap(GetHdHeadImageGalleryView.e(GetHdHeadImageGalleryView.this));
       }
       for (;;)
       {
         AppMethodBeat.o(152129);
         return localView;
-        paramViewGroup.fIv.setVisibility(8);
+        paramViewGroup.hNV.setVisibility(8);
       }
     }
     
     final class a
     {
-      ProgressBar MfY;
-      View RcA;
-      ImageView fIv;
+      ProgressBar SHw;
+      View XYG;
+      ImageView hNV;
       
       a() {}
     }
@@ -183,15 +182,15 @@ public class GetHdHeadImageGalleryView
   {
     private b() {}
     
-    public final void bwC()
+    public final void longClickOver()
     {
       AppMethodBeat.i(152131);
       if ((GetHdHeadImageGalleryView.b(GetHdHeadImageGalleryView.this) != null) && (GetHdHeadImageGalleryView.c(GetHdHeadImageGalleryView.this) != null))
       {
         String[] arrayOfString = GetHdHeadImageGalleryView.this.getContext().getResources().getStringArray(c.a.get_hd_head_img_alert);
-        h.a(GetHdHeadImageGalleryView.this.getContext(), null, arrayOfString, "", new h.d()
+        k.a(GetHdHeadImageGalleryView.this.getContext(), null, arrayOfString, "", new k.d()
         {
-          public final void qy(int paramAnonymousInt)
+          public final void qz(int paramAnonymousInt)
           {
             AppMethodBeat.i(152130);
             switch (paramAnonymousInt)
@@ -201,25 +200,21 @@ public class GetHdHeadImageGalleryView
             {
               AppMethodBeat.o(152130);
               return;
-              p.a(GetHdHeadImageGalleryView.this.getContext(), new Runnable()new Runnable
+              ExportFileUtil.a(GetHdHeadImageGalleryView.this.getContext(), GetHdHeadImageGalleryView.b(GetHdHeadImageGalleryView.this), new ExportFileUtil.a()
               {
-                public final void run()
+                public final void cg(String paramAnonymous2String1, String paramAnonymous2String2)
                 {
-                  AppMethodBeat.i(225796);
-                  String str = AndroidMediaUtil.getSysCameraDirPath() + "hdImg_" + g.getMessageDigest(GetHdHeadImageGalleryView.c(GetHdHeadImageGalleryView.this).getBytes()) + System.currentTimeMillis() + ".jpg";
-                  u.deleteFile(str);
-                  u.on(GetHdHeadImageGalleryView.b(GetHdHeadImageGalleryView.this), str);
-                  AndroidMediaUtil.refreshMediaScanner(str, GetHdHeadImageGalleryView.this.getContext());
+                  AppMethodBeat.i(245069);
+                  AndroidMediaUtil.refreshMediaScanner(paramAnonymous2String2, GetHdHeadImageGalleryView.this.getContext());
                   Toast.makeText(GetHdHeadImageGalleryView.this.getContext(), GetHdHeadImageGalleryView.this.getContext().getString(c.h.get_hd_head_img_save_tips, new Object[] { AndroidMediaUtil.getSysCameraDirPath() }), 1).show();
-                  AppMethodBeat.o(225796);
+                  AppMethodBeat.o(245069);
                 }
-              }, new Runnable()
-              {
-                public final void run()
+                
+                public final void ch(String paramAnonymous2String1, String paramAnonymous2String2)
                 {
-                  AppMethodBeat.i(234453);
+                  AppMethodBeat.i(245072);
                   Toast.makeText(GetHdHeadImageGalleryView.this.getContext(), GetHdHeadImageGalleryView.this.getContext().getString(c.h.save_image_err), 1).show();
-                  AppMethodBeat.o(234453);
+                  AppMethodBeat.o(245072);
                 }
               });
             }
@@ -235,7 +230,7 @@ public class GetHdHeadImageGalleryView
   {
     private c() {}
     
-    public final void bwB()
+    public final void singleClickOver()
     {
       AppMethodBeat.i(152132);
       if (GetHdHeadImageGalleryView.a(GetHdHeadImageGalleryView.this) != null) {
@@ -247,7 +242,7 @@ public class GetHdHeadImageGalleryView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.GetHdHeadImageGalleryView
  * JD-Core Version:    0.7.0.1
  */

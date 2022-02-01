@@ -15,15 +15,10 @@ import java.util.Map;
 public abstract class e
   extends h
 {
-  private int aNr = 0;
-  private final SparseArray<Map<r, b>> bnX = new SparseArray();
-  private final SparseBooleanArray bnY = new SparseBooleanArray();
-  public a bnZ;
-  
-  public final void Z(Object paramObject)
-  {
-    this.bnZ = ((a)paramObject);
-  }
+  private int cHn = 0;
+  private final SparseArray<Map<r, b>> dhQ = new SparseArray();
+  private final SparseBooleanArray dhR = new SparseBooleanArray();
+  public a dhS;
   
   public final i a(s[] paramArrayOfs, r paramr)
   {
@@ -41,7 +36,7 @@ public abstract class e
     i = 0;
     while (i < localObject3.length)
     {
-      localObject3[i] = paramArrayOfs[i].qR();
+      localObject3[i] = paramArrayOfs[i].Qt();
       i += 1;
     }
     int k = 0;
@@ -53,7 +48,7 @@ public abstract class e
     Object localObject6;
     if (k < paramr.length)
     {
-      localObject2 = paramr.bgK[k];
+      localObject2 = paramr.daE[k];
       j = paramArrayOfs.length;
       i1 = 0;
       i = 0;
@@ -64,7 +59,7 @@ public abstract class e
         n = j;
         for (j = i1; m < ((q)localObject2).length; j = i1)
         {
-          i2 = ((s)localObject1).b(localObject2.bgf[m]) & 0x7;
+          i2 = ((s)localObject1).b(localObject2.cZY[m]) & 0x7;
           i1 = j;
           if (i2 > j)
           {
@@ -97,7 +92,7 @@ public abstract class e
         i = 0;
         while (i < ((q)localObject2).length)
         {
-          localObject1[i] = ((s)localObject6).b(localObject2.bgf[i]);
+          localObject1[i] = ((s)localObject6).b(localObject2.cZY[i]);
           i += 1;
         }
       }
@@ -120,7 +115,7 @@ public abstract class e
     Map localMap;
     if (i < paramArrayOfs.length)
     {
-      if (this.bnY.get(i)) {
+      if (this.dhR.get(i)) {
         localObject4[i] = null;
       }
       label579:
@@ -129,14 +124,14 @@ public abstract class e
         i += 1;
         break;
         localObject6 = localObject2[i];
-        localMap = (Map)this.bnX.get(i);
+        localMap = (Map)this.dhQ.get(i);
         if ((localMap != null) && (localMap.containsKey(localObject6))) {}
         for (j = 1;; j = 0)
         {
           if (j == 0) {
             break label579;
           }
-          if ((b)((Map)this.bnX.get(i)).get(localObject6) != null) {
+          if ((b)((Map)this.dhQ.get(i)).get(localObject6) != null) {
             break label581;
           }
           break;
@@ -151,14 +146,14 @@ public abstract class e
     if (i < paramArrayOfs.length)
     {
       if (localObject4[i] != null) {}
-      for (localObject1 = t.aNq;; localObject1 = null)
+      for (localObject1 = t.cHm;; localObject1 = null)
       {
         localObject5[i] = localObject1;
         i += 1;
         break;
       }
     }
-    int n = this.aNr;
+    int n = this.cHn;
     if (n != 0)
     {
       m = -1;
@@ -204,14 +199,14 @@ public abstract class e
           localObject5[i] = paramArrayOfs;
         }
         return new i(paramr, new g((f[])localObject4), localObject3, (t[])localObject5);
-        i2 = localMap.a(((f)localObject1).uz());
+        i2 = localMap.a(((f)localObject1).Uc());
         k = 0;
         for (;;)
         {
           if (k >= ((f)localObject1).length()) {
             break label883;
           }
-          if ((localObject6[i2][localObject1.fn(k)] & 0x20) != 32)
+          if ((localObject6[i2][localObject1.iC(k)] & 0x20) != 32)
           {
             k = 0;
             break;
@@ -248,38 +243,48 @@ public abstract class e
   
   protected abstract f[] a(s[] paramArrayOfs, r[] paramArrayOfr, int[][][] paramArrayOfInt);
   
+  public final void bi(Object paramObject)
+  {
+    this.dhS = ((a)paramObject);
+  }
+  
   public static final class a
   {
-    private final int[] boa;
-    public final r[] bob;
-    private final int[] boc;
-    private final int[][][] bod;
-    public final r boe;
+    private final int[] dhT;
+    public final r[] dhU;
+    private final int[] dhV;
+    private final int[][][] dhW;
+    public final r dhX;
     public final int length;
     
     a(int[] paramArrayOfInt1, r[] paramArrayOfr, int[] paramArrayOfInt2, int[][][] paramArrayOfInt, r paramr)
     {
       AppMethodBeat.i(92948);
-      this.boa = paramArrayOfInt1;
-      this.bob = paramArrayOfr;
-      this.bod = paramArrayOfInt;
-      this.boc = paramArrayOfInt2;
-      this.boe = paramr;
+      this.dhT = paramArrayOfInt1;
+      this.dhU = paramArrayOfr;
+      this.dhW = paramArrayOfInt;
+      this.dhV = paramArrayOfInt2;
+      this.dhX = paramr;
       this.length = paramArrayOfr.length;
       AppMethodBeat.o(92948);
     }
     
-    public final int bo(int paramInt1, int paramInt2)
+    public final int E(int paramInt1, int paramInt2, int paramInt3)
     {
-      AppMethodBeat.i(198581);
-      int m = this.bob[paramInt1].bgK[paramInt2].length;
+      return this.dhW[paramInt1][paramInt2][paramInt3] & 0x7;
+    }
+    
+    public final int cj(int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(210280);
+      int m = this.dhU[paramInt1].daE[paramInt2].length;
       Object localObject = new int[m];
       int j = 0;
       int i = 0;
       int k;
       if (j < m)
       {
-        if (o(paramInt1, paramInt2, j) != 4) {
+        if (E(paramInt1, paramInt2, j) != 4) {
           break label237;
         }
         k = i + 1;
@@ -300,17 +305,17 @@ public abstract class e
         while (j < arrayOfInt.length)
         {
           int n = arrayOfInt[j];
-          String str = this.bob[paramInt1].bgK[paramInt2].bgf[n].aMQ;
+          String str = this.dhU[paramInt1].daE[paramInt2].cZY[n].cGN;
           if (i == 0)
           {
             localObject = str;
-            k = Math.min(k, this.bod[paramInt1][paramInt2][j] & 0x18);
+            k = Math.min(k, this.dhW[paramInt1][paramInt2][j] & 0x18);
             j += 1;
             i += 1;
           }
           else
           {
-            if (!x.h(localObject, str)) {}
+            if (!x.p(localObject, str)) {}
             for (n = 1;; n = 0)
             {
               m |= n;
@@ -320,18 +325,13 @@ public abstract class e
         }
         if (m != 0)
         {
-          paramInt1 = Math.min(k, this.boc[paramInt1]);
-          AppMethodBeat.o(198581);
+          paramInt1 = Math.min(k, this.dhV[paramInt1]);
+          AppMethodBeat.o(210280);
           return paramInt1;
         }
-        AppMethodBeat.o(198581);
+        AppMethodBeat.o(210280);
         return k;
       }
-    }
-    
-    public final int o(int paramInt1, int paramInt2, int paramInt3)
-    {
-      return this.bod[paramInt1][paramInt2][paramInt3] & 0x7;
     }
   }
   

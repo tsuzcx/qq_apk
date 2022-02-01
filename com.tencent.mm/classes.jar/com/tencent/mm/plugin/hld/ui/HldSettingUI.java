@@ -1,45 +1,92 @@
 package com.tencent.mm.plugin.hld.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
+import com.tencent.mm.br.c;
 import com.tencent.mm.plugin.hld.a.c;
 import com.tencent.mm.plugin.hld.a.j;
 import com.tencent.mm.plugin.hld.a.m;
+import com.tencent.mm.plugin.hld.f.l;
 import com.tencent.mm.plugin.hld.model.WxImeInterService;
 import com.tencent.mm.plugin.hld.model.k;
 import com.tencent.mm.plugin.hld.model.n;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import com.tencent.mm.ui.base.o;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.base.q.f;
-import com.tencent.mm.ui.base.q.g;
-import com.tencent.mm.ui.base.v;
-import com.tencent.mm.ui.widget.a.e;
-import com.tencent.mm.vfs.u;
-import kotlin.g.b.p;
+import com.tencent.mm.ui.base.z;
+import com.tencent.mm.vfs.y;
+import kotlin.Metadata;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/ui/HldSettingUI;", "Lcom/tencent/mm/ui/base/preference/MMPreference;", "()V", "getForceOrientation", "", "getResourceId", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onPreferenceTreeClick", "", "screen", "Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "pref", "Lcom/tencent/mm/ui/base/preference/Preference;", "Companion", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/ui/HldSettingUI;", "Lcom/tencent/mm/ui/base/preference/MMPreference;", "()V", "getForceOrientation", "", "getResourceId", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onPreferenceTreeClick", "", "screen", "Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "pref", "Lcom/tencent/mm/ui/base/preference/Preference;", "Companion", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class HldSettingUI
   extends MMPreference
 {
-  public static final a DGs;
+  public static final HldSettingUI.a JxS;
   
   static
   {
-    AppMethodBeat.i(217380);
-    DGs = new a((byte)0);
-    AppMethodBeat.o(217380);
+    AppMethodBeat.i(312298);
+    JxS = new HldSettingUI.a((byte)0);
+    AppMethodBeat.o(312298);
+  }
+  
+  private static final void a(HldSettingUI paramHldSettingUI, MenuItem paramMenuItem, int paramInt)
+  {
+    AppMethodBeat.i(312288);
+    kotlin.g.b.s.u(paramHldSettingUI, "this$0");
+    kotlin.g.b.s.u(paramMenuItem, "menuItem");
+    Log.i("WxIme.ContactWidgetWxIme", "clear personal dict");
+    paramMenuItem = n.JvW;
+    if (!n.fNa()) {
+      n.fMJ();
+    }
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      paramMenuItem = com.tencent.mm.plugin.hld.f.f.Jyn;
+      paramMenuItem = com.tencent.mm.plugin.hld.f.f.fOi();
+      boolean bool2 = y.ew(paramMenuItem, true);
+      Object localObject = l.JyV;
+      localObject = l.fPk();
+      if (localObject != null) {
+        ((MultiProcessMMKV)localObject).putBoolean("ime_local_user_dict_load_finish", false);
+      }
+      localObject = l.JyV;
+      localObject = l.fPk();
+      if (localObject != null) {
+        ((MultiProcessMMKV)localObject).putBoolean("ime_phone_contact_data_load_finish", false);
+      }
+      localObject = new Intent(MMApplicationContext.getContext(), WxImeInterService.class);
+      ((Intent)localObject).putExtra("ime_finalize", true);
+      c.n((Intent)localObject, "hld");
+      Log.i("WxIme.WxEngineMgr", "clearUserDictPath " + bool1 + ' ' + paramMenuItem + ' ' + bool2);
+      z.a(null, (CharSequence)paramHldSettingUI.getContext().getResources().getString(a.j.ime_clear_user_dict_finish), (Context)paramHldSettingUI.getContext(), 0, null);
+      AppMethodBeat.o(312288);
+      return;
+    }
+  }
+  
+  private static final void a(HldSettingUI paramHldSettingUI, com.tencent.mm.ui.base.s params)
+  {
+    AppMethodBeat.i(312280);
+    kotlin.g.b.s.u(paramHldSettingUI, "this$0");
+    params.a(0, paramHldSettingUI.getContext().getResources().getColor(a.c.red_text_color), (CharSequence)paramHldSettingUI.getContext().getString(a.j.ime_setting_clear_title));
+    AppMethodBeat.o(312280);
+  }
+  
+  private static final boolean a(HldSettingUI paramHldSettingUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(312269);
+    kotlin.g.b.s.u(paramHldSettingUI, "this$0");
+    paramHldSettingUI.finish();
+    AppMethodBeat.o(312269);
+    return true;
   }
   
   public final int getForceOrientation()
@@ -54,21 +101,21 @@ public final class HldSettingUI
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(217373);
-    k localk = k.DDb;
-    k.NW(System.currentTimeMillis());
+    AppMethodBeat.i(312333);
+    k localk = k.JvH;
+    k.rO(System.currentTimeMillis());
     super.onCreate(paramBundle);
     setMMTitle(a.j.welab_name_hld_setting);
-    setBackBtn((MenuItem.OnMenuItemClickListener)new b(this));
-    AppMethodBeat.o(217373);
+    setBackBtn(new HldSettingUI..ExternalSyntheticLambda0(this));
+    AppMethodBeat.o(312333);
   }
   
   public final boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
   {
-    AppMethodBeat.i(217377);
-    p.k(paramf, "screen");
-    p.k(paramPreference, "pref");
-    paramPreference = paramPreference.getKey();
+    AppMethodBeat.i(312351);
+    kotlin.g.b.s.u(paramf, "screen");
+    kotlin.g.b.s.u(paramPreference, "pref");
+    paramPreference = paramPreference.mKey;
     paramf = paramPreference;
     if (paramPreference == null) {
       paramf = "";
@@ -79,34 +126,34 @@ public final class HldSettingUI
     for (;;)
     {
       getPreferenceScreen().notifyDataSetChanged();
-      AppMethodBeat.o(217377);
+      AppMethodBeat.o(312351);
       return true;
       if (paramf.equals("settings_safety"))
       {
         paramPreference = new Intent((Context)getContext(), HldModeSettingUI.class);
         paramf = getContext();
-        paramPreference = new com.tencent.mm.hellhoundlib.b.a().bm(paramPreference);
-        com.tencent.mm.hellhoundlib.a.a.b(paramf, paramPreference.aFh(), "com/tencent/mm/plugin/hld/ui/HldSettingUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramf.startActivity((Intent)paramPreference.sf(0));
+        paramPreference = new com.tencent.mm.hellhoundlib.b.a().cG(paramPreference);
+        com.tencent.mm.hellhoundlib.a.a.b(paramf, paramPreference.aYi(), "com/tencent/mm/plugin/hld/ui/HldSettingUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramf.startActivity((Intent)paramPreference.sb(0));
         com.tencent.mm.hellhoundlib.a.a.c(paramf, "com/tencent/mm/plugin/hld/ui/HldSettingUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         continue;
         if (paramf.equals("settings_keyboard"))
         {
           paramPreference = new Intent((Context)getContext(), HldKeyboardSettingUI.class);
           paramf = getContext();
-          paramPreference = new com.tencent.mm.hellhoundlib.b.a().bm(paramPreference);
-          com.tencent.mm.hellhoundlib.a.a.b(paramf, paramPreference.aFh(), "com/tencent/mm/plugin/hld/ui/HldSettingUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramf.startActivity((Intent)paramPreference.sf(0));
+          paramPreference = new com.tencent.mm.hellhoundlib.b.a().cG(paramPreference);
+          com.tencent.mm.hellhoundlib.a.a.b(paramf, paramPreference.aYi(), "com/tencent/mm/plugin/hld/ui/HldSettingUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramf.startActivity((Intent)paramPreference.sb(0));
           com.tencent.mm.hellhoundlib.a.a.c(paramf, "com/tencent/mm/plugin/hld/ui/HldSettingUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           continue;
           if (paramf.equals("settings_clear_personal_dict"))
           {
             Log.i("WxIme.HldSettingUI", "click KEY_CLEAR_PERSONAL_DICT");
-            paramf = new e((Context)getContext(), 1, true);
-            paramf.j((CharSequence)getContext().getString(a.j.ime_setting_clear_personal_dict_desc), 17, com.tencent.mm.ci.a.fromDPToPix((Context)getContext(), 14));
-            paramf.a((q.f)new c(this));
-            paramf.a((q.g)new d(this));
-            paramf.eik();
+            paramf = new com.tencent.mm.ui.widget.a.f((Context)getContext(), 1, true);
+            paramf.h((CharSequence)getContext().getString(a.j.ime_setting_clear_personal_dict_desc), 17, com.tencent.mm.cd.a.fromDPToPix((Context)getContext(), 14));
+            paramf.Vtg = new HldSettingUI..ExternalSyntheticLambda1(this);
+            paramf.GAC = new HldSettingUI..ExternalSyntheticLambda2(this);
+            paramf.dDn();
           }
         }
       }
@@ -117,83 +164,6 @@ public final class HldSettingUI
   {
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/ui/HldSettingUI$Companion;", "", "()V", "KEY_CLEAR_PERSONAL_DICT", "", "KEY_KEYBOAR", "KEY_SAFETY", "TAG", "plugin-hld_release"})
-  public static final class a {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class b
-    implements MenuItem.OnMenuItemClickListener
-  {
-    b(HldSettingUI paramHldSettingUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(209413);
-      this.DGt.finish();
-      AppMethodBeat.o(209413);
-      return true;
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
-  static final class c
-    implements q.f
-  {
-    c(HldSettingUI paramHldSettingUI) {}
-    
-    public final void onCreateMMMenu(o paramo)
-    {
-      AppMethodBeat.i(211550);
-      AppCompatActivity localAppCompatActivity = this.DGt.getContext();
-      p.j(localAppCompatActivity, "context");
-      paramo.a(0, localAppCompatActivity.getResources().getColor(a.c.red_text_color), (CharSequence)this.DGt.getContext().getString(a.j.ime_setting_clear_title));
-      AppMethodBeat.o(211550);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "i", "", "onMMMenuItemSelected"})
-  static final class d
-    implements q.g
-  {
-    d(HldSettingUI paramHldSettingUI) {}
-    
-    public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
-    {
-      AppMethodBeat.i(211836);
-      p.k(paramMenuItem, "menuItem");
-      Log.i("WxIme.ContactWidgetWxIme", "clear personal dict");
-      paramMenuItem = n.DEn;
-      if (!n.eEX()) {
-        n.eEG();
-      }
-      for (boolean bool1 = true;; bool1 = false)
-      {
-        paramMenuItem = com.tencent.mm.plugin.hld.f.f.DGX;
-        paramMenuItem = com.tencent.mm.plugin.hld.f.f.eGu();
-        boolean bool2 = u.deleteDir(paramMenuItem);
-        Object localObject = com.tencent.mm.plugin.hld.f.l.DHK;
-        localObject = com.tencent.mm.plugin.hld.f.l.eHB();
-        if (localObject != null) {
-          ((MultiProcessMMKV)localObject).putBoolean("ime_local_user_dict_load_finish", false);
-        }
-        localObject = com.tencent.mm.plugin.hld.f.l.DHK;
-        localObject = com.tencent.mm.plugin.hld.f.l.eHB();
-        if (localObject != null) {
-          ((MultiProcessMMKV)localObject).putBoolean("ime_phone_contact_data_load_finish", false);
-        }
-        localObject = new Intent(MMApplicationContext.getContext(), WxImeInterService.class);
-        ((Intent)localObject).putExtra("ime_finalize", true);
-        c.l((Intent)localObject, "hld");
-        Log.i("WxIme.WxEngineMgr", "clearUserDictPath " + bool1 + ' ' + paramMenuItem + ' ' + bool2);
-        paramMenuItem = this.DGt.getContext();
-        p.j(paramMenuItem, "context");
-        v.a((CharSequence)paramMenuItem.getResources().getString(a.j.ime_clear_user_dict_finish), (Context)this.DGt.getContext(), 0, null);
-        AppMethodBeat.o(211836);
-        return;
-      }
-    }
   }
 }
 

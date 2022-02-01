@@ -5,11 +5,10 @@ import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.be;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.model.ch;
+import com.tencent.mm.model.ci;
+import com.tencent.mm.plugin.address.model.RcptAddressEventListener;
+import com.tencent.mm.plugin.address.model.RcptGetAddrEventListener;
 import com.tencent.mm.plugin.address.model.j;
-import com.tencent.mm.plugin.address.model.k;
-import com.tencent.mm.plugin.address.model.l;
-import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
@@ -17,59 +16,59 @@ import java.util.HashMap;
 public final class a
   implements be
 {
-  private l nks;
-  private com.tencent.mm.plugin.address.b.a.a nkt;
-  private j nku;
-  private k nkv;
+  private j qhB;
+  private com.tencent.mm.plugin.address.b.a.a qhC;
+  private RcptAddressEventListener qhD;
+  private RcptGetAddrEventListener qhE;
   
   public a()
   {
     AppMethodBeat.i(20756);
-    this.nks = null;
-    this.nkt = null;
-    this.nku = new j();
-    this.nkv = new k();
+    this.qhB = null;
+    this.qhC = null;
+    this.qhD = new RcptAddressEventListener();
+    this.qhE = new RcptGetAddrEventListener();
     AppMethodBeat.o(20756);
   }
   
-  public static a bAn()
+  public static a bZe()
   {
     AppMethodBeat.i(20757);
-    bh.beC();
-    a locala2 = (a)ch.RZ("plugin.address");
+    bh.bCt();
+    a locala2 = (a)ci.Ka("plugin.address");
     a locala1 = locala2;
     if (locala2 == null)
     {
       Log.w("MicroMsg.SubCoreAddress", "not found in MMCore, new one");
       locala1 = new a();
-      bh.beC().a("plugin.address", locala1);
+      bh.bCt().a("plugin.address", locala1);
     }
     AppMethodBeat.o(20757);
     return locala1;
   }
   
-  public static com.tencent.mm.plugin.address.b.a.a bAo()
+  public static com.tencent.mm.plugin.address.b.a.a bZf()
   {
     AppMethodBeat.i(20758);
-    h.aHE().aGH();
-    if (bAn().nkt == null) {
-      bAn().nkt = new com.tencent.mm.plugin.address.b.a.a();
+    h.baC().aZJ();
+    if (bZe().qhC == null) {
+      bZe().qhC = new com.tencent.mm.plugin.address.b.a.a();
     }
-    com.tencent.mm.plugin.address.b.a.a locala = bAn().nkt;
+    com.tencent.mm.plugin.address.b.a.a locala = bZe().qhC;
     AppMethodBeat.o(20758);
     return locala;
   }
   
-  public static l bAp()
+  public static j bZg()
   {
     AppMethodBeat.i(20759);
-    h.aHE().aGH();
-    if (bAn().nks == null) {
-      bAn().nks = new l();
+    h.baC().aZJ();
+    if (bZe().qhB == null) {
+      bZe().qhB = new j();
     }
-    l locall = bAn().nks;
+    j localj = bZe().qhB;
     AppMethodBeat.o(20759);
-    return locall;
+    return localj;
   }
   
   public final void clearPluginData(int paramInt) {}
@@ -82,17 +81,17 @@ public final class a
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(20760);
-    EventCenter.instance.addListener(this.nku);
-    EventCenter.instance.addListener(this.nkv);
-    bAp();
+    this.qhD.alive();
+    this.qhE.alive();
+    bZg();
     AppMethodBeat.o(20760);
   }
   
   public final void onAccountRelease()
   {
     AppMethodBeat.i(20761);
-    EventCenter.instance.removeListener(this.nku);
-    EventCenter.instance.removeListener(this.nkv);
+    this.qhD.dead();
+    this.qhE.dead();
     AppMethodBeat.o(20761);
   }
   
@@ -100,7 +99,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.address.a.a
  * JD-Core Version:    0.7.0.1
  */

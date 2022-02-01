@@ -15,171 +15,171 @@ import java.util.List;
 public final class o
   extends a
 {
-  int[] aYh;
+  int[] cSd;
   long duration;
-  long mHC;
-  long[] mHF;
-  List<n> mHH;
-  List<Pair> mHI;
-  Pair<Integer, Long>[] mHN;
-  private int[] mIA;
-  long mIa;
-  long mIb;
-  long mIc;
-  long mIe;
-  long mIf;
-  long mIg;
-  int mIh;
-  private int[] mIi;
-  int[] mIj;
-  private int[] mIk;
-  private int[] mIl;
-  long mIm;
-  long mIn;
-  long mIo;
-  boolean mIp;
-  private long[] mIq;
-  private long[] mIr;
-  byte[] mIs;
-  private byte[] mIt;
-  private long mIu;
-  private long mIv;
-  private long mIw;
-  private long mIx;
-  private int mIy;
-  private HashMap<Integer, Long> mIz;
+  long pEA;
+  long pEB;
+  long pEC;
+  long pED;
+  long pEE;
+  long pEF;
+  int pEG;
+  private int[] pEH;
+  int[] pEI;
+  private int[] pEJ;
+  private int[] pEK;
+  long pEL;
+  long pEM;
+  long pEN;
+  boolean pEO;
+  private long[] pEP;
+  private long[] pEQ;
+  byte[] pER;
+  private byte[] pES;
+  private long pET;
+  private long pEU;
+  private long pEV;
+  private long pEW;
+  private int pEX;
+  private HashMap<Integer, Long> pEY;
+  private int[] pEZ;
+  long pEc;
+  long[] pEf;
+  List<n> pEh;
+  List<Pair> pEi;
+  Pair<Integer, Long>[] pEn;
   
   public o(int paramInt1, long paramLong, int paramInt2)
   {
     super(paramInt1, paramLong, paramInt2, 0L);
     AppMethodBeat.i(133883);
-    this.mHH = new ArrayList();
-    this.mHI = new ArrayList();
-    this.mIm = 0L;
-    this.mIn = 0L;
-    this.mIo = 0L;
-    this.mIp = false;
-    this.mIq = null;
-    this.mIs = null;
-    this.mIt = new byte[4];
-    this.mIu = 0L;
-    this.mIv = 0L;
-    this.mIw = 0L;
-    this.mIx = 0L;
-    this.mIy = 0;
-    this.mIz = new HashMap();
+    this.pEh = new ArrayList();
+    this.pEi = new ArrayList();
+    this.pEL = 0L;
+    this.pEM = 0L;
+    this.pEN = 0L;
+    this.pEO = false;
+    this.pEP = null;
+    this.pER = null;
+    this.pES = new byte[4];
+    this.pET = 0L;
+    this.pEU = 0L;
+    this.pEV = 0L;
+    this.pEW = 0L;
+    this.pEX = 0;
+    this.pEY = new HashMap();
     AppMethodBeat.o(133883);
   }
   
-  private boolean bvL()
+  private boolean bTX()
   {
     AppMethodBeat.i(133891);
     long l1 = Util.currentTicks();
-    bvM();
+    bTY();
     Log.i("MicroMsg.StblAtom", "createChunkTable cost:%sms", new Object[] { Long.valueOf(Util.ticksToNow(l1)) });
     int i = 0;
     int k;
-    while (i < this.mHF.length)
+    while (i < this.pEf.length)
     {
-      j = (int)this.mHF[i];
-      k = yb(j);
-      int m = this.mIA[(k - 1)] + 1;
+      j = (int)this.pEf[i];
+      k = yg(j);
+      int m = this.pEZ[(k - 1)] + 1;
       Log.d("MicroMsg.StblAtom", "sampleId : " + j + " chunkId : " + k + ", sampleBeginId: " + m);
-      l1 = ef(m, j);
-      l2 = yc(k);
-      this.mHF[i] = (l2 + l1);
+      l1 = eY(m, j);
+      l2 = yh(k);
+      this.pEf[i] = (l2 + l1);
       i += 1;
     }
-    this.mIx = this.mHF[(this.mHF.length - 1)];
+    this.pEW = this.pEf[(this.pEf.length - 1)];
     long l3 = Util.currentTicks();
     i = 1;
     int j = 0;
     l1 = 0L;
-    Object localObject = this.mHH.iterator();
+    Object localObject = this.pEh.iterator();
     long l2 = 0L;
     if (((Iterator)localObject).hasNext())
     {
       n localn = (n)((Iterator)localObject).next();
-      localn.size = this.aYh[i];
-      k = yb(i);
+      localn.size = this.cSd[i];
+      k = yg(i);
       if (k != j) {}
-      for (localn.start = yc(k);; localn.start = l2)
+      for (localn.start = yh(k);; localn.start = l2)
       {
         l2 = localn.start + localn.size;
-        l1 += localn.kUY;
-        localn.kUY = (((float)l1 * 1.0F / (float)this.mHC * 1000.0F * 1000.0F));
+        l1 += localn.nAv;
+        localn.nAv = (((float)l1 * 1.0F / (float)this.pEc * 1000.0F * 1000.0F));
         localn.id = i;
         j = k;
         i += 1;
         break;
       }
     }
-    Log.i("MicroMsg.StblAtom", "parse sampleList cost:%sms, size:%s", new Object[] { Long.valueOf(Util.ticksToNow(l3)), Integer.valueOf(this.mHH.size()) });
+    Log.i("MicroMsg.StblAtom", "parse sampleList cost:%sms, size:%s", new Object[] { Long.valueOf(Util.ticksToNow(l3)), Integer.valueOf(this.pEh.size()) });
     l1 = Util.currentTicks();
-    if (this.mIj == null)
+    if (this.pEI == null)
     {
       i = 0;
-      while (i < this.mHH.size())
+      while (i < this.pEh.size())
       {
-        localObject = (n)this.mHH.get(i);
-        ((n)localObject).mHZ = 1;
-        localObject = new Pair(Integer.valueOf(i), Long.valueOf(((n)localObject).kUY));
-        Log.v("MicroMsg.StblAtom", "stss key frame from sampleList [%s %s], current stssList.size:%d", new Object[] { ((Pair)localObject).first, ((Pair)localObject).second, Integer.valueOf(this.mHI.size()) });
-        this.mHI.add(localObject);
+        localObject = (n)this.pEh.get(i);
+        ((n)localObject).pEz = 1;
+        localObject = new Pair(Integer.valueOf(i), Long.valueOf(((n)localObject).nAv));
+        Log.v("MicroMsg.StblAtom", "stss key frame from sampleList [%s %s], current stssList.size:%d", new Object[] { ((Pair)localObject).first, ((Pair)localObject).second, Integer.valueOf(this.pEi.size()) });
+        this.pEi.add(localObject);
         i += 1;
       }
     }
     i = 0;
-    while (i < this.mIj.length)
+    while (i < this.pEI.length)
     {
-      localObject = (n)this.mHH.get(this.mIj[i] - 1);
-      ((n)localObject).mHZ = 1;
-      localObject = new Pair(Integer.valueOf(this.mIj[i] - 1), Long.valueOf(((n)localObject).kUY));
-      Log.v("MicroMsg.StblAtom", "stss key frame from sampleId [%s %s], current stssList.size:%d", new Object[] { ((Pair)localObject).first, ((Pair)localObject).second, Integer.valueOf(this.mHI.size()) });
-      this.mHI.add(localObject);
+      localObject = (n)this.pEh.get(this.pEI[i] - 1);
+      ((n)localObject).pEz = 1;
+      localObject = new Pair(Integer.valueOf(this.pEI[i] - 1), Long.valueOf(((n)localObject).nAv));
+      Log.v("MicroMsg.StblAtom", "stss key frame from sampleId [%s %s], current stssList.size:%d", new Object[] { ((Pair)localObject).first, ((Pair)localObject).second, Integer.valueOf(this.pEi.size()) });
+      this.pEi.add(localObject);
       i += 1;
     }
-    Log.i("MicroMsg.StblAtom", "parse stssList cost:%sms, size:%s", new Object[] { Long.valueOf(Util.ticksToNow(l1)), Integer.valueOf(this.mHI.size()) });
+    Log.i("MicroMsg.StblAtom", "parse stssList cost:%sms, size:%s", new Object[] { Long.valueOf(Util.ticksToNow(l1)), Integer.valueOf(this.pEi.size()) });
     AppMethodBeat.o(133891);
     return true;
   }
   
-  private void bvM()
+  private void bTY()
   {
     AppMethodBeat.i(175948);
-    if (this.mIi != null) {}
+    if (this.pEH != null) {}
     int m;
-    for (int i = this.mIi.length;; i = this.mIr.length)
+    for (int i = this.pEH.length;; i = this.pEQ.length)
     {
       j = i - 1;
-      m = this.mIk.length;
+      m = this.pEJ.length;
       i = 1;
       while (i < m)
       {
-        this.mIk[(i - 1)] = (this.mIk[i] - this.mIk[(i - 1)]);
+        this.pEJ[(i - 1)] = (this.pEJ[i] - this.pEJ[(i - 1)]);
         i += 1;
       }
     }
-    this.mIk[(m - 1)] = (j - this.mIk[(m - 1)] + 1);
-    this.mIA = new int[j + 1];
-    this.mIA[0] = 0;
+    this.pEJ[(m - 1)] = (j - this.pEJ[(m - 1)] + 1);
+    this.pEZ = new int[j + 1];
+    this.pEZ[0] = 0;
     int j = 1;
     i = 0;
     while (i < m)
     {
-      int n = this.mIk[i];
-      int i1 = this.mIl[i];
+      int n = this.pEJ[i];
+      int i1 = this.pEK[i];
       int k = 0;
       while (k < n)
       {
-        int[] arrayOfInt = this.mIA;
+        int[] arrayOfInt = this.pEZ;
         arrayOfInt[j] = (arrayOfInt[(j - 1)] + i1);
         j += 1;
         k += 1;
       }
       i += 1;
     }
-    Log.i("MicroMsg.StblAtom", "create chunkTable size:%s", new Object[] { Integer.valueOf(this.mIA.length) });
+    Log.i("MicroMsg.StblAtom", "create chunkTable size:%s", new Object[] { Integer.valueOf(this.pEZ.length) });
     AppMethodBeat.o(175948);
   }
   
@@ -202,8 +202,8 @@ public final class o
     int j = c.readInt(arrayOfByte, 0);
     if (j > 0)
     {
-      this.aYh = new int[1];
-      this.aYh[0] = j;
+      this.cSd = new int[1];
+      this.cSd[0] = j;
       Log.i("MicroMsg.StblAtom", "all sample size is the same. size : ".concat(String.valueOf(j)));
       AppMethodBeat.o(133889);
       return 8L;
@@ -222,7 +222,7 @@ public final class o
       AppMethodBeat.o(133889);
       return -1L;
     }
-    this.aYh = new int[j + 1];
+    this.cSd = new int[j + 1];
     j = paramRandomAccessFile.read(arrayOfByte);
     long l1 = 0L;
     paramInt = i;
@@ -233,7 +233,7 @@ public final class o
       if (i >= 4)
       {
         l1 += i;
-        this.aYh[paramInt] = c.readInt(arrayOfByte, 0);
+        this.cSd[paramInt] = c.readInt(arrayOfByte, 0);
         if (l1 >= l3)
         {
           Log.d("MicroMsg.StblAtom", "read stsz atom end");
@@ -250,12 +250,12 @@ public final class o
     }
   }
   
-  private long ef(int paramInt1, int paramInt2)
+  private long eY(int paramInt1, int paramInt2)
   {
     long l2;
-    if (this.aYh.length == 1)
+    if (this.cSd.length == 1)
     {
-      l2 = this.aYh[0] * (paramInt2 - paramInt1);
+      l2 = this.cSd[0] * (paramInt2 - paramInt1);
       return l2;
     }
     long l1 = 0L;
@@ -265,36 +265,36 @@ public final class o
       if (paramInt1 > paramInt2) {
         break;
       }
-      l1 += this.aYh[paramInt1];
+      l1 += this.cSd[paramInt1];
       paramInt1 += 1;
     }
   }
   
-  private Pair<Integer, Integer> ya(int paramInt)
+  private Pair<Integer, Integer> yf(int paramInt)
   {
     int i = 0;
     AppMethodBeat.i(175946);
-    if (this.mIA == null)
+    if (this.pEZ == null)
     {
       long l = Util.currentTicks();
-      bvM();
+      bTY();
       Log.i("MicroMsg.StblAtom", "createChunkTable cost:%sms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
     }
-    if (paramInt < this.mHF.length)
+    if (paramInt < this.pEf.length)
     {
-      int j = (int)this.mHF[paramInt];
+      int j = (int)this.pEf[paramInt];
       if (j < 0)
       {
         Log.e("MicroMsg.StblAtom", "calcSampleBeginEndId %s not found in timeTable", new Object[] { Integer.valueOf(paramInt) });
         AppMethodBeat.o(175946);
         return null;
       }
-      int k = yb(j);
+      int k = yg(j);
       paramInt = i;
       if (k > 0) {
         paramInt = k - 1;
       }
-      Pair localPair = new Pair(Integer.valueOf(this.mIA[paramInt] + 1), Integer.valueOf(j));
+      Pair localPair = new Pair(Integer.valueOf(this.pEZ[paramInt] + 1), Integer.valueOf(j));
       AppMethodBeat.o(175946);
       return localPair;
     }
@@ -302,12 +302,12 @@ public final class o
     return null;
   }
   
-  private int yb(int paramInt)
+  private int yg(int paramInt)
   {
     int i = 0;
-    while (i < this.mIA.length)
+    while (i < this.pEZ.length)
     {
-      if (paramInt <= this.mIA[i]) {
+      if (paramInt <= this.pEZ[i]) {
         return i;
       }
       i += 1;
@@ -315,13 +315,13 @@ public final class o
     return 0;
   }
   
-  private long yc(int paramInt)
+  private long yh(int paramInt)
   {
-    if (this.mIi != null) {
-      return this.mIi[paramInt];
+    if (this.pEH != null) {
+      return this.pEH[paramInt];
     }
-    if (this.mIr != null) {
-      return this.mIr[paramInt];
+    if (this.pEQ != null) {
+      return this.pEQ[paramInt];
     }
     return 0L;
   }
@@ -351,9 +351,9 @@ public final class o
     }
     int k = 0;
     i = 0;
-    this.mHF = new long[(int)(this.duration / this.mHC) + 2];
-    Arrays.fill(this.mHF, -1L);
-    Object localObject = this.mHF;
+    this.pEf = new long[(int)(this.duration / this.pEc) + 2];
+    Arrays.fill(this.pEf, -1L);
+    Object localObject = this.pEf;
     paramInt = 1;
     localObject[0] = 1L;
     long l1 = 0L;
@@ -367,26 +367,26 @@ public final class o
         l1 = j + l1;
         n = c.readInt(arrayOfByte, 0);
         int i1 = c.readInt(arrayOfByte, 4);
-        this.mIq = new long[n];
-        Arrays.fill(this.mIq, 0L);
+        this.pEP = new long[n];
+        Arrays.fill(this.pEP, 0L);
         j = 0;
         while (j < n)
         {
           localObject = new n();
-          ((n)localObject).kUY = i1;
+          ((n)localObject).nAv = i1;
           if (j == 0) {}
           for (m = 0;; m = j - 1)
           {
-            long[] arrayOfLong = this.mIq;
-            arrayOfLong[m] += ((n)localObject).kUY;
-            this.mHH.add(localObject);
+            long[] arrayOfLong = this.pEP;
+            arrayOfLong[m] += ((n)localObject).nAv;
+            this.pEh.add(localObject);
             k += i1;
             m = i + 1;
             i = k;
-            while ((i >= this.mHC) && (paramInt < this.mHF.length))
+            while ((i >= this.pEc) && (paramInt < this.pEf.length))
             {
-              i = (int)(i - this.mHC);
-              this.mHF[paramInt] = m;
+              i = (int)(i - this.pEc);
+              this.pEf[paramInt] = m;
               paramInt += 1;
             }
           }
@@ -404,8 +404,8 @@ public final class o
       }
       else
       {
-        if (m < this.mHF.length) {
-          this.mHF[m] = n;
+        if (m < this.pEf.length) {
+          this.pEf[m] = n;
         }
         AppMethodBeat.o(133885);
         return 8L + l2;
@@ -416,34 +416,34 @@ public final class o
   final long a(RandomAccessFile paramRandomAccessFile, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(175945);
-    Pair localPair1 = ya(paramInt1);
-    Pair localPair2 = ya(paramInt2);
+    Pair localPair1 = yf(paramInt1);
+    Pair localPair2 = yf(paramInt2);
     if ((localPair1 != null) && (localPair2 != null))
     {
-      if (this.mIm == 0L) {}
+      if (this.pEL == 0L) {}
       int i;
       for (Integer localInteger = (Integer)localPair1.first;; localInteger = (Integer)localPair1.second)
       {
         paramInt2 = localInteger.intValue();
         i = ((Integer)localPair2.second).intValue();
-        Log.i("MicroMsg.StblAtom", "incrementParseStsz, startSampleId:%s, endSampleId:%s, sampleSizeTable.size:%s, startRange:%s, endRange:%s, stszLazyStartPos:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(i), Integer.valueOf(this.aYh.length), localPair1, localPair2, Long.valueOf(this.mIn) });
+        Log.i("MicroMsg.StblAtom", "incrementParseStsz, startSampleId:%s, endSampleId:%s, sampleSizeTable.size:%s, startRange:%s, endRange:%s, stszLazyStartPos:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(i), Integer.valueOf(this.cSd.length), localPair1, localPair2, Long.valueOf(this.pEM) });
         if (paramInt2 <= i) {
           break;
         }
         AppMethodBeat.o(175945);
         return -1L;
       }
-      if ((paramInt2 > this.aYh.length) || (i > this.aYh.length))
+      if ((paramInt2 > this.cSd.length) || (i > this.cSd.length))
       {
         AppMethodBeat.o(175945);
         return -1L;
       }
-      if (this.mIn < 0L)
+      if (this.pEM < 0L)
       {
         AppMethodBeat.o(175945);
         return -1L;
       }
-      if (this.mIs == null)
+      if (this.pER == null)
       {
         AppMethodBeat.o(175945);
         return -1L;
@@ -451,18 +451,18 @@ public final class o
       paramInt1 = (paramInt2 - 1) * 4;
       for (;;)
       {
-        if ((paramInt1 < this.mIs.length) && (paramInt2 <= i))
+        if ((paramInt1 < this.pER.length) && (paramInt2 <= i))
         {
-          int j = c.readInt(this.mIs, paramInt1);
-          this.aYh[paramInt2] = j;
+          int j = c.readInt(this.pER, paramInt1);
+          this.cSd[paramInt2] = j;
           paramInt2 += 1;
-          if (0L >= this.mIo) {
+          if (0L >= this.pEN) {
             Log.d("MicroMsg.StblAtom", "read stsz atom end");
           }
         }
         else
         {
-          Log.i("MicroMsg.StblAtom", "incrementParseStsz finish, filePos:%s, offset:%s, sampleSizeTableData.length:%s", new Object[] { Long.valueOf(paramRandomAccessFile.getFilePointer()), Integer.valueOf(paramInt1), Integer.valueOf(this.mIs.length) });
+          Log.i("MicroMsg.StblAtom", "incrementParseStsz finish, filePos:%s, offset:%s, sampleSizeTableData.length:%s", new Object[] { Long.valueOf(paramRandomAccessFile.getFilePointer()), Integer.valueOf(paramInt1), Integer.valueOf(this.pER.length) });
           AppMethodBeat.o(175945);
           return 0L;
         }
@@ -497,8 +497,8 @@ public final class o
       return -1L;
     }
     Log.d("MicroMsg.StblAtom", "handle stsc entryCount : ".concat(String.valueOf(i)));
-    this.mIk = new int[i];
-    this.mIl = new int[i];
+    this.pEJ = new int[i];
+    this.pEK = new int[i];
     long l1 = 0L;
     paramInt = paramRandomAccessFile.read(arrayOfByte);
     i = 0;
@@ -508,8 +508,8 @@ public final class o
       if (paramInt >= 12)
       {
         l1 += paramInt;
-        this.mIk[i] = c.readInt(arrayOfByte, 0);
-        this.mIl[i] = c.readInt(arrayOfByte, 4);
+        this.pEJ[i] = c.readInt(arrayOfByte, 0);
+        this.pEK[i] = c.readInt(arrayOfByte, 4);
         i += 1;
         if (l1 >= l3)
         {
@@ -534,11 +534,11 @@ public final class o
       AppMethodBeat.o(175947);
       return false;
     }
-    Log.i("MicroMsg.StblAtom", "incrementCreateTimeTable, startSecond:%s, endSecond:%s, timeTable.length:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(this.mHF.length) });
+    Log.i("MicroMsg.StblAtom", "incrementCreateTimeTable, startSecond:%s, endSecond:%s, timeTable.length:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(this.pEf.length) });
     long l1 = Util.currentTicks();
-    if (this.mIA == null)
+    if (this.pEZ == null)
     {
-      bvM();
+      bTY();
       Log.i("MicroMsg.StblAtom", "createChunkTable cost:%sms", new Object[] { Long.valueOf(Util.ticksToNow(l1)) });
     }
     long l3;
@@ -554,43 +554,43 @@ public final class o
       }
     }
     long l2 = Util.currentTicks();
-    int i = Math.min(paramInt1, this.mHF.length - 1);
-    int j = Math.min(paramInt2, this.mHF.length - 1);
-    paramRandomAccessFile = ya(paramInt1);
-    Pair localPair = ya(paramInt2);
-    Log.i("MicroMsg.StblAtom", "incrementCreateTimeTable, start:%s, end:%s, startSampleIdRange:%s, endSampleIdRange:%s, calcSampleRangeCost:%sms, chunkTable.size:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), paramRandomAccessFile, localPair, Long.valueOf(Util.ticksToNow(l2)), Integer.valueOf(this.mIA.length) });
+    int i = Math.min(paramInt1, this.pEf.length - 1);
+    int j = Math.min(paramInt2, this.pEf.length - 1);
+    paramRandomAccessFile = yf(paramInt1);
+    Pair localPair = yf(paramInt2);
+    Log.i("MicroMsg.StblAtom", "incrementCreateTimeTable, start:%s, end:%s, startSampleIdRange:%s, endSampleIdRange:%s, calcSampleRangeCost:%sms, chunkTable.size:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), paramRandomAccessFile, localPair, Long.valueOf(Util.ticksToNow(l2)), Integer.valueOf(this.pEZ.length) });
     l2 = Util.currentTicks();
     paramInt1 = i;
     int k;
     if (paramInt1 <= j)
     {
-      i = (int)this.mHF[paramInt1];
+      i = (int)this.pEf[paramInt1];
       l3 = Util.currentTicks();
-      k = yb(i);
+      k = yg(i);
       l3 = Util.ticksToNow(l3);
       if (k > 0) {}
       for (paramInt2 = k - 1;; paramInt2 = 0)
       {
-        paramInt2 = this.mIA[paramInt2] + 1;
+        paramInt2 = this.pEZ[paramInt2] + 1;
         long l5 = Util.currentTicks();
-        long l4 = ef(paramInt2, i);
+        long l4 = eY(paramInt2, i);
         l5 = Util.ticksToNow(l5);
-        long l6 = yc(k);
-        this.mHF[paramInt1] = (l6 + l4);
+        long l6 = yh(k);
+        this.pEf[paramInt1] = (l6 + l4);
         Log.d("MicroMsg.StblAtom", "sampleId:%s, sampleBeginId:%s, chunkId:%s, sampleSize:%s, chunkOffset:%s, calcChunkId cost:%sms, calcSampleSizeCost:%sms", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt2), Integer.valueOf(k), Long.valueOf(l4), Long.valueOf(l6), Long.valueOf(l3), Long.valueOf(l5) });
         paramInt1 += 1;
         break;
       }
     }
     Log.d("MicroMsg.StblAtom", "updateTimeTable cost:%sms", new Object[] { Long.valueOf(Util.ticksToNow(l2)) });
-    this.mIx = this.mHF[(j - 1)];
+    this.pEW = this.pEf[(j - 1)];
     int i5;
     int i6;
     int i4;
     int i3;
     if ((paramRandomAccessFile != null) && (localPair != null))
     {
-      if (this.mIm == 0L) {}
+      if (this.pEL == 0L) {}
       for (paramRandomAccessFile = (Integer)paramRandomAccessFile.first;; paramRandomAccessFile = (Integer)paramRandomAccessFile.second)
       {
         i5 = paramRandomAccessFile.intValue();
@@ -607,7 +607,7 @@ public final class o
           i4 = i2;
           i = j;
           i3 = i1;
-          if (paramInt1 >= this.mIj.length) {
+          if (paramInt1 >= this.pEI.length) {
             break;
           }
           int n = i2;
@@ -616,9 +616,9 @@ public final class o
           {
             n = i2;
             k = i1;
-            if (this.mIj[paramInt1] - 1 >= i5 - 1)
+            if (this.pEI[paramInt1] - 1 >= i5 - 1)
             {
-              n = this.mIj[paramInt1] - 1;
+              n = this.pEI[paramInt1] - 1;
               k = paramInt1;
             }
           }
@@ -628,9 +628,9 @@ public final class o
           {
             i2 = m;
             i1 = j;
-            if (this.mIj[paramInt1] - 1 >= i6 - 1)
+            if (this.pEI[paramInt1] - 1 >= i6 - 1)
             {
-              i2 = this.mIj[paramInt1] - 1;
+              i2 = this.pEI[paramInt1] - 1;
               i1 = paramInt1;
             }
           }
@@ -654,55 +654,55 @@ public final class o
       if (i3 >= 0) {
         break label1511;
       }
-      Log.i("MicroMsg.StblAtom", "not found stssStart, set to last %s", new Object[] { Integer.valueOf(this.mIj.length - 1) });
-      paramInt1 = this.mIj.length - 1;
-      k = this.mIj[paramInt1] - 1;
+      Log.i("MicroMsg.StblAtom", "not found stssStart, set to last %s", new Object[] { Integer.valueOf(this.pEI.length - 1) });
+      paramInt1 = this.pEI.length - 1;
+      k = this.pEI[paramInt1] - 1;
     }
     for (;;)
     {
       if (i < 0)
       {
-        Log.i("MicroMsg.StblAtom", "not found stssEnd, set to last %s", new Object[] { Integer.valueOf(this.mIj.length - 1) });
-        j = this.mIj.length - 1;
-        paramInt2 = this.mIj[j] - 1;
+        Log.i("MicroMsg.StblAtom", "not found stssEnd, set to last %s", new Object[] { Integer.valueOf(this.pEI.length - 1) });
+        j = this.pEI.length - 1;
+        paramInt2 = this.pEI[j] - 1;
       }
       for (;;)
       {
         if (paramInt2 > i6) {}
         for (i = paramInt2;; i = i6)
         {
-          if (i >= this.mHH.size()) {
-            i = this.mHH.size() - 1;
+          if (i >= this.pEh.size()) {
+            i = this.pEh.size() - 1;
           }
           for (;;)
           {
-            Log.i("MicroMsg.StblAtom", "sample id range, start:%s, end:%s, sampleList.size:%s, stssStart:%s, stssEnd:%s, stssStartSampleId:%s, stssEndSampleId:%s, lastCalcSampleTimeOffset:%s, stssSampleId.length:%s, search cost:%sms", new Object[] { Integer.valueOf(i5), Integer.valueOf(i), Integer.valueOf(this.mHH.size()), Integer.valueOf(paramInt1), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(paramInt2), Integer.valueOf(this.mIy), Integer.valueOf(this.mIj.length), Long.valueOf(Util.ticksToNow(l2)) });
-            if ((i > i5) && (i < this.mHH.size()) && (this.mIq != null) && (i < this.mIq.length))
+            Log.i("MicroMsg.StblAtom", "sample id range, start:%s, end:%s, sampleList.size:%s, stssStart:%s, stssEnd:%s, stssStartSampleId:%s, stssEndSampleId:%s, lastCalcSampleTimeOffset:%s, stssSampleId.length:%s, search cost:%sms", new Object[] { Integer.valueOf(i5), Integer.valueOf(i), Integer.valueOf(this.pEh.size()), Integer.valueOf(paramInt1), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(paramInt2), Integer.valueOf(this.pEX), Integer.valueOf(this.pEI.length), Long.valueOf(Util.ticksToNow(l2)) });
+            if ((i > i5) && (i < this.pEh.size()) && (this.pEP != null) && (i < this.pEP.length))
             {
               l2 = Util.currentTicks();
               paramInt2 = i5;
               while (paramInt2 <= i)
               {
-                paramRandomAccessFile = (n)this.mHH.get(paramInt2);
+                paramRandomAccessFile = (n)this.pEh.get(paramInt2);
                 k = paramInt2 + 1;
-                paramRandomAccessFile.size = this.aYh[k];
-                paramRandomAccessFile.kUY = (((float)this.mIq[paramInt2] * 1.0F / (float)this.mHC * 1000.0F * 1000.0F));
+                paramRandomAccessFile.size = this.cSd[k];
+                paramRandomAccessFile.nAv = (((float)this.pEP[paramInt2] * 1.0F / (float)this.pEc * 1000.0F * 1000.0F));
                 paramRandomAccessFile.id = k;
                 paramInt2 += 1;
               }
-              Log.i("MicroMsg.StblAtom", "increment parse sampleList cost:%sms, start:%s, lastCalcSampleTimeOffset:%s, end:%s", new Object[] { Long.valueOf(Util.ticksToNow(l2)), Integer.valueOf(i5), Integer.valueOf(this.mIy), Integer.valueOf(i) });
-              this.mIy = i;
+              Log.i("MicroMsg.StblAtom", "increment parse sampleList cost:%sms, start:%s, lastCalcSampleTimeOffset:%s, end:%s", new Object[] { Long.valueOf(Util.ticksToNow(l2)), Integer.valueOf(i5), Integer.valueOf(this.pEX), Integer.valueOf(i) });
+              this.pEX = i;
               l2 = Util.currentTicks();
-              if (this.mIj == null) {
+              if (this.pEI == null) {
                 while (i5 <= i)
                 {
-                  if (this.mHN[i5] == null)
+                  if (this.pEn[i5] == null)
                   {
-                    paramRandomAccessFile = (n)this.mHH.get(i5);
-                    paramRandomAccessFile.mHZ = 1;
-                    paramRandomAccessFile = new Pair(Integer.valueOf(i5), Long.valueOf(paramRandomAccessFile.kUY));
-                    Log.v("MicroMsg.StblAtom", "stss key frame from sampleList [%s %s], current stssList.size:%d", new Object[] { paramRandomAccessFile.first, paramRandomAccessFile.second, Integer.valueOf(this.mHI.size()) });
-                    this.mHN[i5] = paramRandomAccessFile;
+                    paramRandomAccessFile = (n)this.pEh.get(i5);
+                    paramRandomAccessFile.pEz = 1;
+                    paramRandomAccessFile = new Pair(Integer.valueOf(i5), Long.valueOf(paramRandomAccessFile.nAv));
+                    Log.v("MicroMsg.StblAtom", "stss key frame from sampleList [%s %s], current stssList.size:%d", new Object[] { paramRandomAccessFile.first, paramRandomAccessFile.second, Integer.valueOf(this.pEi.size()) });
+                    this.pEn[i5] = paramRandomAccessFile;
                   }
                   i5 += 1;
                 }
@@ -711,18 +711,18 @@ public final class o
               if (j >= paramInt1) {
                 while (paramInt1 <= j)
                 {
-                  if (this.mHN[paramInt1] == null)
+                  if (this.pEn[paramInt1] == null)
                   {
-                    paramRandomAccessFile = (n)this.mHH.get(this.mIj[paramInt1] - 1);
-                    paramRandomAccessFile.mHZ = 1;
-                    paramRandomAccessFile = new Pair(Integer.valueOf(this.mIj[paramInt1] - 1), Long.valueOf(paramRandomAccessFile.kUY));
-                    Log.v("MicroMsg.StblAtom", "stss key frame from sampleId [%s %s], current stssList.size:%d", new Object[] { paramRandomAccessFile.first, paramRandomAccessFile.second, Integer.valueOf(this.mHI.size()) });
-                    this.mHN[paramInt1] = paramRandomAccessFile;
+                    paramRandomAccessFile = (n)this.pEh.get(this.pEI[paramInt1] - 1);
+                    paramRandomAccessFile.pEz = 1;
+                    paramRandomAccessFile = new Pair(Integer.valueOf(this.pEI[paramInt1] - 1), Long.valueOf(paramRandomAccessFile.nAv));
+                    Log.v("MicroMsg.StblAtom", "stss key frame from sampleId [%s %s], current stssList.size:%d", new Object[] { paramRandomAccessFile.first, paramRandomAccessFile.second, Integer.valueOf(this.pEi.size()) });
+                    this.pEn[paramInt1] = paramRandomAccessFile;
                   }
                   paramInt1 += 1;
                 }
               }
-              Log.i("MicroMsg.StblAtom", "increment parse stssList cost:%sms, size:%s", new Object[] { Long.valueOf(Util.ticksToNow(l2)), Integer.valueOf(this.mHI.size()) });
+              Log.i("MicroMsg.StblAtom", "increment parse stssList cost:%sms, size:%s", new Object[] { Long.valueOf(Util.ticksToNow(l2)), Integer.valueOf(this.pEi.size()) });
             }
             Log.i("MicroMsg.StblAtom", "incrementCreateTimeTable cost:%sms", new Object[] { Long.valueOf(Util.ticksToNow(l1)) });
             AppMethodBeat.o(175947);
@@ -760,7 +760,7 @@ public final class o
       AppMethodBeat.o(133887);
       return -1L;
     }
-    this.mIi = new int[i + 1];
+    this.pEH = new int[i + 1];
     paramInt = 1;
     long l1 = 0L;
     i = paramRandomAccessFile.read(arrayOfByte);
@@ -770,7 +770,7 @@ public final class o
       if (i >= 4)
       {
         l1 += i;
-        this.mIi[paramInt] = c.readInt(arrayOfByte, 0);
+        this.pEH[paramInt] = c.readInt(arrayOfByte, 0);
         if (l1 >= l3)
         {
           Log.d("MicroMsg.StblAtom", "read stco atom end");
@@ -810,7 +810,7 @@ public final class o
       AppMethodBeat.o(133888);
       return -1L;
     }
-    this.mIr = new long[i + 1];
+    this.pEQ = new long[i + 1];
     paramInt = 1;
     i = paramRandomAccessFile.read(arrayOfByte);
     long l1 = 0L;
@@ -820,7 +820,7 @@ public final class o
       if (i >= 8)
       {
         l1 += i;
-        this.mIr[paramInt] = c.aP(arrayOfByte);
+        this.pEQ[paramInt] = c.aP(arrayOfByte);
         if (l1 >= l3)
         {
           Log.d("MicroMsg.StblAtom", "read stco atom end");
@@ -860,7 +860,7 @@ public final class o
       AppMethodBeat.o(133890);
       return -1L;
     }
-    this.mIj = new int[i];
+    this.pEI = new int[i];
     paramInt = 0;
     i = paramRandomAccessFile.read(arrayOfByte);
     long l1 = 0L;
@@ -870,7 +870,7 @@ public final class o
       if (i >= 4)
       {
         l1 += i;
-        this.mIj[paramInt] = c.readInt(arrayOfByte, 0);
+        this.pEI[paramInt] = c.readInt(arrayOfByte, 0);
         if (l1 >= l3)
         {
           Log.d("MicroMsg.StblAtom", "read stss atom end");
@@ -879,7 +879,7 @@ public final class o
       }
       else
       {
-        Log.i("MicroMsg.StblAtom", "handleStssAtom, stssSampleId.size:%s", new Object[] { Integer.valueOf(this.mIj.length) });
+        Log.i("MicroMsg.StblAtom", "handleStssAtom, stssSampleId.size:%s", new Object[] { Integer.valueOf(this.pEI.length) });
         AppMethodBeat.o(133890);
         return l2 + 8L;
       }
@@ -915,9 +915,9 @@ public final class o
         int i7 = c.readInt(arrayOfByte, 4);
         Log.i("MicroMsg.StblAtom", "readAtom, type:%s, size:%s", new Object[] { Integer.valueOf(i7), Integer.valueOf(i6) });
         l1 = 0L;
-        if (i7 == a.aVx)
+        if (i7 == a.cPt)
         {
-          this.mIa = paramRandomAccessFile.getFilePointer();
+          this.pEA = paramRandomAccessFile.getFilePointer();
           l1 = a(paramRandomAccessFile, i6);
           Log.i("MicroMsg.StblAtom", "handleSttsAtom cost:%sms", new Object[] { Long.valueOf(Util.ticksToNow(l3)) });
           i4 = 1;
@@ -930,9 +930,9 @@ public final class o
           paramRandomAccessFile = new IOException("skip file error.");
           AppMethodBeat.o(133884);
           throw paramRandomAccessFile;
-          if (i7 == a.aVA)
+          if (i7 == a.cPw)
           {
-            this.mIb = paramRandomAccessFile.getFilePointer();
+            this.pEB = paramRandomAccessFile.getFilePointer();
             l1 = b(paramRandomAccessFile, i6);
             Log.i("MicroMsg.StblAtom", "handleStscAtom cost:%sms", new Object[] { Long.valueOf(Util.ticksToNow(l3)) });
             i3 = 1;
@@ -940,9 +940,9 @@ public final class o
             i = m;
             i4 = j;
           }
-          else if (i7 == a.aVD)
+          else if (i7 == a.cPz)
           {
-            this.mIc = paramRandomAccessFile.getFilePointer();
+            this.pEC = paramRandomAccessFile.getFilePointer();
             l1 = c(paramRandomAccessFile, i6);
             Log.i("MicroMsg.StblAtom", "handleStcoAtom cost:%sms", new Object[] { Long.valueOf(Util.ticksToNow(l3)) });
             i = 1;
@@ -950,9 +950,9 @@ public final class o
             i3 = k;
             i4 = j;
           }
-          else if (i7 == a.aVE)
+          else if (i7 == a.cPA)
           {
-            this.mIe = paramRandomAccessFile.getFilePointer();
+            this.pED = paramRandomAccessFile.getFilePointer();
             l1 = d(paramRandomAccessFile, i6);
             Log.i("MicroMsg.StblAtom", "handleCo64Atom cost:%sms", new Object[] { Long.valueOf(Util.ticksToNow(l3)) });
             i = 1;
@@ -960,10 +960,10 @@ public final class o
             i3 = k;
             i4 = j;
           }
-          else if (i7 == a.aVB)
+          else if (i7 == a.cPx)
           {
-            this.mIf = paramRandomAccessFile.getFilePointer();
-            Log.i("MicroMsg.StblAtom", "stsz atom pos:%s", new Object[] { Long.valueOf(this.mIf) });
+            this.pEE = paramRandomAccessFile.getFilePointer();
+            Log.i("MicroMsg.StblAtom", "stsz atom pos:%s", new Object[] { Long.valueOf(this.pEE) });
             l1 = e(paramRandomAccessFile, i6);
             Log.i("MicroMsg.StblAtom", "handleStszAtom cost:%sms", new Object[] { Long.valueOf(Util.ticksToNow(l3)) });
             i2 = 1;
@@ -977,9 +977,9 @@ public final class o
             i3 = k;
             i = m;
             i4 = j;
-            if (i7 == a.aVy)
+            if (i7 == a.cPu)
             {
-              this.mIg = paramRandomAccessFile.getFilePointer();
+              this.pEF = paramRandomAccessFile.getFilePointer();
               l1 = f(paramRandomAccessFile, i6);
               Log.i("MicroMsg.StblAtom", "handleStssAtom cost:%sms", new Object[] { Long.valueOf(Util.ticksToNow(l3)) });
               i1 = 1;
@@ -998,7 +998,7 @@ public final class o
       {
         Log.i("MicroMsg.StblAtom", "parse all atoms cost %sms", new Object[] { Long.valueOf(Util.ticksToNow(l4)) });
         l1 = Util.currentTicks();
-        bvL();
+        bTX();
         Log.i("MicroMsg.StblAtom", "createTimeTable cost:%sms", new Object[] { Long.valueOf(Util.ticksToNow(l1)) });
         Log.i("MicroMsg.StblAtom", "parse stbl atom cost:%sms", new Object[] { Long.valueOf(Util.ticksToNow(l3)) });
         AppMethodBeat.o(133884);
@@ -1014,7 +1014,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.plugin.a.o
  * JD-Core Version:    0.7.0.1
  */

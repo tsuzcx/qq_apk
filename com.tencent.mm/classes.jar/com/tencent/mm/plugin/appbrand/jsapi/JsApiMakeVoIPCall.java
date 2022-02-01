@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.yb;
+import com.tencent.mm.autogen.a.zu;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 
@@ -19,10 +19,10 @@ public final class JsApiMakeVoIPCall
     extends MainProcessTask
   {
     public static final Parcelable.Creator<StartVoIPCall> CREATOR;
-    private int okO;
-    private o ovN;
-    private e ovO;
-    private IListener ovP;
+    private int ror;
+    private p rzh;
+    private f rzi;
+    private IListener rzj;
     public int status;
     
     static
@@ -35,62 +35,62 @@ public final class JsApiMakeVoIPCall
     public StartVoIPCall(Parcel paramParcel)
     {
       AppMethodBeat.i(45544);
-      this.ovP = new IListener() {};
-      f(paramParcel);
+      this.rzj = new IListener(com.tencent.mm.app.f.hfK) {};
+      h(paramParcel);
       AppMethodBeat.o(45544);
     }
     
-    public StartVoIPCall(o paramo, e parame, int paramInt)
+    public StartVoIPCall(p paramp, f paramf, int paramInt)
     {
       AppMethodBeat.i(45543);
-      this.ovP = new IListener() {};
-      this.ovN = paramo;
-      this.ovO = parame;
-      this.okO = paramInt;
+      this.rzj = new IListener(com.tencent.mm.app.f.hfK) {};
+      this.rzh = paramp;
+      this.rzi = paramf;
+      this.ror = paramInt;
       AppMethodBeat.o(45543);
     }
     
-    public final void RW()
+    public final void asn()
     {
       AppMethodBeat.i(45545);
-      EventCenter.instance.addListener(this.ovP);
+      this.rzj.alive();
       AppMethodBeat.o(45545);
     }
     
-    public final void bsK()
+    public final void bQr()
     {
       AppMethodBeat.i(45546);
-      bPk();
+      cpx();
       Log.i("MicroMsg.JsApiMakeVoIPCall", "makeVoIPCall = %d", new Object[] { Integer.valueOf(this.status) });
       if (this.status == 1)
       {
-        this.ovO.j(this.okO, this.ovN.h("cancel", null));
+        this.rzi.callback(this.ror, this.rzh.ZP("cancel"));
         AppMethodBeat.o(45546);
         return;
       }
       if (this.status == 2)
       {
-        this.ovO.j(this.okO, this.ovN.h("ok", null));
+        this.rzi.callback(this.ror, this.rzh.ZP("ok"));
         AppMethodBeat.o(45546);
         return;
       }
       if (this.status == 3)
       {
-        this.ovO.j(this.okO, this.ovN.h("fail:network error", null));
+        this.rzi.callback(this.ror, this.rzh.ZP("fail:network error"));
         AppMethodBeat.o(45546);
         return;
       }
       if (this.status == 4)
       {
-        this.ovO.j(this.okO, this.ovN.h("fail:param not match", null));
+        this.rzi.callback(this.ror, this.rzh.ZP("fail:param not match"));
         AppMethodBeat.o(45546);
         return;
       }
-      this.ovO.j(this.okO, this.ovN.h("fail:unknow", null));
+      this.rzi.callback(this.ror, this.rzh.ZP("fail:unknow"));
       AppMethodBeat.o(45546);
     }
     
-    public final void f(Parcel paramParcel)
+    public final void h(Parcel paramParcel)
     {
       AppMethodBeat.i(45547);
       this.status = paramParcel.readInt();

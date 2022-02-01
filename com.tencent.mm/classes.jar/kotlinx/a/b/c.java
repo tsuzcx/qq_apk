@@ -1,24 +1,39 @@
 package kotlinx.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
-import kotlin.l.b;
-import kotlinx.a.t;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"throwSubtypeNotRegistered", "", "subClassName", "", "baseClass", "Lkotlin/reflect/KClass;", "subClass", "kotlinx-serialization-runtime"})
-public final class c
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lkotlinx/serialization/descriptors/PolymorphicKind;", "Lkotlinx/serialization/descriptors/SerialKind;", "()V", "OPEN", "SEALED", "Lkotlinx/serialization/descriptors/PolymorphicKind$SEALED;", "Lkotlinx/serialization/descriptors/PolymorphicKind$OPEN;", "kotlinx-serialization-runtime"}, k=1, mv={1, 4, 0})
+public abstract class c
+  extends i
 {
-  static final Void a(String paramString, b<?> paramb)
+  private c()
   {
-    AppMethodBeat.i(254239);
-    paramString = (Throwable)new t(paramString + " is not registered for polymorphic serialization in the scope of " + paramb, (byte)0);
-    AppMethodBeat.o(254239);
-    throw paramString;
+    super((byte)0);
+  }
+  
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lkotlinx/serialization/descriptors/PolymorphicKind$OPEN;", "Lkotlinx/serialization/descriptors/PolymorphicKind;", "()V", "kotlinx-serialization-runtime"}, k=1, mv={1, 4, 0})
+  public static final class a
+    extends c
+  {
+    public static final a ajCJ;
+    
+    static
+    {
+      AppMethodBeat.i(188461);
+      ajCJ = new a();
+      AppMethodBeat.o(188461);
+    }
+    
+    private a()
+    {
+      super();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     kotlinx.a.b.c
  * JD-Core Version:    0.7.0.1
  */

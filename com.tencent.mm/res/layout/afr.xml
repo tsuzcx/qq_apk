@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/ene" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:id="@id/end" android:background="@drawable/a1c" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/enc" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:src="@raw/icons_filled_close" android:layout_centerInParent="true" app:iconColor="@color/ag2" />
-    </RelativeLayout>
-</RelativeLayout>
+    <TextView android:textSize="@dimen/uy" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/b00" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cv" android:layout_marginTop="@dimen/d4" android:text="@string/dj0" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <TextView android:textSize="@dimen/aqj" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/azz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cv" android:layout_marginTop="@dimen/cp" android:layout_marginRight="@dimen/cv" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toBottomOf="@id/b00" />
+    <LinearLayout android:id="@id/azw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d_" android:layout_marginBottom="@dimen/db" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toBottomOf="@id/azz">
+        <Button android:textSize="17.0dip" android:textColor="@color/az" android:id="@id/azx" android:background="@drawable/ya" android:layout_width="@dimen/c8" android:layout_height="@dimen/d4" android:text="@string/diu" />
+        <Button android:textSize="17.0dip" android:textColor="@color/az" android:id="@id/azy" android:background="@drawable/yb" android:layout_width="@dimen/c8" android:layout_height="@dimen/d4" android:layout_marginLeft="@dimen/cp" android:text="@string/div" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

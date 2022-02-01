@@ -3,9 +3,10 @@ package com.tencent.mm.plugin.appbrand.jsapi.coverview;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.ad.b;
-import com.tencent.mm.plugin.appbrand.jsapi.ae.f;
+import com.tencent.mm.plugin.appbrand.af.i;
+import com.tencent.mm.plugin.appbrand.jsapi.ah.f;
 import com.tencent.mm.plugin.appbrand.jsapi.base.b;
-import com.tencent.mm.plugin.appbrand.jsapi.g.a;
+import com.tencent.mm.plugin.appbrand.jsapi.h.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +18,7 @@ public final class h
   private static final int CTRL_INDEX = 446;
   public static final String NAME = "insertScrollView";
   
-  public final int K(JSONObject paramJSONObject)
+  public final int V(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(137529);
     int i = paramJSONObject.getInt("viewId");
@@ -25,15 +26,15 @@ public final class h
     return i;
   }
   
-  public final View a(com.tencent.mm.plugin.appbrand.jsapi.g paramg, JSONObject paramJSONObject)
+  public final View a(com.tencent.mm.plugin.appbrand.jsapi.h paramh, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(137528);
-    paramg = new WxaScrollView(paramg.getContext());
+    paramh = new WxaScrollView(paramh.getContext());
     AppMethodBeat.o(137528);
-    return paramg;
+    return paramh;
   }
   
-  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.g paramg, final int paramInt, View paramView, JSONObject paramJSONObject)
+  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.h paramh, final int paramInt, View paramView, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(137530);
     Log.d("MicroMsg.JsApiInsertScrollView", "onInsertView(viewId : %s, %s)", new Object[] { Integer.valueOf(paramInt), paramJSONObject });
@@ -42,7 +43,7 @@ public final class h
     String str = paramJSONObject.optString("data", "");
     f.b(paramView, paramJSONObject.optJSONObject("style"));
     final boolean bool2 = paramJSONObject.optBoolean("independent", false);
-    paramg.hl(bool2).N(paramInt, true).k("data", str);
+    paramh.ic(bool2).ac(paramInt, true).q("data", str);
     if (bool1) {
       localWxaScrollView.setOnScrollChangedListener(new t()
       {
@@ -54,7 +55,7 @@ public final class h
             AppMethodBeat.o(137526);
             return;
           }
-          Object localObject = paramg.hl(bool2).N(paramInt, false);
+          Object localObject = paramh.ic(bool2).ac(paramInt, false);
           if (localObject == null)
           {
             AppMethodBeat.o(137526);
@@ -69,12 +70,12 @@ public final class h
           paramAnonymousView = ((WxaScrollView)paramAnonymousView).getTargetView();
           HashMap localHashMap = new HashMap();
           localHashMap.put("data", localObject);
-          localHashMap.put("scrollLeft", Integer.valueOf(com.tencent.mm.plugin.appbrand.ac.g.Dh(paramAnonymousInt1)));
-          localHashMap.put("scrollTop", Integer.valueOf(com.tencent.mm.plugin.appbrand.ac.g.Dh(paramAnonymousInt2)));
-          localHashMap.put("scrollWidth", Integer.valueOf(com.tencent.mm.plugin.appbrand.ac.g.Dh(paramAnonymousView.getWidth())));
-          localHashMap.put("scrollHeight", Integer.valueOf(com.tencent.mm.plugin.appbrand.ac.g.Dh(paramAnonymousView.getHeight())));
-          paramAnonymousView = new s().E(localHashMap);
-          paramg.a(paramAnonymousView, null);
+          localHashMap.put("scrollLeft", Integer.valueOf(i.DB(paramAnonymousInt1)));
+          localHashMap.put("scrollTop", Integer.valueOf(i.DB(paramAnonymousInt2)));
+          localHashMap.put("scrollWidth", Integer.valueOf(i.DB(paramAnonymousView.getWidth())));
+          localHashMap.put("scrollHeight", Integer.valueOf(i.DB(paramAnonymousView.getHeight())));
+          paramAnonymousView = new s().L(localHashMap);
+          paramh.a(paramAnonymousView, null);
           AppMethodBeat.o(137526);
         }
       });
@@ -94,7 +95,7 @@ public final class h
     }
     if (paramJSONObject.has("scrollTop"))
     {
-      paramInt = com.tencent.mm.plugin.appbrand.ac.g.a(paramJSONObject, "scrollTop", localWxaScrollView.getScrollY());
+      paramInt = i.a(paramJSONObject, "scrollTop", localWxaScrollView.getScrollY());
       Log.i("MicroMsg.JsApiInsertScrollView", "scrollTop:%d", new Object[] { Integer.valueOf(paramInt) });
       localWxaScrollView.postDelayed(new Runnable()
       {
@@ -111,7 +112,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.coverview.h
  * JD-Core Version:    0.7.0.1
  */

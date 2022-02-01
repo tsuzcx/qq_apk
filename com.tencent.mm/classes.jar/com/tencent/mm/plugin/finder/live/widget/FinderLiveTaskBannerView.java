@@ -8,416 +8,624 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.b.c;
-import com.tencent.mm.model.cm;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.model.cn;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.plugin.f;
+import com.tencent.mm.plugin.finder.live.p.e;
+import com.tencent.mm.plugin.finder.live.p.f;
 import com.tencent.mm.plugin.finder.view.manager.FinderLinearLayoutManager;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.bbt;
+import com.tencent.mm.protocal.protobuf.blk;
+import com.tencent.mm.protocal.protobuf.cba;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.sdk.platformtools.MMHandler.Callback;
-import com.tencent.mm.ui.ad;
+import com.tencent.mm.ui.af;
+import com.tencent.mm.ui.widget.MMRoundCornerImageView;
 import com.tencent.mm.view.RecyclerHorizontalViewPager;
 import com.tencent.mm.view.RecyclerHorizontalViewPager.b;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import kotlin.g.b.aa.e;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.ah.e;
+import kotlin.k.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView;", "Landroid/widget/FrameLayout;", "Lcom/tencent/mm/view/RecyclerHorizontalViewPager$IPageChangeCallback;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "LOOP_INTERVAL", "", "SCROLL_TO_NEXT_IMG_WHAT", "TAG", "", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView$ViewHolder;", "getAdapter", "()Landroidx/recyclerview/widget/RecyclerView$Adapter;", "setAdapter", "(Landroidx/recyclerview/widget/RecyclerView$Adapter;)V", "currentPosition", "dataList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveQuestActivity;", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "isViewVisible", "", "mContext", "getMContext", "()Landroid/content/Context;", "setMContext", "pagerView", "Lcom/tencent/mm/view/RecyclerHorizontalViewPager;", "getPagerView", "()Lcom/tencent/mm/view/RecyclerHorizontalViewPager;", "setPagerView", "(Lcom/tencent/mm/view/RecyclerHorizontalViewPager;)V", "root", "Landroid/view/View;", "getRoot", "()Landroid/view/View;", "setRoot", "(Landroid/view/View;)V", "init", "", "onDetachedFromWindow", "onPageChange", "position", "isIdle", "isAuto", "resetHeadAndTail", "resume", "setTaskInfoList", "taskInfo", "", "startLoop", "stop", "ViewHolder", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView;", "Landroid/widget/FrameLayout;", "Lcom/tencent/mm/view/RecyclerHorizontalViewPager$IPageChangeCallback;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "LOOP_INTERVAL", "", "SCROLL_TO_NEXT_IMG_WHAT", "TAG", "", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView$ViewHolder;", "getAdapter", "()Landroidx/recyclerview/widget/RecyclerView$Adapter;", "setAdapter", "(Landroidx/recyclerview/widget/RecyclerView$Adapter;)V", "currentPosition", "dataList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView$ITaskData;", "gameAppId", "getGameAppId", "()Ljava/lang/String;", "setGameAppId", "(Ljava/lang/String;)V", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "isViewVisible", "", "mContext", "getMContext", "()Landroid/content/Context;", "setMContext", "pagerView", "Lcom/tencent/mm/view/RecyclerHorizontalViewPager;", "getPagerView", "()Lcom/tencent/mm/view/RecyclerHorizontalViewPager;", "setPagerView", "(Lcom/tencent/mm/view/RecyclerHorizontalViewPager;)V", "root", "Landroid/view/View;", "getRoot", "()Landroid/view/View;", "setRoot", "(Landroid/view/View;)V", "init", "", "onDetachedFromWindow", "onPageChange", "position", "isIdle", "isAuto", "reportExpose", "data", "resetHeadAndTail", "resume", "setTaskInfoList", "taskInfo", "", "startLoop", "stop", "FinderLiveQuestActivityTaskData", "GameActivityBannerInfoTaskData", "ITaskData", "ViewHolder", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderLiveTaskBannerView
   extends FrameLayout
   implements RecyclerHorizontalViewPager.b
 {
+  private String Eeu;
+  public RecyclerHorizontalViewPager EuD;
+  private final int EuE;
+  private final long EuF;
+  private volatile boolean EuG;
+  private volatile int EuH;
   private final String TAG;
   private final MMHandler handler;
-  public RecyclerView.a<FinderLiveTaskBannerView.a> jMq;
-  public View jac;
+  public View lBX;
   public Context mContext;
-  private LinkedList<bbt> syG;
-  public volatile boolean zrA;
-  private volatile int zrB;
-  public RecyclerHorizontalViewPager zrx;
-  private final int zry;
-  private final long zrz;
+  public RecyclerView.a<d> mlt;
+  private LinkedList<c> vEn;
   
   public FinderLiveTaskBannerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(274803);
-    this.zry = 1;
-    this.zrz = 5000L;
+    AppMethodBeat.i(361201);
+    this.EuE = 1;
+    this.EuF = 5000L;
     this.TAG = "FinderLiveTaskBannerView";
-    this.zrA = true;
-    this.handler = new MMHandler(Looper.getMainLooper(), (MMHandler.Callback)new b(this));
+    this.EuG = true;
+    this.handler = new MMHandler(Looper.getMainLooper(), new FinderLiveTaskBannerView..ExternalSyntheticLambda0(this));
     init(paramContext);
-    AppMethodBeat.o(274803);
+    AppMethodBeat.o(361201);
   }
   
   public FinderLiveTaskBannerView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(274804);
-    this.zry = 1;
-    this.zrz = 5000L;
+    AppMethodBeat.i(361208);
+    this.EuE = 1;
+    this.EuF = 5000L;
     this.TAG = "FinderLiveTaskBannerView";
-    this.zrA = true;
-    this.handler = new MMHandler(Looper.getMainLooper(), (MMHandler.Callback)new b(this));
+    this.EuG = true;
+    this.handler = new MMHandler(Looper.getMainLooper(), new FinderLiveTaskBannerView..ExternalSyntheticLambda0(this));
     init(paramContext);
-    AppMethodBeat.o(274804);
+    AppMethodBeat.o(361208);
   }
   
-  private final void init(Context paramContext)
+  private final void a(c paramc)
   {
-    AppMethodBeat.i(274796);
-    this.mContext = paramContext;
-    Object localObject = ad.kS(paramContext).inflate(b.g.finder_live_task_layout, (ViewGroup)this);
-    p.j(localObject, "MMLayoutInflater.getInfl…r_live_task_layout, this)");
-    this.jac = ((View)localObject);
-    localObject = this.jac;
-    if (localObject == null) {
-      p.bGy("root");
+    AppMethodBeat.i(361223);
+    if (paramc == null)
+    {
+      AppMethodBeat.o(361223);
+      return;
     }
-    localObject = ((View)localObject).findViewById(b.f.finder_live_task_list_view);
-    p.j(localObject, "root.findViewById(R.id.finder_live_task_list_view)");
-    this.zrx = ((RecyclerHorizontalViewPager)localObject);
-    localObject = this.zrx;
-    if (localObject == null) {
-      p.bGy("pagerView");
+    if ((paramc instanceof FinderLiveTaskBannerView.a))
+    {
+      com.tencent.mm.plugin.report.service.h.OAn.b(22748, new Object[] { Integer.valueOf(4), Integer.valueOf(1), Long.valueOf(cn.bDw()), z.bAW(), "", ((FinderLiveTaskBannerView.a)paramc).EuI.Vyi });
+      AppMethodBeat.o(361223);
+      return;
     }
-    ((RecyclerHorizontalViewPager)localObject).setPageChangeListener((RecyclerHorizontalViewPager.b)this);
-    localObject = this.zrx;
-    if (localObject == null) {
-      p.bGy("pagerView");
+    com.tencent.mm.plugin.finder.utils.s locals = com.tencent.mm.plugin.finder.utils.s.GgL;
+    com.tencent.mm.plugin.finder.utils.s.H(11, paramc.eBE(), this.Eeu);
+    AppMethodBeat.o(361223);
+  }
+  
+  private static final void a(FinderLiveTaskBannerView paramFinderLiveTaskBannerView)
+  {
+    AppMethodBeat.i(361239);
+    kotlin.g.b.s.u(paramFinderLiveTaskBannerView, "this$0");
+    RecyclerHorizontalViewPager localRecyclerHorizontalViewPager = paramFinderLiveTaskBannerView.getPagerView();
+    com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(0, new com.tencent.mm.hellhoundlib.b.a());
+    com.tencent.mm.hellhoundlib.a.a.b(localRecyclerHorizontalViewPager, locala.aYi(), "com/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView", "handler$lambda-2$lambda-1$lambda-0", "(Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView;)V", "Undefined", "scrollToPosition", "(I)V");
+    localRecyclerHorizontalViewPager.scrollToPosition(((Integer)locala.sb(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.c(localRecyclerHorizontalViewPager, "com/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView", "handler$lambda-2$lambda-1$lambda-0", "(Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView;)V", "Undefined", "scrollToPosition", "(I)V");
+    paramFinderLiveTaskBannerView.EuH = 0;
+    paramFinderLiveTaskBannerView.startLoop();
+    AppMethodBeat.o(361239);
+  }
+  
+  private static final void a(FinderLiveTaskBannerView paramFinderLiveTaskBannerView, Message paramMessage, ah.e parame)
+  {
+    AppMethodBeat.i(361248);
+    kotlin.g.b.s.u(paramFinderLiveTaskBannerView, "this$0");
+    kotlin.g.b.s.u(parame, "$interval");
+    paramFinderLiveTaskBannerView.handler.sendMessageDelayed(paramMessage, parame.aixc);
+    AppMethodBeat.o(361248);
+  }
+  
+  private static final boolean a(FinderLiveTaskBannerView paramFinderLiveTaskBannerView, Message paramMessage)
+  {
+    AppMethodBeat.i(361244);
+    kotlin.g.b.s.u(paramFinderLiveTaskBannerView, "this$0");
+    kotlin.g.b.s.u(paramMessage, "it");
+    int i;
+    if (paramMessage.what == paramFinderLiveTaskBannerView.EuE)
+    {
+      i = paramMessage.arg1;
+      paramFinderLiveTaskBannerView.EuH = i;
+      paramMessage = paramFinderLiveTaskBannerView.getPagerView();
+      com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(i, new com.tencent.mm.hellhoundlib.b.a());
+      com.tencent.mm.hellhoundlib.a.a.b(paramMessage, locala.aYi(), "com/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView", "handler$lambda-2", "(Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView;Landroid/os/Message;)Z", "Undefined", "smoothScrollToPosition", "(I)V");
+      paramMessage.smoothScrollToPosition(((Integer)locala.sb(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.c(paramMessage, "com/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView", "handler$lambda-2", "(Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView;Landroid/os/Message;)Z", "Undefined", "smoothScrollToPosition", "(I)V");
+      paramMessage = paramFinderLiveTaskBannerView.vEn;
+      if (paramMessage != null) {
+        break label189;
+      }
+      paramMessage = null;
+      paramFinderLiveTaskBannerView.a(paramMessage);
+      if (paramFinderLiveTaskBannerView.EuG)
+      {
+        paramMessage = paramFinderLiveTaskBannerView.vEn;
+        if (paramMessage != null)
+        {
+          if (i != paramMessage.size() - 1) {
+            break label201;
+          }
+          paramFinderLiveTaskBannerView.getPagerView().postDelayed(new FinderLiveTaskBannerView..ExternalSyntheticLambda1(paramFinderLiveTaskBannerView), 200L);
+        }
+      }
     }
-    ((RecyclerHorizontalViewPager)localObject).setFrozeTouch(true);
-    localObject = this.zrx;
-    if (localObject == null) {
-      p.bGy("pagerView");
+    for (;;)
+    {
+      AppMethodBeat.o(361244);
+      return true;
+      label189:
+      paramMessage = (c)paramMessage.get(i);
+      break;
+      label201:
+      paramFinderLiveTaskBannerView.startLoop();
     }
-    ((RecyclerHorizontalViewPager)localObject).setHasFixedSize(false);
+  }
+  
+  private final void init(final Context paramContext)
+  {
+    AppMethodBeat.i(361217);
+    setMContext(paramContext);
+    Object localObject = af.mU(paramContext).inflate(p.f.CfS, (ViewGroup)this);
+    kotlin.g.b.s.s(localObject, "getInflater(context).inf…r_live_task_layout, this)");
+    setRoot((View)localObject);
+    localObject = getRoot().findViewById(p.e.BTf);
+    kotlin.g.b.s.s(localObject, "root.findViewById(R.id.finder_live_task_list_view)");
+    setPagerView((RecyclerHorizontalViewPager)localObject);
+    getPagerView().setPageChangeListener((RecyclerHorizontalViewPager.b)this);
+    getPagerView().setFrozeTouch(true);
+    getPagerView().setHasFixedSize(false);
     localObject = new FinderLinearLayoutManager(paramContext);
-    ((FinderLinearLayoutManager)localObject).BdV = 80.0F;
-    ((FinderLinearLayoutManager)localObject).cC(3);
+    ((FinderLinearLayoutManager)localObject).GGx = 80.0F;
+    ((LinearLayoutManager)localObject).bXK = 3;
     ((FinderLinearLayoutManager)localObject).setItemPrefetchEnabled(true);
     ((FinderLinearLayoutManager)localObject).setOrientation(0);
-    RecyclerHorizontalViewPager localRecyclerHorizontalViewPager = this.zrx;
-    if (localRecyclerHorizontalViewPager == null) {
-      p.bGy("pagerView");
-    }
-    localRecyclerHorizontalViewPager.setLayoutManager((RecyclerView.LayoutManager)localObject);
-    this.jMq = ((RecyclerView.a)new FinderLiveTaskBannerView.c(this, paramContext));
-    paramContext = this.zrx;
-    if (paramContext == null) {
-      p.bGy("pagerView");
-    }
-    localObject = this.jMq;
-    if (localObject == null) {
-      p.bGy("adapter");
-    }
-    paramContext.setAdapter((RecyclerView.a)localObject);
-    AppMethodBeat.o(274796);
+    getPagerView().setLayoutManager((RecyclerView.LayoutManager)localObject);
+    setAdapter((RecyclerView.a)new e(this, paramContext));
+    getPagerView().setAdapter(getAdapter());
+    AppMethodBeat.o(361217);
   }
   
-  public final void al(int paramInt, boolean paramBoolean) {}
-  
-  public final RecyclerView.a<FinderLiveTaskBannerView.a> getAdapter()
+  private final void startLoop()
   {
-    AppMethodBeat.i(274791);
-    RecyclerView.a locala = this.jMq;
-    if (locala == null) {
-      p.bGy("adapter");
+    int j = 1;
+    AppMethodBeat.i(361231);
+    if (getVisibility() != 0)
+    {
+      AppMethodBeat.o(361231);
+      return;
     }
-    AppMethodBeat.o(274791);
-    return locala;
+    Object localObject1 = this.vEn;
+    if ((localObject1 != null) && (((LinkedList)localObject1).size() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      this.handler.removeMessages(this.EuE);
+      setVisibility(8);
+      AppMethodBeat.o(361231);
+      return;
+    }
+    localObject1 = this.vEn;
+    if ((localObject1 != null) && (((LinkedList)localObject1).size() == 1)) {}
+    for (i = j; i != 0; i = 0)
+    {
+      this.handler.removeMessages(this.EuE);
+      AppMethodBeat.o(361231);
+      return;
+    }
+    this.handler.removeMessages(this.EuE);
+    int k = this.EuH + 1;
+    localObject1 = this.vEn;
+    ah.e locale;
+    Object localObject2;
+    long l;
+    if (localObject1 == null)
+    {
+      i = 0;
+      j = k;
+      if (k >= i) {
+        j = 0;
+      }
+      Log.i(this.TAG, kotlin.g.b.s.X("[startLoop] targetPosition:", Integer.valueOf(j)));
+      localObject1 = this.handler.obtainMessage(this.EuE, j, 0);
+      locale = new ah.e();
+      localObject2 = this.vEn;
+      if (localObject2 != null) {
+        break label282;
+      }
+      l = 0L;
+    }
+    for (;;)
+    {
+      locale.aixc = l;
+      if (locale.aixc == 0L) {
+        locale.aixc = this.EuF;
+      }
+      getPagerView().post(new FinderLiveTaskBannerView..ExternalSyntheticLambda2(this, (Message)localObject1, locale));
+      AppMethodBeat.o(361231);
+      return;
+      i = ((LinkedList)localObject1).size();
+      break;
+      label282:
+      localObject2 = (c)((LinkedList)localObject2).get(j);
+      if (localObject2 == null) {
+        l = 0L;
+      } else {
+        l = ((c)localObject2).eBF();
+      }
+    }
+  }
+  
+  public final void aE(int paramInt, boolean paramBoolean) {}
+  
+  public final RecyclerView.a<d> getAdapter()
+  {
+    AppMethodBeat.i(361309);
+    RecyclerView.a locala = this.mlt;
+    if (locala != null)
+    {
+      AppMethodBeat.o(361309);
+      return locala;
+    }
+    kotlin.g.b.s.bIx("adapter");
+    AppMethodBeat.o(361309);
+    return null;
+  }
+  
+  public final String getGameAppId()
+  {
+    return this.Eeu;
   }
   
   public final Context getMContext()
   {
-    AppMethodBeat.i(274793);
+    AppMethodBeat.i(361323);
     Context localContext = this.mContext;
-    if (localContext == null) {
-      p.bGy("mContext");
+    if (localContext != null)
+    {
+      AppMethodBeat.o(361323);
+      return localContext;
     }
-    AppMethodBeat.o(274793);
-    return localContext;
+    kotlin.g.b.s.bIx("mContext");
+    AppMethodBeat.o(361323);
+    return null;
   }
   
   public final RecyclerHorizontalViewPager getPagerView()
   {
-    AppMethodBeat.i(274786);
-    RecyclerHorizontalViewPager localRecyclerHorizontalViewPager = this.zrx;
-    if (localRecyclerHorizontalViewPager == null) {
-      p.bGy("pagerView");
+    AppMethodBeat.i(361283);
+    RecyclerHorizontalViewPager localRecyclerHorizontalViewPager = this.EuD;
+    if (localRecyclerHorizontalViewPager != null)
+    {
+      AppMethodBeat.o(361283);
+      return localRecyclerHorizontalViewPager;
     }
-    AppMethodBeat.o(274786);
-    return localRecyclerHorizontalViewPager;
+    kotlin.g.b.s.bIx("pagerView");
+    AppMethodBeat.o(361283);
+    return null;
   }
   
   public final View getRoot()
   {
-    AppMethodBeat.i(274789);
-    View localView = this.jac;
-    if (localView == null) {
-      p.bGy("root");
+    AppMethodBeat.i(361296);
+    View localView = this.lBX;
+    if (localView != null)
+    {
+      AppMethodBeat.o(361296);
+      return localView;
     }
-    AppMethodBeat.o(274789);
-    return localView;
+    kotlin.g.b.s.bIx("root");
+    AppMethodBeat.o(361296);
+    return null;
   }
   
   protected final void onDetachedFromWindow()
   {
-    AppMethodBeat.i(274802);
+    AppMethodBeat.i(361390);
     super.onDetachedFromWindow();
-    this.handler.removeMessages(this.zry);
-    AppMethodBeat.o(274802);
+    this.handler.removeMessages(this.EuE);
+    AppMethodBeat.o(361390);
   }
   
-  public final void setAdapter(RecyclerView.a<FinderLiveTaskBannerView.a> parama)
+  public final void resume()
   {
-    AppMethodBeat.i(274792);
-    p.k(parama, "<set-?>");
-    this.jMq = parama;
-    AppMethodBeat.o(274792);
+    AppMethodBeat.i(361380);
+    this.EuG = true;
+    startLoop();
+    AppMethodBeat.o(361380);
+  }
+  
+  public final void setAdapter(RecyclerView.a<d> parama)
+  {
+    AppMethodBeat.i(361315);
+    kotlin.g.b.s.u(parama, "<set-?>");
+    this.mlt = parama;
+    AppMethodBeat.o(361315);
+  }
+  
+  public final void setGameAppId(String paramString)
+  {
+    this.Eeu = paramString;
   }
   
   public final void setMContext(Context paramContext)
   {
-    AppMethodBeat.i(274794);
-    p.k(paramContext, "<set-?>");
+    AppMethodBeat.i(361329);
+    kotlin.g.b.s.u(paramContext, "<set-?>");
     this.mContext = paramContext;
-    AppMethodBeat.o(274794);
+    AppMethodBeat.o(361329);
   }
   
   public final void setPagerView(RecyclerHorizontalViewPager paramRecyclerHorizontalViewPager)
   {
-    AppMethodBeat.i(274787);
-    p.k(paramRecyclerHorizontalViewPager, "<set-?>");
-    this.zrx = paramRecyclerHorizontalViewPager;
-    AppMethodBeat.o(274787);
+    AppMethodBeat.i(361289);
+    kotlin.g.b.s.u(paramRecyclerHorizontalViewPager, "<set-?>");
+    this.EuD = paramRecyclerHorizontalViewPager;
+    AppMethodBeat.o(361289);
   }
   
   public final void setRoot(View paramView)
   {
-    AppMethodBeat.i(274790);
-    p.k(paramView, "<set-?>");
-    this.jac = paramView;
-    AppMethodBeat.o(274790);
+    AppMethodBeat.i(361303);
+    kotlin.g.b.s.u(paramView, "<set-?>");
+    this.lBX = paramView;
+    AppMethodBeat.o(361303);
   }
   
-  public final void setTaskInfoList(List<? extends bbt> paramList)
+  public final void setTaskInfoList(List<? extends c> paramList)
   {
-    AppMethodBeat.i(274798);
-    p.k(paramList, "taskInfo");
-    LinkedList localLinkedList = this.syG;
+    AppMethodBeat.i(361358);
+    kotlin.g.b.s.u(paramList, "taskInfo");
+    LinkedList localLinkedList = this.vEn;
     if (localLinkedList != null) {
       localLinkedList.clear();
     }
-    this.syG = new LinkedList();
-    localLinkedList = this.syG;
+    this.vEn = new LinkedList();
+    localLinkedList = this.vEn;
     if (localLinkedList != null) {
       localLinkedList.addAll((Collection)paramList);
     }
-    paramList = this.syG;
-    if (paramList == null) {
-      p.iCn();
-    }
+    paramList = this.vEn;
+    kotlin.g.b.s.checkNotNull(paramList);
     if (paramList.size() > 1)
     {
-      paramList = this.syG;
+      paramList = this.vEn;
       if (paramList != null)
       {
-        localLinkedList = this.syG;
-        if (localLinkedList == null) {
-          p.iCn();
-        }
-        int i = localLinkedList.size();
-        localLinkedList = this.syG;
-        if (localLinkedList == null) {
-          p.iCn();
-        }
+        localLinkedList = this.vEn;
+        kotlin.g.b.s.checkNotNull(localLinkedList);
+        i = localLinkedList.size();
+        localLinkedList = this.vEn;
+        kotlin.g.b.s.checkNotNull(localLinkedList);
         paramList.add(i, localLinkedList.get(0));
       }
     }
-    paramList = this.jMq;
-    if (paramList == null) {
-      p.bGy("adapter");
-    }
-    paramList.notifyDataSetChanged();
-    AppMethodBeat.o(274798);
-  }
-  
-  public final void startLoop()
-  {
-    AppMethodBeat.i(274800);
-    if (getVisibility() != 0)
+    paramList = this.vEn;
+    kotlin.g.b.s.checkNotNull(paramList);
+    if (!((Collection)paramList).isEmpty()) {}
+    for (int i = 1;; i = 0)
     {
-      AppMethodBeat.o(274800);
+      if (i != 0)
+      {
+        paramList = this.vEn;
+        kotlin.g.b.s.checkNotNull(paramList);
+        a((c)paramList.get(0));
+      }
+      getAdapter().bZE.notifyChanged();
+      AppMethodBeat.o(361358);
       return;
-    }
-    Object localObject1 = this.syG;
-    if ((localObject1 != null) && (((LinkedList)localObject1).size() == 0))
-    {
-      this.handler.removeMessages(this.zry);
-      setVisibility(8);
-      AppMethodBeat.o(274800);
-      return;
-    }
-    localObject1 = this.syG;
-    if ((localObject1 != null) && (((LinkedList)localObject1).size() == 1))
-    {
-      this.handler.removeMessages(this.zry);
-      AppMethodBeat.o(274800);
-      return;
-    }
-    this.handler.removeMessages(this.zry);
-    int k = this.zrB + 1;
-    localObject1 = this.syG;
-    int i;
-    final aa.e locale;
-    Object localObject2;
-    if (localObject1 != null)
-    {
-      i = ((LinkedList)localObject1).size();
-      int j = k;
-      if (k >= i) {
-        j = 0;
-      }
-      Log.i(this.TAG, "[startLoop] targetPosition:".concat(String.valueOf(j)));
-      localObject1 = this.handler.obtainMessage(this.zry, j, 0);
-      locale = new aa.e();
-      localObject2 = this.syG;
-      if (localObject2 == null) {
-        break label310;
-      }
-      localObject2 = (bbt)((LinkedList)localObject2).get(j);
-      if (localObject2 == null) {
-        break label310;
-      }
-    }
-    label310:
-    for (long l = ((bbt)localObject2).SNA;; l = 0L)
-    {
-      locale.aaBB = l;
-      if (locale.aaBB == 0L) {
-        locale.aaBB = this.zrz;
-      }
-      locale.aaBB *= 1000L;
-      localObject2 = this.zrx;
-      if (localObject2 == null) {
-        p.bGy("pagerView");
-      }
-      ((RecyclerHorizontalViewPager)localObject2).post((Runnable)new d(this, (Message)localObject1, locale));
-      AppMethodBeat.o(274800);
-      return;
-      i = 0;
-      break;
     }
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(274801);
-    this.zrA = false;
-    this.handler.removeMessages(this.zry);
-    AppMethodBeat.o(274801);
+    AppMethodBeat.i(361370);
+    this.EuG = false;
+    this.handler.removeMessages(this.EuE);
+    AppMethodBeat.o(361370);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/os/Message;", "kotlin.jvm.PlatformType", "handleMessage"})
-  static final class b
-    implements MMHandler.Callback
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView$GameActivityBannerInfoTaskData;", "Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView$ITaskData;", "data", "Lcom/tencent/mm/protocal/protobuf/GameActivityBannerInfo;", "interval", "", "(Lcom/tencent/mm/protocal/protobuf/GameActivityBannerInfo;J)V", "getData", "()Lcom/tencent/mm/protocal/protobuf/GameActivityBannerInfo;", "getInterval", "()J", "getActivityId", "", "getH5Url", "getIconUrl", "getRemainClickTimes", "", "getSwitchInterval", "getWording", "setRemainClickTimes", "", "value", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+    implements FinderLiveTaskBannerView.c
   {
-    b(FinderLiveTaskBannerView paramFinderLiveTaskBannerView) {}
+    private final cba EuJ;
+    private final long interval;
     
-    public final boolean handleMessage(Message paramMessage)
+    public b(cba paramcba, long paramLong)
     {
-      AppMethodBeat.i(287605);
-      if (paramMessage.what == FinderLiveTaskBannerView.e(this.zrC))
+      AppMethodBeat.i(362003);
+      this.EuJ = paramcba;
+      this.interval = paramLong;
+      AppMethodBeat.o(362003);
+    }
+    
+    public final void Ql(int paramInt) {}
+    
+    public final int eBD()
+    {
+      return -1;
+    }
+    
+    public final String eBE()
+    {
+      return this.EuJ.Vyi;
+    }
+    
+    public final long eBF()
+    {
+      return this.interval;
+    }
+    
+    public final String getH5Url()
+    {
+      return this.EuJ.VHT;
+    }
+    
+    public final String getIconUrl()
+    {
+      return this.EuJ.pic_url;
+    }
+    
+    public final String getWording()
+    {
+      return null;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView$ITaskData;", "", "getActivityId", "", "getH5Url", "getIconUrl", "getRemainClickTimes", "", "getSwitchInterval", "", "getWording", "setRemainClickTimes", "", "value", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static abstract interface c
+  {
+    public abstract void Ql(int paramInt);
+    
+    public abstract int eBD();
+    
+    public abstract String eBE();
+    
+    public abstract long eBF();
+    
+    public abstract String getH5Url();
+    
+    public abstract String getIconUrl();
+    
+    public abstract String getWording();
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView$ViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Lcom/tencent/mm/ui/widget/MMRoundCornerImageView;", "(Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView;Lcom/tencent/mm/ui/widget/MMRoundCornerImageView;)V", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public final class d
+    extends RecyclerView.v
+  {
+    public d()
+    {
+      super();
+      AppMethodBeat.i(362011);
+      AppMethodBeat.o(362011);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView$init$1", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView$ViewHolder;", "Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView;", "getItemCount", "", "onBindViewHolder", "", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class e
+    extends RecyclerView.a<FinderLiveTaskBannerView.d>
+  {
+    e(FinderLiveTaskBannerView paramFinderLiveTaskBannerView, Context paramContext) {}
+    
+    private static final void a(FinderLiveTaskBannerView paramFinderLiveTaskBannerView, Context paramContext, e parame, View paramView)
+    {
+      Object localObject1 = null;
+      AppMethodBeat.i(362042);
+      Object localObject2 = new Object();
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.cH(paramFinderLiveTaskBannerView);
+      localb.cH(paramContext);
+      localb.cH(parame);
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView$init$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject2, localb.aYj());
+      kotlin.g.b.s.u(paramFinderLiveTaskBannerView, "this$0");
+      kotlin.g.b.s.u(paramContext, "$context");
+      kotlin.g.b.s.u(parame, "this$1");
+      paramView = paramView.getTag();
+      if (paramView == null)
       {
-        final int i = paramMessage.arg1;
-        FinderLiveTaskBannerView.a(this.zrC, i);
-        paramMessage = this.zrC.getPagerView();
-        Object localObject = c.a(i, new com.tencent.mm.hellhoundlib.b.a());
-        com.tencent.mm.hellhoundlib.a.a.b(paramMessage, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView$handler$1", "handleMessage", "(Landroid/os/Message;)Z", "Undefined", "smoothScrollToPosition", "(I)V");
-        paramMessage.smoothScrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0)).intValue());
-        com.tencent.mm.hellhoundlib.a.a.c(paramMessage, "com/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView$handler$1", "handleMessage", "(Landroid/os/Message;)Z", "Undefined", "smoothScrollToPosition", "(I)V");
-        localObject = h.IzE;
-        long l = cm.bfE();
-        String str = z.bdh();
-        paramMessage = FinderLiveTaskBannerView.a(this.zrC);
-        if (paramMessage == null) {
-          break label263;
+        paramFinderLiveTaskBannerView = new NullPointerException("null cannot be cast to non-null type kotlin.Int");
+        AppMethodBeat.o(362042);
+        throw paramFinderLiveTaskBannerView;
+      }
+      int i = ((Integer)paramView).intValue();
+      paramView = FinderLiveTaskBannerView.b(paramFinderLiveTaskBannerView);
+      if (paramView == null)
+      {
+        paramView = null;
+        if (paramView == null) {
+          break label553;
         }
-        paramMessage = (bbt)paramMessage.get(i);
-        if (paramMessage == null) {
-          break label263;
+        Log.i(FinderLiveTaskBannerView.c(paramFinderLiveTaskBannerView), " click posttion = " + i + ", reset = " + paramView.eBD() + " ，activityICon:" + paramView.getIconUrl());
+        ((f)com.tencent.mm.kernel.h.ax(f.class)).a(paramContext, 4, paramView.getH5Url());
+        if (!(paramView instanceof FinderLiveTaskBannerView.a)) {
+          break label343;
         }
-        paramMessage = paramMessage.OIw;
-        ((h)localObject).a(22748, new Object[] { Integer.valueOf(4), Integer.valueOf(1), Long.valueOf(l), str, "", paramMessage });
-        if (FinderLiveTaskBannerView.f(this.zrC))
-        {
-          paramMessage = FinderLiveTaskBannerView.a(this.zrC);
-          if (paramMessage != null)
-          {
-            if (i != paramMessage.size() - 1) {
-              break label268;
-            }
-            this.zrC.getPagerView().postDelayed((Runnable)new a(this, i), 200L);
-          }
+        com.tencent.mm.plugin.report.service.h.OAn.b(22748, new Object[] { Integer.valueOf(4), Integer.valueOf(2), Long.valueOf(cn.bDw()), z.bAW(), "", paramView.eBE() });
+        paramContext = paramView.eBE();
+        if (paramContext != null) {
+          new com.tencent.mm.plugin.finder.live.cgi.c(paramContext).bFJ();
         }
       }
       for (;;)
       {
-        AppMethodBeat.o(287605);
-        return true;
-        label263:
-        paramMessage = null;
+        if (paramView.eBD() != -1) {
+          break label365;
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView$init$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(362042);
+        return;
+        paramView = (FinderLiveTaskBannerView.c)paramView.get(i);
         break;
-        label268:
-        FinderLiveTaskBannerView.g(this.zrC);
+        label343:
+        paramContext = com.tencent.mm.plugin.finder.utils.s.GgL;
+        com.tencent.mm.plugin.finder.utils.s.H(12, paramView.eBE(), paramFinderLiveTaskBannerView.getGameAppId());
       }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView$handler$1$1$1"})
-    static final class a
-      implements Runnable
-    {
-      a(FinderLiveTaskBannerView.b paramb, int paramInt) {}
-      
-      public final void run()
+      label365:
+      paramView.Ql(k.qu(paramView.eBD() - 1, 0));
+      if (paramView.eBD() == 0)
       {
-        AppMethodBeat.i(286866);
-        RecyclerHorizontalViewPager localRecyclerHorizontalViewPager = this.zrD.zrC.getPagerView();
-        com.tencent.mm.hellhoundlib.b.a locala = c.a(0, new com.tencent.mm.hellhoundlib.b.a());
-        com.tencent.mm.hellhoundlib.a.a.b(localRecyclerHorizontalViewPager, locala.aFh(), "com/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView$handler$1$$special$$inlined$let$lambda$1", "run", "()V", "Undefined", "scrollToPosition", "(I)V");
-        localRecyclerHorizontalViewPager.scrollToPosition(((Integer)locala.sf(0)).intValue());
-        com.tencent.mm.hellhoundlib.a.a.c(localRecyclerHorizontalViewPager, "com/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView$handler$1$$special$$inlined$let$lambda$1", "run", "()V", "Undefined", "scrollToPosition", "(I)V");
-        FinderLiveTaskBannerView.a(this.zrD.zrC, 0);
-        FinderLiveTaskBannerView.g(this.zrD.zrC);
-        AppMethodBeat.o(286866);
+        paramContext = FinderLiveTaskBannerView.b(paramFinderLiveTaskBannerView);
+        if (paramContext != null) {
+          d.a(paramContext, (kotlin.g.a.b)FinderLiveTaskBannerView.e.a.EuL);
+        }
+        paramContext = FinderLiveTaskBannerView.b(paramFinderLiveTaskBannerView);
+        if (paramContext == null)
+        {
+          paramContext = null;
+          paramView = FinderLiveTaskBannerView.b(paramFinderLiveTaskBannerView);
+          if (paramView != null) {
+            break label525;
+          }
+        }
+        label525:
+        for (paramView = localObject1;; paramView = (FinderLiveTaskBannerView.c)paramView.getLast())
+        {
+          if (!kotlin.g.b.s.p(paramContext, paramView)) {
+            FinderLiveTaskBannerView.d(paramFinderLiveTaskBannerView);
+          }
+          Log.i(FinderLiveTaskBannerView.c(paramFinderLiveTaskBannerView), "datalist after del");
+          paramContext = FinderLiveTaskBannerView.b(paramFinderLiveTaskBannerView);
+          if (paramContext == null) {
+            break label536;
+          }
+          paramContext = ((Iterable)paramContext).iterator();
+          while (paramContext.hasNext())
+          {
+            paramView = (FinderLiveTaskBannerView.c)paramContext.next();
+            Log.i(FinderLiveTaskBannerView.c(paramFinderLiveTaskBannerView), String.valueOf(paramView.eBE()));
+          }
+          paramContext = (FinderLiveTaskBannerView.c)paramContext.getFirst();
+          break;
+        }
+        label536:
+        Log.i(FinderLiveTaskBannerView.c(paramFinderLiveTaskBannerView), "datalist after del");
+        parame.bZE.notifyChanged();
       }
+      label553:
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView$init$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(362042);
     }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class d
-    implements Runnable
-  {
-    d(FinderLiveTaskBannerView paramFinderLiveTaskBannerView, Message paramMessage, aa.e parame) {}
     
-    public final void run()
+    public final int getItemCount()
     {
-      AppMethodBeat.i(262898);
-      FinderLiveTaskBannerView.d(this.zrC).sendMessageDelayed(this.zrH, locale.aaBB);
-      AppMethodBeat.o(262898);
+      AppMethodBeat.i(362054);
+      LinkedList localLinkedList = FinderLiveTaskBannerView.b(this.EuK);
+      if (localLinkedList == null)
+      {
+        AppMethodBeat.o(362054);
+        return 0;
+      }
+      int i = localLinkedList.size();
+      AppMethodBeat.o(362054);
+      return i;
     }
   }
 }

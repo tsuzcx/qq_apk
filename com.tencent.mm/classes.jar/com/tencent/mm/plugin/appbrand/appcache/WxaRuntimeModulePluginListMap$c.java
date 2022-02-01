@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap$Namespace;", "", "()V", "MODULE", "PLUGIN", "luggage-wxa-app_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap$Namespace;", "", "()V", "MODULE", "PLUGIN", "luggage-wxa-app_release"}, k=1, mv={1, 5, 1}, xi=48)
 abstract class WxaRuntimeModulePluginListMap$c
 {
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap$Namespace$PLUGIN;", "", "provider", "", "(Ljava/lang/String;)V", "getProvider", "()Ljava/lang/String;", "component1", "copy", "equals", "", "other", "hashCode", "", "toString", "luggage-wxa-app_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap$Namespace$PLUGIN;", "", "provider", "", "(Ljava/lang/String;)V", "getProvider", "()Ljava/lang/String;", "component1", "copy", "equals", "", "other", "hashCode", "", "toString", "luggage-wxa-app_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
   {
     private final String provider;
@@ -23,19 +23,21 @@ abstract class WxaRuntimeModulePluginListMap$c
     {
       Object localObject = null;
       AppMethodBeat.i(178650);
-      if (!(paramObject instanceof b)) {
-        paramObject = null;
-      }
-      for (;;)
+      if ((paramObject instanceof b))
       {
-        b localb = (b)paramObject;
-        paramObject = localObject;
-        if (localb != null) {
-          paramObject = localb.provider;
+        paramObject = (b)paramObject;
+        if (paramObject != null) {
+          break label46;
         }
-        boolean bool = p.h(paramObject, this.provider);
+      }
+      label46:
+      for (paramObject = localObject;; paramObject = paramObject.provider)
+      {
+        boolean bool = s.p(paramObject, this.provider);
         AppMethodBeat.o(178650);
         return bool;
+        paramObject = null;
+        break;
       }
     }
     
@@ -50,7 +52,7 @@ abstract class WxaRuntimeModulePluginListMap$c
     public final String toString()
     {
       AppMethodBeat.i(178652);
-      String str = "PLUGIN(provider=" + this.provider + ")";
+      String str = "PLUGIN(provider=" + this.provider + ')';
       AppMethodBeat.o(178652);
       return str;
     }

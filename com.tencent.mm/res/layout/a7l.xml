@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/jd"
+<com.tencent.mm.plugin.fav.ui.widget.FavDetailScrollView android:id="@id/j4h" android:background="@color/pv" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:padding="@dimen/ee" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/j6">
-        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <ImageView android:id="@id/cc_" style="@style/j5" />
-                    <ImageView android:layout_gravity="center" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:src="@drawable/am5" />
-                    <TextView android:layout_gravity="bottom|center|right" android:id="@id/cdv" android:paddingRight="8.0dip" android:paddingBottom="8.0dip" android:text="{11:32}" style="@style/j9" />
-                </FrameLayout>
-            </LinearLayout>
-            <include layout="@layout/a7h" />
-            <include layout="@layout/a7g" />
-        </LinearLayout>
-        <include layout="@layout/a7e" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/jc">
+        <RelativeLayout android:layout_gravity="center" android:id="@id/bdp" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView android:id="@id/l89" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
+            <ImageView android:id="@id/l7w" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" android:layout_centerInParent="true" />
+            <ViewStub android:id="@id/jle" android:layout="@layout/c07" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <ImageView android:id="@id/k1h" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+            <com.tencent.mm.ui.widget.MMPinProgressBtn android:id="@id/l7b" android:visibility="gone" android:layout_width="@dimen/an2" android:layout_height="@dimen/an2" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/a6h" />
     </LinearLayout>
-</FrameLayout>
+</com.tencent.mm.plugin.fav.ui.widget.FavDetailScrollView>

@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/rj"
+<merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="@dimen/hi" android:layout_marginRight="@dimen/hs">
-        <ImageView android:layout_width="@dimen/hu" android:layout_height="@dimen/hu" android:src="@raw/chatting_backup_computer" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/a5y" android:layout_width="fill_parent" android:layout_height="@dimen/m1">
+        <TextView android:id="@id/ljz" style="@style/a04" />
+        <TextView android:id="@id/ljf" style="@style/a02" />
+        <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:layout_gravity="center_vertical" android:id="@id/lhe" android:background="@color/ahb" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <com.tenpay.android.wechat.TenpaySecureEditText android:id="@id/lgl" style="@style/zz" />
+        <com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView android:id="@id/lhc" android:src="@drawable/bd2" style="@style/a00" />
     </LinearLayout>
-    <ProgressBar android:id="@id/z4" android:layout_width="fill_parent" android:layout_height="4.0dip" android:layout_marginLeft="40.0dip" android:layout_marginTop="@dimen/k5" android:layout_marginRight="40.0dip" android:progress="20" style="?android:progressBarStyleHorizontal" />
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hs">
-        <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:id="@id/z5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a_1" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hs">
-        <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:id="@id/zd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a_i" />
-        <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:id="@id/ze" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a_g" />
-    </LinearLayout>
-    <View android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
-</LinearLayout>
+</merge>

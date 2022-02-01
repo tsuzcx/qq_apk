@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.sns.ad.landingpage.component.view.RelativeLayoutWithInterceptor android:id="@id/hvd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="4.0dip"
+<RelativeLayout android:focusable="false" android:clickable="false" android:layout_width="@dimen/d6" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/a84" android:id="@id/hve" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:shadowColor="@color/a85" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="9.0" android:layout_centerHorizontal="true" android:paddingStart="5.0dip" android:paddingEnd="5.0dip" />
-    <FrameLayout android:id="@id/hvc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_below="@id/hve" android:layout_centerHorizontal="true" />
-</com.tencent.mm.plugin.sns.ad.landingpage.component.view.RelativeLayoutWithInterceptor>
+    <ImageView android:gravity="center_horizontal" android:id="@id/iwj" android:src="@drawable/b_a" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" style="@style/ss" />
+    <ImageView android:gravity="center" android:id="@id/ivy" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/e5" android:layout_alignLeft="@id/iwj" android:layout_alignTop="@id/iwj" />
+    <ImageView android:id="@id/iw0" android:visibility="gone" android:layout_width="25.0dip" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_alignRight="@id/iwj" android:layout_alignBottom="@id/iwj" />
+    <ImageView android:id="@id/ivz" android:visibility="gone" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginTop="2.0dip" android:src="@drawable/bex" android:layout_alignRight="@id/iwj" android:layout_alignBottom="@id/iwj" />
+    <RelativeLayout android:id="@id/iwh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/iwj" android:layout_centerHorizontal="true">
+        <TextView android:id="@id/iwf" android:visibility="gone" android:layout_centerHorizontal="true" style="@style/st" />
+        <TextView android:id="@id/iwg" android:paddingTop="@dimen/g" android:visibility="gone" android:layout_centerHorizontal="true" style="@style/st" />
+    </RelativeLayout>
+    <TextView android:textColor="@color/Orange" android:id="@id/iwi" android:visibility="gone" android:layout_below="@id/iwh" android:layout_centerHorizontal="true" style="@style/st" />
+</RelativeLayout>

@@ -4,15 +4,15 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/decode/EmptyDecoder;", "Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "()V", "TAG", "", "emptyFrame", "Landroid/graphics/Bitmap;", "decodeNextFrame", "", "destroy", "drawFrameBitmap", "", "bitmap", "frameCount", "", "frameHeight", "frameTime", "frameWidth", "getFrame", "seekTo", "timeMs", "", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/decode/EmptyDecoder;", "Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "()V", "TAG", "", "emptyFrame", "Landroid/graphics/Bitmap;", "decodeNextFrame", "", "destroy", "drawFrameBitmap", "", "bitmap", "frameCount", "", "frameHeight", "frameTime", "frameWidth", "getFrame", "seekTo", "timeMs", "", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
   implements d
 {
   private final String TAG;
-  private Bitmap jFx;
+  private Bitmap mfk;
   
   public b()
   {
@@ -20,35 +20,35 @@ public final class b
     this.TAG = "MicroMsg.EmptyDecoder";
     Log.w(this.TAG, "init: should not call this, something error");
     Bitmap localBitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
-    p.j(localBitmap, "Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888)");
-    this.jFx = localBitmap;
+    s.s(localBitmap, "createBitmap(1, 1, Bitmap.Config.ARGB_8888)");
+    this.mfk = localBitmap;
     AppMethodBeat.o(105365);
   }
   
-  public final void aBh() {}
+  public final void aUe() {}
   
-  public final int aBi()
+  public final int aUf()
   {
     return 1;
   }
   
-  public final int aBj()
+  public final int aUg()
   {
     return 2147483647;
   }
   
-  public final int aBk()
+  public final int aUh()
   {
     AppMethodBeat.i(105363);
-    int i = this.jFx.getWidth();
+    int i = this.mfk.getWidth();
     AppMethodBeat.o(105363);
     return i;
   }
   
-  public final int aBl()
+  public final int aUi()
   {
     AppMethodBeat.i(105364);
-    int i = this.jFx.getHeight();
+    int i = this.mfk.getHeight();
     AppMethodBeat.o(105364);
     return i;
   }
@@ -57,7 +57,7 @@ public final class b
   
   public final Bitmap getFrame()
   {
-    return this.jFx;
+    return this.mfk;
   }
   
   public final void seekTo(long paramLong) {}

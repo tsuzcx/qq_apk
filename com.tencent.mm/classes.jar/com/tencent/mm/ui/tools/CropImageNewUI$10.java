@@ -21,15 +21,15 @@ final class CropImageNewUI$10
     {
       AppMethodBeat.o(39015);
       return false;
-      this.XNY.startTimer(200L);
+      this.afEm.startTimer(200L);
       continue;
-      this.XNY.stopTimer();
+      this.afEm.stopTimer();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.tools.CropImageNewUI.10
  * JD-Core Version:    0.7.0.1
  */

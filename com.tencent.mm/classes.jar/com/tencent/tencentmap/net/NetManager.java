@@ -1,8 +1,6 @@
 package com.tencent.tencentmap.net;
 
-import android.content.Context;
-import com.tencent.map.tools.net.NetAdapter;
-import com.tencent.map.tools.net.NetManager.NetRequestBuilder;
+import com.tencent.map.tools.net.NetRequest.NetRequestBuilder;
 import com.tencent.map.tools.net.http.HttpCanceler;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
@@ -267,7 +265,7 @@ public class NetManager
   public NetResponse doPostNoBuffer(String paramString1, String paramString2, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(181110);
-    paramString1 = com.tencent.map.tools.net.NetManager.getInstance().builder().url(paramString1).userAgent(paramString2).postData(paramArrayOfByte).doPostNoBuffer();
+    paramString1 = com.tencent.map.tools.net.NetManager.getInstance().builder().url(paramString1).userAgent(paramString2).postData(paramArrayOfByte).doPost();
     if (paramString1 != null)
     {
       paramString1 = new NetResponse(paramString1);
@@ -281,20 +279,13 @@ public class NetManager
   public void doRangePost(String paramString1, byte[] paramArrayOfByte, String paramString2, String paramString3, String paramString4, String paramString5, HttpCanceler paramHttpCanceler)
   {
     AppMethodBeat.i(181111);
-    com.tencent.map.tools.net.NetManager.getInstance().builder().url(paramString1).token(paramString2).postData(paramArrayOfByte).nonce(paramString3).timestamp(paramString4).startTag(paramString5).canceler(paramHttpCanceler).doRangePost();
+    com.tencent.map.tools.net.NetManager.getInstance().builder().url(paramString1).token(paramString2).postData(paramArrayOfByte).nonce(paramString3).timestamp(paramString4).startTag(paramString5).canceler(paramHttpCanceler).doPost();
     AppMethodBeat.o(181111);
-  }
-  
-  public void setAdapter(Context paramContext, NetAdapter paramNetAdapter)
-  {
-    AppMethodBeat.i(181092);
-    com.tencent.map.tools.net.NetManager.getInstance().setAdapter(paramContext, paramNetAdapter);
-    AppMethodBeat.o(181092);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.net.NetManager
  * JD-Core Version:    0.7.0.1
  */

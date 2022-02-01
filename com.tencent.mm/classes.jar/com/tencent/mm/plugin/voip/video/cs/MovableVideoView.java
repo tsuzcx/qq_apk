@@ -9,25 +9,25 @@ import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.voip.video.OpenGlView;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.base.w;
+import com.tencent.mm.ui.base.aa;
 
 public class MovableVideoView
   extends OpenGlView
 {
-  int NYG = 240;
-  private int NYH = 800;
-  private int NYI = 480;
-  private float flk;
-  private float fll;
+  int UMD = 240;
+  private int UME = 800;
+  private int UMF = 480;
+  private float hpx;
+  private float hpy;
   private View.OnClickListener mOnClickListener;
   private int mScreenHeight = 0;
   private int mScreenWidth = 0;
   int mWidth = 320;
-  private long oPK;
+  private long rTy;
   
   public MovableVideoView(Context paramContext)
   {
@@ -39,11 +39,11 @@ public class MovableVideoView
     super(paramContext, paramAttributeSet);
   }
   
-  public final void kU(int paramInt1, int paramInt2)
+  public final void mG(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(236597);
+    AppMethodBeat.i(292853);
     this.mWidth = paramInt1;
-    this.NYG = paramInt2;
+    this.UMD = paramInt2;
     DisplayMetrics localDisplayMetrics = new DisplayMetrics();
     WindowManager localWindowManager = (WindowManager)getContext().getSystemService("window");
     if (this.mScreenWidth == 0)
@@ -53,54 +53,54 @@ public class MovableVideoView
     }
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(paramInt1, paramInt2);
     localLayoutParams.addRule(21, -1);
-    localLayoutParams.topMargin = (a.fromDPToPix(getContext(), 12) + w.at(getContext()));
-    localLayoutParams.rightMargin = (localLayoutParams.topMargin - w.at(getContext()));
+    localLayoutParams.topMargin = (a.fromDPToPix(getContext(), 12) + aa.be(getContext()));
+    localLayoutParams.rightMargin = (localLayoutParams.topMargin - aa.be(getContext()));
     setLayoutParams(localLayoutParams);
-    this.NYH = (this.mScreenHeight - this.NYG);
-    this.NYI = (this.mScreenWidth - this.mWidth);
+    this.UME = (this.mScreenHeight - this.UMD);
+    this.UMF = (this.mScreenWidth - this.mWidth);
     localWindowManager.getDefaultDisplay().getMetrics(localDisplayMetrics);
-    AppMethodBeat.o(236597);
+    AppMethodBeat.o(292853);
   }
   
-  public final void kV(int paramInt1, int paramInt2)
+  public final void mH(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(236599);
-    kU(paramInt1, paramInt2);
-    AppMethodBeat.o(236599);
+    AppMethodBeat.i(292857);
+    mG(paramInt1, paramInt2);
+    AppMethodBeat.o(292857);
   }
   
-  public final void kW(int paramInt1, int paramInt2)
+  public final void mI(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(236600);
+    AppMethodBeat.i(292862);
     RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)getLayoutParams();
     RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(paramInt1, paramInt2);
     localLayoutParams2.rightMargin = localLayoutParams1.rightMargin;
     localLayoutParams2.topMargin = localLayoutParams1.topMargin;
     localLayoutParams2.addRule(21, -1);
     this.mWidth = paramInt1;
-    this.NYG = paramInt2;
+    this.UMD = paramInt2;
     setLayoutParams(localLayoutParams2);
-    AppMethodBeat.o(236600);
+    AppMethodBeat.o(292862);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     int j = 0;
-    AppMethodBeat.i(236594);
+    AppMethodBeat.i(292849);
     Log.d("MicroMsg.MovableVideoView", "event: " + paramMotionEvent.getAction());
     switch (paramMotionEvent.getAction())
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(236594);
+      AppMethodBeat.o(292849);
       return true;
-      this.flk = paramMotionEvent.getRawX();
-      this.fll = paramMotionEvent.getRawY();
-      this.oPK = System.currentTimeMillis();
+      this.hpx = paramMotionEvent.getRawX();
+      this.hpy = paramMotionEvent.getRawY();
+      this.rTy = System.currentTimeMillis();
       continue;
-      float f1 = paramMotionEvent.getRawX() - this.flk;
-      float f2 = paramMotionEvent.getRawY() - this.fll;
+      float f1 = paramMotionEvent.getRawX() - this.hpx;
+      float f2 = paramMotionEvent.getRawY() - this.hpy;
       if ((Math.abs(f1) > 1.0F) || (Math.abs(f2) > 1.0F))
       {
         RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)getLayoutParams();
@@ -121,27 +121,27 @@ public class MovableVideoView
         {
           localLayoutParams.topMargin = i;
           setLayoutParams(localLayoutParams);
-          this.flk = paramMotionEvent.getRawX();
-          this.fll = paramMotionEvent.getRawY();
+          this.hpx = paramMotionEvent.getRawX();
+          this.hpy = paramMotionEvent.getRawY();
           break;
           i = m;
-          if (m <= this.NYI) {
+          if (m <= this.UMF) {
             break label174;
           }
-          i = this.NYI;
+          i = this.UMF;
           break label174;
           label244:
-          if (k > this.NYH) {
-            i = this.NYH;
+          if (k > this.UME) {
+            i = this.UME;
           } else {
             i = k;
           }
         }
         long l = System.currentTimeMillis();
-        if ((this.oPK != 0L) && (l - this.oPK < 300L) && (l - this.oPK >= 0L) && (this.mOnClickListener != null)) {
+        if ((this.rTy != 0L) && (l - this.rTy < 300L) && (l - this.rTy >= 0L) && (this.mOnClickListener != null)) {
           this.mOnClickListener.onClick(this);
         }
-        h.IzE.a(11079, new Object[] { Integer.valueOf(2) });
+        h.OAn.b(11079, new Object[] { Integer.valueOf(2) });
       }
     }
   }

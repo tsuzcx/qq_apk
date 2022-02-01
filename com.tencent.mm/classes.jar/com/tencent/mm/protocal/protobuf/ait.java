@@ -3,71 +3,60 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ait
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int index;
-  public String name;
-  public int type;
+  public String YFY;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(251895);
+    AppMethodBeat.i(258777);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.index);
-      paramVarArgs.aY(2, this.type);
-      if (this.name != null) {
-        paramVarArgs.f(3, this.name);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.YFY != null) {
+        paramVarArgs.g(1, this.YFY);
       }
-      AppMethodBeat.o(251895);
+      AppMethodBeat.o(258777);
       return 0;
     }
-    if (paramInt == 1)
-    {
-      int i = g.a.a.b.b.a.bM(1, this.index) + 0 + g.a.a.b.b.a.bM(2, this.type);
-      paramInt = i;
-      if (this.name != null) {
-        paramInt = i + g.a.a.b.b.a.g(3, this.name);
+    if (paramInt == 1) {
+      if (this.YFY == null) {
+        break label209;
       }
-      AppMethodBeat.o(251895);
+    }
+    label209:
+    for (paramInt = i.a.a.b.b.a.h(1, this.YFY) + 0;; paramInt = 0)
+    {
+      AppMethodBeat.o(258777);
       return paramInt;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
-      }
-      AppMethodBeat.o(251895);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      ait localait = (ait)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(251895);
-        return -1;
-      case 1: 
-        localait.index = locala.abFh.AK();
-        AppMethodBeat.o(251895);
-        return 0;
-      case 2: 
-        localait.type = locala.abFh.AK();
-        AppMethodBeat.o(251895);
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(258777);
         return 0;
       }
-      localait.name = locala.abFh.readString();
-      AppMethodBeat.o(251895);
-      return 0;
+      if (paramInt == 3)
+      {
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+        ait localait = (ait)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(258777);
+          return -1;
+        }
+        localait.YFY = locala.ajGk.readString();
+        AppMethodBeat.o(258777);
+        return 0;
+      }
+      AppMethodBeat.o(258777);
+      return -1;
     }
-    AppMethodBeat.o(251895);
-    return -1;
   }
 }
 

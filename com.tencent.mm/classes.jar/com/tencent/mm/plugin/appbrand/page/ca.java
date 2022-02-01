@@ -1,41 +1,29 @@
 package com.tencent.mm.plugin.appbrand.page;
 
+import android.content.Context;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import org.a.a;
 
-public enum ca
+public abstract interface ca
 {
-  private final String type;
+  public abstract <WIDGET extends View> WIDGET e(Context paramContext, Class<WIDGET> paramClass);
   
-  static
+  public static class a
+    implements ca
   {
-    AppMethodBeat.i(135283);
-    qwx = new ca("APP_LAUNCH", 0, "appLaunch");
-    qwy = new ca("NAVIGATE_TO", 1, "navigateTo");
-    qwz = new ca("NAVIGATE_BACK", 2, "navigateBack");
-    qwA = new ca("REDIRECT_TO", 3, "redirectTo");
-    qwB = new ca("REWRITE_ROUTE", 4, "rewriteRoute");
-    qwC = new ca("RE_LAUNCH", 5, "reLaunch");
-    qwD = new ca("AUTO_RE_LAUNCH", 6, "autoReLaunch");
-    qwE = new ca("SWITCH_TAB", 7, "switchTab");
-    qwF = new ca("DISMISS_PIP", 8, "dismissPip");
-    qwG = new ca("RELOAD", 9, "reload");
-    qwH = new ca[] { qwx, qwy, qwz, qwA, qwB, qwC, qwD, qwE, qwF, qwG };
-    AppMethodBeat.o(135283);
-  }
-  
-  private ca(String paramString)
-  {
-    this.type = paramString;
-  }
-  
-  public final String toString()
-  {
-    return this.type;
+    public <WIDGET extends View> WIDGET e(Context paramContext, Class<WIDGET> paramClass)
+    {
+      AppMethodBeat.i(135280);
+      paramContext = (View)paramClass.cast(a.cQ(paramClass).av(new Object[] { paramContext }).object);
+      AppMethodBeat.o(135280);
+      return paramContext;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.ca
  * JD-Core Version:    0.7.0.1
  */

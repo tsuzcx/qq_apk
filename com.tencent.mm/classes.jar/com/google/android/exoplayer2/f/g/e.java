@@ -30,12 +30,12 @@ final class e
   
   public static final class a
   {
-    Layout.Alignment bjC;
-    float bjD;
-    int bjE;
-    float bjF;
-    int bjG;
-    SpannableStringBuilder bnf;
+    int ddA;
+    Layout.Alignment ddw;
+    float ddx;
+    int ddy;
+    float ddz;
+    SpannableStringBuilder dha;
     long endTime;
     int lineType;
     long startTime;
@@ -48,57 +48,57 @@ final class e
       AppMethodBeat.o(92894);
     }
     
-    private a ux()
+    private a Ua()
     {
       AppMethodBeat.i(92896);
-      if (this.bjC == null) {
-        this.bjG = -2147483648;
+      if (this.ddw == null) {
+        this.ddA = -2147483648;
       }
       for (;;)
       {
         AppMethodBeat.o(92896);
         return this;
-        switch (e.1.bne[this.bjC.ordinal()])
+        switch (e.1.dgZ[this.ddw.ordinal()])
         {
         default: 
-          new StringBuilder("Unrecognized alignment: ").append(this.bjC);
-          this.bjG = 0;
+          new StringBuilder("Unrecognized alignment: ").append(this.ddw);
+          this.ddA = 0;
           break;
         case 1: 
-          this.bjG = 0;
+          this.ddA = 0;
           break;
         case 2: 
-          this.bjG = 1;
+          this.ddA = 1;
           break;
         case 3: 
-          this.bjG = 2;
+          this.ddA = 2;
         }
       }
+    }
+    
+    public final e TZ()
+    {
+      AppMethodBeat.i(92895);
+      if ((this.ddz != 1.4E-45F) && (this.ddA == -2147483648)) {
+        Ua();
+      }
+      e locale = new e(this.startTime, this.endTime, this.dha, this.ddw, this.ddx, this.lineType, this.ddy, this.ddz, this.ddA, this.width);
+      AppMethodBeat.o(92895);
+      return locale;
     }
     
     public final void reset()
     {
       this.startTime = 0L;
       this.endTime = 0L;
-      this.bnf = null;
-      this.bjC = null;
-      this.bjD = 1.4E-45F;
+      this.dha = null;
+      this.ddw = null;
+      this.ddx = 1.4E-45F;
       this.lineType = -2147483648;
-      this.bjE = -2147483648;
-      this.bjF = 1.4E-45F;
-      this.bjG = -2147483648;
+      this.ddy = -2147483648;
+      this.ddz = 1.4E-45F;
+      this.ddA = -2147483648;
       this.width = 1.4E-45F;
-    }
-    
-    public final e uw()
-    {
-      AppMethodBeat.i(92895);
-      if ((this.bjF != 1.4E-45F) && (this.bjG == -2147483648)) {
-        ux();
-      }
-      e locale = new e(this.startTime, this.endTime, this.bnf, this.bjC, this.bjD, this.lineType, this.bjE, this.bjF, this.bjG, this.width);
-      AppMethodBeat.o(92895);
-      return locale;
     }
   }
 }

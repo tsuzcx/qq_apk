@@ -5,6 +5,7 @@ import android.view.Surface;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.opengl.TXCOpenGlUtils;
 import com.tencent.liteav.basic.opengl.c;
+import com.tencent.liteav.basic.util.TXCCommonUtil;
 import com.tencent.liteav.basic.util.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
@@ -19,9 +20,10 @@ class b
   private int c;
   private int d;
   private final Semaphore e;
-  private c f;
-  private com.tencent.liteav.basic.opengl.b g;
-  private Object h;
+  private boolean f;
+  private c g;
+  private com.tencent.liteav.basic.opengl.b h;
+  private Object i;
   
   b(WeakReference<a> paramWeakReference)
   {
@@ -30,16 +32,17 @@ class b
     this.c = 1280;
     this.d = 720;
     this.e = new Semaphore(0);
-    this.f = null;
+    this.f = false;
     this.g = null;
     this.h = null;
+    this.i = null;
     this.a = paramWeakReference;
     AppMethodBeat.o(16890);
   }
   
   private boolean a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(221682);
+    AppMethodBeat.i(229693);
     try
     {
       if (this.a != null)
@@ -48,7 +51,7 @@ class b
         if (locala != null)
         {
           boolean bool = locala.b(paramInt1, paramInt2);
-          AppMethodBeat.o(221682);
+          AppMethodBeat.o(229693);
           return bool;
         }
       }
@@ -56,29 +59,29 @@ class b
     catch (Exception localException)
     {
       TXCLog.e("TXCVideoRenderThread", "drawFrame failed." + localException.getMessage());
-      AppMethodBeat.o(221682);
+      AppMethodBeat.o(229693);
     }
     return false;
   }
   
   private e f()
   {
-    AppMethodBeat.i(221667);
-    if (this.g != null)
+    AppMethodBeat.i(229683);
+    if (this.h != null)
     {
-      locale = this.g.f();
-      AppMethodBeat.o(221667);
+      locale = this.h.f();
+      AppMethodBeat.o(229683);
       return locale;
     }
-    if (this.f != null)
+    if (this.g != null)
     {
-      locale = this.f.c();
-      AppMethodBeat.o(221667);
+      locale = this.g.c();
+      AppMethodBeat.o(229683);
       return locale;
     }
     TXCOpenGlUtils.a("getSurfaceSize");
     e locale = new e(0, 0);
-    AppMethodBeat.o(221667);
+    AppMethodBeat.o(229683);
     return locale;
   }
   
@@ -148,71 +151,71 @@ class b
   
   private void k()
   {
-    AppMethodBeat.i(221694);
+    AppMethodBeat.i(229698);
     Object localObject = (a)this.a.get();
     if (localObject == null)
     {
-      AppMethodBeat.o(221694);
+      AppMethodBeat.o(229698);
       return;
     }
     localObject = ((a)localObject).c();
     if (localObject != null) {}
     for (localObject = new Surface((SurfaceTexture)localObject);; localObject = null)
     {
-      if ((this.h == null) || ((this.h instanceof javax.microedition.khronos.egl.EGLContext))) {
-        this.g = com.tencent.liteav.basic.opengl.b.a(null, (javax.microedition.khronos.egl.EGLContext)this.h, (Surface)localObject, this.c, this.d);
+      if ((this.i == null) || ((this.i instanceof javax.microedition.khronos.egl.EGLContext))) {
+        this.h = com.tencent.liteav.basic.opengl.b.a(null, (javax.microedition.khronos.egl.EGLContext)this.i, (Surface)localObject, this.c, this.d);
       }
       for (;;)
       {
-        TXCLog.w("TXCVideoRenderThread", "vrender: init egl share context " + this.h + ", create context" + a());
+        TXCLog.w("TXCVideoRenderThread", "vrender: init egl share context " + this.i + ", create context" + a());
         e();
-        AppMethodBeat.o(221694);
+        AppMethodBeat.o(229698);
         return;
-        this.f = c.a(null, (android.opengl.EGLContext)this.h, (Surface)localObject, this.c, this.d);
+        this.g = c.a(null, (android.opengl.EGLContext)this.i, (Surface)localObject, this.c, this.d);
       }
     }
   }
   
   private void l()
   {
-    AppMethodBeat.i(221697);
+    AppMethodBeat.i(229699);
     TXCLog.w("TXCVideoRenderThread", "vrender: uninit egl " + a());
+    if (this.h != null)
+    {
+      this.h.c();
+      this.h = null;
+    }
     if (this.g != null)
     {
-      this.g.c();
+      this.g.d();
       this.g = null;
     }
-    if (this.f != null)
-    {
-      this.f.d();
-      this.f = null;
-    }
-    AppMethodBeat.o(221697);
+    AppMethodBeat.o(229699);
   }
   
   public Object a()
   {
-    AppMethodBeat.i(221673);
+    AppMethodBeat.i(229705);
     Object localObject;
+    if (this.h != null)
+    {
+      localObject = this.h.d();
+      AppMethodBeat.o(229705);
+      return localObject;
+    }
     if (this.g != null)
     {
-      localObject = this.g.d();
-      AppMethodBeat.o(221673);
+      localObject = this.g.f();
+      AppMethodBeat.o(229705);
       return localObject;
     }
-    if (this.f != null)
-    {
-      localObject = this.f.f();
-      AppMethodBeat.o(221673);
-      return localObject;
-    }
-    AppMethodBeat.o(221673);
+    AppMethodBeat.o(229705);
     return null;
   }
   
   public void a(Object paramObject)
   {
-    this.h = paramObject;
+    this.i = paramObject;
   }
   
   public void b()
@@ -233,11 +236,11 @@ class b
   public void d()
   {
     AppMethodBeat.i(16894);
-    if (this.g != null) {
-      this.g.a();
+    if (this.h != null) {
+      this.h.a();
     }
-    if (this.f != null) {
-      this.f.e();
+    if (this.g != null) {
+      this.g.e();
     }
     AppMethodBeat.o(16894);
   }
@@ -245,11 +248,11 @@ class b
   public void e()
   {
     AppMethodBeat.i(16895);
+    if (this.h != null) {
+      this.h.b();
+    }
     if (this.g != null) {
       this.g.b();
-    }
-    if (this.f != null) {
-      this.f.b();
     }
     AppMethodBeat.o(16895);
   }
@@ -270,14 +273,22 @@ class b
         Object localObject1 = f();
         if (a(((e)localObject1).a, ((e)localObject1).b)) {
           if (this.a != null) {
-            break label123;
+            break label185;
           }
         }
-        label123:
+        label185:
         for (localObject1 = null;; localObject1 = (a)this.a.get())
         {
           if ((localObject1 != null) && (((a)localObject1).c() != null)) {
             d();
+          }
+          if (!this.f)
+          {
+            long l1 = System.currentTimeMillis();
+            long l2 = TXCCommonUtil.sStartTime;
+            TXCLog.i("TXCVideoRenderThread", "[statistics firstFrame cost]. firstFrame display cost: " + (l1 - l2) + "," + this);
+            TXCCommonUtil.sStartTime = 0L;
+            this.f = true;
           }
           if (!this.b) {
             break label46;
@@ -306,7 +317,7 @@ class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.renderer.b
  * JD-Core Version:    0.7.0.1
  */

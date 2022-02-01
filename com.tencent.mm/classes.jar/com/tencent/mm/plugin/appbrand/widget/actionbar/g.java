@@ -10,15 +10,15 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.PopupWindow;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
-import com.tencent.mm.plugin.appbrand.au.d;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.plugin.appbrand.ba.d;
 
 public final class g
   extends PopupWindow
 {
   private Context mContext;
   private View maskView;
-  public FrameLayout roY;
+  public FrameLayout uzj;
   private WindowManager windowManager;
   
   public g(Context paramContext)
@@ -28,7 +28,7 @@ public final class g
     this.mContext = null;
     this.mContext = paramContext;
     this.windowManager = ((WindowManager)paramContext.getSystemService("window"));
-    this.roY = new FrameLayout(this.mContext);
+    this.uzj = new FrameLayout(this.mContext);
     AppMethodBeat.o(49381);
   }
   
@@ -49,11 +49,11 @@ public final class g
     AppMethodBeat.i(49384);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
     localLayoutParams.gravity = 17;
-    localLayoutParams.topMargin = a.aZ(this.mContext, au.d.app_brand_app_brand_popwindow_with_mask_topmargin);
-    localLayoutParams.rightMargin = a.aZ(this.mContext, au.d.app_brand_app_brand_popwindow_with_mask_margin);
-    localLayoutParams.leftMargin = a.aZ(this.mContext, au.d.app_brand_app_brand_popwindow_with_mask_margin);
-    this.roY.addView(paramView, localLayoutParams);
-    super.setContentView(this.roY);
+    localLayoutParams.topMargin = a.bs(this.mContext, ba.d.app_brand_app_brand_popwindow_with_mask_topmargin);
+    localLayoutParams.rightMargin = a.bs(this.mContext, ba.d.app_brand_app_brand_popwindow_with_mask_margin);
+    localLayoutParams.leftMargin = a.bs(this.mContext, ba.d.app_brand_app_brand_popwindow_with_mask_margin);
+    this.uzj.addView(paramView, localLayoutParams);
+    super.setContentView(this.uzj);
     AppMethodBeat.o(49384);
   }
   
@@ -82,7 +82,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.actionbar.g
  * JD-Core Version:    0.7.0.1
  */

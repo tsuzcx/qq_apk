@@ -1,96 +1,74 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class dpi
-  extends dyl
+  extends com.tencent.mm.bx.a
 {
-  public int Svu;
-  public long Svv;
-  public long TWc;
+  public String UserName;
+  public int aaWh;
+  public int aaWi;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32383);
+    AppMethodBeat.i(257866);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.UserName != null) {
+        paramVarArgs.g(1, this.UserName);
       }
-      paramVarArgs.aY(2, this.Svu);
-      paramVarArgs.bm(3, this.Svv);
-      paramVarArgs.bm(4, this.TWc);
-      AppMethodBeat.o(32383);
+      paramVarArgs.bS(2, this.aaWh);
+      paramVarArgs.bS(3, this.aaWi);
+      AppMethodBeat.o(257866);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label434;
+      if (this.UserName == null) {
+        break label302;
       }
     }
-    label434:
-    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label302:
+    for (paramInt = i.a.a.b.b.a.h(1, this.UserName) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.bM(2, this.Svu);
-      int j = g.a.a.b.b.a.p(3, this.Svv);
-      int k = g.a.a.b.b.a.p(4, this.TWc);
-      AppMethodBeat.o(32383);
-      return paramInt + i + j + k;
+      int i = i.a.a.b.b.a.cJ(2, this.aaWh);
+      int j = i.a.a.b.b.a.cJ(3, this.aaWi);
+      AppMethodBeat.o(257866);
+      return paramInt + i + j;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(32383);
+        AppMethodBeat.o(257866);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         dpi localdpi = (dpi)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(32383);
+          AppMethodBeat.o(257866);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject = (byte[])paramVarArgs.get(paramInt);
-            jg localjg = new jg();
-            if ((localObject != null) && (localObject.length > 0)) {
-              localjg.parseFrom((byte[])localObject);
-            }
-            localdpi.BaseRequest = localjg;
-            paramInt += 1;
-          }
-          AppMethodBeat.o(32383);
+          localdpi.UserName = locala.ajGk.readString();
+          AppMethodBeat.o(257866);
           return 0;
         case 2: 
-          localdpi.Svu = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(32383);
-          return 0;
-        case 3: 
-          localdpi.Svv = ((g.a.a.a.a)localObject).abFh.AN();
-          AppMethodBeat.o(32383);
+          localdpi.aaWh = locala.ajGk.aar();
+          AppMethodBeat.o(257866);
           return 0;
         }
-        localdpi.TWc = ((g.a.a.a.a)localObject).abFh.AN();
-        AppMethodBeat.o(32383);
+        localdpi.aaWi = locala.ajGk.aar();
+        AppMethodBeat.o(257866);
         return 0;
       }
-      AppMethodBeat.o(32383);
+      AppMethodBeat.o(257866);
       return -1;
     }
   }

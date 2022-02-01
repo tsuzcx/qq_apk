@@ -7,14 +7,14 @@ import java.util.List;
 public final class a
   extends com.google.android.exoplayer2.f.b
 {
-  private final b blh;
+  private final b dfd;
   
   public a(List<byte[]> paramList)
   {
     super("DvbDecoder");
     AppMethodBeat.i(92790);
     paramList = new m((byte[])paramList.get(0));
-    this.blh = new b(paramList.readUnsignedShort(), paramList.readUnsignedShort());
+    this.dfd = new b(paramList.readUnsignedShort(), paramList.readUnsignedShort());
     AppMethodBeat.o(92790);
   }
 }

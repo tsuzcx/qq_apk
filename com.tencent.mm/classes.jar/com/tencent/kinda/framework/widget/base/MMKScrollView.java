@@ -12,7 +12,7 @@ import com.tencent.kinda.gen.KScrollView;
 import com.tencent.kinda.gen.KScrollViewOnScrollCallback;
 import com.tencent.kinda.gen.KView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.ui.MMScrollView;
 import com.tencent.mm.wallet_core.ui.MMScrollView.a;
@@ -63,18 +63,18 @@ public class MMKScrollView
   
   public KPoint getContentOffset()
   {
-    AppMethodBeat.i(263696);
-    int i = a.H(((MMScrollView)getView()).getContext(), ((MMScrollView)getView()).getScrollX());
-    int j = a.H(((MMScrollView)getView()).getContext(), ((MMScrollView)getView()).getScrollY());
+    AppMethodBeat.i(226611);
+    int i = a.K(((MMScrollView)getView()).getContext(), ((MMScrollView)getView()).getScrollX());
+    int j = a.K(((MMScrollView)getView()).getContext(), ((MMScrollView)getView()).getScrollY());
     KPoint localKPoint = new KPoint(i, j);
     Log.printDebugStack("MMKViewLayout", "getContentOffset  X: %s, Y: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-    AppMethodBeat.o(263696);
+    AppMethodBeat.o(226611);
     return localKPoint;
   }
   
   public float getHeight()
   {
-    AppMethodBeat.i(263701);
+    AppMethodBeat.i(226618);
     if (KindaContext.get() != null)
     {
       DisplayMetrics localDisplayMetrics = KindaContext.get().getResources().getDisplayMetrics();
@@ -82,10 +82,10 @@ public class MMKScrollView
       int j = (int)MMKViewUtil.pxToDp(((MMScrollView)getView()).getContext(), localDisplayMetrics.heightPixels);
       Log.printDebugStack("MMKViewLayout", "getView() - %s scroolviewheight: %s,screenheight: %s", new Object[] { this, Integer.valueOf(i), Integer.valueOf(j) });
       float f = Math.min(i, j);
-      AppMethodBeat.o(263701);
+      AppMethodBeat.o(226618);
       return f;
     }
-    AppMethodBeat.o(263701);
+    AppMethodBeat.o(226618);
     return 0.0F;
   }
   
@@ -120,7 +120,15 @@ public class MMKScrollView
     AppMethodBeat.o(19118);
   }
   
-  public void scrollTo(KView paramKView) {}
+  public void scrollTo(KView paramKView, float paramFloat1, float paramFloat2, boolean paramBoolean)
+  {
+    AppMethodBeat.i(226582);
+    paramKView = ((MMKView)paramKView).getView();
+    int i = (int)MMKViewUtil.dpToPx(this.mContext, paramFloat1);
+    int j = (int)MMKViewUtil.dpToPx(this.mContext, paramFloat2);
+    ((MMScrollView)getView()).scrollTo(i, paramKView.getTop() - j);
+    AppMethodBeat.o(226582);
+  }
   
   public void setContent(KView paramKView) {}
   
@@ -128,27 +136,27 @@ public class MMKScrollView
   
   public void setContentOffset(KPoint paramKPoint)
   {
-    AppMethodBeat.i(263698);
+    AppMethodBeat.i(226614);
     final int i = (int)MMKViewUtil.dpToPx(((MMScrollView)getView()).getContext(), (int)paramKPoint.getX());
     final int j = (int)MMKViewUtil.dpToPx(((MMScrollView)getView()).getContext(), (int)paramKPoint.getY());
     ((MMScrollView)getView()).postDelayed(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(262869);
+        AppMethodBeat.i(226589);
         ((MMScrollView)MMKScrollView.this.getView()).scrollBy(i, j);
-        AppMethodBeat.o(262869);
+        AppMethodBeat.o(226589);
       }
     }, 150L);
     Log.printDebugStack("MMKViewLayout", "setContentOffset  X: %s, Y: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-    AppMethodBeat.o(263698);
+    AppMethodBeat.o(226614);
   }
   
   public void setContentOffset(KPoint paramKPoint, boolean paramBoolean)
   {
-    AppMethodBeat.i(263700);
+    AppMethodBeat.i(226617);
     setContentOffset(paramKPoint);
-    AppMethodBeat.o(263700);
+    AppMethodBeat.o(226617);
   }
   
   public void setOnScrollCallback(final KScrollViewOnScrollCallback paramKScrollViewOnScrollCallback)
@@ -183,7 +191,7 @@ public class MMKScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKScrollView
  * JD-Core Version:    0.7.0.1
  */

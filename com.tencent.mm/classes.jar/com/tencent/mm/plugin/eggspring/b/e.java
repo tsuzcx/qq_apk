@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.eggspring.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.c;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.t.a.r;
-import com.tencent.mm.t.a.s;
-import kotlin.l;
+import com.tencent.mm.am.b;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.r.a.r;
+import com.tencent.mm.r.a.s;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/eggspring/cgi/GetMoneyCgi;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/eggspring/model/OpenMoneyResp;", "uxInfo", "", "source", "", "materialId", "", "traceId", "(Ljava/lang/String;IJLjava/lang/String;)V", "plugin-eggspring_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/eggspring/cgi/GetMoneyCgi;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/eggspring/model/OpenMoneyResp;", "uxInfo", "", "source", "", "materialId", "", "traceId", "(Ljava/lang/String;IJLjava/lang/String;)V", "plugin-eggspring_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
-  extends c<s>
+  extends b<s>
 {
   public e(String paramString1, long paramLong, String paramString2)
   {
-    AppMethodBeat.i(249522);
+    AppMethodBeat.i(266537);
     r localr = new r();
-    localr.jDL = paramString1;
+    localr.mdG = paramString1;
     localr.source = 1;
-    localr.jEe = paramLong;
-    localr.jDM = paramString2;
-    paramString1 = new d.a();
-    paramString1.c((a)localr);
-    paramString1.d((a)new s());
-    paramString1.vF(0);
-    paramString1.vG(0);
-    paramString1.vD(4919);
-    paramString1.TW("/cgi-bin/mmoc-bin/interaction/open_money ");
-    c(paramString1.bgN());
-    AppMethodBeat.o(249522);
+    localr.mea = paramLong;
+    localr.mdH = paramString2;
+    paramString1 = new c.a();
+    paramString1.otE = ((a)localr);
+    paramString1.otF = ((a)new s());
+    paramString1.otG = 0;
+    paramString1.respCmdId = 0;
+    paramString1.funcId = 4919;
+    paramString1.uri = "/cgi-bin/mmoc-bin/interaction/open_money ";
+    c(paramString1.bEF());
+    AppMethodBeat.o(266537);
   }
 }
 

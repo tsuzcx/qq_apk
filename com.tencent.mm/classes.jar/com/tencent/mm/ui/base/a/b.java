@@ -1,22 +1,17 @@
 package com.tencent.mm.ui.base.a;
 
 import android.view.View;
-import com.tencent.mm.view.recyclerview.i;
+import com.tencent.mm.view.recyclerview.j;
 
 public class b
-  extends i
+  extends j
 {
-  private final View view;
+  public final View view;
   
   public b(View paramView)
   {
     super(paramView);
     this.view = paramView;
-  }
-  
-  public final <V extends View> V getView()
-  {
-    return this.view;
   }
 }
 

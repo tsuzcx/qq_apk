@@ -12,16 +12,16 @@ public class YTLipReader
   
   static
   {
-    AppMethodBeat.i(211080);
+    AppMethodBeat.i(218041);
     TAG = YTLipReader.class.getSimpleName();
-    AppMethodBeat.o(211080);
+    AppMethodBeat.o(218041);
   }
   
   public YTLipReader()
   {
-    AppMethodBeat.i(211070);
+    AppMethodBeat.i(218034);
     NativeConstructor();
-    AppMethodBeat.o(211070);
+    AppMethodBeat.o(218034);
   }
   
   private native void NativeConstructor();
@@ -30,29 +30,29 @@ public class YTLipReader
   
   public static byte[] encodeJpeg(Bitmap paramBitmap, int paramInt)
   {
-    AppMethodBeat.i(211078);
+    AppMethodBeat.i(218038);
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
     paramBitmap.compress(Bitmap.CompressFormat.JPEG, paramInt, localByteArrayOutputStream);
     paramBitmap = localByteArrayOutputStream.toByteArray();
-    AppMethodBeat.o(211078);
+    AppMethodBeat.o(218038);
     return paramBitmap;
   }
   
   public static byte[] encodePng(Bitmap paramBitmap, int paramInt)
   {
-    AppMethodBeat.i(211079);
+    AppMethodBeat.i(218040);
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
     paramBitmap.compress(Bitmap.CompressFormat.PNG, paramInt, localByteArrayOutputStream);
     paramBitmap = localByteArrayOutputStream.toByteArray();
-    AppMethodBeat.o(211079);
+    AppMethodBeat.o(218040);
     return paramBitmap;
   }
   
   public void destroy()
   {
-    AppMethodBeat.i(211071);
+    AppMethodBeat.i(218042);
     NativeDestructor();
-    AppMethodBeat.o(211071);
+    AppMethodBeat.o(218042);
   }
   
   public native String feature();
@@ -61,10 +61,10 @@ public class YTLipReader
   
   protected void finalize()
   {
-    AppMethodBeat.i(211072);
+    AppMethodBeat.i(218043);
     super.finalize();
     NativeDestructor();
-    AppMethodBeat.o(211072);
+    AppMethodBeat.o(218043);
   }
   
   public native String getImageListJsonStr();
@@ -79,7 +79,7 @@ public class YTLipReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.youtu.lipreader.jni.YTLipReader
  * JD-Core Version:    0.7.0.1
  */

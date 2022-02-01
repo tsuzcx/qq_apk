@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:background="@drawable/akk" android:layout_width="fill_parent" android:layout_height="480.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="@dimen/cb" android:textStyle="bold" android:textColor="@color/FG_0" android:id="@id/fpq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cl" android:text="@string/f5a" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
-    <ImageView android:id="@id/fpl" android:layout_width="270.0dip" android:layout_height="183.0dip" android:layout_marginTop="35.0dip" android:src="@drawable/ct5" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toBottomOf="@id/fpq" />
-    <TextView android:textSize="@dimen/cb" android:textColor="#ff07c160" android:gravity="center" android:id="@id/fpm" android:background="@drawable/akj" android:layout_width="@dimen/c8" android:layout_height="@dimen/cl" android:layout_marginTop="@dimen/cp" android:text="@string/f5_" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toBottomOf="@id/fpl" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@drawable/arl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="3.0" android:minHeight="@dimen/i5"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ToggleButton android:id="@id/iw9" android:textOn="@string/i8_" android:textOff="@string/i8_" android:drawableTop="@drawable/m0" style="@style/gk" />
+    <ToggleButton android:id="@id/iw8" android:textOn="@string/i7s" android:textOff="@string/i7s" android:drawableTop="@drawable/m0" style="@style/gk" />
+    <ToggleButton android:id="@id/iwb" android:textOn="@string/i8w" android:textOff="@string/i8w" android:drawableTop="@drawable/m0" style="@style/gk" />
+</LinearLayout>

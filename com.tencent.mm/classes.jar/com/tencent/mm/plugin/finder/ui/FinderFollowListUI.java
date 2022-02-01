@@ -1,22 +1,20 @@
 package com.tencent.mm.plugin.finder.ui;
 
-import android.app.Activity;
-import android.view.View;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.viewmodel.component.w;
+import com.tencent.mm.plugin.finder.accessibility.h;
+import com.tencent.mm.plugin.finder.viewmodel.component.aa;
 import com.tencent.mm.ui.component.UIComponent;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Set;
-import kotlin.a.ak;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.ar;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderFollowListUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "getCommentScene", "", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/ui/FinderFollowListUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "getCommentScene", "", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "superImportUIComponents", "", "set", "Ljava/util/HashSet;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderFollowListUI
   extends MMFinderUI
 {
   private final String TAG;
-  private HashMap _$_findViewCache;
   
   public FinderFollowListUI()
   {
@@ -25,31 +23,7 @@ public final class FinderFollowListUI
     AppMethodBeat.o(167282);
   }
   
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(280947);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(280947);
-  }
-  
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(280946);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(280946);
-    return localView1;
-  }
+  public final void _$_clearFindViewByIdCache() {}
   
   public final int getCommentScene()
   {
@@ -58,9 +32,9 @@ public final class FinderFollowListUI
   
   public final Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(280945);
-    Set localSet = ak.setOf(w.class);
-    AppMethodBeat.o(280945);
+    AppMethodBeat.i(346701);
+    Set localSet = ar.setOf(aa.class);
+    AppMethodBeat.o(346701);
     return localSet;
   }
   
@@ -69,10 +43,19 @@ public final class FinderFollowListUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  public final void superImportUIComponents(HashSet<Class<? extends UIComponent>> paramHashSet)
+  {
+    AppMethodBeat.i(346707);
+    s.u(paramHashSet, "set");
+    super.superImportUIComponents(paramHashSet);
+    paramHashSet.add(h.class);
+    AppMethodBeat.o(346707);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderFollowListUI
  * JD-Core Version:    0.7.0.1
  */

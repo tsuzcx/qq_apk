@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.updater;
 
 public final class a$a
 {
-  public static final int client_version_et = 2131298816;
-  public static final int ok_btn = 2131305983;
+  public static final int client_version_et = 2131299157;
+  public static final int ok_btn = 2131307656;
 }
 
 

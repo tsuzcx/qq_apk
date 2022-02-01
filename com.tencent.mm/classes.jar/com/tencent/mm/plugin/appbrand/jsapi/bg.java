@@ -1,168 +1,172 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
+import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.permission.AppRuntimeApiPermissionBundle;
-import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.mm.plugin.appbrand.af.i;
+import com.tencent.mm.plugin.appbrand.g;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.page.capsulebar.AppBrandCapsuleBarPlaceHolderView;
+import com.tencent.mm.plugin.appbrand.ui.am;
+import com.tencent.mm.plugin.appbrand.ui.am.a;
+import com.tencent.mm.plugin.appbrand.ui.am.b;
+import com.tencent.mm.plugin.appbrand.widget.actionbar.b;
+import com.tencent.mm.plugin.appbrand.y;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
-public final class bg
-  extends aa<com.tencent.luggage.sdk.b.a.c.d>
+public class bg
+  extends ab<g>
 {
-  public static final int CTRL_INDEX = -2;
-  public static final String NAME = "getPluginPermissionBytes";
+  public static final int CTRL_INDEX = 466;
+  public static final String NAME = "getMenuButtonBoundingClientRect";
+  private static boolean rym = false;
   
-  private String a(com.tencent.luggage.sdk.b.a.c.d paramd, JSONObject paramJSONObject)
+  private String c(g paramg)
   {
-    AppMethodBeat.i(251260);
-    Log.i("MicroMsg.JsApiGetPluginPermissionBytes", "invoke jsapi: %s", new Object[] { "getPluginPermissionBytes" });
-    if (paramd == null)
-    {
-      Log.i("MicroMsg.JsApiGetPluginPermissionBytes", "fail:service is nil");
-      paramd = h("fail:service is nil", null);
-      AppMethodBeat.o(251260);
-      return paramd;
-    }
-    if (paramJSONObject == null)
-    {
-      Log.i("MicroMsg.JsApiGetPluginPermissionBytes", "fail:data is nil");
-      paramd = h("fail:data is nil", null);
-      AppMethodBeat.o(251260);
-      return paramd;
-    }
-    Object localObject = paramd.QM();
-    if (localObject == null)
-    {
-      Log.i("MicroMsg.JsApiGetPluginPermissionBytes", "fail:runtime is nil");
-      paramd = h("fail:runtime is nil", null);
-      AppMethodBeat.o(251260);
-      return paramd;
-    }
-    com.tencent.mm.plugin.appbrand.permission.d locald = ((com.tencent.luggage.sdk.e.d)localObject).cCQ;
-    if (locald == null)
-    {
-      Log.e("MicroMsg.JsApiGetPluginPermissionBytes", "invoke failed, NULL permissionController with appId:%s", new Object[] { ((AppBrandRuntime)localObject).mAppId });
-      paramd = h("fail:internal error", null);
-      AppMethodBeat.o(251260);
-      return paramd;
+    Object localObject1 = null;
+    Map localMap = null;
+    AppMethodBeat.i(139841);
+    ad localad = dp.j(paramg);
+    Object localObject3;
+    if (localad != null) {
+      localObject3 = localObject1;
     }
     for (;;)
     {
-      HashMap localHashMap1;
-      HashMap localHashMap2;
-      int i;
       try
       {
-        localObject = new JSONArray(paramJSONObject.optString("pluginList"));
-        localHashMap1 = new HashMap();
-        localHashMap2 = new HashMap();
-        i = 0;
-        if (i < ((JSONArray)localObject).length())
+        int[] arrayOfInt = new int[2];
+        localObject3 = localObject1;
+        localad.cEC().getCapsuleView().getLocationInWindow(arrayOfInt);
+        localObject3 = localObject1;
+        i = localad.cEC().getCapsuleView().getWidth();
+        localObject3 = localObject1;
+        j = localad.cEC().getCapsuleView().getHeight();
+        k = arrayOfInt[1];
+        m = arrayOfInt[0];
+        if ((m != 0) && (i != 0)) {
+          continue;
+        }
+        localObject3 = localObject1;
+        Log.e("MicroMsg.JsApiGetMenuButtonBoundingClientRect", "getBoundingRectLegacy with appId[%s] left==0, return null", new Object[] { localad.getAppId() });
+        localObject1 = localMap;
+        if (localObject1 != null)
         {
-          paramJSONObject = ((JSONArray)localObject).optJSONObject(i);
-          String str = paramJSONObject.optString("pluginId");
-          JSONArray localJSONArray1 = paramJSONObject.optJSONArray("indexes");
-          Log.i("MicroMsg.JsApiGetPluginPermissionBytes", "pluginId:%s,indexes:%s", new Object[] { str, localJSONArray1 });
-          if (localJSONArray1 == null)
+          localObject3 = localObject1;
+          if (rym)
           {
-            Log.i("MicroMsg.JsApiGetPluginPermissionBytes", "fail:indexes is nil");
-            paramd = h("fail:indexes is nil", null);
-            AppMethodBeat.o(251260);
-            return paramd;
-          }
-          j = locald.qzr;
-          if (j == -1)
-          {
-            paramJSONObject = new byte[] { 1 };
-            if ((paramJSONObject == null) || (paramJSONObject.length <= 0))
-            {
-              Log.i("MicroMsg.JsApiGetPluginPermissionBytes", "fail:pluginId:%s ctrlBytes is empty", new Object[] { str });
-              break label638;
-            }
-          }
-          else
-          {
-            if (j == -2)
-            {
-              paramJSONObject = new byte[] { 0 };
-              continue;
-            }
-            if (Util.isNullOrNil(str))
-            {
-              paramJSONObject = null;
-              continue;
-            }
-            paramJSONObject = locald.amh(str);
-            if (paramJSONObject == null)
-            {
-              paramJSONObject = null;
-              continue;
-            }
-            if (!(paramd instanceof v)) {}
-          }
-          switch (com.tencent.mm.plugin.appbrand.permission.d.2.nLn[locald.nxs.ntR.nKU.bIg().ordinal()])
-          {
-          case 1: 
-            paramJSONObject = paramJSONObject.qzm;
-            break;
-          case 2: 
-          case 3: 
-            paramJSONObject = paramJSONObject.qzn;
-            break;
-            paramJSONObject = paramJSONObject.qzm;
-            break;
-            Log.i("MicroMsg.JsApiGetPluginPermissionBytes", "pluginId:%s ctrlBytes:%d", new Object[] { str, Integer.valueOf(paramJSONObject.length) });
-            JSONArray localJSONArray2 = new JSONArray();
-            if (localJSONArray1.length() != 0) {
-              break label651;
-            }
-            j = 0;
-            if (j < paramJSONObject.length)
-            {
-              localJSONArray2.put(locald.G(paramJSONObject, j));
-              j += 1;
-              continue;
-              if (j < localJSONArray1.length())
-              {
-                localJSONArray2.put(locald.G(paramJSONObject, localJSONArray1.optInt(j, -1)));
-                j += 1;
-                continue;
-              }
-            }
-            localHashMap2.put(str, localJSONArray2);
+            localObject3 = localObject1;
+            l(dp.k(paramg));
           }
         }
       }
-      catch (Exception paramd)
+      catch (Exception localException)
       {
-        Log.e("MicroMsg.JsApiGetPluginPermissionBytes", "parse pluginList error:%s", new Object[] { paramd });
-        paramd = h("fail:parse pluginList error", null);
-        AppMethodBeat.o(251260);
-        return paramd;
+        int i;
+        int j;
+        int k;
+        int m;
+        Log.e("MicroMsg.JsApiGetMenuButtonBoundingClientRect", "getBoundingRectLegacy e=%s", new Object[] { localException });
+        localObject2 = localObject3;
+        continue;
+        paramg = ZP("fail:internal error");
+        AppMethodBeat.o(139841);
+        return paramg;
       }
-      localHashMap1.put("pluginPermissionMap", localHashMap2);
-      Log.i("MicroMsg.JsApiGetPluginPermissionBytes", "invoke JsApiGetPluginPermissionBytes ok");
-      paramd = m("ok", localHashMap1);
-      AppMethodBeat.o(251260);
-      return paramd;
-      label638:
-      i += 1;
-      continue;
-      continue;
-      continue;
-      label651:
-      int j = 0;
+      localObject3 = localObject1;
+      if (localObject1 == null) {
+        localObject3 = l(dp.k(paramg));
+      }
+      if (localObject3 != null)
+      {
+        paramg = m("ok", (Map)localObject3);
+        AppMethodBeat.o(139841);
+        return paramg;
+        localObject3 = localObject1;
+        localMap = v(new Rect(m, k, m + i, j + k));
+        localObject3 = localObject1;
+        Log.i("MicroMsg.JsApiGetMenuButtonBoundingClientRect", "getBoundingRectLegacy with appId[%s] return %s", new Object[] { localad.getAppId(), localMap });
+        localObject1 = localMap;
+      }
+      else
+      {
+        Object localObject2 = null;
+      }
     }
+  }
+  
+  public static void iX(boolean paramBoolean)
+  {
+    rym = paramBoolean;
+  }
+  
+  private Map<String, Object> l(y paramy)
+  {
+    AppMethodBeat.i(182225);
+    Object localObject2 = k(paramy);
+    if (localObject2 == null)
+    {
+      Log.e("MicroMsg.JsApiGetMenuButtonBoundingClientRect", "getBoundingRectFallback with appId[%s] NULL IMenuButtonLayoutPropertiesService", new Object[] { paramy.getAppId() });
+      AppMethodBeat.o(182225);
+      return null;
+    }
+    int n = ((am)localObject2).c(paramy);
+    Object localObject1 = ((am)localObject2).cLL();
+    localObject2 = ((am)localObject2).aqq();
+    int m = com.tencent.mm.plugin.appbrand.utils.aq.n(paramy)[0];
+    int j = ((am.b)localObject1).width;
+    int k = ((am.b)localObject1).height;
+    if (localObject2 == null)
+    {
+      i = 0;
+      n += i;
+      if (localObject2 != null) {
+        break label179;
+      }
+    }
+    label179:
+    for (int i = 0;; i = ((am.a)localObject2).right)
+    {
+      i = m - i;
+      localObject1 = v(new Rect(i - j, n, i, k + n));
+      Log.i("MicroMsg.JsApiGetMenuButtonBoundingClientRect", "getBoundingRectFallback with appId[%s] return %s", new Object[] { paramy.getAppId(), localObject1 });
+      AppMethodBeat.o(182225);
+      return localObject1;
+      i = ((am.a)localObject2).top;
+      break;
+    }
+  }
+  
+  private static Map<String, Object> v(Rect paramRect)
+  {
+    AppMethodBeat.i(182226);
+    paramRect.left = i.DA(paramRect.left);
+    paramRect.top = i.DA(paramRect.top);
+    paramRect.right = i.DA(paramRect.right);
+    paramRect.bottom = i.DA(paramRect.bottom);
+    HashMap localHashMap = new HashMap(6);
+    localHashMap.put("left", Integer.valueOf(paramRect.left));
+    localHashMap.put("top", Integer.valueOf(paramRect.top));
+    localHashMap.put("right", Integer.valueOf(paramRect.right));
+    localHashMap.put("bottom", Integer.valueOf(paramRect.bottom));
+    localHashMap.put("width", Integer.valueOf(paramRect.width()));
+    localHashMap.put("height", Integer.valueOf(paramRect.height()));
+    AppMethodBeat.o(182226);
+    return localHashMap;
+  }
+  
+  protected am k(y paramy)
+  {
+    AppMethodBeat.i(177248);
+    paramy = (am)paramy.T(am.class);
+    AppMethodBeat.o(177248);
+    return paramy;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bg
  * JD-Core Version:    0.7.0.1
  */

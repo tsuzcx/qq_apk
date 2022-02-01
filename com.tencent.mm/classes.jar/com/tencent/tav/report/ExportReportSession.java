@@ -22,38 +22,38 @@ public final class ExportReportSession
   
   private void commit()
   {
-    AppMethodBeat.i(193399);
+    AppMethodBeat.i(214942);
     if ((this.beginTimeMs == 0L) || (this.exportStartTimeNs == 0L))
     {
       Logger.e("ExportReportSession", "commit: 数据错误，beginTimeMs = " + this.beginTimeMs + "， exportStartTimeNs = " + this.exportStartTimeNs);
-      AppMethodBeat.o(193399);
+      AppMethodBeat.o(214942);
       return;
     }
     if (this.successCount >= 10) {
       doCommit();
     }
-    AppMethodBeat.o(193399);
+    AppMethodBeat.o(214942);
   }
   
   private void doCommit()
   {
-    AppMethodBeat.i(193404);
+    AppMethodBeat.i(214957);
     double d1 = this.totalCostUs / this.successCount;
     double d2 = this.totalDecodeUs / this.successCount;
     Logger.i("ExportReportSession", "report export performance, compositeTimeUs:" + this.compositeTimeUs + ", totalCostUs:" + this.totalCostUs + ", totalDecodeUs:" + this.totalDecodeUs + ", successCount:" + this.successCount + ", avg_decode_time:" + d2 + ", avg_render_time:" + d1);
-    AppMethodBeat.o(193404);
+    AppMethodBeat.o(214957);
   }
   
   public final long getAverageDecodeUs()
   {
-    AppMethodBeat.i(193387);
+    AppMethodBeat.i(215048);
     if (this.successCount != 0)
     {
       long l = getTotalDecodeUs() / this.successCount;
-      AppMethodBeat.o(193387);
+      AppMethodBeat.o(215048);
       return l;
     }
-    AppMethodBeat.o(193387);
+    AppMethodBeat.o(215048);
     return 0L;
   }
   
@@ -105,38 +105,38 @@ public final class ExportReportSession
   
   public final void onExportError()
   {
-    AppMethodBeat.i(193395);
+    AppMethodBeat.i(215092);
     this.success = false;
     commit();
-    AppMethodBeat.o(193395);
+    AppMethodBeat.o(215092);
   }
   
   public final void onExportStart(long paramLong)
   {
-    AppMethodBeat.i(193389);
+    AppMethodBeat.i(215073);
     this.exportStartTimeNs = paramLong;
     this.beginTimeMs = System.currentTimeMillis();
-    AppMethodBeat.o(193389);
+    AppMethodBeat.o(215073);
   }
   
   public final void onExportSuccess()
   {
-    AppMethodBeat.i(193392);
+    AppMethodBeat.i(215083);
     if (this.exportStartTimeNs <= 0L)
     {
       Logger.e("ExportReportSession", "onExportSuccess: 数据错误，exportStartTimeNs = " + this.exportStartTimeNs);
-      AppMethodBeat.o(193392);
+      AppMethodBeat.o(215083);
       return;
     }
     this.success = true;
     this.compositeTimeUs = ((System.nanoTime() - this.exportStartTimeNs) / 1000L);
     commit();
-    AppMethodBeat.o(193392);
+    AppMethodBeat.o(215083);
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(193406);
+    AppMethodBeat.i(215113);
     Logger.d("ExportReportSession", "reset() called");
     this.compositeTimeUs = 0L;
     this.success = false;
@@ -144,7 +144,7 @@ public final class ExportReportSession
     this.successCount = 0;
     this.fileDurationUs = 0L;
     this.framePerSecond = 0L;
-    AppMethodBeat.o(193406);
+    AppMethodBeat.o(215113);
   }
   
   public final void setFileDurationUs(long paramLong)
@@ -185,9 +185,9 @@ public final class ExportReportSession
   
   public final String toString()
   {
-    AppMethodBeat.i(193407);
+    AppMethodBeat.i(215123);
     String str = "ExportReportSession{success=" + this.success + ", successCount=" + this.successCount + ", compositeTimeUs=" + this.compositeTimeUs + ", totalCostUs=" + getTotalCostUs() + ", totalDecodeUs=" + getTotalDecodeUs() + ", totalEncodeUs=" + getTotalEncodeUs() + ", totalRenderUs=" + getTotalRenderUs() + ", averageDecodeUs=" + getAverageDecodeUs() + ", averageEncodeUs=" + getAverageEncodeUs() + ", averageRenderUs=" + getAverageRenderUs() + '}';
-    AppMethodBeat.o(193407);
+    AppMethodBeat.o(215123);
     return str;
   }
 }

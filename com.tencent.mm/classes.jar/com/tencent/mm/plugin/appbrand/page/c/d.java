@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.appbrand.page.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.r;
+import com.tencent.mm.plugin.appbrand.jsapi.s;
 import com.tencent.mm.plugin.appbrand.page.ad;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class d
-  extends r
+  extends s
 {
   private static final int CTRL_INDEX = 633;
   private static final String NAME = "onCustomRightButtonClick";
@@ -15,13 +15,13 @@ public final class d
   {
     AppMethodBeat.i(135321);
     Log.i("OnCustomRightButtonClickEvent", "OnCustomRightButtonClickEvent dispatch");
-    new d().i(paramad.QW()).bPO();
+    new d().h(paramad.ari()).cpV();
     AppMethodBeat.o(135321);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.c.d
  * JD-Core Version:    0.7.0.1
  */

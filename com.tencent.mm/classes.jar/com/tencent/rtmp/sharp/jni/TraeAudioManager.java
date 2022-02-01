@@ -1,7 +1,5 @@
 package com.tencent.rtmp.sharp.jni;
 
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothProfile;
@@ -10,17 +8,18 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.media.AudioManager;
 import android.media.AudioManager.OnAudioFocusChangeListener;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
 import android.os.SystemClock;
 import android.text.TextUtils;
+import com.tencent.liteav.basic.util.TXCBuild;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -34,7 +33,6 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.locks.ReentrantLock;
 
-@SuppressLint({"NewApi"})
 public class TraeAudioManager
   extends BroadcastReceiver
 {
@@ -247,7 +245,7 @@ public class TraeAudioManager
     AppMethodBeat.i(13706);
     String str2 = Build.CPU_ABI;
     String str1 = "unknown";
-    if (Build.VERSION.SDK_INT >= 8) {}
+    if (TXCBuild.VersionInt() >= 8) {}
     try
     {
       str1 = (String)Build.class.getDeclaredField("CPU_ABI2").get(null);
@@ -409,7 +407,7 @@ public class TraeAudioManager
   static void forceVolumeControlStream(AudioManager paramAudioManager, int paramInt)
   {
     AppMethodBeat.i(13760);
-    if (Build.MANUFACTURER.equals("Google"))
+    if (TXCBuild.Manufacturer().equals("Google"))
     {
       if (QLog.isColorLevel()) {
         QLog.w("TraeAudioManager", 2, "forceVolumeControlStream, Google phone nothing to do");
@@ -442,7 +440,7 @@ public class TraeAudioManager
       AppMethodBeat.o(13707);
       return 0;
     }
-    int j = Build.VERSION.SDK_INT;
+    int j = TXCBuild.VersionInt();
     if (paramInt >= 0)
     {
       if (QLog.isColorLevel()) {
@@ -478,7 +476,7 @@ public class TraeAudioManager
       AppMethodBeat.o(13708);
       return 3;
     }
-    int j = Build.VERSION.SDK_INT;
+    int j = TXCBuild.VersionInt();
     if (paramInt >= 0) {
       i = paramInt;
     }
@@ -512,7 +510,7 @@ public class TraeAudioManager
       AppMethodBeat.o(13709);
       return 0;
     }
-    int j = Build.VERSION.SDK_INT;
+    int j = TXCBuild.VersionInt();
     if (paramInt >= 0)
     {
       if (QLog.isColorLevel()) {
@@ -525,7 +523,7 @@ public class TraeAudioManager
       i = 3;
     }
     if (QLog.isColorLevel()) {
-      QLog.w("TraeAudioManager", 2, "[Config] getCallAudioMode _modePolicy:" + paramInt + " mode:" + i + "facturer:" + Build.MANUFACTURER + " model:" + Build.MODEL);
+      QLog.w("TraeAudioManager", 2, "[Config] getCallAudioMode _modePolicy:" + paramInt + " mode:" + i + "facturer:" + TXCBuild.Manufacturer() + " model:" + TXCBuild.Model());
     }
     AppMethodBeat.o(13709);
     return i;
@@ -735,30 +733,30 @@ public class TraeAudioManager
       AppMethodBeat.o(13704);
       return false;
     }
-    if (Build.MANUFACTURER.equals("Xiaomi"))
+    if (TXCBuild.Manufacturer().equals("Xiaomi"))
     {
-      if (Build.MODEL.equals("MI 2"))
+      if (TXCBuild.Model().equals("MI 2"))
       {
         AppMethodBeat.o(13704);
         return true;
       }
-      if (Build.MODEL.equals("MI 2A"))
+      if (TXCBuild.Model().equals("MI 2A"))
       {
         AppMethodBeat.o(13704);
         return true;
       }
-      if (Build.MODEL.equals("MI 2S"))
+      if (TXCBuild.Model().equals("MI 2S"))
       {
         AppMethodBeat.o(13704);
         return true;
       }
-      if (Build.MODEL.equals("MI 2SC"))
+      if (TXCBuild.Model().equals("MI 2SC"))
       {
         AppMethodBeat.o(13704);
         return true;
       }
     }
-    else if ((Build.MANUFACTURER.equals("samsung")) && (Build.MODEL.equals("SCH-I959")))
+    else if ((TXCBuild.Manufacturer().equals("samsung")) && (TXCBuild.Model().equals("SCH-I959")))
     {
       AppMethodBeat.o(13704);
       return true;
@@ -1031,7 +1029,7 @@ public class TraeAudioManager
     AppMethodBeat.i(13753);
     Object localObject1;
     Object localObject2;
-    if (Build.VERSION.SDK_INT >= 11)
+    if (TXCBuild.VersionInt() >= 11)
     {
       localObject1 = new BluetoohHeadsetCheck();
       localObject2 = localObject1;
@@ -1041,7 +1039,7 @@ public class TraeAudioManager
       if (QLog.isColorLevel())
       {
         paramDeviceConfigManager = new StringBuilder("CreateBluetoothCheck:").append(((BluetoohHeadsetCheckInterface)localObject2).interfaceDesc()).append(" skip android4.3:");
-        if (Build.VERSION.SDK_INT != 18) {
+        if (TXCBuild.VersionInt() != 18) {
           break label144;
         }
       }
@@ -1052,7 +1050,7 @@ public class TraeAudioManager
       QLog.w("TraeAudioManager", 2, paramContext);
       AppMethodBeat.o(13753);
       return localObject2;
-      if (Build.VERSION.SDK_INT != 18)
+      if (TXCBuild.VersionInt() != 18)
       {
         localObject1 = new BluetoohHeadsetCheckFor2x();
         break;
@@ -1448,7 +1446,7 @@ public class TraeAudioManager
     int i = 0;
     AppMethodBeat.i(13716);
     if (QLog.isColorLevel()) {
-      QLog.w("TraeAudioManager", 2, "InternalSetSpeakerSpe fac:" + Build.MANUFACTURER + " model:" + Build.MODEL + " st:" + this._streamType + " media_force_use:" + getForceUse(1));
+      QLog.w("TraeAudioManager", 2, "InternalSetSpeakerSpe fac:" + TXCBuild.Manufacturer() + " model:" + TXCBuild.Model() + " st:" + this._streamType + " media_force_use:" + getForceUse(1));
     }
     if (paramBoolean)
     {
@@ -1504,13 +1502,13 @@ public class TraeAudioManager
   
   void checkAutoDeviceListUpdate(boolean paramBoolean)
   {
-    AppMethodBeat.i(217399);
+    AppMethodBeat.i(218567);
     if (this._deviceConfigManager == null)
     {
       if (QLog.isColorLevel()) {
         QLog.w("TraeAudioManager", 2, "_deviceConfigManager is null");
       }
-      AppMethodBeat.o(217399);
+      AppMethodBeat.o(218567);
       return;
     }
     if ((paramBoolean) || (this._deviceConfigManager.getVisiableUpdateFlag()))
@@ -1522,7 +1520,7 @@ public class TraeAudioManager
       this._deviceConfigManager.resetVisiableUpdateFlag();
       internalSendMessage(32785, new HashMap());
     }
-    AppMethodBeat.o(217399);
+    AppMethodBeat.o(218567);
   }
   
   void checkDevicePlug(String paramString, boolean paramBoolean)
@@ -2008,7 +2006,6 @@ public class TraeAudioManager
     AppMethodBeat.o(13710);
   }
   
-  @TargetApi(11)
   class BluetoohHeadsetCheck
     extends TraeAudioManager.BluetoohHeadsetCheckInterface
     implements BluetoothProfile.ServiceListener
@@ -2029,6 +2026,51 @@ public class TraeAudioManager
       this._profile = null;
       this._profileLock = new ReentrantLock();
       AppMethodBeat.o(13806);
+    }
+    
+    private List<BluetoothDevice> getConnectedDevices()
+    {
+      int j = 1;
+      AppMethodBeat.i(218524);
+      if (this._profile == null)
+      {
+        AppMethodBeat.o(218524);
+        return null;
+      }
+      int i = j;
+      if (TraeAudioManager.this._context != null)
+      {
+        i = j;
+        if (TXCBuild.VersionInt() >= 31)
+        {
+          if (TraeAudioManager.this._context.getPackageManager().checkPermission("android.permission.BLUETOOTH_CONNECT", TraeAudioManager.this._context.getPackageName()) != 0) {
+            break label101;
+          }
+          i = j;
+        }
+      }
+      if ((i != 0) && (this._profile != null)) {}
+      for (;;)
+      {
+        try
+        {
+          List localList = this._profile.getConnectedDevices();
+          AppMethodBeat.o(218524);
+          return localList;
+        }
+        catch (Exception localException)
+        {
+          label101:
+          if (!QLog.isColorLevel()) {
+            break label138;
+          }
+          QLog.e("TraeAudioManager", 2, "get connected devices failed." + localException.getMessage());
+        }
+        i = 0;
+        break;
+        label138:
+        Object localObject = null;
+      }
     }
     
     void _addAction(IntentFilter paramIntentFilter)
@@ -2145,7 +2187,6 @@ public class TraeAudioManager
       AppMethodBeat.o(13813);
     }
     
-    @TargetApi(11)
     public boolean init(Context paramContext, TraeAudioManager.DeviceConfigManager paramDeviceConfigManager)
     {
       AppMethodBeat.i(13807);
@@ -2206,7 +2247,7 @@ public class TraeAudioManager
       {
         if (this._profile != null)
         {
-          List localList = this._profile.getConnectedDevices();
+          List localList = getConnectedDevices();
           if (localList == null) {
             return false;
           }
@@ -2225,7 +2266,6 @@ public class TraeAudioManager
       }
     }
     
-    @TargetApi(11)
     public void onServiceConnected(int paramInt, BluetoothProfile paramBluetoothProfile)
     {
       AppMethodBeat.i(13810);
@@ -2246,17 +2286,14 @@ public class TraeAudioManager
             this._profile = null;
           }
           this._profile = paramBluetoothProfile;
-          if (this._profile == null) {
-            break label500;
-          }
-          paramBluetoothProfile = this._profile.getConnectedDevices();
+          paramBluetoothProfile = getConnectedDevices();
           if ((paramBluetoothProfile != null) && (this._profile != null))
           {
             if (!QLog.isColorLevel()) {
-              break label505;
+              break label488;
             }
             QLog.w("TraeAudioManager", 2, "TRAEBluetoohProxy: HEADSET Connected devs:" + paramBluetoothProfile.size() + " _profile:" + this._profile);
-            break label505;
+            break label488;
             if (paramInt < paramBluetoothProfile.size())
             {
               BluetoothDevice localBluetoothDevice = (BluetoothDevice)paramBluetoothProfile.get(paramInt);
@@ -2269,7 +2306,7 @@ public class TraeAudioManager
                     this._devCfg.setBluetoothName(localBluetoothDevice.getName());
                   }
                   if (!QLog.isColorLevel()) {
-                    break label510;
+                    break label493;
                   }
                   QLog.w("TraeAudioManager", 2, "   " + paramInt + " " + localBluetoothDevice.getName() + " ConnectionState:" + i);
                 }
@@ -2288,7 +2325,7 @@ public class TraeAudioManager
           if (this._devCfg != null)
           {
             if (TraeAudioManager.this._deviceConfigManager == null) {
-              break label495;
+              break label483;
             }
             paramBluetoothProfile = TraeAudioManager.this._deviceConfigManager.getBluetoothName();
             if (TextUtils.isEmpty(paramBluetoothProfile)) {
@@ -2316,22 +2353,18 @@ public class TraeAudioManager
         {
           this._devCfg.setVisible("DEVICE_BLUETOOTHHEADSET", false);
           continue;
-          label495:
+          label483:
           paramBluetoothProfile = null;
           continue;
-          label500:
-          paramBluetoothProfile = null;
-          continue;
-          label505:
+          label488:
           paramInt = 0;
           continue;
-          label510:
+          label493:
           paramInt += 1;
         }
       }
     }
     
-    @TargetApi(11)
     public void onServiceDisconnected(int paramInt)
     {
       AppMethodBeat.i(13811);
@@ -2925,7 +2958,7 @@ public class TraeAudioManager
           }
         }
       }
-      while ((("android.bluetooth.device.action.ACL_CONNECTED".equals(paramIntent.getAction())) && (Build.VERSION.SDK_INT < 11)) || (("android.bluetooth.device.action.ACL_DISCONNECTED".equals(paramIntent.getAction())) && (Build.VERSION.SDK_INT < 11)))
+      while ((("android.bluetooth.device.action.ACL_CONNECTED".equals(paramIntent.getAction())) && (TXCBuild.VersionInt() < 11)) || (("android.bluetooth.device.action.ACL_DISCONNECTED".equals(paramIntent.getAction())) && (TXCBuild.VersionInt() < 11)))
       {
         int i;
         int j;
@@ -3324,11 +3357,11 @@ public class TraeAudioManager
     
     public boolean resetNullConnecting()
     {
-      AppMethodBeat.i(217186);
+      AppMethodBeat.i(218516);
       this.mLock.lock();
       this.connectingDevice = "";
       this.mLock.unlock();
-      AppMethodBeat.o(217186);
+      AppMethodBeat.o(218516);
       return true;
     }
     
@@ -3688,7 +3721,7 @@ public class TraeAudioManager
       {
         public void run()
         {
-          AppMethodBeat.i(217090);
+          AppMethodBeat.i(218500);
           Intent localIntent = new Intent();
           localIntent.setAction("com.tencent.sharp.ACTION_TRAEAUDIOMANAGER_NOTIFY");
           localIntent.putExtra("PARAM_OPERATION", "NOTIFY_STREAMTYPE_UPDATE");
@@ -3696,7 +3729,7 @@ public class TraeAudioManager
           if (TraeAudioManager.this._context != null) {
             TraeAudioManager.this._context.sendBroadcast(localIntent);
           }
-          AppMethodBeat.o(217090);
+          AppMethodBeat.o(218500);
         }
       });
       AppMethodBeat.o(13932);
@@ -4062,7 +4095,6 @@ public class TraeAudioManager
       AppMethodBeat.o(13922);
     }
     
-    @TargetApi(8)
     void abandonAudioFocus()
     {
       AppMethodBeat.i(13925);
@@ -4140,19 +4172,19 @@ public class TraeAudioManager
     boolean isNeedForceVolumeType()
     {
       AppMethodBeat.i(13915);
-      if (Build.MANUFACTURER.equals("Xiaomi"))
+      if (TXCBuild.Manufacturer().equals("Xiaomi"))
       {
-        if (Build.MODEL.equals("MI 5"))
+        if (TXCBuild.Model().equals("MI 5"))
         {
           AppMethodBeat.o(13915);
           return true;
         }
-        if (Build.MODEL.equals("MI 5s"))
+        if (TXCBuild.Model().equals("MI 5s"))
         {
           AppMethodBeat.o(13915);
           return true;
         }
-        if (Build.MODEL.equals("MI 5s Plus"))
+        if (TXCBuild.Model().equals("MI 5s Plus"))
         {
           AppMethodBeat.o(13915);
           return true;
@@ -4640,7 +4672,6 @@ public class TraeAudioManager
       super();
     }
     
-    @TargetApi(8)
     public void _quit()
     {
       AppMethodBeat.i(13690);
@@ -4661,176 +4692,176 @@ public class TraeAudioManager
       //   0: iconst_1
       //   1: istore_1
       //   2: sipush 13689
-      //   5: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-      //   8: getstatic 55	com/tencent/rtmp/sharp/jni/TraeAudioManager:IsMusicScene	Z
+      //   5: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+      //   8: getstatic 51	com/tencent/rtmp/sharp/jni/TraeAudioManager:IsMusicScene	Z
       //   11: ifne +9 -> 20
-      //   14: getstatic 58	com/tencent/rtmp/sharp/jni/TraeAudioManager:IsUpdateSceneFlag	Z
+      //   14: getstatic 54	com/tencent/rtmp/sharp/jni/TraeAudioManager:IsUpdateSceneFlag	Z
       //   17: ifne +55 -> 72
-      //   20: invokestatic 62	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+      //   20: invokestatic 58	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
       //   23: ifeq +38 -> 61
-      //   26: ldc 36
+      //   26: ldc 33
       //   28: iconst_2
-      //   29: new 64	java/lang/StringBuilder
+      //   29: new 60	java/lang/StringBuilder
       //   32: dup
-      //   33: ldc 66
-      //   35: invokespecial 69	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-      //   38: getstatic 55	com/tencent/rtmp/sharp/jni/TraeAudioManager:IsMusicScene	Z
-      //   41: invokevirtual 73	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-      //   44: ldc 75
-      //   46: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   49: getstatic 58	com/tencent/rtmp/sharp/jni/TraeAudioManager:IsUpdateSceneFlag	Z
-      //   52: invokevirtual 73	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-      //   55: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   58: invokestatic 44	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+      //   33: ldc 62
+      //   35: invokespecial 65	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   38: getstatic 51	com/tencent/rtmp/sharp/jni/TraeAudioManager:IsMusicScene	Z
+      //   41: invokevirtual 69	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+      //   44: ldc 71
+      //   46: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   49: getstatic 54	com/tencent/rtmp/sharp/jni/TraeAudioManager:IsUpdateSceneFlag	Z
+      //   52: invokevirtual 69	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+      //   55: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   58: invokestatic 41	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
       //   61: aload_0
-      //   62: invokevirtual 85	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:updateStatus	()V
+      //   62: invokevirtual 81	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:updateStatus	()V
       //   65: sipush 13689
-      //   68: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   68: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   71: return
-      //   72: getstatic 88	com/tencent/rtmp/sharp/jni/TraeAudioManager:enableDeviceSwitchFlag	Z
+      //   72: getstatic 84	com/tencent/rtmp/sharp/jni/TraeAudioManager:enableDeviceSwitchFlag	Z
       //   75: ifne +24 -> 99
-      //   78: invokestatic 62	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+      //   78: invokestatic 58	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
       //   81: ifeq +11 -> 92
-      //   84: ldc 36
+      //   84: ldc 33
       //   86: iconst_2
-      //   87: ldc 90
-      //   89: invokestatic 44	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+      //   87: ldc 86
+      //   89: invokestatic 41	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
       //   92: sipush 13689
-      //   95: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   95: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   98: return
       //   99: aload_0
       //   100: getfield 13	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:this$0	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;
-      //   103: getfield 94	com/tencent/rtmp/sharp/jni/TraeAudioManager:_deviceConfigManager	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager$DeviceConfigManager;
-      //   106: invokevirtual 99	com/tencent/rtmp/sharp/jni/TraeAudioManager$DeviceConfigManager:getBluetoothName	()Ljava/lang/String;
+      //   103: getfield 90	com/tencent/rtmp/sharp/jni/TraeAudioManager:_deviceConfigManager	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager$DeviceConfigManager;
+      //   106: invokevirtual 95	com/tencent/rtmp/sharp/jni/TraeAudioManager$DeviceConfigManager:getBluetoothName	()Ljava/lang/String;
       //   109: pop
       //   110: aload_0
       //   111: getfield 13	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:this$0	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;
-      //   114: invokestatic 103	com/tencent/rtmp/sharp/jni/TraeAudioManager:access$000	(Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;)I
+      //   114: invokestatic 99	com/tencent/rtmp/sharp/jni/TraeAudioManager:access$000	(Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;)I
       //   117: bipush 8
       //   119: if_icmpne +252 -> 371
-      //   122: ldc 36
+      //   122: ldc 33
       //   124: iconst_2
-      //   125: ldc 105
-      //   127: invokestatic 44	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-      //   130: ldc2_w 106
-      //   133: invokestatic 113	java/lang/Thread:sleep	(J)V
+      //   125: ldc 101
+      //   127: invokestatic 41	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+      //   130: ldc2_w 102
+      //   133: invokestatic 109	java/lang/Thread:sleep	(J)V
       //   136: aload_0
       //   137: getfield 13	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:this$0	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;
       //   140: iconst_4
-      //   141: invokestatic 117	com/tencent/rtmp/sharp/jni/TraeAudioManager:access$002	(Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;I)I
+      //   141: invokestatic 113	com/tencent/rtmp/sharp/jni/TraeAudioManager:access$002	(Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;I)I
       //   144: pop
       //   145: aload_0
-      //   146: getfield 120	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:_running	Z
+      //   146: getfield 116	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:_running	Z
       //   149: ifeq +454 -> 603
       //   152: aload_0
       //   153: getfield 13	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:this$0	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;
       //   156: bipush 6
-      //   158: invokestatic 117	com/tencent/rtmp/sharp/jni/TraeAudioManager:access$002	(Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;I)I
+      //   158: invokestatic 113	com/tencent/rtmp/sharp/jni/TraeAudioManager:access$002	(Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;I)I
       //   161: pop
       //   162: aload_0
       //   163: getfield 13	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:this$0	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;
-      //   166: getfield 124	com/tencent/rtmp/sharp/jni/TraeAudioManager:_bluetooth_sco_connect	[Z
+      //   166: getfield 120	com/tencent/rtmp/sharp/jni/TraeAudioManager:_bluetooth_sco_connect	[Z
       //   169: astore 5
       //   171: aload 5
       //   173: monitorenter
       //   174: aload_0
       //   175: getfield 13	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:this$0	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;
-      //   178: getfield 124	com/tencent/rtmp/sharp/jni/TraeAudioManager:_bluetooth_sco_connect	[Z
+      //   178: getfield 120	com/tencent/rtmp/sharp/jni/TraeAudioManager:_bluetooth_sco_connect	[Z
       //   181: iconst_0
       //   182: iconst_0
       //   183: bastore
       //   184: aload 5
       //   186: monitorexit
       //   187: aload_0
-      //   188: invokevirtual 127	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:_startBluetoothSco	()V
-      //   191: ldc 36
+      //   188: invokevirtual 123	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:_startBluetoothSco	()V
+      //   191: ldc 33
       //   193: iconst_2
-      //   194: ldc 129
-      //   196: invokestatic 44	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+      //   194: ldc 125
+      //   196: invokestatic 41	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
       //   199: iconst_1
       //   200: istore_2
       //   201: aload_0
-      //   202: getfield 120	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:_running	Z
+      //   202: getfield 116	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:_running	Z
       //   205: ifeq +98 -> 303
-      //   208: new 64	java/lang/StringBuilder
+      //   208: new 60	java/lang/StringBuilder
       //   211: dup
-      //   212: ldc 131
-      //   214: invokespecial 69	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   212: ldc 127
+      //   214: invokespecial 65	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
       //   217: iload_1
-      //   218: invokevirtual 134	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-      //   221: ldc 136
-      //   223: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   218: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+      //   221: ldc 132
+      //   223: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   226: astore 6
       //   228: aload_0
       //   229: getfield 13	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:this$0	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;
-      //   232: getfield 31	com/tencent/rtmp/sharp/jni/TraeAudioManager:_am	Landroid/media/AudioManager;
-      //   235: invokevirtual 141	android/media/AudioManager:isBluetoothScoOn	()Z
+      //   232: getfield 28	com/tencent/rtmp/sharp/jni/TraeAudioManager:_am	Landroid/media/AudioManager;
+      //   235: invokevirtual 137	android/media/AudioManager:isBluetoothScoOn	()Z
       //   238: ifeq +169 -> 407
-      //   241: ldc 143
+      //   241: ldc 139
       //   243: astore 5
-      //   245: ldc 36
+      //   245: ldc 33
       //   247: iconst_2
       //   248: aload 6
       //   250: aload 5
-      //   252: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   255: ldc 145
-      //   257: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   252: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   255: ldc 141
+      //   257: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   260: aload_0
       //   261: getfield 13	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:this$0	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;
-      //   264: getfield 94	com/tencent/rtmp/sharp/jni/TraeAudioManager:_deviceConfigManager	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager$DeviceConfigManager;
-      //   267: invokevirtual 99	com/tencent/rtmp/sharp/jni/TraeAudioManager$DeviceConfigManager:getBluetoothName	()Ljava/lang/String;
-      //   270: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   273: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   276: invokestatic 44	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+      //   264: getfield 90	com/tencent/rtmp/sharp/jni/TraeAudioManager:_deviceConfigManager	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager$DeviceConfigManager;
+      //   267: invokevirtual 95	com/tencent/rtmp/sharp/jni/TraeAudioManager$DeviceConfigManager:getBluetoothName	()Ljava/lang/String;
+      //   270: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   273: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   276: invokestatic 41	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
       //   279: aload_0
       //   280: getfield 13	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:this$0	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;
-      //   283: invokestatic 103	com/tencent/rtmp/sharp/jni/TraeAudioManager:access$000	(Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;)I
+      //   283: invokestatic 99	com/tencent/rtmp/sharp/jni/TraeAudioManager:access$000	(Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;)I
       //   286: bipush 7
       //   288: if_icmpne +126 -> 414
-      //   291: ldc 36
+      //   291: ldc 33
       //   293: iconst_2
-      //   294: ldc 147
-      //   296: invokestatic 44	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+      //   294: ldc 143
+      //   296: invokestatic 41	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
       //   299: aload_0
-      //   300: invokevirtual 85	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:updateStatus	()V
+      //   300: invokevirtual 81	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:updateStatus	()V
       //   303: aload_0
       //   304: getfield 13	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:this$0	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;
-      //   307: invokestatic 103	com/tencent/rtmp/sharp/jni/TraeAudioManager:access$000	(Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;)I
+      //   307: invokestatic 99	com/tencent/rtmp/sharp/jni/TraeAudioManager:access$000	(Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;)I
       //   310: bipush 7
       //   312: if_icmpeq +52 -> 364
-      //   315: ldc 36
+      //   315: ldc 33
       //   317: iconst_2
-      //   318: ldc 149
-      //   320: invokestatic 152	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+      //   318: ldc 145
+      //   320: invokestatic 148	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
       //   323: aload_0
       //   324: getfield 13	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:this$0	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;
-      //   327: getfield 94	com/tencent/rtmp/sharp/jni/TraeAudioManager:_deviceConfigManager	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager$DeviceConfigManager;
+      //   327: getfield 90	com/tencent/rtmp/sharp/jni/TraeAudioManager:_deviceConfigManager	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager$DeviceConfigManager;
       //   330: aload_0
-      //   331: invokevirtual 155	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:getDeviceName	()Ljava/lang/String;
+      //   331: invokevirtual 151	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:getDeviceName	()Ljava/lang/String;
       //   334: iconst_0
-      //   335: invokevirtual 159	com/tencent/rtmp/sharp/jni/TraeAudioManager$DeviceConfigManager:setVisible	(Ljava/lang/String;Z)Z
+      //   335: invokevirtual 155	com/tencent/rtmp/sharp/jni/TraeAudioManager$DeviceConfigManager:setVisible	(Ljava/lang/String;Z)Z
       //   338: pop
       //   339: aload_0
       //   340: getfield 13	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:this$0	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;
-      //   343: getfield 94	com/tencent/rtmp/sharp/jni/TraeAudioManager:_deviceConfigManager	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager$DeviceConfigManager;
-      //   346: invokevirtual 162	com/tencent/rtmp/sharp/jni/TraeAudioManager$DeviceConfigManager:resetNullConnecting	()Z
+      //   343: getfield 90	com/tencent/rtmp/sharp/jni/TraeAudioManager:_deviceConfigManager	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager$DeviceConfigManager;
+      //   346: invokevirtual 158	com/tencent/rtmp/sharp/jni/TraeAudioManager$DeviceConfigManager:resetNullConnecting	()Z
       //   349: pop
       //   350: aload_0
       //   351: bipush 10
-      //   353: invokevirtual 165	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:processDeviceConnectRes	(I)V
+      //   353: invokevirtual 161	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:processDeviceConnectRes	(I)V
       //   356: aload_0
       //   357: getfield 13	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:this$0	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;
       //   360: iconst_0
-      //   361: invokevirtual 169	com/tencent/rtmp/sharp/jni/TraeAudioManager:checkAutoDeviceListUpdate	(Z)V
+      //   361: invokevirtual 165	com/tencent/rtmp/sharp/jni/TraeAudioManager:checkAutoDeviceListUpdate	(Z)V
       //   364: sipush 13689
-      //   367: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   367: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   370: return
-      //   371: ldc 36
+      //   371: ldc 33
       //   373: iconst_2
-      //   374: ldc 171
-      //   376: invokestatic 44	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-      //   379: ldc2_w 172
-      //   382: invokestatic 113	java/lang/Thread:sleep	(J)V
+      //   374: ldc 167
+      //   376: invokestatic 41	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+      //   379: ldc2_w 168
+      //   382: invokestatic 109	java/lang/Thread:sleep	(J)V
       //   385: goto -249 -> 136
       //   388: astore 5
       //   390: goto -254 -> 136
@@ -4838,21 +4869,21 @@ public class TraeAudioManager
       //   395: aload 5
       //   397: monitorexit
       //   398: sipush 13689
-      //   401: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   401: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   404: aload 6
       //   406: athrow
-      //   407: ldc 175
+      //   407: ldc 171
       //   409: astore 5
       //   411: goto -166 -> 245
       //   414: aload_0
       //   415: getfield 13	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:this$0	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;
-      //   418: getfield 124	com/tencent/rtmp/sharp/jni/TraeAudioManager:_bluetooth_sco_connect	[Z
+      //   418: getfield 120	com/tencent/rtmp/sharp/jni/TraeAudioManager:_bluetooth_sco_connect	[Z
       //   421: astore 5
       //   423: aload 5
       //   425: monitorenter
       //   426: aload_0
       //   427: getfield 13	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:this$0	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;
-      //   430: getfield 124	com/tencent/rtmp/sharp/jni/TraeAudioManager:_bluetooth_sco_connect	[Z
+      //   430: getfield 120	com/tencent/rtmp/sharp/jni/TraeAudioManager:_bluetooth_sco_connect	[Z
       //   433: iconst_0
       //   434: baload
       //   435: istore 4
@@ -4860,28 +4891,28 @@ public class TraeAudioManager
       //   439: ifne +16 -> 455
       //   442: aload_0
       //   443: getfield 13	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:this$0	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;
-      //   446: getfield 124	com/tencent/rtmp/sharp/jni/TraeAudioManager:_bluetooth_sco_connect	[Z
-      //   449: ldc2_w 176
-      //   452: invokevirtual 182	java/lang/Object:wait	(J)V
+      //   446: getfield 120	com/tencent/rtmp/sharp/jni/TraeAudioManager:_bluetooth_sco_connect	[Z
+      //   449: ldc2_w 172
+      //   452: invokevirtual 178	java/lang/Object:wait	(J)V
       //   455: aload 5
       //   457: monitorexit
       //   458: aload_0
       //   459: getfield 13	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:this$0	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;
-      //   462: invokestatic 103	com/tencent/rtmp/sharp/jni/TraeAudioManager:access$000	(Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;)I
+      //   462: invokestatic 99	com/tencent/rtmp/sharp/jni/TraeAudioManager:access$000	(Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;)I
       //   465: bipush 7
       //   467: if_icmpne +32 -> 499
-      //   470: ldc 36
+      //   470: ldc 33
       //   472: iconst_2
-      //   473: ldc 184
-      //   475: invokestatic 44	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+      //   473: ldc 180
+      //   475: invokestatic 41	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
       //   478: aload_0
-      //   479: invokevirtual 85	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:updateStatus	()V
+      //   479: invokevirtual 81	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:updateStatus	()V
       //   482: goto -179 -> 303
       //   485: astore 6
       //   487: aload 5
       //   489: monitorexit
       //   490: sipush 13689
-      //   493: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   493: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   496: aload 6
       //   498: athrow
       //   499: iload_1
@@ -4894,34 +4925,34 @@ public class TraeAudioManager
       //   508: iload_2
       //   509: ifeq +89 -> 598
       //   512: aload_0
-      //   513: invokevirtual 47	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:_stopBluetoothSco	()V
-      //   516: ldc2_w 176
-      //   519: invokestatic 113	java/lang/Thread:sleep	(J)V
+      //   513: invokevirtual 44	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:_stopBluetoothSco	()V
+      //   516: ldc2_w 172
+      //   519: invokestatic 109	java/lang/Thread:sleep	(J)V
       //   522: aload_0
       //   523: getfield 13	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:this$0	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;
       //   526: bipush 6
-      //   528: invokestatic 117	com/tencent/rtmp/sharp/jni/TraeAudioManager:access$002	(Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;I)I
+      //   528: invokestatic 113	com/tencent/rtmp/sharp/jni/TraeAudioManager:access$002	(Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;I)I
       //   531: pop
       //   532: aload_0
       //   533: getfield 13	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:this$0	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;
-      //   536: getfield 124	com/tencent/rtmp/sharp/jni/TraeAudioManager:_bluetooth_sco_connect	[Z
+      //   536: getfield 120	com/tencent/rtmp/sharp/jni/TraeAudioManager:_bluetooth_sco_connect	[Z
       //   539: astore 5
       //   541: aload 5
       //   543: monitorenter
       //   544: aload_0
       //   545: getfield 13	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:this$0	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;
-      //   548: getfield 124	com/tencent/rtmp/sharp/jni/TraeAudioManager:_bluetooth_sco_connect	[Z
+      //   548: getfield 120	com/tencent/rtmp/sharp/jni/TraeAudioManager:_bluetooth_sco_connect	[Z
       //   551: iconst_0
       //   552: iconst_0
       //   553: bastore
       //   554: aload 5
       //   556: monitorexit
       //   557: aload_0
-      //   558: invokevirtual 127	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:_startBluetoothSco	()V
-      //   561: ldc 36
+      //   558: invokevirtual 123	com/tencent/rtmp/sharp/jni/TraeAudioManager$bluetoothHeadsetSwitchThread:_startBluetoothSco	()V
+      //   561: ldc 33
       //   563: iconst_2
-      //   564: ldc 186
-      //   566: invokestatic 44	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+      //   564: ldc 182
+      //   566: invokestatic 41	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
       //   569: iload_3
       //   570: istore_1
       //   571: goto -370 -> 201
@@ -4929,7 +4960,7 @@ public class TraeAudioManager
       //   576: aload 5
       //   578: monitorexit
       //   579: sipush 13689
-      //   582: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   582: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   585: aload 6
       //   587: athrow
       //   588: astore 5
@@ -4970,18 +5001,16 @@ public class TraeAudioManager
       //   442	455	593	java/lang/InterruptedException
     }
     
-    @TargetApi(8)
     void _startBluetoothSco()
     {
       AppMethodBeat.i(13691);
       TraeAudioManager.this._am.setBluetoothScoOn(true);
-      if (Build.VERSION.SDK_INT > 8) {
+      if (TXCBuild.VersionInt() > 8) {
         TraeAudioManager.this._am.startBluetoothSco();
       }
       AppMethodBeat.o(13691);
     }
     
-    @TargetApi(8)
     void _stopBluetoothSco()
     {
       AppMethodBeat.i(13692);
@@ -5343,7 +5372,7 @@ public class TraeAudioManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.TraeAudioManager
  * JD-Core Version:    0.7.0.1
  */

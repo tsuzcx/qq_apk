@@ -1,52 +1,69 @@
 package com.tencent.mm.plugin.sns.k;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
-import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import java.util.LinkedList;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/sns/statistics/EditorVideoCompositionConfig;", "", "()V", "CLAZZ_NAME_VIDEO_COMPOSITION_EDITOR_LAYOUT", "", "TAG", "getC2CVideoCompositionSwitch", "", "provider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "getSnsVideoCompositionSwitch", "plugin-sns_release"})
 public final class b
+  extends com.tencent.mm.bx.a
 {
-  public static final b KfK;
+  public LinkedList<Long> QCv;
   
-  static
+  public b()
   {
-    AppMethodBeat.i(267575);
-    KfK = new b();
-    AppMethodBeat.o(267575);
+    AppMethodBeat.i(96152);
+    this.QCv = new LinkedList();
+    AppMethodBeat.o(96152);
   }
   
-  public static void k(RecordConfigProvider paramRecordConfigProvider)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(267571);
-    p.k(paramRecordConfigProvider, "provider");
-    boolean bool = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vyz, false);
-    Log.i("MicroMsg.EditorVideoCompositionConfig", "C2CVideoCompositionSwitch: ".concat(String.valueOf(bool)));
-    if (bool) {
-      paramRecordConfigProvider.G(2, "com.tencent.mm.plugin.vlog.ui.video.EditorVideoCompositionPluginLayout");
+    AppMethodBeat.i(96153);
+    if (paramInt == 0)
+    {
+      ((i.a.a.c.a)paramVarArgs[0]).e(1, 3, this.QCv);
+      AppMethodBeat.o(96153);
+      return 0;
     }
-    AppMethodBeat.o(267571);
-  }
-  
-  public static void l(RecordConfigProvider paramRecordConfigProvider)
-  {
-    AppMethodBeat.i(267572);
-    p.k(paramRecordConfigProvider, "provider");
-    boolean bool = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vyA, false);
-    Log.i("MicroMsg.EditorVideoCompositionConfig", "SnsVideoCompositionSwitch: ".concat(String.valueOf(bool)));
-    if (bool) {
-      paramRecordConfigProvider.G(2, "com.tencent.mm.plugin.vlog.ui.video.EditorVideoCompositionPluginLayout");
+    if (paramInt == 1)
+    {
+      paramInt = i.a.a.a.c(1, 3, this.QCv);
+      AppMethodBeat.o(96153);
+      return paramInt + 0;
     }
-    AppMethodBeat.o(267572);
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.QCv.clear();
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(96153);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+      b localb = (b)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(96153);
+        return -1;
+      }
+      localb.QCv.add(Long.valueOf(locala.ajGk.aaw()));
+      AppMethodBeat.o(96153);
+      return 0;
+    }
+    AppMethodBeat.o(96153);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.k.b
  * JD-Core Version:    0.7.0.1
  */

@@ -4,15 +4,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static b Edi;
+  public static b JUh;
   
-  public static b eLe()
+  public static b fTb()
   {
     AppMethodBeat.i(116062);
-    if (Edi == null) {
-      Edi = new com.tencent.mm.pluginsdk.b.a();
+    if (JUh == null) {
+      JUh = new com.tencent.mm.pluginsdk.b.a();
     }
-    b localb = Edi;
+    b localb = JUh;
     AppMethodBeat.o(116062);
     return localb;
   }

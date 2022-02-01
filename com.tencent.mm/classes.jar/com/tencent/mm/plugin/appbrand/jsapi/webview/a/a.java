@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.appbrand.jsapi.webview.a;
 import android.app.Activity;
 import android.content.Context;
 import com.tencent.mm.plugin.appbrand.jsapi.webview.g.c;
-import com.tencent.mm.plugin.appbrand.ui.l;
-import com.tencent.mm.plugin.webview.f.g;
+import com.tencent.mm.plugin.appbrand.ui.o;
+import com.tencent.mm.plugin.webview.e.g;
 import com.tencent.mm.plugin.webview.stub.e;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.system.AndroidContextUtil;
@@ -12,35 +12,35 @@ import com.tencent.mm.ui.widget.MMWebView;
 
 abstract class a
 {
-  protected final MMWebView lxa;
-  protected e pGC;
-  protected g pGD;
-  protected final g.c pGN;
+  protected final MMWebView ooz;
+  protected e sLC;
+  protected g sLD;
+  protected final g.c sLN;
   
   public a(g.c paramc)
   {
-    this.pGN = paramc;
-    this.lxa = this.pGN.getWebView();
+    this.sLN = paramc;
+    this.ooz = this.sLN.getWebView();
   }
   
   final void a(g paramg)
   {
-    this.pGD = paramg;
+    this.sLD = paramg;
   }
   
   final void a(e parame)
   {
-    this.pGC = parame;
+    this.sLC = parame;
   }
   
-  protected void aD(Context paramContext) {}
+  protected void bm(Context paramContext) {}
   
   protected final Context getContext()
   {
-    Activity localActivity = AndroidContextUtil.castActivityOrNull(this.pGN.getAndroidContext());
+    Activity localActivity = AndroidContextUtil.castActivityOrNull(this.sLN.getAndroidContext());
     Object localObject = localActivity;
     if (localActivity == null) {
-      localObject = l.en(MMApplicationContext.getContext());
+      localObject = o.fj(MMApplicationContext.getContext());
     }
     return localObject;
   }

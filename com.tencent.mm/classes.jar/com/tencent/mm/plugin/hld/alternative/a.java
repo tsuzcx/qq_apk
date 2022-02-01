@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.hld.alternative;
 
 import com.tencent.wxhld.info.Syllable;
 import java.util.ArrayList;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/alternative/ISyllableListDataListener;", "", "updateSyllableList", "", "syllables", "Ljava/util/ArrayList;", "Lcom/tencent/wxhld/info/Syllable;", "Lkotlin/collections/ArrayList;", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/alternative/ISyllableListDataListener;", "", "updateSyllableList", "", "syllables", "Ljava/util/ArrayList;", "Lcom/tencent/wxhld/info/Syllable;", "Lkotlin/collections/ArrayList;", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface a
 {
-  public abstract void aB(ArrayList<Syllable> paramArrayList);
+  public abstract void aQ(ArrayList<Syllable> paramArrayList);
 }
 
 

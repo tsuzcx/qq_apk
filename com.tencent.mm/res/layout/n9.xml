@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/b1h" android:background="@color/kz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:paddingTop="@dimen/cd" android:paddingBottom="@dimen/bv" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/b1g" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginTop="96.0dip" android:src="@raw/icon_ticket_empty" app:iconColor="@color/FG_2" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/FG_2" android:id="@id/b1i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/aq3" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/bcu" android:background="@drawable/l0" android:paddingLeft="10.0dip" android:paddingTop="9.0dip" android:paddingRight="10.0dip" android:paddingBottom="9.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cp">
+        <TextView android:textSize="@dimen/m8" android:textColor="@color/gf" android:id="@id/bcv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{有注册过的会员卡可添加}" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="10.0dip" android:layout_height="20.0dip" android:layout_marginLeft="4.0dip" android:src="@raw/icons_filled_arrow" app:iconColor="@color/FG_2" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/bcr" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/xd" android:id="@id/bcs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ay5" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/bd2" android:layout_width="8.5dip" android:layout_height="8.5dip" android:layout_marginLeft="4.0dip" android:src="@raw/card_sort_icon" app:iconColor="@color/FG_2" />
+    </LinearLayout>
 </LinearLayout>

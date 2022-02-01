@@ -12,9 +12,9 @@ import com.tencent.thumbplayer.core.downloadproxy.api.ITPPlayListener;
 public abstract interface a
   extends ITPPlayerProxy
 {
-  public abstract void Iw(boolean paramBoolean);
+  public abstract void Bh(long paramLong);
   
-  public abstract void WU(long paramLong);
+  public abstract void Oy(boolean paramBoolean);
   
   public abstract e a(long paramLong, String paramString, TPVideoInfo paramTPVideoInfo);
   
@@ -24,25 +24,25 @@ public abstract interface a
   
   public abstract void a(ITPPlayListener paramITPPlayListener);
   
-  public abstract void aBb(int paramInt);
+  public abstract void aHO(int paramInt);
   
   public abstract ITPMediaAsset b(ITPMediaAsset paramITPMediaAsset);
   
-  public abstract e bDw(String paramString);
-  
-  public abstract void iqU();
-  
-  public abstract boolean iqV();
-  
-  public abstract String iqW();
-  
-  public abstract ITPPlayerProxyListener iqX();
+  public abstract e bGd(String paramString);
   
   public abstract boolean isEnable();
   
-  public abstract void oI(String paramString1, String paramString2);
+  public abstract void kaq();
+  
+  public abstract boolean kar();
+  
+  public abstract String kas();
+  
+  public abstract ITPPlayerProxyListener kat();
   
   public abstract void pauseDownload();
+  
+  public abstract void qG(String paramString1, String paramString2);
   
   public abstract void release();
   
@@ -56,7 +56,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.e.a
  * JD-Core Version:    0.7.0.1
  */

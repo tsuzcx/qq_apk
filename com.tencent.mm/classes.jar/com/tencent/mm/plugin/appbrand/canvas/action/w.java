@@ -17,7 +17,7 @@ public final class w
   private static boolean b(com.tencent.mm.plugin.appbrand.canvas.d paramd, String paramString)
   {
     AppMethodBeat.i(144939);
-    paramd = paramd.nTx;
+    paramd = paramd.qTj;
     int i = -1;
     switch (paramString.hashCode())
     {
@@ -224,7 +224,7 @@ public final class w
     return false;
   }
   
-  public final BaseDrawActionArg bKy()
+  public final BaseDrawActionArg cjY()
   {
     AppMethodBeat.i(144937);
     SetGlobalCompositeOperationActionArg localSetGlobalCompositeOperationActionArg = new SetGlobalCompositeOperationActionArg();
@@ -239,7 +239,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.w
  * JD-Core Version:    0.7.0.1
  */

@@ -5,20 +5,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.bw;
+import com.tencent.mm.storage.by;
 
 public final class s
 {
-  public static int bcR()
+  public static int bAD()
   {
     AppMethodBeat.i(20317);
-    if (!h.aHB())
+    if (!h.baz())
     {
       Log.w("MicroMsg.BottleConversationLogic", "get Bottle Total Conversation Unread, but has not set uin");
       AppMethodBeat.o(20317);
       return 0;
     }
-    Cursor localCursor = ((n)h.ae(n.class)).bbR().hyN();
+    Cursor localCursor = ((n)h.ax(n.class)).bzG().jaS();
     if ((localCursor != null) && (localCursor.getCount() > 0)) {
       localCursor.moveToFirst();
     }

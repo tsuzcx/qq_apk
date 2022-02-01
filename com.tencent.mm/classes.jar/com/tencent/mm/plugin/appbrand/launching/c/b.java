@@ -12,9 +12,9 @@ import com.tencent.mm.plugin.appbrand.api.WeAppOpenDeclarePromptBundle;
   static
   {
     AppMethodBeat.i(47409);
-    pYN = new b("WALLET", 0, "weapp://wallet/", 1019);
-    pYO = new b("SEARCH_NATIVE_FEATURE", 1, "weapp://search/", 1005);
-    pYP = new b[] { pYN, pYO };
+    tdA = new b("WALLET", 0, "weapp://wallet/", 1019);
+    tdB = new b("SEARCH_NATIVE_FEATURE", 1, "weapp://search/", 1005);
+    tdC = new b[] { tdA, tdB };
     AppMethodBeat.o(47409);
   }
   
@@ -24,32 +24,37 @@ import com.tencent.mm.plugin.appbrand.api.WeAppOpenDeclarePromptBundle;
     this.scene = paramInt;
   }
   
-  static WeAppOpenDeclarePromptBundle T(Bundle paramBundle)
+  static WeAppOpenDeclarePromptBundle ae(Bundle paramBundle)
   {
-    AppMethodBeat.i(275072);
+    AppMethodBeat.i(321048);
     if (paramBundle == null)
     {
-      AppMethodBeat.o(275072);
+      AppMethodBeat.o(321048);
       return null;
     }
     paramBundle = (WeAppOpenDeclarePromptBundle)paramBundle.getParcelable("weapp_open_declare_prompt_key");
-    AppMethodBeat.o(275072);
+    AppMethodBeat.o(321048);
     return paramBundle;
   }
   
-  static String cau()
+  static String cAK()
   {
     return "";
   }
   
-  static String cav()
+  static int cAL()
+  {
+    return 0;
+  }
+  
+  static String cAM()
   {
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.c.b
  * JD-Core Version:    0.7.0.1
  */

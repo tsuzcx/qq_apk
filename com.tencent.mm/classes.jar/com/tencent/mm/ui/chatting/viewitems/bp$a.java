@@ -1,29 +1,34 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import com.tencent.mm.storage.ca;
-import com.tencent.mm.ui.chatting.e.a;
+import com.tencent.mm.storage.cc;
+import com.tencent.mm.ui.chatting.d.a;
 
 abstract class bp$a
   extends c
 {
-  public String a(a parama, ca paramca)
+  protected bp.h aeXp;
+  
+  public String a(a parama, cc paramcc)
   {
     return parama.getTalkerUserName();
   }
   
-  protected final boolean b(a parama)
+  public boolean fXn()
   {
     return false;
   }
   
-  public boolean hTD()
+  protected final bp.h p(a parama)
   {
-    return false;
+    if (this.aeXp == null) {
+      this.aeXp = new bp.h(parama);
+    }
+    return this.aeXp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.bp.a
  * JD-Core Version:    0.7.0.1
  */

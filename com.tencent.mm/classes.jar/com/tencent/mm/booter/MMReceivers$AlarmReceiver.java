@@ -8,10 +8,9 @@ import android.content.SharedPreferences;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.a;
-import com.tencent.mm.f.a.qz;
+import com.tencent.mm.autogen.a.so;
 import com.tencent.mm.kernel.m;
-import com.tencent.mm.network.af;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.network.ag;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MAlarmHandler;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -28,7 +27,7 @@ public class MMReceivers$AlarmReceiver
     AppMethodBeat.o(131885);
   }
   
-  public static void cd(Context paramContext)
+  public static void cP(Context paramContext)
   {
     long l1 = 30000L;
     AppMethodBeat.i(131884);
@@ -49,7 +48,7 @@ public class MMReceivers$AlarmReceiver
     }
   }
   
-  public static void ce(Context paramContext)
+  public static void cQ(Context paramContext)
   {
     AppMethodBeat.i(131886);
     PendingIntent localPendingIntent = a.b(paramContext, 109, new Intent(paramContext, AlarmReceiver.class).putExtra("MMBoot_Bump", true));
@@ -61,11 +60,11 @@ public class MMReceivers$AlarmReceiver
     AppMethodBeat.o(131886);
   }
   
-  public static void cf(Context paramContext)
+  public static void cR(Context paramContext)
   {
     AppMethodBeat.i(131887);
     Log.w("MicroMsg.AlarmReceiver", "keep awaker");
-    if (af.btP()) {}
+    if (ag.bRt()) {}
     for (int i = 300000;; i = 900000)
     {
       a.a(paramContext, 110, 0, System.currentTimeMillis() + i, i, new Intent(paramContext, AlarmReceiver.class));
@@ -74,7 +73,7 @@ public class MMReceivers$AlarmReceiver
     }
   }
   
-  public static void cg(Context paramContext)
+  public static void cS(Context paramContext)
   {
     AppMethodBeat.i(131888);
     Log.w("MicroMsg.AlarmReceiver", "stop awaker");
@@ -95,7 +94,7 @@ public class MMReceivers$AlarmReceiver
       AppMethodBeat.o(131883);
       return;
     }
-    if (!com.tencent.mm.kernel.b.awd().getBoolean("keepaliveserviceswitch", false))
+    if (!com.tencent.mm.kernel.b.aQC().getBoolean("keepaliveserviceswitch", false))
     {
       Log.i("MicroMsg.AlarmReceiver", "onReceive() MMHandlerThread() publish PushKeepAliveEvent");
       MMHandlerThread.postToMainThreadDelayed(new Runnable()
@@ -103,8 +102,7 @@ public class MMReceivers$AlarmReceiver
         public final void run()
         {
           AppMethodBeat.i(131882);
-          qz localqz = new qz();
-          EventCenter.instance.asyncPublish(localqz, Looper.getMainLooper());
+          new so().asyncPublish(Looper.getMainLooper());
           Log.i("MicroMsg.AlarmReceiver", "onReceive() publish PushKeepAliveEvent");
           AppMethodBeat.o(131882);
         }
@@ -114,13 +112,13 @@ public class MMReceivers$AlarmReceiver
     Log.i("MicroMsg.AlarmReceiver", "[ALARM NOTIFICATION] bump:".concat(String.valueOf(bool)));
     if (bool)
     {
-      cd(paramContext);
+      cP(paramContext);
       AppMethodBeat.o(131883);
       return;
     }
     if (!b.c(paramContext, "alarm", true))
     {
-      cg(paramContext);
+      cS(paramContext);
       Log.appenderFlush();
     }
     AppMethodBeat.o(131883);
@@ -128,7 +126,7 @@ public class MMReceivers$AlarmReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.booter.MMReceivers.AlarmReceiver
  * JD-Core Version:    0.7.0.1
  */

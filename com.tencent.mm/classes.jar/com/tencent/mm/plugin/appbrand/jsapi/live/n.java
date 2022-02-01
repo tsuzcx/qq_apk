@@ -9,7 +9,7 @@ import org.json.JSONObject;
 
 public final class n
 {
-  public static Bundle ac(JSONObject paramJSONObject)
+  public static Bundle am(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(145903);
     StringBuilder localStringBuilder = new StringBuilder("LivePlayer params:");
@@ -247,7 +247,7 @@ public final class n
     }
   }
   
-  public static Bundle ad(JSONObject paramJSONObject)
+  public static Bundle an(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(145904);
     StringBuilder localStringBuilder = new StringBuilder("LivePusher params:");
@@ -715,7 +715,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.live.n
  * JD-Core Version:    0.7.0.1
  */

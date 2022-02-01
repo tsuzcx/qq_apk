@@ -1,132 +1,44 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
+import android.view.View;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.model.ba;
-import com.tencent.mm.plugin.webview.model.ba.i;
-import com.tencent.mm.plugin.webview.model.ba.j;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.qqvideo.proxy.api.IUtils;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig.ConfigHelper;
+import com.tencent.mm.accessibility.base.ViewSetter;
+import com.tencent.mm.plugin.webview.c.f;
+import com.tencent.mm.plugin.webview.c.g;
+import kotlin.Metadata;
+import kotlin.g.a.b;
+import kotlin.g.b.u;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/SDKOAuthUIAccessibility;", "Lcom/tencent/mm/accessibility/base/MMBaseAccessibilityConfig;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "initConfig", "", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class h
-  extends a
-  implements IUtils
+  extends MMBaseAccessibilityConfig
 {
-  public h(WebViewUI paramWebViewUI)
+  public h(AppCompatActivity paramAppCompatActivity)
   {
-    super(paramWebViewUI);
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(296212);
+    AppMethodBeat.o(296212);
   }
   
-  public final void httpproxyReport(String... paramVarArgs)
+  public final void initConfig()
   {
-    AppMethodBeat.i(79800);
-    Object localObject = gXq().PIx.gWf();
-    if ((paramVarArgs == null) || (paramVarArgs.length == 0))
-    {
-      paramVarArgs = gXq().PIx.gWf();
-      if ((paramVarArgs.PWD == null) || (paramVarArgs.PWD.size() == 0)) {
-        AppMethodBeat.o(79800);
-      }
-    }
-    else
-    {
-      if (((ba.j)localObject).PWD == null) {
-        ((ba.j)localObject).PWD = new ArrayList();
-      }
-      for (;;)
-      {
-        int i = 0;
-        while (i < paramVarArgs.length)
-        {
-          Log.i("MicroMsg.WebviewReporter", "WebViewVideoProxyReporter report info = %s", new Object[] { paramVarArgs[i] });
-          ((ba.j)localObject).PWD.add(paramVarArgs[i]);
-          i += 1;
-        }
-        break;
-        ((ba.j)localObject).PWD.clear();
-      }
-    }
-    localObject = com.tencent.mm.plugin.report.service.h.IzE;
-    com.tencent.mm.plugin.report.service.h.u(12033, paramVarArgs.PWD);
-    paramVarArgs.PWD.clear();
-    AppMethodBeat.o(79800);
+    AppMethodBeat.i(296215);
+    root(c.g.avatar_item).view(c.f.avatar_item).desc((b)new a(this));
+    AppMethodBeat.o(296215);
   }
   
-  public final void idKeyReport(String paramString1, String paramString2, String paramString3)
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements b<View, String>
   {
-    AppMethodBeat.i(79801);
-    Log.i("MicroMsg.WebViewUI.UtilsImpl", "idkey report, id = %s, key = %s, value = %s", new Object[] { paramString1, paramString2, paramString3 });
-    if ((!Util.isNullOrNil(paramString1)) && (!Util.isNullOrNil(paramString2)) && (!Util.isNullOrNil(paramString3)))
+    a(h paramh)
     {
-      int i = Util.getInt(paramString1, 0);
-      int j = Util.getInt(paramString2, 0);
-      int k = Util.getInt(paramString3, 0);
-      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(i, j, k, false);
+      super();
     }
-    AppMethodBeat.o(79801);
-  }
-  
-  public final void javaUtilLog(int paramInt, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(79799);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(79799);
-      return;
-      Log.d(paramString1, paramString2);
-      AppMethodBeat.o(79799);
-      return;
-      Log.e(paramString1, paramString2);
-      AppMethodBeat.o(79799);
-      return;
-      Log.i(paramString1, paramString2);
-      AppMethodBeat.o(79799);
-      return;
-      Log.v(paramString1, paramString2);
-      AppMethodBeat.o(79799);
-      return;
-      Log.w(paramString1, paramString2);
-    }
-  }
-  
-  public final void kvReport(String... paramVarArgs)
-  {
-    AppMethodBeat.i(79802);
-    Object localObject = gXq().PIx.gWg();
-    if ((paramVarArgs == null) || (paramVarArgs.length == 0))
-    {
-      paramVarArgs = gXq().PIx.gWg();
-      if ((paramVarArgs.PWD == null) || (paramVarArgs.PWD.size() == 0)) {
-        AppMethodBeat.o(79802);
-      }
-    }
-    else
-    {
-      if (((ba.i)localObject).PWD == null) {
-        ((ba.i)localObject).PWD = new ArrayList();
-      }
-      for (;;)
-      {
-        int i = 0;
-        while (i < paramVarArgs.length)
-        {
-          Log.i("MicroMsg.WebviewReporter", "WebViewVideoDownloadReporter report info = %s", new Object[] { paramVarArgs[i] });
-          ((ba.i)localObject).PWD.add(paramVarArgs[i]);
-          i += 1;
-        }
-        break;
-        ((ba.i)localObject).PWD.clear();
-      }
-    }
-    localObject = com.tencent.mm.plugin.report.service.h.IzE;
-    com.tencent.mm.plugin.report.service.h.u(12666, paramVarArgs.PWD);
-    paramVarArgs.PWD.clear();
-    AppMethodBeat.o(79802);
   }
 }
 

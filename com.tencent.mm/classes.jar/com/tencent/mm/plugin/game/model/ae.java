@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.bx.a;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.game.api.f;
 import com.tencent.mm.plugin.game.d.d;
-import com.tencent.mm.plugin.game.protobuf.bx;
-import com.tencent.mm.plugin.game.protobuf.cx;
-import com.tencent.mm.plugin.game.protobuf.dg;
-import com.tencent.mm.plugin.game.protobuf.dh;
-import com.tencent.mm.plugin.game.protobuf.du;
+import com.tencent.mm.plugin.game.protobuf.by;
+import com.tencent.mm.plugin.game.protobuf.da;
+import com.tencent.mm.plugin.game.protobuf.dk;
+import com.tencent.mm.plugin.game.protobuf.dl;
+import com.tencent.mm.plugin.game.protobuf.dy;
 import com.tencent.mm.plugin.game.protobuf.e;
 import com.tencent.mm.plugin.game.protobuf.g;
-import com.tencent.mm.plugin.game.protobuf.r;
+import com.tencent.mm.plugin.game.protobuf.s;
 import com.tencent.mm.plugin.game.ui.GameLibraryCategoriesView.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
@@ -24,38 +24,38 @@ import java.util.LinkedList;
 public final class ae
   extends x
 {
-  private int CKZ;
-  public bx CLt;
-  public LinkedList<c> CLu;
-  public LinkedList<c> CLv;
+  public by IFA;
+  public LinkedList<c> IFB;
+  public LinkedList<c> IFC;
+  private int IFh;
   
   public ae(a parama, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(41543);
-    this.CKZ = 0;
+    this.IFh = 0;
     if (parama == null)
     {
-      this.CLt = new bx();
+      this.IFA = new by();
       AppMethodBeat.o(41543);
       return;
     }
-    this.CLt = ((bx)parama);
-    this.CKZ = paramInt;
-    this.CLu = eyY();
-    this.CLv = eyZ();
+    this.IFA = ((by)parama);
+    this.IFh = paramInt;
+    this.IFB = fGU();
+    this.IFC = fGV();
     if (paramBoolean) {
-      ((f)h.ae(f.class)).evp().b("pb_library", parama);
+      ((f)h.ax(f.class)).fCi().b("pb_library", parama);
     }
-    d.bs(this.CLu);
-    d.bs(this.CLv);
+    d.bz(this.IFB);
+    d.bz(this.IFC);
     AppMethodBeat.o(41543);
   }
   
   public ae(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(41544);
-    this.CKZ = 0;
-    this.CLt = new bx();
+    this.IFh = 0;
+    this.IFA = new by();
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
       AppMethodBeat.o(41544);
@@ -63,11 +63,11 @@ public final class ae
     }
     try
     {
-      this.CLt.parseFrom(paramArrayOfByte);
-      this.CLu = eyY();
-      this.CLv = eyZ();
-      d.bs(this.CLu);
-      d.bs(this.CLv);
+      this.IFA.parseFrom(paramArrayOfByte);
+      this.IFB = fGU();
+      this.IFC = fGV();
+      d.bz(this.IFB);
+      d.bz(this.IFC);
       AppMethodBeat.o(41544);
       return;
     }
@@ -80,26 +80,26 @@ public final class ae
     }
   }
   
-  private LinkedList<c> eyY()
+  private LinkedList<c> fGU()
   {
     AppMethodBeat.i(41545);
     LinkedList localLinkedList = new LinkedList();
-    if ((this.CLt.CQi == null) || (this.CLt.CQi.CQO == null) || (this.CLt.CQi.CQO.CRc == null))
+    if ((this.IFA.IKs == null) || (this.IFA.IKs.ILc == null) || (this.IFA.IKs.ILc.ILs == null))
     {
       AppMethodBeat.o(41545);
       return localLinkedList;
     }
-    Iterator localIterator = this.CLt.CQi.CQO.CRc.iterator();
+    Iterator localIterator = this.IFA.IKs.ILc.ILs.iterator();
     int i = 1;
     while (localIterator.hasNext())
     {
-      dh localdh = (dh)localIterator.next();
-      c localc = a(localdh.CME);
+      dl localdl = (dl)localIterator.next();
+      c localc = a(localdl.IGJ);
       if (localc != null)
       {
-        localc.CIf = localdh.CME.CMV;
+        localc.ICp = localdl.IGJ.IHa;
         localc.scene = 11;
-        localc.fSl = 1110;
+        localc.hYi = 1110;
         localc.position = i;
         localLinkedList.add(localc);
         i += 1;
@@ -109,18 +109,18 @@ public final class ae
     return localLinkedList;
   }
   
-  private LinkedList<c> eyZ()
+  private LinkedList<c> fGV()
   {
     AppMethodBeat.i(41546);
     LinkedList localLinkedList = new LinkedList();
-    if (this.CLt.CQj == null)
+    if (this.IFA.IKt == null)
     {
       AppMethodBeat.o(41546);
       return localLinkedList;
     }
-    int j = this.CKZ + 1;
-    int i = this.CKZ / 15;
-    Iterator localIterator = this.CLt.CQj.iterator();
+    int j = this.IFh + 1;
+    int i = this.IFh / 15;
+    Iterator localIterator = this.IFA.IKt.iterator();
     i += 901;
     label272:
     for (;;)
@@ -129,7 +129,7 @@ public final class ae
       {
         e locale = (e)localIterator.next();
         Object localObject = null;
-        switch (locale.rWu)
+        switch (locale.vhJ)
         {
         }
         for (;;)
@@ -138,10 +138,10 @@ public final class ae
             break label272;
           }
           localObject.scene = 11;
-          localObject.fSl = 1111;
+          localObject.hYi = 1111;
           localLinkedList.add(localObject);
           break;
-          c localc = a(locale.CME);
+          c localc = a(locale.IGJ);
           localObject = localc;
           if (localc != null)
           {
@@ -149,15 +149,15 @@ public final class ae
             j += 1;
             localObject = localc;
             continue;
-            if (locale.CMK != null)
+            if (locale.IGP != null)
             {
-              localc = a(locale.CMK.CME);
+              localc = a(locale.IGP.IGJ);
               localObject = localc;
               if (localc != null)
               {
                 localc.type = 1;
-                localc.CHY = locale.CMK.CMG;
-                localc.CHZ = locale.CMK.CMF;
+                localc.ICi = locale.IGP.IGL;
+                localc.ICj = locale.IGP.IGK;
                 int k = i + 1;
                 localc.position = i;
                 i = k;
@@ -172,44 +172,44 @@ public final class ae
     }
   }
   
-  public final HashMap<Integer, String> eza()
+  public final HashMap<Integer, String> fGW()
   {
     AppMethodBeat.i(41547);
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    if ((this.CLt.CQi == null) || (this.CLt.CQi.CQR == null))
+    if ((this.IFA.IKs == null) || (this.IFA.IKs.ILf == null))
     {
       AppMethodBeat.o(41547);
       return localLinkedHashMap;
     }
-    Iterator localIterator = this.CLt.CQi.CQR.iterator();
+    Iterator localIterator = this.IFA.IKs.ILf.iterator();
     while (localIterator.hasNext())
     {
-      du localdu = (du)localIterator.next();
-      localLinkedHashMap.put(Integer.valueOf(localdu.CQg), localdu.CMP);
+      dy localdy = (dy)localIterator.next();
+      localLinkedHashMap.put(Integer.valueOf(localdy.IKq), localdy.IGU);
     }
     AppMethodBeat.o(41547);
     return localLinkedHashMap;
   }
   
-  public final LinkedList<GameLibraryCategoriesView.a> ezb()
+  public final LinkedList<GameLibraryCategoriesView.a> fGX()
   {
     AppMethodBeat.i(41548);
-    if ((this.CLt.CQi == null) || (this.CLt.CQi.CQP == null))
+    if ((this.IFA.IKs == null) || (this.IFA.IKs.ILd == null))
     {
       AppMethodBeat.o(41548);
       return null;
     }
     LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = this.CLt.CQi.CQP.iterator();
+    Iterator localIterator = this.IFA.IKs.ILd.iterator();
     int i = 0;
     while (localIterator.hasNext())
     {
-      r localr = (r)localIterator.next();
+      s locals = (s)localIterator.next();
       GameLibraryCategoriesView.a locala = new GameLibraryCategoriesView.a();
-      locala.CXK = localr.CNK;
-      locala.BWk = localr.CMP;
-      locala.CXL = localr.CMG;
-      locala.nQm = localr.CMO;
+      locala.ISa = locals.IHU;
+      locala.HIH = locals.IGU;
+      locala.ISb = locals.IGL;
+      locala.qQb = locals.IGT;
       i += 1;
       locala.position = i;
       localLinkedList.add(locala);
@@ -220,7 +220,7 @@ public final class ae
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.ae
  * JD-Core Version:    0.7.0.1
  */

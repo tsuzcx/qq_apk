@@ -1,102 +1,124 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
-public final class axw
-  extends com.tencent.mm.cd.a
+public class axw
+  extends com.tencent.mm.bx.a
 {
-  public aza SJM;
-  public String SnB;
-  public int scene;
-  public long seq;
+  public long ZIV;
+  public String appid;
+  public String ext_info;
+  public String icon;
+  public String link;
+  public int source;
+  public String title;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(230385);
+    AppMethodBeat.i(259670);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(101, this.scene);
-      paramVarArgs.bm(102, this.seq);
-      if (this.SJM != null)
-      {
-        paramVarArgs.oE(103, this.SJM.computeSize());
-        this.SJM.writeFields(paramVarArgs);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.appid != null) {
+        paramVarArgs.g(1, this.appid);
       }
-      if (this.SnB != null) {
-        paramVarArgs.f(104, this.SnB);
+      if (this.icon != null) {
+        paramVarArgs.g(2, this.icon);
       }
-      AppMethodBeat.o(230385);
+      if (this.title != null) {
+        paramVarArgs.g(3, this.title);
+      }
+      if (this.link != null) {
+        paramVarArgs.g(4, this.link);
+      }
+      paramVarArgs.bv(5, this.ZIV);
+      if (this.ext_info != null) {
+        paramVarArgs.g(6, this.ext_info);
+      }
+      paramVarArgs.bS(7, this.source);
+      AppMethodBeat.o(259670);
       return 0;
     }
-    int i;
-    if (paramInt == 1)
+    if (paramInt == 1) {
+      if (this.appid == null) {
+        break label542;
+      }
+    }
+    label542:
+    for (int i = i.a.a.b.b.a.h(1, this.appid) + 0;; i = 0)
     {
-      i = g.a.a.b.b.a.bM(101, this.scene) + 0 + g.a.a.b.b.a.p(102, this.seq);
       paramInt = i;
-      if (this.SJM != null) {
-        paramInt = i + g.a.a.a.oD(103, this.SJM.computeSize());
+      if (this.icon != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.icon);
       }
       i = paramInt;
-      if (this.SnB != null) {
-        i = paramInt + g.a.a.b.b.a.g(104, this.SnB);
+      if (this.title != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.title);
       }
-      AppMethodBeat.o(230385);
-      return i;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
+      paramInt = i;
+      if (this.link != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.link);
       }
-      AppMethodBeat.o(230385);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject = (g.a.a.a.a)paramVarArgs[0];
-      axw localaxw = (axw)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      i = paramInt + i.a.a.b.b.a.q(5, this.ZIV);
+      paramInt = i;
+      if (this.ext_info != null) {
+        paramInt = i + i.a.a.b.b.a.h(6, this.ext_info);
+      }
+      i = i.a.a.b.b.a.cJ(7, this.source);
+      AppMethodBeat.o(259670);
+      return paramInt + i;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(230385);
-        return -1;
-      case 101: 
-        localaxw.scene = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(230385);
-        return 0;
-      case 102: 
-        localaxw.seq = ((g.a.a.a.a)localObject).abFh.AN();
-        AppMethodBeat.o(230385);
-        return 0;
-      case 103: 
-        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject = (byte[])paramVarArgs.get(paramInt);
-          aza localaza = new aza();
-          if ((localObject != null) && (localObject.length > 0)) {
-            localaza.parseFrom((byte[])localObject);
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
           }
-          localaxw.SJM = localaza;
-          paramInt += 1;
         }
-        AppMethodBeat.o(230385);
+        AppMethodBeat.o(259670);
         return 0;
       }
-      localaxw.SnB = ((g.a.a.a.a)localObject).abFh.readString();
-      AppMethodBeat.o(230385);
-      return 0;
+      if (paramInt == 3)
+      {
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+        axw localaxw = (axw)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(259670);
+          return -1;
+        case 1: 
+          localaxw.appid = locala.ajGk.readString();
+          AppMethodBeat.o(259670);
+          return 0;
+        case 2: 
+          localaxw.icon = locala.ajGk.readString();
+          AppMethodBeat.o(259670);
+          return 0;
+        case 3: 
+          localaxw.title = locala.ajGk.readString();
+          AppMethodBeat.o(259670);
+          return 0;
+        case 4: 
+          localaxw.link = locala.ajGk.readString();
+          AppMethodBeat.o(259670);
+          return 0;
+        case 5: 
+          localaxw.ZIV = locala.ajGk.aaw();
+          AppMethodBeat.o(259670);
+          return 0;
+        case 6: 
+          localaxw.ext_info = locala.ajGk.readString();
+          AppMethodBeat.o(259670);
+          return 0;
+        }
+        localaxw.source = locala.ajGk.aar();
+        AppMethodBeat.o(259670);
+        return 0;
+      }
+      AppMethodBeat.o(259670);
+      return -1;
     }
-    AppMethodBeat.o(230385);
-    return -1;
   }
 }
 

@@ -10,9 +10,9 @@ public final class j
   public static void a(g paramg, File paramFile, long paramLong, i parami)
   {
     paramg = new g(paramg);
-    paramg.aCi(0);
+    paramg.aIX(0);
     paramg.setSize(paramFile.length());
-    paramg.ZNu = paramFile.length();
+    paramg.ahSw = paramFile.length();
     if ((paramLong >= 0L) && (paramLong <= 4294967295L)) {
       paramg.crc = paramLong;
     }
@@ -37,7 +37,7 @@ public final class j
           i = paramFile.read(paramg);
           throw new IllegalArgumentException("Bad CRC32: ".concat(String.valueOf(paramLong)));
         }
-        parami.isL();
+        parami.kci();
         paramFile.close();
         return;
       }
@@ -72,7 +72,7 @@ public final class j
         localh = paramh;
       }
       localh = paramh;
-      parami.isL();
+      parami.kci();
       return;
     }
     finally
@@ -85,7 +85,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.d.a.j
  * JD-Core Version:    0.7.0.1
  */

@@ -18,11 +18,11 @@ public abstract interface e
   
   public abstract void d(d paramd);
   
-  public abstract void dU(int paramInt);
+  public abstract void hl(int paramInt);
   
   public static final class a
   {
-    final e aOq;
+    final e cIm;
     final Handler handler;
     
     public a(Handler paramHandler, e parame)
@@ -32,7 +32,7 @@ public abstract interface e
       for (paramHandler = (Handler)a.checkNotNull(paramHandler);; paramHandler = null)
       {
         this.handler = paramHandler;
-        this.aOq = parame;
+        this.cIm = parame;
         AppMethodBeat.o(91769);
         return;
       }
@@ -41,13 +41,13 @@ public abstract interface e
     public final void e(final d paramd)
     {
       AppMethodBeat.i(91770);
-      if (this.aOq != null) {
+      if (this.cIm != null) {
         this.handler.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(91767);
-            e.a.this.aOq.d(paramd);
+            e.a.this.cIm.d(paramd);
             AppMethodBeat.o(91767);
           }
         });

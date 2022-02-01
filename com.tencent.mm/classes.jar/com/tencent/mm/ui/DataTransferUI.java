@@ -1,6 +1,5 @@
 package com.tencent.mm.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
@@ -9,17 +8,17 @@ import com.tencent.mm.R.l;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.ui.base.a;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.w;
 
 @a(19)
 public class DataTransferUI
   extends MMBaseActivity
 {
-  private s oTk;
+  private w rYw;
   private long startTime = 0L;
   
-  private void by(Intent paramIntent)
+  private void cc(Intent paramIntent)
   {
     AppMethodBeat.i(33018);
     boolean bool = paramIntent.getBooleanExtra("finish_data_transfer", false);
@@ -37,7 +36,7 @@ public class DataTransferUI
     Log.d("MicroMsg.DataTransferUI", "onCreate, timestamp = " + System.currentTimeMillis());
     this.startTime = System.currentTimeMillis();
     getString(R.l.app_tip);
-    this.oTk = h.a(this, getString(R.l.app_data_transfering), false, null);
+    this.rYw = k.a(this, getString(R.l.app_data_transfering), false, null);
     new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
@@ -52,7 +51,7 @@ public class DataTransferUI
         AppMethodBeat.o(33015);
       }
     }.sendEmptyMessageDelayed(0, 60000L);
-    by(getIntent());
+    cc(getIntent());
     AppMethodBeat.o(33016);
   }
   
@@ -61,8 +60,8 @@ public class DataTransferUI
     AppMethodBeat.i(33020);
     super.onDestroy();
     Log.d("MicroMsg.DataTransferUI", "onDestroy");
-    if ((this.oTk != null) && (this.oTk.isShowing())) {
-      this.oTk.dismiss();
+    if ((this.rYw != null) && (this.rYw.isShowing())) {
+      this.rYw.dismiss();
     }
     AppMethodBeat.o(33020);
   }
@@ -71,7 +70,7 @@ public class DataTransferUI
   {
     AppMethodBeat.i(33017);
     Log.d("MicroMsg.DataTransferUI", "onNewIntent, timestamp = " + System.currentTimeMillis());
-    by(paramIntent);
+    cc(paramIntent);
     AppMethodBeat.o(33017);
   }
   

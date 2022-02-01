@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.downloader.a;
 
 public final class b
 {
-  public static int ueA = 0;
-  public static int ueB = 1;
-  public static int ueC = 2;
+  public static int xkC = 0;
+  public static int xkD = 1;
+  public static int xkE = 2;
 }
 
 

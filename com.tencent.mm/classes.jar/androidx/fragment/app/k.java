@@ -1,354 +1,288 @@
 package androidx.fragment.app;
 
-import android.graphics.Rect;
-import android.transition.Transition;
-import android.transition.Transition.EpicenterCallback;
-import android.transition.Transition.TransitionListener;
-import android.transition.TransitionManager;
-import android.transition.TransitionSet;
-import android.view.View;
-import android.view.ViewGroup;
+import androidx.lifecycle.af;
+import androidx.lifecycle.ah;
+import androidx.lifecycle.ah.b;
+import androidx.lifecycle.aj;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 final class k
-  extends l
+  extends af
 {
-  private static boolean a(Transition paramTransition)
+  private static final ah.b bDl;
+  final HashMap<String, Fragment> bDm;
+  final HashMap<String, k> bDn;
+  final HashMap<String, aj> bDo;
+  final boolean bDp;
+  boolean bDq;
+  private boolean bDr;
+  boolean bDs;
+  
+  static
   {
-    AppMethodBeat.i(213043);
-    if ((!h(paramTransition.getTargetIds())) || (!h(paramTransition.getTargetNames())) || (!h(paramTransition.getTargetTypes())))
+    AppMethodBeat.i(193752);
+    bDl = new ah.b()
     {
-      AppMethodBeat.o(213043);
+      public final <T extends af> T create(Class<T> paramAnonymousClass)
+      {
+        AppMethodBeat.i(193471);
+        paramAnonymousClass = new k(true);
+        AppMethodBeat.o(193471);
+        return paramAnonymousClass;
+      }
+    };
+    AppMethodBeat.o(193752);
+  }
+  
+  k(boolean paramBoolean)
+  {
+    AppMethodBeat.i(193745);
+    this.bDm = new HashMap();
+    this.bDn = new HashMap();
+    this.bDo = new HashMap();
+    this.bDq = false;
+    this.bDr = false;
+    this.bDs = false;
+    this.bDp = paramBoolean;
+    AppMethodBeat.o(193745);
+  }
+  
+  static k a(aj paramaj)
+  {
+    AppMethodBeat.i(193735);
+    paramaj = (k)new ah(paramaj, bDl).q(k.class);
+    AppMethodBeat.o(193735);
+    return paramaj;
+  }
+  
+  @Deprecated
+  final j Go()
+  {
+    AppMethodBeat.i(193798);
+    if ((this.bDm.isEmpty()) && (this.bDn.isEmpty()) && (this.bDo.isEmpty()))
+    {
+      AppMethodBeat.o(193798);
+      return null;
+    }
+    Object localObject = new HashMap();
+    Iterator localIterator = this.bDn.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      j localj = ((k)localEntry.getValue()).Go();
+      if (localj != null) {
+        ((HashMap)localObject).put(localEntry.getKey(), localj);
+      }
+    }
+    this.bDr = true;
+    if ((this.bDm.isEmpty()) && (((HashMap)localObject).isEmpty()) && (this.bDo.isEmpty()))
+    {
+      AppMethodBeat.o(193798);
+      return null;
+    }
+    localObject = new j(new ArrayList(this.bDm.values()), (Map)localObject, new HashMap(this.bDo));
+    AppMethodBeat.o(193798);
+    return localObject;
+  }
+  
+  @Deprecated
+  final void a(j paramj)
+  {
+    AppMethodBeat.i(193787);
+    this.bDm.clear();
+    this.bDn.clear();
+    this.bDo.clear();
+    if (paramj != null)
+    {
+      Object localObject1 = paramj.bDa;
+      Object localObject2;
+      if (localObject1 != null)
+      {
+        localObject1 = ((Collection)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (Fragment)((Iterator)localObject1).next();
+          if (localObject2 != null) {
+            this.bDm.put(((Fragment)localObject2).mWho, localObject2);
+          }
+        }
+      }
+      localObject1 = paramj.bDb;
+      if (localObject1 != null)
+      {
+        localObject1 = ((Map)localObject1).entrySet().iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (Map.Entry)((Iterator)localObject1).next();
+          k localk = new k(this.bDp);
+          localk.a((j)((Map.Entry)localObject2).getValue());
+          this.bDn.put(((Map.Entry)localObject2).getKey(), localk);
+        }
+      }
+      paramj = paramj.bDc;
+      if (paramj != null) {
+        this.bDo.putAll(paramj);
+      }
+    }
+    this.bDr = false;
+    AppMethodBeat.o(193787);
+  }
+  
+  final void addRetainedFragment(Fragment paramFragment)
+  {
+    AppMethodBeat.i(193764);
+    if (this.bDs)
+    {
+      FragmentManager.isLoggingEnabled(2);
+      AppMethodBeat.o(193764);
+      return;
+    }
+    if (this.bDm.containsKey(paramFragment.mWho))
+    {
+      AppMethodBeat.o(193764);
+      return;
+    }
+    this.bDm.put(paramFragment.mWho, paramFragment);
+    if (FragmentManager.isLoggingEnabled(2)) {
+      new StringBuilder("Updating retained Fragments: Added ").append(paramFragment);
+    }
+    AppMethodBeat.o(193764);
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    AppMethodBeat.i(193806);
+    if (this == paramObject)
+    {
+      AppMethodBeat.o(193806);
       return true;
     }
-    AppMethodBeat.o(213043);
+    if ((paramObject == null) || (getClass() != paramObject.getClass()))
+    {
+      AppMethodBeat.o(193806);
+      return false;
+    }
+    paramObject = (k)paramObject;
+    if ((this.bDm.equals(paramObject.bDm)) && (this.bDn.equals(paramObject.bDn)) && (this.bDo.equals(paramObject.bDo)))
+    {
+      AppMethodBeat.o(193806);
+      return true;
+    }
+    AppMethodBeat.o(193806);
     return false;
   }
   
-  public final boolean H(Object paramObject)
+  public final int hashCode()
   {
-    return paramObject instanceof Transition;
+    AppMethodBeat.i(193813);
+    int i = this.bDm.hashCode();
+    int j = this.bDn.hashCode();
+    int k = this.bDo.hashCode();
+    AppMethodBeat.o(193813);
+    return (i * 31 + j) * 31 + k;
   }
   
-  public final Object I(Object paramObject)
+  final boolean o(Fragment paramFragment)
   {
-    AppMethodBeat.i(213033);
-    Transition localTransition = null;
-    if (paramObject != null) {
-      localTransition = ((Transition)paramObject).clone();
-    }
-    AppMethodBeat.o(213033);
-    return localTransition;
-  }
-  
-  public final Object J(Object paramObject)
-  {
-    AppMethodBeat.i(213035);
-    if (paramObject == null)
+    AppMethodBeat.i(193771);
+    if (!this.bDm.containsKey(paramFragment.mWho))
     {
-      AppMethodBeat.o(213035);
-      return null;
+      AppMethodBeat.o(193771);
+      return true;
     }
-    TransitionSet localTransitionSet = new TransitionSet();
-    localTransitionSet.addTransition((Transition)paramObject);
-    AppMethodBeat.o(213035);
-    return localTransitionSet;
-  }
-  
-  public final Object a(Object paramObject1, Object paramObject2, Object paramObject3)
-  {
-    AppMethodBeat.i(213045);
-    TransitionSet localTransitionSet = new TransitionSet();
-    if (paramObject1 != null) {
-      localTransitionSet.addTransition((Transition)paramObject1);
-    }
-    if (paramObject2 != null) {
-      localTransitionSet.addTransition((Transition)paramObject2);
-    }
-    if (paramObject3 != null) {
-      localTransitionSet.addTransition((Transition)paramObject3);
-    }
-    AppMethodBeat.o(213045);
-    return localTransitionSet;
-  }
-  
-  public final void a(ViewGroup paramViewGroup, Object paramObject)
-  {
-    AppMethodBeat.i(213050);
-    TransitionManager.beginDelayedTransition(paramViewGroup, (Transition)paramObject);
-    AppMethodBeat.o(213050);
-  }
-  
-  public final void a(Object paramObject, View paramView)
-  {
-    AppMethodBeat.i(213039);
-    if (paramView != null)
+    if (this.bDp)
     {
-      paramObject = (Transition)paramObject;
-      final Rect localRect = new Rect();
-      b(paramView, localRect);
-      paramObject.setEpicenterCallback(new Transition.EpicenterCallback()
-      {
-        public final Rect onGetEpicenter(Transition paramAnonymousTransition)
-        {
-          return localRect;
-        }
-      });
+      boolean bool = this.bDq;
+      AppMethodBeat.o(193771);
+      return bool;
     }
-    AppMethodBeat.o(213039);
-  }
-  
-  public final void a(Object paramObject, View paramView, ArrayList<View> paramArrayList)
-  {
-    AppMethodBeat.i(213037);
-    paramObject = (TransitionSet)paramObject;
-    List localList = paramObject.getTargets();
-    localList.clear();
-    int j = paramArrayList.size();
-    int i = 0;
-    while (i < j)
+    if (!this.bDr)
     {
-      a(localList, (View)paramArrayList.get(i));
-      i += 1;
+      AppMethodBeat.o(193771);
+      return true;
     }
-    localList.add(paramView);
-    paramArrayList.add(paramView);
-    a(paramObject, paramArrayList);
-    AppMethodBeat.o(213037);
+    AppMethodBeat.o(193771);
+    return false;
   }
   
-  public final void a(Object paramObject1, final Object paramObject2, final ArrayList<View> paramArrayList1, final Object paramObject3, final ArrayList<View> paramArrayList2, final Object paramObject4, final ArrayList<View> paramArrayList3)
+  public final void onCleared()
   {
-    AppMethodBeat.i(213052);
-    ((Transition)paramObject1).addListener(new Transition.TransitionListener()
-    {
-      public final void onTransitionCancel(Transition paramAnonymousTransition) {}
-      
-      public final void onTransitionEnd(Transition paramAnonymousTransition) {}
-      
-      public final void onTransitionPause(Transition paramAnonymousTransition) {}
-      
-      public final void onTransitionResume(Transition paramAnonymousTransition) {}
-      
-      public final void onTransitionStart(Transition paramAnonymousTransition)
-      {
-        AppMethodBeat.i(213017);
-        if (paramObject2 != null) {
-          k.this.b(paramObject2, paramArrayList1, null);
-        }
-        if (paramObject3 != null) {
-          k.this.b(paramObject3, paramArrayList2, null);
-        }
-        if (paramObject4 != null) {
-          k.this.b(paramObject4, paramArrayList3, null);
-        }
-        AppMethodBeat.o(213017);
-      }
-    });
-    AppMethodBeat.o(213052);
+    AppMethodBeat.i(193759);
+    if (FragmentManager.isLoggingEnabled(3)) {
+      new StringBuilder("onCleared called for ").append(this);
+    }
+    this.bDq = true;
+    AppMethodBeat.o(193759);
   }
   
-  public final void a(Object paramObject, ArrayList<View> paramArrayList)
+  final void removeRetainedFragment(Fragment paramFragment)
   {
-    int i = 0;
-    AppMethodBeat.i(213041);
-    paramObject = (Transition)paramObject;
-    if (paramObject == null)
+    AppMethodBeat.i(193777);
+    if (this.bDs)
     {
-      AppMethodBeat.o(213041);
+      FragmentManager.isLoggingEnabled(2);
+      AppMethodBeat.o(193777);
       return;
     }
-    int j;
-    if ((paramObject instanceof TransitionSet))
+    if (this.bDm.remove(paramFragment.mWho) != null) {}
+    for (int i = 1;; i = 0)
     {
-      paramObject = (TransitionSet)paramObject;
-      j = paramObject.getTransitionCount();
-      while (i < j)
-      {
-        a(paramObject.getTransitionAt(i), paramArrayList);
-        i += 1;
+      if ((i != 0) && (FragmentManager.isLoggingEnabled(2))) {
+        new StringBuilder("Updating retained Fragments: Removed ").append(paramFragment);
       }
-      AppMethodBeat.o(213041);
+      AppMethodBeat.o(193777);
       return;
     }
-    if ((!a(paramObject)) && (h(paramObject.getTargets())))
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(193823);
+    Object localObject = new StringBuilder("FragmentManagerViewModel{");
+    ((StringBuilder)localObject).append(Integer.toHexString(System.identityHashCode(this)));
+    ((StringBuilder)localObject).append("} Fragments (");
+    Iterator localIterator = this.bDm.values().iterator();
+    while (localIterator.hasNext())
     {
-      j = paramArrayList.size();
-      i = 0;
-      while (i < j)
-      {
-        paramObject.addTarget((View)paramArrayList.get(i));
-        i += 1;
+      ((StringBuilder)localObject).append(localIterator.next());
+      if (localIterator.hasNext()) {
+        ((StringBuilder)localObject).append(", ");
       }
     }
-    AppMethodBeat.o(213041);
-  }
-  
-  public final void a(Object paramObject, ArrayList<View> paramArrayList1, ArrayList<View> paramArrayList2)
-  {
-    AppMethodBeat.i(213053);
-    paramObject = (TransitionSet)paramObject;
-    if (paramObject != null)
+    ((StringBuilder)localObject).append(") Child Non Config (");
+    localIterator = this.bDn.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      paramObject.getTargets().clear();
-      paramObject.getTargets().addAll(paramArrayList2);
-      b(paramObject, paramArrayList1, paramArrayList2);
-    }
-    AppMethodBeat.o(213053);
-  }
-  
-  public final Object b(Object paramObject1, Object paramObject2, Object paramObject3)
-  {
-    AppMethodBeat.i(213049);
-    Object localObject = null;
-    paramObject1 = (Transition)paramObject1;
-    paramObject2 = (Transition)paramObject2;
-    paramObject3 = (Transition)paramObject3;
-    if ((paramObject1 != null) && (paramObject2 != null)) {
-      paramObject1 = new TransitionSet().addTransition(paramObject1).addTransition(paramObject2).setOrdering(1);
-    }
-    while (paramObject3 != null)
-    {
-      paramObject2 = new TransitionSet();
-      if (paramObject1 != null) {
-        paramObject2.addTransition(paramObject1);
-      }
-      paramObject2.addTransition(paramObject3);
-      AppMethodBeat.o(213049);
-      return paramObject2;
-      if (paramObject1 == null)
-      {
-        paramObject1 = localObject;
-        if (paramObject2 != null) {
-          paramObject1 = paramObject2;
-        }
+      ((StringBuilder)localObject).append((String)localIterator.next());
+      if (localIterator.hasNext()) {
+        ((StringBuilder)localObject).append(", ");
       }
     }
-    AppMethodBeat.o(213049);
-    return paramObject1;
-  }
-  
-  public final void b(Object paramObject, final Rect paramRect)
-  {
-    AppMethodBeat.i(213061);
-    if (paramObject != null) {
-      ((Transition)paramObject).setEpicenterCallback(new Transition.EpicenterCallback()
-      {
-        public final Rect onGetEpicenter(Transition paramAnonymousTransition)
-        {
-          AppMethodBeat.i(213026);
-          if ((paramRect == null) || (paramRect.isEmpty()))
-          {
-            AppMethodBeat.o(213026);
-            return null;
-          }
-          paramAnonymousTransition = paramRect;
-          AppMethodBeat.o(213026);
-          return paramAnonymousTransition;
-        }
-      });
-    }
-    AppMethodBeat.o(213061);
-  }
-  
-  public final void b(Object paramObject, View paramView)
-  {
-    AppMethodBeat.i(213056);
-    if (paramObject != null) {
-      ((Transition)paramObject).addTarget(paramView);
-    }
-    AppMethodBeat.o(213056);
-  }
-  
-  public final void b(Object paramObject, final View paramView, final ArrayList<View> paramArrayList)
-  {
-    AppMethodBeat.i(213047);
-    ((Transition)paramObject).addListener(new Transition.TransitionListener()
+    ((StringBuilder)localObject).append(") ViewModelStores (");
+    localIterator = this.bDo.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      public final void onTransitionCancel(Transition paramAnonymousTransition) {}
-      
-      public final void onTransitionEnd(Transition paramAnonymousTransition)
-      {
-        AppMethodBeat.i(213009);
-        paramAnonymousTransition.removeListener(this);
-        paramView.setVisibility(8);
-        int j = paramArrayList.size();
-        int i = 0;
-        while (i < j)
-        {
-          ((View)paramArrayList.get(i)).setVisibility(0);
-          i += 1;
-        }
-        AppMethodBeat.o(213009);
-      }
-      
-      public final void onTransitionPause(Transition paramAnonymousTransition) {}
-      
-      public final void onTransitionResume(Transition paramAnonymousTransition) {}
-      
-      public final void onTransitionStart(Transition paramAnonymousTransition) {}
-    });
-    AppMethodBeat.o(213047);
-  }
-  
-  public final void b(Object paramObject, ArrayList<View> paramArrayList1, ArrayList<View> paramArrayList2)
-  {
-    int i = 0;
-    AppMethodBeat.i(213055);
-    paramObject = (Transition)paramObject;
-    int j;
-    if ((paramObject instanceof TransitionSet))
-    {
-      paramObject = (TransitionSet)paramObject;
-      j = paramObject.getTransitionCount();
-      while (i < j)
-      {
-        b(paramObject.getTransitionAt(i), paramArrayList1, paramArrayList2);
-        i += 1;
-      }
-      AppMethodBeat.o(213055);
-      return;
-    }
-    if (!a(paramObject))
-    {
-      List localList = paramObject.getTargets();
-      if ((localList != null) && (localList.size() == paramArrayList1.size()) && (localList.containsAll(paramArrayList1)))
-      {
-        if (paramArrayList2 == null) {}
-        for (i = 0;; i = paramArrayList2.size())
-        {
-          j = 0;
-          while (j < i)
-          {
-            paramObject.addTarget((View)paramArrayList2.get(j));
-            j += 1;
-          }
-        }
-        i = paramArrayList1.size() - 1;
-        while (i >= 0)
-        {
-          paramObject.removeTarget((View)paramArrayList1.get(i));
-          i -= 1;
-        }
+      ((StringBuilder)localObject).append((String)localIterator.next());
+      if (localIterator.hasNext()) {
+        ((StringBuilder)localObject).append(", ");
       }
     }
-    AppMethodBeat.o(213055);
-  }
-  
-  public final void c(Object paramObject, View paramView)
-  {
-    AppMethodBeat.i(213059);
-    if (paramObject != null) {
-      ((Transition)paramObject).removeTarget(paramView);
-    }
-    AppMethodBeat.o(213059);
+    ((StringBuilder)localObject).append(')');
+    localObject = ((StringBuilder)localObject).toString();
+    AppMethodBeat.o(193823);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.fragment.app.k
  * JD-Core Version:    0.7.0.1
  */

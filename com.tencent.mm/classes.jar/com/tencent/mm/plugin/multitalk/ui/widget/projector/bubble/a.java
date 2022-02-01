@@ -12,31 +12,31 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends Drawable
 {
+  private float Ri;
+  private final RectF Rj;
+  private final Rect Rk;
+  private boolean Rm;
+  private boolean Rn;
   private final Paint mPaint;
-  private float yT;
-  private final RectF yU;
-  private final Rect yV;
-  private boolean yX;
-  private boolean yY;
   
   public a(int paramInt, float paramFloat)
   {
-    AppMethodBeat.i(199383);
-    this.yX = false;
-    this.yY = true;
-    this.yT = paramFloat;
+    AppMethodBeat.i(285874);
+    this.Rm = false;
+    this.Rn = true;
+    this.Ri = paramFloat;
     this.mPaint = new Paint(5);
     this.mPaint.setColor(paramInt);
-    this.yU = new RectF();
-    this.yV = new Rect();
-    AppMethodBeat.o(199383);
+    this.Rj = new RectF();
+    this.Rk = new Rect();
+    AppMethodBeat.o(285874);
   }
   
   public final void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(199385);
-    paramCanvas.drawRoundRect(this.yU, this.yT, this.yT, this.mPaint);
-    AppMethodBeat.o(199385);
+    AppMethodBeat.i(285878);
+    paramCanvas.drawRoundRect(this.Rj, this.Ri, this.Ri, this.mPaint);
+    AppMethodBeat.o(285878);
   }
   
   public final int getOpacity()
@@ -46,22 +46,22 @@ public final class a
   
   public final void getOutline(Outline paramOutline)
   {
-    AppMethodBeat.i(199391);
-    paramOutline.setRoundRect(this.yV, this.yT);
-    AppMethodBeat.o(199391);
+    AppMethodBeat.i(285892);
+    paramOutline.setRoundRect(this.Rk, this.Ri);
+    AppMethodBeat.o(285892);
   }
   
   protected final void onBoundsChange(Rect paramRect)
   {
-    AppMethodBeat.i(199389);
+    AppMethodBeat.i(285884);
     super.onBoundsChange(paramRect);
     Rect localRect = paramRect;
     if (paramRect == null) {
       localRect = getBounds();
     }
-    this.yU.set(localRect.left, localRect.top, localRect.right, localRect.bottom);
-    this.yV.set(localRect);
-    AppMethodBeat.o(199389);
+    this.Rj.set(localRect.left, localRect.top, localRect.right, localRect.bottom);
+    this.Rk.set(localRect);
+    AppMethodBeat.o(285884);
   }
   
   public final void setAlpha(int paramInt) {}

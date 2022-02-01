@@ -21,10 +21,10 @@ final class IPCallRechargeUI$7
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(25877);
-    ((TextView)paramView).setHighlightColor(this.DXz.getResources().getColor(R.e.transparent));
+    ((TextView)paramView).setHighlightColor(this.JOI.getResources().getColor(R.e.transparent));
     Intent localIntent = new Intent();
-    paramView = this.DXz.getString(R.l.eJe) + "&usedcc=";
-    Object localObject = com.tencent.mm.plugin.ipcall.model.c.eJb().eJe();
+    paramView = this.JOI.getString(R.l.gKL) + "&usedcc=";
+    Object localObject = com.tencent.mm.plugin.ipcall.model.c.fRb().fRe();
     int j;
     if (((List)localObject).size() > 0)
     {
@@ -36,7 +36,7 @@ final class IPCallRechargeUI$7
       j = 0;
       if (j < i)
       {
-        String str = a.aMD(((Integer)((List)localObject).get(j)).toString());
+        String str = a.aJx(((Integer)((List)localObject).get(j)).toString());
         if (Util.isNullOrNil(str)) {
           break label257;
         }
@@ -50,11 +50,11 @@ final class IPCallRechargeUI$7
       break;
       localObject = paramView;
       if (paramView.endsWith("|")) {}
-      for (localObject = paramView.substring(0, paramView.length() - 1);; localObject = paramView + a.aMD(com.tencent.mm.plugin.ipcall.a.c.eKM()))
+      for (localObject = paramView.substring(0, paramView.length() - 1);; localObject = paramView + a.aJx(com.tencent.mm.plugin.ipcall.a.c.fSL()))
       {
         localIntent.putExtra("rawUrl", (String)localObject);
         localIntent.putExtra("showShare", false);
-        com.tencent.mm.by.c.b(this.DXz, "webview", ".ui.tools.WebViewUI", localIntent);
+        com.tencent.mm.br.c.b(this.JOI, "webview", ".ui.tools.WebViewUI", localIntent);
         AppMethodBeat.o(25877);
         return;
       }
@@ -64,14 +64,14 @@ final class IPCallRechargeUI$7
   public final void updateDrawState(TextPaint paramTextPaint)
   {
     AppMethodBeat.i(25878);
-    paramTextPaint.setColor(this.DXz.getResources().getColor(R.e.link_color));
+    paramTextPaint.setColor(this.JOI.getResources().getColor(R.e.link_color));
     paramTextPaint.setUnderlineText(false);
     AppMethodBeat.o(25878);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallRechargeUI.7
  * JD-Core Version:    0.7.0.1
  */

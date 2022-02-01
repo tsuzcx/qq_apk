@@ -56,6 +56,74 @@ public class XWalkCookieManager
     AppMethodBeat.o(154629);
   }
   
+  private void reflectionInit()
+  {
+    AppMethodBeat.i(154641);
+    if (XWalkCoreWrapper.getInstance() == null)
+    {
+      XWalkReflectionInitHandler.reserveReflectObject(this);
+      AppMethodBeat.o(154641);
+      return;
+    }
+    this.coreWrapper = XWalkCoreWrapper.getInstance();
+    int j = this.constructorTypes.size();
+    Object localObject1 = new Class[j + 1];
+    int i = 0;
+    if (i < j)
+    {
+      Object localObject2 = this.constructorTypes.get(i);
+      if ((localObject2 instanceof String))
+      {
+        localObject1[i] = this.coreWrapper.getBridgeClass((String)localObject2);
+        this.constructorParams.set(i, this.coreWrapper.getBridgeObject(this.constructorParams.get(i)));
+      }
+      label133:
+      do
+      {
+        for (;;)
+        {
+          i += 1;
+          break;
+          if (!(localObject2 instanceof Class)) {
+            break label133;
+          }
+          localObject1[i] = ((Class)localObject2);
+        }
+      } while ($assertionsDisabled);
+      localObject1 = new AssertionError();
+      AppMethodBeat.o(154641);
+      throw ((Throwable)localObject1);
+    }
+    localObject1[j] = Object.class;
+    this.constructorParams.add(this);
+    localObject1 = new ReflectConstructor(this.coreWrapper.getBridgeClass("XWalkCookieManagerBridge"), (Class[])localObject1);
+    try
+    {
+      this.bridge = ((ReflectConstructor)localObject1).newInstance(this.constructorParams.toArray());
+      if (this.postWrapperMethod != null) {
+        this.postWrapperMethod.invoke(new Object[0]);
+      }
+      this.setAcceptCookiebooleanMethod.init(this.bridge, null, "setAcceptCookieSuper", new Class[] { Boolean.TYPE });
+      this.acceptCookieMethod.init(this.bridge, null, "acceptCookieSuper", new Class[0]);
+      this.setCookieStringStringMethod.init(this.bridge, null, "setCookieSuper", new Class[] { String.class, String.class });
+      this.getCookieStringMethod.init(this.bridge, null, "getCookieSuper", new Class[] { String.class });
+      this.removeSessionCookieMethod.init(this.bridge, null, "removeSessionCookieSuper", new Class[0]);
+      this.removeAllCookieMethod.init(this.bridge, null, "removeAllCookieSuper", new Class[0]);
+      this.hasCookiesMethod.init(this.bridge, null, "hasCookiesSuper", new Class[0]);
+      this.removeExpiredCookieMethod.init(this.bridge, null, "removeExpiredCookieSuper", new Class[0]);
+      this.flushCookieStoreMethod.init(this.bridge, null, "flushCookieStoreSuper", new Class[0]);
+      this.allowFileSchemeCookiesMethod.init(this.bridge, null, "allowFileSchemeCookiesSuper", new Class[0]);
+      this.setAcceptFileSchemeCookiesbooleanMethod.init(this.bridge, null, "setAcceptFileSchemeCookiesSuper", new Class[] { Boolean.TYPE });
+      AppMethodBeat.o(154641);
+      return;
+    }
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      Log.e("XWalkCookieManager", "reflectionInit, error:".concat(String.valueOf(localUnsupportedOperationException)));
+      AppMethodBeat.o(154641);
+    }
+  }
+  
   public boolean acceptCookie()
   {
     AppMethodBeat.i(154631);
@@ -139,30 +207,33 @@ public class XWalkCookieManager
     {
       String str = new WebAddress(paramString).toString();
       paramString = str;
+      return null;
     }
-    catch (Exception localException)
+    finally
     {
       for (;;)
       {
-        Log.e("XWalkCookieManager", "getCookie transform url to WebAddress failed");
+        try
+        {
+          paramString = (String)this.getCookieStringMethod.invoke(new Object[] { paramString });
+          AppMethodBeat.o(154633);
+          return paramString;
+        }
+        catch (UnsupportedOperationException paramString)
+        {
+          if (this.coreWrapper != null) {
+            continue;
+          }
+          paramString = new RuntimeException("Crosswalk's APIs are not ready yet");
+          AppMethodBeat.o(154633);
+          throw paramString;
+          XWalkCoreWrapper.handleRuntimeError(paramString);
+          AppMethodBeat.o(154633);
+        }
+        localObject = finally;
+        Log.e("XWalkCookieManager", "getCookie transform url to WebAddress failed, error:".concat(String.valueOf(localObject)));
       }
     }
-    catch (UnsupportedOperationException paramString)
-    {
-      if (this.coreWrapper != null) {
-        break label81;
-      }
-      paramString = new RuntimeException("Crosswalk's APIs are not ready yet");
-      AppMethodBeat.o(154633);
-      throw paramString;
-      XWalkCoreWrapper.handleRuntimeError(paramString);
-      AppMethodBeat.o(154633);
-    }
-    paramString = (String)this.getCookieStringMethod.invoke(new Object[] { paramString });
-    AppMethodBeat.o(154633);
-    return paramString;
-    label81:
-    return null;
   }
   
   public boolean hasCookies()
@@ -187,74 +258,6 @@ public class XWalkCookieManager
       AppMethodBeat.o(154636);
     }
     return false;
-  }
-  
-  void reflectionInit()
-  {
-    AppMethodBeat.i(154641);
-    XWalkCoreWrapper.initEmbeddedMode();
-    this.coreWrapper = XWalkCoreWrapper.getInstance();
-    if (this.coreWrapper == null)
-    {
-      XWalkCoreWrapper.reserveReflectObject(this);
-      AppMethodBeat.o(154641);
-      return;
-    }
-    int j = this.constructorTypes.size();
-    Object localObject1 = new Class[j + 1];
-    int i = 0;
-    if (i < j)
-    {
-      Object localObject2 = this.constructorTypes.get(i);
-      if ((localObject2 instanceof String))
-      {
-        localObject1[i] = this.coreWrapper.getBridgeClass((String)localObject2);
-        this.constructorParams.set(i, this.coreWrapper.getBridgeObject(this.constructorParams.get(i)));
-      }
-      label137:
-      do
-      {
-        for (;;)
-        {
-          i += 1;
-          break;
-          if (!(localObject2 instanceof Class)) {
-            break label137;
-          }
-          localObject1[i] = ((Class)localObject2);
-        }
-      } while ($assertionsDisabled);
-      localObject1 = new AssertionError();
-      AppMethodBeat.o(154641);
-      throw ((Throwable)localObject1);
-    }
-    localObject1[j] = Object.class;
-    this.constructorParams.add(this);
-    localObject1 = new ReflectConstructor(this.coreWrapper.getBridgeClass("XWalkCookieManagerBridge"), (Class[])localObject1);
-    try
-    {
-      this.bridge = ((ReflectConstructor)localObject1).newInstance(this.constructorParams.toArray());
-      if (this.postWrapperMethod != null) {
-        this.postWrapperMethod.invoke(new Object[0]);
-      }
-      this.setAcceptCookiebooleanMethod.init(this.bridge, null, "setAcceptCookieSuper", new Class[] { Boolean.TYPE });
-      this.acceptCookieMethod.init(this.bridge, null, "acceptCookieSuper", new Class[0]);
-      this.setCookieStringStringMethod.init(this.bridge, null, "setCookieSuper", new Class[] { String.class, String.class });
-      this.getCookieStringMethod.init(this.bridge, null, "getCookieSuper", new Class[] { String.class });
-      this.removeSessionCookieMethod.init(this.bridge, null, "removeSessionCookieSuper", new Class[0]);
-      this.removeAllCookieMethod.init(this.bridge, null, "removeAllCookieSuper", new Class[0]);
-      this.hasCookiesMethod.init(this.bridge, null, "hasCookiesSuper", new Class[0]);
-      this.removeExpiredCookieMethod.init(this.bridge, null, "removeExpiredCookieSuper", new Class[0]);
-      this.flushCookieStoreMethod.init(this.bridge, null, "flushCookieStoreSuper", new Class[0]);
-      this.allowFileSchemeCookiesMethod.init(this.bridge, null, "allowFileSchemeCookiesSuper", new Class[0]);
-      this.setAcceptFileSchemeCookiesbooleanMethod.init(this.bridge, null, "setAcceptFileSchemeCookiesSuper", new Class[] { Boolean.TYPE });
-      AppMethodBeat.o(154641);
-      return;
-    }
-    catch (UnsupportedOperationException localUnsupportedOperationException)
-    {
-      AppMethodBeat.o(154641);
-    }
   }
   
   public void removeAllCookie()
@@ -379,34 +382,38 @@ public class XWalkCookieManager
     {
       String str = new WebAddress(paramString1).toString();
       paramString1 = str;
+      return;
     }
-    catch (Exception localException)
+    finally
     {
       for (;;)
       {
-        Log.e("XWalkCookieManager", "setCookie transform url to WebAddress failed");
+        try
+        {
+          this.setCookieStringStringMethod.invoke(new Object[] { paramString1, paramString2 });
+          AppMethodBeat.o(154632);
+          return;
+        }
+        catch (UnsupportedOperationException paramString1)
+        {
+          if (this.coreWrapper != null) {
+            continue;
+          }
+          paramString1 = new RuntimeException("Crosswalk's APIs are not ready yet");
+          AppMethodBeat.o(154632);
+          throw paramString1;
+          XWalkCoreWrapper.handleRuntimeError(paramString1);
+          AppMethodBeat.o(154632);
+        }
+        localObject = finally;
+        Log.e("XWalkCookieManager", "setCookie transform url to WebAddress failed, error:".concat(String.valueOf(localObject)));
       }
     }
-    catch (UnsupportedOperationException paramString1)
-    {
-      if (this.coreWrapper != null) {
-        break label85;
-      }
-      paramString1 = new RuntimeException("Crosswalk's APIs are not ready yet");
-      AppMethodBeat.o(154632);
-      throw paramString1;
-      XWalkCoreWrapper.handleRuntimeError(paramString1);
-      AppMethodBeat.o(154632);
-    }
-    this.setCookieStringStringMethod.invoke(new Object[] { paramString1, paramString2 });
-    AppMethodBeat.o(154632);
-    return;
-    label85:
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.XWalkCookieManager
  * JD-Core Version:    0.7.0.1
  */

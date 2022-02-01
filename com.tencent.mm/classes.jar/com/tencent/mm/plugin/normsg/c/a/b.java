@@ -22,48 +22,48 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public final class b
   implements SensorEventListener
 {
-  final AtomicBoolean GxT;
-  a GxU;
-  final Map<Integer, c> GxV;
-  HandlerThread GxW;
-  Handler GxX;
+  final AtomicBoolean Mub;
+  a Muc;
+  final Map<Integer, c> Mud;
+  HandlerThread Mue;
+  Handler Muf;
   final SensorManager mSensorManager;
   
   public b(a parama)
   {
-    AppMethodBeat.i(257833);
-    this.GxT = new AtomicBoolean(false);
-    this.GxU = null;
-    this.GxV = new HashMap();
-    this.GxW = null;
-    this.GxX = null;
+    AppMethodBeat.i(261900);
+    this.Mub = new AtomicBoolean(false);
+    this.Muc = null;
+    this.Mud = new HashMap();
+    this.Mue = null;
+    this.Muf = null;
     this.mSensorManager = ((SensorManager)MMApplicationContext.getContext().getApplicationContext().getSystemService("sensor"));
-    this.GxU = parama;
-    AppMethodBeat.o(257833);
+    this.Muc = parama;
+    AppMethodBeat.o(261900);
   }
   
-  public final void bSq()
+  public final void csv()
   {
-    AppMethodBeat.i(257834);
-    Iterator localIterator = this.GxV.values().iterator();
+    AppMethodBeat.i(261909);
+    Iterator localIterator = this.Mud.values().iterator();
     while (localIterator.hasNext())
     {
       c localc = (c)localIterator.next();
-      this.mSensorManager.unregisterListener(this, localc.GxY);
+      this.mSensorManager.unregisterListener(this, localc.Mug);
     }
-    this.GxT.set(false);
-    this.GxV.clear();
-    if (this.GxW != null) {
-      this.GxW.quit();
+    this.Mub.set(false);
+    this.Mud.clear();
+    if (this.Mue != null) {
+      this.Mue.quit();
     }
-    AppMethodBeat.o(257834);
+    AppMethodBeat.o(261909);
   }
   
   public final void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
   
   public final void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    AppMethodBeat.i(257836);
+    AppMethodBeat.i(261921);
     for (;;)
     {
       int j;
@@ -72,11 +72,11 @@ public final class b
       long l2;
       try
       {
-        j = a.aaB(paramSensorEvent.sensor.getType());
-        localc = (c)this.GxV.get(Integer.valueOf(j));
+        j = a.aeU(paramSensorEvent.sensor.getType());
+        localc = (c)this.Mud.get(Integer.valueOf(j));
         if (localc == null)
         {
-          AppMethodBeat.o(257836);
+          AppMethodBeat.o(261921);
           return;
         }
         if ((paramSensorEvent == null) || (paramSensorEvent.values == null)) {
@@ -89,8 +89,8 @@ public final class b
           if (i == 0)
           {
             l1 = paramSensorEvent.timestamp / 1000000L;
-            l2 = l1 - localc.Gyc;
-            if (!com.tencent.mm.plugin.normsg.c.a.a.b.OR(l2))
+            l2 = l1 - localc.Muk;
+            if (!com.tencent.mm.plugin.normsg.c.a.a.b.sU(l2))
             {
               if (l2 != 20L) {
                 continue;
@@ -98,7 +98,7 @@ public final class b
               localc.a(paramSensorEvent);
             }
           }
-          i = localc.Gyb.size();
+          i = localc.Muj.size();
           if (i >= 20) {
             break label306;
           }
@@ -106,36 +106,36 @@ public final class b
           if (paramSensorEvent != null) {
             break label332;
           }
-          AppMethodBeat.o(257836);
+          AppMethodBeat.o(261921);
         }
         else
         {
-          if (localc.Gya) {
+          if (localc.Mui) {
             break label354;
           }
-          localc.Gya = true;
+          localc.Mui = true;
           i = 1;
           continue;
         }
-        if (0L != localc.GxZ.timestamp)
+        if (0L != localc.Muh.timestamp)
         {
           i = 1;
           if (i == 0) {
             break label277;
           }
-          l2 = localc.Gyc + 20L;
-          if (Math.abs(l2 - localc.GxZ.timestamp) >= Math.abs(l2 - l1)) {
+          l2 = localc.Muk + 20L;
+          if (Math.abs(l2 - localc.Muh.timestamp) >= Math.abs(l2 - l1)) {
             break label268;
           }
-          localc.a(localc.GxZ);
+          localc.a(localc.Muh);
           continue;
         }
         i = 0;
       }
-      catch (Throwable paramSensorEvent)
+      finally
       {
         Log.e("MicroMsg.NormsgSensorListener", "onSensorChanged() error:" + paramSensorEvent.toString());
-        AppMethodBeat.o(257836);
+        AppMethodBeat.o(261921);
         return;
       }
       continue;
@@ -143,21 +143,21 @@ public final class b
       localc.a(paramSensorEvent);
       continue;
       label277:
-      if (com.tencent.mm.plugin.normsg.c.a.a.b.OS(l2))
+      if (com.tencent.mm.plugin.normsg.c.a.a.b.sV(l2))
       {
         localc.a(paramSensorEvent);
       }
       else
       {
-        localc.GxZ.b(paramSensorEvent);
+        localc.Muh.b(paramSensorEvent);
         continue;
         label306:
-        paramSensorEvent = new ArrayList(localc.Gyb);
-        localc.Gyb.clear();
+        paramSensorEvent = new ArrayList(localc.Muj);
+        localc.Muj.clear();
         continue;
         label332:
-        this.GxU.s(j, paramSensorEvent);
-        AppMethodBeat.o(257836);
+        this.Muc.N(j, paramSensorEvent);
+        AppMethodBeat.o(261921);
         return;
         label349:
         i = 1;
@@ -170,14 +170,14 @@ public final class b
   
   public static abstract interface a
   {
-    public abstract void iF(int paramInt1, int paramInt2);
+    public abstract void N(int paramInt, List<com.tencent.mm.normsg.b> paramList);
     
-    public abstract void s(int paramInt, List<com.tencent.mm.normsg.b> paramList);
+    public abstract void kl(int paramInt1, int paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.normsg.c.a.b
  * JD-Core Version:    0.7.0.1
  */

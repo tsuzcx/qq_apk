@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.hp.tinker;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.s;
+import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.boots.a.c;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.plugin.hp.net.d;
-import com.tencent.mm.protocal.protobuf.dhf;
+import com.tencent.mm.protocal.protobuf.dzo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
@@ -19,57 +19,57 @@ import java.util.Set;
 public final class g
   extends com.tinkerboots.sdk.a.a.a
 {
-  public final void ah(Map<String, String> paramMap)
+  public final void ax(Map<String, String> paramMap)
   {
     AppMethodBeat.i(117495);
-    super.ah(paramMap);
-    com.tencent.mm.plugin.hp.b.b.Rw(2);
-    String str1 = com.tencent.mm.loader.j.a.aSy();
-    String str2 = com.tencent.mm.loader.j.a.aSz();
+    super.ax(paramMap);
+    com.tencent.mm.plugin.hp.model.c.UA(2);
+    String str1 = com.tencent.mm.loader.i.a.bmm();
+    String str2 = com.tencent.mm.loader.i.a.bmn();
     LinkedList localLinkedList = new LinkedList();
     Iterator localIterator = paramMap.keySet().iterator();
     Object localObject;
     while (localIterator.hasNext())
     {
       localObject = (String)localIterator.next();
-      dhf localdhf = new dhf();
-      localdhf.key = ((String)localObject);
-      localdhf.value = ((String)paramMap.get(localObject));
-      localLinkedList.add(localdhf);
+      dzo localdzo = new dzo();
+      localdzo.key = ((String)localObject);
+      localdzo.value = ((String)paramMap.get(localObject));
+      localLinkedList.add(localdzo);
     }
     paramMap = new StringBuilder();
     localIterator = localLinkedList.iterator();
     while (localIterator.hasNext())
     {
-      localObject = (dhf)localIterator.next();
-      paramMap.append(((dhf)localObject).key).append(":").append(((dhf)localObject).value).append("\n");
+      localObject = (dzo)localIterator.next();
+      paramMap.append(((dzo)localObject).key).append(":").append(((dzo)localObject).value).append("\n");
     }
     Log.i("Tinker.TinkerPatchRequestCallback", "checkAvailableUpdate BaseID:%s PatchID:%s config:%s", new Object[] { str1, str2, paramMap.toString() });
     paramMap = new d(str1, str2, localLinkedList);
-    h.aGY().a(paramMap, 0);
+    h.aZW().a(paramMap, 0);
     AppMethodBeat.o(117495);
   }
   
-  public final boolean eIl()
+  public final boolean fQe()
   {
     AppMethodBeat.i(117494);
-    boolean bool = super.eIl();
+    boolean bool = super.fQe();
     AppMethodBeat.o(117494);
     return bool;
   }
   
-  public final void eIm()
+  public final void fQf()
   {
     AppMethodBeat.i(117496);
-    super.eIm();
-    long l = com.tencent.mm.kernel.b.aGP();
-    int j = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vBw, 0);
-    Object localObject = com.tinkerboots.sdk.a.izW().ph("uin", String.valueOf(0xFFFFFFFF & l));
+    super.fQf();
+    long l = b.aZP();
+    int j = ((com.tencent.mm.plugin.expt.b.c)h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yPx, 0);
+    Object localObject = com.tinkerboots.sdk.a.kkr().rg("uin", String.valueOf(0xFFFFFFFF & l));
     if (NetStatusUtil.isWifi(MMApplicationContext.getContext())) {}
     for (int i = 3;; i = 2)
     {
-      ((com.tinkerboots.sdk.a)localObject).ph("network", String.valueOf(i)).ph("flavor-version", String.valueOf(j));
-      localObject = ((c)h.ae(c.class)).cym();
+      ((com.tinkerboots.sdk.a)localObject).rg("network", String.valueOf(i)).rg("flavor-version", String.valueOf(j));
+      localObject = ((com.tencent.mm.plugin.boots.a.c)h.ax(com.tencent.mm.plugin.boots.a.c.class)).dbd();
       if (localObject == null) {
         break;
       }
@@ -77,7 +77,7 @@ public final class g
       while (((Iterator)localObject).hasNext())
       {
         com.tencent.mm.plugin.boots.a.a locala = (com.tencent.mm.plugin.boots.a.a)((Iterator)localObject).next();
-        com.tinkerboots.sdk.a.izW().ph(Integer.toHexString(locala.field_key), String.valueOf(locala.field_dau));
+        com.tinkerboots.sdk.a.kkr().rg(Integer.toHexString(locala.field_key), String.valueOf(locala.field_dau));
       }
     }
     AppMethodBeat.o(117496);

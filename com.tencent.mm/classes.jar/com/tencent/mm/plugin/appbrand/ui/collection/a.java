@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.appbrand.ui.collection;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"TAG", "", "OPEN_TEST_ENTRY", "", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"TAG", "", "OPEN_TEST_ENTRY", "", "plugin-appbrand-integration_release"}, k=2, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  static final boolean ckU()
+  static final boolean cMj()
   {
     AppMethodBeat.i(175226);
     if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED) || (WeChatEnvironment.hasDebugger()))

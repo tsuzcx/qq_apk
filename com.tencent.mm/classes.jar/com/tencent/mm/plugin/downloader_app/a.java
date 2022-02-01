@@ -8,62 +8,62 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import androidx.appcompat.app.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cr.a.j;
+import com.tencent.mm.ck.a.j;
 import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.downloader_app.api.b.a;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.plugin.game.luggage.j.f;
 import com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog;
 import com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog.a;
 import com.tencent.mm.pointers.PBool;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.widget.a.d;
-import com.tencent.mm.ui.widget.a.d.a;
-import com.tencent.mm.ui.widget.a.g;
-import com.tencent.mm.ui.widget.a.g.a;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.widget.a.e.a;
+import com.tencent.mm.ui.widget.a.j;
+import com.tencent.mm.ui.widget.a.j.a;
 
 public final class a
   implements com.tencent.mm.plugin.downloader_app.api.b
 {
-  public final void a(Context paramContext, final com.tencent.mm.plugin.downloader_app.api.b.a parama1, final com.tencent.mm.plugin.downloader_app.api.b.a parama2)
+  public final void a(Context paramContext, final b.a parama1, final b.a parama2)
   {
-    AppMethodBeat.i(242828);
-    final g localg = new g(paramContext, 1, 0, false);
-    localg.d(paramContext.getString(e.h.ukO), paramContext.getString(e.h.ukP));
-    localg.a(new g.a()new g.a
+    AppMethodBeat.i(269682);
+    final j localj = new j(paramContext, 1, 0, false);
+    localj.d(paramContext.getString(e.h.xra), paramContext.getString(e.h.xrb));
+    localj.a(new j.a()new j.a
     {
       public final void onClick()
       {
-        AppMethodBeat.i(243112);
-        localg.bYF();
+        AppMethodBeat.i(269659);
+        localj.cyW();
         if (parama1 != null) {
           parama1.onClick();
         }
-        AppMethodBeat.o(243112);
+        AppMethodBeat.o(269659);
       }
-    }, new g.a()
+    }, new j.a()
     {
       public final void onClick()
       {
-        AppMethodBeat.i(243001);
-        localg.bYF();
+        AppMethodBeat.i(269662);
+        localj.cyW();
         if (parama2 != null) {
           parama2.onClick();
         }
-        AppMethodBeat.o(243001);
+        AppMethodBeat.o(269662);
       }
     });
-    paramContext = LayoutInflater.from(paramContext).inflate(e.f.ukG, null);
-    parama1 = (ImageView)paramContext.findViewById(e.e.ukd);
-    if (ar.isDarkMode()) {
+    paramContext = LayoutInflater.from(paramContext).inflate(e.f.xqS, null);
+    parama1 = (ImageView)paramContext.findViewById(e.e.xqj);
+    if (aw.isDarkMode()) {
       parama1.setImageResource(e.g.ic_download_pause_alert_dark);
     }
     for (;;)
     {
-      localg.setCustomView(paramContext);
-      localg.eik();
-      AppMethodBeat.o(242828);
+      localj.setCustomView(paramContext);
+      localj.dDn();
+      AppMethodBeat.o(269682);
       return;
       parama1.setImageResource(e.g.ic_download_pause_alert);
     }
@@ -73,10 +73,10 @@ public final class a
   {
     AppMethodBeat.i(8767);
     final PBool localPBool = new PBool();
-    paramContext = new d.a(paramContext);
-    paramContext.ayc(e.h.luggage_game_download_not_in_wifi_title);
-    paramContext.ayg(e.h.luggage_game_book_download_in_wifi_tips);
-    paramContext.ayj(e.h.luggage_game_download_straight);
+    paramContext = new e.a(paramContext);
+    paramContext.aEK(e.h.luggage_game_download_not_in_wifi_title);
+    paramContext.aEO(e.h.luggage_game_book_download_in_wifi_tips);
+    paramContext.aER(e.h.luggage_game_download_straight);
     paramContext.c(new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
@@ -90,7 +90,7 @@ public final class a
         AppMethodBeat.o(8761);
       }
     });
-    paramContext.ayk(e.h.luggage_game_book_download_in_wifi);
+    paramContext.aES(e.h.luggage_game_book_download_in_wifi);
     paramContext.d(new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
@@ -101,38 +101,38 @@ public final class a
         }
         localPBool.value = true;
         com.tencent.mm.plugin.downloader_app.b.a.a(15, 1501, 1, 3, paramString, "", "");
-        if (!com.tencent.mm.compatible.e.b.ct(MMApplicationContext.getContext()))
+        if (!com.tencent.mm.compatible.e.b.dh(MMApplicationContext.getContext()))
         {
           paramAnonymousDialogInterface = new RequestFloatWindowPermissionDialog.a()
           {
             public final void a(RequestFloatWindowPermissionDialog paramAnonymous2RequestFloatWindowPermissionDialog)
             {
-              AppMethodBeat.i(243183);
+              AppMethodBeat.i(269676);
               paramAnonymous2RequestFloatWindowPermissionDialog.finish();
-              AppMethodBeat.o(243183);
+              AppMethodBeat.o(269676);
             }
             
             public final void b(RequestFloatWindowPermissionDialog paramAnonymous2RequestFloatWindowPermissionDialog)
             {
-              AppMethodBeat.i(243184);
+              AppMethodBeat.i(269679);
               paramAnonymous2RequestFloatWindowPermissionDialog.finish();
-              AppMethodBeat.o(243184);
+              AppMethodBeat.o(269679);
             }
             
             public final void c(RequestFloatWindowPermissionDialog paramAnonymous2RequestFloatWindowPermissionDialog)
             {
-              AppMethodBeat.i(243186);
+              AppMethodBeat.i(269681);
               paramAnonymous2RequestFloatWindowPermissionDialog.finish();
-              AppMethodBeat.o(243186);
+              AppMethodBeat.o(269681);
             }
           };
-          RequestFloatWindowPermissionDialog.a(MMApplicationContext.getContext(), MMApplicationContext.getContext().getString(j.f.float_ball_no_float_window_permission_alert_download), paramAnonymousDialogInterface, true, com.tencent.mm.bx.a.awc());
+          RequestFloatWindowPermissionDialog.a(MMApplicationContext.getContext(), MMApplicationContext.getContext().getString(j.f.float_ball_no_float_window_permission_alert_download), paramAnonymousDialogInterface, true, com.tencent.mm.bq.a.aQB());
         }
         AppMethodBeat.o(8762);
       }
     });
-    paramContext.HG(true);
-    paramContext.f(new DialogInterface.OnCancelListener()
+    paramContext.NC(true);
+    paramContext.e(new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
@@ -146,129 +146,129 @@ public final class a
         AppMethodBeat.o(8763);
       }
     });
-    paramContext.icu().show();
+    paramContext.jHH().show();
     com.tencent.mm.plugin.downloader_app.b.a.a(15, 1501, 1, 1, paramString, "", "");
     AppMethodBeat.o(8767);
   }
   
-  public final void a(Context paramContext, final String paramString, final com.tencent.mm.plugin.downloader_app.api.b.a parama1, final com.tencent.mm.plugin.downloader_app.api.b.a parama2, final com.tencent.mm.plugin.downloader_app.api.b.a parama3)
+  public final void a(Context paramContext, final String paramString, final b.a parama1, final b.a parama2, final b.a parama3)
   {
-    AppMethodBeat.i(242827);
+    AppMethodBeat.i(269680);
     Object localObject;
-    if (((com.tencent.mm.game.report.a.b)h.ae(com.tencent.mm.game.report.a.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vul, false))
+    if (((com.tencent.mm.game.report.a.b)h.ax(com.tencent.mm.game.report.a.b.class)).a(c.a.yGQ, false))
     {
-      localObject = new e(paramContext, a.j.CustomSheetStyle);
-      ((e)localObject).bb();
-      ((e)localObject).setCancelable(false);
-      paramContext = LayoutInflater.from(paramContext).inflate(e.f.ukE, null);
-      ((e)localObject).setContentView(paramContext);
-      paramContext.findViewById(e.e.ukb).setOnClickListener(new View.OnClickListener()
+      localObject = new androidx.appcompat.app.e(paramContext, a.j.CustomSheetStyle);
+      ((androidx.appcompat.app.e)localObject).bU();
+      ((androidx.appcompat.app.e)localObject).setCancelable(false);
+      paramContext = LayoutInflater.from(paramContext).inflate(e.f.xqQ, null);
+      ((androidx.appcompat.app.e)localObject).setContentView(paramContext);
+      paramContext.findViewById(e.e.xqh).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(242964);
+          AppMethodBeat.i(269668);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/downloader_app/DownloadAppAlertDelegateImpl$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-          this.ujm.dismiss();
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/downloader_app/DownloadAppAlertDelegateImpl$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          this.xpp.dismiss();
           if (parama3 != null) {
             parama3.onClick();
           }
           com.tencent.mm.plugin.downloader_app.b.a.a(15, 1502, 1, 2, paramString, "", "");
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/downloader_app/DownloadAppAlertDelegateImpl$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(242964);
+          AppMethodBeat.o(269668);
         }
       });
-      paramContext.findViewById(e.e.ukc).setOnClickListener(new View.OnClickListener()
+      paramContext.findViewById(e.e.xqi).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(242982);
+          AppMethodBeat.i(269667);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/downloader_app/DownloadAppAlertDelegateImpl$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-          this.ujm.dismiss();
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/downloader_app/DownloadAppAlertDelegateImpl$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          this.xpp.dismiss();
           if (parama1 != null) {
             parama1.onClick();
           }
           com.tencent.mm.plugin.downloader_app.b.a.a(15, 1502, 1, 23, paramString, "", "");
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/downloader_app/DownloadAppAlertDelegateImpl$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(242982);
+          AppMethodBeat.o(269667);
         }
       });
-      paramContext.findViewById(e.e.uka).setOnClickListener(new View.OnClickListener()
+      paramContext.findViewById(e.e.xqg).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(243101);
+          AppMethodBeat.i(269665);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/downloader_app/DownloadAppAlertDelegateImpl$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-          this.ujm.dismiss();
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/downloader_app/DownloadAppAlertDelegateImpl$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          this.xpp.dismiss();
           if (parama2 != null) {
             parama2.onClick();
           }
           com.tencent.mm.plugin.downloader_app.b.a.a(15, 1502, 1, 3, paramString, "", "");
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/downloader_app/DownloadAppAlertDelegateImpl$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(243101);
+          AppMethodBeat.o(269665);
         }
       });
-      ((e)localObject).show();
+      ((androidx.appcompat.app.e)localObject).show();
     }
     for (;;)
     {
       com.tencent.mm.plugin.downloader_app.b.a.a(15, 1502, 1, 1, paramString, "", "");
-      AppMethodBeat.o(242827);
+      AppMethodBeat.o(269680);
       return;
       localObject = new PBool();
-      paramContext = new d.a(paramContext);
-      paramContext.ayc(e.h.luggage_game_download_tips);
-      paramContext.ayg(e.h.luggage_game_resume_not_wifi_tips);
-      paramContext.ayj(e.h.luggage_game_download_straight);
+      paramContext = new e.a(paramContext);
+      paramContext.aEK(e.h.luggage_game_download_tips);
+      paramContext.aEO(e.h.luggage_game_resume_not_wifi_tips);
+      paramContext.aER(e.h.luggage_game_download_straight);
       paramContext.c(new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          AppMethodBeat.i(242920);
-          this.uje.value = true;
+          AppMethodBeat.i(269664);
+          this.xph.value = true;
           if (parama1 != null) {
             parama1.onClick();
           }
-          this.uje.value = true;
+          this.xph.value = true;
           com.tencent.mm.plugin.downloader_app.b.a.a(15, 1502, 1, 23, paramString, "", "");
-          AppMethodBeat.o(242920);
+          AppMethodBeat.o(269664);
         }
       });
-      paramContext.ayk(e.h.luggage_game_cancel_book_wifi);
+      paramContext.aES(e.h.luggage_game_cancel_book_wifi);
       paramContext.d(new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          AppMethodBeat.i(243233);
+          AppMethodBeat.i(269685);
           if (parama2 != null) {
             parama2.onClick();
           }
-          this.uje.value = true;
+          this.xph.value = true;
           com.tencent.mm.plugin.downloader_app.b.a.a(15, 1502, 1, 3, paramString, "", "");
-          AppMethodBeat.o(243233);
+          AppMethodBeat.o(269685);
         }
       });
-      paramContext.HG(true);
-      paramContext.f(new DialogInterface.OnCancelListener()
+      paramContext.NC(true);
+      paramContext.e(new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
-          AppMethodBeat.i(243105);
+          AppMethodBeat.i(269683);
           if (parama3 != null) {
             parama3.onClick();
           }
-          if (!this.uje.value) {
+          if (!this.xph.value) {
             com.tencent.mm.plugin.downloader_app.b.a.a(15, 1502, 1, 2, paramString, "", "");
           }
-          AppMethodBeat.o(243105);
+          AppMethodBeat.o(269683);
         }
       });
-      paramContext.icu().show();
+      paramContext.jHH().show();
     }
   }
 }

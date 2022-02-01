@@ -4,9 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/AddTagWhenFavRequest;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessRequest;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "()V", "describeContents", "", "getTaskClass", "Ljava/lang/Class;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AddTagWhenFavTask;", "CREATOR", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/AddTagWhenFavRequest;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessRequest;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "()V", "describeContents", "", "getTaskClass", "Ljava/lang/Class;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AddTagWhenFavTask;", "CREATOR", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 final class AddTagWhenFavRequest
   extends AppBrandProxyUIProcessTask.ProcessRequest
 {
@@ -14,9 +14,9 @@ final class AddTagWhenFavRequest
   
   static
   {
-    AppMethodBeat.i(267286);
+    AppMethodBeat.i(325687);
     CREATOR = new a((byte)0);
-    AppMethodBeat.o(267286);
+    AppMethodBeat.o(325687);
   }
   
   public AddTagWhenFavRequest() {}
@@ -24,13 +24,8 @@ final class AddTagWhenFavRequest
   public AddTagWhenFavRequest(Parcel paramParcel)
   {
     this();
-    AppMethodBeat.i(267285);
-    AppMethodBeat.o(267285);
-  }
-  
-  public final Class<a> bOe()
-  {
-    return a.class;
+    AppMethodBeat.i(325684);
+    AppMethodBeat.o(325684);
   }
   
   public final int describeContents()
@@ -38,7 +33,12 @@ final class AddTagWhenFavRequest
     return 0;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/AddTagWhenFavRequest$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AddTagWhenFavRequest;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/AddTagWhenFavRequest;", "plugin-appbrand-integration_release"})
+  public final Class<a> getTaskClass()
+  {
+    return a.class;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/AddTagWhenFavRequest$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AddTagWhenFavRequest;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/AddTagWhenFavRequest;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     implements Parcelable.Creator<AddTagWhenFavRequest>
   {}

@@ -14,36 +14,36 @@ import com.tencent.mm.ui.MMActivity;
 
 public final class f
 {
-  View mrI;
-  private MMActivity tmY;
-  b ttp;
-  ImageView ttt;
-  TextView ttu;
-  TextView ttv;
+  View plc;
+  private MMActivity wry;
+  b wxM;
+  ImageView wxQ;
+  TextView wxR;
+  TextView wxS;
   
   public f(MMActivity paramMMActivity, View paramView)
   {
-    this.tmY = paramMMActivity;
-    this.mrI = paramView;
+    this.wry = paramMMActivity;
+    this.plc = paramView;
   }
   
   public final void updateView()
   {
     AppMethodBeat.i(113091);
-    this.ttu.setVisibility(0);
-    this.ttt.setImageDrawable(this.tmY.getResources().getDrawable(a.c.taf));
-    this.ttu.setText(a.g.tlt);
-    this.ttv.setText(a.g.tls);
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.ttt.getLayoutParams();
-    localLayoutParams.topMargin = this.tmY.getResources().getDimensionPixelOffset(a.b.sZW);
-    this.ttt.setLayoutParams(localLayoutParams);
-    this.ttt.invalidate();
+    this.wxR.setVisibility(0);
+    this.wxQ.setImageDrawable(this.wry.getResources().getDrawable(a.c.wen));
+    this.wxR.setText(a.g.wpS);
+    this.wxS.setText(a.g.wpR);
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.wxQ.getLayoutParams();
+    localLayoutParams.topMargin = this.wry.getResources().getDimensionPixelOffset(a.b.wed);
+    this.wxQ.setLayoutParams(localLayoutParams);
+    this.wxQ.invalidate();
     AppMethodBeat.o(113091);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.ui.f
  * JD-Core Version:    0.7.0.1
  */

@@ -7,19 +7,19 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.g;
-import com.tencent.mm.ui.chatting.ar;
+import com.tencent.mm.ui.chatting.at;
 
 public class SplashImageView
   extends ImageView
 {
-  private ar WeK;
+  private at adKr;
   private boolean hasDrawed;
   
   public SplashImageView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(33760);
-    fdq();
+    gmt();
     AppMethodBeat.o(33760);
   }
   
@@ -27,7 +27,7 @@ public class SplashImageView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(33761);
-    fdq();
+    gmt();
     AppMethodBeat.o(33761);
   }
   
@@ -35,11 +35,11 @@ public class SplashImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(33762);
-    fdq();
+    gmt();
     AppMethodBeat.o(33762);
   }
   
-  private void fdq()
+  private void gmt()
   {
     AppMethodBeat.i(33763);
     setBackgroundDrawable(getResources().getDrawable(R.g.ui_loading));
@@ -54,21 +54,21 @@ public class SplashImageView
     if (!this.hasDrawed)
     {
       this.hasDrawed = true;
-      if (this.WeK != null) {
-        this.WeK.euB();
+      if (this.adKr != null) {
+        this.adKr.fBx();
       }
     }
     AppMethodBeat.o(33764);
   }
   
-  public void setOnDrawListener(ar paramar)
+  public void setOnDrawListener(at paramat)
   {
-    this.WeK = paramar;
+    this.adKr = paramat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.SplashImageView
  * JD-Core Version:    0.7.0.1
  */

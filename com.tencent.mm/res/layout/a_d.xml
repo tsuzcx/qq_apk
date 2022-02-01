@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/c" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.finder.widget.edit.FinderEditTextView android:id="@id/bwb" android:background="@color/a74" android:padding="@dimen/cl" android:layout_width="fill_parent" android:layout_height="400.0dip" />
-    <com.tencent.mm.plugin.finder.widget.edit.FinderEditFooter android:id="@id/bvr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="9.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/d8h" android:background="@drawable/w5" android:layout_width="@dimen/d_" android:layout_height="@dimen/d_" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/d8e" android:padding="@dimen/cd" android:layout_width="@dimen/d_" android:layout_height="@dimen/d_" android:src="@raw/icons_outlined_no_effect" app:iconColor="@color/az" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+</androidx.constraintlayout.widget.ConstraintLayout>

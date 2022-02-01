@@ -11,13 +11,17 @@ public abstract class IUIModal
   
   public abstract IUIModalPlatformFuncDelegate getFuncDelegate();
   
-  public abstract void keyboadWillHide();
+  public abstract String getReportUrl();
   
-  public abstract void keyboadWillShow(float paramFloat);
+  public abstract void keyboardWillHide();
+  
+  public abstract void keyboardWillShow(float paramFloat);
   
   public abstract void onClickAndroidBack();
   
   public abstract void onCreateLayout(KViewLayout paramKViewLayout);
+  
+  public abstract void onDestroy();
   
   public abstract void onFirstRenderFinish();
   
@@ -77,13 +81,17 @@ public abstract class IUIModal
     
     private native IUIModalPlatformFuncDelegate native_getFuncDelegate(long paramLong);
     
-    private native void native_keyboadWillHide(long paramLong);
+    private native String native_getReportUrl(long paramLong);
     
-    private native void native_keyboadWillShow(long paramLong, float paramFloat);
+    private native void native_keyboardWillHide(long paramLong);
+    
+    private native void native_keyboardWillShow(long paramLong, float paramFloat);
     
     private native void native_onClickAndroidBack(long paramLong);
     
     private native void native_onCreateLayout(long paramLong, KViewLayout paramKViewLayout);
+    
+    private native void native_onDestroy(long paramLong);
     
     private native void native_onFirstRenderFinish(long paramLong);
     
@@ -136,56 +144,70 @@ public abstract class IUIModal
     
     public final boolean forceShowInLightMode()
     {
-      AppMethodBeat.i(219574);
+      AppMethodBeat.i(226802);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         AssertionError localAssertionError = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(219574);
+        AppMethodBeat.o(226802);
         throw localAssertionError;
       }
       boolean bool = native_forceShowInLightMode(this.nativeRef);
-      AppMethodBeat.o(219574);
+      AppMethodBeat.o(226802);
       return bool;
     }
     
     public final IUIModalPlatformFuncDelegate getFuncDelegate()
     {
-      AppMethodBeat.i(219544);
+      AppMethodBeat.i(226782);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         localObject = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(219544);
+        AppMethodBeat.o(226782);
         throw ((Throwable)localObject);
       }
       Object localObject = native_getFuncDelegate(this.nativeRef);
-      AppMethodBeat.o(219544);
+      AppMethodBeat.o(226782);
       return localObject;
     }
     
-    public final void keyboadWillHide()
+    public final String getReportUrl()
     {
-      AppMethodBeat.i(135742);
+      AppMethodBeat.i(226793);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
-        AssertionError localAssertionError = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(135742);
-        throw localAssertionError;
+        localObject = new AssertionError("trying to use a destroyed object");
+        AppMethodBeat.o(226793);
+        throw ((Throwable)localObject);
       }
-      native_keyboadWillHide(this.nativeRef);
-      AppMethodBeat.o(135742);
+      Object localObject = native_getReportUrl(this.nativeRef);
+      AppMethodBeat.o(226793);
+      return localObject;
     }
     
-    public final void keyboadWillShow(float paramFloat)
+    public final void keyboardWillHide()
     {
-      AppMethodBeat.i(135741);
+      AppMethodBeat.i(226786);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         AssertionError localAssertionError = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(135741);
+        AppMethodBeat.o(226786);
         throw localAssertionError;
       }
-      native_keyboadWillShow(this.nativeRef, paramFloat);
-      AppMethodBeat.o(135741);
+      native_keyboardWillHide(this.nativeRef);
+      AppMethodBeat.o(226786);
+    }
+    
+    public final void keyboardWillShow(float paramFloat)
+    {
+      AppMethodBeat.i(226785);
+      if ((!$assertionsDisabled) && (this.destroyed.get()))
+      {
+        AssertionError localAssertionError = new AssertionError("trying to use a destroyed object");
+        AppMethodBeat.o(226785);
+        throw localAssertionError;
+      }
+      native_keyboardWillShow(this.nativeRef, paramFloat);
+      AppMethodBeat.o(226785);
     }
     
     public final void onClickAndroidBack()
@@ -214,17 +236,30 @@ public abstract class IUIModal
       AppMethodBeat.o(135739);
     }
     
-    public final void onFirstRenderFinish()
+    public final void onDestroy()
     {
-      AppMethodBeat.i(219566);
+      AppMethodBeat.i(226788);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         AssertionError localAssertionError = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(219566);
+        AppMethodBeat.o(226788);
+        throw localAssertionError;
+      }
+      native_onDestroy(this.nativeRef);
+      AppMethodBeat.o(226788);
+    }
+    
+    public final void onFirstRenderFinish()
+    {
+      AppMethodBeat.i(226797);
+      if ((!$assertionsDisabled) && (this.destroyed.get()))
+      {
+        AssertionError localAssertionError = new AssertionError("trying to use a destroyed object");
+        AppMethodBeat.o(226797);
         throw localAssertionError;
       }
       native_onFirstRenderFinish(this.nativeRef);
-      AppMethodBeat.o(219566);
+      AppMethodBeat.o(226797);
     }
     
     public final void onModalEnterBackground()
@@ -255,15 +290,15 @@ public abstract class IUIModal
     
     public final void setFuncDelegate(IUIModalPlatformFuncDelegate paramIUIModalPlatformFuncDelegate)
     {
-      AppMethodBeat.i(219542);
+      AppMethodBeat.i(226780);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         paramIUIModalPlatformFuncDelegate = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(219542);
+        AppMethodBeat.o(226780);
         throw paramIUIModalPlatformFuncDelegate;
       }
       native_setFuncDelegate(this.nativeRef, paramIUIModalPlatformFuncDelegate);
-      AppMethodBeat.o(219542);
+      AppMethodBeat.o(226780);
     }
     
     public final void setPlatformDelegate(IUIPagePlatformDelegate paramIUIPagePlatformDelegate)
@@ -281,43 +316,43 @@ public abstract class IUIModal
     
     public final DynamicColor statusbarColor()
     {
-      AppMethodBeat.i(219563);
+      AppMethodBeat.i(226795);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         localObject = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(219563);
+        AppMethodBeat.o(226795);
         throw ((Throwable)localObject);
       }
       Object localObject = native_statusbarColor(this.nativeRef);
-      AppMethodBeat.o(219563);
+      AppMethodBeat.o(226795);
       return localObject;
     }
     
     public final boolean useKeyboardCoverMode()
     {
-      AppMethodBeat.i(219572);
+      AppMethodBeat.i(226801);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         AssertionError localAssertionError = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(219572);
+        AppMethodBeat.o(226801);
         throw localAssertionError;
       }
       boolean bool = native_useKeyboardCoverMode(this.nativeRef);
-      AppMethodBeat.o(219572);
+      AppMethodBeat.o(226801);
       return bool;
     }
     
     public final boolean usePanelModalMode()
     {
-      AppMethodBeat.i(219570);
+      AppMethodBeat.i(226799);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         AssertionError localAssertionError = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(219570);
+        AppMethodBeat.o(226799);
         throw localAssertionError;
       }
       boolean bool = native_usePanelModalMode(this.nativeRef);
-      AppMethodBeat.o(219570);
+      AppMethodBeat.o(226799);
       return bool;
     }
     
@@ -337,7 +372,7 @@ public abstract class IUIModal
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.kinda.gen.IUIModal
  * JD-Core Version:    0.7.0.1
  */

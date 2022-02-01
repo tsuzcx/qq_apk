@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="bottom" android:layout_gravity="end|bottom|center" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageButton android:id="@id/iia" android:background="@drawable/ajx" android:layout_width="@dimen/acc" android:layout_height="@dimen/acb" android:layout_centerHorizontal="true" android:contentDescription="@string/i2v" />
-    <ImageButton android:id="@id/foe" android:background="@drawable/ajs" android:layout_width="@dimen/acd" android:layout_height="@dimen/acd" android:layout_centerVertical="true" android:layout_marginEnd="35.0dip" android:layout_alignParentEnd="true" />
-</RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/kbn" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</ScrollView>

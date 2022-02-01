@@ -6,8 +6,8 @@ import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
-import com.tencent.mm.plugin.appbrand.au.c;
+import com.tencent.mm.br.c;
+import com.tencent.mm.plugin.appbrand.ba.c;
 import com.tencent.mm.sdk.platformtools.Util;
 
 final class AppBrandProfileUI$8
@@ -18,20 +18,20 @@ final class AppBrandProfileUI$8
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(48713);
-    if (!Util.isNullOrNil(this.qXE))
+    if (!Util.isNullOrNil(this.udE))
     {
       paramView = new Intent();
-      paramView.putExtra("rawUrl", this.qXE);
-      c.b(this.qXA.getContext(), "webview", ".ui.tools.WebViewUI", paramView);
+      paramView.putExtra("rawUrl", this.udE);
+      c.b(this.udA.getContext(), "webview", ".ui.tools.WebViewUI", paramView);
     }
-    AppBrandProfileUI.a(this.qXA, 22, 1);
+    AppBrandProfileUI.a(this.udA, 22, 1);
     AppMethodBeat.o(48713);
   }
   
   public final void updateDrawState(TextPaint paramTextPaint)
   {
     AppMethodBeat.i(48714);
-    paramTextPaint.setColor(this.qXA.getResources().getColor(au.c.link_color));
+    paramTextPaint.setColor(this.udA.getResources().getColor(ba.c.link_color));
     paramTextPaint.setUnderlineText(false);
     AppMethodBeat.o(48714);
   }

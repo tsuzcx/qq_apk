@@ -1,122 +1,72 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video.e;
 
-import android.view.Surface;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
 
-public abstract interface e
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/GeneralErrorType;", "", "(Ljava/lang/String;I)V", "NETWORK", "EXTRACT", "EXTRACT_NOT_SUPPORT", "DECODE", "DECODE_NOT_SUPPORT", "RENDER", "ILLEGAL", "OTHER", "Companion", "luggage-commons-jsapi-video-ext_release"}, k=1, mv={1, 5, 1}, xi=48)
+public enum e
 {
-  public abstract void a(a parama);
+  public static final e.a sEL;
   
-  public abstract void a(b paramb);
-  
-  public abstract void a(d paramd);
-  
-  public abstract void a(e parame);
-  
-  public abstract void a(f paramf);
-  
-  public abstract void a(g paramg);
-  
-  public abstract void a(h paramh);
-  
-  public abstract void a(i parami);
-  
-  public abstract void a(j paramj);
-  
-  public abstract void a(String paramString1, String paramString2, c paramc);
-  
-  public abstract boolean aP(float paramFloat);
-  
-  public abstract void ef(String paramString1, String paramString2);
-  
-  public abstract int getCurrentPosition();
-  
-  public abstract int getDuration();
-  
-  public abstract int getState();
-  
-  public abstract int getVideoHeight();
-  
-  public abstract int getVideoWidth();
-  
-  public abstract boolean isPlaying();
-  
-  public abstract void pause();
-  
-  public abstract void prepareAsync();
-  
-  public abstract void release();
-  
-  public abstract void reset();
-  
-  public abstract void seekTo(long paramLong);
-  
-  public abstract void setDataSource(String paramString);
-  
-  public abstract void setLooping(boolean paramBoolean);
-  
-  public abstract void setMute(boolean paramBoolean);
-  
-  public abstract void setSurface(Surface paramSurface);
-  
-  public abstract void setVolume(float paramFloat1, float paramFloat2);
-  
-  public abstract void start();
-  
-  public abstract void stop();
-  
-  public static abstract interface a
+  static
   {
-    public abstract void jg(int paramInt);
+    AppMethodBeat.i(328687);
+    sEM = new e("NETWORK", 0);
+    sEN = new e("EXTRACT", 1);
+    sEO = new e("EXTRACT_NOT_SUPPORT", 2);
+    sEP = new e("DECODE", 3);
+    sEQ = new e("DECODE_NOT_SUPPORT", 4);
+    sER = new e("RENDER", 5);
+    sES = new e("ILLEGAL", 6);
+    sET = new e("OTHER", 7);
+    sEU = new e[] { sEM, sEN, sEO, sEP, sEQ, sER, sES, sET };
+    sEL = new e.a((byte)0);
+    AppMethodBeat.o(328687);
   }
   
-  public static abstract interface b
-  {
-    public abstract void Uh();
-  }
+  private e() {}
   
-  public static abstract interface c
+  public static final e fD(int paramInt1, int paramInt2)
   {
-    public abstract void bWl();
-  }
-  
-  public static abstract interface d
-  {
-    public abstract void ajo(String paramString);
-  }
-  
-  public static abstract interface e
-  {
-    public abstract boolean cu(int paramInt1, int paramInt2);
-  }
-  
-  public static abstract interface f
-  {
-    public abstract void k(Boolean paramBoolean);
-  }
-  
-  public static abstract interface g
-  {
-    public abstract boolean ct(int paramInt1, int paramInt2);
-  }
-  
-  public static abstract interface h
-  {
-    public abstract void a(e parame);
-  }
-  
-  public static abstract interface i
-  {
-    public abstract void b(e parame);
-  }
-  
-  public static abstract interface j
-  {
-    public abstract void a(e parame, int paramInt1, int paramInt2);
+    Object localObject = null;
+    e locale = null;
+    AppMethodBeat.i(328682);
+    if (-4000 >= paramInt1) {
+      switch (paramInt1)
+      {
+      }
+    }
+    for (;;)
+    {
+      localObject = locale;
+      if (locale == null)
+      {
+        Log.e("MicroMsg.AppBrand.GeneralErrorType", "fromExoErrorInfo, errorType is null, errorWhat: " + paramInt1 + ", errorExtra: " + paramInt2);
+        localObject = locale;
+      }
+      Log.i("MicroMsg.AppBrand.GeneralErrorType", "fromErrorInfo, errorWhat: " + paramInt1 + ", errorExtra: " + paramInt2 + ", errorType: " + localObject);
+      AppMethodBeat.o(328682);
+      return localObject;
+      locale = sEM;
+      continue;
+      locale = sEN;
+      continue;
+      locale = sEO;
+      continue;
+      locale = sEP;
+      continue;
+      locale = sER;
+      continue;
+      locale = sES;
+      continue;
+      locale = sET;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.e.e
  * JD-Core Version:    0.7.0.1
  */

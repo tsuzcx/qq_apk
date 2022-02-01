@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_gravity="center" android:id="@id/hni" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@drawable/coj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <TextView android:textColor="@color/a2x" android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/gym" android:drawablePadding="10.0dip" style="@style/u4" />
-        <TextView android:textColor="@color/a2x" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="15.0dip" android:text="@string/gyk" style="@style/u3" />
-        <TextView android:textColor="@color/a2x" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="15.0dip" android:text="@string/gyl" style="@style/u3" />
-        <Button android:id="@id/hnh" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="12.0dip" android:text="@string/gyi" style="@style/ou" />
-    </LinearLayout>
-</RelativeLayout>
+    <ScrollView style="@style/o8">
+        <LinearLayout style="@style/lj">
+            <TextView android:text="@string/hwz" android:layout_weight="1.0" style="@style/n_" />
+            <EditText android:id="@id/ikf" android:hint="@string/hws" style="@style/n8" />
+            <View style="@style/ot" />
+            <EditText android:id="@id/ike" android:hint="@string/hwt" style="@style/n8" />
+            <View style="@style/ot" />
+            <TextView android:text="@string/hwu" android:layout_weight="1.0" style="@style/n_" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,248 +1,192 @@
 package com.tencent.mm.plugin.webview.ui.tools.newjsapi;
 
-import android.content.Context;
+import android.content.ComponentName;
 import android.content.Intent;
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.msgsubscription.SubscribeMsgTmpItem;
-import com.tencent.mm.msgsubscription.api.ISubscribeMsgService;
-import com.tencent.mm.plugin.webview.d.c.a;
-import com.tencent.mm.plugin.webview.d.f;
-import com.tencent.mm.plugin.webview.d.n;
+import com.tencent.mm.plugin.webview.jsapi.c.a;
+import com.tencent.mm.plugin.webview.jsapi.e;
+import com.tencent.mm.plugin.webview.jsapi.h;
+import com.tencent.mm.plugin.webview.jsapi.p;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiRequestSubscribeMessage;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "Lcom/tencent/mm/ui/MMActivity$IMMOnActivityResult;", "()V", "REQUEST_CODE_SUBSCRIBE_MSG", "", "TAG", "", "controlByte", "getControlByte", "()I", "env", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "funcName", "getFuncName", "()Ljava/lang/String;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "callbackJsApi", "", "errCode", "errMsg", "retMap", "", "", "handleMsg", "", "mmOnActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "requestSubscribeMessage", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOpenCTID;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "Lcom/tencent/mm/ui/MMActivity$IMMOnActivityResult;", "()V", "REQUEST_CODE_OPEN_CTID", "", "TAG", "", "controlByte", "getControlByte", "()I", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "funcName", "getFuncName", "()Ljava/lang/String;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "callbackJsApi", "", "errCode", "retMap", "", "", "handleMsg", "", "mmOnActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class v
   extends a
   implements MMActivity.a
 {
-  private static final int IIl = 395;
-  private static n Qqe;
-  public static final v QvG;
-  private static WeakReference<f> SuN;
-  private static final String fXz = "requestSubscribeMessage";
+  private static p Xit;
+  public static final v Xns;
+  private static final int Xnt;
+  private static h Xnu;
   
   static
   {
-    AppMethodBeat.i(220561);
-    QvG = new v();
-    IIl = 395;
-    fXz = "requestSubscribeMessage";
-    AppMethodBeat.o(220561);
+    AppMethodBeat.i(297741);
+    Xns = new v();
+    Xnt = 212;
+    AppMethodBeat.o(297741);
   }
   
-  private static void a(n paramn, int paramInt, String paramString, Map<String, ? extends Object> paramMap)
+  private static void a(p paramp, int paramInt, Map<String, ? extends Object> paramMap)
   {
-    int i = 1;
-    AppMethodBeat.i(292996);
-    if (paramn == null)
+    AppMethodBeat.i(297736);
+    Log.i("MicroMsg.JsApiOpenCTID", "callbackJsApi, msg:" + paramp + ", errCode:" + paramInt + "， retMap:" + paramMap);
+    if (Xnu == null)
     {
-      AppMethodBeat.o(292996);
+      AppMethodBeat.o(297736);
+      return;
+    }
+    if (paramp == null)
+    {
+      AppMethodBeat.o(297736);
       return;
     }
     Map localMap = (Map)new LinkedHashMap();
     localMap.put("err_code", Integer.valueOf(paramInt));
     if (paramMap != null) {
-      localMap.putAll(paramMap);
+      localMap.put("result", paramMap);
     }
-    if (paramInt == 0) {
-      if (((CharSequence)paramString).length() > 0)
-      {
-        paramInt = i;
-        if (paramInt == 0) {
-          break label159;
-        }
-      }
-    }
-    label159:
-    label192:
-    for (;;)
+    if (paramInt == 0) {}
+    for (paramMap = "ok";; paramMap = "unknown error")
     {
-      paramMap = SuN;
-      if (paramMap != null)
+      Object localObject = Xnu;
+      if (localObject != null)
       {
-        paramMap = (f)paramMap.get();
-        if (paramMap != null)
-        {
-          paramMap = paramMap.PNo;
-          if (paramMap != null) {
-            paramMap.h(paramn.POu, paramn.function + ":" + paramString, localMap);
-          }
+        localObject = ((h)localObject).WDy;
+        if (localObject != null) {
+          ((e)localObject).doCallback(paramp.WEH, paramp.function + ':' + paramMap, localMap);
         }
       }
-      SuN = null;
-      AppMethodBeat.o(292996);
+      Xnu = null;
+      AppMethodBeat.o(297736);
       return;
-      paramInt = 0;
-      break;
-      paramString = "ok";
-      continue;
-      if (((CharSequence)paramString).length() > 0) {}
-      for (paramInt = 1;; paramInt = 0)
-      {
-        if (paramInt != 0) {
-          break label192;
-        }
-        paramString = "unknown error";
-        break;
-      }
     }
   }
   
-  private final boolean m(f paramf, n paramn)
+  public final boolean a(h paramh, p paramp)
   {
-    AppMethodBeat.i(292995);
-    String str = (String)paramn.params.get("appId");
-    Object localObject1 = (String)paramn.params.get("extInfo");
-    Object localObject3 = (String)paramn.params.get("templateIdList");
-    Object localObject2 = new ArrayList();
-    int i;
-    int j;
-    if (localObject3 != null)
+    AppMethodBeat.i(297751);
+    s.u(paramh, "env");
+    s.u(paramp, "msg");
+    Xnu = paramh;
+    Xit = paramp;
+    Log.i("MicroMsg.JsApiOpenCTID", "jsapi call, params:%s", new Object[] { paramp.params });
+    Intent localIntent = new Intent();
+    localIntent.setComponent(new ComponentName("cn.cyberIdentity.certification", "cn.wh.project.view.v.authorization.WAuthActivity"));
+    localIntent.setFlags(8388608);
+    Object localObject = paramp.params.get("orgID");
+    if (localObject == null)
     {
-      localObject3 = new JSONArray((String)localObject3);
-      i = 0;
-      j = ((JSONArray)localObject3).length();
+      paramh = new NullPointerException("null cannot be cast to non-null type kotlin.String");
+      AppMethodBeat.o(297751);
+      throw paramh;
     }
-    for (;;)
+    localIntent.putExtra("orgID", (String)localObject);
+    localObject = paramp.params.get("appID");
+    if (localObject == null)
     {
-      Object localObject4;
-      if (i < j)
-      {
-        localObject4 = ((JSONArray)localObject3).get(i);
-        if (!(localObject4 instanceof String)) {
-          a(paramn, 10004, ":fail templateId invalid", null);
-        }
-      }
-      else
-      {
-        if (!((ArrayList)localObject2).isEmpty()) {
-          break;
-        }
-        a(paramn, 10001, ":fail templateIdList empty", null);
-        AppMethodBeat.o(292995);
-        return true;
-      }
-      ((ArrayList)localObject2).add(localObject4);
-      i += 1;
+      paramh = new NullPointerException("null cannot be cast to non-null type kotlin.String");
+      AppMethodBeat.o(297751);
+      throw paramh;
     }
-    if ((paramf.context instanceof MMActivity))
+    localIntent.putExtra("appID", (String)localObject);
+    localObject = paramp.params.get("bizSeq");
+    if (localObject == null)
     {
-      paramn = paramf.context;
-      if (paramn == null)
-      {
-        paramf = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-        AppMethodBeat.o(292995);
-        throw paramf;
-      }
-      ((MMActivity)paramn).mmSetOnActivityResultCallback((MMActivity.a)this);
+      paramh = new NullPointerException("null cannot be cast to non-null type kotlin.String");
+      AppMethodBeat.o(297751);
+      throw paramh;
     }
-    paramn = new Bundle();
-    paramn.putString("key_extra_info", (String)localObject1);
-    paramn.putBoolean("key_need_result", true);
-    paramn.putStringArrayList("key_template_id_list", (ArrayList)localObject2);
-    localObject1 = (ISubscribeMsgService)com.tencent.mm.kernel.h.ae(ISubscribeMsgService.class);
-    localObject2 = paramf.context;
-    paramf = str;
-    if (str == null) {
-      paramf = "";
+    localIntent.putExtra("bizSeq", (String)localObject);
+    paramp = paramp.params.get("type");
+    if (paramp == null)
+    {
+      paramh = new NullPointerException("null cannot be cast to non-null type kotlin.String");
+      AppMethodBeat.o(297751);
+      throw paramh;
     }
-    ((ISubscribeMsgService)localObject1).a((Context)localObject2, 2, 1000, paramf, paramn);
-    AppMethodBeat.o(292995);
+    localIntent.putExtra("type", (String)paramp);
+    localIntent.putExtra("packageName", MMApplicationContext.getApplicationId());
+    if ((paramh.context instanceof MMActivity))
+    {
+      ((MMActivity)paramh.context).mmSetOnActivityResultCallback((MMActivity.a)this);
+      ((MMActivity)paramh.context).startActivityForResult(localIntent, Xnt);
+    }
+    AppMethodBeat.o(297751);
     return true;
   }
   
-  public final boolean a(f paramf, n paramn)
+  public final String gPX()
   {
-    AppMethodBeat.i(220551);
-    p.k(paramf, "env");
-    p.k(paramn, "msg");
-    Log.i("MicroMsg.JsApiRequestSubscribeMessage", "alvinluo requestSubscribeMessage");
-    SuN = new WeakReference(paramf);
-    Qqe = paramn;
-    boolean bool = m(paramf, paramn);
-    AppMethodBeat.o(220551);
-    return bool;
+    return "openCTID";
   }
   
-  public final void d(int paramInt1, int paramInt2, Intent paramIntent)
+  public final int gPZ()
   {
-    AppMethodBeat.i(220554);
-    Object localObject1 = new StringBuilder("alvinluo requestSubscribeMessage onActivityResult requestCode: ").append(paramInt1).append(", resultCode: ").append(paramInt2).append(", data: ");
-    boolean bool;
-    if (paramIntent == null)
+    return 440;
+  }
+  
+  public final void mmOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(297767);
+    if (paramInt1 != Xnt)
     {
-      bool = true;
-      Log.d("MicroMsg.JsApiRequestSubscribeMessage", bool);
-      if ((paramIntent == null) || (paramInt1 != 1000)) {
-        break label332;
+      AppMethodBeat.o(297767);
+      return;
+    }
+    Object localObject = new StringBuilder("JsApiOpenCTID onActivityResult requestCode: ").append(paramInt1).append(", resultCode: ").append(paramInt2).append(", data: ");
+    if (paramIntent == null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Log.i("MicroMsg.JsApiOpenCTID", bool);
+      if ((paramInt2 != -1) || (paramIntent == null)) {
+        break;
       }
-      localObject3 = paramIntent.getParcelableArrayListExtra("key_result_data");
-      paramInt1 = paramIntent.getIntExtra("key_result_err_code", -1);
-      localObject2 = paramIntent.getStringExtra("key_result_err_msg");
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = "unknown error";
+      HashMap localHashMap = new HashMap();
+      String str = paramIntent.getStringExtra("resultCode");
+      localObject = str;
+      if (str == null) {
+        localObject = "";
       }
-      localObject2 = paramIntent.getStringExtra("key_result_ext_data");
-      paramIntent = (Intent)localObject2;
-      if (localObject2 == null) {
+      localHashMap.put("resultCode", localObject);
+      str = paramIntent.getStringExtra("resultDesc");
+      localObject = str;
+      if (str == null) {
+        localObject = "";
+      }
+      localHashMap.put("resultDesc", localObject);
+      str = paramIntent.getStringExtra("idCardAuthData");
+      localObject = str;
+      if (str == null) {
+        localObject = "";
+      }
+      localHashMap.put("idCardAuthData", localObject);
+      str = paramIntent.getStringExtra("certPwdData");
+      localObject = str;
+      if (str == null) {
+        localObject = "";
+      }
+      localHashMap.put("certPwdData", localObject);
+      localObject = paramIntent.getStringExtra("resultData");
+      paramIntent = (Intent)localObject;
+      if (localObject == null) {
         paramIntent = "";
       }
-      if (localObject3 == null) {
-        break label279;
-      }
+      localHashMap.put("resultData", paramIntent);
+      a(Xit, 0, (Map)localHashMap);
+      AppMethodBeat.o(297767);
+      return;
     }
-    label279:
-    for (Object localObject2 = Integer.valueOf(((ArrayList)localObject3).size());; localObject2 = null)
-    {
-      Log.i("MicroMsg.JsApiRequestSubscribeMessage", "alvinluo requestSubscribeMessage onActivityResult errCode: %s, errMsg: %s, template size: %s, extData: %s", new Object[] { Integer.valueOf(paramInt1), localObject1, localObject2, paramIntent });
-      localObject2 = new JSONObject();
-      if (localObject3 == null) {
-        break label285;
-      }
-      localObject3 = ((Iterable)localObject3).iterator();
-      while (((Iterator)localObject3).hasNext())
-      {
-        SubscribeMsgTmpItem localSubscribeMsgTmpItem = (SubscribeMsgTmpItem)((Iterator)localObject3).next();
-        String str = localSubscribeMsgTmpItem.lnb;
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("status", localSubscribeMsgTmpItem.moi);
-        ((JSONObject)localObject2).put(str, localJSONObject.toString());
-      }
-      bool = false;
-      break;
-    }
-    label285:
-    Object localObject3 = new HashMap();
-    ((HashMap)localObject3).put("templatesDetail", ((JSONObject)localObject2).toString());
-    ((HashMap)localObject3).put("ext_info", paramIntent);
-    a(Qqe, paramInt1, (String)localObject1, (Map)localObject3);
-    label332:
-    AppMethodBeat.o(220554);
-  }
-  
-  public final String fCm()
-  {
-    return fXz;
-  }
-  
-  public final int fCn()
-  {
-    return IIl;
+    a(Xit, -1, null);
+    AppMethodBeat.o(297767);
   }
 }
 

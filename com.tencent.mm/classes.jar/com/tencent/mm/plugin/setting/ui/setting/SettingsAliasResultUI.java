@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -19,18 +18,18 @@ import com.tencent.mm.plugin.account.ui.RegByMobileSetPwdUI;
 import com.tencent.mm.plugin.setting.b.f;
 import com.tencent.mm.plugin.setting.b.g;
 import com.tencent.mm.plugin.setting.b.i;
-import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.aq;
 import com.tencent.mm.ui.MMActivity;
 
 public class SettingsAliasResultUI
   extends MMActivity
 {
-  private TextView JgM;
-  private Button JgN;
-  private ImageView JgO;
-  private boolean JgP;
-  private String idS;
-  private TextView mrM;
+  private TextView PrE;
+  private Button PrF;
+  private ImageView PrG;
+  private boolean PrH;
+  private String kDc;
+  private TextView plr;
   
   public int getLayoutId()
   {
@@ -41,10 +40,10 @@ public class SettingsAliasResultUI
   {
     AppMethodBeat.i(74112);
     setMMTitle(b.i.modify_username);
-    this.mrM = ((TextView)findViewById(b.f.desc_tv));
-    this.JgM = ((TextView)findViewById(b.f.alias_tv));
-    this.JgN = ((Button)findViewById(b.f.setpwd_btn));
-    this.JgO = ((ImageView)findViewById(b.f.ok_iv));
+    this.plr = ((TextView)findViewById(b.f.desc_tv));
+    this.PrE = ((TextView)findViewById(b.f.alias_tv));
+    this.PrF = ((Button)findViewById(b.f.setpwd_btn));
+    this.PrG = ((ImageView)findViewById(b.f.ok_iv));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -55,22 +54,22 @@ public class SettingsAliasResultUI
         return true;
       }
     });
-    this.JgM.setText(this.idS);
-    if (!this.JgP)
+    this.PrE.setText(this.kDc);
+    if (!this.PrH)
     {
-      this.JgN.setVisibility(0);
-      this.mrM.setText(getString(b.i.modify_username_result_goto_setpass));
+      this.PrF.setVisibility(0);
+      this.plr.setText(getString(b.i.modify_username_result_goto_setpass));
     }
     for (;;)
     {
-      this.JgN.setOnClickListener(new View.OnClickListener()
+      this.PrF.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(74108);
           b localb = new b();
-          localb.bn(paramAnonymousView);
-          a.c("com/tencent/mm/plugin/setting/ui/setting/SettingsAliasResultUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          a.c("com/tencent/mm/plugin/setting/ui/setting/SettingsAliasResultUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           paramAnonymousView = new Intent(SettingsAliasResultUI.this.getContext(), RegByMobileSetPwdUI.class);
           paramAnonymousView.putExtra("kintent_hint", SettingsAliasResultUI.this.getString(b.i.regbymobile_reg_setpwd_tip_after_set_alias));
           SettingsAliasResultUI.this.startActivityForResult(paramAnonymousView, 0);
@@ -80,8 +79,8 @@ public class SettingsAliasResultUI
       });
       AppMethodBeat.o(74112);
       return;
-      this.JgN.setVisibility(8);
-      this.mrM.setText(getString(b.i.modify_username_result_normal_desc));
+      this.PrF.setVisibility(8);
+      this.plr.setText(getString(b.i.modify_username_result_normal_desc));
     }
   }
   
@@ -99,8 +98,8 @@ public class SettingsAliasResultUI
   {
     AppMethodBeat.i(74109);
     super.onCreate(paramBundle);
-    this.idS = ((String)h.aHG().aHp().b(42, null));
-    this.JgP = getIntent().getBooleanExtra("has_pwd", true);
+    this.kDc = ((String)h.baE().ban().d(42, null));
+    this.PrH = getIntent().getBooleanExtra("has_pwd", true);
     initView();
     AppMethodBeat.o(74109);
   }
@@ -127,7 +126,7 @@ public class SettingsAliasResultUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsAliasResultUI
  * JD-Core Version:    0.7.0.1
  */

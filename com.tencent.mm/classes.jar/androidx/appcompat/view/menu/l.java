@@ -19,9 +19,9 @@ final class l
   
   final k.a a(ActionProvider paramActionProvider)
   {
-    AppMethodBeat.i(239740);
+    AppMethodBeat.i(200876);
     paramActionProvider = new a(this.mContext, paramActionProvider);
-    AppMethodBeat.o(239740);
+    AppMethodBeat.o(200876);
     return paramActionProvider;
   }
   
@@ -29,7 +29,7 @@ final class l
     extends k.a
     implements ActionProvider.VisibilityListener
   {
-    b.b no;
+    b.b ok;
     
     public a(Context paramContext, ActionProvider paramActionProvider)
     {
@@ -38,49 +38,49 @@ final class l
     
     public final void a(b.b paramb)
     {
-      AppMethodBeat.i(239734);
-      this.no = paramb;
-      this.nl.setVisibilityListener(this);
-      AppMethodBeat.o(239734);
+      AppMethodBeat.i(201083);
+      this.ok = paramb;
+      this.oh.setVisibilityListener(this);
+      AppMethodBeat.o(201083);
     }
     
     public final View c(MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(239726);
-      paramMenuItem = this.nl.onCreateActionView(paramMenuItem);
-      AppMethodBeat.o(239726);
+      AppMethodBeat.i(201060);
+      paramMenuItem = this.oh.onCreateActionView(paramMenuItem);
+      AppMethodBeat.o(201060);
       return paramMenuItem;
     }
     
-    public final boolean cy()
+    public final boolean dr()
     {
-      AppMethodBeat.i(239729);
-      boolean bool = this.nl.overridesItemVisibility();
-      AppMethodBeat.o(239729);
+      AppMethodBeat.i(201069);
+      boolean bool = this.oh.overridesItemVisibility();
+      AppMethodBeat.o(201069);
       return bool;
     }
     
     public final boolean isVisible()
     {
-      AppMethodBeat.i(239732);
-      boolean bool = this.nl.isVisible();
-      AppMethodBeat.o(239732);
+      AppMethodBeat.i(201077);
+      boolean bool = this.oh.isVisible();
+      AppMethodBeat.o(201077);
       return bool;
     }
     
     public final void onActionProviderVisibilityChanged(boolean paramBoolean)
     {
-      AppMethodBeat.i(239735);
-      if (this.no != null) {
-        this.no.cv();
+      AppMethodBeat.i(201091);
+      if (this.ok != null) {
+        this.ok.jdMethod_do();
       }
-      AppMethodBeat.o(239735);
+      AppMethodBeat.o(201091);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     androidx.appcompat.view.menu.l
  * JD-Core Version:    0.7.0.1
  */

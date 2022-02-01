@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval"
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <size android:height="@dimen/n8" android:width="@dimen/n8" />
-    <solid android:color="@android:color/white" />
-</shape>
+    <item android:id="@android:id/background" android:drawable="@drawable/b69" />
+    <item android:id="@android:id/secondaryProgress">
+        <scale android:scaleWidth="100%">
+            <selector>
+                <item android:state_enabled="false">
+                    <color android:color="@android:color/transparent" />
+                </item>
+                <item android:drawable="@drawable/b68" />
+            </selector>
+        </scale>
+    </item>
+    <item android:id="@android:id/progress">
+        <scale android:scaleWidth="100%">
+            <selector>
+                <item android:state_enabled="false">
+                    <color android:color="@android:color/transparent" />
+                </item>
+                <item android:drawable="@drawable/b68" />
+            </selector>
+        </scale>
+    </item>
+</layer-list>

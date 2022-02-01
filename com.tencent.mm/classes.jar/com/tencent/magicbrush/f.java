@@ -1,18 +1,18 @@
 package com.tencent.magicbrush;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/magicbrush/MagicBrushBuilder;", "Lcom/tencent/magicbrush/MagicBrushConfig;", "dls", "Lkotlin/Function1;", "", "Lkotlin/ExtensionFunctionType;", "(Lkotlin/jvm/functions/Function1;)V", "()V", "build", "Lcom/tencent/magicbrush/MagicBrush;", "lib-magicbrush-nano_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/magicbrush/MagicBrushBuilder;", "Lcom/tencent/magicbrush/MagicBrushConfig;", "dls", "Lkotlin/Function1;", "", "Lkotlin/ExtensionFunctionType;", "(Lkotlin/jvm/functions/Function1;)V", "()V", "build", "Lcom/tencent/magicbrush/MagicBrush;", "lib-magicbrush-nano_release"}, k=1, mv={1, 1, 16})
 public final class f
   extends g
 {
-  public final e UW()
+  public final e avz()
   {
-    AppMethodBeat.i(204017);
-    Object localObject = e.cMm;
+    AppMethodBeat.i(228849);
+    Object localObject = e.eHG;
     localObject = e.a.b(this);
-    AppMethodBeat.o(204017);
+    AppMethodBeat.o(228849);
     return localObject;
   }
 }

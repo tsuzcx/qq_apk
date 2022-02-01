@@ -11,26 +11,26 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public enum a
 {
-  private final List<c> GLq;
-  private final Map<Class<? extends c>, c> GLr;
+  private final List<c> MIl;
+  private final Map<Class<? extends c>, c> MIm;
   
   static
   {
     AppMethodBeat.i(145998);
-    GLp = new a("INSTANCE");
-    GLs = new a[] { GLp };
+    MIk = new a("INSTANCE");
+    MIn = new a[] { MIk };
     AppMethodBeat.o(145998);
   }
   
   private a()
   {
     AppMethodBeat.i(145994);
-    this.GLq = new CopyOnWriteArrayList();
-    this.GLr = new ConcurrentHashMap();
+    this.MIl = new CopyOnWriteArrayList();
+    this.MIm = new ConcurrentHashMap();
     AppMethodBeat.o(145994);
   }
   
-  public static String fnm()
+  public static String gxZ()
   {
     return ".cmd.diagnostic";
   }
@@ -38,49 +38,43 @@ public enum a
   public final void a(c paramc)
   {
     AppMethodBeat.i(145995);
-    if (this.GLr.containsKey(paramc.getClass()))
+    if (this.MIm.containsKey(paramc.getClass()))
     {
       AppMethodBeat.o(145995);
       return;
     }
-    this.GLq.add(paramc);
-    this.GLr.put(paramc.getClass(), paramc);
-    paramc.fnn();
+    this.MIl.add(paramc);
+    this.MIm.put(paramc.getClass(), paramc);
+    paramc.gya();
     AppMethodBeat.o(145995);
   }
   
-  public final void aUm(String paramString)
+  public final void aK(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(241151);
-    Log.i("MicroMsg.DiagnosticManager", "received cmd: %s", new Object[] { paramString });
-    au(XmlParser.parseXml(paramString, "cmd", null));
-    AppMethodBeat.o(241151);
-  }
-  
-  public final void au(Map<String, String> paramMap)
-  {
-    AppMethodBeat.i(241150);
-    if ((paramMap == null) || (!paramMap.containsKey(".cmd.diagnostic")))
-    {
-      Log.d("MicroMsg.DiagnosticManager", "just ignore other ipxx cmd");
-      AppMethodBeat.o(241150);
-      return;
-    }
-    Iterator localIterator = this.GLq.iterator();
+    AppMethodBeat.i(300818);
+    Iterator localIterator = this.MIl.iterator();
     while (localIterator.hasNext())
     {
       c localc = (c)localIterator.next();
-      if (paramMap.containsKey(localc.fnm())) {
-        localc.au(paramMap);
+      if (paramMap.containsKey(localc.gxZ())) {
+        localc.aK(paramMap);
       }
     }
-    AppMethodBeat.o(241150);
+    AppMethodBeat.o(300818);
   }
   
-  public final <T extends c> T bn(Class<T> paramClass)
+  public final void aRq(String paramString)
+  {
+    AppMethodBeat.i(300821);
+    Log.i("MicroMsg.DiagnosticManager", "received cmd: %s", new Object[] { paramString });
+    aK(XmlParser.parseXml(paramString, "cmd", null));
+    AppMethodBeat.o(300821);
+  }
+  
+  public final <T extends c> T bX(Class<T> paramClass)
   {
     AppMethodBeat.i(145996);
-    paramClass = (c)this.GLr.get(paramClass);
+    paramClass = (c)this.MIm.get(paramClass);
     AppMethodBeat.o(145996);
     return paramClass;
   }

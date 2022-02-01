@@ -11,7 +11,6 @@ import android.os.Bundle;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.internal.GoogleApiManager;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
 
@@ -19,7 +18,6 @@ public class GoogleApiActivity
   extends HellActivity
   implements DialogInterface.OnCancelListener
 {
-  @VisibleForTesting
   private int zzct = 0;
   
   public static PendingIntent zza(Context paramContext, PendingIntent paramPendingIntent, int paramInt)
@@ -145,7 +143,7 @@ public class GoogleApiActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.GoogleApiActivity
  * JD-Core Version:    0.7.0.1
  */

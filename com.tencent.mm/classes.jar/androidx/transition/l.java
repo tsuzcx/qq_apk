@@ -11,21 +11,21 @@ final class l
 {
   static PropertyValuesHolder a(Property<?, PointF> paramProperty, Path paramPath)
   {
-    AppMethodBeat.i(192451);
+    AppMethodBeat.i(201619);
     if (Build.VERSION.SDK_INT >= 21)
     {
       paramProperty = PropertyValuesHolder.ofObject(paramProperty, null, paramPath);
-      AppMethodBeat.o(192451);
+      AppMethodBeat.o(201619);
       return paramProperty;
     }
     paramProperty = PropertyValuesHolder.ofFloat(new k(paramProperty, paramPath), new float[] { 0.0F, 1.0F });
-    AppMethodBeat.o(192451);
+    AppMethodBeat.o(201619);
     return paramProperty;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.transition.l
  * JD-Core Version:    0.7.0.1
  */

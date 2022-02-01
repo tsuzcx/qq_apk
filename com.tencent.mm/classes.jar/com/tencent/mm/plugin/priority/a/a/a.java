@@ -3,19 +3,20 @@ package com.tencent.mm.plugin.priority.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.ah;
 import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.util.Calendar;
 
 public final class a
 {
-  public static String aw(String paramString1, String paramString2, String paramString3)
+  public static String aK(String paramString1, String paramString2, String paramString3)
   {
     int i = 1;
     AppMethodBeat.i(40495);
-    Object localObject = new q(paramString1);
-    if (!((q)localObject).ifE()) {
-      ((q)localObject).ifL();
+    Object localObject = new u(paramString1);
+    if (!((u)localObject).jKS()) {
+      ((u)localObject).jKY();
     }
     if (Util.isNullOrNil(paramString2))
     {
@@ -30,7 +31,7 @@ public final class a
       localObject = paramString2;
       try
       {
-        if (!new q(paramString2).ifB().bOF().equalsIgnoreCase(new q(paramString1).bOF()))
+        if (!ah.v(new u(paramString2).jKP().jKT()).equalsIgnoreCase(ah.v(new u(paramString1).jKT())))
         {
           localObject = paramString1 + "da_" + Util.nowMilliSecond();
           Log.w("MicroMsg.Priority.PriorityUtil", "maybe DirTraversal attach. %s", new Object[] { localObject });
@@ -47,7 +48,7 @@ public final class a
         }
         String str = paramString1 + (String)localObject;
         paramString2 = str;
-        if (!u.agG(str)) {
+        if (!y.ZC(str)) {
           continue;
         }
         for (;;)
@@ -55,7 +56,7 @@ public final class a
           paramString2 = str;
           if (i < 20)
           {
-            if (!u.agG(paramString1 + i + "_" + (String)localObject)) {
+            if (!y.ZC(paramString1 + i + "_" + (String)localObject)) {
               paramString2 = paramString1 + i + "_" + (String)localObject;
             }
           }
@@ -90,7 +91,7 @@ public final class a
     }
   }
   
-  public static long foJ()
+  public static long gzM()
   {
     AppMethodBeat.i(40496);
     Calendar localCalendar = Calendar.getInstance();
@@ -103,7 +104,7 @@ public final class a
     return l;
   }
   
-  public static final boolean iQ(int paramInt1, int paramInt2)
+  public static final boolean kw(int paramInt1, int paramInt2)
   {
     return (paramInt1 & paramInt2) > 0;
   }

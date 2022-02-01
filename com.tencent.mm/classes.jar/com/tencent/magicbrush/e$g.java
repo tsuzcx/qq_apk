@@ -1,13 +1,13 @@
 package com.tencent.magicbrush;
 
+import kotlin.Metadata;
 import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/magicbrush/V8RawPointer;", "invoke"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/magicbrush/V8RawPointer;", "invoke"}, k=3, mv={1, 1, 16})
 public final class e$g
-  extends q
-  implements a<al>
+  extends u
+  implements a<an>
 {
   public e$g(long paramLong1, long paramLong2, long paramLong3)
   {

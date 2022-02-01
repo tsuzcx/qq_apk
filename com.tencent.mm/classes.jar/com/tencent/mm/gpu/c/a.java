@@ -9,25 +9,24 @@ import android.opengl.EGLContext;
 import android.opengl.EGLDisplay;
 import android.opengl.EGLSurface;
 import android.opengl.GLES20;
+import com.tencent.matrix.openglleak.hook.OpenGLHook;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.gpu.f.c;
-import com.tencent.mm.gpu.g.b;
-import com.tencent.mm.openglapihook.OpenGLHook;
+import com.tencent.mm.gpu.e.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 
 public final class a
 {
-  private static EGLConfig jUW;
-  private static EGLContext jUX;
-  private static EGLSurface jUY;
-  private static boolean jUZ = false;
+  private static EGLConfig eYa;
+  private static EGLContext eYb;
+  private static EGLSurface eYc;
   private static EGLDisplay mEGLDisplay;
+  private static boolean mvk = false;
   
-  public static void aEI()
+  public static void aXN()
   {
-    AppMethodBeat.i(210858);
+    AppMethodBeat.i(231767);
     Log.i("MicroMsg.OpenGLHookUtils", "[sunny]ec:%d,t:%s,itv:%d", new Object[] { Integer.valueOf(1), "OpenGL_Api_Hook", Integer.valueOf(120) });
     try
     {
@@ -39,26 +38,26 @@ public final class a
       localIntent.putExtra("exec_tag", "OpenGL_Api_Hook");
       localContext.startService(localIntent);
       Log.e("MicroMsg.OpenGLHookUtils", "PluginGpuRes startGpuHookService success");
-      AppMethodBeat.o(210858);
+      AppMethodBeat.o(231767);
       return;
     }
     catch (Exception localException)
     {
       Log.e("MicroMsg.OpenGLHookUtils", "GpuHookService.enableGpuHook :" + localException.getMessage());
-      AppMethodBeat.o(210858);
+      AppMethodBeat.o(231767);
     }
   }
   
   public static void hook()
   {
-    AppMethodBeat.i(210857);
-    boolean bool = b.aES();
+    AppMethodBeat.i(231761);
+    boolean bool = b.aXT();
     Log.e("MicroMsg.OpenGLHookUtils", "hasUpdate = ".concat(String.valueOf(bool)));
     if (bool)
     {
-      aEI();
+      aXN();
       Log.e("MicroMsg.OpenGLHookUtils", "undo opengl this time because system gpu so change");
-      AppMethodBeat.o(210857);
+      AppMethodBeat.o(231761);
       return;
     }
     Object localObject1 = MultiProcessMMKV.getMMKV("mmkv_gpu_service_key_muti");
@@ -67,17 +66,17 @@ public final class a
     if (localObject2 == EGL14.EGL_NO_DISPLAY)
     {
       Log.e("MicroMsg.OpenGLHookUtils", "mEGLDisplay == EGL14.EGL_NO_DISPLAY");
-      jUZ = true;
+      mvk = true;
     }
-    while (jUZ)
+    while (mvk)
     {
-      AppMethodBeat.o(210857);
+      AppMethodBeat.o(231761);
       return;
       localObject2 = new int[2];
       if (!EGL14.eglInitialize(mEGLDisplay, (int[])localObject2, 0, (int[])localObject2, 1))
       {
         Log.e("MicroMsg.OpenGLHookUtils", "eglInitialize fail");
-        jUZ = true;
+        mvk = true;
       }
       else
       {
@@ -86,37 +85,37 @@ public final class a
         if (!EGL14.eglChooseConfig(mEGLDisplay, new int[] { 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12344 }, 0, (EGLConfig[])localObject3, 0, 1, (int[])localObject2, 0))
         {
           Log.e("MicroMsg.OpenGLHookUtils", "eglChooseConfig fail");
-          jUZ = true;
+          mvk = true;
         }
         else
         {
-          jUW = localObject3[0];
+          eYa = localObject3[0];
           MultiProcessMMKV.getSingleMMKV("mmkv_gpu_service_key_single");
-          localObject2 = EGL14.eglCreateContext(mEGLDisplay, jUW, EGL14.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 }, 0);
-          jUX = (EGLContext)localObject2;
+          localObject2 = EGL14.eglCreateContext(mEGLDisplay, eYa, EGL14.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 }, 0);
+          eYb = (EGLContext)localObject2;
           if (localObject2 == EGL14.EGL_NO_CONTEXT)
           {
             Log.e("MicroMsg.OpenGLHookUtils", "EGL14.eglGetError() = ".concat(String.valueOf(EGL14.eglGetError())));
             Log.e("MicroMsg.OpenGLHookUtils", "mEglContext == EGL14.EGL_NO_CONTEXT");
-            jUZ = true;
+            mvk = true;
           }
           else
           {
-            localObject2 = EGL14.eglCreatePbufferSurface(mEGLDisplay, jUW, new int[] { 12375, 64, 12374, 64, 12344 }, 0);
-            jUY = (EGLSurface)localObject2;
+            localObject2 = EGL14.eglCreatePbufferSurface(mEGLDisplay, eYa, new int[] { 12375, 64, 12374, 64, 12344 }, 0);
+            eYc = (EGLSurface)localObject2;
             if (localObject2 == EGL14.EGL_NO_SURFACE)
             {
               Log.e("MicroMsg.OpenGLHookUtils", "mEglSurface == EGL14.EGL_NO_SURFACE");
-              jUZ = true;
+              mvk = true;
             }
             else
             {
               localObject2 = mEGLDisplay;
-              localObject3 = jUY;
-              if (!EGL14.eglMakeCurrent((EGLDisplay)localObject2, (EGLSurface)localObject3, (EGLSurface)localObject3, jUX))
+              localObject3 = eYc;
+              if (!EGL14.eglMakeCurrent((EGLDisplay)localObject2, (EGLSurface)localObject3, (EGLSurface)localObject3, eYb))
               {
                 Log.e("MicroMsg.OpenGLHookUtils", "eglMakeCurrent fail");
-                jUZ = true;
+                mvk = true;
               }
               else
               {
@@ -137,52 +136,51 @@ public final class a
     int i3 = ((MultiProcessMMKV)localObject1).getInt("glDeleteRenderbuffers_index", -1);
     int i4 = ((MultiProcessMMKV)localObject1).getInt("glGetError_index", -1);
     OpenGLHook.getInstance().init();
-    OpenGLHook.getInstance().setListener(new com.tencent.mm.gpu.d.a());
     if ((i < 0) || (j < 0))
     {
       Log.e("MicroMsg.OpenGLHookUtils", "opengl hook fail : Textures : %d,%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-      c.f(1403L, 6L, 1L);
-      c.aEO();
+      com.tencent.mm.gpu.d.a.hz(6L);
+      com.tencent.mm.gpu.d.a.aXP();
       if ((k >= 0) && (m >= 0)) {
-        break label915;
+        break label878;
       }
       Log.e("MicroMsg.OpenGLHookUtils", "opengl hook fail : Buffers : %d,%d", new Object[] { Integer.valueOf(k), Integer.valueOf(m) });
-      c.f(1403L, 7L, 1L);
-      c.aEO();
-      label633:
+      com.tencent.mm.gpu.d.a.hz(7L);
+      com.tencent.mm.gpu.d.a.aXP();
+      label612:
       if ((n >= 0) && (i1 >= 0)) {
-        break label998;
+        break label957;
       }
       Log.e("MicroMsg.OpenGLHookUtils", "opengl hook fail : Framebuffers : %d,%d", new Object[] { Integer.valueOf(n), Integer.valueOf(i1) });
-      c.f(1403L, 8L, 1L);
-      c.aEO();
-      label684:
+      com.tencent.mm.gpu.d.a.hz(8L);
+      com.tencent.mm.gpu.d.a.aXP();
+      label659:
       if ((i2 >= 0) && (i3 >= 0)) {
-        break label1085;
+        break label1040;
       }
       Log.e("MicroMsg.OpenGLHookUtils", "opengl hook fail : Renderbuffers : %d,%d", new Object[] { Integer.valueOf(i2), Integer.valueOf(i3) });
-      c.f(1403L, 9L, 1L);
-      c.aEO();
-      label735:
+      com.tencent.mm.gpu.d.a.hz(9L);
+      com.tencent.mm.gpu.d.a.aXP();
+      label706:
       if (i4 >= 0) {
-        break label1172;
+        break label1123;
       }
       Log.e("MicroMsg.OpenGLHookUtils", "opengl hook fail : GetError : %d", new Object[] { Integer.valueOf(i4) });
-      c.f(1403L, 10L, 1L);
-      c.aEO();
+      com.tencent.mm.gpu.d.a.hz(10L);
+      com.tencent.mm.gpu.d.a.aXP();
     }
     for (;;)
     {
       MultiProcessMMKV.getSingleMMKV("mmkv_gpu_service_key_single");
-      EGL14.eglDestroySurface(mEGLDisplay, jUY);
-      EGL14.eglDestroyContext(mEGLDisplay, jUX);
+      EGL14.eglDestroySurface(mEGLDisplay, eYc);
+      EGL14.eglDestroyContext(mEGLDisplay, eYb);
       EGL14.eglReleaseThread();
       EGL14.eglTerminate(mEGLDisplay);
       mEGLDisplay = null;
-      jUW = null;
-      jUX = null;
-      jUY = null;
-      AppMethodBeat.o(210857);
+      eYa = null;
+      eYb = null;
+      eYc = null;
+      AppMethodBeat.o(231761);
       return;
       OpenGLHook.getInstance().hook("glGenTextures", i);
       OpenGLHook.getInstance().hook("glDeleteTextures", j);
@@ -190,45 +188,45 @@ public final class a
       GLES20.glGenTextures(1, (int[])localObject1, 0);
       GLES20.glDeleteTextures(1, (int[])localObject1, 0);
       Log.i("MicroMsg.OpenGLHookUtils", "opengl hook succ : Textures : %d,%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-      c.f(1403L, 13L, 1L);
-      c.aEN();
+      com.tencent.mm.gpu.d.a.hz(13L);
+      com.tencent.mm.gpu.d.a.aXO();
       break;
-      label915:
+      label878:
       OpenGLHook.getInstance().hook("glGenBuffers", k);
       OpenGLHook.getInstance().hook("glDeleteBuffers", m);
       localObject1 = new int[1];
       GLES20.glGenBuffers(1, (int[])localObject1, 0);
       GLES20.glDeleteBuffers(1, (int[])localObject1, 0);
       Log.i("MicroMsg.OpenGLHookUtils", "opengl hook succ : Buffers : %d,%d", new Object[] { Integer.valueOf(k), Integer.valueOf(m) });
-      c.f(1403L, 14L, 1L);
-      c.aEN();
-      break label633;
-      label998:
+      com.tencent.mm.gpu.d.a.hz(14L);
+      com.tencent.mm.gpu.d.a.aXO();
+      break label612;
+      label957:
       OpenGLHook.getInstance().hook("glGenFramebuffers", n);
       OpenGLHook.getInstance().hook("glDeleteFramebuffers", i1);
       localObject1 = new int[1];
       GLES20.glGenFramebuffers(1, (int[])localObject1, 0);
       GLES20.glDeleteFramebuffers(1, (int[])localObject1, 0);
       Log.i("MicroMsg.OpenGLHookUtils", "opengl hook succ : Framebuffers : %d,%d", new Object[] { Integer.valueOf(n), Integer.valueOf(i1) });
-      c.f(1403L, 15L, 1L);
-      c.aEN();
-      break label684;
-      label1085:
+      com.tencent.mm.gpu.d.a.hz(15L);
+      com.tencent.mm.gpu.d.a.aXO();
+      break label659;
+      label1040:
       OpenGLHook.getInstance().hook("glGenRenderbuffers", i2);
       OpenGLHook.getInstance().hook("glDeleteRenderbuffers", i3);
       localObject1 = new int[1];
       GLES20.glGenRenderbuffers(1, (int[])localObject1, 0);
       GLES20.glDeleteRenderbuffers(1, (int[])localObject1, 0);
       Log.i("MicroMsg.OpenGLHookUtils", "opengl hook succ : Renderbuffers : %d,%d", new Object[] { Integer.valueOf(i2), Integer.valueOf(i3) });
-      c.f(1403L, 16L, 1L);
-      c.aEN();
-      break label735;
-      label1172:
+      com.tencent.mm.gpu.d.a.hz(16L);
+      com.tencent.mm.gpu.d.a.aXO();
+      break label706;
+      label1123:
       OpenGLHook.getInstance().hook("glGetError", i4);
       GLES20.glGetError();
       Log.i("MicroMsg.OpenGLHookUtils", "opengl hook succ : GetError : %d", new Object[] { Integer.valueOf(i4) });
-      c.f(1403L, 17L, 1L);
-      c.aEN();
+      com.tencent.mm.gpu.d.a.hz(17L);
+      com.tencent.mm.gpu.d.a.aXO();
     }
   }
 }

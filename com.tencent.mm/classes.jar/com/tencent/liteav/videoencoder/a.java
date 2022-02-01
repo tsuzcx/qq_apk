@@ -1,6 +1,5 @@
 package com.tencent.liteav.videoencoder;
 
-import android.annotation.TargetApi;
 import android.media.MediaCodec;
 import android.media.MediaCodec.BufferInfo;
 import android.media.MediaCodec.CodecException;
@@ -11,11 +10,8 @@ import android.media.MediaCodecInfo.EncoderCapabilities;
 import android.media.MediaCodecList;
 import android.media.MediaFormat;
 import android.opengl.GLES20;
-import android.os.Build;
-import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Process;
 import android.util.Range;
 import android.view.Surface;
 import com.tencent.liteav.basic.log.TXCLog;
@@ -25,6 +21,7 @@ import com.tencent.liteav.basic.opengl.j;
 import com.tencent.liteav.basic.opengl.l;
 import com.tencent.liteav.basic.opengl.m;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
+import com.tencent.liteav.basic.util.TXCBuild;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
 import com.tencent.liteav.basic.util.g;
@@ -134,27 +131,27 @@ public class a
     {
       public void run()
       {
-        AppMethodBeat.i(229070);
+        AppMethodBeat.i(14784);
         a.a(a.this);
-        AppMethodBeat.o(229070);
+        AppMethodBeat.o(14784);
       }
     };
     this.w = new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(14789);
+        AppMethodBeat.i(14850);
         a.d(a.this, 10);
-        AppMethodBeat.o(14789);
+        AppMethodBeat.o(14850);
       }
     };
     this.x = new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(14822);
+        AppMethodBeat.i(14789);
         a.d(a.this, 1);
-        AppMethodBeat.o(14822);
+        AppMethodBeat.o(14789);
       }
     };
     this.y = new ArrayDeque(10);
@@ -191,12 +188,12 @@ public class a
     {
       public void run()
       {
-        AppMethodBeat.i(14857);
+        AppMethodBeat.i(14822);
         a.b(a.this, System.currentTimeMillis());
         a.f(a.this);
         a.g(a.this);
         a.h(a.this);
-        AppMethodBeat.o(14857);
+        AppMethodBeat.o(14822);
       }
     };
     this.u = new i("HWVideoEncoder");
@@ -581,7 +578,6 @@ public class a
     return l1;
   }
   
-  @TargetApi(16)
   private static MediaCodecInfo a(String paramString)
   {
     AppMethodBeat.i(14871);
@@ -611,7 +607,6 @@ public class a
     return null;
   }
   
-  @TargetApi(16)
   private MediaFormat a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     AppMethodBeat.i(14869);
@@ -629,7 +624,6 @@ public class a
     return localMediaFormat;
   }
   
-  @TargetApi(16)
   private MediaFormat a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, boolean paramBoolean)
   {
     AppMethodBeat.i(14870);
@@ -639,7 +633,7 @@ public class a
       AppMethodBeat.o(14870);
       return null;
     }
-    if (Build.VERSION.SDK_INT >= 21)
+    if (TXCBuild.VersionInt() >= 21)
     {
       Object localObject = a(this.t);
       if (localObject == null)
@@ -656,7 +650,7 @@ public class a
       {
         localMediaFormat.setInteger("complexity", ((Integer)localEncoderCapabilities.getComplexityRange().clamp(Integer.valueOf(5))).intValue());
         paramInt2 = 0;
-        if (Build.VERSION.SDK_INT < 23) {
+        if (TXCBuild.VersionInt() < 23) {
           break;
         }
         localObject = ((MediaCodecInfo.CodecCapabilities)localObject).profileLevels;
@@ -700,7 +694,7 @@ public class a
   
   private void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(229954);
+    AppMethodBeat.i(229654);
     TXCLog.i("TXCHWVideoEncoder", "createCopyTexture");
     synchronized (this.aa)
     {
@@ -708,7 +702,7 @@ public class a
       this.Z.a(true);
       this.Z.a();
       this.Z.a(paramInt1, paramInt2);
-      AppMethodBeat.o(229954);
+      AppMethodBeat.o(229654);
       return;
     }
   }
@@ -749,7 +743,6 @@ public class a
     return true;
   }
   
-  @TargetApi(18)
   private boolean a(TXSVideoEncoderParam paramTXSVideoEncoderParam)
   {
     int i2 = 2;
@@ -835,7 +828,7 @@ public class a
     {
       this.M = i1;
       this.N = i2;
-      if ((this.R) && (Build.VERSION.SDK_INT >= 21)) {
+      if ((this.R) && (TXCBuild.VersionInt() >= 21)) {
         this.N = 1;
       }
       if (c()) {
@@ -952,7 +945,6 @@ public class a
     AppMethodBeat.o(182431);
   }
   
-  @TargetApi(18)
   private void b(int paramInt)
   {
     AppMethodBeat.i(14880);
@@ -1051,14 +1043,14 @@ public class a
       if (this.ai)
       {
         paramInt = 1;
-        Monitor.a(4, "restart video hw encoder when down bps。[module:" + Build.MODEL + "] [Hardware:" + Build.HARDWARE + "] [osVersion:" + Build.VERSION.RELEASE + "]", "", 0);
+        Monitor.a(4, "restart video hw encoder when down bps。[module:" + TXCBuild.Model() + "] [Hardware:" + TXCBuild.Hardware() + "] [osVersion:" + TXCBuild.Version() + "]", "", 0);
       }
     }
     long l1;
     for (;;)
     {
       this.i = this.a;
-      if ((Build.VERSION.SDK_INT < 19) || (this.s == null)) {
+      if ((TXCBuild.VersionInt() < 19) || (this.s == null)) {
         break label288;
       }
       if (paramInt == 0) {
@@ -1091,8 +1083,9 @@ public class a
   private boolean c()
   {
     AppMethodBeat.i(182432);
-    if (Build.VERSION.SDK_INT < 18)
+    if (TXCBuild.VersionInt() < 18)
     {
+      TXCLog.e("TXCHWVideoEncoder", "[Encoder] startEncoder TXCBuild.VersionInt() < 18");
       AppMethodBeat.o(182432);
       return false;
     }
@@ -1198,7 +1191,7 @@ public class a
             {
               TXCLog.i("TXCHWVideoEncoder", "[Encoder] set fmt error. fmt:".concat(String.valueOf(localMediaFormat1)));
             }
-            if ((!(localException8 instanceof IllegalArgumentException)) && ((Build.VERSION.SDK_INT < 21) || (!(localException8 instanceof MediaCodec.CodecException)))) {
+            if ((!(localException8 instanceof IllegalArgumentException)) && ((TXCBuild.VersionInt() < 21) || (!(localException8 instanceof MediaCodec.CodecException)))) {
               continue;
             }
             localMediaFormat1 = a(this.mOutputWidth, this.mOutputHeight, this.a, this.L, this.K);
@@ -1231,7 +1224,7 @@ public class a
       }
       catch (Exception localException2) {}
       continue;
-      if ((!(localException8 instanceof IllegalArgumentException)) && ((Build.VERSION.SDK_INT < 21) || (!(localException8 instanceof MediaCodec.CodecException)))) {
+      if ((!(localException8 instanceof IllegalArgumentException)) && ((TXCBuild.VersionInt() < 21) || (!(localException8 instanceof MediaCodec.CodecException)))) {
         continue;
       }
       localMediaFormat2 = a(this.mOutputWidth, this.mOutputHeight, this.a, this.L, this.K);
@@ -1330,7 +1323,7 @@ public class a
       AppMethodBeat.o(14886);
       return;
     }
-    if (Build.VERSION.SDK_INT < 18)
+    if (TXCBuild.VersionInt() < 18)
     {
       AppMethodBeat.o(14886);
       return;
@@ -1385,7 +1378,7 @@ public class a
   private void f()
   {
     AppMethodBeat.i(14883);
-    if ((Build.VERSION.SDK_INT >= 19) && (this.s != null))
+    if ((TXCBuild.VersionInt() >= 19) && (this.s != null))
     {
       Bundle localBundle = new Bundle();
       localBundle.putInt("request-sync", 0);
@@ -1430,7 +1423,7 @@ public class a
         if (l3 - l4 > l1)
         {
           this.ai = true;
-          String str = "real bitrate is too much lower than target bitrate![current profile:" + this.N + "][targetBr:" + this.ah + "] [realBr:" + this.b + "]. restart encoder. [module:" + Build.MODEL + "] [Hardware:" + Build.HARDWARE + "] [osVersion:" + Build.VERSION.RELEASE + "]";
+          String str = "real bitrate is too much lower than target bitrate![current profile:" + this.N + "][targetBr:" + this.ah + "] [realBr:" + this.b + "]. restart encoder. [module:" + TXCBuild.Model() + "] [Hardware:" + TXCBuild.Hardware() + "] [osVersion:" + TXCBuild.Version() + "]";
           TXCLog.e("TXCHWVideoEncoder", str);
           Monitor.a(3, str, "", 0);
           if (this.R)
@@ -1591,10 +1584,10 @@ public class a
       {
         public void run()
         {
-          AppMethodBeat.i(14784);
+          AppMethodBeat.i(14820);
           if ((a.b(a.this) == true) || (a.c(a.this) == null))
           {
-            AppMethodBeat.o(14784);
+            AppMethodBeat.o(14820);
             return;
           }
           int k = paramInt1;
@@ -1637,14 +1630,14 @@ public class a
             }
             a.a(a.this, true);
             a.a(a.this);
-            AppMethodBeat.o(14784);
+            AppMethodBeat.o(14820);
             return;
             i = a.this.mOutputWidth;
             break;
           }
           label354:
           a.d(a.this);
-          AppMethodBeat.o(14784);
+          AppMethodBeat.o(14820);
         }
       });
       AppMethodBeat.o(14866);
@@ -1686,9 +1679,9 @@ public class a
     {
       public void run()
       {
-        AppMethodBeat.i(14820);
+        AppMethodBeat.i(14851);
         a.b(a.this, paramInt);
-        AppMethodBeat.o(14820);
+        AppMethodBeat.o(14851);
       }
     });
     AppMethodBeat.o(14863);
@@ -1702,9 +1695,9 @@ public class a
     {
       public void run()
       {
-        AppMethodBeat.i(14788);
+        AppMethodBeat.i(14858);
         a.b(a.this, paramInt1);
-        AppMethodBeat.o(14788);
+        AppMethodBeat.o(14858);
       }
     });
     AppMethodBeat.o(14864);
@@ -1719,9 +1712,9 @@ public class a
     {
       public void run()
       {
-        AppMethodBeat.i(14858);
+        AppMethodBeat.i(14787);
         a.a(a.this, paramInt);
-        AppMethodBeat.o(14858);
+        AppMethodBeat.o(14787);
       }
     });
     AppMethodBeat.o(14862);
@@ -1730,23 +1723,6 @@ public class a
   public void setGLFinishedTextureNeed(boolean paramBoolean)
   {
     this.ae = paramBoolean;
-  }
-  
-  public void setThreadPriority(final com.tencent.liteav.basic.structs.c paramc)
-  {
-    AppMethodBeat.i(229883);
-    super.setThreadPriority(paramc);
-    this.u.b(new Runnable()
-    {
-      public void run()
-      {
-        AppMethodBeat.i(14785);
-        TXCLog.i("TXCHWVideoEncoder", "setThreadPriority: priority:" + paramc);
-        Process.setThreadPriority(paramc.a());
-        AppMethodBeat.o(14785);
-      }
-    });
-    AppMethodBeat.o(229883);
   }
   
   public void signalEOSAndFlush()
@@ -1761,10 +1737,10 @@ public class a
     {
       public void run()
       {
-        AppMethodBeat.i(14850);
+        AppMethodBeat.i(14788);
         if (a.e(a.this) == null)
         {
-          AppMethodBeat.o(14850);
+          AppMethodBeat.o(14788);
           return;
         }
         try
@@ -1772,7 +1748,7 @@ public class a
           a.e(a.this).signalEndOfInputStream();
           while (a.c(a.this, 10) >= 0) {}
           a.a(a.this);
-          AppMethodBeat.o(14850);
+          AppMethodBeat.o(14788);
           return;
         }
         catch (Exception localException)
@@ -1792,7 +1768,7 @@ public class a
     AppMethodBeat.i(14860);
     super.start(paramTXSVideoEncoderParam);
     int i1 = 1;
-    if (Build.VERSION.SDK_INT < 18) {
+    if (TXCBuild.VersionInt() < 18) {
       i1 = 0;
     }
     while (i1 != 0)
@@ -1803,7 +1779,7 @@ public class a
       {
         public void run()
         {
-          AppMethodBeat.i(14787);
+          AppMethodBeat.i(14785);
           String str1 = "unknown";
           String str2 = "unknown";
           label80:
@@ -1853,7 +1829,7 @@ public class a
               break label418;
             }
             Monitor.a(2, String.format("VideoEncoder[%d]: Start successfully, streamType:%d", new Object[] { Integer.valueOf(a.this.hashCode()), Integer.valueOf(paramTXSVideoEncoderParam.streamType) }), "streamType: 2-big, 3-small, 7-sub", 0);
-            AppMethodBeat.o(14787);
+            AppMethodBeat.o(14785);
             return;
             str1 = "CBR";
             break;
@@ -1872,7 +1848,7 @@ public class a
           }
           label418:
           a.this.callDelegate(10000004);
-          AppMethodBeat.o(14787);
+          AppMethodBeat.o(14785);
         }
       });
     }
@@ -1888,13 +1864,13 @@ public class a
     {
       public void run()
       {
-        AppMethodBeat.i(14851);
+        AppMethodBeat.i(14857);
         if (a.this.mInit)
         {
           Monitor.a(2, String.format("VideoEncoder[%d]: Stop, streamType:%d", new Object[] { Integer.valueOf(a.this.hashCode()), Integer.valueOf(a.this.mStreamType) }), "streamType: 2-big, 3-small, 7-sub", 0);
           a.a(a.this);
         }
-        AppMethodBeat.o(14851);
+        AppMethodBeat.o(14857);
       }
     });
     h();
@@ -1903,7 +1879,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.videoencoder.a
  * JD-Core Version:    0.7.0.1
  */

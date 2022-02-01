@@ -61,7 +61,7 @@ public class MMKLoadingImage
   public void startAnimating()
   {
     AppMethodBeat.i(19085);
-    this.circleProgressDrawable.cmW();
+    this.circleProgressDrawable.cQH();
     this.circleProgressDrawable.start();
     this.progressBar.setVisibility(0);
     AppMethodBeat.o(19085);
@@ -77,7 +77,7 @@ public class MMKLoadingImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKLoadingImage
  * JD-Core Version:    0.7.0.1
  */

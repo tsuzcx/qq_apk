@@ -2,33 +2,36 @@ package com.tencent.mm.plugin.card;
 
 public final class a$c
 {
-  public static final int list_item_normal = 2131233457;
-  public static final int list_item_normal_un = 2131233459;
-  public static final int mm_trans = 2131234111;
-  public static final int my_card_package_defaultlogo = 2131234337;
-  public static final int tab = 2131231497;
-  public static final int tac = 2131231498;
-  public static final int tad = 2131231509;
-  public static final int tae = 2131231529;
-  public static final int taf = 2131231531;
-  public static final int tah = 2131231532;
-  public static final int tai = 2131231534;
-  public static final int taj = 2131231544;
-  public static final int tak = 2131231559;
-  public static final int tal = 2131231570;
-  public static final int tam = 2131231571;
-  public static final int tan = 2131231579;
-  public static final int tao = 2131231580;
-  public static final int tap = 2131231583;
-  public static final int taq = 2131231584;
-  public static final int tar = 2131231587;
-  public static final int tas = 2131231588;
-  public static final int tat = 2131231589;
-  public static final int tau = 2131231592;
+  public static final int list_item_normal = 2131233131;
+  public static final int list_item_normal_un = 2131233133;
+  public static final int mm_trans = 2131233518;
+  public static final int my_card_package_defaultlogo = 2131233665;
+  public static final int weA = 2131231450;
+  public static final int weB = 2131231451;
+  public static final int weC = 2131231454;
+  public static final int weD = 2131233853;
+  public static final int wei = 2131231378;
+  public static final int wej = 2131231379;
+  public static final int wek = 2131231383;
+  public static final int wel = 2131231390;
+  public static final int wem = 2131231403;
+  public static final int wen = 2131231405;
+  public static final int weo = 2131231406;
+  public static final int wep = 2131231407;
+  public static final int weq = 2131231415;
+  public static final int wer = 2131231417;
+  public static final int wes = 2131231427;
+  public static final int wet = 2131231435;
+  public static final int weu = 2131231436;
+  public static final int wev = 2131231442;
+  public static final int wew = 2131231443;
+  public static final int wex = 2131231445;
+  public static final int wey = 2131231446;
+  public static final int wez = 2131231449;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.a.c
  * JD-Core Version:    0.7.0.1
  */

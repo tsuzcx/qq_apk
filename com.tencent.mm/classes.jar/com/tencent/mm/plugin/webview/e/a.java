@@ -1,39 +1,23 @@
 package com.tencent.mm.plugin.webview.e;
 
-import android.text.TextUtils;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.d.n;
-import com.tencent.mm.plugin.webview.ui.tools.jsapi.h;
+import kotlin.Metadata;
 
-public final class a
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/permission/AuthCallback;", "T", "", "onAuthEnd", "", "reason", "", "reqUrl", "", "onAuthStart", "onContentRedirect", "content", "onError", "errType", "errCode", "errMsg", "onPermissionUpdate", "fullUrl", "response", "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V", "onProcessResult", "", "(ILjava/lang/String;Ljava/lang/Object;)Z", "onUrlRedirect", "forceRedirect", "(IZLjava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface a<T>
 {
-  public static final String[] SuK = { "cache", "publicCache" };
+  public abstract void J(int paramInt, String paramString1, String paramString2);
   
-  public static boolean a(n paramn, h paramh)
-  {
-    AppMethodBeat.i(218700);
-    if ((paramh == null) || (paramn == null) || (TextUtils.isEmpty(paramn.function)))
-    {
-      AppMethodBeat.o(218700);
-      return false;
-    }
-    String[] arrayOfString = SuK;
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      String str = arrayOfString[i];
-      if (str.equalsIgnoreCase(paramn.function))
-      {
-        paramh.a(paramn, str + ":not in white list", null);
-        AppMethodBeat.o(218700);
-        return true;
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(218700);
-    return false;
-  }
+  public abstract void a(int paramInt1, String paramString1, int paramInt2, int paramInt3, String paramString2);
+  
+  public abstract void a(int paramInt, String paramString1, String paramString2, T paramT);
+  
+  public abstract void a(int paramInt, boolean paramBoolean, String paramString1, String paramString2, T paramT);
+  
+  public abstract boolean b(int paramInt, String paramString, T paramT);
+  
+  public abstract void ca(int paramInt, String paramString);
+  
+  public abstract void cb(int paramInt, String paramString);
 }
 
 

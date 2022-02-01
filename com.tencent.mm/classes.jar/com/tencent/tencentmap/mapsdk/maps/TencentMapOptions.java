@@ -39,6 +39,7 @@ public final class TencentMapOptions
   private String mCustomCacheRootPath;
   private String mCustomUserId;
   private String[] mDebugTags;
+  private boolean mDisallowIntercept;
   private Object mExtSurface;
   private int mExtSurfaceHeight;
   private int mExtSurfaceWidth;
@@ -48,9 +49,11 @@ public final class TencentMapOptions
   private TencentMapOptions.IMapKernel mMapKernel;
   private String mMapKey;
   private MapViewType mMapViewType;
+  private int mMaxIconMemoryCacheSize = 30;
   private AdapterType mNetAdapterType = AdapterType.DEFAULT;
   private Bundle mNetParams;
   private boolean mOfflineMapEnable;
+  private boolean mOpaque = true;
   private OverSeaSource mOverSeaSource = OverSeaSource.DEFAULT;
   private Object mProtocolDataDesc;
   private int mProtocolFrom;
@@ -100,7 +103,7 @@ public final class TencentMapOptions
       AppMethodBeat.o(181046);
       return true;
     }
-    if (!(paramObject instanceof TencentMapOptions))
+    if ((paramObject == null) || (getClass() != paramObject.getClass()))
     {
       AppMethodBeat.o(181046);
       return false;
@@ -137,6 +140,11 @@ public final class TencentMapOptions
       return false;
     }
     if (Float.compare(paramObject.mMapFrameRate, this.mMapFrameRate) != 0)
+    {
+      AppMethodBeat.o(181046);
+      return false;
+    }
+    if (this.mForceHttps != paramObject.mForceHttps)
     {
       AppMethodBeat.o(181046);
       return false;
@@ -395,6 +403,11 @@ public final class TencentMapOptions
     return this.mMapViewType;
   }
   
+  public final int getMaxIconMemoryCacheSize()
+  {
+    return this.mMaxIconMemoryCacheSize;
+  }
+  
   public final AdapterType getNetAdapterType()
   {
     return this.mNetAdapterType;
@@ -450,205 +463,227 @@ public final class TencentMapOptions
   
   public final int hashCode()
   {
-    int i14 = 1;
-    int i17 = 0;
+    int i18 = 1;
     AppMethodBeat.i(181047);
     int i;
     int j;
-    label41:
+    label38:
     int k;
-    label56:
+    label53:
     int m;
-    label66:
+    label63:
     int n;
-    label82:
-    int i18;
+    label79:
     int i19;
-    int i1;
-    label110:
-    int i2;
-    label126:
-    int i3;
-    label142:
-    int i4;
-    label152:
     int i20;
-    int i5;
-    label177:
-    int i6;
-    label193:
-    int i7;
-    label209:
-    int i8;
-    label225:
+    int i1;
+    label107:
+    int i2;
+    label123:
+    int i3;
+    label139:
+    int i4;
+    label149:
     int i21;
+    int i5;
+    label174:
+    int i6;
+    label190:
+    int i7;
+    label206:
+    int i8;
+    label222:
+    int i22;
     int i9;
-    label247:
+    label244:
     int i10;
-    label263:
+    label260:
     int i11;
-    label279:
+    label276:
     int i12;
-    label295:
+    label292:
     int i13;
-    label311:
+    label308:
+    int i14;
     label318:
     int i15;
+    label334:
+    int i16;
+    label350:
+    int i17;
     if (this.customAssetsPath != null)
     {
       i = this.customAssetsPath.hashCode();
       if (this.customLocalPath == null) {
-        break label528;
+        break label541;
       }
       j = this.customLocalPath.hashCode();
       if (this.mCustomCacheRootPath == null) {
-        break label533;
+        break label546;
       }
       k = this.mCustomCacheRootPath.hashCode();
       if (!this.isHandDrawMapEnable) {
-        break label538;
+        break label551;
       }
       m = 1;
       if (this.mExtSurface == null) {
-        break label544;
+        break label557;
       }
       n = this.mExtSurface.hashCode();
-      i18 = this.mExtSurfaceWidth;
-      i19 = this.mExtSurfaceHeight;
+      i19 = this.mExtSurfaceWidth;
+      i20 = this.mExtSurfaceHeight;
       if (this.mSubId == null) {
-        break label550;
+        break label563;
       }
       i1 = this.mSubId.hashCode();
       if (this.mSubKey == null) {
-        break label556;
+        break label569;
       }
       i2 = this.mSubKey.hashCode();
       if (this.mMapKey == null) {
-        break label562;
+        break label575;
       }
       i3 = this.mMapKey.hashCode();
       if (!this.isEnableMultipleInfoWindow) {
-        break label568;
+        break label581;
       }
       i4 = 1;
-      i20 = Arrays.hashCode(this.mDebugTags);
+      i21 = Arrays.hashCode(this.mDebugTags);
       if (this.mSatelliteVersion == null) {
-        break label574;
+        break label587;
       }
       i5 = this.mSatelliteVersion.hashCode();
       if (this.mMapViewType == null) {
-        break label580;
+        break label593;
       }
       i6 = this.mMapViewType.hashCode();
       if (this.mMapKernel == null) {
-        break label586;
+        break label599;
       }
       i7 = this.mMapKernel.hashCode();
       if (this.mUserTypeface == null) {
-        break label592;
+        break label605;
       }
       i8 = this.mUserTypeface.hashCode();
-      i21 = this.mProtocolFrom;
+      i22 = this.mProtocolFrom;
       if (this.mProtocolDataDesc == null) {
-        break label598;
+        break label611;
       }
       i9 = this.mProtocolDataDesc.hashCode();
       if (this.mNetAdapterType == null) {
-        break label604;
+        break label617;
       }
       i10 = this.mNetAdapterType.hashCode();
       if (this.mNetParams == null) {
-        break label610;
+        break label623;
       }
       i11 = this.mNetParams.hashCode();
       if (this.mCustomUserId == null) {
-        break label616;
+        break label629;
       }
       i12 = this.mCustomUserId.hashCode();
       if (this.mMapCallback == null) {
-        break label622;
+        break label635;
       }
       i13 = this.mMapCallback.hashCode();
       if (!this.mOfflineMapEnable) {
-        break label628;
+        break label641;
       }
+      i14 = 1;
       if (this.mOverSeaSource == null) {
-        break label634;
+        break label647;
       }
       i15 = this.mOverSeaSource.hashCode();
-      label334:
       if (this.mTrafficStyle == null) {
-        break label640;
+        break label653;
+      }
+      i16 = this.mTrafficStyle.hashCode();
+      if (this.mMapFrameRate == 0.0F) {
+        break label659;
+      }
+      i17 = Float.floatToIntBits(this.mMapFrameRate);
+      label368:
+      if (!this.mForceHttps) {
+        break label665;
       }
     }
-    label640:
-    for (int i16 = this.mTrafficStyle.hashCode();; i16 = 0)
+    for (;;)
     {
-      if (this.mMapFrameRate != 0.0F) {
-        i17 = Float.floatToIntBits(this.mMapFrameRate);
-      }
       AppMethodBeat.o(181047);
-      return (i16 + (i15 + ((i13 + (i12 + (i11 + (i10 + (i9 + ((i8 + (i7 + (i6 + (i5 + ((i4 + (i3 + (i2 + (i1 + (((n + (m + (k + (j + i * 31) * 31) * 31) * 31) * 31 + i18) * 31 + i19) * 31) * 31) * 31) * 31) * 31 + i20) * 31) * 31) * 31) * 31) * 31 + i21) * 31) * 31) * 31) * 31) * 31) * 31 + i14) * 31) * 31) * 31 + i17;
+      return (i17 + (i16 + (i15 + (i14 + (i13 + (i12 + (i11 + (i10 + (i9 + ((i8 + (i7 + (i6 + (i5 + ((i4 + (i3 + (i2 + (i1 + (((n + (m + (k + (j + i * 31) * 31) * 31) * 31) * 31 + i19) * 31 + i20) * 31) * 31) * 31) * 31) * 31 + i21) * 31) * 31) * 31) * 31) * 31 + i22) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31 + i18;
       i = 0;
       break;
-      label528:
+      label541:
       j = 0;
-      break label41;
-      label533:
+      break label38;
+      label546:
       k = 0;
-      break label56;
-      label538:
+      break label53;
+      label551:
       m = 0;
-      break label66;
-      label544:
+      break label63;
+      label557:
       n = 0;
-      break label82;
-      label550:
+      break label79;
+      label563:
       i1 = 0;
-      break label110;
-      label556:
+      break label107;
+      label569:
       i2 = 0;
-      break label126;
-      label562:
+      break label123;
+      label575:
       i3 = 0;
-      break label142;
-      label568:
+      break label139;
+      label581:
       i4 = 0;
-      break label152;
-      label574:
+      break label149;
+      label587:
       i5 = 0;
-      break label177;
-      label580:
+      break label174;
+      label593:
       i6 = 0;
-      break label193;
-      label586:
+      break label190;
+      label599:
       i7 = 0;
-      break label209;
-      label592:
+      break label206;
+      label605:
       i8 = 0;
-      break label225;
-      label598:
+      break label222;
+      label611:
       i9 = 0;
-      break label247;
-      label604:
+      break label244;
+      label617:
       i10 = 0;
-      break label263;
-      label610:
+      break label260;
+      label623:
       i11 = 0;
-      break label279;
-      label616:
+      break label276;
+      label629:
       i12 = 0;
-      break label295;
-      label622:
+      break label292;
+      label635:
       i13 = 0;
-      break label311;
-      label628:
+      break label308;
+      label641:
       i14 = 0;
       break label318;
-      label634:
+      label647:
       i15 = 0;
       break label334;
+      label653:
+      i16 = 0;
+      break label350;
+      label659:
+      i17 = 0;
+      break label368;
+      label665:
+      i18 = 0;
     }
+  }
+  
+  public final boolean isDisallowInterceptTouchEvent()
+  {
+    return this.mDisallowIntercept;
   }
   
   public final boolean isForceHttps()
@@ -669,6 +704,11 @@ public final class TencentMapOptions
   public final boolean isOfflineMapEnable()
   {
     return this.mOfflineMapEnable;
+  }
+  
+  public final boolean isOpaque()
+  {
+    return this.mOpaque;
   }
   
   public final TencentMapOptions openDebugLogByTags(String... paramVarArgs)
@@ -701,17 +741,23 @@ public final class TencentMapOptions
     return this;
   }
   
+  public final TencentMapOptions setDisallowInterceptTouchEvent(boolean paramBoolean)
+  {
+    this.mDisallowIntercept = paramBoolean;
+    return this;
+  }
+  
   public final TencentMapOptions setExtSurface(Object paramObject)
   {
-    AppMethodBeat.i(237210);
+    AppMethodBeat.i(217932);
     if ((!(paramObject instanceof Surface)) && (!(paramObject instanceof SurfaceTexture)) && (!(paramObject instanceof SurfaceHolder)))
     {
       paramObject = new IllegalArgumentException("Parameter Surface should be Surface,SurfaceTexture or SurfaceHolder");
-      AppMethodBeat.o(237210);
+      AppMethodBeat.o(217932);
       throw paramObject;
     }
     this.mExtSurface = paramObject;
-    AppMethodBeat.o(237210);
+    AppMethodBeat.o(217932);
     return this;
   }
   
@@ -764,6 +810,12 @@ public final class TencentMapOptions
     return this;
   }
   
+  public final TencentMapOptions setMaxIconMemoryCacheSize(int paramInt)
+  {
+    this.mMaxIconMemoryCacheSize = paramInt;
+    return this;
+  }
+  
   public final TencentMapOptions setMultipleInfoWindowEnable(boolean paramBoolean)
   {
     this.isEnableMultipleInfoWindow = paramBoolean;
@@ -780,6 +832,12 @@ public final class TencentMapOptions
   public final TencentMapOptions setOfflineMapEnable(boolean paramBoolean)
   {
     this.mOfflineMapEnable = paramBoolean;
+    return this;
+  }
+  
+  public final TencentMapOptions setOpaque(boolean paramBoolean)
+  {
+    this.mOpaque = paramBoolean;
     return this;
   }
   
@@ -804,7 +862,7 @@ public final class TencentMapOptions
   
   public final TencentMapOptions setSubInfo(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(237228);
+    AppMethodBeat.i(217954);
     if (paramString1 != null)
     {
       this.mSubKey = paramString1.trim();
@@ -815,7 +873,7 @@ public final class TencentMapOptions
     label48:
     for (this.mSubId = paramString2.trim();; this.mSubId = "")
     {
-      AppMethodBeat.o(237228);
+      AppMethodBeat.o(217954);
       return this;
       this.mSubKey = "";
       break;
@@ -830,56 +888,23 @@ public final class TencentMapOptions
   
   public final TencentMapOptions setTypeface(Typeface paramTypeface)
   {
-    AppMethodBeat.i(237213);
+    AppMethodBeat.i(217938);
     setTypeface(paramTypeface, false);
-    AppMethodBeat.o(237213);
+    AppMethodBeat.o(217938);
     return this;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(237280);
-    StringBuffer localStringBuffer1 = new StringBuffer("TencentMapOptions{");
-    localStringBuffer1.append("customAssetsPath='").append(this.customAssetsPath).append('\'');
-    localStringBuffer1.append(", customLocalPath='").append(this.customLocalPath).append('\'');
-    localStringBuffer1.append(", mCustomCacheRootPath='").append(this.mCustomCacheRootPath).append('\'');
-    localStringBuffer1.append(", isHandDrawMapEnable=").append(this.isHandDrawMapEnable);
-    localStringBuffer1.append(", mExtSurface=").append(this.mExtSurface);
-    localStringBuffer1.append(", mExtSurfaceWidth=").append(this.mExtSurfaceWidth);
-    localStringBuffer1.append(", mExtSurfaceHeight=").append(this.mExtSurfaceHeight);
-    localStringBuffer1.append(", mSubId='").append(this.mSubId).append('\'');
-    localStringBuffer1.append(", mSubKey='").append(this.mSubKey).append('\'');
-    localStringBuffer1.append(", mMapKey='").append(this.mMapKey).append('\'');
-    localStringBuffer1.append(", isEnableMultipleInfoWindow=").append(this.isEnableMultipleInfoWindow);
-    StringBuffer localStringBuffer2 = localStringBuffer1.append(", mDebugTags=");
-    if (this.mDebugTags == null) {}
-    for (String str = "null";; str = Arrays.asList(this.mDebugTags).toString())
-    {
-      localStringBuffer2.append(str);
-      localStringBuffer1.append(", mSatelliteVersion='").append(this.mSatelliteVersion).append('\'');
-      localStringBuffer1.append(", mMapViewType=").append(this.mMapViewType);
-      localStringBuffer1.append(", mMapKernel=").append(this.mMapKernel);
-      localStringBuffer1.append(", mUserTypeface=").append(this.mUserTypeface);
-      localStringBuffer1.append(", mProtocolFrom=").append(this.mProtocolFrom);
-      localStringBuffer1.append(", mProtocolDataDesc=").append(this.mProtocolDataDesc);
-      localStringBuffer1.append(", mNetAdapterType=").append(this.mNetAdapterType);
-      localStringBuffer1.append(", mNetParams=").append(this.mNetParams);
-      localStringBuffer1.append(", mCustomUserId='").append(this.mCustomUserId).append('\'');
-      localStringBuffer1.append(", mMapCallback=").append(this.mMapCallback);
-      localStringBuffer1.append(", mOfflineMapEnable=").append(this.mOfflineMapEnable);
-      localStringBuffer1.append(", mOverSeaSource=").append(this.mOverSeaSource);
-      localStringBuffer1.append(", mTrafficStyle=").append(this.mTrafficStyle);
-      localStringBuffer1.append(", mMapFrameRate=").append(this.mMapFrameRate);
-      localStringBuffer1.append('}');
-      str = localStringBuffer1.toString();
-      AppMethodBeat.o(237280);
-      return str;
-    }
+    AppMethodBeat.i(218011);
+    String str = "TencentMapOptions{customAssetsPath='" + this.customAssetsPath + '\'' + ", customLocalPath='" + this.customLocalPath + '\'' + ", mCustomCacheRootPath='" + this.mCustomCacheRootPath + '\'' + ", isHandDrawMapEnable=" + this.isHandDrawMapEnable + ", mExtSurface=" + this.mExtSurface + ", mExtSurfaceWidth=" + this.mExtSurfaceWidth + ", mExtSurfaceHeight=" + this.mExtSurfaceHeight + ", mSubId='" + this.mSubId + '\'' + ", mSubKey='" + this.mSubKey + '\'' + ", mMapKey='" + this.mMapKey + '\'' + ", isEnableMultipleInfoWindow=" + this.isEnableMultipleInfoWindow + ", mDebugTags=" + Arrays.toString(this.mDebugTags) + ", mSatelliteVersion='" + this.mSatelliteVersion + '\'' + ", mMapViewType=" + this.mMapViewType + ", mMapKernel=" + this.mMapKernel + ", mUserTypeface=" + this.mUserTypeface + ", mProtocolFrom=" + this.mProtocolFrom + ", mProtocolDataDesc=" + this.mProtocolDataDesc + ", mNetAdapterType=" + this.mNetAdapterType + ", mNetParams=" + this.mNetParams + ", mCustomUserId='" + this.mCustomUserId + '\'' + ", mMapCallback=" + this.mMapCallback + ", mOfflineMapEnable=" + this.mOfflineMapEnable + ", mOverSeaSource=" + this.mOverSeaSource + ", mTrafficStyle=" + this.mTrafficStyle + ", mMapFrameRate=" + this.mMapFrameRate + ", mForceHttps=" + this.mForceHttps + ", mDisallowIntercept=" + this.mDisallowIntercept + '}';
+    AppMethodBeat.o(218011);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.TencentMapOptions
  * JD-Core Version:    0.7.0.1
  */

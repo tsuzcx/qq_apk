@@ -122,33 +122,41 @@
         <item quantity="one">%d new greeting</item>
     </plurals>
     <plurals name="a4">
+        <item quantity="other">Select up to %s images or videos</item>
+        <item quantity="one">Select up to %s images or videos</item>
+    </plurals>
+    <plurals name="a5">
         <item quantity="other">%d posts</item>
         <item quantity="one">%d post</item>
     </plurals>
-    <plurals name="a5">
+    <plurals name="a6">
         <item quantity="other">%d notifications</item>
         <item quantity="one">%d notification</item>
     </plurals>
-    <plurals name="a6">
+    <plurals name="a7">
         <item quantity="other">%d posts</item>
         <item quantity="one">%d post</item>
     </plurals>
-    <plurals name="a7">
+    <plurals name="a8">
         <item quantity="other">%d unread messages</item>
         <item quantity="one">%d unread message</item>
     </plurals>
-    <plurals name="a8">
+    <plurals name="a9">
         <item quantity="other">Tab %2$d of %1$d</item>
         <item quantity="zero">Tab 1 of %d</item>
         <item quantity="one">Tab 2 of %d</item>
         <item quantity="two">Tab 3 of %d</item>
     </plurals>
-    <plurals name="a9">
+    <plurals name="a_">
         <item quantity="other">Real-time Location (%d people)</item>
         <item quantity="one">Real-time Location (%d person)</item>
     </plurals>
-    <plurals name="a_">
+    <plurals name="aa">
         <item quantity="other">%s seconds left</item>
         <item quantity="one">%s second left</item>
+    </plurals>
+    <plurals name="ab">
+        <item quantity="other">Select at least %s photos or videos</item>
+        <item quantity="one">Select at least %s photo or video</item>
     </plurals>
 </resources>

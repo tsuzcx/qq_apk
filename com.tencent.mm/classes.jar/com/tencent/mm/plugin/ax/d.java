@@ -1,77 +1,73 @@
 package com.tencent.mm.plugin.ax;
 
-import com.tencent.mm.ad.i;
-import com.tencent.mm.plugin.aw.c;
-import com.tencent.mm.plugin.aw.c.a;
-import java.util.HashMap;
-import kotlin.g.a.b;
-import kotlin.l;
-import kotlin.x;
+import android.webkit.JavascriptInterface;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webprefetcher/WebPrefetcherJsEngineInterceptor;", "", "()V", "bizAppId", "", "getBizAppId", "()Ljava/lang/String;", "setBizAppId", "(Ljava/lang/String;)V", "contextMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "getContextMap", "()Ljava/util/HashMap;", "setContextMap", "(Ljava/util/HashMap;)V", "jsEngine", "Lcom/tencent/mm/plugin/webjsengine/WebJsEngine;", "getJsEngine", "()Lcom/tencent/mm/plugin/webjsengine/WebJsEngine;", "setJsEngine", "(Lcom/tencent/mm/plugin/webjsengine/WebJsEngine;)V", "attach", "", "Lcom/tencent/mm/plugin/webprefetcher/WebPrefetcherJsEngine;", "bizPkg", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkg;", "configPreFetcher", "id", "onCompleted", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJSContext;", "createBizJsContext", "", "type", "url", "dispatchEvent", "appId", "event", "data", "getClientInfo", "Lcom/tencent/mm/plugin/webjsengine/WebJsEngine$ClientInfo;", "inject", "manifest", "Lcom/tencent/mm/plugin/webprefetcher/PrefetchManifest;", "script", "onCallback", "Companion", "webview-sdk_release"})
-public abstract class d
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webjsapi/WxAdAPI;", "Lcom/tencent/mm/plugin/webjsapi/JSAPI;", "Lcom/tencent/mm/plugin/webjsapi/WxAdAPIContext;", "context", "(Lcom/tencent/mm/plugin/webjsapi/WxAdAPIContext;)V", "deleteAd", "", "msgId", "", "forceDelete", "", "getAdContext", "from", "", "getInfo", "", "key", "replaceAdData", "data", "setAdExposeParams", "exposureRatio", "exposureTme", "setAdInsertType", "type", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class d
+  extends a<e>
 {
-  public static final a Pxh = new a((byte)0);
-  public HashMap<String, Integer> Pwb;
-  public c Pxg;
-  private String mpE = "";
-  
-  public boolean a(int paramInt, a parama, String paramString, b<? super String, x> paramb)
+  public d(e parame)
   {
-    kotlin.g.b.p.k(parama, "manifest");
-    kotlin.g.b.p.k(paramString, "script");
-    kotlin.g.b.p.k(paramb, "onCallback");
-    return false;
+    super("wxAd", (b)parame);
+    AppMethodBeat.i(260769);
+    AppMethodBeat.o(260769);
   }
   
-  public com.tencent.mm.plugin.appbrand.appcache.p cBu()
+  @JavascriptInterface
+  public final void deleteAd(String paramString, boolean paramBoolean)
   {
-    return null;
+    AppMethodBeat.i(260782);
+    s.u(paramString, "msgId");
+    ((e)this.WlE).deleteAd(paramString, paramBoolean);
+    AppMethodBeat.o(260782);
   }
   
-  public boolean g(String paramString, b<? super Boolean, x> paramb)
+  @JavascriptInterface
+  public final String getAdContext(int paramInt)
   {
-    kotlin.g.b.p.k(paramb, "onCompleted");
-    return false;
+    AppMethodBeat.i(260778);
+    String str = ((e)this.WlE).getAdContext(paramInt);
+    AppMethodBeat.o(260778);
+    return str;
   }
   
-  public final c gQb()
+  @JavascriptInterface
+  public final Object getInfo(String paramString)
   {
-    c localc = this.Pxg;
-    if (localc == null) {
-      kotlin.g.b.p.bGy("jsEngine");
-    }
-    return localc;
+    AppMethodBeat.i(260790);
+    s.u(paramString, "key");
+    paramString = ((e)this.WlE).getInfo(paramString);
+    AppMethodBeat.o(260790);
+    return paramString;
   }
   
-  public final HashMap<String, Integer> gQc()
+  @JavascriptInterface
+  public final void replaceAdData(String paramString)
   {
-    HashMap localHashMap = this.Pwb;
-    if (localHashMap == null) {
-      kotlin.g.b.p.bGy("contextMap");
-    }
-    return localHashMap;
+    AppMethodBeat.i(260774);
+    s.u(paramString, "data");
+    ((e)this.WlE).replaceAdData(paramString);
+    AppMethodBeat.o(260774);
   }
   
-  public final c.a md(String paramString1, String paramString2)
+  @JavascriptInterface
+  public final void setAdExposeParams(int paramInt1, int paramInt2)
   {
-    kotlin.g.b.p.k(paramString1, "type");
-    kotlin.g.b.p.k(paramString2, "appId");
-    c localc = this.Pxg;
-    if (localc == null) {
-      kotlin.g.b.p.bGy("jsEngine");
-    }
-    return new c.a(paramString2, localc.biy(paramString1).getLong("idKey"));
+    AppMethodBeat.i(260801);
+    ((e)this.WlE).setAdExposeParams(paramInt1, paramInt2);
+    AppMethodBeat.o(260801);
   }
   
-  public boolean o(String paramString1, String paramString2, String paramString3, String paramString4)
+  @JavascriptInterface
+  public final void setAdInsertType(int paramInt)
   {
-    kotlin.g.b.p.k(paramString3, "event");
-    return false;
+    AppMethodBeat.i(260797);
+    ((e)this.WlE).setAdInsertType(paramInt);
+    AppMethodBeat.o(260797);
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webprefetcher/WebPrefetcherJsEngineInterceptor$Companion;", "", "()V", "typeGameCenter", "", "typeVideo", "webview-sdk_release"})
-  public static final class a {}
 }
 
 

@@ -1,197 +1,155 @@
 package com.tencent.mm.plugin.thumbplayer.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.i.c;
-import com.tencent.mm.i.e;
-import com.tencent.mm.i.g.a;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.loader.d.b.b;
-import com.tencent.mm.sdk.platformtools.ConnectivityCompat;
-import com.tencent.mm.sdk.platformtools.ConnectivityCompat.Companion;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.NetStatusUtil;
-import com.tencent.mm.sdk.platformtools.WeChatHosts;
-import com.tencent.mm.vfs.q;
-import com.tencent.mm.vfs.u;
-import java.io.ByteArrayOutputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import kotlin.g.b.af;
-import kotlin.l;
+import com.tencent.mm.videocomposition.effect.h.c;
+import com.tencent.mm.xeffect.LayoutInfo;
+import java.util.Collection;
+import java.util.NoSuchElementException;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.s;
+import kotlin.j.c;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/thumbplayer/downloader/CdnImageDownloader;", "Lcom/tencent/mm/loader/common/IDataFetcher;", "Lcom/tencent/mm/plugin/thumbplayer/downloader/ImageLoadData;", "()V", "TAG", "", "attachSnsImgTaskInfo", "", "data", "imageUrl", "tmpFilePath", "taskInfo", "Lcom/tencent/mm/cdn/keep_SnsImageTaskInfo;", "isDcIp", "referer", "getStringArray", "", "strList", "", "(Ljava/util/List;)[Ljava/lang/String;", "loadDataImp", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "fileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "callback", "Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady2;", "plugin-thumbplayer_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/thumbplayer/effect/ImageAnimation;", "", "()V", "applyAnimation", "", "animation", "Lcom/tencent/mm/videocomposition/effect/MultiInputEffectRenderController$TextureLayoutAnimation;", "targetWidth", "", "targetHeight", "width", "height", "animationType", "Lcom/tencent/mm/plugin/thumbplayer/effect/ImageAnimation$AnimateType;", "applyImageContentAnimate", "bitmap", "Landroid/graphics/Bitmap;", "effectController", "Lcom/tencent/mm/plugin/thumbplayer/effect/MultiMediaEffectController;", "type", "getAnimationType", "toAnimateType", "AnimateType", "plugin-thumbplayer_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends com.tencent.mm.loader.d.b<g>
 {
-  final String TAG = "MicroMsg.CdnImageDownloder";
+  public static final a TCz;
   
-  private final boolean a(g paramg, String paramString1, String paramString2, e parame, String paramString3)
+  static
   {
-    AppMethodBeat.i(192272);
-    try
-    {
-      String str = new URL(paramString1).getHost();
-      ArrayList localArrayList1 = new ArrayList();
-      int i = com.tencent.mm.network.d.a(str, false, (List)localArrayList1);
-      ArrayList localArrayList2 = new ArrayList();
-      int j = com.tencent.mm.network.d.a(str, true, (List)localArrayList2);
-      parame.field_mediaId = paramg.aBv();
-      parame.url = paramString1;
-      parame.snsCipherKey = paramg.decodeKey;
-      parame.host = str;
-      parame.referer = paramString3;
-      parame.iUy = paramString2;
-      parame.iUz = ey((List)localArrayList1);
-      parame.iUA = ey((List)localArrayList2);
-      parame.iUB = i;
-      parame.iUC = j;
-      parame.isColdSnsData = false;
-      parame.signalQuality = ConnectivityCompat.Companion.getCompatMixStrength$default(ConnectivityCompat.Companion, false, 1, null);
-      parame.snsScene = "";
-      parame.hDp = 3;
-      parame.appType = 150;
-      parame.fileType = 20201;
-      Log.i(this.TAG, "attachSnsImgTaskInfo, imageUrl:%s， " + paramg.decodeKey, new Object[] { paramString1 });
-      AppMethodBeat.o(192272);
-      return true;
-    }
-    catch (MalformedURLException paramg)
-    {
-      Log.printErrStackTrace(this.TAG, (Throwable)paramg, "", new Object[0]);
-      Log.w(this.TAG, "attachSnsImgTaskInfo fail:".concat(String.valueOf(paramg)));
-      AppMethodBeat.o(192272);
-    }
-    return false;
+    AppMethodBeat.i(272492);
+    TCz = new a();
+    AppMethodBeat.o(272492);
   }
   
-  private static String[] ey(List<String> paramList)
+  public static void a(h.c paramc, int paramInt1, int paramInt2, int paramInt3, int paramInt4, a parama)
   {
-    AppMethodBeat.i(192274);
-    String[] arrayOfString = new String[paramList.size()];
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
+    AppMethodBeat.i(272477);
+    s.u(paramc, "animation");
+    s.u(parama, "animationType");
+    LayoutInfo localLayoutInfo = paramc.agEW;
+    paramc = paramc.agEX;
+    localLayoutInfo.centerX = (paramInt1 / 2);
+    localLayoutInfo.centerY = (paramInt2 / 2);
+    localLayoutInfo.agXz = 1;
+    localLayoutInfo.scale = 1.0F;
+    paramc.centerX = (paramInt1 / 2);
+    paramc.centerY = (paramInt2 / 2);
+    paramc.scale = 1.0F;
+    float f = paramInt2 * 1.0F / paramInt4;
+    paramInt1 = paramInt3 / 10;
+    switch (b.$EnumSwitchMapping$0[parama.ordinal()])
     {
-      arrayOfString[i] = ((String)paramList.get(i));
-      i += 1;
     }
-    AppMethodBeat.o(192274);
-    return arrayOfString;
-  }
-  
-  public final void a(com.tencent.mm.loader.h.a.a<g> parama, com.tencent.mm.loader.f.g paramg, final b.b paramb)
-  {
-    AppMethodBeat.i(192258);
-    kotlin.g.b.p.k(parama, "url");
-    kotlin.g.b.p.k(paramg, "fileNameCreator");
-    kotlin.g.b.p.k(paramb, "callback");
-    Object localObject2 = new StringBuilder().append(((g)parama.aSr()).url);
-    Object localObject1 = ((g)parama.aSr()).zZu;
-    paramg = (com.tencent.mm.loader.f.g)localObject1;
-    if (localObject1 == null) {
-      paramg = "";
-    }
-    paramg = paramg;
-    localObject1 = af.aaBG;
-    localObject1 = "https://" + WeChatHosts.domainString(com.tencent.mm.plugin.thumbplayer.a.a.host_weixin_qq_com) + "/?version=%d&uin=%s&nettype=%d&signal=%d%s";
-    int i = com.tencent.mm.protocal.d.RAD;
-    kotlin.g.b.p.j(h.aHE(), "MMKernel.account()");
-    localObject1 = String.format((String)localObject1, Arrays.copyOf(new Object[] { Integer.valueOf(i), com.tencent.mm.b.p.getString(com.tencent.mm.kernel.b.getUin()), Integer.valueOf(NetStatusUtil.getNetTypeForStat(MMApplicationContext.getContext())), Integer.valueOf(ConnectivityCompat.Companion.getCompatMixStrength$default(ConnectivityCompat.Companion, false, 1, null)), "" }, 5));
-    kotlin.g.b.p.j(localObject1, "java.lang.String.format(format, *args)");
-    localObject2 = new e();
-    ((e)localObject2).taskName = "task_FinderCdnDownloader";
-    final String str = ((g)parama.aSr()).filePath;
-    Log.i(this.TAG, "start load tmpFileFilePath:" + str + ", url:" + ((g)parama.aSr()).url);
-    u.bBD(new q(str).ifA());
-    parama = parama.aSr();
-    kotlin.g.b.p.j(parama, "url.value()");
-    if (a((g)parama, paramg, str, (e)localObject2, (String)localObject1))
+    for (;;)
     {
-      ((e)localObject2).iUG = ((g.a)new a(this, str, paramb));
-      if (com.tencent.mm.aq.f.bkg().e((com.tencent.mm.i.g)localObject2))
-      {
-        Log.i(this.TAG, "SubCoreCdnTransport addRecvTask succ");
-        AppMethodBeat.o(192258);
-        return;
-      }
-      Log.w(this.TAG, "SubCoreCdnTransport addRecvTask failed");
-      paramb.onError();
-      AppMethodBeat.o(192258);
+      AppMethodBeat.o(272477);
       return;
+      localLayoutInfo.agXz = 0;
+      localLayoutInfo.scale = f;
+      localLayoutInfo.centerX = (paramInt3 / 2 + paramInt1 / 2);
+      paramc.scale = f;
+      paramc.centerX = (paramInt3 / 2 - paramInt1 / 2);
+      AppMethodBeat.o(272477);
+      return;
+      localLayoutInfo.agXz = 0;
+      localLayoutInfo.scale = f;
+      localLayoutInfo.centerX = (paramInt3 / 2 - paramInt1 / 2);
+      paramc.scale = f;
+      paramc.centerX = (paramInt3 / 2 + paramInt1 / 2);
+      AppMethodBeat.o(272477);
+      return;
+      localLayoutInfo.agXz = 4;
+      localLayoutInfo.scale = 1.05F;
+      paramc.scale = 1.0F;
+      AppMethodBeat.o(272477);
+      return;
+      localLayoutInfo.agXz = 4;
+      localLayoutInfo.scale = 1.0F;
+      paramc.scale = 1.05F;
+      AppMethodBeat.o(272477);
+      return;
+      localLayoutInfo.agXz = 3;
+      localLayoutInfo.scale = 1.05F;
+      paramc.scale = 1.0F;
+      AppMethodBeat.o(272477);
+      return;
+      localLayoutInfo.agXz = 3;
+      localLayoutInfo.scale = 1.0F;
+      paramc.scale = 1.05F;
     }
-    Log.w(this.TAG, "attachSnsImgTaskInfo failed");
-    paramb.onError();
-    AppMethodBeat.o(192258);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/thumbplayer/downloader/CdnImageDownloader$loadDataImp$1", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskCallback;", "callback", "", "mediaId", "", "startRet", "progressInfo", "Lcom/tencent/mm/cdn/keep_ProgressInfo;", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "onlyCheckExist", "", "decodePrepareResponse", "", "inbuf", "getCdnAuthInfo", "", "buff", "Ljava/io/ByteArrayOutputStream;", "plugin-thumbplayer_release"})
-  public static final class a
-    implements g.a
+  public static a aoD(int paramInt)
   {
-    a(String paramString, b.b paramb) {}
-    
-    public final int a(String paramString, int paramInt, c paramc, com.tencent.mm.i.d paramd, boolean paramBoolean)
+    AppMethodBeat.i(272469);
+    if (paramInt < a.values().length - 1)
     {
-      AppMethodBeat.i(192004);
-      kotlin.g.b.p.k(paramString, "mediaId");
-      paramc = this.MPD.TAG;
-      StringBuilder localStringBuilder = new StringBuilder("mediaId ").append(paramString).append(" startRet ").append(paramInt).append(" sceneResult ").append(paramd).append(" onlyCheckExist ").append(paramBoolean).append(" retCode ");
-      if (paramd != null)
-      {
-        paramString = Integer.valueOf(paramd.field_retCode);
-        Log.i(paramc, paramString + ", fileExist:" + u.agG(str));
-        if (paramd == null) {
-          break label179;
-        }
-        if (paramd.field_retCode == 0) {
-          break label145;
-        }
-        paramb.onError();
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(192004);
-        return 0;
-        paramString = "";
+      locala = a.values()[paramInt];
+      AppMethodBeat.o(272469);
+      return locala;
+    }
+    a locala = a.TCH;
+    AppMethodBeat.o(272469);
+    return locala;
+  }
+  
+  public static int mg(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(272486);
+    float f = paramInt1 * 1.0F / paramInt2;
+    Object localObject;
+    if (f < 0.75F) {
+      localObject = p.listOf(new Integer[] { Integer.valueOf(5), Integer.valueOf(6) });
+    }
+    c localc;
+    for (;;)
+    {
+      localObject = (Collection)localObject;
+      localc = (c)c.aixl;
+      s.u(localObject, "$this$random");
+      s.u(localc, "random");
+      if (!((Collection)localObject).isEmpty()) {
         break;
-        label145:
-        paramString = paramb;
-        paramc = com.tencent.mm.loader.h.a.aC(str, "");
-        kotlin.g.b.p.j(paramc, "HttpFileResponse.create(tmpFilePath, \"\")");
-        paramString.a((com.tencent.mm.loader.h.f)paramc);
-        continue;
-        label179:
-        if (paramInt != 0) {
-          paramb.onError();
-        }
+      }
+      localObject = (Throwable)new NoSuchElementException("Collection is empty.");
+      AppMethodBeat.o(272486);
+      throw ((Throwable)localObject);
+      if (f <= 1.333333F) {
+        localObject = p.listOf(new Integer[] { Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4), Integer.valueOf(5), Integer.valueOf(6) });
+      } else {
+        localObject = p.listOf(new Integer[] { Integer.valueOf(3), Integer.valueOf(4) });
       }
     }
-    
-    public final void a(String paramString, ByteArrayOutputStream paramByteArrayOutputStream)
+    paramInt1 = ((Number)p.b((Iterable)localObject, localc.Pa(((Collection)localObject).size()))).intValue();
+    AppMethodBeat.o(272486);
+    return paramInt1;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/thumbplayer/effect/ImageAnimation$AnimateType;", "", "(Ljava/lang/String;I)V", "Default", "RightToLeft", "LeftToRight", "ZoomOutAspectFit", "ZoomInAspectFit", "ZoomOutAspectFill", "ZoomInAspectFill", "Unknown", "plugin-thumbplayer_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static enum a
+  {
+    static
     {
-      AppMethodBeat.i(192008);
-      kotlin.g.b.p.k(paramString, "mediaId");
-      kotlin.g.b.p.k(paramByteArrayOutputStream, "buff");
-      AppMethodBeat.o(192008);
+      AppMethodBeat.i(272498);
+      TCA = new a("Default", 0);
+      TCB = new a("RightToLeft", 1);
+      TCC = new a("LeftToRight", 2);
+      TCD = new a("ZoomOutAspectFit", 3);
+      TCE = new a("ZoomInAspectFit", 4);
+      TCF = new a("ZoomOutAspectFill", 5);
+      TCG = new a("ZoomInAspectFill", 6);
+      TCH = new a("Unknown", 7);
+      TCI = new a[] { TCA, TCB, TCC, TCD, TCE, TCF, TCG, TCH };
+      AppMethodBeat.o(272498);
     }
     
-    public final byte[] f(String paramString, byte[] paramArrayOfByte)
-    {
-      AppMethodBeat.i(192011);
-      kotlin.g.b.p.k(paramString, "mediaId");
-      kotlin.g.b.p.k(paramArrayOfByte, "inbuf");
-      AppMethodBeat.o(192011);
-      return new byte[0];
-    }
+    private a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.thumbplayer.c.a
  * JD-Core Version:    0.7.0.1
  */

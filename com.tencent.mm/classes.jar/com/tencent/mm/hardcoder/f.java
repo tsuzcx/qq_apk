@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
-  private static long Mh(String paramString)
+  private static long EP(String paramString)
   {
     AppMethodBeat.i(62484);
     if (paramString != null) {}
@@ -28,7 +28,7 @@ public final class f
   }
   
   /* Error */
-  public static long[] aFf()
+  public static long[] aYg()
   {
     // Byte code:
     //   0: ldc 50
@@ -276,7 +276,7 @@ public final class f
     //   93	102	438	java/lang/Exception
   }
   
-  private static int df(String paramString)
+  private static int ew(String paramString)
   {
     AppMethodBeat.i(62483);
     if (paramString != null) {}
@@ -300,7 +300,7 @@ public final class f
   }
   
   /* Error */
-  public static int sd(int paramInt)
+  public static int rZ(int paramInt)
   {
     // Byte code:
     //   0: ldc 130
@@ -377,7 +377,7 @@ public final class f
     //   150: invokevirtual 93	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   153: bipush 38
     //   155: aaload
-    //   156: invokestatic 138	com/tencent/mm/hardcoder/f:df	(Ljava/lang/String;)I
+    //   156: invokestatic 138	com/tencent/mm/hardcoder/f:ew	(Ljava/lang/String;)I
     //   159: istore_0
     //   160: aload_2
     //   161: invokevirtual 100	java/io/FileReader:close	()V
@@ -570,7 +570,7 @@ public final class f
   }
   
   /* Error */
-  public static long se(int paramInt)
+  public static long sa(int paramInt)
   {
     // Byte code:
     //   0: ldc 143
@@ -613,7 +613,7 @@ public final class f
     //   82: astore 6
     //   84: aload 4
     //   86: invokevirtual 87	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   89: invokestatic 161	com/tencent/mm/hardcoder/f:Mh	(Ljava/lang/String;)J
+    //   89: invokestatic 161	com/tencent/mm/hardcoder/f:EP	(Ljava/lang/String;)J
     //   92: lstore_2
     //   93: aload 4
     //   95: invokevirtual 101	java/io/BufferedReader:close	()V
@@ -802,7 +802,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.hardcoder.f
  * JD-Core Version:    0.7.0.1
  */

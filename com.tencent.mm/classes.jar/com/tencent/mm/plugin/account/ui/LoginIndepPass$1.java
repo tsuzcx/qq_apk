@@ -1,17 +1,19 @@
 package com.tencent.mm.plugin.account.ui;
 
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.mq;
+import com.tencent.mm.autogen.a.nx;
 import com.tencent.mm.sdk.event.IListener;
 
-final class LoginIndepPass$1
-  extends IListener<mq>
+class LoginIndepPass$1
+  extends IListener<nx>
 {
-  LoginIndepPass$1(LoginIndepPass paramLoginIndepPass)
+  LoginIndepPass$1(LoginIndepPass paramLoginIndepPass, q paramq)
   {
-    AppMethodBeat.i(161702);
-    this.__eventId = mq.class.getName().hashCode();
-    AppMethodBeat.o(161702);
+    super(paramq);
+    AppMethodBeat.i(304904);
+    this.__eventId = nx.class.getName().hashCode();
+    AppMethodBeat.o(304904);
   }
 }
 

@@ -29,75 +29,75 @@ import java.util.ArrayList;
 public final class g
   implements o
 {
-  public NavigationMenuView bCC;
-  public LinearLayout bCD;
-  private o.a bCE;
-  public b bCF;
-  int bCG;
-  boolean bCH;
-  public ColorStateList bCI;
-  public int bCJ;
-  int bCK;
-  public ColorStateList bCx;
-  final View.OnClickListener bwV;
-  public Drawable bxe;
-  h gU;
+  final View.OnClickListener dpY;
+  public Drawable dqh;
+  public NavigationMenuView dvD;
+  public LinearLayout dvE;
+  private o.a dvF;
+  public b dvG;
+  public LayoutInflater dvH;
+  int dvI;
+  boolean dvJ;
+  public ColorStateList dvK;
+  public int dvL;
+  int dvM;
+  public ColorStateList dvy;
+  h hP;
   public int id;
   public int itemHorizontalPadding;
   public int itemIconPadding;
-  public LayoutInflater layoutInflater;
   
   public g()
   {
-    AppMethodBeat.i(237973);
-    this.bwV = new View.OnClickListener()
+    AppMethodBeat.i(209269);
+    this.dpY = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(237825);
+        AppMethodBeat.i(209396);
         paramAnonymousView = (NavigationMenuItemView)paramAnonymousView;
-        g.this.bh(true);
+        g.this.bO(true);
         paramAnonymousView = paramAnonymousView.getItemData();
-        boolean bool = g.this.gU.a(paramAnonymousView, g.this, 0);
+        boolean bool = g.this.hP.a(paramAnonymousView, g.this, 0);
         if ((paramAnonymousView != null) && (paramAnonymousView.isCheckable()) && (bool)) {
-          g.this.bCF.h(paramAnonymousView);
+          g.this.dvG.h(paramAnonymousView);
         }
-        g.this.bh(false);
-        g.this.F(false);
-        AppMethodBeat.o(237825);
+        g.this.bO(false);
+        g.this.J(false);
+        AppMethodBeat.o(209396);
       }
     };
-    AppMethodBeat.o(237973);
+    AppMethodBeat.o(209269);
   }
   
-  public final void F(boolean paramBoolean)
+  public final void J(boolean paramBoolean)
   {
-    AppMethodBeat.i(237977);
-    if (this.bCF != null)
+    AppMethodBeat.i(209288);
+    if (this.dvG != null)
     {
-      b localb = this.bCF;
-      localb.xs();
-      localb.alc.notifyChanged();
+      b localb = this.dvG;
+      localb.WP();
+      localb.bZE.notifyChanged();
     }
-    AppMethodBeat.o(237977);
+    AppMethodBeat.o(209288);
   }
   
   public final void a(Context paramContext, h paramh)
   {
-    AppMethodBeat.i(237975);
-    this.layoutInflater = LayoutInflater.from(paramContext);
-    this.gU = paramh;
-    this.bCK = paramContext.getResources().getDimensionPixelOffset(a.d.design_navigation_separator_vertical_padding);
-    AppMethodBeat.o(237975);
+    AppMethodBeat.i(209280);
+    this.dvH = LayoutInflater.from(paramContext);
+    this.hP = paramh;
+    this.dvM = paramContext.getResources().getDimensionPixelOffset(a.d.design_navigation_separator_vertical_padding);
+    AppMethodBeat.o(209280);
   }
   
   public final void a(h paramh, boolean paramBoolean)
   {
-    AppMethodBeat.i(237980);
-    if (this.bCE != null) {
-      this.bCE.a(paramh, paramBoolean);
+    AppMethodBeat.i(209306);
+    if (this.dvF != null) {
+      this.dvF.a(paramh, paramBoolean);
     }
-    AppMethodBeat.o(237980);
+    AppMethodBeat.o(209306);
   }
   
   public final boolean a(u paramu)
@@ -107,22 +107,22 @@ public final class g
   
   public final void b(o.a parama)
   {
-    this.bCE = parama;
+    this.dvF = parama;
   }
   
-  public final boolean bS()
+  public final void bO(boolean paramBoolean)
   {
-    return false;
-  }
-  
-  public final void bh(boolean paramBoolean)
-  {
-    if (this.bCF != null) {
-      this.bCF.bxk = paramBoolean;
+    if (this.dvG != null) {
+      this.dvG.dqn = paramBoolean;
     }
   }
   
   public final boolean c(j paramj)
+  {
+    return false;
+  }
+  
+  public final boolean cL()
   {
     return false;
   }
@@ -139,33 +139,33 @@ public final class g
   
   public final void h(j paramj)
   {
-    AppMethodBeat.i(237985);
-    this.bCF.h(paramj);
-    AppMethodBeat.o(237985);
+    AppMethodBeat.i(209350);
+    this.dvG.h(paramj);
+    AppMethodBeat.o(209350);
   }
   
   public final void onRestoreInstanceState(Parcelable paramParcelable)
   {
     int j = 0;
-    AppMethodBeat.i(237984);
+    AppMethodBeat.i(209344);
     if ((paramParcelable instanceof Bundle))
     {
       paramParcelable = (Bundle)paramParcelable;
       Object localObject1 = paramParcelable.getSparseParcelableArray("android:menu:list");
       if (localObject1 != null) {
-        this.bCC.restoreHierarchyState((SparseArray)localObject1);
+        this.dvD.restoreHierarchyState((SparseArray)localObject1);
       }
       Object localObject2 = paramParcelable.getBundle("android:menu:adapter");
       if (localObject2 != null)
       {
-        localObject1 = this.bCF;
+        localObject1 = this.dvG;
         int k = ((Bundle)localObject2).getInt("android:menu:checked", 0);
         int m;
         int i;
         if (k != 0)
         {
-          ((b)localObject1).bxk = true;
-          m = ((b)localObject1).bCM.size();
+          ((b)localObject1).dqn = true;
+          m = ((b)localObject1).dvO.size();
           i = 0;
         }
         for (;;)
@@ -173,10 +173,10 @@ public final class g
           Object localObject3;
           if (i < m)
           {
-            localObject3 = (d)((b)localObject1).bCM.get(i);
+            localObject3 = (d)((b)localObject1).dvO.get(i);
             if ((localObject3 instanceof f))
             {
-              localObject3 = ((f)localObject3).bCQ;
+              localObject3 = ((f)localObject3).dvS;
               if ((localObject3 != null) && (((j)localObject3).getItemId() == k)) {
                 ((b)localObject1).h((j)localObject3);
               }
@@ -184,20 +184,20 @@ public final class g
           }
           else
           {
-            ((b)localObject1).bxk = false;
-            ((b)localObject1).xs();
+            ((b)localObject1).dqn = false;
+            ((b)localObject1).WP();
             localObject2 = ((Bundle)localObject2).getSparseParcelableArray("android:menu:action_views");
             if (localObject2 == null) {
               break;
             }
-            k = ((b)localObject1).bCM.size();
+            k = ((b)localObject1).dvO.size();
             i = j;
             while (i < k)
             {
-              localObject3 = (d)((b)localObject1).bCM.get(i);
+              localObject3 = (d)((b)localObject1).dvO.get(i);
               if ((localObject3 instanceof f))
               {
-                Object localObject4 = ((f)localObject3).bCQ;
+                Object localObject4 = ((f)localObject3).dvS;
                 if (localObject4 != null)
                 {
                   localObject3 = ((j)localObject4).getActionView();
@@ -218,83 +218,83 @@ public final class g
       }
       paramParcelable = paramParcelable.getSparseParcelableArray("android:menu:header");
       if (paramParcelable != null) {
-        this.bCD.restoreHierarchyState(paramParcelable);
+        this.dvE.restoreHierarchyState(paramParcelable);
       }
     }
-    AppMethodBeat.o(237984);
+    AppMethodBeat.o(209344);
   }
   
   public final Parcelable onSaveInstanceState()
   {
-    AppMethodBeat.i(237983);
+    AppMethodBeat.i(209333);
     Bundle localBundle = new Bundle();
     SparseArray localSparseArray;
-    if (this.bCC != null)
+    if (this.dvD != null)
     {
       localSparseArray = new SparseArray();
-      this.bCC.saveHierarchyState(localSparseArray);
+      this.dvD.saveHierarchyState(localSparseArray);
       localBundle.putSparseParcelableArray("android:menu:list", localSparseArray);
     }
-    if (this.bCF != null) {
-      localBundle.putBundle("android:menu:adapter", this.bCF.xt());
+    if (this.dvG != null) {
+      localBundle.putBundle("android:menu:adapter", this.dvG.WQ());
     }
-    if (this.bCD != null)
+    if (this.dvE != null)
     {
       localSparseArray = new SparseArray();
-      this.bCD.saveHierarchyState(localSparseArray);
+      this.dvE.saveHierarchyState(localSparseArray);
       localBundle.putSparseParcelableArray("android:menu:header", localSparseArray);
     }
-    AppMethodBeat.o(237983);
+    AppMethodBeat.o(209333);
     return localBundle;
   }
   
   public final void setItemBackground(Drawable paramDrawable)
   {
-    AppMethodBeat.i(237990);
-    this.bxe = paramDrawable;
-    F(false);
-    AppMethodBeat.o(237990);
+    AppMethodBeat.i(209390);
+    this.dqh = paramDrawable;
+    J(false);
+    AppMethodBeat.o(209390);
   }
   
   public final void setItemHorizontalPadding(int paramInt)
   {
-    AppMethodBeat.i(237991);
+    AppMethodBeat.i(209401);
     this.itemHorizontalPadding = paramInt;
-    F(false);
-    AppMethodBeat.o(237991);
+    J(false);
+    AppMethodBeat.o(209401);
   }
   
   public final void setItemIconPadding(int paramInt)
   {
-    AppMethodBeat.i(237993);
+    AppMethodBeat.i(209412);
     this.itemIconPadding = paramInt;
-    F(false);
-    AppMethodBeat.o(237993);
+    J(false);
+    AppMethodBeat.o(209412);
   }
   
   public final void setItemIconTintList(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(237986);
-    this.bCx = paramColorStateList;
-    F(false);
-    AppMethodBeat.o(237986);
+    AppMethodBeat.i(209360);
+    this.dvy = paramColorStateList;
+    J(false);
+    AppMethodBeat.o(209360);
   }
   
   public final void setItemTextAppearance(int paramInt)
   {
-    AppMethodBeat.i(237988);
-    this.bCG = paramInt;
-    this.bCH = true;
-    F(false);
-    AppMethodBeat.o(237988);
+    AppMethodBeat.i(209383);
+    this.dvI = paramInt;
+    this.dvJ = true;
+    J(false);
+    AppMethodBeat.o(209383);
   }
   
   public final void setItemTextColor(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(237987);
-    this.bCI = paramColorStateList;
-    F(false);
-    AppMethodBeat.o(237987);
+    AppMethodBeat.i(209370);
+    this.dvK = paramColorStateList;
+    J(false);
+    AppMethodBeat.o(209370);
   }
   
   static final class a
@@ -309,102 +309,44 @@ public final class g
   public final class b
     extends RecyclerView.a<g.j>
   {
-    final ArrayList<g.d> bCM;
-    public j bCN;
-    boolean bxk;
+    boolean dqn;
+    final ArrayList<g.d> dvO;
+    public j dvP;
     
     public b()
     {
-      AppMethodBeat.i(237860);
-      this.bCM = new ArrayList();
-      xs();
-      AppMethodBeat.o(237860);
+      AppMethodBeat.i(209359);
+      this.dvO = new ArrayList();
+      WP();
+      AppMethodBeat.o(209359);
     }
     
-    private void bB(int paramInt1, int paramInt2)
+    private void cw(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(237872);
+      AppMethodBeat.i(209368);
       while (paramInt1 < paramInt2)
       {
-        ((g.f)this.bCM.get(paramInt1)).bCu = true;
+        ((g.f)this.dvO.get(paramInt1)).dvv = true;
         paramInt1 += 1;
       }
-      AppMethodBeat.o(237872);
+      AppMethodBeat.o(209368);
     }
     
-    public final int getItemCount()
+    final void WP()
     {
-      AppMethodBeat.i(237863);
-      int i = this.bCM.size();
-      AppMethodBeat.o(237863);
-      return i;
-    }
-    
-    public final long getItemId(int paramInt)
-    {
-      return paramInt;
-    }
-    
-    public final int getItemViewType(int paramInt)
-    {
-      AppMethodBeat.i(237866);
-      Object localObject = (g.d)this.bCM.get(paramInt);
-      if ((localObject instanceof g.e))
+      AppMethodBeat.i(209408);
+      if (this.dqn)
       {
-        AppMethodBeat.o(237866);
-        return 2;
-      }
-      if ((localObject instanceof g.c))
-      {
-        AppMethodBeat.o(237866);
-        return 3;
-      }
-      if ((localObject instanceof g.f))
-      {
-        if (((g.f)localObject).bCQ.hasSubMenu())
-        {
-          AppMethodBeat.o(237866);
-          return 1;
-        }
-        AppMethodBeat.o(237866);
-        return 0;
-      }
-      localObject = new RuntimeException("Unknown item type.");
-      AppMethodBeat.o(237866);
-      throw ((Throwable)localObject);
-    }
-    
-    public final void h(j paramj)
-    {
-      AppMethodBeat.i(237874);
-      if ((this.bCN == paramj) || (!paramj.isCheckable()))
-      {
-        AppMethodBeat.o(237874);
+        AppMethodBeat.o(209408);
         return;
       }
-      if (this.bCN != null) {
-        this.bCN.setChecked(false);
-      }
-      this.bCN = paramj;
-      paramj.setChecked(true);
-      AppMethodBeat.o(237874);
-    }
-    
-    final void xs()
-    {
-      AppMethodBeat.i(237870);
-      if (this.bxk)
-      {
-        AppMethodBeat.o(237870);
-        return;
-      }
-      this.bxk = true;
-      this.bCM.clear();
-      this.bCM.add(new g.c());
+      this.dqn = true;
+      this.dvO.clear();
+      this.dvO.add(new g.c());
       int j = -1;
       int i = 0;
       boolean bool1 = false;
-      int i2 = g.this.gU.ci().size();
+      int i2 = g.this.hP.db().size();
       int n = 0;
       Object localObject;
       int k;
@@ -413,12 +355,12 @@ public final class g
       {
         if (n < i2)
         {
-          localObject = (j)g.this.gU.ci().get(n);
+          localObject = (j)g.this.hP.db().get(n);
           if (((j)localObject).isChecked()) {
             h((j)localObject);
           }
           if (((j)localObject).isCheckable()) {
-            ((j)localObject).I(false);
+            ((j)localObject).M(false);
           }
           if (((j)localObject).hasSubMenu())
           {
@@ -426,11 +368,11 @@ public final class g
             if (localSubMenu.hasVisibleItems())
             {
               if (n != 0) {
-                this.bCM.add(new g.e(g.this.bCK, 0));
+                this.dvO.add(new g.e(g.this.dvM, 0));
               }
-              this.bCM.add(new g.f((j)localObject));
+              this.dvO.add(new g.f((j)localObject));
               k = 0;
-              int i3 = this.bCM.size();
+              int i3 = this.dvO.size();
               int i4 = localSubMenu.size();
               int i1 = 0;
               while (i1 < i4)
@@ -448,18 +390,18 @@ public final class g
                     }
                   }
                   if (localj.isCheckable()) {
-                    localj.I(false);
+                    localj.M(false);
                   }
                   if (((j)localObject).isChecked()) {
                     h((j)localObject);
                   }
-                  this.bCM.add(new g.f(localj));
+                  this.dvO.add(new g.f(localj));
                 }
                 i1 += 1;
                 k = m;
               }
               if (k != 0) {
-                bB(i3, this.bCM.size());
+                cw(i3, this.dvO.size());
               }
             }
             k = j;
@@ -475,7 +417,7 @@ public final class g
             k = ((j)localObject).getGroupId();
             if (k != j)
             {
-              j = this.bCM.size();
+              j = this.dvO.size();
               if (((j)localObject).getIcon() != null)
               {
                 bool2 = true;
@@ -485,7 +427,7 @@ public final class g
                 if (n != 0)
                 {
                   i = j + 1;
-                  this.bCM.add(new g.e(g.this.bCK, g.this.bCK));
+                  this.dvO.add(new g.e(g.this.dvM, g.this.dvM));
                   bool1 = bool2;
                 }
               }
@@ -496,8 +438,8 @@ public final class g
       for (;;)
       {
         localObject = new g.f((j)localObject);
-        ((g.f)localObject).bCu = bool1;
-        this.bCM.add(localObject);
+        ((g.f)localObject).dvv = bool1;
+        this.dvO.add(localObject);
         j = i;
         i = k;
         break;
@@ -506,37 +448,37 @@ public final class g
         if ((!bool1) && (((j)localObject).getIcon() != null))
         {
           bool1 = true;
-          bB(i, this.bCM.size());
+          cw(i, this.dvO.size());
           continue;
-          this.bxk = false;
-          AppMethodBeat.o(237870);
+          this.dqn = false;
+          AppMethodBeat.o(209408);
           return;
         }
       }
     }
     
-    public final Bundle xt()
+    public final Bundle WQ()
     {
-      AppMethodBeat.i(237877);
+      AppMethodBeat.i(209423);
       Bundle localBundle = new Bundle();
-      if (this.bCN != null) {
-        localBundle.putInt("android:menu:checked", this.bCN.getItemId());
+      if (this.dvP != null) {
+        localBundle.putInt("android:menu:checked", this.dvP.getItemId());
       }
       SparseArray localSparseArray = new SparseArray();
-      int j = this.bCM.size();
+      int j = this.dvO.size();
       int i = 0;
       if (i < j)
       {
-        Object localObject = (g.d)this.bCM.get(i);
+        Object localObject = (g.d)this.dvO.get(i);
         j localj;
         if ((localObject instanceof g.f))
         {
-          localj = ((g.f)localObject).bCQ;
+          localj = ((g.f)localObject).dvS;
           if (localj == null) {
-            break label138;
+            break label136;
           }
         }
-        label138:
+        label136:
         for (localObject = localj.getActionView();; localObject = null)
         {
           if (localObject != null)
@@ -550,8 +492,66 @@ public final class g
         }
       }
       localBundle.putSparseParcelableArray("android:menu:action_views", localSparseArray);
-      AppMethodBeat.o(237877);
+      AppMethodBeat.o(209423);
       return localBundle;
+    }
+    
+    public final int getItemCount()
+    {
+      AppMethodBeat.i(209382);
+      int i = this.dvO.size();
+      AppMethodBeat.o(209382);
+      return i;
+    }
+    
+    public final long getItemId(int paramInt)
+    {
+      return paramInt;
+    }
+    
+    public final int getItemViewType(int paramInt)
+    {
+      AppMethodBeat.i(209395);
+      Object localObject = (g.d)this.dvO.get(paramInt);
+      if ((localObject instanceof g.e))
+      {
+        AppMethodBeat.o(209395);
+        return 2;
+      }
+      if ((localObject instanceof g.c))
+      {
+        AppMethodBeat.o(209395);
+        return 3;
+      }
+      if ((localObject instanceof g.f))
+      {
+        if (((g.f)localObject).dvS.hasSubMenu())
+        {
+          AppMethodBeat.o(209395);
+          return 1;
+        }
+        AppMethodBeat.o(209395);
+        return 0;
+      }
+      localObject = new RuntimeException("Unknown item type.");
+      AppMethodBeat.o(209395);
+      throw ((Throwable)localObject);
+    }
+    
+    public final void h(j paramj)
+    {
+      AppMethodBeat.i(209418);
+      if ((this.dvP == paramj) || (!paramj.isCheckable()))
+      {
+        AppMethodBeat.o(209418);
+        return;
+      }
+      if (this.dvP != null) {
+        this.dvP.setChecked(false);
+      }
+      this.dvP = paramj;
+      paramj.setChecked(true);
+      AppMethodBeat.o(209418);
     }
   }
   
@@ -564,25 +564,25 @@ public final class g
   static final class e
     implements g.d
   {
-    final int bCO;
-    final int bCP;
+    final int dvQ;
+    final int dvR;
     
     public e(int paramInt1, int paramInt2)
     {
-      this.bCO = paramInt1;
-      this.bCP = paramInt2;
+      this.dvQ = paramInt1;
+      this.dvR = paramInt2;
     }
   }
   
   static final class f
     implements g.d
   {
-    final j bCQ;
-    boolean bCu;
+    final j dvS;
+    boolean dvv;
     
     f(j paramj)
     {
-      this.bCQ = paramj;
+      this.dvS = paramj;
     }
   }
   
@@ -592,9 +592,9 @@ public final class g
     public g(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, View.OnClickListener paramOnClickListener)
     {
       super();
-      AppMethodBeat.i(237933);
-      this.amk.setOnClickListener(paramOnClickListener);
-      AppMethodBeat.o(237933);
+      AppMethodBeat.i(209339);
+      this.caK.setOnClickListener(paramOnClickListener);
+      AppMethodBeat.o(209339);
     }
   }
   
@@ -604,8 +604,8 @@ public final class g
     public h(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup)
     {
       super();
-      AppMethodBeat.i(237941);
-      AppMethodBeat.o(237941);
+      AppMethodBeat.i(209345);
+      AppMethodBeat.o(209345);
     }
   }
   
@@ -615,8 +615,8 @@ public final class g
     public i(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup)
     {
       super();
-      AppMethodBeat.i(237948);
-      AppMethodBeat.o(237948);
+      AppMethodBeat.i(209357);
+      AppMethodBeat.o(209357);
     }
   }
   
@@ -631,7 +631,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.internal.g
  * JD-Core Version:    0.7.0.1
  */

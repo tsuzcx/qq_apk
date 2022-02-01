@@ -5,134 +5,138 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import kotlin.l.b.a.b.b.an;
-import kotlin.l.b.a.b.d.a.p;
-import kotlin.l.b.a.b.d.b.p.a;
-import kotlin.l.b.a.b.d.b.p.b;
-import kotlin.l.b.a.b.d.b.p.c;
-import kotlin.l.b.a.b.e.c.a.c;
-import kotlin.l.b.a.b.f.a;
+import kotlin.l.b.a.b.b.av;
+import kotlin.l.b.a.b.d.a.w;
+import kotlin.l.b.a.b.d.b.o.a;
+import kotlin.l.b.a.b.d.b.o.b;
+import kotlin.l.b.a.b.d.b.o.c;
+import kotlin.l.b.a.b.f.c;
 
 public final class b
-  implements p.c
+  implements o.c
 {
-  private static final boolean aaZs;
-  private static final Map<a, a.a> aaZt;
-  public c aaZd = null;
-  public String[] aaZe = null;
-  public String[] aaZf = null;
-  public String[] aaZg = null;
-  public String aaZh = null;
-  public int aaZi = 0;
-  public int[] aaZu = null;
-  public a.a aaZv = null;
+  private static final boolean aiXQ;
+  private static final Map<kotlin.l.b.a.b.f.b, a.a> aiXR;
+  public String[] aiXC = null;
+  public String[] aiXD = null;
+  public String[] aiXE = null;
+  public String aiXF = null;
+  public int aiXG = 0;
+  public int[] aiXS = null;
+  public a.a aiXT = null;
   public String packageName = null;
   
   static
   {
     AppMethodBeat.i(58301);
-    aaZs = "true".equals(System.getProperty("kotlin.ignore.old.metadata"));
+    aiXQ = "true".equals(System.getProperty("kotlin.ignore.old.metadata"));
     HashMap localHashMap = new HashMap();
-    aaZt = localHashMap;
-    localHashMap.put(a.p(new kotlin.l.b.a.b.f.b("kotlin.jvm.internal.KotlinClass")), a.a.aaZk);
-    aaZt.put(a.p(new kotlin.l.b.a.b.f.b("kotlin.jvm.internal.KotlinFileFacade")), a.a.aaZl);
-    aaZt.put(a.p(new kotlin.l.b.a.b.f.b("kotlin.jvm.internal.KotlinMultifileClass")), a.a.aaZn);
-    aaZt.put(a.p(new kotlin.l.b.a.b.f.b("kotlin.jvm.internal.KotlinMultifileClassPart")), a.a.aaZo);
-    aaZt.put(a.p(new kotlin.l.b.a.b.f.b("kotlin.jvm.internal.KotlinSyntheticClass")), a.a.aaZm);
+    aiXR = localHashMap;
+    localHashMap.put(kotlin.l.b.a.b.f.b.s(new c("kotlin.jvm.internal.KotlinClass")), a.a.aiXK);
+    aiXR.put(kotlin.l.b.a.b.f.b.s(new c("kotlin.jvm.internal.KotlinFileFacade")), a.a.aiXL);
+    aiXR.put(kotlin.l.b.a.b.f.b.s(new c("kotlin.jvm.internal.KotlinMultifileClass")), a.a.aiXN);
+    aiXR.put(kotlin.l.b.a.b.f.b.s(new c("kotlin.jvm.internal.KotlinMultifileClassPart")), a.a.aiXO);
+    aiXR.put(kotlin.l.b.a.b.f.b.s(new c("kotlin.jvm.internal.KotlinSyntheticClass")), a.a.aiXM);
     AppMethodBeat.o(58301);
   }
   
-  public final void XJ() {}
-  
-  public final p.a a(a parama, an paraman)
+  public final o.a a(kotlin.l.b.a.b.f.b paramb, av paramav)
   {
     AppMethodBeat.i(58300);
-    if (parama == null)
+    if (paramb == null)
     {
-      parama = new IllegalArgumentException(String.format("Argument for @NotNull parameter '%s' of %s.%s must not be null", new Object[] { "classId", "kotlin/reflect/jvm/internal/impl/load/kotlin/header/ReadKotlinClassHeaderAnnotationVisitor", "visitAnnotation" }));
+      paramb = new IllegalArgumentException(String.format("Argument for @NotNull parameter '%s' of %s.%s must not be null", new Object[] { "classId", "kotlin/reflect/jvm/internal/impl/load/kotlin/header/ReadKotlinClassHeaderAnnotationVisitor", "visitAnnotation" }));
       AppMethodBeat.o(58300);
-      throw parama;
+      throw paramb;
     }
-    if (parama.iNx().equals(p.aaSd))
+    if (paramb.kxQ().equals(w.aiPt))
     {
-      parama = new b((byte)0);
+      paramb = new b((byte)0);
       AppMethodBeat.o(58300);
-      return parama;
+      return paramb;
     }
-    if (aaZs)
+    if (aiXQ)
     {
       AppMethodBeat.o(58300);
       return null;
     }
-    if (this.aaZv != null)
+    if (this.aiXT != null)
     {
       AppMethodBeat.o(58300);
       return null;
     }
-    parama = (a.a)aaZt.get(parama);
-    if (parama != null)
+    paramb = (a.a)aiXR.get(paramb);
+    if (paramb != null)
     {
-      this.aaZv = parama;
-      parama = new c((byte)0);
+      this.aiXT = paramb;
+      paramb = new c((byte)0);
       AppMethodBeat.o(58300);
-      return parama;
+      return paramb;
     }
     AppMethodBeat.o(58300);
     return null;
   }
   
+  public final void azp() {}
+  
   static abstract class a
-    implements p.b
+    implements o.b
   {
-    private final List<String> aaZw = new ArrayList();
+    private final List<String> aiXU = new ArrayList();
     
-    public final void XJ()
+    public final void a(kotlin.l.b.a.b.f.b paramb, kotlin.l.b.a.b.f.f paramf)
     {
-      ak((String[])this.aaZw.toArray(new String[0]));
-    }
-    
-    public final void a(a parama, kotlin.l.b.a.b.f.f paramf)
-    {
-      if (parama == null) {
-        aDG(0);
+      if (paramb == null) {
+        aKu(0);
       }
       if (paramf == null) {
-        aDG(1);
+        aKu(1);
       }
     }
     
     public final void a(kotlin.l.b.a.b.j.b.f paramf)
     {
       if (paramf == null) {
-        aDG(2);
+        aKu(2);
       }
     }
     
-    protected abstract void ak(String[] paramArrayOfString);
+    protected abstract void am(String[] paramArrayOfString);
     
-    public final void fy(Object paramObject)
+    public final void azp()
+    {
+      am((String[])this.aiXU.toArray(new String[0]));
+    }
+    
+    public final o.a e(kotlin.l.b.a.b.f.b paramb)
+    {
+      if (paramb == null) {
+        aKu(3);
+      }
+      return null;
+    }
+    
+    public final void hY(Object paramObject)
     {
       if ((paramObject instanceof String)) {
-        this.aaZw.add((String)paramObject);
+        this.aiXU.add((String)paramObject);
       }
     }
   }
   
   final class b
-    implements p.a
+    implements o.a
   {
     private b() {}
     
-    public final void XJ() {}
-    
-    public final p.a a(kotlin.l.b.a.b.f.f paramf, a parama)
+    public final o.a a(kotlin.l.b.a.b.f.f paramf, kotlin.l.b.a.b.f.b paramb)
     {
       AppMethodBeat.i(58290);
       if (paramf == null) {
-        aDG(6);
+        aKu(6);
       }
-      if (parama == null) {
-        aDG(7);
+      if (paramb == null) {
+        aKu(7);
       }
       AppMethodBeat.o(58290);
       return null;
@@ -146,12 +150,12 @@ public final class b
         AppMethodBeat.o(58286);
         return;
       }
-      paramf = paramf.qu();
+      paramf = paramf.PF();
       if ("k".equals(paramf))
       {
         if ((paramObject instanceof Integer))
         {
-          b.a(b.this, a.a.aDL(((Integer)paramObject).intValue()));
+          b.a(b.this, a.a.aKA(((Integer)paramObject).intValue()));
           AppMethodBeat.o(58286);
         }
       }
@@ -160,14 +164,6 @@ public final class b
         if ((paramObject instanceof int[]))
         {
           b.a(b.this, (int[])paramObject);
-          AppMethodBeat.o(58286);
-        }
-      }
-      else if ("bv".equals(paramf))
-      {
-        if ((paramObject instanceof int[]))
-        {
-          b.a(b.this, new c((int[])paramObject));
           AppMethodBeat.o(58286);
         }
       }
@@ -193,17 +189,17 @@ public final class b
       AppMethodBeat.o(58286);
     }
     
-    public final void a(kotlin.l.b.a.b.f.f paramf1, a parama, kotlin.l.b.a.b.f.f paramf2)
+    public final void a(kotlin.l.b.a.b.f.f paramf1, kotlin.l.b.a.b.f.b paramb, kotlin.l.b.a.b.f.f paramf2)
     {
       AppMethodBeat.i(58289);
       if (paramf1 == null) {
-        aDG(3);
+        aKu(3);
       }
-      if (parama == null) {
-        aDG(4);
+      if (paramb == null) {
+        aKu(4);
       }
       if (paramf2 == null) {
-        aDG(5);
+        aKu(5);
       }
       AppMethodBeat.o(58289);
     }
@@ -212,26 +208,28 @@ public final class b
     {
       AppMethodBeat.i(58287);
       if (paramf == null) {
-        aDG(0);
+        aKu(0);
       }
       if (paramf1 == null) {
-        aDG(1);
+        aKu(1);
       }
       AppMethodBeat.o(58287);
     }
     
-    public final p.b n(kotlin.l.b.a.b.f.f paramf)
+    public final void azp() {}
+    
+    public final o.b o(kotlin.l.b.a.b.f.f paramf)
     {
       AppMethodBeat.i(58288);
       if (paramf == null) {
-        aDG(2);
+        aKu(2);
       }
-      paramf = paramf.qu();
+      paramf = paramf.PF();
       if ("d1".equals(paramf))
       {
         paramf = new b.a()
         {
-          protected final void ak(String[] paramAnonymousArrayOfString)
+          protected final void am(String[] paramAnonymousArrayOfString)
           {
             AppMethodBeat.i(58284);
             if (paramAnonymousArrayOfString == null)
@@ -251,7 +249,7 @@ public final class b
       {
         paramf = new b.a()
         {
-          protected final void ak(String[] paramAnonymousArrayOfString)
+          protected final void am(String[] paramAnonymousArrayOfString)
           {
             AppMethodBeat.i(58285);
             if (paramAnonymousArrayOfString == null)
@@ -273,20 +271,18 @@ public final class b
   }
   
   final class c
-    implements p.a
+    implements o.a
   {
     private c() {}
     
-    public final void XJ() {}
-    
-    public final p.a a(kotlin.l.b.a.b.f.f paramf, a parama)
+    public final o.a a(kotlin.l.b.a.b.f.f paramf, kotlin.l.b.a.b.f.b paramb)
     {
       AppMethodBeat.i(58298);
       if (paramf == null) {
-        aDG(6);
+        aKu(6);
       }
-      if (parama == null) {
-        aDG(7);
+      if (paramb == null) {
+        aKu(7);
       }
       AppMethodBeat.o(58298);
       return null;
@@ -300,28 +296,24 @@ public final class b
         AppMethodBeat.o(58294);
         return;
       }
-      paramf = paramf.qu();
+      paramf = paramf.PF();
       b localb;
       if ("version".equals(paramf))
       {
         if ((paramObject instanceof int[]))
         {
           b.a(b.this, (int[])paramObject);
-          if (b.a(b.this) == null)
-          {
-            b.a(b.this, new c((int[])paramObject));
-            AppMethodBeat.o(58294);
-          }
+          AppMethodBeat.o(58294);
         }
       }
       else if ("multifileClassName".equals(paramf))
       {
         localb = b.this;
         if (!(paramObject instanceof String)) {
-          break label127;
+          break label95;
         }
       }
-      label127:
+      label95:
       for (paramf = (String)paramObject;; paramf = null)
       {
         b.a(localb, paramf);
@@ -330,17 +322,17 @@ public final class b
       }
     }
     
-    public final void a(kotlin.l.b.a.b.f.f paramf1, a parama, kotlin.l.b.a.b.f.f paramf2)
+    public final void a(kotlin.l.b.a.b.f.f paramf1, kotlin.l.b.a.b.f.b paramb, kotlin.l.b.a.b.f.f paramf2)
     {
       AppMethodBeat.i(58297);
       if (paramf1 == null) {
-        aDG(3);
+        aKu(3);
       }
-      if (parama == null) {
-        aDG(4);
+      if (paramb == null) {
+        aKu(4);
       }
       if (paramf2 == null) {
-        aDG(5);
+        aKu(5);
       }
       AppMethodBeat.o(58297);
     }
@@ -349,26 +341,28 @@ public final class b
     {
       AppMethodBeat.i(58295);
       if (paramf == null) {
-        aDG(0);
+        aKu(0);
       }
       if (paramf1 == null) {
-        aDG(1);
+        aKu(1);
       }
       AppMethodBeat.o(58295);
     }
     
-    public final p.b n(kotlin.l.b.a.b.f.f paramf)
+    public final void azp() {}
+    
+    public final o.b o(kotlin.l.b.a.b.f.f paramf)
     {
       AppMethodBeat.i(58296);
       if (paramf == null) {
-        aDG(2);
+        aKu(2);
       }
-      paramf = paramf.qu();
+      paramf = paramf.PF();
       if (("data".equals(paramf)) || ("filePartClassNames".equals(paramf)))
       {
         paramf = new b.a()
         {
-          protected final void ak(String[] paramAnonymousArrayOfString)
+          protected final void am(String[] paramAnonymousArrayOfString)
           {
             AppMethodBeat.i(58292);
             if (paramAnonymousArrayOfString == null)
@@ -388,7 +382,7 @@ public final class b
       {
         paramf = new b.a()
         {
-          protected final void ak(String[] paramAnonymousArrayOfString)
+          protected final void am(String[] paramAnonymousArrayOfString)
           {
             AppMethodBeat.i(58293);
             if (paramAnonymousArrayOfString == null)
@@ -411,7 +405,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.d.b.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,67 +2,43 @@ package com.tencent.mm.chatroom.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.dq;
+import com.tencent.mm.autogen.b.ec;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import java.lang.reflect.Field;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class e
-  extends dq
+  extends ec
 {
   protected static IAutoDBItem.MAutoDBInfo info;
-  public LinkedList<GroupToolItem> iXI;
-  public LinkedList<GroupToolItem> iXJ;
+  public LinkedList<GroupToolItem> lzE;
+  public LinkedList<GroupToolItem> lzF;
   
   static
   {
     AppMethodBeat.i(182159);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[4];
-    localMAutoDBInfo.columns = new String[5];
-    StringBuilder localStringBuilder = new StringBuilder();
-    localMAutoDBInfo.columns[0] = "chatroomname";
-    localMAutoDBInfo.colsMap.put("chatroomname", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" chatroomname TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.primaryKey = "chatroomname";
-    localMAutoDBInfo.columns[1] = "stickToollist";
-    localMAutoDBInfo.colsMap.put("stickToollist", "TEXT");
-    localStringBuilder.append(" stickToollist TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[2] = "recentUseToolList";
-    localMAutoDBInfo.colsMap.put("recentUseToolList", "TEXT");
-    localStringBuilder.append(" recentUseToolList TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[3] = "queryState";
-    localMAutoDBInfo.colsMap.put("queryState", "INTEGER");
-    localStringBuilder.append(" queryState INTEGER");
-    localMAutoDBInfo.columns[4] = "rowid";
-    localMAutoDBInfo.sql = localStringBuilder.toString();
-    info = localMAutoDBInfo;
+    info = ec.aJm();
     AppMethodBeat.o(182159);
   }
   
   public e()
   {
     AppMethodBeat.i(182154);
-    this.iXI = new LinkedList();
-    this.iXJ = new LinkedList();
+    this.lzE = new LinkedList();
+    this.lzF = new LinkedList();
     this.field_queryState = 0;
     AppMethodBeat.o(182154);
   }
   
-  public static String T(List<GroupToolItem> paramList)
+  public static String bt(List<GroupToolItem> paramList)
   {
     AppMethodBeat.i(182158);
     JSONArray localJSONArray = new JSONArray();
@@ -75,7 +51,7 @@ public final class e
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("username", localGroupToolItem.username);
         localJSONObject.put("path", localGroupToolItem.path);
-        localJSONObject.put("updateTime", localGroupToolItem.coZ);
+        localJSONObject.put("updateTime", localGroupToolItem.egK);
         localJSONArray.put(localJSONObject);
       }
       return paramList;
@@ -90,23 +66,23 @@ public final class e
   
   public final void a(GroupToolItem paramGroupToolItem)
   {
-    AppMethodBeat.i(186280);
-    if (this.iXJ.contains(paramGroupToolItem)) {
-      this.iXJ.remove(paramGroupToolItem);
+    AppMethodBeat.i(241407);
+    if (this.lzF.contains(paramGroupToolItem)) {
+      this.lzF.remove(paramGroupToolItem);
     }
-    this.iXJ.add(paramGroupToolItem);
-    Collections.sort(this.iXJ, new Comparator() {});
-    if (this.iXJ.size() > 20) {
-      this.iXJ.remove(this.iXJ.size() - 1);
+    this.lzF.add(paramGroupToolItem);
+    Collections.sort(this.lzF, new Comparator() {});
+    if (this.lzF.size() > 20) {
+      this.lzF.remove(this.lzF.size() - 1);
     }
-    this.field_recentUseToolList = T(this.iXJ);
-    AppMethodBeat.o(186280);
+    this.field_recentUseToolList = bt(this.lzF);
+    AppMethodBeat.o(241407);
   }
   
-  public final boolean asp()
+  public final boolean aMj()
   {
     AppMethodBeat.i(182157);
-    if (this.iXI.size() >= 8)
+    if (this.lzE.size() >= 8)
     {
       AppMethodBeat.o(182157);
       return true;
@@ -119,7 +95,7 @@ public final class e
   {
     AppMethodBeat.i(182155);
     super.convertFrom(paramCursor);
-    this.iXI.clear();
+    this.lzE.clear();
     int j;
     int i;
     JSONObject localJSONObject;
@@ -136,10 +112,10 @@ public final class e
           localGroupToolItem = new GroupToolItem();
           localGroupToolItem.username = Util.nullAs(localJSONObject.getString("username"), "");
           localGroupToolItem.path = Util.nullAs(localJSONObject.getString("path"), "");
-          this.iXI.add(localGroupToolItem);
+          this.lzE.add(localGroupToolItem);
           i += 1;
         }
-        this.iXJ.clear();
+        this.lzF.clear();
       }
       catch (Exception paramCursor)
       {
@@ -158,8 +134,8 @@ public final class e
           localGroupToolItem = new GroupToolItem();
           localGroupToolItem.username = Util.nullAs(localJSONObject.getString("username"), "");
           localGroupToolItem.path = Util.nullAs(localJSONObject.getString("path"), "");
-          localGroupToolItem.coZ = localJSONObject.getLong("updateTime");
-          this.iXJ.add(localGroupToolItem);
+          localGroupToolItem.egK = localJSONObject.getLong("updateTime");
+          this.lzF.add(localGroupToolItem);
           i += 1;
         }
         AppMethodBeat.o(182155);

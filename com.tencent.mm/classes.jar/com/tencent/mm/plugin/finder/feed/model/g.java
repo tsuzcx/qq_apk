@@ -1,40 +1,40 @@
 package com.tencent.mm.plugin.finder.feed.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/FinderCacheManager;", "", "()V", "adCacheManger", "Lcom/tencent/mm/plugin/finder/feed/model/FinderAdCacheManager;", "adH5CacheManger", "clear", "", "getAdCacheManager", "getH5CacheManager", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/model/FinderCacheManager;", "", "()V", "adCacheManger", "Lcom/tencent/mm/plugin/finder/feed/model/FinderAdCacheManager;", "adH5CacheManger", "clear", "", "getAdCacheManager", "getH5CacheManager", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class g
 {
-  private static final e xGg;
-  private static final e xGh;
-  public static final g xGi;
+  public static final g BeY;
+  private static final e BeZ;
+  private static final e Bfa;
   
   static
   {
-    AppMethodBeat.i(285887);
-    xGi = new g();
-    xGg = new e();
-    xGh = new e();
-    AppMethodBeat.o(285887);
+    AppMethodBeat.i(365981);
+    BeY = new g();
+    BeZ = new e();
+    Bfa = new e();
+    AppMethodBeat.o(365981);
   }
   
   public static void clear()
   {
-    AppMethodBeat.i(285886);
-    xGg.clear();
-    xGh.clear();
-    AppMethodBeat.o(285886);
+    AppMethodBeat.i(365971);
+    BeZ.clear();
+    Bfa.clear();
+    AppMethodBeat.o(365971);
   }
   
-  public static e dul()
+  public static e edK()
   {
-    return xGg;
+    return BeZ;
   }
   
-  public static e dum()
+  public static e edL()
   {
-    return xGh;
+    return Bfa;
   }
 }
 

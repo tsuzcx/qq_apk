@@ -6,9 +6,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.tinker.anno.Keep;
 
-@Keep
 public final class TinkerApplicationInlineFence
   extends Handler
 {
@@ -92,7 +90,7 @@ public final class TinkerApplicationInlineFence
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.entry.TinkerApplicationInlineFence
  * JD-Core Version:    0.7.0.1
  */

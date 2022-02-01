@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/rs" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@drawable/a39" android:layout_width="fill_parent" android:layout_height="@dimen/d_"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/hee" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="16.0dip" android:layout_alignParentBottom="true">
-        <TextView android:textSize="@dimen/hc" android:textColor="@color/BW_0_Alpha_0_5" android:ellipsize="middle" android:id="@id/dp0" android:paddingBottom="@dimen/k5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{header}" android:singleLine="true" android:layout_alignParentBottom="true" />
-    </RelativeLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/g8b" android:layout_width="fill_parent" android:layout_height="48.0dip">
-        <View android:background="@color/a7t" android:layout_width="fill_parent" android:layout_height="1.0px" />
-        <View android:background="@color/a" android:layout_width="fill_parent" android:layout_height="8.0dip" />
-        <View android:background="@color/a7t" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="@dimen/df" android:src="@raw/icons_outlined_delete" />
+        <TextView android:ellipsize="end" android:id="@id/bsj" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="-1.0dip" android:text="@string/eg0" android:singleLine="true" android:layout_weight="1.0" style="@style/ma" />
     </LinearLayout>
-    <View android:background="@color/a7t" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/dx" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+    <View android:id="@id/c8l" android:background="@color/abn" android:layout_width="fill_parent" android:layout_height="1.0px" />
+</LinearLayout>

@@ -5,22 +5,10 @@ import org.xmlpull.v1.XmlPullParser;
 
 public final class y
 {
-  private static boolean b(XmlPullParser paramXmlPullParser)
-  {
-    AppMethodBeat.i(93248);
-    if (paramXmlPullParser.getEventType() == 2)
-    {
-      AppMethodBeat.o(93248);
-      return true;
-    }
-    AppMethodBeat.o(93248);
-    return false;
-  }
-  
   public static boolean b(XmlPullParser paramXmlPullParser, String paramString)
   {
     AppMethodBeat.i(93247);
-    if ((b(paramXmlPullParser)) && (paramXmlPullParser.getName().equals(paramString)))
+    if ((c(paramXmlPullParser)) && (paramXmlPullParser.getName().equals(paramString)))
     {
       AppMethodBeat.o(93247);
       return true;
@@ -47,10 +35,22 @@ public final class y
     AppMethodBeat.o(93249);
     return null;
   }
+  
+  private static boolean c(XmlPullParser paramXmlPullParser)
+  {
+    AppMethodBeat.i(93248);
+    if (paramXmlPullParser.getEventType() == 2)
+    {
+      AppMethodBeat.o(93248);
+      return true;
+    }
+    AppMethodBeat.o(93248);
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.exoplayer2.i.y
  * JD-Core Version:    0.7.0.1
  */

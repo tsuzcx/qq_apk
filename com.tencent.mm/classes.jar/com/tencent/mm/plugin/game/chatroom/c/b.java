@@ -1,60 +1,60 @@
 package com.tencent.mm.plugin.game.chatroom.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.game.autogen.chatroom.GetChatroomBaseInfoRequest;
-import com.tencent.mm.plugin.game.autogen.chatroom.GetChatroomBaseInfoResponse;
+import com.tencent.mm.plugin.game.autogen.chatroom.EnterChatroomRequest;
+import com.tencent.mm.plugin.game.autogen.chatroom.EnterChatroomResponse;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  public final d jTk;
+  private h callback;
+  private final c mtC;
   
   public b(String paramString)
   {
-    AppMethodBeat.i(210564);
-    d.a locala = new d.a();
-    locala.lBU = new GetChatroomBaseInfoRequest();
-    locala.lBV = new GetChatroomBaseInfoResponse();
-    locala.uri = "/cgi-bin/mmgame-bin/gamegamelifeappsvr/getchatroombaseinfo";
+    AppMethodBeat.i(275833);
+    c.a locala = new c.a();
+    locala.otE = new EnterChatroomRequest();
+    locala.otF = new EnterChatroomResponse();
+    locala.uri = "/cgi-bin/mmgame-bin/gamegamelifeappsvr/enterchatroom";
     locala.funcId = getType();
-    locala.lBW = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.jTk = locala.bgN();
-    ((GetChatroomBaseInfoRequest)d.b.b(this.jTk.lBR)).chatroom_name = paramString;
-    AppMethodBeat.o(210564);
+    this.mtC = locala.bEF();
+    ((EnterChatroomRequest)c.b.b(this.mtC.otB)).chatroom_name = paramString;
+    AppMethodBeat.o(275833);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(210565);
-    this.callback = parami;
-    int i = dispatch(paramg, this.jTk, this);
-    AppMethodBeat.o(210565);
+    AppMethodBeat.i(275850);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.mtC, this);
+    AppMethodBeat.o(275850);
     return i;
   }
   
   public final int getType()
   {
-    return 4391;
+    return 4593;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(210566);
-    Log.i("GameChatRoom.CgiGetChatRoomBaseInfo", "errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString);
+    AppMethodBeat.i(275857);
+    Log.i("GameChatRoom.CgiEnterChatRoom", "errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(210566);
+    AppMethodBeat.o(275857);
   }
 }
 

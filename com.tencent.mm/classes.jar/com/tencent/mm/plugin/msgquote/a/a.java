@@ -30,39 +30,34 @@ public class a
     this.db = paramISQLiteDatabase;
   }
   
-  public final b OA(long paramLong)
+  public final boolean a(b paramb)
   {
-    AppMethodBeat.i(88805);
-    if (paramLong <= 0L)
+    AppMethodBeat.i(88806);
+    if (paramb == null)
     {
-      Log.e("MicroMsg.msgquote.MsgQuoteStorage", "quotedMsgId:%s", new Object[] { Long.valueOf(paramLong) });
-      AppMethodBeat.o(88805);
-      return null;
+      AppMethodBeat.o(88806);
+      return false;
     }
-    Object localObject = this.db.query("MsgQuote", b.info.columns, "quotedMsgId=?", new String[] { String.valueOf(paramLong) }, null, null, null);
-    if (localObject == null)
-    {
-      AppMethodBeat.o(88805);
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    while (((Cursor)localObject).moveToNext())
-    {
-      b localb = new b();
-      localb.convertFrom((Cursor)localObject);
-      localArrayList.add(localb);
-    }
-    if (localArrayList.size() == 0)
-    {
-      AppMethodBeat.o(88805);
-      return null;
-    }
-    localObject = (b)localArrayList.get(0);
-    AppMethodBeat.o(88805);
-    return localObject;
+    boolean bool = update(paramb.systemRowid, paramb);
+    AppMethodBeat.o(88806);
+    return bool;
   }
   
-  public final b Oy(long paramLong)
+  public final boolean b(b paramb)
+  {
+    AppMethodBeat.i(88807);
+    if (paramb == null)
+    {
+      AppMethodBeat.o(88807);
+      return false;
+    }
+    paramb.field_status = 0;
+    boolean bool = super.insert(paramb);
+    AppMethodBeat.o(88807);
+    return bool;
+  }
+  
+  public final b st(long paramLong)
   {
     AppMethodBeat.i(88803);
     if (paramLong <= 0L)
@@ -94,7 +89,7 @@ public class a
     return localObject;
   }
   
-  public final b Oz(long paramLong)
+  public final b su(long paramLong)
   {
     AppMethodBeat.i(88804);
     if (paramLong <= 0L)
@@ -126,31 +121,36 @@ public class a
     return localObject;
   }
   
-  public final boolean a(b paramb)
+  public final b sv(long paramLong)
   {
-    AppMethodBeat.i(88806);
-    if (paramb == null)
+    AppMethodBeat.i(88805);
+    if (paramLong <= 0L)
     {
-      AppMethodBeat.o(88806);
-      return false;
+      Log.e("MicroMsg.msgquote.MsgQuoteStorage", "quotedMsgId:%s", new Object[] { Long.valueOf(paramLong) });
+      AppMethodBeat.o(88805);
+      return null;
     }
-    boolean bool = update(paramb.systemRowid, paramb);
-    AppMethodBeat.o(88806);
-    return bool;
-  }
-  
-  public final boolean b(b paramb)
-  {
-    AppMethodBeat.i(88807);
-    if (paramb == null)
+    Object localObject = this.db.query("MsgQuote", b.info.columns, "quotedMsgId=?", new String[] { String.valueOf(paramLong) }, null, null, null);
+    if (localObject == null)
     {
-      AppMethodBeat.o(88807);
-      return false;
+      AppMethodBeat.o(88805);
+      return null;
     }
-    paramb.field_status = 0;
-    boolean bool = super.insert(paramb);
-    AppMethodBeat.o(88807);
-    return bool;
+    ArrayList localArrayList = new ArrayList();
+    while (((Cursor)localObject).moveToNext())
+    {
+      b localb = new b();
+      localb.convertFrom((Cursor)localObject);
+      localArrayList.add(localb);
+    }
+    if (localArrayList.size() == 0)
+    {
+      AppMethodBeat.o(88805);
+      return null;
+    }
+    localObject = (b)localArrayList.get(0);
+    AppMethodBeat.o(88805);
+    return localObject;
   }
 }
 

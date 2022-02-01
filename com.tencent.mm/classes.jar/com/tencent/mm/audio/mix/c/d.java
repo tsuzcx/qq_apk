@@ -7,110 +7,108 @@ import java.lang.reflect.Array;
 public class d
   implements h
 {
-  protected static long fno;
-  protected static long fnp;
-  protected static Object fnq;
-  protected String fna;
-  protected i fnd;
-  protected int fne;
-  protected int fnf;
-  protected int fng;
-  protected int fnh;
-  protected int fni;
-  protected int fnj;
-  protected boolean fnk;
-  protected boolean fnl;
-  protected boolean fnm;
-  protected String fnn;
-  protected byte[][] fnr;
-  protected i fns;
+  protected static long hrA;
+  protected static Object hrB;
+  protected static long hrz;
+  protected byte[][] hrC;
+  protected i hrD;
+  protected String hrl;
+  protected i hro;
+  protected int hrp;
+  protected int hrq;
+  protected int hrr;
+  protected int hrs;
+  protected int hrt;
+  protected int hru;
+  protected boolean hrv;
+  protected boolean hrw;
+  protected boolean hrx;
+  protected String hry;
   
   static
   {
     AppMethodBeat.i(136766);
-    fno = 0L;
-    fnp = 0L;
-    fnq = new Object();
+    hrz = 0L;
+    hrA = 0L;
+    hrB = new Object();
     AppMethodBeat.o(136766);
   }
   
   public d()
   {
     AppMethodBeat.i(136761);
-    this.fne = 0;
-    this.fnf = 0;
-    this.fng = 0;
-    this.fnh = 44100;
-    this.fni = 2;
-    this.fnj = 2;
-    this.fnk = false;
-    this.fnl = false;
-    this.fnm = false;
-    this.fnr = new byte[2][];
+    this.hrp = 0;
+    this.hrq = 0;
+    this.hrr = 0;
+    this.hrs = 44100;
+    this.hrt = 2;
+    this.hru = 2;
+    this.hrv = false;
+    this.hrw = false;
+    this.hrx = false;
+    this.hrC = new byte[2][];
     AppMethodBeat.o(136761);
   }
   
-  public final void J(int paramInt1, int paramInt2, int paramInt3)
+  public final void Z(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(136763);
-    int i = this.fne;
-    this.fne = paramInt1;
-    this.fnf = paramInt2;
-    this.fng = paramInt3;
-    if (this.fnh != this.fne) {
-      if (this.fnd == null)
+    int i = this.hrp;
+    this.hrp = paramInt1;
+    this.hrq = paramInt2;
+    this.hrr = paramInt3;
+    if (this.hrs != this.hrp) {
+      if (this.hro == null)
       {
-        this.fnd = adx();
-        this.fnd.m(this.fnn, this.fne, this.fnh);
-        if ((this.fnf == 2) && (this.fni == 2))
+        this.hro = aFw();
+        this.hro.p(this.hry, this.hrp, this.hrs);
+        if ((this.hrq == 2) && (this.hrt == 2))
         {
-          if (this.fns != null) {
+          if (this.hrD != null) {
             break label247;
           }
-          this.fns = adx();
-          this.fns.m(this.fnn + "RResample", this.fne, this.fnh);
+          this.hrD = aFw();
+          this.hrD.p(this.hry + "RResample", this.hrp, this.hrs);
         }
         label145:
-        this.fnm = true;
+        this.hrx = true;
       }
     }
     for (;;)
     {
-      if (this.fnj != this.fng) {
-        this.fnl = true;
+      if (this.hru != this.hrr) {
+        this.hrw = true;
       }
-      if (this.fni != this.fnf) {
-        this.fnk = true;
+      if (this.hrt != this.hrq) {
+        this.hrv = true;
       }
       AppMethodBeat.o(136763);
       return;
-      if ((this.fnd == null) || (i == this.fne)) {
+      if ((this.hro == null) || (i == this.hrp)) {
         break;
       }
-      this.fnd.adB();
-      this.fnd = adx();
-      this.fnd.m(this.fnn, this.fne, this.fnh);
+      this.hro.release();
+      this.hro = aFw();
+      this.hro.p(this.hry, this.hrp, this.hrs);
       break;
       label247:
-      if ((this.fns == null) || (i == this.fne)) {
+      if ((this.hrD == null) || (i == this.hrp)) {
         break label145;
       }
-      this.fns.adB();
-      this.fns = adx();
-      this.fns.m(this.fnn + "RResample", this.fne, this.fnh);
+      this.hrD.release();
+      this.hrD = aFw();
+      this.hrD.p(this.hry + "RResample", this.hrp, this.hrs);
       break label145;
-      this.fnm = false;
-      if (this.fnd != null)
+      this.hrx = false;
+      if (this.hro != null)
       {
-        this.fnd.adB();
-        this.fnd = null;
+        this.hro.release();
+        this.hro = null;
       }
     }
   }
   
-  public void adA() {}
-  
-  public i adx()
+  public i aFw()
   {
     AppMethodBeat.i(136762);
     j localj = new j();
@@ -118,12 +116,14 @@ public class d
     return localj;
   }
   
-  public void ady() {}
+  public void aFx() {}
   
-  public e adz()
+  public e aFy()
   {
     return null;
   }
+  
+  public void aFz() {}
   
   public byte[] ae(byte[] paramArrayOfByte)
   {
@@ -133,9 +133,9 @@ public class d
       AppMethodBeat.o(136764);
       return paramArrayOfByte;
     }
-    if (this.fnl)
+    if (this.hrw)
     {
-      ??? = c.a(this.fng, this.fnj, paramArrayOfByte);
+      ??? = c.a(this.hrr, this.hru, paramArrayOfByte);
       if (??? == null) {}
     }
     for (;;)
@@ -145,13 +145,13 @@ public class d
       }
       for (;;)
       {
-        if ((this.fnf == 1) && (this.fni == 2) && (this.fnm))
+        if ((this.hrq == 1) && (this.hrt == 2) && (this.hrx))
         {
-          paramArrayOfByte = this.fnd.ae((byte[])???);
+          paramArrayOfByte = this.hro.ae((byte[])???);
           if (paramArrayOfByte != null) {
             ??? = paramArrayOfByte;
           }
-          paramArrayOfByte = c.b(this.fnf, this.fni, this.fnj, (byte[])???);
+          paramArrayOfByte = c.b(this.hrq, this.hrt, this.hru, (byte[])???);
           if (paramArrayOfByte != null) {
             ??? = paramArrayOfByte;
           }
@@ -159,18 +159,18 @@ public class d
           return ???;
         }
         byte[] arrayOfByte;
-        if ((this.fnf == 2) && (this.fni == 2) && (this.fnm))
+        if ((this.hrq == 2) && (this.hrt == 2) && (this.hrx))
         {
-          if ((this.fnd instanceof j)) {
-            if (this.fni == 2)
+          if ((this.hro instanceof j)) {
+            if (this.hrt == 2)
             {
               int i = ???.length / 2;
-              if ((this.fnr == null) || (i != this.fnr.length)) {
-                this.fnr = ((byte[][])Array.newInstance(Byte.TYPE, new int[] { 2, i }));
+              if ((this.hrC == null) || (i != this.hrC.length)) {
+                this.hrC = ((byte[][])Array.newInstance(Byte.TYPE, new int[] { 2, i }));
               }
-              c.a(this.fnj, (byte[])???, this.fnr);
-              paramArrayOfByte = this.fnd.ae(this.fnr[0]);
-              arrayOfByte = this.fns.ae(this.fnr[1]);
+              c.a(this.hru, (byte[])???, this.hrC);
+              paramArrayOfByte = this.hro.ae(this.hrC[0]);
+              arrayOfByte = this.hrD.ae(this.hrC[1]);
               if ((paramArrayOfByte == null) || (arrayOfByte == null)) {
                 paramArrayOfByte = (byte[])???;
               }
@@ -183,16 +183,16 @@ public class d
             }
             AppMethodBeat.o(136764);
             return ???;
-            paramArrayOfByte = c.a(this.fnj, paramArrayOfByte, arrayOfByte);
+            paramArrayOfByte = c.a(this.hru, paramArrayOfByte, arrayOfByte);
             continue;
-            paramArrayOfByte = this.fnd.ae((byte[])???);
+            paramArrayOfByte = this.hro.ae((byte[])???);
             continue;
-            paramArrayOfByte = this.fnd.ae((byte[])???);
+            paramArrayOfByte = this.hro.ae((byte[])???);
           }
         }
-        if (this.fnk)
+        if (this.hrv)
         {
-          arrayOfByte = c.b(this.fnf, this.fni, this.fnj, (byte[])???);
+          arrayOfByte = c.b(this.hrq, this.hrt, this.hru, (byte[])???);
           if (arrayOfByte != null) {
             ??? = arrayOfByte;
           }
@@ -203,16 +203,16 @@ public class d
           for (;;)
           {
             ??? = paramArrayOfByte;
-            if (this.fnm) {}
-            synchronized (fnq)
+            if (this.hrx) {}
+            synchronized (hrB)
             {
-              fno += 1L;
+              hrz += 1L;
               System.nanoTime();
-              ??? = this.fnd.ae(paramArrayOfByte);
+              ??? = this.hro.ae(paramArrayOfByte);
               if (??? != null) {
                 paramArrayOfByte = (byte[])???;
               }
-              ??? = fnq;
+              ??? = hrB;
               ??? = paramArrayOfByte;
               AppMethodBeat.o(136764);
               return ???;
@@ -228,15 +228,15 @@ public class d
   public void release()
   {
     AppMethodBeat.i(136765);
-    if (this.fnd != null)
+    if (this.hro != null)
     {
-      this.fnd.adB();
-      this.fnd = null;
+      this.hro.release();
+      this.hro = null;
     }
-    if (this.fns != null)
+    if (this.hrD != null)
     {
-      this.fns.adB();
-      this.fns = null;
+      this.hrD.release();
+      this.hrD = null;
     }
     AppMethodBeat.o(136765);
   }

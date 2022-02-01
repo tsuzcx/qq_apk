@@ -15,43 +15,45 @@ import com.tencent.mm.plugin.voip.video.camera.prev.b;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
 
 public final class d
 {
-  public static b Oal;
-  public static int Oam = -1;
-  public static int Oan = -1;
-  public static int Oao = 0;
-  public static int Oap = 0;
-  public static int Oaq = 0;
-  public static boolean Oar = true;
-  public static boolean Oas = false;
-  public static int jnv = 0;
+  public static b UOi;
+  public static int UOj = -1;
+  public static int UOk = -1;
+  public static int UOl = 0;
+  public static int UOm = 0;
+  public static int UOn = 0;
+  public static boolean UOo = true;
+  public static boolean UOp = false;
+  public static int lQG = 0;
   
-  public static boolean gDJ()
+  public static boolean icD()
   {
-    return (!af.juH.jpK) || (af.juH.jpJ != 8);
+    return (!af.lXY.lSS) || (af.lXY.lSR != 8);
   }
   
-  public static boolean gDK()
+  public static boolean icE()
   {
-    AppMethodBeat.i(233519);
-    if (!Oas)
+    AppMethodBeat.i(292932);
+    if (!UOp)
     {
-      Oar = gDL();
-      a locala = a.jnC;
-      jnv = a.atL();
-      Oas = true;
+      UOo = icF();
+      a locala = a.lQF;
+      lQG = a.aOk();
+      UOp = true;
     }
-    boolean bool = Oar;
-    AppMethodBeat.o(233519);
+    boolean bool = UOo;
+    AppMethodBeat.o(292932);
     return bool;
   }
   
-  private static boolean gDL()
+  private static boolean icF()
   {
     boolean bool = false;
-    AppMethodBeat.i(233520);
+    AppMethodBeat.i(292937);
     try
     {
       if (Class.forName("android.hardware.Camera").getDeclaredMethod("getNumberOfCameras", null) == null) {
@@ -59,7 +61,7 @@ public final class d
       }
       for (;;)
       {
-        AppMethodBeat.o(233520);
+        AppMethodBeat.o(292937);
         return bool;
         bool = true;
       }
@@ -73,33 +75,47 @@ public final class d
     }
   }
   
-  private static void gDM()
+  private static void icG()
   {
-    AppMethodBeat.i(233523);
-    Oal.jpH = jnv;
+    AppMethodBeat.i(292953);
+    UOi.lSP = lQG;
     Object localObject = new Camera.CameraInfo();
     boolean bool;
     int i;
-    if ((MultiProcessMMKV.getDefault().decodeBool("clicfg_voip_camera_info_use_cache", false)) || (com.tencent.mm.protocal.d.RAG) || (BuildInfo.DEBUG))
+    if ((MultiProcessMMKV.getDefault().decodeBool("clicfg_voip_camera_info_use_cache_new", true)) || (com.tencent.mm.protocal.d.Yxk) || (BuildInfo.DEBUG))
     {
       bool = true;
-      Log.i("MicroMsg.CameraUtil", "mCameraNumber = %d, useCache = %b", new Object[] { Integer.valueOf(jnv), Boolean.valueOf(bool) });
+      Log.i("MicroMsg.CameraUtil", "mCameraNumber = %d, useCache = %b", new Object[] { Integer.valueOf(lQG), Boolean.valueOf(bool) });
       i = 0;
     }
     for (;;)
     {
       try
       {
-        if (i < Oal.jpH)
+        if (i < UOi.lSP)
         {
           if (!bool) {
             continue;
           }
-          localObject = a.jnC.qJ(i);
-          if (((Camera.CameraInfo)localObject).facing != 1) {
+          localObject = a.lQF.qP(i);
+          k = ((Camera.CameraInfo)localObject).facing;
+          j = ((Camera.CameraInfo)localObject).orientation;
+          h.ahAA.g(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(292926);
+              Camera.CameraInfo localCameraInfo = new Camera.CameraInfo();
+              Camera.getCameraInfo(this.vMV, localCameraInfo);
+              a locala = a.lQF;
+              a.a(this.vMV, localCameraInfo);
+              AppMethodBeat.o(292926);
+            }
+          }, "initDeviceFromAPI-checkCache");
+          if (k != 1) {
             continue;
           }
-          if (Oam == -1) {
+          if (UOj == -1) {
             continue;
           }
           Log.i("MicroMsg.CameraUtil", "device has other camera id %s in front", new Object[] { Integer.valueOf(i) });
@@ -107,30 +123,20 @@ public final class d
       }
       catch (Exception localException)
       {
+        int k;
+        int j;
         Log.e("MicroMsg.CameraUtil", "get camera info error: %s", new Object[] { localException.getMessage() });
         continue;
-        Oam = i;
-        Oal.OaO = localException.orientation;
-        Oal.OaM = true;
-        continue;
-        if (localException.facing != 0) {
-          continue;
-        }
-        if (Oan == -1) {
-          continue;
-        }
-        Log.i("MicroMsg.CameraUtil", "device has other camera id %s in back", new Object[] { Integer.valueOf(i) });
-        continue;
-        Oan = i;
-        Oal.OaP = localException.orientation;
-        Oal.OaN = true;
+        UOk = i;
+        UOi.UOM = j;
+        UOi.UOK = true;
         continue;
         bool = localException.equalsIgnoreCase("Mediatek");
         continue;
-        Oao = 0;
+        UOl = 0;
         continue;
-        Oap = 0;
-        AppMethodBeat.o(233523);
+        UOm = 0;
+        AppMethodBeat.o(292953);
         return;
         i += 1;
       }
@@ -138,109 +144,123 @@ public final class d
       if (localObject == null)
       {
         bool = false;
-        if ((Oal.OaO != 270) && ((!bool) || (Oal.OaO != 0))) {
+        if ((UOi.UOL != 270) && ((!bool) || (UOi.UOL != 0))) {
           continue;
         }
-        Oao = 1;
-        if ((Oal.OaP != 270) && ((!bool) || (Oal.OaP != 0))) {
+        UOl = 1;
+        if ((UOi.UOM != 270) && ((!bool) || (UOi.UOM != 0))) {
           continue;
         }
-        Oap = 1;
-        AppMethodBeat.o(233523);
+        UOm = 1;
+        AppMethodBeat.o(292953);
         return;
         bool = false;
         break;
         Camera.getCameraInfo(i, (Camera.CameraInfo)localObject);
+        k = ((Camera.CameraInfo)localObject).facing;
+        j = ((Camera.CameraInfo)localObject).orientation;
         continue;
+        UOj = i;
+        UOi.UOL = j;
+        UOi.UOJ = true;
+        continue;
+        if (k != 0) {
+          continue;
+        }
+        if (UOk != -1)
+        {
+          Log.i("MicroMsg.CameraUtil", "device has other camera id %s in back", new Object[] { Integer.valueOf(i) });
+          continue;
+        }
       }
     }
   }
   
-  public static void iL(Context paramContext)
+  public static void kC(Context paramContext)
   {
-    AppMethodBeat.i(233521);
-    if (Oal != null)
+    AppMethodBeat.i(292948);
+    if (UOi != null)
     {
-      AppMethodBeat.o(233521);
+      AppMethodBeat.o(292948);
       return;
     }
-    Oal = new b("*");
-    if ((gDK()) && (!af.juH.jpI))
+    UOi = new b("*");
+    if ((icE()) && (!af.lXY.lSQ))
     {
-      gDM();
-      if (af.juH.aRO) {
-        Oaq = af.juH.jpN;
+      icG();
+      if (af.lXY.cLK) {
+        UOn = af.lXY.IX;
       }
-      Log.i("MicroMsg.CameraUtil", "gCameraNum:" + Oal.jpH + "\ngIsHasFrontCamera:" + Oal.OaM + "\ngIsHasBackCamera:" + Oal.OaN + "\ngFrontCameraId:" + Oam + "\ngBackCameraId:" + Oan + "\ngBackOrientation:" + Oal.OaP + "\ngFrontOrientation:" + Oal.OaO + "\ngBestFps:" + Oal.OaL + "\ngFacePreviewSize:" + Oal.OaQ + "\ngNonFacePreviewSize:" + Oal.OaR + "\ngFaceCameraIsRotate180:" + Oao + "\ngMainCameraIsRotate180:" + Oap + "\ngCameraFormat:" + Oaq + "\ngFaceNotRotate:SDK:" + Build.VERSION.SDK_INT + "\n");
-      AppMethodBeat.o(233521);
+      Log.i("MicroMsg.CameraUtil", "gCameraNum:" + UOi.lSP + "\ngIsHasFrontCamera:" + UOi.UOJ + "\ngIsHasBackCamera:" + UOi.UOK + "\ngFrontCameraId:" + UOj + "\ngBackCameraId:" + UOk + "\ngBackOrientation:" + UOi.UOM + "\ngFrontOrientation:" + UOi.UOL + "\ngBestFps:" + UOi.UOI + "\ngFacePreviewSize:" + UOi.UON + "\ngNonFacePreviewSize:" + UOi.UOO + "\ngFaceCameraIsRotate180:" + UOl + "\ngMainCameraIsRotate180:" + UOm + "\ngCameraFormat:" + UOn + "\ngFaceNotRotate:SDK:" + Build.VERSION.SDK_INT + "\n");
+      AppMethodBeat.o(292948);
       return;
     }
-    if ((gDK()) && (af.juH.jpI)) {
-      gDM();
+    if ((icE()) && (af.lXY.lSQ)) {
+      icG();
     }
     Log.i("MicroMsg.CameraUtil", "initDeviceFromServerConf");
-    if (af.juH.jpI)
+    if (af.lXY.lSQ)
     {
-      Log.i("MicroMsg.CameraUtil", "initDeviceFromServerConf setCameraNum %d", new Object[] { Integer.valueOf(af.juH.jpH) });
-      Oal.jpH = af.juH.jpH;
+      Log.i("MicroMsg.CameraUtil", "initDeviceFromServerConf setCameraNum %d", new Object[] { Integer.valueOf(af.lXY.lSP) });
+      UOi.lSP = af.lXY.lSP;
     }
-    if (af.juH.jpR)
+    if (af.lXY.lSY)
     {
-      if (af.juH.jpQ.jqz != 0) {
-        Oal.OaN = true;
+      if (af.lXY.lSX.lTH != 0) {
+        UOi.UOK = true;
       }
     }
     else {
-      label378:
-      if (af.juH.jpP) {
-        if (af.juH.jpO.jqz == 0) {
-          break label754;
+      label380:
+      if (af.lXY.lSW) {
+        if (af.lXY.lSV.lTH == 0) {
+          break label756;
         }
       }
     }
-    label754:
-    for (Oal.OaM = true;; Oal.OaM = false)
+    label756:
+    for (UOi.UOJ = true;; UOi.UOJ = false)
     {
-      if ((af.juH.jpP) && (af.juH.jpO.jqA >= 0))
+      if ((af.lXY.lSW) && (af.lXY.lSV.lTI >= 0))
       {
-        Oal.OaO = af.juH.jpO.jqA;
-        Oao = Oal.OaO;
+        UOi.UOL = af.lXY.lSV.lTI;
+        UOl = UOi.UOL;
       }
-      if ((af.juH.jpR) && (af.juH.jpQ.jqA >= 0))
+      if ((af.lXY.lSY) && (af.lXY.lSX.lTI >= 0))
       {
-        Oal.OaP = af.juH.jpQ.jqA;
-        Oap = Oal.OaP;
+        UOi.UOM = af.lXY.lSX.lTI;
+        UOm = UOi.UOM;
       }
-      if (af.juH.jpP)
+      if (af.lXY.lSW)
       {
-        if (Oal.OaQ == null) {
-          Oal.OaQ = new Point(0, 0);
+        if (UOi.UON == null) {
+          UOi.UON = new Point(0, 0);
         }
-        Oal.OaQ = new Point(af.juH.jpO.width, af.juH.jpO.height);
+        UOi.UON = new Point(af.lXY.lSV.width, af.lXY.lSV.height);
       }
-      if (af.juH.jpR)
+      if (af.lXY.lSY)
       {
-        if (Oal.OaR == null) {
-          Oal.OaR = new Point(0, 0);
+        if (UOi.UOO == null) {
+          UOi.UOO = new Point(0, 0);
         }
-        Oal.OaR = new Point(af.juH.jpQ.width, af.juH.jpQ.height);
+        UOi.UOO = new Point(af.lXY.lSX.width, af.lXY.lSX.height);
       }
-      if ((af.juH.jpR) && (af.juH.jpQ.fps != 0)) {
-        Oal.OaL = af.juH.jpQ.fps;
+      if ((af.lXY.lSY) && (af.lXY.lSX.fps != 0)) {
+        UOi.UOI = af.lXY.lSX.fps;
       }
-      if ((af.juH.jpP) && (af.juH.jpO.fps != 0)) {
-        Oal.OaL = af.juH.jpO.fps;
+      if ((af.lXY.lSW) && (af.lXY.lSV.fps != 0)) {
+        UOi.UOI = af.lXY.lSV.fps;
       }
       paramContext = paramContext.getPackageManager();
-      if ((af.juH.jpI) || (paramContext.hasSystemFeature("android.hardware.camera"))) {
+      if ((af.lXY.lSQ) || (paramContext.hasSystemFeature("android.hardware.camera"))) {
         break;
       }
-      Oal.jpH = 0;
-      Oal.OaM = false;
-      Oal.OaN = false;
+      UOi.lSP = 0;
+      UOi.UOJ = false;
+      UOi.UOK = false;
       break;
-      Oal.OaN = false;
-      break label378;
+      UOi.UOK = false;
+      break label380;
     }
   }
 }

@@ -7,23 +7,24 @@ import android.renderscript.Allocation;
 import android.renderscript.Allocation.MipmapControl;
 import android.renderscript.RenderScript;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.c;
+import com.tencent.mm.d;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/widget/camera2/RenderScriptImageHelper;", "", "mContext", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getMContext", "()Landroid/content/Context;", "setMContext", "rs", "Landroid/renderscript/RenderScript;", "script", "Lcom/tencent/mm/ScriptC_ImageRenderScriptUtil;", "checkRS", "", "finalize", "flipBitmap", "Landroid/graphics/Bitmap;", "bitmap", "isVertical", "", "newHeight", "", "angle", "newWidth", "release", "rotateBitmap", "yuv2Rgb", "data", "", "width", "height", "yuv2RgbWithCrop", "planes", "", "Landroid/media/Image$Plane;", "yuvBytes", "xOffset", "yOffset", "([Landroid/media/Image$Plane;[[BIIII)Landroid/graphics/Bitmap;", "Companion", "plugin-mediaeditor_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/media/widget/camera2/RenderScriptImageHelper;", "", "mContext", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getMContext", "()Landroid/content/Context;", "setMContext", "rs", "Landroid/renderscript/RenderScript;", "script", "Lcom/tencent/mm/ScriptC_ImageRenderScriptUtil;", "checkRS", "", "finalize", "flipBitmap", "Landroid/graphics/Bitmap;", "bitmap", "isVertical", "", "newHeight", "", "angle", "newWidth", "release", "rotateBitmap", "yuv2Rgb", "data", "", "width", "height", "yuv2RgbWithCrop", "planes", "", "Landroid/media/Image$Plane;", "yuvBytes", "xOffset", "yOffset", "([Landroid/media/Image$Plane;[[BIIII)Landroid/graphics/Bitmap;", "Companion", "plugin-mediaeditor_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
 {
-  public static final e.a ldf;
-  c ldd;
-  RenderScript lde;
+  public static final e.a nHQ;
   private Context mContext;
+  d nHR;
+  RenderScript nHS;
   
   static
   {
     AppMethodBeat.i(94179);
-    ldf = new e.a((byte)0);
+    nHQ = new e.a((byte)0);
     AppMethodBeat.o(94179);
   }
   
@@ -31,104 +32,86 @@ public final class e
   {
     AppMethodBeat.i(94178);
     this.mContext = paramContext;
-    com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.RenderScriptImageHelper", "rs create: ".concat(String.valueOf(this)));
+    com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.RenderScriptImageHelper", s.X("rs create: ", this));
     if (BuildInfo.DEBUG) {
       com.tencent.mm.sdk.platformtools.Log.d("MicroMsg.RenderScriptImageHelper", "rs create: %s", new Object[] { android.util.Log.getStackTraceString(new Throwable()) });
     }
-    this.lde = RenderScript.create(this.mContext);
-    this.ldd = new c(this.lde);
+    this.nHS = RenderScript.create(this.mContext);
+    this.nHR = new d(this.nHS);
     AppMethodBeat.o(94178);
   }
   
-  private static int e(Bitmap paramBitmap, int paramInt)
+  private static int d(Bitmap paramBitmap, int paramInt)
   {
     AppMethodBeat.i(94175);
-    p.k(paramBitmap, "bitmap");
-    if ((paramInt == 90) || (paramInt == 270))
+    s.u(paramBitmap, "bitmap");
+    switch (paramInt)
     {
-      paramInt = paramBitmap.getWidth();
+    default: 
+      paramInt = paramBitmap.getHeight();
       AppMethodBeat.o(94175);
       return paramInt;
     }
-    paramInt = paramBitmap.getHeight();
+    paramInt = paramBitmap.getWidth();
     AppMethodBeat.o(94175);
     return paramInt;
   }
   
-  private static int f(Bitmap paramBitmap, int paramInt)
+  private static int e(Bitmap paramBitmap, int paramInt)
   {
     AppMethodBeat.i(94176);
-    p.k(paramBitmap, "bitmap");
-    if ((paramInt == 90) || (paramInt == 270))
+    s.u(paramBitmap, "bitmap");
+    switch (paramInt)
     {
-      paramInt = paramBitmap.getHeight();
+    default: 
+      paramInt = paramBitmap.getWidth();
       AppMethodBeat.o(94176);
       return paramInt;
     }
-    paramInt = paramBitmap.getWidth();
+    paramInt = paramBitmap.getHeight();
     AppMethodBeat.o(94176);
     return paramInt;
   }
   
-  final void aYD()
+  final void btC()
   {
-    AppMethodBeat.i(258822);
-    if (this.lde == null)
+    AppMethodBeat.i(237554);
+    if (this.nHS == null)
     {
-      Throwable localThrowable = (Throwable)new NullPointerException("RenderScript has been destroyed!!! ".concat(String.valueOf(this)));
-      AppMethodBeat.o(258822);
-      throw localThrowable;
+      NullPointerException localNullPointerException = new NullPointerException(s.X("RenderScript has been destroyed!!! ", this));
+      AppMethodBeat.o(237554);
+      throw localNullPointerException;
     }
-    AppMethodBeat.o(258822);
+    AppMethodBeat.o(237554);
   }
   
-  protected final void finalize()
-  {
-    AppMethodBeat.i(258820);
-    com.tencent.mm.sdk.platformtools.Log.d("MicroMsg.RenderScriptImageHelper", "finalize");
-    RenderScript localRenderScript = this.lde;
-    if (localRenderScript != null)
-    {
-      com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.RenderScriptImageHelper", "RS leak warning: maybe you forget to call destroy!!! ".concat(String.valueOf(this)));
-      if (Build.VERSION.SDK_INT < 23)
-      {
-        com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.RenderScriptImageHelper", "help destroy RenderScript");
-        localRenderScript.destroy();
-        this.lde = null;
-      }
-      AppMethodBeat.o(258820);
-      return;
-    }
-    AppMethodBeat.o(258820);
-  }
-  
-  public final Bitmap g(Bitmap paramBitmap, int paramInt)
+  public final Bitmap f(Bitmap paramBitmap, int paramInt)
   {
     AppMethodBeat.i(94177);
-    p.k(paramBitmap, "bitmap");
-    aYD();
+    s.u(paramBitmap, "bitmap");
+    btC();
     if (paramInt == 0)
     {
       AppMethodBeat.o(94177);
       return paramBitmap;
     }
-    Object localObject1 = this.ldd;
+    Object localObject1 = this.nHR;
     if (localObject1 != null) {
-      ((c)localObject1).jM(paramBitmap.getWidth());
+      ((d)localObject1).nC(paramBitmap.getWidth());
     }
-    localObject1 = this.ldd;
+    localObject1 = this.nHR;
     if (localObject1 != null) {
-      ((c)localObject1).jN(paramBitmap.getHeight());
+      ((d)localObject1).nD(paramBitmap.getHeight());
     }
-    localObject1 = Allocation.createFromBitmap(this.lde, paramBitmap, Allocation.MipmapControl.MIPMAP_NONE, 1);
+    localObject1 = Allocation.createFromBitmap(this.nHS, paramBitmap, Allocation.MipmapControl.MIPMAP_NONE, 1);
     paramBitmap.recycle();
-    Object localObject2 = this.ldd;
+    Object localObject2 = this.nHR;
     if (localObject2 != null) {
-      ((c)localObject2).a((Allocation)localObject1);
+      ((d)localObject2).a((Allocation)localObject1);
     }
-    int i = e(paramBitmap, paramInt);
-    paramBitmap = Bitmap.createBitmap(f(paramBitmap, paramInt), i, paramBitmap.getConfig());
-    localObject2 = Allocation.createFromBitmap(this.lde, paramBitmap, Allocation.MipmapControl.MIPMAP_NONE, 1);
+    int i = d(paramBitmap, paramInt);
+    paramBitmap = Bitmap.createBitmap(e(paramBitmap, paramInt), i, paramBitmap.getConfig());
+    localObject2 = Allocation.createFromBitmap(this.nHS, paramBitmap, Allocation.MipmapControl.MIPMAP_NONE, 1);
     switch (paramInt)
     {
     }
@@ -137,47 +120,69 @@ public final class e
       ((Allocation)localObject2).copyTo(paramBitmap);
       ((Allocation)localObject2).destroy();
       ((Allocation)localObject1).destroy();
-      p.j(paramBitmap, "target");
+      s.s(paramBitmap, "target");
       AppMethodBeat.o(94177);
       return paramBitmap;
-      c localc = this.ldd;
-      if (localc != null)
+      d locald = this.nHR;
+      if (locald != null)
       {
-        localc.a((Allocation)localObject2, (Allocation)localObject2);
+        locald.a((Allocation)localObject2, (Allocation)localObject2);
         continue;
-        localc = this.ldd;
-        if (localc != null)
+        locald = this.nHR;
+        if (locald != null)
         {
-          localc.d((Allocation)localObject2, (Allocation)localObject2);
+          locald.d((Allocation)localObject2, (Allocation)localObject2);
           continue;
-          localc = this.ldd;
-          if (localc != null) {
-            localc.b((Allocation)localObject2, (Allocation)localObject2);
+          locald = this.nHR;
+          if (locald != null) {
+            locald.b((Allocation)localObject2, (Allocation)localObject2);
           }
         }
       }
     }
   }
   
+  protected final void finalize()
+  {
+    AppMethodBeat.i(237549);
+    com.tencent.mm.sdk.platformtools.Log.d("MicroMsg.RenderScriptImageHelper", "finalize");
+    RenderScript localRenderScript = this.nHS;
+    if (localRenderScript != null)
+    {
+      com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.RenderScriptImageHelper", s.X("RS leak warning: maybe you forget to call destroy!!! ", this));
+      if (Build.VERSION.SDK_INT < 23)
+      {
+        com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.RenderScriptImageHelper", "help destroy RenderScript");
+        localRenderScript.destroy();
+        this.nHS = null;
+      }
+    }
+    AppMethodBeat.o(237549);
+  }
+  
   public final void release()
   {
+    ah localah = null;
     AppMethodBeat.i(94174);
-    com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.RenderScriptImageHelper", "release rs script ".concat(String.valueOf(this)));
-    Object localObject = this.ldd;
+    com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.RenderScriptImageHelper", s.X("release rs script ", this));
+    Object localObject = this.nHR;
     if (localObject != null) {
-      ((c)localObject).destroy();
+      ((d)localObject).destroy();
     }
-    localObject = this.lde;
-    if (localObject != null)
+    localObject = this.nHS;
+    if (localObject == null) {}
+    for (;;)
     {
-      com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.RenderScriptImageHelper", "rs destroy");
-      ((RenderScript)localObject).destroy();
-      this.lde = null;
+      if (localah == null) {
+        com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.RenderScriptImageHelper", s.X("rs has already been destroyed!!! ", (e)this));
+      }
       AppMethodBeat.o(94174);
       return;
+      com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.RenderScriptImageHelper", "rs destroy");
+      ((RenderScript)localObject).destroy();
+      this.nHS = null;
+      localah = ah.aiuX;
     }
-    com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.RenderScriptImageHelper", "rs has already been destroyed!!! ".concat(String.valueOf((e)this)));
-    AppMethodBeat.o(94174);
   }
 }
 

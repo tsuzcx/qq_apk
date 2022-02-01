@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.profile.ui.newbizinfo.NewBizInfoHeaderPreference android:key="contact_info_header_newbizinfo" android:layout="@layout/xg" />
-    <com.tencent.mm.plugin.profile.ui.newbizinfo.NewBizInfoNotFollowPreference android:key="contact_info_biz_add" android:layout="@layout/xs" android:title="@string/b_j" />
-    <com.tencent.mm.plugin.profile.ui.newbizinfo.NewBizInfoFollowPreference android:key="contact_info_biz_go_chatting" android:layout="@layout/x_" />
-    <com.tencent.mm.plugin.profile.ui.newbizinfo.NewBizInfoMenuPreference android:key="contact_info_biz_menu_newbizinfo" android:layout="@layout/wk" />
-    <com.tencent.mm.plugin.profile.ui.newbizinfo.NewBizInfoErrMsgPreference android:key="contact_info_biz_err_msg" android:layout="@layout/wf" />
-    <Preference android:key="contact_info_footer_space" android:layout="@layout/xb" android:title="" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/bnr" />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_info_shake_go_shake" android:layout="@layout/bdi" android:title="@string/bqx" />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_info_shake_install" android:layout="@layout/b2b" android:title="@string/iww" />
+    <Preference android:key="contact_info_shake_uninstall" android:layout="@layout/b93" android:title="@string/ix1" />
+    <PreferenceCategory />
 </PreferenceScreen>

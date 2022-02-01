@@ -1,146 +1,168 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import android.util.Pair;
-import android.widget.Toast;
-import com.tencent.luggage.l.a.g;
-import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
-import com.tencent.luggage.sdk.config.b;
-import com.tencent.luggage.sdk.launching.ActivityStarterIpcDelegate;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.h;
-import com.tencent.mm.plugin.appbrand.appcache.j.a;
-import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
-import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
-import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
-import com.tencent.mm.plugin.appbrand.config.ab;
-import com.tencent.mm.plugin.appbrand.config.ac;
-import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
+import com.tencent.mm.modelappbrand.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import org.json.JSONObject;
+import kotlin.Metadata;
+import kotlin.a.k;
+import kotlin.g.b.s;
 
-public class d
-  implements Runnable
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/launching/AppBrandLaunchCodeSceneLogic;", "", "()V", "RELATED_SCENE", "", "", "[Ljava/lang/Integer;", "TAG", "", "parseCodeScene", "scene", "statObj", "Landroid/os/Bundle;", "CodeScene", "ScanScene", "StatKey", "api-protocol_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class d
 {
-  protected volatile String appId;
-  protected final int cBU;
-  final AppBrandLaunchReferrer cwV;
-  protected final String nBq;
-  protected AppBrandStatObject nyh;
-  private final d.a pRx;
-  protected final ActivityStarterIpcDelegate pRy;
-  protected final int pkgVersion;
-  protected volatile String username;
+  public static final d sVF;
+  private static final Integer[] sVG;
   
-  public d(LaunchParcel paramLaunchParcel, d.a parama)
+  static
   {
-    this.pRx = parama;
-    this.cBU = paramLaunchParcel.cBU;
-    this.appId = paramLaunchParcel.appId;
-    this.username = paramLaunchParcel.username;
-    this.pkgVersion = paramLaunchParcel.version;
-    this.nyh = paramLaunchParcel.pdk;
-    this.nBq = paramLaunchParcel.nBq;
-    this.pRy = paramLaunchParcel.pRy;
-    this.cwV = paramLaunchParcel.cwV;
+    AppMethodBeat.i(320779);
+    sVF = new d();
+    sVG = new Integer[] { Integer.valueOf(1012), Integer.valueOf(1031), Integer.valueOf(1048), Integer.valueOf(1125) };
+    AppMethodBeat.o(320779);
   }
   
-  protected final void a(AppBrandInitConfigLU paramAppBrandInitConfigLU, AppBrandStatObject paramAppBrandStatObject)
+  public static final int n(int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(147313);
-    if (this.pRx != null) {
-      this.pRx.a(paramAppBrandInitConfigLU, paramAppBrandStatObject, 1);
-    }
-    AppMethodBeat.o(147313);
-  }
-  
-  protected Pair<WxaAttributes, Boolean> bZx()
-  {
-    AppMethodBeat.i(147309);
-    ab.bLM();
-    Pair localPair = new Pair(ab.d(this.appId, new String[0]), Boolean.FALSE);
-    AppMethodBeat.o(147309);
-    return localPair;
-  }
-  
-  protected boolean g(WxaAttributes paramWxaAttributes)
-  {
-    AppMethodBeat.i(147311);
-    if ((j.a.za(this.cBU)) && (1 == paramWxaAttributes.bLH().cwX))
+    AppMethodBeat.i(320772);
+    Log.i("MicroMsg.AppBrandLaunchCodeSceneLogic", s.X("parseCodeScene, scene: ", Integer.valueOf(paramInt)));
+    if (!k.contains(sVG, Integer.valueOf(paramInt)))
     {
-      Toast.makeText(MMApplicationContext.getContext(), a.g.app_brand_launching_release_version_not_published_yet, 1).show();
-      AppMethodBeat.o(147311);
-      return true;
+      Log.i("MicroMsg.AppBrandLaunchCodeSceneLogic", "parseCodeScene, scene is not related");
+      AppMethodBeat.o(320772);
+      return 0;
     }
-    AppMethodBeat.o(147311);
-    return false;
-  }
-  
-  protected final void onError()
-  {
-    AppMethodBeat.i(147312);
-    if (this.pRx != null) {
-      this.pRx.a(null, null, 2);
-    }
-    AppMethodBeat.o(147312);
-  }
-  
-  public void run()
-  {
-    AppMethodBeat.i(147308);
-    Object localObject = (WxaAttributes)bZx().first;
-    if (localObject == null)
+    if (paramBundle == null)
     {
-      Log.i("Luggage.AppBrandPreLaunchProcess", "onGetWxaAttr null return");
-      onError();
-      AppMethodBeat.o(147308);
-      return;
+      Log.i("MicroMsg.AppBrandLaunchCodeSceneLogic", "parseCodeScene, statObj is null");
+      AppMethodBeat.o(320772);
+      return 9;
     }
-    if (g((WxaAttributes)localObject))
+    paramInt = paramBundle.getInt("LaunchCodeScene_ScanScene");
+    Object localObject = b.sVI;
+    if (!b.uB(paramInt))
     {
-      onError();
-      AppMethodBeat.o(147308);
-      return;
+      Log.i("MicroMsg.AppBrandLaunchCodeSceneLogic", "parseCodeScene, scanScene(" + paramInt + ") is invalid 1");
+      AppMethodBeat.o(320772);
+      return 9;
     }
-    AppBrandInitConfigLU localAppBrandInitConfigLU = b.Qr().a((WxaAttributes)localObject);
-    if (localAppBrandInitConfigLU == null)
+    if (1 == paramInt)
     {
-      Log.e("Luggage.AppBrandPreLaunchProcess", "onGetWxaAttr, assembled NULL config with username(%s) appId(%s)", new Object[] { ((WxaAttributes)localObject).field_username, ((WxaAttributes)localObject).field_appId });
-      onError();
-      AppMethodBeat.o(147308);
-      return;
-    }
-    localAppBrandInitConfigLU.cBI = this.cBU;
-    this.appId = localAppBrandInitConfigLU.appId;
-    this.username = localAppBrandInitConfigLU.username;
-    if (this.cBU == 0) {
-      localAppBrandInitConfigLU.cCi = ((WxaAttributes)localObject).bLH().obz;
-    }
-    for (;;)
-    {
-      if (this.nyh == null) {
-        this.nyh = new AppBrandStatObject();
-      }
-      a(localAppBrandInitConfigLU, this.nyh);
-      AppMethodBeat.o(147308);
-      return;
-      r.bZP();
-      localAppBrandInitConfigLU.extInfo = r.cs(this.appId, this.cBU);
-      try
+      int i = paramBundle.getInt("LaunchCodeScene_ChatType");
+      Log.i("MicroMsg.AppBrandLaunchCodeSceneLogic", s.X("parseCodeScene, chatType: ", Integer.valueOf(i)));
+      localObject = a.opM;
+      paramInt = i;
+      if (!a.uB(i))
       {
-        localObject = h.ME(localAppBrandInitConfigLU.extInfo);
-        localAppBrandInitConfigLU.cCi = ((JSONObject)localObject).optString("device_orientation");
-        localAppBrandInitConfigLU.cwS = ((JSONObject)localObject).optBoolean("open_remote", false);
-        localAppBrandInitConfigLU.cwY = ac.afy(localAppBrandInitConfigLU.extInfo);
+        paramBundle = paramBundle.getString("LaunchCodeScene_Username");
+        if (paramBundle == null)
+        {
+          Log.w("MicroMsg.AppBrandLaunchCodeSceneLogic", "parseCodeScene, chatType is invalid, username is null");
+          AppMethodBeat.o(320772);
+          return 9;
+        }
+        paramInt = a.KG(paramBundle);
+        Log.i("MicroMsg.AppBrandLaunchCodeSceneLogic", "parseCodeScene, username: " + paramBundle + ", chatType: " + paramInt);
       }
-      catch (Exception localException) {}
+      switch (paramInt)
+      {
+      default: 
+        Log.w("MicroMsg.AppBrandLaunchCodeSceneLogic", "parseCodeScene, chatType is invalid");
+        AppMethodBeat.o(320772);
+        return 9;
+      case 1: 
+        AppMethodBeat.o(320772);
+        return 1;
+      case 2: 
+        AppMethodBeat.o(320772);
+        return 2;
+      case 3: 
+        AppMethodBeat.o(320772);
+        return 3;
+      }
+      AppMethodBeat.o(320772);
+      return 4;
+    }
+    switch (paramInt)
+    {
+    default: 
+      Log.w("MicroMsg.AppBrandLaunchCodeSceneLogic", "parseCodeScene, scanScene(" + paramInt + ") is invalid 2");
+      AppMethodBeat.o(320772);
+      return 9;
+    case 2: 
+      AppMethodBeat.o(320772);
+      return 5;
+    case 3: 
+      AppMethodBeat.o(320772);
+      return 6;
+    case 4: 
+      AppMethodBeat.o(320772);
+      return 7;
+    case 5: 
+      AppMethodBeat.o(320772);
+      return 8;
+    }
+    AppMethodBeat.o(320772);
+    return 9;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/launching/AppBrandLaunchCodeSceneLogic$CodeScene;", "", "()V", "APP_BRAND", "", "FAV", "GROUP_CHAT", "H5", "INVALID", "OTHER", "SINGLE_CHAT", "SNS", "WEWORK_GROUP_CHAT", "WEWORK_SINGLE_CHAT", "isValid", "", "scene", "api-protocol_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+  {
+    public static final a sVH;
+    
+    static
+    {
+      AppMethodBeat.i(320681);
+      sVH = new a();
+      AppMethodBeat.o(320681);
+    }
+    
+    public static final boolean uB(int paramInt)
+    {
+      boolean bool2 = false;
+      boolean bool1 = bool2;
+      if (paramInt <= 9)
+      {
+        bool1 = bool2;
+        if (paramInt > 0) {
+          bool1 = true;
+        }
+      }
+      return bool1;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/launching/AppBrandLaunchCodeSceneLogic$ScanScene;", "", "()V", "APP_BRAND", "", "CHAT", "FAV", "H5", "INVALID", "OTHER", "SNS", "isValid", "", "scene", "api-protocol_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+  {
+    public static final b sVI;
+    
+    static
+    {
+      AppMethodBeat.i(320667);
+      sVI = new b();
+      AppMethodBeat.o(320667);
+    }
+    
+    public static boolean uB(int paramInt)
+    {
+      boolean bool2 = false;
+      boolean bool1 = bool2;
+      if (paramInt > 0)
+      {
+        bool1 = bool2;
+        if (paramInt <= 6) {
+          bool1 = true;
+        }
+      }
+      return bool1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.d
  * JD-Core Version:    0.7.0.1
  */

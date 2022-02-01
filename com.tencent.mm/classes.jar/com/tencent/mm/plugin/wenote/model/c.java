@@ -3,24 +3,25 @@ package com.tencent.mm.plugin.wenote.model;
 import android.content.Context;
 import android.content.res.AssetManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.cx;
+import com.tencent.mm.app.f;
+import com.tencent.mm.autogen.a.dh;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.be;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.model.ch;
-import com.tencent.mm.plugin.fav.a.ag;
-import com.tencent.mm.plugin.fav.a.ap;
+import com.tencent.mm.model.ci;
+import com.tencent.mm.plugin.fav.a.aq;
 import com.tencent.mm.plugin.fav.a.r;
 import com.tencent.mm.plugin.record.a.e;
 import com.tencent.mm.plugin.taskbar.api.b.a;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.plugin.wenote.event.NotifyWNNoteOperationListener;
+import com.tencent.mm.plugin.wenote.event.OpenNoteFromSessionListener;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storagebase.h.b;
-import com.tencent.mm.vfs.q;
 import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.Closeable;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -32,12 +33,12 @@ public final class c
   implements be
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private com.tencent.mm.plugin.wenote.a.b QFZ;
-  private com.tencent.mm.plugin.wenote.a.c QGa;
-  private com.tencent.mm.plugin.wenote.a.a QGb;
-  private IListener<cx> QGc;
-  public d QGd;
-  private IListener rXj;
+  private IListener<dh> XzA;
+  public d XzB;
+  private OpenNoteFromSessionListener Xzx;
+  private com.tencent.mm.plugin.wenote.event.a Xzy;
+  private NotifyWNNoteOperationListener Xzz;
+  private IListener viA;
   
   static
   {
@@ -49,33 +50,28 @@ public final class c
   public c()
   {
     AppMethodBeat.i(30293);
-    this.QFZ = new com.tencent.mm.plugin.wenote.a.b();
-    this.QGa = new com.tencent.mm.plugin.wenote.a.c();
-    this.QGb = new com.tencent.mm.plugin.wenote.a.a();
-    this.QGc = new IListener() {};
-    this.QGd = null;
-    this.rXj = new c.2(this);
+    this.Xzx = new OpenNoteFromSessionListener();
+    this.Xzy = new com.tencent.mm.plugin.wenote.event.a();
+    this.Xzz = new NotifyWNNoteOperationListener();
+    this.XzA = new SubCoreWNNoteMsg.1(this, f.hfK);
+    this.XzB = null;
+    this.viA = new SubCoreWNNoteMsg.2(this, f.hfK);
     AppMethodBeat.o(30293);
   }
   
-  public static c hdm()
+  public static c iDT()
   {
     AppMethodBeat.i(30294);
-    bh.beC();
-    c localc2 = (c)ch.RZ("plugin.wenote");
+    bh.bCt();
+    c localc2 = (c)ci.Ka("plugin.wenote");
     c localc1 = localc2;
     if (localc2 == null)
     {
       localc1 = new c();
-      bh.beC().a("plugin.wenote", localc1);
+      bh.bCt().a("plugin.wenote", localc1);
     }
     AppMethodBeat.o(30294);
     return localc1;
-  }
-  
-  public final void a(d paramd)
-  {
-    this.QGd = paramd;
   }
   
   public final void clearPluginData(int paramInt) {}
@@ -90,120 +86,117 @@ public final class c
     Object localObject2 = null;
     AppMethodBeat.i(30295);
     Log.d("MicroMsg.SubCoreWNNoteMsg", "on account post reset");
-    EventCenter.instance.addListener(this.QFZ);
-    ((com.tencent.mm.plugin.record.a.a)h.ag(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().a(this.QGa);
-    ((ag)h.ag(ag.class)).getFavCdnStorage().a(this.QGa);
-    EventCenter.instance.addListener(this.QGb);
-    EventCenter.instance.addListener(this.QGc);
-    EventCenter.instance.addListener(this.rXj);
-    Object localObject1 = new q(i.bci());
-    if ((!((q)localObject1).ifE()) || (!((q)localObject1).isDirectory()))
+    this.Xzx.alive();
+    ((com.tencent.mm.plugin.record.a.a)h.az(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().a(this.Xzy);
+    ((com.tencent.mm.plugin.fav.a.ah)h.az(com.tencent.mm.plugin.fav.a.ah.class)).getFavCdnStorage().a(this.Xzy);
+    this.Xzz.alive();
+    this.XzA.alive();
+    this.viA.alive();
+    Object localObject1 = new u(i.bzX());
+    if ((!((u)localObject1).jKS()) || (!((u)localObject1).isDirectory()))
     {
       Log.d("MicroMsg.SubCoreWNNoteMsg", "record stg dir[%s] not exsit, create it");
-      ((q)localObject1).ifL();
+      ((u)localObject1).jKY();
     }
-    Object localObject3 = new q(ap.dkm());
-    Log.i("MicroMsg.SubCoreWNNoteMsg", "copy to path %s", new Object[] { ((q)localObject3).bOF() });
-    if (com.tencent.mm.protocal.d.RAG)
+    Object localObject3 = new u(aq.dQY());
+    Log.i("MicroMsg.SubCoreWNNoteMsg", "copy to path %s", new Object[] { com.tencent.mm.vfs.ah.v(((u)localObject3).jKT()) });
+    if (com.tencent.mm.protocal.d.Yxk)
     {
       Log.i("MicroMsg.SubCoreWNNoteMsg", "copyAssertTemplateFile develop version delete template");
-      u.deleteDir(((q)localObject3).getPath());
+      y.ew(com.tencent.mm.vfs.ah.v(((u)localObject3).mUri), true);
+      if (!((u)localObject3).jKS()) {
+        ((u)localObject3).jKY();
+      }
+      localObject1 = MMApplicationContext.getContext().getAssets();
     }
     for (;;)
     {
-      if (!((q)localObject3).ifE()) {
-        ((q)localObject3).ifL();
-      }
-      localObject1 = MMApplicationContext.getContext().getAssets();
+      Closeable localCloseable;
+      u localu;
       try
       {
         localObject1 = ((AssetManager)localObject1).open("WNNote.zip");
         if (localObject1 == null)
         {
           Log.e("MicroMsg.SubCoreWNNoteMsg", "file inputStream not found");
-          com.tencent.mm.plugin.wenote.b.b.bNZ();
-          localObject1 = com.tencent.mm.plugin.wenote.c.a.QIG;
-          ((com.tencent.mm.plugin.multitask.d)h.ag(com.tencent.mm.plugin.multitask.d.class)).registerMultiTaskUIC(3, com.tencent.mm.plugin.wenote.c.c.class);
-          localObject1 = com.tencent.mm.plugin.wenote.c.a.QIG;
-          localObject1 = (com.tencent.mm.plugin.taskbar.api.b)h.ae(com.tencent.mm.plugin.taskbar.api.b.class);
-          if (localObject1 == null) {
-            break label622;
+          com.tencent.mm.plugin.wenote.a.b.con();
+          localObject1 = com.tencent.mm.plugin.wenote.b.a.XCd;
+          ((com.tencent.mm.plugin.multitask.d)h.az(com.tencent.mm.plugin.multitask.d.class)).registerMultiTaskUIC(3, com.tencent.mm.plugin.wenote.b.c.class);
+          localObject1 = com.tencent.mm.plugin.wenote.b.a.XCd;
+          localObject1 = (com.tencent.mm.plugin.taskbar.api.b)h.ax(com.tencent.mm.plugin.taskbar.api.b.class);
+          if (localObject1 != null) {
+            ((com.tencent.mm.plugin.taskbar.api.b)localObject1).a(3, (b.a)com.tencent.mm.plugin.wenote.b.a.iEx());
           }
-          ((com.tencent.mm.plugin.taskbar.api.b)localObject1).a(3, (b.a)com.tencent.mm.plugin.wenote.c.a.hdQ());
           AppMethodBeat.o(30295);
           return;
-          ap.wHP = ap.bkM();
+          aq.Aed = aq.bIG();
           if (paramBoolean)
           {
-            i = ap.bkN();
-            Log.i("MicroMsg.SubCoreWNNoteMsg", "copyAssertTemplateFile need update assetVersion=%d currentVersion=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(ap.wHP) });
-            if (ap.wHP >= i) {
-              continue;
+            i = aq.bIH();
+            Log.i("MicroMsg.SubCoreWNNoteMsg", "copyAssertTemplateFile need update assetVersion=%d currentVersion=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(aq.Aed) });
+            if (aq.Aed >= i) {
+              break;
             }
-            u.deleteDir(((q)localObject3).getPath());
-            continue;
+            y.ew(com.tencent.mm.vfs.ah.v(((u)localObject3).mUri), true);
+            break;
           }
-          if (ap.wHP == 1)
+          if (aq.Aed == 1)
           {
             Log.i("MicroMsg.SubCoreWNNoteMsg", "copyAssertTemplateFile need init template");
-            u.deleteDir(((q)localObject3).getPath());
-            continue;
+            y.ew(com.tencent.mm.vfs.ah.v(((u)localObject3).mUri), true);
+            break;
           }
-          Log.i("MicroMsg.SubCoreWNNoteMsg", "copyAssertTemplateFile currentVersion=%d", new Object[] { Integer.valueOf(ap.wHP) });
+          Log.i("MicroMsg.SubCoreWNNoteMsg", "copyAssertTemplateFile currentVersion=%d", new Object[] { Integer.valueOf(aq.Aed) });
         }
       }
       catch (IOException localIOException1)
       {
+        Log.printErrStackTrace("MicroMsg.SubCoreWNNoteMsg", localIOException1, "", new Object[0]);
+        localCloseable = null;
+        continue;
+        localu = new u((u)localObject3, "WNNote.zip");
+        if (localu.jKS())
+        {
+          Log.i("MicroMsg.SubCoreWNNoteMsg", "wenote template already exists");
+          Util.qualityClose(localCloseable);
+          continue;
+        }
+      }
+      try
+      {
+        localObject3 = y.ap(localu);
+        localObject2 = localObject3;
+      }
+      catch (FileNotFoundException localFileNotFoundException)
+      {
         for (;;)
         {
-          Log.printErrStackTrace("MicroMsg.SubCoreWNNoteMsg", localIOException1, "", new Object[0]);
-          Closeable localCloseable = null;
-          continue;
-          q localq = new q((q)localObject3, "WNNote.zip");
-          if (localq.ifE())
-          {
-            Log.i("MicroMsg.SubCoreWNNoteMsg", "wenote template already exists");
-            Util.qualityClose(localCloseable);
-          }
-          try
-          {
-            localObject3 = u.an(localq);
-            localObject2 = localObject3;
-          }
-          catch (FileNotFoundException localFileNotFoundException)
-          {
-            for (;;)
-            {
-              Log.printErrStackTrace("MicroMsg.SubCoreWNNoteMsg", localFileNotFoundException, "", new Object[0]);
-            }
-          }
-          if (localObject2 != null) {
-            try
-            {
-              localObject3 = new byte[1024];
-              for (;;)
-              {
-                i = localCloseable.read((byte[])localObject3);
-                if (i == -1) {
-                  break;
-                }
-                localObject2.write((byte[])localObject3, 0, i);
-              }
-              Util.qualityClose(localCloseable);
-            }
-            catch (IOException localIOException2)
-            {
-              Log.printErrStackTrace("MicroMsg.SubCoreWNNoteMsg", localIOException2, "", new Object[0]);
-            }
-          }
-          Util.qualityClose(localObject2);
-          int i = u.gj(localq.bOF(), localq.ifA());
-          if (i < 0) {
-            Log.e("MicroMsg.SubCoreWNNoteMsg", "unzip fail, ret = " + i + ", zipFilePath = " + localq.bOF() + ", unzipPath = " + localq.ifA());
-          }
+          Log.printErrStackTrace("MicroMsg.SubCoreWNNoteMsg", localFileNotFoundException, "", new Object[0]);
         }
-        label622:
-        AppMethodBeat.o(30295);
+      }
+      if (localObject2 != null) {
+        try
+        {
+          localObject3 = new byte[1024];
+          for (;;)
+          {
+            i = localCloseable.read((byte[])localObject3);
+            if (i == -1) {
+              break;
+            }
+            localObject2.write((byte[])localObject3, 0, i);
+          }
+          Util.qualityClose(localCloseable);
+        }
+        catch (IOException localIOException2)
+        {
+          Log.printErrStackTrace("MicroMsg.SubCoreWNNoteMsg", localIOException2, "", new Object[0]);
+        }
+      }
+      Util.qualityClose(localObject2);
+      int i = y.aA(com.tencent.mm.vfs.ah.v(localu.jKT()), localu.jKO());
+      if (i < 0) {
+        Log.e("MicroMsg.SubCoreWNNoteMsg", "unzip fail, ret = " + i + ", zipFilePath = " + com.tencent.mm.vfs.ah.v(localu.jKT()) + ", unzipPath = " + localu.jKO());
       }
     }
   }
@@ -212,24 +205,21 @@ public final class c
   {
     AppMethodBeat.i(30296);
     Log.d("MicroMsg.SubCoreWNNoteMsg", "on account post release");
-    EventCenter.instance.removeListener(this.QFZ);
-    if (((com.tencent.mm.plugin.record.a.a)h.ag(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage() != null) {
-      ((com.tencent.mm.plugin.record.a.a)h.ag(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().b(this.QGa);
+    this.Xzx.dead();
+    if (((com.tencent.mm.plugin.record.a.a)h.az(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage() != null) {
+      ((com.tencent.mm.plugin.record.a.a)h.az(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().b(this.Xzy);
     }
-    if (((ag)h.ag(ag.class)).getFavCdnStorage() != null) {
-      ((ag)h.ag(ag.class)).getFavCdnStorage().b(this.QGa);
+    if (((com.tencent.mm.plugin.fav.a.ah)h.az(com.tencent.mm.plugin.fav.a.ah.class)).getFavCdnStorage() != null) {
+      ((com.tencent.mm.plugin.fav.a.ah)h.az(com.tencent.mm.plugin.fav.a.ah.class)).getFavCdnStorage().b(this.Xzy);
     }
-    EventCenter.instance.removeListener(this.QGb);
-    EventCenter.instance.removeListener(this.QGc);
-    EventCenter.instance.removeListener(this.rXj);
-    com.tencent.mm.plugin.wenote.b.b.bOa();
-    Object localObject = com.tencent.mm.plugin.wenote.c.a.QIG;
-    localObject = (com.tencent.mm.plugin.taskbar.api.b)h.ae(com.tencent.mm.plugin.taskbar.api.b.class);
-    if (localObject != null)
-    {
-      ((com.tencent.mm.plugin.taskbar.api.b)localObject).b(3, (b.a)com.tencent.mm.plugin.wenote.c.a.hdQ());
-      AppMethodBeat.o(30296);
-      return;
+    this.Xzz.dead();
+    this.XzA.dead();
+    this.viA.dead();
+    com.tencent.mm.plugin.wenote.a.b.coo();
+    Object localObject = com.tencent.mm.plugin.wenote.b.a.XCd;
+    localObject = (com.tencent.mm.plugin.taskbar.api.b)h.ax(com.tencent.mm.plugin.taskbar.api.b.class);
+    if (localObject != null) {
+      ((com.tencent.mm.plugin.taskbar.api.b)localObject).b(3, (b.a)com.tencent.mm.plugin.wenote.b.a.iEx());
     }
     AppMethodBeat.o(30296);
   }
@@ -238,7 +228,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.tmassistantsdk.network;
 
-import com.tencent.mm.plugin.ar.a.a;
+import com.tencent.mm.plugin.as.a.a;
 import com.tencent.mm.sdk.platformtools.WeChatHosts;
 import org.apache.http.client.methods.HttpGet;
 import org.json.JSONObject;
@@ -31,7 +31,7 @@ public abstract class GetHttpRequest
     //   15: aload_0
     //   16: getfield 52	com/tencent/tmassistantsdk/network/GetHttpRequest:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
     //   19: ifnonnull -8 -> 11
-    //   22: getstatic 68	com/tencent/e/h:ZvG	Lcom/tencent/e/i;
+    //   22: getstatic 68	com/tencent/threadpool/h:ahAA	Lcom/tencent/threadpool/i;
     //   25: new 6	com/tencent/tmassistantsdk/network/GetHttpRequest$1
     //   28: dup
     //   29: aload_0
@@ -58,7 +58,7 @@ public abstract class GetHttpRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.network.GetHttpRequest
  * JD-Core Version:    0.7.0.1
  */

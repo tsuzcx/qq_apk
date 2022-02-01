@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:layout_gravity="center" android:id="@id/gl7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a71" />
-    <com.tencent.mm.pluginsdk.ui.emoji.MMEmojiView android:layout_gravity="center" android:id="@id/dup" android:padding="@dimen/ib" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/i2" />
-</FrameLayout>
+    <RelativeLayout android:id="@id/jnn" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</RelativeLayout>

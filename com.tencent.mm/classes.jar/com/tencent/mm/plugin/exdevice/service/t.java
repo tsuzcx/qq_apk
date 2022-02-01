@@ -20,9 +20,9 @@ public abstract interface t
       attachInterface(this, "com.tencent.mm.plugin.exdevice.service.ISimpleBTOnSendEnd_AIDL");
     }
     
-    public static t dai()
+    public static t dGB()
     {
-      return a.vjB;
+      return a.yvz;
     }
     
     public IBinder asBinder()
@@ -49,7 +49,7 @@ public abstract interface t
     static final class a
       implements t
     {
-      public static t vjB;
+      public static t yvz;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -74,9 +74,9 @@ public abstract interface t
           localParcel1.writeInt(paramInt1);
           localParcel1.writeInt(paramInt2);
           localParcel1.writeString(paramString);
-          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (t.a.dai() != null))
+          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (t.a.dGB() != null))
           {
-            t.a.dai().b(paramLong, paramInt1, paramInt2, paramString);
+            t.a.dGB().b(paramLong, paramInt1, paramInt2, paramString);
             return;
           }
           localParcel2.readException();
@@ -94,7 +94,7 @@ public abstract interface t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.t
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,15 @@
 package com.tencent.map.lib.models;
 
-import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import com.tencent.tencentmap.mapsdk.maps.model.OverlayLevel;
 
-@Keep
 public class PolygonInfo
 {
   public int borderColor;
   public int borderLineId;
   public float borderWidth;
   public int color;
-  public int level = OverlayLevel.OverlayLevelAboveLabels;
+  public int level = 2;
   public int maxScaleLevel = 30;
   public int minScaleLevel;
   public int[] pattern;
@@ -24,7 +21,7 @@ public class PolygonInfo
   
   public String toString()
   {
-    AppMethodBeat.i(236030);
+    AppMethodBeat.i(210911);
     StringBuffer localStringBuffer1 = new StringBuffer("Polygon2D{");
     localStringBuffer1.append(", color=").append(this.color);
     localStringBuffer1.append(", borderColor=").append(this.borderColor);
@@ -40,14 +37,14 @@ public class PolygonInfo
       localStringBuffer1.append(", level=").append(this.level);
       localStringBuffer1.append('}');
       localObject = localStringBuffer1.toString();
-      AppMethodBeat.o(236030);
+      AppMethodBeat.o(210911);
       return localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.map.lib.models.PolygonInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -9,15 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ad.i.d;
-import com.tencent.mm.plugin.sns.i.c;
-import com.tencent.mm.plugin.sns.i.d;
+import com.tencent.mm.plugin.sns.ad.j.d;
+import com.tencent.mm.plugin.sns.b.c;
+import com.tencent.mm.plugin.sns.b.d;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aa;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.m;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.n;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.y;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.g;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.i;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.i.a;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.l;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.l.a;
 import com.tencent.mm.plugin.sns.ui.widget.SnsAdLandingPageFloatView;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Collection;
@@ -28,47 +28,47 @@ import java.util.Map;
 
 public final class b
 {
-  private i.a JDs;
-  private SnsAdLandingPageFloatView JDt;
-  private boolean Wp;
+  private boolean NE;
+  private l.a PUr;
+  private SnsAdLandingPageFloatView PUs;
   
-  public b(i.a parama)
+  public b(l.a parama)
   {
-    this.JDs = parama;
-    this.Wp = false;
+    this.PUr = parama;
+    this.NE = false;
   }
   
-  public final boolean I(ViewGroup paramViewGroup)
+  public final boolean S(ViewGroup paramViewGroup)
   {
     boolean bool = false;
-    AppMethodBeat.i(241156);
-    this.Wp = false;
+    AppMethodBeat.i(310860);
+    this.NE = false;
     if (paramViewGroup == null)
     {
-      AppMethodBeat.o(241156);
+      AppMethodBeat.o(310860);
       return false;
     }
     for (;;)
     {
       try
       {
-        localObject1 = this.JDs;
-        if ((localObject1 == null) || (!d.n(((i.a)localObject1).Kyx))) {
+        localObject1 = this.PUr;
+        if ((localObject1 == null) || (!d.B(((l.a)localObject1).QXz))) {
           continue;
         }
-        localObject1 = (g)((i.a)localObject1).Kyx.get(0);
+        localObject1 = (h)((l.a)localObject1).QXz.get(0);
         if (localObject1 == null) {
           continue;
         }
-        if (!d.isEmpty(((g)localObject1).Kyq)) {
+        if (!d.isEmpty(((h)localObject1).QXj)) {
           continue;
         }
       }
-      catch (Throwable paramViewGroup)
+      finally
       {
         Object localObject2;
-        Object localObject3;
-        g localg;
+        Object localObject4;
+        h localh;
         continue;
         Object localObject1 = null;
         continue;
@@ -78,46 +78,46 @@ public final class b
       if (localObject1 != null)
       {
         localObject2 = new SnsAdLandingPageFloatView(paramViewGroup.getContext());
-        localObject3 = new Bundle();
-        ((Bundle)localObject3).putString("sns_float_component_id", ((y)localObject1).KmB);
-        localg = (g)this.JDs.Kyx.get(0);
-        if (localg == null) {}
+        localObject4 = new Bundle();
+        ((Bundle)localObject4).putString("sns_float_component_id", ((y)localObject1).QKG);
+        localh = (h)this.PUr.QXz.get(0);
+        if (localh == null) {}
       }
       try
       {
-        ((SnsAdLandingPageFloatView)localObject2).fOG = ((Bundle)localObject3).getString("sns_float_component_id");
-        ((SnsAdLandingPageFloatView)localObject2).adCanvasExtXml = ((Bundle)localObject3).getString("sns_landing_pages_canvas_ext");
-        ((SnsAdLandingPageFloatView)localObject2).LsR = new g();
-        ((SnsAdLandingPageFloatView)localObject2).LsR.nWx = localg.nWx;
-        ((SnsAdLandingPageFloatView)localObject2).LsR.Kyr = true;
-        ((SnsAdLandingPageFloatView)localObject2).LsR.id = 0;
-        if (d.aC(localg.Kyq))
+        ((SnsAdLandingPageFloatView)localObject2).hUz = ((Bundle)localObject4).getString("sns_float_component_id");
+        ((SnsAdLandingPageFloatView)localObject2).adCanvasExtXml = ((Bundle)localObject4).getString("sns_landing_pages_canvas_ext");
+        ((SnsAdLandingPageFloatView)localObject2).RWh = new h();
+        ((SnsAdLandingPageFloatView)localObject2).RWh.qWk = localh.qWk;
+        ((SnsAdLandingPageFloatView)localObject2).RWh.QXk = true;
+        ((SnsAdLandingPageFloatView)localObject2).RWh.id = 0;
+        if (d.aT(localh.QXj))
         {
-          localObject3 = (aa)localg.Kyq.get(((SnsAdLandingPageFloatView)localObject2).fOG);
-          if ((localObject3 != null) && (i.agD(((aa)localObject3).type)))
+          localObject4 = (aa)localh.QXj.get(((SnsAdLandingPageFloatView)localObject2).hUz);
+          if ((localObject4 != null) && (l.alw(((aa)localObject4).type)))
           {
-            ((SnsAdLandingPageFloatView)localObject2).LsQ = ((y)localObject3);
-            ((SnsAdLandingPageFloatView)localObject2).LsR.Kyp.add(((SnsAdLandingPageFloatView)localObject2).LsQ);
-            ((SnsAdLandingPageFloatView)localObject2).LsR.Kyq.putAll(localg.Kyq);
-            if (((SnsAdLandingPageFloatView)localObject2).LsQ.Kmx <= 0) {
+            ((SnsAdLandingPageFloatView)localObject2).RWg = ((y)localObject4);
+            ((SnsAdLandingPageFloatView)localObject2).RWh.QXi.add(((SnsAdLandingPageFloatView)localObject2).RWg);
+            ((SnsAdLandingPageFloatView)localObject2).RWh.QXj.putAll(localh.QXj);
+            if (((SnsAdLandingPageFloatView)localObject2).RWg.QKC <= 0) {
               bool = true;
             }
-            ((SnsAdLandingPageFloatView)localObject2).LsV = bool;
+            ((SnsAdLandingPageFloatView)localObject2).RWl = bool;
           }
         }
         ((SnsAdLandingPageFloatView)localObject2).initView();
       }
-      catch (Throwable localThrowable)
+      finally
       {
         float f;
         Log.e("MicroMsg.SnsAdLandingPageFloatView", "the init from helper has something wrong!!");
         continue;
       }
       paramViewGroup.addView((View)localObject2, paramViewGroup.getChildCount() - 1, new ViewGroup.LayoutParams(-1, -1));
-      this.JDt = ((SnsAdLandingPageFloatView)localObject2);
-      this.Wp = true;
+      this.PUs = ((SnsAdLandingPageFloatView)localObject2);
+      this.NE = true;
       f = ((y)localObject1).cornerRadius;
-      paramViewGroup = this.JDt;
+      paramViewGroup = this.PUs;
       if ((paramViewGroup != null) && (paramViewGroup.getChildCount() > 0))
       {
         paramViewGroup = paramViewGroup.getChildAt(0);
@@ -125,16 +125,16 @@ public final class b
         {
           localObject1 = paramViewGroup.getContext();
           localObject2 = new GradientDrawable();
-          ((GradientDrawable)localObject2).setColor(((Context)localObject1).getResources().getColor(i.c.sns_ad_float_view_background_shadow_color));
+          ((GradientDrawable)localObject2).setColor(((Context)localObject1).getResources().getColor(b.c.sns_ad_float_view_background_shadow_color));
           ((GradientDrawable)localObject2).setCornerRadius(f);
           paramViewGroup.setBackground((Drawable)localObject2);
-          paramViewGroup.setElevation(paramViewGroup.getContext().getResources().getDimension(i.d.sns_ad_float_view_shadow_dimen));
+          paramViewGroup.setElevation(paramViewGroup.getContext().getResources().getDimension(b.d.sns_ad_float_view_shadow_dimen));
         }
       }
-      bool = this.Wp;
-      AppMethodBeat.o(241156);
+      bool = this.NE;
+      AppMethodBeat.o(310860);
       return bool;
-      localObject2 = ((g)localObject1).Kyq.values().iterator();
+      localObject2 = ((h)localObject1).QXj.values().iterator();
       if (!((Iterator)localObject2).hasNext()) {
         continue;
       }
@@ -142,55 +142,52 @@ public final class b
       if ((localObject1 instanceof y))
       {
         localObject1 = (y)localObject1;
-        if (((y)localObject1).Kmw <= 0) {}
+        if (((y)localObject1).QKB <= 0) {}
       }
     }
   }
   
-  public final void fKL()
+  public final List<n> getAllComp()
   {
-    AppMethodBeat.i(241159);
+    AppMethodBeat.i(310876);
     try
     {
-      SnsAdLandingPageFloatView localSnsAdLandingPageFloatView = this.JDt;
-      if (localSnsAdLandingPageFloatView != null)
+      if (this.PUs != null)
       {
-        localSnsAdLandingPageFloatView.fZu();
-        AppMethodBeat.o(241159);
-        return;
-      }
-      Log.w("SnsAd.FloatPageHelper", "the float view is null, is it attached??");
-      AppMethodBeat.o(241159);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      AppMethodBeat.o(241159);
-    }
-  }
-  
-  public final List<m> getAllComp()
-  {
-    AppMethodBeat.i(241164);
-    try
-    {
-      if (this.JDt != null)
-      {
-        List localList = this.JDt.getAllComp();
-        AppMethodBeat.o(241164);
+        List localList = this.PUs.getAllComp();
         return localList;
       }
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      AppMethodBeat.o(241164);
+      AppMethodBeat.o(310876);
     }
     return null;
+  }
+  
+  public final void hba()
+  {
+    AppMethodBeat.i(310866);
+    try
+    {
+      SnsAdLandingPageFloatView localSnsAdLandingPageFloatView = this.PUs;
+      if (localSnsAdLandingPageFloatView != null)
+      {
+        localSnsAdLandingPageFloatView.hsJ();
+        return;
+      }
+      Log.w("SnsAd.FloatPageHelper", "the float view is null, is it attached??");
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(310866);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.landingpage.helper.floatpage.b
  * JD-Core Version:    0.7.0.1
  */

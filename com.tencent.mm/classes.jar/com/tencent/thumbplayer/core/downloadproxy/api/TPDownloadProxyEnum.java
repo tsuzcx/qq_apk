@@ -72,6 +72,10 @@ public class TPDownloadProxyEnum
   public static final int DL_DATA_TRANSFER_MODE_AV = 1;
   public static final int DL_DATA_TRANSFER_MODE_DEFAULT = 0;
   public static final int DL_DATA_TRANSFER_MODE_FMP4_TO_TS = 2;
+  public static final int DL_NATIVEINFO_TYPE_CELLULAR_FLOW = 2;
+  public static final int DL_NATIVEINFO_TYPE_FLOW = 3;
+  public static final int DL_NATIVEINFO_TYPE_SUGGEST_BITRATE = 0;
+  public static final int DL_NATIVEINFO_TYPE_SUGGEST_DEFN = 1;
   public static final int DL_URL_TYPE_LOCAL_ABSOLUTE_URL_PRIORITY = 0;
   public static final int DL_URL_TYPE_LOCAL_PROXY_URL_CREATE_TASK = 2;
   public static final int DL_URL_TYPE_LOCAL_PROXY_URL_ONLY = 1;
@@ -136,7 +140,7 @@ public class TPDownloadProxyEnum
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.api.TPDownloadProxyEnum
  * JD-Core Version:    0.7.0.1
  */

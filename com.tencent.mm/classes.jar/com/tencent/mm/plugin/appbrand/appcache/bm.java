@@ -1,50 +1,51 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.text.TextUtils;
-import com.tencent.luggage.sdk.h.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaPluginCodeInfo;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionModuleInfo;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaWidgetInfo;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.protocal.protobuf.fni;
-import com.tencent.mm.protocal.protobuf.fnt;
+import com.tencent.mm.protocal.protobuf.gkb;
+import com.tencent.mm.protocal.protobuf.gks;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.ISQLiteDatabaseEx;
 import com.tencent.mm.sdk.storage.MAutoStorage;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
+import junit.framework.Assert;
 import kotlin.g.a.a;
 
 public final class bm
-  implements j, s<bh>
+  implements k, u<bh>
 {
-  public static final String[] nHe;
-  public final ISQLiteDatabaseEx nHI;
-  private final bm.b nHJ;
+  public static final String[] qGS;
+  public final ISQLiteDatabaseEx qHv;
+  public final b qHw;
   
   static
   {
     AppMethodBeat.i(146044);
-    nHe = new String[] { MAutoStorage.getCreateSQLs(bh.lqK, "AppBrandWxaPkgManifestRecord") };
+    qGS = new String[] { MAutoStorage.getCreateSQLs(bh.nVV, "AppBrandWxaPkgManifestRecord") };
     AppMethodBeat.o(146044);
   }
   
   public bm(ISQLiteDatabaseEx paramISQLiteDatabaseEx)
   {
     AppMethodBeat.i(146012);
-    this.nHI = paramISQLiteDatabaseEx;
-    this.nHJ = new bm.b(paramISQLiteDatabaseEx);
+    this.qHv = paramISQLiteDatabaseEx;
+    this.qHw = new b(paramISQLiteDatabaseEx);
     AppMethodBeat.o(146012);
   }
   
@@ -52,30 +53,12 @@ public final class bm
   {
     AppMethodBeat.i(146034);
     Log.i("MicroMsg.AppBrandWxaPkgStorage", "insertManifest, appId %s, type %d, version %d", new Object[] { parambh.field_appId, Integer.valueOf(parambh.field_debugType), Integer.valueOf(parambh.field_version) });
-    boolean bool = this.nHJ.insert(parambh);
+    boolean bool = this.qHw.insert(parambh);
     AppMethodBeat.o(146034);
     return bool;
   }
   
-  private <T> T q(a<T> parama)
-  {
-    try
-    {
-      AppMethodBeat.i(232569);
-      long l = this.nHI.beginTransaction(Thread.currentThread().getId());
-      parama = parama.invoke();
-      this.nHI.endTransaction(l);
-      AppMethodBeat.o(232569);
-      return parama;
-    }
-    finally
-    {
-      parama = finally;
-      throw parama;
-    }
-  }
-  
-  private boolean s(String paramString1, String paramString2, int paramInt)
+  private boolean x(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(182783);
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
@@ -83,42 +66,42 @@ public final class bm
       AppMethodBeat.o(182783);
       return false;
     }
-    boolean bool = d(new ae(paramString1, "__PLUGINCODE__").toString(), 0, paramInt, paramString2, null);
+    boolean bool = d(new af(paramString1, "__PLUGINCODE__").toString(), 0, paramInt, paramString2, null);
     AppMethodBeat.o(182783);
     return bool;
   }
   
-  final int E(String paramString, int paramInt1, int paramInt2)
+  final int I(String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(232584);
-    if (j.a.za(paramInt1))
+    AppMethodBeat.i(320264);
+    if (k.a.zn(paramInt1))
     {
       Log.i("MicroMsg.AppBrandWxaPkgStorage", "deletePkgsBelowVersion, appId %s, versionType %d, pkgVersion %d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      paramInt1 = this.nHI.delete("AppBrandWxaPkgManifestRecord", String.format("%s=? and %s=? and %s<?", new Object[] { "appId", "debugType", "version" }), new String[] { paramString, String.valueOf(paramInt1), String.valueOf(paramInt2) });
-      AppMethodBeat.o(232584);
+      paramInt1 = this.qHv.delete("AppBrandWxaPkgManifestRecord", String.format("%s=? and %s=? and %s<?", new Object[] { "appId", "debugType", "version" }), new String[] { paramString, String.valueOf(paramInt1), String.valueOf(paramInt2) });
+      AppMethodBeat.o(320264);
       return paramInt1;
     }
-    AppMethodBeat.o(232584);
+    AppMethodBeat.o(320264);
     return 0;
   }
   
-  final int F(String paramString, int paramInt1, int paramInt2)
+  final int J(String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(232587);
-    if (j.a.za(paramInt1))
+    AppMethodBeat.i(320266);
+    if (k.a.zn(paramInt1))
     {
       Log.i("MicroMsg.AppBrandWxaPkgStorage", "deleteModuleListBelowVersion appId[%s] versionType[%d] pkgVersion[%d]", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
       String str = "'" + paramString + '$' + "%%'";
       paramString = "'" + paramString + '$' + "__PLUGINCODE__'";
-      paramInt1 = this.nHI.delete("AppBrandWxaPkgManifestRecord", String.format(Locale.US, "%s like %s and %s != %s and %s=? and %s<?", new Object[] { "appId", str, "appId", paramString, "debugType", "version" }), new String[] { String.valueOf(paramInt1), String.valueOf(paramInt2) });
-      AppMethodBeat.o(232587);
+      paramInt1 = this.qHv.delete("AppBrandWxaPkgManifestRecord", String.format(Locale.US, "%s like %s and %s != %s and %s=? and %s<?", new Object[] { "appId", str, "appId", paramString, "debugType", "version" }), new String[] { String.valueOf(paramInt1), String.valueOf(paramInt2) });
+      AppMethodBeat.o(320266);
       return paramInt1;
     }
-    AppMethodBeat.o(232587);
+    AppMethodBeat.o(320266);
     return 0;
   }
   
-  public final boolean G(String paramString, int paramInt1, int paramInt2)
+  public final boolean K(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(146043);
     Locale localLocale = Locale.US;
@@ -128,59 +111,101 @@ public final class bm
       str = String.format(localLocale, "where %s like '%s$%%' and %s=%d and %s", new Object[] { "appId", paramString, "debugType", Integer.valueOf(paramInt1), str });
       str = String.format(Locale.US, "delete from %s %s", new Object[] { "AppBrandWxaPkgManifestRecord", str });
       Log.i("MicroMsg.AppBrandWxaPkgStorage", "deleteModuleList, appId %s, type %d, version %d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      boolean bool = this.nHI.execSQL("AppBrandWxaPkgManifestRecord", str);
+      boolean bool = this.qHv.execSQL("AppBrandWxaPkgManifestRecord", str);
       AppMethodBeat.o(146043);
       return bool;
     }
   }
   
+  public final int[] Vy(String paramString)
+  {
+    AppMethodBeat.i(370013);
+    paramString = Vz(paramString);
+    AppMethodBeat.o(370013);
+    return paramString;
+  }
+  
+  public final int[] Vz(String paramString)
+  {
+    AppMethodBeat.i(146014);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(146014);
+      return null;
+    }
+    if (!k.a.zn(0))
+    {
+      if (BuildInfo.DEBUG) {
+        Assert.fail("invalid release pkgType 0");
+      }
+      AppMethodBeat.o(146014);
+      return null;
+    }
+    Object localObject = a(paramString, 0, bm.a.qHD, new String[] { "version" });
+    if (Util.isNullOrNil((List)localObject))
+    {
+      AppMethodBeat.o(146014);
+      return null;
+    }
+    paramString = new int[((List)localObject).size()];
+    localObject = ((List)localObject).iterator();
+    int i = 0;
+    while (((Iterator)localObject).hasNext())
+    {
+      paramString[i] = ((bh)((Iterator)localObject).next()).field_version;
+      i += 1;
+    }
+    AppMethodBeat.o(146014);
+    return paramString;
+  }
+  
   /* Error */
-  public final List<bh> a(ae paramae, int paramInt, a parama)
+  public final List<bh> a(af paramaf, int paramInt, bm.a parama)
   {
     // Byte code:
-    //   0: ldc_w 265
-    //   3: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc_w 289
+    //   3: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_1
     //   7: ifnonnull +11 -> 18
-    //   10: ldc_w 265
-    //   13: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   10: ldc_w 289
+    //   13: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   16: aconst_null
     //   17: areturn
     //   18: aload_0
-    //   19: getfield 64	com/tencent/mm/plugin/appbrand/appcache/bm:nHI	Lcom/tencent/mm/sdk/storage/ISQLiteDatabaseEx;
+    //   19: getfield 62	com/tencent/mm/plugin/appbrand/appcache/bm:qHv	Lcom/tencent/mm/sdk/storage/ISQLiteDatabaseEx;
     //   22: astore 5
-    //   24: getstatic 268	java/util/Locale:ENGLISH	Ljava/util/Locale;
-    //   27: ldc_w 270
+    //   24: getstatic 292	java/util/Locale:ENGLISH	Ljava/util/Locale;
+    //   27: ldc_w 294
     //   30: iconst_2
     //   31: anewarray 5	java/lang/Object
     //   34: dup
     //   35: iconst_0
-    //   36: ldc 177
+    //   36: ldc 146
     //   38: aastore
     //   39: dup
     //   40: iconst_1
-    //   41: ldc 179
+    //   41: ldc 148
     //   43: aastore
-    //   44: invokestatic 226	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   44: invokestatic 197	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   47: astore 6
     //   49: aload_1
-    //   50: invokevirtual 158	com/tencent/mm/plugin/appbrand/appcache/ae:toString	()Ljava/lang/String;
+    //   50: invokevirtual 128	com/tencent/mm/plugin/appbrand/appcache/af:toString	()Ljava/lang/String;
     //   53: astore_1
-    //   54: new 198	java/lang/StringBuilder
+    //   54: new 169	java/lang/StringBuilder
     //   57: dup
-    //   58: ldc_w 272
-    //   61: invokespecial 203	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   58: ldc_w 296
+    //   61: invokespecial 174	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   64: aload_3
-    //   65: invokevirtual 275	com/tencent/mm/plugin/appbrand/appcache/bm$a:name	()Ljava/lang/String;
-    //   68: invokevirtual 207	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   71: invokevirtual 213	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   65: invokevirtual 299	com/tencent/mm/plugin/appbrand/appcache/bm$a:name	()Ljava/lang/String;
+    //   68: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   71: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   74: astore_3
     //   75: aload 5
-    //   77: ldc 45
+    //   77: ldc 43
     //   79: aconst_null
     //   80: aload 6
     //   82: iconst_2
-    //   83: anewarray 37	java/lang/String
+    //   83: anewarray 35	java/lang/String
     //   86: dup
     //   87: iconst_0
     //   88: aload_1
@@ -188,131 +213,111 @@ public final class bm
     //   90: dup
     //   91: iconst_1
     //   92: iload_2
-    //   93: invokestatic 188	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   93: invokestatic 157	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   96: aastore
     //   97: aconst_null
     //   98: aconst_null
     //   99: aload_3
     //   100: iconst_2
-    //   101: invokeinterface 279 9 0
-    //   106: astore 5
-    //   108: aload 5
-    //   110: ifnull +17 -> 127
-    //   113: aload 5
-    //   115: invokeinterface 285 1 0
-    //   120: istore 4
-    //   122: iload 4
-    //   124: ifeq +23 -> 147
-    //   127: aload 5
-    //   129: ifnull +10 -> 139
-    //   132: aload 5
-    //   134: invokeinterface 288 1 0
-    //   139: ldc_w 265
-    //   142: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   145: aconst_null
-    //   146: areturn
-    //   147: aload 5
-    //   149: invokeinterface 291 1 0
-    //   154: ifeq +65 -> 219
-    //   157: new 293	java/util/LinkedList
-    //   160: dup
-    //   161: invokespecial 294	java/util/LinkedList:<init>	()V
-    //   164: astore_1
-    //   165: new 39	com/tencent/mm/plugin/appbrand/appcache/bh
-    //   168: dup
-    //   169: invokespecial 295	com/tencent/mm/plugin/appbrand/appcache/bh:<init>	()V
-    //   172: astore_3
-    //   173: aload_3
-    //   174: aload 5
-    //   176: invokevirtual 299	com/tencent/mm/plugin/appbrand/appcache/bh:convertFrom	(Landroid/database/Cursor;)V
-    //   179: aload_1
-    //   180: aload_3
-    //   181: invokevirtual 303	java/util/LinkedList:add	(Ljava/lang/Object;)Z
-    //   184: pop
-    //   185: aload 5
-    //   187: invokeinterface 306 1 0
-    //   192: istore 4
-    //   194: iload 4
-    //   196: ifne -31 -> 165
-    //   199: aload 5
-    //   201: ifnull +10 -> 211
-    //   204: aload 5
-    //   206: invokeinterface 288 1 0
-    //   211: ldc_w 265
-    //   214: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   217: aload_1
-    //   218: areturn
-    //   219: aload 5
-    //   221: ifnull +10 -> 231
-    //   224: aload 5
-    //   226: invokeinterface 288 1 0
-    //   231: ldc_w 265
-    //   234: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   237: aconst_null
-    //   238: areturn
-    //   239: astore_3
-    //   240: ldc_w 265
-    //   243: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   246: aload_3
-    //   247: athrow
-    //   248: astore_1
-    //   249: aload 5
-    //   251: ifnull +14 -> 265
-    //   254: aload_3
-    //   255: ifnull +38 -> 293
-    //   258: aload 5
-    //   260: invokeinterface 288 1 0
-    //   265: ldc_w 265
-    //   268: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   271: aload_1
-    //   272: athrow
-    //   273: astore_1
-    //   274: ldc_w 265
-    //   277: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   280: aconst_null
-    //   281: areturn
-    //   282: astore 5
-    //   284: aload_3
-    //   285: aload 5
-    //   287: invokevirtual 310	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
-    //   290: goto -25 -> 265
-    //   293: aload 5
-    //   295: invokeinterface 288 1 0
-    //   300: goto -35 -> 265
-    //   303: astore_1
-    //   304: aconst_null
-    //   305: astore_3
-    //   306: goto -57 -> 249
+    //   101: invokeinterface 303 9 0
+    //   106: astore_1
+    //   107: aload_1
+    //   108: ifnull +16 -> 124
+    //   111: aload_1
+    //   112: invokeinterface 308 1 0
+    //   117: istore 4
+    //   119: iload 4
+    //   121: ifeq +21 -> 142
+    //   124: aload_1
+    //   125: ifnull +9 -> 134
+    //   128: aload_1
+    //   129: invokeinterface 311 1 0
+    //   134: ldc_w 289
+    //   137: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   140: aconst_null
+    //   141: areturn
+    //   142: aload_1
+    //   143: invokeinterface 314 1 0
+    //   148: ifeq +64 -> 212
+    //   151: new 316	java/util/LinkedList
+    //   154: dup
+    //   155: invokespecial 317	java/util/LinkedList:<init>	()V
+    //   158: astore_3
+    //   159: new 37	com/tencent/mm/plugin/appbrand/appcache/bh
+    //   162: dup
+    //   163: invokespecial 318	com/tencent/mm/plugin/appbrand/appcache/bh:<init>	()V
+    //   166: astore 5
+    //   168: aload 5
+    //   170: aload_1
+    //   171: invokevirtual 322	com/tencent/mm/plugin/appbrand/appcache/bh:convertFrom	(Landroid/database/Cursor;)V
+    //   174: aload_3
+    //   175: aload 5
+    //   177: invokevirtual 326	java/util/LinkedList:add	(Ljava/lang/Object;)Z
+    //   180: pop
+    //   181: aload_1
+    //   182: invokeinterface 329 1 0
+    //   187: istore 4
+    //   189: iload 4
+    //   191: ifne -32 -> 159
+    //   194: aload_1
+    //   195: ifnull +9 -> 204
+    //   198: aload_1
+    //   199: invokeinterface 311 1 0
+    //   204: ldc_w 289
+    //   207: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   210: aload_3
+    //   211: areturn
+    //   212: aload_1
+    //   213: ifnull +9 -> 222
+    //   216: aload_1
+    //   217: invokeinterface 311 1 0
+    //   222: ldc_w 289
+    //   225: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   228: aconst_null
+    //   229: areturn
+    //   230: astore_3
+    //   231: aload_1
+    //   232: ifnull +9 -> 241
+    //   235: aload_1
+    //   236: invokeinterface 311 1 0
+    //   241: ldc_w 289
+    //   244: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   247: aload_3
+    //   248: athrow
+    //   249: astore_1
+    //   250: ldc_w 289
+    //   253: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   256: aconst_null
+    //   257: areturn
+    //   258: astore_1
+    //   259: aload_3
+    //   260: aload_1
+    //   261: invokevirtual 335	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   264: goto -23 -> 241
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	309	0	this	bm
-    //   0	309	1	paramae	ae
-    //   0	309	2	paramInt	int
-    //   0	309	3	parama	a
-    //   120	75	4	bool	boolean
-    //   22	237	5	localObject	Object
-    //   282	12	5	localThrowable	java.lang.Throwable
+    //   0	267	0	this	bm
+    //   0	267	1	paramaf	af
+    //   0	267	2	paramInt	int
+    //   0	267	3	parama	bm.a
+    //   117	73	4	bool	boolean
+    //   22	154	5	localObject	Object
     //   47	34	6	str	String
     // Exception table:
     //   from	to	target	type
-    //   113	122	239	java/lang/Throwable
-    //   147	165	239	java/lang/Throwable
-    //   165	194	239	java/lang/Throwable
-    //   240	248	248	finally
-    //   18	108	273	java/lang/Throwable
-    //   132	139	273	java/lang/Throwable
-    //   204	211	273	java/lang/Throwable
-    //   224	231	273	java/lang/Throwable
-    //   265	273	273	java/lang/Throwable
-    //   284	290	273	java/lang/Throwable
-    //   293	300	273	java/lang/Throwable
-    //   258	265	282	java/lang/Throwable
-    //   113	122	303	finally
-    //   147	165	303	finally
-    //   165	194	303	finally
+    //   111	119	230	finally
+    //   142	159	230	finally
+    //   159	189	230	finally
+    //   18	107	249	finally
+    //   128	134	249	finally
+    //   198	204	249	finally
+    //   216	222	249	finally
+    //   241	249	249	finally
+    //   259	264	249	finally
+    //   235	241	258	finally
   }
   
-  final List<bh> a(String paramString, int paramInt, a parama, String... paramVarArgs)
+  final List<bh> a(String paramString, int paramInt, bm.a parama, String... paramVarArgs)
   {
     AppMethodBeat.i(146015);
     if (Util.isNullOrNil(paramString))
@@ -321,7 +326,7 @@ public final class bm
       AppMethodBeat.o(146015);
       return paramString;
     }
-    Object localObject = this.nHI;
+    Object localObject = this.qHv;
     String str = String.format(Locale.US, "%s=? and %s=? ", new Object[] { "appId", "debugType" });
     parama = "version " + parama.name();
     parama = ((ISQLiteDatabaseEx)localObject).query("AppBrandWxaPkgManifestRecord", paramVarArgs, str, new String[] { paramString, String.valueOf(paramInt) }, null, null, parama, 2);
@@ -361,9 +366,9 @@ public final class bm
       while (paramList.hasNext())
       {
         Object localObject = (WxaAttributes.WxaWidgetInfo)paramList.next();
-        int i = ((WxaAttributes.WxaWidgetInfo)localObject).fyH;
-        localObject = ((WxaAttributes.WxaWidgetInfo)localObject).obR;
-        String str = new ae(paramString1, paramString2, i).toString();
+        int i = ((WxaAttributes.WxaWidgetInfo)localObject).hDq;
+        localObject = ((WxaAttributes.WxaWidgetInfo)localObject).rcF;
+        String str = new af(paramString1, paramString2, i).toString();
         Log.i("MicroMsg.AppBrandWxaPkgStorage", "multiPkg updatePkgInfoList pkgInfoKey:%s,pkgType:%d,codeType:%d", new Object[] { str, Integer.valueOf(i), Integer.valueOf(paramInt2) });
         if (paramInt2 == 0) {
           d(str, paramInt2, paramInt1, (String)localObject, null);
@@ -375,22 +380,22 @@ public final class bm
     AppMethodBeat.o(177313);
   }
   
-  final boolean a(fni paramfni, PInt paramPInt)
+  final boolean a(gkb paramgkb, PInt paramPInt)
   {
     AppMethodBeat.i(146020);
-    if ((paramfni.version < 0) || (Util.isNullOrNil(paramfni.url)) || (Util.isNullOrNil(paramfni.md5)))
+    if ((paramgkb.version < 0) || (Util.isNullOrNil(paramgkb.url)) || (Util.isNullOrNil(paramgkb.md5)))
     {
-      Log.e("MicroMsg.AppBrandWxaPkgStorage", "flushLibPkgVersionInfo, invalid resp: version( %d ), url( %s ), md5( %s )", new Object[] { Integer.valueOf(paramfni.version), paramfni.url, paramfni.md5 });
+      Log.e("MicroMsg.AppBrandWxaPkgStorage", "flushLibPkgVersionInfo, invalid resp: version( %d ), url( %s ), md5( %s )", new Object[] { Integer.valueOf(paramgkb.version), paramgkb.url, paramgkb.md5 });
       AppMethodBeat.o(146020);
       return false;
     }
-    if (paramfni.TWD > 0)
+    if (paramgkb.abns > 0)
     {
-      int i = this.nHI.delete("AppBrandWxaPkgManifestRecord", String.format("%s=? and %s=? and %s>?", new Object[] { "appId", "debugType", "version" }), new String[] { "@LibraryAppId", "0", String.valueOf(paramfni.version) });
-      Log.i("MicroMsg.AppBrandWxaPkgStorage", "flushLibPkgVersionInfo, delete manifest.version > %d, ret = %d", new Object[] { Integer.valueOf(paramfni.version), Integer.valueOf(i) });
+      int i = this.qHv.delete("AppBrandWxaPkgManifestRecord", String.format("%s=? and %s=? and %s>?", new Object[] { "appId", "debugType", "version" }), new String[] { "@LibraryAppId", "0", String.valueOf(paramgkb.version) });
+      Log.i("MicroMsg.AppBrandWxaPkgStorage", "flushLibPkgVersionInfo, delete manifest.version > %d, ret = %d", new Object[] { Integer.valueOf(paramgkb.version), Integer.valueOf(i) });
       paramPInt.value = i;
     }
-    boolean bool = d("@LibraryAppId", 0, paramfni.version, paramfni.md5, paramfni.url);
+    boolean bool = d("@LibraryAppId", 0, paramgkb.version, paramgkb.md5, paramgkb.url);
     AppMethodBeat.o(146020);
     return bool;
   }
@@ -403,7 +408,7 @@ public final class bm
       AppMethodBeat.o(146042);
       return false;
     }
-    if (!j.a.za(paramInt1)) {
+    if (!k.a.zn(paramInt1)) {
       paramInt2 = 1;
     }
     for (;;)
@@ -422,17 +427,17 @@ public final class bm
       if (paramList.hasNext())
       {
         localObject1 = (WxaAttributes.WxaVersionModuleInfo)paramList.next();
-        localObject2 = new ae(paramString, ((WxaAttributes.WxaVersionModuleInfo)localObject1).name).toString();
-        if (j.a.za(paramInt1)) {
+        localObject2 = new af(paramString, ((WxaAttributes.WxaVersionModuleInfo)localObject1).name).toString();
+        if (k.a.zn(paramInt1)) {
           d((String)localObject2, paramInt1, paramInt2, ((WxaAttributes.WxaVersionModuleInfo)localObject1).md5, null);
         }
         for (;;)
         {
-          localObject2 = ((WxaAttributes.WxaVersionModuleInfo)localObject1).obG;
+          localObject2 = ((WxaAttributes.WxaVersionModuleInfo)localObject1).rct;
           if ((!Util.isNullOrNil(((WxaAttributes.WxaVersionModuleInfo)localObject1).name)) && (!Util.isNullOrNil((String)localObject2))) {
             b(paramString, ((WxaAttributes.WxaVersionModuleInfo)localObject1).name, paramInt2, paramInt1, (String)localObject2, 13);
           }
-          a(paramString, paramInt2, paramInt1, ((WxaAttributes.WxaVersionModuleInfo)localObject1).name, ((WxaAttributes.WxaVersionModuleInfo)localObject1).obP);
+          a(paramString, paramInt2, paramInt1, ((WxaAttributes.WxaVersionModuleInfo)localObject1).name, ((WxaAttributes.WxaVersionModuleInfo)localObject1).rcD);
           break;
           a((String)localObject2, paramInt1, null, ((WxaAttributes.WxaVersionModuleInfo)localObject1).md5, 0L, 0L);
         }
@@ -486,7 +491,7 @@ public final class bm
         break label351;
       }
       localbh.field_downloadURL = paramString2;
-      u.deleteFile(localbh.field_pkgPath);
+      y.deleteFile(localbh.field_pkgPath);
       localbh.field_pkgPath = null;
       localbh.field_createTime = Util.nowSecond();
       localbh.field_versionMd5 = paramString3;
@@ -495,7 +500,7 @@ public final class bm
       localbh.field_createTime = Util.nowSecond();
       g(localbh);
       if (Util.isNullOrNil(paramString1.split("$"))) {
-        G(paramString1, paramInt, 1);
+        K(paramString1, paramInt, 1);
       }
       AppMethodBeat.o(146023);
       return true;
@@ -516,66 +521,74 @@ public final class bm
     return false;
   }
   
-  public final boolean a(final String paramString, final WxaAttributes.WxaVersionInfo paramWxaVersionInfo)
-  {
-    AppMethodBeat.i(232566);
-    paramWxaVersionInfo = new a() {};
-    boolean bool = ((Boolean)Objects.requireNonNull(d.a("flushWxaAppVersionInfoV2 ".concat(String.valueOf(paramString)), new a() {}))).booleanValue();
-    AppMethodBeat.o(232566);
-    return bool;
-  }
-  
-  public final boolean a(String paramString, fnt paramfnt, int paramInt)
+  public final boolean a(String paramString, gks paramgks, int paramInt)
   {
     AppMethodBeat.i(146029);
     if (Util.isNullOrNil(paramString))
     {
-      Log.e("MicroMsg.AppBrandWxaPkgStorage", "flushWxaAppVersionInfo, args invalid appId = %s, vInfo = %s", new Object[] { paramString, paramfnt });
+      Log.e("MicroMsg.AppBrandWxaPkgStorage", "flushWxaAppVersionInfo, args invalid appId = %s, vInfo = %s", new Object[] { paramString, paramgks });
       AppMethodBeat.o(146029);
       return false;
     }
-    boolean bool = d(paramString, paramInt, paramfnt.RTb, paramfnt.UMi, paramfnt.UMj);
+    boolean bool = d(paramString, paramInt, paramgks.YQB, paramgks.acgC, paramgks.acgD);
     AppMethodBeat.o(146029);
     return bool;
   }
   
-  public final int[] adb(String paramString)
+  /* Error */
+  public final <T> T ai(a<T> parama)
   {
-    AppMethodBeat.i(292774);
-    paramString = adc(paramString);
-    AppMethodBeat.o(292774);
-    return paramString;
-  }
-  
-  public final int[] adc(String paramString)
-  {
-    AppMethodBeat.i(146014);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(146014);
-      return null;
-    }
-    if (!j.a.za(0))
-    {
-      AppMethodBeat.o(146014);
-      return null;
-    }
-    Object localObject = a(paramString, 0, a.nHO, new String[] { "version" });
-    if (Util.isNullOrNil((List)localObject))
-    {
-      AppMethodBeat.o(146014);
-      return null;
-    }
-    paramString = new int[((List)localObject).size()];
-    localObject = ((List)localObject).iterator();
-    int i = 0;
-    while (((Iterator)localObject).hasNext())
-    {
-      paramString[i] = ((bh)((Iterator)localObject).next()).field_version;
-      i += 1;
-    }
-    AppMethodBeat.o(146014);
-    return paramString;
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc_w 504
+    //   5: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: aload_0
+    //   9: getfield 62	com/tencent/mm/plugin/appbrand/appcache/bm:qHv	Lcom/tencent/mm/sdk/storage/ISQLiteDatabaseEx;
+    //   12: invokestatic 510	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   15: invokevirtual 513	java/lang/Thread:getId	()J
+    //   18: invokeinterface 517 3 0
+    //   23: lstore_2
+    //   24: aload_1
+    //   25: invokeinterface 522 1 0
+    //   30: astore_1
+    //   31: aload_0
+    //   32: getfield 62	com/tencent/mm/plugin/appbrand/appcache/bm:qHv	Lcom/tencent/mm/sdk/storage/ISQLiteDatabaseEx;
+    //   35: lload_2
+    //   36: invokeinterface 526 3 0
+    //   41: pop
+    //   42: ldc_w 504
+    //   45: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   48: aload_0
+    //   49: monitorexit
+    //   50: aload_1
+    //   51: areturn
+    //   52: astore_1
+    //   53: aload_0
+    //   54: getfield 62	com/tencent/mm/plugin/appbrand/appcache/bm:qHv	Lcom/tencent/mm/sdk/storage/ISQLiteDatabaseEx;
+    //   57: lload_2
+    //   58: invokeinterface 526 3 0
+    //   63: pop
+    //   64: ldc_w 504
+    //   67: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   70: aload_1
+    //   71: athrow
+    //   72: astore_1
+    //   73: aload_0
+    //   74: monitorexit
+    //   75: aload_1
+    //   76: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	77	0	this	bm
+    //   0	77	1	parama	a<T>
+    //   23	35	2	l	long
+    // Exception table:
+    //   from	to	target	type
+    //   24	31	52	finally
+    //   2	24	72	finally
+    //   31	48	72	finally
+    //   53	72	72	finally
   }
   
   public final bh b(String paramString, int paramInt1, int paramInt2, String... paramVarArgs)
@@ -583,7 +596,7 @@ public final class bm
     bh localbh = null;
     AppMethodBeat.i(146017);
     Object localObject1 = new StringBuilder();
-    Object localObject2 = bh.nHu;
+    Object localObject2 = bh.qHh;
     int j = localObject2.length;
     int i = 0;
     while (i < j)
@@ -592,10 +605,10 @@ public final class bm
       i += 1;
     }
     ((StringBuilder)localObject1).append("1=1");
-    if (j.a.vB(paramInt2)) {
+    if (k.a.vK(paramInt2)) {
       paramInt1 = 1;
     }
-    localObject2 = this.nHI;
+    localObject2 = this.qHv;
     if (Util.isNullOrNil(paramVarArgs)) {
       paramVarArgs = null;
     }
@@ -626,7 +639,7 @@ public final class bm
     return paramVarArgs;
   }
   
-  final List<bh> b(String paramString, int paramInt, a parama, String... paramVarArgs)
+  final List<bh> b(String paramString, int paramInt, bm.a parama, String... paramVarArgs)
   {
     AppMethodBeat.i(146016);
     if (Util.isNullOrNil(paramString))
@@ -635,7 +648,7 @@ public final class bm
       AppMethodBeat.o(146016);
       return paramString;
     }
-    Object localObject = this.nHI;
+    Object localObject = this.qHv;
     String str = String.format(Locale.US, "%s=? and %s=? ", new Object[] { "appId", "version" });
     parama = "version " + parama.name();
     parama = ((ISQLiteDatabaseEx)localObject).query("AppBrandWxaPkgManifestRecord", paramVarArgs, str, new String[] { paramString, String.valueOf(paramInt) }, null, null, parama, 2);
@@ -675,7 +688,7 @@ public final class bm
       AppMethodBeat.o(146032);
       return;
     }
-    paramString1 = new ae(paramString1, paramString2, paramInt3).toString();
+    paramString1 = new af(paramString1, paramString2, paramInt3).toString();
     if (paramInt2 == 0)
     {
       d(paramString1, paramInt2, paramInt1, paramString3, null);
@@ -686,33 +699,7 @@ public final class bm
     AppMethodBeat.o(146032);
   }
   
-  final ISQLiteDatabaseEx bHF()
-  {
-    return this.nHI;
-  }
-  
-  public final void bc(List<WxaAttributes.WxaPluginCodeInfo> paramList)
-  {
-    AppMethodBeat.i(146033);
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      Log.i("MicroMsg.AppBrandWxaPkgStorage", "updatePluginCodeList size:%s", new Object[] { Integer.valueOf(paramList.size()) });
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        WxaAttributes.WxaPluginCodeInfo localWxaPluginCodeInfo = (WxaAttributes.WxaPluginCodeInfo)paramList.next();
-        String str1 = localWxaPluginCodeInfo.provider;
-        String str2 = localWxaPluginCodeInfo.md5;
-        int i = localWxaPluginCodeInfo.version;
-        if ((!Util.isNullOrNil(str1)) && (!Util.isNullOrNil(str2))) {
-          s(str1, str2, i);
-        }
-      }
-    }
-    AppMethodBeat.o(146033);
-  }
-  
-  public final boolean bn(String paramString, int paramInt)
+  public final boolean bE(String paramString, int paramInt)
   {
     AppMethodBeat.i(146022);
     if ((Util.isNullOrNil(paramString)) || (paramInt < 0))
@@ -720,7 +707,7 @@ public final class bm
       AppMethodBeat.o(146022);
       return false;
     }
-    ISQLiteDatabaseEx localISQLiteDatabaseEx = this.nHI;
+    ISQLiteDatabaseEx localISQLiteDatabaseEx = this.qHv;
     String str = String.format(Locale.US, "%s=? and %s=?", new Object[] { "appId", "debugType" });
     paramString = localISQLiteDatabaseEx.query("AppBrandWxaPkgManifestRecord", new String[] { "version" }, str, new String[] { paramString, String.valueOf(paramInt) }, null, null, null, 2);
     if (paramString == null)
@@ -734,7 +721,7 @@ public final class bm
     return bool;
   }
   
-  public final String bo(String paramString, int paramInt)
+  public final String bF(String paramString, int paramInt)
   {
     AppMethodBeat.i(146026);
     paramString = c(paramString, paramInt, new String[] { "downloadURL" });
@@ -748,10 +735,10 @@ public final class bm
     return paramString;
   }
   
-  public final int bp(String paramString, int paramInt)
+  public final int bG(String paramString, int paramInt)
   {
     AppMethodBeat.i(146027);
-    if ((Util.isNullOrNil(paramString)) || (!j.a.za(paramInt)))
+    if ((Util.isNullOrNil(paramString)) || (!k.a.zn(paramInt)))
     {
       AppMethodBeat.o(146027);
       return 0;
@@ -768,169 +755,148 @@ public final class bm
   }
   
   /* Error */
-  public final boolean bq(String paramString, int paramInt)
+  public final boolean bH(String paramString, int paramInt)
   {
     // Byte code:
-    //   0: ldc_w 592
-    //   3: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc_w 555
+    //   3: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_1
-    //   7: invokestatic 147	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   7: invokestatic 117	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   10: ifeq +11 -> 21
-    //   13: ldc_w 592
-    //   16: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   13: ldc_w 555
+    //   16: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   19: iconst_0
     //   20: ireturn
     //   21: iconst_0
-    //   22: invokestatic 556	com/tencent/mm/plugin/appbrand/appcache/j$a:vB	(I)Z
+    //   22: invokestatic 536	com/tencent/mm/plugin/appbrand/appcache/k$a:vK	(I)Z
     //   25: ifeq +5 -> 30
     //   28: iconst_1
     //   29: istore_2
-    //   30: getstatic 268	java/util/Locale:ENGLISH	Ljava/util/Locale;
-    //   33: ldc_w 594
+    //   30: getstatic 292	java/util/Locale:ENGLISH	Ljava/util/Locale;
+    //   33: ldc_w 557
     //   36: iconst_3
     //   37: anewarray 5	java/lang/Object
     //   40: dup
     //   41: iconst_0
-    //   42: ldc 45
+    //   42: ldc 43
     //   44: aastore
     //   45: dup
     //   46: iconst_1
-    //   47: ldc 177
+    //   47: ldc 146
     //   49: aastore
     //   50: dup
     //   51: iconst_2
-    //   52: ldc 181
+    //   52: ldc 150
     //   54: aastore
-    //   55: invokestatic 226	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   55: invokestatic 197	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   58: astore 5
     //   60: aload_0
-    //   61: getfield 64	com/tencent/mm/plugin/appbrand/appcache/bm:nHI	Lcom/tencent/mm/sdk/storage/ISQLiteDatabaseEx;
+    //   61: getfield 62	com/tencent/mm/plugin/appbrand/appcache/bm:qHv	Lcom/tencent/mm/sdk/storage/ISQLiteDatabaseEx;
     //   64: aload 5
     //   66: iconst_2
-    //   67: anewarray 37	java/lang/String
+    //   67: anewarray 35	java/lang/String
     //   70: dup
     //   71: iconst_0
-    //   72: new 198	java/lang/StringBuilder
+    //   72: new 169	java/lang/StringBuilder
     //   75: dup
-    //   76: invokespecial 407	java/lang/StringBuilder:<init>	()V
+    //   76: invokespecial 405	java/lang/StringBuilder:<init>	()V
     //   79: aload_1
-    //   80: invokevirtual 207	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   80: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   83: bipush 37
-    //   85: invokevirtual 210	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   88: invokevirtual 213	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   85: invokevirtual 181	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   88: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   91: aastore
     //   92: dup
     //   93: iconst_1
     //   94: iload_2
-    //   95: invokestatic 188	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   95: invokestatic 157	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   98: aastore
     //   99: iconst_2
-    //   100: invokeinterface 598 4 0
-    //   105: astore 7
-    //   107: aconst_null
-    //   108: astore 6
-    //   110: aload 7
-    //   112: invokeinterface 291 1 0
-    //   117: ifeq +40 -> 157
-    //   120: aload 7
-    //   122: iconst_0
-    //   123: invokeinterface 602 2 0
-    //   128: istore_3
-    //   129: iload_3
-    //   130: ifle +27 -> 157
-    //   133: iconst_1
-    //   134: istore 4
-    //   136: aload 7
-    //   138: ifnull +10 -> 148
-    //   141: aload 7
-    //   143: invokeinterface 288 1 0
-    //   148: ldc_w 592
-    //   151: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   154: iload 4
-    //   156: ireturn
-    //   157: iconst_0
-    //   158: istore 4
-    //   160: goto -24 -> 136
-    //   163: astore 6
-    //   165: ldc_w 592
-    //   168: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   171: aload 6
-    //   173: athrow
-    //   174: astore 5
-    //   176: aload 7
-    //   178: ifnull +15 -> 193
-    //   181: aload 6
-    //   183: ifnull +71 -> 254
-    //   186: aload 7
-    //   188: invokeinterface 288 1 0
-    //   193: ldc_w 592
-    //   196: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   199: aload 5
-    //   201: athrow
-    //   202: astore 5
-    //   204: ldc 81
-    //   206: ldc_w 604
-    //   209: iconst_3
-    //   210: anewarray 5	java/lang/Object
-    //   213: dup
-    //   214: iconst_0
-    //   215: aload_1
-    //   216: aastore
-    //   217: dup
-    //   218: iconst_1
-    //   219: iconst_0
-    //   220: invokestatic 97	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   223: aastore
-    //   224: dup
-    //   225: iconst_2
-    //   226: iload_2
-    //   227: invokestatic 97	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   230: aastore
-    //   231: invokestatic 385	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   234: ldc_w 592
-    //   237: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   240: iconst_0
-    //   241: ireturn
-    //   242: astore 7
-    //   244: aload 6
-    //   246: aload 7
-    //   248: invokevirtual 310	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
-    //   251: goto -58 -> 193
-    //   254: aload 7
-    //   256: invokeinterface 288 1 0
-    //   261: goto -68 -> 193
-    //   264: astore 5
-    //   266: goto -90 -> 176
+    //   100: invokeinterface 561 4 0
+    //   105: astore 6
+    //   107: aload 6
+    //   109: invokeinterface 314 1 0
+    //   114: ifeq +40 -> 154
+    //   117: aload 6
+    //   119: iconst_0
+    //   120: invokeinterface 565 2 0
+    //   125: istore_3
+    //   126: iload_3
+    //   127: ifle +27 -> 154
+    //   130: iconst_1
+    //   131: istore 4
+    //   133: aload 6
+    //   135: ifnull +10 -> 145
+    //   138: aload 6
+    //   140: invokeinterface 311 1 0
+    //   145: ldc_w 555
+    //   148: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   151: iload 4
+    //   153: ireturn
+    //   154: iconst_0
+    //   155: istore 4
+    //   157: goto -24 -> 133
+    //   160: astore 5
+    //   162: aload 6
+    //   164: ifnull +10 -> 174
+    //   167: aload 6
+    //   169: invokeinterface 311 1 0
+    //   174: ldc_w 555
+    //   177: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   180: aload 5
+    //   182: athrow
+    //   183: astore 5
+    //   185: ldc 80
+    //   187: ldc_w 567
+    //   190: iconst_3
+    //   191: anewarray 5	java/lang/Object
+    //   194: dup
+    //   195: iconst_0
+    //   196: aload_1
+    //   197: aastore
+    //   198: dup
+    //   199: iconst_1
+    //   200: iconst_0
+    //   201: invokestatic 96	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   204: aastore
+    //   205: dup
+    //   206: iconst_2
+    //   207: iload_2
+    //   208: invokestatic 96	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   211: aastore
+    //   212: invokestatic 386	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   215: ldc_w 555
+    //   218: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   221: iconst_0
+    //   222: ireturn
+    //   223: astore 6
+    //   225: aload 5
+    //   227: aload 6
+    //   229: invokevirtual 335	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   232: goto -58 -> 174
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	269	0	this	bm
-    //   0	269	1	paramString	String
-    //   0	269	2	paramInt	int
-    //   128	2	3	i	int
-    //   134	25	4	bool	boolean
+    //   0	235	0	this	bm
+    //   0	235	1	paramString	String
+    //   0	235	2	paramInt	int
+    //   125	2	3	i	int
+    //   131	25	4	bool	boolean
     //   58	7	5	str	String
-    //   174	26	5	localObject1	Object
-    //   202	1	5	localException	java.lang.Exception
-    //   264	1	5	localObject2	Object
-    //   108	1	6	localObject3	Object
-    //   163	82	6	localThrowable1	java.lang.Throwable
-    //   105	82	7	localCursor	Cursor
-    //   242	13	7	localThrowable2	java.lang.Throwable
+    //   160	21	5	localObject	Object
+    //   183	43	5	localException	java.lang.Exception
+    //   105	63	6	localCursor	Cursor
+    //   223	5	6	localThrowable	java.lang.Throwable
     // Exception table:
     //   from	to	target	type
-    //   110	129	163	java/lang/Throwable
-    //   165	174	174	finally
-    //   60	107	202	java/lang/Exception
-    //   141	148	202	java/lang/Exception
-    //   186	193	202	java/lang/Exception
-    //   193	202	202	java/lang/Exception
-    //   244	251	202	java/lang/Exception
-    //   254	261	202	java/lang/Exception
-    //   186	193	242	java/lang/Throwable
-    //   110	129	264	finally
+    //   107	126	160	finally
+    //   60	107	183	java/lang/Exception
+    //   138	145	183	java/lang/Exception
+    //   174	183	183	java/lang/Exception
+    //   225	232	183	java/lang/Exception
+    //   167	174	223	finally
   }
   
-  public final int br(String paramString, int paramInt)
+  public final int bI(String paramString, int paramInt)
   {
     AppMethodBeat.i(146040);
     if (Util.isNullOrNil(paramString))
@@ -943,7 +909,7 @@ public final class bm
     String[] arrayOfString = new String[2];
     arrayOfString[0] = paramString;
     arrayOfString[1] = String.valueOf(paramInt);
-    Object localObject = this.nHI.query("AppBrandWxaPkgManifestRecord", new String[] { "pkgPath" }, str, arrayOfString, null, null, null, 2);
+    Object localObject = this.qHv.query("AppBrandWxaPkgManifestRecord", new String[] { "pkgPath" }, str, arrayOfString, null, null, null, 2);
     if (localObject == null)
     {
       AppMethodBeat.o(146040);
@@ -963,10 +929,10 @@ public final class bm
     ((Cursor)localObject).close();
     localObject = localLinkedList.iterator();
     while (((Iterator)localObject).hasNext()) {
-      u.deleteFile((String)((Iterator)localObject).next());
+      y.deleteFile((String)((Iterator)localObject).next());
     }
-    int i = this.nHI.delete("AppBrandWxaPkgManifestRecord", str, arrayOfString);
-    G(paramString, paramInt, -1);
+    int i = this.qHv.delete("AppBrandWxaPkgManifestRecord", str, arrayOfString);
+    K(paramString, paramInt, -1);
     AppMethodBeat.o(146040);
     return i;
   }
@@ -984,14 +950,14 @@ public final class bm
     Object localObject1;
     String[] arrayOfString;
     ISQLiteDatabaseEx localISQLiteDatabaseEx;
-    if (j.a.za(paramInt))
+    if (k.a.zn(paramInt))
     {
       str = "version desc";
       localObject1 = String.format(Locale.US, "%s=? and %s=?", new Object[] { "appId", "debugType" });
       arrayOfString = new String[2];
       arrayOfString[0] = paramString;
       arrayOfString[1] = String.valueOf(paramInt);
-      localISQLiteDatabaseEx = this.nHI;
+      localISQLiteDatabaseEx = this.qHv;
       if (!Util.isNullOrNil(paramVarArgs)) {
         break label225;
       }
@@ -1006,7 +972,7 @@ public final class bm
       }
       AppMethodBeat.o(146018);
       return null;
-      if (j.a.vB(paramInt))
+      if (k.a.vK(paramInt))
       {
         str = "createTime desc";
         localObject1 = String.format(Locale.US, "%s=? and %s=? and %s=?", new Object[] { "appId", "debugType", "version" });
@@ -1037,24 +1003,75 @@ public final class bm
   public final boolean c(bh parambh)
   {
     AppMethodBeat.i(146024);
-    if ((!Util.isNullOrNil(parambh.field_appId)) && (this.nHJ.delete(parambh, bh.nHu))) {}
+    if ((!Util.isNullOrNil(parambh.field_appId)) && (this.qHw.delete(parambh, bh.qHh))) {}
     for (boolean bool = true;; bool = false)
     {
       if (bool) {
-        G(parambh.field_appId, parambh.field_debugType, parambh.field_version);
+        K(parambh.field_appId, parambh.field_debugType, parambh.field_version);
       }
       AppMethodBeat.o(146024);
       return bool;
     }
   }
   
+  public final void cK(List<WxaAttributes.WxaPluginCodeInfo> paramList)
+  {
+    AppMethodBeat.i(146033);
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      Log.i("MicroMsg.AppBrandWxaPkgStorage", "updatePluginCodeList size:%s", new Object[] { Integer.valueOf(paramList.size()) });
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        WxaAttributes.WxaPluginCodeInfo localWxaPluginCodeInfo = (WxaAttributes.WxaPluginCodeInfo)paramList.next();
+        String str1 = localWxaPluginCodeInfo.provider;
+        String str2 = localWxaPluginCodeInfo.md5;
+        int i = localWxaPluginCodeInfo.version;
+        if ((!Util.isNullOrNil(str1)) && (!Util.isNullOrNil(str2))) {
+          x(str1, str2, i);
+        }
+      }
+    }
+    AppMethodBeat.o(146033);
+  }
+  
+  public final List<bh> chb()
+  {
+    AppMethodBeat.i(320242);
+    Object localObject = new StringBuilder("debugType");
+    ((StringBuilder)localObject).append(" = 0");
+    localObject = ((StringBuilder)localObject).toString();
+    localObject = this.qHv.query("AppBrandWxaPkgManifestRecord", null, (String)localObject, null, null, null, null, 2);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(320242);
+      return null;
+    }
+    if (!((Cursor)localObject).moveToFirst())
+    {
+      ((Cursor)localObject).close();
+      AppMethodBeat.o(320242);
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    do
+    {
+      bh localbh = new bh();
+      localbh.convertFrom((Cursor)localObject);
+      localArrayList.add(localbh);
+    } while (((Cursor)localObject).moveToNext());
+    ((Cursor)localObject).close();
+    AppMethodBeat.o(320242);
+    return localArrayList;
+  }
+  
   public final boolean d(final bh parambh)
   {
     AppMethodBeat.i(182784);
-    if (j.a.vB(parambh.field_debugType)) {
+    if (k.a.vK(parambh.field_debugType)) {
       parambh.field_version = 1;
     }
-    boolean bool = ((Boolean)q(new a() {})).booleanValue();
+    boolean bool = ((Boolean)ai(new a() {})).booleanValue();
     AppMethodBeat.o(182784);
     return bool;
   }
@@ -1062,15 +1079,18 @@ public final class bm
   public final boolean d(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
     AppMethodBeat.i(146028);
-    if (!j.a.za(paramInt1))
+    if (!k.a.zn(paramInt1))
     {
+      if (BuildInfo.DEBUG) {
+        Assert.fail("invalid pkgType ".concat(String.valueOf(paramInt1)));
+      }
       AppMethodBeat.o(146028);
       return false;
     }
     Log.i("MicroMsg.AppBrandWxaPkgStorage", "flushWxaPkgVersionInfo for release, appId %s, type %d, version %d, md5 %s, url %s", new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString2, paramString3 });
-    if (("@LibraryAppId".equals(paramString1)) && (paramInt2 == bb.VERSION))
+    if (("@LibraryAppId".equals(paramString1)) && (paramInt2 == bc.VERSION))
     {
-      Log.i("MicroMsg.AppBrandWxaPkgStorage", "flushWxaPkgVersionInfo, given version == local library version %d, skip", new Object[] { Integer.valueOf(bb.VERSION) });
+      Log.i("MicroMsg.AppBrandWxaPkgStorage", "flushWxaPkgVersionInfo, given version == local library version %d, skip", new Object[] { Integer.valueOf(bc.VERSION) });
       AppMethodBeat.o(146028);
       return false;
     }
@@ -1110,21 +1130,21 @@ public final class bm
       {
         Log.i("MicroMsg.AppBrandWxaPkgStorage", "flushWxaPkgVersionInfo, update record %b, appId %s, oldVersion %d, newVersion %d, oldURL %s, newURL %s, oldMd5 %s, newMd5 %s", new Object[] { Boolean.valueOf(bool2), paramString1, Integer.valueOf(paramInt2), Integer.valueOf(paramInt2), str1, paramString3, str2, paramString2 });
         if ((paramInt1 == 0) || (!bool1)) {
-          break label442;
+          break label461;
         }
         AppMethodBeat.o(146028);
         return true;
         if ((Util.isNullOrNil(paramString3)) || (paramString3.equals(localbh.field_downloadURL))) {
-          break label450;
+          break label469;
         }
         localbh.field_downloadURL = paramString3;
         paramInt1 = 1;
         break;
       }
-      label442:
+      label461:
       AppMethodBeat.o(146028);
       return false;
-      label450:
+      label469:
       paramInt1 = 0;
     }
   }
@@ -1135,131 +1155,112 @@ public final class bm
     // Byte code:
     //   0: iconst_1
     //   1: istore_3
-    //   2: ldc_w 659
-    //   5: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 268	java/util/Locale:ENGLISH	Ljava/util/Locale;
-    //   11: ldc_w 661
+    //   2: ldc_w 652
+    //   5: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: getstatic 292	java/util/Locale:ENGLISH	Ljava/util/Locale;
+    //   11: ldc_w 654
     //   14: iconst_4
     //   15: anewarray 5	java/lang/Object
     //   18: dup
     //   19: iconst_0
-    //   20: ldc 45
+    //   20: ldc 43
     //   22: aastore
     //   23: dup
     //   24: iconst_1
-    //   25: ldc 177
+    //   25: ldc 146
     //   27: aastore
     //   28: dup
     //   29: iconst_2
-    //   30: ldc 179
+    //   30: ldc 148
     //   32: aastore
     //   33: dup
     //   34: iconst_3
-    //   35: ldc 181
+    //   35: ldc 150
     //   37: aastore
-    //   38: invokestatic 226	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   38: invokestatic 197	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   41: astore 4
     //   43: aload_0
-    //   44: getfield 64	com/tencent/mm/plugin/appbrand/appcache/bm:nHI	Lcom/tencent/mm/sdk/storage/ISQLiteDatabaseEx;
+    //   44: getfield 62	com/tencent/mm/plugin/appbrand/appcache/bm:qHv	Lcom/tencent/mm/sdk/storage/ISQLiteDatabaseEx;
     //   47: aload 4
     //   49: iconst_3
-    //   50: anewarray 37	java/lang/String
+    //   50: anewarray 35	java/lang/String
     //   53: dup
     //   54: iconst_0
     //   55: aload_1
-    //   56: getfield 87	com/tencent/mm/plugin/appbrand/appcache/bh:field_appId	Ljava/lang/String;
+    //   56: getfield 86	com/tencent/mm/plugin/appbrand/appcache/bh:field_appId	Ljava/lang/String;
     //   59: aastore
     //   60: dup
     //   61: iconst_1
-    //   62: new 198	java/lang/StringBuilder
+    //   62: new 169	java/lang/StringBuilder
     //   65: dup
-    //   66: invokespecial 407	java/lang/StringBuilder:<init>	()V
+    //   66: invokespecial 405	java/lang/StringBuilder:<init>	()V
     //   69: aload_1
-    //   70: getfield 91	com/tencent/mm/plugin/appbrand/appcache/bh:field_debugType	I
-    //   73: invokevirtual 664	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   76: invokevirtual 213	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   70: getfield 90	com/tencent/mm/plugin/appbrand/appcache/bh:field_debugType	I
+    //   73: invokevirtual 657	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   76: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   79: aastore
     //   80: dup
     //   81: iconst_2
-    //   82: new 198	java/lang/StringBuilder
+    //   82: new 169	java/lang/StringBuilder
     //   85: dup
-    //   86: invokespecial 407	java/lang/StringBuilder:<init>	()V
+    //   86: invokespecial 405	java/lang/StringBuilder:<init>	()V
     //   89: aload_1
-    //   90: getfield 100	com/tencent/mm/plugin/appbrand/appcache/bh:field_version	I
-    //   93: invokevirtual 664	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   96: invokevirtual 213	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   90: getfield 99	com/tencent/mm/plugin/appbrand/appcache/bh:field_version	I
+    //   93: invokevirtual 657	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   96: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   99: aastore
-    //   100: invokeinterface 667 3 0
-    //   105: astore 5
-    //   107: aconst_null
-    //   108: astore 4
-    //   110: aload 5
-    //   112: ifnull +46 -> 158
-    //   115: aload 5
-    //   117: invokeinterface 306 1 0
-    //   122: ifeq +36 -> 158
-    //   125: aload 5
-    //   127: iconst_0
-    //   128: invokeinterface 602 2 0
-    //   133: istore_2
-    //   134: iload_2
-    //   135: ifle +23 -> 158
-    //   138: aload 5
-    //   140: ifnull +10 -> 150
-    //   143: aload 5
-    //   145: invokeinterface 288 1 0
-    //   150: ldc_w 659
-    //   153: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   156: iload_3
-    //   157: ireturn
-    //   158: iconst_0
-    //   159: istore_3
-    //   160: goto -22 -> 138
-    //   163: astore 4
-    //   165: ldc_w 659
-    //   168: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   171: aload 4
-    //   173: athrow
-    //   174: astore_1
-    //   175: aload 5
-    //   177: ifnull +15 -> 192
-    //   180: aload 4
-    //   182: ifnull +30 -> 212
-    //   185: aload 5
-    //   187: invokeinterface 288 1 0
-    //   192: ldc_w 659
-    //   195: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   198: aload_1
-    //   199: athrow
-    //   200: astore 5
-    //   202: aload 4
-    //   204: aload 5
-    //   206: invokevirtual 310	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
-    //   209: goto -17 -> 192
-    //   212: aload 5
-    //   214: invokeinterface 288 1 0
-    //   219: goto -27 -> 192
-    //   222: astore_1
-    //   223: goto -48 -> 175
+    //   100: invokeinterface 660 3 0
+    //   105: astore 4
+    //   107: aload 4
+    //   109: ifnull +46 -> 155
+    //   112: aload 4
+    //   114: invokeinterface 329 1 0
+    //   119: ifeq +36 -> 155
+    //   122: aload 4
+    //   124: iconst_0
+    //   125: invokeinterface 565 2 0
+    //   130: istore_2
+    //   131: iload_2
+    //   132: ifle +23 -> 155
+    //   135: aload 4
+    //   137: ifnull +10 -> 147
+    //   140: aload 4
+    //   142: invokeinterface 311 1 0
+    //   147: ldc_w 652
+    //   150: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   153: iload_3
+    //   154: ireturn
+    //   155: iconst_0
+    //   156: istore_3
+    //   157: goto -22 -> 135
+    //   160: astore_1
+    //   161: aload 4
+    //   163: ifnull +10 -> 173
+    //   166: aload 4
+    //   168: invokeinterface 311 1 0
+    //   173: ldc_w 652
+    //   176: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   179: aload_1
+    //   180: athrow
+    //   181: astore 4
+    //   183: aload_1
+    //   184: aload 4
+    //   186: invokevirtual 335	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   189: goto -16 -> 173
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	226	0	this	bm
-    //   0	226	1	parambh	bh
-    //   133	2	2	i	int
-    //   1	159	3	bool	boolean
-    //   41	68	4	str	String
-    //   163	40	4	localThrowable1	java.lang.Throwable
-    //   105	81	5	localCursor	Cursor
-    //   200	13	5	localThrowable2	java.lang.Throwable
+    //   0	192	0	this	bm
+    //   0	192	1	parambh	bh
+    //   130	2	2	i	int
+    //   1	156	3	bool	boolean
+    //   41	126	4	localObject	Object
+    //   181	4	4	localThrowable	java.lang.Throwable
     // Exception table:
     //   from	to	target	type
-    //   115	134	163	java/lang/Throwable
-    //   165	174	174	finally
-    //   185	192	200	java/lang/Throwable
-    //   115	134	222	finally
+    //   112	131	160	finally
+    //   166	173	181	finally
   }
   
-  @SuppressLint({"DefaultLocale"})
   public final boolean f(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
     AppMethodBeat.i(146037);
@@ -1268,12 +1269,12 @@ public final class bm
       AppMethodBeat.o(146037);
       return false;
     }
-    if (j.a.vB(paramInt1)) {
+    if (k.a.vK(paramInt1)) {
       paramInt2 = 1;
     }
     ContentValues localContentValues = new ContentValues(1);
     localContentValues.put("pkgPath", paramString2);
-    if (this.nHI.update("AppBrandWxaPkgManifestRecord", localContentValues, String.format("%s=? and %s=? and %s=?", new Object[] { "appId", "debugType", "version" }), new String[] { paramString1, String.valueOf(paramInt1), String.valueOf(paramInt2) }) > 0)
+    if (this.qHv.update("AppBrandWxaPkgManifestRecord", localContentValues, String.format("%s=? and %s=? and %s=?", new Object[] { "appId", "debugType", "version" }), new String[] { paramString1, String.valueOf(paramInt1), String.valueOf(paramInt2) }) > 0)
     {
       AppMethodBeat.o(146037);
       return true;
@@ -1291,50 +1292,22 @@ public final class bm
       AppMethodBeat.o(146038);
       return false;
     }
-    if (j.a.vB(parambh.field_debugType)) {
+    if (k.a.vK(parambh.field_debugType)) {
       parambh.field_version = 1;
     }
-    boolean bool = this.nHJ.updateNotify(parambh, true, bh.nHu);
+    boolean bool = this.qHw.updateNotify(parambh, true, bh.qHh);
     AppMethodBeat.o(146038);
     return bool;
-  }
-  
-  public final String getTableName()
-  {
-    AppMethodBeat.i(232551);
-    String str = this.nHJ.getTableName();
-    AppMethodBeat.o(232551);
-    return str;
   }
   
   public final void h(bh parambh)
   {
     AppMethodBeat.i(146041);
-    this.nHJ.replace(parambh);
+    this.qHw.replace(parambh);
     AppMethodBeat.o(146041);
   }
   
-  public final void h(List<String> paramList, List<Integer> paramList1)
-  {
-    AppMethodBeat.i(146039);
-    if ((paramList.size() <= 0) || (paramList1.size() <= 0) || (paramList.size() != paramList1.size()))
-    {
-      AppMethodBeat.o(146039);
-      return;
-    }
-    Log.i("MicroMsg.AppBrandWxaPkgStorage", "batchDeleteAppPkg, size %d", new Object[] { Integer.valueOf(paramList.size()) });
-    long l = this.nHI.beginTransaction(Thread.currentThread().getId());
-    int i = 0;
-    while (i < paramList.size())
-    {
-      br((String)paramList.get(i), ((Integer)paramList1.get(i)).intValue());
-      i += 1;
-    }
-    this.nHI.endTransaction(l);
-    AppMethodBeat.o(146039);
-  }
-  
-  public final boolean s(String paramString1, int paramInt, String paramString2)
+  public final boolean u(String paramString1, int paramInt, String paramString2)
   {
     AppMethodBeat.i(146030);
     boolean bool = d(paramString1, 0, paramInt, paramString2, null);
@@ -1342,23 +1315,18 @@ public final class bm
     return bool;
   }
   
-  public static enum a
+  public static final class b
+    extends MAutoStorage<bh>
   {
-    static
+    public b(ISQLiteDatabase paramISQLiteDatabase)
     {
-      AppMethodBeat.i(146011);
-      nHO = new a("DESC", 0);
-      nHP = new a("ASC", 1);
-      nHQ = new a[] { nHO, nHP };
-      AppMethodBeat.o(146011);
+      super(bh.nVV, "AppBrandWxaPkgManifestRecord", bh.INDEX_CREATE);
     }
-    
-    private a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.bm
  * JD-Core Version:    0.7.0.1
  */

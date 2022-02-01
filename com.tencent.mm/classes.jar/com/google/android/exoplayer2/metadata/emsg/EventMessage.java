@@ -11,9 +11,9 @@ public final class EventMessage
   implements Metadata.Entry
 {
   public static final Parcelable.Creator<EventMessage> CREATOR;
-  private int aNf;
-  public final String bdL;
-  public final byte[] bdM;
+  private int cHb;
+  public final String cXF;
+  public final byte[] cXG;
   public final long durationMs;
   public final long id;
   public final String value;
@@ -28,21 +28,21 @@ public final class EventMessage
   EventMessage(Parcel paramParcel)
   {
     AppMethodBeat.i(92390);
-    this.bdL = paramParcel.readString();
+    this.cXF = paramParcel.readString();
     this.value = paramParcel.readString();
     this.durationMs = paramParcel.readLong();
     this.id = paramParcel.readLong();
-    this.bdM = paramParcel.createByteArray();
+    this.cXG = paramParcel.createByteArray();
     AppMethodBeat.o(92390);
   }
   
   public EventMessage(String paramString1, String paramString2, long paramLong1, long paramLong2, byte[] paramArrayOfByte)
   {
-    this.bdL = paramString1;
+    this.cXF = paramString1;
     this.value = paramString2;
     this.durationMs = paramLong1;
     this.id = paramLong2;
-    this.bdM = paramArrayOfByte;
+    this.cXG = paramArrayOfByte;
   }
   
   public final int describeContents()
@@ -64,7 +64,7 @@ public final class EventMessage
       return false;
     }
     paramObject = (EventMessage)paramObject;
-    if ((this.durationMs == paramObject.durationMs) && (this.id == paramObject.id) && (x.h(this.bdL, paramObject.bdL)) && (x.h(this.value, paramObject.value)) && (Arrays.equals(this.bdM, paramObject.bdM)))
+    if ((this.durationMs == paramObject.durationMs) && (this.id == paramObject.id) && (x.p(this.cXF, paramObject.cXF)) && (x.p(this.value, paramObject.value)) && (Arrays.equals(this.cXG, paramObject.cXG)))
     {
       AppMethodBeat.o(92392);
       return true;
@@ -77,19 +77,19 @@ public final class EventMessage
   {
     int j = 0;
     AppMethodBeat.i(92391);
-    if (this.aNf == 0) {
-      if (this.bdL == null) {
+    if (this.cHb == 0) {
+      if (this.cXF == null) {
         break label115;
       }
     }
     label115:
-    for (int i = this.bdL.hashCode();; i = 0)
+    for (int i = this.cXF.hashCode();; i = 0)
     {
       if (this.value != null) {
         j = this.value.hashCode();
       }
-      this.aNf = (((((i + 527) * 31 + j) * 31 + (int)(this.durationMs ^ this.durationMs >>> 32)) * 31 + (int)(this.id ^ this.id >>> 32)) * 31 + Arrays.hashCode(this.bdM));
-      i = this.aNf;
+      this.cHb = (((((i + 527) * 31 + j) * 31 + (int)(this.durationMs ^ this.durationMs >>> 32)) * 31 + (int)(this.id ^ this.id >>> 32)) * 31 + Arrays.hashCode(this.cXG));
+      i = this.cHb;
       AppMethodBeat.o(92391);
       return i;
     }
@@ -98,11 +98,11 @@ public final class EventMessage
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(92393);
-    paramParcel.writeString(this.bdL);
+    paramParcel.writeString(this.cXF);
     paramParcel.writeString(this.value);
     paramParcel.writeLong(this.durationMs);
     paramParcel.writeLong(this.id);
-    paramParcel.writeByteArray(this.bdM);
+    paramParcel.writeByteArray(this.cXG);
     AppMethodBeat.o(92393);
   }
 }

@@ -11,32 +11,32 @@ public final class AppBrandLaunchFromNotifyReferrer
   public static final Parcelable.Creator<AppBrandLaunchFromNotifyReferrer> CREATOR;
   public String appId;
   public String content;
-  public String nYA;
-  public int nYx;
-  public String nYy;
-  public int nYz;
+  public String qYA;
+  public int qYB;
+  public String qYC;
+  public int qYz;
   public int uin;
   
   static
   {
-    AppMethodBeat.i(187537);
+    AppMethodBeat.i(323336);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(187537);
+    AppMethodBeat.o(323336);
   }
   
   public AppBrandLaunchFromNotifyReferrer() {}
   
   private AppBrandLaunchFromNotifyReferrer(Parcel paramParcel)
   {
-    AppMethodBeat.i(187533);
+    AppMethodBeat.i(323329);
     this.appId = paramParcel.readString();
     this.uin = paramParcel.readInt();
-    this.nYx = paramParcel.readInt();
-    this.nYy = paramParcel.readString();
+    this.qYz = paramParcel.readInt();
+    this.qYA = paramParcel.readString();
     this.content = paramParcel.readString();
-    this.nYz = paramParcel.readInt();
-    this.nYA = paramParcel.readString();
-    AppMethodBeat.o(187533);
+    this.qYB = paramParcel.readInt();
+    this.qYC = paramParcel.readString();
+    AppMethodBeat.o(323329);
   }
   
   public final int describeContents()
@@ -46,28 +46,28 @@ public final class AppBrandLaunchFromNotifyReferrer
   
   public final String toString()
   {
-    AppMethodBeat.i(187528);
-    String str = "AppBrandLaunchFromNotifyReferrer{appId=" + this.appId + ", uin='" + this.uin + '\'' + ", readscene='" + this.nYx + '\'' + ", appbrandPushMsgId='" + this.nYy + '\'' + ", content='" + this.content + '\'' + ", opLocation='" + this.nYz + '\'' + ", reportSessionId='" + this.nYA + '\'' + '}';
-    AppMethodBeat.o(187528);
+    AppMethodBeat.i(323339);
+    String str = "AppBrandLaunchFromNotifyReferrer{appId=" + this.appId + ", uin='" + this.uin + '\'' + ", readscene='" + this.qYz + '\'' + ", appbrandPushMsgId='" + this.qYA + '\'' + ", content='" + this.content + '\'' + ", opLocation='" + this.qYB + '\'' + ", reportSessionId='" + this.qYC + '\'' + '}';
+    AppMethodBeat.o(323339);
     return str;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(187531);
+    AppMethodBeat.i(323345);
     paramParcel.writeString(this.appId);
     paramParcel.writeInt(this.uin);
-    paramParcel.writeInt(this.nYx);
-    paramParcel.writeString(this.nYy);
+    paramParcel.writeInt(this.qYz);
+    paramParcel.writeString(this.qYA);
     paramParcel.writeString(this.content);
-    paramParcel.writeInt(this.nYz);
-    paramParcel.writeString(this.nYA);
-    AppMethodBeat.o(187531);
+    paramParcel.writeInt(this.qYB);
+    paramParcel.writeString(this.qYC);
+    AppMethodBeat.o(323345);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.AppBrandLaunchFromNotifyReferrer
  * JD-Core Version:    0.7.0.1
  */

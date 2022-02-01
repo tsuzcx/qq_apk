@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.finder.view;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.b;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", "", "it", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class FinderCollapsibleTextView$b
-  extends q
-  implements b<Boolean, x>
+  extends u
+  implements b<Boolean, ah>
 {
-  public static final b AVf;
+  public static final b GxD;
   
   static
   {
-    AppMethodBeat.i(289840);
-    AVf = new b();
-    AppMethodBeat.o(289840);
+    AppMethodBeat.i(344151);
+    GxD = new b();
+    AppMethodBeat.o(344151);
   }
   
   FinderCollapsibleTextView$b()

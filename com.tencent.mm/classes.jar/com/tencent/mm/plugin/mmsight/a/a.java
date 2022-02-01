@@ -11,19 +11,19 @@ public final class a
   {
     AppMethodBeat.i(94389);
     Log.i("MicroMsg.VideoEditReporter", "[report-VideoEditCountData] %s", new Object[] { parama.toString() });
-    h.IzE.a(14529, new Object[] { Integer.valueOf(parama.scene), Integer.valueOf(parama.source) });
+    h.OAn.b(14529, new Object[] { Integer.valueOf(parama.scene), Integer.valueOf(parama.source) });
     AppMethodBeat.o(94389);
   }
   
   public static void a(b paramb, String paramString)
   {
     AppMethodBeat.i(94388);
-    h localh = h.IzE;
+    h localh = h.OAn;
     int j = paramb.scene;
-    if (paramb.kUn) {}
+    if (paramb.nzW) {}
     for (int i = 2;; i = 1)
     {
-      localh.a(14362, new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(paramb.FcE), Integer.valueOf(paramb.FcF), Integer.valueOf(paramb.FcH), Boolean.valueOf(paramb.FcG), Integer.valueOf(paramb.iTI), Integer.valueOf(paramb.FcC), Integer.valueOf(paramb.FcD), Integer.valueOf(paramb.FcI), Integer.valueOf(0), Integer.valueOf(paramb.textColor), paramString, Long.valueOf(Util.nowSecond()) });
+      localh.b(14362, new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(paramb.KYn), Integer.valueOf(paramb.KYo), Integer.valueOf(paramb.KYq), Boolean.valueOf(paramb.KYp), Integer.valueOf(paramb.lvO), Integer.valueOf(paramb.KYl), Integer.valueOf(paramb.KYm), Integer.valueOf(paramb.KYr), Integer.valueOf(0), Integer.valueOf(paramb.textColor), paramString, Long.valueOf(Util.nowSecond()) });
       Log.i("MicroMsg.VideoEditReporter", "[report-VideoEditDetailData] %s", new Object[] { paramb.toString() });
       AppMethodBeat.o(94388);
       return;
@@ -32,15 +32,15 @@ public final class a
   
   public static final class b
   {
-    public int FcC;
-    public int FcD;
-    public int FcE;
-    public int FcF;
-    public boolean FcG;
-    public int FcH;
-    public int FcI;
-    public int iTI;
-    public boolean kUn;
+    public int KYl;
+    public int KYm;
+    public int KYn;
+    public int KYo;
+    public boolean KYp;
+    public int KYq;
+    public int KYr;
+    public int lvO;
+    public boolean nzW;
     public int scene;
     public int textColor;
     
@@ -74,7 +74,7 @@ public final class a
     public final String toString()
     {
       AppMethodBeat.i(94387);
-      String str = "VideoEditDetailData{scene=" + this.scene + ", isCancel=" + this.kUn + ", rawDuration=" + this.FcC + ", cropDuration=" + this.FcD + ", emojiItemCount=" + this.FcE + ", textItemCount=" + this.FcF + ", isCrop=" + this.FcG + ", undoCount=" + this.iTI + ", doodleCount=" + this.FcH + ", penColors=" + this.FcI + ", textColor=" + this.textColor + '}';
+      String str = "VideoEditDetailData{scene=" + this.scene + ", isCancel=" + this.nzW + ", rawDuration=" + this.KYl + ", cropDuration=" + this.KYm + ", emojiItemCount=" + this.KYn + ", textItemCount=" + this.KYo + ", isCrop=" + this.KYp + ", undoCount=" + this.lvO + ", doodleCount=" + this.KYq + ", penColors=" + this.KYr + ", textColor=" + this.textColor + '}';
       AppMethodBeat.o(94387);
       return str;
     }

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Log;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.io.IOException;
@@ -26,7 +25,6 @@ public final class zzak
     AppMethodBeat.o(2503);
   }
   
-  @VisibleForTesting
   private zzak(Context paramContext, zzn paramzzn)
   {
     AppMethodBeat.i(2504);
@@ -34,7 +32,7 @@ public final class zzak
     this.zzk = paramContext;
     this.zzcz = paramContext.getSharedPreferences("com.google.android.gms.appid", 0);
     this.zzda = paramzzn;
-    paramContext = new File(androidx.core.content.a.R(this.zzk), "com.google.android.gms.appid-no-backup");
+    paramContext = new File(androidx.core.content.a.ac(this.zzk), "com.google.android.gms.appid-no-backup");
     if (!paramContext.exists()) {
       try
       {
@@ -188,10 +186,10 @@ public final class zzak
     //   2: sipush 2513
     //   5: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 42	com/google/android/gms/iid/zzak:zzdb	Ljava/util/Map;
+    //   9: getfield 41	com/google/android/gms/iid/zzak:zzdb	Ljava/util/Map;
     //   12: aload_1
-    //   13: invokeinterface 221 2 0
-    //   18: checkcast 223	com/google/android/gms/iid/zzo
+    //   13: invokeinterface 219 2 0
+    //   18: checkcast 221	com/google/android/gms/iid/zzo
     //   21: astore_2
     //   22: aload_2
     //   23: ifnull +13 -> 36
@@ -202,17 +200,17 @@ public final class zzak
     //   34: aload_2
     //   35: areturn
     //   36: aload_0
-    //   37: getfield 56	com/google/android/gms/iid/zzak:zzda	Lcom/google/android/gms/iid/zzn;
+    //   37: getfield 55	com/google/android/gms/iid/zzak:zzda	Lcom/google/android/gms/iid/zzn;
     //   40: aload_0
-    //   41: getfield 44	com/google/android/gms/iid/zzak:zzk	Landroid/content/Context;
+    //   41: getfield 43	com/google/android/gms/iid/zzak:zzk	Landroid/content/Context;
     //   44: aload_1
-    //   45: invokevirtual 226	com/google/android/gms/iid/zzn:zze	(Landroid/content/Context;Ljava/lang/String;)Lcom/google/android/gms/iid/zzo;
+    //   45: invokevirtual 224	com/google/android/gms/iid/zzn:zze	(Landroid/content/Context;Ljava/lang/String;)Lcom/google/android/gms/iid/zzo;
     //   48: astore_2
     //   49: aload_0
-    //   50: getfield 42	com/google/android/gms/iid/zzak:zzdb	Ljava/util/Map;
+    //   50: getfield 41	com/google/android/gms/iid/zzak:zzdb	Ljava/util/Map;
     //   53: aload_1
     //   54: aload_2
-    //   55: invokeinterface 230 3 0
+    //   55: invokeinterface 228 3 0
     //   60: pop
     //   61: sipush 2513
     //   64: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -224,15 +222,15 @@ public final class zzak
     //   74: athrow
     //   75: astore_2
     //   76: aload_0
-    //   77: getfield 44	com/google/android/gms/iid/zzak:zzk	Landroid/content/Context;
+    //   77: getfield 43	com/google/android/gms/iid/zzak:zzk	Landroid/content/Context;
     //   80: aload_0
-    //   81: invokestatic 85	com/google/android/gms/iid/InstanceIDListenerService:zzd	(Landroid/content/Context;Lcom/google/android/gms/iid/zzak;)V
+    //   81: invokestatic 84	com/google/android/gms/iid/InstanceIDListenerService:zzd	(Landroid/content/Context;Lcom/google/android/gms/iid/zzak;)V
     //   84: aload_0
-    //   85: getfield 56	com/google/android/gms/iid/zzak:zzda	Lcom/google/android/gms/iid/zzn;
+    //   85: getfield 55	com/google/android/gms/iid/zzak:zzda	Lcom/google/android/gms/iid/zzn;
     //   88: aload_0
-    //   89: getfield 44	com/google/android/gms/iid/zzak:zzk	Landroid/content/Context;
+    //   89: getfield 43	com/google/android/gms/iid/zzak:zzk	Landroid/content/Context;
     //   92: aload_1
-    //   93: invokevirtual 232	com/google/android/gms/iid/zzn:zzf	(Landroid/content/Context;Ljava/lang/String;)Lcom/google/android/gms/iid/zzo;
+    //   93: invokevirtual 230	com/google/android/gms/iid/zzn:zzf	(Landroid/content/Context;Ljava/lang/String;)Lcom/google/android/gms/iid/zzo;
     //   96: astore_2
     //   97: goto -48 -> 49
     // Local variable table:
@@ -289,7 +287,7 @@ public final class zzak
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.iid.zzak
  * JD-Core Version:    0.7.0.1
  */

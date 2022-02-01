@@ -14,7 +14,6 @@ import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnLayoutChangeListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
 import android.widget.FrameLayout.LayoutParams;
@@ -24,294 +23,310 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.d;
-import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.live.p.c;
+import com.tencent.mm.plugin.finder.live.p.e;
+import com.tencent.mm.plugin.finder.live.widget.ah;
+import com.tencent.mm.plugin.finder.view.aa;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ax;
+import com.tencent.mm.ui.bf;
 import com.tencent.mm.ui.component.UIComponent;
+import com.tencent.mm.ui.component.k.b;
 import com.tencent.mm.ui.tools.g;
 import com.tencent.mm.ui.tools.g.a;
 import com.tencent.mm.ui.tools.h;
+import com.tencent.mm.ui.tools.i;
 import com.tencent.mm.ui.widget.MMEditText;
-import kotlin.g.b.aa.d;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.ah.d;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/viewmodel/FinderGameLiveEditUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "Lcom/tencent/mm/ui/tools/KeyboardHeightObserver;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "MAX_INPUT_LENGTH", "", "getMAX_INPUT_LENGTH", "()I", "MAX_INPUT_SIZE", "getMAX_INPUT_SIZE", "TAG", "", "bottomSpace", "Landroid/view/View;", "getBottomSpace", "()Landroid/view/View;", "setBottomSpace", "(Landroid/view/View;)V", "btnContainer", "Landroid/widget/LinearLayout;", "getBtnContainer", "()Landroid/widget/LinearLayout;", "setBtnContainer", "(Landroid/widget/LinearLayout;)V", "desc", "getDesc", "()Ljava/lang/String;", "setDesc", "(Ljava/lang/String;)V", "descTv", "Lcom/tencent/mm/ui/widget/MMEditText;", "getDescTv", "()Lcom/tencent/mm/ui/widget/MMEditText;", "setDescTv", "(Lcom/tencent/mm/ui/widget/MMEditText;)V", "edtContainer", "getEdtContainer", "setEdtContainer", "edtLayoutListener", "Landroid/view/View$OnLayoutChangeListener;", "keyboardHeight", "getKeyboardHeight", "setKeyboardHeight", "(I)V", "keyboardHeightProvider", "Lcom/tencent/mm/ui/tools/KeyboardHeightProvider;", "postBtnMaxMarginBottom", "getPostBtnMaxMarginBottom", "setPostBtnMaxMarginBottom", "scrollView", "Landroid/widget/ScrollView;", "getScrollView", "()Landroid/widget/ScrollView;", "setScrollView", "(Landroid/widget/ScrollView;)V", "textCountTv", "Landroid/widget/TextView;", "getTextCountTv", "()Landroid/widget/TextView;", "setTextCountTv", "(Landroid/widget/TextView;)V", "textLeft", "getTextLeft", "setTextLeft", "checkNeedScroll", "", "initData", "initView", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onKeyboardHeightChanged", "height", "isResized", "", "onPause", "onResume", "setInputConfig", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/viewmodel/FinderGameLiveEditUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "Lcom/tencent/mm/ui/tools/KeyboardHeightObserver;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "MAX_INPUT_LENGTH", "", "getMAX_INPUT_LENGTH", "()I", "MAX_INPUT_SIZE", "getMAX_INPUT_SIZE", "TAG", "", "bottomSpace", "Landroid/view/View;", "getBottomSpace", "()Landroid/view/View;", "setBottomSpace", "(Landroid/view/View;)V", "btnContainer", "Landroid/widget/LinearLayout;", "getBtnContainer", "()Landroid/widget/LinearLayout;", "setBtnContainer", "(Landroid/widget/LinearLayout;)V", "desc", "getDesc", "()Ljava/lang/String;", "setDesc", "(Ljava/lang/String;)V", "descTv", "Lcom/tencent/mm/ui/widget/MMEditText;", "getDescTv", "()Lcom/tencent/mm/ui/widget/MMEditText;", "setDescTv", "(Lcom/tencent/mm/ui/widget/MMEditText;)V", "edtContainer", "getEdtContainer", "setEdtContainer", "edtLayoutListener", "Landroid/view/View$OnLayoutChangeListener;", "keyboardHeight", "getKeyboardHeight", "setKeyboardHeight", "(I)V", "keyboardHeightProvider", "Lcom/tencent/mm/ui/tools/KeyboardHeightProvider;", "postBtnMaxMarginBottom", "getPostBtnMaxMarginBottom", "setPostBtnMaxMarginBottom", "scrollView", "Landroid/widget/ScrollView;", "getScrollView", "()Landroid/widget/ScrollView;", "setScrollView", "(Landroid/widget/ScrollView;)V", "textCountTv", "Landroid/widget/TextView;", "getTextCountTv", "()Landroid/widget/TextView;", "setTextCountTv", "(Landroid/widget/TextView;)V", "textLeft", "getTextLeft", "setTextLeft", "checkNeedScroll", "", "initData", "initView", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onKeyboardHeightChanged", "height", "isResized", "", "onPause", "onResume", "setInputConfig", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
   extends UIComponent
   implements h
 {
+  public View DXr;
+  public View DXs;
+  public MMEditText DXt;
+  public TextView DXu;
+  public LinearLayout DXv;
+  final int DXw;
+  int DXx;
+  private int DXy;
+  private final View.OnLayoutChangeListener DXz;
   private final int MAX_INPUT_SIZE;
   private final String TAG;
   private String desc;
-  public ScrollView jbL;
-  private com.tencent.mm.ui.tools.i jij;
-  int pIk;
-  public TextView yOA;
-  public View yOO;
-  public View yOP;
-  private final View.OnLayoutChangeListener yPg;
-  public MMEditText zbm;
-  public LinearLayout zbn;
-  final int zbo;
-  int zbp;
-  int zbq;
+  public ScrollView lDL;
+  private i lKz;
+  private int sNb;
   
   public d(AppCompatActivity paramAppCompatActivity)
   {
     super(paramAppCompatActivity);
-    AppMethodBeat.i(277936);
+    AppMethodBeat.i(356178);
     this.TAG = "Finder.FinderGameLiveEditUIC";
     this.MAX_INPUT_SIZE = 60;
-    this.zbo = (this.MAX_INPUT_SIZE * 2);
-    this.zbp = this.MAX_INPUT_SIZE;
+    this.DXw = (this.MAX_INPUT_SIZE * 2);
+    this.DXx = this.MAX_INPUT_SIZE;
     this.desc = "";
-    this.zbq = ((int)getResources().getDimension(b.d.Edge_12A));
-    this.yPg = ((View.OnLayoutChangeListener)new b(this));
-    AppMethodBeat.o(277936);
+    this.DXy = ((int)getResources().getDimension(p.c.Edge_12A));
+    this.DXz = new d..ExternalSyntheticLambda1(this);
+    AppMethodBeat.o(356178);
   }
   
-  private final void dFO()
+  private static final void a(d paramd)
   {
-    AppMethodBeat.i(277931);
-    Object localObject1 = new Point();
-    Object localObject2 = getActivity().getWindowManager();
-    p.j(localObject2, "activity.windowManager");
-    ((WindowManager)localObject2).getDefaultDisplay().getSize((Point)localObject1);
-    int j = ((Point)localObject1).y;
-    localObject1 = getActivity().findViewById(b.f.game_post_root);
-    int i;
-    int k;
-    int[] arrayOfInt;
-    if (localObject1 != null)
+    AppMethodBeat.i(356249);
+    s.u(paramd, "this$0");
+    Object localObject = new int[2];
+    paramd.ewN().getLocationInWindow((int[])localObject);
+    int i = localObject[1];
+    paramd.ewR().getLocationInWindow((int[])localObject);
+    int j = localObject[1];
+    if (i > 0)
     {
-      i = ((View)localObject1).getHeight();
-      k = Math.max(j, i);
-      arrayOfInt = new int[2];
-      localObject1 = getActivity().findViewById(b.f.game_team_condition_layout);
-      p.j(localObject1, "gameTeamContainer");
-      if (((View)localObject1).getVisibility() != 0) {
-        break label320;
-      }
-      ((View)localObject1).getLocationInWindow(arrayOfInt);
-      i = arrayOfInt[1];
-    }
-    for (;;)
-    {
-      i += ((View)localObject1).getHeight();
-      j = this.pIk;
-      localObject1 = this.zbn;
-      if (localObject1 == null) {
-        p.bGy("btnContainer");
-      }
-      j = k - j - ((LinearLayout)localObject1).getHeight() - ax.aB((Context)getContext()) - (int)getActivity().getResources().getDimension(b.d.Edge_3A);
-      Log.i(this.TAG, "totalHeight " + k + " bottom " + i + ", maxBottom " + j + ", " + this.pIk + ' ');
-      localObject1 = this.yOO;
-      if (localObject1 == null) {
-        p.bGy("bottomSpace");
-      }
-      localObject1 = ((View)localObject1).getLayoutParams();
-      if (localObject1 != null) {
-        break label386;
-      }
-      localObject1 = new t("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
-      AppMethodBeat.o(277931);
-      throw ((Throwable)localObject1);
-      i = 0;
-      break;
-      label320:
-      localObject1 = this.yOP;
-      if (localObject1 == null) {
-        p.bGy("edtContainer");
-      }
-      ((View)localObject1).getLocationInWindow(arrayOfInt);
-      j = arrayOfInt[1];
-      localObject2 = this.yOP;
-      localObject1 = localObject2;
-      i = j;
-      if (localObject2 == null)
+      i = j - i;
+      if (i < 0)
       {
-        p.bGy("edtContainer");
-        localObject1 = localObject2;
-        i = j;
+        Log.i(paramd.TAG, "adjust postBtnMaxMarginBottom, from:" + paramd.DXy + ", to:" + (paramd.DXy + i - (int)paramd.getResources().getDimension(p.c.Edge_3A)));
+        paramd.DXy = (i + paramd.DXy - (int)paramd.getResources().getDimension(p.c.Edge_3A));
+        localObject = paramd.ewR().getLayoutParams();
+        if (localObject == null)
+        {
+          paramd = new NullPointerException("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
+          AppMethodBeat.o(356249);
+          throw paramd;
+        }
+        localObject = (FrameLayout.LayoutParams)localObject;
+        ((FrameLayout.LayoutParams)localObject).bottomMargin = Math.max(paramd.DXy, 0);
+        paramd.ewR().setLayoutParams((ViewGroup.LayoutParams)localObject);
+        AppMethodBeat.o(356249);
       }
     }
-    label386:
-    localObject1 = (LinearLayout.LayoutParams)localObject1;
-    localObject2 = this.TAG;
-    Object localObject3 = new StringBuilder("bottom height ");
-    View localView = this.yOO;
-    if (localView == null) {
-      p.bGy("bottomSpace");
-    }
-    Log.i((String)localObject2, localView.getHeight());
-    localObject2 = new aa.d();
-    ((aa.d)localObject2).aaBA = (i - j);
-    if (((aa.d)localObject2).aaBA > 0)
+    else if (paramd.ewR().findViewById(p.e.BUZ).getVisibility() == 0)
     {
-      localObject3 = this.yOO;
-      if (localObject3 == null) {
-        p.bGy("bottomSpace");
-      }
-      ((LinearLayout.LayoutParams)localObject1).height = (((View)localObject3).getHeight() + ((aa.d)localObject2).aaBA);
-      localObject3 = this.yOO;
-      if (localObject3 == null) {
-        p.bGy("bottomSpace");
-      }
-      ((View)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      localObject1 = this.yOO;
-      if (localObject1 == null) {
-        p.bGy("bottomSpace");
-      }
-      ((View)localObject1).requestLayout();
-      localObject1 = this.yOO;
-      if (localObject1 == null) {
-        p.bGy("bottomSpace");
-      }
-      ((View)localObject1).post((Runnable)new a(this, (aa.d)localObject2));
+      paramd.DXy = ((int)paramd.getResources().getDimension(p.c.Edge_8A));
     }
-    if (this.pIk > 0)
+    AppMethodBeat.o(356249);
+  }
+  
+  private static final void a(d paramd, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  {
+    AppMethodBeat.i(356280);
+    s.u(paramd, "this$0");
+    Log.i(paramd.TAG, "oldBottom " + paramInt8 + ", bottom " + paramInt4);
+    if (paramInt8 != paramInt4) {
+      paramd.ewS();
+    }
+    AppMethodBeat.o(356280);
+  }
+  
+  private static final void a(d paramd, ah.d paramd1)
+  {
+    AppMethodBeat.i(356260);
+    s.u(paramd, "this$0");
+    s.u(paramd1, "$distance");
+    paramd.ewP().scrollBy(0, paramd1.aixb);
+    AppMethodBeat.o(356260);
+  }
+  
+  private static final boolean a(d paramd, View paramView, MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(356237);
+    s.u(paramd, "this$0");
+    if (paramd.sNb > 0) {
+      ((MMActivity)paramd.getActivity()).hideVKB();
+    }
+    AppMethodBeat.o(356237);
+    return false;
+  }
+  
+  private static final CharSequence b(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  {
+    AppMethodBeat.i(356286);
+    paramCharSequence = paramCharSequence.toString();
+    paramSpanned = (CharSequence)"\n";
+    if (paramCharSequence == null)
     {
-      localObject1 = this.zbn;
-      if (localObject1 == null) {
-        p.bGy("btnContainer");
+      paramCharSequence = new NullPointerException("null cannot be cast to non-null type java.lang.String");
+      AppMethodBeat.o(356286);
+      throw paramCharSequence;
+    }
+    if (paramCharSequence.contentEquals(paramSpanned))
+    {
+      paramCharSequence = (CharSequence)"";
+      AppMethodBeat.o(356286);
+      return paramCharSequence;
+    }
+    AppMethodBeat.o(356286);
+    return null;
+  }
+  
+  private static final void b(d paramd)
+  {
+    AppMethodBeat.i(356270);
+    s.u(paramd, "this$0");
+    i locali = paramd.lKz;
+    paramd = locali;
+    if (locali == null)
+    {
+      s.bIx("keyboardHeightProvider");
+      paramd = null;
+    }
+    paramd.start();
+    AppMethodBeat.o(356270);
+  }
+  
+  private View ewN()
+  {
+    AppMethodBeat.i(356186);
+    View localView = this.DXr;
+    if (localView != null)
+    {
+      AppMethodBeat.o(356186);
+      return localView;
+    }
+    s.bIx("bottomSpace");
+    AppMethodBeat.o(356186);
+    return null;
+  }
+  
+  private View ewO()
+  {
+    AppMethodBeat.i(356196);
+    View localView = this.DXs;
+    if (localView != null)
+    {
+      AppMethodBeat.o(356196);
+      return localView;
+    }
+    s.bIx("edtContainer");
+    AppMethodBeat.o(356196);
+    return null;
+  }
+  
+  private ScrollView ewP()
+  {
+    AppMethodBeat.i(356203);
+    ScrollView localScrollView = this.lDL;
+    if (localScrollView != null)
+    {
+      AppMethodBeat.o(356203);
+      return localScrollView;
+    }
+    s.bIx("scrollView");
+    AppMethodBeat.o(356203);
+    return null;
+  }
+  
+  private LinearLayout ewR()
+  {
+    AppMethodBeat.i(356209);
+    LinearLayout localLinearLayout = this.DXv;
+    if (localLinearLayout != null)
+    {
+      AppMethodBeat.o(356209);
+      return localLinearLayout;
+    }
+    s.bIx("btnContainer");
+    AppMethodBeat.o(356209);
+    return null;
+  }
+  
+  private final void ewS()
+  {
+    AppMethodBeat.i(356228);
+    Object localObject1 = new Point();
+    getActivity().getWindowManager().getDefaultDisplay().getSize((Point)localObject1);
+    int j = ((Point)localObject1).y;
+    localObject1 = getActivity().findViewById(p.e.BVb);
+    if (localObject1 == null)
+    {
+      i = 0;
+      j = Math.max(j, i);
+      localObject1 = new int[2];
+      localObject2 = getActivity().findViewById(p.e.BVq);
+      if (((View)localObject2).getVisibility() != 0) {
+        break label269;
       }
-      ((LinearLayout)localObject1).getLocationInWindow(arrayOfInt);
-      i = arrayOfInt[1];
-      localObject1 = this.zbn;
-      if (localObject1 == null) {
-        p.bGy("btnContainer");
+      ((View)localObject2).getLocationInWindow((int[])localObject1);
+      i = localObject1[1];
+    }
+    int k;
+    for (int i = ((View)localObject2).getHeight() + i;; i = localObject1[1] + ewO().getHeight())
+    {
+      k = j - this.sNb - ewR().getHeight() - bf.bk((Context)getContext()) - (int)getActivity().getResources().getDimension(p.c.Edge_3A);
+      Log.i(this.TAG, "totalHeight " + j + " bottom " + i + ", maxBottom " + k + ", " + this.sNb + ' ');
+      localObject2 = ewN().getLayoutParams();
+      if (localObject2 != null) {
+        break label295;
       }
-      j = ((LinearLayout)localObject1).getHeight();
-      float f1 = k - this.pIk;
-      float f2 = getActivity().getResources().getDimension(b.d.Edge_2A);
-      float f3 = ax.aB((Context)getContext());
-      f1 = j + i - (f1 - f2 - f3);
+      localObject1 = new NullPointerException("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
+      AppMethodBeat.o(356228);
+      throw ((Throwable)localObject1);
+      i = ((View)localObject1).getHeight();
+      break;
+      label269:
+      ewO().getLocationInWindow((int[])localObject1);
+    }
+    label295:
+    Object localObject2 = (LinearLayout.LayoutParams)localObject2;
+    Log.i(this.TAG, s.X("bottom height ", Integer.valueOf(ewN().getHeight())));
+    ah.d locald = new ah.d();
+    locald.aixb = (i - k);
+    if (locald.aixb > 0)
+    {
+      ((LinearLayout.LayoutParams)localObject2).height = (ewN().getHeight() + locald.aixb);
+      ewN().setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      ewN().requestLayout();
+      ewN().post(new d..ExternalSyntheticLambda5(this, locald));
+    }
+    if (this.sNb > 0)
+    {
+      ewR().getLocationInWindow((int[])localObject1);
+      i = localObject1[1];
+      k = ewR().getHeight();
+      float f1 = j - this.sNb;
+      float f2 = getActivity().getResources().getDimension(p.c.Edge_2A);
+      float f3 = bf.bk((Context)getContext());
+      f1 = k + i - (f1 - f2 - f3);
       if (f1 > 0.0F)
       {
-        localObject1 = this.zbn;
-        if (localObject1 == null) {
-          p.bGy("btnContainer");
-        }
-        localObject1 = ((LinearLayout)localObject1).getLayoutParams();
+        localObject1 = ewR().getLayoutParams();
         if (localObject1 == null)
         {
-          localObject1 = new t("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
-          AppMethodBeat.o(277931);
+          localObject1 = new NullPointerException("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
+          AppMethodBeat.o(356228);
           throw ((Throwable)localObject1);
         }
         localObject1 = (FrameLayout.LayoutParams)localObject1;
         i = ((FrameLayout.LayoutParams)localObject1).bottomMargin;
         ((FrameLayout.LayoutParams)localObject1).bottomMargin = ((int)f1 + i);
-        localObject2 = this.zbn;
-        if (localObject2 == null) {
-          p.bGy("btnContainer");
-        }
-        ((LinearLayout)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        ewR().setLayoutParams((ViewGroup.LayoutParams)localObject1);
       }
     }
-    AppMethodBeat.o(277931);
+    AppMethodBeat.o(356228);
   }
   
-  public final void A(int paramInt, boolean paramBoolean)
+  public final MMEditText ewQ()
   {
-    AppMethodBeat.i(277932);
-    this.pIk = paramInt;
-    if (paramInt > 0)
+    AppMethodBeat.i(356331);
+    MMEditText localMMEditText = this.DXt;
+    if (localMMEditText != null)
     {
-      dFO();
-      localObject1 = this.yOP;
-      if (localObject1 == null) {
-        p.bGy("edtContainer");
-      }
-      ((View)localObject1).addOnLayoutChangeListener(this.yPg);
-      AppMethodBeat.o(277932);
-      return;
+      AppMethodBeat.o(356331);
+      return localMMEditText;
     }
-    dFO();
-    Object localObject1 = this.jbL;
-    if (localObject1 == null) {
-      p.bGy("scrollView");
-    }
-    ((ScrollView)localObject1).scrollTo(0, 0);
-    localObject1 = this.yOO;
-    if (localObject1 == null) {
-      p.bGy("bottomSpace");
-    }
-    localObject1 = ((View)localObject1).getLayoutParams();
-    if (localObject1 == null)
-    {
-      localObject1 = new t("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
-      AppMethodBeat.o(277932);
-      throw ((Throwable)localObject1);
-    }
-    localObject1 = (LinearLayout.LayoutParams)localObject1;
-    ((LinearLayout.LayoutParams)localObject1).height = 0;
-    ((LinearLayout.LayoutParams)localObject1).weight = 1.0F;
-    Object localObject2 = this.yOO;
-    if (localObject2 == null) {
-      p.bGy("bottomSpace");
-    }
-    ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-    localObject1 = this.yOO;
-    if (localObject1 == null) {
-      p.bGy("bottomSpace");
-    }
-    ((View)localObject1).requestLayout();
-    localObject1 = this.yOP;
-    if (localObject1 == null) {
-      p.bGy("edtContainer");
-    }
-    ((View)localObject1).removeOnLayoutChangeListener(this.yPg);
-    localObject1 = this.zbn;
-    if (localObject1 == null) {
-      p.bGy("btnContainer");
-    }
-    localObject1 = ((LinearLayout)localObject1).getLayoutParams();
-    if (localObject1 == null)
-    {
-      localObject1 = new t("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
-      AppMethodBeat.o(277932);
-      throw ((Throwable)localObject1);
-    }
-    localObject1 = (FrameLayout.LayoutParams)localObject1;
-    ((FrameLayout.LayoutParams)localObject1).bottomMargin = Math.max(this.zbq, 0);
-    localObject2 = this.zbn;
-    if (localObject2 == null) {
-      p.bGy("btnContainer");
-    }
-    ((LinearLayout)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-    AppMethodBeat.o(277932);
-  }
-  
-  public final MMEditText dFM()
-  {
-    AppMethodBeat.i(277924);
-    MMEditText localMMEditText = this.zbm;
-    if (localMMEditText == null) {
-      p.bGy("descTv");
-    }
-    AppMethodBeat.o(277924);
-    return localMMEditText;
-  }
-  
-  public final LinearLayout dFN()
-  {
-    AppMethodBeat.i(277926);
-    LinearLayout localLinearLayout = this.zbn;
-    if (localLinearLayout == null) {
-      p.bGy("btnContainer");
-    }
-    AppMethodBeat.o(277926);
-    return localLinearLayout;
+    s.bIx("descTv");
+    AppMethodBeat.o(356331);
+    return null;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(277929);
+    AppMethodBeat.i(356345);
     super.onCreate(paramBundle);
     Object localObject = getIntent().getStringExtra("DESC");
     paramBundle = (Bundle)localObject;
@@ -319,340 +334,227 @@ public final class d
       paramBundle = "";
     }
     this.desc = paramBundle;
-    paramBundle = getActivity().findViewById(b.f.bottom_space);
-    p.j(paramBundle, "activity.findViewById(R.id.bottom_space)");
-    this.yOO = paramBundle;
-    paramBundle = getActivity().findViewById(b.f.edt_container);
-    p.j(paramBundle, "activity.findViewById(R.id.edt_container)");
-    this.yOP = paramBundle;
-    paramBundle = getActivity().findViewById(b.f.scroll_view);
-    p.j(paramBundle, "activity.findViewById(R.id.scroll_view)");
-    this.jbL = ((ScrollView)paramBundle);
-    paramBundle = getActivity().findViewById(b.f.post_desc_edt);
-    p.j(paramBundle, "activity.findViewById(R.id.post_desc_edt)");
-    this.zbm = ((MMEditText)paramBundle);
-    paramBundle = getActivity().findViewById(b.f.textcount_hint);
-    p.j(paramBundle, "activity.findViewById(R.id.textcount_hint)");
-    this.yOA = ((TextView)paramBundle);
-    paramBundle = getActivity().findViewById(b.f.ok_btn_container);
-    p.j(paramBundle, "activity.findViewById(R.id.ok_btn_container)");
-    this.zbn = ((LinearLayout)paramBundle);
-    paramBundle = getActivity();
+    paramBundle = getActivity().findViewById(p.e.bottom_space);
+    s.s(paramBundle, "activity.findViewById(R.id.bottom_space)");
+    s.u(paramBundle, "<set-?>");
+    this.DXr = paramBundle;
+    paramBundle = getActivity().findViewById(p.e.edt_container);
+    s.s(paramBundle, "activity.findViewById(R.id.edt_container)");
+    s.u(paramBundle, "<set-?>");
+    this.DXs = paramBundle;
+    paramBundle = getActivity().findViewById(p.e.scroll_view);
+    s.s(paramBundle, "activity.findViewById(R.id.scroll_view)");
+    paramBundle = (ScrollView)paramBundle;
+    s.u(paramBundle, "<set-?>");
+    this.lDL = paramBundle;
+    paramBundle = getActivity().findViewById(p.e.post_desc_edt);
+    s.s(paramBundle, "activity.findViewById(R.id.post_desc_edt)");
+    paramBundle = (MMEditText)paramBundle;
+    s.u(paramBundle, "<set-?>");
+    this.DXt = paramBundle;
+    paramBundle = getActivity().findViewById(p.e.textcount_hint);
+    s.s(paramBundle, "activity.findViewById(R.id.textcount_hint)");
+    paramBundle = (TextView)paramBundle;
+    s.u(paramBundle, "<set-?>");
+    this.DXu = paramBundle;
+    paramBundle = getActivity().findViewById(p.e.BYG);
+    s.s(paramBundle, "activity.findViewById(R.id.ok_btn_container)");
+    paramBundle = (LinearLayout)paramBundle;
+    s.u(paramBundle, "<set-?>");
+    this.DXv = paramBundle;
+    this.lKz = new i((Activity)getActivity());
+    paramBundle = this.lKz;
     if (paramBundle == null)
     {
-      paramBundle = new t("null cannot be cast to non-null type android.app.Activity");
-      AppMethodBeat.o(277929);
-      throw paramBundle;
+      s.bIx("keyboardHeightProvider");
+      paramBundle = null;
     }
-    this.jij = new com.tencent.mm.ui.tools.i((Activity)paramBundle);
-    paramBundle = this.jij;
-    if (paramBundle == null) {
-      p.bGy("keyboardHeightProvider");
+    for (;;)
+    {
+      paramBundle.afIL = ((h)this);
+      paramBundle = d..ExternalSyntheticLambda0.INSTANCE;
+      localObject = (InputFilter)new a(this, this.DXw, g.a.afII);
+      ewQ().setFilters(new InputFilter[] { paramBundle, localObject });
+      paramBundle = (TextWatcher)new b(this);
+      ewQ().addTextChangedListener(paramBundle);
+      ewQ().setText((CharSequence)this.desc);
+      ewP().setOnTouchListener(new d..ExternalSyntheticLambda2(this));
+      ewR().post(new d..ExternalSyntheticLambda3(this));
+      AppMethodBeat.o(356345);
+      return;
     }
-    paramBundle.setKeyboardHeightObserver((h)this);
-    paramBundle = (InputFilter)f.zbt;
-    localObject = (InputFilter)new g(this, this.zbo, g.a.XSu);
-    MMEditText localMMEditText = this.zbm;
-    if (localMMEditText == null) {
-      p.bGy("descTv");
+  }
+  
+  public final void onKeyboardHeightChanged(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(356359);
+    Object localObject = com.tencent.mm.ui.component.k.aeZF;
+    localObject = ((e)com.tencent.mm.ui.component.k.nq((Context)getContext()).q(e.class)).DXJ;
+    if (localObject != null)
+    {
+      localObject = ((ah)localObject).EqP;
+      if ((localObject == null) || (((aa)localObject).isShowing() != true)) {}
     }
-    localMMEditText.setFilters(new InputFilter[] { paramBundle, localObject });
-    paramBundle = (TextWatcher)new h(this);
-    localObject = this.zbm;
-    if (localObject == null) {
-      p.bGy("descTv");
+    for (int i = 1; i != 0; i = 0)
+    {
+      AppMethodBeat.o(356359);
+      return;
     }
-    ((MMEditText)localObject).addTextChangedListener(paramBundle);
-    paramBundle = this.zbm;
-    if (paramBundle == null) {
-      p.bGy("descTv");
+    this.sNb = paramInt;
+    if (paramInt > 0)
+    {
+      ewS();
+      ewO().addOnLayoutChangeListener(this.DXz);
+      AppMethodBeat.o(356359);
+      return;
     }
-    paramBundle.setText((CharSequence)this.desc);
-    paramBundle = this.jbL;
-    if (paramBundle == null) {
-      p.bGy("scrollView");
+    ewS();
+    ewP().scrollTo(0, 0);
+    localObject = ewN().getLayoutParams();
+    if (localObject == null)
+    {
+      localObject = new NullPointerException("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
+      AppMethodBeat.o(356359);
+      throw ((Throwable)localObject);
     }
-    paramBundle.setOnTouchListener((View.OnTouchListener)new c(this));
-    paramBundle = this.zbn;
-    if (paramBundle == null) {
-      p.bGy("btnContainer");
+    localObject = (LinearLayout.LayoutParams)localObject;
+    ((LinearLayout.LayoutParams)localObject).height = 0;
+    ((LinearLayout.LayoutParams)localObject).weight = 1.0F;
+    ewN().setLayoutParams((ViewGroup.LayoutParams)localObject);
+    ewN().requestLayout();
+    ewO().removeOnLayoutChangeListener(this.DXz);
+    localObject = ewR().getLayoutParams();
+    if (localObject == null)
+    {
+      localObject = new NullPointerException("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
+      AppMethodBeat.o(356359);
+      throw ((Throwable)localObject);
     }
-    paramBundle.post((Runnable)new d(this));
-    AppMethodBeat.o(277929);
+    localObject = (FrameLayout.LayoutParams)localObject;
+    ((FrameLayout.LayoutParams)localObject).bottomMargin = Math.max(this.DXy, 0);
+    ewR().setLayoutParams((ViewGroup.LayoutParams)localObject);
+    AppMethodBeat.o(356359);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(277934);
+    AppMethodBeat.i(356376);
     super.onPause();
-    com.tencent.mm.ui.tools.i locali = this.jij;
-    if (locali == null) {
-      p.bGy("keyboardHeightProvider");
+    i locali2 = this.lKz;
+    i locali1 = locali2;
+    if (locali2 == null)
+    {
+      s.bIx("keyboardHeightProvider");
+      locali1 = null;
     }
-    locali.close();
-    AppMethodBeat.o(277934);
+    locali1.close();
+    AppMethodBeat.o(356376);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(277933);
+    AppMethodBeat.i(356369);
     super.onResume();
-    MMEditText localMMEditText = this.zbm;
-    if (localMMEditText == null) {
-      p.bGy("descTv");
-    }
-    localMMEditText.post((Runnable)new e(this));
-    AppMethodBeat.o(277933);
+    ewQ().post(new d..ExternalSyntheticLambda4(this));
+    AppMethodBeat.o(356369);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class a
-    implements Runnable
-  {
-    a(d paramd, aa.d paramd1) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(276486);
-      ScrollView localScrollView = this.zbr.jbL;
-      if (localScrollView == null) {
-        p.bGy("scrollView");
-      }
-      localScrollView.scrollBy(0, this.zbs.aaBA);
-      AppMethodBeat.o(276486);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "left", "", "top", "right", "bottom", "oldLeft", "oldTop", "oldRight", "oldBottom", "onLayoutChange"})
-  static final class b
-    implements View.OnLayoutChangeListener
-  {
-    b(d paramd) {}
-    
-    public final void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
-    {
-      AppMethodBeat.i(232541);
-      Log.i(d.a(this.zbr), "oldBottom " + paramInt8 + ", bottom " + paramInt4);
-      if (paramInt8 != paramInt4) {
-        d.c(this.zbr);
-      }
-      AppMethodBeat.o(232541);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "motionEvent", "Landroid/view/MotionEvent;", "onTouch"})
-  static final class c
-    implements View.OnTouchListener
-  {
-    c(d paramd) {}
-    
-    public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-    {
-      AppMethodBeat.i(234671);
-      if (this.zbr.pIk > 0)
-      {
-        paramView = this.zbr.getActivity();
-        if (paramView == null)
-        {
-          paramView = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-          AppMethodBeat.o(234671);
-          throw paramView;
-        }
-        ((MMActivity)paramView).hideVKB();
-      }
-      AppMethodBeat.o(234671);
-      return false;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class d
-    implements Runnable
-  {
-    d(d paramd) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(244672);
-      Object localObject = new int[2];
-      View localView = this.zbr.yOO;
-      if (localView == null) {
-        p.bGy("bottomSpace");
-      }
-      localView.getLocationInWindow((int[])localObject);
-      int i = localObject[1];
-      this.zbr.dFN().getLocationInWindow((int[])localObject);
-      int j = localObject[1];
-      if (i > 0)
-      {
-        i = j - i;
-        if (i < 0)
-        {
-          Log.i(d.a(this.zbr), "adjust postBtnMaxMarginBottom, from:" + this.zbr.zbq + ", to:" + (this.zbr.zbq + i - (int)this.zbr.getResources().getDimension(b.d.Edge_3A)));
-          this.zbr.zbq = (i + this.zbr.zbq - (int)this.zbr.getResources().getDimension(b.d.Edge_3A));
-          localObject = this.zbr.dFN().getLayoutParams();
-          if (localObject == null)
-          {
-            localObject = new t("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
-            AppMethodBeat.o(244672);
-            throw ((Throwable)localObject);
-          }
-          localObject = (FrameLayout.LayoutParams)localObject;
-          ((FrameLayout.LayoutParams)localObject).bottomMargin = Math.max(this.zbr.zbq, 0);
-          this.zbr.dFN().setLayoutParams((ViewGroup.LayoutParams)localObject);
-          AppMethodBeat.o(244672);
-        }
-      }
-      else
-      {
-        localObject = this.zbr.dFN().findViewById(b.f.game_post_license_container);
-        p.j(localObject, "btnContainer.findViewByI…e_post_license_container)");
-        if (((View)localObject).getVisibility() == 0) {
-          this.zbr.zbq = ((int)this.zbr.getResources().getDimension(b.d.Edge_8A));
-        }
-      }
-      AppMethodBeat.o(244672);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class e
-    implements Runnable
-  {
-    e(d paramd) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(272756);
-      d.b(this.zbr).start();
-      AppMethodBeat.o(272756);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "kotlin.jvm.PlatformType", "source", "start", "", "end", "dest", "Landroid/text/Spanned;", "dstart", "dend", "filter"})
-  static final class f
-    implements InputFilter
-  {
-    public static final f zbt;
-    
-    static
-    {
-      AppMethodBeat.i(287121);
-      zbt = new f();
-      AppMethodBeat.o(287121);
-    }
-    
-    public final CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
-    {
-      AppMethodBeat.i(287120);
-      paramCharSequence = paramCharSequence.toString();
-      paramSpanned = (CharSequence)"\n";
-      if (paramCharSequence == null)
-      {
-        paramCharSequence = new t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(287120);
-        throw paramCharSequence;
-      }
-      if (paramCharSequence.contentEquals(paramSpanned))
-      {
-        paramCharSequence = (CharSequence)"";
-        AppMethodBeat.o(287120);
-        return paramCharSequence;
-      }
-      AppMethodBeat.o(287120);
-      return null;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/viewmodel/FinderGameLiveEditUIC$setInputConfig$filters$2", "Lcom/tencent/mm/ui/tools/InputTextLengthFilter;", "filter", "", "source", "start", "", "end", "dest", "Landroid/text/Spanned;", "destStart", "destEnd", "plugin-finder_release"})
-  public static final class g
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/live/viewmodel/FinderGameLiveEditUIC$setInputConfig$filters$2", "Lcom/tencent/mm/ui/tools/InputTextLengthFilter;", "filter", "", "source", "start", "", "end", "dest", "Landroid/text/Spanned;", "destStart", "destEnd", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
     extends g
   {
-    g(int paramInt, g.a parama)
+    a(d paramd, int paramInt, g.a parama)
     {
-      super(locala);
+      super(parama);
     }
     
     public final CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
     {
-      AppMethodBeat.i(273609);
-      CharSequence localCharSequence;
-      if (paramSpanned != null)
+      AppMethodBeat.i(356126);
+      Object localObject;
+      if (paramSpanned == null)
       {
-        paramInt2 = paramSpanned.length();
+        paramInt2 = 0;
         if (paramInt2 <= paramInt3) {
           break label203;
         }
-        if (paramSpanned == null) {
-          break label197;
+        if (paramSpanned != null) {
+          break label188;
         }
-        localCharSequence = paramSpanned.subSequence(0, paramInt3);
-        label41:
-        paramInt2 = g.a(String.valueOf(localCharSequence), g.a.XSu);
-        label53:
+        localObject = null;
+        label26:
+        paramInt2 = g.a(String.valueOf(localObject), g.a.afII);
+        label38:
         if ((paramSpanned == null) || (paramSpanned.length() <= paramInt4)) {
           break label218;
         }
       }
-      label197:
+      label188:
       label203:
       label218:
-      for (paramInt3 = g.a(paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString(), g.a.XSu);; paramInt3 = 0)
+      for (paramInt3 = g.a(paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString(), g.a.afII);; paramInt3 = 0)
       {
-        paramInt4 = g.a(String.valueOf(paramCharSequence), g.a.XSu);
-        int i = this.zbr.zbo;
-        int j = g.bAE(String.valueOf(paramCharSequence));
-        if (paramInt3 + (paramInt2 + paramInt4) <= this.zbr.zbo) {
+        paramInt4 = g.a(String.valueOf(paramCharSequence), g.a.afII);
+        int i = this.DXA.DXw;
+        int j = g.bCA(String.valueOf(paramCharSequence));
+        if (paramInt3 + (paramInt2 + paramInt4) <= this.DXA.DXw) {
           break label242;
         }
-        paramInt2 = kotlin.k.i.ov(i - paramInt2 - paramInt3 - j, 0);
+        paramInt2 = kotlin.k.k.qu(i - paramInt2 - paramInt3 - j, 0);
         if ((paramCharSequence != null) && (paramInt1 >= 0) && (paramCharSequence.length() >= paramInt1 + paramInt2)) {
           break label224;
         }
         paramCharSequence = (CharSequence)"";
-        AppMethodBeat.o(273609);
+        AppMethodBeat.o(356126);
         return paramCharSequence;
-        paramInt2 = 0;
+        paramInt2 = paramSpanned.length();
         break;
-        localCharSequence = null;
-        break label41;
-        paramInt2 = g.a(String.valueOf(paramSpanned), g.a.XSu);
-        break label53;
+        localObject = paramSpanned.subSequence(0, paramInt3);
+        break label26;
+        paramInt2 = g.a(String.valueOf(paramSpanned), g.a.afII);
+        break label38;
       }
       label224:
       paramCharSequence = paramCharSequence.subSequence(paramInt1, paramInt2 + paramInt1);
-      AppMethodBeat.o(273609);
+      AppMethodBeat.o(356126);
       return paramCharSequence;
       label242:
-      if (paramCharSequence == null) {
-        paramCharSequence = (CharSequence)"";
-      }
-      for (;;)
+      if (paramCharSequence == null)
       {
-        AppMethodBeat.o(273609);
+        paramCharSequence = (CharSequence)"";
+        AppMethodBeat.o(356126);
         return paramCharSequence;
       }
+      AppMethodBeat.o(356126);
+      return paramCharSequence;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/viewmodel/FinderGameLiveEditUIC$setInputConfig$textWatcher$1", "Landroid/text/TextWatcher;", "afterTextChanged", "", "s", "Landroid/text/Editable;", "beforeTextChanged", "", "start", "", "count", "after", "onTextChanged", "before", "plugin-finder_release"})
-  public static final class h
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/live/viewmodel/FinderGameLiveEditUIC$setInputConfig$textWatcher$1", "Landroid/text/TextWatcher;", "afterTextChanged", "", "s", "Landroid/text/Editable;", "beforeTextChanged", "", "start", "", "count", "after", "onTextChanged", "before", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
     implements TextWatcher
   {
+    b(d paramd) {}
+    
     public final void afterTextChanged(Editable paramEditable)
     {
-      AppMethodBeat.i(281150);
-      this.zbr.zbp = (g.dq(this.zbr.zbo, String.valueOf(paramEditable)) / 2);
-      TextView localTextView = this.zbr.yOA;
-      if (localTextView == null) {
-        p.bGy("textCountTv");
+      AppMethodBeat.i(356125);
+      this.DXA.DXx = (g.ej(this.DXA.DXw, String.valueOf(paramEditable)) / 2);
+      paramEditable = this.DXA.DXu;
+      if (paramEditable != null) {
+        if (this.DXA.DXx < 0) {
+          break label85;
+        }
       }
-      if (this.zbr.zbp >= 0) {}
-      for (paramEditable = (CharSequence)String.valueOf(this.zbr.zbp);; paramEditable = (CharSequence)"0")
+      label85:
+      for (CharSequence localCharSequence = (CharSequence)String.valueOf(this.DXA.DXx);; localCharSequence = (CharSequence)"0")
       {
-        localTextView.setText(paramEditable);
-        AppMethodBeat.o(281150);
+        paramEditable.setText(localCharSequence);
+        AppMethodBeat.o(356125);
         return;
+        s.bIx("textCountTv");
+        paramEditable = null;
+        break;
       }
     }
     
@@ -663,7 +565,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.viewmodel.d
  * JD-Core Version:    0.7.0.1
  */

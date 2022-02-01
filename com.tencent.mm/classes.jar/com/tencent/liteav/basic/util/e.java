@@ -36,15 +36,15 @@ public class e
   
   public String toString()
   {
-    AppMethodBeat.i(239268);
+    AppMethodBeat.i(230152);
     String str = "Size(" + this.a + ", " + this.b + ")";
-    AppMethodBeat.o(239268);
+    AppMethodBeat.o(230152);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.basic.util.e
  * JD-Core Version:    0.7.0.1
  */

@@ -9,23 +9,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract interface e
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, float paramFloat);
-  
   public abstract void a(d paramd);
+  
+  public abstract void b(int paramInt1, int paramInt2, int paramInt3, float paramFloat);
   
   public abstract void b(d paramd);
   
   public abstract void b(String paramString, long paramLong1, long paramLong2);
   
-  public abstract void c(Surface paramSurface);
-  
   public abstract void c(Format paramFormat);
+  
+  public abstract void f(Surface paramSurface);
   
   public abstract void h(int paramInt, long paramLong);
   
   public static final class a
   {
-    final e bsD;
+    final e dmf;
     final Handler handler;
     
     public a(Handler paramHandler, e parame)
@@ -35,22 +35,22 @@ public abstract interface e
       for (paramHandler = (Handler)a.checkNotNull(paramHandler);; paramHandler = null)
       {
         this.handler = paramHandler;
-        this.bsD = parame;
+        this.dmf = parame;
         AppMethodBeat.o(93316);
         return;
       }
     }
     
-    public final void b(final int paramInt1, final int paramInt2, final int paramInt3, final float paramFloat)
+    public final void c(final int paramInt1, final int paramInt2, final int paramInt3, final float paramFloat)
     {
       AppMethodBeat.i(93318);
-      if (this.bsD != null) {
+      if (this.dmf != null) {
         this.handler.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(93313);
-            e.a.this.bsD.a(paramInt1, paramInt2, paramInt3, paramFloat);
+            e.a.this.dmf.b(paramInt1, paramInt2, paramInt3, paramFloat);
             AppMethodBeat.o(93313);
           }
         });
@@ -58,33 +58,16 @@ public abstract interface e
       AppMethodBeat.o(93318);
     }
     
-    public final void d(final Surface paramSurface)
-    {
-      AppMethodBeat.i(93319);
-      if (this.bsD != null) {
-        this.handler.post(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(93314);
-            e.a.this.bsD.c(paramSurface);
-            AppMethodBeat.o(93314);
-          }
-        });
-      }
-      AppMethodBeat.o(93319);
-    }
-    
     public final void e(final d paramd)
     {
       AppMethodBeat.i(93320);
-      if (this.bsD != null) {
+      if (this.dmf != null) {
         this.handler.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(93315);
-            e.a.this.bsD.b(paramd);
+            e.a.this.dmf.b(paramd);
             AppMethodBeat.o(93315);
           }
         });
@@ -92,16 +75,33 @@ public abstract interface e
       AppMethodBeat.o(93320);
     }
     
+    public final void g(final Surface paramSurface)
+    {
+      AppMethodBeat.i(93319);
+      if (this.dmf != null) {
+        this.handler.post(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(93314);
+            e.a.this.dmf.f(paramSurface);
+            AppMethodBeat.o(93314);
+          }
+        });
+      }
+      AppMethodBeat.o(93319);
+    }
+    
     public final void m(final int paramInt, final long paramLong)
     {
       AppMethodBeat.i(93317);
-      if (this.bsD != null) {
+      if (this.dmf != null) {
         this.handler.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(93312);
-            e.a.this.bsD.h(paramInt, paramLong);
+            e.a.this.dmf.h(paramInt, paramLong);
             AppMethodBeat.o(93312);
           }
         });

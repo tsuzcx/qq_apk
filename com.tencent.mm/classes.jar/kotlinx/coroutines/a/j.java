@@ -1,40 +1,18 @@
 package kotlinx.coroutines.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.concurrent.CancellationException;
-import kotlin.l;
-import kotlinx.coroutines.bm;
+import kotlin.Metadata;
+import kotlin.d.d;
 
-@l(iBK={1, 1, 16}, iBL={"kotlinx/coroutines/channels/ChannelsKt__ChannelsKt", "kotlinx/coroutines/channels/ChannelsKt__Channels_commonKt"})
-public final class j
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/channels/ChannelIterator;", "E", "", "hasNext", "", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "next", "()Ljava/lang/Object;", "next0", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface j<E>
 {
-  public static final void a(t<?> paramt, Throwable paramThrowable)
-  {
-    Object localObject = null;
-    CancellationException localCancellationException = null;
-    AppMethodBeat.i(204575);
-    if (paramThrowable != null) {
-      if ((paramThrowable instanceof CancellationException)) {
-        break label53;
-      }
-    }
-    label53:
-    for (localObject = localCancellationException;; localObject = paramThrowable)
-    {
-      localCancellationException = (CancellationException)localObject;
-      localObject = localCancellationException;
-      if (localCancellationException == null) {
-        localObject = bm.c("Channel was consumed, consumer had failed", paramThrowable);
-      }
-      paramt.a((CancellationException)localObject);
-      AppMethodBeat.o(204575);
-      return;
-    }
-  }
+  public abstract Object aC(d<? super Boolean> paramd);
+  
+  public abstract E next();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.a.j
  * JD-Core Version:    0.7.0.1
  */

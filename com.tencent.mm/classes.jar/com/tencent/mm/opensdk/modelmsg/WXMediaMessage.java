@@ -35,9 +35,9 @@ public final class WXMediaMessage
   
   public WXMediaMessage(IMediaObject paramIMediaObject)
   {
-    AppMethodBeat.i(255142);
+    AppMethodBeat.i(243001);
     this.mediaObject = paramIMediaObject;
-    AppMethodBeat.o(255142);
+    AppMethodBeat.o(243001);
   }
   
   final boolean checkArgs()

@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.scanner.ui;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -21,11 +20,10 @@ public class StrokedImageView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(51997);
-    this.color = paramContext.getResources().getColor(l.c.IBV);
+    this.color = paramContext.getResources().getColor(l.c.OHX);
     AppMethodBeat.o(51997);
   }
   
-  @SuppressLint({"DrawAllocation"})
   protected void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(51998);

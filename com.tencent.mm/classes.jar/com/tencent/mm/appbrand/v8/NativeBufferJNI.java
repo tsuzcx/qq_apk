@@ -1,7 +1,7 @@
 package com.tencent.mm.appbrand.v8;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.j;
+import com.tencent.mm.compatible.util.k;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import java.nio.ByteBuffer;
 
@@ -14,11 +14,11 @@ public class NativeBufferJNI
   {
     AppMethodBeat.i(144016);
     h.class.getClassLoader();
-    j.KW("mmv8");
+    k.DA("mmv8");
     h.class.getClassLoader();
-    j.KW("mmnode");
+    k.DA("mmnode");
     h.class.getClassLoader();
-    j.KW("mmj2v8");
+    k.DA("mmj2v8");
     AppMethodBeat.o(144016);
   }
   
@@ -85,40 +85,40 @@ public class NativeBufferJNI
   
   public ByteBuffer getBuffer(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(262780);
+    AppMethodBeat.i(238635);
     if (paramBoolean)
     {
       localObject = nativeGetDirectBuffer(this.nativeInst, paramInt);
-      AppMethodBeat.o(262780);
+      AppMethodBeat.o(238635);
       return localObject;
     }
     Object localObject = nativeGetBuffer(this.nativeInst, paramInt);
     if (localObject == null)
     {
-      AppMethodBeat.o(262780);
+      AppMethodBeat.o(238635);
       return null;
     }
     localObject = ByteBuffer.wrap((byte[])localObject);
-    AppMethodBeat.o(262780);
+    AppMethodBeat.o(238635);
     return localObject;
   }
   
   public void releaseDirectByteBuffer(ByteBuffer paramByteBuffer)
   {
-    AppMethodBeat.i(262782);
+    AppMethodBeat.i(238646);
     if ((paramByteBuffer != null) && (paramByteBuffer.isDirect()))
     {
       nativeReleaseDirectBuffer(paramByteBuffer);
-      AppMethodBeat.o(262782);
+      AppMethodBeat.o(238646);
       return;
     }
     if (BuildInfo.DEBUG)
     {
       paramByteBuffer = new IllegalArgumentException("buffer is null or is not direct!");
-      AppMethodBeat.o(262782);
+      AppMethodBeat.o(238646);
       throw paramByteBuffer;
     }
-    AppMethodBeat.o(262782);
+    AppMethodBeat.o(238646);
   }
   
   public void setBuffer(int paramInt, ByteBuffer paramByteBuffer)
@@ -152,7 +152,7 @@ public class NativeBufferJNI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.NativeBufferJNI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,98 +1,103 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bx.b;
+import java.util.LinkedList;
 
 public final class axz
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String SKs;
-  public String SKt;
-  public String SKu;
-  public String SKv;
+  public b ZEP;
+  public FinderObject ZIY;
+  public int scene;
+  public int tab_type;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(230014);
+    AppMethodBeat.i(259548);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.SKs != null) {
-        paramVarArgs.f(1, this.SKs);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.tab_type);
+      paramVarArgs.bS(2, this.scene);
+      if (this.ZEP != null) {
+        paramVarArgs.d(3, this.ZEP);
       }
-      if (this.SKt != null) {
-        paramVarArgs.f(2, this.SKt);
+      if (this.ZIY != null)
+      {
+        paramVarArgs.qD(4, this.ZIY.computeSize());
+        this.ZIY.writeFields(paramVarArgs);
       }
-      if (this.SKu != null) {
-        paramVarArgs.f(101, this.SKu);
-      }
-      if (this.SKv != null) {
-        paramVarArgs.f(102, this.SKv);
-      }
-      AppMethodBeat.o(230014);
+      AppMethodBeat.o(259548);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.SKs == null) {
-        break label410;
-      }
-    }
-    label410:
-    for (int i = g.a.a.b.b.a.g(1, this.SKs) + 0;; i = 0)
+    int i;
+    if (paramInt == 1)
     {
+      i = i.a.a.b.b.a.cJ(1, this.tab_type) + 0 + i.a.a.b.b.a.cJ(2, this.scene);
       paramInt = i;
-      if (this.SKt != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.SKt);
+      if (this.ZEP != null) {
+        paramInt = i + i.a.a.b.b.a.c(3, this.ZEP);
       }
       i = paramInt;
-      if (this.SKu != null) {
-        i = paramInt + g.a.a.b.b.a.g(101, this.SKu);
+      if (this.ZIY != null) {
+        i = paramInt + i.a.a.a.qC(4, this.ZIY.computeSize());
       }
-      paramInt = i;
-      if (this.SKv != null) {
-        paramInt = i + g.a.a.b.b.a.g(102, this.SKv);
-      }
-      AppMethodBeat.o(230014);
-      return paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
-          }
-        }
-        AppMethodBeat.o(230014);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-        axz localaxz = (axz)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(230014);
-          return -1;
-        case 1: 
-          localaxz.SKs = locala.abFh.readString();
-          AppMethodBeat.o(230014);
-          return 0;
-        case 2: 
-          localaxz.SKt = locala.abFh.readString();
-          AppMethodBeat.o(230014);
-          return 0;
-        case 101: 
-          localaxz.SKu = locala.abFh.readString();
-          AppMethodBeat.o(230014);
-          return 0;
-        }
-        localaxz.SKv = locala.abFh.readString();
-        AppMethodBeat.o(230014);
-        return 0;
-      }
-      AppMethodBeat.o(230014);
-      return -1;
+      AppMethodBeat.o(259548);
+      return i;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(259548);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject = (i.a.a.a.a)paramVarArgs[0];
+      axz localaxz = (axz)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(259548);
+        return -1;
+      case 1: 
+        localaxz.tab_type = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(259548);
+        return 0;
+      case 2: 
+        localaxz.scene = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(259548);
+        return 0;
+      case 3: 
+        localaxz.ZEP = ((i.a.a.a.a)localObject).ajGk.kFX();
+        AppMethodBeat.o(259548);
+        return 0;
+      }
+      paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+      i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        localObject = (byte[])paramVarArgs.get(paramInt);
+        FinderObject localFinderObject = new FinderObject();
+        if ((localObject != null) && (localObject.length > 0)) {
+          localFinderObject.parseFrom((byte[])localObject);
+        }
+        localaxz.ZIY = localFinderObject;
+        paramInt += 1;
+      }
+      AppMethodBeat.o(259548);
+      return 0;
+    }
+    AppMethodBeat.o(259548);
+    return -1;
   }
 }
 

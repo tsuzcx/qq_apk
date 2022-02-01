@@ -1,213 +1,490 @@
 package com.tencent.mm.sdk.storage.sql;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.sql.SqlObj;
-import kotlin.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import java.io.Closeable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/sdk/storage/sql/SelectSql;", "Lcom/tencent/mm/sdk/sql/SqlObj;", "sql", "", "params", "", "(Ljava/lang/String;[Ljava/lang/String;)V", "multiQuery", "", "T", "Lcom/tencent/mm/sdk/storage/IAutoDBItem;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "clazz", "Ljava/lang/Class;", "singleQuery", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;Ljava/lang/Class;)Lcom/tencent/mm/sdk/storage/IAutoDBItem;", "Builder", "wechat-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/sdk/storage/sql/SelectSql;", "Lcom/tencent/mm/sdk/storage/sql/SqlObj;", "sql", "", "params", "", "(Ljava/lang/String;[Ljava/lang/String;)V", "isExist", "", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "multiQuery", "", "T", "Lcom/tencent/mm/sdk/storage/IAutoDBItem;", "creator", "Lkotlin/Function1;", "Landroid/database/Cursor;", "Lkotlin/ParameterName;", "name", "cursor", "clazz", "Ljava/lang/Class;", "singleQuery", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;Lkotlin/jvm/functions/Function1;)Lcom/tencent/mm/sdk/storage/IAutoDBItem;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;Ljava/lang/Class;)Lcom/tencent/mm/sdk/storage/IAutoDBItem;", "Builder", "wechat-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class SelectSql
   extends SqlObj
 {
   public SelectSql(String paramString, String[] paramArrayOfString)
   {
     super(paramString, paramArrayOfString);
-    AppMethodBeat.i(192795);
-    AppMethodBeat.o(192795);
+    AppMethodBeat.i(244444);
+    AppMethodBeat.o(244444);
   }
   
-  /* Error */
-  public final <T extends com.tencent.mm.sdk.storage.IAutoDBItem> java.util.List<T> multiQuery(com.tencent.mm.sdk.storage.ISQLiteDatabase paramISQLiteDatabase, java.lang.Class<T> paramClass)
+  public final boolean isExist(ISQLiteDatabase paramISQLiteDatabase)
   {
-    // Byte code:
-    //   0: ldc 55
-    //   2: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: aload_2
-    //   6: ldc 56
-    //   8: invokestatic 38	kotlin/g/b/p:k	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   11: new 58	java/util/ArrayList
-    //   14: dup
-    //   15: invokespecial 61	java/util/ArrayList:<init>	()V
-    //   18: astore 4
-    //   20: aload_1
-    //   21: ifnull +108 -> 129
-    //   24: aload_1
-    //   25: aload_0
-    //   26: invokevirtual 65	com/tencent/mm/sdk/storage/sql/SelectSql:toSql	()Ljava/lang/String;
-    //   29: aload_0
-    //   30: invokevirtual 68	com/tencent/mm/sdk/storage/sql/SelectSql:params	()[Ljava/lang/String;
-    //   33: invokeinterface 74 3 0
-    //   38: astore_1
-    //   39: aload_1
-    //   40: ifnull +89 -> 129
-    //   43: aload_1
-    //   44: checkcast 76	java/io/Closeable
-    //   47: astore_3
-    //   48: aload_3
-    //   49: checkcast 78	android/database/Cursor
-    //   52: astore_1
-    //   53: aload_1
-    //   54: invokeinterface 82 1 0
-    //   59: ifeq +61 -> 120
-    //   62: aload_2
-    //   63: invokevirtual 88	java/lang/Class:newInstance	()Ljava/lang/Object;
-    //   66: astore 5
-    //   68: aload 5
-    //   70: ldc 90
-    //   72: invokestatic 93	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   75: aload 5
-    //   77: checkcast 95	com/tencent/mm/sdk/storage/IAutoDBItem
-    //   80: astore 5
-    //   82: aload 5
-    //   84: aload_1
-    //   85: invokevirtual 99	com/tencent/mm/sdk/storage/IAutoDBItem:convertFrom	(Landroid/database/Cursor;)V
-    //   88: aload 4
-    //   90: aload 5
-    //   92: invokevirtual 103	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   95: pop
-    //   96: goto -43 -> 53
-    //   99: astore_2
-    //   100: ldc 55
-    //   102: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   105: aload_2
-    //   106: athrow
-    //   107: astore_1
-    //   108: aload_3
-    //   109: aload_2
-    //   110: invokestatic 109	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   113: ldc 55
-    //   115: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   118: aload_1
-    //   119: athrow
-    //   120: getstatic 115	kotlin/x:aazN	Lkotlin/x;
-    //   123: astore_1
-    //   124: aload_3
-    //   125: aconst_null
-    //   126: invokestatic 109	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   129: aload 4
-    //   131: checkcast 117	java/util/List
-    //   134: astore_1
-    //   135: ldc 55
-    //   137: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   140: aload_1
-    //   141: areturn
-    //   142: astore_1
-    //   143: aconst_null
-    //   144: astore_2
-    //   145: goto -37 -> 108
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	148	0	this	SelectSql
-    //   0	148	1	paramISQLiteDatabase	com.tencent.mm.sdk.storage.ISQLiteDatabase
-    //   0	148	2	paramClass	java.lang.Class<T>
-    //   47	78	3	localCloseable	java.io.Closeable
-    //   18	112	4	localArrayList	java.util.ArrayList
-    //   66	25	5	localObject	java.lang.Object
-    // Exception table:
-    //   from	to	target	type
-    //   48	53	99	java/lang/Throwable
-    //   53	96	99	java/lang/Throwable
-    //   120	124	99	java/lang/Throwable
-    //   100	107	107	finally
-    //   48	53	142	finally
-    //   53	96	142	finally
-    //   120	124	142	finally
+    AppMethodBeat.i(244473);
+    if (paramISQLiteDatabase != null)
+    {
+      paramISQLiteDatabase = paramISQLiteDatabase.rawQuery(toSql(), params());
+      if (paramISQLiteDatabase != null)
+      {
+        paramISQLiteDatabase = (Closeable)paramISQLiteDatabase;
+        try
+        {
+          boolean bool = ((Cursor)paramISQLiteDatabase).moveToFirst();
+          kotlin.f.b.a(paramISQLiteDatabase, null);
+          AppMethodBeat.o(244473);
+          return bool;
+        }
+        finally
+        {
+          try
+          {
+            AppMethodBeat.o(244473);
+            throw localThrowable;
+          }
+          finally
+          {
+            kotlin.f.b.a(paramISQLiteDatabase, localThrowable);
+            AppMethodBeat.o(244473);
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(244473);
+    return false;
   }
   
-  /* Error */
-  public final <T extends com.tencent.mm.sdk.storage.IAutoDBItem> T singleQuery(com.tencent.mm.sdk.storage.ISQLiteDatabase paramISQLiteDatabase, java.lang.Class<T> paramClass)
+  public final <T extends IAutoDBItem> List<T> multiQuery(ISQLiteDatabase paramISQLiteDatabase, Class<T> paramClass)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: ldc 120
-    //   4: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: aload_2
-    //   8: ldc 56
-    //   10: invokestatic 38	kotlin/g/b/p:k	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   13: aload_1
-    //   14: ifnull +87 -> 101
-    //   17: aload_1
-    //   18: aload_0
-    //   19: invokevirtual 65	com/tencent/mm/sdk/storage/sql/SelectSql:toSql	()Ljava/lang/String;
-    //   22: aload_0
-    //   23: invokevirtual 68	com/tencent/mm/sdk/storage/sql/SelectSql:params	()[Ljava/lang/String;
-    //   26: invokeinterface 74 3 0
-    //   31: astore_1
-    //   32: aload_1
-    //   33: ifnull +68 -> 101
-    //   36: aload_1
-    //   37: checkcast 76	java/io/Closeable
-    //   40: astore 4
-    //   42: aload 4
-    //   44: checkcast 78	android/database/Cursor
-    //   47: astore_1
-    //   48: aload_2
-    //   49: invokevirtual 88	java/lang/Class:newInstance	()Ljava/lang/Object;
-    //   52: astore_2
-    //   53: aload_2
-    //   54: ldc 90
-    //   56: invokestatic 93	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   59: aload_2
-    //   60: checkcast 95	com/tencent/mm/sdk/storage/IAutoDBItem
-    //   63: astore_2
-    //   64: aload_1
-    //   65: invokeinterface 82 1 0
-    //   70: ifeq +21 -> 91
-    //   73: aload_2
-    //   74: aload_1
-    //   75: invokevirtual 99	com/tencent/mm/sdk/storage/IAutoDBItem:convertFrom	(Landroid/database/Cursor;)V
-    //   78: aload 4
-    //   80: aconst_null
-    //   81: invokestatic 109	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   84: ldc 120
-    //   86: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   89: aload_2
-    //   90: areturn
-    //   91: getstatic 115	kotlin/x:aazN	Lkotlin/x;
-    //   94: astore_1
-    //   95: aload 4
-    //   97: aconst_null
-    //   98: invokestatic 109	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   101: ldc 120
-    //   103: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   106: aconst_null
-    //   107: areturn
-    //   108: astore_2
-    //   109: ldc 120
-    //   111: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   114: aload_2
-    //   115: athrow
-    //   116: astore_1
-    //   117: aload 4
-    //   119: aload_2
-    //   120: invokestatic 109	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   123: ldc 120
-    //   125: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   128: aload_1
-    //   129: athrow
-    //   130: astore_1
-    //   131: aload_3
-    //   132: astore_2
-    //   133: goto -16 -> 117
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	136	0	this	SelectSql
-    //   0	136	1	paramISQLiteDatabase	com.tencent.mm.sdk.storage.ISQLiteDatabase
-    //   0	136	2	paramClass	java.lang.Class<T>
-    //   1	131	3	localObject	java.lang.Object
-    //   40	78	4	localCloseable	java.io.Closeable
-    // Exception table:
-    //   from	to	target	type
-    //   42	78	108	java/lang/Throwable
-    //   91	95	108	java/lang/Throwable
-    //   109	116	116	finally
-    //   42	78	130	finally
-    //   91	95	130	finally
+    AppMethodBeat.i(244462);
+    s.u(paramClass, "clazz");
+    ArrayList localArrayList = new ArrayList();
+    if (paramISQLiteDatabase != null)
+    {
+      paramISQLiteDatabase = paramISQLiteDatabase.rawQuery(toSql(), params());
+      if (paramISQLiteDatabase != null)
+      {
+        paramISQLiteDatabase = (Closeable)paramISQLiteDatabase;
+        try
+        {
+          Cursor localCursor = (Cursor)paramISQLiteDatabase;
+          while (localCursor.moveToNext())
+          {
+            IAutoDBItem localIAutoDBItem = (IAutoDBItem)paramClass.newInstance();
+            localIAutoDBItem.convertFrom(localCursor);
+            localArrayList.add(localIAutoDBItem);
+          }
+          paramISQLiteDatabase = (List)localObject;
+        }
+        finally
+        {
+          try
+          {
+            AppMethodBeat.o(244462);
+            throw paramClass;
+          }
+          finally
+          {
+            kotlin.f.b.a(paramISQLiteDatabase, paramClass);
+            AppMethodBeat.o(244462);
+          }
+          paramClass = ah.aiuX;
+          kotlin.f.b.a(paramISQLiteDatabase, null);
+        }
+      }
+    }
+    AppMethodBeat.o(244462);
+    return paramISQLiteDatabase;
+  }
+  
+  public final <T extends IAutoDBItem> List<T> multiQuery(ISQLiteDatabase paramISQLiteDatabase, kotlin.g.a.b<? super Cursor, ? extends T> paramb)
+  {
+    AppMethodBeat.i(244469);
+    s.u(paramb, "creator");
+    ArrayList localArrayList = new ArrayList();
+    if (paramISQLiteDatabase != null)
+    {
+      paramISQLiteDatabase = paramISQLiteDatabase.rawQuery(toSql(), params());
+      if (paramISQLiteDatabase != null)
+      {
+        paramISQLiteDatabase = (Closeable)paramISQLiteDatabase;
+        try
+        {
+          Cursor localCursor = (Cursor)paramISQLiteDatabase;
+          while (localCursor.moveToNext()) {
+            localArrayList.add(paramb.invoke(localCursor));
+          }
+          paramISQLiteDatabase = (List)localObject;
+        }
+        finally
+        {
+          try
+          {
+            AppMethodBeat.o(244469);
+            throw paramb;
+          }
+          finally
+          {
+            kotlin.f.b.a(paramISQLiteDatabase, paramb);
+            AppMethodBeat.o(244469);
+          }
+          paramb = ah.aiuX;
+          kotlin.f.b.a(paramISQLiteDatabase, null);
+        }
+      }
+    }
+    AppMethodBeat.o(244469);
+    return paramISQLiteDatabase;
+  }
+  
+  public final <T extends IAutoDBItem> T singleQuery(ISQLiteDatabase paramISQLiteDatabase, Class<T> paramClass)
+  {
+    AppMethodBeat.i(244453);
+    s.u(paramClass, "clazz");
+    if (paramISQLiteDatabase != null)
+    {
+      paramISQLiteDatabase = paramISQLiteDatabase.rawQuery(toSql(), params());
+      if (paramISQLiteDatabase != null) {
+        paramISQLiteDatabase = (Closeable)paramISQLiteDatabase;
+      }
+    }
+    try
+    {
+      Cursor localCursor = (Cursor)paramISQLiteDatabase;
+      paramClass = (IAutoDBItem)paramClass.newInstance();
+      if (localCursor.moveToNext())
+      {
+        paramClass.convertFrom(localCursor);
+        kotlin.f.b.a(paramISQLiteDatabase, null);
+        AppMethodBeat.o(244453);
+        return paramClass;
+      }
+      paramClass = ah.aiuX;
+      kotlin.f.b.a(paramISQLiteDatabase, null);
+      AppMethodBeat.o(244453);
+      return null;
+    }
+    finally
+    {
+      try
+      {
+        AppMethodBeat.o(244453);
+        throw paramClass;
+      }
+      finally
+      {
+        kotlin.f.b.a(paramISQLiteDatabase, paramClass);
+        AppMethodBeat.o(244453);
+      }
+    }
+  }
+  
+  public final <T extends IAutoDBItem> T singleQuery(ISQLiteDatabase paramISQLiteDatabase, kotlin.g.a.b<? super Cursor, ? extends T> paramb)
+  {
+    AppMethodBeat.i(244466);
+    s.u(paramb, "creator");
+    if (paramISQLiteDatabase != null)
+    {
+      paramISQLiteDatabase = paramISQLiteDatabase.rawQuery(toSql(), params());
+      if (paramISQLiteDatabase != null) {
+        paramISQLiteDatabase = (Closeable)paramISQLiteDatabase;
+      }
+    }
+    try
+    {
+      Cursor localCursor = (Cursor)paramISQLiteDatabase;
+      if (localCursor.moveToNext())
+      {
+        paramb = (IAutoDBItem)paramb.invoke(localCursor);
+        kotlin.f.b.a(paramISQLiteDatabase, null);
+        AppMethodBeat.o(244466);
+        return paramb;
+      }
+      paramb = ah.aiuX;
+      kotlin.f.b.a(paramISQLiteDatabase, null);
+      AppMethodBeat.o(244466);
+      return null;
+    }
+    finally
+    {
+      try
+      {
+        AppMethodBeat.o(244466);
+        throw paramb;
+      }
+      finally
+      {
+        kotlin.f.b.a(paramISQLiteDatabase, paramb);
+        AppMethodBeat.o(244466);
+      }
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/sdk/storage/sql/SelectSql$Builder;", "", "table", "Lcom/tencent/mm/sdk/storage/sql/Table;", "columns", "", "Lcom/tencent/mm/sdk/storage/sql/ISqlColumn;", "(Lcom/tencent/mm/sdk/storage/sql/Table;Ljava/util/List;)V", "getColumns", "()Ljava/util/List;", "condition", "Lcom/tencent/mm/sdk/storage/sql/ISqlCondition;", "groupBy", "Lcom/tencent/mm/sdk/storage/sql/Column;", "limit", "Lcom/tencent/mm/sdk/storage/sql/SelectSql$Builder$Limit;", "logTag", "", "orders", "Lcom/tencent/mm/sdk/storage/sql/ISqlOrder;", "getTable", "()Lcom/tencent/mm/sdk/storage/sql/Table;", "build", "Lcom/tencent/mm/sdk/storage/sql/SelectSql;", "column", "groupByColumns", "", "offset", "log", "tag", "orderBy", "order", "where", "Limit", "wechat-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class Builder
+  {
+    private final List<ISqlColumn> columns;
+    private ISqlCondition condition;
+    private List<? extends Column> groupBy;
+    private SelectSql.Builder.Limit limit;
+    private String logTag;
+    private List<? extends ISqlOrder> orders;
+    private final Table table;
+    
+    public Builder(Table paramTable, List<? extends ISqlColumn> paramList)
+    {
+      AppMethodBeat.i(244338);
+      this.table = paramTable;
+      this.columns = paramList;
+      AppMethodBeat.o(244338);
+    }
+    
+    public final SelectSql build()
+    {
+      int j = 0;
+      Object localObject6 = null;
+      AppMethodBeat.i(244407);
+      String str1;
+      label64:
+      Object localObject2;
+      label73:
+      label87:
+      Object localObject3;
+      label96:
+      label110:
+      Object localObject4;
+      if (this.columns.isEmpty()) {
+        if ((this.table instanceof SingleTable))
+        {
+          str1 = "SELECT rowid, *";
+          String str2 = s.X(" FROM ", this.table.toSql());
+          localObject1 = this.condition;
+          if (localObject1 != null) {
+            break label350;
+          }
+          localObject1 = null;
+          if (localObject1 != null) {
+            break label367;
+          }
+          localObject2 = "";
+          localObject1 = this.groupBy;
+          if (localObject1 != null) {
+            break label374;
+          }
+          localObject1 = null;
+          if (localObject1 != null) {
+            break label450;
+          }
+          localObject3 = "";
+          localObject1 = this.orders;
+          if (localObject1 != null) {
+            break label457;
+          }
+          localObject1 = null;
+          localObject4 = localObject1;
+          if (localObject1 == null) {
+            localObject4 = "";
+          }
+          localObject1 = this.limit;
+          if (localObject1 != null) {
+            break label533;
+          }
+          localObject1 = null;
+          label137:
+          Object localObject5 = localObject1;
+          if (localObject1 == null) {
+            localObject5 = "";
+          }
+          str1 = str1 + str2 + (String)localObject2 + (String)localObject3 + (String)localObject4 + (String)localObject5 + ';';
+          localObject2 = this.logTag;
+          if (localObject2 != null)
+          {
+            localObject3 = new StringBuilder("SelectSql.Builder: sql=").append(str1).append(" params=");
+            localObject1 = this.condition;
+            if (localObject1 != null) {
+              break label571;
+            }
+            localObject1 = null;
+            label243:
+            Log.i((String)localObject2, localObject1);
+          }
+          localObject1 = this.condition;
+          if (localObject1 != null) {
+            break label646;
+          }
+        }
+      }
+      label389:
+      label646:
+      for (Object localObject1 = localObject6;; localObject1 = ((ISqlCondition)localObject1).params())
+      {
+        localObject1 = new SelectSql(str1, (String[])localObject1);
+        AppMethodBeat.o(244407);
+        return localObject1;
+        localObject1 = new IllegalArgumentException("Not support multi table select all");
+        AppMethodBeat.o(244407);
+        throw ((Throwable)localObject1);
+        str1 = s.X("SELECT ", p.a((Iterable)this.columns, (CharSequence)", ", null, null, 0, null, (kotlin.g.a.b)build.selectClause.1.INSTANCE, 30));
+        break;
+        label350:
+        localObject1 = s.X(" WHERE ", ((ISqlCondition)localObject1).toSql());
+        break label64;
+        label367:
+        localObject2 = localObject1;
+        break label73;
+        label374:
+        if (!((Collection)localObject1).isEmpty())
+        {
+          i = 1;
+          if (i == 0) {
+            break label409;
+          }
+        }
+        for (;;)
+        {
+          if (localObject1 != null) {
+            break label415;
+          }
+          localObject1 = null;
+          break;
+          i = 0;
+          break label389;
+          label409:
+          localObject1 = null;
+        }
+        label415:
+        localObject1 = s.X(" GROUP BY ", p.a((Iterable)localObject1, (CharSequence)", ", null, null, 0, null, (kotlin.g.a.b)build.groupByClause.2.1.INSTANCE, 30));
+        break label87;
+        label450:
+        localObject3 = localObject1;
+        break label96;
+        label457:
+        if (!((Collection)localObject1).isEmpty())
+        {
+          i = 1;
+          label472:
+          if (i == 0) {
+            break label492;
+          }
+        }
+        for (;;)
+        {
+          if (localObject1 != null) {
+            break label498;
+          }
+          localObject1 = null;
+          break;
+          i = 0;
+          break label472;
+          label492:
+          localObject1 = null;
+        }
+        label498:
+        localObject1 = s.X(" ORDER BY ", p.a((Iterable)localObject1, (CharSequence)", ", null, null, 0, null, (kotlin.g.a.b)build.orderClause.2.1.INSTANCE, 30));
+        break label110;
+        label533:
+        localObject1 = " LIMIT " + ((SelectSql.Builder.Limit)localObject1).getLimit() + " OFFSET " + ((SelectSql.Builder.Limit)localObject1).getOffset();
+        break label137;
+        label571:
+        localObject1 = ((ISqlCondition)localObject1).params();
+        if (localObject1 == null)
+        {
+          localObject1 = null;
+          break label243;
+        }
+        localObject4 = (Collection)new ArrayList(localObject1.length);
+        int k = localObject1.length;
+        int i = j;
+        while (i < k)
+        {
+          ((Collection)localObject4).add(localObject1[i]);
+          i += 1;
+        }
+        localObject1 = (List)localObject4;
+        break label243;
+      }
+    }
+    
+    public final List<ISqlColumn> getColumns()
+    {
+      return this.columns;
+    }
+    
+    public final Table getTable()
+    {
+      return this.table;
+    }
+    
+    public final Builder groupBy(Column paramColumn)
+    {
+      AppMethodBeat.i(244388);
+      s.u(paramColumn, "column");
+      this.groupBy = p.listOf(paramColumn);
+      AppMethodBeat.o(244388);
+      return this;
+    }
+    
+    public final Builder groupBy(List<? extends Column> paramList)
+    {
+      AppMethodBeat.i(244382);
+      s.u(paramList, "groupByColumns");
+      this.groupBy = paramList;
+      AppMethodBeat.o(244382);
+      return this;
+    }
+    
+    public final Builder limit(int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(244362);
+      this.limit = new SelectSql.Builder.Limit(paramInt1, paramInt2);
+      AppMethodBeat.o(244362);
+      return this;
+    }
+    
+    public final Builder log(String paramString)
+    {
+      AppMethodBeat.i(244349);
+      s.u(paramString, "tag");
+      this.logTag = paramString;
+      AppMethodBeat.o(244349);
+      return this;
+    }
+    
+    public final Builder orderBy(ISqlOrder paramISqlOrder)
+    {
+      AppMethodBeat.i(244374);
+      s.u(paramISqlOrder, "order");
+      this.orders = p.listOf(paramISqlOrder);
+      AppMethodBeat.o(244374);
+      return this;
+    }
+    
+    public final Builder orderBy(List<? extends ISqlOrder> paramList)
+    {
+      AppMethodBeat.i(244367);
+      s.u(paramList, "orders");
+      this.orders = paramList;
+      AppMethodBeat.o(244367);
+      return this;
+    }
+    
+    public final Builder where(ISqlCondition paramISqlCondition)
+    {
+      this.condition = paramISqlCondition;
+      return this;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.sdk.storage.sql.SelectSql
  * JD-Core Version:    0.7.0.1
  */

@@ -20,9 +20,9 @@ import com.tencent.mm.R.k;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.au;
 import com.tencent.mm.ui.base.MMTagPanel;
 import com.tencent.mm.ui.base.MMTagPanel.d;
+import com.tencent.mm.ui.bb;
 import com.tencent.mm.ui.tools.g;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -33,136 +33,136 @@ import java.util.List;
 public class MMLabelPanel
   extends MMTagPanel
 {
-  private boolean Eft;
-  private boolean Efu;
-  private MMTagPanel.d Efv;
-  private MMTagPanel.d Efw;
-  private int Efx;
-  private a Efy;
-  private a Efz;
+  private boolean JYK;
+  private boolean JYL;
+  private MMTagPanel.d JYM;
+  private MMTagPanel.d JYN;
+  private int JYO;
+  private a JYP;
+  private a JYQ;
   public Context mContext;
   
   public MMLabelPanel(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(286071);
-    this.Eft = false;
-    this.Efu = false;
-    this.Efx = 200;
-    bv(paramContext);
-    AppMethodBeat.o(286071);
+    AppMethodBeat.i(268781);
+    this.JYK = false;
+    this.JYL = false;
+    this.JYO = 200;
+    ci(paramContext);
+    AppMethodBeat.o(268781);
   }
   
   public MMLabelPanel(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(286073);
-    this.Eft = false;
-    this.Efu = false;
-    this.Efx = 200;
-    bv(paramContext);
-    AppMethodBeat.o(286073);
+    AppMethodBeat.i(268786);
+    this.JYK = false;
+    this.JYL = false;
+    this.JYO = 200;
+    ci(paramContext);
+    AppMethodBeat.o(268786);
   }
   
-  private void bv(Context paramContext)
+  private void ci(Context paramContext)
   {
-    AppMethodBeat.i(286074);
+    AppMethodBeat.i(268793);
     this.mContext = paramContext;
-    eLs();
-    eLt();
-    ho(paramContext);
-    AppMethodBeat.o(286074);
+    fTK();
+    fTL();
+    iJ(paramContext);
+    AppMethodBeat.o(268793);
   }
   
-  private void eLs()
+  private void fTK()
   {
-    AppMethodBeat.i(286078);
-    this.Efv = hKd();
-    View localView = LayoutInflater.from(getContext()).inflate(R.i.eft, null);
-    ImageView localImageView = (ImageView)localView.findViewById(R.h.dHV);
+    AppMethodBeat.i(268798);
+    this.JYM = jmJ();
+    View localView = LayoutInflater.from(getContext()).inflate(R.i.gio, null);
+    ImageView localImageView = (ImageView)localView.findViewById(R.h.fJi);
     localView.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(280268);
+        AppMethodBeat.i(268772);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/label/ui/widget/MMLabelPanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/label/ui/widget/MMLabelPanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         if (MMLabelPanel.a(MMLabelPanel.this) != null)
         {
           paramAnonymousView = MMLabelPanel.a(MMLabelPanel.this);
           MMLabelPanel.b(MMLabelPanel.this);
-          paramAnonymousView.eLr();
+          paramAnonymousView.fTy();
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/label/ui/widget/MMLabelPanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(280268);
+        AppMethodBeat.o(268772);
       }
     });
-    if (this.Efv != null) {
-      localImageView.setImageDrawable(au.o(this.mContext, R.k.icons_outlined_more, com.tencent.mm.ci.a.w(getContext(), R.e.BW_70)));
+    if (this.JYM != null) {
+      localImageView.setImageDrawable(bb.m(this.mContext, R.k.icons_outlined_more, com.tencent.mm.cd.a.w(getContext(), R.e.BW_70)));
     }
-    this.Efv.WmT.setText("");
-    this.Efv.bFK = localView;
-    AppMethodBeat.o(286078);
+    this.JYM.adUg.setText("");
+    this.JYM.dyK = localView;
+    AppMethodBeat.o(268798);
   }
   
-  private void eLt()
+  private void fTL()
   {
-    AppMethodBeat.i(286079);
-    this.Efw = hKd();
-    View localView = LayoutInflater.from(getContext()).inflate(R.i.efs, null);
-    ((ImageView)localView.findViewById(R.h.dNq)).setImageDrawable(au.o(this.mContext, R.k.icons_filled_add, com.tencent.mm.ci.a.w(getContext(), R.e.BW_70)));
+    AppMethodBeat.i(268804);
+    this.JYN = jmJ();
+    View localView = LayoutInflater.from(getContext()).inflate(R.i.gin, null);
+    ((ImageView)localView.findViewById(R.h.fPr)).setImageDrawable(bb.m(this.mContext, R.k.icons_filled_add, com.tencent.mm.cd.a.w(getContext(), R.e.BW_70)));
     localView.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(285313);
+        AppMethodBeat.i(268770);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/label/ui/widget/MMLabelPanel$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/label/ui/widget/MMLabelPanel$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         if (MMLabelPanel.c(MMLabelPanel.this) != null)
         {
           paramAnonymousView = MMLabelPanel.c(MMLabelPanel.this);
           MMLabelPanel.d(MMLabelPanel.this);
-          paramAnonymousView.eLr();
+          paramAnonymousView.fTy();
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/label/ui/widget/MMLabelPanel$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(285313);
+        AppMethodBeat.o(268770);
       }
     });
-    this.Efw.bFK = localView;
-    this.Efv.WmT.setText("");
-    AppMethodBeat.o(286079);
+    this.JYN.dyK = localView;
+    this.JYM.adUg.setText("");
+    AppMethodBeat.o(268804);
   }
   
-  private void ho(Context paramContext)
+  private void iJ(Context paramContext)
   {
-    AppMethodBeat.i(286086);
-    setTagNormalBG(R.g.doZ);
-    setTagSelectedBG(R.g.dpa);
+    AppMethodBeat.i(268811);
+    setTagNormalBG(R.g.fpn);
+    setTagSelectedBG(R.g.fpo);
     setTagNormalTextColorRes(R.e.FG_2);
     setTagSelectedTextColorRes(R.e.dark_bg_blue_color);
-    setHintTextSize(com.tencent.mm.ci.a.aZ(paramContext, R.f.dlz));
-    AppMethodBeat.o(286086);
+    setHintTextSize(com.tencent.mm.cd.a.bs(paramContext, R.f.flR));
+    AppMethodBeat.o(268811);
   }
   
   public final String a(EditText paramEditText, Editable paramEditable, String paramString, TextWatcher paramTextWatcher)
   {
-    AppMethodBeat.i(286077);
+    AppMethodBeat.i(268860);
     paramEditText.removeTextChangedListener(paramTextWatcher);
-    if (this.WmF > 0)
+    if (this.adTS > 0)
     {
       if (paramEditable != null)
       {
         paramEditable = paramEditable.toString();
         if (!Util.isNullOrNil(paramEditable))
         {
-          int i = g.bAB(paramEditable);
-          g.dr(this.WmF, paramEditable);
-          if (i > this.WmF)
+          int i = g.bCx(paramEditable);
+          g.ek(this.adTS, paramEditable);
+          if (i > this.adTS)
           {
-            i = g.dp(this.WmF, paramEditable);
-            if ((i > 0) && (i < this.WmF) && (i < paramEditable.length()))
+            i = g.ei(this.adTS, paramEditable);
+            if ((i > 0) && (i < this.adTS) && (i < paramEditable.length()))
             {
               paramEditText.setText(paramEditable.substring(0, i + 1));
               paramEditText.setSelection(paramEditText.getText().length());
@@ -178,26 +178,26 @@ public class MMLabelPanel
     for (paramString = paramEditText.getText().toString();; paramString = "")
     {
       paramEditText.addTextChangedListener(paramTextWatcher);
-      AppMethodBeat.o(286077);
+      AppMethodBeat.o(268860);
       return paramString;
     }
   }
   
   public final void a(Collection<String> paramCollection, List<String> paramList)
   {
-    AppMethodBeat.i(286080);
-    hJT();
-    if (this.Wmr) {
-      addView(this.WmD);
+    AppMethodBeat.i(268871);
+    jmz();
+    if (this.adTE) {
+      addView(this.adTQ);
     }
     if (paramList == null)
     {
-      if (this.Efu)
+      if (this.JYL)
       {
         Log.i("MicroMsg.Label.MMLabelPanel", "setTagListByTagName, tags is null, needNewLebal.");
-        addView(this.Efw.bFK);
+        addView(this.JYN.dyK);
       }
-      AppMethodBeat.o(286080);
+      AppMethodBeat.o(268871);
       return;
     }
     paramList = paramList.iterator();
@@ -207,83 +207,83 @@ public class MMLabelPanel
       if (paramCollection == null) {}
       for (boolean bool = false;; bool = paramCollection.contains(str))
       {
-        bR(str, bool);
+        cm(str, bool);
         break;
       }
     }
-    if (this.Efu)
+    if (this.JYL)
     {
       Log.i("MicroMsg.Label.MMLabelPanel", "setTagListByTagName, needNewLebal.");
-      addView(this.Efw.bFK);
+      addView(this.JYN.dyK);
     }
-    if (this.Eft)
+    if (this.JYK)
     {
       Log.i("MicroMsg.Label.MMLabelPanel", "setTagListByTagName, needGotoMorePage.");
-      addView(this.Efv.bFK);
+      addView(this.JYM.dyK);
     }
-    paramCollection = this.Crg.iterator();
+    paramCollection = this.Idn.iterator();
     do
     {
       if (!paramCollection.hasNext()) {
         break;
       }
       paramList = (MMTagPanel.d)paramCollection.next();
-    } while ((paramList == this.Efv) || (paramList == this.Efw));
+    } while ((paramList == this.JYM) || (paramList == this.JYN));
     for (int i = 1;; i = 0)
     {
-      if ((this.Eft) && (this.Efv.bFK != null))
+      if ((this.JYK) && (this.JYM.dyK != null))
       {
         if (i == 0)
         {
           Log.i("MicroMsg.Label.MMLabelPanel", "setTagListByTagName, tags.isEmpty.");
-          this.Efv.bFK.setVisibility(8);
-          AppMethodBeat.o(286080);
+          this.JYM.dyK.setVisibility(8);
+          AppMethodBeat.o(268871);
           return;
         }
-        this.Efv.bFK.setVisibility(0);
+        this.JYM.dyK.setVisibility(0);
       }
-      AppMethodBeat.o(286080);
+      AppMethodBeat.o(268871);
       return;
     }
   }
   
-  public final void bR(String paramString, boolean paramBoolean)
+  public final void cm(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(286075);
+    AppMethodBeat.i(268845);
     if (Util.isNullOrNil(paramString))
     {
       Log.w("MicroMsg.Label.MMLabelPanel", "addTag, want to add tag, but it is null or empty");
-      AppMethodBeat.o(286075);
+      AppMethodBeat.o(268845);
       return;
     }
     paramString = paramString.trim();
     Log.d("MicroMsg.Label.MMLabelPanel", "addTag, want to add tag %s, do remove tag first", new Object[] { paramString });
-    removeTag(paramString);
-    Object localObject = this.Crg.iterator();
+    aue(paramString);
+    Object localObject = this.Idn.iterator();
     while (((Iterator)localObject).hasNext()) {
-      if (paramString.equals(((MMTagPanel.d)((Iterator)localObject).next()).WmS))
+      if (paramString.equals(((MMTagPanel.d)((Iterator)localObject).next()).adUf))
       {
         Log.w("MicroMsg.Label.MMLabelPanel", "addTag, want to add tag %s, but it exsited!", new Object[] { paramString });
-        AppMethodBeat.o(286075);
+        AppMethodBeat.o(268845);
         return;
       }
     }
-    localObject = hKd();
+    localObject = jmJ();
     a((MMTagPanel.d)localObject, paramString, paramBoolean);
-    if (this.Wmr) {
-      addView(((MMTagPanel.d)localObject).WmT, getChildCount() - 1);
+    if (this.adTE) {
+      addView(((MMTagPanel.d)localObject).adUg, getChildCount() - 1);
     }
     for (;;)
     {
-      this.Crg.add(localObject);
-      hKe();
-      AppMethodBeat.o(286075);
+      this.Idn.add(localObject);
+      jmK();
+      AppMethodBeat.o(268845);
       return;
-      addView(((MMTagPanel.d)localObject).WmT);
+      addView(((MMTagPanel.d)localObject).adUg);
     }
   }
   
-  public final void dmb()
+  public final void dSS()
   {
     AppMethodBeat.i(26338);
     Log.d("MicroMsg.Label.MMLabelPanel", "cpan[onPreDelTag]");
@@ -295,112 +295,112 @@ public class MMLabelPanel
     AppMethodBeat.o(26338);
   }
   
-  public final TextView eLu()
+  public final void fL(String paramString, int paramInt)
   {
-    AppMethodBeat.i(286089);
-    TextView localTextView = super.eLu();
-    localTextView.setPadding(com.tencent.mm.ci.a.fromDPToPix(this.mContext, 12.0F), com.tencent.mm.ci.a.fromDPToPix(this.mContext, 5.0F), com.tencent.mm.ci.a.fromDPToPix(this.mContext, 12.0F), com.tencent.mm.ci.a.fromDPToPix(this.mContext, 6.0F));
-    localTextView.setGravity(17);
-    localTextView.setHeight(com.tencent.mm.ci.a.fromDPToPix(this.mContext, 32.0F));
-    localTextView.setTextSize(0, com.tencent.mm.ci.a.aZ(this.mContext, R.f.dlz));
-    AppMethodBeat.o(286089);
-    return localTextView;
-  }
-  
-  public final void eT(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(286076);
+    AppMethodBeat.i(268852);
     if (Util.isNullOrNil(paramString))
     {
       Log.w("MicroMsg.Label.MMLabelPanel", "addTag2, want to add tag, but it is null or empty");
-      AppMethodBeat.o(286076);
+      AppMethodBeat.o(268852);
       return;
     }
     paramString = paramString.trim();
     Log.d("MicroMsg.Label.MMLabelPanel", "addTag2,want to add tag %s, do remove tag first", new Object[] { paramString });
-    removeTag(paramString);
-    Object localObject = this.Crg.iterator();
+    aue(paramString);
+    Object localObject = this.Idn.iterator();
     while (((Iterator)localObject).hasNext()) {
-      if (paramString.equals(((MMTagPanel.d)((Iterator)localObject).next()).WmS))
+      if (paramString.equals(((MMTagPanel.d)((Iterator)localObject).next()).adUf))
       {
         Log.w("MicroMsg.Label.MMLabelPanel", "addTag2,want to add tag %s, but it exsited!", new Object[] { paramString });
-        AppMethodBeat.o(286076);
+        AppMethodBeat.o(268852);
         return;
       }
     }
-    localObject = hKd();
+    localObject = jmJ();
     a((MMTagPanel.d)localObject, paramString, true);
-    addView(((MMTagPanel.d)localObject).WmT, paramInt);
-    this.Crg.add(localObject);
-    hKe();
-    AppMethodBeat.o(286076);
+    addView(((MMTagPanel.d)localObject).adUg, paramInt);
+    this.Idn.add(localObject);
+    jmK();
+    AppMethodBeat.o(268852);
+  }
+  
+  public final TextView fTM()
+  {
+    AppMethodBeat.i(268898);
+    TextView localTextView = super.fTM();
+    localTextView.setPadding(com.tencent.mm.cd.a.fromDPToPix(this.mContext, 12.0F), com.tencent.mm.cd.a.fromDPToPix(this.mContext, 5.0F), com.tencent.mm.cd.a.fromDPToPix(this.mContext, 12.0F), com.tencent.mm.cd.a.fromDPToPix(this.mContext, 6.0F));
+    localTextView.setGravity(17);
+    localTextView.setMinHeight(com.tencent.mm.cd.a.fromDPToPix(this.mContext, 32.0F));
+    localTextView.setTextSize(0, com.tencent.mm.cd.a.bs(this.mContext, R.f.flR));
+    AppMethodBeat.o(268898);
+    return localTextView;
   }
   
   public int getEditViewLayoutId()
   {
-    return R.i.eiL;
+    return R.i.glK;
   }
   
   public ArrayList<String> getSelectTagList()
   {
-    AppMethodBeat.i(286082);
+    AppMethodBeat.i(268877);
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.Crg.iterator();
+    Iterator localIterator = this.Idn.iterator();
     while (localIterator.hasNext())
     {
       MMTagPanel.d locald = (MMTagPanel.d)localIterator.next();
-      if ((locald != null) && (locald != this.Efw) && (locald != this.Efv) && (!Util.isNullOrNil(locald.WmS)) && (locald.WmT != null) && (((Integer)locald.WmT.getTag()).intValue() == 1)) {
-        localArrayList.add(locald.WmS);
+      if ((locald != null) && (locald != this.JYN) && (locald != this.JYM) && (!Util.isNullOrNil(locald.adUf)) && (locald.adUg != null) && (((Integer)locald.adUg.getTag()).intValue() == 1)) {
+        localArrayList.add(locald.adUf);
       }
     }
-    AppMethodBeat.o(286082);
+    AppMethodBeat.o(268877);
     return localArrayList;
   }
   
   public ArrayList<String> getTagListWithIcon()
   {
-    AppMethodBeat.i(286083);
+    AppMethodBeat.i(268882);
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.Crg.iterator();
+    Iterator localIterator = this.Idn.iterator();
     while (localIterator.hasNext())
     {
       MMTagPanel.d locald = (MMTagPanel.d)localIterator.next();
-      if ((!Util.isNullOrNil(locald.WmS)) && (locald != this.Efw) && (locald != this.Efv)) {
-        localArrayList.add(locald.WmS);
+      if ((!Util.isNullOrNil(locald.adUf)) && (locald != this.JYN) && (locald != this.JYM)) {
+        localArrayList.add(locald.adUf);
       }
     }
-    AppMethodBeat.o(286083);
+    AppMethodBeat.o(268882);
     return localArrayList;
   }
   
   public void setClickDetailCallBack(a parama)
   {
-    this.Efy = parama;
+    this.JYP = parama;
   }
   
   public void setClickNewLebalCallBack(a parama)
   {
-    this.Efz = parama;
+    this.JYQ = parama;
   }
   
   public void setMaxLineSize(int paramInt)
   {
-    this.Efx = paramInt;
+    this.JYO = paramInt;
   }
   
   public void setNeedAddLastItemToMove(boolean paramBoolean)
   {
-    this.Eft = paramBoolean;
+    this.JYK = paramBoolean;
   }
   
   public void setNeedNewLebal(boolean paramBoolean)
   {
-    this.Efu = paramBoolean;
+    this.JYL = paramBoolean;
   }
   
   public static abstract interface a
   {
-    public abstract void eLr();
+    public abstract void fTy();
   }
 }
 

@@ -4,20 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SafeParcelable.Class(creator="ChannelReceiveFileResponseCreator")
-@SafeParcelable.Reserved({1})
 public final class zzbn
   extends AbstractSafeParcelable
 {
   public static final Parcelable.Creator<zzbn> CREATOR;
-  @SafeParcelable.Field(id=2)
   public final int statusCode;
   
   static
@@ -27,8 +19,7 @@ public final class zzbn
     AppMethodBeat.o(101080);
   }
   
-  @SafeParcelable.Constructor
-  public zzbn(@SafeParcelable.Param(id=2) int paramInt)
+  public zzbn(int paramInt)
   {
     this.statusCode = paramInt;
   }
@@ -44,7 +35,7 @@ public final class zzbn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzbn
  * JD-Core Version:    0.7.0.1
  */

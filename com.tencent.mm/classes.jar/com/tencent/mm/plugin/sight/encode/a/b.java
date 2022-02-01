@@ -4,16 +4,16 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelvideo.s;
-import com.tencent.mm.modelvideo.w;
-import com.tencent.mm.modelvideo.x;
-import com.tencent.mm.modelvideo.y;
+import com.tencent.mm.modelvideo.aa;
+import com.tencent.mm.modelvideo.ab;
+import com.tencent.mm.modelvideo.v;
+import com.tencent.mm.modelvideo.z;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.vfs.y;
 import java.util.List;
 
 public final class b
@@ -31,7 +31,7 @@ public final class b
       public final void run()
       {
         AppMethodBeat.i(116207);
-        this.JuJ.kv(paramInt);
+        b.this.oc(paramInt);
         AppMethodBeat.o(116207);
       }
     });
@@ -40,7 +40,7 @@ public final class b
   
   public static abstract interface a
   {
-    public abstract void kv(int paramInt);
+    public abstract void oc(int paramInt);
   }
 }
 

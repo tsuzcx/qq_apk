@@ -2,8 +2,8 @@ package com.tencent.mm.sdk.platformtools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.vfs.q;
 import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 
 public class FilePathGenerator
 {
@@ -16,53 +16,53 @@ public class FilePathGenerator
   public static boolean checkMkdir(String paramString)
   {
     AppMethodBeat.i(157532);
-    u.bBD(paramString);
+    y.bDX(paramString);
     AppMethodBeat.o(157532);
     return true;
   }
   
   public static String defGenPathWithOld(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt)
   {
-    AppMethodBeat.i(188524);
+    AppMethodBeat.i(244028);
     paramString1 = defGenPathWithOld(paramString1, paramString2, paramString3, paramString4, paramString5, paramInt, true);
-    AppMethodBeat.o(188524);
+    AppMethodBeat.o(244028);
     return paramString1;
   }
   
   public static String defGenPathWithOld(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(188523);
+    AppMethodBeat.i(244023);
     paramString1 = paramString1 + paramString3 + paramString4 + paramString5;
     paramString2 = genPath(paramString2, paramString3, paramString4, paramString5, paramInt, paramBoolean);
     if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
     {
-      AppMethodBeat.o(188523);
+      AppMethodBeat.o(244023);
       return null;
     }
-    paramString3 = new q(paramString2);
-    paramString4 = new q(paramString1);
-    if (paramString3.ifE())
+    paramString3 = new u(paramString2);
+    paramString4 = new u(paramString1);
+    if (paramString3.jKS())
     {
-      AppMethodBeat.o(188523);
+      AppMethodBeat.o(244023);
       return paramString2;
     }
-    if (paramString4.ifE()) {
+    if (paramString4.jKS()) {
       FilesCopy.copy(paramString1, paramString2, false);
     }
-    AppMethodBeat.o(188523);
+    AppMethodBeat.o(244023);
     return paramString2;
   }
   
   private static String genByAllMd5(String paramString)
   {
-    AppMethodBeat.i(188516);
+    AppMethodBeat.i(243993);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(188516);
+      AppMethodBeat.o(243993);
       return null;
     }
     paramString = genByHead2Byte(g.getMessageDigest(paramString.getBytes()));
-    AppMethodBeat.o(188516);
+    AppMethodBeat.o(243993);
     return paramString;
   }
   
@@ -132,11 +132,11 @@ public class FilePathGenerator
   {
     static
     {
-      AppMethodBeat.i(186739);
+      AppMethodBeat.i(243541);
       HEAD_2_BYTE = new DIR_HASH_TYPE("HEAD_2_BYTE", 0);
       ALL_MD5 = new DIR_HASH_TYPE("ALL_MD5", 1);
       $VALUES = new DIR_HASH_TYPE[] { HEAD_2_BYTE, ALL_MD5 };
-      AppMethodBeat.o(186739);
+      AppMethodBeat.o(243541);
     }
     
     private DIR_HASH_TYPE() {}

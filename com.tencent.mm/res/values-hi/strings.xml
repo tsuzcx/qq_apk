@@ -1,61 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="b_">होम पेज पर जाएं</string>
-    <string name="ba">ऊपर जाएं</string>
+    <string name="cu">होम पेज पर जाएं</string>
+    <string name="cv">ऊपर जाएं</string>
     <string name="abc_action_menu_overflow_description">ज़्यादा विकल्प</string>
-    <string name="bb">हो गया</string>
-    <string name="bc">सभी देखें</string>
-    <string name="bd">कोई एप्‍लिकेशन चुनें</string>
-    <string name="be">बंद</string>
-    <string name="bf">चालू</string>
-    <string name="bs">Alt+</string>
-    <string name="bt">Ctrl+</string>
-    <string name="bu">delete</string>
-    <string name="bv">enter</string>
-    <string name="bw">Function+</string>
-    <string name="bx">Meta+</string>
-    <string name="by">Shift+</string>
-    <string name="bz">space</string>
-    <string name="c0">Sym+</string>
-    <string name="c1">Menu+</string>
-    <string name="c2">खोजा जा रहा है…</string>
-    <string name="c3">क्‍वेरी साफ़ करें</string>
-    <string name="c4">सर्च क्वेरी</string>
-    <string name="c5">सर्च करें</string>
-    <string name="c6">क्वेरी सबमिट करें</string>
-    <string name="c7">आवाज़ सर्च</string>
-    <string name="c8">इसके साथ शेयर करें</string>
-    <string name="c9">%s के साथ शेयर करें</string>
-    <string name="c_">छोटा करें</string>
-    <string name="gf">sound/after_upload_voice.mp3</string>
-    <string name="aam">https://${brand.qbrand.com}/cgi-bin/readtemplate?t=weixin_msgtrans_agreement&amp;lang=en</string>
-    <string name="aan">https://${support.brand.qbrand.com}/cgi-bin/mmsupport-bin/readtemplate?t=page/record_sync__course&amp;lang=zh_CN</string>
-    <string name="aao">https://${brand.qbrand.com}/cgi-bin/readtemplate?t=weixin_chat_migration_faq&amp;lang=zh_CN</string>
-    <string name="awk">https://${brand.qbrand.com}/cgi-bin/readtemplate?lang=%s&amp;t=weixin_howToAdjustGroupNum&amp;pf=android</string>
-    <string name="awq">https://${brand.qbrand.com}/cgi-bin/readtemplate?lang=%s&amp;t=weixin_groupOwnerResponsibility</string>
-    <string name="b7y">&lt;b>facebook.com/device&lt;/b> पर विज़िट करें और ऊपर दिखाया गया कोड डालें.</string>
-    <string name="b7z">चित्र डाउनलोड करते समय अनपेक्षित त्रुटि हुई.</string>
-    <string name="b80">WebView लॉग इन के लिए इंटरनेट अनुमति आवश्यक है</string>
-    <string name="b81">AndroidManifest गलती</string>
-    <string name="b82">पसंद किया</string>
-    <string name="b83">पसंद करें</string>
-    <string name="b84">लोड हो रहा है...</string>
-    <string name="b85">रद्द करें</string>
-    <string name="b86">लॉग इन</string>
-    <string name="b87">Facebook के साथ जारी रखें</string>
-    <string name="b88">Facebook से लॉग इन करें</string>
-    <string name="b89">लॉग आउट करें</string>
-    <string name="b8_">लॉग आउट करें</string>
-    <string name="b8a">इस रूप में लॉग इन हैं: %1$s</string>
-    <string name="b8b">Facebook का उपयोग करके लॉग इन किया है</string>
-    <string name="b8c">भेजें</string>
-    <string name="b8d">साझा करें</string>
-    <string name="b8e">अपने खाते से कनेक्ट करने के लिए, अपने मोबाइल डिवाइस पर Facebook एप्लिकेशन खोलें और सूचनाएँ जाँचें.</string>
-    <string name="b8f">- या -</string>
-    <string name="b8g">आप नहीं हैं?</string>
-    <string name="b8h">%1$s के रूप में जारी रखें</string>
-    <string name="b8i">लॉग इन कन्फ़र्म करें</string>
-    <string name="b8j">नियंत्रण आपके पास है - चुनें कि आप एप्लिकेशन के साथ कौन सी जानकारी साझा करना चाहते हैं.</string>
+    <string name="cw">हो गया</string>
+    <string name="cx">सभी देखें</string>
+    <string name="cy">कोई एप्‍लिकेशन चुनें</string>
+    <string name="cz">बंद</string>
+    <string name="d0">चालू</string>
+    <string name="d1">Alt+</string>
+    <string name="d2">Ctrl+</string>
+    <string name="d3">delete</string>
+    <string name="d4">enter</string>
+    <string name="d5">Function+</string>
+    <string name="d6">Meta+</string>
+    <string name="d7">Shift+</string>
+    <string name="d8">space</string>
+    <string name="d9">Sym+</string>
+    <string name="d_">Menu+</string>
+    <string name="da">खोजा जा रहा है…</string>
+    <string name="db">क्‍वेरी साफ़ करें</string>
+    <string name="dc">सर्च क्वेरी</string>
+    <string name="dd">सर्च करें</string>
+    <string name="de">क्वेरी सबमिट करें</string>
+    <string name="df">आवाज़ सर्च</string>
+    <string name="dg">इसके साथ शेयर करें</string>
+    <string name="dh">%s के साथ शेयर करें</string>
+    <string name="di">छोटा करें</string>
+    <string name="i8">sound/after_upload_voice.mp3</string>
+    <string name="agi">https://${brand.qbrand.com}/cgi-bin/readtemplate?t=weixin_msgtrans_agreement&amp;lang=en</string>
+    <string name="agj">https://${support.brand.qbrand.com}/cgi-bin/mmsupport-bin/readtemplate?t=page/record_sync__course&amp;lang=zh_CN</string>
+    <string name="agk">https://${brand.qbrand.com}/cgi-bin/readtemplate?t=weixin_chat_migration_faq&amp;lang=zh_CN</string>
+    <string name="b5x">https://${brand.qbrand.com}/cgi-bin/readtemplate?lang=%s&amp;t=weixin_howToAdjustGroupNum&amp;pf=android</string>
+    <string name="b64">https://${brand.qbrand.com}/cgi-bin/readtemplate?lang=%s&amp;t=weixin_groupOwnerResponsibility</string>
+    <string name="bfj">नेविगेशन मेन्यू बंद करें</string>
+    <string name="bfl">शीट बंद करें</string>
     <string name="common_google_play_services_enable_button">चालू करें</string>
     <string name="common_google_play_services_enable_text">जब तक आप Google Play सेवाएं चालू नहीं करते, %1$s काम नहीं करेगा.</string>
     <string name="common_google_play_services_enable_title">Google Play सेवाएं चालू करें</string>
@@ -74,57 +53,67 @@
     <string name="common_open_on_phone">फ़ोन पर खोलें</string>
     <string name="common_signin_button_text">साइन इन करें</string>
     <string name="common_signin_button_text_long">Google के ज़रिए साइन इन करें</string>
-    <string name="bs0">https://${brand.qbrand.com}/cgi-bin/readtemplate?t=emotion/wap/complain/msg_tmpl&amp;lang=</string>
-    <string name="bt_">https://${brand.qbrand.com}/cgi-bin/readtemplate?t=weixin_emoji_agreement&amp;lang=</string>
-    <string name="cdb">अन्य</string>
-    <string name="cde">file:///android_asset/doc/default/wx_feedback_index.html</string>
-    <string name="di3">file:///android_asset/doc/default/wx_wifi_faq.html</string>
-    <string name="dim">file:///android_asset/doc/default/wx_wifi_service_terms_chs.html</string>
-    <string name="dja">https://${search.brand.qbrand.com}/cgi-bin/h5/emoticon/tousu.html?lang=</string>
-    <string name="dts">अन्य</string>
-    <string name="em5">https://${support.brand.qbrand.com}/getpassword?lang=</string>
-    <string name="em6">https://${support.brand.qbrand.com}/security/readtemplate?t=page/login_optimized__w_index&amp;lang=</string>
-    <string name="ent">sound/cashrecivedrevised.mp3</string>
-    <string name="f0g">file:///android_asset/doc/default/mig_wifi_service_terms_chs.html</string>
-    <string name="fba">file:///android_asset/doc/en/network_warning.htm</string>
-    <string name="fhy">file:///android_asset/doc/default/oauth_network_error.html</string>
-    <string name="fn6">sound/play_completed.mp3</string>
-    <string name="frh">https://${brand.qbrand.com}/cgi-bin/readtemplate?t=weixin_contract_agreement&amp;lang=en</string>
-    <string name="fri">file:///android_asset/doc/en/qqsync_intro.htm</string>
-    <string name="frj">file:///android_asset/doc/en/qqsync_privacy.htm</string>
-    <string name="frk">\?hl=en</string>
-    <string name="fsd">sound/qrcode_completed.mp3</string>
-    <string name="ggs">सर्च</string>
-    <string name="gyz">sound/shake_match.mp3</string>
-    <string name="gz7">sound/shake_nomatch.mp3</string>
-    <string name="gzt">sound/shake_sound_male.mp3</string>
-    <string name="h0f">sound/shakelucky_ad_logo_clicked.mp3</string>
-    <string name="h0g">sound/shakelucky_firework_sound.mp3</string>
-    <string name="hen">999+</string>
-    <string name="hl1">sound/talkroom_begin.mp3</string>
-    <string name="hl4">sound/talkroom_othersbegin.mp3</string>
-    <string name="hl5">sound/talkroom_press.mp3</string>
-    <string name="hl7">sound/talkroom_sasasa.mp3</string>
-    <string name="hl8">sound/talkroom_up.mp3</string>
-    <string name="hom">sound/time_limit.mp3</string>
-    <string name="htq">http://support.wechat.com/getpassword?lang=en</string>
-    <string name="htr">https://${account.qbrand.com}/cgi-bin/en/index</string>
-    <string name="htv">http://${open.brand.qbrand.com}/emoticon#wechat_redirect</string>
-    <string name="htw">https://${brand.qbrand.com}/cgi-bin/readtemplate?lang=en_US&amp;check=false&amp;t=weixin_agreement&amp;s=privacy</string>
-    <string name="htx">https://${brand.qbrand.com}/cgi-bin/readtemplate?lang=en_US&amp;check=false&amp;t=weixin_agreement&amp;s=terms</string>
-    <string name="hty">https://${brand.qbrand.com}/cgi-bin/readtemplate?t=weixin_small_pay</string>
-    <string name="htz">https://${action.brand.qbrand.com}/payact/readtemplate?t=mobile/shuaka/help_tmpl</string>
-    <string name="hu3">https://${support.brand.qbrand.com}/cgi-bin/mmsupport-bin/readtemplate?t=page/payment_security__intro_new_editon</string>
-    <string name="i5g" formatted="false">https://${brand.qbrand.com}/cgi-bin/readtemplate?t=weixin_business_bank&amp;lang=%s&amp;banktype=%s</string>
-    <string name="i5h">https://${brand.qbrand.com}/cgi-bin/readtemplate?t=weixin_business_agreement&amp;lang=%s</string>
-    <string name="i5i">https://${brand.qbrand.com}/cgi-bin/readtemplate?t=weixin_business_pay&amp;lang=%s</string>
-    <string name="i5j" formatted="false">https://${brand.qbrand.com}/cgi-bin/readtemplate?t=weixin_bank_wxcredit&amp;lang=%s&amp;banktype=%s</string>
-    <string name="i5k" formatted="false">https://${brand.qbrand.com}/cgi-bin/readtemplate?t=weixin_person_pay&amp;lang=%s&amp;banktype=%s</string>
-    <string name="i5l">https://${brand.qbrand.com}/cgi-bin/readtemplate?&amp;lang=en&amp;check=false&amp;t=weixin_agreement&amp;s=pay#point</string>
-    <string name="icm">https://${kf.qbrand.com}/touch/sappfaq/1603017bqMvA1603013eamiI.html</string>
-    <string name="j1o" formatted="false">https://${open.brand.qbrand.com}/connect/oauth2/authorize?appid=wx10583a7e974992ec&amp;redirect_uri=https%3A%2F%2F${kf.qbrand.com}%2Ftouch%2Fscene_product.html%3Fscene_id%3Dkf338&amp;response_type=code&amp;scope=snsapi_base&amp;state=123#wechat_redirect</string>
-    <string name="j1p" formatted="false">https://${open.brand.qbrand.com}/connect/oauth2/authorize?appid=wx10583a7e974992ec&amp;redirect_uri=https%3A%2F%2F${kf.qbrand.com}%2Ftouch%2Fscene_product.html%3Fscene_id%3Dkf348&amp;response_type=code&amp;scope=snsapi_base&amp;state=123#wechat_redirect</string>
-    <string name="j1q" formatted="false">https://${open.brand.qbrand.com}/connect/oauth2/authorize?appid=wx10583a7e974992ec&amp;redirect_uri=https%3A%2F%2F${kf.qbrand.com}%2Ftouch%2Fscene_product.html%3Fscene_id%3Dkf136&amp;response_type=code&amp;scope=snsapi_base&amp;state=123#wechat_redirect</string>
-    <string name="j1r" formatted="false">https://${open.brand.qbrand.com}/connect/oauth2/authorize?appid=wx10583a7e974992ec&amp;redirect_uri=https%3A%2F%2F${kf.qbrand.com}%2Ftouch%2Fscene_product.html%3Fscene_id%3Dkf350&amp;response_type=code&amp;scope=snsapi_base&amp;state=123#wechat_redirect</string>
-    <string name="j1x">https://${brand110.qbrand.com}/?lang=</string>
+    <string name="bxp">अमान्य इनपुट</string>
+    <string name="c5k">https://${brand.qbrand.com}/cgi-bin/readtemplate?t=emotion/wap/complain/msg_tmpl&amp;lang=</string>
+    <string name="c7d">https://${brand.qbrand.com}/cgi-bin/readtemplate?t=weixin_emoji_agreement&amp;lang=</string>
+    <string name="csk">अन्य</string>
+    <string name="csn">file:///android_asset/doc/default/wx_feedback_index.html</string>
+    <string name="f26">file:///android_asset/doc/default/wx_wifi_faq.html</string>
+    <string name="f27">file:///android_asset/doc/default/wx_wifi_service_terms_chs.html</string>
+    <string name="f2m">https://${search.brand.qbrand.com}/cgi-bin/h5/emoticon/tousu.html?lang=</string>
+    <string name="fda">अन्य</string>
+    <string name="fr5">जारी है</string>
+    <string name="fr_">चेकबॉक्स पर न तो सही का निशान लगाया गया, न ही पहले से लगा सही का निशान हटाया गया</string>
+    <string name="gcw">https://${support.brand.qbrand.com}/getpassword?lang=</string>
+    <string name="gcx">https://${support.brand.qbrand.com}/security/readtemplate?t=page/login_optimized__w_index&amp;lang=</string>
+    <string name="gen">sound/cashrecivedrevised.mp3</string>
+    <string name="gse">file:///android_asset/doc/default/mig_wifi_service_terms_chs.html</string>
+    <string name="h57">नेविगेशन मेन्यू</string>
+    <string name="h78">file:///android_asset/doc/en/network_warning.htm</string>
+    <string name="h_5">नहीं चुना गया</string>
+    <string name="he0">file:///android_asset/doc/default/oauth_network_error.html</string>
+    <string name="he1">बंद है</string>
+    <string name="her">चालू है</string>
+    <string name="hk2">sound/play_completed.mp3</string>
+    <string name="hpb">https://${brand.qbrand.com}/cgi-bin/readtemplate?t=weixin_contract_agreement&amp;lang=en</string>
+    <string name="hpc">file:///android_asset/doc/en/qqsync_intro.htm</string>
+    <string name="hpd">file:///android_asset/doc/en/qqsync_privacy.htm</string>
+    <string name="hpe">\?hl=en</string>
+    <string name="hq8">sound/qrcode_completed.mp3</string>
+    <string name="iho">सर्च</string>
+    <string name="ik9">चुना गया</string>
+    <string name="j4s">sound/shake_match.mp3</string>
+    <string name="j53">sound/shake_nomatch.mp3</string>
+    <string name="j5t">sound/shake_sound_male.mp3</string>
+    <string name="j6g">sound/shakelucky_ad_logo_clicked.mp3</string>
+    <string name="j6h">sound/shakelucky_firework_sound.mp3</string>
+    <string name="jmt">999+</string>
+    <string name="jsx">टैब</string>
+    <string name="jv6">sound/talkroom_begin.mp3</string>
+    <string name="jv9">sound/talkroom_othersbegin.mp3</string>
+    <string name="jv_">sound/talkroom_press.mp3</string>
+    <string name="jvb">sound/talkroom_sasasa.mp3</string>
+    <string name="jvc">sound/talkroom_up.mp3</string>
+    <string name="jyt">%1$d प्रतिशत.</string>
+    <string name="k2s">sound/time_limit.mp3</string>
+    <string name="k85">http://support.wechat.com/getpassword?lang=en</string>
+    <string name="k86">https://${account.qbrand.com}/cgi-bin/en/index</string>
+    <string name="k8_">http://${open.brand.qbrand.com}/emoticon#wechat_redirect</string>
+    <string name="k8a">https://${brand.qbrand.com}/cgi-bin/readtemplate?lang=en_US&amp;check=false&amp;t=weixin_agreement&amp;s=privacy</string>
+    <string name="k8b">https://${brand.qbrand.com}/cgi-bin/readtemplate?lang=en_US&amp;check=false&amp;t=weixin_agreement&amp;s=terms</string>
+    <string name="k8c">https://${brand.qbrand.com}/cgi-bin/readtemplate?t=weixin_small_pay</string>
+    <string name="k8d">https://${action.brand.qbrand.com}/payact/readtemplate?t=mobile/shuaka/help_tmpl</string>
+    <string name="k8h">https://${support.brand.qbrand.com}/cgi-bin/mmsupport-bin/readtemplate?t=page/payment_security__intro_new_editon</string>
+    <string name="kk_" formatted="false">https://${brand.qbrand.com}/cgi-bin/readtemplate?t=weixin_business_bank&amp;lang=%s&amp;banktype=%s</string>
+    <string name="kka">https://${brand.qbrand.com}/cgi-bin/readtemplate?t=weixin_business_agreement&amp;lang=%s</string>
+    <string name="kkb">https://${brand.qbrand.com}/cgi-bin/readtemplate?t=weixin_business_pay&amp;lang=%s</string>
+    <string name="kkc" formatted="false">https://${brand.qbrand.com}/cgi-bin/readtemplate?t=weixin_bank_wxcredit&amp;lang=%s&amp;banktype=%s</string>
+    <string name="kkd" formatted="false">https://${brand.qbrand.com}/cgi-bin/readtemplate?t=weixin_person_pay&amp;lang=%s&amp;banktype=%s</string>
+    <string name="kke">https://${brand.qbrand.com}/cgi-bin/readtemplate?&amp;lang=en&amp;check=false&amp;t=weixin_agreement&amp;s=pay#point</string>
+    <string name="ksx">https://${kf.qbrand.com}/touch/sappfaq/1603017bqMvA1603013eamiI.html</string>
+    <string name="lil" formatted="false">https://${open.brand.qbrand.com}/connect/oauth2/authorize?appid=wx10583a7e974992ec&amp;redirect_uri=https%3A%2F%2F${kf.qbrand.com}%2Ftouch%2Fscene_product.html%3Fscene_id%3Dkf338&amp;response_type=code&amp;scope=snsapi_base&amp;state=123#wechat_redirect</string>
+    <string name="lim" formatted="false">https://${open.brand.qbrand.com}/connect/oauth2/authorize?appid=wx10583a7e974992ec&amp;redirect_uri=https%3A%2F%2F${kf.qbrand.com}%2Ftouch%2Fscene_product.html%3Fscene_id%3Dkf348&amp;response_type=code&amp;scope=snsapi_base&amp;state=123#wechat_redirect</string>
+    <string name="lin" formatted="false">https://${open.brand.qbrand.com}/connect/oauth2/authorize?appid=wx10583a7e974992ec&amp;redirect_uri=https%3A%2F%2F${kf.qbrand.com}%2Ftouch%2Fscene_product.html%3Fscene_id%3Dkf136&amp;response_type=code&amp;scope=snsapi_base&amp;state=123#wechat_redirect</string>
+    <string name="lio" formatted="false">https://${open.brand.qbrand.com}/connect/oauth2/authorize?appid=wx10583a7e974992ec&amp;redirect_uri=https%3A%2F%2F${kf.qbrand.com}%2Ftouch%2Fscene_product.html%3Fscene_id%3Dkf350&amp;response_type=code&amp;scope=snsapi_base&amp;state=123#wechat_redirect</string>
+    <string name="liu">https://${brand110.qbrand.com}/?lang=</string>
 </resources>

@@ -10,12 +10,12 @@ public final class R$plurals
   public static final int fmt_month_ago = 2131623948;
   public static final int fmt_years_ago = 2131623949;
   public static final int say_hi_count_text_quantity = 2131623965;
-  public static final int tab_desc_unread = 2131623969;
-  public static final int tab_name_site_desc = 2131623970;
+  public static final int tab_desc_unread = 2131623970;
+  public static final int tab_name_site_desc = 2131623971;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tenpay.R.plurals
  * JD-Core Version:    0.7.0.1
  */

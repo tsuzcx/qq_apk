@@ -1,104 +1,93 @@
 package com.tencent.mm.plugin.appbrand.menu;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
 import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
-import com.tencent.mm.plugin.appbrand.config.l;
-import com.tencent.mm.plugin.appbrand.jsapi.ac;
-import com.tencent.mm.plugin.appbrand.jsapi.db;
+import com.tencent.mm.plugin.appbrand.config.n;
+import com.tencent.mm.plugin.appbrand.jsapi.ad;
+import com.tencent.mm.plugin.appbrand.jsapi.ak;
+import com.tencent.mm.plugin.appbrand.jsapi.dl;
+import com.tencent.mm.plugin.appbrand.page.ah;
 import com.tencent.mm.plugin.appbrand.report.j;
-import com.tencent.mm.plugin.appbrand.shortlink.d;
-import com.tencent.mm.plugin.appbrand.t;
+import com.tencent.mm.plugin.appbrand.shortlink.WxaShortLinkRiskManager;
+import com.tencent.mm.plugin.appbrand.shortlink.c;
+import com.tencent.mm.plugin.appbrand.w;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class e
-  extends com.tencent.mm.plugin.appbrand.menu.a.a<com.tencent.mm.plugin.appbrand.page.ah>
+  extends com.tencent.mm.plugin.appbrand.menu.a.a<ah>
 {
-  private final b qeW;
+  private final a tjG;
   
   public e()
   {
-    super(w.qgi.ordinal());
-    AppMethodBeat.i(284311);
-    this.qeW = new b((byte)0);
-    AppMethodBeat.o(284311);
+    super(x.tkM.ordinal());
+    AppMethodBeat.i(323818);
+    this.tjG = new a((byte)0);
+    AppMethodBeat.o(323818);
   }
   
-  public static a g(com.tencent.mm.plugin.appbrand.page.ah paramah)
+  public static y a(ah paramah, Context paramContext)
   {
-    AppMethodBeat.i(284312);
-    AppBrandSysConfigWC localAppBrandSysConfigWC = paramah.getRuntime().bDx();
+    AppMethodBeat.i(323826);
+    AppBrandSysConfigWC localAppBrandSysConfigWC = paramah.getRuntime().ccM();
     if (localAppBrandSysConfigWC != null) {}
-    for (int i = com.tencent.mm.plugin.appbrand.config.a.nVN.a(localAppBrandSysConfigWC);; i = 0)
+    for (int i = com.tencent.mm.plugin.appbrand.config.a.qVv.a(localAppBrandSysConfigWC);; i = 0)
     {
-      d locald = d.qQm;
-      if ((((Boolean)d.ciI().invoke()).booleanValue()) && (i != 1))
+      c localc = c.tUX;
+      if ((((Boolean)c.cJA().invoke()).booleanValue()) && (i != 1))
       {
-        if (((!q.h(paramah)) || (i != 0)) && (localAppBrandSysConfigWC != null) && (localAppBrandSysConfigWC.nYR.nHY == 0))
+        if (((q.g(paramah)) && (i == 0)) || (((localAppBrandSysConfigWC != null) && (localAppBrandSysConfigWC.qYY.qHO == 0)) || (com.tencent.mm.plugin.appbrand.k.a.a.F(paramah.getRuntime())) || (com.tencent.mm.plugin.appbrand.ad.e.eu(paramContext))))
         {
-          paramah = a.qfa;
-          AppMethodBeat.o(284312);
+          paramah = y.tkT;
+          AppMethodBeat.o(323826);
           return paramah;
         }
-        paramah = a.qeZ;
-        AppMethodBeat.o(284312);
+        paramah = y.tkS;
+        AppMethodBeat.o(323826);
         return paramah;
       }
-      paramah = a.qeY;
-      AppMethodBeat.o(284312);
+      paramah = y.tkR;
+      AppMethodBeat.o(323826);
       return paramah;
     }
   }
   
-  public static enum a
-  {
-    static
-    {
-      AppMethodBeat.i(284609);
-      qeY = new a("HIDDEN", 0);
-      qeZ = new a("SHOW_CLICKABLE", 1);
-      qfa = new a("SHOW_UNCLICKABLE", 2);
-      qfb = new a[] { qeY, qeZ, qfa };
-      AppMethodBeat.o(284609);
-    }
-    
-    private a() {}
-  }
-  
-  static final class b
-    implements com.tencent.mm.plugin.appbrand.jsapi.ah
+  static final class a
+    implements ak
   {
     public String appId = "";
-    public com.tencent.mm.plugin.appbrand.page.ah ppq;
-    public String qeV = "";
+    public ah sue;
+    public String tjF = "";
     
-    public final void agV(String paramString)
+    public final void ZS(String paramString)
     {
       int i = 1;
-      AppMethodBeat.i(271304);
+      AppMethodBeat.i(323861);
       Log.i("MicroMsg.MenuDelegate_CopyShortLink", "onReturnUrl %s", new Object[] { paramString });
       Object localObject = this.appId;
-      String str = this.qeV;
+      String str = this.tjF;
       long l = Util.nowSecond();
       if (paramString.isEmpty()) {
         i = 2;
       }
       j.a((String)localObject, str, 47, "", l, i, 0);
-      localObject = db.oyi;
-      db.b(ac.osP, this);
+      localObject = dl.rBE;
+      dl.b(ad.rwM, this);
       if (!paramString.isEmpty())
       {
-        localObject = com.tencent.mm.plugin.appbrand.shortlink.e.qQp;
-        com.tencent.mm.plugin.appbrand.shortlink.e.b(this.ppq, paramString);
+        localObject = WxaShortLinkRiskManager.tVc;
+        WxaShortLinkRiskManager.c(this.sue, paramString);
       }
-      AppMethodBeat.o(271304);
+      AppMethodBeat.o(323861);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.e
  * JD-Core Version:    0.7.0.1
  */

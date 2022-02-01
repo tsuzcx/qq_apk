@@ -14,29 +14,29 @@ import java.util.List;
 public class c
   implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener, b
 {
-  private a ZdI;
-  private com.tencent.neattextview.textview.layout.a ZdJ;
-  private com.tencent.neattextview.textview.b.c ZdK;
+  private a ahcm;
+  private com.tencent.neattextview.textview.layout.a ahcn;
+  private com.tencent.neattextview.textview.b.c ahco;
+  private GestureDetector mQj;
   private View mView;
-  private GestureDetector pCU;
   
   public c(Context paramContext, a parama)
   {
     AppMethodBeat.i(39830);
-    this.ZdI = parama;
-    this.pCU = new GestureDetector(paramContext, this);
-    this.pCU.setOnDoubleTapListener(this);
+    this.ahcm = parama;
+    this.mQj = new GestureDetector(paramContext, this);
+    this.mQj.setOnDoubleTapListener(this);
     AppMethodBeat.o(39830);
   }
   
   protected void cancel(int paramInt)
   {
     AppMethodBeat.i(39836);
-    if (this.ZdK != null)
+    if (this.ahco != null)
     {
-      this.ZdK.isPressed = false;
+      this.ahco.isPressed = false;
       this.mView.invalidate();
-      this.ZdK = null;
+      this.ahco = null;
     }
     AppMethodBeat.o(39836);
   }
@@ -46,17 +46,17 @@ public class c
     return this.mView;
   }
   
-  public final com.tencent.neattextview.textview.b.c ikE()
+  public final com.tencent.neattextview.textview.b.c jQV()
   {
-    return this.ZdK;
+    return this.ahco;
   }
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(39837);
-    if (this.ZdI.getOnDoubleClickListener() != null)
+    if (this.ahcm.getOnDoubleClickListener() != null)
     {
-      this.ZdI.getOnDoubleClickListener().ie(this.mView);
+      this.ahcm.getOnDoubleClickListener().lA(this.mView);
       AppMethodBeat.o(39837);
       return true;
     }
@@ -72,23 +72,23 @@ public class c
   public boolean onDown(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(39832);
-    if (this.ZdI.ikB())
+    if (this.ahcm.jQT())
     {
       AppMethodBeat.o(39832);
       return false;
     }
-    if (this.ZdJ.ikq() == null)
+    if (this.ahcn.jQI() == null)
     {
       AppMethodBeat.o(39832);
       return false;
     }
-    Iterator localIterator = this.ZdJ.ikq().iterator();
+    Iterator localIterator = this.ahcn.jQI().iterator();
     while (localIterator.hasNext())
     {
       com.tencent.neattextview.textview.b.c localc = (com.tencent.neattextview.textview.b.c)localIterator.next();
-      if (localc.aM(paramMotionEvent.getX() - this.ZdI.getHorizontalOffset(), paramMotionEvent.getY() - this.ZdI.getVerticalOffset()))
+      if (localc.bq(paramMotionEvent.getX() - this.ahcm.getHorizontalOffset(), paramMotionEvent.getY() - this.ahcm.getVerticalOffset()))
       {
-        this.ZdK = localc;
+        this.ahco = localc;
         localc.isPressed = true;
         this.mView.postInvalidate();
         AppMethodBeat.o(39832);
@@ -129,18 +129,20 @@ public class c
   public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(39833);
-    if (this.ZdI.ikB())
+    if (this.ahcm.jQT())
     {
       AppMethodBeat.o(39833);
       return false;
     }
-    if (this.ZdK != null)
+    if (this.ahco != null)
     {
-      paramMotionEvent = this.ZdK;
+      paramMotionEvent = this.ahco;
       View localView = this.mView;
-      if (paramMotionEvent.Zcp != null) {
-        ((ClickableSpan)paramMotionEvent.Zcp).onClick(localView);
+      if (paramMotionEvent.ahaT != null) {
+        ((ClickableSpan)paramMotionEvent.ahaT).onClick(localView);
       }
+      AppMethodBeat.o(39833);
+      return true;
     }
     AppMethodBeat.o(39833);
     return false;
@@ -149,17 +151,17 @@ public class c
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(39831);
-    if (this.ZdI.getLayout() == null)
+    if (this.ahcm.getLayout() == null)
     {
       AppMethodBeat.o(39831);
       return false;
     }
-    this.ZdJ = this.ZdI.getLayout();
+    this.ahcn = this.ahcm.getLayout();
     this.mView = paramView;
-    paramView = this.pCU;
-    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bm(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.b(paramView, locala.aFh(), "com/tencent/neattextview/textview/view/NeatViewTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-    boolean bool = com.tencent.mm.hellhoundlib.a.a.a(paramView, paramView.onTouchEvent((MotionEvent)locala.sf(0)), "com/tencent/neattextview/textview/view/NeatViewTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    paramView = this.mQj;
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.b(paramView, locala.aYi(), "com/tencent/neattextview/textview/view/NeatViewTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    boolean bool = com.tencent.mm.hellhoundlib.a.a.a(paramView, paramView.onTouchEvent((MotionEvent)locala.sb(0)), "com/tencent/neattextview/textview/view/NeatViewTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
     if ((paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 1)) {
       cancel(2);
     }
@@ -169,7 +171,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.neattextview.textview.view.c
  * JD-Core Version:    0.7.0.1
  */

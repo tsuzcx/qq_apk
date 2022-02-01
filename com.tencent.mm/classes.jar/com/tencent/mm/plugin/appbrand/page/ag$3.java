@@ -11,8 +11,8 @@ final class ag$3
   
   public final void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(281093);
-    Iterator localIterator = new HashSet(ag.a(this.qth)).iterator();
+    AppMethodBeat.i(324864);
+    Iterator localIterator = new HashSet(ag.a(this.txN)).iterator();
     while (localIterator.hasNext())
     {
       at localat = (at)localIterator.next();
@@ -20,7 +20,7 @@ final class ag$3
         localat.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2);
       }
     }
-    AppMethodBeat.o(281093);
+    AppMethodBeat.o(324864);
   }
 }
 

@@ -31,7 +31,7 @@ public class b
     this.db = paramISQLiteDatabase;
   }
   
-  public final boolean aAk(String paramString)
+  public final boolean aur(String paramString)
   {
     AppMethodBeat.i(73569);
     if (Util.isNullOrNil(paramString))
@@ -61,7 +61,7 @@ public class b
     return false;
   }
   
-  public final a aAl(String paramString)
+  public final a aus(String paramString)
   {
     AppMethodBeat.i(73570);
     if (Util.isNullOrNil(paramString))
@@ -108,7 +108,7 @@ public class b
     return bool;
   }
   
-  public final List<a> dkD()
+  public final List<a> dRt()
   {
     AppMethodBeat.i(73567);
     ArrayList localArrayList = new ArrayList();
@@ -128,7 +128,7 @@ public class b
     return localArrayList;
   }
   
-  public final List<a> dkE()
+  public final List<a> dRu()
   {
     AppMethodBeat.i(73571);
     Cursor localCursor = this.db.query("FavOffline", a.info.columns, "status!=? and failNum<?", new String[] { "2", "5" }, null, null, "rowid");
@@ -155,7 +155,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.offline.b.b
  * JD-Core Version:    0.7.0.1
  */

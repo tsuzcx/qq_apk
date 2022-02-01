@@ -1,35 +1,41 @@
 package com.tencent.mm.plugin.topstory.ui.home;
 
-import com.tencent.mm.plugin.websearch.webview.d;
-import com.tencent.mm.protocal.protobuf.esk;
+import com.tencent.mm.plugin.topstory.ui.c.c;
+import com.tencent.mm.plugin.topstory.ui.c.e;
+import com.tencent.mm.plugin.websearch.webview.f;
+import com.tencent.mm.protocal.protobuf.fnt;
 import com.tencent.mm.ui.MMActivity;
 
 public abstract interface a
-  extends d<esk>
+  extends f<fnt>
 {
-  public abstract void beY(String paramString);
+  public abstract void bev(String paramString);
   
-  public abstract void beZ(String paramString);
+  public abstract void bew(String paramString);
   
-  public abstract void bfa(String paramString);
+  public abstract void bex(String paramString);
   
-  public abstract void bfb(String paramString);
+  public abstract void bey(String paramString);
   
-  public abstract MMActivity eOa();
+  public abstract MMActivity fWt();
   
-  public abstract void gqg();
+  public abstract void hNc();
   
-  public abstract void gqh();
+  public abstract void hNd();
   
-  public abstract void gqi();
+  public abstract void hNe();
   
-  public abstract void gqj();
+  public abstract void hNf();
   
-  public abstract int gqk();
+  public abstract int hNg();
   
-  public abstract void kA(int paramInt1, int paramInt2);
+  public abstract c hNh();
   
-  public abstract void kz(int paramInt1, int paramInt2);
+  public abstract e hNi();
+  
+  public abstract void mn(int paramInt1, int paramInt2);
+  
+  public abstract void mo(int paramInt1, int paramInt2);
 }
 
 

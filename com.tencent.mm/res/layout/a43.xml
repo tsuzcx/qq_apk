@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/rj"
+<LinearLayout android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:orientation="vertical" android:id="@id/be3" android:background="@color/a2h" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ListView android:id="@id/ir8" android:background="@color/a2h" android:layout_above="@id/aa7" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" style="@style/np" />
-        <TextView android:id="@id/c30" android:layout_above="@id/aa7" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" style="@style/mh" />
-        <LinearLayout android:orientation="horizontal" android:id="@id/aa7" android:background="@drawable/b6d" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="49.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/bqz" android:background="@drawable/p5" android:padding="@dimen/if" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/f1j" android:layout_width="@dimen/iy" android:layout_height="@dimen/iy" android:src="@color/aav" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:gravity="left" android:id="@id/h__" android:paddingRight="@dimen/k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m2" android:layout_toRightOf="@id/f1j" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/ck4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/mm_submenu_normal" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/xi" />
     </RelativeLayout>
 </LinearLayout>

@@ -4,98 +4,130 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class ce
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String CMD;
-  public cv CNh;
-  public int rWu;
+  public String desc;
+  public String summary;
+  public String title;
+  public String url;
+  public LinkedList<cp> wwD;
+  
+  public ce()
+  {
+    AppMethodBeat.i(41787);
+    this.wwD = new LinkedList();
+    AppMethodBeat.o(41787);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(207048);
+    AppMethodBeat.i(41788);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.rWu);
-      if (this.CMD != null) {
-        paramVarArgs.f(2, this.CMD);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.summary != null) {
+        paramVarArgs.g(1, this.summary);
       }
-      if (this.CNh != null)
-      {
-        paramVarArgs.oE(3, this.CNh.computeSize());
-        this.CNh.writeFields(paramVarArgs);
+      if (this.desc != null) {
+        paramVarArgs.g(2, this.desc);
       }
-      AppMethodBeat.o(207048);
+      paramVarArgs.e(3, 8, this.wwD);
+      if (this.url != null) {
+        paramVarArgs.g(4, this.url);
+      }
+      if (this.title != null) {
+        paramVarArgs.g(5, this.title);
+      }
+      AppMethodBeat.o(41788);
       return 0;
     }
-    int i;
-    if (paramInt == 1)
+    if (paramInt == 1) {
+      if (this.summary == null) {
+        break label512;
+      }
+    }
+    label512:
+    for (paramInt = i.a.a.b.b.a.h(1, this.summary) + 0;; paramInt = 0)
     {
-      i = g.a.a.b.b.a.bM(1, this.rWu) + 0;
+      int i = paramInt;
+      if (this.desc != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.desc);
+      }
+      i += i.a.a.a.c(3, 8, this.wwD);
       paramInt = i;
-      if (this.CMD != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.CMD);
+      if (this.url != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.url);
       }
       i = paramInt;
-      if (this.CNh != null) {
-        i = paramInt + g.a.a.a.oD(3, this.CNh.computeSize());
+      if (this.title != null) {
+        i = paramInt + i.a.a.b.b.a.h(5, this.title);
       }
-      AppMethodBeat.o(207048);
+      AppMethodBeat.o(41788);
       return i;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
-      }
-      AppMethodBeat.o(207048);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject = (g.a.a.a.a)paramVarArgs[0];
-      ce localce = (ce)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(207048);
-        return -1;
-      case 1: 
-        localce.rWu = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(207048);
-        return 0;
-      case 2: 
-        localce.CMD = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(207048);
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.wwD.clear();
+        paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(41788);
         return 0;
       }
-      paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-      i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
+      if (paramInt == 3)
       {
-        localObject = (byte[])paramVarArgs.get(paramInt);
-        cv localcv = new cv();
-        if ((localObject != null) && (localObject.length > 0)) {
-          localcv.parseFrom((byte[])localObject);
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
+        ce localce = (ce)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(41788);
+          return -1;
+        case 1: 
+          localce.summary = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(41788);
+          return 0;
+        case 2: 
+          localce.desc = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(41788);
+          return 0;
+        case 3: 
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            cp localcp = new cp();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localcp.parseFrom((byte[])localObject);
+            }
+            localce.wwD.add(localcp);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(41788);
+          return 0;
+        case 4: 
+          localce.url = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(41788);
+          return 0;
         }
-        localce.CNh = localcv;
-        paramInt += 1;
+        localce.title = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(41788);
+        return 0;
       }
-      AppMethodBeat.o(207048);
-      return 0;
+      AppMethodBeat.o(41788);
+      return -1;
     }
-    AppMethodBeat.o(207048);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.protobuf.ce
  * JD-Core Version:    0.7.0.1
  */

@@ -1,125 +1,176 @@
 package com.tencent.mm.ui.tools;
 
+import android.content.Context;
+import android.graphics.Paint;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.TextPaint;
+import android.text.style.ImageSpan;
+import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.ball.c.e;
-import com.tencent.mm.plugin.ball.model.BallInfo;
-import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.HashSet;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/tools/VoiceStateHolder;", "", "()V", "TAG", "", "enableBackgroundVoice", "", "isNeedStop", "value", "needStop", "getNeedStop", "()Z", "setNeedStop", "(Z)V", "noneStopList", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "jumpTo", "", "toWhere", "openAppbrand", "openFloatBallPage", "type", "", "app_release"})
 public final class y
 {
-  private static final HashSet<String> XVo;
-  private static boolean XVp;
-  private static boolean XVq;
-  public static final y XVr;
+  List<b> afLH;
+  WeakReference<EditText> afLI;
+  ArrayList<String> afLJ;
+  boolean afLK;
+  String mText;
   
-  static
+  public y(EditText paramEditText)
   {
-    AppMethodBeat.i(272909);
-    XVr = new y();
-    HashSet localHashSet = new HashSet();
-    localHashSet.add("com.tencent.mm.ui.chatting.gallery.ImageGalleryUI");
-    localHashSet.add("com.tencent.mm.plugin.webview.ui.tools.WebViewUI");
-    localHashSet.add("com.tencent.mm.plugin.webview.ui.tools.WebviewMpUI");
-    localHashSet.add("com.tencent.mm.plugin.brandservice.ui.timeline.preload.ui.TmplWebViewTooLMpUI");
-    localHashSet.add("com.tencent.mm.plugin.brandservice.ui.timeline.preload.ui.TmplWebViewToolUI");
-    localHashSet.add("com.tencent.mm.plugin.gallery.ui.AlbumPreviewUI");
-    localHashSet.add("com.tencent.mm.ui.chatting.AppAttachDownloadUI");
-    XVo = localHashSet;
-    if (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vYF, 1) == 1) {}
-    for (boolean bool = true;; bool = false)
+    AppMethodBeat.i(143290);
+    this.afLI = new WeakReference(paramEditText);
+    AppMethodBeat.o(143290);
+  }
+  
+  private static SpannableString a(Context paramContext, String paramString, Paint paramPaint)
+  {
+    AppMethodBeat.i(143293);
+    SpannableString localSpannableString = new SpannableString(paramString);
+    localSpannableString.setSpan(new ImageSpan(new y.a(paramContext, paramString, paramPaint), 0), 0, paramString.length(), 33);
+    AppMethodBeat.o(143293);
+    return localSpannableString;
+  }
+  
+  static boolean a(EditText paramEditText, ArrayList<String> paramArrayList)
+  {
+    AppMethodBeat.i(143292);
+    String str = paramEditText.getText().toString();
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    Object localObject = r(str, paramArrayList);
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      XVq = bool;
-      ((com.tencent.mm.plugin.ball.c.b)h.ae(com.tencent.mm.plugin.ball.c.b.class)).a(0, (e)new e()
+      int i = paramEditText.getSelectionStart();
+      int j = paramEditText.getSelectionEnd();
+      paramArrayList = paramEditText.getContext();
+      TextPaint localTextPaint = paramEditText.getPaint();
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        public final void b(BallInfo paramAnonymousBallInfo)
-        {
-          AppMethodBeat.i(285907);
-          Log.i("MicroMsg.VoiceStateHolder", "onFloatBallInfoClicked, ballInfo:".concat(String.valueOf(paramAnonymousBallInfo)));
-          if (paramAnonymousBallInfo != null)
-          {
-            y localy = y.XVr;
-            int i = paramAnonymousBallInfo.type;
-            Log.i("MicroMsg.VoiceStateHolder", "open ball page type: ".concat(String.valueOf(i)));
-            switch (i)
-            {
-            case 7: 
-            case 10: 
-            case 11: 
-            case 12: 
-            case 13: 
-            case 14: 
-            case 15: 
-            case 16: 
-            default: 
-              Log.i("MicroMsg.VoiceStateHolder", "need stop set to false for other float ball");
-              y.Hg(false);
-              AppMethodBeat.o(285907);
-              return;
-            }
-            Log.i("MicroMsg.VoiceStateHolder", "need stop set to true for voice/video ball");
-            y.Hg(true);
-            AppMethodBeat.o(285907);
-            return;
-          }
-          AppMethodBeat.o(285907);
+        b localb = (b)((Iterator)localObject).next();
+        int k = localb.start;
+        int m = localb.length;
+        if ((k < 0) || (m <= 0) || (k + m > str.length())) {
+          Log.i("MicroMsg.WordsChecker", "start : %d, length : %d.", new Object[] { Integer.valueOf(k), Integer.valueOf(m) });
+        } else if (localb.afLN) {
+          localSpannableStringBuilder.append(a(paramArrayList, str.substring(k, k + m), localTextPaint));
+        } else {
+          localSpannableStringBuilder.append(str.substring(k, k + m));
         }
-        
-        public final void c(BallInfo paramAnonymousBallInfo) {}
-        
-        public final void d(BallInfo paramAnonymousBallInfo) {}
-        
-        public final void g(BallInfo paramAnonymousBallInfo) {}
-      });
-      AppMethodBeat.o(272909);
-      return;
+      }
+      if (localSpannableStringBuilder.length() > 0)
+      {
+        paramEditText.setText(localSpannableStringBuilder);
+        paramEditText.setTextKeepState(localSpannableStringBuilder);
+        if ((i == j) && (i >= 0)) {
+          paramEditText.setSelection(i);
+        }
+      }
+      AppMethodBeat.o(143292);
+      return true;
     }
+    AppMethodBeat.o(143292);
+    return false;
   }
   
-  public static void Hg(boolean paramBoolean)
+  static List<b> r(String paramString, ArrayList<String> paramArrayList)
   {
-    if (XVq) {
-      XVp = paramBoolean;
-    }
-  }
-  
-  public static void bAI(String paramString)
-  {
-    AppMethodBeat.i(272907);
-    p.k(paramString, "toWhere");
-    Log.i("MicroMsg.VoiceStateHolder", "jump to ".concat(String.valueOf(paramString)));
-    if (XVo.contains(paramString))
+    AppMethodBeat.i(143294);
+    if ((Util.isNullOrNil(paramString)) || (paramArrayList == null) || (paramArrayList.size() == 0))
     {
-      Log.i("MicroMsg.VoiceStateHolder", "need stop set to false");
-      Hg(false);
+      AppMethodBeat.o(143294);
+      return null;
     }
-    AppMethodBeat.o(272907);
+    ArrayList localArrayList = new ArrayList();
+    int m = paramString.length();
+    int j = 0;
+    int i;
+    int k;
+    if (j <= m)
+    {
+      Iterator localIterator = paramArrayList.iterator();
+      i = 0;
+      k = m;
+      label65:
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        if (!Util.isNullOrNil(str))
+        {
+          int n = paramString.indexOf(str, j);
+          if ((n < 0) || ((n >= k) && ((n != k) || (str.length() <= i)))) {
+            break label241;
+          }
+          i = str.length();
+          k = n;
+        }
+      }
+    }
+    label241:
+    for (;;)
+    {
+      break label65;
+      if (k < m)
+      {
+        if (k > j) {
+          localArrayList.add(new b(j, k - j, false));
+        }
+        localArrayList.add(new b(k, i, true));
+        j = k + i;
+        break;
+      }
+      if (k > j) {
+        localArrayList.add(new b(j, k - j, false));
+      }
+      AppMethodBeat.o(143294);
+      return localArrayList;
+    }
   }
   
-  public static boolean hYI()
+  final b aEe(int paramInt)
   {
-    if (XVq) {
-      return XVp;
+    AppMethodBeat.i(143291);
+    if (this.afLH != null)
+    {
+      Iterator localIterator = this.afLH.iterator();
+      while (localIterator.hasNext())
+      {
+        b localb = (b)localIterator.next();
+        if ((paramInt <= localb.start + localb.length) && (paramInt > localb.start))
+        {
+          AppMethodBeat.o(143291);
+          return localb;
+        }
+      }
     }
-    return true;
+    AppMethodBeat.o(143291);
+    return null;
   }
   
-  public static void hYJ()
+  static final class b
   {
-    AppMethodBeat.i(272908);
-    Log.i("MicroMsg.VoiceStateHolder", "open appBrand");
-    Hg(false);
-    AppMethodBeat.o(272908);
+    boolean afLN;
+    int length;
+    int start;
+    
+    b(int paramInt1, int paramInt2, boolean paramBoolean)
+    {
+      this.start = paramInt1;
+      this.length = paramInt2;
+      this.afLN = paramBoolean;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.tools.y
  * JD-Core Version:    0.7.0.1
  */

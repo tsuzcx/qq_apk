@@ -1,10 +1,14 @@
 package com.tencent.mm.model;
 
-import java.util.List;
-
-public abstract interface au
+public abstract class au
 {
-  public abstract List<at> getDataTransferList();
+  public long okO = 0L;
+  
+  public abstract String getTag();
+  
+  public abstract void vb(int paramInt);
+  
+  public abstract boolean vc(int paramInt);
 }
 
 

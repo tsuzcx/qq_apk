@@ -1,8 +1,5 @@
 package com.github.henryye.nativeiv.bitmap;
 
-import androidx.annotation.Keep;
-
-@Keep
 public abstract interface NativeBitmapStruct$GLType
 {
   public static final int GL_UNSIGNED_BYTE = 5121;

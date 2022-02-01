@@ -1,93 +1,119 @@
 package com.tencent.mm.ui.widget.pulldown;
 
-import android.view.View;
-import android.view.ViewConfiguration;
+import com.g.a.a.a.a;
+import com.g.a.a.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/widget/pulldown/SimpleOverScrollCallback;", "Lcom/tencent/mm/ui/widget/pulldown/IOverScrollCallback;", "()V", "mMinFlingVelocity", "", "canScroll", "", "overScroll", "Lcom/tencent/mm/ui/widget/pulldown/IOverScroll;", "child", "Landroid/view/View;", "scrollDirection", "getDampingFactor", "", "getMaxFlingOffset", "getMinFlingVelocity", "onOffsetChanged", "", "offset", "onSpringBack", "onStopSpringingBack", "weui-native-android-lib_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/widget/pulldown/NestedBounceParam;", "", "()V", "DECELERATE_RATIO_DEFAULT", "", "MAX_BOUNCE_BACK_DURATION_MS_DEFAULT", "", "MAX_DAMPING_FACTOR", "MIN_BOUNCE_BACK_DURATION_MS_DEFAULT", "MIN_DAMPING_FACTOR", "curMode", "getCurMode", "()I", "setCurMode", "(I)V", "decelerateRatio", "getDecelerateRatio", "()F", "setDecelerateRatio", "(F)V", "isPullDownDebugOpen", "", "()Z", "setPullDownDebugOpen", "(Z)V", "maxDampingFactor", "getMaxDampingFactor", "setMaxDampingFactor", "maxSpringDuration", "getMaxSpringDuration", "setMaxSpringDuration", "minDampingFactor", "getMinDampingFactor", "setMinDampingFactor", "minSpringDuration", "getMinSpringDuration", "setMinSpringDuration", "overScrollMode1", "Lcom/soon/xanimexample/scroll/pulldown/OverScrollMode1;", "getOverScrollMode1", "()Lcom/soon/xanimexample/scroll/pulldown/OverScrollMode1;", "overScrollMode2", "Lcom/soon/xanimexample/scroll/pulldown/OverScrollMode2;", "getOverScrollMode2", "()Lcom/soon/xanimexample/scroll/pulldown/OverScrollMode2;", "getOverScrollMode", "Lcom/tencent/mm/ui/widget/pulldown/IOverScroll;", "weui-native-android-lib_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class j
 {
-  private int vZ;
+  public static final j aglL;
+  private static float aglM;
+  private static int aglN;
+  private static int aglO;
+  private static int aglP;
+  private static int aglQ;
+  private static final a aglR;
+  private static final b aglS;
+  private static boolean aglT;
+  private static int niy;
   
-  public static boolean a(f paramf, View paramView)
+  static
   {
-    AppMethodBeat.i(249584);
-    p.k(paramf, "overScroll");
-    p.k(paramView, "child");
-    AppMethodBeat.o(249584);
-    return false;
+    AppMethodBeat.i(252009);
+    aglL = new j();
+    aglM = 1.0F;
+    aglN = 800;
+    aglO = 400;
+    aglP = 1;
+    aglQ = 8;
+    aglR = new a();
+    aglS = new b();
+    AppMethodBeat.o(252009);
   }
   
-  public static int b(f paramf, View paramView, int paramInt)
+  public static void NK(boolean paramBoolean)
   {
-    AppMethodBeat.i(249581);
-    p.k(paramf, "overScroll");
-    p.k(paramView, "child");
-    if ((paramInt == 2) || (paramInt == 8))
-    {
-      paramInt = paramView.getHeight() / 10;
-      AppMethodBeat.o(249581);
-      return paramInt;
+    aglT = paramBoolean;
+  }
+  
+  public static void aFt(int paramInt)
+  {
+    aglN = paramInt;
+  }
+  
+  public static void aFu(int paramInt)
+  {
+    aglO = paramInt;
+  }
+  
+  public static void aFv(int paramInt)
+  {
+    aglP = paramInt;
+  }
+  
+  public static void aFw(int paramInt)
+  {
+    aglQ = paramInt;
+  }
+  
+  public static void aFx(int paramInt)
+  {
+    niy = paramInt;
+  }
+  
+  public static void ek(float paramFloat)
+  {
+    aglM = paramFloat;
+  }
+  
+  public static float jIQ()
+  {
+    return aglM;
+  }
+  
+  public static int jIR()
+  {
+    return aglN;
+  }
+  
+  public static int jIS()
+  {
+    return aglO;
+  }
+  
+  public static int jIT()
+  {
+    return aglP;
+  }
+  
+  public static int jIU()
+  {
+    return aglQ;
+  }
+  
+  public static int jIV()
+  {
+    return niy;
+  }
+  
+  public static boolean jIW()
+  {
+    return aglT;
+  }
+  
+  public static h jIX()
+  {
+    if (niy == 1) {
+      return (h)aglS;
     }
-    paramInt = -paramView.getHeight() / 10;
-    AppMethodBeat.o(249581);
-    return paramInt;
-  }
-  
-  public static boolean b(f paramf, View paramView)
-  {
-    AppMethodBeat.i(249580);
-    p.k(paramf, "overScroll");
-    p.k(paramView, "child");
-    AppMethodBeat.o(249580);
-    return true;
-  }
-  
-  public static void d(f paramf, View paramView)
-  {
-    AppMethodBeat.i(249585);
-    p.k(paramf, "overScroll");
-    p.k(paramView, "child");
-    AppMethodBeat.o(249585);
-  }
-  
-  public static float e(f paramf, View paramView)
-  {
-    AppMethodBeat.i(292982);
-    p.k(paramf, "overScroll");
-    p.k(paramView, "child");
-    float f1 = Math.abs(paramf.cm(paramView)) * 1.0F / paramView.getHeight();
-    paramf = i.YtH;
-    float f2 = i.idL();
-    paramf = i.YtH;
-    int i = i.idM();
-    paramf = i.YtH;
-    float f3 = i - i.idL();
-    AppMethodBeat.o(292982);
-    return f1 * f3 + f2;
-  }
-  
-  public final int c(f paramf, View paramView)
-  {
-    AppMethodBeat.i(249583);
-    p.k(paramf, "overScroll");
-    p.k(paramView, "child");
-    if (this.vZ <= 0)
-    {
-      paramf = ViewConfiguration.get(paramView.getContext());
-      p.j(paramf, "ViewConfiguration.get(child.context)");
-      this.vZ = (paramf.getScaledMinimumFlingVelocity() * 15);
-    }
-    int i = this.vZ;
-    AppMethodBeat.o(249583);
-    return i;
+    return (h)aglR;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.widget.pulldown.j
  * JD-Core Version:    0.7.0.1
  */

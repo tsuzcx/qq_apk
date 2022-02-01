@@ -5,8 +5,8 @@ import java.util.List;
 public abstract class r
   extends q
 {
-  private boolean Xts;
-  private List<String> jkb;
+  private boolean afeW;
+  private List<String> lMF;
   
   public r(o paramo, List<String> paramList, boolean paramBoolean1, boolean paramBoolean2)
   {
@@ -21,8 +21,8 @@ public abstract class r
   private r(o paramo, List<String> paramList, boolean paramBoolean1, boolean paramBoolean2, int paramInt, boolean paramBoolean3)
   {
     super(paramo, paramBoolean2, paramInt, paramBoolean3);
-    this.jkb = paramList;
-    this.Xts = paramBoolean1;
+    this.lMF = paramList;
+    this.afeW = paramBoolean1;
   }
   
   public r(o paramo, List<String> paramList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
@@ -30,21 +30,21 @@ public abstract class r
     this(paramo, paramList, paramBoolean1, paramBoolean2, 0, paramBoolean3);
   }
   
-  public void ate() {}
-  
-  public int bzR(String paramString)
+  public int aJM(String paramString)
   {
     return -1;
   }
   
-  protected final List<String> csq()
+  public void aNm() {}
+  
+  protected final List<String> cVa()
   {
-    return this.jkb;
+    return this.lMF;
   }
   
-  protected final boolean hVe()
+  protected final boolean jyS()
   {
-    return this.Xts;
+    return this.afeW;
   }
 }
 

@@ -2,69 +2,77 @@ package kotlin.l.b.a.b.d.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collection;
-import kotlin.a.j;
-import kotlin.g.b.p;
+import kotlin.a.p;
+import kotlin.g.b.s;
 import kotlin.l.b.a.b.b.e;
-import kotlin.l.b.a.b.m.ab;
+import kotlin.l.b.a.b.m.ad;
 
 public final class x
-  implements w<k>
+  implements w<j>
 {
-  public static final x aaYK;
+  public static final x aiXg;
   
   static
   {
     AppMethodBeat.i(58268);
-    aaYK = new x();
+    aiXg = new x();
     AppMethodBeat.o(58268);
   }
   
-  public final ab V(ab paramab)
+  public final ad M(ad paramad)
   {
     AppMethodBeat.i(58270);
-    p.k(paramab, "kotlinType");
-    p.k(paramab, "kotlinType");
+    s.u(this, "this");
+    s.u(paramad, "kotlinType");
     AppMethodBeat.o(58270);
     return null;
   }
   
-  public final void a(ab paramab, e parame)
+  public final ad N(Collection<? extends ad> paramCollection)
+  {
+    AppMethodBeat.i(58264);
+    s.u(paramCollection, "types");
+    paramCollection = new AssertionError(s.X("There should be no intersection type in existing descriptors, but found: ", p.a((Iterable)paramCollection, null, null, null, 0, null, null, 63)));
+    AppMethodBeat.o(58264);
+    throw paramCollection;
+  }
+  
+  public final void a(ad paramad, e parame)
   {
     AppMethodBeat.i(58267);
-    p.k(paramab, "kotlinType");
-    p.k(parame, "descriptor");
+    s.u(paramad, "kotlinType");
+    s.u(parame, "descriptor");
     AppMethodBeat.o(58267);
   }
   
-  public final String u(e parame)
+  public final boolean ksY()
   {
-    AppMethodBeat.i(58266);
-    p.k(parame, "classDescriptor");
-    AppMethodBeat.o(58266);
-    return null;
+    AppMethodBeat.i(191939);
+    s.u(this, "this");
+    AppMethodBeat.o(191939);
+    return true;
   }
   
   public final String v(e parame)
   {
-    AppMethodBeat.i(58269);
-    p.k(parame, "classDescriptor");
-    p.k(parame, "classDescriptor");
-    AppMethodBeat.o(58269);
+    AppMethodBeat.i(58266);
+    s.u(parame, "classDescriptor");
+    AppMethodBeat.o(58266);
     return null;
   }
   
-  public final ab w(Collection<? extends ab> paramCollection)
+  public final String w(e parame)
   {
-    AppMethodBeat.i(58264);
-    p.k(paramCollection, "types");
-    paramCollection = (Throwable)new AssertionError("There should be no intersection type in existing descriptors, but found: " + j.a((Iterable)paramCollection, null, null, null, 0, null, null, 63));
-    AppMethodBeat.o(58264);
-    throw paramCollection;
+    AppMethodBeat.i(58269);
+    s.u(this, "this");
+    s.u(parame, "classDescriptor");
+    AppMethodBeat.o(58269);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.d.b.x
  * JD-Core Version:    0.7.0.1
  */

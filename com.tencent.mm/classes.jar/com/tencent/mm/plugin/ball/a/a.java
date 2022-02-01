@@ -30,47 +30,47 @@ import java.util.List;
 public final class a
   extends RecyclerView.a<a>
 {
-  private static final int rXA;
-  private static final int rXB;
-  private static final int rXC;
-  private static final int rXD;
-  private static final int rXE;
-  private static final int rXF;
-  private static final int rXG;
-  private static final int rXH;
-  private static final int rXt;
-  private static final int rXu;
-  private static final int rXv;
-  private static final int rXw;
-  private static final int rXx;
-  private static final int rXy;
-  private static final int rXz;
+  private static final int viK;
+  private static final int viL;
+  private static final int viM;
+  private static final int viN;
+  private static final int viO;
+  private static final int viP;
+  private static final int viQ;
+  private static final int viR;
+  private static final int viS;
+  private static final int viT;
+  private static final int viU;
+  private static final int viV;
+  private static final int viW;
+  private static final int viX;
+  private static final int viY;
   private Context mContext;
-  public boolean rXn;
-  public boolean rXo;
-  public List<BallInfo> rXp;
-  public com.tencent.mm.plugin.ball.d.b rXq;
-  public boolean rXr;
-  public d.b rXs;
+  public boolean viE;
+  public boolean viF;
+  public List<BallInfo> viG;
+  public com.tencent.mm.plugin.ball.d.b viH;
+  public boolean viI;
+  public d.b viJ;
   
   static
   {
     AppMethodBeat.i(106029);
-    rXt = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_menu_item_width_active);
-    rXu = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_menu_item_height_active);
-    rXv = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_menu_item_width_passive);
-    rXw = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_menu_item_height_passive);
-    rXx = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_menu_item_shadow_horizontal);
-    rXy = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_menu_item_shadow_top);
-    rXz = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_menu_item_shadow_bottom);
-    rXA = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_menu_item_padding_start_left_active);
-    rXB = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_menu_item_padding_start_right_active);
-    rXC = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_menu_item_padding_end_left_active);
-    rXD = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_menu_item_padding_end_right_active);
-    rXE = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_menu_item_padding_start_left_passive);
-    rXF = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_menu_item_padding_start_right_passive);
-    rXG = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_menu_item_padding_end_left_passive);
-    rXH = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_menu_item_padding_end_right_passive);
+    viK = com.tencent.mm.cd.a.bs(MMApplicationContext.getContext(), a.c.float_menu_item_width_active);
+    viL = com.tencent.mm.cd.a.bs(MMApplicationContext.getContext(), a.c.float_menu_item_height_active);
+    viM = com.tencent.mm.cd.a.bs(MMApplicationContext.getContext(), a.c.float_menu_item_width_passive);
+    viN = com.tencent.mm.cd.a.bs(MMApplicationContext.getContext(), a.c.float_menu_item_height_passive);
+    viO = com.tencent.mm.cd.a.bs(MMApplicationContext.getContext(), a.c.float_menu_item_shadow_horizontal);
+    viP = com.tencent.mm.cd.a.bs(MMApplicationContext.getContext(), a.c.float_menu_item_shadow_top);
+    viQ = com.tencent.mm.cd.a.bs(MMApplicationContext.getContext(), a.c.float_menu_item_shadow_bottom);
+    viR = com.tencent.mm.cd.a.bs(MMApplicationContext.getContext(), a.c.float_menu_item_padding_start_left_active);
+    viS = com.tencent.mm.cd.a.bs(MMApplicationContext.getContext(), a.c.float_menu_item_padding_start_right_active);
+    viT = com.tencent.mm.cd.a.bs(MMApplicationContext.getContext(), a.c.float_menu_item_padding_end_left_active);
+    viU = com.tencent.mm.cd.a.bs(MMApplicationContext.getContext(), a.c.float_menu_item_padding_end_right_active);
+    viV = com.tencent.mm.cd.a.bs(MMApplicationContext.getContext(), a.c.float_menu_item_padding_start_left_passive);
+    viW = com.tencent.mm.cd.a.bs(MMApplicationContext.getContext(), a.c.float_menu_item_padding_start_right_passive);
+    viX = com.tencent.mm.cd.a.bs(MMApplicationContext.getContext(), a.c.float_menu_item_padding_end_left_passive);
+    viY = com.tencent.mm.cd.a.bs(MMApplicationContext.getContext(), a.c.float_menu_item_padding_end_right_passive);
     AppMethodBeat.o(106029);
   }
   
@@ -79,15 +79,15 @@ public final class a
     this.mContext = paramContext;
   }
   
-  private boolean Fc(int paramInt)
+  private boolean FD(int paramInt)
   {
-    AppMethodBeat.i(187748);
-    if ((paramInt >= 0) && (paramInt < this.rXp.size()))
+    AppMethodBeat.i(288314);
+    if ((paramInt >= 0) && (paramInt < this.viG.size()))
     {
-      AppMethodBeat.o(187748);
+      AppMethodBeat.o(288314);
       return true;
     }
-    AppMethodBeat.o(187748);
+    AppMethodBeat.o(288314);
     return false;
   }
   
@@ -111,10 +111,10 @@ public final class a
     AppMethodBeat.i(106025);
     if (paramInt != -1) {
       if (ImgUtil.isGif(MMApplicationContext.getContext(), paramInt)) {
-        if (parama.rXY != paramInt)
+        if (parama.vjo != paramInt)
         {
-          parama.rXO.setVisibility(8);
-          parama.rXP.setVisibility(0);
+          parama.vje.setVisibility(8);
+          parama.vjf.setVisibility(0);
         }
       }
     }
@@ -123,11 +123,11 @@ public final class a
       int i;
       try
       {
-        parama.rXP.setImageResource(paramInt);
-        if (paramBallInfo.progress >= 0L)
+        parama.vjf.setImageResource(paramInt);
+        if (paramBallInfo.hQO >= 0L)
         {
-          parama.rXP.setProgress(paramBallInfo.progress);
-          parama.rXY = paramInt;
+          parama.vjf.setProgress(paramBallInfo.hQO);
+          parama.vjo = paramInt;
           AppMethodBeat.o(106025);
           return;
         }
@@ -135,22 +135,22 @@ public final class a
       catch (Exception localException1)
       {
         Log.printErrStackTrace("MicroMsg.FloatBallMenuAdapter", localException1, "setIconAnimateView exception:%s", new Object[] { localException1 });
-        i = com.tencent.mm.plugin.ball.f.d.Fn(paramBallInfo.state);
-        parama.rXP.setImageResource(i);
+        i = com.tencent.mm.plugin.ball.f.d.K(paramBallInfo);
+        parama.vjf.setImageResource(i);
         continue;
-        parama.rXP.setProgress(-2147483648L);
+        parama.vjf.setProgress(-2147483648L);
         continue;
       }
-      if (parama.rXY != paramInt)
+      if (parama.vjo != paramInt)
       {
-        parama.rXP.setVisibility(8);
-        parama.rXO.setVisibility(0);
+        parama.vjf.setVisibility(8);
+        parama.vje.setVisibility(0);
       }
       try
       {
-        parama.rXO.setImageResource(paramInt);
-        if (paramBallInfo.progress >= 0L) {
-          parama.rXO.setProgress(paramBallInfo.progress);
+        parama.vje.setImageResource(paramInt);
+        if (paramBallInfo.hQO >= 0L) {
+          parama.vje.setProgress(paramBallInfo.hQO);
         }
       }
       catch (Exception localException2)
@@ -158,24 +158,24 @@ public final class a
         for (;;)
         {
           Log.printErrStackTrace("MicroMsg.FloatBallMenuAdapter", localException2, "setIconImageView exception:%s", new Object[] { localException2 });
-          i = com.tencent.mm.plugin.ball.f.d.Fm(paramBallInfo.type);
-          parama.rXO.setImageResource(i);
-          paramBallInfo.qpN = i;
+          i = com.tencent.mm.plugin.ball.f.d.J(paramBallInfo);
+          parama.vje.setImageResource(i);
+          paramBallInfo.tus = i;
         }
-        parama.rXO.setProgress(-2147483648L);
+        parama.vje.setProgress(-2147483648L);
       }
       continue;
-      parama.rXO.setVisibility(4);
-      parama.rXP.setVisibility(4);
+      parama.vje.setVisibility(4);
+      parama.vjf.setVisibility(4);
     }
   }
   
   public final int getItemCount()
   {
     AppMethodBeat.i(106022);
-    if (com.tencent.mm.plugin.ball.f.d.checkListNotEmpty(this.rXp))
+    if (com.tencent.mm.plugin.ball.f.d.checkListNotEmpty(this.viG))
     {
-      int i = this.rXp.size();
+      int i = this.viG.size();
       AppMethodBeat.o(106022);
       return i;
     }
@@ -186,9 +186,10 @@ public final class a
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(106023);
-    if ((com.tencent.mm.plugin.ball.f.d.checkListNotEmpty(this.rXp)) && (paramInt >= 0) && (paramInt < this.rXp.size()))
+    if ((com.tencent.mm.plugin.ball.f.d.checkListNotEmpty(this.viG)) && (paramInt >= 0) && (paramInt < this.viG.size()))
     {
-      if (((BallInfo)this.rXp.get(paramInt)).rYr)
+      BallInfo localBallInfo = (BallInfo)this.viG.get(paramInt);
+      if ((localBallInfo.vjH) || (localBallInfo.type == 20))
       {
         AppMethodBeat.o(106023);
         return 2;
@@ -204,41 +205,41 @@ public final class a
     extends RecyclerView.v
   {
     public int position;
-    public BallInfo rXN;
-    public CircleImageView rXO;
-    public CircleAnimateView rXP;
-    public ImageView rXQ;
-    public FrameLayout rXR;
-    public TextView rXS;
-    public TextView rXT;
-    public LinearLayout rXU;
-    public ImageView rXV;
-    public LinearLayout rXW;
-    public LinearLayout rXX;
-    public int rXY;
+    public BallInfo vjd;
+    public CircleImageView vje;
+    public CircleAnimateView vjf;
+    public ImageView vjg;
+    public FrameLayout vjh;
+    public TextView vji;
+    public TextView vjj;
+    public LinearLayout vjk;
+    public ImageView vjl;
+    public LinearLayout vjm;
+    public LinearLayout vjn;
+    public int vjo;
     
     public a(View paramView)
     {
       super();
       AppMethodBeat.i(106021);
-      this.rXY = -1;
-      this.rXO = ((CircleImageView)paramView.findViewById(a.e.iconImageView));
-      this.rXP = ((CircleAnimateView)paramView.findViewById(a.e.iconAnimateView));
-      this.rXQ = ((ImageView)paramView.findViewById(a.e.removeImageView));
-      this.rXR = ((FrameLayout)paramView.findViewById(a.e.removeFrameLayout));
-      this.rXS = ((TextView)paramView.findViewById(a.e.nameTextView));
-      this.rXT = ((TextView)paramView.findViewById(a.e.nameTagTextView));
-      this.rXU = ((LinearLayout)paramView.findViewById(a.e.nameLayout));
-      this.rXV = ((ImageView)paramView.findViewById(a.e.arrowImageView));
-      this.rXW = ((LinearLayout)paramView.findViewById(a.e.menu_content_layout));
-      this.rXX = ((LinearLayout)paramView.findViewById(a.e.menu_custom_view_layout));
+      this.vjo = -1;
+      this.vje = ((CircleImageView)paramView.findViewById(a.e.iconImageView));
+      this.vjf = ((CircleAnimateView)paramView.findViewById(a.e.iconAnimateView));
+      this.vjg = ((ImageView)paramView.findViewById(a.e.removeImageView));
+      this.vjh = ((FrameLayout)paramView.findViewById(a.e.removeFrameLayout));
+      this.vji = ((TextView)paramView.findViewById(a.e.nameTextView));
+      this.vjj = ((TextView)paramView.findViewById(a.e.nameTagTextView));
+      this.vjk = ((LinearLayout)paramView.findViewById(a.e.nameLayout));
+      this.vjl = ((ImageView)paramView.findViewById(a.e.arrowImageView));
+      this.vjm = ((LinearLayout)paramView.findViewById(a.e.menu_content_layout));
+      this.vjn = ((LinearLayout)paramView.findViewById(a.e.menu_custom_view_layout));
       AppMethodBeat.o(106021);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.a.a
  * JD-Core Version:    0.7.0.1
  */

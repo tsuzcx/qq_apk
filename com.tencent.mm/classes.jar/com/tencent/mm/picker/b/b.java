@@ -3,77 +3,77 @@ package com.tencent.mm.picker.b;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.picker.c.a;
-import com.tencent.mm.picker.d.d;
 import com.tencent.mm.picker.d.e;
+import com.tencent.mm.picker.d.f;
 import com.tencent.mm.picker.f.c;
 import java.util.Calendar;
 
 public final class b
 {
-  private a mBU;
+  private a pyC;
   
-  public b(Context paramContext, e parame)
+  public b(Context paramContext, f paramf)
   {
     AppMethodBeat.i(175330);
-    this.mBU = new a(2);
-    this.mBU.context = paramContext;
-    this.mBU.mBX = parame;
+    this.pyC = new a(2);
+    this.pyC.context = paramContext;
+    this.pyC.pyF = paramf;
     AppMethodBeat.o(175330);
   }
   
-  public final b a(d paramd)
+  public final b a(e parame)
   {
-    this.mBU.mBY = paramd;
+    this.pyC.pyG = parame;
     return this;
   }
   
   public final b a(Calendar paramCalendar)
   {
-    this.mBU.mCd = paramCalendar;
+    this.pyC.pyL = paramCalendar;
     return this;
   }
   
   public final b a(Calendar paramCalendar1, Calendar paramCalendar2)
   {
-    this.mBU.mCe = paramCalendar1;
-    this.mBU.mCf = paramCalendar2;
+    this.pyC.pyM = paramCalendar1;
+    this.pyC.pyN = paramCalendar2;
     return this;
   }
   
   public final void a(c paramc)
   {
     AppMethodBeat.i(175331);
-    paramc.b(this.mBU);
+    paramc.b(this.pyC);
     AppMethodBeat.o(175331);
   }
   
-  public final b buN()
+  public final b bSW()
   {
-    this.mBU.mCa = false;
+    this.pyC.pyI = false;
     return this;
   }
   
-  public final b c(boolean[] paramArrayOfBoolean)
+  public final b d(boolean[] paramArrayOfBoolean)
   {
-    this.mBU.mCc = paramArrayOfBoolean;
+    this.pyC.pyK = paramArrayOfBoolean;
     return this;
   }
   
-  public final b xQ(int paramInt)
+  public final b xV(int paramInt)
   {
-    this.mBU.mBx = paramInt;
+    this.pyC.pyf = paramInt;
     return this;
   }
   
-  public final b xR(int paramInt)
+  public final b xW(int paramInt)
   {
-    this.mBU.bwU = paramInt;
+    this.pyC.dpX = paramInt;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.picker.b.b
  * JD-Core Version:    0.7.0.1
  */

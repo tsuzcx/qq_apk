@@ -8,70 +8,77 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.d;
-import com.tencent.mm.loader.f.e;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.loader.m;
-import com.tencent.mm.plugin.finder.loader.t;
-import com.tencent.mm.plugin.finder.loader.w;
+import com.tencent.mm.loader.d.b.g;
+import com.tencent.mm.plugin.finder.live.p.e;
+import com.tencent.mm.plugin.finder.live.p.f;
+import com.tencent.mm.plugin.finder.loader.i;
+import com.tencent.mm.plugin.finder.loader.p;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.a.a;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/video/FinderLiveAnchorMicFeedView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bgView", "Landroid/widget/ImageView;", "fillMicUser", "", "coverUrl", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/video/FinderLiveAnchorMicFeedView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bgView", "Landroid/widget/ImageView;", "fillMicUser", "", "coverUrl", "", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderLiveAnchorMicFeedView
   extends RelativeLayout
 {
-  private final ImageView zpB;
+  private final ImageView Esh;
   
   public FinderLiveAnchorMicFeedView(Context paramContext)
   {
     this(paramContext, null, 0);
-    AppMethodBeat.i(285813);
-    AppMethodBeat.o(285813);
+    AppMethodBeat.i(335154);
+    AppMethodBeat.o(335154);
   }
   
   public FinderLiveAnchorMicFeedView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(285814);
-    AppMethodBeat.o(285814);
+    AppMethodBeat.i(335161);
+    AppMethodBeat.o(335161);
   }
   
   public FinderLiveAnchorMicFeedView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(285812);
-    View.inflate(paramContext, b.g.finder_live_feed_anchor_mic_ui, (ViewGroup)this);
-    paramContext = findViewById(b.f.finder_live_feed_anchor_mic_bg);
-    p.j(paramContext, "findViewById(R.id.finder_live_feed_anchor_mic_bg)");
-    this.zpB = ((ImageView)paramContext);
-    AppMethodBeat.o(285812);
+    AppMethodBeat.i(335147);
+    View.inflate(paramContext, p.f.CdM, (ViewGroup)this);
+    paramContext = findViewById(p.e.BKv);
+    s.s(paramContext, "findViewById(R.id.finder_live_feed_anchor_mic_bg)");
+    this.Esh = ((ImageView)paramContext);
+    AppMethodBeat.o(335147);
   }
   
-  public final void aGi(String paramString)
+  private static final void a(final FinderLiveAnchorMicFeedView paramFinderLiveAnchorMicFeedView, com.tencent.mm.loader.g.a.a parama, g paramg, Bitmap paramBitmap)
   {
-    AppMethodBeat.i(285811);
-    Log.i("Finder.Loader", "fillMicUser coverUrl:".concat(String.valueOf(paramString)));
+    AppMethodBeat.i(335167);
+    s.u(paramFinderLiveAnchorMicFeedView, "this$0");
+    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new a(paramBitmap, paramFinderLiveAnchorMicFeedView));
+    AppMethodBeat.o(335167);
+  }
+  
+  public final void aCl(String paramString)
+  {
+    AppMethodBeat.i(335188);
+    Log.i("Finder.Loader", s.X("fillMicUser coverUrl:", paramString));
     if (paramString != null)
     {
-      t localt = t.ztT;
-      t.dJe().bQ(new m(paramString)).a((e)new a(this)).tA();
-      AppMethodBeat.o(285811);
-      return;
+      p localp = p.ExI;
+      p.eCl().dk(new i(paramString)).a(new FinderLiveAnchorMicFeedView..ExternalSyntheticLambda0(this)).Td();
     }
-    AppMethodBeat.o(285811);
+    AppMethodBeat.o(335188);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "<anonymous parameter 0>", "Lcom/tencent/mm/loader/model/data/DataItem;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "resource", "Landroid/graphics/Bitmap;", "onImageLoadComplete", "com/tencent/mm/plugin/finder/video/FinderLiveAnchorMicFeedView$fillMicUser$1$1"})
-  static final class a<T, R>
-    implements e<w, Bitmap>
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    a(FinderLiveAnchorMicFeedView paramFinderLiveAnchorMicFeedView) {}
+    a(Bitmap paramBitmap, FinderLiveAnchorMicFeedView paramFinderLiveAnchorMicFeedView)
+    {
+      super();
+    }
   }
 }
 

@@ -23,7 +23,7 @@ public final class l
   public final void a(com.tencent.mm.ac.c.a parama, JSONObject paramJSONObject, final b.a<JSONObject> parama1)
   {
     AppMethodBeat.i(121336);
-    parama = parama.aGj();
+    parama = parama.aZk();
     a.a locala = new a.a();
     locala.id = parama.getString("__page_view_id", "");
     locala.width = paramJSONObject.optInt("width", parama.getInt("__page_view_width", 0));
@@ -38,7 +38,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.l
  * JD-Core Version:    0.7.0.1
  */

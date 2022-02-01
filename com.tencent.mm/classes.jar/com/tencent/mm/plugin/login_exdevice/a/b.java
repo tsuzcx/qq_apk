@@ -1,56 +1,56 @@
 package com.tencent.mm.plugin.login_exdevice.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.platformtools.z;
+import com.tencent.mm.platformtools.w;
 import com.tencent.mm.protocal.ac;
 import com.tencent.mm.protocal.l.d;
-import com.tencent.mm.protocal.protobuf.bxr;
-import com.tencent.mm.protocal.protobuf.bxs;
+import com.tencent.mm.protocal.protobuf.cmu;
+import com.tencent.mm.protocal.protobuf.cmv;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class b
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  public d kwO;
+  private h callback;
+  public c nao;
   
   public b()
   {
-    AppMethodBeat.i(292342);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new bxr();
-    ((d.a)localObject).lBV = new bxs();
-    ((d.a)localObject).funcId = getType();
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/getloginqrcode";
-    this.kwO = ((d.a)localObject).bgN();
-    localObject = (bxr)d.b.b(this.kwO.lBR);
+    AppMethodBeat.i(262302);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new cmu();
+    ((c.a)localObject).otF = new cmv();
+    ((c.a)localObject).funcId = getType();
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/getloginqrcode";
+    this.nao = ((c.a)localObject).bEF();
+    localObject = (cmu)c.b.b(this.nao.otB);
     byte[] arrayOfByte = Util.getUuidRandom();
-    ((bxr)localObject).RQU = z.aN(arrayOfByte);
-    ((bxr)localObject).RRw = 0;
-    this.kwO.setRsaInfo(ac.hpj());
-    this.kwO.option = 1;
-    this.kwO.getReqObj().setPassKey(arrayOfByte);
-    AppMethodBeat.o(292342);
+    ((cmu)localObject).YOj = w.aN(arrayOfByte);
+    ((cmu)localObject).YOO = 0;
+    this.nao.setRsaInfo(ac.iQe());
+    this.nao.option = 1;
+    this.nao.getReqObj().setPassKey(arrayOfByte);
+    AppMethodBeat.o(262302);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(292344);
-    this.callback = parami;
-    int i = dispatch(paramg, this.kwO, this);
-    AppMethodBeat.o(292344);
+    AppMethodBeat.i(262325);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.nao, this);
+    AppMethodBeat.o(262325);
     return i;
   }
   
@@ -61,12 +61,12 @@ public final class b
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(292343);
+    AppMethodBeat.i(262311);
     Log.i("MicroMsg.NetSceneGetLoginQRCode", "errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(292343);
+    AppMethodBeat.o(262311);
   }
 }
 

@@ -10,15 +10,15 @@ import java.util.HashMap;
 public final class b
   implements a, com.tencent.mm.kernel.api.bucket.d, com.tencent.mm.plugin.downloader.a.d
 {
-  private com.tencent.mm.plugin.downloader.g.b uec;
-  private long ued = 0L;
+  private com.tencent.mm.plugin.downloader.f.b xkf;
+  private long xkg = 0L;
   
-  public final com.tencent.mm.plugin.downloader.g.b bbS()
+  public final com.tencent.mm.plugin.downloader.f.b bzH()
   {
     AppMethodBeat.i(88817);
-    com.tencent.mm.kernel.h.aHH();
-    com.tencent.mm.kernel.h.aHE().aGH();
-    com.tencent.mm.plugin.downloader.g.b localb = this.uec;
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baC().aZJ();
+    com.tencent.mm.plugin.downloader.f.b localb = this.xkf;
     AppMethodBeat.o(88817);
     return localb;
   }
@@ -32,29 +32,29 @@ public final class b
     {
       public final String[] getSQLs()
       {
-        return com.tencent.mm.plugin.downloader.g.b.SQL_CREATE;
+        return com.tencent.mm.plugin.downloader.f.b.SQL_CREATE;
       }
     });
     AppMethodBeat.o(88818);
     return localHashMap;
   }
   
-  public final void md(boolean paramBoolean)
+  public final void nz(boolean paramBoolean)
   {
     AppMethodBeat.i(88819);
     Log.i("MicroMsg.FileDownloaderService", "active: ".concat(String.valueOf(paramBoolean)));
-    if ((!paramBoolean) && ((System.currentTimeMillis() - this.ued) / 1000L > 1800L))
+    if ((!paramBoolean) && ((System.currentTimeMillis() - this.xkg) / 1000L > 1800L))
     {
       ThreadPool.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(88815);
-          b.cPP();
+          b.dum();
           AppMethodBeat.o(88815);
         }
       }, "checkDownloadFile");
-      this.ued = System.currentTimeMillis();
+      this.xkg = System.currentTimeMillis();
     }
     AppMethodBeat.o(88819);
   }
@@ -64,7 +64,7 @@ public final class b
   public final void onDataBaseOpened(com.tencent.mm.storagebase.h paramh1, com.tencent.mm.storagebase.h paramh2)
   {
     AppMethodBeat.i(88816);
-    this.uec = new com.tencent.mm.plugin.downloader.g.b(paramh1);
+    this.xkf = new com.tencent.mm.plugin.downloader.f.b(paramh1);
     AppMethodBeat.o(88816);
   }
 }

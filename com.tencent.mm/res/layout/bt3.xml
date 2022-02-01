@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/h8z" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/j3r" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <RelativeLayout android:id="@id/g9_" android:background="@drawable/anx" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="35.0dip" android:layout_centerInParent="true">
-        <ImageView android:id="@id/g9a" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginLeft="10.0dip" android:src="@raw/pause_video_icon" android:layout_centerVertical="true" />
-        <TextView android:textSize="12.0dip" android:textColor="@android:color/white" android:gravity="center" android:id="@id/g9b" android:layout_width="40.0dip" android:layout_height="17.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:text="已暂停" android:includeFontPadding="false" android:layout_toRightOf="@id/g9a" android:layout_centerVertical="true" />
-    </RelativeLayout>
-    <RelativeLayout android:id="@id/aa4" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginBottom="4.0dip" android:layout_alignParentBottom="true">
-        <com.tencent.mm.pluginsdk.ui.tools.VideoPlayerSeekBar android:id="@id/gl_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
-        <RelativeLayout android:id="@id/dta" android:layout_width="74.0dip" android:layout_height="40.0dip" android:layout_marginRight="10.0dip" android:layout_toRightOf="@id/gl_" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
-            <ImageView android:id="@id/hw8" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@raw/icon_volume_off" android:scaleType="centerCrop" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-            <ImageView android:id="@id/hw7" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginRight="10.0dip" android:src="@raw/icon_video_short_screen" android:scaleType="centerCrop" android:layout_toLeftOf="@id/hw8" android:layout_centerVertical="true" />
-        </RelativeLayout>
-    </RelativeLayout>
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.view.refreshLayout.WxRefreshLayout android:id="@id/ijl" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.plugin.repairer.ui.demo.refresh.view.DemoHeader android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/iiv" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager" app:spanCount="2" />
+        <com.tencent.mm.plugin.repairer.ui.demo.refresh.view.DemoFooter android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </com.tencent.mm.view.refreshLayout.WxRefreshLayout>
+</LinearLayout>

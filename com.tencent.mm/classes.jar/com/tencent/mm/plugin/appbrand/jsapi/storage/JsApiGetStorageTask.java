@@ -5,8 +5,8 @@ import android.os.Parcelable.Creator;
 import com.tencent.luggage.a.e;
 import com.tencent.luggage.sdk.customize.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.d;
-import com.tencent.mm.plugin.appbrand.appstorage.q.a;
+import com.tencent.mm.plugin.appbrand.appstorage.g;
+import com.tencent.mm.plugin.appbrand.appstorage.v.a;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.sdk.platformtools.Log;
 
@@ -16,12 +16,12 @@ class JsApiGetStorageTask
   public static final Parcelable.Creator<JsApiGetStorageTask> CREATOR;
   public String appId;
   public String key;
-  public Runnable otv;
-  private boolean prC;
-  private int prD;
-  private int prE;
-  private int prF;
-  public int prw;
+  public Runnable rxj;
+  public int svX;
+  private boolean swf;
+  private int swg;
+  private int swh;
+  private int swi;
   public String taskId;
   public String type;
   public String value;
@@ -29,44 +29,44 @@ class JsApiGetStorageTask
   static
   {
     AppMethodBeat.i(147265);
-    CREATOR = new Parcelable.Creator() {};
+    CREATOR = new JsApiGetStorageTask.1();
     AppMethodBeat.o(147265);
   }
   
-  public final void RW()
+  public final void asn()
   {
     AppMethodBeat.i(147261);
-    if ((a)e.K(a.class) == null)
+    if ((a)e.T(a.class) == null)
     {
-      bPt();
+      cpA();
       AppMethodBeat.o(147261);
       return;
     }
-    Object localObject1 = ((a)e.K(a.class)).QF();
+    Object localObject1 = ((a)e.T(a.class)).aqR();
     if (localObject1 == null)
     {
-      bPt();
+      cpA();
       AppMethodBeat.o(147261);
       return;
     }
-    Object localObject2 = ((d)localObject1).l(this.prw, this.appId, this.key);
-    if ((q.a)localObject2[0] == q.a.nNn)
+    Object localObject2 = ((g)localObject1).p(this.svX, this.appId, this.key);
+    if ((v.a)localObject2[0] == v.a.qNg)
     {
       localObject1 = (String)localObject2[1];
       localObject2 = (String)localObject2[2];
-      if (p.o(new String[] { localObject1, localObject2 }) <= 102400) {
+      if (q.o(new String[] { localObject1, localObject2 }) <= 102400) {
         break label197;
       }
-      this.prE = p.o(new String[] { localObject1 });
-      this.prF = p.o(new String[] { localObject2 });
+      this.swh = q.o(new String[] { localObject1 });
+      this.swi = q.o(new String[] { localObject2 });
     }
     for (;;)
     {
       try
       {
-        p.f(this.taskId, new String[] { localObject1, localObject2 });
-        this.prC = true;
-        bPt();
+        q.f(this.taskId, new String[] { localObject1, localObject2 });
+        this.swf = true;
+        cpA();
         AppMethodBeat.o(147261);
         return;
       }
@@ -76,57 +76,57 @@ class JsApiGetStorageTask
         continue;
       }
       label197:
-      this.prC = false;
+      this.swf = false;
       this.value = localException;
       this.type = ((String)localObject2);
     }
   }
   
-  public final void bsK()
+  public final void bQr()
   {
     AppMethodBeat.i(147262);
-    if (this.prC) {}
+    if (this.swf) {}
     try
     {
-      String str = p.aiG(this.taskId);
-      if (str.length() == this.prE + this.prF)
+      String str = q.abG(this.taskId);
+      if (str.length() == this.swh + this.swi)
       {
-        this.value = str.substring(0, this.prE);
-        this.type = str.substring(this.prE, this.prE + this.prF);
+        this.value = str.substring(0, this.swh);
+        this.type = str.substring(this.swh, this.swh + this.swi);
       }
-      p.aiH(this.taskId);
+      q.abH(this.taskId);
     }
     catch (Exception localException)
     {
       for (;;)
       {
         Log.e("MicroMsg.JsApiGetStorageTask", localException.getMessage());
-        p.aiH(this.taskId);
+        q.abH(this.taskId);
       }
     }
     finally
     {
-      p.aiH(this.taskId);
+      q.abH(this.taskId);
       AppMethodBeat.o(147262);
     }
-    if (this.otv != null) {
-      this.otv.run();
+    if (this.rxj != null) {
+      this.rxj.run();
     }
     AppMethodBeat.o(147262);
   }
   
-  public final void f(Parcel paramParcel)
+  public final void h(Parcel paramParcel)
   {
     AppMethodBeat.i(147263);
     this.appId = paramParcel.readString();
-    this.prw = paramParcel.readInt();
+    this.svX = paramParcel.readInt();
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.prC = bool;
-      this.prD = paramParcel.readInt();
-      this.prE = paramParcel.readInt();
-      this.prF = paramParcel.readInt();
+      this.swf = bool;
+      this.swg = paramParcel.readInt();
+      this.swh = paramParcel.readInt();
+      this.swi = paramParcel.readInt();
       this.key = paramParcel.readString();
       this.value = paramParcel.readString();
       this.type = paramParcel.readString();
@@ -140,14 +140,14 @@ class JsApiGetStorageTask
   {
     AppMethodBeat.i(147264);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.prw);
-    if (this.prC) {}
+    paramParcel.writeInt(this.svX);
+    if (this.swf) {}
     for (byte b = 1;; b = 0)
     {
       paramParcel.writeByte(b);
-      paramParcel.writeInt(this.prD);
-      paramParcel.writeInt(this.prE);
-      paramParcel.writeInt(this.prF);
+      paramParcel.writeInt(this.swg);
+      paramParcel.writeInt(this.swh);
+      paramParcel.writeInt(this.swi);
       paramParcel.writeString(this.key);
       paramParcel.writeString(this.value);
       paramParcel.writeString(this.type);
@@ -159,7 +159,7 @@ class JsApiGetStorageTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.storage.JsApiGetStorageTask
  * JD-Core Version:    0.7.0.1
  */

@@ -2,21 +2,20 @@ package kotlin;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/UNINITIALIZED_VALUE;", "", "()V", "kotlin-stdlib"})
+@Metadata(d1={""}, d2={"to", "Lkotlin/Pair;", "A", "B", "that", "(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;", "toList", "", "T", "Lkotlin/Triple;", "kotlin-stdlib"}, k=2, mv={1, 5, 1})
 public final class v
 {
-  public static final v aazM;
-  
-  static
+  public static final <A, B> r<A, B> Y(A paramA, B paramB)
   {
-    AppMethodBeat.i(129554);
-    aazM = new v();
-    AppMethodBeat.o(129554);
+    AppMethodBeat.i(129242);
+    paramA = new r(paramA, paramB);
+    AppMethodBeat.o(129242);
+    return paramA;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlin.v
  * JD-Core Version:    0.7.0.1
  */

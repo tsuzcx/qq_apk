@@ -1,37 +1,35 @@
 package kotlin.l.b.a.b.e.c.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Arrays;
-import kotlin.l.b.a.b.e.b.a;
+import kotlin.l.b.a.b.e.b.b.a;
+import kotlin.l.b.a.b.e.b.b.c;
 
 public final class c
-  extends a
 {
-  public static final c abfm;
-  public static final c abfn;
-  public static final a abfo;
+  public static final c ajdZ;
+  private static final b.a ajea;
+  private static final b.a ajeb;
+  private static final b.a ajec;
   
   static
   {
-    AppMethodBeat.i(59231);
-    abfo = new a((byte)0);
-    abfm = new c(new int[] { 1, 0, 3 });
-    abfn = new c(new int[0]);
-    AppMethodBeat.o(59231);
+    AppMethodBeat.i(59232);
+    ajdZ = new c();
+    ajea = b.c.kwX();
+    b.a locala = b.c.kwX();
+    ajeb = locala;
+    ajec = b.c.a((b.c)locala);
+    AppMethodBeat.o(59232);
   }
   
-  public c(int... paramVarArgs)
+  public static b.a kxJ()
   {
-    super(Arrays.copyOf(paramVarArgs, paramVarArgs.length));
-    AppMethodBeat.i(59230);
-    AppMethodBeat.o(59230);
+    return ajea;
   }
-  
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.e.c.a.c
  * JD-Core Version:    0.7.0.1
  */

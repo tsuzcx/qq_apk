@@ -2,7 +2,6 @@ package com.tencent.mm.plugin.qqmail.ui;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -18,15 +17,8 @@ import android.view.View.OnKeyListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AutoCompleteTextView;
-import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.Filter;
-import android.widget.Filter.FilterResults;
-import android.widget.Filterable;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
@@ -35,18 +27,16 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.qqmail.d.k;
-import com.tencent.mm.plugin.qqmail.d.l;
-import com.tencent.mm.plugin.qqmail.d.m;
-import com.tencent.mm.plugin.qqmail.d.v;
-import com.tencent.mm.plugin.qqmail.e.c;
 import com.tencent.mm.plugin.qqmail.e.d;
 import com.tencent.mm.plugin.qqmail.e.e;
 import com.tencent.mm.plugin.qqmail.e.f;
 import com.tencent.mm.plugin.qqmail.e.i;
+import com.tencent.mm.plugin.qqmail.model.j;
+import com.tencent.mm.plugin.qqmail.model.k;
+import com.tencent.mm.plugin.qqmail.model.l;
+import com.tencent.mm.plugin.qqmail.model.u;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -56,22 +46,22 @@ import java.util.regex.Pattern;
 public class MailAddrsViewControl
   extends RelativeLayout
 {
-  private static final Pattern HqB;
-  private GestureDetector HpL;
-  private a HqA;
-  private GestureDetector.SimpleOnGestureListener HqC;
-  private LinkedList<l> Hqv;
-  AutoCompleteTextView Hqw;
-  private b Hqx;
-  private c Hqy;
-  private View Hqz;
+  private static final Pattern Nop;
+  private GestureDetector Nnz;
+  private LinkedList<k> Noj;
+  AutoCompleteTextView Nok;
+  private MailAddrsViewControl.b Nol;
+  private c Nom;
+  private View Non;
+  private a Noo;
+  private GestureDetector.SimpleOnGestureListener Noq;
   private MMHandler handler;
-  private boolean nlF;
+  private boolean qiO;
   
   static
   {
     AppMethodBeat.i(123102);
-    HqB = Pattern.compile("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}\\@[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}(\\.[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25})+");
+    Nop = Pattern.compile("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}\\@[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}(\\.[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25})+");
     AppMethodBeat.o(123102);
   }
   
@@ -79,32 +69,32 @@ public class MailAddrsViewControl
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(123085);
-    this.nlF = false;
-    this.Hqv = new LinkedList();
+    this.qiO = false;
+    this.Noj = new LinkedList();
     this.handler = new MMHandler();
-    this.HqA = null;
-    this.HqC = new GestureDetector.SimpleOnGestureListener()
+    this.Noo = null;
+    this.Noq = new GestureDetector.SimpleOnGestureListener()
     {
-      private void ftc()
+      private void gEL()
       {
         AppMethodBeat.i(123071);
-        Object localObject2 = (l)MailAddrsViewControl.c(MailAddrsViewControl.this).getTag();
+        Object localObject2 = (k)MailAddrsViewControl.c(MailAddrsViewControl.this).getTag();
         if (MailAddrsViewControl.g(MailAddrsViewControl.this) != null)
         {
           MailAddrsViewControl.g(MailAddrsViewControl.this);
           MailAddrsViewControl.c(MailAddrsViewControl.this);
         }
         Object localObject1 = new Intent(MailAddrsViewControl.this.getContext(), MailAddrProfileUI.class);
-        ((Intent)localObject1).putExtra("name", ((l)localObject2).name);
-        ((Intent)localObject1).putExtra("addr", ((l)localObject2).Ejj);
+        ((Intent)localObject1).putExtra("name", ((k)localObject2).name);
+        ((Intent)localObject1).putExtra("addr", ((k)localObject2).KbS);
         if (!MailAddrsViewControl.h(MailAddrsViewControl.this)) {}
         for (boolean bool = true;; bool = false)
         {
           ((Intent)localObject1).putExtra("can_compose", bool);
           localObject2 = MailAddrsViewControl.this.getContext();
-          localObject1 = new com.tencent.mm.hellhoundlib.b.a().bm(localObject1);
-          com.tencent.mm.hellhoundlib.a.a.b(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aFh(), "com/tencent/mm/plugin/qqmail/ui/MailAddrsViewControl$8", "startActivity", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          ((Context)localObject2).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).sf(0));
+          localObject1 = new com.tencent.mm.hellhoundlib.b.a().cG(localObject1);
+          com.tencent.mm.hellhoundlib.a.a.b(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aYi(), "com/tencent/mm/plugin/qqmail/ui/MailAddrsViewControl$8", "startActivity", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          ((Context)localObject2).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).sb(0));
           com.tencent.mm.hellhoundlib.a.a.c(localObject2, "com/tencent/mm/plugin/qqmail/ui/MailAddrsViewControl$8", "startActivity", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(123071);
           return;
@@ -113,13 +103,13 @@ public class MailAddrsViewControl
       
       public final boolean onContextClick(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(250496);
+        AppMethodBeat.i(266997);
         b localb = new b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/MailAddrsViewControl$8", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
+        localb.cH(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/MailAddrsViewControl$8", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.aYj());
         boolean bool = super.onContextClick(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/qqmail/ui/MailAddrsViewControl$8", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(250496);
+        AppMethodBeat.o(266997);
         return bool;
       }
       
@@ -127,9 +117,9 @@ public class MailAddrsViewControl
       {
         AppMethodBeat.i(123074);
         b localb = new b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/MailAddrsViewControl$8", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
-        ftc();
+        localb.cH(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/MailAddrsViewControl$8", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.aYj());
+        gEL();
         com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/qqmail/ui/MailAddrsViewControl$8", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(123074);
         return true;
@@ -139,8 +129,8 @@ public class MailAddrsViewControl
       {
         AppMethodBeat.i(123073);
         b localb = new b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/MailAddrsViewControl$8", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aFi());
+        localb.cH(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/MailAddrsViewControl$8", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aYj());
         if ((MailAddrsViewControl.g(MailAddrsViewControl.this) != null) && (MailAddrsViewControl.c(MailAddrsViewControl.this) != null))
         {
           MailAddrsViewControl.g(MailAddrsViewControl.this);
@@ -155,29 +145,29 @@ public class MailAddrsViewControl
       {
         AppMethodBeat.i(123072);
         b localb = new b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/MailAddrsViewControl$8", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
+        localb.cH(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/MailAddrsViewControl$8", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aYj());
         if (!MailAddrsViewControl.h(MailAddrsViewControl.this)) {
-          ftc();
+          gEL();
         }
         com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/qqmail/ui/MailAddrsViewControl$8", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(123072);
         return true;
       }
     };
-    this.HpL = new GestureDetector(paramContext, this.HqC);
+    this.Nnz = new GestureDetector(paramContext, this.Noq);
     AppMethodBeat.o(123085);
   }
   
-  private static boolean aVl(String paramString)
+  private static boolean aSt(String paramString)
   {
     AppMethodBeat.i(123097);
-    boolean bool = HqB.matcher(paramString).matches();
+    boolean bool = Nop.matcher(paramString).matches();
     AppMethodBeat.o(123097);
     return bool;
   }
   
-  private void cg(String paramString, boolean paramBoolean)
+  private void cF(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(123100);
     paramString = paramString.trim();
@@ -186,70 +176,70 @@ public class MailAddrsViewControl
       AppMethodBeat.o(123100);
       return;
     }
-    Object localObject = ((k)h.ag(k.class)).getNormalMailAppService().Hmn.aVe(paramString);
+    Object localObject = ((j)h.az(j.class)).getNormalMailAppService().Nkb.aSm(paramString);
     if (((List)localObject).size() > 0)
     {
-      b((l)((List)localObject).get(0));
-      this.Hqw.setText("");
+      b((k)((List)localObject).get(0));
+      this.Nok.setText("");
       AppMethodBeat.o(123100);
       return;
     }
-    if (aVl(paramString))
+    if (aSt(paramString))
     {
-      localObject = new l();
-      ((l)localObject).name = paramString;
-      ((l)localObject).Ejj = paramString;
-      ((l)localObject).HlR = 0;
-      b((l)localObject);
-      this.Hqw.setText("");
+      localObject = new k();
+      ((k)localObject).name = paramString;
+      ((k)localObject).KbS = paramString;
+      ((k)localObject).NjF = 0;
+      b((k)localObject);
+      this.Nok.setText("");
       AppMethodBeat.o(123100);
       return;
     }
     if (paramBoolean)
     {
-      if (this.HqA != null) {
-        this.HqA.fsK();
+      if (this.Noo != null) {
+        this.Noo.gEt();
       }
       for (;;)
       {
-        this.Hqw.setText(paramString);
-        this.Hqw.setSelection(paramString.length());
+        this.Nok.setText(paramString);
+        this.Nok.setSelection(paramString.length());
         AppMethodBeat.o(123100);
         return;
         Toast.makeText(getContext(), e.i.plugin_qqmail_mail_addr_format_invalid, 2000).show();
       }
     }
-    if (this.HqA != null) {
-      this.HqA.b(this);
+    if (this.Noo != null) {
+      this.Noo.b(this);
     }
     AppMethodBeat.o(123100);
   }
   
-  private void fsZ()
+  private void gEI()
   {
     AppMethodBeat.i(177331);
     removeAllViews();
-    this.Hqv.clear();
-    ftb();
+    this.Noj.clear();
+    gEK();
     invalidate();
     AppMethodBeat.o(177331);
   }
   
-  public final void b(l paraml)
+  public final void b(k paramk)
   {
     AppMethodBeat.i(123092);
-    if (paraml == null)
+    if (paramk == null)
     {
       AppMethodBeat.o(123092);
       return;
     }
-    Object localObject1 = this.Hqv.iterator();
+    Object localObject1 = this.Noj.iterator();
     do
     {
       if (!((Iterator)localObject1).hasNext()) {
         break;
       }
-    } while (!((l)((Iterator)localObject1).next()).Ejj.equalsIgnoreCase(paraml.Ejj));
+    } while (!((k)((Iterator)localObject1).next()).KbS.equalsIgnoreCase(paramk.KbS));
     for (int i = 1;; i = 0)
     {
       if (i == 0)
@@ -257,24 +247,24 @@ public class MailAddrsViewControl
         Object localObject2 = (ViewGroup)View.inflate(getContext(), e.f.qqmail_comm_widget, null);
         localObject1 = (Button)((ViewGroup)localObject2).findViewById(e.e.qqmail_single_addr_btn);
         ((ViewGroup)localObject2).removeView((View)((Button)localObject1).getParent());
-        ((Button)localObject1).setText(paraml.name);
-        if (this.nlF) {
+        ((Button)localObject1).setText(paramk.name);
+        if (this.qiO) {
           ((Button)localObject1).setCompoundDrawables(null, null, null, null);
         }
-        ((Button)localObject1).setTag(this.Hqv.size());
+        ((Button)localObject1).setTag(this.Noj.size());
         localObject2 = (View)((Button)localObject1).getParent();
-        ((Button)localObject1).setTag(paraml);
+        ((Button)localObject1).setTag(paramk);
         ((View)localObject2).setVisibility(4);
-        ((View)localObject2).setTag(paraml);
-        addView((View)localObject2, this.Hqv.size());
-        this.Hqv.add(paraml);
+        ((View)localObject2).setTag(paramk);
+        addView((View)localObject2, this.Noj.size());
+        this.Noj.add(paramk);
         this.handler.postDelayed(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(123065);
-            this.HqE.invalidate();
-            this.HqE.setOnTouchListener(new View.OnTouchListener()
+            this.Nos.invalidate();
+            this.Nos.setOnTouchListener(new View.OnTouchListener()
             {
               public final boolean onTouch(View paramAnonymous2View, MotionEvent paramAnonymous2MotionEvent)
               {
@@ -285,10 +275,10 @@ public class MailAddrsViewControl
                   MailAddrsViewControl.a(MailAddrsViewControl.this, null);
                 }
                 MailAddrsViewControl.a(MailAddrsViewControl.this, paramAnonymous2View);
-                if ((MailAddrsViewControl.this.Hqw != null) && (paramAnonymous2MotionEvent.getAction() == 0))
+                if ((MailAddrsViewControl.this.Nok != null) && (paramAnonymous2MotionEvent.getAction() == 0))
                 {
-                  paramAnonymous2View = MailAddrsViewControl.2.this.HqE;
-                  if (MailAddrsViewControl.2.this.HqE.isSelected()) {
+                  paramAnonymous2View = MailAddrsViewControl.2.this.Nos;
+                  if (MailAddrsViewControl.2.this.Nos.isSelected()) {
                     break label264;
                   }
                 }
@@ -296,19 +286,19 @@ public class MailAddrsViewControl
                 for (boolean bool = true;; bool = false)
                 {
                   paramAnonymous2View.setSelected(bool);
-                  MailAddrsViewControl.this.Hqw.setVisibility(0);
-                  MailAddrsViewControl.this.Hqw.requestFocus();
+                  MailAddrsViewControl.this.Nok.setVisibility(0);
+                  MailAddrsViewControl.this.Nok.requestFocus();
                   ((InputMethodManager)MailAddrsViewControl.this.getContext().getSystemService("input_method")).toggleSoftInput(0, 1);
                   paramAnonymous2View = MailAddrsViewControl.d(MailAddrsViewControl.this);
-                  paramAnonymous2MotionEvent = new com.tencent.mm.hellhoundlib.b.a().bm(paramAnonymous2MotionEvent);
-                  com.tencent.mm.hellhoundlib.a.a.b(paramAnonymous2View, paramAnonymous2MotionEvent.aFh(), "com/tencent/mm/plugin/qqmail/ui/MailAddrsViewControl$2$1", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-                  bool = com.tencent.mm.hellhoundlib.a.a.a(paramAnonymous2View, paramAnonymous2View.onTouchEvent((MotionEvent)paramAnonymous2MotionEvent.sf(0)), "com/tencent/mm/plugin/qqmail/ui/MailAddrsViewControl$2$1", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+                  paramAnonymous2MotionEvent = new com.tencent.mm.hellhoundlib.b.a().cG(paramAnonymous2MotionEvent);
+                  com.tencent.mm.hellhoundlib.a.a.b(paramAnonymous2View, paramAnonymous2MotionEvent.aYi(), "com/tencent/mm/plugin/qqmail/ui/MailAddrsViewControl$2$1", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+                  bool = com.tencent.mm.hellhoundlib.a.a.a(paramAnonymous2View, paramAnonymous2View.onTouchEvent((MotionEvent)paramAnonymous2MotionEvent.sb(0)), "com/tencent/mm/plugin/qqmail/ui/MailAddrsViewControl$2$1", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
                   AppMethodBeat.o(123064);
                   return bool;
                 }
               }
             });
-            MailAddrsViewControl.this.ftb();
+            MailAddrsViewControl.this.gEK();
             MailAddrsViewControl.this.invalidate();
             AppMethodBeat.o(123065);
           }
@@ -319,18 +309,18 @@ public class MailAddrsViewControl
     }
   }
   
-  public final void c(l paraml)
+  public final void c(k paramk)
   {
     AppMethodBeat.i(123096);
     int i = 0;
-    while (i < this.Hqv.size())
+    while (i < this.Noj.size())
     {
-      l locall = (l)this.Hqv.get(i);
-      if (paraml.Ejj.equalsIgnoreCase(locall.Ejj))
+      k localk = (k)this.Noj.get(i);
+      if (paramk.KbS.equalsIgnoreCase(localk.KbS))
       {
         removeViewAt(i);
-        this.Hqv.remove(i);
-        ftb();
+        this.Noj.remove(i);
+        gEK();
         invalidate();
         AppMethodBeat.o(123096);
         return;
@@ -340,10 +330,10 @@ public class MailAddrsViewControl
     AppMethodBeat.o(123096);
   }
   
-  public final boolean fsX()
+  public final boolean gEG()
   {
     AppMethodBeat.i(123084);
-    Editable localEditable = this.Hqw.getText();
+    Editable localEditable = this.Nok.getText();
     if (localEditable != null)
     {
       if (localEditable.toString().length() <= 0)
@@ -358,11 +348,11 @@ public class MailAddrsViewControl
     return true;
   }
   
-  public final boolean fsY()
+  public final boolean gEH()
   {
     AppMethodBeat.i(123089);
-    String str = this.Hqw.getEditableText().toString().trim();
-    if ((!Util.isNullOrNil(str)) && (aVl(str)))
+    String str = this.Nok.getEditableText().toString().trim();
+    if ((!Util.isNullOrNil(str)) && (aSt(str)))
     {
       AppMethodBeat.o(123089);
       return true;
@@ -371,12 +361,12 @@ public class MailAddrsViewControl
     return false;
   }
   
-  public final boolean fta()
+  public final boolean gEJ()
   {
     AppMethodBeat.i(123098);
-    Iterator localIterator = this.Hqv.iterator();
+    Iterator localIterator = this.Noj.iterator();
     while (localIterator.hasNext()) {
-      if (!aVl(((l)localIterator.next()).Ejj))
+      if (!aSt(((k)localIterator.next()).KbS))
       {
         AppMethodBeat.o(123098);
         return false;
@@ -386,7 +376,7 @@ public class MailAddrsViewControl
     return true;
   }
   
-  final void ftb()
+  final void gEK()
   {
     AppMethodBeat.i(123099);
     int i2 = getChildCount();
@@ -416,7 +406,7 @@ public class MailAddrsViewControl
           localView.measure(View.MeasureSpec.makeMeasureSpec(getWidth(), -2147483648), View.MeasureSpec.makeMeasureSpec(getHeight(), -2147483648));
           k = localView.getMeasuredWidth();
         }
-        if ((this.Hqw == null) || (m != i2 - 1) || (this.Hqw.isFocused())) {
+        if ((this.Nok == null) || (m != i2 - 1) || (this.Nok.isFocused())) {
           break label236;
         }
       }
@@ -448,19 +438,19 @@ public class MailAddrsViewControl
   public String getAddrsString()
   {
     AppMethodBeat.i(123090);
-    if (fsY()) {
-      cg(this.Hqw.getEditableText().toString(), false);
+    if (gEH()) {
+      cF(this.Nok.getEditableText().toString(), false);
     }
     String str1 = "";
     int i = 0;
-    while (i < this.Hqv.size())
+    while (i < this.Noj.size())
     {
-      l locall = (l)this.Hqv.get(i);
+      k localk = (k)this.Noj.get(i);
       String str2 = str1;
       if (i != 0) {
         str2 = str1 + ",";
       }
-      str1 = str2 + locall.Ejj;
+      str1 = str2 + localk.KbS;
       i += 1;
     }
     AppMethodBeat.o(123090);
@@ -469,57 +459,39 @@ public class MailAddrsViewControl
   
   public String[] getMailAddrStringArray()
   {
-    AppMethodBeat.i(250357);
-    String[] arrayOfString = new String[this.Hqv.size()];
+    AppMethodBeat.i(266986);
+    String[] arrayOfString = new String[this.Noj.size()];
     int i = 0;
-    while (i < this.Hqv.size())
+    while (i < this.Noj.size())
     {
-      l locall = (l)this.Hqv.get(i);
-      arrayOfString[i] = (locall.name + " " + locall.Ejj);
+      k localk = (k)this.Noj.get(i);
+      arrayOfString[i] = (localk.name + " " + localk.KbS);
       i += 1;
     }
-    AppMethodBeat.o(250357);
+    AppMethodBeat.o(266986);
     return arrayOfString;
   }
   
-  public LinkedList<l> getMailAddrs()
+  public LinkedList<k> getMailAddrs()
   {
-    return this.Hqv;
+    return this.Noj;
   }
   
   public int getSize()
   {
     AppMethodBeat.i(123091);
-    int i = this.Hqv.size();
+    int i = this.Noj.size();
     AppMethodBeat.o(123091);
     return i;
   }
   
-  public final void k(List<l> paramList, boolean paramBoolean)
-  {
-    AppMethodBeat.i(250365);
-    if ((paramList == null) || (paramList.size() == 0))
-    {
-      AppMethodBeat.o(250365);
-      return;
-    }
-    if (paramBoolean) {
-      fsZ();
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      b((l)paramList.next());
-    }
-    AppMethodBeat.o(250365);
-  }
-  
-  public void setAddrsAdapter(b paramb)
+  public void setAddrsAdapter(MailAddrsViewControl.b paramb)
   {
     AppMethodBeat.i(123087);
-    if ((this.Hqw != null) && (paramb != null))
+    if ((this.Nok != null) && (paramb != null))
     {
-      this.Hqx = paramb;
-      this.Hqw.setAdapter(paramb);
+      this.Nol = paramb;
+      this.Nok.setAdapter(paramb);
     }
     AppMethodBeat.o(123087);
   }
@@ -527,8 +499,8 @@ public class MailAddrsViewControl
   public void setEditable(boolean paramBoolean)
   {
     AppMethodBeat.i(123086);
-    this.nlF = paramBoolean;
-    if ((paramBoolean) && (this.Hqw == null))
+    this.qiO = paramBoolean;
+    if ((paramBoolean) && (this.Nok == null))
     {
       int i = 0;
       for (;;)
@@ -540,83 +512,66 @@ public class MailAddrsViewControl
           if (!(localObject instanceof AutoCompleteTextView)) {
             break label167;
           }
-          this.Hqw = ((AutoCompleteTextView)localObject);
+          this.Nok = ((AutoCompleteTextView)localObject);
         }
         label167:
         do
         {
-          if (this.Hqw == null) {
+          if (this.Nok == null) {
             break;
           }
-          this.Hqw.setDropDownBackgroundResource(e.d.qqmail_dropdown_thumb);
+          this.Nok.setDropDownBackgroundResource(e.d.qqmail_dropdown_thumb);
           setOnClickListener(new View.OnClickListener()
           {
             public final void onClick(View paramAnonymousView)
             {
               AppMethodBeat.i(123063);
               b localb = new b();
-              localb.bn(paramAnonymousView);
-              com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/MailAddrsViewControl$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-              MailAddrsViewControl.this.Hqw.requestFocus();
+              localb.cH(paramAnonymousView);
+              com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/MailAddrsViewControl$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+              MailAddrsViewControl.this.Nok.requestFocus();
               ((InputMethodManager)MailAddrsViewControl.this.getContext().getSystemService("input_method")).toggleSoftInput(0, 1);
               com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/MailAddrsViewControl$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
               AppMethodBeat.o(123063);
             }
           });
-          this.Hqw.setOnItemClickListener(new AdapterView.OnItemClickListener()
-          {
-            public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
-            {
-              AppMethodBeat.i(123066);
-              b localb = new b();
-              localb.bn(paramAnonymousAdapterView);
-              localb.bn(paramAnonymousView);
-              localb.sg(paramAnonymousInt);
-              localb.Fs(paramAnonymousLong);
-              com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/MailAddrsViewControl$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
-              paramAnonymousAdapterView = MailAddrsViewControl.e(MailAddrsViewControl.this).abQ(paramAnonymousInt);
-              MailAddrsViewControl.this.b(paramAnonymousAdapterView);
-              MailAddrsViewControl.this.Hqw.setText("");
-              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/MailAddrsViewControl$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-              AppMethodBeat.o(123066);
-            }
-          });
-          this.Hqw.setOnEditorActionListener(new TextView.OnEditorActionListener()
+          this.Nok.setOnItemClickListener(new MailAddrsViewControl.3(this));
+          this.Nok.setOnEditorActionListener(new TextView.OnEditorActionListener()
           {
             public final boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
             {
               AppMethodBeat.i(123067);
               if (paramAnonymousInt == 5)
               {
-                paramAnonymousTextView = MailAddrsViewControl.this.Hqw.getEditableText().toString();
+                paramAnonymousTextView = MailAddrsViewControl.this.Nok.getEditableText().toString();
                 if ((paramAnonymousTextView != null) && (paramAnonymousTextView.length() > 0))
                 {
                   MailAddrsViewControl.a(MailAddrsViewControl.this, paramAnonymousTextView, false);
-                  MailAddrsViewControl.this.ftb();
+                  MailAddrsViewControl.this.gEK();
                 }
               }
               AppMethodBeat.o(123067);
               return true;
             }
           });
-          this.Hqw.setOnKeyListener(new View.OnKeyListener()
+          this.Nok.setOnKeyListener(new View.OnKeyListener()
           {
             public final boolean onKey(View paramAnonymousView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
             {
               AppMethodBeat.i(123068);
               b localb = new b();
-              localb.bn(paramAnonymousView);
-              localb.sg(paramAnonymousInt);
-              localb.bn(paramAnonymousKeyEvent);
-              com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/MailAddrsViewControl$5", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.aFi());
+              localb.cH(paramAnonymousView);
+              localb.sc(paramAnonymousInt);
+              localb.cH(paramAnonymousKeyEvent);
+              com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/MailAddrsViewControl$5", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.aYj());
               if ((paramAnonymousInt == 67) && (paramAnonymousKeyEvent.getAction() == 0))
               {
-                paramAnonymousView = MailAddrsViewControl.this.Hqw.getEditableText().toString();
+                paramAnonymousView = MailAddrsViewControl.this.Nok.getEditableText().toString();
                 if ((paramAnonymousView.length() == 0) && (MailAddrsViewControl.c(MailAddrsViewControl.this) != null) && (MailAddrsViewControl.c(MailAddrsViewControl.this).isSelected()))
                 {
-                  MailAddrsViewControl.this.c((l)MailAddrsViewControl.c(MailAddrsViewControl.this).getTag());
+                  MailAddrsViewControl.this.c((k)MailAddrsViewControl.c(MailAddrsViewControl.this).getTag());
                   MailAddrsViewControl.a(MailAddrsViewControl.this, null);
-                  MailAddrsViewControl.this.ftb();
+                  MailAddrsViewControl.this.gEK();
                 }
               }
               for (;;)
@@ -634,16 +589,16 @@ public class MailAddrsViewControl
                   }
                   else
                   {
-                    MailAddrsViewControl.this.c((l)MailAddrsViewControl.f(MailAddrsViewControl.this).get(paramAnonymousInt));
-                    MailAddrsViewControl.this.ftb();
+                    MailAddrsViewControl.this.c((k)MailAddrsViewControl.f(MailAddrsViewControl.this).get(paramAnonymousInt));
+                    MailAddrsViewControl.this.gEK();
                     continue;
                     if ((paramAnonymousInt == 66) && (paramAnonymousKeyEvent.getAction() == 0))
                     {
-                      paramAnonymousView = MailAddrsViewControl.this.Hqw.getEditableText().toString();
+                      paramAnonymousView = MailAddrsViewControl.this.Nok.getEditableText().toString();
                       if ((paramAnonymousView != null) && (paramAnonymousView.length() > 0))
                       {
                         MailAddrsViewControl.a(MailAddrsViewControl.this, paramAnonymousView, true);
-                        MailAddrsViewControl.this.ftb();
+                        MailAddrsViewControl.this.gEK();
                       }
                     }
                   }
@@ -651,7 +606,7 @@ public class MailAddrsViewControl
               }
             }
           });
-          this.Hqw.addTextChangedListener(new TextWatcher()
+          this.Nok.addTextChangedListener(new TextWatcher()
           {
             public final void afterTextChanged(Editable paramAnonymousEditable) {}
             
@@ -664,19 +619,19 @@ public class MailAddrsViewControl
               if ((paramAnonymousCharSequence.endsWith("\n")) || (paramAnonymousCharSequence.endsWith(" "))) {
                 MailAddrsViewControl.a(MailAddrsViewControl.this, paramAnonymousCharSequence, true);
               }
-              MailAddrsViewControl.this.ftb();
+              MailAddrsViewControl.this.gEK();
               AppMethodBeat.o(123069);
             }
           });
-          this.Hqw.setOnFocusChangeListener(new View.OnFocusChangeListener()
+          this.Nok.setOnFocusChangeListener(new View.OnFocusChangeListener()
           {
             public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
             {
               AppMethodBeat.i(123070);
               if (MailAddrsViewControl.g(MailAddrsViewControl.this) != null) {
-                MailAddrsViewControl.g(MailAddrsViewControl.this).wm(paramAnonymousBoolean);
+                MailAddrsViewControl.g(MailAddrsViewControl.this).AM(paramAnonymousBoolean);
               }
-              paramAnonymousView = MailAddrsViewControl.this.Hqw.getEditableText().toString();
+              paramAnonymousView = MailAddrsViewControl.this.Nok.getEditableText().toString();
               if ((!paramAnonymousBoolean) && (paramAnonymousView.trim().length() > 0)) {
                 MailAddrsViewControl.a(MailAddrsViewControl.this, paramAnonymousView, false);
               }
@@ -685,7 +640,7 @@ public class MailAddrsViewControl
                 MailAddrsViewControl.c(MailAddrsViewControl.this).setSelected(paramAnonymousBoolean);
                 MailAddrsViewControl.a(MailAddrsViewControl.this, null);
               }
-              MailAddrsViewControl.this.ftb();
+              MailAddrsViewControl.this.gEK();
               AppMethodBeat.o(123070);
             }
           });
@@ -699,27 +654,27 @@ public class MailAddrsViewControl
             {
               View localView = ((ViewGroup)localObject).getChildAt(j);
               if ((localView instanceof AutoCompleteTextView)) {
-                this.Hqw = ((AutoCompleteTextView)localView);
+                this.Nok = ((AutoCompleteTextView)localView);
               }
               j += 1;
             }
           }
-        } while (this.Hqw != null);
+        } while (this.Nok != null);
         i += 1;
       }
     }
-    if ((!paramBoolean) && (this.Hqw != null)) {
-      this.Hqw.setVisibility(8);
+    if ((!paramBoolean) && (this.Nok != null)) {
+      this.Nok.setVisibility(8);
     }
     AppMethodBeat.o(123086);
   }
   
   public void setInvalidMailAddrListener(a parama)
   {
-    this.HqA = parama;
+    this.Noo = parama;
   }
   
-  public void setMailAdds(List<l> paramList)
+  public void setMailAdds(List<k> paramList)
   {
     AppMethodBeat.i(123095);
     if (paramList == null)
@@ -728,41 +683,41 @@ public class MailAddrsViewControl
       return;
     }
     int i = 0;
-    l locall1;
+    k localk1;
     int j;
-    l locall2;
-    while (i < this.Hqv.size())
+    k localk2;
+    while (i < this.Noj.size())
     {
-      locall1 = (l)this.Hqv.get(i);
+      localk1 = (k)this.Noj.get(i);
       j = 0;
       while (j < paramList.size())
       {
-        locall2 = (l)paramList.get(j);
-        if (locall1.Ejj.equalsIgnoreCase(locall2.Ejj)) {
+        localk2 = (k)paramList.get(j);
+        if (localk1.KbS.equalsIgnoreCase(localk2.KbS)) {
           break;
         }
         j += 1;
       }
       if (j == paramList.size()) {
-        c(locall1);
+        c(localk1);
       }
       i += 1;
     }
     i = 0;
     while (i < paramList.size())
     {
-      locall1 = (l)paramList.get(i);
+      localk1 = (k)paramList.get(i);
       j = 0;
-      while (j < this.Hqv.size())
+      while (j < this.Noj.size())
       {
-        locall2 = (l)this.Hqv.get(j);
-        if (locall1.Ejj.equalsIgnoreCase(locall2.Ejj)) {
+        localk2 = (k)this.Noj.get(j);
+        if (localk1.KbS.equalsIgnoreCase(localk2.KbS)) {
           break;
         }
         j += 1;
       }
-      if (j == this.Hqv.size()) {
-        b(locall1);
+      if (j == this.Noj.size()) {
+        b(localk1);
       }
       i += 1;
     }
@@ -771,188 +726,42 @@ public class MailAddrsViewControl
   
   public void setOnActionListener(c paramc)
   {
-    this.Hqy = paramc;
+    this.Nom = paramc;
+  }
+  
+  public final void y(List<k> paramList, boolean paramBoolean)
+  {
+    AppMethodBeat.i(266995);
+    if ((paramList == null) || (paramList.size() == 0))
+    {
+      AppMethodBeat.o(266995);
+      return;
+    }
+    if (paramBoolean) {
+      gEI();
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      b((k)paramList.next());
+    }
+    AppMethodBeat.o(266995);
   }
   
   public static abstract interface a
   {
     public abstract void b(MailAddrsViewControl paramMailAddrsViewControl);
     
-    public abstract void fsK();
-  }
-  
-  public static class b
-    extends BaseAdapter
-    implements Filterable
-  {
-    private boolean HqG;
-    private a HqH;
-    private Context mContext;
-    private final Object mLock;
-    private List<l> nbO;
-    private ArrayList<l> nbP;
-    
-    public b(Context paramContext, List<l> paramList)
-    {
-      AppMethodBeat.i(123077);
-      this.mLock = new Object();
-      this.HqG = true;
-      this.mContext = paramContext;
-      this.nbO = paramList;
-      AppMethodBeat.o(123077);
-    }
-    
-    public final l abQ(int paramInt)
-    {
-      AppMethodBeat.i(123080);
-      l locall = (l)this.nbO.get(paramInt);
-      AppMethodBeat.o(123080);
-      return locall;
-    }
-    
-    public int getCount()
-    {
-      AppMethodBeat.i(123079);
-      int i = this.nbO.size();
-      AppMethodBeat.o(123079);
-      return i;
-    }
-    
-    public Filter getFilter()
-    {
-      AppMethodBeat.i(123082);
-      if (this.HqH == null) {
-        this.HqH = new a((byte)0);
-      }
-      a locala = this.HqH;
-      AppMethodBeat.o(123082);
-      return locala;
-    }
-    
-    public long getItemId(int paramInt)
-    {
-      return paramInt;
-    }
-    
-    public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-    {
-      AppMethodBeat.i(123081);
-      if (paramView == null)
-      {
-        paramView = View.inflate(this.mContext, e.f.qqmail_dropdown_addrlist_item, null);
-        paramViewGroup = new b((byte)0);
-        paramViewGroup.mYd = ((TextView)paramView.findViewById(e.e.qqmail_addrlist_item_name_tv));
-        paramViewGroup.Hqr = ((TextView)paramView.findViewById(e.e.qqmail_addrlist_item_addr_iv));
-        paramViewGroup.HqJ = ((CheckBox)paramView.findViewById(e.e.qqmail_addrlist_item_select_cb));
-        paramView.setTag(paramViewGroup);
-      }
-      for (;;)
-      {
-        paramViewGroup = abQ(paramInt);
-        b localb = (b)paramView.getTag();
-        localb.mYd.setText(paramViewGroup.name);
-        localb.Hqr.setText(paramViewGroup.Ejj);
-        localb.HqJ.setVisibility(8);
-        paramView.setBackgroundColor(this.mContext.getResources().getColor(e.c.white));
-        AppMethodBeat.o(123081);
-        return paramView;
-        paramView = (ViewGroup)paramView;
-      }
-    }
-    
-    public void notifyDataSetChanged()
-    {
-      AppMethodBeat.i(123078);
-      super.notifyDataSetChanged();
-      this.HqG = true;
-      AppMethodBeat.o(123078);
-    }
-    
-    final class a
-      extends Filter
-    {
-      private a() {}
-      
-      protected final Filter.FilterResults performFiltering(CharSequence arg1)
-      {
-        AppMethodBeat.i(123075);
-        Filter.FilterResults localFilterResults = new Filter.FilterResults();
-        if (MailAddrsViewControl.b.a(MailAddrsViewControl.b.this) == null) {}
-        synchronized (MailAddrsViewControl.b.b(MailAddrsViewControl.b.this))
-        {
-          MailAddrsViewControl.b.a(MailAddrsViewControl.b.this, new ArrayList(MailAddrsViewControl.b.c(MailAddrsViewControl.b.this)));
-          if (??? != null) {
-            if (???.length() != 0) {
-              break label150;
-            }
-          }
-        }
-        for (;;)
-        {
-          synchronized (MailAddrsViewControl.b.b(MailAddrsViewControl.b.this))
-          {
-            ??? = new ArrayList(MailAddrsViewControl.b.a(MailAddrsViewControl.b.this));
-            localFilterResults.values = ???;
-            localFilterResults.count = ((ArrayList)???).size();
-            AppMethodBeat.o(123075);
-            return localFilterResults;
-            ??? = finally;
-            AppMethodBeat.o(123075);
-            throw ???;
-          }
-          label150:
-          ??? = ???.toString().toLowerCase();
-          ??? = MailAddrsViewControl.b.a(MailAddrsViewControl.b.this);
-          int j = ((ArrayList)???).size();
-          ArrayList localArrayList = new ArrayList(j);
-          int i = 0;
-          while (i < j)
-          {
-            l locall = (l)((ArrayList)???).get(i);
-            if ((locall.name.toLowerCase().contains(???)) || (locall.Ejj.toLowerCase().contains(???))) {
-              localArrayList.add(locall);
-            }
-            i += 1;
-          }
-          localObject1.values = localArrayList;
-          localObject1.count = localArrayList.size();
-        }
-      }
-      
-      protected final void publishResults(CharSequence paramCharSequence, Filter.FilterResults paramFilterResults)
-      {
-        AppMethodBeat.i(123076);
-        MailAddrsViewControl.b.a(MailAddrsViewControl.b.this, (List)paramFilterResults.values);
-        if (paramFilterResults.count > 0)
-        {
-          MailAddrsViewControl.b.this.notifyDataSetChanged();
-          AppMethodBeat.o(123076);
-          return;
-        }
-        MailAddrsViewControl.b.a(MailAddrsViewControl.b.this, new ArrayList(MailAddrsViewControl.b.a(MailAddrsViewControl.b.this)));
-        MailAddrsViewControl.b.this.notifyDataSetInvalidated();
-        AppMethodBeat.o(123076);
-      }
-    }
-    
-    final class b
-    {
-      CheckBox HqJ;
-      TextView Hqr;
-      TextView mYd;
-      
-      private b() {}
-    }
+    public abstract void gEt();
   }
   
   public static abstract class c
   {
-    public void wm(boolean paramBoolean) {}
+    public void AM(boolean paramBoolean) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.MailAddrsViewControl
  * JD-Core Version:    0.7.0.1
  */

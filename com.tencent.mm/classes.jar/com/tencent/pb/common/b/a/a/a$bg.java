@@ -1,66 +1,122 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.b.a.b;
-import com.google.b.a.e;
-import com.google.b.a.g;
+import com.google.d.a.b;
+import com.google.d.a.e;
+import com.google.d.a.g;
 
 public final class a$bg
   extends e
 {
-  public int NOc = 0;
-  public long NOd = 0L;
-  public int ZeV = 0;
-  public a.ba[] Zgp = a.ba.ikV();
-  public String ZhI = "";
-  public int Ziq = 0;
-  public String Zir = "";
-  public String[] Zis = g.EMPTY_STRING_ARRAY;
-  public long Zit = 0L;
+  public int UAZ = 0;
+  public long UBa = 0L;
+  public int ahdy = 0;
+  public a.ba[] aheQ = a.ba.jRm();
+  public int ahgR = 0;
+  public String ahgS = "";
+  public String[] ahgT = g.EMPTY_STRING_ARRAY;
+  public long ahgU = 0L;
+  public String ahgj = "";
   public String groupId = "";
   
   public a$bg()
   {
-    this.ccR = -1;
+    this.dXv = -1;
   }
   
-  public final int JG()
+  public final void a(b paramb)
   {
-    int j = super.JG();
+    int j = 0;
+    if (!this.groupId.equals("")) {
+      paramb.g(1, this.groupId);
+    }
+    if (this.UAZ != 0) {
+      paramb.cF(2, this.UAZ);
+    }
+    if (this.UBa != 0L) {
+      paramb.t(3, this.UBa);
+    }
+    if (this.ahdy != 0) {
+      paramb.cG(4, this.ahdy);
+    }
+    if (this.ahgR != 0) {
+      paramb.cF(5, this.ahgR);
+    }
+    if (!this.ahgj.equals("")) {
+      paramb.g(6, this.ahgj);
+    }
+    int i;
+    Object localObject;
+    if ((this.aheQ != null) && (this.aheQ.length > 0))
+    {
+      i = 0;
+      while (i < this.aheQ.length)
+      {
+        localObject = this.aheQ[i];
+        if (localObject != null) {
+          paramb.a(7, (e)localObject);
+        }
+        i += 1;
+      }
+    }
+    if (!this.ahgS.equals("")) {
+      paramb.g(8, this.ahgS);
+    }
+    if ((this.ahgT != null) && (this.ahgT.length > 0))
+    {
+      i = j;
+      while (i < this.ahgT.length)
+      {
+        localObject = this.ahgT[i];
+        if (localObject != null) {
+          paramb.g(9, (String)localObject);
+        }
+        i += 1;
+      }
+    }
+    if (this.ahgU != 0L) {
+      paramb.n(10, this.ahgU);
+    }
+    super.a(paramb);
+  }
+  
+  public final int akc()
+  {
+    int j = super.akc();
     int i = j;
     if (!this.groupId.equals("")) {
-      i = j + b.g(1, this.groupId);
+      i = j + b.h(1, this.groupId);
     }
     j = i;
-    if (this.NOc != 0) {
-      j = i + b.bM(2, this.NOc);
+    if (this.UAZ != 0) {
+      j = i + b.cJ(2, this.UAZ);
     }
     i = j;
-    if (this.NOd != 0L) {
-      i = j + b.p(3, this.NOd);
+    if (this.UBa != 0L) {
+      i = j + b.q(3, this.UBa);
     }
     j = i;
-    if (this.ZeV != 0) {
-      j = i + b.bN(4, this.ZeV);
+    if (this.ahdy != 0) {
+      j = i + b.cK(4, this.ahdy);
     }
     int k = j;
-    if (this.Ziq != 0) {
-      k = j + b.bM(5, this.Ziq);
+    if (this.ahgR != 0) {
+      k = j + b.cJ(5, this.ahgR);
     }
     i = k;
-    if (!this.ZhI.equals("")) {
-      i = k + b.g(6, this.ZhI);
+    if (!this.ahgj.equals("")) {
+      i = k + b.h(6, this.ahgj);
     }
     j = i;
     Object localObject;
-    if (this.Zgp != null)
+    if (this.aheQ != null)
     {
       j = i;
-      if (this.Zgp.length > 0)
+      if (this.aheQ.length > 0)
       {
         j = 0;
-        while (j < this.Zgp.length)
+        while (j < this.aheQ.length)
         {
-          localObject = this.Zgp[j];
+          localObject = this.aheQ[j];
           k = i;
           if (localObject != null) {
             k = i + b.b(7, (e)localObject);
@@ -72,27 +128,27 @@ public final class a$bg
       }
     }
     i = j;
-    if (!this.Zir.equals("")) {
-      i = j + b.g(8, this.Zir);
+    if (!this.ahgS.equals("")) {
+      i = j + b.h(8, this.ahgS);
     }
     j = i;
-    if (this.Zis != null)
+    if (this.ahgT != null)
     {
       j = i;
-      if (this.Zis.length > 0)
+      if (this.ahgT.length > 0)
       {
         j = 0;
         k = 0;
         int n;
-        for (int m = 0; j < this.Zis.length; m = n)
+        for (int m = 0; j < this.ahgT.length; m = n)
         {
-          localObject = this.Zis[j];
+          localObject = this.ahgT[j];
           int i1 = k;
           n = m;
           if (localObject != null)
           {
             n = m + 1;
-            i1 = k + b.cv((String)localObject);
+            i1 = k + b.dU((String)localObject);
           }
           j += 1;
           k = i1;
@@ -101,71 +157,15 @@ public final class a$bg
       }
     }
     i = j;
-    if (this.Zit != 0L) {
-      i = j + b.q(10, this.Zit);
+    if (this.ahgU != 0L) {
+      i = j + b.r(10, this.ahgU);
     }
     return i;
-  }
-  
-  public final void a(b paramb)
-  {
-    int j = 0;
-    if (!this.groupId.equals("")) {
-      paramb.f(1, this.groupId);
-    }
-    if (this.NOc != 0) {
-      paramb.bJ(2, this.NOc);
-    }
-    if (this.NOd != 0L) {
-      paramb.r(3, this.NOd);
-    }
-    if (this.ZeV != 0) {
-      paramb.bK(4, this.ZeV);
-    }
-    if (this.Ziq != 0) {
-      paramb.bJ(5, this.Ziq);
-    }
-    if (!this.ZhI.equals("")) {
-      paramb.f(6, this.ZhI);
-    }
-    int i;
-    Object localObject;
-    if ((this.Zgp != null) && (this.Zgp.length > 0))
-    {
-      i = 0;
-      while (i < this.Zgp.length)
-      {
-        localObject = this.Zgp[i];
-        if (localObject != null) {
-          paramb.a(7, (e)localObject);
-        }
-        i += 1;
-      }
-    }
-    if (!this.Zir.equals("")) {
-      paramb.f(8, this.Zir);
-    }
-    if ((this.Zis != null) && (this.Zis.length > 0))
-    {
-      i = j;
-      while (i < this.Zis.length)
-      {
-        localObject = this.Zis[i];
-        if (localObject != null) {
-          paramb.f(9, (String)localObject);
-        }
-        i += 1;
-      }
-    }
-    if (this.Zit != 0L) {
-      paramb.n(10, this.Zit);
-    }
-    super.a(paramb);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.bg
  * JD-Core Version:    0.7.0.1
  */

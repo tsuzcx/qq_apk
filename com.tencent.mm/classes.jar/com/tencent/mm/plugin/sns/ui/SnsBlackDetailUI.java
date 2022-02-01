@@ -1,66 +1,67 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.autogen.b.az;
 import com.tencent.mm.contact.d;
-import com.tencent.mm.f.c.ax;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.c;
 import com.tencent.mm.model.ab;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.plugin.sns.model.aj;
-import com.tencent.mm.pluginsdk.j.a;
+import com.tencent.mm.plugin.sns.b.j;
+import com.tencent.mm.plugin.sns.model.al;
+import com.tencent.mm.plugin.sns.storage.ad;
+import com.tencent.mm.pluginsdk.platformtools.a;
 import com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.w;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public class SnsBlackDetailUI
   extends SnsTagDetailUI
-  implements i, MStorageEx.IOnStorageChange
+  implements com.tencent.mm.am.h, MStorageEx.IOnStorageChange
 {
-  private static List<String> fVX()
+  private static List<String> hol()
   {
     AppMethodBeat.i(98493);
     new LinkedList();
-    List localList = a.hhW();
+    List localList = a.iIX();
     AppMethodBeat.o(98493);
     return localList;
   }
   
-  protected final void KE(String paramString)
+  protected final void Dk(String paramString)
   {
     AppMethodBeat.i(98495);
-    super.KE(paramString);
+    super.Dk(paramString);
     AppMethodBeat.o(98495);
   }
   
-  protected final void eNa()
+  protected final void fVt()
   {
     AppMethodBeat.i(98492);
-    if (((this.KXZ + " " + Util.listToString(this.unc, ",")).equals(this.md5)) && (this.JWc != 0L))
+    if (((this.Rya + " " + Util.listToString(this.xtu, ",")).equals(this.md5)) && (this.Qtd != 0L))
     {
       finish();
       AppMethodBeat.o(98492);
       return;
     }
-    if (aj.fOO().S(this.JWc, this.KXZ))
+    if (al.hgI().ah(this.Qtd, this.Rya))
     {
-      com.tencent.mm.ui.base.h.c(this, getString(i.j.sns_tag_exist, new Object[] { this.KXZ }), getString(i.j.app_tip), true);
+      k.c(this, getString(b.j.sns_tag_exist, new Object[] { this.Rya }), getString(b.j.app_tip), true);
       AppMethodBeat.o(98492);
       return;
     }
-    Object localObject2 = fVY();
+    Object localObject2 = hom();
     LinkedList localLinkedList = new LinkedList();
     Object localObject1 = new LinkedList();
     Iterator localIterator = ((List)localObject2).iterator();
@@ -68,11 +69,11 @@ public class SnsBlackDetailUI
     while (localIterator.hasNext())
     {
       str = (String)localIterator.next();
-      if (!this.unc.contains(str)) {
+      if (!this.xtu.contains(str)) {
         localLinkedList.add(str);
       }
     }
-    localIterator = this.unc.iterator();
+    localIterator = this.xtu.iterator();
     while (localIterator.hasNext())
     {
       str = (String)localIterator.next();
@@ -82,47 +83,47 @@ public class SnsBlackDetailUI
     }
     localObject2 = localLinkedList.iterator();
     while (((Iterator)localObject2).hasNext()) {
-      ab.F((String)((Iterator)localObject2).next(), false);
+      ab.J((String)((Iterator)localObject2).next(), false);
     }
     localObject1 = ((List)localObject1).iterator();
     while (((Iterator)localObject1).hasNext()) {
-      ab.F((String)((Iterator)localObject1).next(), true);
+      ab.J((String)((Iterator)localObject1).next(), true);
     }
     finish();
     AppMethodBeat.o(98492);
   }
   
-  public final void fVU()
+  public final void hoi()
   {
     AppMethodBeat.i(98488);
     Log.d("MicroMsg.SnsBlackDetailUI", "SnsBlackDetailUI __onCreate");
-    com.tencent.mm.kernel.h.aHH();
-    ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().add(this);
+    com.tencent.mm.kernel.h.baF();
+    ((n)com.tencent.mm.kernel.h.ax(n.class)).bzA().add(this);
     AppMethodBeat.o(98488);
   }
   
-  protected final void fVV()
+  protected final void hoj()
   {
     AppMethodBeat.i(98489);
     Log.d("MicroMsg.SnsBlackDetailUI", "SnsBlackDetailUI __onDestroy");
-    com.tencent.mm.kernel.h.aHH();
-    if (com.tencent.mm.kernel.h.aHE().aGM())
+    com.tencent.mm.kernel.h.baF();
+    if (com.tencent.mm.kernel.h.baC().aZN())
     {
-      com.tencent.mm.kernel.h.aHH();
-      ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().remove(this);
+      com.tencent.mm.kernel.h.baF();
+      ((n)com.tencent.mm.kernel.h.ax(n.class)).bzA().remove(this);
     }
     AppMethodBeat.o(98489);
   }
   
-  protected final void fVW() {}
+  protected final void hok() {}
   
-  protected final List<String> fVY()
+  protected final List<String> hom()
   {
     AppMethodBeat.i(98494);
     Object localObject = new LinkedList();
-    if (this.JWc == 4L)
+    if (this.Qtd == 4L)
     {
-      localObject = fVX();
+      localObject = hol();
       AppMethodBeat.o(98494);
       return localObject;
     }
@@ -130,23 +131,23 @@ public class SnsBlackDetailUI
     return localObject;
   }
   
-  protected final void hL(List<String> paramList)
+  protected final void kM(List<String> paramList)
   {
     AppMethodBeat.i(98496);
-    bv localbv = aj.fOw();
-    String str1 = z.bcZ();
+    bx localbx = al.hgp();
+    String str1 = z.bAM();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       String str2 = (String)paramList.next();
-      if ((!this.unc.contains(str2)) && (d.rk(localbv.RG(str2).field_type)) && (!str1.equals(str2))) {
-        this.unc.add(str2);
+      if ((!this.xtu.contains(str2)) && (d.rs(localbx.JE(str2).field_type)) && (!str1.equals(str2))) {
+        this.xtu.add(str2);
       }
     }
-    if (this.iYf != null) {
-      this.iYf.fO(this.unc);
+    if (this.lzX != null) {
+      this.lzX.iM(this.xtu);
     }
-    updateTitle();
+    aMl();
     AppMethodBeat.o(98496);
   }
   
@@ -164,25 +165,25 @@ public class SnsBlackDetailUI
     if (this.tipDialog != null) {
       this.tipDialog.dismiss();
     }
-    com.tencent.mm.kernel.h.aHH();
-    com.tencent.mm.kernel.h.aHF().kcd.b(290, this);
-    com.tencent.mm.kernel.h.aHH();
-    com.tencent.mm.kernel.h.aHF().kcd.b(291, this);
-    com.tencent.mm.kernel.h.aHH();
-    com.tencent.mm.kernel.h.aHF().kcd.b(292, this);
-    com.tencent.mm.kernel.h.aHH();
-    com.tencent.mm.kernel.h.aHF().kcd.b(293, this);
-    com.tencent.mm.kernel.h.aHH();
-    if (com.tencent.mm.kernel.h.aHE().aGM())
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.b(290, this);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.b(291, this);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.b(292, this);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.b(293, this);
+    com.tencent.mm.kernel.h.baF();
+    if (com.tencent.mm.kernel.h.baC().aZN())
     {
-      com.tencent.mm.kernel.h.aHH();
-      ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().remove(this);
+      com.tencent.mm.kernel.h.baF();
+      ((n)com.tencent.mm.kernel.h.ax(n.class)).bzA().remove(this);
     }
     super.onDestroy();
     AppMethodBeat.o(98491);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(98497);
     Log.i("MicroMsg.SnsBlackDetailUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);

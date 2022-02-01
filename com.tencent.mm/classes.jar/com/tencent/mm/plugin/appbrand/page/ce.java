@@ -1,56 +1,23 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.View;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
-import me.imid.swipebacklayout.lib.SwipeBackLayout;
-
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/page/SwipeBackLayoutSettingsAlignmentWC;", "", "()V", "alignSettings", "", "maybeSwipeLayout", "Landroid/view/View;", "plugin-appbrand-integration_release"})
-public final class ce
+abstract interface ce
+  extends Iterable<cd>
 {
-  public static final ce qwI;
+  public abstract void a(cd paramcd);
   
-  static
-  {
-    AppMethodBeat.i(50952);
-    qwI = new ce();
-    AppMethodBeat.o(50952);
-  }
+  public abstract boolean aom();
   
-  public static final void cX(View paramView)
-  {
-    AppMethodBeat.i(50951);
-    if (!(paramView instanceof SwipeBackLayout)) {
-      paramView = null;
-    }
-    for (;;)
-    {
-      paramView = (SwipeBackLayout)paramView;
-      if (paramView != null)
-      {
-        Resources localResources = paramView.getResources();
-        p.j(localResources, "page.resources");
-        float f = localResources.getDisplayMetrics().density;
-        paramView.setMinVelocity(100.0F * f);
-        paramView.setMaxVelocity(300.0F * f);
-        paramView.setEdgeTrackingEnabled(1);
-        paramView.setEdgeSize((int)(f * 20.0F + 0.5F));
-        paramView.setEdgeTrackingEnabled(1);
-        paramView.setScrimColor(0);
-        AppMethodBeat.o(50951);
-        return;
-      }
-      AppMethodBeat.o(50951);
-      return;
-    }
-  }
+  public abstract cd cDM();
+  
+  public abstract void clear();
+  
+  public abstract boolean isEmpty();
+  
+  public abstract int size();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.ce
  * JD-Core Version:    0.7.0.1
  */

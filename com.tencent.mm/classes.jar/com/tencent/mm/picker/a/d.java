@@ -2,80 +2,80 @@ package com.tencent.mm.picker.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cr.a.i;
+import com.tencent.mm.ck.a.i;
 import com.tencent.mm.picker.base.a.a;
 
 public final class d
   extends c
 {
-  private int mAX;
-  private int mAY;
-  private a mAZ;
-  public boolean mBb;
   private Context mContext;
+  private int pxH;
+  private int pxI;
+  private a pxJ;
+  public boolean pxL;
   
   public d(int paramInt1, int paramInt2, Context paramContext)
   {
     super(paramInt1, paramInt2);
-    AppMethodBeat.i(252039);
+    AppMethodBeat.i(231577);
     this.mContext = paramContext;
-    this.mAZ = this.mAZ;
-    if (this.mAZ == null) {
-      this.mAZ = new a();
+    this.pxJ = this.pxJ;
+    if (this.pxJ == null) {
+      this.pxJ = new a();
     }
-    this.mAX = paramInt1;
-    this.mAY = paramInt2;
-    AppMethodBeat.o(252039);
+    this.pxH = paramInt1;
+    this.pxI = paramInt2;
+    AppMethodBeat.o(231577);
   }
   
   public final int getItemsCount()
   {
-    if (this.mBb) {
-      return this.mAY - this.mAX + 1 + 1;
+    if (this.pxL) {
+      return this.pxI - this.pxH + 1 + 1;
     }
-    return this.mAY - this.mAX + 1;
+    return this.pxI - this.pxH + 1;
   }
   
   public final int getMaxValue()
   {
-    return this.mAY;
+    return this.pxI;
   }
   
   public final int getMinValue()
   {
-    return this.mAX;
+    return this.pxH;
   }
   
-  public final String xI(int paramInt)
+  public final String xN(int paramInt)
   {
-    AppMethodBeat.i(252045);
-    if ((paramInt == 0) && (this.mBb))
+    AppMethodBeat.i(231592);
+    if ((paramInt == 0) && (this.pxL))
     {
       str = this.mContext.getString(a.i.picker_long_term);
-      AppMethodBeat.o(252045);
+      AppMethodBeat.o(231592);
       return str;
     }
-    String str = super.xI(paramInt);
-    AppMethodBeat.o(252045);
+    String str = super.xN(paramInt);
+    AppMethodBeat.o(231592);
     return str;
   }
   
-  public final Integer xJ(int paramInt)
+  public final Integer xO(int paramInt)
   {
-    AppMethodBeat.i(252043);
+    AppMethodBeat.i(231590);
     if ((paramInt >= 0) && (paramInt < getItemsCount()))
     {
-      if (this.mBb)
+      if (this.pxL)
       {
-        i = this.mAX;
-        AppMethodBeat.o(252043);
+        i = this.pxH;
+        AppMethodBeat.o(231590);
         return Integer.valueOf(i + paramInt - 1);
       }
-      int i = this.mAX;
-      AppMethodBeat.o(252043);
+      int i = this.pxH;
+      AppMethodBeat.o(231590);
       return Integer.valueOf(i + paramInt);
     }
-    AppMethodBeat.o(252043);
+    AppMethodBeat.o(231590);
     return null;
   }
   
@@ -84,7 +84,7 @@ public final class d
   {
     a() {}
     
-    public final String ZH(String paramString)
+    public final String RX(String paramString)
     {
       return paramString;
     }
@@ -92,7 +92,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.picker.a.d
  * JD-Core Version:    0.7.0.1
  */

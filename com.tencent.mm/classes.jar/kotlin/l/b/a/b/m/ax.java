@@ -1,70 +1,29 @@
 package kotlin.l.b.a.b.m;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l.b.a.b.m.a.i;
+import java.util.Collection;
+import java.util.List;
+import kotlin.l.b.a.b.b.ba;
+import kotlin.l.b.a.b.m.a.g;
+import kotlin.l.b.a.b.m.c.o;
 
-public final class ax
-  extends aw
+public abstract interface ax
+  extends o
 {
-  private final ab aaEm;
-  private final bh abrc;
+  public abstract ax c(g paramg);
   
-  public ax(ab paramab)
-  {
-    this(bh.abrp, paramab);
-    AppMethodBeat.i(60837);
-    AppMethodBeat.o(60837);
-  }
+  public abstract List<ba> klq();
   
-  public ax(bh parambh, ab paramab)
-  {
-    AppMethodBeat.i(60836);
-    this.abrc = parambh;
-    this.aaEm = paramab;
-    AppMethodBeat.o(60836);
-  }
+  public abstract kotlin.l.b.a.b.b.h knA();
   
-  public final ab iFN()
-  {
-    AppMethodBeat.i(60839);
-    ab localab = this.aaEm;
-    if (localab == null) {
-      aDG(4);
-    }
-    AppMethodBeat.o(60839);
-    return localab;
-  }
+  public abstract boolean knx();
   
-  public final boolean iPZ()
-  {
-    return false;
-  }
+  public abstract kotlin.l.b.a.b.a.h koV();
   
-  public final bh iQa()
-  {
-    AppMethodBeat.i(60838);
-    bh localbh = this.abrc;
-    if (localbh == null) {
-      aDG(3);
-    }
-    AppMethodBeat.o(60838);
-    return localbh;
-  }
-  
-  public final av m(i parami)
-  {
-    AppMethodBeat.i(60840);
-    if (parami == null) {
-      aDG(5);
-    }
-    parami = new ax(this.abrc, parami.aK(this.aaEm));
-    AppMethodBeat.o(60840);
-    return parami;
-  }
+  public abstract Collection<ad> kpG();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.m.ax
  * JD-Core Version:    0.7.0.1
  */

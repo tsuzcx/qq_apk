@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@color/BW_100" android:paddingLeft="@dimen/cb" android:paddingTop="@dimen/cb" android:paddingRight="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/bu"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingEnd="@dimen/cl">
-        <TextView android:textSize="@dimen/t" android:textColor="@color/BW_0_Alpha_0_9" android:id="@id/ets" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <TextView android:textSize="@dimen/bd" android:textColor="@color/BW_0_Alpha_0_3" android:id="@id/et_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" />
-    </LinearLayout>
-    <TextView android:textSize="@dimen/eo" android:textColor="@color/BW_0_Alpha_0_3" android:layout_gravity="end" android:id="@id/in3" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <View android:layout_gravity="bottom" android:background="@color/FG_3" android:layout_width="wrap_content" android:layout_height="0.5dip" android:layout_marginTop="@dimen/cb" />
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:background="@drawable/xs" android:layout_width="fill_parent" android:layout_height="@dimen/db">
+        <RelativeLayout android:orientation="vertical" android:id="@id/h67" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:layout_marginRight="@dimen/df" android:layout_toLeftOf="@id/hx8" android:layout_centerVertical="true">
+            <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:ellipsize="end" android:id="@id/h71" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="歌曲名字" android:singleLine="true" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/xe" android:ellipsize="end" android:id="@id/jlw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="歌手" android:singleLine="true" android:layout_below="@id/h71" />
+            <org.libpag.PAGView android:id="@id/h6o" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginLeft="@dimen/bv" android:layout_toRightOf="@id/h71" android:layout_alignTop="@id/h71" />
+        </RelativeLayout>
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hx8" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginRight="@dimen/cp" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:iconColor="@color/BW_100" />
+        <View android:background="@color/BW_100_Alpha_0_0_5" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cp" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
 </FrameLayout>

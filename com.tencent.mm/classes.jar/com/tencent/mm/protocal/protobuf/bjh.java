@@ -3,59 +3,59 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bjh
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int STx;
-  public long zAO;
+  public int ZGt;
+  public int ZGu;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(229631);
+    AppMethodBeat.i(260139);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bm(1, this.zAO);
-      paramVarArgs.aY(2, this.STx);
-      AppMethodBeat.o(229631);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(2, this.ZGt);
+      paramVarArgs.bS(3, this.ZGu);
+      AppMethodBeat.o(260139);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.p(1, this.zAO);
-      int i = g.a.a.b.b.a.bM(2, this.STx);
-      AppMethodBeat.o(229631);
+      paramInt = i.a.a.b.b.a.cJ(2, this.ZGt);
+      int i = i.a.a.b.b.a.cJ(3, this.ZGu);
+      AppMethodBeat.o(260139);
       return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(229631);
+      AppMethodBeat.o(260139);
       return 0;
     }
     if (paramInt == 3)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       bjh localbjh = (bjh)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(229631);
+        AppMethodBeat.o(260139);
         return -1;
-      case 1: 
-        localbjh.zAO = locala.abFh.AN();
-        AppMethodBeat.o(229631);
+      case 2: 
+        localbjh.ZGt = locala.ajGk.aar();
+        AppMethodBeat.o(260139);
         return 0;
       }
-      localbjh.STx = locala.abFh.AK();
-      AppMethodBeat.o(229631);
+      localbjh.ZGu = locala.ajGk.aar();
+      AppMethodBeat.o(260139);
       return 0;
     }
-    AppMethodBeat.o(229631);
+    AppMethodBeat.o(260139);
     return -1;
   }
 }

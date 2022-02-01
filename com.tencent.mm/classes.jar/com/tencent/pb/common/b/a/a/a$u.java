@@ -1,135 +1,135 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.b.a.b;
-import com.google.b.a.e;
+import com.google.d.a.b;
+import com.google.d.a.e;
 
 public final class a$u
   extends e
 {
-  public long RUQ = 0L;
-  public long RUR = 0L;
-  public String ZfO = "";
-  public String ZfP = "";
-  public int ZfQ = 1;
-  public long ZfR = 0L;
-  public int ZfS = 0;
-  public long ZfT = 0L;
-  public int ZfU = 0;
-  public String Zfu = "";
+  public long YSo = 0L;
+  public long YSp = 0L;
+  public String ahdX = "";
+  public String aheq = "";
+  public String aher = "";
+  public int ahes = 1;
+  public long ahet = 0L;
+  public int aheu = 0;
+  public long ahev = 0L;
+  public int ahew = 0;
   public String countrycode = "";
-  public String lle = "";
+  public String nPT = "";
   public String username = "";
   
   public a$u()
   {
-    this.ccR = -1;
-  }
-  
-  public final int JG()
-  {
-    int j = super.JG();
-    int i = j;
-    if (this.RUQ != 0L) {
-      i = j + b.q(1, this.RUQ);
-    }
-    j = i;
-    if (!this.ZfO.equals("")) {
-      j = i + b.g(2, this.ZfO);
-    }
-    i = j;
-    if (!this.ZfP.equals("")) {
-      i = j + b.g(3, this.ZfP);
-    }
-    j = i;
-    if (this.ZfQ != 1) {
-      j = i + b.bM(4, this.ZfQ);
-    }
-    i = j;
-    if (!this.username.equals("")) {
-      i = j + b.g(5, this.username);
-    }
-    j = i;
-    if (!this.lle.equals("")) {
-      j = i + b.g(6, this.lle);
-    }
-    i = j;
-    if (!this.Zfu.equals("")) {
-      i = j + b.g(7, this.Zfu);
-    }
-    j = i;
-    if (this.ZfR != 0L) {
-      j = i + b.q(8, this.ZfR);
-    }
-    i = j;
-    if (this.ZfS != 0) {
-      i = j + b.bN(9, this.ZfS);
-    }
-    j = i;
-    if (!this.countrycode.equals("")) {
-      j = i + b.g(10, this.countrycode);
-    }
-    i = j;
-    if (this.ZfT != 0L) {
-      i = j + b.q(11, this.ZfT);
-    }
-    j = i;
-    if (this.ZfU != 0) {
-      j = i + b.bN(12, this.ZfU);
-    }
-    i = j;
-    if (this.RUR != 0L) {
-      i = j + b.q(13, this.RUR);
-    }
-    return i;
+    this.dXv = -1;
   }
   
   public final void a(b paramb)
   {
-    if (this.RUQ != 0L) {
-      paramb.n(1, this.RUQ);
+    if (this.YSo != 0L) {
+      paramb.n(1, this.YSo);
     }
-    if (!this.ZfO.equals("")) {
-      paramb.f(2, this.ZfO);
+    if (!this.aheq.equals("")) {
+      paramb.g(2, this.aheq);
     }
-    if (!this.ZfP.equals("")) {
-      paramb.f(3, this.ZfP);
+    if (!this.aher.equals("")) {
+      paramb.g(3, this.aher);
     }
-    if (this.ZfQ != 1) {
-      paramb.bJ(4, this.ZfQ);
+    if (this.ahes != 1) {
+      paramb.cF(4, this.ahes);
     }
     if (!this.username.equals("")) {
-      paramb.f(5, this.username);
+      paramb.g(5, this.username);
     }
-    if (!this.lle.equals("")) {
-      paramb.f(6, this.lle);
+    if (!this.nPT.equals("")) {
+      paramb.g(6, this.nPT);
     }
-    if (!this.Zfu.equals("")) {
-      paramb.f(7, this.Zfu);
+    if (!this.ahdX.equals("")) {
+      paramb.g(7, this.ahdX);
     }
-    if (this.ZfR != 0L) {
-      paramb.n(8, this.ZfR);
+    if (this.ahet != 0L) {
+      paramb.n(8, this.ahet);
     }
-    if (this.ZfS != 0) {
-      paramb.bK(9, this.ZfS);
+    if (this.aheu != 0) {
+      paramb.cG(9, this.aheu);
     }
     if (!this.countrycode.equals("")) {
-      paramb.f(10, this.countrycode);
+      paramb.g(10, this.countrycode);
     }
-    if (this.ZfT != 0L) {
-      paramb.n(11, this.ZfT);
+    if (this.ahev != 0L) {
+      paramb.n(11, this.ahev);
     }
-    if (this.ZfU != 0) {
-      paramb.bK(12, this.ZfU);
+    if (this.ahew != 0) {
+      paramb.cG(12, this.ahew);
     }
-    if (this.RUR != 0L) {
-      paramb.n(13, this.RUR);
+    if (this.YSp != 0L) {
+      paramb.n(13, this.YSp);
     }
     super.a(paramb);
+  }
+  
+  public final int akc()
+  {
+    int j = super.akc();
+    int i = j;
+    if (this.YSo != 0L) {
+      i = j + b.r(1, this.YSo);
+    }
+    j = i;
+    if (!this.aheq.equals("")) {
+      j = i + b.h(2, this.aheq);
+    }
+    i = j;
+    if (!this.aher.equals("")) {
+      i = j + b.h(3, this.aher);
+    }
+    j = i;
+    if (this.ahes != 1) {
+      j = i + b.cJ(4, this.ahes);
+    }
+    i = j;
+    if (!this.username.equals("")) {
+      i = j + b.h(5, this.username);
+    }
+    j = i;
+    if (!this.nPT.equals("")) {
+      j = i + b.h(6, this.nPT);
+    }
+    i = j;
+    if (!this.ahdX.equals("")) {
+      i = j + b.h(7, this.ahdX);
+    }
+    j = i;
+    if (this.ahet != 0L) {
+      j = i + b.r(8, this.ahet);
+    }
+    i = j;
+    if (this.aheu != 0) {
+      i = j + b.cK(9, this.aheu);
+    }
+    j = i;
+    if (!this.countrycode.equals("")) {
+      j = i + b.h(10, this.countrycode);
+    }
+    i = j;
+    if (this.ahev != 0L) {
+      i = j + b.r(11, this.ahev);
+    }
+    j = i;
+    if (this.ahew != 0) {
+      j = i + b.cK(12, this.ahew);
+    }
+    i = j;
+    if (this.YSp != 0L) {
+      i = j + b.r(13, this.YSp);
+    }
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.u
  * JD-Core Version:    0.7.0.1
  */

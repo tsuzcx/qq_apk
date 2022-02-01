@@ -15,10 +15,10 @@ final class MMFormVerifyCodeInputView$2
   {
     AppMethodBeat.i(169514);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/appbrand/phonenumber/widget/MMFormVerifyCodeInputView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    if (MMFormVerifyCodeInputView.e(this.qDX) != null) {
-      MMFormVerifyCodeInputView.e(this.qDX).onClick(paramView);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/appbrand/phonenumber/widget/MMFormVerifyCodeInputView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    if (MMFormVerifyCodeInputView.e(this.tIM) != null) {
+      MMFormVerifyCodeInputView.e(this.tIM).onClick(paramView);
     }
     a.a(this, "com/tencent/mm/plugin/appbrand/phonenumber/widget/MMFormVerifyCodeInputView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(169514);

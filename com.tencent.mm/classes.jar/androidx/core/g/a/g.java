@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 public abstract interface g
 {
-  public abstract boolean hx();
+  public abstract boolean Fa();
   
   public static abstract class a
   {
@@ -41,7 +41,7 @@ public abstract interface g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.core.g.a.g
  * JD-Core Version:    0.7.0.1
  */

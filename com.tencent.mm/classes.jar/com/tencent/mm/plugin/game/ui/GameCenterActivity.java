@@ -1,21 +1,20 @@
 package com.tencent.mm.plugin.game.ui;
 
-import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.g.b;
+import com.tencent.mm.plugin.game.h.b;
 
 public abstract class GameCenterActivity
   extends GameBaseActivity
 {
-  protected int CTy = 0;
-  protected String CTz = null;
+  protected int INO = 0;
+  protected String INP = null;
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setActionbarColor(getResources().getColor(g.b.white));
+    setActionbarColor(getResources().getColor(h.b.white));
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

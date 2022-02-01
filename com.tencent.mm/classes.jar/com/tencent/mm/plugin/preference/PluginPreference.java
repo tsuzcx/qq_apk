@@ -9,39 +9,40 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.f;
-import com.tencent.mm.am.f.a;
-import com.tencent.mm.am.q;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.contact.d;
-import com.tencent.mm.f.c.ax;
 import com.tencent.mm.kernel.h;
+import com.tencent.mm.modelavatar.AvatarStorage;
+import com.tencent.mm.modelavatar.AvatarStorage.a;
+import com.tencent.mm.modelavatar.q;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.plugin.newtips.b.c;
 import com.tencent.mm.plugin.newtips.b.d;
+import com.tencent.mm.plugin.newtips.b.e;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class PluginPreference
   extends Preference
-  implements f.a
+  implements AvatarStorage.a
 {
-  public String GRE;
-  public String GRF;
-  private String GRG;
-  private int GRH;
-  private int GRI;
-  public boolean GRJ;
-  private TextView GRK;
-  private TextView GRL;
-  private MMActivity iXq;
-  private ImageView mWb;
-  public int wzX;
+  public String MPi;
+  public String MPj;
+  private String MPk;
+  private int MPl;
+  private int MPm;
+  public boolean MPn;
+  private TextView MPo;
+  private TextView MPp;
+  private ImageView avatar;
+  private MMActivity lzt;
+  public int zWi;
   
   public PluginPreference(Context paramContext)
   {
@@ -56,103 +57,110 @@ public class PluginPreference
   public PluginPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(186491);
-    this.GRG = "";
-    this.GRH = -1;
-    this.GRI = 8;
-    this.GRJ = false;
-    this.mWb = null;
-    this.wzX = 255;
-    this.iXq = ((MMActivity)paramContext);
+    AppMethodBeat.i(260550);
+    this.MPk = "";
+    this.MPl = -1;
+    this.MPm = 8;
+    this.MPn = false;
+    this.avatar = null;
+    this.zWi = 255;
+    this.lzt = ((MMActivity)paramContext);
     setLayoutResource(b.d.mm_preference);
-    q.bhz().a(this);
-    AppMethodBeat.o(186491);
+    q.bFp().a(this);
+    AppMethodBeat.o(260550);
   }
   
-  private void foI()
+  private void gzL()
   {
-    AppMethodBeat.i(186500);
-    if (this.mWb != null) {
-      a.b.c(this.mWb, this.GRE);
+    AppMethodBeat.i(260553);
+    if (this.avatar != null)
+    {
+      if (this.MPi.equals("newsapp"))
+      {
+        this.avatar.setImageResource(b.e.default_readerapp_plugin);
+        AppMethodBeat.o(260553);
+        return;
+      }
+      a.b.g(this.avatar, this.MPi);
     }
-    AppMethodBeat.o(186500);
+    AppMethodBeat.o(260553);
   }
   
-  public final void TM(String paramString)
+  public final void LM(String paramString)
   {
-    AppMethodBeat.i(186510);
-    if ((this.GRE != null) && (this.GRE.equals(paramString))) {
+    AppMethodBeat.i(260581);
+    if ((this.MPi != null) && (this.MPi.equals(paramString))) {
       new MMHandler(Looper.getMainLooper()).post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(186410);
+          AppMethodBeat.i(260544);
           PluginPreference.a(PluginPreference.this);
-          AppMethodBeat.o(186410);
+          AppMethodBeat.o(260544);
         }
       });
     }
-    AppMethodBeat.o(186510);
+    AppMethodBeat.o(260581);
   }
   
-  public final boolean aUx(String paramString)
+  public final boolean aRF(String paramString)
   {
-    AppMethodBeat.i(186495);
-    paramString = ((n)h.ae(n.class)).bbL().RG(paramString);
-    if ((paramString == null) || ((int)paramString.jxt == 0))
+    AppMethodBeat.i(260561);
+    paramString = ((n)h.ax(n.class)).bzA().JE(paramString);
+    if ((paramString == null) || ((int)paramString.maN == 0))
     {
       Log.e("MicroMsg.PluginPreference", "plugin do not exist");
-      AppMethodBeat.o(186495);
+      AppMethodBeat.o(260561);
       return false;
     }
-    this.GRE = paramString.field_username;
-    this.GRF = paramString.ayr();
-    setKey("settings_plugins_list_#" + this.GRE);
-    AppMethodBeat.o(186495);
+    this.MPi = paramString.field_username;
+    this.MPj = paramString.aSU();
+    setKey("settings_plugins_list_#" + this.MPi);
+    AppMethodBeat.o(260561);
     return true;
   }
   
-  public final void abe(int paramInt)
+  public final void afx(int paramInt)
   {
-    this.GRI = paramInt;
+    this.MPm = paramInt;
   }
   
-  public final void fC(String paramString, int paramInt)
+  public final void gv(String paramString, int paramInt)
   {
-    this.GRG = paramString;
-    this.GRH = paramInt;
+    this.MPk = paramString;
+    this.MPl = paramInt;
   }
   
-  public final boolean jA(String paramString1, String paramString2)
+  public final boolean kU(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(186498);
-    this.GRE = paramString1;
-    this.GRF = paramString2;
-    setKey("settings_plugins_list_#" + this.GRE);
-    AppMethodBeat.o(186498);
+    AppMethodBeat.i(260565);
+    this.MPi = paramString1;
+    this.MPj = paramString2;
+    setKey("settings_plugins_list_#" + this.MPi);
+    AppMethodBeat.o(260565);
     return true;
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(186503);
+    AppMethodBeat.i(260573);
     super.onBindView(paramView);
-    this.mWb = ((ImageView)paramView.findViewById(b.c.image_iv));
-    this.mWb.setAlpha(this.wzX);
-    this.GRL = ((TextView)paramView.findViewById(b.c.text_tv_one));
-    if (this.GRL != null)
+    this.avatar = ((ImageView)paramView.findViewById(b.c.image_iv));
+    this.avatar.setAlpha(this.zWi);
+    this.MPp = ((TextView)paramView.findViewById(b.c.text_tv_one));
+    if (this.MPp != null)
     {
-      this.GRL.setVisibility(this.GRI);
-      this.GRL.setText(this.GRG);
-      if (this.GRH != -1) {
-        this.GRL.setBackgroundDrawable(a.m(this.iXq, this.GRH));
+      this.MPp.setVisibility(this.MPm);
+      this.MPp.setText(this.MPk);
+      if (this.MPl != -1) {
+        this.MPp.setBackgroundDrawable(a.m(this.lzt, this.MPl));
       }
     }
-    this.GRK = ((TextView)paramView.findViewById(b.c.new_dot));
-    if (this.GRK != null)
+    this.MPo = ((TextView)paramView.findViewById(b.c.new_dot));
+    if (this.MPo != null)
     {
-      paramView = this.GRK;
-      if (!this.GRJ) {
+      paramView = this.MPo;
+      if (!this.MPn) {
         break label154;
       }
     }
@@ -160,27 +168,27 @@ public class PluginPreference
     for (int i = 0;; i = 8)
     {
       paramView.setVisibility(i);
-      foI();
-      AppMethodBeat.o(186503);
+      gzL();
+      AppMethodBeat.o(260573);
       return;
     }
   }
   
   public View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(186502);
+    AppMethodBeat.i(260569);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
     ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(b.c.content);
     localViewGroup.removeAllViews();
     localLayoutInflater.inflate(b.d.mm_preference_content_plugin, localViewGroup);
-    AppMethodBeat.o(186502);
+    AppMethodBeat.o(260569);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.preference.PluginPreference
  * JD-Core Version:    0.7.0.1
  */

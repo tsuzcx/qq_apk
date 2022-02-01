@@ -26,10 +26,9 @@ final class zzyv
     try
     {
       paramString = Class.forName(paramString);
-      AppMethodBeat.o(40336);
       return paramString;
     }
-    catch (Throwable paramString)
+    finally
     {
       AppMethodBeat.o(40336);
     }
@@ -48,7 +47,7 @@ final class zzyv
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzyv
  * JD-Core Version:    0.7.0.1
  */

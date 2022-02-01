@@ -5,22 +5,22 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.ui.widget.a.e;
+import com.tencent.mm.ui.widget.a.f;
 
 final class d$9
   implements View.OnClickListener
 {
-  d$9(d paramd, e parame) {}
+  d$9(d paramd, f paramf) {}
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(277778);
+    AppMethodBeat.i(254970);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/ui/chatting/viewitems/ChattingItemAppBrandNotifyMsg$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    this.jaP.bYF();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/ui/chatting/viewitems/ChattingItemAppBrandNotifyMsg$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    this.lCP.cyW();
     a.a(this, "com/tencent/mm/ui/chatting/viewitems/ChattingItemAppBrandNotifyMsg$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(277778);
+    AppMethodBeat.o(254970);
   }
 }
 

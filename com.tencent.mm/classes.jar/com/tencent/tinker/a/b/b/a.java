@@ -2,7 +2,7 @@ package com.tencent.tinker.a.b.b;
 
 public final class a
 {
-  public static String WY(long paramLong)
+  public static String Bl(long paramLong)
   {
     char[] arrayOfChar = new char[16];
     int i = 0;
@@ -15,22 +15,7 @@ public final class a
     return new String(arrayOfChar);
   }
   
-  public static String aBN(int paramInt)
-  {
-    char[] arrayOfChar = new char[8];
-    int j = 0;
-    int i = paramInt;
-    paramInt = j;
-    while (paramInt < 8)
-    {
-      arrayOfChar[(7 - paramInt)] = Character.forDigit(i & 0xF, 16);
-      i >>= 4;
-      paramInt += 1;
-    }
-    return new String(arrayOfChar);
-  }
-  
-  public static String aBO(int paramInt)
+  public static String aIA(int paramInt)
   {
     char[] arrayOfChar = new char[4];
     int j = 0;
@@ -45,15 +30,30 @@ public final class a
     return new String(arrayOfChar);
   }
   
-  public static String aBP(int paramInt)
+  public static String aIB(int paramInt)
   {
     if (paramInt == (char)paramInt) {
-      return aBO(paramInt);
+      return aIA(paramInt);
     }
-    return aBN(paramInt);
+    return aIz(paramInt);
   }
   
-  public static String aBQ(int paramInt)
+  private static String aIC(int paramInt)
+  {
+    char[] arrayOfChar = new char[2];
+    int j = 0;
+    int i = paramInt;
+    paramInt = j;
+    while (paramInt < 2)
+    {
+      arrayOfChar[(1 - paramInt)] = Character.forDigit(i & 0xF, 16);
+      i >>= 4;
+      paramInt += 1;
+    }
+    return new String(arrayOfChar);
+  }
+  
+  public static String aID(int paramInt)
   {
     int i = 0;
     char[] arrayOfChar = new char[9];
@@ -72,10 +72,37 @@ public final class a
     }
     return new String(arrayOfChar);
   }
+  
+  public static String aIz(int paramInt)
+  {
+    char[] arrayOfChar = new char[8];
+    int j = 0;
+    int i = paramInt;
+    paramInt = j;
+    while (paramInt < 8)
+    {
+      arrayOfChar[(7 - paramInt)] = Character.forDigit(i & 0xF, 16);
+      i >>= 4;
+      paramInt += 1;
+    }
+    return new String(arrayOfChar);
+  }
+  
+  public static String toHexString(byte[] paramArrayOfByte)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(32);
+    int i = 0;
+    while (i < 16)
+    {
+      localStringBuilder.append(aIC(paramArrayOfByte[i]));
+      i += 1;
+    }
+    return localStringBuilder.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.tinker.a.b.b.a
  * JD-Core Version:    0.7.0.1
  */

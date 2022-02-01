@@ -1,54 +1,21 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import android.view.View;
-import androidx.recyclerview.widget.RecyclerView;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.model.c;
-import com.tencent.mm.view.recyclerview.e;
-import com.tencent.mm.view.recyclerview.i;
-import java.util.ArrayList;
-import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.model.bb;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/convert/FinderMixLbsSectionContactConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/BaseMixFeed;", "()V", "contactViewList", "", "Landroid/view/View;", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/convert/FinderMsgCommentConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderMsgConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderMsgComment;", "scene", "", "(I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getScene", "()I", "convertMsg", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class bd
-  extends e<c>
+  extends bf<bb>
 {
-  private final List<View> xnk;
+  private final String TAG;
+  private final int scene;
   
-  public bd()
+  public bd(int paramInt)
   {
-    AppMethodBeat.i(278361);
-    this.xnk = ((List)new ArrayList());
-    AppMethodBeat.o(278361);
-  }
-  
-  public final void a(RecyclerView paramRecyclerView, i parami, int paramInt)
-  {
-    AppMethodBeat.i(278358);
-    p.k(paramRecyclerView, "recyclerView");
-    p.k(parami, "holder");
-    paramRecyclerView = this.xnk;
-    View localView = parami.RD(b.f.section_item_bottom_1);
-    p.j(localView, "holder.getView(R.id.section_item_bottom_1)");
-    paramRecyclerView.add(localView);
-    paramRecyclerView = this.xnk;
-    localView = parami.RD(b.f.section_item_bottom_2);
-    p.j(localView, "holder.getView(R.id.section_item_bottom_2)");
-    paramRecyclerView.add(localView);
-    paramRecyclerView = this.xnk;
-    parami = parami.RD(b.f.section_item_bottom_3);
-    p.j(parami, "holder.getView(R.id.section_item_bottom_3)");
-    paramRecyclerView.add(parami);
-    AppMethodBeat.o(278358);
-  }
-  
-  public final int getLayoutId()
-  {
-    return b.g.finder_lbs_section_contact_layout;
+    super(e.f.finder_msg_item_of_comment, paramInt);
+    this.scene = paramInt;
+    this.TAG = "Finder.FinderMsgCommentConvert";
   }
 }
 

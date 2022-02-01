@@ -1,8 +1,6 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
@@ -10,66 +8,82 @@ import com.tencent.luggage.d.h;
 import com.tencent.luggage.d.j;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
-import com.tencent.mm.plugin.webview.c.i;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.platformtools.WeChatHosts;
 import org.json.JSONObject;
 
 public class an
-  extends bs<g>
+  extends bw<g>
 {
-  public final void a(Context paramContext, String paramString, br.a parama) {}
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
   
   public final void b(final b<g>.a paramb)
   {
-    AppMethodBeat.i(78590);
-    Log.i("MicroMsg.JsApiOpenUrlWithExtraWebview", "invokeInOwn");
-    final String str = paramb.crh.cqn.optString("url");
-    Log.i("MicroMsg.JsApiOpenUrlWithExtraWebview", "url: %s", new Object[] { str });
-    if (Util.isNullOrNil(str))
+    int i = 1;
+    AppMethodBeat.i(78588);
+    Log.i("MicroMsg.JsApiOpenCustomWebView", "invokeInOwn");
+    final String str1 = paramb.eiZ.eif.optString("url");
+    if (Util.isNullOrNil(str1))
     {
-      paramb.a("fail", null);
-      AppMethodBeat.o(78590);
+      paramb.a("invalid_url", null);
+      AppMethodBeat.o(78588);
       return;
     }
-    Object localObject = Uri.parse(str);
-    if ((Util.nullAsNil(((Uri)localObject).getQueryParameter("not_in_game_luggage")).equals("1")) || ((((Uri)localObject).getHost() != null) && (!((Uri)localObject).getHost().equals(WeChatHosts.domainString(c.i.host_game_weixin_qq_com)))))
-    {
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("rawUrl", str);
-      c.b(((g)paramb.crg).mContext, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
-      paramb.a("", null);
-      AppMethodBeat.o(78590);
-      return;
-    }
-    MMHandlerThread.postToMainThread(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(78589);
-        Bundle localBundle = new Bundle();
-        localBundle.putString("rawUrl", str);
-        localBundle.putBoolean("from_find_more_friend", ((g)paramb.crg).mParams.getBoolean("from_find_more_friend", false));
-        ((g)paramb.crg).crm.Oo().m(str, localBundle);
-        AppMethodBeat.o(78589);
+    Log.i("MicroMsg.JsApiOpenCustomWebView", "url: %s", new Object[] { str1 });
+    String str2 = paramb.eiZ.eif.optString("orientation");
+    if (!Util.isNullOrNil(str2)) {
+      if (str2.equals("horizontal")) {
+        i = 0;
       }
-    });
-    paramb.a("", null);
-    AppMethodBeat.o(78590);
+    }
+    for (;;)
+    {
+      boolean bool1 = paramb.eiZ.eif.optBoolean("fullscreen");
+      final boolean bool2 = paramb.eiZ.eif.optString("finish_recent_webview").equals("1");
+      boolean bool3 = paramb.eiZ.eif.optString("disable_swipe_back").equals("1");
+      str2 = paramb.eiZ.eif.optString("username");
+      final Bundle localBundle = new Bundle();
+      localBundle.putString("rawUrl", str1);
+      localBundle.putInt("screen_orientation", i);
+      localBundle.putBoolean("show_full_screen", bool1);
+      localBundle.putBoolean("disable_swipe_back", bool3);
+      localBundle.putString("shortcut_user_name", str2);
+      localBundle.putString("game_hv_menu_appid", Util.nullAsNil(paramb.eiZ.eif.optString("gameAppid")));
+      localBundle.putBoolean("from_find_more_friend", ((g)paramb.eiY).ejT.getBoolean("from_find_more_friend", false));
+      MMHandlerThread.postToMainThread(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(78587);
+          if (bool2)
+          {
+            ((g)paramb.eiY).eje.aow().n(str1, localBundle);
+            AppMethodBeat.o(78587);
+            return;
+          }
+          ((g)paramb.eiY).eje.aow().m(str1, localBundle);
+          AppMethodBeat.o(78587);
+        }
+      });
+      paramb.a("", null);
+      AppMethodBeat.o(78588);
+      return;
+      if (!str2.equals("vertical")) {
+        i = -1;
+      }
+    }
   }
   
-  public final int cDj()
+  public final int dgI()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "openUrlWithExtraWebview";
+    return "openCustomWebview";
   }
 }
 

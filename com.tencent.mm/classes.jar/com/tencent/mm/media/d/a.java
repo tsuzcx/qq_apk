@@ -6,22 +6,22 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/decoder/CfrDecodeStrategy;", "Lcom/tencent/mm/media/decoder/DecodeStrategy;", "()V", "TAG", "", "frameTimeInterval", "", "getFrameTimeInterval", "()J", "setFrameTimeInterval", "(J)V", "init", "", "startTime", "frames", "", "inFPS", "", "outFPS", "parents", "", "outPts", "", "plugin-mediaeditor_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/media/decoder/CfrDecodeStrategy;", "Lcom/tencent/mm/media/decoder/DecodeStrategy;", "()V", "TAG", "", "frameTimeInterval", "", "getFrameTimeInterval", "()J", "setFrameTimeInterval", "(J)V", "init", "", "startTime", "frames", "", "inFPS", "", "outFPS", "parents", "", "outPts", "", "plugin-mediaeditor_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   implements c
 {
   private final String TAG = "DecodeStrategy";
-  long kSw = 33L;
+  long nyf = 33L;
   
   public final void a(long paramLong, List<Long> paramList, int paramInt1, int paramInt2, Map<Long, Long> paramMap, Map<Long, List<Long>> paramMap1)
   {
     AppMethodBeat.i(93522);
-    p.k(paramList, "frames");
-    p.k(paramMap, "parents");
-    p.k(paramMap1, "outPts");
+    s.u(paramList, "frames");
+    s.u(paramMap, "parents");
+    s.u(paramMap1, "outPts");
     Log.i(this.TAG, "use cfr decode strategy");
     long l3 = 0L;
     long l2 = -1L;
@@ -32,7 +32,7 @@ public final class a
     long l7;
     for (;;)
     {
-      this.kSw = (1000000L / paramInt2);
+      this.nyf = (1000000L / paramInt2);
       Iterator localIterator = ((Iterable)paramList).iterator();
       if (!localIterator.hasNext()) {
         break label286;
@@ -55,7 +55,7 @@ public final class a
         break;
       }
       paramMap.put(Long.valueOf(l4), Long.valueOf(l5));
-      for (l2 = l3; l4 >= l2; l2 += this.kSw)
+      for (l2 = l3; l4 >= l2; l2 += this.nyf)
       {
         Long localLong = Long.valueOf(l4);
         Object localObject = paramMap1.get(localLong);

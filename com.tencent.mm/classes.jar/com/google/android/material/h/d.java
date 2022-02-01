@@ -9,84 +9,84 @@ import java.util.List;
 
 public final class d
 {
-  public float aBO;
-  public float aBP;
-  public float bEi;
-  public float bEj;
-  private final List<c> bEk;
+  public float cxD;
+  public float cxE;
+  public float dxj;
+  public float dxk;
+  private final List<c> dxl;
   
   public d()
   {
-    AppMethodBeat.i(239052);
-    this.bEk = new ArrayList();
-    xw();
-    AppMethodBeat.o(239052);
+    AppMethodBeat.i(209596);
+    this.dxl = new ArrayList();
+    WT();
+    AppMethodBeat.o(209596);
+  }
+  
+  public final void WT()
+  {
+    AppMethodBeat.i(209614);
+    this.cxD = 0.0F;
+    this.cxE = 0.0F;
+    this.dxj = 0.0F;
+    this.dxk = 0.0F;
+    this.dxl.clear();
+    AppMethodBeat.o(209614);
   }
   
   public final void a(Matrix paramMatrix, Path paramPath)
   {
-    AppMethodBeat.i(239058);
-    int j = this.bEk.size();
+    AppMethodBeat.i(209640);
+    int j = this.dxl.size();
     int i = 0;
     while (i < j)
     {
-      ((c)this.bEk.get(i)).a(paramMatrix, paramPath);
+      ((c)this.dxl.get(i)).a(paramMatrix, paramPath);
       i += 1;
     }
-    AppMethodBeat.o(239058);
+    AppMethodBeat.o(209640);
   }
   
-  public final void aa(float paramFloat)
+  public final void bb(float paramFloat)
   {
-    AppMethodBeat.i(239055);
+    AppMethodBeat.i(209622);
     b localb = new b();
     localb.x = paramFloat;
     localb.y = 0.0F;
-    this.bEk.add(localb);
-    this.bEi = paramFloat;
-    this.bEj = 0.0F;
-    AppMethodBeat.o(239055);
+    this.dxl.add(localb);
+    this.dxj = paramFloat;
+    this.dxk = 0.0F;
+    AppMethodBeat.o(209622);
   }
   
-  public final void b(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
+  public final void d(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
   {
-    AppMethodBeat.i(239057);
+    AppMethodBeat.i(209632);
     a locala = new a(paramFloat1, paramFloat2, paramFloat3, paramFloat4);
-    locala.bEl = paramFloat5;
-    locala.bEm = paramFloat6;
-    this.bEk.add(locala);
-    this.bEi = ((paramFloat1 + paramFloat3) * 0.5F + (paramFloat3 - paramFloat1) / 2.0F * (float)Math.cos(Math.toRadians(paramFloat5 + paramFloat6)));
-    this.bEj = ((paramFloat2 + paramFloat4) * 0.5F + (paramFloat4 - paramFloat2) / 2.0F * (float)Math.sin(Math.toRadians(paramFloat5 + paramFloat6)));
-    AppMethodBeat.o(239057);
-  }
-  
-  public final void xw()
-  {
-    AppMethodBeat.i(239053);
-    this.aBO = 0.0F;
-    this.aBP = 0.0F;
-    this.bEi = 0.0F;
-    this.bEj = 0.0F;
-    this.bEk.clear();
-    AppMethodBeat.o(239053);
+    locala.dxm = paramFloat5;
+    locala.dxn = paramFloat6;
+    this.dxl.add(locala);
+    this.dxj = ((paramFloat1 + paramFloat3) * 0.5F + (paramFloat3 - paramFloat1) / 2.0F * (float)Math.cos(Math.toRadians(paramFloat5 + paramFloat6)));
+    this.dxk = ((paramFloat2 + paramFloat4) * 0.5F + (paramFloat4 - paramFloat2) / 2.0F * (float)Math.sin(Math.toRadians(paramFloat5 + paramFloat6)));
+    AppMethodBeat.o(209632);
   }
   
   public static final class a
     extends d.c
   {
-    private static final RectF byj;
-    public float bEl;
-    public float bEm;
+    private static final RectF avO;
     public float bottom;
+    public float dxm;
+    public float dxn;
     public float left;
     public float right;
     public float top;
     
     static
     {
-      AppMethodBeat.i(239012);
-      byj = new RectF();
-      AppMethodBeat.o(239012);
+      AppMethodBeat.i(209630);
+      avO = new RectF();
+      AppMethodBeat.o(209630);
     }
     
     public a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
@@ -99,14 +99,14 @@ public final class d
     
     public final void a(Matrix paramMatrix, Path paramPath)
     {
-      AppMethodBeat.i(239011);
-      Matrix localMatrix = this.aHZ;
+      AppMethodBeat.i(209636);
+      Matrix localMatrix = this.matrix;
       paramMatrix.invert(localMatrix);
       paramPath.transform(localMatrix);
-      byj.set(this.left, this.top, this.right, this.bottom);
-      paramPath.arcTo(byj, this.bEl, this.bEm, false);
+      avO.set(this.left, this.top, this.right, this.bottom);
+      paramPath.arcTo(avO, this.dxm, this.dxn, false);
       paramPath.transform(paramMatrix);
-      AppMethodBeat.o(239011);
+      AppMethodBeat.o(209636);
     }
   }
   
@@ -118,26 +118,26 @@ public final class d
     
     public final void a(Matrix paramMatrix, Path paramPath)
     {
-      AppMethodBeat.i(239022);
-      Matrix localMatrix = this.aHZ;
+      AppMethodBeat.i(209608);
+      Matrix localMatrix = this.matrix;
       paramMatrix.invert(localMatrix);
       paramPath.transform(localMatrix);
       paramPath.lineTo(this.x, this.y);
       paramPath.transform(paramMatrix);
-      AppMethodBeat.o(239022);
+      AppMethodBeat.o(209608);
     }
   }
   
   public static abstract class c
   {
-    protected final Matrix aHZ = new Matrix();
+    protected final Matrix matrix = new Matrix();
     
     public abstract void a(Matrix paramMatrix, Path paramPath);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.h.d
  * JD-Core Version:    0.7.0.1
  */

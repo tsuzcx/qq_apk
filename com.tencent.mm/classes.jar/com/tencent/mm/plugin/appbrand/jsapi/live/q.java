@@ -15,145 +15,145 @@ import org.json.JSONObject;
 public class q
   implements a
 {
-  private boolean cFq;
-  private boolean cFr;
-  protected ITXLivePlayListener cGc;
-  private boolean cGk;
-  private boolean oVR;
-  protected V2TXLivePlayerJSAdapter oVT;
+  private boolean eyE;
+  private boolean eyF;
+  protected ITXLivePlayListener ezq;
+  private boolean ezy;
+  private boolean sbp;
+  protected V2TXLivePlayerJSAdapter sbr;
   
   public q(Context paramContext)
   {
-    AppMethodBeat.i(212507);
-    this.oVR = false;
-    this.cGk = false;
-    this.cFq = true;
-    this.cFr = true;
-    this.oVT = new V2TXLivePlayerJSAdapter(paramContext);
-    AppMethodBeat.o(212507);
+    AppMethodBeat.i(326139);
+    this.sbp = false;
+    this.ezy = false;
+    this.eyE = true;
+    this.eyF = true;
+    this.sbr = new V2TXLivePlayerJSAdapter(paramContext);
+    AppMethodBeat.o(326139);
   }
   
-  private void R(Bundle paramBundle)
+  private void ac(Bundle paramBundle)
   {
-    AppMethodBeat.i(212510);
-    this.cGk = paramBundle.getBoolean("needEvent", this.cGk);
-    this.cFq = paramBundle.getBoolean("autoPauseIfNavigate", this.cFq);
-    this.cFr = paramBundle.getBoolean("autoPauseIfOpenNative", this.cFr);
-    AppMethodBeat.o(212510);
-  }
-  
-  public k Ty()
-  {
-    AppMethodBeat.i(212534);
-    if (this.oVR)
-    {
-      localk = d("resume", null);
-      AppMethodBeat.o(212534);
-      return localk;
-    }
-    k localk = new k();
-    AppMethodBeat.o(212534);
-    return localk;
-  }
-  
-  public final k Tz()
-  {
-    AppMethodBeat.i(212533);
-    k localk = new k(this.oVT.uninitLivePlayer());
-    AppMethodBeat.o(212533);
-    return localk;
+    AppMethodBeat.i(326141);
+    this.ezy = paramBundle.getBoolean("needEvent", this.ezy);
+    this.eyE = paramBundle.getBoolean("autoPauseIfNavigate", this.eyE);
+    this.eyF = paramBundle.getBoolean("autoPauseIfOpenNative", this.eyF);
+    AppMethodBeat.o(326141);
   }
   
   public k a(TXCloudVideoView paramTXCloudVideoView, Bundle paramBundle)
   {
-    AppMethodBeat.i(212525);
-    paramTXCloudVideoView = this.oVT.initLivePlayer(paramTXCloudVideoView, paramBundle);
+    AppMethodBeat.i(326161);
+    paramTXCloudVideoView = this.sbr.initLivePlayer(paramTXCloudVideoView, paramBundle);
     if (-1 != paramTXCloudVideoView.errorCode) {
-      R(paramBundle);
+      ac(paramBundle);
     }
     paramTXCloudVideoView = new k(paramTXCloudVideoView);
-    AppMethodBeat.o(212525);
+    AppMethodBeat.o(326161);
     return paramTXCloudVideoView;
+  }
+  
+  public k aud()
+  {
+    AppMethodBeat.i(326181);
+    if (this.sbp)
+    {
+      localk = d("resume", null);
+      AppMethodBeat.o(326181);
+      return localk;
+    }
+    k localk = new k();
+    AppMethodBeat.o(326181);
+    return localk;
+  }
+  
+  public final k aue()
+  {
+    AppMethodBeat.i(326178);
+    k localk = new k(this.sbr.uninitLivePlayer());
+    AppMethodBeat.o(326178);
+    return localk;
   }
   
   public final k d(String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(212530);
-    paramString = new k(this.oVT.operateLivePlayer(paramString, paramJSONObject));
-    AppMethodBeat.o(212530);
+    AppMethodBeat.i(326173);
+    paramString = new k(this.sbr.operateLivePlayer(paramString, paramJSONObject));
+    AppMethodBeat.o(326173);
     return paramString;
   }
   
-  public final k iY(int paramInt)
+  public final k mA(int paramInt)
   {
-    AppMethodBeat.i(212537);
+    AppMethodBeat.i(326184);
     Log.i("TXLivePlayerJSAdapterV2", "enterBackground");
-    if (((paramInt == 2) && (!this.cFr)) || ((paramInt == 1) && (!this.cFq)))
+    if (((paramInt == 2) && (!this.eyF)) || ((paramInt == 1) && (!this.eyE)))
     {
-      this.oVR = false;
+      this.sbp = false;
       localk = new k();
-      AppMethodBeat.o(212537);
+      AppMethodBeat.o(326184);
       return localk;
     }
-    this.oVR = this.oVT.isPlaying();
-    if (this.oVR)
+    this.sbp = this.sbr.isPlaying();
+    if (this.sbp)
     {
-      if ((this.cGk) && (this.cGc != null)) {
-        this.cGc.onPlayEvent(6000, new Bundle());
+      if ((this.ezy) && (this.ezq != null)) {
+        this.ezq.onPlayEvent(6000, new Bundle());
       }
       localk = d("pause", null);
-      AppMethodBeat.o(212537);
+      AppMethodBeat.o(326184);
       return localk;
     }
     k localk = new k();
-    AppMethodBeat.o(212537);
+    AppMethodBeat.o(326184);
     return localk;
-  }
-  
-  public k q(Bundle paramBundle)
-  {
-    AppMethodBeat.i(212528);
-    V2TXJSAdapterError localV2TXJSAdapterError = this.oVT.updateLivePlayer(paramBundle);
-    if ((-1 != localV2TXJSAdapterError.errorCode) && (-3 != localV2TXJSAdapterError.errorCode)) {
-      R(paramBundle);
-    }
-    paramBundle = new k(localV2TXJSAdapterError);
-    AppMethodBeat.o(212528);
-    return paramBundle;
   }
   
   public final void setAudioVolumeListener(TXLivePlayer.ITXAudioVolumeEvaluationListener paramITXAudioVolumeEvaluationListener)
   {
-    AppMethodBeat.i(212520);
-    this.oVT.setAudioVolumeListener(paramITXAudioVolumeEvaluationListener);
-    AppMethodBeat.o(212520);
+    AppMethodBeat.i(326156);
+    this.sbr.setAudioVolumeListener(paramITXAudioVolumeEvaluationListener);
+    AppMethodBeat.o(326156);
   }
   
   public final void setPlayListener(ITXLivePlayListener paramITXLivePlayListener)
   {
-    AppMethodBeat.i(212515);
-    this.cGc = paramITXLivePlayListener;
-    this.oVT.setPlayListener(paramITXLivePlayListener);
-    AppMethodBeat.o(212515);
+    AppMethodBeat.i(326145);
+    this.ezq = paramITXLivePlayListener;
+    this.sbr.setPlayListener(paramITXLivePlayListener);
+    AppMethodBeat.o(326145);
   }
   
   public final void setSnapshotListener(TXLivePlayer.ITXSnapshotListener paramITXSnapshotListener)
   {
-    AppMethodBeat.i(212517);
-    this.oVT.setSnapshotListener(paramITXSnapshotListener);
-    AppMethodBeat.o(212517);
+    AppMethodBeat.i(326150);
+    this.sbr.setSnapshotListener(paramITXSnapshotListener);
+    AppMethodBeat.o(326150);
   }
   
   public final void takePhoto(boolean paramBoolean, TXLivePlayer.ITXSnapshotListener paramITXSnapshotListener)
   {
-    AppMethodBeat.i(212538);
-    this.oVT.takePhoto(paramBoolean, paramITXSnapshotListener);
-    AppMethodBeat.o(212538);
+    AppMethodBeat.i(326187);
+    this.sbr.takePhoto(paramBoolean, paramITXSnapshotListener);
+    AppMethodBeat.o(326187);
+  }
+  
+  public k v(Bundle paramBundle)
+  {
+    AppMethodBeat.i(326167);
+    V2TXJSAdapterError localV2TXJSAdapterError = this.sbr.updateLivePlayer(paramBundle);
+    if ((-1 != localV2TXJSAdapterError.errorCode) && (-3 != localV2TXJSAdapterError.errorCode)) {
+      ac(paramBundle);
+    }
+    paramBundle = new k(localV2TXJSAdapterError);
+    AppMethodBeat.o(326167);
+    return paramBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.live.q
  * JD-Core Version:    0.7.0.1
  */

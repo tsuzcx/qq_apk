@@ -1,83 +1,53 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
-public class div
-  extends com.tencent.mm.cd.a
+public final class div
+  extends com.tencent.mm.bx.a
 {
-  public long TQn;
-  public diu TQo;
+  public int aaND;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(186531);
+    AppMethodBeat.i(260080);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bm(1, this.TQn);
-      if (this.TQo != null)
-      {
-        paramVarArgs.oE(2, this.TQo.computeSize());
-        this.TQo.writeFields(paramVarArgs);
-      }
-      AppMethodBeat.o(186531);
+      ((i.a.a.c.a)paramVarArgs[0]).bS(1, this.aaND);
+      AppMethodBeat.o(260080);
       return 0;
     }
-    int i;
     if (paramInt == 1)
     {
-      i = g.a.a.b.b.a.p(1, this.TQn) + 0;
-      paramInt = i;
-      if (this.TQo != null) {
-        paramInt = i + g.a.a.a.oD(2, this.TQo.computeSize());
-      }
-      AppMethodBeat.o(186531);
-      return paramInt;
+      paramInt = i.a.a.b.b.a.cJ(1, this.aaND);
+      AppMethodBeat.o(260080);
+      return paramInt + 0;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(186531);
+      AppMethodBeat.o(260080);
       return 0;
     }
     if (paramInt == 3)
     {
-      Object localObject = (g.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       div localdiv = (div)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(186531);
+        AppMethodBeat.o(260080);
         return -1;
-      case 1: 
-        localdiv.TQn = ((g.a.a.a.a)localObject).abFh.AN();
-        AppMethodBeat.o(186531);
-        return 0;
       }
-      paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-      i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        localObject = (byte[])paramVarArgs.get(paramInt);
-        diu localdiu = new diu();
-        if ((localObject != null) && (localObject.length > 0)) {
-          localdiu.parseFrom((byte[])localObject);
-        }
-        localdiv.TQo = localdiu;
-        paramInt += 1;
-      }
-      AppMethodBeat.o(186531);
+      localdiv.aaND = locala.ajGk.aar();
+      AppMethodBeat.o(260080);
       return 0;
     }
-    AppMethodBeat.o(186531);
+    AppMethodBeat.o(260080);
     return -1;
   }
 }

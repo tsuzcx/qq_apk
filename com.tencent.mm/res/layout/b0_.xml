@@ -1,3 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="@dimen/k6" android:textColor="@color/BW_100_Alpha_0_5" android:ellipsize="end" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/eig"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:id="@id/ezu" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <ScrollView android:layout_width="fill_parent" android:layout_height="0.0dip" android:fillViewport="true" android:layout_weight="1.0">
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="vertical" android:paddingLeft="32.0dip" android:paddingRight="32.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="14.0dip" android:textColor="@color/FG_0" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="39.0dip" android:text="@string/fkn" />
+                    <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/ezt" android:background="@color/ahb" android:padding="0.0dip" android:focusable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:minHeight="0.0dip" wallet:contentMaxSize="9" wallet:layoutRes="@layout/b09" wallet:walletTypeFace="k0_" style="@style/a0n" />
+                    <View android:background="@color/abn" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="14.0dip" />
+                    <Button android:enabled="false" android:textColor="@drawable/a9b" android:id="@id/ezs" android:background="@drawable/a9f" android:layout_marginTop="30.0dip" android:text="@string/fk5" style="@style/og" />
+                </LinearLayout>
+                <TextView android:textSize="15.0dip" android:textColor="@color/al6" android:gravity="center" android:id="@id/ezv" android:background="@color/a9z" android:paddingTop="7.0dip" android:paddingBottom="7.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/fks" android:layout_alignParentTop="true" />
+            </RelativeLayout>
+        </FrameLayout>
+    </ScrollView>
+    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/c9a" />
+</LinearLayout>

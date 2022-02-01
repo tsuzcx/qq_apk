@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.finder.live.utils.fake;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.findersdk.a.aq;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
@@ -11,30 +12,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import kotlin.g.b.p;
-import kotlin.k.i;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.k.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/utils/fake/FinderLiveGiftCmd;", "", "()V", "TAG", "", "sendGift", "", "intent", "Landroid/content/Intent;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/utils/fake/FinderLiveGiftCmd;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderLiveGiftCmd;", "()V", "TAG", "", "sendGift", "", "intent", "Landroid/content/Intent;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
+  implements aq
 {
-  private static final String TAG = "FinderLiveGiftCmd";
-  public static final a yRH;
+  public static final a DKg;
+  private static final String TAG;
   
   static
   {
-    AppMethodBeat.i(292174);
-    yRH = new a();
+    AppMethodBeat.i(351078);
+    DKg = new a();
     TAG = "FinderLiveGiftCmd";
-    AppMethodBeat.o(292174);
+    AppMethodBeat.o(351078);
   }
   
-  public static void ak(Intent paramIntent)
+  public final void ay(Intent paramIntent)
   {
-    AppMethodBeat.i(292173);
-    p.k(paramIntent, "intent");
+    AppMethodBeat.i(351090);
+    s.u(paramIntent, "intent");
     Object localObject1 = paramIntent.getStringExtra("gift_id");
-    int i = i.ov(Util.safeParseInt(paramIntent.getStringExtra("count")), 1);
+    int i = k.qu(Util.safeParseInt(paramIntent.getStringExtra("count")), 1);
     long l = Util.safeParseLong(paramIntent.getStringExtra("delay"));
     boolean bool;
     String str;
@@ -43,58 +45,61 @@ public final class a
     {
       bool = true;
       str = paramIntent.getStringExtra("comboId");
-      Log.i(TAG, "gift_id " + (String)localObject1 + " count " + i + " delay: " + l + " isSelf:" + bool + " comboId:" + str);
-      paramIntent = e.ySg;
-      localObject2 = c.yRV;
-      localObject2 = ((Map)c.dER()).entrySet().iterator();
+      Log.i(TAG, "gift_id " + localObject1 + " count " + i + " delay: " + l + " isSelf:" + bool + " comboId:" + str);
+      paramIntent = e.DKw;
+      localObject2 = c.DKj;
+      localObject2 = ((Map)c.euV()).entrySet().iterator();
       label155:
       if (!((Iterator)localObject2).hasNext()) {
-        break label218;
+        break label215;
       }
       Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
-      if (!p.h(((c.b)localEntry.getValue()).yrC, localObject1)) {
-        break label330;
+      if (!s.p(((c.b)localEntry.getValue()).DbF, localObject1)) {
+        break label334;
       }
-      paramIntent = (e)localEntry.getKey();
+      paramIntent = localEntry.getKey();
     }
-    label330:
+    label334:
     for (;;)
     {
       break label155;
       bool = false;
       break;
-      label218:
+      label215:
       localObject1 = new LinkedList();
-      localObject2 = c.yRV;
-      paramIntent = (c.c)c.dES().get(paramIntent);
-      if (paramIntent != null)
-      {
-        paramIntent = paramIntent.NL(i);
-        paramIntent.ySa = l;
+      localObject2 = c.DKj;
+      paramIntent = (c.c)c.euW().get(paramIntent);
+      if (paramIntent == null) {
+        paramIntent = null;
       }
       for (;;)
       {
         if ((bool) && (paramIntent != null)) {
-          paramIntent.dET();
+          paramIntent.euX();
         }
         if ((!Util.isNullOrNil(str)) && (paramIntent != null))
         {
-          p.j(str, "comboId");
-          paramIntent.aCR(str);
+          s.checkNotNull(str);
+          paramIntent.axS(str);
         }
         ((LinkedList)localObject1).offerLast(paramIntent);
-        paramIntent = c.yRV;
-        c.ev((List)localObject1);
-        AppMethodBeat.o(292173);
+        paramIntent = c.DKj;
+        c.gH((List)localObject1);
+        AppMethodBeat.o(351090);
         return;
-        paramIntent = null;
+        paramIntent = paramIntent.Pv(i);
+        if (paramIntent == null) {
+          paramIntent = null;
+        } else {
+          paramIntent.DKr = l;
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.utils.fake.a
  * JD-Core Version:    0.7.0.1
  */

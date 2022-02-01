@@ -18,89 +18,89 @@ import com.tencent.mm.sdk.system.AndroidContextUtil;
 final class b
   extends a
 {
-  private final d.c qGI;
-  private int qGJ;
-  private int qGK;
-  private WindowManager.LayoutParams qGL;
+  private final d.c tLu;
+  private int tLv;
+  private int tLw;
+  private WindowManager.LayoutParams tLx;
   
   b(final o paramo, d.b paramb)
   {
     super(paramo, paramb);
-    AppMethodBeat.i(243689);
-    this.qGK = -1;
-    this.qGI = new d.c()
+    AppMethodBeat.i(317533);
+    this.tLw = -1;
+    this.tLu = new d.c()
     {
       public final void a(e.b paramAnonymousb)
       {
-        AppMethodBeat.i(246482);
-        paramo.che().a(paramAnonymousb, null);
-        AppMethodBeat.o(246482);
+        AppMethodBeat.i(317525);
+        paramo.cIb().a(paramAnonymousb, null);
+        AppMethodBeat.o(317525);
       }
     };
-    AppMethodBeat.o(243689);
+    AppMethodBeat.o(317533);
   }
   
   private Activity getActivity()
   {
-    AppMethodBeat.i(243690);
-    Activity localActivity = AndroidContextUtil.castActivityOrNull(((o)this.nxr).mContext);
-    AppMethodBeat.o(243690);
+    AppMethodBeat.i(317536);
+    Activity localActivity = AndroidContextUtil.castActivityOrNull(((o)this.qwF).mContext);
+    AppMethodBeat.o(317536);
     return localActivity;
   }
   
-  public final void O(View paramView, int paramInt)
+  public final void T(View paramView, int paramInt)
   {
-    AppMethodBeat.i(243693);
-    super.O(paramView, paramInt);
+    AppMethodBeat.i(317541);
+    super.T(paramView, paramInt);
     paramView = getActivity();
     ViewGroup localViewGroup;
     if (paramView != null)
     {
       localViewGroup = (ViewGroup)paramView.getWindow().getDecorView();
-      if (this.qGr == null) {
-        this.qGJ = localViewGroup.getSystemUiVisibility();
+      if (this.tLd == null) {
+        this.tLv = localViewGroup.getSystemUiVisibility();
       }
-      if (d.qW(19))
+      if (d.rc(19))
       {
         localViewGroup.setSystemUiVisibility(2);
-        if (this.qGr == null)
+        if (this.tLd == null)
         {
-          this.qGL = new WindowManager.LayoutParams();
-          this.qGL.copyFrom(paramView.getWindow().getAttributes());
+          this.tLx = new WindowManager.LayoutParams();
+          this.tLx.copyFrom(paramView.getWindow().getAttributes());
         }
         paramView.getWindow().addFlags(1024);
         if (Build.VERSION.SDK_INT >= 28) {
           paramView.getWindow().getAttributes().layoutInDisplayCutoutMode = 2;
         }
-        if (this.qGr == null) {
-          this.qGK = paramView.getRequestedOrientation();
+        if (this.tLd == null) {
+          this.tLw = paramView.getRequestedOrientation();
         }
-        yS(paramInt);
+        zb(paramInt);
       }
     }
     for (;;)
     {
-      cgQ();
-      this.qGr = null;
-      AppMethodBeat.o(243693);
+      cHO();
+      this.tLd = null;
+      AppMethodBeat.o(317541);
       return;
       localViewGroup.setSystemUiVisibility(4102);
       break;
       Log.e("Luggage.ActivityWindowFullscreenImpl", "enterFullscreen, get NULL activity");
-      if (this.qGr == null)
+      if (this.tLd == null)
       {
-        this.qGK = -1;
-        this.qGL = null;
-        this.qGJ = 0;
+        this.tLw = -1;
+        this.tLx = null;
+        this.tLv = 0;
       }
     }
   }
   
-  public final boolean bEz()
+  public final boolean cdL()
   {
-    AppMethodBeat.i(243695);
-    boolean bool = this.qGs;
-    if (super.bEz())
+    AppMethodBeat.i(317545);
+    boolean bool = this.tLe;
+    if (super.cdL())
     {
       Activity localActivity = getActivity();
       if ((localActivity == null) || (localActivity.isFinishing()) || (localActivity.isDestroyed())) {
@@ -108,55 +108,55 @@ final class b
       }
       for (;;)
       {
-        cgR();
-        AppMethodBeat.o(243695);
+        cHP();
+        AppMethodBeat.o(317545);
         return true;
-        ((ViewGroup)localActivity.getWindow().getDecorView()).setSystemUiVisibility(this.qGJ);
+        ((ViewGroup)localActivity.getWindow().getDecorView()).setSystemUiVisibility(this.tLv);
         localActivity.getWindow().clearFlags(1024);
-        if (this.qGL != null) {
-          localActivity.getWindow().setAttributes(this.qGL);
+        if (this.tLx != null) {
+          localActivity.getWindow().setAttributes(this.tLx);
         }
-        this.qGI.a(e.b.CE(this.qGK));
-        this.qGK = -1;
+        this.tLu.a(e.b.CV(this.tLw));
+        this.tLw = -1;
       }
     }
     if (bool)
     {
-      this.qGs = false;
-      cgR();
-      AppMethodBeat.o(243695);
+      this.tLe = false;
+      cHP();
+      AppMethodBeat.o(317545);
       return true;
     }
-    AppMethodBeat.o(243695);
+    AppMethodBeat.o(317545);
     return false;
   }
   
-  public final void yS(int paramInt)
+  public final void zb(int paramInt)
   {
-    AppMethodBeat.i(243691);
-    this.qGs = true;
+    AppMethodBeat.i(317538);
+    this.tLe = true;
     switch (paramInt)
     {
     default: 
-      this.qGI.a(e.b.CE(9));
-      AppMethodBeat.o(243691);
+      this.tLu.a(e.b.CV(9));
+      AppMethodBeat.o(317538);
       return;
     case 90: 
-      this.qGI.a(e.b.CE(0));
-      AppMethodBeat.o(243691);
+      this.tLu.a(e.b.CV(0));
+      AppMethodBeat.o(317538);
       return;
     case -90: 
-      this.qGI.a(e.b.CE(8));
-      AppMethodBeat.o(243691);
+      this.tLu.a(e.b.CV(8));
+      AppMethodBeat.o(317538);
       return;
     }
-    this.qGI.a(e.b.CE(1));
-    AppMethodBeat.o(243691);
+    this.tLu.a(e.b.CV(1));
+    AppMethodBeat.o(317538);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.platform.window.a.b
  * JD-Core Version:    0.7.0.1
  */

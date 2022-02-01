@@ -1,173 +1,105 @@
 package kotlin.l.b.a.b.j;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.a.j;
-import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l.b.a.b.b.ab;
-import kotlin.l.b.a.b.b.an;
-import kotlin.l.b.a.b.b.as;
-import kotlin.l.b.a.b.b.b;
-import kotlin.l.b.a.b.b.b.a;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.b.ah;
+import kotlin.l.b.a.b.b.az;
 import kotlin.l.b.a.b.b.e;
 import kotlin.l.b.a.b.b.l;
-import kotlin.l.b.a.b.b.v;
-import kotlin.l.b.a.b.m.a.g.a;
+import kotlin.l.b.a.b.c.a.b;
+import kotlin.l.b.a.b.f.f;
+import kotlin.l.b.a.b.j.g.h;
+import kotlin.l.b.a.b.j.g.k;
+import kotlin.l.b.a.b.j.g.k.a;
 
 public final class a
+  extends o
 {
-  public static final a abjQ;
+  public static final a ajiE;
   
   static
   {
-    AppMethodBeat.i(59881);
-    abjQ = new a();
-    AppMethodBeat.o(59881);
+    AppMethodBeat.i(192177);
+    ajiE = new a();
+    AppMethodBeat.o(192177);
   }
   
-  private final boolean a(as paramas1, as paramas2, boolean paramBoolean, m<? super l, ? super l, Boolean> paramm)
+  private static final void a(e parame, LinkedHashSet<e> paramLinkedHashSet, h paramh, boolean paramBoolean)
   {
-    AppMethodBeat.i(59878);
-    if (p.h(paramas1, paramas2))
+    AppMethodBeat.i(192174);
+    Iterator localIterator = k.a.a((k)paramh, kotlin.l.b.a.b.j.g.d.ajkV, null, 2).iterator();
+    label204:
+    while (localIterator.hasNext())
     {
-      AppMethodBeat.o(59878);
-      return true;
-    }
-    if (p.h(paramas1.iDJ(), paramas2.iDJ()))
-    {
-      AppMethodBeat.o(59878);
-      return false;
-    }
-    if (!a((l)paramas1, (l)paramas2, paramm, paramBoolean))
-    {
-      AppMethodBeat.o(59878);
-      return false;
-    }
-    if (paramas1.getIndex() == paramas2.getIndex())
-    {
-      AppMethodBeat.o(59878);
-      return true;
-    }
-    AppMethodBeat.o(59878);
-    return false;
-  }
-  
-  private final boolean a(l paraml1, l paraml2, m<? super l, ? super l, Boolean> paramm, boolean paramBoolean)
-  {
-    AppMethodBeat.i(59880);
-    paraml1 = paraml1.iDJ();
-    paraml2 = paraml2.iDJ();
-    if (((paraml1 instanceof b)) || ((paraml2 instanceof b)))
-    {
-      paramBoolean = ((Boolean)paramm.invoke(paraml1, paraml2)).booleanValue();
-      AppMethodBeat.o(59880);
-      return paramBoolean;
-    }
-    paramBoolean = a(paraml1, paraml2, paramBoolean);
-    AppMethodBeat.o(59880);
-    return paramBoolean;
-  }
-  
-  private static an d(kotlin.l.b.a.b.b.a parama)
-  {
-    AppMethodBeat.i(59879);
-    for (;;)
-    {
-      if ((!(parama instanceof b)) || (((b)parama).iEN() != b.a.aaJR))
+      Object localObject2 = (l)localIterator.next();
+      if ((localObject2 instanceof e))
       {
-        parama = parama.iDZ();
-        AppMethodBeat.o(59879);
-        return parama;
-      }
-      parama = ((b)parama).iEL();
-      p.j(parama, "overriddenDescriptors");
-      parama = (b)j.j((Iterable)parama);
-      if (parama == null) {
-        break;
-      }
-      parama = (kotlin.l.b.a.b.b.a)parama;
-    }
-    AppMethodBeat.o(59879);
-    return null;
-  }
-  
-  public final boolean a(final l paraml1, final l paraml2, boolean paramBoolean)
-  {
-    AppMethodBeat.i(59877);
-    if (((paraml1 instanceof e)) && ((paraml2 instanceof e)))
-    {
-      paraml1 = (e)paraml1;
-      paraml2 = (e)paraml2;
-      paramBoolean = p.h(paraml1.iDL(), paraml2.iDL());
-      AppMethodBeat.o(59877);
-      return paramBoolean;
-    }
-    if (((paraml1 instanceof as)) && ((paraml2 instanceof as)))
-    {
-      paramBoolean = a((as)paraml1, (as)paraml2, paramBoolean, (m)a.c.abjW);
-      AppMethodBeat.o(59877);
-      return paramBoolean;
-    }
-    if (((paraml1 instanceof kotlin.l.b.a.b.b.a)) && ((paraml2 instanceof kotlin.l.b.a.b.b.a)))
-    {
-      paraml1 = (kotlin.l.b.a.b.b.a)paraml1;
-      paraml2 = (kotlin.l.b.a.b.b.a)paraml2;
-      p.k(paraml1, "a");
-      p.k(paraml2, "b");
-      if (p.h(paraml1, paraml2))
-      {
-        AppMethodBeat.o(59877);
-        return true;
-      }
-      if ((!(p.h(paraml1.iEU(), paraml2.iEU()) ^ true)) && ((!p.h(paraml1.iDJ(), paraml2.iDJ())) || ((paramBoolean) && (!(p.h(d(paraml1), d(paraml2)) ^ true)) && ((!(paraml1 instanceof v)) || (!(paraml2 instanceof v)) || (((v)paraml1).iDV() == ((v)paraml2).iDV())))))
-      {
-        if ((c.m((l)paraml1)) || (c.m((l)paraml2)))
+        Object localObject1 = localObject2;
+        if (((e)localObject2).kni())
         {
-          AppMethodBeat.o(59877);
-          return false;
-        }
-        if (a((l)paraml1, (l)paraml2, (m)a.a.abjR, paramBoolean))
-        {
-          i locali = i.a((g.a)new b(paramBoolean, paraml1, paraml2));
-          p.j(locali, "OverridingUtil.createWit…= a && y == b }\n        }");
-          i.a locala = locali.a(paraml1, paraml2, null, true);
-          p.j(locala, "overridingUtil.isOverrid… null, !ignoreReturnType)");
-          if (locala.iOQ() == i.a.a.abkI)
-          {
-            paraml1 = locali.a(paraml2, paraml1, null, true);
-            p.j(paraml1, "overridingUtil.isOverrid… null, !ignoreReturnType)");
-            if (paraml1.iOQ() == i.a.a.abkI)
-            {
-              AppMethodBeat.o(59877);
-              return true;
+          localObject1 = ((e)localObject2).kok();
+          s.s(localObject1, "descriptor.name");
+          localObject2 = paramh.c((f)localObject1, (b)kotlin.l.b.a.b.c.a.d.aiNH);
+          localObject1 = localObject2;
+          if (!(localObject2 instanceof e)) {
+            if ((localObject2 instanceof az)) {
+              localObject1 = ((az)localObject2).kpn();
             }
           }
         }
+        for (;;)
+        {
+          if (localObject1 == null) {
+            break label204;
+          }
+          if (d.b((e)localObject1, parame)) {
+            paramLinkedHashSet.add(localObject1);
+          }
+          if (!paramBoolean) {
+            break;
+          }
+          localObject1 = ((e)localObject1).kou();
+          s.s(localObject1, "refinedDescriptor.unsubstitutedInnerClassesScope");
+          a(parame, paramLinkedHashSet, (h)localObject1, paramBoolean);
+          break;
+          localObject1 = null;
+          continue;
+          localObject1 = (e)localObject1;
+        }
       }
-      AppMethodBeat.o(59877);
-      return false;
     }
-    if (((paraml1 instanceof ab)) && ((paraml2 instanceof ab)))
-    {
-      paramBoolean = p.h(((ab)paraml1).iFy(), ((ab)paraml2).iFy());
-      AppMethodBeat.o(59877);
-      return paramBoolean;
-    }
-    paramBoolean = p.h(paraml1, paraml2);
-    AppMethodBeat.o(59877);
-    return paramBoolean;
+    AppMethodBeat.o(192174);
   }
   
-  static final class b
-    implements g.a
+  public static Collection<e> x(e parame)
   {
-    b(boolean paramBoolean, kotlin.l.b.a.b.b.a parama1, kotlin.l.b.a.b.b.a parama2) {}
+    AppMethodBeat.i(192173);
+    s.u(parame, "sealedClass");
+    if (parame.knb() != kotlin.l.b.a.b.b.ab.aiGZ)
+    {
+      parame = (Collection)kotlin.a.ab.aivy;
+      AppMethodBeat.o(192173);
+      return parame;
+    }
+    LinkedHashSet localLinkedHashSet = new LinkedHashSet();
+    Object localObject = parame.knp();
+    if ((localObject instanceof ah)) {
+      a(parame, localLinkedHashSet, ((ah)localObject).knP(), false);
+    }
+    localObject = parame.kou();
+    s.s(localObject, "sealedClass.unsubstitutedInnerClassesScope");
+    a(parame, localLinkedHashSet, (h)localObject, true);
+    parame = (Collection)localLinkedHashSet;
+    AppMethodBeat.o(192173);
+    return parame;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.j.a
  * JD-Core Version:    0.7.0.1
  */

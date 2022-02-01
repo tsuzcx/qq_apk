@@ -1,7 +1,6 @@
 package org.xwalk.core;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
 import java.util.Map;
 
 public class XWalkSettings
@@ -13,11 +12,8 @@ public class XWalkSettings
   public static final int LOAD_DEFAULT = -1;
   public static final int LOAD_NO_CACHE = 2;
   private LazyReflectMethod InvokeChannelInternalMethod;
-  private LazyReflectMethod SetJSExceptionCallBackXWalkJSExceptionListenerInternalMethod;
   private LazyReflectMethod SetLogCallBackXWalkLogMessageListenerInternalMethod;
   private Object bridge;
-  private ArrayList<Object> constructorParams;
-  private ArrayList<Object> constructorTypes;
   private XWalkCoreWrapper coreWrapper;
   private LazyReflectMethod disableCustomizedLongPressTimeoutVoidMethod;
   private LazyReflectMethod enableCustomizedLongPressTimeoutIntMethod;
@@ -63,7 +59,6 @@ public class XWalkSettings
   private LazyReflectMethod getUserAgentStringMethod;
   private LazyReflectMethod getUsingForAppBrandMethod;
   private LazyReflectMethod getVideoPlaybackRequiresUserGestureMethod;
-  private LazyReflectMethod postWrapperMethod;
   private LazyReflectMethod setAcceptLanguagesStringMethod;
   private LazyReflectMethod setAllowContentAccessbooleanMethod;
   private LazyReflectMethod setAllowFileAccessFromFileURLsbooleanMethod;
@@ -207,7 +202,6 @@ public class XWalkSettings
     this.setLoadWithOverviewModebooleanMethod = new LazyReflectMethod(null, "setLoadWithOverviewMode", new Class[0]);
     this.getLoadWithOverviewModeMethod = new LazyReflectMethod(null, "getLoadWithOverviewMode", new Class[0]);
     this.SetLogCallBackXWalkLogMessageListenerInternalMethod = new LazyReflectMethod(null, "SetLogCallBack", new Class[0]);
-    this.SetJSExceptionCallBackXWalkJSExceptionListenerInternalMethod = new LazyReflectMethod(null, "SetJSExceptionCallBack", new Class[0]);
     this.setAppBrandInfoMethod = new LazyReflectMethod(null, "setAppBrandInfo", new Class[0]);
     this.getAppBrandInfoMethod = new LazyReflectMethod(null, "getAppBrandInfoSuper", new Class[0]);
     this.setBackgroundAudioPauseMethod = new LazyReflectMethod(null, "setBackgroundAudioPauseSuper", new Class[0]);
@@ -224,6 +218,114 @@ public class XWalkSettings
     paramLayoutAlgorithm = this.enumLayoutAlgorithmClassValueOfMethod.invoke(new Object[] { paramLayoutAlgorithm.toString() });
     AppMethodBeat.o(154862);
     return paramLayoutAlgorithm;
+  }
+  
+  private void reflectionInit()
+  {
+    AppMethodBeat.i(154948);
+    if (XWalkCoreWrapper.getInstance() == null)
+    {
+      XWalkReflectionInitHandler.reserveReflectObject(this);
+      AppMethodBeat.o(154948);
+      return;
+    }
+    this.coreWrapper = XWalkCoreWrapper.getInstance();
+    this.enumLayoutAlgorithmClassValueOfMethod.init(null, this.coreWrapper.getBridgeClass("XWalkSettingsInternal$LayoutAlgorithmInternal"), "valueOf", new Class[] { String.class });
+    this.setCacheModeintMethod.init(this.bridge, null, "setCacheModeSuper", new Class[] { Integer.TYPE });
+    this.getCacheModeMethod.init(this.bridge, null, "getCacheModeSuper", new Class[0]);
+    this.setForceDarkModeintMethod.init(this.bridge, null, "setForceDarkModeSuper", new Class[] { Integer.TYPE });
+    this.getForceDarkModeMethod.init(this.bridge, null, "getForceDarkModeSuper", new Class[0]);
+    this.setForceDarkBehaviorintMethod.init(this.bridge, null, "setForceDarkBehaviorSuper", new Class[] { Integer.TYPE });
+    this.getForceDarkBehaviorMethod.init(this.bridge, null, "getForceDarkBehaviorSuper", new Class[0]);
+    this.setBlockNetworkLoadsbooleanMethod.init(this.bridge, null, "setBlockNetworkLoadsSuper", new Class[] { Boolean.TYPE });
+    this.getBlockNetworkLoadsMethod.init(this.bridge, null, "getBlockNetworkLoadsSuper", new Class[0]);
+    this.setAllowFileAccessbooleanMethod.init(this.bridge, null, "setAllowFileAccessSuper", new Class[] { Boolean.TYPE });
+    this.getAllowFileAccessMethod.init(this.bridge, null, "getAllowFileAccessSuper", new Class[0]);
+    this.setAllowContentAccessbooleanMethod.init(this.bridge, null, "setAllowContentAccessSuper", new Class[] { Boolean.TYPE });
+    this.getAllowContentAccessMethod.init(this.bridge, null, "getAllowContentAccessSuper", new Class[0]);
+    this.setJavaScriptEnabledbooleanMethod.init(this.bridge, null, "setJavaScriptEnabledSuper", new Class[] { Boolean.TYPE });
+    this.setAllowUniversalAccessFromFileURLsbooleanMethod.init(this.bridge, null, "setAllowUniversalAccessFromFileURLsSuper", new Class[] { Boolean.TYPE });
+    this.setAllowFileAccessFromFileURLsbooleanMethod.init(this.bridge, null, "setAllowFileAccessFromFileURLsSuper", new Class[] { Boolean.TYPE });
+    this.setLoadsImagesAutomaticallybooleanMethod.init(this.bridge, null, "setLoadsImagesAutomaticallySuper", new Class[] { Boolean.TYPE });
+    this.getLoadsImagesAutomaticallyMethod.init(this.bridge, null, "getLoadsImagesAutomaticallySuper", new Class[0]);
+    this.setBlockNetworkImagebooleanMethod.init(this.bridge, null, "setBlockNetworkImageSuper", new Class[] { Boolean.TYPE });
+    this.getBlockNetworkImageMethod.init(this.bridge, null, "getBlockNetworkImageSuper", new Class[0]);
+    this.getJavaScriptEnabledMethod.init(this.bridge, null, "getJavaScriptEnabledSuper", new Class[0]);
+    this.getAllowUniversalAccessFromFileURLsMethod.init(this.bridge, null, "getAllowUniversalAccessFromFileURLsSuper", new Class[0]);
+    this.getAllowFileAccessFromFileURLsMethod.init(this.bridge, null, "getAllowFileAccessFromFileURLsSuper", new Class[0]);
+    this.setJavaScriptCanOpenWindowsAutomaticallybooleanMethod.init(this.bridge, null, "setJavaScriptCanOpenWindowsAutomaticallySuper", new Class[] { Boolean.TYPE });
+    this.getJavaScriptCanOpenWindowsAutomaticallyMethod.init(this.bridge, null, "getJavaScriptCanOpenWindowsAutomaticallySuper", new Class[0]);
+    this.setJavaScriptCanAccessClipboardbooleanMethod.init(this.bridge, null, "setJavaScriptCanAccessClipboardSuper", new Class[] { Boolean.TYPE });
+    this.getJavaScriptCanAccessClipboardMethod.init(this.bridge, null, "getJavaScriptCanAccessClipboardSuper", new Class[0]);
+    this.setSupportMultipleWindowsbooleanMethod.init(this.bridge, null, "setSupportMultipleWindowsSuper", new Class[] { Boolean.TYPE });
+    this.supportMultipleWindowsMethod.init(this.bridge, null, "supportMultipleWindowsSuper", new Class[0]);
+    this.setUseWideViewPortbooleanMethod.init(this.bridge, null, "setUseWideViewPortSuper", new Class[] { Boolean.TYPE });
+    this.getUseWideViewPortMethod.init(this.bridge, null, "getUseWideViewPortSuper", new Class[0]);
+    this.setAppCacheEnabledbooleanMethod.init(this.bridge, null, "setAppCacheEnabledSuper", new Class[] { Boolean.TYPE });
+    this.setAppCachePathStringMethod.init(this.bridge, null, "setAppCachePathSuper", new Class[] { String.class });
+    this.setDomStorageEnabledbooleanMethod.init(this.bridge, null, "setDomStorageEnabledSuper", new Class[] { Boolean.TYPE });
+    this.getDomStorageEnabledMethod.init(this.bridge, null, "getDomStorageEnabledSuper", new Class[0]);
+    this.setDatabaseEnabledbooleanMethod.init(this.bridge, null, "setDatabaseEnabledSuper", new Class[] { Boolean.TYPE });
+    this.getDatabaseEnabledMethod.init(this.bridge, null, "getDatabaseEnabledSuper", new Class[0]);
+    this.setMediaPlaybackRequiresUserGesturebooleanMethod.init(this.bridge, null, "setMediaPlaybackRequiresUserGestureSuper", new Class[] { Boolean.TYPE });
+    this.getMediaPlaybackRequiresUserGestureMethod.init(this.bridge, null, "getMediaPlaybackRequiresUserGestureSuper", new Class[0]);
+    this.setAudioPlaybackRequiresUserGesturebooleanMethod.init(this.bridge, null, "setAudioPlaybackRequiresUserGestureSuper", new Class[] { Boolean.TYPE });
+    this.getAudioPlaybackRequiresUserGestureMethod.init(this.bridge, null, "getAudioPlaybackRequiresUserGestureSuper", new Class[0]);
+    this.setVideoPlaybackRequiresUserGesturebooleanMethod.init(this.bridge, null, "setVideoPlaybackRequiresUserGestureSuper", new Class[] { Boolean.TYPE });
+    this.getVideoPlaybackRequiresUserGestureMethod.init(this.bridge, null, "getVideoPlaybackRequiresUserGestureSuper", new Class[0]);
+    this.enableCustomizedLongPressTimeoutIntMethod.init(this.bridge, null, "enableCustomizedLongPressTimeoutSuper", new Class[] { Integer.TYPE });
+    this.disableCustomizedLongPressTimeoutVoidMethod.init(this.bridge, null, "disableCustomizedLongPressTimeoutSuper", new Class[0]);
+    this.setUsingForAppBrandMethod.init(this.bridge, null, "setUsingForAppBrandSuper", new Class[] { Integer.TYPE });
+    this.getUsingForAppBrandMethod.init(this.bridge, null, "getUsingForAppBrandSuper", new Class[0]);
+    this.setUserAgentStringStringMethod.init(this.bridge, null, "setUserAgentStringSuper", new Class[] { String.class });
+    this.getUserAgentStringMethod.init(this.bridge, null, "getUserAgentStringSuper", new Class[0]);
+    this.setAcceptLanguagesStringMethod.init(this.bridge, null, "setAcceptLanguagesSuper", new Class[] { String.class });
+    this.getAcceptLanguagesMethod.init(this.bridge, null, "getAcceptLanguagesSuper", new Class[0]);
+    this.setSaveFormDatabooleanMethod.init(this.bridge, null, "setSaveFormDataSuper", new Class[] { Boolean.TYPE });
+    this.getSaveFormDataMethod.init(this.bridge, null, "getSaveFormDataSuper", new Class[0]);
+    this.setInitialPageScalefloatMethod.init(this.bridge, null, "setInitialPageScaleSuper", new Class[] { Float.TYPE });
+    this.setTextZoomintMethod.init(this.bridge, null, "setTextZoomSuper", new Class[] { Integer.TYPE });
+    this.getTextZoomMethod.init(this.bridge, null, "getTextZoomSuper", new Class[0]);
+    this.setDefaultFontSizeintMethod.init(this.bridge, null, "setDefaultFontSizeSuper", new Class[] { Integer.TYPE });
+    this.getDefaultFontSizeMethod.init(this.bridge, null, "getDefaultFontSizeSuper", new Class[0]);
+    this.setDefaultFixedFontSizeintMethod.init(this.bridge, null, "setDefaultFixedFontSizeSuper", new Class[] { Integer.TYPE });
+    this.getDefaultFixedFontSizeMethod.init(this.bridge, null, "getDefaultFixedFontSizeSuper", new Class[0]);
+    this.setSupportZoombooleanMethod.init(this.bridge, null, "setSupportZoomSuper", new Class[] { Boolean.TYPE });
+    this.supportZoomMethod.init(this.bridge, null, "supportZoomSuper", new Class[0]);
+    this.setBuiltInZoomControlsbooleanMethod.init(this.bridge, null, "setBuiltInZoomControlsSuper", new Class[] { Boolean.TYPE });
+    this.getBuiltInZoomControlsMethod.init(this.bridge, null, "getBuiltInZoomControlsSuper", new Class[0]);
+    this.supportsMultiTouchZoomForTestMethod.init(this.bridge, null, "supportsMultiTouchZoomForTestSuper", new Class[0]);
+    this.setSupportSpatialNavigationbooleanMethod.init(this.bridge, null, "setSupportSpatialNavigationSuper", new Class[] { Boolean.TYPE });
+    this.getSupportSpatialNavigationMethod.init(this.bridge, null, "getSupportSpatialNavigationSuper", new Class[0]);
+    this.setSupportQuirksModebooleanMethod.init(this.bridge, null, "setSupportQuirksModeSuper", new Class[] { Boolean.TYPE });
+    this.getSupportQuirksModeMethod.init(this.bridge, null, "getSupportQuirksModeSuper", new Class[0]);
+    this.setLayoutAlgorithmLayoutAlgorithmInternalMethod.init(this.bridge, null, "setLayoutAlgorithmSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkSettingsInternal$LayoutAlgorithmInternal") });
+    this.getLayoutAlgorithmMethod.init(this.bridge, null, "getLayoutAlgorithmSuper", new Class[0]);
+    this.setLoadWithOverviewModebooleanMethod.init(this.bridge, null, "setLoadWithOverviewModeSuper", new Class[] { Boolean.TYPE });
+    this.getLoadWithOverviewModeMethod.init(this.bridge, null, "getLoadWithOverviewModeSuper", new Class[0]);
+    this.SetLogCallBackXWalkLogMessageListenerInternalMethod.init(this.bridge, null, "SetLogCallBackSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkLogMessageListenerBridge") });
+    this.setStandardFontFamilyStringMethod.init(this.bridge, null, "setStandardFontFamilySuper", new Class[] { String.class });
+    this.setFixedFontFamilyStringMethod.init(this.bridge, null, "setFixedFontFamilySuper", new Class[] { String.class });
+    this.setSansSerifFontFamilyStringMethod.init(this.bridge, null, "setSansSerifFontFamilySuper", new Class[] { String.class });
+    this.setSerifFontFamilyStringMethod.init(this.bridge, null, "setSerifFontFamilySuper", new Class[] { String.class });
+    this.setCursiveFontFamilyStringMethod.init(this.bridge, null, "setCursiveFontFamilySuper", new Class[] { String.class });
+    this.setFantasyFontFamilyStringMethod.init(this.bridge, null, "setFantasyFontFamilySuper", new Class[] { String.class });
+    this.setMinimumFontSizeIntMethod.init(this.bridge, null, "setMinimumFontSizeSuper", new Class[] { Integer.TYPE });
+    this.setMinimumLogicalFontSizeIntMethod.init(this.bridge, null, "setMinimumLogicalFontSizeSuper", new Class[] { Integer.TYPE });
+    this.getStandardFontFamilyMethod.init(this.bridge, null, "getStandardFontFamilySuper", new Class[0]);
+    this.getFixedFontFamilyMethod.init(this.bridge, null, "getFixedFontFamilySuper", new Class[0]);
+    this.getSansSerifFontFamilyMethod.init(this.bridge, null, "getSansSerifFontFamilySuper", new Class[0]);
+    this.getSerifFontFamilyMethod.init(this.bridge, null, "getSerifFontFamilySuper", new Class[0]);
+    this.getCursiveFontFamilyMethod.init(this.bridge, null, "getCursiveFontFamilySuper", new Class[0]);
+    this.getFantasyFontFamilyMethod.init(this.bridge, null, "getFantasyFontFamilySuper", new Class[0]);
+    this.getMinimumFontSizeMethod.init(this.bridge, null, "getMinimumFontSizeSuper", new Class[0]);
+    this.getMinimumLogicalFontSizeMethod.init(this.bridge, null, "getMinimumLogicalFontSizeSuper", new Class[0]);
+    this.getAppBrandInfoMethod.init(this.bridge, null, "getAppBrandInfoSuper", new Class[0]);
+    this.setAppBrandInfoMethod.init(this.bridge, null, "setAppBrandInfoSuper", new Class[] { Map.class });
+    this.getBackgroundAudioPauseMethod.init(this.bridge, null, "getBackgroundAudioPauseSuper", new Class[0]);
+    this.setBackgroundAudioPauseMethod.init(this.bridge, null, "setBackgroundAudioPauseSuper", new Class[] { Boolean.TYPE });
+    this.InvokeChannelInternalMethod.init(this.bridge, null, "InvokeChannel", new Class[] { Integer.TYPE, [Ljava.lang.Object.class });
+    AppMethodBeat.o(154948);
   }
   
   public void InvokeChannel(int paramInt, Object[] paramArrayOfObject)
@@ -248,29 +350,6 @@ public class XWalkSettings
     }
   }
   
-  public void SetJSExceptionCallBack(XWalkJSExceptionListener paramXWalkJSExceptionListener)
-  {
-    AppMethodBeat.i(154947);
-    try
-    {
-      this.SetJSExceptionCallBackXWalkJSExceptionListenerInternalMethod.invoke(new Object[] { paramXWalkJSExceptionListener.getBridge() });
-      AppMethodBeat.o(154947);
-      return;
-    }
-    catch (UnsupportedOperationException localUnsupportedOperationException)
-    {
-      if (this.coreWrapper == null)
-      {
-        this.SetJSExceptionCallBackXWalkJSExceptionListenerInternalMethod.setArguments(new Object[] { new LazyReflectMethod(paramXWalkJSExceptionListener, "getBridge", new Class[0]) });
-        XWalkCoreWrapper.reserveReflectMethod(this.SetJSExceptionCallBackXWalkJSExceptionListenerInternalMethod);
-        AppMethodBeat.o(154947);
-        return;
-      }
-      XWalkCoreWrapper.handleRuntimeError(localUnsupportedOperationException);
-      AppMethodBeat.o(154947);
-    }
-  }
-  
   public void SetLogCallBack(XWalkLogMessageListener paramXWalkLogMessageListener)
   {
     AppMethodBeat.i(154946);
@@ -285,7 +364,7 @@ public class XWalkSettings
       if (this.coreWrapper == null)
       {
         this.SetLogCallBackXWalkLogMessageListenerInternalMethod.setArguments(new Object[] { new LazyReflectMethod(paramXWalkLogMessageListener, "getBridge", new Class[0]) });
-        XWalkCoreWrapper.reserveReflectMethod(this.SetLogCallBackXWalkLogMessageListenerInternalMethod);
+        XWalkReflectionInitHandler.reserveReflectMethod(this.SetLogCallBackXWalkLogMessageListenerInternalMethod);
         AppMethodBeat.o(154946);
         return;
       }
@@ -303,11 +382,11 @@ public class XWalkSettings
   
   public void disableCustomizedLongPressTimeout()
   {
-    AppMethodBeat.i(209700);
+    AppMethodBeat.i(187864);
     try
     {
       this.disableCustomizedLongPressTimeoutVoidMethod.invoke(new Object[0]);
-      AppMethodBeat.o(209700);
+      AppMethodBeat.o(187864);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -316,21 +395,21 @@ public class XWalkSettings
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(209700);
+        AppMethodBeat.o(187864);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(209700);
+      AppMethodBeat.o(187864);
     }
   }
   
   public void enableCustomizedLongPressTimeout(int paramInt)
   {
-    AppMethodBeat.i(209697);
+    AppMethodBeat.i(187857);
     try
     {
       this.enableCustomizedLongPressTimeoutIntMethod.invoke(new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(209697);
+      AppMethodBeat.o(187857);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -339,11 +418,11 @@ public class XWalkSettings
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(209697);
+        AppMethodBeat.o(187857);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(209697);
+      AppMethodBeat.o(187857);
     }
   }
   
@@ -469,11 +548,11 @@ public class XWalkSettings
   
   public Map<String, String> getAppBrandInfo()
   {
-    AppMethodBeat.i(209756);
+    AppMethodBeat.i(188115);
     try
     {
       Map localMap = (Map)this.getAppBrandInfoMethod.invoke(new Object[0]);
-      AppMethodBeat.o(209756);
+      AppMethodBeat.o(188115);
       return localMap;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -482,11 +561,11 @@ public class XWalkSettings
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(209756);
+        AppMethodBeat.o(188115);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(209756);
+      AppMethodBeat.o(188115);
     }
     return null;
   }
@@ -517,11 +596,11 @@ public class XWalkSettings
   
   public boolean getBackgroundAudioPause()
   {
-    AppMethodBeat.i(209760);
+    AppMethodBeat.i(188138);
     try
     {
       boolean bool = ((Boolean)this.getBackgroundAudioPauseMethod.invoke(new Object[0])).booleanValue();
-      AppMethodBeat.o(209760);
+      AppMethodBeat.o(188138);
       return bool;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -530,11 +609,11 @@ public class XWalkSettings
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(209760);
+        AppMethodBeat.o(188138);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(209760);
+      AppMethodBeat.o(188138);
     }
     return false;
   }
@@ -858,11 +937,11 @@ public class XWalkSettings
   
   public boolean getJavaScriptCanAccessClipboard()
   {
-    AppMethodBeat.i(209683);
+    AppMethodBeat.i(187764);
     try
     {
       boolean bool = ((Boolean)this.getJavaScriptCanAccessClipboardMethod.invoke(new Object[0])).booleanValue();
-      AppMethodBeat.o(209683);
+      AppMethodBeat.o(187764);
       return bool;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -871,11 +950,11 @@ public class XWalkSettings
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(209683);
+        AppMethodBeat.o(187764);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(209683);
+      AppMethodBeat.o(187764);
     }
     return true;
   }
@@ -1336,116 +1415,6 @@ public class XWalkSettings
     return false;
   }
   
-  void reflectionInit()
-  {
-    AppMethodBeat.i(154948);
-    XWalkCoreWrapper.initEmbeddedMode();
-    this.coreWrapper = XWalkCoreWrapper.getInstance();
-    if (this.coreWrapper == null)
-    {
-      XWalkCoreWrapper.reserveReflectObject(this);
-      AppMethodBeat.o(154948);
-      return;
-    }
-    this.enumLayoutAlgorithmClassValueOfMethod.init(null, this.coreWrapper.getBridgeClass("XWalkSettingsInternal$LayoutAlgorithmInternal"), "valueOf", new Class[] { String.class });
-    this.setCacheModeintMethod.init(this.bridge, null, "setCacheModeSuper", new Class[] { Integer.TYPE });
-    this.getCacheModeMethod.init(this.bridge, null, "getCacheModeSuper", new Class[0]);
-    this.setForceDarkModeintMethod.init(this.bridge, null, "setForceDarkModeSuper", new Class[] { Integer.TYPE });
-    this.getForceDarkModeMethod.init(this.bridge, null, "getForceDarkModeSuper", new Class[0]);
-    this.setForceDarkBehaviorintMethod.init(this.bridge, null, "setForceDarkBehaviorSuper", new Class[] { Integer.TYPE });
-    this.getForceDarkBehaviorMethod.init(this.bridge, null, "getForceDarkBehaviorSuper", new Class[0]);
-    this.setBlockNetworkLoadsbooleanMethod.init(this.bridge, null, "setBlockNetworkLoadsSuper", new Class[] { Boolean.TYPE });
-    this.getBlockNetworkLoadsMethod.init(this.bridge, null, "getBlockNetworkLoadsSuper", new Class[0]);
-    this.setAllowFileAccessbooleanMethod.init(this.bridge, null, "setAllowFileAccessSuper", new Class[] { Boolean.TYPE });
-    this.getAllowFileAccessMethod.init(this.bridge, null, "getAllowFileAccessSuper", new Class[0]);
-    this.setAllowContentAccessbooleanMethod.init(this.bridge, null, "setAllowContentAccessSuper", new Class[] { Boolean.TYPE });
-    this.getAllowContentAccessMethod.init(this.bridge, null, "getAllowContentAccessSuper", new Class[0]);
-    this.setJavaScriptEnabledbooleanMethod.init(this.bridge, null, "setJavaScriptEnabledSuper", new Class[] { Boolean.TYPE });
-    this.setAllowUniversalAccessFromFileURLsbooleanMethod.init(this.bridge, null, "setAllowUniversalAccessFromFileURLsSuper", new Class[] { Boolean.TYPE });
-    this.setAllowFileAccessFromFileURLsbooleanMethod.init(this.bridge, null, "setAllowFileAccessFromFileURLsSuper", new Class[] { Boolean.TYPE });
-    this.setLoadsImagesAutomaticallybooleanMethod.init(this.bridge, null, "setLoadsImagesAutomaticallySuper", new Class[] { Boolean.TYPE });
-    this.getLoadsImagesAutomaticallyMethod.init(this.bridge, null, "getLoadsImagesAutomaticallySuper", new Class[0]);
-    this.setBlockNetworkImagebooleanMethod.init(this.bridge, null, "setBlockNetworkImageSuper", new Class[] { Boolean.TYPE });
-    this.getBlockNetworkImageMethod.init(this.bridge, null, "getBlockNetworkImageSuper", new Class[0]);
-    this.getJavaScriptEnabledMethod.init(this.bridge, null, "getJavaScriptEnabledSuper", new Class[0]);
-    this.getAllowUniversalAccessFromFileURLsMethod.init(this.bridge, null, "getAllowUniversalAccessFromFileURLsSuper", new Class[0]);
-    this.getAllowFileAccessFromFileURLsMethod.init(this.bridge, null, "getAllowFileAccessFromFileURLsSuper", new Class[0]);
-    this.setJavaScriptCanOpenWindowsAutomaticallybooleanMethod.init(this.bridge, null, "setJavaScriptCanOpenWindowsAutomaticallySuper", new Class[] { Boolean.TYPE });
-    this.getJavaScriptCanOpenWindowsAutomaticallyMethod.init(this.bridge, null, "getJavaScriptCanOpenWindowsAutomaticallySuper", new Class[0]);
-    this.setJavaScriptCanAccessClipboardbooleanMethod.init(this.bridge, null, "setJavaScriptCanAccessClipboardSuper", new Class[] { Boolean.TYPE });
-    this.getJavaScriptCanAccessClipboardMethod.init(this.bridge, null, "getJavaScriptCanAccessClipboardSuper", new Class[0]);
-    this.setSupportMultipleWindowsbooleanMethod.init(this.bridge, null, "setSupportMultipleWindowsSuper", new Class[] { Boolean.TYPE });
-    this.supportMultipleWindowsMethod.init(this.bridge, null, "supportMultipleWindowsSuper", new Class[0]);
-    this.setUseWideViewPortbooleanMethod.init(this.bridge, null, "setUseWideViewPortSuper", new Class[] { Boolean.TYPE });
-    this.getUseWideViewPortMethod.init(this.bridge, null, "getUseWideViewPortSuper", new Class[0]);
-    this.setAppCacheEnabledbooleanMethod.init(this.bridge, null, "setAppCacheEnabledSuper", new Class[] { Boolean.TYPE });
-    this.setAppCachePathStringMethod.init(this.bridge, null, "setAppCachePathSuper", new Class[] { String.class });
-    this.setDomStorageEnabledbooleanMethod.init(this.bridge, null, "setDomStorageEnabledSuper", new Class[] { Boolean.TYPE });
-    this.getDomStorageEnabledMethod.init(this.bridge, null, "getDomStorageEnabledSuper", new Class[0]);
-    this.setDatabaseEnabledbooleanMethod.init(this.bridge, null, "setDatabaseEnabledSuper", new Class[] { Boolean.TYPE });
-    this.getDatabaseEnabledMethod.init(this.bridge, null, "getDatabaseEnabledSuper", new Class[0]);
-    this.setMediaPlaybackRequiresUserGesturebooleanMethod.init(this.bridge, null, "setMediaPlaybackRequiresUserGestureSuper", new Class[] { Boolean.TYPE });
-    this.getMediaPlaybackRequiresUserGestureMethod.init(this.bridge, null, "getMediaPlaybackRequiresUserGestureSuper", new Class[0]);
-    this.setAudioPlaybackRequiresUserGesturebooleanMethod.init(this.bridge, null, "setAudioPlaybackRequiresUserGestureSuper", new Class[] { Boolean.TYPE });
-    this.getAudioPlaybackRequiresUserGestureMethod.init(this.bridge, null, "getAudioPlaybackRequiresUserGestureSuper", new Class[0]);
-    this.setVideoPlaybackRequiresUserGesturebooleanMethod.init(this.bridge, null, "setVideoPlaybackRequiresUserGestureSuper", new Class[] { Boolean.TYPE });
-    this.getVideoPlaybackRequiresUserGestureMethod.init(this.bridge, null, "getVideoPlaybackRequiresUserGestureSuper", new Class[0]);
-    this.enableCustomizedLongPressTimeoutIntMethod.init(this.bridge, null, "enableCustomizedLongPressTimeoutSuper", new Class[] { Integer.TYPE });
-    this.disableCustomizedLongPressTimeoutVoidMethod.init(this.bridge, null, "disableCustomizedLongPressTimeoutSuper", new Class[0]);
-    this.setUsingForAppBrandMethod.init(this.bridge, null, "setUsingForAppBrandSuper", new Class[] { Integer.TYPE });
-    this.getUsingForAppBrandMethod.init(this.bridge, null, "getUsingForAppBrandSuper", new Class[0]);
-    this.setUserAgentStringStringMethod.init(this.bridge, null, "setUserAgentStringSuper", new Class[] { String.class });
-    this.getUserAgentStringMethod.init(this.bridge, null, "getUserAgentStringSuper", new Class[0]);
-    this.setAcceptLanguagesStringMethod.init(this.bridge, null, "setAcceptLanguagesSuper", new Class[] { String.class });
-    this.getAcceptLanguagesMethod.init(this.bridge, null, "getAcceptLanguagesSuper", new Class[0]);
-    this.setSaveFormDatabooleanMethod.init(this.bridge, null, "setSaveFormDataSuper", new Class[] { Boolean.TYPE });
-    this.getSaveFormDataMethod.init(this.bridge, null, "getSaveFormDataSuper", new Class[0]);
-    this.setInitialPageScalefloatMethod.init(this.bridge, null, "setInitialPageScaleSuper", new Class[] { Float.TYPE });
-    this.setTextZoomintMethod.init(this.bridge, null, "setTextZoomSuper", new Class[] { Integer.TYPE });
-    this.getTextZoomMethod.init(this.bridge, null, "getTextZoomSuper", new Class[0]);
-    this.setDefaultFontSizeintMethod.init(this.bridge, null, "setDefaultFontSizeSuper", new Class[] { Integer.TYPE });
-    this.getDefaultFontSizeMethod.init(this.bridge, null, "getDefaultFontSizeSuper", new Class[0]);
-    this.setDefaultFixedFontSizeintMethod.init(this.bridge, null, "setDefaultFixedFontSizeSuper", new Class[] { Integer.TYPE });
-    this.getDefaultFixedFontSizeMethod.init(this.bridge, null, "getDefaultFixedFontSizeSuper", new Class[0]);
-    this.setSupportZoombooleanMethod.init(this.bridge, null, "setSupportZoomSuper", new Class[] { Boolean.TYPE });
-    this.supportZoomMethod.init(this.bridge, null, "supportZoomSuper", new Class[0]);
-    this.setBuiltInZoomControlsbooleanMethod.init(this.bridge, null, "setBuiltInZoomControlsSuper", new Class[] { Boolean.TYPE });
-    this.getBuiltInZoomControlsMethod.init(this.bridge, null, "getBuiltInZoomControlsSuper", new Class[0]);
-    this.supportsMultiTouchZoomForTestMethod.init(this.bridge, null, "supportsMultiTouchZoomForTestSuper", new Class[0]);
-    this.setSupportSpatialNavigationbooleanMethod.init(this.bridge, null, "setSupportSpatialNavigationSuper", new Class[] { Boolean.TYPE });
-    this.getSupportSpatialNavigationMethod.init(this.bridge, null, "getSupportSpatialNavigationSuper", new Class[0]);
-    this.setSupportQuirksModebooleanMethod.init(this.bridge, null, "setSupportQuirksModeSuper", new Class[] { Boolean.TYPE });
-    this.getSupportQuirksModeMethod.init(this.bridge, null, "getSupportQuirksModeSuper", new Class[0]);
-    this.setLayoutAlgorithmLayoutAlgorithmInternalMethod.init(this.bridge, null, "setLayoutAlgorithmSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkSettingsInternal$LayoutAlgorithmInternal") });
-    this.getLayoutAlgorithmMethod.init(this.bridge, null, "getLayoutAlgorithmSuper", new Class[0]);
-    this.setLoadWithOverviewModebooleanMethod.init(this.bridge, null, "setLoadWithOverviewModeSuper", new Class[] { Boolean.TYPE });
-    this.getLoadWithOverviewModeMethod.init(this.bridge, null, "getLoadWithOverviewModeSuper", new Class[0]);
-    this.SetLogCallBackXWalkLogMessageListenerInternalMethod.init(this.bridge, null, "SetLogCallBackSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkLogMessageListenerBridge") });
-    this.setStandardFontFamilyStringMethod.init(this.bridge, null, "setStandardFontFamilySuper", new Class[] { String.class });
-    this.setFixedFontFamilyStringMethod.init(this.bridge, null, "setFixedFontFamilySuper", new Class[] { String.class });
-    this.setSansSerifFontFamilyStringMethod.init(this.bridge, null, "setSansSerifFontFamilySuper", new Class[] { String.class });
-    this.setSerifFontFamilyStringMethod.init(this.bridge, null, "setSerifFontFamilySuper", new Class[] { String.class });
-    this.setCursiveFontFamilyStringMethod.init(this.bridge, null, "setCursiveFontFamilySuper", new Class[] { String.class });
-    this.setFantasyFontFamilyStringMethod.init(this.bridge, null, "setFantasyFontFamilySuper", new Class[] { String.class });
-    this.setMinimumFontSizeIntMethod.init(this.bridge, null, "setMinimumFontSizeSuper", new Class[] { Integer.TYPE });
-    this.setMinimumLogicalFontSizeIntMethod.init(this.bridge, null, "setMinimumLogicalFontSizeSuper", new Class[] { Integer.TYPE });
-    this.getStandardFontFamilyMethod.init(this.bridge, null, "getStandardFontFamilySuper", new Class[0]);
-    this.getFixedFontFamilyMethod.init(this.bridge, null, "getFixedFontFamilySuper", new Class[0]);
-    this.getSansSerifFontFamilyMethod.init(this.bridge, null, "getSansSerifFontFamilySuper", new Class[0]);
-    this.getSerifFontFamilyMethod.init(this.bridge, null, "getSerifFontFamilySuper", new Class[0]);
-    this.getCursiveFontFamilyMethod.init(this.bridge, null, "getCursiveFontFamilySuper", new Class[0]);
-    this.getFantasyFontFamilyMethod.init(this.bridge, null, "getFantasyFontFamilySuper", new Class[0]);
-    this.getMinimumFontSizeMethod.init(this.bridge, null, "getMinimumFontSizeSuper", new Class[0]);
-    this.getMinimumLogicalFontSizeMethod.init(this.bridge, null, "getMinimumLogicalFontSizeSuper", new Class[0]);
-    this.getAppBrandInfoMethod.init(this.bridge, null, "getAppBrandInfoSuper", new Class[0]);
-    this.setAppBrandInfoMethod.init(this.bridge, null, "setAppBrandInfoSuper", new Class[] { Map.class });
-    this.getBackgroundAudioPauseMethod.init(this.bridge, null, "getBackgroundAudioPauseSuper", new Class[0]);
-    this.setBackgroundAudioPauseMethod.init(this.bridge, null, "setBackgroundAudioPauseSuper", new Class[] { Boolean.TYPE });
-    this.SetJSExceptionCallBackXWalkJSExceptionListenerInternalMethod.init(this.bridge, null, "SetJSExceptionCallBackSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkJSExceptionListenerBridge") });
-    this.InvokeChannelInternalMethod.init(this.bridge, null, "InvokeChannel", new Class[] { Integer.TYPE, [Ljava.lang.Object.class });
-    AppMethodBeat.o(154948);
-  }
-  
   public void setAcceptLanguages(String paramString)
   {
     AppMethodBeat.i(154922);
@@ -1562,11 +1531,11 @@ public class XWalkSettings
   
   public void setAppBrandInfo(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(209754);
+    AppMethodBeat.i(188106);
     try
     {
       this.setAppBrandInfoMethod.invoke(new Object[] { paramMap });
-      AppMethodBeat.o(209754);
+      AppMethodBeat.o(188106);
       return;
     }
     catch (UnsupportedOperationException paramMap)
@@ -1574,11 +1543,11 @@ public class XWalkSettings
       if (this.coreWrapper == null)
       {
         paramMap = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(209754);
+        AppMethodBeat.o(188106);
         throw paramMap;
       }
       XWalkCoreWrapper.handleRuntimeError(paramMap);
-      AppMethodBeat.o(209754);
+      AppMethodBeat.o(188106);
     }
   }
   
@@ -1652,11 +1621,11 @@ public class XWalkSettings
   
   public void setBackgroundAudioPause(boolean paramBoolean)
   {
-    AppMethodBeat.i(209758);
+    AppMethodBeat.i(188126);
     try
     {
       this.setBackgroundAudioPauseMethod.invoke(new Object[] { Boolean.valueOf(paramBoolean) });
-      AppMethodBeat.o(209758);
+      AppMethodBeat.o(188126);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -1665,11 +1634,11 @@ public class XWalkSettings
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(209758);
+        AppMethodBeat.o(188126);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(209758);
+      AppMethodBeat.o(188126);
     }
   }
   
@@ -1994,11 +1963,11 @@ public class XWalkSettings
   
   public void setJavaScriptCanAccessClipboard(boolean paramBoolean)
   {
-    AppMethodBeat.i(209682);
+    AppMethodBeat.i(187761);
     try
     {
       this.setJavaScriptCanAccessClipboardbooleanMethod.invoke(new Object[] { Boolean.valueOf(paramBoolean) });
-      AppMethodBeat.o(209682);
+      AppMethodBeat.o(187761);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -2007,11 +1976,11 @@ public class XWalkSettings
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(209682);
+        AppMethodBeat.o(187761);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(209682);
+      AppMethodBeat.o(187761);
     }
   }
   
@@ -2567,7 +2536,7 @@ public class XWalkSettings
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.XWalkSettings
  * JD-Core Version:    0.7.0.1
  */

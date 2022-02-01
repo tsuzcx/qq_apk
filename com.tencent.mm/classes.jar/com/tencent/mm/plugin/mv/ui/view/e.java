@@ -1,107 +1,114 @@
 package com.tencent.mm.plugin.mv.ui.view;
 
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.mv.b.e;
-import com.tencent.mm.plugin.mv.b.f;
-import com.tencent.mm.plugin.mv.model.f;
-import com.tencent.mm.ui.base.r;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.aw.f;
+import com.tencent.mm.plugin.music.model.l;
+import com.tencent.mm.plugin.webview.core.BaseWebViewController;
+import com.tencent.mm.plugin.webview.core.m;
+import com.tencent.mm.plugin.webview.core.m.a;
+import com.tencent.mm.protocal.protobuf.boo;
+import com.tencent.mm.ui.widget.MMWebView;
+import com.tencent.xweb.WebResourceRequest;
+import com.tencent.xweb.WebView;
+import kotlin.Metadata;
+import kotlin.g.a.a;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTipsPopupWindow;", "Lcom/tencent/mm/ui/base/MMPopupWindow;", "context", "Landroid/content/Context;", "onClickListener", "Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTipsPopupWindow$OnClickListener;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTipsPopupWindow$OnClickListener;)V", "autoDismissTime", "", "hasMeasure", "", "menuLayout", "Landroid/view/View;", "musicMv", "Lcom/tencent/mm/plugin/mv/model/MusicMv;", "getOnClickListener", "()Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTipsPopupWindow$OnClickListener;", "popupPadding", "", "tipsTv", "Landroid/widget/TextView;", "topMargin", "vArrow", "setAutoDismissTimeMs", "", "time", "setGone", "setMusicMv", "setPopupPadding", "padding", "setPopupTopMargin", "setTips", "tips", "Landroid/text/SpannableString;", "", "setVisible", "showWith", "anchor", "Companion", "OnClickListener", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvWebViewController;", "Lcom/tencent/mm/plugin/webview/core/WebViewController;", "songInfo", "Lcom/tencent/mm/protocal/protobuf/FinderMVSongInfo;", "viewWV", "Lcom/tencent/mm/ui/widget/MMWebView;", "(Lcom/tencent/mm/protocal/protobuf/FinderMVSongInfo;Lcom/tencent/mm/ui/widget/MMWebView;)V", "MV_TAG", "", "getMV_TAG", "()Ljava/lang/String;", "MV_TAG$delegate", "Lkotlin/Lazy;", "getSongInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderMVSongInfo;", "initEnviroment", "", "MvWebViewInterceptor", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
-  extends r
+  extends com.tencent.mm.plugin.webview.core.k
 {
-  public static final e.a Gqb;
-  public final TextView AWF;
-  public final View Bbf;
-  private final View Bbg;
-  public boolean Bbh;
-  public int Bbj;
-  public long Bbk;
-  public f GgZ;
-  final b Gqa;
-  public int Gr;
-  public final Context context;
+  private final boo LWI;
+  private final kotlin.j Mkd;
   
-  static
+  public e(boo paramboo, MMWebView paramMMWebView)
   {
-    AppMethodBeat.i(227423);
-    Gqb = new e.a((byte)0);
-    AppMethodBeat.o(227423);
+    super(paramMMWebView);
+    AppMethodBeat.i(287209);
+    this.LWI = paramboo;
+    this.Mkd = kotlin.k.cm((a)new a(this));
+    AppMethodBeat.o(287209);
   }
   
-  public e(Context paramContext, b paramb)
+  public final void cxS()
   {
-    super(paramContext);
-    AppMethodBeat.i(227421);
-    this.context = paramContext;
-    this.Gqa = paramb;
-    this.Bbj = 5;
-    this.Bbk = 10000L;
-    setContentView(LayoutInflater.from(this.context).inflate(b.f.FZM, null));
-    setClippingEnabled(false);
-    paramContext = getContentView().findViewById(b.e.tv_tips);
-    p.j(paramContext, "contentView.findViewById(R.id.tv_tips)");
-    this.AWF = ((TextView)paramContext);
-    paramContext = getContentView().findViewById(b.e.v_arrow);
-    p.j(paramContext, "contentView.findViewById(R.id.v_arrow)");
-    this.Bbf = paramContext;
-    paramContext = getContentView().findViewById(b.e.menu_content);
-    p.j(paramContext, "contentView.findViewById(R.id.menu_content)");
-    this.Bbg = paramContext;
-    getContentView().setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    AppMethodBeat.i(287211);
+    a((m)new b(this.LWI, this.sMP));
+    super.cxS();
+    AppMethodBeat.o(287211);
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements a<String>
+  {
+    a(e parame)
     {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(229928);
-        b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/mv/ui/view/MusicMvTipsPopupWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        paramAnonymousView = this.Gqc.Gqa;
-        if (paramAnonymousView != null) {
-          paramAnonymousView.i(e.a(this.Gqc));
-        }
-        this.Gqc.dismiss();
-        a.a(this, "com/tencent/mm/plugin/mv/ui/view/MusicMvTipsPopupWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(229928);
-      }
-    });
-    AppMethodBeat.o(227421);
+      super();
+    }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTipsPopupWindow$OnClickListener;", "", "onClick", "", "musicMv", "Lcom/tencent/mm/plugin/mv/model/MusicMv;", "plugin-mv_release"})
-  public static abstract interface b
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvWebViewController$MvWebViewInterceptor;", "Lcom/tencent/mm/plugin/webview/core/WebViewInterceptor;", "songInfo", "Lcom/tencent/mm/protocal/protobuf/FinderMVSongInfo;", "viewWV", "Lcom/tencent/mm/ui/widget/MMWebView;", "(Lcom/tencent/mm/protocal/protobuf/FinderMVSongInfo;Lcom/tencent/mm/ui/widget/MMWebView;)V", "getSongInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderMVSongInfo;", "getViewWV", "()Lcom/tencent/mm/ui/widget/MMWebView;", "doJumpToApp", "", "overrideUrl", "Lcom/tencent/mm/plugin/webview/core/WebViewInterceptor$OverrideUrlResult;", "webView", "Lcom/tencent/xweb/WebView;", "request", "Lcom/tencent/xweb/WebResourceRequest;", "url", "", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends m
   {
-    public abstract void i(f paramf);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  public static final class c
-    implements Runnable
-  {
-    public c(e parame) {}
+    private final boo LWI;
+    private final MMWebView sMP;
     
-    public final void run()
+    public b(boo paramboo, MMWebView paramMMWebView)
     {
-      AppMethodBeat.i(226368);
-      if (this.Gqc.isShowing()) {
-        this.Gqc.dismiss();
+      AppMethodBeat.i(287011);
+      this.LWI = paramboo;
+      this.sMP = paramMMWebView;
+      AppMethodBeat.o(287011);
+    }
+    
+    private final int d(boo paramboo)
+    {
+      AppMethodBeat.i(287016);
+      f localf = com.tencent.mm.plugin.music.logic.j.gnw().gng();
+      if (localf != null)
+      {
+        Object localObject = l.LMH;
+        localObject = this.sMP.getContext();
+        s.s(localObject, "viewWV.context");
+        int i = l.a((Context)localObject, localf, paramboo, null);
+        AppMethodBeat.o(287016);
+        return i;
       }
-      AppMethodBeat.o(226368);
+      AppMethodBeat.o(287016);
+      return -1;
+    }
+    
+    public final m.a c(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+    {
+      AppMethodBeat.i(287023);
+      s.u(paramWebView, "webView");
+      s.u(paramWebResourceRequest, "request");
+      d(this.LWI);
+      paramWebView = new m.a(true, true);
+      AppMethodBeat.o(287023);
+      return paramWebView;
+    }
+    
+    public final m.a j(WebView paramWebView, String paramString)
+    {
+      AppMethodBeat.i(287030);
+      s.u(paramWebView, "webView");
+      s.u(paramString, "url");
+      d(this.LWI);
+      paramWebView = new m.a(true, true);
+      AppMethodBeat.o(287030);
+      return paramWebView;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.mv.ui.view.e
  * JD-Core Version:    0.7.0.1
  */

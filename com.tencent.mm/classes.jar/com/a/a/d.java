@@ -13,13 +13,13 @@ final class d
     this.pos = paramInt;
   }
   
-  static d e(String paramString, int paramInt1, int paramInt2)
+  static d i(String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(201725);
+    AppMethodBeat.i(207771);
     long l = 0L;
     if (paramInt1 >= paramInt2)
     {
-      AppMethodBeat.o(201725);
+      AppMethodBeat.o(207771);
       return null;
     }
     int i = paramInt1;
@@ -32,29 +32,29 @@ final class d
       l = l * 10L + (j - 48);
       if (l > 2147483647L)
       {
-        AppMethodBeat.o(201725);
+        AppMethodBeat.o(207771);
         return null;
       }
       i += 1;
     }
     if (i == paramInt1)
     {
-      AppMethodBeat.o(201725);
+      AppMethodBeat.o(207771);
       return null;
     }
     paramString = new d(l, i);
-    AppMethodBeat.o(201725);
+    AppMethodBeat.o(207771);
     return paramString;
   }
   
-  static d j(String paramString, int paramInt)
+  static d q(String paramString, int paramInt)
   {
-    AppMethodBeat.i(201733);
+    AppMethodBeat.i(207781);
     long l = 0L;
     int i;
     if (1 >= paramInt)
     {
-      AppMethodBeat.o(201733);
+      AppMethodBeat.o(207781);
       return null;
       i += 1;
     }
@@ -68,7 +68,7 @@ final class d
         }
         while (l > 4294967295L)
         {
-          AppMethodBeat.o(201733);
+          AppMethodBeat.o(207781);
           return null;
           if ((j >= 65) && (j <= 70))
           {
@@ -87,11 +87,11 @@ final class d
       label143:
       if (i == 1)
       {
-        AppMethodBeat.o(201733);
+        AppMethodBeat.o(207781);
         return null;
       }
       paramString = new d(l, i);
-      AppMethodBeat.o(201733);
+      AppMethodBeat.o(207781);
       return paramString;
       i = 1;
     }
@@ -99,7 +99,7 @@ final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.a.a.d
  * JD-Core Version:    0.7.0.1
  */

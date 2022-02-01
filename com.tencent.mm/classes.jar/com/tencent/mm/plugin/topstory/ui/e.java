@@ -2,39 +2,37 @@ package com.tencent.mm.plugin.topstory.ui;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.az.b;
-import com.tencent.mm.kernel.f;
+import com.tencent.mm.au.b;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.topstory.a.g;
-import com.tencent.mm.plugin.webview.d.n;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.plugin.webview.jsapi.p;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 
 public final class e
-  implements g
+  implements com.tencent.mm.plugin.topstory.a.f
 {
-  public final void a(Context paramContext, int paramInt, String paramString, n paramn)
+  public final void a(Context paramContext, int paramInt, String paramString, p paramp)
   {
-    AppMethodBeat.i(204736);
-    h.aHG().aHp().set(ar.a.VvK, Integer.valueOf(110));
-    h.aHG().aHp().set(ar.a.VvL, Integer.valueOf(1));
-    d.a(paramContext, paramInt, null, paramString, paramn);
-    AppMethodBeat.o(204736);
+    AppMethodBeat.i(271682);
+    h.baE().ban().set(at.a.acXu, Integer.valueOf(110));
+    h.baE().ban().set(at.a.acXv, Integer.valueOf(1));
+    d.a(paramContext, paramInt, null, paramString, paramp);
+    AppMethodBeat.o(271682);
   }
   
-  public final void aQ(String paramString1, String paramString2, String paramString3)
+  public final void bi(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(204739);
-    d.aQ(paramString1, paramString2, paramString3);
-    AppMethodBeat.o(204739);
+    AppMethodBeat.i(271684);
+    d.bi(paramString1, paramString2, paramString3);
+    AppMethodBeat.o(271684);
   }
   
-  public final boolean gpK()
+  public final boolean hMG()
   {
     AppMethodBeat.i(125892);
-    boolean bool = b.WF((String)h.aHG().aHp().b(274436, null));
-    if ((z.bde() & 0x4000000) > 0L) {}
+    boolean bool = b.OE((String)h.baE().ban().d(274436, null));
+    if ((z.bAR() & 0x4000000) > 0L) {}
     for (int i = 1; (!bool) && (i == 0); i = 0)
     {
       AppMethodBeat.o(125892);
@@ -44,11 +42,11 @@ public final class e
     return false;
   }
   
-  public final void iB(Context paramContext)
+  public final void kt(Context paramContext)
   {
-    AppMethodBeat.i(204740);
-    d.iC(paramContext);
-    AppMethodBeat.o(204740);
+    AppMethodBeat.i(271686);
+    d.ku(paramContext);
+    AppMethodBeat.o(271686);
   }
 }
 

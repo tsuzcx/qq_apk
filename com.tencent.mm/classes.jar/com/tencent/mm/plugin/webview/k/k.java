@@ -1,164 +1,61 @@
 package com.tencent.mm.plugin.webview.k;
 
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.widget.MMWebView;
-import com.tencent.xweb.aa;
-import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.n.n;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.a.a;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/util/WebViewKernelUtil;", "", "()V", "CHROME_KERNEL_NO_COMMIT_VERSION", "", "CHROME_PACKAGE_NAME", "", "SPLITER", "TAG", "systemKernelVersion", "currentKernelSupportPageCommitVisible", "", "webView", "Lcom/tencent/mm/ui/widget/MMWebView;", "systemWebViewKernelVersion", "webview-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/util/WebViewAbtestUtil;", "", "()V", "TAG", "", "useThumbPlayer", "", "getUseThumbPlayer", "()Z", "useThumbPlayer$delegate", "Lkotlin/Lazy;", "isUseThumbPlayer", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class k
 {
-  private static int QAf;
-  public static final k QAg;
+  public static final k Xtc;
+  private static final j Xtd;
   
   static
   {
-    AppMethodBeat.i(207285);
-    QAg = new k();
-    AppMethodBeat.o(207285);
+    AppMethodBeat.i(295733);
+    Xtc = new k();
+    Xtd = kotlin.k.cm((a)a.Xte);
+    AppMethodBeat.o(295733);
   }
   
-  public static int g(MMWebView paramMMWebView)
+  private static boolean iCT()
   {
-    int k = 0;
-    AppMethodBeat.i(207283);
-    int i;
-    if (QAf > 0)
+    AppMethodBeat.i(295717);
+    boolean bool = ((Boolean)Xtd.getValue()).booleanValue();
+    AppMethodBeat.o(295717);
+    return bool;
+  }
+  
+  public static boolean iCU()
+  {
+    AppMethodBeat.i(295725);
+    Log.i("MicroMsg.WebViewAbtestUtil", s.X("isUseThumbPlayer: ", Boolean.valueOf(iCT())));
+    boolean bool = iCT();
+    AppMethodBeat.o(295725);
+    return bool;
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements a<Boolean>
+  {
+    public static final a Xte;
+    
+    static
     {
-      i = QAf;
-      AppMethodBeat.o(207283);
-      return i;
+      AppMethodBeat.i(295668);
+      Xte = new a();
+      AppMethodBeat.o(295668);
     }
-    Object localObject1 = MMApplicationContext.getContext();
-    p.j(localObject1, "MMApplicationContext.getContext()");
-    localObject1 = ((Context)localObject1).getPackageManager().getPackageInfo("com.google.android.webview", 0);
-    if (localObject1 != null) {
-      try
-      {
-        localObject1 = ((PackageInfo)localObject1).versionName;
-        if (localObject1 != null) {
-          if (localObject1 == null)
-          {
-            localObject1 = new t("null cannot be cast to non-null type java.lang.String");
-            AppMethodBeat.o(207283);
-            throw ((Throwable)localObject1);
-          }
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        Log.i("MicroMsg.WebViewKernelUtil", "Get KernelVersion From PKG Error:" + localThrowable.getMessage());
-        i = 0;
-      }
-    }
-    while (i > 0)
+    
+    a()
     {
-      QAf = i;
-      AppMethodBeat.o(207283);
-      return i;
-      Object localObject2 = localThrowable.toLowerCase();
-      p.j(localObject2, "(this as java.lang.String).toLowerCase()");
-      if (localObject2 != null)
-      {
-        localObject2 = n.a((CharSequence)localObject2, new String[] { "." });
-        if (localObject2 != null)
-        {
-          localObject2 = (String)((List)localObject2).get(0);
-          if (localObject2 != null)
-          {
-            localObject2 = n.bHC((String)localObject2);
-            if (localObject2 == null) {}
-          }
-        }
-      }
-      for (i = ((Integer)localObject2).intValue();; i = 0) {
-        break;
-      }
-      i = 0;
-    }
-    int j = k;
-    if (paramMMWebView != null) {
-      try
-      {
-        paramMMWebView = paramMMWebView.getSettings();
-        j = k;
-        if (paramMMWebView != null)
-        {
-          paramMMWebView = paramMMWebView.getUserAgentString();
-          j = k;
-          if (paramMMWebView != null)
-          {
-            if (paramMMWebView != null) {
-              break label313;
-            }
-            paramMMWebView = new t("null cannot be cast to non-null type java.lang.String");
-            AppMethodBeat.o(207283);
-            throw paramMMWebView;
-          }
-        }
-      }
-      catch (Throwable paramMMWebView)
-      {
-        Log.i("MicroMsg.WebViewKernelUtil", "Get KernelVersion From UA Error:" + paramMMWebView.getMessage());
-        j = i;
-      }
-    }
-    for (;;)
-    {
-      QAf = j;
-      AppMethodBeat.o(207283);
-      return j;
-      label313:
-      paramMMWebView = paramMMWebView.toLowerCase();
-      p.j(paramMMWebView, "(this as java.lang.String).toLowerCase()");
-      j = k;
-      if (paramMMWebView != null)
-      {
-        paramMMWebView = n.b((CharSequence)paramMMWebView, new String[] { "chrome/" });
-        j = k;
-        if (paramMMWebView != null)
-        {
-          paramMMWebView = (String)paramMMWebView.get(1);
-          j = k;
-          if (paramMMWebView != null)
-          {
-            paramMMWebView = n.b((CharSequence)paramMMWebView, new String[] { " " });
-            j = k;
-            if (paramMMWebView != null)
-            {
-              paramMMWebView = (String)paramMMWebView.get(0);
-              j = k;
-              if (paramMMWebView != null)
-              {
-                paramMMWebView = n.b((CharSequence)paramMMWebView, new String[] { "." });
-                j = k;
-                if (paramMMWebView != null)
-                {
-                  paramMMWebView = (String)paramMMWebView.get(0);
-                  j = k;
-                  if (paramMMWebView != null)
-                  {
-                    paramMMWebView = n.bHC(paramMMWebView);
-                    j = k;
-                    if (paramMMWebView != null) {
-                      j = paramMMWebView.intValue();
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+      super();
     }
   }
 }

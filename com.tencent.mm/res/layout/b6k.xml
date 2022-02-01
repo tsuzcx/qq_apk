@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/fas" style="@style/a60" />
-    <LinearLayout android:orientation="vertical" android:id="@id/fai" android:background="@drawable/o9" android:paddingLeft="@dimen/k" android:paddingTop="@dimen/k" android:paddingRight="@dimen/k" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k5" android:layout_marginBottom="@dimen/k5">
-        <TextView android:id="@id/faj" style="@style/a5y" />
-        <TextView android:id="@id/fam" android:layout_marginTop="@dimen/g" android:layout_marginBottom="@dimen/k5" style="@style/a5y" />
-        <View style="@style/a5z" />
-        <ImageView android:layout_gravity="center" android:id="@id/fao" android:layout_width="wrap_content" android:layout_height="160.0dip" android:layout_marginTop="@dimen/k" android:layout_marginBottom="@dimen/k" />
-        <View style="@style/a5z" />
-        <TextView android:layout_gravity="center_horizontal" android:id="@id/fah" style="@style/a5x" />
-    </LinearLayout>
+    <FrameLayout android:id="@id/fb9" android:background="@drawable/arl" android:duplicateParentState="false" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/fad" android:background="@drawable/b7q" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/j6" android:layout_marginRight="@dimen/j6">
+            <TextView android:textColor="@color/a7b" android:id="@id/ko8" android:layout_width="wrap_content" android:layout_height="64.0dip" style="@style/ma" />
+            <TextView android:textSize="40.0px" android:textColor="@color/a7b" android:id="@id/k9q" android:layout_width="wrap_content" android:layout_height="60.0dip" android:layout_marginTop="65.0px" style="@style/ma" />
+        </RelativeLayout>
+    </FrameLayout>
 </LinearLayout>

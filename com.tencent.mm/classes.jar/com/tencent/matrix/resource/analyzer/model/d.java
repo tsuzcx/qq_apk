@@ -12,32 +12,32 @@ import java.util.Set;
 public final class d
   implements Serializable
 {
-  public final Map<String, Map<String, e>> dbO;
-  public final Map<String, Map<String, e>> dbP;
-  public final Map<String, e> dbQ;
-  public final Map<String, e> dbR;
+  public final Map<String, Map<String, e>> fan;
+  public final Map<String, Map<String, e>> fao;
+  public final Map<String, e> fap;
+  public final Map<String, e> faq;
   
   d(b paramb)
   {
-    this.dbO = f(paramb.dbO);
-    this.dbP = f(paramb.dbP);
-    this.dbQ = g(paramb.dbQ);
-    this.dbR = g(paramb.dbR);
+    this.fan = m(paramb.fan);
+    this.fao = m(paramb.fao);
+    this.fap = n(paramb.fap);
+    this.faq = n(paramb.faq);
   }
   
-  private static Map<String, Map<String, e>> f(Map<String, Map<String, c>> paramMap)
+  private static Map<String, Map<String, e>> m(Map<String, Map<String, c>> paramMap)
   {
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
     paramMap = paramMap.entrySet().iterator();
     while (paramMap.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)paramMap.next();
-      localLinkedHashMap.put(localEntry.getKey(), g((Map)localEntry.getValue()));
+      localLinkedHashMap.put(localEntry.getKey(), n((Map)localEntry.getValue()));
     }
     return Collections.unmodifiableMap(localLinkedHashMap);
   }
   
-  private static Map<String, e> g(Map<String, c> paramMap)
+  private static Map<String, e> n(Map<String, c> paramMap)
   {
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
     paramMap = paramMap.entrySet().iterator();
@@ -52,7 +52,7 @@ public final class d
   public final String toString()
   {
     Object localObject1 = "";
-    Iterator localIterator1 = this.dbO.entrySet().iterator();
+    Iterator localIterator1 = this.fan.entrySet().iterator();
     Object localObject2;
     Object localObject3;
     Iterator localIterator2;
@@ -67,7 +67,7 @@ public final class d
       if (localIterator2.hasNext())
       {
         localEntry = (Map.Entry)localIterator2.next();
-        if (((e)localEntry.getValue()).dbU) {}
+        if (((e)localEntry.getValue()).fat) {}
         for (localObject1 = " (always)";; localObject1 = "")
         {
           localObject2 = (String)localObject2 + "| Field: " + (String)localObject3 + "." + (String)localEntry.getKey() + (String)localObject1 + "\n";
@@ -75,7 +75,7 @@ public final class d
         }
       }
     }
-    localIterator1 = this.dbP.entrySet().iterator();
+    localIterator1 = this.fao.entrySet().iterator();
     while (localIterator1.hasNext())
     {
       localObject2 = (Map.Entry)localIterator1.next();
@@ -86,7 +86,7 @@ public final class d
       if (localIterator2.hasNext())
       {
         localEntry = (Map.Entry)localIterator2.next();
-        if (((e)localEntry.getValue()).dbU) {}
+        if (((e)localEntry.getValue()).fat) {}
         for (localObject1 = " (always)";; localObject1 = "")
         {
           localObject2 = (String)localObject2 + "| Static field: " + (String)localObject3 + "." + (String)localEntry.getKey() + (String)localObject1 + "\n";
@@ -94,22 +94,22 @@ public final class d
         }
       }
     }
-    localIterator1 = this.dbQ.entrySet().iterator();
+    localIterator1 = this.fap.entrySet().iterator();
     if (localIterator1.hasNext())
     {
       localObject3 = (Map.Entry)localIterator1.next();
-      if (((e)((Map.Entry)localObject3).getValue()).dbU) {}
+      if (((e)((Map.Entry)localObject3).getValue()).fat) {}
       for (localObject2 = " (always)";; localObject2 = "")
       {
         localObject1 = (String)localObject1 + "| Thread:" + (String)((Map.Entry)localObject3).getKey() + (String)localObject2 + "\n";
         break;
       }
     }
-    localIterator1 = this.dbR.entrySet().iterator();
+    localIterator1 = this.faq.entrySet().iterator();
     if (localIterator1.hasNext())
     {
       localObject3 = (Map.Entry)localIterator1.next();
-      if (((e)((Map.Entry)localObject3).getValue()).dbU) {}
+      if (((e)((Map.Entry)localObject3).getValue()).fat) {}
       for (localObject2 = " (always)";; localObject2 = "")
       {
         localObject1 = (String)localObject1 + "| Class:" + (String)((Map.Entry)localObject3).getKey() + (String)localObject2 + "\n";
@@ -119,97 +119,110 @@ public final class d
     return localObject1;
   }
   
+  public static abstract interface a
+  {
+    public abstract d.b T(String paramString1, String paramString2);
+    
+    public abstract d.b U(String paramString1, String paramString2);
+    
+    public abstract d azh();
+    
+    public abstract d.b hj(String paramString);
+    
+    public abstract d.b hk(String paramString);
+  }
+  
   static final class b
     implements d.a
   {
-    final Map<String, Map<String, d.c>> dbO = new LinkedHashMap();
-    final Map<String, Map<String, d.c>> dbP = new LinkedHashMap();
-    final Map<String, d.c> dbQ = new LinkedHashMap();
-    final Map<String, d.c> dbR = new LinkedHashMap();
-    d.c dbS;
+    final Map<String, Map<String, d.c>> fan = new LinkedHashMap();
+    final Map<String, Map<String, d.c>> fao = new LinkedHashMap();
+    final Map<String, d.c> fap = new LinkedHashMap();
+    final Map<String, d.c> faq = new LinkedHashMap();
+    d.c far;
     
-    public final b P(String paramString1, String paramString2)
+    public final b T(String paramString1, String paramString2)
     {
       b.c(paramString1, "mClassName");
       b.c(paramString2, "fieldName");
-      Map localMap = (Map)this.dbO.get(paramString1);
+      Map localMap = (Map)this.fan.get(paramString1);
       Object localObject = localMap;
       if (localMap == null)
       {
         localObject = new LinkedHashMap();
-        this.dbO.put(paramString1, localObject);
+        this.fan.put(paramString1, localObject);
       }
-      this.dbS = new d.c("field " + paramString1 + "#" + paramString2);
-      ((Map)localObject).put(paramString2, this.dbS);
+      this.far = new d.c("field " + paramString1 + "#" + paramString2);
+      ((Map)localObject).put(paramString2, this.far);
       return this;
     }
     
-    public final b Q(String paramString1, String paramString2)
+    public final b U(String paramString1, String paramString2)
     {
       b.c(paramString1, "mClassName");
       b.c(paramString2, "fieldName");
-      Map localMap = (Map)this.dbP.get(paramString1);
+      Map localMap = (Map)this.fao.get(paramString1);
       Object localObject = localMap;
       if (localMap == null)
       {
         localObject = new LinkedHashMap();
-        this.dbP.put(paramString1, localObject);
+        this.fao.put(paramString1, localObject);
       }
-      this.dbS = new d.c("static field " + paramString1 + "#" + paramString2);
-      ((Map)localObject).put(paramString2, this.dbS);
+      this.far = new d.c("static field " + paramString1 + "#" + paramString2);
+      ((Map)localObject).put(paramString2, this.far);
       return this;
     }
     
-    public final d XB()
+    public final d azh()
     {
       return new d(this);
     }
     
-    public final b XC()
+    public final b azi()
     {
-      this.dbS.dbU = true;
+      this.far.fat = true;
       return this;
     }
     
-    public final b fG(String paramString)
+    public final b hj(String paramString)
     {
       b.c(paramString, "threadName");
-      this.dbS = new d.c("any threads named ".concat(String.valueOf(paramString)));
-      this.dbQ.put(paramString, this.dbS);
+      this.far = new d.c("any threads named ".concat(String.valueOf(paramString)));
+      this.fap.put(paramString, this.far);
       return this;
     }
     
-    public final b fH(String paramString)
+    public final b hk(String paramString)
     {
       b.c(paramString, "mClassName");
-      this.dbS = new d.c("any subclass of ".concat(String.valueOf(paramString)));
-      this.dbR.put(paramString, this.dbS);
+      this.far = new d.c("any subclass of ".concat(String.valueOf(paramString)));
+      this.faq.put(paramString, this.far);
       return this;
     }
     
-    public final b fI(String paramString)
+    public final b hl(String paramString)
     {
-      this.dbS.dbT = paramString;
+      this.far.fas = paramString;
       return this;
     }
   }
   
   static final class c
   {
-    String dbT;
-    boolean dbU;
-    final String dbV;
+    String fas;
+    boolean fat;
+    final String fau;
     String name;
     
     c(String paramString)
     {
-      this.dbV = paramString;
+      this.fau = paramString;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.matrix.resource.analyzer.model.d
  * JD-Core Version:    0.7.0.1
  */

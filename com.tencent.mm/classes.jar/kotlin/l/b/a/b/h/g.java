@@ -7,33 +7,33 @@ import java.util.Map;
 
 public final class g
 {
-  private static final g abgj;
-  private static volatile boolean bWe;
-  final Map<a, i.e<?, ?>> bWi;
+  private static final g ajfa;
+  private static volatile boolean dPS;
+  final Map<g.a, i.e<?, ?>> dPW;
   
   static
   {
     AppMethodBeat.i(59446);
-    bWe = false;
-    abgj = new g((byte)0);
+    dPS = false;
+    ajfa = new g((byte)0);
     AppMethodBeat.o(59446);
   }
   
   g()
   {
     AppMethodBeat.i(59444);
-    this.bWi = new HashMap();
+    this.dPW = new HashMap();
     AppMethodBeat.o(59444);
   }
   
   private g(byte paramByte)
   {
     AppMethodBeat.i(59445);
-    this.bWi = Collections.emptyMap();
+    this.dPW = Collections.emptyMap();
     AppMethodBeat.o(59445);
   }
   
-  public static g iNN()
+  public static g kyf()
   {
     AppMethodBeat.i(59442);
     g localg = new g();
@@ -41,53 +41,21 @@ public final class g
     return localg;
   }
   
-  public static g iNO()
+  public static g kyg()
   {
-    return abgj;
+    return ajfa;
   }
   
   public final void a(i.e<?, ?> parame)
   {
     AppMethodBeat.i(59443);
-    this.bWi.put(new a(parame.abgt, parame.abgv.number), parame);
+    this.dPW.put(new g.a(parame.ajfk, parame.ajfm.number), parame);
     AppMethodBeat.o(59443);
-  }
-  
-  static final class a
-  {
-    private final int number;
-    private final Object object;
-    
-    a(Object paramObject, int paramInt)
-    {
-      this.object = paramObject;
-      this.number = paramInt;
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      if (!(paramObject instanceof a)) {}
-      do
-      {
-        return false;
-        paramObject = (a)paramObject;
-      } while ((this.object != paramObject.object) || (this.number != paramObject.number));
-      return true;
-    }
-    
-    public final int hashCode()
-    {
-      AppMethodBeat.i(59441);
-      int i = System.identityHashCode(this.object);
-      int j = this.number;
-      AppMethodBeat.o(59441);
-      return i * 65535 + j;
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.h.g
  * JD-Core Version:    0.7.0.1
  */

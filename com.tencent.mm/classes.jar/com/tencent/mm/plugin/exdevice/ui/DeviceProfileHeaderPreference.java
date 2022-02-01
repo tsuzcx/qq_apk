@@ -11,9 +11,9 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.g;
 import com.tencent.mm.R.h;
-import com.tencent.mm.ay.a.a;
-import com.tencent.mm.ay.a.a.c.a;
-import com.tencent.mm.ay.q;
+import com.tencent.mm.modelimage.loader.a;
+import com.tencent.mm.modelimage.loader.a.c.a;
+import com.tencent.mm.modelimage.r;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
@@ -22,30 +22,30 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class DeviceProfileHeaderPreference
   extends Preference
 {
-  private CharSequence ec;
+  private CharSequence ed;
   private String mDeviceName;
-  protected MMActivity tzD;
-  private String uFL;
-  private ImageView vkF;
-  private TextView vkG;
-  private TextView vkH;
-  private TextView vkI;
-  private View vkJ;
-  private TextView vkK;
-  private boolean[] vkL;
-  private View.OnClickListener[] vkM;
-  private String vkN;
-  private boolean vkO;
+  protected MMActivity pVV;
+  private String xOn;
+  private ImageView yxi;
+  private TextView yxj;
+  private TextView yxk;
+  private TextView yxl;
+  private View yxm;
+  private TextView yxn;
+  private boolean[] yxo;
+  private View.OnClickListener[] yxp;
+  private String yxq;
+  private boolean yxr;
   
   public DeviceProfileHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(23827);
-    this.vkL = new boolean[6];
-    this.vkM = new View.OnClickListener[6];
-    this.vkO = false;
-    this.tzD = ((MMActivity)paramContext);
-    this.vkO = false;
+    this.yxo = new boolean[6];
+    this.yxp = new View.OnClickListener[6];
+    this.yxr = false;
+    this.pVV = ((MMActivity)paramContext);
+    this.yxr = false;
     AppMethodBeat.o(23827);
   }
   
@@ -53,33 +53,33 @@ public class DeviceProfileHeaderPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(23828);
-    this.vkL = new boolean[6];
-    this.vkM = new View.OnClickListener[6];
-    this.vkO = false;
-    this.tzD = ((MMActivity)paramContext);
-    this.vkO = false;
+    this.yxo = new boolean[6];
+    this.yxp = new View.OnClickListener[6];
+    this.yxr = false;
+    this.pVV = ((MMActivity)paramContext);
+    this.yxr = false;
     AppMethodBeat.o(23828);
   }
   
-  private void ac(View paramView, int paramInt)
+  private void ah(View paramView, int paramInt)
   {
     AppMethodBeat.i(23830);
-    if (this.vkL[paramInt] != 0) {}
+    if (this.yxo[paramInt] != 0) {}
     for (int i = 8;; i = 0)
     {
       paramView.setVisibility(i);
-      paramView.setOnClickListener(this.vkM[paramInt]);
+      paramView.setOnClickListener(this.yxp[paramInt]);
       AppMethodBeat.o(23830);
       return;
     }
   }
   
-  public final void Jg(String paramString)
+  public final void BL(String paramString)
   {
     AppMethodBeat.i(23835);
-    this.vkN = paramString;
-    if (this.vkK != null) {
-      this.vkK.setText(paramString);
+    this.yxq = paramString;
+    if (this.yxn != null) {
+      this.yxn.setText(paramString);
     }
     AppMethodBeat.o(23835);
   }
@@ -94,29 +94,39 @@ public class DeviceProfileHeaderPreference
       AppMethodBeat.o(23832);
       return;
     case 0: 
-      localObject = this.vkF;
+      localObject = this.yxi;
     }
     for (;;)
     {
-      this.vkM[paramInt] = paramOnClickListener;
+      this.yxp[paramInt] = paramOnClickListener;
       if (localObject != null) {
         ((View)localObject).setOnClickListener(paramOnClickListener);
       }
       AppMethodBeat.o(23832);
       return;
-      localObject = this.vkG;
+      localObject = this.yxj;
       continue;
-      localObject = this.vkH;
+      localObject = this.yxk;
       continue;
-      localObject = this.vkI;
+      localObject = this.yxl;
       continue;
-      localObject = this.vkJ;
+      localObject = this.yxm;
       continue;
-      localObject = this.vkK;
+      localObject = this.yxn;
     }
   }
   
-  public final void ai(int paramInt, boolean paramBoolean)
+  public final void apL(String paramString)
+  {
+    AppMethodBeat.i(23834);
+    this.mDeviceName = paramString;
+    if (this.yxl != null) {
+      this.yxl.setText(paramString);
+    }
+    AppMethodBeat.o(23834);
+  }
+  
+  public final void az(int paramInt, boolean paramBoolean)
   {
     int i = 0;
     AppMethodBeat.i(23831);
@@ -128,8 +138,8 @@ public class DeviceProfileHeaderPreference
       AppMethodBeat.o(23831);
       return;
     case 0: 
-      localObject = this.vkF;
-      boolean[] arrayOfBoolean = this.vkL;
+      localObject = this.yxi;
+      boolean[] arrayOfBoolean = this.yxo;
       if (!paramBoolean)
       {
         j = 1;
@@ -149,71 +159,61 @@ public class DeviceProfileHeaderPreference
       ((View)localObject).setVisibility(paramInt);
       AppMethodBeat.o(23831);
       return;
-      localObject = this.vkG;
+      localObject = this.yxj;
       break;
-      localObject = this.vkH;
+      localObject = this.yxk;
       break;
-      localObject = this.vkI;
+      localObject = this.yxl;
       break;
-      localObject = this.vkJ;
+      localObject = this.yxm;
       break;
-      localObject = this.vkK;
+      localObject = this.yxn;
       break;
       j = 0;
       break label74;
     }
   }
   
-  public final void avL(String paramString)
-  {
-    AppMethodBeat.i(23834);
-    this.mDeviceName = paramString;
-    if (this.vkI != null) {
-      this.vkI.setText(paramString);
-    }
-    AppMethodBeat.o(23834);
-  }
-  
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(23829);
     Log.d("MicroMsg.DeviceProfileHeaderPreference", "onBindView");
-    this.vkF = ((ImageView)paramView.findViewById(R.h.dsd));
-    this.vkG = ((TextView)paramView.findViewById(R.h.dNd));
-    this.vkH = ((TextView)paramView.findViewById(R.h.dFp));
-    this.vkI = ((TextView)paramView.findViewById(R.h.dEj));
-    this.vkJ = paramView.findViewById(R.h.dFq);
-    this.vkK = ((TextView)paramView.findViewById(R.h.dEi));
-    ac(this.vkF, 0);
-    ac(this.vkG, 2);
-    ac(this.vkH, 1);
-    ac(this.vkI, 3);
-    ac(this.vkJ, 4);
-    ac(this.vkK, 5);
-    this.vkO = true;
-    if (!this.vkO) {
-      Log.w("MicroMsg.DeviceProfileHeaderPreference", "initView : bindView = " + this.vkO);
+    this.yxi = ((ImageView)paramView.findViewById(R.h.avatarIV));
+    this.yxj = ((TextView)paramView.findViewById(R.h.fOX));
+    this.yxk = ((TextView)paramView.findViewById(R.h.fGu));
+    this.yxl = ((TextView)paramView.findViewById(R.h.fFc));
+    this.yxm = paramView.findViewById(R.h.fGv);
+    this.yxn = ((TextView)paramView.findViewById(R.h.fFb));
+    ah(this.yxi, 0);
+    ah(this.yxj, 2);
+    ah(this.yxk, 1);
+    ah(this.yxl, 3);
+    ah(this.yxm, 4);
+    ah(this.yxn, 5);
+    this.yxr = true;
+    if (!this.yxr) {
+      Log.w("MicroMsg.DeviceProfileHeaderPreference", "initView : bindView = " + this.yxr);
     }
     for (;;)
     {
       super.onBindView(paramView);
       AppMethodBeat.o(23829);
       return;
-      this.vkG.setText(this.ec);
-      this.vkI.setText(this.mDeviceName);
-      this.vkK.setText(this.vkN);
-      setIconUrl(this.uFL);
+      this.yxj.setText(this.ed);
+      this.yxl.setText(this.mDeviceName);
+      this.yxn.setText(this.yxq);
+      setIconUrl(this.xOn);
     }
   }
   
   public final void setIconUrl(String paramString)
   {
     AppMethodBeat.i(23836);
-    this.uFL = paramString;
-    if (this.vkF != null)
+    this.xOn = paramString;
+    if (this.yxi != null)
     {
       c.a locala = new c.a();
-      Bitmap localBitmap = BitmapUtil.getBitmapNative(R.g.dnt);
+      Bitmap localBitmap = BitmapUtil.getBitmapNative(R.g.fnH);
       paramString = localBitmap;
       if (localBitmap != null)
       {
@@ -227,18 +227,18 @@ public class DeviceProfileHeaderPreference
             paramString = localBitmap;
             if (!localBitmap.isRecycled())
             {
-              locala.kOi = new BitmapDrawable(localBitmap);
+              locala.npX = new BitmapDrawable(localBitmap);
               paramString = localBitmap;
             }
           }
         }
       }
       if ((paramString == null) || (paramString.isRecycled())) {
-        locala.lRP = R.g.dnt;
+        locala.oKB = R.g.fnH;
       }
-      locala.kPz = true;
-      paramString = locala.bmL();
-      q.bml().a(this.uFL, this.vkF, paramString);
+      locala.nrc = true;
+      paramString = locala.bKx();
+      r.bKe().a(this.xOn, this.yxi, paramString);
     }
     AppMethodBeat.o(23836);
   }
@@ -246,16 +246,16 @@ public class DeviceProfileHeaderPreference
   public final void setName(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(23833);
-    this.ec = paramCharSequence;
-    if (this.vkG != null) {
-      this.vkG.setText(paramCharSequence);
+    this.ed = paramCharSequence;
+    if (this.yxj != null) {
+      this.yxj.setText(paramCharSequence);
     }
     AppMethodBeat.o(23833);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.DeviceProfileHeaderPreference
  * JD-Core Version:    0.7.0.1
  */

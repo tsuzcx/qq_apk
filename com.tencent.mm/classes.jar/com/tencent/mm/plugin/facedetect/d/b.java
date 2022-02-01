@@ -15,17 +15,47 @@ public abstract interface b
   
   public abstract boolean b(FaceCharacteristicsResult paramFaceCharacteristicsResult);
   
-  public abstract boolean div();
+  public abstract boolean dPg();
   
-  public abstract boolean diw();
+  public abstract boolean dPh();
   
-  public abstract void dix();
+  public abstract void dPi();
   
-  public abstract b.b diy();
+  public abstract b dPj();
   
-  public abstract b.a diz();
+  public abstract a dPk();
   
   public abstract void setBusinessTip(String paramString);
+  
+  public static final class a
+  {
+    public String errMsg;
+    public int zUa;
+    public int zUb;
+    
+    a()
+    {
+      this.zUa = 1;
+    }
+    
+    a(String paramString)
+    {
+      this.zUb = 7;
+      this.errMsg = paramString;
+    }
+  }
+  
+  public static class b
+  {
+    public int errCode;
+    public String errMsg;
+    
+    public b(int paramInt, String paramString)
+    {
+      this.errCode = paramInt;
+      this.errMsg = paramString;
+    }
+  }
   
   public static final class c
   {
@@ -42,12 +72,12 @@ public abstract interface b
       if (parama.type == 4)
       {
         Log.i(TAG, "hy: is read number");
-        parama = new d(parama.wwU);
+        parama = new d(parama.zTa);
         AppMethodBeat.o(103815);
         return parama;
       }
       Log.i(TAG, "hy: is normal");
-      parama = new c(parama.nlB, parama.wwR);
+      parama = new c(parama.qiK, parama.zSX);
       AppMethodBeat.o(103815);
       return parama;
     }
@@ -55,7 +85,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.d.b
  * JD-Core Version:    0.7.0.1
  */

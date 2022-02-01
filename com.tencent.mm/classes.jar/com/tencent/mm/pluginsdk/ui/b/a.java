@@ -1,10 +1,12 @@
 package com.tencent.mm.pluginsdk.ui.b;
 
-import android.view.View;
-
 public abstract interface a
 {
-  public abstract View getView();
+  public abstract String getUserName();
+  
+  public abstract int hlN();
+  
+  public abstract String hlO();
 }
 
 

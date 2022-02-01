@@ -5,13 +5,13 @@ import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
-import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.gallery.b.d;
+import com.tencent.mm.plugin.recordvideo.plugin.parent.a.c;
 import com.tencent.mm.plugin.vlog.a.d;
 import com.tencent.mm.plugin.vlog.a.f;
 import com.tencent.mm.plugin.vlog.a.i;
@@ -19,41 +19,40 @@ import com.tencent.mm.plugin.vlog.model.ac;
 import com.tencent.mm.plugin.vlog.model.ad;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import com.tencent.mm.videocomposition.a.a;
 import com.tencent.mm.videocomposition.c;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.f;
-import kotlin.g;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.ah;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/MultiEditPostPreviewPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/AutoRegisterPlugin;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$PreviewUpdateCallback;", "layout", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "context", "Landroid/content/Context;", "dialogView", "Landroid/view/View;", "getDialogView", "()Landroid/view/View;", "dialogView$delegate", "Lkotlin/Lazy;", "editorControlIconsContainer", "kotlin.jvm.PlatformType", "getEditorControlIconsContainer", "editorControlIconsContainer$delegate", "enable", "", "finishBtn", "Landroid/widget/Button;", "getFinishBtn", "()Landroid/widget/Button;", "finishBtn$delegate", "fullScreenThumbView", "Landroid/widget/ImageView;", "getFullScreenThumbView", "()Landroid/widget/ImageView;", "fullScreenThumbView$delegate", "halfScreenHeader", "halfScreenSelectBtn", "halfScreenThumbView", "getHalfScreenThumbView", "halfScreenThumbView$delegate", "helpDialog", "Lcom/google/android/material/bottomsheet/BottomSheetDialog;", "getHelpDialog", "()Lcom/google/android/material/bottomsheet/BottomSheetDialog;", "helpDialog$delegate", "value", "isFirstEnter", "()Z", "setFirstEnter", "(Z)V", "isNeedCropFullScreen", "isPreviewHalfScreen", "getLayout", "()Landroid/view/ViewGroup;", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "thumbFetcher", "Lcom/tencent/mm/videocomposition/ITrackThumbFetcher;", "thumbHeight", "", "thumbPath", "", "thumbWidth", "changePreviewMode", "", "halfScreen", "enablePreview", "ensureThumb", "hide", "isEnablePreview", "isInHalfScreenMode", "need", "onBackPress", "onUpdate", "seekTo", "", "seekToOriginPosition", "onUpdateImage", "show", "showHelpDialogIfNeed", "Companion", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/plugin/MultiEditPostPreviewPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/AutoRegisterPlugin;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$PreviewUpdateCallback;", "layout", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "context", "Landroid/content/Context;", "dialogView", "Landroid/view/View;", "getDialogView", "()Landroid/view/View;", "dialogView$delegate", "Lkotlin/Lazy;", "editorControlIconsContainer", "kotlin.jvm.PlatformType", "getEditorControlIconsContainer", "editorControlIconsContainer$delegate", "enable", "", "finishBtn", "Landroid/widget/Button;", "getFinishBtn", "()Landroid/widget/Button;", "finishBtn$delegate", "fullScreenThumbView", "Landroid/widget/ImageView;", "getFullScreenThumbView", "()Landroid/widget/ImageView;", "fullScreenThumbView$delegate", "halfScreenHeader", "halfScreenSelectBtn", "halfScreenThumbView", "getHalfScreenThumbView", "halfScreenThumbView$delegate", "helpDialog", "Lcom/google/android/material/bottomsheet/BottomSheetDialog;", "getHelpDialog", "()Lcom/google/android/material/bottomsheet/BottomSheetDialog;", "helpDialog$delegate", "value", "isFirstEnter", "()Z", "setFirstEnter", "(Z)V", "isNeedCropFullScreen", "isPreviewHalfScreen", "getLayout", "()Landroid/view/ViewGroup;", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "thumbFetcher", "Lcom/tencent/mm/videocomposition/ITrackThumbFetcher;", "thumbHeight", "", "thumbPath", "", "thumbWidth", "changePreviewMode", "", "halfScreen", "enablePreview", "ensureThumb", "hide", "isEnablePreview", "isInHalfScreenMode", "need", "onBackPress", "onUpdate", "seekTo", "", "seekToOriginPosition", "onUpdateImage", "show", "showHelpDialogIfNeed", "Companion", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class r
   extends com.tencent.mm.plugin.recordvideo.plugin.a
   implements d.d
 {
-  public static final a NvH;
-  final ViewGroup APk;
-  private final d APl;
-  private final f Aqs;
-  private c Aub;
-  private ac Nlb;
-  public boolean NuF;
-  private final View NvA;
-  private final f NvB;
-  private final f NvC;
-  private final f NvD;
-  private final f NvE;
-  public boolean NvF;
-  private final f NvG;
-  private final View Nvz;
-  private final MultiProcessMMKV cQO;
+  public static final r.a UiN;
+  private final j FQm;
+  private c FTn;
+  final ViewGroup GrB;
+  private ac TYA;
+  public boolean UhZ;
+  private final View UiO;
+  private final View UiP;
+  private final j UiQ;
+  private final j UiR;
+  private final j UiS;
+  private final j UiT;
+  public boolean UiU;
+  private final j UiV;
   private final Context context;
+  private final MultiProcessMMKV eMf;
   private boolean enable;
   private final int thumbHeight;
   public String thumbPath;
@@ -61,286 +60,272 @@ public final class r
   
   static
   {
-    AppMethodBeat.i(226779);
-    NvH = new a((byte)0);
-    AppMethodBeat.o(226779);
+    AppMethodBeat.i(282604);
+    UiN = new r.a((byte)0);
+    AppMethodBeat.o(282604);
   }
   
-  public r(ViewGroup paramViewGroup, d paramd)
+  public r(ViewGroup paramViewGroup, com.tencent.mm.plugin.recordvideo.plugin.parent.a parama)
   {
-    super(paramd, (byte)0);
-    AppMethodBeat.i(226778);
-    this.APk = paramViewGroup;
-    this.APl = paramd;
-    paramViewGroup = this.APk.getContext();
-    p.j(paramViewGroup, "layout.context");
+    super(parama);
+    AppMethodBeat.i(282483);
+    this.GrB = paramViewGroup;
+    paramViewGroup = this.GrB.getContext();
+    s.s(paramViewGroup, "layout.context");
     this.context = paramViewGroup;
-    this.cQO = MultiProcessMMKV.getMMKV("MultiEditPostPreviewPlugin");
-    paramViewGroup = this.APk.findViewById(a.f.half_screen_select_btn);
-    p.j(paramViewGroup, "layout.findViewById(R.id.half_screen_select_btn)");
-    this.Nvz = paramViewGroup;
-    paramViewGroup = this.APk.findViewById(a.f.half_screen_header);
-    p.j(paramViewGroup, "layout.findViewById(R.id.half_screen_header)");
-    this.NvA = paramViewGroup;
-    this.NvB = g.ar((kotlin.g.a.a)new c(this));
-    this.Aqs = g.ar((kotlin.g.a.a)new e(this));
-    this.NvC = g.ar((kotlin.g.a.a)new b(this));
-    this.NvD = g.ar((kotlin.g.a.a)new g(this));
-    this.NvE = g.ar((kotlin.g.a.a)new f(this));
-    this.thumbWidth = com.tencent.mm.ci.a.aY(this.context, a.d.Edge_12A);
-    this.thumbHeight = com.tencent.mm.ci.a.aY(this.context, a.d.Edge_23A);
-    this.NvG = g.ar((kotlin.g.a.a)new h(this));
-    this.Nvz.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.eMf = MultiProcessMMKV.getMMKV("MultiEditPostPreviewPlugin");
+    paramViewGroup = this.GrB.findViewById(a.f.half_screen_select_btn);
+    s.s(paramViewGroup, "layout.findViewById(R.id.half_screen_select_btn)");
+    this.UiO = paramViewGroup;
+    paramViewGroup = this.GrB.findViewById(a.f.half_screen_header);
+    s.s(paramViewGroup, "layout.findViewById(R.id.half_screen_header)");
+    this.UiP = paramViewGroup;
+    this.UiQ = k.cm((kotlin.g.a.a)new c(this));
+    this.FQm = k.cm((kotlin.g.a.a)new e(this));
+    this.UiR = k.cm((kotlin.g.a.a)new b(this));
+    this.UiS = k.cm((kotlin.g.a.a)new g(this));
+    this.UiT = k.cm((kotlin.g.a.a)new f(this));
+    this.thumbWidth = com.tencent.mm.cd.a.br(this.context, a.d.Edge_12A);
+    this.thumbHeight = com.tencent.mm.cd.a.br(this.context, a.d.Edge_23A);
+    this.UiV = k.cm((kotlin.g.a.a)new h(this));
+    this.UiO.setOnClickListener(new r..ExternalSyntheticLambda1(this));
+    this.UiP.setOnClickListener(new r..ExternalSyntheticLambda0(this));
+    AppMethodBeat.o(282483);
+  }
+  
+  private static final void a(r paramr, View paramView)
+  {
+    AppMethodBeat.i(282571);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramr);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/MultiEditPostPreviewPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramr, "this$0");
+    if (!paramr.UhZ) {}
+    for (boolean bool = true;; bool = false)
     {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(229580);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/MultiEditPostPreviewPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        paramAnonymousView = this.NvI;
-        if (!r.e(this.NvI)) {}
-        for (boolean bool = true;; bool = false)
-        {
-          r.a(paramAnonymousView, bool);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/MultiEditPostPreviewPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(229580);
-          return;
-        }
-      }
-    });
-    this.NvA.setOnClickListener((View.OnClickListener)new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(235779);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/MultiEditPostPreviewPlugin$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        r.f(this.NvI);
-        r.g(this.NvI).show();
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/MultiEditPostPreviewPlugin$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(235779);
-      }
-    });
-    AppMethodBeat.o(226778);
+      paramr.FT(bool);
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/vlog/ui/plugin/MultiEditPostPreviewPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(282571);
+      return;
+    }
+  }
+  
+  private static final void b(r paramr, View paramView)
+  {
+    AppMethodBeat.i(282576);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramr);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/MultiEditPostPreviewPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramr, "this$0");
+    paramr.hTl();
+    paramr.hTk().show();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/vlog/ui/plugin/MultiEditPostPreviewPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(282576);
   }
   
   private final Button getFinishBtn()
   {
-    AppMethodBeat.i(226745);
-    Button localButton = (Button)this.Aqs.getValue();
-    AppMethodBeat.o(226745);
+    AppMethodBeat.i(282517);
+    Button localButton = (Button)this.FQm.getValue();
+    AppMethodBeat.o(282517);
     return localButton;
   }
   
-  private final boolean gvp()
+  private final boolean hTf()
   {
-    AppMethodBeat.i(226739);
-    boolean bool = this.cQO.getBoolean("isFirstEnter", false);
-    AppMethodBeat.o(226739);
+    AppMethodBeat.i(282491);
+    boolean bool = this.eMf.getBoolean("isFirstEnter", false);
+    AppMethodBeat.o(282491);
     return bool;
   }
   
-  private final void gvq()
+  private final void hTg()
   {
-    AppMethodBeat.i(226741);
-    this.cQO.putBoolean("isFirstEnter", true);
-    AppMethodBeat.o(226741);
+    AppMethodBeat.i(282496);
+    this.eMf.putBoolean("isFirstEnter", true);
+    AppMethodBeat.o(282496);
   }
   
-  private final View gvr()
+  private final View hTh()
   {
-    AppMethodBeat.i(226743);
-    View localView = (View)this.NvB.getValue();
-    AppMethodBeat.o(226743);
+    AppMethodBeat.i(282507);
+    View localView = (View)this.UiQ.getValue();
+    AppMethodBeat.o(282507);
     return localView;
   }
   
-  private final ImageView gvs()
+  private final ImageView hTi()
   {
-    AppMethodBeat.i(226747);
-    ImageView localImageView = (ImageView)this.NvD.getValue();
-    AppMethodBeat.o(226747);
+    AppMethodBeat.i(282525);
+    ImageView localImageView = (ImageView)this.UiS.getValue();
+    AppMethodBeat.o(282525);
     return localImageView;
   }
   
-  private final ImageView gvt()
+  private final ImageView hTj()
   {
-    AppMethodBeat.i(226749);
-    ImageView localImageView = (ImageView)this.NvE.getValue();
-    AppMethodBeat.o(226749);
+    AppMethodBeat.i(282535);
+    ImageView localImageView = (ImageView)this.UiT.getValue();
+    AppMethodBeat.o(282535);
     return localImageView;
   }
   
-  private final com.google.android.material.bottomsheet.a gvu()
+  private final com.google.android.material.bottomsheet.a hTk()
   {
-    AppMethodBeat.i(226750);
-    com.google.android.material.bottomsheet.a locala = (com.google.android.material.bottomsheet.a)this.NvG.getValue();
-    AppMethodBeat.o(226750);
+    AppMethodBeat.i(282542);
+    com.google.android.material.bottomsheet.a locala = (com.google.android.material.bottomsheet.a)this.UiV.getValue();
+    AppMethodBeat.o(282542);
     return locala;
   }
   
-  private final void gvv()
+  private final void hTl()
   {
-    AppMethodBeat.i(226769);
+    AppMethodBeat.i(282561);
     Object localObject3 = this.thumbPath;
     Object localObject2;
     if (localObject3 != null)
     {
-      localObject2 = com.tencent.mm.plugin.gallery.a.b.ew(u.n(this.thumbPath, false), Math.max(this.thumbWidth, this.thumbHeight));
+      localObject2 = d.fl(y.n(this.thumbPath, false), Math.max(this.thumbWidth, this.thumbHeight));
       if (localObject2 == null) {}
     }
     for (;;)
     {
       try
       {
-        int i = new androidx.e.a.a(u.Tf((String)localObject3)).i("Orientation", 1);
+        int i = new androidx.f.a.a(y.Lh((String)localObject3)).k("Orientation", 1);
         localObject3 = new Matrix();
         switch (i)
         {
-        case 6: 
-          Object localObject1;
-          ((Matrix)localObject3).postRotate(localObject1);
-          localObject2 = Bitmap.createBitmap((Bitmap)localObject2, 0, 0, ((Bitmap)localObject2).getWidth(), ((Bitmap)localObject2).getHeight(), (Matrix)localObject3, true);
-          gvs().setImageBitmap((Bitmap)localObject2);
-          gvt().setImageBitmap((Bitmap)localObject2);
         }
       }
       catch (Exception localException)
       {
+        Object localObject1;
         Log.e("MicroMsg.MultiEditPostPreviewPlugin", "cannot decode thumbnail from " + this.thumbPath + ", " + localException.getLocalizedMessage());
         continue;
-        AppMethodBeat.o(226769);
-        return;
+        float f = 0.0F;
+        continue;
       }
-      localObject2 = this.Nlb;
+      ((Matrix)localObject3).postRotate(localObject1);
+      localObject2 = Bitmap.createBitmap((Bitmap)localObject2, 0, 0, ((Bitmap)localObject2).getWidth(), ((Bitmap)localObject2).getHeight(), (Matrix)localObject3, true);
+      hTi().setImageBitmap((Bitmap)localObject2);
+      hTj().setImageBitmap((Bitmap)localObject2);
+      localObject2 = this.TYA;
       if (localObject2 != null)
       {
-        localObject3 = this.Aub;
+        localObject3 = this.FTn;
         if (localObject3 != null) {
           ((c)localObject3).destroy();
         }
-        localObject3 = com.tencent.mm.videocomposition.a.YHM;
-        this.Aub = ((c)a.a.d(((ad)j.lo((List)((ac)localObject2).MQY)).Nng));
-        localObject2 = this.Aub;
+        localObject3 = com.tencent.mm.videocomposition.a.agDr;
+        this.FTn = ((c)a.a.d(((ad)p.oK((List)((ac)localObject2).TDz)).UaI));
+        localObject2 = this.FTn;
         if (localObject2 != null) {
           ((c)localObject2).setSize(this.thumbWidth, this.thumbHeight);
         }
-        localObject2 = this.Aub;
-        if (localObject2 != null)
-        {
-          ((c)localObject2).b(j.listOf(Long.valueOf(0L)), (m)new d(this));
-          AppMethodBeat.o(226769);
-          return;
-          f = 90.0F;
-          continue;
-          f = 180.0F;
-          continue;
-          f = 270.0F;
-          continue;
+        localObject2 = this.FTn;
+        if (localObject2 != null) {
+          ((c)localObject2).b(p.listOf(Long.valueOf(0L)), (m)new d(this));
         }
       }
-      AppMethodBeat.o(226769);
+      AppMethodBeat.o(282561);
       return;
-      float f = 0.0F;
+      f = 90.0F;
+      continue;
+      f = 180.0F;
+      continue;
+      f = 270.0F;
     }
   }
   
-  public final void At(boolean paramBoolean)
+  public final void FS(boolean paramBoolean)
   {
-    AppMethodBeat.i(226752);
+    AppMethodBeat.i(282626);
     this.enable = paramBoolean;
     if (paramBoolean)
     {
-      this.Nvz.setVisibility(0);
-      AppMethodBeat.o(226752);
+      this.UiO.setVisibility(0);
+      AppMethodBeat.o(282626);
       return;
     }
-    this.Nvz.setVisibility(8);
-    AppMethodBeat.o(226752);
+    this.UiO.setVisibility(8);
+    AppMethodBeat.o(282626);
   }
   
-  public final void Au(boolean paramBoolean)
+  public final void FT(boolean paramBoolean)
   {
-    AppMethodBeat.i(226757);
-    this.NuF = paramBoolean;
-    Object localObject;
-    d.c localc;
+    AppMethodBeat.i(282641);
+    this.UhZ = paramBoolean;
+    com.tencent.mm.plugin.recordvideo.plugin.parent.a locala;
+    a.c localc;
     Bundle localBundle;
-    if (this.NuF)
+    if (this.UhZ)
     {
-      this.NvA.setVisibility(0);
-      this.Nvz.setVisibility(8);
-      localObject = gvr();
-      p.j(localObject, "editorControlIconsContainer");
-      ((View)localObject).setVisibility(8);
-      localObject = getFinishBtn();
-      p.j(localObject, "finishBtn");
-      ((Button)localObject).setText((CharSequence)this.context.getString(a.i.app_ok));
-      localObject = this.APl;
-      localc = d.c.HSo;
+      this.UiP.setVisibility(0);
+      this.UiO.setVisibility(8);
+      hTh().setVisibility(8);
+      getFinishBtn().setText((CharSequence)this.context.getString(a.i.app_ok));
+      locala = this.GrC;
+      localc = a.c.NOU;
       localBundle = new Bundle();
-      if (!this.NuF) {
-        break label202;
+      if (!this.UhZ) {
+        break label171;
       }
     }
-    label202:
+    label171:
     for (int i = 2;; i = 1)
     {
       localBundle.putInt("PARAM_1_INT", i);
-      ((d)localObject).a(localc, localBundle);
-      AppMethodBeat.o(226757);
+      ah localah = ah.aiuX;
+      locala.a(localc, localBundle);
+      AppMethodBeat.o(282641);
       return;
-      this.NvA.setVisibility(8);
-      this.Nvz.setVisibility(0);
-      localObject = gvr();
-      p.j(localObject, "editorControlIconsContainer");
-      ((View)localObject).setVisibility(0);
-      localObject = getFinishBtn();
-      p.j(localObject, "finishBtn");
-      ((Button)localObject).setText((CharSequence)this.context.getString(a.i.app_nextstep));
+      this.UiP.setVisibility(8);
+      this.UiO.setVisibility(0);
+      hTh().setVisibility(0);
+      getFinishBtn().setText((CharSequence)this.context.getString(a.i.app_nextstep));
       break;
     }
   }
   
   public final void a(ac paramac, long paramLong, boolean paramBoolean)
   {
-    this.Nlb = paramac;
+    this.TYA = paramac;
   }
   
-  public final void gvw()
+  public final void hTm()
   {
-    AppMethodBeat.i(226771);
-    if ((!gvp()) && (this.enable))
+    AppMethodBeat.i(282649);
+    if ((!hTf()) && (this.enable))
     {
-      gvq();
-      gvv();
-      gvu().show();
+      hTg();
+      hTl();
+      hTk().show();
     }
-    AppMethodBeat.o(226771);
+    AppMethodBeat.o(282649);
   }
   
   public final boolean onBackPress()
   {
-    AppMethodBeat.i(226773);
-    if (this.NuF)
+    AppMethodBeat.i(282654);
+    if (this.UhZ)
     {
-      Au(false);
-      AppMethodBeat.o(226773);
+      FT(false);
+      AppMethodBeat.o(282654);
       return true;
     }
     boolean bool = super.onBackPress();
-    AppMethodBeat.o(226773);
+    AppMethodBeat.o(282654);
     return bool;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/MultiEditPostPreviewPlugin$Companion;", "", "()V", "PREVIEW_MODE_FULL", "", "PREVIEW_MODE_HALF", "PREVIEW_MODE_LOCK", "PREVIEW_MODE_WIDE_VIDEO", "TAG", "", "plugin-vlog_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
+    extends u
     implements kotlin.g.a.a<View>
   {
     b(r paramr)
@@ -349,9 +334,9 @@ public final class r
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends q
+    extends u
     implements kotlin.g.a.a<View>
   {
     c(r paramr)
@@ -360,10 +345,10 @@ public final class r
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "<anonymous parameter 0>", "", "thumb", "Landroid/graphics/Bitmap;", "invoke", "com/tencent/mm/plugin/vlog/ui/plugin/MultiEditPostPreviewPlugin$ensureThumb$2$1"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "", "thumb", "Landroid/graphics/Bitmap;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    extends q
-    implements m<Long, Bitmap, x>
+    extends u
+    implements m<Long, Bitmap, ah>
   {
     d(r paramr)
     {
@@ -371,9 +356,9 @@ public final class r
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/Button;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/Button;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class e
-    extends q
+    extends u
     implements kotlin.g.a.a<Button>
   {
     e(r paramr)
@@ -382,9 +367,9 @@ public final class r
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class f
-    extends q
+    extends u
     implements kotlin.g.a.a<ImageView>
   {
     f(r paramr)
@@ -393,9 +378,9 @@ public final class r
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class g
-    extends q
+    extends u
     implements kotlin.g.a.a<ImageView>
   {
     g(r paramr)
@@ -404,20 +389,34 @@ public final class r
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/google/android/material/bottomsheet/BottomSheetDialog;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/google/android/material/bottomsheet/BottomSheetDialog;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class h
-    extends q
+    extends u
     implements kotlin.g.a.a<com.google.android.material.bottomsheet.a>
   {
     h(r paramr)
     {
       super();
     }
+    
+    private static final void a(com.google.android.material.bottomsheet.a parama, View paramView)
+    {
+      AppMethodBeat.i(283069);
+      Object localObject = new Object();
+      b localb = new b();
+      localb.cH(parama);
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/MultiEditPostPreviewPlugin$helpDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+      s.u(parama, "$this_apply");
+      parama.hide();
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/vlog/ui/plugin/MultiEditPostPreviewPlugin$helpDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(283069);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.plugin.r
  * JD-Core Version:    0.7.0.1
  */

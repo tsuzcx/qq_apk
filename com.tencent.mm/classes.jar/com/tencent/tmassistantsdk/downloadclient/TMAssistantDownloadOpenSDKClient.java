@@ -108,11 +108,11 @@ public class TMAssistantDownloadOpenSDKClient
     //   62: dup
     //   63: invokespecial 129	com/tencent/mm/hellhoundlib/b/a:<init>	()V
     //   66: aload_3
-    //   67: invokevirtual 133	com/tencent/mm/hellhoundlib/b/a:bm	(Ljava/lang/Object;)Lcom/tencent/mm/hellhoundlib/b/a;
+    //   67: invokevirtual 133	com/tencent/mm/hellhoundlib/b/a:cG	(Ljava/lang/Object;)Lcom/tencent/mm/hellhoundlib/b/a;
     //   70: astore_3
     //   71: aload_2
     //   72: aload_3
-    //   73: invokevirtual 137	com/tencent/mm/hellhoundlib/b/a:aFh	()[Ljava/lang/Object;
+    //   73: invokevirtual 137	com/tencent/mm/hellhoundlib/b/a:aYi	()[Ljava/lang/Object;
     //   76: ldc 138
     //   78: ldc 139
     //   80: ldc 140
@@ -123,7 +123,7 @@ public class TMAssistantDownloadOpenSDKClient
     //   91: aload_2
     //   92: aload_3
     //   93: iconst_0
-    //   94: invokevirtual 156	com/tencent/mm/hellhoundlib/b/a:sf	(I)Ljava/lang/Object;
+    //   94: invokevirtual 156	com/tencent/mm/hellhoundlib/b/a:sb	(I)Ljava/lang/Object;
     //   97: checkcast 79	android/content/Intent
     //   100: invokevirtual 160	android/content/Context:startActivity	(Landroid/content/Intent;)V
     //   103: aload_2
@@ -226,7 +226,7 @@ public class TMAssistantDownloadOpenSDKClient
     {
       a locala = (a)super.getServiceInterface();
       if (locala != null) {
-        locala.c(this.mClientKey, paramArrayOfByte);
+        locala.d(this.mClientKey, paramArrayOfByte);
       }
     }
     AppMethodBeat.o(101871);
@@ -240,7 +240,7 @@ public class TMAssistantDownloadOpenSDKClient
       a locala = (a)super.getServiceInterface();
       if (locala != null)
       {
-        paramArrayOfByte = locala.b(this.mClientKey, paramArrayOfByte);
+        paramArrayOfByte = locala.c(this.mClientKey, paramArrayOfByte);
         AppMethodBeat.o(101870);
         return paramArrayOfByte;
       }
@@ -252,7 +252,7 @@ public class TMAssistantDownloadOpenSDKClient
   protected void stubAsInterface(IBinder paramIBinder)
   {
     AppMethodBeat.i(101874);
-    this.mServiceInterface = a.a.m(paramIBinder);
+    this.mServiceInterface = a.a.n(paramIBinder);
     AppMethodBeat.o(101874);
   }
   
@@ -267,7 +267,7 @@ public class TMAssistantDownloadOpenSDKClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadOpenSDKClient
  * JD-Core Version:    0.7.0.1
  */

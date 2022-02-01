@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.shake.ui;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -17,49 +16,49 @@ import com.tencent.mm.R.i;
 import com.tencent.mm.R.k;
 import com.tencent.mm.R.l;
 import com.tencent.mm.R.o;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.ao.af;
-import com.tencent.mm.f.a.ju;
-import com.tencent.mm.f.c.ax;
-import com.tencent.mm.f.c.et;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.an.af;
+import com.tencent.mm.autogen.a.kw;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.platformtools.u;
-import com.tencent.mm.platformtools.u.a;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.shake.e.a.a;
-import com.tencent.mm.plugin.shake.e.c.a;
+import com.tencent.mm.platformtools.r;
+import com.tencent.mm.platformtools.r.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.shake.d.b.a;
+import com.tencent.mm.plugin.shake.d.d.a;
 import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.protocal.protobuf.cdq;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.protocal.protobuf.ctg;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.ca;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.cc;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import java.util.LinkedList;
 
 public class TVInfoUI
   extends MMPreference
-  implements com.tencent.mm.an.i, u.a
+  implements com.tencent.mm.am.h, r.a
 {
-  private boolean IQP = false;
-  private String Jrd = "";
-  private TextView Jre;
-  private c.a Jrf;
-  private boolean Jrg = false;
-  private com.tencent.mm.plugin.shake.e.b Jrh;
-  protected ProgressDialog iXX = null;
+  private TextView EUj;
+  private boolean OZL = false;
+  private String PEC = "";
+  private d.a PED;
+  private boolean PEE = false;
+  private com.tencent.mm.plugin.shake.d.c PEF;
+  protected ProgressDialog lzP = null;
   private long msgId;
   protected com.tencent.mm.ui.base.preference.f screen;
   private TextView titleTv;
-  private ImageView txC;
+  private ImageView wBY;
   
-  private void a(final c.a parama)
+  private void a(final d.a parama)
   {
     AppMethodBeat.i(28592);
     if (parama == null)
@@ -71,14 +70,14 @@ public class TVInfoUI
     }
     this.titleTv.setText(parama.field_title);
     if (Util.isNullOrNil(parama.field_topic)) {
-      this.Jre.setVisibility(8);
+      this.EUj.setVisibility(8);
     }
     for (;;)
     {
-      this.txC = ((ImageView)findViewById(R.h.dYp));
+      this.wBY = ((ImageView)findViewById(R.h.gbd));
       if (!Util.isNullOrNil(parama.field_playurl))
       {
-        ImageView localImageView = (ImageView)findViewById(R.h.dYo);
+        ImageView localImageView = (ImageView)findViewById(R.h.gbc);
         localImageView.setVisibility(0);
         localImageView.setOnClickListener(new View.OnClickListener()
         {
@@ -86,38 +85,38 @@ public class TVInfoUI
           {
             AppMethodBeat.i(28579);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bn(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/shake/ui/TVInfoUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-            h.IzE.a(10987, new Object[] { Integer.valueOf(2), parama.field_playstatid, "", "" });
+            localb.cH(paramAnonymousView);
+            a.c("com/tencent/mm/plugin/shake/ui/TVInfoUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+            com.tencent.mm.plugin.report.service.h.OAn.b(10987, new Object[] { Integer.valueOf(2), parama.field_playstatid, "", "" });
             TVInfoUI.a(TVInfoUI.this, parama.field_playurl);
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/shake/ui/TVInfoUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            a.a(this, "com/tencent/mm/plugin/shake/ui/TVInfoUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(28579);
           }
         });
-        this.txC.setOnClickListener(new View.OnClickListener()
+        this.wBY.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(28580);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bn(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/shake/ui/TVInfoUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-            h.IzE.a(10987, new Object[] { Integer.valueOf(2), parama.field_playstatid, "", "" });
+            localb.cH(paramAnonymousView);
+            a.c("com/tencent/mm/plugin/shake/ui/TVInfoUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+            com.tencent.mm.plugin.report.service.h.OAn.b(10987, new Object[] { Integer.valueOf(2), parama.field_playstatid, "", "" });
             TVInfoUI.a(TVInfoUI.this, parama.field_playurl);
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/shake/ui/TVInfoUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            a.a(this, "com/tencent/mm/plugin/shake/ui/TVInfoUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(28580);
           }
         });
       }
       addIconOptionMenu(0, R.k.icons_outlined_more, new TVInfoUI.3(this));
-      if ((!Util.isNullOrNil(parama.field_id)) && (!this.Jrg) && (!getIntent().getBooleanExtra("key_TV_come_from_shake", false)))
+      if ((!Util.isNullOrNil(parama.field_id)) && (!this.PEE) && (!getIntent().getBooleanExtra("key_TV_come_from_shake", false)))
       {
         int i = getIntent().getIntExtra("key_TV_getProductInfoScene", 0);
         Log.d("MicroMsg.TVInfoUI", "GetTVInfo id[%s], scene[%s]", new Object[] { parama.field_id, Integer.valueOf(i) });
-        bh.aGY().a(new com.tencent.mm.plugin.shake.d.a.b(parama.field_id, i), 0);
-        this.Jrg = true;
+        bh.aZW().a(new com.tencent.mm.plugin.shake.c.a.c(parama.field_id, i), 0);
+        this.PEE = true;
       }
-      this.txC.setVisibility(0);
+      this.wBY.setVisibility(0);
       setBackBtn(new TVInfoUI.4(this));
       Log.v("MicroMsg.TVInfoUI", "start postToMainThread initBodyView");
       MMHandlerThread.postToMainThread(new Runnable()
@@ -132,23 +131,23 @@ public class TVInfoUI
       });
       AppMethodBeat.o(28592);
       return;
-      this.Jre.setText(parama.field_topic);
+      this.EUj.setText(parama.field_topic);
     }
   }
   
-  private void fDL()
+  private void gSz()
   {
     AppMethodBeat.i(28593);
     this.msgId = getIntent().getLongExtra("key_TVInfoUI_chatting_msgId", 0L);
-    if ((this.msgId > 0L) && (bh.aHB()))
+    if ((this.msgId > 0L) && (bh.baz()))
     {
-      bh.beI();
-      ca localca = com.tencent.mm.model.c.bbO().Oq(this.msgId);
-      if (localca.field_msgId > 0L)
+      bh.bCz();
+      cc localcc = com.tencent.mm.model.c.bzD().sl(this.msgId);
+      if ((localcc != null) && (localcc.field_msgId > 0L))
       {
-        localca.Jn(this.Jrh.bvq());
-        bh.beI();
-        com.tencent.mm.model.c.bbO().a(this.msgId, localca);
+        localcc.BT(this.PEF.bTC());
+        bh.bCz();
+        com.tencent.mm.model.c.bzD().a(this.msgId, localcc);
       }
     }
     AppMethodBeat.o(28593);
@@ -156,26 +155,26 @@ public class TVInfoUI
   
   public int getHeaderResourceId()
   {
-    return R.i.elC;
+    return R.i.goG;
   }
   
   public int getLayoutId()
   {
-    return R.i.elB;
+    return R.i.goF;
   }
   
   public int getResourceId()
   {
-    return R.o.eXS;
+    return R.o.hbt;
   }
   
   public void initView()
   {
     AppMethodBeat.i(28591);
-    setMMTitle(R.l.eRF);
+    setMMTitle(R.l.gUl);
     this.screen = getPreferenceScreen();
-    this.titleTv = ((TextView)findViewById(R.h.dYq));
-    this.Jre = ((TextView)findViewById(R.h.dYr));
+    this.titleTv = ((TextView)findViewById(R.h.gbe));
+    this.EUj = ((TextView)findViewById(R.h.gbf));
     String str2 = getIntent().getStringExtra("key_TV_xml");
     String str1 = str2;
     if (Util.isNullOrNil(str2))
@@ -187,15 +186,15 @@ public class TVInfoUI
       }
     }
     Log.d("MicroMsg.TVInfoUI", "tvinfo xml : %s", new Object[] { str1 });
-    this.Jrf = com.tencent.mm.plugin.shake.e.c.aYd(str1);
-    if (this.Jrf == null)
+    this.PED = com.tencent.mm.plugin.shake.d.d.aVU(str1);
+    if (this.PED == null)
     {
       Log.e("MicroMsg.TVInfoUI", "initView(), tv == null");
       finish();
       AppMethodBeat.o(28591);
       return;
     }
-    a(this.Jrf);
+    a(this.PED);
     AppMethodBeat.o(28591);
   }
   
@@ -247,7 +246,7 @@ public class TVInfoUI
   {
     AppMethodBeat.i(28587);
     super.onCreate(paramBundle);
-    u.b(this);
+    r.b(this);
     initView();
     AppMethodBeat.o(28587);
   }
@@ -255,7 +254,7 @@ public class TVInfoUI
   public void onDestroy()
   {
     AppMethodBeat.i(28590);
-    u.c(this);
+    r.c(this);
     super.onDestroy();
     AppMethodBeat.o(28590);
   }
@@ -263,7 +262,7 @@ public class TVInfoUI
   public void onPause()
   {
     AppMethodBeat.i(28589);
-    bh.aGY().b(552, this);
+    bh.aZW().b(552, this);
     super.onPause();
     AppMethodBeat.o(28589);
   }
@@ -272,7 +271,7 @@ public class TVInfoUI
   {
     AppMethodBeat.i(28594);
     Log.d("MicroMsg.TVInfoUI", "onPreferenceTreeClick item: [%s]", new Object[] { paramPreference.mKey });
-    if ((this.Jrf == null) || (this.Jrf.IZR == null))
+    if ((this.PED == null) || (this.PED.PjJ == null))
     {
       Log.e("MicroMsg.TVInfoUI", "tv == null || tv.actionlist == null");
       AppMethodBeat.o(28594);
@@ -287,65 +286,61 @@ public class TVInfoUI
         int j = i / 100;
         int k = i % 100;
         Log.v("MicroMsg.TVInfoUI", "keyId=[%s], ii=[%s], jj=[%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
-        if ((j < 0) || (j >= this.Jrf.IZR.size()))
+        if ((j < 0) || (j >= this.PED.PjJ.size()))
         {
-          Log.w("MicroMsg.TVInfoUI", "index out of bounds, ii=[%s], list Size=[%s]", new Object[] { Integer.valueOf(j), Integer.valueOf(this.Jrf.IZR.size()) });
+          Log.w("MicroMsg.TVInfoUI", "index out of bounds, ii=[%s], list Size=[%s]", new Object[] { Integer.valueOf(j), Integer.valueOf(this.PED.PjJ.size()) });
           AppMethodBeat.o(28594);
           return false;
         }
-        paramf = (com.tencent.mm.plugin.shake.e.a)this.Jrf.IZR.get(j);
+        paramf = (com.tencent.mm.plugin.shake.d.b)this.PED.PjJ.get(j);
         if (paramf == null)
         {
           Log.w("MicroMsg.TVInfoUI", "actionList == null");
           AppMethodBeat.o(28594);
           return false;
         }
-        if ((k < 0) || (k >= paramf.pSC.size()))
+        if ((k < 0) || (k >= paramf.sXD.size()))
         {
-          Log.w("MicroMsg.TVInfoUI", "index out of bounds, jj=[%s], actions Size=[%s]", new Object[] { Integer.valueOf(k), Integer.valueOf(paramf.pSC.size()) });
+          Log.w("MicroMsg.TVInfoUI", "index out of bounds, jj=[%s], actions Size=[%s]", new Object[] { Integer.valueOf(k), Integer.valueOf(paramf.sXD.size()) });
           AppMethodBeat.o(28594);
           return false;
         }
-        paramf = (a.a)paramf.pSC.get(k);
+        paramf = (b.a)paramf.sXD.get(k);
         if (paramf == null)
         {
           Log.w("MicroMsg.TVInfoUI", "action == null");
           AppMethodBeat.o(28594);
           return false;
         }
-        Log.v("MicroMsg.TVInfoUI", "action type:" + paramf.type + ", target:" + paramf.GRy + ", targetDesc:" + paramf.Jrr + ", targetDesc2:" + paramf.Jrs);
+        Log.v("MicroMsg.TVInfoUI", "action type:" + paramf.type + ", target:" + paramf.MOW + ", targetDesc:" + paramf.PEQ + ", targetDesc2:" + paramf.PER);
         if (paramf.type == 3)
         {
           paramPreference = new Intent();
-          paramPreference.putExtra("rawUrl", paramf.GRy);
+          paramPreference.putExtra("rawUrl", paramf.MOW);
           paramPreference.putExtra("show_bottom", false);
           paramPreference.putExtra("geta8key_scene", 10);
-          paramPreference.putExtra("srcUsername", paramf.Jrs);
-          com.tencent.mm.plugin.shake.a.mIG.h(paramPreference, this);
+          paramPreference.putExtra("srcUsername", paramf.PER);
+          com.tencent.mm.plugin.shake.b.pFn.h(paramPreference, this);
           AppMethodBeat.o(28594);
           return true;
         }
         if (paramf.type != 4) {
-          break label642;
+          break label644;
         }
-        bh.beI();
-        paramPreference = com.tencent.mm.model.c.bbL().RG(paramf.GRy);
+        bh.bCz();
+        paramPreference = com.tencent.mm.model.c.bzA().JE(paramf.MOW);
         if (paramPreference == null) {
           continue;
         }
         localIntent = new Intent();
-        if ((com.tencent.mm.contact.d.rk(paramPreference.field_type)) && (paramPreference.hxX()))
+        if ((com.tencent.mm.contact.d.rs(paramPreference.field_type)) && (paramPreference.iZC()) && (af.bHf().Mn(paramf.MOW) != null) && (paramf.PEQ.equals("1")))
         {
-          af.bjv().Uo(paramf.GRy);
-          if (paramf.Jrr.equals("1"))
-          {
-            localIntent.putExtra("Chat_User", paramf.GRy);
-            localIntent.putExtra("finish_direct", true);
-            com.tencent.mm.plugin.shake.a.mIG.d(localIntent, this);
-            continue;
-          }
+          localIntent.putExtra("Chat_User", paramf.MOW);
+          localIntent.putExtra("finish_direct", true);
+          com.tencent.mm.plugin.shake.b.pFn.d(localIntent, this);
+          continue;
         }
-        localIntent.putExtra("Contact_User", paramf.GRy);
+        localIntent.putExtra("Contact_User", paramf.MOW);
       }
       catch (Exception paramf)
       {
@@ -355,24 +350,24 @@ public class TVInfoUI
         return false;
       }
       localIntent.putExtra("force_get_contact", true);
-      com.tencent.mm.by.c.b(this, "profile", ".ui.ContactInfoUI", localIntent);
+      com.tencent.mm.br.c.b(this, "profile", ".ui.ContactInfoUI", localIntent);
       continue;
-      label642:
+      label644:
       if (paramf.type == 5)
       {
-        paramPreference = new ju();
-        paramPreference.fHe.actionCode = 11;
-        paramPreference.fHe.result = paramf.GRy;
-        paramPreference.fHe.context = this;
+        paramPreference = new kw();
+        paramPreference.hMB.actionCode = 11;
+        paramPreference.hMB.result = paramf.MOW;
+        paramPreference.hMB.context = this;
         paramPreference.callback = null;
-        EventCenter.instance.asyncPublish(paramPreference, Looper.myLooper());
+        paramPreference.asyncPublish(Looper.myLooper());
       }
       else if (paramf.type == 6)
       {
         paramPreference = new Intent();
-        paramPreference.putExtra("key_product_id", paramf.GRy);
+        paramPreference.putExtra("key_product_id", paramf.MOW);
         paramPreference.putExtra("key_product_scene", 9);
-        com.tencent.mm.by.c.b(this, "product", ".ui.MallProductUI", paramPreference);
+        com.tencent.mm.br.c.b(this, "product", ".ui.MallProductUI", paramPreference);
       }
     }
   }
@@ -381,50 +376,50 @@ public class TVInfoUI
   {
     AppMethodBeat.i(28588);
     super.onResume();
-    bh.aGY().a(552, this);
+    bh.aZW().a(552, this);
     AppMethodBeat.o(28588);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(28596);
-    if (paramq == null)
+    if (paramp == null)
     {
       Log.w("MicroMsg.TVInfoUI", "scene == null");
       AppMethodBeat.o(28596);
       return;
     }
-    if (paramq.getType() == 552)
+    if (paramp.getType() == 552)
     {
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
         Log.e("MicroMsg.TVInfoUI", "onSceneEnd() errType = [%s], errCode = [%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-        Toast.makeText(this, R.l.eRG, 0).show();
+        Toast.makeText(this, R.l.gUm, 0).show();
         AppMethodBeat.o(28596);
         return;
       }
-      if (this.Jrf == null)
+      if (this.PED == null)
       {
         Log.w("MicroMsg.TVInfoUI", "onSceneEnd tv == null");
         AppMethodBeat.o(28596);
         return;
       }
-      paramString = (com.tencent.mm.plugin.shake.d.a.b)paramq;
-      if ((paramString.rr != null) && (d.c.b(paramString.rr.lBS) != null)) {}
-      for (paramString = (cdq)d.c.b(paramString.rr.lBS); paramString == null; paramString = null)
+      paramString = (com.tencent.mm.plugin.shake.c.a.c)paramp;
+      if ((paramString.rr != null) && (c.c.b(paramString.rr.otC) != null)) {}
+      for (paramString = (ctg)c.c.b(paramString.rr.otC); paramString == null; paramString = null)
       {
         Log.w("MicroMsg.TVInfoUI", "onSceneEnd tvInfo == null");
         AppMethodBeat.o(28596);
         return;
       }
-      if (paramString.Tlx != null)
+      if (paramString.aazh != null)
       {
-        Log.d("MicroMsg.TVInfoUI", "onSceneEnd  tvInfo.DescriptionXML != null, res:" + paramString.Tlx);
-        paramString = com.tencent.mm.plugin.shake.e.c.aYd(paramString.Tlx);
-        if ((this.Jrf != null) && (this.Jrf.field_xml != null) && (paramString != null) && (paramString.field_xml != null) && (!this.Jrf.field_xml.equals(paramString.field_xml)))
+        Log.d("MicroMsg.TVInfoUI", "onSceneEnd  tvInfo.DescriptionXML != null, res:" + paramString.aazh);
+        paramString = com.tencent.mm.plugin.shake.d.d.aVU(paramString.aazh);
+        if ((this.PED != null) && (this.PED.field_xml != null) && (paramString != null) && (paramString.field_xml != null) && (!this.PED.field_xml.equals(paramString.field_xml)))
         {
-          this.Jrf = paramString;
-          a(this.Jrf);
+          this.PED = paramString;
+          a(this.PED);
         }
       }
     }
@@ -439,7 +434,7 @@ public class TVInfoUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.ui.TVInfoUI
  * JD-Core Version:    0.7.0.1
  */

@@ -5,98 +5,99 @@ import android.content.pm.ResolveInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.storage.aq;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/storage/BrowserSettingStorageManager;", "", "()V", "TAG", "", "getBrowserConfigId", "", "configId", "getDefaultBrowser", "saveDefaultBrowser", "", "selectedInfo", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserItemInfo;", "packageName", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/storage/BrowserSettingStorageManager;", "", "()V", "TAG", "", "getBrowserConfigId", "", "configId", "getDefaultBrowser", "saveDefaultBrowser", "", "selectedInfo", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserItemInfo;", "packageName", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public static final a Qjh;
+  public static final a Xbd;
   
   static
   {
-    AppMethodBeat.i(267666);
-    Qjh = new a();
-    AppMethodBeat.o(267666);
+    AppMethodBeat.i(296498);
+    Xbd = new a();
+    AppMethodBeat.o(296498);
   }
   
   public static final void a(com.tencent.mm.plugin.webview.ui.tools.browser.f paramf)
   {
-    AppMethodBeat.i(267663);
-    p.k(paramf, "selectedInfo");
-    if (paramf.fNO == 1)
+    AppMethodBeat.i(296489);
+    s.u(paramf, "selectedInfo");
+    if (paramf.itemType == 1)
     {
-      paramf = paramf.pN;
-      if (paramf != null)
+      paramf = paramf.qK;
+      if (paramf == null) {
+        paramf = "";
+      }
+      for (;;)
       {
+        bmb(paramf);
+        AppMethodBeat.o(296489);
+        return;
         paramf = paramf.activityInfo;
-        if (paramf != null)
+        if (paramf == null)
+        {
+          paramf = "";
+        }
+        else
         {
           String str = paramf.packageName;
           paramf = str;
-          if (str != null) {
-            break label51;
+          if (str == null) {
+            paramf = "";
           }
         }
       }
-      paramf = "";
-      label51:
-      bmA(paramf);
-      AppMethodBeat.o(267663);
-      return;
     }
-    if (paramf.fNO == 2) {
-      bmA("");
+    if (paramf.itemType == 2) {
+      bmb("");
     }
-    AppMethodBeat.o(267663);
+    AppMethodBeat.o(296489);
   }
   
-  private static void bmA(String paramString)
+  private static void bmb(String paramString)
   {
-    AppMethodBeat.i(267665);
+    AppMethodBeat.i(296496);
     try
     {
       Log.i("MicroMsg.BrowserSettingStorageManager", "alvinluo saveDefaultBrowser packageName: %s", new Object[] { paramString });
-      com.tencent.mm.kernel.f localf = h.aHG();
-      p.j(localf, "MMKernel.storage()");
-      localf.aHp().i(274528, paramString);
-      AppMethodBeat.o(267665);
+      h.baE().ban().B(274528, paramString);
+      AppMethodBeat.o(296496);
       return;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(267665);
+      AppMethodBeat.o(296496);
     }
   }
   
-  public static final String gZJ()
+  public static final String izM()
   {
-    AppMethodBeat.i(267664);
+    AppMethodBeat.i(296492);
     try
     {
-      Object localObject = h.aHG();
-      p.j(localObject, "MMKernel.storage()");
-      localObject = ((com.tencent.mm.kernel.f)localObject).aHp().b(274528, "");
+      Object localObject = h.baE().ban().d(274528, "");
       if ((localObject instanceof String))
       {
         localObject = (String)localObject;
-        AppMethodBeat.o(267664);
+        AppMethodBeat.o(296492);
         return localObject;
       }
-      AppMethodBeat.o(267664);
+      AppMethodBeat.o(296492);
       return "";
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(267664);
+      AppMethodBeat.o(296492);
     }
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.browser.storage.a
  * JD-Core Version:    0.7.0.1
  */

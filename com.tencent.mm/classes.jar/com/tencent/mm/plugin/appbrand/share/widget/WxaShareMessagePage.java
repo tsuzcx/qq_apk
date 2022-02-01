@@ -11,21 +11,21 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import androidx.lifecycle.h.a;
-import androidx.lifecycle.t;
+import androidx.lifecycle.j.a;
+import androidx.lifecycle.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.r.a;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.modelappbrand.a.b.h;
 import com.tencent.mm.modelappbrand.a.b.k;
+import com.tencent.mm.modelappbrand.k;
 import com.tencent.mm.modelappbrand.k.a;
 import com.tencent.mm.modelappbrand.k.b;
 import com.tencent.mm.modelappbrand.k.c;
-import com.tencent.mm.plugin.appbrand.ac.g;
-import com.tencent.mm.plugin.appbrand.ac.n;
-import com.tencent.mm.plugin.appbrand.au.f;
-import com.tencent.mm.plugin.appbrand.au.g;
+import com.tencent.mm.modelimage.s.a;
+import com.tencent.mm.plugin.appbrand.af.i;
+import com.tencent.mm.plugin.appbrand.ba.f;
+import com.tencent.mm.plugin.appbrand.ba.g;
 import com.tencent.mm.plugin.appbrand.dynamic.widget.IPCDynamicPageView;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.ui.widget.MMSwitchBtn;
@@ -34,23 +34,23 @@ import com.tencent.mm.ui.widget.ThreeDotsLoadingView;
 
 public class WxaShareMessagePage
   extends LinearLayout
-  implements androidx.lifecycle.k, b.k
+  implements androidx.lifecycle.p, b.k
 {
-  TextView pPT;
-  public ImageView puu;
-  public ImageView qPE;
-  IPCDynamicPageView qPF;
-  ThreeDotsLoadingView qPG;
-  public RelativeLayout qPH;
-  ImageView qPI;
-  MMSwitchBtn qPJ;
-  public ImageView qPK;
-  public TextView qPL;
-  k.b qPM;
-  public k.c qPN;
-  public View qPO;
-  public boolean qPP;
-  private ImageView qPQ;
+  TextView sUt;
+  public ImageView szA;
+  public ImageView tUA;
+  public TextView tUB;
+  k.b tUC;
+  public k.c tUD;
+  public View tUE;
+  public boolean tUF;
+  private ImageView tUG;
+  public ImageView tUu;
+  IPCDynamicPageView tUv;
+  ThreeDotsLoadingView tUw;
+  public RelativeLayout tUx;
+  ImageView tUy;
+  MMSwitchBtn tUz;
   
   public WxaShareMessagePage(Context paramContext)
   {
@@ -79,46 +79,46 @@ public class WxaShareMessagePage
   private void init(Context paramContext)
   {
     AppMethodBeat.i(48342);
-    View localView = View.inflate(paramContext, au.g.wxa_share_message_page, this);
-    this.qPO = localView.findViewById(au.f.frame_layout);
-    this.puu = ((ImageView)localView.findViewById(au.f.cover_iv));
-    this.qPE = ((ImageView)localView.findViewById(au.f.error_icon_iv));
-    this.qPF = ((IPCDynamicPageView)localView.findViewById(au.f.widget_pv));
-    this.pPT = ((TextView)localView.findViewById(au.f.title_tv));
-    this.qPQ = ((ImageView)localView.findViewById(au.f.video_icon));
-    this.qPG = ((ThreeDotsLoadingView)localView.findViewById(au.f.loading_view));
-    paramContext = LayoutInflater.from(paramContext).inflate(au.g.layout_appbrand_share_page_preview_footer, (ViewGroup)localView, false);
-    this.qPK = ((ImageView)paramContext.findViewById(au.f.share_msg_appbrand_footer_icon));
-    this.qPL = ((TextView)paramContext.findViewById(au.f.share_msg_appbrand_footer_text));
-    this.qPH = ((RelativeLayout)localView.findViewById(au.f.todo_container));
-    this.qPI = ((ImageView)localView.findViewById(au.f.intro_btn));
-    this.qPJ = ((MMSwitchBtn)localView.findViewById(au.f.todo_checkbox));
-    ((ViewGroup)localView.findViewById(au.f.container)).addView(paramContext);
+    View localView = View.inflate(paramContext, ba.g.wxa_share_message_page, this);
+    this.tUE = localView.findViewById(ba.f.frame_layout);
+    this.szA = ((ImageView)localView.findViewById(ba.f.cover_iv));
+    this.tUu = ((ImageView)localView.findViewById(ba.f.error_icon_iv));
+    this.tUv = ((IPCDynamicPageView)localView.findViewById(ba.f.widget_pv));
+    this.sUt = ((TextView)localView.findViewById(ba.f.title_tv));
+    this.tUG = ((ImageView)localView.findViewById(ba.f.video_icon));
+    this.tUw = ((ThreeDotsLoadingView)localView.findViewById(ba.f.loading_view));
+    paramContext = LayoutInflater.from(paramContext).inflate(ba.g.layout_appbrand_share_page_preview_footer, (ViewGroup)localView, false);
+    this.tUA = ((ImageView)paramContext.findViewById(ba.f.share_msg_appbrand_footer_icon));
+    this.tUB = ((TextView)paramContext.findViewById(ba.f.share_msg_appbrand_footer_text));
+    this.tUx = ((RelativeLayout)localView.findViewById(ba.f.todo_container));
+    this.tUy = ((ImageView)localView.findViewById(ba.f.intro_btn));
+    this.tUz = ((MMSwitchBtn)localView.findViewById(ba.f.todo_checkbox));
+    ((ViewGroup)localView.findViewById(ba.f.container)).addView(paramContext);
     setGravity(17);
-    this.qPI.setOnClickListener(new View.OnClickListener()
+    this.tUy.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(180364);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/appbrand/share/widget/WxaShareMessagePage$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        if (WxaShareMessagePage.this.qPN != null) {
-          WxaShareMessagePage.this.qPN.bgU();
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/appbrand/share/widget/WxaShareMessagePage$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        if (WxaShareMessagePage.this.tUD != null) {
+          WxaShareMessagePage.this.tUD.bEL();
         }
         a.a(this, "com/tencent/mm/plugin/appbrand/share/widget/WxaShareMessagePage$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(180364);
       }
     });
-    setTag(au.f.app_brand_todo_tag_share, Boolean.FALSE);
-    this.qPJ.setSwitchListener(new MMSwitchBtn.a()
+    setTag(ba.f.app_brand_todo_tag_share, Boolean.FALSE);
+    this.tUz.setSwitchListener(new MMSwitchBtn.a()
     {
       public final void onStatusChange(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(180365);
-        WxaShareMessagePage.this.setTag(au.f.app_brand_todo_tag_share, Boolean.valueOf(paramAnonymousBoolean));
-        if (WxaShareMessagePage.this.qPN != null) {
-          WxaShareMessagePage.this.qPN.gd(paramAnonymousBoolean);
+        WxaShareMessagePage.this.setTag(ba.f.app_brand_todo_tag_share, Boolean.valueOf(paramAnonymousBoolean));
+        if (WxaShareMessagePage.this.tUD != null) {
+          WxaShareMessagePage.this.tUD.gU(paramAnonymousBoolean);
         }
         AppMethodBeat.o(180365);
       }
@@ -126,80 +126,58 @@ public class WxaShareMessagePage
     AppMethodBeat.o(48342);
   }
   
-  public final void G(Bitmap paramBitmap)
-  {
-    AppMethodBeat.i(48343);
-    this.qPG.setVisibility(4);
-    this.qPG.hZY();
-    if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
-    {
-      this.puu.setImageBitmap(paramBitmap);
-      this.qPE.setVisibility(4);
-    }
-    for (;;)
-    {
-      if (this.qPM != null) {
-        this.qPM.vA(0);
-      }
-      AppMethodBeat.o(48343);
-      return;
-      this.puu.setImageBitmap(null);
-      this.qPE.setVisibility(0);
-    }
-  }
+  public final void bFg() {}
   
-  public final void bhq() {}
-  
-  public final void bhr()
+  public final void bFh()
   {
     AppMethodBeat.i(48344);
-    this.qPG.setVisibility(4);
-    this.qPG.hZY();
-    this.puu.setImageBitmap(null);
-    this.qPE.setVisibility(0);
-    if (this.qPM != null) {
-      this.qPM.vA(1);
+    this.tUw.setVisibility(4);
+    this.tUw.jFf();
+    this.szA.setImageBitmap(null);
+    this.tUu.setVisibility(0);
+    if (this.tUC != null) {
+      this.tUC.vJ(1);
     }
     AppMethodBeat.o(48344);
   }
   
   public ImageView getCoverImageView()
   {
-    return this.puu;
+    return this.szA;
   }
   
   public ImageView getErrorImageView()
   {
-    return this.qPE;
+    return this.tUu;
   }
   
   public ThreeDotsLoadingView getLoadingView()
   {
-    return this.qPG;
+    return this.tUw;
   }
   
   public ImageView getVideoIcon()
   {
-    return this.qPQ;
+    return this.tUG;
   }
   
   public int getWidgetHeight()
   {
     AppMethodBeat.i(48350);
-    int i = g.Di(180);
+    int i = i.DC(180);
     AppMethodBeat.o(48350);
     return i;
   }
   
   public IPCDynamicPageView getWidgetPageView()
   {
-    return this.qPF;
+    return this.tUv;
   }
   
   public int getWidgetWidth()
   {
     AppMethodBeat.i(48349);
-    int i = g.Di(224);
+    int i = i.DC(224);
     AppMethodBeat.o(48349);
     return i;
   }
@@ -207,75 +185,97 @@ public class WxaShareMessagePage
   public final String key()
   {
     AppMethodBeat.i(48345);
-    String str = n.cP(this);
+    String str = com.tencent.mm.plugin.appbrand.af.p.el(this);
     AppMethodBeat.o(48345);
     return str;
   }
   
-  @t(jl=h.a.ON_DESTROY)
+  @z(Ho=j.a.ON_DESTROY)
   public void onActivityDestroyed()
   {
-    AppMethodBeat.i(276181);
-    this.qPG.hZY();
-    com.tencent.mm.modelappbrand.a.b.bhh().a(this);
-    AppMethodBeat.o(276181);
+    AppMethodBeat.i(317498);
+    this.tUw.jFf();
+    com.tencent.mm.modelappbrand.a.b.bEY().a(this);
+    AppMethodBeat.o(317498);
+  }
+  
+  public final void onBitmapLoaded(Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(48343);
+    this.tUw.setVisibility(4);
+    this.tUw.jFf();
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
+    {
+      this.szA.setImageBitmap(paramBitmap);
+      this.tUu.setVisibility(4);
+    }
+    for (;;)
+    {
+      if (this.tUC != null) {
+        this.tUC.vJ(0);
+      }
+      AppMethodBeat.o(48343);
+      return;
+      this.szA.setImageBitmap(null);
+      this.tUu.setVisibility(0);
+    }
   }
   
   public void setImageData(Bitmap paramBitmap)
   {
     AppMethodBeat.i(48347);
-    this.puu.setVisibility(0);
-    this.qPG.setVisibility(4);
-    this.qPE.setVisibility(4);
+    this.szA.setVisibility(0);
+    this.tUw.setVisibility(4);
+    this.tUu.setVisibility(4);
     if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      if (this.qPP)
+      if (this.tUF)
       {
-        this.puu.setImageBitmap(paramBitmap);
+        this.szA.setImageBitmap(paramBitmap);
         AppMethodBeat.o(48347);
         return;
       }
-      b.h localh = ((com.tencent.mm.modelappbrand.k)h.ae(com.tencent.mm.modelappbrand.k.class)).bgT();
-      this.puu.setImageBitmap(localh.H(paramBitmap));
+      b.h localh = ((k)h.ax(k.class)).bEK();
+      this.szA.setImageBitmap(localh.P(paramBitmap));
       AppMethodBeat.o(48347);
       return;
     }
-    this.puu.setImageBitmap(null);
+    this.szA.setImageBitmap(null);
     AppMethodBeat.o(48347);
   }
   
   public void setImageUrl(String paramString)
   {
     AppMethodBeat.i(48346);
-    this.qPG.setVisibility(0);
-    this.qPG.hZX();
-    this.qPE.setVisibility(4);
-    this.puu.setVisibility(0);
-    if (this.qPP)
+    this.tUw.setVisibility(0);
+    this.tUw.jFe();
+    this.tUu.setVisibility(4);
+    this.szA.setVisibility(0);
+    if (this.tUF)
     {
-      com.tencent.mm.modelappbrand.a.b.bhh().a(this, paramString, null, ((com.tencent.mm.modelappbrand.k)h.ae(com.tencent.mm.modelappbrand.k.class)).a(112, 90, k.a.lyt));
+      com.tencent.mm.modelappbrand.a.b.bEY().a(this, paramString, null, ((k)h.ax(k.class)).a(112, 90, k.a.opU));
       AppMethodBeat.o(48346);
       return;
     }
-    com.tencent.mm.modelappbrand.a.b.bhh().a(this, paramString, null, ((com.tencent.mm.modelappbrand.k)h.ae(com.tencent.mm.modelappbrand.k.class)).dK(112, 90));
+    com.tencent.mm.modelappbrand.a.b.bEY().a(this, paramString, null, ((k)h.ax(k.class)).eE(112, 90));
     AppMethodBeat.o(48346);
   }
   
   public void setOnLoadImageResult(k.b paramb)
   {
-    this.qPM = paramb;
+    this.tUC = paramb;
   }
   
   public void setTitle(String paramString)
   {
     AppMethodBeat.i(48348);
-    this.pPT.setText(paramString);
+    this.sUt.setText(paramString);
     AppMethodBeat.o(48348);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.share.widget.WxaShareMessagePage
  * JD-Core Version:    0.7.0.1
  */

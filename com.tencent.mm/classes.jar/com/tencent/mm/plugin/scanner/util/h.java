@@ -1,125 +1,167 @@
 package com.tencent.mm.plugin.scanner.util;
 
+import android.content.Context;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.scanner.n;
+import com.tencent.mm.pluginsdk.cmd.a;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.base.aa;
+import com.tencent.mm.vfs.y;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/util/ScanRetryManager;", "", "()V", "canRetryReopenCamera", "", "canRetryUsingTexture", "enterTimestamp", "", "exitTimestamp", "isRetry", "isScanSuccess", "isUpdated", "mRetryType", "", "mTextureScaledFactor", "", "mTimeout", "mTimeoutFactor", "maxTimeout", "minTimeout", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "onPreviewFrameCalled", "stayTime", "canRetry", "retryType", "cancelRetryType", "", "checkAndResetTimeout", "enterScanUI", "exitScanUI", "getMMKVKey", "", "getRetryType", "getSavedTimeout", "getTextureScaleFactor", "getTimeout", "init", "initMMKV", "saveTimeout", "timeout", "setIsRetry", "setOnPreviewFrameCalled", "setScanSuccess", "updateTimeout", "time", "Companion", "plugin-scan_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/util/ScanProcessorCommand;", "Lcom/tencent/mm/pluginsdk/cmd/ProcessorCommand;", "()V", "processCommand", "", "context", "Landroid/content/Context;", "args", "", "", "username", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "Companion", "scan-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class h
+  implements a
 {
-  public static final h.a IZk;
-  public boolean ITg;
-  public long IZa;
-  public long IZb;
-  public float IZc;
-  public boolean IZd;
-  public int IZe;
-  public boolean IZf;
-  public boolean IZg;
-  public float IZh;
-  public long IZi;
-  public boolean IZj;
-  private MultiProcessMMKV cQO;
-  public long fOa;
-  public boolean isRetry;
-  public long mTimeout;
-  public long zUF;
+  public static final a PiL;
   
   static
   {
-    AppMethodBeat.i(161061);
-    IZk = new h.a((byte)0);
-    AppMethodBeat.o(161061);
+    AppMethodBeat.i(314116);
+    PiL = new a((byte)0);
+    AppMethodBeat.o(314116);
   }
   
-  public h()
+  public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
-    AppMethodBeat.i(161060);
-    this.IZa = 5000L;
-    this.IZb = 1000L;
-    this.IZc = 2.0F;
-    this.IZh = 0.8F;
-    Object localObject = new StringBuilder();
-    p.j(com.tencent.mm.kernel.h.aHE(), "MMKernel.account()");
-    this.cQO = MultiProcessMMKV.getSingleMMKV(com.tencent.mm.kernel.b.aGq() + "_scan_code_retry");
-    localObject = this.cQO;
-    long l;
-    int i;
-    int j;
-    if (localObject != null)
+    boolean bool = false;
+    AppMethodBeat.i(314126);
+    if ((paramArrayOfString != null) && (s.p("//scan", paramArrayOfString[0])) && (s.p("showDebug", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
     {
-      l = ((MultiProcessMMKV)localObject).getLong("scan_code_retry_timeout", 5000L);
-      this.mTimeout = l;
-      this.IZe = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vNU, 0);
-      this.IZa = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vNW, 5000L);
-      this.IZb = 1000L;
-      i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vNX, 200);
-      this.IZc = (i / 100.0F);
-      this.mTimeout = Math.max(this.IZb, this.mTimeout);
-      this.mTimeout = Math.min(this.IZa, this.mTimeout);
-      j = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vNY, 80);
-      if (j != 0)
+      paramContext = MultiProcessMMKV.getSingleMMKV("ScanDebug");
+      if (Util.getInt(paramArrayOfString[2], 0) == 1) {}
+      for (bool = true;; bool = false)
       {
-        this.IZh = (j / 100.0F);
-        this.IZh = Math.min(1.0F, this.IZh);
+        paramContext.putBoolean("scan_debug_show_debug_view", bool);
+        paramContext.apply();
+        AppMethodBeat.o(314126);
+        return true;
       }
-      if (this.IZe != 1) {
-        break label396;
-      }
-      this.IZf = true;
-      this.IZg = false;
     }
-    for (;;)
+    if ((paramArrayOfString != null) && (s.p("//scan", paramArrayOfString[0])) && (s.p("clearSearch", paramArrayOfString[1])) && (paramArrayOfString.length > 1))
     {
-      Log.i("MicroMsg.ScanRetryManager", "alvinluo init retryType: %d, maxTimeout: %d, minTimeout: %d, timeout: %d, timeoutFactor config: %d, factor: %f, textureScaleFactor: %d, factor: %f, canRetry: %b, %b", new Object[] { Integer.valueOf(this.IZe), Long.valueOf(this.IZa), Long.valueOf(this.IZb), Long.valueOf(this.mTimeout), Integer.valueOf(i), Float.valueOf(this.IZc), Integer.valueOf(j), Float.valueOf(this.IZh), Boolean.valueOf(this.IZf), Boolean.valueOf(this.IZg) });
-      AppMethodBeat.o(161060);
-      return;
-      l = 5000L;
-      break;
-      label396:
-      if (this.IZe == 2)
+      paramContext = MultiProcessMMKV.getMMKV(s.X(z.bAM(), "__image_gallery_search_preview_slot_mmkv_key__"));
+      if (paramContext != null) {
+        paramContext.clearAll();
+      }
+      AppMethodBeat.o(314126);
+      return true;
+    }
+    if ((paramArrayOfString != null) && (s.p("//scan", paramArrayOfString[0])) && (s.p("clearConfig", paramArrayOfString[1])) && (paramArrayOfString.length > 1))
+    {
+      paramContext = MultiProcessMMKV.getMMKV(s.X(z.bAM(), "_scan_config_mmkv"));
+      if (paramContext != null) {
+        paramContext.clearAll();
+      }
+      AppMethodBeat.o(314126);
+      return true;
+    }
+    if ((paramArrayOfString != null) && (s.p("//scan", paramArrayOfString[0])) && (s.p("wordDetect", paramArrayOfString[1])) && (paramArrayOfString.length > 1))
+    {
+      if (Util.getInt(paramArrayOfString[2], 1) == 0) {
+        bool = true;
+      }
+      n.BV(bool);
+      AppMethodBeat.o(314126);
+      return true;
+    }
+    if ((paramArrayOfString != null) && (s.p("//scan", paramArrayOfString[0])) && (s.p("loadLocalSo", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+    {
+      paramString = MultiProcessMMKV.getSingleMMKV("ScanDebug");
+      if (Util.getInt(paramArrayOfString[2], 0) == 1) {}
+      for (bool = true;; bool = false)
       {
-        this.IZf = false;
-        this.IZg = true;
+        paramString.putBoolean("loadSoFromSDCard", bool);
+        aa.makeText(paramContext, (CharSequence)"success", 0).show();
+        paramString.apply();
+        AppMethodBeat.o(314126);
+        return true;
       }
     }
-  }
-  
-  public final void PY(long paramLong)
-  {
-    AppMethodBeat.i(161059);
-    Log.i("MicroMsg.ScanRetryManager", "alvinluo saveTimeout %d", new Object[] { Long.valueOf(paramLong) });
-    MultiProcessMMKV localMultiProcessMMKV = this.cQO;
-    if (localMultiProcessMMKV != null) {
-      localMultiProcessMMKV.putLong("scan_code_retry_timeout", paramLong);
-    }
-    localMultiProcessMMKV = this.cQO;
-    if (localMultiProcessMMKV != null)
+    if ((paramArrayOfString != null) && (s.p("//scan", paramArrayOfString[0])) && (s.p("loadLocalConfig", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
     {
-      localMultiProcessMMKV.apply();
-      AppMethodBeat.o(161059);
-      return;
+      paramString = MultiProcessMMKV.getSingleMMKV("ScanDebug");
+      if (s.p(paramArrayOfString[2], "null"))
+      {
+        paramString.putString("debugFFEngineConfig", "");
+        aa.makeText(paramContext, (CharSequence)"cancel success", 0).show();
+        AppMethodBeat.o(314126);
+        return true;
+      }
+      if (y.ZC(paramArrayOfString[2]))
+      {
+        paramString.putString("debugFFEngineConfig", y.bEn(paramArrayOfString[2]));
+        aa.makeText(paramContext, (CharSequence)"success", 0).show();
+        AppMethodBeat.o(314126);
+        return true;
+      }
+      aa.makeText(paramContext, (CharSequence)"config file not exist", 0).show();
+      paramString.apply();
+      AppMethodBeat.o(314126);
+      return false;
     }
-    AppMethodBeat.o(161059);
-  }
-  
-  public final boolean aea(int paramInt)
-  {
-    if (paramInt == 1) {
-      return this.IZf;
+    if ((paramArrayOfString != null) && (s.p("//scan", paramArrayOfString[0])) && (s.p("skipFrame", paramArrayOfString[1])) && (paramArrayOfString.length >= 2))
+    {
+      paramString = MultiProcessMMKV.getSingleMMKV("ScanDebug");
+      paramString.putInt("skipFrame", Util.getInt(paramArrayOfString[2], -1));
+      aa.makeText(paramContext, (CharSequence)"success", 0).show();
+      paramString.apply();
+      AppMethodBeat.o(314126);
+      return true;
     }
-    if (paramInt == 2) {
-      return this.IZg;
+    if ((paramArrayOfString != null) && (s.p("//scan", paramArrayOfString[0])) && (s.p("serverDetect", paramArrayOfString[1])) && (paramArrayOfString.length >= 2))
+    {
+      paramString = MultiProcessMMKV.getSingleMMKV("ScanDebug");
+      if (Util.getInt(paramArrayOfString[2], 0) == 1) {}
+      for (bool = true;; bool = false)
+      {
+        paramString.putBoolean("serverDetect", bool);
+        aa.makeText(paramContext, (CharSequence)"success", 0).show();
+        paramString.apply();
+        AppMethodBeat.o(314126);
+        return true;
+      }
     }
+    if ((paramArrayOfString != null) && (s.p("//scan", paramArrayOfString[0])) && (s.p("localDetect", paramArrayOfString[1])) && (paramArrayOfString.length >= 2))
+    {
+      paramString = MultiProcessMMKV.getSingleMMKV("ScanDebug");
+      if (Util.getInt(paramArrayOfString[2], 1) == 1) {}
+      for (bool = true;; bool = false)
+      {
+        paramString.putBoolean("localDetect", bool);
+        aa.makeText(paramContext, (CharSequence)"success", 0).show();
+        paramString.apply();
+        AppMethodBeat.o(314126);
+        return true;
+      }
+    }
+    if ((paramArrayOfString != null) && (s.p("//scan", paramArrayOfString[0])) && (s.p("enableMerge", paramArrayOfString[1])) && (paramArrayOfString.length >= 2))
+    {
+      paramString = MultiProcessMMKV.getSingleMMKV("ScanDebug");
+      if (Util.getInt(paramArrayOfString[2], 1) == 1) {}
+      for (bool = true;; bool = false)
+      {
+        paramString.putBoolean("enableMerge", bool);
+        aa.makeText(paramContext, (CharSequence)"success", 0).show();
+        paramString.apply();
+        AppMethodBeat.o(314126);
+        return true;
+      }
+    }
+    AppMethodBeat.o(314126);
     return false;
   }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/util/ScanProcessorCommand$Companion;", "", "()V", "COMMAND_SCAN", "", "SCAN_DEBUG", "SCAN_DEBUG_SHOW_DEBUG_VIEW", "getDebugEnableLocalDetect", "", "getDebugEnableScanMerge", "getDebugEnableServerDetect", "getDebugFFEngineConfig", "getDebugTrackSkipFrameNum", "", "init", "", "loadSoFromLocal", "scan-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.util.h
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/f75" android:background="@color/afz" android:padding="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="88.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/f76" android:background="@drawable/agu" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <RelativeLayout android:id="@id/f74" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <ImageView android:id="@id/f73" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginTop="12.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
-            <TextView android:textSize="@dimen/hc" android:textColor="@color/FG_0" android:ellipsize="none" android:gravity="center" android:id="@id/f78" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:singleLine="false" android:layout_below="@id/f73" android:layout_centerHorizontal="true" style="@style/mp" />
-            <TextView android:textSize="@dimen/y" android:textColor="@color/Orange" android:ellipsize="none" android:gravity="center" android:id="@id/f72" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:singleLine="false" android:layout_below="@id/f78" android:layout_centerHorizontal="true" />
-        </RelativeLayout>
-        <ImageView android:id="@id/fxf" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="14.0dip" android:scaleType="fitXY" />
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/c6e" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/c6i" android:background="@color/g_" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/brl" android:background="@drawable/aq7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+            <RelativeLayout android:id="@id/bes" android:layout_width="fill_parent" android:layout_height="@dimen/aoy">
+                <TextView android:textSize="15.0dip" android:textColor="@color/BW_0_Alpha_0_9" android:id="@id/c6w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/icq" android:layout_centerInParent="true" />
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/beq" android:padding="2.0dip" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="22.0dip" android:src="@raw/icons_outlined_close" android:layout_centerVertical="true" android:contentDescription="@string/bfi" app:iconColor="@color/BW_0_Alpha_0_9" />
+            </RelativeLayout>
+            <com.tencent.mm.plugin.scanner.box.BoxWebViewContainer android:id="@id/lmk" android:background="@color/f" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/ap0" />
+        </LinearLayout>
     </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/a3g" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 </RelativeLayout>

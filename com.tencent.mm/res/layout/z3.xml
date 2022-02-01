@@ -1,5 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/fa1" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_horizontal" android:id="@id/fa0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bxv" />
-</FrameLayout>
+<view android:theme="@style/yo" android:layout_gravity="bottom" android:layout_width="fill_parent" android:layout_height="wrap_content" class="com.google.android.material.snackbar.Snackbar$SnackbarLayout" style="@style/a3n"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

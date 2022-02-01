@@ -67,10 +67,10 @@ public class RotateActionArg
     return i;
   }
   
-  public final void i(Parcel paramParcel)
+  public final void k(Parcel paramParcel)
   {
     AppMethodBeat.i(145111);
-    super.i(paramParcel);
+    super.k(paramParcel);
     this.degrees = paramParcel.readFloat();
     AppMethodBeat.o(145111);
   }
@@ -93,7 +93,7 @@ public class RotateActionArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.RotateActionArg
  * JD-Core Version:    0.7.0.1
  */

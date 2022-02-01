@@ -1,45 +1,45 @@
 package com.tencent.mm.plugin.appbrand.page;
 
 import android.webkit.ValueCallback;
-import com.tencent.luggage.sdk.b.a.b.a.a;
+import com.tencent.luggage.sdk.b.a.c.a.a;
 
 public abstract interface bs
   extends a, bd
 {
   public abstract void a(a parama);
   
-  public abstract void aj(Runnable paramRunnable);
+  public abstract void a(String paramString, ValueCallback<String> paramValueCallback);
   
-  public abstract void b(String paramString, ValueCallback<String> paramValueCallback);
+  public abstract void asX();
   
-  public abstract boolean bDV();
+  public abstract void asY();
   
-  public abstract void cer();
+  public abstract boolean asZ();
   
-  public abstract boolean cfg();
+  public abstract boolean ata();
   
-  public abstract void cfq();
+  public abstract boolean atb();
   
-  public abstract boolean cfr();
+  public abstract void n(Runnable paramRunnable);
   
   public static abstract interface a
   {
-    public abstract void cfk();
+    public abstract void cFX();
     
-    public abstract boolean cfl();
+    public abstract boolean cFY();
     
-    public abstract String cfm();
+    public abstract String cFZ();
     
-    public abstract ad cfn();
+    public abstract ad cGa();
     
-    public abstract void jj(boolean paramBoolean);
+    public abstract void ku(boolean paramBoolean);
     
-    public abstract void jk(boolean paramBoolean);
+    public abstract void kv(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.bs
  * JD-Core Version:    0.7.0.1
  */

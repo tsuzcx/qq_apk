@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.sns.ad.e;
 
 public abstract interface a
 {
-  public abstract void a(int paramInt, Object... paramVarArgs);
+  public abstract void b(int paramInt, Object... paramVarArgs);
   
   public abstract int getKey();
   
-  public abstract void v(Object... paramVarArgs);
+  public abstract void x(Object... paramVarArgs);
 }
 
 

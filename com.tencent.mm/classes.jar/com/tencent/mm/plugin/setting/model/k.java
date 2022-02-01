@@ -1,67 +1,114 @@
 package com.tencent.mm.plugin.setting.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cza;
-import com.tencent.mm.protocal.protobuf.czb;
-import com.tencent.mm.protocal.protobuf.eyw;
+import com.tencent.mm.platformtools.w;
+import com.tencent.mm.protocal.protobuf.cul;
+import com.tencent.mm.protocal.protobuf.cum;
+import com.tencent.mm.protocal.protobuf.fun;
+import com.tencent.mm.protocal.protobuf.fup;
+import com.tencent.mm.protocal.protobuf.gol;
+import java.util.Collections;
+import java.util.List;
 
 public final class k
-  extends q
+  extends p
   implements m
 {
-  public final String Jdu;
-  public final int Jdv;
-  private final String appid;
-  private i callback;
-  private final int scene;
+  private boolean PnC;
+  private cum PnH;
+  private byte[] PnI;
+  private h callback;
   
-  public k(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public k(byte[] paramArrayOfByte)
   {
-    this.appid = paramString1;
-    this.Jdu = paramString2;
-    this.Jdv = paramInt1;
-    this.scene = paramInt2;
+    this.PnI = paramArrayOfByte;
   }
   
-  public final int doScene(g paramg, i parami)
+  public k(byte[] paramArrayOfByte, byte paramByte)
   {
-    AppMethodBeat.i(73777);
-    this.callback = parami;
-    parami = new d.a();
-    cza localcza = new cza();
-    localcza.appid = this.appid;
-    localcza.TGV = this.Jdu;
-    localcza.TGW = this.Jdv;
-    parami.lBU = localcza;
-    parami.uri = "/cgi-bin/mmbiz-bin/moduserauth";
-    parami.lBV = new czb();
-    parami.funcId = getType();
-    parami.lBW = 0;
-    parami.respCmdId = 0;
-    int i = dispatch(paramg, parami.bgN(), this);
-    AppMethodBeat.o(73777);
+    this(paramArrayOfByte);
+    this.PnC = true;
+  }
+  
+  public final int doScene(g paramg, h paramh)
+  {
+    AppMethodBeat.i(73771);
+    this.callback = paramh;
+    paramh = new c.a();
+    cul localcul = new cul();
+    if (this.PnI != null) {
+      localcul.aazX = w.aN(this.PnI).aaxD;
+    }
+    localcul.ZqT = this.PnC;
+    paramh.otE = localcul;
+    this.PnH = new cum();
+    paramh.otF = this.PnH;
+    paramh.uri = "/cgi-bin/mmbiz-bin/getuserauthlist";
+    paramh.funcId = getType();
+    paramh.otG = 0;
+    paramh.respCmdId = 0;
+    int i = dispatch(paramg, paramh.bEF(), this);
+    AppMethodBeat.o(73771);
     return i;
+  }
+  
+  public final List<fun> gUV()
+  {
+    AppMethodBeat.i(298558);
+    if (this.PnH != null)
+    {
+      localObject = this.PnH.aazY;
+      AppMethodBeat.o(298558);
+      return localObject;
+    }
+    Object localObject = Collections.emptyList();
+    AppMethodBeat.o(298558);
+    return localObject;
+  }
+  
+  public final byte[] gUW()
+  {
+    AppMethodBeat.i(298560);
+    if ((this.PnH != null) && (this.PnH.aazZ == 1))
+    {
+      byte[] arrayOfByte = this.PnH.aazX.toByteArray();
+      AppMethodBeat.o(298560);
+      return arrayOfByte;
+    }
+    AppMethodBeat.o(298560);
+    return null;
+  }
+  
+  public final boolean gUX()
+  {
+    return this.PnI != null;
   }
   
   public final int getType()
   {
-    return 1144;
+    return 1146;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(73776);
-    paramString = (czb)d.c.b(((d)params).lBS);
-    this.callback.onSceneEnd(paramInt2, paramString.SrP.fBP, paramString.SrP.errmsg, this);
-    AppMethodBeat.o(73776);
+    AppMethodBeat.i(73772);
+    this.PnH = ((cum)c.c.b(((c)params).otC));
+    if (this.PnH.ZqU != null)
+    {
+      paramInt3 = this.PnH.ZqU.hGE;
+      paramString = this.PnH.ZqU.errmsg;
+    }
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(73772);
   }
 }
 

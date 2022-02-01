@@ -1,32 +1,18 @@
 package com.tencent.mm.plugin.wallet_index.b.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.HashMap;
-import java.util.Map;
-
 public final class b
+  extends Exception
 {
-  public Map<String, c> mPurchaseMap;
+  public b() {}
   
-  b()
+  public b(String paramString)
   {
-    AppMethodBeat.i(71804);
-    this.mPurchaseMap = new HashMap();
-    AppMethodBeat.o(71804);
-  }
-  
-  b(String paramString, c paramc)
-  {
-    AppMethodBeat.i(71805);
-    this.mPurchaseMap = new HashMap();
-    this.mPurchaseMap.clear();
-    this.mPurchaseMap.put(paramString, paramc);
-    AppMethodBeat.o(71805);
+    super(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_index.b.a.b
  * JD-Core Version:    0.7.0.1
  */

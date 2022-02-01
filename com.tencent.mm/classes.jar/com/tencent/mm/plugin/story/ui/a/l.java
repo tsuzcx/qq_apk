@@ -1,221 +1,229 @@
 package com.tencent.mm.plugin.story.ui.a;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView.a;
 import androidx.recyclerview.widget.RecyclerView.v;
-import androidx.recyclerview.widget.h;
-import androidx.recyclerview.widget.h.a;
-import androidx.recyclerview.widget.h.b;
-import androidx.recyclerview.widget.s;
+import androidx.recyclerview.widget.g.a;
+import androidx.recyclerview.widget.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
+import com.tencent.mm.br.c;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.story.a.a;
+import com.tencent.mm.plugin.story.a.c;
 import com.tencent.mm.plugin.story.a.d;
-import com.tencent.mm.plugin.story.f.j;
-import com.tencent.mm.plugin.story.f.j.b;
-import com.tencent.mm.plugin.story.i.f;
-import com.tencent.mm.plugin.story.i.g;
+import com.tencent.mm.plugin.story.h.f;
+import com.tencent.mm.plugin.story.h.g;
+import com.tencent.mm.plugin.story.model.StoryCore;
+import com.tencent.mm.plugin.story.model.StoryCore.b;
 import com.tencent.mm.plugin.story.ui.view.CommentAvatarImageView;
+import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
-import kotlin.g.b.p;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/adapter/StoryVisitorListAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/story/ui/adapter/StoryVisitorListAdapter$BubbleViewHolder;", "bubbleDatas", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;", "Lkotlin/collections/ArrayList;", "(Ljava/util/ArrayList;)V", "TAG", "", "hasStoryStateMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "getItemCount", "", "onBindViewHolder", "", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "type", "updateBubbles", "newBubbles", "", "BubbleViewHolder", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/ui/adapter/StoryVisitorListAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/story/ui/adapter/StoryVisitorListAdapter$BubbleViewHolder;", "bubbleDatas", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;", "Lkotlin/collections/ArrayList;", "(Ljava/util/ArrayList;)V", "TAG", "", "hasStoryStateMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "getItemCount", "", "onBindViewHolder", "", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "type", "updateBubbles", "newBubbles", "", "BubbleViewHolder", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class l
   extends RecyclerView.a<a>
 {
-  private final HashMap<String, Boolean> LRZ;
-  private final ArrayList<com.tencent.mm.plugin.story.f.b.a> LSw;
-  private final String TAG;
+  public final ArrayList<com.tencent.mm.plugin.story.model.b.a> SuL;
+  public final HashMap<String, Boolean> Sus;
+  public final String TAG;
   
-  public l(ArrayList<com.tencent.mm.plugin.story.f.b.a> paramArrayList)
+  public l(ArrayList<com.tencent.mm.plugin.story.model.b.a> paramArrayList)
   {
     AppMethodBeat.i(119803);
-    this.LSw = paramArrayList;
+    this.SuL = paramArrayList;
     this.TAG = "MicroMsg.StoryVisitorListAdapter";
-    this.LRZ = new HashMap();
+    this.Sus = new HashMap();
     AppMethodBeat.o(119803);
   }
   
   public final int getItemCount()
   {
     AppMethodBeat.i(119800);
-    int i = this.LSw.size();
+    int i = this.SuL.size();
     AppMethodBeat.o(119800);
     return i;
   }
   
-  public final void jdMethod_if(final List<com.tencent.mm.plugin.story.f.b.a> paramList)
-  {
-    int i = 1;
-    AppMethodBeat.i(119802);
-    p.k(paramList, "newBubbles");
-    Log.d(this.TAG, "updateBubbles");
-    Object localObject1 = this.LRZ.entrySet().iterator();
-    boolean bool;
-    if (((Iterator)localObject1).hasNext())
-    {
-      Object localObject2 = ((Iterator)localObject1).next();
-      p.j(localObject2, "it.next()");
-      localObject2 = (Map.Entry)localObject2;
-      Object localObject3 = j.LGA;
-      if (!Util.isEqual(j.b.fOo(), (String)((Map.Entry)localObject2).getKey()))
-      {
-        localObject3 = j.LGA;
-        localObject3 = j.b.gcx();
-        Object localObject4 = ((Map.Entry)localObject2).getKey();
-        p.j(localObject4, "entry.key");
-        localObject3 = ((g)localObject3).bdA((String)localObject4);
-        if (localObject3 != null)
-        {
-          bool = ((f)localObject3).gfW();
-          label147:
-          if (!bool) {
-            break label214;
-          }
-          bool = true;
-          label153:
-          if (!(p.h(Boolean.valueOf(bool), (Boolean)((Map.Entry)localObject2).getValue()) ^ true)) {
-            break label217;
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      if (i != 0)
-      {
-        this.LSw.clear();
-        this.LSw.addAll((Collection)paramList);
-        notifyDataSetChanged();
-        AppMethodBeat.o(119802);
-        return;
-        bool = false;
-        break label147;
-        label214:
-        bool = false;
-        break label153;
-        label217:
-        break;
-      }
-      localObject1 = h.a((h.a)new c(this, paramList), false);
-      p.j(localObject1, "DiffUtil.calculateDiff(o…  }\n            }, false)");
-      ((h.b)localObject1).a((s)new b(this, paramList));
-      AppMethodBeat.o(119802);
-      return;
-      i = 0;
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/adapter/StoryVisitorListAdapter$BubbleViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "unreadPadding", "", "(Lcom/tencent/mm/plugin/story/ui/adapter/StoryVisitorListAdapter;Landroid/view/View;I)V", "avatar", "Lcom/tencent/mm/plugin/story/ui/view/CommentAvatarImageView;", "getAvatar", "()Lcom/tencent/mm/plugin/story/ui/view/CommentAvatarImageView;", "fromUser", "Landroid/widget/TextView;", "getFromUser", "()Landroid/widget/TextView;", "onBindAvatar", "", "comment", "Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;", "onBindUsername", "plugin-story_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/ui/adapter/StoryVisitorListAdapter$BubbleViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "unreadPadding", "", "(Lcom/tencent/mm/plugin/story/ui/adapter/StoryVisitorListAdapter;Landroid/view/View;I)V", "avatar", "Lcom/tencent/mm/plugin/story/ui/view/CommentAvatarImageView;", "getAvatar", "()Lcom/tencent/mm/plugin/story/ui/view/CommentAvatarImageView;", "fromUser", "Landroid/widget/TextView;", "getFromUser", "()Landroid/widget/TextView;", "onBindAvatar", "", "comment", "Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;", "onBindUsername", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
   public final class a
     extends RecyclerView.v
   {
-    final CommentAvatarImageView LRU;
-    final TextView LRd;
-    final int LSc;
+    final TextView StL;
+    private final CommentAvatarImageView Sup;
+    private final int Sut;
     
     private a(int paramInt)
     {
       super();
       AppMethodBeat.i(119789);
       int i;
-      this.LSc = i;
-      this$1 = paramInt.findViewById(a.d.LBY);
-      p.j(l.this, "itemView.findViewById(R.…sg_bubble_item_avatar_iv)");
-      this.LRU = ((CommentAvatarImageView)l.this);
-      this$1 = paramInt.findViewById(a.d.LBZ);
-      p.j(l.this, "itemView.findViewById(R.…_bubble_item_username_tv)");
-      this.LRd = ((TextView)l.this);
+      this.Sut = i;
+      this$1 = paramInt.findViewById(a.d.SfJ);
+      s.s(l.this, "itemView.findViewById(R.…sg_bubble_item_avatar_iv)");
+      this.Sup = ((CommentAvatarImageView)l.this);
+      this$1 = paramInt.findViewById(a.d.SfK);
+      s.s(l.this, "itemView.findViewById(R.…_bubble_item_username_tv)");
+      this.StL = ((TextView)l.this);
       AppMethodBeat.o(119789);
     }
     
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-    static final class a
-      implements View.OnClickListener
+    private static final void a(com.tencent.mm.plugin.story.model.b.a parama, a parama1, View paramView)
     {
-      a(l.a parama, com.tencent.mm.plugin.story.f.b.a parama1) {}
-      
-      public final void onClick(View paramView)
+      AppMethodBeat.i(367319);
+      Object localObject = new Object();
+      b localb = new b();
+      localb.cH(parama);
+      localb.cH(parama1);
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/adapter/StoryVisitorListAdapter$BubbleViewHolder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+      s.u(parama, "$comment");
+      s.u(parama1, "this$0");
+      paramView = new Intent();
+      paramView.putExtra("Contact_User", parama.hQQ);
+      paramView.putExtra("CONTACT_INFO_UI_SOURCE", 12);
+      c.b(parama1.Sup.getContext(), "profile", ".ui.ContactInfoUI", paramView);
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/story/ui/adapter/StoryVisitorListAdapter$BubbleViewHolder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(367319);
+    }
+    
+    public final void b(com.tencent.mm.plugin.story.model.b.a parama)
+    {
+      boolean bool3 = false;
+      AppMethodBeat.i(367324);
+      s.u(parama, "comment");
+      a.b.h((ImageView)this.Sup, parama.hQQ);
+      Object localObject1;
+      Object localObject2;
+      Object localObject3;
+      boolean bool2;
+      if (parama.Sly)
       {
-        AppMethodBeat.i(119788);
-        b localb = new b();
-        localb.bn(paramView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/adapter/StoryVisitorListAdapter$BubbleViewHolder$onBindAvatar$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        paramView = new Intent();
-        paramView.putExtra("Contact_User", this.LRX.fLi);
-        paramView.putExtra("CONTACT_INFO_UI_SOURCE", 12);
-        c.b(this.LSy.LRU.getContext(), "profile", ".ui.ContactInfoUI", paramView);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/adapter/StoryVisitorListAdapter$BubbleViewHolder$onBindAvatar$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(119788);
+        this.Sup.setBackground(this.Sup.getContext().getResources().getDrawable(a.c.Sdb));
+        this.Sup.setPadding(this.Sut, this.Sut, this.Sut, this.Sut);
+        this.Sup.setHintBg(this.Sup.getContext().getResources().getColor(a.a.ScN));
+        localObject1 = (Map)l.c(l.this);
+        localObject2 = parama.hQQ;
+        localObject3 = StoryCore.SjP;
+        bool2 = bool3;
+        if (!Util.isEqual(StoryCore.b.hgg(), parama.hQQ))
+        {
+          localObject3 = StoryCore.SjP;
+          localObject3 = StoryCore.b.hvS().bcm(parama.hQQ);
+          if (localObject3 != null) {
+            break label302;
+          }
+        }
+      }
+      label302:
+      for (boolean bool1 = false;; bool1 = ((f)localObject3).hzn())
+      {
+        bool2 = bool3;
+        if (bool1) {
+          bool2 = true;
+        }
+        ((Map)localObject1).put(localObject2, Boolean.valueOf(bool2));
+        localObject3 = this.Sup;
+        localObject2 = (Boolean)l.c(l.this).get(parama.hQQ);
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = Boolean.FALSE;
+        }
+        ((CommentAvatarImageView)localObject3).setShowStoryHint(((Boolean)localObject1).booleanValue());
+        this.Sup.bct(parama.hQQ);
+        this.Sup.setOnClickListener(new l.a..ExternalSyntheticLambda0(parama, this));
+        AppMethodBeat.o(367324);
+        return;
+        this.Sup.setBackground(null);
+        this.Sup.setPadding(0, 0, 0, 0);
+        this.Sup.setHintBg(0);
+        break;
       }
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/story/ui/adapter/StoryVisitorListAdapter$updateBubbles$1", "Landroidx/recyclerview/widget/ListUpdateCallback;", "onChanged", "", "position", "", "count", "payload", "", "onInserted", "onMoved", "fromPosition", "toPosition", "onRemoved", "plugin-story_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/story/ui/adapter/StoryVisitorListAdapter$updateBubbles$1", "Landroidx/recyclerview/widget/ListUpdateCallback;", "onChanged", "", "position", "", "count", "payload", "", "onInserted", "onMoved", "fromPosition", "toPosition", "onRemoved", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
-    implements s
+    implements q
   {
-    b(List paramList) {}
+    public b(l paraml, List<com.tencent.mm.plugin.story.model.b.a> paramList) {}
     
-    public final void W(int paramInt1, int paramInt2)
+    public final void aR(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(119793);
-      Log.d(l.b(this.LSx), "onInserted position:" + paramInt1 + ", count:" + paramInt2);
-      l.a(this.LSx).clear();
-      l.a(this.LSx).addAll((Collection)paramList);
-      this.LSx.aG(paramInt1, paramInt2);
+      Log.d(l.b(this.SuM), "onInserted position:" + paramInt1 + ", count:" + paramInt2);
+      l.a(this.SuM).clear();
+      l.a(this.SuM).addAll((Collection)this.SuN);
+      this.SuM.bA(paramInt1, paramInt2);
       AppMethodBeat.o(119793);
     }
     
-    public final void ac(int paramInt1, int paramInt2)
+    public final void aS(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(119794);
-      Log.d(l.b(this.LSx), "onRemoved position:" + paramInt1 + ", count:" + paramInt2);
-      l.a(this.LSx).clear();
-      l.a(this.LSx).addAll((Collection)paramList);
-      this.LSx.aH(paramInt1, paramInt2);
+      Log.d(l.b(this.SuM), "onRemoved position:" + paramInt1 + ", count:" + paramInt2);
+      l.a(this.SuM).clear();
+      l.a(this.SuM).addAll((Collection)this.SuN);
+      this.SuM.bB(paramInt1, paramInt2);
       AppMethodBeat.o(119794);
     }
     
-    public final void ad(int paramInt1, int paramInt2)
+    public final void aW(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(119792);
-      Log.d(l.b(this.LSx), "onMoved fromPosition:" + paramInt1 + ", toPosition:" + paramInt2);
+      Log.d(l.b(this.SuM), "onMoved fromPosition:" + paramInt1 + ", toPosition:" + paramInt2);
       AppMethodBeat.o(119792);
     }
     
     public final void c(int paramInt1, int paramInt2, Object paramObject)
     {
       AppMethodBeat.i(119791);
-      Log.d(l.b(this.LSx), "onChanged position:" + paramInt1 + ", count:" + paramInt2);
-      l.a(this.LSx).clear();
-      l.a(this.LSx).addAll((Collection)paramList);
-      this.LSx.aE(paramInt1, paramInt2);
+      Log.d(l.b(this.SuM), "onChanged position:" + paramInt1 + ", count:" + paramInt2);
+      l.a(this.SuM).clear();
+      l.a(this.SuM).addAll((Collection)this.SuN);
+      this.SuM.by(paramInt1, paramInt2);
       AppMethodBeat.o(119791);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/story/ui/adapter/StoryVisitorListAdapter$updateBubbles$result$1", "Landroidx/recyclerview/widget/DiffUtil$Callback;", "areContentsTheSame", "", "oldItemPosition", "", "newItemPosition", "areItemsTheSame", "getNewListSize", "getOldListSize", "plugin-story_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/story/ui/adapter/StoryVisitorListAdapter$updateBubbles$result$1", "Landroidx/recyclerview/widget/DiffUtil$Callback;", "areContentsTheSame", "", "oldItemPosition", "", "newItemPosition", "areItemsTheSame", "getNewListSize", "getOldListSize", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class c
-    extends h.a
+    extends g.a
   {
-    c(List paramList) {}
+    public c(l paraml, List<com.tencent.mm.plugin.story.model.b.a> paramList) {}
     
-    public final boolean Z(int paramInt1, int paramInt2)
+    public final int If()
+    {
+      AppMethodBeat.i(119795);
+      int i = l.a(this.SuM).size();
+      AppMethodBeat.o(119795);
+      return i;
+    }
+    
+    public final int Ig()
+    {
+      AppMethodBeat.i(119796);
+      int i = this.SuN.size();
+      AppMethodBeat.o(119796);
+      return i;
+    }
+    
+    public final boolean aU(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(119797);
-      if ((((com.tencent.mm.plugin.story.f.b.a)l.a(this.LSx).get(paramInt1)).fXG == ((com.tencent.mm.plugin.story.f.b.a)paramList.get(paramInt2)).fXG) && (((com.tencent.mm.plugin.story.f.b.a)l.a(this.LSx).get(paramInt1)).LHU == ((com.tencent.mm.plugin.story.f.b.a)paramList.get(paramInt2)).LHU))
+      if ((((com.tencent.mm.plugin.story.model.b.a)l.a(this.SuM).get(paramInt1)).idH == ((com.tencent.mm.plugin.story.model.b.a)this.SuN.get(paramInt2)).idH) && (((com.tencent.mm.plugin.story.model.b.a)l.a(this.SuM).get(paramInt1)).Slv == ((com.tencent.mm.plugin.story.model.b.a)this.SuN.get(paramInt2)).Slv))
       {
         AppMethodBeat.o(119797);
         return true;
@@ -224,32 +232,16 @@ public final class l
       return false;
     }
     
-    public final boolean ab(int paramInt1, int paramInt2)
+    public final boolean aV(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(119798);
-      if ((((com.tencent.mm.plugin.story.f.b.a)l.a(this.LSx).get(paramInt1)).LHX == ((com.tencent.mm.plugin.story.f.b.a)paramList.get(paramInt2)).LHX) && (Util.isEqual(((com.tencent.mm.plugin.story.f.b.a)l.a(this.LSx).get(paramInt1)).content, ((com.tencent.mm.plugin.story.f.b.a)paramList.get(paramInt2)).content)))
+      if ((((com.tencent.mm.plugin.story.model.b.a)l.a(this.SuM).get(paramInt1)).Sly == ((com.tencent.mm.plugin.story.model.b.a)this.SuN.get(paramInt2)).Sly) && (Util.isEqual(((com.tencent.mm.plugin.story.model.b.a)l.a(this.SuM).get(paramInt1)).content, ((com.tencent.mm.plugin.story.model.b.a)this.SuN.get(paramInt2)).content)))
       {
         AppMethodBeat.o(119798);
         return true;
       }
       AppMethodBeat.o(119798);
       return false;
-    }
-    
-    public final int jL()
-    {
-      AppMethodBeat.i(119795);
-      int i = l.a(this.LSx).size();
-      AppMethodBeat.o(119795);
-      return i;
-    }
-    
-    public final int jM()
-    {
-      AppMethodBeat.i(119796);
-      int i = paramList.size();
-      AppMethodBeat.o(119796);
-      return i;
     }
   }
 }

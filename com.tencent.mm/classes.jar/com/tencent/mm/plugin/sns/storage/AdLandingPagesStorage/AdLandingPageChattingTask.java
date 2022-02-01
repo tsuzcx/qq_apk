@@ -8,20 +8,20 @@ import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.service.q;
-import com.tencent.mm.plugin.appbrand.service.q.a;
+import com.tencent.mm.plugin.appbrand.service.s;
+import com.tencent.mm.plugin.appbrand.service.s.a;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 
 public class AdLandingPageChattingTask
   extends MainProcessTask
 {
   public static final Parcelable.Creator<AdLandingPageChattingTask> CREATOR;
   public String nickname;
-  public String oOB;
-  public Runnable otv;
+  public String rSr;
+  public Runnable rxj;
   public String username;
   
   static
@@ -36,32 +36,32 @@ public class AdLandingPageChattingTask
   public AdLandingPageChattingTask(Parcel paramParcel)
   {
     AppMethodBeat.i(96306);
-    f(paramParcel);
+    h(paramParcel);
     AppMethodBeat.o(96306);
   }
   
-  public final void RW()
+  public final void asn()
   {
     AppMethodBeat.i(96307);
-    if (!h.aHE().kbT)
+    if (!h.baC().mBZ)
     {
-      bPt();
+      cpA();
       AppMethodBeat.o(96307);
       return;
     }
-    as localas = ((n)h.ae(n.class)).bbL().RG(this.username);
-    Log.d("MicroMsg.AdLandingPageChattingTask", "sessionFrom:%s,username:%s,nickname:%s", new Object[] { this.oOB, this.username, this.nickname });
-    if ((localas == null) || ((int)localas.jxt == 0))
+    au localau = ((n)h.ax(n.class)).bzA().JE(this.username);
+    Log.d("MicroMsg.AdLandingPageChattingTask", "sessionFrom:%s,username:%s,nickname:%s", new Object[] { this.rSr, this.username, this.nickname });
+    if ((localau == null) || ((int)localau.maN == 0))
     {
-      localas = new as(this.username);
-      localas.setType(0);
-      localas.setNickname(this.nickname);
-      ((n)h.ae(n.class)).bbL().av(localas);
+      localau = new au(this.username);
+      localau.setType(0);
+      localau.setNickname(this.nickname);
+      ((n)h.ax(n.class)).bzA().aB(localau);
       Log.i("MicroMsg.AdLandingPageChattingTask", "%s save to contact_table", new Object[] { this.username });
     }
-    ((q)h.ae(q.class)).c(this.username, new q.a()
+    ((s)h.ax(s.class)).c(this.username, new s.a()
     {
-      public final void b(WxaAttributes paramAnonymousWxaAttributes)
+      public final void onGetWeAppInfo(WxaAttributes paramAnonymousWxaAttributes)
       {
         AppMethodBeat.i(96304);
         if (paramAnonymousWxaAttributes == null) {
@@ -74,19 +74,19 @@ public class AdLandingPageChattingTask
     AppMethodBeat.o(96307);
   }
   
-  public final void bsK()
+  public final void bQr()
   {
     AppMethodBeat.i(96308);
-    if (this.otv != null) {
-      this.otv.run();
+    if (this.rxj != null) {
+      this.rxj.run();
     }
     AppMethodBeat.o(96308);
   }
   
-  public final void f(Parcel paramParcel)
+  public final void h(Parcel paramParcel)
   {
     AppMethodBeat.i(96309);
-    this.oOB = paramParcel.readString();
+    this.rSr = paramParcel.readString();
     this.username = paramParcel.readString();
     this.nickname = paramParcel.readString();
     AppMethodBeat.o(96309);
@@ -95,7 +95,7 @@ public class AdLandingPageChattingTask
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(96310);
-    paramParcel.writeString(this.oOB);
+    paramParcel.writeString(this.rSr);
     paramParcel.writeString(this.username);
     paramParcel.writeString(this.nickname);
     AppMethodBeat.o(96310);
@@ -103,7 +103,7 @@ public class AdLandingPageChattingTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageChattingTask
  * JD-Core Version:    0.7.0.1
  */

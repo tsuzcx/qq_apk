@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.canvas.action.arg.path;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.g;
+import com.tencent.mm.plugin.appbrand.af.i;
 import org.json.JSONObject;
 
 public class PathQuadraticCurveToActionArg
@@ -57,10 +57,10 @@ public class PathQuadraticCurveToActionArg
     return false;
   }
   
-  public final void i(Parcel paramParcel)
+  public final void k(Parcel paramParcel)
   {
     AppMethodBeat.i(145308);
-    super.i(paramParcel);
+    super.k(paramParcel);
     this.x1 = paramParcel.readFloat();
     this.y1 = paramParcel.readFloat();
     this.x2 = paramParcel.readFloat();
@@ -73,10 +73,10 @@ public class PathQuadraticCurveToActionArg
     AppMethodBeat.i(145306);
     super.parse(paramJSONObject);
     paramJSONObject = paramJSONObject.optJSONArray("data");
-    this.x1 = g.f(paramJSONObject, 0);
-    this.y1 = g.f(paramJSONObject, 1);
-    this.x2 = g.f(paramJSONObject, 2);
-    this.y2 = g.f(paramJSONObject, 3);
+    this.x1 = i.f(paramJSONObject, 0);
+    this.y1 = i.f(paramJSONObject, 1);
+    this.x2 = i.f(paramJSONObject, 2);
+    this.y2 = i.f(paramJSONObject, 3);
     AppMethodBeat.o(145306);
   }
   
@@ -93,7 +93,7 @@ public class PathQuadraticCurveToActionArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.path.PathQuadraticCurveToActionArg
  * JD-Core Version:    0.7.0.1
  */

@@ -7,26 +7,26 @@ import java.util.List;
 public final class ab
   extends aa
 {
-  public aq KmA;
-  public LinkedList<aa> KmQ;
-  public int KmR;
+  public as QKF;
+  public LinkedList<aa> QKV;
+  public int QKW;
   
   public ab()
   {
     AppMethodBeat.i(96322);
-    this.KmQ = new LinkedList();
-    this.KmR = 0;
+    this.QKV = new LinkedList();
+    this.QKW = 0;
     AppMethodBeat.o(96322);
   }
   
-  public final List<aa> fKw()
+  public final List<aa> haE()
   {
-    return this.KmQ;
+    return this.QKV;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ab
  * JD-Core Version:    0.7.0.1
  */

@@ -10,106 +10,128 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.LinearLayout;
-import androidx.lifecycle.h;
-import androidx.lifecycle.k;
-import androidx.lifecycle.l;
+import androidx.lifecycle.j;
+import androidx.lifecycle.p;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.sdk.platformtools.Log;
 
 final class ap
 {
   private Activity activity;
-  private boolean dic;
-  ao rxZ;
-  View rya;
-  private Rect ryb;
-  Rect ryc;
-  View ryd;
-  private k rye;
-  private ViewTreeObserver.OnGlobalLayoutListener ryf;
-  private ViewTreeObserver.OnGlobalLayoutListener ryg;
-  private boolean ryh;
-  private int ryi;
-  private int ryj;
-  private int ryk;
-  private int ryl;
+  private boolean fhR;
+  ao uJd;
+  View uJe;
+  private Rect uJf;
+  Rect uJg;
+  View uJh;
+  private p uJi;
+  private ViewTreeObserver.OnGlobalLayoutListener uJj;
+  private ViewTreeObserver.OnGlobalLayoutListener uJk;
+  private boolean uJl;
+  private int uJm;
+  private int uJn;
+  private int uJo;
+  private int uJp;
   
   ap(Activity paramActivity)
   {
-    AppMethodBeat.i(230069);
-    this.ryb = new Rect();
-    this.ryc = new Rect();
-    this.dic = false;
-    this.ryh = true;
+    AppMethodBeat.i(324444);
+    this.uJf = new Rect();
+    this.uJg = new Rect();
+    this.fhR = false;
+    this.uJl = true;
     this.activity = paramActivity;
-    cpj();
-    this.ryd = paramActivity.findViewById(16908290);
-    this.ryf = new ViewTreeObserver.OnGlobalLayoutListener()
+    cRM();
+    this.uJh = paramActivity.findViewById(16908290);
+    this.uJj = new ViewTreeObserver.OnGlobalLayoutListener()
     {
       public final void onGlobalLayout()
       {
-        AppMethodBeat.i(230743);
-        if (ap.this.rya != null) {
+        AppMethodBeat.i(324395);
+        if (ap.this.uJe != null) {
           ap.a(ap.this);
         }
-        AppMethodBeat.o(230743);
+        AppMethodBeat.o(324395);
       }
     };
-    this.ryg = new ViewTreeObserver.OnGlobalLayoutListener()
+    this.uJk = new ViewTreeObserver.OnGlobalLayoutListener()
     {
       public final void onGlobalLayout()
       {
-        AppMethodBeat.i(230951);
-        if (ap.this.rya != null)
+        AppMethodBeat.i(324424);
+        if (ap.this.uJe != null)
         {
-          int i = ap.this.ryc.bottom;
-          ap.this.ryd.getWindowVisibleDisplayFrame(ap.this.ryc);
-          if (ap.this.ryc.bottom != i)
+          int i = ap.this.uJg.bottom;
+          ap.this.uJh.getWindowVisibleDisplayFrame(ap.this.uJg);
+          if (ap.this.uJg.bottom != i)
           {
-            Log.i("MicroMsg.KeyboardHeightProvider", "onGlobalLayout: %s, %s", new Object[] { Integer.valueOf(i), ap.this.ryc.toShortString() });
+            Log.i("MicroMsg.KeyboardHeightProvider", "onGlobalLayout: %s, %s", new Object[] { Integer.valueOf(i), ap.this.uJg.toShortString() });
             ap.a(ap.this);
           }
         }
-        AppMethodBeat.o(230951);
+        AppMethodBeat.o(324424);
       }
     };
     int i = Resources.getSystem().getIdentifier("navigation_bar_height", "dimen", "android");
     if (i > 0) {
-      this.ryk = Resources.getSystem().getDimensionPixelSize(i);
+      this.uJo = Resources.getSystem().getDimensionPixelSize(i);
     }
-    this.ryl = a.fromDPToPix(paramActivity, 96);
-    AppMethodBeat.o(230069);
+    this.uJp = a.fromDPToPix(paramActivity, 96);
+    AppMethodBeat.o(324444);
   }
   
-  private void cpj()
+  private void cRM()
   {
-    AppMethodBeat.i(230076);
+    AppMethodBeat.i(324447);
     if ((this.activity.getWindow().getAttributes().softInputMode & 0xF0) != 48)
     {
       Log.w("MicroMsg.KeyboardHeightProvider", "activity soft input should be adjust nothing");
-      this.ryh = false;
-      AppMethodBeat.o(230076);
+      this.uJl = false;
+      AppMethodBeat.o(324447);
       return;
     }
-    this.ryh = true;
-    AppMethodBeat.o(230076);
+    this.uJl = true;
+    AppMethodBeat.o(324447);
+  }
+  
+  final void cRN()
+  {
+    AppMethodBeat.i(324474);
+    if ((this.activity instanceof q))
+    {
+      j localj = ((q)this.activity).getLifecycle();
+      KeyboardHeightProvider.3 local3 = new KeyboardHeightProvider.3(this);
+      this.uJi = local3;
+      localj.addObserver(local3);
+    }
+    AppMethodBeat.o(324474);
+  }
+  
+  final void cRO()
+  {
+    AppMethodBeat.i(324477);
+    if ((this.uJi != null) && ((this.activity instanceof q))) {
+      ((q)this.activity).getLifecycle().removeObserver(this.uJi);
+    }
+    AppMethodBeat.o(324477);
   }
   
   public final void close()
   {
-    AppMethodBeat.i(230073);
+    AppMethodBeat.i(324469);
     Log.i("MicroMsg.KeyboardHeightProvider", "close: ");
-    this.ryd.getViewTreeObserver().removeOnGlobalLayoutListener(this.ryg);
-    if ((this.dic) && (this.rya != null)) {
-      this.rya.getViewTreeObserver().removeOnGlobalLayoutListener(this.ryf);
+    this.uJh.getViewTreeObserver().removeOnGlobalLayoutListener(this.uJk);
+    if ((this.fhR) && (this.uJe != null)) {
+      this.uJe.getViewTreeObserver().removeOnGlobalLayoutListener(this.uJj);
     }
     try
     {
-      this.activity.getWindowManager().removeView(this.rya);
-      this.rya = null;
-      this.dic = false;
-      AppMethodBeat.o(230073);
+      this.activity.getWindowManager().removeView(this.uJe);
+      this.uJe = null;
+      this.fhR = false;
+      AppMethodBeat.o(324469);
       return;
     }
     catch (Exception localException)
@@ -121,40 +143,18 @@ final class ap
     }
   }
   
-  final void cpk()
-  {
-    AppMethodBeat.i(230081);
-    if ((this.activity instanceof l))
-    {
-      h localh = ((l)this.activity).getLifecycle();
-      KeyboardHeightProvider.3 local3 = new KeyboardHeightProvider.3(this);
-      this.rye = local3;
-      localh.a(local3);
-    }
-    AppMethodBeat.o(230081);
-  }
-  
-  final void cpl()
-  {
-    AppMethodBeat.i(230082);
-    if ((this.rye != null) && ((this.activity instanceof l))) {
-      ((l)this.activity).getLifecycle().b(this.rye);
-    }
-    AppMethodBeat.o(230082);
-  }
-  
   public final void start()
   {
-    AppMethodBeat.i(230071);
-    cpj();
-    if (this.ryd != null)
+    AppMethodBeat.i(324464);
+    cRM();
+    if (this.uJh != null)
     {
-      Log.i("MicroMsg.KeyboardHeightProvider", "start: %s, %s", new Object[] { Boolean.valueOf(this.dic), this.ryd.getWindowToken() });
-      if ((!this.dic) && (this.ryd.getWindowToken() != null) && (!this.activity.isFinishing()))
+      Log.i("MicroMsg.KeyboardHeightProvider", "start: %s, %s", new Object[] { Boolean.valueOf(this.fhR), this.uJh.getWindowToken() });
+      if ((!this.fhR) && (this.uJh.getWindowToken() != null) && (!this.activity.isFinishing()))
       {
-        this.dic = true;
-        this.rya = new LinearLayout(this.activity);
-        this.rya.setBackgroundColor(0);
+        this.fhR = true;
+        this.uJe = new LinearLayout(this.activity);
+        this.uJe.setBackgroundColor(0);
         WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(1003, 131096, 1);
         localLayoutParams.width = 0;
         localLayoutParams.height = -1;
@@ -163,19 +163,19 @@ final class ap
         localLayoutParams.setTitle("KeyboardWindow@" + hashCode());
         try
         {
-          this.activity.getWindowManager().addView(this.rya, localLayoutParams);
-          if (this.dic)
+          this.activity.getWindowManager().addView(this.uJe, localLayoutParams);
+          if (this.fhR)
           {
-            this.rya.getViewTreeObserver().addOnGlobalLayoutListener(this.ryf);
-            this.ryd.getViewTreeObserver().addOnGlobalLayoutListener(this.ryg);
+            this.uJe.getViewTreeObserver().addOnGlobalLayoutListener(this.uJj);
+            this.uJh.getViewTreeObserver().addOnGlobalLayoutListener(this.uJk);
           }
-          this.ryi = 0;
-          this.ryj = 0;
+          this.uJm = 0;
+          this.uJn = 0;
           if ((this.activity.getWindow().getAttributes().softInputMode & 0xF0) != 48)
           {
             Log.w("MicroMsg.KeyboardHeightProvider", "start: activity soft input should be adjust nothing");
-            this.ryh = false;
-            AppMethodBeat.o(230071);
+            this.uJl = false;
+            AppMethodBeat.o(324464);
             return;
           }
         }
@@ -184,19 +184,19 @@ final class ap
           for (;;)
           {
             Log.printErrStackTrace("MicroMsg.KeyboardHeightProvider", localException, "", new Object[0]);
-            this.dic = false;
-            this.rya = null;
+            this.fhR = false;
+            this.uJe = null;
           }
-          this.ryh = true;
+          this.uJl = true;
         }
       }
     }
-    AppMethodBeat.o(230071);
+    AppMethodBeat.o(324464);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.ap
  * JD-Core Version:    0.7.0.1
  */

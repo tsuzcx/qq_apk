@@ -1,43 +1,42 @@
 package com.tencent.mm.plugin.gamelife.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.c;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
 import com.tencent.mm.plugin.gamelife.b.f;
 import com.tencent.mm.plugin.gamelife.b.g;
 import java.util.LinkedList;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelife/cgi/CgiGetChatSessionData;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/plugin/gamelife/autogen/GetChatSessionDataResponse;", "sessionIdList", "Ljava/util/LinkedList;", "", "(Ljava/util/LinkedList;)V", "request", "Lcom/tencent/mm/plugin/gamelife/autogen/GetChatSessionDataRequest;", "getRequest", "()Lcom/tencent/mm/plugin/gamelife/autogen/GetChatSessionDataRequest;", "onCgiBack", "", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-gamelife_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/gamelife/cgi/CgiGetChatSessionData;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/plugin/gamelife/autogen/GetChatSessionDataResponse;", "sessionIdList", "Ljava/util/LinkedList;", "", "(Ljava/util/LinkedList;)V", "request", "Lcom/tencent/mm/plugin/gamelife/autogen/GetChatSessionDataRequest;", "getRequest", "()Lcom/tencent/mm/plugin/gamelife/autogen/GetChatSessionDataRequest;", "onCgiBack", "", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-gamelife_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends c<g>
+  extends com.tencent.mm.am.b<g>
 {
-  public static final a Dha;
-  private final f DgZ;
+  public static final a JaT;
+  private final f JaU;
   
   static
   {
-    AppMethodBeat.i(204003);
-    Dha = new a((byte)0);
-    AppMethodBeat.o(204003);
+    AppMethodBeat.i(268219);
+    JaT = new a((byte)0);
+    AppMethodBeat.o(268219);
   }
   
   public b(LinkedList<String> paramLinkedList)
   {
-    AppMethodBeat.i(204002);
-    this.DgZ = new f();
-    d.a locala = new d.a();
-    this.DgZ.DgO = paramLinkedList;
-    locala.c((a)this.DgZ);
-    locala.d((a)new g());
-    locala.TW("/cgi-bin/mmgame-bin/gamegamelifeappsvr/getchatsessiondata");
-    locala.vD(1910);
-    c(locala.bgN());
-    AppMethodBeat.o(204002);
+    AppMethodBeat.i(268208);
+    this.JaU = new f();
+    c.a locala = new c.a();
+    this.JaU.JaI = paramLinkedList;
+    locala.otE = ((a)this.JaU);
+    locala.otF = ((a)new g());
+    locala.uri = "/cgi-bin/mmgame-bin/gamegamelifeappsvr/getchatsessiondata";
+    locala.funcId = 1910;
+    c(locala.bEF());
+    AppMethodBeat.o(268208);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelife/cgi/CgiGetChatSessionData$Companion;", "", "()V", "TAG", "", "plugin-gamelife_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/gamelife/cgi/CgiGetChatSessionData$Companion;", "", "()V", "TAG", "", "plugin-gamelife_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

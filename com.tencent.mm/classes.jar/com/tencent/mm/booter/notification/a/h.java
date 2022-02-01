@@ -8,54 +8,49 @@ import android.text.TextUtils.TruncateAt;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.j;
 import com.tencent.mm.R.l;
-import com.tencent.mm.aj.k.b;
-import com.tencent.mm.aj.t;
-import com.tencent.mm.ao.a.k;
-import com.tencent.mm.ao.af;
-import com.tencent.mm.ap.a.a;
-import com.tencent.mm.compatible.util.o;
-import com.tencent.mm.f.a.abn;
-import com.tencent.mm.f.a.abn.b;
-import com.tencent.mm.f.c.ax;
-import com.tencent.mm.f.c.et;
+import com.tencent.mm.an.af;
+import com.tencent.mm.ao.a.a;
+import com.tencent.mm.autogen.a.adk;
+import com.tencent.mm.autogen.a.adk.b;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.message.k.b;
+import com.tencent.mm.message.t;
 import com.tencent.mm.model.aa;
-import com.tencent.mm.model.ab;
-import com.tencent.mm.model.aq;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.model.bq;
+import com.tencent.mm.model.br;
 import com.tencent.mm.model.v;
 import com.tencent.mm.model.z;
-import com.tencent.mm.modelvideo.u;
-import com.tencent.mm.modelvoice.p;
+import com.tencent.mm.modelvideo.x;
+import com.tencent.mm.plugin.finder.utils.av;
+import com.tencent.mm.plugin.findersdk.a.d;
 import com.tencent.mm.plugin.patmsg.PluginPatMsg;
 import com.tencent.mm.pointers.PInt;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.protocal.protobuf.apn;
-import com.tencent.mm.protocal.protobuf.bcp;
-import com.tencent.mm.protocal.protobuf.bja;
-import com.tencent.mm.protocal.protobuf.bje;
-import com.tencent.mm.protocal.protobuf.bjf;
-import com.tencent.mm.protocal.protobuf.bjg;
-import com.tencent.mm.protocal.protobuf.cwx;
-import com.tencent.mm.protocal.protobuf.dit;
-import com.tencent.mm.protocal.protobuf.diu;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.protocal.protobuf.bmr;
+import com.tencent.mm.protocal.protobuf.bth;
+import com.tencent.mm.protocal.protobuf.bvh;
+import com.tencent.mm.protocal.protobuf.bvl;
+import com.tencent.mm.protocal.protobuf.bvm;
+import com.tencent.mm.protocal.protobuf.bvn;
+import com.tencent.mm.protocal.protobuf.doc;
+import com.tencent.mm.protocal.protobuf.ebd;
+import com.tencent.mm.protocal.protobuf.ebe;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.XmlParser;
-import com.tencent.mm.storage.RegionCodeDecoder;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.az;
-import com.tencent.mm.storage.be;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.bw;
-import com.tencent.mm.storage.ca;
-import com.tencent.mm.storage.ca.a;
-import com.tencent.mm.storage.ca.c;
-import com.tencent.mm.storage.ca.d;
+import com.tencent.mm.smiley.EmojiHelper;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bb;
+import com.tencent.mm.storage.bg;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.by;
+import com.tencent.mm.storage.cc;
+import com.tencent.mm.storage.cc.a;
+import com.tencent.mm.storage.cc.d;
+import com.tencent.mm.storage.cc.f;
 import com.tencent.mm.ui.chatting.viewitems.l.a;
 import java.lang.ref.WeakReference;
 import java.net.URLDecoder;
@@ -66,14 +61,14 @@ import junit.framework.Assert;
 
 public final class h
 {
-  private static WeakReference<TextPaint> iTh;
-  private static int iTi = 0;
-  private static int iTj = 0;
-  public String iTg = "";
+  private static WeakReference<TextPaint> lvf;
+  private static int lvg = 0;
+  private static int lvh = 0;
+  public String lve = "";
   public String mDesc = "";
   public String mTitle = "";
   
-  private static String JX(String paramString)
+  private static String CC(String paramString)
   {
     AppMethodBeat.i(20079);
     if (paramString != null)
@@ -86,7 +81,7 @@ public final class h
     return paramString;
   }
   
-  private static String JY(String paramString)
+  private static String CD(String paramString)
   {
     AppMethodBeat.i(20082);
     if (paramString != null)
@@ -99,20 +94,20 @@ public final class h
     return paramString;
   }
   
-  private static boolean JZ(String paramString)
+  private static boolean CE(String paramString)
   {
     AppMethodBeat.i(20083);
-    if ((ab.Qr(paramString)) && (!z.bdx()))
+    if ((au.bvV(paramString)) && (!z.bBp()))
     {
       AppMethodBeat.o(20083);
       return true;
     }
-    if ((ab.Qt(paramString)) && (!z.bdo()))
+    if ((au.bvX(paramString)) && (!z.bBg()))
     {
       AppMethodBeat.o(20083);
       return true;
     }
-    if ((ab.Qx(paramString)) && (!z.bdA()))
+    if ((au.bwb(paramString)) && (!z.bBs()))
     {
       AppMethodBeat.o(20083);
       return true;
@@ -121,7 +116,7 @@ public final class h
     return false;
   }
   
-  public static String Ka(String paramString)
+  public static String CF(String paramString)
   {
     AppMethodBeat.i(20084);
     if (paramString == null)
@@ -139,27 +134,39 @@ public final class h
     return paramString;
   }
   
-  private static int Y(String paramString, int paramInt)
+  private static boolean CG(String paramString)
   {
-    AppMethodBeat.i(20088);
-    while (paramInt < paramString.length())
+    AppMethodBeat.i(238959);
+    try
     {
-      if (paramString.charAt(paramInt) != '%')
+      paramString = XmlParser.parseXml(paramString, "msg", null);
+      if (paramString != null)
       {
-        AppMethodBeat.o(20088);
-        return paramInt;
+        paramString = (String)paramString.get(".msg.appmsg.mmreadershare.itemshowtype");
+        if (paramString != null)
+        {
+          boolean bool = paramString.equals("16");
+          if (bool)
+          {
+            AppMethodBeat.o(238959);
+            return true;
+          }
+        }
       }
-      paramInt += 1;
+      AppMethodBeat.o(238959);
+      return false;
     }
-    paramInt = paramString.length();
-    AppMethodBeat.o(20088);
-    return paramInt;
+    catch (Exception paramString)
+    {
+      AppMethodBeat.o(238959);
+    }
+    return false;
   }
   
   private static CharSequence a(String paramString, TextPaint paramTextPaint)
   {
     AppMethodBeat.i(20086);
-    paramString = TextUtils.ellipsize(com.tencent.mm.pluginsdk.ui.span.l.d(MMApplicationContext.getContext(), paramString, arv()), paramTextPaint, arw(), TextUtils.TruncateAt.END);
+    paramString = TextUtils.ellipsize(com.tencent.mm.pluginsdk.ui.span.p.d(MMApplicationContext.getContext(), paramString, aLr()), paramTextPaint, aLs(), TextUtils.TruncateAt.END);
     AppMethodBeat.o(20086);
     return paramString;
   }
@@ -179,7 +186,7 @@ public final class h
     String str2;
     String str1;
     int i;
-    if ((ab.Qr(paramString1)) || (ab.Qt(paramString1)))
+    if ((au.bvV(paramString1)) || (au.bvX(paramString1)))
     {
       str2 = str3;
       str1 = paramString2;
@@ -195,15 +202,15 @@ public final class h
           if (i < paramString2.length())
           {
             paramString1 = paramString2.substring(0, i);
-            if (!as.bvH(paramString1))
+            if (!au.bwL(paramString1))
             {
               str2 = str3;
               str1 = paramString2;
-              if (!as.bvJ(paramString1)) {}
+              if (!au.bwN(paramString1)) {}
             }
             else
             {
-              str2 = aa.PJ(paramString1);
+              str2 = aa.getDisplayName(paramString1);
               paramPString2.value = paramString1;
               str1 = paramString2.substring(i + 1);
             }
@@ -223,19 +230,19 @@ public final class h
       paramContext = paramPString1.value;
       AppMethodBeat.o(20077);
       return paramContext;
-      if (!as.bvH(paramString1))
+      if (!au.bwL(paramString1))
       {
         str2 = str3;
         str1 = paramString2;
-        if (!as.bvJ(paramString1)) {
+        if (!au.bwN(paramString1)) {
           break;
         }
       }
-      aa.PJ(paramString1);
+      aa.getDisplayName(paramString1);
       paramPString2.value = paramString1;
       if (paramInt == 1)
       {
-        paramContext = new StringBuilder().append(paramContext.getString(R.l.eFK, new Object[] { "" }));
+        paramContext = new StringBuilder().append(paramContext.getString(R.l.gIF, new Object[] { "" }));
         if (paramString3 == null) {}
         for (;;)
         {
@@ -264,7 +271,7 @@ public final class h
     paramString1 = new StringBuilder();
     if (paramInt == 1)
     {
-      i = R.l.eFK;
+      i = R.l.gIF;
       paramString2 = paramString1.append(paramContext.getString(i));
       if (paramString3 != null) {
         break label430;
@@ -276,7 +283,7 @@ public final class h
       if (paramInt != 1) {
         break label436;
       }
-      paramInt = R.l.eFK;
+      paramInt = R.l.gIF;
       label380:
       paramContext = paramString1.append(paramContext.getString(paramInt, new Object[] { str2 }));
       if (paramString3 != null) {
@@ -288,13 +295,13 @@ public final class h
       paramContext = str1;
       AppMethodBeat.o(20077);
       return paramContext;
-      i = R.l.eFP;
+      i = R.l.gIK;
       break;
       label430:
       paramString1 = paramString3;
       break label350;
       label436:
-      paramInt = R.l.eFP;
+      paramInt = R.l.gIK;
       break label380;
       label443:
       str1 = paramString3;
@@ -306,182 +313,284 @@ public final class h
     AppMethodBeat.i(20092);
     if (paramBoolean)
     {
-      String str = com.tencent.mm.cl.b.htF().buu(paramString);
+      EmojiHelper.iUM();
+      String str = EmojiHelper.buv(paramString);
       paramString = str;
       if (paramInt3 > 1) {
-        paramString = paramContext.getResources().getQuantityString(R.j.emn, paramInt3, new Object[] { Integer.valueOf(paramInt3) }) + str;
+        paramString = paramContext.getResources().getQuantityString(R.j.gpq, paramInt3, new Object[] { Integer.valueOf(paramInt3) }) + str;
       }
       AppMethodBeat.o(20092);
       return paramString;
     }
-    paramContext = paramContext.getResources().getQuantityString(R.j.emo, paramInt1, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    paramContext = paramContext.getResources().getQuantityString(R.j.gpr, paramInt1, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(20092);
     return paramContext;
   }
   
-  public static String a(Context paramContext, String paramString1, String paramString2, int paramInt)
+  /* Error */
+  public static String a(Context paramContext, String paramString1, String paramString2, int paramInt, cc paramcc)
   {
-    AppMethodBeat.i(20071);
-    paramContext = a(0, paramString2, paramString1, paramInt, paramContext);
-    paramContext = com.tencent.mm.pluginsdk.ui.span.l.brD(com.tencent.mm.cl.b.htF().buu(paramContext));
-    AppMethodBeat.o(20071);
-    return paramContext;
-  }
-  
-  public static String a(Context paramContext, String paramString1, String paramString2, int paramInt, ca paramca)
-  {
-    AppMethodBeat.i(20073);
-    if (TextUtils.isEmpty(paramString2)) {
-      paramca = null;
-    }
-    for (;;)
-    {
-      paramString1 = paramca;
-      if (Util.isNullOrNil(paramca))
-      {
-        if (!com.tencent.mm.n.g.Lj(paramString2)) {
-          break;
-        }
-        paramString1 = paramContext.getString(R.l.ewS);
-      }
-      paramContext = com.tencent.mm.cl.b.htF().buu(paramString1);
-      AppMethodBeat.o(20073);
-      return paramContext;
-      for (;;)
-      {
-        for (;;)
-        {
-          try
-          {
-            if (!b(paramString2, paramca)) {
-              continue;
-            }
-            if (paramca == null) {
-              continue;
-            }
-            localObject1 = af.bjx().bF(paramca.field_bizChatId);
-            if (((com.tencent.mm.ao.a.c)localObject1).bjM()) {
-              if (Util.isNullOrNil(((com.tencent.mm.ao.a.c)localObject1).field_chatName)) {
-                localObject1 = MMApplicationContext.getContext().getString(R.l.eRh);
-              }
-            }
-          }
-          catch (Throwable paramca)
-          {
-            boolean bool;
-            as localas;
-            Object localObject2;
-            Object localObject1 = null;
-            continue;
-            localObject1 = null;
-            continue;
-            localObject1 = null;
-            continue;
-          }
-          try
-          {
-            bool = TextUtils.isEmpty((CharSequence)localObject1);
-            paramca = (ca)localObject1;
-            if (!bool) {
-              break;
-            }
-          }
-          catch (Throwable paramca) {}
-        }
-        bh.beI();
-        localas = com.tencent.mm.model.c.bbL().RG(paramString2);
-        if (localas != null) {
-          continue;
-        }
-        paramca = null;
-        break;
-        localObject1 = ((com.tencent.mm.ao.a.c)localObject1).field_chatName;
-        continue;
-        paramca = af.bjz().gm(paramca.field_bizChatUserId);
-        if (paramca == null) {
-          continue;
-        }
-        localObject1 = paramca.field_userName;
-      }
-      localObject2 = localObject1;
-      if (paramInt == 318767153)
-      {
-        localObject2 = localObject1;
-        if (!TextUtils.isEmpty(paramString1))
-        {
-          localObject2 = ((com.tencent.mm.plugin.biz.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.biz.a.a.class)).aH(paramString1, paramString2);
-          paramca = (ca)localObject2;
-          if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-            continue;
-          }
-        }
-      }
-      if (ab.QS(paramString2))
-      {
-        paramca = localas.ayr();
-      }
-      else
-      {
-        if (as.PY(paramString2))
-        {
-          paramInt = R.l.etp;
-          localObject1 = MMApplicationContext.getContext();
-          if (localas != null) {
-            if (RegionCodeDecoder.bxn(localas.getCountryCode()))
-            {
-              paramString1 = localas.getCity();
-              if (Util.isNullOrNil(paramString1)) {}
-            }
-          }
-          for (;;)
-          {
-            paramca = paramContext.getString(paramInt, new Object[] { paramString1 }).trim();
-            break;
-            paramca = aa.PL(localas.getProvince());
-            paramString1 = paramca;
-            if (Util.isNullOrNil(paramca))
-            {
-              RegionCodeDecoder.hAC();
-              paramString1 = RegionCodeDecoder.getLocName(localas.getCountryCode());
-              continue;
-              paramca = aa.PL(localas.getProvince());
-              paramString1 = paramca;
-              if (Util.isNullOrNil(paramca)) {
-                paramString1 = ((Context)localObject1).getString(R.l.etv);
-              }
-            }
-          }
-        }
-        if ((com.tencent.mm.n.g.Lj(paramString2)) && (Util.isNullOrNil(localas.field_nickname)) && (Util.isNullOrNil(localas.field_conRemark)))
-        {
-          bh.beI();
-          paramString1 = com.tencent.mm.model.c.bbV().PJ(paramString2);
-          paramca = (ca)localObject2;
-          if (!Util.isNullOrNil(paramString1)) {
-            paramca = paramString1;
-          }
-        }
-        else
-        {
-          paramca = (ca)localObject2;
-          if (localas.ays() != null)
-          {
-            paramca = (ca)localObject2;
-            if (localas.ays().length() > 0) {
-              paramca = localas.ays();
-            }
-          }
-        }
-      }
-    }
-    paramContext = paramContext.getString(R.l.intro_title);
-    AppMethodBeat.o(20073);
-    return paramContext;
+    // Byte code:
+    //   0: sipush 20073
+    //   3: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_2
+    //   7: invokestatic 253	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   10: ifeq +49 -> 59
+    //   13: aconst_null
+    //   14: astore 4
+    //   16: aload 4
+    //   18: astore_1
+    //   19: aload 4
+    //   21: invokestatic 256	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   24: ifeq +18 -> 42
+    //   27: aload_2
+    //   28: invokestatic 261	com/tencent/mm/k/h:DQ	(Ljava/lang/String;)Z
+    //   31: ifeq +472 -> 503
+    //   34: aload_0
+    //   35: getstatic 264	com/tencent/mm/R$l:gzv	I
+    //   38: invokevirtual 211	android/content/Context:getString	(I)Ljava/lang/String;
+    //   41: astore_1
+    //   42: invokestatic 221	com/tencent/mm/smiley/EmojiHelper:iUM	()Lcom/tencent/mm/smiley/EmojiHelper;
+    //   45: pop
+    //   46: aload_1
+    //   47: invokestatic 224	com/tencent/mm/smiley/EmojiHelper:buv	(Ljava/lang/String;)Ljava/lang/String;
+    //   50: astore_0
+    //   51: sipush 20073
+    //   54: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   57: aload_0
+    //   58: areturn
+    //   59: aload_2
+    //   60: aload 4
+    //   62: invokestatic 268	com/tencent/mm/booter/notification/a/h:b	(Ljava/lang/String;Lcom/tencent/mm/storage/cc;)Z
+    //   65: ifeq +473 -> 538
+    //   68: aload 4
+    //   70: ifnull +462 -> 532
+    //   73: invokestatic 274	com/tencent/mm/an/af:bHh	()Lcom/tencent/mm/an/a/d;
+    //   76: aload 4
+    //   78: getfield 280	com/tencent/mm/autogen/b/fi:field_bizChatId	J
+    //   81: invokevirtual 286	com/tencent/mm/an/a/d:dW	(J)Lcom/tencent/mm/an/a/c;
+    //   84: astore 6
+    //   86: aload 6
+    //   88: ifnull +444 -> 532
+    //   91: aload 6
+    //   93: invokevirtual 291	com/tencent/mm/an/a/c:bHx	()Z
+    //   96: ifeq +77 -> 173
+    //   99: aload 6
+    //   101: getfield 294	com/tencent/mm/an/a/c:field_chatName	Ljava/lang/String;
+    //   104: invokestatic 256	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   107: ifeq +56 -> 163
+    //   110: invokestatic 135	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+    //   113: getstatic 297	com/tencent/mm/R$l:gTN	I
+    //   116: invokevirtual 211	android/content/Context:getString	(I)Ljava/lang/String;
+    //   119: astore 6
+    //   121: aload 6
+    //   123: invokestatic 253	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   126: istore 5
+    //   128: aload 6
+    //   130: astore 4
+    //   132: iload 5
+    //   134: ifeq -118 -> 16
+    //   137: invokestatic 303	com/tencent/mm/model/bh:bCz	()Lcom/tencent/mm/model/c;
+    //   140: pop
+    //   141: invokestatic 309	com/tencent/mm/model/c:bzA	()Lcom/tencent/mm/storage/bx;
+    //   144: aload_2
+    //   145: invokeinterface 315 2 0
+    //   150: astore 8
+    //   152: aload 8
+    //   154: ifnonnull +47 -> 201
+    //   157: aconst_null
+    //   158: astore 4
+    //   160: goto -144 -> 16
+    //   163: aload 6
+    //   165: getfield 294	com/tencent/mm/an/a/c:field_chatName	Ljava/lang/String;
+    //   168: astore 6
+    //   170: goto -49 -> 121
+    //   173: invokestatic 319	com/tencent/mm/an/af:bHj	()Lcom/tencent/mm/an/a/l;
+    //   176: aload 4
+    //   178: getfield 322	com/tencent/mm/autogen/b/fi:field_bizChatUserId	Ljava/lang/String;
+    //   181: invokevirtual 328	com/tencent/mm/an/a/l:hM	(Ljava/lang/String;)Lcom/tencent/mm/an/a/k;
+    //   184: astore 4
+    //   186: aload 4
+    //   188: ifnull +344 -> 532
+    //   191: aload 4
+    //   193: getfield 333	com/tencent/mm/an/a/k:field_userName	Ljava/lang/String;
+    //   196: astore 6
+    //   198: goto -77 -> 121
+    //   201: aload 6
+    //   203: astore 7
+    //   205: iload_3
+    //   206: ldc_w 334
+    //   209: if_icmpne +44 -> 253
+    //   212: aload 6
+    //   214: astore 7
+    //   216: aload_1
+    //   217: invokestatic 253	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   220: ifne +33 -> 253
+    //   223: ldc_w 336
+    //   226: invokestatic 342	com/tencent/mm/kernel/h:ax	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
+    //   229: checkcast 336	com/tencent/mm/plugin/biz/a/a
+    //   232: aload_1
+    //   233: aload_2
+    //   234: invokeinterface 345 3 0
+    //   239: astore 7
+    //   241: aload 7
+    //   243: astore 4
+    //   245: aload 7
+    //   247: invokestatic 253	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   250: ifeq -234 -> 16
+    //   253: aload_2
+    //   254: invokestatic 348	com/tencent/mm/storage/au:bww	(Ljava/lang/String;)Z
+    //   257: ifeq +13 -> 270
+    //   260: aload 8
+    //   262: invokevirtual 351	com/tencent/mm/storage/au:aSU	()Ljava/lang/String;
+    //   265: astore 4
+    //   267: goto -251 -> 16
+    //   270: aload_2
+    //   271: invokestatic 354	com/tencent/mm/storage/au:bwS	(Ljava/lang/String;)Z
+    //   274: ifeq +132 -> 406
+    //   277: getstatic 357	com/tencent/mm/R$l:gvM	I
+    //   280: istore_3
+    //   281: invokestatic 135	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+    //   284: astore 6
+    //   286: aload 8
+    //   288: ifnull +106 -> 394
+    //   291: aload 8
+    //   293: invokevirtual 360	com/tencent/mm/storage/au:getCountryCode	()Ljava/lang/String;
+    //   296: invokestatic 365	com/tencent/mm/storage/RegionCodeDecoder:byG	(Ljava/lang/String;)Z
+    //   299: ifeq +74 -> 373
+    //   302: aload 8
+    //   304: invokevirtual 368	com/tencent/mm/storage/au:getCity	()Ljava/lang/String;
+    //   307: astore_1
+    //   308: aload_1
+    //   309: invokestatic 256	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   312: ifne +24 -> 336
+    //   315: aload_0
+    //   316: iload_3
+    //   317: iconst_1
+    //   318: anewarray 4	java/lang/Object
+    //   321: dup
+    //   322: iconst_0
+    //   323: aload_1
+    //   324: aastore
+    //   325: invokevirtual 209	android/content/Context:getString	(I[Ljava/lang/Object;)Ljava/lang/String;
+    //   328: invokevirtual 371	java/lang/String:trim	()Ljava/lang/String;
+    //   331: astore 4
+    //   333: goto -317 -> 16
+    //   336: aload 8
+    //   338: invokevirtual 374	com/tencent/mm/storage/au:getProvince	()Ljava/lang/String;
+    //   341: invokestatic 377	com/tencent/mm/model/aa:IF	(Ljava/lang/String;)Ljava/lang/String;
+    //   344: astore 4
+    //   346: aload 4
+    //   348: astore_1
+    //   349: aload 4
+    //   351: invokestatic 256	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   354: ifeq -39 -> 315
+    //   357: invokestatic 381	com/tencent/mm/storage/RegionCodeDecoder:jcF	()Lcom/tencent/mm/storage/RegionCodeDecoder;
+    //   360: pop
+    //   361: aload 8
+    //   363: invokevirtual 360	com/tencent/mm/storage/au:getCountryCode	()Ljava/lang/String;
+    //   366: invokestatic 384	com/tencent/mm/storage/RegionCodeDecoder:getLocName	(Ljava/lang/String;)Ljava/lang/String;
+    //   369: astore_1
+    //   370: goto -55 -> 315
+    //   373: aload 8
+    //   375: invokevirtual 374	com/tencent/mm/storage/au:getProvince	()Ljava/lang/String;
+    //   378: invokestatic 377	com/tencent/mm/model/aa:IF	(Ljava/lang/String;)Ljava/lang/String;
+    //   381: astore 4
+    //   383: aload 4
+    //   385: astore_1
+    //   386: aload 4
+    //   388: invokestatic 256	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   391: ifeq -76 -> 315
+    //   394: aload 6
+    //   396: getstatic 387	com/tencent/mm/R$l:gvS	I
+    //   399: invokevirtual 211	android/content/Context:getString	(I)Ljava/lang/String;
+    //   402: astore_1
+    //   403: goto -88 -> 315
+    //   406: aload_2
+    //   407: invokestatic 261	com/tencent/mm/k/h:DQ	(Ljava/lang/String;)Z
+    //   410: ifeq +56 -> 466
+    //   413: aload 8
+    //   415: getfield 392	com/tencent/mm/autogen/b/az:field_nickname	Ljava/lang/String;
+    //   418: invokestatic 256	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   421: ifeq +45 -> 466
+    //   424: aload 8
+    //   426: getfield 395	com/tencent/mm/autogen/b/az:field_conRemark	Ljava/lang/String;
+    //   429: invokestatic 256	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   432: ifeq +34 -> 466
+    //   435: invokestatic 303	com/tencent/mm/model/bh:bCz	()Lcom/tencent/mm/model/c;
+    //   438: pop
+    //   439: invokestatic 399	com/tencent/mm/model/c:bzK	()Lcom/tencent/mm/model/ar;
+    //   442: aload_2
+    //   443: invokeinterface 402 2 0
+    //   448: astore_1
+    //   449: aload 7
+    //   451: astore 4
+    //   453: aload_1
+    //   454: invokestatic 256	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   457: ifne -441 -> 16
+    //   460: aload_1
+    //   461: astore 4
+    //   463: goto -447 -> 16
+    //   466: aload 7
+    //   468: astore 4
+    //   470: aload 8
+    //   472: invokevirtual 405	com/tencent/mm/storage/au:aSV	()Ljava/lang/String;
+    //   475: ifnull -459 -> 16
+    //   478: aload 7
+    //   480: astore 4
+    //   482: aload 8
+    //   484: invokevirtual 405	com/tencent/mm/storage/au:aSV	()Ljava/lang/String;
+    //   487: invokevirtual 84	java/lang/String:length	()I
+    //   490: ifle -474 -> 16
+    //   493: aload 8
+    //   495: invokevirtual 405	com/tencent/mm/storage/au:aSV	()Ljava/lang/String;
+    //   498: astore 4
+    //   500: goto -484 -> 16
+    //   503: aload_0
+    //   504: getstatic 408	com/tencent/mm/R$l:intro_title	I
+    //   507: invokevirtual 211	android/content/Context:getString	(I)Ljava/lang/String;
+    //   510: astore_0
+    //   511: sipush 20073
+    //   514: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   517: aload_0
+    //   518: areturn
+    //   519: astore 4
+    //   521: aconst_null
+    //   522: astore 6
+    //   524: goto -387 -> 137
+    //   527: astore 4
+    //   529: goto -392 -> 137
+    //   532: aconst_null
+    //   533: astore 6
+    //   535: goto -414 -> 121
+    //   538: aconst_null
+    //   539: astore 6
+    //   541: goto -404 -> 137
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	544	0	paramContext	Context
+    //   0	544	1	paramString1	String
+    //   0	544	2	paramString2	String
+    //   0	544	3	paramInt	int
+    //   0	544	4	paramcc	cc
+    //   126	7	5	bool	boolean
+    //   84	456	6	localObject1	Object
+    //   203	276	7	localObject2	Object
+    //   150	344	8	localau	au
+    // Exception table:
+    //   from	to	target	type
+    //   59	68	519	finally
+    //   73	86	519	finally
+    //   91	121	519	finally
+    //   163	170	519	finally
+    //   173	186	519	finally
+    //   191	198	519	finally
+    //   121	128	527	finally
   }
   
   private static String a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, Context paramContext, PString paramPString1, PString paramPString2, PInt paramPInt, boolean paramBoolean1, boolean paramBoolean2, String paramString4, int paramInt3)
   {
-    AppMethodBeat.i(227604);
+    AppMethodBeat.i(238939);
     if (paramContext != null)
     {
       bool = true;
@@ -494,33 +603,38 @@ public final class h
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue("username is null", bool);
-      if ((paramBoolean1) || (!JZ(paramString2))) {
+      if ((paramBoolean1) || (!CE(paramString2))) {
         break label85;
       }
       paramString1 = paramContext.getString(R.l.settings_plugins_disable);
-      AppMethodBeat.o(227604);
+      AppMethodBeat.o(238939);
       return paramString1;
       bool = false;
       break;
     }
     label85:
-    if (ab.Qx(paramString2))
+    if (au.bwb(paramString2))
     {
       if (paramBoolean1)
       {
-        AppMethodBeat.o(227604);
+        AppMethodBeat.o(238939);
         return "";
       }
-      paramString1 = cl(paramContext);
-      AppMethodBeat.o(227604);
+      paramString1 = cX(paramContext);
+      AppMethodBeat.o(238939);
       return paramString1;
     }
     if ((paramString3 != null) && (paramBoolean1)) {
-      paramString3 = JX(paramString3);
+      paramString3 = CC(paramString3);
     }
-    label5634:
-    label6534:
-    label11145:
+    label1186:
+    label1705:
+    label2985:
+    label3383:
+    label4670:
+    label4799:
+    label6080:
+    label7488:
     for (int k = 1;; k = 0)
     {
       paramPString1.value = paramString3;
@@ -528,23 +642,24 @@ public final class h
       String str1;
       String str2;
       Object localObject3;
-      if ((paramInt1 == 0) && ((ab.Lj(paramString2)) || (ab.PQ(paramString2))))
+      if ((paramInt1 == 0) && ((au.bwE(paramString2)) || (au.bwF(paramString2))))
       {
-        i = bq.RI(paramString3);
+        i = br.JG(paramString3);
         if (i > 0)
         {
           str1 = paramString3.substring(0, i).trim();
-          str2 = aa.aL(str1, paramString2);
+          str2 = aa.aV(str1, paramString2);
           localObject3 = (paramString3 + " ").substring(i + 1);
         }
       }
-      label3980:
-      label12044:
+      label5057:
+      label10051:
+      label12868:
       for (;;)
       {
         int j = 0;
         Object localObject1;
-        if ((ab.QL(paramString2)) || (ab.QU(paramString2)))
+        if ((au.bwp(paramString2)) || (au.bwy(paramString2)) || (au.bwD(paramString2)))
         {
           i = paramString3.indexOf(":");
           localObject1 = paramString3;
@@ -556,14 +671,13 @@ public final class h
           j = 0;
           paramString3 = (String)localObject1;
         }
-        label5263:
-        label7831:
-        label8218:
-        label9626:
+        label1222:
+        label4432:
+        label10961:
         for (;;)
         {
-          label954:
-          label963:
+          label986:
+          label995:
           int m;
           switch (paramInt2)
           {
@@ -595,9 +709,7 @@ public final class h
           case 35: 
           case 42: 
           case 66: 
-          case 48: 
-            label1143:
-            label1662:
+          case 67: 
             do
             {
               paramString3 = "";
@@ -605,40 +717,44 @@ public final class h
               i = 0;
               for (;;)
               {
-                if (!ab.Qs(paramString2)) {
-                  break label11427;
+                if (!au.bvW(paramString2)) {
+                  break label12240;
                 }
                 if (1 != paramInt1) {
-                  break label11145;
+                  break label11958;
                 }
                 if (Util.isNullOrNil(paramString3)) {
-                  break label11096;
+                  break label11909;
                 }
                 paramPString1.value = paramString3;
-                AppMethodBeat.o(227604);
+                AppMethodBeat.o(238939);
                 return paramString3;
                 i = j;
-                if (ab.QW(paramString2)) {
-                  break label12114;
+                if (au.bwC(paramString2)) {
+                  break label12941;
                 }
-                bh.beI();
-                localObject1 = com.tencent.mm.model.c.bbR().bwx(paramString2);
-                if ((localObject1 == null) || (!((az)localObject1).rp(2097152)))
+                i = j;
+                if (au.bwQ(paramString2)) {
+                  break label12941;
+                }
+                bh.bCz();
+                localObject1 = com.tencent.mm.model.c.bzG().bxM(paramString2);
+                if ((localObject1 == null) || (!((bb)localObject1).rx(2097152)))
                 {
                   i = j;
                   if (!paramBoolean2) {
-                    break label12114;
+                    break label12941;
                   }
                 }
                 j = 1;
                 i = j;
                 if (paramString3 == null) {
-                  break label12114;
+                  break label12941;
                 }
                 m = paramString3.indexOf(":");
                 i = j;
                 if (m == -1) {
-                  break label12114;
+                  break label12941;
                 }
                 paramPString2.value = paramString3.substring(0, m);
                 paramString3 = paramString3.substring(m + 1);
@@ -649,7 +765,7 @@ public final class h
                 {
                   paramString1 = str1 + ": ";
                   if (str1.length() <= 0) {
-                    break label1179;
+                    break label1222;
                   }
                 }
                 for (paramString3 = "%s: ";; paramString3 = "")
@@ -660,15 +776,15 @@ public final class h
                   paramString3 = (String)localObject3;
                   break;
                   paramString1 = "";
-                  break label1143;
+                  break label1186;
                 }
-                localObject3 = be.bwQ(paramString3);
-                localObject1 = ((be)localObject3).bqK() + ": ";
+                localObject3 = bg.byj(paramString3);
+                localObject1 = ((bg)localObject3).bOq() + ": ";
                 if ((paramString1 != null) && (paramString1.length() == 32)) {}
                 for (paramString3 = paramString1;; paramString3 = paramContext.getString(R.l.app_emoji))
                 {
                   paramPString1.value = "";
-                  paramPString2.value = ((be)localObject3).bqK();
+                  paramPString2.value = ((bg)localObject3).bOq();
                   localObject3 = null;
                   i = 0;
                   paramString1 = (String)localObject1;
@@ -685,7 +801,7 @@ public final class h
                 localObject1 = null;
                 i = 0;
                 continue;
-                if ((as.bvH(paramString2)) || (as.bvJ(paramString2)) || (ab.Qr(paramString2)) || (ab.Qt(paramString2)))
+                if ((au.bwL(paramString2)) || (au.bwN(paramString2)) || (au.bvV(paramString2)) || (au.bvX(paramString2)))
                 {
                   paramString1 = a(paramContext, paramInt1, paramString2, paramString3, paramContext.getString(R.l.app_voice), paramPString1, paramPString2);
                   paramString3 = "";
@@ -701,15 +817,15 @@ public final class h
                     if (paramString3.length() > 0)
                     {
                       paramString1 = paramString3;
-                      if (!ab.Qs(paramString2))
+                      if (!au.bvW(paramString2))
                       {
-                        if (!ab.Lj(paramString2)) {
-                          break label1496;
+                        if (!au.bwE(paramString2)) {
+                          break label1539;
                         }
-                        paramString3 = new p(paramString3);
-                        paramString1 = paramString3.bqK() + ": ";
+                        paramString3 = new com.tencent.mm.modelvoice.p(paramString3);
+                        paramString1 = paramString3.bOq() + ": ";
                         paramPString1.value = "%s:";
-                        paramPString2.value = paramString3.bqK();
+                        paramPString2.value = paramString3.bOq();
                       }
                     }
                   }
@@ -721,7 +837,7 @@ public final class h
                     break;
                     paramString1 = "";
                   }
-                  if ((as.bvH(paramString2)) || (as.bvJ(paramString2)) || (ab.Qr(paramString2)) || (ab.Qt(paramString2)))
+                  if ((au.bwL(paramString2)) || (au.bwN(paramString2)) || (au.bvV(paramString2)) || (au.bvX(paramString2)))
                   {
                     paramString1 = a(paramContext, paramInt1, paramString2, paramString3, paramContext.getString(R.l.app_video), paramPString1, paramPString2);
                     paramString3 = "";
@@ -737,15 +853,15 @@ public final class h
                       if (paramString3.length() > 0)
                       {
                         paramString1 = paramString3;
-                        if (!ab.Qs(paramString2))
+                        if (!au.bvW(paramString2))
                         {
-                          if (!ab.Lj(paramString2)) {
-                            break label1662;
+                          if (!au.bwE(paramString2)) {
+                            break label1705;
                           }
-                          paramString3 = new u(paramString3);
-                          paramString1 = paramString3.bqK() + ": ";
+                          paramString3 = new x(paramString3);
+                          paramString1 = paramString3.bOq() + ": ";
                           paramPString1.value = "%s:";
-                          paramPString2.value = paramString3.bqK();
+                          paramPString2.value = paramString3.bOq();
                         }
                       }
                     }
@@ -767,7 +883,7 @@ public final class h
                     i = 0;
                     paramString1 = "";
                     continue;
-                    if (paramString3.equals(ca.VGy))
+                    if (paramString3.equals(cc.adkp))
                     {
                       paramString3 = paramContext.getString(R.l.app_voip);
                       localObject1 = null;
@@ -777,8 +893,8 @@ public final class h
                     else
                     {
                       paramString1 = paramString3;
-                      if (!paramString3.equals(ca.VGx)) {
-                        break label954;
+                      if (!paramString3.equals(cc.adko)) {
+                        break label986;
                       }
                       paramString3 = paramContext.getString(R.l.app_voip_voice);
                       localObject1 = null;
@@ -797,33 +913,37 @@ public final class h
                       continue;
                       paramString1 = paramString3;
                       if (paramString3 == null) {
-                        break label954;
+                        break label986;
                       }
                       paramString1 = paramString3;
                       if (paramString3.length() <= 0) {
-                        break label954;
+                        break label986;
                       }
-                      localObject1 = ca.d.bxc(paramString3);
+                      localObject1 = cc.f.byv(paramString3);
                       paramString1 = paramString3;
-                      if (((ca.d)localObject1).hAo() != null)
+                      if (localObject1 != null)
                       {
                         paramString1 = paramString3;
-                        if (((ca.d)localObject1).hAo().length() <= 0) {}
+                        if (((cc.f)localObject1).aJO() != null)
+                        {
+                          paramString1 = paramString3;
+                          if (((cc.f)localObject1).aJO().length() <= 0) {}
+                        }
                       }
-                      switch (((ca.d)localObject1).getScene())
+                      switch (((cc.f)localObject1).getScene())
                       {
                       case 19: 
                       case 20: 
                       case 21: 
                       default: 
-                        paramString1 = paramContext.getString(R.l.eFS, new Object[] { ((ca.d)localObject1).getDisplayName() });
+                        paramString1 = paramContext.getString(R.l.gIN, new Object[] { ((cc.f)localObject1).getDisplayName() });
                         paramPString1.value = paramString1;
                         paramString3 = "";
                         localObject1 = null;
                         i = 0;
                         break;
                       case 18: 
-                        paramString1 = paramContext.getString(R.l.eFN, new Object[] { ((ca.d)localObject1).getDisplayName() });
+                        paramString1 = paramContext.getString(R.l.gII, new Object[] { ((cc.f)localObject1).getDisplayName() });
                         paramString3 = "";
                         localObject1 = null;
                         i = 0;
@@ -835,13 +955,13 @@ public final class h
                       case 27: 
                       case 28: 
                       case 29: 
-                        paramString1 = paramContext.getString(R.l.eFQ, new Object[] { ((ca.d)localObject1).getDisplayName() });
+                        paramString1 = paramContext.getString(R.l.gIL, new Object[] { ((cc.f)localObject1).getDisplayName() });
                         paramString3 = "";
                         localObject1 = null;
                         i = 0;
                         break;
                       case 25: 
-                        paramString1 = paramContext.getString(R.l.eFs, new Object[] { ((ca.d)localObject1).getDisplayName() });
+                        paramString1 = paramContext.getString(R.l.gIm, new Object[] { ((cc.f)localObject1).getDisplayName() });
                         paramPString1.value = paramString1;
                         paramString3 = "";
                         localObject1 = null;
@@ -849,21 +969,25 @@ public final class h
                         continue;
                         paramString1 = paramString3;
                         if (paramString3 == null) {
-                          break label954;
+                          break label986;
                         }
                         paramString1 = paramString3;
                         if (paramString3.length() <= 0) {
-                          break label954;
+                          break label986;
                         }
-                        localObject1 = ca.a.bwZ(paramString3);
+                        localObject1 = cc.a.bys(paramString3);
                         paramString1 = paramString3;
-                        if (((ca.a)localObject1).hAo() != null)
+                        if (localObject1 != null)
                         {
                           paramString1 = paramString3;
-                          if (((ca.a)localObject1).hAo().length() > 0)
+                          if (((cc.a)localObject1).aJO() != null)
                           {
-                            paramString1 = paramContext.getString(R.l.eFD, new Object[] { ((ca.a)localObject1).getDisplayName() });
-                            paramPString1.value = paramString1;
+                            paramString1 = paramString3;
+                            if (((cc.a)localObject1).aJO().length() > 0)
+                            {
+                              paramString1 = paramContext.getString(R.l.gIy, new Object[] { ((cc.a)localObject1).getDisplayName() });
+                              paramPString1.value = paramString1;
+                            }
                           }
                         }
                         paramString3 = "";
@@ -872,11 +996,11 @@ public final class h
                         continue;
                         paramString1 = paramString3;
                         if (Util.nullAsNil(paramString3).length() <= 0) {
-                          break label954;
+                          break label986;
                         }
-                        bh.beI();
-                        paramString1 = com.tencent.mm.model.c.bbO().aOS(paramString3);
-                        paramString1 = paramContext.getString(R.l.eFH, new Object[] { paramString1.getSender(), paramString1.getTitle() });
+                        bh.bCz();
+                        paramString1 = com.tencent.mm.model.c.bzD().aLS(paramString3);
+                        paramString1 = paramContext.getString(R.l.gIC, new Object[] { paramString1.getSender(), paramString1.getTitle() });
                         paramPString1.value = paramString1;
                         paramString3 = "";
                         localObject1 = null;
@@ -884,11 +1008,11 @@ public final class h
                         continue;
                         paramString1 = paramString3;
                         if (Util.nullAsNil(paramString3).length() <= 0) {
-                          break label954;
+                          break label986;
                         }
-                        if (ab.Lj(paramString2))
+                        if (au.bwE(paramString2))
                         {
-                          localObject1 = bq.RL(paramString3);
+                          localObject1 = br.JJ(paramString3);
                           paramString1 = (String)localObject1;
                           if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
                         }
@@ -896,18 +1020,18 @@ public final class h
                         {
                           paramString1 = paramString2;
                         }
-                        bh.beI();
-                        localObject3 = com.tencent.mm.model.c.bbO().aOU(paramString3);
-                        bh.beI();
-                        localObject1 = com.tencent.mm.model.c.bbL().RG(paramString1).ays();
+                        bh.bCz();
+                        localObject3 = com.tencent.mm.model.c.bzD().aLU(paramString3);
+                        bh.bCz();
+                        localObject1 = com.tencent.mm.model.c.bzA().JE(paramString1).aSV();
                         paramString3 = (String)localObject1;
-                        if (ab.Lj((String)localObject1)) {
-                          paramString3 = v.al(v.Pv((String)localObject1));
+                        if (au.bwE((String)localObject1)) {
+                          paramString3 = v.e(v.Io((String)localObject1), (String)localObject1);
                         }
                         if (paramInt1 == 1)
                         {
-                          localObject1 = paramContext.getString(R.l.eFt, new Object[] { paramString3, ((ca.a)localObject3).getDisplayName() });
-                          paramPString1.value = paramContext.getString(R.l.eFt, new Object[] { "%s", ((ca.a)localObject3).getDisplayName() });
+                          localObject1 = paramContext.getString(R.l.gIn, new Object[] { paramString3, ((cc.a)localObject3).getDisplayName() });
+                          paramPString1.value = paramContext.getString(R.l.gIn, new Object[] { "%s", ((cc.a)localObject3).getDisplayName() });
                           paramPString2.value = paramString1;
                           paramString3 = "";
                           localObject3 = null;
@@ -917,8 +1041,8 @@ public final class h
                         }
                         else
                         {
-                          localObject1 = paramContext.getString(R.l.eFu, new Object[] { paramString3, ((ca.a)localObject3).getDisplayName() });
-                          paramPString1.value = paramContext.getString(R.l.eFu, new Object[] { "%s", ((ca.a)localObject3).getDisplayName() });
+                          localObject1 = paramContext.getString(R.l.gIo, new Object[] { paramString3, ((cc.a)localObject3).getDisplayName() });
+                          paramPString1.value = paramContext.getString(R.l.gIo, new Object[] { "%s", ((cc.a)localObject3).getDisplayName() });
                           paramPString2.value = paramString1;
                           paramString3 = "";
                           localObject3 = null;
@@ -934,367 +1058,423 @@ public final class h
               }
               paramString1 = paramString3;
             } while (Util.nullAsNil(paramString3).length() <= 0);
-            label1179:
-            label1496:
-            if (ab.Lj(paramString2))
+            if (au.bwD(paramString2))
             {
-              i = bq.RI(paramString3);
-              if (i != -1)
+              bh.bCz();
+              paramString1 = com.tencent.mm.model.c.bzG().bxM(paramString2);
+              paramPString2.value = "";
+              if (paramString1 != null) {}
+              for (paramString1 = paramString1.getDigest();; paramString1 = "")
               {
-                paramString1 = paramString3.substring(0, i).trim();
-                label2528:
-                bq.RM(paramString3);
+                paramPString1.value = paramString1;
+                paramString1 = paramPString1.value;
+                paramString3 = "";
+                localObject1 = null;
+                i = 0;
+                break;
               }
+            }
+            if (au.bwE(paramString2))
+            {
+              paramString1 = br.JJ(paramString3);
+              if (!TextUtils.isEmpty(paramString1)) {
+                break;
+              }
+            }
+            else
+            {
+              paramString1 = paramString2;
             }
             break;
           }
-          label4892:
-          label11427:
+          label5344:
+          label12769:
           for (;;)
           {
+            localObject3 = ((com.tencent.mm.openim.api.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.openim.api.c.class)).RD(paramString3);
+            bh.bCz();
+            localObject1 = com.tencent.mm.model.c.bzA().JE(paramString1).aSV();
+            paramString3 = (String)localObject1;
+            if (au.bwE((String)localObject1)) {
+              paramString3 = v.e(v.Io((String)localObject1), (String)localObject1);
+            }
             if (paramInt1 == 1)
             {
-              paramString1 = paramContext.getString(R.l.location_conversation);
-              paramPString1.value = paramString1;
-              paramString3 = "";
-              localObject1 = null;
-              i = 0;
-              break label963;
-            }
-            localObject1 = paramContext.getString(R.l.location_conversation);
-            paramPString1.value = paramContext.getString(R.l.location_conversation);
-            paramPString2.value = paramString1;
-            paramString3 = "";
-            localObject3 = null;
-            i = 0;
-            paramString1 = (String)localObject1;
-            localObject1 = localObject3;
-            break label963;
-            paramString1 = k.b.OQ(Util.processXml((String)localObject3));
-            if (paramString1.lmv != 0) {
-              if (paramString1.lmv == 1) {
-                paramString1 = paramContext.getString(R.l.eRB);
-              }
-            }
-            for (;;)
-            {
-              paramPString2.value = str1;
-              paramPString1.value = "";
-              paramString3 = paramString1;
-              localObject1 = null;
-              i = 0;
-              paramString1 = "";
-              break;
-              if (paramString1.lmv == 2) {
-                paramString1 = paramContext.getString(R.l.eRD);
-              } else if (paramString1.lmv == 3) {
-                paramString1 = paramContext.getString(R.l.eRC);
-              } else {
-                paramString1 = paramContext.getString(R.l.eRE);
-              }
-            }
-            localObject1 = Util.processXml((String)localObject3);
-            paramString3 = "";
-            paramString1 = "";
-            localObject1 = k.b.OQ((String)localObject1);
-            if (localObject1 != null)
-            {
-              paramPString1.value = (paramContext.getString(R.l.eRH) + Util.nullAsNil(((k.b)localObject1).title));
-              paramString1 = paramPString1.value;
-            }
-            paramPString2.value = str1;
-            localObject1 = null;
-            i = 0;
-            break label963;
-            localObject1 = Util.processXml((String)localObject3);
-            paramString3 = "";
-            paramString1 = "";
-            localObject1 = k.b.OQ((String)localObject1);
-            label2871:
-            int n;
-            label2888:
-            int i1;
-            if (localObject1 != null)
-            {
-              paramString1 = new abn();
-              paramString1.gbr.fJG = ((k.b)localObject1).lnf;
-              EventCenter.instance.publish(paramString1);
-              if (paramInt1 != 1) {
-                break label3035;
-              }
-              m = 1;
-              if ((!ab.Lj(paramString2)) && (!ab.PQ(paramString2))) {
-                break label3041;
-              }
-              n = 1;
-              localObject3 = ((com.tencent.mm.aj.j)((k.b)localObject1).ar(com.tencent.mm.aj.j.class)).llO;
-              i1 = 1;
-              if ((((k.b)localObject1).lnc != 1) && (((k.b)localObject1).lnc != 7)) {
-                break label3047;
-              }
-              i = 1;
-              label2929:
-              int i2 = paramString1.gbs.status;
-              i1 = i2;
-              if (i2 <= 0) {
-                i1 = ((k.b)localObject1).lnc;
-              }
-              switch (i1)
+              i = R.l.gIn;
+              if (localObject3 != null)
               {
-              default: 
-                paramPString1.value = Util.nullAsNil(((k.b)localObject1).title);
+                localObject1 = ((com.tencent.mm.openim.a.e)localObject3).getDisplayName();
+                localObject1 = paramContext.getString(i, new Object[] { paramString3, localObject1 });
+                i = R.l.gIn;
+                if (localObject3 == null) {
+                  break label2818;
+                }
               }
-            }
-            for (;;)
-            {
-              paramString1 = paramPString1.value;
-              paramPString2.value = str1;
-              localObject1 = null;
-              i = 0;
-              break;
-              label3035:
-              m = 0;
-              break label2871;
-              label3041:
-              n = 0;
-              break label2888;
-              label3047:
-              if ((n != 0) && ((str1.equals(localObject3)) || ((m != 0) && (z.bcZ().equals(localObject3)))))
+              for (paramString3 = ((com.tencent.mm.openim.a.e)localObject3).getDisplayName();; paramString3 = "")
               {
+                paramPString1.value = paramContext.getString(i, new Object[] { "%s", paramString3 });
+                paramPString2.value = paramString1;
+                paramString3 = "";
+                localObject3 = null;
                 i = 0;
-                break label2929;
-              }
-              i = i1;
-              if (n != 0) {
-                break label2929;
-              }
-              i = i1;
-              if (!paramString2.equals(localObject3)) {
-                break label2929;
-              }
-              i = 0;
-              break label2929;
-              if (n != 0)
-              {
-                if (paramInt1 == 1) {
-                  paramPString1.value = paramContext.getString(R.l.epb);
-                }
-                for (;;)
-                {
-                  paramPString2.value = str2;
-                  break;
-                  if (z.bcZ().equals(localObject3)) {
-                    paramPString1.value = String.format("%s: %s", new Object[] { str2, paramContext.getString(R.l.epc) });
-                  } else {
-                    paramPString1.value = String.format("%s: %s", new Object[] { str2, paramContext.getString(R.l.eoY) });
-                  }
-                }
-              }
-              if (m != 0)
-              {
-                paramPString1.value = paramContext.getString(R.l.epb);
-              }
-              else
-              {
-                paramPString1.value = paramContext.getString(R.l.epc);
-                continue;
-                if (n != 0)
-                {
-                  if (i != 0) {
-                    if ((paramInt1 == 0) && (!Util.isNullOrNil(str2))) {
-                      paramPString1.value = String.format("%s: %s", new Object[] { str2, paramContext.getString(R.l.eoZ) });
-                    }
-                  }
-                  for (;;)
-                  {
-                    paramPString2.value = str2;
-                    break;
-                    paramPString1.value = paramContext.getString(R.l.eoZ);
-                    continue;
-                    if ((paramInt1 == 0) && (!Util.isNullOrNil(str2))) {
-                      paramPString1.value = String.format("%s: %s", new Object[] { str2, paramContext.getString(R.l.eoV) });
-                    } else {
-                      paramPString1.value = paramContext.getString(R.l.eoV);
-                    }
-                  }
-                }
-                if (i != 0)
-                {
-                  paramPString1.value = paramContext.getString(R.l.eoZ);
-                }
-                else
-                {
-                  paramPString1.value = paramContext.getString(R.l.eoV);
-                  continue;
-                  if (n != 0)
-                  {
-                    if ((paramInt1 == 0) && (!Util.isNullOrNil(str2))) {}
-                    for (paramPString1.value = String.format("%s: %s", new Object[] { str2, paramContext.getString(R.l.epd) });; paramPString1.value = paramContext.getString(R.l.epa))
-                    {
-                      paramPString2.value = str2;
-                      break;
-                    }
-                  }
-                  if (m != 0)
-                  {
-                    paramPString1.value = paramContext.getString(R.l.epa);
-                  }
-                  else
-                  {
-                    paramPString1.value = paramContext.getString(R.l.epd);
-                    continue;
-                    if (n != 0)
-                    {
-                      if (i != 0) {
-                        if ((paramInt1 == 0) && (!Util.isNullOrNil(str2))) {
-                          paramPString1.value = String.format("%s: %s", new Object[] { str2, paramContext.getString(R.l.eoX) });
-                        }
-                      }
-                      for (;;)
-                      {
-                        paramPString2.value = str2;
-                        break;
-                        paramPString1.value = paramContext.getString(R.l.eoX);
-                        continue;
-                        if ((paramInt1 == 0) && (!Util.isNullOrNil(str2))) {
-                          paramPString1.value = String.format("%s: %s", new Object[] { str2, paramContext.getString(R.l.eoW) });
-                        } else {
-                          paramPString1.value = paramContext.getString(R.l.eoW);
-                        }
-                      }
-                    }
-                    if (i != 0)
-                    {
-                      paramPString1.value = paramContext.getString(R.l.eoX);
-                    }
-                    else
-                    {
-                      paramPString1.value = paramContext.getString(R.l.eoW);
-                      continue;
-                      if (n != 0)
-                      {
-                        if ((paramInt1 == 0) && (!Util.isNullOrNil(str2))) {}
-                        for (paramPString1.value = String.format("%s: %s", new Object[] { str2, paramContext.getString(R.l.eoU) });; paramPString1.value = paramContext.getString(R.l.eoU))
-                        {
-                          paramPString2.value = str2;
-                          break;
-                        }
-                      }
-                      if (m != 0)
-                      {
-                        paramPString1.value = paramContext.getString(R.l.epf);
-                      }
-                      else
-                      {
-                        paramPString1.value = paramContext.getString(R.l.epf);
-                        continue;
-                        if (n != 0)
-                        {
-                          if ((paramInt1 == 0) && (!Util.isNullOrNil(str2))) {}
-                          for (paramPString1.value = String.format("%s: %s", new Object[] { str2, paramContext.getString(R.l.epe) });; paramPString1.value = paramContext.getString(R.l.epe))
-                          {
-                            paramPString2.value = str2;
-                            break;
-                          }
-                        }
-                        if (m != 0) {
-                          paramPString1.value = paramContext.getString(R.l.epg);
-                        } else {
-                          paramPString1.value = paramContext.getString(R.l.epg);
-                        }
-                      }
-                    }
-                  }
-                }
+                paramString1 = (String)localObject1;
+                localObject1 = localObject3;
+                break;
+                localObject1 = "";
+                break label2722;
               }
             }
-            paramString1 = Util.processXml((String)localObject3);
-            localObject3 = "";
-            paramString3 = "";
-            paramString1 = k.b.OQ(paramString1);
-            if (paramString1 != null)
+            i = R.l.gIo;
+            if (localObject3 != null)
             {
-              if (paramInt1 != 1) {
-                break label4066;
+              localObject1 = ((com.tencent.mm.openim.a.e)localObject3).getDisplayName();
+              localObject1 = paramContext.getString(i, new Object[] { paramString3, localObject1 });
+              i = R.l.gIo;
+              if (localObject3 == null) {
+                break label2937;
               }
-              i = 1;
-              if (i == 0) {
-                break label4072;
-              }
-              paramPString1.value = ("[" + paramString1.lnE + "]" + paramString1.lnB);
             }
+            label2937:
+            for (paramString3 = ((com.tencent.mm.openim.a.e)localObject3).getDisplayName();; paramString3 = "")
+            {
+              paramPString1.value = paramContext.getString(i, new Object[] { "%s", paramString3 });
+              paramPString2.value = paramString1;
+              paramString3 = "";
+              localObject3 = null;
+              i = 0;
+              paramString1 = (String)localObject1;
+              localObject1 = localObject3;
+              break;
+              localObject1 = "";
+              break label2841;
+            }
+            paramString1 = paramString3;
+            if (Util.nullAsNil(paramString3).length() <= 0) {
+              break;
+            }
+            if (au.bwE(paramString2))
+            {
+              i = br.JG(paramString3);
+              if (i != -1)
+              {
+                paramString1 = paramString3.substring(0, i).trim();
+                br.JK(paramString3);
+              }
+            }
+            label8805:
+            label10725:
             for (;;)
             {
-              paramString3 = paramPString1.value;
-              paramString1 = paramString3;
-              if (ab.QL(paramString2)) {
-                break label12044;
-              }
-              paramString1 = paramString3;
-              if (j != 0) {
-                break label12044;
-              }
-              paramPString2.value = str1;
-              localObject1 = null;
-              i = 0;
-              paramString1 = paramString3;
-              paramString3 = (String)localObject3;
-              break;
-              label4066:
-              i = 0;
-              break label3980;
-              label4072:
-              if (!Util.isNullOrNil(str2)) {
-                paramPString1.value = (Util.nullAsNil(str2) + ": [" + paramString1.lnE + "]" + paramString1.lnA);
-              } else {
-                paramPString1.value = ("[" + paramString1.lnE + "]" + paramString1.lnA);
-              }
-            }
-            localObject1 = Util.processXml((String)localObject3);
-            paramString3 = "";
-            paramString1 = "";
-            localObject1 = k.b.OQ((String)localObject1);
-            label4218:
-            label4347:
-            label4605:
-            String str3;
-            if (localObject1 != null)
-            {
-              paramString1 = (com.tencent.mm.aj.b)((k.b)localObject1).ar(com.tencent.mm.aj.b.class);
               if (paramInt1 == 1)
               {
-                i = 1;
-                if (i == 0) {
-                  break label4275;
+                paramString1 = paramContext.getString(R.l.location_conversation);
+                paramPString1.value = paramString1;
+                paramString3 = "";
+                localObject1 = null;
+                i = 0;
+                break label995;
+              }
+              localObject1 = paramContext.getString(R.l.location_conversation);
+              paramPString1.value = paramContext.getString(R.l.location_conversation);
+              paramPString2.value = paramString1;
+              paramString3 = "";
+              localObject3 = null;
+              i = 0;
+              paramString1 = (String)localObject1;
+              localObject1 = localObject3;
+              break label995;
+              paramString1 = k.b.Hf(Util.processXml((String)localObject3));
+              if (paramString1.nRA != 0) {
+                if (paramString1.nRA == 1) {
+                  paramString1 = paramContext.getString(R.l.gUh);
                 }
               }
-              label4275:
-              for (paramPString1.value = paramContext.getString(R.l.eHU, new Object[] { paramString1.lkP });; paramPString1.value = paramContext.getString(R.l.eHU, new Object[] { paramString1.lkQ }))
+              for (;;)
+              {
+                paramPString2.value = str1;
+                paramPString1.value = "";
+                paramString3 = paramString1;
+                localObject1 = null;
+                i = 0;
+                paramString1 = "";
+                break;
+                if (paramString1.nRA == 2) {
+                  paramString1 = paramContext.getString(R.l.gUj);
+                } else if (paramString1.nRA == 3) {
+                  paramString1 = paramContext.getString(R.l.gUi);
+                } else {
+                  paramString1 = paramContext.getString(R.l.gUk);
+                }
+              }
+              localObject1 = Util.processXml((String)localObject3);
+              paramString3 = "";
+              paramString1 = "";
+              localObject1 = k.b.Hf((String)localObject1);
+              if (localObject1 != null)
+              {
+                paramPString1.value = (paramContext.getString(R.l.gUn) + Util.nullAsNil(((k.b)localObject1).title));
+                paramString1 = paramPString1.value;
+              }
+              paramPString2.value = str1;
+              localObject1 = null;
+              i = 0;
+              break label995;
+              localObject1 = Util.processXml((String)localObject3);
+              paramString3 = "";
+              paramString1 = "";
+              localObject1 = k.b.Hf((String)localObject1);
+              label3325:
+              int n;
+              int i1;
+              if (localObject1 != null)
+              {
+                paramString1 = new adk();
+                paramString1.ihB.hPj = ((k.b)localObject1).nSk;
+                paramString1.publish();
+                if (paramInt1 != 1) {
+                  break label3487;
+                }
+                m = 1;
+                if ((!au.bwE(paramString2)) && (!au.bwF(paramString2))) {
+                  break label3493;
+                }
+                n = 1;
+                localObject3 = ((com.tencent.mm.message.j)((k.b)localObject1).aK(com.tencent.mm.message.j.class)).nQU;
+                i1 = 1;
+                if ((((k.b)localObject1).nSh != 1) && (((k.b)localObject1).nSh != 7)) {
+                  break label3499;
+                }
+                i = 1;
+                int i2 = paramString1.ihC.status;
+                i1 = i2;
+                if (i2 <= 0) {
+                  i1 = ((k.b)localObject1).nSh;
+                }
+                switch (i1)
+                {
+                default: 
+                  paramPString1.value = Util.nullAsNil(((k.b)localObject1).title);
+                }
+              }
+              for (;;)
               {
                 paramString1 = paramPString1.value;
                 paramPString2.value = str1;
                 localObject1 = null;
                 i = 0;
                 break;
+                m = 0;
+                break label3325;
+                n = 0;
+                break label3342;
+                if ((n != 0) && ((str1.equals(localObject3)) || ((m != 0) && (z.bAM().equals(localObject3)))))
+                {
+                  i = 0;
+                  break label3383;
+                }
+                i = i1;
+                if (n != 0) {
+                  break label3383;
+                }
+                i = i1;
+                if (!paramString2.equals(localObject3)) {
+                  break label3383;
+                }
                 i = 0;
-                break label4218;
+                break label3383;
+                if (n != 0)
+                {
+                  if (paramInt1 == 1) {
+                    paramPString1.value = paramContext.getString(R.l.gsc);
+                  }
+                  for (;;)
+                  {
+                    paramPString2.value = str2;
+                    break;
+                    if (z.bAM().equals(localObject3)) {
+                      paramPString1.value = String.format("%s: %s", new Object[] { str2, paramContext.getString(R.l.gsd) });
+                    } else {
+                      paramPString1.value = String.format("%s: %s", new Object[] { str2, paramContext.getString(R.l.grZ) });
+                    }
+                  }
+                }
+                if (m != 0)
+                {
+                  paramPString1.value = paramContext.getString(R.l.gsc);
+                }
+                else
+                {
+                  paramPString1.value = paramContext.getString(R.l.gsd);
+                  continue;
+                  if (n != 0)
+                  {
+                    if (i != 0) {
+                      if ((paramInt1 == 0) && (!Util.isNullOrNil(str2))) {
+                        paramPString1.value = String.format("%s: %s", new Object[] { str2, paramContext.getString(R.l.gsa) });
+                      }
+                    }
+                    for (;;)
+                    {
+                      paramPString2.value = str2;
+                      break;
+                      paramPString1.value = paramContext.getString(R.l.gsa);
+                      continue;
+                      if ((paramInt1 == 0) && (!Util.isNullOrNil(str2))) {
+                        paramPString1.value = String.format("%s: %s", new Object[] { str2, paramContext.getString(R.l.grW) });
+                      } else {
+                        paramPString1.value = paramContext.getString(R.l.grW);
+                      }
+                    }
+                  }
+                  if (i != 0)
+                  {
+                    paramPString1.value = paramContext.getString(R.l.gsa);
+                  }
+                  else
+                  {
+                    paramPString1.value = paramContext.getString(R.l.grW);
+                    continue;
+                    if (n != 0)
+                    {
+                      if ((paramInt1 == 0) && (!Util.isNullOrNil(str2))) {}
+                      for (paramPString1.value = String.format("%s: %s", new Object[] { str2, paramContext.getString(R.l.gse) });; paramPString1.value = paramContext.getString(R.l.gsb))
+                      {
+                        paramPString2.value = str2;
+                        break;
+                      }
+                    }
+                    if (m != 0)
+                    {
+                      paramPString1.value = paramContext.getString(R.l.gsb);
+                    }
+                    else
+                    {
+                      paramPString1.value = paramContext.getString(R.l.gse);
+                      continue;
+                      if (n != 0)
+                      {
+                        if (i != 0) {
+                          if ((paramInt1 == 0) && (!Util.isNullOrNil(str2))) {
+                            paramPString1.value = String.format("%s: %s", new Object[] { str2, paramContext.getString(R.l.grY) });
+                          }
+                        }
+                        for (;;)
+                        {
+                          paramPString2.value = str2;
+                          break;
+                          paramPString1.value = paramContext.getString(R.l.grY);
+                          continue;
+                          if ((paramInt1 == 0) && (!Util.isNullOrNil(str2))) {
+                            paramPString1.value = String.format("%s: %s", new Object[] { str2, paramContext.getString(R.l.grX) });
+                          } else {
+                            paramPString1.value = paramContext.getString(R.l.grX);
+                          }
+                        }
+                      }
+                      if (i != 0)
+                      {
+                        paramPString1.value = paramContext.getString(R.l.grY);
+                      }
+                      else
+                      {
+                        paramPString1.value = paramContext.getString(R.l.grX);
+                        continue;
+                        if (n != 0)
+                        {
+                          if ((paramInt1 == 0) && (!Util.isNullOrNil(str2))) {}
+                          for (paramPString1.value = String.format("%s: %s", new Object[] { str2, paramContext.getString(R.l.grV) });; paramPString1.value = paramContext.getString(R.l.grV))
+                          {
+                            paramPString2.value = str2;
+                            break;
+                          }
+                        }
+                        if (m != 0)
+                        {
+                          paramPString1.value = paramContext.getString(R.l.gsg);
+                        }
+                        else
+                        {
+                          paramPString1.value = paramContext.getString(R.l.gsg);
+                          continue;
+                          if (n != 0)
+                          {
+                            if ((paramInt1 == 0) && (!Util.isNullOrNil(str2))) {}
+                            for (paramPString1.value = String.format("%s: %s", new Object[] { str2, paramContext.getString(R.l.gsf) });; paramPString1.value = paramContext.getString(R.l.gsf))
+                            {
+                              paramPString2.value = str2;
+                              break;
+                            }
+                          }
+                          if (m != 0) {
+                            paramPString1.value = paramContext.getString(R.l.gsh);
+                          } else {
+                            paramPString1.value = paramContext.getString(R.l.gsh);
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              paramString1 = Util.processXml((String)localObject3);
+              localObject3 = "";
+              paramString3 = "";
+              paramString1 = k.b.Hf(paramString1);
+              if (paramString1 != null)
+              {
+                if (paramInt1 != 1) {
+                  break label4518;
+                }
+                i = 1;
+                if (i == 0) {
+                  break label4524;
+                }
+                paramPString1.value = ("[" + paramString1.nSI + "]" + paramString1.nSF);
+              }
+              for (;;)
+              {
+                paramString3 = paramPString1.value;
+                paramString1 = paramString3;
+                if (au.bwp(paramString2)) {
+                  break label12868;
+                }
+                paramString1 = paramString3;
+                if (j != 0) {
+                  break label12868;
+                }
+                paramPString2.value = str1;
+                localObject1 = null;
+                i = 0;
+                paramString1 = paramString3;
+                paramString3 = (String)localObject3;
+                break;
+                i = 0;
+                break label4432;
+                if (!Util.isNullOrNil(str2)) {
+                  paramPString1.value = (Util.nullAsNil(str2) + ": [" + paramString1.nSI + "]" + paramString1.nSE);
+                } else {
+                  paramPString1.value = ("[" + paramString1.nSI + "]" + paramString1.nSE);
+                }
               }
               localObject1 = Util.processXml((String)localObject3);
               paramString3 = "";
               paramString1 = "";
-              localObject1 = k.b.OQ((String)localObject1);
+              localObject1 = k.b.Hf((String)localObject1);
+              label4727:
+              label4988:
+              label5247:
+              Object localObject4;
               if (localObject1 != null)
               {
-                paramString1 = (com.tencent.mm.aj.b)((k.b)localObject1).ar(com.tencent.mm.aj.b.class);
+                paramString1 = (com.tencent.mm.message.b)((k.b)localObject1).aK(com.tencent.mm.message.b.class);
                 if (paramInt1 == 1)
                 {
                   i = 1;
                   if (i == 0) {
-                    break label4419;
+                    break label4727;
                   }
                 }
-                label4419:
-                for (paramPString1.value = ("[" + paramString1.lkN + "]" + ((k.b)localObject1).description);; paramPString1.value = ("[" + paramString1.lkO + "]" + ((k.b)localObject1).description))
+                for (paramPString1.value = paramContext.getString(R.l.gJB, new Object[] { paramString1.nPC });; paramPString1.value = paramContext.getString(R.l.gJB, new Object[] { paramString1.nPD }))
                 {
                   paramString1 = paramPString1.value;
                   paramPString2.value = str1;
@@ -1302,296 +1482,286 @@ public final class h
                   i = 0;
                   break;
                   i = 0;
-                  break label4347;
+                  break label4670;
                 }
-                paramString3 = Util.processXml((String)localObject3);
+                localObject1 = Util.processXml((String)localObject3);
+                paramString3 = "";
                 paramString1 = "";
-                paramString3 = k.b.OQ(paramString3);
-                if (paramString3 != null)
+                localObject1 = k.b.Hf((String)localObject1);
+                if (localObject1 != null)
                 {
-                  paramString1 = (l.a)paramString3.ar(l.a.class);
-                  if (paramString1.state != 1) {
-                    break label4536;
+                  paramString1 = (com.tencent.mm.message.b)((k.b)localObject1).aK(com.tencent.mm.message.b.class);
+                  if (paramInt1 == 1)
+                  {
+                    i = 1;
+                    if (i == 0) {
+                      break label4871;
+                    }
                   }
-                }
-                label4536:
-                for (paramString1 = paramContext.getString(R.l.eBN, new Object[] { paramString1.appName });; paramString1 = paramContext.getString(R.l.eBT, new Object[] { paramString1.appName }))
-                {
-                  paramPString1.value = paramString1;
-                  paramString3 = "";
-                  localObject1 = null;
-                  i = 0;
-                  break;
-                }
-                switch (k.b.OQ(Util.processXml((String)localObject3)).lmv)
-                {
-                default: 
-                  paramString1 = paramContext.getString(R.l.app_product);
-                  if (str1.length() <= 0) {
+                  for (paramPString1.value = ("[" + paramString1.nPA + "]" + ((k.b)localObject1).description);; paramPString1.value = ("[" + paramString1.nPB + "]" + ((k.b)localObject1).description))
+                  {
+                    paramString1 = paramPString1.value;
+                    paramPString2.value = str1;
+                    localObject1 = null;
+                    i = 0;
                     break;
+                    i = 0;
+                    break label4799;
                   }
-                }
-                for (paramString3 = str1 + ": ";; paramString3 = "")
-                {
-                  if ((!ab.QL(paramString2)) && (j == 0)) {
-                    paramPString2.value = str1;
+                  paramString3 = Util.processXml((String)localObject3);
+                  paramString1 = "";
+                  paramString3 = k.b.Hf(paramString3);
+                  if (paramString3 != null)
+                  {
+                    paramString1 = (l.a)paramString3.aK(l.a.class);
+                    if (paramString1.state != 1) {
+                      break label4988;
+                    }
                   }
-                  paramPString1.value = "";
-                  localObject3 = paramString1;
-                  localObject1 = null;
-                  i = 0;
-                  paramString1 = paramString3;
-                  paramString3 = (String)localObject3;
-                  break;
-                  paramString1 = paramContext.getString(R.l.app_product_card);
-                  break label4605;
-                  paramString1 = paramContext.getString(R.l.app_product_ticket);
-                  break label4605;
-                }
-                paramString3 = k.b.OQ(Util.processXml((String)localObject3));
-                if (paramString3 == null)
-                {
-                  Log.e("MicroMsg.Notification.Wording", "decode msg content failed");
-                  AppMethodBeat.o(227604);
-                  return "";
-                }
-                localObject3 = "";
-                localObject1 = paramContext.getString(R.l.card_msg_item_digest);
-                if (str1.length() > 0)
-                {
-                  paramString1 = str1 + ": " + (String)localObject1 + paramString3.title;
-                  label4795:
-                  if ((!ab.QL(paramString2)) && (j == 0)) {
-                    paramPString2.value = str1;
-                  }
-                  if (str1.length() <= 0) {
-                    break label4892;
-                  }
-                }
-                for (paramString3 = "%s: " + (String)localObject1 + paramString3.title;; paramString3 = (String)localObject1 + paramString3.title)
-                {
-                  paramPString1.value = paramString3;
-                  localObject1 = null;
-                  i = 0;
-                  paramString3 = (String)localObject3;
-                  break;
-                  paramString1 = (String)localObject1 + paramString3.title;
-                  break label4795;
-                }
-                paramString1 = k.b.OQ(Util.processXml((String)localObject3));
-                if (paramString1 == null)
-                {
-                  Log.e("MicroMsg.Notification.Wording", "decode msg content failed");
-                  AppMethodBeat.o(227604);
-                  return "";
-                }
-                localObject3 = "";
-                paramString3 = paramContext.getString(R.l.card_msg_item_digest);
-                if (paramInt1 == 1)
-                {
-                  paramString3 = paramString3 + paramString1.lnr;
-                  if (str1.length() > 0) {}
-                  for (paramString1 = "%s: ".concat(String.valueOf(paramString3));; paramString1 = String.valueOf(paramString3))
+                  for (paramString1 = paramContext.getString(R.l.gEV, new Object[] { paramString1.appName });; paramString1 = paramContext.getString(R.l.gFb, new Object[] { paramString1.appName }))
                   {
                     paramPString1.value = paramString1;
-                    paramString1 = paramString3;
-                    if (ab.QL(paramString2)) {
-                      break label12044;
+                    paramString3 = "";
+                    localObject1 = null;
+                    i = 0;
+                    break;
+                  }
+                  switch (k.b.Hf(Util.processXml((String)localObject3)).nRA)
+                  {
+                  default: 
+                    paramString1 = paramContext.getString(R.l.app_product);
+                    if (str1.length() <= 0) {
+                      break;
                     }
-                    paramString1 = paramString3;
-                    if (j != 0) {
-                      break label12044;
+                  }
+                  for (paramString3 = str1 + ": ";; paramString3 = "")
+                  {
+                    if ((!au.bwp(paramString2)) && (j == 0)) {
+                      paramPString2.value = str1;
                     }
-                    paramPString2.value = str1;
+                    paramPString1.value = "";
+                    localObject3 = paramString1;
                     localObject1 = null;
                     i = 0;
                     paramString1 = paramString3;
                     paramString3 = (String)localObject3;
                     break;
+                    paramString1 = paramContext.getString(R.l.app_product_card);
+                    break label5057;
+                    paramString1 = paramContext.getString(R.l.app_product_ticket);
+                    break label5057;
                   }
-                }
-                paramString3 = paramString3 + paramString1.lnq;
-                if (str1.length() > 0) {}
-                for (paramString1 = "%s: ".concat(String.valueOf(paramString3));; paramString1 = String.valueOf(paramString3))
-                {
-                  paramPString1.value = paramString1;
-                  break;
-                }
-                paramString3 = k.b.OQ(Util.processXml((String)localObject3));
-                if (paramString3 == null)
-                {
-                  Log.e("MicroMsg.Notification.Wording", "decode msg content failed");
-                  AppMethodBeat.o(227604);
-                  return "";
-                }
-                localObject3 = "";
-                if (str1.length() > 0)
-                {
-                  paramString1 = str1 + ": " + paramString3.title;
-                  label5189:
-                  if ((!ab.QL(paramString2)) && (j == 0)) {
-                    paramPString2.value = str1;
-                  }
-                  if (str1.length() <= 0) {
-                    break label5263;
-                  }
-                }
-                for (paramString3 = "%s: " + paramString3.title;; paramString3 = paramString3.title)
-                {
-                  paramPString1.value = paramString3;
-                  localObject1 = null;
-                  i = 0;
-                  paramString3 = (String)localObject3;
-                  break;
-                  paramString1 = paramString3.title;
-                  break label5189;
-                }
-                localObject3 = paramContext.getString(R.l.app_app);
-                if (str1.length() > 0)
-                {
-                  paramString1 = str1 + ": ";
-                  label5311:
-                  if ((!ab.QL(paramString2)) && (j == 0)) {
-                    paramPString2.value = str1;
-                  }
-                  if (str1.length() <= 0) {
-                    break label5366;
-                  }
-                }
-                label5366:
-                for (paramString3 = "%s: ";; paramString3 = "")
-                {
-                  paramPString1.value = paramString3;
-                  localObject1 = null;
-                  i = 0;
-                  paramString3 = (String)localObject3;
-                  break;
-                  paramString1 = "";
-                  break label5311;
-                }
-                paramString1 = k.b.OQ(Util.processXml((String)localObject3));
-                if (paramString1 == null)
-                {
-                  Log.e("MicroMsg.Notification.Wording", "decode msg content failed");
-                  AppMethodBeat.o(227604);
-                  return "";
-                }
-                localObject3 = "";
-                try
-                {
-                  paramString1 = URLDecoder.decode(paramString1.content, "UTF-8");
-                  paramString3 = paramString1;
-                  paramString1 = com.tencent.mm.pluginsdk.ui.span.l.brD(paramString1);
-                }
-                catch (Exception localException)
-                {
-                  for (;;)
+                  paramString3 = k.b.Hf(Util.processXml((String)localObject3));
+                  if (paramString3 == null)
                   {
-                    paramString1 = paramString3;
-                    Log.printErrStackTrace("MicroMsg.Notification.Wording", localException, "", new Object[0]);
-                    continue;
+                    Log.e("MicroMsg.Notification.Wording", "decode msg content failed");
+                    AppMethodBeat.o(238939);
+                    return "";
+                  }
+                  localObject3 = "";
+                  localObject1 = paramContext.getString(R.l.card_msg_item_digest);
+                  if (str1.length() > 0)
+                  {
+                    paramString1 = str1 + ": " + (String)localObject1 + paramString3.title;
+                    if ((!au.bwp(paramString2)) && (j == 0)) {
+                      paramPString2.value = str1;
+                    }
+                    if (str1.length() <= 0) {
+                      break label5344;
+                    }
+                  }
+                  for (paramString3 = "%s: " + (String)localObject1 + paramString3.title;; paramString3 = (String)localObject1 + paramString3.title)
+                  {
+                    paramPString1.value = paramString3;
+                    localObject1 = null;
+                    i = 0;
+                    paramString3 = (String)localObject3;
+                    break;
+                    paramString1 = (String)localObject1 + paramString3.title;
+                    break label5247;
+                  }
+                  paramString1 = k.b.Hf(Util.processXml((String)localObject3));
+                  if (paramString1 == null)
+                  {
+                    Log.e("MicroMsg.Notification.Wording", "decode msg content failed");
+                    AppMethodBeat.o(238939);
+                    return "";
+                  }
+                  localObject3 = "";
+                  paramString3 = paramContext.getString(R.l.card_msg_item_digest);
+                  if (paramInt1 == 1)
+                  {
+                    paramString3 = paramString3 + paramString1.nSv;
+                    if (str1.length() > 0) {}
+                    for (paramString1 = "%s: ".concat(String.valueOf(paramString3));; paramString1 = String.valueOf(paramString3))
+                    {
+                      paramPString1.value = paramString1;
+                      paramString1 = paramString3;
+                      if (au.bwp(paramString2)) {
+                        break label12868;
+                      }
+                      paramString1 = paramString3;
+                      if (j != 0) {
+                        break label12868;
+                      }
+                      paramPString2.value = str1;
+                      localObject1 = null;
+                      i = 0;
+                      paramString1 = paramString3;
+                      paramString3 = (String)localObject3;
+                      break;
+                    }
+                  }
+                  paramString3 = paramString3 + paramString1.nSu;
+                  if (str1.length() > 0) {}
+                  for (paramString1 = "%s: ".concat(String.valueOf(paramString3));; paramString1 = String.valueOf(paramString3))
+                  {
+                    paramPString1.value = paramString1;
+                    break;
+                  }
+                  paramString3 = k.b.Hf(Util.processXml((String)localObject3));
+                  if (paramString3 == null)
+                  {
+                    Log.e("MicroMsg.Notification.Wording", "decode msg content failed");
+                    AppMethodBeat.o(238939);
+                    return "";
+                  }
+                  localObject3 = "";
+                  if (str1.length() > 0)
+                  {
+                    paramString1 = str1 + ": " + paramString3.title;
+                    if ((!au.bwp(paramString2)) && (j == 0)) {
+                      paramPString2.value = str1;
+                    }
+                    if (str1.length() <= 0) {
+                      break label5715;
+                    }
+                  }
+                  for (paramString3 = "%s: " + paramString3.title;; paramString3 = paramString3.title)
+                  {
+                    paramPString1.value = paramString3;
+                    localObject1 = null;
+                    i = 0;
+                    paramString3 = (String)localObject3;
+                    break;
+                    paramString1 = paramString3.title;
+                    break label5641;
+                  }
+                  localObject3 = paramContext.getString(R.l.app_app);
+                  if (str1.length() > 0)
+                  {
+                    paramString1 = str1 + ": ";
+                    if ((!au.bwp(paramString2)) && (j == 0)) {
+                      paramPString2.value = str1;
+                    }
+                    if (str1.length() <= 0) {
+                      break label5818;
+                    }
+                  }
+                  for (paramString3 = "%s: ";; paramString3 = "")
+                  {
+                    paramPString1.value = paramString3;
+                    localObject1 = null;
+                    i = 0;
+                    paramString3 = (String)localObject3;
+                    break;
+                    paramString1 = "";
+                    break label5763;
+                  }
+                  paramString1 = k.b.Hf(Util.processXml((String)localObject3));
+                  if (paramString1 == null)
+                  {
+                    Log.e("MicroMsg.Notification.Wording", "decode msg content failed");
+                    AppMethodBeat.o(238939);
+                    return "";
+                  }
+                  localObject3 = "";
+                  try
+                  {
+                    paramString1 = URLDecoder.decode(paramString1.content, "UTF-8");
                     paramString3 = paramString1;
+                    paramString1 = com.tencent.mm.pluginsdk.ui.span.p.brr(paramString1);
+                  }
+                  catch (Exception localException)
+                  {
+                    for (;;)
+                    {
+                      paramString1 = paramString3;
+                      Log.printErrStackTrace("MicroMsg.Notification.Wording", localException, "", new Object[0]);
+                      continue;
+                      paramString3 = paramString1;
+                    }
+                  }
+                  if ((!au.bwp(paramString2)) && (j == 0)) {
+                    paramPString2.value = str1;
+                  }
+                  if (str1.length() > 0)
+                  {
+                    paramString3 = "%s: ".concat(String.valueOf(paramString1));
+                    paramPString1.value = paramString3;
+                    localObject1 = null;
+                    i = 0;
+                    paramString3 = (String)localObject3;
+                    break label995;
+                  }
+                  localObject4 = "";
+                  paramString1 = k.b.Hf(Util.processXml((String)localObject3));
+                  if (paramString1 == null)
+                  {
+                    Log.e("MicroMsg.Notification.Wording", "decode msg content failed");
+                    AppMethodBeat.o(238939);
+                    return "";
+                  }
+                  if ((!au.bwp(paramString2)) && (j == 0)) {
+                    paramPString2.value = str1;
+                  }
+                  paramString3 = paramContext.getString(R.l.app_finder);
+                  paramString1 = (com.tencent.mm.plugin.findersdk.a.f)paramString1.aK(com.tencent.mm.plugin.findersdk.a.f.class);
+                  if ((paramString1 == null) || (Util.isNullOrNil(paramString1.getNickname()))) {
+                    break label12923;
+                  }
+                  if (Util.isNullOrNil(paramString1.frt().desc)) {
+                    paramString1 = paramContext.getString(R.l.finder_feed_of_user, new Object[] { paramString1.getNickname() });
                   }
                 }
-                if ((!ab.QL(paramString2)) && (j == 0)) {
-                  paramPString2.value = str1;
-                }
-                if (str1.length() > 0)
-                {
-                  paramString3 = "%s: ".concat(String.valueOf(paramString1));
-                  paramPString1.value = paramString3;
-                  localObject1 = null;
-                  i = 0;
-                  paramString3 = (String)localObject3;
-                  break label963;
-                }
-                str3 = "";
-                paramString1 = k.b.OQ(Util.processXml((String)localObject3));
-                if (paramString1 == null)
-                {
-                  Log.e("MicroMsg.Notification.Wording", "decode msg content failed");
-                  AppMethodBeat.o(227604);
-                  return "";
-                }
-                if ((!ab.QL(paramString2)) && (j == 0)) {
-                  paramPString2.value = str1;
-                }
-                paramString3 = paramContext.getString(R.l.app_finder);
-                paramString1 = (com.tencent.mm.plugin.findersdk.a.f)paramString1.ar(com.tencent.mm.plugin.findersdk.a.f.class);
-                if ((paramString1 == null) || (Util.isNullOrNil(paramString1.enh().nickname))) {
-                  break label12099;
-                }
-                if (Util.isNullOrNil(paramString1.enh().desc)) {
-                  paramString1 = paramContext.getString(R.l.finder_feed_of_user, new Object[] { paramString1.enh().nickname });
-                }
               }
-            }
-            label7354:
-            label7880:
-            label8008:
-            for (paramString1 = paramString3 + paramString1;; paramString1 = paramString3)
-            {
-              if (str1.length() > 0) {}
-              Object localObject2;
-              for (paramString3 = "%s: ".concat(String.valueOf(paramString1));; paramString3 = paramString1)
-              {
-                paramPString1.value = paramString3;
-                localObject2 = null;
-                i = 0;
-                paramString3 = str3;
-                break;
-                paramString1 = paramString1.enh().desc;
-                break label5634;
-              }
-              str3 = "";
-              paramString1 = k.b.OQ(Util.processXml((String)localObject3));
-              if (paramString1 == null)
-              {
-                Log.e("MicroMsg.Notification.Wording", "decode msg content failed");
-                AppMethodBeat.o(227604);
-                return "";
-              }
-              if ((!ab.QL(paramString2)) && (j == 0)) {
-                paramPString2.value = str1;
-              }
-              paramString3 = paramContext.getString(R.l.app_finder);
-              paramString1 = (com.tencent.mm.plugin.findersdk.a.i)paramString1.ar(com.tencent.mm.plugin.findersdk.a.i.class);
-              if ((paramString1 != null) && (!Util.isNullOrNil(paramString1.enj().nickname))) {
-                if (Util.isNullOrNil(paramString1.enj().desc)) {
-                  paramString1 = paramContext.getString(R.l.finder_feed_of_user, new Object[] { paramString1.enj().nickname });
-                }
-              }
-              label5833:
+              label6898:
+              label9207:
+              label10106:
+              label12923:
               for (paramString1 = paramString3 + paramString1;; paramString1 = paramString3)
               {
                 if (str1.length() > 0) {}
+                Object localObject2;
                 for (paramString3 = "%s: ".concat(String.valueOf(paramString1));; paramString3 = paramString1)
                 {
                   paramPString1.value = paramString3;
                   localObject2 = null;
                   i = 0;
-                  paramString3 = str3;
+                  paramString3 = (String)localObject4;
                   break;
-                  paramString1 = paramString1.enj().desc;
-                  break label5833;
+                  paramString1 = paramString1.frt().desc;
+                  break label6080;
                 }
-                str3 = "";
-                paramString3 = k.b.OQ(Util.processXml((String)localObject3));
-                if (paramString3 == null)
+                localObject4 = "";
+                paramString1 = k.b.Hf(Util.processXml((String)localObject3));
+                if (paramString1 == null)
                 {
                   Log.e("MicroMsg.Notification.Wording", "decode msg content failed");
-                  AppMethodBeat.o(227604);
+                  AppMethodBeat.o(238939);
                   return "";
                 }
-                if ((!ab.QL(paramString2)) && (j == 0)) {
+                if ((!au.bwp(paramString2)) && (j == 0)) {
                   paramPString2.value = str1;
                 }
-                paramString1 = paramContext.getString(R.l.app_finder);
-                paramString3 = (com.tencent.mm.plugin.findersdk.a.b)paramString3.ar(com.tencent.mm.plugin.findersdk.a.b.class);
-                if ((paramString3 != null) && (!Util.isNullOrNil(paramString3.ene().nickName))) {
-                  paramString1 = paramString1 + paramContext.getString(R.l.finder_live_feed_of_user, new Object[] { paramString3.ene().nickName });
+                paramString3 = paramContext.getString(R.l.app_finder);
+                paramString1 = (com.tencent.mm.plugin.findersdk.a.j)paramString1.aK(com.tencent.mm.plugin.findersdk.a.j.class);
+                if ((paramString1 != null) && (!Util.isNullOrNil(paramString1.frw().nickname))) {
+                  if (Util.isNullOrNil(paramString1.frw().desc)) {
+                    paramString1 = paramContext.getString(R.l.finder_feed_of_user, new Object[] { paramString1.frw().nickname });
+                  }
                 }
-                for (;;)
+                for (paramString1 = paramString3 + paramString1;; paramString1 = paramString3)
                 {
                   if (str1.length() > 0) {}
                   for (paramString3 = "%s: ".concat(String.valueOf(paramString1));; paramString3 = paramString1)
@@ -1599,56 +1769,124 @@ public final class h
                     paramPString1.value = paramString3;
                     localObject2 = null;
                     i = 0;
-                    paramString3 = str3;
+                    paramString3 = (String)localObject4;
                     break;
+                    paramString1 = paramString1.frw().desc;
+                    break label6279;
                   }
-                  str3 = "";
-                  paramString3 = k.b.OQ(Util.processXml((String)localObject3));
+                  localObject4 = "";
+                  paramString3 = k.b.Hf(Util.processXml((String)localObject3));
                   if (paramString3 == null)
                   {
                     Log.e("MicroMsg.Notification.Wording", "decode msg content failed");
-                    AppMethodBeat.o(227604);
+                    AppMethodBeat.o(238939);
                     return "";
                   }
-                  if ((!ab.QL(paramString2)) && (j == 0)) {
+                  if ((!au.bwp(paramString2)) && (j == 0)) {
                     paramPString2.value = str1;
                   }
                   paramString1 = paramContext.getString(R.l.app_finder);
-                  paramString3 = (com.tencent.mm.plugin.findersdk.a.h)paramString3.ar(com.tencent.mm.plugin.findersdk.a.h.class);
-                  if ((paramString3 != null) && (!Util.isNullOrNil(paramString3.enf().topic))) {
-                    if (paramString3.enf().wXA == 1) {
-                      paramString1 = paramString1 + MMApplicationContext.getContext().getString(R.l.finder_topic_card_prefix, new Object[] { paramString3.enf().topic });
-                    }
+                  paramString3 = (com.tencent.mm.plugin.findersdk.a.b)paramString3.aK(com.tencent.mm.plugin.findersdk.a.b.class);
+                  if ((paramString3 != null) && (!Util.isNullOrNil(paramString3.frq().nickName))) {
+                    paramString1 = paramString1 + paramContext.getString(R.l.finder_live_feed_of_user, new Object[] { paramString3.frq().nickName });
                   }
                   for (;;)
                   {
-                    label6221:
-                    if (str1.length() > 0) {}
-                    for (paramString3 = "%s: ".concat(String.valueOf(paramString1));; paramString3 = paramString1)
+                    for (;;)
                     {
-                      paramPString1.value = paramString3;
-                      localObject2 = null;
-                      i = 0;
-                      paramString3 = str3;
-                      break;
-                      paramString1 = paramString1 + paramString3.enf().topic;
-                      break label6221;
+                      if (str1.length() > 0) {}
+                      for (paramString3 = "%s: ".concat(String.valueOf(paramString1));; paramString3 = paramString1)
+                      {
+                        paramPString1.value = paramString3;
+                        localObject2 = null;
+                        i = 0;
+                        paramString3 = (String)localObject4;
+                        break;
+                      }
+                      localObject4 = "";
+                      localObject2 = paramString3;
+                      try
+                      {
+                        paramString1 = k.b.Hf(Util.processXml((String)localObject3));
+                        if (paramString1 == null)
+                        {
+                          localObject2 = paramString3;
+                          Log.e("MicroMsg.Notification.Wording", "decode msg content failed");
+                          AppMethodBeat.o(238939);
+                          return "";
+                        }
+                        localObject2 = paramString3;
+                        if ((!au.bwp(paramString2)) && (j == 0))
+                        {
+                          localObject2 = paramString3;
+                          paramPString2.value = str1;
+                        }
+                        localObject2 = paramString3;
+                        paramString3 = paramContext.getString(R.l.app_url);
+                        localObject2 = paramString3;
+                        localObject3 = (com.tencent.mm.plugin.findersdk.a.h)paramString1.aK(com.tencent.mm.plugin.findersdk.a.h.class);
+                        paramString1 = paramString3;
+                        if (localObject3 != null)
+                        {
+                          paramString1 = paramString3;
+                          localObject2 = paramString3;
+                          if (!Util.isNullOrNil(((com.tencent.mm.plugin.findersdk.a.h)localObject3).frv().aabi))
+                          {
+                            localObject2 = paramString3;
+                            paramString1 = paramString3 + ((com.tencent.mm.plugin.findersdk.a.h)localObject3).frv().aabi;
+                          }
+                        }
+                        localObject2 = paramString1;
+                        if (str1.length() > 0) {
+                          localObject2 = paramString1;
+                        }
+                        for (paramString3 = "%s: ".concat(String.valueOf(paramString1));; paramString3 = paramString1)
+                        {
+                          localObject2 = paramString1;
+                          paramPString1.value = paramString3;
+                          localObject2 = null;
+                          i = 0;
+                          paramString3 = (String)localObject4;
+                          break;
+                        }
+                      }
+                      finally
+                      {
+                        for (;;)
+                        {
+                          label8447:
+                          continue;
+                          label8572:
+                          label8700:
+                          paramString3 = paramString1;
+                          continue;
+                        }
+                      }
                     }
-                    str3 = "";
-                    paramString3 = k.b.OQ(Util.processXml((String)localObject3));
+                    Log.printErrStackTrace("MicroMsg.Notification.Wording", paramString1, "", new Object[0]);
+                    paramString3 = "";
+                    localObject3 = null;
+                    i = 0;
+                    paramString1 = (String)localObject2;
+                    localObject2 = localObject3;
+                    break label995;
+                    localObject4 = "";
+                    paramString3 = k.b.Hf(Util.processXml((String)localObject3));
                     if (paramString3 == null)
                     {
                       Log.e("MicroMsg.Notification.Wording", "decode msg content failed");
-                      AppMethodBeat.o(227604);
+                      AppMethodBeat.o(238939);
                       return "";
                     }
-                    if ((!ab.QL(paramString2)) && (j == 0)) {
+                    if ((!au.bwp(paramString2)) && (j == 0)) {
                       paramPString2.value = str1;
                     }
                     paramString1 = paramContext.getString(R.l.app_finder);
-                    paramString3 = (com.tencent.mm.plugin.findersdk.a.d)paramString3.ar(com.tencent.mm.plugin.findersdk.a.d.class);
-                    if ((paramString3 != null) && (!Util.isNullOrNil(paramString3.eng().title))) {
-                      paramString1 = paramString1 + paramString3.eng().title;
+                    paramString3 = (com.tencent.mm.plugin.findersdk.a.i)paramString3.aK(com.tencent.mm.plugin.findersdk.a.i.class);
+                    if ((paramString3 != null) && (!Util.isNullOrNil(paramString3.frr().topic))) {
+                      if (paramString3.frr().Auy == 1) {
+                        paramString1 = paramString1 + MMApplicationContext.getContext().getString(R.l.finder_topic_card_prefix, new Object[] { paramString3.frr().topic });
+                      }
                     }
                     for (;;)
                     {
@@ -1658,22 +1896,26 @@ public final class h
                         paramPString1.value = paramString3;
                         localObject2 = null;
                         i = 0;
-                        paramString3 = str3;
+                        paramString3 = (String)localObject4;
                         break;
+                        paramString1 = paramString1 + paramString3.frr().topic;
+                        break label6898;
                       }
-                      str3 = "";
-                      paramString1 = k.b.OQ(Util.processXml((String)localObject3));
-                      if (paramString1 == null)
+                      localObject4 = "";
+                      paramString3 = k.b.Hf(Util.processXml((String)localObject3));
+                      if (paramString3 == null)
                       {
                         Log.e("MicroMsg.Notification.Wording", "decode msg content failed");
-                        AppMethodBeat.o(227604);
+                        AppMethodBeat.o(238939);
                         return "";
                       }
-                      paramString1 = (com.tencent.mm.plugin.findersdk.a.e)paramString1.ar(com.tencent.mm.plugin.findersdk.a.e.class);
-                      if ((paramString1 != null) && (!Util.isNullOrNil(paramString1.getNickname()))) {
-                        if (paramInt1 == 1) {
-                          paramString1 = paramContext.getString(R.l.finder_msg_name_card_by_me, new Object[] { paramString1.getNickname() });
-                        }
+                      if ((!au.bwp(paramString2)) && (j == 0)) {
+                        paramPString2.value = str1;
+                      }
+                      paramString1 = paramContext.getString(R.l.app_finder);
+                      paramString3 = (d)paramString3.aK(d.class);
+                      if ((paramString3 != null) && (!Util.isNullOrNil(paramString3.frs().title))) {
+                        paramString1 = paramString1 + paramString3.frs().title;
                       }
                       for (;;)
                       {
@@ -1683,45 +1925,21 @@ public final class h
                           paramPString1.value = paramString3;
                           localObject2 = null;
                           i = 0;
-                          paramString3 = str3;
+                          paramString3 = (String)localObject4;
                           break;
-                          paramString3 = paramContext.getString(R.l.finder_msg_name_card_by_other, new Object[] { paramString1.getNickname() });
-                          paramString1 = paramString3;
-                          if (ab.QL(paramString2)) {
-                            break label6534;
-                          }
-                          paramString1 = paramString3;
-                          if (j != 0) {
-                            break label6534;
-                          }
-                          paramPString2.value = str1;
-                          paramString1 = paramString3;
-                          break label6534;
                         }
-                        paramString1 = paramContext.getString(R.l.app_finder_endorsement) + paramContext.getString(R.l.finder_endorsement_desc);
-                        paramPString1.value = paramString1;
-                        paramString3 = "";
-                        localObject2 = null;
-                        i = 0;
-                        break label963;
-                        paramString1 = paramContext.getString(R.l.app_finder_endorsement) + paramContext.getString(R.l.finder_endorsement_desc);
-                        paramPString1.value = paramString1;
-                        paramString3 = "";
-                        localObject2 = null;
-                        i = 0;
-                        break label963;
-                        str3 = "";
-                        paramString1 = k.b.OQ(Util.processXml((String)localObject3));
+                        localObject4 = "";
+                        paramString1 = k.b.Hf(Util.processXml((String)localObject3));
                         if (paramString1 == null)
                         {
                           Log.e("MicroMsg.Notification.Wording", "decode msg content failed");
-                          AppMethodBeat.o(227604);
+                          AppMethodBeat.o(238939);
                           return "";
                         }
-                        paramString1 = (com.tencent.mm.plugin.game.luggage.f.a)paramString1.ar(com.tencent.mm.plugin.game.luggage.f.a.class);
-                        if ((paramString1 != null) && (!Util.isNullOrNil(paramString1.nickName))) {
+                        paramString1 = (com.tencent.mm.plugin.findersdk.a.e)paramString1.aK(com.tencent.mm.plugin.findersdk.a.e.class);
+                        if ((paramString1 != null) && (!Util.isNullOrNil(paramString1.getNickname()))) {
                           if (paramInt1 == 1) {
-                            paramString1 = paramContext.getString(R.l.eGd, new Object[] { paramString1.nickName });
+                            paramString1 = paramContext.getString(R.l.finder_msg_name_card_by_me, new Object[] { paramString1.getNickname() });
                           }
                         }
                         for (;;)
@@ -1732,963 +1950,1024 @@ public final class h
                             paramPString1.value = paramString3;
                             localObject2 = null;
                             i = 0;
-                            paramString3 = str3;
+                            paramString3 = (String)localObject4;
                             break;
-                            paramString3 = paramContext.getString(R.l.eGe, new Object[] { paramString1.nickName });
+                            paramString3 = paramContext.getString(R.l.finder_msg_name_card_by_other, new Object[] { paramString1.getNickname() });
                             paramString1 = paramString3;
-                            if (ab.QL(paramString2)) {
-                              break label6811;
+                            if (au.bwp(paramString2)) {
+                              break label7211;
                             }
                             paramString1 = paramString3;
                             if (j != 0) {
-                              break label6811;
+                              break label7211;
                             }
                             paramPString2.value = str1;
                             paramString1 = paramString3;
-                            break label6811;
+                            break label7211;
                           }
-                          localObject3 = "";
-                          paramString1 = ((com.tencent.mm.plugin.patmsg.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.patmsg.a.b.class)).aUf(paramString3);
-                          if (paramString1.Ezu.size() > 0)
+                          paramString1 = paramContext.getString(R.l.app_finder_endorsement) + paramContext.getString(R.l.finder_endorsement_desc);
+                          paramPString1.value = paramString1;
+                          paramString3 = "";
+                          localObject2 = null;
+                          i = 0;
+                          break label995;
+                          paramString1 = paramContext.getString(R.l.app_finder_endorsement) + paramContext.getString(R.l.finder_endorsement_desc);
+                          paramPString1.value = paramString1;
+                          paramString3 = "";
+                          localObject2 = null;
+                          i = 0;
+                          break label995;
+                          localObject4 = "";
+                          paramString1 = k.b.Hf(Util.processXml((String)localObject3));
+                          if (paramString1 == null)
                           {
-                            paramPString1.value = ((PluginPatMsg)com.tencent.mm.kernel.h.ag(PluginPatMsg.class)).parseDisplayTemplate(((diu)paramString1.Ezu.getLast()).lqH, paramString2).result;
-                            localObject2 = null;
-                            i = 0;
-                            paramString1 = paramString3;
-                            paramString3 = (String)localObject3;
-                            break label963;
-                            paramString1 = k.b.OQ(Util.processXml((String)localObject3));
-                            if (paramString1 == null)
+                            Log.e("MicroMsg.Notification.Wording", "decode msg content failed");
+                            AppMethodBeat.o(238939);
+                            return "";
+                          }
+                          paramString1 = (com.tencent.mm.plugin.game.luggage.f.a)paramString1.aK(com.tencent.mm.plugin.game.luggage.f.a.class);
+                          if ((paramString1 != null) && (!Util.isNullOrNil(paramString1.nickName))) {
+                            if (paramInt1 == 1) {
+                              paramString1 = paramContext.getString(R.l.gIY, new Object[] { paramString1.nickName });
+                            }
+                          }
+                          for (;;)
+                          {
+                            if (str1.length() > 0) {}
+                            for (paramString3 = "%s: ".concat(String.valueOf(paramString1));; paramString3 = paramString1)
                             {
-                              Log.e("MicroMsg.Notification.Wording", "decode msg content failed");
-                              AppMethodBeat.o(227604);
-                              return "";
-                            }
-                            paramString1 = paramContext.getString(R.l.app_live) + paramString1.getTitle();
-                            paramPString1.value = paramString1;
-                            paramString3 = "";
-                            localObject2 = null;
-                            i = 0;
-                            break label963;
-                            str3 = "";
-                            paramString3 = k.b.OQ(Util.processXml((String)localObject3));
-                            if (paramString3 == null)
-                            {
-                              Log.e("MicroMsg.Notification.Wording", "decode msg content failed");
-                              AppMethodBeat.o(227604);
-                              return "";
-                            }
-                            if ((!ab.QL(paramString2)) && (j == 0)) {
-                              paramPString2.value = str1;
-                            }
-                            paramString1 = paramContext.getString(R.l.app_finder_live);
-                            paramString3 = (com.tencent.mm.plugin.findersdk.a.b)paramString3.ar(com.tencent.mm.plugin.findersdk.a.b.class);
-                            if ((paramString3 != null) && (!Util.isNullOrNil(paramString3.ene().nickName))) {
-                              paramString1 = paramString1 + paramContext.getString(R.l.finder_live_invite_feed_of_user, new Object[] { paramString3.ene().nickName });
-                            }
-                            for (;;)
-                            {
-                              for (;;)
-                              {
-                                if (str1.length() > 0) {}
-                                for (paramString3 = "%s: ".concat(String.valueOf(paramString1));; paramString3 = paramString1)
-                                {
-                                  paramPString1.value = paramString3;
-                                  localObject2 = null;
-                                  i = 0;
-                                  paramString3 = str3;
-                                  break;
-                                }
-                                str3 = "";
-                                paramString1 = k.b.OQ(Util.processXml((String)localObject3));
-                                if (paramString1 == null)
-                                {
-                                  Log.e("MicroMsg.Notification.Wording", "decode msg content failed");
-                                  AppMethodBeat.o(227604);
-                                  return "";
-                                }
-                                if ((!ab.QL(paramString2)) && (j == 0)) {
-                                  paramPString2.value = str1;
-                                }
-                                paramString1 = (com.tencent.mm.plugin.findersdk.a.g)paramString1.ar(com.tencent.mm.plugin.findersdk.a.g.class);
-                                if ((paramString1 != null) && (!Util.isNullOrNil(paramString1.eni().poiName)))
-                                {
-                                  paramString1 = "" + MMApplicationContext.getContext().getString(R.l.finder_poi_share_notification, new Object[] { paramString1.eni().poiName });
-                                  if (str1.length() <= 0) {
-                                    break label7421;
-                                  }
-                                }
-                                label7421:
-                                for (paramString3 = "%s: ".concat(String.valueOf(paramString1));; paramString3 = paramString1)
-                                {
-                                  paramPString1.value = paramString3;
-                                  localObject2 = null;
-                                  i = 0;
-                                  paramString3 = str3;
-                                  break;
-                                  paramString1 = "" + paramContext.getString(R.l.finder_poi_share_notification_fallback);
-                                  break label7354;
-                                }
-                                paramString1 = Util.processXml((String)localObject3);
-                                localObject2 = k.b.OQ(paramString1);
-                                if (localObject2 == null)
-                                {
-                                  Log.e("MicroMsg.Notification.Wording", "decode msg content failed");
-                                  AppMethodBeat.o(227604);
-                                  return "";
-                                }
-                                switch (((k.b)localObject2).type)
-                                {
-                                default: 
-                                  paramString3 = paramContext.getString(R.l.app_app);
-                                  localObject2 = null;
-                                  i = 0;
-                                  paramString1 = "";
-                                  break;
-                                case 1: 
-                                case 53: 
-                                case 57: 
-                                  localObject3 = "";
-                                  if (str1.length() > 0)
-                                  {
-                                    paramString1 = str1 + ": " + ((k.b)localObject2).title;
-                                    if ((!ab.QL(paramString2)) && (j == 0)) {
-                                      paramPString2.value = str1;
-                                    }
-                                    if (str1.length() <= 0) {
-                                      break label7831;
-                                    }
-                                  }
-                                  for (paramString3 = "%s: " + ((k.b)localObject2).title;; paramString3 = ((k.b)localObject2).title)
-                                  {
-                                    paramPString1.value = paramString3;
-                                    localObject2 = null;
-                                    i = 0;
-                                    paramString3 = (String)localObject3;
-                                    break;
-                                    paramString1 = ((k.b)localObject2).title;
-                                    break label7755;
-                                  }
-                                case 2: 
-                                  localObject3 = paramContext.getString(R.l.app_pic);
-                                  if (str1.length() > 0)
-                                  {
-                                    paramString1 = str1 + ": ";
-                                    if ((!ab.QL(paramString2)) && (j == 0)) {
-                                      paramPString2.value = str1;
-                                    }
-                                    if (str1.length() <= 0) {
-                                      break label7935;
-                                    }
-                                  }
-                                  for (paramString3 = "%s: ";; paramString3 = "")
-                                  {
-                                    paramPString1.value = paramString3;
-                                    localObject2 = null;
-                                    i = 0;
-                                    paramString3 = (String)localObject3;
-                                    break;
-                                    paramString1 = "";
-                                    break label7880;
-                                  }
-                                case 3: 
-                                case 76: 
-                                  localObject3 = paramContext.getString(R.l.app_music) + " " + ((k.b)localObject2).title;
-                                  if (str1.length() > 0)
-                                  {
-                                    paramString1 = str1 + ": ";
-                                    if ((!ab.QL(paramString2)) && (j == 0)) {
-                                      paramPString2.value = str1;
-                                    }
-                                    if (str1.length() <= 0) {
-                                      break label8067;
-                                    }
-                                  }
-                                  for (paramString3 = "%s: ";; paramString3 = "")
-                                  {
-                                    paramPString1.value = paramString3;
-                                    localObject2 = ((k.b)localObject2).title;
-                                    i = 1;
-                                    paramString3 = (String)localObject3;
-                                    break;
-                                    paramString1 = "";
-                                    break label8008;
-                                  }
-                                case 4: 
-                                  localObject3 = paramContext.getString(R.l.app_video);
-                                  if (str1.length() > 0)
-                                  {
-                                    paramString1 = str1 + ": ";
-                                    if ((!ab.QL(paramString2)) && (j == 0)) {
-                                      paramPString2.value = str1;
-                                    }
-                                    if (str1.length() <= 0) {
-                                      break label8172;
-                                    }
-                                  }
-                                  for (paramString3 = "%s: ";; paramString3 = "")
-                                  {
-                                    paramPString1.value = paramString3;
-                                    localObject2 = ((k.b)localObject2).title;
-                                    i = 1;
-                                    paramString3 = (String)localObject3;
-                                    break;
-                                    paramString1 = "";
-                                    break label8113;
-                                  }
-                                case 6: 
-                                case 74: 
-                                  localObject3 = paramContext.getString(R.l.app_file);
-                                  if (str1.length() > 0)
-                                  {
-                                    paramString1 = str1 + ": ";
-                                    if ((!ab.QL(paramString2)) && (j == 0)) {
-                                      paramPString2.value = str1;
-                                    }
-                                    if (str1.length() <= 0) {
-                                      break label8277;
-                                    }
-                                  }
-                                  for (paramString3 = "%s: ";; paramString3 = "")
-                                  {
-                                    paramPString1.value = paramString3;
-                                    localObject2 = ((k.b)localObject2).title;
-                                    i = 1;
-                                    paramString3 = (String)localObject3;
-                                    break;
-                                    paramString1 = "";
-                                    break label8218;
-                                  }
-                                case 7: 
-                                  localObject3 = paramContext.getString(R.l.app_app);
-                                  if (str1.length() > 0)
-                                  {
-                                    paramString1 = str1 + ": ";
-                                    if ((!ab.QL(paramString2)) && (j == 0)) {
-                                      paramPString2.value = str1;
-                                    }
-                                    if (str1.length() <= 0) {
-                                      break label8378;
-                                    }
-                                  }
-                                  for (paramString3 = "%s: ";; paramString3 = "")
-                                  {
-                                    paramPString1.value = paramString3;
-                                    localObject2 = null;
-                                    i = 0;
-                                    paramString3 = (String)localObject3;
-                                    break;
-                                    paramString1 = "";
-                                    break label8323;
-                                  }
-                                case 5: 
-                                  localObject3 = paramContext.getString(R.l.app_url);
-                                  if (str1.length() > 0)
-                                  {
-                                    paramString1 = str1 + ": ";
-                                    if ((!ab.QL(paramString2)) && (j == 0) && (!ab.QU(paramString2))) {
-                                      paramPString2.value = str1;
-                                    }
-                                    if (str1.length() <= 0) {
-                                      break label8490;
-                                    }
-                                  }
-                                  for (paramString3 = "%s: ";; paramString3 = "")
-                                  {
-                                    paramPString1.value = paramString3;
-                                    localObject2 = ((k.b)localObject2).getTitle();
-                                    i = 1;
-                                    paramString3 = (String)localObject3;
-                                    break;
-                                    paramString1 = "";
-                                    break label8424;
-                                  }
-                                case 46: 
-                                  paramString3 = paramContext.getString(R.l.app_app);
-                                  localObject2 = null;
-                                  i = 0;
-                                  paramString1 = "";
-                                  break;
-                                case 33: 
-                                case 36: 
-                                  localObject3 = "";
-                                  paramString3 = paramContext.getString(R.l.app_brand_default_name_with_brackets);
-                                  if (str1.length() > 0)
-                                  {
-                                    paramString1 = str1 + ": " + paramString3 + ((k.b)localObject2).title;
-                                    if ((!ab.QL(paramString2)) && (j == 0) && (!ab.QU(paramString2))) {
-                                      paramPString2.value = str1;
-                                    }
-                                    if (str1.length() <= 0) {
-                                      break label8676;
-                                    }
-                                  }
-                                  for (paramString3 = "%s: " + paramString3 + ((k.b)localObject2).title;; paramString3 = paramString3 + ((k.b)localObject2).title)
-                                  {
-                                    paramPString1.value = paramString3;
-                                    localObject2 = null;
-                                    i = 0;
-                                    paramString3 = (String)localObject3;
-                                    break;
-                                    paramString1 = paramString3 + ((k.b)localObject2).title;
-                                    break label8572;
-                                  }
-                                case 44: 
-                                  if (((k.b)localObject2).fX(false))
-                                  {
-                                    localObject3 = "";
-                                    paramString3 = ((k.b)localObject2).z(paramContext, true);
-                                    if (!Util.isNullOrNil(paramString3))
-                                    {
-                                      if (str1.length() > 0)
-                                      {
-                                        paramString1 = str1 + ": " + paramString3 + ((k.b)localObject2).title;
-                                        paramPString2.value = str1;
-                                        if (str1.length() <= 0) {
-                                          break label8858;
-                                        }
-                                      }
-                                      for (paramString3 = "%s: " + paramString3 + ((k.b)localObject2).title;; paramString3 = paramString3 + ((k.b)localObject2).title)
-                                      {
-                                        paramPString1.value = paramString3;
-                                        localObject2 = null;
-                                        i = 0;
-                                        paramString3 = (String)localObject3;
-                                        break;
-                                        paramString1 = paramString3 + ((k.b)localObject2).title;
-                                        break label8773;
-                                      }
-                                    }
-                                    paramString3 = paramContext.getString(R.l.app_app);
-                                    localObject2 = null;
-                                    i = 0;
-                                    paramString1 = "";
-                                    break;
-                                  }
-                                  paramString3 = paramContext.getString(R.l.app_app);
-                                  localObject2 = null;
-                                  i = 0;
-                                  paramString1 = "";
-                                  break;
-                                case 8: 
-                                  paramString3 = paramContext.getString(R.l.app_emoji2);
-                                  if (str1.length() > 0) {}
-                                  for (paramString1 = str1 + ": ";; paramString1 = "")
-                                  {
-                                    if ((!ab.QL(paramString2)) && (j == 0)) {
-                                      paramPString2.value = str1;
-                                    }
-                                    paramPString1.value = "";
-                                    localObject2 = null;
-                                    i = 0;
-                                    break;
-                                  }
-                                case 15: 
-                                case 26: 
-                                case 27: 
-                                  paramString3 = paramContext.getString(R.l.app_emoji_share);
-                                  if (str1.length() > 0) {}
-                                  for (paramString1 = str1 + ": ";; paramString1 = "")
-                                  {
-                                    if ((!ab.QL(paramString2)) && (j == 0)) {
-                                      paramPString2.value = str1;
-                                    }
-                                    paramPString1.value = "";
-                                    localObject2 = null;
-                                    i = 0;
-                                    break;
-                                  }
-                                case 25: 
-                                  paramString3 = paramContext.getString(R.l.app_designer_share);
-                                  if (str1.length() > 0) {}
-                                  for (paramString1 = str1 + ": ";; paramString1 = "")
-                                  {
-                                    if ((!ab.QL(paramString2)) && (j == 0)) {
-                                      paramPString2.value = str1;
-                                    }
-                                    paramPString1.value = "";
-                                    localObject2 = null;
-                                    i = 0;
-                                    break;
-                                  }
-                                case 17: 
-                                  localObject3 = "";
-                                  if (str1.length() > 0)
-                                  {
-                                    paramString1 = str1 + ": " + ((k.b)localObject2).title;
-                                    if ((!ab.QL(paramString2)) && (j == 0)) {
-                                      paramPString2.value = str1;
-                                    }
-                                    if (str1.length() <= 0) {
-                                      break label9284;
-                                    }
-                                  }
-                                  for (paramString3 = "%s: " + ((k.b)localObject2).title;; paramString3 = ((k.b)localObject2).title)
-                                  {
-                                    paramPString1.value = paramString3;
-                                    localObject2 = null;
-                                    i = 0;
-                                    paramString3 = (String)localObject3;
-                                    break;
-                                    paramString1 = ((k.b)localObject2).title;
-                                    break label9208;
-                                  }
-                                case 19: 
-                                  localObject3 = paramContext.getString(R.l.app_record);
-                                  if (str1.length() > 0)
-                                  {
-                                    paramString1 = str1 + ": ";
-                                    if ((!ab.QL(paramString2)) && (j == 0)) {
-                                      paramPString2.value = str1;
-                                    }
-                                    if (str1.length() <= 0) {
-                                      break label9388;
-                                    }
-                                  }
-                                  for (paramString3 = "%s: ";; paramString3 = "")
-                                  {
-                                    paramPString1.value = paramString3;
-                                    localObject2 = null;
-                                    i = 0;
-                                    paramString3 = (String)localObject3;
-                                    break;
-                                    paramString1 = "";
-                                    break label9333;
-                                  }
-                                case 24: 
-                                  paramString1 = "";
-                                  if (!Util.isNullOrNil(((k.b)localObject2).description))
-                                  {
-                                    i = ((k.b)localObject2).description.indexOf("\n");
-                                    paramString1 = ((k.b)localObject2).description;
-                                    if (i > 0) {
-                                      paramString1 = paramString1.substring(0, i);
-                                    }
-                                  }
-                                  else
-                                  {
-                                    localObject3 = paramContext.getString(R.l.favorite_wenote_msg) + paramString1;
-                                    if (str1.length() <= 0) {
-                                      break label9559;
-                                    }
-                                    paramString1 = str1 + ": ";
-                                    if ((!ab.QL(paramString2)) && (j == 0)) {
-                                      paramPString2.value = str1;
-                                    }
-                                    if (str1.length() <= 0) {
-                                      break label9565;
-                                    }
-                                  }
-                                  for (paramString3 = "%s: ";; paramString3 = "")
-                                  {
-                                    paramPString1.value = paramString3;
-                                    localObject2 = null;
-                                    i = 0;
-                                    paramString3 = (String)localObject3;
-                                    break;
-                                    i = ((k.b)localObject2).description.length();
-                                    break label9432;
-                                    paramString1 = "";
-                                    break label9497;
-                                  }
-                                case 16: 
-                                  localObject3 = "";
-                                  paramString3 = paramContext.getString(R.l.card_msg_item_digest);
-                                  if (str1.length() > 0)
-                                  {
-                                    paramString1 = str1 + ": " + paramString3 + ((k.b)localObject2).title;
-                                    if ((!ab.QL(paramString2)) && (j == 0)) {
-                                      paramPString2.value = str1;
-                                    }
-                                    if (str1.length() <= 0) {
-                                      break label9708;
-                                    }
-                                  }
-                                  for (paramString3 = "%s: ".concat(String.valueOf(paramString3));; paramString3 = String.valueOf(paramString3))
-                                  {
-                                    paramPString1.value = paramString3;
-                                    localObject2 = null;
-                                    i = 0;
-                                    paramString3 = (String)localObject3;
-                                    break;
-                                    paramString1 = paramString3 + ((k.b)localObject2).title;
-                                    break label9626;
-                                  }
-                                case 34: 
-                                  localObject3 = "";
-                                  paramString1 = paramContext.getString(R.l.card_msg_item_digest);
-                                  if (paramInt1 == 1)
-                                  {
-                                    paramString3 = paramString1 + ((k.b)localObject2).lnr;
-                                    if (str1.length() > 0) {}
-                                    for (paramString1 = "%s: ".concat(String.valueOf(paramString3));; paramString1 = String.valueOf(paramString3))
-                                    {
-                                      paramPString1.value = paramString1;
-                                      paramString1 = paramString3;
-                                      if (ab.QL(paramString2)) {
-                                        break label12044;
-                                      }
-                                      paramString1 = paramString3;
-                                      if (j != 0) {
-                                        break label12044;
-                                      }
-                                      paramPString2.value = str1;
-                                      localObject2 = null;
-                                      i = 0;
-                                      paramString1 = paramString3;
-                                      paramString3 = (String)localObject3;
-                                      break;
-                                    }
-                                  }
-                                  paramString3 = paramString1 + ((k.b)localObject2).lnq;
-                                  if (str1.length() > 0) {}
-                                  for (paramString1 = "%s: ".concat(String.valueOf(paramString3));; paramString1 = String.valueOf(paramString3))
-                                  {
-                                    paramPString1.value = paramString1;
-                                    break;
-                                  }
-                                case 40: 
-                                  if (t.OV(paramString1).lpH == 19)
-                                  {
-                                    localObject3 = paramContext.getString(R.l.app_record);
-                                    localObject2 = null;
-                                    i = 0;
-                                    paramString1 = paramString3;
-                                    paramString3 = (String)localObject3;
-                                    break;
-                                  }
-                                  localObject3 = paramContext.getString(R.l.app_app);
-                                  localObject2 = null;
-                                  i = 0;
-                                  paramString1 = paramString3;
-                                  paramString3 = (String)localObject3;
-                                  break;
-                                case 68: 
-                                  label7755:
-                                  label7935:
-                                  localObject3 = "";
-                                  label8172:
-                                  label8572:
-                                  paramString3 = paramContext.getString(R.l.app_app);
-                                  label8277:
-                                  label8424:
-                                  label9208:
-                                  if (str1.length() > 0)
-                                  {
-                                    paramString1 = str1 + ": " + paramString3 + ((k.b)localObject2).title;
-                                    if ((!ab.QL(paramString2)) && (j == 0) && (!ab.QU(paramString2))) {
-                                      paramPString2.value = str1;
-                                    }
-                                    if (str1.length() <= 0) {
-                                      break label10105;
-                                    }
-                                  }
-                                  label8676:
-                                  label9333:
-                                  label10105:
-                                  for (paramString3 = "%s: " + paramString3 + ((k.b)localObject2).title;; paramString3 = paramString3 + ((k.b)localObject2).title)
-                                  {
-                                    paramPString1.value = paramString3;
-                                    localObject2 = null;
-                                    i = 0;
-                                    paramString3 = (String)localObject3;
-                                    break;
-                                    paramString1 = paramString3 + ((k.b)localObject2).title;
-                                    break label10001;
-                                  }
-                                  label9432:
-                                  label9565:
-                                  label9708:
-                                  paramString1 = paramString3;
-                                  label9559:
-                                  if (k != 0) {
-                                    paramString1 = JY(paramString3);
-                                  }
-                                  paramString3 = ((com.tencent.mm.plugin.biz.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.biz.a.a.class)).OU(paramString1);
-                                  paramString1 = paramString3;
-                                  if (k != 0) {
-                                    paramString1 = JX(paramString3);
-                                  }
-                                  paramString1 = com.tencent.mm.pluginsdk.ui.span.l.brD(paramString1);
-                                  paramPString1.value = paramString1;
-                                  paramString3 = "";
-                                  localObject2 = null;
-                                  i = 0;
-                                  break;
-                                  paramPString1.value = ((com.tencent.mm.plugin.biz.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.biz.a.a.class)).OT(paramString3);
-                                  paramString3 = paramPString1.value;
-                                  Log.i("MicroMsg.Notification.Wording", "[parseMsgContentToShow] type:%s suffix:%s", new Object[] { Integer.valueOf(318767153), paramString3 });
-                                  localObject2 = null;
-                                  i = 0;
-                                  paramString1 = "";
-                                  break;
-                                  paramString1 = com.tencent.mm.ap.a.b(a.a.Vp(paramString3));
-                                  paramPString1.value = paramString1;
-                                  paramString3 = "";
-                                  localObject2 = null;
-                                  i = 0;
-                                  break;
-                                  paramString3 = "";
-                                  localObject2 = k.b.OQ((String)localObject3);
-                                  paramString1 = paramString3;
-                                  if (localObject2 == null) {
-                                    break label954;
-                                  }
-                                  paramString1 = paramString3;
-                                  try
-                                  {
-                                    paramString3 = URLDecoder.decode(((k.b)localObject2).content, "UTF-8");
-                                    paramString1 = paramString3;
-                                    paramString3 = com.tencent.mm.pluginsdk.ui.span.l.brD(paramString3);
-                                    paramString1 = paramString3;
-                                  }
-                                  catch (Exception paramString3)
-                                  {
-                                    try
-                                    {
-                                      paramPString1.value = paramString1;
-                                      paramString3 = "";
-                                      localObject2 = null;
-                                      i = 0;
-                                    }
-                                    catch (Exception paramString3)
-                                    {
-                                      for (;;)
-                                      {
-                                        continue;
-                                        paramString3 = paramString1;
-                                        continue;
-                                      }
-                                    }
-                                    paramString3 = paramString3;
-                                  }
-                                }
-                              }
-                              Log.printErrStackTrace("MicroMsg.Notification.Wording", paramString3, "", new Object[0]);
-                              paramString3 = "";
+                              paramPString1.value = paramString3;
                               localObject2 = null;
                               i = 0;
-                              break label963;
-                              paramString1 = ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.a.e.class)).aOg(paramString3);
-                              if (paramString1 != null) {}
-                              for (paramString3 = paramString1.toString();; paramString3 = "")
-                              {
-                                paramString1 = paramString3;
-                                if (paramBoolean1)
-                                {
-                                  paramString1 = paramString3;
-                                  if (ab.Lj(paramString2))
-                                  {
-                                    paramString1 = paramString3;
-                                    if (paramString3.endsWith(paramContext.getString(R.l.eum)))
-                                    {
-                                      Log.i("MicroMsg.Notification.Wording", "conv.getDigest() : %s", new Object[] { paramString3 });
-                                      paramString1 = paramString3.substring(0, paramString3.length() - paramContext.getString(R.l.eum).length());
-                                    }
-                                  }
-                                }
-                                paramPString1.value = paramString1;
-                                paramString3 = "";
-                                localObject2 = null;
-                                i = 0;
-                                break;
-                              }
-                              paramString3 = com.tencent.mm.aj.b.c.Pb(paramString3).content;
+                              paramString3 = (String)localObject4;
+                              break;
+                              paramString3 = paramContext.getString(R.l.gIZ, new Object[] { paramString1.nickName });
                               paramString1 = paramString3;
-                              if (Util.isNullOrNil(paramString3)) {
-                                paramString1 = "";
+                              if (au.bwp(paramString2)) {
+                                break label7488;
                               }
-                              paramPString1.value = paramString1;
-                              paramString3 = "";
+                              paramString1 = paramString3;
+                              if (j != 0) {
+                                break label7488;
+                              }
+                              paramPString2.value = str1;
+                              paramString1 = paramString3;
+                              break label7488;
+                            }
+                            localObject3 = "";
+                            paramString1 = ((com.tencent.mm.plugin.patmsg.a.b)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.patmsg.a.b.class)).aRl(paramString3);
+                            if (paramString1.Ksg.size() > 0)
+                            {
+                              paramPString1.value = ((PluginPatMsg)com.tencent.mm.kernel.h.az(PluginPatMsg.class)).parseDisplayTemplate((ebe)paramString1.Ksg.getLast(), paramString2).result;
                               localObject2 = null;
                               i = 0;
-                              break label963;
-                              paramString1 = paramContext.getString(R.l.eOI);
-                              paramPString1.value = paramString1;
-                              paramString3 = "";
-                              localObject2 = null;
-                              i = 0;
-                              break label963;
-                              paramString1 = com.tencent.mm.aj.b.a.OY(paramString3);
-                              if ((Util.isNullOrNil(paramString1.nickname)) || (Util.isNullOrNil(paramString1.title))) {}
-                              for (paramString1 = "";; paramString1 = String.format(Locale.US, "%s: %s", new Object[] { paramString1.nickname, paramString1.title }))
+                              paramString1 = paramString3;
+                              paramString3 = (String)localObject3;
+                              break label995;
+                              paramString1 = k.b.Hf(Util.processXml((String)localObject3));
+                              if (paramString1 == null)
                               {
-                                paramPString1.value = paramString1;
-                                paramString3 = "";
-                                localObject2 = null;
-                                i = 0;
-                                break;
+                                Log.e("MicroMsg.Notification.Wording", "decode msg content failed");
+                                AppMethodBeat.o(238939);
+                                return "";
                               }
-                              str3 = "";
-                              paramString3 = k.b.OQ(Util.processXml((String)localObject3));
+                              paramString1 = paramContext.getString(R.l.app_live) + paramString1.getTitle();
+                              paramPString1.value = paramString1;
+                              paramString3 = "";
+                              localObject2 = null;
+                              i = 0;
+                              break label995;
+                              localObject4 = "";
+                              paramString3 = k.b.Hf(Util.processXml((String)localObject3));
                               if (paramString3 == null)
                               {
                                 Log.e("MicroMsg.Notification.Wording", "decode msg content failed");
-                                AppMethodBeat.o(227604);
+                                AppMethodBeat.o(238939);
                                 return "";
                               }
-                              if ((!ab.QL(paramString2)) && (j == 0)) {
+                              if ((!au.bwp(paramString2)) && (j == 0)) {
                                 paramPString2.value = str1;
                               }
-                              paramString1 = paramContext.getString(R.l.app_finder);
-                              paramString3 = (com.tencent.mm.plugin.findersdk.a.h)paramString3.ar(com.tencent.mm.plugin.findersdk.a.h.class);
-                              if ((paramString3 != null) && (!Util.isNullOrNil(paramString3.enf().topic)))
+                              paramString1 = paramContext.getString(R.l.app_finder_live);
+                              paramString3 = (com.tencent.mm.plugin.findersdk.a.b)paramString3.aK(com.tencent.mm.plugin.findersdk.a.b.class);
+                              if ((paramString3 != null) && (!Util.isNullOrNil(paramString3.frq().nickName))) {
+                                paramString1 = paramString1 + paramContext.getString(R.l.finder_live_invite_feed_of_user, new Object[] { paramString3.frq().nickName });
+                              }
+                              for (;;)
                               {
-                                if (paramString3.enf().wXA == 1)
+                                for (;;)
                                 {
-                                  paramString1 = paramString1 + MMApplicationContext.getContext().getString(R.l.finder_topic_card_prefix, new Object[] { paramString3.enf().topic });
-                                  if (str1.length() <= 0) {
-                                    break label10841;
-                                  }
-                                }
-                                label10841:
-                                for (paramString3 = "%s: ".concat(String.valueOf(paramString1));; paramString3 = paramString1)
-                                {
-                                  paramPString1.value = paramString3;
-                                  localObject2 = null;
-                                  i = 0;
-                                  paramString3 = str3;
-                                  break;
-                                  paramString1 = paramString1 + paramString3.enf().topic;
-                                  break label10776;
-                                }
-                                str3 = "";
-                                paramString3 = k.b.OQ(Util.processXml((String)localObject3));
-                                if (paramString3 == null)
-                                {
-                                  Log.e("MicroMsg.Notification.Wording", "decode MM_DATA_APPMSG_FINDER_AGGREATE_ACTIVITY msg content failed");
-                                  AppMethodBeat.o(227604);
-                                  return "";
-                                }
-                                if ((!ab.QL(paramString2)) && (j == 0)) {
-                                  paramPString2.value = str1;
-                                }
-                                paramString1 = paramContext.getString(R.l.app_finder);
-                                paramString3 = (com.tencent.mm.plugin.findersdk.a.c)paramString3.ar(com.tencent.mm.plugin.findersdk.a.c.class);
-                                if ((paramString3 != null) && (!Util.isNullOrNil(paramString3.enf().topic)) && (paramString3.enf().wXA == 7) && (paramString3.enf().STw != null))
-                                {
-                                  paramString1 = paramString1 + MMApplicationContext.getContext().getString(R.l.finder_activity_share_conversation_wording, new Object[] { paramString3.enf().STw.SCS, paramString3.enf().STw.SCR });
                                   if (str1.length() > 0) {}
                                   for (paramString3 = "%s: ".concat(String.valueOf(paramString1));; paramString3 = paramString1)
                                   {
                                     paramPString1.value = paramString3;
                                     localObject2 = null;
                                     i = 0;
-                                    paramString3 = str3;
+                                    paramString3 = (String)localObject4;
                                     break;
                                   }
-                                  paramString1 = Util.nullAsNil((String)XmlParser.parseXml((String)localObject3, "msg", null).get(".msg.appmsg.extinfo.notifymsg.preview.content"));
-                                  paramPString1.value = paramString1;
-                                  AppMethodBeat.o(227604);
-                                  return paramString1;
-                                  label11096:
-                                  paramString1 = paramString1.split("@bottle:");
-                                  if (paramString1.length > 1)
+                                  localObject4 = "";
+                                  paramString1 = k.b.Hf(Util.processXml((String)localObject3));
+                                  if (paramString1 == null)
                                   {
-                                    paramPString1.value = paramString1[1];
-                                    paramString1 = paramString1[1];
-                                    AppMethodBeat.o(227604);
-                                    return paramString1;
+                                    Log.e("MicroMsg.Notification.Wording", "decode msg content failed");
+                                    AppMethodBeat.o(238939);
+                                    return "";
                                   }
-                                  paramPString1.value = "";
-                                  AppMethodBeat.o(227604);
-                                  return null;
-                                  paramString2 = null;
-                                  paramPString2 = null;
-                                  paramContext = paramString1.split(":");
-                                  if ((paramContext == null) || (paramContext.length <= 0))
-                                  {
-                                    paramPString1.value = "";
-                                    AppMethodBeat.o(227604);
-                                    return null;
+                                  if ((!au.bwp(paramString2)) && (j == 0)) {
+                                    paramPString2.value = str1;
                                   }
-                                  paramContext = paramContext[0];
-                                  if (!Util.isNullOrNil(paramContext))
+                                  paramString1 = (com.tencent.mm.plugin.findersdk.a.g)paramString1.aK(com.tencent.mm.plugin.findersdk.a.g.class);
+                                  if ((paramString1 != null) && (!Util.isNullOrNil(paramString1.fru().poiName)))
                                   {
-                                    bh.beI();
-                                    paramPInt = com.tencent.mm.model.c.bbL().RG(paramContext);
-                                    paramContext = paramPString2;
-                                    if (paramPInt != null)
+                                    paramString1 = "" + MMApplicationContext.getContext().getString(R.l.finder_poi_share_notification, new Object[] { paramString1.fru().poiName });
+                                    if (str1.length() <= 0) {
+                                      break label8095;
+                                    }
+                                  }
+                                  for (paramString3 = "%s: ".concat(String.valueOf(paramString1));; paramString3 = paramString1)
+                                  {
+                                    paramPString1.value = paramString3;
+                                    localObject2 = null;
+                                    i = 0;
+                                    paramString3 = (String)localObject4;
+                                    break;
+                                    paramString1 = "" + paramContext.getString(R.l.finder_poi_share_notification_fallback);
+                                    break label8028;
+                                  }
+                                  paramString1 = Util.processXml((String)localObject3);
+                                  localObject4 = k.b.Hf(paramString1);
+                                  if (localObject4 == null)
+                                  {
+                                    Log.e("MicroMsg.Notification.Wording", "decode msg content failed");
+                                    AppMethodBeat.o(238939);
+                                    return "";
+                                  }
+                                  switch (((k.b)localObject4).type)
+                                  {
+                                  default: 
+                                    paramString3 = paramContext.getString(R.l.app_app);
+                                    localObject2 = null;
+                                    i = 0;
+                                    paramString1 = "";
+                                    break;
+                                  case 1: 
+                                  case 53: 
+                                  case 57: 
+                                    localObject3 = "";
+                                    if (str1.length() > 0)
                                     {
-                                      paramContext = paramPString2;
-                                      if (paramPInt.getCity() != null) {
-                                        paramContext = paramPInt.getCity();
+                                      paramString1 = str1 + ": " + ((k.b)localObject4).title;
+                                      if ((!au.bwp(paramString2)) && (j == 0)) {
+                                        paramPString2.value = str1;
+                                      }
+                                      if (str1.length() <= 0) {
+                                        break label8523;
                                       }
                                     }
-                                    if (paramContext != null)
+                                    for (paramString3 = "%s: " + ((k.b)localObject4).title;; paramString3 = ((k.b)localObject4).title)
                                     {
-                                      paramString2 = paramContext;
-                                      if (paramContext.length() > 0) {}
+                                      paramPString1.value = paramString3;
+                                      localObject2 = null;
+                                      i = 0;
+                                      paramString3 = (String)localObject3;
+                                      break;
+                                      paramString1 = ((k.b)localObject4).title;
+                                      break label8447;
+                                    }
+                                  case 2: 
+                                    localObject3 = paramContext.getString(R.l.app_pic);
+                                    if (str1.length() > 0)
+                                    {
+                                      paramString1 = str1 + ": ";
+                                      if ((!au.bwp(paramString2)) && (j == 0)) {
+                                        paramPString2.value = str1;
+                                      }
+                                      if (str1.length() <= 0) {
+                                        break label8627;
+                                      }
+                                    }
+                                    for (paramString3 = "%s: ";; paramString3 = "")
+                                    {
+                                      paramPString1.value = paramString3;
+                                      localObject2 = null;
+                                      i = 0;
+                                      paramString3 = (String)localObject3;
+                                      break;
+                                      paramString1 = "";
+                                      break label8572;
+                                    }
+                                  case 3: 
+                                  case 76: 
+                                    localObject3 = paramContext.getString(R.l.app_music) + " " + ((k.b)localObject4).title;
+                                    if (str1.length() > 0)
+                                    {
+                                      paramString1 = str1 + ": ";
+                                      if ((!au.bwp(paramString2)) && (j == 0)) {
+                                        paramPString2.value = str1;
+                                      }
+                                      if (str1.length() <= 0) {
+                                        break label8759;
+                                      }
+                                    }
+                                    for (paramString3 = "%s: ";; paramString3 = "")
+                                    {
+                                      paramPString1.value = paramString3;
+                                      localObject2 = ((k.b)localObject4).title;
+                                      i = 1;
+                                      paramString3 = (String)localObject3;
+                                      break;
+                                      paramString1 = "";
+                                      break label8700;
+                                    }
+                                  case 4: 
+                                    localObject3 = paramContext.getString(R.l.app_video);
+                                    if (str1.length() > 0)
+                                    {
+                                      paramString1 = str1 + ": ";
+                                      if ((!au.bwp(paramString2)) && (j == 0)) {
+                                        paramPString2.value = str1;
+                                      }
+                                      if (str1.length() <= 0) {
+                                        break label8864;
+                                      }
+                                    }
+                                    for (paramString3 = "%s: ";; paramString3 = "")
+                                    {
+                                      paramPString1.value = paramString3;
+                                      localObject2 = ((k.b)localObject4).title;
+                                      i = 1;
+                                      paramString3 = (String)localObject3;
+                                      break;
+                                      paramString1 = "";
+                                      break label8805;
+                                    }
+                                  case 6: 
+                                  case 74: 
+                                    localObject3 = paramContext.getString(R.l.app_file);
+                                    if (str1.length() > 0)
+                                    {
+                                      paramString1 = str1 + ": ";
+                                      if ((!au.bwp(paramString2)) && (j == 0)) {
+                                        paramPString2.value = str1;
+                                      }
+                                      if (str1.length() <= 0) {
+                                        break label8969;
+                                      }
+                                    }
+                                    for (paramString3 = "%s: ";; paramString3 = "")
+                                    {
+                                      paramPString1.value = paramString3;
+                                      localObject2 = ((k.b)localObject4).title;
+                                      i = 1;
+                                      paramString3 = (String)localObject3;
+                                      break;
+                                      paramString1 = "";
+                                      break label8910;
+                                    }
+                                  case 7: 
+                                    localObject3 = paramContext.getString(R.l.app_app);
+                                    if (str1.length() > 0)
+                                    {
+                                      paramString1 = str1 + ": ";
+                                      if ((!au.bwp(paramString2)) && (j == 0)) {
+                                        paramPString2.value = str1;
+                                      }
+                                      if (str1.length() <= 0) {
+                                        break label9070;
+                                      }
+                                    }
+                                    for (paramString3 = "%s: ";; paramString3 = "")
+                                    {
+                                      paramPString1.value = paramString3;
+                                      localObject2 = null;
+                                      i = 0;
+                                      paramString3 = (String)localObject3;
+                                      break;
+                                      paramString1 = "";
+                                      break label9015;
+                                    }
+                                  case 5: 
+                                    if (CG(paramString1))
+                                    {
+                                      paramString1 = paramContext.getString(R.l.app_video);
+                                      if (str1.length() <= 0) {
+                                        break label9201;
+                                      }
+                                      paramString3 = str1 + ": ";
+                                      if ((!au.bwp(paramString2)) && (j == 0) && (!au.bwy(paramString2))) {
+                                        paramPString2.value = str1;
+                                      }
+                                      if (str1.length() <= 0) {
+                                        break label9207;
+                                      }
+                                    }
+                                    for (localObject2 = "%s: ";; localObject2 = "")
+                                    {
+                                      paramPString1.value = ((String)localObject2);
+                                      localObject2 = ((k.b)localObject4).getTitle();
+                                      localObject3 = paramString1;
+                                      i = 1;
+                                      paramString1 = paramString3;
+                                      paramString3 = (String)localObject3;
+                                      break;
+                                      paramString1 = paramContext.getString(R.l.app_url);
+                                      break label9092;
+                                      paramString3 = "";
+                                      break label9122;
+                                    }
+                                  case 46: 
+                                    paramString3 = paramContext.getString(R.l.app_app);
+                                    localObject2 = null;
+                                    i = 0;
+                                    paramString1 = "";
+                                    break;
+                                  case 33: 
+                                  case 36: 
+                                    localObject3 = "";
+                                    paramString3 = paramContext.getString(R.l.app_brand_default_name_with_brackets);
+                                    if (str1.length() > 0)
+                                    {
+                                      paramString1 = str1 + ": " + paramString3 + ((k.b)localObject4).title;
+                                      if ((!au.bwp(paramString2)) && (j == 0) && (!au.bwy(paramString2))) {
+                                        paramPString2.value = str1;
+                                      }
+                                      if (str1.length() <= 0) {
+                                        break label9394;
+                                      }
+                                    }
+                                    for (paramString3 = "%s: " + paramString3 + ((k.b)localObject4).title;; paramString3 = paramString3 + ((k.b)localObject4).title)
+                                    {
+                                      paramPString1.value = paramString3;
+                                      localObject2 = null;
+                                      i = 0;
+                                      paramString3 = (String)localObject3;
+                                      break;
+                                      paramString1 = paramString3 + ((k.b)localObject4).title;
+                                      break label9290;
+                                    }
+                                  case 44: 
+                                    if (((k.b)localObject4).gK(false))
+                                    {
+                                      localObject3 = "";
+                                      paramString3 = ((k.b)localObject4).B(paramContext, true);
+                                      if (!Util.isNullOrNil(paramString3))
+                                      {
+                                        if (str1.length() > 0)
+                                        {
+                                          paramString1 = str1 + ": " + paramString3 + ((k.b)localObject4).title;
+                                          paramPString2.value = str1;
+                                          if (str1.length() <= 0) {
+                                            break label9576;
+                                          }
+                                        }
+                                        for (paramString3 = "%s: " + paramString3 + ((k.b)localObject4).title;; paramString3 = paramString3 + ((k.b)localObject4).title)
+                                        {
+                                          paramPString1.value = paramString3;
+                                          localObject2 = null;
+                                          i = 0;
+                                          paramString3 = (String)localObject3;
+                                          break;
+                                          paramString1 = paramString3 + ((k.b)localObject4).title;
+                                          break label9491;
+                                        }
+                                      }
+                                      paramString3 = paramContext.getString(R.l.app_app);
+                                      localObject2 = null;
+                                      i = 0;
+                                      paramString1 = "";
+                                      break;
+                                    }
+                                    paramString3 = paramContext.getString(R.l.app_app);
+                                    localObject2 = null;
+                                    i = 0;
+                                    paramString1 = "";
+                                    break;
+                                  case 8: 
+                                    paramString3 = paramContext.getString(R.l.app_emoji2);
+                                    if (str1.length() > 0) {}
+                                    for (paramString1 = str1 + ": ";; paramString1 = "")
+                                    {
+                                      if ((!au.bwp(paramString2)) && (j == 0)) {
+                                        paramPString2.value = str1;
+                                      }
+                                      paramPString1.value = "";
+                                      localObject2 = null;
+                                      i = 0;
+                                      break;
+                                    }
+                                  case 15: 
+                                  case 26: 
+                                  case 27: 
+                                    paramString3 = paramContext.getString(R.l.app_emoji_share);
+                                    if (str1.length() > 0) {}
+                                    for (paramString1 = str1 + ": ";; paramString1 = "")
+                                    {
+                                      if ((!au.bwp(paramString2)) && (j == 0)) {
+                                        paramPString2.value = str1;
+                                      }
+                                      paramPString1.value = "";
+                                      localObject2 = null;
+                                      i = 0;
+                                      break;
+                                    }
+                                  case 25: 
+                                    paramString3 = paramContext.getString(R.l.app_designer_share);
+                                    if (str1.length() > 0) {}
+                                    for (paramString1 = str1 + ": ";; paramString1 = "")
+                                    {
+                                      if ((!au.bwp(paramString2)) && (j == 0)) {
+                                        paramPString2.value = str1;
+                                      }
+                                      paramPString1.value = "";
+                                      localObject2 = null;
+                                      i = 0;
+                                      break;
+                                    }
+                                  case 17: 
+                                    localObject3 = "";
+                                    if (str1.length() > 0)
+                                    {
+                                      paramString1 = str1 + ": " + ((k.b)localObject4).title;
+                                      if ((!au.bwp(paramString2)) && (j == 0)) {
+                                        paramPString2.value = str1;
+                                      }
+                                      if (str1.length() <= 0) {
+                                        break label10002;
+                                      }
+                                    }
+                                    for (paramString3 = "%s: " + ((k.b)localObject4).title;; paramString3 = ((k.b)localObject4).title)
+                                    {
+                                      paramPString1.value = paramString3;
+                                      localObject2 = null;
+                                      i = 0;
+                                      paramString3 = (String)localObject3;
+                                      break;
+                                      paramString1 = ((k.b)localObject4).title;
+                                      break label9926;
+                                    }
+                                  case 19: 
+                                    localObject3 = paramContext.getString(R.l.app_record);
+                                    if (str1.length() > 0)
+                                    {
+                                      paramString1 = str1 + ": ";
+                                      if ((!au.bwp(paramString2)) && (j == 0)) {
+                                        paramPString2.value = str1;
+                                      }
+                                      if (str1.length() <= 0) {
+                                        break label10106;
+                                      }
+                                    }
+                                    for (paramString3 = "%s: ";; paramString3 = "")
+                                    {
+                                      paramPString1.value = paramString3;
+                                      localObject2 = null;
+                                      i = 0;
+                                      paramString3 = (String)localObject3;
+                                      break;
+                                      paramString1 = "";
+                                      break label10051;
+                                    }
+                                  case 24: 
+                                    paramString1 = "";
+                                    if (!Util.isNullOrNil(((k.b)localObject4).description))
+                                    {
+                                      i = ((k.b)localObject4).description.indexOf("\n");
+                                      paramString1 = ((k.b)localObject4).description;
+                                      if (i > 0) {
+                                        paramString1 = paramString1.substring(0, i);
+                                      }
                                     }
                                     else
                                     {
-                                      paramString2 = paramPInt.getProvince();
-                                    }
-                                  }
-                                  if (!Util.isNullOrNil(paramString3))
-                                  {
-                                    paramPString1.value = (paramString2 + ": " + paramString3);
-                                    paramString1 = paramString2 + ": " + paramString3;
-                                    AppMethodBeat.o(227604);
-                                    return paramString1;
-                                  }
-                                  paramString1 = paramString1.split("@bottle:");
-                                  if (paramString1.length > 1)
-                                  {
-                                    paramPString1.value = (paramString2 + ": " + paramString1[1]);
-                                    paramString1 = paramString2 + ": " + paramString1[1];
-                                    AppMethodBeat.o(227604);
-                                    return paramString1;
-                                  }
-                                  paramPString1.value = paramString2;
-                                  AppMethodBeat.o(227604);
-                                  return paramString2;
-                                  if (Util.isNullOrNil(paramString1)) {
-                                    paramPString1.value = "";
-                                  }
-                                  if (!Util.isNullOrNil(str1))
-                                  {
-                                    paramString2 = paramString1;
-                                    if (str2 != null)
-                                    {
-                                      paramString2 = paramString1;
-                                      if (str2.length() > 0) {
-                                        paramString2 = f(paramString1, str1, str2);
+                                      localObject3 = paramContext.getString(R.l.favorite_wenote_msg) + paramString1;
+                                      if (str1.length() <= 0) {
+                                        break label10277;
+                                      }
+                                      paramString1 = str1 + ": ";
+                                      if ((!au.bwp(paramString2)) && (j == 0)) {
+                                        paramPString2.value = str1;
+                                      }
+                                      if (str1.length() <= 0) {
+                                        break label10283;
                                       }
                                     }
-                                    if (Util.isNullOrNil(paramPString2.value))
+                                    for (paramString3 = "%s: ";; paramString3 = "")
                                     {
-                                      paramPString1.value = f(paramPString1.value, str1, "%s");
-                                      paramPString2.value = str1;
+                                      paramPString1.value = paramString3;
+                                      localObject2 = null;
+                                      i = 0;
+                                      paramString3 = (String)localObject3;
+                                      break;
+                                      i = ((k.b)localObject4).description.length();
+                                      break label10150;
+                                      paramString1 = "";
+                                      break label10215;
                                     }
-                                    paramString1 = o.La(paramString2);
-                                    paramPString1.value = o.La(paramPString1.value);
-                                    paramString2 = paramString1 + paramString3;
-                                    paramPString1.value += paramString3;
-                                    if ((paramBoolean1) && (!a(paramInt2, paramPString1, paramString2, paramString3))) {
-                                      a(paramInt2, paramPString1, paramPString2, paramPInt);
-                                    }
-                                    paramString1 = paramString2;
-                                    if (i != 0) {
-                                      paramString1 = paramString2.concat(" " + Util.nullAsNil((String)localObject2));
-                                    }
-                                    paramString1 = Util.nullAsNil(paramString1);
-                                    AppMethodBeat.o(227604);
-                                    return paramString1;
-                                  }
-                                  if ((ab.QL(paramString2)) || (j != 0) || (ab.QU(paramString2)))
-                                  {
-                                    str1 = paramString1;
-                                    if (paramString3 != null)
+                                  case 16: 
+                                    localObject3 = "";
+                                    paramString3 = paramContext.getString(R.l.card_msg_item_digest);
+                                    if (str1.length() > 0)
                                     {
-                                      str1 = paramString1;
-                                      if (paramString3.length() > 0) {
-                                        str1 = paramString3;
+                                      paramString1 = str1 + ": " + paramString3 + ((k.b)localObject4).title;
+                                      if ((!au.bwp(paramString2)) && (j == 0)) {
+                                        paramPString2.value = str1;
+                                      }
+                                      if (str1.length() <= 0) {
+                                        break label10426;
                                       }
                                     }
-                                    if (Util.isNullOrNil(str1))
+                                    for (paramString3 = "%s: ".concat(String.valueOf(paramString3));; paramString3 = String.valueOf(paramString3))
                                     {
-                                      paramPString1.value = "";
-                                      paramPString2.value = "";
-                                      AppMethodBeat.o(227604);
-                                      return "";
+                                      paramPString1.value = paramString3;
+                                      localObject2 = null;
+                                      i = 0;
+                                      paramString3 = (String)localObject3;
+                                      break;
+                                      paramString1 = paramString3 + ((k.b)localObject4).title;
+                                      break label10344;
                                     }
-                                    if (paramInt1 == 0)
+                                  case 34: 
+                                    localObject3 = "";
+                                    paramString1 = paramContext.getString(R.l.card_msg_item_digest);
+                                    if (paramInt1 == 1)
                                     {
-                                      paramPString1.value = "%s:".concat(String.valueOf(str1));
-                                      if (!paramBoolean1) {
-                                        break label11949;
+                                      paramString3 = paramString1 + ((k.b)localObject4).nSv;
+                                      if (str1.length() > 0) {}
+                                      for (paramString1 = "%s: ".concat(String.valueOf(paramString3));; paramString1 = String.valueOf(paramString3))
+                                      {
+                                        paramPString1.value = paramString1;
+                                        paramString1 = paramString3;
+                                        if (au.bwp(paramString2)) {
+                                          break label12868;
+                                        }
+                                        paramString1 = paramString3;
+                                        if (j != 0) {
+                                          break label12868;
+                                        }
+                                        paramPString2.value = str1;
+                                        localObject2 = null;
+                                        i = 0;
+                                        paramString1 = paramString3;
+                                        paramString3 = (String)localObject3;
+                                        break;
                                       }
-                                      a(paramInt2, paramPString1, paramPString2, paramPInt);
-                                      paramString1 = str1;
                                     }
-                                  }
-                                  for (;;)
-                                  {
-                                    paramString3 = paramString1;
-                                    if (i != 0)
+                                    paramString3 = paramString1 + ((k.b)localObject4).nSu;
+                                    if (str1.length() > 0) {}
+                                    for (paramString1 = "%s: ".concat(String.valueOf(paramString3));; paramString1 = String.valueOf(paramString3))
                                     {
-                                      paramString3 = paramString1;
-                                      if (localObject2 != null) {
-                                        paramString3 = paramString1.concat(" ".concat(String.valueOf(localObject2)));
+                                      paramPString1.value = paramString1;
+                                      break;
+                                    }
+                                  case 40: 
+                                    paramString1 = t.Hk(paramString1);
+                                    if ((paramString1 != null) && (paramString1.nUJ == 19))
+                                    {
+                                      localObject3 = paramContext.getString(R.l.app_record);
+                                      localObject2 = null;
+                                      i = 0;
+                                      paramString1 = paramString3;
+                                      paramString3 = (String)localObject3;
+                                      break;
+                                    }
+                                    localObject3 = paramContext.getString(R.l.app_app);
+                                    localObject2 = null;
+                                    i = 0;
+                                    paramString1 = paramString3;
+                                    paramString3 = (String)localObject3;
+                                    break;
+                                  case 68: 
+                                    localObject3 = "";
+                                    paramString3 = paramContext.getString(R.l.app_app);
+                                    if (str1.length() > 0)
+                                    {
+                                      paramString1 = str1 + ": " + paramString3 + ((k.b)localObject4).title;
+                                      if ((!au.bwp(paramString2)) && (j == 0) && (!au.bwy(paramString2))) {
+                                        paramPString2.value = str1;
                                       }
+                                      if (str1.length() <= 0) {
+                                        break label10829;
+                                      }
+                                    }
+                                    for (paramString3 = "%s: " + paramString3 + ((k.b)localObject4).title;; paramString3 = paramString3 + ((k.b)localObject4).title)
+                                    {
+                                      paramPString1.value = paramString3;
+                                      localObject2 = null;
+                                      i = 0;
+                                      paramString3 = (String)localObject3;
+                                      break;
+                                      paramString1 = paramString3 + ((k.b)localObject4).title;
+                                      break label10725;
+                                    }
+                                  case 83: 
+                                  case 84: 
+                                    localObject3 = paramContext.getString(R.l.teen_mode_authorization_prefix);
+                                    localObject2 = ((k.b)localObject4).getTitle();
+                                    if (str1.length() > 0)
+                                    {
+                                      paramString1 = str1 + ": ";
+                                      if ((!au.bwp(paramString2)) && (j == 0) && (!au.bwy(paramString2))) {
+                                        paramPString2.value = str1;
+                                      }
+                                      if (str1.length() <= 0) {
+                                        break label10961;
+                                      }
+                                    }
+                                    for (paramString3 = "%s: ";; paramString3 = "")
+                                    {
+                                      paramPString1.value = paramString3;
+                                      i = 1;
+                                      paramString3 = (String)localObject3;
+                                      break;
+                                      paramString1 = "";
+                                      break label10902;
                                     }
                                     paramString1 = paramString3;
                                     if (k != 0) {
-                                      paramString1 = JY(paramString3);
+                                      paramString1 = CD(paramString3);
                                     }
-                                    if ((!Util.isNullOrNil(paramString4)) && (com.tencent.mm.ao.g.Ux(paramString2)))
-                                    {
-                                      paramString2 = af.bju().UI(paramString4);
-                                      if ((paramString2 != null) && (!Util.isNullOrNil(paramString2.field_openId)) && (!Util.isNullOrNil(paramString2.field_nickname)) && ((paramInt3 == 2) || (paramString2.field_kfType == 2)))
-                                      {
-                                        paramPString1.value = ("%s:" + paramPString1.value);
-                                        paramPString2.value = paramString2.field_nickname;
-                                      }
-                                    }
-                                    paramString1 = Util.nullAsNil(paramString1);
-                                    AppMethodBeat.o(227604);
-                                    return paramString1;
-                                    paramPString1.value = (paramContext.getString(R.l.app_me) + ":" + str1);
-                                    break;
-                                    paramString1 = aa.PJ(paramPString2.value) + ":" + str1;
-                                    AppMethodBeat.o(227604);
-                                    return paramString1;
-                                    if ((paramString3 == null) || (paramString3.length() <= 0)) {
-                                      break label12033;
-                                    }
-                                    paramPString1.value = paramString3;
+                                    paramString3 = ((com.tencent.mm.plugin.biz.a.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.biz.a.a.class)).Hj(paramString1);
                                     paramString1 = paramString3;
-                                    if (paramBoolean1)
+                                    if (k != 0) {
+                                      paramString1 = CC(paramString3);
+                                    }
+                                    paramString1 = com.tencent.mm.pluginsdk.ui.span.p.brr(paramString1);
+                                    paramPString1.value = paramString1;
+                                    paramString3 = "";
+                                    localObject2 = null;
+                                    i = 0;
+                                    break;
+                                    paramPString1.value = ((com.tencent.mm.plugin.biz.a.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.biz.a.a.class)).Hi(paramString3);
+                                    paramString3 = paramPString1.value;
+                                    Log.i("MicroMsg.Notification.Wording", "[parseMsgContentToShow] type:%s suffix:%s", new Object[] { Integer.valueOf(318767153), paramString3 });
+                                    localObject2 = null;
+                                    i = 0;
+                                    paramString1 = "";
+                                    break;
+                                    paramString1 = com.tencent.mm.ao.a.b(a.a.No(paramString3));
+                                    paramPString1.value = paramString1;
+                                    paramString3 = "";
+                                    localObject2 = null;
+                                    i = 0;
+                                    break;
+                                    paramString3 = "";
+                                    localObject2 = k.b.Hf((String)localObject3);
+                                    paramString1 = paramString3;
+                                    if (localObject2 == null) {
+                                      break label986;
+                                    }
+                                    paramString1 = paramString3;
+                                    try
                                     {
-                                      a(paramInt2, paramPString1, paramPString2, paramPInt);
+                                      paramString3 = URLDecoder.decode(((k.b)localObject2).content, "UTF-8");
                                       paramString1 = paramString3;
+                                      paramString3 = com.tencent.mm.pluginsdk.ui.span.p.brr(paramString3);
+                                      paramString1 = paramString3;
+                                    }
+                                    catch (Exception paramString3)
+                                    {
+                                      try
+                                      {
+                                        paramPString1.value = paramString1;
+                                        paramString3 = "";
+                                        localObject2 = null;
+                                        i = 0;
+                                      }
+                                      catch (Exception paramString3)
+                                      {
+                                        break label11179;
+                                      }
+                                      paramString3 = paramString3;
                                     }
                                   }
                                 }
+                                Log.printErrStackTrace("MicroMsg.Notification.Wording", paramString3, "", new Object[0]);
+                                paramString3 = "";
+                                localObject2 = null;
+                                i = 0;
+                                break label995;
+                                paramString1 = ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.a.e.class)).aLe(paramString3);
+                                if (paramString1 != null) {}
+                                for (paramString3 = paramString1.toString();; paramString3 = "")
+                                {
+                                  paramString1 = paramString3;
+                                  if (paramBoolean1)
+                                  {
+                                    paramString1 = paramString3;
+                                    if (au.bwE(paramString2))
+                                    {
+                                      paramString1 = paramString3;
+                                      if (paramString3.endsWith(paramContext.getString(R.l.gwK)))
+                                      {
+                                        Log.i("MicroMsg.Notification.Wording", "conv.getDigest() : %s", new Object[] { paramString3 });
+                                        paramString1 = paramString3.substring(0, paramString3.length() - paramContext.getString(R.l.gwK).length());
+                                      }
+                                    }
+                                  }
+                                  paramPString1.value = paramString1;
+                                  paramString3 = "";
+                                  localObject2 = null;
+                                  i = 0;
+                                  break;
+                                }
+                                paramString3 = com.tencent.mm.message.c.c.Hu(paramString3).content;
+                                paramString1 = paramString3;
+                                if (Util.isNullOrNil(paramString3)) {
+                                  paramString1 = "";
+                                }
+                                paramPString1.value = paramString1;
+                                paramString3 = "";
+                                localObject2 = null;
+                                i = 0;
+                                break label995;
+                                paramString1 = paramContext.getString(R.l.gQW);
+                                paramPString1.value = paramString1;
+                                paramString3 = "";
+                                localObject2 = null;
+                                i = 0;
+                                break label995;
+                                paramString1 = com.tencent.mm.message.c.a.Hr(paramString3);
+                                if ((Util.isNullOrNil(paramString1.nickname)) || (Util.isNullOrNil(paramString1.title))) {}
+                                for (paramString1 = "";; paramString1 = String.format(Locale.US, "%s: %s", new Object[] { paramString1.nickname, paramString1.title }))
+                                {
+                                  paramPString1.value = paramString1;
+                                  paramString3 = "";
+                                  localObject2 = null;
+                                  i = 0;
+                                  break;
+                                }
+                                localObject4 = "";
+                                paramString3 = k.b.Hf(Util.processXml((String)localObject3));
+                                if (paramString3 == null)
+                                {
+                                  Log.e("MicroMsg.Notification.Wording", "decode msg content failed");
+                                  AppMethodBeat.o(238939);
+                                  return "";
+                                }
+                                if ((!au.bwp(paramString2)) && (j == 0)) {
+                                  paramPString2.value = str1;
+                                }
+                                paramString1 = paramContext.getString(R.l.app_finder);
+                                paramString3 = (com.tencent.mm.plugin.findersdk.a.i)paramString3.aK(com.tencent.mm.plugin.findersdk.a.i.class);
+                                if ((paramString3 != null) && (!Util.isNullOrNil(paramString3.frr().topic)))
+                                {
+                                  if (paramString3.frr().Auy == 1)
+                                  {
+                                    paramString1 = paramString1 + MMApplicationContext.getContext().getString(R.l.finder_topic_card_prefix, new Object[] { paramString3.frr().topic });
+                                    if (str1.length() <= 0) {
+                                      break label11677;
+                                    }
+                                  }
+                                  for (paramString3 = "%s: ".concat(String.valueOf(paramString1));; paramString3 = paramString1)
+                                  {
+                                    paramPString1.value = paramString3;
+                                    localObject2 = null;
+                                    i = 0;
+                                    paramString3 = (String)localObject4;
+                                    break;
+                                    paramString1 = paramString1 + paramString3.frr().topic;
+                                    break label11612;
+                                  }
+                                  localObject4 = "";
+                                  paramString3 = k.b.Hf(Util.processXml((String)localObject3));
+                                  if (paramString3 == null)
+                                  {
+                                    Log.e("MicroMsg.Notification.Wording", "decode MM_DATA_APPMSG_FINDER_AGGREATE_ACTIVITY msg content failed");
+                                    AppMethodBeat.o(238939);
+                                    return "";
+                                  }
+                                  if ((!au.bwp(paramString2)) && (j == 0)) {
+                                    paramPString2.value = str1;
+                                  }
+                                  paramString1 = paramContext.getString(R.l.app_finder);
+                                  paramString3 = (com.tencent.mm.plugin.findersdk.a.c)paramString3.aK(com.tencent.mm.plugin.findersdk.a.c.class);
+                                  if ((paramString3 != null) && (!Util.isNullOrNil(paramString3.frr().topic)) && (paramString3.frr().Auy == 7) && (paramString3.frr().aade != null))
+                                  {
+                                    paramString1 = new StringBuilder().append(paramString1);
+                                    localObject2 = av.GiL;
+                                    paramString1 = av.a(paramString3.frr().aade);
+                                    if (str1.length() > 0) {}
+                                    for (paramString3 = "%s: ".concat(String.valueOf(paramString1));; paramString3 = paramString1)
+                                    {
+                                      paramPString1.value = paramString3;
+                                      localObject2 = null;
+                                      i = 0;
+                                      paramString3 = (String)localObject4;
+                                      break;
+                                    }
+                                    paramString1 = Util.nullAsNil((String)XmlParser.parseXml((String)localObject3, "msg", null).get(".msg.appmsg.extinfo.notifymsg.preview.content"));
+                                    paramPString1.value = paramString1;
+                                    AppMethodBeat.o(238939);
+                                    return paramString1;
+                                    paramString1 = paramString1.split("@bottle:");
+                                    if (paramString1.length > 1)
+                                    {
+                                      paramPString1.value = paramString1[1];
+                                      paramString1 = paramString1[1];
+                                      AppMethodBeat.o(238939);
+                                      return paramString1;
+                                    }
+                                    paramPString1.value = "";
+                                    AppMethodBeat.o(238939);
+                                    return null;
+                                    paramString2 = null;
+                                    paramPString2 = null;
+                                    paramContext = paramString1.split(":");
+                                    if ((paramContext == null) || (paramContext.length <= 0))
+                                    {
+                                      paramPString1.value = "";
+                                      AppMethodBeat.o(238939);
+                                      return null;
+                                    }
+                                    paramContext = paramContext[0];
+                                    if (!Util.isNullOrNil(paramContext))
+                                    {
+                                      bh.bCz();
+                                      paramPInt = com.tencent.mm.model.c.bzA().JE(paramContext);
+                                      paramContext = paramPString2;
+                                      if (paramPInt != null)
+                                      {
+                                        paramContext = paramPString2;
+                                        if (paramPInt.getCity() != null) {
+                                          paramContext = paramPInt.getCity();
+                                        }
+                                      }
+                                      if (paramContext != null)
+                                      {
+                                        paramString2 = paramContext;
+                                        if (paramContext.length() > 0) {}
+                                      }
+                                      else
+                                      {
+                                        paramString2 = paramPInt.getProvince();
+                                      }
+                                    }
+                                    if (!Util.isNullOrNil(paramString3))
+                                    {
+                                      paramPString1.value = (paramString2 + ": " + paramString3);
+                                      paramString1 = paramString2 + ": " + paramString3;
+                                      AppMethodBeat.o(238939);
+                                      return paramString1;
+                                    }
+                                    paramString1 = paramString1.split("@bottle:");
+                                    if (paramString1.length > 1)
+                                    {
+                                      paramPString1.value = (paramString2 + ": " + paramString1[1]);
+                                      paramString1 = paramString2 + ": " + paramString1[1];
+                                      AppMethodBeat.o(238939);
+                                      return paramString1;
+                                    }
+                                    paramPString1.value = paramString2;
+                                    AppMethodBeat.o(238939);
+                                    return paramString2;
+                                    if (Util.isNullOrNil(paramString1)) {
+                                      paramPString1.value = "";
+                                    }
+                                    if (!Util.isNullOrNil(str1))
+                                    {
+                                      paramString2 = paramString1;
+                                      if (str2 != null)
+                                      {
+                                        paramString2 = paramString1;
+                                        if (str2.length() > 0) {
+                                          paramString2 = k(paramString1, str1, str2);
+                                        }
+                                      }
+                                      if (Util.isNullOrNil(paramPString2.value))
+                                      {
+                                        paramPString1.value = k(paramPString1.value, str1, "%s");
+                                        paramPString2.value = str1;
+                                      }
+                                      paramString1 = com.tencent.mm.compatible.util.p.DE(paramString2);
+                                      paramPString1.value = com.tencent.mm.compatible.util.p.DE(paramPString1.value);
+                                      paramString2 = paramString1 + paramString3;
+                                      paramPString1.value += paramString3;
+                                      if ((paramBoolean1) && (!a(paramInt2, paramPString1, paramString2, paramString3))) {
+                                        a(paramInt2, paramPString1, paramPString2, paramPInt);
+                                      }
+                                      paramString1 = paramString2;
+                                      if (i != 0) {
+                                        paramString1 = paramString2.concat(" " + Util.nullAsNil((String)localObject2));
+                                      }
+                                      paramString1 = Util.nullAsNil(paramString1);
+                                      AppMethodBeat.o(238939);
+                                      return paramString1;
+                                    }
+                                    if ((au.bwp(paramString2)) || (j != 0) || (au.bwy(paramString2)) || (au.bwD(paramString2)))
+                                    {
+                                      str1 = paramString1;
+                                      if (paramString3 != null)
+                                      {
+                                        str1 = paramString1;
+                                        if (paramString3.length() > 0) {
+                                          str1 = paramString3;
+                                        }
+                                      }
+                                      if (Util.isNullOrNil(str1))
+                                      {
+                                        paramPString1.value = "";
+                                        paramPString2.value = "";
+                                        AppMethodBeat.o(238939);
+                                        return "";
+                                      }
+                                      if (paramInt1 == 0)
+                                      {
+                                        paramPString1.value = "%s:".concat(String.valueOf(str1));
+                                        if (!paramBoolean1) {
+                                          break label12769;
+                                        }
+                                        a(paramInt2, paramPString1, paramPString2, paramPInt);
+                                        paramString1 = str1;
+                                      }
+                                    }
+                                    for (;;)
+                                    {
+                                      paramString3 = paramString1;
+                                      if (i != 0)
+                                      {
+                                        paramString3 = paramString1;
+                                        if (localObject2 != null) {
+                                          paramString3 = paramString1.concat(" ".concat(String.valueOf(localObject2)));
+                                        }
+                                      }
+                                      paramString1 = paramString3;
+                                      if (k != 0) {
+                                        paramString1 = CD(paramString3);
+                                      }
+                                      if ((!Util.isNullOrNil(paramString4)) && (com.tencent.mm.an.g.Mw(paramString2)))
+                                      {
+                                        paramString2 = af.bHe().MH(paramString4);
+                                        if ((paramString2 != null) && (!Util.isNullOrNil(paramString2.field_openId)) && (!Util.isNullOrNil(paramString2.field_nickname)) && ((paramInt3 == 2) || (paramString2.field_kfType == 2)))
+                                        {
+                                          paramPString1.value = ("%s:" + paramPString1.value);
+                                          paramPString2.value = paramString2.field_nickname;
+                                        }
+                                      }
+                                      paramString1 = Util.nullAsNil(paramString1);
+                                      AppMethodBeat.o(238939);
+                                      return paramString1;
+                                      paramPString1.value = (paramContext.getString(R.l.app_me) + ":" + str1);
+                                      break;
+                                      paramString1 = aa.getDisplayName(paramPString2.value) + ":" + str1;
+                                      AppMethodBeat.o(238939);
+                                      return paramString1;
+                                      if ((paramString3 == null) || (paramString3.length() <= 0)) {
+                                        break label12857;
+                                      }
+                                      paramPString1.value = paramString3;
+                                      paramString1 = paramString3;
+                                      if (paramBoolean1)
+                                      {
+                                        a(paramInt2, paramPString1, paramPString2, paramPInt);
+                                        paramString1 = paramString3;
+                                      }
+                                    }
+                                  }
+                                }
+                                paramString3 = "";
+                                localObject2 = null;
+                                i = 0;
+                                break label995;
                               }
-                              paramString3 = "";
-                              localObject2 = null;
-                              i = 0;
-                              break label963;
                             }
+                            localObject2 = null;
+                            i = 0;
+                            paramString1 = paramString3;
+                            paramString3 = (String)localObject3;
+                            break label995;
+                            paramString1 = "";
                           }
-                          localObject2 = null;
-                          i = 0;
-                          paramString1 = paramString3;
-                          paramString3 = (String)localObject3;
-                          break label963;
                           paramString1 = "";
                         }
-                        paramString1 = "";
                       }
                     }
                   }
                 }
               }
+              label9070:
+              label9201:
+              paramString1 = paramString2;
+              label9576:
+              label10344:
+              break label2985;
+              label10215:
+              paramString1 = paramString2;
             }
-            label8113:
-            label8378:
-            label8773:
-            paramString1 = paramString2;
-            label8490:
-            label9284:
-            break label2528;
-            label9388:
-            label11949:
-            label12099:
-            paramString1 = paramString2;
           }
-          label6811:
-          label12114:
+          label5715:
+          label8028:
+          label11612:
           j = i;
         }
-        label8858:
+        label8523:
+        label8910:
+        label12240:
         localObject3 = paramString3;
-        label9497:
+        label9290:
+        label10829:
         str2 = "";
-        label10001:
-        label10776:
+        label9926:
         str1 = "";
       }
     }
@@ -2702,10 +2981,13 @@ public final class h
       AppMethodBeat.o(20085);
       return;
     }
-    if (paramPString1.value.length() >= 150) {
-      paramPString1.value = paramPString1.value.substring(0, Y(paramPString1.value, 150));
+    if (paramPString1.value.length() >= 200)
+    {
+      com.tencent.mm.smiley.j.iVg();
+      paramInt = com.tencent.mm.smiley.j.iE(paramPString1.value, 200);
+      paramPString1.value = paramPString1.value.substring(0, ah(paramPString1.value, paramInt));
     }
-    TextPaint localTextPaint = arx();
+    TextPaint localTextPaint = aLt();
     if ((paramPString1.value.replace("%%", "").contains("%s")) || (localTextPaint == null))
     {
       paramPInt.value = 0;
@@ -2731,23 +3013,23 @@ public final class h
   
   private static boolean a(int paramInt, PString paramPString, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(227618);
+    AppMethodBeat.i(238941);
     if (((paramPString.value.length() == 32) || (Util.isEqual(paramPString.value, paramString2))) && ((paramInt == 47) || (paramInt == 1048625)))
     {
       paramPString.value = paramString1;
-      AppMethodBeat.o(227618);
+      AppMethodBeat.o(238941);
       return true;
     }
-    AppMethodBeat.o(227618);
+    AppMethodBeat.o(238941);
     return false;
   }
   
-  private static int arv()
+  private static int aLr()
   {
     AppMethodBeat.i(169682);
-    if (iTj > 0)
+    if (lvh > 0)
     {
-      i = iTj;
+      i = lvh;
       AppMethodBeat.o(169682);
       return i;
     }
@@ -2756,12 +3038,12 @@ public final class h
     return i;
   }
   
-  private static int arw()
+  private static int aLs()
   {
     AppMethodBeat.i(20087);
-    if (iTi > 0)
+    if (lvg > 0)
     {
-      i = iTi;
+      i = lvg;
       AppMethodBeat.o(20087);
       return i;
     }
@@ -2770,55 +3052,73 @@ public final class h
     return i;
   }
   
-  private static TextPaint arx()
+  private static TextPaint aLt()
   {
     AppMethodBeat.i(20089);
-    if (iTh == null)
+    if (lvf == null)
     {
       AppMethodBeat.o(20089);
       return null;
     }
-    TextPaint localTextPaint = (TextPaint)iTh.get();
+    TextPaint localTextPaint = (TextPaint)lvf.get();
     AppMethodBeat.o(20089);
     return localTextPaint;
   }
   
-  public static String b(ca paramca, PString paramPString1, PString paramPString2, PInt paramPInt, boolean paramBoolean)
+  private static int ah(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(20088);
+    while (paramInt < paramString.length())
+    {
+      if (paramString.charAt(paramInt) != '%')
+      {
+        AppMethodBeat.o(20088);
+        return paramInt;
+      }
+      paramInt += 1;
+    }
+    paramInt = paramString.length();
+    AppMethodBeat.o(20088);
+    return paramInt;
+  }
+  
+  public static String b(Context paramContext, String paramString1, String paramString2, int paramInt)
+  {
+    AppMethodBeat.i(20071);
+    paramContext = a(0, paramString2, paramString1, paramInt, paramContext);
+    EmojiHelper.iUM();
+    paramContext = com.tencent.mm.pluginsdk.ui.span.p.brr(EmojiHelper.buv(paramContext));
+    AppMethodBeat.o(20071);
+    return paramContext;
+  }
+  
+  public static String b(cc paramcc, PString paramPString1, PString paramPString2, PInt paramPInt, boolean paramBoolean)
   {
     AppMethodBeat.i(20074);
     String str;
-    if (paramca.hzx())
+    if (paramcc.jbA())
     {
-      str = paramca.hAm();
-      if (!paramca.hwA()) {
+      str = paramcc.jct();
+      if (!paramcc.iYe()) {
         break label90;
       }
     }
-    for (paramca = com.tencent.mm.pluginsdk.ui.span.l.brD(a(paramca.field_imgPath, paramca.field_isSend, paramca.field_talker, str, paramca.getType(), MMApplicationContext.getContext(), paramPString1, paramPString2, paramPInt, true, paramBoolean, paramca.ilp, paramca.ilv));; paramca = a(paramca.field_imgPath, paramca.field_isSend, paramca.field_talker, str, paramca.getType(), MMApplicationContext.getContext(), paramPString1, paramPString2, paramPInt, true, paramBoolean, paramca.ilp, paramca.ilv))
+    for (paramcc = com.tencent.mm.pluginsdk.ui.span.p.brr(a(paramcc.field_imgPath, paramcc.field_isSend, paramcc.field_talker, str, paramcc.getType(), MMApplicationContext.getContext(), paramPString1, paramPString2, paramPInt, true, paramBoolean, paramcc.kLo, paramcc.kLu));; paramcc = a(paramcc.field_imgPath, paramcc.field_isSend, paramcc.field_talker, str, paramcc.getType(), MMApplicationContext.getContext(), paramPString1, paramPString2, paramPInt, true, paramBoolean, paramcc.kLo, paramcc.kLu))
     {
-      paramca = Util.nullAsNil(paramca);
+      paramcc = Util.nullAsNil(paramcc);
       AppMethodBeat.o(20074);
-      return paramca;
-      str = paramca.field_content;
+      return paramcc;
+      str = paramcc.field_content;
       break;
       label90:
-      str = com.tencent.mm.pluginsdk.ui.span.l.brD(str);
+      str = com.tencent.mm.pluginsdk.ui.span.p.brr(str);
     }
   }
   
-  public static void b(TextPaint paramTextPaint)
-  {
-    AppMethodBeat.i(20090);
-    if ((iTh == null) || (iTh.get() == null)) {
-      iTh = new WeakReference(paramTextPaint);
-    }
-    AppMethodBeat.o(20090);
-  }
-  
-  public static boolean b(String paramString, ca paramca)
+  public static boolean b(String paramString, cc paramcc)
   {
     AppMethodBeat.i(20070);
-    if ((paramca != null) && (paramca.field_bizChatId != -1L) && (com.tencent.mm.ao.g.KI(paramString)))
+    if ((paramcc != null) && (paramcc.field_bizChatId != -1L) && (com.tencent.mm.an.g.Dn(paramString)))
     {
       AppMethodBeat.o(20070);
       return true;
@@ -2827,12 +3127,21 @@ public final class h
     return false;
   }
   
-  private static String cl(Context paramContext)
+  public static void c(TextPaint paramTextPaint)
+  {
+    AppMethodBeat.i(20090);
+    if ((lvf == null) || (lvf.get() == null)) {
+      lvf = new WeakReference(paramTextPaint);
+    }
+    AppMethodBeat.o(20090);
+  }
+  
+  private static String cX(Context paramContext)
   {
     AppMethodBeat.i(20078);
-    boolean bool = z.bdA();
-    bh.beI();
-    long l = Util.nullAs((Long)com.tencent.mm.model.c.aHp().b(65793, null), 0L);
+    boolean bool = z.bBs();
+    bh.bCz();
+    long l = Util.nullAs((Long)com.tencent.mm.model.c.ban().d(65793, null), 0L);
     if (!bool)
     {
       paramContext = paramContext.getString(R.l.settings_plugins_disable);
@@ -2841,13 +3150,13 @@ public final class h
     }
     if (l == 0L)
     {
-      paramContext = paramContext.getString(R.l.eFJ);
+      paramContext = paramContext.getString(R.l.gIE);
       AppMethodBeat.o(20078);
       return paramContext;
     }
     if (Util.secondsToNow(l) * 1000L > 1209600000L)
     {
-      paramContext = paramContext.getString(R.l.eFI, new Object[] { Long.valueOf(Util.secondsToNow(l) * 1000L / 86400000L) });
+      paramContext = paramContext.getString(R.l.gID, new Object[] { Long.valueOf(Util.secondsToNow(l) * 1000L / 86400000L) });
       AppMethodBeat.o(20078);
       return paramContext;
     }
@@ -2858,7 +3167,8 @@ public final class h
   public static String d(Context paramContext, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(20091);
-    paramString = com.tencent.mm.cl.b.htF().buu(paramString);
+    EmojiHelper.iUM();
+    paramString = EmojiHelper.buv(paramString);
     if (paramBoolean)
     {
       AppMethodBeat.o(20091);
@@ -2874,48 +3184,50 @@ public final class h
     AppMethodBeat.i(20093);
     if (paramBoolean)
     {
-      paramContext = com.tencent.mm.cl.b.htF().buu(paramString);
+      EmojiHelper.iUM();
+      paramContext = EmojiHelper.buv(paramString);
       AppMethodBeat.o(20093);
       return paramContext;
     }
-    paramContext = paramContext.getString(R.l.eNG);
+    paramContext = paramContext.getString(R.l.gPU);
     AppMethodBeat.o(20093);
     return paramContext;
   }
   
-  public static String f(Context paramContext, String paramString1, String paramString2)
+  public static String j(Context paramContext, String paramString1, String paramString2)
   {
     AppMethodBeat.i(20072);
-    if (ab.Lj(paramString1))
+    if (au.bwE(paramString1))
     {
-      paramString2 = bq.RL(paramString2);
+      paramString2 = br.JJ(paramString2);
       if (paramString2 != null) {
-        paramString2 = aa.PJ(paramString2.trim());
+        paramString2 = aa.getDisplayName(paramString2.trim());
       }
     }
     while (paramString1.contains("@bottle"))
     {
-      paramContext = paramContext.getResources().getQuantityString(R.j.emm, 1, new Object[] { Integer.valueOf(1) });
+      paramContext = paramContext.getResources().getQuantityString(R.j.gpp, 1, new Object[] { Integer.valueOf(1) });
       AppMethodBeat.o(20072);
       return paramContext;
-      paramString2 = aa.PJ(paramString1);
+      paramString2 = aa.getDisplayName(paramString1);
       continue;
-      paramString2 = aa.PJ(paramString1);
+      paramString2 = aa.getDisplayName(paramString1);
     }
     String str = paramString2;
     if (Util.isNullOrNil(paramString2))
     {
       str = paramString2;
-      if (ab.Lj(paramString1)) {
-        str = paramContext.getString(R.l.ewS);
+      if (au.bwE(paramString1)) {
+        str = paramContext.getString(R.l.gzv);
       }
     }
-    paramContext = com.tencent.mm.cl.b.htF().buu(str);
+    EmojiHelper.iUM();
+    paramContext = EmojiHelper.buv(str);
     AppMethodBeat.o(20072);
     return paramContext;
   }
   
-  private static String f(String paramString1, String paramString2, String paramString3)
+  private static String k(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(20080);
     if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)) || (Util.isNullOrNil(paramString3)))
@@ -2936,12 +3248,12 @@ public final class h
   
   public static void qr(int paramInt)
   {
-    iTi = paramInt;
+    lvg = paramInt;
   }
   
   public static void qs(int paramInt)
   {
-    iTj = paramInt;
+    lvh = paramInt;
   }
 }
 

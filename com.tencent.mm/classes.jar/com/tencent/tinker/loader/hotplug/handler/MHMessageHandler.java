@@ -15,7 +15,6 @@ import com.tencent.tinker.loader.shareutil.ShareReflectUtil;
 import com.tencent.tinker.loader.shareutil.ShareTinkerLog;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
 
 public class MHMessageHandler
   implements HandlerMessageInterceptor.MessageHandler
@@ -35,7 +34,7 @@ public class MHMessageHandler
       LAUNCH_ACTIVITY = i;
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
@@ -57,41 +56,81 @@ public class MHMessageHandler
     this.mContext = paramContext;
   }
   
+  /* Error */
   private <T> void copyInstanceFields(T paramT1, T paramT2)
   {
-    if ((paramT1 == null) || (paramT2 == null)) {
-      return;
-    }
-    Class localClass = paramT1.getClass();
-    while (!localClass.equals(Object.class))
-    {
-      Field[] arrayOfField = localClass.getDeclaredFields();
-      int j = arrayOfField.length;
-      int i = 0;
-      label39:
-      Field localField;
-      if (i < j)
-      {
-        localField = arrayOfField[i];
-        if ((!localField.isSynthetic()) && (!Modifier.isStatic(localField.getModifiers()))) {
-          if (!localField.isAccessible()) {
-            localField.setAccessible(true);
-          }
-        }
-      }
-      try
-      {
-        localField.set(paramT2, localField.get(paramT1));
-        label96:
-        i += 1;
-        break label39;
-        localClass = localClass.getSuperclass();
-      }
-      catch (Throwable localThrowable)
-      {
-        break label96;
-      }
-    }
+    // Byte code:
+    //   0: aload_1
+    //   1: ifnull +7 -> 8
+    //   4: aload_2
+    //   5: ifnonnull +4 -> 9
+    //   8: return
+    //   9: aload_1
+    //   10: invokevirtual 63	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   13: astore 5
+    //   15: aload 5
+    //   17: ldc 4
+    //   19: invokevirtual 67	java/lang/Object:equals	(Ljava/lang/Object;)Z
+    //   22: ifne -14 -> 8
+    //   25: aload 5
+    //   27: invokevirtual 71	java/lang/Class:getDeclaredFields	()[Ljava/lang/reflect/Field;
+    //   30: astore 6
+    //   32: aload 6
+    //   34: arraylength
+    //   35: istore 4
+    //   37: iconst_0
+    //   38: istore_3
+    //   39: iload_3
+    //   40: iload 4
+    //   42: if_icmpge +61 -> 103
+    //   45: aload 6
+    //   47: iload_3
+    //   48: aaload
+    //   49: astore 7
+    //   51: aload 7
+    //   53: invokevirtual 75	java/lang/reflect/Field:isSynthetic	()Z
+    //   56: ifne +40 -> 96
+    //   59: aload 7
+    //   61: invokevirtual 79	java/lang/reflect/Field:getModifiers	()I
+    //   64: invokestatic 85	java/lang/reflect/Modifier:isStatic	(I)Z
+    //   67: ifne +29 -> 96
+    //   70: aload 7
+    //   72: invokevirtual 88	java/lang/reflect/Field:isAccessible	()Z
+    //   75: ifne +9 -> 84
+    //   78: aload 7
+    //   80: iconst_1
+    //   81: invokevirtual 92	java/lang/reflect/Field:setAccessible	(Z)V
+    //   84: aload 7
+    //   86: aload_2
+    //   87: aload 7
+    //   89: aload_1
+    //   90: invokevirtual 96	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   93: invokevirtual 99	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   96: iload_3
+    //   97: iconst_1
+    //   98: iadd
+    //   99: istore_3
+    //   100: goto -61 -> 39
+    //   103: aload 5
+    //   105: invokevirtual 102	java/lang/Class:getSuperclass	()Ljava/lang/Class;
+    //   108: astore 5
+    //   110: goto -95 -> 15
+    //   113: astore 7
+    //   115: goto -19 -> 96
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	118	0	this	MHMessageHandler
+    //   0	118	1	paramT1	T
+    //   0	118	2	paramT2	T
+    //   38	62	3	i	int
+    //   35	8	4	j	int
+    //   13	96	5	localClass	Class
+    //   30	16	6	arrayOfField	Field[]
+    //   49	39	7	localField	Field
+    //   113	1	7	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   84	96	113	finally
   }
   
   private void fixActivityScreenOrientation(Object paramObject, int paramInt)
@@ -107,7 +146,7 @@ public class MHMessageHandler
       ShareReflectUtil.findMethod(localObject, "setRequestedOrientation", new Class[] { IBinder.class, Integer.TYPE }).invoke(localObject, new Object[] { paramObject, Integer.valueOf(i) });
       return;
     }
-    catch (Throwable paramObject)
+    finally
     {
       ShareTinkerLog.e("Tinker.MHMsgHndlr", "Failed to fix screen orientation.", new Object[] { paramObject });
     }
@@ -138,7 +177,7 @@ public class MHMessageHandler
           return false;
         }
       }
-      catch (Throwable paramMessage)
+      finally
       {
         ShareTinkerLog.e("Tinker.MHMsgHndlr", "exception in handleMessage.", new Object[] { paramMessage });
         return false;
@@ -170,7 +209,7 @@ public class MHMessageHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.loader.hotplug.handler.MHMessageHandler
  * JD-Core Version:    0.7.0.1
  */

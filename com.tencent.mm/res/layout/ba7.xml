@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:configChanges="keyboardHidden|orientation" android:id="@id/goe" android:layout_width="fill_parent" android:layout_height="fill_parent" android:windowSoftInputMode="stateHidden" style="@style/rj"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:invoice="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <FrameLayout android:orientation="vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="0.0dip">
-        <LinearLayout android:orientation="vertical" android:background="@color/kz" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="14.0dip" android:textColor="@color/l4" android:gravity="center_vertical" android:id="@id/gok" android:paddingLeft="24.0dip" android:paddingTop="8.0dip" android:focusable="false" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="50.0dip" android:layout_marginRight="@dimen/g" android:minWidth="50.0dip" android:text="@string/e54" android:singleLine="true" android:layout_centerVertical="true" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/p5" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="47.0dip">
+        <ImageView android:id="@id/d0o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bdr" />
+        <LinearLayout android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="@color/a7b" android:id="@id/d0u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textColor="@color/x0" android:id="@id/d0z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
         </LinearLayout>
-        <LinearLayout android:orientation="vertical" android:paddingLeft="16.0dip" android:paddingTop="60.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <com.tencent.mm.plugin.address.ui.InvoiceQrcodeTextView android:gravity="center_vertical" android:id="@id/gog" android:layout_height="wrap_content" android:minHeight="36.0dip" app:invoice_singleLine="false" app:invoice_tipmsg="@string/e5l" style="@style/p_" />
-            <com.tencent.mm.plugin.address.ui.InvoiceQrcodeTextView android:gravity="center_vertical" android:id="@id/goc" android:layout_height="wrap_content" android:minHeight="36.0dip" app:invoice_singleLine="false" app:invoice_tipmsg="@string/e5l" style="@style/p_" />
-            <com.tencent.mm.plugin.address.ui.InvoiceQrcodeTextView android:gravity="center_vertical" android:id="@id/gof" android:layout_height="wrap_content" android:minHeight="36.0dip" app:invoice_singleLine="false" app:invoice_tipmsg="@string/e5g" style="@style/p_" />
-            <com.tencent.mm.plugin.address.ui.InvoiceQrcodeTextView android:gravity="center_vertical" android:id="@id/gob" android:layout_height="wrap_content" android:minHeight="36.0dip" app:invoice_singleLine="false" app:invoice_tipmsg="@string/e51" style="@style/p_" />
-            <com.tencent.mm.plugin.address.ui.InvoiceQrcodeTextView android:gravity="center_vertical" android:id="@id/god" android:layout_height="wrap_content" android:minHeight="36.0dip" app:invoice_tipmsg="@string/e5b" style="@style/p_" />
-            <com.tencent.mm.plugin.address.ui.InvoiceQrcodeTextView android:gravity="center_vertical" android:id="@id/go_" android:layout_height="wrap_content" android:minHeight="36.0dip" app:invoice_singleLine="false" app:invoice_tipmsg="@string/e4u" style="@style/p_" />
-            <com.tencent.mm.plugin.address.ui.InvoiceQrcodeTextView android:gravity="center_vertical" android:id="@id/goa" android:minHeight="36.0dip" app:invoice_singleLine="false" app:invoice_tipmsg="@string/e4w" style="@style/p_" />
-            <View android:id="@id/e0n" android:background="@color/a7t" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="12.0dip" />
-            <ImageView android:layout_gravity="center_horizontal" android:id="@id/e0m" android:background="@color/am" android:layout_width="180.0dip" android:layout_height="180.0dip" android:layout_marginTop="15.0dip" android:layout_centerHorizontal="true" />
-            <TextView android:textSize="14.0dip" android:textColor="@color/uj" android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:id="@id/go6" android:visibility="visible" android:text="@string/e5d" android:layout_centerVertical="true" style="@style/p_" />
-        </LinearLayout>
-    </FrameLayout>
-</ScrollView>
+        <ImageView android:id="@id/d10" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/mm_submenu_normal" />
+    </LinearLayout>
+</LinearLayout>

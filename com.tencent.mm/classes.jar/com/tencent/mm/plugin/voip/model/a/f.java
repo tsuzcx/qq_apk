@@ -1,19 +1,15 @@
 package com.tencent.mm.plugin.voip.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.plugin.voip.c.e;
-import com.tencent.mm.plugin.voip.model.l;
-import com.tencent.mm.plugin.voip.model.v2protocal;
-import com.tencent.mm.protocal.protobuf.fef;
-import com.tencent.mm.protocal.protobuf.feg;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.protocal.protobuf.gar;
+import com.tencent.mm.protocal.protobuf.gas;
 
 public final class f
-  extends n<fef, feg>
+  extends n<gar, gas>
 {
   private String TAG;
   
@@ -21,50 +17,33 @@ public final class f
   {
     AppMethodBeat.i(115234);
     this.TAG = "MicroMsg.NetSceneVoipHeartBeat";
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new fef();
-    ((d.a)localObject).lBV = new feg();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/voipheartbeat";
-    ((d.a)localObject).funcId = 178;
-    ((d.a)localObject).lBW = 81;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (fef)d.b.b(this.rr.lBR);
-    ((fef)localObject).Svu = paramInt1;
-    ((fef)localObject).Svv = paramLong;
-    ((fef)localObject).UCJ = System.currentTimeMillis();
-    ((fef)localObject).UDQ = paramInt2;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new gar();
+    ((c.a)localObject).otF = new gas();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/voipheartbeat";
+    ((c.a)localObject).funcId = 178;
+    ((c.a)localObject).otG = 81;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (gar)c.b.b(this.rr.otB);
+    ((gar)localObject).Zvz = paramInt1;
+    ((gar)localObject).ZvA = paramLong;
+    ((gar)localObject).abWT = System.currentTimeMillis();
+    ((gar)localObject).abYb = paramInt2;
     AppMethodBeat.o(115234);
-  }
-  
-  public final i gAU()
-  {
-    AppMethodBeat.i(115235);
-    i local1 = new i()
-    {
-      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
-      {
-        AppMethodBeat.i(115233);
-        if ((paramAnonymousInt1 != 0) && (paramAnonymousInt2 == 231))
-        {
-          e.Loge(f.a(f.this), "Voip heartbeat Failed, type:" + paramAnonymousq.getType() + " errType:" + paramAnonymousInt1 + " errCode:" + paramAnonymousInt2);
-          f.this.NMN.NMi.NSI.NNq = 111;
-          f.this.NMN.NMi.NSI.NNr = paramAnonymousInt2;
-          f.this.NMN.NMi.NSI.NNI = 2;
-          f.this.NMN.J(1, -9004, "");
-          AppMethodBeat.o(115233);
-          return;
-        }
-        AppMethodBeat.o(115233);
-      }
-    };
-    AppMethodBeat.o(115235);
-    return local1;
   }
   
   public final int getType()
   {
     return 178;
+  }
+  
+  public final h hYT()
+  {
+    AppMethodBeat.i(115235);
+    f.1 local1 = new f.1(this);
+    AppMethodBeat.o(115235);
+    return local1;
   }
 }
 

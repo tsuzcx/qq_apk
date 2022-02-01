@@ -1,292 +1,327 @@
 package com.tencent.mm.recoveryv2;
 
-import android.util.Log;
-import androidx.core.f.f.c;
+import android.app.Activity;
+import android.app.Service;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.text.SimpleDateFormat;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Locale;
+import com.tencent.mm.hellhoundlib.b.c;
 
-final class a
+public abstract interface a
 {
-  static void i(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(189865);
-    a.log(4, paramString1, paramString2);
-    AppMethodBeat.o(189865);
-  }
+  public abstract a a(h paramh);
   
-  static void w(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(189867);
-    a.log(5, paramString1, paramString2);
-    AppMethodBeat.o(189867);
-  }
+  public abstract void a(Context paramContext, RecoveryCrash paramRecoveryCrash);
   
-  static void w(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    AppMethodBeat.i(189870);
-    a.log(5, paramString1, paramString2 + " : " + Log.getStackTraceString(paramThrowable));
-    AppMethodBeat.o(189870);
-  }
+  public abstract void b(Context paramContext, RecoveryCrash paramRecoveryCrash);
   
-  static class a
+  public static abstract class a
+    implements a
   {
-    private static final List<a.b> UOT;
+    protected h acjN;
     
-    static
+    public final a a(h paramh)
     {
-      AppMethodBeat.i(189853);
-      UOT = new LinkedList();
-      AppMethodBeat.o(189853);
+      this.acjN = paramh;
+      return this;
     }
     
-    /* Error */
-    public static void D(java.io.File paramFile)
+    public void b(Context paramContext, RecoveryCrash paramRecoveryCrash)
     {
-      // Byte code:
-      //   0: ldc 36
-      //   2: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-      //   5: aload_0
-      //   6: invokevirtual 42	java/io/File:exists	()Z
-      //   9: ifne +7 -> 16
-      //   12: aload_0
-      //   13: invokestatic 47	com/tencent/mm/recoveryv2/m$b:G	(Ljava/io/File;)V
-      //   16: ldc 2
-      //   18: monitorenter
-      //   19: new 21	java/util/LinkedList
-      //   22: dup
-      //   23: getstatic 26	com/tencent/mm/recoveryv2/a$a:UOT	Ljava/util/List;
-      //   26: invokespecial 50	java/util/LinkedList:<init>	(Ljava/util/Collection;)V
-      //   29: astore_1
-      //   30: getstatic 26	com/tencent/mm/recoveryv2/a$a:UOT	Ljava/util/List;
-      //   33: invokeinterface 55 1 0
-      //   38: ldc 2
-      //   40: monitorexit
-      //   41: new 57	java/io/PrintWriter
-      //   44: dup
-      //   45: new 59	java/io/OutputStreamWriter
-      //   48: dup
-      //   49: new 61	java/io/FileOutputStream
-      //   52: dup
-      //   53: aload_0
-      //   54: iconst_1
-      //   55: invokespecial 64	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
-      //   58: ldc 66
-      //   60: invokespecial 69	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;Ljava/lang/String;)V
-      //   63: invokespecial 72	java/io/PrintWriter:<init>	(Ljava/io/Writer;)V
-      //   66: astore_2
-      //   67: aload_2
-      //   68: astore_0
-      //   69: aload_1
-      //   70: invokeinterface 76 1 0
-      //   75: astore_3
-      //   76: aload_2
-      //   77: astore_0
-      //   78: aload_3
-      //   79: invokeinterface 81 1 0
-      //   84: ifeq +200 -> 284
-      //   87: aload_2
-      //   88: astore_0
-      //   89: aload_3
-      //   90: invokeinterface 85 1 0
-      //   95: checkcast 87	com/tencent/mm/recoveryv2/a$b
-      //   98: astore 4
-      //   100: aload_2
-      //   101: astore_0
-      //   102: new 89	java/lang/StringBuilder
-      //   105: dup
-      //   106: invokespecial 90	java/lang/StringBuilder:<init>	()V
-      //   109: getstatic 94	com/tencent/mm/recoveryv2/a$b:UOV	Ljava/text/SimpleDateFormat;
-      //   112: aload 4
-      //   114: getfield 98	com/tencent/mm/recoveryv2/a$b:time	J
-      //   117: invokestatic 104	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-      //   120: invokevirtual 110	java/text/SimpleDateFormat:format	(Ljava/lang/Object;)Ljava/lang/String;
-      //   123: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   126: ldc 116
-      //   128: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   131: astore 5
-      //   133: aload_2
-      //   134: astore_0
-      //   135: aload 4
-      //   137: getfield 120	com/tencent/mm/recoveryv2/a$b:priority	I
-      //   140: tableswitch	default:+178 -> 318, 4:+132->272, 5:+138->278
-      //   165: astore_0
-      //   166: aload_2
-      //   167: aload 5
-      //   169: aload_1
-      //   170: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   173: ldc 122
-      //   175: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   178: aload 4
-      //   180: getfield 126	com/tencent/mm/recoveryv2/a$b:tag	Ljava/lang/String;
-      //   183: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   186: ldc 128
-      //   188: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   191: aload 4
-      //   193: getfield 131	com/tencent/mm/recoveryv2/a$b:UOW	Ljava/lang/String;
-      //   196: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   199: ldc 133
-      //   201: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   204: aload 4
-      //   206: getfield 136	com/tencent/mm/recoveryv2/a$b:msg	Ljava/lang/String;
-      //   209: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   212: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   215: invokevirtual 144	java/io/PrintWriter:println	(Ljava/lang/String;)V
-      //   218: goto -142 -> 76
-      //   221: astore_0
-      //   222: aload_2
-      //   223: astore_1
-      //   224: aload_0
-      //   225: astore_2
-      //   226: aload_1
-      //   227: astore_0
-      //   228: ldc 146
-      //   230: ldc 148
-      //   232: aload_2
-      //   233: invokestatic 152	com/tencent/mm/recoveryv2/a:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-      //   236: aload_1
-      //   237: invokestatic 156	com/tencent/mm/recoveryv2/m$b:closeQuietly	(Ljava/lang/Object;)V
-      //   240: ldc 36
-      //   242: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   245: return
-      //   246: astore_0
-      //   247: ldc 146
-      //   249: ldc 158
-      //   251: aload_0
-      //   252: invokestatic 152	com/tencent/mm/recoveryv2/a:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-      //   255: ldc 36
-      //   257: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   260: return
-      //   261: astore_0
-      //   262: ldc 2
-      //   264: monitorexit
-      //   265: ldc 36
-      //   267: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   270: aload_0
-      //   271: athrow
-      //   272: ldc 160
-      //   274: astore_1
-      //   275: goto -111 -> 164
-      //   278: ldc 162
-      //   280: astore_1
-      //   281: goto -117 -> 164
-      //   284: aload_2
-      //   285: invokestatic 156	com/tencent/mm/recoveryv2/m$b:closeQuietly	(Ljava/lang/Object;)V
-      //   288: ldc 36
-      //   290: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   293: return
-      //   294: astore_1
-      //   295: aconst_null
-      //   296: astore_0
-      //   297: aload_0
-      //   298: invokestatic 156	com/tencent/mm/recoveryv2/m$b:closeQuietly	(Ljava/lang/Object;)V
-      //   301: ldc 36
-      //   303: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   306: aload_1
-      //   307: athrow
-      //   308: astore_1
-      //   309: goto -12 -> 297
-      //   312: astore_2
-      //   313: aconst_null
-      //   314: astore_1
-      //   315: goto -89 -> 226
-      //   318: ldc 164
-      //   320: astore_1
-      //   321: goto -157 -> 164
-      // Local variable table:
-      //   start	length	slot	name	signature
-      //   0	324	0	paramFile	java.io.File
-      //   29	252	1	localObject1	Object
-      //   294	13	1	localObject2	Object
-      //   308	1	1	localObject3	Object
-      //   314	7	1	str	String
-      //   66	219	2	localObject4	Object
-      //   312	1	2	localIOException	java.io.IOException
-      //   75	15	3	localIterator	java.util.Iterator
-      //   98	107	4	localb	a.b
-      //   131	37	5	localStringBuilder	java.lang.StringBuilder
-      // Exception table:
-      //   from	to	target	type
-      //   69	76	221	java/io/IOException
-      //   78	87	221	java/io/IOException
-      //   89	100	221	java/io/IOException
-      //   102	133	221	java/io/IOException
-      //   135	164	221	java/io/IOException
-      //   166	218	221	java/io/IOException
-      //   12	16	246	java/io/IOException
-      //   19	41	261	finally
-      //   41	67	294	finally
-      //   69	76	308	finally
-      //   78	87	308	finally
-      //   89	100	308	finally
-      //   102	133	308	finally
-      //   135	164	308	finally
-      //   166	218	308	finally
-      //   228	236	308	finally
-      //   41	67	312	java/io/IOException
+      k.b.a.log(4, "MicroMsg.recovery.callback", "recovery on terminate");
     }
+  }
+  
+  public static class b
+    extends a.a
+  {
+    private boolean mcT = false;
     
-    public static void log(int paramInt, String paramString1, String paramString2)
+    public final void a(Context paramContext, RecoveryCrash paramRecoveryCrash)
     {
-      AppMethodBeat.i(189840);
-      a.b localb = a.b.hpX();
-      long l = System.currentTimeMillis();
-      String str = Thread.currentThread().getName();
-      localb.priority = paramInt;
-      localb.time = l;
-      localb.tag = paramString1;
-      localb.UOW = str;
-      localb.msg = paramString2;
-      try
+      AppMethodBeat.i(238077);
+      Intent localIntent = new Intent();
+      Class localClass = iQy();
+      if (localClass == null)
       {
-        UOT.add(localb);
+        k.b.a.log(4, "MicroMsg.recovery.callback", "can not get target activity, skip");
+        AppMethodBeat.o(238077);
         return;
       }
-      finally
+      try
       {
-        AppMethodBeat.o(189840);
+        k.b.a.log(4, "MicroMsg.recovery.callback", "start recovery activity, target = " + localClass.getName());
+        localIntent.setClass(paramContext, localClass);
+        localIntent.putExtra("extra_crash_count", paramRecoveryCrash.acjU.acjW);
+        localIntent.putExtra("extra_crash_record", paramRecoveryCrash.iQE());
+        localIntent.addFlags(276824064);
+        paramRecoveryCrash = new com.tencent.mm.hellhoundlib.b.a().cG(localIntent);
+        com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramRecoveryCrash.aYi(), "com/tencent/mm/recoveryv2/RecoveryCallback$ActivityRecoveryCallback", "onRecovery", "(Landroid/content/Context;Lcom/tencent/mm/recoveryv2/RecoveryCrash;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)paramRecoveryCrash.sb(0));
+        com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/recoveryv2/RecoveryCallback$ActivityRecoveryCallback", "onRecovery", "(Landroid/content/Context;Lcom/tencent/mm/recoveryv2/RecoveryCrash;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        this.mcT = true;
+        AppMethodBeat.o(238077);
+        return;
       }
+      catch (Exception paramContext)
+      {
+        k.b.w("MicroMsg.recovery.callback", "start activity fail", paramContext);
+        AppMethodBeat.o(238077);
+      }
+    }
+    
+    public final void b(Context paramContext, RecoveryCrash paramRecoveryCrash)
+    {
+      AppMethodBeat.i(238079);
+      if (!this.mcT)
+      {
+        k.b.a.log(5, "MicroMsg.recovery.callback", "do NOT suicide, bcs launching activity fail");
+        AppMethodBeat.o(238079);
+        return;
+      }
+      k.b.a.log(4, "MicroMsg.recovery.callback", "suicide when launch recovery activity");
+      if ((paramContext instanceof Activity)) {
+        ((Activity)paramContext).finish();
+      }
+      paramContext = c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
+      paramRecoveryCrash = new Object();
+      com.tencent.mm.hellhoundlib.a.a.b(paramRecoveryCrash, paramContext.aYi(), "com/tencent/mm/recoveryv2/RecoveryUtils$Internals", "killProcess", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+      Process.killProcess(((Integer)paramContext.sb(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.c(paramRecoveryCrash, "com/tencent/mm/recoveryv2/RecoveryUtils$Internals", "killProcess", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+      paramContext = c.a(0, new com.tencent.mm.hellhoundlib.b.a());
+      paramRecoveryCrash = new Object();
+      com.tencent.mm.hellhoundlib.a.a.b(paramRecoveryCrash, paramContext.aYi(), "com/tencent/mm/recoveryv2/RecoveryUtils$Internals", "killProcess", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
+      System.exit(((Integer)paramContext.sb(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.c(paramRecoveryCrash, "com/tencent/mm/recoveryv2/RecoveryUtils$Internals", "killProcess", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
+      AppMethodBeat.o(238079);
+    }
+    
+    protected Class<? extends Activity> iQy()
+    {
+      return null;
     }
   }
   
-  public static final class b
+  public static class c
+    extends a.a
   {
-    private static final f.c<b> UOU;
-    static final SimpleDateFormat UOV;
-    public String UOW;
-    public String msg;
-    public int priority;
-    public String tag;
-    public long time;
+    private a acjO;
     
-    static
+    public final void a(Context paramContext, RecoveryCrash paramRecoveryCrash)
     {
-      AppMethodBeat.i(189859);
-      UOU = new f.c(20);
-      UOV = new SimpleDateFormat("MM-dd HH:mm:ss.SSS", Locale.US);
-      AppMethodBeat.o(189859);
+      AppMethodBeat.i(238087);
+      if (paramRecoveryCrash.acjU.acjW < this.acjN.ackd)
+      {
+        AppMethodBeat.o(238087);
+        return;
+      }
+      int i;
+      if (paramRecoveryCrash.acjU.acjW < this.acjN.acke)
+      {
+        k.b.a.log(4, "MicroMsg.recovery.callback", "launch service for lower crash count");
+        i = 0;
+        if (i == 0) {
+          break label370;
+        }
+      }
+      label166:
+      label344:
+      label357:
+      label370:
+      for (this.acjO = new a.b()
+          {
+            protected final Class<? extends Activity> iQy()
+            {
+              AppMethodBeat.i(238073);
+              Class localClass = a.c.this.iQy();
+              if (localClass == null)
+              {
+                localClass = super.iQy();
+                AppMethodBeat.o(238073);
+                return localClass;
+              }
+              AppMethodBeat.o(238073);
+              return localClass;
+            }
+          };; this.acjO = new a.d()
+          {
+            protected final Class<? extends Service> iQz()
+            {
+              AppMethodBeat.i(238076);
+              Class localClass = a.c.this.iQz();
+              if (localClass == null)
+              {
+                localClass = super.iQz();
+                AppMethodBeat.o(238076);
+                return localClass;
+              }
+              AppMethodBeat.o(238076);
+              return localClass;
+            }
+          })
+      {
+        this.acjO.a(paramContext, paramRecoveryCrash);
+        AppMethodBeat.o(238087);
+        return;
+        Object localObject = h.b.lT(paramContext);
+        long l1 = System.currentTimeMillis();
+        long l2;
+        if (((h.b)localObject).ackm > 0L)
+        {
+          l2 = ((h.b)localObject).ackk;
+          if (l2 > 0L)
+          {
+            l2 = l1 - l2;
+            if ((l2 > 0L) && (l2 <= ((h.b)localObject).ackl))
+            {
+              k.b.a.log(4, "MicroMsg.recovery.callback", "do NOT launch ui too frequently, interval = ".concat(String.valueOf(l2)));
+              i = 0;
+              if (i != 0) {
+                break label357;
+              }
+              localObject = h.b.lT(paramContext);
+              l1 = ((h.b)localObject).ackk;
+              if (l1 > 0L) {
+                break label249;
+              }
+              i = 0;
+            }
+          }
+        }
+        for (;;)
+        {
+          if (i == 0) {
+            break label344;
+          }
+          localObject = i.lV(paramContext);
+          ((i)localObject).acks = false;
+          ((i)localObject).ackt = 1;
+          ((i)localObject).sz();
+          k.b.a.log(4, "MicroMsg.recovery.callback", "launch activity");
+          i = 1;
+          break;
+          ((h.b)localObject).ackk = l1;
+          ((h.b)localObject).sz();
+          i = 1;
+          break label166;
+          label249:
+          l2 = System.currentTimeMillis();
+          long l3 = ((h.b)localObject).ackl;
+          long l4 = l3 / 3L;
+          if (l2 - (l1 - l4) >= l3)
+          {
+            k.b.a.log(4, "MicroMsg.recovery.callback", "#checkOverHeat, YES!");
+            ((h.b)localObject).ackk = l2;
+            ((h.b)localObject).sz();
+            i = 1;
+          }
+          else
+          {
+            k.b.a.log(4, "MicroMsg.recovery.callback", "#checkOverHeat, inc last ui launch time, delta = ".concat(String.valueOf(l4)));
+            ((h.b)localObject).ackk = (l1 - l4);
+            ((h.b)localObject).sz();
+            i = 0;
+          }
+        }
+        k.b.a.log(4, "MicroMsg.recovery.callback", "launch service");
+        i = 0;
+        break;
+        k.b.a.log(4, "MicroMsg.recovery.callback", "launch activity for higher crash count");
+        i = 1;
+        break;
+      }
     }
     
-    public static b hpX()
+    public final void b(Context paramContext, RecoveryCrash paramRecoveryCrash)
     {
-      AppMethodBeat.i(189857);
-      b localb = (b)UOU.acquire();
-      if (localb != null)
-      {
-        AppMethodBeat.o(189857);
-        return localb;
+      AppMethodBeat.i(238098);
+      if (this.acjO != null) {
+        this.acjO.b(paramContext, paramRecoveryCrash);
       }
-      localb = new b();
-      AppMethodBeat.o(189857);
-      return localb;
+      AppMethodBeat.o(238098);
+    }
+    
+    protected Class<? extends Activity> iQy()
+    {
+      return null;
+    }
+    
+    protected Class<? extends Service> iQz()
+    {
+      return null;
+    }
+  }
+  
+  public static class d
+    extends a.a
+  {
+    public final void a(Context paramContext, RecoveryCrash paramRecoveryCrash)
+    {
+      AppMethodBeat.i(238090);
+      Class localClass = iQz();
+      if (localClass == null)
+      {
+        k.b.a.log(4, "MicroMsg.recovery.callback", "can not get target service, skip");
+        AppMethodBeat.o(238090);
+        return;
+      }
+      try
+      {
+        Intent localIntent = new Intent();
+        localIntent.setClass(paramContext, localClass);
+        localIntent.putExtra("extra_crash_count", paramRecoveryCrash.acjU.acjW);
+        localIntent.putExtra("extra_crash_record", paramRecoveryCrash.iQE());
+        return;
+      }
+      catch (Exception paramContext)
+      {
+        try
+        {
+          paramContext.startService(localIntent);
+          AppMethodBeat.o(238090);
+          return;
+        }
+        catch (Exception paramRecoveryCrash)
+        {
+          k.b.a.log(5, "MicroMsg.recovery.callback", "start service fail + " + paramRecoveryCrash.getMessage() + ", try bind service");
+          paramContext.bindService(localIntent, new ServiceConnection()
+          {
+            public final void onServiceConnected(ComponentName paramAnonymousComponentName, IBinder paramAnonymousIBinder)
+            {
+              AppMethodBeat.i(238026);
+              k.b.a.log(4, "MicroMsg.recovery.callback", "onServiceConnected");
+              AppMethodBeat.o(238026);
+            }
+            
+            public final void onServiceDisconnected(ComponentName paramAnonymousComponentName)
+            {
+              AppMethodBeat.i(238033);
+              k.b.a.log(4, "MicroMsg.recovery.callback", "onServiceDisconnected");
+              AppMethodBeat.o(238033);
+            }
+          }, 1);
+          AppMethodBeat.o(238090);
+        }
+        paramContext = paramContext;
+        k.b.w("MicroMsg.recovery.callback", "start service fail", paramContext);
+        AppMethodBeat.o(238090);
+        return;
+      }
+    }
+    
+    protected Class<? extends Service> iQz()
+    {
+      return null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.recoveryv2.a
  * JD-Core Version:    0.7.0.1
  */

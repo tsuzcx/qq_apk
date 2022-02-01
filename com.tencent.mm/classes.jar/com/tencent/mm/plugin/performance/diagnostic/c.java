@@ -4,8 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.e.i;
 import com.tencent.matrix.hook.HookManager;
+import com.tencent.matrix.hook.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.crash.CrashReportFactory;
 import com.tencent.mm.sdk.crash.ICrashReporter.ICrashReportExtraMessageGetter;
@@ -15,53 +15,54 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
+import com.tencent.threadpool.i;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-public abstract class c<HOOK extends com.tencent.matrix.hook.a, CONFIG extends a>
+public abstract class c<HOOK extends a, CONFIG extends a>
   implements com.tencent.mm.plugin.performance.a.c, e.a, ICrashReporter.ICrashReportExtraMessageGetter
 {
-  private static b GLA = null;
+  private static b MIv = null;
   private static String TAG = "MicroMsg.BaseHookLogic";
-  private final c GLz;
+  private final c MIu;
   
   static
   {
-    TAG += fnr();
+    TAG += gye();
   }
   
   public c()
   {
-    e.GMC.a(fnv(), this);
+    e.MJy.a(gyi(), this);
     CrashReportFactory.addCrashReportExtraMessageGetter(this);
-    this.GLz = new c(this);
+    this.MIu = new c(this);
   }
   
   public static void a(b paramb)
   {
-    GLA = paramb;
+    MIv = paramb;
   }
   
   private void a(Map<String, String> paramMap, d paramd)
   {
-    if (fny())
+    if (gyl())
     {
       b(paramMap, paramd);
       return;
     }
-    Log.e(TAG, "[%s] crash too many times, disable the hook", new Object[] { fnv() });
-    fnt().fnC();
+    Log.e(TAG, "[%s] crash too many times, disable the hook", new Object[] { gyi() });
+    gyg().gyq();
   }
   
-  public static void a(com.tencent.matrix.hook.a... paramVarArgs)
+  public static void a(a... paramVarArgs)
   {
-    HookManager localHookManager = HookManager.cYg;
+    HookManager localHookManager = HookManager.eUL;
     int j = 1;
     int k = paramVarArgs.length;
     int i = 0;
     while (i < k)
     {
-      com.tencent.matrix.hook.a locala = paramVarArgs[i];
+      a locala = paramVarArgs[i];
       if (locala != null) {
         j = 0;
       }
@@ -70,44 +71,42 @@ public abstract class c<HOOK extends com.tencent.matrix.hook.a, CONFIG extends a
     }
     if (j == 0)
     {
-      paramVarArgs = GLA;
+      paramVarArgs = MIv;
       if (paramVarArgs != null) {
-        paramVarArgs.fno();
+        paramVarArgs.gyb();
       }
-      localHookManager.WL();
+      localHookManager.axJ();
       if (paramVarArgs != null) {
-        paramVarArgs.fnp();
+        paramVarArgs.gyc();
       }
     }
   }
   
   private void b(Map<String, String> paramMap, d paramd)
   {
-    Log.i(TAG, "[%s] processCmd: [%s]", new Object[] { fnv(), paramMap });
-    boolean bool1 = fnt().fnB();
-    fnt().av(paramMap);
-    boolean bool2 = fnt().fnB();
-    fnt().fnJ();
-    if ((!bool1) && (bool2) && (fnt().fnJ()))
-    {
-      com.tencent.mm.plugin.expansions.a.dbf();
-      Log.i(TAG, "[%s] hook immediately", new Object[] { fnv() });
+    Log.i(TAG, "[%s] processCmd: [%s]", new Object[] { gyi(), paramMap });
+    boolean bool1 = gyg().gyp();
+    gyg().aL(paramMap);
+    boolean bool2 = gyg().gyp();
+    gyg().gyx();
+    if ((!bool1) && (bool2) && (gyg().gyx()) && (gyn())) {
+      Log.i(TAG, "[%s] hook immediately", new Object[] { gyi() });
     }
     try
     {
-      a(new com.tencent.matrix.hook.a[] { fns() });
+      a(new a[] { gyf() });
       a(paramd);
-      fnx();
-      this.GLz.install();
+      gyk();
+      this.MIu.install();
       return;
     }
-    catch (Throwable paramMap)
+    finally
     {
-      Log.printErrStackTrace(TAG, paramMap, "[%s] do hook error", new Object[] { fnv() });
+      Log.printErrStackTrace(TAG, paramMap, "[%s] do hook error", new Object[] { gyi() });
     }
   }
   
-  public static String fnr()
+  public static String gye()
   {
     Object localObject = MMApplicationContext.getProcessName();
     String str = "_others_";
@@ -149,43 +148,43 @@ public abstract class c<HOOK extends com.tencent.matrix.hook.a, CONFIG extends a
     return "_" + arrayOfString[1] + "_";
   }
   
-  private void fnx()
+  private void gyk()
   {
     String str = TAG + "-repeat";
-    final long l = fnt().fnI();
-    com.tencent.e.h.ZvG.bDh(str);
+    final long l = gyg().gyw();
+    com.tencent.threadpool.h.ahAA.bFQ(str);
     if (l < 0L)
     {
-      Log.i(TAG, "[%s] dump cycle is negative. just disable repeating dump", new Object[] { fnv() });
+      Log.i(TAG, "[%s] dump cycle is negative. just disable repeating dump", new Object[] { gyi() });
       return;
     }
-    com.tencent.e.h.ZvG.a(new Runnable()
+    com.tencent.threadpool.h.ahAA.a(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(201722);
-        if (c.this.fnt().fnB())
+        AppMethodBeat.i(300873);
+        if (c.this.gyg().gyp())
         {
-          c.this.hU(false);
-          com.tencent.e.h.ZvG.a(this, l, this.GLC);
+          c.this.iT(false);
+          com.tencent.threadpool.h.ahAA.a(this, l, this.MIx);
         }
-        AppMethodBeat.o(201722);
+        AppMethodBeat.o(300873);
       }
     }, l, str);
   }
   
-  private boolean fny()
+  private boolean gyl()
   {
-    if (BuildInfo.CLIENT_VERSION_INT != fnt().fnF()) {
-      fnt().fnG();
+    if (BuildInfo.CLIENT_VERSION_INT != gyg().gyt()) {
+      gyg().gyu();
     }
-    if ((fnt().fnH() >= 3) && (!BuildInfo.DEBUG) && (!WeChatEnvironment.hasDebugger())) {}
+    if ((gyg().gyv() >= 3) && (!BuildInfo.DEBUG) && (!WeChatEnvironment.hasDebugger())) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
-        Log.e(TAG, "[%s] crash too many times, disable hook", new Object[] { fnv() });
-        fnt().fnC();
+        Log.e(TAG, "[%s] crash too many times, disable hook", new Object[] { gyi() });
+        gyg().gyq();
       }
       if (i != 0) {
         break;
@@ -195,7 +194,7 @@ public abstract class c<HOOK extends com.tencent.matrix.hook.a, CONFIG extends a
     return false;
   }
   
-  protected static String fnz()
+  protected static String gym()
   {
     if (MMApplicationContext.isMainProcess()) {
       return "mm";
@@ -209,141 +208,64 @@ public abstract class c<HOOK extends com.tencent.matrix.hook.a, CONFIG extends a
     return "";
   }
   
+  private boolean gyn()
+  {
+    boolean bool = com.tencent.mm.plugin.expansions.e.aQh();
+    if (!bool)
+    {
+      Log.e(TAG, "expansions was NOT installed yet!! disable hook [%s]", new Object[] { gyi() });
+      gyg().gyq();
+    }
+    return bool;
+  }
+  
   protected void a(d paramd) {}
   
-  public final void au(Map<String, String> paramMap)
+  public final void aK(Map<String, String> paramMap)
   {
-    Log.e(TAG, "[%s] onReceiveCmd", new Object[] { fnv() });
-    String str = (String)paramMap.get(fnt().GLE);
-    if ((TextUtils.isEmpty(str)) || (d.GLR.name().equalsIgnoreCase(str))) {
-      b(paramMap, d.GLR);
+    Log.e(TAG, "[%s] onReceiveCmd", new Object[] { gyi() });
+    String str = (String)paramMap.get(gyg().MIz);
+    if ((TextUtils.isEmpty(str)) || (d.MIN.name().equalsIgnoreCase(str))) {
+      b(paramMap, d.MIN);
     }
     do
     {
       return;
-      if ((!fnt().fnB()) && (d.GLS.name().equalsIgnoreCase(str)))
+      if ((!gyg().gyp()) && (d.MIO.name().equalsIgnoreCase(str)))
       {
-        a(paramMap, d.GLS);
+        a(paramMap, d.MIO);
         return;
       }
-    } while ((fnt().fnB()) || (!d.GLT.name().equalsIgnoreCase(str)));
-    a(paramMap, d.GLT);
-  }
-  
-  public final void fnA()
-  {
-    if (fnt().fnB()) {
-      this.GLz.Pb(System.currentTimeMillis());
-    }
-  }
-  
-  public final String fnm()
-  {
-    return ".cmd.diagnostic." + fnv();
-  }
-  
-  public void fnn() {}
-  
-  protected abstract HOOK fns();
-  
-  public abstract CONFIG fnt();
-  
-  protected abstract String fnu();
-  
-  protected String fnv()
-  {
-    return null;
-  }
-  
-  public final HOOK fnw()
-  {
-    Log.i(TAG, "[%s] boot", new Object[] { fnv() });
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    long l1;
-    long l2;
-    int i;
-    if (fny())
-    {
-      localObject1 = localObject2;
-      if (fnt().fnB())
-      {
-        localObject1 = localObject2;
-        if (fnt().fnJ())
-        {
-          l1 = 3600000L * fnt().aba(0);
-          l2 = fnt().fnD();
-          Log.i(TAG, "[%s] hook duration = %s, hook begin time = %s", new Object[] { fnv(), Long.valueOf(l1), com.tencent.mm.plugin.performance.c.OZ(l2) });
-          if (l2 >= 0L) {
-            break label257;
-          }
-          l1 = System.currentTimeMillis();
-          fnt().Pa(l1);
-          Log.i(TAG, "[%s] update hookBeginTime = %s", new Object[] { fnv(), Long.valueOf(l1) });
-          i = 1;
-          label168:
-          localObject1 = localObject2;
-          if (i != 0)
-          {
-            com.tencent.mm.plugin.expansions.a.dbf();
-            localObject2 = fns();
-            localObject1 = localObject2;
-            if (localObject2 != null)
-            {
-              fnx();
-              this.GLz.install();
-              localObject1 = localObject2;
-            }
-          }
-        }
-      }
-    }
-    localObject2 = TAG;
-    String str = fnv();
-    if (localObject1 != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Log.i((String)localObject2, "[%s] boot enable=%s", new Object[] { str, Boolean.valueOf(bool) });
-      return localObject1;
-      label257:
-      i = fnt().fnF();
-      long l3 = System.currentTimeMillis();
-      if ((l3 - l2 <= l1) && (i == BuildInfo.CLIENT_VERSION_INT)) {
-        break;
-      }
-      fnt().fnC();
-      Log.i(TAG, "[%s] time out, disable hook: (%s > %s || 0x%x != 0x%x)", new Object[] { fnv(), Long.valueOf(l3 - l2), Long.valueOf(l1), Integer.valueOf(i), Integer.valueOf(BuildInfo.CLIENT_VERSION_INT) });
-      i = 0;
-      break label168;
-    }
+    } while ((gyg().gyp()) || (!d.MIP.name().equalsIgnoreCase(str)));
+    a(paramMap, d.MIP);
   }
   
   public final String getCrashReportExtraMessage()
   {
-    Log.e(TAG, "[%s] crash happened", new Object[] { fnv() });
-    boolean bool = fnt().fnB();
-    int j = fnt().fnH();
-    StringBuilder localStringBuilder = new StringBuilder(fnv()).append(":");
+    Log.e(TAG, "[%s] crash happened", new Object[] { gyi() });
+    boolean bool = gyg().gyp();
+    int j = gyg().gyv();
+    StringBuilder localStringBuilder = new StringBuilder(gyi()).append(":");
     localStringBuilder.append("\nenable=").append(bool);
     int i = j;
     if (bool) {}
     try
     {
-      hU(true);
-      Object localObject = fnu();
-      localObject = localStringBuilder.append(",").append((String)localObject).append(",begin:").append(com.tencent.mm.plugin.performance.c.OZ(fnt().fnD())).append(",crash times:");
+      iT(true);
+      Object localObject = gyh();
+      localObject = localStringBuilder.append(",").append((String)localObject).append(",begin:").append(com.tencent.mm.plugin.performance.c.tc(gyg().gyr())).append(",crash times:");
       i = j + 1;
       ((StringBuilder)localObject).append(i);
-      fnt().fnG();
+      gyg().gyu();
       if ((bool) && (i >= 3))
       {
-        fnt().fnC();
-        Log.e(TAG, "[%s] crash happens 3 times, disable hook: %s", new Object[] { fnv(), fnv() });
-        com.tencent.mm.plugin.report.service.h.IzE.p(1376L, 1L, 1L);
+        gyg().gyq();
+        Log.e(TAG, "[%s] crash happens 3 times, disable hook: %s", new Object[] { gyi(), gyi() });
+        com.tencent.mm.plugin.report.service.h.OAn.p(1376L, 1L, 1L);
       }
       return localStringBuilder.toString();
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
@@ -352,103 +274,194 @@ public abstract class c<HOOK extends com.tencent.matrix.hook.a, CONFIG extends a
     }
   }
   
-  public abstract void hU(boolean paramBoolean);
+  public final String gxZ()
+  {
+    return ".cmd.diagnostic." + gyi();
+  }
+  
+  public void gya() {}
+  
+  protected abstract HOOK gyf();
+  
+  public abstract CONFIG gyg();
+  
+  protected abstract String gyh();
+  
+  protected String gyi()
+  {
+    return null;
+  }
+  
+  public final HOOK gyj()
+  {
+    Log.i(TAG, "[%s] boot", new Object[] { gyi() });
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    long l1;
+    long l2;
+    int i;
+    if (gyl())
+    {
+      localObject1 = localObject2;
+      if (gyg().gyp())
+      {
+        localObject1 = localObject2;
+        if (gyg().gyx())
+        {
+          l1 = 3600000L * gyg().aft(0);
+          l2 = gyg().gyr();
+          Log.i(TAG, "[%s] hook duration = %s, hook begin time = %s", new Object[] { gyi(), Long.valueOf(l1), com.tencent.mm.plugin.performance.c.tc(l2) });
+          if (l2 >= 0L) {
+            break label264;
+          }
+          l1 = System.currentTimeMillis();
+          gyg().td(l1);
+          Log.i(TAG, "[%s] update hookBeginTime = %s", new Object[] { gyi(), Long.valueOf(l1) });
+          i = 1;
+          label168:
+          localObject1 = localObject2;
+          if (i != 0)
+          {
+            localObject1 = localObject2;
+            if (gyn())
+            {
+              localObject2 = gyf();
+              localObject1 = localObject2;
+              if (localObject2 != null)
+              {
+                gyk();
+                this.MIu.install();
+                localObject1 = localObject2;
+              }
+            }
+          }
+        }
+      }
+    }
+    localObject2 = TAG;
+    String str = gyi();
+    if (localObject1 != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Log.i((String)localObject2, "[%s] boot enable=%s", new Object[] { str, Boolean.valueOf(bool) });
+      return localObject1;
+      label264:
+      i = gyg().gyt();
+      long l3 = System.currentTimeMillis();
+      if ((l3 - l2 <= l1) && (i == BuildInfo.CLIENT_VERSION_INT)) {
+        break;
+      }
+      gyg().gyq();
+      Log.i(TAG, "[%s] time out, disable hook: (%s > %s || 0x%x != 0x%x)", new Object[] { gyi(), Long.valueOf(l3 - l2), Long.valueOf(l1), Integer.valueOf(i), Integer.valueOf(BuildInfo.CLIENT_VERSION_INT) });
+      i = 0;
+      break label168;
+    }
+  }
+  
+  public final void gyo()
+  {
+    if (gyg().gyp()) {
+      this.MIu.te(System.currentTimeMillis());
+    }
+  }
+  
+  public abstract void iT(boolean paramBoolean);
   
   public static abstract class a
   {
-    protected final String GLE;
-    private final String GLF;
-    private final String GLG;
-    private final String GLH;
-    private final String GLI;
-    private final String GLJ;
-    private final String GLK;
-    private final String GLL;
-    private final String GLM;
-    private final String GLN;
-    protected MultiProcessMMKV fbr = MultiProcessMMKV.getMMKV("diagnostic_storage");
+    private final String MIA;
+    private final String MIB;
+    private final String MIC;
+    private final String MID;
+    private final String MIE;
+    private final String MIF;
+    private final String MIG;
+    private final String MIH;
+    private final String MII;
+    protected final String MIz;
+    protected MultiProcessMMKV evW = MultiProcessMMKV.getMMKV("diagnostic_storage");
     
-    public a(c<? extends com.tencent.matrix.hook.a, ? extends a> paramc)
+    public a(c<? extends a, ? extends a> paramc)
     {
-      this.GLN = paramc.fnv();
-      this.GLE = (paramc.fnm() + ".$source");
-      this.GLF = (paramc.fnm() + ".$enable");
-      this.GLG = (paramc.fnm() + ".$duration");
-      this.GLH = (paramc.fnm() + ".begin");
-      this.GLI = (paramc.fnm() + ".$multiprocess");
-      this.GLJ = (paramc.fnm() + ".$process");
-      this.GLK = (paramc.fnm() + ".clientversion");
-      this.GLL = (paramc.fnm() + ".crash");
-      this.GLM = (paramc.fnm() + ".$dumpcycle");
+      this.MII = paramc.gyi();
+      this.MIz = (paramc.gxZ() + ".$source");
+      this.MIA = (paramc.gxZ() + ".$enable");
+      this.MIB = (paramc.gxZ() + ".$duration");
+      this.MIC = (paramc.gxZ() + ".begin");
+      this.MID = (paramc.gxZ() + ".$multiprocess");
+      this.MIE = (paramc.gxZ() + ".$process");
+      this.MIF = (paramc.gxZ() + ".clientversion");
+      this.MIG = (paramc.gxZ() + ".crash");
+      this.MIH = (paramc.gxZ() + ".$dumpcycle");
     }
     
     @Deprecated
-    private boolean fnE()
+    private boolean gys()
     {
-      return this.fbr.decodeBool(this.GLI, false);
+      return this.evW.decodeBool(this.MID, false);
     }
     
-    public final void Pa(long paramLong)
-    {
-      this.fbr.encode(this.GLH, paramLong);
-    }
-    
-    public final int aba(int paramInt)
-    {
-      return this.fbr.decodeInt(this.GLG, paramInt);
-    }
-    
-    public void av(Map<String, String> paramMap)
+    public void aL(Map<String, String> paramMap)
     {
       Log.i(c.TAG, "convert and save config");
-      this.fbr.encode(this.GLF, "1".equals(paramMap.get(this.GLF)));
-      this.fbr.encode(this.GLG, Util.getInt((String)paramMap.get(this.GLG), 0));
-      this.fbr.encode(this.GLH, System.currentTimeMillis());
-      this.fbr.encode(this.GLI, "1".equals(paramMap.get(this.GLI)));
-      this.fbr.encode(this.GLJ, (String)paramMap.get(this.GLJ));
-      this.fbr.encode(this.GLK, BuildInfo.CLIENT_VERSION_INT);
+      this.evW.encode(this.MIA, "1".equals(paramMap.get(this.MIA)));
+      this.evW.encode(this.MIB, Util.getInt((String)paramMap.get(this.MIB), 0));
+      this.evW.encode(this.MIC, System.currentTimeMillis());
+      this.evW.encode(this.MID, "1".equals(paramMap.get(this.MID)));
+      this.evW.encode(this.MIE, (String)paramMap.get(this.MIE));
+      this.evW.encode(this.MIF, BuildInfo.CLIENT_VERSION_INT);
     }
     
-    public final boolean fnB()
+    public final int aft(int paramInt)
     {
-      return this.fbr.decodeBool(this.GLF, false);
+      return this.evW.decodeInt(this.MIB, paramInt);
     }
     
-    public final void fnC()
+    public final String getTargetProcess()
     {
-      this.fbr.encode(this.GLF, false);
+      return this.evW.decodeString(this.MIE, "");
     }
     
-    public final long fnD()
+    public final boolean gyp()
     {
-      return this.fbr.decodeLong(this.GLH, 0L);
+      return this.evW.decodeBool(this.MIA, false);
     }
     
-    public final int fnF()
+    public final void gyq()
     {
-      return this.fbr.decodeInt(this.GLK, -1);
+      this.evW.encode(this.MIA, false);
     }
     
-    public final void fnG()
+    public final long gyr()
     {
-      this.fbr.encode(this.GLL, 0);
+      return this.evW.decodeLong(this.MIC, 0L);
     }
     
-    public final int fnH()
+    public final int gyt()
     {
-      return this.fbr.decodeInt(this.GLL, 0);
+      return this.evW.decodeInt(this.MIF, -1);
     }
     
-    public long fnI()
+    public final void gyu()
     {
-      return TimeUnit.MINUTES.toMillis(this.fbr.decodeLong(this.GLM, 30L));
+      this.evW.encode(this.MIG, 0);
     }
     
-    public final boolean fnJ()
+    public final int gyv()
     {
-      boolean bool = fnE();
+      return this.evW.decodeInt(this.MIG, 0);
+    }
+    
+    public long gyw()
+    {
+      return TimeUnit.MINUTES.toMillis(this.evW.decodeLong(this.MIH, 30L));
+    }
+    
+    public final boolean gyx()
+    {
+      boolean bool = gys();
       String str = getTargetProcess();
-      Log.i(c.TAG, "[%s] filterProcess: target process is %s, current process is %s", new Object[] { this.GLN, str, MMApplicationContext.getProcessName() });
+      Log.i(c.TAG, "[%s] filterProcess: target process is %s, current process is %s", new Object[] { this.MII, str, MMApplicationContext.getProcessName() });
       if ((str.contains("all")) || ((TextUtils.isEmpty(str)) && (bool))) {}
       while (((str.contains("mm")) || (TextUtils.isEmpty(str))) && ((MMApplicationContext.isMainProcess()) || ((str.contains("appbrand")) && (MMApplicationContext.isAppBrandProcess())) || ((str.contains("tools")) && ((MMApplicationContext.isToolsMpProcess()) || (MMApplicationContext.isToolsProcess()))))) {
         return true;
@@ -456,43 +469,33 @@ public abstract class c<HOOK extends com.tencent.matrix.hook.a, CONFIG extends a
       return false;
     }
     
-    public final String getTargetProcess()
+    public final void td(long paramLong)
     {
-      return this.fbr.decodeString(this.GLJ, "");
+      this.evW.encode(this.MIC, paramLong);
     }
   }
   
   public static abstract interface b
   {
-    public abstract void fno();
+    public abstract void gyb();
     
-    public abstract void fnp();
+    public abstract void gyc();
   }
   
   static final class c
     extends BroadcastReceiver
   {
-    private final String ACTION;
-    private final c<? extends com.tencent.matrix.hook.a, ? extends c.a> GLO;
-    private long GLP;
-    private boolean ddV;
+    private boolean MIJ;
+    private final c<? extends a, ? extends c.a> MIK;
+    private long MIL;
+    private final String mnL;
     
-    public c(c<? extends com.tencent.matrix.hook.a, ? extends c.a> paramc)
+    public c(c<? extends a, ? extends c.a> paramc)
     {
-      AppMethodBeat.i(200712);
-      this.GLO = paramc;
-      this.ACTION = ("com.tencent.mm.report." + paramc.fnv());
-      AppMethodBeat.o(200712);
-    }
-    
-    final void Pb(long paramLong)
-    {
-      AppMethodBeat.i(200716);
-      Log.d(c.TAG, "[%s] report token: %s", new Object[] { this.GLO.fnv(), Long.valueOf(paramLong) });
-      Intent localIntent = new Intent(this.ACTION);
-      localIntent.putExtra("PARAM_KEY_TOKEN", paramLong);
-      MMApplicationContext.getContext().sendBroadcast(localIntent, "com.tencent.mm.permission.MM_MESSAGE");
-      AppMethodBeat.o(200716);
+      AppMethodBeat.i(300864);
+      this.MIK = paramc;
+      this.mnL = ("com.tencent.mm.report." + paramc.gyi());
+      AppMethodBeat.o(300864);
     }
     
     /* Error */
@@ -501,44 +504,44 @@ public abstract class c<HOOK extends com.tencent.matrix.hook.a, CONFIG extends a
       // Byte code:
       //   0: aload_0
       //   1: monitorenter
-      //   2: ldc 107
+      //   2: ldc 62
       //   4: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   7: aload_0
-      //   8: getfield 109	com/tencent/mm/plugin/performance/diagnostic/c$c:ddV	Z
+      //   8: getfield 64	com/tencent/mm/plugin/performance/diagnostic/c$c:MIJ	Z
       //   11: ifeq +11 -> 22
-      //   14: ldc 107
+      //   14: ldc 62
       //   16: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   19: aload_0
       //   20: monitorexit
       //   21: return
-      //   22: new 111	android/content/IntentFilter
+      //   22: new 66	android/content/IntentFilter
       //   25: dup
       //   26: aload_0
-      //   27: getfield 52	com/tencent/mm/plugin/performance/diagnostic/c$c:ACTION	Ljava/lang/String;
-      //   30: invokespecial 112	android/content/IntentFilter:<init>	(Ljava/lang/String;)V
+      //   27: getfield 52	com/tencent/mm/plugin/performance/diagnostic/c$c:mnL	Ljava/lang/String;
+      //   30: invokespecial 67	android/content/IntentFilter:<init>	(Ljava/lang/String;)V
       //   33: astore_1
-      //   34: invokestatic 97	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+      //   34: invokestatic 73	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
       //   37: aload_0
       //   38: aload_1
-      //   39: ldc 99
+      //   39: ldc 75
       //   41: aconst_null
-      //   42: invokevirtual 116	android/content/Context:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;Ljava/lang/String;Landroid/os/Handler;)Landroid/content/Intent;
+      //   42: invokevirtual 81	android/content/Context:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;Ljava/lang/String;Landroid/os/Handler;)Landroid/content/Intent;
       //   45: pop
       //   46: aload_0
       //   47: iconst_1
-      //   48: putfield 109	com/tencent/mm/plugin/performance/diagnostic/c$c:ddV	Z
-      //   51: invokestatic 66	com/tencent/mm/plugin/performance/diagnostic/c:access$000	()Ljava/lang/String;
-      //   54: ldc 118
+      //   48: putfield 64	com/tencent/mm/plugin/performance/diagnostic/c$c:MIJ	Z
+      //   51: invokestatic 84	com/tencent/mm/plugin/performance/diagnostic/c:access$000	()Ljava/lang/String;
+      //   54: ldc 86
       //   56: iconst_1
-      //   57: anewarray 70	java/lang/Object
+      //   57: anewarray 88	java/lang/Object
       //   60: dup
       //   61: iconst_0
       //   62: aload_0
-      //   63: getfield 32	com/tencent/mm/plugin/performance/diagnostic/c$c:GLO	Lcom/tencent/mm/plugin/performance/diagnostic/c;
-      //   66: invokevirtual 43	com/tencent/mm/plugin/performance/diagnostic/c:fnv	()Ljava/lang/String;
+      //   63: getfield 32	com/tencent/mm/plugin/performance/diagnostic/c$c:MIK	Lcom/tencent/mm/plugin/performance/diagnostic/c;
+      //   66: invokevirtual 43	com/tencent/mm/plugin/performance/diagnostic/c:gyi	()Ljava/lang/String;
       //   69: aastore
-      //   70: invokestatic 120	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   73: ldc 107
+      //   70: invokestatic 93	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   73: ldc 62
       //   75: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   78: goto -59 -> 19
       //   81: astore_1
@@ -559,35 +562,45 @@ public abstract class c<HOOK extends com.tencent.matrix.hook.a, CONFIG extends a
     
     public final void onReceive(Context paramContext, Intent paramIntent)
     {
-      AppMethodBeat.i(200718);
+      AppMethodBeat.i(300894);
       long l = paramIntent.getLongExtra("PARAM_KEY_TOKEN", 0L);
       paramContext = paramIntent.getAction();
-      Log.i(c.TAG, "[%s] received token [%s], action [%s]", new Object[] { this.GLO.fnv(), Long.valueOf(l), paramContext });
+      Log.i(c.TAG, "[%s] received token [%s], action [%s]", new Object[] { this.MIK.gyi(), Long.valueOf(l), paramContext });
       if (l == 0L)
       {
-        Log.e(c.TAG, "[%s] ERR: report token should not be 0", new Object[] { this.GLO.fnv() });
-        AppMethodBeat.o(200718);
+        Log.e(c.TAG, "[%s] ERR: report token should not be 0", new Object[] { this.MIK.gyi() });
+        AppMethodBeat.o(300894);
         return;
       }
-      if (l <= this.GLP)
+      if (l <= this.MIL)
       {
-        Log.i(c.TAG, "[%s] already reported, xfer to next process, token [%s]", new Object[] { this.GLO.fnv(), Long.valueOf(l) });
-        AppMethodBeat.o(200718);
+        Log.i(c.TAG, "[%s] already reported, xfer to next process, token [%s]", new Object[] { this.MIK.gyi(), Long.valueOf(l) });
+        AppMethodBeat.o(300894);
         return;
       }
-      this.GLP = l;
-      com.tencent.e.h.ZvG.d(new Runnable()
+      this.MIL = l;
+      com.tencent.threadpool.h.ahAA.g(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(200813);
-          Log.d(c.TAG, "[%s] report async", new Object[] { c.this.fnv() });
-          c.this.hU(false);
-          Log.d(c.TAG, "[%s] report done.", new Object[] { c.this.fnv() });
-          AppMethodBeat.o(200813);
+          AppMethodBeat.i(300877);
+          Log.d(c.TAG, "[%s] report async", new Object[] { c.this.gyi() });
+          c.this.iT(false);
+          Log.d(c.TAG, "[%s] report done.", new Object[] { c.this.gyi() });
+          AppMethodBeat.o(300877);
         }
       }, "HookReporter");
-      AppMethodBeat.o(200718);
+      AppMethodBeat.o(300894);
+    }
+    
+    final void te(long paramLong)
+    {
+      AppMethodBeat.i(300883);
+      Log.d(c.TAG, "[%s] report token: %s", new Object[] { this.MIK.gyi(), Long.valueOf(paramLong) });
+      Intent localIntent = new Intent(this.mnL);
+      localIntent.putExtra("PARAM_KEY_TOKEN", paramLong);
+      MMApplicationContext.getContext().sendBroadcast(localIntent, "com.tencent.mm.permission.MM_MESSAGE");
+      AppMethodBeat.o(300883);
     }
   }
   
@@ -595,12 +608,12 @@ public abstract class c<HOOK extends com.tencent.matrix.hook.a, CONFIG extends a
   {
     static
     {
-      AppMethodBeat.i(200960);
-      GLR = new d("PUSH", 0);
-      GLS = new d("AUTO", 1);
-      GLT = new d("EXPT", 2);
-      GLU = new d[] { GLR, GLS, GLT };
-      AppMethodBeat.o(200960);
+      AppMethodBeat.i(300867);
+      MIN = new d("PUSH", 0);
+      MIO = new d("AUTO", 1);
+      MIP = new d("EXPT", 2);
+      MIQ = new d[] { MIN, MIO, MIP };
+      AppMethodBeat.o(300867);
     }
     
     private d() {}
@@ -608,7 +621,7 @@ public abstract class c<HOOK extends com.tencent.matrix.hook.a, CONFIG extends a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.diagnostic.c
  * JD-Core Version:    0.7.0.1
  */

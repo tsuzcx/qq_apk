@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.canvas.b;
 import android.graphics.Path;
 import android.graphics.RectF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.g;
+import com.tencent.mm.plugin.appbrand.af.i;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.path.BasePathActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.path.PathArcToActionArg;
 import org.json.JSONArray;
@@ -90,7 +90,7 @@ public final class c
       AppMethodBeat.o(145352);
       return false;
     }
-    boolean bool = a(paramPath, paramBasePathActionArg.x, paramBasePathActionArg.y, paramBasePathActionArg.radius, paramBasePathActionArg.bEl, paramBasePathActionArg.nUf, paramBasePathActionArg.nUg);
+    boolean bool = a(paramPath, paramBasePathActionArg.x, paramBasePathActionArg.y, paramBasePathActionArg.radius, paramBasePathActionArg.dxm, paramBasePathActionArg.qTP, paramBasePathActionArg.qTQ);
     AppMethodBeat.o(145352);
     return bool;
   }
@@ -103,12 +103,12 @@ public final class c
       AppMethodBeat.o(145351);
       return false;
     }
-    boolean bool = a(paramPath, g.f(paramJSONArray, 0), g.f(paramJSONArray, 1), g.f(paramJSONArray, 2), (float)paramJSONArray.optDouble(3), (float)paramJSONArray.optDouble(4), paramJSONArray.optBoolean(5));
+    boolean bool = a(paramPath, i.f(paramJSONArray, 0), i.f(paramJSONArray, 1), i.f(paramJSONArray, 2), (float)paramJSONArray.optDouble(3), (float)paramJSONArray.optDouble(4), paramJSONArray.optBoolean(5));
     AppMethodBeat.o(145351);
     return bool;
   }
   
-  public final BasePathActionArg bKK()
+  public final BasePathActionArg ckk()
   {
     AppMethodBeat.i(145353);
     PathArcToActionArg localPathArcToActionArg = new PathArcToActionArg();
@@ -123,7 +123,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.b.c
  * JD-Core Version:    0.7.0.1
  */

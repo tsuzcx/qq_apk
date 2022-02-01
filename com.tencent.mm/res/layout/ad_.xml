@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/cos" android:background="@drawable/a0f" android:paddingTop="1.0dip" android:paddingBottom="1.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/c5" android:paddingEnd="@dimen/c5"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="15.0dip" android:textColor="@color/ag2" android:gravity="center" android:id="@id/afi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:includeFontPadding="false" android:layout_centerVertical="true" />
-</RelativeLayout>
+<FrameLayout android:orientation="vertical" android:id="@id/iwl" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/ehq" android:background="@color/g_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.view.AnimationLayout android:id="@id/qb" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.tools.MMGestureGallery android:id="@id/ehp" android:layout_width="fill_parent" android:layout_height="fill_parent" android:spacing="@dimen/df" />
+    </com.tencent.mm.view.AnimationLayout>
+</FrameLayout>

@@ -3,11 +3,10 @@ package com.tencent.mm.plugin.label;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.be;
 import com.tencent.mm.pluginsdk.c.c;
-import com.tencent.mm.pluginsdk.c.d;
 import com.tencent.mm.pluginsdk.n;
 
 public final class Plugin
-  implements d
+  implements com.tencent.mm.pluginsdk.c.d
 {
   public final n createApplication()
   {
@@ -20,9 +19,9 @@ public final class Plugin
   public final be createSubCore()
   {
     AppMethodBeat.i(26133);
-    e locale = new e();
+    d locald = new d();
     AppMethodBeat.o(26133);
-    return locale;
+    return locald;
   }
   
   public final c getContactWidgetFactory()

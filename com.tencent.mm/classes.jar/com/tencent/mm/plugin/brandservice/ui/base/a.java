@@ -7,28 +7,28 @@ public abstract class a
   extends com.tencent.mm.ui.base.sortview.a
 {
   protected int position;
-  protected c.b sxk;
-  protected List<String> szm;
-  protected int szn;
+  protected c.b vCR;
+  protected List<String> vER;
+  protected int vES;
   
   public a(int paramInt, Object paramObject)
   {
     super(paramInt, paramObject);
   }
   
-  public final void GJ(int paramInt)
+  public final void Hi(int paramInt)
   {
-    this.szn = paramInt;
+    this.vES = paramInt;
   }
   
-  public final c.b czN()
+  public final c.b dcF()
   {
-    return this.sxk;
+    return this.vCR;
   }
   
-  public final int czO()
+  public final int dcG()
   {
-    return this.szn;
+    return this.vES;
   }
   
   public final int getPosition()
@@ -43,12 +43,12 @@ public abstract class a
   
   public final void setReporter(c.b paramb)
   {
-    this.sxk = paramb;
+    this.vCR = paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.base.a
  * JD-Core Version:    0.7.0.1
  */

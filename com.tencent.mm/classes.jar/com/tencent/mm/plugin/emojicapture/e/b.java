@@ -18,152 +18,128 @@ import com.tencent.mm.plugin.emojicapture.c.c.a;
 import com.tencent.mm.plugin.emojicapture.c.c.b;
 import com.tencent.mm.plugin.emojicapture.ui.editor.EditorItemContainer;
 import com.tencent.mm.plugin.recordvideo.ui.editor.c.c;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emojicapture/presenter/EditorItemPresenter;", "Lcom/tencent/mm/plugin/emojicapture/contract/EditorItemContract$IPresenter;", "view", "Lcom/tencent/mm/plugin/emojicapture/contract/EditorItemContract$IView;", "(Lcom/tencent/mm/plugin/emojicapture/contract/EditorItemContract$IView;)V", "basicScale", "", "clipPath", "Landroid/graphics/Path;", "drawingBounds", "Landroid/graphics/Rect;", "framePadding", "frameRect", "frameStroke", "isClipping", "", "isEditing", "maxScale", "minScale", "originPivot", "", "paint", "Landroid/graphics/Paint;", "touchTracker", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/TouchTracker;", "validBounds", "Landroid/graphics/RectF;", "drawCommon", "", "canvas", "Landroid/graphics/Canvas;", "drawOutside", "getTouchTracker", "onTouch", "event", "Landroid/view/MotionEvent;", "resetMatrix", "setDrawingSize", "width", "", "height", "setEditing", "editing", "setValidArea", "bounds", "radius", "Companion", "plugin-emojicapture_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/emojicapture/presenter/EditorItemPresenter;", "Lcom/tencent/mm/plugin/emojicapture/contract/EditorItemContract$IPresenter;", "view", "Lcom/tencent/mm/plugin/emojicapture/contract/EditorItemContract$IView;", "(Lcom/tencent/mm/plugin/emojicapture/contract/EditorItemContract$IView;)V", "basicScale", "", "clipPath", "Landroid/graphics/Path;", "drawingBounds", "Landroid/graphics/Rect;", "framePadding", "frameRect", "frameStroke", "isClipping", "", "isEditing", "maxScale", "minScale", "originPivot", "", "paint", "Landroid/graphics/Paint;", "touchTracker", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/TouchTracker;", "validBounds", "Landroid/graphics/RectF;", "drawCommon", "", "canvas", "Landroid/graphics/Canvas;", "drawOutside", "getTouchTracker", "onTouch", "event", "Landroid/view/MotionEvent;", "resetMatrix", "setDrawingSize", "width", "", "height", "setEditing", "editing", "setValidArea", "bounds", "radius", "Companion", "plugin-emojicapture_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
   implements c.a
 {
-  public static final a uWL;
-  private float aGN;
-  private float aGO;
+  public static final b.a yiX;
+  private boolean aPk;
+  private float maxScale;
+  private float minScale;
   private final Paint paint;
-  private final RectF uWA;
-  private final Path uWB;
-  private final Rect uWC;
-  private boolean uWD;
-  private boolean uWE;
-  private float uWF;
-  private final float uWG;
-  private final float uWH;
-  private final float uWI;
-  private final float[] uWJ;
-  private final c.b uWK;
-  private final c uWz;
+  private final c.b yiY;
+  private final c yiZ;
+  private final RectF yja;
+  private final Path yjb;
+  private final Rect yjc;
+  private boolean yjd;
+  private float yje;
+  private final float yjf;
+  private final float yjg;
+  private final float yjh;
+  private final float[] yji;
   
   static
   {
     AppMethodBeat.i(343);
-    uWL = new a((byte)0);
+    yiX = new b.a((byte)0);
     AppMethodBeat.o(343);
   }
   
   public b(c.b paramb)
   {
     AppMethodBeat.i(342);
-    this.uWK = paramb;
-    this.uWz = new c();
-    this.uWA = new RectF();
-    this.uWB = new Path();
-    this.uWC = new Rect();
+    this.yiY = paramb;
+    this.yiZ = new c();
+    this.yja = new RectF();
+    this.yjb = new Path();
+    this.yjc = new Rect();
     this.paint = new Paint();
-    this.uWE = true;
-    this.uWF = 1.0F;
-    this.aGN = 2.0F;
-    this.aGO = 0.25F;
-    this.uWJ = new float[2];
-    paramb = this.uWK;
-    if (paramb == null)
-    {
-      paramb = new t("null cannot be cast to non-null type android.view.View");
-      AppMethodBeat.o(342);
-      throw paramb;
-    }
-    paramb = ((View)paramb).getContext();
-    p.j(paramb, "(view as View).context");
-    paramb = paramb.getResources();
-    this.uWz.aGN = this.aGN;
-    this.uWz.aGO = this.aGO;
+    this.aPk = true;
+    this.yje = 1.0F;
+    this.maxScale = 2.0F;
+    this.minScale = 0.25F;
+    this.yji = new float[2];
+    paramb = ((View)this.yiY).getContext().getResources();
+    this.yiZ.maxScale = this.maxScale;
+    this.yiZ.minScale = this.minScale;
     this.paint.setColor(-1);
     this.paint.setAntiAlias(true);
     this.paint.setStrokeWidth(paramb.getDimension(a.d.editor_item_frame_stroke));
     this.paint.setStyle(Paint.Style.FILL);
-    this.uWG = paramb.getDimension(a.d.editor_item_frame_stroke);
-    this.uWH = paramb.getDimension(a.d.editor_item_frame_padding);
-    this.uWI = paramb.getDimension(a.d.editor_item_frame_rect);
+    this.yjf = paramb.getDimension(a.d.editor_item_frame_stroke);
+    this.yjg = paramb.getDimension(a.d.editor_item_frame_padding);
+    this.yjh = paramb.getDimension(a.d.editor_item_frame_rect);
     AppMethodBeat.o(342);
   }
   
   private final void resetMatrix()
   {
     AppMethodBeat.i(337);
-    this.uWz.aHZ.reset();
-    this.uWz.aHZ.postTranslate(-this.uWC.width() / 2.0F, -this.uWC.height() / 2.0F);
-    if ((!this.uWA.isEmpty()) && (!this.uWC.isEmpty()))
+    this.yiZ.matrix.reset();
+    this.yiZ.matrix.postTranslate(-this.yjc.width() / 2.0F, -this.yjc.height() / 2.0F);
+    if ((!this.yja.isEmpty()) && (!this.yjc.isEmpty()))
     {
-      int i = Math.max(this.uWC.width(), this.uWC.height());
-      this.uWF = (this.uWA.width() / i);
-      float f = this.uWF * 0.5F;
-      this.aGN = (this.uWF * 2.0F);
-      this.aGO = (this.uWF * 0.25F);
-      this.uWz.aGN = this.aGN;
-      this.uWz.aGO = this.aGO;
-      this.uWz.aHZ.postScale(f, f);
+      int i = Math.max(this.yjc.width(), this.yjc.height());
+      this.yje = (this.yja.width() / i);
+      float f = this.yje * 0.5F;
+      this.maxScale = (this.yje * 2.0F);
+      this.minScale = (this.yje * 0.25F);
+      this.yiZ.maxScale = this.maxScale;
+      this.yiZ.minScale = this.minScale;
+      this.yiZ.matrix.postScale(f, f);
     }
-    this.uWz.aHZ.postTranslate((this.uWA.left + this.uWA.right) / 2.0F, (this.uWA.top + this.uWA.bottom) / 2.0F);
+    this.yiZ.matrix.postTranslate((this.yja.left + this.yja.right) / 2.0F, (this.yja.top + this.yja.bottom) / 2.0F);
     AppMethodBeat.o(337);
   }
   
-  public final boolean X(MotionEvent paramMotionEvent)
+  public final boolean Z(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(339);
-    p.k(paramMotionEvent, "event");
-    Object localObject = this.uWK.getItemContainer();
-    if (this.uWz.ah(paramMotionEvent))
+    s.u(paramMotionEvent, "event");
+    Object localObject = this.yiY.getItemContainer();
+    if (this.yiZ.ak(paramMotionEvent))
     {
       if (localObject != null) {
-        ((EditorItemContainer)localObject).a((com.tencent.mm.plugin.emojicapture.ui.editor.a)this.uWK, paramMotionEvent);
+        ((EditorItemContainer)localObject).a((com.tencent.mm.plugin.emojicapture.ui.editor.a)this.yiY, paramMotionEvent);
       }
       switch (paramMotionEvent.getActionMasked())
       {
       }
       for (;;)
       {
-        paramMotionEvent = this.uWK;
-        if (paramMotionEvent != null) {
-          break;
-        }
-        paramMotionEvent = new t("null cannot be cast to non-null type android.view.View");
+        ((View)this.yiY).invalidate();
         AppMethodBeat.o(339);
-        throw paramMotionEvent;
-        this.uWE = true;
-        paramMotionEvent = this.uWK;
-        if (paramMotionEvent == null)
-        {
-          paramMotionEvent = new t("null cannot be cast to non-null type android.view.View");
-          AppMethodBeat.o(339);
-          throw paramMotionEvent;
-        }
-        ((View)paramMotionEvent).bringToFront();
-        this.uWJ[0] = (this.uWz.width / 2.0F);
-        this.uWJ[1] = (this.uWz.height / 2.0F);
-        this.uWz.aHZ.mapPoints(this.uWJ);
+        return true;
+        this.aPk = true;
+        ((View)this.yiY).bringToFront();
+        this.yji[0] = (this.yiZ.width / 2.0F);
+        this.yji[1] = (this.yiZ.height / 2.0F);
+        this.yiZ.matrix.mapPoints(this.yji);
         continue;
-        this.uWE = false;
+        this.aPk = false;
         continue;
-        this.uWE = true;
+        this.aPk = true;
         paramMotionEvent = new com.tencent.mm.plugin.recordvideo.ui.editor.c.a();
-        paramMotionEvent.aGO = this.aGO;
-        paramMotionEvent.aGN = this.aGN;
-        paramMotionEvent.o(new float[] { this.uWC.width() / 2.0F, this.uWC.height() / 2.0F });
-        paramMotionEvent.f(new RectF(this.uWA.left, this.uWA.top, this.uWA.right, this.uWA.bottom));
+        paramMotionEvent.minScale = this.minScale;
+        paramMotionEvent.maxScale = this.maxScale;
+        paramMotionEvent.w(new float[] { this.yjc.width() / 2.0F, this.yjc.height() / 2.0F });
+        paramMotionEvent.g(new RectF(this.yja.left, this.yja.top, this.yja.right, this.yja.bottom));
         localObject = new float[2];
-        localObject[0] = (this.uWz.width / 2.0F);
-        localObject[1] = (this.uWz.height / 2.0F);
-        this.uWz.aHZ.mapPoints((float[])localObject);
-        if (!paramMotionEvent.IdC.contains(localObject[0], localObject[1])) {
-          paramMotionEvent.f(new RectF(this.uWJ[0], this.uWJ[1], this.uWJ[0], this.uWJ[1]));
+        localObject[0] = (this.yiZ.width / 2.0F);
+        localObject[1] = (this.yiZ.height / 2.0F);
+        this.yiZ.matrix.mapPoints((float[])localObject);
+        if (!paramMotionEvent.NZY.contains(localObject[0], localObject[1])) {
+          paramMotionEvent.g(new RectF(this.yji[0], this.yji[1], this.yji[0], this.yji[1]));
         }
-        paramMotionEvent.a(this.uWz.aHZ, (m)new b(this));
+        paramMotionEvent.a(this.yiZ.matrix, (m)new b(this));
       }
-      ((View)paramMotionEvent).invalidate();
-      AppMethodBeat.o(339);
-      return true;
     }
     AppMethodBeat.o(339);
     return false;
@@ -172,45 +148,45 @@ public final class b
   public final void a(RectF paramRectF, float paramFloat)
   {
     AppMethodBeat.i(336);
-    p.k(paramRectF, "bounds");
-    this.uWA.set(paramRectF);
-    this.uWB.addRoundRect(new RectF(paramRectF.left, paramRectF.top, paramRectF.right, paramRectF.bottom), paramFloat, paramFloat, Path.Direction.CW);
+    s.u(paramRectF, "bounds");
+    this.yja.set(paramRectF);
+    this.yjb.addRoundRect(new RectF(paramRectF.left, paramRectF.top, paramRectF.right, paramRectF.bottom), paramFloat, paramFloat, Path.Direction.CW);
     resetMatrix();
     AppMethodBeat.o(336);
   }
   
-  public final void gc(int paramInt1, int paramInt2)
+  public final void gV(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(335);
-    this.uWz.width = paramInt1;
-    this.uWz.height = paramInt2;
-    this.uWC.right = paramInt1;
-    this.uWC.bottom = paramInt2;
+    this.yiZ.width = paramInt1;
+    this.yiZ.height = paramInt2;
+    this.yjc.right = paramInt1;
+    this.yjc.bottom = paramInt2;
     resetMatrix();
     AppMethodBeat.o(335);
   }
   
   public final c getTouchTracker()
   {
-    return this.uWz;
+    return this.yiZ;
   }
   
-  public final void s(Canvas paramCanvas)
+  public final void n(Canvas paramCanvas)
   {
     AppMethodBeat.i(340);
-    p.k(paramCanvas, "canvas");
-    if (this.uWE) {
-      paramCanvas.clipPath(this.uWB);
+    s.u(paramCanvas, "canvas");
+    if (this.aPk) {
+      paramCanvas.clipPath(this.yjb);
     }
-    paramCanvas.setMatrix(this.uWz.aHZ);
-    if (this.uWD)
+    paramCanvas.setMatrix(this.yiZ.matrix);
+    if (this.yjd)
     {
-      float f1 = this.uWC.left - this.uWH / this.uWF;
-      float f2 = this.uWC.top - this.uWH / this.uWF;
-      float f3 = this.uWC.right + this.uWH / this.uWF;
-      float f4 = this.uWC.bottom + this.uWH / this.uWF;
-      float f5 = this.uWI / 2.0F / this.uWF;
-      this.paint.setStrokeWidth(this.uWG / this.uWF);
+      float f1 = this.yjc.left - this.yjg / this.yje;
+      float f2 = this.yjc.top - this.yjg / this.yje;
+      float f3 = this.yjc.right + this.yjg / this.yje;
+      float f4 = this.yjc.bottom + this.yjg / this.yje;
+      float f5 = this.yjh / 2.0F / this.yje;
+      this.paint.setStrokeWidth(this.yjf / this.yje);
       paramCanvas.drawRect(f1 - f5, f2 - f5, f1 + f5, f2 + f5, this.paint);
       paramCanvas.drawRect(f3 - f5, f2 - f5, f3 + f5, f2 + f5, this.paint);
       paramCanvas.drawRect(f3 - f5, f4 - f5, f3 + f5, f4 + f5, this.paint);
@@ -221,35 +197,25 @@ public final class b
     AppMethodBeat.o(340);
   }
   
-  public final void setEditing(boolean paramBoolean)
-  {
-    AppMethodBeat.i(338);
-    this.uWD = paramBoolean;
-    Object localObject = this.uWK;
-    if (localObject == null)
-    {
-      localObject = new t("null cannot be cast to non-null type android.view.View");
-      AppMethodBeat.o(338);
-      throw ((Throwable)localObject);
-    }
-    ((View)localObject).postInvalidate();
-    AppMethodBeat.o(338);
-  }
-  
-  public final void t(Canvas paramCanvas)
+  public final void o(Canvas paramCanvas)
   {
     AppMethodBeat.i(341);
-    p.k(paramCanvas, "canvas");
+    s.u(paramCanvas, "canvas");
     AppMethodBeat.o(341);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emojicapture/presenter/EditorItemPresenter$Companion;", "", "()V", "DEFAULT_SCALE_TO_BOUNDS", "", "MAX_SCALE_TO_BOUNDS", "MIN_SCALE_TO_BOUNDS", "plugin-emojicapture_release"})
-  public static final class a {}
+  public final void setEditing(boolean paramBoolean)
+  {
+    AppMethodBeat.i(338);
+    this.yjd = paramBoolean;
+    ((View)this.yiY).postInvalidate();
+    AppMethodBeat.o(338);
+  }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "m", "Landroid/graphics/Matrix;", "<anonymous parameter 1>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "m", "Landroid/graphics/Matrix;", "<anonymous parameter 1>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
-    implements m<Matrix, Boolean, x>
+    extends u
+    implements m<Matrix, Boolean, ah>
   {
     b(b paramb)
     {
@@ -259,7 +225,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.e.b
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import com.tencent.luggage.d.b.a;
 import com.tencent.luggage.d.h;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
+import com.tencent.mm.br.c;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -20,18 +20,18 @@ import java.util.Map;
 import org.json.JSONObject;
 
 public class d
-  extends bs<g>
+  extends bw<g>
 {
-  public final void a(Context paramContext, String paramString, br.a parama) {}
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
   
   public final void b(final b<g>.a paramb)
   {
     AppMethodBeat.i(175740);
-    String str1 = paramb.crh.cqn.optString("card_list");
-    String str2 = ((g)paramb.crg).mParams.getString("srcUsername");
-    String str3 = ((g)paramb.crg).getUrl();
-    String str4 = paramb.crh.cqn.optString("consumedCardId");
-    ((g)paramb.crg).mParams.getString("KTemplateId");
+    String str1 = paramb.eiZ.eif.optString("card_list");
+    String str2 = ((g)paramb.eiY).ejT.getString("srcUsername");
+    String str3 = ((g)paramb.eiY).getUrl();
+    String str4 = paramb.eiZ.eif.optString("consumedCardId");
+    ((g)paramb.eiY).ejT.getString("KTemplateId");
     Log.i("MicroMsg.JsApiBatchAddCard", "doBatchAddCard consumedCardId %s", new Object[] { str4 });
     Intent localIntent = new Intent();
     localIntent.putExtra("key_in_card_list", str1);
@@ -39,9 +39,9 @@ public class d
     localIntent.putExtra("src_username", str2);
     localIntent.putExtra("js_url", str3);
     localIntent.putExtra("key_consumed_card_id", str4);
-    ((MMActivity)((g)paramb.crg).mContext).mmSetOnActivityResultCallback(new MMActivity.a()
+    ((MMActivity)((g)paramb.eiY).mContext).mmSetOnActivityResultCallback(new MMActivity.a()
     {
-      public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
+      public final void mmOnActivityResult(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(175739);
         HashMap localHashMap;
@@ -76,11 +76,11 @@ public class d
         }
       }
     });
-    c.a(((g)paramb.crg).mContext, "card", ".ui.CardAddEntranceUI", localIntent, hashCode() & 0xFFFF, false);
+    c.a(((g)paramb.eiY).mContext, "card", ".ui.CardAddEntranceUI", localIntent, hashCode() & 0xFFFF, false);
     AppMethodBeat.o(175740);
   }
   
-  public final int cDj()
+  public final int dgI()
   {
     return 0;
   }

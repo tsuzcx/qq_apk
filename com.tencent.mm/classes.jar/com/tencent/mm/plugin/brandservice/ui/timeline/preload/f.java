@@ -14,24 +14,42 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import kotlin.Metadata;
 import kotlin.g.a.b;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"bundleToString", "", "bundle", "Landroid/os/Bundle;", "findProcess", "", "context", "Landroid/content/Context;", "predicate", "Lkotlin/Function1;", "Landroid/app/ActivityManager$RunningAppProcessInfo;", "getNetWorkType", "isExpire", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "key", "duration", "", "isNullOrEmpty", "", "putNow", "", "toDebugString", "Landroid/content/Intent;", "toInt", "", "plugin-brandservice_release"})
+@Metadata(d1={""}, d2={"bundleToString", "", "bundle", "Landroid/os/Bundle;", "findProcess", "", "context", "Landroid/content/Context;", "predicate", "Lkotlin/Function1;", "Landroid/app/ActivityManager$RunningAppProcessInfo;", "getNetWorkType", "isExpire", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "key", "duration", "", "isNullOrEmpty", "", "putNow", "", "toDebugString", "Landroid/content/Intent;", "toInt", "", "plugin-brandservice_release"}, k=2, mv={1, 5, 1}, xi=48)
 public final class f
 {
-  private static final String Y(Bundle paramBundle)
+  public static final boolean a(MultiProcessMMKV paramMultiProcessMMKV, String paramString, long paramLong)
+  {
+    AppMethodBeat.i(6577);
+    s.u(paramMultiProcessMMKV, "<this>");
+    s.u(paramString, "key");
+    boolean bool = MMSlotKt.isExpire(paramMultiProcessMMKV.getLong(paramString, 0L), paramLong);
+    AppMethodBeat.o(6577);
+    return bool;
+  }
+  
+  public static final String ai(Intent paramIntent)
+  {
+    AppMethodBeat.i(6580);
+    s.u(paramIntent, "<this>");
+    paramIntent = paramIntent.toString() + ' ' + aj(paramIntent.getExtras());
+    AppMethodBeat.o(6580);
+    return paramIntent;
+  }
+  
+  private static final String aj(Bundle paramBundle)
   {
     AppMethodBeat.i(6581);
     StringBuilder localStringBuilder = new StringBuilder("Bundle[");
     if (paramBundle == null)
     {
-      p.j(localStringBuilder.append("null"), "out.append(\"null\")");
+      localStringBuilder.append("null");
       localStringBuilder.append("]");
       paramBundle = localStringBuilder.toString();
-      p.j(paramBundle, "out.toString()");
+      s.s(paramBundle, "out.toString()");
       AppMethodBeat.o(6581);
       return paramBundle;
     }
@@ -54,7 +72,7 @@ public final class f
         if ((localObject instanceof Object[])) {
           localStringBuilder.append(Arrays.toString((Object[])localObject));
         } else if ((localObject instanceof Bundle)) {
-          localStringBuilder.append(Y((Bundle)localObject));
+          localStringBuilder.append(aj((Bundle)localObject));
         }
       }
       catch (Exception paramBundle)
@@ -67,43 +85,24 @@ public final class f
     }
   }
   
-  public static final boolean a(MultiProcessMMKV paramMultiProcessMMKV, String paramString, long paramLong)
-  {
-    AppMethodBeat.i(6577);
-    p.k(paramMultiProcessMMKV, "$this$isExpire");
-    p.k(paramString, "key");
-    boolean bool = MMSlotKt.isExpire(paramMultiProcessMMKV.getLong(paramString, 0L), paramLong);
-    AppMethodBeat.o(6577);
-    return bool;
-  }
-  
-  public static final String ae(Intent paramIntent)
-  {
-    AppMethodBeat.i(6580);
-    p.k(paramIntent, "$this$toDebugString");
-    paramIntent = paramIntent.toString() + " " + Y(paramIntent.getExtras());
-    AppMethodBeat.o(6580);
-    return paramIntent;
-  }
-  
   public static final void b(MultiProcessMMKV paramMultiProcessMMKV, String paramString)
   {
     AppMethodBeat.i(6576);
-    p.k(paramMultiProcessMMKV, "$this$putNow");
-    p.k(paramString, "key");
+    s.u(paramMultiProcessMMKV, "<this>");
+    s.u(paramString, "key");
     paramMultiProcessMMKV.putLong(paramString, MMSlotKt.now());
     AppMethodBeat.o(6576);
   }
   
-  public static final boolean c(Context paramContext, b<? super ActivityManager.RunningAppProcessInfo, Boolean> paramb)
+  public static final boolean e(Context paramContext, b<? super ActivityManager.RunningAppProcessInfo, Boolean> paramb)
   {
     AppMethodBeat.i(6578);
-    p.k(paramContext, "context");
-    p.k(paramb, "predicate");
+    s.u(paramContext, "context");
+    s.u(paramb, "predicate");
     paramContext = paramContext.getSystemService("activity");
     if (paramContext == null)
     {
-      paramContext = new t("null cannot be cast to non-null type android.app.ActivityManager");
+      paramContext = new NullPointerException("null cannot be cast to non-null type android.app.ActivityManager");
       AppMethodBeat.o(6578);
       throw paramContext;
     }
@@ -111,7 +110,7 @@ public final class f
     while (paramContext.hasNext())
     {
       ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-      p.j(localRunningAppProcessInfo, "info");
+      s.s(localRunningAppProcessInfo, "info");
       if (((Boolean)paramb.invoke(localRunningAppProcessInfo)).booleanValue())
       {
         AppMethodBeat.o(6578);

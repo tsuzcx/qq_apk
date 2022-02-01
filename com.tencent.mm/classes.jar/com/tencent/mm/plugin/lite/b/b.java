@@ -1,88 +1,126 @@
 package com.tencent.mm.plugin.lite.b;
 
-import com.tencent.e.i;
+import com.tencent.luggage.f.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.d;
-import com.tencent.mm.f.a.d.a;
-import com.tencent.mm.kernel.f;
-import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.ad.i;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import java.net.URLDecoder;
+import java.util.Map;
+import org.json.JSONObject;
 
 public final class b
-  extends IListener<d>
 {
-  private static long Egm = 0L;
-  private static long Egn = 0L;
+  private static Map<String, Integer> KbQ;
+  private static Map<String, Integer> KbR;
   
-  public b()
+  static
   {
-    AppMethodBeat.i(233615);
-    this.__eventId = d.class.getName().hashCode();
-    AppMethodBeat.o(233615);
+    AppMethodBeat.i(271317);
+    KbQ = new b.1();
+    KbR = new b.2();
+    AppMethodBeat.o(271317);
   }
   
-  private boolean a(d paramd)
+  public static int bo(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(233617);
-    if (paramd.fur.fus)
+    AppMethodBeat.i(271304);
+    if (!paramJSONObject.has("nextAnimIn"))
     {
-      AppMethodBeat.o(233617);
-      return false;
+      i = a.a.slide_right_in;
+      AppMethodBeat.o(271304);
+      return i;
     }
-    if (!com.tencent.mm.kernel.h.aHB())
+    paramJSONObject = paramJSONObject.getString("nextAnimIn");
+    if (!KbQ.containsKey(paramJSONObject))
     {
-      Log.w("MicroMsg.AppLite.LiteAppCheckerListener", "callback fail. account not ready.");
-      AppMethodBeat.o(233617);
-      return false;
+      i = a.a.slide_right_in;
+      AppMethodBeat.o(271304);
+      return i;
     }
-    if (Egm == 0L) {
-      Egm = ((Long)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.VDP, Long.valueOf(0L))).longValue();
-    }
-    if (Egn == 0L) {
-      Egn = ((Long)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.VDQ, Long.valueOf(0L))).longValue();
-    }
-    long l1 = System.currentTimeMillis();
-    long l2 = l1 - Egm;
-    if (l2 >= 43200000L)
+    int i = ((Integer)KbQ.get(paramJSONObject)).intValue();
+    AppMethodBeat.o(271304);
+    return i;
+  }
+  
+  public static int bp(JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(271311);
+    if (!paramJSONObject.has("currentAnimOut"))
     {
-      Log.i("MicroMsg.AppLite.LiteAppCheckerListener", "It's time to update lite app.");
-      Egm = l1;
-      com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VDP, Long.valueOf(l1));
-      com.tencent.e.h.ZvG.be(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(233851);
-          b.eLD();
-          AppMethodBeat.o(233851);
-        }
-      });
-      if (l1 - Egn < 86400000L) {
-        break label265;
-      }
-      Log.i("MicroMsg.AppLite.LiteAppCheckerListener", "It's time to clean lite app.");
-      Egn = l1;
-      com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VDQ, Long.valueOf(l1));
-      com.tencent.e.h.ZvG.be(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(234081);
-          b.eLE();
-          AppMethodBeat.o(234081);
-        }
-      });
+      i = a.a.slide_left_out;
+      AppMethodBeat.o(271311);
+      return i;
     }
+    paramJSONObject = paramJSONObject.getString("currentAnimOut");
+    if (!KbQ.containsKey(paramJSONObject))
+    {
+      i = a.a.slide_left_out;
+      AppMethodBeat.o(271311);
+      return i;
+    }
+    int i = ((Integer)KbR.get(paramJSONObject)).intValue();
+    AppMethodBeat.o(271311);
+    return i;
+  }
+  
+  public static String[] cn(String paramString, boolean paramBoolean)
+  {
+    String[] arrayOfString1 = null;
+    AppMethodBeat.i(271297);
+    String[] arrayOfString2 = new String[2];
+    Object localObject = paramString;
+    if (paramBoolean) {}
     for (;;)
     {
-      AppMethodBeat.o(233617);
-      return false;
-      Log.i("MicroMsg.AppLite.LiteAppCheckerListener", "It's not time to update lite app. please wait %d second", new Object[] { Long.valueOf((43200000L - l2) / 100L) });
-      break;
-      label265:
-      Log.i("MicroMsg.AppLite.LiteAppCheckerListener", "It's not time to clean lite app. please wait %d second", new Object[] { Long.valueOf((86400000L - l2) / 100L) });
+      int i;
+      try
+      {
+        localObject = URLDecoder.decode(paramString, "UTF-8");
+        paramString = ((String)localObject).split("\\?");
+        if (paramString.length > 1)
+        {
+          arrayOfString2[0] = paramString[0];
+          paramString = paramString[1];
+          localObject = new i();
+          if (paramString != null)
+          {
+            paramString = paramString.split("&");
+            int j = paramString.length;
+            i = 0;
+            if (i < j)
+            {
+              arrayOfString1 = paramString[i].split("=");
+              if ((arrayOfString1 == null) || (arrayOfString1.length < 2)) {
+                break label197;
+              }
+              ((i)localObject).m(arrayOfString1[0].trim(), arrayOfString1[1].trim());
+              break label197;
+            }
+          }
+        }
+        else
+        {
+          if (((String)localObject).contains("="))
+          {
+            arrayOfString2[0] = null;
+            paramString = paramString[0];
+            continue;
+          }
+          arrayOfString2[0] = paramString[0];
+          paramString = arrayOfString1;
+          continue;
+        }
+        arrayOfString2[1] = ((i)localObject).toString();
+      }
+      catch (Exception paramString)
+      {
+        Log.printErrStackTrace("LiteAppUtils", paramString, "", new Object[0]);
+        AppMethodBeat.o(271297);
+        return arrayOfString2;
+      }
+      continue;
+      label197:
+      i += 1;
     }
   }
 }

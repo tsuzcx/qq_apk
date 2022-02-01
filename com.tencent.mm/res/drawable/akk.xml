@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:topLeftRadius="12.0dip" android:topRightRadius="12.0dip" android:bottomLeftRadius="0.0dip" android:bottomRightRadius="0.0dip" />
-    <solid android:color="@color/afz" />
-</shape>
+    <item>
+        <shape>
+            <solid android:color="@color/BW_0_Alpha_0_0_5" />
+            <size android:height="20.0dip" android:width="@dimen/d_" />
+            <corners android:radius="2.0dip" />
+        </shape>
+    </item>
+</selector>

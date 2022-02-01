@@ -24,8 +24,8 @@ public final class h
   
   public final boolean isBlock()
   {
-    if (this.OxB == null) {}
-    while (this.OxB.HzF.Rzn == 1) {
+    if (this.VmM == null) {}
+    while (this.VmM.Nxi.YvL == 1) {
       return true;
     }
     return false;
@@ -33,7 +33,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.a.a.h
  * JD-Core Version:    0.7.0.1
  */

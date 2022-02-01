@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="@dimen/a43" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.editor.model.nativenote.manager.WXRTEditText android:textSize="@dimen/t" android:textColor="@color/a2x" android:gravity="top" android:id="@id/h9p" android:background="@null" android:paddingLeft="@dimen/a1f" android:paddingTop="8.0dip" android:paddingRight="@dimen/a1f" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:lineSpacingMultiplier="1.2" android:inputType="textAutoCorrect|textCapSentences|textMultiLine|textNoSuggestions" android:imeOptions="actionDone|flagNoEnterAction" android:textCursorDrawable="@drawable/so" />
-</LinearLayout>
+    <View android:background="@drawable/emoji_capture_sticker_bg" android:layout_width="@dimen/a43" android:layout_height="@dimen/a43" />
+    <ImageView android:id="@id/ceo" android:background="@drawable/emoji_capture_sticker_bg" android:padding="@dimen/df" android:layout_width="@dimen/a43" android:layout_height="@dimen/a43" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/m3" android:textColor="?a56" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/cep" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:maxLines="2" android:layout_below="@id/ceo" android:layout_centerHorizontal="true" />
+</RelativeLayout>

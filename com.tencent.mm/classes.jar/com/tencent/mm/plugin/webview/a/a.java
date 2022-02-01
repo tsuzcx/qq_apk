@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.webview.a;
 
-import com.tencent.e.h;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.n;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
 
 public final class a
   implements n
 {
-  public static m mIG;
-  public static l mIH;
+  public static m pFn;
+  public static l pFo;
   
-  public static void am(Runnable paramRunnable)
+  public static void au(Runnable paramRunnable)
   {
     AppMethodBeat.i(77826);
     if (0L > 0L)
     {
-      h.ZvG.a(paramRunnable, 0L, "WebViewWorkerThread");
+      h.ahAA.a(paramRunnable, 0L, "WebViewWorkerThread");
       AppMethodBeat.o(77826);
       return;
     }
-    h.ZvG.d(paramRunnable, "WebViewWorkerThread");
+    h.ahAA.g(paramRunnable, "WebViewWorkerThread");
     AppMethodBeat.o(77826);
   }
   
   public final void a(l paraml)
   {
-    mIH = paraml;
+    pFo = paraml;
   }
   
   public final void a(m paramm)
   {
-    mIG = paramm;
+    pFn = paramm;
   }
 }
 

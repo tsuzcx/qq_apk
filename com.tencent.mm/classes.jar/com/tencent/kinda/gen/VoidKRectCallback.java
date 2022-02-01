@@ -15,28 +15,28 @@ public abstract class VoidKRectCallback
     
     static
     {
-      AppMethodBeat.i(220437);
+      AppMethodBeat.i(226694);
       if (!VoidKRectCallback.class.desiredAssertionStatus()) {}
       for (boolean bool = true;; bool = false)
       {
         $assertionsDisabled = bool;
-        AppMethodBeat.o(220437);
+        AppMethodBeat.o(226694);
         return;
       }
     }
     
     private CppProxy(long paramLong)
     {
-      AppMethodBeat.i(220427);
+      AppMethodBeat.i(226691);
       this.destroyed = new AtomicBoolean(false);
       if (paramLong == 0L)
       {
         RuntimeException localRuntimeException = new RuntimeException("nativeRef is zero");
-        AppMethodBeat.o(220427);
+        AppMethodBeat.o(226691);
         throw localRuntimeException;
       }
       this.nativeRef = paramLong;
-      AppMethodBeat.o(220427);
+      AppMethodBeat.o(226691);
     }
     
     private native void nativeDestroy(long paramLong);
@@ -45,32 +45,32 @@ public abstract class VoidKRectCallback
     
     public final void call(KRect paramKRect)
     {
-      AppMethodBeat.i(220435);
+      AppMethodBeat.i(226698);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         paramKRect = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(220435);
+        AppMethodBeat.o(226698);
         throw paramKRect;
       }
       native_call(this.nativeRef, paramKRect);
-      AppMethodBeat.o(220435);
+      AppMethodBeat.o(226698);
     }
     
     public final void destroy()
     {
-      AppMethodBeat.i(220429);
+      AppMethodBeat.i(226695);
       if (!this.destroyed.getAndSet(true)) {
         nativeDestroy(this.nativeRef);
       }
-      AppMethodBeat.o(220429);
+      AppMethodBeat.o(226695);
     }
     
     protected final void finalize()
     {
-      AppMethodBeat.i(220431);
+      AppMethodBeat.i(226697);
       destroy();
       super.finalize();
-      AppMethodBeat.o(220431);
+      AppMethodBeat.o(226697);
     }
   }
 }

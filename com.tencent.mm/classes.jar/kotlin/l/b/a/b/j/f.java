@@ -1,126 +1,153 @@
 package kotlin.l.b.a.b.j;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Comparator;
-import kotlin.g.a.b;
-import kotlin.l.b.a.b.b.ah;
-import kotlin.l.b.a.b.b.ar;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.b.a;
+import kotlin.l.b.a.b.b.aq;
+import kotlin.l.b.a.b.b.bf;
 import kotlin.l.b.a.b.b.e;
-import kotlin.l.b.a.b.b.k;
+import kotlin.l.b.a.b.b.h;
 import kotlin.l.b.a.b.b.l;
-import kotlin.l.b.a.b.b.t;
-import kotlin.l.b.a.b.i.c.a;
-import kotlin.l.b.a.b.i.i;
-import kotlin.x;
+import kotlin.l.b.a.b.b.y;
+import kotlin.l.b.a.b.f.c;
+import kotlin.l.b.a.b.m.ad;
+import kotlin.l.b.a.b.m.al;
+import kotlin.l.b.a.b.m.ax;
+import kotlin.l.b.a.b.m.be;
+import kotlin.l.b.a.b.m.bl;
 
-public class f
-  implements Comparator<l>
+public final class f
 {
-  public static final f abkp;
-  private static final kotlin.l.b.a.b.i.c abkq;
+  private static final c ajiV;
   
   static
   {
-    AppMethodBeat.i(59953);
-    if (!f.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      abkp = new f();
-      c.a locala = kotlin.l.b.a.b.i.c.abhP;
-      abkq = c.a.aj(new b() {});
-      AppMethodBeat.o(59953);
-      return;
-    }
+    AppMethodBeat.i(192195);
+    ajiV = new c("kotlin.jvm.JvmInline");
+    AppMethodBeat.o(192195);
   }
   
-  public static final class a
-    implements Comparator<l>
+  public static final boolean D(l paraml)
   {
-    public static final a abkr;
-    
-    static
+    AppMethodBeat.i(59941);
+    s.u(paraml, "<this>");
+    if (((paraml instanceof e)) && ((((e)paraml).kng()) || (((e)paraml).isValue())))
     {
-      AppMethodBeat.i(59951);
-      abkr = new a();
-      AppMethodBeat.o(59951);
+      AppMethodBeat.o(59941);
+      return true;
     }
-    
-    private static int E(l paraml)
+    AppMethodBeat.o(59941);
+    return false;
+  }
+  
+  public static final boolean R(ad paramad)
+  {
+    AppMethodBeat.i(59942);
+    s.u(paramad, "<this>");
+    paramad = paramad.kzm().knA();
+    if (paramad == null)
     {
-      AppMethodBeat.i(59947);
-      if (c.x(paraml))
-      {
-        AppMethodBeat.o(59947);
-        return 8;
-      }
-      if ((paraml instanceof k))
-      {
-        AppMethodBeat.o(59947);
-        return 7;
-      }
-      if ((paraml instanceof ah))
-      {
-        if (((ah)paraml).iEE() == null)
-        {
-          AppMethodBeat.o(59947);
-          return 6;
-        }
-        AppMethodBeat.o(59947);
-        return 5;
-      }
-      if ((paraml instanceof t))
-      {
-        if (((t)paraml).iEE() == null)
-        {
-          AppMethodBeat.o(59947);
-          return 4;
-        }
-        AppMethodBeat.o(59947);
-        return 3;
-      }
-      if ((paraml instanceof e))
-      {
-        AppMethodBeat.o(59947);
-        return 2;
-      }
-      if ((paraml instanceof ar))
-      {
-        AppMethodBeat.o(59947);
-        return 1;
-      }
-      AppMethodBeat.o(59947);
-      return 0;
+      AppMethodBeat.o(59942);
+      return false;
     }
-    
-    private static Integer e(l paraml1, l paraml2)
+    boolean bool = D((l)paramad);
+    AppMethodBeat.o(59942);
+    return bool;
+  }
+  
+  public static final ad S(ad paramad)
+  {
+    AppMethodBeat.i(59943);
+    s.u(paramad, "<this>");
+    s.u(paramad, "<this>");
+    h localh = paramad.kzm().knA();
+    Object localObject = localh;
+    if (!(localh instanceof e)) {
+      localObject = null;
+    }
+    localObject = (e)localObject;
+    if (localObject == null) {
+      localObject = null;
+    }
+    for (;;)
     {
-      AppMethodBeat.i(59948);
-      int i = E(paraml2) - E(paraml1);
-      if (i != 0)
-      {
-        AppMethodBeat.o(59948);
-        return Integer.valueOf(i);
+      localObject = (ad)localObject;
+      if (localObject != null) {
+        break;
       }
-      if ((c.x(paraml1)) && (c.x(paraml2)))
-      {
-        AppMethodBeat.o(59948);
-        return Integer.valueOf(0);
-      }
-      i = paraml1.iEU().u(paraml2.iEU());
-      if (i != 0)
-      {
-        AppMethodBeat.o(59948);
-        return Integer.valueOf(i);
-      }
-      AppMethodBeat.o(59948);
+      AppMethodBeat.o(59943);
       return null;
+      localObject = ((e)localObject).knn();
+      if (localObject == null) {
+        localObject = null;
+      } else {
+        localObject = (al)((y)localObject).aiGW;
+      }
     }
+    paramad = be.aq(paramad).c((ad)localObject, bl.ajqM);
+    AppMethodBeat.o(59943);
+    return paramad;
+  }
+  
+  public static final boolean a(bf parambf)
+  {
+    AppMethodBeat.i(59945);
+    s.u(parambf, "<this>");
+    if (parambf.knY() == null)
+    {
+      Object localObject = parambf.knp();
+      if ((localObject instanceof e))
+      {
+        localObject = (e)localObject;
+        if (localObject != null) {
+          break label70;
+        }
+        localObject = null;
+      }
+      for (;;)
+      {
+        if (!s.p(localObject, parambf.kok())) {
+          break label94;
+        }
+        AppMethodBeat.o(59945);
+        return true;
+        localObject = null;
+        break;
+        label70:
+        localObject = ((e)localObject).knn();
+        if (localObject == null) {
+          localObject = null;
+        } else {
+          localObject = ((y)localObject).aiGV;
+        }
+      }
+    }
+    label94:
+    AppMethodBeat.o(59945);
+    return false;
+  }
+  
+  public static final boolean f(a parama)
+  {
+    AppMethodBeat.i(59944);
+    s.u(parama, "<this>");
+    if ((parama instanceof aq))
+    {
+      parama = ((aq)parama).kpb();
+      s.s(parama, "correspondingProperty");
+      if (a((bf)parama))
+      {
+        AppMethodBeat.o(59944);
+        return true;
+      }
+    }
+    AppMethodBeat.o(59944);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.j.f
  * JD-Core Version:    0.7.0.1
  */

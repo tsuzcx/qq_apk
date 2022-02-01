@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.appbrand.jsapi.auth;
 
-import com.tencent.mm.protocal.protobuf.eax;
+import com.tencent.mm.protocal.protobuf.eul;
 import java.util.LinkedList;
 
 abstract interface JsApiLogin$LoginTask$a
 {
-  public abstract void a(LinkedList<eax> paramLinkedList, String paramString1, String paramString2, String paramString3);
+  public abstract void a(LinkedList<eul> paramLinkedList, String paramString1, String paramString2, String paramString3);
   
-  public abstract void ak(int paramInt, String paramString);
+  public abstract void au(int paramInt, String paramString);
   
   public abstract void onSuccess(String paramString);
 }

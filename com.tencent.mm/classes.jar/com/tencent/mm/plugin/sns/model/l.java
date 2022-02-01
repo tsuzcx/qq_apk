@@ -1,50 +1,50 @@
 package com.tencent.mm.plugin.sns.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bv;
-import com.tencent.mm.protocal.protobuf.bw;
-import com.tencent.mm.protocal.protobuf.ce;
+import com.tencent.mm.protocal.protobuf.cf;
+import com.tencent.mm.protocal.protobuf.cg;
+import com.tencent.mm.protocal.protobuf.co;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
 public final class l
-  extends q
+  extends p
   implements m
 {
-  private LinkedList<ce> JzN;
-  public i callback;
-  private d rr;
+  private LinkedList<co> POF;
+  public h callback;
+  private c rr;
   
-  public l(LinkedList<ce> paramLinkedList)
+  public l(LinkedList<co> paramLinkedList)
   {
     AppMethodBeat.i(95567);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new bv();
-    ((d.a)localObject).lBV = new bw();
-    ((d.a)localObject).uri = "/cgi-bin/mmoc-bin/ad/addatareport";
-    ((d.a)localObject).funcId = 1295;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (bv)d.b.b(this.rr.lBR);
-    ((bv)localObject).RHr = paramLinkedList;
-    this.JzN = paramLinkedList;
-    Log.i("MicroMsg.NetSceneSnsAdDataReport", "report %d ads", new Object[] { Integer.valueOf(((bv)localObject).RHr.size()) });
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new cf();
+    ((c.a)localObject).otF = new cg();
+    ((c.a)localObject).uri = "/cgi-bin/mmoc-bin/ad/addatareport";
+    ((c.a)localObject).funcId = 1295;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (cf)c.b.b(this.rr.otB);
+    ((cf)localObject).YEu = paramLinkedList;
+    this.POF = paramLinkedList;
+    Log.i("MicroMsg.NetSceneSnsAdDataReport", "report %d ads", new Object[] { Integer.valueOf(((cf)localObject).YEu.size()) });
     AppMethodBeat.o(95567);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(95568);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(95568);
     return i;

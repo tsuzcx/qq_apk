@@ -12,68 +12,68 @@ public class Guideline
   public Guideline(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(194963);
+    AppMethodBeat.i(194166);
     super.setVisibility(8);
-    AppMethodBeat.o(194963);
+    AppMethodBeat.o(194166);
   }
   
   public Guideline(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(194967);
+    AppMethodBeat.i(194182);
     super.setVisibility(8);
-    AppMethodBeat.o(194967);
+    AppMethodBeat.o(194182);
   }
   
   public Guideline(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(194969);
+    AppMethodBeat.i(194191);
     super.setVisibility(8);
-    AppMethodBeat.o(194969);
+    AppMethodBeat.o(194191);
   }
   
   public void draw(Canvas paramCanvas) {}
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(194970);
+    AppMethodBeat.i(194210);
     setMeasuredDimension(0, 0);
-    AppMethodBeat.o(194970);
+    AppMethodBeat.o(194210);
   }
   
   public void setGuidelineBegin(int paramInt)
   {
-    AppMethodBeat.i(194971);
+    AppMethodBeat.i(194218);
     ConstraintLayout.LayoutParams localLayoutParams = (ConstraintLayout.LayoutParams)getLayoutParams();
-    localLayoutParams.EW = paramInt;
+    localLayoutParams.bld = paramInt;
     setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(194971);
+    AppMethodBeat.o(194218);
   }
   
   public void setGuidelineEnd(int paramInt)
   {
-    AppMethodBeat.i(194974);
+    AppMethodBeat.i(194229);
     ConstraintLayout.LayoutParams localLayoutParams = (ConstraintLayout.LayoutParams)getLayoutParams();
-    localLayoutParams.EX = paramInt;
+    localLayoutParams.ble = paramInt;
     setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(194974);
+    AppMethodBeat.o(194229);
   }
   
   public void setGuidelinePercent(float paramFloat)
   {
-    AppMethodBeat.i(194976);
+    AppMethodBeat.i(194243);
     ConstraintLayout.LayoutParams localLayoutParams = (ConstraintLayout.LayoutParams)getLayoutParams();
-    localLayoutParams.EY = paramFloat;
+    localLayoutParams.blf = paramFloat;
     setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(194976);
+    AppMethodBeat.o(194243);
   }
   
   public void setVisibility(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     androidx.constraintlayout.widget.Guideline
  * JD-Core Version:    0.7.0.1
  */

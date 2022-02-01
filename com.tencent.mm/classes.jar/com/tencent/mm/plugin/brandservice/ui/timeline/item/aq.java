@@ -1,169 +1,167 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.item;
 
-import android.text.TextUtils;
+import android.content.Context;
+import android.content.res.Resources;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.u;
-import com.tencent.mm.aj.v;
+import com.tencent.mm.message.u;
+import com.tencent.mm.message.v;
+import com.tencent.mm.plugin.brandservice.d.b;
 import com.tencent.mm.plugin.brandservice.d.d;
 import com.tencent.mm.plugin.brandservice.d.e;
-import com.tencent.mm.plugin.brandservice.d.h;
-import com.tencent.mm.plugin.brandservice.ui.b.c;
+import com.tencent.mm.plugin.brandservice.ui.b.e;
 import com.tencent.mm.plugin.brandservice.ui.timeline.b;
+import com.tencent.mm.plugin.brandservice.ui.timeline.preload.d;
 import com.tencent.mm.pluginsdk.ui.applet.m.a;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.storage.ab;
 import com.tencent.mm.ui.widget.MMNeat7extView;
 
 public final class aq
-  extends ak
+  extends ah
 {
-  public ImageView sCR;
-  public MMNeat7extView sDe;
-  public ImageView sGV;
-  public TextView sHM;
-  public ImageView sHN;
+  public ImageView vIK;
+  public RelativeLayout vNu;
   
-  public final void a(int paramInt1, v paramv, final z paramz, final int paramInt2, u paramu, int paramInt3)
+  public final void a(int paramInt1, final v paramv, final ab paramab, final int paramInt2, u paramu, int paramInt3)
   {
-    AppMethodBeat.i(6045);
-    super.a(paramInt1, paramv, paramz, paramInt2, paramu, paramInt3);
-    label67:
-    label85:
-    boolean bool;
-    if (Util.isNullOrNil(paramv.title))
+    AppMethodBeat.i(6058);
+    super.a(paramInt1, paramv, paramab, paramInt2, paramu, paramInt3);
+    this.mCount = paramInt1;
+    this.vMz = false;
+    this.vIX.setVisibility(8);
+    eH(this.vNu);
+    eH(this.vIK);
+    this.vIK.setVisibility(0);
+    this.vIW.setTextColor(this.mContext.getResources().getColor(d.b.light_grey_text_color));
+    this.vIY.setBackgroundResource(d.d.mm_trans);
+    this.vJd.setTextColor(this.mContext.getResources().getColor(d.b.light_grey_text_color));
+    paramInt3 = this.vMC.vFN.getContentWidth();
+    this.vMC.vFN.a(paramab.field_msgId, 0, paramv, paramv.nUM, this.vIK, paramInt3, b.vGa, false, new m.a()
     {
-      this.sDe.setVisibility(8);
-      if (TextUtils.isEmpty(paramv.lpY)) {
-        break label330;
-      }
-      this.sHM.setVisibility(0);
-      this.sHM.setText(paramv.lpY);
-      if (paramv.lpZ != 2) {
-        break label342;
-      }
-      this.sHN.setImageResource(d.h.chatting_item_biz_kugou_music_watermark);
-      a(this.sGV, paramz, 0, paramv.lpK);
-      a(this, paramz, paramv);
-      Object localObject1 = this.sHf;
-      Object localObject2 = this.sDd;
-      if (paramInt1 <= 1) {
-        break label355;
-      }
-      bool = true;
-      label127:
-      ((b)localObject1).a(paramv, paramz, paramInt2, paramu, (View)localObject2, bool, 0);
-      if (!(paramz.field_msgId + "_0").equals(c.cEq())) {
-        break label361;
-      }
-      this.sGV.setImageResource(d.h.chatting_item_biz_music_pause_loading_icon);
-      label184:
-      this.sCT.setVisibility(8);
-      paramu = this.sHf.sAc;
-      long l = paramz.field_msgId;
-      localObject1 = paramv.lpK;
-      localObject2 = this.sCR;
-      int i = b.sAs;
-      paramu.a(l, 0, paramv, (String)localObject1, (ImageView)localObject2, i, i, false, new m.a()
+      public final void onFinish()
       {
-        public final void onFinish()
+        AppMethodBeat.i(6056);
+        aq.this.vMz = true;
+        aq.this.vJd.setTextColor(aq.this.mContext.getResources().getColor(d.b.BW_100_Alpha_0_9));
+        if (aq.this.vIX != null) {
+          aq.this.vIX.setVisibility(0);
+        }
+        if (!aq.a(aq.this.mCount, paramv))
         {
-          AppMethodBeat.i(6043);
-          aq.this.sCT.setVisibility(0);
-          if ((paramz.field_msgId + "_0").equals(c.cEq())) {
-            aq.this.sGV.setImageResource(d.d.chatting_item_biz_music_pause_selector);
-          }
-          for (;;)
-          {
-            aq.this.sHf.sAc.p(paramz.field_msgId, paramInt2);
-            AppMethodBeat.o(6043);
-            return;
-            aq.this.sGV.setImageResource(d.d.chatting_item_biz_music_play_selector);
+          aq.this.vIW.setTextColor(aq.this.mContext.getResources().getColor(d.b.white_text_color));
+          if (aq.this.b(paramv)) {
+            aq.this.vIY.setBackgroundResource(d.d.biz_time_line_title_bottom_round_gradient_mask);
           }
         }
-        
-        public final void onStart() {}
-      }, paramInt3, 2.0F);
-      if (paramInt1 != 1) {
-        break label374;
+        for (;;)
+        {
+          aq.this.vMC.vFN.y(paramab.field_msgId, paramInt2);
+          AppMethodBeat.o(6056);
+          return;
+          aq.this.vIY.setBackgroundResource(d.d.biz_time_line_title_gradient_mask);
+          continue;
+          if (aq.this.vMA > 0) {
+            aq.this.vIY.setBackgroundResource(d.d.biz_time_line_title_gradient_mask);
+          }
+        }
       }
-      this.sDd.setBackgroundResource(d.d.chatting_item_multi_bottom);
-    }
-    for (;;)
+      
+      public final void onStart() {}
+    }, b(paramv), this.vMB);
+    a(this.mCount, paramv, paramab);
+    label249:
+    b localb;
+    View localView;
+    if (a(this.mCount, paramv))
     {
-      paramv = this.sDd;
-      if (paramInt1 <= 1) {
-        break label387;
+      this.vIV.setPadding(this.vIV.getPaddingLeft(), 0, this.vIV.getPaddingRight(), b.vGf);
+      if (!b(paramv)) {
+        break label334;
       }
-      paramInt1 = b.sAu;
-      paramInt2 = b.sAu;
-      paramv.setPadding(paramInt1, paramInt1, paramInt2, paramInt2);
-      AppMethodBeat.o(6045);
-      return;
-      this.sDe.setVisibility(0);
-      this.sDe.aL(paramv.title);
-      break;
-      label330:
-      this.sHM.setVisibility(8);
-      break label67;
-      label342:
-      this.sHN.setImageResource(d.h.chatting_item_biz_qq_music_watermark);
-      break label85;
-      label355:
-      bool = false;
-      break label127;
-      label361:
-      this.sGV.setImageResource(d.h.chatting_item_biz_music_play_loading_icon);
-      break label184;
-      label374:
-      this.sDd.setBackgroundResource(d.d.chatting_item_multi_middle);
+      this.vIX.setBackgroundResource(d.d.biz_time_line_cover_bottom_round_mask_selector);
+      this.vIV.setBackgroundResource(d.d.biz_time_line_item_bottom_bg);
+      if (!a(paramInt1, paramv)) {
+        a(this, paramab, paramv);
+      }
+      localb = this.vMC;
+      localView = this.vIV;
+      if (paramInt1 <= 1) {
+        break label381;
+      }
     }
-    label387:
-    paramInt1 = b.sAu;
-    paramv.setPadding(paramInt1, paramInt1, b.sAu, b.sAt);
-    AppMethodBeat.o(6045);
+    label334:
+    label381:
+    for (boolean bool = true;; bool = false)
+    {
+      localb.a(paramv, paramab, paramInt2, paramu, localView, bool, 0);
+      AppMethodBeat.o(6058);
+      return;
+      this.vIV.setPadding(this.vIV.getPaddingLeft(), 0, this.vIV.getPaddingRight(), 0);
+      break;
+      this.vIX.setBackgroundResource(d.d.biz_time_line_cover_mask_selector);
+      if (a(this.mCount, paramv))
+      {
+        this.vIV.setBackgroundResource(d.d.biz_time_line_item_bottom_bg);
+        break label249;
+      }
+      this.vIV.setBackgroundResource(d.d.biz_time_line_item_middle_bg);
+      break label249;
+    }
   }
   
   public final void a(View paramView, b paramb)
   {
-    AppMethodBeat.i(6044);
+    AppMethodBeat.i(6057);
     super.a(paramView, paramb);
-    if (this.sEi != null)
+    if (this.vJU != null)
     {
-      AppMethodBeat.o(6044);
+      AppMethodBeat.o(6057);
       return;
     }
-    paramb = (ViewStub)paramView.findViewById(d.e.dZw);
+    paramb = (ViewStub)paramView.findViewById(d.e.viewstub_top_slot);
     if (paramb == null)
     {
-      AppMethodBeat.o(6044);
+      AppMethodBeat.o(6057);
       return;
     }
     paramb.inflate();
-    this.sEi = paramView.findViewById(d.e.sqL);
-    this.sDd = paramView.findViewById(d.e.srx);
-    cAo();
-    this.sCR = ((ImageView)this.sEi.findViewById(d.e.cover));
-    this.sDe = ((MMNeat7extView)this.sEi.findViewById(d.e.title_tv));
-    this.sHM = ((TextView)this.sEi.findViewById(d.e.dRi));
-    this.sGV = ((ImageView)this.sEi.findViewById(d.e.play_icon));
-    this.sHN = ((ImageView)this.sEi.findViewById(d.e.eaw));
-    this.sCT = ((ImageView)this.sEi.findViewById(d.e.dCV));
-    paramView = com.tencent.mm.plugin.brandservice.ui.b.d.sTw;
-    if (com.tencent.mm.plugin.brandservice.ui.b.d.cEs())
+    this.vJU = paramView.findViewById(d.e.biz_time_line_item_top_slot);
+    this.vIV = paramView.findViewById(d.e.topSlot_click_view);
+    ddp();
+    this.vIK = ((ImageView)this.vJU.findViewById(d.e.cover_iv));
+    this.vNu = ((RelativeLayout)this.vJU.findViewById(d.e.cover_layout));
+    this.vIW = ((MMNeat7extView)this.vJU.findViewById(d.e.title_tv));
+    this.vIM = ((ImageView)this.vJU.findViewById(d.e.cover_mask_iv));
+    this.vIX = ((ImageView)this.vJU.findViewById(d.e.press_mask_iv));
+    this.vIY = ((LinearLayout)this.vJU.findViewById(d.e.biz_time_line_top_title_layout));
+    this.vIZ = ((LinearLayout)this.vJU.findViewById(d.e.single_top_slot_title_layout));
+    this.vJa = ((MMNeat7extView)this.vJU.findViewById(d.e.single_title_tv));
+    this.vJb = ((MMNeat7extView)this.vJU.findViewById(d.e.single_digest_tv));
+    this.vMx = this.vJU.findViewById(d.e.stat_layout_bottom);
+    this.vMy = ((TextView)this.vJU.findViewById(d.e.friends_read_tv_bottom));
+    paramView = e.vYK;
+    if (e.dhV())
     {
-      paramView = com.tencent.mm.plugin.brandservice.ui.b.d.sTw;
-      com.tencent.mm.plugin.brandservice.ui.b.d.e(this.sDe);
+      paramView = e.vYK;
+      e.e(this.vIW);
     }
-    AppMethodBeat.o(6044);
+    paramView = e.vYK;
+    if (e.dhV())
+    {
+      paramView = e.vYK;
+      e.e(this.vJa);
+    }
+    AppMethodBeat.o(6057);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.item.aq
  * JD-Core Version:    0.7.0.1
  */

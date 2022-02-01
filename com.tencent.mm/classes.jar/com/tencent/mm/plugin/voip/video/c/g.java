@@ -1,34 +1,32 @@
 package com.tencent.mm.plugin.voip.video.c;
 
+import android.opengl.GLES20;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import com.tencent.mm.media.util.c;
+import com.tencent.mm.media.util.c.a;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/voip/video/programv2/VoipRenderOnScreenProgram;", "", "renderSize", "", "(I)V", "mTextureProgram", "Lcom/tencent/mm/plugin/voip/video/programv2/VoipTextureRenderProgram;", "mYUVProgram", "Lcom/tencent/mm/plugin/voip/video/programv2/VoipYUVRenderProgram;", "drawFrame", "", "pBuff", "", "w", "h", "flag", "", "release", "renderImpl", "cubeBuffer", "Ljava/nio/FloatBuffer;", "textureCoordBuff", "texture", "renderMode", "updateDrawViewSize", "width", "height", "Companion", "plugin-voip_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/voip/video/programv2/VoipRawRendererProgram;", "", "()V", "attributePosition", "", "attributeTextureCoord", "programId", "uniformTexture", "release", "", "renderImpl", "cubeBuffer", "Ljava/nio/FloatBuffer;", "textureCoordBuff", "texture", "plugin-voip_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class g
 {
-  public static final g.a Odo;
-  public i Odm;
-  public k Odn;
+  public int mWv;
+  public int mWw;
+  public int mWx;
+  public int programId;
   
-  static
+  public g()
   {
-    AppMethodBeat.i(239444);
-    Odo = new g.a((byte)0);
-    AppMethodBeat.o(239444);
-  }
-  
-  public g(int paramInt)
-  {
-    AppMethodBeat.i(239443);
-    if (paramInt == 1)
-    {
-      this.Odn = new k();
-      this.Odm = new i(true);
-      AppMethodBeat.o(239443);
-      return;
-    }
-    this.Odm = new i(false);
-    AppMethodBeat.o(239443);
+    AppMethodBeat.i(293230);
+    c.a locala = c.nFs;
+    this.programId = c.a.aN("\n        attribute vec4 a_position;\n        attribute vec2 a_texCoord;\n        varying vec2 v_texCoord;\n        void main() {\n            gl_Position = a_position;\n            v_texCoord = a_texCoord;\n        }\n        ", "\n        #extension GL_OES_EGL_image_external : require\n        #ifdef GL_ES\n        precision highp float;\n        #endif\n\n        varying vec2 v_texCoord;\n        uniform samplerExternalOES texture;\n\n        void main () {\n            gl_FragColor = texture2D(texture, v_texCoord);\n        }\n        ");
+    this.mWv = GLES20.glGetAttribLocation(this.programId, "a_position");
+    this.mWw = GLES20.glGetAttribLocation(this.programId, "a_texCoord");
+    this.mWx = GLES20.glGetUniformLocation(this.programId, "texture");
+    GLES20.glTexParameterf(36197, 10241, 9729.0F);
+    GLES20.glTexParameterf(36197, 10240, 9729.0F);
+    GLES20.glTexParameterf(36197, 10242, 33071.0F);
+    GLES20.glTexParameterf(36197, 10243, 33071.0F);
+    AppMethodBeat.o(293230);
   }
 }
 

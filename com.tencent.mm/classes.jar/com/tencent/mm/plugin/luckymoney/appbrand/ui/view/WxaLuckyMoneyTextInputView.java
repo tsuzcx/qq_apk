@@ -19,18 +19,18 @@ public class WxaLuckyMoneyTextInputView
   extends LinearLayout
   implements d
 {
-  private h EtX;
-  private MMEditText Evu;
-  private TextView pPT;
+  private h KmE;
+  private MMEditText Koc;
+  private TextView sUt;
   
   public WxaLuckyMoneyTextInputView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(65025);
     paramContext = LayoutInflater.from(paramContext).inflate(a.g.wxa_lucky_money_text_input_view, this, true);
-    this.Evu = ((MMEditText)paramContext.findViewById(a.f.lucky_money_text));
-    this.pPT = ((TextView)paramContext.findViewById(a.f.lucky_money_text_input_title));
-    this.Evu.setOnFocusChangeListener(new View.OnFocusChangeListener()
+    this.Koc = ((MMEditText)paramContext.findViewById(a.f.lucky_money_text));
+    this.sUt = ((TextView)paramContext.findViewById(a.f.lucky_money_text_input_title));
+    this.Koc.setOnFocusChangeListener(new View.OnFocusChangeListener()
     {
       public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
       {
@@ -39,21 +39,28 @@ public class WxaLuckyMoneyTextInputView
         {
           paramAnonymousView = WxaLuckyMoneyTextInputView.a(WxaLuckyMoneyTextInputView.this);
           WxaLuckyMoneyTextInputView.this.getInputViewId();
-          paramAnonymousView.eOd();
+          paramAnonymousView.fWx();
         }
         AppMethodBeat.o(65024);
       }
     });
-    c.i(this.Evu).mM(0, 24).Hh(false).a(null);
+    c.i(this.Koc).oF(0, 24).Nc(false).a(null);
     AppMethodBeat.o(65025);
   }
   
-  public final String VJ(int paramInt)
+  public final String ZF(int paramInt)
   {
     return null;
   }
   
-  public final int eOc()
+  public final void atR() {}
+  
+  public final int fWv()
+  {
+    return 0;
+  }
+  
+  public final int fWw()
   {
     return 0;
   }
@@ -61,7 +68,7 @@ public class WxaLuckyMoneyTextInputView
   public String getInput()
   {
     AppMethodBeat.i(65026);
-    String str = this.Evu.getText().toString();
+    String str = this.Koc.getText().toString();
     AppMethodBeat.o(65026);
     return str;
   }
@@ -74,32 +81,30 @@ public class WxaLuckyMoneyTextInputView
     return i;
   }
   
-  public final void onError() {}
-  
   public final void restore() {}
   
   public void setHintText(String paramString)
   {
     AppMethodBeat.i(65027);
-    this.Evu.setHint(paramString);
+    this.Koc.setHint(paramString);
     AppMethodBeat.o(65027);
   }
   
   public void setOnInputValidChangerListener(h paramh)
   {
-    this.EtX = paramh;
+    this.KmE = paramh;
   }
   
   public void setTitle(String paramString)
   {
     AppMethodBeat.i(65028);
-    this.pPT.setText(paramString);
+    this.sUt.setText(paramString);
     AppMethodBeat.o(65028);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.appbrand.ui.view.WxaLuckyMoneyTextInputView
  * JD-Core Version:    0.7.0.1
  */

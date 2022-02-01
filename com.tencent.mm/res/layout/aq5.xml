@@ -1,9 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/j6x" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/dcj" android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <RelativeLayout android:id="@id/j6e" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <TextView android:textSize="@dimen/l" android:textColor="#ccf2f2f2" android:id="@id/j4l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-    </RelativeLayout>
-</LinearLayout>
+<com.tencent.mm.view.TouchableLayout android:id="@id/iwl" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/jj2" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical" android:id="@id/jis" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/ivk" android:layout_width="fill_parent" android:layout_height="fill_parent" app:loadMoreLayout="@layout/b8d">
+                <com.tencent.mm.plugin.finder.event.recyclerview.FinderRecyclerView android:id="@id/i6r" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            </com.tencent.mm.view.RefreshLoadMoreLayout>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <ViewStub android:layout_gravity="bottom|center" android:id="@id/h07" android:layout="@layout/amn" android:layout_width="fill_parent" android:layout_height="@dimen/c6" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/jhz" android:background="@color/ahb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/ehq" android:background="@color/al2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mm.view.AnimationLayout android:id="@id/ji1" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mm.view.NinePatchCropImageView android:layout_gravity="center" android:id="@id/ji0" android:background="@color/g_" android:layout_width="fill_parent" android:layout_height="100.0dip" android:scaleType="centerCrop" />
+        </com.tencent.mm.view.AnimationLayout>
+    </FrameLayout>
+    <FrameLayout android:id="@id/ji_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <include layout="@layout/a7v" />
+    </FrameLayout>
+    <ProgressBar android:layout_gravity="center" android:id="@id/jia" android:visibility="gone" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:indeterminateDrawable="@drawable/ann" />
+    <androidx.constraintlayout.widget.ConstraintLayout android:orientation="vertical" android:id="@id/isg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/isf" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:src="@raw/icons_outlined_refresh" app:iconColor="@color/al5" app:layout_constraintBottom_toTopOf="@id/isi" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" app:layout_constraintVertical_chainStyle="hqs" />
+        <TextView android:textSize="@dimen/m3" android:textColor="@color/al5" android:gravity="center" android:id="@id/isi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:text="@string/est" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toBottomOf="@id/isf" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <ViewStub android:layout_gravity="end" android:id="@id/iu9" android:layout="@layout/aq9" android:layout_width="@dimen/dc" android:layout_height="wrap_content" />
+    <include layout="@layout/ac4" />
+</com.tencent.mm.view.TouchableLayout>

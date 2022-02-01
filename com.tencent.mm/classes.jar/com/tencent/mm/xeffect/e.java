@@ -1,65 +1,40 @@
 package com.tencent.mm.xeffect;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.a.b;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/xeffect/XEffectLib;", "", "()V", "libLoader", "Lkotlin/Function1;", "", "", "load", "name", "setLoader", "loader", "renderlib_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mm/xeffect/XEffectFileUtils;", "", "()V", "OpenCLCNNLibPath", "", "TAG", "imageLabelName", "checkAssetsMatch", "", "localMd5", "copyAssets", "", "assets", "Landroid/content/res/AssetManager;", "assetsPath", "localPath", "copyModelFiles", "context", "Landroid/content/Context;", "output", "getAssetsMD5", "renderlib_release"}, k=1, mv={1, 1, 15})
 public final class e
 {
-  private static b<? super String, x> YZs;
-  public static final e YZt;
+  private static final String TAG = "XEffectFileUtils";
+  public static final e agXD;
   
   static
   {
-    AppMethodBeat.i(195670);
-    YZt = new e();
-    YZs = (b)a.YZu;
-    AppMethodBeat.o(195670);
+    AppMethodBeat.i(234515);
+    agXD = new e();
+    TAG = "XEffectFileUtils";
+    AppMethodBeat.o(234515);
   }
   
-  public static void ah(b<? super String, x> paramb)
+  public static boolean bEX(String paramString)
   {
-    AppMethodBeat.i(195665);
-    p.k(paramb, "loader");
-    YZs = paramb;
-    AppMethodBeat.o(195665);
+    AppMethodBeat.i(234498);
+    s.t(paramString, "localMd5");
+    boolean bool = s.p("67107ab8f0a4142b305efda34b4fe687", paramString);
+    AppMethodBeat.o(234498);
+    return bool;
   }
   
-  public static final void load(String paramString)
+  public static String jQg()
   {
-    AppMethodBeat.i(195667);
-    p.k(paramString, "name");
-    YZs.invoke(paramString);
-    AppMethodBeat.o(195667);
-  }
-  
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "", "it", "", "invoke"})
-  static final class a
-    extends q
-    implements b<String, x>
-  {
-    public static final a YZu;
-    
-    static
-    {
-      AppMethodBeat.i(195663);
-      YZu = new a();
-      AppMethodBeat.o(195663);
-    }
-    
-    a()
-    {
-      super();
-    }
+    return "67107ab8f0a4142b305efda34b4fe687";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.xeffect.e
  * JD-Core Version:    0.7.0.1
  */

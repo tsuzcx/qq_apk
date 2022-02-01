@@ -9,11 +9,11 @@ import com.tencent.mm.plugin.topstory.ui.c.g;
 import com.tencent.mm.plugin.topstory.ui.video.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.widget.a.f.a;
-import com.tencent.mm.ui.widget.a.f.c;
+import com.tencent.mm.ui.widget.a.g.a;
+import com.tencent.mm.ui.widget.a.g.c;
 
 final class e$1$1
   implements Runnable
@@ -24,17 +24,17 @@ final class e$1$1
   {
     AppMethodBeat.i(126423);
     Log.i("MicroMsg.TopStory.TopStoryListVideoAdapter", "show education pop window");
-    f.a locala = new f.a(MMApplicationContext.getContext());
-    locala.bBl(e.f(this.Ncq.Ncp).eOa().getString(c.g.top_story_video_education)).HL(true);
-    locala.ayp(c.g.app_i_known).b(new f.c()
+    g.a locala = new g.a(MMApplicationContext.getContext());
+    locala.bDE(e.f(this.TPa.TOZ).fWt().getString(c.g.top_story_video_education)).NF(true);
+    locala.aEX(c.g.app_i_known).b(new g.c()
     {
-      public final void g(boolean paramAnonymousBoolean, String paramAnonymousString) {}
-    }).b(new DialogInterface.OnDismissListener()
+      public final void onDialogClick(boolean paramAnonymousBoolean, String paramAnonymousString) {}
+    }).d(new DialogInterface.OnDismissListener()
     {
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(126422);
-        h.aHG().aHp().set(ar.a.Vuq, Integer.valueOf(1));
+        h.baE().ban().set(at.a.acVZ, Integer.valueOf(1));
         AppMethodBeat.o(126422);
       }
     }).show();

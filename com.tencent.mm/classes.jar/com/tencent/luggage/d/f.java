@@ -4,71 +4,71 @@ import android.content.Context;
 import android.webkit.ValueCallback;
 import com.tencent.luggage.bridge.o;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.d;
+import com.tencent.mm.plugin.appbrand.af.d;
 import org.a.a;
 
 public class f
   extends n
 {
-  private o cqI;
-  private g crk;
+  private o eiB;
+  private g ejc;
   private final Context mContext;
   
   static
   {
-    AppMethodBeat.i(207610);
+    AppMethodBeat.i(219931);
     if (!f.class.desiredAssertionStatus()) {}
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      AppMethodBeat.o(207610);
+      AppMethodBeat.o(219931);
       return;
     }
   }
   
   public f(Context paramContext, Class<? extends g> paramClass)
   {
-    AppMethodBeat.i(207605);
+    AppMethodBeat.i(219930);
     this.mContext = paramContext;
     if ((!$assertionsDisabled) && (paramClass == null))
     {
       paramContext = new AssertionError();
-      AppMethodBeat.o(207605);
+      AppMethodBeat.o(219930);
       throw paramContext;
     }
-    this.crk = ((g)a.ce(paramClass).ao(new Object[] { paramContext }).object);
+    this.ejc = ((g)a.cQ(paramClass).av(new Object[] { paramContext }).object);
     evaluateJavascript("var self = this;", null);
     evaluateJavascript("let require = process.mainModule.require;", null);
-    this.cqI = new o(this.crk);
-    evaluateJavascript(d.anc("LuggageBridge.js"), null);
-    this.crk.NV();
-    AppMethodBeat.o(207605);
+    this.eiB = new o(this.ejc);
+    evaluateJavascript(d.ags("LuggageBridge.js"), null);
+    this.ejc.aof();
+    AppMethodBeat.o(219930);
   }
   
   public final void destroy()
   {
-    AppMethodBeat.i(207609);
-    this.crk.destroy();
-    AppMethodBeat.o(207609);
+    AppMethodBeat.i(219937);
+    this.ejc.destroy();
+    AppMethodBeat.o(219937);
   }
   
   public final void evaluateJavascript(String paramString, ValueCallback<String> paramValueCallback)
   {
-    AppMethodBeat.i(207606);
-    this.crk.evaluateJavascript(paramString, paramValueCallback);
-    AppMethodBeat.o(207606);
+    AppMethodBeat.i(219933);
+    this.ejc.evaluateJavascript(paramString, paramValueCallback);
+    AppMethodBeat.o(219933);
   }
   
   public final o getBridge()
   {
-    return this.cqI;
+    return this.eiB;
   }
   
   public final String getUserAgent()
   {
-    AppMethodBeat.i(207608);
-    String str = this.crk.getUserAgent();
-    AppMethodBeat.o(207608);
+    AppMethodBeat.i(219934);
+    String str = this.ejc.getUserAgent();
+    AppMethodBeat.o(219934);
     return str;
   }
 }

@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.appbrand.page.a;
 
-import com.tencent.mm.plugin.appbrand.m.j;
+import com.tencent.mm.plugin.appbrand.n.j;
 
 public abstract interface e
   extends j
 {
-  public abstract void bXq();
+  public abstract void cxC();
   
-  public abstract void bXr();
+  public abstract void cxD();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.a.e
  * JD-Core Version:    0.7.0.1
  */

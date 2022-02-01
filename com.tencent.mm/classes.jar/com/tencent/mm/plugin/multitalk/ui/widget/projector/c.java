@@ -2,7 +2,6 @@ package com.tencent.mm.plugin.multitalk.ui.widget.projector;
 
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
@@ -21,507 +20,474 @@ import com.tencent.mm.plugin.multitalk.a.f;
 import com.tencent.mm.plugin.multitalk.a.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.ui.au;
-import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.bb;
+import com.tencent.mm.ui.bd;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenAvatarNavAnimatorUI;", "", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getContext", "()Landroid/content/Context;", "setContext", "isDoAnimationEnd", "", "mContentRoot", "Landroid/widget/RelativeLayout;", "mMainIconViewBg", "Landroid/view/View;", "mScreenProjectNavTv", "Landroid/widget/TextView;", "mUiHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "rootView", "getRootView", "()Landroid/view/View;", "setRootView", "(Landroid/view/View;)V", "runnable", "Ljava/lang/Runnable;", "screenNavBg", "screenProjectIconIv", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "screenProjectMainIconIv", "doAnimationHide", "", "getNavLayout", "reachAnimationEnd", "releaseAnimation", "showScreenAvatarNav", "showScreenIconAvatar", "visible", "", "Companion", "plugin-multitalk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenAvatarNavAnimatorUI;", "", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getContext", "()Landroid/content/Context;", "setContext", "isDoAnimationEnd", "", "mContentRoot", "Landroid/widget/RelativeLayout;", "mMainIconViewBg", "Landroid/view/View;", "mScreenProjectNavTv", "Landroid/widget/TextView;", "mUiHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "rootView", "getRootView", "()Landroid/view/View;", "setRootView", "(Landroid/view/View;)V", "runnable", "Ljava/lang/Runnable;", "screenNavBg", "screenProjectIconIv", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "screenProjectMainIconIv", "doAnimationHide", "", "getNavLayout", "reachAnimationEnd", "releaseAnimation", "showScreenAvatarNav", "showScreenIconAvatar", "visible", "", "Companion", "plugin-multitalk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
 {
-  public static final c.a FBJ;
-  WeImageView FBC;
-  View FBD;
-  private View FBE;
-  private TextView FBF;
-  private WeImageView FBG;
-  private boolean FBH;
-  private RelativeLayout FBI;
-  Context context;
-  private Runnable fKd;
-  private MMHandler ntw;
-  View oFW;
+  public static final c.a LxE;
+  private WeImageView LxF;
+  private View LxG;
+  private View LxH;
+  private TextView LxI;
+  private WeImageView LxJ;
+  private boolean LxK;
+  private RelativeLayout LxL;
+  private Context context;
+  private Runnable hPJ;
+  private MMHandler qse;
+  private View rootView;
   
   static
   {
-    AppMethodBeat.i(199983);
-    FBJ = new c.a((byte)0);
-    AppMethodBeat.o(199983);
+    AppMethodBeat.i(285684);
+    LxE = new c.a((byte)0);
+    AppMethodBeat.o(285684);
   }
   
   public c(Context paramContext)
   {
-    AppMethodBeat.i(199982);
+    AppMethodBeat.i(285646);
     this.context = paramContext;
-    this.fKd = ((Runnable)new c(this));
-    AppMethodBeat.o(199982);
+    this.hPJ = new c..ExternalSyntheticLambda2(this);
+    AppMethodBeat.o(285646);
   }
   
-  public final void XN(int paramInt)
+  private static final void a(c paramc)
   {
-    AppMethodBeat.i(199977);
-    Log.i("MicroMsg.ScreenAvatarNavAnimatorUI", "showScreenIconAvatar ".concat(String.valueOf(paramInt)));
-    Object localObject = this.oFW;
-    if (localObject != null) {
-      ((View)localObject).setVisibility(0);
-    }
-    localObject = this.FBG;
-    if (localObject != null) {
-      ((WeImageView)localObject).setImageDrawable(au.o(this.context, a.g.icons_filled_board, this.context.getResources().getColor(a.b.White)));
-    }
-    localObject = this.FBG;
-    if (localObject != null) {
-      ((WeImageView)localObject).setIconColor(this.context.getResources().getColor(a.b.White));
-    }
-    localObject = this.FBG;
-    if (localObject != null) {
-      ((WeImageView)localObject).setVisibility(paramInt);
-    }
-    localObject = this.FBE;
-    if (localObject != null) {
-      ((View)localObject).setVisibility(paramInt);
-    }
-    localObject = this.FBC;
-    if (localObject != null) {
-      ((WeImageView)localObject).setVisibility(8);
-    }
-    localObject = this.FBD;
-    if (localObject != null) {
-      ((View)localObject).setVisibility(8);
-    }
-    localObject = this.FBF;
-    if (localObject != null)
+    AppMethodBeat.i(285654);
+    s.u(paramc, "this$0");
+    if (!paramc.LxK)
     {
-      ((TextView)localObject).setVisibility(8);
-      AppMethodBeat.o(199977);
-      return;
+      Object localObject = paramc.LxG;
+      if (localObject != null) {
+        ((View)localObject).clearAnimation();
+      }
+      localObject = paramc.LxF;
+      if (localObject != null) {
+        ((WeImageView)localObject).setVisibility(0);
+      }
+      localObject = paramc.LxG;
+      if (localObject != null)
+      {
+        localObject = ((View)localObject).animate();
+        if (localObject != null)
+        {
+          localObject = ((ViewPropertyAnimator)localObject).alpha(0.0F);
+          if (localObject != null)
+          {
+            localObject = ((ViewPropertyAnimator)localObject).setDuration(100L);
+            if (localObject != null)
+            {
+              paramc = ((ViewPropertyAnimator)localObject).withStartAction(new c..ExternalSyntheticLambda1(paramc));
+              if (paramc != null) {
+                paramc.start();
+              }
+            }
+          }
+        }
+      }
     }
-    AppMethodBeat.o(199977);
+    AppMethodBeat.o(285654);
+  }
+  
+  private static final void a(c paramc, ValueAnimator paramValueAnimator)
+  {
+    AppMethodBeat.i(285661);
+    s.u(paramc, "this$0");
+    Object localObject1 = paramc.LxF;
+    if (localObject1 != null) {
+      ((WeImageView)localObject1).setVisibility(0);
+    }
+    localObject1 = paramc.LxH;
+    if (localObject1 != null) {
+      ((View)localObject1).setVisibility(0);
+    }
+    localObject1 = paramc.LxH;
+    if (localObject1 == null) {
+      localObject1 = null;
+    }
+    while (localObject1 != null)
+    {
+      localObject2 = paramValueAnimator.getAnimatedValue("sizeW");
+      if (localObject2 == null)
+      {
+        paramc = new NullPointerException("null cannot be cast to non-null type kotlin.Int");
+        AppMethodBeat.o(285661);
+        throw paramc;
+        localObject1 = ((View)localObject1).getLayoutParams();
+      }
+      else
+      {
+        ((ViewGroup.LayoutParams)localObject1).width = ((Integer)localObject2).intValue();
+      }
+    }
+    localObject1 = paramc.LxH;
+    if (localObject1 == null) {
+      localObject1 = null;
+    }
+    while (localObject1 != null)
+    {
+      localObject2 = paramValueAnimator.getAnimatedValue("sizeH");
+      if (localObject2 == null)
+      {
+        paramc = new NullPointerException("null cannot be cast to non-null type kotlin.Int");
+        AppMethodBeat.o(285661);
+        throw paramc;
+        localObject1 = ((View)localObject1).getLayoutParams();
+      }
+      else
+      {
+        ((ViewGroup.LayoutParams)localObject1).height = ((Integer)localObject2).intValue();
+      }
+    }
+    localObject1 = paramc.LxH;
+    if (localObject1 == null) {}
+    for (localObject1 = null; localObject1 == null; localObject1 = ((View)localObject1).getLayoutParams())
+    {
+      paramc = new NullPointerException("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
+      AppMethodBeat.o(285661);
+      throw paramc;
+    }
+    localObject1 = (RelativeLayout.LayoutParams)localObject1;
+    Object localObject2 = paramValueAnimator.getAnimatedValue("marginBottom");
+    if (localObject2 == null)
+    {
+      paramc = new NullPointerException("null cannot be cast to non-null type kotlin.Int");
+      AppMethodBeat.o(285661);
+      throw paramc;
+    }
+    ((RelativeLayout.LayoutParams)localObject1).bottomMargin = ((Integer)localObject2).intValue();
+    localObject1 = paramc.LxH;
+    if (localObject1 == null) {}
+    for (localObject1 = null; localObject1 == null; localObject1 = ((View)localObject1).getLayoutParams())
+    {
+      paramc = new NullPointerException("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
+      AppMethodBeat.o(285661);
+      throw paramc;
+    }
+    localObject1 = (RelativeLayout.LayoutParams)localObject1;
+    paramValueAnimator = paramValueAnimator.getAnimatedValue("marginEnd");
+    if (paramValueAnimator == null)
+    {
+      paramc = new NullPointerException("null cannot be cast to non-null type kotlin.Int");
+      AppMethodBeat.o(285661);
+      throw paramc;
+    }
+    ((RelativeLayout.LayoutParams)localObject1).setMarginEnd(((Integer)paramValueAnimator).intValue());
+    paramc = paramc.LxH;
+    if (paramc != null) {
+      paramc.requestLayout();
+    }
+    AppMethodBeat.o(285661);
+  }
+  
+  private static final void b(c paramc)
+  {
+    AppMethodBeat.i(285674);
+    s.u(paramc, "this$0");
+    Object localObject = paramc.LxI;
+    if (localObject != null) {
+      ((TextView)localObject).setVisibility(4);
+    }
+    localObject = paramc.LxF;
+    if (localObject != null) {
+      ((WeImageView)localObject).setVisibility(0);
+    }
+    localObject = paramc.LxF;
+    if (localObject != null) {
+      ((WeImageView)localObject).clearAnimation();
+    }
+    int k = -bd.fromDPToPix(paramc.context, 4);
+    localObject = paramc.rootView;
+    int j;
+    label108:
+    View localView;
+    if (localObject == null)
+    {
+      i = 0;
+      int m = bd.fromDPToPix(paramc.context, 32);
+      localObject = paramc.LxF;
+      if (localObject != null) {
+        break label370;
+      }
+      j = 0;
+      localObject = paramc.LxF;
+      if (localObject != null)
+      {
+        localObject = ((WeImageView)localObject).animate();
+        if (localObject != null)
+        {
+          localObject = ((ViewPropertyAnimator)localObject).translationX(i - m - j);
+          if (localObject != null)
+          {
+            localObject = ((ViewPropertyAnimator)localObject).translationY(k);
+            if (localObject != null)
+            {
+              localObject = ((ViewPropertyAnimator)localObject).setDuration(300L);
+              if (localObject != null) {
+                ((ViewPropertyAnimator)localObject).start();
+              }
+            }
+          }
+        }
+      }
+      localObject = paramc.rootView;
+      if (localObject != null) {
+        break label379;
+      }
+      i = 0;
+      label197:
+      localObject = PropertyValuesHolder.ofInt("sizeW", new int[] { i, bd.fromDPToPix(paramc.context, 28) });
+      localView = paramc.rootView;
+      if (localView != null) {
+        break label388;
+      }
+    }
+    label388:
+    for (int i = 0;; i = localView.getHeight())
+    {
+      localObject = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { localObject, PropertyValuesHolder.ofInt("sizeH", new int[] { i, bd.fromDPToPix(paramc.context, 28) }), PropertyValuesHolder.ofInt("marginBottom", new int[] { 0, bd.fromDPToPix(paramc.context, 8) }), PropertyValuesHolder.ofInt("marginEnd", new int[] { 0, bd.fromDPToPix(paramc.context, 8) }) }).setDuration(300L);
+      ((ValueAnimator)localObject).addUpdateListener(new c..ExternalSyntheticLambda0(paramc));
+      ((ValueAnimator)localObject).start();
+      AppMethodBeat.o(285674);
+      return;
+      i = ((View)localObject).getWidth();
+      break;
+      label370:
+      j = ((WeImageView)localObject).getLeft();
+      break label108;
+      label379:
+      i = ((View)localObject).getWidth();
+      break label197;
+    }
   }
   
   public final void a(RelativeLayout paramRelativeLayout)
   {
-    AppMethodBeat.i(199974);
-    p.k(paramRelativeLayout, "rootView");
-    this.oFW = ((View)paramRelativeLayout);
-    Object localObject = LayoutInflater.from(this.context).inflate(a.f.screen_avatar_navagation_layout, (ViewGroup)paramRelativeLayout);
-    if (localObject == null)
+    Object localObject2 = null;
+    AppMethodBeat.i(285722);
+    s.u(paramRelativeLayout, "rootView");
+    this.rootView = ((View)paramRelativeLayout);
+    Object localObject1 = LayoutInflater.from(this.context).inflate(a.f.screen_avatar_navagation_layout, (ViewGroup)paramRelativeLayout);
+    if (localObject1 == null)
     {
-      paramRelativeLayout = new t("null cannot be cast to non-null type android.widget.RelativeLayout");
-      AppMethodBeat.o(199974);
+      paramRelativeLayout = new NullPointerException("null cannot be cast to non-null type android.widget.RelativeLayout");
+      AppMethodBeat.o(285722);
       throw paramRelativeLayout;
     }
-    this.FBI = ((RelativeLayout)localObject);
-    localObject = this.FBI;
-    if (localObject != null)
+    this.LxL = ((RelativeLayout)localObject1);
+    localObject1 = this.LxL;
+    if (localObject1 == null)
     {
-      localObject = (WeImageView)((RelativeLayout)localObject).findViewById(a.e.screen_project_icon_iv);
-      this.FBC = ((WeImageView)localObject);
-      localObject = this.FBC;
-      if (localObject != null) {
-        ((WeImageView)localObject).setImageDrawable(au.o(paramRelativeLayout.getContext(), a.g.icons_filled_board, -1));
+      localObject1 = null;
+      this.LxF = ((WeImageView)localObject1);
+      localObject1 = this.LxF;
+      if (localObject1 != null) {
+        ((WeImageView)localObject1).setImageDrawable(bb.m(paramRelativeLayout.getContext(), a.g.icons_filled_board, -1));
       }
-      localObject = this.FBC;
-      if (localObject != null) {
-        ((WeImageView)localObject).setIconColor(-1);
+      localObject1 = this.LxF;
+      if (localObject1 != null) {
+        ((WeImageView)localObject1).setIconColor(-1);
       }
-      localObject = this.FBI;
-      if (localObject == null) {
-        break label313;
+      localObject1 = this.LxL;
+      if (localObject1 != null) {
+        break label276;
       }
-      localObject = ((RelativeLayout)localObject).findViewById(a.e.screen_project_nav_bg);
-      label146:
-      this.FBD = ((View)localObject);
-      localObject = this.FBI;
-      if (localObject == null) {
-        break label318;
+      localObject1 = null;
+      label137:
+      this.LxG = ((View)localObject1);
+      localObject1 = this.LxL;
+      if (localObject1 != null) {
+        break label287;
       }
-      localObject = ((RelativeLayout)localObject).findViewById(a.e.multitalk_mute_icon_bg);
-      label168:
-      this.FBE = ((View)localObject);
-      localObject = this.FBE;
-      if (localObject != null)
-      {
-        Context localContext = paramRelativeLayout.getContext();
-        int i = a.d.multitalk_mute_icon_background;
-        paramRelativeLayout = paramRelativeLayout.getContext();
-        p.j(paramRelativeLayout, "rootView.context");
-        ((View)localObject).setBackground(au.o(localContext, i, paramRelativeLayout.getResources().getColor(a.b.Blue)));
+      localObject1 = null;
+      label153:
+      this.LxH = ((View)localObject1);
+      localObject1 = this.LxH;
+      if (localObject1 != null) {
+        ((View)localObject1).setBackground(bb.m(paramRelativeLayout.getContext(), a.d.multitalk_mute_icon_background, paramRelativeLayout.getContext().getResources().getColor(a.b.Blue)));
       }
-      paramRelativeLayout = this.FBE;
+      paramRelativeLayout = this.LxH;
       if (paramRelativeLayout != null) {
         paramRelativeLayout.setVisibility(4);
       }
-      paramRelativeLayout = this.FBI;
-      if (paramRelativeLayout == null) {
-        break label323;
+      paramRelativeLayout = this.LxL;
+      if (paramRelativeLayout != null) {
+        break label298;
       }
-      paramRelativeLayout = (TextView)paramRelativeLayout.findViewById(a.e.screen_project_nav_tv);
-      label257:
-      this.FBF = paramRelativeLayout;
-      paramRelativeLayout = this.FBI;
-      if (paramRelativeLayout == null) {
-        break label328;
-      }
-    }
-    label313:
-    label318:
-    label323:
-    label328:
-    for (paramRelativeLayout = (WeImageView)paramRelativeLayout.findViewById(a.e.multitalk_screen_iv);; paramRelativeLayout = null)
-    {
-      this.FBG = paramRelativeLayout;
-      paramRelativeLayout = this.FBG;
-      if (paramRelativeLayout == null) {
-        break label333;
-      }
-      paramRelativeLayout.setVisibility(8);
-      AppMethodBeat.o(199974);
-      return;
-      localObject = null;
-      break;
-      localObject = null;
-      break label146;
-      localObject = null;
-      break label168;
       paramRelativeLayout = null;
-      break label257;
+      label219:
+      this.LxI = paramRelativeLayout;
+      paramRelativeLayout = this.LxL;
+      if (paramRelativeLayout != null) {
+        break label312;
+      }
     }
-    label333:
-    AppMethodBeat.o(199974);
+    label276:
+    label287:
+    label298:
+    label312:
+    for (paramRelativeLayout = localObject2;; paramRelativeLayout = (WeImageView)paramRelativeLayout.findViewById(a.e.multitalk_screen_iv))
+    {
+      this.LxJ = paramRelativeLayout;
+      paramRelativeLayout = this.LxJ;
+      if (paramRelativeLayout != null) {
+        paramRelativeLayout.setVisibility(8);
+      }
+      AppMethodBeat.o(285722);
+      return;
+      localObject1 = (WeImageView)((RelativeLayout)localObject1).findViewById(a.e.screen_project_icon_iv);
+      break;
+      localObject1 = ((RelativeLayout)localObject1).findViewById(a.e.screen_project_nav_bg);
+      break label137;
+      localObject1 = ((RelativeLayout)localObject1).findViewById(a.e.multitalk_mute_icon_bg);
+      break label153;
+      paramRelativeLayout = (TextView)paramRelativeLayout.findViewById(a.e.screen_project_nav_tv);
+      break label219;
+    }
   }
   
-  public final void eZb()
+  public final void abX(int paramInt)
   {
-    AppMethodBeat.i(199976);
-    this.FBH = false;
-    this.ntw = new MMHandler("ScreenAvatarNavAnimatorUI_Hide" + hashCode());
-    Object localObject = this.FBC;
-    if (localObject != null) {
-      ((WeImageView)localObject).setVisibility(0);
-    }
-    localObject = this.FBF;
-    if (localObject != null) {
-      ((TextView)localObject).setVisibility(0);
-    }
-    localObject = this.FBD;
+    AppMethodBeat.i(285748);
+    Log.i("MicroMsg.ScreenAvatarNavAnimatorUI", s.X("showScreenIconAvatar ", Integer.valueOf(paramInt)));
+    Object localObject = this.rootView;
     if (localObject != null) {
       ((View)localObject).setVisibility(0);
     }
-    localObject = this.FBG;
+    localObject = this.LxJ;
+    if (localObject != null) {
+      ((WeImageView)localObject).setImageDrawable(bb.m(this.context, a.g.icons_filled_board, this.context.getResources().getColor(a.b.White)));
+    }
+    localObject = this.LxJ;
+    if (localObject != null) {
+      ((WeImageView)localObject).setIconColor(this.context.getResources().getColor(a.b.White));
+    }
+    localObject = this.LxJ;
+    if (localObject != null) {
+      ((WeImageView)localObject).setVisibility(paramInt);
+    }
+    localObject = this.LxH;
+    if (localObject != null) {
+      ((View)localObject).setVisibility(paramInt);
+    }
+    localObject = this.LxF;
     if (localObject != null) {
       ((WeImageView)localObject).setVisibility(8);
     }
-    localObject = this.ntw;
-    if (localObject != null) {
-      ((MMHandler)localObject).removeCallbacksAndMessages(null);
-    }
-    localObject = this.ntw;
-    if (localObject != null)
-    {
-      ((MMHandler)localObject).postUIDelayed(this.fKd, 5000L);
-      AppMethodBeat.o(199976);
-      return;
-    }
-    AppMethodBeat.o(199976);
-  }
-  
-  public final void eZc()
-  {
-    AppMethodBeat.i(199979);
-    Object localObject = this.ntw;
-    if (localObject != null) {
-      ((MMHandler)localObject).removeCallbacks(this.fKd);
-    }
-    localObject = this.ntw;
-    if (localObject != null) {
-      ((MMHandler)localObject).removeCallbacksAndMessages(null);
-    }
-    localObject = this.ntw;
-    if (localObject != null) {
-      ((MMHandler)localObject).quitSafely();
-    }
-    localObject = this.FBD;
-    if (localObject != null) {
-      ((View)localObject).clearAnimation();
-    }
-    localObject = this.FBC;
-    if (localObject != null) {
-      ((WeImageView)localObject).clearAnimation();
-    }
-    XN(0);
-    this.FBH = true;
-    localObject = this.FBC;
-    if (localObject != null) {
-      ((WeImageView)localObject).setVisibility(8);
-    }
-    localObject = this.FBD;
+    localObject = this.LxG;
     if (localObject != null) {
       ((View)localObject).setVisibility(8);
     }
-    localObject = this.FBF;
-    if (localObject != null)
-    {
+    localObject = this.LxI;
+    if (localObject != null) {
       ((TextView)localObject).setVisibility(8);
-      AppMethodBeat.o(199979);
-      return;
     }
-    AppMethodBeat.o(199979);
+    AppMethodBeat.o(285748);
   }
   
-  public final void eZd()
+  public final void gia()
   {
-    AppMethodBeat.i(199981);
-    this.FBH = true;
-    Object localObject = this.ntw;
+    AppMethodBeat.i(285735);
+    this.LxK = false;
+    this.qse = new MMHandler(s.X("ScreenAvatarNavAnimatorUI_Hide", Integer.valueOf(hashCode())));
+    Object localObject = this.LxF;
     if (localObject != null) {
-      ((MMHandler)localObject).removeCallbacks(this.fKd);
+      ((WeImageView)localObject).setVisibility(0);
     }
-    localObject = this.ntw;
+    localObject = this.LxI;
+    if (localObject != null) {
+      ((TextView)localObject).setVisibility(0);
+    }
+    localObject = this.LxG;
+    if (localObject != null) {
+      ((View)localObject).setVisibility(0);
+    }
+    localObject = this.LxJ;
+    if (localObject != null) {
+      ((WeImageView)localObject).setVisibility(8);
+    }
+    localObject = this.qse;
     if (localObject != null) {
       ((MMHandler)localObject).removeCallbacksAndMessages(null);
     }
-    localObject = this.ntw;
+    localObject = this.qse;
+    if (localObject != null) {
+      ((MMHandler)localObject).postUIDelayed(this.hPJ, 5000L);
+    }
+    AppMethodBeat.o(285735);
+  }
+  
+  public final void gib()
+  {
+    AppMethodBeat.i(285759);
+    Object localObject = this.qse;
+    if (localObject != null) {
+      ((MMHandler)localObject).removeCallbacks(this.hPJ);
+    }
+    localObject = this.qse;
+    if (localObject != null) {
+      ((MMHandler)localObject).removeCallbacksAndMessages(null);
+    }
+    localObject = this.qse;
     if (localObject != null) {
       ((MMHandler)localObject).quitSafely();
     }
-    localObject = this.FBD;
+    localObject = this.LxG;
     if (localObject != null) {
       ((View)localObject).clearAnimation();
     }
-    localObject = this.FBC;
-    if (localObject != null)
-    {
+    localObject = this.LxF;
+    if (localObject != null) {
       ((WeImageView)localObject).clearAnimation();
-      AppMethodBeat.o(199981);
-      return;
     }
-    AppMethodBeat.o(199981);
+    abX(0);
+    this.LxK = true;
+    localObject = this.LxF;
+    if (localObject != null) {
+      ((WeImageView)localObject).setVisibility(8);
+    }
+    localObject = this.LxG;
+    if (localObject != null) {
+      ((View)localObject).setVisibility(8);
+    }
+    localObject = this.LxI;
+    if (localObject != null) {
+      ((TextView)localObject).setVisibility(8);
+    }
+    AppMethodBeat.o(285759);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
+  public final void gic()
   {
-    b(c paramc) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(205743);
-      Object localObject = c.a(this.FBK);
-      if (localObject != null) {
-        ((TextView)localObject).setVisibility(4);
-      }
-      localObject = c.b(this.FBK);
-      if (localObject != null) {
-        ((WeImageView)localObject).setVisibility(0);
-      }
-      localObject = c.b(this.FBK);
-      if (localObject != null) {
-        ((WeImageView)localObject).clearAnimation();
-      }
-      int k = -aw.fromDPToPix(this.FBK.context, 4);
-      localObject = this.FBK.oFW;
-      int j;
-      label131:
-      label230:
-      View localView;
-      if (localObject != null)
-      {
-        i = ((View)localObject).getWidth();
-        int m = aw.fromDPToPix(this.FBK.context, 32);
-        localObject = c.b(this.FBK);
-        if (localObject == null) {
-          break label421;
-        }
-        j = ((WeImageView)localObject).getLeft();
-        localObject = c.b(this.FBK);
-        if (localObject != null)
-        {
-          localObject = ((WeImageView)localObject).animate();
-          if (localObject != null)
-          {
-            localObject = ((ViewPropertyAnimator)localObject).translationX(i - m - j);
-            if (localObject != null)
-            {
-              localObject = ((ViewPropertyAnimator)localObject).translationY(k);
-              if (localObject != null)
-              {
-                localObject = ((ViewPropertyAnimator)localObject).setDuration(300L);
-                if (localObject != null) {
-                  ((ViewPropertyAnimator)localObject).start();
-                }
-              }
-            }
-          }
-        }
-        localObject = this.FBK.oFW;
-        if (localObject == null) {
-          break label426;
-        }
-        i = ((View)localObject).getWidth();
-        localObject = PropertyValuesHolder.ofInt("sizeW", new int[] { i, aw.fromDPToPix(this.FBK.context, 28) });
-        localView = this.FBK.oFW;
-        if (localView == null) {
-          break label431;
-        }
-      }
-      label421:
-      label426:
-      label431:
-      for (int i = localView.getHeight();; i = 0)
-      {
-        localObject = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { localObject, PropertyValuesHolder.ofInt("sizeH", new int[] { i, aw.fromDPToPix(this.FBK.context, 28) }), PropertyValuesHolder.ofInt("marginBottom", new int[] { 0, aw.fromDPToPix(this.FBK.context, 8) }), PropertyValuesHolder.ofInt("marginEnd", new int[] { 0, aw.fromDPToPix(this.FBK.context, 8) }) }).setDuration(300L);
-        ((ValueAnimator)localObject).addUpdateListener((ValueAnimator.AnimatorUpdateListener)new ValueAnimator.AnimatorUpdateListener()
-        {
-          public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
-          {
-            AppMethodBeat.i(205103);
-            Object localObject1 = c.b(this.FBL.FBK);
-            if (localObject1 != null) {
-              ((WeImageView)localObject1).setVisibility(0);
-            }
-            localObject1 = c.c(this.FBL.FBK);
-            if (localObject1 != null) {
-              ((View)localObject1).setVisibility(0);
-            }
-            localObject1 = c.c(this.FBL.FBK);
-            if (localObject1 != null)
-            {
-              localObject1 = ((View)localObject1).getLayoutParams();
-              if (localObject1 != null)
-              {
-                localObject2 = paramAnonymousValueAnimator.getAnimatedValue("sizeW");
-                if (localObject2 == null)
-                {
-                  paramAnonymousValueAnimator = new t("null cannot be cast to non-null type kotlin.Int");
-                  AppMethodBeat.o(205103);
-                  throw paramAnonymousValueAnimator;
-                }
-                ((ViewGroup.LayoutParams)localObject1).width = ((Integer)localObject2).intValue();
-              }
-            }
-            localObject1 = c.c(this.FBL.FBK);
-            if (localObject1 != null)
-            {
-              localObject1 = ((View)localObject1).getLayoutParams();
-              if (localObject1 != null)
-              {
-                localObject2 = paramAnonymousValueAnimator.getAnimatedValue("sizeH");
-                if (localObject2 == null)
-                {
-                  paramAnonymousValueAnimator = new t("null cannot be cast to non-null type kotlin.Int");
-                  AppMethodBeat.o(205103);
-                  throw paramAnonymousValueAnimator;
-                }
-                ((ViewGroup.LayoutParams)localObject1).height = ((Integer)localObject2).intValue();
-              }
-            }
-            localObject1 = c.c(this.FBL.FBK);
-            if (localObject1 != null) {}
-            for (localObject1 = ((View)localObject1).getLayoutParams(); localObject1 == null; localObject1 = null)
-            {
-              paramAnonymousValueAnimator = new t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
-              AppMethodBeat.o(205103);
-              throw paramAnonymousValueAnimator;
-            }
-            localObject1 = (RelativeLayout.LayoutParams)localObject1;
-            Object localObject2 = paramAnonymousValueAnimator.getAnimatedValue("marginBottom");
-            if (localObject2 == null)
-            {
-              paramAnonymousValueAnimator = new t("null cannot be cast to non-null type kotlin.Int");
-              AppMethodBeat.o(205103);
-              throw paramAnonymousValueAnimator;
-            }
-            ((RelativeLayout.LayoutParams)localObject1).bottomMargin = ((Integer)localObject2).intValue();
-            localObject1 = c.c(this.FBL.FBK);
-            if (localObject1 != null) {}
-            for (localObject1 = ((View)localObject1).getLayoutParams(); localObject1 == null; localObject1 = null)
-            {
-              paramAnonymousValueAnimator = new t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
-              AppMethodBeat.o(205103);
-              throw paramAnonymousValueAnimator;
-            }
-            localObject1 = (RelativeLayout.LayoutParams)localObject1;
-            paramAnonymousValueAnimator = paramAnonymousValueAnimator.getAnimatedValue("marginEnd");
-            if (paramAnonymousValueAnimator == null)
-            {
-              paramAnonymousValueAnimator = new t("null cannot be cast to non-null type kotlin.Int");
-              AppMethodBeat.o(205103);
-              throw paramAnonymousValueAnimator;
-            }
-            ((RelativeLayout.LayoutParams)localObject1).setMarginEnd(((Integer)paramAnonymousValueAnimator).intValue());
-            paramAnonymousValueAnimator = c.c(this.FBL.FBK);
-            if (paramAnonymousValueAnimator != null)
-            {
-              paramAnonymousValueAnimator.requestLayout();
-              AppMethodBeat.o(205103);
-              return;
-            }
-            AppMethodBeat.o(205103);
-          }
-        });
-        ((ValueAnimator)localObject).start();
-        AppMethodBeat.o(205743);
-        return;
-        i = 0;
-        break;
-        j = 0;
-        break label131;
-        i = 0;
-        break label230;
-      }
+    AppMethodBeat.i(285766);
+    this.LxK = true;
+    Object localObject = this.qse;
+    if (localObject != null) {
+      ((MMHandler)localObject).removeCallbacks(this.hPJ);
     }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class c
-    implements Runnable
-  {
-    c(c paramc) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(196021);
-      if (!c.d(this.FBK))
-      {
-        Object localObject1 = this.FBK;
-        Object localObject2 = ((c)localObject1).FBD;
-        if (localObject2 != null) {
-          ((View)localObject2).clearAnimation();
-        }
-        localObject2 = ((c)localObject1).FBC;
-        if (localObject2 != null) {
-          ((WeImageView)localObject2).setVisibility(0);
-        }
-        localObject2 = ((c)localObject1).FBD;
-        if (localObject2 != null)
-        {
-          localObject2 = ((View)localObject2).animate();
-          if (localObject2 != null)
-          {
-            localObject2 = ((ViewPropertyAnimator)localObject2).alpha(0.0F);
-            if (localObject2 != null)
-            {
-              localObject2 = ((ViewPropertyAnimator)localObject2).setDuration(100L);
-              if (localObject2 != null)
-              {
-                localObject1 = ((ViewPropertyAnimator)localObject2).withStartAction((Runnable)new c.b((c)localObject1));
-                if (localObject1 != null)
-                {
-                  ((ViewPropertyAnimator)localObject1).start();
-                  AppMethodBeat.o(196021);
-                  return;
-                }
-              }
-            }
-          }
-        }
-      }
-      AppMethodBeat.o(196021);
+    localObject = this.qse;
+    if (localObject != null) {
+      ((MMHandler)localObject).removeCallbacksAndMessages(null);
     }
+    localObject = this.qse;
+    if (localObject != null) {
+      ((MMHandler)localObject).quitSafely();
+    }
+    localObject = this.LxG;
+    if (localObject != null) {
+      ((View)localObject).clearAnimation();
+    }
+    localObject = this.LxF;
+    if (localObject != null) {
+      ((WeImageView)localObject).clearAnimation();
+    }
+    AppMethodBeat.o(285766);
   }
 }
 

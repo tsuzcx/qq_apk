@@ -13,19 +13,19 @@ import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 public class g
   extends com.tencent.mm.plugin.topstory.ui.video.g
 {
-  MTimerHandler NbG;
-  private View Ncy;
-  private a Ncz;
+  MTimerHandler TOp;
+  private View TPi;
+  private a TPj;
   
   public g(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(126476);
-    this.Ncy = this.contentView.findViewById(c.d.full_screen_iv);
+    this.TPi = this.contentView.findViewById(c.d.full_screen_iv);
     AppMethodBeat.o(126476);
   }
   
-  public final boolean bVd()
+  public final boolean cvt()
   {
     AppMethodBeat.i(126478);
     if (getVisibility() == 0)
@@ -37,40 +37,31 @@ public class g
     return false;
   }
   
-  public final void bVi()
+  public final void cvy()
   {
     AppMethodBeat.i(126482);
-    if (this.NbG != null)
+    if (this.TOp != null)
     {
-      this.NbG.stopTimer();
-      this.NbG.startTimer(2000L);
+      this.TOp.stopTimer();
+      this.TOp.startTimer(2000L);
     }
     AppMethodBeat.o(126482);
   }
   
-  public final void bWO()
+  public final void cxb()
   {
     AppMethodBeat.i(126487);
-    super.bWO();
-    if (this.Ncz != null) {
-      this.Ncz.kC(this.mPosition, getVideoTotalTime());
+    super.cxb();
+    if (this.TPj != null) {
+      this.TPj.mq(this.mPosition, getVideoTotalTime());
     }
     AppMethodBeat.o(126487);
-  }
-  
-  public final void cEO()
-  {
-    AppMethodBeat.i(126481);
-    if (this.NbG != null) {
-      this.NbG.stopTimer();
-    }
-    AppMethodBeat.o(126481);
   }
   
   public int getBarPointWidth()
   {
     AppMethodBeat.i(126483);
-    int i = this.pCb.getWidth();
+    int i = this.sHo.getWidth();
     AppMethodBeat.o(126483);
     return i;
   }
@@ -80,37 +71,46 @@ public class g
     return c.e.top_story_list_video_control_bar;
   }
   
-  public final void grN()
+  public final void hON()
+  {
+    AppMethodBeat.i(126481);
+    if (this.TOp != null) {
+      this.TOp.stopTimer();
+    }
+    AppMethodBeat.o(126481);
+  }
+  
+  public final void hOO()
   {
     AppMethodBeat.i(126484);
-    this.pCc.setVisibility(8);
+    this.sHp.setVisibility(8);
     AppMethodBeat.o(126484);
   }
   
-  public final void grO()
+  public final void hOP()
   {
     AppMethodBeat.i(126485);
-    this.pCc.setVisibility(0);
+    this.sHp.setVisibility(0);
     AppMethodBeat.o(126485);
   }
   
   public final void hide()
   {
-    AppMethodBeat.i(292768);
+    AppMethodBeat.i(369750);
     setVisibility(8);
-    AppMethodBeat.o(292768);
+    AppMethodBeat.o(369750);
   }
   
   public void setFullScreenBtnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(126477);
-    this.Ncy.setOnClickListener(paramOnClickListener);
+    this.TPi.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(126477);
   }
   
   public void setOnUpdateProgressLenListener(a parama)
   {
-    this.Ncz = parama;
+    this.TPj = parama;
   }
   
   public void setVisibility(int paramInt)
@@ -119,14 +119,14 @@ public class g
     super.setVisibility(paramInt);
     if ((paramInt == 8) || (paramInt == 4))
     {
-      if (this.Ncz != null)
+      if (this.TPj != null)
       {
-        this.Ncz.grM();
+        this.TPj.hOM();
         AppMethodBeat.o(126486);
       }
     }
-    else if ((paramInt == 0) && (this.Ncz != null)) {
-      this.Ncz.grL();
+    else if ((paramInt == 0) && (this.TPj != null)) {
+      this.TPj.hOL();
     }
     AppMethodBeat.o(126486);
   }
@@ -135,9 +135,9 @@ public class g
   {
     AppMethodBeat.i(126480);
     setVisibility(0);
-    grO();
-    if (this.NbG == null) {
-      this.NbG = new MTimerHandler(new MTimerHandler.CallBack()
+    hOP();
+    if (this.TOp == null) {
+      this.TOp = new MTimerHandler(new MTimerHandler.CallBack()
       {
         public final boolean onTimerExpired()
         {
@@ -149,23 +149,23 @@ public class g
         }
       }, false);
     }
-    this.NbG.stopTimer();
-    this.NbG.startTimer(2000L);
+    this.TOp.stopTimer();
+    this.TOp.startTimer(2000L);
     AppMethodBeat.o(126480);
   }
   
   public static abstract interface a
   {
-    public abstract void grL();
+    public abstract void hOL();
     
-    public abstract void grM();
+    public abstract void hOM();
     
-    public abstract void kC(int paramInt1, int paramInt2);
+    public abstract void mq(int paramInt1, int paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.list.g
  * JD-Core Version:    0.7.0.1
  */

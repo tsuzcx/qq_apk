@@ -7,7 +7,7 @@ public abstract interface d
 {
   public abstract void a(a parama);
   
-  public abstract <T extends BaseIPCService> void a(String paramString, Class<T> paramClass);
+  public abstract <T extends BaseIPCService> void e(String paramString, Class<T> paramClass);
 }
 
 

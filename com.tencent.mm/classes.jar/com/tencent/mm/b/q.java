@@ -1,7 +1,7 @@
 package com.tencent.mm.b;
 
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 
 public final class q
 {
@@ -9,7 +9,7 @@ public final class q
   {
     try
     {
-      String str2 = u.n(paramString, paramBoolean);
+      String str2 = y.n(paramString, paramBoolean);
       String str1 = paramString;
       if (str2 != null)
       {
@@ -18,7 +18,7 @@ public final class q
       }
       return str1;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Log.printErrStackTrace("MicroMsg.VFSFileOpEx", localThrowable, "exportExternalPath failed", new Object[0]);
     }

@@ -1,12 +1,14 @@
 package com.tencent.tav.coremedia;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.ArrayList;
 
 public class CMSampleState
 {
   private int exportCode;
   private boolean isNewFrame;
   private String msg;
+  public CMPerformance performance;
   private long stateCode;
   private Throwable throwable;
   private final CMTime time;
@@ -18,7 +20,8 @@ public class CMSampleState
   
   public CMSampleState(long paramLong, String paramString, Throwable paramThrowable)
   {
-    AppMethodBeat.i(202916);
+    AppMethodBeat.i(215746);
+    this.performance = new CMPerformance();
     this.isNewFrame = true;
     this.stateCode = 0L;
     this.exportCode = 0;
@@ -26,12 +29,13 @@ public class CMSampleState
     this.stateCode = paramLong;
     this.msg = paramString;
     this.throwable = paramThrowable;
-    AppMethodBeat.o(202916);
+    AppMethodBeat.o(215746);
   }
   
   public CMSampleState(CMTime paramCMTime)
   {
-    AppMethodBeat.i(202915);
+    AppMethodBeat.i(215734);
+    this.performance = new CMPerformance();
     this.isNewFrame = true;
     this.stateCode = 0L;
     this.exportCode = 0;
@@ -39,39 +43,45 @@ public class CMSampleState
     if (paramCMTime.value < 0L) {
       this.stateCode = paramCMTime.value;
     }
-    AppMethodBeat.o(202915);
+    AppMethodBeat.o(215734);
+  }
+  
+  public CMSampleState(CMTime paramCMTime, CMPerformance paramCMPerformance)
+  {
+    this(paramCMTime);
+    this.performance = paramCMPerformance;
   }
   
   public static CMSampleState fromError(long paramLong)
   {
-    AppMethodBeat.i(202909);
+    AppMethodBeat.i(215698);
     CMSampleState localCMSampleState = fromError(paramLong, "state:".concat(String.valueOf(paramLong)));
-    AppMethodBeat.o(202909);
+    AppMethodBeat.o(215698);
     return localCMSampleState;
   }
   
   public static CMSampleState fromError(long paramLong, String paramString)
   {
-    AppMethodBeat.i(202910);
+    AppMethodBeat.i(215703);
     paramString = fromError(paramLong, paramString, new RuntimeException(paramString));
-    AppMethodBeat.o(202910);
+    AppMethodBeat.o(215703);
     return paramString;
   }
   
   public static CMSampleState fromError(long paramLong, String paramString, Throwable paramThrowable)
   {
-    AppMethodBeat.i(202911);
+    AppMethodBeat.i(215709);
     paramString = new CMSampleState(paramLong, paramString, paramThrowable);
-    AppMethodBeat.o(202911);
+    AppMethodBeat.o(215709);
     return paramString;
   }
   
   public static CMSampleState fromExportError(long paramLong, int paramInt, String paramString, Throwable paramThrowable)
   {
-    AppMethodBeat.i(202912);
+    AppMethodBeat.i(215715);
     paramString = new CMSampleState(paramLong, paramString, paramThrowable);
     paramString.exportCode = paramInt;
-    AppMethodBeat.o(202912);
+    AppMethodBeat.o(215715);
     return paramString;
   }
   
@@ -100,6 +110,13 @@ public class CMSampleState
     return this.time;
   }
   
+  public CMSampleState inherit(CMSampleState paramCMSampleState)
+  {
+    this.performance = paramCMSampleState.performance;
+    paramCMSampleState.performance = null;
+    return this;
+  }
+  
   public boolean isInvalid()
   {
     return this.time == CMTime.CMTimeInvalid;
@@ -108,6 +125,17 @@ public class CMSampleState
   public boolean isNewFrame()
   {
     return this.isNewFrame;
+  }
+  
+  public void joinNode(CMSampleState paramCMSampleState)
+  {
+    AppMethodBeat.i(215753);
+    if (paramCMSampleState.performance != null)
+    {
+      this.performance.preNodes.add(paramCMSampleState.performance);
+      paramCMSampleState.performance = null;
+    }
+    AppMethodBeat.o(215753);
   }
   
   public void setNewFrame(boolean paramBoolean)
@@ -140,10 +168,19 @@ public class CMSampleState
   
   public String toString()
   {
-    AppMethodBeat.i(202921);
+    AppMethodBeat.i(215829);
     String str = "CMSampleState{time=" + this.time + ", isNewFrame=" + this.isNewFrame + ", stateCode=" + this.stateCode + ", throwable=" + this.throwable + ", msg='" + this.msg + '\'' + '}';
-    AppMethodBeat.o(202921);
+    AppMethodBeat.o(215829);
     return str;
+  }
+  
+  public void updatePerformance()
+  {
+    AppMethodBeat.i(215762);
+    while (this.performance.getNextNode() != null) {
+      this.performance = this.performance.getNextNode();
+    }
+    AppMethodBeat.o(215762);
   }
 }
 

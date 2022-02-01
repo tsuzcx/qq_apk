@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.music.model.c;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.j;
-import com.tencent.mm.plugin.music.f.a.a;
-import com.tencent.mm.plugin.music.f.a.c;
+import com.tencent.mm.compatible.util.k;
+import com.tencent.mm.plugin.music.e.a.a;
+import com.tencent.mm.plugin.music.e.a.c;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
   implements c
 {
-  public final boolean aSk(String paramString)
+  public final boolean aPe(String paramString)
   {
     AppMethodBeat.i(63136);
-    boolean bool = j.KX(paramString);
+    boolean bool = k.DB(paramString);
     AppMethodBeat.o(63136);
     return bool;
   }
@@ -42,18 +42,18 @@ public final class b
       AppMethodBeat.o(63134);
       return false;
     }
-    if (j.KX(paramString))
+    if (k.DB(paramString))
     {
       AppMethodBeat.o(63134);
       return true;
     }
     Log.i("MicroMsg.Music.WechatMusicLoadLibrary", "load library %s", new Object[] { paramString });
     a.class.getClassLoader();
-    String str = j.eA(paramString);
+    String str = k.fX(paramString);
     if (!TextUtils.isEmpty(str))
     {
       Log.i("MicroMsg.Music.WechatMusicLoadLibrary", "LoadLibrary find and load the lib %s so", new Object[] { str });
-      j.KW(paramString);
+      k.DA(paramString);
       AppMethodBeat.o(63134);
       return true;
     }

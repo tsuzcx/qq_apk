@@ -1,190 +1,222 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.hs;
-import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.am.p;
+import com.tencent.mm.plugin.wallet_core.c.ae;
+import com.tencent.mm.plugin.wallet_core.utils.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import kotlin.Metadata;
+import kotlin.g.a.b;
+import kotlin.g.b.ah.f;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/wallet_core/model/WcPayBindQueryDataFetcher;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "TAG", "", "mRequestMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/wallet_core/cgi/NetSceneTenpayQueryBoundBankcard;", "Lcom/tencent/mm/plugin/wallet_core/model/WcPayBindQueryDataFetcher$Request;", "Lkotlin/collections/HashMap;", "createResult", "Lcom/tencent/mm/plugin/wallet_core/model/WcPayBindQueryDataFetcher$Result;", "scene", "", "netScene", "resultType", "Lcom/tencent/mm/plugin/wallet_core/model/WcPayBindQueryDataFetcher$ResultType;", "isOk", "", "doBindQueryScene", "", "request", "fetchData", "getBankcardList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/wallet_core/model/Bankcard;", "Lkotlin/collections/ArrayList;", "invokeCallback", "result", "onSceneEnd", "errType", "errCode", "errMsg", "Lcom/tencent/mm/modelbase/NetSceneBase;", "release", "Request", "Result", "ResultType", "plugin-wxpay_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class an
-  extends hs
+  implements com.tencent.mm.am.h
 {
-  public static IAutoDBItem.MAutoDBInfo info;
+  public static final an VKs;
+  public static HashMap<ae, an.a> VKt;
   
   static
   {
-    AppMethodBeat.i(70492);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[32];
-    localMAutoDBInfo.columns = new String[33];
-    StringBuilder localStringBuilder = new StringBuilder();
-    localMAutoDBInfo.columns[0] = "uin";
-    localMAutoDBInfo.colsMap.put("uin", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" uin TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.primaryKey = "uin";
-    localMAutoDBInfo.columns[1] = "is_reg";
-    localMAutoDBInfo.colsMap.put("is_reg", "INTEGER");
-    localStringBuilder.append(" is_reg INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[2] = "true_name";
-    localMAutoDBInfo.colsMap.put("true_name", "TEXT");
-    localStringBuilder.append(" true_name TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[3] = "card_num";
-    localMAutoDBInfo.colsMap.put("card_num", "INTEGER");
-    localStringBuilder.append(" card_num INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[4] = "isDomesticUser";
-    localMAutoDBInfo.colsMap.put("isDomesticUser", "INTEGER");
-    localStringBuilder.append(" isDomesticUser INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[5] = "cre_type";
-    localMAutoDBInfo.colsMap.put("cre_type", "INTEGER");
-    localStringBuilder.append(" cre_type INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[6] = "main_card_bind_serialno";
-    localMAutoDBInfo.colsMap.put("main_card_bind_serialno", "TEXT");
-    localStringBuilder.append(" main_card_bind_serialno TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[7] = "ftf_pay_url";
-    localMAutoDBInfo.colsMap.put("ftf_pay_url", "TEXT");
-    localStringBuilder.append(" ftf_pay_url TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[8] = "switchConfig";
-    localMAutoDBInfo.colsMap.put("switchConfig", "INTEGER");
-    localStringBuilder.append(" switchConfig INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[9] = "reset_passwd_flag";
-    localMAutoDBInfo.colsMap.put("reset_passwd_flag", "TEXT");
-    localStringBuilder.append(" reset_passwd_flag TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[10] = "find_passwd_url";
-    localMAutoDBInfo.colsMap.put("find_passwd_url", "TEXT");
-    localStringBuilder.append(" find_passwd_url TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[11] = "is_open_touch";
-    localMAutoDBInfo.colsMap.put("is_open_touch", "INTEGER");
-    localStringBuilder.append(" is_open_touch INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[12] = "lct_wording";
-    localMAutoDBInfo.colsMap.put("lct_wording", "TEXT");
-    localStringBuilder.append(" lct_wording TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[13] = "lct_url";
-    localMAutoDBInfo.colsMap.put("lct_url", "TEXT");
-    localStringBuilder.append(" lct_url TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[14] = "cre_name";
-    localMAutoDBInfo.colsMap.put("cre_name", "TEXT");
-    localStringBuilder.append(" cre_name TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[15] = "lqt_state";
-    localMAutoDBInfo.colsMap.put("lqt_state", "INTEGER");
-    localStringBuilder.append(" lqt_state INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[16] = "paymenu_use_new";
-    localMAutoDBInfo.colsMap.put("paymenu_use_new", "INTEGER");
-    localStringBuilder.append(" paymenu_use_new INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[17] = "is_show_lqb";
-    localMAutoDBInfo.colsMap.put("is_show_lqb", "INTEGER");
-    localStringBuilder.append(" is_show_lqb INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[18] = "is_open_lqb";
-    localMAutoDBInfo.colsMap.put("is_open_lqb", "INTEGER");
-    localStringBuilder.append(" is_open_lqb INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[19] = "lqb_open_url";
-    localMAutoDBInfo.colsMap.put("lqb_open_url", "TEXT");
-    localStringBuilder.append(" lqb_open_url TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[20] = "lqt_cell_is_show";
-    localMAutoDBInfo.colsMap.put("lqt_cell_is_show", "INTEGER");
-    localStringBuilder.append(" lqt_cell_is_show INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[21] = "lqt_cell_icon";
-    localMAutoDBInfo.colsMap.put("lqt_cell_icon", "TEXT");
-    localStringBuilder.append(" lqt_cell_icon TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[22] = "lqt_cell_is_open_lqt";
-    localMAutoDBInfo.colsMap.put("lqt_cell_is_open_lqt", "INTEGER");
-    localStringBuilder.append(" lqt_cell_is_open_lqt INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[23] = "lqt_cell_lqt_open_url";
-    localMAutoDBInfo.colsMap.put("lqt_cell_lqt_open_url", "TEXT");
-    localStringBuilder.append(" lqt_cell_lqt_open_url TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[24] = "lqt_cell_lqt_title";
-    localMAutoDBInfo.colsMap.put("lqt_cell_lqt_title", "TEXT");
-    localStringBuilder.append(" lqt_cell_lqt_title TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[25] = "lqt_cell_lqt_wording";
-    localMAutoDBInfo.colsMap.put("lqt_cell_lqt_wording", "TEXT");
-    localStringBuilder.append(" lqt_cell_lqt_wording TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[26] = "forget_passwd_url";
-    localMAutoDBInfo.colsMap.put("forget_passwd_url", "TEXT");
-    localStringBuilder.append(" forget_passwd_url TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[27] = "unipay_order_state";
-    localMAutoDBInfo.colsMap.put("unipay_order_state", "INTEGER");
-    localStringBuilder.append(" unipay_order_state INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[28] = "bank_priority";
-    localMAutoDBInfo.colsMap.put("bank_priority", "TEXT");
-    localStringBuilder.append(" bank_priority TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[29] = "wallet_balance";
-    localMAutoDBInfo.colsMap.put("wallet_balance", "LONG");
-    localStringBuilder.append(" wallet_balance LONG");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[30] = "wallet_entrance_balance_switch_state";
-    localMAutoDBInfo.colsMap.put("wallet_entrance_balance_switch_state", "INTEGER");
-    localStringBuilder.append(" wallet_entrance_balance_switch_state INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[31] = "soter_pay_open_type";
-    localMAutoDBInfo.colsMap.put("soter_pay_open_type", "INTEGER");
-    localStringBuilder.append(" soter_pay_open_type INTEGER");
-    localMAutoDBInfo.columns[32] = "rowid";
-    localMAutoDBInfo.sql = localStringBuilder.toString();
-    info = localMAutoDBInfo;
-    AppMethodBeat.o(70492);
+    AppMethodBeat.i(301155);
+    VKs = new an();
+    VKt = new HashMap();
+    AppMethodBeat.o(301155);
   }
   
-  public final boolean gJQ()
+  private static b a(int paramInt, ae paramae, an.c paramc, boolean paramBoolean)
   {
-    return this.field_is_reg == 1;
+    AppMethodBeat.i(301145);
+    ArrayList localArrayList = asm(paramInt);
+    Object localObject2 = new ah.f();
+    Object localObject1 = new ah.f();
+    d.a(localArrayList, (b)new d((ah.f)localObject2, (ah.f)localObject1));
+    al localal = u.iiC().ijK();
+    localObject2 = (Bankcard)((ah.f)localObject2).aqH;
+    localObject1 = (Bankcard)((ah.f)localObject1).aqH;
+    kotlin.g.b.s.s(localal, "userInfo");
+    paramae = new b(localArrayList, (Bankcard)localObject2, (Bankcard)localObject1, localal, paramae, paramc, paramBoolean);
+    AppMethodBeat.o(301145);
+    return paramae;
   }
   
-  public final boolean gJR()
+  private static void a(ae paramae, b paramb)
   {
-    return this.field_is_reg == 2;
+    AppMethodBeat.i(301154);
+    Log.d("MicroMsg.WcPayBindQueryDataFetcher", "invoke callback: " + paramae.scene + ", " + VKt.get(paramae));
+    an.a locala = (an.a)VKt.get(paramae);
+    if (locala != null) {
+      locala.callback.invoke(paramb);
+    }
+    VKt.remove(paramae);
+    AppMethodBeat.o(301154);
   }
   
-  public final boolean gJS()
+  private static ArrayList<Bankcard> asm(int paramInt)
   {
-    return this.field_is_reg == 0;
+    AppMethodBeat.i(301150);
+    switch (paramInt)
+    {
+    default: 
+      localArrayList = u.iiC().HJ(true);
+      kotlin.g.b.s.s(localArrayList, "{\n            SubCoreWal…ardForPay(true)\n        }");
+      AppMethodBeat.o(301150);
+      return localArrayList;
+    }
+    ArrayList localArrayList = k.asC(paramInt);
+    kotlin.g.b.s.s(localArrayList, "{\n            WalletBank…orScene2(scene)\n        }");
+    AppMethodBeat.o(301150);
+    return localArrayList;
   }
   
-  public final boolean gJT()
+  public final void a(an.a parama)
   {
-    return this.field_is_reg == -1;
+    AppMethodBeat.i(301157);
+    kotlin.g.b.s.u(parama, "request");
+    Iterator localIterator = VKt.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if (kotlin.g.b.s.p(localEntry.getValue(), parama))
+      {
+        VKt.remove(localEntry.getKey());
+        Log.i("MicroMsg.WcPayBindQueryDataFetcher", kotlin.g.b.s.X("remove request ", parama));
+      }
+    }
+    if (VKt.isEmpty()) {
+      com.tencent.mm.kernel.h.aZW().b(385, (com.tencent.mm.am.h)this);
+    }
+    AppMethodBeat.o(301157);
   }
   
-  public final boolean gJU()
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    return this.field_is_open_touch == 1;
+    AppMethodBeat.i(301160);
+    if ((paramp instanceof ae))
+    {
+      Log.i("MicroMsg.WcPayBindQueryDataFetcher", "on scene end: " + paramInt1 + ", " + paramInt2);
+      if ((paramInt1 == 0) && (paramInt2 == 0))
+      {
+        a((ae)paramp, a(((ae)paramp).scene, (ae)paramp, an.c.VKz));
+        AppMethodBeat.o(301160);
+        return;
+      }
+      a((ae)paramp, a(((ae)paramp).scene, (ae)paramp, an.c.VKz, false));
+    }
+    AppMethodBeat.o(301160);
   }
   
-  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/wallet_core/model/WcPayBindQueryDataFetcher$Result;", "", "bankcardList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/wallet_core/model/Bankcard;", "Lkotlin/collections/ArrayList;", "balance", "lqtInfo", "userInfo", "Lcom/tencent/mm/plugin/wallet_core/model/WalletUserInfo;", "netScene", "Lcom/tencent/mm/plugin/wallet_core/cgi/NetSceneTenpayQueryBoundBankcard;", "resultType", "Lcom/tencent/mm/plugin/wallet_core/model/WcPayBindQueryDataFetcher$ResultType;", "isOk", "", "(Ljava/util/ArrayList;Lcom/tencent/mm/plugin/wallet_core/model/Bankcard;Lcom/tencent/mm/plugin/wallet_core/model/Bankcard;Lcom/tencent/mm/plugin/wallet_core/model/WalletUserInfo;Lcom/tencent/mm/plugin/wallet_core/cgi/NetSceneTenpayQueryBoundBankcard;Lcom/tencent/mm/plugin/wallet_core/model/WcPayBindQueryDataFetcher$ResultType;Z)V", "getBalance", "()Lcom/tencent/mm/plugin/wallet_core/model/Bankcard;", "getBankcardList", "()Ljava/util/ArrayList;", "()Z", "getLqtInfo", "getNetScene", "()Lcom/tencent/mm/plugin/wallet_core/cgi/NetSceneTenpayQueryBoundBankcard;", "getResultType", "()Lcom/tencent/mm/plugin/wallet_core/model/WcPayBindQueryDataFetcher$ResultType;", "getUserInfo", "()Lcom/tencent/mm/plugin/wallet_core/model/WalletUserInfo;", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-wxpay_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
   {
-    return info;
+    private final al VKc;
+    public final Bankcard VKi;
+    public final ArrayList<Bankcard> VKv;
+    private final ae VKw;
+    private final an.c VKx;
+    public final Bankcard VcF;
+    public final boolean hEn;
+    
+    public b(ArrayList<Bankcard> paramArrayList, Bankcard paramBankcard1, Bankcard paramBankcard2, al paramal, ae paramae, an.c paramc, boolean paramBoolean)
+    {
+      AppMethodBeat.i(301144);
+      this.VKv = paramArrayList;
+      this.VcF = paramBankcard1;
+      this.VKi = paramBankcard2;
+      this.VKc = paramal;
+      this.VKw = paramae;
+      this.VKx = paramc;
+      this.hEn = paramBoolean;
+      AppMethodBeat.o(301144);
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      AppMethodBeat.i(301153);
+      if (this == paramObject)
+      {
+        AppMethodBeat.o(301153);
+        return true;
+      }
+      if (!(paramObject instanceof b))
+      {
+        AppMethodBeat.o(301153);
+        return false;
+      }
+      paramObject = (b)paramObject;
+      if (!kotlin.g.b.s.p(this.VKv, paramObject.VKv))
+      {
+        AppMethodBeat.o(301153);
+        return false;
+      }
+      if (!kotlin.g.b.s.p(this.VcF, paramObject.VcF))
+      {
+        AppMethodBeat.o(301153);
+        return false;
+      }
+      if (!kotlin.g.b.s.p(this.VKi, paramObject.VKi))
+      {
+        AppMethodBeat.o(301153);
+        return false;
+      }
+      if (!kotlin.g.b.s.p(this.VKc, paramObject.VKc))
+      {
+        AppMethodBeat.o(301153);
+        return false;
+      }
+      if (!kotlin.g.b.s.p(this.VKw, paramObject.VKw))
+      {
+        AppMethodBeat.o(301153);
+        return false;
+      }
+      if (this.VKx != paramObject.VKx)
+      {
+        AppMethodBeat.o(301153);
+        return false;
+      }
+      if (this.hEn != paramObject.hEn)
+      {
+        AppMethodBeat.o(301153);
+        return false;
+      }
+      AppMethodBeat.o(301153);
+      return true;
+    }
+    
+    public final int hashCode()
+    {
+      throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(301148);
+      String str = "Result(bankcardList=" + this.VKv + ", balance=" + this.VcF + ", lqtInfo=" + this.VKi + ", userInfo=" + this.VKc + ", netScene=" + this.VKw + ", resultType=" + this.VKx + ", isOk=" + this.hEn + ')';
+      AppMethodBeat.o(301148);
+      return str;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/wallet_core/model/Bankcard;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class d
+    extends kotlin.g.b.u
+    implements b<Bankcard, Boolean>
+  {
+    d(ah.f<Bankcard> paramf1, ah.f<Bankcard> paramf2)
+    {
+      super();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.an
  * JD-Core Version:    0.7.0.1
  */

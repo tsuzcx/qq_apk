@@ -3,101 +3,79 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class esi
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String TaX;
-  public String Uuc;
-  public int Uud;
-  public String sign;
-  public String tyH;
+  public String abvW;
+  public int abvX;
+  public int abvY;
+  public int interval;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91717);
+    AppMethodBeat.i(91673);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.Uuc != null) {
-        paramVarArgs.f(4, this.Uuc);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.abvW != null) {
+        paramVarArgs.g(1, this.abvW);
       }
-      if (this.sign != null) {
-        paramVarArgs.f(5, this.sign);
-      }
-      if (this.tyH != null) {
-        paramVarArgs.f(6, this.tyH);
-      }
-      paramVarArgs.aY(7, this.Uud);
-      if (this.TaX != null) {
-        paramVarArgs.f(8, this.TaX);
-      }
-      AppMethodBeat.o(91717);
+      paramVarArgs.bS(2, this.interval);
+      paramVarArgs.bS(3, this.abvX);
+      paramVarArgs.bS(4, this.abvY);
+      AppMethodBeat.o(91673);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Uuc == null) {
-        break label446;
+      if (this.abvW == null) {
+        break label346;
       }
     }
-    label446:
-    for (int i = g.a.a.b.b.a.g(4, this.Uuc) + 0;; i = 0)
+    label346:
+    for (paramInt = i.a.a.b.b.a.h(1, this.abvW) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.sign != null) {
-        paramInt = i + g.a.a.b.b.a.g(5, this.sign);
-      }
-      i = paramInt;
-      if (this.tyH != null) {
-        i = paramInt + g.a.a.b.b.a.g(6, this.tyH);
-      }
-      i += g.a.a.b.b.a.bM(7, this.Uud);
-      paramInt = i;
-      if (this.TaX != null) {
-        paramInt = i + g.a.a.b.b.a.g(8, this.TaX);
-      }
-      AppMethodBeat.o(91717);
-      return paramInt;
+      int i = i.a.a.b.b.a.cJ(2, this.interval);
+      int j = i.a.a.b.b.a.cJ(3, this.abvX);
+      int k = i.a.a.b.b.a.cJ(4, this.abvY);
+      AppMethodBeat.o(91673);
+      return paramInt + i + j + k;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(91717);
+        AppMethodBeat.o(91673);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         esi localesi = (esi)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(91717);
+          AppMethodBeat.o(91673);
           return -1;
-        case 4: 
-          localesi.Uuc = locala.abFh.readString();
-          AppMethodBeat.o(91717);
+        case 1: 
+          localesi.abvW = locala.ajGk.readString();
+          AppMethodBeat.o(91673);
           return 0;
-        case 5: 
-          localesi.sign = locala.abFh.readString();
-          AppMethodBeat.o(91717);
+        case 2: 
+          localesi.interval = locala.ajGk.aar();
+          AppMethodBeat.o(91673);
           return 0;
-        case 6: 
-          localesi.tyH = locala.abFh.readString();
-          AppMethodBeat.o(91717);
-          return 0;
-        case 7: 
-          localesi.Uud = locala.abFh.AK();
-          AppMethodBeat.o(91717);
+        case 3: 
+          localesi.abvX = locala.ajGk.aar();
+          AppMethodBeat.o(91673);
           return 0;
         }
-        localesi.TaX = locala.abFh.readString();
-        AppMethodBeat.o(91717);
+        localesi.abvY = locala.ajGk.aar();
+        AppMethodBeat.o(91673);
         return 0;
       }
-      AppMethodBeat.o(91717);
+      AppMethodBeat.o(91673);
       return -1;
     }
   }

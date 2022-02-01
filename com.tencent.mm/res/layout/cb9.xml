@@ -1,10 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="horizontal" android:id="@id/ay" android:background="@drawable/b7" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ax" android:background="@null" android:paddingLeft="@dimen/k5" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/actionbar_icon_dark_back" android:contentDescription="@string/he" />
+<LinearLayout android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/l6g" android:paddingLeft="16.0dip" android:paddingTop="20.0dip" android:paddingRight="16.0dip" android:paddingBottom="20.0dip" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:id="@id/l6f" android:layout_width="109.0dip" android:layout_height="64.0dip" android:src="@color/x_" />
+            <ImageView android:layout_gravity="center" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@raw/top_story_upload_play" />
+        </FrameLayout>
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip">
+            <TextView android:textSize="15.0dip" android:textColor="@color/a7b" android:ellipsize="end" android:gravity="top" android:id="@id/l84" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="titile" android:maxLines="2" android:minLines="2" android:layout_alignParentTop="true" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/xo" android:ellipsize="end" android:id="@id/l5m" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="desc" android:maxLines="1" android:layout_below="@id/l84" />
+        </RelativeLayout>
     </LinearLayout>
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/he6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/bt" android:src="@raw/icons_outlined_search" app:iconColor="@color/BW_70" />
-    <com.tencent.mm.ui.search.FTSEditTextView android:layout_gravity="center_vertical" android:id="@id/db_" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:textCursorDrawable="@drawable/a70" />
-    <TextView android:textSize="@dimen/is" android:textColor="@color/g_" android:gravity="center_vertical" android:id="@id/aib" android:paddingLeft="@dimen/c5" android:paddingRight="@dimen/c5" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/sz" />
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/w0" android:paddingLeft="16.0dip" android:paddingTop="20.0dip" android:paddingRight="16.0dip" android:paddingBottom="20.0dip" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/vz" android:layout_width="64.0dip" android:layout_height="64.0dip" android:src="@color/x_" android:scaleType="centerCrop" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip">
+            <TextView android:textSize="15.0dip" android:textColor="@color/a7b" android:ellipsize="end" android:gravity="top" android:id="@id/w2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="title" android:maxLines="2" android:minLines="2" android:layout_alignParentTop="true" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/xo" android:ellipsize="end" android:id="@id/vx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="desc" android:maxLines="1" android:layout_below="@id/w2" />
+        </RelativeLayout>
+    </LinearLayout>
+    <View android:background="@color/abn" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="18.0dip" />
+    <LinearLayout android:orientation="vertical" android:id="@id/jt7" android:background="@color/al2" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.sns.ui.SnsEditText android:textSize="17.0dip" android:textColor="@color/a7b" android:gravity="top" android:id="@id/bk7" android:background="@null" android:paddingTop="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/k56" android:maxLines="4" android:minLines="4" android:singleLine="false" android:inputType="textCapSentences|textMultiLine" android:textCursorDrawable="@drawable/a8b" style="@style/lx" />
+        <RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="13.0dip" android:textColor="@color/xo" android:id="@id/lre" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="/200" android:layout_alignParentRight="true" />
+            <TextView android:textSize="13.0dip" android:textColor="@color/ah6" android:id="@id/lrd" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:layout_toLeftOf="@id/lre" />
+        </RelativeLayout>
+    </LinearLayout>
+    <RelativeLayout android:layout_gravity="bottom|center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <TextView android:textSize="14.0dip" android:gravity="center" android:id="@id/fmk" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="66.0dip" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
 </LinearLayout>

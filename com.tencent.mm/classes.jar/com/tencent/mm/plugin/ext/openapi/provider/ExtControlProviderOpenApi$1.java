@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.ext.openapi.provider;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.protocal.protobuf.cem;
-import com.tencent.mm.protocal.protobuf.eyx;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.protocal.protobuf.cuo;
+import com.tencent.mm.protocal.protobuf.fuq;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.SyncTask;
 import java.util.Iterator;

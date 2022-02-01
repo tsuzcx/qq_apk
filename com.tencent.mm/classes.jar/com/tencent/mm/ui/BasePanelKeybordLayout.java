@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup.LayoutParams;
-import com.tencent.mm.compatible.util.i;
+import com.tencent.mm.compatible.util.j;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.Iterator;
@@ -14,8 +14,8 @@ import java.util.List;
 public abstract class BasePanelKeybordLayout
   extends KeyboardLinearLayout
 {
-  private int RnB = -1;
-  private a VRv = null;
+  private int YjR = -1;
+  private a advD = null;
   
   public BasePanelKeybordLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -36,10 +36,10 @@ public abstract class BasePanelKeybordLayout
     Log.d("MicroMsg.BasePanelKeybordLayout", "onMeasure, width: %d, height: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(m) });
     if (m >= 0)
     {
-      if (this.RnB >= 0) {
+      if (this.YjR >= 0) {
         break label62;
       }
-      this.RnB = m;
+      this.YjR = m;
     }
     label62:
     int n;
@@ -54,8 +54,8 @@ public abstract class BasePanelKeybordLayout
         {
           super.onMeasure(paramInt1, paramInt2);
           return;
-          n = this.RnB - m;
-          this.RnB = m;
+          n = this.YjR - m;
+          this.YjR = m;
         } while (n == 0);
         localObject = getPanelView();
       } while (localObject == null);
@@ -73,13 +73,13 @@ public abstract class BasePanelKeybordLayout
       if (i < 0) {
         j = 0;
       }
-      int i1 = i.getKeyBordHeightPx(MMApplicationContext.getContext(), true);
-      i = i.getValidPanelHeight(getContext());
+      int i1 = j.getKeyBordHeightPx(MMApplicationContext.getContext(), true);
+      i = j.getValidPanelHeight(getContext());
       int k = j;
-      if (i.avL() > 0)
+      if (j.aQj() > 0)
       {
         k = j;
-        if (m >= i.avL()) {
+        if (m >= j.aQj()) {
           k = i;
         }
       }
@@ -117,14 +117,14 @@ public abstract class BasePanelKeybordLayout
   
   public void setOnMeasureListener(a parama)
   {
-    this.VRv = parama;
+    this.advD = parama;
   }
   
   public static abstract interface a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.BasePanelKeybordLayout
  * JD-Core Version:    0.7.0.1
  */

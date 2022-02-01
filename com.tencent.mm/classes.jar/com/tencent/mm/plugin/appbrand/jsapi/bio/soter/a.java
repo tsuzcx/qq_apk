@@ -9,7 +9,7 @@ import org.json.JSONException;
 
 public final class a
 {
-  public static JSONArray Ad(int paramInt)
+  public static JSONArray Au(int paramInt)
   {
     AppMethodBeat.i(106570);
     if (paramInt <= 0)
@@ -34,7 +34,7 @@ public final class a
     return localObject;
   }
   
-  public static int ahp(String paramString)
+  public static int aam(String paramString)
   {
     AppMethodBeat.i(106572);
     if ("fingerPrint".equals(paramString))
@@ -57,7 +57,7 @@ public final class a
     return 0;
   }
   
-  public static String o(JSONArray paramJSONArray)
+  public static String r(JSONArray paramJSONArray)
   {
     AppMethodBeat.i(106571);
     if (paramJSONArray == null) {}
@@ -79,7 +79,7 @@ public final class a
       }
       try
       {
-        int k = ahp(paramJSONArray.getString(i));
+        int k = aam(paramJSONArray.getString(i));
         j = (byte)(j | k);
       }
       catch (JSONException localJSONException)

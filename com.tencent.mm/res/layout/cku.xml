@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/knp" android:background="#99000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="36.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:gravity="center" android:id="@id/knq" android:background="@drawable/ade" android:layout_width="@dimen/bw" android:layout_height="@dimen/bw" android:layout_marginTop="256.0dip" android:layout_centerHorizontal="true" />
-    <ProgressBar android:id="@id/cu6" android:background="@drawable/ade" android:padding="20.0dip" android:visibility="gone" android:layout_width="@dimen/bw" android:layout_height="@dimen/bw" android:layout_marginTop="256.0dip" android:layout_centerHorizontal="true" style="@style/a62" />
-    <Button android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:id="@id/knm" android:background="@drawable/add" android:layout_width="@dimen/bu" android:layout_height="@dimen/ci" android:layout_marginBottom="132.0dip" android:text="@string/ehz" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+<RelativeLayout android:gravity="center_vertical" android:id="@id/dq" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="?a0"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:id="@id/fz" android:background="@drawable/b9" android:paddingLeft="@dimen/df" android:paddingRight="@dimen/df" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/g0" android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/b5" android:contentDescription="@string/e5" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerHorizontal="true">
+        <View android:id="@id/hqu" android:visibility="gone" android:layout_width="28.0dip" android:layout_height="fill_parent" />
+        <com.google.android.material.tabs.TabLayout android:id="@id/kct" android:layout_width="wrap_content" android:layout_height="fill_parent" app:tabBackground="@color/ahb" app:tabGravity="ayg" app:tabIndicatorHeight="0.0dip" app:tabMode="e_s" app:tabPaddingEnd="0.0dip" app:tabPaddingStart="0.0dip" app:tabRippleColor="@color/ahb" app:tabSelectedTextColor="@color/a7b" app:tabTextColor="@color/m4" />
+    </LinearLayout>
+    <FrameLayout android:visibility="visible" android:layout_width="@dimen/d4" android:layout_height="fill_parent" android:layout_toStartOf="@id/bir">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/et" android:paddingTop="@dimen/cd" android:paddingBottom="@dimen/cd" android:layout_width="@dimen/d4" android:layout_height="@dimen/d6" android:src="@raw/actionbar_icon_dark_search" android:contentDescription="@string/a2o" android:paddingStart="@dimen/df" android:paddingEnd="@dimen/df" />
+        <ImageView android:layout_gravity="end|center|top" android:id="@id/m2y" android:visibility="gone" android:layout_width="6.0dip" android:layout_height="6.0dip" android:layout_marginTop="12.0dip" android:layout_marginEnd="@dimen/bv" style="@style/zi" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/bir" android:visibility="visible" android:layout_width="@dimen/d4" android:layout_height="fill_parent" android:layout_marginEnd="@dimen/df" android:layout_alignParentEnd="true">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/aij" android:paddingTop="@dimen/cd" android:paddingBottom="@dimen/cd" android:layout_width="@dimen/d4" android:layout_height="@dimen/d6" android:src="@raw/icons_filled_more" android:contentDescription="@string/a07" android:paddingStart="@dimen/df" android:paddingEnd="@dimen/df" />
+        <ImageView android:layout_gravity="end|center|top" android:id="@id/m2x" android:visibility="gone" android:layout_width="6.0dip" android:layout_height="6.0dip" android:layout_marginTop="12.0dip" android:layout_marginEnd="@dimen/bv" style="@style/zi" />
+    </FrameLayout>
 </RelativeLayout>

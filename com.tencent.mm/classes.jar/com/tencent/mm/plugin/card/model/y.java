@@ -2,50 +2,46 @@ package com.tencent.mm.plugin.card.model;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
 import com.tencent.mm.kernel.f;
-import com.tencent.mm.kernel.h;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.card.b.b;
-import com.tencent.mm.plugin.card.d.l;
-import com.tencent.mm.plugin.card.sharecard.a.a;
-import com.tencent.mm.protocal.protobuf.brm;
-import com.tencent.mm.protocal.protobuf.brn;
+import com.tencent.mm.plugin.card.c.l;
+import com.tencent.mm.protocal.protobuf.cgf;
+import com.tencent.mm.protocal.protobuf.cgg;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 
 public final class y
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  private final d rr;
+  private com.tencent.mm.am.h callback;
+  private final c rr;
   
   public y()
   {
     AppMethodBeat.i(112831);
-    d.a locala = new d.a();
-    locala.lBU = new brm();
-    locala.lBV = new brn();
+    c.a locala = new c.a();
+    locala.otE = new cgf();
+    locala.otF = new cgg();
     locala.uri = "/cgi-bin/micromsg-bin/getcardcount";
     locala.funcId = 1088;
-    locala.lBW = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.rr = locala.bgN();
+    this.rr = locala.bEF();
     AppMethodBeat.o(112831);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
     AppMethodBeat.i(112832);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(112832);
     return i;
@@ -62,27 +58,27 @@ public final class y
     Log.i("MicroMsg.NetSceneGetCardCount", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      params = (brn)d.c.b(this.rr.lBS);
-      Log.i("MicroMsg.NetSceneGetCardCount", "has_card_item:" + params.Tcb + " has_share_card:" + params.Tcc);
-      if (params.Tcb > 0)
+      params = (cgg)c.c.b(this.rr.otC);
+      Log.i("MicroMsg.NetSceneGetCardCount", "has_card_item:" + params.aapq + " has_share_card:" + params.aapr);
+      if (params.aapq > 0)
       {
-        l.cLg();
-        if (TextUtils.isEmpty((String)h.aHG().aHp().get(ar.a.VhS, null)))
+        l.doO();
+        if (TextUtils.isEmpty((String)com.tencent.mm.kernel.h.baE().ban().get(at.a.acJm, null)))
         {
-          am.cHr();
-          b.HG(1);
+          am.dkI();
+          com.tencent.mm.plugin.card.mgr.a.Ih(1);
         }
       }
-      if (params.Tcc > 0)
+      if (params.aapr > 0)
       {
-        l.cLi();
-        params = (Long)h.aHG().aHp().get(ar.a.Vic, Long.valueOf(0L));
+        l.doQ();
+        params = (Long)com.tencent.mm.kernel.h.baE().ban().get(at.a.acJw, Long.valueOf(0L));
         if ((params != null) && (params.longValue() == 0L)) {
-          am.cHz().cHW();
+          am.dkQ().dln();
         }
       }
     }
-    h.aHG().aHp().i(282882, Integer.valueOf((int)(System.currentTimeMillis() / 1000L)));
+    com.tencent.mm.kernel.h.baE().ban().B(282882, Integer.valueOf((int)(System.currentTimeMillis() / 1000L)));
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(112833);
   }

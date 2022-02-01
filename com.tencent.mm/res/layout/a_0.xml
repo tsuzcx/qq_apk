@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/h8v" android:background="@color/m0" android:paddingTop="@dimen/b7" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical" android:id="@id/f6f" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/h7t" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <androidx.recyclerview.widget.RecyclerView android:id="@id/gy2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        </com.tencent.mm.view.RefreshLoadMoreLayout>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-    <TextView android:gravity="center_horizontal" android:id="@id/g01" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c8" android:text="@string/d8e" style="@style/zy" />
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/epl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="64.0dip">
-        <ProgressBar android:background="@color/ac_" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:indeterminateDrawable="@drawable/apb" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.base.sortview.CatalogView android:id="@id/ay5" android:paddingLeft="@dimen/j6" android:paddingRight="@dimen/e" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/nb" />
+    <LinearLayout android:paddingLeft="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mk">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/fae" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/a27" android:layout_width="@dimen/ax" android:layout_height="@dimen/ax" android:layout_marginLeft="@dimen/cp" android:layout_marginRight="@dimen/cp" />
+            <TextView android:ellipsize="end" android:id="@id/hga" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/x_" />
+        </LinearLayout>
     </LinearLayout>
-    <ListView android:id="@id/dpq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</RelativeLayout>
+</LinearLayout>

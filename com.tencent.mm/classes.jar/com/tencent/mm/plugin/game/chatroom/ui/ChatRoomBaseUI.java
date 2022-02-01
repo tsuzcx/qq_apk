@@ -1,9 +1,8 @@
 package com.tencent.mm.plugin.game.chatroom.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.fp;
+import com.tencent.mm.autogen.mmdata.rpt.hk;
 import com.tencent.mm.game.report.d;
 import com.tencent.mm.game.report.d.a;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -12,17 +11,17 @@ import com.tencent.mm.ui.MMActivity;
 public abstract class ChatRoomBaseUI
   extends MMActivity
 {
-  private long CvJ = 0L;
-  private long CvK = 0L;
+  private long ImA = 0L;
+  private long Imz = 0L;
   private long mStartTime = 0L;
   
-  public abstract long evK();
+  public abstract long fCZ();
   
-  public abstract long evL();
+  public abstract long fDa();
   
-  public abstract long evM();
+  public abstract long getSourceId();
   
-  public abstract long evN();
+  public abstract long getSsid();
   
   public void onCreate(Bundle paramBundle)
   {
@@ -35,20 +34,20 @@ public abstract class ChatRoomBaseUI
     {
       long l1 = System.currentTimeMillis();
       long l2 = this.mStartTime;
-      Log.i("MicroMsg.ChatRoomBaseUI", "visit page(%s), stayTime:%sms, foregroundTime:%sms", new Object[] { getClass().getSimpleName(), Long.valueOf(l1 - l2), Long.valueOf(this.CvJ) });
-      if (evL() != -1L)
+      Log.i("MicroMsg.ChatRoomBaseUI", "visit page(%s), stayTime:%sms, foregroundTime:%sms", new Object[] { getClass().getSimpleName(), Long.valueOf(l1 - l2), Long.valueOf(this.Imz) });
+      if (fDa() != -1L)
       {
-        Object localObject = d.jTj;
-        l1 = evL();
-        l2 = evK();
-        long l3 = evM();
-        long l4 = evN();
-        long l5 = this.CvJ / 1000L;
+        Object localObject = d.mty;
+        l1 = fDa();
+        l2 = fCZ();
+        long l3 = getSsid();
+        long l4 = getSourceId();
+        long l5 = this.Imz / 1000L;
         localObject = d.a.a(l1, l2, 0L, 29L, 0L, l3, l4);
-        d.a locala = d.jTj;
-        ((fp)localObject).uX(d.aEy());
-        ((fp)localObject).glN = l5;
-        ((fp)localObject).bpa();
+        d.a locala = d.mty;
+        ((hk)localObject).rt(d.aXC());
+        ((hk)localObject).iuR = l5;
+        ((hk)localObject).bMH();
       }
     }
     super.onDestroy();
@@ -57,7 +56,7 @@ public abstract class ChatRoomBaseUI
   public void onPause()
   {
     super.onPause();
-    this.CvJ += System.currentTimeMillis() - this.CvK;
+    this.Imz += System.currentTimeMillis() - this.ImA;
   }
   
   public void onResume()
@@ -65,7 +64,7 @@ public abstract class ChatRoomBaseUI
     if (this.mStartTime == 0L) {
       this.mStartTime = System.currentTimeMillis();
     }
-    this.CvK = System.currentTimeMillis();
+    this.ImA = System.currentTimeMillis();
     super.onResume();
   }
   
@@ -77,7 +76,7 @@ public abstract class ChatRoomBaseUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.chatroom.ui.ChatRoomBaseUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,293 +1,270 @@
 package com.tencent.mm.plugin.scanner.util;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.graphics.YuvImage;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.n.f;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.zero.b.a;
-import com.tencent.mm.sdk.platformtools.BuildInfo;
-import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.emoji.c.c;
+import com.tencent.mm.plugin.gif.MMWXGFJNI;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.vfs.y;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/util/ScanYuvUtils;", "", "()V", "STORAGE_TMP_PATH", "", "TAG", "compressAndRotateYUVToJpeg", "Lkotlin/Pair;", "", "Landroid/graphics/Point;", "yuv", "format", "", "imageSize", "cropRectFactor", "Landroid/graphics/RectF;", "rotation", "quality", "convertRGBA2WxamInner", "rgba", "dest", "width", "height", "convertRGBAToWxam", "convertYUVToJpeg", "targetSize", "rect", "Landroid/graphics/Rect;", "convertYUVToWxam", "yuvFormat", "yuvSize", "encodeYUV420SP", "", "yuv420sp", "argb", "", "getNV21", "inputWidth", "inputHeight", "scaled", "Landroid/graphics/Bitmap;", "getTmpPath", "file", "rotateYUV", "inputCropRectFactor", "rotateYUV420Degree180", "data", "imageWidth", "imageHeight", "rotateYUV420Degree270", "rotateYUV420Degree90", "saveYUVToJpeg", "savedFilePath", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class r
 {
-  public static String IZW = "title";
-  public static String IZX = "tip";
-  public static String IZY = "buttonTitle";
-  private static Boolean IZZ = null;
-  private static Boolean Jaa = null;
+  public static final r PjN;
   
-  public static boolean HH(int paramInt)
+  static
   {
-    AppMethodBeat.i(52072);
-    com.tencent.mm.plugin.card.c.b localb = (com.tencent.mm.plugin.card.c.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.card.c.b.class);
-    if (localb != null)
-    {
-      boolean bool = localb.HH(paramInt);
-      AppMethodBeat.o(52072);
-      return bool;
+    AppMethodBeat.i(161063);
+    PjN = new r();
+    String str = s.X(h.baE().mCJ, "scan_product_tmp/");
+    if (!y.ZC(str)) {
+      y.bDX(str);
     }
-    AppMethodBeat.o(52072);
-    return false;
+    AppMethodBeat.o(161063);
   }
   
-  public static a aXD(String paramString)
+  private static byte[] a(byte[] paramArrayOfByte, int paramInt, Point paramPoint)
   {
-    AppMethodBeat.i(52073);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(52073);
-      return null;
-    }
+    AppMethodBeat.i(314144);
+    s.u(paramArrayOfByte, "yuv");
+    s.u(paramPoint, "targetSize");
+    long l1 = System.currentTimeMillis();
+    Rect localRect = new Rect(0, 0, paramPoint.x, paramPoint.y);
+    paramArrayOfByte = new YuvImage(paramArrayOfByte, 17, paramPoint.x, paramPoint.y, null);
+    paramPoint = new ByteArrayOutputStream();
     try
     {
-      paramString = new JSONObject(paramString);
-      a locala = new a();
-      locala.tnX = paramString.optString("card_tp_id");
-      locala.qJt = paramString.optInt("card_type");
-      locala.fUM = paramString.optString("card_ext");
-      AppMethodBeat.o(52073);
-      return locala;
+      paramArrayOfByte.compressToJpeg(localRect, 70, (OutputStream)paramPoint);
+      paramPoint.flush();
+      paramPoint.close();
+      long l2 = System.currentTimeMillis();
+      paramArrayOfByte = paramPoint.toByteArray();
+      Log.d("MicroMsg.ScanYuvUtils", "convertYUVToJpeg cost: %s ms, jpgSize: %s", new Object[] { Long.valueOf(l2 - l1), Integer.valueOf(paramArrayOfByte.length) });
+      AppMethodBeat.o(314144);
+      return paramArrayOfByte;
     }
-    catch (JSONException paramString)
+    catch (Exception paramArrayOfByte)
     {
-      Log.printErrStackTrace("MicroMsg.ScannerUtil", paramString, "", new Object[0]);
-      AppMethodBeat.o(52073);
+      Log.printErrStackTrace("MicroMsg.ScanYuvUtils", (Throwable)paramArrayOfByte, "convertYUVToJpeg exception %s", new Object[] { paramArrayOfByte.getMessage() });
+      AppMethodBeat.o(314144);
     }
     return null;
   }
   
-  public static ArrayList<a> aXE(String paramString)
+  private static String aVl(String paramString)
   {
-    AppMethodBeat.i(52074);
-    if (TextUtils.isEmpty(paramString))
+    AppMethodBeat.i(314175);
+    paramString = h.baE().mCJ + "scan_product_tmp/" + paramString;
+    AppMethodBeat.o(314175);
+    return paramString;
+  }
+  
+  public static final byte[] b(byte[] paramArrayOfByte, Point paramPoint)
+  {
+    AppMethodBeat.i(314164);
+    s.u(paramArrayOfByte, "yuv");
+    s.u(paramPoint, "yuvSize");
+    long l1 = System.currentTimeMillis();
+    paramPoint = a(paramArrayOfByte, 17, paramPoint);
+    Log.i("MicroMsg.ScanYuvUtils", "convertYUVToWxam yuv2jpg cost: %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
+    if (paramPoint != null)
     {
-      AppMethodBeat.o(52074);
-      return null;
-    }
-    try
-    {
-      paramString = new JSONObject(paramString).optJSONArray("card_list");
-      if ((paramString == null) || (paramString.length() == 0))
+      String str1 = aVl("temp_" + System.currentTimeMillis() + ".jpg");
+      y.f(str1, paramPoint, paramPoint.length);
+      l1 = System.currentTimeMillis();
+      String str2 = aVl("temp_" + System.currentTimeMillis() + ".wxam");
+      int i = ((c)h.ax(c.class)).gG(str1, str2);
+      long l2 = System.currentTimeMillis();
+      if (i == 0)
       {
-        Log.e("MicroMsg.ScannerUtil", "parseCardListItemArray cardItemListJson is null");
-        AppMethodBeat.o(52074);
-        return null;
-      }
-      ArrayList localArrayList = new ArrayList();
-      int i = 0;
-      while (i < paramString.length())
-      {
-        JSONObject localJSONObject = paramString.optJSONObject(i);
-        a locala = new a();
-        locala.tnX = localJSONObject.optString("card_tp_id");
-        locala.qJt = localJSONObject.optInt("card_type");
-        locala.fUM = localJSONObject.optString("card_ext");
-        localArrayList.add(locala);
-        i += 1;
-      }
-      AppMethodBeat.o(52074);
-      return localArrayList;
-    }
-    catch (JSONException paramString)
-    {
-      Log.printErrStackTrace("MicroMsg.ScannerUtil", paramString, "", new Object[0]);
-      AppMethodBeat.o(52074);
-    }
-    return null;
-  }
-  
-  public static boolean aeb(int paramInt)
-  {
-    return (paramInt == 1) || (paramInt == 8) || (paramInt == 4);
-  }
-  
-  public static boolean aec(int paramInt)
-  {
-    return paramInt == 12;
-  }
-  
-  public static boolean aed(int paramInt)
-  {
-    return paramInt == 3;
-  }
-  
-  public static void bI(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(52076);
-    com.tencent.mm.ui.base.h.a(paramContext, paramString, null, false, new DialogInterface.OnClickListener()
-    {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(52071);
-        paramAnonymousDialogInterface.dismiss();
-        AppMethodBeat.o(52071);
-      }
-    });
-    AppMethodBeat.o(52076);
-  }
-  
-  public static boolean ba(ArrayList<a> paramArrayList)
-  {
-    AppMethodBeat.i(52075);
-    if ((paramArrayList == null) || (paramArrayList.size() == 0))
-    {
-      Log.e("MicroMsg.ScannerUtil", "list == null || list.size() == 0");
-      AppMethodBeat.o(52075);
-      return false;
-    }
-    int i = 0;
-    while (i < paramArrayList.size())
-    {
-      a locala = (a)paramArrayList.get(i);
-      if ((locala != null) && (HH(locala.qJt)))
-      {
-        AppMethodBeat.o(52075);
-        return true;
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(52075);
-    return false;
-  }
-  
-  public static boolean fFc()
-  {
-    AppMethodBeat.i(52078);
-    int i = ((a)com.tencent.mm.kernel.h.ae(a.class)).axc().getInt("EnableNewOCRTranslation", 0);
-    Object localObject = ((a)com.tencent.mm.kernel.h.ae(a.class)).axc().getValue("PicTranslationSupportUserLanguage");
-    if (i == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Log.i("MicroMsg.ScannerUtil", "enable %s, support lang %s, current lang %s", new Object[] { Boolean.valueOf(bool), localObject, LocaleUtil.getApplicationLanguage() });
-      if ((i != 1) || (Util.isNullOrNil((String)localObject))) {
-        break;
-      }
-      localObject = ((String)localObject).split(";");
-      if ((localObject == null) || (!Arrays.asList((Object[])localObject).contains(LocaleUtil.getApplicationLanguage()))) {
-        break;
-      }
-      AppMethodBeat.o(52078);
-      return true;
-    }
-    AppMethodBeat.o(52078);
-    return false;
-  }
-  
-  public static void fFd()
-  {
-    AppMethodBeat.i(222923);
-    fFf();
-    fFh();
-    AppMethodBeat.o(222923);
-  }
-  
-  public static boolean fFe()
-  {
-    AppMethodBeat.i(52079);
-    Log.i("MicroMsg.ScannerUtil", "alvinluo showScanGoodsTab %b", new Object[] { IZZ });
-    if (IZZ == null) {
-      fFf();
-    }
-    boolean bool = IZZ.booleanValue();
-    AppMethodBeat.o(52079);
-    return bool;
-  }
-  
-  private static void fFf()
-  {
-    AppMethodBeat.i(52080);
-    int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vNP, 0);
-    if (i != 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      IZZ = Boolean.valueOf(bool);
-      Log.i("MicroMsg.ScannerUtil", "alvinluo updateShowScanGoodsTabSwitch clicfg_disable_scan_goods_tab config: %d, show: %b", new Object[] { Integer.valueOf(i), IZZ });
-      AppMethodBeat.o(52080);
-      return;
-    }
-  }
-  
-  public static boolean fFg()
-  {
-    AppMethodBeat.i(222927);
-    if (Jaa == null) {
-      fFh();
-    }
-    boolean bool = Jaa.booleanValue();
-    AppMethodBeat.o(222927);
-    return bool;
-  }
-  
-  private static void fFh()
-  {
-    AppMethodBeat.i(222929);
-    int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vOb, 0);
-    if ((i != 0) || (BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Jaa = Boolean.valueOf(bool);
-      Log.i("MicroMsg.ScannerUtil", "alvinluo updateEnableMultiCode clicfg_scan_code_multi_code_enable config: %d, enable: %b", new Object[] { Integer.valueOf(i), Jaa });
-      AppMethodBeat.o(222929);
-      return;
-    }
-  }
-  
-  public static String kj(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(52077);
-    Object localObject2 = com.tencent.mm.n.h.axc().getValue("ScanBookWording");
-    Log.i("MicroMsg.ScannerUtil", "scan image dynamic wording: " + Util.nullAsNil((String)localObject2));
-    Object localObject1 = paramString2;
-    if (!Util.isNullOrNil((String)localObject2))
-    {
-      localObject2 = ((String)localObject2).split("&");
-      localObject1 = paramString2;
-      if (localObject2 != null)
-      {
-        localObject1 = new HashMap();
-        int i = 0;
-        while (i < localObject2.length)
+        paramArrayOfByte = y.bi(str2, 0, -1);
+        int j = paramPoint.length;
+        if (paramArrayOfByte == null)
         {
-          String[] arrayOfString = localObject2[i].split("=");
-          if (arrayOfString.length == 2) {
-            ((Map)localObject1).put(arrayOfString[0], arrayOfString[1]);
-          }
-          i += 1;
-        }
-        paramString1 = (String)((Map)localObject1).get(paramString1);
-        localObject1 = paramString2;
-        if (!Util.isNullOrNil(paramString1)) {
-          localObject1 = paramString1;
+          paramPoint = null;
+          label171:
+          Log.i("MicroMsg.ScanYuvUtils", "convertYUVToWxam pic2Wxam cost: %s, jpgSize: %s, wxamSize: %s, ret: %s", new Object[] { Long.valueOf(l2 - l1), Integer.valueOf(j), paramPoint, Integer.valueOf(i) });
+          y.deleteFile(str1);
+          y.deleteFile(str2);
         }
       }
     }
-    AppMethodBeat.o(52077);
-    return localObject1;
+    for (;;)
+    {
+      AppMethodBeat.o(314164);
+      return paramArrayOfByte;
+      paramPoint = Integer.valueOf(paramArrayOfByte.length);
+      break label171;
+      paramArrayOfByte = null;
+      break;
+      paramArrayOfByte = null;
+    }
   }
   
-  public static final class a
+  public static final byte[] c(byte[] paramArrayOfByte, Point paramPoint)
   {
-    public String fUM;
-    public int qJt;
-    public String tnX;
+    AppMethodBeat.i(314185);
+    s.u(paramArrayOfByte, "rgba");
+    s.u(paramPoint, "imageSize");
+    String str = aVl("temp_" + System.currentTimeMillis() + ".wxam");
+    long l1 = System.currentTimeMillis();
+    int k = paramPoint.x;
+    int m = paramPoint.y;
+    int j = MMWXGFJNI.getErrorCode();
+    int i = j;
+    if (j == 0)
+    {
+      i = MMWXGFJNI.pic2WxamWithWH(y.n(str, true), paramArrayOfByte, paramArrayOfByte.length, 7, 37, k, m, k, m);
+      if (y.bEl(str) <= 0L) {
+        i = -10;
+      }
+    }
+    long l2 = System.currentTimeMillis();
+    if (i == 0) {}
+    for (byte[] arrayOfByte = y.bi(str, 0, -1);; arrayOfByte = null)
+    {
+      j = paramArrayOfByte.length;
+      if (arrayOfByte == null) {}
+      for (paramArrayOfByte = null;; paramArrayOfByte = Integer.valueOf(arrayOfByte.length))
+      {
+        Log.d("MicroMsg.ScanYuvUtils", "convertRGBAToWxam pic2wxam cost: %s, rgbaSize: %s, wxamSize: %s, ret: %s, imageSize: %s", new Object[] { Long.valueOf(l2 - l1), Integer.valueOf(j), paramArrayOfByte, Integer.valueOf(i), paramPoint });
+        y.deleteFile(str);
+        AppMethodBeat.o(314185);
+        return arrayOfByte;
+      }
+    }
+  }
+  
+  public static final byte[] getNV21(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(161062);
+    if (paramBitmap == null)
+    {
+      AppMethodBeat.o(161062);
+      return null;
+    }
+    int[] arrayOfInt = new int[paramInt1 * paramInt2];
+    paramBitmap.getPixels(arrayOfInt, 0, paramInt1, 0, 0, paramInt1, paramInt2);
+    byte[] arrayOfByte = new byte[paramInt1 * paramInt2 * 3 / 2];
+    int i = paramInt1 * paramInt2;
+    int k = 0;
+    int j = 0;
+    int m;
+    int i2;
+    int i3;
+    int n;
+    int i1;
+    label89:
+    int i5;
+    int i6;
+    int i4;
+    if (paramInt2 > 0)
+    {
+      m = 0;
+      i2 = m + 1;
+      i3 = 0;
+      if (paramInt1 <= 0) {
+        break label417;
+      }
+      n = i;
+      i1 = k;
+      k = i3;
+      i3 = k + 1;
+      i = (arrayOfInt[j] & 0xFF0000) >> 16;
+      k = (arrayOfInt[j] & 0xFF00) >> 8;
+      i5 = (arrayOfInt[j] & 0xFF) >> 0;
+      i6 = (i * 66 + k * 129 + i5 * 25 + 128 >> 8) + 16;
+      i4 = (i * -38 - k * 74 + i5 * 112 + 128 >> 8) + 128;
+      i5 = (i * 112 - k * 94 - i5 * 18 + 128 >> 8) + 128;
+      k = i1 + 1;
+      if (i6 >= 0) {
+        break label336;
+      }
+      i = 0;
+      label235:
+      arrayOfByte[i1] = ((byte)i);
+      i = n;
+      if (m % 2 == 0)
+      {
+        i = n;
+        if (j % 2 == 0)
+        {
+          i1 = n + 1;
+          if (i5 >= 0) {
+            break label354;
+          }
+          i = 0;
+          label275:
+          arrayOfByte[n] = ((byte)i);
+          n = i1 + 1;
+          if (i4 >= 0) {
+            break label375;
+          }
+          i = 0;
+          label295:
+          arrayOfByte[i1] = ((byte)i);
+          i = n;
+        }
+      }
+      j += 1;
+      if (i3 < paramInt1) {
+        break label403;
+      }
+    }
+    label403:
+    label417:
+    for (;;)
+    {
+      if (i2 >= paramInt2)
+      {
+        paramBitmap.recycle();
+        AppMethodBeat.o(161062);
+        return arrayOfByte;
+        label336:
+        i = i6;
+        if (i6 <= 255) {
+          break label235;
+        }
+        i = 255;
+        break label235;
+        label354:
+        if (i5 > 255)
+        {
+          i = 255;
+          break label275;
+        }
+        i = i5;
+        break label275;
+        label375:
+        if (i4 > 255)
+        {
+          i = 255;
+          break label295;
+        }
+        i = i4;
+        break label295;
+      }
+      m = i2;
+      break;
+      i1 = k;
+      k = i3;
+      n = i;
+      break label89;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.util.r
  * JD-Core Version:    0.7.0.1
  */

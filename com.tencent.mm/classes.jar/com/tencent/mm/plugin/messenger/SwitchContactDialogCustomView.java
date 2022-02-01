@@ -13,11 +13,11 @@ import com.tencent.mm.pluginsdk.ui.a.b;
 public class SwitchContactDialogCustomView
   extends LinearLayout
 {
-  private TextView EUG;
-  private ImageView EUH;
-  private TextView EUI;
-  private TextView EUJ;
-  private TextView eM;
+  private TextView KPE;
+  private ImageView KPF;
+  private TextView KPG;
+  private TextView KPH;
+  private TextView fO;
   
   public SwitchContactDialogCustomView(Context paramContext)
   {
@@ -29,33 +29,33 @@ public class SwitchContactDialogCustomView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(90742);
     LayoutInflater.from(paramContext).inflate(b.c.alert_comfirm_custom_area, this);
-    this.eM = ((TextView)findViewById(b.b.title));
-    this.EUG = ((TextView)findViewById(b.b.content));
-    this.EUH = ((ImageView)findViewById(b.b.photo));
-    this.EUI = ((TextView)findViewById(b.b.desc));
-    this.EUJ = ((TextView)findViewById(b.b.sub_desc));
+    this.fO = ((TextView)findViewById(b.b.title));
+    this.KPE = ((TextView)findViewById(b.b.content));
+    this.KPF = ((ImageView)findViewById(b.b.photo));
+    this.KPG = ((TextView)findViewById(b.b.desc));
+    this.KPH = ((TextView)findViewById(b.b.sub_desc));
     AppMethodBeat.o(90742);
   }
   
   public void setContent(String paramString)
   {
     AppMethodBeat.i(90744);
-    this.EUG.setText(paramString);
+    this.KPE.setText(paramString);
     AppMethodBeat.o(90744);
   }
   
   public void setDesc(String paramString)
   {
     AppMethodBeat.i(90745);
-    this.EUI.setText(paramString);
+    this.KPG.setText(paramString);
     AppMethodBeat.o(90745);
   }
   
   public void setOnPhotoOnClick(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(90748);
-    if (this.EUH != null) {
-      this.EUH.setOnClickListener(paramOnClickListener);
+    if (this.KPF != null) {
+      this.KPF.setOnClickListener(paramOnClickListener);
     }
     AppMethodBeat.o(90748);
   }
@@ -63,21 +63,21 @@ public class SwitchContactDialogCustomView
   public void setPhoto(String paramString)
   {
     AppMethodBeat.i(90747);
-    a.b.c(this.EUH, paramString);
+    a.b.g(this.KPF, paramString);
     AppMethodBeat.o(90747);
   }
   
   public void setSubDesc(String paramString)
   {
     AppMethodBeat.i(90746);
-    this.EUJ.setText(paramString);
+    this.KPH.setText(paramString);
     AppMethodBeat.o(90746);
   }
   
   public void setTilte(String paramString)
   {
     AppMethodBeat.i(90743);
-    this.eM.setText(paramString);
+    this.fO.setText(paramString);
     AppMethodBeat.o(90743);
   }
 }

@@ -1,23 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:layout_width="328.0dip" android:layout_height="wrap_content" android:layout_marginRight="13.0dip">
-        <ImageView android:id="@id/cfd" android:layout_width="12.0dip" android:layout_height="7.0dip" android:layout_marginRight="9.0dip" android:src="@drawable/b0b" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-        <LinearLayout android:orientation="vertical" android:id="@id/cfg" android:background="@drawable/b0d" android:padding="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip">
-            <RelativeLayout android:layout_width="fill_parent" android:layout_height="50.0dip">
-                <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/j01" android:background="@drawable/b0h" android:layout_width="88.0dip" android:layout_height="34.0dip" android:text="@string/hpp" android:layout_alignParentRight="true" />
-                <TextView android:textSize="15.0sp" android:textColor="#ff333333" android:id="@id/ipm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hps" android:layout_alignBaseline="@id/j01" />
-                <TextView android:textSize="12.0sp" android:textColor="#ffcccccc" android:id="@id/bmr" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="@string/hpr" android:layout_below="@id/ipm" />
-            </RelativeLayout>
-            <View android:background="#1f000000" android:layout_width="fill_parent" android:layout_height="1.0px" />
-            <com.tencent.mm.ui.base.FlowLayout android:id="@id/cff" android:paddingTop="15.0dip" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" flowlayout:horizontalSpacing="10.0dip" flowlayout:verticalSpacing="10.0dip" />
-            <View android:background="#1f000000" android:layout_width="fill_parent" android:layout_height="1.0px" />
-            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
-                <TextView android:textSize="15.0dip" android:textColor="#ff7f7f7f" android:layout_gravity="center_vertical" android:id="@id/cfa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="反馈意见" android:lineSpacingExtra="0.0dip" />
-                <ImageView android:layout_gravity="center_vertical" android:id="@id/i2y" android:layout_width="7.0dip" android:layout_height="12.0dip" android:layout_marginLeft="5.0dip" android:src="@raw/top_story_feedback_right_arrow" />
-            </LinearLayout>
-        </LinearLayout>
-        <View android:id="@id/i39" android:layout_width="fill_parent" android:layout_height="5.0dip" android:src="@drawable/b0c" android:layout_below="@id/cfg" />
-        <ImageView android:id="@id/cfk" android:layout_width="12.0dip" android:layout_height="7.0dip" android:layout_marginRight="9.0dip" android:src="@drawable/b0c" android:layout_alignBottom="@id/i39" android:layout_alignParentRight="true" />
-    </RelativeLayout>
-</LinearLayout>
+<FrameLayout android:gravity="center" android:orientation="vertical" android:id="@id/ehx" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:gravity="center" android:layout_gravity="center" android:id="@id/g3j" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/g3o" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="60.0dip" style="@style/a74" />
+    <com.tencent.mm.ui.base.MultiTouchImageView android:gravity="center" android:id="@id/h31" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.ui.base.WxImageView android:gravity="center" android:id="@id/luf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

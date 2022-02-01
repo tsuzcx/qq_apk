@@ -13,48 +13,48 @@ import com.tencent.mm.plugin.hld.a.c;
 import com.tencent.mm.plugin.hld.a.d;
 import com.tencent.mm.plugin.hld.a.f;
 import com.tencent.mm.plugin.hld.view.a.a;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/emoji/ImeKaoEmojiContentViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "listener", "Lcom/tencent/mm/plugin/hld/emoji/IEmojiContentViewListener;", "(Landroid/view/View;Lcom/tencent/mm/plugin/hld/emoji/IEmojiContentViewListener;)V", "contentRv", "Landroidx/recyclerview/widget/RecyclerView;", "exceptionTipRl", "Landroid/widget/RelativeLayout;", "getListener", "()Lcom/tencent/mm/plugin/hld/emoji/IEmojiContentViewListener;", "subType", "Lcom/tencent/mm/plugin/hld/emoji/ImeEmojiSubTypeData;", "fillContent", "", "context", "Landroid/content/Context;", "subTypeData", "getItemDecoration", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getSpanSizeLookup", "Landroidx/recyclerview/widget/GridLayoutManager$SpanSizeLookup;", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/emoji/ImeKaoEmojiContentViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "listener", "Lcom/tencent/mm/plugin/hld/emoji/IEmojiContentViewListener;", "(Landroid/view/View;Lcom/tencent/mm/plugin/hld/emoji/IEmojiContentViewListener;)V", "contentRv", "Landroidx/recyclerview/widget/RecyclerView;", "exceptionTipRl", "Landroid/widget/RelativeLayout;", "getListener", "()Lcom/tencent/mm/plugin/hld/emoji/IEmojiContentViewListener;", "subType", "Lcom/tencent/mm/plugin/hld/emoji/ImeEmojiSubTypeData;", "fillContent", "", "context", "Landroid/content/Context;", "subTypeData", "getItemDecoration", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getSpanSizeLookup", "Landroidx/recyclerview/widget/GridLayoutManager$SpanSizeLookup;", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class n
   extends RecyclerView.v
 {
-  RelativeLayout DwF;
-  RecyclerView Dwa;
-  k Dwb;
-  final a Dwc;
+  RelativeLayout JpL;
+  final a Jpg;
+  RecyclerView Jph;
+  k Jpi;
   
   public n(View paramView, a parama)
   {
     super(paramView);
-    AppMethodBeat.i(210767);
-    this.Dwc = parama;
+    AppMethodBeat.i(312685);
+    this.Jpg = parama;
     parama = paramView.findViewById(a.f.root);
-    p.j(parama, "itemView.findViewById(R.id.root)");
-    this.Dwa = ((RecyclerView)parama);
+    s.s(parama, "itemView.findViewById(R.id.root)");
+    this.Jph = ((RecyclerView)parama);
     paramView = paramView.findViewById(a.f.emoji_exception_tip_rl);
-    p.j(paramView, "itemView.findViewById(R.id.emoji_exception_tip_rl)");
-    this.DwF = ((RelativeLayout)paramView);
-    AppMethodBeat.o(210767);
+    s.s(paramView, "itemView.findViewById(R.id.emoji_exception_tip_rl)");
+    this.JpL = ((RelativeLayout)paramView);
+    AppMethodBeat.o(312685);
   }
   
-  static RecyclerView.h fn(Context paramContext)
+  static RecyclerView.h gl(Context paramContext)
   {
-    AppMethodBeat.i(210765);
-    paramContext = new a.a(paramContext).UN(a.d.ime_divider_size).UM(a.d.ime_divider_size).UL(a.c.ime_divider_color);
-    paramContext.CbQ = true;
-    paramContext = (RecyclerView.h)paramContext.eHD();
-    AppMethodBeat.o(210765);
+    AppMethodBeat.i(312693);
+    paramContext = new a.a(paramContext).YL(a.d.ime_divider_size).YK(a.d.ime_divider_size).YJ(a.c.ime_divider_color);
+    paramContext.HNS = true;
+    paramContext = (RecyclerView.h)paramContext.fPp();
+    AppMethodBeat.o(312693);
     return paramContext;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
     a(n paramn, Context paramContext)
     {
@@ -62,22 +62,24 @@ public final class n
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/hld/emoji/ImeKaoEmojiContentViewHolder$getSpanSizeLookup$1", "Landroidx/recyclerview/widget/GridLayoutManager$SpanSizeLookup;", "getSpanSize", "", "position", "plugin-hld_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/hld/emoji/ImeKaoEmojiContentViewHolder$getSpanSizeLookup$1", "Landroidx/recyclerview/widget/GridLayoutManager$SpanSizeLookup;", "getSpanSize", "", "position", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
     extends GridLayoutManager.b
   {
-    public final int cx(int paramInt)
+    b(n paramn) {}
+    
+    public final int fJ(int paramInt)
     {
-      AppMethodBeat.i(211040);
-      RecyclerView.a locala = n.a(this.DwG).getAdapter();
-      if (locala != null)
+      AppMethodBeat.i(312681);
+      RecyclerView.a locala = n.a(this.JpM).getAdapter();
+      if (locala == null)
       {
-        paramInt = locala.getItemViewType(paramInt);
-        AppMethodBeat.o(211040);
-        return paramInt;
+        AppMethodBeat.o(312681);
+        return 1;
       }
-      AppMethodBeat.o(211040);
-      return 1;
+      paramInt = locala.getItemViewType(paramInt);
+      AppMethodBeat.o(312681);
+      return paramInt;
     }
   }
 }

@@ -11,491 +11,430 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.thumbplayer.d.g;
-import com.tencent.mm.plugin.thumbplayer.f.d.a;
+import com.tencent.mm.plugin.thumbplayer.c.e;
+import com.tencent.mm.plugin.thumbplayer.e.d;
+import com.tencent.mm.plugin.thumbplayer.e.d.a;
 import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.a;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/thumbplayer/view/MMTPVideoLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "createPlayer", "", "(Landroid/content/Context;Z)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "effector", "Lcom/tencent/mm/plugin/thumbplayer/effect/TPPlayerEffector;", "getEffector", "()Lcom/tencent/mm/plugin/thumbplayer/effect/TPPlayerEffector;", "setEffector", "(Lcom/tencent/mm/plugin/thumbplayer/effect/TPPlayerEffector;)V", "enableEffect", "onFrameAvailable", "Lkotlin/Function1;", "Landroid/graphics/SurfaceTexture;", "Lkotlin/ParameterName;", "name", "surface", "", "getOnFrameAvailable", "()Lkotlin/jvm/functions/Function1;", "setOnFrameAvailable", "(Lkotlin/jvm/functions/Function1;)V", "player", "Lcom/tencent/mm/plugin/thumbplayer/player/MMCdnTPPlayer;", "getPlayer", "()Lcom/tencent/mm/plugin/thumbplayer/player/MMCdnTPPlayer;", "setPlayer", "(Lcom/tencent/mm/plugin/thumbplayer/player/MMCdnTPPlayer;)V", "playerSurface", "Landroid/view/Surface;", "playerSurfaceTexture", "surfaceHeight", "surfaceTexture", "surfaceWidth", "textureView", "Lcom/tencent/mm/plugin/thumbplayer/view/MMThumbPlayerTextureView;", "getTextureView", "()Lcom/tencent/mm/plugin/thumbplayer/view/MMThumbPlayerTextureView;", "setTextureView", "(Lcom/tencent/mm/plugin/thumbplayer/view/MMThumbPlayerTextureView;)V", "init", "initEffector", "initTextureView", "onVideoContentUpdate", "recreatePlayer", "recreatePlayerSurface", "release", "setEnableEffect", "enable", "setMediaInfo", "mediaInfo", "Lcom/tencent/mm/plugin/thumbplayer/model/TPMediaInfo;", "SurfaceTextureListener", "plugin-thumbplayer_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/thumbplayer/view/MMTPVideoLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "createPlayer", "", "(Landroid/content/Context;Z)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "effector", "Lcom/tencent/mm/plugin/thumbplayer/effect/TPPlayerEffector;", "getEffector", "()Lcom/tencent/mm/plugin/thumbplayer/effect/TPPlayerEffector;", "setEffector", "(Lcom/tencent/mm/plugin/thumbplayer/effect/TPPlayerEffector;)V", "enableEffect", "onFrameAvailable", "Lkotlin/Function1;", "Landroid/graphics/SurfaceTexture;", "Lkotlin/ParameterName;", "name", "surface", "", "getOnFrameAvailable", "()Lkotlin/jvm/functions/Function1;", "setOnFrameAvailable", "(Lkotlin/jvm/functions/Function1;)V", "player", "Lcom/tencent/mm/plugin/thumbplayer/player/MMCdnTPPlayer;", "getPlayer", "()Lcom/tencent/mm/plugin/thumbplayer/player/MMCdnTPPlayer;", "setPlayer", "(Lcom/tencent/mm/plugin/thumbplayer/player/MMCdnTPPlayer;)V", "playerSurface", "Landroid/view/Surface;", "playerSurfaceTexture", "surfaceHeight", "surfaceTexture", "surfaceWidth", "textureView", "Lcom/tencent/mm/plugin/thumbplayer/view/MMThumbPlayerTextureView;", "getTextureView", "()Lcom/tencent/mm/plugin/thumbplayer/view/MMThumbPlayerTextureView;", "setTextureView", "(Lcom/tencent/mm/plugin/thumbplayer/view/MMThumbPlayerTextureView;)V", "init", "initEffector", "initTextureView", "onVideoContentUpdate", "recreatePlayer", "recreatePlayerSurface", "release", "setEnableEffect", "enable", "setMediaInfo", "mediaInfo", "Lcom/tencent/mm/plugin/thumbplayer/api/TPMediaInfo;", "SurfaceTextureListener", "plugin-thumbplayer_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class MMTPVideoLayout
   extends FrameLayout
 {
-  public MMThumbPlayerTextureView AMp;
-  private com.tencent.mm.plugin.thumbplayer.f.b Ght;
-  private g MTT;
-  private SurfaceTexture MTW;
-  private Surface MTX;
-  private kotlin.g.a.b<? super SurfaceTexture, x> MUk;
+  public MMThumbPlayerTextureView Fld;
+  private com.tencent.mm.plugin.thumbplayer.e.b GvH;
+  private Surface HkH;
   private final String TAG;
+  private e TGA;
+  private SurfaceTexture TGC;
+  private kotlin.g.a.b<? super SurfaceTexture, ah> TGR;
   private int surfaceHeight;
   private SurfaceTexture surfaceTexture;
   private int surfaceWidth;
-  private boolean vco;
+  private boolean yoh;
   
   public MMTPVideoLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(191125);
-    this.TAG = ("MicroMsg.TP.MMTPVideoLayout@" + hashCode());
-    this.MTT = new g();
-    this.vco = true;
-    Af(true);
-    AppMethodBeat.o(191125);
+    AppMethodBeat.i(272253);
+    this.TAG = s.X("MicroMsg.TP.MMTPVideoLayout@", Integer.valueOf(hashCode()));
+    this.TGA = new e();
+    this.yoh = true;
+    FB(true);
+    AppMethodBeat.o(272253);
   }
   
   public MMTPVideoLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(191131);
-    this.TAG = ("MicroMsg.TP.MMTPVideoLayout@" + hashCode());
-    this.MTT = new g();
-    this.vco = true;
-    Af(true);
-    AppMethodBeat.o(191131);
+    AppMethodBeat.i(272262);
+    this.TAG = s.X("MicroMsg.TP.MMTPVideoLayout@", Integer.valueOf(hashCode()));
+    this.TGA = new e();
+    this.yoh = true;
+    FB(true);
+    AppMethodBeat.o(272262);
   }
   
   public MMTPVideoLayout(Context paramContext, boolean paramBoolean)
   {
     super(paramContext);
-    AppMethodBeat.i(191123);
-    this.TAG = ("MicroMsg.TP.MMTPVideoLayout@" + hashCode());
-    this.MTT = new g();
-    this.vco = true;
-    Af(paramBoolean);
-    AppMethodBeat.o(191123);
+    AppMethodBeat.i(272243);
+    this.TAG = s.X("MicroMsg.TP.MMTPVideoLayout@", Integer.valueOf(hashCode()));
+    this.TGA = new e();
+    this.yoh = true;
+    FB(paramBoolean);
+    AppMethodBeat.o(272243);
   }
   
-  private final void Af(boolean paramBoolean)
+  private final void FB(boolean paramBoolean)
   {
-    AppMethodBeat.i(191087);
+    AppMethodBeat.i(272272);
     if (paramBoolean)
     {
-      localObject = com.tencent.mm.plugin.thumbplayer.f.d.MTv;
+      Object localObject = d.TFK;
       localObject = getContext();
-      p.j(localObject, "context");
-      localObject = d.a.iA((Context)localObject);
-      this.MTT.a((com.tencent.mm.plugin.thumbplayer.f.b)localObject);
-      this.Ght = ((com.tencent.mm.plugin.thumbplayer.f.b)localObject);
+      s.s(localObject, "context");
+      localObject = d.a.ks((Context)localObject);
+      getEffector().a((com.tencent.mm.plugin.thumbplayer.e.b)localObject);
+      ah localah = ah.aiuX;
+      this.GvH = ((com.tencent.mm.plugin.thumbplayer.e.b)localObject);
     }
-    this.AMp = new MMThumbPlayerTextureView(getContext());
-    Object localObject = this.AMp;
-    if (localObject == null) {
-      p.bGy("textureView");
+    setTextureView(new MMThumbPlayerTextureView(getContext()));
+    getTextureView().setAlpha(1.0F);
+    if (this.yoh) {
+      hLL();
     }
-    ((MMThumbPlayerTextureView)localObject).setAlpha(1.0F);
-    if (this.vco) {
-      goS();
-    }
-    AppMethodBeat.o(191087);
+    AppMethodBeat.o(272272);
   }
   
-  private final void goS()
+  private final void hLL()
   {
-    AppMethodBeat.i(191112);
-    this.MTT.ai((a)new b(this));
-    this.MTT.W((kotlin.g.a.b)new c(this));
-    AppMethodBeat.o(191112);
+    AppMethodBeat.i(272280);
+    this.TGA.bS((a)new b(this));
+    this.TGA.aD((kotlin.g.a.b)new c(this));
+    AppMethodBeat.o(272280);
   }
   
-  public final g getEffector()
-  {
-    return this.MTT;
-  }
-  
-  public final kotlin.g.a.b<SurfaceTexture, x> getOnFrameAvailable()
-  {
-    return this.MUk;
-  }
-  
-  public final com.tencent.mm.plugin.thumbplayer.f.b getPlayer()
-  {
-    return this.Ght;
-  }
-  
-  public final MMThumbPlayerTextureView getTextureView()
-  {
-    AppMethodBeat.i(191076);
-    MMThumbPlayerTextureView localMMThumbPlayerTextureView = this.AMp;
-    if (localMMThumbPlayerTextureView == null) {
-      p.bGy("textureView");
-    }
-    AppMethodBeat.o(191076);
-    return localMMThumbPlayerTextureView;
-  }
-  
-  public final void goU()
+  public final void fva()
   {
     int j = 0;
-    AppMethodBeat.i(191097);
+    AppMethodBeat.i(272418);
     Object localObject2 = this.TAG;
     Object localObject1 = new StringBuilder("recreatePlayer, this.player:");
-    Object localObject3 = this.Ght;
+    Object localObject3 = this.GvH;
     int i;
     if (localObject3 != null)
     {
       i = localObject3.hashCode();
       localObject3 = ((StringBuilder)localObject1).append(i).append(", mediaInfo:");
-      localObject1 = this.Ght;
-      if (localObject1 == null) {
-        break label267;
+      localObject1 = this.GvH;
+      if (localObject1 != null) {
+        break label269;
       }
     }
-    label267:
-    for (localObject1 = ((com.tencent.mm.plugin.thumbplayer.f.b)localObject1).MSO;; localObject1 = null)
+    label269:
+    for (localObject1 = null;; localObject1 = ((com.tencent.mm.plugin.thumbplayer.e.b)localObject1).TFb)
     {
       Log.i((String)localObject2, localObject1);
-      localObject1 = this.Ght;
+      localObject1 = this.GvH;
       if (localObject1 != null) {
-        ((com.tencent.mm.plugin.thumbplayer.f.b)localObject1).ehf();
+        ((com.tencent.mm.plugin.thumbplayer.e.b)localObject1).eLO();
       }
-      localObject1 = this.Ght;
+      localObject1 = this.GvH;
       if (localObject1 != null) {
-        com.tencent.mm.plugin.thumbplayer.f.b.b((com.tencent.mm.plugin.thumbplayer.f.b)localObject1);
+        com.tencent.mm.plugin.thumbplayer.e.b.c((com.tencent.mm.plugin.thumbplayer.e.b)localObject1);
       }
-      localObject1 = this.Ght;
+      localObject1 = this.GvH;
       if (localObject1 != null) {
-        ((com.tencent.mm.plugin.thumbplayer.f.b)localObject1).stopAsync();
+        ((com.tencent.mm.plugin.thumbplayer.e.b)localObject1).stopAsync();
       }
-      localObject1 = this.Ght;
+      localObject1 = this.GvH;
       if (localObject1 != null) {
-        ((com.tencent.mm.plugin.thumbplayer.f.b)localObject1).recycle();
+        ((com.tencent.mm.plugin.thumbplayer.e.b)localObject1).recycle();
       }
-      this.Ght = null;
-      localObject1 = this.MTX;
+      this.GvH = null;
+      localObject1 = this.HkH;
       if (localObject1 != null) {
         ((Surface)localObject1).release();
       }
-      this.MTX = null;
-      this.MTW = null;
-      localObject1 = com.tencent.mm.plugin.thumbplayer.f.d.MTv;
+      this.HkH = null;
+      this.TGC = null;
+      localObject1 = d.TFK;
       localObject1 = getContext();
-      p.j(localObject1, "context");
-      localObject1 = d.a.iA((Context)localObject1);
-      this.MTT.a((com.tencent.mm.plugin.thumbplayer.f.b)localObject1);
-      this.Ght = ((com.tencent.mm.plugin.thumbplayer.f.b)localObject1);
+      s.s(localObject1, "context");
+      localObject1 = d.a.ks((Context)localObject1);
+      getEffector().a((com.tencent.mm.plugin.thumbplayer.e.b)localObject1);
+      localObject2 = ah.aiuX;
+      this.GvH = ((com.tencent.mm.plugin.thumbplayer.e.b)localObject1);
       localObject1 = this.TAG;
       localObject2 = new StringBuilder("recreatePlayer finished, this.player:");
-      localObject3 = this.Ght;
+      localObject3 = this.GvH;
       i = j;
       if (localObject3 != null) {
         i = localObject3.hashCode();
       }
-      Log.i((String)localObject1, i + ", playerSurface:" + this.MTX);
-      AppMethodBeat.o(191097);
+      Log.i((String)localObject1, i + ", playerSurface:" + this.HkH);
+      AppMethodBeat.o(272418);
       return;
       i = 0;
       break;
     }
   }
   
-  public final void goW()
+  public final e getEffector()
   {
-    AppMethodBeat.i(191120);
-    Object localObject1 = this.AMp;
-    if (localObject1 == null) {
-      p.bGy("textureView");
-    }
-    if (((MMThumbPlayerTextureView)localObject1).getParent() != null)
+    return this.TGA;
+  }
+  
+  public final kotlin.g.a.b<SurfaceTexture, ah> getOnFrameAvailable()
+  {
+    return this.TGR;
+  }
+  
+  public final com.tencent.mm.plugin.thumbplayer.e.b getPlayer()
+  {
+    return this.GvH;
+  }
+  
+  public final MMThumbPlayerTextureView getTextureView()
+  {
+    AppMethodBeat.i(272372);
+    MMThumbPlayerTextureView localMMThumbPlayerTextureView = this.Fld;
+    if (localMMThumbPlayerTextureView != null)
     {
-      localObject1 = this.AMp;
-      if (localObject1 == null) {
-        p.bGy("textureView");
-      }
-      removeView((View)localObject1);
+      AppMethodBeat.o(272372);
+      return localMMThumbPlayerTextureView;
     }
-    localObject1 = this.AMp;
-    if (localObject1 == null) {
-      p.bGy("textureView");
+    s.bIx("textureView");
+    AppMethodBeat.o(272372);
+    return null;
+  }
+  
+  public final void hLO()
+  {
+    AppMethodBeat.i(272444);
+    if (getTextureView().getParent() != null) {
+      removeView((View)getTextureView());
     }
-    ((MMThumbPlayerTextureView)localObject1).setTextureListenerCallback((TextureView.SurfaceTextureListener)new a());
-    Object localObject2;
+    getTextureView().setTextureListenerCallback((TextureView.SurfaceTextureListener)new a());
     int i;
     int j;
+    Object localObject2;
     StringBuilder localStringBuilder;
-    if (this.vco)
+    if (this.yoh)
     {
-      localObject1 = this.AMp;
-      if (localObject1 == null) {
-        p.bGy("textureView");
-      }
-      localObject2 = MMThumbPlayerTextureView.MUw;
-      ((MMThumbPlayerTextureView)localObject1).setScaleType(MMThumbPlayerTextureView.gpa());
+      getTextureView().setScaleType(2);
       i = -1;
       j = -1;
       localObject1 = new FrameLayout.LayoutParams(j, i);
-      localObject2 = this.AMp;
-      if (localObject2 == null) {
-        p.bGy("textureView");
-      }
-      addView((View)localObject2, (ViewGroup.LayoutParams)localObject1);
+      addView((View)getTextureView(), (ViewGroup.LayoutParams)localObject1);
       localObject2 = this.TAG;
       localStringBuilder = new StringBuilder("initTextureView() ");
-      localObject1 = this.Ght;
-      if (localObject1 == null) {
-        break label368;
+      localObject1 = this.GvH;
+      if (localObject1 != null) {
+        break label299;
       }
     }
-    label281:
-    label363:
-    label368:
-    for (localObject1 = ((com.tencent.mm.plugin.thumbplayer.f.b)localObject1).eha();; localObject1 = null)
+    label273:
+    label299:
+    for (Object localObject1 = null;; localObject1 = ((com.tencent.mm.plugin.thumbplayer.e.b)localObject1).hLo())
     {
-      Log.i((String)localObject2, (String)localObject1 + ", layout size:[" + getWidth() + ',' + getHeight() + ']');
-      AppMethodBeat.o(191120);
+      Log.i((String)localObject2, localObject1 + ", layout size:[" + getWidth() + ',' + getHeight() + ']');
+      AppMethodBeat.o(272444);
       return;
-      localObject1 = com.tencent.mm.plugin.thumbplayer.b.MPi;
+      localObject1 = com.tencent.mm.plugin.thumbplayer.b.TBI;
       localObject1 = getContext();
-      p.j(localObject1, "context");
-      localObject2 = this.Ght;
-      if (localObject2 != null)
+      s.s(localObject1, "context");
+      localObject2 = this.GvH;
+      if (localObject2 == null)
       {
-        localObject2 = ((com.tencent.mm.plugin.thumbplayer.f.b)localObject2).MSO;
-        if (localObject2 != null)
-        {
-          i = ((com.tencent.mm.plugin.thumbplayer.e.d)localObject2).width;
-          localObject2 = this.Ght;
-          if (localObject2 == null) {
-            break label363;
-          }
-          localObject2 = ((com.tencent.mm.plugin.thumbplayer.f.b)localObject2).MSO;
-          if (localObject2 == null) {
-            break label363;
-          }
+        i = 0;
+        label197:
+        localObject2 = this.GvH;
+        if (localObject2 != null) {
+          break label273;
         }
+        j = 0;
       }
-      for (j = ((com.tencent.mm.plugin.thumbplayer.e.d)localObject2).height;; j = 0)
+      for (;;)
       {
-        localObject1 = com.tencent.mm.plugin.thumbplayer.b.l((Context)localObject1, i, j);
+        localObject1 = com.tencent.mm.plugin.thumbplayer.b.p((Context)localObject1, i, j);
         j = ((Bundle)localObject1).getInt("width", 0);
         i = ((Bundle)localObject1).getInt("height", 0);
-        localObject1 = this.AMp;
-        if (localObject1 == null) {
-          p.bGy("textureView");
-        }
-        ((MMThumbPlayerTextureView)localObject1).kw(j, i);
+        getTextureView().mj(j, i);
         break;
-        i = 0;
-        break label281;
+        localObject2 = ((com.tencent.mm.plugin.thumbplayer.e.b)localObject2).TFb;
+        if (localObject2 == null)
+        {
+          i = 0;
+          break label197;
+        }
+        i = ((com.tencent.mm.plugin.thumbplayer.a.b)localObject2).width;
+        break label197;
+        localObject2 = ((com.tencent.mm.plugin.thumbplayer.e.b)localObject2).TFb;
+        if (localObject2 == null) {
+          j = 0;
+        } else {
+          j = ((com.tencent.mm.plugin.thumbplayer.a.b)localObject2).height;
+        }
       }
     }
   }
   
-  public final void setEffector(g paramg)
+  public final void setEffector(e parame)
   {
-    AppMethodBeat.i(191081);
-    p.k(paramg, "<set-?>");
-    this.MTT = paramg;
-    AppMethodBeat.o(191081);
+    AppMethodBeat.i(272395);
+    s.u(parame, "<set-?>");
+    this.TGA = parame;
+    AppMethodBeat.o(272395);
   }
   
   public final void setEnableEffect(boolean paramBoolean)
   {
-    AppMethodBeat.i(191109);
+    AppMethodBeat.i(272435);
     Log.i(this.TAG, "setEnableEffect:" + paramBoolean + ", surfaceTexture:" + this.surfaceTexture);
-    Object localObject1;
-    Object localObject2;
-    if (this.vco != paramBoolean)
+    FrameLayout.LayoutParams localLayoutParams;
+    if (this.yoh != paramBoolean)
     {
-      this.vco = paramBoolean;
-      if (this.vco)
+      this.yoh = paramBoolean;
+      if (this.yoh)
       {
-        localObject1 = this.AMp;
-        if (localObject1 == null) {
-          p.bGy("textureView");
+        getTextureView().setScaleType(2);
+        localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
+        if (getTextureView().getParent() != null) {
+          break label117;
         }
-        localObject2 = MMThumbPlayerTextureView.MUw;
-        ((MMThumbPlayerTextureView)localObject1).setScaleType(MMThumbPlayerTextureView.gpa());
-        localObject1 = new FrameLayout.LayoutParams(-1, -1);
-        localObject2 = this.AMp;
-        if (localObject2 == null) {
-          p.bGy("textureView");
-        }
-        if (((MMThumbPlayerTextureView)localObject2).getParent() != null) {
-          break label156;
-        }
-        localObject2 = this.AMp;
-        if (localObject2 == null) {
-          p.bGy("textureView");
-        }
-        addView((View)localObject2, (ViewGroup.LayoutParams)localObject1);
+        addView((View)getTextureView(), (ViewGroup.LayoutParams)localLayoutParams);
       }
     }
     for (;;)
     {
-      goS();
-      AppMethodBeat.o(191109);
+      hLL();
+      AppMethodBeat.o(272435);
       return;
-      label156:
-      localObject2 = this.AMp;
-      if (localObject2 == null) {
-        p.bGy("textureView");
-      }
-      ((MMThumbPlayerTextureView)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      localObject1 = this.AMp;
-      if (localObject1 == null) {
-        p.bGy("textureView");
-      }
-      ((MMThumbPlayerTextureView)localObject1).requestLayout();
+      label117:
+      getTextureView().setLayoutParams((ViewGroup.LayoutParams)localLayoutParams);
+      getTextureView().requestLayout();
     }
   }
   
-  public final void setMediaInfo(com.tencent.mm.plugin.thumbplayer.e.d paramd)
+  public final void setMediaInfo(com.tencent.mm.plugin.thumbplayer.a.b paramb)
   {
-    AppMethodBeat.i(191102);
-    p.k(paramd, "mediaInfo");
-    Object localObject = this.Ght;
+    AppMethodBeat.i(272430);
+    s.u(paramb, "mediaInfo");
+    Object localObject = this.GvH;
     if (localObject != null) {
-      ((com.tencent.mm.plugin.thumbplayer.f.b)localObject).setMediaInfo(paramd);
+      ((com.tencent.mm.plugin.thumbplayer.e.b)localObject).setMediaInfo(paramb);
     }
-    Log.i(this.TAG, "setMediaInfo:".concat(String.valueOf(paramd)));
-    localObject = this.MTT;
-    p.k(paramd, "mediaInfo");
-    ((g)localObject).videoWidth = paramd.width;
-    ((g)localObject).videoHeight = paramd.height;
-    ((g)localObject).MRk = paramd;
-    ((g)localObject).MRm = paramd.sTg;
-    Log.i(((g)localObject).TAG, "setMediaInfo, size:[" + ((g)localObject).videoWidth + ',' + ((g)localObject).videoHeight + "], totalDurationMs:" + ((g)localObject).MRm);
-    localObject = this.AMp;
-    if (localObject == null) {
-      p.bGy("textureView");
+    Log.i(this.TAG, s.X("setMediaInfo:", paramb));
+    localObject = this.TGA;
+    s.u(paramb, "mediaInfo");
+    ((e)localObject).videoWidth = paramb.width;
+    ((e)localObject).videoHeight = paramb.height;
+    ((e)localObject).TDK = paramb;
+    ((e)localObject).TDM = paramb.vYw;
+    Log.i(((e)localObject).TAG, "setMediaInfo, size:[" + ((e)localObject).videoWidth + ',' + ((e)localObject).videoHeight + "], totalDurationMs:" + ((e)localObject).TDM);
+    getTextureView().mj(paramb.width, paramb.height);
+    paramb = this.HkH;
+    if (paramb != null) {
+      paramb.release();
     }
-    ((MMThumbPlayerTextureView)localObject).kw(paramd.width, paramd.height);
-    paramd = this.MTX;
-    if (paramd != null) {
-      paramd.release();
-    }
-    this.MTX = null;
-    this.MTW = null;
-    this.MTT.X((kotlin.g.a.b)new d(this));
-    AppMethodBeat.o(191102);
+    this.HkH = null;
+    this.TGC = null;
+    this.TGA.aE((kotlin.g.a.b)new d(this));
+    AppMethodBeat.o(272430);
   }
   
-  public final void setOnFrameAvailable(kotlin.g.a.b<? super SurfaceTexture, x> paramb)
+  public final void setOnFrameAvailable(kotlin.g.a.b<? super SurfaceTexture, ah> paramb)
   {
-    this.MUk = paramb;
+    this.TGR = paramb;
   }
   
-  public final void setPlayer(com.tencent.mm.plugin.thumbplayer.f.b paramb)
+  public final void setPlayer(com.tencent.mm.plugin.thumbplayer.e.b paramb)
   {
-    this.Ght = paramb;
+    this.GvH = paramb;
   }
   
   public final void setTextureView(MMThumbPlayerTextureView paramMMThumbPlayerTextureView)
   {
-    AppMethodBeat.i(191078);
-    p.k(paramMMThumbPlayerTextureView, "<set-?>");
-    this.AMp = paramMMThumbPlayerTextureView;
-    AppMethodBeat.o(191078);
+    AppMethodBeat.i(272382);
+    s.u(paramMMThumbPlayerTextureView, "<set-?>");
+    this.Fld = paramMMThumbPlayerTextureView;
+    AppMethodBeat.o(272382);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/thumbplayer/view/MMTPVideoLayout$SurfaceTextureListener;", "Landroid/view/TextureView$SurfaceTextureListener;", "(Lcom/tencent/mm/plugin/thumbplayer/view/MMTPVideoLayout;)V", "onSurfaceTextureAvailable", "", "surface", "Landroid/graphics/SurfaceTexture;", "width", "", "height", "onSurfaceTextureDestroyed", "", "onSurfaceTextureSizeChanged", "onSurfaceTextureUpdated", "plugin-thumbplayer_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/thumbplayer/view/MMTPVideoLayout$SurfaceTextureListener;", "Landroid/view/TextureView$SurfaceTextureListener;", "(Lcom/tencent/mm/plugin/thumbplayer/view/MMTPVideoLayout;)V", "onSurfaceTextureAvailable", "", "surface", "Landroid/graphics/SurfaceTexture;", "width", "", "height", "onSurfaceTextureDestroyed", "", "onSurfaceTextureSizeChanged", "onSurfaceTextureUpdated", "plugin-thumbplayer_release"}, k=1, mv={1, 5, 1}, xi=48)
   public final class a
     implements TextureView.SurfaceTextureListener
   {
+    public a()
+    {
+      AppMethodBeat.i(272287);
+      AppMethodBeat.o(272287);
+    }
+    
     public final void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(192059);
-      String str = MMTPVideoLayout.a(this.MUl);
-      StringBuilder localStringBuilder = new StringBuilder("onSurfaceTextureAvailable, surface:");
-      if (paramSurfaceTexture != null) {}
-      for (int i = paramSurfaceTexture.hashCode();; i = 0)
+      AppMethodBeat.i(272324);
+      s.u(paramSurfaceTexture, "surface");
+      Log.i(MMTPVideoLayout.a(this.TGS), "onSurfaceTextureAvailable, surface:" + paramSurfaceTexture.hashCode() + ", width:" + paramInt1 + ", height:" + paramInt2 + ", enableEffect:" + MMTPVideoLayout.f(this.TGS));
+      MMTPVideoLayout.b(this.TGS, paramSurfaceTexture);
+      MMTPVideoLayout.a(this.TGS, paramInt1);
+      MMTPVideoLayout.b(this.TGS, paramInt2);
+      this.TGS.getEffector().mh(paramInt1, paramInt2);
+      if (MMTPVideoLayout.f(this.TGS))
       {
-        Log.i(str, i + ", width:" + paramInt1 + ", height:" + paramInt2 + ", enableEffect:" + MMTPVideoLayout.d(this.MUl));
-        MMTPVideoLayout.a(this.MUl, paramSurfaceTexture);
-        MMTPVideoLayout.a(this.MUl, paramInt1);
-        MMTPVideoLayout.b(this.MUl, paramInt2);
-        this.MUl.getEffector().ku(paramInt1, paramInt2);
-        if (!MMTPVideoLayout.d(this.MUl)) {
-          break;
-        }
-        if (paramSurfaceTexture == null) {
-          break label241;
-        }
-        this.MUl.getEffector().p(paramSurfaceTexture);
-        AppMethodBeat.o(192059);
+        this.TGS.getEffector().r(paramSurfaceTexture);
+        AppMethodBeat.o(272324);
         return;
       }
-      MMTPVideoLayout.b(this.MUl, paramSurfaceTexture);
-      if (MMTPVideoLayout.e(this.MUl) != null)
+      MMTPVideoLayout.a(this.TGS, paramSurfaceTexture);
+      if (MMTPVideoLayout.c(this.TGS) != null)
       {
-        paramSurfaceTexture = MMTPVideoLayout.e(this.MUl);
+        paramSurfaceTexture = MMTPVideoLayout.c(this.TGS);
         if (paramSurfaceTexture != null) {
           paramSurfaceTexture.release();
         }
       }
-      MMTPVideoLayout.a(this.MUl, new Surface(MMTPVideoLayout.f(this.MUl)));
-      paramSurfaceTexture = this.MUl.getPlayer();
-      if (paramSurfaceTexture != null)
-      {
-        paramSurfaceTexture.b(MMTPVideoLayout.e(this.MUl), true);
-        AppMethodBeat.o(192059);
-        return;
+      MMTPVideoLayout.a(this.TGS, new Surface(MMTPVideoLayout.b(this.TGS)));
+      paramSurfaceTexture = this.TGS.getPlayer();
+      if (paramSurfaceTexture != null) {
+        paramSurfaceTexture.b(MMTPVideoLayout.c(this.TGS), true);
       }
-      label241:
-      AppMethodBeat.o(192059);
+      AppMethodBeat.o(272324);
     }
     
     public final boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
     {
-      AppMethodBeat.i(192047);
-      String str = MMTPVideoLayout.a(this.MUl);
-      StringBuilder localStringBuilder = new StringBuilder("onSurfaceTextureDestroyed, surface:");
-      if (paramSurfaceTexture != null) {}
-      for (int i = paramSurfaceTexture.hashCode();; i = 0)
+      AppMethodBeat.i(272312);
+      s.u(paramSurfaceTexture, "surface");
+      Log.i(MMTPVideoLayout.a(this.TGS), "onSurfaceTextureDestroyed, surface:" + paramSurfaceTexture.hashCode() + ", enableEffect:" + MMTPVideoLayout.f(this.TGS));
+      MMTPVideoLayout.b(this.TGS, null);
+      if (!MMTPVideoLayout.f(this.TGS))
       {
-        Log.i(str, i + ", enableEffect:" + MMTPVideoLayout.d(this.MUl));
-        MMTPVideoLayout.a(this.MUl, null);
-        if (!MMTPVideoLayout.d(this.MUl))
-        {
-          paramSurfaceTexture = MMTPVideoLayout.e(this.MUl);
-          if (paramSurfaceTexture != null) {
-            paramSurfaceTexture.release();
-          }
-        }
-        paramSurfaceTexture = this.MUl.getPlayer();
+        paramSurfaceTexture = MMTPVideoLayout.c(this.TGS);
         if (paramSurfaceTexture != null) {
-          com.tencent.mm.plugin.thumbplayer.f.b.a(paramSurfaceTexture, null);
+          paramSurfaceTexture.release();
         }
-        AppMethodBeat.o(192047);
-        return true;
       }
+      paramSurfaceTexture = this.TGS.getPlayer();
+      if (paramSurfaceTexture != null) {
+        com.tencent.mm.plugin.thumbplayer.e.b.a(paramSurfaceTexture, null);
+      }
+      AppMethodBeat.o(272312);
+      return true;
     }
     
     public final void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(192034);
-      String str = MMTPVideoLayout.a(this.MUl);
-      StringBuilder localStringBuilder = new StringBuilder("onSurfaceTextureSizeChanged, surface:");
-      if (paramSurfaceTexture != null) {}
-      for (int i = paramSurfaceTexture.hashCode();; i = 0)
-      {
-        Log.i(str, i + ", width:" + paramInt1 + ", height:" + paramInt2 + ", layout size:[" + this.MUl.getWidth() + ',' + this.MUl.getHeight() + ']');
-        MMTPVideoLayout.a(this.MUl, paramSurfaceTexture);
-        MMTPVideoLayout.a(this.MUl, paramInt1);
-        MMTPVideoLayout.b(this.MUl, paramInt2);
-        this.MUl.getEffector().ku(paramInt1, paramInt2);
-        AppMethodBeat.o(192034);
-        return;
-      }
+      AppMethodBeat.i(272297);
+      s.u(paramSurfaceTexture, "surface");
+      Log.i(MMTPVideoLayout.a(this.TGS), "onSurfaceTextureSizeChanged, surface:" + paramSurfaceTexture.hashCode() + ", width:" + paramInt1 + ", height:" + paramInt2 + ", layout size:[" + this.TGS.getWidth() + ',' + this.TGS.getHeight() + ']');
+      MMTPVideoLayout.b(this.TGS, paramSurfaceTexture);
+      MMTPVideoLayout.a(this.TGS, paramInt1);
+      MMTPVideoLayout.b(this.TGS, paramInt2);
+      this.TGS.getEffector().mh(paramInt1, paramInt2);
+      AppMethodBeat.o(272297);
     }
     
     public final void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture)
     {
-      AppMethodBeat.i(192037);
-      MMTPVideoLayout.c(this.MUl);
-      MMTPVideoLayout.a(this.MUl, paramSurfaceTexture);
-      AppMethodBeat.o(192037);
+      AppMethodBeat.i(272303);
+      s.u(paramSurfaceTexture, "surface");
+      MMTPVideoLayout.d(this.TGS);
+      MMTPVideoLayout.b(this.TGS, paramSurfaceTexture);
+      AppMethodBeat.o(272303);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
-    implements a<x>
+    extends u
+    implements a<ah>
   {
     b(MMTPVideoLayout paramMMTPVideoLayout)
     {
@@ -503,10 +442,10 @@ public final class MMTPVideoLayout
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends q
-    implements kotlin.g.a.b<Long, x>
+    extends u
+    implements kotlin.g.a.b<Long, ah>
   {
     c(MMTPVideoLayout paramMMTPVideoLayout)
     {
@@ -514,10 +453,10 @@ public final class MMTPVideoLayout
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "surface", "Landroid/graphics/SurfaceTexture;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "surface", "Landroid/graphics/SurfaceTexture;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    extends q
-    implements kotlin.g.a.b<SurfaceTexture, x>
+    extends u
+    implements kotlin.g.a.b<SurfaceTexture, ah>
   {
     d(MMTPVideoLayout paramMMTPVideoLayout)
     {
@@ -527,7 +466,7 @@ public final class MMTPVideoLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.thumbplayer.view.MMTPVideoLayout
  * JD-Core Version:    0.7.0.1
  */

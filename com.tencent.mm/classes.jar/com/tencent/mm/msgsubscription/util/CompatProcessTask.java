@@ -1,38 +1,50 @@
 package com.tencent.mm.msgsubscription.util;
 
 import android.os.Parcelable;
-import com.tencent.e.h;
-import com.tencent.e.i;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.f;
-import kotlin.g;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
+import kotlin.Metadata;
 import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/msgsubscription/util/CompatProcessTask;", "Landroid/os/Parcelable;", "()V", "taskId", "", "getTaskId", "()Ljava/lang/String;", "taskId$delegate", "Lkotlin/Lazy;", "callback", "", "describeContents", "", "execAsync", "keepMe", "parseFromParcel", "p", "Landroid/os/Parcel;", "releaseMe", "runInClientProcess", "runInMainProcess", "wxbiz-msgsubscription-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/msgsubscription/util/CompatProcessTask;", "Landroid/os/Parcelable;", "()V", "taskId", "", "getTaskId", "()Ljava/lang/String;", "taskId$delegate", "Lkotlin/Lazy;", "callback", "", "describeContents", "", "execAsync", "keepMe", "parseFromParcel", "p", "Landroid/os/Parcel;", "releaseMe", "runInClientProcess", "runInMainProcess", "wxbiz-msgsubscription-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class CompatProcessTask
   implements Parcelable
 {
-  private final f mtv = g.ar((a)new c(this));
+  private final j pmQ = k.cm((a)new a(this));
   
-  private String bsL()
+  private static final void a(CompatProcessTask paramCompatProcessTask)
   {
-    return (String)this.mtv.getValue();
+    s.u(paramCompatProcessTask, "this$0");
+    paramCompatProcessTask.asn();
   }
   
-  public abstract void RW();
-  
-  public void bsK() {}
-  
-  public final void bsM()
+  private static final void b(CompatProcessTask paramCompatProcessTask)
   {
-    h.ZvG.d((Runnable)new b(this), "CompatProcessTask_" + bsL());
+    s.u(paramCompatProcessTask, "this$0");
+    paramCompatProcessTask.bQr();
+  }
+  
+  private String bQs()
+  {
+    return (String)this.pmQ.getValue();
+  }
+  
+  public abstract void asn();
+  
+  public void bQr() {}
+  
+  public final void bQt()
+  {
+    h.ahAA.g(new CompatProcessTask..ExternalSyntheticLambda0(this), s.X("CompatProcessTask_", bQs()));
   }
   
   public final void callback()
   {
-    h.ZvG.d((Runnable)new a(this), "CompatProcessTask_" + bsL());
+    h.ahAA.g(new CompatProcessTask..ExternalSyntheticLambda1(this), s.X("CompatProcessTask_", bQs()));
   }
   
   public int describeContents()
@@ -40,40 +52,12 @@ public abstract class CompatProcessTask
     return 0;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    implements Runnable
-  {
-    a(CompatProcessTask paramCompatProcessTask) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(174575);
-      this.mtw.bsK();
-      AppMethodBeat.o(174575);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
-  {
-    b(CompatProcessTask paramCompatProcessTask) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(174576);
-      this.mtw.RW();
-      AppMethodBeat.o(174576);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class c
-    extends q
+    extends u
     implements a<String>
   {
-    c(CompatProcessTask paramCompatProcessTask)
+    a(CompatProcessTask paramCompatProcessTask)
     {
       super();
     }
@@ -81,7 +65,7 @@ public abstract class CompatProcessTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.msgsubscription.util.CompatProcessTask
  * JD-Core Version:    0.7.0.1
  */

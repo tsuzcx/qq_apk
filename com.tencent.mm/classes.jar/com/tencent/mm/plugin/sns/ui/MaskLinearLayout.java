@@ -18,8 +18,8 @@ import junit.framework.Assert;
 public class MaskLinearLayout
   extends LinearLayout
 {
-  private MMHandler KBt;
-  private Runnable KBu;
+  private MMHandler Rba;
+  private Runnable Rbb;
   private boolean enable;
   private List<MaskImageView> list;
   
@@ -29,18 +29,8 @@ public class MaskLinearLayout
     AppMethodBeat.i(97968);
     this.enable = false;
     this.list = new LinkedList();
-    this.KBt = new MMHandler();
-    this.KBu = new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(97966);
-        MaskLinearLayout.this.setPressed(false);
-        MaskLinearLayout.a(MaskLinearLayout.this);
-        MaskLinearLayout.this.invalidate();
-        AppMethodBeat.o(97966);
-      }
-    };
+    this.Rba = new MMHandler();
+    this.Rbb = new MaskLinearLayout.1(this);
     super.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
@@ -61,7 +51,7 @@ public class MaskLinearLayout
           while (paramAnonymousView.hasNext())
           {
             MaskImageView localMaskImageView = (MaskImageView)paramAnonymousView.next();
-            localMaskImageView.g(localMaskImageView, paramAnonymousMotionEvent);
+            localMaskImageView.o(localMaskImageView, paramAnonymousMotionEvent);
           }
           paramAnonymousView.setPressed(true);
           MaskLinearLayout.a(MaskLinearLayout.this);
@@ -106,7 +96,7 @@ public class MaskLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.MaskLinearLayout
  * JD-Core Version:    0.7.0.1
  */

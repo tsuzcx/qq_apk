@@ -106,7 +106,7 @@ public class DownloadStateChangedReceiver
         AppMethodBeat.o(102089);
         return;
       }
-      catch (Throwable paramContext)
+      finally
       {
         TMLog.i("DownloadStateChangedReceiver", "registeReceiver exception!!!");
         this.isRegisted = false;
@@ -143,7 +143,7 @@ public class DownloadStateChangedReceiver
         AppMethodBeat.o(102090);
         return;
       }
-      catch (Throwable paramContext)
+      finally
       {
         TMLog.i("DownloadStateChangedReceiver", "unRegisteReceiver exception!!!");
         this.isRegisted = false;
@@ -155,7 +155,7 @@ public class DownloadStateChangedReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.DownloadStateChangedReceiver
  * JD-Core Version:    0.7.0.1
  */

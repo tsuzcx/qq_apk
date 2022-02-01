@@ -1,163 +1,125 @@
 package com.tencent.mm.plugin.finder.loader;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.c.e;
-import com.tencent.mm.loader.d;
-import com.tencent.mm.plugin.findersdk.a.ak;
-import com.tencent.mm.ui.component.g;
-import com.tencent.mm.ui.component.g.a;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.audio.mix.h.b;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.finder.storage.v;
+import com.tencent.mm.plugin.finder.utils.bm;
+import com.tencent.mm.protocal.protobuf.dji;
+import com.tencent.mm.sdk.platformtools.MD5Util;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/loader/FinderLoader;", "", "()V", "avatar", "Lcom/tencent/mm/loader/Loader;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "getAvatar", "()Lcom/tencent/mm/loader/Loader;", "bgBlurInstance", "getBgBlurInstance", "blurInstance", "getBlurInstance", "effectInstance", "getEffectInstance", "halfRectInstance", "getHalfRectInstance", "instance", "getInstance", "notWxUrlInstance", "getNotWxUrlInstance", "previewAvatar", "getPreviewAvatar", "rectAvatar", "getRectAvatar", "wxAvatar", "getWxAvatar", "getOption", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "type", "Lcom/tencent/mm/plugin/finder/loader/FinderLoader$LoaderType;", "LoaderType", "plugin-finder-base_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/loader/FinderVideoCover;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "mediaObj", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "type", "Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;", "username", "", "(Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;Ljava/lang/String;)V", "getDecodeKey", "getMediaType", "getPath", "getThumbUrl", "getThumbUrlToken", "getUrl", "getUrlToken", "getUsername", "uniqueValue", "Companion", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class t
+  implements r
 {
-  public static final t ztT;
+  public static final a EyT;
+  private dji ExE;
+  private v ExF;
+  private String username;
   
   static
   {
-    AppMethodBeat.i(166329);
-    ztT = new t();
-    AppMethodBeat.o(166329);
+    AppMethodBeat.i(331788);
+    EyT = new a((byte)0);
+    AppMethodBeat.o(331788);
   }
   
-  public static e a(a parama)
+  private t(dji paramdji, v paramv, String paramString)
   {
-    AppMethodBeat.i(166328);
-    p.k(parama, "type");
-    g localg = g.Xox;
-    parama = ((ab)g.bD(ak.class).bE(ab.class)).a(parama);
-    AppMethodBeat.o(166328);
-    return parama;
-  }
-  
-  public static d<w> dJe()
-  {
-    AppMethodBeat.i(261018);
-    Object localObject = g.Xox;
-    localObject = ((ab)g.bD(ak.class).bE(ab.class)).dJn();
-    AppMethodBeat.o(261018);
-    return localObject;
-  }
-  
-  public static d<w> dJf()
-  {
-    AppMethodBeat.i(261021);
-    Object localObject = g.Xox;
-    localObject = ((ab)g.bD(ak.class).bE(ab.class)).dJo();
-    AppMethodBeat.o(261021);
-    return localObject;
-  }
-  
-  public static d<w> dJg()
-  {
-    AppMethodBeat.i(261022);
-    Object localObject = g.Xox;
-    localObject = ((ab)g.bD(ak.class).bE(ab.class)).dJp();
-    AppMethodBeat.o(261022);
-    return localObject;
-  }
-  
-  public static d<w> dJh()
-  {
-    AppMethodBeat.i(261024);
-    Object localObject = g.Xox;
-    localObject = ((ab)g.bD(ak.class).bE(ab.class)).dJq();
-    AppMethodBeat.o(261024);
-    return localObject;
-  }
-  
-  public static d<w> dJi()
-  {
-    AppMethodBeat.i(261025);
-    Object localObject = g.Xox;
-    localObject = ((ab)g.bD(ak.class).bE(ab.class)).dJr();
-    AppMethodBeat.o(261025);
-    return localObject;
-  }
-  
-  public static d<w> dJj()
-  {
-    AppMethodBeat.i(261027);
-    Object localObject = g.Xox;
-    localObject = ((ab)g.bD(ak.class).bE(ab.class)).dJs();
-    AppMethodBeat.o(261027);
-    return localObject;
-  }
-  
-  public static d<w> dJk()
-  {
-    AppMethodBeat.i(261028);
-    Object localObject = g.Xox;
-    localObject = ((ab)g.bD(ak.class).bE(ab.class)).dJt();
-    AppMethodBeat.o(261028);
-    return localObject;
-  }
-  
-  public static d<w> dJl()
-  {
-    AppMethodBeat.i(261029);
-    Object localObject = g.Xox;
-    localObject = ((ab)g.bD(ak.class).bE(ab.class)).dJu();
-    AppMethodBeat.o(261029);
-    return localObject;
-  }
-  
-  public static d<w> dJm()
-  {
-    AppMethodBeat.i(261031);
-    Object localObject = g.Xox;
-    localObject = ((ab)g.bD(ak.class).bE(ab.class)).dJv();
-    AppMethodBeat.o(261031);
-    return localObject;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/loader/FinderLoader$LoaderType;", "", "(Ljava/lang/String;I)V", "TIMELINE", "DARK_TIMELINE", "FEED_DETAIL", "AVATAR", "RECT_AVATAR", "WX_AVATAR", "AVATAR_WITHOUT_DEFAULT", "MSG_THUMB", "LINK_THUMB", "DEFAULT", "BIG_AVATAR", "PROFILE_COVER", "LIVE_SHOPPING_DEFAULT", "DARK_LIVE_SQUARE", "LIKE_HOT_DEFAULT", "plugin-finder-base_release"})
-  public static enum a
-  {
-    static
-    {
-      AppMethodBeat.i(166324);
-      a locala1 = new a("TIMELINE", 0);
-      ztU = locala1;
-      a locala2 = new a("DARK_TIMELINE", 1);
-      ztV = locala2;
-      a locala3 = new a("FEED_DETAIL", 2);
-      ztW = locala3;
-      a locala4 = new a("AVATAR", 3);
-      ztX = locala4;
-      a locala5 = new a("RECT_AVATAR", 4);
-      ztY = locala5;
-      a locala6 = new a("WX_AVATAR", 5);
-      ztZ = locala6;
-      a locala7 = new a("AVATAR_WITHOUT_DEFAULT", 6);
-      zua = locala7;
-      a locala8 = new a("MSG_THUMB", 7);
-      zub = locala8;
-      a locala9 = new a("LINK_THUMB", 8);
-      zuc = locala9;
-      a locala10 = new a("DEFAULT", 9);
-      zud = locala10;
-      a locala11 = new a("BIG_AVATAR", 10);
-      zue = locala11;
-      a locala12 = new a("PROFILE_COVER", 11);
-      zuf = locala12;
-      a locala13 = new a("LIVE_SHOPPING_DEFAULT", 12);
-      zug = locala13;
-      a locala14 = new a("DARK_LIVE_SQUARE", 13);
-      zuh = locala14;
-      a locala15 = new a("LIKE_HOT_DEFAULT", 14);
-      zui = locala15;
-      zuj = new a[] { locala1, locala2, locala3, locala4, locala5, locala6, locala7, locala8, locala9, locala10, locala11, locala12, locala13, locala14, locala15 };
-      AppMethodBeat.o(166324);
+    AppMethodBeat.i(331776);
+    String str = z.bAM();
+    s.s(str, "getUsernameFromUserInfo()");
+    this.username = str;
+    this.ExE = paramdji;
+    this.ExF = paramv;
+    this.username = paramString;
+    if (paramdji.url == null) {
+      b.e("FinderVideoCover", s.X("mediaObj.url == null ", Util.getStack()));
     }
-    
-    private a() {}
+    AppMethodBeat.o(331776);
   }
+  
+  public final String aUt()
+  {
+    AppMethodBeat.i(331811);
+    String str = "finder_video_cover_" + this.ExF.detail + '_' + MD5Util.getMD5String(Util.nullAs(this.ExE.coverUrl, ""));
+    AppMethodBeat.o(331811);
+    return str;
+  }
+  
+  public final v eCd()
+  {
+    return this.ExF;
+  }
+  
+  public final String eCe()
+  {
+    String str2 = this.ExE.decodeKey;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    return str1;
+  }
+  
+  public final String eCf()
+  {
+    String str2 = this.ExE.cover_url_token;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    return str1;
+  }
+  
+  public final String eCg()
+  {
+    String str2 = this.ExE.cover_url_token;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    return str1;
+  }
+  
+  public final String eCi()
+  {
+    String str2 = this.ExE.coverUrl;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    return str1;
+  }
+  
+  public final String getPath()
+  {
+    AppMethodBeat.i(331802);
+    Object localObject = bm.GlZ;
+    localObject = bm.a(this);
+    AppMethodBeat.o(331802);
+    return localObject;
+  }
+  
+  public final String getUrl()
+  {
+    String str2 = this.ExE.coverUrl;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    return str1;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/loader/FinderVideoCover$Companion;", "", "()V", "TAG", "", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.loader.t
  * JD-Core Version:    0.7.0.1
  */

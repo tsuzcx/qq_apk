@@ -8,53 +8,53 @@ import com.tencent.mm.sdk.platformtools.Util;
 public final class b
   implements e
 {
-  private byte[] Fcv = null;
-  private e.a Fdr;
+  private byte[] KYe = null;
+  private e.a KZa;
   private long endTimeMs;
   private int frameCount = 0;
-  private int kTg;
-  private boolean lKg = false;
-  private String mjB;
+  private int nyO;
+  private boolean oCI = false;
+  private String pcY;
   private long startTimeMs;
   
-  public final void J(Runnable paramRunnable)
+  public final void O(Runnable paramRunnable)
   {
     AppMethodBeat.i(107605);
     Log.i("MicroMsg.FFMpegTranscodeDecoder", "startDecodeBlockLoop");
-    this.lKg = true;
+    this.oCI = true;
     this.frameCount = 0;
     for (;;)
     {
-      if (!this.lKg)
+      if (!this.oCI)
       {
         AppMethodBeat.o(107605);
         return;
       }
       long l = Util.currentTicks();
-      this.Fcv = MP4MuxerJNI.ffmpegGetNextVideoFrameData(this.Fcv);
+      this.KYe = MP4MuxerJNI.ffmpegGetNextVideoFrameData(this.KYe);
       Log.d("MicroMsg.FFMpegTranscodeDecoder", "ffmpegGetNextVideoFrameData used %sms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
       boolean bool = MP4MuxerJNI.ffmpegCheckIfReachEndTimestamp();
-      if ((this.Fcv == null) || (bool))
+      if ((this.KYe == null) || (bool))
       {
         Log.e("MicroMsg.FFMpegTranscodeDecoder", "ret buffer is null or reachEnd? %s", new Object[] { Boolean.valueOf(bool) });
-        this.lKg = false;
+        this.oCI = false;
         paramRunnable.run();
         AppMethodBeat.o(107605);
         return;
       }
       this.frameCount += 1;
-      if (((this.kTg <= 1) || (this.frameCount % this.kTg != 0)) && (this.Fdr != null)) {
-        this.Fdr.bZ(this.Fcv);
+      if (((this.nyO <= 1) || (this.frameCount % this.nyO != 0)) && (this.KZa != null)) {
+        this.KZa.cb(this.KYe);
       }
     }
   }
   
   public final void a(e.a parama)
   {
-    this.Fdr = parama;
+    this.KZa = parama;
   }
   
-  public final Point brg()
+  public final Point bOM()
   {
     AppMethodBeat.i(107606);
     Point localPoint = new Point(MP4MuxerJNI.ffmpegGetVideoWidth(), MP4MuxerJNI.ffmpegGetVideoHeight());
@@ -62,16 +62,16 @@ public final class b
     return localPoint;
   }
   
-  public final int brh()
+  public final int bON()
   {
     return 2;
   }
   
-  public final int m(String paramString, long paramLong1, long paramLong2)
+  public final int o(String paramString, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(107604);
     Log.i("MicroMsg.FFMpegTranscodeDecoder", "initDecoder, srcFilePath: %s, start: %s, end: %s", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
-    this.mjB = paramString;
+    this.pcY = paramString;
     this.startTimeMs = paramLong1;
     this.endTimeMs = paramLong2;
     if (!Util.isNullOrNil(paramString))
@@ -89,8 +89,8 @@ public final class b
   public final void stop()
   {
     AppMethodBeat.i(107607);
-    Log.i("MicroMsg.FFMpegTranscodeDecoder", "stop, start: %s", new Object[] { Boolean.valueOf(this.lKg) });
-    this.lKg = false;
+    Log.i("MicroMsg.FFMpegTranscodeDecoder", "stop, start: %s", new Object[] { Boolean.valueOf(this.oCI) });
+    this.oCI = false;
     AppMethodBeat.o(107607);
   }
   
@@ -98,7 +98,7 @@ public final class b
   {
     AppMethodBeat.i(107608);
     Log.i("MicroMsg.FFMpegTranscodeDecoder", "setFrameDropInterval: %s", new Object[] { Integer.valueOf(paramInt) });
-    this.kTg = paramInt;
+    this.nyO = paramInt;
     AppMethodBeat.o(107608);
   }
 }

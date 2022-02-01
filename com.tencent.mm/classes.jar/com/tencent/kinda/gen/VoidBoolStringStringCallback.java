@@ -15,28 +15,28 @@ public abstract class VoidBoolStringStringCallback
     
     static
     {
-      AppMethodBeat.i(220390);
+      AppMethodBeat.i(226744);
       if (!VoidBoolStringStringCallback.class.desiredAssertionStatus()) {}
       for (boolean bool = true;; bool = false)
       {
         $assertionsDisabled = bool;
-        AppMethodBeat.o(220390);
+        AppMethodBeat.o(226744);
         return;
       }
     }
     
     private CppProxy(long paramLong)
     {
-      AppMethodBeat.i(220380);
+      AppMethodBeat.i(226742);
       this.destroyed = new AtomicBoolean(false);
       if (paramLong == 0L)
       {
         RuntimeException localRuntimeException = new RuntimeException("nativeRef is zero");
-        AppMethodBeat.o(220380);
+        AppMethodBeat.o(226742);
         throw localRuntimeException;
       }
       this.nativeRef = paramLong;
-      AppMethodBeat.o(220380);
+      AppMethodBeat.o(226742);
     }
     
     private native void nativeDestroy(long paramLong);
@@ -45,32 +45,32 @@ public abstract class VoidBoolStringStringCallback
     
     public final void call(boolean paramBoolean, String paramString1, String paramString2)
     {
-      AppMethodBeat.i(220388);
+      AppMethodBeat.i(226750);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         paramString1 = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(220388);
+        AppMethodBeat.o(226750);
         throw paramString1;
       }
       native_call(this.nativeRef, paramBoolean, paramString1, paramString2);
-      AppMethodBeat.o(220388);
+      AppMethodBeat.o(226750);
     }
     
     public final void destroy()
     {
-      AppMethodBeat.i(220383);
+      AppMethodBeat.i(226746);
       if (!this.destroyed.getAndSet(true)) {
         nativeDestroy(this.nativeRef);
       }
-      AppMethodBeat.o(220383);
+      AppMethodBeat.o(226746);
     }
     
     protected final void finalize()
     {
-      AppMethodBeat.i(220386);
+      AppMethodBeat.i(226748);
       destroy();
       super.finalize();
-      AppMethodBeat.o(220386);
+      AppMethodBeat.o(226748);
     }
   }
 }

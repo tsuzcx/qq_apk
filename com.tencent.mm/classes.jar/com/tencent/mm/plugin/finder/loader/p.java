@@ -1,153 +1,129 @@
 package com.tencent.mm.plugin.finder.loader;
 
-import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.f;
-import com.tencent.mm.loader.h.e;
-import com.tencent.mm.xeffect.effect.EffectManager;
-import kotlin.ResultKt;
-import kotlin.d.b.a.j;
-import kotlin.g.a.m;
-import kotlin.g.b.aa.f;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
-import kotlinx.coroutines.ak;
-import kotlinx.coroutines.h;
+import com.tencent.mm.loader.b.e;
+import com.tencent.mm.loader.d;
+import com.tencent.mm.plugin.findersdk.a.cn;
+import com.tencent.mm.ui.component.k;
+import com.tencent.mm.ui.component.k.b;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/loader/FinderGradientBlurEffectProducer;", "Lcom/tencent/mm/plugin/finder/loader/FinderBitmapProducer;", "()V", "asResource", "Lcom/tencent/mm/loader/model/Resource;", "Landroid/graphics/Bitmap;", "targetView", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "input", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/loader/FinderLoader;", "", "()V", "avatar", "Lcom/tencent/mm/loader/Loader;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "getAvatar", "()Lcom/tencent/mm/loader/Loader;", "bgBlurInstance", "getBgBlurInstance", "blurInstance", "getBlurInstance", "effectInstance", "getEffectInstance", "halfRectInstance", "getHalfRectInstance", "instance", "getInstance", "notWxUrlInstance", "getNotWxUrlInstance", "previewAvatar", "getPreviewAvatar", "rectAvatar", "getRectAvatar", "ringtoneInstance", "getRingtoneInstance", "wxAvatar", "getWxAvatar", "getOption", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "type", "Lcom/tencent/mm/plugin/finder/loader/FinderLoader$LoaderType;", "LoaderType", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class p
-  extends i
 {
-  public static final a ztD;
+  public static final p ExI;
   
   static
   {
-    AppMethodBeat.i(221621);
-    ztD = new a((byte)0);
-    AppMethodBeat.o(221621);
+    AppMethodBeat.i(166329);
+    ExI = new p();
+    AppMethodBeat.o(166329);
   }
   
-  public final e<Bitmap> a(final com.tencent.mm.loader.e.b.g<?> paramg, f<?, Bitmap> paramf, final com.tencent.mm.loader.h.b.a parama)
+  public static e a(p.a parama)
   {
-    AppMethodBeat.i(221619);
-    kotlin.g.b.p.k(paramg, "targetView");
-    kotlin.g.b.p.k(paramf, "reaper");
-    kotlin.g.b.p.k(parama, "input");
-    parama = super.a(paramg, paramf, parama);
-    paramf = (Bitmap)parama.getValue();
-    if ((paramf == null) || (paramf.getWidth() <= 0) || (paramf.getHeight() <= 0))
-    {
-      AppMethodBeat.o(221619);
-      return parama;
-    }
-    parama = new aa.f();
-    parama.aaBC = null;
-    h.k((m)new b(paramf, paramg, parama, null));
-    paramg = new e((Bitmap)parama.aaBC);
-    AppMethodBeat.o(221619);
-    return paramg;
+    AppMethodBeat.i(166328);
+    s.u(parama, "type");
+    k localk = k.aeZF;
+    parama = ((w)k.cn(cn.class).cq(w.class)).a(parama);
+    AppMethodBeat.o(166328);
+    return parama;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/loader/FinderGradientBlurEffectProducer$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
-  static final class b
-    extends j
-    implements m<ak, kotlin.d.d<? super x>, Object>
+  public static d<r> eCl()
   {
-    Object L$0;
-    int label;
-    Object oDA;
-    private ak p$;
-    Object pGq;
-    
-    b(Bitmap paramBitmap, com.tencent.mm.loader.e.b.g paramg, aa.f paramf, kotlin.d.d paramd)
-    {
-      super(paramd);
-    }
-    
-    public final kotlin.d.d<x> create(Object paramObject, kotlin.d.d<?> paramd)
-    {
-      AppMethodBeat.i(267559);
-      kotlin.g.b.p.k(paramd, "completion");
-      paramd = new b(this.ztE, paramg, parama, paramd);
-      paramd.p$ = ((ak)paramObject);
-      AppMethodBeat.o(267559);
-      return paramd;
-    }
-    
-    public final Object invoke(Object paramObject1, Object paramObject2)
-    {
-      AppMethodBeat.i(267560);
-      paramObject1 = ((b)create(paramObject1, (kotlin.d.d)paramObject2)).invokeSuspend(x.aazN);
-      AppMethodBeat.o(267560);
-      return paramObject1;
-    }
-    
-    public final Object invokeSuspend(final Object paramObject)
-    {
-      AppMethodBeat.i(267557);
-      kotlin.d.a.a locala = kotlin.d.a.a.aaAA;
-      switch (this.label)
-      {
-      default: 
-        paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-        AppMethodBeat.o(267557);
-        throw paramObject;
-      case 0: 
-        ResultKt.throwOnFailure(paramObject);
-        paramObject = this.p$;
-        final kotlinx.coroutines.a.g localg = kotlinx.coroutines.a.i.aFQ(0);
-        localObject = new com.tencent.mm.videocomposition.effect.b();
-        ((com.tencent.mm.videocomposition.effect.b)localObject).setInputBitmap(this.ztE);
-        if (paramg.getViewWidth() <= 0) {}
-        for (int i = this.ztE.getWidth();; i = paramg.getViewWidth())
-        {
-          ((com.tencent.mm.videocomposition.effect.b)localObject).no(i, kotlin.h.a.dm(i * 1.0F * this.ztE.getHeight() / this.ztE.getWidth()));
-          ((com.tencent.mm.videocomposition.effect.d)localObject).YIS = ((kotlin.g.a.b)new a((com.tencent.mm.videocomposition.effect.b)localObject));
-          ((com.tencent.mm.videocomposition.effect.d)localObject).ANo.ikd();
-          ((com.tencent.mm.videocomposition.effect.b)localObject).ag((kotlin.g.a.b)new q(paramObject) {});
-          localObject = parama;
-          this.L$0 = paramObject;
-          this.oDA = localg;
-          this.pGq = localObject;
-          this.label = 1;
-          paramObject = localg.q(this);
-          if (paramObject != locala) {
-            break;
-          }
-          AppMethodBeat.o(267557);
-          return locala;
-        }
-      }
-      Object localObject = (aa.f)this.pGq;
-      ResultKt.throwOnFailure(paramObject);
-      for (;;)
-      {
-        ((aa.f)localObject).aaBC = ((Bitmap)paramObject);
-        paramObject = x.aazN;
-        AppMethodBeat.o(267557);
-        return paramObject;
-      }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "invoke"})
-    static final class a
-      extends q
-      implements kotlin.g.a.b<Long, x>
-    {
-      a(com.tencent.mm.videocomposition.effect.b paramb)
-      {
-        super();
-      }
-    }
+    AppMethodBeat.i(331766);
+    Object localObject = k.aeZF;
+    localObject = ((w)k.cn(cn.class).cq(w.class)).eCv();
+    AppMethodBeat.o(331766);
+    return localObject;
+  }
+  
+  public static d<r> eCm()
+  {
+    AppMethodBeat.i(331770);
+    Object localObject = k.aeZF;
+    localObject = ((w)k.cn(cn.class).cq(w.class)).eCw();
+    AppMethodBeat.o(331770);
+    return localObject;
+  }
+  
+  public static d<r> eCn()
+  {
+    AppMethodBeat.i(331774);
+    Object localObject = k.aeZF;
+    localObject = ((w)k.cn(cn.class).cq(w.class)).eCx();
+    AppMethodBeat.o(331774);
+    return localObject;
+  }
+  
+  public static d<r> eCo()
+  {
+    AppMethodBeat.i(331779);
+    Object localObject = k.aeZF;
+    localObject = ((w)k.cn(cn.class).cq(w.class)).eCy();
+    AppMethodBeat.o(331779);
+    return localObject;
+  }
+  
+  public static d<r> eCp()
+  {
+    AppMethodBeat.i(331782);
+    Object localObject = k.aeZF;
+    localObject = ((w)k.cn(cn.class).cq(w.class)).eCz();
+    AppMethodBeat.o(331782);
+    return localObject;
+  }
+  
+  public static d<r> eCq()
+  {
+    AppMethodBeat.i(331789);
+    Object localObject = k.aeZF;
+    localObject = ((w)k.cn(cn.class).cq(w.class)).eCA();
+    AppMethodBeat.o(331789);
+    return localObject;
+  }
+  
+  public static d<r> eCr()
+  {
+    AppMethodBeat.i(331795);
+    Object localObject = k.aeZF;
+    localObject = ((w)k.cn(cn.class).cq(w.class)).eCB();
+    AppMethodBeat.o(331795);
+    return localObject;
+  }
+  
+  public static d<r> eCs()
+  {
+    AppMethodBeat.i(331798);
+    Object localObject = k.aeZF;
+    localObject = ((w)k.cn(cn.class).cq(w.class)).eCC();
+    AppMethodBeat.o(331798);
+    return localObject;
+  }
+  
+  public static d<r> eCt()
+  {
+    AppMethodBeat.i(331805);
+    Object localObject = k.aeZF;
+    localObject = ((w)k.cn(cn.class).cq(w.class)).eCD();
+    AppMethodBeat.o(331805);
+    return localObject;
+  }
+  
+  public static d<r> eCu()
+  {
+    AppMethodBeat.i(331810);
+    Object localObject = k.aeZF;
+    localObject = ((w)k.cn(cn.class).cq(w.class)).eCE();
+    AppMethodBeat.o(331810);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.loader.p
  * JD-Core Version:    0.7.0.1
  */

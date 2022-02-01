@@ -5,7 +5,9 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface l
   extends a
 {
-  public abstract boolean cv(String paramString1, String paramString2);
+  public abstract boolean cJs();
+  
+  public abstract int cJt();
 }
 
 

@@ -13,7 +13,7 @@ public class TRTCVideoServerConfig
   
   public static TRTCVideoServerConfig loadFromSharedPreferences(Context paramContext)
   {
-    AppMethodBeat.i(227943);
+    AppMethodBeat.i(230865);
     try
     {
       TRTCVideoServerConfig localTRTCVideoServerConfig = new TRTCVideoServerConfig();
@@ -22,13 +22,13 @@ public class TRTCVideoServerConfig
     }
     finally
     {
-      AppMethodBeat.o(227943);
+      AppMethodBeat.o(230865);
     }
   }
   
   public static void saveToSharedPreferences(Context paramContext, TRTCVideoServerConfig paramTRTCVideoServerConfig)
   {
-    AppMethodBeat.i(227942);
+    AppMethodBeat.i(230859);
     try
     {
       paramContext = paramContext.getSharedPreferences("trtc_video_server_config", 0).edit();
@@ -38,21 +38,21 @@ public class TRTCVideoServerConfig
     }
     finally
     {
-      AppMethodBeat.o(227942);
+      AppMethodBeat.o(230859);
     }
   }
   
   public String toString()
   {
-    AppMethodBeat.i(227939);
+    AppMethodBeat.i(230871);
     String str = "enableHWVUI: " + this.enableHWVUI;
-    AppMethodBeat.o(227939);
+    AppMethodBeat.o(230871);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCVideoServerConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -7,151 +7,136 @@ import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
-import com.tencent.d.f.h;
+import com.tencent.e.f.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recordvideo.b.e;
 import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
-import com.tencent.mm.plugin.recordvideo.plugin.k;
+import com.tencent.mm.plugin.recordvideo.plugin.l;
+import com.tencent.mm.plugin.recordvideo.plugin.m;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.EditPhotoPluginLayout;
-import com.tencent.mm.plugin.recordvideo.plugin.parent.d.b;
-import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
+import com.tencent.mm.plugin.recordvideo.plugin.parent.a;
+import com.tencent.mm.plugin.recordvideo.plugin.parent.a.b;
+import com.tencent.mm.plugin.recordvideo.plugin.parent.a.c;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
-import kotlin.g.b.p;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/edit/FinderFixRatioPhoneEditPluginLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/EditPhotoPluginLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "loadCurrentPage", "", "info", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "setOutputSize", "path", "", "statusChange", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus$RecordStatus;", "param", "Landroid/os/Bundle;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/edit/FinderFixRatioPhoneEditPluginLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/EditPhotoPluginLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "loadCurrentPage", "", "info", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "setOutputSize", "path", "", "statusChange", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus$RecordStatus;", "param", "Landroid/os/Bundle;", "plugin-finder-publish_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderFixRatioPhoneEditPluginLayout
   extends EditPhotoPluginLayout
 {
   public FinderFixRatioPhoneEditPluginLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(286254);
-    AppMethodBeat.o(286254);
+    AppMethodBeat.i(329832);
+    AppMethodBeat.o(329832);
+  }
+  
+  private static final void a(FinderFixRatioPhoneEditPluginLayout paramFinderFixRatioPhoneEditPluginLayout)
+  {
+    AppMethodBeat.i(329842);
+    s.u(paramFinderFixRatioPhoneEditPluginLayout, "this$0");
+    a.b.a((a)paramFinderFixRatioPhoneEditPluginLayout, a.c.NOV);
+    AppMethodBeat.o(329842);
   }
   
   private final void setOutputSize(String paramString)
   {
-    AppMethodBeat.i(286253);
+    AppMethodBeat.i(329838);
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
     localOptions.inJustDecodeBounds = true;
     BitmapUtil.decodeFile(paramString, localOptions);
     if ((localOptions.outWidth <= 0) || (localOptions.outHeight <= 0))
     {
-      "setOutputSize getOption error. path:".concat(String.valueOf(paramString));
-      h.ioq();
-      AppMethodBeat.o(286253);
+      s.X("setOutputSize getOption error. path:", paramString);
+      h.jXD();
+      AppMethodBeat.o(329838);
       return;
     }
     new StringBuilder("setOutputSize config[origin[").append(localOptions.outWidth).append(',').append(localOptions.outHeight).append("] target[1080,1440").append(']');
-    h.ioq();
+    h.jXD();
     getEditPhotoWrapper().setOutputSize(1080, 1440);
-    AppMethodBeat.o(286253);
+    AppMethodBeat.o(329838);
   }
   
   public final void a(com.tencent.mm.media.widget.camerarecordview.b.b paramb)
   {
-    AppMethodBeat.i(286251);
+    float f = 0.75F;
+    AppMethodBeat.i(329850);
     super.a(paramb);
-    com.tencent.mm.ca.b localb = getEditPhotoWrapper().FvS;
+    com.tencent.mm.bt.b localb = getEditPhotoWrapper().Lsg;
     Object localObject;
     if (localb != null)
     {
       localObject = getConfigProvider();
-      if (localObject == null) {
-        break label94;
-      }
-      localObject = ((RecordConfigProvider)localObject).mab;
-      if (localObject == null) {
-        break label94;
+      if (localObject != null) {
+        break label74;
       }
     }
-    label94:
-    for (float f = ((Bundle)localObject).getFloat("crop_fix_ratio");; f = 0.75F)
+    for (;;)
     {
-      localb.cv(f);
-      post((Runnable)new a(this));
-      if (paramb == null) {
-        break;
+      localb.dG(f);
+      post(new FinderFixRatioPhoneEditPluginLayout..ExternalSyntheticLambda0(this));
+      if (paramb != null) {
+        setOutputSize(paramb.nKb);
       }
-      setOutputSize(paramb.lfq);
-      AppMethodBeat.o(286251);
+      AppMethodBeat.o(329850);
       return;
+      label74:
+      localObject = ((RecordConfigProvider)localObject).oSS;
+      if (localObject != null) {
+        f = ((Bundle)localObject).getFloat("crop_fix_ratio");
+      }
     }
-    AppMethodBeat.o(286251);
   }
   
-  public final void a(d.c paramc, Bundle paramBundle)
+  public final void a(a.c paramc, Bundle paramBundle)
   {
-    AppMethodBeat.i(286252);
-    p.k(paramc, "status");
+    AppMethodBeat.i(329859);
+    s.u(paramc, "status");
     switch (a.$EnumSwitchMapping$0[paramc.ordinal()])
     {
     default: 
       super.a(paramc, paramBundle);
-      AppMethodBeat.o(286252);
+    }
+    do
+    {
+      AppMethodBeat.o(329859);
       return;
-    case 1: 
-      getEditPhotoWrapper().fwS();
-      getEditPhotoWrapper().eof();
-      AppMethodBeat.o(286252);
+      getEditPhotoWrapper().gIA();
+      getEditPhotoWrapper().fti();
+      AppMethodBeat.o(329859);
       return;
-    case 2: 
       paramc = getContext();
       if (paramc == null)
       {
-        paramc = new t("null cannot be cast to non-null type android.app.Activity");
-        AppMethodBeat.o(286252);
+        paramc = new NullPointerException("null cannot be cast to non-null type android.app.Activity");
+        AppMethodBeat.o(329859);
         throw paramc;
       }
       ((Activity)paramc).finish();
-      AppMethodBeat.o(286252);
+      AppMethodBeat.o(329859);
       return;
-    case 3: 
-    case 4: 
-      AppMethodBeat.o(286252);
+      AppMethodBeat.o(329859);
       return;
-    }
-    super.a(paramc, paramBundle);
-    paramc = getPhotoControlUI().HNt;
-    p.j(paramc, "photoControlUI.unDoImg");
-    paramc.setVisibility(4);
-    paramc = getPhotoControlUI().HNu;
-    p.j(paramc, "photoControlUI.rotateImg");
-    paramc.setVisibility(4);
-    getPhotoControlUI().HNt.setOnClickListener(null);
-    getPhotoControlUI().HNu.setOnClickListener(null);
-    paramc = findViewById(b.e.editor_control_icons_layout);
-    if (paramc != null) {
-      paramc.setVisibility(8);
-    }
-    paramc = findViewById(b.e.editor_mix);
-    if (paramc != null)
-    {
-      paramc.setVisibility(8);
-      AppMethodBeat.o(286252);
-      return;
-    }
-    AppMethodBeat.o(286252);
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class a
-    implements Runnable
-  {
-    a(FinderFixRatioPhoneEditPluginLayout paramFinderFixRatioPhoneEditPluginLayout) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(291010);
-      d.b.a(this.xpU, d.c.HSp);
-      AppMethodBeat.o(291010);
-    }
+      super.a(paramc, paramBundle);
+      getPhotoControlUI().NKp.setVisibility(4);
+      getPhotoControlUI().NKq.setVisibility(4);
+      getPhotoControlUI().NKp.setOnClickListener(null);
+      getPhotoControlUI().NKq.setOnClickListener(null);
+      paramc = findViewById(b.e.editor_control_icons_layout);
+      if (paramc != null) {
+        paramc.setVisibility(8);
+      }
+      paramc = findViewById(b.e.editor_mix);
+    } while (paramc == null);
+    paramc.setVisibility(8);
+    AppMethodBeat.o(329859);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.edit.FinderFixRatioPhoneEditPluginLayout
  * JD-Core Version:    0.7.0.1
  */

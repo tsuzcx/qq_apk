@@ -10,10 +10,10 @@ public class Syllable
   
   public Syllable(int paramInt)
   {
-    AppMethodBeat.i(244088);
+    AppMethodBeat.i(212298);
     this.id_len = paramInt;
     this.id = new byte[this.id_len];
-    AppMethodBeat.o(244088);
+    AppMethodBeat.o(212298);
   }
 }
 

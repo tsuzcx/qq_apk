@@ -1,13 +1,13 @@
 package com.tencent.mm.model;
 
-import com.tencent.mm.storage.bw.b;
+import com.tencent.mm.storage.by.b;
 
 @Deprecated
 public abstract interface ax
 {
-  public abstract bw.b abK();
+  public abstract by.b aDH();
   
-  public abstract ao abL();
+  public abstract ap aDI();
   
   @Deprecated
   public abstract ay getNotification();

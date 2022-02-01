@@ -42,7 +42,7 @@ public class v
   
   protected void t()
   {
-    AppMethodBeat.i(231884);
+    AppMethodBeat.i(229805);
     float f = s();
     j localj = (j)this.r.get(0);
     int i = GLES20.glGetUniformLocation(localj.q(), "texelWidthOffset");
@@ -55,12 +55,12 @@ public class v
     j = GLES20.glGetUniformLocation(localj.q(), "texelHeightOffset");
     localj.a(i, 0.0F);
     localj.a(j, f / this.f);
-    AppMethodBeat.o(231884);
+    AppMethodBeat.o(229805);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.v
  * JD-Core Version:    0.7.0.1
  */

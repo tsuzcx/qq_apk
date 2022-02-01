@@ -8,7 +8,7 @@ import java.util.List;
 public abstract interface f
   extends a
 {
-  public abstract int a(Activity paramActivity, String paramString1, String paramString2, List<af> paramList, ae paramae);
+  public abstract int a(Activity paramActivity, String paramString1, String paramString2, List<ag> paramList, af paramaf);
   
   public abstract d a(Context paramContext, n paramn);
 }

@@ -4,46 +4,48 @@ import android.graphics.Point;
 import android.view.View;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.LayoutManager;
-import androidx.recyclerview.widget.u;
-import com.tencent.mm.protocal.protobuf.eij;
-import com.tencent.mm.protocal.protobuf.esv;
-import com.tencent.mm.protocal.protobuf.esy;
+import androidx.recyclerview.widget.s;
+import com.tencent.mm.protocal.protobuf.fcl;
+import com.tencent.mm.protocal.protobuf.foe;
+import com.tencent.mm.protocal.protobuf.foh;
 import com.tencent.mm.ui.MMActivity;
 import java.util.List;
 
 public abstract interface b
 {
-  public abstract void Np();
+  public abstract void H(List<foh> paramList, boolean paramBoolean);
   
-  public abstract void a(eij parameij);
+  public abstract void a(fcl paramfcl);
   
-  public abstract void a(esy paramesy);
+  public abstract void a(foh paramfoh);
   
-  public abstract void a(esy paramesy, int paramInt1, int paramInt2);
+  public abstract void a(foh paramfoh, int paramInt1, int paramInt2);
   
-  public abstract void a(esy paramesy, View paramView);
+  public abstract void a(foh paramfoh, View paramView);
   
-  public abstract void a(esy paramesy, f paramf, int paramInt);
+  public abstract void a(foh paramfoh, f paramf, int paramInt);
   
-  public abstract void aD(View paramView, int paramInt);
+  public abstract boolean aGe();
   
-  public abstract boolean aeg();
+  public abstract void aZ(View paramView, int paramInt);
   
-  public abstract boolean ajA(int paramInt);
+  public abstract void anI();
   
-  public abstract void ajB(int paramInt);
+  public abstract boolean aoT(int paramInt);
   
-  public abstract void ajC(int paramInt);
+  public abstract void aoU(int paramInt);
   
-  public abstract void bfc(String paramString);
+  public abstract void aoV(int paramInt);
   
-  public abstract void bfd(String paramString);
+  public abstract void beA(String paramString);
   
-  public abstract boolean cne();
+  public abstract void bez(String paramString);
   
-  public abstract Point dpI();
+  public abstract boolean cOX();
   
-  public abstract MMActivity eOa();
+  public abstract Point dXX();
+  
+  public abstract MMActivity fWt();
   
   public abstract RecyclerView.LayoutManager getLayoutManager();
   
@@ -53,53 +55,51 @@ public abstract interface b
   
   public abstract int getVideoWidth();
   
-  public abstract esv gqA();
+  public abstract m hNA();
   
-  public abstract m gqB();
+  public abstract r hNB();
   
-  public abstract r gqC();
+  public abstract s hNC();
   
-  public abstract u gqD();
+  public abstract int hND();
   
-  public abstract int gqE();
+  public abstract boolean hNE();
   
-  public abstract boolean gqF();
+  public abstract boolean hNF();
   
-  public abstract boolean gqG();
+  public abstract e hNG();
   
-  public abstract e gqH();
+  public abstract boolean hNH();
   
-  public abstract boolean gqI();
+  public abstract void hNI();
   
-  public abstract void gqJ();
+  public abstract int hNJ();
   
-  public abstract int gqK();
+  public abstract n hNK();
   
-  public abstract n gqL();
+  public abstract String hNL();
   
-  public abstract String gqM();
+  public abstract int hNM();
   
-  public abstract int gqN();
+  public abstract void hNN();
   
-  public abstract void gqO();
+  public abstract int hNO();
   
-  public abstract int gqP();
+  public abstract void hNt();
   
-  public abstract void gqu();
+  public abstract void hNu();
   
-  public abstract void gqv();
+  public abstract l hNw();
   
-  public abstract l gqx();
+  public abstract o hNx();
   
-  public abstract o gqy();
+  public abstract String hNy();
   
-  public abstract String gqz();
-  
-  public abstract void t(List<esy> paramList, boolean paramBoolean);
+  public abstract foe hNz();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.b
  * JD-Core Version:    0.7.0.1
  */

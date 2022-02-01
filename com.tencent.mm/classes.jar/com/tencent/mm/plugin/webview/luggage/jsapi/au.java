@@ -1,202 +1,122 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.Intent;
-import android.widget.Toast;
-import com.tencent.luggage.d.b.a;
+import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.e;
-import com.tencent.mm.am.q;
-import com.tencent.mm.f.a.vm;
-import com.tencent.mm.f.c.ax;
-import com.tencent.mm.ipcinvoker.s;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.model.az.a;
-import com.tencent.mm.model.az.b;
-import com.tencent.mm.model.az.b.a;
-import com.tencent.mm.plugin.messenger.foundation.a.n;
-import com.tencent.mm.plugin.webview.a.a;
-import com.tencent.mm.plugin.webview.c.i;
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.downloader.f.a;
+import com.tencent.mm.plugin.downloader.model.d;
+import com.tencent.mm.plugin.downloader.model.f;
+import com.tencent.mm.plugin.downloader.model.o.7;
+import com.tencent.mm.plugin.downloader.model.o.8;
+import com.tencent.mm.plugin.downloader.model.o.a;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class au
-  extends bs
+  extends bv<s>
 {
-  public final void a(final Context paramContext, final String paramString, final br.a parama)
+  public final void a(Context paramContext, String paramString, final bv.a parama)
   {
-    AppMethodBeat.i(78604);
-    Object localObject2;
+    AppMethodBeat.i(78593);
+    long l;
     try
     {
-      localObject3 = new JSONObject(paramString);
-      localObject2 = ((JSONObject)localObject3).optString("username");
-      if ((localObject2 == null) || (((String)localObject2).length() == 0))
+      paramString = new JSONObject(paramString);
+      l = paramString.optLong("download_id");
+      if (l <= 0L)
       {
-        Log.e("MicroMsg.JsApiProfile", "doProfile fail, username is null");
-        parama.i("fail", null);
-        AppMethodBeat.o(78604);
+        Log.e("MicroMsg.JsApiPauseDownloadTask", "fail, invalid downloadId = ".concat(String.valueOf(l)));
+        parama.j("invalid_downloadid", null);
+        AppMethodBeat.o(78593);
         return;
       }
     }
     catch (JSONException paramContext)
     {
-      Log.e("MicroMsg.JsApiProfile", "parase json fail");
-      parama.i("fail", null);
-      AppMethodBeat.o(78604);
+      Log.e("MicroMsg.JsApiPauseDownloadTask", "paras data error: " + paramContext.getMessage());
+      parama.j("fail", null);
+      AppMethodBeat.o(78593);
       return;
     }
-    if (Util.isNullOrNil((String)localObject2))
+    a locala = d.la(l);
+    if (locala == null)
     {
-      s.y(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(78600);
-          Toast.makeText(MMApplicationContext.getContext(), MMApplicationContext.getContext().getString(c.i.fmt_self_qrcode_getting_err, new Object[] { Integer.valueOf(3), Integer.valueOf(-1) }), 0).show();
-          AppMethodBeat.o(78600);
-        }
-      });
-      parama.i("fail", null);
-      AppMethodBeat.o(78604);
+      parama.j(null, null);
+      AppMethodBeat.o(78593);
       return;
     }
-    com.tencent.mm.kernel.h.aHE();
-    if (!b.aGL())
+    int j = paramString.optInt("scene", 1000);
+    int k = paramString.optInt("uiarea");
+    int m = paramString.optInt("notice_id");
+    int n = paramString.optInt("ssid");
+    if (paramString.optInt("ignoreNetwork", 0) == 1) {}
+    for (int i = 1;; i = 0)
     {
-      Log.e("MicroMsg.JsApiProfile", "doProfile, MMCore.hasCfgDefaultUin() is false");
-      parama.i("fail", null);
-      AppMethodBeat.o(78604);
+      locala.field_scene = j;
+      locala.field_uiarea = k;
+      locala.field_noticeId = m;
+      locala.field_ssid = n;
+      locala.field_downloadInWifi = false;
+      d.e(locala);
+      paramString = new o.a()
+      {
+        public final void j(String paramAnonymousString, JSONObject paramAnonymousJSONObject)
+        {
+          AppMethodBeat.i(296071);
+          parama.j(paramAnonymousString, paramAnonymousJSONObject);
+          AppMethodBeat.o(296071);
+        }
+      };
+      if (!f.duv().kT(l)) {
+        break label374;
+      }
+      if (!NetStatusUtil.isWifi(paramContext)) {
+        break;
+      }
+      paramString.j(null, null);
+      AppMethodBeat.o(78593);
       return;
     }
-    Object localObject1 = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().RG((String)localObject2);
-    if (localObject1 != null)
+    if (d.la(l) == null)
     {
-      paramString = (String)localObject1;
-      if ((int)((com.tencent.mm.contact.d)localObject1).jxt > 0) {}
-    }
-    else
-    {
-      paramString = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().bwe((String)localObject2);
-    }
-    localObject1 = new Intent();
-    Object localObject3 = ((JSONObject)localObject3).optString("profileReportInfo");
-    if (!Util.isNullOrNil((String)localObject3)) {
-      ((Intent)localObject1).putExtra("key_add_contact_report_info", (String)localObject3);
-    }
-    if ((paramString != null) && ((int)paramString.jxt > 0))
-    {
-      ((Intent)localObject1).addFlags(268435456);
-      ((Intent)localObject1).putExtra("Contact_User", paramString.field_username);
-      if (paramString.hxX()) {
-        ((Intent)localObject1).putExtra("Contact_Scene", 42);
-      }
-      if (com.tencent.mm.contact.d.rk(paramString.field_type))
-      {
-        localObject2 = new vm();
-        ((vm)localObject2).fUF.intent = ((Intent)localObject1);
-        ((vm)localObject2).fUF.username = paramString.field_username;
-        EventCenter.instance.publish((IEvent)localObject2);
-      }
-      a.mIG.c((Intent)localObject1, paramContext);
-      parama.i(null, null);
-      AppMethodBeat.o(78604);
+      paramString.j(null, null);
+      AppMethodBeat.o(78593);
       return;
     }
-    paramContext.getString(c.i.app_tip);
-    paramString = com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(c.i.app_waiting), true, new DialogInterface.OnCancelListener()
+    if ((i != 0) && (((com.tencent.mm.game.report.a.b)h.ax(com.tencent.mm.game.report.a.b.class)).a(c.a.yGQ, false))) {}
+    for (i = 1;; i = 0)
     {
-      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+      if (i != 0)
       {
-        AppMethodBeat.i(78601);
-        az.a.ltq.Rr(this.iXG);
-        parama.i("cancel", null);
-        AppMethodBeat.o(78601);
+        parama = new JSONObject();
+        ((com.tencent.mm.plugin.downloader_app.api.b)h.ax(com.tencent.mm.plugin.downloader_app.api.b.class)).a(paramContext, new o.7(l, paramString), new o.8(l, paramString, parama));
+        AppMethodBeat.o(78593);
+        return;
       }
-    });
-    az.a.ltq.a((String)localObject2, "", new az.b.a()
-    {
-      public final void s(String paramAnonymousString, boolean paramAnonymousBoolean)
-      {
-        AppMethodBeat.i(78603);
-        if (paramContext == null)
-        {
-          Log.w("MicroMsg.JsApiProfile", "getNow callback, msghandler has already been detached!");
-          parama.i("fail", null);
-          AppMethodBeat.o(78603);
-          return;
-        }
-        if (paramString != null) {
-          paramString.dismiss();
-        }
-        as localas2 = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().RG(paramAnonymousString);
-        as localas1;
-        if (localas2 != null)
-        {
-          localas1 = localas2;
-          if ((int)localas2.jxt > 0) {}
-        }
-        else
-        {
-          localas1 = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().bwe(paramAnonymousString);
-        }
-        if ((localas1 == null) || ((int)localas1.jxt <= 0)) {
-          paramAnonymousBoolean = false;
-        }
-        while (!paramAnonymousBoolean)
-        {
-          s.y(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(78602);
-              Toast.makeText(MMApplicationContext.getContext(), au.3.this.val$context.getString(c.i.fmt_self_qrcode_getting_err, new Object[] { Integer.valueOf(3), Integer.valueOf(-1) }), 0).show();
-              AppMethodBeat.o(78602);
-            }
-          });
-          parama.i("fail", null);
-          AppMethodBeat.o(78603);
-          return;
-          paramAnonymousString = localas1.field_username;
-        }
-        com.tencent.mm.am.d.aH(paramAnonymousString, 3);
-        q.bhR().TB(paramAnonymousString);
-        this.val$intent.addFlags(268435456);
-        this.val$intent.putExtra("Contact_User", paramAnonymousString);
-        if (localas1.hxX())
-        {
-          com.tencent.mm.plugin.report.service.h.IzE.kvStat(10298, localas1.field_username + ",42");
-          this.val$intent.putExtra("Contact_Scene", 42);
-        }
-        a.mIG.c(this.val$intent, paramContext);
-        parama.i(null, null);
-        AppMethodBeat.o(78603);
-      }
-    });
-    AppMethodBeat.o(78604);
+      paramString.j(null, null);
+      AppMethodBeat.o(78593);
+      return;
+      label374:
+      paramString.j("fail", null);
+      AppMethodBeat.o(78593);
+      return;
+    }
   }
   
-  public final void b(b.a parama) {}
+  public final void b(com.tencent.luggage.d.b<s>.a paramb) {}
   
-  public final int cDj()
+  public final int dgI()
   {
     return 2;
   }
   
   public final String name()
   {
-    return "profile";
+    return "pauseDownloadTask";
   }
 }
 

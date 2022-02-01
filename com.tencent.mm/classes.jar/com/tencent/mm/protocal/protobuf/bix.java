@@ -1,76 +1,87 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import com.tencent.mm.bx.b;
 
-public final class bix
-  extends dyy
+public class bix
+  extends com.tencent.mm.bx.a
 {
+  public b ZSE;
+  public int ZSF;
+  public String ZSG;
+  public int show_type;
+  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(199254);
+    AppMethodBeat.i(260172);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse != null)
-      {
-        paramVarArgs.oE(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.show_type);
+      if (this.ZSE != null) {
+        paramVarArgs.d(2, this.ZSE);
       }
-      AppMethodBeat.o(199254);
+      paramVarArgs.bS(3, this.ZSF);
+      if (this.ZSG != null) {
+        paramVarArgs.g(4, this.ZSG);
+      }
+      AppMethodBeat.o(260172);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label288;
-      }
-    }
-    label288:
-    for (paramInt = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      AppMethodBeat.o(199254);
+      int i = i.a.a.b.b.a.cJ(1, this.show_type) + 0;
+      paramInt = i;
+      if (this.ZSE != null) {
+        paramInt = i + i.a.a.b.b.a.c(2, this.ZSE);
+      }
+      i = paramInt + i.a.a.b.b.a.cJ(3, this.ZSF);
+      paramInt = i;
+      if (this.ZSG != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.ZSG);
+      }
+      AppMethodBeat.o(260172);
       return paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
-          }
-        }
-        AppMethodBeat.o(199254);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
-        bix localbix = (bix)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(199254);
-          return -1;
-        }
-        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-        int i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject = (byte[])paramVarArgs.get(paramInt);
-          jh localjh = new jh();
-          if ((localObject != null) && (localObject.length > 0)) {
-            localjh.parseFrom((byte[])localObject);
-          }
-          localbix.BaseResponse = localjh;
-          paramInt += 1;
-        }
-        AppMethodBeat.o(199254);
-        return 0;
-      }
-      AppMethodBeat.o(199254);
-      return -1;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(260172);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+      bix localbix = (bix)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(260172);
+        return -1;
+      case 1: 
+        localbix.show_type = locala.ajGk.aar();
+        AppMethodBeat.o(260172);
+        return 0;
+      case 2: 
+        localbix.ZSE = locala.ajGk.kFX();
+        AppMethodBeat.o(260172);
+        return 0;
+      case 3: 
+        localbix.ZSF = locala.ajGk.aar();
+        AppMethodBeat.o(260172);
+        return 0;
+      }
+      localbix.ZSG = locala.ajGk.readString();
+      AppMethodBeat.o(260172);
+      return 0;
+    }
+    AppMethodBeat.o(260172);
+    return -1;
   }
 }
 

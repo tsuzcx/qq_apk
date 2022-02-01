@@ -3,86 +3,70 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class fly
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String UKN;
-  public boolean UKO;
-  public int UKP;
-  public int UKQ;
+  public String UserName;
+  public int abMo;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(110856);
+    AppMethodBeat.i(152711);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.UKN != null) {
-        paramVarArgs.f(1, this.UKN);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.abMo);
+      if (this.UserName != null) {
+        paramVarArgs.g(2, this.UserName);
       }
-      paramVarArgs.co(2, this.UKO);
-      paramVarArgs.aY(3, this.UKP);
-      paramVarArgs.aY(4, this.UKQ);
-      AppMethodBeat.o(110856);
+      AppMethodBeat.o(152711);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.UKN == null) {
-        break label350;
-      }
-    }
-    label350:
-    for (paramInt = g.a.a.b.b.a.g(1, this.UKN) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.gL(2);
-      int j = g.a.a.b.b.a.bM(3, this.UKP);
-      int k = g.a.a.b.b.a.bM(4, this.UKQ);
-      AppMethodBeat.o(110856);
-      return paramInt + (i + 1) + j + k;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
-          }
-        }
-        AppMethodBeat.o(110856);
-        return 0;
+      int i = i.a.a.b.b.a.cJ(1, this.abMo) + 0;
+      paramInt = i;
+      if (this.UserName != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.UserName);
       }
-      if (paramInt == 3)
-      {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-        fly localfly = (fly)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(110856);
-          return -1;
-        case 1: 
-          localfly.UKN = locala.abFh.readString();
-          AppMethodBeat.o(110856);
-          return 0;
-        case 2: 
-          localfly.UKO = locala.abFh.AB();
-          AppMethodBeat.o(110856);
-          return 0;
-        case 3: 
-          localfly.UKP = locala.abFh.AK();
-          AppMethodBeat.o(110856);
-          return 0;
-        }
-        localfly.UKQ = locala.abFh.AK();
-        AppMethodBeat.o(110856);
-        return 0;
-      }
-      AppMethodBeat.o(110856);
-      return -1;
+      AppMethodBeat.o(152711);
+      return paramInt;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(152711);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+      fly localfly = (fly)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(152711);
+        return -1;
+      case 1: 
+        localfly.abMo = locala.ajGk.aar();
+        AppMethodBeat.o(152711);
+        return 0;
+      }
+      localfly.UserName = locala.ajGk.readString();
+      AppMethodBeat.o(152711);
+      return 0;
+    }
+    AppMethodBeat.o(152711);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.fly
  * JD-Core Version:    0.7.0.1
  */

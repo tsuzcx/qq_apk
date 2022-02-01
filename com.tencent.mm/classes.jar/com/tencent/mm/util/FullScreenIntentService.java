@@ -8,33 +8,35 @@ import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.IBinder;
 import android.widget.RemoteViews;
-import androidx.core.app.e.d;
+import androidx.core.app.f.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.util.d;
+import com.tencent.mm.k.h;
 import com.tencent.mm.model.ba;
-import com.tencent.mm.n.g;
 import com.tencent.mm.plugin.comm.c.d;
 import com.tencent.mm.plugin.comm.c.h;
+import com.tencent.mm.plugin.notification.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/util/FullScreenIntentService;", "Landroid/app/Service;", "()V", "getNotificationIconRs", "", "onBind", "Landroid/os/IBinder;", "intent", "Landroid/content/Intent;", "onCreate", "", "onDestroy", "onStartCommand", "flags", "startId", "onTaskRemoved", "rootIntent", "onUnbind", "", "prepareCallingIntent", "stopService", "name", "Companion", "FullScreenOperationReceiver", "plugin-comm_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/util/FullScreenIntentService;", "Landroid/app/Service;", "()V", "getNotificationIconRs", "", "onBind", "Landroid/os/IBinder;", "intent", "Landroid/content/Intent;", "onCreate", "", "onDestroy", "onStartCommand", "flags", "startId", "onTaskRemoved", "rootIntent", "onUnbind", "", "prepareCallingIntent", "stopService", "name", "Companion", "FullScreenOperationReceiver", "plugin-comm_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FullScreenIntentService
   extends Service
 {
-  private static final String TAG = "MicroMsg.FullScreenIntentService";
-  public static final FullScreenIntentService.a YyB;
+  private static final String TAG;
+  public static final FullScreenIntentService.a agsZ;
   
   static
   {
     AppMethodBeat.i(149840);
-    YyB = new FullScreenIntentService.a((byte)0);
+    agsZ = new FullScreenIntentService.a((byte)0);
     TAG = "MicroMsg.FullScreenIntentService";
     AppMethodBeat.o(149840);
   }
   
-  private static int fkG()
+  private static int guX()
   {
     if (Build.VERSION.SDK_INT < 19) {
       return c.d.notification_icon;
@@ -45,7 +47,7 @@ public final class FullScreenIntentService
   public final IBinder onBind(Intent paramIntent)
   {
     AppMethodBeat.i(149836);
-    p.k(paramIntent, "intent");
+    s.u(paramIntent, "intent");
     AppMethodBeat.o(149836);
     return null;
   }
@@ -61,7 +63,7 @@ public final class FullScreenIntentService
   {
     AppMethodBeat.i(149835);
     Log.i(TAG, "FullScreenIntentService service onDestroy");
-    com.tencent.mm.plugin.notification.d.fjX().cancel(41);
+    f.MvN.cancel(41);
     stopForeground(true);
     AppMethodBeat.o(149835);
   }
@@ -71,53 +73,69 @@ public final class FullScreenIntentService
     AppMethodBeat.i(149833);
     int i;
     label89:
-    Object localObject;
-    String str1;
+    Object localObject1;
+    Object localObject2;
+    Object localObject3;
     boolean bool;
-    PendingIntent localPendingIntent;
-    if ((com.tencent.mm.compatible.util.d.qX(28)) || (p.h(Build.VERSION.CODENAME, "Q")))
+    if ((d.rd(28)) || (s.p(Build.VERSION.CODENAME, "Q")))
     {
       i = 1;
       if ((i != 0) && (paramIntent != null))
       {
         Log.i(TAG, "FullScreenIntentService calling service is on bind " + TAG + paramIntent.hasFileDescriptors());
-        if ((!com.tencent.mm.compatible.util.d.qX(28)) && (!p.h(Build.VERSION.CODENAME, "Q"))) {
-          break label381;
+        if ((!d.rd(28)) && (!s.p(Build.VERSION.CODENAME, "Q"))) {
+          break label442;
         }
         i = 1;
         if ((i != 0) && (paramIntent != null))
         {
           Log.i(TAG, "FullScreenIntentService calling  service is on bind " + TAG + paramIntent.hasFileDescriptors());
-          paramIntent.setClassName(getPackageName(), paramIntent.getStringExtra(e.YyE));
-          localObject = (RemoteViews)paramIntent.getParcelableExtra(e.YyC);
-          str1 = paramIntent.getStringExtra(e.YyD);
+          localObject1 = getPackageName();
+          localObject2 = paramIntent.getStringExtra(e.agtd);
+          s.checkNotNull(localObject2);
+          paramIntent.setClassName((String)localObject1, (String)localObject2);
+          localObject3 = (RemoteViews)paramIntent.getParcelableExtra(e.agtb);
+          localObject2 = paramIntent.getStringExtra(e.agtc);
           paramIntent.setFlags(268435456);
-          String str2 = paramIntent.getStringExtra(e.YyF);
-          bool = paramIntent.getBooleanExtra(e.YyG, false);
-          localPendingIntent = PendingIntent.getActivity((Context)this, 0, paramIntent, 134217728);
+          Object localObject4 = paramIntent.getStringExtra(e.agte);
+          bool = paramIntent.getBooleanExtra(e.agtf, false);
+          localObject1 = PendingIntent.getActivity((Context)this, 0, paramIntent, 134217728);
           if (Build.VERSION.SDK_INT >= 26)
           {
-            if (localObject == null) {
-              break label387;
+            if (localObject3 == null) {
+              break label448;
             }
-            localObject = new e.d((Context)this, str2).gq().z("call").e(System.currentTimeMillis()).c((RemoteViews)localObject).d((RemoteViews)localObject).bn(fkG()).a(localPendingIntent).k((CharSequence)getString(c.h.app_pushcontent_title)).l((CharSequence)str1).c(localPendingIntent).gp().W(true);
-            p.j(localObject, "NotificationCompat.Build…     .setAutoCancel(true)");
+            Context localContext = (Context)this;
+            s.checkNotNull(localObject4);
+            localObject4 = new f.d(localContext, (String)localObject4);
+            ((f.d)localObject4).mPriority = 1;
+            ((f.d)localObject4).boM = "call";
+            localObject4 = ((f.d)localObject4).bt(System.currentTimeMillis());
+            ((f.d)localObject4).boP = ((RemoteViews)localObject3);
+            ((f.d)localObject4).boQ = ((RemoteViews)localObject3);
+            localObject3 = ((f.d)localObject4).eb(guX());
+            ((f.d)localObject3).bor = ((PendingIntent)localObject1);
+            localObject1 = ((f.d)localObject3).l((CharSequence)getString(c.h.app_pushcontent_title)).m((CharSequence)localObject2).c((PendingIntent)localObject1);
+            ((f.d)localObject1).q(2, true);
+            localObject1 = ((f.d)localObject1).aC(true);
+            s.s(localObject1, "Builder(this, channel!!)…     .setAutoCancel(true)");
           }
         }
       }
     }
     for (;;)
     {
-      localObject = ((e.d)localObject).gr();
+      localObject1 = ((f.d)localObject1).DA();
+      s.s(localObject1, "builder.build()");
       if (bool) {
-        ((Notification)localObject).flags |= 0x4;
+        ((Notification)localObject1).flags |= 0x4;
       }
       try
       {
         if (MMApplicationContext.isMMProcessExist()) {
           Log.i(TAG, "current mmprocess is exits");
         }
-        com.tencent.mm.plugin.notification.d.fjX().c(41, (Notification)localObject);
+        f.MvN.c(41, (Notification)localObject1);
       }
       catch (Exception localException)
       {
@@ -131,22 +149,29 @@ public final class FullScreenIntentService
       return paramInt1;
       i = 0;
       break;
-      label381:
+      label442:
       i = 0;
       break label89;
-      label387:
-      localObject = new e.d((Context)this, g.awc()).gq().z("reminder").e(System.currentTimeMillis()).l((CharSequence)str1).k((CharSequence)getString(c.h.app_pushcontent_title)).bn(fkG()).a(localPendingIntent).c(localPendingIntent).gp().W(true);
-      p.j(localObject, "NotificationCompat.Build…     .setAutoCancel(true)");
+      label448:
+      localObject3 = new f.d((Context)this, h.aQB());
+      ((f.d)localObject3).mPriority = 1;
+      ((f.d)localObject3).boM = "reminder";
+      localObject2 = ((f.d)localObject3).bt(System.currentTimeMillis()).m((CharSequence)localObject2).l((CharSequence)getString(c.h.app_pushcontent_title)).eb(guX());
+      ((f.d)localObject2).bor = ((PendingIntent)localObject1);
+      localObject1 = ((f.d)localObject2).c((PendingIntent)localObject1);
+      ((f.d)localObject1).q(2, true);
+      localObject1 = ((f.d)localObject1).aC(true);
+      s.s(localObject1, "Builder(this, Notificati…     .setAutoCancel(true)");
     }
   }
   
   public final void onTaskRemoved(Intent paramIntent)
   {
     AppMethodBeat.i(149839);
-    p.k(paramIntent, "rootIntent");
+    s.u(paramIntent, "rootIntent");
     Log.i(TAG, "onTaskRemoved: %s", new Object[] { paramIntent });
     super.onTaskRemoved(paramIntent);
-    com.tencent.mm.plugin.notification.d.fjX().cancel(41);
+    f.MvN.cancel(41);
     stopSelf();
     AppMethodBeat.o(149839);
   }
@@ -154,7 +179,7 @@ public final class FullScreenIntentService
   public final boolean onUnbind(Intent paramIntent)
   {
     AppMethodBeat.i(149837);
-    p.k(paramIntent, "intent");
+    s.u(paramIntent, "intent");
     Log.i(TAG, "FullScreenIntentService service onUnbind");
     boolean bool = super.onUnbind(paramIntent);
     AppMethodBeat.o(149837);
@@ -164,8 +189,8 @@ public final class FullScreenIntentService
   public final boolean stopService(Intent paramIntent)
   {
     AppMethodBeat.i(149838);
-    p.k(paramIntent, "name");
-    com.tencent.mm.plugin.notification.d.fjX().cancel(41);
+    s.u(paramIntent, "name");
+    f.MvN.cancel(41);
     stopForeground(true);
     boolean bool = super.stopService(paramIntent);
     AppMethodBeat.o(149838);
@@ -174,7 +199,7 @@ public final class FullScreenIntentService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.util.FullScreenIntentService
  * JD-Core Version:    0.7.0.1
  */

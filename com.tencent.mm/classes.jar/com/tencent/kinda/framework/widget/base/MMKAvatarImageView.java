@@ -34,13 +34,13 @@ public class MMKAvatarImageView
       AppMethodBeat.o(18992);
       return;
       label60:
-      a.b.c((ImageView)getView(), this.username);
+      a.b.g((ImageView)getView(), this.username);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKAvatarImageView
  * JD-Core Version:    0.7.0.1
  */

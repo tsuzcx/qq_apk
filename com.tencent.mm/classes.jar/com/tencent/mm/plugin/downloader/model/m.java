@@ -2,21 +2,21 @@ package com.tencent.mm.plugin.downloader.model;
 
 public abstract interface m
 {
-  public abstract void Hp(long paramLong);
-  
-  public abstract void Hq(long paramLong);
-  
-  public abstract void Hr(long paramLong);
-  
   public abstract void a(long paramLong1, String paramString, long paramLong2, long paramLong3);
-  
-  public abstract void b(long paramLong, int paramInt, boolean paramBoolean);
   
   public abstract void b(long paramLong, String paramString, boolean paramBoolean);
   
-  public abstract void m(long paramLong, String paramString);
+  public abstract void c(long paramLong, int paramInt, boolean paramBoolean);
   
-  public abstract void n(long paramLong, String paramString);
+  public abstract void jF(long paramLong);
+  
+  public abstract void jG(long paramLong);
+  
+  public abstract void jH(long paramLong);
+  
+  public abstract void v(long paramLong, String paramString);
+  
+  public abstract void w(long paramLong, String paramString);
 }
 
 

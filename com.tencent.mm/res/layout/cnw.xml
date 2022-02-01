@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/d3h" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.finder.live.view.FinderLiveCameraOptBeautyPowerfulSuitView android:id="@id/kwi" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <com.tencent.mm.plugin.finder.live.view.FinderLiveCameraOptBeautyPowerfulDetailsView android:id="@id/kwc" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <RelativeLayout android:gravity="center" android:id="@id/kwb" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:layout_marginLeft="12.0dip" android:layout_marginTop="12.0dip">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:background="@drawable/d3i" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_filled_arrow" android:rotation="90.0" app:iconColor="@color/BW_100_Alpha_0_5" />
-    </RelativeLayout>
-</RelativeLayout>

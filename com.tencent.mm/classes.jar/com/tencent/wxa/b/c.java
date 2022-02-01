@@ -1,12 +1,12 @@
 package com.tencent.wxa.b;
 
-import io.flutter.plugin.a.k.d;
+import io.flutter.plugin.common.MethodChannel.Result;
 
 public abstract interface c
 {
-  public abstract void a(boolean paramBoolean, k.d paramd);
+  public abstract void a(boolean paramBoolean, MethodChannel.Result paramResult);
   
-  public abstract void ivz();
+  public abstract void keT();
   
   public abstract void onCreateView();
   
@@ -18,7 +18,7 @@ public abstract interface c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.wxa.b.c
  * JD-Core Version:    0.7.0.1
  */

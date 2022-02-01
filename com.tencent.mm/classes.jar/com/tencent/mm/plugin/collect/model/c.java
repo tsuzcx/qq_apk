@@ -3,26 +3,26 @@ package com.tencent.mm.plugin.collect.model;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.s;
-import com.tencent.mm.platformtools.s.a;
-import com.tencent.mm.platformtools.s.b;
+import com.tencent.mm.platformtools.p;
+import com.tencent.mm.platformtools.p.a;
+import com.tencent.mm.platformtools.p.b;
 import com.tencent.mm.plugin.wallet_core.d.b;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
 
 public final class c
-  implements s
+  implements p
 {
-  private s.b tUD;
   private String url;
+  private p.b wXZ;
   
   public c(String paramString)
   {
     AppMethodBeat.i(63773);
-    this.tUD = new s.b()
+    this.wXZ = new p.b()
     {
-      public final Bitmap ZQ(String paramAnonymousString)
+      public final Bitmap Se(String paramAnonymousString)
       {
         AppMethodBeat.i(63772);
         paramAnonymousString = BitmapUtil.decodeFile(paramAnonymousString, null);
@@ -34,13 +34,13 @@ public final class c
     AppMethodBeat.o(63773);
   }
   
-  public final Bitmap a(Bitmap paramBitmap, s.a parama, String paramString)
+  public final Bitmap a(Bitmap paramBitmap, p.a parama, String paramString)
   {
     AppMethodBeat.i(63775);
-    if (s.a.mEp == parama) {}
+    if (p.a.pAS == parama) {}
     try
     {
-      BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, b.aUH(this.url), false);
+      BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, b.aRP(this.url), false);
       AppMethodBeat.o(63775);
       return paramBitmap;
     }
@@ -53,44 +53,49 @@ public final class c
     }
   }
   
-  public final void a(s.a parama) {}
+  public final void a(p.a parama) {}
   
-  public final s.b bvp()
+  public final p.b bTB()
   {
-    return this.tUD;
+    return this.wXZ;
   }
   
-  public final String bvq()
+  public final String bTC()
   {
     AppMethodBeat.i(63774);
-    String str = b.aUH(this.url);
+    String str = b.aRP(this.url);
     AppMethodBeat.o(63774);
     return str;
   }
   
-  public final String bvr()
+  public final String bTD()
   {
     return this.url;
   }
   
-  public final String bvs()
+  public final String bTE()
   {
     return this.url;
   }
   
-  public final boolean bvt()
+  public final boolean bTF()
   {
     return true;
   }
   
-  public final Bitmap bvu()
+  public final boolean bTG()
+  {
+    return false;
+  }
+  
+  public final Bitmap bTH()
   {
     return null;
   }
   
-  public final void bvv() {}
+  public final void bTI() {}
   
-  public final void bvw() {}
+  public final void bTJ() {}
   
   public final String getCacheKey()
   {
@@ -99,7 +104,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.c
  * JD-Core Version:    0.7.0.1
  */

@@ -4,86 +4,101 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class ced
-  extends dyl
+  extends erp
 {
-  public int RML;
-  public int TlJ;
+  public LinkedList<cec> aaop;
+  
+  public ced()
+  {
+    AppMethodBeat.i(123573);
+    this.aaop = new LinkedList();
+    AppMethodBeat.o(123573);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152604);
+    AppMethodBeat.i(123574);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aY(2, this.TlJ);
-      paramVarArgs.aY(3, this.RML);
-      AppMethodBeat.o(152604);
+      paramVarArgs.e(2, 8, this.aaop);
+      AppMethodBeat.o(123574);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label380;
+        break label406;
       }
     }
-    label380:
-    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label406:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.bM(2, this.TlJ);
-      int j = g.a.a.b.b.a.bM(3, this.RML);
-      AppMethodBeat.o(152604);
-      return paramInt + i + j;
+      int i = i.a.a.a.c(2, 8, this.aaop);
+      AppMethodBeat.o(123574);
+      return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.aaop.clear();
+        paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(152604);
+        AppMethodBeat.o(123574);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
         ced localced = (ced)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(152604);
+          AppMethodBeat.o(123574);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject = (byte[])paramVarArgs.get(paramInt);
-            jg localjg = new jg();
-            if ((localObject != null) && (localObject.length > 0)) {
-              localjg.parseFrom((byte[])localObject);
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new kc();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((kc)localObject2).parseFrom((byte[])localObject1);
             }
-            localced.BaseRequest = localjg;
+            localced.BaseRequest = ((kc)localObject2);
             paramInt += 1;
           }
-          AppMethodBeat.o(152604);
-          return 0;
-        case 2: 
-          localced.TlJ = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(152604);
+          AppMethodBeat.o(123574);
           return 0;
         }
-        localced.RML = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(152604);
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new cec();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((cec)localObject2).parseFrom((byte[])localObject1);
+          }
+          localced.aaop.add(localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(123574);
         return 0;
       }
-      AppMethodBeat.o(152604);
+      AppMethodBeat.o(123574);
       return -1;
     }
   }

@@ -5,7 +5,7 @@ import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
-import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.aq;
 
 final class MMAppMgr$1
   implements DialogInterface.OnClickListener
@@ -15,8 +15,8 @@ final class MMAppMgr$1
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(33403);
-    bh.beI();
-    c.aHp().i(65, Integer.valueOf(this.lVd + 1));
+    bh.bCz();
+    c.ban().B(65, Integer.valueOf(this.oOf + 1));
     AppMethodBeat.o(33403);
   }
 }

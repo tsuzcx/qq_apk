@@ -23,9 +23,9 @@ public final class AppBrandCapsuleHomeButton
   
   protected final String getDefaultAccessibilityLabel()
   {
-    AppMethodBeat.i(245350);
+    AppMethodBeat.i(324159);
     String str = getContext().getString(a.g.app_brand_accessibility_close_button);
-    AppMethodBeat.o(245350);
+    AppMethodBeat.o(324159);
     return str;
   }
   
@@ -39,7 +39,7 @@ public final class AppBrandCapsuleHomeButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.actionbar.AppBrandCapsuleHomeButton
  * JD-Core Version:    0.7.0.1
  */

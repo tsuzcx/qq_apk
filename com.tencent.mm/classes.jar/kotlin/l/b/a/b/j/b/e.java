@@ -2,9 +2,10 @@ package kotlin.l.b.a.b.j.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Arrays;
+import kotlin.g.b.s;
 
 public final class e
-  extends p<Character>
+  extends o<Character>
 {
   public e(char paramChar)
   {
@@ -18,49 +19,53 @@ public final class e
     AppMethodBeat.i(60048);
     int j = ((Character)getValue()).charValue();
     char c = ((Character)getValue()).charValue();
-    int i;
     String str;
-    switch (c)
-    {
-    case '\013': 
-    default: 
-      i = (byte)Character.getType(c);
-      if ((i != 0) && (i != 13) && (i != 14) && (i != 15) && (i != 16) && (i != 18) && (i != 19))
-      {
-        i = 1;
-        if (i == 0) {
-          break label208;
-        }
-        str = String.valueOf(c);
-      }
-      break;
+    if (c == '\b') {
+      str = "\\b";
     }
     for (;;)
     {
       str = String.format("\\u%04X ('%s')", Arrays.copyOf(new Object[] { Integer.valueOf(j), str }, 2));
-      kotlin.g.b.p.j(str, "java.lang.String.format(this, *args)");
+      s.s(str, "java.lang.String.format(this, *args)");
       AppMethodBeat.o(60048);
       return str;
-      str = "\\b";
-      continue;
-      str = "\\t";
-      continue;
-      str = "\\n";
-      continue;
-      str = "\\f";
-      continue;
-      str = "\\r";
-      continue;
-      i = 0;
-      break;
-      label208:
-      str = "?";
+      if (c == '\t')
+      {
+        str = "\\t";
+      }
+      else if (c == '\n')
+      {
+        str = "\\n";
+      }
+      else if (c == '\f')
+      {
+        str = "\\f";
+      }
+      else if (c == '\r')
+      {
+        str = "\\r";
+      }
+      else
+      {
+        int i = (byte)Character.getType(c);
+        if ((i != 0) && (i != 13) && (i != 14) && (i != 15) && (i != 16) && (i != 18) && (i != 19)) {}
+        for (i = 1;; i = 0)
+        {
+          if (i == 0) {
+            break label197;
+          }
+          str = String.valueOf(c);
+          break;
+        }
+        label197:
+        str = "?";
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.j.b.e
  * JD-Core Version:    0.7.0.1
  */

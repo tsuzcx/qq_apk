@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="a3x" parent="@style/f6">
-        <item name="a0p">aq3</item>
-        <item name="a11">d5n</item>
+    <style name="a3o" parent="@style/f9">
+        <item name="a3n">ayg</item>
+        <item name="a3z">e_s</item>
     </style>
 </resources>

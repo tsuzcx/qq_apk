@@ -1,35 +1,35 @@
 package com.tencent.mm.plugin.gamelife.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dyy;
-import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.protocal.protobuf.esc;
+import com.tencent.mm.protocal.protobuf.kd;
 import java.util.LinkedList;
 
 public final class g
-  extends dyy
+  extends esc
 {
-  public LinkedList<o> DgP;
+  public LinkedList<o> JaJ;
   
   public g()
   {
-    AppMethodBeat.i(203981);
-    this.DgP = new LinkedList();
-    AppMethodBeat.o(203981);
+    AppMethodBeat.i(267788);
+    this.JaJ = new LinkedList();
+    AppMethodBeat.o(267788);
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(203984);
+    AppMethodBeat.i(267801);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
       if (this.BaseResponse != null)
       {
-        paramVarArgs.oE(1, this.BaseResponse.computeSize());
+        paramVarArgs.qD(1, this.BaseResponse.computeSize());
         this.BaseResponse.writeFields(paramVarArgs);
       }
-      paramVarArgs.e(2, 8, this.DgP);
-      AppMethodBeat.o(203984);
+      paramVarArgs.e(2, 8, this.JaJ);
+      AppMethodBeat.o(267801);
       return 0;
     }
     if (paramInt == 1) {
@@ -38,53 +38,53 @@ public final class g
       }
     }
     label406:
-    for (paramInt = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    for (paramInt = i.a.a.a.qC(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      int i = g.a.a.a.c(2, 8, this.DgP);
-      AppMethodBeat.o(203984);
+      int i = i.a.a.a.c(2, 8, this.JaJ);
+      AppMethodBeat.o(267801);
       return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
-        this.DgP.clear();
-        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
+        this.JaJ.clear();
+        paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = esc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = esc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(203984);
+        AppMethodBeat.o(267801);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
         g localg = (g)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         Object localObject2;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(203984);
+          AppMethodBeat.o(267801);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new jh();
+            localObject2 = new kd();
             if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((jh)localObject2).parseFrom((byte[])localObject1);
+              ((kd)localObject2).parseFrom((byte[])localObject1);
             }
-            localg.BaseResponse = ((jh)localObject2);
+            localg.BaseResponse = ((kd)localObject2);
             paramInt += 1;
           }
-          AppMethodBeat.o(203984);
+          AppMethodBeat.o(267801);
           return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
@@ -94,13 +94,13 @@ public final class g
           if ((localObject1 != null) && (localObject1.length > 0)) {
             ((o)localObject2).parseFrom((byte[])localObject1);
           }
-          localg.DgP.add(localObject2);
+          localg.JaJ.add(localObject2);
           paramInt += 1;
         }
-        AppMethodBeat.o(203984);
+        AppMethodBeat.o(267801);
         return 0;
       }
-      AppMethodBeat.o(203984);
+      AppMethodBeat.o(267801);
       return -1;
     }
   }

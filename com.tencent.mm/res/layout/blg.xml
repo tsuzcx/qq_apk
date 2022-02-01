@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/aqn" android:layout_width="fill_parent" android:layout_height="@dimen/j0"
+<LinearLayout android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/gvp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/recharge_discount" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true">
-        <TextView android:textSize="@dimen/l" android:textColor="@drawable/aql" android:layout_gravity="center_horizontal" android:id="@id/ft7" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <TextView android:textSize="@dimen/y" android:textColor="@drawable/aqk" android:layout_gravity="center_horizontal" android:id="@id/bmr" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <TextView android:textSize="@dimen/y" android:textColor="@color/a50" android:layout_gravity="center_horizontal" android:id="@id/gho" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </LinearLayout>
-</RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/idd" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

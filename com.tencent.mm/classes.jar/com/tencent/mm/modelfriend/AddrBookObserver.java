@@ -9,14 +9,13 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
-import com.tencent.mm.f.a.lp;
-import com.tencent.mm.n.f;
+import com.tencent.mm.am.s;
+import com.tencent.mm.br.c;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.platformtools.a;
-import com.tencent.mm.plugin.account.friend.a.ao;
-import com.tencent.mm.plugin.account.friend.a.l;
+import com.tencent.mm.plugin.account.friend.model.al;
+import com.tencent.mm.plugin.account.friend.model.i;
 import com.tencent.mm.plugin.account.sdk.a.b;
-import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
@@ -27,14 +26,14 @@ public final class AddrBookObserver
   extends ContentObserver
 {
   private static MMHandler handler;
-  private static boolean jQz;
-  private static Intent lKW;
+  private static boolean mpH;
+  private static Intent oDy;
   private final Context context;
   
   static
   {
     AppMethodBeat.i(127661);
-    jQz = false;
+    mpH = false;
     handler = new MMHandler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
@@ -42,17 +41,17 @@ public final class AddrBookObserver
         AppMethodBeat.i(127655);
         super.handleMessage(paramAnonymousMessage);
         paramAnonymousMessage = (Context)paramAnonymousMessage.obj;
-        if (AddrBookObserver.bkU() == null)
+        if (AddrBookObserver.bIN() == null)
         {
-          AddrBookObserver.w(new Intent());
-          AddrBookObserver.bkU().setClass(paramAnonymousMessage, AddrBookObserver.AddrBookService.class);
+          AddrBookObserver.x(new Intent());
+          AddrBookObserver.bIN().setClass(paramAnonymousMessage, AddrBookObserver.AddrBookService.class);
         }
         float f = new Random(System.currentTimeMillis()).nextFloat();
-        AddrBookObserver.bkU().putExtra(AddrBookObserver.AddrBookService.lKX, f);
+        AddrBookObserver.bIN().putExtra(AddrBookObserver.AddrBookService.oDz, f);
         try
         {
           Log.i("MicroMsg.AddrBookObserver", "time's up, start AddrBookObserver, session:%f", new Object[] { Float.valueOf(f) });
-          c.startService(AddrBookObserver.bkU());
+          c.startService(AddrBookObserver.bIN());
           AppMethodBeat.o(127655);
           return;
         }
@@ -79,18 +78,17 @@ public final class AddrBookObserver
     AppMethodBeat.i(127660);
     super.onChange(paramBoolean);
     Log.i("MicroMsg.AddrBookObserver", "address book changed, start sync after 20 second");
-    if (!jQz)
+    if ((mpH) || (!i.bWZ()))
     {
-      l.bym();
-      handler.removeMessages(0);
-      Message localMessage = handler.obtainMessage();
-      localMessage.obj = this.context;
-      localMessage.what = 0;
-      handler.sendMessageDelayed(localMessage, 20000L);
+      Log.e("MicroMsg.AddrBookObserver", "isSyncing:" + mpH + ", is time to sync:" + i.bWZ() + " , return");
       AppMethodBeat.o(127660);
       return;
     }
-    Log.e("MicroMsg.AddrBookObserver", "isSyncing:" + jQz + ", is time to sync:" + l.bym() + " , return");
+    handler.removeMessages(0);
+    Message localMessage = handler.obtainMessage();
+    localMessage.obj = this.context;
+    localMessage.what = 0;
+    handler.sendMessageDelayed(localMessage, 10000L);
     AppMethodBeat.o(127660);
   }
   
@@ -98,39 +96,39 @@ public final class AddrBookObserver
     extends MMService
   {
     public static boolean isCanceled = false;
-    public static boolean jQz = false;
-    public static String lKX = "key_sync_session";
-    private b lKY;
+    public static boolean mpH = false;
+    public static String oDz = "key_sync_session";
+    private b oDA;
     
     public AddrBookService()
     {
       AppMethodBeat.i(127657);
-      this.lKY = new b()
+      this.oDA = new b()
       {
-        public final void gr(boolean paramAnonymousBoolean)
+        public final void hi(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(127656);
           if (!paramAnonymousBoolean)
           {
             Log.v("MicroMsg.AddrBookObserver", "onSyncEnd not sync succ, do not upload");
             AddrBookObserver.AddrBookService.this.stopSelf();
-            AddrBookObserver.AddrBookService.jQz = false;
+            AddrBookObserver.AddrBookService.mpH = false;
             AppMethodBeat.o(127656);
             return;
           }
           System.currentTimeMillis();
-          l.byn();
-          ao localao = new ao(l.byr(), l.byq());
-          com.tencent.mm.kernel.h.aGY().a(localao, 0);
+          i.bXa();
+          al localal = new al(i.bXe(), i.bXd());
+          h.aZW().a(localal, 0);
           AddrBookObserver.AddrBookService.this.stopSelf();
-          AddrBookObserver.AddrBookService.jQz = false;
+          AddrBookObserver.AddrBookService.mpH = false;
           AppMethodBeat.o(127656);
         }
       };
       AppMethodBeat.o(127657);
     }
     
-    public final IBinder aqH()
+    public final IBinder aKF()
     {
       return null;
     }
@@ -156,7 +154,7 @@ public final class AddrBookObserver
         AppMethodBeat.o(127658);
         return 2;
       }
-      float f1 = paramIntent.getFloatExtra(lKX, -1.0F);
+      float f1 = paramIntent.getFloatExtra(oDz, -1.0F);
       if (f1 == -1.0F)
       {
         Log.e("MicroMsg.AddrBookObserver", "onStartCommand session == -1, stop service");
@@ -165,7 +163,7 @@ public final class AddrBookObserver
         return 2;
       }
       paramIntent = MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0);
-      float f2 = paramIntent.getFloat(lKX, 0.0F);
+      float f2 = paramIntent.getFloat(oDz, 0.0F);
       if (f2 == f1)
       {
         Log.d("MicroMsg.AddrBookObserver", "onStartCommand session the same : %f", new Object[] { Float.valueOf(f2) });
@@ -173,7 +171,7 @@ public final class AddrBookObserver
         AppMethodBeat.o(127658);
         return 2;
       }
-      paramIntent.edit().putFloat(lKX, f1).commit();
+      paramIntent.edit().putFloat(oDz, f1).commit();
       Log.d("MicroMsg.AddrBookObserver", "onStartCommand new session:%f", new Object[] { Float.valueOf(f1) });
       if (isCanceled)
       {
@@ -183,54 +181,43 @@ public final class AddrBookObserver
         AppMethodBeat.o(127658);
         return 2;
       }
-      for (;;)
+      try
       {
-        try
+        if (!h.baz())
         {
-          if (!com.tencent.mm.kernel.h.aHB())
-          {
-            Log.i("MicroMsg.AddrBookObserver", "account not ready, stop sync");
-            stopSelf();
-            AppMethodBeat.o(127658);
-            return 2;
-          }
-          if (com.tencent.mm.n.h.axc().getInt("WCOEntranceSwitch", 0) > 0)
-          {
-            paramIntent = new lp();
-            EventCenter.instance.publish(paramIntent);
-          }
-          if ((!l.byl()) || (l.byh())) {
-            continue;
-          }
-          Log.i("MicroMsg.AddrBookObserver", "start sync");
-          if (com.tencent.mm.platformtools.t.ds(MMApplicationContext.getContext())) {
-            continue;
-          }
-          jQz = true;
-          a.syncAddrBook(this.lKY);
+          Log.i("MicroMsg.AddrBookObserver", "account not ready, stop sync");
+          stopSelf();
+          AppMethodBeat.o(127658);
+          return 2;
         }
-        catch (Exception paramIntent)
+        if ((i.bWY()) && (!i.bWV()))
+        {
+          Log.i("MicroMsg.AddrBookObserver", "mark addr book had update.");
+          a.bTm();
+          stopSelf();
+          AppMethodBeat.o(127658);
+          return 2;
+        }
+        Log.e("MicroMsg.AddrBookObserver", "can not sync addr book now, stop service");
+        stopSelf();
+      }
+      catch (Exception paramIntent)
+      {
+        for (;;)
         {
           Log.printErrStackTrace("MicroMsg.AddrBookObserver", paramIntent, "", new Object[0]);
           Log.e("MicroMsg.AddrBookObserver", "AddrBookService onStart [%s]", new Object[] { paramIntent.getMessage() });
           stopSelf();
-          continue;
         }
-        AppMethodBeat.o(127658);
-        return 2;
-        Log.e("MicroMsg.AddrBookObserver", "requestSync false, stop service");
-        stopSelf();
-        AppMethodBeat.o(127658);
-        return 2;
-        Log.e("MicroMsg.AddrBookObserver", "can not sync addr book now, stop service");
-        stopSelf();
       }
+      AppMethodBeat.o(127658);
+      return 2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelfriend.AddrBookObserver
  * JD-Core Version:    0.7.0.1
  */

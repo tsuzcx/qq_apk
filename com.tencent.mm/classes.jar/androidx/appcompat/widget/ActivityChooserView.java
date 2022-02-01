@@ -8,7 +8,6 @@ import android.content.res.TypedArray;
 import android.database.DataSetObserver;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -22,7 +21,6 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
@@ -40,24 +38,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class ActivityChooserView
   extends ViewGroup
 {
-  PopupWindow.OnDismissListener lT;
   private boolean mIsAttachedToWindow;
-  final a pR;
-  private final ActivityChooserView.b pS;
-  final View pT;
-  final Drawable pU;
-  final FrameLayout pV;
-  private final ImageView pW;
-  final FrameLayout pX;
-  final ImageView pY;
-  private final int pZ;
-  b qa;
-  final DataSetObserver qb;
-  private final ViewTreeObserver.OnGlobalLayoutListener qc;
-  private ListPopupWindow qd;
-  boolean qe;
-  int qf;
-  int qg;
+  PopupWindow.OnDismissListener mQ;
+  final a qO;
+  private final ActivityChooserView.b qP;
+  final View qQ;
+  final Drawable qR;
+  final FrameLayout qS;
+  private final ImageView qT;
+  final FrameLayout qU;
+  final ImageView qV;
+  private final int qW;
+  b qX;
+  final DataSetObserver qY;
+  private final ViewTreeObserver.OnGlobalLayoutListener qZ;
+  private ListPopupWindow ra;
+  boolean rb;
+  int rc;
+  int rd;
   
   public ActivityChooserView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -67,170 +65,167 @@ public class ActivityChooserView
   public ActivityChooserView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(240618);
-    this.qb = new DataSetObserver()
+    AppMethodBeat.i(199751);
+    this.qY = new DataSetObserver()
     {
       public final void onChanged()
       {
-        AppMethodBeat.i(240508);
+        AppMethodBeat.i(200232);
         super.onChanged();
-        ActivityChooserView.this.pR.notifyDataSetChanged();
-        AppMethodBeat.o(240508);
+        ActivityChooserView.this.qO.notifyDataSetChanged();
+        AppMethodBeat.o(200232);
       }
       
       public final void onInvalidated()
       {
-        AppMethodBeat.i(240511);
+        AppMethodBeat.i(200239);
         super.onInvalidated();
-        ActivityChooserView.this.pR.notifyDataSetInvalidated();
-        AppMethodBeat.o(240511);
+        ActivityChooserView.this.qO.notifyDataSetInvalidated();
+        AppMethodBeat.o(200239);
       }
     };
-    this.qc = new ViewTreeObserver.OnGlobalLayoutListener()
+    this.qZ = new ViewTreeObserver.OnGlobalLayoutListener()
     {
       public final void onGlobalLayout()
       {
-        AppMethodBeat.i(240518);
-        if (ActivityChooserView.this.dj())
+        AppMethodBeat.i(200224);
+        if (ActivityChooserView.this.ei())
         {
           if (!ActivityChooserView.this.isShown())
           {
             ActivityChooserView.this.getListPopupWindow().dismiss();
-            AppMethodBeat.o(240518);
+            AppMethodBeat.o(200224);
             return;
           }
           ActivityChooserView.this.getListPopupWindow().show();
-          if (ActivityChooserView.this.qa != null) {
-            ActivityChooserView.this.qa.X(true);
+          if (ActivityChooserView.this.qX != null) {
+            ActivityChooserView.this.qX.aD(true);
           }
         }
-        AppMethodBeat.o(240518);
+        AppMethodBeat.o(200224);
       }
     };
-    this.qf = 4;
+    this.rc = 4;
     Object localObject = paramContext.obtainStyledAttributes(paramAttributeSet, a.j.ActivityChooserView, paramInt, 0);
-    this.qf = ((TypedArray)localObject).getInt(a.j.ActivityChooserView_initialActivityCount, 4);
+    this.rc = ((TypedArray)localObject).getInt(a.j.ActivityChooserView_initialActivityCount, 4);
     paramAttributeSet = ((TypedArray)localObject).getDrawable(a.j.ActivityChooserView_expandActivityOverflowButtonDrawable);
     ((TypedArray)localObject).recycle();
     LayoutInflater.from(getContext()).inflate(a.g.abc_activity_chooser_view, this, true);
-    this.pS = new ActivityChooserView.b(this);
-    this.pT = findViewById(a.f.activity_chooser_view_content);
-    this.pU = this.pT.getBackground();
-    this.pX = ((FrameLayout)findViewById(a.f.default_activity_button));
-    this.pX.setOnClickListener(this.pS);
-    this.pX.setOnLongClickListener(this.pS);
-    this.pY = ((ImageView)this.pX.findViewById(a.f.image));
+    this.qP = new ActivityChooserView.b(this);
+    this.qQ = findViewById(a.f.activity_chooser_view_content);
+    this.qR = this.qQ.getBackground();
+    this.qU = ((FrameLayout)findViewById(a.f.default_activity_button));
+    this.qU.setOnClickListener(this.qP);
+    this.qU.setOnLongClickListener(this.qP);
+    this.qV = ((ImageView)this.qU.findViewById(a.f.image));
     localObject = (FrameLayout)findViewById(a.f.expand_activities_button);
-    ((FrameLayout)localObject).setOnClickListener(this.pS);
+    ((FrameLayout)localObject).setOnClickListener(this.qP);
     ((FrameLayout)localObject).setAccessibilityDelegate(new View.AccessibilityDelegate()
     {
       public final void onInitializeAccessibilityNodeInfo(View paramAnonymousView, AccessibilityNodeInfo paramAnonymousAccessibilityNodeInfo)
       {
-        AppMethodBeat.i(240532);
+        AppMethodBeat.i(200234);
         super.onInitializeAccessibilityNodeInfo(paramAnonymousView, paramAnonymousAccessibilityNodeInfo);
-        paramAnonymousView = d.a(paramAnonymousAccessibilityNodeInfo);
-        if (Build.VERSION.SDK_INT >= 19) {
-          paramAnonymousView.Ov.setCanOpenPopup(true);
-        }
-        AppMethodBeat.o(240532);
+        d.a(paramAnonymousAccessibilityNodeInfo).EW();
+        AppMethodBeat.o(200234);
       }
     });
     ((FrameLayout)localObject).setOnTouchListener(new r((View)localObject)
     {
-      public final s bQ()
+      public final s cJ()
       {
-        AppMethodBeat.i(240539);
+        AppMethodBeat.i(200202);
         ListPopupWindow localListPopupWindow = ActivityChooserView.this.getListPopupWindow();
-        AppMethodBeat.o(240539);
+        AppMethodBeat.o(200202);
         return localListPopupWindow;
       }
       
-      protected final boolean bR()
+      protected final boolean cK()
       {
-        AppMethodBeat.i(240541);
-        ActivityChooserView.this.dh();
-        AppMethodBeat.o(240541);
+        AppMethodBeat.i(200207);
+        ActivityChooserView.this.ea();
+        AppMethodBeat.o(200207);
         return true;
       }
       
-      protected final boolean cR()
+      protected final boolean dK()
       {
-        AppMethodBeat.i(240543);
-        ActivityChooserView.this.di();
-        AppMethodBeat.o(240543);
+        AppMethodBeat.i(200213);
+        ActivityChooserView.this.eb();
+        AppMethodBeat.o(200213);
         return true;
       }
     });
-    this.pV = ((FrameLayout)localObject);
-    this.pW = ((ImageView)((FrameLayout)localObject).findViewById(a.f.image));
-    this.pW.setImageDrawable(paramAttributeSet);
-    this.pR = new a();
-    this.pR.registerDataSetObserver(new DataSetObserver()
+    this.qS = ((FrameLayout)localObject);
+    this.qT = ((ImageView)((FrameLayout)localObject).findViewById(a.f.image));
+    this.qT.setImageDrawable(paramAttributeSet);
+    this.qO = new a();
+    this.qO.registerDataSetObserver(new DataSetObserver()
     {
       public final void onChanged()
       {
-        AppMethodBeat.i(240554);
+        AppMethodBeat.i(200211);
         super.onChanged();
         ActivityChooserView localActivityChooserView = ActivityChooserView.this;
-        if (localActivityChooserView.pR.getCount() > 0)
+        if (localActivityChooserView.qO.getCount() > 0)
         {
-          localActivityChooserView.pV.setEnabled(true);
-          int i = localActivityChooserView.pR.qi.cW();
-          int j = localActivityChooserView.pR.qi.cZ();
+          localActivityChooserView.qS.setEnabled(true);
+          int i = localActivityChooserView.qO.rf.dP();
+          int j = localActivityChooserView.qO.rf.dS();
           if ((i != 1) && ((i <= 1) || (j <= 0))) {
             break label196;
           }
-          localActivityChooserView.pX.setVisibility(0);
-          Object localObject = localActivityChooserView.pR.qi.cX();
+          localActivityChooserView.qU.setVisibility(0);
+          Object localObject = localActivityChooserView.qO.rf.dQ();
           PackageManager localPackageManager = localActivityChooserView.getContext().getPackageManager();
-          localActivityChooserView.pY.setImageDrawable(((ResolveInfo)localObject).loadIcon(localPackageManager));
-          if (localActivityChooserView.qg != 0)
+          localActivityChooserView.qV.setImageDrawable(((ResolveInfo)localObject).loadIcon(localPackageManager));
+          if (localActivityChooserView.rd != 0)
           {
             localObject = ((ResolveInfo)localObject).loadLabel(localPackageManager);
-            localObject = localActivityChooserView.getContext().getString(localActivityChooserView.qg, new Object[] { localObject });
-            localActivityChooserView.pX.setContentDescription((CharSequence)localObject);
+            localObject = localActivityChooserView.getContext().getString(localActivityChooserView.rd, new Object[] { localObject });
+            localActivityChooserView.qU.setContentDescription((CharSequence)localObject);
           }
         }
         for (;;)
         {
-          if (localActivityChooserView.pX.getVisibility() != 0) {
+          if (localActivityChooserView.qU.getVisibility() != 0) {
             break label208;
           }
-          localActivityChooserView.pT.setBackgroundDrawable(localActivityChooserView.pU);
-          AppMethodBeat.o(240554);
+          localActivityChooserView.qQ.setBackgroundDrawable(localActivityChooserView.qR);
+          AppMethodBeat.o(200211);
           return;
-          localActivityChooserView.pV.setEnabled(false);
+          localActivityChooserView.qS.setEnabled(false);
           break;
           label196:
-          localActivityChooserView.pX.setVisibility(8);
+          localActivityChooserView.qU.setVisibility(8);
         }
         label208:
-        localActivityChooserView.pT.setBackgroundDrawable(null);
-        AppMethodBeat.o(240554);
+        localActivityChooserView.qQ.setBackgroundDrawable(null);
+        AppMethodBeat.o(200211);
       }
     });
     paramContext = paramContext.getResources();
-    this.pZ = Math.max(paramContext.getDisplayMetrics().widthPixels / 2, paramContext.getDimensionPixelSize(a.d.abc_config_prefDialogWidth));
-    AppMethodBeat.o(240618);
+    this.qW = Math.max(paramContext.getDisplayMetrics().widthPixels / 2, paramContext.getDimensionPixelSize(a.d.abc_config_prefDialogWidth));
+    AppMethodBeat.o(199751);
   }
   
-  final void ap(int paramInt)
+  final void an(int paramInt)
   {
-    AppMethodBeat.i(240631);
+    AppMethodBeat.i(199804);
     Object localObject;
-    if (this.pR.qi == null)
+    if (this.qO.rf == null)
     {
       localObject = new IllegalStateException("No data model. Did you call #setDataModel?");
-      AppMethodBeat.o(240631);
+      AppMethodBeat.o(199804);
       throw ((Throwable)localObject);
     }
-    getViewTreeObserver().addOnGlobalLayoutListener(this.qc);
+    getViewTreeObserver().addOnGlobalLayoutListener(this.qZ);
     boolean bool;
     int i;
-    if (this.pX.getVisibility() == 0)
+    if (this.qU.getVisibility() == 0)
     {
       bool = true;
-      int j = this.pR.qi.cW();
+      int j = this.qO.rf.dP();
       if (!bool) {
         break label232;
       }
@@ -239,28 +234,28 @@ public class ActivityChooserView
       if ((paramInt == 2147483647) || (j <= i + paramInt)) {
         break label237;
       }
-      this.pR.setShowFooterView(true);
-      this.pR.aq(paramInt - 1);
+      this.qO.setShowFooterView(true);
+      this.qO.ao(paramInt - 1);
       label108:
       localObject = getListPopupWindow();
-      if (!((ListPopupWindow)localObject).ty.isShowing())
+      if (!((ListPopupWindow)localObject).ux.isShowing())
       {
-        if ((!this.qe) && (bool)) {
+        if ((!this.rb) && (bool)) {
           break label256;
         }
-        this.pR.d(true, bool);
+        this.qO.d(true, bool);
       }
     }
     for (;;)
     {
-      ((ListPopupWindow)localObject).setContentWidth(Math.min(this.pR.dk(), this.pZ));
+      ((ListPopupWindow)localObject).setContentWidth(Math.min(this.qO.ej(), this.qW));
       ((ListPopupWindow)localObject).show();
-      if (this.qa != null) {
-        this.qa.X(true);
+      if (this.qX != null) {
+        this.qX.aD(true);
       }
-      ((ListPopupWindow)localObject).sY.setContentDescription(getContext().getString(a.h.abc_activitychooserview_choose_application));
-      ((ListPopupWindow)localObject).sY.setSelector(new ColorDrawable(0));
-      AppMethodBeat.o(240631);
+      ((ListPopupWindow)localObject).tX.setContentDescription(getContext().getString(a.h.abc_activitychooserview_choose_application));
+      ((ListPopupWindow)localObject).tX.setSelector(new ColorDrawable(0));
+      AppMethodBeat.o(199804);
       return;
       bool = false;
       break;
@@ -268,238 +263,222 @@ public class ActivityChooserView
       i = 0;
       break label76;
       label237:
-      this.pR.setShowFooterView(false);
-      this.pR.aq(paramInt);
+      this.qO.setShowFooterView(false);
+      this.qO.ao(paramInt);
       break label108;
       label256:
-      this.pR.d(false, false);
+      this.qO.d(false, false);
     }
   }
   
-  public final boolean dh()
+  public final boolean ea()
   {
-    AppMethodBeat.i(240629);
-    if ((getListPopupWindow().ty.isShowing()) || (!this.mIsAttachedToWindow))
+    AppMethodBeat.i(199789);
+    if ((getListPopupWindow().ux.isShowing()) || (!this.mIsAttachedToWindow))
     {
-      AppMethodBeat.o(240629);
+      AppMethodBeat.o(199789);
       return false;
     }
-    this.qe = false;
-    ap(this.qf);
-    AppMethodBeat.o(240629);
+    this.rb = false;
+    an(this.rc);
+    AppMethodBeat.o(199789);
     return true;
   }
   
-  public final boolean di()
+  public final boolean eb()
   {
-    AppMethodBeat.i(240634);
-    if (getListPopupWindow().ty.isShowing())
+    AppMethodBeat.i(199811);
+    if (getListPopupWindow().ux.isShowing())
     {
       getListPopupWindow().dismiss();
       ViewTreeObserver localViewTreeObserver = getViewTreeObserver();
       if (localViewTreeObserver.isAlive()) {
-        localViewTreeObserver.removeGlobalOnLayoutListener(this.qc);
+        localViewTreeObserver.removeGlobalOnLayoutListener(this.qZ);
       }
     }
-    AppMethodBeat.o(240634);
+    AppMethodBeat.o(199811);
     return true;
   }
   
-  public final boolean dj()
+  public final boolean ei()
   {
-    AppMethodBeat.i(292983);
-    boolean bool = getListPopupWindow().ty.isShowing();
-    AppMethodBeat.o(292983);
+    AppMethodBeat.i(369510);
+    boolean bool = getListPopupWindow().ux.isShowing();
+    AppMethodBeat.o(369510);
     return bool;
   }
   
   public c getDataModel()
   {
-    return this.pR.qi;
+    return this.qO.rf;
   }
   
   ListPopupWindow getListPopupWindow()
   {
-    AppMethodBeat.i(240645);
-    if (this.qd == null)
+    AppMethodBeat.i(199908);
+    if (this.ra == null)
     {
-      this.qd = new ListPopupWindow(getContext());
-      this.qd.setAdapter(this.pR);
-      this.qd.tl = this;
-      this.qd.P(true);
-      this.qd.tp = this.pS;
-      this.qd.setOnDismissListener(this.pS);
+      this.ra = new ListPopupWindow(getContext());
+      this.ra.setAdapter(this.qO);
+      this.ra.ul = this;
+      this.ra.eK();
+      this.ra.un = this.qP;
+      this.ra.setOnDismissListener(this.qP);
     }
-    ListPopupWindow localListPopupWindow = this.qd;
-    AppMethodBeat.o(240645);
+    ListPopupWindow localListPopupWindow = this.ra;
+    AppMethodBeat.o(199908);
     return localListPopupWindow;
   }
   
   protected void onAttachedToWindow()
   {
-    AppMethodBeat.i(240636);
+    AppMethodBeat.i(199829);
     super.onAttachedToWindow();
-    c localc = this.pR.qi;
+    c localc = this.qO.rf;
     if (localc != null) {
-      localc.registerObserver(this.qb);
+      localc.registerObserver(this.qY);
     }
     this.mIsAttachedToWindow = true;
-    AppMethodBeat.o(240636);
+    AppMethodBeat.o(199829);
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(240637);
+    AppMethodBeat.i(199843);
     super.onDetachedFromWindow();
-    Object localObject = this.pR.qi;
+    Object localObject = this.qO.rf;
     if (localObject != null) {
-      ((c)localObject).unregisterObserver(this.qb);
+      ((c)localObject).unregisterObserver(this.qY);
     }
     localObject = getViewTreeObserver();
     if (((ViewTreeObserver)localObject).isAlive()) {
-      ((ViewTreeObserver)localObject).removeGlobalOnLayoutListener(this.qc);
+      ((ViewTreeObserver)localObject).removeGlobalOnLayoutListener(this.qZ);
     }
-    if (dj()) {
-      di();
+    if (ei()) {
+      eb();
     }
     this.mIsAttachedToWindow = false;
-    AppMethodBeat.o(240637);
+    AppMethodBeat.o(199843);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(240641);
-    this.pT.layout(0, 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
-    if (!dj()) {
-      di();
+    AppMethodBeat.i(199866);
+    this.qQ.layout(0, 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
+    if (!ei()) {
+      eb();
     }
-    AppMethodBeat.o(240641);
+    AppMethodBeat.o(199866);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(240639);
-    View localView = this.pT;
+    AppMethodBeat.i(199856);
+    View localView = this.qQ;
     int i = paramInt2;
-    if (this.pX.getVisibility() != 0) {
+    if (this.qU.getVisibility() != 0) {
       i = View.MeasureSpec.makeMeasureSpec(View.MeasureSpec.getSize(paramInt2), 1073741824);
     }
     measureChild(localView, paramInt1, i);
     setMeasuredDimension(localView.getMeasuredWidth(), localView.getMeasuredHeight());
-    AppMethodBeat.o(240639);
+    AppMethodBeat.o(199856);
   }
   
   public void setActivityChooserModel(c paramc)
   {
-    AppMethodBeat.i(240621);
-    a locala = this.pR;
-    c localc = locala.qh.pR.qi;
-    if ((localc != null) && (locala.qh.isShown())) {
-      localc.unregisterObserver(locala.qh.qb);
+    AppMethodBeat.i(199761);
+    a locala = this.qO;
+    c localc = locala.re.qO.rf;
+    if ((localc != null) && (locala.re.isShown())) {
+      localc.unregisterObserver(locala.re.qY);
     }
-    locala.qi = paramc;
-    if ((paramc != null) && (locala.qh.isShown())) {
-      paramc.registerObserver(locala.qh.qb);
+    locala.rf = paramc;
+    if ((paramc != null) && (locala.re.isShown())) {
+      paramc.registerObserver(locala.re.qY);
     }
     locala.notifyDataSetChanged();
-    if (getListPopupWindow().ty.isShowing())
+    if (getListPopupWindow().ux.isShowing())
     {
-      di();
-      dh();
+      eb();
+      ea();
     }
-    AppMethodBeat.o(240621);
+    AppMethodBeat.o(199761);
   }
   
   public void setDefaultActionButtonContentDescription(int paramInt)
   {
-    this.qg = paramInt;
+    this.rd = paramInt;
   }
   
   public void setExpandActivityOverflowButtonContentDescription(int paramInt)
   {
-    AppMethodBeat.i(240626);
+    AppMethodBeat.i(199776);
     String str = getContext().getString(paramInt);
-    this.pW.setContentDescription(str);
-    AppMethodBeat.o(240626);
+    this.qT.setContentDescription(str);
+    AppMethodBeat.o(199776);
   }
   
   public void setExpandActivityOverflowButtonDrawable(Drawable paramDrawable)
   {
-    AppMethodBeat.i(240624);
-    this.pW.setImageDrawable(paramDrawable);
-    AppMethodBeat.o(240624);
+    AppMethodBeat.i(199768);
+    this.qT.setImageDrawable(paramDrawable);
+    AppMethodBeat.o(199768);
   }
   
   public void setInitialActivityCount(int paramInt)
   {
-    this.qf = paramInt;
+    this.rc = paramInt;
   }
   
   public void setOnDismissListener(PopupWindow.OnDismissListener paramOnDismissListener)
   {
-    this.lT = paramOnDismissListener;
+    this.mQ = paramOnDismissListener;
   }
   
   public void setProvider(b paramb)
   {
-    this.qa = paramb;
-  }
-  
-  public static class InnerLayout
-    extends LinearLayout
-  {
-    private static final int[] mb = { 16842964 };
-    
-    public InnerLayout(Context paramContext, AttributeSet paramAttributeSet)
-    {
-      super(paramAttributeSet);
-      AppMethodBeat.i(240600);
-      paramContext = ac.a(paramContext, paramAttributeSet, mb);
-      setBackgroundDrawable(paramContext.getDrawable(0));
-      paramContext.wA.recycle();
-      AppMethodBeat.o(240600);
-    }
+    this.qX = paramb;
   }
   
   final class a
     extends BaseAdapter
   {
-    c qi;
-    private int qj = 4;
-    boolean qk;
-    private boolean ql;
-    private boolean qm;
+    c rf;
+    private int rg = 4;
+    boolean rh;
+    private boolean ri;
+    private boolean rj;
     
     a() {}
     
-    public final void aq(int paramInt)
+    public final void ao(int paramInt)
     {
-      AppMethodBeat.i(240570);
-      if (this.qj != paramInt)
+      AppMethodBeat.i(200237);
+      if (this.rg != paramInt)
       {
-        this.qj = paramInt;
+        this.rg = paramInt;
         notifyDataSetChanged();
       }
-      AppMethodBeat.o(240570);
+      AppMethodBeat.o(200237);
     }
     
     public final void d(boolean paramBoolean1, boolean paramBoolean2)
     {
-      AppMethodBeat.i(240574);
-      if ((this.qk != paramBoolean1) || (this.ql != paramBoolean2))
+      AppMethodBeat.i(200252);
+      if ((this.rh != paramBoolean1) || (this.ri != paramBoolean2))
       {
-        this.qk = paramBoolean1;
-        this.ql = paramBoolean2;
+        this.rh = paramBoolean1;
+        this.ri = paramBoolean2;
         notifyDataSetChanged();
       }
-      AppMethodBeat.o(240574);
+      AppMethodBeat.o(200252);
     }
     
-    public final int dk()
+    public final int ej()
     {
-      AppMethodBeat.i(240569);
-      int k = this.qj;
-      this.qj = 2147483647;
+      AppMethodBeat.i(200231);
+      int k = this.rg;
+      this.rg = 2147483647;
       int m = View.MeasureSpec.makeMeasureSpec(0, 0);
       int n = View.MeasureSpec.makeMeasureSpec(0, 0);
       int i1 = getCount();
@@ -513,55 +492,55 @@ public class ActivityChooserView
         j = Math.max(j, localView.getMeasuredWidth());
         i += 1;
       }
-      this.qj = k;
-      AppMethodBeat.o(240569);
+      this.rg = k;
+      AppMethodBeat.o(200231);
       return j;
     }
     
     public final int getCount()
     {
-      AppMethodBeat.i(240563);
-      int j = this.qi.cW();
+      AppMethodBeat.i(200199);
+      int j = this.rf.dP();
       int i = j;
-      if (!this.qk)
+      if (!this.rh)
       {
         i = j;
-        if (this.qi.cX() != null) {
+        if (this.rf.dQ() != null) {
           i = j - 1;
         }
       }
-      j = Math.min(i, this.qj);
+      j = Math.min(i, this.rg);
       i = j;
-      if (this.qm) {
+      if (this.rj) {
         i = j + 1;
       }
-      AppMethodBeat.o(240563);
+      AppMethodBeat.o(200199);
       return i;
     }
     
     public final Object getItem(int paramInt)
     {
-      AppMethodBeat.i(240564);
+      AppMethodBeat.i(200206);
       switch (getItemViewType(paramInt))
       {
       default: 
         localObject = new IllegalArgumentException();
-        AppMethodBeat.o(240564);
+        AppMethodBeat.o(200206);
         throw ((Throwable)localObject);
       case 1: 
-        AppMethodBeat.o(240564);
+        AppMethodBeat.o(200206);
         return null;
       }
       int i = paramInt;
-      if (!this.qk)
+      if (!this.rh)
       {
         i = paramInt;
-        if (this.qi.cX() != null) {
+        if (this.rf.dQ() != null) {
           i = paramInt + 1;
         }
       }
-      Object localObject = this.qi.an(i);
-      AppMethodBeat.o(240564);
+      Object localObject = this.rf.al(i);
+      AppMethodBeat.o(200206);
       return localObject;
     }
     
@@ -572,25 +551,25 @@ public class ActivityChooserView
     
     public final int getItemViewType(int paramInt)
     {
-      AppMethodBeat.i(240559);
-      if ((this.qm) && (paramInt == getCount() - 1))
+      AppMethodBeat.i(200189);
+      if ((this.rj) && (paramInt == getCount() - 1))
       {
-        AppMethodBeat.o(240559);
+        AppMethodBeat.o(200189);
         return 1;
       }
-      AppMethodBeat.o(240559);
+      AppMethodBeat.o(200189);
       return 0;
     }
     
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(240566);
+      AppMethodBeat.i(200222);
       View localView;
       switch (getItemViewType(paramInt))
       {
       default: 
         paramView = new IllegalArgumentException();
-        AppMethodBeat.o(240566);
+        AppMethodBeat.o(200222);
         throw paramView;
       case 1: 
         if (paramView != null)
@@ -604,7 +583,7 @@ public class ActivityChooserView
           localView.setId(1);
           ((TextView)localView.findViewById(a.f.title)).setText(ActivityChooserView.this.getContext().getString(a.h.abc_activity_chooser_view_see_all));
         }
-        AppMethodBeat.o(240566);
+        AppMethodBeat.o(200222);
         return localView;
       }
       if (paramView != null)
@@ -621,12 +600,12 @@ public class ActivityChooserView
       ResolveInfo localResolveInfo = (ResolveInfo)getItem(paramInt);
       paramViewGroup.setImageDrawable(localResolveInfo.loadIcon(paramView));
       ((TextView)localView.findViewById(a.f.title)).setText(localResolveInfo.loadLabel(paramView));
-      if ((this.qk) && (paramInt == 0) && (this.ql)) {
+      if ((this.rh) && (paramInt == 0) && (this.ri)) {
         localView.setActivated(true);
       }
       for (;;)
       {
-        AppMethodBeat.o(240566);
+        AppMethodBeat.o(200222);
         return localView;
         localView.setActivated(false);
       }
@@ -639,19 +618,19 @@ public class ActivityChooserView
     
     public final void setShowFooterView(boolean paramBoolean)
     {
-      AppMethodBeat.i(240572);
-      if (this.qm != paramBoolean)
+      AppMethodBeat.i(200245);
+      if (this.rj != paramBoolean)
       {
-        this.qm = paramBoolean;
+        this.rj = paramBoolean;
         notifyDataSetChanged();
       }
-      AppMethodBeat.o(240572);
+      AppMethodBeat.o(200245);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.widget.ActivityChooserView
  * JD-Core Version:    0.7.0.1
  */

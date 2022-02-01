@@ -1,17 +1,15 @@
 package com.tencent.mm.modelvoice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.h.d;
+import com.tencent.mm.am.g.d;
+import com.tencent.mm.app.q.a;
 import com.tencent.mm.audio.b.i;
-import com.tencent.mm.f.a.tp;
-import com.tencent.mm.kernel.f;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.be;
 import com.tencent.mm.model.y;
-import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.cw;
+import com.tencent.mm.storage.cz;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 import junit.framework.Assert;
@@ -20,12 +18,12 @@ public class o
   implements be
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private com.tencent.mm.app.o.a appForegroundListener;
-  private w mkP;
-  private cw mkQ;
-  private i mkR;
-  private t mkS;
-  private IListener mkT;
+  private q.a appForegroundListener;
+  private w peA;
+  private cz peB;
+  private i peC;
+  private t peD;
+  private IListener peE;
   
   static
   {
@@ -43,7 +41,7 @@ public class o
     {
       public final String[] getSQLs()
       {
-        return cw.SQL_CREATE;
+        return cz.SQL_CREATE;
       }
     });
     AppMethodBeat.o(148445);
@@ -52,17 +50,17 @@ public class o
   public o()
   {
     AppMethodBeat.i(148438);
-    this.mkS = new t();
-    this.mkT = new IListener() {};
-    this.appForegroundListener = new com.tencent.mm.app.o.a()
+    this.peD = new t();
+    this.peE = new SubCoreVoice.1(this, com.tencent.mm.app.f.hfK);
+    this.appForegroundListener = new q.a()
     {
       public final void onAppBackground(String paramAnonymousString)
       {
         AppMethodBeat.i(148436);
-        if ((h.aHB()) && (h.aHE().kbT))
+        if ((h.baz()) && (h.baC().mBZ))
         {
-          h.aHE();
-          com.tencent.mm.kernel.b.aGE();
+          h.baC();
+          com.tencent.mm.kernel.b.aZG();
         }
         AppMethodBeat.o(148436);
       }
@@ -70,16 +68,16 @@ public class o
       public final void onAppForeground(String paramAnonymousString)
       {
         AppMethodBeat.i(148435);
-        if ((h.aHB()) && (h.aHE().kbT))
+        if ((h.baz()) && (h.baC().mBZ))
         {
-          h.aHE();
-          if (!com.tencent.mm.kernel.b.aGE()) {
-            com.tencent.mm.blink.b.aqa().arrange(new Runnable()
+          h.baC();
+          if (!com.tencent.mm.kernel.b.aZG()) {
+            com.tencent.mm.blink.b.aJY().arrange(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(148434);
-                o.brB().run();
+                o.bPh().run();
                 AppMethodBeat.o(148434);
               }
             });
@@ -91,53 +89,20 @@ public class o
     AppMethodBeat.o(148438);
   }
   
-  public static cw brA()
-  {
-    AppMethodBeat.i(148441);
-    h.aHE().aGH();
-    if (bry().mkQ == null) {
-      if (h.aHG().kcF == null) {
-        break label70;
-      }
-    }
-    label70:
-    for (boolean bool = true;; bool = false)
-    {
-      Assert.assertTrue("dataDB is null ", bool);
-      bry().mkQ = new cw(h.aHG().kcF);
-      cw localcw = bry().mkQ;
-      AppMethodBeat.o(148441);
-      return localcw;
-    }
-  }
-  
-  public static i brB()
-  {
-    AppMethodBeat.i(148442);
-    h.aHE().aGH();
-    if (bry().mkR == null) {
-      bry().mkR = i.afj();
-    }
-    Log.i("MicroMsg.SubCoreVoice", "getVoiceService %s", new Object[] { bry().mkR.toString() });
-    i locali = bry().mkR;
-    AppMethodBeat.o(148442);
-    return locali;
-  }
-  
-  private static o bry()
+  private static o bPe()
   {
     AppMethodBeat.i(148439);
-    o localo = (o)y.as(o.class);
+    o localo = (o)y.aL(o.class);
     AppMethodBeat.o(148439);
     return localo;
   }
   
-  public static w brz()
+  public static w bPf()
   {
     AppMethodBeat.i(148440);
-    h.aHE().aGH();
-    if (bry().mkP == null) {
-      if (h.aHG().kcF == null) {
+    h.baC().aZJ();
+    if (bPe().peA == null) {
+      if (h.baE().mCN == null) {
         break label70;
       }
     }
@@ -145,11 +110,44 @@ public class o
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue("dataDB is null ", bool);
-      bry().mkP = new w(h.aHG().kcF);
-      w localw = bry().mkP;
+      bPe().peA = new w(h.baE().mCN);
+      w localw = bPe().peA;
       AppMethodBeat.o(148440);
       return localw;
     }
+  }
+  
+  public static cz bPg()
+  {
+    AppMethodBeat.i(148441);
+    h.baC().aZJ();
+    if (bPe().peB == null) {
+      if (h.baE().mCN == null) {
+        break label70;
+      }
+    }
+    label70:
+    for (boolean bool = true;; bool = false)
+    {
+      Assert.assertTrue("dataDB is null ", bool);
+      bPe().peB = new cz(h.baE().mCN);
+      cz localcz = bPe().peB;
+      AppMethodBeat.o(148441);
+      return localcz;
+    }
+  }
+  
+  public static i bPh()
+  {
+    AppMethodBeat.i(148442);
+    h.baC().aZJ();
+    if (bPe().peC == null) {
+      bPe().peC = i.aHg();
+    }
+    Log.i("MicroMsg.SubCoreVoice", "getVoiceService %s", new Object[] { bPe().peC.toString() });
+    i locali = bPe().peC;
+    AppMethodBeat.o(148442);
+    return locali;
   }
   
   public void clearPluginData(int paramInt) {}
@@ -162,8 +160,8 @@ public class o
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(148444);
-    h.d.a(Integer.valueOf(34), this.mkS);
-    EventCenter.instance.addListener(this.mkT);
+    g.d.a(Integer.valueOf(34), this.peD);
+    this.peE.alive();
     this.appForegroundListener.alive();
     com.tencent.mm.pluginsdk.cmd.b.a(new o.a(), new String[] { "//voicetrymore" });
     AppMethodBeat.o(148444);
@@ -172,13 +170,13 @@ public class o
   public void onAccountRelease()
   {
     AppMethodBeat.i(148443);
-    if (bry().mkR != null) {
-      bry().mkR.ftu = 0;
+    if (bPe().peC != null) {
+      bPe().peC.hxJ = 0;
     }
     this.appForegroundListener.dead();
-    h.d.b(Integer.valueOf(34), this.mkS);
-    EventCenter.instance.removeListener(this.mkT);
-    com.tencent.mm.pluginsdk.cmd.b.W(new String[] { "//voicetrymore" });
+    g.d.b(Integer.valueOf(34), this.peD);
+    this.peE.dead();
+    com.tencent.mm.pluginsdk.cmd.b.X(new String[] { "//voicetrymore" });
     AppMethodBeat.o(148443);
   }
   

@@ -10,7 +10,7 @@ import com.tencent.mm.b.o;
 import com.tencent.mm.plugin.backup.b.d;
 import com.tencent.mm.plugin.backup.g.b.a;
 import com.tencent.mm.pointers.PByteArray;
-import com.tencent.mm.protocal.protobuf.adp;
+import com.tencent.mm.protocal.protobuf.afx;
 import com.tencent.mm.sdk.platformtools.ConnectivityCompat;
 import com.tencent.mm.sdk.platformtools.ConnectivityCompat.Companion;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -31,39 +31,39 @@ import java.util.zip.CRC32;
 public final class b
   implements b.a
 {
-  public static final byte[] rLo;
-  private ServerSocket aFm;
-  private Socket aFp;
+  public static final byte[] bTZ;
+  private ServerSocket cAY;
+  private Socket cBb;
   private Object lock;
-  private Boolean rTh;
-  private MMHandler rTi;
-  private MMHandler rTj;
-  private DataOutputStream rTk;
-  private int rTl;
-  private int rTm;
-  private long rTn;
+  private DataOutputStream veA;
+  private int veB;
+  private int veC;
+  private long veD;
+  private Boolean vex;
+  private MMHandler vey;
+  private MMHandler vez;
   
   static
   {
     AppMethodBeat.i(21882);
-    rLo = "GSMW".getBytes();
+    bTZ = "GSMW".getBytes();
     AppMethodBeat.o(21882);
   }
   
   public b()
   {
     AppMethodBeat.i(21869);
-    this.rTh = Boolean.FALSE;
-    this.aFm = null;
-    this.aFp = null;
-    this.rTi = null;
-    this.rTj = new MMHandler(Looper.getMainLooper());
-    this.rTk = null;
+    this.vex = Boolean.FALSE;
+    this.cAY = null;
+    this.cBb = null;
+    this.vey = null;
+    this.vez = new MMHandler(Looper.getMainLooper());
+    this.veA = null;
     this.lock = new Object();
-    this.rTl = 0;
-    this.rTm = 0;
-    this.rTn = 0L;
-    cuq();
+    this.veB = 0;
+    this.veC = 0;
+    this.veD = 0L;
+    cXa();
     AppMethodBeat.o(21869);
   }
   
@@ -75,44 +75,44 @@ public final class b
       for (;;)
       {
         int j;
-        if ((!this.rTh.booleanValue()) && (this.rTl != 4))
+        if ((!this.vex.booleanValue()) && (this.veB != 4))
         {
           j = paramDataInputStream.readByte();
-          if (rLo[this.rTl] == j)
+          if (bTZ[this.veB] == j)
           {
-            this.rTl += 1;
+            this.veB += 1;
             continue;
           }
         }
         try
         {
           paramDataInputStream.close();
-          if (!this.rTh.booleanValue()) {
+          if (!this.vex.booleanValue()) {
             a(true, 0, 10006, "read_error ".concat(String.valueOf(localException)).getBytes());
           }
-          cup();
+          cWZ();
           AppMethodBeat.o(21877);
           return;
           long l1 = Util.nowSecond();
-          long l2 = this.rTn;
-          if (this.rTm - (l1 - l2) < 10L)
+          long l2 = this.veD;
+          if (this.veC - (l1 - l2) < 10L)
           {
-            if (this.rTm < 0) {
-              this.rTm = 0;
+            if (this.veC < 0) {
+              this.veC = 0;
             }
-            this.rTm += 1;
-            this.rTn = l1;
+            this.veC += 1;
+            this.veD = l1;
             i = 0;
             String str;
             if (i == 0)
             {
-              str = String.format("GSMW in the %dth step error:expect:%02X, butGet:%02X", new Object[] { Integer.valueOf(this.rTl + 1), Integer.valueOf(rLo[this.rTl] & 0xFF), Integer.valueOf(j & 0xFF) });
+              str = String.format("GSMW in the %dth step error:expect:%02X, butGet:%02X", new Object[] { Integer.valueOf(this.veB + 1), Integer.valueOf(bTZ[this.veB] & 0xFF), Integer.valueOf(j & 0xFF) });
               Log.e("MicroMsg.BakOldJavaEngine", str);
               a(true, 0, 10007, str.getBytes());
             }
-            this.rTl = 0;
+            this.veB = 0;
             continue;
-            this.rTl = 0;
+            this.veB = 0;
             j = paramDataInputStream.readInt();
             short s1 = paramDataInputStream.readShort();
             s2 = paramDataInputStream.readShort();
@@ -121,7 +121,7 @@ public final class b
             {
               str = String.format("loopRead size to large:%d", new Object[] { Integer.valueOf(k) });
               Log.e("MicroMsg.BakOldJavaEngine", str);
-              this.rTh = Boolean.TRUE;
+              this.vex = Boolean.TRUE;
               a(true, 0, 10007, str.getBytes());
               AppMethodBeat.o(21877);
               return;
@@ -144,7 +144,7 @@ public final class b
               }
             }
             PByteArray localPByteArray = new PByteArray();
-            localObject1 = rLo;
+            localObject1 = bTZ;
             if (s1 != 1)
             {
               localObject1 = String.format("unpack failed, getVersion:%d", new Object[] { Short.valueOf(s1) });
@@ -164,7 +164,7 @@ public final class b
               a(true, 0, 10007, ((String)localObject1).getBytes());
               AppMethodBeat.o(21877);
               return;
-              if (com.tencent.mm.plugin.backup.g.b.csc() != 1) {
+              if (com.tencent.mm.plugin.backup.g.b.cUM() != 1) {
                 break label821;
               }
               i = com.tencent.mm.plugin.backup.bakoldlogic.bakoldmodel.b.a((byte[])localObject1, j, s1, s2, k, (byte[])localObject2);
@@ -184,7 +184,7 @@ public final class b
                 localPByteArray.value = ((byte[])localObject1);
                 i = 0;
                 break;
-                localObject1 = l.d((byte[])localObject2, d.csd());
+                localObject1 = l.d((byte[])localObject2, d.cUN());
               }
             }
             Log.d("MicroMsg.BakOldJavaEngine", "summerbak loopRead unpack ret[%d], seq[%d], type[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Short.valueOf(s2) });
@@ -221,7 +221,7 @@ public final class b
   private void a(final boolean paramBoolean, final int paramInt1, final int paramInt2, final byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(21873);
-    this.rTj.post(new Runnable()
+    this.vez.post(new Runnable()
     {
       public final void run()
       {
@@ -234,41 +234,41 @@ public final class b
   }
   
   /* Error */
-  private void cup()
+  private void cWZ()
   {
     // Byte code:
     //   0: sipush 21872
     //   3: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: iconst_0
-    //   8: putfield 91	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/b:rTl	I
+    //   8: putfield 91	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/b:veB	I
     //   11: aload_0
     //   12: iconst_0
-    //   13: putfield 93	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/b:rTm	I
+    //   13: putfield 93	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/b:veC	I
     //   16: aload_0
     //   17: lconst_0
-    //   18: putfield 95	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/b:rTn	J
+    //   18: putfield 95	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/b:veD	J
     //   21: aload_0
     //   22: getstatic 287	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
-    //   25: putfield 66	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/b:rTh	Ljava/lang/Boolean;
+    //   25: putfield 66	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/b:vex	Ljava/lang/Boolean;
     //   28: aload_0
     //   29: getfield 89	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/b:lock	Ljava/lang/Object;
     //   32: astore_1
     //   33: aload_1
     //   34: monitorenter
     //   35: aload_0
-    //   36: getfield 87	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/b:rTk	Ljava/io/DataOutputStream;
+    //   36: getfield 87	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/b:veA	Ljava/io/DataOutputStream;
     //   39: ifnull +10 -> 49
     //   42: aload_0
-    //   43: getfield 87	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/b:rTk	Ljava/io/DataOutputStream;
+    //   43: getfield 87	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/b:veA	Ljava/io/DataOutputStream;
     //   46: invokevirtual 378	java/io/DataOutputStream:close	()V
     //   49: aload_1
     //   50: monitorexit
     //   51: aload_0
-    //   52: getfield 70	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/b:aFp	Ljava/net/Socket;
+    //   52: getfield 70	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/b:cBb	Ljava/net/Socket;
     //   55: ifnull +10 -> 65
     //   58: aload_0
-    //   59: getfield 70	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/b:aFp	Ljava/net/Socket;
+    //   59: getfield 70	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/b:cBb	Ljava/net/Socket;
     //   62: invokevirtual 379	java/net/Socket:close	()V
     //   65: sipush 21872
     //   68: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -301,11 +301,11 @@ public final class b
     //   51	65	87	java/lang/Exception
   }
   
-  private void cuq()
+  private void cXa()
   {
     AppMethodBeat.i(21876);
-    if ((this.rTi == null) || (this.rTi.isQuit())) {
-      this.rTi = new MMHandler("BackupJavaEngine_handler");
+    if ((this.vey == null) || (this.vey.isQuit())) {
+      this.vey = new MMHandler("BackupJavaEngine_handler");
     }
     AppMethodBeat.o(21876);
   }
@@ -313,13 +313,13 @@ public final class b
   public final void bh(final byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(21875);
-    if (this.rTh.booleanValue())
+    if (this.vex.booleanValue())
     {
       Log.e("MicroMsg.BakOldJavaEngine", "engine has stop");
       AppMethodBeat.o(21875);
       return;
     }
-    this.rTi.post(new Runnable()
+    this.vey.post(new Runnable()
     {
       public final void run()
       {
@@ -347,20 +347,46 @@ public final class b
     AppMethodBeat.o(21875);
   }
   
-  public final void cuo()
+  public final void cWY()
   {
     AppMethodBeat.i(21871);
     Log.i("MicroMsg.BakOldJavaEngine", "close connect");
-    cup();
+    cWZ();
     a(true, 0, 10003, null);
     AppMethodBeat.o(21871);
   }
   
-  public final void f(final int paramInt, final List<adp> paramList)
+  public final void m(final int paramInt, final byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(21874);
+    if (this.vey != null)
+    {
+      bh(paramArrayOfByte);
+      AppMethodBeat.o(21874);
+      return;
+    }
+    this.vez.postDelayed(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(21866);
+        b.this.bh(paramArrayOfByte);
+        AppMethodBeat.o(21866);
+      }
+    }, 200L);
+    AppMethodBeat.o(21874);
+  }
+  
+  public final int n(int paramInt, byte[] paramArrayOfByte)
+  {
+    return 0;
+  }
+  
+  public final void u(final int paramInt, final List<afx> paramList)
   {
     AppMethodBeat.i(21870);
     Log.i("MicroMsg.BakOldJavaEngine", "connect type:%d", new Object[] { Integer.valueOf(paramInt) });
-    cuq();
+    cXa();
     ThreadPool.post(new Runnable()
     {
       public final void run()
@@ -393,25 +419,25 @@ public final class b
           label191:
           while (localIterator.hasNext())
           {
-            adp localadp = (adp)localIterator.next();
-            Log.i("MicroMsg.BakOldJavaEngine", "try ip:%s", new Object[] { localadp.Slg });
-            if (localadp.Slg != null)
+            afx localafx = (afx)localIterator.next();
+            Log.i("MicroMsg.BakOldJavaEngine", "try ip:%s", new Object[] { localafx.Zjq });
+            if (localafx.Zjq != null)
             {
-              String[] arrayOfString = localadp.Slg.split("\\.");
+              String[] arrayOfString = localafx.Zjq.split("\\.");
               if (arrayOfString.length >= 4)
               {
                 int m = o.Y(new byte[] { (byte)(Util.getInt(arrayOfString[0], 0) & 0xFF), (byte)(Util.getInt(arrayOfString[1], 0) & 0xFF), (byte)(Util.getInt(arrayOfString[2], 0) & 0xFF), (byte)(Util.getInt(arrayOfString[3], 0) & 0xFF) });
                 if ((k & m) == (k & j))
                 {
-                  b.a(b.this, localadp.Slg, ((Integer)localadp.SpS.getFirst()).intValue());
+                  b.a(b.this, localafx.Zjq, ((Integer)localafx.ZoN.getFirst()).intValue());
                   AppMethodBeat.o(21864);
                   return;
                 }
                 if ((m & 0xFFFF) != (0xFFFF & j)) {
                   break label555;
                 }
-                localObject = localadp.Slg;
-                i = ((Integer)localadp.SpS.getFirst()).intValue();
+                localObject = localafx.Zjq;
+                i = ((Integer)localafx.ZoN.getFirst()).intValue();
               }
             }
           }
@@ -431,43 +457,17 @@ public final class b
           Log.e("MicroMsg.BakOldJavaEngine", "not match ip mask:%d, localip:%s", new Object[] { Integer.valueOf(k), str });
           AppMethodBeat.o(21864);
           return;
-          b.a(b.this, ((Integer)((adp)paramList.get(0)).SpS.getFirst()).intValue());
+          b.a(b.this, ((Integer)((afx)paramList.get(0)).ZoN.getFirst()).intValue());
           break;
         }
       }
     }, "BackupJavaEngine_connect");
     AppMethodBeat.o(21870);
   }
-  
-  public final void m(final int paramInt, final byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(21874);
-    if (this.rTi != null)
-    {
-      bh(paramArrayOfByte);
-      AppMethodBeat.o(21874);
-      return;
-    }
-    this.rTj.postDelayed(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(21866);
-        b.this.bh(paramArrayOfByte);
-        AppMethodBeat.o(21866);
-      }
-    }, 200L);
-    AppMethodBeat.o(21874);
-  }
-  
-  public final int n(int paramInt, byte[] paramArrayOfByte)
-  {
-    return 0;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.b
  * JD-Core Version:    0.7.0.1
  */

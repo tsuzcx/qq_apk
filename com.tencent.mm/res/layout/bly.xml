@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:id="@id/gxr" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<FrameLayout android:layout_width="fill_parent" android:layout_height="60.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:layout_width="fill_parent" android:layout_height="56.0dip" layout="@layout/a7o" />
+    <View android:id="@id/lca" android:background="#1a000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="56.0dip" />
+</FrameLayout>

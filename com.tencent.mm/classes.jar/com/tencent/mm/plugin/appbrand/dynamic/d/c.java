@@ -25,7 +25,7 @@ public final class c
     }
     for (;;)
     {
-      parama1.bt(a(true, "", paramJSONObject));
+      parama1.cN(a(true, "", paramJSONObject));
       AppMethodBeat.o(121309);
       return;
       if (NetStatusUtil.is2G(parama)) {
@@ -44,7 +44,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.c
  * JD-Core Version:    0.7.0.1
  */

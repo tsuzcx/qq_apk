@@ -1,38 +1,14 @@
 package com.google.c;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.lang.reflect.Field;
 
-public final class d
-  extends f
+public abstract interface d
 {
-  private static final d cdC;
-  
-  static
-  {
-    AppMethodBeat.i(12283);
-    d locald = new d();
-    cdC = locald;
-    locald.setStackTrace(cdF);
-    AppMethodBeat.o(12283);
-  }
-  
-  public static d JH()
-  {
-    AppMethodBeat.i(12282);
-    if (cdE)
-    {
-      locald = new d();
-      AppMethodBeat.o(12282);
-      return locald;
-    }
-    d locald = cdC;
-    AppMethodBeat.o(12282);
-    return locald;
-  }
+  public abstract String b(Field paramField);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.c.d
  * JD-Core Version:    0.7.0.1
  */

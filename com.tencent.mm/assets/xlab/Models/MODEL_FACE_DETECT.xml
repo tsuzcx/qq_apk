@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Model>
+    <SubType>1</SubType>
+    <Key>MODEL_FACE_DETECT</Key>
+    <CompatVersion>2</CompatVersion>
+    <Name>FaceDetectV3.0.0.26_arm.pbin</Name>
+    <Sha1>0eeb95cb12f9ffab80fea597f425dac12fff34ec</Sha1>
+</Model>

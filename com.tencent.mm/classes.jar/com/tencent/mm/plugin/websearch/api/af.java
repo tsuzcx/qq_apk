@@ -1,11 +1,8 @@
 package com.tencent.mm.plugin.websearch.api;
 
-public final class af
+public abstract interface af
 {
-  public String desc;
-  public String iconUrl;
-  public boolean isSelected;
-  public String title;
+  public abstract void na(int paramInt1, int paramInt2);
 }
 
 

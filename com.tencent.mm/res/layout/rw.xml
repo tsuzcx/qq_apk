@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/gs"
+<LinearLayout style="@style/h1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/qp" />
-    <FrameLayout android:id="@id/auf" android:background="@drawable/mw" android:layout_width="@dimen/wm" android:layout_height="wrap_content" style="@style/gt">
-        <LinearLayout android:orientation="vertical" android:id="@id/u7" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <LinearLayout android:orientation="horizontal" android:paddingLeft="20.0dip" android:paddingTop="@dimen/ib" android:paddingRight="@dimen/ib" android:paddingBottom="@dimen/ib" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <com.tencent.mm.ui.MMImageView android:layout_gravity="center_vertical" android:id="@id/u9" android:layout_width="34.0dip" android:layout_height="34.0dip" android:scaleType="centerCrop" />
-                <RelativeLayout android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ib">
-                    <com.tencent.mm.ui.widget.MMTextView android:ellipsize="end" android:id="@id/u_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/zz" />
-                    <com.tencent.mm.ui.widget.MMTextView android:ellipsize="end" android:id="@id/u8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k_" android:singleLine="true" android:layout_below="@id/u_" style="@style/zy" />
+    <include layout="@layout/qi" />
+    <FrameLayout android:id="@id/b47" android:background="@drawable/lv" android:layout_width="@dimen/ym" android:layout_height="wrap_content" style="@style/h2">
+        <LinearLayout android:orientation="vertical" android:id="@id/y6" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="horizontal" android:paddingLeft="20.0dip" android:paddingTop="@dimen/iq" android:paddingRight="@dimen/iq" android:paddingBottom="@dimen/iq" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <com.tencent.mm.ui.MMImageView android:layout_gravity="center_vertical" android:id="@id/y8" android:layout_width="34.0dip" android:layout_height="34.0dip" android:scaleType="centerCrop" />
+                <RelativeLayout android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/iq">
+                    <com.tencent.mm.ui.widget.MMTextView android:ellipsize="end" android:id="@id/y9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/zp" />
+                    <com.tencent.mm.ui.widget.MMTextView android:ellipsize="end" android:id="@id/y7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m7" android:singleLine="true" android:layout_below="@id/y9" style="@style/zo" />
                 </RelativeLayout>
             </LinearLayout>
-            <ImageView android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_marginLeft="17.0dip" android:layout_marginRight="@dimen/c5" style="@style/hx" />
+            <ImageView android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_marginLeft="17.0dip" android:layout_marginRight="@dimen/cd" style="@style/i7" />
             <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:minHeight="20.0dip">
-                <com.tencent.mm.ui.widget.MMTextView android:ellipsize="end" android:id="@id/u6" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/azr" android:singleLine="true" android:layout_weight="1.0" style="@style/gk" />
+                <com.tencent.mm.ui.widget.MMTextView android:ellipsize="end" android:id="@id/y5" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/b9j" android:singleLine="true" android:layout_weight="1.0" style="@style/gt" />
             </LinearLayout>
         </LinearLayout>
-        <ImageView android:id="@id/aun" android:background="@drawable/md" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/b4e" android:background="@drawable/l_" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     </FrameLayout>
 </LinearLayout>

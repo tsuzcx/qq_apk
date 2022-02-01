@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/a_w" />
-    <corners android:radius="12.0dip" />
-</shape>
+    <item android:state_pressed="true" android:drawable="@raw/avatar_dotline_minus_bg_pressed" />
+    <item android:drawable="@raw/avatar_dotline_minus_bg" />
+</selector>

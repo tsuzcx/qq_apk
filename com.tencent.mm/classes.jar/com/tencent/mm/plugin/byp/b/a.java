@@ -1,86 +1,84 @@
 package com.tencent.mm.plugin.byp.b;
 
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.eaf;
-import com.tencent.mm.protocal.protobuf.jh;
-import com.tencent.mm.protocal.protobuf.sf;
-import com.tencent.mm.protocal.protobuf.sj;
-import com.tencent.mm.protocal.protobuf.sk;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.kd;
+import com.tencent.mm.protocal.protobuf.tv;
+import com.tencent.mm.protocal.protobuf.tz;
+import com.tencent.mm.protocal.protobuf.ua;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/byp/cgi/CgiBypSend;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "bizType", "", "pack", "Lcom/tencent/mm/protocal/protobuf/BypMsgPack;", "(ILcom/tencent/mm/protocal/protobuf/BypMsgPack;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "getCallback", "()Lcom/tencent/mm/modelbase/IOnSceneEnd;", "setCallback", "(Lcom/tencent/mm/modelbase/IOnSceneEnd;)V", "getPack", "()Lcom/tencent/mm/protocal/protobuf/BypMsgPack;", "reqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "getReqResp", "()Lcom/tencent/mm/modelbase/CommReqResp;", "setReqResp", "(Lcom/tencent/mm/modelbase/CommReqResp;)V", "request", "Lcom/tencent/mm/protocal/protobuf/BypSendRequest;", "getRequest", "()Lcom/tencent/mm/protocal/protobuf/BypSendRequest;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getMsgInfoClientId", "", "getResponse", "Lcom/tencent/mm/protocal/protobuf/BypSendResponse;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "onSendFailed", "resp", "onSendSuccessfully", "Companion", "plugin-byp_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/byp/cgi/CgiBypSend;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "bizType", "", "pack", "Lcom/tencent/mm/protocal/protobuf/BypMsgPack;", "(ILcom/tencent/mm/protocal/protobuf/BypMsgPack;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "getCallback", "()Lcom/tencent/mm/modelbase/IOnSceneEnd;", "setCallback", "(Lcom/tencent/mm/modelbase/IOnSceneEnd;)V", "getPack", "()Lcom/tencent/mm/protocal/protobuf/BypMsgPack;", "reqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "getReqResp", "()Lcom/tencent/mm/modelbase/CommReqResp;", "setReqResp", "(Lcom/tencent/mm/modelbase/CommReqResp;)V", "request", "Lcom/tencent/mm/protocal/protobuf/BypSendRequest;", "getRequest", "()Lcom/tencent/mm/protocal/protobuf/BypSendRequest;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getMsgInfoClientId", "", "getResponse", "Lcom/tencent/mm/protocal/protobuf/BypSendResponse;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "onSendFailed", "resp", "onSendSuccessfully", "Companion", "plugin-byp_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class a
-  extends q
+  extends p
   implements m
 {
-  private static final Set<Long> sWy = Collections.synchronizedSet((Set)new HashSet());
-  public static final a sWz = new a((byte)0);
-  private i callback;
-  private d kwO;
-  private final sj sWw;
-  private final sf sWx;
+  public static final a waG = new a((byte)0);
+  private static final Set<Long> waJ = Collections.synchronizedSet((Set)new HashSet());
+  private h callback;
+  private c nao;
+  private final tv waH;
+  private final tz waI;
   
-  public a(int paramInt, sf paramsf)
+  public a(int paramInt, tv paramtv)
   {
-    this.sWx = paramsf;
-    this.sWw = new sj();
-    paramsf = new d.a();
-    this.sWw.SbQ = this.sWx;
-    this.sWw.SbP = paramInt;
-    paramsf.c((com.tencent.mm.cd.a)this.sWw);
-    sk localsk = new sk();
-    localsk.setBaseResponse(new jh());
-    localsk.getBaseResponse().Tef = new eaf();
-    paramsf.d((com.tencent.mm.cd.a)localsk);
-    paramsf.TW("/cgi-bin/micromsg-bin/bypsend");
-    paramsf.vD(3862);
-    paramsf = paramsf.bgN();
-    p.j(paramsf, "builder.buildInstance()");
-    this.kwO = paramsf;
+    this.waH = paramtv;
+    this.waI = new tz();
+    paramtv = new c.a();
+    this.waI.YZJ = this.waH;
+    this.waI.YZI = paramInt;
+    paramtv.otE = ((com.tencent.mm.bx.a)this.waI);
+    ua localua = new ua();
+    localua.setBaseResponse(new kd());
+    localua.getBaseResponse().akjO = new etl();
+    paramtv.otF = ((com.tencent.mm.bx.a)localua);
+    paramtv.uri = "/cgi-bin/micromsg-bin/bypsend";
+    paramtv.funcId = 3862;
+    paramtv = paramtv.bEF();
+    kotlin.g.b.s.s(paramtv, "builder.buildInstance()");
+    this.nao = paramtv;
   }
   
-  public void a(int paramInt1, int paramInt2, String paramString, sk paramsk)
+  public void a(int paramInt1, int paramInt2, String paramString, ua paramua)
   {
-    p.k(paramsk, "resp");
+    kotlin.g.b.s.u(paramua, "resp");
   }
   
-  public void a(sk paramsk)
+  public void a(ua paramua)
   {
-    p.k(paramsk, "resp");
+    kotlin.g.b.s.u(paramua, "resp");
   }
   
-  public final d bhU()
+  public final tv din()
   {
-    return this.kwO;
+    return this.waH;
   }
   
-  public long cFd()
+  public final c dio()
+  {
+    return this.nao;
+  }
+  
+  public long dip()
   {
     return 0L;
   }
   
-  public final sf cFe()
+  public int doScene(g paramg, h paramh)
   {
-    return this.sWx;
-  }
-  
-  public int doScene(g paramg, i parami)
-  {
-    this.callback = parami;
-    sWy.add(Long.valueOf(cFd()));
-    return dispatch(paramg, (s)this.kwO, (m)this);
+    this.callback = paramh;
+    waJ.add(Long.valueOf(dip()));
+    return dispatch(paramg, (com.tencent.mm.network.s)this.nao, (m)this);
   }
   
   public int getType()
@@ -88,16 +86,16 @@ public abstract class a
     return 3862;
   }
   
-  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
   {
-    p.k(params, "rr");
-    params = this.kwO.bhY();
+    kotlin.g.b.s.u(params, "rr");
+    params = c.c.b(this.nao.otC);
     if (params == null) {
-      throw new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.BypSendResponse");
+      throw new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.BypSendResponse");
     }
-    params = (sk)params;
+    params = (ua)params;
     Log.i("Byp.CgiBypSend", "[onCgiBack] errType=" + paramInt2 + " errCode=" + paramInt3 + " errMsg=" + paramString + " resp=" + params);
-    sWy.remove(Long.valueOf(cFd()));
+    waJ.remove(Long.valueOf(dip()));
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
       a(params);
     }
@@ -105,14 +103,14 @@ public abstract class a
     {
       params = this.callback;
       if (params != null) {
-        params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
+        params.onSceneEnd(paramInt2, paramInt3, paramString, (p)this);
       }
       return;
       a(paramInt2, paramInt3, paramString, params);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/byp/cgi/CgiBypSend$Companion;", "", "()V", "TAG", "", "sendingSet", "", "", "kotlin.jvm.PlatformType", "", "getSendingSet", "()Ljava/util/Set;", "plugin-byp_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/byp/cgi/CgiBypSend$Companion;", "", "()V", "TAG", "", "sendingSet", "", "", "kotlin.jvm.PlatformType", "", "getSendingSet", "()Ljava/util/Set;", "plugin-byp_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

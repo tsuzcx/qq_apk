@@ -1,70 +1,51 @@
 package com.tencent.mm.plugin.appbrand.jsapi.nfc.rw.logic;
 
+import android.nfc.NdefMessage;
 import android.nfc.Tag;
-import android.nfc.tech.IsoDep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.util.Arrays;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import java.util.List;
+import java.util.Set;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.q;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/IsoDepLogic;", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/INFCTechLogic;", "()V", "TAG", "", "exec", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteResult;", "", "tag", "Landroid/nfc/Tag;", "function", "params", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/model/INFCTechExecParams;", "execAsync", "", "callback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "result", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteCallback;", "getHistoricalBytes", "", "isoDep", "Landroid/nfc/tech/IsoDep;", "getIsoDep", "luggage-commons-jsapi-nfc-ext_release"})
-public final class b
-  implements a
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/INFCDiscoverable;", "", "connectedTech", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/model/NFCTech;", "getConnectedTech", "()Ljava/util/Set;", "onDiscoveryListener", "Lkotlin/Function3;", "", "Lkotlin/ParameterName;", "name", "id", "", "", "techs", "Landroid/nfc/NdefMessage;", "ndefMessages", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/OnDiscovery;", "getOnDiscoveryListener", "()Lkotlin/jvm/functions/Function3;", "setOnDiscoveryListener", "(Lkotlin/jvm/functions/Function3;)V", "tag", "Landroid/nfc/Tag;", "getTag", "()Landroid/nfc/Tag;", "setTag", "(Landroid/nfc/Tag;)V", "isNFCUsing", "", "setRequireCallbackOnForeground", "requireCallbackOnForeground", "startDiscovery", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/INFCDiscoverable$DiscoveryResult;", "stopDiscovery", "DiscoveryResult", "IFactory", "luggage-commons-jsapi-nfc-ext_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface b
 {
-  public static final b pgA;
+  public abstract Set<com.tencent.mm.plugin.appbrand.jsapi.nfc.rw.a.b> ctO();
   
-  static
-  {
-    AppMethodBeat.i(241805);
-    pgA = new b();
-    AppMethodBeat.o(241805);
-  }
+  public abstract boolean ctT();
   
-  public final void a(Tag paramTag, String paramString, kotlin.g.a.b<? super e<Object>, x> paramb)
+  public abstract a ctU();
+  
+  public abstract a ctV();
+  
+  public abstract Tag ctW();
+  
+  public abstract void f(q<? super byte[], ? super List<String>, ? super List<NdefMessage>, ah> paramq);
+  
+  public abstract void jE(boolean paramBoolean);
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/INFCDiscoverable$DiscoveryResult;", "", "(Ljava/lang/String;I)V", "SUCCESS", "FAIL_SYSTEM_INTERNAL_ERROR", "FAIL_ALREADY_STARTED", "FAIL_NOT_STARTED", "luggage-commons-jsapi-nfc-ext_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static enum a
   {
-    AppMethodBeat.i(241803);
-    p.k(paramTag, "tag");
-    p.k(paramString, "function");
-    p.k(paramb, "callback");
-    Log.d("MicroMsg.AppBrand.IsoDepLogic", "execAsync, function: ".concat(String.valueOf(paramString)));
-    paramTag = IsoDep.get(paramTag);
-    if (paramTag == null)
+    static
     {
-      paramb.invoke(new e.a(13015, "unavailable tech"));
-      AppMethodBeat.o(241803);
-      return;
+      AppMethodBeat.i(328112);
+      smb = new a("SUCCESS", 0);
+      smc = new a("FAIL_SYSTEM_INTERNAL_ERROR", 1);
+      smd = new a("FAIL_ALREADY_STARTED", 2);
+      sme = new a("FAIL_NOT_STARTED", 3);
+      smf = new a[] { smb, smc, smd, sme };
+      AppMethodBeat.o(328112);
     }
-    switch (paramString.hashCode())
-    {
-    }
-    do
-    {
-      paramTag = (e)new e.a(13024, "function not support");
-      paramb.invoke(paramTag);
-      AppMethodBeat.o(241803);
-      return;
-    } while (!paramString.equals("getHistoricalBytes"));
-    paramTag = paramTag.getHistoricalBytes();
-    if (paramTag != null)
-    {
-      paramString = new StringBuilder("historicalBytes: ");
-      String str = Arrays.toString(paramTag);
-      p.j(str, "java.util.Arrays.toString(this)");
-      Log.d("MicroMsg.AppBrand.IsoDepLogic", str);
-    }
-    for (;;)
-    {
-      paramTag = (e)new e.b(paramTag);
-      break;
-      paramTag = null;
-    }
+    
+    private a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.nfc.rw.logic.b
  * JD-Core Version:    0.7.0.1
  */

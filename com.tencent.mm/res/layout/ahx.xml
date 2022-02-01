@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/afz" android:paddingLeft="@dimen/ci" android:paddingRight="@dimen/ci" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/g6n" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:layout_marginTop="@dimen/cn" android:src="@raw/finder_original" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" app:iconColor="@color/Orange_100" />
-    <TextView android:textSize="@dimen/n" android:textColor="@color/FG_0" android:id="@id/g6y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:text="@string/d4h" android:layout_below="@id/g6n" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="@dimen/t1" android:textColor="@color/FG_0" android:gravity="center" android:id="@id/g6l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:text="@string/d4e" android:layout_below="@id/g6y" android:layout_centerHorizontal="true" />
-    <Button android:enabled="false" android:textSize="@dimen/is" android:textColor="@drawable/xe" android:id="@id/aib" android:background="@drawable/xd" android:clickable="false" android:layout_width="184.0dip" android:layout_height="@dimen/cl" android:layout_marginBottom="@dimen/bx" android:text="@string/d4c" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/g6k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="36.0dip" android:layout_above="@id/aib" android:layout_centerHorizontal="true">
-        <CheckBox android:id="@id/g6j" android:layout_width="13.0dip" android:layout_height="13.0dip" style="@style/m6" />
-        <TextView android:textSize="@dimen/kc" android:textColor="@color/FG_1" android:id="@id/g6v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bt" android:text="@string/d4a" />
+    <ImageView android:id="@id/a8j" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/a01" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:id="@id/zz" android:layout_width="@dimen/cw" android:layout_height="@dimen/cw" android:layout_marginBottom="@dimen/bv" />
+        <TextView android:textSize="8.0dip" android:textColor="@color/az" android:ellipsize="end" android:id="@id/a02" android:layout_width="@dimen/cw" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip" android:maxLines="1" />
     </LinearLayout>
-</RelativeLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/l6g" android:paddingRight="2.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/l4z" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginLeft="2.0dip" android:layout_marginBottom="2.0dip" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" />
+        <TextView android:textSize="8.0dip" android:textColor="@color/az" android:ellipsize="end" android:id="@id/l6v" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:text="{nickname}" android:maxLines="1" android:layout_alignParentBottom="true" app:layout_constraintBottom_toBottomOf="@id/l4z" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="@id/l4z" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

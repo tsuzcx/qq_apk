@@ -1,99 +1,81 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class bwp
-  extends dyl
+  extends com.tencent.mm.bx.a
 {
-  public String Tgs;
-  public String appid;
+  public String aafB;
+  public long aafC;
+  public boolean aafD;
+  public int icon;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(153272);
+    AppMethodBeat.i(258512);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.aafB != null) {
+        paramVarArgs.g(1, this.aafB);
       }
-      if (this.appid != null) {
-        paramVarArgs.f(2, this.appid);
-      }
-      if (this.Tgs != null) {
-        paramVarArgs.f(3, this.Tgs);
-      }
-      AppMethodBeat.o(153272);
+      paramVarArgs.bv(2, this.aafC);
+      paramVarArgs.di(3, this.aafD);
+      paramVarArgs.bS(4, this.icon);
+      AppMethodBeat.o(258512);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label408;
+      if (this.aafB == null) {
+        break label346;
       }
     }
-    label408:
-    for (int i = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label346:
+    for (paramInt = i.a.a.b.b.a.h(1, this.aafB) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.appid != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.appid);
-      }
-      i = paramInt;
-      if (this.Tgs != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.Tgs);
-      }
-      AppMethodBeat.o(153272);
-      return i;
+      int i = i.a.a.b.b.a.q(2, this.aafC);
+      int j = i.a.a.b.b.a.ko(3);
+      int k = i.a.a.b.b.a.cJ(4, this.icon);
+      AppMethodBeat.o(258512);
+      return paramInt + i + (j + 1) + k;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(153272);
+        AppMethodBeat.o(258512);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         bwp localbwp = (bwp)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(153272);
+          AppMethodBeat.o(258512);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject = (byte[])paramVarArgs.get(paramInt);
-            jg localjg = new jg();
-            if ((localObject != null) && (localObject.length > 0)) {
-              localjg.parseFrom((byte[])localObject);
-            }
-            localbwp.BaseRequest = localjg;
-            paramInt += 1;
-          }
-          AppMethodBeat.o(153272);
+          localbwp.aafB = locala.ajGk.readString();
+          AppMethodBeat.o(258512);
           return 0;
         case 2: 
-          localbwp.appid = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(153272);
+          localbwp.aafC = locala.ajGk.aaw();
+          AppMethodBeat.o(258512);
+          return 0;
+        case 3: 
+          localbwp.aafD = locala.ajGk.aai();
+          AppMethodBeat.o(258512);
           return 0;
         }
-        localbwp.Tgs = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(153272);
+        localbwp.icon = locala.ajGk.aar();
+        AppMethodBeat.o(258512);
         return 0;
       }
-      AppMethodBeat.o(153272);
+      AppMethodBeat.o(258512);
       return -1;
     }
   }

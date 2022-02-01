@@ -11,63 +11,63 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class i
   extends Drawable.ConstantState
 {
-  Drawable.ConstantState Le;
-  PorterDuff.Mode jF;
+  ColorStateList Rq;
+  Drawable.ConstantState brn;
+  PorterDuff.Mode kA;
   int mChangingConfigurations;
-  ColorStateList zb;
   
   i(i parami)
   {
-    AppMethodBeat.i(251027);
-    this.zb = null;
-    this.jF = g.KQ;
+    AppMethodBeat.i(196160);
+    this.Rq = null;
+    this.kA = g.bqY;
     if (parami != null)
     {
       this.mChangingConfigurations = parami.mChangingConfigurations;
-      this.Le = parami.Le;
-      this.zb = parami.zb;
-      this.jF = parami.jF;
+      this.brn = parami.brn;
+      this.Rq = parami.Rq;
+      this.kA = parami.kA;
     }
-    AppMethodBeat.o(251027);
+    AppMethodBeat.o(196160);
   }
   
   public final int getChangingConfigurations()
   {
-    AppMethodBeat.i(251033);
+    AppMethodBeat.i(196187);
     int j = this.mChangingConfigurations;
-    if (this.Le != null) {}
-    for (int i = this.Le.getChangingConfigurations();; i = 0)
+    if (this.brn != null) {}
+    for (int i = this.brn.getChangingConfigurations();; i = 0)
     {
-      AppMethodBeat.o(251033);
+      AppMethodBeat.o(196187);
       return i | j;
     }
   }
   
   public final Drawable newDrawable()
   {
-    AppMethodBeat.i(251028);
+    AppMethodBeat.i(196168);
     Drawable localDrawable = newDrawable(null);
-    AppMethodBeat.o(251028);
+    AppMethodBeat.o(196168);
     return localDrawable;
   }
   
   public final Drawable newDrawable(Resources paramResources)
   {
-    AppMethodBeat.i(251031);
+    AppMethodBeat.i(196177);
     if (Build.VERSION.SDK_INT >= 21)
     {
       paramResources = new h(this, paramResources);
-      AppMethodBeat.o(251031);
+      AppMethodBeat.o(196177);
       return paramResources;
     }
     paramResources = new g(this, paramResources);
-    AppMethodBeat.o(251031);
+    AppMethodBeat.o(196177);
     return paramResources;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.core.graphics.drawable.i
  * JD-Core Version:    0.7.0.1
  */

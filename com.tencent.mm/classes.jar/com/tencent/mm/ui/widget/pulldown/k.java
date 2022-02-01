@@ -1,146 +1,91 @@
 package com.tencent.mm.ui.widget.pulldown;
 
 import android.view.View;
-import android.widget.AbsListView;
-import android.widget.ScrollView;
+import android.view.ViewConfiguration;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cr.a.f;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"isAtEnd", "", "Landroid/view/View;", "Landroid/widget/AbsListView;", "Landroid/widget/ScrollView;", "isAtStart", "setAtEndCallback", "", "callback", "Lcom/tencent/mm/ui/widget/pulldown/AtEndCallback;", "setAtStartCallback", "Lcom/tencent/mm/ui/widget/pulldown/AtStartCallback;", "weui-native-android-lib_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/widget/pulldown/SimpleOverScrollCallback;", "Lcom/tencent/mm/ui/widget/pulldown/IOverScrollCallback;", "()V", "mMinFlingVelocity", "", "canScroll", "", "overScroll", "Lcom/tencent/mm/ui/widget/pulldown/IOverScroll;", "child", "Landroid/view/View;", "scrollDirection", "getDampingFactor", "", "getMaxFlingOffset", "getMinFlingVelocity", "onOffsetChanged", "", "offset", "onSpringBack", "onStopSpringingBack", "weui-native-android-lib_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class k
 {
-  private static boolean a(AbsListView paramAbsListView)
+  private int wV;
+  
+  public static int a(h paramh, View paramView, int paramInt)
   {
-    AppMethodBeat.i(251082);
-    p.k(paramAbsListView, "$this$isAtStart");
-    if (paramAbsListView.getChildCount() <= 0)
+    AppMethodBeat.i(251947);
+    s.u(paramh, "overScroll");
+    s.u(paramView, "child");
+    switch (paramInt)
     {
-      AppMethodBeat.o(251082);
-      return true;
+    default: 
+      paramInt = -paramView.getHeight() / 10;
+      AppMethodBeat.o(251947);
+      return paramInt;
     }
-    View localView = paramAbsListView.getChildAt(0);
-    p.j(localView, "getChildAt(0)");
-    int i = localView.getTop();
-    if ((paramAbsListView.getFirstVisiblePosition() <= 0) && (i >= paramAbsListView.getListPaddingTop()))
-    {
-      AppMethodBeat.o(251082);
-      return true;
-    }
-    AppMethodBeat.o(251082);
+    paramInt = paramView.getHeight() / 10;
+    AppMethodBeat.o(251947);
+    return paramInt;
+  }
+  
+  public static boolean a(h paramh, View paramView)
+  {
+    AppMethodBeat.i(251960);
+    s.u(paramh, "overScroll");
+    s.u(paramView, "child");
+    AppMethodBeat.o(251960);
     return false;
   }
   
-  private static boolean a(ScrollView paramScrollView)
+  public static boolean b(h paramh, View paramView)
   {
-    AppMethodBeat.i(251080);
-    p.k(paramScrollView, "$this$isAtStart");
-    if (!paramScrollView.canScrollVertically(-1))
-    {
-      AppMethodBeat.o(251080);
-      return true;
-    }
-    AppMethodBeat.o(251080);
-    return false;
-  }
-  
-  private static boolean b(AbsListView paramAbsListView)
-  {
-    AppMethodBeat.i(251083);
-    p.k(paramAbsListView, "$this$isAtEnd");
-    if (paramAbsListView.getChildCount() <= 0)
-    {
-      AppMethodBeat.o(251083);
-      return false;
-    }
-    int i = paramAbsListView.getChildCount();
-    int j = paramAbsListView.getCount();
-    int k = paramAbsListView.getFirstVisiblePosition();
-    View localView = paramAbsListView.getChildAt(i - 1);
-    p.j(localView, "getChildAt(childCount - 1)");
-    int m = localView.getBottom();
-    if ((k + i >= j) && (m <= paramAbsListView.getHeight() - paramAbsListView.getListPaddingBottom()))
-    {
-      AppMethodBeat.o(251083);
-      return true;
-    }
-    AppMethodBeat.o(251083);
-    return false;
-  }
-  
-  private static boolean b(ScrollView paramScrollView)
-  {
-    AppMethodBeat.i(251081);
-    p.k(paramScrollView, "$this$isAtEnd");
-    if (!paramScrollView.canScrollVertically(1))
-    {
-      AppMethodBeat.o(251081);
-      return true;
-    }
-    AppMethodBeat.o(251081);
-    return false;
-  }
-  
-  public static final boolean iT(View paramView)
-  {
-    AppMethodBeat.i(251078);
-    p.k(paramView, "$this$isAtStart");
-    Object localObject = paramView.getTag(a.f.weui_at_start_callback);
-    boolean bool;
-    if ((localObject instanceof b))
-    {
-      bool = ((b)localObject).fhP();
-      AppMethodBeat.o(251078);
-      return bool;
-    }
-    if ((paramView instanceof ScrollView))
-    {
-      bool = a((ScrollView)paramView);
-      AppMethodBeat.o(251078);
-      return bool;
-    }
-    if ((paramView instanceof AbsListView))
-    {
-      bool = a((AbsListView)paramView);
-      AppMethodBeat.o(251078);
-      return bool;
-    }
-    AppMethodBeat.o(251078);
+    AppMethodBeat.i(251938);
+    s.u(paramh, "overScroll");
+    s.u(paramView, "child");
+    AppMethodBeat.o(251938);
     return true;
   }
   
-  public static final boolean iU(View paramView)
+  public static float c(h paramh, View paramView)
   {
-    AppMethodBeat.i(251079);
-    p.k(paramView, "$this$isAtEnd");
-    Object localObject = paramView.getTag(a.f.weui_at_end_callback);
-    boolean bool;
-    if ((localObject instanceof a))
-    {
-      bool = ((a)localObject).hWy();
-      AppMethodBeat.o(251079);
-      return bool;
+    AppMethodBeat.i(251954);
+    s.u(paramh, "overScroll");
+    s.u(paramView, "child");
+    float f1 = Math.abs(paramh.cI(paramView)) * 1.0F / paramView.getHeight();
+    paramh = j.aglL;
+    float f2 = j.jIT();
+    paramh = j.aglL;
+    int i = j.jIU();
+    paramh = j.aglL;
+    float f3 = i - j.jIT();
+    AppMethodBeat.o(251954);
+    return f1 * f3 + f2;
+  }
+  
+  public static void e(h paramh, View paramView)
+  {
+    AppMethodBeat.i(251967);
+    s.u(paramh, "overScroll");
+    s.u(paramView, "child");
+    AppMethodBeat.o(251967);
+  }
+  
+  public final int d(h paramh, View paramView)
+  {
+    AppMethodBeat.i(251974);
+    s.u(paramh, "overScroll");
+    s.u(paramView, "child");
+    if (this.wV <= 0) {
+      this.wV = (ViewConfiguration.get(paramView.getContext()).getScaledMinimumFlingVelocity() * 15);
     }
-    if ((paramView instanceof ScrollView))
-    {
-      bool = b((ScrollView)paramView);
-      AppMethodBeat.o(251079);
-      return bool;
-    }
-    if ((paramView instanceof AbsListView))
-    {
-      bool = b((AbsListView)paramView);
-      AppMethodBeat.o(251079);
-      return bool;
-    }
-    AppMethodBeat.o(251079);
-    return true;
+    int i = this.wV;
+    AppMethodBeat.o(251974);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.widget.pulldown.k
  * JD-Core Version:    0.7.0.1
  */

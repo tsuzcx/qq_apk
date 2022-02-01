@@ -3,19 +3,19 @@ package com.tencent.mm.plugin.topstory.ui.video;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.topstory.ui.c.f;
 import com.tencent.mm.plugin.topstory.ui.c.g;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.q.f;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.u.g;
 
 final class h$2
-  implements q.f
+  implements u.g
 {
   h$2(h paramh) {}
   
-  public final void onCreateMMMenu(o paramo)
+  public final void onCreateMMMenu(s params)
   {
     AppMethodBeat.i(126073);
-    paramo.aW(0, c.g.video_share_to_friend, c.f.bottomsheet_icon_transmit);
-    paramo.aW(1, c.g.video_share_to_sns, c.f.bottomsheet_icon_moment);
+    params.bx(0, c.g.video_share_to_friend, c.f.bottomsheet_icon_transmit);
+    params.bx(1, c.g.video_share_to_sns, c.f.bottomsheet_icon_moment);
     AppMethodBeat.o(126073);
   }
 }

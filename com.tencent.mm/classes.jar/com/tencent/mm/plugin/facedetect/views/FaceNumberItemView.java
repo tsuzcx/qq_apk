@@ -13,7 +13,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.plugin.facedetect.a.b;
 import com.tencent.mm.plugin.facedetect.a.c;
 import com.tencent.mm.plugin.facedetect.a.d;
@@ -23,15 +23,15 @@ import com.tencent.mm.sdk.platformtools.MTimerHandler;
 public class FaceNumberItemView
   extends View
 {
-  static final long wCk = 29L;
-  MTimerHandler wCj;
-  private boolean wCl;
-  private Paint wCm;
-  private RectF wCn;
-  private Bitmap wCo;
-  private int wCp;
-  int wCq;
-  Runnable wCr;
+  static final long zYv = 29L;
+  private int zYA;
+  int zYB;
+  Runnable zYC;
+  MTimerHandler zYu;
+  private boolean zYw;
+  private Paint zYx;
+  private RectF zYy;
+  private Bitmap zYz;
   
   public FaceNumberItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -42,14 +42,14 @@ public class FaceNumberItemView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(104166);
-    this.wCj = null;
-    this.wCl = false;
-    this.wCm = null;
-    this.wCn = null;
-    this.wCo = null;
-    this.wCp = 17;
-    this.wCq = 0;
-    this.wCr = new Runnable()
+    this.zYu = null;
+    this.zYw = false;
+    this.zYx = null;
+    this.zYy = null;
+    this.zYz = null;
+    this.zYA = 17;
+    this.zYB = 0;
+    this.zYC = new Runnable()
     {
       public final void run()
       {
@@ -61,22 +61,22 @@ public class FaceNumberItemView
           AppMethodBeat.o(104163);
           return;
         }
-        FaceNumberItemView.this.diZ();
+        FaceNumberItemView.this.dPK();
         AppMethodBeat.o(104163);
       }
     };
     setLayerType(1, null);
-    this.wCm = new Paint();
-    this.wCm.setColor(paramContext.getResources().getColor(a.b.face_number_shader_color));
-    this.wCm.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP));
-    this.wCn = new RectF();
+    this.zYx = new Paint();
+    this.zYx.setColor(paramContext.getResources().getColor(a.b.face_number_shader_color));
+    this.zYx.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP));
+    this.zYy = new RectF();
     AppMethodBeat.o(104166);
   }
   
-  public final void diZ()
+  public final void dPK()
   {
     AppMethodBeat.i(104169);
-    this.wCj.stopped();
+    this.zYu.stopped();
     AppMethodBeat.o(104169);
   }
   
@@ -86,35 +86,35 @@ public class FaceNumberItemView
     super.onDraw(paramCanvas);
     float f2;
     float f1;
-    if (this.wCp == 17)
+    if (this.zYA == 17)
     {
-      f2 = getWidth() - this.wCo.getWidth() >> 1;
-      f1 = getHeight() - this.wCo.getHeight() >> 1;
+      f2 = getWidth() - this.zYz.getWidth() >> 1;
+      f1 = getHeight() - this.zYz.getHeight() >> 1;
     }
     for (;;)
     {
-      if (!this.wCl) {
-        paramCanvas.drawBitmap(this.wCo, f2, f1, null);
+      if (!this.zYw) {
+        paramCanvas.drawBitmap(this.zYz, f2, f1, null);
       }
-      this.wCn.set(f2, 0.0F, this.wCo.getWidth() * this.wCq / 30.0F + f2, getHeight());
-      paramCanvas.drawRect(this.wCn, this.wCm);
+      this.zYy.set(f2, 0.0F, this.zYz.getWidth() * this.zYB / 30.0F + f2, getHeight());
+      paramCanvas.drawRect(this.zYy, this.zYx);
       AppMethodBeat.o(104170);
       return;
-      if (this.wCp == 3)
+      if (this.zYA == 3)
       {
-        f1 = getHeight() - this.wCo.getHeight() >> 1;
+        f1 = getHeight() - this.zYz.getHeight() >> 1;
         f2 = 0.0F;
       }
-      else if (this.wCp == 5)
+      else if (this.zYA == 5)
       {
-        f2 = getWidth() - this.wCo.getWidth();
-        f1 = getHeight() - this.wCo.getHeight() >> 1;
+        f2 = getWidth() - this.zYz.getWidth();
+        f1 = getHeight() - this.zYz.getHeight() >> 1;
       }
       else
       {
         Log.e("MicroMsg.FaceNumberItemView", "hy: not support gravity! treat as center");
-        f2 = getWidth() - this.wCo.getWidth() >> 1;
-        f1 = getHeight() - this.wCo.getHeight() >> 1;
+        f2 = getWidth() - this.zYz.getWidth() >> 1;
+        f1 = getHeight() - this.zYz.getHeight() >> 1;
       }
     }
   }
@@ -123,7 +123,7 @@ public class FaceNumberItemView
   {
     AppMethodBeat.i(104168);
     Log.i("MicroMsg.FaceNumberItemView", "hy: setting gravity");
-    this.wCp = paramInt;
+    this.zYA = paramInt;
     AppMethodBeat.o(104168);
   }
   
@@ -138,17 +138,17 @@ public class FaceNumberItemView
       Canvas localCanvas = new Canvas(localBitmap2);
       localCanvas.drawARGB(0, 255, 255, 255);
       localCanvas.drawBitmap(localBitmap1, paramInt, 0.0F, null);
-      this.wCo = localBitmap2;
+      this.zYz = localBitmap2;
       AppMethodBeat.o(104167);
       return;
     }
-    this.wCo = Bitmap.createScaledBitmap(localBitmap1, a.fromDPToPix(getContext(), 48), localBitmap1.getHeight(), false);
+    this.zYz = Bitmap.createScaledBitmap(localBitmap1, a.fromDPToPix(getContext(), 48), localBitmap1.getHeight(), false);
     AppMethodBeat.o(104167);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.views.FaceNumberItemView
  * JD-Core Version:    0.7.0.1
  */

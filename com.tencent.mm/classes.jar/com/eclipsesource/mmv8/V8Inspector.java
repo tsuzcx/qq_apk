@@ -1,6 +1,5 @@
 package com.eclipsesource.mmv8;
 
-import android.support.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class V8Inspector
@@ -11,7 +10,6 @@ public class V8Inspector
   
   static native void JniReceiveData(long paramLong, String paramString);
   
-  @Keep
   public static int jniCallbackNotify(long paramLong1, long paramLong2, String paramString)
   {
     AppMethodBeat.i(62126);
@@ -25,7 +23,6 @@ public class V8Inspector
     return i;
   }
   
-  @Keep
   public static int jniCallbackSendData(long paramLong, String paramString)
   {
     AppMethodBeat.i(62125);
@@ -68,7 +65,7 @@ public class V8Inspector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.eclipsesource.mmv8.V8Inspector
  * JD-Core Version:    0.7.0.1
  */

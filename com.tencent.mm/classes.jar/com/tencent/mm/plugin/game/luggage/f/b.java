@@ -5,7 +5,7 @@ import com.tencent.mm.opensdk.modelmsg.WXWebpageObject;
 public final class b
   extends WXWebpageObject
 {
-  public String CBX;
+  public String IvM;
   public String desc;
   public String iconUrl;
   public String jumpUrl;

@@ -9,128 +9,126 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.plugin.account.friend.a.z;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.ce.j;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.PhoneFormater;
 import com.tencent.mm.ui.base.MMFormInputView;
-import com.tencent.mm.ui.base.s;
 
 public final class k
-  implements i, MobileInputUI.b
+  implements com.tencent.mm.am.h, MobileInputUI.b
 {
-  protected String jaS = null;
-  protected String mTn = "";
-  protected int mTo = 2;
-  private MobileInputUI nfd;
+  protected String lCS = null;
+  protected String pPU = "";
+  protected int pPV = 2;
+  private MobileInputUI qcl;
   
   public final void a(MobileInputUI.a parama)
   {
     AppMethodBeat.i(128290);
-    switch (2.nfi[parama.ordinal()])
+    switch (2.qcq[parama.ordinal()])
     {
     }
     for (;;)
     {
       AppMethodBeat.o(128290);
       return;
-      this.nfd.nfG = PhoneFormater.countryCodeWithPlus(this.nfd.countryCode);
-      this.nfd.nfH = this.nfd.nft.getText().toString();
-      parama = this.nfd.nfG + this.nfd.nfH;
-      if (this.nfd.mUN != null)
+      this.qcl.qcP = PhoneFormater.countryCodeWithPlus(this.qcl.countryCode);
+      this.qcl.qcQ = this.qcl.qcB.getText().toString();
+      parama = this.qcl.qcP + this.qcl.qcQ;
+      if (this.qcl.pRu != null)
       {
         Log.d("MicroMsg.MobileInputRegLogic", "already checking ");
         AppMethodBeat.o(128290);
         return;
       }
-      MobileInputUI localMobileInputUI1 = this.nfd;
-      MobileInputUI localMobileInputUI2 = this.nfd;
-      this.nfd.getString(r.j.app_tip);
-      localMobileInputUI1.mUN = com.tencent.mm.ui.base.h.a(localMobileInputUI2, this.nfd.getString(r.j.regbyfacebook_reg_setpwd_exiting), true, new DialogInterface.OnCancelListener()
+      MobileInputUI localMobileInputUI1 = this.qcl;
+      MobileInputUI localMobileInputUI2 = this.qcl;
+      this.qcl.getString(r.j.app_tip);
+      localMobileInputUI1.pRu = com.tencent.mm.ui.base.k.a(localMobileInputUI2, this.qcl.getString(r.j.regbyfacebook_reg_setpwd_exiting), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
       });
-      parama = new z(parama, 1, "", 0, "");
-      com.tencent.mm.kernel.h.aGY().a(parama, 0);
+      parama = new com.tencent.mm.plugin.account.friend.model.w(parama, 1, "", 0, "", "");
+      com.tencent.mm.kernel.h.aZW().a(parama, 0);
     }
   }
   
   public final void a(MobileInputUI paramMobileInputUI)
   {
     AppMethodBeat.i(128287);
-    this.nfd = paramMobileInputUI;
-    paramMobileInputUI.nfu.requestFocus();
+    this.qcl = paramMobileInputUI;
+    paramMobileInputUI.qcC.requestFocus();
     paramMobileInputUI.showVKB();
-    this.jaS = paramMobileInputUI.getIntent().getStringExtra("regsetinfo_ticket");
-    this.mTn = paramMobileInputUI.getIntent().getStringExtra("regsetinfo_NextStep");
-    this.mTo = paramMobileInputUI.getIntent().getIntExtra("regsetinfo_NextStyle", 2);
+    this.lCS = paramMobileInputUI.getIntent().getStringExtra("regsetinfo_ticket");
+    this.pPU = paramMobileInputUI.getIntent().getStringExtra("regsetinfo_NextStep");
+    this.pPV = paramMobileInputUI.getIntent().getIntExtra("regsetinfo_NextStyle", 2);
     String str2 = paramMobileInputUI.getString(r.j.regbymoile_reg_title);
     String str1;
-    if (!d.RAG)
+    if (!d.Yxk)
     {
       str1 = str2;
       if (!BuildInfo.IS_FLAVOR_BLUE) {}
     }
     else
     {
-      str1 = str2 + com.tencent.mm.cj.h.kv(paramMobileInputUI);
+      str1 = str2 + j.mx(paramMobileInputUI);
     }
     paramMobileInputUI.setMMTitle(str1);
-    paramMobileInputUI.mSs.setVisibility(0);
-    paramMobileInputUI.nft.setVisibility(0);
-    paramMobileInputUI.nfu.requestFocus();
-    paramMobileInputUI.nfw.setVisibility(0);
-    paramMobileInputUI.nfz.setVisibility(0);
-    paramMobileInputUI.nfz.setText(r.j.loginby_new_mobile_reg_ok);
+    paramMobileInputUI.pOX.setVisibility(0);
+    paramMobileInputUI.qcB.setVisibility(0);
+    paramMobileInputUI.qcC.requestFocus();
+    paramMobileInputUI.qcE.setVisibility(0);
+    paramMobileInputUI.qcH.setVisibility(0);
+    paramMobileInputUI.qcH.setText(r.j.loginby_new_mobile_reg_ok);
     AppMethodBeat.o(128287);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(128291);
     Log.i("MicroMsg.MobileInputRegLogic", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    if (this.nfd.mUN != null)
+    if (this.qcl.pRu != null)
     {
-      this.nfd.mUN.dismiss();
-      this.nfd.mUN = null;
+      this.qcl.pRu.dismiss();
+      this.qcl.pRu = null;
     }
-    if (paramq.getType() == 132)
+    if (paramp.getType() == 132)
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        if (((z)paramq).ZB() == 1)
+        if (((com.tencent.mm.plugin.account.friend.model.w)paramp).bIO() == 1)
         {
-          paramq = new Intent();
-          paramq.putExtra("bindmcontact_mobile", this.nfd.nfG + " " + this.nfd.nft.getText().toString());
-          paramq.putExtra("bindmcontact_shortmobile", this.nfd.nft.getText().toString());
-          paramq.putExtra("country_name", this.nfd.lSz);
-          paramq.putExtra("couttry_code", this.nfd.countryCode);
-          paramq.putExtra("mobile_verify_purpose", 4);
-          paramq.putExtra("regsetinfo_ticket", this.jaS);
-          paramq.putExtra("regsetinfo_NextStep", this.mTn);
-          paramq.putExtra("regsetinfo_NextStyle", this.mTo);
-          paramq.setClass(this.nfd, MobileVerifyUI.class);
-          paramString = this.nfd;
-          paramq = new com.tencent.mm.hellhoundlib.b.a().bm(paramq);
-          com.tencent.mm.hellhoundlib.a.a.b(paramString, paramq.aFh(), "com/tencent/mm/plugin/account/ui/MobileInputQQRegLogic", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramString.startActivity((Intent)paramq.sf(0));
+          paramp = new Intent();
+          paramp.putExtra("bindmcontact_mobile", this.qcl.qcP + " " + this.qcl.qcB.getText().toString());
+          paramp.putExtra("bindmcontact_shortmobile", this.qcl.qcB.getText().toString());
+          paramp.putExtra("country_name", this.qcl.oLl);
+          paramp.putExtra("couttry_code", this.qcl.countryCode);
+          paramp.putExtra("mobile_verify_purpose", 4);
+          paramp.putExtra("regsetinfo_ticket", this.lCS);
+          paramp.putExtra("regsetinfo_NextStep", this.pPU);
+          paramp.putExtra("regsetinfo_NextStyle", this.pPV);
+          paramp.setClass(this.qcl, MobileVerifyUI.class);
+          paramString = this.qcl;
+          paramp = new com.tencent.mm.hellhoundlib.b.a().cG(paramp);
+          com.tencent.mm.hellhoundlib.a.a.b(paramString, paramp.aYi(), "com/tencent/mm/plugin/account/ui/MobileInputQQRegLogic", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramString.startActivity((Intent)paramp.sb(0));
           com.tencent.mm.hellhoundlib.a.a.c(paramString, "com/tencent/mm/plugin/account/ui/MobileInputQQRegLogic", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          this.nfd.finish();
+          this.qcl.finish();
         }
         AppMethodBeat.o(128291);
         return;
       }
-      if (com.tencent.mm.plugin.account.sdk.a.mIH.a(this.nfd, paramInt1, paramInt2, paramString))
+      if (com.tencent.mm.plugin.account.sdk.a.pFo.a(this.qcl, paramInt1, paramInt2, paramString))
       {
         AppMethodBeat.o(128291);
         return;
       }
-      Toast.makeText(this.nfd, this.nfd.getString(r.j.bind_mcontact_verify_err, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+      Toast.makeText(this.qcl, this.qcl.getString(r.j.bind_mcontact_verify_err, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
       AppMethodBeat.o(128291);
       return;
     }
@@ -140,20 +138,20 @@ public final class k
   public final void start()
   {
     AppMethodBeat.i(128288);
-    com.tencent.mm.kernel.h.aGY().a(132, this);
+    com.tencent.mm.kernel.h.aZW().a(132, this);
     AppMethodBeat.o(128288);
   }
   
   public final void stop()
   {
     AppMethodBeat.i(128289);
-    com.tencent.mm.kernel.h.aGY().b(132, this);
+    com.tencent.mm.kernel.h.aZW().b(132, this);
     AppMethodBeat.o(128289);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.k
  * JD-Core Version:    0.7.0.1
  */

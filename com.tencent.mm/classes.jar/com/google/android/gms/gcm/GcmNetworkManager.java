@@ -16,17 +16,14 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.concurrent.GuardedBy;
 
 public class GcmNetworkManager
 {
   public static final int RESULT_FAILURE = 2;
   public static final int RESULT_RESCHEDULE = 1;
   public static final int RESULT_SUCCESS = 0;
-  @GuardedBy("GcmNetworkManager.class")
   private static GcmNetworkManager zzg;
   private final Context zzh;
-  @GuardedBy("this")
   private final Map<String, Map<String, Boolean>> zzi;
   
   private GcmNetworkManager(Context paramContext)
@@ -170,36 +167,36 @@ public class GcmNetworkManager
     //   0: aload_0
     //   1: monitorenter
     //   2: sipush 3619
-    //   5: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 38	com/google/android/gms/gcm/GcmNetworkManager:zzi	Ljava/util/Map;
+    //   9: getfield 34	com/google/android/gms/gcm/GcmNetworkManager:zzi	Ljava/util/Map;
     //   12: aload_2
-    //   13: invokeinterface 238 2 0
-    //   18: checkcast 234	java/util/Map
+    //   13: invokeinterface 234 2 0
+    //   18: checkcast 230	java/util/Map
     //   21: astore 5
     //   23: aload 5
     //   25: astore 4
     //   27: aload 5
     //   29: ifnonnull +25 -> 54
-    //   32: new 35	androidx/b/a
+    //   32: new 31	androidx/b/a
     //   35: dup
-    //   36: invokespecial 36	androidx/b/a:<init>	()V
+    //   36: invokespecial 32	androidx/b/a:<init>	()V
     //   39: astore 4
     //   41: aload_0
-    //   42: getfield 38	com/google/android/gms/gcm/GcmNetworkManager:zzi	Ljava/util/Map;
+    //   42: getfield 34	com/google/android/gms/gcm/GcmNetworkManager:zzi	Ljava/util/Map;
     //   45: aload_2
     //   46: aload 4
-    //   48: invokeinterface 254 3 0
+    //   48: invokeinterface 250 3 0
     //   53: pop
     //   54: aload 4
     //   56: aload_1
-    //   57: getstatic 258	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
-    //   60: invokeinterface 254 3 0
+    //   57: getstatic 254	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
+    //   60: invokeinterface 250 3 0
     //   65: ifnonnull +15 -> 80
     //   68: iconst_1
     //   69: istore_3
     //   70: sipush 3619
-    //   73: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   73: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   76: aload_0
     //   77: monitorexit
     //   78: iload_3
@@ -207,7 +204,7 @@ public class GcmNetworkManager
     //   80: iconst_0
     //   81: istore_3
     //   82: sipush 3619
-    //   85: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   85: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   88: goto -12 -> 76
     //   91: astore_1
     //   92: aload_0
@@ -238,33 +235,33 @@ public class GcmNetworkManager
     //   0: aload_0
     //   1: monitorenter
     //   2: sipush 3620
-    //   5: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 38	com/google/android/gms/gcm/GcmNetworkManager:zzi	Ljava/util/Map;
+    //   9: getfield 34	com/google/android/gms/gcm/GcmNetworkManager:zzi	Ljava/util/Map;
     //   12: aload_2
-    //   13: invokeinterface 238 2 0
-    //   18: checkcast 234	java/util/Map
+    //   13: invokeinterface 234 2 0
+    //   18: checkcast 230	java/util/Map
     //   21: astore 4
     //   23: aload 4
     //   25: ifnull +41 -> 66
     //   28: aload 4
     //   30: aload_1
-    //   31: invokeinterface 262 2 0
+    //   31: invokeinterface 258 2 0
     //   36: ifnull +39 -> 75
     //   39: iconst_1
     //   40: istore_3
     //   41: iload_3
     //   42: ifeq +24 -> 66
     //   45: aload 4
-    //   47: invokeinterface 264 1 0
+    //   47: invokeinterface 260 1 0
     //   52: ifeq +14 -> 66
     //   55: aload_0
-    //   56: getfield 38	com/google/android/gms/gcm/GcmNetworkManager:zzi	Ljava/util/Map;
+    //   56: getfield 34	com/google/android/gms/gcm/GcmNetworkManager:zzi	Ljava/util/Map;
     //   59: aload_2
-    //   60: invokeinterface 262 2 0
+    //   60: invokeinterface 258 2 0
     //   65: pop
     //   66: sipush 3620
-    //   69: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   69: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   72: aload_0
     //   73: monitorexit
     //   74: return
@@ -337,7 +334,7 @@ public class GcmNetworkManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.gcm.GcmNetworkManager
  * JD-Core Version:    0.7.0.1
  */

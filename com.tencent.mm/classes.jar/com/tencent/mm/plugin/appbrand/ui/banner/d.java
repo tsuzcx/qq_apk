@@ -5,44 +5,44 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.appbrand.au.g;
+import com.tencent.mm.plugin.appbrand.ba.g;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.service.r;
+import com.tencent.mm.plugin.appbrand.service.t;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class d
-  extends com.tencent.mm.pluginsdk.ui.b.b
+  extends com.tencent.mm.pluginsdk.ui.a.b
   implements View.OnClickListener, f
 {
-  private static boolean rbL = false;
+  private static boolean uhA = false;
   
-  public static void ckM()
+  public static void cMb()
   {
-    rbL = false;
+    uhA = false;
   }
   
-  public final void ce(String paramString, int paramInt)
+  public final void cB(String paramString, int paramInt)
   {
     AppMethodBeat.i(48998);
     AppMethodBeat.o(48998);
     throw null;
   }
   
-  public final boolean ckL()
+  public final boolean cMa()
   {
     AppMethodBeat.i(48994);
-    if (!rbL)
+    if (!uhA)
     {
-      ((e)h.ae(e.class)).b(this);
-      ((e)h.ae(e.class)).ckI();
-      ((e)h.ae(e.class)).a(this);
-      rbL = true;
+      ((e)h.ax(e.class)).b(this);
+      ((e)h.ax(e.class)).cLW();
+      ((e)h.ax(e.class)).a(this);
+      uhA = true;
     }
-    Object localObject2 = BannerModel.ckQ();
+    Object localObject2 = BannerModel.cMe();
     if ((localObject2 != null) && (!Util.isNullOrNil(((BannerModel)localObject2).appId)))
     {
       Object localObject1 = ((BannerModel)localObject2).appName;
-      localObject2 = ((BannerModel)localObject2).rcc;
+      localObject2 = ((BannerModel)localObject2).uhR;
       if (Util.isNullOrNil((String)localObject2)) {}
       while (Util.isNullOrNil((String)localObject1))
       {
@@ -66,16 +66,16 @@ public final class d
   
   public final int getLayoutId()
   {
-    return au.g.chatting_app_brand_entrance_banner;
+    return ba.g.chatting_app_brand_entrance_banner;
   }
   
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(48997);
     Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
-    ((com.tencent.mm.hellhoundlib.b.b)localObject1).bn(paramView);
-    a.c("com/tencent/mm/plugin/appbrand/ui/banner/AppBrandStickyBanner", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).aFi());
-    Object localObject2 = BannerModel.ckQ();
+    ((com.tencent.mm.hellhoundlib.b.b)localObject1).cH(paramView);
+    a.c("com/tencent/mm/plugin/appbrand/ui/banner/AppBrandStickyBanner", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).aYj());
+    Object localObject2 = BannerModel.cMe();
     if (localObject2 == null)
     {
       a.a(this, "com/tencent/mm/plugin/appbrand/ui/banner/AppBrandStickyBanner", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -83,7 +83,7 @@ public final class d
       return;
     }
     localObject1 = ((BannerModel)localObject2).appId;
-    int i = ((BannerModel)localObject2).cBU;
+    int i = ((BannerModel)localObject2).euz;
     if (Util.isNullOrNil((String)localObject1))
     {
       AppMethodBeat.o(48997);
@@ -91,7 +91,7 @@ public final class d
     }
     localObject2 = new AppBrandStatObject();
     ((AppBrandStatObject)localObject2).scene = 1022;
-    ((r)h.ae(r.class)).a(paramView.getContext(), null, (String)localObject1, i, -1, null, (AppBrandStatObject)localObject2);
+    ((t)h.ax(t.class)).a(paramView.getContext(), null, (String)localObject1, i, -1, null, (AppBrandStatObject)localObject2);
     a.a(this, "com/tencent/mm/plugin/appbrand/ui/banner/AppBrandStickyBanner", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(48997);
   }
@@ -105,7 +105,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.banner.d
  * JD-Core Version:    0.7.0.1
  */

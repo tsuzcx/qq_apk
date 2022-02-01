@@ -1,43 +1,13 @@
 package com.tencent.mm.plugin.wallet_core.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class b
 {
-  public Bankcard OUK;
-  public String OUL;
-  public String OUM;
-  public boolean OUN;
-  public int OUO;
-  public boolean wvU;
-  
-  public b(Bankcard paramBankcard)
-  {
-    AppMethodBeat.i(70578);
-    this.OUK = paramBankcard;
-    try
-    {
-      paramBankcard = new JSONObject(this.OUK.field_ext_msg);
-      this.OUL = paramBankcard.optString("information");
-      this.wvU = paramBankcard.optBoolean("verified");
-      this.OUM = paramBankcard.optString("card_expiry");
-      this.OUO = paramBankcard.optInt("cvv_length");
-      this.OUN = paramBankcard.optBoolean("is_credit");
-      AppMethodBeat.o(70578);
-      return;
-    }
-    catch (JSONException paramBankcard)
-    {
-      Log.printErrStackTrace("MicroMsg.BankcardPayUWrapper", paramBankcard, "", new Object[0]);
-      AppMethodBeat.o(70578);
-    }
-  }
-  
-  public static String cf(JSONObject paramJSONObject)
+  public static String cB(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70577);
     JSONObject localJSONObject = new JSONObject();

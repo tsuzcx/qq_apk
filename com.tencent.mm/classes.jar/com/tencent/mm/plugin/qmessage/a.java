@@ -7,27 +7,27 @@ import com.tencent.mm.pluginsdk.n;
 public final class a
   implements n
 {
-  private static l Hkw;
-  private static m mIG;
+  private static l Nij;
+  private static m pFn;
   
-  public static m dhe()
+  public static m dNP()
   {
-    return mIG;
+    return pFn;
   }
   
-  public static l frY()
+  public static l gDG()
   {
-    return Hkw;
+    return Nij;
   }
   
   public final void a(l paraml)
   {
-    Hkw = paraml;
+    Nij = paraml;
   }
   
   public final void a(m paramm)
   {
-    mIG = paramm;
+    pFn = paramm;
   }
 }
 

@@ -10,60 +10,60 @@ public final class c
   public static void a(WaidProvider.a parama, String paramString)
   {
     int i = 0;
-    AppMethodBeat.i(216648);
-    if (!b.fZR())
+    AppMethodBeat.i(306348);
+    if (!b.hti())
     {
       com.tencent.mm.sdk.platformtools.Log.e("ad.waid.WaidReporter", "reportPkg isWxEnvInitDone==false");
-      AppMethodBeat.o(216648);
+      AppMethodBeat.o(306348);
       return;
     }
-    if ((parama != null) && (parama.Lvx != null) && (parama.Lvx.length > 1)) {}
+    if ((parama != null) && (parama.RYW != null) && (parama.RYW.length > 1)) {}
     for (;;)
     {
       try
       {
         StringBuilder localStringBuilder = new StringBuilder();
-        if (i < parama.Lvx.length)
+        if (i < parama.RYW.length)
         {
-          localStringBuilder.append(parama.Lvx[i]);
-          if (i == parama.Lvx.length - 1) {
+          localStringBuilder.append(parama.RYW[i]);
+          if (i == parama.RYW.length - 1) {
             break label235;
           }
           localStringBuilder.append("|");
           break label235;
         }
         JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("rawCallPkg", parama.Lvw);
-        localJSONObject.put("callPkgType", parama.Lvy);
+        localJSONObject.put("rawCallPkg", parama.RYV);
+        localJSONObject.put("callPkgType", parama.RYX);
         localJSONObject.put("pkgsFromUid", localStringBuilder.toString());
         localJSONObject.put("queryPkg", paramString);
-        parama = bcG(localJSONObject.toString());
+        parama = bbu(localJSONObject.toString());
         com.tencent.mm.sdk.platformtools.Log.i("ad.waid.WaidReporter", "reportPkg data=".concat(String.valueOf(parama)));
-        h.IzE.a(18666, new Object[] { Integer.valueOf(2002), parama });
-        AppMethodBeat.o(216648);
+        h.OAn.b(18666, new Object[] { Integer.valueOf(2002), parama });
+        AppMethodBeat.o(306348);
         return;
       }
-      catch (Throwable parama)
+      finally
       {
         com.tencent.mm.sdk.platformtools.Log.e("ad.waid.WaidReporter", "reportPkg exp=" + android.util.Log.getStackTraceString(parama));
       }
-      AppMethodBeat.o(216648);
+      AppMethodBeat.o(306348);
       return;
       label235:
       i += 1;
     }
   }
   
-  static String bcG(String paramString)
+  static String bbu(String paramString)
   {
-    AppMethodBeat.i(216649);
+    AppMethodBeat.i(306355);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(216649);
+      AppMethodBeat.o(306355);
       return "";
     }
     paramString = paramString.replace(",", ";");
-    AppMethodBeat.o(216649);
+    AppMethodBeat.o(306355);
     return paramString;
   }
 }

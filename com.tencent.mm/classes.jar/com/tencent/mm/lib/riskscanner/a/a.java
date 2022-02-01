@@ -7,16 +7,15 @@ import com.tencent.mm.lib.riskscanner.RiskScannerReqBufferService;
 
 public final class a
 {
-  public static Bundle cJ(Context paramContext)
+  public static Bundle dy(Context paramContext)
   {
     AppMethodBeat.i(138304);
     try
     {
-      paramContext = RiskScannerReqBufferService.cI(paramContext);
-      AppMethodBeat.o(138304);
+      paramContext = RiskScannerReqBufferService.dx(paramContext);
       return paramContext;
     }
-    catch (Throwable paramContext)
+    finally
     {
       AppMethodBeat.o(138304);
     }
@@ -25,7 +24,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.lib.riskscanner.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.finder.gallery;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryTabData;", "", "tabId", "", "tabTitle", "", "(ILjava/lang/String;)V", "getTabId", "()I", "getTabTitle", "()Ljava/lang/String;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryTabData;", "", "tabId", "", "tabTitle", "", "(ILjava/lang/String;)V", "getTabId", "()I", "getTabTitle", "()Ljava/lang/String;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class j
 {
-  public final int fXY;
-  final String xUf;
+  final String Bvb;
+  public final int idY;
   
   public j(int paramInt, String paramString)
   {
-    AppMethodBeat.i(281193);
-    this.fXY = paramInt;
-    this.xUf = paramString;
-    AppMethodBeat.o(281193);
+    AppMethodBeat.i(334271);
+    this.idY = paramInt;
+    this.Bvb = paramString;
+    AppMethodBeat.o(334271);
   }
 }
 

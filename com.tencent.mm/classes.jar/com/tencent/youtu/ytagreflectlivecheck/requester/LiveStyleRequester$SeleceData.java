@@ -16,7 +16,7 @@ public class LiveStyleRequester$SeleceData
     AppMethodBeat.i(43402);
     this.platform = 2;
     this.protocal = 1;
-    this.version = "3.6.4.4";
+    this.version = "3.6.9.2";
     this.reflect_param = " version 2 ";
     this.change_point_num = 2;
     this.android_data = new LiveStyleRequester.LiveStyleAndroidData();
@@ -26,7 +26,7 @@ public class LiveStyleRequester$SeleceData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleRequester.SeleceData
  * JD-Core Version:    0.7.0.1
  */

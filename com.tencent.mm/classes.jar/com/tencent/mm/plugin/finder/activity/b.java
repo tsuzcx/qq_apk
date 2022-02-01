@@ -3,43 +3,46 @@ package com.tencent.mm.plugin.finder.activity;
 import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.d.f.e;
+import com.tencent.e.f.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bx.a;
 import com.tencent.mm.kernel.f;
 import com.tencent.mm.kernel.h;
+import com.tencent.mm.protocal.protobuf.FinderJumpInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/activity/FinderActivityParamUtil;", "", "()V", "isActivityDraftValid", "", "activityId", "", "from", "", "(Ljava/lang/Long;I)Z", "setActivityParam", "", "originIntent", "Landroid/content/Intent;", "startIntent", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/activity/FinderActivityParamUtil;", "", "()V", "convertJumpInfoList", "", "", "jumpInfoList", "Lcom/tencent/mm/protocal/protobuf/FinderJumpInfo;", "isActivityDraftValid", "", "activityId", "", "from", "", "(Ljava/lang/Long;I)Z", "reconvertJumpInfoList", "jumpInfoBytes", "setActivityParam", "", "originIntent", "Landroid/content/Intent;", "startIntent", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  public static final b wWK;
+  public static final b Aty;
   
   static
   {
-    AppMethodBeat.i(286174);
-    wWK = new b();
-    AppMethodBeat.o(286174);
+    AppMethodBeat.i(347984);
+    Aty = new b();
+    AppMethodBeat.o(347984);
   }
   
-  public static boolean b(Long paramLong, int paramInt)
+  public static boolean c(Long paramLong, int paramInt)
   {
-    AppMethodBeat.i(286172);
-    Object localObject = h.aHG();
-    p.j(localObject, "MMKernel.storage()");
-    localObject = ((f)localObject).aHp().get(ar.a.VAt, "").toString();
+    AppMethodBeat.i(347977);
+    Object localObject = h.baE().ban().get(at.a.adcL, "").toString();
     if (!Util.isNullOrNil((String)localObject)) {}
     do
     {
       try
       {
-        localObject = e.bCW((String)localObject);
+        localObject = e.bFB((String)localObject);
         Parcel localParcel = Parcel.obtain();
-        p.j(localParcel, "Parcel.obtain()");
+        s.s(localParcel, "obtain()");
         localParcel.unmarshall((byte[])localObject, 0, localObject.length);
         localParcel.setDataPosition(0);
         localObject = (Intent)Intent.CREATOR.createFromParcel(localParcel);
@@ -47,16 +50,14 @@ public final class b
         {
           if (paramInt != 9)
           {
-            AppMethodBeat.o(286172);
+            AppMethodBeat.o(347977);
             return true;
           }
           l = ((Intent)localObject).getLongExtra("key_topic_id", 0L);
           if (paramLong != null) {
             continue;
           }
-          paramLong = h.aHG();
-          p.j(paramLong, "MMKernel.storage()");
-          paramLong.aHp().set(ar.a.VAt, "");
+          h.baE().ban().set(at.a.adcL, "");
         }
       }
       catch (Exception paramLong)
@@ -64,14 +65,75 @@ public final class b
         for (;;)
         {
           long l;
-          Log.e("Finder.ActivityRouter", "goDraft() ".concat(String.valueOf(paramLong)));
+          Log.e("Finder.ActivityRouter", s.X("goDraft() ", paramLong));
         }
       }
-      AppMethodBeat.o(286172);
+      AppMethodBeat.o(347977);
       return false;
     } while (l != paramLong.longValue());
-    AppMethodBeat.o(286172);
+    AppMethodBeat.o(347977);
     return true;
+  }
+  
+  public static List<byte[]> fQ(List<? extends FinderJumpInfo> paramList)
+  {
+    AppMethodBeat.i(347958);
+    if (paramList == null) {}
+    ArrayList localArrayList;
+    for (paramList = null;; paramList = localArrayList)
+    {
+      paramList = (List)paramList;
+      AppMethodBeat.o(347958);
+      return paramList;
+      localArrayList = new ArrayList();
+      paramList = ((Iterable)paramList).iterator();
+      while (paramList.hasNext())
+      {
+        FinderJumpInfo localFinderJumpInfo = (FinderJumpInfo)paramList.next();
+        if (localFinderJumpInfo != null) {
+          localArrayList.add(localFinderJumpInfo.toByteArray());
+        }
+      }
+    }
+  }
+  
+  public static List<FinderJumpInfo> fR(List<byte[]> paramList)
+  {
+    AppMethodBeat.i(347969);
+    if (paramList == null) {}
+    ArrayList localArrayList;
+    for (paramList = null;; paramList = localArrayList)
+    {
+      paramList = (List)paramList;
+      AppMethodBeat.o(347969);
+      return paramList;
+      localArrayList = new ArrayList();
+      Iterator localIterator = ((Iterable)paramList).iterator();
+      for (;;)
+      {
+        if (localIterator.hasNext())
+        {
+          byte[] arrayOfByte = (byte[])localIterator.next();
+          paramList = (a)new FinderJumpInfo();
+          try
+          {
+            paramList.parseFrom(arrayOfByte);
+            paramList = (FinderJumpInfo)paramList;
+            if (paramList != null) {
+              localArrayList.add(paramList);
+            }
+          }
+          catch (Exception paramList)
+          {
+            for (;;)
+            {
+              Log.printDebugStack("safeParser", "", new Object[] { paramList });
+              paramList = null;
+            }
+          }
+        }
+      }
+    }
   }
 }
 

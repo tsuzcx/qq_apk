@@ -1,158 +1,71 @@
 package com.tencent.mm.plugin.emoji.g;
 
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aa.a;
-import com.tencent.mm.an.h.a;
-import com.tencent.mm.an.h.c;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.kernel.f;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.ck.a;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.emoji.f.l;
-import com.tencent.mm.protocal.protobuf.db;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.platformtools.XmlParser;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import java.util.Map;
+import com.tencent.mm.plugin.emoji.model.s;
+import com.tencent.mm.protocal.protobuf.cjb;
+import com.tencent.mm.storage.bl;
+import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 
 public final class c
-  implements ck.a
 {
-  public static void a(a parama)
+  public static boolean a(EmojiGroupInfo paramEmojiGroupInfo)
   {
-    AppMethodBeat.i(108734);
-    if (parama == null)
+    AppMethodBeat.i(109440);
+    if (paramEmojiGroupInfo == null)
     {
-      Log.w("MicroMsg.emoji.EmojiNewFreeSysCmdMsgListener", "xml is null.");
-      AppMethodBeat.o(108734);
-      return;
+      AppMethodBeat.o(109440);
+      return false;
     }
-    if (parama.uGu > 0)
-    {
-      h.aHG().aHp().i(208899, Boolean.TRUE);
-      com.tencent.mm.aa.c.aFn().C(262147, true);
-    }
-    if (parama.uGv > 0)
-    {
-      h.aHG().aHp().i(208913, Boolean.TRUE);
-      com.tencent.mm.aa.c.aFn().C(262149, true);
-    }
-    if (!Util.isNullOrNil(parama.thumburl))
-    {
-      Log.d("MicroMsg.emoji.EmojiNewFreeSysCmdMsgListener", "Thumb URL %s", new Object[] { parama.thumburl });
-      h.aHG().aHp().i(229633, parama.thumburl);
-      h.aHG().aHp().i(229634, System.currentTimeMillis());
-      AppMethodBeat.o(108734);
-      return;
-    }
-    h.aHG().aHp().i(229633, "");
-    h.aHG().aHp().i(229634, "");
-    AppMethodBeat.o(108734);
+    boolean bool = apa(paramEmojiGroupInfo.field_productID);
+    AppMethodBeat.o(109440);
+    return bool;
   }
   
-  public final void a(h.a parama)
+  public static boolean apa(String paramString)
   {
-    AppMethodBeat.i(108733);
-    parama = parama.jQG;
-    Object localObject1;
-    if (parama.COi == 10002)
+    AppMethodBeat.i(109441);
+    if (paramString == null)
     {
-      parama = z.a(parama.RIF);
-      if (Util.isNullOrNil(parama))
-      {
-        Log.w("MicroMsg.emoji.EmojiNewFreeSysCmdMsgListener", "msg content is null");
-        AppMethodBeat.o(108733);
-        return;
-      }
-      parama = XmlParser.parseXml(parama, "sysmsg", null);
-      if ((parama != null) && (parama.size() > 0))
-      {
-        localObject1 = (String)parama.get(".sysmsg.$type");
-        if ((Util.isNullOrNil((String)localObject1)) || (!((String)localObject1).equalsIgnoreCase("emotionstore"))) {}
-      }
+      AppMethodBeat.o(109441);
+      return false;
     }
-    for (;;)
-    {
-      try
-      {
-        localObject1 = (String)parama.get(".sysmsg.emotionstore.productid");
-        Object localObject2 = (String)parama.get(".sysmsg.emotionstore.newcount");
-        String str1 = (String)parama.get(".sysmsg.emotionstore.freecount");
-        String str2 = (String)parama.get(".sysmsg.emotionstore.thumburl");
-        if (Util.isNullOrNil((String)localObject2)) {
-          break label436;
-        }
-        i = Integer.valueOf((String)localObject2).intValue();
-        if (TextUtils.isEmpty(str1)) {
-          break label431;
-        }
-        j = Integer.valueOf(str1).intValue();
-        localObject2 = new a(i, j, str2, (String)localObject1);
-        if (!Util.isNullOrNil((String)localObject1))
-        {
-          Log.i("MicroMsg.emoji.EmojiNewFreeSysCmdMsgListener", "new xml productid is %s. now try to get download flag", new Object[] { localObject1 });
-          localObject1 = new l((String)localObject1, (a)localObject2);
-          h.aHF().kcd.a((q)localObject1, 0);
-          localObject1 = (String)parama.get(".sysmsg.personalemotion.newcount");
-          if ((!Util.isNullOrNil((String)localObject1)) && (Integer.valueOf((String)localObject1).intValue() > 0)) {
-            h.aHG().aHp().set(ar.a.VgM, Boolean.TRUE);
-          }
-          parama = (String)parama.get(".sysmsg.personalemoji.emojicount");
-          if ((!Util.isNullOrNil(parama)) && (Integer.valueOf(parama).intValue() > 0)) {
-            h.aHG().aHp().set(ar.a.VgQ, Boolean.TRUE);
-          }
-          AppMethodBeat.o(108733);
-          return;
-        }
-        a((a)localObject2);
-        continue;
-        Log.e("MicroMsg.emoji.EmojiNewFreeSysCmdMsgListener", "not emoji message type :".concat(String.valueOf(localObject1)));
-      }
-      catch (Exception parama)
-      {
-        Log.e("MicroMsg.emoji.EmojiNewFreeSysCmdMsgListener", "onRecieveMsg:%s", new Object[] { Util.stackTraceToString(parama) });
-        AppMethodBeat.o(108733);
-        return;
-      }
-      AppMethodBeat.o(108733);
-      return;
-      Log.i("MicroMsg.emoji.EmojiNewFreeSysCmdMsgListener", "not new xml type:%d ", new Object[] { Integer.valueOf(parama.COi) });
-      AppMethodBeat.o(108733);
-      return;
-      label431:
-      int j = 0;
-      continue;
-      label436:
-      int i = 0;
-    }
+    boolean bool = paramString.equals(dDt());
+    AppMethodBeat.o(109441);
+    return bool;
   }
   
-  public final void a(h.c paramc) {}
-  
-  public final class a
+  public static boolean dBJ()
   {
-    private String fxo;
-    String thumburl;
-    int uGu;
-    int uGv;
-    
-    public a(int paramInt1, int paramInt2, String paramString1, String paramString2)
+    AppMethodBeat.i(109438);
+    boolean bool = s.getEmojiStorageMgr().adjv.jcV();
+    AppMethodBeat.o(109438);
+    return bool;
+  }
+  
+  public static final String dDt()
+  {
+    AppMethodBeat.i(109442);
+    String str = EmojiGroupInfo.aklD;
+    AppMethodBeat.o(109442);
+    return str;
+  }
+  
+  public static boolean i(cjb paramcjb)
+  {
+    AppMethodBeat.i(109439);
+    if (paramcjb == null)
     {
-      this.uGu = paramInt1;
-      this.uGv = paramInt2;
-      this.thumburl = paramString1;
-      this.fxo = paramString2;
+      AppMethodBeat.o(109439);
+      return false;
     }
+    boolean bool = apa(paramcjb.ProductID);
+    AppMethodBeat.o(109439);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.g.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,29 @@
 package com.tencent.mm.plugin.profile.ui.newbizinfo.b;
 
-import kotlin.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.b.gp;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
-@l(iBK={1, 1, 16})
-public final class c {}
+public final class c
+  extends gp
+{
+  public static IAutoDBItem.MAutoDBInfo nVV;
+  
+  static
+  {
+    AppMethodBeat.i(27585);
+    nVV = gp.aJm();
+    AppMethodBeat.o(27585);
+  }
+  
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  {
+    return nVV;
+  }
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.newbizinfo.b.c
  * JD-Core Version:    0.7.0.1
  */

@@ -7,69 +7,50 @@ import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.view.recyclerview.WxRecyclerView;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/music/ui/view/WxMaxSizeRecyclerView;", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "marginClickListener", "Lcom/tencent/mm/plugin/music/ui/view/WxMaxSizeRecyclerView$IMarginClickListener;", "maxHeight", "maxWidth", "getMaxHeight", "getMaxWidth", "onMeasure", "", "widthMeasureSpec", "heightMeasureSpec", "setMarginClickListener", "setMaxHeight", "setMaxWidth", "IMarginClickListener", "plugin-music_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/music/ui/view/WxMaxSizeRecyclerView;", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "marginClickListener", "Lcom/tencent/mm/plugin/music/ui/view/WxMaxSizeRecyclerView$IMarginClickListener;", "maxHeight", "maxWidth", "getMaxHeight", "getMaxWidth", "onMeasure", "", "widthMeasureSpec", "heightMeasureSpec", "setMarginClickListener", "setMaxHeight", "setMaxWidth", "IMarginClickListener", "plugin-music_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class WxMaxSizeRecyclerView
   extends WxRecyclerView
 {
-  private a FWf;
+  private WxMaxSizeRecyclerView.a LRe;
   private int maxHeight;
   private int maxWidth;
   
   public WxMaxSizeRecyclerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(259883);
-    setOnTouchListener((View.OnTouchListener)new View.OnTouchListener()
-    {
-      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(259526);
-        if ((paramAnonymousView instanceof WxRecyclerView))
-        {
-          paramAnonymousView = this.FWg;
-          paramAnonymousMotionEvent = new com.tencent.mm.hellhoundlib.b.a().bm(paramAnonymousMotionEvent);
-          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, paramAnonymousMotionEvent.aFh(), "com/tencent/mm/plugin/music/ui/view/WxMaxSizeRecyclerView$1", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-          boolean bool = com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousView.onTouchEvent((MotionEvent)paramAnonymousMotionEvent.sf(0)), "com/tencent/mm/plugin/music/ui/view/WxMaxSizeRecyclerView$1", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-          AppMethodBeat.o(259526);
-          return bool;
-        }
-        AppMethodBeat.o(259526);
-        return false;
-      }
-    });
-    AppMethodBeat.o(259883);
+    AppMethodBeat.i(270989);
+    setOnTouchListener(new WxMaxSizeRecyclerView..ExternalSyntheticLambda0(new GestureDetector(getContext(), (GestureDetector.OnGestureListener)new b(this))));
+    AppMethodBeat.o(270989);
   }
   
   public WxMaxSizeRecyclerView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(259885);
-    setOnTouchListener((View.OnTouchListener)new View.OnTouchListener()
+    AppMethodBeat.i(270994);
+    setOnTouchListener(new WxMaxSizeRecyclerView..ExternalSyntheticLambda0(new GestureDetector(getContext(), (GestureDetector.OnGestureListener)new b(this))));
+    AppMethodBeat.o(270994);
+  }
+  
+  private static final boolean a(GestureDetector paramGestureDetector, View paramView, MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(271003);
+    s.u(paramGestureDetector, "$gestureDetector");
+    if ((paramView instanceof WxRecyclerView))
     {
-      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(259526);
-        if ((paramAnonymousView instanceof WxRecyclerView))
-        {
-          paramAnonymousView = this.FWg;
-          paramAnonymousMotionEvent = new com.tencent.mm.hellhoundlib.b.a().bm(paramAnonymousMotionEvent);
-          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, paramAnonymousMotionEvent.aFh(), "com/tencent/mm/plugin/music/ui/view/WxMaxSizeRecyclerView$1", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-          boolean bool = com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousView.onTouchEvent((MotionEvent)paramAnonymousMotionEvent.sf(0)), "com/tencent/mm/plugin/music/ui/view/WxMaxSizeRecyclerView$1", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-          AppMethodBeat.o(259526);
-          return bool;
-        }
-        AppMethodBeat.o(259526);
-        return false;
-      }
-    });
-    AppMethodBeat.o(259885);
+      paramView = new com.tencent.mm.hellhoundlib.b.a().cG(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.b(paramGestureDetector, paramView.aYi(), "com/tencent/mm/plugin/music/ui/view/WxMaxSizeRecyclerView", "_init_$lambda-0", "(Landroid/view/GestureDetector;Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+      boolean bool = com.tencent.mm.hellhoundlib.a.a.a(paramGestureDetector, paramGestureDetector.onTouchEvent((MotionEvent)paramView.sb(0)), "com/tencent/mm/plugin/music/ui/view/WxMaxSizeRecyclerView", "_init_$lambda-0", "(Landroid/view/GestureDetector;Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+      AppMethodBeat.o(271003);
+      return bool;
+    }
+    AppMethodBeat.o(271003);
+    return false;
   }
   
   public final int getMaxHeight()
@@ -84,7 +65,7 @@ public final class WxMaxSizeRecyclerView
   
   public final void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(259881);
+    AppMethodBeat.i(271039);
     if (this.maxHeight > 0) {
       paramInt2 = View.MeasureSpec.makeMeasureSpec(this.maxHeight, -2147483648);
     }
@@ -92,42 +73,41 @@ public final class WxMaxSizeRecyclerView
       paramInt1 = View.MeasureSpec.makeMeasureSpec(this.maxWidth, -2147483648);
     }
     super.onMeasure(paramInt1, paramInt2);
-    AppMethodBeat.o(259881);
+    AppMethodBeat.o(271039);
   }
   
-  public final void setMarginClickListener(a parama)
+  public final void setMarginClickListener(WxMaxSizeRecyclerView.a parama)
   {
-    AppMethodBeat.i(259882);
-    p.k(parama, "marginClickListener");
-    this.FWf = parama;
-    AppMethodBeat.o(259882);
+    AppMethodBeat.i(271048);
+    s.u(parama, "marginClickListener");
+    this.LRe = parama;
+    AppMethodBeat.o(271048);
   }
   
   public final void setMaxHeight(int paramInt)
   {
-    AppMethodBeat.i(259879);
+    AppMethodBeat.i(271017);
     this.maxHeight = paramInt;
     invalidate();
     requestLayout();
-    AppMethodBeat.o(259879);
+    AppMethodBeat.o(271017);
   }
   
   public final void setMaxWidth(int paramInt)
   {
-    AppMethodBeat.i(259880);
+    AppMethodBeat.i(271025);
     this.maxWidth = paramInt;
     invalidate();
     requestLayout();
-    AppMethodBeat.o(259880);
+    AppMethodBeat.o(271025);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/music/ui/view/WxMaxSizeRecyclerView$IMarginClickListener;", "", "onClick", "", "plugin-music_release"})
-  public static abstract interface a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/music/ui/view/WxMaxSizeRecyclerView$gestureDetector$1", "Landroid/view/GestureDetector$OnGestureListener;", "onDown", "", "e", "Landroid/view/MotionEvent;", "onFling", "e1", "e2", "velocityX", "", "velocityY", "onLongPress", "", "onScroll", "distanceX", "distanceY", "onShowPress", "onSingleTapUp", "plugin-music_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/music/ui/view/WxMaxSizeRecyclerView$gestureDetector$1", "Landroid/view/GestureDetector$OnGestureListener;", "onDown", "", "e", "Landroid/view/MotionEvent;", "onFling", "e1", "e2", "velocityX", "", "velocityY", "onLongPress", "", "onScroll", "distanceX", "distanceY", "onShowPress", "onSingleTapUp", "plugin-music_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
     implements GestureDetector.OnGestureListener
   {
+    b(WxMaxSizeRecyclerView paramWxMaxSizeRecyclerView) {}
+    
     public final boolean onDown(MotionEvent paramMotionEvent)
     {
       return false;
@@ -140,12 +120,12 @@ public final class WxMaxSizeRecyclerView
     
     public final void onLongPress(MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(259488);
+      AppMethodBeat.i(271005);
       b localb = new b();
-      localb.bn(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/music/ui/view/WxMaxSizeRecyclerView$gestureDetector$1", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aFi());
+      localb.cH(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/music/ui/view/WxMaxSizeRecyclerView$gestureDetector$1", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aYj());
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/music/ui/view/WxMaxSizeRecyclerView$gestureDetector$1", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-      AppMethodBeat.o(259488);
+      AppMethodBeat.o(271005);
     }
     
     public final boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
@@ -157,13 +137,13 @@ public final class WxMaxSizeRecyclerView
     
     public final boolean onSingleTapUp(MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(259485);
+      AppMethodBeat.i(270996);
       b localb = new b();
-      localb.bn(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/music/ui/view/WxMaxSizeRecyclerView$gestureDetector$1", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
-      WxMaxSizeRecyclerView.a(this.FWh);
+      localb.cH(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/music/ui/view/WxMaxSizeRecyclerView$gestureDetector$1", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aYj());
+      WxMaxSizeRecyclerView.a(this.LRf);
       com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/music/ui/view/WxMaxSizeRecyclerView$gestureDetector$1", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
-      AppMethodBeat.o(259485);
+      AppMethodBeat.o(270996);
       return false;
     }
   }

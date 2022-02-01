@@ -1,23 +1,13 @@
 package com.tencent.mm.plugin.appbrand.widget.c;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import android.graphics.Bitmap;
+import android.widget.ImageView.ScaleType;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/widget/halfscreen/HalfScreenDragStatus;", "", "(Ljava/lang/String;I)V", "DRAG_STATE_IDLE", "DRAG_STATE_DRAGGING", "plugin-appbrand-integration_release"})
-public enum d
+public abstract interface d
 {
-  static
-  {
-    AppMethodBeat.i(267331);
-    d locald1 = new d("DRAG_STATE_IDLE", 0);
-    rsX = locald1;
-    d locald2 = new d("DRAG_STATE_DRAGGING", 1);
-    rsY = locald2;
-    rsZ = new d[] { locald1, locald2 };
-    AppMethodBeat.o(267331);
-  }
+  public abstract void setImageBitmap(Bitmap paramBitmap);
   
-  private d() {}
+  public abstract void setScaleType(ImageView.ScaleType paramScaleType);
 }
 
 

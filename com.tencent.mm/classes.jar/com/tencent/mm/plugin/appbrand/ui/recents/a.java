@@ -5,22 +5,18 @@ import com.tencent.mm.ui.widget.imageview.WeImageView;
 
 public abstract class a
 {
-  private a rcS;
+  private a ulg;
   
-  public abstract void CX(int paramInt);
+  public abstract void Dt(int paramInt);
   
-  public abstract void CY(int paramInt);
+  public abstract void Du(int paramInt);
   
   final void a(a parama)
   {
-    this.rcS = parama;
+    this.ulg = parama;
   }
   
   protected void a(WeImageView paramWeImageView) {}
-  
-  public abstract void cfx();
-  
-  public abstract void cfy();
   
   public abstract View getItemView();
   
@@ -32,6 +28,10 @@ public abstract class a
     }
     return true;
   }
+  
+  public abstract void iQ();
+  
+  public abstract void iR();
   
   public abstract void onPause();
   
@@ -48,9 +48,9 @@ public abstract class a
           getItemView().setVisibility(0);
         }
       }
-      while (this.rcS != null)
+      while (this.ulg != null)
       {
-        this.rcS.a(this, getItemView(), paramBoolean);
+        this.ulg.a(this, getItemView(), paramBoolean);
         return;
         if (getItemView().getVisibility() != 8) {
           getItemView().setVisibility(8);
@@ -66,7 +66,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.a
  * JD-Core Version:    0.7.0.1
  */

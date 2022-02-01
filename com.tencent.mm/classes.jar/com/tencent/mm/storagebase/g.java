@@ -8,7 +8,7 @@ import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 public final class g
   implements ISQLiteDatabase
 {
-  private static String VJA = "";
+  private static String adnE = "";
   public int field_MARK_CURSOR_CHECK_IGNORE;
   
   public final int delete(String paramString1, String paramString2, String[] paramArrayOfString)
@@ -33,6 +33,11 @@ public final class g
     "Not Attach Mem Storage:".concat(String.valueOf(paramString1));
     AppMethodBeat.o(133391);
     throw null;
+  }
+  
+  public final long insertOrThrow(String paramString1, String paramString2, ContentValues paramContentValues)
+  {
+    return -2L;
   }
   
   public final boolean isClose()

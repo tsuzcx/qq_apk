@@ -10,19 +10,14 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public abstract class MMService
 {
-  protected Service UXA;
-  private Vector<Integer> UXB = new Vector();
-  private byte UXC = 0;
-  ConcurrentHashMap<String, MMService> UXq = new ConcurrentHashMap();
-  int daG = 0;
-  protected long kdD;
+  ConcurrentHashMap<String, MMService> acwi = new ConcurrentHashMap();
+  protected Service acws;
+  private Vector<Integer> acwt = new Vector();
+  private byte acwu = 0;
+  int eZg = 0;
+  protected long mDN;
   
-  public final void Uq(long paramLong)
-  {
-    this.kdD = paramLong;
-  }
-  
-  public IBinder aqH()
+  public IBinder aKF()
   {
     Log.i(getTag(), "%s onBind()", new Object[] { "MicroMsg.MMService" });
     return null;
@@ -30,7 +25,7 @@ public abstract class MMService
   
   public final void d(int paramInt, Notification paramNotification)
   {
-    this.UXA.startForeground(paramInt, paramNotification);
+    this.acws.startForeground(paramInt, paramNotification);
   }
   
   public String getTag()
@@ -38,9 +33,9 @@ public abstract class MMService
     return "MicroMsg.MMService";
   }
   
-  public final void htD()
+  public final void iUE()
   {
-    this.UXA.stopForeground(true);
+    this.acws.stopForeground(true);
   }
   
   public void onCreate()
@@ -72,10 +67,10 @@ public abstract class MMService
     return false;
   }
   
-  public final IBinder p(Intent paramIntent, String paramString)
+  public final IBinder r(Intent paramIntent, String paramString)
   {
     int i = 2;
-    String str = Integer.toBinaryString(this.UXC);
+    String str = Integer.toBinaryString(this.acwu);
     Log.i(getTag(), "%s callLifeCycle() callType = %s state = %s", new Object[] { "MicroMsg.MMService", paramString, str });
     switch (paramString.hashCode())
     {
@@ -117,79 +112,84 @@ public abstract class MMService
               }
               i = 3;
               break label86;
-              if ((this.UXC & 0x5) == 0) {
+              if ((this.acwu & 0x5) == 0) {
                 onCreate();
               }
-              i = this.daG + 1;
-              this.daG = i;
+              i = this.eZg + 1;
+              this.eZg = i;
               onStartCommand(paramIntent, 0, i);
-              this.UXC = ((byte)(this.UXC | 0x1));
+              this.acwu = ((byte)(this.acwu | 0x1));
               return null;
-              if (this.UXC == 1)
+              if (this.acwu == 1)
               {
                 onDestroy();
-                this.UXq.remove(getClass().getName());
+                this.acwi.remove(getClass().getName());
                 return null;
               }
-            } while (this.UXC == 4);
-            if (this.UXC == 5)
+            } while (this.acwu == 4);
+            if (this.acwu == 5)
             {
-              this.UXC = 7;
+              this.acwu = 7;
               return null;
             }
-          } while (this.UXC != 13);
+          } while (this.acwu != 13);
           onDestroy();
-          this.UXq.remove(getClass().getName());
+          this.acwi.remove(getClass().getName());
           return null;
           paramIntent = Integer.valueOf(paramIntent.getIntExtra("service_connection", -1));
-        } while (this.UXB.contains(paramIntent));
-        this.UXB.add(paramIntent);
-        if ((this.UXC & 0x5) == 0) {
+        } while (this.acwt.contains(paramIntent));
+        this.acwt.add(paramIntent);
+        if ((this.acwu & 0x5) == 0) {
           onCreate();
         }
-        this.UXC = ((byte)(this.UXC | 0x4));
-        return aqH();
+        this.acwu = ((byte)(this.acwu | 0x4));
+        return aKF();
         i = paramIntent.getIntExtra("service_connection", -1);
-        this.UXB.remove(Integer.valueOf(i));
-      } while (this.UXC == 1);
-      if (this.UXC == 4)
+        this.acwt.remove(Integer.valueOf(i));
+      } while (this.acwu == 1);
+      if (this.acwu == 4)
       {
         onUnbind(paramIntent);
         onDestroy();
-        this.UXq.remove(getClass().getName());
+        this.acwi.remove(getClass().getName());
         return null;
       }
-      if (this.UXC == 5)
+      if (this.acwu == 5)
       {
-        this.UXC = 13;
+        this.acwu = 13;
         onUnbind(paramIntent);
         return null;
       }
-    } while (this.UXC != 7);
+    } while (this.acwu != 7);
     onUnbind(paramIntent);
     onDestroy();
-    this.UXq.remove(getClass().getName());
+    this.acwi.remove(getClass().getName());
     return null;
   }
   
   public final void startActivity(Intent paramIntent)
   {
-    Service localService = this.UXA;
-    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bm(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.b(localService, paramIntent.aFh(), "com/tencent/mm/service/MMService", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    localService.startActivity((Intent)paramIntent.sf(0));
+    Service localService = this.acws;
+    paramIntent = new com.tencent.mm.hellhoundlib.b.a().cG(paramIntent);
+    com.tencent.mm.hellhoundlib.a.a.b(localService, paramIntent.aYi(), "com/tencent/mm/service/MMService", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localService.startActivity((Intent)paramIntent.sb(0));
     com.tencent.mm.hellhoundlib.a.a.c(localService, "com/tencent/mm/service/MMService", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
   }
   
   public final void stopSelf()
   {
     Log.i(getTag(), "%s stopSelf()", new Object[] { "MicroMsg.MMService" });
-    p(new Intent(), "stop");
+    r(new Intent(), "stop");
+  }
+  
+  public final void yC(long paramLong)
+  {
+    this.mDN = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.service.MMService
  * JD-Core Version:    0.7.0.1
  */

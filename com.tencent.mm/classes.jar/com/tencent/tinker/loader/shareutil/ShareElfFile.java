@@ -92,7 +92,7 @@ public class ShareElfFile
     //   12: astore_2
     //   13: aload_2
     //   14: aload_3
-    //   15: invokevirtual 176	java/io/InputStream:read	([B)I
+    //   15: invokevirtual 174	java/io/InputStream:read	([B)I
     //   18: pop
     //   19: aload_3
     //   20: iconst_0
@@ -117,7 +117,7 @@ public class ShareElfFile
     //   48: bipush 10
     //   50: if_icmpne +9 -> 59
     //   53: aload_2
-    //   54: invokevirtual 179	java/io/InputStream:close	()V
+    //   54: invokevirtual 177	java/io/InputStream:close	()V
     //   57: iconst_0
     //   58: ireturn
     //   59: aload_3
@@ -141,11 +141,11 @@ public class ShareElfFile
     //   86: bipush 70
     //   88: if_icmpne +9 -> 97
     //   91: aload_2
-    //   92: invokevirtual 179	java/io/InputStream:close	()V
+    //   92: invokevirtual 177	java/io/InputStream:close	()V
     //   95: iconst_1
     //   96: ireturn
     //   97: aload_2
-    //   98: invokevirtual 179	java/io/InputStream:close	()V
+    //   98: invokevirtual 177	java/io/InputStream:close	()V
     //   101: iconst_m1
     //   102: ireturn
     //   103: astore_0
@@ -154,7 +154,7 @@ public class ShareElfFile
     //   106: aload_2
     //   107: ifnull +7 -> 114
     //   110: aload_2
-    //   111: invokevirtual 179	java/io/InputStream:close	()V
+    //   111: invokevirtual 177	java/io/InputStream:close	()V
     //   114: aload_0
     //   115: athrow
     //   116: astore_0
@@ -173,15 +173,15 @@ public class ShareElfFile
     //   0	135	0	paramFile	File
     //   46	5	1	i	int
     //   12	99	2	localFileInputStream	FileInputStream
-    //   127	1	2	localThrowable	java.lang.Throwable
+    //   127	1	2	localObject	Object
     //   3	81	3	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
     //   0	13	103	finally
-    //   53	57	116	java/lang/Throwable
-    //   91	95	119	java/lang/Throwable
-    //   97	101	123	java/lang/Throwable
-    //   110	114	127	java/lang/Throwable
+    //   53	57	116	finally
+    //   91	95	119	finally
+    //   97	101	123	finally
+    //   110	114	127	finally
     //   13	19	131	finally
   }
   
@@ -469,7 +469,7 @@ public class ShareElfFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.tinker.loader.shareutil.ShareElfFile
  * JD-Core Version:    0.7.0.1
  */

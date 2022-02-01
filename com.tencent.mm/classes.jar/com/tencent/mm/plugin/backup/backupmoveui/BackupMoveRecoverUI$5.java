@@ -16,17 +16,17 @@ final class BackupMoveRecoverUI$5
   {
     AppMethodBeat.i(21447);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/backup/backupmoveui/BackupMoveRecoverUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/backup/backupmoveui/BackupMoveRecoverUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
     Log.i("MicroMsg.BackupMoveRecoverUI", "minimize BackupMoveRecoverUI");
-    BackupMoveRecoverUI.k(this.rPl);
+    BackupMoveRecoverUI.l(this.vaA);
     a.a(this, "com/tencent/mm/plugin/backup/backupmoveui/BackupMoveRecoverUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(21447);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.backupmoveui.BackupMoveRecoverUI.5
  * JD-Core Version:    0.7.0.1
  */

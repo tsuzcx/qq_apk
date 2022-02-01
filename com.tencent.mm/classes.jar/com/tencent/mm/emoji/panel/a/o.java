@@ -1,98 +1,59 @@
 package com.tencent.mm.emoji.panel.a;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
-import android.view.View.OnClickListener;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
-import com.tencent.mm.emoji.b.b.ae;
-import com.tencent.mm.emoji.b.b.v;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.m.a.g;
-import kotlin.l;
+import android.content.Context;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/panel/adapter/GroupSyncViewHolder;", "Lcom/tencent/mm/emoji/panel/adapter/PanelViewHolder;", "Lcom/tencent/mm/emoji/model/panel/GroupSyncItem;", "itemView", "Landroid/view/View;", "onClick", "Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "(Landroid/view/View;Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;)V", "attachListener", "com/tencent/mm/emoji/panel/adapter/GroupSyncViewHolder$attachListener$1", "Lcom/tencent/mm/emoji/panel/adapter/GroupSyncViewHolder$attachListener$1;", "callback", "com/tencent/mm/emoji/panel/adapter/GroupSyncViewHolder$callback$1", "Lcom/tencent/mm/emoji/panel/adapter/GroupSyncViewHolder$callback$1;", "link", "kotlin.jvm.PlatformType", "getLink", "()Landroid/view/View;", "syncContent", "getSyncContent", "syncing", "getSyncing", "onBind", "", "item", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "updateSyncView", "plugin-emojisdk_release"})
-public final class o
-  extends s<v>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/panel/adapter/PanelSizeResolver;", "", "()V", "TAG", "", "contentPadding", "", "getContentPadding", "()I", "setContentPadding", "(I)V", "edgeSize", "", "getEdgeSize", "()F", "itemPadding", "getItemPadding", "itemSize", "getItemSize", "itemSpace", "getItemSpace", "setItemSpace", "minSpaceSize", "getMinSpaceSize", "parentWidth", "spanCount", "getSpanCount", "setSpanCount", "titlePadding", "getTitlePadding", "setTitlePadding", "setParentWidth", "", "width", "updateSize", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract class o
 {
-  private final View jMh;
-  final View jMi;
-  private final View jMj;
-  private final o.b jMk;
-  private final o.a jMl;
+  private final String TAG = "MicroMsg.PanelSizeResolver";
+  private int aMZ;
+  public int contentPadding;
+  private int itemSpace;
+  int mls;
+  public int spanCount;
   
-  public o(View paramView, p paramp)
+  public o()
   {
-    super(paramView, paramp);
-    AppMethodBeat.i(227471);
-    this.jMh = paramView.findViewById(a.g.emoji_panel_item_sync_content);
-    this.jMi = paramView.findViewById(a.g.emoji_panel_item_sync_link);
-    this.jMj = paramView.findViewById(a.g.emoji_panel_item_sync_syncing);
-    this.jMk = new o.b(this);
-    this.jMl = new o.a(this);
-    paramView.addOnAttachStateChangeListener((View.OnAttachStateChangeListener)this.jMl);
-    paramView.setOnClickListener(null);
-    this.jMi.setOnClickListener((View.OnClickListener)new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(223561);
-        b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/emoji/panel/adapter/GroupSyncViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        paramAnonymousView = this.jMm.jMi;
-        kotlin.g.b.p.j(paramAnonymousView, "link");
-        c.b(paramAnonymousView.getContext(), "emoji", ".ui.EmojiMineUI", new Intent());
-        a.a(this, "com/tencent/mm/emoji/panel/adapter/GroupSyncViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(223561);
-      }
-    });
-    AppMethodBeat.o(227471);
+    Context localContext = MMApplicationContext.getContext();
+    localContext.getResources();
+    this.aMZ = a.fromDPToPix(localContext, 400);
   }
   
-  private final void aCS()
+  public abstract float aVN();
+  
+  public abstract float aVO();
+  
+  public abstract float aVP();
+  
+  public final void rI(int paramInt)
   {
-    AppMethodBeat.i(227468);
-    Object localObject = h.ag(com.tencent.mm.plugin.emoji.b.d.class);
-    kotlin.g.b.p.j(localObject, "MMKernel.plugin(IPluginEmoji::class.java)");
-    localObject = ((com.tencent.mm.plugin.emoji.b.d)localObject).getEmojiMgr();
-    kotlin.g.b.p.j(localObject, "MMKernel.plugin(IPluginEmoji::class.java).emojiMgr");
-    if (((com.tencent.mm.pluginsdk.b.d)localObject).cUv())
-    {
-      localObject = this.jMh;
-      kotlin.g.b.p.j(localObject, "syncContent");
-      ((View)localObject).setVisibility(8);
-      localObject = this.jMi;
-      kotlin.g.b.p.j(localObject, "link");
-      ((View)localObject).setVisibility(8);
-      localObject = this.jMj;
-      kotlin.g.b.p.j(localObject, "syncing");
-      ((View)localObject).setVisibility(0);
-      AppMethodBeat.o(227468);
+    Log.i(this.TAG, s.X("setParentWidth: ", Integer.valueOf(paramInt)));
+    if (paramInt <= 0) {
       return;
     }
-    localObject = this.jMh;
-    kotlin.g.b.p.j(localObject, "syncContent");
-    ((View)localObject).setVisibility(0);
-    localObject = this.jMi;
-    kotlin.g.b.p.j(localObject, "link");
-    ((View)localObject).setVisibility(0);
-    localObject = this.jMj;
-    kotlin.g.b.p.j(localObject, "syncing");
-    ((View)localObject).setVisibility(8);
-    AppMethodBeat.o(227468);
+    this.aMZ = paramInt;
+    updateSize();
   }
   
-  public final void a(ae paramae)
+  protected final void updateSize()
   {
-    AppMethodBeat.i(227464);
-    kotlin.g.b.p.k(paramae, "item");
-    super.a(paramae);
-    aCS();
-    AppMethodBeat.o(227464);
+    float f = this.aMZ - aVO() * 2.0F;
+    if (f < aVN() * 2.0F)
+    {
+      this.spanCount = 1;
+      return;
+    }
+    int i = (int)((f - aVN()) / (aVN() + aVP())) + 1;
+    this.itemSpace = ((int)((f - aVN() * i) / (i - 1)));
+    this.contentPadding = ((int)((this.aMZ - aVN() * i - this.itemSpace * i) / 2.0F));
+    this.mls = (this.itemSpace / 2);
+    Log.i(this.TAG, "updateSize: " + aVN() + ", " + aVO() + ", " + aVP() + ", " + this.spanCount + ", " + this.itemSpace + ", " + this.contentPadding + ", " + this.mls);
+    this.spanCount = i;
   }
 }
 

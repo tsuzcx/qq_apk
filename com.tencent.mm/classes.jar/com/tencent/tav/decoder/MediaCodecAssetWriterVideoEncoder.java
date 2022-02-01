@@ -1,12 +1,13 @@
 package com.tencent.tav.decoder;
 
-import android.media.MediaCodec;
 import android.media.MediaCodec.BufferInfo;
 import android.media.MediaCodec.CodecException;
 import android.media.MediaFormat;
 import android.os.Build.VERSION;
+import android.os.Trace;
 import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tav.codec.MediaCodecAnalyse;
 import com.tencent.tav.core.ExportConfig;
 import com.tencent.tav.core.ExportErrorStatus;
 import com.tencent.tav.core.ExportRuntimeException;
@@ -21,38 +22,40 @@ import java.nio.ByteBuffer;
 public class MediaCodecAssetWriterVideoEncoder
   implements AssetWriterVideoEncoder
 {
+  public static final String SCENE = "tav-encoder-assetwriter";
   private static final long WAIT_TRANSIENT_MS = 20L;
   private final String TAG;
   private ExportConfig encodeOption;
   private CGSize encodeSize;
   private Surface inputSurface;
   private boolean isEncodeToEndOfStream;
+  private MediaFormat mediaFormat;
   private IMediaMuxer muxer;
   private int outHeight;
   private int outWidth;
   private volatile MediaCodec.BufferInfo videoBufferInfo;
   private volatile MediaFormat videoEncodeFormat;
-  private MediaCodec videoEncoder;
+  private MediaCodecAnalyse videoEncoder;
   private long videoPresentationTimeUs;
   
   public MediaCodecAssetWriterVideoEncoder()
   {
-    AppMethodBeat.i(191015);
+    AppMethodBeat.i(216182);
     this.TAG = ("MediaCodecAssetWriterVideoEncoder@" + hashCode());
     this.videoBufferInfo = new MediaCodec.BufferInfo();
     this.videoEncodeFormat = null;
     this.videoPresentationTimeUs = 0L;
     this.isEncodeToEndOfStream = false;
-    AppMethodBeat.o(191015);
+    AppMethodBeat.o(216182);
   }
   
-  private int dequeueOutputBuffer(MediaCodec paramMediaCodec, MediaCodec.BufferInfo paramBufferInfo)
+  private int dequeueOutputBuffer(MediaCodecAnalyse paramMediaCodecAnalyse, MediaCodec.BufferInfo paramBufferInfo)
   {
-    AppMethodBeat.i(191066);
+    AppMethodBeat.i(216191);
     try
     {
-      int i = paramMediaCodec.dequeueOutputBuffer(paramBufferInfo, 1000L);
-      AppMethodBeat.o(191066);
+      int i = paramMediaCodecAnalyse.dequeueOutputBuffer(paramBufferInfo, 1000L);
+      AppMethodBeat.o(216191);
       return i;
     }
     catch (Exception localException)
@@ -71,18 +74,18 @@ public class MediaCodecAssetWriterVideoEncoder
         }
         waitTime(20L);
       }
-      AppMethodBeat.o(191066);
+      AppMethodBeat.o(216191);
       throw localException;
     }
   }
   
-  private ByteBuffer getOutputBuffer(MediaCodec paramMediaCodec, int paramInt)
+  private ByteBuffer getOutputBuffer(MediaCodecAnalyse paramMediaCodecAnalyse, int paramInt)
   {
-    AppMethodBeat.i(191080);
+    AppMethodBeat.i(216220);
     try
     {
-      ByteBuffer localByteBuffer = DecoderUtils.getOutputBuffer(paramMediaCodec, paramInt);
-      AppMethodBeat.o(191080);
+      ByteBuffer localByteBuffer = DecoderUtils.getOutputBuffer(paramMediaCodecAnalyse, paramInt);
+      AppMethodBeat.o(216220);
       return localByteBuffer;
     }
     catch (Exception localException)
@@ -101,7 +104,7 @@ public class MediaCodecAssetWriterVideoEncoder
         }
         waitTime(20L);
       }
-      AppMethodBeat.o(191080);
+      AppMethodBeat.o(216220);
       throw localException;
     }
     catch (Error localError)
@@ -111,13 +114,13 @@ public class MediaCodecAssetWriterVideoEncoder
     }
   }
   
-  private void releaseOutputBuffer(MediaCodec paramMediaCodec, int paramInt, boolean paramBoolean)
+  private void releaseOutputBuffer(MediaCodecAnalyse paramMediaCodecAnalyse, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(191070);
+    AppMethodBeat.i(216202);
     try
     {
-      paramMediaCodec.releaseOutputBuffer(paramInt, paramBoolean);
-      AppMethodBeat.o(191070);
+      paramMediaCodecAnalyse.releaseOutputBuffer(paramInt, paramBoolean);
+      AppMethodBeat.o(216202);
       return;
     }
     catch (Exception localException)
@@ -131,10 +134,10 @@ public class MediaCodecAssetWriterVideoEncoder
         if (((MediaCodec.CodecException)localException).isTransient())
         {
           waitTime(20L);
-          releaseOutputBuffer(paramMediaCodec, paramInt, paramBoolean);
+          releaseOutputBuffer(paramMediaCodecAnalyse, paramInt, paramBoolean);
         }
       }
-      AppMethodBeat.o(191070);
+      AppMethodBeat.o(216202);
       throw localException;
     }
     catch (Error localError)
@@ -151,30 +154,41 @@ public class MediaCodecAssetWriterVideoEncoder
   
   private void waitTime(long paramLong)
   {
-    AppMethodBeat.i(191083);
+    AppMethodBeat.i(216230);
     try
     {
       wait(paramLong);
-      AppMethodBeat.o(191083);
+      AppMethodBeat.o(216230);
       return;
     }
     catch (InterruptedException localInterruptedException)
     {
-      AppMethodBeat.o(191083);
+      AppMethodBeat.o(216230);
     }
   }
   
   public Surface createInputSurface()
   {
-    AppMethodBeat.i(191018);
+    AppMethodBeat.i(216238);
     if ((this.videoEncoder != null) && (this.inputSurface == null))
     {
       Logger.i(this.TAG, "createInputSurface");
       this.inputSurface = this.videoEncoder.createInputSurface();
     }
     Surface localSurface = this.inputSurface;
-    AppMethodBeat.o(191018);
+    AppMethodBeat.o(216238);
     return localSurface;
+  }
+  
+  public void flush()
+  {
+    AppMethodBeat.i(216286);
+    if (this.videoEncoder != null)
+    {
+      this.isEncodeToEndOfStream = false;
+      this.videoEncoder.flush();
+    }
+    AppMethodBeat.o(216286);
   }
   
   public MediaFormat getEncodeFormat()
@@ -204,12 +218,13 @@ public class MediaCodecAssetWriterVideoEncoder
   
   public boolean prepare(ExportConfig paramExportConfig, MediaFormat paramMediaFormat)
   {
-    AppMethodBeat.i(191028);
+    AppMethodBeat.i(216254);
     CGSize localCGSize = CodecHelper.correctSupportSize(paramExportConfig.getOutputSize(), "video/avc");
     this.outHeight = ((int)localCGSize.height);
     this.outWidth = ((int)localCGSize.width);
     this.encodeSize = new CGSize(this.outWidth, this.outHeight);
     this.encodeOption = paramExportConfig;
+    this.mediaFormat = paramMediaFormat;
     try
     {
       Logger.i(this.TAG, "prepareVideoEncoder: format = ".concat(String.valueOf(paramMediaFormat)));
@@ -217,9 +232,9 @@ public class MediaCodecAssetWriterVideoEncoder
       if (paramMediaFormat.containsKey("mime")) {
         paramExportConfig = paramMediaFormat.getString("mime");
       }
-      this.videoEncoder = MediaCodec.createEncoderByType(paramExportConfig);
+      this.videoEncoder = MediaCodecAnalyse.createEncoderByType(paramExportConfig, "tav-encoder-assetwriter");
       this.videoEncoder.configure(paramMediaFormat, null, null, 1);
-      AppMethodBeat.o(191028);
+      AppMethodBeat.o(216254);
       return true;
     }
     catch (Exception paramExportConfig)
@@ -229,16 +244,16 @@ public class MediaCodecAssetWriterVideoEncoder
       paramMediaFormat.setInteger("level", 0);
       try
       {
-        this.videoEncoder = MediaCodec.createEncoderByType("video/avc");
+        this.videoEncoder = MediaCodecAnalyse.createEncoderByType("video/avc", "tav-encoder-assetwriter");
         this.videoEncoder.configure(paramMediaFormat, null, null, 1);
-        AppMethodBeat.o(191028);
+        AppMethodBeat.o(216254);
         return true;
       }
       catch (Exception paramExportConfig)
       {
         Logger.e(this.TAG, "prepareVideoEncoder: retry 失败 format = ".concat(String.valueOf(paramMediaFormat)), paramExportConfig);
         paramExportConfig = new ExportRuntimeException(new ExportErrorStatus(-103, paramExportConfig, paramMediaFormat.toString()));
-        AppMethodBeat.o(191028);
+        AppMethodBeat.o(216254);
         throw paramExportConfig;
       }
     }
@@ -248,11 +263,25 @@ public class MediaCodecAssetWriterVideoEncoder
   
   public void release()
   {
-    AppMethodBeat.i(191075);
+    AppMethodBeat.i(216342);
     if (this.videoEncoder != null) {
       this.videoEncoder.release();
     }
-    AppMethodBeat.o(191075);
+    AppMethodBeat.o(216342);
+  }
+  
+  public void reset()
+  {
+    AppMethodBeat.i(216349);
+    if (this.videoEncoder != null)
+    {
+      this.isEncodeToEndOfStream = false;
+      this.videoEncoder.reset();
+      this.videoEncoder.configure(this.mediaFormat, null, null, 1);
+      this.inputSurface = null;
+      this.videoEncoder.start();
+    }
+    AppMethodBeat.o(216349);
   }
   
   public void setMediaMuxer(IMediaMuxer paramIMediaMuxer)
@@ -264,50 +293,51 @@ public class MediaCodecAssetWriterVideoEncoder
   
   public void signalEndOfInputStream()
   {
-    AppMethodBeat.i(191038);
+    AppMethodBeat.i(216297);
     if (this.videoEncoder != null) {
       this.videoEncoder.signalEndOfInputStream();
     }
-    AppMethodBeat.o(191038);
+    AppMethodBeat.o(216297);
   }
   
   public boolean start()
   {
-    AppMethodBeat.i(191034);
+    AppMethodBeat.i(216278);
     if (this.videoEncoder != null)
     {
       this.videoEncoder.start();
-      AppMethodBeat.o(191034);
+      AppMethodBeat.o(216278);
       return true;
     }
-    AppMethodBeat.o(191034);
+    AppMethodBeat.o(216278);
     return false;
   }
   
   public void stop()
   {
-    AppMethodBeat.i(191074);
+    AppMethodBeat.i(216336);
     if (this.videoEncoder != null) {
       this.videoEncoder.stop();
     }
-    AppMethodBeat.o(191074);
+    AppMethodBeat.o(216336);
   }
   
   public boolean writeVideoSample(CMSampleBuffer paramCMSampleBuffer, boolean paramBoolean)
   {
     boolean bool3 = false;
-    AppMethodBeat.i(191051);
+    boolean bool1 = false;
+    AppMethodBeat.i(216309);
     if (this.muxer != null) {}
     for (boolean bool2 = this.muxer.isMuxerStarted();; bool2 = false)
     {
+      System.currentTimeMillis();
       int i;
-      boolean bool1;
       if ((bool2) || (this.videoEncodeFormat == null))
       {
+        Trace.beginSection("encode-dequeue");
         i = dequeueOutputBuffer(this.videoEncoder, this.videoBufferInfo);
-        if (i == -1)
-        {
-          bool1 = bool3;
+        Trace.endSection();
+        if (i == -1) {
           if (!paramBoolean) {
             bool1 = true;
           }
@@ -315,51 +345,47 @@ public class MediaCodecAssetWriterVideoEncoder
       }
       for (;;)
       {
-        AppMethodBeat.o(191051);
+        AppMethodBeat.o(216309);
         return bool1;
         if (i == -2)
         {
           this.videoEncodeFormat = this.videoEncoder.getOutputFormat();
           Logger.i(this.TAG, "encoder output format changed:" + this.videoEncodeFormat);
-          bool1 = bool3;
         }
-        else
+        else if (i >= 0)
         {
-          bool1 = bool3;
-          if (i >= 0)
+          Trace.beginSection("has-data");
+          paramCMSampleBuffer = getOutputBuffer(this.videoEncoder, i);
+          if (((this.videoBufferInfo.flags & 0x2) != 0) && (this.muxer.ignoreHeader())) {
+            this.videoBufferInfo.size = 0;
+          }
+          if ((bool2) && (validAndCorrectBufferInfo(this.videoBufferInfo))) {}
+          try
           {
-            paramCMSampleBuffer = getOutputBuffer(this.videoEncoder, i);
-            if (((this.videoBufferInfo.flags & 0x2) != 0) && (this.muxer.ignoreHeader())) {
-              this.videoBufferInfo.size = 0;
-            }
-            if ((bool2) && (validAndCorrectBufferInfo(this.videoBufferInfo))) {}
-            try
+            MediaCodec.BufferInfo localBufferInfo = new MediaCodec.BufferInfo();
+            localBufferInfo.set(this.videoBufferInfo.offset, this.videoBufferInfo.size, this.videoBufferInfo.presentationTimeUs, this.videoBufferInfo.flags);
+            this.muxer.writeSampleData(this.muxer.videoTrackIndex(), paramCMSampleBuffer, localBufferInfo);
+            this.videoPresentationTimeUs = this.videoBufferInfo.presentationTimeUs;
+            releaseOutputBuffer(this.videoEncoder, i, false);
+            bool1 = bool3;
+            if ((this.videoBufferInfo.flags & 0x4) != 0)
             {
-              MediaCodec.BufferInfo localBufferInfo = new MediaCodec.BufferInfo();
-              localBufferInfo.set(this.videoBufferInfo.offset, this.videoBufferInfo.size, this.videoBufferInfo.presentationTimeUs, this.videoBufferInfo.flags);
-              this.muxer.writeSampleData(this.muxer.videoTrackIndex(), paramCMSampleBuffer, localBufferInfo);
-              this.videoPresentationTimeUs = this.videoBufferInfo.presentationTimeUs;
-              releaseOutputBuffer(this.videoEncoder, i, false);
-              bool1 = bool3;
-              if ((this.videoBufferInfo.flags & 0x4) == 0) {
-                continue;
-              }
               Logger.i(this.TAG, "writeVideoFrame: BUFFER_FLAG_END_OF_STREAM");
               this.videoPresentationTimeUs = -1L;
               this.isEncodeToEndOfStream = true;
               bool1 = true;
             }
-            catch (Exception paramCMSampleBuffer)
+            Trace.endSection();
+          }
+          catch (Exception paramCMSampleBuffer)
+          {
+            for (;;)
             {
-              for (;;)
-              {
-                Logger.e(this.TAG, "writeVideoFrame: ", paramCMSampleBuffer);
-              }
+              Logger.e(this.TAG, "writeVideoFrame: ", paramCMSampleBuffer);
             }
-            bool1 = bool3;
-            if (!paramBoolean) {
-              bool1 = true;
-            }
+          }
+          if (!paramBoolean) {
+            bool1 = true;
           }
         }
       }

@@ -8,20 +8,20 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 
 public final class StoryAvatarDotsView
   extends FrameLayout
 {
-  private int rmq;
-  private int rmr;
+  private int uwj;
+  private int uwk;
   
   public StoryAvatarDotsView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(143459);
-    this.rmq = a.fromDPToPix(getContext(), 25);
-    this.rmr = a.fromDPToPix(getContext(), 19);
+    this.uwj = a.fromDPToPix(getContext(), 25);
+    this.uwk = a.fromDPToPix(getContext(), 19);
     AppMethodBeat.o(143459);
   }
   
@@ -29,12 +29,12 @@ public final class StoryAvatarDotsView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(143460);
-    this.rmq = a.fromDPToPix(getContext(), 25);
-    this.rmr = a.fromDPToPix(getContext(), 19);
+    this.uwj = a.fromDPToPix(getContext(), 25);
+    this.uwk = a.fromDPToPix(getContext(), 19);
     AppMethodBeat.o(143460);
   }
   
-  private void cmP()
+  private void cOG()
   {
     AppMethodBeat.i(143463);
     if (getChildCount() > 0)
@@ -45,12 +45,12 @@ public final class StoryAvatarDotsView
         View localView = getChildAt(i);
         Object localObject = localView.getLayoutParams();
         ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
-        int j = this.rmq;
+        int j = this.uwj;
         localLayoutParams.height = j;
         ((ViewGroup.LayoutParams)localObject).width = j;
         localObject = (FrameLayout.LayoutParams)localView.getLayoutParams();
         ((FrameLayout.LayoutParams)localObject).gravity |= 0x5;
-        ((FrameLayout.LayoutParams)localView.getLayoutParams()).rightMargin = (this.rmr * i);
+        ((FrameLayout.LayoutParams)localView.getLayoutParams()).rightMargin = (this.uwk * i);
         i -= 1;
       }
       requestLayout();
@@ -59,7 +59,7 @@ public final class StoryAvatarDotsView
     AppMethodBeat.o(143463);
   }
   
-  public final ImageView Dt(int paramInt)
+  public final ImageView DS(int paramInt)
   {
     AppMethodBeat.i(143465);
     ImageView localImageView = (ImageView)getChildAt(getChildCount() - 1 - paramInt);
@@ -83,10 +83,10 @@ public final class StoryAvatarDotsView
   public final void setIconGap(int paramInt)
   {
     AppMethodBeat.i(143462);
-    if ((paramInt >= 0) && (this.rmr != paramInt))
+    if ((paramInt >= 0) && (this.uwk != paramInt))
     {
-      this.rmr = paramInt;
-      cmP();
+      this.uwk = paramInt;
+      cOG();
     }
     AppMethodBeat.o(143462);
   }
@@ -103,7 +103,7 @@ public final class StoryAvatarDotsView
         while (i < paramInt - j)
         {
           ImageView localImageView = new ImageView(getContext());
-          FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.rmq, this.rmq);
+          FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.uwj, this.uwj);
           localLayoutParams.gravity = 16;
           addViewInLayout(localImageView, 0, localLayoutParams, true);
           i += 1;
@@ -112,7 +112,7 @@ public final class StoryAvatarDotsView
       if (paramInt < getChildCount()) {
         removeViewsInLayout(0, getChildCount() - paramInt);
       }
-      cmP();
+      cOG();
     }
     AppMethodBeat.o(143464);
   }
@@ -120,17 +120,17 @@ public final class StoryAvatarDotsView
   public final void setIconSize(int paramInt)
   {
     AppMethodBeat.i(143461);
-    if ((paramInt > 0) && (paramInt != this.rmq))
+    if ((paramInt > 0) && (paramInt != this.uwj))
     {
-      this.rmq = paramInt;
-      cmP();
+      this.uwj = paramInt;
+      cOG();
     }
     AppMethodBeat.o(143461);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.widget.StoryAvatarDotsView
  * JD-Core Version:    0.7.0.1
  */

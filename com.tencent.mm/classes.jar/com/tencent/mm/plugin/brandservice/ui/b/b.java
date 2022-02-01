@@ -1,135 +1,114 @@
 package com.tencent.mm.plugin.brandservice.ui.b;
 
-import android.content.Context;
-import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.brandservice.d.g;
-import com.tencent.mm.plugin.brandservice.d.i;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
+import com.tencent.mm.message.v;
+import com.tencent.mm.plugin.brandservice.ui.timeline.offenread.g;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 
 public final class b
 {
-  private static HashMap<Long, Long> sTn;
-  private static HashMap<Long, String> sTo;
+  private static long vYA;
+  private static long vYB;
+  private static boolean vYC;
+  public static int vYz;
   
   static
   {
-    AppMethodBeat.i(6238);
-    sTn = new HashMap();
-    sTo = new HashMap();
-    AppMethodBeat.o(6238);
+    AppMethodBeat.i(6235);
+    com.tencent.mm.plugin.brandservice.model.h localh = com.tencent.mm.plugin.brandservice.model.h.vCa;
+    vYz = com.tencent.mm.plugin.brandservice.model.h.dci();
+    vYA = 43200000L;
+    vYB = 0L;
+    vYC = false;
+    AppMethodBeat.o(6235);
   }
   
-  public static void clean()
+  public static boolean HX(int paramInt)
   {
-    try
-    {
-      AppMethodBeat.i(6236);
-      sTn.clear();
-      sTo.clear();
-      AppMethodBeat.o(6236);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return (vYB & paramInt) != 0L;
   }
   
-  public static String f(Context paramContext, long paramLong)
+  public static boolean a(ab paramab, v paramv)
   {
-    for (;;)
+    AppMethodBeat.i(6233);
+    if (paramab == null)
     {
-      GregorianCalendar localGregorianCalendar;
-      long l1;
-      try
+      AppMethodBeat.o(6233);
+      return false;
+    }
+    paramab.acFw = g.ajf(paramab.field_talker);
+    if ((paramv != null) && ((paramv.type == 5) || (paramv.type == 7) || (paramv.type == 10) || (paramv.type == 8)))
+    {
+      AppMethodBeat.o(6233);
+      return true;
+    }
+    if (paramab.nG(1))
+    {
+      Log.d("MicroMsg.BizTimeLineConfigUtil", "biz flag %d return true, bizClientMsgId:%s", new Object[] { Integer.valueOf(paramab.field_bitFlag), paramab.field_bizClientMsgId });
+      AppMethodBeat.o(6233);
+      return true;
+    }
+    if ((HX(2)) && (paramab.acFw))
+    {
+      AppMethodBeat.o(6233);
+      return true;
+    }
+    if (HX(1))
+    {
+      paramab = ((n)com.tencent.mm.kernel.h.ax(n.class)).bzA().JE(paramab.field_talker);
+      if ((paramab != null) && (paramab.aSQ()))
       {
-        AppMethodBeat.i(6237);
-        localGregorianCalendar = new GregorianCalendar();
-        if (paramLong < 3600000L)
-        {
-          paramContext = "";
-          AppMethodBeat.o(6237);
-          return paramContext;
-        }
-        l1 = localGregorianCalendar.getTimeInMillis();
-        if (sTn.containsKey(Long.valueOf(paramLong))) {
-          if (l1 - ((Long)sTn.get(Long.valueOf(paramLong))).longValue() < 60000L)
-          {
-            if (sTo.containsKey(Long.valueOf(paramLong)))
-            {
-              paramContext = (String)sTo.get(Long.valueOf(paramLong));
-              AppMethodBeat.o(6237);
-            }
-          }
-          else {
-            sTn.remove(Long.valueOf(paramLong));
-          }
-        }
-      }
-      finally {}
-      int j;
-      int i;
-      if ((l1 - paramLong) / 3600000L == 0L)
-      {
-        j = (int)((l1 - paramLong) / 60000L);
-        i = j;
-        if (j <= 0) {
-          i = 1;
-        }
-        paramContext = paramContext.getResources().getQuantityString(d.g.fmt_in60min, i, new Object[] { Integer.valueOf(i) });
-        sTo.put(Long.valueOf(paramLong), paramContext);
-        sTn.put(Long.valueOf(paramLong), Long.valueOf(l1));
-        AppMethodBeat.o(6237);
-      }
-      else
-      {
-        long l2 = new GregorianCalendar(localGregorianCalendar.get(1), localGregorianCalendar.get(2), localGregorianCalendar.get(5)).getTimeInMillis();
-        long l3 = paramLong - l2;
-        if ((l3 > 0L) && (l3 <= 86400000L))
-        {
-          j = (int)((l1 - paramLong) / 3600000L);
-          i = j;
-          if (j <= 0) {
-            i = 1;
-          }
-          paramContext = paramContext.getResources().getQuantityString(d.g.fmt_in24h, i, new Object[] { Integer.valueOf(i) });
-          sTo.put(Long.valueOf(paramLong), paramContext);
-          sTn.put(Long.valueOf(paramLong), Long.valueOf(l1));
-          AppMethodBeat.o(6237);
-        }
-        else
-        {
-          l3 = paramLong - l2 + 86400000L;
-          if ((l3 > 0L) && (l3 <= 86400000L))
-          {
-            paramContext = paramContext.getString(d.i.fmt_pre_yesterday);
-            sTo.put(Long.valueOf(paramLong), paramContext);
-            sTn.put(Long.valueOf(paramLong), Long.valueOf(l1));
-            AppMethodBeat.o(6237);
-          }
-          else
-          {
-            j = (int)((l2 + 86400000L - paramLong) / 86400000L);
-            i = j;
-            if (j <= 0) {
-              i = 1;
-            }
-            paramContext = paramContext.getResources().getQuantityString(d.g.fmt_indayh, i, new Object[] { Integer.valueOf(i) });
-            sTo.put(Long.valueOf(paramLong), paramContext);
-            sTn.put(Long.valueOf(paramLong), Long.valueOf(l1));
-            AppMethodBeat.o(6237);
-          }
-        }
+        AppMethodBeat.o(6233);
+        return true;
       }
     }
+    AppMethodBeat.o(6233);
+    return false;
+  }
+  
+  public static long dhO()
+  {
+    if (vYA <= 0L) {
+      vYA = 43200000L;
+    }
+    return vYA;
+  }
+  
+  public static void dhP()
+  {
+    AppMethodBeat.i(6234);
+    vYC = true;
+    Log.i("MicroMsg.BizTimeLineConfigUtil", "alvinluo initBizTimeLineShowDigest: %b", new Object[] { Boolean.valueOf(vYC) });
+    AppMethodBeat.o(6234);
+  }
+  
+  public static boolean dhQ()
+  {
+    return vYC;
+  }
+  
+  public static boolean dhR()
+  {
+    return true;
+  }
+  
+  public static void ks(long paramLong)
+  {
+    vYA = paramLong;
+  }
+  
+  public static void kt(long paramLong)
+  {
+    vYB = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.b.b
  * JD-Core Version:    0.7.0.1
  */

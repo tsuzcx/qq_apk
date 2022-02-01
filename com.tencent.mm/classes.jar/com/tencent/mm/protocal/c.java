@@ -10,439 +10,444 @@ import java.util.Map;
 
 public final class c
 {
-  private static Map<String, c.g> RAp;
-  public static final String[] RAq;
+  private static Map<String, c.g> YwT;
+  public static final String[] YwU;
   
   static
   {
     AppMethodBeat.i(152436);
-    RAp = null;
-    RAq = (String[])new c.1().toArray(new String[0]);
+    YwT = null;
+    YwU = (String[])new c.1().toArray(new String[0]);
     AppMethodBeat.o(152436);
   }
   
-  public static c.g bst(String paramString)
+  public static c.g bsk(String paramString)
   {
     AppMethodBeat.i(152435);
-    if ((RAp == null) || (RAp.size() <= 0))
+    if ((YwT == null) || (YwT.size() <= 0))
     {
       Object localObject = new HashMap(128);
-      RAp = (Map)localObject;
-      ((Map)localObject).put("log", new fd());
-      RAp.put("imagePreview", new el());
-      RAp.put("profile", new ie());
-      RAp.put("shareWeibo", new na());
-      RAp.put("shareTimeline", new lx());
-      RAp.put("adDataReport", new o());
-      RAp.put("streamingVideoPlay", new lu());
-      RAp.put("addContact", new h());
-      RAp.put("getWidgetCaptureImgUrl", new dv());
-      RAp.put("sendAppMessage", new jp());
-      RAp.put("vibrateShort", new mo());
-      RAp.put("scanQRCode", new jh());
-      RAp.put("hideOptionMenu", new ei());
-      RAp.put("showOptionMenu", new kz());
-      RAp.put("getNetworkType", new cw());
-      RAp.put("closeWindow", new aq());
-      RAp.put("getInstallState", new cr());
-      RAp.put("setFontSizeCallback", new kd());
-      RAp.put("jumpToInstallUrl", new es());
-      RAp.put("launchApp", new ey());
-      RAp.put("getBrandWCPayRequest", new cd());
-      RAp.put("secureTunnel", new jj());
-      RAp.put("wcpaySecurityCrosscutBack", new mq());
-      RAp.put("editAddress", new bk());
-      RAp.put("getHeadingAndPitch", new co());
-      RAp.put("sendEmail", new ju());
-      RAp.put("addDownloadTask", new k());
-      RAp.put("cancelDownloadTask", new x());
-      RAp.put("pauseDownloadTask", new hs());
-      RAp.put("resumeDownloadTask", new jf());
-      RAp.put("queryDownloadTask", new ih());
-      RAp.put("installDownloadTask", new eo());
-      RAp.put("getLatestAddress", new db());
-      RAp.put("openSpecificView", new hc());
-      RAp.put("jumpWCMall", new eu());
-      RAp.put("launch3rdApp", new ex());
-      RAp.put("writeCommData", new nh());
-      RAp.put("openUrlByExtBrowser", new hd());
-      RAp.put("geoLocation", new by());
-      RAp.put("getBrandWCPayBindCardRequest", new cc());
-      RAp.put("openProductView", new gv());
-      RAp.put("openProductViewWithPid", new gw());
-      RAp.put("jumpToBizProfile", new et());
-      RAp.put("openTimelineCheckInList", new fk());
-      RAp.put("openLocation", new fj());
-      RAp.put("timelineCheckIn", new fi());
-      RAp.put("getBrandWCPayCreateCreditCardRequest", new hj());
-      RAp.put("chooseCard", new ad());
-      RAp.put("chooseInvoice", new ah());
-      RAp.put("sendServiceAppMessage", new jv());
-      RAp.put("musicPlay", new fg());
-      RAp.put("mmsf0001", new ci());
-      RAp.put("getTransferMoneyRequest", new dr());
-      RAp.put("openWCPaySpecificView", new hf());
-      RAp.put("setCloseWindowConfirmDialogInfo", new kb());
-      RAp.put("batchAddCard", new s());
-      RAp.put("preVerifyJSAPI", new ib());
-      RAp.put("startRecord", new lk());
-      RAp.put("stopRecord", new lr());
-      RAp.put("playVoice", new hw());
-      RAp.put("pauseVoice", new ht());
-      RAp.put("stopVoice", new lt());
-      RAp.put("uploadVoice", new ml());
-      RAp.put("downloadVoice", new bg());
-      RAp.put("chooseImage", new ag());
-      RAp.put("uploadImage", new mi());
-      RAp.put("downloadImage", new bf());
-      RAp.put("uploadMediaFile", new mj());
-      RAp.put("hideMenuItems", new ef());
-      RAp.put("showMenuItems", new kw());
-      RAp.put("hideAllNonBaseMenuItem", new ee());
-      RAp.put("showAllNonBaseMenuItem", new kt());
-      RAp.put("checkJsApi", new ac());
-      RAp.put("translateVoice", new ly());
-      RAp.put("shareQQ", new kq());
-      RAp.put("shareWeiboApp", new ks());
-      RAp.put("shareQZone", new kr());
-      RAp.put("getSendC2CMessageRequest", new do());
-      RAp.put("batchViewCard", new v());
-      RAp.put("configWXDeviceWiFi", new at());
-      RAp.put("getCurrentSSID", new cg());
-      RAp.put("setPageOwner", new ki());
-      RAp.put("getWechatVerifyTicket", new dt());
-      RAp.put("openWXDeviceLib", new hk());
-      RAp.put("startScanWXDevice", new ll());
-      RAp.put("stopScanWXDevice", new ls());
-      RAp.put("connectWXDevice", new av());
-      RAp.put("disconnectWXDevice", new be());
-      RAp.put("getWXDeviceTicket", new dx());
-      RAp.put("getWXDeviceInfos", new dw());
-      RAp.put("sendDataToWXDevice", new jr());
-      RAp.put("closeWXDeviceLib", new as());
-      RAp.put("setSendDataDirection", new km());
-      RAp.put("verifyWCPayPassword", new mn());
-      RAp.put("getPaymentOrderRequest", new da());
-      RAp.put("openGameDetail", new gk());
-      RAp.put("openGameCenter", new gj());
-      RAp.put("setGameDebugConfig", new ke());
-      RAp.put("startTempSession", new ln());
-      RAp.put("getH5PrepayRequest", new cp());
-      RAp.put("getH5TransactionRequest", new cq());
-      RAp.put("menu:share:timeline", new ns());
-      RAp.put("menu:share:appmessage", new np());
-      RAp.put("menu:share:qq", new nq());
-      RAp.put("menu:share:weiboApp", new nt());
-      RAp.put("menu:setfont", new no());
-      RAp.put("menu:share:weibo", new nt());
-      RAp.put("menu:share:QZone", new nr());
-      RAp.put("getRecevieBizHongBaoRequest", new e());
-      RAp.put("openCamera", new fw());
-      RAp.put("insertVideoPlayer", new en());
-      RAp.put("updateVideoPlayer", new mf());
-      RAp.put("removeVideoPlayer", new ip());
-      RAp.put("operateVideoPlayer", new ho());
-      RAp.put("deleteSearchHistory", new bb());
-      RAp.put("getSearchHistory", new dk());
-      RAp.put("getSearchData", new dg());
-      RAp.put("showWeDrawHomeView", new lf());
-      RAp.put("getFestivalLiveInfo", new cl());
-      RAp.put("getChatSearchData", new ce());
-      RAp.put("getPoiInfo", new cn());
-      RAp.put("updateReddotTimeStamps", new mb());
-      RAp.put("getTeachSearchData", new dq());
-      RAp.put("getSearchGuideData", new dj());
-      RAp.put("getSearchAvatarList", new df());
-      RAp.put("getSearchSnsImageList", new dm());
-      RAp.put("getSearchImageList", new dl());
-      RAp.put("getSearchDisplayNameList", new dh());
-      RAp.put("startSearchItemDetailPage", new lm());
-      RAp.put("reportSearchStatistics", new iw());
-      RAp.put("reportSearchRealTimeStatistics", new iv());
-      RAp.put("searchDataHasResult", new ji());
-      RAp.put("openEmotionPage", new bu());
-      RAp.put("getSearchSuggestionData", new dn());
-      RAp.put("setSearchInputWord", new kl());
-      RAp.put("setSnsObjectXmlDescList", new kn());
-      RAp.put("clickSnsMusicPlayButton", new ap());
-      RAp.put("openWeAppPage", new hi());
-      RAp.put("reportWeAppSearchRealtime", new nb());
-      RAp.put("doSearchOperation", new bj());
-      RAp.put("insertSearchWAWidgetView", new em());
-      RAp.put("removeSearchWAWidgetView", new io());
-      RAp.put("updateSearchWAWidgetView", new md());
-      RAp.put("showSearchActionSheet", new la());
-      RAp.put("cancelSearchActionSheet", new z());
-      RAp.put("showSearchToast", new ld());
-      RAp.put("showSearchLoading", new lb());
-      RAp.put("hideSearchLoading", new ej());
-      RAp.put("updateWASearchTemplate", new mg());
-      RAp.put("preloadSearchWeapp", new hz());
-      RAp.put("uxSearchOpLog", new mm());
-      RAp.put("querySearchWeb", new bw());
-      RAp.put("openFinderProfile", new gi());
-      RAp.put("playMusic", new hv());
-      RAp.put("openMusicPage", new gr());
-      RAp.put("openFinderFeed", new gh());
-      RAp.put("getCurrentLocation", new cf());
-      RAp.put("navControl", new fh());
-      RAp.put("showNavBarShadow", new ky());
-      RAp.put("hideNavBarShadow", new eh());
-      RAp.put("jumpToWXWallet", new ev());
-      RAp.put("scanCover", new f());
-      RAp.put("reportActionInfo", new iq());
-      RAp.put("openMyDeviceProfile", new gs());
-      RAp.put("selectPedometerSource", new jm());
-      RAp.put("nfcIsConnect", new fq());
-      RAp.put("nfcConnect", new fn());
-      RAp.put("nfcTransceive", new fr());
-      RAp.put("nfcBatchTransceive", new fl());
-      RAp.put("nfcGetId", new fo());
-      RAp.put("nfcGetInfo", new fp());
-      RAp.put("startMonitoringBeacons", new li());
-      RAp.put("stopMonitoringBeacons", new lp());
-      RAp.put("nfcCheckState", new fm());
-      RAp.put("videoProxyInit", new mt());
-      RAp.put("videoProxyStartPlay", new mw());
-      RAp.put("videoProxyStopPlay", new mx());
-      RAp.put("videoProxySetPlayerState", new mu());
-      RAp.put("videoProxySetRemainTime", new mv());
-      RAp.put("videoProxyPreload", new mz());
-      RAp.put("getWebPayCheckoutCounterRequst", new fc());
-      RAp.put("addCustomMenuItems", new i());
-      RAp.put("operateGameCenterMsg", new hn());
-      RAp.put("openEnterpriseChat", new gf());
-      RAp.put("enterEnterpriseChat", new bo());
-      RAp.put("openEnterpriseContact", new gg());
-      RAp.put("selectEnterpriseContact", new jl());
-      RAp.put("getEnterpriseChat", new ck());
-      RAp.put("reportIDKey", new it());
-      RAp.put("quicklyAddBrandContact", new ik());
-      RAp.put("consumedShareCard", new aw());
-      RAp.put("cache", new ms());
-      RAp.put("publicCache", new my());
-      RAp.put("kvReport", new ew());
-      RAp.put("realtimeReport", new il());
-      RAp.put("openUrlWithExtraWebview", new he());
-      RAp.put("selectSingleContact", new jn());
-      RAp.put("sendAppMessageToSpecifiedContact", new jo());
-      RAp.put("setLocalData", new kf());
-      RAp.put("getLocalData", new cs());
-      RAp.put("clearLocalData", new an());
-      RAp.put("showKeyboard", new kv());
-      RAp.put("showSmileyPanel", new le());
-      RAp.put("disableBounceScroll", new bc());
-      RAp.put("clearBounceBackground", new al());
-      RAp.put("setNavigationBarButtons", new kg());
-      RAp.put("enableFullScreen", new bm());
-      RAp.put("showNavigationBarLoading", new kx());
-      RAp.put("hideNavigationBarLoading", new eg());
-      RAp.put("enablePullDownRefresh", new bn());
-      RAp.put("startPullDownRefresh", new lj());
-      RAp.put("stopPullDownRefresh", new lq());
-      RAp.put("disablePullDownRefresh", new bd());
-      RAp.put("setPageTitle", new kj());
-      RAp.put("setStatusBarStyle", new ko());
-      RAp.put("deleteAccountSuccess", new ba());
-      RAp.put("chooseVideo", new ak());
-      RAp.put("uploadVideo", new mk());
-      RAp.put("openMapNavigateMenu", new gq());
-      RAp.put("setNavigationBarColor", new kh());
-      RAp.put("getWCPayRealnameVerify", new ds());
-      RAp.put("openDesignerEmojiView", new fz());
-      RAp.put("openDesignerProfile", new gb());
-      RAp.put("openEmoticonTopicList", new ge());
-      RAp.put("openDesignerEmojiViewLocal", new ga());
-      RAp.put("openDesignerProfileLocal", new gc());
-      RAp.put("openEmotionDetailViewLocal", new d());
-      RAp.put("openNewPage", new gt());
-      RAp.put("getSearchEmotionData", new di());
-      RAp.put("openEmotionUrl", new bl());
-      RAp.put("WNNativeCallbackOnClick", new nf());
-      RAp.put("WNNativeCallbackOnLongClick", new ng());
-      RAp.put("WNNativeCallbackOnCaretChange", new ne());
-      RAp.put("WNNativeCallbackInitData", new nd());
-      RAp.put("WNNativeAsyncCallback", new nc());
-      RAp.put("WNNativeCallbackOnBecomeEditing", new nl());
-      RAp.put("WNNativeCallbackOnBecomeEdited", new nm());
-      RAp.put("changePayActivityView", new aa());
-      RAp.put("selectWalletCurrency", new lv());
-      RAp.put("scanLicence", new jg());
-      RAp.put("operateMusicPlayer", new b());
-      RAp.put("getMusicPlayerState", new a());
-      RAp.put("clearWebviewCache", new ao());
-      RAp.put("requireSoterBiometricAuthentication", new lg());
-      RAp.put("getSupportSoter", new lh());
-      RAp.put("unbindBankCard", new lz());
-      RAp.put("setBounceBackground", new ka());
-      RAp.put("sendEnterpriseChat", new js());
-      RAp.put("doExposePreparation", new bi());
-      RAp.put("getMsgProofItems", new cv());
-      RAp.put("openSecurityView", new ha());
-      RAp.put("startVoipCall", new lo());
-      RAp.put("chooseInvoiceTitle", new ai());
-      RAp.put("getOpenDeviceId", new cy());
-      RAp.put("getRouteUrl", new de());
-      RAp.put("idCardRealnameVerify", new ek());
-      RAp.put("uploadIdCardSuccess", new nv());
-      RAp.put("showDatePickerView", new ku());
-      RAp.put("openLuckyMoneyDetailView", new go());
-      RAp.put("resendRemittanceMsg", new je());
-      RAp.put("getGameCommInfo", new cm());
-      RAp.put("openGameRegion", new gl());
-      RAp.put("chooseIdCard", new af());
-      RAp.put("getLocalImgData", new c());
-      RAp.put("openWeApp", new hh());
-      RAp.put("recordVideo", new im());
-      RAp.put("previewVideo", new ia());
-      RAp.put("uploadEncryptMediaFile", new mh());
-      RAp.put("chooseMedia", new aj());
-      RAp.put("requestWxFacePictureVerify", new bp());
-      RAp.put("openCustomWebview", new fy());
-      RAp.put("forceUpdateWxaAttr", new bt());
-      RAp.put("openLuckyMoneyHistory", new gp());
-      RAp.put("menuitem:gameSendDesktop", new jt());
-      RAp.put("getWePkgAuthResult", new du());
-      RAp.put("getLocalWePkgInfo", new ct());
-      RAp.put("openGameWebView", new gn());
-      RAp.put("reportGameWeb", new is());
-      RAp.put("launchApplication", new ez());
-      RAp.put("showSearchOfBizHistory", new lc());
-      RAp.put("login", new fe());
-      RAp.put("authorize", new r());
-      RAp.put("requestWxFacePictureVerifyUnionVideo", new bq());
-      RAp.put("checkIsSupportFaceDetect", new ab());
-      RAp.put("operateBackgroundAudio", new hm());
-      RAp.put("setBackgroundAudioState", new jz());
-      RAp.put("getBackgroundAudioState", new ca());
-      RAp.put("addDownloadTaskStraight", new l());
-      RAp.put("setScreenOrientation", new kk());
-      RAp.put("addToEmoticon", new n());
-      RAp.put("shareEmoticon", new kp());
-      RAp.put("makePhoneCall", new ff());
-      RAp.put("openADCanvas", new fx());
-      RAp.put("openSearchCanvas", new gx());
-      RAp.put("opVoteAdData", new hr());
-      RAp.put("opJumpView", new hq());
-      RAp.put("opAdH5Func", new hp());
-      RAp.put("requestWxFaceRegisterInternal", new jb());
-      RAp.put("requestWxFaceVerifyInternal", new jc());
-      RAp.put("launchMiniProgram", new fb());
-      RAp.put("reportMiniProgramPageData", new iu());
-      RAp.put("selectContact", new jk());
-      RAp.put("openSearchWAWidgetLogView", new gy());
-      RAp.put("reloadSearchWAWidgetData", new in());
-      RAp.put("gotoEmoticonPad", new dy());
-      RAp.put("querySimilarEmotion", new ij());
-      RAp.put("closeWindowAndGoNext", new ar());
-      RAp.put("requestWxVoicePrintVerifyInternal", new jd());
-      RAp.put("openBizChat", new fv());
-      RAp.put("handleWCPayWalletBuffer", new ed());
-      RAp.put("tapSearchWAWidgetView", new lw());
-      RAp.put("getMatchContactList", new cu());
-      RAp.put("openSearchWebView", new gz());
-      RAp.put("openWXSearchPage", new hl());
-      RAp.put("viewTypeChange", new mp());
-      RAp.put("invokeMiniProgramAPI", new eq());
-      RAp.put("openGameUrlWithExtraWebView", new gm());
-      RAp.put("setGameData", new kc());
-      RAp.put("getGameData", new ch());
-      RAp.put("clearGameData", new am());
-      RAp.put("openECard", new gd());
-      RAp.put("reportGamePageTime", new ir());
-      RAp.put("setWCPayPassword", new jy());
-      RAp.put("openWCPayCardList", new fu());
-      RAp.put("bindEmail", new w());
-      RAp.put("openOfflinePayView", new gu());
-      RAp.put("bindEmail", new w());
-      RAp.put("doGoToRecVideoList", new dc());
-      RAp.put("jumpWSRecVideoList", new nn());
-      RAp.put("openWebSearchOutLinkItem", new nu());
-      RAp.put("recordHistory", new bx());
-      localObject = hoE().iterator();
+      YwT = (Map)localObject;
+      ((Map)localObject).put("log", new ff());
+      YwT.put("imagePreview", new en());
+      YwT.put("profile", new ig());
+      YwT.put("shareWeibo", new nd());
+      YwT.put("shareTimeline", new ma());
+      YwT.put("adDataReport", new o());
+      YwT.put("streamingVideoPlay", new lx());
+      YwT.put("addContact", new h());
+      YwT.put("getWidgetCaptureImgUrl", new dx());
+      YwT.put("sendAppMessage", new jr());
+      YwT.put("vibrateShort", new mr());
+      YwT.put("scanQRCode", new jj());
+      YwT.put("hideOptionMenu", new ek());
+      YwT.put("showOptionMenu", new lb());
+      YwT.put("getNetworkType", new cy());
+      YwT.put("closeWindow", new aq());
+      YwT.put("getInstallState", new ct());
+      YwT.put("setFontSizeCallback", new kf());
+      YwT.put("jumpToInstallUrl", new eu());
+      YwT.put("launchApp", new fa());
+      YwT.put("getBrandWCPayRequest", new ce());
+      YwT.put("secureTunnel", new jl());
+      YwT.put("wcpaySecurityCrosscutBack", new mt());
+      YwT.put("editAddress", new bl());
+      YwT.put("getHeadingAndPitch", new cq());
+      YwT.put("sendEmail", new jw());
+      YwT.put("addDownloadTask", new k());
+      YwT.put("cancelDownloadTask", new x());
+      YwT.put("pauseDownloadTask", new hu());
+      YwT.put("resumeDownloadTask", new jh());
+      YwT.put("queryDownloadTask", new ij());
+      YwT.put("installDownloadTask", new eq());
+      YwT.put("getLatestAddress", new dd());
+      YwT.put("openSpecificView", new he());
+      YwT.put("jumpWCMall", new ew());
+      YwT.put("launch3rdApp", new ez());
+      YwT.put("writeCommData", new nk());
+      YwT.put("openUrlByExtBrowser", new hf());
+      YwT.put("geoLocation", new bz());
+      YwT.put("getBrandWCPayBindCardRequest", new cd());
+      YwT.put("openProductView", new gx());
+      YwT.put("openProductViewWithPid", new gy());
+      YwT.put("jumpToBizProfile", new ev());
+      YwT.put("openTimelineCheckInList", new fm());
+      YwT.put("openLocation", new fl());
+      YwT.put("timelineCheckIn", new fk());
+      YwT.put("getBrandWCPayCreateCreditCardRequest", new hl());
+      YwT.put("chooseCard", new ad());
+      YwT.put("chooseInvoice", new ah());
+      YwT.put("sendServiceAppMessage", new jx());
+      YwT.put("musicPlay", new fi());
+      YwT.put("mmsf0001", new cj());
+      YwT.put("getTransferMoneyRequest", new dt());
+      YwT.put("openWCPaySpecificView", new hh());
+      YwT.put("setCloseWindowConfirmDialogInfo", new kd());
+      YwT.put("batchAddCard", new s());
+      YwT.put("preVerifyJSAPI", new id());
+      YwT.put("startRecord", new ln());
+      YwT.put("stopRecord", new lu());
+      YwT.put("playVoice", new hy());
+      YwT.put("pauseVoice", new hv());
+      YwT.put("stopVoice", new lw());
+      YwT.put("uploadVoice", new mo());
+      YwT.put("downloadVoice", new bh());
+      YwT.put("chooseImage", new ag());
+      YwT.put("uploadImage", new ml());
+      YwT.put("downloadImage", new bg());
+      YwT.put("uploadMediaFile", new mm());
+      YwT.put("hideMenuItems", new eh());
+      YwT.put("showMenuItems", new ky());
+      YwT.put("hideAllNonBaseMenuItem", new eg());
+      YwT.put("showAllNonBaseMenuItem", new kv());
+      YwT.put("checkJsApi", new ac());
+      YwT.put("translateVoice", new mb());
+      YwT.put("shareQQ", new ks());
+      YwT.put("shareWeiboApp", new ku());
+      YwT.put("shareQZone", new kt());
+      YwT.put("getSendC2CMessageRequest", new dq());
+      YwT.put("batchViewCard", new v());
+      YwT.put("configWXDeviceWiFi", new at());
+      YwT.put("getCurrentSSID", new ch());
+      YwT.put("setPageOwner", new kk());
+      YwT.put("getWechatVerifyTicket", new dv());
+      YwT.put("openWXDeviceLib", new hm());
+      YwT.put("startScanWXDevice", new lo());
+      YwT.put("stopScanWXDevice", new lv());
+      YwT.put("connectWXDevice", new av());
+      YwT.put("disconnectWXDevice", new bf());
+      YwT.put("getWXDeviceTicket", new dz());
+      YwT.put("getWXDeviceInfos", new dy());
+      YwT.put("sendDataToWXDevice", new jt());
+      YwT.put("closeWXDeviceLib", new as());
+      YwT.put("setSendDataDirection", new ko());
+      YwT.put("verifyWCPayPassword", new mq());
+      YwT.put("getPaymentOrderRequest", new dc());
+      YwT.put("openGameDetail", new gm());
+      YwT.put("openGameCenter", new gl());
+      YwT.put("setGameDebugConfig", new kg());
+      YwT.put("startTempSession", new lq());
+      YwT.put("getH5PrepayRequest", new cr());
+      YwT.put("getH5TransactionRequest", new cs());
+      YwT.put("menu:share:timeline", new nw());
+      YwT.put("menu:share:appmessage", new nt());
+      YwT.put("menu:share:qq", new nu());
+      YwT.put("menu:share:weiboApp", new nx());
+      YwT.put("menu:setfont", new ns());
+      YwT.put("menu:share:weibo", new nx());
+      YwT.put("menu:share:QZone", new nv());
+      YwT.put("getRecevieBizHongBaoRequest", new e());
+      YwT.put("openCamera", new fy());
+      YwT.put("insertVideoPlayer", new ep());
+      YwT.put("updateVideoPlayer", new mi());
+      YwT.put("removeVideoPlayer", new ir());
+      YwT.put("operateVideoPlayer", new hq());
+      YwT.put("deleteSearchHistory", new bc());
+      YwT.put("getSearchHistory", new dm());
+      YwT.put("getSearchData", new di());
+      YwT.put("showWeDrawHomeView", new li());
+      YwT.put("getFestivalLiveInfo", new cm());
+      YwT.put("getChatSearchData", new cf());
+      YwT.put("getPoiInfo", new cp());
+      YwT.put("updateReddotTimeStamps", new me());
+      YwT.put("getTeachSearchData", new ds());
+      YwT.put("getSearchGuideData", new dl());
+      YwT.put("getSearchAvatarList", new dh());
+      YwT.put("getSearchSnsImageList", new do());
+      YwT.put("getSearchImageList", new dn());
+      YwT.put("getSearchDisplayNameList", new dj());
+      YwT.put("startSearchItemDetailPage", new lp());
+      YwT.put("reportSearchStatistics", new iy());
+      YwT.put("reportSearchRealTimeStatistics", new ix());
+      YwT.put("searchDataHasResult", new jk());
+      YwT.put("openEmotionPage", new bv());
+      YwT.put("getSearchSuggestionData", new dp());
+      YwT.put("setSearchInputWord", new kn());
+      YwT.put("setSnsObjectXmlDescList", new kp());
+      YwT.put("clickSnsMusicPlayButton", new ap());
+      YwT.put("openWeAppPage", new hk());
+      YwT.put("reportWeAppSearchRealtime", new ne());
+      YwT.put("doSearchOperation", new bk());
+      YwT.put("insertSearchWAWidgetView", new eo());
+      YwT.put("removeSearchWAWidgetView", new iq());
+      YwT.put("updateSearchWAWidgetView", new mg());
+      YwT.put("showSearchActionSheet", new lc());
+      YwT.put("cancelSearchActionSheet", new z());
+      YwT.put("showSearchToast", new lf());
+      YwT.put("showSearchLoading", new ld());
+      YwT.put("hideSearchLoading", new el());
+      YwT.put("updateWASearchTemplate", new mj());
+      YwT.put("preloadSearchWeapp", new ib());
+      YwT.put("uxSearchOpLog", new mp());
+      YwT.put("querySearchWeb", new bx());
+      YwT.put("openFinderProfile", new gk());
+      YwT.put("playMusic", new hx());
+      YwT.put("openMusicPage", new gt());
+      YwT.put("openFinderFeed", new gj());
+      YwT.put("getCurrentLocation", new cg());
+      YwT.put("navControl", new fj());
+      YwT.put("showNavBarShadow", new la());
+      YwT.put("hideNavBarShadow", new ej());
+      YwT.put("jumpToWXWallet", new ex());
+      YwT.put("scanCover", new f());
+      YwT.put("reportActionInfo", new is());
+      YwT.put("openMyDeviceProfile", new gu());
+      YwT.put("selectPedometerSource", new jo());
+      YwT.put("nfcIsConnect", new fs());
+      YwT.put("nfcConnect", new fp());
+      YwT.put("nfcTransceive", new ft());
+      YwT.put("nfcBatchTransceive", new fn());
+      YwT.put("nfcGetId", new fq());
+      YwT.put("nfcGetInfo", new fr());
+      YwT.put("startMonitoringBeacons", new ll());
+      YwT.put("stopMonitoringBeacons", new ls());
+      YwT.put("nfcCheckState", new fo());
+      YwT.put("videoProxyInit", new mw());
+      YwT.put("videoProxyStartPlay", new mz());
+      YwT.put("videoProxyStopPlay", new na());
+      YwT.put("videoProxySetPlayerState", new mx());
+      YwT.put("videoProxySetRemainTime", new my());
+      YwT.put("videoProxyPreload", new nc());
+      YwT.put("getWebPayCheckoutCounterRequst", new fe());
+      YwT.put("addCustomMenuItems", new i());
+      YwT.put("operateGameCenterMsg", new hp());
+      YwT.put("openEnterpriseChat", new gh());
+      YwT.put("enterEnterpriseChat", new bp());
+      YwT.put("openEnterpriseContact", new gi());
+      YwT.put("selectEnterpriseContact", new jn());
+      YwT.put("getEnterpriseChat", new cl());
+      YwT.put("reportIDKey", new iv());
+      YwT.put("quicklyAddBrandContact", new im());
+      YwT.put("consumedShareCard", new aw());
+      YwT.put("cache", new mv());
+      YwT.put("publicCache", new nb());
+      YwT.put("kvReport", new ey());
+      YwT.put("realtimeReport", new in());
+      YwT.put("openUrlWithExtraWebview", new hg());
+      YwT.put("selectSingleContact", new jp());
+      YwT.put("sendAppMessageToSpecifiedContact", new jq());
+      YwT.put("setLocalData", new kh());
+      YwT.put("getLocalData", new cu());
+      YwT.put("clearLocalData", new an());
+      YwT.put("showKeyboard", new kx());
+      YwT.put("showSmileyPanel", new lg());
+      YwT.put("disableBounceScroll", new bd());
+      YwT.put("clearBounceBackground", new al());
+      YwT.put("setNavigationBarButtons", new ki());
+      YwT.put("enableFullScreen", new bn());
+      YwT.put("showNavigationBarLoading", new kz());
+      YwT.put("hideNavigationBarLoading", new ei());
+      YwT.put("enablePullDownRefresh", new bo());
+      YwT.put("startPullDownRefresh", new lm());
+      YwT.put("stopPullDownRefresh", new lt());
+      YwT.put("disablePullDownRefresh", new be());
+      YwT.put("setPageTitle", new kl());
+      YwT.put("setStatusBarStyle", new kq());
+      YwT.put("deleteAccountSuccess", new bb());
+      YwT.put("chooseVideo", new ak());
+      YwT.put("uploadVideo", new mn());
+      YwT.put("openMapNavigateMenu", new gs());
+      YwT.put("setNavigationBarColor", new kj());
+      YwT.put("getWCPayRealnameVerify", new du());
+      YwT.put("openDesignerEmojiView", new gb());
+      YwT.put("openDesignerProfile", new gd());
+      YwT.put("openEmoticonTopicList", new gg());
+      YwT.put("openDesignerEmojiViewLocal", new gc());
+      YwT.put("openDesignerProfileLocal", new ge());
+      YwT.put("openEmotionDetailViewLocal", new d());
+      YwT.put("openNewPage", new gv());
+      YwT.put("getSearchEmotionData", new dk());
+      YwT.put("openEmotionUrl", new bm());
+      YwT.put("WNNativeCallbackOnClick", new ni());
+      YwT.put("WNNativeCallbackOnLongClick", new nj());
+      YwT.put("WNNativeCallbackOnCaretChange", new nh());
+      YwT.put("WNNativeCallbackInitData", new ng());
+      YwT.put("WNNativeAsyncCallback", new nf());
+      YwT.put("WNNativeCallbackOnBecomeEditing", new np());
+      YwT.put("WNNativeCallbackOnBecomeEdited", new nq());
+      YwT.put("changePayActivityView", new aa());
+      YwT.put("selectWalletCurrency", new ly());
+      YwT.put("scanLicence", new ji());
+      YwT.put("operateMusicPlayer", new b());
+      YwT.put("getMusicPlayerState", new a());
+      YwT.put("clearWebviewCache", new ao());
+      YwT.put("requireSoterBiometricAuthentication", new lj());
+      YwT.put("getSupportSoter", new lk());
+      YwT.put("unbindBankCard", new mc());
+      YwT.put("setBounceBackground", new kc());
+      YwT.put("sendEnterpriseChat", new ju());
+      YwT.put("doExposePreparation", new bj());
+      YwT.put("getMsgProofItems", new cx());
+      YwT.put("openSecurityView", new hc());
+      YwT.put("startVoipCall", new lr());
+      YwT.put("chooseInvoiceTitle", new ai());
+      YwT.put("getOpenDeviceId", new da());
+      YwT.put("getRouteUrl", new dg());
+      YwT.put("idCardRealnameVerify", new em());
+      YwT.put("uploadIdCardSuccess", new nz());
+      YwT.put("showDatePickerView", new kw());
+      YwT.put("openLuckyMoneyDetailView", new gq());
+      YwT.put("resendRemittanceMsg", new jg());
+      YwT.put("getGameCommInfo", new co());
+      YwT.put("openGameRegion", new gn());
+      YwT.put("chooseIdCard", new af());
+      YwT.put("getLocalImgData", new c());
+      YwT.put("openWeApp", new hj());
+      YwT.put("recordVideo", new io());
+      YwT.put("previewVideo", new ic());
+      YwT.put("uploadEncryptMediaFile", new mk());
+      YwT.put("chooseMedia", new aj());
+      YwT.put("requestWxFacePictureVerify", new bq());
+      YwT.put("openCustomWebview", new ga());
+      YwT.put("forceUpdateWxaAttr", new bu());
+      YwT.put("openLuckyMoneyHistory", new gr());
+      YwT.put("menuitem:gameSendDesktop", new jv());
+      YwT.put("getWePkgAuthResult", new dw());
+      YwT.put("getLocalWePkgInfo", new cv());
+      YwT.put("openGameWebView", new gp());
+      YwT.put("reportGameWeb", new iu());
+      YwT.put("launchApplication", new fb());
+      YwT.put("showSearchOfBizHistory", new le());
+      YwT.put("login", new fg());
+      YwT.put("authorize", new r());
+      YwT.put("requestWxFacePictureVerifyUnionVideo", new br());
+      YwT.put("checkIsSupportFaceDetect", new ab());
+      YwT.put("operateBackgroundAudio", new ho());
+      YwT.put("setBackgroundAudioState", new kb());
+      YwT.put("getBackgroundAudioState", new cb());
+      YwT.put("addDownloadTaskStraight", new l());
+      YwT.put("setScreenOrientation", new km());
+      YwT.put("addToEmoticon", new n());
+      YwT.put("shareEmoticon", new kr());
+      YwT.put("makePhoneCall", new fh());
+      YwT.put("openADCanvas", new fz());
+      YwT.put("openSearchCanvas", new gz());
+      YwT.put("opVoteAdData", new ht());
+      YwT.put("opJumpView", new hs());
+      YwT.put("opAdH5Func", new hr());
+      YwT.put("requestWxFaceRegisterInternal", new jd());
+      YwT.put("requestWxFaceVerifyInternal", new je());
+      YwT.put("launchMiniProgram", new fd());
+      YwT.put("reportMiniProgramPageData", new iw());
+      YwT.put("selectContact", new jm());
+      YwT.put("openSearchWAWidgetLogView", new ha());
+      YwT.put("reloadSearchWAWidgetData", new ip());
+      YwT.put("gotoEmoticonPad", new ea());
+      YwT.put("querySimilarEmotion", new il());
+      YwT.put("closeWindowAndGoNext", new ar());
+      YwT.put("requestWxVoicePrintVerifyInternal", new jf());
+      YwT.put("openBizChat", new fx());
+      YwT.put("handleWCPayWalletBuffer", new ef());
+      YwT.put("tapSearchWAWidgetView", new lz());
+      YwT.put("getMatchContactList", new cw());
+      YwT.put("openSearchWebView", new hb());
+      YwT.put("openWXSearchPage", new hn());
+      YwT.put("viewTypeChange", new ms());
+      YwT.put("invokeMiniProgramAPI", new es());
+      YwT.put("openGameUrlWithExtraWebView", new go());
+      YwT.put("setGameData", new ke());
+      YwT.put("getGameData", new ci());
+      YwT.put("clearGameData", new am());
+      YwT.put("openECard", new gf());
+      YwT.put("reportGamePageTime", new it());
+      YwT.put("setWCPayPassword", new ka());
+      YwT.put("openWCPayCardList", new fw());
+      YwT.put("bindEmail", new w());
+      YwT.put("openOfflinePayView", new gw());
+      YwT.put("bindEmail", new w());
+      YwT.put("doGoToRecVideoList", new de());
+      YwT.put("jumpWSRecVideoList", new nr());
+      YwT.put("openWebSearchOutLinkItem", new ny());
+      YwT.put("recordHistory", new by());
+      localObject = iPA().iterator();
       while (((Iterator)localObject).hasNext())
       {
         c.g localg = (c.g)((Iterator)localObject).next();
-        RAp.put(localg.getName(), localg);
+        YwT.put(localg.getName(), localg);
       }
-      RAp.put("getSystemInfo", new dp());
-      RAp.put("serviceClick", new jx());
-      RAp.put("openRealnameAuth", new nk());
-      RAp.put("sendSingleAppMessage", new jw());
-      RAp.put("wcPrivacyPolicyResult", new mr());
-      RAp.put("currentMpInfo", new ax());
-      RAp.put("updateAppMessageShareData", new mc());
-      RAp.put("updateTimelineShareData", new me());
-      RAp.put("getCCData", new nj());
-      RAp.put("calRqt", new ni());
-      RAp.put("faceVerifyForPay", new br());
-      RAp.put("request", new ix());
-      RAp.put("notifyPageInfo", new fs());
-      RAp.put("updatePageAuth", new ma());
-      RAp.put("jumpDownloaderWidget", new er());
-      RAp.put("batchUpdateWepkg", new u());
-      RAp.put("addGameDownloadTask", new m());
-      RAp.put("internelWxFaceVerify", new ep());
-      RAp.put("getDownloadWidgetTaskInfos", new cj());
-      RAp.put("chooseHaowanMedia", new ae());
-      RAp.put("queryHaowanPublish", new ii());
-      RAp.put("publishHaowanEdition", new if());
-      RAp.put("cancelHaowanPublish", new y());
-      RAp.put("launchGameVideoEditor", new fa());
-      RAp.put("requestJointPayment", new iz());
-      RAp.put("openSelectPayment", new hb());
-      RAp.put("requestEntrustAuthorization", new iy());
-      RAp.put("getOAID", new cx());
-      RAp.put("qqMailLoginResult", new ig());
+      YwT.put("getSystemInfo", new dr());
+      YwT.put("serviceClick", new jz());
+      YwT.put("openRealnameAuth", new no());
+      YwT.put("sendSingleAppMessage", new jy());
+      YwT.put("wcPrivacyPolicyResult", new mu());
+      YwT.put("currentMpInfo", new ay());
+      YwT.put("updateAppMessageShareData", new mf());
+      YwT.put("updateTimelineShareData", new mh());
+      YwT.put("getCCData", new nm());
+      YwT.put("calRqt", new nl());
+      YwT.put("faceVerifyForPay", new bs());
+      YwT.put("request", new iz());
+      YwT.put("notifyPageInfo", new fu());
+      YwT.put("updatePageAuth", new md());
+      YwT.put("jumpDownloaderWidget", new et());
+      YwT.put("batchUpdateWepkg", new u());
+      YwT.put("addGameDownloadTask", new m());
+      YwT.put("internelWxFaceVerify", new er());
+      YwT.put("getDownloadWidgetTaskInfos", new ck());
+      YwT.put("chooseHaowanMedia", new ae());
+      YwT.put("queryHaowanPublish", new ik());
+      YwT.put("publishHaowanEdition", new ih());
+      YwT.put("cancelHaowanPublish", new y());
+      YwT.put("launchGameVideoEditor", new fc());
+      YwT.put("requestJointPayment", new jb());
+      YwT.put("openSelectPayment", new hd());
+      YwT.put("requestEntrustAuthorization", new ja());
+      YwT.put("buyWCCoin", new nn());
+      YwT.put("consumeWCCoin", new ax());
+      YwT.put("showWCCoinFirstBuyCoinTips", new lh());
+      YwT.put("getOAID", new cz());
+      YwT.put("qqMailLoginResult", new ii());
+      YwT.put("getFinderLivePreviewUrl", new c.cn());
+      YwT.put("getFinderLivePreviewMicCover", new c.cn());
     }
-    paramString = (c.g)RAp.get(paramString);
+    paramString = (c.g)YwT.get(paramString);
     AppMethodBeat.o(152435);
     return paramString;
   }
   
-  public static Bundle hoD()
+  private static List<c.g> iPA()
   {
-    AppMethodBeat.i(221700);
+    AppMethodBeat.i(257316);
+    LinkedList localLinkedList = new LinkedList();
+    localLinkedList.add(new c.ba());
+    localLinkedList.add(new c.az());
+    localLinkedList.add(new c.ca());
+    localLinkedList.add(new ee());
+    localLinkedList.add(new c.eb());
+    localLinkedList.add(new ia());
+    localLinkedList.add(new hz());
+    localLinkedList.add(new c.js());
+    localLinkedList.add(new c.ec());
+    localLinkedList.add(new ed());
+    localLinkedList.add(new c.j());
+    localLinkedList.add(new c.if());
+    localLinkedList.add(new c.ie());
+    localLinkedList.add(new bw());
+    localLinkedList.add(new c.hi());
+    localLinkedList.add(new au());
+    localLinkedList.add(new c.db());
+    localLinkedList.add(new c.df());
+    localLinkedList.add(new c.t());
+    localLinkedList.add(new fv());
+    localLinkedList.add(new hw());
+    localLinkedList.add(new bt());
+    localLinkedList.add(new jc());
+    localLinkedList.add(new p());
+    localLinkedList.add(new q());
+    localLinkedList.add(new cc());
+    localLinkedList.add(new bi());
+    AppMethodBeat.o(257316);
+    return localLinkedList;
+  }
+  
+  public static Bundle iPz()
+  {
+    AppMethodBeat.i(257314);
     Bundle localBundle = new Bundle();
     localBundle.putBoolean("handle", true);
     localBundle.putString("handle_result", null);
-    AppMethodBeat.o(221700);
+    AppMethodBeat.o(257314);
     return localBundle;
-  }
-  
-  private static List<c.g> hoE()
-  {
-    AppMethodBeat.i(221817);
-    LinkedList localLinkedList = new LinkedList();
-    localLinkedList.add(new c.az());
-    localLinkedList.add(new c.ay());
-    localLinkedList.add(new c.bz());
-    localLinkedList.add(new ec());
-    localLinkedList.add(new c.dz());
-    localLinkedList.add(new hy());
-    localLinkedList.add(new c.hx());
-    localLinkedList.add(new c.jq());
-    localLinkedList.add(new c.ea());
-    localLinkedList.add(new eb());
-    localLinkedList.add(new c.j());
-    localLinkedList.add(new c.id());
-    localLinkedList.add(new c.ic());
-    localLinkedList.add(new bv());
-    localLinkedList.add(new c.hg());
-    localLinkedList.add(new au());
-    localLinkedList.add(new cz());
-    localLinkedList.add(new c.dd());
-    localLinkedList.add(new c.t());
-    localLinkedList.add(new c.ft());
-    localLinkedList.add(new hu());
-    localLinkedList.add(new bs());
-    localLinkedList.add(new ja());
-    localLinkedList.add(new c.p());
-    localLinkedList.add(new q());
-    localLinkedList.add(new cb());
-    localLinkedList.add(new c.bh());
-    AppMethodBeat.o(221817);
-    return localLinkedList;
   }
   
   public static final class a
@@ -664,7 +669,16 @@ public final class c
   static final class ax
     extends c.g
   {
-    public ax()
+    ax()
+    {
+      super("consumeWCCoin", 409, true);
+    }
+  }
+  
+  static final class ay
+    extends c.g
+  {
+    public ay()
     {
       super("currentMpInfo", 324, false);
     }
@@ -679,21 +693,12 @@ public final class c
     }
   }
   
-  public static final class ba
-    extends c.g
-  {
-    public ba()
-    {
-      super("deleteAccountSuccess", 144, false);
-    }
-  }
-  
   public static final class bb
     extends c.g
   {
     public bb()
     {
-      super("", 10000, false);
+      super("deleteAccountSuccess", 144, false);
     }
   }
   
@@ -702,7 +707,7 @@ public final class c
   {
     public bc()
     {
-      super("disableBounceScroll", 188, false);
+      super("", 10000, false);
     }
   }
   
@@ -711,7 +716,7 @@ public final class c
   {
     public bd()
     {
-      super("disablePullDownRefresh", 205, false);
+      super("disableBounceScroll", 188, false);
     }
   }
   
@@ -720,7 +725,7 @@ public final class c
   {
     public be()
     {
-      super("disconnectWXDevice", 124, true);
+      super("disablePullDownRefresh", 205, false);
     }
   }
   
@@ -729,7 +734,7 @@ public final class c
   {
     public bf()
     {
-      super("downloadImage", 106, true);
+      super("disconnectWXDevice", 124, true);
     }
   }
   
@@ -738,16 +743,25 @@ public final class c
   {
     public bg()
     {
+      super("downloadImage", 106, true);
+    }
+  }
+  
+  public static final class bh
+    extends c.g
+  {
+    public bh()
+    {
       super("downloadVoice", 103, true);
     }
   }
   
-  public static final class bi
+  static final class bi
     extends c.g
   {
-    public bi()
+    bi()
     {
-      super("doExposePreparation", 225, false);
+      super("doAuthCurrentUrl", 397, false);
     }
   }
   
@@ -756,7 +770,7 @@ public final class c
   {
     public bj()
     {
-      super("", 10000, false);
+      super("doExposePreparation", 225, false);
     }
   }
   
@@ -765,7 +779,7 @@ public final class c
   {
     public bk()
     {
-      super("edit_address", 29, true);
+      super("", 10000, false);
     }
   }
   
@@ -774,7 +788,7 @@ public final class c
   {
     public bl()
     {
-      super("openEmotionUrl", 20000, false);
+      super("edit_address", 29, true);
     }
   }
   
@@ -783,7 +797,7 @@ public final class c
   {
     public bm()
     {
-      super("enableFullScreen", 196, false);
+      super("openEmotionUrl", 20000, false);
     }
   }
   
@@ -792,7 +806,7 @@ public final class c
   {
     public bn()
     {
-      super("enablePullDownRefresh", 199, false);
+      super("enableFullScreen", 196, false);
     }
   }
   
@@ -801,16 +815,16 @@ public final class c
   {
     public bo()
     {
-      super("enterEnterpriseChat", 223, false);
+      super("enablePullDownRefresh", 199, false);
     }
   }
   
-  static final class bp
+  public static final class bp
     extends c.g
   {
-    bp()
+    public bp()
     {
-      super("requestWxFacePictureVerify", 259, true);
+      super("enterEnterpriseChat", 223, false);
     }
   }
   
@@ -819,7 +833,7 @@ public final class c
   {
     bq()
     {
-      super("requestWxFacePictureVerifyUnionVideo", 264, true);
+      super("requestWxFacePictureVerify", 259, true);
     }
   }
   
@@ -828,7 +842,7 @@ public final class c
   {
     br()
     {
-      super("faceVerifyForPay", 328, true);
+      super("requestWxFacePictureVerifyUnionVideo", 264, true);
     }
   }
   
@@ -837,7 +851,7 @@ public final class c
   {
     bs()
     {
-      super("fastBindCardGetResult", 402, false);
+      super("faceVerifyForPay", 328, true);
     }
   }
   
@@ -846,50 +860,59 @@ public final class c
   {
     bt()
     {
+      super("fastBindCardGetResult", 402, false);
+    }
+  }
+  
+  static final class bu
+    extends c.g
+  {
+    bu()
+    {
       super("forceUpdateWxaAttr", 257, false);
     }
   }
   
-  public static final class bu
+  public static final class bv
     extends c.g
   {
-    public bu()
+    public bv()
     {
       super("", 10000, false);
     }
   }
   
-  static final class bv
+  static final class bw
     extends c.g
   {
-    bv()
+    bw()
     {
       super("openBusinessView", 338, true);
     }
   }
   
-  public static final class bw
+  public static final class bx
     extends c.g
   {
-    public bw()
+    public bx()
     {
       super("", 10000, false);
     }
   }
   
-  static final class bx
+  static final class by
     extends c.g
   {
-    bx()
+    by()
     {
       super("recordHistory", 219, false);
     }
   }
   
-  public static final class by
+  public static final class bz
     extends c.g
   {
-    public by()
+    public bz()
     {
       super("geo_location", 57, false);
     }
@@ -904,30 +927,21 @@ public final class c
     }
   }
   
-  static final class ca
-    extends c.g
-  {
-    ca()
-    {
-      super("getBackgroundAudioState", 263, false);
-    }
-  }
-  
   static final class cb
     extends c.g
   {
     cb()
     {
-      super("requestBindPhoneNumber", 387, false);
+      super("getBackgroundAudioState", 263, false);
     }
   }
   
-  public static final class cc
+  static final class cc
     extends c.g
   {
-    public cc()
+    cc()
     {
-      super("get_brand_WCPay_bind_card_request", 58, true);
+      super("requestBindPhoneNumber", 387, false);
     }
   }
   
@@ -936,7 +950,7 @@ public final class c
   {
     public cd()
     {
-      super("get_brand_wcpay_request", 28, true);
+      super("get_brand_WCPay_bind_card_request", 58, true);
     }
   }
   
@@ -945,7 +959,7 @@ public final class c
   {
     public ce()
     {
-      super("", 10000, false);
+      super("get_brand_wcpay_request", 28, true);
     }
   }
   
@@ -963,43 +977,43 @@ public final class c
   {
     public cg()
     {
+      super("", 10000, false);
+    }
+  }
+  
+  public static final class ch
+    extends c.g
+  {
+    public ch()
+    {
       super("getCurrentSSID", 176, true);
     }
   }
   
-  static final class ch
+  static final class ci
     extends c.g
   {
-    ch()
+    ci()
     {
       super("getGameData", 299, false);
     }
   }
   
-  public static final class ci
+  public static final class cj
     extends c.g
   {
-    public ci()
+    public cj()
     {
       super("mmsf0001", -2, false);
     }
   }
   
-  static final class cj
+  static final class ck
     extends c.g
   {
-    cj()
+    ck()
     {
       super("getDownloadWidgetTaskInfos", 340, false);
-    }
-  }
-  
-  public static final class ck
-    extends c.g
-  {
-    public ck()
-    {
-      super("getEnterpriseChat", 244, false);
     }
   }
   
@@ -1008,7 +1022,7 @@ public final class c
   {
     public cl()
     {
-      super("", 10000, false);
+      super("getEnterpriseChat", 244, false);
     }
   }
   
@@ -1016,15 +1030,6 @@ public final class c
     extends c.g
   {
     public cm()
-    {
-      super("getGameCommInfo", 241, false);
-    }
-  }
-  
-  public static final class cn
-    extends c.g
-  {
-    public cn()
     {
       super("", 10000, false);
     }
@@ -1035,7 +1040,7 @@ public final class c
   {
     public co()
     {
-      super("get_heading_and_pitch", 33, false);
+      super("getGameCommInfo", 241, false);
     }
   }
   
@@ -1044,7 +1049,7 @@ public final class c
   {
     public cp()
     {
-      super("getH5PrepayRequest", 137, true);
+      super("", 10000, false);
     }
   }
   
@@ -1053,7 +1058,7 @@ public final class c
   {
     public cq()
     {
-      super("getH5TransactionRequest", 138, true);
+      super("get_heading_and_pitch", 33, false);
     }
   }
   
@@ -1062,7 +1067,7 @@ public final class c
   {
     public cr()
     {
-      super("get_install_state", 25, false);
+      super("getH5PrepayRequest", 137, true);
     }
   }
   
@@ -1071,52 +1076,52 @@ public final class c
   {
     public cs()
     {
+      super("getH5TransactionRequest", 138, true);
+    }
+  }
+  
+  public static final class ct
+    extends c.g
+  {
+    public ct()
+    {
+      super("get_install_state", 25, false);
+    }
+  }
+  
+  public static final class cu
+    extends c.g
+  {
+    public cu()
+    {
       super("getLocalData", 179, false);
     }
   }
   
-  static final class ct
+  static final class cv
     extends c.g
   {
-    ct()
+    cv()
     {
       super("getLocalWePkgInfo", -2, false);
     }
   }
   
-  static final class cu
+  static final class cw
     extends c.g
   {
-    cu()
+    cw()
     {
       super("getMatchContactList", 10000, false);
     }
   }
   
-  public static final class cv
+  public static final class cx
     extends c.g
   {
-    public cv()
+    public cx()
     {
       super("getMsgProofItems", 226, true);
-    }
-  }
-  
-  public static final class cw
-    extends c.g
-  {
-    public cw()
-    {
-      super("network_type", 16, false);
-    }
-  }
-  
-  static final class cx
-    extends c.g
-  {
-    cx()
-    {
-      super("getOAID", 361, false);
     }
   }
   
@@ -1125,7 +1130,7 @@ public final class c
   {
     public cy()
     {
-      super("getOpenDeviceId", 227, false);
+      super("network_type", 16, false);
     }
   }
   
@@ -1134,7 +1139,7 @@ public final class c
   {
     cz()
     {
-      super("getPasteboardContent", 364, false);
+      super("getOAID", 361, false);
     }
   }
   
@@ -1152,43 +1157,34 @@ public final class c
   {
     public da()
     {
+      super("getOpenDeviceId", 227, false);
+    }
+  }
+  
+  public static final class dc
+    extends c.g
+  {
+    public dc()
+    {
       super("getPaymentOrderRequest", 116, true);
     }
   }
   
-  public static final class db
+  public static final class dd
     extends c.g
   {
-    public db()
+    public dd()
     {
       super("get_recently_used_address", 46, true);
     }
   }
   
-  static final class dc
+  static final class de
     extends c.g
   {
-    dc()
+    de()
     {
       super("doGoToRecVideoList", 10000, false);
-    }
-  }
-  
-  public static final class de
-    extends c.g
-  {
-    public de()
-    {
-      super("getRouteUrl", 235, false);
-    }
-  }
-  
-  public static final class df
-    extends c.g
-  {
-    public df()
-    {
-      super("", 10000, false);
     }
   }
   
@@ -1197,7 +1193,7 @@ public final class c
   {
     public dg()
     {
-      super("", 10000, false);
+      super("getRouteUrl", 235, false);
     }
   }
   
@@ -1206,7 +1202,7 @@ public final class c
   {
     public dh()
     {
-      super("getSearchDisplayNameList", 10000, false);
+      super("", 10000, false);
     }
   }
   
@@ -1215,7 +1211,7 @@ public final class c
   {
     public di()
     {
-      super("getSearchEmotionData", 20000, false);
+      super("", 10000, false);
     }
   }
   
@@ -1224,7 +1220,7 @@ public final class c
   {
     public dj()
     {
-      super("", 10000, false);
+      super("getSearchDisplayNameList", 10000, false);
     }
   }
   
@@ -1233,7 +1229,7 @@ public final class c
   {
     public dk()
     {
-      super("", 10000, false);
+      super("getSearchEmotionData", 20000, false);
     }
   }
   
@@ -1269,16 +1265,16 @@ public final class c
   {
     public do()
     {
-      super("get_send_c2c_message_request", 83, true);
+      super("", 10000, false);
     }
   }
   
-  static final class dp
+  public static final class dp
     extends c.g
   {
-    dp()
+    public dp()
     {
-      super("getSystemInfo", 311, false);
+      super("", 10000, false);
     }
   }
   
@@ -1287,16 +1283,16 @@ public final class c
   {
     public dq()
     {
-      super("", 10000, false);
+      super("get_send_c2c_message_request", 83, true);
     }
   }
   
-  public static final class dr
+  static final class dr
     extends c.g
   {
-    public dr()
+    dr()
     {
-      super("get_transfer_money_request", 74, true);
+      super("getSystemInfo", 311, false);
     }
   }
   
@@ -1305,7 +1301,7 @@ public final class c
   {
     public ds()
     {
-      super("getWCPayRealnameVerify", 194, true);
+      super("", 10000, false);
     }
   }
   
@@ -1314,16 +1310,16 @@ public final class c
   {
     public dt()
     {
-      super("getWechatVerifyTicket", 112, false);
+      super("get_transfer_money_request", 74, true);
     }
   }
   
-  static final class du
+  public static final class du
     extends c.g
   {
-    du()
+    public du()
     {
-      super("getWePkgAuthResult", -3, false);
+      super("getWCPayRealnameVerify", 194, true);
     }
   }
   
@@ -1332,16 +1328,16 @@ public final class c
   {
     public dv()
     {
-      super("add_contact", 10000, false);
+      super("getWechatVerifyTicket", 112, false);
     }
   }
   
-  public static final class dw
+  static final class dw
     extends c.g
   {
-    public dw()
+    dw()
     {
-      super("getWXDeviceInfos", 119, true);
+      super("getWePkgAuthResult", -3, false);
     }
   }
   
@@ -1350,7 +1346,7 @@ public final class c
   {
     public dx()
     {
-      super("getWXDeviceTicket", 125, true);
+      super("add_contact", 10000, false);
     }
   }
   
@@ -1359,7 +1355,16 @@ public final class c
   {
     public dy()
     {
-      super("", 10000, false);
+      super("getWXDeviceInfos", 119, true);
+    }
+  }
+  
+  public static final class dz
+    extends c.g
+  {
+    public dz()
+    {
+      super("getWXDeviceTicket", 125, true);
     }
   }
   
@@ -1372,21 +1377,12 @@ public final class c
     }
   }
   
-  static final class eb
+  public static final class ea
     extends c.g
   {
-    eb()
+    public ea()
     {
-      super("handleMPPageAction", 345, false);
-    }
-  }
-  
-  static final class ec
-    extends c.g
-  {
-    ec()
-    {
-      super("handleVideoAction", 371, false);
+      super("", 10000, false);
     }
   }
   
@@ -1395,25 +1391,25 @@ public final class c
   {
     ed()
     {
+      super("handleMPPageAction", 345, true);
+    }
+  }
+  
+  static final class ee
+    extends c.g
+  {
+    ee()
+    {
+      super("handleVideoAction", 371, false);
+    }
+  }
+  
+  static final class ef
+    extends c.g
+  {
+    ef()
+    {
       super("handleWCPayWalletBuffer", 294, false);
-    }
-  }
-  
-  public static final class ee
-    extends c.g
-  {
-    public ee()
-    {
-      super("hideAllNonBaseMenuItem", 93, false);
-    }
-  }
-  
-  public static final class ef
-    extends c.g
-  {
-    public ef()
-    {
-      super("hideMenuItems", 85, false);
     }
   }
   
@@ -1422,7 +1418,7 @@ public final class c
   {
     public eg()
     {
-      super("hideNavigationBarLoading", 198, false);
+      super("hideAllNonBaseMenuItem", 93, false);
     }
   }
   
@@ -1431,7 +1427,7 @@ public final class c
   {
     public eh()
     {
-      super("", 10000, false);
+      super("hideMenuItems", 85, false);
     }
   }
   
@@ -1440,7 +1436,7 @@ public final class c
   {
     public ei()
     {
-      super("", 14, false);
+      super("hideNavigationBarLoading", 198, false);
     }
   }
   
@@ -1449,7 +1445,7 @@ public final class c
   {
     public ej()
     {
-      super("hideSearchLoading", 10000, false);
+      super("", 10000, false);
     }
   }
   
@@ -1458,7 +1454,7 @@ public final class c
   {
     public ek()
     {
-      super("idCardRealnameVerify", 235, true);
+      super("", 14, false);
     }
   }
   
@@ -1467,7 +1463,7 @@ public final class c
   {
     public el()
     {
-      super("", 1, true);
+      super("hideSearchLoading", 10000, false);
     }
   }
   
@@ -1476,7 +1472,7 @@ public final class c
   {
     public em()
     {
-      super("", 10000, false);
+      super("idCardRealnameVerify", 235, true);
     }
   }
   
@@ -1485,7 +1481,7 @@ public final class c
   {
     public en()
     {
-      super("", 10000, false);
+      super("", 1, true);
     }
   }
   
@@ -1494,52 +1490,52 @@ public final class c
   {
     public eo()
     {
-      super("install_download_task", 41, false);
+      super("", 10000, false);
     }
   }
   
   public static final class ep
     extends c.g
   {
-    ep()
+    public ep()
+    {
+      super("", 10000, false);
+    }
+  }
+  
+  public static final class eq
+    extends c.g
+  {
+    public eq()
+    {
+      super("install_download_task", 41, false);
+    }
+  }
+  
+  public static final class er
+    extends c.g
+  {
+    er()
     {
       super("internelWxFaceVerify", 325, true);
     }
   }
   
-  static final class eq
+  static final class es
     extends c.g
   {
-    eq()
+    es()
     {
       super("invokeMiniProgramAPI", 295, false);
     }
   }
   
-  static final class er
+  static final class et
     extends c.g
   {
-    er()
+    et()
     {
       super("jumpDownloaderWidget", 339, true);
-    }
-  }
-  
-  public static final class es
-    extends c.g
-  {
-    public es()
-    {
-      super("", 26, false);
-    }
-  }
-  
-  public static final class et
-    extends c.g
-  {
-    public et()
-    {
-      super("jump_to_biz_profile", 61, true);
     }
   }
   
@@ -1548,7 +1544,7 @@ public final class c
   {
     public eu()
     {
-      super("jump_wcmall", 51, true);
+      super("", 26, false);
     }
   }
   
@@ -1557,7 +1553,7 @@ public final class c
   {
     public ev()
     {
-      super("jumpToWXWallet", 147, true);
+      super("jump_to_biz_profile", 61, true);
     }
   }
   
@@ -1566,7 +1562,7 @@ public final class c
   {
     public ew()
     {
-      super("kvReport", 170, false);
+      super("jump_wcmall", 51, true);
     }
   }
   
@@ -1575,7 +1571,7 @@ public final class c
   {
     public ex()
     {
-      super("launch_3rdApp", 52, true);
+      super("jumpToWXWallet", 147, true);
     }
   }
   
@@ -1584,16 +1580,16 @@ public final class c
   {
     public ey()
     {
-      super("", 27, false);
+      super("kvReport", 170, false);
     }
   }
   
-  static final class ez
+  public static final class ez
     extends c.g
   {
-    ez()
+    public ez()
     {
-      super("launchApplication", 260, true);
+      super("launch_3rdApp", 52, true);
     }
   }
   
@@ -1606,12 +1602,12 @@ public final class c
     }
   }
   
-  static final class fa
+  public static final class fa
     extends c.g
   {
-    fa()
+    public fa()
     {
-      super("launchGameVideoEditor", 350, true);
+      super("", 27, false);
     }
   }
   
@@ -1620,61 +1616,61 @@ public final class c
   {
     fb()
     {
+      super("launchApplication", 260, true);
+    }
+  }
+  
+  static final class fc
+    extends c.g
+  {
+    fc()
+    {
+      super("launchGameVideoEditor", 350, true);
+    }
+  }
+  
+  static final class fd
+    extends c.g
+  {
+    fd()
+    {
       super("launchMiniProgram", 277, true);
     }
   }
   
-  public static final class fc
+  public static final class fe
     extends c.g
   {
-    public fc()
+    public fe()
     {
       super("getWebPayCheckoutCounterRequst", 161, true);
     }
   }
   
-  public static final class fd
+  public static final class ff
     extends c.g
   {
-    public fd()
+    public ff()
     {
       super("", 0, false);
     }
   }
   
-  static final class fe
+  static final class fg
     extends c.g
   {
-    fe()
+    fg()
     {
       super("login", 231, true);
     }
   }
   
-  static final class ff
+  static final class fh
     extends c.g
   {
-    ff()
+    fh()
     {
       super("makePhoneCall", 356, true);
-    }
-  }
-  
-  public static final class fg
-    extends c.g
-  {
-    public fg()
-    {
-      super("playMusic", 69, false);
-    }
-  }
-  
-  public static final class fh
-    extends c.g
-  {
-    public fh()
-    {
-      super("", 10000, false);
     }
   }
   
@@ -1683,7 +1679,7 @@ public final class c
   {
     public fi()
     {
-      super("timeline_check_in", 64, false);
+      super("playMusic", 69, false);
     }
   }
   
@@ -1692,7 +1688,7 @@ public final class c
   {
     public fj()
     {
-      super("open_location", 63, true);
+      super("", 10000, false);
     }
   }
   
@@ -1701,7 +1697,7 @@ public final class c
   {
     public fk()
     {
-      super("open_timeline_checkin_list", 62, false);
+      super("timeline_check_in", 64, false);
     }
   }
   
@@ -1710,7 +1706,7 @@ public final class c
   {
     public fl()
     {
-      super("nfcBatchTransceive", 142, false);
+      super("open_location", 63, true);
     }
   }
   
@@ -1719,7 +1715,7 @@ public final class c
   {
     public fm()
     {
-      super("nfcCheckState", 155, true);
+      super("open_timeline_checkin_list", 62, false);
     }
   }
   
@@ -1728,7 +1724,7 @@ public final class c
   {
     public fn()
     {
-      super("nfcConnect", 140, false);
+      super("nfcBatchTransceive", 142, false);
     }
   }
   
@@ -1737,7 +1733,7 @@ public final class c
   {
     public fo()
     {
-      super("nfcGetId", 143, false);
+      super("nfcCheckState", 155, true);
     }
   }
   
@@ -1746,7 +1742,7 @@ public final class c
   {
     public fp()
     {
-      super("nfcGetInfo", 148, false);
+      super("nfcConnect", 140, false);
     }
   }
   
@@ -1755,7 +1751,7 @@ public final class c
   {
     public fq()
     {
-      super("nfcIsConnect", 139, true);
+      super("nfcGetId", 143, false);
     }
   }
   
@@ -1764,16 +1760,25 @@ public final class c
   {
     public fr()
     {
-      super("nfcTransceive", 141, false);
+      super("nfcGetInfo", 148, false);
     }
   }
   
-  static final class fs
+  public static final class fs
     extends c.g
   {
-    fs()
+    public fs()
     {
-      super("notifyPageInfo", -2, false);
+      super("nfcIsConnect", 139, true);
+    }
+  }
+  
+  public static final class ft
+    extends c.g
+  {
+    public ft()
+    {
+      super("nfcTransceive", 141, false);
     }
   }
   
@@ -1782,7 +1787,7 @@ public final class c
   {
     fu()
     {
-      super("openWCPayCardList", 310, true);
+      super("notifyPageInfo", -2, false);
     }
   }
   
@@ -1791,16 +1796,16 @@ public final class c
   {
     fv()
     {
-      super("openBizChat", 296, true);
+      super("onWebPageUrlExposed", 373, false);
     }
   }
   
-  public static final class fw
+  static final class fw
     extends c.g
   {
-    public fw()
+    fw()
     {
-      super("openCamera", 10008, true);
+      super("openWCPayCardList", 310, true);
     }
   }
   
@@ -1809,34 +1814,34 @@ public final class c
   {
     fx()
     {
+      super("openBizChat", 296, true);
+    }
+  }
+  
+  public static final class fy
+    extends c.g
+  {
+    public fy()
+    {
+      super("openCamera", 10008, true);
+    }
+  }
+  
+  static final class fz
+    extends c.g
+  {
+    fz()
+    {
       super("openADCanvas", 283, true);
     }
   }
   
-  static final class fy
+  static final class ga
     extends c.g
   {
-    fy()
+    ga()
     {
       super("openCustomWebview", 256, false);
-    }
-  }
-  
-  public static final class fz
-    extends c.g
-  {
-    public fz()
-    {
-      super("openDesignerEmojiView", 185, true);
-    }
-  }
-  
-  public static final class ga
-    extends c.g
-  {
-    public ga()
-    {
-      super("openDesignerEmojiViewLocal", 20000, false);
     }
   }
   
@@ -1845,7 +1850,7 @@ public final class c
   {
     public gb()
     {
-      super("openDesignerProfile", 193, true);
+      super("openDesignerEmojiView", 185, true);
     }
   }
   
@@ -1854,16 +1859,16 @@ public final class c
   {
     public gc()
     {
-      super("openDesignerProfileLocal", 20000, false);
+      super("openDesignerEmojiViewLocal", 20000, false);
     }
   }
   
-  static final class gd
+  public static final class gd
     extends c.g
   {
-    gd()
+    public gd()
     {
-      super("openECard", 268, true);
+      super("openDesignerProfile", 193, true);
     }
   }
   
@@ -1872,16 +1877,16 @@ public final class c
   {
     public ge()
     {
-      super("openEmoticonTopicList", 212, true);
+      super("openDesignerProfileLocal", 20000, false);
     }
   }
   
-  public static final class gf
+  static final class gf
     extends c.g
   {
-    public gf()
+    gf()
     {
-      super("openEnterpriseChat", 165, false);
+      super("openECard", 268, true);
     }
   }
   
@@ -1890,7 +1895,7 @@ public final class c
   {
     public gg()
     {
-      super("openEnterpriseContact", 183, true);
+      super("openEmoticonTopicList", 212, true);
     }
   }
   
@@ -1899,7 +1904,7 @@ public final class c
   {
     public gh()
     {
-      super("", 10000, false);
+      super("openEnterpriseChat", 165, false);
     }
   }
   
@@ -1908,7 +1913,7 @@ public final class c
   {
     public gi()
     {
-      super("", 10000, false);
+      super("openEnterpriseContact", 183, true);
     }
   }
   
@@ -1917,7 +1922,7 @@ public final class c
   {
     public gj()
     {
-      super("openGameCenter", 175, true);
+      super("", 10000, false);
     }
   }
   
@@ -1926,7 +1931,7 @@ public final class c
   {
     public gk()
     {
-      super("openGameDetail", 131, true);
+      super("", 10000, false);
     }
   }
   
@@ -1935,34 +1940,34 @@ public final class c
   {
     public gl()
     {
+      super("openGameCenter", 175, true);
+    }
+  }
+  
+  public static final class gm
+    extends c.g
+  {
+    public gm()
+    {
+      super("openGameDetail", 131, true);
+    }
+  }
+  
+  public static final class gn
+    extends c.g
+  {
+    public gn()
+    {
       super("openGameRegion", 242, true);
     }
   }
   
-  static final class gm
+  static final class go
     extends c.g
   {
-    gm()
+    go()
     {
       super("openGameUrlWithExtraWebView", 297, false);
-    }
-  }
-  
-  static final class gn
-    extends c.g
-  {
-    gn()
-    {
-      super("openGameWebView", 287, false);
-    }
-  }
-  
-  public static final class go
-    extends c.g
-  {
-    public go()
-    {
-      super("openLuckyMoneyDetailView", 245, false);
     }
   }
   
@@ -1971,7 +1976,7 @@ public final class c
   {
     gp()
     {
-      super("openLuckyMoneyHistory", 258, true);
+      super("openGameWebView", 287, false);
     }
   }
   
@@ -1980,16 +1985,16 @@ public final class c
   {
     public gq()
     {
-      super("openMapNavigateMenu", 184, true);
+      super("openLuckyMoneyDetailView", 245, false);
     }
   }
   
-  public static final class gr
+  static final class gr
     extends c.g
   {
-    public gr()
+    gr()
     {
-      super("", 10000, false);
+      super("openLuckyMoneyHistory", 258, true);
     }
   }
   
@@ -1998,7 +2003,7 @@ public final class c
   {
     public gs()
     {
-      super("openMyDeviceProfile", 145, false);
+      super("openMapNavigateMenu", 184, true);
     }
   }
   
@@ -2007,16 +2012,16 @@ public final class c
   {
     public gt()
     {
-      super("openNewPage", 20000, false);
+      super("", 10000, false);
     }
   }
   
-  static final class gu
+  public static final class gu
     extends c.g
   {
-    gu()
+    public gu()
     {
-      super("openOfflinePayView", 305, true);
+      super("openMyDeviceProfile", 145, false);
     }
   }
   
@@ -2025,34 +2030,34 @@ public final class c
   {
     public gv()
     {
+      super("openNewPage", 20000, false);
+    }
+  }
+  
+  static final class gw
+    extends c.g
+  {
+    gw()
+    {
+      super("openOfflinePayView", 305, true);
+    }
+  }
+  
+  public static final class gx
+    extends c.g
+  {
+    public gx()
+    {
       super("open_product_view", 59, true);
     }
   }
   
-  public static final class gw
+  public static final class gy
     extends c.g
   {
-    public gw()
+    public gy()
     {
       super("open_product_view", 60, true);
-    }
-  }
-  
-  static final class gx
-    extends c.g
-  {
-    gx()
-    {
-      super("openSearchCanvas", 283, true);
-    }
-  }
-  
-  static final class gy
-    extends c.g
-  {
-    gy()
-    {
-      super("openSearchWAWidgetLogView", 10000, true);
     }
   }
   
@@ -2061,7 +2066,7 @@ public final class c
   {
     gz()
     {
-      super("openSearchWebView", 10000, true);
+      super("openSearchCanvas", 283, true);
     }
   }
   
@@ -2074,12 +2079,12 @@ public final class c
     }
   }
   
-  public static final class ha
+  static final class ha
     extends c.g
   {
-    public ha()
+    ha()
     {
-      super("openSecurityView", 229, false);
+      super("openSearchWAWidgetLogView", 10000, true);
     }
   }
   
@@ -2088,7 +2093,7 @@ public final class c
   {
     hb()
     {
-      super("openSelectPayment", 359, true);
+      super("openSearchWebView", 10000, true);
     }
   }
   
@@ -2097,16 +2102,16 @@ public final class c
   {
     public hc()
     {
-      super("specific_view", 48, true);
+      super("openSecurityView", 229, false);
     }
   }
   
-  public static final class hd
+  static final class hd
     extends c.g
   {
-    public hd()
+    hd()
     {
-      super("open_url_by_ext_browser", 55, false);
+      super("openSelectPayment", 359, true);
     }
   }
   
@@ -2115,7 +2120,7 @@ public final class c
   {
     public he()
     {
-      super("openUrlWithExtraWebview", 173, false);
+      super("specific_view", 48, true);
     }
   }
   
@@ -2124,34 +2129,34 @@ public final class c
   {
     public hf()
     {
+      super("open_url_by_ext_browser", 55, false);
+    }
+  }
+  
+  public static final class hg
+    extends c.g
+  {
+    public hg()
+    {
+      super("openUrlWithExtraWebview", 173, false);
+    }
+  }
+  
+  public static final class hh
+    extends c.g
+  {
+    public hh()
+    {
       super("open_wcpay_specific_view", 76, true);
     }
   }
   
-  static final class hh
+  static final class hj
     extends c.g
   {
-    hh()
+    hj()
     {
       super("openWeApp", 250, false);
-    }
-  }
-  
-  public static final class hi
-    extends c.g
-  {
-    public hi()
-    {
-      super("", 10000, false);
-    }
-  }
-  
-  public static final class hj
-    extends c.g
-  {
-    public hj()
-    {
-      super("get_wcpay_create_credit_card_request", 65, true);
     }
   }
   
@@ -2160,61 +2165,61 @@ public final class c
   {
     public hk()
     {
+      super("", 10000, false);
+    }
+  }
+  
+  public static final class hl
+    extends c.g
+  {
+    public hl()
+    {
+      super("get_wcpay_create_credit_card_request", 65, true);
+    }
+  }
+  
+  public static final class hm
+    extends c.g
+  {
+    public hm()
+    {
       super("openWXDeviceLib", 117, false);
     }
   }
   
-  static final class hl
+  static final class hn
     extends c.g
   {
-    hl()
+    hn()
     {
       super("openWXSearchPage", 309, true);
     }
   }
   
-  static final class hm
+  static final class ho
     extends c.g
   {
-    hm()
+    ho()
     {
       super("operateBackgroundAudio", 261, false);
     }
   }
   
-  public static final class hn
+  public static final class hp
     extends c.g
   {
-    public hn()
+    public hp()
     {
       super("operateGameCenterMsg", 174, false);
     }
   }
   
-  public static final class ho
+  public static final class hq
     extends c.g
   {
-    public ho()
+    public hq()
     {
       super("", 10000, false);
-    }
-  }
-  
-  static final class hp
-    extends c.g
-  {
-    hp()
-    {
-      super("", -2, false);
-    }
-  }
-  
-  static final class hq
-    extends c.g
-  {
-    hq()
-    {
-      super("", -2, false);
     }
   }
   
@@ -2227,30 +2232,30 @@ public final class c
     }
   }
   
-  public static final class hs
+  static final class hs
     extends c.g
   {
-    public hs()
+    hs()
+    {
+      super("", -2, false);
+    }
+  }
+  
+  static final class ht
+    extends c.g
+  {
+    ht()
+    {
+      super("", -2, false);
+    }
+  }
+  
+  public static final class hu
+    extends c.g
+  {
+    public hu()
     {
       super("cancel_download_task", 239, false);
-    }
-  }
-  
-  public static final class ht
-    extends c.g
-  {
-    public ht()
-    {
-      super("pauseVoice", 100, false);
-    }
-  }
-  
-  static final class hu
-    extends c.g
-  {
-    hu()
-    {
-      super("phoneBindCardVerifySms", 370, false);
     }
   }
   
@@ -2259,34 +2264,43 @@ public final class c
   {
     public hv()
     {
+      super("pauseVoice", 100, false);
+    }
+  }
+  
+  static final class hw
+    extends c.g
+  {
+    hw()
+    {
+      super("phoneBindCardVerifySms", 370, false);
+    }
+  }
+  
+  public static final class hx
+    extends c.g
+  {
+    public hx()
+    {
       super("", 10000, false);
     }
   }
   
-  public static final class hw
+  public static final class hy
     extends c.g
   {
-    public hw()
+    public hy()
     {
       super("playVoice", 99, false);
     }
   }
   
-  static final class hy
-    extends c.g
-  {
-    hy()
-    {
-      super("preloadMiniProgramEnv", 302, false);
-    }
-  }
-  
-  public static final class hz
+  static final class hz
     extends c.g
   {
     public hz()
     {
-      super("preloadSearchWeapp", 10000, false);
+      super("preloadMiniProgramContacts", 303, false);
     }
   }
   
@@ -2304,7 +2318,7 @@ public final class c
   {
     ia()
     {
-      super("previewVideo", 252, true);
+      super("preloadMiniProgramEnv", 302, false);
     }
   }
   
@@ -2313,43 +2327,43 @@ public final class c
   {
     public ib()
     {
+      super("preloadSearchWeapp", 10000, false);
+    }
+  }
+  
+  static final class ic
+    extends c.g
+  {
+    ic()
+    {
+      super("previewVideo", 252, true);
+    }
+  }
+  
+  public static final class id
+    extends c.g
+  {
+    public id()
+    {
       super("pre_verify_jsapi", -3, false);
     }
   }
   
-  public static final class ie
+  public static final class ig
     extends c.g
   {
-    public ie()
+    public ig()
     {
       super("profile", 2, false);
     }
   }
   
-  static final class if
+  static final class ih
     extends c.g
   {
-    if()
+    ih()
     {
       super("publishHaowanEdition", 351, false);
-    }
-  }
-  
-  static final class ig
-    extends c.g
-  {
-    ig()
-    {
-      super("qqMailLoginResult", 357, false);
-    }
-  }
-  
-  public static final class ih
-    extends c.g
-  {
-    public ih()
-    {
-      super("query_download_task", 40, false);
     }
   }
   
@@ -2358,7 +2372,7 @@ public final class c
   {
     ii()
     {
-      super("queryHaowanPublish", 352, false);
+      super("qqMailLoginResult", 357, false);
     }
   }
   
@@ -2367,16 +2381,16 @@ public final class c
   {
     public ij()
     {
-      super("", 10000, false);
+      super("query_download_task", 40, false);
     }
   }
   
-  public static final class ik
+  static final class ik
     extends c.g
   {
-    public ik()
+    ik()
     {
-      super("quicklyAddBrandContact", 166, true);
+      super("queryHaowanPublish", 352, false);
     }
   }
   
@@ -2385,16 +2399,16 @@ public final class c
   {
     public il()
     {
-      super("realtimeReport", 171, false);
+      super("", 10000, false);
     }
   }
   
-  static final class im
+  public static final class im
     extends c.g
   {
-    im()
+    public im()
     {
-      super("recordVideo", 251, true);
+      super("quicklyAddBrandContact", 166, true);
     }
   }
   
@@ -2403,16 +2417,16 @@ public final class c
   {
     public in()
     {
-      super("", 10000, false);
+      super("realtimeReport", 171, false);
     }
   }
   
-  public static final class io
+  static final class io
     extends c.g
   {
-    public io()
+    io()
     {
-      super("", 10000, false);
+      super("recordVideo", 251, true);
     }
   }
   
@@ -2430,34 +2444,34 @@ public final class c
   {
     public iq()
     {
+      super("", 10000, false);
+    }
+  }
+  
+  public static final class ir
+    extends c.g
+  {
+    public ir()
+    {
+      super("", 10000, false);
+    }
+  }
+  
+  public static final class is
+    extends c.g
+  {
+    public is()
+    {
       super("reportActionInfo", 234, false);
     }
   }
   
-  static final class ir
+  static final class it
     extends c.g
   {
-    ir()
+    it()
     {
       super("reportGamePageTime", 301, false);
-    }
-  }
-  
-  static final class is
-    extends c.g
-  {
-    is()
-    {
-      super("reportGameWeb", 332, false);
-    }
-  }
-  
-  public static final class it
-    extends c.g
-  {
-    public it()
-    {
-      super("reportIDKey", 163, false);
     }
   }
   
@@ -2466,7 +2480,7 @@ public final class c
   {
     iu()
     {
-      super("reportMiniProgramPageData", 284, false);
+      super("reportGameWeb", 332, false);
     }
   }
   
@@ -2475,34 +2489,34 @@ public final class c
   {
     public iv()
     {
-      super("", 10000, false);
+      super("reportIDKey", 163, false);
     }
   }
   
-  public static final class iw
+  static final class iw
     extends c.g
   {
-    public iw()
+    iw()
+    {
+      super("reportMiniProgramPageData", 284, false);
+    }
+  }
+  
+  public static final class ix
+    extends c.g
+  {
+    public ix()
     {
       super("", 10000, false);
     }
   }
   
-  static final class ix
+  public static final class iy
     extends c.g
   {
-    ix()
+    public iy()
     {
-      super("request", 331, false);
-    }
-  }
-  
-  static final class iy
-    extends c.g
-  {
-    iy()
-    {
-      super("requestEntrustAuthorization", 360, true);
+      super("", 10000, false);
     }
   }
   
@@ -2511,7 +2525,7 @@ public final class c
   {
     iz()
     {
-      super("requestJointPayment", 358, true);
+      super("request", 331, false);
     }
   }
   
@@ -2520,7 +2534,7 @@ public final class c
   {
     ja()
     {
-      super("requestQueryCashier", 374, false);
+      super("requestEntrustAuthorization", 360, true);
     }
   }
   
@@ -2529,7 +2543,7 @@ public final class c
   {
     jb()
     {
-      super("requestWxFaceRegisterInternal", 272, true);
+      super("requestJointPayment", 358, true);
     }
   }
   
@@ -2538,7 +2552,7 @@ public final class c
   {
     jc()
     {
-      super("requestWxFaceVerifyInternal", 273, true);
+      super("requestQueryCashier", 374, false);
     }
   }
   
@@ -2547,25 +2561,25 @@ public final class c
   {
     jd()
     {
+      super("requestWxFaceRegisterInternal", 272, true);
+    }
+  }
+  
+  static final class je
+    extends c.g
+  {
+    je()
+    {
+      super("requestWxFaceVerifyInternal", 273, true);
+    }
+  }
+  
+  static final class jf
+    extends c.g
+  {
+    jf()
+    {
       super("requestWxVoicePrintVerifyInternal", 292, true);
-    }
-  }
-  
-  public static final class je
-    extends c.g
-  {
-    public je()
-    {
-      super("resendRemittanceMsg", 246, true);
-    }
-  }
-  
-  public static final class jf
-    extends c.g
-  {
-    public jf()
-    {
-      super("resume_download_task", 240, true);
     }
   }
   
@@ -2574,7 +2588,7 @@ public final class c
   {
     public jg()
     {
-      super("scanLicence", 203, false);
+      super("resendRemittanceMsg", 246, true);
     }
   }
   
@@ -2583,7 +2597,7 @@ public final class c
   {
     public jh()
     {
-      super("scanQRCode", 7, true);
+      super("resume_download_task", 240, true);
     }
   }
   
@@ -2592,7 +2606,7 @@ public final class c
   {
     public ji()
     {
-      super("", 10000, false);
+      super("scanLicence", 203, false);
     }
   }
   
@@ -2601,16 +2615,16 @@ public final class c
   {
     public jj()
     {
-      super("", 329, false);
+      super("scanQRCode", 7, true);
     }
   }
   
-  static final class jk
+  public static final class jk
     extends c.g
   {
-    jk()
+    public jk()
     {
-      super("selectContact", 10000, true);
+      super("", 10000, false);
     }
   }
   
@@ -2619,16 +2633,16 @@ public final class c
   {
     public jl()
     {
-      super("selectEnterpriseContact", 286, true);
+      super("", 329, false);
     }
   }
   
-  public static final class jm
+  static final class jm
     extends c.g
   {
-    public jm()
+    jm()
     {
-      super("selectPedometerSource", 146, true);
+      super("selectContact", 10000, true);
     }
   }
   
@@ -2637,7 +2651,7 @@ public final class c
   {
     public jn()
     {
-      super("selectSingleContact", 167, true);
+      super("selectEnterpriseContact", 286, true);
     }
   }
   
@@ -2646,7 +2660,7 @@ public final class c
   {
     public jo()
     {
-      super("sendAppMessageToSpecifiedContact", 168, true);
+      super("selectPedometerSource", 146, true);
     }
   }
   
@@ -2655,7 +2669,16 @@ public final class c
   {
     public jp()
     {
-      super("send_app_msg", 6, true);
+      super("selectSingleContact", 167, true);
+    }
+  }
+  
+  public static final class jq
+    extends c.g
+  {
+    public jq()
+    {
+      super("sendAppMessageToSpecifiedContact", 168, true);
     }
   }
   
@@ -2664,25 +2687,16 @@ public final class c
   {
     public jr()
     {
+      super("send_app_msg", 6, true);
+    }
+  }
+  
+  public static final class jt
+    extends c.g
+  {
+    public jt()
+    {
       super("sendDataToWXDevice", 120, true);
-    }
-  }
-  
-  public static final class js
-    extends c.g
-  {
-    public js()
-    {
-      super("sendEnterpriseChat", 222, true);
-    }
-  }
-  
-  static final class jt
-    extends c.g
-  {
-    jt()
-    {
-      super("menuitem:gameSendDesktop", 255, false);
     }
   }
   
@@ -2691,34 +2705,34 @@ public final class c
   {
     public ju()
     {
+      super("sendEnterpriseChat", 222, true);
+    }
+  }
+  
+  static final class jv
+    extends c.g
+  {
+    jv()
+    {
+      super("menuitem:gameSendDesktop", 255, false);
+    }
+  }
+  
+  public static final class jw
+    extends c.g
+  {
+    public jw()
+    {
       super("send_email", 35, false);
     }
   }
   
-  public static final class jv
+  public static final class jx
     extends c.g
   {
-    public jv()
+    public jx()
     {
       super("send_service_app_msg", 67, true);
-    }
-  }
-  
-  static final class jw
-    extends c.g
-  {
-    jw()
-    {
-      super("sendSingleAppMessage", 316, true);
-    }
-  }
-  
-  static final class jx
-    extends c.g
-  {
-    jx()
-    {
-      super("serviceClick", 304, false);
     }
   }
   
@@ -2727,7 +2741,7 @@ public final class c
   {
     jy()
     {
-      super("setWCPayPassword", 289, true);
+      super("sendSingleAppMessage", 316, true);
     }
   }
   
@@ -2736,7 +2750,7 @@ public final class c
   {
     jz()
     {
-      super("setBackgroundAudioState", 262, false);
+      super("serviceClick", 304, false);
     }
   }
   
@@ -2749,30 +2763,30 @@ public final class c
     }
   }
   
-  public static final class ka
+  static final class ka
     extends c.g
   {
-    public ka()
+    ka()
+    {
+      super("setWCPayPassword", 289, true);
+    }
+  }
+  
+  static final class kb
+    extends c.g
+  {
+    kb()
+    {
+      super("setBackgroundAudioState", 262, false);
+    }
+  }
+  
+  public static final class kc
+    extends c.g
+  {
+    public kc()
     {
       super("setBounceBackground", 218, false);
-    }
-  }
-  
-  public static final class kb
-    extends c.g
-  {
-    public kb()
-    {
-      super("setCloseWindowConfirmDialogInfo", 77, false);
-    }
-  }
-  
-  static final class kc
-    extends c.g
-  {
-    kc()
-    {
-      super("setGameData", 298, false);
     }
   }
   
@@ -2781,16 +2795,16 @@ public final class c
   {
     public kd()
     {
-      super("", -2, false);
+      super("setCloseWindowConfirmDialogInfo", 77, false);
     }
   }
   
-  public static final class ke
+  static final class ke
     extends c.g
   {
-    public ke()
+    ke()
     {
-      super("setGameDebugConfig", 1111111, false);
+      super("setGameData", 298, false);
     }
   }
   
@@ -2799,7 +2813,7 @@ public final class c
   {
     public kf()
     {
-      super("setLocalData", 180, false);
+      super("", -2, false);
     }
   }
   
@@ -2808,7 +2822,7 @@ public final class c
   {
     public kg()
     {
-      super("setNavigationBarButtons", 195, false);
+      super("setGameDebugConfig", 1111111, false);
     }
   }
   
@@ -2817,7 +2831,7 @@ public final class c
   {
     public kh()
     {
-      super("setNavigationBarColor", 182, false);
+      super("setLocalData", 180, false);
     }
   }
   
@@ -2826,7 +2840,7 @@ public final class c
   {
     public ki()
     {
-      super("setPageOwner", 114, false);
+      super("setNavigationBarButtons", 195, false);
     }
   }
   
@@ -2835,16 +2849,16 @@ public final class c
   {
     public kj()
     {
-      super("setPageTitle", 113, false);
+      super("setNavigationBarColor", 182, false);
     }
   }
   
-  static final class kk
+  public static final class kk
     extends c.g
   {
-    kk()
+    public kk()
     {
-      super("setScreenOrientation", 270, false);
+      super("setPageOwner", 114, false);
     }
   }
   
@@ -2853,16 +2867,16 @@ public final class c
   {
     public kl()
     {
-      super("", 10000, false);
+      super("setPageTitle", 113, false);
     }
   }
   
-  public static final class km
+  static final class km
     extends c.g
   {
-    public km()
+    km()
     {
-      super("setSendDataDirection", 127, false);
+      super("setScreenOrientation", 270, false);
     }
   }
   
@@ -2880,16 +2894,16 @@ public final class c
   {
     public ko()
     {
-      super("setStatusBarStyle", 206, false);
+      super("setSendDataDirection", 127, false);
     }
   }
   
-  static final class kp
+  public static final class kp
     extends c.g
   {
-    kp()
+    public kp()
     {
-      super("shareEmoticon", 275, true);
+      super("", 10000, false);
     }
   }
   
@@ -2898,16 +2912,16 @@ public final class c
   {
     public kq()
     {
-      super("shareQQ", 90, true);
+      super("setStatusBarStyle", 206, false);
     }
   }
   
-  public static final class kr
+  static final class kr
     extends c.g
   {
-    public kr()
+    kr()
     {
-      super("shareQZone", 132, true);
+      super("shareEmoticon", 275, true);
     }
   }
   
@@ -2916,7 +2930,7 @@ public final class c
   {
     public ks()
     {
-      super("shareWeiboApp", 107, false);
+      super("shareQQ", 90, true);
     }
   }
   
@@ -2925,7 +2939,7 @@ public final class c
   {
     public kt()
     {
-      super("showAllNonBaseMenuItem", 92, false);
+      super("shareQZone", 132, true);
     }
   }
   
@@ -2934,7 +2948,7 @@ public final class c
   {
     public ku()
     {
-      super("showDatePickerView", 248, true);
+      super("shareWeiboApp", 107, false);
     }
   }
   
@@ -2943,7 +2957,7 @@ public final class c
   {
     public kv()
     {
-      super("showKeyboard", 187, false);
+      super("showAllNonBaseMenuItem", 92, false);
     }
   }
   
@@ -2952,7 +2966,7 @@ public final class c
   {
     public kw()
     {
-      super("showMenuItems", 86, false);
+      super("showDatePickerView", 248, true);
     }
   }
   
@@ -2961,7 +2975,7 @@ public final class c
   {
     public kx()
     {
-      super("showNavigationBarLoading", 197, false);
+      super("showKeyboard", 187, false);
     }
   }
   
@@ -2970,7 +2984,7 @@ public final class c
   {
     public ky()
     {
-      super("", 10000, false);
+      super("showMenuItems", 86, false);
     }
   }
   
@@ -2979,7 +2993,7 @@ public final class c
   {
     public kz()
     {
-      super("", 14, false);
+      super("showNavigationBarLoading", 197, false);
     }
   }
   
@@ -2997,7 +3011,7 @@ public final class c
   {
     public la()
     {
-      super("showSearchActionSheet", 10000, false);
+      super("", 10000, false);
     }
   }
   
@@ -3006,16 +3020,16 @@ public final class c
   {
     public lb()
     {
-      super("showSearchLoading", 10000, false);
+      super("", 14, false);
     }
   }
   
-  static final class lc
+  public static final class lc
     extends c.g
   {
-    lc()
+    public lc()
     {
-      super("showSearchOfBizHistory", 266, false);
+      super("showSearchActionSheet", 10000, false);
     }
   }
   
@@ -3024,16 +3038,16 @@ public final class c
   {
     public ld()
     {
-      super("showSearchToast", 10000, false);
+      super("showSearchLoading", 10000, false);
     }
   }
   
-  public static final class le
+  static final class le
     extends c.g
   {
-    public le()
+    le()
     {
-      super("showSmileyPanel", 238, false);
+      super("showSearchOfBizHistory", 266, false);
     }
   }
   
@@ -3042,7 +3056,7 @@ public final class c
   {
     public lf()
     {
-      super("", 10000, false);
+      super("showSearchToast", 10000, false);
     }
   }
   
@@ -3051,16 +3065,16 @@ public final class c
   {
     public lg()
     {
-      super("soter_biometric_authentication", 214, true);
+      super("showSmileyPanel", 238, false);
     }
   }
   
-  public static final class lh
+  static final class lh
     extends c.g
   {
-    public lh()
+    lh()
     {
-      super("getSupportSoter", 213, true);
+      super("showWCCoinFirstBuyCoinTips", 437, true);
     }
   }
   
@@ -3069,7 +3083,7 @@ public final class c
   {
     public li()
     {
-      super("startMonitoringBeacons", 151, false);
+      super("", 10000, false);
     }
   }
   
@@ -3078,7 +3092,7 @@ public final class c
   {
     public lj()
     {
-      super("startPullDownRefresh", 204, false);
+      super("soter_biometric_authentication", 214, true);
     }
   }
   
@@ -3087,7 +3101,7 @@ public final class c
   {
     public lk()
     {
-      super("startRecord", 96, false);
+      super("getSupportSoter", 213, true);
     }
   }
   
@@ -3096,7 +3110,7 @@ public final class c
   {
     public ll()
     {
-      super("startScanWXDevice", 121, true);
+      super("startMonitoringBeacons", 151, false);
     }
   }
   
@@ -3105,7 +3119,7 @@ public final class c
   {
     public lm()
     {
-      super("", 10000, false);
+      super("startPullDownRefresh", 204, false);
     }
   }
   
@@ -3114,7 +3128,7 @@ public final class c
   {
     public ln()
     {
-      super("startTempSession", 128, true);
+      super("startRecord", 96, false);
     }
   }
   
@@ -3123,7 +3137,7 @@ public final class c
   {
     public lo()
     {
-      super("startVoipCall", 230, false);
+      super("startScanWXDevice", 121, true);
     }
   }
   
@@ -3132,7 +3146,7 @@ public final class c
   {
     public lp()
     {
-      super("stopMonitoringBeacons", 152, false);
+      super("", 10000, false);
     }
   }
   
@@ -3141,7 +3155,7 @@ public final class c
   {
     public lq()
     {
-      super("stopPullDownRefresh", 200, false);
+      super("startTempSession", 128, true);
     }
   }
   
@@ -3150,7 +3164,7 @@ public final class c
   {
     public lr()
     {
-      super("stopRecord", 98, false);
+      super("startVoipCall", 230, false);
     }
   }
   
@@ -3159,7 +3173,7 @@ public final class c
   {
     public ls()
     {
-      super("stopScanWXDevice", 122, true);
+      super("stopMonitoringBeacons", 152, false);
     }
   }
   
@@ -3168,7 +3182,7 @@ public final class c
   {
     public lt()
     {
-      super("stopVoice", 101, false);
+      super("stopPullDownRefresh", 200, false);
     }
   }
   
@@ -3177,7 +3191,7 @@ public final class c
   {
     public lu()
     {
-      super("playStreamingVideo", 209, false);
+      super("stopRecord", 98, false);
     }
   }
   
@@ -3186,16 +3200,16 @@ public final class c
   {
     public lv()
     {
-      super("selectWalletCurrency", 201, true);
+      super("stopScanWXDevice", 122, true);
     }
   }
   
-  static final class lw
+  public static final class lw
     extends c.g
   {
-    lw()
+    public lw()
     {
-      super("tapSearchWAWidgetView", 10000, false);
+      super("stopVoice", 101, false);
     }
   }
   
@@ -3204,7 +3218,7 @@ public final class c
   {
     public lx()
     {
-      super("share_timeline", 4, true);
+      super("playStreamingVideo", 209, false);
     }
   }
   
@@ -3213,16 +3227,16 @@ public final class c
   {
     public ly()
     {
-      super("translateVoice", 97, true);
+      super("selectWalletCurrency", 201, true);
     }
   }
   
-  public static final class lz
+  static final class lz
     extends c.g
   {
-    public lz()
+    lz()
     {
-      super("unbindBankCard", 216, true);
+      super("tapSearchWAWidgetView", 10000, false);
     }
   }
   
@@ -3235,12 +3249,12 @@ public final class c
     }
   }
   
-  static final class ma
+  public static final class ma
     extends c.g
   {
-    ma()
+    public ma()
     {
-      super("updatePageAuth", -2, false);
+      super("share_timeline", 4, true);
     }
   }
   
@@ -3249,43 +3263,43 @@ public final class c
   {
     public mb()
     {
+      super("translateVoice", 97, true);
+    }
+  }
+  
+  public static final class mc
+    extends c.g
+  {
+    public mc()
+    {
+      super("unbindBankCard", 216, true);
+    }
+  }
+  
+  static final class md
+    extends c.g
+  {
+    md()
+    {
+      super("updatePageAuth", -2, false);
+    }
+  }
+  
+  public static final class me
+    extends c.g
+  {
+    public me()
+    {
       super("", 10000, false);
     }
   }
   
-  static final class mc
+  static final class mf
     extends c.g
   {
-    mc()
+    mf()
     {
       super("updateAppMessageShareData", 326, false);
-    }
-  }
-  
-  public static final class md
-    extends c.g
-  {
-    public md()
-    {
-      super("", 10000, false);
-    }
-  }
-  
-  static final class me
-    extends c.g
-  {
-    me()
-    {
-      super("updateTimelineShareData", 327, false);
-    }
-  }
-  
-  public static final class mf
-    extends c.g
-  {
-    public mf()
-    {
-      super("", 10000, false);
     }
   }
   
@@ -3294,7 +3308,7 @@ public final class c
   {
     public mg()
     {
-      super("updateWASearchTemplate", 10000, false);
+      super("", 10000, false);
     }
   }
   
@@ -3303,7 +3317,7 @@ public final class c
   {
     mh()
     {
-      super("uploadEncryptMediaFile", 253, false);
+      super("updateTimelineShareData", 327, false);
     }
   }
   
@@ -3312,7 +3326,7 @@ public final class c
   {
     public mi()
     {
-      super("uploadImage", 105, true);
+      super("", 10000, false);
     }
   }
   
@@ -3321,16 +3335,16 @@ public final class c
   {
     public mj()
     {
-      super("uploadMediaFile", 237, true);
+      super("updateWASearchTemplate", 10000, false);
     }
   }
   
-  public static final class mk
+  static final class mk
     extends c.g
   {
-    public mk()
+    mk()
     {
-      super("uploadVideo", 192, true);
+      super("uploadEncryptMediaFile", 253, false);
     }
   }
   
@@ -3339,7 +3353,7 @@ public final class c
   {
     public ml()
     {
-      super("uploadVoice", 102, true);
+      super("uploadImage", 105, true);
     }
   }
   
@@ -3348,7 +3362,7 @@ public final class c
   {
     public mm()
     {
-      super("uxSearchOpLog", 10000, false);
+      super("uploadMediaFile", 237, true);
     }
   }
   
@@ -3357,7 +3371,7 @@ public final class c
   {
     public mn()
     {
-      super("verifyWCPayPassword", 115, true);
+      super("uploadVideo", 192, true);
     }
   }
   
@@ -3366,16 +3380,16 @@ public final class c
   {
     public mo()
     {
-      super("vibrateShort", 401, true);
+      super("uploadVoice", 102, true);
     }
   }
   
-  static final class mp
+  public static final class mp
     extends c.g
   {
-    mp()
+    public mp()
     {
-      super("", 10000, false);
+      super("uxSearchOpLog", 10000, false);
     }
   }
   
@@ -3384,25 +3398,25 @@ public final class c
   {
     public mq()
     {
-      super("", 355, true);
+      super("verifyWCPayPassword", 115, true);
     }
   }
   
-  static final class mr
+  public static final class mr
     extends c.g
   {
-    mr()
+    public mr()
     {
-      super("wcPrivacyPolicyResult", 315, false);
+      super("vibrateShort", 401, true);
     }
   }
   
-  public static final class ms
+  static final class ms
     extends c.g
   {
-    public ms()
+    ms()
     {
-      super("cache", 150, false);
+      super("", 10000, false);
     }
   }
   
@@ -3411,16 +3425,16 @@ public final class c
   {
     public mt()
     {
-      super("videoProxyInit", 156, false);
+      super("", 355, true);
     }
   }
   
-  public static final class mu
+  static final class mu
     extends c.g
   {
-    public mu()
+    mu()
     {
-      super("videoProxySetPlayerState", 159, false);
+      super("wcPrivacyPolicyResult", 315, false);
     }
   }
   
@@ -3429,7 +3443,7 @@ public final class c
   {
     public mv()
     {
-      super("videoProxySetPlayerState", 160, false);
+      super("cache", 150, false);
     }
   }
   
@@ -3438,7 +3452,7 @@ public final class c
   {
     public mw()
     {
-      super("videoProxyStartPlay", 157, false);
+      super("videoProxyInit", 156, false);
     }
   }
   
@@ -3447,7 +3461,7 @@ public final class c
   {
     public mx()
     {
-      super("videoProxyStopPlay", 158, false);
+      super("videoProxySetPlayerState", 159, false);
     }
   }
   
@@ -3456,7 +3470,7 @@ public final class c
   {
     public my()
     {
-      super("publicCache", 149, false);
+      super("videoProxySetPlayerState", 160, false);
     }
   }
   
@@ -3465,7 +3479,7 @@ public final class c
   {
     public mz()
     {
-      super("videoProxyPreload", 172, false);
+      super("videoProxyStartPlay", 157, false);
     }
   }
   
@@ -3483,7 +3497,7 @@ public final class c
   {
     public na()
     {
-      super("share_weibo", 3, true);
+      super("videoProxyStopPlay", 158, false);
     }
   }
   
@@ -3492,7 +3506,7 @@ public final class c
   {
     public nb()
     {
-      super("", 10000, false);
+      super("publicCache", 149, false);
     }
   }
   
@@ -3501,7 +3515,7 @@ public final class c
   {
     public nc()
     {
-      super("WNNativeAsyncCallback", 10006, false);
+      super("videoProxyPreload", 172, false);
     }
   }
   
@@ -3510,7 +3524,7 @@ public final class c
   {
     public nd()
     {
-      super("WNNativeCallbackInitData", 10006, false);
+      super("share_weibo", 3, true);
     }
   }
   
@@ -3519,7 +3533,7 @@ public final class c
   {
     public ne()
     {
-      super("WNNativeCallbackOnCaretChange", 10006, false);
+      super("", 10000, false);
     }
   }
   
@@ -3528,7 +3542,7 @@ public final class c
   {
     public nf()
     {
-      super("WNNativeCallbackOnClick", 10006, false);
+      super("WNNativeAsyncCallback", 10006, false);
     }
   }
   
@@ -3537,7 +3551,7 @@ public final class c
   {
     public ng()
     {
-      super("WNNativeCallbackOnLongClick", 10006, false);
+      super("WNNativeCallbackInitData", 10006, false);
     }
   }
   
@@ -3546,70 +3560,70 @@ public final class c
   {
     public nh()
     {
+      super("WNNativeCallbackOnCaretChange", 10006, false);
+    }
+  }
+  
+  public static final class ni
+    extends c.g
+  {
+    public ni()
+    {
+      super("WNNativeCallbackOnClick", 10006, false);
+    }
+  }
+  
+  public static final class nj
+    extends c.g
+  {
+    public nj()
+    {
+      super("WNNativeCallbackOnLongClick", 10006, false);
+    }
+  }
+  
+  public static final class nk
+    extends c.g
+  {
+    public nk()
+    {
       super("write_comm_data", 53, false);
     }
   }
   
-  static final class ni
+  static final class nl
     extends c.g
   {
-    ni()
+    nl()
     {
       super("calRqt", 319, false);
     }
   }
   
-  static final class nj
+  static final class nm
     extends c.g
   {
-    nj()
+    nm()
     {
       super("getCCData", 312, false);
     }
   }
   
-  static final class nk
+  static final class nn
     extends c.g
   {
-    nk()
+    nn()
+    {
+      super("buyWCCoin", 408, true);
+    }
+  }
+  
+  static final class no
+    extends c.g
+  {
+    no()
     {
       super("openRealnameAuth", 314, true);
-    }
-  }
-  
-  public static final class nl
-    extends c.g
-  {
-    public nl()
-    {
-      super("WNNativeCallbackOnBecomeEditing", 10006, false);
-    }
-  }
-  
-  public static final class nm
-    extends c.g
-  {
-    public nm()
-    {
-      super("WNNativeCallbackOnBecomeEdited", 10006, false);
-    }
-  }
-  
-  public static final class nn
-    extends c.g
-  {
-    public nn()
-    {
-      super("", 317, true);
-    }
-  }
-  
-  public static final class no
-    extends c.g
-  {
-    public no()
-    {
-      super("", 129, false);
     }
   }
   
@@ -3618,7 +3632,7 @@ public final class c
   {
     public np()
     {
-      super("", 89, false);
+      super("WNNativeCallbackOnBecomeEditing", 10006, false);
     }
   }
   
@@ -3627,7 +3641,7 @@ public final class c
   {
     public nq()
     {
-      super("", 94, false);
+      super("WNNativeCallbackOnBecomeEdited", 10006, false);
     }
   }
   
@@ -3636,7 +3650,7 @@ public final class c
   {
     public nr()
     {
-      super("", 134, false);
+      super("", 317, true);
     }
   }
   
@@ -3645,7 +3659,7 @@ public final class c
   {
     public ns()
     {
-      super("", 88, false);
+      super("", 129, false);
     }
   }
   
@@ -3654,7 +3668,7 @@ public final class c
   {
     public nt()
     {
-      super("", 109, false);
+      super("", 89, false);
     }
   }
   
@@ -3663,7 +3677,7 @@ public final class c
   {
     public nu()
     {
-      super("", 320, true);
+      super("", 94, false);
     }
   }
   
@@ -3671,6 +3685,42 @@ public final class c
     extends c.g
   {
     public nv()
+    {
+      super("", 134, false);
+    }
+  }
+  
+  public static final class nw
+    extends c.g
+  {
+    public nw()
+    {
+      super("", 88, false);
+    }
+  }
+  
+  public static final class nx
+    extends c.g
+  {
+    public nx()
+    {
+      super("", 109, false);
+    }
+  }
+  
+  public static final class ny
+    extends c.g
+  {
+    public ny()
+    {
+      super("", 320, true);
+    }
+  }
+  
+  public static final class nz
+    extends c.g
+  {
+    public nz()
     {
       super("uploadIdCardSuccess", 233, false);
     }
@@ -3682,6 +3732,15 @@ public final class c
     public o()
     {
       super("ad_data_report", 221, false);
+    }
+  }
+  
+  static final class p
+    extends c.g
+  {
+    p()
+    {
+      super("bindGroup", 376, false);
     }
   }
   
@@ -3768,7 +3827,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.protocal.c
  * JD-Core Version:    0.7.0.1
  */

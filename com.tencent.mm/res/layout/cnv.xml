@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="15.0dip" android:textColor="@drawable/a07" android:gravity="center" android:id="@id/cot" android:background="@drawable/a06" android:layout_width="wrap_content" android:layout_height="@dimen/ci" android:paddingStart="@dimen/ce" android:paddingEnd="@dimen/ce" android:layout_marginEnd="@dimen/cc" />
-</RelativeLayout>
+<com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:id="@id/hal" android:layout_width="fill_parent" android:layout_height="64.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="16.0dip" app:cornerRadius="@dimen/df"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/ma4" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/m_c" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/m_d" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+</com.tencent.mm.ui.widget.RoundedCornerFrameLayout>

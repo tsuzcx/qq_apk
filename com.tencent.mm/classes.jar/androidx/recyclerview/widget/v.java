@@ -1,286 +1,75 @@
 package androidx.recyclerview.widget;
 
-import android.content.Context;
-import android.graphics.PointF;
-import android.util.DisplayMetrics;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public class v
-  extends z
+final class v
 {
-  private u ajA;
-  private u ajz;
-  
-  private static int a(RecyclerView.LayoutManager paramLayoutManager, View paramView, u paramu)
+  static int a(RecyclerView.s params, s params1, View paramView1, View paramView2, RecyclerView.LayoutManager paramLayoutManager, boolean paramBoolean)
   {
-    AppMethodBeat.i(261983);
-    int j = paramu.aZ(paramView);
-    int k = paramu.bd(paramView) / 2;
-    if (paramLayoutManager.getClipToPadding()) {}
-    for (int i = paramu.kT() + paramu.kV() / 2;; i = paramu.getEnd() / 2)
+    AppMethodBeat.i(194867);
+    if ((paramLayoutManager.getChildCount() == 0) || (params.getItemCount() == 0) || (paramView1 == null) || (paramView2 == null))
     {
-      AppMethodBeat.o(261983);
-      return k + j - i;
+      AppMethodBeat.o(194867);
+      return 0;
     }
+    if (!paramBoolean)
+    {
+      i = Math.abs(paramLayoutManager.getPosition(paramView1) - paramLayoutManager.getPosition(paramView2));
+      AppMethodBeat.o(194867);
+      return i + 1;
+    }
+    int i = params1.bt(paramView2);
+    int j = params1.bs(paramView1);
+    i = Math.min(params1.JG(), i - j);
+    AppMethodBeat.o(194867);
+    return i;
   }
   
-  private static View a(RecyclerView.LayoutManager paramLayoutManager, u paramu)
+  static int a(RecyclerView.s params, s params1, View paramView1, View paramView2, RecyclerView.LayoutManager paramLayoutManager, boolean paramBoolean1, boolean paramBoolean2)
   {
-    Object localObject = null;
-    AppMethodBeat.i(261985);
-    int n = paramLayoutManager.getChildCount();
-    if (n == 0)
+    AppMethodBeat.i(194857);
+    if ((paramLayoutManager.getChildCount() == 0) || (params.getItemCount() == 0) || (paramView1 == null) || (paramView2 == null))
     {
-      AppMethodBeat.o(261985);
-      return null;
+      AppMethodBeat.o(194857);
+      return 0;
     }
-    int j;
-    int k;
-    if (paramLayoutManager.getClipToPadding())
+    int i = Math.min(paramLayoutManager.getPosition(paramView1), paramLayoutManager.getPosition(paramView2));
+    int j = Math.max(paramLayoutManager.getPosition(paramView1), paramLayoutManager.getPosition(paramView2));
+    if (paramBoolean2) {}
+    for (i = Math.max(0, params.getItemCount() - j - 1); !paramBoolean1; i = Math.max(0, i))
     {
-      j = paramu.kT() + paramu.kV() / 2;
-      int i = 2147483647;
-      k = 0;
-      label51:
-      if (k >= n) {
-        break label120;
-      }
-      View localView = paramLayoutManager.getChildAt(k);
-      int m = Math.abs(paramu.aZ(localView) + paramu.bd(localView) / 2 - j);
-      if (m >= i) {
-        break label128;
-      }
-      localObject = localView;
-      i = m;
+      AppMethodBeat.o(194857);
+      return i;
     }
-    label128:
-    for (;;)
-    {
-      k += 1;
-      break label51;
-      j = paramu.getEnd() / 2;
-      break;
-      label120:
-      AppMethodBeat.o(261985);
-      return localObject;
-    }
+    j = Math.abs(params1.bt(paramView2) - params1.bs(paramView1));
+    int k = Math.abs(paramLayoutManager.getPosition(paramView1) - paramLayoutManager.getPosition(paramView2));
+    float f = j / (k + 1);
+    i = Math.round(i * f + (params1.JE() - params1.bs(paramView1)));
+    AppMethodBeat.o(194857);
+    return i;
   }
   
-  private u b(RecyclerView.LayoutManager paramLayoutManager)
+  static int b(RecyclerView.s params, s params1, View paramView1, View paramView2, RecyclerView.LayoutManager paramLayoutManager, boolean paramBoolean)
   {
-    AppMethodBeat.i(261988);
-    if ((this.ajz == null) || (this.ajz.ajD != paramLayoutManager)) {
-      this.ajz = u.e(paramLayoutManager);
-    }
-    paramLayoutManager = this.ajz;
-    AppMethodBeat.o(261988);
-    return paramLayoutManager;
-  }
-  
-  private static View c(RecyclerView.LayoutManager paramLayoutManager, u paramu)
-  {
-    Object localObject = null;
-    AppMethodBeat.i(261987);
-    int m = paramLayoutManager.getChildCount();
-    if (m == 0)
+    AppMethodBeat.i(194882);
+    if ((paramLayoutManager.getChildCount() == 0) || (params.getItemCount() == 0) || (paramView1 == null) || (paramView2 == null))
     {
-      AppMethodBeat.o(261987);
-      return null;
+      AppMethodBeat.o(194882);
+      return 0;
     }
-    int i = 2147483647;
-    int j = 0;
-    if (j < m)
+    if (!paramBoolean)
     {
-      View localView = paramLayoutManager.getChildAt(j);
-      int k = paramu.aZ(localView);
-      if (k >= i) {
-        break label80;
-      }
-      localObject = localView;
-      i = k;
+      i = params.getItemCount();
+      AppMethodBeat.o(194882);
+      return i;
     }
-    label80:
-    for (;;)
-    {
-      j += 1;
-      break;
-      AppMethodBeat.o(261987);
-      return localObject;
-    }
-  }
-  
-  private u c(RecyclerView.LayoutManager paramLayoutManager)
-  {
-    AppMethodBeat.i(261989);
-    if ((this.ajA == null) || (this.ajA.ajD != paramLayoutManager)) {
-      this.ajA = u.d(paramLayoutManager);
-    }
-    paramLayoutManager = this.ajA;
-    AppMethodBeat.o(261989);
-    return paramLayoutManager;
-  }
-  
-  public int a(RecyclerView.LayoutManager paramLayoutManager, int paramInt1, int paramInt2)
-  {
-    int i = 0;
-    AppMethodBeat.i(261978);
-    int k = paramLayoutManager.getItemCount();
-    if (k == 0)
-    {
-      AppMethodBeat.o(261978);
-      return -1;
-    }
-    View localView = null;
-    if (paramLayoutManager.canScrollVertically()) {
-      localView = c(paramLayoutManager, b(paramLayoutManager));
-    }
-    while (localView == null)
-    {
-      AppMethodBeat.o(261978);
-      return -1;
-      if (paramLayoutManager.canScrollHorizontally()) {
-        localView = c(paramLayoutManager, c(paramLayoutManager));
-      }
-    }
-    int j = paramLayoutManager.getPosition(localView);
-    if (j == -1)
-    {
-      AppMethodBeat.o(261978);
-      return -1;
-    }
-    if (paramLayoutManager.canScrollHorizontally()) {
-      if (paramInt1 > 0) {
-        paramInt1 = 1;
-      }
-    }
-    for (;;)
-    {
-      paramInt2 = i;
-      if ((paramLayoutManager instanceof RecyclerView.r.b))
-      {
-        paramLayoutManager = ((RecyclerView.r.b)paramLayoutManager).cB(k - 1);
-        paramInt2 = i;
-        if (paramLayoutManager != null) {
-          if (paramLayoutManager.x >= 0.0F)
-          {
-            paramInt2 = i;
-            if (paramLayoutManager.y >= 0.0F) {}
-          }
-          else
-          {
-            paramInt2 = 1;
-          }
-        }
-      }
-      if (paramInt2 == 0) {
-        break label213;
-      }
-      if (paramInt1 == 0) {
-        break;
-      }
-      AppMethodBeat.o(261978);
-      return j - 1;
-      paramInt1 = 0;
-      continue;
-      if (paramInt2 > 0) {
-        paramInt1 = 1;
-      } else {
-        paramInt1 = 0;
-      }
-    }
-    AppMethodBeat.o(261978);
-    return j;
-    label213:
-    if (paramInt1 != 0)
-    {
-      AppMethodBeat.o(261978);
-      return j + 1;
-    }
-    AppMethodBeat.o(261978);
-    return j;
-  }
-  
-  public View a(RecyclerView.LayoutManager paramLayoutManager)
-  {
-    AppMethodBeat.i(261974);
-    if (paramLayoutManager.canScrollVertically())
-    {
-      paramLayoutManager = a(paramLayoutManager, b(paramLayoutManager));
-      AppMethodBeat.o(261974);
-      return paramLayoutManager;
-    }
-    if (paramLayoutManager.canScrollHorizontally())
-    {
-      paramLayoutManager = a(paramLayoutManager, c(paramLayoutManager));
-      AppMethodBeat.o(261974);
-      return paramLayoutManager;
-    }
-    AppMethodBeat.o(261974);
-    return null;
-  }
-  
-  public int[] a(RecyclerView.LayoutManager paramLayoutManager, View paramView)
-  {
-    AppMethodBeat.i(261973);
-    int[] arrayOfInt = new int[2];
-    if (paramLayoutManager.canScrollHorizontally())
-    {
-      arrayOfInt[0] = a(paramLayoutManager, paramView, c(paramLayoutManager));
-      if (!paramLayoutManager.canScrollVertically()) {
-        break label63;
-      }
-      arrayOfInt[1] = a(paramLayoutManager, paramView, b(paramLayoutManager));
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(261973);
-      return arrayOfInt;
-      arrayOfInt[0] = 0;
-      break;
-      label63:
-      arrayOfInt[1] = 0;
-    }
-  }
-  
-  protected final p f(RecyclerView.LayoutManager paramLayoutManager)
-  {
-    AppMethodBeat.i(261981);
-    if (!(paramLayoutManager instanceof RecyclerView.r.b))
-    {
-      AppMethodBeat.o(261981);
-      return null;
-    }
-    paramLayoutManager = new p(this.mRecyclerView.getContext())
-    {
-      protected final float a(DisplayMetrics paramAnonymousDisplayMetrics)
-      {
-        return 100.0F / paramAnonymousDisplayMetrics.densityDpi;
-      }
-      
-      protected final void a(View paramAnonymousView, RecyclerView.s paramAnonymouss, RecyclerView.r.a paramAnonymousa)
-      {
-        AppMethodBeat.i(261969);
-        paramAnonymousView = v.this.a(v.this.mRecyclerView.getLayoutManager(), paramAnonymousView);
-        int i = paramAnonymousView[0];
-        int j = paramAnonymousView[1];
-        int k = cE(Math.max(Math.abs(i), Math.abs(j)));
-        if (k > 0) {
-          paramAnonymousa.a(i, j, k, this.aju);
-        }
-        AppMethodBeat.o(261969);
-      }
-      
-      protected final int cF(int paramAnonymousInt)
-      {
-        AppMethodBeat.i(261970);
-        paramAnonymousInt = Math.min(100, super.cF(paramAnonymousInt));
-        AppMethodBeat.o(261970);
-        return paramAnonymousInt;
-      }
-    };
-    AppMethodBeat.o(261981);
-    return paramLayoutManager;
+    int i = params1.bt(paramView2);
+    int j = params1.bs(paramView1);
+    int k = Math.abs(paramLayoutManager.getPosition(paramView1) - paramLayoutManager.getPosition(paramView2));
+    i = (int)((i - j) / (k + 1) * params.getItemCount());
+    AppMethodBeat.o(194882);
+    return i;
   }
 }
 

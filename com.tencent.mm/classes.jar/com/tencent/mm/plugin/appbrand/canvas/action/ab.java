@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.canvas.action;
 
 import android.graphics.Canvas;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.g;
+import com.tencent.mm.plugin.appbrand.af.i;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
@@ -15,8 +15,8 @@ public final class ab
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, float paramFloat)
   {
     AppMethodBeat.i(144956);
-    paramd.nTx.setStrokeWidth(paramFloat);
-    paramd.nTw.setStrokeWidth(paramFloat);
+    paramd.qTj.setStrokeWidth(paramFloat);
+    paramd.qTi.setStrokeWidth(paramFloat);
     AppMethodBeat.o(144956);
     return true;
   }
@@ -30,7 +30,7 @@ public final class ab
       AppMethodBeat.o(144957);
       return false;
     }
-    boolean bool = a(paramd, paramCanvas.nTZ);
+    boolean bool = a(paramd, paramCanvas.qTK);
     AppMethodBeat.o(144957);
     return bool;
   }
@@ -43,12 +43,12 @@ public final class ab
       AppMethodBeat.o(144955);
       return false;
     }
-    boolean bool = a(paramd, g.f(paramJSONArray, 0));
+    boolean bool = a(paramd, i.f(paramJSONArray, 0));
     AppMethodBeat.o(144955);
     return bool;
   }
   
-  public final BaseDrawActionArg bKy()
+  public final BaseDrawActionArg cjY()
   {
     AppMethodBeat.i(144954);
     SetLineWidthActionArg localSetLineWidthActionArg = new SetLineWidthActionArg();
@@ -63,7 +63,7 @@ public final class ab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.ab
  * JD-Core Version:    0.7.0.1
  */

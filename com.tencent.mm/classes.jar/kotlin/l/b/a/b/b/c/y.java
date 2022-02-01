@@ -1,61 +1,59 @@
 package kotlin.l.b.a.b.b.c;
 
-import kotlin.g.b.p;
+import kotlin.g.b.s;
 import kotlin.l.b.a.b.b.a.g.a;
-import kotlin.l.b.a.b.b.ab;
-import kotlin.l.b.a.b.b.an;
+import kotlin.l.b.a.b.b.ae;
+import kotlin.l.b.a.b.b.ah;
+import kotlin.l.b.a.b.b.av;
 import kotlin.l.b.a.b.b.l;
 import kotlin.l.b.a.b.b.n;
-import kotlin.l.b.a.b.f.b;
-import kotlin.t;
+import kotlin.l.b.a.b.f.c;
 
 public abstract class y
   extends k
-  implements ab
+  implements ah
 {
-  public final b aaLC;
+  public final c aiIl;
+  private final String aiLB;
   
-  public y(kotlin.l.b.a.b.b.y paramy, b paramb)
+  public y(ae paramae, c paramc)
   {
-    super(paramy, g.a.iGe(), paramb.iNB(), an.aaKE);
-    this.aaLC = paramb;
+    super(locall, g.a.kpB(), paramc.kxU(), av.aiHu);
+    this.aiIl = paramc;
+    this.aiLB = ("package " + this.aiIl + " of " + paramae);
   }
   
   public final <R, D> R a(n<R, D> paramn, D paramD)
   {
-    p.k(paramn, "visitor");
-    return paramn.a((ab)this, paramD);
+    s.u(paramn, "visitor");
+    return paramn.a((ah)this, paramD);
   }
   
-  public an iDZ()
+  public av knm()
   {
-    an localan = an.aaKE;
-    p.j(localan, "SourceElement.NO_SOURCE");
-    return localan;
+    av localav = av.aiHu;
+    s.s(localav, "NO_SOURCE");
+    return localav;
   }
   
-  public final kotlin.l.b.a.b.b.y iFx()
+  public final ae koX()
   {
-    l locall = super.iDJ();
-    if (locall == null) {
-      throw new t("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.ModuleDescriptor");
-    }
-    return (kotlin.l.b.a.b.b.y)locall;
+    return (ae)super.knp();
   }
   
-  public final b iFy()
+  public final c koY()
   {
-    return this.aaLC;
+    return this.aiIl;
   }
   
   public String toString()
   {
-    return "package " + this.aaLC;
+    return this.aiLB;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.b.c.y
  * JD-Core Version:    0.7.0.1
  */

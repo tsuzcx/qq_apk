@@ -4,26 +4,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.util.Arrays;
 
 public final class g
   implements a
 {
-  private long DnO;
-  private long DnP;
+  private long Jhx;
+  private long Jhy;
   private int height;
-  private String uVk;
+  private String outputPath;
   private int width;
   
   public g(String paramString, int paramInt1, int paramInt2, long paramLong)
   {
     AppMethodBeat.i(104655);
-    this.DnO = 0L;
-    this.uVk = paramString;
+    this.Jhx = 0L;
+    this.outputPath = paramString;
     this.width = paramInt1;
     this.height = paramInt2;
-    this.DnP = paramLong;
+    this.Jhy = paramLong;
     Log.i("MicroMsg.MMGifEncoder", "create MMGifEncoder, width: %s, height: %s, frameDurationMs: %s, outputPath: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong), paramString });
     AppMethodBeat.o(104655);
   }
@@ -31,13 +31,13 @@ public final class g
   public final boolean e(byte[] paramArrayOfByte, long paramLong)
   {
     AppMethodBeat.i(104657);
-    if ((this.DnO != 0L) && (!Util.isNullOrNil(paramArrayOfByte)) && (paramArrayOfByte.length == this.width * this.height * 4))
+    if ((this.Jhx != 0L) && (!Util.isNullOrNil(paramArrayOfByte)) && (paramArrayOfByte.length == this.width * this.height * 4))
     {
-      long l = this.DnP;
+      long l = this.Jhy;
       if (paramLong >= 0L) {
         l = paramLong;
       }
-      int i = MMWXGFJNI.nativeAddGifEncodeRgbaFrame(this.DnO, this.width, this.height, paramArrayOfByte, l);
+      int i = MMWXGFJNI.nativeAddGifEncodeRgbaFrame(this.Jhx, this.width, this.height, paramArrayOfByte, l);
       if (i < 0)
       {
         Log.e("MicroMsg.MMGifEncoder", "add rgba frame failed: %s", new Object[] { Integer.valueOf(i) });
@@ -52,12 +52,12 @@ public final class g
     return false;
   }
   
-  public final boolean eAU()
+  public final boolean fIZ()
   {
     AppMethodBeat.i(104658);
-    if (this.DnO != 0L)
+    if (this.Jhx != 0L)
     {
-      byte[] arrayOfByte = MMWXGFJNI.nativeFinishGifEncode(this.DnO);
+      byte[] arrayOfByte = MMWXGFJNI.nativeFinishGifEncode(this.Jhx);
       if ((arrayOfByte == null) || (arrayOfByte.length <= 0))
       {
         Log.i("MicroMsg.MMGifEncoder", "finish encode error, buf: %s", new Object[] { Arrays.toString(arrayOfByte) });
@@ -65,9 +65,9 @@ public final class g
         return false;
       }
       Log.i("MicroMsg.MMGifEncoder", "encoder buffer size: %s", new Object[] { Integer.valueOf(arrayOfByte.length) });
-      if (!Util.isNullOrNil(this.uVk))
+      if (!Util.isNullOrNil(this.outputPath))
       {
-        u.H(this.uVk, arrayOfByte);
+        y.f(this.outputPath, arrayOfByte, arrayOfByte.length);
         AppMethodBeat.o(104658);
         return true;
       }
@@ -79,22 +79,22 @@ public final class g
   public final boolean init()
   {
     AppMethodBeat.i(104656);
-    this.DnO = MMWXGFJNI.nativeInitGifEncode(this.width, this.height, this.DnP);
-    if (this.DnO == 0L)
+    this.Jhx = MMWXGFJNI.nativeInitGifEncode(this.width, this.height, this.Jhy);
+    if (this.Jhx == 0L)
     {
-      h.IzE.el(852, 11);
-      Log.e("MicroMsg.MMGifEncoder", "init gif encoder failed! %s", new Object[] { Long.valueOf(this.DnO) });
+      h.OAn.kJ(852, 11);
+      Log.e("MicroMsg.MMGifEncoder", "init gif encoder failed! %s", new Object[] { Long.valueOf(this.Jhx) });
       AppMethodBeat.o(104656);
       return false;
     }
-    Log.i("MicroMsg.MMGifEncoder", "successfully init wxam encoder: %s", new Object[] { Long.valueOf(this.DnO) });
+    Log.i("MicroMsg.MMGifEncoder", "successfully init wxam encoder: %s", new Object[] { Long.valueOf(this.Jhx) });
     AppMethodBeat.o(104656);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gif.g
  * JD-Core Version:    0.7.0.1
  */

@@ -2,11 +2,11 @@ package com.google.android.exoplayer2;
 
 public abstract interface s
 {
+  public abstract int Qt();
+  
   public abstract int b(Format paramFormat);
   
   public abstract int getTrackType();
-  
-  public abstract int qR();
 }
 
 

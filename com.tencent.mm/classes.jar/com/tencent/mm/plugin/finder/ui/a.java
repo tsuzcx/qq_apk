@@ -3,73 +3,144 @@ package com.tencent.mm.plugin.finder.ui;
 import android.app.Activity;
 import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.loader.d;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.loader.e;
-import com.tencent.mm.plugin.finder.loader.t.a;
-import com.tencent.mm.plugin.finder.utils.aj;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.loader.p.a;
+import com.tencent.mm.plugin.finder.utils.av;
 import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.asn;
+import com.tencent.mm.protocal.protobuf.axc;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.ListIterator;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.x;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FansListAdapter;", "Landroid/widget/BaseAdapter;", "context", "Landroid/app/Activity;", "(Landroid/app/Activity;)V", "TAG", "", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/FinderFansContact;", "Lkotlin/collections/ArrayList;", "onItemClickListener", "Lkotlin/Function2;", "Landroid/view/View;", "", "", "getOnItemClickListener", "()Lkotlin/jvm/functions/Function2;", "setOnItemClickListener", "(Lkotlin/jvm/functions/Function2;)V", "onItemLongClickListener", "getOnItemLongClickListener", "setOnItemLongClickListener", "getCount", "getItem", "position", "getItemId", "", "getShowBefore", "getView", "convertView", "parent", "Landroid/view/ViewGroup;", "setContactList", "contacts", "", "ContactViewHolder", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/ui/FansListAdapter;", "Landroid/widget/BaseAdapter;", "context", "Landroid/app/Activity;", "(Landroid/app/Activity;)V", "TAG", "", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/FinderFansContact;", "Lkotlin/collections/ArrayList;", "onItemClickListener", "Lkotlin/Function2;", "Landroid/view/View;", "", "", "getOnItemClickListener", "()Lkotlin/jvm/functions/Function2;", "setOnItemClickListener", "(Lkotlin/jvm/functions/Function2;)V", "onItemLongClickListener", "getOnItemLongClickListener", "setOnItemLongClickListener", "getCount", "getItem", "position", "getItemId", "", "getShowBefore", "getView", "convertView", "parent", "Landroid/view/ViewGroup;", "setContactList", "contacts", "", "ContactViewHolder", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   extends BaseAdapter
 {
+  m<? super View, ? super Integer, ah> CyZ;
+  m<? super View, ? super Integer, ah> FNY;
   private String TAG;
-  private Activity fDf;
-  private ArrayList<asn> mXB;
-  m<? super View, ? super Integer, x> yWG;
-  m<? super View, ? super Integer, x> yWH;
+  private Activity hHU;
+  private ArrayList<axc> pUj;
   
   public a(Activity paramActivity)
   {
     AppMethodBeat.i(167129);
     this.TAG = "Finder.FansListAdapter";
-    this.fDf = paramActivity;
-    this.mXB = new ArrayList();
+    this.hHU = paramActivity;
+    this.pUj = new ArrayList();
     AppMethodBeat.o(167129);
   }
   
-  public final asn MK(int paramInt)
+  private static final void a(a parama, View paramView1, int paramInt, View paramView2)
   {
-    AppMethodBeat.i(167125);
-    Object localObject = this.mXB.get(paramInt);
-    p.j(localObject, "dataList[position]");
-    localObject = (asn)localObject;
-    AppMethodBeat.o(167125);
-    return localObject;
+    AppMethodBeat.i(346568);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(parama);
+    localb.cH(paramView1);
+    localb.sc(paramInt);
+    localb.cH(paramView2);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/ui/FansListAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(parama, "this$0");
+    parama = parama.CyZ;
+    if (parama != null)
+    {
+      s.s(paramView1, "clickArea");
+      parama.invoke(paramView1, Integer.valueOf(paramInt));
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/ui/FansListAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(346568);
   }
   
-  public final void eQ(List<? extends asn> paramList)
+  private static final boolean b(a parama, View paramView1, int paramInt, View paramView2)
   {
-    AppMethodBeat.i(167128);
-    p.k(paramList, "contacts");
-    this.mXB.clear();
-    this.mXB.addAll((Collection)paramList);
-    AppMethodBeat.o(167128);
+    AppMethodBeat.i(346570);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(parama);
+    localb.cH(paramView1);
+    localb.sc(paramInt);
+    localb.cH(paramView2);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/ui/FansListAdapter", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", localObject, localb.aYj());
+    s.u(parama, "this$0");
+    parama = parama.FNY;
+    if (parama != null)
+    {
+      s.s(paramView1, "clickArea");
+      parama.invoke(paramView1, Integer.valueOf(paramInt));
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(true, new Object(), "com/tencent/mm/plugin/finder/ui/FansListAdapter", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+    AppMethodBeat.o(346570);
+    return true;
+  }
+  
+  private static final void c(a parama, View paramView1, int paramInt, View paramView2)
+  {
+    AppMethodBeat.i(346575);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(parama);
+    localb.cH(paramView1);
+    localb.sc(paramInt);
+    localb.cH(paramView2);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/ui/FansListAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(parama, "this$0");
+    parama = parama.CyZ;
+    if (parama != null)
+    {
+      s.s(paramView1, "clickArea");
+      parama.invoke(paramView1, Integer.valueOf(paramInt));
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/ui/FansListAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(346575);
+  }
+  
+  private final int eOz()
+  {
+    AppMethodBeat.i(346562);
+    Object localObject = (List)this.pUj;
+    localObject = ((List)localObject).listIterator(((List)localObject).size());
+    while (((ListIterator)localObject).hasPrevious())
+    {
+      if (((axc)((ListIterator)localObject).previous()).eQp == 1) {}
+      for (int i = 1; i != 0; i = 0)
+      {
+        i = ((ListIterator)localObject).nextIndex();
+        AppMethodBeat.o(346562);
+        return i;
+      }
+    }
+    AppMethodBeat.o(346562);
+    return -1;
+  }
+  
+  public final axc Oi(int paramInt)
+  {
+    AppMethodBeat.i(167125);
+    Object localObject = this.pUj.get(paramInt);
+    s.s(localObject, "dataList[position]");
+    localObject = (axc)localObject;
+    AppMethodBeat.o(167125);
+    return localObject;
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(167127);
-    int i = this.mXB.size();
+    int i = this.pUj.size();
     AppMethodBeat.o(167127);
     return i;
   }
@@ -79,244 +150,168 @@ public final class a
     return paramInt;
   }
   
-  public final View getView(final int paramInt, final View paramView, ViewGroup paramViewGroup)
+  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(167124);
     paramViewGroup = paramView;
     if (paramView == null)
     {
-      paramViewGroup = View.inflate((Context)this.fDf, b.g.finder_fans_list_item, null);
-      paramView = new a();
-      p.j(paramViewGroup, "itemView");
-      paramViewGroup.setTag(paramView);
+      paramViewGroup = View.inflate((Context)this.hHU, e.f.finder_fans_list_item, null);
+      paramViewGroup.setTag(new a());
     }
+    s.checkNotNull(paramViewGroup);
     paramView = paramViewGroup.getTag();
     if (paramView == null)
     {
-      paramView = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.ui.FansListAdapter.ContactViewHolder");
+      paramView = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.finder.ui.FansListAdapter.ContactViewHolder");
       AppMethodBeat.o(167124);
       throw paramView;
     }
     a locala = (a)paramView;
-    paramView = paramViewGroup.findViewById(b.f.avatar_iv);
-    p.j(paramView, "itemView.findViewById(R.id.avatar_iv)");
+    paramView = paramViewGroup.findViewById(e.e.avatar_iv);
+    s.s(paramView, "itemView.findViewById(R.id.avatar_iv)");
     paramView = (ImageView)paramView;
-    p.k(paramView, "<set-?>");
-    locala.jiu = paramView;
-    paramView = paramViewGroup.findViewById(b.f.nickname_tv);
-    p.j(paramView, "itemView.findViewById(R.id.nickname_tv)");
+    s.u(paramView, "<set-?>");
+    locala.lKK = paramView;
+    paramView = paramViewGroup.findViewById(e.e.nickname_tv);
+    s.s(paramView, "itemView.findViewById(R.id.nickname_tv)");
     paramView = (TextView)paramView;
-    p.k(paramView, "<set-?>");
-    locala.xoK = paramView;
-    paramView = paramViewGroup.findViewById(b.f.before_split_tv);
-    p.j(paramView, "itemView.findViewById(R.id.before_split_tv)");
+    s.u(paramView, "<set-?>");
+    locala.nicknameTv = paramView;
+    paramView = paramViewGroup.findViewById(e.e.before_split_tv);
+    s.s(paramView, "itemView.findViewById(R.id.before_split_tv)");
     paramView = (TextView)paramView;
-    p.k(paramView, "<set-?>");
-    locala.Aao = paramView;
-    asn localasn = MK(paramInt);
-    paramView = localasn.contact;
+    s.u(paramView, "<set-?>");
+    locala.FvR = paramView;
+    axc localaxc = Oi(paramInt);
+    paramView = localaxc.contact;
     Object localObject1;
-    if (paramView != null)
-    {
-      localObject1 = paramView.headUrl;
-      paramView = (View)localObject1;
-      if (localObject1 != null) {}
-    }
-    else
-    {
-      paramView = "";
-    }
-    paramView = Util.nullAsNil(paramView);
     Object localObject2;
     Object localObject3;
-    label315:
-    label358:
-    int i;
-    if (localasn.displayFlag == 0)
+    if (paramView == null)
     {
-      localObject1 = com.tencent.mm.plugin.finder.loader.t.ztT;
-      localObject1 = com.tencent.mm.plugin.finder.loader.t.dJi();
-      paramView = new e(paramView);
+      paramView = "";
+      paramView = Util.nullAsNil(paramView);
+      if (localaxc.displayFlag != 0) {
+        break label412;
+      }
+      localObject1 = com.tencent.mm.plugin.finder.loader.p.ExI;
+      localObject1 = com.tencent.mm.plugin.finder.loader.p.eCq();
+      paramView = new com.tencent.mm.plugin.finder.loader.b(paramView);
       localObject2 = locala.getAvatarIv();
-      localObject3 = com.tencent.mm.plugin.finder.loader.t.ztT;
-      ((d)localObject1).a(paramView, (ImageView)localObject2, com.tencent.mm.plugin.finder.loader.t.a(t.a.ztZ));
-      localObject1 = locala.xoK;
-      if (localObject1 == null) {
-        p.bGy("nicknameTv");
-      }
-      localObject2 = (Context)this.fDf;
-      paramView = aj.AGc;
-      localObject3 = localasn.username;
-      paramView = localasn.contact;
+      localObject3 = com.tencent.mm.plugin.finder.loader.p.ExI;
+      ((d)localObject1).a(paramView, (ImageView)localObject2, com.tencent.mm.plugin.finder.loader.p.a(p.a.ExO));
+      label251:
+      paramView = locala.nicknameTv;
       if (paramView == null) {
-        break label520;
+        break label460;
       }
-      paramView = paramView.nickname;
-      ((TextView)localObject1).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c((Context)localObject2, (CharSequence)aj.ht((String)localObject3, paramView)));
-      paramView = (List)this.mXB;
-      paramView = paramView.listIterator(paramView.size());
-      if (!paramView.hasPrevious()) {
-        break label531;
+      label261:
+      localObject2 = (Context)this.hHU;
+      localObject1 = av.GiL;
+      localObject3 = localaxc.username;
+      localObject1 = localaxc.contact;
+      if (localObject1 != null) {
+        break label471;
       }
-      if (((asn)paramView.previous()).cUP != 1) {
-        break label525;
+      localObject1 = null;
+      label297:
+      paramView.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.p.b((Context)localObject2, (CharSequence)av.ip((String)localObject3, (String)localObject1)));
+      if ((eOz() != paramInt) || (paramInt == getCount() - 1)) {
+        break label481;
       }
-      i = 1;
-      label386:
-      if (i == 0) {
-        break label529;
-      }
-      i = paramView.nextIndex();
-      label399:
-      if ((i != paramInt) || (paramInt == getCount() - 1)) {
-        break label537;
-      }
-      locala.dZH().setVisibility(0);
-      label424:
-      paramView = paramViewGroup.findViewById(b.f.fans_main_layout);
-      if (!MK(paramInt).fCB) {
-        break label550;
+      locala.faB().setVisibility(0);
+      label346:
+      paramView = paramViewGroup.findViewById(e.e.fans_main_layout);
+      if (!Oi(paramInt).hHq) {
+        break label494;
       }
       paramView.setOnLongClickListener(null);
-      paramView.setOnClickListener((View.OnClickListener)new b(this, paramView, paramInt));
+      paramView.setOnClickListener(new a..ExternalSyntheticLambda1(this, paramView, paramInt));
     }
     for (;;)
     {
       AppMethodBeat.o(167124);
       return paramViewGroup;
-      localObject1 = com.tencent.mm.plugin.finder.loader.t.ztT;
-      localObject1 = com.tencent.mm.plugin.finder.loader.t.dJh();
-      paramView = new e(paramView);
-      localObject2 = locala.getAvatarIv();
-      localObject3 = com.tencent.mm.plugin.finder.loader.t.ztT;
-      ((d)localObject1).a(paramView, (ImageView)localObject2, com.tencent.mm.plugin.finder.loader.t.a(t.a.ztX));
+      localObject1 = paramView.headUrl;
+      paramView = (View)localObject1;
+      if (localObject1 != null) {
+        break;
+      }
+      paramView = "";
       break;
-      label520:
+      label412:
+      localObject1 = com.tencent.mm.plugin.finder.loader.p.ExI;
+      localObject1 = com.tencent.mm.plugin.finder.loader.p.eCp();
+      paramView = new com.tencent.mm.plugin.finder.loader.b(paramView);
+      localObject2 = locala.getAvatarIv();
+      localObject3 = com.tencent.mm.plugin.finder.loader.p.ExI;
+      ((d)localObject1).a(paramView, (ImageView)localObject2, com.tencent.mm.plugin.finder.loader.p.a(p.a.ExM));
+      break label251;
+      label460:
+      s.bIx("nicknameTv");
       paramView = null;
-      break label315;
-      label525:
-      i = 0;
-      break label386;
-      label529:
-      break label358;
-      label531:
-      i = -1;
-      break label399;
-      label537:
-      locala.dZH().setVisibility(8);
-      break label424;
-      label550:
-      paramView.setOnLongClickListener((View.OnLongClickListener)new c(this, paramView, paramInt));
-      paramView.setOnClickListener((View.OnClickListener)new d(this, paramView, paramInt));
+      break label261;
+      label471:
+      localObject1 = ((FinderContact)localObject1).nickname;
+      break label297;
+      label481:
+      locala.faB().setVisibility(8);
+      break label346;
+      label494:
+      paramView.setOnLongClickListener(new a..ExternalSyntheticLambda2(this, paramView, paramInt));
+      paramView.setOnClickListener(new a..ExternalSyntheticLambda0(this, paramView, paramInt));
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FansListAdapter$ContactViewHolder;", "", "()V", "avatarIv", "Landroid/widget/ImageView;", "getAvatarIv", "()Landroid/widget/ImageView;", "setAvatarIv", "(Landroid/widget/ImageView;)V", "beforeTip", "Landroid/widget/TextView;", "getBeforeTip", "()Landroid/widget/TextView;", "setBeforeTip", "(Landroid/widget/TextView;)V", "nicknameTv", "getNicknameTv", "setNicknameTv", "plugin-finder_release"})
+  public final void hD(List<? extends axc> paramList)
+  {
+    AppMethodBeat.i(167128);
+    s.u(paramList, "contacts");
+    this.pUj.clear();
+    this.pUj.addAll((Collection)paramList);
+    AppMethodBeat.o(167128);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/ui/FansListAdapter$ContactViewHolder;", "", "()V", "avatarIv", "Landroid/widget/ImageView;", "getAvatarIv", "()Landroid/widget/ImageView;", "setAvatarIv", "(Landroid/widget/ImageView;)V", "beforeTip", "Landroid/widget/TextView;", "getBeforeTip", "()Landroid/widget/TextView;", "setBeforeTip", "(Landroid/widget/TextView;)V", "nicknameTv", "getNicknameTv", "setNicknameTv", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   static final class a
   {
-    public TextView Aao;
-    public ImageView jiu;
-    public TextView xoK;
+    public TextView FvR;
+    public ImageView lKK;
+    public TextView nicknameTv;
     
-    public final TextView dZH()
+    public final TextView faB()
     {
       AppMethodBeat.i(167122);
-      TextView localTextView = this.Aao;
-      if (localTextView == null) {
-        p.bGy("beforeTip");
+      TextView localTextView = this.FvR;
+      if (localTextView != null)
+      {
+        AppMethodBeat.o(167122);
+        return localTextView;
       }
+      s.bIx("beforeTip");
       AppMethodBeat.o(167122);
-      return localTextView;
+      return null;
     }
     
     public final ImageView getAvatarIv()
     {
       AppMethodBeat.i(178428);
-      ImageView localImageView = this.jiu;
-      if (localImageView == null) {
-        p.bGy("avatarIv");
+      ImageView localImageView = this.lKK;
+      if (localImageView != null)
+      {
+        AppMethodBeat.o(178428);
+        return localImageView;
       }
+      s.bIx("avatarIv");
       AppMethodBeat.o(178428);
-      return localImageView;
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class b
-    implements View.OnClickListener
-  {
-    b(a parama, View paramView, int paramInt) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(287134);
-      Object localObject = new b();
-      ((b)localObject).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/ui/FansListAdapter$getView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
-      paramView = this.AnV.yWH;
-      if (paramView != null)
-      {
-        localObject = paramView;
-        p.j(localObject, "clickArea");
-        paramView.invoke(localObject, Integer.valueOf(paramInt));
-      }
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FansListAdapter$getView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(287134);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
-  static final class c
-    implements View.OnLongClickListener
-  {
-    c(a parama, View paramView, int paramInt) {}
-    
-    public final boolean onLongClick(View paramView)
-    {
-      AppMethodBeat.i(290050);
-      Object localObject = new b();
-      ((b)localObject).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/ui/FansListAdapter$getView$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((b)localObject).aFi());
-      paramView = this.AnV.yWG;
-      if (paramView != null)
-      {
-        localObject = paramView;
-        p.j(localObject, "clickArea");
-        paramView.invoke(localObject, Integer.valueOf(paramInt));
-      }
-      com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/finder/ui/FansListAdapter$getView$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-      AppMethodBeat.o(290050);
-      return true;
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class d
-    implements View.OnClickListener
-  {
-    d(a parama, View paramView, int paramInt) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(280068);
-      Object localObject = new b();
-      ((b)localObject).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/ui/FansListAdapter$getView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
-      paramView = this.AnV.yWH;
-      if (paramView != null)
-      {
-        localObject = paramView;
-        p.j(localObject, "clickArea");
-        paramView.invoke(localObject, Integer.valueOf(paramInt));
-      }
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FansListAdapter$getView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(280068);
+      return null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.a
  * JD-Core Version:    0.7.0.1
  */

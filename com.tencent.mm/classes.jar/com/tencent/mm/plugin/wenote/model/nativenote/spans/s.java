@@ -7,9 +7,9 @@ public enum s
   static
   {
     AppMethodBeat.i(30666);
-    QIw = new s("EXACT", 0);
-    QIx = new s("SPAN_FLAGS", 1);
-    QIy = new s[] { QIw, QIx };
+    XBV = new s("EXACT", 0);
+    XBW = new s("SPAN_FLAGS", 1);
+    XBX = new s[] { XBV, XBW };
     AppMethodBeat.o(30666);
   }
   

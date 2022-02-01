@@ -26,23 +26,23 @@ public class TXCAudioEngineJNI
   
   static
   {
-    AppMethodBeat.i(246378);
+    AppMethodBeat.i(230778);
     sAudioManager = null;
-    h.f();
+    h.d();
     nativeCacheClassForNative();
     mAudioDumpingListener = null;
     mAudioCaptureDataListener = null;
     mMixedAllDataListener = new WeakReference(null);
-    AppMethodBeat.o(246378);
+    AppMethodBeat.o(230778);
   }
   
   public static void InitTraeEngineLibrary(Context paramContext)
   {
-    AppMethodBeat.i(246344);
+    AppMethodBeat.i(230532);
     if (paramContext == null)
     {
       TXCLog.e("TXCAudioEngineJNI", "InitTraeEngineLibrary failed, context is null!");
-      AppMethodBeat.o(246344);
+      AppMethodBeat.o(230532);
       return;
     }
     try
@@ -51,7 +51,7 @@ public class TXCAudioEngineJNI
       String str2 = paramContext.nativeLibraryDir;
       String str3 = paramContext.dataDir + "/lib";
       String str4 = "/data/data/" + paramContext.packageName + "/lib";
-      String str1 = h.g();
+      String str1 = h.e();
       paramContext = str1;
       if (str1 == null) {
         paramContext = "";
@@ -60,13 +60,13 @@ public class TXCAudioEngineJNI
       nativeAppendLibraryPath("add_libpath:".concat(String.valueOf(str3)));
       nativeAppendLibraryPath("add_libpath:".concat(String.valueOf(str4)));
       nativeAppendLibraryPath("add_libpath:".concat(String.valueOf(paramContext)));
-      AppMethodBeat.o(246344);
+      AppMethodBeat.o(230532);
       return;
     }
     catch (UnsatisfiedLinkError paramContext)
     {
       TXCLog.e("TXCAudioEngineJNI", "init trae engine library failed.", paramContext);
-      AppMethodBeat.o(246344);
+      AppMethodBeat.o(230532);
     }
   }
   
@@ -77,46 +77,46 @@ public class TXCAudioEngineJNI
   
   private static AudioManager getAudioManager()
   {
-    AppMethodBeat.i(246355);
+    AppMethodBeat.i(230588);
     if (sAudioManager == null) {
       sAudioManager = (AudioManager)TXCAudioEngine.getInstance().getAppContext().getSystemService("audio");
     }
     AudioManager localAudioManager = sAudioManager;
-    AppMethodBeat.o(246355);
+    AppMethodBeat.o(230588);
     return localAudioManager;
   }
   
   public static int getAudioMode()
   {
-    AppMethodBeat.i(246352);
+    AppMethodBeat.i(230579);
     try
     {
       AudioManager localAudioManager = getAudioManager();
       if (localAudioManager != null)
       {
         int i = localAudioManager.getMode();
-        AppMethodBeat.o(246352);
+        AppMethodBeat.o(230579);
         return i;
       }
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(246352);
+      AppMethodBeat.o(230579);
     }
     return -1;
   }
   
   public static StatusBucket getStatus(int paramInt)
   {
-    AppMethodBeat.i(246350);
+    AppMethodBeat.i(230572);
     StatusBucket localStatusBucket = nativeGetStatus(paramInt);
-    AppMethodBeat.o(246350);
+    AppMethodBeat.o(230572);
     return localStatusBucket;
   }
   
   public static int getSystemVolume()
   {
-    AppMethodBeat.i(246353);
+    AppMethodBeat.i(230584);
     try
     {
       if (getAudioMode() == 0) {}
@@ -127,22 +127,22 @@ public class TXCAudioEngineJNI
           break;
         }
         i = localAudioManager.getStreamVolume(i);
-        AppMethodBeat.o(246353);
+        AppMethodBeat.o(230584);
         return i;
       }
       return -1;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(246353);
+      AppMethodBeat.o(230584);
     }
   }
   
   public static boolean isAppInBackground()
   {
-    AppMethodBeat.i(246351);
+    AppMethodBeat.i(230576);
     boolean bool = h.a(TXCAudioEngine.getInstance().getAppContext());
-    AppMethodBeat.o(246351);
+    AppMethodBeat.o(230576);
     return bool;
   }
   
@@ -152,24 +152,24 @@ public class TXCAudioEngineJNI
   
   public static boolean nativeCheckTraeEngine(Context paramContext)
   {
-    AppMethodBeat.i(246345);
+    AppMethodBeat.i(230542);
     if (paramContext == null)
     {
       TXCLog.e("TXCAudioEngineJNI", "nativeCheckTraeEngine failed, context is null!");
-      AppMethodBeat.o(246345);
+      AppMethodBeat.o(230542);
       return false;
     }
     if (h.a("traeimp-rtmp"))
     {
       TXCLog.e("TXCAudioEngineJNI", "link traeimp-rtmp success !");
-      AppMethodBeat.o(246345);
+      AppMethodBeat.o(230542);
       return true;
     }
     paramContext = paramContext.getApplicationInfo();
     String str2 = paramContext.nativeLibraryDir;
     String str3 = paramContext.dataDir + "/lib";
     String str4 = "/data/data/" + paramContext.packageName + "/lib";
-    String str1 = h.g();
+    String str1 = h.e();
     paramContext = str1;
     if (str1 == null) {
       paramContext = "";
@@ -180,7 +180,7 @@ public class TXCAudioEngineJNI
     }
     while (i != 0)
     {
-      AppMethodBeat.o(246345);
+      AppMethodBeat.o(230542);
       return true;
       TXCLog.w("TXCAudioEngineJNI", "nativeCheckTraeEngine load so error " + str2 + "/libtraeimp-rtmp.so");
       if (new File(str3 + "/libtraeimp-rtmp.so").exists())
@@ -210,7 +210,7 @@ public class TXCAudioEngineJNI
       }
     }
     TXCLog.e("TXCAudioEngineJNI", "nativeCheckTraeEngine failed, can not find trae libs !");
-    AppMethodBeat.o(246345);
+    AppMethodBeat.o(230542);
     return false;
   }
   
@@ -380,113 +380,113 @@ public class TXCAudioEngineJNI
   
   public static void onError(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(246340);
+    AppMethodBeat.i(230505);
     TXCAudioEngine.getInstance().onError(paramString1, paramInt, paramString2, paramString3);
-    AppMethodBeat.o(246340);
+    AppMethodBeat.o(230505);
   }
   
   public static void onEvent(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(246338);
+    AppMethodBeat.i(230493);
     TXCAudioEngine.getInstance().onEvent(paramString1, paramInt, paramString2, paramString3);
-    AppMethodBeat.o(246338);
+    AppMethodBeat.o(230493);
   }
   
   public static void onLocalAudioWriteFail()
   {
-    AppMethodBeat.i(246343);
+    AppMethodBeat.i(230518);
     if (mAudioDumpingListener != null) {
       mAudioDumpingListener.onLocalAudioWriteFailed();
     }
-    AppMethodBeat.o(246343);
+    AppMethodBeat.o(230518);
   }
   
   public static void onMixedAllData(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(246342);
+    AppMethodBeat.i(230513);
     e locale = (e)mMixedAllDataListener.get();
     if (locale != null) {
       locale.onMixedAllData(paramArrayOfByte, paramInt1, paramInt2);
     }
-    AppMethodBeat.o(246342);
+    AppMethodBeat.o(230513);
   }
   
   public static void onRecordEncData(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(246336);
+    AppMethodBeat.i(230483);
     if ((mAudioCaptureDataListener != null) && (mAudioCaptureDataListener.get() != null)) {
       ((g)mAudioCaptureDataListener.get()).onRecordEncData(paramArrayOfByte, paramLong, paramInt1, paramInt2, 16);
     }
-    AppMethodBeat.o(246336);
+    AppMethodBeat.o(230483);
   }
   
   public static void onRecordError(int paramInt, String paramString)
   {
-    AppMethodBeat.i(246337);
+    AppMethodBeat.i(230487);
     TXCLog.e("TXCAudioEngineJNI", "onRecordError: " + paramInt + ", " + paramString);
     if ((mAudioCaptureDataListener != null) && (mAudioCaptureDataListener.get() != null)) {
       ((g)mAudioCaptureDataListener.get()).onRecordError(paramInt, paramString);
     }
-    AppMethodBeat.o(246337);
+    AppMethodBeat.o(230487);
   }
   
   public static void onRecordPcmData(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(246335);
+    AppMethodBeat.i(230477);
     if ((mAudioCaptureDataListener != null) && (mAudioCaptureDataListener.get() != null)) {
       ((g)mAudioCaptureDataListener.get()).onRecordPcmData(paramArrayOfByte, paramLong, paramInt1, paramInt2, paramInt3);
     }
-    AppMethodBeat.o(246335);
+    AppMethodBeat.o(230477);
   }
   
   public static void onRecordRawPcmData(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(246334);
+    AppMethodBeat.i(230468);
     if ((mAudioCaptureDataListener != null) && (mAudioCaptureDataListener.get() != null)) {
       ((g)mAudioCaptureDataListener.get()).onRecordRawPcmData(paramArrayOfByte, paramLong, paramInt1, paramInt2, paramInt3, false);
     }
-    AppMethodBeat.o(246334);
+    AppMethodBeat.o(230468);
   }
   
   public static void onWarning(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(246339);
+    AppMethodBeat.i(230500);
     TXCAudioEngine.getInstance().onWarning(paramString1, paramInt, paramString2, paramString3);
-    AppMethodBeat.o(246339);
+    AppMethodBeat.o(230500);
   }
   
   public static void pauseAudioCapture(boolean paramBoolean)
   {
-    AppMethodBeat.i(246346);
+    AppMethodBeat.i(230546);
     nativePauseAudioCapture(paramBoolean);
-    AppMethodBeat.o(246346);
+    AppMethodBeat.o(230546);
   }
   
   public static void resumeAudioCapture()
   {
-    AppMethodBeat.i(246347);
+    AppMethodBeat.i(230551);
     nativeResumeAudioCapture();
-    AppMethodBeat.o(246347);
+    AppMethodBeat.o(230551);
   }
   
   public static void sendCustomPCMData(a parama)
   {
-    AppMethodBeat.i(246349);
+    AppMethodBeat.i(230565);
     nativeSendCustomPCMData(parama.f, parama.f.length, parama.e, parama.a, parama.b);
-    AppMethodBeat.o(246349);
+    AppMethodBeat.o(230565);
   }
   
   public static void sendCustomPCMData(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(246348);
+    AppMethodBeat.i(230556);
     nativeSendCustomPCMData(paramArrayOfByte, paramArrayOfByte.length, 0L, paramInt1, paramInt2);
-    AppMethodBeat.o(246348);
+    AppMethodBeat.o(230556);
   }
   
   public static void setAudioCaptureDataListener(WeakReference<g> paramWeakReference)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(246333);
+    AppMethodBeat.i(230461);
     mAudioCaptureDataListener = paramWeakReference;
     if (paramWeakReference == null)
     {
@@ -507,7 +507,7 @@ public class TXCAudioEngineJNI
     for (boolean bool1 = bool2;; bool1 = true)
     {
       nativeSetAudioEngineEncodedDataCallback(bool1);
-      AppMethodBeat.o(246333);
+      AppMethodBeat.o(230461);
       return;
       bool1 = true;
       break;
@@ -518,13 +518,13 @@ public class TXCAudioEngineJNI
   
   public static void setMixedAllDataListener(e parame)
   {
-    AppMethodBeat.i(246341);
+    AppMethodBeat.i(230510);
     mMixedAllDataListener = new WeakReference(parame);
     if (parame != null) {}
     for (boolean bool = true;; bool = false)
     {
       nativeSetAudioEngineMixedAllDataCallback(bool);
-      AppMethodBeat.o(246341);
+      AppMethodBeat.o(230510);
       return;
     }
   }
@@ -536,7 +536,7 @@ public class TXCAudioEngineJNI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.audio.impl.TXCAudioEngineJNI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,26 @@
 package com.tencent.mm.ui;
 
+import android.view.View;
+import android.view.animation.AnimationUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.ls;
-import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.R.a;
 
 final class FindMoreFriendsUI$34
-  extends IListener<ls>
+  implements Runnable
 {
-  FindMoreFriendsUI$34(FindMoreFriendsUI paramFindMoreFriendsUI)
+  FindMoreFriendsUI$34(FindMoreFriendsUI paramFindMoreFriendsUI, View paramView) {}
+  
+  public final void run()
   {
-    AppMethodBeat.i(161492);
-    this.__eventId = ls.class.getName().hashCode();
-    AppMethodBeat.o(161492);
+    AppMethodBeat.i(249737);
+    this.adyP.setVisibility(8);
+    this.adyP.startAnimation(AnimationUtils.loadAnimation(this.adyF.getContext(), R.a.fast_faded_out));
+    AppMethodBeat.o(249737);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.FindMoreFriendsUI.34
  * JD-Core Version:    0.7.0.1
  */

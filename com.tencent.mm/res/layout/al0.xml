@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:paddingTop="@dimen/cl" android:paddingBottom="@dimen/ce" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:layout_gravity="center_horizontal" android:id="@id/x1" android:layout_width="120.0dip" android:layout_height="120.0dip" android:src="@drawable/bca" />
-        <TextView android:layout_gravity="center_horizontal" android:id="@id/fza" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" style="@style/l4" />
-        <TextView android:layout_gravity="center_horizontal" android:id="@id/hs4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" style="@style/hv" />
-        <Button android:layout_gravity="center_horizontal" android:id="@id/idj" android:layout_marginTop="@dimen/ce" android:text="@string/co_" style="@style/ow" />
-    </LinearLayout>
-    <ImageView android:id="@id/bsg" android:background="@color/a74" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/ct" />
-</LinearLayout>
+<FrameLayout android:id="@id/c06" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="@dimen/dc">
+        <FrameLayout android:layout_gravity="bottom" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:layout_marginRight="@dimen/cp" android:layout_marginBottom="@dimen/cp">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/c05" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/icons_outlined_close" app:iconColor="@color/BW_100_Alpha_0_8" />
+            <TextView android:textSize="15.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e9r" />
+        </FrameLayout>
+        <View android:layout_gravity="bottom" android:background="@color/BW_100_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    </FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/c07" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dc" android:layout_marginBottom="@dimen/d_" />
+</FrameLayout>

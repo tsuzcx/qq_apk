@@ -2,7 +2,7 @@ package com.tencent.thumbplayer.utils;
 
 public final class d
 {
-  public static int aBq(int paramInt)
+  public static int aIc(int paramInt)
   {
     int i;
     if (101 == paramInt) {
@@ -16,7 +16,7 @@ public final class d
     return 102;
   }
   
-  public static int aBr(int paramInt)
+  public static int aId(int paramInt)
   {
     int i;
     if (26 == paramInt) {
@@ -30,7 +30,7 @@ public final class d
     return 172;
   }
   
-  public static int aBs(int paramInt)
+  public static int aIe(int paramInt)
   {
     if (-1 == paramInt) {}
     do
@@ -49,7 +49,7 @@ public final class d
     return 37;
   }
   
-  public static int aBt(int paramInt)
+  public static int aIf(int paramInt)
   {
     if (-1 == paramInt) {}
     do
@@ -94,7 +94,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.thumbplayer.utils.d
  * JD-Core Version:    0.7.0.1
  */

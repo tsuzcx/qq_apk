@@ -1,19 +1,17 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.j;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.am.i;
+import com.tencent.mm.bx.a;
 import com.tencent.mm.jniinterface.AesEcb;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.plugin.backup.i.x;
-import com.tencent.mm.plugin.backup.i.y;
-import com.tencent.mm.protocal.protobuf.ih;
-import com.tencent.mm.protocal.protobuf.ii;
+import com.tencent.mm.protocal.protobuf.jd;
+import com.tencent.mm.protocal.protobuf.je;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.vfs.u;
 import java.io.IOException;
 import java.util.LinkedList;
 
@@ -23,43 +21,43 @@ public final class c
   private static int progress;
   private String filePath;
   private byte[] key;
-  private int lAW;
   private int offset;
-  public x rRw;
-  private y rRx;
-  private j rUp;
-  private byte[] rUq;
+  private int osy;
   private int start;
   private int type;
+  public x vcM;
+  private com.tencent.mm.plugin.backup.i.y vcN;
+  private i vfE;
+  private byte[] vfF;
   
-  public c(String paramString1, int paramInt, LinkedList<ih> paramLinkedList, String paramString2, j paramj, byte[] paramArrayOfByte)
+  public c(String paramString1, int paramInt, LinkedList<jd> paramLinkedList, String paramString2, i parami, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(21940);
-    this.rRw = new x();
-    this.rRx = new y();
-    this.rUp = null;
+    this.vcM = new x();
+    this.vcN = new com.tencent.mm.plugin.backup.i.y();
+    this.vfE = null;
     this.start = 0;
     this.offset = 0;
-    this.lAW = 0;
-    this.rRw.rWy = paramString1;
-    this.rRw.rWz = paramInt;
+    this.osy = 0;
+    this.vcM.vhN = paramString1;
+    this.vcM.vhO = paramInt;
     this.type = paramInt;
     if (paramInt == 1)
     {
-      paramString1 = new ii();
-      paramString1.rVy = paramLinkedList;
-      paramString1.rVx = paramLinkedList.size();
+      paramString1 = new je();
+      paramString1.vgO = paramLinkedList;
+      paramString1.vgN = paramLinkedList.size();
     }
     for (;;)
     {
       try
       {
-        this.rUq = paramString1.toByteArray();
-        this.lAW = this.rUq.length;
-        paramInt = this.lAW;
-        this.rRw.rWA = (16 - paramInt % 16 + this.lAW);
-        Log.i("MicroMsg.BakSceneDataPush", "BakSceneDataPush init:%s  type:%d, localTotalLen:%d, reqDataSize:%d", new Object[] { this.rRw.rWy, Integer.valueOf(this.rRw.rWz), Integer.valueOf(this.lAW), Integer.valueOf(this.rRw.rWA) });
-        this.rUp = paramj;
+        this.vfF = paramString1.toByteArray();
+        this.osy = this.vfF.length;
+        paramInt = this.osy;
+        this.vcM.vhP = (16 - paramInt % 16 + this.osy);
+        Log.i("MicroMsg.BakSceneDataPush", "BakSceneDataPush init:%s  type:%d, localTotalLen:%d, reqDataSize:%d", new Object[] { this.vcM.vhN, Integer.valueOf(this.vcM.vhO), Integer.valueOf(this.osy), Integer.valueOf(this.vcM.vhP) });
+        this.vfE = parami;
         this.key = paramArrayOfByte;
         AppMethodBeat.o(21940);
         return;
@@ -71,7 +69,7 @@ public final class c
         continue;
       }
       this.filePath = paramString2;
-      this.lAW = ((int)u.bBQ(paramString2));
+      this.osy = ((int)com.tencent.mm.vfs.y.bEl(paramString2));
     }
   }
   
@@ -83,40 +81,40 @@ public final class c
     AppMethodBeat.o(21941);
   }
   
-  public final void EN(int paramInt)
+  public final void Fo(int paramInt)
   {
     AppMethodBeat.i(21943);
-    Log.i("MicroMsg.BakSceneDataPush", "onSceneEnd id:%s, type:%d, s:%d, e:%d, status:%d", new Object[] { this.rRx.rWy, Integer.valueOf(this.rRx.rWz), Integer.valueOf(this.rRx.rWB), Integer.valueOf(this.rRx.rWC), Integer.valueOf(this.rRx.rVU) });
-    if (this.rRx.rVU != 0)
+    Log.i("MicroMsg.BakSceneDataPush", "onSceneEnd id:%s, type:%d, s:%d, e:%d, status:%d", new Object[] { this.vcN.vhN, Integer.valueOf(this.vcN.vhO), Integer.valueOf(this.vcN.vhQ), Integer.valueOf(this.vcN.vhR), Integer.valueOf(this.vcN.vhk) });
+    if (this.vcN.vhk != 0)
     {
-      Log.e("MicroMsg.BakSceneDataPush", "status:%d", new Object[] { Integer.valueOf(this.rRx.rVU) });
-      r(4, this.rRx.rVU, "error");
+      Log.e("MicroMsg.BakSceneDataPush", "status:%d", new Object[] { Integer.valueOf(this.vcN.vhk) });
+      u(4, this.vcN.vhk, "error");
       AppMethodBeat.o(21943);
       return;
     }
-    this.rUp.a(this.rRw.rWC - this.rRw.rWB, this.lAW, this);
-    if (this.offset == this.lAW)
+    this.vfE.a(this.vcM.vhR - this.vcM.vhQ, this.osy, this);
+    if (this.offset == this.osy)
     {
-      Log.i("MicroMsg.BakSceneDataPush", "back complete: %s,  %d", new Object[] { this.rRw.rWy, Integer.valueOf(this.lAW) });
-      r(0, 0, "success");
+      Log.i("MicroMsg.BakSceneDataPush", "back complete: %s,  %d", new Object[] { this.vcM.vhN, Integer.valueOf(this.osy) });
+      u(0, 0, "success");
       AppMethodBeat.o(21943);
       return;
     }
-    ctM();
+    cWw();
     AppMethodBeat.o(21943);
   }
   
-  public final a ctC()
+  public final a cWm()
   {
-    return this.rRx;
+    return this.vcN;
   }
   
-  public final a ctD()
+  public final a cWn()
   {
-    return this.rRw;
+    return this.vcM;
   }
   
-  public final boolean ctM()
+  public final boolean cWw()
   {
     AppMethodBeat.i(21942);
     Object localObject1 = null;
@@ -126,22 +124,22 @@ public final class c
     int j;
     if (this.type == 1)
     {
-      i = this.lAW;
-      localObject1 = this.rUq;
+      i = this.osy;
+      localObject1 = this.vfF;
       this.start = this.offset;
       this.offset = (i + this.start);
       localObject2 = localObject1;
       if (this.key != null)
       {
         localObject2 = this.key;
-        if (this.offset != this.lAW) {
+        if (this.offset != this.osy) {
           break label518;
         }
         bool = true;
         localObject2 = AesEcb.aesCryptEcb((byte[])localObject1, (byte[])localObject2, true, bool);
       }
-      this.rRw.rWB = this.start;
-      localObject1 = this.rRw;
+      this.vcM.vhQ = this.start;
+      localObject1 = this.vcM;
       j = this.start;
       if (localObject2 != null) {
         break label524;
@@ -151,16 +149,16 @@ public final class c
     label524:
     for (int i = 0;; i = localObject2.length)
     {
-      ((x)localObject1).rWC = (i + j);
-      this.rRw.rVk = new com.tencent.mm.cd.b((byte[])localObject2);
-      this.rRw.rWE = progress;
-      Log.i("MicroMsg.BakSceneDataPush", "doSecne %s---total:%d, start:%d, offset:%d, data.len:%d", new Object[] { this.rRw.rWy, Integer.valueOf(this.lAW), Integer.valueOf(this.start), Integer.valueOf(this.offset), Integer.valueOf(this.rRw.rWC) });
-      bool = super.ctM();
+      ((x)localObject1).vhR = (i + j);
+      this.vcM.vgA = new com.tencent.mm.bx.b((byte[])localObject2);
+      this.vcM.vhT = progress;
+      Log.i("MicroMsg.BakSceneDataPush", "doSecne %s---total:%d, start:%d, offset:%d, data.len:%d", new Object[] { this.vcM.vhN, Integer.valueOf(this.osy), Integer.valueOf(this.start), Integer.valueOf(this.offset), Integer.valueOf(this.vcM.vhR) });
+      bool = super.cWw();
       AppMethodBeat.o(21942);
       return bool;
       long l;
       int k;
-      if (this.lAW - this.offset > 524288L)
+      if (this.osy - this.offset > 524288L)
       {
         l = 524288L;
         k = (int)l;
@@ -175,28 +173,28 @@ public final class c
         if (!Util.isNullOrNil(this.filePath))
         {
           localObject1 = this.filePath;
-          bh.beI();
-          if (((String)localObject1).startsWith(com.tencent.mm.model.c.bcb()))
+          bh.bCz();
+          if (((String)localObject1).startsWith(com.tencent.mm.model.c.bzQ()))
           {
             localObject1 = this.filePath.substring(this.filePath.lastIndexOf("/") + 1);
             Log.i("MicroMsg.BakSceneDataPush", "md5:%s", new Object[] { localObject1 });
-            localObject1 = ((com.tencent.mm.plugin.emoji.b.d)h.ag(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().aud((String)localObject1);
-            if ((localObject1 != null) && ((((EmojiInfo)localObject1).field_reserved4 & EmojiInfo.ZuM) == EmojiInfo.ZuM))
+            localObject1 = ((com.tencent.mm.plugin.emoji.c.d)h.az(com.tencent.mm.plugin.emoji.c.d.class)).getEmojiMgr().aoe((String)localObject1);
+            if ((localObject1 != null) && ((((EmojiInfo)localObject1).field_reserved4 & EmojiInfo.akmb) == EmojiInfo.akmb))
             {
-              localObject2 = ((com.tencent.mm.plugin.emoji.b.d)h.ag(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().a((EmojiInfo)localObject1);
+              localObject2 = ((com.tencent.mm.plugin.emoji.c.d)h.az(com.tencent.mm.plugin.emoji.c.d.class)).getEmojiMgr().a((EmojiInfo)localObject1);
               localObject1 = new byte[k];
               System.arraycopy(localObject2, this.offset, localObject1, 0, k);
               i = j;
               continue;
-              l = this.lAW - this.offset;
+              l = this.osy - this.offset;
               break;
             }
-            localObject1 = u.aY(this.filePath, this.offset, k);
+            localObject1 = com.tencent.mm.vfs.y.bi(this.filePath, this.offset, k);
             i = j;
             continue;
           }
         }
-        localObject1 = u.aY(this.filePath, this.offset, k);
+        localObject1 = com.tencent.mm.vfs.y.bi(this.filePath, this.offset, k);
         i = j;
       }
       label479:
@@ -217,7 +215,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.c.c
  * JD-Core Version:    0.7.0.1
  */

@@ -10,9 +10,9 @@ class BroadCastData
   implements Parcelable
 {
   public static final Parcelable.Creator<BroadCastData> CREATOR;
-  ArrayList<KVReportDataInfo> IyT;
-  ArrayList<StIDKeyDataInfo> IyU;
-  ArrayList<GroupIDKeyDataInfo> IyV;
+  ArrayList<KVReportDataInfo> OzA;
+  ArrayList<StIDKeyDataInfo> OzB;
+  ArrayList<GroupIDKeyDataInfo> OzC;
   
   static
   {
@@ -24,38 +24,38 @@ class BroadCastData
   public BroadCastData()
   {
     AppMethodBeat.i(143806);
-    this.IyT = new ArrayList();
-    this.IyU = new ArrayList();
-    this.IyV = new ArrayList();
+    this.OzA = new ArrayList();
+    this.OzB = new ArrayList();
+    this.OzC = new ArrayList();
     AppMethodBeat.o(143806);
   }
   
   protected BroadCastData(Parcel paramParcel)
   {
     AppMethodBeat.i(143808);
-    this.IyT = new ArrayList();
-    this.IyU = new ArrayList();
-    this.IyV = new ArrayList();
-    paramParcel.readTypedList(this.IyT, KVReportDataInfo.CREATOR);
-    paramParcel.readTypedList(this.IyU, StIDKeyDataInfo.CREATOR);
-    paramParcel.readTypedList(this.IyV, GroupIDKeyDataInfo.CREATOR);
+    this.OzA = new ArrayList();
+    this.OzB = new ArrayList();
+    this.OzC = new ArrayList();
+    paramParcel.readTypedList(this.OzA, KVReportDataInfo.CREATOR);
+    paramParcel.readTypedList(this.OzB, StIDKeyDataInfo.CREATOR);
+    paramParcel.readTypedList(this.OzC, GroupIDKeyDataInfo.CREATOR);
     AppMethodBeat.o(143808);
   }
   
   public BroadCastData(BroadCastData paramBroadCastData)
   {
     AppMethodBeat.i(143807);
-    this.IyT = new ArrayList();
-    this.IyU = new ArrayList();
-    this.IyV = new ArrayList();
+    this.OzA = new ArrayList();
+    this.OzB = new ArrayList();
+    this.OzC = new ArrayList();
     if (paramBroadCastData == null)
     {
       AppMethodBeat.o(143807);
       return;
     }
-    this.IyT = new ArrayList(paramBroadCastData.IyT);
-    this.IyU = new ArrayList(paramBroadCastData.IyU);
-    this.IyV = new ArrayList(paramBroadCastData.IyV);
+    this.OzA = new ArrayList(paramBroadCastData.OzA);
+    this.OzB = new ArrayList(paramBroadCastData.OzB);
+    this.OzC = new ArrayList(paramBroadCastData.OzC);
     AppMethodBeat.o(143807);
   }
   
@@ -67,15 +67,15 @@ class BroadCastData
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(143809);
-    paramParcel.writeTypedList(this.IyT);
-    paramParcel.writeTypedList(this.IyU);
-    paramParcel.writeTypedList(this.IyV);
+    paramParcel.writeTypedList(this.OzA);
+    paramParcel.writeTypedList(this.OzB);
+    paramParcel.writeTypedList(this.OzC);
     AppMethodBeat.o(143809);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.report.service.BroadCastData
  * JD-Core Version:    0.7.0.1
  */

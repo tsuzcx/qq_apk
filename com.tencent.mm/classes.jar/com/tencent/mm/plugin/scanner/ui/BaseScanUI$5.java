@@ -1,30 +1,26 @@
 package com.tencent.mm.plugin.scanner.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class BaseScanUI$5
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
   BaseScanUI$5(BaseScanUI paramBaseScanUI) {}
   
-  public final void onClick(View paramView)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(51686);
-    b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/scanner/ui/BaseScanUI$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    BaseScanUI.D(this.IPw);
-    a.a(this, "com/tencent/mm/plugin/scanner/ui/BaseScanUI$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(51686);
+    AppMethodBeat.i(314956);
+    Log.i("MicroMsg.ScanUI", "checkCameraUsing user confirm and finish");
+    this.OYm.dmh();
+    AppMethodBeat.o(314956);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.BaseScanUI.5
  * JD-Core Version:    0.7.0.1
  */

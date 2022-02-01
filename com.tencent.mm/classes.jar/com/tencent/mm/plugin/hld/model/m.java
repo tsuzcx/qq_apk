@@ -1,28 +1,23 @@
 package com.tencent.mm.plugin.hld.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/model/ImeResDownloadStatus;", "", "value", "", "(Ljava/lang/String;IJ)V", "getValue", "()J", "Success", "CDNFail", "DecryptFail", "CompressFail", "PatchMergeFail", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/model/ImeResDownloadStatus;", "", "value", "", "(Ljava/lang/String;IJ)V", "getValue", "()J", "Success", "CDNFail", "DecryptFail", "CompressFail", "PatchMergeFail", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public enum m
 {
   final long value;
   
   static
   {
-    AppMethodBeat.i(216262);
-    m localm1 = new m("Success", 0, 1L);
-    DDS = localm1;
-    m localm2 = new m("CDNFail", 1, 2L);
-    DDT = localm2;
-    m localm3 = new m("DecryptFail", 2, 3L);
-    DDU = localm3;
-    m localm4 = new m("CompressFail", 3, 4L);
-    DDV = localm4;
-    m localm5 = new m("PatchMergeFail", 4, 5L);
-    DDW = localm5;
-    DDX = new m[] { localm1, localm2, localm3, localm4, localm5 };
-    AppMethodBeat.o(216262);
+    AppMethodBeat.i(311910);
+    JvQ = new m("Success", 0, 1L);
+    JvR = new m("CDNFail", 1, 2L);
+    JvS = new m("DecryptFail", 2, 3L);
+    JvT = new m("CompressFail", 3, 4L);
+    JvU = new m("PatchMergeFail", 4, 5L);
+    JvV = new m[] { JvQ, JvR, JvS, JvT, JvU };
+    AppMethodBeat.o(311910);
   }
   
   private m(long paramLong)

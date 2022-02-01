@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.widget.TouchMediaPreviewLayout android:id="@id/h8v" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<com.tencent.mm.view.TouchableLayout android:id="@id/kzv" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical" android:id="@id/hpr" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/h7t" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <androidx.recyclerview.widget.RecyclerView android:id="@id/gka" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical" android:id="@id/gl6" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/ivk" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mm.plugin.finder.event.recyclerview.FinderRecyclerView android:id="@id/iix" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
         </com.tencent.mm.view.RefreshLoadMoreLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-    <include layout="@layout/abw" />
-</com.tencent.mm.ui.widget.TouchMediaPreviewLayout>
+    <TextView android:textSize="14.0dip" android:gravity="center" android:id="@id/hgy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="64.0dip" android:layout_marginTop="@dimen/ci" android:text="@string/eng" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/g3l" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="64.0dip" android:layout_marginTop="@dimen/ci">
+        <ProgressBar android:background="@color/ahb" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:indeterminateDrawable="@drawable/ang" />
+    </LinearLayout>
+    <ListView android:id="@id/ews" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ListView android:id="@id/ka4" android:background="@color/BW_93" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include layout="@layout/ac4" />
+    <TextView android:textSize="@dimen/a78" android:textColor="@color/az" android:gravity="center" android:id="@id/j62" android:background="@drawable/aqo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/d5" android:layout_marginLeft="@dimen/df" android:layout_marginTop="@dimen/c2" android:layout_marginRight="@dimen/df" />
+</com.tencent.mm.view.TouchableLayout>

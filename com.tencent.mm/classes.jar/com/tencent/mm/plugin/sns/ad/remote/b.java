@@ -9,11 +9,11 @@ import java.lang.annotation.Target;
 @Target({java.lang.annotation.ElementType.METHOD})
 public @interface b
 {
-  boolean fLa() default true;
+  boolean hbr() default true;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.remote.b
  * JD-Core Version:    0.7.0.1
  */

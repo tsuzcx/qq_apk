@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/b" />
-    <corners android:radius="@dimen/bt" />
-</shape>
+    <item android:color="@color/al6" android:state_activated="true" />
+    <item android:color="@color/BW_100_Alpha_0_8" />
+</selector>

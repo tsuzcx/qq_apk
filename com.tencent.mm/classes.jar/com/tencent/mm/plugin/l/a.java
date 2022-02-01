@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.l;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.be.w;
 import com.tencent.mm.kernel.api.bucket.b;
 import com.tencent.mm.kernel.f;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.y;
+import com.tencent.mm.modelpackage.u;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,39 +14,39 @@ public final class a
   extends y
   implements b
 {
-  private static a uea;
+  private static a xkd;
   
   private a()
   {
-    super(w.class);
+    super(u.class);
   }
   
-  public static String bcd()
+  public static String bzS()
   {
     AppMethodBeat.i(151486);
     Object localObject = new StringBuilder();
-    h.aHH();
-    localObject = h.aHG().kcB + "package/";
+    h.baF();
+    localObject = h.baE().mCJ + "package/";
     AppMethodBeat.o(151486);
     return localObject;
   }
   
-  public static a cPO()
+  public static a dul()
   {
     try
     {
       AppMethodBeat.i(151484);
-      if (uea == null) {
-        uea = new a();
+      if (xkd == null) {
+        xkd = new a();
       }
-      a locala = uea;
+      a locala = xkd;
       AppMethodBeat.o(151484);
       return locala;
     }
     finally {}
   }
   
-  public final List<String> aHP()
+  public final List<String> baM()
   {
     AppMethodBeat.i(151485);
     LinkedList localLinkedList = new LinkedList();
@@ -57,7 +57,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.l.a
  * JD-Core Version:    0.7.0.1
  */

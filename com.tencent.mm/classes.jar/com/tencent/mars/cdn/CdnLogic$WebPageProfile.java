@@ -3,20 +3,18 @@ package com.tencent.mars.cdn;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import androidx.annotation.Keep;
 
-@Keep
 public class CdnLogic$WebPageProfile
   implements Parcelable
 {
   public static final Parcelable.Creator<WebPageProfile> CREATOR = new Parcelable.Creator()
   {
-    public final CdnLogic.WebPageProfile createFromParcel(Parcel paramAnonymousParcel)
+    public CdnLogic.WebPageProfile createFromParcel(Parcel paramAnonymousParcel)
     {
       return new CdnLogic.WebPageProfile(paramAnonymousParcel);
     }
     
-    public final CdnLogic.WebPageProfile[] newArray(int paramAnonymousInt)
+    public CdnLogic.WebPageProfile[] newArray(int paramAnonymousInt)
     {
       return new CdnLogic.WebPageProfile[paramAnonymousInt];
     }
@@ -132,7 +130,7 @@ public class CdnLogic$WebPageProfile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mars.cdn.CdnLogic.WebPageProfile
  * JD-Core Version:    0.7.0.1
  */

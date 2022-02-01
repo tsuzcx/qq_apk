@@ -3,71 +3,56 @@ package com.tencent.mm.plugin.finder.nearby.live.square;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.extension.reddot.f;
+import com.tencent.mm.plugin.finder.extension.reddot.i;
+import com.tencent.mm.plugin.finder.extension.reddot.p;
 import com.tencent.mm.plugin.finder.nearby.d;
-import com.tencent.mm.protocal.protobuf.bhw;
-import com.tencent.mm.protocal.protobuf.bhx;
+import com.tencent.mm.protocal.protobuf.btw;
+import com.tencent.mm.protocal.protobuf.btx;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/live/square/FinderLiveSquareConfig;", "", "()V", "TAG", "", "getTargetCommentScene", "", "commentScene", "getTargetLiveTabId", "plugin-finder-nearby_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/live/square/FinderLiveSquareConfig;", "", "()V", "TAG", "", "getTargetCommentScene", "", "commentScene", "tabId", "getTargetLiveTabId", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public static final a zGd;
+  public static final a ELB;
   
   static
   {
-    AppMethodBeat.i(200651);
-    zGd = new a();
-    AppMethodBeat.o(200651);
+    AppMethodBeat.i(341205);
+    ELB = new a();
+    AppMethodBeat.o(341205);
   }
   
-  public static int getTargetLiveTabId()
+  public static int hW(int paramInt1, int paramInt2)
   {
-    int j = 0;
-    AppMethodBeat.i(200648);
-    Object localObject = h.ag(PluginFinder.class);
-    p.j(localObject, "MMKernel.plugin(PluginFinder::class.java)");
-    localObject = ((PluginFinder)localObject).getRedDotManager().aBf("FinderLiveEntrance");
-    int i;
-    if (localObject != null)
+    AppMethodBeat.i(341190);
+    Object localObject = ((PluginFinder)h.az(PluginFinder.class)).getRedDotManager().Su("FinderLiveEntrance");
+    if ((localObject != null) && (((p)localObject).avK("FinderLiveEntrance") != null) && (((p)localObject).field_ctrInfo.type == 16))
     {
-      i = j;
-      if (((com.tencent.mm.plugin.finder.extension.reddot.l)localObject).aBy("FinderLiveEntrance") != null)
-      {
-        i = j;
-        if (((com.tencent.mm.plugin.finder.extension.reddot.l)localObject).field_ctrInfo.type == 16)
-        {
-          localObject = h.ag(PluginFinder.class);
-          p.j(localObject, "MMKernel.plugin(PluginFinder::class.java)");
-          localObject = ((PluginFinder)localObject).getRedDotManager().aBi("NearbyLiveTab");
-          if (localObject == null) {
-            break label148;
-          }
-          i = ((bhx)localObject).SSv;
-        }
+      localObject = ((PluginFinder)h.az(PluginFinder.class)).getRedDotManager().avs("NearbyLiveTab");
+      if (localObject == null) {
+        paramInt2 = 0;
       }
     }
-    for (j = i;; j = 0)
+    for (;;)
     {
-      i = j;
-      if (j == 0)
+      int i = paramInt2;
+      if (paramInt2 == 0)
       {
-        localObject = d.zCK;
-        i = d.getExitLiveTabId();
-        Log.i("FinderLiveSquareConfig", "getTargetLiveTabId use last cache targetTabId=".concat(String.valueOf(i)));
+        localObject = d.EFs;
+        i = d.getExitLiveTabId(paramInt1);
+        Log.i("FinderLiveSquareConfig", "getTargetLiveTabId use last cache targetTabId=" + i + " commentScene=" + paramInt1);
       }
-      j = i;
+      paramInt1 = i;
       if (i == 0)
       {
-        j = 88890;
-        Log.i("FinderLiveSquareConfig", "getTargetLiveTabId use default targetTabId=88890");
+        Log.i("FinderLiveSquareConfig", s.X("getTargetLiveTabId use default targetTabId=", Integer.valueOf(88890)));
+        paramInt1 = 88890;
       }
-      AppMethodBeat.o(200648);
-      return j;
-      label148:
-      i = 0;
-      break;
+      AppMethodBeat.o(341190);
+      return paramInt1;
+      paramInt2 = ((btx)localObject).aabK;
     }
   }
 }

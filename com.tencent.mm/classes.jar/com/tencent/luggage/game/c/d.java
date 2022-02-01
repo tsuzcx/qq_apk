@@ -1,6 +1,5 @@
 package com.tencent.luggage.game.c;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Looper;
 import android.view.MotionEvent;
@@ -12,41 +11,40 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-@SuppressLint({"ViewConstructor"})
 public final class d
   extends AppCompatTextView
 {
-  StringBuilder bmW;
-  private final List<f> ctq;
-  public e.c ctr;
-  public MTimerHandler cts;
+  StringBuilder dgR;
+  public final List<f> ell;
+  public e.c elm;
+  public MTimerHandler eln;
   
   public d(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(130513);
-    this.ctq = new ArrayList(4);
-    this.bmW = new StringBuilder(100);
-    this.ctr = null;
-    this.cts = new MTimerHandler(Looper.getMainLooper(), new MTimerHandler.CallBack()
+    this.ell = new ArrayList(4);
+    this.dgR = new StringBuilder(100);
+    this.elm = null;
+    this.eln = new MTimerHandler(Looper.getMainLooper(), new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(130512);
         d.a(d.this).clear();
         if (d.b(d.this) != null) {
-          d.b(d.this).C(d.a(d.this));
+          d.b(d.this).ba(d.a(d.this));
         }
         d locald = d.this;
         Object localObject = d.a(d.this);
-        locald.bmW.setLength(0);
+        locald.dgR.setLength(0);
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
           f localf = (f)((Iterator)localObject).next();
-          locald.bmW.append(localf.key).append(": ").append(localf.ctL).append("\n");
+          locald.dgR.append(localf.key).append(": ").append(localf.elF).append("\n");
         }
-        locald.setText(locald.bmW);
+        locald.setText(locald.dgR);
         AppMethodBeat.o(130512);
         return true;
       }
@@ -56,11 +54,10 @@ public final class d
     setFocusable(false);
     setClickable(false);
     setOnClickListener(null);
-    this.cts.startTimer(1000L);
+    this.eln.startTimer(1000L);
     AppMethodBeat.o(130513);
   }
   
-  @SuppressLint({"ClickableViewAccessibility"})
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     return false;
@@ -68,7 +65,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.game.c.d
  * JD-Core Version:    0.7.0.1
  */

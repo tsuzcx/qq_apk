@@ -16,7 +16,7 @@ public final class Plugin
   public final be createSubCore()
   {
     AppMethodBeat.i(67332);
-    com.tencent.mm.plugin.remittance.a.c localc = new com.tencent.mm.plugin.remittance.a.c();
+    com.tencent.mm.plugin.remittance.app.c localc = new com.tencent.mm.plugin.remittance.app.c();
     AppMethodBeat.o(67332);
     return localc;
   }

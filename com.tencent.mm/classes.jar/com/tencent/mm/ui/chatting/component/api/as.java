@@ -1,0 +1,16 @@
+package com.tencent.mm.ui.chatting.component.api;
+
+import com.tencent.mm.storage.cc;
+import com.tencent.mm.ui.chatting.component.aj;
+
+public abstract interface as
+  extends aj
+{
+  public abstract void k(cc paramcc, String paramString);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
+ * Qualified Name:     com.tencent.mm.ui.chatting.component.api.as
+ * JD-Core Version:    0.7.0.1
+ */

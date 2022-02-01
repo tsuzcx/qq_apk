@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="92.0dip"
+<RelativeLayout android:orientation="vertical" android:background="@color/al2" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/j23" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <LinearLayout android:gravity="center_vertical" android:id="@id/e_6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <ImageView android:id="@id/dte" android:layout_width="16.0dip" android:layout_height="16.0dip" />
-        <TextView android:textSize="15.0dip" android:textColor="@color/afz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="@string/hnl" android:layout_centerInParent="true" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/nl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <TextView android:textSize="@dimen/l" android:textColor="@color/xd" android:id="@id/nm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/iq" android:text="@string/jau" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/nk" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/l" android:textColor="@color/xd" android:id="@id/nj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jar" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+            <ImageView android:layout_width="wrap_content" android:layout_height="@dimen/arr" android:layout_marginLeft="@dimen/iq" android:src="@raw/arrow_right" />
+        </LinearLayout>
     </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/nn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
 </RelativeLayout>

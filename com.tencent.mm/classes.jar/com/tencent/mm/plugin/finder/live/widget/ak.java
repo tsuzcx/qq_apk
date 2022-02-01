@@ -2,502 +2,675 @@ package com.tencent.mm.plugin.finder.live.widget;
 
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Paint;
-import android.graphics.Point;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.view.LayoutInflater;
+import android.os.SystemClock;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.ViewParent;
+import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.c;
-import com.tencent.mm.plugin.finder.b.d;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.live.model.ar;
-import com.tencent.mm.plugin.finder.live.model.ar.b;
-import com.tencent.mm.plugin.finder.live.report.s.bi;
-import com.tencent.mm.plugin.finder.live.view.convert.e;
-import com.tencent.mm.plugin.finder.live.view.convert.f;
-import com.tencent.mm.plugin.finder.live.viewmodel.data.business.j;
-import com.tencent.mm.plugin.finder.model.bu;
-import com.tencent.mm.plugin.finder.utils.aj;
-import com.tencent.mm.plugin.finder.view.FinderLiveOnliveWidget;
-import com.tencent.mm.protocal.protobuf.ch;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.live.model.r;
+import com.tencent.mm.live.model.r.a;
+import com.tencent.mm.plugin.finder.live.p.c;
+import com.tencent.mm.plugin.finder.live.p.e;
+import com.tencent.mm.plugin.finder.live.util.g;
+import com.tencent.mm.plugin.finder.live.viewmodel.data.business.e;
+import com.tencent.mm.plugin.findersdk.a.cn;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.bip;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.ax;
-import com.tencent.mm.ui.widget.imageview.WeImageView;
-import com.tencent.mm.view.d;
-import com.tencent.neattextview.textview.view.NeatTextView;
-import kotlin.g.b.p;
-import kotlin.k.i;
-import kotlin.l;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.ui.aw;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveShoppingBubbleWidget;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "entranceRoot", "Landroid/view/ViewGroup;", "parent", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/content/Context;Landroid/view/ViewGroup;Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "ARROW_SIZE", "", "HORIZONTAL_TAKE_PLACE_HEIGHT", "MIN_ARROW_MARGIN_END", "TAG", "", "VERTICAL_TAKE_PLACE_HEIGHT", "WIDEGET_HEIGHT", "WIDEGET_PADDING", "adButton", "Landroid/widget/TextView;", "adContainer", "Landroid/view/View;", "adDescTv", "arrow", "bubbleHideAnim", "Landroid/animation/ObjectAnimator;", "bubbleRoot", "bubbleShowAnim", "close", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "container", "descContainer", "liveData", "Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "getLiveData", "()Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "setLiveData", "(Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;)V", "productDesc", "Lcom/tencent/neattextview/textview/view/NeatTextView;", "productImg", "Landroid/widget/ImageView;", "productPrice", "productSeq", "productSrc", "promotingContainer", "promotingWidget", "Lcom/tencent/mm/plugin/finder/view/FinderLiveOnliveWidget;", "takePlaceHeight", "adjustBubbleLayout", "", "bubbleAttachToParent", "id", "", "hideShoppingBubble", "hideShoppingBubbleAnim", "notifyShoppingBubbleAction", "show", "", "setProductDesc", "productDescTv", "shopName", "goodsDesc", "setVisibility", "visibility", "showShoppingBubble", "data", "Lcom/tencent/mm/protocal/protobuf/FinderLiveShopWindowAdItem;", "Lcom/tencent/mm/protocal/protobuf/FinderWindowProductInfo;", "showShoppingBubbleAnim", "updateBubbleLayout", "updateShoppingBubble", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveLoadingTipWidget;", "", "root", "Landroid/view/ViewGroup;", "(Landroid/view/ViewGroup;)V", "TAG", "", "actionTv", "Landroid/widget/TextView;", "bgHideAnim", "Landroid/animation/ValueAnimator;", "blurBgView", "Landroid/widget/ImageView;", "container", "countDownTv", "descTv", "liveData", "Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "pauseTime", "", "getPauseTime", "()I", "setPauseTime", "(I)V", "progressTips", "progressView", "Landroid/view/View;", "showProgressTask", "Ljava/lang/Runnable;", "timeCountThread", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "getTimeCountThread", "()Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "setTimeCountThread", "(Lcom/tencent/mm/sdk/platformtools/MTimerHandler;)V", "timeCountTv", "getTimeCountTv", "()Landroid/widget/TextView;", "setTimeCountTv", "(Landroid/widget/TextView;)V", "titleTv", "bindData", "", "checkIfNeedAddToDecorView", "fillBlurBg", "", "username", "withoutBlur", "forcestopTimer", "getBlurBgElevation", "", "hideLoadingLayer", "withAnimation", "hideProgress", "hideTimeCount", "report", "isBlurBgVisible", "isLoadingTipWidgetVisible", "postShowProgressView", "delay", "", "showBlurBg", "showBlurBgWithTimeCount", "tip", "showProgress", "showProgressWithBlurBg", "showProgressWithTips", "tips", "showTipWithBlurBg", "showTipWithBlurBgAction", "actionTxt", "action", "Lkotlin/Function0;", "showVerificationLayerInfo", "title", "desc", "interceptTouchEvent", "showBg", "callback", "Lkotlin/Function1;", "startPauseTime", "tryReportPause", "tryReportPauseRecovery", "unMount", "updateVerificationButtonState", "buttonWording", "", "enable", "updateVerificationCountDownTip", "countDownTip", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ak
-  extends FrameLayout
 {
-  public final String TAG;
-  public final com.tencent.mm.live.c.b kCL;
-  private final ViewGroup parent;
-  public com.tencent.mm.plugin.finder.live.model.context.a xYp;
-  private View yXd;
-  public TextView yZH;
-  public ImageView yZl;
-  public TextView yZm;
-  public TextView yZo;
-  public ViewGroup ybY;
-  public View ybl;
-  private final int znO;
-  private View znQ;
-  private ObjectAnimator znT;
-  private ObjectAnimator znU;
-  private final ViewGroup znV;
-  private final int zqU;
-  private final int zqV;
-  private final int zqW;
-  private final int zqX;
-  private final int zqY;
-  public View zqZ;
-  public FinderLiveOnliveWidget zra;
-  public NeatTextView zrb;
-  public WeImageView zrc;
-  public View zrd;
-  public TextView zre;
-  public TextView zrf;
-  private int zrg;
+  public final TextView AkE;
+  public final ViewGroup CAj;
+  public int CWv;
+  public com.tencent.mm.plugin.finder.live.model.context.a CvU;
+  public ValueAnimator Ern;
+  public final ImageView Ero;
+  public final View Erp;
+  public TextView Erq;
+  public final Runnable Err;
+  public MTimerHandler Ers;
+  private final String TAG;
+  public final TextView descTv;
+  public final ViewGroup mJe;
+  public final TextView njJ;
+  public TextView nmm;
+  public final TextView titleTv;
   
-  public ak(Context paramContext, ViewGroup paramViewGroup1, ViewGroup paramViewGroup2, com.tencent.mm.live.c.b paramb)
+  public ak(ViewGroup paramViewGroup)
   {
-    super(paramContext);
-    AppMethodBeat.i(288599);
-    this.znV = paramViewGroup1;
-    this.parent = paramViewGroup2;
-    this.kCL = paramb;
-    this.TAG = "Finder.LiveShoppingBubbleWidget";
-    this.zqU = paramContext.getResources().getDimensionPixelOffset(b.d.finder_live_shopping_big_bubble_container_height);
-    this.znO = paramContext.getResources().getDimensionPixelOffset(b.d.Edge_2A);
-    paramViewGroup1 = MMApplicationContext.getContext();
-    p.j(paramViewGroup1, "MMApplicationContext.getContext()");
-    this.zqV = paramViewGroup1.getResources().getDimensionPixelOffset(b.d.Edge_0_5_A);
-    this.zqW = d.e(paramContext, 2.0F);
-    this.zqX = (this.zqU + d.e(paramContext, 20.0F));
-    this.zqY = d.e(paramContext, 12.0F);
-    this.zrg = this.zqX;
-    paramContext = LayoutInflater.from(paramContext).inflate(b.g.finder_live_shopping_widget_ui, (ViewGroup)this, true);
-    p.j(paramContext, "LayoutInflater.from(cont…ng_widget_ui, this, true)");
-    this.znQ = paramContext;
-    paramContext = this.znQ.findViewById(b.f.product_img);
-    p.j(paramContext, "bubbleRoot.findViewById(R.id.product_img)");
-    this.yZl = ((ImageView)paramContext);
-    paramContext = this.znQ.findViewById(b.f.promoting_container);
-    p.j(paramContext, "bubbleRoot.findViewById(R.id.promoting_container)");
-    this.zqZ = paramContext;
-    paramContext = this.znQ.findViewById(b.f.promoting);
-    p.j(paramContext, "bubbleRoot.findViewById(R.id.promoting)");
-    this.zra = ((FinderLiveOnliveWidget)paramContext);
-    paramContext = this.znQ.findViewById(b.f.desc_container);
-    p.j(paramContext, "bubbleRoot.findViewById(R.id.desc_container)");
-    this.ybl = paramContext;
-    paramContext = this.znQ.findViewById(b.f.product_desc);
-    p.j(paramContext, "bubbleRoot.findViewById(R.id.product_desc)");
-    this.zrb = ((NeatTextView)paramContext);
-    paramContext = this.znQ.findViewById(b.f.product_source);
-    p.j(paramContext, "bubbleRoot.findViewById(R.id.product_source)");
-    this.yZH = ((TextView)paramContext);
-    paramContext = this.znQ.findViewById(b.f.product_seq);
-    p.j(paramContext, "bubbleRoot.findViewById(R.id.product_seq)");
-    this.yZm = ((TextView)paramContext);
-    paramContext = this.znQ.findViewById(b.f.product_price);
-    p.j(paramContext, "bubbleRoot.findViewById(R.id.product_price)");
-    this.yZo = ((TextView)paramContext);
-    this.zrd = this.znQ.findViewById(b.f.ad_detail_container);
-    this.zre = ((TextView)this.znQ.findViewById(b.f.ad_desc));
-    this.zrf = ((TextView)this.znQ.findViewById(b.f.ad_button));
-    paramContext = aj.AGc;
-    aj.u(this.yZo);
-    paramContext = this.znQ.findViewById(b.f.close);
-    p.j(paramContext, "bubbleRoot.findViewById(R.id.close)");
-    this.zrc = ((WeImageView)paramContext);
-    paramContext = com.tencent.mm.plugin.finder.live.utils.a.yRm;
-    com.tencent.mm.plugin.finder.live.utils.a.eB((View)this.zrc);
-    paramContext = this.zrc;
-    if (paramContext != null)
+    AppMethodBeat.i(361572);
+    this.mJe = paramViewGroup;
+    this.TAG = "FinderLiveLoadingTipWidget";
+    paramViewGroup = this.mJe.findViewById(p.e.live_loading_blur);
+    s.s(paramViewGroup, "root.findViewById(R.id.live_loading_blur)");
+    this.Ero = ((ImageView)paramViewGroup);
+    paramViewGroup = this.mJe.findViewById(p.e.live_loading_bar);
+    s.s(paramViewGroup, "root.findViewById(R.id.live_loading_bar)");
+    this.Erp = paramViewGroup;
+    paramViewGroup = this.mJe.findViewById(p.e.BWT);
+    s.s(paramViewGroup, "root.findViewById(R.id.live_loading_tips)");
+    this.AkE = ((TextView)paramViewGroup);
+    paramViewGroup = this.mJe.findViewById(p.e.BMz);
+    s.s(paramViewGroup, "root.findViewById(R.id.f…er_live_layer_show_title)");
+    this.titleTv = ((TextView)paramViewGroup);
+    this.Erq = ((TextView)this.mJe.findViewById(p.e.CbC));
+    paramViewGroup = this.mJe.findViewById(p.e.BMy);
+    s.s(paramViewGroup, "root.findViewById(R.id.f…der_live_layer_show_desc)");
+    this.descTv = ((TextView)paramViewGroup);
+    paramViewGroup = this.mJe.findViewById(p.e.BMx);
+    s.s(paramViewGroup, "root.findViewById(R.id.f…ayer_show_btn_count_down)");
+    this.njJ = ((TextView)paramViewGroup);
+    this.nmm = ((TextView)this.mJe.findViewById(p.e.BMw));
+    paramViewGroup = this.mJe.findViewById(p.e.BNp);
+    s.s(paramViewGroup, "root.findViewById(R.id.f…live_loading_tip_ui_root)");
+    this.CAj = ((ViewGroup)paramViewGroup);
+    aw.a((Paint)this.titleTv.getPaint(), 0.8F);
+    paramViewGroup = this.Erq;
+    if (paramViewGroup == null)
     {
-      paramContext.setOnClickListener((View.OnClickListener)new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(271871);
-          Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
-          ((com.tencent.mm.hellhoundlib.b.b)localObject1).bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/widget/FinderLiveShoppingBubbleWidget$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).aFi());
-          label119:
-          Object localObject2;
-          if (ak.e(this.zrh).getLiveRole() == 0)
-          {
-            paramAnonymousView = this.zrh.getLiveData();
-            if (paramAnonymousView == null) {
-              break label219;
-            }
-            paramAnonymousView = (j)paramAnonymousView.business(j.class);
-            if (paramAnonymousView == null) {
-              break label219;
-            }
-            paramAnonymousView = paramAnonymousView.ziK;
-            if (paramAnonymousView != null)
-            {
-              paramAnonymousView = this.zrh.getLiveData();
-              if (paramAnonymousView == null) {
-                break label224;
-              }
-              paramAnonymousView = (j)paramAnonymousView.business(j.class);
-              if (paramAnonymousView == null) {
-                break label224;
-              }
-              localObject1 = paramAnonymousView.ziK;
-              if (!(localObject1 instanceof f)) {
-                break label235;
-              }
-              localObject1 = com.tencent.mm.plugin.finder.live.report.m.yCt;
-              localObject2 = s.bi.yLV;
-              paramAnonymousView = this.zrh.getLiveData();
-              if (paramAnonymousView == null) {
-                break label230;
-              }
-              paramAnonymousView = (j)paramAnonymousView.business(j.class);
-              if (paramAnonymousView == null) {
-                break label230;
-              }
-              paramAnonymousView = paramAnonymousView.ziK;
-              if (paramAnonymousView == null) {
-                break label230;
-              }
-              paramAnonymousView = Long.valueOf(paramAnonymousView.mf());
-              label182:
-              com.tencent.mm.plugin.finder.live.report.m.a((com.tencent.mm.plugin.finder.live.report.m)localObject1, (s.bi)localObject2, null, String.valueOf(paramAnonymousView));
-            }
-          }
-          for (;;)
-          {
-            ak.f(this.zrh);
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/widget/FinderLiveShoppingBubbleWidget$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(271871);
-            return;
-            label219:
-            paramAnonymousView = null;
-            break;
-            label224:
-            localObject1 = null;
-            break label119;
-            label230:
-            paramAnonymousView = null;
-            break label182;
-            label235:
-            if ((localObject1 instanceof e))
-            {
-              com.tencent.mm.plugin.finder.live.report.m localm = com.tencent.mm.plugin.finder.live.report.m.yCt;
-              s.bi localbi = s.bi.yLV;
-              long l1 = ((e)localObject1).zaI;
-              paramAnonymousView = ((e)localObject1).zaJ;
-              if (paramAnonymousView != null)
-              {
-                localObject2 = paramAnonymousView.RHW;
-                paramAnonymousView = (View)localObject2;
-                if (localObject2 != null) {}
-              }
-              else
-              {
-                paramAnonymousView = "";
-              }
-              long l2 = ((e)localObject1).zaI;
-              localObject2 = ((e)localObject1).jDL;
-              localObject1 = localObject2;
-              if (localObject2 == null) {
-                localObject1 = "";
-              }
-              localm.a(localbi, null, String.valueOf(l1), paramAnonymousView, String.valueOf(l2), (String)localObject1);
-            }
-          }
-        }
-      });
-      AppMethodBeat.o(288599);
+      paramViewGroup = null;
+      aw.a((Paint)paramViewGroup, 0.8F);
+      this.Err = new ak..ExternalSyntheticLambda5(this);
+      this.CAj.setClickable(false);
+      paramViewGroup = this.CAj;
+      com.tencent.mm.plugin.finder.live.utils.a locala = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+      if (!com.tencent.mm.plugin.finder.live.utils.a.bUx()) {
+        break label341;
+      }
+    }
+    label341:
+    for (float f = this.mJe.getContext().getResources().getDimensionPixelSize(p.c.live_ui_layer_4);; f = this.mJe.getContext().getResources().getDimensionPixelSize(p.c.live_ui_layer_1))
+    {
+      paramViewGroup.setElevation(f);
+      AppMethodBeat.o(361572);
       return;
-    }
-    AppMethodBeat.o(288599);
-  }
-  
-  public static void a(NeatTextView paramNeatTextView, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(288594);
-    paramString2 = new com.tencent.mm.pluginsdk.ui.span.m(paramString1 + paramString2);
-    Object localObject = paramNeatTextView.getContext();
-    p.j(localObject, "productDescTv.context");
-    float f1 = ((Context)localObject).getResources().getDimension(b.d.Edge_0_5_A);
-    float f2 = d.e(paramNeatTextView.getContext(), 2.0F);
-    localObject = paramNeatTextView.getContext();
-    p.j(localObject, "productDescTv.context");
-    int i = ((Context)localObject).getResources().getColor(b.c.UN_BW_97);
-    localObject = paramNeatTextView.getContext();
-    p.j(localObject, "productDescTv.context");
-    int j = ((Context)localObject).getResources().getColor(b.c.UN_BW_0_Alpha_0_5);
-    localObject = ar.yis;
-    p.k(paramString1, "spanStr");
-    localObject = new Paint();
-    ((Paint)localObject).setTextSize(d.e(MMApplicationContext.getContext(), 12.0F));
-    Context localContext = MMApplicationContext.getContext();
-    p.j(localContext, "MMApplicationContext.getContext()");
-    float f3 = localContext.getResources().getDimension(b.d.Edge_0_5_A);
-    float f4 = ((Paint)localObject).measureText(paramString1, 0, paramString1.length());
-    localObject = new GradientDrawable();
-    ((GradientDrawable)localObject).setBounds(0, 0, (int)(f3 + (f4 + 2.0F * f3)), 1);
-    paramString2.setSpan(new ar((Drawable)localObject, new ar.b((CharSequence)paramString1, f1, f1, f1, f1, f1, f2, i, j, d.e(paramNeatTextView.getContext(), 12.0F))), 0, paramString1.length(), 33);
-    paramNeatTextView.aL((CharSequence)paramString2);
-    AppMethodBeat.o(288594);
-  }
-  
-  private final void dIH()
-  {
-    AppMethodBeat.i(288597);
-    Log.i(this.TAG, "hideShoppingBubbleAnim，parent visibility:" + this.parent.getVisibility());
-    if (getVisibility() == 0)
-    {
-      if (this.znU == null)
-      {
-        this.znU = ObjectAnimator.ofFloat(this.parent, "alpha", new float[] { 1.0F, 0.0F });
-        localObjectAnimator = this.znU;
-        if (localObjectAnimator != null) {
-          localObjectAnimator.addListener((Animator.AnimatorListener)new b(this));
-        }
-      }
-      ObjectAnimator localObjectAnimator = this.znU;
-      if (localObjectAnimator != null) {
-        localObjectAnimator.cancel();
-      }
-      localObjectAnimator = this.znU;
-      if (localObjectAnimator != null)
-      {
-        localObjectAnimator.start();
-        AppMethodBeat.o(288597);
-        return;
-      }
-    }
-    AppMethodBeat.o(288597);
-  }
-  
-  public final void LU(final long paramLong)
-  {
-    AppMethodBeat.i(288592);
-    Object localObject = this.ybY;
-    if (localObject != null)
-    {
-      localObject = ((ViewGroup)localObject).getTag();
-      if ((localObject instanceof Long)) {
-        break label59;
-      }
-    }
-    label59:
-    while (paramLong != ((Long)localObject).longValue())
-    {
-      this.znV.post((Runnable)new a(this, paramLong));
-      AppMethodBeat.o(288592);
-      return;
-      localObject = null;
+      paramViewGroup = paramViewGroup.getPaint();
       break;
     }
-    Log.i(this.TAG, "bubbleAttachToParent id:" + paramLong + " view have attach!");
-    AppMethodBeat.o(288592);
   }
   
-  public final void dCz()
+  private static final void a(ak paramak, ValueAnimator paramValueAnimator)
   {
-    AppMethodBeat.i(288593);
-    Object localObject1 = aj.AGc;
-    localObject1 = this.yXd;
-    ViewGroup localViewGroup = this.ybY;
-    int[] arrayOfInt;
-    Object localObject2;
-    int j;
-    if ((localObject1 != null) && (localViewGroup != null))
+    AppMethodBeat.i(361642);
+    s.u(paramak, "this$0");
+    paramValueAnimator = paramValueAnimator.getAnimatedValue();
+    if (paramValueAnimator == null)
     {
-      arrayOfInt = new int[2];
-      this.znV.getLocationInWindow(arrayOfInt);
-      localObject2 = new int[2];
-      localViewGroup.getLocationInWindow((int[])localObject2);
-      i = localObject2[0];
-      j = localViewGroup.getWidth() + i;
-      if (localViewGroup.getWidth() <= this.zqV) {
-        break label320;
-      }
+      paramak = new NullPointerException("null cannot be cast to non-null type kotlin.Float");
+      AppMethodBeat.o(361642);
+      throw paramak;
     }
-    float f;
-    for (int i = localViewGroup.getWidth() - this.zqV;; i = (int)(f - ((Context)localObject2).getResources().getDimensionPixelOffset(b.d.finder_live_last_option_margin) - this.zqV * 2))
-    {
-      f = i.ow(i.ov(j - arrayOfInt[0] - ((View)localObject1).getWidth() / 2 - this.znV.getWidth() / 2, this.zqV), i);
-      if (-f != ((View)localObject1).getTranslationX()) {
-        Log.i(this.TAG, "updateBubbleLayout arrow:" + this.yXd + ",container:" + this.ybY + ", containerRight:" + j + ", container.width:" + localViewGroup.getWidth() + ',' + " shoppingEntranceLoc:" + arrayOfInt[0] + ", " + arrayOfInt[1] + ", arrow.width:" + ((View)localObject1).getWidth() + ", entranceRoot.width:" + this.znV.getWidth() + ',' + " MIN_ARROW_MARGIN_END:" + this.zqV + ", maxArrowMarginEnd:" + i + ", arrowMarginEnd:" + f);
-      }
-      ((View)localObject1).setTranslationX(-f);
-      AppMethodBeat.o(288593);
-      return;
-      label320:
-      f = ax.au(MMApplicationContext.getContext()).x;
-      localObject2 = MMApplicationContext.getContext();
-      p.j(localObject2, "MMApplicationContext.getContext()");
-    }
+    float f = ((Float)paramValueAnimator).floatValue();
+    paramak.Erp.setAlpha(f);
+    paramak.titleTv.setAlpha(f);
+    AppMethodBeat.o(361642);
   }
   
-  public final void dIF()
+  private static final boolean a(ak paramak, final com.tencent.mm.plugin.finder.live.model.context.a parama)
   {
-    AppMethodBeat.i(288595);
-    Object localObject = this.ybY;
-    if (localObject != null) {
-      ((ViewGroup)localObject).setTag(null);
-    }
-    localObject = this.xYp;
-    if (localObject != null)
-    {
-      localObject = (j)((com.tencent.mm.plugin.finder.live.model.context.a)localObject).business(j.class);
-      if (localObject != null) {
-        ((j)localObject).d(null);
-      }
-    }
-    dIH();
-    AppMethodBeat.o(288595);
+    AppMethodBeat.i(361632);
+    s.u(paramak, "this$0");
+    s.u(parama, "$it");
+    d.uiThread((kotlin.g.a.a)new c(paramak, parama));
+    AppMethodBeat.o(361632);
+    return true;
   }
   
-  public final void dIG()
+  private static final void b(ak paramak)
   {
-    AppMethodBeat.i(288596);
-    Log.i(this.TAG, "showShoppingBubbleAnim，parent visibility:" + this.parent.getVisibility());
-    if (getVisibility() != 0)
+    AppMethodBeat.i(361591);
+    s.u(paramak, "this$0");
+    paramak.Erp.setVisibility(0);
+    AppMethodBeat.o(361591);
+  }
+  
+  private void eAZ()
+  {
+    AppMethodBeat.i(361578);
+    Log.i(this.TAG, "hideTimeCount");
+    Object localObject = this.Erq;
+    if ((localObject != null) && (((TextView)localObject).getVisibility() == 0)) {}
+    for (int i = 1;; i = 0)
     {
-      setVisibility(0);
-      if (this.znT == null) {
-        this.znT = ObjectAnimator.ofFloat(this.parent, "alpha", new float[] { 0.0F, 1.0F });
-      }
-      ObjectAnimator localObjectAnimator = this.znT;
-      if (localObjectAnimator != null) {
-        localObjectAnimator.cancel();
-      }
-      localObjectAnimator = this.znT;
-      if (localObjectAnimator != null)
+      if (i != 0)
       {
-        localObjectAnimator.start();
-        AppMethodBeat.o(288596);
-        return;
+        localObject = this.Erq;
+        if (localObject != null) {
+          ((TextView)localObject).setVisibility(8);
+        }
+        localObject = this.Ers;
+        if (localObject != null) {
+          ((MTimerHandler)localObject).stopTimer();
+        }
       }
-    }
-    AppMethodBeat.o(288596);
-  }
-  
-  public final com.tencent.mm.plugin.finder.live.model.context.a getLiveData()
-  {
-    return this.xYp;
-  }
-  
-  public final void setLiveData(com.tencent.mm.plugin.finder.live.model.context.a parama)
-  {
-    this.xYp = parama;
-  }
-  
-  public final void setVisibility(int paramInt)
-  {
-    AppMethodBeat.i(288598);
-    super.setVisibility(paramInt);
-    Object localObject = this.ybY;
-    if (localObject != null) {
-      ((ViewGroup)localObject).setVisibility(paramInt);
-    }
-    localObject = this.yXd;
-    if (localObject != null)
-    {
-      ((View)localObject).setVisibility(paramInt);
-      AppMethodBeat.o(288598);
+      AppMethodBeat.o(361578);
       return;
     }
-    AppMethodBeat.o(288598);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class a
-    implements Runnable
+  private static final void gq(View paramView)
   {
-    a(ak paramak, long paramLong) {}
-    
-    public final void run()
+    AppMethodBeat.i(361622);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/widget/FinderLiveLoadingTipWidget", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/live/widget/FinderLiveLoadingTipWidget", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(361622);
+  }
+  
+  private static final void j(kotlin.g.a.a parama, View paramView)
+  {
+    AppMethodBeat.i(361602);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(parama);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/widget/FinderLiveLoadingTipWidget", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    if (parama != null) {
+      parama.invoke();
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/live/widget/FinderLiveLoadingTipWidget", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(361602);
+  }
+  
+  private static final void j(kotlin.g.a.b paramb, View paramView)
+  {
+    AppMethodBeat.i(361613);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramb);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/widget/FinderLiveLoadingTipWidget", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramb, "$_callback");
+    paramb.invoke(Boolean.TRUE);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/live/widget/FinderLiveLoadingTipWidget", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(361613);
+  }
+  
+  public final void eBa()
+  {
+    ViewGroup localViewGroup = null;
+    AppMethodBeat.i(361823);
+    if ((this.CAj.getWidth() == 0) && (this.CAj.getHeight() == 0))
     {
-      AppMethodBeat.i(275150);
-      ak.a(this.zrh);
-      Object localObject = ak.b(this.zrh);
-      if (localObject != null)
+      Log.i(this.TAG, "checkIfNeedAddToDecorView: width and height = 0");
+      Object localObject = this.mJe.getContext();
+      if ((localObject instanceof Activity))
       {
-        localObject = Integer.valueOf(((ViewGroup)localObject).indexOfChild((View)this.zrh));
+        localObject = (Activity)localObject;
         if (localObject != null) {
-          break label123;
+          break label92;
         }
-        label43:
-        Log.i(ak.c(this.zrh), "bubbleAttachToParent, have contain child!");
+        localObject = null;
+        label64:
+        if (!(localObject instanceof FrameLayout)) {
+          break label114;
+        }
       }
-      for (;;)
+      label92:
+      label114:
+      for (localObject = (FrameLayout)localObject;; localObject = null)
       {
-        localObject = ak.b(this.zrh);
         if (localObject != null) {
-          ((ViewGroup)localObject).setVisibility(0);
+          break label119;
         }
-        localObject = ak.d(this.zrh);
-        if (localObject != null) {
-          ((View)localObject).setVisibility(0);
-        }
-        localObject = ak.b(this.zrh);
-        if (localObject == null) {
-          break label172;
-        }
-        ((ViewGroup)localObject).setTag(Long.valueOf(paramLong));
-        AppMethodBeat.o(275150);
+        AppMethodBeat.o(361823);
         return;
         localObject = null;
         break;
-        label123:
-        if (((Integer)localObject).intValue() != -1) {
-          break label43;
+        localObject = ((Activity)localObject).getWindow();
+        if (localObject == null)
+        {
+          localObject = null;
+          break label64;
         }
-        localObject = com.tencent.mm.plugin.finder.live.utils.a.yRm;
-        com.tencent.mm.plugin.finder.live.utils.a.eC((View)this.zrh);
-        localObject = ak.b(this.zrh);
-        if (localObject != null) {
-          ((ViewGroup)localObject).addView((View)this.zrh);
+        localObject = ((Window)localObject).getDecorView();
+        break label64;
+      }
+      label119:
+      ViewParent localViewParent = this.CAj.getParent();
+      if ((localViewParent instanceof ViewGroup)) {
+        localViewGroup = (ViewGroup)localViewParent;
+      }
+      if (localViewGroup == null)
+      {
+        AppMethodBeat.o(361823);
+        return;
+      }
+      if (!s.p(localViewGroup, localObject))
+      {
+        Log.i(this.TAG, "checkIfNeedAddToDecorView: add to decor view");
+        localViewGroup.removeView((View)this.CAj);
+        ((FrameLayout)localObject).addView((View)this.CAj);
+      }
+    }
+    AppMethodBeat.o(361823);
+  }
+  
+  public final boolean fillBlurBg(final String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(361759);
+    Object localObject1 = this.CvU;
+    if (localObject1 == null)
+    {
+      localObject1 = "";
+      localObject2 = this.CvU;
+      if (localObject2 == null) {
+        break label236;
+      }
+      localObject2 = (e)((com.tencent.mm.plugin.finder.live.model.context.a)localObject2).business(e.class);
+      if (localObject2 == null) {
+        break label236;
+      }
+      localObject2 = ((e)localObject2).Eco;
+      if (localObject2 == null) {
+        break label236;
+      }
+      localObject2 = ((FinderObject)localObject2).liveInfo;
+      if ((localObject2 == null) || (((bip)localObject2).ZRU != 1)) {
+        break label236;
+      }
+      i = 1;
+      label86:
+      if ((i == 0) && (!paramBoolean)) {
+        break label246;
+      }
+      if (((CharSequence)localObject1).length() != 0) {
+        break label241;
+      }
+    }
+    label236:
+    label241:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        break label246;
+      }
+      ((cn)h.az(cn.class)).loadImage((String)localObject1, this.Ero);
+      Log.i(this.TAG, "showThumbUrlBg withoutBlur:" + paramBoolean + " username:" + paramString + ", url:" + (String)localObject1);
+      AppMethodBeat.o(361759);
+      return true;
+      localObject1 = (e)((com.tencent.mm.plugin.finder.live.model.context.a)localObject1).business(e.class);
+      if (localObject1 == null)
+      {
+        localObject1 = "";
+        break;
+      }
+      localObject2 = ((e)localObject1).eyo();
+      localObject1 = localObject2;
+      if (localObject2 != null) {
+        break;
+      }
+      localObject1 = "";
+      break;
+      i = 0;
+      break label86;
+    }
+    label246:
+    Object localObject2 = g.DIp;
+    paramBoolean = g.a(paramString, (String)localObject1, (View)this.Ero, (kotlin.g.a.b)new a(this, paramString, (String)localObject1));
+    AppMethodBeat.o(361759);
+    return paramBoolean;
+  }
+  
+  public final void hideLoadingLayer(boolean paramBoolean)
+  {
+    AppMethodBeat.i(361813);
+    this.Erp.removeCallbacks(this.Err);
+    Object localObject;
+    if (this.Ern == null)
+    {
+      this.Ern = ObjectAnimator.ofFloat(new float[] { 1.0F, 0.0F });
+      localObject = this.Ern;
+      if (localObject != null)
+      {
+        ((ValueAnimator)localObject).addUpdateListener(new ak..ExternalSyntheticLambda0(this));
+        ((ValueAnimator)localObject).addListener((Animator.AnimatorListener)new b(this));
+      }
+    }
+    if (paramBoolean)
+    {
+      localObject = this.Ern;
+      if (localObject != null)
+      {
+        ((ValueAnimator)localObject).start();
+        AppMethodBeat.o(361813);
+      }
+    }
+    else
+    {
+      hideProgress();
+      eAZ();
+      this.Ero.setElevation(this.mJe.getContext().getResources().getDimensionPixelSize(p.c.live_ui_layer_0));
+      this.titleTv.setVisibility(8);
+      this.descTv.setVisibility(8);
+      this.njJ.setVisibility(8);
+      localObject = this.nmm;
+      if (localObject != null) {
+        ((TextView)localObject).setVisibility(8);
+      }
+      this.CAj.setVisibility(8);
+      this.CAj.setClickable(false);
+    }
+    AppMethodBeat.o(361813);
+  }
+  
+  public final void hideProgress()
+  {
+    AppMethodBeat.i(361803);
+    this.Erp.setVisibility(8);
+    this.AkE.setVisibility(8);
+    AppMethodBeat.o(361803);
+  }
+  
+  public final void showTipWithBlurBgAction(String paramString1, String paramString2, String paramString3, kotlin.g.a.a<ah> parama)
+  {
+    AppMethodBeat.i(361768);
+    s.u(paramString1, "username");
+    s.u(paramString2, "tip");
+    s.u(paramString3, "actionTxt");
+    ValueAnimator localValueAnimator = this.Ern;
+    if ((localValueAnimator != null) && (localValueAnimator.isRunning() == true)) {}
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        localValueAnimator = this.Ern;
+        if (localValueAnimator != null) {
+          localValueAnimator.end();
         }
       }
-      label172:
-      AppMethodBeat.o(275150);
+      this.CAj.setVisibility(0);
+      fillBlurBg(paramString1, true);
+      this.Ero.setElevation(this.mJe.getContext().getResources().getDimensionPixelSize(p.c.live_ui_layer_1));
+      this.Erp.setVisibility(8);
+      this.AkE.setVisibility(8);
+      this.titleTv.setVisibility(0);
+      this.titleTv.setText((CharSequence)paramString2);
+      this.njJ.setVisibility(8);
+      paramString1 = this.nmm;
+      if (paramString1 != null) {
+        paramString1.setOnClickListener(new ak..ExternalSyntheticLambda1(parama));
+      }
+      paramString1 = this.nmm;
+      if (paramString1 != null) {
+        paramString1.setVisibility(0);
+      }
+      paramString1 = this.nmm;
+      if (paramString1 != null) {
+        paramString1.setText((CharSequence)paramString3);
+      }
+      startPauseTime();
+      this.descTv.setVisibility(8);
+      this.CAj.setClickable(false);
+      this.mJe.requestLayout();
+      AppMethodBeat.o(361768);
+      return;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/widget/FinderLiveShoppingBubbleWidget$hideShoppingBubbleAnim$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
-  public static final class b
-    implements Animator.AnimatorListener
+  public final void showVerificationLayerInfo(String paramString1, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2, kotlin.g.a.b<? super Boolean, ah> paramb)
   {
-    public final void onAnimationCancel(Animator paramAnimator) {}
+    AppMethodBeat.i(361785);
+    s.u(paramString1, "title");
+    ValueAnimator localValueAnimator = this.Ern;
+    int i;
+    if ((localValueAnimator != null) && (localValueAnimator.isRunning() == true))
+    {
+      i = 1;
+      if (i != 0)
+      {
+        localValueAnimator = this.Ern;
+        if (localValueAnimator != null) {
+          localValueAnimator.end();
+        }
+      }
+      this.CAj.setVisibility(0);
+      hideProgress();
+      if (!paramBoolean2) {
+        break label280;
+      }
+      fillBlurBg(null, true);
+      this.Ero.setElevation(this.mJe.getContext().getResources().getDimensionPixelSize(p.c.live_ui_layer_1));
+      label105:
+      this.titleTv.setVisibility(0);
+      this.titleTv.setText((CharSequence)paramString1);
+      paramString1 = (CharSequence)paramString2;
+      if ((paramString1 != null) && (paramString1.length() != 0)) {
+        break label307;
+      }
+      i = 1;
+      label145:
+      if (i == 0) {
+        break label313;
+      }
+      this.descTv.setVisibility(8);
+      label159:
+      eAZ();
+      paramString1 = (CharSequence)paramString3;
+      if ((paramString1 != null) && (paramString1.length() != 0)) {
+        break label335;
+      }
+      i = 1;
+      label184:
+      if (i == 0) {
+        break label341;
+      }
+      paramString1 = this.nmm;
+      if (paramString1 != null) {
+        paramString1.setVisibility(8);
+      }
+      label204:
+      if (paramb != null)
+      {
+        paramString1 = this.nmm;
+        if (paramString1 != null) {
+          paramString1.setOnClickListener(new ak..ExternalSyntheticLambda2(paramb));
+        }
+      }
+      if (!paramBoolean1) {
+        break label375;
+      }
+      this.CAj.setOnClickListener(ak..ExternalSyntheticLambda3.INSTANCE);
+    }
+    for (;;)
+    {
+      this.mJe.requestLayout();
+      paramString1 = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+      if (com.tencent.mm.plugin.finder.live.utils.a.bUx()) {
+        eBa();
+      }
+      AppMethodBeat.o(361785);
+      return;
+      i = 0;
+      break;
+      label280:
+      this.Ero.setElevation(this.mJe.getContext().getResources().getDimensionPixelSize(p.c.live_ui_layer_0));
+      break label105;
+      label307:
+      i = 0;
+      break label145;
+      label313:
+      this.descTv.setVisibility(0);
+      this.descTv.setText((CharSequence)paramString2);
+      break label159;
+      label335:
+      i = 0;
+      break label184;
+      label341:
+      paramString1 = this.nmm;
+      if (paramString1 != null) {
+        paramString1.setVisibility(0);
+      }
+      paramString1 = this.nmm;
+      if (paramString1 == null) {
+        break label204;
+      }
+      paramString1.setText((CharSequence)paramString3);
+      break label204;
+      label375:
+      this.CAj.setClickable(false);
+    }
+  }
+  
+  public final void startPauseTime()
+  {
+    AppMethodBeat.i(361795);
+    Object localObject = this.CvU;
+    if (localObject != null)
+    {
+      long l1 = SystemClock.elapsedRealtime();
+      long l2 = ((e)((com.tencent.mm.plugin.finder.live.model.context.a)localObject).business(e.class)).Een;
+      if (1L <= l2) {
+        if (l2 < l1)
+        {
+          i = 1;
+          if (i == 0) {
+            break label195;
+          }
+        }
+      }
+      label195:
+      for (i = (int)((l1 - ((e)((com.tencent.mm.plugin.finder.live.model.context.a)localObject).business(e.class)).Een) / 1000L);; i = ((e)((com.tencent.mm.plugin.finder.live.model.context.a)localObject).business(e.class)).Eeo)
+      {
+        this.CWv = i;
+        Log.i(this.TAG, "startPauseTime: curTime:" + l1 + ", anchorPauseStartTime:" + ((e)((com.tencent.mm.plugin.finder.live.model.context.a)localObject).business(e.class)).Een + ", anchorPauseTimeCount:" + ((e)((com.tencent.mm.plugin.finder.live.model.context.a)localObject).business(e.class)).Eeo + ", pauseTime:" + this.CWv);
+        if (this.CWv >= 0) {
+          break label213;
+        }
+        eAZ();
+        AppMethodBeat.o(361795);
+        return;
+        i = 0;
+        break;
+        i = 0;
+        break;
+      }
+      label213:
+      TextView localTextView = this.Erq;
+      if (localTextView != null) {
+        localTextView.setVisibility(0);
+      }
+      localTextView = this.Erq;
+      if (localTextView != null)
+      {
+        r.a locala = r.mZi;
+        localTextView.setText((CharSequence)r.a.I(this.CWv, ":"));
+      }
+      if (this.Ers == null) {
+        this.Ers = new MTimerHandler("LiveVisitorPause::Timer", new ak..ExternalSyntheticLambda4(this, (com.tencent.mm.plugin.finder.live.model.context.a)localObject), true);
+      }
+      localObject = this.Ers;
+      if ((localObject == null) || (((MTimerHandler)localObject).stopped() != true)) {
+        break label348;
+      }
+    }
+    label348:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        localObject = this.Ers;
+        if (localObject != null) {
+          ((MTimerHandler)localObject).startTimer(1000L);
+        }
+      }
+      AppMethodBeat.o(361795);
+      return;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements kotlin.g.a.b<Boolean, ah>
+  {
+    a(ak paramak, String paramString1, String paramString2)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/live/widget/FinderLiveLoadingTipWidget$hideLoadingLayer$1$2", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+    extends AnimatorListenerAdapter
+  {
+    b(ak paramak) {}
+    
+    public final void onAnimationCancel(Animator paramAnimator)
+    {
+      AppMethodBeat.i(361634);
+      ak.f(this.Ert).setAlpha(1.0F);
+      ak.e(this.Ert).setAlpha(1.0F);
+      ak.d(this.Ert).setElevation(ak.g(this.Ert).getContext().getResources().getDimensionPixelSize(p.c.live_ui_layer_0));
+      ak.f(this.Ert).setVisibility(8);
+      ak.h(this.Ert).setVisibility(8);
+      ak.e(this.Ert).setVisibility(8);
+      ak.i(this.Ert).setVisibility(8);
+      ak.j(this.Ert).setVisibility(8);
+      paramAnimator = ak.k(this.Ert);
+      if (paramAnimator != null) {
+        paramAnimator.setVisibility(8);
+      }
+      ak.a(this.Ert);
+      ak.l(this.Ert).setVisibility(8);
+      ak.l(this.Ert).setClickable(false);
+      AppMethodBeat.o(361634);
+    }
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(290577);
-      this.zrh.setVisibility(8);
-      AppMethodBeat.o(290577);
+      AppMethodBeat.i(361619);
+      ak.f(this.Ert).setAlpha(1.0F);
+      ak.e(this.Ert).setAlpha(1.0F);
+      ak.d(this.Ert).setElevation(ak.g(this.Ert).getContext().getResources().getDimensionPixelSize(p.c.live_ui_layer_0));
+      ak.f(this.Ert).setVisibility(8);
+      ak.h(this.Ert).setVisibility(8);
+      ak.e(this.Ert).setVisibility(8);
+      ak.i(this.Ert).setVisibility(8);
+      ak.j(this.Ert).setVisibility(8);
+      paramAnimator = ak.k(this.Ert);
+      if (paramAnimator != null) {
+        paramAnimator.setVisibility(8);
+      }
+      ak.a(this.Ert);
+      ak.l(this.Ert).setVisibility(8);
+      ak.l(this.Ert).setClickable(false);
+      AppMethodBeat.o(361619);
     }
-    
-    public final void onAnimationRepeat(Animator paramAnimator) {}
-    
-    public final void onAnimationStart(Animator paramAnimator) {}
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    c(ak paramak, com.tencent.mm.plugin.finder.live.model.context.a parama)
+    {
+      super();
+    }
   }
 }
 

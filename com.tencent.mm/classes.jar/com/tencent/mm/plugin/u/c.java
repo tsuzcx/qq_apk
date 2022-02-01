@@ -14,6 +14,8 @@ public abstract interface c
   
   public abstract void seek(int paramInt);
   
+  public abstract void setMute(boolean paramBoolean);
+  
   public abstract void setPath(String paramString);
   
   public abstract void setSurface(Surface paramSurface);

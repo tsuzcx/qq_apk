@@ -1,16 +1,16 @@
 package com.tencent.mm.util;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.et;
-import com.tencent.mm.model.ab;
-import com.tencent.mm.model.bq;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.model.br;
 import com.tencent.mm.model.z;
-import com.tencent.mm.protocal.protobuf.dit;
-import com.tencent.mm.protocal.protobuf.diu;
+import com.tencent.mm.protocal.protobuf.ebd;
+import com.tencent.mm.protocal.protobuf.ebe;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.XmlParser;
-import com.tencent.mm.storage.ca;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.cc;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -20,72 +20,73 @@ import java.util.Set;
 
 public final class g
 {
-  public static dit ab(String paramString, Map<String, String> paramMap)
+  public static ebd ak(String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(240454);
-    dit localdit = new dit();
+    AppMethodBeat.i(233990);
+    ebd localebd = new ebd();
     int i;
-    diu localdiu;
+    ebe localebe;
     if (paramMap != null)
     {
       String str = Util.nullAsNil(paramString) + ".patMsg";
-      localdit.iRq = Util.nullAsNil((String)paramMap.get(str + ".chatUser"));
+      localebd.ltm = Util.nullAsNil((String)paramMap.get(str + ".chatUser"));
       int j = Util.safeParseInt((String)paramMap.get(str + ".records.recordNum"));
       i = 0;
       if (i < j)
       {
-        localdiu = new diu();
+        localebe = new ebe();
         paramString = str + ".records.record";
         if (i <= 0) {
-          break label497;
+          break label533;
         }
         paramString = paramString + i;
       }
     }
-    label497:
+    label533:
     for (;;)
     {
-      localdiu.fLi = Util.nullAsNil((String)paramMap.get(paramString + ".fromUser"));
-      localdiu.TQk = Util.nullAsNil((String)paramMap.get(paramString + ".pattedUser"));
-      localdiu.lqH = Util.nullAsNil((String)paramMap.get(paramString + ".template"));
-      if (Util.isNullOrNil(localdiu.lqH)) {
-        localdiu.lqH = Util.nullAsNil((String)paramMap.get(paramString + ".templete"));
+      localebe.hQQ = Util.nullAsNil((String)paramMap.get(paramString + ".fromUser"));
+      localebe.abgI = Util.nullAsNil((String)paramMap.get(paramString + ".pattedUser"));
+      localebe.nVS = Util.nullAsNil((String)paramMap.get(paramString + ".template"));
+      if (Util.isNullOrNil(localebe.nVS)) {
+        localebe.nVS = Util.nullAsNil((String)paramMap.get(paramString + ".templete"));
       }
-      localdiu.createTime = Util.safeParseLong((String)paramMap.get(paramString + ".createTime"));
-      localdiu.TQl = Util.safeParseInt((String)paramMap.get(paramString + ".readStatus"));
-      localdiu.rPF = Util.safeParseLong((String)paramMap.get(paramString + ".svrId"));
-      localdiu.TQm = Util.safeParseInt((String)paramMap.get(paramString + ".showModifyTip"));
-      localdit.Ezu.add(localdiu);
+      localebe.createTime = Util.safeParseLong((String)paramMap.get(paramString + ".createTime"));
+      localebe.abgJ = Util.safeParseInt((String)paramMap.get(paramString + ".readStatus"));
+      localebe.vaU = Util.safeParseLong((String)paramMap.get(paramString + ".svrId"));
+      localebe.abgK = Util.safeParseInt((String)paramMap.get(paramString + ".showModifyTip"));
+      localebe.abgL = Util.safeParseInt((String)paramMap.get(paramString + ".isNewPatMsg"));
+      localebd.Ksg.add(localebe);
       i += 1;
       break;
-      AppMethodBeat.o(240454);
-      return localdit;
+      AppMethodBeat.o(233990);
+      return localebd;
     }
   }
   
-  public static dit bBr(String paramString)
+  public static ebd bDK(String paramString)
   {
-    AppMethodBeat.i(240447);
-    dit localdit = new dit();
+    AppMethodBeat.i(233979);
+    ebd localebd = new ebd();
     if (!Util.isNullOrNil(paramString))
     {
       if (!paramString.contains("appmsg"))
       {
-        paramString = ab("", XmlParser.parseXml(paramString, "patMsg", null));
-        AppMethodBeat.o(240447);
+        paramString = ak("", XmlParser.parseXml(paramString, "patMsg", null));
+        AppMethodBeat.o(233979);
         return paramString;
       }
-      paramString = ab(".msg.appmsg", XmlParser.parseXml(paramString, "msg", null));
-      AppMethodBeat.o(240447);
+      paramString = ak(".msg.appmsg", XmlParser.parseXml(paramString, "msg", null));
+      AppMethodBeat.o(233979);
       return paramString;
     }
-    AppMethodBeat.o(240447);
-    return localdit;
+    AppMethodBeat.o(233979);
+    return localebd;
   }
   
   public static String c(String paramString, Object paramObject, int paramInt)
   {
-    AppMethodBeat.i(240441);
+    AppMethodBeat.i(233974);
     if (paramObject == null) {}
     for (boolean bool = true;; bool = false)
     {
@@ -94,7 +95,7 @@ public final class g
         break;
       }
       Log.w("MicroMsg.MsgUtil", "[mergeMsgSource] WTF the msgsource is right? %s", new Object[] { paramString });
-      AppMethodBeat.o(240441);
+      AppMethodBeat.o(233974);
       return paramString;
     }
     if (((paramInt & 0x1) != 0) && ((paramObject instanceof HashMap)))
@@ -124,87 +125,87 @@ public final class g
       {
         localStringBuffer.append("</msgsource>");
         paramString = localStringBuffer.toString();
-        AppMethodBeat.o(240441);
+        AppMethodBeat.o(233974);
         return paramString;
       }
       paramString = paramString.replace("<msgsource>", "<msgsource>" + localStringBuffer.toString());
-      AppMethodBeat.o(240441);
+      AppMethodBeat.o(233974);
       return paramString;
     }
-    AppMethodBeat.o(240441);
+    AppMethodBeat.o(233974);
     return paramString;
   }
   
-  public static String dn(ca paramca)
+  public static String dP(cc paramcc)
   {
     AppMethodBeat.i(117353);
-    if (paramca == null)
+    if (paramcc == null)
     {
       AppMethodBeat.o(117353);
       return "";
     }
-    if (paramca.field_isSend == 1) {
-      paramca = z.bcZ();
+    if (paramcc.field_isSend == 1) {
+      paramcc = z.bAM();
     }
     for (;;)
     {
       AppMethodBeat.o(117353);
-      return paramca;
-      String str1 = paramca.field_talker;
-      if (ab.Lj(str1))
+      return paramcc;
+      String str1 = paramcc.field_talker;
+      if (au.bwE(str1))
       {
-        String str2 = bq.RL(paramca.field_content);
+        String str2 = br.JJ(paramcc.field_content);
         if ((str1 != null) && (str2 != null))
         {
-          paramca = str2;
+          paramcc = str2;
           if (str2.length() > 0) {
             continue;
           }
         }
       }
-      paramca = str1;
+      paramcc = str1;
     }
   }
   
-  public static String jdMethod_do(ca paramca)
+  public static String dQ(cc paramcc)
   {
-    AppMethodBeat.i(240439);
-    if (paramca == null)
+    AppMethodBeat.i(233970);
+    if (paramcc == null)
     {
-      AppMethodBeat.o(240439);
+      AppMethodBeat.o(233970);
       return "";
     }
-    String str2 = paramca.field_content;
+    String str2 = paramcc.field_content;
     if (str2 == null)
     {
-      AppMethodBeat.o(240439);
+      AppMethodBeat.o(233970);
       return "";
     }
-    if (dp(paramca))
+    if (dR(paramcc))
     {
       str1 = str2;
-      if (ab.Lj(paramca.field_talker))
+      if (au.bwE(paramcc.field_talker))
       {
         str1 = str2;
-        if (paramca.field_isSend != 1)
+        if (paramcc.field_isSend != 1)
         {
-          i = bq.RI(str2);
+          i = br.JG(str2);
           str1 = str2;
           if (i != -1) {
             str1 = str2.substring(i + 1);
           }
         }
       }
-      AppMethodBeat.o(240439);
+      AppMethodBeat.o(233970);
       return str1;
     }
     String str1 = str2;
-    if (ab.Lj(paramca.field_talker))
+    if (au.bwE(paramcc.field_talker))
     {
       str1 = str2;
-      if (paramca.field_isSend != 1)
+      if (paramcc.field_isSend != 1)
       {
-        i = bq.RI(str2);
+        i = br.JG(str2);
         str1 = str2;
         if (i != -1) {
           str1 = str2.substring(i + 1);
@@ -212,38 +213,38 @@ public final class g
       }
     }
     int i = str1.indexOf('<');
-    paramca = str1;
+    paramcc = str1;
     if (i > 0) {
-      paramca = str1.substring(i);
+      paramcc = str1.substring(i);
     }
-    AppMethodBeat.o(240439);
-    return paramca;
+    AppMethodBeat.o(233970);
+    return paramcc;
   }
   
-  private static boolean dp(ca paramca)
+  private static boolean dR(cc paramcc)
   {
     boolean bool = false;
-    AppMethodBeat.i(240459);
-    if (paramca == null)
+    AppMethodBeat.i(233995);
+    if (paramcc == null)
     {
-      AppMethodBeat.o(240459);
+      AppMethodBeat.o(233995);
       return false;
     }
-    switch (paramca.getType())
+    switch (paramcc.getType())
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(240459);
+      AppMethodBeat.o(233995);
       return bool;
       bool = true;
     }
   }
   
   public static final class a
-    extends diu
+    extends ebe
   {
-    public String YyU;
+    public String agts;
   }
 }
 

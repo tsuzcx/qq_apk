@@ -3,39 +3,77 @@ package com.tencent.mm.plugin.multitalk.model;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Arrays;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/model/MultiTalkCameraManager$FrameObj;", "", "isBusy", "", "w", "", "h", "MediaFmt", "mirror", "angle", "outImg", "", "bmp", "Landroid/graphics/Bitmap;", "(ZIIIII[ILandroid/graphics/Bitmap;)V", "getMediaFmt", "()I", "setMediaFmt", "(I)V", "getAngle", "setAngle", "getBmp", "()Landroid/graphics/Bitmap;", "setBmp", "(Landroid/graphics/Bitmap;)V", "getH", "setH", "()Z", "setBusy", "(Z)V", "getMirror", "setMirror", "getOutImg", "()[I", "setOutImg", "([I)V", "getW", "setW", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "copy", "equals", "other", "hashCode", "toString", "", "plugin-multitalk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitalk/model/MultiTalkCameraManager$FrameObj;", "", "isBusy", "", "w", "", "h", "MediaFmt", "mirror", "angle", "outImg", "", "bmp", "Landroid/graphics/Bitmap;", "(ZIIIII[ILandroid/graphics/Bitmap;)V", "getMediaFmt", "()I", "setMediaFmt", "(I)V", "getAngle", "setAngle", "getBmp", "()Landroid/graphics/Bitmap;", "setBmp", "(Landroid/graphics/Bitmap;)V", "getH", "setH", "()Z", "setBusy", "(Z)V", "getMirror", "setMirror", "getOutImg", "()[I", "setOutImg", "([I)V", "getW", "setW", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "copy", "equals", "other", "hashCode", "toString", "", "plugin-multitalk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class m$b
 {
-  private int Frp = 0;
-  private int Frq = 0;
-  private int[] Frr = null;
+  private int LnC = 0;
+  private int LnD = 0;
+  private int[] LnE = null;
   private int h = 0;
-  private boolean jTm = false;
   private int mirror = 0;
-  private Bitmap tJN = null;
+  private boolean mtE = false;
   private int w = 0;
+  private Bitmap wNk = null;
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(200397);
-    if (this != paramObject)
+    AppMethodBeat.i(284941);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof b))
-      {
-        paramObject = (b)paramObject;
-        if ((this.jTm != paramObject.jTm) || (this.w != paramObject.w) || (this.h != paramObject.h) || (this.Frp != paramObject.Frp) || (this.mirror != paramObject.mirror) || (this.Frq != paramObject.Frq) || (!p.h(this.Frr, paramObject.Frr)) || (!p.h(this.tJN, paramObject.tJN))) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(200397);
+      AppMethodBeat.o(284941);
       return true;
     }
-    AppMethodBeat.o(200397);
-    return false;
+    if (!(paramObject instanceof b))
+    {
+      AppMethodBeat.o(284941);
+      return false;
+    }
+    paramObject = (b)paramObject;
+    if (this.mtE != paramObject.mtE)
+    {
+      AppMethodBeat.o(284941);
+      return false;
+    }
+    if (this.w != paramObject.w)
+    {
+      AppMethodBeat.o(284941);
+      return false;
+    }
+    if (this.h != paramObject.h)
+    {
+      AppMethodBeat.o(284941);
+      return false;
+    }
+    if (this.LnC != paramObject.LnC)
+    {
+      AppMethodBeat.o(284941);
+      return false;
+    }
+    if (this.mirror != paramObject.mirror)
+    {
+      AppMethodBeat.o(284941);
+      return false;
+    }
+    if (this.LnD != paramObject.LnD)
+    {
+      AppMethodBeat.o(284941);
+      return false;
+    }
+    if (!s.p(this.LnE, paramObject.LnE))
+    {
+      AppMethodBeat.o(284941);
+      return false;
+    }
+    if (!s.p(this.wNk, paramObject.wNk))
+    {
+      AppMethodBeat.o(284941);
+      return false;
+    }
+    AppMethodBeat.o(284941);
+    return true;
   }
   
   public final int hashCode()
@@ -45,15 +83,15 @@ public final class m$b
   
   public final String toString()
   {
-    AppMethodBeat.i(200386);
-    String str = "FrameObj(isBusy=" + this.jTm + ", w=" + this.w + ", h=" + this.h + ", MediaFmt=" + this.Frp + ", mirror=" + this.mirror + ", angle=" + this.Frq + ", outImg=" + Arrays.toString(this.Frr) + ", bmp=" + this.tJN + ")";
-    AppMethodBeat.o(200386);
+    AppMethodBeat.i(284932);
+    String str = "FrameObj(isBusy=" + this.mtE + ", w=" + this.w + ", h=" + this.h + ", MediaFmt=" + this.LnC + ", mirror=" + this.mirror + ", angle=" + this.LnD + ", outImg=" + Arrays.toString(this.LnE) + ", bmp=" + this.wNk + ')';
+    AppMethodBeat.o(284932);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.model.m.b
  * JD-Core Version:    0.7.0.1
  */

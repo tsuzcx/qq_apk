@@ -19,12 +19,12 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class ZoneRecommandPreference
   extends Preference
 {
-  RegionCodeDecoder.Region XVC;
-  RegionCodeDecoder.Region XVD;
-  RegionCodeDecoder.Region XVE;
-  private TextView XVF;
-  private ImageView XVG;
-  private TextView jmj;
+  RegionCodeDecoder.Region afLR;
+  RegionCodeDecoder.Region afLS;
+  RegionCodeDecoder.Region afLT;
+  private TextView afLU;
+  private ImageView afLV;
+  private TextView lPf;
   int status;
   
   public ZoneRecommandPreference(Context paramContext)
@@ -46,10 +46,10 @@ public class ZoneRecommandPreference
     AppMethodBeat.o(39211);
   }
   
-  final void hYL()
+  final void jDu()
   {
     AppMethodBeat.i(39214);
-    if ((this.XVF == null) || (this.jmj == null))
+    if ((this.afLU == null) || (this.lPf == null))
     {
       AppMethodBeat.o(39214);
       return;
@@ -61,61 +61,61 @@ public class ZoneRecommandPreference
     {
       AppMethodBeat.o(39214);
       return;
-      this.XVF.setVisibility(8);
-      this.jmj.setVisibility(0);
-      this.jmj.setText(R.l.setting_zone_getting_location);
-      this.XVG.setImageResource(R.k.get_location_icon);
+      this.afLU.setVisibility(8);
+      this.lPf.setVisibility(0);
+      this.lPf.setText(R.l.setting_zone_getting_location);
+      this.afLV.setImageResource(R.k.get_location_icon);
       setEnabled(false);
-      FV(false);
+      LH(false);
       AppMethodBeat.o(39214);
       return;
-      this.XVF.setVisibility(8);
-      this.jmj.setVisibility(0);
-      this.jmj.setText(R.l.setting_zone_cannot_get_location);
-      this.XVG.setImageResource(R.k.get_location_failed_icon);
+      this.afLU.setVisibility(8);
+      this.lPf.setVisibility(0);
+      this.lPf.setText(R.l.setting_zone_cannot_get_location);
+      this.afLV.setImageResource(R.k.get_location_failed_icon);
       setEnabled(false);
-      FV(false);
+      LH(false);
       AppMethodBeat.o(39214);
       return;
-      this.XVF.setVisibility(0);
-      this.jmj.setVisibility(8);
-      this.XVG.setImageResource(R.k.get_location_icon);
+      this.afLU.setVisibility(0);
+      this.lPf.setVisibility(8);
+      this.afLV.setImageResource(R.k.get_location_icon);
       Object localObject2 = "";
       Object localObject1 = localObject2;
-      if (this.XVC != null)
+      if (this.afLR != null)
       {
         localObject1 = localObject2;
-        if (!Util.isNullOrNil(this.XVC.getName())) {
-          localObject1 = "" + this.XVC.getName();
+        if (!Util.isNullOrNil(this.afLR.getName())) {
+          localObject1 = "" + this.afLR.getName();
         }
       }
       localObject2 = localObject1;
-      if (this.XVD != null)
+      if (this.afLS != null)
       {
         localObject2 = localObject1;
-        if (!Util.isNullOrNil(this.XVD.getName())) {
-          localObject2 = (String)localObject1 + " " + this.XVD.getName();
+        if (!Util.isNullOrNil(this.afLS.getName())) {
+          localObject2 = (String)localObject1 + " " + this.afLS.getName();
         }
       }
       localObject1 = localObject2;
-      if (this.XVE != null)
+      if (this.afLT != null)
       {
         localObject1 = localObject2;
-        if (!Util.isNullOrNil(this.XVE.getName())) {
-          localObject1 = (String)localObject2 + " " + this.XVE.getName();
+        if (!Util.isNullOrNil(this.afLT.getName())) {
+          localObject1 = (String)localObject2 + " " + this.afLT.getName();
         }
       }
-      this.XVF.setText((CharSequence)localObject1);
+      this.afLU.setText((CharSequence)localObject1);
       setEnabled(true);
-      FV(true);
+      LH(true);
     }
   }
   
-  public final void hYM()
+  public final void jDv()
   {
     AppMethodBeat.i(39215);
     this.status = 2;
-    hYL();
+    jDu();
     AppMethodBeat.o(39215);
   }
   
@@ -123,7 +123,7 @@ public class ZoneRecommandPreference
   {
     AppMethodBeat.i(39213);
     super.onBindView(paramView);
-    hYL();
+    jDu();
     AppMethodBeat.o(39213);
   }
   
@@ -134,17 +134,17 @@ public class ZoneRecommandPreference
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
     ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(R.i.ejb, localViewGroup);
-    this.XVF = ((TextView)paramViewGroup.findViewById(R.h.zonename));
-    this.jmj = ((TextView)paramViewGroup.findViewById(R.h.status));
-    this.XVG = ((ImageView)paramViewGroup.findViewById(R.h.dVG));
+    localLayoutInflater.inflate(R.i.gmb, localViewGroup);
+    this.afLU = ((TextView)paramViewGroup.findViewById(R.h.gdT));
+    this.lPf = ((TextView)paramViewGroup.findViewById(R.h.status));
+    this.afLV = ((ImageView)paramViewGroup.findViewById(R.h.fYd));
     AppMethodBeat.o(39212);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.tools.ZoneRecommandPreference
  * JD-Core Version:    0.7.0.1
  */

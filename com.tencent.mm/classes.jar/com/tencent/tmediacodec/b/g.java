@@ -18,27 +18,27 @@ public final class g
   public final a.b a(e parame)
   {
     int k = 0;
-    AppMethodBeat.i(224422);
-    if ((a.a(this, parame)) && (parame.width <= this.ZOn.width) && (parame.height <= this.ZOn.height) && (d.b(this, parame) <= this.ZOn.bsm))
+    AppMethodBeat.i(210831);
+    if ((a.a(this, parame)) && (parame.width <= this.ahTo.width) && (parame.height <= this.ahTo.height) && (d.b(this, parame) <= this.ahTo.dlO))
     {
-      e locale = this.ZOm;
+      e locale = this.ahTn;
       int i;
-      if (parame.ZOk.size() != locale.ZOk.size()) {
+      if (parame.ahTl.size() != locale.ahTl.size()) {
         i = k;
       }
       while (i != 0)
       {
-        parame = a.b.ZPp;
-        AppMethodBeat.o(224422);
+        parame = a.b.ahUq;
+        AppMethodBeat.o(210831);
         return parame;
         int j = 0;
         for (;;)
         {
-          if (j >= parame.ZOk.size()) {
+          if (j >= parame.ahTl.size()) {
             break label150;
           }
           i = k;
-          if (!((byte[])parame.ZOk.get(j)).equals(locale.ZOk.get(j))) {
+          if (!((byte[])parame.ahTl.get(j)).equals(locale.ahTl.get(j))) {
             break;
           }
           j += 1;
@@ -46,32 +46,32 @@ public final class g
         label150:
         i = 1;
       }
-      parame = a.b.ZPo;
-      AppMethodBeat.o(224422);
+      parame = a.b.ahUp;
+      AppMethodBeat.o(210831);
       return parame;
     }
-    parame = a.b.ZPm;
-    AppMethodBeat.o(224422);
+    parame = a.b.ahUn;
+    AppMethodBeat.o(210831);
     return parame;
   }
   
-  public final boolean itc()
+  public final boolean kcw()
   {
-    AppMethodBeat.i(224424);
-    if ((super.itc()) && (this.mSurface != null) && (this.ZOm.aMV == 0))
+    AppMethodBeat.i(210841);
+    if ((super.kcw()) && (this.mSurface != null) && (this.ahTn.Gj == 0))
     {
-      AppMethodBeat.o(224424);
+      AppMethodBeat.o(210841);
       return true;
     }
-    AppMethodBeat.o(224424);
+    AppMethodBeat.o(210841);
     return false;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(224426);
+    AppMethodBeat.i(210852);
     String str = "VideoCodecWrapper[" + hashCode() + ']';
-    AppMethodBeat.o(224426);
+    AppMethodBeat.o(210852);
     return str;
   }
 }

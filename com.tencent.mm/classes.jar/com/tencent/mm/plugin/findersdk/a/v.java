@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.findersdk.a;
 
-import com.tencent.mm.kernel.c.a;
-import kotlin.l;
+import com.tencent.mm.protocal.protobuf.buy;
+import java.util.ArrayList;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/findersdk/api/IFinderModifyFeedReproduce;", "Lcom/tencent/mm/kernel/service/IService;", "modifyFeedReproduce", "", "ifOpen", "", "finder-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/findersdk/api/IContactSearchProfileAdapter;", "", "getData", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/FinderSearchInfo;", "Lkotlin/collections/ArrayList;", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface v
-  extends a
 {
-  public abstract void oh(boolean paramBoolean);
+  public abstract ArrayList<buy> dwi();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.findersdk.a.v
  * JD-Core Version:    0.7.0.1
  */

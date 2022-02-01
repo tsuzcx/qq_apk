@@ -23,6 +23,10 @@ public abstract class IUIPage
   
   public abstract float keyboardTopViewBottomMargin();
   
+  public abstract void keyboardWillHide();
+  
+  public abstract void keyboardWillShow(float paramFloat);
+  
   public abstract void onBack();
   
   public abstract void onClickAndroidBack();
@@ -101,6 +105,10 @@ public abstract class IUIPage
     
     private native float native_keyboardTopViewBottomMargin(long paramLong);
     
+    private native void native_keyboardWillHide(long paramLong);
+    
+    private native void native_keyboardWillShow(long paramLong, float paramFloat);
+    
     private native void native_onBack(long paramLong);
     
     private native void native_onClickAndroidBack(long paramLong);
@@ -176,15 +184,15 @@ public abstract class IUIPage
     
     public final boolean forceShowInLightMode()
     {
-      AppMethodBeat.i(219619);
+      AppMethodBeat.i(226978);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         AssertionError localAssertionError = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(219619);
+        AppMethodBeat.o(226978);
         throw localAssertionError;
       }
       boolean bool = native_forceShowInLightMode(this.nativeRef);
-      AppMethodBeat.o(219619);
+      AppMethodBeat.o(226978);
       return bool;
     }
     
@@ -204,15 +212,15 @@ public abstract class IUIPage
     
     public final IUIPagePlatformFuncDelegate getPlatformFuncDelegate()
     {
-      AppMethodBeat.i(219588);
+      AppMethodBeat.i(226922);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         localObject = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(219588);
+        AppMethodBeat.o(226922);
         throw ((Throwable)localObject);
       }
       Object localObject = native_getPlatformFuncDelegate(this.nativeRef);
-      AppMethodBeat.o(219588);
+      AppMethodBeat.o(226922);
       return localObject;
     }
     
@@ -256,6 +264,32 @@ public abstract class IUIPage
       float f = native_keyboardTopViewBottomMargin(this.nativeRef);
       AppMethodBeat.o(135764);
       return f;
+    }
+    
+    public final void keyboardWillHide()
+    {
+      AppMethodBeat.i(226944);
+      if ((!$assertionsDisabled) && (this.destroyed.get()))
+      {
+        AssertionError localAssertionError = new AssertionError("trying to use a destroyed object");
+        AppMethodBeat.o(226944);
+        throw localAssertionError;
+      }
+      native_keyboardWillHide(this.nativeRef);
+      AppMethodBeat.o(226944);
+    }
+    
+    public final void keyboardWillShow(float paramFloat)
+    {
+      AppMethodBeat.i(226940);
+      if ((!$assertionsDisabled) && (this.destroyed.get()))
+      {
+        AssertionError localAssertionError = new AssertionError("trying to use a destroyed object");
+        AppMethodBeat.o(226940);
+        throw localAssertionError;
+      }
+      native_keyboardWillShow(this.nativeRef, paramFloat);
+      AppMethodBeat.o(226940);
     }
     
     public final void onBack()
@@ -416,15 +450,15 @@ public abstract class IUIPage
     
     public final boolean useSafeAreaToLayout()
     {
-      AppMethodBeat.i(219607);
+      AppMethodBeat.i(226951);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         AssertionError localAssertionError = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(219607);
+        AppMethodBeat.o(226951);
         throw localAssertionError;
       }
       boolean bool = native_useSafeAreaToLayout(this.nativeRef);
-      AppMethodBeat.o(219607);
+      AppMethodBeat.o(226951);
       return bool;
     }
     
@@ -444,7 +478,7 @@ public abstract class IUIPage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.kinda.gen.IUIPage
  * JD-Core Version:    0.7.0.1
  */

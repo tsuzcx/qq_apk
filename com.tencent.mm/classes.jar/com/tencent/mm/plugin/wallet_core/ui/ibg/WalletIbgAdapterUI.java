@@ -1,49 +1,48 @@
 package com.tencent.mm.plugin.wallet_core.ui.ibg;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.p;
 import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.wallet_core.c.a.b;
 import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.pluginsdk.model.ab.a;
+import com.tencent.mm.pluginsdk.model.ad.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.wallet_core.d.i;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.ui.base.k;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
-import com.tencent.mm.wallet_core.ui.g;
 
 @com.tencent.mm.ui.base.a(7)
 public class WalletIbgAdapterUI
   extends WalletBaseUI
 {
-  private void bhE(String paramString)
+  private void bhn(String paramString)
   {
     AppMethodBeat.i(71442);
     Intent localIntent = new Intent();
     localIntent.putExtra("rawUrl", paramString);
     localIntent.putExtra("showShare", false);
-    g.aJ(this, localIntent);
+    com.tencent.mm.wallet_core.ui.i.aS(this, localIntent);
     AppMethodBeat.o(71442);
   }
   
-  private void gMu()
+  private void ilJ()
   {
     AppMethodBeat.i(71443);
-    com.tencent.mm.kernel.h.aHH();
-    com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vlj, Boolean.TRUE);
-    com.tencent.mm.ui.base.h.a(this, false, getString(a.i.webview_tbs_need_download), "", getString(a.i.webview_tbs_download_ok), getString(a.i.webview_tbs_download_cancel), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    h.baF();
+    h.baE().ban().set(at.a.acMD, Boolean.TRUE);
+    k.a(this, false, getString(a.i.webview_tbs_need_download), "", getString(a.i.webview_tbs_download_ok), getString(a.i.webview_tbs_download_cancel), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(71436);
-        ab.a.hhl();
+        ad.a.iIl();
         Toast.makeText(WalletIbgAdapterUI.this, WalletIbgAdapterUI.this.getString(a.i.webview_tbs_download_start), 1).show();
         WalletIbgAdapterUI.this.finish();
         AppMethodBeat.o(71436);
@@ -90,47 +89,47 @@ public class WalletIbgAdapterUI
     AppMethodBeat.o(71439);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(71440);
-    if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramq instanceof b)))
+    if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramp instanceof b)))
     {
-      paramInt1 = ((b)paramq).OIP;
-      paramString = ((b)paramq).jumpUrl;
+      paramInt1 = ((b)paramp).VyB;
+      paramString = ((b)paramp).jumpUrl;
       Log.i("MicroMsg.WalletH5AdapterUI", "hy: get success! url is: %s, download x5 = %b", new Object[] { paramString, Integer.valueOf(paramInt1) });
       if (paramInt1 == 1)
       {
-        paramInt1 = ab.a.hhk();
+        paramInt1 = ad.a.iIk();
         Log.i("MicroMsg.WalletH5AdapterUI", "now status = %d", new Object[] { Integer.valueOf(paramInt1) });
         switch (paramInt1)
         {
         default: 
-          gMu();
+          ilJ();
         case 1: 
         case 4: 
           for (paramInt1 = 0; paramInt1 != 0; paramInt1 = 1)
           {
-            bhE(paramString);
+            bhn(paramString);
             finish();
             AppMethodBeat.o(71440);
             return false;
           }
         }
-        com.tencent.mm.kernel.h.aHH();
-        if (((Boolean)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.Vlj, Boolean.FALSE)).booleanValue())
+        h.baF();
+        if (((Boolean)h.baE().ban().get(at.a.acMD, Boolean.FALSE)).booleanValue())
         {
           Toast.makeText(this, getString(a.i.webview_tbs_downloading), 1).show();
-          ab.a.hhl();
+          ad.a.iIl();
           finish();
         }
         for (;;)
         {
           paramInt1 = 0;
           break;
-          gMu();
+          ilJ();
         }
       }
-      bhE(paramString);
+      bhn(paramString);
       finish();
       AppMethodBeat.o(71440);
       return false;
@@ -148,7 +147,7 @@ public class WalletIbgAdapterUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.ibg.WalletIbgAdapterUI
  * JD-Core Version:    0.7.0.1
  */

@@ -2,123 +2,148 @@ package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public class eru
-  extends com.tencent.mm.cd.a
+public final class eru
+  extends com.tencent.mm.bx.a
 {
-  public String RKL;
-  public String RVp;
-  public int RVq;
-  public String llI;
-  public String title;
-  public int tmL;
-  public int weight;
+  public String Zid;
+  public int abvA;
+  public int abvB;
+  public float abvC;
+  public float abvD;
+  public float abvE;
+  public String abvu;
+  public long abvv;
+  public int abvw;
+  public int abvx;
+  public int abvy;
+  public int abvz;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(124569);
+    AppMethodBeat.i(87875);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.RKL != null) {
-        paramVarArgs.f(1, this.RKL);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.Zid != null) {
+        paramVarArgs.g(1, this.Zid);
       }
-      if (this.llI != null) {
-        paramVarArgs.f(2, this.llI);
+      if (this.abvu != null) {
+        paramVarArgs.g(2, this.abvu);
       }
-      paramVarArgs.aY(3, this.weight);
-      if (this.RVp != null) {
-        paramVarArgs.f(4, this.RVp);
-      }
-      paramVarArgs.aY(5, this.tmL);
-      if (this.title != null) {
-        paramVarArgs.f(6, this.title);
-      }
-      paramVarArgs.aY(7, this.RVq);
-      AppMethodBeat.o(124569);
+      paramVarArgs.bv(3, this.abvv);
+      paramVarArgs.bS(4, this.abvw);
+      paramVarArgs.bS(5, this.abvx);
+      paramVarArgs.bS(6, this.abvy);
+      paramVarArgs.bS(7, this.abvz);
+      paramVarArgs.bS(8, this.abvA);
+      paramVarArgs.bS(9, this.abvB);
+      paramVarArgs.l(10, this.abvC);
+      paramVarArgs.l(11, this.abvD);
+      paramVarArgs.l(12, this.abvE);
+      AppMethodBeat.o(87875);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.RKL == null) {
-        break label530;
+      if (this.Zid == null) {
+        break label747;
       }
     }
-    label530:
-    for (paramInt = g.a.a.b.b.a.g(1, this.RKL) + 0;; paramInt = 0)
+    label747:
+    for (paramInt = i.a.a.b.b.a.h(1, this.Zid) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.llI != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.llI);
+      if (this.abvu != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.abvu);
       }
-      i += g.a.a.b.b.a.bM(3, this.weight);
-      paramInt = i;
-      if (this.RVp != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.RVp);
-      }
-      i = paramInt + g.a.a.b.b.a.bM(5, this.tmL);
-      paramInt = i;
-      if (this.title != null) {
-        paramInt = i + g.a.a.b.b.a.g(6, this.title);
-      }
-      i = g.a.a.b.b.a.bM(7, this.RVq);
-      AppMethodBeat.o(124569);
-      return paramInt + i;
+      paramInt = i.a.a.b.b.a.q(3, this.abvv);
+      int j = i.a.a.b.b.a.cJ(4, this.abvw);
+      int k = i.a.a.b.b.a.cJ(5, this.abvx);
+      int m = i.a.a.b.b.a.cJ(6, this.abvy);
+      int n = i.a.a.b.b.a.cJ(7, this.abvz);
+      int i1 = i.a.a.b.b.a.cJ(8, this.abvA);
+      int i2 = i.a.a.b.b.a.cJ(9, this.abvB);
+      int i3 = i.a.a.b.b.a.ko(10);
+      int i4 = i.a.a.b.b.a.ko(11);
+      int i5 = i.a.a.b.b.a.ko(12);
+      AppMethodBeat.o(87875);
+      return i + paramInt + j + k + m + n + i1 + i2 + (i3 + 4) + (i4 + 4) + (i5 + 4);
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(124569);
+        AppMethodBeat.o(87875);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         eru localeru = (eru)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(124569);
+          AppMethodBeat.o(87875);
           return -1;
         case 1: 
-          localeru.RKL = locala.abFh.readString();
-          AppMethodBeat.o(124569);
+          localeru.Zid = locala.ajGk.readString();
+          AppMethodBeat.o(87875);
           return 0;
         case 2: 
-          localeru.llI = locala.abFh.readString();
-          AppMethodBeat.o(124569);
+          localeru.abvu = locala.ajGk.readString();
+          AppMethodBeat.o(87875);
           return 0;
         case 3: 
-          localeru.weight = locala.abFh.AK();
-          AppMethodBeat.o(124569);
+          localeru.abvv = locala.ajGk.aaw();
+          AppMethodBeat.o(87875);
           return 0;
         case 4: 
-          localeru.RVp = locala.abFh.readString();
-          AppMethodBeat.o(124569);
+          localeru.abvw = locala.ajGk.aar();
+          AppMethodBeat.o(87875);
           return 0;
         case 5: 
-          localeru.tmL = locala.abFh.AK();
-          AppMethodBeat.o(124569);
+          localeru.abvx = locala.ajGk.aar();
+          AppMethodBeat.o(87875);
           return 0;
         case 6: 
-          localeru.title = locala.abFh.readString();
-          AppMethodBeat.o(124569);
+          localeru.abvy = locala.ajGk.aar();
+          AppMethodBeat.o(87875);
+          return 0;
+        case 7: 
+          localeru.abvz = locala.ajGk.aar();
+          AppMethodBeat.o(87875);
+          return 0;
+        case 8: 
+          localeru.abvA = locala.ajGk.aar();
+          AppMethodBeat.o(87875);
+          return 0;
+        case 9: 
+          localeru.abvB = locala.ajGk.aar();
+          AppMethodBeat.o(87875);
+          return 0;
+        case 10: 
+          localeru.abvC = Float.intBitsToFloat(locala.ajGk.aax());
+          AppMethodBeat.o(87875);
+          return 0;
+        case 11: 
+          localeru.abvD = Float.intBitsToFloat(locala.ajGk.aax());
+          AppMethodBeat.o(87875);
           return 0;
         }
-        localeru.RVq = locala.abFh.AK();
-        AppMethodBeat.o(124569);
+        localeru.abvE = Float.intBitsToFloat(locala.ajGk.aax());
+        AppMethodBeat.o(87875);
         return 0;
       }
-      AppMethodBeat.o(124569);
+      AppMethodBeat.o(87875);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.eru
  * JD-Core Version:    0.7.0.1
  */

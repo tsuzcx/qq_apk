@@ -1,74 +1,106 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class cvv
-  extends com.tencent.mm.cd.a
+  extends erp
 {
-  public float TEu;
-  public float TEv;
-  public float TEw;
+  public String aaBb;
+  public String aaBc;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(125746);
+    AppMethodBeat.i(32304);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.i(1, this.TEu);
-      paramVarArgs.i(2, this.TEv);
-      paramVarArgs.i(3, this.TEw);
-      AppMethodBeat.o(125746);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = g.a.a.b.b.a.gL(1);
-      int i = g.a.a.b.b.a.gL(2);
-      int j = g.a.a.b.b.a.gL(3);
-      AppMethodBeat.o(125746);
-      return paramInt + 4 + 0 + (i + 4) + (j + 4);
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
-      }
-      AppMethodBeat.o(125746);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      cvv localcvv = (cvv)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
       {
-      default: 
-        AppMethodBeat.o(125746);
-        return -1;
-      case 1: 
-        localcvv.TEu = Float.intBitsToFloat(locala.abFh.AO());
-        AppMethodBeat.o(125746);
-        return 0;
-      case 2: 
-        localcvv.TEv = Float.intBitsToFloat(locala.abFh.AO());
-        AppMethodBeat.o(125746);
-        return 0;
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      localcvv.TEw = Float.intBitsToFloat(locala.abFh.AO());
-      AppMethodBeat.o(125746);
+      if (this.aaBb != null) {
+        paramVarArgs.g(2, this.aaBb);
+      }
+      if (this.aaBc != null) {
+        paramVarArgs.g(3, this.aaBc);
+      }
+      AppMethodBeat.o(32304);
       return 0;
     }
-    AppMethodBeat.o(125746);
-    return -1;
+    if (paramInt == 1) {
+      if (this.BaseRequest == null) {
+        break label413;
+      }
+    }
+    label413:
+    for (int i = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    {
+      paramInt = i;
+      if (this.aaBb != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.aaBb);
+      }
+      i = paramInt;
+      if (this.aaBc != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.aaBc);
+      }
+      AppMethodBeat.o(32304);
+      return i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(32304);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
+        cvv localcvv = (cvv)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(32304);
+          return -1;
+        case 1: 
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kc localkc = new kc();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkc.parseFrom((byte[])localObject);
+            }
+            localcvv.BaseRequest = localkc;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(32304);
+          return 0;
+        case 2: 
+          localcvv.aaBb = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(32304);
+          return 0;
+        }
+        localcvv.aaBc = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(32304);
+        return 0;
+      }
+      AppMethodBeat.o(32304);
+      return -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cvv
  * JD-Core Version:    0.7.0.1
  */

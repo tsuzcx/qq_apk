@@ -1,89 +1,57 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
+import com.tencent.luggage.bridge.k;
+import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.downloader_app.api.DownloadWidgetTaskInfo;
-import com.tencent.mm.plugin.downloader_app.api.c;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
+import com.tencent.mm.plugin.game.luggage.page.GameWebPage;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv.a;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bw;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class j
-  extends br
+  extends bw<GameWebPage>
 {
-  public final void a(Context paramContext, String paramString, br.a parama)
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
+  
+  public final void b(b<GameWebPage>.a paramb)
   {
-    AppMethodBeat.i(83064);
-    Object localObject = ((c)h.ae(c.class)).cQv();
-    if (Util.isNullOrNil((List)localObject))
+    AppMethodBeat.i(277132);
+    Log.i("MicroMsg.JsApiConfigLiveBrandName", "invokeInOwn");
+    Object localObject = paramb.eiZ.eif;
+    if (localObject == null)
     {
-      parama.i(null, null);
-      AppMethodBeat.o(83064);
+      Log.e("MicroMsg.JsApiConfigLiveBrandName", "data is null");
+      paramb.a("null_data", null);
+      AppMethodBeat.o(277132);
       return;
     }
-    paramContext = new JSONObject();
-    paramString = new JSONArray();
-    localObject = ((LinkedList)localObject).iterator();
-    for (;;)
+    String str1 = ((JSONObject)localObject).optString("userName");
+    if (Util.isNullOrNil(str1))
     {
-      DownloadWidgetTaskInfo localDownloadWidgetTaskInfo;
-      JSONObject localJSONObject;
-      if (((Iterator)localObject).hasNext())
-      {
-        localDownloadWidgetTaskInfo = (DownloadWidgetTaskInfo)((Iterator)localObject).next();
-        localJSONObject = new JSONObject();
-      }
-      try
-      {
-        localJSONObject.put("appid", localDownloadWidgetTaskInfo.appId);
-        localJSONObject.put("status", localDownloadWidgetTaskInfo.sSq);
-        localJSONObject.put("download_id", localDownloadWidgetTaskInfo.fuD);
-        localJSONObject.put("progress", localDownloadWidgetTaskInfo.progress);
-        localJSONObject.put("progress_float", localDownloadWidgetTaskInfo.oyv);
-        if (localDownloadWidgetTaskInfo.uik) {
-          localJSONObject.put("reserve_for_wifi", 1);
-        }
-        label177:
-        paramString.put(localJSONObject);
-        continue;
-        try
-        {
-          paramContext.put("result", paramString.toString());
-          label198:
-          parama.i(null, paramContext);
-          AppMethodBeat.o(83064);
-          return;
-        }
-        catch (JSONException paramString)
-        {
-          break label198;
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        break label177;
-      }
+      paramb.a("userName is null", null);
+      AppMethodBeat.o(277132);
+      return;
     }
+    String str2 = ((JSONObject)localObject).optString("reportStr");
+    int i = ((JSONObject)localObject).optInt("bizType", 1);
+    localObject = ((JSONObject)localObject).optString("byPass");
+    ((GameWebPage)paramb.eiY).e(str1, str2, i, (String)localObject);
+    paramb.a("", null);
+    AppMethodBeat.o(277132);
   }
   
-  public final void b(b.a parama) {}
-  
-  public final int cDj()
+  public final int dgI()
   {
-    return 1;
+    return 0;
   }
   
   public final String name()
   {
-    return "getDownloadWidgetTaskInfos";
+    return "configLiveBrandName";
   }
 }
 

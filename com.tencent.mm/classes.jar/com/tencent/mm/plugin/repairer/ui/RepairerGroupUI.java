@@ -1,10 +1,9 @@
 package com.tencent.mm.plugin.repairer.ui;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/repairer/ui/RepairerGroupUI;", "Lcom/tencent/mm/plugin/repairer/ui/BaseRepairerPrefUI;", "()V", "ui-repairer_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/repairer/ui/RepairerGroupUI;", "Lcom/tencent/mm/plugin/repairer/ui/BaseRepairerPrefUI;", "()V", "ui-repairer_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class RepairerGroupUI
   extends BaseRepairerPrefUI
 {
@@ -16,7 +15,7 @@ public final class RepairerGroupUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.repairer.ui.RepairerGroupUI
  * JD-Core Version:    0.7.0.1
  */

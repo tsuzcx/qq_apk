@@ -209,12 +209,12 @@ public class MIUI
   public static boolean ifLessThanVersinCode(String paramString)
   {
     boolean bool = true;
-    AppMethodBeat.i(210069);
+    AppMethodBeat.i(243221);
     String str = getSystemProperty("ro.miui.version.code_time");
     if (Util.isNullOrNil(paramString)) {}
     for (;;)
     {
-      AppMethodBeat.o(210069);
+      AppMethodBeat.o(243221);
       return bool;
       if (Long.valueOf(str).longValue() >= Long.valueOf(paramString).longValue()) {
         bool = false;
@@ -248,14 +248,14 @@ public class MIUI
     if (ifNotificationChannelSupportNativeActionJump == null)
     {
       String str = Build.MANUFACTURER;
-      Log.i("Vendor.MIUI", "Build.MANUFACTURER = %s, Build.MODEL = %s", new Object[] { str, Build.MODEL });
+      Log.i("Vendor.MIUI", "Build.MANUFACTURER = %s, Build.MODEL ", new Object[] { str });
       if ((TextUtils.isEmpty(str)) || (!str.equals("Xiaomi"))) {
-        break label144;
+        break label138;
       }
       str = getSystemProperty("ro.miui.version.code_time");
       Log.w("Vendor.MIUI", "ifNotificationChannelSupportNativeActionJump() versionCode:%s", new Object[] { str });
       if (Long.valueOf(str).longValue() <= Long.valueOf("1536681600").longValue()) {
-        break label135;
+        break label129;
       }
       ifNotificationChannelSupportNativeActionJump = Boolean.TRUE;
     }
@@ -265,10 +265,10 @@ public class MIUI
       boolean bool = ifNotificationChannelSupportNativeActionJump.booleanValue();
       AppMethodBeat.o(153478);
       return bool;
-      label135:
+      label129:
       ifNotificationChannelSupportNativeActionJump = Boolean.FALSE;
       continue;
-      label144:
+      label138:
       ifNotificationChannelSupportNativeActionJump = Boolean.FALSE;
     }
   }
@@ -277,7 +277,7 @@ public class MIUI
   public static boolean isMIUI()
   {
     // Byte code:
-    //   0: ldc 202
+    //   0: ldc 199
     //   2: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: getstatic 18	com/tencent/mm/sdk/vendor/MIUI:isMIUI	Ljava/lang/Boolean;
     //   8: ifnonnull +71 -> 79
@@ -285,20 +285,20 @@ public class MIUI
     //   12: astore_2
     //   13: aconst_null
     //   14: astore_1
-    //   15: new 204	com/tencent/mm/vfs/q
+    //   15: new 201	com/tencent/mm/vfs/u
     //   18: dup
-    //   19: invokestatic 210	android/os/Environment:getRootDirectory	()Ljava/io/File;
-    //   22: ldc 212
-    //   24: invokespecial 215	com/tencent/mm/vfs/q:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   27: invokestatic 221	com/tencent/mm/vfs/u:al	(Lcom/tencent/mm/vfs/q;)Ljava/io/InputStream;
+    //   19: invokestatic 207	android/os/Environment:getRootDirectory	()Ljava/io/File;
+    //   22: ldc 209
+    //   24: invokespecial 212	com/tencent/mm/vfs/u:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   27: invokestatic 218	com/tencent/mm/vfs/y:ao	(Lcom/tencent/mm/vfs/u;)Ljava/io/InputStream;
     //   30: astore_3
     //   31: aload_3
     //   32: astore_1
     //   33: aload_3
     //   34: astore_2
-    //   35: new 223	java/util/Properties
+    //   35: new 220	java/util/Properties
     //   38: dup
-    //   39: invokespecial 224	java/util/Properties:<init>	()V
+    //   39: invokespecial 221	java/util/Properties:<init>	()V
     //   42: astore 4
     //   44: aload_3
     //   45: astore_1
@@ -306,24 +306,24 @@ public class MIUI
     //   47: astore_2
     //   48: aload 4
     //   50: aload_3
-    //   51: invokevirtual 227	java/util/Properties:load	(Ljava/io/InputStream;)V
+    //   51: invokevirtual 224	java/util/Properties:load	(Ljava/io/InputStream;)V
     //   54: aload_3
     //   55: astore_1
     //   56: aload_3
     //   57: astore_2
     //   58: aload 4
-    //   60: ldc 229
-    //   62: invokevirtual 232	java/util/Properties:containsKey	(Ljava/lang/Object;)Z
-    //   65: invokestatic 201	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   60: ldc 226
+    //   62: invokevirtual 229	java/util/Properties:containsKey	(Ljava/lang/Object;)Z
+    //   65: invokestatic 198	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   68: putstatic 18	com/tencent/mm/sdk/vendor/MIUI:isMIUI	Ljava/lang/Boolean;
     //   71: aload_3
     //   72: ifnull +7 -> 79
     //   75: aload_3
-    //   76: invokevirtual 235	java/io/InputStream:close	()V
+    //   76: invokevirtual 232	java/io/InputStream:close	()V
     //   79: getstatic 18	com/tencent/mm/sdk/vendor/MIUI:isMIUI	Ljava/lang/Boolean;
     //   82: invokevirtual 176	java/lang/Boolean:booleanValue	()Z
     //   85: istore_0
-    //   86: ldc 202
+    //   86: ldc 199
     //   88: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   91: iload_0
     //   92: ireturn
@@ -331,14 +331,14 @@ public class MIUI
     //   94: aload_1
     //   95: astore_2
     //   96: ldc 8
-    //   98: ldc 237
+    //   98: ldc 234
     //   100: iconst_1
     //   101: anewarray 4	java/lang/Object
     //   104: dup
     //   105: iconst_0
     //   106: aload_3
     //   107: aastore
-    //   108: invokestatic 240	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   108: invokestatic 237	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   111: aload_1
     //   112: astore_2
     //   113: getstatic 179	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
@@ -346,7 +346,7 @@ public class MIUI
     //   119: aload_1
     //   120: ifnull -41 -> 79
     //   123: aload_1
-    //   124: invokevirtual 235	java/io/InputStream:close	()V
+    //   124: invokevirtual 232	java/io/InputStream:close	()V
     //   127: goto -48 -> 79
     //   130: astore_1
     //   131: goto -52 -> 79
@@ -354,8 +354,8 @@ public class MIUI
     //   135: aload_2
     //   136: ifnull +7 -> 143
     //   139: aload_2
-    //   140: invokevirtual 235	java/io/InputStream:close	()V
-    //   143: ldc 202
+    //   140: invokevirtual 232	java/io/InputStream:close	()V
+    //   143: ldc 199
     //   145: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   148: aload_1
     //   149: athrow
@@ -424,7 +424,7 @@ public class MIUI
   public static boolean isMIUIV8()
   {
     // Byte code:
-    //   0: ldc 252
+    //   0: ldc 249
     //   2: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: getstatic 20	com/tencent/mm/sdk/vendor/MIUI:isMIUIV8	Ljava/lang/Boolean;
     //   8: ifnonnull +106 -> 114
@@ -432,20 +432,20 @@ public class MIUI
     //   12: astore_2
     //   13: aconst_null
     //   14: astore_1
-    //   15: new 204	com/tencent/mm/vfs/q
+    //   15: new 201	com/tencent/mm/vfs/u
     //   18: dup
-    //   19: invokestatic 210	android/os/Environment:getRootDirectory	()Ljava/io/File;
-    //   22: ldc 212
-    //   24: invokespecial 215	com/tencent/mm/vfs/q:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   27: invokestatic 221	com/tencent/mm/vfs/u:al	(Lcom/tencent/mm/vfs/q;)Ljava/io/InputStream;
+    //   19: invokestatic 207	android/os/Environment:getRootDirectory	()Ljava/io/File;
+    //   22: ldc 209
+    //   24: invokespecial 212	com/tencent/mm/vfs/u:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   27: invokestatic 218	com/tencent/mm/vfs/y:ao	(Lcom/tencent/mm/vfs/u;)Ljava/io/InputStream;
     //   30: astore_3
     //   31: aload_3
     //   32: astore_1
     //   33: aload_3
     //   34: astore_2
-    //   35: new 223	java/util/Properties
+    //   35: new 220	java/util/Properties
     //   38: dup
-    //   39: invokespecial 224	java/util/Properties:<init>	()V
+    //   39: invokespecial 221	java/util/Properties:<init>	()V
     //   42: astore 4
     //   44: aload_3
     //   45: astore_1
@@ -453,43 +453,43 @@ public class MIUI
     //   47: astore_2
     //   48: aload 4
     //   50: aload_3
-    //   51: invokevirtual 227	java/util/Properties:load	(Ljava/io/InputStream;)V
+    //   51: invokevirtual 224	java/util/Properties:load	(Ljava/io/InputStream;)V
     //   54: aload_3
     //   55: astore_1
     //   56: aload_3
     //   57: astore_2
     //   58: ldc 8
-    //   60: ldc 254
+    //   60: ldc 251
     //   62: iconst_1
     //   63: anewarray 4	java/lang/Object
     //   66: dup
     //   67: iconst_0
     //   68: aload 4
-    //   70: ldc 229
+    //   70: ldc 226
     //   72: ldc 119
-    //   74: invokevirtual 258	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   74: invokevirtual 255	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   77: aastore
-    //   78: invokestatic 240	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   78: invokestatic 237	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   81: aload_3
     //   82: astore_1
     //   83: aload_3
     //   84: astore_2
     //   85: aload 4
-    //   87: ldc 229
+    //   87: ldc 226
     //   89: ldc 119
-    //   91: invokevirtual 258	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   94: ldc_w 260
-    //   97: invokevirtual 263	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   100: invokestatic 201	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   91: invokevirtual 255	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   94: ldc_w 257
+    //   97: invokevirtual 260	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   100: invokestatic 198	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   103: putstatic 20	com/tencent/mm/sdk/vendor/MIUI:isMIUIV8	Ljava/lang/Boolean;
     //   106: aload_3
     //   107: ifnull +7 -> 114
     //   110: aload_3
-    //   111: invokevirtual 235	java/io/InputStream:close	()V
+    //   111: invokevirtual 232	java/io/InputStream:close	()V
     //   114: getstatic 20	com/tencent/mm/sdk/vendor/MIUI:isMIUIV8	Ljava/lang/Boolean;
     //   117: invokevirtual 176	java/lang/Boolean:booleanValue	()Z
     //   120: istore_0
-    //   121: ldc 252
+    //   121: ldc 249
     //   123: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   126: iload_0
     //   127: ireturn
@@ -497,14 +497,14 @@ public class MIUI
     //   129: aload_1
     //   130: astore_2
     //   131: ldc 8
-    //   133: ldc 237
+    //   133: ldc 234
     //   135: iconst_1
     //   136: anewarray 4	java/lang/Object
     //   139: dup
     //   140: iconst_0
     //   141: aload_3
     //   142: aastore
-    //   143: invokestatic 240	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   143: invokestatic 237	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   146: aload_1
     //   147: astore_2
     //   148: getstatic 179	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
@@ -512,7 +512,7 @@ public class MIUI
     //   154: aload_1
     //   155: ifnull -41 -> 114
     //   158: aload_1
-    //   159: invokevirtual 235	java/io/InputStream:close	()V
+    //   159: invokevirtual 232	java/io/InputStream:close	()V
     //   162: goto -48 -> 114
     //   165: astore_1
     //   166: goto -52 -> 114
@@ -520,8 +520,8 @@ public class MIUI
     //   170: aload_2
     //   171: ifnull +7 -> 178
     //   174: aload_2
-    //   175: invokevirtual 235	java/io/InputStream:close	()V
-    //   178: ldc 252
+    //   175: invokevirtual 232	java/io/InputStream:close	()V
+    //   178: ldc 249
     //   180: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   183: aload_1
     //   184: athrow
@@ -562,7 +562,7 @@ public class MIUI
   
   public static boolean isXiaoMi()
   {
-    AppMethodBeat.i(210067);
+    AppMethodBeat.i(243202);
     boolean bool2 = false;
     String str = Build.BRAND;
     boolean bool1 = bool2;
@@ -573,13 +573,13 @@ public class MIUI
         bool1 = true;
       }
     }
-    AppMethodBeat.o(210067);
+    AppMethodBeat.o(243202);
     return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.sdk.vendor.MIUI
  * JD-Core Version:    0.7.0.1
  */

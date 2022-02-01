@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/dbu" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="horizontal" android:id="@id/dbo" android:layout_width="fill_parent" android:layout_height="@dimen/d6" android:layout_marginBottom="@dimen/cv" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp">
+            <RelativeLayout android:gravity="center" android:id="@id/dcd" android:background="@drawable/a02" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dcc" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:src="@raw/icons_filled_search" android:layout_centerVertical="true" app:iconColor="@color/BW_F_Alpha_0_8" />
+                <TextView android:textSize="15.0dip" android:textColor="@color/BW_F_Alpha_0_8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dsa" android:layout_centerVertical="true" android:layout_marginStart="@dimen/df" android:layout_toEndOf="@id/dcc" />
+            </RelativeLayout>
+            <RelativeLayout android:gravity="center" android:id="@id/dcb" android:background="@drawable/a02" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" android:layout_marginStart="30.0dip">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dca" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:src="@raw/icons_filled_help" android:layout_centerVertical="true" app:iconColor="@color/BW_F_Alpha_0_8" />
+                <TextView android:textSize="15.0dip" android:textColor="@color/BW_F_Alpha_0_8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ds_" android:layout_centerVertical="true" android:layout_marginStart="@dimen/df" android:layout_toEndOf="@id/dca" />
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/dbj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/dbo" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp">
+            <TextView android:textSize="14.0dip" android:textColor="@color/xe" android:id="@id/dbl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dqs" />
+            <View android:id="@id/dbk" android:background="@color/BW_100_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="0.5px" android:layout_marginTop="@dimen/cp" />
+            <androidx.recyclerview.widget.RecyclerView android:id="@id/dbi" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </LinearLayout>
+        <RelativeLayout android:id="@id/dbm" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginTop="@dimen/c4" android:layout_below="@id/dbo" android:layout_centerHorizontal="true">
+            <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_5" android:id="@id/dbn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dru" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <include android:visibility="gone" layout="@layout/af_" />
+</RelativeLayout>

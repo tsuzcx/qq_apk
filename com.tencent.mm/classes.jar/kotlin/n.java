@@ -1,21 +1,12 @@
 package kotlin;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/NotImplementedError;", "Ljava/lang/Error;", "Lkotlin/Error;", "message", "", "(Ljava/lang/String;)V", "kotlin-stdlib"})
-public final class n
-  extends Error
-{
-  public n(String paramString)
-  {
-    super(paramString);
-    AppMethodBeat.i(129589);
-    AppMethodBeat.o(129589);
-  }
-}
+@Metadata(d1={""}, d2={"lazyOf", "Lkotlin/Lazy;", "T", "value", "(Ljava/lang/Object;)Lkotlin/Lazy;", "getValue", "thisRef", "", "property", "Lkotlin/reflect/KProperty;", "(Lkotlin/Lazy;Ljava/lang/Object;Lkotlin/reflect/KProperty;)Ljava/lang/Object;", "kotlin-stdlib"}, k=5, mv={1, 5, 1}, xi=1, xs="kotlin/LazyKt")
+public class n
+  extends m
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlin.n
  * JD-Core Version:    0.7.0.1
  */

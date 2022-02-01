@@ -12,9 +12,9 @@ import com.tencent.mm.plugin.downloader_app.e.b;
 public class DownloadStateView
   extends AppCompatImageView
 {
-  private int IB;
+  private int boE;
   private Paint mPaint;
-  private int unH = -1;
+  private int xud = -1;
   
   public DownloadStateView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,12 +25,12 @@ public class DownloadStateView
   {
     AppMethodBeat.i(175279);
     super.onDraw(paramCanvas);
-    if (this.IB < 0)
+    if (this.boE < 0)
     {
       AppMethodBeat.o(175279);
       return;
     }
-    float f1 = com.tencent.mm.ci.a.fromDPToPix(getContext(), 2);
+    float f1 = com.tencent.mm.cd.a.fromDPToPix(getContext(), 2);
     getWidth();
     getWidth();
     float f2 = getWidth() / 2.0F;
@@ -40,22 +40,22 @@ public class DownloadStateView
     this.mPaint.setStrokeCap(Paint.Cap.ROUND);
     this.mPaint.setStrokeWidth(f1);
     paramCanvas.drawCircle(f2, f3, f4, this.mPaint);
-    this.mPaint.setColor(this.unH);
-    paramCanvas.drawArc(f2 - f4, f3 - f4, f2 + f4, f3 + f4, -90.0F, this.IB / 100.0F * 360.0F, false, this.mPaint);
+    this.mPaint.setColor(this.xud);
+    paramCanvas.drawArc(f2 - f4, f3 - f4, f2 + f4, f3 + f4, -90.0F, this.boE / 100.0F * 360.0F, false, this.mPaint);
     AppMethodBeat.o(175279);
   }
   
   public void setProgress(int paramInt)
   {
     AppMethodBeat.i(175278);
-    this.IB = paramInt;
+    this.boE = paramInt;
     postInvalidate();
     AppMethodBeat.o(175278);
   }
   
   public void setProgressColor(int paramInt)
   {
-    this.unH = paramInt;
+    this.xud = paramInt;
   }
 }
 

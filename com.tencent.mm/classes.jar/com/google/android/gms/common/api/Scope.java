@@ -2,28 +2,18 @@ package com.google.android.gms.common.api;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.google.android.gms.common.annotation.KeepForSdk;
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.internal.ReflectedParcelable;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@KeepForSdk
-@SafeParcelable.Class(creator="ScopeCreator")
 public final class Scope
   extends AbstractSafeParcelable
   implements ReflectedParcelable
 {
   public static final Parcelable.Creator<Scope> CREATOR;
-  @SafeParcelable.VersionField(id=1)
   private final int zzal;
-  @SafeParcelable.Field(getter="getScopeUri", id=2)
   private final String zzdp;
   
   static
@@ -33,8 +23,7 @@ public final class Scope
     AppMethodBeat.o(4473);
   }
   
-  @SafeParcelable.Constructor
-  Scope(@SafeParcelable.Param(id=1) int paramInt, @SafeParcelable.Param(id=2) String paramString)
+  Scope(int paramInt, String paramString)
   {
     AppMethodBeat.i(4469);
     Preconditions.checkNotEmpty(paramString, "scopeUri must not be null or empty");
@@ -66,7 +55,6 @@ public final class Scope
     return bool;
   }
   
-  @KeepForSdk
   public final String getScopeUri()
   {
     return this.zzdp;
@@ -97,7 +85,7 @@ public final class Scope
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.Scope
  * JD-Core Version:    0.7.0.1
  */

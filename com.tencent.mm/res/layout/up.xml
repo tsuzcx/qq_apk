@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/qa" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="horizontal" android:focusable="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/cr" android:layout_marginLeft="@dimen/c5">
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/x1" android:layout_width="@dimen/cn" android:layout_height="@dimen/cn" android:layout_marginRight="@dimen/ct" />
-        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/bt" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <TextView android:id="@id/ir3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{title}" android:singleLine="true" style="@style/mp" />
-            <TextView android:id="@id/bn6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" android:text="{desc}" android:singleLine="true" style="@style/mo" />
-        </LinearLayout>
-        <RelativeLayout android:id="@id/hhd" android:paddingRight="@dimen/k5" android:layout_width="@dimen/cr" android:layout_height="fill_parent">
-            <View android:background="#18000000" android:layout_width="1.0dip" android:layout_height="@dimen/ci" android:layout_centerVertical="true" />
-            <CheckBox android:id="@id/hhc" android:background="@drawable/ahw" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="@dimen/at" android:layout_height="@dimen/aq" android:layout_centerInParent="true" />
-        </RelativeLayout>
-    </LinearLayout>
-</RelativeLayout>
+    <TextView android:textColor="@color/al6" android:gravity="center_vertical" android:id="@id/evn" android:focusable="false" android:clickable="false" android:layout_width="0.0dip" android:layout_height="@dimen/d6" android:layout_marginLeft="@dimen/cd" android:layout_weight="1.0" />
+    <TextView android:textColor="@color/BW_100_Alpha_0_3" android:gravity="center_vertical" android:id="@id/evd" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="@dimen/d6" android:layout_marginRight="@dimen/df" android:text="@string/gvu" />
+    <CheckBox android:layout_gravity="center_vertical" android:id="@id/evc" android:background="@drawable/agp" android:focusable="false" android:clickable="false" android:layout_width="@dimen/at" android:layout_height="@dimen/aq" android:layout_marginRight="@dimen/df" />
+</LinearLayout>

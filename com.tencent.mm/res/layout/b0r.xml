@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/eh2" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/egx" android:visibility="gone" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginTop="@dimen/cn" android:src="@raw/icons_filled_back" android:layout_marginStart="@dimen/cb" app:iconColor="@color/fm" />
-    <ImageView android:id="@id/eh0" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_marginTop="128.0dip" android:layout_marginBottom="@dimen/ci" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="22.0dip" android:textStyle="bold" android:textColor="@color/FG_0" android:id="@id/eh1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cb" android:text="@string/efy" android:layout_below="@id/eh0" android:layout_centerHorizontal="true" android:layout_marginStart="@dimen/ci" android:layout_marginEnd="@dimen/ci" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/FG_0" android:gravity="center_horizontal" android:id="@id/egz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/efx" android:layout_below="@id/eh1" android:layout_centerHorizontal="true" android:layout_marginStart="@dimen/ci" android:layout_marginEnd="@dimen/ci" />
-    <Button android:id="@id/egy" android:layout_marginBottom="@dimen/bx" android:text="@string/w0" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/p3" />
-</RelativeLayout>
+<LinearLayout android:gravity="bottom|center" android:orientation="vertical" android:id="@id/f4l" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.base.MultiTouchImageView android:id="@id/c_r" android:visibility="gone" android:layout_width="150.0dip" android:layout_height="150.0dip" />
+    <ProgressBar android:id="@id/c_p" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="3.0dip" android:layout_marginBottom="3.0dip" style="?android:progressBarStyleHorizontal" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/al6" android:gravity="center" android:id="@id/c_o" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip" android:text="@string/fqw" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:paddingTop="20.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/al6" android:gravity="center" android:id="@id/c_q" android:background="@color/g_" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

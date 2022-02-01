@@ -1,78 +1,140 @@
 package com.tencent.mm.storage;
 
+import android.content.ContentValues;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.gi;
-import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import java.lang.reflect.Field;
-import java.util.Map;
 
-public class cm
-  extends gi
+public final class cm
 {
-  protected static Field[] fields;
-  public static IAutoDBItem.MAutoDBInfo info;
+  public a adlu;
+  int adlv;
+  int eQp;
+  public String name;
+  int status;
   
-  static
+  public cm()
   {
-    AppMethodBeat.i(43301);
-    fields = gi.getValidFields(cm.class);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[11];
-    localMAutoDBInfo.columns = new String[12];
-    StringBuilder localStringBuilder = new StringBuilder();
-    localMAutoDBInfo.columns[0] = "svrid";
-    localMAutoDBInfo.colsMap.put("svrid", "LONG default '0'  PRIMARY KEY ");
-    localStringBuilder.append(" svrid LONG default '0'  PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.primaryKey = "svrid";
-    localMAutoDBInfo.columns[1] = "status";
-    localMAutoDBInfo.colsMap.put("status", "INTEGER");
-    localStringBuilder.append(" status INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[2] = "type";
-    localMAutoDBInfo.colsMap.put("type", "INTEGER");
-    localStringBuilder.append(" type INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[3] = "scene";
-    localMAutoDBInfo.colsMap.put("scene", "INTEGER");
-    localStringBuilder.append(" scene INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[4] = "createtime";
-    localMAutoDBInfo.colsMap.put("createtime", "LONG");
-    localStringBuilder.append(" createtime LONG");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[5] = "talker";
-    localMAutoDBInfo.colsMap.put("talker", "TEXT");
-    localStringBuilder.append(" talker TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[6] = "content";
-    localMAutoDBInfo.colsMap.put("content", "TEXT");
-    localStringBuilder.append(" content TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[7] = "sayhiuser";
-    localMAutoDBInfo.colsMap.put("sayhiuser", "TEXT");
-    localStringBuilder.append(" sayhiuser TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[8] = "sayhicontent";
-    localMAutoDBInfo.colsMap.put("sayhicontent", "TEXT");
-    localStringBuilder.append(" sayhicontent TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[9] = "imgpath";
-    localMAutoDBInfo.colsMap.put("imgpath", "TEXT");
-    localStringBuilder.append(" imgpath TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[10] = "isSend";
-    localMAutoDBInfo.colsMap.put("isSend", "INTEGER");
-    localStringBuilder.append(" isSend INTEGER");
-    localMAutoDBInfo.columns[11] = "rowid";
-    localMAutoDBInfo.sql = localStringBuilder.toString();
-    info = localMAutoDBInfo;
-    AppMethodBeat.o(43301);
+    this.eQp = 135;
+    this.name = "";
+    this.adlu = null;
+    this.adlu = null;
+    this.name = "";
+    this.status = 0;
+    this.adlv = 0;
   }
   
-  public IAutoDBItem.MAutoDBInfo getDBInfo()
+  public cm(String paramString, boolean paramBoolean, int paramInt)
   {
-    return info;
+    AppMethodBeat.i(43298);
+    this.eQp = 135;
+    this.name = "";
+    this.adlu = null;
+    this.adlu = new a(paramString);
+    this.name = paramString;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      this.status = (i | 0x2);
+      this.adlv = paramInt;
+      AppMethodBeat.o(43298);
+      return;
+    }
+  }
+  
+  public final void convertFrom(Cursor paramCursor)
+  {
+    AppMethodBeat.i(43299);
+    if ((this.eQp & 0x2) != 0)
+    {
+      this.name = paramCursor.getString(1);
+      if (this.adlu == null) {
+        this.adlu = new a(this.name);
+      }
+    }
+    if ((this.eQp & 0x4) != 0) {
+      this.status = paramCursor.getInt(2);
+    }
+    if ((this.eQp & 0x80) != 0) {
+      this.adlv = paramCursor.getInt(7);
+    }
+    AppMethodBeat.o(43299);
+  }
+  
+  public final ContentValues convertTo()
+  {
+    AppMethodBeat.i(43300);
+    ContentValues localContentValues = new ContentValues();
+    if ((this.eQp & 0x2) != 0) {
+      localContentValues.put("name", this.name);
+    }
+    if ((this.eQp & 0x4) != 0) {
+      localContentValues.put("status", Integer.valueOf(this.status));
+    }
+    if ((this.eQp & 0x80) != 0) {
+      localContentValues.put("int_reserved1", Integer.valueOf(this.adlv));
+    }
+    AppMethodBeat.o(43300);
+    return localContentValues;
+  }
+  
+  public final boolean isEnable()
+  {
+    return (this.status & 0x1) != 0;
+  }
+  
+  public final boolean jcI()
+  {
+    return (this.status & 0x2) != 0;
+  }
+  
+  public final boolean jcJ()
+  {
+    return this.adlv == 1;
+  }
+  
+  public final void setEnable(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      int j = this.status;
+      if (paramBoolean) {}
+      for (int i = 1;; i = 0)
+      {
+        this.status = (i | j);
+        return;
+      }
+    }
+    this.status &= 0xFFFFFFFE;
+  }
+  
+  public static final class a
+  {
+    private String domain;
+    private String hVQ;
+    
+    public a(String paramString)
+    {
+      AppMethodBeat.i(43297);
+      int i = paramString.indexOf("@");
+      if (i >= 0)
+      {
+        this.hVQ = paramString.substring(0, i);
+        this.domain = paramString.substring(i);
+        AppMethodBeat.o(43297);
+        return;
+      }
+      this.hVQ = paramString;
+      this.domain = "";
+      AppMethodBeat.o(43297);
+    }
+    
+    public final String byJ(String paramString)
+    {
+      if (this.domain != null) {
+        paramString = this.domain;
+      }
+      return paramString;
+    }
   }
 }
 

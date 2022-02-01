@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <Preference android:key="phone_and_pad" android:title="@string/elj" />
-    <Preference android:key="only_pad" android:title="@string/ele" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_wechat_account" android:layout="@layout/bdi" android:title="@string/bt9" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_verifyuser" android:layout="@layout/bdi" android:title="@string/bt3" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_trademark" android:layout="@layout/bdi" android:title="@string/bsu" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_privilege" android:title="@string/boz" />
+    <com.tencent.mm.plugin.profile.ui.IconWidgetPreference android:key="contact_info_kf_worker" android:layout="@layout/bdi" android:title="@string/it2" />
+    <Preference android:key="contact_info_service_phone" android:layout="@layout/bdi" android:title="@string/bqr" />
+    <com.tencent.mm.plugin.profile.ui.BizInfoPayInfoIconPreference android:key="contact_info_reputation" android:layout="@layout/xj" android:title="@string/bqb" />
+    <com.tencent.mm.plugin.profile.ui.BizInfoPayInfoIconPreference android:key="contact_info_guarantee_info" android:layout="@layout/xj" android:title="@string/bn5" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_scope_of_business" android:layout="@layout/bdi" android:title="@string/bqi" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_verifyuser_weibo" android:layout="@layout/bdi" android:title="@string/bt_" />
+    <Preference android:key="near_field_service" android:layout="@layout/bdi" android:title="@string/h5_" />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_info_see_locate" android:layout="@layout/bdi" android:title="@string/bl8" />
+    <PreferenceSmallCategory android:key="contact_info_category2" />
 </PreferenceScreen>

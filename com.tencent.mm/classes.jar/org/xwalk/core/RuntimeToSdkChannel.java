@@ -5,10 +5,11 @@ import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.a;
 import com.tencent.xweb.b;
-import com.tencent.xweb.k;
-import com.tencent.xweb.util.g;
-import com.tencent.xweb.xwalk.s;
-import com.tencent.xweb.xwalk.s.a;
+import com.tencent.xweb.m;
+import com.tencent.xweb.pinus.e;
+import com.tencent.xweb.util.k;
+import com.tencent.xweb.xwalk.r;
+import com.tencent.xweb.xwalk.r.a;
 import java.util.Arrays;
 import java.util.concurrent.ConcurrentMap;
 
@@ -21,50 +22,75 @@ public class RuntimeToSdkChannel
   public static final String KEY_STATIC_METHOD = "INVOKE_STATIC_METHOD";
   public static final String KEY_XPROFILE_RESULT_FORWARD_TO_SDK = "KEY_XPROFILE_RESULT_FORWARD_TO_SDK";
   public static final String KEY_XPROFILE_TRACING_FRAME_COST_RESULT = "KEY_XPROFILE_TRACING_FRAME_COST_RESULT";
+  private static final String TAG = "RuntimeToSdkChannel";
   
-  /* Error */
-  public static void initRuntimeToSdkChannel()
+  private static Object[] createRuntimeToSdkChannelObject()
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: ldc 33
-    //   5: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: invokestatic 45	org/xwalk/core/XWalkCoreWrapper:getInstance	()Lorg/xwalk/core/XWalkCoreWrapper;
-    //   11: ifnonnull +12 -> 23
-    //   14: ldc 33
-    //   16: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   19: ldc 2
-    //   21: monitorexit
-    //   22: return
-    //   23: invokestatic 45	org/xwalk/core/XWalkCoreWrapper:getInstance	()Lorg/xwalk/core/XWalkCoreWrapper;
-    //   26: pop
-    //   27: ldc 49
-    //   29: iconst_1
-    //   30: anewarray 4	java/lang/Object
-    //   33: dup
-    //   34: iconst_0
-    //   35: new 6	org/xwalk/core/RuntimeToSdkChannel$1
-    //   38: dup
-    //   39: invokespecial 50	org/xwalk/core/RuntimeToSdkChannel$1:<init>	()V
-    //   42: aastore
-    //   43: invokestatic 54	org/xwalk/core/XWalkCoreWrapper:invokeRuntimeChannel	(I[Ljava/lang/Object;)Ljava/lang/Object;
-    //   46: pop
-    //   47: ldc 33
-    //   49: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   52: goto -33 -> 19
-    //   55: astore_0
-    //   56: ldc 2
-    //   58: monitorexit
-    //   59: aload_0
-    //   60: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   55	5	0	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   3	19	55	finally
-    //   23	52	55	finally
+    AppMethodBeat.i(187746);
+    ValueCallback local1 = new ValueCallback()
+    {
+      public void onReceiveValue(Object paramAnonymousObject)
+      {
+        AppMethodBeat.i(154612);
+        if (!(paramAnonymousObject instanceof Object[]))
+        {
+          Log.w("RuntimeToSdkChannel", "RuntimeToSdkChannel, invalid args");
+          AppMethodBeat.o(154612);
+          return;
+        }
+        paramAnonymousObject = (Object[])paramAnonymousObject;
+        if (paramAnonymousObject.length < 3)
+        {
+          Log.w("RuntimeToSdkChannel", "RuntimeToSdkChannel, invalid args length");
+          AppMethodBeat.o(154612);
+          return;
+        }
+        if (!(paramAnonymousObject[0] instanceof String))
+        {
+          Log.w("RuntimeToSdkChannel", "RuntimeToSdkChannel, invalid args[0]");
+          AppMethodBeat.o(154612);
+          return;
+        }
+        paramAnonymousObject[2] = RuntimeToSdkChannel.onRuntimeCalled((String)paramAnonymousObject[0], paramAnonymousObject[1]);
+        AppMethodBeat.o(154612);
+      }
+    };
+    AppMethodBeat.o(187746);
+    return new Object[] { local1 };
+  }
+  
+  public static boolean initPinusRuntimeToSdkChannel()
+  {
+    try
+    {
+      AppMethodBeat.i(187741);
+      Log.i("RuntimeToSdkChannel", "initPinusRuntimeToSdkChannel start");
+      e.khp().invokeRuntimeChannel(80005, createRuntimeToSdkChannelObject());
+      AppMethodBeat.o(187741);
+      return true;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static boolean initRuntimeToSdkChannel()
+  {
+    try
+    {
+      AppMethodBeat.i(187734);
+      Log.i("RuntimeToSdkChannel", "initRuntimeToSdkChannel start");
+      XWalkStandAloneChannel.getInstance().invokeRuntimeChannel(80005, createRuntimeToSdkChannelObject());
+      AppMethodBeat.o(187734);
+      return true;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public static Object onRuntimeCalled(String paramString, Object paramObject)
@@ -119,80 +145,89 @@ public class RuntimeToSdkChannel
     }
     if (!(paramObject instanceof String[]))
     {
+      Log.w("RuntimeToSdkChannel", "onRuntimeCalled, KEY_GET_CONFIG_CMD, invalid args");
       AppMethodBeat.o(154614);
       return "";
     }
     paramString = (String[])paramObject;
     if (paramString.length < 2)
     {
+      Log.w("RuntimeToSdkChannel", "onRuntimeCalled, KEY_GET_CONFIG_CMD, invalid args length");
       AppMethodBeat.o(154614);
       return "";
     }
     if (TextUtils.isEmpty(paramString[1]))
     {
-      paramString = a.bEI(paramString[0]);
+      paramString = a.keX().bHl(paramString[0]);
       AppMethodBeat.o(154614);
       return paramString;
     }
-    paramString = a.oO(paramString[0], paramString[1]);
+    paramString = a.keX().qM(paramString[0], paramString[1]);
     AppMethodBeat.o(154614);
     return paramString;
     if (!(paramObject instanceof String[]))
     {
+      Log.w("RuntimeToSdkChannel", "onRuntimeCalled, KEY_GET_CONFIG_CMD_EXTEND, invalid args");
       AppMethodBeat.o(154614);
       return "";
     }
     paramString = (String[])paramObject;
     if (paramString.length < 2)
     {
+      Log.w("RuntimeToSdkChannel", "onRuntimeCalled, KEY_GET_CONFIG_CMD_EXTEND, invalid args length");
       AppMethodBeat.o(154614);
       return "";
     }
     if (TextUtils.isEmpty(paramString[1]))
     {
-      paramString = b.bEI(paramString[0]);
+      paramString = b.kfi().bHl(paramString[0]);
       AppMethodBeat.o(154614);
       return paramString;
     }
-    paramString = b.oO(paramString[0], paramString[1]);
+    paramString = b.kfi().qM(paramString[0], paramString[1]);
     AppMethodBeat.o(154614);
     return paramString;
     if (!(paramObject instanceof Object[]))
     {
+      Log.w("RuntimeToSdkChannel", "onRuntimeCalled, KEY_INVOKE_METHOD, invalid args");
       AppMethodBeat.o(154614);
       return null;
     }
     paramObject = (Object[])paramObject;
     if ((paramObject == null) || (paramObject.length < 2))
     {
+      Log.w("RuntimeToSdkChannel", "onRuntimeCalled, KEY_INVOKE_METHOD, invalid args length");
       AppMethodBeat.o(154614);
       return null;
     }
     if (!(paramObject[0] instanceof Object))
     {
+      Log.w("RuntimeToSdkChannel", "onRuntimeCalled, KEY_INVOKE_METHOD, invalid args[0]");
       AppMethodBeat.o(154614);
       return null;
     }
     if (!(paramObject[1] instanceof String))
     {
+      Log.w("RuntimeToSdkChannel", "onRuntimeCalled, KEY_INVOKE_METHOD, invalid args[1]");
       AppMethodBeat.o(154614);
       return null;
     }
     paramString = paramObject[0];
     if ((paramObject[0] instanceof String)) {
-      paramString = g.bFE((String)paramObject[0]);
+      paramString = k.bId((String)paramObject[0]);
     }
     for (;;)
     {
       if (paramString == null)
       {
+        Log.w("RuntimeToSdkChannel", "onRuntimeCalled, KEY_INVOKE_METHOD, instance is null");
         AppMethodBeat.o(154614);
         return null;
       }
       String str = (String)paramObject[1];
       if (2 == paramObject.length)
       {
-        paramString = g.i(paramString, str);
+        paramString = k.q(paramString, str);
         AppMethodBeat.o(154614);
         return paramString;
       }
@@ -200,41 +235,45 @@ public class RuntimeToSdkChannel
       {
         if (!(paramObject[2] instanceof Class[]))
         {
-          paramString = g.i(paramString, str);
+          paramString = k.q(paramString, str);
           AppMethodBeat.o(154614);
           return paramString;
         }
         if (!(paramObject[3] instanceof Object[]))
         {
-          paramString = g.i(paramString, str);
+          paramString = k.q(paramString, str);
           AppMethodBeat.o(154614);
           return paramString;
         }
-        paramString = g.c(paramString, str, (Class[])paramObject[2], (Object[])paramObject[3]);
+        paramString = k.c(paramString, str, (Class[])paramObject[2], (Object[])paramObject[3]);
         AppMethodBeat.o(154614);
         return paramString;
       }
-      paramString = g.i(paramString, str);
+      paramString = k.q(paramString, str);
       AppMethodBeat.o(154614);
       return paramString;
       if (!(paramObject instanceof Object[]))
       {
+        Log.w("RuntimeToSdkChannel", "onRuntimeCalled, KEY_STATIC_METHOD, invalid args");
         AppMethodBeat.o(154614);
         return null;
       }
       paramString = (Object[])paramObject;
       if ((paramString == null) || (paramString.length < 2))
       {
+        Log.w("RuntimeToSdkChannel", "onRuntimeCalled, KEY_STATIC_METHOD, invalid args length");
         AppMethodBeat.o(154614);
         return null;
       }
       if (!(paramString[0] instanceof String))
       {
+        Log.w("RuntimeToSdkChannel", "onRuntimeCalled, KEY_STATIC_METHOD, invalid args[0]");
         AppMethodBeat.o(154614);
         return null;
       }
       if (!(paramString[1] instanceof String))
       {
+        Log.w("RuntimeToSdkChannel", "onRuntimeCalled, KEY_STATIC_METHOD, invalid args[1]");
         AppMethodBeat.o(154614);
         return null;
       }
@@ -242,7 +281,7 @@ public class RuntimeToSdkChannel
       str = (String)paramString[1];
       if (2 == paramString.length)
       {
-        paramString = g.pf(paramObject, str);
+        paramString = k.rc(paramObject, str);
         AppMethodBeat.o(154614);
         return paramString;
       }
@@ -250,36 +289,39 @@ public class RuntimeToSdkChannel
       {
         if (!(paramString[2] instanceof Class[]))
         {
-          paramString = g.pf(paramObject, str);
+          paramString = k.rc(paramObject, str);
           AppMethodBeat.o(154614);
           return paramString;
         }
         if (!(paramString[3] instanceof Object[]))
         {
-          paramString = g.pf(paramObject, str);
+          paramString = k.rc(paramObject, str);
           AppMethodBeat.o(154614);
           return paramString;
         }
-        paramString = g.b(paramObject, str, (Class[])paramString[2], (Object[])paramString[3]);
+        paramString = k.b(paramObject, str, (Class[])paramString[2], (Object[])paramString[3]);
         AppMethodBeat.o(154614);
         return paramString;
       }
-      paramString = g.i(paramObject, str);
+      paramString = k.q(paramObject, str);
       AppMethodBeat.o(154614);
       return paramString;
       if (!(paramObject instanceof Object[]))
       {
+        Log.w("RuntimeToSdkChannel", "onRuntimeCalled, KEY_REPORT_JAVA_EXCEPTION, invalid args");
         AppMethodBeat.o(154614);
         return null;
       }
       paramString = (Object[])paramObject;
       if (paramString.length <= 0)
       {
+        Log.w("RuntimeToSdkChannel", "onRuntimeCalled, KEY_REPORT_JAVA_EXCEPTION, invalid args length");
         AppMethodBeat.o(154614);
         return null;
       }
       if (!(paramString[0] instanceof Throwable))
       {
+        Log.w("RuntimeToSdkChannel", "onRuntimeCalled, KEY_REPORT_JAVA_EXCEPTION, invalid args[0]");
         AppMethodBeat.o(154614);
         return null;
       }
@@ -287,21 +329,21 @@ public class RuntimeToSdkChannel
       Thread.getDefaultUncaughtExceptionHandler().uncaughtException(Thread.currentThread(), paramString);
       AppMethodBeat.o(154614);
       return null;
-      paramString = s.a.iyU();
-      if ((paramString.aajF == null) && ((paramObject instanceof Object[])))
+      paramString = r.a.kjn();
+      if ((paramString.aipB == null) && ((paramObject instanceof Object[])))
       {
         paramObject = (Object[])paramObject;
         if (((paramObject[0] instanceof String)) && (paramObject.length >= 2)) {
-          break label927;
+          break label1021;
         }
       }
       for (;;)
       {
         AppMethodBeat.o(154614);
         return null;
-        label927:
+        label1021:
         str = (String)paramObject[0];
-        if ((k)paramString.aajE.get(str) != null) {
+        if ((m)paramString.aipA.get(str) != null) {
           Arrays.copyOfRange(paramObject, 1, paramObject.length);
         }
       }
@@ -310,7 +352,7 @@ public class RuntimeToSdkChannel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.RuntimeToSdkChannel
  * JD-Core Version:    0.7.0.1
  */

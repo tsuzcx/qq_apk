@@ -4,7 +4,6 @@ import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -28,37 +27,37 @@ public class BootstrapProgressBar
   extends View
   implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
 {
-  private Bitmap opA;
-  private Bitmap opB;
-  private Paint opm;
-  private Paint opn;
-  private Paint opo;
-  private float opp;
-  private float opq;
-  private float opr;
-  private boolean ops;
-  private boolean opt;
-  private boolean opu;
-  private boolean opv;
-  private boolean opw;
-  private ValueAnimator opx;
-  private Paint opy;
-  private Canvas opz;
   private int progressColor;
+  private Paint rsU;
+  private Paint rsV;
+  private Paint rsW;
+  private float rsX;
+  private float rsY;
+  private float rsZ;
+  private boolean rta;
+  private boolean rtb;
+  private boolean rtc;
+  private boolean rtd;
+  private boolean rte;
+  private ValueAnimator rtf;
+  private Paint rtg;
+  private Canvas rth;
+  private Bitmap rti;
+  private Bitmap rtj;
   
   public BootstrapProgressBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(45297);
-    this.opp = 0.0F;
-    this.opq = 0.0F;
-    this.opr = 100.0F;
-    this.ops = false;
-    this.opt = false;
-    this.opu = true;
-    this.opv = true;
-    this.opw = true;
-    bOV();
+    this.rsX = 0.0F;
+    this.rsY = 0.0F;
+    this.rsZ = 100.0F;
+    this.rta = false;
+    this.rtb = false;
+    this.rtc = true;
+    this.rtd = true;
+    this.rte = true;
+    cpj();
     AppMethodBeat.o(45297);
   }
   
@@ -66,53 +65,53 @@ public class BootstrapProgressBar
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(45298);
-    this.opp = 0.0F;
-    this.opq = 0.0F;
-    this.opr = 100.0F;
-    this.ops = false;
-    this.opt = false;
-    this.opu = true;
-    this.opv = true;
-    this.opw = true;
-    bOV();
+    this.rsX = 0.0F;
+    this.rsY = 0.0F;
+    this.rsZ = 100.0F;
+    this.rta = false;
+    this.rtb = false;
+    this.rtc = true;
+    this.rtd = true;
+    this.rte = true;
+    cpj();
     AppMethodBeat.o(45298);
   }
   
-  private void bOV()
+  private void cpj()
   {
     AppMethodBeat.i(45299);
     Log.d("BootstrapProgressBar", "initialise");
     ValueAnimator.setFrameDelay(15L);
-    this.opy = new Paint();
-    this.opm = new Paint();
-    this.opm.setStyle(Paint.Style.FILL);
-    this.opm.setAntiAlias(true);
-    this.opn = new Paint();
-    this.opn.setStyle(Paint.Style.FILL);
-    this.opn.setAntiAlias(true);
-    this.opo = new Paint();
-    this.opo.setStyle(Paint.Style.FILL);
-    this.opo.setARGB(38, 0, 0, 0);
-    setProgress(this.opp);
-    setMaxProgress(this.opr);
+    this.rtg = new Paint();
+    this.rsU = new Paint();
+    this.rsU.setStyle(Paint.Style.FILL);
+    this.rsU.setAntiAlias(true);
+    this.rsV = new Paint();
+    this.rsV.setStyle(Paint.Style.FILL);
+    this.rsV.setAntiAlias(true);
+    this.rsW = new Paint();
+    this.rsW.setStyle(Paint.Style.FILL);
+    this.rsW.setARGB(38, 0, 0, 0);
+    setProgress(this.rsX);
+    setMaxProgress(this.rsZ);
     AppMethodBeat.o(45299);
   }
   
-  private void bOW()
+  private void cpk()
   {
     AppMethodBeat.i(45303);
-    if ((!this.ops) || (!this.opt))
+    if ((!this.rta) || (!this.rtb))
     {
       AppMethodBeat.o(45303);
       return;
     }
     clearAnimation();
-    this.opx = ValueAnimator.ofFloat(new float[] { 0.0F, 0.0F });
-    this.opx.setDuration(300L);
-    this.opx.setRepeatCount(-1);
-    this.opx.setRepeatMode(1);
-    this.opx.setInterpolator(new LinearInterpolator());
-    this.opx.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    this.rtf = ValueAnimator.ofFloat(new float[] { 0.0F, 0.0F });
+    this.rtf.setDuration(300L);
+    this.rtf.setRepeatCount(-1);
+    this.rtf.setRepeatMode(1);
+    this.rtf.setInterpolator(new LinearInterpolator());
+    this.rtf.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
@@ -121,18 +120,18 @@ public class BootstrapProgressBar
         AppMethodBeat.o(45296);
       }
     });
-    this.opx.start();
+    this.rtf.start();
     AppMethodBeat.o(45303);
   }
   
   public float getMaxProgress()
   {
-    return this.opr;
+    return this.rsZ;
   }
   
   public float getProgress()
   {
-    return this.opp;
+    return this.rsX;
   }
   
   public void onAnimationCancel(Animator paramAnimator) {}
@@ -140,7 +139,7 @@ public class BootstrapProgressBar
   public void onAnimationEnd(Animator paramAnimator)
   {
     AppMethodBeat.i(45302);
-    bOW();
+    cpk();
     AppMethodBeat.o(45302);
   }
   
@@ -151,7 +150,7 @@ public class BootstrapProgressBar
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     AppMethodBeat.i(45301);
-    this.opq = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.rsY = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
     invalidate();
     AppMethodBeat.o(45301);
   }
@@ -166,45 +165,45 @@ public class BootstrapProgressBar
       AppMethodBeat.o(45306);
       return;
     }
-    if (this.opA == null) {
-      this.opA = Bitmap.createBitmap((int)f3, (int)f4, Bitmap.Config.ARGB_8888);
+    if (this.rti == null) {
+      this.rti = Bitmap.createBitmap((int)f3, (int)f4, Bitmap.Config.ARGB_8888);
     }
-    if (this.opz == null) {
-      this.opz = new Canvas(this.opA);
+    if (this.rth == null) {
+      this.rth = new Canvas(this.rti);
     }
-    this.opz.drawColor(0, PorterDuff.Mode.CLEAR);
-    float f5 = this.opp / this.opr;
+    this.rth.drawColor(0, PorterDuff.Mode.CLEAR);
+    float f5 = this.rsX / this.rsZ;
     int i = (int)(f3 * f5);
     float f2 = 0.0F;
     float f6 = (float)(System.currentTimeMillis() % 370L) / 370.0F;
     float f1 = f2;
-    if (this.ops)
+    if (this.rta)
     {
       f1 = f2;
-      if (this.opt) {
+      if (this.rtb) {
         f1 = 2.0F * f4 * (1.0F - f6);
       }
     }
     if (f5 < 1.0F)
     {
-      this.opz.save();
+      this.rth.save();
       localObject1 = new Path();
       ((Path)localObject1).moveTo(0.0F, 0.0F);
       ((Path)localObject1).lineTo(i, 0.0F);
       ((Path)localObject1).lineTo(i - f4, f4);
       ((Path)localObject1).lineTo(0.0F, f4);
-      this.opz.clipPath((Path)localObject1);
+      this.rth.clipPath((Path)localObject1);
     }
     Object localObject2;
     Object localObject3;
     Object localObject4;
     Object localObject5;
-    if (this.ops)
+    if (this.rta)
     {
-      if (this.opB == null)
+      if (this.rtj == null)
       {
-        localObject1 = this.opn;
-        localObject2 = this.opm;
+        localObject1 = this.rsV;
+        localObject2 = this.rsU;
         localObject3 = Bitmap.createBitmap((int)f4 * 2, (int)f4, Bitmap.Config.ARGB_8888);
         localObject4 = new Canvas((Bitmap)localObject3);
         localObject5 = new Path();
@@ -224,28 +223,28 @@ public class BootstrapProgressBar
         ((Path)localObject5).lineTo(f2 - f4, f4);
         ((Path)localObject5).lineTo(f2, f4);
         ((Canvas)localObject4).drawPath((Path)localObject5, (Paint)localObject1);
-        this.opB = ((Bitmap)localObject3);
+        this.rtj = ((Bitmap)localObject3);
       }
-      for (f1 = 0.0F - f1; f1 < i; f1 += this.opB.getWidth()) {
-        this.opz.drawBitmap(this.opB, f1, 0.0F, this.opy);
+      for (f1 = 0.0F - f1; f1 < i; f1 += this.rtj.getWidth()) {
+        this.rth.drawBitmap(this.rtj, f1, 0.0F, this.rtg);
       }
     }
-    this.opz.drawRect(0.0F, 0.0F, i, f4, this.opm);
+    this.rth.drawRect(0.0F, 0.0F, i, f4, this.rsU);
     if (f5 < 1.0F) {
-      this.opz.restore();
+      this.rth.restore();
     }
     Object localObject1 = new Path();
     ((Path)localObject1).moveTo(0.0F, 0.0F);
     ((Path)localObject1).lineTo(f3, 0.0F);
     ((Path)localObject1).lineTo(f3, f4);
     ((Path)localObject1).lineTo(0.0F, f4);
-    this.opz.drawPath((Path)localObject1, this.opo);
-    if (this.opu) {}
+    this.rth.drawPath((Path)localObject1, this.rsW);
+    if (this.rtc) {}
     for (f1 = f4 / 2.0F;; f1 = 0.0F)
     {
-      localObject1 = this.opA;
-      boolean bool1 = this.opw;
-      boolean bool2 = this.opv;
+      localObject1 = this.rti;
+      boolean bool1 = this.rte;
+      boolean bool2 = this.rtd;
       localObject2 = Bitmap.createBitmap(((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), Bitmap.Config.ARGB_8888);
       localObject3 = new Canvas((Bitmap)localObject2);
       localObject4 = new Paint();
@@ -265,7 +264,7 @@ public class BootstrapProgressBar
       }
       ((Paint)localObject4).setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
       ((Canvas)localObject3).drawBitmap((Bitmap)localObject1, (Rect)localObject5, (Rect)localObject5, (Paint)localObject4);
-      paramCanvas.drawBitmap((Bitmap)localObject2, 0.0F, 0.0F, this.opy);
+      paramCanvas.drawBitmap((Bitmap)localObject2, 0.0F, 0.0F, this.rtg);
       AppMethodBeat.o(45306);
       return;
     }
@@ -282,7 +281,7 @@ public class BootstrapProgressBar
   {
     AppMethodBeat.i(45305);
     if (paramInt2 != paramInt4) {
-      this.opB = null;
+      this.rtj = null;
     }
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     AppMethodBeat.o(45305);
@@ -291,9 +290,9 @@ public class BootstrapProgressBar
   public void setAnimated(boolean paramBoolean)
   {
     AppMethodBeat.i(45309);
-    this.opt = paramBoolean;
+    this.rtb = paramBoolean;
     invalidate();
-    bOW();
+    cpk();
     AppMethodBeat.o(45309);
   }
   
@@ -302,7 +301,7 @@ public class BootstrapProgressBar
     AppMethodBeat.i(45310);
     if (getProgress() <= paramFloat)
     {
-      this.opr = paramFloat;
+      this.rsZ = paramFloat;
       invalidate();
       AppMethodBeat.o(45310);
       return;
@@ -312,7 +311,6 @@ public class BootstrapProgressBar
     throw localIllegalArgumentException;
   }
   
-  @SuppressLint({"DefaultLocale"})
   public void setProgress(float paramFloat)
   {
     AppMethodBeat.i(45307);
@@ -322,27 +320,27 @@ public class BootstrapProgressBar
     }
     for (;;)
     {
-      this.opp = f;
-      if (!this.opt) {
+      this.rsX = f;
+      if (!this.rtb) {
         break;
       }
       clearAnimation();
-      this.opx = ValueAnimator.ofFloat(new float[] { this.opq, this.opp });
-      this.opx.setDuration(300L);
-      this.opx.setRepeatCount(0);
-      this.opx.setRepeatMode(1);
-      this.opx.setInterpolator(new LinearInterpolator());
-      this.opx.addUpdateListener(this);
-      this.opx.addListener(this);
-      this.opx.start();
+      this.rtf = ValueAnimator.ofFloat(new float[] { this.rsY, this.rsX });
+      this.rtf.setDuration(300L);
+      this.rtf.setRepeatCount(0);
+      this.rtf.setRepeatMode(1);
+      this.rtf.setInterpolator(new LinearInterpolator());
+      this.rtf.addUpdateListener(this);
+      this.rtf.addListener(this);
+      this.rtf.start();
       AppMethodBeat.o(45307);
       return;
       f = paramFloat;
-      if (paramFloat > this.opr) {
+      if (paramFloat > this.rsZ) {
         f = 100.0F;
       }
     }
-    this.opq = f;
+    this.rsY = f;
     invalidate();
     AppMethodBeat.o(45307);
   }
@@ -351,13 +349,13 @@ public class BootstrapProgressBar
   {
     AppMethodBeat.i(45300);
     this.progressColor = paramInt;
-    this.opm.setColor(this.progressColor);
-    Paint localPaint = this.opn;
+    this.rsU.setColor(this.progressColor);
+    Paint localPaint = this.rsV;
     paramInt = this.progressColor;
     localPaint.setColor(Color.rgb((int)(Color.red(paramInt) * 0.7F + Color.red(-16777216) * 0.3F) / 1, (int)(Color.green(paramInt) * 0.7F + Color.green(-16777216) * 0.3F) / 1, (int)(Color.blue(paramInt) * 0.7F + Color.blue(-16777216) * 0.3F) / 1));
-    this.opB = null;
-    this.opA = null;
-    this.opz = null;
+    this.rtj = null;
+    this.rti = null;
+    this.rth = null;
     invalidate();
     AppMethodBeat.o(45300);
   }
@@ -365,9 +363,9 @@ public class BootstrapProgressBar
   public void setStriped(boolean paramBoolean)
   {
     AppMethodBeat.i(45308);
-    this.ops = paramBoolean;
+    this.rta = paramBoolean;
     invalidate();
-    bOW();
+    cpk();
     AppMethodBeat.o(45308);
   }
 }

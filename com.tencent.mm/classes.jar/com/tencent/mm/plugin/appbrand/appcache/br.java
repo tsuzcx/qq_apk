@@ -1,75 +1,56 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.il;
-import com.tencent.mm.plugin.appbrand.ab.b;
+import com.tencent.mm.autogen.b.jh;
+import com.tencent.mm.plugin.appbrand.ae.b;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import com.tencent.mm.sdk.storage.MAutoStorage;
-import java.lang.reflect.Field;
-import java.util.Map;
 
 public final class br
-  extends il
+  extends jh
   implements b
 {
-  static final IAutoDBItem.MAutoDBInfo lqK;
-  public static final String[] lqL;
-  static final String[] nIh;
+  static final IAutoDBItem.MAutoDBInfo nVV;
+  public static final String[] nVW;
+  static final String[] qHX;
   
   static
   {
     AppMethodBeat.i(182787);
-    nIh = new String[] { "pluginAppID", "pluginAppVersion" };
-    Object localObject1 = new IAutoDBItem.MAutoDBInfo();
-    ((IAutoDBItem.MAutoDBInfo)localObject1).fields = new Field[3];
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns = new String[4];
-    Object localObject2 = new StringBuilder();
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[0] = "pluginAppID";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("pluginAppID", "TEXT");
-    ((StringBuilder)localObject2).append(" pluginAppID TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[1] = "pluginAppVersion";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("pluginAppVersion", "INTEGER");
-    ((StringBuilder)localObject2).append(" pluginAppVersion INTEGER");
-    ((StringBuilder)localObject2).append(", ");
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[2] = "pluginStringVersion";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("pluginStringVersion", "TEXT");
-    ((StringBuilder)localObject2).append(" pluginStringVersion TEXT");
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[3] = "rowid";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).sql = ((StringBuilder)localObject2).toString();
-    lqK = (IAutoDBItem.MAutoDBInfo)localObject1;
-    localObject1 = " PRIMARY KEY (";
-    localObject2 = nIh;
-    int j = localObject2.length;
+    qHX = new String[] { "pluginAppID", "pluginAppVersion" };
+    nVV = jh.aJm();
+    String str = " PRIMARY KEY (";
+    Object localObject1 = qHX;
+    int j = localObject1.length;
     int i = 0;
     while (i < j)
     {
-      localObject3 = localObject2[i];
-      localObject1 = (String)localObject1 + ", " + (String)localObject3;
+      localObject2 = localObject1[i];
+      str = str + ", " + (String)localObject2;
       i += 1;
     }
-    localObject1 = ((String)localObject1).replaceFirst(",", "");
-    localObject1 = (String)localObject1 + " )";
-    localObject2 = new StringBuilder();
-    Object localObject3 = lqK;
-    ((IAutoDBItem.MAutoDBInfo)localObject3).sql = (((IAutoDBItem.MAutoDBInfo)localObject3).sql + "," + (String)localObject1);
-    lqL = new String[] { MAutoStorage.getCreateSQLs(lqK, "WxaPluginCodeVersionInfo") };
+    str = str.replaceFirst(",", "");
+    str = str + " )";
+    localObject1 = new StringBuilder();
+    Object localObject2 = nVV;
+    ((IAutoDBItem.MAutoDBInfo)localObject2).sql = (((IAutoDBItem.MAutoDBInfo)localObject2).sql + "," + str);
+    nVW = new String[] { MAutoStorage.getCreateSQLs(nVV, "WxaPluginCodeVersionInfo") };
     AppMethodBeat.o(182787);
   }
   
   public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    return lqK;
+    return nVV;
   }
   
   public final String[] getKeys()
   {
-    return nIh;
+    return qHX;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.br
  * JD-Core Version:    0.7.0.1
  */

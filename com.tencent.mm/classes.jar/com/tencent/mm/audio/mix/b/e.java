@@ -5,28 +5,28 @@ import java.util.ArrayList;
 
 public class e
 {
-  private static e fmV;
-  private ArrayList<com.tencent.mm.audio.mix.a.e> fmL;
+  private static e hrg;
+  private ArrayList<com.tencent.mm.audio.mix.a.e> hqW;
   private Object sLock;
   
   private e()
   {
     AppMethodBeat.i(136735);
-    this.fmL = new ArrayList();
+    this.hqW = new ArrayList();
     this.sLock = new Object();
     AppMethodBeat.o(136735);
   }
   
-  public static e adq()
+  public static e aFp()
   {
     AppMethodBeat.i(136736);
-    if (fmV == null) {}
+    if (hrg == null) {}
     try
     {
-      if (fmV == null) {
-        fmV = new e();
+      if (hrg == null) {
+        hrg = new e();
       }
-      e locale = fmV;
+      e locale = hrg;
       AppMethodBeat.o(136736);
       return locale;
     }
@@ -36,14 +36,14 @@ public class e
     }
   }
   
-  public final com.tencent.mm.audio.mix.a.e adp()
+  public final com.tencent.mm.audio.mix.a.e aFo()
   {
     AppMethodBeat.i(136737);
     synchronized (this.sLock)
     {
-      if (this.fmL.size() > 0)
+      if (this.hqW.size() > 0)
       {
-        com.tencent.mm.audio.mix.a.e locale = (com.tencent.mm.audio.mix.a.e)this.fmL.remove(this.fmL.size() - 1);
+        com.tencent.mm.audio.mix.a.e locale = (com.tencent.mm.audio.mix.a.e)this.hqW.remove(this.hqW.size() - 1);
         AppMethodBeat.o(136737);
         return locale;
       }
@@ -53,12 +53,12 @@ public class e
     }
   }
   
-  public final long adr()
+  public final long aFq()
   {
     try
     {
       AppMethodBeat.i(136739);
-      long l = this.fmL.size() * 3536;
+      long l = this.hqW.size() * 3536;
       AppMethodBeat.o(136739);
       return l;
     }
@@ -72,7 +72,7 @@ public class e
   public final void b(com.tencent.mm.audio.mix.a.e parame)
   {
     AppMethodBeat.i(136738);
-    if ((parame == null) || (parame.fmy == null))
+    if ((parame == null) || (parame.hqJ == null))
     {
       AppMethodBeat.o(136738);
       return;
@@ -80,7 +80,7 @@ public class e
     parame.reset();
     synchronized (this.sLock)
     {
-      this.fmL.add(0, parame);
+      this.hqW.add(0, parame);
       AppMethodBeat.o(136738);
       return;
     }

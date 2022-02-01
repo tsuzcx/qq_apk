@@ -1,122 +1,135 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
+import i.a.a.b;
 import java.util.LinkedList;
 
 public final class dai
-  extends dyl
+  extends erp
 {
-  public eae RNM;
+  public int aaFP;
+  public int aaFQ;
+  public gol aaFR;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(114778);
+    AppMethodBeat.i(116329);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.RNM == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.aaFR == null)
       {
-        paramVarArgs = new b("Not all required fields were included: Buffer");
-        AppMethodBeat.o(114778);
+        paramVarArgs = new b("Not all required fields were included: ReqText");
+        AppMethodBeat.o(116329);
         throw paramVarArgs;
       }
       if (this.BaseRequest != null)
       {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.RNM != null)
+      paramVarArgs.bS(2, this.aaFP);
+      paramVarArgs.bS(3, this.aaFQ);
+      if (this.aaFR != null)
       {
-        paramVarArgs.oE(2, this.RNM.computeSize());
-        this.RNM.writeFields(paramVarArgs);
+        paramVarArgs.qD(4, this.aaFR.computeSize());
+        this.aaFR.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(114778);
+      AppMethodBeat.o(116329);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label470;
+        break label550;
       }
     }
-    label470:
-    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label550:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.RNM != null) {
-        i = paramInt + g.a.a.a.oD(2, this.RNM.computeSize());
+      int i = paramInt + i.a.a.b.b.a.cJ(2, this.aaFP) + i.a.a.b.b.a.cJ(3, this.aaFQ);
+      paramInt = i;
+      if (this.aaFR != null) {
+        paramInt = i + i.a.a.a.qC(4, this.aaFR.computeSize());
       }
-      AppMethodBeat.o(114778);
-      return i;
+      AppMethodBeat.o(116329);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.RNM == null)
+        if (this.aaFR == null)
         {
-          paramVarArgs = new b("Not all required fields were included: Buffer");
-          AppMethodBeat.o(114778);
+          paramVarArgs = new b("Not all required fields were included: ReqText");
+          AppMethodBeat.o(116329);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(114778);
+        AppMethodBeat.o(116329);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
         dai localdai = (dai)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         Object localObject2;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(114778);
+          AppMethodBeat.o(116329);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new jg();
+            localObject2 = new kc();
             if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((jg)localObject2).parseFrom((byte[])localObject1);
+              ((kc)localObject2).parseFrom((byte[])localObject1);
             }
-            localdai.BaseRequest = ((jg)localObject2);
+            localdai.BaseRequest = ((kc)localObject2);
             paramInt += 1;
           }
-          AppMethodBeat.o(114778);
+          AppMethodBeat.o(116329);
+          return 0;
+        case 2: 
+          localdai.aaFP = ((i.a.a.a.a)localObject1).ajGk.aar();
+          AppMethodBeat.o(116329);
+          return 0;
+        case 3: 
+          localdai.aaFQ = ((i.a.a.a.a)localObject1).ajGk.aar();
+          AppMethodBeat.o(116329);
           return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject1 = (byte[])paramVarArgs.get(paramInt);
-          localObject2 = new eae();
+          localObject2 = new gol();
           if ((localObject1 != null) && (localObject1.length > 0)) {
-            ((eae)localObject2).dd((byte[])localObject1);
+            ((gol)localObject2).dg((byte[])localObject1);
           }
-          localdai.RNM = ((eae)localObject2);
+          localdai.aaFR = ((gol)localObject2);
           paramInt += 1;
         }
-        AppMethodBeat.o(114778);
+        AppMethodBeat.o(116329);
         return 0;
       }
-      AppMethodBeat.o(114778);
+      AppMethodBeat.o(116329);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dai
  * JD-Core Version:    0.7.0.1
  */

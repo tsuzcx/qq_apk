@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/bi_" />
+    <com.tencent.mm.plugin.profile.ui.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/xa" />
     <PreferenceSmallCategory />
-    <Preference android:key="contact_info_go_to_downloader" android:layout="@layout/b8j" android:title="@string/bok" />
-    <Preference android:key="contact_info_downloader_manager" android:layout="@layout/b8j" android:title="@string/boi" />
-    <Preference android:key="contact_info_common_problem" android:layout="@layout/b8j" android:title="@string/boh" />
+    <Preference android:key="contact_info_linkedin_account" android:layout="@layout/bdi" android:title="@string/bnl" />
     <PreferenceSmallCategory />
-    <CheckBoxPreference android:key="contact_info_top_downloader" android:layout="@layout/b8j" android:persistent="false" android:title="@string/boo" />
-    <CheckBoxPreference android:key="contact_info_not_disturb" android:layout="@layout/b8j" android:persistent="false" android:title="@string/bom" />
-    <Preference android:key="contact_info_clear_data" android:layout="@layout/b8j" android:title="@string/ba3" />
-    <PreferenceSmallCategory />
-    <Preference android:key="contact_info_downloader_install" android:layout="@layout/aw2" android:title="@string/gsq" />
-    <Preference android:key="contact_info_downloader_uninstall" android:layout="@layout/b2o" android:title="@string/gsv" />
+    <Preference android:key="contact_info_linkedin_install" android:layout="@layout/b2b" android:title="@string/iww" android:widgetLayout="@layout/bfh" />
+    <Preference android:key="contact_info_linkedin_uninstall" android:layout="@layout/b93" android:title="@string/ix1" />
     <PreferenceCategory />
 </PreferenceScreen>

@@ -2,17 +2,6 @@ package androidx.core.b;
 
 public final class a
 {
-  public static float c(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    if (paramFloat1 < paramFloat2) {
-      return paramFloat2;
-    }
-    if (paramFloat1 > paramFloat3) {
-      return paramFloat3;
-    }
-    return paramFloat1;
-  }
-  
   public static int clamp(int paramInt1, int paramInt2, int paramInt3)
   {
     if (paramInt1 < paramInt2) {
@@ -22,6 +11,17 @@ public final class a
       return paramInt3;
     }
     return paramInt1;
+  }
+  
+  public static float g(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    if (paramFloat1 < paramFloat2) {
+      return paramFloat2;
+    }
+    if (paramFloat1 > paramFloat3) {
+      return paramFloat3;
+    }
+    return paramFloat1;
   }
 }
 

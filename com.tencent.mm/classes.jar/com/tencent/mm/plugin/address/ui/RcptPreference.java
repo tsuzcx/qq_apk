@@ -15,7 +15,7 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class RcptPreference
   extends Preference
 {
-  RcptItem nmF;
+  RcptItem qjO;
   
   public RcptPreference(Context paramContext)
   {
@@ -39,12 +39,12 @@ public class RcptPreference
   {
     AppMethodBeat.i(20975);
     super.onBindView(paramView);
-    if (this.nmF == null)
+    if (this.qjO == null)
     {
       AppMethodBeat.o(20975);
       return;
     }
-    ((TextView)paramView.findViewById(R.h.zonename)).setText(this.nmF.name);
+    ((TextView)paramView.findViewById(R.h.gdT)).setText(this.qjO.name);
     AppMethodBeat.o(20975);
   }
   
@@ -55,14 +55,14 @@ public class RcptPreference
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
     ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(R.i.eiW, localViewGroup);
+    localLayoutInflater.inflate(R.i.glW, localViewGroup);
     AppMethodBeat.o(20974);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.address.ui.RcptPreference
  * JD-Core Version:    0.7.0.1
  */

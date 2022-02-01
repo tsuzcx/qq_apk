@@ -36,86 +36,86 @@ public class w
   extends HorizontalScrollView
   implements AdapterView.OnItemSelectedListener
 {
-  private static final Interpolator tU;
-  int nH;
-  Runnable tN;
-  LinearLayoutCompat tO;
-  private Spinner tP;
-  private boolean tQ;
-  int tR;
-  int tS;
-  private int tT;
+  private static final Interpolator uT;
+  int oG;
+  Runnable uM;
+  LinearLayoutCompat uN;
+  private Spinner uO;
+  private boolean uP;
+  int uQ;
+  int uR;
+  private int uS;
   
   static
   {
-    AppMethodBeat.i(241555);
-    tU = new DecelerateInterpolator();
-    AppMethodBeat.o(241555);
+    AppMethodBeat.i(199858);
+    uT = new DecelerateInterpolator();
+    AppMethodBeat.o(199858);
   }
   
-  private boolean dT()
+  private boolean eT()
   {
-    AppMethodBeat.i(241540);
-    if ((this.tP != null) && (this.tP.getParent() == this))
+    AppMethodBeat.i(199835);
+    if ((this.uO != null) && (this.uO.getParent() == this))
     {
-      AppMethodBeat.o(241540);
+      AppMethodBeat.o(199835);
       return true;
     }
-    AppMethodBeat.o(241540);
+    AppMethodBeat.o(199835);
     return false;
   }
   
-  private boolean dU()
+  private boolean eU()
   {
-    AppMethodBeat.i(241542);
-    if (!dT())
+    AppMethodBeat.i(199847);
+    if (!eT())
     {
-      AppMethodBeat.o(241542);
+      AppMethodBeat.o(199847);
       return false;
     }
-    removeView(this.tP);
-    addView(this.tO, new ViewGroup.LayoutParams(-2, -1));
-    setTabSelected(this.tP.getSelectedItemPosition());
-    AppMethodBeat.o(241542);
+    removeView(this.uO);
+    addView(this.uN, new ViewGroup.LayoutParams(-2, -1));
+    setTabSelected(this.uO.getSelectedItemPosition());
+    AppMethodBeat.o(199847);
     return false;
   }
   
   public void onAttachedToWindow()
   {
-    AppMethodBeat.i(241548);
+    AppMethodBeat.i(199919);
     super.onAttachedToWindow();
-    if (this.tN != null) {
-      post(this.tN);
+    if (this.uM != null) {
+      post(this.uM);
     }
-    AppMethodBeat.o(241548);
+    AppMethodBeat.o(199919);
   }
   
   protected void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(241546);
+    AppMethodBeat.i(199909);
     super.onConfigurationChanged(paramConfiguration);
     paramConfiguration = a.I(getContext());
     TypedArray localTypedArray = paramConfiguration.mContext.obtainStyledAttributes(null, a.j.ActionBar, a.a.actionBarStyle, 0);
     int j = localTypedArray.getLayoutDimension(a.j.ActionBar_height, 0);
     Resources localResources = paramConfiguration.mContext.getResources();
     int i = j;
-    if (!paramConfiguration.bz()) {
+    if (!paramConfiguration.cs()) {
       i = Math.min(j, localResources.getDimensionPixelSize(a.d.abc_action_bar_stacked_max_height));
     }
     localTypedArray.recycle();
     setContentHeight(i);
-    this.tS = paramConfiguration.mContext.getResources().getDimensionPixelSize(a.d.abc_action_bar_stacked_tab_max_width);
-    AppMethodBeat.o(241546);
+    this.uR = paramConfiguration.mContext.getResources().getDimensionPixelSize(a.d.abc_action_bar_stacked_tab_max_width);
+    AppMethodBeat.o(199909);
   }
   
   public void onDetachedFromWindow()
   {
-    AppMethodBeat.i(241550);
+    AppMethodBeat.i(199923);
     super.onDetachedFromWindow();
-    if (this.tN != null) {
-      removeCallbacks(this.tN);
+    if (this.uM != null) {
+      removeCallbacks(this.uM);
     }
-    AppMethodBeat.o(241550);
+    AppMethodBeat.o(199923);
   }
   
   public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong) {}
@@ -123,56 +123,56 @@ public class w
   public void onMeasure(int paramInt1, int paramInt2)
   {
     paramInt2 = 1;
-    AppMethodBeat.i(241539);
+    AppMethodBeat.i(199877);
     int i = View.MeasureSpec.getMode(paramInt1);
     boolean bool;
     if (i == 1073741824)
     {
       bool = true;
       setFillViewport(bool);
-      int j = this.tO.getChildCount();
+      int j = this.uN.getChildCount();
       if ((j <= 1) || ((i != 1073741824) && (i != -2147483648))) {
         break label337;
       }
       if (j <= 2) {
         break label324;
       }
-      this.tR = ((int)(View.MeasureSpec.getSize(paramInt1) * 0.4F));
+      this.uQ = ((int)(View.MeasureSpec.getSize(paramInt1) * 0.4F));
       label73:
-      this.tR = Math.min(this.tR, this.tS);
+      this.uQ = Math.min(this.uQ, this.uR);
       label88:
-      i = View.MeasureSpec.makeMeasureSpec(this.nH, 1073741824);
-      if ((bool) || (!this.tQ)) {
+      i = View.MeasureSpec.makeMeasureSpec(this.oG, 1073741824);
+      if ((bool) || (!this.uP)) {
         break label345;
       }
       label110:
       if (paramInt2 == 0) {
         break label358;
       }
-      this.tO.measure(0, i);
-      if (this.tO.getMeasuredWidth() <= View.MeasureSpec.getSize(paramInt1)) {
+      this.uN.measure(0, i);
+      if (this.uN.getMeasuredWidth() <= View.MeasureSpec.getSize(paramInt1)) {
         break label350;
       }
-      if (!dT())
+      if (!eT())
       {
-        if (this.tP == null)
+        if (this.uO == null)
         {
           AppCompatSpinner localAppCompatSpinner = new AppCompatSpinner(getContext(), null, a.a.actionDropDownStyle);
           localAppCompatSpinner.setLayoutParams(new LinearLayoutCompat.LayoutParams(-2, -1));
           localAppCompatSpinner.setOnItemSelectedListener(this);
-          this.tP = localAppCompatSpinner;
+          this.uO = localAppCompatSpinner;
         }
-        removeView(this.tO);
-        addView(this.tP, new ViewGroup.LayoutParams(-2, -1));
-        if (this.tP.getAdapter() == null) {
-          this.tP.setAdapter(new a());
+        removeView(this.uN);
+        addView(this.uO, new ViewGroup.LayoutParams(-2, -1));
+        if (this.uO.getAdapter() == null) {
+          this.uO.setAdapter(new a());
         }
-        if (this.tN != null)
+        if (this.uM != null)
         {
-          removeCallbacks(this.tN);
-          this.tN = null;
+          removeCallbacks(this.uM);
+          this.uM = null;
         }
-        this.tP.setSelection(this.tT);
+        this.uO.setSelection(this.uS);
       }
     }
     for (;;)
@@ -181,26 +181,26 @@ public class w
       super.onMeasure(paramInt1, i);
       paramInt1 = getMeasuredWidth();
       if ((bool) && (paramInt2 != paramInt1)) {
-        setTabSelected(this.tT);
+        setTabSelected(this.uS);
       }
-      AppMethodBeat.o(241539);
+      AppMethodBeat.o(199877);
       return;
       bool = false;
       break;
       label324:
-      this.tR = (View.MeasureSpec.getSize(paramInt1) / 2);
+      this.uQ = (View.MeasureSpec.getSize(paramInt1) / 2);
       break label73;
       label337:
-      this.tR = -1;
+      this.uQ = -1;
       break label88;
       label345:
       paramInt2 = 0;
       break label110;
       label350:
-      dU();
+      eU();
       continue;
       label358:
-      dU();
+      eU();
     }
   }
   
@@ -208,58 +208,58 @@ public class w
   
   public void setAllowCollapse(boolean paramBoolean)
   {
-    this.tQ = paramBoolean;
+    this.uP = paramBoolean;
   }
   
   public void setContentHeight(int paramInt)
   {
-    AppMethodBeat.i(241545);
-    this.nH = paramInt;
+    AppMethodBeat.i(199900);
+    this.oG = paramInt;
     requestLayout();
-    AppMethodBeat.o(241545);
+    AppMethodBeat.o(199900);
   }
   
   public void setTabSelected(int paramInt)
   {
-    AppMethodBeat.i(241544);
-    this.tT = paramInt;
-    int j = this.tO.getChildCount();
+    AppMethodBeat.i(199893);
+    this.uS = paramInt;
+    int j = this.uN.getChildCount();
     int i = 0;
     if (i < j)
     {
-      final View localView = this.tO.getChildAt(i);
+      final View localView = this.uN.getChildAt(i);
       if (i == paramInt) {}
       for (boolean bool = true;; bool = false)
       {
         localView.setSelected(bool);
         if (bool)
         {
-          localView = this.tO.getChildAt(paramInt);
-          if (this.tN != null) {
-            removeCallbacks(this.tN);
+          localView = this.uN.getChildAt(paramInt);
+          if (this.uM != null) {
+            removeCallbacks(this.uM);
           }
-          this.tN = new Runnable()
+          this.uM = new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(241522);
+              AppMethodBeat.i(200241);
               int i = localView.getLeft();
               int j = (w.this.getWidth() - localView.getWidth()) / 2;
               w.this.smoothScrollTo(i - j, 0);
-              w.this.tN = null;
-              AppMethodBeat.o(241522);
+              w.this.uM = null;
+              AppMethodBeat.o(200241);
             }
           };
-          post(this.tN);
+          post(this.uM);
         }
         i += 1;
         break;
       }
     }
-    if ((this.tP != null) && (paramInt >= 0)) {
-      this.tP.setSelection(paramInt);
+    if ((this.uO != null) && (paramInt >= 0)) {
+      this.uO.setSelection(paramInt);
     }
-    AppMethodBeat.o(241544);
+    AppMethodBeat.o(199893);
   }
   
   final class a
@@ -269,17 +269,17 @@ public class w
     
     public final int getCount()
     {
-      AppMethodBeat.i(241525);
-      int i = w.this.tO.getChildCount();
-      AppMethodBeat.o(241525);
+      AppMethodBeat.i(200088);
+      int i = w.this.uN.getChildCount();
+      AppMethodBeat.o(200088);
       return i;
     }
     
     public final Object getItem(int paramInt)
     {
-      AppMethodBeat.i(241527);
-      ActionBar.a locala = ((w.b)w.this.tO.getChildAt(paramInt)).tY;
-      AppMethodBeat.o(241527);
+      AppMethodBeat.i(200097);
+      ActionBar.a locala = ((w.b)w.this.uN.getChildAt(paramInt)).uX;
+      AppMethodBeat.o(200097);
       return locala;
     }
     
@@ -290,21 +290,21 @@ public class w
     
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(241530);
+      AppMethodBeat.i(200112);
       if (paramView == null)
       {
         paramViewGroup = w.this;
         paramView = (ActionBar.a)getItem(paramInt);
         paramView = new w.b(paramViewGroup, paramViewGroup.getContext(), paramView);
         paramView.setBackgroundDrawable(null);
-        paramView.setLayoutParams(new AbsListView.LayoutParams(-1, paramViewGroup.nH));
+        paramView.setLayoutParams(new AbsListView.LayoutParams(-1, paramViewGroup.oG));
       }
       for (;;)
       {
-        AppMethodBeat.o(241530);
+        AppMethodBeat.o(200112);
         return paramView;
         paramViewGroup = (w.b)paramView;
-        paramViewGroup.tY = ((ActionBar.a)getItem(paramInt));
+        paramViewGroup.uX = ((ActionBar.a)getItem(paramInt));
         paramViewGroup.update();
       }
     }
@@ -313,57 +313,57 @@ public class w
   final class b
     extends LinearLayout
   {
-    private ImageView eL;
-    private View nX;
-    private TextView rR;
-    private final int[] tX;
-    ActionBar.a tY;
+    private ImageView fN;
+    private View oW;
+    private TextView sQ;
+    private final int[] uW;
+    ActionBar.a uX;
     
     public b(Context paramContext, ActionBar.a parama)
     {
       super(null, a.a.actionBarTabStyle);
-      AppMethodBeat.i(241533);
-      this.tX = new int[] { 16842964 };
-      this.tY = parama;
-      this$1 = ac.a(paramContext, null, this.tX, a.a.actionBarTabStyle, 0);
-      if (w.this.aC(0)) {
+      AppMethodBeat.i(200095);
+      this.uW = new int[] { 16842964 };
+      this.uX = parama;
+      this$1 = ac.a(paramContext, null, this.uW, a.a.actionBarTabStyle, 0);
+      if (w.this.az(0)) {
         setBackgroundDrawable(w.this.getDrawable(0));
       }
-      w.this.wA.recycle();
+      w.this.xv.recycle();
       setGravity(8388627);
       update();
-      AppMethodBeat.o(241533);
+      AppMethodBeat.o(200095);
     }
     
     public final void onInitializeAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
     {
-      AppMethodBeat.i(241535);
+      AppMethodBeat.i(200126);
       super.onInitializeAccessibilityEvent(paramAccessibilityEvent);
       paramAccessibilityEvent.setClassName(ActionBar.a.class.getName());
-      AppMethodBeat.o(241535);
+      AppMethodBeat.o(200126);
     }
     
     public final void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo paramAccessibilityNodeInfo)
     {
-      AppMethodBeat.i(241536);
+      AppMethodBeat.i(200138);
       super.onInitializeAccessibilityNodeInfo(paramAccessibilityNodeInfo);
       paramAccessibilityNodeInfo.setClassName(ActionBar.a.class.getName());
-      AppMethodBeat.o(241536);
+      AppMethodBeat.o(200138);
     }
     
     public final void onMeasure(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(241537);
+      AppMethodBeat.i(200153);
       super.onMeasure(paramInt1, paramInt2);
-      if ((w.this.tR > 0) && (getMeasuredWidth() > w.this.tR)) {
-        super.onMeasure(View.MeasureSpec.makeMeasureSpec(w.this.tR, 1073741824), paramInt2);
+      if ((w.this.uQ > 0) && (getMeasuredWidth() > w.this.uQ)) {
+        super.onMeasure(View.MeasureSpec.makeMeasureSpec(w.this.uQ, 1073741824), paramInt2);
       }
-      AppMethodBeat.o(241537);
+      AppMethodBeat.o(200153);
     }
     
     public final void setSelected(boolean paramBoolean)
     {
-      AppMethodBeat.i(241534);
+      AppMethodBeat.i(200109);
       if (isSelected() != paramBoolean) {}
       for (int i = 1;; i = 0)
       {
@@ -371,15 +371,15 @@ public class w
         if ((i != 0) && (paramBoolean)) {
           sendAccessibilityEvent(4);
         }
-        AppMethodBeat.o(241534);
+        AppMethodBeat.o(200109);
         return;
       }
     }
     
     public final void update()
     {
-      AppMethodBeat.i(241538);
-      Object localObject1 = this.tY;
+      AppMethodBeat.i(200179);
+      Object localObject1 = this.uX;
       Object localObject2 = ((ActionBar.a)localObject1).getCustomView();
       if (localObject2 != null)
       {
@@ -391,22 +391,22 @@ public class w
           }
           addView((View)localObject2);
         }
-        this.nX = ((View)localObject2);
-        if (this.rR != null) {
-          this.rR.setVisibility(8);
+        this.oW = ((View)localObject2);
+        if (this.sQ != null) {
+          this.sQ.setVisibility(8);
         }
-        if (this.eL != null)
+        if (this.fN != null)
         {
-          this.eL.setVisibility(8);
-          this.eL.setImageDrawable(null);
+          this.fN.setVisibility(8);
+          this.fN.setImageDrawable(null);
         }
-        AppMethodBeat.o(241538);
+        AppMethodBeat.o(200179);
         return;
       }
-      if (this.nX != null)
+      if (this.oW != null)
       {
-        removeView(this.nX);
-        this.nX = null;
+        removeView(this.oW);
+        this.oW = null;
       }
       Object localObject3 = ((ActionBar.a)localObject1).getIcon();
       localObject2 = ((ActionBar.a)localObject1).getText();
@@ -414,17 +414,17 @@ public class w
       if (localObject3 != null)
       {
         Object localObject4;
-        if (this.eL == null)
+        if (this.fN == null)
         {
           localObject4 = new AppCompatImageView(getContext());
           LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
           localLayoutParams.gravity = 16;
           ((ImageView)localObject4).setLayoutParams(localLayoutParams);
           addView((View)localObject4, 0);
-          this.eL = ((ImageView)localObject4);
+          this.fN = ((ImageView)localObject4);
         }
-        this.eL.setImageDrawable((Drawable)localObject3);
-        this.eL.setVisibility(0);
+        this.fN.setImageDrawable((Drawable)localObject3);
+        this.fN.setVisibility(0);
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
           break label372;
         }
@@ -433,7 +433,7 @@ public class w
         if (i == 0) {
           break label377;
         }
-        if (this.rR == null)
+        if (this.sQ == null)
         {
           localObject3 = new AppCompatTextView(getContext(), null, a.a.actionBarTabTextStyle);
           ((TextView)localObject3).setEllipsize(TextUtils.TruncateAt.END);
@@ -441,13 +441,13 @@ public class w
           ((LinearLayout.LayoutParams)localObject4).gravity = 16;
           ((TextView)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject4);
           addView((View)localObject3);
-          this.rR = ((TextView)localObject3);
+          this.sQ = ((TextView)localObject3);
         }
-        this.rR.setText((CharSequence)localObject2);
-        this.rR.setVisibility(0);
+        this.sQ.setText((CharSequence)localObject2);
+        this.sQ.setVisibility(0);
         label310:
-        if (this.eL != null) {
-          this.eL.setContentDescription(((ActionBar.a)localObject1).getContentDescription());
+        if (this.fN != null) {
+          this.fN.setContentDescription(((ActionBar.a)localObject1).getContentDescription());
         }
         if (i == 0) {
           break label404;
@@ -457,23 +457,23 @@ public class w
       for (localObject1 = null;; localObject1 = ((ActionBar.a)localObject1).getContentDescription())
       {
         ae.a(this, (CharSequence)localObject1);
-        AppMethodBeat.o(241538);
+        AppMethodBeat.o(200179);
         return;
-        if (this.eL == null) {
+        if (this.fN == null) {
           break;
         }
-        this.eL.setVisibility(8);
-        this.eL.setImageDrawable(null);
+        this.fN.setVisibility(8);
+        this.fN.setImageDrawable(null);
         break;
         label372:
         i = 0;
         break label219;
         label377:
-        if (this.rR == null) {
+        if (this.sQ == null) {
           break label310;
         }
-        this.rR.setVisibility(8);
-        this.rR.setText(null);
+        this.sQ.setVisibility(8);
+        this.sQ.setText(null);
         break label310;
       }
     }
@@ -481,7 +481,7 @@ public class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.widget.w
  * JD-Core Version:    0.7.0.1
  */

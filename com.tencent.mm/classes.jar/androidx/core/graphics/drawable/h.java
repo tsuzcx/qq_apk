@@ -17,46 +17,46 @@ import java.lang.reflect.Method;
 final class h
   extends g
 {
-  private static Method Ld;
+  private static Method brm;
   
   h(Drawable paramDrawable)
   {
     super(paramDrawable);
-    AppMethodBeat.i(250992);
-    gG();
-    AppMethodBeat.o(250992);
+    AppMethodBeat.i(196161);
+    DQ();
+    AppMethodBeat.o(196161);
   }
   
   h(i parami, Resources paramResources)
   {
     super(parami, paramResources);
-    AppMethodBeat.i(250994);
-    gG();
-    AppMethodBeat.o(250994);
+    AppMethodBeat.i(196170);
+    DQ();
+    AppMethodBeat.o(196170);
   }
   
-  private static void gG()
+  private static void DQ()
   {
-    AppMethodBeat.i(251011);
-    if (Ld == null) {
+    AppMethodBeat.i(196179);
+    if (brm == null) {
       try
       {
-        Ld = Drawable.class.getDeclaredMethod("isProjected", new Class[0]);
-        AppMethodBeat.o(251011);
+        brm = Drawable.class.getDeclaredMethod("isProjected", new Class[0]);
+        AppMethodBeat.o(196179);
         return;
       }
       catch (Exception localException) {}
     }
-    AppMethodBeat.o(251011);
+    AppMethodBeat.o(196179);
   }
   
-  protected final boolean gF()
+  protected final boolean DP()
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (Build.VERSION.SDK_INT == 21)
     {
-      Drawable localDrawable = this.mDrawable;
+      Drawable localDrawable = this.kD;
       if ((!(localDrawable instanceof GradientDrawable)) && (!(localDrawable instanceof DrawableContainer)) && (!(localDrawable instanceof InsetDrawable)))
       {
         bool1 = bool2;
@@ -72,104 +72,104 @@ final class h
   
   public final Rect getDirtyBounds()
   {
-    AppMethodBeat.i(251000);
-    Rect localRect = this.mDrawable.getDirtyBounds();
-    AppMethodBeat.o(251000);
+    AppMethodBeat.i(196210);
+    Rect localRect = this.kD.getDirtyBounds();
+    AppMethodBeat.o(196210);
     return localRect;
   }
   
   public final void getOutline(Outline paramOutline)
   {
-    AppMethodBeat.i(250999);
-    this.mDrawable.getOutline(paramOutline);
-    AppMethodBeat.o(250999);
+    AppMethodBeat.i(196203);
+    this.kD.getOutline(paramOutline);
+    AppMethodBeat.o(196203);
   }
   
   public final boolean isProjected()
   {
-    AppMethodBeat.i(251010);
-    if ((this.mDrawable != null) && (Ld != null)) {
+    AppMethodBeat.i(196262);
+    if ((this.kD != null) && (brm != null)) {
       try
       {
-        boolean bool = ((Boolean)Ld.invoke(this.mDrawable, new Object[0])).booleanValue();
-        AppMethodBeat.o(251010);
+        boolean bool = ((Boolean)brm.invoke(this.kD, new Object[0])).booleanValue();
+        AppMethodBeat.o(196262);
         return bool;
       }
       catch (Exception localException) {}
     }
-    AppMethodBeat.o(251010);
+    AppMethodBeat.o(196262);
     return false;
   }
   
   public final void setHotspot(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(250996);
-    this.mDrawable.setHotspot(paramFloat1, paramFloat2);
-    AppMethodBeat.o(250996);
+    AppMethodBeat.i(196185);
+    this.kD.setHotspot(paramFloat1, paramFloat2);
+    AppMethodBeat.o(196185);
   }
   
   public final void setHotspotBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(250998);
-    this.mDrawable.setHotspotBounds(paramInt1, paramInt2, paramInt3, paramInt4);
-    AppMethodBeat.o(250998);
+    AppMethodBeat.i(196199);
+    this.kD.setHotspotBounds(paramInt1, paramInt2, paramInt3, paramInt4);
+    AppMethodBeat.o(196199);
   }
   
   public final boolean setState(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(251007);
+    AppMethodBeat.i(196245);
     if (super.setState(paramArrayOfInt))
     {
       invalidateSelf();
-      AppMethodBeat.o(251007);
+      AppMethodBeat.o(196245);
       return true;
     }
-    AppMethodBeat.o(251007);
+    AppMethodBeat.o(196245);
     return false;
   }
   
   public final void setTint(int paramInt)
   {
-    AppMethodBeat.i(251004);
-    if (gF())
+    AppMethodBeat.i(196224);
+    if (DP())
     {
       super.setTint(paramInt);
-      AppMethodBeat.o(251004);
+      AppMethodBeat.o(196224);
       return;
     }
-    this.mDrawable.setTint(paramInt);
-    AppMethodBeat.o(251004);
+    this.kD.setTint(paramInt);
+    AppMethodBeat.o(196224);
   }
   
   public final void setTintList(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(251001);
-    if (gF())
+    AppMethodBeat.i(196219);
+    if (DP())
     {
       super.setTintList(paramColorStateList);
-      AppMethodBeat.o(251001);
+      AppMethodBeat.o(196219);
       return;
     }
-    this.mDrawable.setTintList(paramColorStateList);
-    AppMethodBeat.o(251001);
+    this.kD.setTintList(paramColorStateList);
+    AppMethodBeat.o(196219);
   }
   
   public final void setTintMode(PorterDuff.Mode paramMode)
   {
-    AppMethodBeat.i(251006);
-    if (gF())
+    AppMethodBeat.i(196234);
+    if (DP())
     {
       super.setTintMode(paramMode);
-      AppMethodBeat.o(251006);
+      AppMethodBeat.o(196234);
       return;
     }
-    this.mDrawable.setTintMode(paramMode);
-    AppMethodBeat.o(251006);
+    this.kD.setTintMode(paramMode);
+    AppMethodBeat.o(196234);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.core.graphics.drawable.h
  * JD-Core Version:    0.7.0.1
  */

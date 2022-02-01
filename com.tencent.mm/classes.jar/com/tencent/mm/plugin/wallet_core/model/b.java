@@ -8,29 +8,29 @@ import org.json.JSONObject;
 
 public final class b
 {
-  public double Ims = 0.0D;
-  public String ONh;
-  public LinkedList<b> ONi;
-  public String ONj;
-  public String ONk;
-  public a ONl;
-  public int OmZ = 0;
-  public int Ona = 0;
-  public int Onb = 0;
-  public double Onc = 0.0D;
+  public double OjJ = 0.0D;
+  public String VCS;
+  public LinkedList<b> VCT;
+  public String VCU;
+  public String VCV;
+  public a VCW;
+  public int VbN = 0;
+  public int VbO = 0;
+  public int VbP = 0;
+  public double VbQ = 0.0D;
   
-  public static a bK(JSONObject paramJSONObject)
+  public static a cf(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70212);
     a locala = new a();
     if (paramJSONObject != null) {
       try
       {
-        locala.ONm = paramJSONObject.optString("sector_title", "");
+        locala.VCX = paramJSONObject.optString("sector_title", "");
         paramJSONObject = paramJSONObject.optJSONArray("label");
         if (paramJSONObject != null)
         {
-          locala.ONn = new c[paramJSONObject.length()];
+          locala.VCY = new c[paramJSONObject.length()];
           int i = 0;
           while (i < paramJSONObject.length())
           {
@@ -38,12 +38,12 @@ public final class b
             c localc = new c();
             localc.title = localJSONObject.optString("title", "");
             localc.desc = localJSONObject.optString("desc", "");
-            localc.llI = localJSONObject.optString("logo_url", "");
+            localc.nQG = localJSONObject.optString("logo_url", "");
             localc.jump_type = localJSONObject.optInt("jump_type");
             localc.jump_url = localJSONObject.optString("jump_url", "");
             localc.username = localJSONObject.optString("username", "");
             localc.path = localJSONObject.optString("path", "");
-            locala.ONn[i] = localc;
+            locala.VCY[i] = localc;
             i += 1;
           }
         }
@@ -56,14 +56,14 @@ public final class b
   
   public static final class a
   {
-    public String ONm;
-    public b.c[] ONn;
+    public String VCX;
+    public b.c[] VCY;
     
     public a()
     {
       AppMethodBeat.i(70211);
-      this.ONm = "";
-      this.ONn = new b.c[0];
+      this.VCX = "";
+      this.VCY = new b.c[0];
       AppMethodBeat.o(70211);
     }
   }
@@ -79,7 +79,7 @@ public final class b
     public String desc;
     public int jump_type;
     public String jump_url;
-    public String llI;
+    public String nQG;
     public String path;
     public String title;
     public String username;
@@ -87,7 +87,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.b
  * JD-Core Version:    0.7.0.1
  */

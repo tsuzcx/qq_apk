@@ -1,111 +1,107 @@
 package com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/EyeBrowInfo;", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IResInfo;", "alpha", "", "leftEyeBrowPath", "", "leftEyeBrowPathMd5", "rightEyeBrowPath", "rightEyeBrowPathMd5", "faceModel", "", "(FLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V", "getAlpha", "()F", "getFaceModel", "()I", "getLeftEyeBrowPath", "()Ljava/lang/String;", "getLeftEyeBrowPathMd5", "getRightEyeBrowPath", "getRightEyeBrowPathMd5", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "", "other", "", "getIdentityDesc", "hashCode", "toString", "luggage-xweb-ext_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/BlusherStickInfo;", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IResInfo;", "alpha", "", "faceModel", "", "blendMode", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/BlendMode;", "path", "", "pathMd5", "(FILcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/BlendMode;Ljava/lang/String;Ljava/lang/String;)V", "getAlpha", "()F", "getBlendMode", "()Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/BlendMode;", "getFaceModel", "()I", "getPath", "()Ljava/lang/String;", "getPathMd5", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "", "other", "", "getIdentityDesc", "hashCode", "toString", "luggage-xweb-ext_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  implements h
+  implements i
 {
   public final float alpha;
-  public final int cGI;
-  public final String cGL;
-  private final String cGM;
-  public final String cGN;
-  private final String cGO;
+  public final int eAs;
+  public final a eAt;
+  private final String eAu;
+  public final String path;
   
-  public b(float paramFloat, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
+  public b(float paramFloat, int paramInt, a parama, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(226274);
+    AppMethodBeat.i(220795);
     this.alpha = paramFloat;
-    this.cGL = paramString1;
-    this.cGM = paramString2;
-    this.cGN = paramString3;
-    this.cGO = paramString4;
-    this.cGI = paramInt;
-    AppMethodBeat.o(226274);
+    this.eAs = paramInt;
+    this.eAt = parama;
+    this.path = paramString1;
+    this.eAu = paramString2;
+    AppMethodBeat.o(220795);
   }
   
-  public final String TD()
+  public final String aui()
   {
-    AppMethodBeat.i(226271);
-    String str = "EyeBrowInfo(leftEyeBrowPath='" + this.cGL + "', leftEyeBrowPathMd5='" + this.cGM + "', rightEyeBrowPath='" + this.cGN + "', rightEyeBrowPathMd5='" + this.cGO + '\'' + ")";
-    AppMethodBeat.o(226271);
+    AppMethodBeat.i(220805);
+    String str = "BlusherStickInfo(path='" + this.path + "', pathMd5='" + this.eAu + "')";
+    AppMethodBeat.o(220805);
     return str;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(226277);
-    if (this != paramObject)
+    AppMethodBeat.i(220831);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof b))
-      {
-        paramObject = (b)paramObject;
-        if ((Float.compare(this.alpha, paramObject.alpha) != 0) || (!p.h(this.cGL, paramObject.cGL)) || (!p.h(this.cGM, paramObject.cGM)) || (!p.h(this.cGN, paramObject.cGN)) || (!p.h(this.cGO, paramObject.cGO)) || (this.cGI != paramObject.cGI)) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(226277);
+      AppMethodBeat.o(220831);
       return true;
     }
-    AppMethodBeat.o(226277);
-    return false;
+    if (!(paramObject instanceof b))
+    {
+      AppMethodBeat.o(220831);
+      return false;
+    }
+    paramObject = (b)paramObject;
+    if (!s.p(Float.valueOf(this.alpha), Float.valueOf(paramObject.alpha)))
+    {
+      AppMethodBeat.o(220831);
+      return false;
+    }
+    if (this.eAs != paramObject.eAs)
+    {
+      AppMethodBeat.o(220831);
+      return false;
+    }
+    if (this.eAt != paramObject.eAt)
+    {
+      AppMethodBeat.o(220831);
+      return false;
+    }
+    if (!s.p(this.path, paramObject.path))
+    {
+      AppMethodBeat.o(220831);
+      return false;
+    }
+    if (!s.p(this.eAu, paramObject.eAu))
+    {
+      AppMethodBeat.o(220831);
+      return false;
+    }
+    AppMethodBeat.o(220831);
+    return true;
   }
   
   public final int hashCode()
   {
-    int m = 0;
-    AppMethodBeat.i(226276);
-    int n = Float.floatToIntBits(this.alpha);
-    String str = this.cGL;
-    int i;
-    int j;
-    if (str != null)
+    AppMethodBeat.i(220823);
+    int j = Float.floatToIntBits(this.alpha);
+    int k = this.eAs;
+    int m = this.eAt.hashCode();
+    int n = this.path.hashCode();
+    if (this.eAu == null) {}
+    for (int i = 0;; i = this.eAu.hashCode())
     {
-      i = str.hashCode();
-      str = this.cGM;
-      if (str == null) {
-        break label132;
-      }
-      j = str.hashCode();
-      label51:
-      str = this.cGN;
-      if (str == null) {
-        break label137;
-      }
-    }
-    label132:
-    label137:
-    for (int k = str.hashCode();; k = 0)
-    {
-      str = this.cGO;
-      if (str != null) {
-        m = str.hashCode();
-      }
-      int i1 = this.cGI;
-      AppMethodBeat.o(226276);
-      return ((k + (j + (i + n * 31) * 31) * 31) * 31 + m) * 31 + i1;
-      i = 0;
-      break;
-      j = 0;
-      break label51;
+      AppMethodBeat.o(220823);
+      return i + (((j * 31 + k) * 31 + m) * 31 + n) * 31;
     }
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(226275);
-    String str = "EyeBrowInfo(alpha=" + this.alpha + ", leftEyeBrowPath=" + this.cGL + ", leftEyeBrowPathMd5=" + this.cGM + ", rightEyeBrowPath=" + this.cGN + ", rightEyeBrowPathMd5=" + this.cGO + ", faceModel=" + this.cGI + ")";
-    AppMethodBeat.o(226275);
+    AppMethodBeat.i(220813);
+    String str = "BlusherStickInfo(alpha=" + this.alpha + ", faceModel=" + this.eAs + ", blendMode=" + this.eAt + ", path=" + this.path + ", pathMd5=" + this.eAu + ')';
+    AppMethodBeat.o(220813);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.b
  * JD-Core Version:    0.7.0.1
  */

@@ -16,9 +16,9 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class FaceNumberView
   extends RelativeLayout
 {
-  View BCk;
-  TextView BCl;
-  Animation BCm;
+  View HjR;
+  TextView HjS;
+  Animation HjT;
   
   public FaceNumberView(Context paramContext)
   {
@@ -38,43 +38,43 @@ public class FaceNumberView
   private FaceNumberView(Context paramContext, AttributeSet paramAttributeSet, int paramInt, byte paramByte)
   {
     super(paramContext, paramAttributeSet, paramInt, 0);
-    AppMethodBeat.i(189907);
-    this.BCm = new AlphaAnimation(0.0F, 1.0F);
+    AppMethodBeat.i(264624);
+    this.HjT = new AlphaAnimation(0.0F, 1.0F);
     LayoutInflater.from(getContext()).inflate(a.g.face_flash_number_view, this, true);
     setGravity(17);
-    this.BCk = findViewById(a.e.face_flash_white_dot);
-    this.BCl = ((TextView)findViewById(a.e.face_flash_num_view));
-    AppMethodBeat.o(189907);
+    this.HjR = findViewById(a.e.face_flash_white_dot);
+    this.HjS = ((TextView)findViewById(a.e.face_flash_num_view));
+    AppMethodBeat.o(264624);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(189911);
+    AppMethodBeat.i(264650);
     post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(194515);
+        AppMethodBeat.i(264615);
         Log.i("MicroMsg.FaceFlashManagerNumberView", "release");
         FaceNumberView.a(FaceNumberView.this).cancel();
         FaceNumberView.b(FaceNumberView.this).clearAnimation();
-        AppMethodBeat.o(194515);
+        AppMethodBeat.o(264615);
       }
     });
-    AppMethodBeat.o(189911);
+    AppMethodBeat.o(264650);
   }
   
   public void setNumber(String paramString)
   {
-    AppMethodBeat.i(189909);
+    AppMethodBeat.i(264640);
     Log.i("MicroMsg.FaceFlashManagerNumberView", "setNumber :%s", new Object[] { paramString });
-    this.BCl.setText(paramString);
-    AppMethodBeat.o(189909);
+    this.HjS.setText(paramString);
+    AppMethodBeat.o(264640);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.flash.view.FaceNumberView
  * JD-Core Version:    0.7.0.1
  */

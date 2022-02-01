@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.game.ui.chat_tab;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -15,8 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import androidx.appcompat.app.ActionBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.game.g.f;
+import com.tencent.mm.plugin.game.h.f;
 import com.tencent.mm.plugin.gamelife.ui.GameLifeConversationUI;
 import com.tencent.mm.ui.MMFragmentActivity.a;
 
@@ -24,53 +22,54 @@ import com.tencent.mm.ui.MMFragmentActivity.a;
 public class GameChatTabUI
   extends GameLifeConversationUI
 {
-  private a Dbb;
-  private String Dbc;
+  private a IVp;
+  private String IVq;
   
   public GameChatTabUI()
   {
-    AppMethodBeat.i(205862);
-    this.Dbb = new a(this);
-    AppMethodBeat.o(205862);
+    AppMethodBeat.i(276605);
+    this.IVp = new a(this);
+    AppMethodBeat.o(276605);
   }
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(205869);
+    AppMethodBeat.i(276666);
     super.onBackPressed();
-    this.Dbb.onBackPressed();
-    AppMethodBeat.o(205869);
+    this.IVp.onBackPressed();
+    AppMethodBeat.o(276666);
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(205873);
+    AppMethodBeat.i(276688);
     super.onConfigurationChanged(paramConfiguration);
-    this.Dbb.cN();
-    AppMethodBeat.o(205873);
+    this.IVp.dG();
+    AppMethodBeat.o(276688);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(205864);
+    AppMethodBeat.i(276641);
     super.onCreate(paramBundle);
     if (getIntent().getBooleanExtra("game_from_detail_back", false)) {
-      overridePendingTransition(MMFragmentActivity.a.ria, MMFragmentActivity.a.rib);
+      overridePendingTransition(MMFragmentActivity.a.upW, MMFragmentActivity.a.upX);
     }
-    this.Dbb.a(getContentView(), new c.a()
+    com.tencent.mm.plugin.game.commlib.e.b.fM(this);
+    this.IVp.a(getContentView(), new c.a()
     {
-      public final void TW(int paramAnonymousInt)
+      public final void XQ(int paramAnonymousInt)
       {
-        AppMethodBeat.i(200017);
+        AppMethodBeat.i(276628);
         GameChatTabUI.a(GameChatTabUI.this, paramAnonymousInt);
-        AppMethodBeat.o(200017);
+        AppMethodBeat.o(276628);
       }
       
-      public final void aKq(String paramAnonymousString)
+      public final void aHg(String paramAnonymousString)
       {
-        AppMethodBeat.i(200018);
+        AppMethodBeat.i(276636);
         GameChatTabUI.a(GameChatTabUI.this, paramAnonymousString);
-        AppMethodBeat.o(200018);
+        AppMethodBeat.o(276636);
       }
     });
     paramBundle = getSupportActionBar().getCustomView();
@@ -79,7 +78,7 @@ public class GameChatTabUI
       Object localObject = paramBundle.getLayoutParams();
       ((ViewGroup.LayoutParams)localObject).width = -1;
       paramBundle.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localObject = LayoutInflater.from(this).inflate(g.f.CnG, (LinearLayout)paramBundle, false);
+      localObject = LayoutInflater.from(this).inflate(h.f.HZO, (LinearLayout)paramBundle, false);
       LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)((View)localObject).getLayoutParams();
       localLayoutParams.gravity = 16;
       ((LinearLayout)paramBundle).addView((View)localObject, localLayoutParams);
@@ -87,75 +86,76 @@ public class GameChatTabUI
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(194262);
-          b localb = new b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/game/ui/chat_tab/GameChatTabUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-          paramAnonymousView = com.tencent.mm.game.report.c.jTf;
-          com.tencent.mm.game.report.c.a.Fp(GameChatTabUI.this.getIntent().getIntExtra("game_report_from_scene", 0));
-          com.tencent.mm.plugin.game.d.c.aY(GameChatTabUI.this, GameChatTabUI.b(GameChatTabUI.this));
+          AppMethodBeat.i(276634);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/game/ui/chat_tab/GameChatTabUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          paramAnonymousView = com.tencent.mm.game.report.c.mtx;
+          com.tencent.mm.game.report.c.a.hx(GameChatTabUI.this.getIntent().getIntExtra("game_report_from_scene", 0));
+          com.tencent.mm.plugin.game.d.c.ba(GameChatTabUI.this, GameChatTabUI.b(GameChatTabUI.this));
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/chat_tab/GameChatTabUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(194262);
+          AppMethodBeat.o(276634);
         }
       });
     }
-    AppMethodBeat.o(205864);
+    AppMethodBeat.o(276641);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(205870);
+    AppMethodBeat.i(276675);
     super.onDestroy();
-    this.Dbb.onDestroy();
-    AppMethodBeat.o(205870);
+    this.IVp.onDestroy();
+    com.tencent.mm.plugin.game.commlib.e.b.fN(this);
+    AppMethodBeat.o(276675);
   }
   
   public final void onFinish()
   {
-    AppMethodBeat.i(205872);
-    this.Dbb.evQ();
-    AppMethodBeat.o(205872);
+    AppMethodBeat.i(276683);
+    this.IVp.fHD();
+    AppMethodBeat.o(276683);
   }
   
   public void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(205867);
+    AppMethodBeat.i(276658);
     super.onNewIntent(paramIntent);
-    this.Dbb.onNewIntent(paramIntent);
-    AppMethodBeat.o(205867);
+    this.IVp.onNewIntent(paramIntent);
+    AppMethodBeat.o(276658);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(205866);
+    AppMethodBeat.i(276653);
     super.onPause();
     a.onPause();
-    AppMethodBeat.o(205866);
+    AppMethodBeat.o(276653);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(205865);
+    AppMethodBeat.i(276647);
     super.onResume();
-    this.Dbb.onResume();
+    this.IVp.onResume();
     if (getIntent().getBooleanExtra("disable_game_page_swipe", false)) {
       Looper.myQueue().addIdleHandler(new MessageQueue.IdleHandler()
       {
         public final boolean queueIdle()
         {
-          AppMethodBeat.i(201186);
+          AppMethodBeat.i(276627);
           if ((GameChatTabUI.this.isDestroyed()) || (GameChatTabUI.this.isFinishing()))
           {
-            AppMethodBeat.o(201186);
+            AppMethodBeat.o(276627);
             return false;
           }
           GameChatTabUI.a(GameChatTabUI.this);
-          AppMethodBeat.o(201186);
+          AppMethodBeat.o(276627);
           return false;
         }
       });
     }
-    AppMethodBeat.o(205865);
+    AppMethodBeat.o(276647);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -166,7 +166,7 @@ public class GameChatTabUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.chat_tab.GameChatTabUI
  * JD-Core Version:    0.7.0.1
  */

@@ -16,15 +16,15 @@ public class g
   
   private g()
   {
-    AppMethodBeat.i(240222);
+    AppMethodBeat.i(230128);
     this.b = "TXCSpUtil";
     this.d = new Object();
-    AppMethodBeat.o(240222);
+    AppMethodBeat.o(230128);
   }
   
   public static g a()
   {
-    AppMethodBeat.i(240220);
+    AppMethodBeat.i(230122);
     if (a == null) {}
     try
     {
@@ -32,25 +32,25 @@ public class g
         a = new g();
       }
       g localg = a;
-      AppMethodBeat.o(240220);
+      AppMethodBeat.o(230122);
       return localg;
     }
     finally
     {
-      AppMethodBeat.o(240220);
+      AppMethodBeat.o(230122);
     }
   }
   
   public void a(Context paramContext)
   {
-    AppMethodBeat.i(240225);
+    AppMethodBeat.i(230133);
     this.e = paramContext.getApplicationContext();
-    AppMethodBeat.o(240225);
+    AppMethodBeat.o(230133);
   }
   
   public void a(String paramString, int paramInt)
   {
-    AppMethodBeat.i(240237);
+    AppMethodBeat.i(230153);
     Context localContext = this.e;
     try
     {
@@ -62,7 +62,7 @@ public class g
         if (this.c != null) {
           this.c.edit().putInt(paramString, paramInt).commit();
         }
-        AppMethodBeat.o(240237);
+        AppMethodBeat.o(230153);
         return;
       }
       return;
@@ -70,13 +70,13 @@ public class g
     catch (Exception localException)
     {
       TXCLog.e("TXCSpUtil", "setLastEncodeType: error: " + paramString + " , " + paramInt + " ; " + localException);
-      AppMethodBeat.o(240237);
+      AppMethodBeat.o(230153);
     }
   }
   
   public void a(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(240229);
+    AppMethodBeat.i(230140);
     Context localContext = this.e;
     try
     {
@@ -88,7 +88,7 @@ public class g
         if (this.c != null) {
           this.c.edit().putBoolean(paramString, paramBoolean).commit();
         }
-        AppMethodBeat.o(240229);
+        AppMethodBeat.o(230140);
         return;
       }
       return;
@@ -96,7 +96,7 @@ public class g
     catch (Exception localException)
     {
       TXCLog.e("TXCSpUtil", "saveConfigInfo: error: " + paramString + ", " + paramBoolean + " ; " + localException);
-      AppMethodBeat.o(240229);
+      AppMethodBeat.o(230140);
     }
   }
   
@@ -273,11 +273,11 @@ public class g
     
     static
     {
-      AppMethodBeat.i(240980);
+      AppMethodBeat.i(230100);
       a = new a("CODEC_TYPE_H264", 0, 0);
       b = new a("CODEC_TYPE_H265", 1, 1);
       c = new a[] { a, b };
-      AppMethodBeat.o(240980);
+      AppMethodBeat.o(230100);
     }
     
     private a(int paramInt)
@@ -287,7 +287,7 @@ public class g
     
     public static a a(int paramInt)
     {
-      AppMethodBeat.i(240979);
+      AppMethodBeat.i(230091);
       Object localObject = values();
       int j = localObject.length;
       int i = 0;
@@ -296,13 +296,13 @@ public class g
         a locala = localObject[i];
         if (locala.a() == paramInt)
         {
-          AppMethodBeat.o(240979);
+          AppMethodBeat.o(230091);
           return locala;
         }
         i += 1;
       }
       localObject = a;
-      AppMethodBeat.o(240979);
+      AppMethodBeat.o(230091);
       return localObject;
     }
     
@@ -314,7 +314,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.basic.util.g
  * JD-Core Version:    0.7.0.1
  */

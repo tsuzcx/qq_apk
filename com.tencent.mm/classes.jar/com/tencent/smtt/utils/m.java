@@ -5,7 +5,6 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
@@ -26,80 +25,69 @@ public class m
   private static boolean h = false;
   private static boolean i = false;
   
-  private static String a()
-  {
-    AppMethodBeat.i(201309);
-    String str = " " + Build.MODEL.replaceAll("[ |\\/|\\_|\\&|\\|]", "") + " ";
-    AppMethodBeat.o(201309);
-    return str;
-  }
-  
   public static String a(Context paramContext)
   {
-    AppMethodBeat.i(201273);
+    AppMethodBeat.i(219330);
     if (!TextUtils.isEmpty(a))
     {
       paramContext = a;
-      AppMethodBeat.o(201273);
+      AppMethodBeat.o(219330);
       return paramContext;
     }
     paramContext = a(paramContext, String.valueOf(WebView.getTbsSDKVersion(paramContext)), "0", b, c, d, e, f, g);
     a = paramContext;
-    AppMethodBeat.o(201273);
+    AppMethodBeat.o(219330);
     return paramContext;
   }
   
   private static String a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, boolean paramBoolean)
   {
-    AppMethodBeat.i(201298);
-    String str2 = "";
+    AppMethodBeat.i(219333);
+    localObject2 = "";
     StringBuilder localStringBuilder = new StringBuilder();
-    String str3 = b(paramContext) + "*" + c(paramContext);
-    for (String str1 = str2;; str1 = str2)
+    String str = b(paramContext) + "*" + c(paramContext);
+    localObject1 = localObject2;
+    for (;;)
     {
       try
       {
         ApplicationInfo localApplicationInfo = paramContext.getApplicationContext().getApplicationInfo();
-        str1 = str2;
-        localPackageInfo = paramContext.getPackageManager().getPackageInfo(localApplicationInfo.packageName, 0);
-        str1 = str2;
-        str2 = localApplicationInfo.packageName;
-        str1 = str2;
+        localObject1 = localObject2;
+        localObject3 = paramContext.getPackageManager().getPackageInfo(localApplicationInfo.packageName, 0);
+        localObject1 = localObject2;
+        localObject2 = localApplicationInfo.packageName;
+        localObject1 = localObject2;
         boolean bool = TextUtils.isEmpty(paramString7);
         if (bool) {
-          break label395;
+          continue;
         }
-        str1 = str2;
       }
       catch (PackageManager.NameNotFoundException paramString7)
       {
-        for (;;)
-        {
-          PackageInfo localPackageInfo;
-          label298:
-          label344:
-          paramString7 = "";
-          label395:
+        Object localObject3;
+        paramString7 = "";
+        localObject2 = localObject1;
+        continue;
+        if (!e(paramContext)) {
           continue;
-          if (d(paramContext)) {
-            paramContext = "PAD";
-          } else {
-            paramContext = "PHONE";
-          }
         }
+        localObject1 = "PAD";
+        continue;
+        localObject1 = "PHONE";
+        continue;
       }
-      str2 = a(str1);
-      if (!"QB".equals(str2)) {
-        break;
+      localObject3 = a((String)localObject2);
+      if (!"QB".equals(localObject3)) {
+        continue;
       }
       if (!paramBoolean) {
-        break label443;
+        continue;
       }
-      paramContext = "PAD";
+      localObject1 = "PAD";
       localStringBuilder.append("QV=3");
       a(localStringBuilder, "PL", "ADR");
-      a(localStringBuilder, "PR", str2);
-      a(localStringBuilder, "PP", str1);
+      a(localStringBuilder, "PR", (String)localObject3);
+      a(localStringBuilder, "PP", (String)localObject2);
       a(localStringBuilder, "PPVN", paramString7);
       if (!TextUtils.isEmpty(paramString1)) {
         a(localStringBuilder, "TBSVC", paramString1);
@@ -110,14 +98,14 @@ public class m
       }
       a(localStringBuilder, "PB", paramString4);
       a(localStringBuilder, "VE", paramString3);
-      a(localStringBuilder, "DE", paramContext);
-      paramContext = paramString6;
+      a(localStringBuilder, "DE", (String)localObject1);
+      paramString1 = paramString6;
       if (TextUtils.isEmpty(paramString6)) {
-        paramContext = "0";
+        paramString1 = "0";
       }
-      a(localStringBuilder, "CHID", paramContext);
+      a(localStringBuilder, "CHID", paramString1);
       a(localStringBuilder, "LCID", paramString5);
-      paramContext = a();
+      paramContext = d(paramContext);
       try
       {
         paramString1 = new String(paramContext.getBytes("UTF-8"), "ISO8859-1");
@@ -125,12 +113,12 @@ public class m
       }
       catch (Exception paramString1)
       {
-        break label298;
+        continue;
       }
       if (!TextUtils.isEmpty(paramContext)) {
         a(localStringBuilder, "MO", paramContext);
       }
-      a(localStringBuilder, "RL", str3);
+      a(localStringBuilder, "RL", str);
       paramContext = Build.VERSION.RELEASE;
       try
       {
@@ -139,115 +127,123 @@ public class m
       }
       catch (Exception paramString1)
       {
-        break label344;
+        continue;
       }
       if (!TextUtils.isEmpty(paramContext)) {
         a(localStringBuilder, "OS", paramContext);
       }
       a(localStringBuilder, "API", Build.VERSION.SDK_INT);
       paramContext = localStringBuilder.toString();
-      AppMethodBeat.o(201298);
+      AppMethodBeat.o(219333);
       return paramContext;
-      str1 = str2;
-      paramString7 = localPackageInfo.versionName;
+      localObject1 = localObject2;
+      paramString7 = ((PackageInfo)localObject3).versionName;
     }
   }
   
   private static String a(String paramString)
   {
-    AppMethodBeat.i(201303);
+    AppMethodBeat.i(219339);
     if ("com.tencent.mm".equals(paramString))
     {
-      AppMethodBeat.o(201303);
+      AppMethodBeat.o(219339);
       return "WX";
     }
     if ("com.tencent.mobileqq".equals(paramString))
     {
-      AppMethodBeat.o(201303);
+      AppMethodBeat.o(219339);
       return "QQ";
     }
     if ("com.qzone".equals(paramString))
     {
-      AppMethodBeat.o(201303);
+      AppMethodBeat.o(219339);
       return "QZ";
     }
     if ("com.tencent.mtt".equals(paramString))
     {
-      AppMethodBeat.o(201303);
+      AppMethodBeat.o(219339);
       return "QB";
     }
-    AppMethodBeat.o(201303);
+    AppMethodBeat.o(219339);
     return "TRD";
   }
   
   private static void a(StringBuilder paramStringBuilder, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(201302);
+    AppMethodBeat.i(219335);
     paramStringBuilder.append("&").append(paramString1).append("=").append(paramString2);
-    AppMethodBeat.o(201302);
+    AppMethodBeat.o(219335);
   }
   
   private static int b(Context paramContext)
   {
-    AppMethodBeat.i(201304);
+    AppMethodBeat.i(219342);
     paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
     if (paramContext != null)
     {
       int j = paramContext.getWidth();
-      AppMethodBeat.o(201304);
+      AppMethodBeat.o(219342);
       return j;
     }
-    AppMethodBeat.o(201304);
+    AppMethodBeat.o(219342);
     return -1;
   }
   
   private static int c(Context paramContext)
   {
-    AppMethodBeat.i(201307);
+    AppMethodBeat.i(219346);
     paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
     if (paramContext != null)
     {
       int j = paramContext.getHeight();
-      AppMethodBeat.o(201307);
+      AppMethodBeat.o(219346);
       return j;
     }
-    AppMethodBeat.o(201307);
+    AppMethodBeat.o(219346);
     return -1;
   }
   
-  private static boolean d(Context paramContext)
+  private static String d(Context paramContext)
+  {
+    AppMethodBeat.i(219350);
+    paramContext = r.d(paramContext);
+    paramContext = " " + paramContext.replaceAll("[ |\\/|\\_|\\&|\\|]", "") + " ";
+    AppMethodBeat.o(219350);
+    return paramContext;
+  }
+  
+  private static boolean e(Context paramContext)
   {
     boolean bool = true;
-    AppMethodBeat.i(201310);
+    AppMethodBeat.i(219352);
     if (h)
     {
       bool = i;
-      AppMethodBeat.o(201310);
+      AppMethodBeat.o(219352);
       return bool;
     }
     try
     {
-      if (Math.min(b(paramContext), c(paramContext)) * 160 / e(paramContext) >= 700) {}
+      if (Math.min(b(paramContext), c(paramContext)) * 160 / f(paramContext) >= 700) {}
       for (;;)
       {
         i = bool;
         h = true;
         bool = i;
-        AppMethodBeat.o(201310);
         return bool;
         bool = false;
       }
       return false;
     }
-    catch (Throwable paramContext)
+    finally
     {
-      AppMethodBeat.o(201310);
+      AppMethodBeat.o(219352);
     }
   }
   
-  private static int e(Context paramContext)
+  private static int f(Context paramContext)
   {
-    AppMethodBeat.i(201313);
+    AppMethodBeat.i(219357);
     Object localObject = (WindowManager)paramContext.getSystemService("window");
     paramContext = new DisplayMetrics();
     localObject = ((WindowManager)localObject).getDefaultDisplay();
@@ -255,16 +251,16 @@ public class m
     {
       ((Display)localObject).getMetrics(paramContext);
       int j = paramContext.densityDpi;
-      AppMethodBeat.o(201313);
+      AppMethodBeat.o(219357);
       return j;
     }
-    AppMethodBeat.o(201313);
+    AppMethodBeat.o(219357);
     return 160;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.utils.m
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,14 @@
 package com.tencent.mm.plugin.hld.f;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
 import android.graphics.Point;
+import android.os.Environment;
 import android.text.TextPaint;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -14,69 +16,68 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.WindowManager;
 import android.widget.TextView;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.plugin.hld.a.d;
 import com.tencent.mm.plugin.hld.a.g;
 import com.tencent.mm.plugin.hld.a.d;
 import com.tencent.mm.plugin.hld.model.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.vfs.y;
+import com.tencent.threadpool.i;
 import java.io.OutputStream;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/utils/WxImeUIUtil;", "", "()V", "TAG", "", "alternativeWordMaxWidth", "", "associateWordMaxWidth", "colorCacheMap", "", "currentDarkMode", "", "currentInputType", "Ljava/lang/Integer;", "currentOrientation", "lastInputType", "lastOrientation", "mHeightScale", "", "getMHeightScale", "()D", "setMHeightScale", "(D)V", "mKeyboardBottomHeight", "", "getMKeyboardBottomHeight", "()F", "setMKeyboardBottomHeight", "(F)V", "mKeyboardHeight", "getMKeyboardHeight", "()I", "setMKeyboardHeight", "(I)V", "mScreenWidth", "getMScreenWidth", "setMScreenWidth", "mWidthScale", "getMWidthScale", "setMWidthScale", "measuredTextView", "Landroid/widget/TextView;", "nightColorCacheMap", "percent15ScreenWidth", "percent5ScreenWidth", "checkSDCardAvailable", "colorHexToDecimal", "", "hex", "getAdjustTextSize", "text", "allWidth", "maxSize", "minSize", "getAlternativeWordMaxWidth", "getAssociateWordMaxWidth", "getColorByString", "context", "Landroid/content/Context;", "colorString", "getCurInputType", "()Ljava/lang/Integer;", "getCurOrientation", "getHeightScale", "getKeyboardBottomHeight", "getKeyboardHeight", "getLastInputType", "getLastOrientation", "getMeasureWidth", "textSize", "getPercent20ScreenWidth", "getPercent5ScreenWidth", "getRealBottomHeight", "getRealNavigationBarHeight", "getRealNavigationBarVisibility", "getScreenWidth", "getWidthScale", "hexCharDecimal", "hexChar", "", "init", "", "orientation", "isLandscape", "isPaddingViewType", "viewType", "loadBitmapFromView", "Landroid/graphics/Bitmap;", "v", "Landroid/view/View;", "measureTextViewHeight", "textView", "", "deviceWidth", "reset", "resetLastOrientation", "updateConfiguration", "updateInputType", "inputType", "(Ljava/lang/Integer;)V", "viewSaveToImage", "view", "ordinal", "ener", "Lcom/tencent/mm/plugin/hld/utils/WxImeUIUtil$OnSaveListEner;", "OnSaveListEner", "plugin-hld_release"})
-@SuppressLint({"StaticFieldLeak"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/utils/WxImeUIUtil;", "", "()V", "TAG", "", "alternativeWordMaxWidth", "", "associateWordMaxWidth", "colorCacheMap", "", "currentDarkMode", "", "currentInputType", "Ljava/lang/Integer;", "currentOrientation", "lastInputType", "lastOrientation", "mHeightScale", "", "getMHeightScale", "()D", "setMHeightScale", "(D)V", "mKeyboardBottomHeight", "", "getMKeyboardBottomHeight", "()F", "setMKeyboardBottomHeight", "(F)V", "mKeyboardHeight", "getMKeyboardHeight", "()I", "setMKeyboardHeight", "(I)V", "mScreenWidth", "getMScreenWidth", "setMScreenWidth", "mWidthScale", "getMWidthScale", "setMWidthScale", "measuredTextView", "Landroid/widget/TextView;", "nightColorCacheMap", "percent15ScreenWidth", "percent5ScreenWidth", "checkSDCardAvailable", "colorHexToDecimal", "", "hex", "getAdjustTextSize", "text", "allWidth", "maxSize", "minSize", "getAlternativeWordMaxWidth", "getAssociateWordMaxWidth", "getColorByString", "context", "Landroid/content/Context;", "colorString", "getCurInputType", "()Ljava/lang/Integer;", "getCurOrientation", "getHeightScale", "getKeyboardBottomHeight", "getKeyboardHeight", "getLastInputType", "getLastOrientation", "getMeasureWidth", "textSize", "getPercent20ScreenWidth", "getPercent5ScreenWidth", "getRealBottomHeight", "getRealNavigationBarHeight", "getRealNavigationBarVisibility", "getScreenWidth", "getWidthScale", "hexCharDecimal", "hexChar", "", "init", "", "orientation", "isLandscape", "isPaddingViewType", "viewType", "loadBitmapFromView", "Landroid/graphics/Bitmap;", "v", "Landroid/view/View;", "measureTextViewHeight", "textView", "", "deviceWidth", "reset", "resetLastOrientation", "updateConfiguration", "updateInputType", "inputType", "(Ljava/lang/Integer;)V", "viewSaveToImage", "view", "ordinal", "ener", "Lcom/tencent/mm/plugin/hld/utils/WxImeUIUtil$OnSaveListEner;", "OnSaveListEner", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class k
 {
-  private static float DHA;
-  private static int DHB;
-  private static int DHC;
-  public static int DHD;
-  private static int DHE;
-  private static final Map<String, Integer> DHF;
-  private static final Map<String, Integer> DHG;
-  public static final k DHH;
-  public static Integer DHs;
-  public static Integer DHt;
-  public static boolean DHu;
-  private static Integer DHv;
-  private static Integer DHw;
-  private static TextView DHx;
-  private static double DHy;
-  private static double DHz;
-  private static int jPS;
+  public static final k JyF;
+  public static Integer JyG;
+  public static Integer JyH;
+  public static boolean JyI;
+  private static Integer JyJ;
+  private static Integer JyK;
+  private static TextView JyL;
+  private static double JyM;
+  private static double JyN;
+  private static float JyO;
+  private static int JyP;
+  private static int JyQ;
+  public static int JyR;
+  private static int JyS;
+  private static final Map<String, Integer> JyT;
+  private static final Map<String, Integer> JyU;
   private static int mScreenWidth;
+  private static int moI;
   
   static
   {
-    AppMethodBeat.i(210559);
-    DHH = new k();
-    DHu = ar.isDarkMode();
-    DHF = (Map)new LinkedHashMap();
-    DHG = (Map)new LinkedHashMap();
-    AppMethodBeat.o(210559);
+    AppMethodBeat.i(311790);
+    JyF = new k();
+    JyI = aw.isDarkMode();
+    JyT = (Map)new LinkedHashMap();
+    JyU = (Map)new LinkedHashMap();
+    AppMethodBeat.o(311790);
   }
   
-  public static boolean UK(int paramInt)
+  public static boolean YI(int paramInt)
   {
     return paramInt >= 5;
   }
   
   public static float a(String paramString, int paramInt, float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(210551);
-    p.k(paramString, "text");
-    if (DHx == null) {
-      DHx = new TextView(MMApplicationContext.getContext());
+    AppMethodBeat.i(311713);
+    s.u(paramString, "text");
+    if (JyL == null) {
+      JyL = new TextView(MMApplicationContext.getContext());
     }
-    TextView localTextView = DHx;
+    TextView localTextView = JyL;
     if (localTextView != null) {
       for (;;)
       {
@@ -95,383 +96,354 @@ public final class k
     float f = paramFloat1;
     if (f < paramFloat2)
     {
-      AppMethodBeat.o(210551);
+      AppMethodBeat.o(311713);
       return paramFloat2;
     }
-    AppMethodBeat.o(210551);
+    AppMethodBeat.o(311713);
     return f;
   }
   
-  public static void a(final View paramView, final int paramInt, final boolean paramBoolean, a parama)
+  public static void a(View paramView, int paramInt, boolean paramBoolean, a parama)
   {
-    AppMethodBeat.i(210556);
-    p.k(paramView, "view");
+    AppMethodBeat.i(311752);
+    s.u(paramView, "view");
     paramView.setDrawingCacheEnabled(true);
     paramView.setDrawingCacheQuality(1048576);
     paramView.setDrawingCacheBackgroundColor(-1);
     paramView.layout(0, 0, paramView.getWidth(), paramView.getHeight());
-    com.tencent.e.h.ZvG.be((Runnable)new b(parama, paramView, paramInt, paramBoolean));
-    AppMethodBeat.o(210556);
+    com.tencent.threadpool.h.ahAA.bm(new k..ExternalSyntheticLambda0(parama, paramView, paramInt, paramBoolean));
+    AppMethodBeat.o(311752);
+  }
+  
+  private static final void a(a parama, View paramView, int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(311784);
+    s.u(paramView, "$view");
+    if (parama != null) {
+      parama.onStart();
+    }
+    OutputStream localOutputStream2 = null;
+    Object localObject2 = null;
+    String str = null;
+    localOutputStream1 = localOutputStream2;
+    localObject1 = localObject2;
+    for (;;)
+    {
+      try
+      {
+        Bitmap localBitmap = Bitmap.createBitmap(paramView.getWidth(), paramView.getHeight(), Bitmap.Config.ARGB_8888);
+        localOutputStream1 = localOutputStream2;
+        localObject1 = localObject2;
+        Canvas localCanvas = new Canvas(localBitmap);
+        localOutputStream1 = localOutputStream2;
+        localObject1 = localObject2;
+        localCanvas.drawColor(-1);
+        localOutputStream1 = localOutputStream2;
+        localObject1 = localObject2;
+        paramView.draw(localCanvas);
+        localOutputStream1 = localOutputStream2;
+        localObject1 = localObject2;
+        s.s(localBitmap, "bmp");
+        localOutputStream1 = localOutputStream2;
+        localObject1 = localObject2;
+        if (!s.p(Environment.getExternalStorageState(), "mounted")) {
+          continue;
+        }
+        localOutputStream1 = localOutputStream2;
+        localObject1 = localObject2;
+        str = l.JyV.bg(paramInt, paramBoolean);
+        localOutputStream1 = localOutputStream2;
+        localObject1 = localObject2;
+        localOutputStream2 = y.ev(str, false);
+        localOutputStream1 = localOutputStream2;
+        localObject1 = localOutputStream2;
+        localBitmap.compress(Bitmap.CompressFormat.PNG, 90, localOutputStream2);
+        localOutputStream1 = localOutputStream2;
+        localObject1 = localOutputStream2;
+        localOutputStream2.flush();
+        localOutputStream1 = localOutputStream2;
+        localObject1 = localOutputStream2;
+        localOutputStream2.close();
+        localObject1 = localOutputStream2;
+        if (parama != null)
+        {
+          localOutputStream1 = localOutputStream2;
+          localObject1 = localOutputStream2;
+          parama.onSucceed(str);
+          localObject1 = localOutputStream2;
+        }
+        if (localObject1 != null) {
+          ((OutputStream)localObject1).close();
+        }
+      }
+      catch (Exception localException)
+      {
+        if (parama == null) {
+          continue;
+        }
+        localObject1 = localOutputStream1;
+        parama.eW(localException.getMessage());
+        localObject1 = localOutputStream1;
+        Log.e("WxIme.WxImeUIUtil", s.X("viewSaveToImage ", localException.getMessage()));
+        if (localOutputStream1 == null) {
+          continue;
+        }
+        localOutputStream1.close();
+        continue;
+      }
+      finally
+      {
+        if (localObject1 == null) {
+          continue;
+        }
+        ((OutputStream)localObject1).close();
+        AppMethodBeat.o(311784);
+      }
+      paramView.destroyDrawingCache();
+      if (parama != null) {
+        parama.onFinish();
+      }
+      AppMethodBeat.o(311784);
+      return;
+      localObject1 = str;
+      if (parama != null)
+      {
+        localOutputStream1 = localOutputStream2;
+        localObject1 = localObject2;
+        parama.eW("create fail!");
+        localObject1 = str;
+      }
+    }
   }
   
   public static int b(TextView paramTextView, CharSequence paramCharSequence, int paramInt)
   {
-    AppMethodBeat.i(210546);
-    p.k(paramTextView, "textView");
-    p.k(paramCharSequence, "text");
+    AppMethodBeat.i(311653);
+    s.u(paramTextView, "textView");
+    s.u(paramCharSequence, "text");
     paramTextView.setText(paramCharSequence);
     paramTextView.measure(View.MeasureSpec.makeMeasureSpec(paramInt, -2147483648), View.MeasureSpec.makeMeasureSpec(0, 0));
     paramInt = paramTextView.getMeasuredHeight();
-    AppMethodBeat.o(210546);
+    AppMethodBeat.o(311653);
     return paramInt;
   }
   
-  public static int bf(Context paramContext, String paramString)
+  public static int bh(Context paramContext, String paramString)
   {
-    long l = 0L;
-    int j = 0;
-    AppMethodBeat.i(210557);
-    p.k(paramContext, "context");
+    long l2 = 0L;
+    AppMethodBeat.i(311770);
+    s.u(paramContext, "context");
     if (paramString == null)
     {
-      AppMethodBeat.o(210557);
+      AppMethodBeat.o(311770);
       return 0;
     }
     int i;
-    if (kotlin.n.n.M(paramString, "#", false))
+    if (kotlin.n.n.U(paramString, "#", false))
     {
       paramString = paramString.substring(1);
-      p.j(paramString, "(this as java.lang.String).substring(startIndex)");
-      p.k(paramString, "hex");
+      s.s(paramString, "(this as java.lang.String).substring(startIndex)");
+      s.u(paramString, "hex");
+      long l1;
       if ((paramString.length() != 6) && (paramString.length() != 8)) {
-        l = 0L;
+        l1 = l2;
       }
-      for (;;)
+      int k;
+      do
       {
-        i = (int)l;
-        AppMethodBeat.o(210557);
+        i = (int)l1;
+        AppMethodBeat.o(311770);
         return i;
         paramContext = paramString;
         if (paramString.length() == 6) {
-          paramContext = "FF".concat(String.valueOf(paramString));
+          paramContext = s.X("FF", paramString);
         }
-        int k = ((CharSequence)paramContext).length();
-        if (j < k)
+        k = paramContext.length() - 1;
+        l1 = l2;
+      } while (k < 0);
+      i = 0;
+      label131:
+      int j = i + 1;
+      int m = paramContext.charAt(i);
+      if (65 <= m) {
+        if (m <= 70)
         {
-          i = paramContext.charAt(j);
-          if (65 > i)
-          {
-            label145:
-            if (97 <= i) {
-              break label191;
-            }
-            label151:
-            i -= 48;
+          i = 1;
+          label158:
+          if (i == 0) {
+            break label207;
           }
-          for (;;)
-          {
-            l = l * 16L + i;
-            j += 1;
-            break;
-            if (70 < i) {
-              break label145;
-            }
-            i = i - 65 + 10;
-            continue;
-            label191:
-            if (102 < i) {
-              break label151;
-            }
-            i = i - 97 + 10;
-          }
+          i = m - 65 + 10;
         }
       }
-    }
-    if (kotlin.n.n.M(paramString, "@color/", false))
-    {
-      String str = paramString.substring(7);
-      p.j(str, "(this as java.lang.String).substring(startIndex)");
-      if (ar.isDarkMode()) {}
-      for (paramString = DHG;; paramString = DHF)
+      for (;;)
       {
-        Integer localInteger = (Integer)paramString.get(str);
-        if (localInteger == null) {
+        l2 = l2 * 16L + i;
+        l1 = l2;
+        if (j > k) {
           break;
         }
-        i = localInteger.intValue();
-        AppMethodBeat.o(210557);
+        i = j;
+        break label131;
+        i = 0;
+        break label158;
+        i = 0;
+        break label158;
+        label207:
+        if (97 <= m) {
+          if (m <= 102) {
+            i = 1;
+          }
+        }
+        for (;;)
+        {
+          if (i == 0) {
+            break label249;
+          }
+          i = m - 97 + 10;
+          break;
+          i = 0;
+          continue;
+          i = 0;
+        }
+        label249:
+        i = m - 48;
+      }
+    }
+    if (kotlin.n.n.U(paramString, "@color/", false))
+    {
+      String str = paramString.substring(7);
+      s.s(str, "(this as java.lang.String).substring(startIndex)");
+      if (aw.isDarkMode()) {}
+      Integer localInteger;
+      for (paramString = JyU;; paramString = JyT)
+      {
+        localInteger = (Integer)paramString.get(str);
+        if (localInteger != null) {
+          break;
+        }
+        i = a.w(paramContext, paramContext.getResources().getIdentifier(str, "color", paramContext.getPackageName()));
+        paramString.put(str, Integer.valueOf(i));
+        AppMethodBeat.o(311770);
         return i;
       }
-      i = a.w(paramContext, paramContext.getResources().getIdentifier(str, "color", paramContext.getPackageName()));
-      paramString.put(str, Integer.valueOf(i));
-      AppMethodBeat.o(210557);
+      i = localInteger.intValue();
+      AppMethodBeat.o(311770);
       return i;
     }
-    AppMethodBeat.o(210557);
+    AppMethodBeat.o(311770);
     return 0;
   }
   
   public static float c(float paramFloat, String paramString)
   {
-    AppMethodBeat.i(210552);
-    p.k(paramString, "text");
-    if (DHx == null) {
-      DHx = new TextView(MMApplicationContext.getContext());
+    AppMethodBeat.i(311724);
+    s.u(paramString, "text");
+    if (JyL == null) {
+      JyL = new TextView(MMApplicationContext.getContext());
     }
     float f = 0.0F;
-    TextView localTextView = DHx;
+    TextView localTextView = JyL;
     if (localTextView != null)
     {
       localTextView.setTextSize(0, paramFloat);
       f = localTextView.getPaint().measureText(paramString);
     }
-    AppMethodBeat.o(210552);
+    AppMethodBeat.o(311724);
     return f;
   }
   
-  public static Integer eGL()
+  public static int fOA()
   {
-    return DHs;
-  }
-  
-  public static Integer eGM()
-  {
-    return DHt;
-  }
-  
-  public static void eGN()
-  {
-    DHt = DHs;
-  }
-  
-  public static Integer eGO()
-  {
-    return DHw;
-  }
-  
-  public static Integer eGP()
-  {
-    return DHv;
-  }
-  
-  public static int eGQ()
-  {
-    AppMethodBeat.i(210547);
-    if (DHB != 0)
+    AppMethodBeat.i(311688);
+    if (JyQ != 0)
     {
-      i = DHB;
-      AppMethodBeat.o(210547);
+      i = JyQ;
+      AppMethodBeat.o(311688);
       return i;
     }
-    Object localObject = MMApplicationContext.getContext();
-    p.j(localObject, "MMApplicationContext.getContext()");
-    localObject = ((Context)localObject).getResources();
-    p.j(localObject, "MMApplicationContext.getContext().resources");
-    localObject = ((Resources)localObject).getDisplayMetrics();
+    DisplayMetrics localDisplayMetrics = MMApplicationContext.getContext().getResources().getDisplayMetrics();
     if (isLandscape()) {}
-    for (int i = (int)(((DisplayMetrics)localObject).heightPixels * 0.2D);; i = (int)(((DisplayMetrics)localObject).widthPixels * 0.2D))
+    for (int i = (int)(localDisplayMetrics.heightPixels * 0.05D);; i = (int)(localDisplayMetrics.widthPixels * 0.05D))
     {
-      DHB = i;
-      AppMethodBeat.o(210547);
+      JyQ = i;
+      AppMethodBeat.o(311688);
       return i;
     }
   }
   
-  public static int eGR()
+  public static int fOB()
   {
-    AppMethodBeat.i(210548);
-    if (DHC != 0)
+    AppMethodBeat.i(311703);
+    if (JyS != 0)
     {
-      i = DHC;
-      AppMethodBeat.o(210548);
+      i = JyS;
+      AppMethodBeat.o(311703);
       return i;
     }
-    Object localObject = MMApplicationContext.getContext();
-    p.j(localObject, "MMApplicationContext.getContext()");
-    localObject = ((Context)localObject).getResources();
-    p.j(localObject, "MMApplicationContext.getContext().resources");
-    localObject = ((Resources)localObject).getDisplayMetrics();
     if (isLandscape()) {}
-    for (int i = (int)(((DisplayMetrics)localObject).heightPixels * 0.05D);; i = (int)(((DisplayMetrics)localObject).widthPixels * 0.05D))
+    for (int i = (int)(MMApplicationContext.getContext().getResources().getDimension(a.d.ime_width) - a.bs(MMApplicationContext.getContext(), a.d.keyboard_strike_right_container_width) - a.bs(MMApplicationContext.getContext(), a.d.Edge_1_5_A));; i = MMApplicationContext.getContext().getResources().getDisplayMetrics().widthPixels - a.bs(MMApplicationContext.getContext(), a.d.keyboard_strike_right_container_width) - a.bs(MMApplicationContext.getContext(), a.d.Edge_1_5_A))
     {
-      DHC = i;
-      AppMethodBeat.o(210548);
+      JyS = i;
+      AppMethodBeat.o(311703);
       return i;
     }
   }
   
-  public static int eGS()
+  public static Integer fOu()
   {
-    AppMethodBeat.i(210549);
-    if (DHE != 0)
+    return JyG;
+  }
+  
+  public static Integer fOv()
+  {
+    return JyH;
+  }
+  
+  public static void fOw()
+  {
+    JyH = JyG;
+  }
+  
+  public static Integer fOx()
+  {
+    return JyK;
+  }
+  
+  public static Integer fOy()
+  {
+    return JyJ;
+  }
+  
+  public static int fOz()
+  {
+    AppMethodBeat.i(311677);
+    if (JyP != 0)
     {
-      i = DHE;
-      AppMethodBeat.o(210549);
+      i = JyP;
+      AppMethodBeat.o(311677);
       return i;
     }
-    Object localObject;
-    if (isLandscape())
+    DisplayMetrics localDisplayMetrics = MMApplicationContext.getContext().getResources().getDisplayMetrics();
+    if (isLandscape()) {}
+    for (int i = (int)(localDisplayMetrics.heightPixels * 0.2D);; i = (int)(localDisplayMetrics.widthPixels * 0.2D))
     {
-      localObject = MMApplicationContext.getContext();
-      p.j(localObject, "MMApplicationContext.getContext()");
-    }
-    for (int i = (int)(((Context)localObject).getResources().getDimension(a.d.ime_width) - a.aZ(MMApplicationContext.getContext(), a.d.keyboard_strike_right_container_width) - a.aZ(MMApplicationContext.getContext(), a.d.Edge_1_5_A));; i = ((Resources)localObject).getDisplayMetrics().widthPixels - a.aZ(MMApplicationContext.getContext(), a.d.keyboard_strike_right_container_width) - a.aZ(MMApplicationContext.getContext(), a.d.Edge_1_5_A))
-    {
-      DHE = i;
-      AppMethodBeat.o(210549);
+      JyP = i;
+      AppMethodBeat.o(311677);
       return i;
-      localObject = MMApplicationContext.getContext();
-      p.j(localObject, "MMApplicationContext.getContext()");
-      localObject = ((Context)localObject).getResources();
-      p.j(localObject, "MMApplicationContext.getContext().resources");
-    }
-  }
-  
-  public static int gV(Context paramContext)
-  {
-    AppMethodBeat.i(210542);
-    p.k(paramContext, "context");
-    if (jPS == 0) {
-      jPS = a.aZ(paramContext, a.d.ime_height);
-    }
-    int i = jPS;
-    AppMethodBeat.o(210542);
-    return i;
-  }
-  
-  public static float gW(Context paramContext)
-  {
-    float f2 = 0.0F;
-    AppMethodBeat.i(210543);
-    if (DHA == 0.0F)
-    {
-      f1 = f2;
-      if (paramContext != null)
-      {
-        paramContext = paramContext.getResources();
-        f1 = f2;
-        if (paramContext != null) {
-          f1 = paramContext.getDimension(a.d.ime_keyboard_height);
-        }
-      }
-      DHA = f1;
-    }
-    float f1 = DHA;
-    AppMethodBeat.o(210543);
-    return f1;
-  }
-  
-  public static double gX(Context paramContext)
-  {
-    AppMethodBeat.i(210544);
-    p.k(paramContext, "context");
-    Object localObject;
-    if (DHy == 0.0D)
-    {
-      localObject = paramContext.getResources();
-      p.j(localObject, "context.resources");
-      localObject = ((Resources)localObject).getDisplayMetrics();
-      if (((DisplayMetrics)localObject).widthPixels == 0)
-      {
-        AppMethodBeat.o(210544);
-        return 1.0D;
-      }
-      if (!isLandscape()) {
-        break label164;
-      }
-    }
-    label164:
-    for (double d = paramContext.getResources().getDimension(a.d.ime_width) / 662.0D;; d = ((DisplayMetrics)localObject).widthPixels / 400.0D)
-    {
-      DHy = d;
-      Log.d("WxIme.WxImeUIUtil", "getWidthScale: displayMetrics(" + ((DisplayMetrics)localObject).heightPixels + ", " + ((DisplayMetrics)localObject).widthPixels + ") isLandscape " + isLandscape());
-      Log.i("WxIme.WxImeUIUtil", "getWidthScale:%s", new Object[] { Double.valueOf(DHy) });
-      d = DHy;
-      AppMethodBeat.o(210544);
-      return d;
-    }
-  }
-  
-  public static double gY(Context paramContext)
-  {
-    AppMethodBeat.i(210545);
-    p.k(paramContext, "context");
-    if (DHz == 0.0D)
-    {
-      DHz = paramContext.getResources().getDimension(a.d.S2_button_height) / paramContext.getResources().getInteger(a.g.S2_button_height);
-      Log.i("WxIme.WxImeUIUtil", "getHeightScale:%s", new Object[] { Double.valueOf(DHz) });
-    }
-    double d = DHz;
-    AppMethodBeat.o(210545);
-    return d;
-  }
-  
-  public static int gZ(Context paramContext)
-  {
-    AppMethodBeat.i(210555);
-    if (paramContext == null)
-    {
-      i = 0;
-      if ((i <= 0) || (i == ar.getStatusBarHeight(paramContext))) {
-        break label174;
-      }
-      i = 1;
-      label26:
-      if (i == 0) {
-        break label179;
-      }
-      i = Resources.getSystem().getIdentifier("navigation_bar_height", "dimen", "android");
-      if (i <= 0) {
-        break label187;
-      }
-    }
-    label174:
-    label179:
-    label187:
-    for (int i = Resources.getSystem().getDimensionPixelSize(i);; i = 0)
-    {
-      AppMethodBeat.o(210555);
-      return i;
-      Object localObject1 = paramContext.getSystemService("window");
-      if (localObject1 == null)
-      {
-        paramContext = new t("null cannot be cast to non-null type android.view.WindowManager");
-        AppMethodBeat.o(210555);
-        throw paramContext;
-      }
-      localObject1 = (WindowManager)localObject1;
-      if (localObject1 == null)
-      {
-        Log.e("WxIme.WxImeUIUtil", "getRealBottomHeight, get NULL windowManager");
-        i = 0;
-        break;
-      }
-      Object localObject2 = ((WindowManager)localObject1).getDefaultDisplay();
-      localObject1 = new Point();
-      ((Display)localObject2).getSize((Point)localObject1);
-      localObject2 = ar.au(paramContext);
-      i = Math.max(((Point)localObject1).y, ((Point)localObject1).x);
-      i = Math.max(((Point)localObject2).y, ((Point)localObject2).x) - i;
-      break;
-      i = 0;
-      break label26;
-      AppMethodBeat.o(210555);
-      return 0;
     }
   }
   
   public static int getScreenWidth(Context paramContext)
   {
-    AppMethodBeat.i(210541);
-    p.k(paramContext, "context");
+    AppMethodBeat.i(311615);
+    s.u(paramContext, "context");
     if (mScreenWidth == 0)
     {
-      paramContext = paramContext.getResources();
-      p.j(paramContext, "context.resources");
-      paramContext = paramContext.getDisplayMetrics();
+      paramContext = paramContext.getResources().getDisplayMetrics();
       if (paramContext.widthPixels == 0)
       {
-        AppMethodBeat.o(210541);
+        AppMethodBeat.o(311615);
         return 1080;
       }
       mScreenWidth = paramContext.widthPixels;
@@ -479,203 +451,224 @@ public final class k
       Log.i("WxIme.WxImeUIUtil", "getScreenWidth:%s", new Object[] { Integer.valueOf(mScreenWidth) });
     }
     int i = mScreenWidth;
-    AppMethodBeat.o(210541);
+    AppMethodBeat.o(311615);
     return i;
   }
   
-  public static void init(int paramInt)
+  public static int iq(Context paramContext)
   {
-    AppMethodBeat.i(210536);
-    DHs = Integer.valueOf(paramInt);
-    AppMethodBeat.o(210536);
+    AppMethodBeat.i(311622);
+    s.u(paramContext, "context");
+    if (moI == 0) {
+      moI = a.bs(paramContext, a.d.ime_height);
+    }
+    int i = moI;
+    AppMethodBeat.o(311622);
+    return i;
+  }
+  
+  public static float ir(Context paramContext)
+  {
+    float f = 0.0F;
+    AppMethodBeat.i(311627);
+    int i;
+    if (JyO == 0.0F)
+    {
+      i = 1;
+      if (i != 0) {
+        if (paramContext != null) {
+          break label47;
+        }
+      }
+    }
+    for (;;)
+    {
+      JyO = f;
+      f = JyO;
+      AppMethodBeat.o(311627);
+      return f;
+      i = 0;
+      break;
+      label47:
+      paramContext = paramContext.getResources();
+      if (paramContext != null) {
+        f = paramContext.getDimension(a.d.ime_keyboard_height);
+      }
+    }
+  }
+  
+  public static double is(Context paramContext)
+  {
+    AppMethodBeat.i(311636);
+    s.u(paramContext, "context");
+    int i;
+    if (JyM == 0.0D) {
+      i = 1;
+    }
+    DisplayMetrics localDisplayMetrics;
+    while (i != 0)
+    {
+      localDisplayMetrics = paramContext.getResources().getDisplayMetrics();
+      if (localDisplayMetrics.widthPixels == 0)
+      {
+        AppMethodBeat.o(311636);
+        return 1.0D;
+        i = 0;
+      }
+      else
+      {
+        if (!isLandscape()) {
+          break label170;
+        }
+      }
+    }
+    label170:
+    for (double d = paramContext.getResources().getDimension(a.d.ime_width) / 662.0D;; d = localDisplayMetrics.widthPixels / 400.0D)
+    {
+      JyM = d;
+      Log.d("WxIme.WxImeUIUtil", "getWidthScale: displayMetrics(" + localDisplayMetrics.heightPixels + ", " + localDisplayMetrics.widthPixels + ") isLandscape " + isLandscape());
+      Log.i("WxIme.WxImeUIUtil", "getWidthScale:%s", new Object[] { Double.valueOf(JyM) });
+      d = JyM;
+      AppMethodBeat.o(311636);
+      return d;
+    }
   }
   
   public static boolean isLandscape()
   {
-    AppMethodBeat.i(210539);
-    Object localObject = MMApplicationContext.getContext();
-    p.j(localObject, "MMApplicationContext.getContext()");
-    localObject = ((Context)localObject).getResources();
-    p.j(localObject, "MMApplicationContext.getContext().resources");
-    if (((Resources)localObject).getConfiguration().orientation == 2)
+    AppMethodBeat.i(311587);
+    if (MMApplicationContext.getContext().getResources().getConfiguration().orientation == 2)
     {
-      AppMethodBeat.o(210539);
+      AppMethodBeat.o(311587);
       return true;
     }
-    AppMethodBeat.o(210539);
+    AppMethodBeat.o(311587);
     return false;
   }
   
-  public static void q(Integer paramInteger)
+  public static double it(Context paramContext)
   {
-    DHv = DHw;
-    DHw = paramInteger;
+    AppMethodBeat.i(311647);
+    s.u(paramContext, "context");
+    if (JyN == 0.0D) {}
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        JyN = paramContext.getResources().getDimension(a.d.S2_button_height) / paramContext.getResources().getInteger(a.g.S2_button_height);
+        Log.i("WxIme.WxImeUIUtil", "getHeightScale:%s", new Object[] { Double.valueOf(JyN) });
+      }
+      double d = JyN;
+      AppMethodBeat.o(311647);
+      return d;
+    }
+  }
+  
+  public static int iu(Context paramContext)
+  {
+    AppMethodBeat.i(311739);
+    if (paramContext == null)
+    {
+      i = 0;
+      if ((i <= 0) || (i == aw.getStatusBarHeight(paramContext))) {
+        break label154;
+      }
+      i = 1;
+      label26:
+      if (i == 0) {
+        break label159;
+      }
+      i = Resources.getSystem().getIdentifier("navigation_bar_height", "dimen", "android");
+      if (i <= 0) {
+        break label167;
+      }
+    }
+    label154:
+    label159:
+    label167:
+    for (int i = Resources.getSystem().getDimensionPixelSize(i);; i = 0)
+    {
+      AppMethodBeat.o(311739);
+      return i;
+      Object localObject1 = paramContext.getSystemService("window");
+      if (localObject1 == null)
+      {
+        paramContext = new NullPointerException("null cannot be cast to non-null type android.view.WindowManager");
+        AppMethodBeat.o(311739);
+        throw paramContext;
+      }
+      Object localObject2 = ((WindowManager)localObject1).getDefaultDisplay();
+      localObject1 = new Point();
+      ((Display)localObject2).getSize((Point)localObject1);
+      localObject2 = aw.bf(paramContext);
+      i = Math.max(((Point)localObject1).y, ((Point)localObject1).x);
+      i = Math.max(((Point)localObject2).y, ((Point)localObject2).x) - i;
+      break;
+      i = 0;
+      break label26;
+      AppMethodBeat.o(311739);
+      return 0;
+    }
   }
   
   public static void reset(Context paramContext)
   {
-    AppMethodBeat.i(210540);
+    AppMethodBeat.i(311602);
     Log.i("WxIme.WxImeUIUtil", "reset");
     mScreenWidth = 0;
-    DHy = 0.0D;
-    DHz = 0.0D;
-    DHB = 0;
-    DHC = 0;
-    DHE = 0;
-    DHD = 0;
-    jPS = 0;
-    DHA = 0.0F;
-    a.hqX();
-    Object localObject = (d)com.tencent.mm.kernel.h.ae(d.class);
+    JyM = 0.0D;
+    JyN = 0.0D;
+    JyP = 0;
+    JyQ = 0;
+    JyS = 0;
+    JyR = 0;
+    moI = 0;
+    JyO = 0.0F;
+    a.iRh();
+    Object localObject = (d)com.tencent.mm.kernel.h.ax(d.class);
     if (localObject != null)
     {
-      localObject = ((d)localObject).eCD();
+      localObject = ((d)localObject).fKG();
       if (localObject != null) {
         ((com.tencent.mm.plugin.hld.a.b)localObject).reset();
       }
     }
-    localObject = g.DCm;
+    localObject = g.JuL;
     g.reset();
-    localObject = com.tencent.mm.ui.k.b.XIY;
-    com.tencent.mm.ui.k.b.hXi().clear();
-    localObject = com.tencent.mm.plugin.hld.model.n.DEn;
+    localObject = com.tencent.mm.ui.k.b.afwA;
+    com.tencent.mm.ui.k.b.jBF().clear();
+    localObject = com.tencent.mm.plugin.hld.model.n.JvW;
     com.tencent.mm.plugin.hld.model.n.reset();
-    g.DCm.gO(paramContext);
-    localObject = com.tencent.mm.plugin.hld.model.f.DBL;
+    g.JuL.ii(paramContext);
+    localObject = com.tencent.mm.plugin.hld.model.f.JuH;
     com.tencent.mm.plugin.hld.model.f.reset(paramContext);
-    localObject = com.tencent.mm.plugin.hld.candidate.f.Dvh;
-    p.k(paramContext, "context");
-    ((com.tencent.mm.plugin.hld.candidate.f)localObject).onHide();
-    com.tencent.mm.plugin.hld.candidate.f.Dva = false;
-    ((com.tencent.mm.plugin.hld.candidate.f)localObject).init(paramContext);
-    AppMethodBeat.o(210540);
+    com.tencent.mm.plugin.hld.candidate.f.Jor.reset(paramContext);
+    AppMethodBeat.o(311602);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/utils/WxImeUIUtil$OnSaveListEner;", "", "onFailure", "", "error", "", "onFinish", "onStart", "onSucceed", "filePath", "plugin-hld_release"})
+  public static void sE(int paramInt)
+  {
+    AppMethodBeat.i(311539);
+    JyG = Integer.valueOf(paramInt);
+    AppMethodBeat.o(311539);
+  }
+  
+  public static void x(Integer paramInteger)
+  {
+    JyJ = JyK;
+    JyK = paramInteger;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/utils/WxImeUIUtil$OnSaveListEner;", "", "onFailure", "", "error", "", "onFinish", "onStart", "onSucceed", "filePath", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface a
   {
-    public abstract void dL(String paramString);
+    public abstract void eW(String paramString);
     
     public abstract void onFinish();
     
     public abstract void onStart();
     
     public abstract void onSucceed(String paramString);
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
-  {
-    b(k.a parama, View paramView, int paramInt, boolean paramBoolean) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(209833);
-      Object localObject1 = this.DHI;
-      if (localObject1 != null) {
-        ((k.a)localObject1).onStart();
-      }
-      OutputStream localOutputStream2 = null;
-      k.a locala = null;
-      String str = null;
-      OutputStream localOutputStream1 = localOutputStream2;
-      localObject1 = locala;
-      for (;;)
-      {
-        try
-        {
-          localObject3 = k.DHH;
-          localOutputStream1 = localOutputStream2;
-          localObject1 = locala;
-          localObject3 = k.fk(paramView);
-          localOutputStream1 = localOutputStream2;
-          localObject1 = locala;
-          k localk = k.DHH;
-          localOutputStream1 = localOutputStream2;
-          localObject1 = locala;
-          if (!k.eGT()) {
-            continue;
-          }
-          localOutputStream1 = localOutputStream2;
-          localObject1 = locala;
-          str = l.DHK.aG(paramInt, paramBoolean);
-          localOutputStream1 = localOutputStream2;
-          localObject1 = locala;
-          localOutputStream2 = u.Te(str);
-          localOutputStream1 = localOutputStream2;
-          localObject1 = localOutputStream2;
-          ((Bitmap)localObject3).compress(Bitmap.CompressFormat.PNG, 90, localOutputStream2);
-          localOutputStream1 = localOutputStream2;
-          localObject1 = localOutputStream2;
-          localOutputStream2.flush();
-          localOutputStream1 = localOutputStream2;
-          localObject1 = localOutputStream2;
-          localOutputStream2.close();
-          localOutputStream1 = localOutputStream2;
-          localObject1 = localOutputStream2;
-          locala = this.DHI;
-          localObject1 = localOutputStream2;
-          if (locala != null)
-          {
-            localOutputStream1 = localOutputStream2;
-            localObject1 = localOutputStream2;
-            locala.onSucceed(str);
-            localObject1 = localOutputStream2;
-          }
-          if (localObject1 != null) {
-            ((OutputStream)localObject1).close();
-          }
-        }
-        catch (Exception localException)
-        {
-          Object localObject3;
-          localObject1 = localOutputStream1;
-          locala = this.DHI;
-          if (locala == null) {
-            continue;
-          }
-          localObject1 = localOutputStream1;
-          locala.dL(localException.getMessage());
-          localObject1 = localOutputStream1;
-          Log.e("WxIme.WxImeUIUtil", "viewSaveToImage " + localException.getMessage());
-          if (localOutputStream1 == null) {
-            continue;
-          }
-          localOutputStream1.close();
-          continue;
-        }
-        finally
-        {
-          if (localObject1 == null) {
-            continue;
-          }
-          ((OutputStream)localObject1).close();
-          AppMethodBeat.o(209833);
-        }
-        paramView.destroyDrawingCache();
-        localObject1 = this.DHI;
-        if (localObject1 == null) {
-          break label324;
-        }
-        ((k.a)localObject1).onFinish();
-        AppMethodBeat.o(209833);
-        return;
-        localOutputStream1 = localOutputStream2;
-        localObject1 = locala;
-        localObject3 = this.DHI;
-        localObject1 = str;
-        if (localObject3 != null)
-        {
-          localOutputStream1 = localOutputStream2;
-          localObject1 = locala;
-          ((k.a)localObject3).dL("create fail!");
-          localObject1 = str;
-        }
-      }
-      label324:
-      AppMethodBeat.o(209833);
-    }
   }
 }
 

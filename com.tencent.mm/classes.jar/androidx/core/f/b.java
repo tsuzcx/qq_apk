@@ -6,11 +6,11 @@ public final class b
 {
   public static void a(Object paramObject, StringBuilder paramStringBuilder)
   {
-    AppMethodBeat.i(251306);
+    AppMethodBeat.i(196007);
     if (paramObject == null)
     {
       paramStringBuilder.append("null");
-      AppMethodBeat.o(251306);
+      AppMethodBeat.o(196007);
       return;
     }
     String str2 = paramObject.getClass().getSimpleName();
@@ -32,12 +32,12 @@ public final class b
     paramStringBuilder.append(str1);
     paramStringBuilder.append('{');
     paramStringBuilder.append(Integer.toHexString(System.identityHashCode(paramObject)));
-    AppMethodBeat.o(251306);
+    AppMethodBeat.o(196007);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     androidx.core.f.b
  * JD-Core Version:    0.7.0.1
  */

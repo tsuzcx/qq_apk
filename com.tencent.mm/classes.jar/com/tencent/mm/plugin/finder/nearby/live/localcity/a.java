@@ -3,43 +3,43 @@ package com.tencent.mm.plugin.finder.nearby.live.localcity;
 import androidx.fragment.app.Fragment;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.nearby.live.e;
-import com.tencent.mm.protocal.protobuf.bcz;
-import com.tencent.mm.protocal.protobuf.bid;
+import com.tencent.mm.protocal.protobuf.bnn;
+import com.tencent.mm.protocal.protobuf.bui;
 import com.tencent.mm.ui.MMActivity;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/live/localcity/NearbyLiveLocalCityPresenter;", "Lcom/tencent/mm/plugin/finder/nearby/live/NearbyLivePresenter;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "fragment", "Landroidx/fragment/app/Fragment;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "tabInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveTabInfo;", "(Lcom/tencent/mm/ui/MMActivity;Landroidx/fragment/app/Fragment;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;Lcom/tencent/mm/protocal/protobuf/FinderLiveTabInfo;)V", "getCommentScene", "", "getHeaderInfo", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$FixedViewInfo;", "getLocalTypeFlag", "getTabType", "plugin-finder-nearby_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/live/localcity/NearbyLiveLocalCityPresenter;", "Lcom/tencent/mm/plugin/finder/nearby/live/NearbyLivePresenter;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "fragment", "Landroidx/fragment/app/Fragment;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "tabInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveTabInfo;", "(Lcom/tencent/mm/ui/MMActivity;Landroidx/fragment/app/Fragment;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;Lcom/tencent/mm/protocal/protobuf/FinderLiveTabInfo;)V", "getCommentScene", "", "getHeaderInfo", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$FixedViewInfo;", "getLocalTypeFlag", "getTabType", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   extends e
 {
-  public a(MMActivity paramMMActivity, Fragment paramFragment, bid parambid, bcz parambcz)
+  public a(MMActivity paramMMActivity, Fragment paramFragment, bui parambui, bnn parambnn)
   {
-    super(paramMMActivity, parambid);
-    AppMethodBeat.i(203353);
+    super(paramMMActivity, parambui);
+    AppMethodBeat.i(340828);
     this.fragment = paramFragment;
-    this.zDU = parambcz;
-    AppMethodBeat.o(203353);
+    this.EIq = parambnn;
+    AppMethodBeat.o(340828);
   }
   
-  public final int dLz()
+  public final int eEC()
   {
-    bcz localbcz = this.zDU;
-    if (localbcz != null) {}
-    for (int i = localbcz.SOa;; i = 0) {
+    bnn localbnn = this.EIq;
+    if (localbnn == null) {}
+    for (int i = 0;; i = localbnn.ZVZ) {
       return i + 15;
     }
   }
   
   public final int getCommentScene()
   {
-    return this.xbu.xkX;
+    return this.Auc.AJo;
   }
   
   public final int getTabType()
   {
-    bcz localbcz = this.zDU;
-    if (localbcz != null) {}
-    for (int i = localbcz.SOa;; i = 0) {
+    bnn localbnn = this.EIq;
+    if (localbnn == null) {}
+    for (int i = 0;; i = localbnn.ZVZ) {
       return i + 1001;
     }
   }

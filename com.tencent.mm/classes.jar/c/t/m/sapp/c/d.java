@@ -18,24 +18,24 @@ public class d
   
   public d(Context paramContext)
   {
-    AppMethodBeat.i(254613);
+    AppMethodBeat.i(186202);
     this.b = null;
     this.c = null;
     this.b = paramContext;
     this.c = new HashMap(5);
-    AppMethodBeat.o(254613);
+    AppMethodBeat.o(186202);
   }
   
   public static d a(Context paramContext)
   {
     try
     {
-      AppMethodBeat.i(254616);
+      AppMethodBeat.i(186204);
       if (a == null) {
         a = new d(paramContext);
       }
       paramContext = a;
-      AppMethodBeat.o(254616);
+      AppMethodBeat.o(186204);
       return paramContext;
     }
     finally {}
@@ -45,7 +45,7 @@ public class d
   {
     try
     {
-      AppMethodBeat.i(254622);
+      AppMethodBeat.i(186210);
       try
       {
         File localFile = this.b.getFilesDir();
@@ -66,7 +66,7 @@ public class d
           paramString = null;
         }
       }
-      AppMethodBeat.o(254622);
+      AppMethodBeat.o(186210);
       return paramString;
     }
     finally {}
@@ -81,13 +81,13 @@ public class d
       FileChannel localFileChannel1;
       try
       {
-        AppMethodBeat.i(254618);
+        AppMethodBeat.i(186206);
         if ((paramString != null) && (paramString.trim().length() > 0))
         {
           localFile = a(paramString);
           if (localFile == null)
           {
-            AppMethodBeat.o(254618);
+            AppMethodBeat.o(186206);
             bool = true;
             return bool;
           }
@@ -113,19 +113,19 @@ public class d
           bool = paramString.isValid();
           if (bool)
           {
-            AppMethodBeat.o(254618);
+            AppMethodBeat.o(186206);
             bool = true;
           }
         }
       }
-      catch (Throwable paramString)
+      finally
       {
         continue;
       }
-      AppMethodBeat.o(254618);
+      AppMethodBeat.o(186206);
       boolean bool = false;
       continue;
-      AppMethodBeat.o(254618);
+      AppMethodBeat.o(186206);
       bool = false;
     }
   }
@@ -136,7 +136,7 @@ public class d
     {
       try
       {
-        AppMethodBeat.i(254620);
+        AppMethodBeat.i(186207);
         if (paramString != null)
         {
           int i = paramString.trim().length();
@@ -149,11 +149,11 @@ public class d
                 continue;
               }
               paramString.close();
-              AppMethodBeat.o(254620);
+              AppMethodBeat.o(186207);
             }
-            catch (Throwable paramString)
+            finally
             {
-              AppMethodBeat.o(254620);
+              AppMethodBeat.o(186207);
               continue;
             }
             return;
@@ -161,13 +161,13 @@ public class d
         }
       }
       finally {}
-      AppMethodBeat.o(254620);
+      AppMethodBeat.o(186207);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     c.t.m.sapp.c.d
  * JD-Core Version:    0.7.0.1
  */

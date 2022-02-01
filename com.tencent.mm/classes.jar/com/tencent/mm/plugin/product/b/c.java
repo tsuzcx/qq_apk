@@ -1,839 +1,281 @@
 package com.tencent.mm.plugin.product.b;
 
-import android.app.Activity;
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.k.b;
-import com.tencent.mm.platformtools.u;
-import com.tencent.mm.plugin.product.c.f;
-import com.tencent.mm.plugin.product.c.h;
-import com.tencent.mm.plugin.product.c.j;
-import com.tencent.mm.plugin.product.c.k;
-import com.tencent.mm.plugin.product.c.l;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.protocal.protobuf.ahw;
-import com.tencent.mm.protocal.protobuf.alj;
-import com.tencent.mm.protocal.protobuf.bb;
-import com.tencent.mm.protocal.protobuf.cos;
-import com.tencent.mm.protocal.protobuf.doo;
-import com.tencent.mm.protocal.protobuf.dp;
-import com.tencent.mm.protocal.protobuf.dtx;
-import com.tencent.mm.protocal.protobuf.eak;
-import com.tencent.mm.protocal.protobuf.eiy;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 
 public final class c
+  extends com.tencent.mm.bx.a
 {
-  private d GSU;
-  public m GSV;
-  public List<n> GSW;
-  public String GSX;
-  public String GSY;
-  public String GSZ;
-  public alj GTa;
-  public dp GTb;
-  public dtx GTc;
-  public String GTd;
-  public String GTe;
-  public int GTf;
-  public Map<String, e> GTg;
-  public Map<String, String> GTh;
-  public LinkedList<alj> GTi;
-  public LinkedList<bb> GTj;
-  public e GTk;
-  private com.tencent.mm.plugin.product.ui.e GTl;
-  public Map<String, LinkedList<ahw>> GTm;
-  public int mCount;
+  public String MEq;
+  public LinkedList<d> MRl;
+  public int MRm;
+  public int MRn;
+  public int MRo;
+  public LinkedList<String> MRp;
+  public LinkedList<String> MRq;
+  public LinkedList<b> MRr;
+  public LinkedList<String> MRs;
+  public int MRt;
+  public int MRu;
+  public LinkedList<m> MRv;
+  public LinkedList<a> MRw;
+  public k MRx;
+  public String detail;
+  public String nUO;
+  public String name;
+  public int version;
   
   public c()
   {
-    AppMethodBeat.i(66858);
-    this.GSU = null;
-    this.mCount = 1;
-    this.GTh = new HashMap();
-    this.GTm = null;
-    AppMethodBeat.o(66858);
+    AppMethodBeat.i(91267);
+    this.MRl = new LinkedList();
+    this.MRp = new LinkedList();
+    this.MRq = new LinkedList();
+    this.MRr = new LinkedList();
+    this.MRs = new LinkedList();
+    this.MRv = new LinkedList();
+    this.MRw = new LinkedList();
+    AppMethodBeat.o(91267);
   }
   
-  private void a(String[] paramArrayOfString, l paraml)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(66881);
-    if ((paramArrayOfString == null) || (paramArrayOfString.length <= 0))
+    AppMethodBeat.i(91268);
+    if (paramInt == 0)
     {
-      AppMethodBeat.o(66881);
-      return;
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.name != null) {
+        paramVarArgs.g(1, this.name);
+      }
+      paramVarArgs.e(2, 8, this.MRl);
+      paramVarArgs.bS(3, this.MRm);
+      paramVarArgs.bS(4, this.MRn);
+      paramVarArgs.bS(5, this.MRo);
+      paramVarArgs.e(6, 1, this.MRp);
+      if (this.nUO != null) {
+        paramVarArgs.g(7, this.nUO);
+      }
+      if (this.detail != null) {
+        paramVarArgs.g(8, this.detail);
+      }
+      paramVarArgs.e(9, 1, this.MRq);
+      paramVarArgs.e(10, 8, this.MRr);
+      paramVarArgs.e(11, 1, this.MRs);
+      paramVarArgs.bS(12, this.MRt);
+      paramVarArgs.bS(13, this.MRu);
+      paramVarArgs.e(14, 8, this.MRv);
+      paramVarArgs.bS(15, this.version);
+      paramVarArgs.e(16, 8, this.MRw);
+      if (this.MEq != null) {
+        paramVarArgs.g(17, this.MEq);
+      }
+      if (this.MRx != null)
+      {
+        paramVarArgs.qD(18, this.MRx.computeSize());
+        this.MRx.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(91268);
+      return 0;
     }
-    int k = paramArrayOfString.length;
-    int i = 1;
-    if (i <= -1 >>> 32 - k)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      int j = 0;
-      while (j < k)
-      {
-        if (i << 31 - j >> 31 == -1) {
-          localStringBuilder.append(paramArrayOfString[j]).append(";");
-        }
-        j += 1;
-      }
-      localStringBuilder.deleteCharAt(localStringBuilder.lastIndexOf(";"));
-      e locale = (e)this.GTg.get(localStringBuilder.toString());
-      if (locale != null)
-      {
-        if (locale.GTo < paraml.GUa) {
-          locale.GTo = paraml.GUa;
-        }
-        if (locale.GTp > paraml.GUa) {
-          locale.GTp = paraml.GUa;
-        }
-        locale.GTx += paraml.GTx;
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        locale = new e();
-        locale.GTo = paraml.GUa;
-        locale.GTp = paraml.GUa;
-        locale.GTx = paraml.GTx;
-        locale.GUb = paraml.GUb;
-        locale.url = paraml.url;
-        this.GTg.put(localStringBuilder.toString(), locale);
+    if (paramInt == 1) {
+      if (this.name == null) {
+        break label1436;
       }
     }
-    AppMethodBeat.o(66881);
-  }
-  
-  private int aUF(String paramString)
-  {
-    AppMethodBeat.i(66869);
-    int k = 0;
-    int i = 0;
-    int j = k;
-    if (this.GTm != null)
+    label1436:
+    for (paramInt = i.a.a.b.b.a.h(1, this.name) + 0;; paramInt = 0)
     {
-      j = k;
-      if (this.GTm.size() > 0)
+      int i = paramInt + i.a.a.a.c(2, 8, this.MRl) + i.a.a.b.b.a.cJ(3, this.MRm) + i.a.a.b.b.a.cJ(4, this.MRn) + i.a.a.b.b.a.cJ(5, this.MRo) + i.a.a.a.c(6, 1, this.MRp);
+      paramInt = i;
+      if (this.nUO != null) {
+        paramInt = i + i.a.a.b.b.a.h(7, this.nUO);
+      }
+      i = paramInt;
+      if (this.detail != null) {
+        i = paramInt + i.a.a.b.b.a.h(8, this.detail);
+      }
+      i = i + i.a.a.a.c(9, 1, this.MRq) + i.a.a.a.c(10, 8, this.MRr) + i.a.a.a.c(11, 1, this.MRs) + i.a.a.b.b.a.cJ(12, this.MRt) + i.a.a.b.b.a.cJ(13, this.MRu) + i.a.a.a.c(14, 8, this.MRv) + i.a.a.b.b.a.cJ(15, this.version) + i.a.a.a.c(16, 8, this.MRw);
+      paramInt = i;
+      if (this.MEq != null) {
+        paramInt = i + i.a.a.b.b.a.h(17, this.MEq);
+      }
+      i = paramInt;
+      if (this.MRx != null) {
+        i = paramInt + i.a.a.a.qC(18, this.MRx.computeSize());
+      }
+      AppMethodBeat.o(91268);
+      return i;
+      if (paramInt == 2)
       {
-        paramString = (LinkedList)this.GTm.get(paramString);
-        j = k;
-        if (paramString != null)
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.MRl.clear();
+        this.MRp.clear();
+        this.MRq.clear();
+        this.MRr.clear();
+        this.MRs.clear();
+        this.MRv.clear();
+        this.MRw.clear();
+        paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(91268);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
+        c localc = (c)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        switch (paramInt)
         {
-          j = k;
-          if (paramString.size() > 0)
+        default: 
+          AppMethodBeat.o(91268);
+          return -1;
+        case 1: 
+          localc.name = ((i.a.a.a.a)localObject1).ajGk.readString();
+          AppMethodBeat.o(91268);
+          return 0;
+        case 2: 
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
           {
-            paramString = paramString.iterator();
-            for (;;)
-            {
-              j = i;
-              if (!paramString.hasNext()) {
-                break;
-              }
-              i = ((ahw)paramString.next()).SaG + i;
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new d();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((d)localObject2).parseFrom((byte[])localObject1);
             }
+            localc.MRl.add(localObject2);
+            paramInt += 1;
           }
-        }
-      }
-    }
-    AppMethodBeat.o(66869);
-    return j;
-  }
-  
-  public static String az(Map<String, String> paramMap)
-  {
-    AppMethodBeat.i(66879);
-    if ((paramMap == null) || (paramMap.isEmpty()))
-    {
-      AppMethodBeat.o(66879);
-      return null;
-    }
-    Object localObject = new ArrayList(paramMap.entrySet());
-    Collections.sort((List)localObject, new Comparator() {});
-    paramMap = new StringBuilder();
-    localObject = ((ArrayList)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-      paramMap.append((String)localEntry.getKey()).append(":").append((String)localEntry.getValue()).append(";");
-    }
-    paramMap.deleteCharAt(paramMap.lastIndexOf(";"));
-    paramMap = paramMap.toString();
-    AppMethodBeat.o(66879);
-    return paramMap;
-  }
-  
-  private void bB(LinkedList<l> paramLinkedList)
-  {
-    AppMethodBeat.i(66880);
-    this.GTg = new HashMap();
-    if ((paramLinkedList == null) || (paramLinkedList.size() <= 0))
-    {
-      AppMethodBeat.o(66880);
-      return;
-    }
-    int j = paramLinkedList.size();
-    int i = 0;
-    while (i < j)
-    {
-      l locall = (l)paramLinkedList.get(i);
-      a(locall.GTZ.split(";"), locall);
-      i += 1;
-    }
-    fpm();
-    AppMethodBeat.o(66880);
-  }
-  
-  public final String a(m paramm)
-  {
-    AppMethodBeat.i(66884);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("<mallProductInfo>");
-    localStringBuilder.append("<type>").append(paramm.GTw).append("</type>");
-    localStringBuilder.append("<id>").append(paramm.GTv).append("</id>");
-    localStringBuilder.append("<version>").append(paramm.GTz.version).append("</version>");
-    localStringBuilder.append("<name>").append(Util.escapeStringForXml(paramm.GTz.name)).append("</name>");
-    localStringBuilder.append("<highPrice>").append(paramm.GTz.GTK).append("</highPrice>");
-    localStringBuilder.append("<lowPrice>").append(paramm.GTz.GTL).append("</lowPrice>");
-    localStringBuilder.append("<originPrice>").append(paramm.GTz.GTJ).append("</originPrice>");
-    localStringBuilder.append("<sourceUrl>").append(Util.escapeStringForXml(this.GSV.fVx)).append("</sourceUrl>");
-    if (paramm.GTz.GTM != null)
-    {
-      localStringBuilder.append("<imgCount>").append(paramm.GTz.GTM.size()).append("</imgCount>");
-      localStringBuilder.append("<imgList>");
-      Iterator localIterator = paramm.GTz.GTM.iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        localStringBuilder.append("<imgUrl>").append(Util.escapeStringForXml(str)).append("</imgUrl>");
-      }
-      localStringBuilder.append("</imgList>");
-    }
-    localStringBuilder.append("<shareInfo>");
-    localStringBuilder.append("<shareUrl>").append(Util.escapeStringForXml(fpf())).append("</shareUrl>");
-    localStringBuilder.append("<shareThumbUrl>").append(Util.escapeStringForXml(paramm.fpq())).append("</shareThumbUrl>");
-    localStringBuilder.append("</shareInfo>");
-    if (this.GSV.GTA != null)
-    {
-      localStringBuilder.append("<sellerInfo>");
-      localStringBuilder.append("<appID>").append(paramm.GTA.appid).append("</appID>");
-      localStringBuilder.append("<appName>").append(paramm.GTA.name).append("</appName>");
-      localStringBuilder.append("<usrName>").append(paramm.GTA.username).append("</usrName>");
-      localStringBuilder.append("</sellerInfo>");
-    }
-    localStringBuilder.append("</mallProductInfo>");
-    paramm = localStringBuilder.toString();
-    AppMethodBeat.o(66884);
-    return paramm;
-  }
-  
-  public final void a(m paramm, List<n> paramList)
-  {
-    int j = 0;
-    AppMethodBeat.i(66860);
-    clear();
-    this.GSV = paramm;
-    this.GSW = paramList;
-    if (Util.isNullOrNil(this.GSV.fVx)) {
-      this.GSV.fVx = this.GSY;
-    }
-    bB(this.GSV.GTB);
-    if ((this.GSV.GTz != null) && (this.GSV.GTz.GTS != null)) {
-      this.GTf = this.GSV.GTz.GTS.size();
-    }
-    if ((this.GSV.GTz != null) && (this.GSV.GTz.GTM != null) && (this.GSV.GTz.GTM.size() > 0)) {
-      this.GTd = ((String)this.GSV.GTz.GTM.get(0));
-    }
-    if (!Util.isNullOrNil(this.GSV.fpq()))
-    {
-      u.a(new com.tencent.mm.plugin.product.ui.c(this.GSV.fpq()));
-      Log.d("MicroMsg.MallProductManager", "product img path : " + fpe());
-    }
-    if ((this.GSV.GTC != null) && (this.GSV.GTC.GTW != null)) {}
-    for (int i = this.GSV.GTC.GTW.cUP;; i = 0)
-    {
-      if (this.GSV.GTA != null) {
-        j = this.GSV.GTA.cUP;
-      }
-      this.GTl = new com.tencent.mm.plugin.product.ui.e(i, j);
-      AppMethodBeat.o(66860);
-      return;
-    }
-  }
-  
-  public final LinkedList<com.tencent.mm.plugin.product.c.a> aH(Activity paramActivity)
-  {
-    AppMethodBeat.i(66865);
-    LinkedList localLinkedList = new LinkedList();
-    if (this.GTj != null)
-    {
-      Iterator localIterator = this.GTj.iterator();
-      while (localIterator.hasNext())
-      {
-        bb localbb = (bb)localIterator.next();
-        com.tencent.mm.plugin.product.c.a locala = new com.tencent.mm.plugin.product.c.a();
-        locala.CMP = localbb.CMP;
-        locala.GTG = localbb.GTG;
-        locala.lpy = localbb.lpy;
-        locala.rWu = localbb.rWu;
-        locala.CNj = localbb.CNj;
-        if (locala.rWu == 1)
-        {
-          int i = aUF(locala.lpy);
-          if (i > 0) {
-            locala.GTG = paramActivity.getString(a.i.mall_product_submit_preferential_summray, new Object[] { b.c(i, this.GSV.GTz.GHz) });
-          }
-        }
-        localLinkedList.add(locala);
-      }
-    }
-    AppMethodBeat.o(66865);
-    return localLinkedList;
-  }
-  
-  public final void aN(Intent paramIntent)
-  {
-    AppMethodBeat.i(66864);
-    dp localdp = new dp();
-    localdp.UserName = Util.nullAs(paramIntent.getStringExtra("userName"), "");
-    localdp.RIX = Util.nullAs(paramIntent.getStringExtra("telNumber"), "");
-    localdp.RIY = Util.nullAs(paramIntent.getStringExtra("addressPostalCode"), "");
-    localdp.mVz = Util.nullAs(paramIntent.getStringExtra("proviceFirstStageName"), "");
-    localdp.mVA = Util.nullAs(paramIntent.getStringExtra("addressCitySecondStageName"), "");
-    localdp.mVH = Util.nullAs(paramIntent.getStringExtra("addressCountiesThirdStageName"), "");
-    localdp.COk = Util.nullAs(paramIntent.getStringExtra("addressDetailInfo"), "");
-    if ((!Util.isNullOrNil(localdp.UserName)) && (!Util.isNullOrNil(localdp.RIX))) {
-      this.GTb = localdp;
-    }
-    AppMethodBeat.o(66864);
-  }
-  
-  public final void abf(int paramInt)
-  {
-    AppMethodBeat.i(66866);
-    if (this.GTi == null)
-    {
-      AppMethodBeat.o(66866);
-      return;
-    }
-    if ((paramInt < this.GTi.size()) && (paramInt >= 0)) {
-      this.GTa = ((alj)this.GTi.get(paramInt));
-    }
-    AppMethodBeat.o(66866);
-  }
-  
-  public final void clear()
-  {
-    AppMethodBeat.i(66859);
-    this.GSV = null;
-    if (this.GSW != null)
-    {
-      this.GSW.clear();
-      this.GSW = null;
-    }
-    this.GSX = null;
-    this.GSY = null;
-    this.mCount = 1;
-    this.GSZ = null;
-    this.GTa = null;
-    this.GTc = null;
-    this.GTd = null;
-    this.GTf = 0;
-    this.GTk = null;
-    if (this.GTg != null)
-    {
-      this.GTg.clear();
-      this.GTg = null;
-    }
-    if (this.GTh != null) {
-      this.GTh.clear();
-    }
-    if (this.GTi != null)
-    {
-      this.GTi.clear();
-      this.GTi = null;
-    }
-    if (this.GTm != null)
-    {
-      this.GTm.clear();
-      this.GTm = null;
-    }
-    AppMethodBeat.o(66859);
-  }
-  
-  public final com.tencent.mm.plugin.product.ui.e foX()
-  {
-    AppMethodBeat.i(66861);
-    if (this.GTl == null) {
-      this.GTl = new com.tencent.mm.plugin.product.ui.e(0, 0);
-    }
-    com.tencent.mm.plugin.product.ui.e locale = this.GTl;
-    AppMethodBeat.o(66861);
-    return locale;
-  }
-  
-  public final String foY()
-  {
-    AppMethodBeat.i(66862);
-    if ((this.GTk != null) && (!Util.isNullOrNil(this.GTk.url)))
-    {
-      str = this.GTk.url;
-      AppMethodBeat.o(66862);
-      return str;
-    }
-    String str = this.GTd;
-    AppMethodBeat.o(66862);
-    return str;
-  }
-  
-  public final String foZ()
-  {
-    AppMethodBeat.i(66863);
-    Object localObject1 = new StringBuilder();
-    Iterator localIterator = this.GSV.GTz.GTS.iterator();
-    for (;;)
-    {
-      if (!localIterator.hasNext()) {
-        break label133;
-      }
-      Object localObject2 = (com.tencent.mm.plugin.product.c.m)localIterator.next();
-      String str = (String)this.GTh.get(((com.tencent.mm.plugin.product.c.m)localObject2).GUc);
-      if (str != null)
-      {
-        localObject2 = ((com.tencent.mm.plugin.product.c.m)localObject2).GUe.iterator();
-        if (((Iterator)localObject2).hasNext())
-        {
-          h localh = (h)((Iterator)localObject2).next();
-          if (!str.equals(localh.id)) {
-            break;
-          }
-          ((StringBuilder)localObject1).append(localh.name).append(" ");
-        }
-      }
-    }
-    label133:
-    localObject1 = ((StringBuilder)localObject1).toString();
-    AppMethodBeat.o(66863);
-    return localObject1;
-  }
-  
-  public final int fpa()
-  {
-    AppMethodBeat.i(66867);
-    int j = 0;
-    int i = j;
-    if (!foX().fpt())
-    {
-      i = j;
-      if (this.GTa != null) {
-        i = this.GTa.SaG + 0;
-      }
-    }
-    if (this.GTk != null) {
-      i += this.GTk.GTo * this.mCount;
-    }
-    for (;;)
-    {
-      j = fpb();
-      AppMethodBeat.o(66867);
-      return i - j;
-      i += this.GSV.GTz.GTK * this.mCount;
-    }
-  }
-  
-  public final int fpb()
-  {
-    AppMethodBeat.i(66868);
-    int j = 0;
-    int i = j;
-    if (this.GTm != null)
-    {
-      i = j;
-      if (this.GTm.size() > 0)
-      {
-        Iterator localIterator = this.GTm.values().iterator();
-        for (i = 0; localIterator.hasNext(); i = j)
-        {
-          Object localObject = (LinkedList)localIterator.next();
-          j = i;
-          if (localObject != null)
+          AppMethodBeat.o(91268);
+          return 0;
+        case 3: 
+          localc.MRm = ((i.a.a.a.a)localObject1).ajGk.aar();
+          AppMethodBeat.o(91268);
+          return 0;
+        case 4: 
+          localc.MRn = ((i.a.a.a.a)localObject1).ajGk.aar();
+          AppMethodBeat.o(91268);
+          return 0;
+        case 5: 
+          localc.MRo = ((i.a.a.a.a)localObject1).ajGk.aar();
+          AppMethodBeat.o(91268);
+          return 0;
+        case 6: 
+          localc.MRp.add(((i.a.a.a.a)localObject1).ajGk.readString());
+          AppMethodBeat.o(91268);
+          return 0;
+        case 7: 
+          localc.nUO = ((i.a.a.a.a)localObject1).ajGk.readString();
+          AppMethodBeat.o(91268);
+          return 0;
+        case 8: 
+          localc.detail = ((i.a.a.a.a)localObject1).ajGk.readString();
+          AppMethodBeat.o(91268);
+          return 0;
+        case 9: 
+          localc.MRq.add(((i.a.a.a.a)localObject1).ajGk.readString());
+          AppMethodBeat.o(91268);
+          return 0;
+        case 10: 
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
           {
-            j = i;
-            if (((LinkedList)localObject).size() > 0)
-            {
-              localObject = ((LinkedList)localObject).iterator();
-              for (;;)
-              {
-                j = i;
-                if (!((Iterator)localObject).hasNext()) {
-                  break;
-                }
-                i += ((ahw)((Iterator)localObject).next()).SaG;
-              }
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new b();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((b)localObject2).parseFrom((byte[])localObject1);
             }
+            localc.MRr.add(localObject2);
+            paramInt += 1;
           }
-        }
-      }
-    }
-    AppMethodBeat.o(66868);
-    return i;
-  }
-  
-  public final dtx fpc()
-  {
-    AppMethodBeat.i(66870);
-    if (this.GTc != null)
-    {
-      localObject = this.GTc;
-      AppMethodBeat.o(66870);
-      return localObject;
-    }
-    if (this.GSU == null) {
-      this.GSU = com.tencent.mm.plugin.product.a.a.foU().foW();
-    }
-    Object localObject = this.GSU;
-    if ((((d)localObject).GTn != null) && (((d)localObject).GTn.size() > 0)) {}
-    for (localObject = (String)((d)localObject).GTn.get(0); !Util.isNullOrNil((String)localObject); localObject = null)
-    {
-      this.GTc = new dtx();
-      this.GTc.COk = ((String)localObject);
-      this.GTc.Uaf = 1;
-      localObject = this.GTc;
-      AppMethodBeat.o(66870);
-      return localObject;
-    }
-    localObject = this.GTb;
-    if ((localObject != null) && (!Util.isNullOrNil(((dp)localObject).UserName)))
-    {
-      this.GTc = new dtx();
-      this.GTc.COk = ((dp)localObject).UserName;
-      this.GTc.Uaf = 1;
-      localObject = this.GTc;
-      AppMethodBeat.o(66870);
-      return localObject;
-    }
-    AppMethodBeat.o(66870);
-    return null;
-  }
-  
-  public final String fpd()
-  {
-    if (this.GSV.GTA != null) {
-      return this.GSV.GTA.username;
-    }
-    return null;
-  }
-  
-  public final String fpe()
-  {
-    AppMethodBeat.i(66871);
-    if (!Util.isNullOrNil(this.GSV.fpq()))
-    {
-      String str = com.tencent.mm.plugin.product.ui.c.aUH(this.GSV.fpq());
-      AppMethodBeat.o(66871);
-      return str;
-    }
-    AppMethodBeat.o(66871);
-    return null;
-  }
-  
-  public final String fpf()
-  {
-    AppMethodBeat.i(66872);
-    if ((this.GSV.GTz != null) && (this.GSV.GTz.GTU != null))
-    {
-      str = this.GSV.GTz.GTU.url;
-      AppMethodBeat.o(66872);
-      return str;
-    }
-    if (!Util.isNullOrNil(this.GSV.fVx))
-    {
-      str = this.GSV.fVx;
-      AppMethodBeat.o(66872);
-      return str;
-    }
-    String str = this.GSY;
-    AppMethodBeat.o(66872);
-    return str;
-  }
-  
-  public final int fpg()
-  {
-    int j = this.GSV.GTx;
-    int i = j;
-    if (this.GTk != null)
-    {
-      i = j;
-      if (j > this.GTk.GTx) {
-        i = this.GTk.GTx;
-      }
-    }
-    return i;
-  }
-  
-  public final boolean fph()
-  {
-    AppMethodBeat.i(66873);
-    if ((this.mCount > 0) && (this.GSV != null) && (this.mCount <= fpg()) && (this.GSV.GTz != null) && (this.GSV.GTz.GTS != null))
-    {
-      AppMethodBeat.o(66873);
-      return true;
-    }
-    AppMethodBeat.o(66873);
-    return false;
-  }
-  
-  public final boolean fpi()
-  {
-    AppMethodBeat.i(66874);
-    if (!fph())
-    {
-      AppMethodBeat.o(66874);
-      return false;
-    }
-    if ((this.GTh != null) && (this.GTh.size() == this.GTf)) {
-      if (this.GTf > 0)
-      {
-        if ((this.GTk != null) && (this.mCount > 0) && (this.mCount <= fpg()))
-        {
-          AppMethodBeat.o(66874);
-          return true;
-        }
-      }
-      else if (this.GTf == 0)
-      {
-        AppMethodBeat.o(66874);
-        return true;
-      }
-    }
-    AppMethodBeat.o(66874);
-    return false;
-  }
-  
-  public final boolean fpj()
-  {
-    AppMethodBeat.i(66875);
-    if (!fpi())
-    {
-      AppMethodBeat.o(66875);
-      return false;
-    }
-    if (this.GTb == null)
-    {
-      AppMethodBeat.o(66875);
-      return false;
-    }
-    if ((!foX().fpt()) && (this.GTa == null))
-    {
-      AppMethodBeat.o(66875);
-      return false;
-    }
-    AppMethodBeat.o(66875);
-    return true;
-  }
-  
-  public final LinkedList<eak> fpk()
-  {
-    AppMethodBeat.i(66876);
-    LinkedList localLinkedList = new LinkedList();
-    eak localeak = new eak();
-    localeak.rVx = this.mCount;
-    localeak.TiR = this.GSV.GTv;
-    localeak.TVK = this.GSV.fVx;
-    localeak.TVL = this.GSZ;
-    localLinkedList.add(localeak);
-    AppMethodBeat.o(66876);
-    return localLinkedList;
-  }
-  
-  public final eiy fpl()
-  {
-    AppMethodBeat.i(66877);
-    eiy localeiy = new eiy();
-    localeiy.Sdn = this.GSX;
-    localeiy.GIu = 1;
-    localeiy.UkR = new LinkedList();
-    doo localdoo = new doo();
-    localdoo.rVx = this.mCount;
-    localdoo.TiR = this.GSV.GTv;
-    localdoo.CMP = this.GSV.GTz.name;
-    if (this.GTk != null) {}
-    Iterator localIterator;
-    Object localObject;
-    for (localdoo.TVJ = this.GTk.GTo;; localdoo.TVJ = this.GSV.GTz.GTK)
-    {
-      localdoo.TVK = this.GSV.fVx;
-      localdoo.TVL = this.GSZ;
-      localdoo.rWu = this.GSV.GTw;
-      localdoo.TVH = this.GTf;
-      localdoo.TVI = new LinkedList();
-      localIterator = this.GTh.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        localObject = (String)localIterator.next();
-        String str = (String)this.GTh.get(localObject);
-        cos localcos = new cos();
-        localcos.CRg = ((String)localObject);
-        localcos.Izj = str;
-        localdoo.TVI.add(localcos);
-      }
-    }
-    localdoo.TVP = new LinkedList();
-    localdoo.TVO = 0;
-    if ((this.GTm != null) && (this.GTm.size() > 0))
-    {
-      localIterator = this.GTm.values().iterator();
-      while (localIterator.hasNext())
-      {
-        localObject = (LinkedList)localIterator.next();
-        localdoo.TVP.addAll((Collection)localObject);
-        int i = localdoo.TVO;
-        localdoo.TVO = (((LinkedList)localObject).size() + i);
-      }
-    }
-    localeiy.UkR.add(localdoo);
-    localeiy.UkT = new LinkedList();
-    localeiy.UkU = 1;
-    this.GTc = fpc();
-    if (this.GTc != null) {
-      localeiy.UkT.add(this.GTc);
-    }
-    for (;;)
-    {
-      localeiy.Tgx = this.GTb;
-      localeiy.UkS = this.GTa;
-      AppMethodBeat.o(66877);
-      return localeiy;
-      this.GTc = new dtx();
-      this.GTc.Uaf = 0;
-      localeiy.UkT.add(this.GTc);
-    }
-  }
-  
-  public final void fpm()
-  {
-    AppMethodBeat.i(66878);
-    if (this.GTh == null)
-    {
-      AppMethodBeat.o(66878);
-      return;
-    }
-    Iterator localIterator1 = this.GSV.GTz.GTS.iterator();
-    if (localIterator1.hasNext())
-    {
-      com.tencent.mm.plugin.product.c.m localm = (com.tencent.mm.plugin.product.c.m)localIterator1.next();
-      Iterator localIterator2 = localm.GUe.iterator();
-      label62:
-      h localh;
-      Object localObject;
-      String str2;
-      boolean bool;
-      if (localIterator2.hasNext())
-      {
-        localh = (h)localIterator2.next();
-        localObject = localm.GUc;
-        str2 = localh.id;
-        if ((this.GTh != null) && (this.GTg != null)) {
-          break label176;
-        }
-        bool = false;
-      }
-      for (;;)
-      {
-        localh.bzb = bool;
-        Log.d("MicroMsg.MallProductManager", "(" + localm.GUc + " , " + localh.id + ") hasStock--> " + localh.bzb);
-        break label62;
-        break;
-        label176:
-        String str1;
-        if (this.GTh.containsKey(localObject))
-        {
-          str1 = (String)this.GTh.get(localObject);
-          this.GTh.put(localObject, str2);
-          str2 = az(this.GTh);
-          this.GTh.put(localObject, str1);
-          localObject = (e)this.GTg.get(str2);
-          if (localObject != null)
+          AppMethodBeat.o(91268);
+          return 0;
+        case 11: 
+          localc.MRs.add(((i.a.a.a.a)localObject1).ajGk.readString());
+          AppMethodBeat.o(91268);
+          return 0;
+        case 12: 
+          localc.MRt = ((i.a.a.a.a)localObject1).ajGk.aar();
+          AppMethodBeat.o(91268);
+          return 0;
+        case 13: 
+          localc.MRu = ((i.a.a.a.a)localObject1).ajGk.aar();
+          AppMethodBeat.o(91268);
+          return 0;
+        case 14: 
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
           {
-            if (((e)localObject).GTx > 0) {
-              bool = true;
-            } else {
-              bool = false;
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new m();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((m)localObject2).parseFrom((byte[])localObject1);
             }
+            localc.MRv.add(localObject2);
+            paramInt += 1;
           }
-          else {
-            bool = false;
-          }
-        }
-        else
-        {
-          this.GTh.put(localObject, str2);
-          str1 = az(this.GTh);
-          this.GTh.remove(localObject);
-          localObject = (e)this.GTg.get(str1);
-          if (localObject != null)
+          AppMethodBeat.o(91268);
+          return 0;
+        case 15: 
+          localc.version = ((i.a.a.a.a)localObject1).ajGk.aar();
+          AppMethodBeat.o(91268);
+          return 0;
+        case 16: 
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
           {
-            if (((e)localObject).GTx > 0) {
-              bool = true;
-            } else {
-              bool = false;
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new a();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((a)localObject2).parseFrom((byte[])localObject1);
             }
+            localc.MRw.add(localObject2);
+            paramInt += 1;
           }
-          else {
-            bool = false;
-          }
+          AppMethodBeat.o(91268);
+          return 0;
+        case 17: 
+          localc.MEq = ((i.a.a.a.a)localObject1).ajGk.readString();
+          AppMethodBeat.o(91268);
+          return 0;
         }
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new k();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((k)localObject2).parseFrom((byte[])localObject1);
+          }
+          localc.MRx = ((k)localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(91268);
+        return 0;
       }
+      AppMethodBeat.o(91268);
+      return -1;
     }
-    AppMethodBeat.o(66878);
-  }
-  
-  public final String fpn()
-  {
-    AppMethodBeat.i(66882);
-    Object localObject = new k.b();
-    ((k.b)localObject).title = this.GSV.GTz.name;
-    ((k.b)localObject).description = fpo();
-    ((k.b)localObject).type = 13;
-    ((k.b)localObject).url = fpf();
-    ((k.b)localObject).thumburl = this.GSV.fpq();
-    ((k.b)localObject).lmB = this.GSV.GTw;
-    ((k.b)localObject).lmC = a(this.GSV);
-    localObject = k.b.a((k.b)localObject, null, null);
-    AppMethodBeat.o(66882);
-    return localObject;
-  }
-  
-  public final String fpo()
-  {
-    AppMethodBeat.i(66883);
-    String str = b.c(this.GSV.GTz.GTL, this.GSV.GTz.GHz);
-    AppMethodBeat.o(66883);
-    return str;
-  }
-  
-  public final String getAppId()
-  {
-    if (this.GSV.GTA != null) {
-      return this.GSV.GTA.appid;
-    }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.product.b.c
  * JD-Core Version:    0.7.0.1
  */

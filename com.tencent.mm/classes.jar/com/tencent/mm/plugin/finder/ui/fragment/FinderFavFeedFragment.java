@@ -3,253 +3,366 @@ package com.tencent.mm.plugin.finder.ui.fragment;
 import android.content.res.Resources;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.q;
 import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.hu;
+import com.tencent.mm.app.f;
+import com.tencent.mm.autogen.a.if;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.e.h;
 import com.tencent.mm.plugin.finder.feed.c.a;
 import com.tencent.mm.plugin.finder.feed.c.b;
+import com.tencent.mm.plugin.finder.feed.g.a;
 import com.tencent.mm.plugin.finder.feed.g.b;
 import com.tencent.mm.plugin.finder.feed.model.BaseFinderFeedLoader;
 import com.tencent.mm.plugin.finder.feed.model.FinderFavFeedLoader;
 import com.tencent.mm.plugin.finder.feed.model.internal.IResponse;
 import com.tencent.mm.plugin.finder.feed.model.internal.j;
-import com.tencent.mm.plugin.finder.model.bu;
-import com.tencent.mm.plugin.finder.storage.data.k;
+import com.tencent.mm.plugin.finder.model.cc;
+import com.tencent.mm.plugin.finder.storage.d;
 import com.tencent.mm.plugin.finder.storage.data.k.a;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
-import com.tencent.mm.plugin.finder.viewmodel.component.aj;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.plugin.finder.viewmodel.component.as;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.component.g;
+import com.tencent.mm.ui.component.k.b;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.a;
-import kotlin.g.a.b;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/fragment/FinderFavFeedFragment;", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderBaseGridFeedFragment;", "Lcom/tencent/mm/plugin/finder/feed/FinderFavFeedUIContract$FavFeedViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderFavFeedUIContract$FavFeedPresenter;", "()V", "eventListener", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/FeedUpdateEvent;", "getEventListener", "()Lcom/tencent/mm/sdk/event/IListener;", "setEventListener", "(Lcom/tencent/mm/sdk/event/IListener;)V", "feedLoader", "Lcom/tencent/mm/plugin/finder/feed/model/FinderFavFeedLoader;", "getFeedLoader", "()Lcom/tencent/mm/plugin/finder/feed/model/FinderFavFeedLoader;", "setFeedLoader", "(Lcom/tencent/mm/plugin/finder/feed/model/FinderFavFeedLoader;)V", "presenter", "scene", "", "unFavIdList", "Ljava/util/HashSet;", "", "Lkotlin/collections/HashSet;", "viewCallback", "checkEmptyOnUnFav", "", "getLayoutId", "getLoader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "getPresenter", "getViewCallback", "initAfterAttach", "initOnCreate", "onDestroy", "onResume", "updateTitle", "count", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/ui/fragment/FinderFavFeedFragment;", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderBaseGridFeedFragment;", "Lcom/tencent/mm/plugin/finder/feed/FinderFavFeedUIContract$FavFeedViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderFavFeedUIContract$FavFeedPresenter;", "()V", "eventListener", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/FeedUpdateEvent;", "getEventListener", "()Lcom/tencent/mm/sdk/event/IListener;", "setEventListener", "(Lcom/tencent/mm/sdk/event/IListener;)V", "feedLoader", "Lcom/tencent/mm/plugin/finder/feed/model/FinderFavFeedLoader;", "getFeedLoader", "()Lcom/tencent/mm/plugin/finder/feed/model/FinderFavFeedLoader;", "setFeedLoader", "(Lcom/tencent/mm/plugin/finder/feed/model/FinderFavFeedLoader;)V", "presenter", "reachBottom", "", "scene", "", "unFavIdList", "Ljava/util/HashSet;", "", "Lkotlin/collections/HashSet;", "viewCallback", "checkEmptyOnUnFav", "", "getCommentScene", "getLayoutId", "getLoader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "getPresenter", "getViewCallback", "initAfterAttach", "initOnCreate", "onDestroy", "onResume", "updateTitle", "count", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderFavFeedFragment
-  extends FinderBaseGridFeedFragment<g.b, com.tencent.mm.plugin.finder.feed.g.a>
+  extends FinderBaseGridFeedFragment<g.b, g.a>
 {
-  public static final a Ayh;
-  private com.tencent.mm.plugin.finder.feed.g.a Aye;
-  private g.b Ayf;
-  private HashSet<Long> Ayg;
-  private HashMap _$_findViewCache;
+  public static final a FXB;
+  public FinderFavFeedLoader Bmp;
+  private g.a FXC;
+  private g.b FXD;
+  private HashSet<Long> FXE;
+  private boolean FXF;
+  private IListener<if> qmO;
   private final int scene = 2;
-  public FinderFavFeedLoader xMf;
-  private IListener<hu> xyI;
   
   static
   {
-    AppMethodBeat.i(285291);
-    Ayh = new a((byte)0);
-    AppMethodBeat.o(285291);
+    AppMethodBeat.i(347758);
+    FXB = new a((byte)0);
+    AppMethodBeat.o(347758);
   }
   
   public FinderFavFeedFragment()
   {
-    this.fEH = 100;
+    this.hJx = 100;
   }
   
-  public final void MI(int paramInt)
+  public final void Og(int paramInt)
   {
-    AppMethodBeat.i(285289);
-    if (paramInt > 0)
+    AppMethodBeat.i(347800);
+    d locald = d.FAy;
+    if (((Number)d.eXJ().bmg()).intValue() == 0) {
+      if (paramInt > 0) {
+        getActivity().setMMTitle(getActivity().getResources().getString(e.h.finder_fav_feed_title, new Object[] { Integer.valueOf(paramInt) }));
+      }
+    }
+    for (;;)
     {
-      ebI().setMMTitle(ebI().getResources().getString(b.j.finder_fav_feed_title, new Object[] { Integer.valueOf(paramInt) }));
-      AppMethodBeat.o(285289);
+      super.Og(paramInt);
+      AppMethodBeat.o(347800);
       return;
+      getActivity().setMMTitle(getActivity().getResources().getString(e.h.finder_fav_feed_title_zero));
+      continue;
+      if (paramInt > 0) {
+        getActivity().setMMTitle(getActivity().getResources().getString(e.h.finder_fav_feed_title2, new Object[] { Integer.valueOf(paramInt) }));
+      } else {
+        getActivity().setMMTitle(getActivity().getResources().getString(e.h.finder_fav_feed_title_zero2));
+      }
     }
-    ebI().setMMTitle(ebI().getResources().getString(b.j.finder_fav_feed_title_zero));
-    AppMethodBeat.o(285289);
   }
   
-  public final void _$_clearFindViewByIdCache()
+  public final FinderFavFeedLoader fcP()
   {
-    AppMethodBeat.i(285293);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
+    AppMethodBeat.i(347763);
+    FinderFavFeedLoader localFinderFavFeedLoader = this.Bmp;
+    if (localFinderFavFeedLoader != null)
+    {
+      AppMethodBeat.o(347763);
+      return localFinderFavFeedLoader;
     }
-    AppMethodBeat.o(285293);
+    s.bIx("feedLoader");
+    AppMethodBeat.o(347763);
+    return null;
   }
   
-  public final FinderFavFeedLoader ebJ()
+  public final g.a fcQ()
   {
-    AppMethodBeat.i(285282);
-    FinderFavFeedLoader localFinderFavFeedLoader = this.xMf;
-    if (localFinderFavFeedLoader == null) {
-      p.bGy("feedLoader");
+    AppMethodBeat.i(347791);
+    g.a locala = this.FXC;
+    if (locala == null)
+    {
+      s.bIx("presenter");
+      AppMethodBeat.o(347791);
+      return null;
     }
-    AppMethodBeat.o(285282);
-    return localFinderFavFeedLoader;
-  }
-  
-  public final com.tencent.mm.plugin.finder.feed.g.a ebK()
-  {
-    AppMethodBeat.i(285285);
-    com.tencent.mm.plugin.finder.feed.g.a locala = this.Aye;
-    if (locala == null) {
-      p.bGy("presenter");
-    }
-    AppMethodBeat.o(285285);
+    AppMethodBeat.o(347791);
     return locala;
+  }
+  
+  public final int getCommentScene()
+  {
+    return 24;
   }
   
   public final int getLayoutId()
   {
-    return b.g.finder_fav_list_layout;
+    return e.f.finder_fav_list_layout;
   }
   
   public final void initOnCreate()
   {
-    AppMethodBeat.i(285283);
-    this.Ayg = new HashSet();
-    MI(0);
-    Object localObject1 = z.bdh();
-    p.j(localObject1, "ConfigStorageLogic.getMyFinderUsername()");
-    Object localObject2 = g.Xox;
-    localObject1 = new FinderFavFeedLoader((String)localObject1, ((aj)g.b((AppCompatActivity)ebI()).i(aj.class)).ekY(), false);
-    ((FinderFavFeedLoader)localObject1).setInitDone((j)new b((FinderFavFeedLoader)localObject1, this));
-    ((FinderFavFeedLoader)localObject1).fetchEndCallback = ((b)new c(this));
-    this.xMf = ((FinderFavFeedLoader)localObject1);
-    localObject1 = (MMActivity)ebI();
-    ebI().getCommentScene();
-    localObject2 = this.xMf;
-    if (localObject2 == null) {
-      p.bGy("feedLoader");
+    int j = 0;
+    AppMethodBeat.i(347780);
+    this.FXE = new HashSet();
+    Og(0);
+    Object localObject1 = z.bAW();
+    s.s(localObject1, "getMyFinderUsername()");
+    Object localObject2 = com.tencent.mm.ui.component.k.aeZF;
+    localObject1 = new FinderFavFeedLoader((String)localObject1, ((as)com.tencent.mm.ui.component.k.d((AppCompatActivity)getActivity()).q(as.class)).fou(), false);
+    ((FinderFavFeedLoader)localObject1).setInitDone((j)new b(this, (FinderFavFeedLoader)localObject1));
+    ((FinderFavFeedLoader)localObject1).fetchEndCallback = ((kotlin.g.a.b)new c(this));
+    localObject2 = ah.aiuX;
+    s.u(localObject1, "<set-?>");
+    this.Bmp = ((FinderFavFeedLoader)localObject1);
+    localObject2 = getActivity();
+    localObject1 = getActivity();
+    int i;
+    if ((localObject1 instanceof MMFinderUI))
+    {
+      localObject1 = (MMFinderUI)localObject1;
+      if (localObject1 != null) {
+        break label338;
+      }
+      i = 0;
+      label161:
+      this.FXC = new g.a((MMActivity)localObject2, i, (BaseFinderFeedLoader)fcP());
+      localObject2 = getActivity();
+      int k = this.scene;
+      localObject1 = getActivity();
+      if (!(localObject1 instanceof MMFinderUI)) {
+        break label347;
+      }
+      localObject1 = (MMFinderUI)localObject1;
+      label214:
+      if (localObject1 != null) {
+        break label353;
+      }
+      i = j;
+      label221:
+      this.FXD = ((g.b)new d(this, (MMActivity)localObject2, k, i));
+      localObject1 = this.FXD;
+      if (localObject1 != null) {
+        break label362;
+      }
+      s.bIx("viewCallback");
+      localObject1 = null;
     }
-    this.Aye = new com.tencent.mm.plugin.finder.feed.g.a((MMActivity)localObject1, (BaseFinderFeedLoader)localObject2);
-    this.Ayf = ((g.b)new d(this, (MMActivity)ebI(), this.scene, ebI().getCommentScene()));
-    localObject1 = this.Ayf;
-    if (localObject1 == null) {
-      p.bGy("viewCallback");
+    label338:
+    label347:
+    label353:
+    label362:
+    for (;;)
+    {
+      g.a locala = this.FXC;
+      localObject2 = locala;
+      if (locala == null)
+      {
+        s.bIx("presenter");
+        localObject2 = null;
+      }
+      ((g.b)localObject1).a((c.a)localObject2);
+      this.qmO = ((IListener)new IListener(f.hfK)
+      {
+        @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+        static final class a
+          extends u
+          implements a<ah>
+        {
+          a(if paramif, FinderFavFeedFragment paramFinderFavFeedFragment)
+          {
+            super();
+          }
+        }
+      });
+      localObject1 = this.qmO;
+      if (localObject1 != null) {
+        ((IListener)localObject1).alive();
+      }
+      AppMethodBeat.o(347780);
+      return;
+      localObject1 = null;
+      break;
+      i = ((MMFinderUI)localObject1).getCommentScene();
+      break label161;
+      localObject1 = null;
+      break label214;
+      i = ((MMFinderUI)localObject1).getCommentScene();
+      break label221;
     }
-    localObject2 = this.Aye;
-    if (localObject2 == null) {
-      p.bGy("presenter");
-    }
-    ((g.b)localObject1).a((c.a)localObject2);
-    this.xyI = ((IListener)new e(this));
-    EventCenter.instance.add(this.xyI);
-    AppMethodBeat.o(285283);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(285290);
-    EventCenter.instance.removeListener(this.xyI);
+    AppMethodBeat.i(347805);
+    IListener localIListener = this.qmO;
+    if (localIListener != null) {
+      localIListener.dead();
+    }
     super.onDestroy();
-    AppMethodBeat.o(285290);
+    AppMethodBeat.o(347805);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(285284);
+    Object localObject2 = null;
+    AppMethodBeat.i(347786);
     super.onResume();
-    Object localObject1 = this.Ayg;
+    Object localObject1 = this.FXE;
+    g.b localb;
     if (localObject1 != null)
     {
-      localObject1 = ((Iterable)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
+      Iterator localIterator = ((Iterable)localObject1).iterator();
+      while (localIterator.hasNext())
       {
-        long l = ((Number)((Iterator)localObject1).next()).longValue();
-        Object localObject2 = this.xMf;
-        if (localObject2 == null) {
-          p.bGy("feedLoader");
-        }
-        ((FinderFavFeedLoader)localObject2).remove(l, true);
-        localObject2 = k.Anu;
-        k.a.R(l, 10);
-        localObject2 = this.xMf;
-        if (localObject2 == null) {
-          p.bGy("feedLoader");
-        }
-        if (((FinderFavFeedLoader)localObject2).getSize() == 0)
+        long l = ((Number)localIterator.next()).longValue();
+        fcP().remove(l, true);
+        localObject1 = com.tencent.mm.plugin.finder.storage.data.k.FNg;
+        k.a.ad(l, 10);
+        if (fcP().getSize() == 0)
         {
-          localObject2 = this.Ayf;
-          if (localObject2 == null) {
-            p.bGy("viewCallback");
+          localb = this.FXD;
+          localObject1 = localb;
+          if (localb == null)
+          {
+            s.bIx("viewCallback");
+            localObject1 = null;
           }
-          ((g.b)localObject2).bTY();
+          ((g.b)localObject1).cul();
+          localb = this.FXD;
+          localObject1 = localb;
+          if (localb == null)
+          {
+            s.bIx("viewCallback");
+            localObject1 = null;
+          }
+          localObject1 = ((c.b)localObject1).ATx.getLoadMoreFooter();
+          if (localObject1 != null) {
+            ((View)localObject1).setVisibility(4);
+          }
         }
       }
     }
-    localObject1 = this.xMf;
-    if (localObject1 == null) {
-      p.bGy("feedLoader");
-    }
+    localObject1 = this.FXE;
+    int i;
     if (localObject1 == null)
     {
-      localObject1 = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.feed.model.FinderFavFeedLoader");
-      AppMethodBeat.o(285284);
-      throw ((Throwable)localObject1);
+      i = 0;
+      if (i > 0)
+      {
+        localb = this.FXD;
+        localObject1 = localb;
+        if (localb == null)
+        {
+          s.bIx("viewCallback");
+          localObject1 = null;
+        }
+        ((g.b)localObject1).eca();
+      }
+      Og(fcP().lNX);
+      if (this.FXF)
+      {
+        localObject1 = this.FXD;
+        if (localObject1 != null) {
+          break label270;
+        }
+        s.bIx("viewCallback");
+        localObject1 = localObject2;
+      }
     }
-    MI(((FinderFavFeedLoader)localObject1).jlf);
-    AppMethodBeat.o(285284);
+    label270:
+    for (;;)
+    {
+      ((g.b)localObject1).eca();
+      AppMethodBeat.o(347786);
+      return;
+      i = ((HashSet)localObject1).size();
+      break;
+    }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/fragment/FinderFavFeedFragment$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/ui/fragment/FinderFavFeedFragment$Companion;", "", "()V", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/ui/fragment/FinderFavFeedFragment$initOnCreate$1$1", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IInitDone;", "call", "", "incrementCount", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/ui/fragment/FinderFavFeedFragment$initOnCreate$1$1", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IInitDone;", "call", "", "incrementCount", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
     implements j
   {
-    b(FinderFavFeedLoader paramFinderFavFeedLoader, FinderFavFeedFragment paramFinderFavFeedFragment) {}
+    b(FinderFavFeedFragment paramFinderFavFeedFragment, FinderFavFeedLoader paramFinderFavFeedLoader) {}
     
     public final void call(int paramInt)
     {
-      AppMethodBeat.i(278512);
+      Object localObject2 = null;
+      AppMethodBeat.i(347711);
       try
       {
-        Object localObject = FinderFavFeedFragment.a(jdField_this);
-        if (localObject != null)
+        Object localObject3 = FinderFavFeedFragment.b(this.FXG);
+        Object localObject1 = localObject3;
+        if (localObject3 == null)
         {
-          localObject = ((g.b)localObject).getEmptyView();
-          if (localObject != null)
+          s.bIx("viewCallback");
+          localObject1 = null;
+        }
+        localObject1 = ((g.b)localObject1).getEmptyView();
+        if (localObject1 != null)
+        {
+          localObject3 = this.FXG;
+          ((View)localObject1).setVisibility(8);
+          localObject1 = FinderFavFeedFragment.b((FinderFavFeedFragment)localObject3);
+          if (localObject1 == null)
           {
-            ((View)localObject).setVisibility(8);
-            localObject = FinderFavFeedFragment.a(jdField_this);
-            if (localObject != null)
-            {
-              localObject = ((c.b)localObject).xvJ.getRecyclerView();
-              if (localObject != null) {
-                ((RecyclerView)localObject).setVisibility(0);
-              }
+            s.bIx("viewCallback");
+            localObject1 = localObject2;
+          }
+          for (;;)
+          {
+            localObject1 = ((c.b)localObject1).ATx.getRecyclerView();
+            if (localObject1 != null) {
+              ((RecyclerView)localObject1).setVisibility(0);
             }
-            EventCenter.instance.publish((IEvent)new hu());
-            AppMethodBeat.o(278512);
+            new if().publish();
+            AppMethodBeat.o(347711);
             return;
           }
         }
-        AppMethodBeat.o(278512);
         return;
       }
       catch (IllegalStateException localIllegalStateException)
       {
-        Log.printErrStackTrace(this.xMh.getTAG(), (Throwable)localIllegalStateException, "view illegal stat", new Object[0]);
-        AppMethodBeat.o(278512);
+        Log.printErrStackTrace(this.Bms.getTAG(), (Throwable)localIllegalStateException, "view illegal stat", new Object[0]);
+        AppMethodBeat.o(347711);
       }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "invoke", "com/tencent/mm/plugin/finder/ui/fragment/FinderFavFeedFragment$initOnCreate$1$2"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends q
-    implements b<IResponse<bu>, x>
+    extends u
+    implements kotlin.g.a.b<IResponse<cc>, ah>
   {
     c(FinderFavFeedFragment paramFinderFavFeedFragment)
     {
@@ -257,37 +370,32 @@ public final class FinderFavFeedFragment
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/ui/fragment/FinderFavFeedFragment$initOnCreate$2", "Lcom/tencent/mm/plugin/finder/feed/FinderFavFeedUIContract$FavFeedViewCallback;", "getRootView", "Landroid/view/View;", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/ui/fragment/FinderFavFeedFragment$initOnCreate$2", "Lcom/tencent/mm/plugin/finder/feed/FinderFavFeedUIContract$FavFeedViewCallback;", "getRootView", "Landroid/view/View;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class d
     extends g.b
   {
-    d(MMActivity paramMMActivity, int paramInt1, int paramInt2)
+    d(FinderFavFeedFragment paramFinderFavFeedFragment, MMActivity paramMMActivity, int paramInt1, int paramInt2)
     {
-      super(paramInt2, i, (byte)0);
+      super(paramInt1, paramInt2, (byte)0);
     }
     
     public final View getRootView()
     {
-      AppMethodBeat.i(267725);
-      View localView = this.Ayi.getView();
-      AppMethodBeat.o(267725);
+      AppMethodBeat.i(347705);
+      View localView = this.FXG.getView();
+      AppMethodBeat.o(347705);
       return localView;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/ui/fragment/FinderFavFeedFragment$initOnCreate$3", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/FeedUpdateEvent;", "callback", "", "event", "plugin-finder_release"})
-  public static final class e
-    extends IListener<hu>
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class initOnCreate$3$a
+    extends u
+    implements a<ah>
   {
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/finder/ui/fragment/FinderFavFeedFragment$initOnCreate$3$callback$1$1"})
-    static final class a
-      extends q
-      implements a<x>
+    initOnCreate$3$a(if paramif, FinderFavFeedFragment paramFinderFavFeedFragment)
     {
-      a(FinderFavFeedFragment.e parame, hu paramhu)
-      {
-        super();
-      }
+      super();
     }
   }
 }

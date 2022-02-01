@@ -4,28 +4,17 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
 import com.google.android.gms.wearable.Node;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SafeParcelable.Class(creator="NodeParcelableCreator")
-@SafeParcelable.Reserved({1})
 public final class zzfo
   extends AbstractSafeParcelable
   implements Node
 {
   public static final Parcelable.Creator<zzfo> CREATOR;
-  @SafeParcelable.Field(getter="getDisplayName", id=3)
   private final String zzbk;
-  @SafeParcelable.Field(getter="getId", id=2)
   private final String zzdm;
-  @SafeParcelable.Field(getter="getHopCount", id=4)
   private final int zzen;
-  @SafeParcelable.Field(getter="isNearby", id=5)
   private final boolean zzeo;
   
   static
@@ -35,8 +24,7 @@ public final class zzfo
     AppMethodBeat.o(101315);
   }
   
-  @SafeParcelable.Constructor
-  public zzfo(@SafeParcelable.Param(id=2) String paramString1, @SafeParcelable.Param(id=3) String paramString2, @SafeParcelable.Param(id=4) int paramInt, @SafeParcelable.Param(id=5) boolean paramBoolean)
+  public zzfo(String paramString1, String paramString2, int paramInt, boolean paramBoolean)
   {
     this.zzdm = paramString1;
     this.zzbk = paramString2;
@@ -106,7 +94,7 @@ public final class zzfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzfo
  * JD-Core Version:    0.7.0.1
  */

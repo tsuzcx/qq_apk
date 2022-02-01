@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <View android:id="@id/ebz" android:background="#ffefeff4" android:layout_width="fill_parent" android:layout_height="8.0dip" />
-    <TextView android:textSize="@dimen/hc" android:textColor="@color/FG_1" android:gravity="center|left" android:id="@id/f6y" android:background="@drawable/agv" android:paddingLeft="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="48.0dip" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/f6z" android:background="@drawable/ags" android:paddingTop="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <View android:id="@id/g0e" android:background="@drawable/agr" android:layout_width="fill_parent" android:layout_height="4.0dip" />
-    <View android:id="@id/aal" android:background="@color/zd" android:layout_width="fill_parent" android:layout_height="24.0dip" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/ixq" android:background="@drawable/f6" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_horizontal" android:id="@id/bxs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:src="@raw/icons_pop_arrow" app:iconColor="@color/g_" />
 </LinearLayout>

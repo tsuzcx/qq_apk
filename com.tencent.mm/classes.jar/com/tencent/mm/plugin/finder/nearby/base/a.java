@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.finder.nearby.base;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/base/FragmentChangeListener;", "", "onFragmentChange", "", "from", "", "to", "fromType", "toType", "onUserVisibleFragmentChange", "isUserVisibleFocused", "", "index", "fragment", "Lcom/tencent/mm/plugin/finder/nearby/base/AbsNearByFragment;", "plugin-finder-nearby_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/base/FragmentChangeListener;", "", "onFragmentChange", "", "from", "", "to", "fromType", "toType", "onUserVisibleFragmentChange", "isUserVisibleFocused", "", "index", "fragment", "Lcom/tencent/mm/plugin/finder/nearby/base/AbsNearByFragment;", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface a
 {
-  public abstract void H(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public abstract void N(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
   public abstract void a(AbsNearByFragment paramAbsNearByFragment);
 }

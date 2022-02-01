@@ -6,30 +6,30 @@ import java.util.ArrayList;
 
 public class c
 {
-  private static c fmR;
+  private static c hrc;
   private volatile int count;
-  public volatile ArrayList<com.tencent.mm.audio.mix.a.c> fmS;
-  private long fmT;
+  public volatile ArrayList<com.tencent.mm.audio.mix.a.c> hrd;
+  private long hre;
   
   private c()
   {
     AppMethodBeat.i(182541);
-    this.fmS = new ArrayList();
-    this.fmT = 50L;
+    this.hrd = new ArrayList();
+    this.hre = 50L;
     this.count = 0;
     AppMethodBeat.o(182541);
   }
   
-  public static c adm()
+  public static c aFl()
   {
     AppMethodBeat.i(182542);
-    if (fmR == null) {}
+    if (hrc == null) {}
     try
     {
-      if (fmR == null) {
-        fmR = new c();
+      if (hrc == null) {
+        hrc = new c();
       }
-      c localc = fmR;
+      c localc = hrc;
       AppMethodBeat.o(182542);
       return localc;
     }
@@ -50,7 +50,7 @@ public class c
     //   7: aload_1
     //   8: ifnull +10 -> 18
     //   11: aload_1
-    //   12: getfield 54	com/tencent/mm/audio/mix/a/c:fmy	[B
+    //   12: getfield 54	com/tencent/mm/audio/mix/a/c:hqJ	[B
     //   15: ifnonnull +11 -> 26
     //   18: ldc 48
     //   20: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -64,18 +64,18 @@ public class c
     //   32: iconst_0
     //   33: putfield 60	com/tencent/mm/audio/mix/a/c:sampleRate	I
     //   36: aload_1
-    //   37: getfield 64	com/tencent/mm/audio/mix/a/c:fmz	Ljava/util/LinkedList;
+    //   37: getfield 64	com/tencent/mm/audio/mix/a/c:hqK	Ljava/util/LinkedList;
     //   40: invokevirtual 69	java/util/LinkedList:clear	()V
     //   43: aload_1
-    //   44: getfield 54	com/tencent/mm/audio/mix/a/c:fmy	[B
+    //   44: getfield 54	com/tencent/mm/audio/mix/a/c:hqJ	[B
     //   47: iconst_0
     //   48: aload_1
-    //   49: getfield 54	com/tencent/mm/audio/mix/a/c:fmy	[B
+    //   49: getfield 54	com/tencent/mm/audio/mix/a/c:hqJ	[B
     //   52: arraylength
     //   53: iconst_0
     //   54: invokestatic 75	java/util/Arrays:fill	([BIIB)V
     //   57: aload_0
-    //   58: getfield 29	com/tencent/mm/audio/mix/b/c:fmS	Ljava/util/ArrayList;
+    //   58: getfield 29	com/tencent/mm/audio/mix/b/c:hrd	Ljava/util/ArrayList;
     //   61: iconst_0
     //   62: aload_1
     //   63: invokevirtual 79	java/util/ArrayList:add	(ILjava/lang/Object;)V
@@ -105,7 +105,7 @@ public class c
     //   26	81	84	finally
   }
   
-  public final com.tencent.mm.audio.mix.a.c adn()
+  public final com.tencent.mm.audio.mix.a.c aFm()
   {
     for (;;)
     {
@@ -113,13 +113,13 @@ public class c
       {
         AppMethodBeat.i(182543);
         com.tencent.mm.audio.mix.a.c localc1;
-        if (this.fmS.size() > 0)
+        if (this.hrd.size() > 0)
         {
-          localc1 = (com.tencent.mm.audio.mix.a.c)this.fmS.remove(this.fmS.size() - 1);
+          localc1 = (com.tencent.mm.audio.mix.a.c)this.hrd.remove(this.hrd.size() - 1);
           AppMethodBeat.o(182543);
           return localc1;
         }
-        if (this.count >= this.fmT)
+        if (this.count >= this.hre)
         {
           b.e("MicroMsg.Mix.AudioOutputMixBufferPool", "size >= FIX_SIZE, size:%d", new Object[] { Integer.valueOf(this.count) });
           localc1 = null;

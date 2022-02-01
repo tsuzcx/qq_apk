@@ -1,6 +1,5 @@
 package com.tencent.midas.plugin;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -56,7 +55,6 @@ public abstract interface IAPPluginActivity
   
   public abstract boolean IOnPrepareOptionsMenu(Menu paramMenu);
   
-  @TargetApi(23)
   public abstract void IOnRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt);
   
   public abstract void IOnRestart();
@@ -77,7 +75,6 @@ public abstract interface IAPPluginActivity
   
   public abstract void IOnWindowFocusChanged(boolean paramBoolean);
   
-  @TargetApi(23)
   public abstract void IRequestPermissions(String[] paramArrayOfString, int paramInt);
   
   public abstract void ISetIntent(Intent paramIntent);
@@ -86,7 +83,7 @@ public abstract interface IAPPluginActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.midas.plugin.IAPPluginActivity
  * JD-Core Version:    0.7.0.1
  */

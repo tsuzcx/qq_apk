@@ -12,14 +12,14 @@ final class VoiceLoginUI$1
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(29872);
-    VoiceLoginUI.a(this.NIm);
+    VoiceLoginUI.a(this.Uun);
     AppMethodBeat.o(29872);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.ui.VoiceLoginUI.1
  * JD-Core Version:    0.7.0.1
  */

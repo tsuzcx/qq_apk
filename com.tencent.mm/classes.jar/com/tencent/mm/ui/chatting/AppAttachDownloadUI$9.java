@@ -9,14 +9,14 @@ final class AppAttachDownloadUI$9
   
   public final void run()
   {
-    AppMethodBeat.i(290360);
-    AppAttachDownloadUI.Q(this.WwM);
-    AppMethodBeat.o(290360);
+    AppMethodBeat.i(253971);
+    AppAttachDownloadUI.R(this.aeed);
+    AppMethodBeat.o(253971);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.AppAttachDownloadUI.9
  * JD-Core Version:    0.7.0.1
  */

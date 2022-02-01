@@ -6,26 +6,16 @@ import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SafeParcelable.Class(creator="AccountChangeEventsRequestCreator")
 public class AccountChangeEventsRequest
   extends AbstractSafeParcelable
 {
   public static final Parcelable.Creator<AccountChangeEventsRequest> CREATOR;
-  @SafeParcelable.VersionField(id=1)
   private final int zzh;
   @Deprecated
-  @SafeParcelable.Field(id=3)
   private String zzj;
-  @SafeParcelable.Field(id=2)
   private int zzl;
-  @SafeParcelable.Field(id=4)
   private Account zzn;
   
   static
@@ -40,8 +30,7 @@ public class AccountChangeEventsRequest
     this.zzh = 1;
   }
   
-  @SafeParcelable.Constructor
-  AccountChangeEventsRequest(@SafeParcelable.Param(id=1) int paramInt1, @SafeParcelable.Param(id=2) int paramInt2, @SafeParcelable.Param(id=3) String paramString, @SafeParcelable.Param(id=4) Account paramAccount)
+  AccountChangeEventsRequest(int paramInt1, int paramInt2, String paramString, Account paramAccount)
   {
     AppMethodBeat.i(10587);
     this.zzh = paramInt1;
@@ -106,7 +95,7 @@ public class AccountChangeEventsRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.AccountChangeEventsRequest
  * JD-Core Version:    0.7.0.1
  */

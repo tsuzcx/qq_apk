@@ -1,42 +1,15 @@
 package com.tencent.mm.plugin.appbrand.page.capsulebar;
 
-import android.graphics.drawable.Drawable;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/page/capsulebar/BlinkHelperExportHooker;", "", "hook", "Lcom/tencent/mm/plugin/appbrand/page/capsulebar/AppBrandCapsuleBarBlinkHelper;", "base", "luggage-wxa-app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface i
 {
-  public static final a qxA = new a()
-  {
-    public final void Cy(int paramAnonymousInt) {}
-    
-    public final void M(CharSequence paramAnonymousCharSequence) {}
-    
-    public final void dismiss() {}
-    
-    public final void setLogo(int paramAnonymousInt) {}
-    
-    public final void setLogo(Drawable paramAnonymousDrawable) {}
-    
-    public final void setStatus(int paramAnonymousInt) {}
-  };
-  
-  public static abstract interface a
-  {
-    public abstract void Cy(int paramInt);
-    
-    public abstract void M(CharSequence paramCharSequence);
-    
-    public abstract void dismiss();
-    
-    public abstract void setLogo(int paramInt);
-    
-    public abstract void setLogo(Drawable paramDrawable);
-    
-    public abstract void setStatus(int paramInt);
-  }
+  public abstract a a(a parama);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.capsulebar.i
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ import com.tencent.mm.plugin.wear.model.a;
 import com.tencent.mm.plugin.wear.model.e.r;
 import com.tencent.mm.plugin.wear.model.f;
 import com.tencent.mm.plugin.wear.model.g;
-import com.tencent.mm.protocal.protobuf.fjd;
+import com.tencent.mm.protocal.protobuf.gfr;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.io.IOException;
 import java.util.List;
@@ -19,18 +19,23 @@ import java.util.List;
 public final class e
   extends c
 {
-  protected final void gOA()
+  public final String getName()
+  {
+    return "WearFailMsgCreateTask";
+  }
+  
+  protected final void send()
   {
     AppMethodBeat.i(30125);
-    int i = ((n)h.ae(n.class)).eSe().eSq().size();
-    fjd localfjd = new fjd();
-    localfjd.CRP = a.gOr().bhQ(z.bcZ()).id;
-    localfjd.fwr = MMApplicationContext.getContext().getString(R.l.app_name);
-    localfjd.lpy = MMApplicationContext.getContext().getString(R.l.eMX, new Object[] { Integer.valueOf(i) });
+    int i = ((n)h.ax(n.class)).gaZ().gbl().size();
+    gfr localgfr = new gfr();
+    localgfr.IMf = a.inG().bhz(z.bAM()).id;
+    localgfr.hAP = MMApplicationContext.getContext().getString(R.l.app_name);
+    localgfr.nUB = MMApplicationContext.getContext().getString(R.l.gPk, new Object[] { Integer.valueOf(i) });
     try
     {
-      a.gOx();
-      r.a(20005, localfjd.toByteArray(), true);
+      a.inM();
+      r.a(20005, localgfr.toByteArray(), true);
       AppMethodBeat.o(30125);
       return;
     }
@@ -39,15 +44,10 @@ public final class e
       AppMethodBeat.o(30125);
     }
   }
-  
-  public final String getName()
-  {
-    return "WearFailMsgCreateTask";
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.f.e
  * JD-Core Version:    0.7.0.1
  */

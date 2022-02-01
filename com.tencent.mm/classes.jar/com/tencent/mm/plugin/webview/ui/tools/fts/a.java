@@ -4,177 +4,227 @@ import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.Context;
 import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.search.FTSEditTextView;
 import java.lang.reflect.Array;
 
 public class a
 {
-  protected int FxJ;
-  protected int FxO;
-  protected int Qme;
-  protected int Qmf;
-  protected int Qmg;
-  protected View Qmh;
-  protected View Qmi;
-  protected View Qmj;
-  protected View Qmk;
-  protected View Qml;
-  protected View Qmm;
-  protected View Qmn;
-  protected float[][] Qmo;
-  protected float[] Qmp;
-  protected b Qmq;
-  protected a Qmr;
-  protected ValueAnimator.AnimatorUpdateListener Qms;
-  protected ValueAnimator.AnimatorUpdateListener Qmt;
-  protected ValueAnimator.AnimatorUpdateListener Qmu;
-  protected ValueAnimator.AnimatorUpdateListener Qmv;
+  protected int LtV;
+  protected int LtY;
+  protected int Lua;
+  boolean Xcn;
+  protected View XeA;
+  protected View XeB;
+  protected View XeC;
+  protected View XeD;
+  protected float[][] XeE;
+  protected float[] XeF;
+  protected a.b XeG;
+  protected a XeH;
+  protected ValueAnimator.AnimatorUpdateListener XeI;
+  protected ValueAnimator.AnimatorUpdateListener XeJ;
+  protected ValueAnimator.AnimatorUpdateListener XeK;
+  protected ValueAnimator.AnimatorUpdateListener XeL;
+  protected int Xes;
+  protected int Xet;
+  protected int Xeu;
+  protected View Xev;
+  protected View Xew;
+  protected View Xex;
+  protected View Xey;
+  protected View Xez;
   protected boolean isAnimating;
-  protected View qnL;
+  protected View tss;
   
-  public a(Context paramContext, final View paramView1, final View paramView2, View paramView3, View paramView4, View paramView5, View paramView6, final View paramView7, View paramView8)
+  public a(Context paramContext, final View paramView1, final View paramView2, View paramView3, View paramView4, View paramView5, View paramView6, final View paramView7, View paramView8, View paramView9, View paramView10)
   {
-    AppMethodBeat.i(244405);
-    this.Qmq = b.QmB;
-    this.Qms = new ValueAnimator.AnimatorUpdateListener()
+    AppMethodBeat.i(296907);
+    this.XeG = a.b.XeR;
+    this.Xcn = true;
+    this.XeI = new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
         AppMethodBeat.i(80732);
         float f1 = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-        float f2 = a.this.Qmo[1][1];
-        float f3 = a.this.Qmo[1][0];
-        float f4 = a.this.Qmo[1][0];
-        float f5 = a.this.Qmo[0][1];
-        float f6 = a.this.Qmo[0][0];
-        float f7 = a.this.Qmo[0][0];
-        a.this.Qmh.setX((f2 - f3) * f1 + f4);
-        a.this.Qmh.setY((f5 - f6) * f1 + f7);
-        f2 = a.this.Qmp[1];
-        f3 = a.this.Qmp[0];
-        f4 = a.this.Qmp[0];
-        a.this.qnL.setY((f2 - f3) * f1 + f4);
-        a.this.qnL.setAlpha(1.0F - f1);
-        a.this.Qmh.setPadding((int)((a.this.Qmg - a.this.Qmf) * f1 + a.this.Qmf), 0, 0, 0);
-        Log.v("MicroMsg.WebSearch.SosAnimatorBaseController", "searchBarView.paddingLeft %d value %f", new Object[] { Integer.valueOf(a.this.Qmh.getPaddingLeft()), Float.valueOf(f1) });
-        paramAnonymousValueAnimator = (RelativeLayout.LayoutParams)a.this.Qmh.getLayoutParams();
-        int i = (int)((1.0F - f1) * a.this.FxO);
+        float f2 = a.this.XeE[1][1];
+        float f3 = a.this.XeE[1][0];
+        float f4 = a.this.XeE[1][0];
+        float f5 = a.this.XeE[0][1];
+        float f6 = a.this.XeE[0][0];
+        float f7 = a.this.XeE[0][0];
+        a.this.Xev.setX((f2 - f3) * f1 + f4);
+        a.this.Xev.setY((f5 - f6) * f1 + f7);
+        f2 = a.this.XeF[1];
+        f3 = a.this.XeF[0];
+        f4 = a.this.XeF[0];
+        a.this.tss.setY((f2 - f3) * f1 + f4);
+        a.this.tss.setAlpha(1.0F - f1);
+        if (!a.this.Xcn)
+        {
+          if (a.this.XeC != null)
+          {
+            a.this.XeC.setAlpha(f1);
+            a.this.XeC.setVisibility(0);
+            if (a.this.XeC != null)
+            {
+              i = (int)(a.this.LtY * (1.0F - f1));
+              paramAnonymousValueAnimator = (FrameLayout.LayoutParams)a.this.XeC.getLayoutParams();
+              paramAnonymousValueAnimator.leftMargin = i;
+              a.this.XeC.setLayoutParams(paramAnonymousValueAnimator);
+            }
+          }
+          if (a.this.XeD != null)
+          {
+            a.this.XeD.setVisibility(0);
+            a.this.XeD.setAlpha(f1);
+          }
+        }
+        a.this.Xev.setPadding((int)((a.this.Xeu - a.this.Xet) * f1 + a.this.Xet), 0, 0, 0);
+        Log.v("MicroMsg.WebSearch.SosAnimatorBaseController", "searchBarView.paddingLeft %d value %f", new Object[] { Integer.valueOf(a.this.Xev.getPaddingLeft()), Float.valueOf(f1) });
+        paramAnonymousValueAnimator = (RelativeLayout.LayoutParams)a.this.Xev.getLayoutParams();
+        int i = (int)((1.0F - f1) * a.this.Lua);
         paramAnonymousValueAnimator.leftMargin = i;
         paramAnonymousValueAnimator.rightMargin = i;
-        int j = (int)a.this.Qmo[2][0];
-        paramAnonymousValueAnimator.width = ((a.this.FxO - i) * 2 + j);
-        a.this.Qmh.setLayoutParams(paramAnonymousValueAnimator);
+        int j = (int)a.this.XeE[2][0];
+        paramAnonymousValueAnimator.width = ((a.this.Lua - i) * 2 + j);
+        a.this.Xev.setLayoutParams(paramAnonymousValueAnimator);
         AppMethodBeat.o(80732);
       }
     };
-    this.Qmt = new ValueAnimator.AnimatorUpdateListener()
+    this.XeJ = new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
         AppMethodBeat.i(80733);
         float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-        a.this.Qmh.setAlpha(f);
-        a.this.qnL.setAlpha(f);
-        a.this.Qmh.setX(a.this.Qmo[1][1]);
-        a.this.Qmh.setY(a.this.Qmo[0][1]);
-        a.this.qnL.setY(a.this.Qmp[1]);
-        a.this.Qmh.setPadding((int)(f * (a.this.Qmg - a.this.Qmf) + a.this.Qmf), 0, 0, 0);
-        paramAnonymousValueAnimator = (RelativeLayout.LayoutParams)a.this.Qmh.getLayoutParams();
+        a.this.Xev.setAlpha(f);
+        a.this.tss.setAlpha(f);
+        a.this.Xev.setX(a.this.XeE[1][1]);
+        a.this.Xev.setY(a.this.XeE[0][1]);
+        a.this.tss.setY(a.this.XeF[1]);
+        a.this.Xev.setPadding((int)(f * (a.this.Xeu - a.this.Xet) + a.this.Xet), 0, 0, 0);
+        paramAnonymousValueAnimator = (RelativeLayout.LayoutParams)a.this.Xev.getLayoutParams();
         if (paramAnonymousValueAnimator.leftMargin != 0)
         {
           paramAnonymousValueAnimator.leftMargin = 0;
           paramAnonymousValueAnimator.rightMargin = 0;
-          paramAnonymousValueAnimator.width = ((int)a.this.Qmo[2][0] + a.this.FxO * 2);
-          a.this.Qmh.setLayoutParams(paramAnonymousValueAnimator);
+          paramAnonymousValueAnimator.width = ((int)a.this.XeE[2][0] + a.this.Lua * 2);
+          a.this.Xev.setLayoutParams(paramAnonymousValueAnimator);
         }
         AppMethodBeat.o(80733);
       }
     };
-    this.Qmu = new ValueAnimator.AnimatorUpdateListener()
+    this.XeK = new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
         AppMethodBeat.i(80734);
         float f1 = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-        float f2 = a.this.Qmo[1][0];
-        float f3 = a.this.Qmo[1][1];
-        float f4 = a.this.Qmo[1][1];
-        float f5 = a.this.Qmo[0][0];
-        float f6 = a.this.Qmo[0][1];
-        float f7 = a.this.Qmo[0][1];
-        a.this.Qmh.setX((f2 - f3) * f1 + f4);
-        a.this.Qmh.setY((f5 - f6) * f1 + f7);
-        f2 = a.this.Qmp[0];
-        f3 = a.this.Qmp[1];
-        f4 = a.this.Qmp[1];
-        a.this.qnL.setY((f2 - f3) * f1 + f4);
-        a.this.qnL.setAlpha(f1);
-        a.this.Qmh.setPadding((int)((a.this.Qmf - a.this.Qmg) * f1 + a.this.Qmg), 0, 0, 0);
-        paramAnonymousValueAnimator = (RelativeLayout.LayoutParams)a.this.Qmh.getLayoutParams();
-        int i = (int)(f1 * a.this.FxO);
+        float f2 = a.this.XeE[1][0];
+        float f3 = a.this.XeE[1][1];
+        float f4 = a.this.XeE[1][1];
+        float f5 = a.this.XeE[0][0];
+        float f6 = a.this.XeE[0][1];
+        float f7 = a.this.XeE[0][1];
+        a.this.Xev.setX((f2 - f3) * f1 + f4);
+        a.this.Xev.setY((f5 - f6) * f1 + f7);
+        f2 = a.this.XeF[0];
+        f3 = a.this.XeF[1];
+        f4 = a.this.XeF[1];
+        a.this.tss.setY((f2 - f3) * f1 + f4);
+        a.this.tss.setAlpha(f1);
+        if (!a.this.Xcn)
+        {
+          if (a.this.XeC != null)
+          {
+            a.this.XeC.setAlpha(1.0F - f1);
+            a.this.XeC.setVisibility(0);
+            if (a.this.XeC != null)
+            {
+              i = (int)(a.this.LtY * f1);
+              paramAnonymousValueAnimator = (FrameLayout.LayoutParams)a.this.XeC.getLayoutParams();
+              paramAnonymousValueAnimator.leftMargin = i;
+              a.this.XeC.setLayoutParams(paramAnonymousValueAnimator);
+            }
+          }
+          if (a.this.XeD != null)
+          {
+            a.this.XeD.setVisibility(0);
+            a.this.XeD.setAlpha(1.0F - f1);
+          }
+        }
+        a.this.Xev.setPadding((int)((a.this.Xet - a.this.Xeu) * f1 + a.this.Xeu), 0, 0, 0);
+        paramAnonymousValueAnimator = (RelativeLayout.LayoutParams)a.this.Xev.getLayoutParams();
+        int i = (int)(f1 * a.this.Lua);
         paramAnonymousValueAnimator.leftMargin = i;
         paramAnonymousValueAnimator.rightMargin = i;
-        int j = (int)a.this.Qmo[2][0];
-        paramAnonymousValueAnimator.width = ((a.this.FxO - i) * 2 + j);
-        a.this.Qmh.setLayoutParams(paramAnonymousValueAnimator);
+        int j = (int)a.this.XeE[2][0];
+        paramAnonymousValueAnimator.width = ((a.this.Lua - i) * 2 + j);
+        a.this.Xev.setLayoutParams(paramAnonymousValueAnimator);
         AppMethodBeat.o(80734);
       }
     };
-    this.Qmv = new ValueAnimator.AnimatorUpdateListener()
+    this.XeL = new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
-        AppMethodBeat.i(268493);
+        AppMethodBeat.i(296812);
         float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
         if (Math.abs(f - 1.0F) <= 0.001D)
         {
-          a.this.Qmh.setX(a.this.Qmo[1][0]);
-          a.this.Qmh.setY(a.this.Qmo[0][0]);
-          a.this.qnL.setY(a.this.Qmp[0]);
-          a.this.Qmh.setPadding(0, 0, 0, 0);
-          paramAnonymousValueAnimator = (RelativeLayout.LayoutParams)a.this.Qmh.getLayoutParams();
-          paramAnonymousValueAnimator.leftMargin = a.this.FxO;
-          paramAnonymousValueAnimator.rightMargin = a.this.FxO;
-          paramAnonymousValueAnimator.width = ((int)a.this.Qmo[2][0]);
-          a.this.Qmh.setLayoutParams(paramAnonymousValueAnimator);
-          a.this.Qmh.setAlpha(1.0F);
-          a.this.qnL.setAlpha(1.0F);
-          AppMethodBeat.o(268493);
+          a.this.Xev.setX(a.this.XeE[1][0]);
+          a.this.Xev.setY(a.this.XeE[0][0]);
+          a.this.tss.setY(a.this.XeF[0]);
+          a.this.Xev.setPadding(0, 0, 0, 0);
+          paramAnonymousValueAnimator = (RelativeLayout.LayoutParams)a.this.Xev.getLayoutParams();
+          paramAnonymousValueAnimator.leftMargin = a.this.Lua;
+          paramAnonymousValueAnimator.rightMargin = a.this.Lua;
+          paramAnonymousValueAnimator.width = ((int)a.this.XeE[2][0]);
+          a.this.Xev.setLayoutParams(paramAnonymousValueAnimator);
+          a.this.Xev.setAlpha(1.0F);
+          a.this.tss.setAlpha(1.0F);
+          AppMethodBeat.o(296812);
           return;
         }
-        a.this.qnL.setAlpha(1.0F - f);
-        a.this.Qmh.setAlpha(1.0F - f);
-        AppMethodBeat.o(268493);
+        a.this.tss.setAlpha(1.0F - f);
+        a.this.Xev.setAlpha(1.0F - f);
+        AppMethodBeat.o(296812);
       }
     };
-    this.FxO = com.tencent.mm.ci.a.fromDPToPix(paramContext, 24);
-    this.FxJ = com.tencent.mm.ci.a.fromDPToPix(paramContext, 14);
-    this.Qmo = ((float[][])Array.newInstance(Float.TYPE, new int[] { 3, 2 }));
-    this.Qmp = new float[2];
-    this.Qmh = paramView1;
-    this.qnL = paramView2;
-    this.Qmi = paramView3;
-    this.Qmj = paramView4;
-    this.Qmk = paramView5;
-    this.Qml = paramView6;
-    this.Qmm = paramView7;
-    this.Qmn = paramView8;
-    this.Qmf = 0;
-    this.Qmg = (this.FxO * 2);
-    this.Qmh.postDelayed(new Runnable()
+    this.Lua = com.tencent.mm.cd.a.fromDPToPix(paramContext, 24);
+    this.LtV = com.tencent.mm.cd.a.fromDPToPix(paramContext, 14);
+    this.LtY = com.tencent.mm.cd.a.fromDPToPix(paramContext, 16);
+    this.XeE = ((float[][])Array.newInstance(Float.TYPE, new int[] { 3, 2 }));
+    this.XeF = new float[2];
+    this.Xev = paramView1;
+    this.tss = paramView2;
+    this.Xew = paramView3;
+    this.Xex = paramView4;
+    this.Xey = paramView5;
+    this.Xez = paramView6;
+    this.XeA = paramView7;
+    this.XeB = paramView8;
+    this.XeC = paramView9;
+    this.XeD = paramView10;
+    this.Xet = 0;
+    this.Xeu = (this.Lua * 2);
+    this.Xev.postDelayed(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(80729);
-        a.this.Qmo[0][0] = paramView1.getY();
-        a.this.Qmo[0][1] = 0;
-        a.this.Qmo[1][0] = paramView1.getX();
-        a.this.Qmo[1][1] = 0;
-        a.this.Qmo[2][0] = paramView1.getMeasuredWidth();
-        a.this.Qmo[2][1] = (paramView1.getMeasuredWidth() + a.this.FxO * 2);
-        float[][] arrayOfFloat = a.this.Qmo;
+        a.this.XeE[0][0] = paramView1.getY();
+        a.this.XeE[0][1] = 0;
+        a.this.XeE[1][0] = paramView1.getX();
+        a.this.XeE[1][1] = 0;
+        a.this.XeE[2][0] = paramView1.getMeasuredWidth();
+        a.this.XeE[2][1] = (paramView1.getMeasuredWidth() + a.this.Lua * 2);
+        float[][] arrayOfFloat = a.this.XeE;
         StringBuffer localStringBuffer = new StringBuffer();
         int i = 0;
         while (i < arrayOfFloat.length)
@@ -191,14 +241,14 @@ public class a
         AppMethodBeat.o(80729);
       }
     }, 100L);
-    this.qnL.postDelayed(new Runnable()
+    this.tss.postDelayed(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(80730);
-        a.this.Qmp[0] = paramView2.getY();
-        a.this.Qmp[1] = (paramView2.getY() - paramView1.getY());
-        float[] arrayOfFloat = a.this.Qmp;
+        a.this.XeF[0] = paramView2.getY();
+        a.this.XeF[1] = (paramView2.getY() - paramView1.getY());
+        float[] arrayOfFloat = a.this.XeF;
         StringBuffer localStringBuffer = new StringBuffer();
         int i = 0;
         while (i < arrayOfFloat.length)
@@ -210,78 +260,70 @@ public class a
         AppMethodBeat.o(80730);
       }
     }, 150L);
-    this.Qmm.post(new Runnable()
+    this.XeA.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(265017);
-        a.this.Qme = paramView7.getMeasuredHeight();
-        AppMethodBeat.o(265017);
+        AppMethodBeat.i(296814);
+        a.this.Xes = paramView7.getMeasuredHeight();
+        AppMethodBeat.o(296814);
       }
     });
-    AppMethodBeat.o(244405);
+    this.Xcn = FTSEditTextView.jCA();
+    AppMethodBeat.o(296907);
   }
   
   public final void a(a parama)
   {
-    this.Qmr = parama;
+    this.XeH = parama;
   }
   
-  public final void a(b paramb)
+  public final void a(a.b paramb)
   {
-    this.Qmq = paramb;
+    this.XeG = paramb;
   }
   
-  public final void aoN(int paramInt)
+  public final void auI(int paramInt)
   {
-    this.Qmo[0][0] = paramInt;
+    this.XeE[0][0] = paramInt;
   }
   
-  public void b(b paramb)
+  public void b(a.b paramb)
   {
     AppMethodBeat.i(80740);
-    if (paramb == this.Qmq)
+    if (paramb == this.XeG)
     {
       AppMethodBeat.o(80740);
       return;
     }
-    switch (8.QmA[paramb.ordinal()])
+    switch (a.8.XeQ[paramb.ordinal()])
     {
     }
     for (;;)
     {
-      this.Qmq = paramb;
+      this.XeG = paramb;
       AppMethodBeat.o(80740);
       return;
-      hat();
+      iAG();
       continue;
-      hau();
+      iAH();
     }
   }
   
-  protected void hat() {}
+  public final a.b iAF()
+  {
+    return this.XeG;
+  }
   
-  protected void hau() {}
+  protected void iAG() {}
+  
+  protected void iAH() {}
   
   public static abstract interface a
   {
     public abstract void onAnimationEnd();
     
     public abstract void onAnimationStart();
-  }
-  
-  public static enum b
-  {
-    static
-    {
-      AppMethodBeat.i(80738);
-      QmB = new b("Init", 0);
-      QmC = new b("Search", 1);
-      QmD = new b[] { QmB, QmC };
-      AppMethodBeat.o(80738);
-    }
-    
-    private b() {}
   }
 }
 

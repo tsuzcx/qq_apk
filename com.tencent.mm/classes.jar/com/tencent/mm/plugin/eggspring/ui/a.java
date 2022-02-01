@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.eggspring.ui;
 
-import com.tencent.mm.t.a.n;
-import kotlin.l;
+import com.tencent.mm.r.a.n;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"isCoupon", "", "Lcom/tencent/mm/eggspring/model/Material;", "isGoods", "isGreeting", "isMoney", "isRedPackage", "plugin-eggspring_release"})
+@Metadata(d1={""}, d2={"isCoupon", "", "Lcom/tencent/mm/eggspring/model/Material;", "isGoods", "isGreeting", "isMoney", "isRedPackage", "plugin-eggspring_release"}, k=2, mv={1, 5, 1}, xi=48)
 public final class a
 {
   public static final boolean a(n paramn)
   {
     if (paramn == null) {}
-    while ((paramn.jDT != 2) && (paramn.jDT != 1)) {
+    while ((paramn.mdP != 2) && (paramn.mdP != 1)) {
       return false;
     }
     return true;
@@ -18,7 +18,7 @@ public final class a
   public static final boolean b(n paramn)
   {
     if (paramn == null) {}
-    while (paramn.jDT != 6) {
+    while (paramn.mdP != 6) {
       return false;
     }
     return true;

@@ -1,0 +1,9 @@
+package com.google.android.a.a.b;
+
+public final class b<T> {}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+ * Qualified Name:     com.google.android.a.a.b.b
+ * JD-Core Version:    0.7.0.1
+ */

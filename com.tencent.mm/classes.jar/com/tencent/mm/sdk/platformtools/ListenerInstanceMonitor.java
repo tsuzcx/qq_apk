@@ -48,19 +48,19 @@ public final class ListenerInstanceMonitor
     {
       private void doMonitorWorks()
       {
-        AppMethodBeat.i(249195);
+        AppMethodBeat.i(243612);
         synchronized (ListenerInstanceMonitor.sMapGuard)
         {
           if (ListenerInstanceMonitor.sMarkedInstanceToHeldObjMap.isEmpty())
           {
             Log.d("MicroMsg.ListenerInstanceMonitor", "[tomys] monitor task: no listener or cb was added, skip rest logic.");
-            AppMethodBeat.o(249195);
+            AppMethodBeat.o(243612);
             return;
           }
           if (Debug.isDebuggerConnected())
           {
             Log.w("MicroMsg.ListenerInstanceMonitor", "[tomys] monitor task: found debugger connected, disable monitor works in case of misreport.");
-            AppMethodBeat.o(249195);
+            AppMethodBeat.o(243612);
             return;
           }
         }
@@ -73,8 +73,8 @@ public final class ListenerInstanceMonitor
           for (;;)
           {
             Iterator localIterator2;
-            Object localObject3;
             Object localObject4;
+            Object localObject5;
             Activity localActivity;
             synchronized (ListenerInstanceMonitor.sMapGuard)
             {
@@ -86,17 +86,17 @@ public final class ListenerInstanceMonitor
               if (!localIterator2.hasNext()) {
                 continue;
               }
-              localObject3 = (ListenerInstanceMonitor.HeldUIInfo)localIterator2.next();
-              localObject4 = ((ListenerInstanceMonitor.HeldUIInfo)localObject3).sentinel.get();
-              localActivity = (Activity)((ListenerInstanceMonitor.HeldUIInfo)localObject3).heldUIRef.get();
+              localObject4 = (ListenerInstanceMonitor.HeldUIInfo)localIterator2.next();
+              localObject5 = ((ListenerInstanceMonitor.HeldUIInfo)localObject4).sentinel.get();
+              localActivity = (Activity)((ListenerInstanceMonitor.HeldUIInfo)localObject4).heldUIRef.get();
               if (localActivity == null)
               {
-                Log.i("MicroMsg.ListenerInstanceMonitor", "[tomys] monitor task: Ok, ui [%s] was recycled.", new Object[] { ((ListenerInstanceMonitor.HeldUIInfo)localObject3).heldUIClazz.getName() });
+                Log.i("MicroMsg.ListenerInstanceMonitor", "[tomys] monitor task: Ok, ui [%s] was recycled.", new Object[] { ((ListenerInstanceMonitor.HeldUIInfo)localObject4).heldUIClazz.getName() });
                 localIterator2.remove();
               }
             }
-            if ((isUIActuallyDestroyed(localActivity)) && (localObject4 == null)) {
-              if (((ListenerInstanceMonitor.HeldUIInfo)localObject3).checkedCount > 3)
+            if ((isUIActuallyDestroyed(localActivity)) && (localObject5 == null)) {
+              if (((ListenerInstanceMonitor.HeldUIInfo)localObject4).checkedCount > 3)
               {
                 localIterator2.remove();
                 if (WeChatEnvironment.hasDebugger()) {
@@ -106,25 +106,25 @@ public final class ListenerInstanceMonitor
                   break label395;
                 }
                 break label390;
-                localObject3 = new ListenerInstanceMonitor.ListenerLeakedException(((ListenerInstanceMonitor.HeldUIInfo)localObject3).describe(), ((ListenerInstanceMonitor.HeldUIInfo)localObject3).stacktrace);
+                localObject4 = new ListenerInstanceMonitor.ListenerLeakedException(((ListenerInstanceMonitor.HeldUIInfo)localObject4).describe(), ((ListenerInstanceMonitor.HeldUIInfo)localObject4).stacktrace);
                 if (i != 0)
                 {
-                  AppMethodBeat.o(249195);
-                  throw ((Throwable)localObject3);
+                  AppMethodBeat.o(243612);
+                  throw ((Throwable)localObject4);
                 }
-                Log.printErrStackTrace("MicroMsg.ListenerInstanceMonitor", (Throwable)localObject3, "", new Object[0]);
+                Log.printErrStackTrace("MicroMsg.ListenerInstanceMonitor", (Throwable)localObject4, "", new Object[0]);
               }
               else
               {
-                ((ListenerInstanceMonitor.HeldUIInfo)localObject3).checkedCount += 1;
-                Log.w("MicroMsg.ListenerInstanceMonitor", "[tomys] monitor task: ui [%s] was recycled, but its instance is still exists in %s time(s) check.", new Object[] { ((ListenerInstanceMonitor.HeldUIInfo)localObject3).heldUIClazz.getName(), Integer.valueOf(((ListenerInstanceMonitor.HeldUIInfo)localObject3).checkedCount) });
+                ((ListenerInstanceMonitor.HeldUIInfo)localObject4).checkedCount += 1;
+                Log.w("MicroMsg.ListenerInstanceMonitor", "[tomys] monitor task: ui [%s] was recycled, but its instance is still exists in %s time(s) check.", new Object[] { ((ListenerInstanceMonitor.HeldUIInfo)localObject4).heldUIClazz.getName(), Integer.valueOf(((ListenerInstanceMonitor.HeldUIInfo)localObject4).checkedCount) });
               }
             }
           }
-          AppMethodBeat.o(249195);
+          AppMethodBeat.o(243612);
           return;
         }
-        catch (Throwable localThrowable)
+        finally
         {
           for (;;)
           {
@@ -141,11 +141,11 @@ public final class ListenerInstanceMonitor
       private boolean isUIActuallyDestroyed(Activity paramAnonymousActivity)
       {
         boolean bool1 = false;
-        AppMethodBeat.i(249197);
+        AppMethodBeat.i(243617);
         boolean bool2 = paramAnonymousActivity.isDestroyed();
         if (!bool2)
         {
-          AppMethodBeat.o(249197);
+          AppMethodBeat.o(243617);
           return false;
         }
         paramAnonymousActivity = Looper.getMainLooper().getThread().getStackTrace();
@@ -158,7 +158,7 @@ public final class ListenerInstanceMonitor
         }
         for (;;)
         {
-          AppMethodBeat.o(249197);
+          AppMethodBeat.o(243617);
           return bool1;
           i += 1;
           break;
@@ -166,7 +166,7 @@ public final class ListenerInstanceMonitor
         }
       }
       
-      public final void run()
+      public void run()
       {
         AppMethodBeat.i(125239);
         synchronized (ListenerInstanceMonitor.sMonitorTask)
@@ -208,7 +208,7 @@ public final class ListenerInstanceMonitor
         AppMethodBeat.o(125253);
         return;
       }
-      catch (Throwable localThrowable)
+      finally
       {
         Log.printErrStackTrace("MicroMsg.ListenerInstanceMonitor", localThrowable, "init failed, keep disabled.", new Object[0]);
         continue;
@@ -246,15 +246,15 @@ public final class ListenerInstanceMonitor
               localClass = paramActivity.getClass();
               ??? = (Class[])sMehtod_value.invoke(???, new Object[0]);
               if ((??? == null) || (???.length <= 0)) {
-                break label357;
+                break label354;
               }
               j = ???.length;
               i = 0;
               if (i >= j) {
-                break label383;
+                break label380;
               }
               if (localClass.equals(???[i])) {
-                break label357;
+                break label354;
               }
               i += 1;
             }
@@ -283,7 +283,7 @@ public final class ListenerInstanceMonitor
             }
             localObject2 = ???[i];
             if (!((Method)localObject2).isAnnotationPresent(sClass_DoNotCheckLeakForActivities)) {
-              break label374;
+              break label371;
             }
             localObject2 = ((Method)localObject2).getAnnotation(sClass_DoNotCheckLeakForActivities);
             break;
@@ -295,7 +295,7 @@ public final class ListenerInstanceMonitor
         }
       }
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Log.printErrStackTrace("MicroMsg.ListenerInstanceMonitor", localThrowable, "addHeldObjInfo", new Object[0]);
     }
@@ -303,11 +303,11 @@ public final class ListenerInstanceMonitor
     {
       Set localSet;
       Object localObject2;
-      label357:
-      label374:
+      label354:
+      label371:
       i += 1;
       continue;
-      label383:
+      label380:
       i = 0;
     }
   }
@@ -405,13 +405,9 @@ public final class ListenerInstanceMonitor
       {
         Activity localActivity = (Activity)paramField.get(paramObject);
         localObject = localActivity;
-        if (localActivity == null)
-        {
-          AppMethodBeat.o(125249);
-          return;
-        }
+        if (localActivity == null) {}
       }
-      catch (Throwable paramObject)
+      finally
       {
         AppMethodBeat.o(125249);
       }
@@ -435,10 +431,9 @@ public final class ListenerInstanceMonitor
         if ((localObject instanceof Activity)) {
           addHeldObjInfo(paramObject, (Activity)localObject, paramField, paramThrowable);
         }
-        AppMethodBeat.o(125250);
         return;
       }
-      catch (Throwable paramObject)
+      finally
       {
         AppMethodBeat.o(125250);
       }
@@ -456,13 +451,9 @@ public final class ListenerInstanceMonitor
       {
         View localView = (View)paramField.get(paramObject);
         localObject = localView;
-        if (localView == null)
-        {
-          AppMethodBeat.o(125250);
-          return;
-        }
+        if (localView != null) {}
       }
-      catch (Throwable paramObject)
+      finally
       {
         AppMethodBeat.o(125250);
         return;
@@ -490,7 +481,7 @@ public final class ListenerInstanceMonitor
   
   public static void stopMonitor()
   {
-    AppMethodBeat.i(248772);
+    AppMethodBeat.i(243461);
     synchronized (sMonitorTask)
     {
       if (sIsMonitorRunning)
@@ -500,7 +491,7 @@ public final class ListenerInstanceMonitor
         sMonitorThreadHandler = null;
         sIsMonitorRunning = false;
       }
-      AppMethodBeat.o(248772);
+      AppMethodBeat.o(243461);
       return;
     }
   }
@@ -585,27 +576,27 @@ public final class ListenerInstanceMonitor
     
     public String describe()
     {
-      AppMethodBeat.i(249242);
+      AppMethodBeat.i(243662);
       if (this.heldUIRef.get() == null)
       {
         if (this.holderField != null)
         {
           str = "ui of class [" + this.heldUIClazz.getName() + "] held by\n [" + getHolderFieldDesc() + "] is recycled";
-          AppMethodBeat.o(249242);
+          AppMethodBeat.o(243662);
           return str;
         }
         str = "ui of class [" + this.heldUIClazz.getName() + "] which is subclass of\n listener or callback and held by other 'Manager' class is recycled";
-        AppMethodBeat.o(249242);
+        AppMethodBeat.o(243662);
         return str;
       }
       if (this.holderField != null)
       {
         str = "ui of class [" + this.heldUIClazz.getName() + "] held by\n [" + getHolderFieldDesc() + "] is leaked.\n Perhaps you should remove the holder from any 'Manager' class when the leaked ui was destroyed.";
-        AppMethodBeat.o(249242);
+        AppMethodBeat.o(243662);
         return str;
       }
       String str = "ui of class [" + this.heldUIClazz.getName() + "] which is subclass of\n listener or callback and held by other 'Manager' class is leaked.\n Perhaps you should remove any instance of this class from any 'Manager'";
-      AppMethodBeat.o(249242);
+      AppMethodBeat.o(243662);
       return str;
     }
     
@@ -704,7 +695,7 @@ public final class ListenerInstanceMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.ListenerInstanceMonitor
  * JD-Core Version:    0.7.0.1
  */

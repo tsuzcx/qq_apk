@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.appbrand.i;
 
-import android.graphics.SurfaceTexture;
+import android.view.Surface;
 import com.tencent.luggage.xweb_ext.extendplugin.component.video.c;
 import com.tencent.luggage.xweb_ext.extendplugin.component.video.c.12;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -14,26 +14,26 @@ import java.util.concurrent.ConcurrentHashMap;
 public class a
   extends SkiaCanvasExternalTexturePluginWithSurfaceTextureDelegate
 {
-  private static a okW;
-  private Map<Integer, c> okX;
+  private static a roA;
+  private Map<Integer, c> roB;
   
   private a()
   {
     AppMethodBeat.i(139394);
-    this.okX = new ConcurrentHashMap();
+    this.roB = new ConcurrentHashMap();
     AppMethodBeat.o(139394);
   }
   
-  public static a bNU()
+  public static a coh()
   {
     AppMethodBeat.i(139395);
-    if (okW == null) {}
+    if (roA == null) {}
     try
     {
-      if (okW == null) {
-        okW = new a();
+      if (roA == null) {
+        roA = new a();
       }
-      a locala = okW;
+      a locala = roA;
       AppMethodBeat.o(139395);
       return locala;
     }
@@ -43,16 +43,16 @@ public class a
     }
   }
   
-  public final void a(int paramInt1, c paramc, SurfaceTexture paramSurfaceTexture, int paramInt2, int paramInt3, String paramString)
+  public final void a(int paramInt1, c paramc, Surface paramSurface, int paramInt2, int paramInt3, String paramString)
   {
-    AppMethodBeat.i(177195);
-    if ((paramSurfaceTexture != null) && ((paramInt2 != 0) || (paramInt3 != 0)))
+    AppMethodBeat.i(316944);
+    if ((paramSurface != null) && ((paramInt2 != 0) || (paramInt3 != 0)))
     {
-      Log.i("MicroMsg.AppBrand.VideoCanvas.VideoCanvasExternalTexturePlugin", "registerMediaPlayer, id:%s, width:%s, height:%s, surface:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramSurfaceTexture.hashCode()) });
-      this.okX.put(Integer.valueOf(paramInt1), paramc);
-      registerInstance(paramInt1, paramString, paramInt2, paramInt3, paramSurfaceTexture);
+      Log.i("MicroMsg.AppBrand.VideoCanvas.VideoCanvasExternalTexturePlugin", "registerMediaPlayer, id:%s, width:%s, height:%s, surface:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramSurface.hashCode()) });
+      this.roB.put(Integer.valueOf(paramInt1), paramc);
+      registerInstance(paramInt1, paramString, paramInt2, paramInt3, paramSurface);
     }
-    AppMethodBeat.o(177195);
+    AppMethodBeat.o(316944);
   }
   
   public void onPluginInstanceDestroy(ISkiaCanvasExternalTextureHandler paramISkiaCanvasExternalTextureHandler, int paramInt, String paramString)
@@ -72,19 +72,19 @@ public class a
     return paramISkiaCanvasExternalTextureHandler;
   }
   
-  public void replaceDisplaySurface(int paramInt, String paramString, SurfaceTexture paramSurfaceTexture)
+  public void replaceDisplaySurface(int paramInt, String paramString, Surface paramSurface)
   {
-    AppMethodBeat.i(177196);
-    paramString = (c)this.okX.get(Integer.valueOf(paramInt));
-    if ((paramString != null) && (paramSurfaceTexture != null))
+    AppMethodBeat.i(316947);
+    paramString = (c)this.roB.get(Integer.valueOf(paramInt));
+    if ((paramString != null) && (paramSurface != null))
     {
-      Log.w("MicroMsg.AppBrand.VideoCanvas.VideoCanvasExternalTexturePlugin", "replaceDisplaySurface, surface:%s", new Object[] { Integer.valueOf(paramSurfaceTexture.hashCode()) });
-      paramString.k(new c.12(paramString, paramSurfaceTexture));
-      AppMethodBeat.o(177196);
+      Log.w("MicroMsg.AppBrand.VideoCanvas.VideoCanvasExternalTexturePlugin", "replaceDisplaySurface, surface:%s", new Object[] { Integer.valueOf(paramSurface.hashCode()) });
+      paramString.o(new c.12(paramString, paramSurface));
+      AppMethodBeat.o(316947);
       return;
     }
     Log.w("MicroMsg.AppBrand.VideoCanvas.VideoCanvasExternalTexturePlugin", "replaceDisplaySurface, video plugin handler or surface texture is null");
-    AppMethodBeat.o(177196);
+    AppMethodBeat.o(316947);
   }
   
   public boolean supportType(String paramString)
@@ -101,7 +101,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.i.a
  * JD-Core Version:    0.7.0.1
  */

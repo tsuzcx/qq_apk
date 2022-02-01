@@ -13,8 +13,8 @@ import com.tencent.mm.sdk.platformtools.MMStack;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.bh;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.bj;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ public final class c
     this.db = paramISQLiteDatabase;
   }
   
-  private static final String asL(int paramInt)
+  private static final String azb(int paramInt)
   {
     AppMethodBeat.i(105005);
     String str = " ( type = '" + paramInt + "' ) ";
@@ -54,7 +54,7 @@ public final class c
     return str;
   }
   
-  private int bxD(String paramString)
+  private int byU(String paramString)
   {
     AppMethodBeat.i(105012);
     long l = System.currentTimeMillis();
@@ -115,7 +115,7 @@ public final class c
     }
   }
   
-  private static boolean d(EmojiGroupInfo paramEmojiGroupInfo)
+  private static boolean c(EmojiGroupInfo paramEmojiGroupInfo)
   {
     if (paramEmojiGroupInfo == null) {
       return false;
@@ -124,7 +124,7 @@ public final class c
     return true;
   }
   
-  private int hAT()
+  private int jcU()
   {
     k = 0;
     j = 0;
@@ -133,7 +133,7 @@ public final class c
     localObject1 = null;
     try
     {
-      Cursor localCursor = this.db.rawQuery("select  count(*) from EmojiInfo where catalog=?", new String[] { EmojiGroupInfo.YCw }, 2);
+      Cursor localCursor = this.db.rawQuery("select  count(*) from EmojiInfo where catalog=?", new String[] { EmojiGroupInfo.aklF }, 2);
       int i = j;
       if (localCursor != null)
       {
@@ -180,39 +180,39 @@ public final class c
     return j;
   }
   
-  public static boolean hAZ()
+  public static boolean jda()
   {
     AppMethodBeat.i(104995);
-    boolean bool = ((Boolean)com.tencent.mm.kernel.h.aHG().aHp().b(208912, Boolean.FALSE)).booleanValue();
+    boolean bool = ((Boolean)com.tencent.mm.kernel.h.baE().ban().d(208912, Boolean.FALSE)).booleanValue();
     AppMethodBeat.o(104995);
     return bool;
   }
   
-  private static String hBc()
+  private static String jdd()
   {
     AppMethodBeat.i(105003);
-    String str = asL(EmojiGroupInfo.YCp) + " or " + asL(EmojiGroupInfo.YCr) + " or " + asL(EmojiGroupInfo.YCq) + " or " + asL(EmojiGroupInfo.YCt);
+    String str = azb(EmojiGroupInfo.akly) + " or " + azb(EmojiGroupInfo.aklA) + " or " + azb(EmojiGroupInfo.aklz) + " or " + azb(EmojiGroupInfo.aklC);
     AppMethodBeat.o(105003);
     return str;
   }
   
-  private static final String hBd()
+  private static final String jde()
   {
     AppMethodBeat.i(105004);
-    String str = " ( " + asL(EmojiGroupInfo.YCq) + " and " + hBe() + " ) ";
+    String str = " ( " + azb(EmojiGroupInfo.aklz) + " and " + jdf() + " ) ";
     AppMethodBeat.o(105004);
     return str;
   }
   
-  private static final String hBe()
+  private static final String jdf()
   {
-    AppMethodBeat.i(226882);
+    AppMethodBeat.i(249008);
     String str = " ( status = '7' ) ";
-    AppMethodBeat.o(226882);
+    AppMethodBeat.o(249008);
     return str;
   }
   
-  private ArrayList<EmojiGroupInfo> kD(Context paramContext)
+  private ArrayList<EmojiGroupInfo> mG(Context paramContext)
   {
     AppMethodBeat.i(104985);
     EmojiGroupInfo localEmojiGroupInfo = null;
@@ -261,7 +261,7 @@ public final class c
             localObject2 = paramContext;
             localObject3 = paramContext;
             localObject1 = paramContext;
-            jQ(localArrayList);
+            ne(localArrayList);
           }
           localObject2 = paramContext;
           localObject3 = paramContext;
@@ -360,7 +360,7 @@ public final class c
         localObject2 = paramContext;
         localObject3 = paramContext;
         localObject1 = paramContext;
-        j = EmojiGroupInfo.YCv;
+        j = EmojiGroupInfo.aklE;
         if ((k & j) != j) {
           break label898;
         }
@@ -371,12 +371,12 @@ public final class c
         localObject2 = paramContext;
         localObject3 = paramContext;
         localObject1 = paramContext;
-        if (hAT() <= 0)
+        if (jcU() <= 0)
         {
           localObject2 = paramContext;
           localObject3 = paramContext;
           localObject1 = paramContext;
-          if (!hAZ()) {
+          if (!jda()) {
             break label587;
           }
         }
@@ -387,7 +387,7 @@ public final class c
         localObject2 = paramContext;
         localObject3 = paramContext;
         localObject1 = paramContext;
-        com.tencent.mm.kernel.h.aHG().aHp().i(208912, Boolean.TRUE);
+        com.tencent.mm.kernel.h.baE().ban().B(208912, Boolean.TRUE);
         localObject2 = paramContext;
         localObject3 = paramContext;
         localObject1 = paramContext;
@@ -426,12 +426,12 @@ public final class c
         localObject2 = paramContext;
         localObject3 = paramContext;
         localObject1 = paramContext;
-        if (localEmojiGroupInfo.field_type != EmojiGroupInfo.YCp)
+        if (localEmojiGroupInfo.field_type != EmojiGroupInfo.akly)
         {
           localObject2 = paramContext;
           localObject3 = paramContext;
           localObject1 = paramContext;
-          if (localEmojiGroupInfo.field_type != EmojiGroupInfo.YCr) {
+          if (localEmojiGroupInfo.field_type != EmojiGroupInfo.aklA) {
             break;
           }
         }
@@ -449,7 +449,60 @@ public final class c
     }
   }
   
-  public final boolean bxB(String paramString)
+  public final boolean b(EmojiGroupInfo paramEmojiGroupInfo)
+  {
+    AppMethodBeat.i(104996);
+    if (paramEmojiGroupInfo == null)
+    {
+      Log.f("MicroMsg.emoji.EmojiGroupInfoStorage", "insert assertion!,invalid emojigroup info.");
+      AppMethodBeat.o(104996);
+      return false;
+    }
+    paramEmojiGroupInfo.field_lastUseTime = System.currentTimeMillis();
+    paramEmojiGroupInfo.field_sort = 1;
+    Log.d("MicroMsg.emoji.EmojiGroupInfoStorage", "jacks insert: packname: %s, lasttime: %d", new Object[] { paramEmojiGroupInfo.field_packName, Long.valueOf(paramEmojiGroupInfo.field_lastUseTime) });
+    paramEmojiGroupInfo.field_lastUseTime = System.currentTimeMillis();
+    c(paramEmojiGroupInfo);
+    boolean bool = replace(paramEmojiGroupInfo);
+    if (bool) {
+      doNotify("event_update_group", 0, Util.getStack().toString());
+    }
+    AppMethodBeat.o(104996);
+    return bool;
+  }
+  
+  public final void bZ(ArrayList<String> paramArrayList)
+  {
+    AppMethodBeat.i(104999);
+    com.tencent.mm.storagebase.h localh = null;
+    long l;
+    if ((this.db instanceof com.tencent.mm.storagebase.h))
+    {
+      localh = (com.tencent.mm.storagebase.h)this.db;
+      l = localh.beginTransaction(Thread.currentThread().getId());
+      Log.i("MicroMsg.emoji.EmojiGroupInfoStorage", "surround deleteByGroupIdList in a transaction, ticket = %d", new Object[] { Long.valueOf(l) });
+    }
+    for (;;)
+    {
+      if ((paramArrayList != null) && (paramArrayList.size() > 0))
+      {
+        paramArrayList = paramArrayList.iterator();
+        while (paramArrayList.hasNext()) {
+          byT((String)paramArrayList.next());
+        }
+      }
+      if (localh != null)
+      {
+        localh.endTransaction(l);
+        Log.i("MicroMsg.emoji.EmojiGroupInfoStorage", "end deleteByGroupIdList transaction");
+      }
+      AppMethodBeat.o(104999);
+      return;
+      l = -1L;
+    }
+  }
+  
+  public final boolean byS(String paramString)
   {
     localObject = null;
     Cursor localCursor = null;
@@ -458,7 +511,7 @@ public final class c
     if (TextUtils.isEmpty(paramString)) {
       Log.e("MicroMsg.emoji.EmojiGroupInfoStorage", "product id is null.");
     }
-    String str = "select count(*) from EmojiGroupInfo where productID = '" + paramString + "' AND " + hBe() + " AND ( ( ( flag & 256 ) = 0 )  or ( flag is null ) ) ";
+    String str = "select count(*) from EmojiGroupInfo where productID = '" + paramString + "' AND " + jdf() + " AND ( ( ( flag & 256 ) = 0 )  or ( flag is null ) ) ";
     paramString = localCursor;
     try
     {
@@ -509,21 +562,27 @@ public final class c
     return false;
   }
   
-  public final boolean bxC(String paramString)
+  public final boolean byT(String paramString)
   {
     AppMethodBeat.i(104998);
-    String str;
-    if (!Util.isNullOrNil(paramString)) {
-      str = paramString;
+    Object localObject2 = paramString;
+    Object localObject1;
+    if (!Util.isNullOrNil(paramString))
+    {
+      localObject1 = paramString;
+      localObject2 = paramString;
     }
     for (;;)
     {
       try
       {
-        if (paramString.equals("com.tencent.xin.emoticon.tusiji")) {
-          str = EmojiGroupInfo.YCu;
+        if (paramString.equals("com.tencent.xin.emoticon.tusiji"))
+        {
+          localObject2 = paramString;
+          localObject1 = EmojiGroupInfo.aklD;
         }
-        paramString = dt(str, true);
+        localObject2 = localObject1;
+        paramString = ec((String)localObject1, true);
         if (paramString == null)
         {
           bool = false;
@@ -531,28 +590,41 @@ public final class c
           {
             doNotify("event_update_group", 0, Util.getStack().toString());
             doNotify("delete_group");
+            doNotify("delete_group_v3", 0, localObject1);
           }
           AppMethodBeat.o(104998);
           return bool;
         }
         if (paramString != null)
         {
-          if (paramString.field_type == EmojiGroupInfo.YCr) {
+          localObject2 = localObject1;
+          if (paramString.field_type == EmojiGroupInfo.aklA)
+          {
+            localObject2 = localObject1;
             Log.d("MicroMsg.emoji.EmojiGroupInfoStorage", "jacks refuse delete custom emoji");
           }
         }
         else
         {
+          localObject2 = localObject1;
           paramString.field_lastUseTime = System.currentTimeMillis();
+          localObject2 = localObject1;
           paramString.field_recommand = 0;
+          localObject2 = localObject1;
           paramString.field_sync = 0;
+          localObject2 = localObject1;
           bool = replace(paramString);
           continue;
         }
+        localObject2 = localObject1;
         paramString.field_flag |= 0x100;
+        localObject2 = localObject1;
         paramString.field_status = -1;
+        localObject2 = localObject1;
         paramString.field_sort = 1;
+        localObject2 = localObject1;
         paramString.field_recommand = 0;
+        localObject2 = localObject1;
         paramString.field_sync = 0;
         continue;
         boolean bool = false;
@@ -561,80 +633,28 @@ public final class c
       {
         Log.e("MicroMsg.emoji.EmojiGroupInfoStorage", "Delete By ProductId fail." + paramString.getMessage());
       }
+      localObject1 = localObject2;
     }
   }
   
-  public final void by(ArrayList<String> paramArrayList)
-  {
-    AppMethodBeat.i(104999);
-    com.tencent.mm.storagebase.h localh = null;
-    long l;
-    if ((this.db instanceof com.tencent.mm.storagebase.h))
-    {
-      localh = (com.tencent.mm.storagebase.h)this.db;
-      l = localh.beginTransaction(Thread.currentThread().getId());
-      Log.i("MicroMsg.emoji.EmojiGroupInfoStorage", "surround deleteByGroupIdList in a transaction, ticket = %d", new Object[] { Long.valueOf(l) });
-    }
-    for (;;)
-    {
-      if ((paramArrayList != null) && (paramArrayList.size() > 0))
-      {
-        paramArrayList = paramArrayList.iterator();
-        while (paramArrayList.hasNext()) {
-          bxC((String)paramArrayList.next());
-        }
-      }
-      if (localh != null)
-      {
-        localh.endTransaction(l);
-        Log.i("MicroMsg.emoji.EmojiGroupInfoStorage", "end deleteByGroupIdList transaction");
-      }
-      AppMethodBeat.o(104999);
-      return;
-      l = -1L;
-    }
-  }
-  
-  public final boolean bz(ArrayList<EmojiGroupInfo> paramArrayList)
+  public final boolean ca(ArrayList<EmojiGroupInfo> paramArrayList)
   {
     AppMethodBeat.i(105001);
     Log.i("MicroMsg.emoji.EmojiGroupInfoStorage", "[insertRecommendEmojiGroupInfo]");
-    boolean bool = jQ(paramArrayList);
+    boolean bool = ne(paramArrayList);
     AppMethodBeat.o(105001);
     return bool;
   }
   
-  public final boolean c(EmojiGroupInfo paramEmojiGroupInfo)
-  {
-    AppMethodBeat.i(104996);
-    if (paramEmojiGroupInfo == null)
-    {
-      Log.f("MicroMsg.emoji.EmojiGroupInfoStorage", "insert assertion!,invalid emojigroup info.");
-      AppMethodBeat.o(104996);
-      return false;
-    }
-    paramEmojiGroupInfo.field_lastUseTime = System.currentTimeMillis();
-    paramEmojiGroupInfo.field_sort = 1;
-    Log.d("MicroMsg.emoji.EmojiGroupInfoStorage", "jacks insert: packname: %s, lasttime: %d", new Object[] { paramEmojiGroupInfo.field_packName, Long.valueOf(paramEmojiGroupInfo.field_lastUseTime) });
-    paramEmojiGroupInfo.field_lastUseTime = System.currentTimeMillis();
-    d(paramEmojiGroupInfo);
-    boolean bool = replace(paramEmojiGroupInfo);
-    if (bool) {
-      doNotify("event_update_group", 0, Util.getStack().toString());
-    }
-    AppMethodBeat.o(104996);
-    return bool;
-  }
-  
   /* Error */
-  public final EmojiGroupInfo dt(String paramString, boolean paramBoolean)
+  public final EmojiGroupInfo ec(String paramString, boolean paramBoolean)
   {
     // Byte code:
-    //   0: ldc_w 512
+    //   0: ldc_w 515
     //   3: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: getfield 45	com/tencent/mm/storage/emotion/c:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
-    //   10: ldc_w 514
+    //   10: ldc_w 517
     //   13: iconst_1
     //   14: anewarray 20	java/lang/String
     //   17: dup
@@ -661,12 +681,12 @@ public final class c
     //   57: astore 4
     //   59: aload 5
     //   61: aload_3
-    //   62: invokevirtual 518	com/tencent/mm/storage/emotion/EmojiGroupInfo:convertFrom	(Landroid/database/Cursor;)V
+    //   62: invokevirtual 521	com/tencent/mm/storage/emotion/EmojiGroupInfo:convertFrom	(Landroid/database/Cursor;)V
     //   65: aload_3
     //   66: ifnull +9 -> 75
     //   69: aload_3
     //   70: invokeinterface 102 1 0
-    //   75: ldc_w 512
+    //   75: ldc_w 515
     //   78: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   81: aload 5
     //   83: areturn
@@ -680,7 +700,7 @@ public final class c
     //   97: ifnonnull +119 -> 216
     //   100: iload_2
     //   101: ifeq +99 -> 200
-    //   104: ldc_w 512
+    //   104: ldc_w 515
     //   107: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   110: aconst_null
     //   111: areturn
@@ -694,11 +714,11 @@ public final class c
     //   123: ldc 104
     //   125: new 50	java/lang/StringBuilder
     //   128: dup
-    //   129: ldc_w 520
+    //   129: ldc_w 523
     //   132: invokespecial 55	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   135: aload_1
     //   136: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   139: ldc_w 522
+    //   139: ldc_w 525
     //   142: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   145: aload 5
     //   147: invokevirtual 136	java/lang/Exception:getMessage	()Ljava/lang/String;
@@ -719,7 +739,7 @@ public final class c
     //   182: ifnull +10 -> 192
     //   185: aload 4
     //   187: invokeinterface 102 1 0
-    //   192: ldc_w 512
+    //   192: ldc_w 515
     //   195: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   198: aload_1
     //   199: athrow
@@ -727,11 +747,11 @@ public final class c
     //   203: dup
     //   204: invokespecial 280	com/tencent/mm/storage/emotion/EmojiGroupInfo:<init>	()V
     //   207: astore_1
-    //   208: ldc_w 512
+    //   208: ldc_w 515
     //   211: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   214: aload_1
     //   215: areturn
-    //   216: ldc_w 512
+    //   216: ldc_w 515
     //   219: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   222: aload_1
     //   223: areturn
@@ -793,7 +813,17 @@ public final class c
     return "EmojiGroupInfo";
   }
   
-  public final boolean hAU()
+  public final boolean init(Context paramContext)
+  {
+    AppMethodBeat.i(104984);
+    Log.i("MicroMsg.emoji.EmojiGroupInfoStorage", "[oneliang]init start.");
+    mG(paramContext);
+    Log.i("MicroMsg.emoji.EmojiGroupInfoStorage", "[oneliang]init end.");
+    AppMethodBeat.o(104984);
+    return true;
+  }
+  
+  public final boolean jcV()
   {
     boolean bool = true;
     AppMethodBeat.i(104988);
@@ -801,7 +831,7 @@ public final class c
     localObject1 = null;
     try
     {
-      Cursor localCursor = this.db.rawQuery("select * from EmojiGroupInfo where type=?", new String[] { EmojiGroupInfo.YCp }, 2);
+      Cursor localCursor = this.db.rawQuery("select * from EmojiGroupInfo where type=?", new String[] { EmojiGroupInfo.akly }, 2);
       if (localCursor != null)
       {
         localObject1 = localCursor;
@@ -861,13 +891,13 @@ public final class c
     return false;
   }
   
-  public final List<EmojiGroupInfo> hAV()
+  public final List<EmojiGroupInfo> jcW()
   {
     localObject3 = null;
     localObject1 = null;
     AppMethodBeat.i(104989);
     ArrayList localArrayList = new ArrayList();
-    Object localObject4 = "select * from EmojiGroupInfo where " + hBc() + " order by sort ASC,lastUseTime DESC";
+    Object localObject4 = "select * from EmojiGroupInfo where " + jdd() + " order by sort ASC,lastUseTime DESC";
     try
     {
       localObject4 = this.db.rawQuery((String)localObject4, null, 2);
@@ -922,13 +952,13 @@ public final class c
     return localArrayList;
   }
   
-  public final HashMap<String, EmojiGroupInfo> hAW()
+  public final HashMap<String, EmojiGroupInfo> jcX()
   {
     localObject3 = null;
     localObject1 = null;
     AppMethodBeat.i(104990);
     HashMap localHashMap = new HashMap();
-    Object localObject4 = "select * from EmojiGroupInfo where " + hBc() + " order by sort ASC,lastUseTime DESC";
+    Object localObject4 = "select * from EmojiGroupInfo where " + jdd() + " order by sort ASC,lastUseTime DESC";
     try
     {
       localObject4 = this.db.rawQuery((String)localObject4, null, 2);
@@ -983,13 +1013,13 @@ public final class c
     return localHashMap;
   }
   
-  public final ArrayList<EmojiGroupInfo> hAX()
+  public final ArrayList<EmojiGroupInfo> jcY()
   {
     localObject3 = null;
     localObject1 = null;
     AppMethodBeat.i(104991);
     ArrayList localArrayList = new ArrayList();
-    Object localObject4 = "select * from EmojiGroupInfo where " + hBd() + " order by sort ASC,lastUseTime DESC";
+    Object localObject4 = "select * from EmojiGroupInfo where " + jde() + " order by sort ASC,lastUseTime DESC";
     try
     {
       localObject4 = this.db.rawQuery((String)localObject4, null, 2);
@@ -1044,13 +1074,13 @@ public final class c
     return localArrayList;
   }
   
-  public final HashMap<String, bh> hAY()
+  public final HashMap<String, bj> jcZ()
   {
     localObject3 = null;
     localObject1 = null;
     AppMethodBeat.i(104993);
     HashMap localHashMap = new HashMap();
-    Object localObject4 = "select * from EmojiGroupInfo where " + hBd() + " order by sort ASC,lastUseTime DESC";
+    Object localObject4 = "select * from EmojiGroupInfo where " + jde() + " order by sort ASC,lastUseTime DESC";
     try
     {
       localObject4 = this.db.rawQuery((String)localObject4, null, 2);
@@ -1062,7 +1092,7 @@ public final class c
         {
           localObject1 = localObject4;
           localObject3 = localObject4;
-          bh localbh = new bh();
+          bj localbj = new bj();
           localObject1 = localObject4;
           localObject3 = localObject4;
           int i = ((Cursor)localObject4).getColumnIndex("productID");
@@ -1077,16 +1107,16 @@ public final class c
             String str = ((Cursor)localObject4).getString(i);
             localObject1 = localObject4;
             localObject3 = localObject4;
-            localbh.productId = str;
+            localbj.productId = str;
             localObject1 = localObject4;
             localObject3 = localObject4;
-            localbh.uMF = ((Cursor)localObject4).getString(j);
+            localbj.xVh = ((Cursor)localObject4).getString(j);
             localObject1 = localObject4;
             localObject3 = localObject4;
-            localbh.asG(7);
+            localbj.ayW(7);
             localObject1 = localObject4;
             localObject3 = localObject4;
-            localHashMap.put(str, localbh);
+            localHashMap.put(str, localbj);
             localObject1 = localObject4;
             localObject3 = localObject4;
             bool = ((Cursor)localObject4).moveToNext();
@@ -1120,10 +1150,10 @@ public final class c
     return localHashMap;
   }
   
-  public final boolean hBa()
+  public final boolean jdb()
   {
     AppMethodBeat.i(105000);
-    String str = EmojiGroupInfo.YCq;
+    String str = EmojiGroupInfo.aklz;
     if (this.db.delete("EmojiGroupInfo", "recommand=? and type!=? and status!=?", new String[] { "1", str, "7" }) > 0)
     {
       AppMethodBeat.o(105000);
@@ -1133,15 +1163,15 @@ public final class c
     return false;
   }
   
-  public final ArrayList<EmojiGroupInfo> hBb()
+  public final ArrayList<EmojiGroupInfo> jdc()
   {
     localObject3 = null;
     localObject1 = null;
     AppMethodBeat.i(105002);
     ArrayList localArrayList = new ArrayList();
     Object localObject4 = new StringBuilder("select * from EmojiGroupInfo where sync > 0  or ");
-    int i = EmojiGroupInfo.YCp;
-    localObject4 = new StringBuilder(" ( ").append(asL(i)).append(" and ( ( ( flag & 256 ) = 0 )  or ( flag is null ) )  ) ").toString() + " or " + new StringBuilder(" ( recommand = '1' ) ").toString() + " order by sort ASC,idx ASC,lastUseTime DESC";
+    int i = EmojiGroupInfo.akly;
+    localObject4 = new StringBuilder(" ( ").append(azb(i)).append(" and ( ( ( flag & 256 ) = 0 )  or ( flag is null ) )  ) ").toString() + " or " + new StringBuilder(" ( recommand = '1' ) ").toString() + " order by sort ASC,idx ASC,lastUseTime DESC";
     try
     {
       localObject4 = this.db.rawQuery((String)localObject4, null, 2);
@@ -1165,7 +1195,7 @@ public final class c
             localArrayList.add(localEmojiGroupInfo);
             localObject1 = localObject4;
             localObject3 = localObject4;
-            if (Util.isEqual(localEmojiGroupInfo.field_productID, String.valueOf(EmojiGroupInfo.YCu)))
+            if (Util.isEqual(localEmojiGroupInfo.field_productID, String.valueOf(EmojiGroupInfo.aklD)))
             {
               localObject1 = localObject4;
               localObject3 = localObject4;
@@ -1205,39 +1235,39 @@ public final class c
   }
   
   /* Error */
-  public final boolean hBf()
+  public final boolean jdg()
   {
     // Byte code:
-    //   0: ldc_w 632
+    //   0: ldc_w 648
     //   3: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: new 50	java/lang/StringBuilder
     //   9: dup
-    //   10: invokespecial 151	java/lang/StringBuilder:<init>	()V
-    //   13: getstatic 191	com/tencent/mm/storage/emotion/EmojiGroupInfo:YCp	I
+    //   10: invokespecial 152	java/lang/StringBuilder:<init>	()V
+    //   13: getstatic 191	com/tencent/mm/storage/emotion/EmojiGroupInfo:akly	I
     //   16: invokevirtual 59	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   19: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   22: astore_3
     //   23: new 50	java/lang/StringBuilder
     //   26: dup
-    //   27: invokespecial 151	java/lang/StringBuilder:<init>	()V
-    //   30: getstatic 201	com/tencent/mm/storage/emotion/EmojiGroupInfo:YCq	I
+    //   27: invokespecial 152	java/lang/StringBuilder:<init>	()V
+    //   30: getstatic 201	com/tencent/mm/storage/emotion/EmojiGroupInfo:aklz	I
     //   33: invokevirtual 59	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   36: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   39: astore 4
     //   41: ldc 104
-    //   43: ldc_w 634
+    //   43: ldc_w 650
     //   46: iconst_1
     //   47: anewarray 108	java/lang/Object
     //   50: dup
     //   51: iconst_0
-    //   52: ldc_w 636
+    //   52: ldc_w 652
     //   55: aastore
-    //   56: invokestatic 470	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   56: invokestatic 437	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   59: aconst_null
     //   60: astore_2
     //   61: aload_0
     //   62: getfield 45	com/tencent/mm/storage/emotion/c:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
-    //   65: ldc_w 636
+    //   65: ldc_w 652
     //   68: iconst_4
     //   69: anewarray 20	java/lang/String
     //   72: dup
@@ -1254,7 +1284,7 @@ public final class c
     //   85: aastore
     //   86: dup
     //   87: iconst_3
-    //   88: ldc_w 598
+    //   88: ldc_w 614
     //   91: aastore
     //   92: iconst_2
     //   93: invokeinterface 89 4 0
@@ -1272,7 +1302,7 @@ public final class c
     //   117: ifnull +9 -> 126
     //   120: aload_3
     //   121: invokeinterface 102 1 0
-    //   126: ldc_w 632
+    //   126: ldc_w 648
     //   129: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   132: iconst_1
     //   133: ireturn
@@ -1280,7 +1310,7 @@ public final class c
     //   135: ifnull +9 -> 144
     //   138: aload_3
     //   139: invokeinterface 102 1 0
-    //   144: ldc_w 632
+    //   144: ldc_w 648
     //   147: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   150: iconst_0
     //   151: ireturn
@@ -1288,7 +1318,7 @@ public final class c
     //   153: aconst_null
     //   154: astore_2
     //   155: ldc 104
-    //   157: ldc_w 638
+    //   157: ldc_w 654
     //   160: invokestatic 139	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   163: aload_2
     //   164: ifnull -20 -> 144
@@ -1300,7 +1330,7 @@ public final class c
     //   178: ifnull +9 -> 187
     //   181: aload_2
     //   182: invokeinterface 102 1 0
-    //   187: ldc_w 632
+    //   187: ldc_w 648
     //   190: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   193: aload_3
     //   194: athrow
@@ -1332,12 +1362,12 @@ public final class c
     //   105	112	199	java/lang/Exception
   }
   
-  public final List<String> hBg()
+  public final List<String> jdh()
   {
     AppMethodBeat.i(105008);
     ArrayList localArrayList = new ArrayList();
-    Object localObject5 = EmojiGroupInfo.YCq;
-    String str = EmojiGroupInfo.YCp;
+    Object localObject5 = EmojiGroupInfo.aklz;
+    String str = EmojiGroupInfo.akly;
     Object localObject3 = null;
     localObject1 = null;
     try
@@ -1389,12 +1419,12 @@ public final class c
     return localArrayList;
   }
   
-  public final ArrayList<EmojiGroupInfo> hBh()
+  public final ArrayList<EmojiGroupInfo> jdi()
   {
     AppMethodBeat.i(105009);
     ArrayList localArrayList = new ArrayList();
-    Object localObject4 = EmojiGroupInfo.YCq;
-    Object localObject5 = EmojiGroupInfo.YCp;
+    Object localObject4 = EmojiGroupInfo.aklz;
+    Object localObject5 = EmojiGroupInfo.akly;
     localObject3 = null;
     localObject1 = null;
     try
@@ -1454,19 +1484,19 @@ public final class c
     return localArrayList;
   }
   
-  public final void hBi()
+  public final void jdj()
   {
     AppMethodBeat.i(105010);
     Log.i("MicroMsg.emoji.EmojiGroupInfoStorage", "recover heart begin");
-    EmojiGroupInfo localEmojiGroupInfo = dt(String.valueOf(EmojiGroupInfo.YCv), false);
+    EmojiGroupInfo localEmojiGroupInfo = ec(String.valueOf(EmojiGroupInfo.aklE), false);
     if (localEmojiGroupInfo == null) {
       localEmojiGroupInfo = new EmojiGroupInfo();
     }
     for (;;)
     {
-      localEmojiGroupInfo.field_productID = String.valueOf(EmojiGroupInfo.YCv);
+      localEmojiGroupInfo.field_productID = String.valueOf(EmojiGroupInfo.aklE);
       localEmojiGroupInfo.field_packName = "emoji_custom_group";
-      localEmojiGroupInfo.field_type = EmojiGroupInfo.YCr;
+      localEmojiGroupInfo.field_type = EmojiGroupInfo.aklA;
       localEmojiGroupInfo.field_status = 0;
       localEmojiGroupInfo.field_packStatus = 1;
       localEmojiGroupInfo.field_flag = 0;
@@ -1478,7 +1508,7 @@ public final class c
     }
   }
   
-  public final boolean hBj()
+  public final boolean jdk()
   {
     AppMethodBeat.i(105011);
     com.tencent.mm.storagebase.h localh = null;
@@ -1487,8 +1517,8 @@ public final class c
     }
     for (long l = localh.beginTransaction(Thread.currentThread().getId());; l = -1L)
     {
-      Object localObject = hAX();
-      if (!((ArrayList)localObject).isEmpty())
+      Object localObject = jcY();
+      if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
       {
         localObject = ((ArrayList)localObject).iterator();
         while (((Iterator)localObject).hasNext())
@@ -1496,7 +1526,7 @@ public final class c
           EmojiGroupInfo localEmojiGroupInfo = (EmojiGroupInfo)((Iterator)localObject).next();
           if ((localEmojiGroupInfo != null) && (!Util.isNullOrNil(localEmojiGroupInfo.field_productID)))
           {
-            i = bxD(localEmojiGroupInfo.field_productID);
+            i = byU(localEmojiGroupInfo.field_productID);
             if (localEmojiGroupInfo.field_count != i)
             {
               localEmojiGroupInfo.field_count = i;
@@ -1520,17 +1550,7 @@ public final class c
     }
   }
   
-  public final boolean init(Context paramContext)
-  {
-    AppMethodBeat.i(104984);
-    Log.i("MicroMsg.emoji.EmojiGroupInfoStorage", "[oneliang]init start.");
-    kD(paramContext);
-    Log.i("MicroMsg.emoji.EmojiGroupInfoStorage", "[oneliang]init end.");
-    AppMethodBeat.o(104984);
-    return true;
-  }
-  
-  public final boolean jQ(List<EmojiGroupInfo> paramList)
+  public final boolean ne(List<EmojiGroupInfo> paramList)
   {
     AppMethodBeat.i(104997);
     if ((paramList == null) || (paramList.size() <= 0))

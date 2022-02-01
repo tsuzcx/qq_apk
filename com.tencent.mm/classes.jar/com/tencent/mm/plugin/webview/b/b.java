@@ -5,8 +5,8 @@ import com.tencent.mm.kernel.f;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
 import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.HashMap;
@@ -15,21 +15,21 @@ import org.json.JSONArray;
 
 public final class b
 {
-  private static long PJy = 2592000L;
-  private static b PJz;
-  private c PJA;
-  private Map<String, Long> PJB;
-  private long PJC;
+  private static long WzQ = 2592000L;
+  private static b WzR;
+  private c WzS;
+  private Map<String, Long> WzT;
+  private long WzU;
   
   public b()
   {
     AppMethodBeat.i(77829);
-    this.PJB = new HashMap();
-    this.PJC = 0L;
+    this.WzT = new HashMap();
+    this.WzU = 0L;
     AppMethodBeat.o(77829);
   }
   
-  private static long bE(String paramString, long paramLong)
+  private static long bP(String paramString, long paramLong)
   {
     AppMethodBeat.i(77841);
     if (paramString.equals("wx62d9035fd4fd2059"))
@@ -41,18 +41,32 @@ public final class b
     return paramLong - 10485760L;
   }
   
+  private long bjA(String paramString)
+  {
+    AppMethodBeat.i(77840);
+    if (this.WzT.containsKey(paramString))
+    {
+      l = ((Long)this.WzT.get(paramString)).longValue();
+      AppMethodBeat.o(77840);
+      return l;
+    }
+    long l = isV().bjA(paramString);
+    AppMethodBeat.o(77840);
+    return l;
+  }
+  
   /* Error */
-  public static String bjM(String paramString)
+  public static String bjy(String paramString)
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore 5
-    //   3: ldc 194
+    //   3: ldc 214
     //   5: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: invokestatic 107	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   12: ifeq +10 -> 22
-    //   15: ldc 194
+    //   15: ldc 214
     //   17: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   20: aconst_null
     //   21: areturn
@@ -61,49 +75,49 @@ public final class b
     //   26: new 111	java/lang/StringBuilder
     //   29: dup
     //   30: invokespecial 112	java/lang/StringBuilder:<init>	()V
-    //   33: invokestatic 116	com/tencent/mm/plugin/webview/b/c:gTi	()Ljava/lang/String;
+    //   33: invokestatic 116	com/tencent/mm/plugin/webview/b/c:isW	()Ljava/lang/String;
     //   36: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   39: aload_0
     //   40: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   43: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   46: astore_0
-    //   47: new 109	com/tencent/mm/vfs/q
+    //   47: new 109	com/tencent/mm/vfs/u
     //   50: dup
     //   51: aload_0
-    //   52: invokespecial 126	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
+    //   52: invokespecial 126	com/tencent/mm/vfs/u:<init>	(Ljava/lang/String;)V
     //   55: astore 4
     //   57: aload 4
-    //   59: invokevirtual 197	com/tencent/mm/vfs/q:ifE	()Z
+    //   59: invokevirtual 217	com/tencent/mm/vfs/u:jKS	()Z
     //   62: istore_3
     //   63: iload_3
     //   64: ifne +10 -> 74
-    //   67: ldc 194
+    //   67: ldc 214
     //   69: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   72: aconst_null
     //   73: areturn
     //   74: aload 4
-    //   76: invokestatic 203	com/tencent/mm/vfs/u:al	(Lcom/tencent/mm/vfs/q;)Ljava/io/InputStream;
+    //   76: invokestatic 223	com/tencent/mm/vfs/y:ao	(Lcom/tencent/mm/vfs/u;)Ljava/io/InputStream;
     //   79: astore_0
     //   80: aload 4
-    //   82: invokevirtual 206	com/tencent/mm/vfs/q:length	()J
+    //   82: invokevirtual 226	com/tencent/mm/vfs/u:length	()J
     //   85: l2i
     //   86: newarray byte
     //   88: astore 4
     //   90: aload_0
     //   91: aload 4
-    //   93: invokevirtual 212	java/io/InputStream:read	([B)I
+    //   93: invokevirtual 232	java/io/InputStream:read	([B)I
     //   96: pop
     //   97: new 74	java/lang/String
     //   100: dup
     //   101: aload 4
-    //   103: invokespecial 215	java/lang/String:<init>	([B)V
+    //   103: invokespecial 235	java/lang/String:<init>	([B)V
     //   106: astore 4
     //   108: aload_0
     //   109: ifnull +7 -> 116
     //   112: aload_0
-    //   113: invokevirtual 216	java/io/InputStream:close	()V
-    //   116: ldc 218
-    //   118: ldc 220
+    //   113: invokevirtual 236	java/io/InputStream:close	()V
+    //   116: ldc 238
+    //   118: ldc 240
     //   120: iconst_1
     //   121: anewarray 4	java/lang/Object
     //   124: dup
@@ -114,23 +128,23 @@ public final class b
     //   131: invokestatic 72	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   134: aastore
     //   135: invokestatic 143	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   138: ldc 194
+    //   138: ldc 214
     //   140: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   143: aload 4
     //   145: areturn
     //   146: astore 4
     //   148: aconst_null
     //   149: astore_0
-    //   150: ldc 218
+    //   150: ldc 238
     //   152: new 111	java/lang/StringBuilder
     //   155: dup
-    //   156: ldc 222
-    //   158: invokespecial 223	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   156: ldc 242
+    //   158: invokespecial 243	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   161: aload 4
-    //   163: invokevirtual 226	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   163: invokevirtual 246	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   166: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   169: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   172: invokestatic 230	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   172: invokestatic 250	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   175: aload 5
     //   177: astore 4
     //   179: goto -71 -> 108
@@ -156,32 +170,18 @@ public final class b
     //   80	108	186	java/lang/Exception
   }
   
-  private long bjO(String paramString)
-  {
-    AppMethodBeat.i(77840);
-    if (this.PJB.containsKey(paramString))
-    {
-      l = ((Long)this.PJB.get(paramString)).longValue();
-      AppMethodBeat.o(77840);
-      return l;
-    }
-    long l = gTh().bjO(paramString);
-    AppMethodBeat.o(77840);
-    return l;
-  }
-  
-  public static b gTg()
+  public static b isU()
   {
     AppMethodBeat.i(77830);
-    if (PJz == null) {
-      PJz = new b();
+    if (WzR == null) {
+      WzR = new b();
     }
-    b localb = PJz;
+    b localb = WzR;
     AppMethodBeat.o(77830);
     return localb;
   }
   
-  public static boolean mm(String paramString1, String paramString2)
+  public static boolean oa(String paramString1, String paramString2)
   {
     bool = false;
     AppMethodBeat.i(77833);
@@ -191,10 +191,10 @@ public final class b
       return false;
     }
     Log.d("MicroMsg.WebViewDataCenter", "PageCache cache_size:%d, cache_content:%s", new Object[] { Integer.valueOf(paramString2.getBytes().length), paramString2 });
-    String str = c.gTi() + paramString1;
-    paramString1 = new q(c.gTi());
-    if ((!paramString1.ifE()) || (!paramString1.isDirectory())) {
-      paramString1.ifL();
+    String str = c.isW() + paramString1;
+    paramString1 = new u(c.isW());
+    if ((!paramString1.jKS()) || (!paramString1.isDirectory())) {
+      paramString1.jKY();
     }
     Object localObject = null;
     paramString1 = localObject;
@@ -202,7 +202,7 @@ public final class b
     {
       byte[] arrayOfByte = paramString2.getBytes();
       paramString1 = localObject;
-      paramString2 = u.Te(str);
+      paramString2 = y.ev(str, false);
       paramString1 = paramString2;
       paramString2.write(arrayOfByte);
       bool = true;
@@ -220,13 +220,13 @@ public final class b
       }
       catch (IOException paramString1)
       {
-        break label147;
+        break label148;
       }
     }
     if (paramString1 == null) {}
   }
   
-  public static long mn(String paramString1, String paramString2)
+  public static long ob(String paramString1, String paramString2)
   {
     AppMethodBeat.i(77836);
     long l = paramString1.getBytes().length + paramString2.getBytes().length;
@@ -237,7 +237,7 @@ public final class b
   public final boolean a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean)
   {
     AppMethodBeat.i(77832);
-    paramBoolean = a(paramString1, paramString2, paramString3, paramString4, paramString5, paramBoolean, mn(paramString2, paramString3), "");
+    paramBoolean = a(paramString1, paramString2, paramString3, paramString4, paramString5, paramBoolean, ob(paramString2, paramString3), "");
     AppMethodBeat.o(77832);
     return paramBoolean;
   }
@@ -245,17 +245,17 @@ public final class b
   public final boolean a(String paramString1, String paramString2, final String paramString3, final String paramString4, final String paramString5, boolean paramBoolean, long paramLong, final String paramString6)
   {
     AppMethodBeat.i(77835);
-    long l1 = gTh().mp(paramString1, paramString2);
+    long l1 = isV().od(paramString1, paramString2);
     long l2 = paramLong - l1;
-    final long l3 = bjO(paramString1) + l2;
-    final long l4 = bE(paramString1, l3);
+    final long l3 = bjA(paramString1) + l2;
+    final long l4 = bP(paramString1, l3);
     Log.i("MicroMsg.WebViewDataCenter", "prevSize = %d, valueSize = %d, diffSize = %d, newAppSize = %d, expireSize = %d", new Object[] { Long.valueOf(l1), Long.valueOf(paramLong), Long.valueOf(l2), Long.valueOf(l3), Long.valueOf(l4) });
     if ((l4 > 0L) && (!paramBoolean))
     {
       AppMethodBeat.o(77835);
       return false;
     }
-    com.tencent.mm.plugin.webview.a.a.am(new Runnable()
+    com.tencent.mm.plugin.webview.a.a.au(new Runnable()
     {
       public final void run()
       {
@@ -265,13 +265,13 @@ public final class b
         String str;
         if (l4 > 0L)
         {
-          l = b.this.gTh().bG(l3, l4);
+          l = b.this.isV().bR(l3, l4);
           b.a(b.this).put(l3, Long.valueOf(paramString3 - l));
           if (!Util.isNullOrNil(paramString4)) {
             break label191;
           }
-          b.this.gTh().a(l3, paramString5, "", Util.nullAs(paramString6, "1"), b.bjP(this.PJG), this.val$fileName);
-          localc = b.this.gTh();
+          b.this.isV().a(l3, paramString5, "", Util.nullAs(paramString6, "1"), b.bjB(this.WzY), this.val$fileName);
+          localc = b.this.isV();
           str = l3;
           if (b.a(b.this).get(l3) != null) {
             break label234;
@@ -281,13 +281,13 @@ public final class b
         label234:
         for (long l = 0L;; l = ((Long)b.a(b.this).get(l3)).longValue())
         {
-          localc.bF(str, l);
+          localc.bQ(str, l);
           b.b(b.this);
           AppMethodBeat.o(77828);
           return;
           b.a(b.this).put(l3, Long.valueOf(paramString3));
           break;
-          b.this.gTh().a(l3, paramString5, paramString4, Util.nullAs(paramString6, "1"), b.bjP(this.PJG), "");
+          b.this.isV().a(l3, paramString5, paramString4, Util.nullAs(paramString6, "1"), b.bjB(this.WzY), "");
           break label109;
         }
       }
@@ -299,34 +299,34 @@ public final class b
   public final void b(String paramString, JSONArray paramJSONArray)
   {
     AppMethodBeat.i(77838);
-    gTh().b(paramString, paramJSONArray);
+    isV().b(paramString, paramJSONArray);
     AppMethodBeat.o(77838);
   }
   
-  public final void bjN(String paramString)
+  public final void bjz(String paramString)
   {
     AppMethodBeat.i(77839);
-    gTh().bjN(paramString);
+    isV().bjz(paramString);
     AppMethodBeat.o(77839);
   }
   
-  public final c gTh()
+  public final c isV()
   {
     AppMethodBeat.i(77831);
-    if (this.PJA == null)
+    if (this.WzS == null)
     {
-      h.aHH();
-      this.PJA = new c(h.aHG().kcF);
+      h.baF();
+      this.WzS = new c(h.baE().mCN);
     }
-    c localc = this.PJA;
+    c localc = this.WzS;
     AppMethodBeat.o(77831);
     return localc;
   }
   
-  public final a mo(String paramString1, String paramString2)
+  public final a oc(String paramString1, String paramString2)
   {
     AppMethodBeat.i(77837);
-    paramString1 = gTh().mo(paramString1, paramString2);
+    paramString1 = isV().oc(paramString1, paramString2);
     AppMethodBeat.o(77837);
     return paramString1;
   }

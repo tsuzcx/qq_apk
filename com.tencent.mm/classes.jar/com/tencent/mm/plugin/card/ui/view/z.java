@@ -12,20 +12,20 @@ import com.tencent.mm.plugin.card.a.d;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.ui.a.g;
 import com.tencent.mm.plugin.card.ui.n;
-import com.tencent.mm.protocal.protobuf.acg;
-import com.tencent.mm.protocal.protobuf.ua;
+import com.tencent.mm.protocal.protobuf.aek;
+import com.tencent.mm.protocal.protobuf.vr;
 import com.tencent.mm.ui.MMActivity;
 
 public final class z
   extends i
 {
-  private View tGD;
+  private View wKc;
   
-  public final void cKY()
+  public final void doE()
   {
     AppMethodBeat.i(113720);
-    if (this.tGD != null) {
-      this.tGD.setVisibility(8);
+    if (this.wKc != null) {
+      this.wKc.setVisibility(8);
     }
     AppMethodBeat.o(113720);
   }
@@ -35,29 +35,29 @@ public final class z
   public final void update()
   {
     AppMethodBeat.i(113719);
-    if (this.tGD == null) {
-      this.tGD = ((ViewStub)findViewById(a.d.tdC)).inflate();
+    if (this.wKc == null) {
+      this.wKc = ((ViewStub)findViewById(a.d.whQ)).inflate();
     }
-    acg localacg = this.tFT.cIS().cGt().SdJ;
-    if (this.tGD != null)
+    aek localaek = this.wJs.dmk().djL().ZbD;
+    if (this.wKc != null)
     {
-      ((TextView)this.tGD.findViewById(a.d.tgZ)).setText(localacg.title);
-      ((TextView)this.tGD.findViewById(a.d.tgY)).setText(localacg.tnY);
-      if ((!this.tFT.cIX().cJS()) || (!this.tFT.cIX().cJT())) {}
+      ((TextView)this.wKc.findViewById(a.d.wlz)).setText(localaek.title);
+      ((TextView)this.wKc.findViewById(a.d.wly)).setText(localaek.wsz);
+      if ((!this.wJs.dmp().dni()) || (!this.wJs.dmp().dnj())) {}
       for (int i = 1; i != 0; i = 0)
       {
-        ((LinearLayout.LayoutParams)((LinearLayout)this.tGD).getLayoutParams()).bottomMargin = 0;
+        ((LinearLayout.LayoutParams)((LinearLayout)this.wKc).getLayoutParams()).bottomMargin = 0;
         AppMethodBeat.o(113719);
         return;
       }
-      ((LinearLayout.LayoutParams)((LinearLayout)this.tGD).getLayoutParams()).bottomMargin = this.tFT.cIV().getResources().getDimensionPixelSize(a.b.SettingCatalogPadding);
+      ((LinearLayout.LayoutParams)((LinearLayout)this.wKc).getLayoutParams()).bottomMargin = this.wJs.dmn().getResources().getDimensionPixelSize(a.b.SettingCatalogPadding);
     }
     AppMethodBeat.o(113719);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.view.z
  * JD-Core Version:    0.7.0.1
  */

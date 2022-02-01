@@ -6,43 +6,50 @@ import com.tencent.mm.plugin.report.service.h;
 
 public final class a
 {
-  public static int EFA = 1;
-  public static String EFz;
+  public static String KyE;
+  public static int KyF = 1;
+  private static String KyG;
   private static long enterTime;
-  public static int fWQ;
-  public static String iVe;
+  public static int icP;
+  public static String lxj;
   public static int scene;
   
-  public static void Bv(int paramInt)
+  public static void BI(int paramInt)
   {
-    AppMethodBeat.i(221064);
+    AppMethodBeat.i(284004);
     if (enterTime > 0L)
     {
       long l = (SystemClock.elapsedRealtime() - enterTime) / 1000L;
-      h.IzE.a(20255, new Object[] { Integer.valueOf(scene), iVe, Integer.valueOf(fWQ), Integer.valueOf(0), EFz, Integer.valueOf(EFA), Integer.valueOf(paramInt), Long.valueOf(l) });
+      h.OAn.b(20255, new Object[] { Integer.valueOf(scene), lxj, Integer.valueOf(icP), Integer.valueOf(0), KyE, Integer.valueOf(KyF), Integer.valueOf(paramInt), Long.valueOf(l), KyG });
     }
     scene = 0;
     enterTime = -1L;
-    iVe = null;
-    fWQ = 0;
-    EFz = null;
-    EFA = 1;
-    AppMethodBeat.o(221064);
+    lxj = null;
+    icP = 0;
+    KyE = null;
+    KyF = 1;
+    KyG = "";
+    AppMethodBeat.o(284004);
   }
   
-  public static void o(int paramInt1, String paramString, int paramInt2)
+  public static void aKH(String paramString)
   {
-    AppMethodBeat.i(221058);
+    KyG = paramString;
+  }
+  
+  public static void s(int paramInt1, String paramString, int paramInt2)
+  {
+    AppMethodBeat.i(283998);
     scene = paramInt1;
-    iVe = paramString;
-    fWQ = paramInt2;
+    lxj = paramString;
+    icP = paramInt2;
     enterTime = SystemClock.elapsedRealtime();
-    AppMethodBeat.o(221058);
+    AppMethodBeat.o(283998);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.story.a
  * JD-Core Version:    0.7.0.1
  */

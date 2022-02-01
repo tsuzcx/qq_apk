@@ -14,109 +14,109 @@ import com.tencent.luggage.wxa.a.d;
 import com.tencent.luggage.wxa.a.e;
 import com.tencent.luggage.wxa.a.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.cc;
+import com.tencent.mm.plugin.appbrand.page.cg;
 import com.tencent.mm.plugin.appbrand.widget.actionbar.AppBrandCapsuleHomeButton;
 import com.tencent.mm.plugin.appbrand.widget.actionbar.AppBrandOptionButton;
 
 public final class d
   extends FrameLayout
-  implements g, cc
+  implements k, cg
 {
-  private int qwX;
-  private AppBrandOptionButton qwY;
-  private AppBrandCapsuleHomeButton qwZ;
-  private LinearLayout qxa;
-  private View qxb;
-  public View qxc;
+  private int tBW;
+  private AppBrandOptionButton tBX;
+  private AppBrandCapsuleHomeButton tBY;
+  private LinearLayout tBZ;
+  private View tCa;
+  public View tCb;
   
   public d(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(243781);
-    this.qwX = 0;
+    AppMethodBeat.i(325255);
+    this.tBW = 0;
     LayoutInflater.from(paramContext).inflate(a.e.app_brand_capsule_bar_view_layout, this);
-    this.qwY = ((AppBrandOptionButton)findViewById(a.d.actionbar_capsule_option_btn));
-    this.qwZ = ((AppBrandCapsuleHomeButton)findViewById(a.d.actionbar_capsule_home_btn));
-    this.qxa = ((LinearLayout)findViewById(a.d.actionbar_capsule_area));
-    this.qxb = findViewById(a.d.actionbar_capsule_divider);
-    this.qwY.setAccessibilityLabel(getContext().getString(a.g.app_brand_accessibility_option_button));
-    this.qwZ.setAccessibilityLabel(getContext().getString(a.g.app_brand_accessibility_close_button));
-    AppMethodBeat.o(243781);
+    this.tBX = ((AppBrandOptionButton)findViewById(a.d.actionbar_capsule_option_btn));
+    this.tBY = ((AppBrandCapsuleHomeButton)findViewById(a.d.actionbar_capsule_home_btn));
+    this.tBZ = ((LinearLayout)findViewById(a.d.actionbar_capsule_area));
+    this.tCa = findViewById(a.d.actionbar_capsule_divider);
+    this.tBX.setAccessibilityLabel(getContext().getString(a.g.app_brand_accessibility_option_button));
+    this.tBY.setAccessibilityLabel(getContext().getString(a.g.app_brand_accessibility_close_button));
+    AppMethodBeat.o(325255);
   }
   
-  public final boolean d(Canvas paramCanvas)
+  public final boolean g(Canvas paramCanvas)
   {
-    AppMethodBeat.i(243782);
+    AppMethodBeat.i(325260);
     draw(paramCanvas);
-    AppMethodBeat.o(243782);
+    AppMethodBeat.o(325260);
     return true;
   }
   
   public final View getCapsuleContentAreaView()
   {
-    return this.qxa;
+    return this.tBZ;
   }
   
   public final AppBrandCapsuleHomeButton getCapsuleHomeButton()
   {
-    return this.qwZ;
+    return this.tBY;
   }
   
   public final AppBrandOptionButton getOptionBtn()
   {
-    return this.qwY;
+    return this.tBX;
   }
   
   public final void setHomeButtonOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(243786);
-    this.qwZ.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(243786);
+    AppMethodBeat.i(325288);
+    this.tBY.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(325288);
   }
   
   public final void setOptionButtonOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(243787);
-    this.qwY.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(243787);
+    AppMethodBeat.i(325297);
+    this.tBX.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(325297);
   }
   
   public final void setStyleColor(int paramInt)
   {
-    AppMethodBeat.i(243784);
-    if (paramInt == this.qwX)
+    AppMethodBeat.i(325267);
+    if (paramInt == this.tBW)
     {
-      AppMethodBeat.o(243784);
+      AppMethodBeat.o(325267);
       return;
     }
     if (paramInt == -1)
     {
-      this.qwX = -1;
-      this.qxb.setBackgroundResource(a.a.app_brand_capsule_divider_dark);
-      this.qxa.setBackgroundResource(a.c.app_brand_game_capsule_dark_background);
-      this.qwY.setColor(-1);
-      this.qwZ.setColor(-1);
+      this.tBW = -1;
+      this.tCa.setBackgroundResource(a.a.app_brand_capsule_divider_dark);
+      this.tBZ.setBackgroundResource(a.c.app_brand_game_capsule_dark_background);
+      this.tBX.setColor(-1);
+      this.tBY.setColor(-1);
     }
     for (;;)
     {
-      if (this.qxc != null)
+      if (this.tCb != null)
       {
-        this.qxc.animate().cancel();
-        removeView(this.qxc);
+        this.tCb.animate().cancel();
+        removeView(this.tCb);
       }
-      AppMethodBeat.o(243784);
+      AppMethodBeat.o(325267);
       return;
-      this.qwX = -16777216;
-      this.qxb.setBackgroundResource(a.a.app_brand_capsule_divider_light);
-      this.qxa.setBackgroundResource(a.c.app_brand_game_capsule_light_background);
-      this.qwY.setColor(-16777216);
-      this.qwZ.setColor(-16777216);
+      this.tBW = -16777216;
+      this.tCa.setBackgroundResource(a.a.app_brand_capsule_divider_light);
+      this.tBZ.setBackgroundResource(a.c.app_brand_game_capsule_light_background);
+      this.tBX.setColor(-16777216);
+      this.tBY.setColor(-16777216);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.capsulebar.d
  * JD-Core Version:    0.7.0.1
  */

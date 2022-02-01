@@ -1,101 +1,67 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.text.TextUtils;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.co.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.g.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.r;
-import com.tencent.mm.pluginsdk.model.app.g;
-import com.tencent.mm.pluginsdk.model.app.h;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.an;
+import com.tencent.mm.ui.widget.MMWebView;
+import com.tencent.mm.ui.widget.MMWebView.a;
+import com.tencent.xweb.ad;
 
 public final class y
-  extends q
+  extends n
 {
-  public y(Context paramContext, r paramr, ViewGroup paramViewGroup)
+  FrameLayout QQO;
+  MMWebView ooz;
+  
+  public y(Context paramContext, an paraman, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramr, paramViewGroup);
-    AppMethodBeat.i(96657);
-    paramContext = h.o(paramr.KlL, true, false);
-    paramViewGroup = this.KqQ;
-    if (paramContext == null) {}
-    for (paramContext = "";; paramContext = paramContext.field_packageName)
-    {
-      paramViewGroup.kQ("pkg", paramContext);
-      this.KqQ.kQ("appid", paramr.KlL);
-      AppMethodBeat.o(96657);
-      return;
-    }
+    super(paramContext, paraman, paramViewGroup);
   }
   
-  private boolean P(Context paramContext, final String paramString1, final String paramString2)
+  public final void Gs()
   {
-    AppMethodBeat.i(96659);
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString1)))
-    {
-      AppMethodBeat.o(96659);
-      return false;
-    }
-    try
-    {
-      final Intent localIntent = paramContext.getPackageManager().getLaunchIntentForPackage(paramString1);
-      if (localIntent != null)
-      {
-        paramString1 = paramContext;
-        if (!(paramContext instanceof Activity)) {
-          paramString1 = this.context;
-        }
-        a.post(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(96656);
-            h.b(paramString1, localIntent, paramString2);
-            AppMethodBeat.o(96656);
-          }
-        });
-        AppMethodBeat.o(96659);
-        return true;
-      }
-    }
-    catch (Exception paramContext)
-    {
-      Log.e("AdLandingPageOpenAppBtnComp", Util.stackTraceToString(paramContext));
-      AppMethodBeat.o(96659);
-    }
-    return false;
+    AppMethodBeat.i(96614);
+    this.QQO = ((FrameLayout)this.contentView);
+    this.ooz = MMWebView.a.nL(this.context);
+    this.QQO.addView(this.ooz);
+    AppMethodBeat.o(96614);
   }
   
-  protected final void fRb()
+  protected final int getLayout()
   {
-    AppMethodBeat.i(96658);
-    Object localObject = (r)this.KqB;
-    if (h.u(this.context, ((r)localObject).KlL))
-    {
-      localObject = h.o(((r)localObject).KlL, true, false);
-      if ((localObject != null) && (!TextUtils.isEmpty(((g)localObject).field_packageName)) && (P(this.context, ((g)localObject).field_packageName, h.a(this.context, (g)localObject, null))))
-      {
-        fRc();
-        AppMethodBeat.o(96658);
-        return;
-      }
-      super.fRb();
-      AppMethodBeat.o(96658);
-      return;
-    }
-    super.fRb();
-    AppMethodBeat.o(96658);
+    return 2147483647;
+  }
+  
+  protected final void had()
+  {
+    AppMethodBeat.i(96613);
+    this.ooz.setVerticalScrollBarEnabled(false);
+    this.ooz.setHorizontalScrollBarEnabled(false);
+    this.ooz.getSettings().setJavaScriptEnabled(true);
+    this.ooz.loadUrl(((an)this.QOV).h5Url);
+    this.ooz.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    this.ooz.setVisibility(0);
+    this.QQO.setPadding(this.QQO.getPaddingLeft(), (int)((an)this.QOV).paddingTop, this.QQO.getPaddingRight(), (int)((an)this.QOV).paddingBottom);
+    this.QQO.setLayoutParams(new LinearLayout.LayoutParams(this.sJv, this.pvg));
+    AppMethodBeat.o(96613);
+  }
+  
+  protected final View ham()
+  {
+    AppMethodBeat.i(96615);
+    FrameLayout localFrameLayout = new FrameLayout(this.context);
+    AppMethodBeat.o(96615);
+    return localFrameLayout;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.y
  * JD-Core Version:    0.7.0.1
  */

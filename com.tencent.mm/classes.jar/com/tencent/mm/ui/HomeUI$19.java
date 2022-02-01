@@ -1,39 +1,47 @@
 package com.tencent.mm.ui;
 
-import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.q.a;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.plugin.multitask.ui.panel.MultiTaskContainerView;
+import com.tencent.mm.plugin.multitask.ui.uic.c;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.component.k;
+import com.tencent.mm.ui.component.k.b;
+import kotlin.g.b.s;
 
 final class HomeUI$19
-  implements Runnable
+  implements View.OnClickListener
 {
   HomeUI$19(HomeUI paramHomeUI) {}
   
-  public final void run()
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(276970);
-    if (((a.p(HomeUI.c(this.VWJ), true)) && (!a.cw(HomeUI.c(this.VWJ)))) || (a.t(HomeUI.c(this.VWJ), true)))
-    {
-      AppMethodBeat.o(276970);
-      return;
+    AppMethodBeat.i(249457);
+    Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+    ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramView);
+    a.c("com/tencent/mm/ui/HomeUI$29", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
+    paramView = k.aeZF;
+    paramView = (c)k.d(HomeUI.j(this.adBf)).q(c.class);
+    Log.i(c.TAG, s.X("showPanel, smoothScrool:", Boolean.TRUE));
+    paramView.LHr = 2;
+    paramView.glf();
+    localObject = paramView.LHz;
+    if (localObject != null) {
+      ((MultiTaskContainerView)localObject).acx(0);
     }
-    Intent localIntent = new Intent();
-    localIntent.putExtra("BaseScanUI_select_scan_mode", 1);
-    localIntent.putExtra("GetFriendQRCodeUI.INTENT_FROM_ACTIVITY", 0);
-    localIntent.putExtra("key_enable_multi_code", true);
-    localIntent.putExtra("key_scan_goods_enable_dynamic_wording", true);
-    localIntent.putExtra("key_scan_entry_scene", 5);
-    localIntent.setFlags(65536);
-    h.IzE.a(11409, new Object[0]);
-    c.b(HomeUI.c(this.VWJ), "scanner", ".ui.BaseScanUI", localIntent);
-    AppMethodBeat.o(276970);
+    paramView = paramView.LHn;
+    if (paramView != null) {
+      paramView.setCurrentItem(0, true);
+    }
+    a.a(this, "com/tencent/mm/ui/HomeUI$29", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(249457);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.ui.HomeUI.19
  * JD-Core Version:    0.7.0.1
  */

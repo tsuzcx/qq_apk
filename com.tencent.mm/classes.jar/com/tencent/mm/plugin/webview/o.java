@@ -1,24 +1,20 @@
 package com.tencent.mm.plugin.webview;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/WebTransTipsStatus;", "", "(Ljava/lang/String;I)V", "Hide", "DoingTrans", "DoneTrans", "NoNeedTrans", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/WebTransTipsStatus;", "", "(Ljava/lang/String;I)V", "Hide", "DoingTrans", "DoneTrans", "NoNeedTrans", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public enum o
 {
   static
   {
-    AppMethodBeat.i(220583);
-    o localo1 = new o("Hide", 0);
-    PEU = localo1;
-    o localo2 = new o("DoingTrans", 1);
-    PEV = localo2;
-    o localo3 = new o("DoneTrans", 2);
-    PEW = localo3;
-    o localo4 = new o("NoNeedTrans", 3);
-    PEX = localo4;
-    PEY = new o[] { localo1, localo2, localo3, localo4 };
-    AppMethodBeat.o(220583);
+    AppMethodBeat.i(295397);
+    Wvu = new o("Hide", 0);
+    Wvv = new o("DoingTrans", 1);
+    Wvw = new o("DoneTrans", 2);
+    Wvx = new o("NoNeedTrans", 3);
+    Wvy = new o[] { Wvu, Wvv, Wvw, Wvx };
+    AppMethodBeat.o(295397);
   }
   
   private o() {}

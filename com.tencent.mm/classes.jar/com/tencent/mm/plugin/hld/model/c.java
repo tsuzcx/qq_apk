@@ -1,22 +1,20 @@
 package com.tencent.mm.plugin.hld.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/model/ImeCompressionAlgo;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "None", "Zlib", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/model/ImeCompressionAlgo;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "None", "Zlib", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public enum c
 {
   public final int value;
   
   static
   {
-    AppMethodBeat.i(211989);
-    c localc1 = new c("None", 0, 1);
-    DBx = localc1;
-    c localc2 = new c("Zlib", 1, 2);
-    DBy = localc2;
-    DBz = new c[] { localc1, localc2 };
-    AppMethodBeat.o(211989);
+    AppMethodBeat.i(311878);
+    Juw = new c("None", 0, 1);
+    Jux = new c("Zlib", 1, 2);
+    Juy = new c[] { Juw, Jux };
+    AppMethodBeat.o(311878);
   }
   
   private c(int paramInt)

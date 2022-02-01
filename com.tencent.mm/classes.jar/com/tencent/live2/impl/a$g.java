@@ -21,7 +21,7 @@ public class a$g
   
   public a$g(V2TXLiveDef.V2TXLiveVideoResolution paramV2TXLiveVideoResolution, V2TXLiveDef.V2TXLiveVideoResolutionMode paramV2TXLiveVideoResolutionMode)
   {
-    AppMethodBeat.i(215261);
+    AppMethodBeat.i(211532);
     this.a = 544;
     this.b = 960;
     this.c = 15;
@@ -31,20 +31,20 @@ public class a$g
     this.b = paramV2TXLiveVideoResolutionMode.b;
     this.d = b.b(paramV2TXLiveVideoResolution).b;
     this.c = 15;
-    AppMethodBeat.o(215261);
+    AppMethodBeat.o(211532);
   }
   
   public String toString()
   {
-    AppMethodBeat.i(215264);
+    AppMethodBeat.i(211539);
     String str = "[width:" + this.a + "][height:" + this.b + "][fps:" + this.c + "][bitrate:" + this.d + "]";
-    AppMethodBeat.o(215264);
+    AppMethodBeat.o(211539);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.live2.impl.a.g
  * JD-Core Version:    0.7.0.1
  */

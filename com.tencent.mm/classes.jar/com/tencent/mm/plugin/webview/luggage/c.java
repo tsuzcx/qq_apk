@@ -12,7 +12,7 @@ public final class c
     super(paramContext);
   }
   
-  public final void BF(int paramInt)
+  public final void onStatusBarHeightChange(int paramInt)
   {
     AppMethodBeat.i(78193);
     if (paramInt == 0)
@@ -20,7 +20,7 @@ public final class c
       AppMethodBeat.o(78193);
       return;
     }
-    super.BF(paramInt);
+    super.onStatusBarHeightChange(paramInt);
     AppMethodBeat.o(78193);
   }
 }

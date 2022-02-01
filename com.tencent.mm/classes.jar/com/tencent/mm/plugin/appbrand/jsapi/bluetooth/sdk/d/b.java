@@ -2,95 +2,74 @@ package com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d;
 
 import android.bluetooth.BluetoothAdapter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.e;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 import java.util.Map;
-import kotlin.g.b.aa.a;
-import kotlin.g.b.p;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import kotlin.j.d;
-import kotlin.l;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"HEX", "", "TAG", "", "byteArrayToHexString", "bytes", "", "getRandomId", "", "isPeripheralBleSupported", "", "callbackFail", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "callbackId", "env", "errCode", "errMsg", "callbackSuccess", "params", "Ljava/util/HashMap;", "", "toArray", "", "T", "Lorg/json/JSONArray;", "(Lorg/json/JSONArray;)[Ljava/lang/Object;", "luggage-commons-jsapi-connectivity-ext_release"})
+@Metadata(d1={""}, d2={"HEX", "", "TAG", "", "byteArrayToHexString", "bytes", "", "getRandomId", "", "isPeripheralBleSupported", "", "callbackFail", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "callbackId", "env", "errCode", "errMsg", "params", "Ljava/util/HashMap;", "", "callbackSuccess", "toArray", "", "T", "Lorg/json/JSONArray;", "(Lorg/json/JSONArray;)[Ljava/lang/Object;", "luggage-commons-jsapi-connectivity-ext_release"}, k=2, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  private static final char[] oLo = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
+  private static final char[] rPi = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
   
-  public static final void a(com.tencent.mm.plugin.appbrand.jsapi.c<e> paramc, int paramInt1, e parame, int paramInt2, String paramString)
-  {
-    AppMethodBeat.i(144798);
-    p.k(paramc, "$this$callbackFail");
-    p.k(parame, "env");
-    p.k(paramString, "errMsg");
-    Log.d("MicroMsg.BLE.BleHelpExt", "callbackFail: api = %s, reason = %s", new Object[] { paramc.getClass().getSimpleName(), paramString });
-    HashMap localHashMap = new HashMap();
-    ((Map)localHashMap).put("errCode", Integer.valueOf(paramInt2));
-    parame.j(paramInt1, paramc.m(paramString, (Map)localHashMap));
-    AppMethodBeat.o(144798);
-  }
-  
-  public static final void a(com.tencent.mm.plugin.appbrand.jsapi.c<e> paramc, int paramInt, e parame, HashMap<String, Object> paramHashMap)
+  public static final void a(com.tencent.mm.plugin.appbrand.jsapi.c<f> paramc, int paramInt, f paramf, HashMap<String, Object> paramHashMap)
   {
     AppMethodBeat.i(144796);
-    p.k(paramc, "$this$callbackSuccess");
-    p.k(parame, "env");
-    Log.d("MicroMsg.BLE.BleHelpExt", "callbackSuccess: api = " + paramc.getClass().getSimpleName());
+    s.u(paramc, "<this>");
+    s.u(paramf, "env");
+    Log.d("MicroMsg.BLE.BleHelpExt", s.X("callbackSuccess: api = ", paramc.getClass().getSimpleName()));
     if (paramHashMap == null) {
       paramHashMap = new HashMap();
     }
     for (;;)
     {
       ((Map)paramHashMap).put("errCode", Integer.valueOf(0));
-      parame.j(paramInt, paramc.m("ok", (Map)paramHashMap));
+      paramf.callback(paramInt, paramc.a(null, a.e.rVt, (Map)paramHashMap));
       AppMethodBeat.o(144796);
       return;
     }
   }
   
-  public static final boolean bRh()
+  public static final boolean crp()
   {
-    boolean bool2 = true;
     AppMethodBeat.i(144795);
-    aa.a locala = new aa.a();
-    BluetoothAdapter localBluetoothAdapter = c.bRk();
+    BluetoothAdapter localBluetoothAdapter = c.crs();
     if (localBluetoothAdapter == null)
     {
       AppMethodBeat.o(144795);
       return false;
     }
-    p.j(localBluetoothAdapter, "getBleAdapter() ?: return false");
-    StringBuilder localStringBuilder = new StringBuilder("isPeripheralBleSupported: isMultipleAdvertisementSupported = ").append(localBluetoothAdapter.isMultipleAdvertisementSupported()).append('\n').append("isOffloadedFilteringSupported = ").append(localBluetoothAdapter.isOffloadedFilteringSupported()).append('\n').append("isOffloadedScanBatchingSupported = ").append(localBluetoothAdapter.isOffloadedScanBatchingSupported()).append('\n').append("bluetoothLeAdvertiser != null? = ");
-    if (localBluetoothAdapter.getBluetoothLeAdvertiser() != null)
+    StringBuilder localStringBuilder = new StringBuilder("isPeripheralBleSupported: isMultipleAdvertisementSupported = ").append(localBluetoothAdapter.isMultipleAdvertisementSupported()).append("\nisOffloadedFilteringSupported = ").append(localBluetoothAdapter.isOffloadedFilteringSupported()).append("\nisOffloadedScanBatchingSupported = ").append(localBluetoothAdapter.isOffloadedScanBatchingSupported()).append("\nbluetoothLeAdvertiser != null? = ");
+    if (localBluetoothAdapter.getBluetoothLeAdvertiser() != null) {}
+    for (boolean bool = true;; bool = false)
     {
-      bool1 = true;
-      Log.d("MicroMsg.BLE.BleHelpExt", bool1 + '\n');
+      Log.d("MicroMsg.BLE.BleHelpExt", bool + '\n');
       if (localBluetoothAdapter.getBluetoothLeAdvertiser() == null) {
-        break label157;
+        break;
       }
-    }
-    label157:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      locala.aaBx = bool1;
-      bool1 = locala.aaBx;
       AppMethodBeat.o(144795);
-      return bool1;
-      bool1 = false;
-      break;
+      return true;
     }
+    AppMethodBeat.o(144795);
+    return false;
   }
   
-  public static final int bRi()
+  public static final int crq()
   {
     AppMethodBeat.i(144799);
-    int i = d.Xv(System.currentTimeMillis()).os(1, 2147483647);
+    int i = d.BG(System.currentTimeMillis()).qq(1, 2147483647);
     AppMethodBeat.o(144799);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.b
  * JD-Core Version:    0.7.0.1
  */

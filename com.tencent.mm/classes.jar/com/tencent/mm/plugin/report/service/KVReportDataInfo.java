@@ -9,11 +9,11 @@ class KVReportDataInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<KVReportDataInfo> CREATOR;
-  public boolean IyX;
-  public boolean Izq;
-  public boolean Izr;
-  public long fKh;
-  public long fwf;
+  public boolean OAa;
+  public boolean OzE;
+  public boolean OzZ;
+  public long beV;
+  public long hPN;
   public String value;
   
   static
@@ -25,26 +25,26 @@ class KVReportDataInfo
   
   public KVReportDataInfo()
   {
-    this.fwf = 0L;
+    this.beV = 0L;
   }
   
   protected KVReportDataInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(143844);
-    this.fwf = 0L;
-    this.fKh = paramParcel.readLong();
-    this.fwf = paramParcel.readLong();
+    this.beV = 0L;
+    this.hPN = paramParcel.readLong();
+    this.beV = paramParcel.readLong();
     this.value = paramParcel.readString();
     if (paramParcel.readInt() == 1)
     {
       bool1 = true;
-      this.Izq = bool1;
+      this.OzZ = bool1;
       if (paramParcel.readInt() != 1) {
         break label96;
       }
       bool1 = true;
       label65:
-      this.IyX = bool1;
+      this.OzE = bool1;
       if (paramParcel.readInt() != 1) {
         break label101;
       }
@@ -53,7 +53,7 @@ class KVReportDataInfo
     label101:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.Izr = bool1;
+      this.OAa = bool1;
       AppMethodBeat.o(143844);
       return;
       bool1 = false;
@@ -72,20 +72,20 @@ class KVReportDataInfo
   {
     int i = 1;
     AppMethodBeat.i(143843);
-    paramParcel.writeLong(this.fKh);
-    paramParcel.writeLong(this.fwf);
+    paramParcel.writeLong(this.hPN);
+    paramParcel.writeLong(this.beV);
     paramParcel.writeString(this.value);
-    if (this.Izq)
+    if (this.OzZ)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      if (!this.IyX) {
+      if (!this.OzE) {
         break label84;
       }
       paramInt = 1;
       label54:
       paramParcel.writeInt(paramInt);
-      if (!this.Izr) {
+      if (!this.OAa) {
         break label89;
       }
     }
@@ -105,7 +105,7 @@ class KVReportDataInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.report.service.KVReportDataInfo
  * JD-Core Version:    0.7.0.1
  */

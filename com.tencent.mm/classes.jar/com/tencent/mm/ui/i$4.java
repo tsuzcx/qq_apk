@@ -16,11 +16,10 @@ final class i$4
     AppMethodBeat.i(33023);
     try
     {
-      h.b(this.val$context, this.val$intent, this.val$context.getString(R.l.eCy));
-      AppMethodBeat.o(33023);
+      h.b(this.val$context, this.val$intent, this.val$context.getString(R.l.enterprise_wework_apk));
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       AppMethodBeat.o(33023);
     }

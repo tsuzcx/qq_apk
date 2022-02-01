@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.webview.c.h;
 import com.tencent.mm.plugin.webview.c.i;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.ui.base.o;
+import com.tencent.mm.ui.base.s;
 
 public final class j
   extends a
@@ -20,14 +20,14 @@ public final class j
   {
     AppMethodBeat.i(78702);
     paramg.reload();
-    h.IzE.el(982, 7);
+    h.OAn.kJ(982, 7);
     AppMethodBeat.o(78702);
   }
   
-  public final void a(Context paramContext, g paramg, o paramo)
+  public final void a(Context paramContext, g paramg, s params)
   {
     AppMethodBeat.i(78701);
-    paramo.b(28, paramContext.getString(c.i.webview_bottomsheet_refresh), c.h.bottomsheet_icon_refresh);
+    params.a(28, paramContext.getString(c.i.webview_bottomsheet_refresh), c.h.icons_outlined_refresh);
     AppMethodBeat.o(78701);
   }
 }

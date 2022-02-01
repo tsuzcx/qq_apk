@@ -1,48 +1,56 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.text.Editable;
-import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.widget.edittext.a.c;
-import com.tencent.mm.ui.widget.edittext.a.e;
-import java.util.List;
+import com.tencent.mm.api.ad.a;
+import com.tencent.mm.api.t;
+import com.tencent.mm.plugin.sns.d.a;
+import com.tencent.mm.plugin.sns.storage.SnsInfo;
+import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.protocal.protobuf.fdv;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.emotion.EmojiInfo;
 
 final class SnsCommentFooter$2
-  implements a.e
+  implements ad.a
 {
   SnsCommentFooter$2(SnsCommentFooter paramSnsCommentFooter) {}
   
-  public final void B(List<a.c> paramList, int paramInt)
+  public final void a(t paramt)
   {
-    AppMethodBeat.i(194039);
-    long l = cm.bfF();
-    if ((((com.tencent.mm.plugin.websearch.api.c)h.ag(com.tencent.mm.plugin.websearch.api.c.class)).isOpenInlineSnsTag()) && (paramInt != 8) && (paramInt != 1))
+    AppMethodBeat.i(369945);
+    if ((paramt instanceof EmojiInfo))
     {
-      paramList.add(new a.c(SnsCommentFooter.h(this.KQR).getString(i.j.tag_search_word), 2));
-      SnsCommentFooter.a(this.KQR.getContext(), this.KQR.getTag(), SnsCommentFooter.r(this.KQR), "", 1, "", l);
+      boolean bool = false;
+      String str;
+      if ((SnsCommentFooter.o(this.RqJ) != null) && (!Util.isNullOrNil(SnsCommentFooter.o(this.RqJ).Username)))
+      {
+        str = SnsCommentFooter.o(this.RqJ).Username;
+        bool = true;
+      }
+      while (!SnsCommentFooter.q(this.RqJ))
+      {
+        AppMethodBeat.o(369945);
+        return;
+        if ((this.RqJ.getTag() != null) && ((this.RqJ.getTag() instanceof SnsInfo)))
+        {
+          str = ((SnsInfo)this.RqJ.getTag()).getUserName();
+        }
+        else
+        {
+          AppMethodBeat.o(369945);
+          return;
+        }
+      }
+      a.pFn.a(SnsCommentFooter.j(this.RqJ), str, ((EmojiInfo)paramt).field_md5, bool, new SnsCommentFooter.2.1(this, paramt));
     }
-    AppMethodBeat.o(194039);
+    AppMethodBeat.o(369945);
   }
   
-  public final void a(View paramView, a.c paramc, String paramString)
-  {
-    AppMethodBeat.i(194042);
-    long l = cm.bfF();
-    if (paramc.id == 2)
-    {
-      SnsCommentFooter.b(this.KQR).getText().insert(SnsCommentFooter.b(this.KQR).getSelectionStart(), SnsCommentFooter.h(this.KQR).getString(i.j.tag_search_word));
-      SnsCommentFooter.a(this.KQR.getContext(), this.KQR.getTag(), SnsCommentFooter.r(this.KQR), "", 2, "", l);
-    }
-    AppMethodBeat.o(194042);
-  }
+  public final void onHide() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsCommentFooter.2
  * JD-Core Version:    0.7.0.1
  */

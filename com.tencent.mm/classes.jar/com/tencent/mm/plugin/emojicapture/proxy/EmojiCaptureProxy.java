@@ -5,69 +5,69 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.p;
 import com.tencent.mm.compatible.deviceinfo.af;
-import com.tencent.mm.emoji.b.o;
-import com.tencent.mm.emoji.d.i;
-import com.tencent.mm.kernel.h;
+import com.tencent.mm.emoji.c.o;
 import com.tencent.mm.plugin.emojicapture.a.i;
 import com.tencent.mm.plugin.emojicapture.api.EmojiCaptureReporter;
 import com.tencent.mm.plugin.emojicapture.b.a.a;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.sdk.platformtools.ImgUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.cl;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sticker.b.b;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.storage.bl;
+import com.tencent.mm.storage.co;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo.a;
 import com.tencent.mm.storage.emotion.EmojiInfo.b;
-import com.tencent.mm.ui.widget.a.f.a;
-import com.tencent.mm.ui.widget.a.f.c;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.ui.widget.a.g.a;
+import com.tencent.mm.vfs.y;
 import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.util.Arrays;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
 import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emojicapture/proxy/EmojiCaptureProxy;", "Lcom/tencent/mm/remoteservice/BaseClientRequest;", "serverProxy", "Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "(Lcom/tencent/mm/remoteservice/RemoteServiceProxy;)V", "RESULT_KEY", "", "getServerProxy", "()Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "checkUseCPUCrop", "", "createEmojiInfo", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "createEmojiInfoRemote", "bundle", "Landroid/os/Bundle;", "deleteEmojiInfoByEnterTime", "timeEnter", "", "deleteEmojiInfoByEnterTimeRemote", "deleteEmojiInfoByMd5", "md5", "deleteEmojiInfoByMd5Remote", "getConfigStorage", "", "_key", "", "defval", "getDeviceInfoConfig", "getDeviceInfoConfigRemote", "getDynamicConfig", "key", "getDynamicConfigInMM", "getEnableAutoRotate", "getEnableAutoRotateRemote", "getForbidLensId", "getInt", "Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;", "defva", "getLensList", "getLensListRemote", "getUseGpuSegment", "getUseGpuSegmentRemote", "isSpringFestivalEnable", "isSpringFestivalEnableRemote", "objectsToBundle", "params", "", "([Ljava/lang/Object;)Landroid/os/Bundle;", "onCallback", "methodName", "data", "clientCall", "postUploadTask", "filePath", "mixingMd5", "postUploadTaskRemote", "showImitateDialog", "showImitateDialogRemote", "updateEmojiInfo", "updateEmojiInfoRemote", "useCPUCrop", "Companion", "plugin-emojicapture_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/emojicapture/proxy/EmojiCaptureProxy;", "Lcom/tencent/mm/remoteservice/BaseClientRequest;", "serverProxy", "Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "(Lcom/tencent/mm/remoteservice/RemoteServiceProxy;)V", "RESULT_KEY", "", "getServerProxy", "()Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "checkUseCPUCrop", "", "createEmojiInfo", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "createEmojiInfoRemote", "bundle", "Landroid/os/Bundle;", "deleteEmojiInfoByEnterTime", "timeEnter", "", "deleteEmojiInfoByEnterTimeRemote", "deleteEmojiInfoByMd5", "md5", "deleteEmojiInfoByMd5Remote", "getConfigStorage", "", "_key", "", "defval", "getDeviceInfoConfig", "getDeviceInfoConfigRemote", "getDynamicConfig", "key", "getDynamicConfigInMM", "getEnableAutoRotate", "getEnableAutoRotateRemote", "getForbidLensId", "getInt", "Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;", "defva", "getLensList", "getLensListRemote", "getUseGpuSegment", "getUseGpuSegmentRemote", "isSpringFestivalEnable", "isSpringFestivalEnableRemote", "objectsToBundle", "params", "", "([Ljava/lang/Object;)Landroid/os/Bundle;", "onCallback", "methodName", "data", "clientCall", "postUploadTask", "filePath", "mixingMd5", "postUploadTaskRemote", "showImitateDialog", "showImitateDialogRemote", "updateEmojiInfo", "updateEmojiInfoRemote", "useCPUCrop", "Companion", "plugin-emojicapture_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class EmojiCaptureProxy
   extends com.tencent.mm.remoteservice.a
 {
-  private static int jGL;
-  private static boolean jGM;
-  private static EmojiCaptureProxy uXk;
-  public static final a uXl;
-  private final String RESULT_KEY;
-  private final com.tencent.mm.remoteservice.d jGJ;
+  private static int wrD;
+  public static final a yjA;
+  private static EmojiCaptureProxy yjB;
+  private static boolean yjC;
+  private final String nBg;
+  private final com.tencent.mm.remoteservice.d pfZ;
   
   static
   {
     AppMethodBeat.i(414);
-    uXl = new a((byte)0);
-    uXk = new EmojiCaptureProxy(new com.tencent.mm.remoteservice.d(MMApplicationContext.getContext()));
-    jGM = true;
+    yjA = new a((byte)0);
+    yjB = new EmojiCaptureProxy(new com.tencent.mm.remoteservice.d(MMApplicationContext.getContext()));
+    yjC = true;
     AppMethodBeat.o(414);
   }
   
   public EmojiCaptureProxy(com.tencent.mm.remoteservice.d paramd)
   {
     super(paramd);
-    this.jGJ = paramd;
-    this.RESULT_KEY = "result_key";
+    this.pfZ = paramd;
+    this.nBg = "result_key";
   }
+  
+  private static final void J(boolean paramBoolean, String paramString) {}
   
   @com.tencent.mm.remoteservice.f
   public final boolean checkUseCPUCrop()
   {
     AppMethodBeat.i(402);
     Log.printInfoStack("MicroMsg.EmojiCaptureProxy", "checkUseCPUCrop", new Object[0]);
-    boolean bool = ((a.a)com.tencent.mm.plugin.emojicapture.b.a.uTG.aUb()).laO;
+    boolean bool = ((a.a)com.tencent.mm.plugin.emojicapture.b.a.ygu.boF()).nFT;
     AppMethodBeat.o(402);
     return bool;
   }
@@ -75,8 +75,8 @@ public final class EmojiCaptureProxy
   public final void createEmojiInfo(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(384);
-    p.k(paramEmojiInfo, "emojiInfo");
-    Log.i("MicroMsg.EmojiCaptureProxy", "createEmojiInfo: " + paramEmojiInfo.getMd5());
+    kotlin.g.b.s.u(paramEmojiInfo, "emojiInfo");
+    Log.i("MicroMsg.EmojiCaptureProxy", kotlin.g.b.s.X("createEmojiInfo: ", paramEmojiInfo.getMd5()));
     Bundle localBundle = new Bundle();
     localBundle.setClassLoader(EmojiInfo.class.getClassLoader());
     localBundle.putParcelable("emoji", (Parcelable)paramEmojiInfo);
@@ -88,39 +88,32 @@ public final class EmojiCaptureProxy
   public final void createEmojiInfoRemote(Bundle paramBundle)
   {
     AppMethodBeat.i(392);
-    p.k(paramBundle, "bundle");
+    kotlin.g.b.s.u(paramBundle, "bundle");
     paramBundle.setClassLoader(EmojiInfo.class.getClassLoader());
     EmojiInfo localEmojiInfo = (EmojiInfo)paramBundle.getParcelable("emoji");
-    StringBuilder localStringBuilder = new StringBuilder("createEmojiInfoRemote: ");
-    if (localEmojiInfo != null) {}
-    for (paramBundle = localEmojiInfo.getMd5();; paramBundle = null)
+    if (localEmojiInfo == null) {}
+    for (paramBundle = null;; paramBundle = localEmojiInfo.getMd5())
     {
-      Log.i("MicroMsg.EmojiCaptureProxy", paramBundle);
+      Log.i("MicroMsg.EmojiCaptureProxy", kotlin.g.b.s.X("createEmojiInfoRemote: ", paramBundle));
       if (localEmojiInfo == null) {
         break;
       }
-      paramBundle = h.ag(com.tencent.mm.plugin.emoji.b.d.class);
-      p.j(paramBundle, "MMKernel.plugin(IPluginEmoji::class.java)");
-      ((com.tencent.mm.plugin.emoji.b.d)paramBundle).getEmojiMgr().n(localEmojiInfo.getMd5(), 0, EmojiInfo.YCF, localEmojiInfo.field_size);
-      paramBundle = h.ag(com.tencent.mm.plugin.emoji.b.d.class);
-      p.j(paramBundle, "MMKernel.plugin(IPluginEmoji::class.java)");
-      ((com.tencent.mm.plugin.emoji.b.d)paramBundle).getEmojiMgr().updateEmojiInfo(localEmojiInfo);
-      paramBundle = h.ag(com.tencent.mm.plugin.emoji.b.d.class);
-      p.j(paramBundle, "MMKernel.plugin(IPluginEmoji::class.java)");
-      ((com.tencent.mm.plugin.emoji.b.d)paramBundle).getEmojiMgr().t(localEmojiInfo);
+      ((com.tencent.mm.plugin.emoji.c.d)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.emoji.c.d.class)).getEmojiMgr().o(localEmojiInfo.getMd5(), 0, EmojiInfo.aklO, localEmojiInfo.field_size);
+      ((com.tencent.mm.plugin.emoji.c.d)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.emoji.c.d.class)).getEmojiMgr().updateEmojiInfo(localEmojiInfo);
+      ((com.tencent.mm.plugin.emoji.c.d)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.emoji.c.d.class)).getEmojiMgr().t(localEmojiInfo);
       AppMethodBeat.o(392);
       return;
     }
-    EmojiCaptureReporter.JP(31);
-    paramBundle = com.tencent.mm.plugin.emojicapture.model.e.uUh;
-    com.tencent.mm.plugin.emojicapture.model.e.cXS();
+    EmojiCaptureReporter.KN(31);
+    paramBundle = com.tencent.mm.plugin.emojicapture.model.e.ygT;
+    com.tencent.mm.plugin.emojicapture.model.e.dEi();
     AppMethodBeat.o(392);
   }
   
   public final void deleteEmojiInfoByEnterTime(long paramLong)
   {
     AppMethodBeat.i(395);
-    Log.i("MicroMsg.EmojiCaptureProxy", "deleteEmojiInfoByEnterTime: ".concat(String.valueOf(paramLong)));
+    Log.i("MicroMsg.EmojiCaptureProxy", kotlin.g.b.s.X("deleteEmojiInfoByEnterTime: ", Long.valueOf(paramLong)));
     REMOTE_CALL("deleteEmojiInfoByEnterTimeRemote", new Object[] { Long.valueOf(paramLong) });
     AppMethodBeat.o(395);
   }
@@ -129,20 +122,19 @@ public final class EmojiCaptureProxy
   public final void deleteEmojiInfoByEnterTimeRemote(long paramLong)
   {
     AppMethodBeat.i(396);
-    Log.i("MicroMsg.EmojiCaptureProxy", "deleteEmojiInfoByEnterTimeRemote: ".concat(String.valueOf(paramLong)));
-    Object localObject = h.ag(com.tencent.mm.plugin.emoji.b.d.class);
-    p.j(localObject, "MMKernel.plugin(IPluginEmoji::class.java)");
-    localObject = ((com.tencent.mm.plugin.emoji.b.d)localObject).getEmojiStorageMgr();
-    p.j(localObject, "MMKernel.plugin(IPluginE…ass.java).emojiStorageMgr");
-    ((bj)localObject).ctY().UY(paramLong);
+    Log.i("MicroMsg.EmojiCaptureProxy", kotlin.g.b.s.X("deleteEmojiInfoByEnterTimeRemote: ", Long.valueOf(paramLong)));
+    com.tencent.mm.storage.emotion.f localf = ((com.tencent.mm.plugin.emoji.c.d)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.emoji.c.d.class)).getEmojiStorageMgr().adju;
+    if ((paramLong != 0L) && (localf.db.delete("EmojiInfo", "captureEnterTime=".concat(String.valueOf(paramLong)), null) > 0)) {
+      localf.doNotify("event_update_emoji");
+    }
     AppMethodBeat.o(396);
   }
   
   public final void deleteEmojiInfoByMd5(String paramString)
   {
     AppMethodBeat.i(393);
-    p.k(paramString, "md5");
-    Log.i("MicroMsg.EmojiCaptureProxy", "deleteEmojiInfo: ".concat(String.valueOf(paramString)));
+    kotlin.g.b.s.u(paramString, "md5");
+    Log.i("MicroMsg.EmojiCaptureProxy", kotlin.g.b.s.X("deleteEmojiInfo: ", paramString));
     REMOTE_CALL("deleteEmojiInfoByMd5Remote", new Object[] { paramString });
     AppMethodBeat.o(393);
   }
@@ -151,13 +143,9 @@ public final class EmojiCaptureProxy
   public final void deleteEmojiInfoByMd5Remote(String paramString)
   {
     AppMethodBeat.i(394);
-    p.k(paramString, "md5");
-    Log.i("MicroMsg.EmojiCaptureProxy", "deleteEmojiInfoByMd5Remote: ".concat(String.valueOf(paramString)));
-    Object localObject = h.ag(com.tencent.mm.plugin.emoji.b.d.class);
-    p.j(localObject, "MMKernel.plugin(IPluginEmoji::class.java)");
-    localObject = ((com.tencent.mm.plugin.emoji.b.d)localObject).getEmojiStorageMgr();
-    p.j(localObject, "MMKernel.plugin(IPluginE…ass.java).emojiStorageMgr");
-    ((bj)localObject).ctY().bxL(paramString);
+    kotlin.g.b.s.u(paramString, "md5");
+    Log.i("MicroMsg.EmojiCaptureProxy", kotlin.g.b.s.X("deleteEmojiInfoByMd5Remote: ", paramString));
+    ((com.tencent.mm.plugin.emoji.c.d)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.emoji.c.d.class)).getEmojiStorageMgr().adju.bzb(paramString);
     AppMethodBeat.o(394);
   }
   
@@ -165,13 +153,13 @@ public final class EmojiCaptureProxy
   public final Object getConfigStorage(int paramInt, Object paramObject)
   {
     AppMethodBeat.i(408);
-    p.k(paramObject, "defval");
-    Object localObject = (ar.a[])ar.a.class.getEnumConstants();
-    if (localObject != null) {}
-    for (localObject = localObject[paramInt];; localObject = null)
+    kotlin.g.b.s.u(paramObject, "defval");
+    Object localObject = (at.a[])at.a.class.getEnumConstants();
+    if (localObject == null) {}
+    for (localObject = null;; localObject = localObject[paramInt])
     {
       Log.i("MicroMsg.EmojiCaptureProxy", "getConfigStorage, %s %s", new Object[] { localObject, paramObject });
-      paramObject = h.aHG().aHp().get((ar.a)localObject, paramObject);
+      paramObject = com.tencent.mm.kernel.h.baE().ban().get((at.a)localObject, paramObject);
       AppMethodBeat.o(408);
       return paramObject;
     }
@@ -195,8 +183,8 @@ public final class EmojiCaptureProxy
   public final String getDeviceInfoConfigRemote()
   {
     AppMethodBeat.i(407);
-    String str = h.aHG().aHq().hAK();
-    p.j(str, "storage().getServerCfgIn…RINFO_SERVER_CONFIG_INFO)");
+    String str = com.tencent.mm.kernel.h.baE().bao().jcN();
+    kotlin.g.b.s.s(str, "storage().getServerCfgIn…RINFO_SERVER_CONFIG_INFO)");
     AppMethodBeat.o(407);
     return str;
   }
@@ -204,7 +192,7 @@ public final class EmojiCaptureProxy
   public final String getDynamicConfig(String paramString)
   {
     AppMethodBeat.i(385);
-    p.k(paramString, "key");
+    kotlin.g.b.s.u(paramString, "key");
     Object localObject = REMOTE_CALL("getDynamicConfigInMM", new Object[] { paramString });
     Log.i("MicroMsg.EmojiCaptureProxy", "getDynamicConfig, key: %s, value: %s", new Object[] { paramString, localObject });
     if (localObject == null)
@@ -221,8 +209,8 @@ public final class EmojiCaptureProxy
   public final String getDynamicConfigInMM(String paramString)
   {
     AppMethodBeat.i(405);
-    p.k(paramString, "key");
-    paramString = ((com.tencent.mm.plugin.zero.b.a)h.ae(com.tencent.mm.plugin.zero.b.a.class)).axc().getValue(paramString);
+    kotlin.g.b.s.u(paramString, "key");
+    paramString = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.zero.b.a.class)).aRC().getValue(paramString);
     AppMethodBeat.o(405);
     return paramString;
   }
@@ -230,7 +218,7 @@ public final class EmojiCaptureProxy
   public final boolean getEnableAutoRotate()
   {
     AppMethodBeat.i(386);
-    boolean bool = p.h(REMOTE_CALL("getEnableAutoRotateRemote", new Object[0]), Boolean.TRUE);
+    boolean bool = kotlin.g.b.s.p(REMOTE_CALL("getEnableAutoRotateRemote", new Object[0]), Boolean.TRUE);
     AppMethodBeat.o(386);
     return bool;
   }
@@ -238,7 +226,7 @@ public final class EmojiCaptureProxy
   @com.tencent.mm.remoteservice.f
   public final boolean getEnableAutoRotateRemote()
   {
-    return af.juH.jqy;
+    return af.lXY.lTF;
   }
   
   public final String getForbidLensId()
@@ -255,10 +243,10 @@ public final class EmojiCaptureProxy
     return null;
   }
   
-  public final int getInt(ar.a parama, int paramInt)
+  public final int getInt(at.a parama, int paramInt)
   {
     AppMethodBeat.i(387);
-    p.k(parama, "key");
+    kotlin.g.b.s.u(parama, "key");
     Log.i("MicroMsg.EmojiCaptureProxy", "getInt %s %s", new Object[] { parama, Integer.valueOf(paramInt) });
     Object localObject = REMOTE_CALL("getConfigStorage", new Object[] { parama, Integer.valueOf(paramInt) });
     Log.i("MicroMsg.EmojiCaptureProxy", "getInt %s %s and get val %s", new Object[] { parama, Integer.valueOf(paramInt), localObject });
@@ -283,15 +271,13 @@ public final class EmojiCaptureProxy
   public final void getLensListRemote()
   {
     AppMethodBeat.i(411);
-    com.tencent.mm.kernel.c localc = h.aHF();
-    p.j(localc, "MMKernel.network()");
-    localc.aGY().b((q)new com.tencent.mm.sticker.b.b());
+    com.tencent.mm.kernel.h.baD().mCm.a((p)new b(), 0);
     AppMethodBeat.o(411);
   }
   
   public final com.tencent.mm.remoteservice.d getServerProxy()
   {
-    return this.jGJ;
+    return this.pfZ;
   }
   
   public final int getUseGpuSegment()
@@ -314,7 +300,7 @@ public final class EmojiCaptureProxy
     AppMethodBeat.i(409);
     try
     {
-      i = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vCU, 1);
+      i = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yRq, 1);
       AppMethodBeat.o(409);
       return i;
     }
@@ -330,7 +316,7 @@ public final class EmojiCaptureProxy
   public final boolean isSpringFestivalEnable()
   {
     AppMethodBeat.i(389);
-    boolean bool = p.h(REMOTE_CALL("isSpringFestivalEnableRemote", new Object[0]), Boolean.TRUE);
+    boolean bool = kotlin.g.b.s.p(REMOTE_CALL("isSpringFestivalEnableRemote", new Object[0]), Boolean.TRUE);
     AppMethodBeat.o(389);
     return bool;
   }
@@ -344,103 +330,30 @@ public final class EmojiCaptureProxy
     return bool;
   }
   
-  public final Bundle o(Object... paramVarArgs)
-  {
-    AppMethodBeat.i(412);
-    p.k(paramVarArgs, "params");
-    Bundle localBundle = new Bundle();
-    int j = paramVarArgs.length;
-    int i = 0;
-    if (i < j)
-    {
-      Object localObject;
-      if ((paramVarArgs[i] instanceof Bundle))
-      {
-        localObject = paramVarArgs[i];
-        if (localObject == null)
-        {
-          paramVarArgs = new kotlin.t("null cannot be cast to non-null type android.os.Bundle");
-          AppMethodBeat.o(412);
-          throw paramVarArgs;
-        }
-        localBundle.putBundle(String.valueOf(i), (Bundle)localObject);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if ((paramVarArgs[i] instanceof Parcelable))
-        {
-          localObject = paramVarArgs[i];
-          if (localObject == null)
-          {
-            paramVarArgs = new kotlin.t("null cannot be cast to non-null type android.os.Parcelable");
-            AppMethodBeat.o(412);
-            throw paramVarArgs;
-          }
-          localBundle.putParcelable(String.valueOf(i), (Parcelable)localObject);
-        }
-        else if ((paramVarArgs[i] instanceof ar.a))
-        {
-          localObject = paramVarArgs[i];
-          if (localObject == null)
-          {
-            paramVarArgs = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.storage.ConstantsStorage.BusinessInfoKey");
-            AppMethodBeat.o(412);
-            throw paramVarArgs;
-          }
-          Log.i("MicroMsg.EmojiCaptureProxy", "objectsToBundle: %s", new Object[] { Integer.valueOf(((ar.a)localObject).ordinal()) });
-          localObject = paramVarArgs[i];
-          if (localObject == null)
-          {
-            paramVarArgs = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.storage.ConstantsStorage.BusinessInfoKey");
-            AppMethodBeat.o(412);
-            throw paramVarArgs;
-          }
-          localBundle.putInt(String.valueOf(i), ((ar.a)localObject).ordinal());
-        }
-        else
-        {
-          localObject = paramVarArgs[i];
-          if (localObject == null)
-          {
-            paramVarArgs = new kotlin.t("null cannot be cast to non-null type java.io.Serializable");
-            AppMethodBeat.o(412);
-            throw paramVarArgs;
-          }
-          localBundle.putSerializable(String.valueOf(i), (Serializable)localObject);
-        }
-      }
-    }
-    AppMethodBeat.o(412);
-    return localBundle;
-  }
-  
   public final void onCallback(String paramString, Bundle paramBundle, boolean paramBoolean)
   {
     AppMethodBeat.i(413);
-    p.k(paramString, "methodName");
-    p.k(paramBundle, "data");
+    kotlin.g.b.s.u(paramString, "methodName");
+    kotlin.g.b.s.u(paramBundle, "data");
     Log.i("MicroMsg.EmojiCaptureProxy", "class:%s, method:%s, clientCall:%B", new Object[] { getClass().getName(), paramString, Boolean.valueOf(paramBoolean) });
     Object localObject2 = null;
     for (;;)
     {
-      int i;
       Object localObject1;
       try
       {
         Method[] arrayOfMethod = getClass().getMethods();
-        p.j(arrayOfMethod, "this.javaClass.methods");
+        kotlin.g.b.s.s(arrayOfMethod, "methods");
         int j = arrayOfMethod.length;
-        i = 0;
+        int i = 0;
         localObject1 = localObject2;
         if (i >= j) {
-          break label280;
+          break label276;
         }
         localObject1 = arrayOfMethod[i];
-        p.j(localObject1, "mth");
-        if (!n.L(((Method)localObject1).getName(), paramString, true)) {
-          break label297;
+        i += 1;
+        if (!n.T(((Method)localObject1).getName(), paramString, true)) {
+          continue;
         }
       }
       catch (Exception paramString)
@@ -453,33 +366,27 @@ public final class EmojiCaptureProxy
       {
         localObject2 = getArgs(paramBundle);
         localObject2 = ((Method)localObject1).invoke(this, Arrays.copyOf((Object[])localObject2, localObject2.length));
-        if ((p.h(((Method)localObject1).getReturnType(), Void.TYPE) ^ true))
+        if (!kotlin.g.b.s.p(((Method)localObject1).getReturnType(), Void.TYPE))
         {
           if ((localObject2 instanceof Parcelable))
           {
-            paramBundle.putParcelable(this.RESULT_KEY, (Parcelable)localObject2);
+            paramBundle.putParcelable(this.nBg, (Parcelable)localObject2);
             AppMethodBeat.o(413);
             return;
           }
-          if (p.h("getConfigStorage", paramString)) {
+          if (kotlin.g.b.s.p("getConfigStorage", paramString)) {
             Log.i("MicroMsg.EmojiCaptureProxy", "put result as Serializable: %s", new Object[] { (Serializable)localObject2 });
           }
-          paramBundle.putSerializable(this.RESULT_KEY, (Serializable)localObject2);
+          paramBundle.putSerializable(this.nBg, (Serializable)localObject2);
           AppMethodBeat.o(413);
           return;
         }
       }
-      label280:
+      label276:
       if (localObject1 != null) {
-        if (paramBoolean)
-        {
+        if (paramBoolean) {
           localObject2 = com.tencent.mm.remoteservice.e.class;
-          continue;
-          label297:
-          i += 1;
-        }
-        else
-        {
+        } else {
           localObject2 = com.tencent.mm.remoteservice.f.class;
         }
       }
@@ -489,8 +396,8 @@ public final class EmojiCaptureProxy
   public final void postUploadTask(String paramString1, String paramString2)
   {
     AppMethodBeat.i(399);
-    p.k(paramString1, "filePath");
-    p.k(paramString2, "mixingMd5");
+    kotlin.g.b.s.u(paramString1, "filePath");
+    kotlin.g.b.s.u(paramString2, "mixingMd5");
     Log.i("MicroMsg.EmojiCaptureProxy", "postUploadTask: " + paramString1 + ", " + paramString2);
     REMOTE_CALL("postUploadTaskRemote", new Object[] { paramString1, paramString2 });
     AppMethodBeat.o(399);
@@ -500,13 +407,11 @@ public final class EmojiCaptureProxy
   public final void postUploadTaskRemote(String paramString1, String paramString2)
   {
     AppMethodBeat.i(400);
-    p.k(paramString1, "filePath");
-    p.k(paramString2, "mixingMd5");
+    kotlin.g.b.s.u(paramString1, "filePath");
+    kotlin.g.b.s.u(paramString2, "mixingMd5");
     Log.i("MicroMsg.EmojiCaptureProxy", "postUploadTaskRemote: " + paramString1 + ", " + paramString2);
-    int i = (int)u.bBQ(paramString1);
-    Object localObject = h.ag(com.tencent.mm.plugin.emoji.b.d.class);
-    p.j(localObject, "MMKernel.plugin(IPluginEmoji::class.java)");
-    paramString2 = ((com.tencent.mm.plugin.emoji.b.d)localObject).getEmojiMgr().aud(paramString2);
+    int i = (int)y.bEl(paramString1);
+    paramString2 = ((com.tencent.mm.plugin.emoji.c.d)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.emoji.c.d.class)).getEmojiMgr().aoe(paramString2);
     if (paramString2 == null)
     {
       AppMethodBeat.o(400);
@@ -514,40 +419,65 @@ public final class EmojiCaptureProxy
     }
     if (i <= 0)
     {
-      paramString2.a(EmojiInfo.b.VIA);
-      paramString2.a(EmojiInfo.a.VIk);
-      paramString1 = h.ag(com.tencent.mm.plugin.emoji.b.d.class);
-      p.j(paramString1, "MMKernel.plugin(IPluginEmoji::class.java)");
-      ((com.tencent.mm.plugin.emoji.b.d)paramString1).getEmojiMgr().updateEmojiInfo(paramString2);
-      EmojiCaptureReporter.g(paramString2.field_captureEnterTime, 4, paramString2.field_captureScene);
+      paramString2.a(EmojiInfo.b.admw);
+      paramString2.a(EmojiInfo.a.admg);
+      ((com.tencent.mm.plugin.emoji.c.d)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.emoji.c.d.class)).getEmojiMgr().updateEmojiInfo(paramString2);
+      EmojiCaptureReporter.i(paramString2.field_captureEnterTime, 4, paramString2.field_captureScene);
       AppMethodBeat.o(400);
       return;
     }
-    localObject = u.buc(paramString1);
-    String str = EmojiInfo.ifj() + (String)localObject;
-    u.oo(paramString1, str);
-    Log.i("MicroMsg.EmojiCaptureProxy", "upload file " + str + " length is " + i);
-    paramString1 = h.ag(com.tencent.mm.plugin.emoji.b.d.class);
-    p.j(paramString1, "MMKernel.plugin(IPluginEmoji::class.java)");
-    paramString1 = ((com.tencent.mm.plugin.emoji.b.d)paramString1).getEmojiStorageMgr();
-    p.j(paramString1, "MMKernel.plugin(IPluginE…ass.java).emojiStorageMgr");
-    paramString1.ctY().bxL(paramString2.getMd5());
-    paramString2.setMd5((String)localObject);
-    paramString2.a(EmojiInfo.a.VIl);
-    paramString2.setSize((int)u.bBQ(str));
-    if (ImgUtil.isWXGF(str))
+    String str1 = y.bub(paramString1);
+    String str2 = kotlin.g.b.s.X(EmojiInfo.kMp(), str1);
+    y.qn(paramString1, str2);
+    Log.i("MicroMsg.EmojiCaptureProxy", "upload file " + str2 + " length is " + i);
+    ((com.tencent.mm.plugin.emoji.c.d)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.emoji.c.d.class)).getEmojiStorageMgr().adju.bzb(paramString2.getMd5());
+    paramString2.field_md5 = str1;
+    paramString2.a(EmojiInfo.a.admh);
+    paramString2.field_size = ((int)y.bEl(str2));
+    if (ImgUtil.isWXGF(str2))
     {
-      paramString2.field_wxamMd5 = ((String)localObject);
-      paramString2.field_externMd5 = ((String)localObject);
+      paramString2.field_wxamMd5 = str1;
+      paramString2.field_externMd5 = str1;
     }
-    paramString1 = h.ag(com.tencent.mm.plugin.emoji.b.d.class);
-    p.j(paramString1, "MMKernel.plugin(IPluginEmoji::class.java)");
-    paramString1 = ((com.tencent.mm.plugin.emoji.b.d)paramString1).getEmojiStorageMgr();
-    p.j(paramString1, "MMKernel.plugin(IPluginE…ass.java).emojiStorageMgr");
-    paramString1.ctY().K(paramString2);
-    paramString1 = i.jPu;
-    i.n(paramString2);
+    ((com.tencent.mm.plugin.emoji.c.d)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.emoji.c.d.class)).getEmojiStorageMgr().adju.K(paramString2);
+    paramString1 = com.tencent.mm.emoji.e.h.mol;
+    com.tencent.mm.emoji.e.h.m(paramString2);
     AppMethodBeat.o(400);
+  }
+  
+  public final Bundle q(Object... paramVarArgs)
+  {
+    AppMethodBeat.i(412);
+    kotlin.g.b.s.u(paramVarArgs, "params");
+    Bundle localBundle = new Bundle();
+    int j = paramVarArgs.length;
+    int i = 0;
+    if (i < j)
+    {
+      if ((paramVarArgs[i] instanceof Bundle)) {
+        localBundle.putBundle(kotlin.g.b.s.X("", Integer.valueOf(i)), (Bundle)paramVarArgs[i]);
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        if ((paramVarArgs[i] instanceof Parcelable))
+        {
+          localBundle.putParcelable(kotlin.g.b.s.X("", Integer.valueOf(i)), (Parcelable)paramVarArgs[i]);
+        }
+        else if ((paramVarArgs[i] instanceof at.a))
+        {
+          Log.i("MicroMsg.EmojiCaptureProxy", "objectsToBundle: %s", new Object[] { Integer.valueOf(((at.a)paramVarArgs[i]).ordinal()) });
+          localBundle.putInt(kotlin.g.b.s.X("", Integer.valueOf(i)), ((at.a)paramVarArgs[i]).ordinal());
+        }
+        else
+        {
+          localBundle.putSerializable(kotlin.g.b.s.X("", Integer.valueOf(i)), (Serializable)paramVarArgs[i]);
+        }
+      }
+    }
+    AppMethodBeat.o(412);
+    return localBundle;
   }
   
   public final void showImitateDialog()
@@ -561,19 +491,17 @@ public final class EmojiCaptureProxy
   public final void showImitateDialogRemote()
   {
     AppMethodBeat.i(404);
-    Object localObject = MMApplicationContext.getContext();
-    p.j(localObject, "MMApplicationContext.getContext()");
-    localObject = ((Context)localObject).getResources().getString(a.i.uSR);
-    p.j(localObject, "MMApplicationContext.get…g_first_open_imitate_msg)");
-    new f.a(MMApplicationContext.getContext()).bBl((String)localObject).ayp(a.i.uSQ).b((f.c)b.uXm).show();
+    String str = MMApplicationContext.getContext().getResources().getString(a.i.yfF);
+    kotlin.g.b.s.s(str, "getContext().resources.g…g_first_open_imitate_msg)");
+    new g.a(MMApplicationContext.getContext()).bDE(str).aEX(a.i.yfE).b(EmojiCaptureProxy..ExternalSyntheticLambda0.INSTANCE).show();
     AppMethodBeat.o(404);
   }
   
   public final void updateEmojiInfo(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(397);
-    p.k(paramEmojiInfo, "emojiInfo");
-    Log.i("MicroMsg.EmojiCaptureProxy", "updateEmojiInfo: " + paramEmojiInfo.getMd5());
+    kotlin.g.b.s.u(paramEmojiInfo, "emojiInfo");
+    Log.i("MicroMsg.EmojiCaptureProxy", kotlin.g.b.s.X("updateEmojiInfo: ", paramEmojiInfo.getMd5()));
     Bundle localBundle = new Bundle();
     localBundle.setClassLoader(EmojiInfo.class.getClassLoader());
     localBundle.putParcelable("emoji", (Parcelable)paramEmojiInfo);
@@ -585,26 +513,23 @@ public final class EmojiCaptureProxy
   public final void updateEmojiInfoRemote(Bundle paramBundle)
   {
     AppMethodBeat.i(398);
-    p.k(paramBundle, "bundle");
+    kotlin.g.b.s.u(paramBundle, "bundle");
     paramBundle.setClassLoader(EmojiInfo.class.getClassLoader());
     EmojiInfo localEmojiInfo = (EmojiInfo)paramBundle.getParcelable("emoji");
-    StringBuilder localStringBuilder = new StringBuilder("updateEmojiInfoRemote: ");
-    if (localEmojiInfo != null) {}
-    for (paramBundle = localEmojiInfo.getMd5();; paramBundle = null)
+    if (localEmojiInfo == null) {}
+    for (paramBundle = null;; paramBundle = localEmojiInfo.getMd5())
     {
-      Log.i("MicroMsg.EmojiCaptureProxy", paramBundle);
+      Log.i("MicroMsg.EmojiCaptureProxy", kotlin.g.b.s.X("updateEmojiInfoRemote: ", paramBundle));
       if (localEmojiInfo == null) {
         break;
       }
-      paramBundle = h.ag(com.tencent.mm.plugin.emoji.b.d.class);
-      p.j(paramBundle, "MMKernel.plugin(IPluginEmoji::class.java)");
-      ((com.tencent.mm.plugin.emoji.b.d)paramBundle).getEmojiMgr().updateEmojiInfo(localEmojiInfo);
+      ((com.tencent.mm.plugin.emoji.c.d)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.emoji.c.d.class)).getEmojiMgr().updateEmojiInfo(localEmojiInfo);
       AppMethodBeat.o(398);
       return;
     }
-    EmojiCaptureReporter.JP(31);
-    paramBundle = com.tencent.mm.plugin.emojicapture.model.e.uUh;
-    com.tencent.mm.plugin.emojicapture.model.e.cXS();
+    EmojiCaptureReporter.KN(31);
+    paramBundle = com.tencent.mm.plugin.emojicapture.model.e.ygT;
+    com.tencent.mm.plugin.emojicapture.model.e.dEi();
     AppMethodBeat.o(398);
   }
   
@@ -615,7 +540,7 @@ public final class EmojiCaptureProxy
     Object localObject = REMOTE_CALL("checkUseCPUCrop", new Object[0]);
     if (localObject == null)
     {
-      localObject = new kotlin.t("null cannot be cast to non-null type kotlin.Boolean");
+      localObject = new NullPointerException("null cannot be cast to non-null type kotlin.Boolean");
       AppMethodBeat.o(401);
       throw ((Throwable)localObject);
     }
@@ -624,24 +549,10 @@ public final class EmojiCaptureProxy
     return bool;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emojicapture/proxy/EmojiCaptureProxy$Companion;", "", "()V", "TAG", "", "instance", "Lcom/tencent/mm/plugin/emojicapture/proxy/EmojiCaptureProxy;", "getInstance", "()Lcom/tencent/mm/plugin/emojicapture/proxy/EmojiCaptureProxy;", "setInstance", "(Lcom/tencent/mm/plugin/emojicapture/proxy/EmojiCaptureProxy;)V", "needCreate", "", "requestCount", "", "requestConnect", "", "tryRelease", "plugin-emojicapture_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/emojicapture/proxy/EmojiCaptureProxy$Companion;", "", "()V", "TAG", "", "instance", "Lcom/tencent/mm/plugin/emojicapture/proxy/EmojiCaptureProxy;", "getInstance", "()Lcom/tencent/mm/plugin/emojicapture/proxy/EmojiCaptureProxy;", "setInstance", "(Lcom/tencent/mm/plugin/emojicapture/proxy/EmojiCaptureProxy;)V", "needCreate", "", "requestCount", "", "requestConnect", "", "tryRelease", "plugin-emojicapture_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
-    public static void cYi()
-    {
-      AppMethodBeat.i(381);
-      EmojiCaptureProxy.access$setRequestCount$cp(EmojiCaptureProxy.access$getRequestCount$cp() + 1);
-      if (EmojiCaptureProxy.access$getNeedCreate$cp())
-      {
-        EmojiCaptureProxy.access$setNeedCreate$cp(false);
-        EmojiCaptureProxy localEmojiCaptureProxy = new EmojiCaptureProxy(new com.tencent.mm.remoteservice.d(MMApplicationContext.getContext()));
-        p.k(localEmojiCaptureProxy, "<set-?>");
-        EmojiCaptureProxy.access$setInstance$cp(localEmojiCaptureProxy);
-      }
-      AppMethodBeat.o(381);
-    }
-    
-    public static void cYj()
+    public static void dEA()
     {
       AppMethodBeat.i(382);
       EmojiCaptureProxy.access$setRequestCount$cp(EmojiCaptureProxy.access$getRequestCount$cp() - 1);
@@ -649,36 +560,31 @@ public final class EmojiCaptureProxy
       {
         EmojiCaptureProxy.access$setNeedCreate$cp(true);
         com.tencent.mm.remoteservice.d locald = EmojiCaptureProxy.access$getInstance$cp().getServerProxy();
-        if (locald != null)
-        {
+        if (locald != null) {
           locald.release();
-          AppMethodBeat.o(382);
-          return;
         }
       }
       AppMethodBeat.o(382);
     }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "onDialogClick"})
-  static final class b
-    implements f.c
-  {
-    public static final b uXm;
     
-    static
+    public static void dEz()
     {
-      AppMethodBeat.i(383);
-      uXm = new b();
-      AppMethodBeat.o(383);
+      AppMethodBeat.i(381);
+      EmojiCaptureProxy.access$setRequestCount$cp(EmojiCaptureProxy.access$getRequestCount$cp() + 1);
+      if (EmojiCaptureProxy.access$getNeedCreate$cp())
+      {
+        EmojiCaptureProxy.access$setNeedCreate$cp(false);
+        EmojiCaptureProxy localEmojiCaptureProxy = new EmojiCaptureProxy(new com.tencent.mm.remoteservice.d(MMApplicationContext.getContext()));
+        kotlin.g.b.s.u(localEmojiCaptureProxy, "<set-?>");
+        EmojiCaptureProxy.access$setInstance$cp(localEmojiCaptureProxy);
+      }
+      AppMethodBeat.o(381);
     }
-    
-    public final void g(boolean paramBoolean, String paramString) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.proxy.EmojiCaptureProxy
  * JD-Core Version:    0.7.0.1
  */

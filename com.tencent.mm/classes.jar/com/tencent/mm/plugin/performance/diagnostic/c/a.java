@@ -11,87 +11,87 @@ import java.util.Map;
 public final class a
   extends c.a
 {
-  private final String GNn;
-  private final String GNo;
-  private final String GNp;
+  private final String MKF;
+  private final String MKG;
+  private final String MKH;
   
   public a(c<? extends com.tencent.matrix.hook.a, ? extends c.a> paramc)
   {
     super(paramc);
-    AppMethodBeat.i(201438);
-    this.GNn = (paramc.fnm() + ".$hook");
-    this.GNo = (paramc.fnm() + ".$ignore");
-    this.GNp = (paramc.fnm() + ".$thread");
-    AppMethodBeat.o(201438);
+    AppMethodBeat.i(300849);
+    this.MKF = (paramc.gxZ() + ".$hook");
+    this.MKG = (paramc.gxZ() + ".$ignore");
+    this.MKH = (paramc.gxZ() + ".$thread");
+    AppMethodBeat.o(300849);
   }
   
-  public final String aUr(String paramString)
+  public final void aL(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(201442);
-    paramString = this.fbr.decodeString(this.GNn, paramString);
-    AppMethodBeat.o(201442);
-    return paramString;
-  }
-  
-  public final String aUs(String paramString)
-  {
-    AppMethodBeat.i(201445);
-    paramString = this.fbr.decodeString(this.GNp, paramString);
-    AppMethodBeat.o(201445);
-    return paramString;
-  }
-  
-  public final void av(Map<String, String> paramMap)
-  {
-    AppMethodBeat.i(201440);
-    super.av(paramMap);
-    String str1 = (String)paramMap.get(this.GNn);
+    AppMethodBeat.i(300854);
+    super.aL(paramMap);
+    String str1 = (String)paramMap.get(this.MKF);
     if (TextUtils.isEmpty(str1))
     {
       Log.e("MicroMsg.PthreadHookConfigStg", "ERROR(PthreadHook): hook regex is blank");
-      AppMethodBeat.o(201440);
+      AppMethodBeat.o(300854);
       return;
     }
-    String str2 = (String)paramMap.get(this.GNo);
-    paramMap = (String)paramMap.get(this.GNp);
-    this.fbr.encode(this.GNn, str1);
-    this.fbr.encode(this.GNo, str2);
-    this.fbr.encode(this.GNp, paramMap);
-    AppMethodBeat.o(201440);
+    String str2 = (String)paramMap.get(this.MKG);
+    paramMap = (String)paramMap.get(this.MKH);
+    this.evW.encode(this.MKF, str1);
+    this.evW.encode(this.MKG, str2);
+    this.evW.encode(this.MKH, paramMap);
+    AppMethodBeat.o(300854);
   }
   
-  public final long fnI()
+  public final String aRA(String paramString)
+  {
+    AppMethodBeat.i(300868);
+    paramString = this.evW.decodeString(this.MKH, paramString);
+    AppMethodBeat.o(300868);
+    return paramString;
+  }
+  
+  public final String aRz(String paramString)
+  {
+    AppMethodBeat.i(300859);
+    paramString = this.evW.decodeString(this.MKF, paramString);
+    AppMethodBeat.o(300859);
+    return paramString;
+  }
+  
+  public final String gyI()
+  {
+    AppMethodBeat.i(300857);
+    String str = aRz("");
+    AppMethodBeat.o(300857);
+    return str;
+  }
+  
+  public final String gyJ()
+  {
+    AppMethodBeat.i(300863);
+    String str = this.evW.decodeString(this.MKG, null);
+    AppMethodBeat.o(300863);
+    return str;
+  }
+  
+  public final String gyS()
+  {
+    AppMethodBeat.i(300865);
+    String str = aRA("");
+    AppMethodBeat.o(300865);
+    return str;
+  }
+  
+  public final long gyw()
   {
     return -1L;
-  }
-  
-  public final String fnM()
-  {
-    AppMethodBeat.i(201441);
-    String str = aUr("");
-    AppMethodBeat.o(201441);
-    return str;
-  }
-  
-  public final String fnN()
-  {
-    AppMethodBeat.i(201443);
-    String str = this.fbr.decodeString(this.GNo, null);
-    AppMethodBeat.o(201443);
-    return str;
-  }
-  
-  public final String fnW()
-  {
-    AppMethodBeat.i(201444);
-    String str = aUs("");
-    AppMethodBeat.o(201444);
-    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.diagnostic.c.a
  * JD-Core Version:    0.7.0.1
  */

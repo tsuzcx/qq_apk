@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true" android:drawable="@drawable/i9" />
-    <item android:state_selected="true" android:drawable="@drawable/i9" />
-    <item android:state_pressed="true" android:drawable="@drawable/i9" />
-    <item android:drawable="@drawable/i8" />
+    <item android:state_pressed="true" android:drawable="@color/ahb" />
+    <item android:state_focused="true" android:drawable="@color/ahb" />
+    <item android:state_selected="true" android:drawable="@color/ahb" />
+    <item android:drawable="@color/ahb" />
 </selector>

@@ -1,192 +1,118 @@
 package com.tencent.mm.plugin.finder.storage;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.view.View;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerView.LayoutManager;
-import androidx.recyclerview.widget.RecyclerView.h;
-import androidx.recyclerview.widget.RecyclerView.m;
-import androidx.recyclerview.widget.RecyclerView.s;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.plugin.finder.b.d;
-import com.tencent.mm.plugin.finder.convert.ad;
-import com.tencent.mm.plugin.finder.convert.ai;
-import com.tencent.mm.plugin.finder.convert.an;
-import com.tencent.mm.plugin.finder.convert.w;
-import com.tencent.mm.plugin.finder.utils.aj;
-import com.tencent.mm.plugin.finder.view.manager.FinderStaggeredGridLayoutManager;
-import com.tencent.mm.plugin.finder.viewmodel.c;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.component.g;
-import com.tencent.mm.ui.component.g.a;
-import com.tencent.mm.view.recyclerview.e;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import com.tencent.mm.autogen.b.da;
+import com.tencent.mm.plugin.finder.model.bo;
+import com.tencent.mm.plugin.finder.model.bo.a;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderStaggeredConfig;", "Lcom/tencent/mm/plugin/finder/storage/IFinderLayoutConfig;", "()V", "spanCount", "", "getSpanCount", "()I", "getDefaultConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "getItemConvertFactory", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "extraMap", "Lkotlin/Function1;", "getItemDecoration", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getLayoutManager", "Landroidx/recyclerview/widget/RecyclerView$LayoutManager;", "context", "Landroid/content/Context;", "getViewPool", "Landroidx/recyclerview/widget/RecyclerView$RecycledViewPool;", "Lcom/tencent/mm/ui/MMActivity;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/FinderOrAliasDeletingInfoStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/finder/model/FinderOrAliasDeletingInfo;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "getAllDeletingInfo", "Ljava/util/LinkedList;", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ag
-  extends ak
+  extends MAutoStorage<bo>
 {
-  private final int spanCount = 2;
+  public static final a FMg;
+  private static final String[] SQL_CREATE;
+  private final ISQLiteDatabase db;
   
-  public final com.tencent.mm.view.recyclerview.f O(final kotlin.g.a.b<? super Integer, ? extends e<?>> paramb)
+  static
   {
-    AppMethodBeat.i(276758);
-    paramb = (com.tencent.mm.view.recyclerview.f)new a(this, paramb);
-    AppMethodBeat.o(276758);
-    return paramb;
+    AppMethodBeat.i(339432);
+    FMg = new a((byte)0);
+    bo.a locala = bo.EDu;
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(bo.access$getInfo$cp(), "FinderOrAliasDeletingInfo") };
+    AppMethodBeat.o(339432);
   }
   
-  public final RecyclerView.LayoutManager eW(Context paramContext)
+  public ag(ISQLiteDatabase paramISQLiteDatabase)
   {
-    AppMethodBeat.i(276756);
-    p.k(paramContext, "context");
-    paramContext = new FinderStaggeredGridLayoutManager(this.spanCount);
-    paramContext.setItemPrefetchEnabled(true);
-    paramContext = (RecyclerView.LayoutManager)paramContext;
-    AppMethodBeat.o(276756);
-    return paramContext;
+    super(paramISQLiteDatabase, bo.access$getInfo$cp(), "FinderOrAliasDeletingInfo", da.INDEX_CREATE);
+    AppMethodBeat.i(339420);
+    this.db = paramISQLiteDatabase;
+    AppMethodBeat.o(339420);
   }
   
-  public final RecyclerView.m g(MMActivity paramMMActivity)
+  /* Error */
+  public final java.util.LinkedList<bo> eZA()
   {
-    AppMethodBeat.i(276761);
-    p.k(paramMMActivity, "context");
-    g localg = g.Xox;
-    paramMMActivity = ((c)g.b((AppCompatActivity)paramMMActivity).i(c.class)).BgV;
-    AppMethodBeat.o(276761);
-    return paramMMActivity;
+    // Byte code:
+    //   0: ldc 96
+    //   2: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: ldc 98
+    //   7: ldc 99
+    //   9: invokestatic 104	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   12: new 106	java/util/LinkedList
+    //   15: dup
+    //   16: invokespecial 108	java/util/LinkedList:<init>	()V
+    //   19: astore_2
+    //   20: aload_0
+    //   21: getfield 91	com/tencent/mm/plugin/finder/storage/ag:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
+    //   24: ldc 110
+    //   26: aconst_null
+    //   27: invokeinterface 116 3 0
+    //   32: checkcast 118	java/io/Closeable
+    //   35: astore_1
+    //   36: aload_1
+    //   37: checkcast 120	android/database/Cursor
+    //   40: astore_3
+    //   41: aload_3
+    //   42: invokeinterface 124 1 0
+    //   47: ifeq +49 -> 96
+    //   50: new 51	com/tencent/mm/plugin/finder/model/bo
+    //   53: dup
+    //   54: invokespecial 125	com/tencent/mm/plugin/finder/model/bo:<init>	()V
+    //   57: astore 4
+    //   59: aload 4
+    //   61: aload_3
+    //   62: invokevirtual 129	com/tencent/mm/plugin/finder/model/bo:convertFrom	(Landroid/database/Cursor;)V
+    //   65: aload_2
+    //   66: aload 4
+    //   68: invokevirtual 133	java/util/LinkedList:add	(Ljava/lang/Object;)Z
+    //   71: pop
+    //   72: goto -31 -> 41
+    //   75: astore_2
+    //   76: ldc 96
+    //   78: invokestatic 72	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   81: aload_2
+    //   82: athrow
+    //   83: astore_3
+    //   84: aload_1
+    //   85: aload_2
+    //   86: invokestatic 138	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   89: ldc 96
+    //   91: invokestatic 72	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   94: aload_3
+    //   95: athrow
+    //   96: getstatic 144	kotlin/ah:aiuX	Lkotlin/ah;
+    //   99: astore_3
+    //   100: aload_1
+    //   101: aconst_null
+    //   102: invokestatic 138	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   105: ldc 96
+    //   107: invokestatic 72	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   110: aload_2
+    //   111: areturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	112	0	this	ag
+    //   35	66	1	localCloseable	java.io.Closeable
+    //   19	47	2	localLinkedList	java.util.LinkedList
+    //   75	36	2	localThrowable	java.lang.Throwable
+    //   40	22	3	localCursor	android.database.Cursor
+    //   83	12	3	localObject	Object
+    //   99	1	3	localah	kotlin.ah
+    //   57	10	4	localbo	bo
+    // Exception table:
+    //   from	to	target	type
+    //   36	41	75	finally
+    //   41	72	75	finally
+    //   96	100	75	finally
+    //   76	83	83	finally
   }
   
-  public final RecyclerView.h getItemDecoration()
-  {
-    AppMethodBeat.i(276757);
-    RecyclerView.h localh = (RecyclerView.h)new b();
-    AppMethodBeat.o(276757);
-    return localh;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/storage/FinderStaggeredConfig$getItemConvertFactory$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"})
-  public static final class a
-    implements com.tencent.mm.view.recyclerview.f
-  {
-    a(kotlin.g.a.b paramb) {}
-    
-    public final e<?> yx(int paramInt)
-    {
-      AppMethodBeat.i(271069);
-      switch (paramInt)
-      {
-      default: 
-        localObject = paramb;
-        if (localObject != null)
-        {
-          e locale = (e)((kotlin.g.a.b)localObject).invoke(Integer.valueOf(paramInt));
-          localObject = locale;
-          if (locale != null) {}
-        }
-        else
-        {
-          localObject = aj.AGc;
-          aj.em("FinderStaggeredConfig", paramInt);
-          localObject = (e)new com.tencent.mm.plugin.finder.convert.f();
-        }
-        AppMethodBeat.o(271069);
-        return localObject;
-      case 4: 
-      case 9: 
-      case 3002: 
-        localObject = (e)new an();
-        AppMethodBeat.o(271069);
-        return localObject;
-      case 2: 
-      case 3001: 
-        localObject = (e)new w();
-        AppMethodBeat.o(271069);
-        return localObject;
-      case -3: 
-        localObject = (e)new ai();
-        AppMethodBeat.o(271069);
-        return localObject;
-      }
-      Object localObject = (e)new ad();
-      AppMethodBeat.o(271069);
-      return localObject;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/storage/FinderStaggeredConfig$getItemDecoration$1", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "plugin-finder_release"})
-  public static final class b
-    extends RecyclerView.h
-  {
-    public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
-    {
-      AppMethodBeat.i(288570);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramRect);
-      localb.bn(paramView);
-      localb.bn(paramRecyclerView);
-      localb.bn(params);
-      a.c("com/tencent/mm/plugin/finder/storage/FinderStaggeredConfig$getItemDecoration$1", "com/tencent/mm/plugin/finder/storage/FinderStaggeredConfig$getItemDecoration$androidx/recyclerview/widget/RecyclerView$ItemDecoration", "getItemOffsets", "(Landroid/graphics/Rect;Landroid/view/View;Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$State;)V", this, localb.aFi());
-      p.k(paramRect, "outRect");
-      p.k(paramView, "view");
-      p.k(paramRecyclerView, "parent");
-      p.k(params, "state");
-      paramRecyclerView = paramView.getContext();
-      p.j(paramRecyclerView, "view.context");
-      int i = (int)paramRecyclerView.getResources().getDimension(b.d.Edge_0_5_A);
-      paramRecyclerView = paramView.getContext();
-      p.j(paramRecyclerView, "view.context");
-      int j = (int)paramRecyclerView.getResources().getDimension(b.d.finder_0_25_A);
-      paramRecyclerView = paramView.getLayoutParams();
-      if (paramRecyclerView == null)
-      {
-        paramRect = new t("null cannot be cast to non-null type androidx.recyclerview.widget.StaggeredGridLayoutManager.LayoutParams");
-        AppMethodBeat.o(288570);
-        throw paramRect;
-      }
-      if (((StaggeredGridLayoutManager.LayoutParams)paramRecyclerView).mF())
-      {
-        paramRect.left = 0;
-        paramRect.right = 0;
-        paramRect.bottom = 0;
-        paramRect.top = 0;
-      }
-      for (;;)
-      {
-        a.a(this, "com/tencent/mm/plugin/finder/storage/FinderStaggeredConfig$getItemDecoration$1", "com/tencent/mm/plugin/finder/storage/FinderStaggeredConfig$getItemDecoration$androidx/recyclerview/widget/RecyclerView$ItemDecoration", "getItemOffsets", "(Landroid/graphics/Rect;Landroid/view/View;Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$State;)V");
-        AppMethodBeat.o(288570);
-        return;
-        paramView = paramView.getLayoutParams();
-        if (paramView == null)
-        {
-          paramRect = new t("null cannot be cast to non-null type androidx.recyclerview.widget.StaggeredGridLayoutManager.LayoutParams");
-          AppMethodBeat.o(288570);
-          throw paramRect;
-        }
-        if (((StaggeredGridLayoutManager.LayoutParams)paramView).kv() % 2 == 0)
-        {
-          paramRect.left = i;
-          paramRect.right = j;
-          paramRect.bottom = j;
-          paramRect.top = j;
-        }
-        else
-        {
-          paramRect.left = j;
-          paramRect.right = i;
-          paramRect.bottom = j;
-          paramRect.top = j;
-        }
-      }
-    }
-  }
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/FinderOrAliasDeletingInfoStorage$Companion;", "", "()V", "SQL_CREATE", "", "", "kotlin.jvm.PlatformType", "getSQL_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "TABLE", "TAG", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 

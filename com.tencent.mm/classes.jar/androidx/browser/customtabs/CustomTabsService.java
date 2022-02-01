@@ -13,28 +13,12 @@ import java.util.NoSuchElementException;
 public abstract class CustomTabsService
   extends Service
 {
-  final Map<IBinder, IBinder.DeathRecipient> yv = new androidx.b.a();
-  private b.a yw = new b.a()
+  final Map<IBinder, IBinder.DeathRecipient> zq = new androidx.b.a();
+  private b.a zr = new b.a()
   {
-    public final boolean R()
-    {
-      AppMethodBeat.i(191299);
-      boolean bool = CustomTabsService.this.R();
-      AppMethodBeat.o(191299);
-      return bool;
-    }
-    
-    public final Bundle S()
-    {
-      AppMethodBeat.i(191309);
-      Bundle localBundle = CustomTabsService.this.S();
-      AppMethodBeat.o(191309);
-      return localBundle;
-    }
-    
     public final boolean a(android.support.a.a paramAnonymousa)
     {
-      AppMethodBeat.i(191305);
+      AppMethodBeat.i(192963);
       ??? = new c(paramAnonymousa);
       try
       {
@@ -42,91 +26,103 @@ public abstract class CustomTabsService
         {
           public final void binderDied()
           {
-            AppMethodBeat.i(191294);
-            CustomTabsService.this.a(this.yy);
-            AppMethodBeat.o(191294);
+            AppMethodBeat.i(192960);
+            CustomTabsService.this.a(this.zu);
+            AppMethodBeat.o(192960);
           }
         };
-        synchronized (CustomTabsService.this.yv)
+        synchronized (CustomTabsService.this.zq)
         {
           paramAnonymousa.asBinder().linkToDeath(local1, 0);
-          CustomTabsService.this.yv.put(paramAnonymousa.asBinder(), local1);
-          boolean bool = CustomTabsService.this.eO();
-          AppMethodBeat.o(191305);
+          CustomTabsService.this.zq.put(paramAnonymousa.asBinder(), local1);
+          boolean bool = CustomTabsService.this.fL();
+          AppMethodBeat.o(192963);
           return bool;
         }
         return false;
       }
       catch (RemoteException paramAnonymousa)
       {
-        AppMethodBeat.o(191305);
+        AppMethodBeat.o(192963);
       }
+    }
+    
+    public final boolean aJ()
+    {
+      AppMethodBeat.i(192955);
+      boolean bool = CustomTabsService.this.aJ();
+      AppMethodBeat.o(192955);
+      return bool;
+    }
+    
+    public final Bundle aK()
+    {
+      AppMethodBeat.i(192983);
+      Bundle localBundle = CustomTabsService.this.aK();
+      AppMethodBeat.o(192983);
+      return localBundle;
     }
     
     public final boolean b(android.support.a.a paramAnonymousa)
     {
-      AppMethodBeat.i(191307);
+      AppMethodBeat.i(192974);
       CustomTabsService localCustomTabsService = CustomTabsService.this;
       new c(paramAnonymousa);
-      boolean bool = localCustomTabsService.eP();
-      AppMethodBeat.o(191307);
+      boolean bool = localCustomTabsService.fM();
+      AppMethodBeat.o(192974);
       return bool;
     }
     
     public final boolean c(android.support.a.a paramAnonymousa)
     {
-      AppMethodBeat.i(191311);
+      AppMethodBeat.i(192990);
       CustomTabsService localCustomTabsService = CustomTabsService.this;
       new c(paramAnonymousa);
-      boolean bool = localCustomTabsService.eQ();
-      AppMethodBeat.o(191311);
+      boolean bool = localCustomTabsService.fN();
+      AppMethodBeat.o(192990);
       return bool;
     }
     
     public final boolean d(android.support.a.a paramAnonymousa)
     {
-      AppMethodBeat.i(191314);
+      AppMethodBeat.i(192995);
       CustomTabsService localCustomTabsService = CustomTabsService.this;
       new c(paramAnonymousa);
-      boolean bool = localCustomTabsService.eR();
-      AppMethodBeat.o(191314);
+      boolean bool = localCustomTabsService.fO();
+      AppMethodBeat.o(192995);
       return bool;
     }
     
     public final int e(android.support.a.a paramAnonymousa)
     {
-      AppMethodBeat.i(191316);
+      AppMethodBeat.i(193000);
       CustomTabsService localCustomTabsService = CustomTabsService.this;
       new c(paramAnonymousa);
-      int i = localCustomTabsService.eS();
-      AppMethodBeat.o(191316);
+      int i = localCustomTabsService.fP();
+      AppMethodBeat.o(193000);
       return i;
     }
     
     public final boolean f(android.support.a.a paramAnonymousa)
     {
-      AppMethodBeat.i(191318);
+      AppMethodBeat.i(193011);
       CustomTabsService localCustomTabsService = CustomTabsService.this;
       new c(paramAnonymousa);
-      boolean bool = localCustomTabsService.eT();
-      AppMethodBeat.o(191318);
+      boolean bool = localCustomTabsService.fQ();
+      AppMethodBeat.o(193011);
       return bool;
     }
   };
-  
-  protected abstract boolean R();
-  
-  protected abstract Bundle S();
   
   protected final boolean a(c paramc)
   {
     try
     {
-      synchronized (this.yv)
+      synchronized (this.zq)
       {
-        paramc = paramc.eU();
-        paramc.unlinkToDeath((IBinder.DeathRecipient)this.yv.get(paramc), 0);
-        this.yv.remove(paramc);
+        paramc = paramc.fR();
+        paramc.unlinkToDeath((IBinder.DeathRecipient)this.zq.get(paramc), 0);
+        this.zq.remove(paramc);
         return true;
       }
       return false;
@@ -134,21 +130,25 @@ public abstract class CustomTabsService
     catch (NoSuchElementException paramc) {}
   }
   
-  protected abstract boolean eO();
+  protected abstract boolean aJ();
   
-  protected abstract boolean eP();
+  protected abstract Bundle aK();
   
-  protected abstract boolean eQ();
+  protected abstract boolean fL();
   
-  protected abstract boolean eR();
+  protected abstract boolean fM();
   
-  protected abstract int eS();
+  protected abstract boolean fN();
   
-  protected abstract boolean eT();
+  protected abstract boolean fO();
+  
+  protected abstract int fP();
+  
+  protected abstract boolean fQ();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     androidx.browser.customtabs.CustomTabsService
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cb" android:layout_marginRight="@dimen/cb" android:minHeight="80.0dip" app:cardCornerRadius="8.0dip" app:cardElevation="0.0dip" app:cardPreventCornerOverlap="true" app:cardUseCompatPadding="false"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.card.widget.MemberCardTopCropImageView android:id="@id/b2i" android:background="@color/UN_BW_0_Alpha_0_0_5" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:adjustViewBounds="true" />
-    <ImageView android:id="@id/b2h" android:background="@drawable/c1x" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/lg" android:paddingLeft="@dimen/cb" android:paddingTop="@dimen/ce" android:paddingRight="@dimen/cb" android:paddingBottom="@dimen/ce" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.ui.widget.RoundCornerImageView android:id="@id/b2l" android:layout_width="@dimen/cn" android:layout_height="@dimen/cn" android:layout_marginRight="12.0dip" android:scaleType="centerCrop" app:roundHeight="@dimen/ce" app:roundWidth="@dimen/ce" />
-        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <TextView android:textSize="@dimen/is" android:textColor="@color/am" android:ellipsize="end" android:id="@id/b2r" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{test title}" android:maxLines="1" android:shadowColor="@color/UN_BW_0_Alpha_0_3" android:shadowRadius="4.0" />
-            <TextView android:textSize="@dimen/k6" android:textColor="@color/BW_100_Alpha_0_8" android:ellipsize="end" android:id="@id/b2j" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="{test title}" android:maxLines="1" android:shadowColor="@color/UN_BW_0_Alpha_0_3" android:shadowRadius="4.0" />
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout android:layout_gravity="center|right|top" android:orientation="horizontal" android:id="@id/b2n" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginRight="8.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-</androidx.cardview.widget.CardView>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/bf5" android:layout_width="272.0dip" android:layout_height="153.0dip" />
+    <TextView android:textSize="@dimen/t" android:textColor="@color/xd" android:gravity="center" android:id="@id/bf4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="" />
+</LinearLayout>

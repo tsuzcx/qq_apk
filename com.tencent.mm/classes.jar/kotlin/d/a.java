@@ -1,10 +1,10 @@
 package kotlin.d;
 
+import kotlin.Metadata;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/coroutines/AbstractCoroutineContextElement;", "Lkotlin/coroutines/CoroutineContext$Element;", "key", "Lkotlin/coroutines/CoroutineContext$Key;", "(Lkotlin/coroutines/CoroutineContext$Key;)V", "getKey", "()Lkotlin/coroutines/CoroutineContext$Key;", "kotlin-stdlib"})
+@Metadata(d1={""}, d2={"Lkotlin/coroutines/AbstractCoroutineContextElement;", "Lkotlin/coroutines/CoroutineContext$Element;", "key", "Lkotlin/coroutines/CoroutineContext$Key;", "(Lkotlin/coroutines/CoroutineContext$Key;)V", "getKey", "()Lkotlin/coroutines/CoroutineContext$Key;", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
 public abstract class a
   implements f.b
 {
@@ -17,13 +17,13 @@ public abstract class a
   
   public <R> R fold(R paramR, m<? super R, ? super f.b, ? extends R> paramm)
   {
-    p.k(paramm, "operation");
+    s.u(paramm, "operation");
     return f.b.a.a(this, paramR, paramm);
   }
   
   public <E extends f.b> E get(f.c<E> paramc)
   {
-    p.k(paramc, "key");
+    s.u(paramc, "key");
     return f.b.a.a(this, paramc);
   }
   
@@ -34,19 +34,19 @@ public abstract class a
   
   public f minusKey(f.c<?> paramc)
   {
-    p.k(paramc, "key");
+    s.u(paramc, "key");
     return f.b.a.b(this, paramc);
   }
   
   public f plus(f paramf)
   {
-    p.k(paramf, "context");
+    s.u(paramf, "context");
     return f.b.a.a(this, paramf);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlin.d.a
  * JD-Core Version:    0.7.0.1
  */

@@ -129,7 +129,7 @@ final class zzabm
       AppMethodBeat.o(40213);
       return paramClass;
     }
-    catch (Throwable paramClass)
+    finally
     {
       for (;;)
       {
@@ -183,10 +183,9 @@ final class zzabm
       localClass.getMethod("peekByte", new Class[] { paramClass });
       localClass.getMethod("pokeByteArray", new Class[] { paramClass, [B.class, Integer.TYPE, Integer.TYPE });
       localClass.getMethod("peekByteArray", new Class[] { paramClass, [B.class, Integer.TYPE, Integer.TYPE });
-      AppMethodBeat.o(40210);
       return true;
     }
-    catch (Throwable paramClass)
+    finally
     {
       AppMethodBeat.o(40210);
     }
@@ -202,11 +201,11 @@ final class zzabm
       AppMethodBeat.o(40207);
       return localUnsafe;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
-        Object localObject = null;
+        Object localObject2 = null;
       }
     }
   }
@@ -221,39 +220,39 @@ final class zzabm
     }
     try
     {
-      localObject = zzbtj.getClass();
-      ((Class)localObject).getMethod("objectFieldOffset", new Class[] { Field.class });
-      ((Class)localObject).getMethod("arrayBaseOffset", new Class[] { Class.class });
-      ((Class)localObject).getMethod("arrayIndexScale", new Class[] { Class.class });
-      ((Class)localObject).getMethod("getInt", new Class[] { Object.class, Long.TYPE });
-      ((Class)localObject).getMethod("putInt", new Class[] { Object.class, Long.TYPE, Integer.TYPE });
-      ((Class)localObject).getMethod("getLong", new Class[] { Object.class, Long.TYPE });
-      ((Class)localObject).getMethod("putLong", new Class[] { Object.class, Long.TYPE, Long.TYPE });
-      ((Class)localObject).getMethod("getObject", new Class[] { Object.class, Long.TYPE });
-      ((Class)localObject).getMethod("putObject", new Class[] { Object.class, Long.TYPE, Object.class });
+      localObject1 = zzbtj.getClass();
+      ((Class)localObject1).getMethod("objectFieldOffset", new Class[] { Field.class });
+      ((Class)localObject1).getMethod("arrayBaseOffset", new Class[] { Class.class });
+      ((Class)localObject1).getMethod("arrayIndexScale", new Class[] { Class.class });
+      ((Class)localObject1).getMethod("getInt", new Class[] { Object.class, Long.TYPE });
+      ((Class)localObject1).getMethod("putInt", new Class[] { Object.class, Long.TYPE, Integer.TYPE });
+      ((Class)localObject1).getMethod("getLong", new Class[] { Object.class, Long.TYPE });
+      ((Class)localObject1).getMethod("putLong", new Class[] { Object.class, Long.TYPE, Long.TYPE });
+      ((Class)localObject1).getMethod("getObject", new Class[] { Object.class, Long.TYPE });
+      ((Class)localObject1).getMethod("putObject", new Class[] { Object.class, Long.TYPE, Object.class });
       boolean bool = zzyv.zzsv();
       if (bool)
       {
         AppMethodBeat.o(40208);
         return true;
       }
-      ((Class)localObject).getMethod("getByte", new Class[] { Object.class, Long.TYPE });
-      ((Class)localObject).getMethod("putByte", new Class[] { Object.class, Long.TYPE, Byte.TYPE });
-      ((Class)localObject).getMethod("getBoolean", new Class[] { Object.class, Long.TYPE });
-      ((Class)localObject).getMethod("putBoolean", new Class[] { Object.class, Long.TYPE, Boolean.TYPE });
-      ((Class)localObject).getMethod("getFloat", new Class[] { Object.class, Long.TYPE });
-      ((Class)localObject).getMethod("putFloat", new Class[] { Object.class, Long.TYPE, Float.TYPE });
-      ((Class)localObject).getMethod("getDouble", new Class[] { Object.class, Long.TYPE });
-      ((Class)localObject).getMethod("putDouble", new Class[] { Object.class, Long.TYPE, Double.TYPE });
+      ((Class)localObject1).getMethod("getByte", new Class[] { Object.class, Long.TYPE });
+      ((Class)localObject1).getMethod("putByte", new Class[] { Object.class, Long.TYPE, Byte.TYPE });
+      ((Class)localObject1).getMethod("getBoolean", new Class[] { Object.class, Long.TYPE });
+      ((Class)localObject1).getMethod("putBoolean", new Class[] { Object.class, Long.TYPE, Boolean.TYPE });
+      ((Class)localObject1).getMethod("getFloat", new Class[] { Object.class, Long.TYPE });
+      ((Class)localObject1).getMethod("putFloat", new Class[] { Object.class, Long.TYPE, Float.TYPE });
+      ((Class)localObject1).getMethod("getDouble", new Class[] { Object.class, Long.TYPE });
+      ((Class)localObject1).getMethod("putDouble", new Class[] { Object.class, Long.TYPE, Double.TYPE });
       AppMethodBeat.o(40208);
       return true;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      Object localObject = logger;
+      Object localObject1 = logger;
       Level localLevel = Level.WARNING;
-      String str = String.valueOf(localThrowable);
-      ((Logger)localObject).logp(localLevel, "com.google.protobuf.UnsafeUtil", "supportsUnsafeArrayOperations", String.valueOf(str).length() + 71 + "platform method missing - proto runtime falling back to safer methods: " + str);
+      String str = String.valueOf(localObject2);
+      ((Logger)localObject1).logp(localLevel, "com.google.protobuf.UnsafeUtil", "supportsUnsafeArrayOperations", String.valueOf(str).length() + 71 + "platform method missing - proto runtime falling back to safer methods: " + str);
       AppMethodBeat.o(40208);
     }
     return false;
@@ -295,11 +294,11 @@ final class zzabm
       AppMethodBeat.o(40209);
       return true;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Object localObject1 = logger;
       Object localObject2 = Level.WARNING;
-      String str = String.valueOf(localThrowable);
+      String str = String.valueOf(localObject3);
       ((Logger)localObject1).logp((Level)localObject2, "com.google.protobuf.UnsafeUtil", "supportsUnsafeByteBufferOperations", String.valueOf(str).length() + 71 + "platform method missing - proto runtime falling back to safer methods: " + str);
       AppMethodBeat.o(40209);
     }
@@ -367,7 +366,7 @@ final class zzabm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzabm
  * JD-Core Version:    0.7.0.1
  */

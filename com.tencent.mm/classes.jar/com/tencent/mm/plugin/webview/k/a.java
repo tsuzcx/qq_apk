@@ -5,46 +5,47 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.ah;
+import com.tencent.mm.vfs.u;
 import java.io.File;
 
 public final class a
 {
-  private static void Y(q paramq)
+  private static void aa(u paramu)
   {
     AppMethodBeat.i(175882);
-    if (paramq == null)
+    if (paramu == null)
     {
       AppMethodBeat.o(175882);
       return;
     }
-    if (paramq.isDirectory())
+    if (paramu.isDirectory())
     {
-      q[] arrayOfq = paramq.ifJ();
-      int j = arrayOfq.length;
+      u[] arrayOfu = paramu.jKX();
+      int j = arrayOfu.length;
       int i = 0;
       while (i < j)
       {
-        Y(arrayOfq[i]);
+        aa(arrayOfu[i]);
         i += 1;
       }
     }
-    Log.i("MicroMsg.ABI64WebViewCompat", "delete isSuccessDelete: %s fileName: %s", new Object[] { Boolean.valueOf(paramq.cFq()), paramq.bOF() });
+    Log.i("MicroMsg.ABI64WebViewCompat", "delete isSuccessDelete: %s fileName: %s", new Object[] { Boolean.valueOf(paramu.diJ()), ah.v(paramu.jKT()) });
     AppMethodBeat.o(175882);
   }
   
-  public static boolean je(Context paramContext)
+  public static boolean le(Context paramContext)
   {
     AppMethodBeat.i(82364);
     try
     {
-      Y(new q(paramContext.getFilesDir().getParent() + "/app_webview/GPUCache"));
-      Y(new q(paramContext.getFilesDir().getParent() + "/app_x5webview/GPUCache"));
+      aa(new u(paramContext.getFilesDir().getParent() + "/app_webview/GPUCache"));
+      aa(new u(paramContext.getFilesDir().getParent() + "/app_x5webview/GPUCache"));
       paramContext.getSharedPreferences("WebViewChromiumPrefs", 0).edit().clear().apply();
       AppMethodBeat.o(82364);
       return true;
     }
-    catch (Throwable paramContext)
+    finally
     {
       Log.printErrStackTrace("MicroMsg.ABI64WebViewCompat", paramContext, "", new Object[0]);
       AppMethodBeat.o(82364);

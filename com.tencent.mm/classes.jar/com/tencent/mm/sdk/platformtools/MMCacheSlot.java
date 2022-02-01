@@ -2,9 +2,9 @@ package com.tencent.mm.sdk.platformtools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashSet;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/sdk/platformtools/MMCacheSlot;", "", "()V", "id", "", "getId$libcompatible_release", "()J", "setId$libcompatible_release", "(J)V", "keys", "Ljava/util/HashSet;", "", "Lkotlin/collections/HashSet;", "getKeys$libcompatible_release", "()Ljava/util/HashSet;", "libcompatible_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/sdk/platformtools/MMCacheSlot;", "", "()V", "id", "", "getId$libcompatible_release", "()J", "setId$libcompatible_release", "(J)V", "keys", "Ljava/util/HashSet;", "", "Lkotlin/collections/HashSet;", "getKeys$libcompatible_release", "()Ljava/util/HashSet;", "libcompatible_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class MMCacheSlot
 {
   private long id;

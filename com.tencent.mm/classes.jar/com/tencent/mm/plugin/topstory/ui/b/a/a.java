@@ -8,17 +8,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
 import com.tencent.mm.plugin.multitask.ui.a.b;
 import com.tencent.mm.plugin.multitask.ui.c;
-import com.tencent.mm.plugin.websearch.api.ai;
-import com.tencent.mm.protocal.protobuf.dal;
-import com.tencent.mm.protocal.protobuf.esv;
-import com.tencent.mm.protocal.protobuf.esx;
-import com.tencent.mm.protocal.protobuf.esy;
+import com.tencent.mm.plugin.websearch.api.aj;
+import com.tencent.mm.protocal.protobuf.drt;
+import com.tencent.mm.protocal.protobuf.foe;
+import com.tencent.mm.protocal.protobuf.fog;
+import com.tencent.mm.protocal.protobuf.foh;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/topstory/ui/multitask/uic/TopStoryMultiTaskUIC;", "Lcom/tencent/mm/plugin/multitask/ui/MultiTaskUIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "fragment", "Landroidx/fragment/app/Fragment;", "(Landroidx/fragment/app/Fragment;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getMultiTaskMode", "Lcom/tencent/mm/plugin/multitask/ui/IMultiTaskUIComponent$MultiTaskMode;", "onMultiTaskItemClick", "", "view", "Landroid/view/View;", "info", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "animateData", "Lcom/tencent/mm/protocal/protobuf/MultiTaskAnimData;", "callback", "", "ui-topstory_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/topstory/ui/multitask/uic/TopStoryMultiTaskUIC;", "Lcom/tencent/mm/plugin/multitask/ui/MultiTaskUIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "fragment", "Landroidx/fragment/app/Fragment;", "(Landroidx/fragment/app/Fragment;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getMultiTaskMode", "Lcom/tencent/mm/plugin/multitask/ui/IMultiTaskUIComponent$MultiTaskMode;", "onMultiTaskItemClick", "", "view", "Landroid/view/View;", "info", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "animateData", "Lcom/tencent/mm/protocal/protobuf/MultiTaskAnimData;", "callback", "", "ui-topstory_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   extends c
 {
@@ -27,71 +27,88 @@ public final class a
   public a(AppCompatActivity paramAppCompatActivity)
   {
     super(paramAppCompatActivity);
-    AppMethodBeat.i(202875);
+    AppMethodBeat.i(271675);
     this.TAG = "MicroMsg.TopStory.TopStoryMultiTaskUIC";
-    AppMethodBeat.o(202875);
+    AppMethodBeat.o(271675);
   }
   
   public a(Fragment paramFragment)
   {
     super(paramFragment);
-    AppMethodBeat.i(202877);
+    AppMethodBeat.i(271678);
     this.TAG = "MicroMsg.TopStory.TopStoryMultiTaskUIC";
-    AppMethodBeat.o(202877);
+    AppMethodBeat.o(271678);
   }
   
-  public final void a(View paramView, MultiTaskInfo paramMultiTaskInfo, dal paramdal, Object paramObject)
+  public final void a(View paramView, MultiTaskInfo paramMultiTaskInfo, drt paramdrt, Object paramObject)
   {
-    AppMethodBeat.i(202872);
-    p.k(paramMultiTaskInfo, "info");
-    p.k(paramdal, "animateData");
-    paramMultiTaskInfo = paramMultiTaskInfo.field_data;
-    paramView = new esx();
+    paramObject = null;
+    AppMethodBeat.i(271685);
+    s.u(paramMultiTaskInfo, "info");
+    s.u(paramdrt, "animateData");
+    paramView = paramMultiTaskInfo.field_data;
+    Object localObject = new fog();
     try
     {
-      paramView.parseFrom(paramMultiTaskInfo);
-      if (paramView.TFg.size() > 0)
+      ((fog)localObject).parseFrom(paramView);
+      if (((fog)localObject).aaUM.size() > 0)
       {
-        paramMultiTaskInfo = new esv();
-        paramMultiTaskInfo.scene = paramView.scene;
-        paramMultiTaskInfo.UuJ = paramView.UuJ;
-        paramMultiTaskInfo.UuI = ((esy)paramView.TFg.get(0));
-        paramMultiTaskInfo.UuD = paramMultiTaskInfo.UuI.Crh;
-        paramMultiTaskInfo.UuF = paramView.UuF;
-        paramMultiTaskInfo.UuE = paramView.UuE;
-        paramMultiTaskInfo.UuG = paramView.UuG;
-        paramMultiTaskInfo.UuH = paramView.UuH;
-        paramMultiTaskInfo.wmL = paramView.wmL;
-        paramMultiTaskInfo.UuQ = paramView.UuQ;
-        paramMultiTaskInfo.offset = paramView.offset;
-        paramMultiTaskInfo.fwe = paramView.fwe;
-        paramMultiTaskInfo.Pye = paramView.Pye;
-        Log.i(this.TAG, "handleBallInfoClicked, contextId:%s videoId:%s", new Object[] { paramMultiTaskInfo.wmL, paramMultiTaskInfo.UuI.Crh });
-        ai.a((Context)getActivity(), paramMultiTaskInfo, paramdal);
-        getActivity().overridePendingTransition(0, 0);
-        AppMethodBeat.o(202872);
-        return;
+        paramMultiTaskInfo = new foe();
+        paramMultiTaskInfo.scene = ((fog)localObject).scene;
+        paramMultiTaskInfo.abOl = ((fog)localObject).abOl;
+        paramMultiTaskInfo.abOk = ((foh)((fog)localObject).aaUM.get(0));
+        paramView = paramMultiTaskInfo.abOk;
+        if (paramView == null)
+        {
+          paramView = null;
+          paramMultiTaskInfo.abOf = paramView;
+          paramMultiTaskInfo.abOh = ((fog)localObject).abOh;
+          paramMultiTaskInfo.abOg = ((fog)localObject).abOg;
+          paramMultiTaskInfo.abOi = ((fog)localObject).abOi;
+          paramMultiTaskInfo.abOj = ((fog)localObject).abOj;
+          paramMultiTaskInfo.zIO = ((fog)localObject).zIO;
+          paramMultiTaskInfo.abOs = ((fog)localObject).abOs;
+          paramMultiTaskInfo.offset = ((fog)localObject).offset;
+          paramMultiTaskInfo.hAB = ((fog)localObject).hAB;
+          paramMultiTaskInfo.Wol = ((fog)localObject).Wol;
+          localObject = this.TAG;
+          String str = paramMultiTaskInfo.zIO;
+          paramView = paramMultiTaskInfo.abOk;
+          if (paramView != null) {
+            break label295;
+          }
+          paramView = paramObject;
+          Log.i((String)localObject, "handleBallInfoClicked, contextId:%s videoId:%s", new Object[] { str, paramView });
+          aj.a((Context)getActivity(), paramMultiTaskInfo, paramdrt);
+          getActivity().overridePendingTransition(0, 0);
+          AppMethodBeat.o(271685);
+        }
       }
     }
-    catch (Exception paramMultiTaskInfo)
+    catch (Exception paramView)
     {
       for (;;)
       {
-        Log.printErrStackTrace(this.TAG, (Throwable)paramMultiTaskInfo, "handleBallInfoClicked exception:%s", new Object[] { paramMultiTaskInfo });
+        Log.printErrStackTrace(this.TAG, (Throwable)paramView, "handleBallInfoClicked exception:%s", new Object[] { paramView });
+        continue;
+        paramView = paramView.Ido;
+        continue;
+        label295:
+        paramView = paramView.Ido;
       }
       Log.e(this.TAG, "handleBallInfoClicked, cache video list size == 0");
-      AppMethodBeat.o(202872);
+      AppMethodBeat.o(271685);
     }
   }
   
-  public final a.b dKp()
+  public final a.b eDe()
   {
-    return a.b.FHX;
+    return a.b.LDq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.b.a.a
  * JD-Core Version:    0.7.0.1
  */

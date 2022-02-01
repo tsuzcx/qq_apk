@@ -1,16 +1,14 @@
 package com.tencent.mm.plugin.p;
 
-import com.tencent.mm.sdk.storage.ISQLiteDatabase;
-import kotlin.l;
+import android.app.Activity;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/livestorage/ILiveDBProvider;", "", "getDB", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "plugin-livestorage_release"})
 public abstract interface c
 {
-  public abstract ISQLiteDatabase eLT();
+  public abstract a j(Activity paramActivity, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.p.c
  * JD-Core Version:    0.7.0.1
  */

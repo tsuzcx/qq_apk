@@ -1,272 +1,160 @@
 package com.tencent.mm.plugin.finder.viewmodel;
 
-import android.util.LongSparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.d;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.cgi.b;
-import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.model.bu;
-import com.tencent.mm.plugin.finder.report.n;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.protocal.protobuf.bid;
-import com.tencent.mm.protocal.protobuf.bku;
+import com.tencent.mm.plugin.finder.feed.au;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.bwa;
+import com.tencent.mm.protocal.protobuf.dmk;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.component.i;
-import java.util.ArrayList;
+import com.tencent.mm.ui.component.n;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import java.util.concurrent.ConcurrentHashMap;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderTabStreamUnreadVM;", "Lcom/tencent/mm/ui/component/UIComponentPlugin;", "Lcom/tencent/mm/plugin/finder/PluginFinder;", "()V", "followCollector", "Lcom/tencent/mm/plugin/finder/viewmodel/FinderTabStreamUnreadVM$TabStreamCollector;", "friendCollector", "machineCollector", "collectDeprecatedFeeds", "", "tabType", "", "deprecatedList", "", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "collectReadFeeds", "commentScene", "readList", "isGlobalRead", "", "feedId", "", "isRead", "Companion", "TabStreamCollector", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderStreamCardVM;", "Lcom/tencent/mm/ui/component/UIComponentPlugin;", "Lcom/tencent/mm/plugin/finder/PluginFinder;", "()V", "cardDataCache", "Ljava/util/concurrent/ConcurrentHashMap;", "", "", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "cardPositionCache", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "readAlbumFeedList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/MarkReadStat;", "readAlbumFeedSet", "Ljava/util/HashSet;", "", "Lkotlin/collections/HashSet;", "checkForReportReadStats", "", "list", "token", "call", "Lkotlin/Function0;", "clearAlbumReadFeeds", "isDestroy", "", "collectReadFeeds", "getCardLastPosition", "item", "Lcom/tencent/mm/plugin/finder/feed/FinderStreamCardFeed;", "getThisAlbumReadFeeds", "getThisReadStats", "recordCardLastPosition", "position", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
-  extends i<PluginFinder>
+  extends n<PluginFinder>
 {
-  public static final a Bhm;
-  public final b Bhj;
-  public final b Bhk;
-  public final b Bhl;
+  public static final a GLc;
+  public final ConcurrentHashMap<String, List<FinderObject>> GLd;
+  public final HashMap<String, Integer> GLe;
+  private final LinkedList<dmk> GLf;
+  private final HashSet<Long> GLg;
   
   static
   {
-    AppMethodBeat.i(286666);
-    Bhm = new a((byte)0);
-    AppMethodBeat.o(286666);
+    AppMethodBeat.i(337180);
+    GLc = new a((byte)0);
+    AppMethodBeat.o(337180);
   }
   
   public f()
   {
-    AppMethodBeat.i(286665);
-    this.Bhj = new b(1);
-    this.Bhk = new b(3);
-    this.Bhl = new b(4);
-    AppMethodBeat.o(286665);
+    AppMethodBeat.i(337164);
+    this.GLd = new ConcurrentHashMap();
+    this.GLe = new HashMap();
+    this.GLf = new LinkedList();
+    this.GLg = new HashSet();
+    AppMethodBeat.o(337164);
   }
   
-  public final boolean as(int paramInt, long paramLong)
+  public final List<dmk> fmO()
   {
-    AppMethodBeat.i(286664);
-    switch (paramInt)
+    AppMethodBeat.i(337204);
+    LinkedList localLinkedList = new LinkedList();
+    synchronized (this.GLf)
     {
-    case 2: 
-    default: 
-      AppMethodBeat.o(286664);
-      return true;
-    case 3: 
-      bool = this.Bhk.NA(paramLong);
-      AppMethodBeat.o(286664);
-      return bool;
-    case 1: 
-      bool = this.Bhj.NA(paramLong);
-      AppMethodBeat.o(286664);
-      return bool;
+      localLinkedList.addAll((Collection)this.GLf);
+      ??? = (List)localLinkedList;
+      AppMethodBeat.o(337204);
+      return ???;
     }
-    boolean bool = this.Bhl.NA(paramLong);
-    AppMethodBeat.o(286664);
-    return bool;
   }
   
-  public final void r(int paramInt, List<? extends bu> paramList)
+  public final void hN(List<? extends dmk> paramList)
   {
-    AppMethodBeat.i(286663);
-    if (paramList == null)
-    {
-      AppMethodBeat.o(286663);
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder("[collectReadFeeds] commentScene=").append(paramInt).append(" readList=").append(paramList.size()).append(" first=");
-    bu localbu = (bu)j.lp(paramList);
-    long l;
-    if (localbu != null)
-    {
-      l = localbu.mf();
-      Log.i("Finder.TabStreamUnreadVM", d.Fw(l));
-      switch (paramInt)
-      {
-      }
-    }
+    AppMethodBeat.i(337195);
+    s.u(paramList, "list");
     for (;;)
     {
-      AppMethodBeat.o(286663);
-      return;
-      l = 0L;
-      break;
-      this.Bhk.fc(paramList).bfq();
-      AppMethodBeat.o(286663);
-      return;
-      this.Bhj.fc(paramList).bfq();
-      AppMethodBeat.o(286663);
-      return;
-      this.Bhl.fc(paramList).bfq();
+      int i;
+      synchronized (this.GLf)
+      {
+        paramList = ((Iterable)paramList).iterator();
+        if (!paramList.hasNext()) {
+          break label182;
+        }
+        dmk localdmk = (dmk)paramList.next();
+        Iterator localIterator = ((List)this.GLf).iterator();
+        i = 0;
+        if (!localIterator.hasNext()) {
+          break label177;
+        }
+        if (((dmk)localIterator.next()).hKN == localdmk.hKN)
+        {
+          j = 1;
+          break label195;
+          label103:
+          if ((i >= 0) || (this.GLg.contains(Long.valueOf(localdmk.hKN)))) {
+            continue;
+          }
+          this.GLf.add(localdmk);
+          this.GLg.add(Long.valueOf(localdmk.hKN));
+        }
+      }
+      int j = 0;
+      label177:
+      label182:
+      label195:
+      while (j == 0)
+      {
+        i += 1;
+        break;
+        i = -1;
+        break label103;
+        paramList = ah.aiuX;
+        AppMethodBeat.o(337195);
+        return;
+      }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderTabStreamUnreadVM$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderTabStreamUnreadVM$TabStreamCollector;", "", "tabType", "", "(I)V", "deprecatedCollection", "Landroid/util/LongSparseArray;", "", "lock", "getLock", "()Ljava/lang/Object;", "readCollection", "checkReport", "", "collectDeprecated", "deprecatedList", "", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "collectRead", "readList", "component1", "copy", "equals", "", "other", "hashCode", "isRead", "feedId", "", "printSparseArray", "list", "toString", "plugin-finder_release"})
-  public static final class b
+  public final void vi(boolean paramBoolean)
   {
-    final LongSparseArray<String> Bhn;
-    private final LongSparseArray<String> Bho;
-    private final int fEH;
-    private final Object lock;
-    
-    public b(int paramInt)
+    AppMethodBeat.i(337217);
+    Log.i("Finder.StreamCardVM", s.X("clearAlbumReadFeeds... size=", Integer.valueOf(this.GLf.size())));
+    synchronized (this.GLf)
     {
-      AppMethodBeat.i(286190);
-      this.fEH = paramInt;
-      this.Bhn = new LongSparseArray();
-      this.Bho = new LongSparseArray();
-      this.lock = new Object();
-      AppMethodBeat.o(286190);
-    }
-    
-    public final boolean NA(long paramLong)
-    {
-      AppMethodBeat.i(286187);
-      if (this.Bhn.indexOfKey(paramLong) >= 0)
-      {
-        AppMethodBeat.o(286187);
-        return true;
+      this.GLf.clear();
+      if (paramBoolean) {
+        this.GLg.clear();
       }
-      AppMethodBeat.o(286187);
-      return false;
+      ah localah = ah.aiuX;
+      AppMethodBeat.o(337217);
+      return;
     }
-    
-    public final void bfq()
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderStreamCardVM$Companion;", "", "()V", "TAG", "", "getCardToken", "item", "Lcom/tencent/mm/plugin/finder/feed/FinderStreamCardFeed;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+  {
+    public static String c(au paramau)
     {
-      AppMethodBeat.i(286189);
-      final LinkedList localLinkedList = new LinkedList();
-      final bid localbid = new bid();
-      ??? = n.zWF;
-      localbid.xkX = n.Pz(this.fEH);
-      Object localObject3;
-      for (;;)
+      Object localObject2 = null;
+      AppMethodBeat.i(337129);
+      s.u(paramau, "item");
+      StringBuilder localStringBuilder = new StringBuilder().append(paramau.AYW.ECY).append('_');
+      Object localObject1 = paramau.AYW.object;
+      s.s(localObject1, "item.card.`object`");
+      localObject1 = (FinderObject)p.oL((List)localObject1);
+      if (localObject1 == null)
       {
-        synchronized (this.lock)
-        {
-          localObject3 = d.a(this.Bho, (m)new a(this, localLinkedList, localbid));
-          int j = ((LongSparseArray)localObject3).size();
-          i = 0;
-          Object localObject4;
-          if (i < j)
-          {
-            long l = ((LongSparseArray)localObject3).keyAt(i);
-            Object localObject5 = (String)((LongSparseArray)localObject3).valueAt(i);
-            localObject4 = new bku();
-            ((bku)localObject4).xbk = l;
-            ((bku)localObject4).objectNonceId = ((String)localObject5);
-            ((bku)localObject4).fEH = this.fEH;
-            localObject5 = n.zWF;
-            ((bku)localObject4).sessionBuffer = n.N(((bku)localObject4).xbk, localbid.xkX);
-            localLinkedList.add(localObject4);
-            i += 1;
-            continue;
-          }
-          if (this.Bho.size() > 0) {
-            this.Bho.clear();
-          }
-          localObject3 = x.aazN;
-          if (!((Collection)localLinkedList).isEmpty())
-          {
-            i = 1;
-            if (i == 0) {
-              break label366;
-            }
-            ??? = new StringBuilder("[checkReport] tabType=").append(this.fEH).append(", begin to report unread... ");
-            localObject4 = (Iterable)localLinkedList;
-            localObject3 = (Collection)new ArrayList(j.a((Iterable)localObject4, 10));
-            localObject4 = ((Iterable)localObject4).iterator();
-            if (!((Iterator)localObject4).hasNext()) {
-              break;
-            }
-            ((Collection)localObject3).add(d.Fw(((bku)((Iterator)localObject4).next()).xbk));
-          }
-        }
-        int i = 0;
-      }
-      Log.i("Finder.TabStreamUnreadVM", (List)localObject3);
-      new b((List)localObject1, localbid).bhW();
-      label366:
-      AppMethodBeat.o(286189);
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      if (this != paramObject)
-      {
-        if ((paramObject instanceof b))
-        {
-          paramObject = (b)paramObject;
-          if (this.fEH != paramObject.fEH) {}
+        localObject1 = null;
+        localObject1 = localStringBuilder.append(localObject1).append('_');
+        paramau = paramau.AYW.object;
+        s.s(paramau, "item.card.`object`");
+        paramau = (FinderObject)p.oN((List)paramau);
+        if (paramau != null) {
+          break label136;
         }
       }
-      else {
-        return true;
-      }
-      return false;
-    }
-    
-    public final b fc(List<? extends bu> paramList)
-    {
-      AppMethodBeat.i(286188);
-      p.k(paramList, "readList");
-      for (;;)
+      label136:
+      for (paramau = localObject2;; paramau = Long.valueOf(paramau.id))
       {
-        synchronized (this.lock)
-        {
-          Iterator localIterator = ((Iterable)paramList).iterator();
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          paramList = (bu)localIterator.next();
-          if (this.Bhn.indexOfKey(paramList.mf()) >= 0) {
-            continue;
-          }
-          LongSparseArray localLongSparseArray = this.Bhn;
-          long l = paramList.mf();
-          if ((paramList instanceof BaseFinderFeed))
-          {
-            paramList = ((BaseFinderFeed)paramList).feedObject.getObjectNonceId();
-            localLongSparseArray.append(l, paramList);
-          }
-        }
-        paramList = "";
-      }
-      paramList = x.aazN;
-      AppMethodBeat.o(286188);
-      return this;
-    }
-    
-    public final int hashCode()
-    {
-      return this.fEH;
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(286191);
-      String str = "TabStreamCollector(tabType=" + this.fEH + ")";
-      AppMethodBeat.o(286191);
-      return str;
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "feedId", "", "<anonymous parameter 1>", "", "invoke", "com/tencent/mm/plugin/finder/viewmodel/FinderTabStreamUnreadVM$TabStreamCollector$checkReport$1$1"})
-    static final class a
-      extends q
-      implements m<Long, String, Boolean>
-    {
-      a(f.b paramb, LinkedList paramLinkedList, bid parambid)
-      {
-        super();
+        paramau = paramau;
+        AppMethodBeat.o(337129);
+        return paramau;
+        localObject1 = Long.valueOf(((FinderObject)localObject1).id);
+        break;
       }
     }
   }

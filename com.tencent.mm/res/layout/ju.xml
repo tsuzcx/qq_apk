@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/kz" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="179.0dip" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.brandservice.ui.timeline.offenread.BizTimeLineHotView android:id="@id/a7v" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/fxc" android:background="@drawable/ig" android:padding="@dimen/i2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i1" android:layout_marginBottom="@dimen/hs">
-        <ImageView android:id="@id/fxb" android:layout_width="32.0dip" android:layout_height="32.0dip" android:scaleType="fitCenter" />
-        <TextView android:textSize="@dimen/is" android:textColor="@color/ag2" android:id="@id/fxd" android:paddingLeft="18.0dip" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </LinearLayout>
+    <RelativeLayout android:id="@id/abg" android:layout_width="fill_parent" android:layout_height="104.0dip">
+        <ImageView android:id="@id/abj" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:background="@drawable/i0" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:paddingBottom="5.0dip" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_alignParentBottom="true">
+            <TextView android:textSize="12.0dip" android:textColor="@color/az" android:id="@id/abm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="播放" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+            <TextView android:textSize="11.25dip" android:textColor="@color/az" android:id="@id/abl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="11:01" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+            <ImageView android:layout_width="14.0dip" android:layout_height="14.0dip" android:src="@raw/biz_finder_play_icon" android:layout_toLeftOf="@id/abl" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <TextView android:textSize="15.0dip" android:textColor="@color/gb" android:ellipsize="end" android:id="@id/abk" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:maxLines="2" />
 </LinearLayout>

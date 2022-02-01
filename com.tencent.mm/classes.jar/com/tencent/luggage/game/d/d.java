@@ -3,14 +3,13 @@ package com.tencent.luggage.game.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.file.i.a;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
 import com.tencent.mm.plugin.appbrand.page.ad;
-import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.mm.plugin.appbrand.y;
 import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
 public final class d
-  extends c<v>
+  extends c<y>
 {
   public static final int CTRL_INDEX = 100;
   public static final String NAME = "canvasToTempFilePath";
@@ -61,7 +60,7 @@ public final class d
     //   74: areturn
     //   75: aload_0
     //   76: ldc 74
-    //   78: invokevirtual 80	com/tencent/mm/plugin/appbrand/page/ad:R	(Ljava/lang/Class;)Ljava/lang/Object;
+    //   78: invokevirtual 80	com/tencent/mm/plugin/appbrand/page/ad:aa	(Ljava/lang/Class;)Ljava/lang/Object;
     //   81: checkcast 74	com/tencent/luggage/game/page/d
     //   84: astore 21
     //   86: aload_1
@@ -70,894 +69,899 @@ public final class d
     //   90: invokevirtual 86	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
     //   93: istore 18
     //   95: aload 21
-    //   97: ifnull +1491 -> 1588
+    //   97: ifnull +1506 -> 1603
     //   100: aload 21
     //   102: invokeinterface 90 1 0
-    //   107: ifnull +1481 -> 1588
+    //   107: ifnull +1496 -> 1603
     //   110: iload 18
-    //   112: ifne +75 -> 187
+    //   112: ifne +78 -> 190
     //   115: aload 21
     //   117: iload 13
     //   119: iload_2
-    //   120: invokeinterface 93 3 0
+    //   120: invokeinterface 94 3 0
     //   125: astore 21
     //   127: aload 21
-    //   129: ifnonnull +91 -> 220
+    //   129: ifnonnull +94 -> 223
     //   132: ldc 62
-    //   134: ldc 95
-    //   136: invokestatic 98	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   139: ldc 100
-    //   141: invokestatic 106	com/tencent/luggage/a/e:L	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
-    //   144: checkcast 100	com/tencent/mm/plugin/appbrand/w/a
+    //   134: ldc 96
+    //   136: invokestatic 99	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   139: ldc 101
+    //   141: invokestatic 107	com/tencent/luggage/a/e:U	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
+    //   144: checkcast 101	com/tencent/mm/plugin/appbrand/x/a
     //   147: astore_0
     //   148: iload 18
-    //   150: ifeq +1444 -> 1594
-    //   153: ldc2_w 107
+    //   150: ifeq +1459 -> 1609
+    //   153: ldc2_w 108
     //   156: lstore 19
     //   158: aload_0
-    //   159: lload 19
-    //   161: invokeinterface 112 3 0
-    //   166: new 50	com/tencent/mm/plugin/appbrand/jsapi/file/i$a
-    //   169: dup
-    //   170: ldc 114
-    //   172: iconst_0
-    //   173: anewarray 54	java/lang/Object
-    //   176: invokespecial 57	com/tencent/mm/plugin/appbrand/jsapi/file/i$a:<init>	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   179: astore_0
-    //   180: ldc 34
-    //   182: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   185: aload_0
-    //   186: areturn
-    //   187: aload 21
-    //   189: invokeinterface 90 1 0
-    //   194: invokevirtual 120	com/tencent/magicbrush/ui/MagicBrushView:getMagicBrush	()Lcom/tencent/magicbrush/e;
-    //   197: getfield 126	com/tencent/magicbrush/e:cMk	Lcom/tencent/magicbrush/b;
-    //   200: aload 21
-    //   202: invokeinterface 90 1 0
-    //   207: invokevirtual 130	com/tencent/magicbrush/ui/MagicBrushView:getVirtualElementId	()I
-    //   210: iconst_m1
-    //   211: iconst_1
-    //   212: invokevirtual 136	com/tencent/magicbrush/b:j	(IIZ)Landroid/graphics/Bitmap;
-    //   215: astore 21
-    //   217: goto -90 -> 127
-    //   220: aload 21
-    //   222: invokevirtual 141	android/graphics/Bitmap:getWidth	()I
-    //   225: i2f
-    //   226: fstore 10
-    //   228: aload 21
-    //   230: invokevirtual 144	android/graphics/Bitmap:getHeight	()I
-    //   233: i2f
-    //   234: fstore 11
-    //   236: aload 21
-    //   238: invokevirtual 141	android/graphics/Bitmap:getWidth	()I
-    //   241: i2f
-    //   242: fstore 12
-    //   244: aload 21
-    //   246: invokevirtual 144	android/graphics/Bitmap:getHeight	()I
-    //   249: i2f
-    //   250: fstore 6
-    //   252: ldc 62
-    //   254: ldc 146
-    //   256: iconst_4
-    //   257: anewarray 54	java/lang/Object
-    //   260: dup
-    //   261: iconst_0
-    //   262: fload 10
-    //   264: invokestatic 152	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   267: aastore
-    //   268: dup
-    //   269: iconst_1
-    //   270: fload 11
-    //   272: invokestatic 152	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   275: aastore
-    //   276: dup
-    //   277: iconst_2
-    //   278: fload 12
-    //   280: invokestatic 152	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   283: aastore
-    //   284: dup
-    //   285: iconst_3
-    //   286: fload 6
-    //   288: invokestatic 152	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   291: aastore
-    //   292: invokestatic 154	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   295: aload_1
-    //   296: ldc 156
-    //   298: dconst_0
-    //   299: invokevirtual 160	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
-    //   302: d2f
-    //   303: fstore 7
-    //   305: aload_1
-    //   306: ldc 162
-    //   308: dconst_0
-    //   309: invokevirtual 160	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
-    //   312: d2f
-    //   313: fstore 5
-    //   315: aload_1
-    //   316: ldc 164
-    //   318: fload 12
-    //   320: f2d
-    //   321: invokevirtual 160	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
-    //   324: d2f
-    //   325: fstore 8
-    //   327: aload_1
-    //   328: ldc 166
-    //   330: fload 6
-    //   332: f2d
-    //   333: invokevirtual 160	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
-    //   336: d2f
-    //   337: fstore 9
-    //   339: ldc 62
-    //   341: ldc 168
-    //   343: iconst_4
-    //   344: anewarray 54	java/lang/Object
-    //   347: dup
-    //   348: iconst_0
-    //   349: fload 7
-    //   351: invokestatic 152	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   354: aastore
-    //   355: dup
-    //   356: iconst_1
-    //   357: fload 5
-    //   359: invokestatic 152	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   362: aastore
-    //   363: dup
-    //   364: iconst_2
-    //   365: fload 8
-    //   367: invokestatic 152	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   370: aastore
-    //   371: dup
-    //   372: iconst_3
-    //   373: fload 9
-    //   375: invokestatic 152	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   378: aastore
-    //   379: invokestatic 154	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   382: fload 12
-    //   384: fconst_0
-    //   385: fcmpl
-    //   386: ifle +1184 -> 1570
-    //   389: fload 6
-    //   391: fconst_0
-    //   392: fcmpl
-    //   393: ifle +1177 -> 1570
-    //   396: fload 10
-    //   398: fload 12
-    //   400: fcmpl
-    //   401: ifne +11 -> 412
-    //   404: fload 11
-    //   406: fload 6
-    //   408: fcmpl
-    //   409: ifeq +1161 -> 1570
-    //   412: fload 7
-    //   414: fstore_3
+    //   159: ldc2_w 110
+    //   162: lload 19
+    //   164: invokeinterface 115 5 0
+    //   169: new 50	com/tencent/mm/plugin/appbrand/jsapi/file/i$a
+    //   172: dup
+    //   173: ldc 117
+    //   175: iconst_0
+    //   176: anewarray 54	java/lang/Object
+    //   179: invokespecial 57	com/tencent/mm/plugin/appbrand/jsapi/file/i$a:<init>	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   182: astore_0
+    //   183: ldc 34
+    //   185: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   188: aload_0
+    //   189: areturn
+    //   190: aload 21
+    //   192: invokeinterface 90 1 0
+    //   197: invokevirtual 123	com/tencent/magicbrush/ui/MagicBrushView:getMagicBrush	()Lcom/tencent/magicbrush/e;
+    //   200: getfield 129	com/tencent/magicbrush/e:eHE	Lcom/tencent/magicbrush/b;
+    //   203: aload 21
+    //   205: invokeinterface 90 1 0
+    //   210: invokevirtual 133	com/tencent/magicbrush/ui/MagicBrushView:getVirtualElementId	()I
+    //   213: iconst_m1
+    //   214: iconst_1
+    //   215: invokevirtual 139	com/tencent/magicbrush/b:j	(IIZ)Landroid/graphics/Bitmap;
+    //   218: astore 21
+    //   220: goto -93 -> 127
+    //   223: aload 21
+    //   225: invokevirtual 144	android/graphics/Bitmap:getWidth	()I
+    //   228: i2f
+    //   229: fstore 10
+    //   231: aload 21
+    //   233: invokevirtual 147	android/graphics/Bitmap:getHeight	()I
+    //   236: i2f
+    //   237: fstore 11
+    //   239: aload 21
+    //   241: invokevirtual 144	android/graphics/Bitmap:getWidth	()I
+    //   244: i2f
+    //   245: fstore 12
+    //   247: aload 21
+    //   249: invokevirtual 147	android/graphics/Bitmap:getHeight	()I
+    //   252: i2f
+    //   253: fstore 6
+    //   255: ldc 62
+    //   257: ldc 149
+    //   259: iconst_4
+    //   260: anewarray 54	java/lang/Object
+    //   263: dup
+    //   264: iconst_0
+    //   265: fload 10
+    //   267: invokestatic 155	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   270: aastore
+    //   271: dup
+    //   272: iconst_1
+    //   273: fload 11
+    //   275: invokestatic 155	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   278: aastore
+    //   279: dup
+    //   280: iconst_2
+    //   281: fload 12
+    //   283: invokestatic 155	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   286: aastore
+    //   287: dup
+    //   288: iconst_3
+    //   289: fload 6
+    //   291: invokestatic 155	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   294: aastore
+    //   295: invokestatic 157	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   298: aload_1
+    //   299: ldc 159
+    //   301: dconst_0
+    //   302: invokevirtual 163	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
+    //   305: d2f
+    //   306: fstore 7
+    //   308: aload_1
+    //   309: ldc 165
+    //   311: dconst_0
+    //   312: invokevirtual 163	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
+    //   315: d2f
+    //   316: fstore 5
+    //   318: aload_1
+    //   319: ldc 167
+    //   321: fload 12
+    //   323: f2d
+    //   324: invokevirtual 163	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
+    //   327: d2f
+    //   328: fstore 8
+    //   330: aload_1
+    //   331: ldc 169
+    //   333: fload 6
+    //   335: f2d
+    //   336: invokevirtual 163	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
+    //   339: d2f
+    //   340: fstore 9
+    //   342: ldc 62
+    //   344: ldc 171
+    //   346: iconst_4
+    //   347: anewarray 54	java/lang/Object
+    //   350: dup
+    //   351: iconst_0
+    //   352: fload 7
+    //   354: invokestatic 155	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   357: aastore
+    //   358: dup
+    //   359: iconst_1
+    //   360: fload 5
+    //   362: invokestatic 155	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   365: aastore
+    //   366: dup
+    //   367: iconst_2
+    //   368: fload 8
+    //   370: invokestatic 155	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   373: aastore
+    //   374: dup
+    //   375: iconst_3
+    //   376: fload 9
+    //   378: invokestatic 155	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   381: aastore
+    //   382: invokestatic 157	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   385: fload 12
+    //   387: fconst_0
+    //   388: fcmpl
+    //   389: ifle +1196 -> 1585
+    //   392: fload 6
+    //   394: fconst_0
+    //   395: fcmpl
+    //   396: ifle +1189 -> 1585
+    //   399: fload 10
+    //   401: fload 12
+    //   403: fcmpl
+    //   404: ifne +11 -> 415
+    //   407: fload 11
+    //   409: fload 6
+    //   411: fcmpl
+    //   412: ifeq +1173 -> 1585
     //   415: fload 7
-    //   417: fconst_0
-    //   418: fcmpl
-    //   419: ifle +12 -> 431
-    //   422: fload 7
-    //   424: fload 12
-    //   426: fdiv
-    //   427: fload 10
-    //   429: fmul
-    //   430: fstore_3
-    //   431: fload 5
-    //   433: fstore 4
-    //   435: fload 5
-    //   437: fconst_0
-    //   438: fcmpl
-    //   439: ifle +13 -> 452
-    //   442: fload 5
-    //   444: fload 6
-    //   446: fdiv
-    //   447: fload 11
-    //   449: fmul
-    //   450: fstore 4
-    //   452: fload 8
-    //   454: fload 12
-    //   456: fdiv
-    //   457: fload 10
-    //   459: fmul
-    //   460: fstore 5
-    //   462: fload 9
-    //   464: fload 6
-    //   466: fdiv
-    //   467: fload 11
-    //   469: fmul
-    //   470: fstore 7
-    //   472: fload 4
-    //   474: fstore 6
-    //   476: fload 7
-    //   478: fstore 4
-    //   480: goto +1122 -> 1602
-    //   483: aload_1
-    //   484: ldc 170
-    //   486: fload 5
-    //   488: f2d
-    //   489: invokevirtual 160	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
-    //   492: d2f
-    //   493: fstore 7
-    //   495: aload_1
-    //   496: ldc 172
-    //   498: fload 4
-    //   500: f2d
-    //   501: invokevirtual 160	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
-    //   504: d2f
-    //   505: fstore 8
-    //   507: ldc 62
-    //   509: ldc 174
-    //   511: bipush 8
-    //   513: anewarray 54	java/lang/Object
-    //   516: dup
-    //   517: iconst_0
-    //   518: fload_3
-    //   519: invokestatic 152	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   522: aastore
-    //   523: dup
-    //   524: iconst_1
-    //   525: fload 6
-    //   527: invokestatic 152	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   530: aastore
-    //   531: dup
-    //   532: iconst_2
-    //   533: fload 10
-    //   535: invokestatic 152	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   538: aastore
-    //   539: dup
-    //   540: iconst_3
-    //   541: fload 11
-    //   543: invokestatic 152	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   546: aastore
-    //   547: dup
-    //   548: iconst_4
-    //   549: fload 5
-    //   551: invokestatic 152	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   554: aastore
-    //   555: dup
-    //   556: iconst_5
-    //   557: fload 4
-    //   559: invokestatic 152	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   562: aastore
-    //   563: dup
-    //   564: bipush 6
-    //   566: fload 7
-    //   568: invokestatic 152	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   571: aastore
-    //   572: dup
-    //   573: bipush 7
-    //   575: fload 8
-    //   577: invokestatic 152	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   580: aastore
-    //   581: invokestatic 154	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   584: fload_3
-    //   585: f2i
-    //   586: iflt +56 -> 642
-    //   589: fload 6
-    //   591: f2i
-    //   592: iflt +50 -> 642
-    //   595: fload 5
-    //   597: f2i
-    //   598: ifle +44 -> 642
-    //   601: fload 4
-    //   603: f2i
-    //   604: ifle +38 -> 642
-    //   607: fload_3
-    //   608: fload 5
-    //   610: fadd
-    //   611: f2i
-    //   612: fload 10
+    //   417: fstore_3
+    //   418: fload 7
+    //   420: fconst_0
+    //   421: fcmpl
+    //   422: ifle +12 -> 434
+    //   425: fload 7
+    //   427: fload 12
+    //   429: fdiv
+    //   430: fload 10
+    //   432: fmul
+    //   433: fstore_3
+    //   434: fload 5
+    //   436: fstore 4
+    //   438: fload 5
+    //   440: fconst_0
+    //   441: fcmpl
+    //   442: ifle +13 -> 455
+    //   445: fload 5
+    //   447: fload 6
+    //   449: fdiv
+    //   450: fload 11
+    //   452: fmul
+    //   453: fstore 4
+    //   455: fload 8
+    //   457: fload 12
+    //   459: fdiv
+    //   460: fload 10
+    //   462: fmul
+    //   463: fstore 5
+    //   465: fload 9
+    //   467: fload 6
+    //   469: fdiv
+    //   470: fload 11
+    //   472: fmul
+    //   473: fstore 7
+    //   475: fload 4
+    //   477: fstore 6
+    //   479: fload 7
+    //   481: fstore 4
+    //   483: goto +1134 -> 1617
+    //   486: aload_1
+    //   487: ldc 173
+    //   489: fload 5
+    //   491: f2d
+    //   492: invokevirtual 163	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
+    //   495: d2f
+    //   496: fstore 7
+    //   498: aload_1
+    //   499: ldc 175
+    //   501: fload 4
+    //   503: f2d
+    //   504: invokevirtual 163	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
+    //   507: d2f
+    //   508: fstore 8
+    //   510: ldc 62
+    //   512: ldc 177
+    //   514: bipush 8
+    //   516: anewarray 54	java/lang/Object
+    //   519: dup
+    //   520: iconst_0
+    //   521: fload_3
+    //   522: invokestatic 155	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   525: aastore
+    //   526: dup
+    //   527: iconst_1
+    //   528: fload 6
+    //   530: invokestatic 155	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   533: aastore
+    //   534: dup
+    //   535: iconst_2
+    //   536: fload 10
+    //   538: invokestatic 155	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   541: aastore
+    //   542: dup
+    //   543: iconst_3
+    //   544: fload 11
+    //   546: invokestatic 155	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   549: aastore
+    //   550: dup
+    //   551: iconst_4
+    //   552: fload 5
+    //   554: invokestatic 155	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   557: aastore
+    //   558: dup
+    //   559: iconst_5
+    //   560: fload 4
+    //   562: invokestatic 155	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   565: aastore
+    //   566: dup
+    //   567: bipush 6
+    //   569: fload 7
+    //   571: invokestatic 155	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   574: aastore
+    //   575: dup
+    //   576: bipush 7
+    //   578: fload 8
+    //   580: invokestatic 155	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   583: aastore
+    //   584: invokestatic 157	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   587: fload_3
+    //   588: f2i
+    //   589: iflt +56 -> 645
+    //   592: fload 6
+    //   594: f2i
+    //   595: iflt +50 -> 645
+    //   598: fload 5
+    //   600: f2i
+    //   601: ifle +44 -> 645
+    //   604: fload 4
+    //   606: f2i
+    //   607: ifle +38 -> 645
+    //   610: fload_3
+    //   611: fload 5
+    //   613: fadd
     //   614: f2i
-    //   615: if_icmpgt +27 -> 642
-    //   618: fload 6
-    //   620: fload 4
-    //   622: fadd
-    //   623: f2i
-    //   624: fload 11
+    //   615: fload 10
+    //   617: f2i
+    //   618: if_icmpgt +27 -> 645
+    //   621: fload 6
+    //   623: fload 4
+    //   625: fadd
     //   626: f2i
-    //   627: if_icmpgt +15 -> 642
-    //   630: fload 7
-    //   632: f2i
-    //   633: ifle +9 -> 642
-    //   636: fload 8
-    //   638: f2i
-    //   639: ifgt +74 -> 713
-    //   642: ldc 62
-    //   644: ldc 176
-    //   646: iconst_5
-    //   647: anewarray 54	java/lang/Object
-    //   650: dup
-    //   651: iconst_0
-    //   652: fload_3
-    //   653: invokestatic 152	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   656: aastore
-    //   657: dup
-    //   658: iconst_1
-    //   659: fload 6
-    //   661: invokestatic 152	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   664: aastore
-    //   665: dup
-    //   666: iconst_2
-    //   667: fload 5
-    //   669: invokestatic 152	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   672: aastore
-    //   673: dup
-    //   674: iconst_3
-    //   675: fload 4
-    //   677: invokestatic 152	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   680: aastore
-    //   681: dup
-    //   682: iconst_4
-    //   683: iload 13
-    //   685: invokestatic 181	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   688: aastore
-    //   689: invokestatic 184	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   692: new 50	com/tencent/mm/plugin/appbrand/jsapi/file/i$a
-    //   695: dup
-    //   696: ldc 186
-    //   698: iconst_0
-    //   699: anewarray 54	java/lang/Object
-    //   702: invokespecial 57	com/tencent/mm/plugin/appbrand/jsapi/file/i$a:<init>	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   705: astore_0
-    //   706: ldc 34
-    //   708: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   711: aload_0
-    //   712: areturn
-    //   713: fload 5
-    //   715: fload 10
-    //   717: fcmpl
-    //   718: ifne +11 -> 729
-    //   721: fload 4
-    //   723: fload 11
-    //   725: fcmpl
-    //   726: ifeq +835 -> 1561
-    //   729: fload_3
-    //   730: f2i
-    //   731: istore 14
-    //   733: fload 6
-    //   735: f2i
-    //   736: istore 15
-    //   738: fload 5
-    //   740: f2i
-    //   741: istore 16
-    //   743: fload 4
-    //   745: f2i
-    //   746: istore 17
-    //   748: aload 21
-    //   750: iload 14
-    //   752: iload 15
-    //   754: iload 16
-    //   756: iload 17
-    //   758: aconst_null
-    //   759: iconst_0
-    //   760: invokestatic 190	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
-    //   763: astore 22
-    //   765: aload 21
-    //   767: invokevirtual 193	android/graphics/Bitmap:recycle	()V
-    //   770: aload 22
-    //   772: astore 21
-    //   774: aload 21
-    //   776: ifnonnull +31 -> 807
-    //   779: ldc 62
-    //   781: ldc 195
-    //   783: invokestatic 197	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   786: new 50	com/tencent/mm/plugin/appbrand/jsapi/file/i$a
-    //   789: dup
-    //   790: ldc 199
-    //   792: iconst_0
-    //   793: anewarray 54	java/lang/Object
-    //   796: invokespecial 57	com/tencent/mm/plugin/appbrand/jsapi/file/i$a:<init>	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   799: astore_0
-    //   800: ldc 34
-    //   802: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   805: aload_0
-    //   806: areturn
-    //   807: aload 21
-    //   809: invokevirtual 141	android/graphics/Bitmap:getWidth	()I
-    //   812: ifle +11 -> 823
-    //   815: aload 21
-    //   817: invokevirtual 144	android/graphics/Bitmap:getHeight	()I
-    //   820: ifgt +31 -> 851
-    //   823: ldc 62
-    //   825: ldc 201
-    //   827: invokestatic 197	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   830: new 50	com/tencent/mm/plugin/appbrand/jsapi/file/i$a
-    //   833: dup
-    //   834: ldc 199
-    //   836: iconst_0
-    //   837: anewarray 54	java/lang/Object
-    //   840: invokespecial 57	com/tencent/mm/plugin/appbrand/jsapi/file/i$a:<init>	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   843: astore_0
-    //   844: ldc 34
-    //   846: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   849: aload_0
-    //   850: areturn
-    //   851: fload 5
-    //   853: fload 7
-    //   855: fcmpl
-    //   856: ifne +11 -> 867
-    //   859: fload 4
-    //   861: fload 8
-    //   863: fcmpl
-    //   864: ifeq +282 -> 1146
-    //   867: fload 7
-    //   869: f2i
-    //   870: istore 14
-    //   872: fload 8
-    //   874: f2i
-    //   875: istore 15
-    //   877: aload 21
-    //   879: iload 14
-    //   881: iload 15
-    //   883: iconst_0
-    //   884: invokestatic 205	android/graphics/Bitmap:createScaledBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
-    //   887: astore 22
-    //   889: aload 21
-    //   891: invokevirtual 193	android/graphics/Bitmap:recycle	()V
-    //   894: aload 22
-    //   896: astore 21
-    //   898: aload 22
-    //   900: ifnonnull +246 -> 1146
-    //   903: ldc 100
-    //   905: invokestatic 106	com/tencent/luggage/a/e:L	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
-    //   908: checkcast 100	com/tencent/mm/plugin/appbrand/w/a
-    //   911: ldc2_w 206
-    //   914: invokeinterface 112 3 0
-    //   919: new 50	com/tencent/mm/plugin/appbrand/jsapi/file/i$a
-    //   922: dup
-    //   923: ldc 209
-    //   925: iconst_0
-    //   926: anewarray 54	java/lang/Object
-    //   929: invokespecial 57	com/tencent/mm/plugin/appbrand/jsapi/file/i$a:<init>	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   932: astore_0
-    //   933: ldc 34
-    //   935: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   938: aload_0
-    //   939: areturn
-    //   940: astore_0
-    //   941: aload 21
-    //   943: astore 22
-    //   945: ldc 62
-    //   947: ldc 211
-    //   949: iconst_4
-    //   950: anewarray 54	java/lang/Object
-    //   953: dup
-    //   954: iconst_0
-    //   955: aload 22
-    //   957: invokevirtual 141	android/graphics/Bitmap:getWidth	()I
-    //   960: invokestatic 181	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   963: aastore
-    //   964: dup
-    //   965: iconst_1
-    //   966: aload 22
-    //   968: invokevirtual 144	android/graphics/Bitmap:getHeight	()I
-    //   971: invokestatic 181	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   974: aastore
-    //   975: dup
-    //   976: iconst_2
-    //   977: fload 7
-    //   979: invokestatic 152	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   982: aastore
-    //   983: dup
-    //   984: iconst_3
-    //   985: fload 8
-    //   987: invokestatic 152	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   990: aastore
-    //   991: invokestatic 70	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   994: ldc 62
-    //   996: aload_0
-    //   997: ldc 213
-    //   999: iconst_0
-    //   1000: anewarray 54	java/lang/Object
-    //   1003: invokestatic 217	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1006: ldc 100
-    //   1008: invokestatic 106	com/tencent/luggage/a/e:L	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
-    //   1011: checkcast 100	com/tencent/mm/plugin/appbrand/w/a
-    //   1014: ldc2_w 206
-    //   1017: invokeinterface 112 3 0
-    //   1022: new 50	com/tencent/mm/plugin/appbrand/jsapi/file/i$a
-    //   1025: dup
-    //   1026: ldc 209
-    //   1028: iconst_0
-    //   1029: anewarray 54	java/lang/Object
-    //   1032: invokespecial 57	com/tencent/mm/plugin/appbrand/jsapi/file/i$a:<init>	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1035: astore_0
-    //   1036: ldc 34
-    //   1038: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1041: aload_0
-    //   1042: areturn
-    //   1043: astore_0
-    //   1044: aload 21
-    //   1046: astore 22
-    //   1048: ldc 62
-    //   1050: ldc 219
-    //   1052: iconst_4
-    //   1053: anewarray 54	java/lang/Object
-    //   1056: dup
-    //   1057: iconst_0
-    //   1058: aload 22
-    //   1060: invokevirtual 141	android/graphics/Bitmap:getWidth	()I
-    //   1063: invokestatic 181	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1066: aastore
-    //   1067: dup
-    //   1068: iconst_1
-    //   1069: aload 22
-    //   1071: invokevirtual 144	android/graphics/Bitmap:getHeight	()I
-    //   1074: invokestatic 181	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1077: aastore
-    //   1078: dup
-    //   1079: iconst_2
-    //   1080: fload 7
-    //   1082: invokestatic 152	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   1085: aastore
-    //   1086: dup
-    //   1087: iconst_3
-    //   1088: fload 8
-    //   1090: invokestatic 152	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   1093: aastore
-    //   1094: invokestatic 70	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1097: ldc 62
-    //   1099: aload_0
-    //   1100: ldc 221
-    //   1102: iconst_0
-    //   1103: anewarray 54	java/lang/Object
-    //   1106: invokestatic 217	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1109: ldc 100
-    //   1111: invokestatic 106	com/tencent/luggage/a/e:L	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
-    //   1114: checkcast 100	com/tencent/mm/plugin/appbrand/w/a
-    //   1117: ldc2_w 222
-    //   1120: invokeinterface 112 3 0
-    //   1125: new 50	com/tencent/mm/plugin/appbrand/jsapi/file/i$a
-    //   1128: dup
-    //   1129: ldc 225
-    //   1131: iconst_0
-    //   1132: anewarray 54	java/lang/Object
-    //   1135: invokespecial 57	com/tencent/mm/plugin/appbrand/jsapi/file/i$a:<init>	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1138: astore_0
-    //   1139: ldc 34
-    //   1141: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1144: aload_0
-    //   1145: areturn
-    //   1146: aload_1
-    //   1147: invokestatic 231	com/tencent/mm/plugin/appbrand/jsapi/b/d:W	(Lorg/json/JSONObject;)Landroid/graphics/Bitmap$CompressFormat;
-    //   1150: astore 23
-    //   1152: aload 23
-    //   1154: getstatic 237	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
-    //   1157: if_acmpne +401 -> 1558
-    //   1160: aload 21
-    //   1162: invokevirtual 141	android/graphics/Bitmap:getWidth	()I
-    //   1165: aload 21
-    //   1167: invokevirtual 144	android/graphics/Bitmap:getHeight	()I
-    //   1170: getstatic 243	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
-    //   1173: invokestatic 246	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-    //   1176: astore 22
-    //   1178: new 248	android/graphics/Canvas
-    //   1181: dup
-    //   1182: aload 22
-    //   1184: invokespecial 251	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
-    //   1187: aload 21
-    //   1189: fconst_0
-    //   1190: fconst_0
-    //   1191: aconst_null
-    //   1192: invokevirtual 255	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;FFLandroid/graphics/Paint;)V
-    //   1195: aload 22
-    //   1197: astore 21
-    //   1199: aload_0
-    //   1200: invokevirtual 259	com/tencent/mm/plugin/appbrand/page/ad:getAppId	()Ljava/lang/String;
-    //   1203: ldc_w 261
-    //   1206: iload 13
-    //   1208: invokestatic 266	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   1211: invokevirtual 270	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   1214: invokestatic 276	com/tencent/mm/plugin/appbrand/appstorage/AppBrandLocalMediaObjectManager:genMediaFilePath	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   1217: astore 22
-    //   1219: aload 21
-    //   1221: aload_1
-    //   1222: invokestatic 280	com/tencent/mm/plugin/appbrand/jsapi/b/d:V	(Lorg/json/JSONObject;)I
-    //   1225: aload 23
-    //   1227: aload 22
-    //   1229: iconst_1
-    //   1230: invokestatic 286	com/tencent/mm/sdk/platformtools/BitmapUtil:saveBitmapToImage	(Landroid/graphics/Bitmap;ILandroid/graphics/Bitmap$CompressFormat;Ljava/lang/String;Z)Z
-    //   1233: pop
-    //   1234: aload_0
-    //   1235: invokevirtual 259	com/tencent/mm/plugin/appbrand/page/ad:getAppId	()Ljava/lang/String;
-    //   1238: astore_1
-    //   1239: aload 23
-    //   1241: getstatic 289	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   1244: if_acmpne +109 -> 1353
-    //   1247: ldc_w 291
-    //   1250: astore_0
-    //   1251: aload_1
-    //   1252: aload 22
-    //   1254: aload_0
-    //   1255: iconst_1
-    //   1256: invokestatic 295	com/tencent/mm/plugin/appbrand/appstorage/AppBrandLocalMediaObjectManager:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandLocalMediaObject;
-    //   1259: astore_0
-    //   1260: aload_0
-    //   1261: ifnonnull +99 -> 1360
-    //   1264: ldc 62
-    //   1266: ldc_w 297
-    //   1269: iconst_1
-    //   1270: anewarray 54	java/lang/Object
-    //   1273: dup
-    //   1274: iconst_0
-    //   1275: iload 13
-    //   1277: invokestatic 181	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1280: aastore
-    //   1281: invokestatic 70	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1284: new 50	com/tencent/mm/plugin/appbrand/jsapi/file/i$a
-    //   1287: dup
-    //   1288: ldc_w 299
-    //   1291: iconst_0
-    //   1292: anewarray 54	java/lang/Object
-    //   1295: invokespecial 57	com/tencent/mm/plugin/appbrand/jsapi/file/i$a:<init>	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1298: astore_0
-    //   1299: ldc 34
-    //   1301: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1304: aload_0
-    //   1305: areturn
-    //   1306: astore_0
-    //   1307: ldc 62
-    //   1309: ldc_w 301
-    //   1312: iconst_2
-    //   1313: anewarray 54	java/lang/Object
-    //   1316: dup
-    //   1317: iconst_0
-    //   1318: iload 13
-    //   1320: invokestatic 181	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1323: aastore
-    //   1324: dup
-    //   1325: iconst_1
-    //   1326: aload_0
-    //   1327: aastore
-    //   1328: invokestatic 70	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1331: new 50	com/tencent/mm/plugin/appbrand/jsapi/file/i$a
-    //   1334: dup
-    //   1335: ldc_w 303
-    //   1338: iconst_0
-    //   1339: anewarray 54	java/lang/Object
-    //   1342: invokespecial 57	com/tencent/mm/plugin/appbrand/jsapi/file/i$a:<init>	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1345: astore_0
-    //   1346: ldc 34
-    //   1348: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1351: aload_0
-    //   1352: areturn
-    //   1353: ldc_w 305
-    //   1356: astore_0
-    //   1357: goto -106 -> 1251
-    //   1360: new 307	java/util/HashMap
-    //   1363: dup
-    //   1364: invokespecial 308	java/util/HashMap:<init>	()V
-    //   1367: astore_1
-    //   1368: aload_1
-    //   1369: ldc_w 310
-    //   1372: aload_0
-    //   1373: getfield 315	com/tencent/mm/plugin/appbrand/appstorage/AppBrandLocalMediaObject:fCM	Ljava/lang/String;
-    //   1376: invokeinterface 321 3 0
-    //   1381: pop
-    //   1382: ldc 62
-    //   1384: ldc_w 323
-    //   1387: iconst_2
-    //   1388: anewarray 54	java/lang/Object
-    //   1391: dup
-    //   1392: iconst_0
-    //   1393: aload_0
-    //   1394: getfield 315	com/tencent/mm/plugin/appbrand/appstorage/AppBrandLocalMediaObject:fCM	Ljava/lang/String;
-    //   1397: aastore
-    //   1398: dup
-    //   1399: iconst_1
-    //   1400: aload_0
-    //   1401: getfield 326	com/tencent/mm/plugin/appbrand/appstorage/AppBrandLocalMediaObject:lwh	Ljava/lang/String;
-    //   1404: aastore
-    //   1405: invokestatic 329	com/tencent/mm/sdk/platformtools/Log:v	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1408: new 50	com/tencent/mm/plugin/appbrand/jsapi/file/i$a
-    //   1411: dup
-    //   1412: ldc_w 331
-    //   1415: iconst_0
-    //   1416: anewarray 54	java/lang/Object
-    //   1419: invokespecial 57	com/tencent/mm/plugin/appbrand/jsapi/file/i$a:<init>	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1422: aload_1
-    //   1423: invokevirtual 335	com/tencent/mm/plugin/appbrand/jsapi/file/i$a:G	(Ljava/util/Map;)Lcom/tencent/mm/plugin/appbrand/jsapi/file/i$a;
-    //   1426: astore_0
-    //   1427: ldc 34
-    //   1429: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1432: aload_0
-    //   1433: areturn
-    //   1434: astore_0
-    //   1435: ldc 62
-    //   1437: aload_0
-    //   1438: ldc_w 337
-    //   1441: iconst_0
-    //   1442: anewarray 54	java/lang/Object
-    //   1445: invokestatic 217	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1448: ldc 100
-    //   1450: invokestatic 106	com/tencent/luggage/a/e:L	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
-    //   1453: checkcast 100	com/tencent/mm/plugin/appbrand/w/a
-    //   1456: ldc2_w 338
-    //   1459: invokeinterface 112 3 0
-    //   1464: new 50	com/tencent/mm/plugin/appbrand/jsapi/file/i$a
-    //   1467: dup
-    //   1468: ldc_w 341
-    //   1471: iconst_0
-    //   1472: anewarray 54	java/lang/Object
-    //   1475: invokespecial 57	com/tencent/mm/plugin/appbrand/jsapi/file/i$a:<init>	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1478: astore_0
-    //   1479: ldc 34
-    //   1481: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1484: aload_0
-    //   1485: areturn
-    //   1486: astore_0
-    //   1487: ldc 62
-    //   1489: aload_0
-    //   1490: ldc_w 343
-    //   1493: iconst_0
-    //   1494: anewarray 54	java/lang/Object
-    //   1497: invokestatic 217	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1500: ldc 100
-    //   1502: invokestatic 106	com/tencent/luggage/a/e:L	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
-    //   1505: checkcast 100	com/tencent/mm/plugin/appbrand/w/a
-    //   1508: ldc2_w 344
-    //   1511: ldc2_w 346
-    //   1514: lconst_1
-    //   1515: iconst_0
-    //   1516: invokeinterface 351 8 0
-    //   1521: new 50	com/tencent/mm/plugin/appbrand/jsapi/file/i$a
-    //   1524: dup
-    //   1525: ldc_w 353
-    //   1528: iconst_1
-    //   1529: anewarray 54	java/lang/Object
-    //   1532: dup
-    //   1533: iconst_0
-    //   1534: aload_0
-    //   1535: invokevirtual 356	java/lang/RuntimeException:toString	()Ljava/lang/String;
-    //   1538: aastore
-    //   1539: invokespecial 57	com/tencent/mm/plugin/appbrand/jsapi/file/i$a:<init>	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1542: astore_0
-    //   1543: ldc 34
-    //   1545: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1548: aload_0
-    //   1549: areturn
-    //   1550: astore_0
-    //   1551: goto -503 -> 1048
-    //   1554: astore_0
-    //   1555: goto -610 -> 945
-    //   1558: goto -359 -> 1199
-    //   1561: goto -787 -> 774
-    //   1564: goto -1081 -> 483
-    //   1567: goto +51 -> 1618
-    //   1570: fload 5
-    //   1572: fstore 6
-    //   1574: fload 9
-    //   1576: fstore 4
-    //   1578: fload 8
-    //   1580: fstore 5
-    //   1582: fload 7
-    //   1584: fstore_3
-    //   1585: goto +17 -> 1602
-    //   1588: aconst_null
-    //   1589: astore 21
-    //   1591: goto -1464 -> 127
-    //   1594: ldc2_w 357
-    //   1597: lstore 19
-    //   1599: goto -1441 -> 158
-    //   1602: fload_3
-    //   1603: fload 5
-    //   1605: fadd
-    //   1606: fload 10
-    //   1608: fcmpl
-    //   1609: ifle -42 -> 1567
-    //   1612: fload 10
-    //   1614: fload_3
-    //   1615: fsub
-    //   1616: fstore 5
-    //   1618: fload 6
-    //   1620: fload 4
-    //   1622: fadd
-    //   1623: fload 11
-    //   1625: fcmpl
-    //   1626: ifle -62 -> 1564
-    //   1629: fload 11
-    //   1631: fload 6
-    //   1633: fsub
-    //   1634: fstore 4
-    //   1636: goto -1153 -> 483
+    //   627: fload 11
+    //   629: f2i
+    //   630: if_icmpgt +15 -> 645
+    //   633: fload 7
+    //   635: f2i
+    //   636: ifle +9 -> 645
+    //   639: fload 8
+    //   641: f2i
+    //   642: ifgt +74 -> 716
+    //   645: ldc 62
+    //   647: ldc 179
+    //   649: iconst_5
+    //   650: anewarray 54	java/lang/Object
+    //   653: dup
+    //   654: iconst_0
+    //   655: fload_3
+    //   656: invokestatic 155	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   659: aastore
+    //   660: dup
+    //   661: iconst_1
+    //   662: fload 6
+    //   664: invokestatic 155	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   667: aastore
+    //   668: dup
+    //   669: iconst_2
+    //   670: fload 5
+    //   672: invokestatic 155	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   675: aastore
+    //   676: dup
+    //   677: iconst_3
+    //   678: fload 4
+    //   680: invokestatic 155	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   683: aastore
+    //   684: dup
+    //   685: iconst_4
+    //   686: iload 13
+    //   688: invokestatic 184	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   691: aastore
+    //   692: invokestatic 187	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   695: new 50	com/tencent/mm/plugin/appbrand/jsapi/file/i$a
+    //   698: dup
+    //   699: ldc 189
+    //   701: iconst_0
+    //   702: anewarray 54	java/lang/Object
+    //   705: invokespecial 57	com/tencent/mm/plugin/appbrand/jsapi/file/i$a:<init>	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   708: astore_0
+    //   709: ldc 34
+    //   711: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   714: aload_0
+    //   715: areturn
+    //   716: fload 5
+    //   718: fload 10
+    //   720: fcmpl
+    //   721: ifne +11 -> 732
+    //   724: fload 4
+    //   726: fload 11
+    //   728: fcmpl
+    //   729: ifeq +847 -> 1576
+    //   732: fload_3
+    //   733: f2i
+    //   734: istore 14
+    //   736: fload 6
+    //   738: f2i
+    //   739: istore 15
+    //   741: fload 5
+    //   743: f2i
+    //   744: istore 16
+    //   746: fload 4
+    //   748: f2i
+    //   749: istore 17
+    //   751: aload 21
+    //   753: iload 14
+    //   755: iload 15
+    //   757: iload 16
+    //   759: iload 17
+    //   761: aconst_null
+    //   762: iconst_0
+    //   763: invokestatic 193	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
+    //   766: astore 22
+    //   768: aload 21
+    //   770: invokevirtual 196	android/graphics/Bitmap:recycle	()V
+    //   773: aload 22
+    //   775: astore 21
+    //   777: aload 21
+    //   779: ifnonnull +31 -> 810
+    //   782: ldc 62
+    //   784: ldc 198
+    //   786: invokestatic 200	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   789: new 50	com/tencent/mm/plugin/appbrand/jsapi/file/i$a
+    //   792: dup
+    //   793: ldc 202
+    //   795: iconst_0
+    //   796: anewarray 54	java/lang/Object
+    //   799: invokespecial 57	com/tencent/mm/plugin/appbrand/jsapi/file/i$a:<init>	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   802: astore_0
+    //   803: ldc 34
+    //   805: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   808: aload_0
+    //   809: areturn
+    //   810: aload 21
+    //   812: invokevirtual 144	android/graphics/Bitmap:getWidth	()I
+    //   815: ifle +11 -> 826
+    //   818: aload 21
+    //   820: invokevirtual 147	android/graphics/Bitmap:getHeight	()I
+    //   823: ifgt +31 -> 854
+    //   826: ldc 62
+    //   828: ldc 204
+    //   830: invokestatic 200	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   833: new 50	com/tencent/mm/plugin/appbrand/jsapi/file/i$a
+    //   836: dup
+    //   837: ldc 202
+    //   839: iconst_0
+    //   840: anewarray 54	java/lang/Object
+    //   843: invokespecial 57	com/tencent/mm/plugin/appbrand/jsapi/file/i$a:<init>	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   846: astore_0
+    //   847: ldc 34
+    //   849: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   852: aload_0
+    //   853: areturn
+    //   854: fload 5
+    //   856: fload 7
+    //   858: fcmpl
+    //   859: ifne +11 -> 870
+    //   862: fload 4
+    //   864: fload 8
+    //   866: fcmpl
+    //   867: ifeq +291 -> 1158
+    //   870: fload 7
+    //   872: f2i
+    //   873: istore 14
+    //   875: fload 8
+    //   877: f2i
+    //   878: istore 15
+    //   880: aload 21
+    //   882: iload 14
+    //   884: iload 15
+    //   886: iconst_0
+    //   887: invokestatic 208	android/graphics/Bitmap:createScaledBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
+    //   890: astore 22
+    //   892: aload 21
+    //   894: invokevirtual 196	android/graphics/Bitmap:recycle	()V
+    //   897: aload 22
+    //   899: astore 21
+    //   901: aload 22
+    //   903: ifnonnull +255 -> 1158
+    //   906: ldc 101
+    //   908: invokestatic 107	com/tencent/luggage/a/e:U	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
+    //   911: checkcast 101	com/tencent/mm/plugin/appbrand/x/a
+    //   914: ldc2_w 110
+    //   917: ldc2_w 209
+    //   920: invokeinterface 115 5 0
+    //   925: new 50	com/tencent/mm/plugin/appbrand/jsapi/file/i$a
+    //   928: dup
+    //   929: ldc 212
+    //   931: iconst_0
+    //   932: anewarray 54	java/lang/Object
+    //   935: invokespecial 57	com/tencent/mm/plugin/appbrand/jsapi/file/i$a:<init>	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   938: astore_0
+    //   939: ldc 34
+    //   941: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   944: aload_0
+    //   945: areturn
+    //   946: astore_0
+    //   947: aload 21
+    //   949: astore 22
+    //   951: ldc 62
+    //   953: ldc 214
+    //   955: iconst_4
+    //   956: anewarray 54	java/lang/Object
+    //   959: dup
+    //   960: iconst_0
+    //   961: aload 22
+    //   963: invokevirtual 144	android/graphics/Bitmap:getWidth	()I
+    //   966: invokestatic 184	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   969: aastore
+    //   970: dup
+    //   971: iconst_1
+    //   972: aload 22
+    //   974: invokevirtual 147	android/graphics/Bitmap:getHeight	()I
+    //   977: invokestatic 184	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   980: aastore
+    //   981: dup
+    //   982: iconst_2
+    //   983: fload 7
+    //   985: invokestatic 155	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   988: aastore
+    //   989: dup
+    //   990: iconst_3
+    //   991: fload 8
+    //   993: invokestatic 155	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   996: aastore
+    //   997: invokestatic 70	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1000: ldc 62
+    //   1002: aload_0
+    //   1003: ldc 216
+    //   1005: iconst_0
+    //   1006: anewarray 54	java/lang/Object
+    //   1009: invokestatic 220	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1012: ldc 101
+    //   1014: invokestatic 107	com/tencent/luggage/a/e:U	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
+    //   1017: checkcast 101	com/tencent/mm/plugin/appbrand/x/a
+    //   1020: ldc2_w 110
+    //   1023: ldc2_w 209
+    //   1026: invokeinterface 115 5 0
+    //   1031: new 50	com/tencent/mm/plugin/appbrand/jsapi/file/i$a
+    //   1034: dup
+    //   1035: ldc 212
+    //   1037: iconst_0
+    //   1038: anewarray 54	java/lang/Object
+    //   1041: invokespecial 57	com/tencent/mm/plugin/appbrand/jsapi/file/i$a:<init>	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1044: astore_0
+    //   1045: ldc 34
+    //   1047: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1050: aload_0
+    //   1051: areturn
+    //   1052: astore_0
+    //   1053: aload 21
+    //   1055: astore 22
+    //   1057: ldc 62
+    //   1059: ldc 222
+    //   1061: iconst_4
+    //   1062: anewarray 54	java/lang/Object
+    //   1065: dup
+    //   1066: iconst_0
+    //   1067: aload 22
+    //   1069: invokevirtual 144	android/graphics/Bitmap:getWidth	()I
+    //   1072: invokestatic 184	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1075: aastore
+    //   1076: dup
+    //   1077: iconst_1
+    //   1078: aload 22
+    //   1080: invokevirtual 147	android/graphics/Bitmap:getHeight	()I
+    //   1083: invokestatic 184	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1086: aastore
+    //   1087: dup
+    //   1088: iconst_2
+    //   1089: fload 7
+    //   1091: invokestatic 155	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   1094: aastore
+    //   1095: dup
+    //   1096: iconst_3
+    //   1097: fload 8
+    //   1099: invokestatic 155	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   1102: aastore
+    //   1103: invokestatic 70	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1106: ldc 62
+    //   1108: aload_0
+    //   1109: ldc 224
+    //   1111: iconst_0
+    //   1112: anewarray 54	java/lang/Object
+    //   1115: invokestatic 220	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1118: ldc 101
+    //   1120: invokestatic 107	com/tencent/luggage/a/e:U	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
+    //   1123: checkcast 101	com/tencent/mm/plugin/appbrand/x/a
+    //   1126: ldc2_w 110
+    //   1129: ldc2_w 225
+    //   1132: invokeinterface 115 5 0
+    //   1137: new 50	com/tencent/mm/plugin/appbrand/jsapi/file/i$a
+    //   1140: dup
+    //   1141: ldc 228
+    //   1143: iconst_0
+    //   1144: anewarray 54	java/lang/Object
+    //   1147: invokespecial 57	com/tencent/mm/plugin/appbrand/jsapi/file/i$a:<init>	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1150: astore_0
+    //   1151: ldc 34
+    //   1153: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1156: aload_0
+    //   1157: areturn
+    //   1158: aload_1
+    //   1159: invokestatic 234	com/tencent/mm/plugin/appbrand/jsapi/c/d:ah	(Lorg/json/JSONObject;)Landroid/graphics/Bitmap$CompressFormat;
+    //   1162: astore 23
+    //   1164: aload 23
+    //   1166: getstatic 240	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   1169: if_acmpne +404 -> 1573
+    //   1172: aload 21
+    //   1174: invokevirtual 144	android/graphics/Bitmap:getWidth	()I
+    //   1177: aload 21
+    //   1179: invokevirtual 147	android/graphics/Bitmap:getHeight	()I
+    //   1182: getstatic 246	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
+    //   1185: invokestatic 249	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   1188: astore 22
+    //   1190: new 251	android/graphics/Canvas
+    //   1193: dup
+    //   1194: aload 22
+    //   1196: invokespecial 254	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
+    //   1199: aload 21
+    //   1201: fconst_0
+    //   1202: fconst_0
+    //   1203: aconst_null
+    //   1204: invokevirtual 258	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;FFLandroid/graphics/Paint;)V
+    //   1207: aload 22
+    //   1209: astore 21
+    //   1211: aload_0
+    //   1212: invokevirtual 262	com/tencent/mm/plugin/appbrand/page/ad:getAppId	()Ljava/lang/String;
+    //   1215: ldc_w 264
+    //   1218: iload 13
+    //   1220: invokestatic 269	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   1223: invokevirtual 273	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   1226: invokestatic 279	com/tencent/mm/plugin/appbrand/appstorage/AppBrandLocalMediaObjectManager:genMediaFilePath	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   1229: astore 22
+    //   1231: aload 21
+    //   1233: aload_1
+    //   1234: invokestatic 282	com/tencent/mm/plugin/appbrand/jsapi/c/d:ag	(Lorg/json/JSONObject;)I
+    //   1237: aload 23
+    //   1239: aload 22
+    //   1241: iconst_1
+    //   1242: invokestatic 288	com/tencent/mm/sdk/platformtools/BitmapUtil:saveBitmapToImage	(Landroid/graphics/Bitmap;ILandroid/graphics/Bitmap$CompressFormat;Ljava/lang/String;Z)Z
+    //   1245: pop
+    //   1246: aload_0
+    //   1247: invokevirtual 262	com/tencent/mm/plugin/appbrand/page/ad:getAppId	()Ljava/lang/String;
+    //   1250: astore_1
+    //   1251: aload 23
+    //   1253: getstatic 291	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   1256: if_acmpne +109 -> 1365
+    //   1259: ldc_w 293
+    //   1262: astore_0
+    //   1263: aload_1
+    //   1264: aload 22
+    //   1266: aload_0
+    //   1267: iconst_1
+    //   1268: invokestatic 297	com/tencent/mm/plugin/appbrand/appstorage/AppBrandLocalMediaObjectManager:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandLocalMediaObject;
+    //   1271: astore_0
+    //   1272: aload_0
+    //   1273: ifnonnull +99 -> 1372
+    //   1276: ldc 62
+    //   1278: ldc_w 299
+    //   1281: iconst_1
+    //   1282: anewarray 54	java/lang/Object
+    //   1285: dup
+    //   1286: iconst_0
+    //   1287: iload 13
+    //   1289: invokestatic 184	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1292: aastore
+    //   1293: invokestatic 70	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1296: new 50	com/tencent/mm/plugin/appbrand/jsapi/file/i$a
+    //   1299: dup
+    //   1300: ldc_w 301
+    //   1303: iconst_0
+    //   1304: anewarray 54	java/lang/Object
+    //   1307: invokespecial 57	com/tencent/mm/plugin/appbrand/jsapi/file/i$a:<init>	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1310: astore_0
+    //   1311: ldc 34
+    //   1313: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1316: aload_0
+    //   1317: areturn
+    //   1318: astore_0
+    //   1319: ldc 62
+    //   1321: ldc_w 303
+    //   1324: iconst_2
+    //   1325: anewarray 54	java/lang/Object
+    //   1328: dup
+    //   1329: iconst_0
+    //   1330: iload 13
+    //   1332: invokestatic 184	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1335: aastore
+    //   1336: dup
+    //   1337: iconst_1
+    //   1338: aload_0
+    //   1339: aastore
+    //   1340: invokestatic 70	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1343: new 50	com/tencent/mm/plugin/appbrand/jsapi/file/i$a
+    //   1346: dup
+    //   1347: ldc_w 305
+    //   1350: iconst_0
+    //   1351: anewarray 54	java/lang/Object
+    //   1354: invokespecial 57	com/tencent/mm/plugin/appbrand/jsapi/file/i$a:<init>	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1357: astore_0
+    //   1358: ldc 34
+    //   1360: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1363: aload_0
+    //   1364: areturn
+    //   1365: ldc_w 307
+    //   1368: astore_0
+    //   1369: goto -106 -> 1263
+    //   1372: new 309	java/util/HashMap
+    //   1375: dup
+    //   1376: invokespecial 310	java/util/HashMap:<init>	()V
+    //   1379: astore_1
+    //   1380: aload_1
+    //   1381: ldc_w 312
+    //   1384: aload_0
+    //   1385: getfield 317	com/tencent/mm/plugin/appbrand/appstorage/AppBrandLocalMediaObject:hHB	Ljava/lang/String;
+    //   1388: invokeinterface 323 3 0
+    //   1393: pop
+    //   1394: ldc 62
+    //   1396: ldc_w 325
+    //   1399: iconst_2
+    //   1400: anewarray 54	java/lang/Object
+    //   1403: dup
+    //   1404: iconst_0
+    //   1405: aload_0
+    //   1406: getfield 317	com/tencent/mm/plugin/appbrand/appstorage/AppBrandLocalMediaObject:hHB	Ljava/lang/String;
+    //   1409: aastore
+    //   1410: dup
+    //   1411: iconst_1
+    //   1412: aload_0
+    //   1413: getfield 328	com/tencent/mm/plugin/appbrand/appstorage/AppBrandLocalMediaObject:onG	Ljava/lang/String;
+    //   1416: aastore
+    //   1417: invokestatic 331	com/tencent/mm/sdk/platformtools/Log:v	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1420: new 50	com/tencent/mm/plugin/appbrand/jsapi/file/i$a
+    //   1423: dup
+    //   1424: ldc_w 333
+    //   1427: iconst_0
+    //   1428: anewarray 54	java/lang/Object
+    //   1431: invokespecial 57	com/tencent/mm/plugin/appbrand/jsapi/file/i$a:<init>	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1434: aload_1
+    //   1435: invokevirtual 337	com/tencent/mm/plugin/appbrand/jsapi/file/i$a:N	(Ljava/util/Map;)Lcom/tencent/mm/plugin/appbrand/jsapi/file/i$a;
+    //   1438: astore_0
+    //   1439: ldc 34
+    //   1441: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1444: aload_0
+    //   1445: areturn
+    //   1446: astore_0
+    //   1447: ldc 62
+    //   1449: aload_0
+    //   1450: ldc_w 339
+    //   1453: iconst_0
+    //   1454: anewarray 54	java/lang/Object
+    //   1457: invokestatic 220	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1460: ldc 101
+    //   1462: invokestatic 107	com/tencent/luggage/a/e:U	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
+    //   1465: checkcast 101	com/tencent/mm/plugin/appbrand/x/a
+    //   1468: ldc2_w 110
+    //   1471: ldc2_w 340
+    //   1474: invokeinterface 115 5 0
+    //   1479: new 50	com/tencent/mm/plugin/appbrand/jsapi/file/i$a
+    //   1482: dup
+    //   1483: ldc_w 343
+    //   1486: iconst_0
+    //   1487: anewarray 54	java/lang/Object
+    //   1490: invokespecial 57	com/tencent/mm/plugin/appbrand/jsapi/file/i$a:<init>	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1493: astore_0
+    //   1494: ldc 34
+    //   1496: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1499: aload_0
+    //   1500: areturn
+    //   1501: astore_0
+    //   1502: ldc 62
+    //   1504: aload_0
+    //   1505: ldc_w 345
+    //   1508: iconst_0
+    //   1509: anewarray 54	java/lang/Object
+    //   1512: invokestatic 220	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1515: ldc 101
+    //   1517: invokestatic 107	com/tencent/luggage/a/e:U	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
+    //   1520: checkcast 101	com/tencent/mm/plugin/appbrand/x/a
+    //   1523: ldc2_w 110
+    //   1526: ldc2_w 346
+    //   1529: lconst_1
+    //   1530: iconst_0
+    //   1531: invokeinterface 351 8 0
+    //   1536: new 50	com/tencent/mm/plugin/appbrand/jsapi/file/i$a
+    //   1539: dup
+    //   1540: ldc_w 353
+    //   1543: iconst_1
+    //   1544: anewarray 54	java/lang/Object
+    //   1547: dup
+    //   1548: iconst_0
+    //   1549: aload_0
+    //   1550: invokevirtual 356	java/lang/RuntimeException:toString	()Ljava/lang/String;
+    //   1553: aastore
+    //   1554: invokespecial 57	com/tencent/mm/plugin/appbrand/jsapi/file/i$a:<init>	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1557: astore_0
+    //   1558: ldc 34
+    //   1560: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1563: aload_0
+    //   1564: areturn
+    //   1565: astore_0
+    //   1566: goto -509 -> 1057
+    //   1569: astore_0
+    //   1570: goto -619 -> 951
+    //   1573: goto -362 -> 1211
+    //   1576: goto -799 -> 777
+    //   1579: goto -1093 -> 486
+    //   1582: goto +51 -> 1633
+    //   1585: fload 5
+    //   1587: fstore 6
+    //   1589: fload 9
+    //   1591: fstore 4
+    //   1593: fload 8
+    //   1595: fstore 5
+    //   1597: fload 7
+    //   1599: fstore_3
+    //   1600: goto +17 -> 1617
+    //   1603: aconst_null
+    //   1604: astore 21
+    //   1606: goto -1479 -> 127
+    //   1609: ldc2_w 357
+    //   1612: lstore 19
+    //   1614: goto -1456 -> 158
+    //   1617: fload_3
+    //   1618: fload 5
+    //   1620: fadd
+    //   1621: fload 10
+    //   1623: fcmpl
+    //   1624: ifle -42 -> 1582
+    //   1627: fload 10
+    //   1629: fload_3
+    //   1630: fsub
+    //   1631: fstore 5
+    //   1633: fload 6
+    //   1635: fload 4
+    //   1637: fadd
+    //   1638: fload 11
+    //   1640: fcmpl
+    //   1641: ifle -62 -> 1579
+    //   1644: fload 11
+    //   1646: fload 6
+    //   1648: fsub
+    //   1649: fstore 4
+    //   1651: goto -1165 -> 486
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1639	0	paramad	ad
-    //   0	1639	1	paramJSONObject	JSONObject
-    //   0	1639	2	paramBoolean	boolean
-    //   414	1201	3	f1	float
-    //   433	1202	4	f2	float
-    //   313	1304	5	f3	float
-    //   250	1382	6	f4	float
-    //   303	1280	7	f5	float
-    //   325	1254	8	f6	float
-    //   337	1238	9	f7	float
-    //   226	1387	10	f8	float
-    //   234	1396	11	f9	float
-    //   242	213	12	f10	float
-    //   11	1308	13	i	int
-    //   731	149	14	j	int
-    //   736	146	15	k	int
-    //   741	14	16	m	int
-    //   746	11	17	n	int
+    //   0	1654	0	paramad	ad
+    //   0	1654	1	paramJSONObject	JSONObject
+    //   0	1654	2	paramBoolean	boolean
+    //   417	1213	3	f1	float
+    //   436	1214	4	f2	float
+    //   316	1316	5	f3	float
+    //   253	1394	6	f4	float
+    //   306	1292	7	f5	float
+    //   328	1266	8	f6	float
+    //   340	1250	9	f7	float
+    //   229	1399	10	f8	float
+    //   237	1408	11	f9	float
+    //   245	213	12	f10	float
+    //   11	1320	13	i	int
+    //   734	149	14	j	int
+    //   739	146	15	k	int
+    //   744	14	16	m	int
+    //   749	11	17	n	int
     //   93	56	18	bool	boolean
-    //   156	1442	19	l	long
-    //   84	1506	21	localObject1	Object
-    //   763	490	22	localObject2	Object
-    //   1150	90	23	localCompressFormat	android.graphics.Bitmap.CompressFormat
+    //   156	1457	19	l	long
+    //   84	1521	21	localObject1	Object
+    //   766	499	22	localObject2	Object
+    //   1162	90	23	localCompressFormat	android.graphics.Bitmap.CompressFormat
     // Exception table:
     //   from	to	target	type
     //   5	13	38	org/json/JSONException
-    //   877	894	940	java/lang/NullPointerException
-    //   877	894	1043	java/lang/IllegalArgumentException
-    //   1219	1234	1306	java/io/IOException
-    //   5	13	1434	java/lang/OutOfMemoryError
-    //   17	31	1434	java/lang/OutOfMemoryError
-    //   39	68	1434	java/lang/OutOfMemoryError
-    //   75	95	1434	java/lang/OutOfMemoryError
-    //   100	110	1434	java/lang/OutOfMemoryError
-    //   115	127	1434	java/lang/OutOfMemoryError
-    //   132	148	1434	java/lang/OutOfMemoryError
-    //   158	180	1434	java/lang/OutOfMemoryError
-    //   187	217	1434	java/lang/OutOfMemoryError
-    //   220	382	1434	java/lang/OutOfMemoryError
-    //   422	431	1434	java/lang/OutOfMemoryError
-    //   442	452	1434	java/lang/OutOfMemoryError
-    //   452	472	1434	java/lang/OutOfMemoryError
-    //   483	584	1434	java/lang/OutOfMemoryError
-    //   642	706	1434	java/lang/OutOfMemoryError
-    //   748	770	1434	java/lang/OutOfMemoryError
-    //   779	800	1434	java/lang/OutOfMemoryError
-    //   807	823	1434	java/lang/OutOfMemoryError
-    //   823	844	1434	java/lang/OutOfMemoryError
-    //   877	894	1434	java/lang/OutOfMemoryError
-    //   903	933	1434	java/lang/OutOfMemoryError
-    //   945	1036	1434	java/lang/OutOfMemoryError
-    //   1048	1139	1434	java/lang/OutOfMemoryError
-    //   1146	1195	1434	java/lang/OutOfMemoryError
-    //   1199	1219	1434	java/lang/OutOfMemoryError
-    //   1219	1234	1434	java/lang/OutOfMemoryError
-    //   1234	1247	1434	java/lang/OutOfMemoryError
-    //   1251	1260	1434	java/lang/OutOfMemoryError
-    //   1264	1299	1434	java/lang/OutOfMemoryError
-    //   1307	1346	1434	java/lang/OutOfMemoryError
-    //   1360	1427	1434	java/lang/OutOfMemoryError
-    //   5	13	1486	java/lang/RuntimeException
-    //   17	31	1486	java/lang/RuntimeException
-    //   39	68	1486	java/lang/RuntimeException
-    //   75	95	1486	java/lang/RuntimeException
-    //   100	110	1486	java/lang/RuntimeException
-    //   115	127	1486	java/lang/RuntimeException
-    //   132	148	1486	java/lang/RuntimeException
-    //   158	180	1486	java/lang/RuntimeException
-    //   187	217	1486	java/lang/RuntimeException
-    //   220	382	1486	java/lang/RuntimeException
-    //   422	431	1486	java/lang/RuntimeException
-    //   442	452	1486	java/lang/RuntimeException
-    //   452	472	1486	java/lang/RuntimeException
-    //   483	584	1486	java/lang/RuntimeException
-    //   642	706	1486	java/lang/RuntimeException
-    //   748	770	1486	java/lang/RuntimeException
-    //   779	800	1486	java/lang/RuntimeException
-    //   807	823	1486	java/lang/RuntimeException
-    //   823	844	1486	java/lang/RuntimeException
-    //   877	894	1486	java/lang/RuntimeException
-    //   903	933	1486	java/lang/RuntimeException
-    //   945	1036	1486	java/lang/RuntimeException
-    //   1048	1139	1486	java/lang/RuntimeException
-    //   1146	1195	1486	java/lang/RuntimeException
-    //   1199	1219	1486	java/lang/RuntimeException
-    //   1219	1234	1486	java/lang/RuntimeException
-    //   1234	1247	1486	java/lang/RuntimeException
-    //   1251	1260	1486	java/lang/RuntimeException
-    //   1264	1299	1486	java/lang/RuntimeException
-    //   1307	1346	1486	java/lang/RuntimeException
-    //   1360	1427	1486	java/lang/RuntimeException
-    //   903	933	1550	java/lang/IllegalArgumentException
-    //   903	933	1554	java/lang/NullPointerException
+    //   880	897	946	java/lang/NullPointerException
+    //   880	897	1052	java/lang/IllegalArgumentException
+    //   1231	1246	1318	java/io/IOException
+    //   5	13	1446	java/lang/OutOfMemoryError
+    //   17	31	1446	java/lang/OutOfMemoryError
+    //   39	68	1446	java/lang/OutOfMemoryError
+    //   75	95	1446	java/lang/OutOfMemoryError
+    //   100	110	1446	java/lang/OutOfMemoryError
+    //   115	127	1446	java/lang/OutOfMemoryError
+    //   132	148	1446	java/lang/OutOfMemoryError
+    //   158	183	1446	java/lang/OutOfMemoryError
+    //   190	220	1446	java/lang/OutOfMemoryError
+    //   223	385	1446	java/lang/OutOfMemoryError
+    //   425	434	1446	java/lang/OutOfMemoryError
+    //   445	455	1446	java/lang/OutOfMemoryError
+    //   455	475	1446	java/lang/OutOfMemoryError
+    //   486	587	1446	java/lang/OutOfMemoryError
+    //   645	709	1446	java/lang/OutOfMemoryError
+    //   751	773	1446	java/lang/OutOfMemoryError
+    //   782	803	1446	java/lang/OutOfMemoryError
+    //   810	826	1446	java/lang/OutOfMemoryError
+    //   826	847	1446	java/lang/OutOfMemoryError
+    //   880	897	1446	java/lang/OutOfMemoryError
+    //   906	939	1446	java/lang/OutOfMemoryError
+    //   951	1045	1446	java/lang/OutOfMemoryError
+    //   1057	1151	1446	java/lang/OutOfMemoryError
+    //   1158	1207	1446	java/lang/OutOfMemoryError
+    //   1211	1231	1446	java/lang/OutOfMemoryError
+    //   1231	1246	1446	java/lang/OutOfMemoryError
+    //   1246	1259	1446	java/lang/OutOfMemoryError
+    //   1263	1272	1446	java/lang/OutOfMemoryError
+    //   1276	1311	1446	java/lang/OutOfMemoryError
+    //   1319	1358	1446	java/lang/OutOfMemoryError
+    //   1372	1439	1446	java/lang/OutOfMemoryError
+    //   5	13	1501	java/lang/RuntimeException
+    //   17	31	1501	java/lang/RuntimeException
+    //   39	68	1501	java/lang/RuntimeException
+    //   75	95	1501	java/lang/RuntimeException
+    //   100	110	1501	java/lang/RuntimeException
+    //   115	127	1501	java/lang/RuntimeException
+    //   132	148	1501	java/lang/RuntimeException
+    //   158	183	1501	java/lang/RuntimeException
+    //   190	220	1501	java/lang/RuntimeException
+    //   223	385	1501	java/lang/RuntimeException
+    //   425	434	1501	java/lang/RuntimeException
+    //   445	455	1501	java/lang/RuntimeException
+    //   455	475	1501	java/lang/RuntimeException
+    //   486	587	1501	java/lang/RuntimeException
+    //   645	709	1501	java/lang/RuntimeException
+    //   751	773	1501	java/lang/RuntimeException
+    //   782	803	1501	java/lang/RuntimeException
+    //   810	826	1501	java/lang/RuntimeException
+    //   826	847	1501	java/lang/RuntimeException
+    //   880	897	1501	java/lang/RuntimeException
+    //   906	939	1501	java/lang/RuntimeException
+    //   951	1045	1501	java/lang/RuntimeException
+    //   1057	1151	1501	java/lang/RuntimeException
+    //   1158	1207	1501	java/lang/RuntimeException
+    //   1211	1231	1501	java/lang/RuntimeException
+    //   1231	1246	1501	java/lang/RuntimeException
+    //   1246	1259	1501	java/lang/RuntimeException
+    //   1263	1272	1501	java/lang/RuntimeException
+    //   1276	1311	1501	java/lang/RuntimeException
+    //   1319	1358	1501	java/lang/RuntimeException
+    //   1372	1439	1501	java/lang/RuntimeException
+    //   906	939	1565	java/lang/IllegalArgumentException
+    //   906	939	1569	java/lang/NullPointerException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.game.d.d
  * JD-Core Version:    0.7.0.1
  */

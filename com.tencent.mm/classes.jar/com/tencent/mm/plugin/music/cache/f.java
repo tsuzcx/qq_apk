@@ -10,23 +10,23 @@ import java.util.List;
 public final class f
   implements b
 {
-  private static long fnE = 0L;
-  private List<String> fnD;
+  private static long hrP = 0L;
+  private List<String> hrO;
   
   public f(List<String> paramList)
   {
     AppMethodBeat.i(137172);
-    this.fnD = new ArrayList(10);
+    this.hrO = new ArrayList(10);
     if (!paramList.isEmpty()) {
-      this.fnD.addAll(paramList);
+      this.hrO.addAll(paramList);
     }
     AppMethodBeat.o(137172);
   }
   
-  private boolean hv(String paramString)
+  private boolean iW(String paramString)
   {
     AppMethodBeat.i(137174);
-    Iterator localIterator = this.fnD.iterator();
+    Iterator localIterator = this.hrO.iterator();
     while (localIterator.hasNext()) {
       if (paramString.contains((String)localIterator.next()))
       {
@@ -38,22 +38,22 @@ public final class f
     return false;
   }
   
-  public final void fdP()
+  public final void gmQ()
   {
     final long l = 0L;
     AppMethodBeat.i(137173);
-    if (fnE == 0L)
+    if (hrP == 0L)
     {
-      if (!e.fdV()) {
+      if (!e.gmX()) {
         break label71;
       }
-      l = ((c)com.tencent.mm.plugin.music.f.c.b.bm(c.class)).fdS();
+      l = ((c)com.tencent.mm.plugin.music.e.c.b.bU(c.class)).gmT();
     }
     for (;;)
     {
-      fnE = l;
+      hrP = l;
       l = System.currentTimeMillis();
-      if (l - fnE > FPD.longValue()) {
+      if (l - hrP > LKz.longValue()) {
         break;
       }
       Log.e("MicroMsg.Music.PieceCacheCleanController", "startClean the last clean time is in MUSIC_NO_SCAN_TIME time");
@@ -62,7 +62,7 @@ public final class f
       label71:
       Log.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
     }
-    fnE = l;
+    hrP = l;
     Log.i("MicroMsg.Music.PieceCacheCleanController", "start clean music file");
     ThreadPool.post(new Runnable()
     {
@@ -70,8 +70,8 @@ public final class f
       {
         AppMethodBeat.i(137171);
         long l = l;
-        if (e.fdV()) {
-          ((c)com.tencent.mm.plugin.music.f.c.b.bm(c.class)).OD(l);
+        if (e.gmX()) {
+          ((c)com.tencent.mm.plugin.music.e.c.b.bU(c.class)).sA(l);
         }
         f.a(f.this);
         AppMethodBeat.o(137171);

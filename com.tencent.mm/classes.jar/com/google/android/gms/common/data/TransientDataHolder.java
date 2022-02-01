@@ -2,7 +2,6 @@ package com.google.android.gms.common.data;
 
 import android.content.ContentValues;
 import android.os.Bundle;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class TransientDataHolder
@@ -38,7 +37,6 @@ public final class TransientDataHolder
     AppMethodBeat.o(11680);
   }
   
-  @VisibleForTesting
   public final DataHolder build(int paramInt)
   {
     AppMethodBeat.i(11687);
@@ -90,7 +88,6 @@ public final class TransientDataHolder
     AppMethodBeat.o(11682);
   }
   
-  @VisibleForTesting
   public final void removeRows(String paramString, Object paramObject)
   {
     AppMethodBeat.i(11683);
@@ -124,7 +121,7 @@ public final class TransientDataHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.data.TransientDataHolder
  * JD-Core Version:    0.7.0.1
  */

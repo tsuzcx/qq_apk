@@ -5,21 +5,21 @@ import android.graphics.Point;
 import android.util.Size;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ax;
+import com.tencent.mm.ui.bf;
 
 final class HybridOpenMaterialView$c
 {
-  public final int qoA;
-  public final Size qoz;
+  public final int pvk;
+  public final Size ttg;
   
   public HybridOpenMaterialView$c(Context paramContext)
   {
-    AppMethodBeat.i(272391);
-    Point localPoint = ax.au(paramContext);
-    this.qoz = new Size(localPoint.x, localPoint.y);
-    this.qoA = ax.aB(paramContext);
-    Log.i("MicroMsg.AppBrand.HybridOpenMaterialView", "ScreenInfo#<init>, navigationBarHeight: " + this.qoA);
-    AppMethodBeat.o(272391);
+    AppMethodBeat.i(323702);
+    Point localPoint = bf.bf(paramContext);
+    this.ttg = new Size(localPoint.x, localPoint.y);
+    this.pvk = bf.bk(paramContext);
+    Log.i("MicroMsg.AppBrand.HybridOpenMaterialView", "ScreenInfo#<init>, navigationBarHeight: " + this.pvk);
+    AppMethodBeat.o(323702);
   }
 }
 

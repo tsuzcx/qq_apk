@@ -1,74 +1,61 @@
 package com.tencent.mm.plugin.appbrand.menu;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.ac;
-import com.tencent.mm.plugin.appbrand.jsapi.db;
+import com.tencent.mm.plugin.appbrand.jsapi.ad;
+import com.tencent.mm.plugin.appbrand.jsapi.ak;
+import com.tencent.mm.plugin.appbrand.jsapi.dl;
 import com.tencent.mm.plugin.appbrand.menu.a.a;
+import com.tencent.mm.plugin.appbrand.page.ah;
 import com.tencent.mm.plugin.appbrand.report.j;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class d
-  extends a<com.tencent.mm.plugin.appbrand.page.ah>
+  extends a<ah>
 {
-  private static final b qeP;
+  private static final a tjD;
   
   static
   {
-    AppMethodBeat.i(279700);
-    qeP = new b();
-    AppMethodBeat.o(279700);
+    AppMethodBeat.i(323831);
+    tjD = new a();
+    AppMethodBeat.o(323831);
   }
   
   public d()
   {
-    super(w.qfD.ordinal());
+    super(x.tkh.ordinal());
     AppMethodBeat.i(47623);
     AppMethodBeat.o(47623);
   }
   
-  public static enum a
-  {
-    static
-    {
-      AppMethodBeat.i(269642);
-      qeR = new a("HIDDEN", 0);
-      qeS = new a("SHOW_CLICKABLE", 1);
-      qeT = new a("SHOW_UNCLICKABLE", 2);
-      qeU = new a[] { qeR, qeS, qeT };
-      AppMethodBeat.o(269642);
-    }
-    
-    private a() {}
-  }
-  
-  public static final class b
-    implements com.tencent.mm.plugin.appbrand.jsapi.ah
+  public static final class a
+    implements ak
   {
     public String appId = "";
-    public String qeV = "";
+    public String tjF = "";
     
-    public final void agV(String paramString)
+    public final void ZS(String paramString)
     {
       int i = 1;
-      AppMethodBeat.i(257694);
+      AppMethodBeat.i(323891);
       Log.i("MicroMsg.MenuDelegate_CopyPath", "onReturnUrl %s", new Object[] { paramString });
       String str1 = this.appId;
-      String str2 = this.qeV;
+      String str2 = this.tjF;
       long l = Util.nowSecond();
       if (paramString.isEmpty()) {
         i = 2;
       }
       j.a(str1, str2, 26, "", l, i, 0);
-      paramString = db.oyi;
-      db.b(ac.osQ, this);
-      AppMethodBeat.o(257694);
+      paramString = dl.rBE;
+      dl.b(ad.rwN, this);
+      AppMethodBeat.o(323891);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.d
  * JD-Core Version:    0.7.0.1
  */

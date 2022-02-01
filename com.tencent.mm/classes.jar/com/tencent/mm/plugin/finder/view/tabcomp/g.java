@@ -1,26 +1,30 @@
 package com.tencent.mm.plugin.finder.view.tabcomp;
 
-import android.view.View;
-import android.view.Window;
-import androidx.viewpager.widget.ViewPager;
-import com.google.android.material.tabs.TabLayout;
-import com.tencent.mm.view.HardTouchableLayout;
-import kotlin.l;
+import android.view.ViewGroup;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/tabcomp/ITabContainer;", "", "getBackBtn", "Landroid/view/View;", "getLayoutId", "", "getTabLayout", "Lcom/google/android/material/tabs/TabLayout;", "getTabLayoutContainer", "Lcom/tencent/mm/view/HardTouchableLayout;", "getViewPager", "Landroidx/viewpager/widget/ViewPager;", "onLayoutInflated", "", "window", "Landroid/view/Window;", "plugin-finder_release"})
-public abstract interface g
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderBaseTab;", "", "()V", "index", "", "getIndex", "()I", "setIndex", "(I)V", "priority", "getPriority", "setPriority", "getLayoutId", "getTabMargin", "", "onTabInflated", "", "tabView", "Landroid/view/ViewGroup;", "onTabStatusChanged", "isSelected", "", "setTabRedDot", "redDotText", "", "isTabSelected", "setTabTitle", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract class g
 {
-  public abstract void c(Window paramWindow);
+  public int index;
+  public int priority = 2147483647;
   
-  public abstract TabLayout ejU();
+  public abstract void H(ViewGroup paramViewGroup);
   
-  public abstract HardTouchableLayout ejV();
+  public void a(boolean paramBoolean, ViewGroup paramViewGroup)
+  {
+    s.u(paramViewGroup, "tabView");
+  }
   
-  public abstract ViewPager ejW();
-  
-  public abstract View getBackBtn();
+  public int[] dTO()
+  {
+    return new int[] { 0, 0 };
+  }
   
   public abstract int getLayoutId();
+  
+  public abstract void vg(boolean paramBoolean);
 }
 
 

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@drawable/b0w" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="33.299988dip" android:textColor="@color/a2x" android:id="@id/g9d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="22.0dip" android:singleLine="true" />
-    <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:ellipsize="marquee" android:gravity="center" android:id="@id/g9g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="13.299988dip" android:layout_marginBottom="18.299988dip" android:maxLines="2" />
+<LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/fl5" android:background="@drawable/axz" android:paddingLeft="@dimen/cp" android:paddingTop="14.0dip" android:paddingRight="@dimen/df" android:paddingBottom="14.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/bd" android:textColor="@color/az" android:layout_gravity="center_vertical" android:id="@id/kxn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/k1e" android:alpha="0.8" />
+    <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
+    <TextView android:textSize="@dimen/bd" android:textColor="@color/az" android:layout_gravity="center_vertical" android:id="@id/kxo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:alpha="0.5" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:layout_width="13.0dip" android:layout_height="24.0dip" android:layout_marginLeft="@dimen/bv" android:src="@raw/icons_filled_arrow" app:iconAlpha="0.5" app:iconColor="@color/az" />
 </LinearLayout>

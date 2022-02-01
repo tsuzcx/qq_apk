@@ -1,5 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="@dimen/cb" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center" android:id="@id/b32" android:background="@drawable/ash" android:layout_width="5.0dip" android:layout_height="5.0dip" />
-</FrameLayout>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/krw" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_alignParentTop="true">
+        <ImageView android:id="@id/b0a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:src="@raw/actionbar_quit_webview_icon" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@string/bfi" />
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <TextView android:textSize="@dimen/t" android:textColor="@color/BW_100_Alpha_0_8" android:ellipsize="end" android:id="@id/b0p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxEms="16" android:singleLine="true" style="@style/lb" />
+            <TextView android:textSize="@dimen/m_" android:textColor="@color/BW_100_Alpha_0_5" android:layout_gravity="center_horizontal" android:id="@id/b0o" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <ImageView android:id="@id/b0b" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/cp" android:src="@raw/actionbar_icon_light_more" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/a0g" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/m50" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/krw">
+        <com.tencent.mm.ui.KeyboardLinearLayout android:orientation="vertical" android:id="@id/b03" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+                <com.tencent.mm.plugin.game.chatroom.view.ChatRoomStateView android:orientation="vertical" android:id="@id/b0n" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                <com.tencent.mm.plugin.game.chatroom.channel.ChatChannelPage android:id="@id/azk" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/b0n" />
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/b09" android:background="@drawable/lj" android:paddingLeft="@dimen/cp" android:paddingTop="@dimen/cd" android:paddingRight="@dimen/cp" android:paddingBottom="@dimen/cd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:layout_marginRight="@dimen/cp" android:layout_below="@id/b0n">
+                    <ImageView android:id="@id/hjx" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginRight="8.0dip" android:scaleType="fitXY" />
+                    <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/hju" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_weight="1.0" android:layout_centerVertical="true" />
+                    <ImageView android:id="@id/hk5" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:scaleType="fitXY" />
+                </LinearLayout>
+                <View android:id="@id/ffz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+                <LinearLayout android:orientation="horizontal" android:id="@id/agw" android:paddingTop="@dimen/df" android:paddingBottom="@dimen/df" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/ll" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_weight="1.0">
+                        <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_5" android:textColorHint="@color/BW_100_Alpha_0_5" android:gravity="center_vertical" android:layout_gravity="left" android:id="@id/bj8" android:layout_width="wrap_content" android:layout_height="fill_parent" android:hint="@string/f89" android:layout_weight="1.0" />
+                        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ce7" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@raw/icons_filled_sticker" app:iconColor="@color/az" />
+                    </LinearLayout>
+                    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:minWidth="48.0dip" android:minHeight="62.0dip">
+                        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/lwr" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip">
+                            <ImageView android:layout_gravity="center_horizontal" android:id="@id/lws" android:background="@drawable/amf" android:padding="@dimen/df" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/chat_room_panel_icon" android:scaleType="fitCenter" />
+                            <TextView android:textSize="10.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/lwt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
+                        </LinearLayout>
+                        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/itk" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip">
+                            <ImageView android:layout_gravity="center_horizontal" android:background="@drawable/amf" android:padding="@dimen/df" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/game_play" android:scaleType="fitCenter" />
+                            <TextView android:textSize="10.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/itl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/bvy" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                <com.tencent.mm.plugin.game.chatroom.view.GameChatCommentFooter android:id="@id/bjn" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            </RelativeLayout>
+        </com.tencent.mm.ui.KeyboardLinearLayout>
+        <com.tencent.mm.plugin.game.chatroom.view.JoinConfirmView android:orientation="vertical" android:id="@id/fe4" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</RelativeLayout>

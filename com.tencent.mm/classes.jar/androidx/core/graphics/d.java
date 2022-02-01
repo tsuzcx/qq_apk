@@ -6,35 +6,82 @@ import java.util.ArrayList;
 
 public final class d
 {
-  public static Path A(String paramString)
+  private static void a(ArrayList<b> paramArrayList, char paramChar, float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(250687);
+    AppMethodBeat.i(196176);
+    paramArrayList.add(new b(paramChar, paramArrayOfFloat));
+    AppMethodBeat.o(196176);
+  }
+  
+  public static boolean a(b[] paramArrayOfb1, b[] paramArrayOfb2)
+  {
+    if ((paramArrayOfb1 == null) || (paramArrayOfb2 == null)) {}
+    while (paramArrayOfb1.length != paramArrayOfb2.length) {
+      return false;
+    }
+    int i = 0;
+    for (;;)
+    {
+      if (i >= paramArrayOfb1.length) {
+        break label64;
+      }
+      if ((paramArrayOfb1[i].bqx != paramArrayOfb2[i].bqx) || (paramArrayOfb1[i].bqy.length != paramArrayOfb2[i].bqy.length)) {
+        break;
+      }
+      i += 1;
+    }
+    label64:
+    return true;
+  }
+  
+  public static b[] a(b[] paramArrayOfb)
+  {
+    AppMethodBeat.i(196142);
+    if (paramArrayOfb == null)
+    {
+      AppMethodBeat.o(196142);
+      return null;
+    }
+    b[] arrayOfb = new b[paramArrayOfb.length];
+    int i = 0;
+    while (i < paramArrayOfb.length)
+    {
+      arrayOfb[i] = new b(paramArrayOfb[i]);
+      i += 1;
+    }
+    AppMethodBeat.o(196142);
+    return arrayOfb;
+  }
+  
+  public static Path au(String paramString)
+  {
+    AppMethodBeat.i(196114);
     Path localPath = new Path();
-    b[] arrayOfb = B(paramString);
+    b[] arrayOfb = av(paramString);
     if (arrayOfb != null) {
       try
       {
         b.a(arrayOfb, localPath);
-        AppMethodBeat.o(250687);
+        AppMethodBeat.o(196114);
         return localPath;
       }
       catch (RuntimeException localRuntimeException)
       {
         paramString = new RuntimeException("Error in parsing ".concat(String.valueOf(paramString)), localRuntimeException);
-        AppMethodBeat.o(250687);
+        AppMethodBeat.o(196114);
         throw paramString;
       }
     }
-    AppMethodBeat.o(250687);
+    AppMethodBeat.o(196114);
     return null;
   }
   
-  public static b[] B(String paramString)
+  public static b[] av(String paramString)
   {
-    AppMethodBeat.i(250688);
+    AppMethodBeat.i(196130);
     if (paramString == null)
     {
-      AppMethodBeat.o(250688);
+      AppMethodBeat.o(196130);
       return null;
     }
     ArrayList localArrayList = new ArrayList();
@@ -42,11 +89,11 @@ public final class d
     int i = 0;
     while (j < paramString.length())
     {
-      j = g(paramString, j);
+      j = i(paramString, j);
       String str = paramString.substring(i, j).trim();
       if (str.length() > 0)
       {
-        float[] arrayOfFloat = C(str);
+        float[] arrayOfFloat = aw(str);
         a(localArrayList, str.charAt(0), arrayOfFloat);
       }
       int k = j + 1;
@@ -57,16 +104,16 @@ public final class d
       a(localArrayList, paramString.charAt(i), new float[0]);
     }
     paramString = (b[])localArrayList.toArray(new b[localArrayList.size()]);
-    AppMethodBeat.o(250688);
+    AppMethodBeat.o(196130);
     return paramString;
   }
   
-  private static float[] C(String paramString)
+  private static float[] aw(String paramString)
   {
-    AppMethodBeat.i(250692);
+    AppMethodBeat.i(196197);
     if ((paramString.charAt(0) == 'z') || (paramString.charAt(0) == 'Z'))
     {
-      AppMethodBeat.o(250692);
+      AppMethodBeat.o(196197);
       return new float[0];
     }
     for (;;)
@@ -83,7 +130,7 @@ public final class d
         j = 0;
         if (k < i2)
         {
-          locala.Kp = false;
+          locala.bqw = false;
           i = 0;
           i1 = 0;
           m = 0;
@@ -96,29 +143,29 @@ public final class d
           if ((n == k) || (i != 0)) {
             break label309;
           }
-          locala.Kp = true;
+          locala.bqw = true;
           i = 0;
           m = 1;
           break label311;
           label180:
-          locala.Kp = true;
+          locala.bqw = true;
           i = 0;
           m = 1;
           break label311;
-          locala.Ko = n;
-          m = locala.Ko;
+          locala.bqv = n;
+          m = locala.bqv;
           if (k < m)
           {
             i = j + 1;
             arrayOfFloat[j] = Float.parseFloat(paramString.substring(k, m));
-            if (!locala.Kp) {
+            if (!locala.bqw) {
               break label351;
             }
             k = m;
             j = i;
             continue;
-            arrayOfFloat = a(arrayOfFloat, j);
-            AppMethodBeat.o(250692);
+            arrayOfFloat = b(arrayOfFloat, j);
+            AppMethodBeat.o(196197);
             return arrayOfFloat;
           }
           break;
@@ -127,7 +174,7 @@ public final class d
       catch (NumberFormatException localNumberFormatException)
       {
         paramString = new RuntimeException("error in parsing \"" + paramString + "\"", localNumberFormatException);
-        AppMethodBeat.o(250692);
+        AppMethodBeat.o(196197);
         throw paramString;
       }
       int i = j;
@@ -161,122 +208,91 @@ public final class d
     }
   }
   
-  private static void a(ArrayList<b> paramArrayList, char paramChar, float[] paramArrayOfFloat)
+  public static void b(b[] paramArrayOfb1, b[] paramArrayOfb2)
   {
-    AppMethodBeat.i(250691);
-    paramArrayList.add(new b(paramChar, paramArrayOfFloat));
-    AppMethodBeat.o(250691);
-  }
-  
-  public static boolean a(b[] paramArrayOfb1, b[] paramArrayOfb2)
-  {
-    if ((paramArrayOfb1 == null) || (paramArrayOfb2 == null)) {}
-    while (paramArrayOfb1.length != paramArrayOfb2.length) {
-      return false;
-    }
     int i = 0;
-    for (;;)
+    while (i < paramArrayOfb2.length)
     {
-      if (i >= paramArrayOfb1.length) {
-        break label64;
-      }
-      if ((paramArrayOfb1[i].Kq != paramArrayOfb2[i].Kq) || (paramArrayOfb1[i].Kr.length != paramArrayOfb2[i].Kr.length)) {
-        break;
+      paramArrayOfb1[i].bqx = paramArrayOfb2[i].bqx;
+      int j = 0;
+      while (j < paramArrayOfb2[i].bqy.length)
+      {
+        paramArrayOfb1[i].bqy[j] = paramArrayOfb2[i].bqy[j];
+        j += 1;
       }
       i += 1;
     }
-    label64:
-    return true;
   }
   
-  static float[] a(float[] paramArrayOfFloat, int paramInt)
+  static float[] b(float[] paramArrayOfFloat, int paramInt)
   {
-    AppMethodBeat.i(250686);
+    AppMethodBeat.i(196103);
     if (paramInt < 0)
     {
       paramArrayOfFloat = new IllegalArgumentException();
-      AppMethodBeat.o(250686);
+      AppMethodBeat.o(196103);
       throw paramArrayOfFloat;
     }
     int i = paramArrayOfFloat.length;
     if (i < 0)
     {
       paramArrayOfFloat = new ArrayIndexOutOfBoundsException();
-      AppMethodBeat.o(250686);
+      AppMethodBeat.o(196103);
       throw paramArrayOfFloat;
     }
     paramInt += 0;
     i = Math.min(paramInt, i + 0);
     float[] arrayOfFloat = new float[paramInt];
     System.arraycopy(paramArrayOfFloat, 0, arrayOfFloat, 0, i);
-    AppMethodBeat.o(250686);
+    AppMethodBeat.o(196103);
     return arrayOfFloat;
   }
   
-  public static b[] a(b[] paramArrayOfb)
+  private static int i(String paramString, int paramInt)
   {
-    AppMethodBeat.i(250689);
-    if (paramArrayOfb == null)
-    {
-      AppMethodBeat.o(250689);
-      return null;
-    }
-    b[] arrayOfb = new b[paramArrayOfb.length];
-    int i = 0;
-    while (i < paramArrayOfb.length)
-    {
-      arrayOfb[i] = new b(paramArrayOfb[i]);
-      i += 1;
-    }
-    AppMethodBeat.o(250689);
-    return arrayOfb;
-  }
-  
-  private static int g(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(250690);
+    AppMethodBeat.i(196166);
     while (paramInt < paramString.length())
     {
       int i = paramString.charAt(paramInt);
       if ((((i - 65) * (i - 90) <= 0) || ((i - 97) * (i - 122) <= 0)) && (i != 101) && (i != 69))
       {
-        AppMethodBeat.o(250690);
+        AppMethodBeat.o(196166);
         return paramInt;
       }
       paramInt += 1;
     }
-    AppMethodBeat.o(250690);
+    AppMethodBeat.o(196166);
     return paramInt;
   }
   
   static final class a
   {
-    int Ko;
-    boolean Kp;
+    int bqv;
+    boolean bqw;
   }
   
   public static class b
   {
-    public char Kq;
-    public float[] Kr;
+    public char bqx;
+    public float[] bqy;
     
     b(char paramChar, float[] paramArrayOfFloat)
     {
-      this.Kq = paramChar;
-      this.Kr = paramArrayOfFloat;
+      this.bqx = paramChar;
+      this.bqy = paramArrayOfFloat;
     }
     
     b(b paramb)
     {
-      AppMethodBeat.i(250678);
-      this.Kq = paramb.Kq;
-      this.Kr = d.a(paramb.Kr, paramb.Kr.length);
-      AppMethodBeat.o(250678);
+      AppMethodBeat.i(196144);
+      this.bqx = paramb.bqx;
+      this.bqy = d.b(paramb.bqy, paramb.bqy.length);
+      AppMethodBeat.o(196144);
     }
     
     private static void a(Path paramPath, double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4, double paramDouble5, double paramDouble6, double paramDouble7, double paramDouble8, double paramDouble9)
     {
-      AppMethodBeat.i(250685);
+      AppMethodBeat.i(196194);
       int j = (int)Math.ceil(Math.abs(4.0D * paramDouble9 / 3.141592653589793D));
       double d6 = Math.cos(paramDouble7);
       double d7 = Math.sin(paramDouble7);
@@ -312,12 +328,12 @@ public final class d
         paramDouble8 = d2;
         paramDouble7 = d1;
       }
-      AppMethodBeat.o(250685);
+      AppMethodBeat.o(196194);
     }
     
     private static void a(Path paramPath, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, boolean paramBoolean1, boolean paramBoolean2)
     {
-      AppMethodBeat.i(250684);
+      AppMethodBeat.i(196182);
       double d5;
       double d6;
       double d7;
@@ -345,7 +361,7 @@ public final class d
         d12 = d11 * d11 + d10 * d10;
         if (d12 == 0.0D)
         {
-          AppMethodBeat.o(250684);
+          AppMethodBeat.o(196182);
           return;
         }
         d13 = 1.0D / d12 - 0.25D;
@@ -384,7 +400,7 @@ public final class d
         d3 *= paramFloat5;
         d2 = paramFloat6 * d2;
         a(paramPath, d3 * d6 - d2 * d7, d3 * d7 + d6 * d2, paramFloat5, paramFloat6, paramFloat1, paramFloat2, d5, d8, d1);
-        AppMethodBeat.o(250684);
+        AppMethodBeat.o(196182);
         return;
         d3 = d10 + d3;
         d2 -= d11;
@@ -396,7 +412,7 @@ public final class d
     
     public static void a(b[] paramArrayOfb, Path paramPath)
     {
-      AppMethodBeat.i(250682);
+      AppMethodBeat.i(196169);
       float[] arrayOfFloat1 = new float[6];
       int j = 109;
       int k = 0;
@@ -414,8 +430,8 @@ public final class d
       float f9;
       if (k < paramArrayOfb.length)
       {
-        int n = paramArrayOfb[k].Kq;
-        arrayOfFloat2 = paramArrayOfb[k].Kr;
+        int n = paramArrayOfb[k].bqx;
+        arrayOfFloat2 = paramArrayOfb[k].bqy;
         f5 = arrayOfFloat1[0];
         f4 = arrayOfFloat1[1];
         f6 = arrayOfFloat1[2];
@@ -783,21 +799,21 @@ public final class d
         arrayOfFloat1[3] = f3;
         arrayOfFloat1[4] = f1;
         arrayOfFloat1[5] = f2;
-        j = paramArrayOfb[k].Kq;
+        j = paramArrayOfb[k].bqx;
         k += 1;
         break;
-        AppMethodBeat.o(250682);
+        AppMethodBeat.o(196169);
         return;
       }
     }
     
     public final void a(b paramb1, b paramb2, float paramFloat)
     {
-      this.Kq = paramb1.Kq;
+      this.bqx = paramb1.bqx;
       int i = 0;
-      while (i < paramb1.Kr.length)
+      while (i < paramb1.bqy.length)
       {
-        this.Kr[i] = (paramb1.Kr[i] * (1.0F - paramFloat) + paramb2.Kr[i] * paramFloat);
+        this.bqy[i] = (paramb1.bqy[i] * (1.0F - paramFloat) + paramb2.bqy[i] * paramFloat);
         i += 1;
       }
     }
@@ -805,7 +821,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     androidx.core.graphics.d
  * JD-Core Version:    0.7.0.1
  */

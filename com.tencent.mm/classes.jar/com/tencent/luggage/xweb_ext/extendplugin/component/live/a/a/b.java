@@ -5,19 +5,19 @@ import com.tencent.luggage.xweb_ext.extendplugin.a;
 
 public abstract interface b
 {
+  public abstract void M(int paramInt, boolean paramBoolean);
+  
   public abstract void a(int paramInt1, int paramInt2, Bundle paramBundle);
   
-  public abstract void cp(int paramInt1, int paramInt2);
+  public abstract void de(int paramInt1, int paramInt2);
   
-  public abstract void e(int paramInt, Bundle paramBundle);
+  public abstract void f(int paramInt, Bundle paramBundle);
   
   public abstract void m(a parama);
-  
-  public abstract void x(int paramInt, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.live.a.a.b
  * JD-Core Version:    0.7.0.1
  */

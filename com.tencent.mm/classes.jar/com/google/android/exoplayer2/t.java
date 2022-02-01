@@ -4,19 +4,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class t
 {
-  public static final t aNq;
-  public final int aNr;
+  public static final t cHm;
+  public final int cHn;
   
   static
   {
     AppMethodBeat.i(92514);
-    aNq = new t(0);
+    cHm = new t(0);
     AppMethodBeat.o(92514);
   }
   
   public t(int paramInt)
   {
-    this.aNr = paramInt;
+    this.cHn = paramInt;
   }
   
   public final boolean equals(Object paramObject)
@@ -33,7 +33,7 @@ public final class t
       return false;
     }
     paramObject = (t)paramObject;
-    if (this.aNr == paramObject.aNr)
+    if (this.cHn == paramObject.cHn)
     {
       AppMethodBeat.o(92513);
       return true;
@@ -44,7 +44,7 @@ public final class t
   
   public final int hashCode()
   {
-    return this.aNr;
+    return this.cHn;
   }
 }
 

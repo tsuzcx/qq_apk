@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <CheckBoxPreference android:defaultValue="true" android:key="checkbox_preference_one" android:summary="@string/d5y" android:title="@string/d5x" />
-    <CheckBoxPreference android:defaultValue="false" android:key="settings_message_mute" android:title="@string/d17" />
-    <PreferenceFooterCategory android:key="settings_message_mute_desc" android:title="@string/d16" />
-    <CheckBoxPreference android:defaultValue="false" android:key="feed_reproduction" android:summary="@string/cnu" android:title="@string/cnq" />
-    <CheckBoxPreference android:defaultValue="true" android:key="feed_mv_reproduction" android:summary="@string/cnt" android:title="@string/cnr" />
-    <SummaryBelowPreference android:key="settings_blacklist" android:summary="@string/cih" android:title="@string/ci8" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <Preference android:key="phone_and_pad" android:title="@string/gc5" />
+    <Preference android:key="only_pad" android:title="@string/gc0" />
 </PreferenceScreen>

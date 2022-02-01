@@ -1,10 +1,8 @@
 package com.tencent.mm.compatible.b;
 
-import com.jg.JgMethodChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.nc;
-import com.tencent.mm.f.a.nc.a;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.autogen.a.oj;
+import com.tencent.mm.autogen.a.oj.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMStack;
@@ -15,55 +13,55 @@ import java.util.Iterator;
 
 public class g
 {
-  private static volatile g jmZ;
-  private static boolean jnb;
-  private static boolean jnc;
-  private static boolean jnd;
-  private static boolean jne;
-  private static int jng;
-  private static int jnh;
-  private static HashMap<Integer, String> jnj;
-  private static int jnk;
-  private static int jnl;
-  private static HashMap<Integer, String> jnm;
-  private static int jnn;
-  private static int jno;
-  private static HashMap<Integer, String> jnp;
-  private int jna = -1;
-  private int jnf = 0;
+  private static volatile g lQk;
+  private static boolean lQm;
+  private static boolean lQn;
+  private static boolean lQo;
+  private static boolean lQp;
+  private static int lQr;
+  private static int lQs;
+  private static HashMap<Integer, String> lQt;
+  private static int lQu;
+  private static int lQv;
+  private static HashMap<Integer, String> lQw;
+  private static int lQx;
+  private static int lQy;
+  private static HashMap<Integer, String> lQz;
+  private int lQl = -1;
+  private int lQq = 0;
   
   static
   {
     AppMethodBeat.i(155610);
-    jmZ = null;
-    jnb = false;
-    jnc = false;
-    jnd = false;
-    jne = false;
-    jng = 0;
-    jnh = 0;
-    jnj = new HashMap();
-    jnk = 0;
-    jnl = 0;
-    jnm = new HashMap();
-    jnn = 0;
-    jno = 0;
-    jnp = new HashMap();
+    lQk = null;
+    lQm = false;
+    lQn = false;
+    lQo = false;
+    lQp = false;
+    lQr = 0;
+    lQs = 0;
+    lQt = new HashMap();
+    lQu = 0;
+    lQv = 0;
+    lQw = new HashMap();
+    lQx = 0;
+    lQy = 0;
+    lQz = new HashMap();
     AppMethodBeat.o(155610);
   }
   
-  public static g atH()
+  public static g aOf()
   {
     AppMethodBeat.i(155571);
-    if (jmZ == null) {}
+    if (lQk == null) {}
     try
     {
-      if (jmZ == null)
+      if (lQk == null)
       {
         MMApplicationContext.getContext();
-        jmZ = new g();
+        lQk = new g();
       }
-      g localg = jmZ;
+      g localg = lQk;
       AppMethodBeat.o(155571);
       return localg;
     }
@@ -73,69 +71,69 @@ public class g
     }
   }
   
-  public static boolean atI()
+  public static boolean aOg()
   {
     return false;
   }
   
-  private static void atJ()
+  private static void aOh()
   {
     AppMethodBeat.i(155608);
-    nc localnc = new nc();
-    if (jng - jnh > 1)
+    oj localoj = new oj();
+    if (lQr - lQs > 1)
     {
-      localnc.fLq.fLr = true;
-      localnc.fLq.fLs = jnj.size();
+      localoj.hQY.hQZ = true;
+      localoj.hQY.hRa = lQt.size();
     }
-    if (jnn - jno > 1)
+    if (lQx - lQy > 1)
     {
-      localnc.fLq.fLt = true;
-      localnc.fLq.fLu = jnp.size();
+      localoj.hQY.hRb = true;
+      localoj.hQY.hRc = lQz.size();
     }
-    if (jnk - jnl > 1)
+    if (lQu - lQv > 1)
     {
-      localnc.fLq.fLv = true;
-      localnc.fLq.fLw = jnm.size();
+      localoj.hQY.hRd = true;
+      localoj.hQY.hRe = lQw.size();
     }
-    if ((localnc.fLq.fLt) || (localnc.fLq.fLr) || (localnc.fLq.fLv))
+    if ((localoj.hQY.hRb) || (localoj.hQY.hQZ) || (localoj.hQY.hRd))
     {
-      Log.e("MicroMsg.MMAudioManager", "check media leak audio[%b %d] mediaplayer[%b %d] audioRecordLeak [%b %d]", new Object[] { Boolean.valueOf(localnc.fLq.fLr), Integer.valueOf(localnc.fLq.fLs), Boolean.valueOf(localnc.fLq.fLt), Integer.valueOf(localnc.fLq.fLu), Boolean.valueOf(localnc.fLq.fLv), Integer.valueOf(localnc.fLq.fLw) });
-      EventCenter.instance.publish(localnc);
+      Log.e("MicroMsg.MMAudioManager", "check media leak audio[%b %d] mediaplayer[%b %d] audioRecordLeak [%b %d]", new Object[] { Boolean.valueOf(localoj.hQY.hQZ), Integer.valueOf(localoj.hQY.hRa), Boolean.valueOf(localoj.hQY.hRb), Integer.valueOf(localoj.hQY.hRc), Boolean.valueOf(localoj.hQY.hRd), Integer.valueOf(localoj.hQY.hRe) });
+      localoj.publish();
     }
     AppMethodBeat.o(155608);
   }
   
-  public static String atK()
+  public static String aOi()
   {
     AppMethodBeat.i(155609);
     Object localObject = new StringBuffer();
     ((StringBuffer)localObject).append("AudioTrack: \r\n");
-    ((StringBuffer)localObject).append("leak: ").append(jnj.size()).append("init: ").append(jng).append("release: ").append(jnh).append("\r\n");
+    ((StringBuffer)localObject).append("leak: ").append(lQt.size()).append("init: ").append(lQr).append("release: ").append(lQs).append("\r\n");
     ((StringBuffer)localObject).append("--------leak map-----------\r\n");
     Iterator localIterator;
-    if (!jnj.isEmpty())
+    if (!lQt.isEmpty())
     {
-      localIterator = jnj.values().iterator();
+      localIterator = lQt.values().iterator();
       while (localIterator.hasNext()) {
         ((StringBuffer)localObject).append((String)localIterator.next()).append("\r\n");
       }
     }
     ((StringBuffer)localObject).append("MediaPlayer: \r\n");
-    ((StringBuffer)localObject).append("leak: ").append(jnp.size()).append("init: ").append(jnn).append("release: ").append(jno).append("\r\n");
+    ((StringBuffer)localObject).append("leak: ").append(lQz.size()).append("init: ").append(lQx).append("release: ").append(lQy).append("\r\n");
     ((StringBuffer)localObject).append("--------leak map-----------\r\n");
-    if (!jnp.isEmpty())
+    if (!lQz.isEmpty())
     {
-      localIterator = jnp.values().iterator();
+      localIterator = lQz.values().iterator();
       while (localIterator.hasNext()) {
         ((StringBuffer)localObject).append((String)localIterator.next()).append("\r\n");
       }
     }
     ((StringBuffer)localObject).append("AudioRecord: \r\n");
-    ((StringBuffer)localObject).append("leak: ").append(jnm.size()).append("init: ").append(jnk).append("release: ").append(jnk).append("\r\n");
+    ((StringBuffer)localObject).append("leak: ").append(lQw.size()).append("init: ").append(lQu).append("release: ").append(lQu).append("\r\n");
     ((StringBuffer)localObject).append("--------leak map-----------\r\n");
-    if (!jnm.isEmpty())
+    if (!lQw.isEmpty())
     {
-      localIterator = jnm.values().iterator();
+      localIterator = lQw.values().iterator();
       while (localIterator.hasNext()) {
         ((StringBuffer)localObject).append((String)localIterator.next()).append("\r\n");
       }
@@ -146,69 +144,69 @@ public class g
     return localObject;
   }
   
-  public static void qD(int paramInt)
+  public static void qJ(int paramInt)
   {
     AppMethodBeat.i(155602);
-    jng += 1;
-    Log.e("MicroMsg.MMAudioManager", "mm audio track init [%d] mmInitCount[%d] mmReleaseCount[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(jng), Integer.valueOf(jnh) });
-    jnj.put(Integer.valueOf(paramInt), Util.getStack().toString());
-    atJ();
+    lQr += 1;
+    Log.e("MicroMsg.MMAudioManager", "mm audio track init [%d] mmInitCount[%d] mmReleaseCount[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(lQr), Integer.valueOf(lQs) });
+    lQt.put(Integer.valueOf(paramInt), Util.getStack().toString());
+    aOh();
     AppMethodBeat.o(155602);
   }
   
-  public static void qE(int paramInt)
+  public static void qK(int paramInt)
   {
     AppMethodBeat.i(155603);
-    jnh += 1;
-    Log.e("MicroMsg.MMAudioManager", "mm audio track release [%d] mmInitCount[%d] mmReleaseCount[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(jng), Integer.valueOf(jnh) });
-    jnj.remove(Integer.valueOf(paramInt));
+    lQs += 1;
+    Log.e("MicroMsg.MMAudioManager", "mm audio track release [%d] mmInitCount[%d] mmReleaseCount[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(lQr), Integer.valueOf(lQs) });
+    lQt.remove(Integer.valueOf(paramInt));
     AppMethodBeat.o(155603);
   }
   
-  public static void qF(int paramInt)
+  public static void qL(int paramInt)
   {
     AppMethodBeat.i(155604);
-    jnk += 1;
-    Log.printInfoStack("MicroMsg.MMAudioManager", "mm audio record init [%d] mmInitCount[%d] mmReleaseCount[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(jnk), Integer.valueOf(jnl) });
-    jnm.put(Integer.valueOf(paramInt), Util.getStack().toString());
-    atJ();
+    lQu += 1;
+    Log.printInfoStack("MicroMsg.MMAudioManager", "mm audio record init [%d] mmInitCount[%d] mmReleaseCount[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(lQu), Integer.valueOf(lQv) });
+    lQw.put(Integer.valueOf(paramInt), Util.getStack().toString());
+    aOh();
     AppMethodBeat.o(155604);
   }
   
-  public static void qG(int paramInt)
+  public static void qM(int paramInt)
   {
     AppMethodBeat.i(155605);
-    if (jnm.containsKey(Integer.valueOf(paramInt)))
+    if (lQw.containsKey(Integer.valueOf(paramInt)))
     {
-      jnl += 1;
-      Log.printInfoStack("MicroMsg.MMAudioManager", "mm audio record release [%d] mmInitCount[%d] mmReleaseCount[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(jnk), Integer.valueOf(jnl) });
-      jnm.remove(Integer.valueOf(paramInt));
+      lQv += 1;
+      Log.printInfoStack("MicroMsg.MMAudioManager", "mm audio record release [%d] mmInitCount[%d] mmReleaseCount[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(lQu), Integer.valueOf(lQv) });
+      lQw.remove(Integer.valueOf(paramInt));
     }
     AppMethodBeat.o(155605);
   }
   
-  public static void qH(int paramInt)
+  public static void qN(int paramInt)
   {
     AppMethodBeat.i(155606);
-    jnn += 1;
-    Log.e("MicroMsg.MMAudioManager", "mm media player init [%d] mmMpInitCount[%d] mmMpReleaseCount[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(jnn), Integer.valueOf(jno) });
-    jnp.put(Integer.valueOf(paramInt), Util.getStack().toString());
-    atJ();
+    lQx += 1;
+    Log.e("MicroMsg.MMAudioManager", "mm media player init [%d] mmMpInitCount[%d] mmMpReleaseCount[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(lQx), Integer.valueOf(lQy) });
+    lQz.put(Integer.valueOf(paramInt), Util.getStack().toString());
+    aOh();
     AppMethodBeat.o(155606);
   }
   
-  public static void qI(int paramInt)
+  public static void qO(int paramInt)
   {
     AppMethodBeat.i(155607);
-    jno += 1;
-    Log.e("MicroMsg.MMAudioManager", "mm media player release [%d] mmMpInitCount[%d] mmMpReleaseCount[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(jnn), Integer.valueOf(jno) });
-    jnp.remove(Integer.valueOf(paramInt));
+    lQy += 1;
+    Log.e("MicroMsg.MMAudioManager", "mm media player release [%d] mmMpInitCount[%d] mmMpReleaseCount[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(lQx), Integer.valueOf(lQy) });
+    lQz.remove(Integer.valueOf(paramInt));
     AppMethodBeat.o(155607);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.compatible.b.g
  * JD-Core Version:    0.7.0.1
  */

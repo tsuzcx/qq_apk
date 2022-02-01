@@ -172,10 +172,9 @@ public class V8DebugServer
     try
     {
       V8.setFlags("-expose-debug-as=" + DEBUG_OBJECT_NAME);
-      AppMethodBeat.o(61552);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       AppMethodBeat.o(61552);
     }
@@ -401,55 +400,55 @@ public class V8DebugServer
   private void setupEventHandler()
   {
     // Byte code:
-    //   0: ldc_w 433
+    //   0: ldc_w 431
     //   3: invokestatic 91	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: new 11	com/eclipsesource/mmv8/debug/V8DebugServer$EventHandler
     //   9: dup
     //   10: aload_0
     //   11: aconst_null
-    //   12: invokespecial 436	com/eclipsesource/mmv8/debug/V8DebugServer$EventHandler:<init>	(Lcom/eclipsesource/mmv8/debug/V8DebugServer;Lcom/eclipsesource/mmv8/debug/V8DebugServer$1;)V
+    //   12: invokespecial 434	com/eclipsesource/mmv8/debug/V8DebugServer$EventHandler:<init>	(Lcom/eclipsesource/mmv8/debug/V8DebugServer;Lcom/eclipsesource/mmv8/debug/V8DebugServer$1;)V
     //   15: astore_1
     //   16: aload_0
     //   17: getfield 164	com/eclipsesource/mmv8/debug/V8DebugServer:debugObject	Lcom/eclipsesource/mmv8/V8Object;
     //   20: aload_1
     //   21: ldc 16
-    //   23: invokevirtual 440	com/eclipsesource/mmv8/V8Object:registerJavaMethod	(Lcom/eclipsesource/mmv8/JavaVoidCallback;Ljava/lang/String;)Lcom/eclipsesource/mmv8/V8Object;
+    //   23: invokevirtual 438	com/eclipsesource/mmv8/V8Object:registerJavaMethod	(Lcom/eclipsesource/mmv8/JavaVoidCallback;Ljava/lang/String;)Lcom/eclipsesource/mmv8/V8Object;
     //   26: pop
     //   27: aload_0
     //   28: getfield 164	com/eclipsesource/mmv8/debug/V8DebugServer:debugObject	Lcom/eclipsesource/mmv8/V8Object;
     //   31: ldc 16
     //   33: invokevirtual 162	com/eclipsesource/mmv8/V8Object:getObject	(Ljava/lang/String;)Lcom/eclipsesource/mmv8/V8Object;
-    //   36: checkcast 442	com/eclipsesource/mmv8/V8Function
+    //   36: checkcast 440	com/eclipsesource/mmv8/V8Function
     //   39: astore_1
-    //   40: new 266	com/eclipsesource/mmv8/V8Array
+    //   40: new 264	com/eclipsesource/mmv8/V8Array
     //   43: dup
     //   44: aload_0
     //   45: getfield 137	com/eclipsesource/mmv8/debug/V8DebugServer:runtime	Lcom/eclipsesource/mmv8/V8;
-    //   48: invokespecial 269	com/eclipsesource/mmv8/V8Array:<init>	(Lcom/eclipsesource/mmv8/V8;)V
+    //   48: invokespecial 267	com/eclipsesource/mmv8/V8Array:<init>	(Lcom/eclipsesource/mmv8/V8;)V
     //   51: aload_1
-    //   52: invokevirtual 300	com/eclipsesource/mmv8/V8Array:push	(Lcom/eclipsesource/mmv8/V8Value;)Lcom/eclipsesource/mmv8/V8Array;
+    //   52: invokevirtual 298	com/eclipsesource/mmv8/V8Array:push	(Lcom/eclipsesource/mmv8/V8Value;)Lcom/eclipsesource/mmv8/V8Array;
     //   55: astore_2
     //   56: aload_0
     //   57: getfield 164	com/eclipsesource/mmv8/debug/V8DebugServer:debugObject	Lcom/eclipsesource/mmv8/V8Object;
     //   60: ldc 58
     //   62: aload_2
-    //   63: invokevirtual 364	com/eclipsesource/mmv8/V8Object:executeFunction	(Ljava/lang/String;Lcom/eclipsesource/mmv8/V8Array;)Ljava/lang/Object;
+    //   63: invokevirtual 362	com/eclipsesource/mmv8/V8Object:executeFunction	(Ljava/lang/String;Lcom/eclipsesource/mmv8/V8Array;)Ljava/lang/Object;
     //   66: pop
     //   67: aload_1
     //   68: ifnull +14 -> 82
     //   71: aload_1
-    //   72: invokevirtual 445	com/eclipsesource/mmv8/V8Function:isReleased	()Z
+    //   72: invokevirtual 443	com/eclipsesource/mmv8/V8Function:isReleased	()Z
     //   75: ifne +7 -> 82
     //   78: aload_1
-    //   79: invokevirtual 446	com/eclipsesource/mmv8/V8Function:release	()V
+    //   79: invokevirtual 444	com/eclipsesource/mmv8/V8Function:release	()V
     //   82: aload_2
     //   83: ifnull +64 -> 147
     //   86: aload_2
-    //   87: invokevirtual 447	com/eclipsesource/mmv8/V8Array:isReleased	()Z
+    //   87: invokevirtual 445	com/eclipsesource/mmv8/V8Array:isReleased	()Z
     //   90: ifne +57 -> 147
     //   93: aload_2
-    //   94: invokevirtual 282	com/eclipsesource/mmv8/V8Array:release	()V
-    //   97: ldc_w 433
+    //   94: invokevirtual 280	com/eclipsesource/mmv8/V8Array:release	()V
+    //   97: ldc_w 431
     //   100: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   103: return
     //   104: astore_1
@@ -460,22 +459,22 @@ public class V8DebugServer
     //   109: aload_3
     //   110: ifnull +14 -> 124
     //   113: aload_3
-    //   114: invokevirtual 445	com/eclipsesource/mmv8/V8Function:isReleased	()Z
+    //   114: invokevirtual 443	com/eclipsesource/mmv8/V8Function:isReleased	()Z
     //   117: ifne +7 -> 124
     //   120: aload_3
-    //   121: invokevirtual 446	com/eclipsesource/mmv8/V8Function:release	()V
+    //   121: invokevirtual 444	com/eclipsesource/mmv8/V8Function:release	()V
     //   124: aload_2
     //   125: ifnull +14 -> 139
     //   128: aload_2
-    //   129: invokevirtual 447	com/eclipsesource/mmv8/V8Array:isReleased	()Z
+    //   129: invokevirtual 445	com/eclipsesource/mmv8/V8Array:isReleased	()Z
     //   132: ifne +7 -> 139
     //   135: aload_2
-    //   136: invokevirtual 282	com/eclipsesource/mmv8/V8Array:release	()V
-    //   139: ldc_w 433
+    //   136: invokevirtual 280	com/eclipsesource/mmv8/V8Array:release	()V
+    //   139: ldc_w 431
     //   142: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   145: aload_1
     //   146: athrow
-    //   147: ldc_w 433
+    //   147: ldc_w 431
     //   150: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   153: return
     //   154: astore 4
@@ -1139,7 +1138,7 @@ public class V8DebugServer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.eclipsesource.mmv8.debug.V8DebugServer
  * JD-Core Version:    0.7.0.1
  */

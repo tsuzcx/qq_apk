@@ -2,236 +2,150 @@ package com.tencent.mm.plugin.appbrand.launching;
 
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.c.a;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.appbrand.app.m;
-import com.tencent.mm.plugin.appbrand.appcache.ab;
-import com.tencent.mm.plugin.appbrand.appcache.j.a;
-import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchFromNotifyReferrer;
-import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
-import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
+import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaPluginCodeInfo;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
-import com.tencent.mm.plugin.appbrand.config.WxaAttributes.a;
-import com.tencent.mm.plugin.appbrand.config.aa.c;
-import com.tencent.mm.plugin.appbrand.config.aa.f;
-import com.tencent.mm.plugin.appbrand.config.z;
-import com.tencent.mm.plugin.appbrand.launching.d.f;
-import com.tencent.mm.plugin.appbrand.launching.d.g;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.step.KSProcessWeAppLaunch;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.protocal.d;
-import com.tencent.mm.protocal.protobuf.ack;
-import com.tencent.mm.protocal.protobuf.fnw;
-import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaWidgetInfo;
+import com.tencent.mm.plugin.appbrand.launching.a.c;
+import com.tencent.mm.plugin.appbrand.launching.a.f;
+import com.tencent.mm.plugin.appbrand.permission.appidABTest.AppRuntimeAppidABTestPermissionBundle;
+import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import java.util.concurrent.Callable;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
-final class ba
-  extends au<Pair<WxaAttributes, Boolean>>
-  implements ae
+public class ba
+  extends aw<Pair<HashMap<String, AppRuntimeAppidABTestPermissionBundle>, Boolean>>
 {
-  String appId;
-  private String cBH;
-  private final int cBU;
-  private final AppBrandLaunchReferrer cwV;
-  private final com.tencent.luggage.sdk.launching.b cxe;
-  private final int enterScene;
-  private AppBrandLaunchFromNotifyReferrer nBB;
-  private final String nBq;
-  private final AppBrandStatObject nyh;
-  private final String pSf;
-  private boolean pXp;
-  private boolean pXq;
-  private WxaAttributes pXr;
-  private final int pXs;
-  boolean pXt = false;
-  private boolean pXu = false;
-  private ag.a pXv = ag.a.pWj;
-  private int pXw = -1;
-  private aa.f pXx = null;
-  String username;
+  final String appId;
+  final boolean ekt;
+  final WxaAttributes.WxaVersionInfo epa;
+  final int euz;
+  final QualitySession qYm;
+  final String sXS;
+  List<f> tbZ;
   
-  ba(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3, AppBrandStatObject paramAppBrandStatObject, AppBrandLaunchReferrer paramAppBrandLaunchReferrer, String paramString4, AppBrandLaunchFromNotifyReferrer paramAppBrandLaunchFromNotifyReferrer, String paramString5, aa.f paramf, com.tencent.luggage.sdk.launching.b paramb)
+  ba(String paramString1, int paramInt, boolean paramBoolean, String paramString2, WxaAttributes.WxaVersionInfo paramWxaVersionInfo, QualitySession paramQualitySession)
   {
-    this.username = paramString1;
-    this.appId = paramString2;
-    this.cBU = paramInt1;
-    this.pXs = paramInt2;
-    this.enterScene = paramInt3;
-    this.nBq = paramString3;
-    this.nyh = paramAppBrandStatObject;
-    this.cwV = paramAppBrandLaunchReferrer;
-    this.cBH = paramString4;
-    this.nBB = paramAppBrandLaunchFromNotifyReferrer;
-    this.pSf = paramString5;
-    this.cxe = paramb;
-    this.pXx = paramf;
+    AppMethodBeat.i(320736);
+    this.tbZ = new LinkedList();
+    this.appId = paramString1;
+    this.euz = paramInt;
+    this.ekt = paramBoolean;
+    this.sXS = paramString2;
+    this.epa = paramWxaVersionInfo;
+    this.qYm = paramQualitySession;
+    Log.i("MicroMsg.AppBrand.PrepareStepCheckAppidABTestPermissionInfo", "<init> hash:%d, appId:%s,versionType:%d,isGame:%b", new Object[] { Integer.valueOf(hashCode()), paramString1, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.o(320736);
   }
   
-  private WxaAttributes cai()
+  private LinkedList<f> b(WxaAttributes.WxaVersionInfo paramWxaVersionInfo, boolean paramBoolean)
   {
-    AppMethodBeat.i(47354);
-    if (!Util.isNullOrNil(this.username))
+    AppMethodBeat.i(320739);
+    LinkedList localLinkedList = new LinkedList();
+    if (paramBoolean)
     {
-      localWxaAttributes = m.bFF().c(this.username, new String[0]);
-      AppMethodBeat.o(47354);
-      return localWxaAttributes;
-    }
-    WxaAttributes localWxaAttributes = m.bFF().d(this.appId, new String[0]);
-    AppMethodBeat.o(47354);
-    return localWxaAttributes;
-  }
-  
-  private static boolean j(WxaAttributes paramWxaAttributes)
-  {
-    AppMethodBeat.i(242737);
-    if ((paramWxaAttributes.bLF() != null) && (paramWxaAttributes.bLF().Qv()))
-    {
-      AppMethodBeat.o(242737);
-      return true;
-    }
-    AppMethodBeat.o(242737);
-    return false;
-  }
-  
-  private static boolean k(WxaAttributes paramWxaAttributes)
-  {
-    AppMethodBeat.i(47355);
-    if (Util.isNullOrNil(paramWxaAttributes.field_appId))
-    {
-      Log.e("MicroMsg.AppBrand.PrepareStepGetWxaAttrs", "invalid appID in contact(%s)", new Object[] { paramWxaAttributes.field_username });
-      AppMethodBeat.o(47355);
-      return true;
-    }
-    if (paramWxaAttributes.bLH() == null)
-    {
-      Log.e("MicroMsg.AppBrand.PrepareStepGetWxaAttrs", "NULL versionInfo(%s) in contact(%s)", new Object[] { paramWxaAttributes.field_versionInfo, paramWxaAttributes.field_username });
-      AppMethodBeat.o(47355);
-      return true;
-    }
-    if (paramWxaAttributes.bLF() == null)
-    {
-      Log.e("MicroMsg.AppBrand.PrepareStepGetWxaAttrs", "NULL appInfo(%s) in contact(%s)", new Object[] { paramWxaAttributes.field_appInfo, paramWxaAttributes.field_username });
-      AppMethodBeat.o(47355);
-      return true;
-    }
-    if ((paramWxaAttributes.bLH().cwX == 0) && (Util.isNullOrNil(paramWxaAttributes.bLH().oby)))
-    {
-      Log.e("MicroMsg.AppBrand.PrepareStepGetWxaAttrs", "invalid versionMD5 in contact(%s)", new Object[] { paramWxaAttributes.field_username });
-      AppMethodBeat.o(47355);
-      return true;
-    }
-    AppMethodBeat.o(47355);
-    return false;
-  }
-  
-  public final long bZX()
-  {
-    return this.pWY;
-  }
-  
-  public final long bZY()
-  {
-    return this.pWZ;
-  }
-  
-  public final long bZZ()
-  {
-    return this.pXa;
-  }
-  
-  final String getTag()
-  {
-    return "MicroMsg.AppBrand.PrepareStepGetWxaAttrs";
-  }
-  
-  public final String name()
-  {
-    return "PrepareStepGetWxaAttrs";
-  }
-  
-  final class a
-    implements aa.f
-  {
-    private a() {}
-    
-    public final void bLE()
-    {
-      AppMethodBeat.i(175003);
-      if (ba.f(ba.this) != null) {
-        ba.f(ba.this).bLE();
-      }
-      if (!j.a.za(ba.g(ba.this)))
+      Object localObject = new f();
+      ((f)localObject).appId = this.appId;
+      ((f)localObject).appType = 1;
+      ((f)localObject).euz = this.euz;
+      localLinkedList.add(localObject);
+      paramWxaVersionInfo = paramWxaVersionInfo.oVI;
+      if ((paramWxaVersionInfo == null) || (paramWxaVersionInfo.size() <= 0))
       {
-        AppMethodBeat.o(175003);
-        return;
+        AppMethodBeat.o(320739);
+        return localLinkedList;
       }
-      if (ab.bGR()) {
-        ab.bGS();
-      }
-      int i;
-      Object localObject2;
-      boolean bool;
-      label118:
-      String str1;
-      int j;
-      String str2;
-      AppBrandStatObject localAppBrandStatObject;
-      AppBrandLaunchReferrer localAppBrandLaunchReferrer;
-      String str3;
-      if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE) || (!d.RAE))
+      paramWxaVersionInfo = paramWxaVersionInfo.iterator();
+      while (paramWxaVersionInfo.hasNext())
       {
-        i = 1;
-        i = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vEB, i);
-        localObject1 = ba.d(ba.this);
-        localObject2 = ba.e(ba.this);
-        if (i != 1) {
-          break label417;
-        }
-        bool = true;
-        Log.i("MicroMsg.AppBrand.PrepareStepGetWxaAttrs", "beforeSync: sync contact[username(%s) appId(%s)], process preload cgi, is open = [%b]", new Object[] { localObject1, localObject2, Boolean.valueOf(bool) });
-        if (i == 1)
+        localObject = ((WxaAttributes.WxaWidgetInfo)paramWxaVersionInfo.next()).rcG;
+        if ((localObject != null) && (((List)localObject).size() > 0))
         {
-          Log.i("MicroMsg.AppBrand.PrepareStepGetWxaAttrs", "beforeSync: sync contact[username(%s) appId(%s)], process preload cgi, is open = [%b]", new Object[] { ba.d(ba.this), ba.e(ba.this), Boolean.TRUE });
-          localObject1 = com.tencent.luggage.sdk.f.c.cDf;
-          com.tencent.luggage.sdk.f.c.a(new com.tencent.mm.plugin.appbrand.launching.d.c(), ba.a(ba.this));
-          localObject1 = com.tencent.luggage.sdk.f.c.cDf;
-          localObject2 = com.tencent.luggage.sdk.f.c.ej(ba.a(ba.this));
-          str1 = ba.d(ba.this);
-          i = ba.g(ba.this);
-          j = ba.b(ba.this);
-          str2 = ba.h(ba.this);
-          localAppBrandStatObject = ba.i(ba.this);
-          localAppBrandLaunchReferrer = ba.j(ba.this);
-          str3 = ba.e(ba.this);
-          if ((ba.b(ba.this) != 1162) || (ba.k(ba.this) == null)) {
-            break label422;
+          localObject = ((List)localObject).iterator();
+          label139:
+          f localf;
+          if (((Iterator)localObject).hasNext())
+          {
+            WxaAttributes.WxaPluginCodeInfo localWxaPluginCodeInfo = (WxaAttributes.WxaPluginCodeInfo)((Iterator)localObject).next();
+            localf = new f();
+            localf.appId = localWxaPluginCodeInfo.provider;
+            localf.appType = 2;
+            if (!Util.isNullOrNil(localWxaPluginCodeInfo.qGf)) {
+              break label228;
+            }
+          }
+          label228:
+          for (int i = f.tdi;; i = f.tdj)
+          {
+            localf.euz = i;
+            if (localLinkedList.contains(localf)) {
+              break label139;
+            }
+            localLinkedList.add(localf);
+            break label139;
+            break;
           }
         }
       }
-      label417:
-      label422:
-      for (Object localObject1 = ba.k(ba.this).nYy;; localObject1 = null)
+    }
+    AppMethodBeat.o(320739);
+    return localLinkedList;
+  }
+  
+  private boolean g(HashMap<String, AppRuntimeAppidABTestPermissionBundle> paramHashMap)
+  {
+    AppMethodBeat.i(320750);
+    Object localObject = n.cfd();
+    ao localao = n.cfg();
+    if ((localObject == null) || (localao == null))
+    {
+      Log.i("MicroMsg.AppBrand.PrepareStepCheckAppidABTestPermissionInfo", "needSyncCheckAppidPermission storage null!");
+      AppMethodBeat.o(320750);
+      return false;
+    }
+    if ((this.tbZ != null) && (this.tbZ.size() > 0))
+    {
+      Iterator localIterator = this.tbZ.iterator();
+      while (localIterator.hasNext())
       {
-        ((com.tencent.luggage.sdk.f.b)localObject2).b(new g(str1, i, j, str2, localAppBrandStatObject, localAppBrandLaunchReferrer, str3, (String)localObject1, ba.l(ba.this)));
-        ((com.tencent.luggage.sdk.f.b)localObject2).b(new f(ba.h(ba.this), ba.d(ba.this), ba.e(ba.this)));
-        com.tencent.mm.plugin.appbrand.launching.d.b.rE(0);
-        com.tencent.mm.plugin.appbrand.keylogger.c.a(ba.e(ba.this), KSProcessWeAppLaunch.stepGetContact_CGI);
-        AppMethodBeat.o(175003);
-        return;
-        i = 0;
-        break;
-        bool = false;
-        break label118;
+        localObject = (f)localIterator.next();
+        String str = ((f)localObject).appId;
+        int i = ((f)localObject).appType;
+        int j = ((f)localObject).euz;
+        Log.i("MicroMsg.LaunchWxaAppidABTestInfoStorage", "get, appId:%s , appType :%d, versionType: %d", new Object[] { str, Integer.valueOf(i), Integer.valueOf(j) });
+        localObject = new an();
+        ((an)localObject).field_appId = str;
+        ((an)localObject).field_appType = i;
+        ((an)localObject).field_versionType = j;
+        if (localao.get((IAutoDBItem)localObject, new String[0])) {}
+        for (localObject = ((an)localObject).field_permissionBytes; localObject == null; localObject = null)
+        {
+          Log.i("MicroMsg.AppBrand.PrepareStepCheckAppidABTestPermissionInfo", "needSyncCheckAppidPermission appidABTestInfoStorage not include appId:%s ,appType:%d!", new Object[] { str, Integer.valueOf(i) });
+          AppMethodBeat.o(320750);
+          return true;
+        }
+        paramHashMap.put(c.X(str, i, j), new AppRuntimeAppidABTestPermissionBundle((byte[])localObject));
       }
     }
+    AppMethodBeat.o(320750);
+    return false;
+  }
+  
+  void cdc() {}
+  
+  final String getTag()
+  {
+    return "MicroMsg.AppBrand.PrepareStepCheckAppidABTestPermissionInfo";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.ba
  * JD-Core Version:    0.7.0.1
  */

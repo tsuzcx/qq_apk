@@ -2,21 +2,21 @@ package com.tencent.mm.plugin.sns.ad.widget.b;
 
 public abstract interface b
 {
-  public abstract String fLe();
+  public abstract a hbA();
   
-  public abstract String fLf();
+  public abstract String hbv();
   
-  public abstract String fLg();
+  public abstract String hbw();
   
-  public abstract String fLh();
+  public abstract String hbx();
   
-  public abstract String fLi();
+  public abstract String hby();
   
-  public abstract a fLj();
+  public abstract String hbz();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.widget.b.b
  * JD-Core Version:    0.7.0.1
  */

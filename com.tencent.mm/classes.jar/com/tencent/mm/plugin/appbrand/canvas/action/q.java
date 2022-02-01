@@ -10,7 +10,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader.TileMode;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.g;
+import com.tencent.mm.plugin.appbrand.af.i;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
@@ -46,7 +46,7 @@ public final class q
       return false;
     }
     Object localObject = paramJSONArray.optString(0);
-    paramCanvas = paramd.nTx;
+    paramCanvas = paramd.qTj;
     float f1;
     float f2;
     float f3;
@@ -64,10 +64,10 @@ public final class q
         AppMethodBeat.o(144915);
         return false;
       }
-      f1 = g.f(paramd, 0);
-      f2 = g.f(paramd, 1);
-      f3 = g.f(paramd, 2);
-      float f4 = g.f(paramd, 3);
+      f1 = i.f(paramd, 0);
+      f2 = i.f(paramd, 1);
+      f3 = i.f(paramd, 2);
+      float f4 = i.f(paramd, 3);
       paramd = paramJSONArray.optJSONArray(2);
       if ((paramd == null) || (paramd.length() == 0))
       {
@@ -83,7 +83,7 @@ public final class q
         if (localJSONArray.length() >= 2)
         {
           localObject[i] = ((float)localJSONArray.optDouble(0));
-          paramJSONArray[i] = g.r(localJSONArray.optJSONArray(1));
+          paramJSONArray[i] = i.u(localJSONArray.optJSONArray(1));
         }
         i += 1;
       }
@@ -110,9 +110,9 @@ public final class q
               AppMethodBeat.o(144915);
               return false;
             }
-            f1 = g.f(paramd, 0);
-            f2 = g.f(paramd, 1);
-            f3 = g.f(paramd, 2);
+            f1 = i.f(paramd, 0);
+            f2 = i.f(paramd, 1);
+            f3 = i.f(paramd, 2);
             if (f3 <= 0.0F)
             {
               Log.i("MicroMsg.Canvas.SetFillStyleAction", "setFillStyle(radial) failed, sr(%s) <= 0.", new Object[] { Float.valueOf(f3) });
@@ -129,7 +129,7 @@ public final class q
               if (localJSONArray.length() >= 2)
               {
                 localObject[i] = ((float)localJSONArray.optDouble(0));
-                paramJSONArray[i] = g.r(localJSONArray.optJSONArray(1));
+                paramJSONArray[i] = i.u(localJSONArray.optJSONArray(1));
               }
               i += 1;
             }
@@ -147,7 +147,7 @@ public final class q
               return false;
             }
             paramCanvas.setShader(null);
-            paramCanvas.setColor(g.r(paramd));
+            paramCanvas.setColor(i.u(paramd));
           }
         }
       } while (!"pattern".equalsIgnoreCase((String)localObject));
@@ -159,10 +159,10 @@ public final class q
         AppMethodBeat.o(144915);
         return false;
       }
-      paramd = paramd.nTC.a(paramd, (String)localObject);
+      paramd = paramd.qTo.a(paramd, (String)localObject);
     } while ((paramd == null) || (paramd.isRecycled()));
-    int j = g.Di(paramd.getWidth());
-    int k = g.Di(paramd.getHeight());
+    int j = i.DC(paramd.getWidth());
+    int k = i.DC(paramd.getHeight());
     int i = -1;
     switch (paramJSONArray.hashCode())
     {
@@ -218,7 +218,7 @@ public final class q
     }
   }
   
-  public final BaseDrawActionArg bKy()
+  public final BaseDrawActionArg cjY()
   {
     AppMethodBeat.i(144914);
     SetFillStyleActionArg localSetFillStyleActionArg = new SetFillStyleActionArg();
@@ -233,7 +233,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.q
  * JD-Core Version:    0.7.0.1
  */

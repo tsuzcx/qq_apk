@@ -6,8 +6,9 @@ import com.tencent.luggage.d.p;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bb;
-import com.tencent.mm.protocal.protobuf.cxc;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bf;
+import com.tencent.mm.protocal.protobuf.doh;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class j
@@ -18,15 +19,27 @@ public final class j
     super(3);
   }
   
-  public final void a(Context paramContext, g paramg, cxc paramcxc)
+  public final void a(Context paramContext, g paramg, doh paramdoh)
   {
     AppMethodBeat.i(83115);
-    bb.anM(0);
-    paramg.crX.a(new d()
+    bf.atG(0);
+    paramg.ejR.a(new d()
     {
-      public final JSONObject NU()
+      public final JSONObject aoe()
       {
-        return null;
+        AppMethodBeat.i(277002);
+        JSONObject localJSONObject = new JSONObject();
+        try
+        {
+          localJSONObject.put("scene", "friend");
+          label22:
+          AppMethodBeat.o(277002);
+          return localJSONObject;
+        }
+        catch (JSONException localJSONException)
+        {
+          break label22;
+        }
       }
       
       public final String name()

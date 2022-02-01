@@ -1,7 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_vertical" android:background="@color/a" android:paddingLeft="@dimen/hs" android:paddingTop="@dimen/bt" android:layout_width="fill_parent" android:layout_height="@dimen/cj"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="@dimen/ci">
-        <TextView android:id="@id/e40" android:text="7天前" style="@style/mo" />
-    </LinearLayout>
-</RelativeLayout>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" />

@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.wallet.pwd.ui;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -11,26 +10,31 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.t;
-import com.tencent.mm.ay.r;
-import com.tencent.mm.ay.r.a;
+import com.tencent.mm.am.p;
 import com.tencent.mm.kernel.c;
-import com.tencent.mm.plugin.wallet_core.model.am;
-import com.tencent.mm.plugin.wallet_core.model.an;
+import com.tencent.mm.modelimage.r;
+import com.tencent.mm.modelimage.s.a;
+import com.tencent.mm.plugin.wallet.a.d;
+import com.tencent.mm.plugin.wallet.pwd.a.i;
+import com.tencent.mm.plugin.wallet_core.model.ak;
+import com.tencent.mm.plugin.wallet_core.model.al;
 import com.tencent.mm.plugin.wallet_core.model.u;
 import com.tencent.mm.plugin.wxpay.a.c;
 import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.plugin.wxpay.a.m;
-import com.tencent.mm.protocal.protobuf.dsb;
-import com.tencent.mm.protocal.protobuf.ego;
-import com.tencent.mm.protocal.protobuf.egp;
-import com.tencent.mm.protocal.protobuf.fhn;
+import com.tencent.mm.protocal.protobuf.ekw;
+import com.tencent.mm.protocal.protobuf.fao;
+import com.tencent.mm.protocal.protobuf.fap;
+import com.tencent.mm.protocal.protobuf.gdz;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.base.aa;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
-import com.tencent.mm.ui.base.w;
+import com.tencent.mm.ui.component.UIComponent;
+import com.tencent.mm.wallet_core.ui.l;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -38,11 +42,11 @@ import java.util.Set;
 
 public class WalletBalancePrivacyUI
   extends MMPreference
-  implements com.tencent.mm.an.i
+  implements com.tencent.mm.am.h
 {
-  private WalletBalancePrivacyCheckBoxPreference OAF;
-  private WalletBalancePrivacyMMHeaderPreference OAG;
-  private Dialog mMi;
+  private WalletBalancePrivacyCheckBoxPreference VpS;
+  private WalletBalancePrivacyMMHeaderPreference VpT;
+  private Dialog pIQ;
   private f screen;
   
   public int getResourceId()
@@ -73,10 +77,10 @@ public class WalletBalancePrivacyUI
     if (this.screen != null) {
       this.screen.removeAll();
     }
-    this.OAF = ((WalletBalancePrivacyCheckBoxPreference)this.screen.byG("wallet_banlance_privacy_cb"));
-    this.mMi = com.tencent.mm.wallet_core.ui.i.c(this, false, null);
-    com.tencent.mm.kernel.h.aHH();
-    com.tencent.mm.kernel.h.aHF().kcd.a(new com.tencent.mm.plugin.wallet.pwd.a.i(), 0);
+    this.VpS = ((WalletBalancePrivacyCheckBoxPreference)this.screen.bAi("wallet_banlance_privacy_cb"));
+    this.pIQ = l.c(this, false, null);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.a(new i(), 0);
     AppMethodBeat.o(69596);
   }
   
@@ -93,21 +97,21 @@ public class WalletBalancePrivacyUI
   {
     AppMethodBeat.i(69598);
     super.onDestroy();
-    if (this.OAG != null)
+    if (this.VpT != null)
     {
-      WalletBalancePrivacyMMHeaderPreference localWalletBalancePrivacyMMHeaderPreference = this.OAG;
-      Iterator localIterator = localWalletBalancePrivacyMMHeaderPreference.IiZ.entrySet().iterator();
+      WalletBalancePrivacyMMHeaderPreference localWalletBalancePrivacyMMHeaderPreference = this.VpT;
+      Iterator localIterator = localWalletBalancePrivacyMMHeaderPreference.OfK.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
-        com.tencent.mm.ay.q.bmk().b((String)localEntry.getKey(), (r.a)localEntry.getValue());
+        r.bKd().b((String)localEntry.getKey(), (s.a)localEntry.getValue());
       }
-      localWalletBalancePrivacyMMHeaderPreference.IiZ.clear();
+      localWalletBalancePrivacyMMHeaderPreference.OfK.clear();
     }
-    com.tencent.mm.kernel.h.aHH();
-    com.tencent.mm.kernel.h.aHF().kcd.b(2635, this);
-    com.tencent.mm.kernel.h.aHH();
-    com.tencent.mm.kernel.h.aHF().kcd.b(2554, this);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.b(2635, this);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.b(2554, this);
     AppMethodBeat.o(69598);
   }
   
@@ -117,8 +121,8 @@ public class WalletBalancePrivacyUI
     if (Util.isEqual(paramPreference.mKey, "wallet_banlance_privacy_cb"))
     {
       Log.i("MicroMsg.WalletBalancePrivacyUI", "set balance privacy: %s", new Object[] { Boolean.valueOf(((WalletBalancePrivacyCheckBoxPreference)paramPreference).isChecked()) });
-      com.tencent.mm.kernel.h.aHH();
-      com.tencent.mm.kernel.h.aHF().kcd.a(new com.tencent.mm.plugin.wallet.pwd.a.k(((WalletBalancePrivacyCheckBoxPreference)paramPreference).isChecked()), 0);
+      com.tencent.mm.kernel.h.baF();
+      com.tencent.mm.kernel.h.baD().mCm.a(new com.tencent.mm.plugin.wallet.pwd.a.k(((WalletBalancePrivacyCheckBoxPreference)paramPreference).isChecked()), 0);
     }
     AppMethodBeat.o(69595);
     return false;
@@ -128,35 +132,35 @@ public class WalletBalancePrivacyUI
   {
     AppMethodBeat.i(69594);
     super.onResume();
-    com.tencent.mm.kernel.h.aHH();
-    com.tencent.mm.kernel.h.aHF().kcd.a(2635, this);
-    com.tencent.mm.kernel.h.aHH();
-    com.tencent.mm.kernel.h.aHF().kcd.a(2554, this);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.a(2635, this);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.a(2554, this);
     AppMethodBeat.o(69594);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     boolean bool = true;
     AppMethodBeat.i(69597);
-    Log.i("MicroMsg.WalletBalancePrivacyUI", "onSceneEnd() errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString + " netsceneType:" + paramq.getType());
+    Log.i("MicroMsg.WalletBalancePrivacyUI", "onSceneEnd() errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString + " netsceneType:" + paramp.getType());
     int i;
-    if ((paramq instanceof com.tencent.mm.plugin.wallet.pwd.a.i))
+    if ((paramp instanceof i))
     {
       if ((paramInt1 != 0) || (paramInt2 != 0)) {
         break label588;
       }
       Log.i("MicroMsg.WalletBalancePrivacyUI", "success get balance privacy detail");
-      paramString = (com.tencent.mm.plugin.wallet.pwd.a.i)paramq;
-      if ((this.screen != null) && (paramString != null) && (paramString.gHt() != null) && (paramString.gHt().TYK != null)) {
+      paramString = (i)paramp;
+      if ((this.screen != null) && (paramString != null) && (paramString.igy() != null) && (paramString.igy().abpH != null)) {
         break label353;
       }
       i = 0;
-      if ((this.mMi != null) && (this.mMi.isShowing())) {
-        this.mMi.dismiss();
+      if ((this.pIQ != null) && (this.pIQ.isShowing())) {
+        this.pIQ.dismiss();
       }
       if (i == 0) {
-        com.tencent.mm.ui.base.h.a(this, getString(a.i.wallet_security_info_get_error), "", false, new DialogInterface.OnClickListener()
+        com.tencent.mm.ui.base.k.a(this, getString(a.i.wallet_security_info_get_error), "", false, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
@@ -168,26 +172,26 @@ public class WalletBalancePrivacyUI
       }
     }
     label178:
-    if ((paramq instanceof com.tencent.mm.plugin.wallet.pwd.a.k))
+    if ((paramp instanceof com.tencent.mm.plugin.wallet.pwd.a.k))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramInt1 = ((com.tencent.mm.plugin.wallet.pwd.a.k)paramq).gHu().TYJ;
-        if (this.OAF == null) {
-          this.OAF = ((WalletBalancePrivacyCheckBoxPreference)this.screen.byG("wallet_banlance_privacy_cb"));
+        paramInt1 = ((com.tencent.mm.plugin.wallet.pwd.a.k)paramp).igz().abpG;
+        if (this.VpS == null) {
+          this.VpS = ((WalletBalancePrivacyCheckBoxPreference)this.screen.bAi("wallet_banlance_privacy_cb"));
         }
-        if (this.OAF != null)
+        if (this.VpS != null)
         {
-          paramString = Boolean.valueOf(this.OAF.isChecked());
+          paramString = Boolean.valueOf(this.VpS.isChecked());
           label249:
           Log.i("MicroMsg.WalletBalancePrivacyUI", "success set balance privacy detail:%s switchState:%s", new Object[] { paramString, Integer.valueOf(paramInt1) });
-          paramString = u.gJj().gKZ();
-          paramString.field_wallet_entrance_balance_switch_state = ((com.tencent.mm.plugin.wallet.pwd.a.k)paramq).gHu().TYJ;
-          u.gJj().b(paramString);
-          u.gJo().OTY = new am(paramString.field_switchConfig, paramString.field_wallet_entrance_balance_switch_state);
-          if (this.OAF != null)
+          paramString = u.iix().ijK();
+          paramString.field_wallet_entrance_balance_switch_state = ((com.tencent.mm.plugin.wallet.pwd.a.k)paramp).igz().abpG;
+          u.iix().b(paramString);
+          u.iiC().VKe = new ak(paramString.field_switchConfig, paramString.field_wallet_entrance_balance_switch_state);
+          if (this.VpS != null)
           {
-            paramString = this.OAF;
+            paramString = this.VpS;
             if (paramInt1 != 1) {
               break label653;
             }
@@ -195,29 +199,29 @@ public class WalletBalancePrivacyUI
         }
         for (;;)
         {
-          paramString.BT(bool);
+          paramString.Hy(bool);
           AppMethodBeat.o(69597);
           return;
           label353:
-          Log.i("MicroMsg.WalletBalancePrivacyUI", "refresh() title_icon:%s,title:%s,switch_title:%s,switch_desc:%s,switch_state:%s", new Object[] { paramString.gHt().TYK.UHv, paramString.gHt().TYK.title, paramString.gHt().TYK.Uxb, paramString.gHt().TYK.UHw, Integer.valueOf(paramString.gHt().TYJ) });
-          this.screen.auC(a.m.wallet_balance_privacy_ui);
-          this.OAG = ((WalletBalancePrivacyMMHeaderPreference)this.screen.byG("wallet_balance_privacy_header"));
-          this.OAG.icon = paramString.gHt().TYK.UHv;
-          this.OAG.title = paramString.gHt().TYK.title;
-          this.OAF = ((WalletBalancePrivacyCheckBoxPreference)this.screen.byG("wallet_banlance_privacy_cb"));
-          this.OAF.WsF = false;
-          this.OAF.setTitle(paramString.gHt().TYK.Uxb);
-          this.OAF.aF(paramString.gHt().TYK.UHw);
-          this.OAF.bBh = Util.isEqual(paramString.gHt().TYJ, 1);
+          Log.i("MicroMsg.WalletBalancePrivacyUI", "refresh() title_icon:%s,title:%s,switch_title:%s,switch_desc:%s,switch_state:%s", new Object[] { paramString.igy().abpH.aakc, paramString.igy().abpH.title, paramString.igy().abpH.abQJ, paramString.igy().abpH.acbF, Integer.valueOf(paramString.igy().abpG) });
+          this.screen.aBe(a.m.wallet_balance_privacy_ui);
+          this.VpT = ((WalletBalancePrivacyMMHeaderPreference)this.screen.bAi("wallet_balance_privacy_header"));
+          this.VpT.icon = paramString.igy().abpH.aakc;
+          this.VpT.title = paramString.igy().abpH.title;
+          this.VpS = ((WalletBalancePrivacyCheckBoxPreference)this.screen.bAi("wallet_banlance_privacy_cb"));
+          this.VpS.adZV = false;
+          this.VpS.setTitle(paramString.igy().abpH.abQJ);
+          this.VpS.aS(paramString.igy().abpH.acbF);
+          this.VpS.duj = Util.isEqual(paramString.igy().abpG, 1);
           this.screen.notifyDataSetChanged();
           i = 1;
           break;
           label588:
           Log.i("MicroMsg.WalletBalancePrivacyUI", "fail get balance privacy detail");
-          if ((this.mMi != null) && (this.mMi.isShowing())) {
-            this.mMi.dismiss();
+          if ((this.pIQ != null) && (this.pIQ.isShowing())) {
+            this.pIQ.dismiss();
           }
-          com.tencent.mm.ui.base.h.a(this, getString(a.i.wallet_security_info_get_error), "", false, new DialogInterface.OnClickListener()
+          com.tencent.mm.ui.base.k.a(this, getString(a.i.wallet_security_info_get_error), "", false, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
@@ -232,27 +236,27 @@ public class WalletBalancePrivacyUI
           bool = false;
         }
       }
-      w.makeText(this, getString(a.i.wallet_security_balance_privacy_set_fail), 1).show();
-      if (this.OAF == null)
+      aa.makeText(this, getString(a.i.wallet_security_balance_privacy_set_fail), 1).show();
+      if (this.VpS == null)
       {
-        paramString = this.OAF;
-        if (this.OAF.isChecked()) {
+        paramString = this.VpS;
+        if (this.VpS.isChecked()) {
           break label755;
         }
         bool = true;
-        paramString.BT(bool);
+        paramString.Hy(bool);
       }
-      paramString = (com.tencent.mm.plugin.wallet.pwd.a.k)paramq;
-      if (paramString.OAf != null) {
+      paramString = (com.tencent.mm.plugin.wallet.pwd.a.k)paramp;
+      if (paramString.Vps != null) {
         break label761;
       }
     }
     label653:
     label755:
     label761:
-    for (paramString = new ego();; paramString = paramString.OAf)
+    for (paramString = new fao();; paramString = paramString.Vps)
     {
-      Log.i("MicroMsg.WalletBalancePrivacyUI", "fail set balance privacy %s", new Object[] { Integer.valueOf(paramString.Ujh) });
+      Log.i("MicroMsg.WalletBalancePrivacyUI", "fail set balance privacy %s", new Object[] { Integer.valueOf(paramString.aagR) });
       AppMethodBeat.o(69597);
       return;
       bool = false;
@@ -265,10 +269,18 @@ public class WalletBalancePrivacyUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  public void superImportUIComponents(HashSet<Class<? extends UIComponent>> paramHashSet)
+  {
+    AppMethodBeat.i(315696);
+    super.superImportUIComponents(paramHashSet);
+    paramHashSet.add(d.class);
+    AppMethodBeat.o(315696);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.WalletBalancePrivacyUI
  * JD-Core Version:    0.7.0.1
  */

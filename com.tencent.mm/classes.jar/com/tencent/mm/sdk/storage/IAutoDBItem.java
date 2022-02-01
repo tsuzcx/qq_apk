@@ -3,8 +3,11 @@ package com.tencent.mm.sdk.storage;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.MatrixCursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.observer.StorageObserverOwner;
+import com.tencent.mm.sdk.storage.sql.SingleTable;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.HashMap;
@@ -260,9 +263,9 @@ public abstract class IAutoDBItem
     return initAutoDBInfo(paramClass).fields;
   }
   
-  public static IAutoDBItem.MAutoDBInfo initAutoDBInfo(Class<?> paramClass)
+  public static MAutoDBInfo initAutoDBInfo(Class<?> paramClass)
   {
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    MAutoDBInfo localMAutoDBInfo = new MAutoDBInfo();
     LinkedList localLinkedList = new LinkedList();
     Field[] arrayOfField = paramClass.getDeclaredFields();
     int j = arrayOfField.length;
@@ -313,25 +316,63 @@ public abstract class IAutoDBItem
     return localMAutoDBInfo;
   }
   
+  public void convertFrom(ContentValues paramContentValues, boolean paramBoolean) {}
+  
   public abstract void convertFrom(Cursor paramCursor);
   
   public abstract ContentValues convertTo();
   
-  public abstract IAutoDBItem.MAutoDBInfo getDBInfo();
+  public abstract MAutoDBInfo getDBInfo();
   
   public String[] getIndexCreateSQL()
   {
     return new String[0];
   }
   
+  public StorageObserverOwner<? extends IAutoDBItem> getObserverOwner()
+  {
+    return new StorageObserverOwner();
+  }
+  
+  public Object getPrimaryKeyValue()
+  {
+    return "";
+  }
+  
+  public SingleTable getTable()
+  {
+    return new SingleTable(getTableName());
+  }
+  
   public String getTableName()
   {
     return "";
   }
+  
+  public Object toJSON()
+  {
+    return "";
+  }
+  
+  public static class MAutoDBInfo
+  {
+    public Map<String, String> colsMap;
+    public String[] columns;
+    public Field[] fields;
+    public String primaryKey;
+    public String sql;
+    
+    public MAutoDBInfo()
+    {
+      AppMethodBeat.i(158082);
+      this.colsMap = new HashMap();
+      AppMethodBeat.o(158082);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sdk.storage.IAutoDBItem
  * JD-Core Version:    0.7.0.1
  */

@@ -2,11 +2,11 @@ package com.tencent.mm.audio.mix.c;
 
 public abstract interface i
 {
-  public abstract boolean adB();
-  
   public abstract byte[] ae(byte[] paramArrayOfByte);
   
-  public abstract boolean m(String paramString, int paramInt1, int paramInt2);
+  public abstract boolean p(String paramString, int paramInt1, int paramInt2);
+  
+  public abstract boolean release();
 }
 
 

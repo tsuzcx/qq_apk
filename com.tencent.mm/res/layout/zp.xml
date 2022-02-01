@@ -1,47 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center|top" android:layout_gravity="center_horizontal" android:id="@id/bqj" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/a07" android:layout_marginTop="10.0dip" android:layout_marginRight="@dimen/a07" android:layout_marginBottom="10.0dip"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/a6w" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true">
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="3.0" android:layout_alignParentTop="true">
-            <View android:gravity="center" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
-            <View android:gravity="center" android:id="@id/bsj" android:layout_width="1.0px" android:layout_height="wrap_content" />
-            <View android:gravity="center" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
-            <View android:gravity="center" android:id="@id/bso" android:layout_width="1.0px" android:layout_height="wrap_content" />
-            <View android:gravity="center" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:weightSum="4.0" android:layout_alignParentTop="true">
-            <View android:gravity="center" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_weight="1.0" />
-            <View android:gravity="center" android:id="@id/bsm" android:layout_width="wrap_content" android:layout_height="1.0px" />
-            <View android:gravity="center" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_weight="1.0" />
-            <View android:gravity="center" android:id="@id/bsf" android:layout_width="wrap_content" android:layout_height="1.0px" />
-            <View android:gravity="center" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_weight="1.0" />
-            <View android:gravity="center" android:id="@id/bse" android:layout_width="wrap_content" android:layout_height="1.0px" />
-            <View android:gravity="center" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_weight="1.0" />
-        </LinearLayout>
-        <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="0.9">
-            <RelativeLayout android:background="#ffdcdcdc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="0.6" />
-        </LinearLayout>
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="4.0">
-            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/e96" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="0.9" android:layout_weight="1.0" android:layout_alignParentTop="true">
-                <com.tencent.mm.plugin.ipcall.ui.DialNumberButton android:gravity="center" android:id="@id/bqa" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="0.3" />
-                <com.tencent.mm.plugin.ipcall.ui.DialNumberButton android:gravity="center" android:id="@id/bqg" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="0.3" />
-                <com.tencent.mm.plugin.ipcall.ui.DialNumberButton android:gravity="center" android:id="@id/bqf" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="0.3" />
-            </LinearLayout>
-            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/e97" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="0.9" android:layout_weight="1.0" android:layout_below="@id/e96">
-                <com.tencent.mm.plugin.ipcall.ui.DialNumberButton android:gravity="center" android:id="@id/bq9" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="0.3" />
-                <com.tencent.mm.plugin.ipcall.ui.DialNumberButton android:gravity="center" android:id="@id/bq8" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="0.3" />
-                <com.tencent.mm.plugin.ipcall.ui.DialNumberButton android:gravity="center" android:id="@id/bqd" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="0.3" />
-            </LinearLayout>
-            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/e98" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="0.9" android:layout_weight="1.0" android:layout_below="@id/e97">
-                <com.tencent.mm.plugin.ipcall.ui.DialNumberButton android:gravity="center" android:id="@id/bqb" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="0.3" />
-                <com.tencent.mm.plugin.ipcall.ui.DialNumberButton android:gravity="center" android:id="@id/bq7" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="0.3" />
-                <com.tencent.mm.plugin.ipcall.ui.DialNumberButton android:gravity="center" android:id="@id/bq_" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="0.3" />
-            </LinearLayout>
-            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/e99" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="0.9" android:layout_weight="1.0" android:layout_below="@id/e98">
-                <com.tencent.mm.plugin.ipcall.ui.DialNumberButton android:gravity="center" android:id="@id/bqe" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="0.3" />
-                <com.tencent.mm.plugin.ipcall.ui.DialNumberButton android:gravity="center" android:id="@id/bqh" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="0.3" />
-                <com.tencent.mm.plugin.ipcall.ui.DialNumberButton android:gravity="center" android:id="@id/bqc" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="0.3" />
-            </LinearLayout>
-        </LinearLayout>
-    </RelativeLayout>
-</RelativeLayout>
+    <ImageView android:id="@id/hkc" android:layout_width="150.0dip" android:layout_height="150.0dip" android:src="@drawable/bf2" />
+    <TextView android:textSize="@dimen/il" android:textColor="@color/a7b" android:gravity="center" android:id="@id/hkh" android:paddingLeft="@dimen/br" android:paddingRight="@dimen/br" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/i_" android:text="@string/h7b" android:lineSpacingExtra="4.0dip" />
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/a1_" android:id="@id/hkd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="50.0dip" android:text="@string/fn5" />
+</LinearLayout>

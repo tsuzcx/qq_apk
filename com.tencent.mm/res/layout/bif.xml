@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/aol" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:paddingBottom="@dimen/cb" android:layout_width="@dimen/cp" android:layout_height="wrap_content" android:minHeight="@dimen/cs">
-        <com.tencent.mm.plugin.gif.MMAnimateView android:id="@id/dt5" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:layout_marginTop="@dimen/cb" app:iconColor="@color/a41" />
-        <TextView android:textSize="@dimen/eo" android:textColor="@color/a41" android:gravity="center_horizontal" android:id="@id/ipm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" android:text="{title}" android:maxLines="1" android:includeFontPadding="false" />
-        <TextView android:textSize="11.0dip" android:textColor="@color/a41" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/dq6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" android:text="{hotword}" android:maxLines="1" />
-    </LinearLayout>
-</LinearLayout>
+<FrameLayout android:layout_gravity="bottom|center" android:id="@id/j3t" android:background="@drawable/aa9" android:layout_width="wrap_content" android:layout_height="@dimen/d0" android:minWidth="@dimen/c9"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center_vertical" android:id="@id/j3w" android:background="@drawable/aqi" android:layout_width="@dimen/d0" android:layout_height="@dimen/cw" android:layout_marginStart="2.0dip">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/j3v" android:layout_width="10.0dip" android:layout_height="@dimen/cr" />
+    </FrameLayout>
+    <TextView android:textSize="15.0dip" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/j3s" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <FrameLayout android:layout_gravity="end|center" android:id="@id/j3y" android:background="@drawable/aqi" android:layout_width="@dimen/d0" android:layout_height="@dimen/cw" android:layout_marginEnd="2.0dip">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/j3x" android:layout_width="10.0dip" android:layout_height="@dimen/cr" />
+    </FrameLayout>
+</FrameLayout>

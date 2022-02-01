@@ -1,79 +1,84 @@
 package kotlin.l.b.a.b.m;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.b.as;
-import kotlin.l.b.a.b.b.h;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.i.c;
+import kotlin.l.b.a.b.i.f;
 
 public final class z
-  extends ay
+  extends x
+  implements bh
 {
-  public final as[] abqB;
-  public final av[] abqC;
-  private final boolean abqD;
+  private final x ajpI;
+  public final ad ajpJ;
   
-  public z(List<? extends as> paramList, List<? extends av> paramList1)
+  public z(x paramx, ad paramad)
   {
-    this(paramList, (av[])paramList1);
-    AppMethodBeat.o(60753);
+    super(paramx.ajpE, paramx.ajpF);
+    AppMethodBeat.i(60746);
+    this.ajpI = paramx;
+    this.ajpJ = paramad;
+    AppMethodBeat.o(60746);
   }
   
-  public z(as[] paramArrayOfas, av[] paramArrayOfav, boolean paramBoolean)
+  private z l(kotlin.l.b.a.b.m.a.g paramg)
   {
-    AppMethodBeat.i(60752);
-    this.abqB = paramArrayOfas;
-    this.abqC = paramArrayOfav;
-    this.abqD = paramBoolean;
-    if (this.abqB.length <= this.abqC.length) {}
-    for (int i = 1; (kotlin.z.aazO) && (i == 0); i = 0)
+    AppMethodBeat.i(60743);
+    s.u(paramg, "kotlinTypeRefiner");
+    paramg = new z((x)paramg.aD((ad)this.ajpI), paramg.aD(this.ajpJ));
+    AppMethodBeat.o(60743);
+    return paramg;
+  }
+  
+  public final bk Pp(boolean paramBoolean)
+  {
+    AppMethodBeat.i(60740);
+    bk localbk = bi.b(this.ajpI.Pp(paramBoolean), (ad)this.ajpJ.kAK().Pp(paramBoolean));
+    AppMethodBeat.o(60740);
+    return localbk;
+  }
+  
+  public final String a(c paramc, f paramf)
+  {
+    AppMethodBeat.i(60741);
+    s.u(paramc, "renderer");
+    s.u(paramf, "options");
+    if (paramf.kyJ())
     {
-      paramArrayOfas = (Throwable)new AssertionError("Number of arguments should not be less then number of parameters, but: parameters=" + this.abqB.length + ", args=" + this.abqC.length);
-      AppMethodBeat.o(60752);
-      throw paramArrayOfas;
+      paramc = paramc.b(this.ajpJ);
+      AppMethodBeat.o(60741);
+      return paramc;
     }
-    AppMethodBeat.o(60752);
+    paramc = this.ajpI.a(paramc, paramf);
+    AppMethodBeat.o(60741);
+    return paramc;
   }
   
-  public final av N(ab paramab)
+  public final bk b(kotlin.l.b.a.b.b.a.g paramg)
   {
-    AppMethodBeat.i(60751);
-    p.k(paramab, "key");
-    h localh = paramab.iOU().iEf();
-    paramab = localh;
-    if (!(localh instanceof as)) {
-      paramab = null;
-    }
-    paramab = (as)paramab;
-    if (paramab == null)
-    {
-      AppMethodBeat.o(60751);
-      return null;
-    }
-    int i = paramab.getIndex();
-    if ((i < this.abqB.length) && (p.h(this.abqB[i].iDL(), paramab.iDL())))
-    {
-      paramab = this.abqC[i];
-      AppMethodBeat.o(60751);
-      return paramab;
-    }
-    AppMethodBeat.o(60751);
-    return null;
+    AppMethodBeat.i(60739);
+    s.u(paramg, "newAnnotations");
+    paramg = bi.b(this.ajpI.b(paramg), this.ajpJ);
+    AppMethodBeat.o(60739);
+    return paramg;
   }
   
-  public final boolean iOW()
+  public final ad kAG()
   {
-    return this.abqD;
+    return this.ajpJ;
   }
   
-  public final boolean isEmpty()
+  public final al ksx()
   {
-    return this.abqC.length == 0;
+    AppMethodBeat.i(60742);
+    al localal = this.ajpI.ksx();
+    AppMethodBeat.o(60742);
+    return localal;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.m.z
  * JD-Core Version:    0.7.0.1
  */

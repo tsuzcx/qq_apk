@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:id="@id/g4x" android:background="@color/BW_97" android:layout_width="fill_parent" android:layout_height="40.0dip" app:cornerRadius="4.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="@dimen/bd" android:textColor="@color/a2x" android:layout_gravity="center_vertical" android:id="@id/ijq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="40.0dip" />
-    <com.tencent.mm.ui.MMImageView android:layout_gravity="center_vertical" android:id="@id/dup" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="8.0dip" android:src="@drawable/by2" />
-</com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
+<LinearLayout android:gravity="bottom|center" android:orientation="vertical" android:id="@id/aoi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="60.0dip" android:layout_marginBottom="130.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:id="@id/iqe" style="@style/oh" />
+    <Button android:id="@id/iq7" android:layout_marginTop="@dimen/cp" style="@style/op" />
+</LinearLayout>

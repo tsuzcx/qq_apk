@@ -5,17 +5,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.downloader_app.api.a.c;
 import com.tencent.mm.plugin.downloader_app.api.c;
-import com.tencent.mm.plugin.lite.jsapi.b;
-import com.tencent.mm.plugin.lite.jsapi.b.a;
+import com.tencent.mm.plugin.lite.api.e;
+import com.tencent.mm.plugin.lite.api.e.a;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import org.json.JSONObject;
 
 public class g
-  extends b
+  extends e
 {
   public final void a(String paramString, JSONObject paramJSONObject, boolean paramBoolean)
   {
-    AppMethodBeat.i(231369);
+    AppMethodBeat.i(277064);
     paramString = "";
     if (paramJSONObject != null) {
       paramString = paramJSONObject.optString("appId");
@@ -24,19 +24,19 @@ public class g
     paramJSONObject.putExtra("appId", paramString);
     paramJSONObject.putExtra("view_task", true);
     paramJSONObject.addFlags(268435456);
-    ((c)h.ae(c.class)).a(MMApplicationContext.getContext(), paramJSONObject, new a.c()
+    ((c)h.ax(c.class)).a(MMApplicationContext.getContext(), paramJSONObject, new a.c()
     {
-      public final void bPX()
+      public final void cqd()
       {
-        AppMethodBeat.i(231433);
-        g.a(g.this).eLC();
-        AppMethodBeat.o(231433);
+        AppMethodBeat.i(277111);
+        g.a(g.this).fTW();
+        AppMethodBeat.o(277111);
       }
     });
-    AppMethodBeat.o(231369);
+    AppMethodBeat.o(277064);
   }
   
-  public final int ewF()
+  public final int fEx()
   {
     return 1;
   }

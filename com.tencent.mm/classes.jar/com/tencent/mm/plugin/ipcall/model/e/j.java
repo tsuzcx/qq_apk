@@ -1,53 +1,53 @@
 package com.tencent.mm.plugin.ipcall.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.fgy;
-import com.tencent.mm.protocal.protobuf.fgz;
+import com.tencent.mm.protocal.protobuf.gdk;
+import com.tencent.mm.protocal.protobuf.gdl;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class j
-  extends q
+  extends p
   implements m
 {
-  public fgy DRI;
-  public fgz DRJ;
-  private i callback;
-  private d rr;
+  public gdk JIS;
+  public gdl JIT;
+  private h callback;
+  private c rr;
   
   public j(String paramString)
   {
     AppMethodBeat.i(25478);
     this.rr = null;
-    this.DRI = null;
-    this.DRJ = null;
+    this.JIS = null;
+    this.JIT = null;
     this.callback = null;
-    d.a locala = new d.a();
-    locala.lBU = new fgy();
-    locala.lBV = new fgz();
+    c.a locala = new c.a();
+    locala.otE = new gdk();
+    locala.otF = new gdl();
     locala.funcId = 277;
     locala.uri = "/cgi-bin/micromsg-bin/wcopurchasepackage";
-    locala.lBW = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.rr = locala.bgN();
-    this.DRI = ((fgy)d.b.b(this.rr.lBR));
-    this.DRI.ProductID = paramString;
-    Log.i("MicroMsg.NetSceneIPCallPurchasePackage", "NetSceneIPCallPurchasePackage ProductID:%s", new Object[] { this.DRI.ProductID });
+    this.rr = locala.bEF();
+    this.JIS = ((gdk)c.b.b(this.rr.otB));
+    this.JIS.ProductID = paramString;
+    Log.i("MicroMsg.NetSceneIPCallPurchasePackage", "NetSceneIPCallPurchasePackage ProductID:%s", new Object[] { this.JIS.ProductID });
     AppMethodBeat.o(25478);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(25479);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(25479);
     return i;
@@ -62,7 +62,7 @@ public final class j
   {
     AppMethodBeat.i(25480);
     Log.i("MicroMsg.NetSceneIPCallPurchasePackage", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.DRJ = ((fgz)d.c.b(((d)params).lBS));
+    this.JIT = ((gdl)c.c.b(((c)params).otC));
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

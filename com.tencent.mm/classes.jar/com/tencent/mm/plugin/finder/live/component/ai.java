@@ -1,43 +1,26 @@
 package com.tencent.mm.plugin.finder.live.component;
 
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.a.a;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/component/VerticalAnimationListener;", "Landroid/animation/Animator$AnimatorListener;", "()V", "animEndCallback", "Lkotlin/Function0;", "", "view", "Landroid/view/View;", "onAnimationCancel", "p0", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "setup", "callback", "plugin-finder_release"})
-public final class ai
-  implements Animator.AnimatorListener
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/component/FinderLiveLuckyMoneyBubbleContract;", "", "LuckyMoneyState", "Presenter", "ViewCallback", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface ai
 {
-  View view;
-  a<x> ycL;
-  
-  public final void onAnimationCancel(Animator paramAnimator) {}
-  
-  public final void onAnimationEnd(Animator paramAnimator)
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/component/FinderLiveLuckyMoneyBubbleContract$LuckyMoneyState;", "", "(Ljava/lang/String;I)V", "NEW", "OPENED", "ALL_SNATCHED", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static enum a
   {
-    AppMethodBeat.i(258016);
-    paramAnimator = this.view;
-    if (paramAnimator != null) {
-      paramAnimator.setTranslationY(0.0F);
-    }
-    paramAnimator = this.ycL;
-    if ((paramAnimator == null) || ((x)paramAnimator.invoke() == null))
+    static
     {
-      paramAnimator = (ai)this;
-      Log.i("FinderLiveSlideAnimHelper", "VerticalAnimationListener onAnimationEnd：" + paramAnimator.ycL);
-      paramAnimator = x.aazN;
+      AppMethodBeat.i(352713);
+      CzU = new a("NEW", 0);
+      CzV = new a("OPENED", 1);
+      CzW = new a("ALL_SNATCHED", 2);
+      CzX = new a[] { CzU, CzV, CzW };
+      AppMethodBeat.o(352713);
     }
-    AppMethodBeat.o(258016);
+    
+    private a() {}
   }
-  
-  public final void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public final void onAnimationStart(Animator paramAnimator) {}
 }
 
 

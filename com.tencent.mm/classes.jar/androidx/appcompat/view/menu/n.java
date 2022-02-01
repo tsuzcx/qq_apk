@@ -11,23 +11,23 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.PopupWindow.OnDismissListener;
 import androidx.appcompat.a.d;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class n
 {
-  private final h is;
-  private final boolean lA;
-  private int lI;
-  protected View lJ;
-  private boolean lQ;
-  private o.a lR;
-  PopupWindow.OnDismissListener lT;
-  private final int ly;
-  private final int lz;
+  private final h jo;
   private final Context mContext;
-  private m nr;
-  private final PopupWindow.OnDismissListener ns;
+  private int mE;
+  protected View mF;
+  private boolean mN;
+  private o.a mO;
+  PopupWindow.OnDismissListener mQ;
+  private final int mu;
+  private final int mv;
+  private final boolean mw;
+  private m oo;
+  private final PopupWindow.OnDismissListener oq;
   
   public n(Context paramContext, h paramh, View paramView, boolean paramBoolean, int paramInt)
   {
@@ -36,62 +36,76 @@ public class n
   
   public n(Context paramContext, h paramh, View paramView, boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(239752);
-    this.lI = 8388611;
-    this.ns = new PopupWindow.OnDismissListener()
+    AppMethodBeat.i(200883);
+    this.mE = 8388611;
+    this.oq = new PopupWindow.OnDismissListener()
     {
       public final void onDismiss()
       {
-        AppMethodBeat.i(239748);
+        AppMethodBeat.i(201051);
         n.this.onDismiss();
-        AppMethodBeat.o(239748);
+        AppMethodBeat.o(201051);
       }
     };
     this.mContext = paramContext;
-    this.is = paramh;
-    this.lJ = paramView;
-    this.lA = paramBoolean;
-    this.ly = paramInt1;
-    this.lz = paramInt2;
-    AppMethodBeat.o(239752);
+    this.jo = paramh;
+    this.mF = paramView;
+    this.mw = paramBoolean;
+    this.mu = paramInt1;
+    this.mv = paramInt2;
+    AppMethodBeat.o(200883);
   }
   
   final void b(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(239766);
-    m localm = cA();
+    AppMethodBeat.i(200936);
+    m localm = dt();
     localm.setShowTitle(paramBoolean2);
     if (paramBoolean1)
     {
       int i = paramInt1;
-      if ((androidx.core.g.e.D(this.lI, w.I(this.lJ)) & 0x7) == 5) {
-        i = paramInt1 - this.lJ.getWidth();
+      if ((androidx.core.g.e.ay(this.mE, z.U(this.mF)) & 0x7) == 5) {
+        i = paramInt1 - this.mF.getWidth();
       }
-      localm.ag(i);
-      localm.ah(paramInt2);
+      localm.ac(i);
+      localm.ad(paramInt2);
       paramInt1 = (int)(this.mContext.getResources().getDisplayMetrics().density * 48.0F / 2.0F);
-      localm.nq = new Rect(i - paramInt1, paramInt2 - paramInt1, i + paramInt1, paramInt1 + paramInt2);
+      localm.om = new Rect(i - paramInt1, paramInt2 - paramInt1, i + paramInt1, paramInt1 + paramInt2);
     }
     localm.show();
-    AppMethodBeat.o(239766);
+    AppMethodBeat.o(200936);
   }
   
   public final void c(o.a parama)
   {
-    AppMethodBeat.i(239772);
-    this.lR = parama;
-    if (this.nr != null) {
-      this.nr.b(parama);
+    AppMethodBeat.i(200975);
+    this.mO = parama;
+    if (this.oo != null) {
+      this.oo.b(parama);
     }
-    AppMethodBeat.o(239772);
+    AppMethodBeat.o(200975);
   }
   
-  public final m cA()
+  public final void dismiss()
   {
-    AppMethodBeat.i(239760);
+    AppMethodBeat.i(200948);
+    if (isShowing()) {
+      this.oo.dismiss();
+    }
+    AppMethodBeat.o(200948);
+  }
+  
+  public final void ds()
+  {
+    this.mE = 8388613;
+  }
+  
+  public final m dt()
+  {
+    AppMethodBeat.i(200913);
     Point localPoint;
     int i;
-    if (this.nr == null)
+    if (this.oo == null)
     {
       localObject = ((WindowManager)this.mContext.getSystemService("window")).getDefaultDisplay();
       localPoint = new Point();
@@ -111,17 +125,17 @@ public class n
     label177:
     label185:
     label190:
-    for (Object localObject = new e(this.mContext, this.lJ, this.ly, this.lz, this.lA);; localObject = new t(this.mContext, this.is, this.lJ, this.ly, this.lz, this.lA))
+    for (Object localObject = new e(this.mContext, this.mF, this.mu, this.mv, this.mw);; localObject = new t(this.mContext, this.jo, this.mF, this.mu, this.mv, this.mw))
     {
-      ((m)localObject).e(this.is);
-      ((m)localObject).setOnDismissListener(this.ns);
-      ((m)localObject).setAnchorView(this.lJ);
-      ((m)localObject).b(this.lR);
-      ((m)localObject).setForceShowIcon(this.lQ);
-      ((m)localObject).setGravity(this.lI);
-      this.nr = ((m)localObject);
-      localObject = this.nr;
-      AppMethodBeat.o(239760);
+      ((m)localObject).e(this.jo);
+      ((m)localObject).setOnDismissListener(this.oq);
+      ((m)localObject).setAnchorView(this.mF);
+      ((m)localObject).b(this.mO);
+      ((m)localObject).setForceShowIcon(this.mN);
+      ((m)localObject).setGravity(this.mE);
+      this.oo = ((m)localObject);
+      localObject = this.oo;
+      AppMethodBeat.o(200913);
       return localObject;
       ((Display)localObject).getSize(localPoint);
       break;
@@ -130,73 +144,59 @@ public class n
     }
   }
   
-  public final boolean cB()
+  public final boolean du()
   {
-    AppMethodBeat.i(239763);
+    AppMethodBeat.i(200925);
     if (isShowing())
     {
-      AppMethodBeat.o(239763);
+      AppMethodBeat.o(200925);
       return true;
     }
-    if (this.lJ == null)
+    if (this.mF == null)
     {
-      AppMethodBeat.o(239763);
+      AppMethodBeat.o(200925);
       return false;
     }
     b(0, 0, false, false);
-    AppMethodBeat.o(239763);
+    AppMethodBeat.o(200925);
     return true;
-  }
-  
-  public final void cz()
-  {
-    this.lI = 8388613;
-  }
-  
-  public final void dismiss()
-  {
-    AppMethodBeat.i(239768);
-    if (isShowing()) {
-      this.nr.dismiss();
-    }
-    AppMethodBeat.o(239768);
   }
   
   public final boolean isShowing()
   {
-    AppMethodBeat.i(239770);
-    if ((this.nr != null) && (this.nr.isShowing()))
+    AppMethodBeat.i(200964);
+    if ((this.oo != null) && (this.oo.isShowing()))
     {
-      AppMethodBeat.o(239770);
+      AppMethodBeat.o(200964);
       return true;
     }
-    AppMethodBeat.o(239770);
+    AppMethodBeat.o(200964);
     return false;
   }
   
   protected void onDismiss()
   {
-    AppMethodBeat.i(239769);
-    this.nr = null;
-    if (this.lT != null) {
-      this.lT.onDismiss();
+    AppMethodBeat.i(200954);
+    this.oo = null;
+    if (this.mQ != null) {
+      this.mQ.onDismiss();
     }
-    AppMethodBeat.o(239769);
+    AppMethodBeat.o(200954);
   }
   
   public final void setForceShowIcon(boolean paramBoolean)
   {
-    AppMethodBeat.i(239755);
-    this.lQ = paramBoolean;
-    if (this.nr != null) {
-      this.nr.setForceShowIcon(paramBoolean);
+    AppMethodBeat.i(200890);
+    this.mN = paramBoolean;
+    if (this.oo != null) {
+      this.oo.setForceShowIcon(paramBoolean);
     }
-    AppMethodBeat.o(239755);
+    AppMethodBeat.o(200890);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.view.menu.n
  * JD-Core Version:    0.7.0.1
  */

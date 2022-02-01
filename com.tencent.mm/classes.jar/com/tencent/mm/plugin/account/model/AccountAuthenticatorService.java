@@ -8,16 +8,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
-import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.account.ui.ContactsSyncUI;
 import com.tencent.mm.sdk.platformtools.Log;
 
-@JgClassChecked(author=20, fComment="checked", lastDate="20140422", reviewer=20, vComment={com.jg.EType.SERVICESCHECK})
+@Deprecated
 public class AccountAuthenticatorService
   extends Service
 {
-  private static a mZE = null;
+  private static a pWn = null;
   
   public IBinder onBind(Intent paramIntent)
   {
@@ -29,10 +28,10 @@ public class AccountAuthenticatorService
     }
     if ((paramIntent.getAction() != null) && (paramIntent.getAction().equals("android.accounts.AccountAuthenticator")))
     {
-      if (mZE == null) {
-        mZE = new a(this);
+      if (pWn == null) {
+        pWn = new a(this);
       }
-      paramIntent = mZE.getIBinder();
+      paramIntent = pWn.getIBinder();
       AppMethodBeat.o(127806);
       return paramIntent;
     }

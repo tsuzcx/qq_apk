@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:paddingTop="@dimen/d0" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/a_" android:textColor="@color/gb" android:layout_gravity="start|center" android:id="@id/d66" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/elk" android:singleLine="true" android:includeFontPadding="false" android:layout_marginStart="@dimen/cv" />
+    </FrameLayout>
+    <TextView android:textSize="@dimen/t" android:textColor="@color/gb" android:id="@id/d60" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d0" android:text="@string/d4z" android:layout_marginStart="@dimen/cv" android:layout_marginEnd="@dimen/cv" />
+    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d4" android:layout_marginBottom="@dimen/db">
+        <TextView android:enabled="true" android:textSize="17.0dip" android:gravity="center" android:id="@id/da9" android:layout_width="@dimen/c8" android:layout_height="@dimen/d4" android:text="@string/d4x" android:layout_marginEnd="@dimen/cp" style="@style/or" />
+        <TextView android:enabled="true" android:textSize="17.0dip" android:gravity="center" android:id="@id/da_" android:layout_width="@dimen/c8" android:layout_height="@dimen/d4" android:text="@string/d4y" style="@style/oi" />
+    </LinearLayout>
+</LinearLayout>

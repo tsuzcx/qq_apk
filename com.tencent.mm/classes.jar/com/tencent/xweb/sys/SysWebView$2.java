@@ -13,28 +13,30 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebChromeClient.CustomViewCallback;
 import android.webkit.WebChromeClient.FileChooserParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.xweb.WebView.WebViewKind;
 import com.tencent.xweb.WebView.a;
-import com.tencent.xweb.extension.video.b;
-import com.tencent.xweb.util.h;
-import com.tencent.xweb.x;
+import com.tencent.xweb.extension.video.a;
+import com.tencent.xweb.extension.video.d;
+import com.tencent.xweb.util.l;
+import com.tencent.xweb.z;
 import org.xwalk.core.Log;
 import org.xwalk.core.R.layout;
 
 class SysWebView$2
   extends WebChromeClient
 {
-  SysWebView$2(e parame) {}
+  SysWebView$2(f paramf) {}
   
   public View getVideoLoadingProgressView()
   {
     AppMethodBeat.i(153705);
-    if (this.aafF.aafy != null)
+    if (f.e(this.aimq) != null)
     {
-      localView = this.aafF.aafy.getVideoLoadingProgressView();
+      localView = f.e(this.aimq).getVideoLoadingProgressView();
       AppMethodBeat.o(153705);
       return localView;
     }
-    View localView = LayoutInflater.from(this.aafF.aafv.getContext()).inflate(R.layout.video_progress, null);
+    View localView = LayoutInflater.from(f.a(this.aimq).getContext()).inflate(R.layout.xweb_video_progress, null);
     AppMethodBeat.o(153705);
     return localView;
   }
@@ -42,9 +44,9 @@ class SysWebView$2
   public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
   {
     AppMethodBeat.i(153700);
-    if (this.aafF.aafy != null)
+    if (f.e(this.aimq) != null)
     {
-      bool = this.aafF.aafy.onConsoleMessage(paramConsoleMessage);
+      bool = f.e(this.aimq).onConsoleMessage(paramConsoleMessage);
       AppMethodBeat.o(153700);
       return bool;
     }
@@ -57,9 +59,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153699);
     Log.i("SysWebView", "onGeolocationPermissionsHidePrompt");
-    if (this.aafF.aafy != null)
+    if (f.e(this.aimq) != null)
     {
-      this.aafF.aafy.onGeolocationPermissionsHidePrompt();
+      f.e(this.aimq).onGeolocationPermissionsHidePrompt();
       AppMethodBeat.o(153699);
       return;
     }
@@ -71,9 +73,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153698);
     Log.i("SysWebView", "onGeolocationPermissionsShowPrompt");
-    if (this.aafF.aafy != null)
+    if (f.e(this.aimq) != null)
     {
-      this.aafF.aafy.onGeolocationPermissionsShowPrompt(paramString, paramCallback);
+      f.e(this.aimq).onGeolocationPermissionsShowPrompt(paramString, paramCallback);
       AppMethodBeat.o(153698);
       return;
     }
@@ -86,26 +88,26 @@ class SysWebView$2
     boolean bool = false;
     AppMethodBeat.i(153694);
     Log.i("SysWebView", "onHideCustomView");
-    e.a(this.aafF, null);
-    e.a(this.aafF, false);
-    if (this.aafF.aafy != null) {
-      bool = this.aafF.aafy.bXA();
+    f.a(this.aimq, null);
+    f.a(this.aimq, false);
+    if (f.e(this.aimq) != null) {
+      bool = f.e(this.aimq).cxL();
     }
     if (bool)
     {
-      Log.i("SysWebView", "onHideCustomView isHandled:true");
+      Log.i("SysWebView", "onHideCustomView, isHandled:true");
       AppMethodBeat.o(153694);
       return;
     }
-    if (e.a(this.aafF) != null)
+    if (f.d(this.aimq) != null)
     {
-      e.a(this.aafF).onHideCustomView();
+      f.d(this.aimq).onHideCustomView();
       AppMethodBeat.o(153694);
       return;
     }
-    if (this.aafF.aafy != null)
+    if (f.e(this.aimq) != null)
     {
-      this.aafF.aafy.onHideCustomView();
+      f.e(this.aimq).onHideCustomView();
       AppMethodBeat.o(153694);
       return;
     }
@@ -117,9 +119,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153695);
     Log.i("SysWebView", "onJsAlert");
-    if (this.aafF.aafy != null)
+    if (f.e(this.aimq) != null)
     {
-      bool = this.aafF.aafy.a(this.aafF.aafv, paramString1, paramString2, new c.e(paramJsResult));
+      bool = f.e(this.aimq).a(f.a(this.aimq), paramString1, paramString2, new c.e(paramJsResult));
       AppMethodBeat.o(153695);
       return bool;
     }
@@ -132,9 +134,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153696);
     Log.i("SysWebView", "onJsConfirm");
-    if (this.aafF.aafy != null)
+    if (f.e(this.aimq) != null)
     {
-      bool = this.aafF.aafy.b(this.aafF.aafv, paramString1, paramString2, new c.e(paramJsResult));
+      bool = f.e(this.aimq).b(f.a(this.aimq), paramString1, paramString2, new c.e(paramJsResult));
       AppMethodBeat.o(153696);
       return bool;
     }
@@ -147,9 +149,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153697);
     Log.i("SysWebView", "onJsPrompt");
-    if (this.aafF.aafy != null)
+    if (f.e(this.aimq) != null)
     {
-      bool = this.aafF.aafy.a(this.aafF.aafv, paramString1, paramString2, paramString3, new c.d(paramJsPromptResult));
+      bool = f.e(this.aimq).a(f.a(this.aimq), paramString1, paramString2, paramString3, new c.d(paramJsPromptResult));
       AppMethodBeat.o(153697);
       return bool;
     }
@@ -160,38 +162,38 @@ class SysWebView$2
   
   public void onPermissionRequest(PermissionRequest paramPermissionRequest)
   {
-    AppMethodBeat.i(211046);
+    AppMethodBeat.i(212730);
     Log.i("SysWebView", "onPermissionRequest");
-    if (this.aafF.aafy != null)
+    if (f.e(this.aimq) != null)
     {
-      this.aafF.aafy.onPermissionRequest(paramPermissionRequest);
-      AppMethodBeat.o(211046);
+      f.e(this.aimq).onPermissionRequest(paramPermissionRequest);
+      AppMethodBeat.o(212730);
       return;
     }
     super.onPermissionRequest(paramPermissionRequest);
-    AppMethodBeat.o(211046);
+    AppMethodBeat.o(212730);
   }
   
   public void onPermissionRequestCanceled(PermissionRequest paramPermissionRequest)
   {
-    AppMethodBeat.i(211049);
+    AppMethodBeat.i(212735);
     Log.i("SysWebView", "onPermissionRequestCanceled");
-    if (this.aafF.aafy != null)
+    if (f.e(this.aimq) != null)
     {
-      this.aafF.aafy.onPermissionRequestCanceled(paramPermissionRequest);
-      AppMethodBeat.o(211049);
+      f.e(this.aimq).onPermissionRequestCanceled(paramPermissionRequest);
+      AppMethodBeat.o(212735);
       return;
     }
     super.onPermissionRequestCanceled(paramPermissionRequest);
-    AppMethodBeat.o(211049);
+    AppMethodBeat.o(212735);
   }
   
   public void onProgressChanged(android.webkit.WebView paramWebView, int paramInt)
   {
     AppMethodBeat.i(153691);
-    if (this.aafF.aafy != null)
+    if (f.e(this.aimq) != null)
     {
-      this.aafF.aafy.a(this.aafF.aafv, paramInt);
+      f.e(this.aimq).a(f.a(this.aimq), paramInt);
       AppMethodBeat.o(153691);
       return;
     }
@@ -203,22 +205,22 @@ class SysWebView$2
   {
     AppMethodBeat.i(153692);
     Log.i("SysWebView", "onReceivedTitle: ".concat(String.valueOf(paramString)));
-    b localb;
-    if (e.a(this.aafF) != null)
+    a locala;
+    if (f.d(this.aimq) != null)
     {
-      localb = e.a(this.aafF);
-      if (this.aafF.aafv.getFullscreenVideoKind() != WebView.a.aabj) {
+      locala = f.d(this.aimq);
+      if (f.a(this.aimq).getFullscreenVideoKind() != WebView.a.aifF) {
         break label99;
       }
     }
     label99:
     for (boolean bool = true;; bool = false)
     {
-      localb.bu(true, bool);
-      if (this.aafF.aafy == null) {
+      locala.bV(true, bool);
+      if (f.e(this.aimq) == null) {
         break;
       }
-      this.aafF.aafy.d(this.aafF.aafv, paramString);
+      f.e(this.aimq).d(f.a(this.aimq), paramString);
       AppMethodBeat.o(153692);
       return;
     }
@@ -230,28 +232,29 @@ class SysWebView$2
   {
     AppMethodBeat.i(153693);
     Log.i("SysWebView", "onShowCustomView");
-    e.a(this.aafF, paramCustomViewCallback);
-    e.a(this.aafF, true);
+    f.a(this.aimq, paramCustomViewCallback);
+    f.a(this.aimq, true);
     boolean bool = false;
-    if (this.aafF.aafy != null) {
-      bool = this.aafF.aafy.a(paramView, paramCustomViewCallback);
+    if (f.e(this.aimq) != null) {
+      bool = f.e(this.aimq).a(paramView, paramCustomViewCallback);
     }
-    h.ixQ();
+    l.khW();
     if (bool)
     {
-      Log.i("SysWebView", "onShowCustomView isHandled:true");
+      Log.i("SysWebView", "onShowCustomView, isHandled:true");
       AppMethodBeat.o(153693);
       return;
     }
-    if (e.a(this.aafF) != null)
+    if (f.d(this.aimq) != null)
     {
-      e.a(this.aafF).onShowCustomView(paramView, paramCustomViewCallback);
+      l.a(WebView.WebViewKind.aifK, f.d(this.aimq) instanceof d, this.aimq.getUrl());
+      f.d(this.aimq).onShowCustomView(paramView, paramCustomViewCallback);
       AppMethodBeat.o(153693);
       return;
     }
-    if (this.aafF.aafy != null)
+    if (f.e(this.aimq) != null)
     {
-      this.aafF.aafy.onShowCustomView(paramView, paramCustomViewCallback);
+      f.e(this.aimq).onShowCustomView(paramView, paramCustomViewCallback);
       AppMethodBeat.o(153693);
       return;
     }
@@ -263,9 +266,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153704);
     Log.i("SysWebView", "onShowFileChooser last method");
-    if (this.aafF.aafy != null)
+    if (f.e(this.aimq) != null)
     {
-      bool = this.aafF.aafy.a(this.aafF.aafv, paramValueCallback, new c.c(paramFileChooserParams));
+      bool = f.e(this.aimq).a(f.a(this.aimq), paramValueCallback, new c.c(paramFileChooserParams));
       AppMethodBeat.o(153704);
       return bool;
     }
@@ -278,9 +281,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153701);
     Log.i("SysWebView", "openFileChooser with one param");
-    if (this.aafF.aafy != null)
+    if (f.e(this.aimq) != null)
     {
-      this.aafF.aafy.openFileChooser(paramValueCallback, null, null);
+      f.e(this.aimq).openFileChooser(paramValueCallback, null, null);
       AppMethodBeat.o(153701);
       return;
     }
@@ -292,9 +295,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153702);
     Log.i("SysWebView", "openFileChooser with two param");
-    if (this.aafF.aafy != null)
+    if (f.e(this.aimq) != null)
     {
-      this.aafF.aafy.openFileChooser(paramValueCallback, paramString, null);
+      f.e(this.aimq).openFileChooser(paramValueCallback, paramString, null);
       AppMethodBeat.o(153702);
       return;
     }
@@ -306,9 +309,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153703);
     Log.i("SysWebView", "openFileChooser with three param");
-    if (this.aafF.aafy != null)
+    if (f.e(this.aimq) != null)
     {
-      this.aafF.aafy.openFileChooser(paramValueCallback, paramString1, paramString2);
+      f.e(this.aimq).openFileChooser(paramValueCallback, paramString1, paramString2);
       AppMethodBeat.o(153703);
       return;
     }
@@ -318,7 +321,7 @@ class SysWebView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.sys.SysWebView.2
  * JD-Core Version:    0.7.0.1
  */

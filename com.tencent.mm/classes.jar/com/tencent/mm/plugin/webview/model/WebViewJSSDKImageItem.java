@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.ExifHelper;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -18,7 +18,7 @@ public class WebViewJSSDKImageItem
   implements Parcelable
 {
   public static final Parcelable.Creator<WebViewJSSDKImageItem> CREATOR;
-  public boolean BYl;
+  public boolean HKz;
   
   static
   {
@@ -39,19 +39,19 @@ public class WebViewJSSDKImageItem
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.BYl = bool;
+      this.HKz = bool;
       AppMethodBeat.o(79014);
       return;
       bool = false;
     }
   }
   
-  public final void cm(JSONObject paramJSONObject)
+  public final void cT(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(182695);
-    super.cm(paramJSONObject);
+    super.cT(paramJSONObject);
     if (paramJSONObject != null) {
-      this.BYl = paramJSONObject.optBoolean("isGif");
+      this.HKz = paramJSONObject.optBoolean("isGif");
     }
     AppMethodBeat.o(182695);
   }
@@ -61,13 +61,18 @@ public class WebViewJSSDKImageItem
     return 0;
   }
   
-  public final JSONObject gVK()
+  public final String getFileType()
+  {
+    return "image";
+  }
+  
+  public final JSONObject kLR()
   {
     AppMethodBeat.i(182696);
-    JSONObject localJSONObject = super.gVK();
+    JSONObject localJSONObject = super.kLR();
     try
     {
-      localJSONObject.put("isGif", this.BYl);
+      localJSONObject.put("isGif", this.HKz);
       label21:
       AppMethodBeat.o(182696);
       return localJSONObject;
@@ -78,48 +83,48 @@ public class WebViewJSSDKImageItem
     }
   }
   
-  public final WebViewJSSDKFileItem gVL()
+  public final WebViewJSSDKFileItem kLS()
   {
     AppMethodBeat.i(79012);
-    this.fCM = az.bkS(this.nVa);
-    gVO();
+    this.hHB = az.bkB(this.qUK);
+    kLU();
     AppMethodBeat.o(79012);
     return this;
   }
   
-  public final String gVM()
+  public final String kLT()
   {
     return "jpeg";
   }
   
-  public final void gVO()
+  public final void kLU()
   {
     AppMethodBeat.i(79011);
-    if (!new q(this.nVa).ifE())
+    if (!new u(this.qUK).jKS())
     {
       Log.i("MicroMsg.WebViewJSSDkImageItem", "Original file not existed");
       AppMethodBeat.o(79011);
       return;
     }
-    if (this.oLR == null) {
-      this.oLR = az.getFilePath(System.currentTimeMillis());
+    if (this.rPM == null) {
+      this.rPM = az.getFilePath(System.currentTimeMillis());
     }
     for (;;)
     {
-      Bitmap localBitmap = BitmapUtil.extractThumbNail(this.nVa, 640, 640, false);
+      Bitmap localBitmap = BitmapUtil.extractThumbNail(this.qUK, 640, 640, false);
       if (localBitmap != null)
       {
         Log.i("MicroMsg.WebViewJSSDkImageItem", "extract thumbnail bitmap");
-        localBitmap = BitmapUtil.rotate(localBitmap, BackwardSupportUtil.ExifHelper.getExifOrientation(this.nVa));
+        localBitmap = BitmapUtil.rotate(localBitmap, BackwardSupportUtil.ExifHelper.getExifOrientation(this.qUK));
         if (localBitmap == null) {}
       }
       try
       {
-        BitmapUtil.saveBitmapToImage(localBitmap, 100, Bitmap.CompressFormat.JPEG, this.oLR, true);
-        Log.i("MicroMsg.WebViewJSSDkImageItem", "Thumb Path: %s", new Object[] { this.oLR });
+        BitmapUtil.saveBitmapToImage(localBitmap, 100, Bitmap.CompressFormat.JPEG, this.rPM, true);
+        Log.i("MicroMsg.WebViewJSSDkImageItem", "Thumb Path: %s", new Object[] { this.rPM });
         AppMethodBeat.o(79011);
         return;
-        if (!this.oLR.equals(this.nVa)) {
+        if (!this.rPM.equals(this.qUK)) {
           continue;
         }
         Log.i("MicroMsg.WebViewJSSDkImageItem", "Thumb file is original file");
@@ -136,16 +141,11 @@ public class WebViewJSSDKImageItem
     }
   }
   
-  public final String getFileType()
-  {
-    return "image";
-  }
-  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(79013);
     super.writeToParcel(paramParcel, paramInt);
-    if (this.BYl) {}
+    if (this.HKz) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);

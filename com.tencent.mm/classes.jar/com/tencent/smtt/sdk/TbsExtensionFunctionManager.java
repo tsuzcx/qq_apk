@@ -1,15 +1,10 @@
 package com.tencent.smtt.sdk;
 
 import android.content.Context;
-import android.text.TextUtils;
-import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.smtt.export.external.DexLoader;
 import com.tencent.smtt.utils.TbsLog;
-import com.tencent.smtt.utils.k;
 import java.io.File;
 import java.io.IOException;
-import java.util.Map;
 
 public class TbsExtensionFunctionManager
 {
@@ -157,78 +152,241 @@ public class TbsExtensionFunctionManager
     //   49	64	67	finally
   }
   
+  /* Error */
   public void initTbsBuglyIfNeed(Context paramContext)
   {
-    for (;;)
-    {
-      try
-      {
-        AppMethodBeat.i(54675);
-        if (this.a)
-        {
-          AppMethodBeat.o(54675);
-          return;
-        }
-        if (!canUseFunction(paramContext, "bugly_switch.txt"))
-        {
-          TbsLog.i("TbsExtensionFunMana", "bugly is forbiden!!");
-          AppMethodBeat.o(54675);
-          continue;
-        }
-        if (!TbsShareManager.isThirdPartyApp(paramContext)) {}
-      }
-      finally {}
-      for (Object localObject1 = TbsShareManager.c(paramContext);; localObject1 = ((File)localObject1).getAbsolutePath())
-      {
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          break label151;
-        }
-        TbsLog.i("TbsExtensionFunMana", "bugly init ,corePath is null");
-        AppMethodBeat.o(54675);
-        break;
-        localObject1 = q.a().r(paramContext);
-        if (localObject1 == null) {
-          TbsLog.i("TbsExtensionFunMana", "getTbsCoreShareDir is null");
-        }
-        if ((((File)localObject1).listFiles() == null) || (((File)localObject1).listFiles().length <= 0))
-        {
-          TbsLog.i("TbsExtensionFunMana", "getTbsCoreShareDir is empty!");
-          AppMethodBeat.o(54675);
-          break;
-        }
-      }
-      label151:
-      Object localObject4 = q.a().r(paramContext);
-      if (localObject4 == null)
-      {
-        TbsLog.i("TbsExtensionFunMana", "bugly init ,optDir is null");
-        AppMethodBeat.o(54675);
-      }
-      else
-      {
-        Object localObject3 = new File((String)localObject1, "tbs_bugly_dex.jar");
-        TbsLog.d("TbsExtensionFunMana", "optDir:" + localObject4 + ",tbsCorePath:" + (String)localObject1 + ",dexFile:" + ((File)localObject3).getAbsolutePath());
-        try
-        {
-          Object localObject2 = ((File)localObject3).getParent();
-          localObject3 = ((File)localObject3).getAbsolutePath();
-          localObject4 = ((File)localObject4).getAbsolutePath();
-          Map localMap = QbSdk.getSettings();
-          localObject2 = new DexLoader((String)localObject2, paramContext, new String[] { localObject3 }, (String)localObject4, localMap).loadClass("com.tencent.smtt.tbs.bugly.TBSBuglyManager");
-          int i = WebView.getTbsSDKVersion(paramContext);
-          int j = WebView.getTbsCoreVersion(paramContext);
-          k.a((Class)localObject2, "initBugly", new Class[] { Context.class, String.class, String.class, String.class }, new Object[] { paramContext, localObject1, String.valueOf(i), String.valueOf(j) });
-          this.a = true;
-          TbsLog.i("TbsExtensionFunMana", "initTbsBuglyIfNeed success!");
-          AppMethodBeat.o(54675);
-        }
-        catch (Throwable paramContext)
-        {
-          TbsLog.i("TbsExtensionFunMana", "bugly init ,try init bugly failed(need new core):" + Log.getStackTraceString(paramContext));
-          AppMethodBeat.o(54675);
-        }
-      }
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc 104
+    //   4: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_0
+    //   8: getfield 106	com/tencent/smtt/sdk/TbsExtensionFunctionManager:a	Z
+    //   11: ifeq +11 -> 22
+    //   14: ldc 104
+    //   16: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   19: aload_0
+    //   20: monitorexit
+    //   21: return
+    //   22: aload_0
+    //   23: aload_1
+    //   24: ldc 8
+    //   26: invokevirtual 108	com/tencent/smtt/sdk/TbsExtensionFunctionManager:canUseFunction	(Landroid/content/Context;Ljava/lang/String;)Z
+    //   29: ifne +23 -> 52
+    //   32: ldc 110
+    //   34: ldc 112
+    //   36: invokestatic 117	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   39: ldc 104
+    //   41: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   44: goto -25 -> 19
+    //   47: astore_1
+    //   48: aload_0
+    //   49: monitorexit
+    //   50: aload_1
+    //   51: athrow
+    //   52: aload_1
+    //   53: invokestatic 123	com/tencent/smtt/sdk/TbsShareManager:isThirdPartyApp	(Landroid/content/Context;)Z
+    //   56: ifeq +32 -> 88
+    //   59: aload_1
+    //   60: invokestatic 127	com/tencent/smtt/sdk/TbsShareManager:c	(Landroid/content/Context;)Ljava/lang/String;
+    //   63: astore 4
+    //   65: aload 4
+    //   67: invokestatic 133	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   70: ifeq +81 -> 151
+    //   73: ldc 110
+    //   75: ldc 135
+    //   77: invokestatic 117	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   80: ldc 104
+    //   82: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   85: goto -66 -> 19
+    //   88: invokestatic 140	com/tencent/smtt/sdk/q:a	()Lcom/tencent/smtt/sdk/q;
+    //   91: aload_1
+    //   92: invokevirtual 144	com/tencent/smtt/sdk/q:r	(Landroid/content/Context;)Ljava/io/File;
+    //   95: astore 4
+    //   97: aload 4
+    //   99: ifnonnull +10 -> 109
+    //   102: ldc 110
+    //   104: ldc 146
+    //   106: invokestatic 117	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   109: aload 4
+    //   111: invokevirtual 150	java/io/File:listFiles	()[Ljava/io/File;
+    //   114: ifnull +12 -> 126
+    //   117: aload 4
+    //   119: invokevirtual 150	java/io/File:listFiles	()[Ljava/io/File;
+    //   122: arraylength
+    //   123: ifgt +18 -> 141
+    //   126: ldc 110
+    //   128: ldc 152
+    //   130: invokestatic 117	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   133: ldc 104
+    //   135: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   138: goto -119 -> 19
+    //   141: aload 4
+    //   143: invokevirtual 156	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   146: astore 4
+    //   148: goto -83 -> 65
+    //   151: invokestatic 140	com/tencent/smtt/sdk/q:a	()Lcom/tencent/smtt/sdk/q;
+    //   154: aload_1
+    //   155: invokevirtual 144	com/tencent/smtt/sdk/q:r	(Landroid/content/Context;)Ljava/io/File;
+    //   158: astore 7
+    //   160: aload 7
+    //   162: ifnonnull +18 -> 180
+    //   165: ldc 110
+    //   167: ldc 158
+    //   169: invokestatic 117	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   172: ldc 104
+    //   174: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   177: goto -158 -> 19
+    //   180: new 67	java/io/File
+    //   183: dup
+    //   184: aload 4
+    //   186: ldc 160
+    //   188: invokespecial 162	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   191: astore 6
+    //   193: ldc 110
+    //   195: new 164	java/lang/StringBuilder
+    //   198: dup
+    //   199: ldc 166
+    //   201: invokespecial 169	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   204: aload 7
+    //   206: invokevirtual 173	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   209: ldc 175
+    //   211: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   214: aload 4
+    //   216: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   219: ldc 180
+    //   221: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   224: aload 6
+    //   226: invokevirtual 156	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   229: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   232: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   235: invokestatic 186	com/tencent/smtt/utils/TbsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   238: aload 6
+    //   240: invokevirtual 189	java/io/File:getParent	()Ljava/lang/String;
+    //   243: astore 5
+    //   245: aload 6
+    //   247: invokevirtual 156	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   250: astore 6
+    //   252: aload 7
+    //   254: invokevirtual 156	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   257: astore 7
+    //   259: invokestatic 195	com/tencent/smtt/sdk/QbSdk:getSettings	()Ljava/util/Map;
+    //   262: astore 8
+    //   264: new 197	com/tencent/smtt/export/external/DexLoader
+    //   267: dup
+    //   268: aload 5
+    //   270: aload_1
+    //   271: iconst_1
+    //   272: anewarray 199	java/lang/String
+    //   275: dup
+    //   276: iconst_0
+    //   277: aload 6
+    //   279: aastore
+    //   280: aload 7
+    //   282: aload 8
+    //   284: invokespecial 202	com/tencent/smtt/export/external/DexLoader:<init>	(Ljava/lang/String;Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)V
+    //   287: ldc 204
+    //   289: invokevirtual 208	com/tencent/smtt/export/external/DexLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
+    //   292: astore 5
+    //   294: aload_1
+    //   295: invokestatic 213	com/tencent/smtt/sdk/WebView:getTbsSDKVersion	(Landroid/content/Context;)I
+    //   298: istore_2
+    //   299: aload_1
+    //   300: invokestatic 216	com/tencent/smtt/sdk/WebView:getTbsCoreVersion	(Landroid/content/Context;)I
+    //   303: istore_3
+    //   304: aload 5
+    //   306: ldc 218
+    //   308: iconst_4
+    //   309: anewarray 220	java/lang/Class
+    //   312: dup
+    //   313: iconst_0
+    //   314: ldc 69
+    //   316: aastore
+    //   317: dup
+    //   318: iconst_1
+    //   319: ldc 199
+    //   321: aastore
+    //   322: dup
+    //   323: iconst_2
+    //   324: ldc 199
+    //   326: aastore
+    //   327: dup
+    //   328: iconst_3
+    //   329: ldc 199
+    //   331: aastore
+    //   332: iconst_4
+    //   333: anewarray 4	java/lang/Object
+    //   336: dup
+    //   337: iconst_0
+    //   338: aload_1
+    //   339: aastore
+    //   340: dup
+    //   341: iconst_1
+    //   342: aload 4
+    //   344: aastore
+    //   345: dup
+    //   346: iconst_2
+    //   347: iload_2
+    //   348: invokestatic 224	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   351: aastore
+    //   352: dup
+    //   353: iconst_3
+    //   354: iload_3
+    //   355: invokestatic 224	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   358: aastore
+    //   359: invokestatic 229	com/tencent/smtt/utils/k:a	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   362: pop
+    //   363: aload_0
+    //   364: iconst_1
+    //   365: putfield 106	com/tencent/smtt/sdk/TbsExtensionFunctionManager:a	Z
+    //   368: ldc 110
+    //   370: ldc 231
+    //   372: invokestatic 117	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   375: ldc 104
+    //   377: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   380: goto -361 -> 19
+    //   383: astore_1
+    //   384: ldc 110
+    //   386: new 164	java/lang/StringBuilder
+    //   389: dup
+    //   390: ldc 233
+    //   392: invokespecial 169	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   395: aload_1
+    //   396: invokestatic 239	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   399: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   402: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   405: invokestatic 117	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   408: ldc 104
+    //   410: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   413: goto -394 -> 19
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	416	0	this	TbsExtensionFunctionManager
+    //   0	416	1	paramContext	Context
+    //   298	50	2	i	int
+    //   303	52	3	j	int
+    //   63	280	4	localObject1	Object
+    //   243	62	5	localObject2	Object
+    //   191	87	6	localObject3	Object
+    //   158	123	7	localObject4	Object
+    //   262	21	8	localMap	java.util.Map
+    // Exception table:
+    //   from	to	target	type
+    //   2	19	47	finally
+    //   22	44	47	finally
+    //   52	65	47	finally
+    //   65	85	47	finally
+    //   88	97	47	finally
+    //   102	109	47	finally
+    //   109	126	47	finally
+    //   126	138	47	finally
+    //   141	148	47	finally
+    //   151	160	47	finally
+    //   165	177	47	finally
+    //   180	238	47	finally
+    //   363	380	47	finally
+    //   384	413	47	finally
+    //   238	363	383	finally
   }
   
   public boolean setFunctionEnable(Context paramContext, String paramString, boolean paramBoolean)
@@ -295,7 +453,7 @@ public class TbsExtensionFunctionManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsExtensionFunctionManager
  * JD-Core Version:    0.7.0.1
  */

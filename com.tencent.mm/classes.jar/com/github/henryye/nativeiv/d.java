@@ -9,26 +9,26 @@ import java.util.concurrent.TimeUnit;
 
  enum d
 {
-  private static int aKb;
-  ExecutorService aKc;
-  ExecutorService aKd;
+  private static int cDX;
+  ExecutorService cDY;
+  ExecutorService cDZ;
   
   static
   {
     AppMethodBeat.i(127348);
-    aKa = new d("INSTANCE");
-    aKe = new d[] { aKa };
-    aKb = Runtime.getRuntime().availableProcessors() + 1;
+    cDW = new d("INSTANCE");
+    cEa = new d[] { cDW };
+    cDX = Runtime.getRuntime().availableProcessors() + 1;
     AppMethodBeat.o(127348);
   }
   
   private d()
   {
     AppMethodBeat.i(127347);
-    this.aKc = null;
-    this.aKd = null;
-    int i = Math.max(aKb, 5);
-    this.aKc = new ThreadPoolExecutor(1, Math.max(i / 2, 4), 500L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(), new ThreadFactory()
+    this.cDY = null;
+    this.cDZ = null;
+    int i = Math.max(cDX, 5);
+    this.cDY = new ThreadPoolExecutor(1, Math.max(i / 2, 4), 500L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(), new ThreadFactory()
     {
       public final Thread newThread(Runnable paramAnonymousRunnable)
       {
@@ -38,7 +38,7 @@ import java.util.concurrent.TimeUnit;
         return paramAnonymousRunnable;
       }
     });
-    this.aKd = new ThreadPoolExecutor(i - 1, i, 500L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(), new ThreadFactory()
+    this.cDZ = new ThreadPoolExecutor(i - 1, i, 500L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(), new ThreadFactory()
     {
       public final Thread newThread(Runnable paramAnonymousRunnable)
       {

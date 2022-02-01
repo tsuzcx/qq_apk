@@ -202,7 +202,7 @@ public class FFmpegMetadataRetriever
     {
       AppMethodBeat.o(107615);
       return null;
-      locala.Fds = localHashMap;
+      locala.KZb = localHashMap;
       i = 1;
     }
     AppMethodBeat.o(107615);
@@ -546,14 +546,14 @@ public class FFmpegMetadataRetriever
   
   public class a
   {
-    HashMap<String, String> Fds;
+    HashMap<String, String> KZb;
     
     public a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.FFmpegMetadataRetriever
  * JD-Core Version:    0.7.0.1
  */

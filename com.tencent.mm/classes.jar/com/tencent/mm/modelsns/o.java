@@ -2,34 +2,38 @@ package com.tencent.mm.modelsns;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.adw;
-import com.tencent.mm.protocal.protobuf.ba;
-import com.tencent.mm.protocal.protobuf.bc;
-import com.tencent.mm.protocal.protobuf.bcp;
-import com.tencent.mm.protocal.protobuf.bja;
-import com.tencent.mm.protocal.protobuf.bje;
-import com.tencent.mm.protocal.protobuf.bjg;
-import com.tencent.mm.protocal.protobuf.crk;
-import com.tencent.mm.protocal.protobuf.cst;
-import com.tencent.mm.protocal.protobuf.cuf;
-import com.tencent.mm.protocal.protobuf.cvt;
-import com.tencent.mm.protocal.protobuf.cvv;
-import com.tencent.mm.protocal.protobuf.cwx;
-import com.tencent.mm.protocal.protobuf.dbr;
-import com.tencent.mm.protocal.protobuf.eh;
-import com.tencent.mm.protocal.protobuf.ejy;
-import com.tencent.mm.protocal.protobuf.eoq;
-import com.tencent.mm.protocal.protobuf.ex;
-import com.tencent.mm.protocal.protobuf.ey;
-import com.tencent.mm.protocal.protobuf.ez;
-import com.tencent.mm.protocal.protobuf.fiu;
-import com.tencent.mm.protocal.protobuf.flm;
-import com.tencent.mm.protocal.protobuf.jd;
+import com.tencent.mm.protocal.protobuf.agh;
+import com.tencent.mm.protocal.protobuf.bd;
+import com.tencent.mm.protocal.protobuf.bh;
+import com.tencent.mm.protocal.protobuf.bmr;
+import com.tencent.mm.protocal.protobuf.bvh;
+import com.tencent.mm.protocal.protobuf.bvl;
+import com.tencent.mm.protocal.protobuf.bvm;
+import com.tencent.mm.protocal.protobuf.bvn;
+import com.tencent.mm.protocal.protobuf.dif;
+import com.tencent.mm.protocal.protobuf.djv;
+import com.tencent.mm.protocal.protobuf.dll;
+import com.tencent.mm.protocal.protobuf.dmz;
+import com.tencent.mm.protocal.protobuf.dnb;
+import com.tencent.mm.protocal.protobuf.doc;
+import com.tencent.mm.protocal.protobuf.dtj;
+import com.tencent.mm.protocal.protobuf.fb;
+import com.tencent.mm.protocal.protobuf.feg;
+import com.tencent.mm.protocal.protobuf.ffv;
+import com.tencent.mm.protocal.protobuf.fjo;
+import com.tencent.mm.protocal.protobuf.fr;
+import com.tencent.mm.protocal.protobuf.fs;
+import com.tencent.mm.protocal.protobuf.ft;
+import com.tencent.mm.protocal.protobuf.gfh;
+import com.tencent.mm.protocal.protobuf.gib;
+import com.tencent.mm.protocal.protobuf.gom;
+import com.tencent.mm.protocal.protobuf.jz;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -39,7 +43,27 @@ import java.util.Map;
 
 public final class o
 {
-  private static float Xi(String paramString)
+  private static bmr In(String paramString)
+  {
+    AppMethodBeat.i(369551);
+    d locald = new d();
+    int i = paramString.indexOf("<finderLive>");
+    int j = paramString.indexOf("</finderLive>");
+    if ((i < 0) || (j < 0))
+    {
+      AppMethodBeat.o(369551);
+      return null;
+    }
+    paramString = XmlParser.parseXml(paramString.substring(i, j + 13), "finderLive", null);
+    if (paramString != null) {
+      locald.i("", paramString);
+    }
+    paramString = locald.oUb;
+    AppMethodBeat.o(369551);
+    return paramString;
+  }
+  
+  public static float Pk(String paramString)
   {
     AppMethodBeat.i(94861);
     if (paramString == null)
@@ -52,7 +76,7 @@ public final class o
     return f;
   }
   
-  private static String Xj(String paramString)
+  public static String Pl(String paramString)
   {
     String str = paramString;
     if (paramString == null) {
@@ -61,77 +85,76 @@ public final class o
     return str;
   }
   
-  public static TimeLineObject Xk(String paramString)
+  public static TimeLineObject Pm(String paramString)
   {
     AppMethodBeat.i(94866);
     Map localMap = XmlParser.parseXml(paramString, "TimelineObject", null);
-    TimeLineObject localTimeLineObject = bpc();
+    TimeLineObject localTimeLineObject = bMJ();
     Object localObject1;
     int i;
     Object localObject4;
     Object localObject3;
-    label1711:
-    label2865:
-    label2878:
+    label1722:
+    label2876:
+    label2889:
     int j;
-    label2949:
-    label2999:
-    label3049:
-    label3199:
+    label2960:
+    label3010:
+    label3060:
     int k;
     if (localMap != null)
     {
-      localTimeLineObject.Id = Xj((String)localMap.get(".TimelineObject.id"));
-      localTimeLineObject.UserName = Xj((String)localMap.get(".TimelineObject.username"));
+      localTimeLineObject.Id = Pl((String)localMap.get(".TimelineObject.id"));
+      localTimeLineObject.UserName = Pl((String)localMap.get(".TimelineObject.username"));
       localTimeLineObject.Privated = Util.getInt((String)localMap.get(".TimelineObject.private"), 0);
       localTimeLineObject.CreateTime = Util.getInt((String)localMap.get(".TimelineObject.createTime"), 0);
-      localTimeLineObject.ContentDesc = Xj((String)localMap.get(".TimelineObject.contentDesc"));
+      localTimeLineObject.ContentDesc = Pl((String)localMap.get(".TimelineObject.contentDesc"));
       localTimeLineObject.contentDescShowType = Util.getInt((String)localMap.get(".TimelineObject.contentDescShowType"), 0);
       localTimeLineObject.contentDescScene = Util.getInt((String)localMap.get(".TimelineObject.contentDescScene"), 0);
-      localTimeLineObject.statExtStr = Xj((String)localMap.get(".TimelineObject.statExtStr"));
+      localTimeLineObject.statExtStr = Pl((String)localMap.get(".TimelineObject.statExtStr"));
       localTimeLineObject.sightFolded = Util.getInt((String)localMap.get(".TimelineObject.sightFolded"), 0);
       localTimeLineObject.showFlag = Util.getInt((String)localMap.get(".TimelineObject.showFlag"), 0);
-      localObject1 = new cst();
-      ((cst)localObject1).ScO = Xi((String)localMap.get(".TimelineObject.location.$longitude"));
-      ((cst)localObject1).ScP = Xi((String)localMap.get(".TimelineObject.location.$latitude"));
-      ((cst)localObject1).mVA = Xj((String)localMap.get(".TimelineObject.location.$city"));
-      ((cst)localObject1).TAz = Util.getInt((String)localMap.get(".TimelineObject.location.$poiScale"), 0);
-      ((cst)localObject1).SOz = Xj((String)localMap.get(".TimelineObject.location.$poiClassifyId"));
-      ((cst)localObject1).KFw = Util.getInt((String)localMap.get(".TimelineObject.location.$poiClassifyType"), 0);
-      ((cst)localObject1).KFu = Xj((String)localMap.get(".TimelineObject.location.$poiAddress"));
-      ((cst)localObject1).poiName = Xj((String)localMap.get(".TimelineObject.location.$poiName"));
-      ((cst)localObject1).TAA = Util.getInt((String)localMap.get(".TimelineObject.location.$poiClickableStatus"), 0);
-      ((cst)localObject1).TAC = Xj((String)localMap.get(".TimelineObject.location.$poiAddressName"));
-      ((cst)localObject1).country = Xj((String)localMap.get(".TimelineObject.location.$country"));
-      localTimeLineObject.Location = ((cst)localObject1);
+      localObject1 = new djv();
+      ((djv)localObject1).ZaG = Pk((String)localMap.get(".TimelineObject.location.$longitude"));
+      ((djv)localObject1).ZaH = Pk((String)localMap.get(".TimelineObject.location.$latitude"));
+      ((djv)localObject1).pSh = Pl((String)localMap.get(".TimelineObject.location.$city"));
+      ((djv)localObject1).aaPN = Util.getInt((String)localMap.get(".TimelineObject.location.$poiScale"), 0);
+      ((djv)localObject1).ZWG = Pl((String)localMap.get(".TimelineObject.location.$poiClassifyId"));
+      ((djv)localObject1).ReW = Util.getInt((String)localMap.get(".TimelineObject.location.$poiClassifyType"), 0);
+      ((djv)localObject1).ReU = Pl((String)localMap.get(".TimelineObject.location.$poiAddress"));
+      ((djv)localObject1).poiName = Pl((String)localMap.get(".TimelineObject.location.$poiName"));
+      ((djv)localObject1).aaPO = Util.getInt((String)localMap.get(".TimelineObject.location.$poiClickableStatus"), 0);
+      ((djv)localObject1).aaPQ = Pl((String)localMap.get(".TimelineObject.location.$poiAddressName"));
+      ((djv)localObject1).country = Pl((String)localMap.get(".TimelineObject.location.$country"));
+      localTimeLineObject.Location = ((djv)localObject1);
       if (localTimeLineObject.ContentObj == null) {
-        localTimeLineObject.ContentObj = new adw();
+        localTimeLineObject.ContentObj = new agh();
       }
-      localTimeLineObject.ContentObj.CMB = Xj((String)localMap.get(".TimelineObject.ContentObject.description"));
-      localTimeLineObject.ContentObj.Sqq = Util.getInt((String)localMap.get(".TimelineObject.ContentObject.contentStyle"), 0);
-      localTimeLineObject.ContentObj.Sqs = Util.getInt((String)localMap.get(".TimelineObject.ContentObject.contentSubStyle"), 0);
-      localTimeLineObject.ContentObj.fwr = Xj((String)localMap.get(".TimelineObject.ContentObject.title"));
-      localTimeLineObject.ContentObj.Url = Xj((String)localMap.get(".TimelineObject.ContentObject.contentUrl"));
+      localTimeLineObject.ContentObj.IGG = Pl((String)localMap.get(".TimelineObject.ContentObject.description"));
+      localTimeLineObject.ContentObj.Zpq = Util.getInt((String)localMap.get(".TimelineObject.ContentObject.contentStyle"), 0);
+      localTimeLineObject.ContentObj.Zps = Util.getInt((String)localMap.get(".TimelineObject.ContentObject.contentSubStyle"), 0);
+      localTimeLineObject.ContentObj.hAP = Pl((String)localMap.get(".TimelineObject.ContentObject.title"));
+      localTimeLineObject.ContentObj.Url = Pl((String)localMap.get(".TimelineObject.ContentObject.contentUrl"));
       if (localMap.containsKey(".TimelineObject.ContentObject.mmreadershare.itemshowtype"))
       {
         i = Util.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.itemshowtype"), 0);
         if (i != -1)
         {
-          localTimeLineObject.ContentObj.Squ = new cuf();
-          localTimeLineObject.ContentObj.Squ.lpx = i;
-          localTimeLineObject.ContentObj.Squ.lls = Util.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.ispaysubscribe"), 0);
+          localTimeLineObject.ContentObj.Zpu = new dll();
+          localTimeLineObject.ContentObj.Zpu.nUA = i;
+          localTimeLineObject.ContentObj.Zpu.nQp = Util.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.ispaysubscribe"), 0);
         }
-        if (i == 5)
+        if ((i == 5) || (i == 16))
         {
-          localTimeLineObject.ContentObj.Squ.llq = Util.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.pubtime"), 0);
-          localTimeLineObject.ContentObj.Squ.vid = Xj((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.vid"));
-          localTimeLineObject.ContentObj.Squ.coverUrl = Xj((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.cover"));
-          localTimeLineObject.ContentObj.Squ.llt = Util.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.funcflag"), 0);
-          localTimeLineObject.ContentObj.Squ.duration = Util.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.duration"), 0);
-          localTimeLineObject.ContentObj.Squ.desc = Xj((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.digest"));
-          localTimeLineObject.ContentObj.Squ.llr = Util.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.nativepage"), 0);
-          localTimeLineObject.ContentObj.Squ.videoWidth = Util.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.width"), 0);
-          localTimeLineObject.ContentObj.Squ.videoHeight = Util.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.height"), 0);
+          localTimeLineObject.ContentObj.Zpu.nQn = Util.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.pubtime"), 0);
+          localTimeLineObject.ContentObj.Zpu.vid = Pl((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.vid"));
+          localTimeLineObject.ContentObj.Zpu.coverUrl = Pl((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.cover"));
+          localTimeLineObject.ContentObj.Zpu.nQq = Util.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.funcflag"), 0);
+          localTimeLineObject.ContentObj.Zpu.duration = Util.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.duration"), 0);
+          localTimeLineObject.ContentObj.Zpu.desc = Pl((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.digest"));
+          localTimeLineObject.ContentObj.Zpu.nQo = Util.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.nativepage"), 0);
+          localTimeLineObject.ContentObj.Zpu.videoWidth = Util.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.width"), 0);
+          localTimeLineObject.ContentObj.Zpu.videoHeight = Util.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.height"), 0);
         }
       }
       i = 0;
@@ -204,18 +227,18 @@ public final class o
         str26 = (String)localMap.get(str26);
         str27 = (String)localMap.get(str27);
         localObject7 = (String)localMap.get(localObject6);
-        localObject6 = new cvv();
-        ((cvv)localObject6).TEv = 0.0F;
-        ((cvv)localObject6).TEu = 0.0F;
-        ((cvv)localObject6).TEw = 0.0F;
+        localObject6 = new dnb();
+        ((dnb)localObject6).aaUc = 0.0F;
+        ((dnb)localObject6).aaUb = 0.0F;
+        ((dnb)localObject6).aaUd = 0.0F;
         if (str26 != null) {
-          ((cvv)localObject6).TEu = Xi(str26);
+          ((dnb)localObject6).aaUb = Pk(str26);
         }
         if (str27 != null) {
-          ((cvv)localObject6).TEv = Xi(str27);
+          ((dnb)localObject6).aaUc = Pk(str27);
         }
         if (localObject7 != null) {
-          ((cvv)localObject6).TEw = Xi((String)localObject7);
+          ((dnb)localObject6).aaUd = Pk((String)localObject7);
         }
         str25 = (String)localMap.get(str25);
         str24 = (String)localMap.get(str24);
@@ -249,49 +272,49 @@ public final class o
         localObject2 = (String)localMap.get(localObject2);
         str27 = (String)localMap.get(localObject1);
         if ((str24 == null) || (Util.isNullOrNil(str25))) {
-          break label2878;
+          break label2889;
         }
-        localObject7 = new cvt();
-        ((cvt)localObject7).Id = Xj(str25);
-        ((cvt)localObject7).rWu = Util.getInt(str24, 0);
-        ((cvt)localObject7).fwr = Xj(str23);
-        ((cvt)localObject7).CMB = Xj(str22);
-        ((cvt)localObject7).Url = Xj(str26);
-        ((cvt)localObject7).TlV = Util.getInt(str17, 0);
-        ((cvt)localObject7).TDF = Xj(str19);
-        ((cvt)localObject7).TDG = Util.getInt(str16, 0);
-        ((cvt)localObject7).Privated = Util.getInt(str20, 0);
-        ((cvt)localObject7).TDH = ((cvv)localObject6);
-        ((cvt)localObject7).TDI = Xj(str15);
-        ((cvt)localObject7).TDJ = Util.getInt(str14, 0);
-        ((cvt)localObject7).songAlbumUrl = str13;
-        ((cvt)localObject7).songLyric = str12;
-        ((cvt)localObject7).KCT = Xj(str10);
-        ((cvt)localObject7).subType = Util.getInt(str11, 0);
-        ((cvt)localObject7).TDL = Xj(str9);
-        ((cvt)localObject7).TDN = Xj(str8);
-        ((cvt)localObject7).TDM = Xj(str7);
-        ((cvt)localObject7).TDY = Xj(str18);
-        ((cvt)localObject7).Lgc = Util.getInt(str6, 0);
-        ((cvt)localObject7).TDO = Xj(str5);
-        ((cvt)localObject7).TDP = Xj(str4);
-        ((cvt)localObject7).TDQ = Util.getInt(str3, 0);
-        ((cvt)localObject7).TDR = Util.getLong(str2, 0L);
-        if (((cvt)localObject7).Url != null) {
-          break label2865;
+        localObject7 = new dmz();
+        ((dmz)localObject7).Id = Pl(str25);
+        ((dmz)localObject7).vhJ = Util.getInt(str24, 0);
+        ((dmz)localObject7).hAP = Pl(str23);
+        ((dmz)localObject7).IGG = Pl(str22);
+        ((dmz)localObject7).Url = Pl(str26);
+        ((dmz)localObject7).aazR = Util.getInt(str17, 0);
+        ((dmz)localObject7).aaTl = Pl(str19);
+        ((dmz)localObject7).aaTm = Util.getInt(str16, 0);
+        ((dmz)localObject7).Privated = Util.getInt(str20, 0);
+        ((dmz)localObject7).aaTn = ((dnb)localObject6);
+        ((dmz)localObject7).aaTo = Pl(str15);
+        ((dmz)localObject7).aaTp = Util.getInt(str14, 0);
+        ((dmz)localObject7).songAlbumUrl = str13;
+        ((dmz)localObject7).songLyric = str12;
+        ((dmz)localObject7).RcB = Pl(str10);
+        ((dmz)localObject7).subType = Util.getInt(str11, 0);
+        ((dmz)localObject7).aaTr = Pl(str9);
+        ((dmz)localObject7).aaTt = Pl(str8);
+        ((dmz)localObject7).aaTs = Pl(str7);
+        ((dmz)localObject7).aaTE = Pl(str18);
+        ((dmz)localObject7).RGm = Util.getInt(str6, 0);
+        ((dmz)localObject7).aaTu = Pl(str5);
+        ((dmz)localObject7).aaTv = Pl(str4);
+        ((dmz)localObject7).aaTw = Util.getInt(str3, 0);
+        ((dmz)localObject7).aaTx = Util.getLong(str2, 0L);
+        if (((dmz)localObject7).Url != null) {
+          break label2876;
         }
       }
-      for (localObject1 = "".getBytes();; localObject1 = ((cvt)localObject7).Url.getBytes())
+      for (localObject1 = "".getBytes();; localObject1 = ((dmz)localObject7).Url.getBytes())
       {
-        ((cvt)localObject7).TDS = com.tencent.mm.b.g.getMessageDigest((byte[])localObject1);
-        ((cvt)localObject7).zZu = str1;
-        ((cvt)localObject7).TDT = Util.getInt((String)localObject5, 0);
-        ((cvt)localObject7).TDU = ((String)localObject4);
-        ((cvt)localObject7).TDV = ((String)localObject3);
-        ((cvt)localObject7).TDW = Util.getInt((String)localObject2, 0);
-        ((cvt)localObject7).TDX = str27;
-        ((cvt)localObject7).TDZ = Xi(str21);
-        localTimeLineObject.ContentObj.Sqr.add(localObject7);
+        ((dmz)localObject7).aaTy = com.tencent.mm.b.g.getMessageDigest((byte[])localObject1);
+        ((dmz)localObject7).msf = str1;
+        ((dmz)localObject7).aaTz = Util.getInt((String)localObject5, 0);
+        ((dmz)localObject7).aaTA = ((String)localObject4);
+        ((dmz)localObject7).aaTB = ((String)localObject3);
+        ((dmz)localObject7).aaTC = Util.getInt((String)localObject2, 0);
+        ((dmz)localObject7).aaTD = str27;
+        ((dmz)localObject7).aaTF = Pk(str21);
+        localTimeLineObject.ContentObj.Zpr.add(localObject7);
         i += 1;
         break;
         str25 = ".TimelineObject.ContentObject.mediaList.media.id";
@@ -325,7 +348,7 @@ public final class o
         str8 = ".TimelineObject.ContentObject.mediaList.media.attachUrl.$md5";
         str9 = ".TimelineObject.ContentObject.mediaList.media.attachUrl";
         str10 = ".TimelineObject.ContentObject.mediaList.media.userData";
-        break label1711;
+        break label1722;
       }
       i = paramString.indexOf("<noteinfo>");
       j = paramString.indexOf("</noteinfo>");
@@ -337,330 +360,377 @@ public final class o
         i = paramString.indexOf("<finderFeed>");
         j = paramString.indexOf("</finderFeed>");
         if ((i >= 0) && (j >= 0)) {
-          break label5105;
+          break label5179;
         }
         localObject1 = null;
-        ((adw)localObject3).fFJ = ((bje)localObject1);
+        ((agh)localObject3).hKU = ((bvl)localObject1);
         localObject3 = ((TimeLineObject)localObject2).ContentObj;
         localObject1 = new j();
         i = paramString.indexOf("<musicShareItem>");
         j = paramString.indexOf("</musicShareItem>");
         if ((i >= 0) && (j >= 0)) {
-          break label5147;
+          break label5221;
         }
         localObject1 = null;
-        ((adw)localObject3).lVY = ((dbr)localObject1);
+        ((agh)localObject3).oPb = ((dtj)localObject1);
         localObject3 = ((TimeLineObject)localObject2).ContentObj;
         localObject1 = new h();
         i = paramString.indexOf("<finderMegaVideo>");
         j = paramString.indexOf("</finderMegaVideo>");
         if ((i >= 0) && (j >= 0)) {
-          break label5189;
+          break label5263;
         }
         localObject1 = null;
-        ((adw)localObject3).Sqy = ((cwx)localObject1);
+        ((agh)localObject3).Zpy = ((doc)localObject1);
         localObject3 = ((TimeLineObject)localObject2).ContentObj;
         localObject1 = new g();
         i = paramString.indexOf("<finderTopic>");
         j = paramString.indexOf("</finderTopic>");
         if ((i >= 0) && (j >= 0)) {
-          break label5231;
+          break label5305;
         }
         localObject1 = null;
-        label3099:
-        ((adw)localObject3).Sqv = ((bjg)localObject1);
+        label3110:
+        ((agh)localObject3).Zpv = ((bvn)localObject1);
         localObject3 = ((TimeLineObject)localObject2).ContentObj;
         localObject1 = new c();
         i = paramString.indexOf("<finderColumn>");
         j = paramString.indexOf("</finderColumn>");
         if ((i >= 0) && (j >= 0)) {
-          break label5273;
+          break label5347;
         }
         localObject1 = null;
-        label3149:
-        ((adw)localObject3).Sqx = ((bja)localObject1);
+        label3160:
+        ((agh)localObject3).Zpx = ((bvh)localObject1);
         localObject3 = ((TimeLineObject)localObject2).ContentObj;
         localObject1 = new i();
         i = paramString.indexOf("<mmbrandmpvideo>");
         j = paramString.indexOf("</mmbrandmpvideo>");
         if ((i >= 0) && (j >= 0)) {
-          break label5315;
+          break label5389;
         }
         localObject1 = null;
-        ((adw)localObject3).Sqw = ((jd)localObject1);
-        localObject3 = ((TimeLineObject)localObject2).ContentObj;
-        localObject1 = new d();
-        i = paramString.indexOf("<finderLive>");
-        j = paramString.indexOf("</finderLive>");
-        if ((i >= 0) && (j >= 0)) {
-          break label5360;
-        }
-        localObject1 = null;
-        label3249:
-        ((adw)localObject3).yNL = ((bcp)localObject1);
+        label3210:
+        ((agh)localObject3).Zpw = ((jz)localObject1);
+        ((TimeLineObject)localObject2).ContentObj.DHa = In(paramString);
         localObject1 = ((TimeLineObject)localObject2).ContentObj;
         j = paramString.indexOf("<finder>");
         k = paramString.indexOf("</finder>");
         i = 0;
         if ((j >= 0) && (k >= 0)) {
-          break label5402;
+          break label5434;
         }
         i = 0;
-        label3291:
-        ((adw)localObject1).loX = i;
+        label3264:
+        ((agh)localObject1).nUa = i;
         localObject3 = ((TimeLineObject)localObject2).ContentObj;
         localObject1 = new g();
         i = paramString.indexOf("<finder>");
         j = paramString.indexOf("</finder>");
         if ((i >= 0) && (j >= 0)) {
-          break label5445;
+          break label5477;
         }
         localObject1 = null;
-        label3340:
-        ((adw)localObject3).Sqz = ((bjg)localObject1);
-        localObject1 = ((TimeLineObject)localObject2).ContentObj;
-        localObject3 = new f();
+        label3313:
+        ((agh)localObject3).Zpz = ((bvn)localObject1);
+        localObject3 = ((TimeLineObject)localObject2).ContentObj;
+        localObject1 = new f();
         i = paramString.indexOf("<finder>");
         j = paramString.indexOf("</finder>");
         if ((i >= 0) && (j >= 0)) {
-          break label5531;
+          break label5563;
+        }
+        localObject1 = null;
+        label3363:
+        ((agh)localObject3).ZpA = ((bvm)localObject1);
+        localObject3 = ((TimeLineObject)localObject2).ContentObj;
+        i = paramString.indexOf("<Tiger2022>");
+        j = paramString.indexOf("</Tiger2022>");
+        if ((i >= 0) && (j >= 0)) {
+          break label5641;
         }
         paramString = null;
-        label3389:
-        ((adw)localObject1).SqA = paramString;
-        paramString = new ex();
-        localObject1 = Xj((String)localMap.get(".TimelineObject.appInfo.id"));
-        localObject3 = Xj((String)localMap.get(".TimelineObject.appInfo.version"));
-        localObject4 = Xj((String)localMap.get(".TimelineObject.appInfo.appName"));
-        localObject5 = Xj((String)localMap.get(".TimelineObject.appInfo.installUrl "));
-        str1 = Xj((String)localMap.get(".TimelineObject.appInfo.fromUrl "));
+        ((agh)localObject3).akiL = paramString;
+        paramString = new fr();
+        localObject1 = Pl((String)localMap.get(".TimelineObject.appInfo.id"));
+        localObject3 = Pl((String)localMap.get(".TimelineObject.appInfo.version"));
+        localObject4 = Pl((String)localMap.get(".TimelineObject.appInfo.appName"));
+        localObject5 = Pl((String)localMap.get(".TimelineObject.appInfo.installUrl "));
+        str1 = Pl((String)localMap.get(".TimelineObject.appInfo.fromUrl "));
         paramString.Id = ((String)localObject1);
-        paramString.CQz = ((String)localObject4);
-        paramString.RJH = ((String)localObject5);
-        paramString.RJI = str1;
+        paramString.IKJ = ((String)localObject4);
+        paramString.YHb = ((String)localObject5);
+        paramString.YHc = str1;
         paramString.Version = ((String)localObject3);
-        paramString.RJJ = Util.getInt((String)localMap.get(".TimelineObject.appInfo.clickable"), 0);
+        paramString.YHd = Util.getInt((String)localMap.get(".TimelineObject.appInfo.clickable"), 0);
         ((TimeLineObject)localObject2).AppInfo = paramString;
-        paramString = new fiu();
-        localObject1 = Xj((String)localMap.get(".TimelineObject.weappInfo.appUserName"));
-        localObject3 = Xj((String)localMap.get(".TimelineObject.weappInfo.pagePath"));
-        localObject4 = Xj((String)localMap.get(".TimelineObject.weappInfo.version"));
-        localObject5 = Xj((String)localMap.get(".TimelineObject.weappInfo.debugMode"));
-        str1 = Xj((String)localMap.get(".TimelineObject.weappInfo.shareActionId"));
-        str2 = Xj((String)localMap.get(".TimelineObject.weappInfo.isGame"));
-        str3 = Xj((String)localMap.get(".TimelineObject.weappInfo.messageExtraData"));
-        str4 = Xj((String)localMap.get(".TimelineObject.weappInfo.subType"));
-        str5 = Xj((String)localMap.get(".TimelineObject.weappInfo.preloadResources"));
+        paramString = new gfh();
+        localObject1 = Pl((String)localMap.get(".TimelineObject.weappInfo.appUserName"));
+        localObject3 = Pl((String)localMap.get(".TimelineObject.weappInfo.pagePath"));
+        localObject4 = Pl((String)localMap.get(".TimelineObject.weappInfo.version"));
+        localObject5 = Pl((String)localMap.get(".TimelineObject.weappInfo.debugMode"));
+        str1 = Pl((String)localMap.get(".TimelineObject.weappInfo.shareActionId"));
+        str2 = Pl((String)localMap.get(".TimelineObject.weappInfo.isGame"));
+        str3 = Pl((String)localMap.get(".TimelineObject.weappInfo.messageExtraData"));
+        str4 = Pl((String)localMap.get(".TimelineObject.weappInfo.subType"));
+        str5 = Pl((String)localMap.get(".TimelineObject.weappInfo.preloadResources"));
         paramString.username = ((String)localObject1);
         paramString.path = ((String)localObject3);
         paramString.version = Util.getInt((String)localObject4, 0);
-        paramString.qbu = Util.getInt((String)localObject5, 0);
-        paramString.fvj = str1;
-        paramString.UIv = Util.getInt(str2, 0);
-        paramString.fXg = str3;
+        paramString.tgv = Util.getInt((String)localObject5, 0);
+        paramString.hzD = str1;
+        paramString.accE = Util.getInt(str2, 0);
+        paramString.idf = str3;
         paramString.subType = Util.getInt(str4, 0);
-        paramString.UIw = str5;
+        paramString.accF = str5;
         ((TimeLineObject)localObject2).weappInfo = paramString;
-        localObject1 = Xj((String)localMap.get(".TimelineObject.liteApp.appId"));
+        localObject1 = Pl((String)localMap.get(".TimelineObject.liteApp.appId"));
         if (!((String)localObject1).isEmpty()) {
-          break label5600;
+          break label5840;
         }
         paramString = null;
-        label3824:
+        label3838:
         ((TimeLineObject)localObject2).liteappInfo = paramString;
-        paramString = new eoq();
-        localObject1 = Xj((String)localMap.get(".TimelineObject.streamvideo.streamvideotitle"));
-        localObject3 = Xj((String)localMap.get(".TimelineObject.streamvideo.streamvideototaltime"));
-        localObject4 = Xj((String)localMap.get(".TimelineObject.streamvideo.streamvideourl"));
-        localObject5 = Xj((String)localMap.get(".TimelineObject.streamvideo.streamvideoweburl"));
-        str1 = Xj((String)localMap.get(".TimelineObject.streamvideo.streamvideowording"));
-        str2 = Xj((String)localMap.get(".TimelineObject.streamvideo.streamvideothumburl"));
-        str3 = Xj((String)localMap.get(".TimelineObject.streamvideo.streamvideoaduxinfo"));
-        str4 = Xj((String)localMap.get(".TimelineObject.streamvideo.streamvideopublishid"));
-        paramString.lot = ((String)localObject1);
-        paramString.los = Util.safeParseInt((String)localObject3);
-        paramString.lor = ((String)localObject4);
-        paramString.lov = ((String)localObject5);
-        paramString.lou = str1;
-        paramString.low = str2;
-        paramString.lox = str3;
-        paramString.loy = str4;
+        paramString = new fjo();
+        localObject1 = Pl((String)localMap.get(".TimelineObject.streamvideo.streamvideotitle"));
+        localObject3 = Pl((String)localMap.get(".TimelineObject.streamvideo.streamvideototaltime"));
+        localObject4 = Pl((String)localMap.get(".TimelineObject.streamvideo.streamvideourl"));
+        localObject5 = Pl((String)localMap.get(".TimelineObject.streamvideo.streamvideoweburl"));
+        str1 = Pl((String)localMap.get(".TimelineObject.streamvideo.streamvideowording"));
+        str2 = Pl((String)localMap.get(".TimelineObject.streamvideo.streamvideothumburl"));
+        str3 = Pl((String)localMap.get(".TimelineObject.streamvideo.streamvideoaduxinfo"));
+        str4 = Pl((String)localMap.get(".TimelineObject.streamvideo.streamvideopublishid"));
+        paramString.nTw = ((String)localObject1);
+        paramString.nTv = Util.safeParseInt((String)localObject3);
+        paramString.nTu = ((String)localObject4);
+        paramString.nTy = ((String)localObject5);
+        paramString.nTx = str1;
+        paramString.nTz = str2;
+        paramString.nTA = str3;
+        paramString.nTB = str4;
         ((TimeLineObject)localObject2).streamvideo = paramString;
-        paramString = new ejy();
-        localObject1 = Xj((String)localMap.get(".TimelineObject.redEnvelopesInfo.sendId"));
-        localObject3 = Xj((String)localMap.get(".TimelineObject.redEnvelopesInfo.ticket"));
-        paramString.ybP = ((String)localObject1);
-        paramString.fAo = ((String)localObject3);
-        paramString = new bc();
+        paramString = new feg();
+        localObject1 = Pl((String)localMap.get(".TimelineObject.redEnvelopesInfo.sendId"));
+        localObject3 = Pl((String)localMap.get(".TimelineObject.redEnvelopesInfo.ticket"));
+        paramString.CAf = ((String)localObject1);
+        paramString.hFb = ((String)localObject3);
+        paramString = new bh();
         i = Util.getInt((String)localMap.get(".TimelineObject.actionInfo.scene"), 0);
-        localObject1 = Xj((String)localMap.get(".TimelineObject.actionInfo.appid"));
+        localObject1 = Pl((String)localMap.get(".TimelineObject.actionInfo.appid"));
         j = Util.getInt((String)localMap.get(".TimelineObject.actionInfo.type"), 0);
-        localObject3 = Xj((String)localMap.get(".TimelineObject.actionInfo.url"));
-        localObject4 = Xj((String)localMap.get(".TimelineObject.actionInfo.mediaTagName"));
-        localObject5 = Xj((String)localMap.get(".TimelineObject.actionInfo.wordingKey"));
-        paramString.RFL = ((String)localObject1);
-        paramString.CPw = i;
-        paramString.rWu = j;
+        localObject3 = Pl((String)localMap.get(".TimelineObject.actionInfo.url"));
+        localObject4 = Pl((String)localMap.get(".TimelineObject.actionInfo.mediaTagName"));
+        localObject5 = Pl((String)localMap.get(".TimelineObject.actionInfo.wordingKey"));
+        paramString.YCz = ((String)localObject1);
+        paramString.IJG = i;
+        paramString.vhJ = j;
         paramString.Url = ((String)localObject3);
-        paramString.RFM = ((String)localObject4);
-        paramString.RFN = ((String)localObject5);
-        localObject1 = new ba();
-        localObject3 = Xj((String)localMap.get(".TimelineObject.actionInfo.appMsg.appid"));
-        localObject4 = Xj((String)localMap.get(".TimelineObject.actionInfo.appMsg.mediaTagName"));
-        localObject5 = Xj((String)localMap.get(".TimelineObject.actionInfo.appMsg.messageExt"));
-        str1 = Xj((String)localMap.get(".TimelineObject.actionInfo.appMsg.messageAction"));
-        ((ba)localObject1).lVG = ((String)localObject3);
-        ((ba)localObject1).RFI = ((String)localObject4);
-        ((ba)localObject1).RFJ = ((String)localObject5);
-        ((ba)localObject1).RFK = str1;
-        paramString.RFO = ((ba)localObject1);
+        paramString.YCA = ((String)localObject4);
+        paramString.YCB = ((String)localObject5);
+        localObject1 = new bd();
+        localObject3 = Pl((String)localMap.get(".TimelineObject.actionInfo.appMsg.appid"));
+        localObject4 = Pl((String)localMap.get(".TimelineObject.actionInfo.appMsg.mediaTagName"));
+        localObject5 = Pl((String)localMap.get(".TimelineObject.actionInfo.appMsg.messageExt"));
+        str1 = Pl((String)localMap.get(".TimelineObject.actionInfo.appMsg.messageAction"));
+        ((bd)localObject1).oOI = ((String)localObject3);
+        ((bd)localObject1).YCm = ((String)localObject4);
+        ((bd)localObject1).YCn = ((String)localObject5);
+        ((bd)localObject1).YCo = str1;
+        paramString.YCC = ((bd)localObject1);
         i = Util.getInt((String)localMap.get(".TimelineObject.actionInfo.appActionScene.installedActionScene"), 0);
         j = Util.getInt((String)localMap.get(".TimelineObject.actionInfo.appActionScene.uninstalledActionScene"), 0);
-        localObject1 = Xj((String)localMap.get(".TimelineObject.actionInfo.appJumpWordingKey.installedWordingKey"));
-        localObject3 = Xj((String)localMap.get(".TimelineObject.actionInfo.appJumpWordingKey.uninstalledWordingKey"));
-        paramString.RFP = Xj((String)localMap.get(".TimelineObject.actionInfo.newWordingKey"));
-        localObject4 = new eh();
-        ((eh)localObject4).RJt = i;
-        ((eh)localObject4).RJu = j;
-        localObject5 = new ez();
-        ((ez)localObject5).RJN = ((String)localObject1);
-        ((ez)localObject5).RJO = ((String)localObject3);
-        paramString.RFQ = ((eh)localObject4);
-        paramString.RFR = ((ez)localObject5);
-        paramString.RFS = Xl((String)localMap.get(".TimelineObject.actionInfo.installedWording"));
-        paramString.RFT = Xl((String)localMap.get(".TimelineObject.actionInfo.uninstalledWording"));
+        localObject1 = Pl((String)localMap.get(".TimelineObject.actionInfo.appJumpWordingKey.installedWordingKey"));
+        localObject3 = Pl((String)localMap.get(".TimelineObject.actionInfo.appJumpWordingKey.uninstalledWordingKey"));
+        paramString.YCD = Pl((String)localMap.get(".TimelineObject.actionInfo.newWordingKey"));
+        localObject4 = new fb();
+        ((fb)localObject4).YGN = i;
+        ((fb)localObject4).YGO = j;
+        localObject5 = new ft();
+        ((ft)localObject5).YHh = ((String)localObject1);
+        ((ft)localObject5).YHi = ((String)localObject3);
+        paramString.YCE = ((fb)localObject4);
+        paramString.YCF = ((ft)localObject5);
+        paramString.YCG = Pn((String)localMap.get(".TimelineObject.actionInfo.installedWording"));
+        paramString.YCH = Pn((String)localMap.get(".TimelineObject.actionInfo.uninstalledWording"));
         ((TimeLineObject)localObject2).actionInfo = paramString;
-        ((TimeLineObject)localObject2).sourceUserName = Xj((String)localMap.get(".TimelineObject.sourceUserName"));
-        ((TimeLineObject)localObject2).sourceNickName = Xj((String)localMap.get(".TimelineObject.sourceNickName"));
-        ((TimeLineObject)localObject2).publicUserName = Xj((String)localMap.get(".TimelineObject.publicUserName"));
-        ((TimeLineObject)localObject2).statisticsData = Xj((String)localMap.get(".TimelineObject.statisticsData"));
-        ((TimeLineObject)localObject2).canvasInfo = Xj((String)localMap.get(".TimelineObject.canvasInfoXml"));
+        ((TimeLineObject)localObject2).sourceUserName = Pl((String)localMap.get(".TimelineObject.sourceUserName"));
+        ((TimeLineObject)localObject2).sourceNickName = Pl((String)localMap.get(".TimelineObject.sourceNickName"));
+        ((TimeLineObject)localObject2).publicUserName = Pl((String)localMap.get(".TimelineObject.publicUserName"));
+        ((TimeLineObject)localObject2).statisticsData = Pl((String)localMap.get(".TimelineObject.statisticsData"));
+        ((TimeLineObject)localObject2).canvasInfo = Pl((String)localMap.get(".TimelineObject.canvasInfoXml"));
         ((TimeLineObject)localObject2).contentattr = Util.getInt((String)localMap.get(".TimelineObject.contentattr"), 0);
-        paramString = new flm();
-        paramString.PyQ = Xj((String)localMap.get(".TimelineObject.websearch.relevant_vid"));
-        paramString.PyR = Xj((String)localMap.get(".TimelineObject.websearch.relevant_expand"));
-        paramString.PyS = Xj((String)localMap.get(".TimelineObject.websearch.relevant_pre_searchid"));
-        paramString.PyT = Xj((String)localMap.get(".TimelineObject.websearch.relevant_shared_openid"));
-        paramString.PyU = Util.getLong((String)localMap.get(".TimelineObject.websearch.rec_category"), 0L);
-        paramString.vhY = Xj((String)localMap.get(".TimelineObject.websearch.shareUrl"));
-        paramString.pqW = Xj((String)localMap.get(".TimelineObject.websearch.shareTitle"));
-        paramString.CHR = Xj((String)localMap.get(".TimelineObject.websearch.shareDesc"));
-        paramString.PyV = Xj((String)localMap.get(".TimelineObject.websearch.shareImgUrl"));
-        paramString.PyW = Xj((String)localMap.get(".TimelineObject.websearch.shareString"));
-        paramString.PyX = Xj((String)localMap.get(".TimelineObject.websearch.shareStringUrl"));
-        paramString.source = Xj((String)localMap.get(".TimelineObject.websearch.source"));
-        paramString.fVx = Xj((String)localMap.get(".TimelineObject.websearch.sourceUrl"));
-        paramString.PyY = Xj((String)localMap.get(".TimelineObject.websearch.strPlayCount"));
-        paramString.PyZ = Xj((String)localMap.get(".TimelineObject.websearch.titleUrl"));
-        paramString.Pza = Xj((String)localMap.get(".TimelineObject.websearch.extReqParams"));
-        paramString.Pzb = Xj((String)localMap.get(".TimelineObject.websearch.tagList"));
-        paramString.Pzc = Util.getLong((String)localMap.get(".TimelineObject.websearch.channelId"), 0L);
-        paramString.Pzd = Xj((String)localMap.get(".TimelineObject.websearch.shareTag"));
+        paramString = new gib();
+        paramString.WoZ = Pl((String)localMap.get(".TimelineObject.websearch.relevant_vid"));
+        paramString.Wpa = Pl((String)localMap.get(".TimelineObject.websearch.relevant_expand"));
+        paramString.Wpb = Pl((String)localMap.get(".TimelineObject.websearch.relevant_pre_searchid"));
+        paramString.Wpc = Pl((String)localMap.get(".TimelineObject.websearch.relevant_shared_openid"));
+        paramString.Wpd = Util.getLong((String)localMap.get(".TimelineObject.websearch.rec_category"), 0L);
+        paramString.ytZ = Pl((String)localMap.get(".TimelineObject.websearch.shareUrl"));
+        paramString.svG = Pl((String)localMap.get(".TimelineObject.websearch.shareTitle"));
+        paramString.ICb = Pl((String)localMap.get(".TimelineObject.websearch.shareDesc"));
+        paramString.Wpe = Pl((String)localMap.get(".TimelineObject.websearch.shareImgUrl"));
+        paramString.Wpf = Pl((String)localMap.get(".TimelineObject.websearch.shareString"));
+        paramString.Wpg = Pl((String)localMap.get(".TimelineObject.websearch.shareStringUrl"));
+        paramString.source = Pl((String)localMap.get(".TimelineObject.websearch.source"));
+        paramString.ibx = Pl((String)localMap.get(".TimelineObject.websearch.sourceUrl"));
+        paramString.Wph = Pl((String)localMap.get(".TimelineObject.websearch.strPlayCount"));
+        paramString.Wpi = Pl((String)localMap.get(".TimelineObject.websearch.titleUrl"));
+        paramString.Wpj = Pl((String)localMap.get(".TimelineObject.websearch.extReqParams"));
+        paramString.Wpk = Pl((String)localMap.get(".TimelineObject.websearch.tagList"));
+        paramString.Wpl = Util.getLong((String)localMap.get(".TimelineObject.websearch.channelId"), 0L);
+        paramString.Wpm = Pl((String)localMap.get(".TimelineObject.websearch.shareTag"));
         ((TimeLineObject)localObject2).webSearchInfo = paramString;
+        localObject1 = Pl((String)localMap.get(".TimelineObject.VideoTemplate.Type"));
+        localObject3 = Pl((String)localMap.get(".TimelineObject.VideoTemplate.TemplateId"));
+        if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject3))) {
+          break label5897;
+        }
+        paramString = null;
+        label5145:
+        ((TimeLineObject)localObject2).videoTemplate = paramString;
       }
     }
     for (;;)
     {
       AppMethodBeat.o(94866);
       return localTimeLineObject;
-      localTimeLineObject.ContentObj.Sqt = paramString.substring(i, j + 11);
+      localTimeLineObject.ContentObj.Zpt = paramString.substring(i, j + 11);
       break;
-      label5105:
+      label5179:
       localObject4 = XmlParser.parseXml(paramString.substring(i, j + 13), "finderFeed", null);
       if (localObject4 != null) {
         ((e)localObject1).i("", (Map)localObject4);
       }
-      localObject1 = ((e)localObject1).mbi;
-      break label2949;
-      label5147:
+      localObject1 = ((e)localObject1).oUc;
+      break label2960;
+      label5221:
       localObject4 = XmlParser.parseXml(paramString.substring(i, j + 17), "musicShareItem", null);
       if (localObject4 != null) {
         ((j)localObject1).i("", (Map)localObject4);
       }
-      localObject1 = ((j)localObject1).mbm;
-      break label2999;
-      label5189:
+      localObject1 = ((j)localObject1).oUg;
+      break label3010;
+      label5263:
       localObject4 = XmlParser.parseXml(paramString.substring(i, j + 18), "finderMegaVideo", null);
       if (localObject4 != null) {
         ((h)localObject1).i("", (Map)localObject4);
       }
-      localObject1 = ((h)localObject1).mbk;
-      break label3049;
-      label5231:
+      localObject1 = ((h)localObject1).oUe;
+      break label3060;
+      label5305:
       localObject4 = XmlParser.parseXml(paramString.substring(i, j + 14), "finderTopic", null);
       if (localObject4 != null) {
         ((g)localObject1).i("", (Map)localObject4);
       }
-      localObject1 = ((g)localObject1).mbf;
-      break label3099;
-      label5273:
+      localObject1 = ((g)localObject1).oTZ;
+      break label3110;
+      label5347:
       localObject4 = XmlParser.parseXml(paramString.substring(i, j + 15), "finderColumn", null);
       if (localObject4 != null) {
         ((c)localObject1).i("", (Map)localObject4);
       }
-      localObject1 = ((c)localObject1).mbg;
-      break label3149;
-      label5315:
+      localObject1 = ((c)localObject1).oUa;
+      break label3160;
+      label5389:
       localObject4 = XmlParser.parseXml(paramString.substring(i, j + 17), "mmbrandmpvideo", null);
       if (localObject4 != null) {
-        ((i)localObject1).mbl = i.j("", (Map)localObject4);
+        ((i)localObject1).oUf = i.j("", (Map)localObject4);
       }
-      localObject1 = ((i)localObject1).mbl;
-      break label3199;
-      label5360:
-      localObject4 = XmlParser.parseXml(paramString.substring(i, j + 13), "finderLive", null);
-      if (localObject4 != null) {
-        ((d)localObject1).i("", (Map)localObject4);
-      }
-      localObject1 = ((d)localObject1).mbh;
-      break label3249;
-      label5402:
+      localObject1 = ((i)localObject1).oUf;
+      break label3210;
+      label5434:
       localObject3 = XmlParser.parseXml(paramString.substring(j, k + 9), "finder", null);
       if (localObject3 == null) {
-        break label3291;
+        break label3264;
       }
       i = Util.safeParseInt((String)((Map)localObject3).get(".finder.type"));
-      break label3291;
-      label5445:
+      break label3264;
+      label5477:
       localObject4 = paramString.substring(i, j + 9);
       i = ((String)localObject4).indexOf("<finderTopic>");
       j = ((String)localObject4).indexOf("</finderTopic>");
       if ((i < 0) || (j < 0))
       {
         localObject1 = null;
-        break label3340;
+        break label3313;
       }
       localObject4 = XmlParser.parseXml(((String)localObject4).substring(i, j + 14), "finderTopic", null);
       if (localObject4 != null) {
         ((g)localObject1).i("", (Map)localObject4);
       }
-      localObject1 = ((g)localObject1).mbf;
-      break label3340;
-      label5531:
-      paramString = paramString.substring(i, j + 9);
-      i = paramString.indexOf("<finderpoirelatedstream>");
-      j = paramString.indexOf("</finderpoirelatedstream>");
+      localObject1 = ((g)localObject1).oTZ;
+      break label3313;
+      label5563:
+      localObject4 = paramString.substring(i, j + 9);
+      i = ((String)localObject4).indexOf("<finderpoirelatedstream>");
+      j = ((String)localObject4).indexOf("</finderpoirelatedstream>");
       if ((i < 0) || (j < 0))
       {
-        paramString = null;
-        break label3389;
+        localObject1 = null;
+        break label3363;
       }
-      paramString = XmlParser.parseXml(paramString, "finder", null);
-      if (paramString != null) {
-        ((f)localObject3).i("", paramString);
+      localObject4 = XmlParser.parseXml((String)localObject4, "finder", null);
+      if (localObject4 != null) {
+        ((f)localObject1).i("", (Map)localObject4);
       }
-      paramString = ((f)localObject3).mbj;
-      break label3389;
-      label5600:
-      paramString = new crk();
+      localObject1 = ((f)localObject1).oUd;
+      break label3363;
+      label5641:
+      localObject1 = new gom();
+      j = paramString.indexOf("<LinkEnabled>", i);
+      k = paramString.indexOf("</LinkEnabled>", i);
+      if ((j >= 0) && (k >= 0))
+      {
+        localObject4 = paramString.substring(j + 13, k).trim();
+        if (!TextUtils.isEmpty((CharSequence)localObject4)) {
+          if (Util.safeParseInt((String)localObject4) != 1) {
+            break label5834;
+          }
+        }
+      }
+      label5834:
+      for (boolean bool = true;; bool = false)
+      {
+        ((gom)localObject1).aklp = bool;
+        j = paramString.indexOf("<EnterLiveMode>", i);
+        k = paramString.indexOf("</EnterLiveMode>", i);
+        if ((j >= 0) && (k >= 0))
+        {
+          localObject4 = paramString.substring(j + 15, k).trim();
+          if (!TextUtils.isEmpty((CharSequence)localObject4)) {
+            ((gom)localObject1).aklr = Util.safeParseInt((String)localObject4);
+          }
+        }
+        j = paramString.indexOf("<finderLive>", i);
+        i = paramString.indexOf("</finderLive>", i);
+        if ((j >= 0) && (i >= 0))
+        {
+          paramString = paramString.substring(j, i + 13).trim();
+          if (!TextUtils.isEmpty(paramString)) {
+            ((gom)localObject1).aklq = In(paramString);
+          }
+        }
+        paramString = (String)localObject1;
+        break;
+      }
+      label5840:
+      paramString = new dif();
       paramString.appId = ((String)localObject1);
-      paramString.path = Xj((String)localMap.get(".TimelineObject.liteApp.path"));
-      paramString.query = Xj((String)localMap.get(".TimelineObject.liteApp.query"));
-      break label3824;
+      paramString.path = Pl((String)localMap.get(".TimelineObject.liteApp.path"));
+      paramString.query = Pl((String)localMap.get(".TimelineObject.liteApp.query"));
+      break label3838;
+      label5897:
+      paramString = new ffv();
+      paramString.type = ((String)localObject1);
+      paramString.nSg = ((String)localObject3);
+      paramString.musicId = Pl((String)localMap.get(".TimelineObject.VideoTemplate.MusicId"));
+      paramString.abFS = Util.getLong((String)localMap.get(".TimelineObject.VideoTemplate.VersionInfo.IosSdkVersionMin"), 0L);
+      paramString.abFR = Util.getLong((String)localMap.get(".TimelineObject.VideoTemplate.VersionInfo.AndroidSdkVersionMin"), 0L);
+      break label5145;
     }
   }
   
-  private static ey Xl(String paramString)
+  private static fs Pn(String paramString)
   {
     AppMethodBeat.i(94867);
     if (Util.isNullOrNil(paramString))
@@ -668,22 +738,22 @@ public final class o
       AppMethodBeat.o(94867);
       return null;
     }
-    paramString = Xm(paramString);
+    paramString = Po(paramString);
     paramString = XmlParser.parseXml("<root>" + paramString + "</root>", "root", null);
     if (paramString == null)
     {
       AppMethodBeat.o(94867);
       return null;
     }
-    ey localey = new ey();
-    localey.RJK = Xj((String)paramString.get(".root.en"));
-    localey.RJL = Xj((String)paramString.get(".root.zh-CN"));
-    localey.RJM = Xj((String)paramString.get(".root.zh-TW"));
+    fs localfs = new fs();
+    localfs.YHe = Pl((String)paramString.get(".root.en"));
+    localfs.YHf = Pl((String)paramString.get(".root.zh-CN"));
+    localfs.YHg = Pl((String)paramString.get(".root.zh-TW"));
     AppMethodBeat.o(94867);
-    return localey;
+    return localfs;
   }
   
-  public static String Xm(String paramString)
+  public static String Po(String paramString)
   {
     AppMethodBeat.i(94868);
     StringBuilder localStringBuilder = new StringBuilder(paramString.length());
@@ -730,7 +800,7 @@ public final class o
   
   public static Pair<Integer, Integer> a(int paramInt1, int paramInt2, Context paramContext)
   {
-    AppMethodBeat.i(265781);
+    AppMethodBeat.i(233348);
     int i = BackwardSupportUtil.BitmapFactory.fromDPToPix(paramContext, 160.0F);
     int j = BackwardSupportUtil.BitmapFactory.fromDPToPix(paramContext, 200.0F);
     int k = BackwardSupportUtil.BitmapFactory.fromDPToPix(paramContext, 44.0F);
@@ -782,7 +852,7 @@ public final class o
         d3 = 1.0D;
       }
       paramContext = Pair.create(Integer.valueOf((int)d2), Integer.valueOf((int)d3));
-      AppMethodBeat.o(265781);
+      AppMethodBeat.o(233348);
       return paramContext;
       d4 = i;
       d1 = d4;
@@ -852,13 +922,13 @@ public final class o
     AppMethodBeat.i(94869);
     int j;
     int i;
-    if ((paramTimeLineObject != null) && (paramTimeLineObject.ContentObj != null) && (paramTimeLineObject.ContentObj.Sqr != null) && (paramTimeLineObject.ContentObj.Sqr.size() > 0))
+    if ((paramTimeLineObject != null) && (paramTimeLineObject.ContentObj != null) && (paramTimeLineObject.ContentObj.Zpr != null) && (paramTimeLineObject.ContentObj.Zpr.size() > 0))
     {
-      paramTimeLineObject = (cvt)paramTimeLineObject.ContentObj.Sqr.get(0);
-      if ((paramTimeLineObject != null) && (paramTimeLineObject.TDH != null) && (paramTimeLineObject.TDH.TEu > 0.0F) && (paramTimeLineObject.TDH.TEv > 0.0F))
+      paramTimeLineObject = (dmz)paramTimeLineObject.ContentObj.Zpr.get(0);
+      if ((paramTimeLineObject != null) && (paramTimeLineObject.aaTn != null) && (paramTimeLineObject.aaTn.aaUb > 0.0F) && (paramTimeLineObject.aaTn.aaUc > 0.0F))
       {
-        j = (int)paramTimeLineObject.TDH.TEu;
-        i = (int)paramTimeLineObject.TDH.TEv;
+        j = (int)paramTimeLineObject.aaTn.aaUb;
+        i = (int)paramTimeLineObject.aaTn.aaUc;
       }
     }
     for (;;)
@@ -871,95 +941,96 @@ public final class o
     }
   }
   
-  public static cvt a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, int paramInt3, int paramInt4, String paramString4, cvv paramcvv)
+  public static dmz a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, int paramInt3, int paramInt4, String paramString4, dnb paramdnb)
   {
     AppMethodBeat.i(94865);
-    cvt localcvt = new cvt();
-    localcvt.Id = Xj(paramString1);
-    localcvt.rWu = paramInt1;
-    localcvt.CMB = Xj(paramString4);
-    localcvt.Url = Xj(paramString2);
-    localcvt.TlV = paramInt2;
-    localcvt.TDF = Xj(paramString3);
-    localcvt.TDG = paramInt3;
-    localcvt.Privated = paramInt4;
-    localcvt.TDH = paramcvv;
+    dmz localdmz = new dmz();
+    localdmz.Id = Pl(paramString1);
+    localdmz.vhJ = paramInt1;
+    localdmz.IGG = Pl(paramString4);
+    localdmz.Url = Pl(paramString2);
+    localdmz.aazR = paramInt2;
+    localdmz.aaTl = Pl(paramString3);
+    localdmz.aaTm = paramInt3;
+    localdmz.Privated = paramInt4;
+    localdmz.aaTn = paramdnb;
     if (paramString2 == null) {}
     for (paramString1 = "".getBytes();; paramString1 = paramString2.getBytes())
     {
-      localcvt.TDS = com.tencent.mm.b.g.getMessageDigest(paramString1);
+      localdmz.aaTy = com.tencent.mm.b.g.getMessageDigest(paramString1);
       AppMethodBeat.o(94865);
-      return localcvt;
+      return localdmz;
     }
   }
   
-  public static cvt a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, int paramInt3, String paramString4)
+  public static dmz a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, int paramInt3, String paramString4)
   {
     AppMethodBeat.i(94864);
-    cvt localcvt = new cvt();
-    localcvt.Id = paramString1;
-    localcvt.rWu = paramInt1;
-    localcvt.Url = paramString2;
-    localcvt.TDF = paramString3;
-    localcvt.TlV = paramInt2;
-    localcvt.TDG = paramInt3;
-    localcvt.CMB = paramString4;
-    paramString1 = new cvv();
-    paramString1.TEv = 0.0F;
-    paramString1.TEu = 0.0F;
-    paramString1.TEw = 0.0F;
-    localcvt.TDH = paramString1;
+    dmz localdmz = new dmz();
+    localdmz.Id = paramString1;
+    localdmz.vhJ = paramInt1;
+    localdmz.Url = paramString2;
+    localdmz.aaTl = paramString3;
+    localdmz.aazR = paramInt2;
+    localdmz.aaTm = paramInt3;
+    localdmz.IGG = paramString4;
+    paramString1 = new dnb();
+    paramString1.aaUc = 0.0F;
+    paramString1.aaUb = 0.0F;
+    paramString1.aaUd = 0.0F;
+    localdmz.aaTn = paramString1;
     if (paramString2 == null) {}
     for (paramString1 = "".getBytes();; paramString1 = paramString2.getBytes())
     {
-      localcvt.TDS = com.tencent.mm.b.g.getMessageDigest(paramString1);
+      localdmz.aaTy = com.tencent.mm.b.g.getMessageDigest(paramString1);
       AppMethodBeat.o(94864);
-      return localcvt;
+      return localdmz;
     }
   }
   
-  public static TimeLineObject bpc()
+  public static TimeLineObject bMJ()
   {
     AppMethodBeat.i(94862);
     TimeLineObject localTimeLineObject = new TimeLineObject();
-    Object localObject = new adw();
-    localTimeLineObject.AppInfo = new ex();
-    localTimeLineObject.ContentObj = ((adw)localObject);
+    Object localObject = new agh();
+    localTimeLineObject.AppInfo = new fr();
+    localTimeLineObject.ContentObj = ((agh)localObject);
     localTimeLineObject.Privated = 0;
     localTimeLineObject.CreateTime = 0;
     localTimeLineObject.Id = "";
-    localObject = new cst();
-    ((cst)localObject).ScP = 0.0F;
-    ((cst)localObject).ScO = 0.0F;
-    localTimeLineObject.Location = ((cst)localObject);
+    localObject = new djv();
+    ((djv)localObject).ZaH = 0.0F;
+    ((djv)localObject).ZaG = 0.0F;
+    localTimeLineObject.Location = ((djv)localObject);
     localTimeLineObject.canvasInfo = "";
-    localTimeLineObject.weappInfo = new fiu();
+    localTimeLineObject.weappInfo = new gfh();
+    localTimeLineObject.videoTemplate = null;
     AppMethodBeat.o(94862);
     return localTimeLineObject;
   }
   
-  public static cvt bpd()
+  public static dmz bMK()
   {
     AppMethodBeat.i(94863);
-    cvt localcvt = new cvt();
-    localcvt.CMB = "";
-    localcvt.Privated = 0;
+    dmz localdmz = new dmz();
+    localdmz.IGG = "";
+    localdmz.Privated = 0;
     AppMethodBeat.o(94863);
-    return localcvt;
+    return localdmz;
   }
   
-  public static Pair<Integer, Integer> dc(Context paramContext)
+  public static Pair<Integer, Integer> dV(Context paramContext)
   {
-    AppMethodBeat.i(265782);
+    AppMethodBeat.i(233367);
     int i = a.fromDPToPix(paramContext, 225);
     paramContext = Pair.create(Integer.valueOf(a.fromDPToPix(paramContext, 127)), Integer.valueOf(i));
-    AppMethodBeat.o(265782);
+    AppMethodBeat.o(233367);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.modelsns.o
  * JD-Core Version:    0.7.0.1
  */

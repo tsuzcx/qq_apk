@@ -1,101 +1,169 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.b.a.b;
-import com.google.b.a.e;
-import com.google.b.a.g;
+import com.google.d.a.b;
+import com.google.d.a.e;
+import com.google.d.a.g;
 
 public final class a$d
   extends e
 {
-  public String ZeQ = "";
-  public a.ay ZeS = null;
-  public int[] ZeT = g.bZR;
-  public a.bf ZeU = null;
-  public int ZeV = 0;
-  public int ZeW = 0;
-  public a.bd ZeX = null;
-  public String ZeY = "";
-  public String[] ZeZ = g.EMPTY_STRING_ARRAY;
-  public a.o[] Zfa = a.o.ikL();
-  public int Zfb = 0;
+  public a.bd ahdA = null;
+  public String ahdB = "";
+  public String[] ahdC = g.EMPTY_STRING_ARRAY;
+  public a.o[] ahdD = a.o.jRc();
+  public int ahdE = 0;
+  public String ahdt = "";
+  public a.ay ahdv = null;
+  public int[] ahdw = g.dTZ;
+  public a.bf ahdx = null;
+  public int ahdy = 0;
+  public int ahdz = 0;
   public int netType = 0;
   
   public a$d()
   {
-    this.ccR = -1;
+    this.dXv = -1;
   }
   
-  public final int JG()
+  public final void a(b paramb)
+  {
+    int j = 0;
+    if (this.ahdv != null) {
+      paramb.a(1, this.ahdv);
+    }
+    int i;
+    if ((this.ahdw != null) && (this.ahdw.length > 0))
+    {
+      i = 0;
+      while (i < this.ahdw.length)
+      {
+        paramb.cG(2, this.ahdw[i]);
+        i += 1;
+      }
+    }
+    if (this.ahdx != null) {
+      paramb.a(3, this.ahdx);
+    }
+    if (this.ahdy != 0) {
+      paramb.cG(4, this.ahdy);
+    }
+    if (this.ahdz != 0) {
+      paramb.cG(5, this.ahdz);
+    }
+    if (this.ahdA != null) {
+      paramb.a(6, this.ahdA);
+    }
+    if (!this.ahdt.equals("")) {
+      paramb.g(7, this.ahdt);
+    }
+    if (!this.ahdB.equals("")) {
+      paramb.g(8, this.ahdB);
+    }
+    if (this.netType != 0) {
+      paramb.cG(9, this.netType);
+    }
+    Object localObject;
+    if ((this.ahdC != null) && (this.ahdC.length > 0))
+    {
+      i = 0;
+      while (i < this.ahdC.length)
+      {
+        localObject = this.ahdC[i];
+        if (localObject != null) {
+          paramb.g(100, (String)localObject);
+        }
+        i += 1;
+      }
+    }
+    if ((this.ahdD != null) && (this.ahdD.length > 0))
+    {
+      i = j;
+      while (i < this.ahdD.length)
+      {
+        localObject = this.ahdD[i];
+        if (localObject != null) {
+          paramb.a(202, (e)localObject);
+        }
+        i += 1;
+      }
+    }
+    if (this.ahdE != 0) {
+      paramb.cG(240, this.ahdE);
+    }
+    super.a(paramb);
+  }
+  
+  public final int akc()
   {
     int i2 = 0;
-    int j = super.JG();
+    int j = super.akc();
     int i = j;
-    if (this.ZeS != null) {
-      i = j + b.b(1, this.ZeS);
+    if (this.ahdv != null) {
+      i = j + b.b(1, this.ahdv);
     }
     j = i;
-    if (this.ZeT != null)
+    if (this.ahdw != null)
     {
       j = i;
-      if (this.ZeT.length > 0)
+      if (this.ahdw.length > 0)
       {
         j = 0;
         k = 0;
-        while (j < this.ZeT.length)
+        while (j < this.ahdw.length)
         {
-          k += b.gR(this.ZeT[j]);
+          k += b.kv(this.ahdw[j]);
           j += 1;
         }
-        j = i + k + this.ZeT.length * 1;
+        j = i + k + this.ahdw.length * 1;
       }
     }
     i = j;
-    if (this.ZeU != null) {
-      i = j + b.b(3, this.ZeU);
+    if (this.ahdx != null) {
+      i = j + b.b(3, this.ahdx);
     }
     j = i;
-    if (this.ZeV != 0) {
-      j = i + b.bN(4, this.ZeV);
+    if (this.ahdy != 0) {
+      j = i + b.cK(4, this.ahdy);
     }
     i = j;
-    if (this.ZeW != 0) {
-      i = j + b.bN(5, this.ZeW);
+    if (this.ahdz != 0) {
+      i = j + b.cK(5, this.ahdz);
     }
     j = i;
-    if (this.ZeX != null) {
-      j = i + b.b(6, this.ZeX);
+    if (this.ahdA != null) {
+      j = i + b.b(6, this.ahdA);
     }
     i = j;
-    if (!this.ZeQ.equals("")) {
-      i = j + b.g(7, this.ZeQ);
+    if (!this.ahdt.equals("")) {
+      i = j + b.h(7, this.ahdt);
     }
     int k = i;
-    if (!this.ZeY.equals("")) {
-      k = i + b.g(8, this.ZeY);
+    if (!this.ahdB.equals("")) {
+      k = i + b.h(8, this.ahdB);
     }
     j = k;
     if (this.netType != 0) {
-      j = k + b.bN(9, this.netType);
+      j = k + b.cK(9, this.netType);
     }
     i = j;
     Object localObject;
-    if (this.ZeZ != null)
+    if (this.ahdC != null)
     {
       i = j;
-      if (this.ZeZ.length > 0)
+      if (this.ahdC.length > 0)
       {
         i = 0;
         k = 0;
         int n;
-        for (int m = 0; i < this.ZeZ.length; m = n)
+        for (int m = 0; i < this.ahdC.length; m = n)
         {
-          localObject = this.ZeZ[i];
+          localObject = this.ahdC[i];
           int i1 = k;
           n = m;
           if (localObject != null)
           {
             n = m + 1;
-            i1 = k + b.cv((String)localObject);
+            i1 = k + b.dU((String)localObject);
           }
           i += 1;
           k = i1;
@@ -104,19 +172,19 @@ public final class a$d
       }
     }
     j = i;
-    if (this.Zfa != null)
+    if (this.ahdD != null)
     {
       j = i;
-      if (this.Zfa.length > 0)
+      if (this.ahdD.length > 0)
       {
         k = i2;
         for (;;)
         {
           j = i;
-          if (k >= this.Zfa.length) {
+          if (k >= this.ahdD.length) {
             break;
           }
-          localObject = this.Zfa[k];
+          localObject = this.ahdD[k];
           j = i;
           if (localObject != null) {
             j = i + b.b(202, (e)localObject);
@@ -127,83 +195,15 @@ public final class a$d
       }
     }
     i = j;
-    if (this.Zfb != 0) {
-      i = j + b.bN(240, this.Zfb);
+    if (this.ahdE != 0) {
+      i = j + b.cK(240, this.ahdE);
     }
     return i;
-  }
-  
-  public final void a(b paramb)
-  {
-    int j = 0;
-    if (this.ZeS != null) {
-      paramb.a(1, this.ZeS);
-    }
-    int i;
-    if ((this.ZeT != null) && (this.ZeT.length > 0))
-    {
-      i = 0;
-      while (i < this.ZeT.length)
-      {
-        paramb.bK(2, this.ZeT[i]);
-        i += 1;
-      }
-    }
-    if (this.ZeU != null) {
-      paramb.a(3, this.ZeU);
-    }
-    if (this.ZeV != 0) {
-      paramb.bK(4, this.ZeV);
-    }
-    if (this.ZeW != 0) {
-      paramb.bK(5, this.ZeW);
-    }
-    if (this.ZeX != null) {
-      paramb.a(6, this.ZeX);
-    }
-    if (!this.ZeQ.equals("")) {
-      paramb.f(7, this.ZeQ);
-    }
-    if (!this.ZeY.equals("")) {
-      paramb.f(8, this.ZeY);
-    }
-    if (this.netType != 0) {
-      paramb.bK(9, this.netType);
-    }
-    Object localObject;
-    if ((this.ZeZ != null) && (this.ZeZ.length > 0))
-    {
-      i = 0;
-      while (i < this.ZeZ.length)
-      {
-        localObject = this.ZeZ[i];
-        if (localObject != null) {
-          paramb.f(100, (String)localObject);
-        }
-        i += 1;
-      }
-    }
-    if ((this.Zfa != null) && (this.Zfa.length > 0))
-    {
-      i = j;
-      while (i < this.Zfa.length)
-      {
-        localObject = this.Zfa[i];
-        if (localObject != null) {
-          paramb.a(202, (e)localObject);
-        }
-        i += 1;
-      }
-    }
-    if (this.Zfb != 0) {
-      paramb.bK(240, this.Zfb);
-    }
-    super.a(paramb);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.d
  * JD-Core Version:    0.7.0.1
  */

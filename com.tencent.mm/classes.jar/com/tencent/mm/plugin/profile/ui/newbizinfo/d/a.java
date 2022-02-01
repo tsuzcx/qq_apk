@@ -1,49 +1,49 @@
 package com.tencent.mm.plugin.profile.ui.newbizinfo.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.profile.ui.newbizinfo.b.g;
+import com.tencent.mm.plugin.profile.ui.newbizinfo.b.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class a
-  extends MAutoStorage<g>
+  extends MAutoStorage<c>
 {
-  public static final String[] lqL;
-  public static final String[] lqM;
+  public static final String[] nVW;
+  public static final String[] nVX;
   
   static
   {
     AppMethodBeat.i(27598);
-    lqL = new String[] { MAutoStorage.getCreateSQLs(g.lqK, "ProfileInfo") };
-    lqM = new String[0];
+    nVW = new String[] { MAutoStorage.getCreateSQLs(c.nVV, "ProfileInfo") };
+    nVX = new String[0];
     AppMethodBeat.o(27598);
   }
   
   public a(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramISQLiteDatabase, g.lqK, "ProfileInfo", lqM);
+    super(paramISQLiteDatabase, c.nVV, "ProfileInfo", nVX);
   }
   
-  public final g aUX(String paramString)
+  public final c aSe(String paramString)
   {
     AppMethodBeat.i(27597);
-    g localg = new g();
-    localg.field_username = paramString;
-    if (!get(localg, new String[] { "username" }))
+    c localc = new c();
+    localc.field_username = paramString;
+    if (!get(localc, new String[] { "username" }))
     {
       Log.e("MicroMsg.ProfileInfoStorage", "profileInfo is null");
       AppMethodBeat.o(27597);
       return null;
     }
-    Log.i("MicroMsg.ProfileInfoStorage", "get username:%s", new Object[] { localg.field_username });
+    Log.i("MicroMsg.ProfileInfoStorage", "get username:%s", new Object[] { localc.field_username });
     AppMethodBeat.o(27597);
-    return localg;
+    return localc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.newbizinfo.d.a
  * JD-Core Version:    0.7.0.1
  */

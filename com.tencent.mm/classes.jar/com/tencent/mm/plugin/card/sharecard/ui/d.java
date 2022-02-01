@@ -10,18 +10,18 @@ import java.util.ArrayList;
 public final class d
   implements a
 {
-  private c ttn;
+  private c wxK;
   
   public d(c paramc)
   {
-    this.ttn = paramc;
+    this.wxK = paramc;
   }
   
   public final void onCreate()
   {
     AppMethodBeat.i(113080);
-    if (this.ttn != null) {
-      am.cHs().add(this.ttn);
+    if (this.wxK != null) {
+      am.dkJ().add(this.wxK);
     }
     AppMethodBeat.o(113080);
   }
@@ -29,13 +29,13 @@ public final class d
   public final void onDestroy()
   {
     AppMethodBeat.i(113081);
-    if (this.ttn != null)
+    if (this.wxK != null)
     {
-      am.cHs().remove(this.ttn);
-      Object localObject = this.ttn;
-      ((c)localObject).ttl.release();
-      ((c)localObject).ttl = null;
-      ((c)localObject).eKd();
+      am.dkJ().remove(this.wxK);
+      Object localObject = this.wxK;
+      ((c)localObject).wxI.release();
+      ((c)localObject).wxI = null;
+      ((c)localObject).fSd();
       int i = (int)(((c)localObject).endTime - ((c)localObject).beginTime);
       localObject = new ArrayList();
       IDKey localIDKey1 = new IDKey();
@@ -48,8 +48,8 @@ public final class d
       localIDKey2.SetValue(i);
       ((ArrayList)localObject).add(localIDKey1);
       ((ArrayList)localObject).add(localIDKey2);
-      h.IzE.b((ArrayList)localObject, true);
-      this.ttn = null;
+      h.OAn.b((ArrayList)localObject, true);
+      this.wxK = null;
     }
     AppMethodBeat.o(113081);
   }
@@ -57,15 +57,15 @@ public final class d
   public final void onNotify()
   {
     AppMethodBeat.i(113082);
-    if (this.ttn != null) {
-      this.ttn.onNotifyChange(null, null);
+    if (this.wxK != null) {
+      this.wxK.onNotifyChange(null, null);
     }
     AppMethodBeat.o(113082);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.ui.d
  * JD-Core Version:    0.7.0.1
  */

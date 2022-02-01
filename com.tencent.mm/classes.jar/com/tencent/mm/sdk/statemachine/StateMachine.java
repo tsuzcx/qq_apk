@@ -4,10 +4,12 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -25,18 +27,18 @@ public class StateMachine
   
   protected StateMachine(String paramString)
   {
-    AppMethodBeat.i(193665);
+    AppMethodBeat.i(243234);
     this.mSmThread = new HandlerThread(paramString);
     this.mSmThread.start();
     initStateMachine(paramString, this.mSmThread.getLooper());
-    AppMethodBeat.o(193665);
+    AppMethodBeat.o(243234);
   }
   
   protected StateMachine(String paramString, Handler paramHandler)
   {
-    AppMethodBeat.i(193672);
+    AppMethodBeat.i(243241);
     initStateMachine(paramString, paramHandler.getLooper());
-    AppMethodBeat.o(193672);
+    AppMethodBeat.o(243241);
   }
   
   protected StateMachine(String paramString, Looper paramLooper)
@@ -48,23 +50,23 @@ public class StateMachine
   
   private void initStateMachine(String paramString, Looper paramLooper)
   {
-    AppMethodBeat.i(193663);
+    AppMethodBeat.i(243227);
     this.mName = paramString;
     this.mSmHandler = new SmHandler(paramLooper, this, null);
-    AppMethodBeat.o(193663);
+    AppMethodBeat.o(243227);
   }
   
   protected void addLogRec(String paramString)
   {
-    AppMethodBeat.i(193696);
+    AppMethodBeat.i(243429);
     SmHandler localSmHandler = this.mSmHandler;
     if (localSmHandler == null)
     {
-      AppMethodBeat.o(193696);
+      AppMethodBeat.o(243429);
       return;
     }
     localSmHandler.mLogRecords.add(this, SmHandler.access$1000(localSmHandler), paramString, SmHandler.access$1100(localSmHandler), localSmHandler.mStateStack[localSmHandler.mStateStackTopIndex].state, localSmHandler.mDestState);
-    AppMethodBeat.o(193696);
+    AppMethodBeat.o(243429);
   }
   
   public final void addState(State paramState)
@@ -76,38 +78,38 @@ public class StateMachine
   
   protected final void addState(State paramState1, State paramState2)
   {
-    AppMethodBeat.i(193675);
+    AppMethodBeat.i(243263);
     SmHandler.access$800(this.mSmHandler, paramState1, paramState2);
-    AppMethodBeat.o(193675);
+    AppMethodBeat.o(243263);
   }
   
-  public final Collection<StateMachine.LogRec> copyLogRecs()
+  public final Collection<LogRec> copyLogRecs()
   {
-    AppMethodBeat.i(193695);
+    AppMethodBeat.i(243422);
     Vector localVector = new Vector();
     Object localObject = this.mSmHandler;
     if (localObject != null)
     {
       localObject = SmHandler.access$1600((SmHandler)localObject).mLogRecVector.iterator();
       while (((Iterator)localObject).hasNext()) {
-        localVector.add((StateMachine.LogRec)((Iterator)localObject).next());
+        localVector.add((LogRec)((Iterator)localObject).next());
       }
     }
-    AppMethodBeat.o(193695);
+    AppMethodBeat.o(243422);
     return localVector;
   }
   
   protected final void deferMessage(Message paramMessage)
   {
-    AppMethodBeat.i(193682);
+    AppMethodBeat.i(243330);
     SmHandler.access$1400(this.mSmHandler, paramMessage);
-    AppMethodBeat.o(193682);
+    AppMethodBeat.o(243330);
   }
   
   public void dump(FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString)
   {
     int i = 0;
-    AppMethodBeat.i(193734);
+    AppMethodBeat.i(243688);
     paramPrintWriter.println(getName() + ":");
     paramPrintWriter.println(" total records=" + getLogRecCount());
     try
@@ -123,11 +125,11 @@ public class StateMachine
     catch (Exception paramFileDescriptor)
     {
       paramPrintWriter.println("curState=" + getCurrentState().getName());
-      AppMethodBeat.o(193734);
+      AppMethodBeat.o(243688);
     }
   }
   
-  protected final Message getCurrentMessage()
+  public final Message getCurrentMessage()
   {
     AppMethodBeat.i(158040);
     Object localObject = this.mSmHandler;
@@ -160,45 +162,45 @@ public class StateMachine
     return this.mSmHandler;
   }
   
-  public final StateMachine.LogRec getLogRec(int paramInt)
+  public final LogRec getLogRec(int paramInt)
   {
-    AppMethodBeat.i(193694);
+    AppMethodBeat.i(243412);
     Object localObject = this.mSmHandler;
     if (localObject == null)
     {
-      AppMethodBeat.o(193694);
+      AppMethodBeat.o(243412);
       return null;
     }
     localObject = ((SmHandler)localObject).mLogRecords.get(paramInt);
-    AppMethodBeat.o(193694);
+    AppMethodBeat.o(243412);
     return localObject;
   }
   
   public final int getLogRecCount()
   {
-    AppMethodBeat.i(193692);
+    AppMethodBeat.i(243402);
     SmHandler localSmHandler = this.mSmHandler;
     if (localSmHandler == null)
     {
-      AppMethodBeat.o(193692);
+      AppMethodBeat.o(243402);
       return 0;
     }
     int i = localSmHandler.mLogRecords.count();
-    AppMethodBeat.o(193692);
+    AppMethodBeat.o(243402);
     return i;
   }
   
   public final int getLogRecSize()
   {
-    AppMethodBeat.i(193689);
+    AppMethodBeat.i(243396);
     SmHandler localSmHandler = this.mSmHandler;
     if (localSmHandler == null)
     {
-      AppMethodBeat.o(193689);
+      AppMethodBeat.o(243396);
       return 0;
     }
     int i = localSmHandler.mLogRecords.size();
-    AppMethodBeat.o(193689);
+    AppMethodBeat.o(243396);
     return i;
   }
   
@@ -221,34 +223,34 @@ public class StateMachine
   
   public boolean isDbg()
   {
-    AppMethodBeat.i(193731);
+    AppMethodBeat.i(243673);
     SmHandler localSmHandler = this.mSmHandler;
     if (localSmHandler == null)
     {
-      AppMethodBeat.o(193731);
+      AppMethodBeat.o(243673);
       return false;
     }
     boolean bool = SmHandler.access$2400(localSmHandler);
-    AppMethodBeat.o(193731);
+    AppMethodBeat.o(243673);
     return bool;
   }
   
   protected final boolean isQuit(Message paramMessage)
   {
-    AppMethodBeat.i(193728);
+    AppMethodBeat.i(243661);
     SmHandler localSmHandler = this.mSmHandler;
     if (localSmHandler == null)
     {
       if (paramMessage.what == -1)
       {
-        AppMethodBeat.o(193728);
+        AppMethodBeat.o(243661);
         return true;
       }
-      AppMethodBeat.o(193728);
+      AppMethodBeat.o(243661);
       return false;
     }
     boolean bool = SmHandler.access$2100(localSmHandler, paramMessage);
-    AppMethodBeat.o(193728);
+    AppMethodBeat.o(243661);
     return bool;
   }
   
@@ -256,10 +258,10 @@ public class StateMachine
   
   protected void logAndAddLogRec(String paramString)
   {
-    AppMethodBeat.i(193735);
+    AppMethodBeat.i(243696);
     addLogRec(paramString);
     log(paramString);
-    AppMethodBeat.o(193735);
+    AppMethodBeat.o(243696);
   }
   
   protected void logd(String paramString) {}
@@ -276,9 +278,9 @@ public class StateMachine
   
   public final Message obtainMessage()
   {
-    AppMethodBeat.i(193698);
+    AppMethodBeat.i(243471);
     Message localMessage = Message.obtain(this.mSmHandler);
-    AppMethodBeat.o(193698);
+    AppMethodBeat.o(243471);
     return localMessage;
   }
   
@@ -292,25 +294,25 @@ public class StateMachine
   
   public final Message obtainMessage(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(193701);
+    AppMethodBeat.i(243493);
     Message localMessage = Message.obtain(this.mSmHandler, paramInt1, paramInt2, 0);
-    AppMethodBeat.o(193701);
+    AppMethodBeat.o(243493);
     return localMessage;
   }
   
   public final Message obtainMessage(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(193702);
+    AppMethodBeat.i(243503);
     Message localMessage = Message.obtain(this.mSmHandler, paramInt1, paramInt2, paramInt3);
-    AppMethodBeat.o(193702);
+    AppMethodBeat.o(243503);
     return localMessage;
   }
   
   public final Message obtainMessage(int paramInt1, int paramInt2, int paramInt3, Object paramObject)
   {
-    AppMethodBeat.i(193703);
+    AppMethodBeat.i(243509);
     paramObject = Message.obtain(this.mSmHandler, paramInt1, paramInt2, paramInt3, paramObject);
-    AppMethodBeat.o(193703);
+    AppMethodBeat.o(243509);
     return paramObject;
   }
   
@@ -359,15 +361,15 @@ public class StateMachine
   
   protected final void removeMessages(int paramInt)
   {
-    AppMethodBeat.i(193726);
+    AppMethodBeat.i(243656);
     SmHandler localSmHandler = this.mSmHandler;
     if (localSmHandler == null)
     {
-      AppMethodBeat.o(193726);
+      AppMethodBeat.o(243656);
       return;
     }
     localSmHandler.removeMessages(paramInt);
-    AppMethodBeat.o(193726);
+    AppMethodBeat.o(243656);
   }
   
   public final void sendMessage(int paramInt)
@@ -385,67 +387,67 @@ public class StateMachine
   
   public final void sendMessage(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(193707);
+    AppMethodBeat.i(243526);
     SmHandler localSmHandler = this.mSmHandler;
     if (localSmHandler == null)
     {
-      AppMethodBeat.o(193707);
+      AppMethodBeat.o(243526);
       return;
     }
     localSmHandler.sendMessage(obtainMessage(paramInt1, paramInt2));
-    AppMethodBeat.o(193707);
+    AppMethodBeat.o(243526);
   }
   
   public final void sendMessage(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(193708);
+    AppMethodBeat.i(243534);
     SmHandler localSmHandler = this.mSmHandler;
     if (localSmHandler == null)
     {
-      AppMethodBeat.o(193708);
+      AppMethodBeat.o(243534);
       return;
     }
     localSmHandler.sendMessage(obtainMessage(paramInt1, paramInt2, paramInt3));
-    AppMethodBeat.o(193708);
+    AppMethodBeat.o(243534);
   }
   
   public final void sendMessage(int paramInt1, int paramInt2, int paramInt3, Object paramObject)
   {
-    AppMethodBeat.i(193709);
+    AppMethodBeat.i(243546);
     SmHandler localSmHandler = this.mSmHandler;
     if (localSmHandler == null)
     {
-      AppMethodBeat.o(193709);
+      AppMethodBeat.o(243546);
       return;
     }
     localSmHandler.sendMessage(obtainMessage(paramInt1, paramInt2, paramInt3, paramObject));
-    AppMethodBeat.o(193709);
+    AppMethodBeat.o(243546);
   }
   
   public final void sendMessage(int paramInt, Object paramObject)
   {
-    AppMethodBeat.i(193705);
+    AppMethodBeat.i(243518);
     SmHandler localSmHandler = this.mSmHandler;
     if (localSmHandler == null)
     {
-      AppMethodBeat.o(193705);
+      AppMethodBeat.o(243518);
       return;
     }
     localSmHandler.sendMessage(obtainMessage(paramInt, paramObject));
-    AppMethodBeat.o(193705);
+    AppMethodBeat.o(243518);
   }
   
   public final void sendMessage(Message paramMessage)
   {
-    AppMethodBeat.i(193710);
+    AppMethodBeat.i(243554);
     SmHandler localSmHandler = this.mSmHandler;
     if (localSmHandler == null)
     {
-      AppMethodBeat.o(193710);
+      AppMethodBeat.o(243554);
       return;
     }
     localSmHandler.sendMessage(paramMessage);
-    AppMethodBeat.o(193710);
+    AppMethodBeat.o(243554);
   }
   
   protected final void sendMessageAtFrontOfQueue(int paramInt)
@@ -463,145 +465,145 @@ public class StateMachine
   
   protected final void sendMessageAtFrontOfQueue(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(193722);
+    AppMethodBeat.i(243625);
     SmHandler localSmHandler = this.mSmHandler;
     if (localSmHandler == null)
     {
-      AppMethodBeat.o(193722);
+      AppMethodBeat.o(243625);
       return;
     }
     localSmHandler.sendMessageAtFrontOfQueue(obtainMessage(paramInt1, paramInt2));
-    AppMethodBeat.o(193722);
+    AppMethodBeat.o(243625);
   }
   
   protected final void sendMessageAtFrontOfQueue(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(193723);
+    AppMethodBeat.i(243635);
     SmHandler localSmHandler = this.mSmHandler;
     if (localSmHandler == null)
     {
-      AppMethodBeat.o(193723);
+      AppMethodBeat.o(243635);
       return;
     }
     localSmHandler.sendMessageAtFrontOfQueue(obtainMessage(paramInt1, paramInt2, paramInt3));
-    AppMethodBeat.o(193723);
+    AppMethodBeat.o(243635);
   }
   
   protected final void sendMessageAtFrontOfQueue(int paramInt1, int paramInt2, int paramInt3, Object paramObject)
   {
-    AppMethodBeat.i(193724);
+    AppMethodBeat.i(243645);
     SmHandler localSmHandler = this.mSmHandler;
     if (localSmHandler == null)
     {
-      AppMethodBeat.o(193724);
+      AppMethodBeat.o(243645);
       return;
     }
     localSmHandler.sendMessageAtFrontOfQueue(obtainMessage(paramInt1, paramInt2, paramInt3, paramObject));
-    AppMethodBeat.o(193724);
+    AppMethodBeat.o(243645);
   }
   
   protected final void sendMessageAtFrontOfQueue(int paramInt, Object paramObject)
   {
-    AppMethodBeat.i(193721);
+    AppMethodBeat.i(243614);
     SmHandler localSmHandler = this.mSmHandler;
     if (localSmHandler == null)
     {
-      AppMethodBeat.o(193721);
+      AppMethodBeat.o(243614);
       return;
     }
     localSmHandler.sendMessageAtFrontOfQueue(obtainMessage(paramInt, paramObject));
-    AppMethodBeat.o(193721);
+    AppMethodBeat.o(243614);
   }
   
   protected final void sendMessageAtFrontOfQueue(Message paramMessage)
   {
-    AppMethodBeat.i(193725);
+    AppMethodBeat.i(243652);
     SmHandler localSmHandler = this.mSmHandler;
     if (localSmHandler == null)
     {
-      AppMethodBeat.o(193725);
+      AppMethodBeat.o(243652);
       return;
     }
     localSmHandler.sendMessageAtFrontOfQueue(paramMessage);
-    AppMethodBeat.o(193725);
+    AppMethodBeat.o(243652);
   }
   
   public final void sendMessageDelayed(int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
-    AppMethodBeat.i(193717);
+    AppMethodBeat.i(243582);
     SmHandler localSmHandler = this.mSmHandler;
     if (localSmHandler == null)
     {
-      AppMethodBeat.o(193717);
+      AppMethodBeat.o(243582);
       return;
     }
     localSmHandler.sendMessageDelayed(obtainMessage(paramInt1, paramInt2, paramInt3), paramLong);
-    AppMethodBeat.o(193717);
+    AppMethodBeat.o(243582);
   }
   
   public final void sendMessageDelayed(int paramInt1, int paramInt2, int paramInt3, Object paramObject, long paramLong)
   {
-    AppMethodBeat.i(193718);
+    AppMethodBeat.i(243591);
     SmHandler localSmHandler = this.mSmHandler;
     if (localSmHandler == null)
     {
-      AppMethodBeat.o(193718);
+      AppMethodBeat.o(243591);
       return;
     }
     localSmHandler.sendMessageDelayed(obtainMessage(paramInt1, paramInt2, paramInt3, paramObject), paramLong);
-    AppMethodBeat.o(193718);
+    AppMethodBeat.o(243591);
   }
   
   public final void sendMessageDelayed(int paramInt1, int paramInt2, long paramLong)
   {
-    AppMethodBeat.i(193715);
+    AppMethodBeat.i(243575);
     SmHandler localSmHandler = this.mSmHandler;
     if (localSmHandler == null)
     {
-      AppMethodBeat.o(193715);
+      AppMethodBeat.o(243575);
       return;
     }
     localSmHandler.sendMessageDelayed(obtainMessage(paramInt1, paramInt2), paramLong);
-    AppMethodBeat.o(193715);
+    AppMethodBeat.o(243575);
   }
   
   public final void sendMessageDelayed(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(193712);
+    AppMethodBeat.i(243562);
     SmHandler localSmHandler = this.mSmHandler;
     if (localSmHandler == null)
     {
-      AppMethodBeat.o(193712);
+      AppMethodBeat.o(243562);
       return;
     }
     localSmHandler.sendMessageDelayed(obtainMessage(paramInt), paramLong);
-    AppMethodBeat.o(193712);
+    AppMethodBeat.o(243562);
   }
   
   public final void sendMessageDelayed(int paramInt, Object paramObject, long paramLong)
   {
-    AppMethodBeat.i(193713);
+    AppMethodBeat.i(243569);
     SmHandler localSmHandler = this.mSmHandler;
     if (localSmHandler == null)
     {
-      AppMethodBeat.o(193713);
+      AppMethodBeat.o(243569);
       return;
     }
     localSmHandler.sendMessageDelayed(obtainMessage(paramInt, paramObject), paramLong);
-    AppMethodBeat.o(193713);
+    AppMethodBeat.o(243569);
   }
   
   public final void sendMessageDelayed(Message paramMessage, long paramLong)
   {
-    AppMethodBeat.i(193720);
+    AppMethodBeat.i(243600);
     SmHandler localSmHandler = this.mSmHandler;
     if (localSmHandler == null)
     {
-      AppMethodBeat.o(193720);
+      AppMethodBeat.o(243600);
       return;
     }
     localSmHandler.sendMessageDelayed(paramMessage, paramLong);
-    AppMethodBeat.o(193720);
+    AppMethodBeat.o(243600);
   }
   
   public void setDbg(boolean paramBoolean)
@@ -626,16 +628,16 @@ public class StateMachine
   
   public final void setLogOnlyTransitions(boolean paramBoolean)
   {
-    AppMethodBeat.i(193688);
+    AppMethodBeat.i(243391);
     this.mSmHandler.mLogRecords.setLogOnlyTransitions(paramBoolean);
-    AppMethodBeat.o(193688);
+    AppMethodBeat.o(243391);
   }
   
   public final void setLogRecSize(int paramInt)
   {
-    AppMethodBeat.i(193687);
+    AppMethodBeat.i(243385);
     this.mSmHandler.mLogRecords.setSize(paramInt);
-    AppMethodBeat.o(193687);
+    AppMethodBeat.o(243385);
   }
   
   public void start()
@@ -660,9 +662,9 @@ public class StateMachine
   
   protected final void transitionToHaltingState()
   {
-    AppMethodBeat.i(193679);
+    AppMethodBeat.i(243315);
     SmHandler.access$1200(this.mSmHandler, this.mSmHandler.mHaltingState);
-    AppMethodBeat.o(193679);
+    AppMethodBeat.o(243315);
   }
   
   protected void unhandledMessage(Message paramMessage)
@@ -672,6 +674,139 @@ public class StateMachine
       loge(" - unhandledMessage: msg.what=" + paramMessage.what);
     }
     AppMethodBeat.o(158043);
+  }
+  
+  public static class LogRec
+  {
+    private IState mDstState;
+    private String mInfo;
+    private IState mOrgState;
+    private StateMachine mSm;
+    private IState mState;
+    private long mTime;
+    private int mWhat;
+    
+    LogRec(StateMachine paramStateMachine, Message paramMessage, String paramString, IState paramIState1, IState paramIState2, IState paramIState3)
+    {
+      AppMethodBeat.i(158011);
+      update(paramStateMachine, paramMessage, paramString, paramIState1, paramIState2, paramIState3);
+      AppMethodBeat.o(158011);
+    }
+    
+    public IState getDestState()
+    {
+      return this.mDstState;
+    }
+    
+    public String getInfo()
+    {
+      return this.mInfo;
+    }
+    
+    public IState getOriginalState()
+    {
+      return this.mOrgState;
+    }
+    
+    public IState getState()
+    {
+      return this.mState;
+    }
+    
+    public long getTime()
+    {
+      return this.mTime;
+    }
+    
+    public long getWhat()
+    {
+      return this.mWhat;
+    }
+    
+    public String toString()
+    {
+      AppMethodBeat.i(158013);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("time=");
+      Object localObject = Calendar.getInstance();
+      ((Calendar)localObject).setTimeInMillis(this.mTime);
+      localStringBuilder.append(String.format("%tm-%td %tH:%tM:%tS.%tL", new Object[] { localObject, localObject, localObject, localObject, localObject, localObject }));
+      localStringBuilder.append(" processed=");
+      if (this.mState == null)
+      {
+        localObject = "<null>";
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append(" org=");
+        if (this.mOrgState != null) {
+          break label259;
+        }
+        localObject = "<null>";
+        label111:
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append(" dest=");
+        if (this.mDstState != null) {
+          break label272;
+        }
+        localObject = "<null>";
+        label134:
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append(" what=");
+        if (this.mSm == null) {
+          break label285;
+        }
+        localObject = this.mSm.getWhatToString(this.mWhat);
+        label166:
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          break label291;
+        }
+        localStringBuilder.append(this.mWhat);
+        localStringBuilder.append("(0x");
+        localStringBuilder.append(Integer.toHexString(this.mWhat));
+        localStringBuilder.append(")");
+      }
+      for (;;)
+      {
+        if (!TextUtils.isEmpty(this.mInfo))
+        {
+          localStringBuilder.append(" ");
+          localStringBuilder.append(this.mInfo);
+        }
+        localObject = localStringBuilder.toString();
+        AppMethodBeat.o(158013);
+        return localObject;
+        localObject = this.mState.getName();
+        break;
+        label259:
+        localObject = this.mOrgState.getName();
+        break label111;
+        label272:
+        localObject = this.mDstState.getName();
+        break label134;
+        label285:
+        localObject = "";
+        break label166;
+        label291:
+        localStringBuilder.append((String)localObject);
+      }
+    }
+    
+    public void update(StateMachine paramStateMachine, Message paramMessage, String paramString, IState paramIState1, IState paramIState2, IState paramIState3)
+    {
+      AppMethodBeat.i(158012);
+      this.mSm = paramStateMachine;
+      this.mTime = System.currentTimeMillis();
+      if (paramMessage != null) {}
+      for (int i = paramMessage.what;; i = 0)
+      {
+        this.mWhat = i;
+        this.mInfo = paramString;
+        this.mState = paramIState1;
+        this.mOrgState = paramIState2;
+        this.mDstState = paramIState3;
+        AppMethodBeat.o(158012);
+        return;
+      }
+    }
   }
   
   static class LogRecords
@@ -914,11 +1049,11 @@ public class StateMachine
     {
       try
       {
-        AppMethodBeat.i(192575);
+        AppMethodBeat.i(243225);
         this.mMaxSize = paramInt;
         this.mCount = 0;
         this.mLogRecVector.clear();
-        AppMethodBeat.o(192575);
+        AppMethodBeat.o(243225);
         return;
       }
       finally
@@ -932,9 +1067,9 @@ public class StateMachine
     {
       try
       {
-        AppMethodBeat.i(192579);
+        AppMethodBeat.i(243236);
         int i = this.mLogRecVector.size();
-        AppMethodBeat.o(192579);
+        AppMethodBeat.o(243236);
         return i;
       }
       finally
@@ -993,7 +1128,7 @@ public class StateMachine
     
     private final StateInfo addState(State paramState1, State paramState2)
     {
-      AppMethodBeat.i(194290);
+      AppMethodBeat.i(243264);
       Object localObject2;
       Object localObject1;
       if (this.mDbg)
@@ -1029,7 +1164,7 @@ public class StateMachine
         if ((((StateInfo)localObject1).parentStateInfo != null) && (((StateInfo)localObject1).parentStateInfo != paramState2))
         {
           paramState1 = new RuntimeException("state already added");
-          AppMethodBeat.o(194290);
+          AppMethodBeat.o(243264);
           throw paramState1;
           localObject1 = paramState2.getName();
           break;
@@ -1040,7 +1175,7 @@ public class StateMachine
         if (this.mDbg) {
           this.mSm.log("addStateInternal: X stateInfo: ".concat(String.valueOf(localObject1)));
         }
-        AppMethodBeat.o(194290);
+        AppMethodBeat.o(243264);
         return localObject1;
         label216:
         paramState2 = (State)localObject1;
@@ -1052,12 +1187,13 @@ public class StateMachine
     
     private final void cleanupAfterQuitting()
     {
-      AppMethodBeat.i(194264);
+      AppMethodBeat.i(243226);
       if (this.mSm.mSmThread != null)
       {
         getLooper().quit();
         StateMachine.access$402(this.mSm, null);
       }
+      removeCallbacksAndMessages(null);
       StateMachine.access$502(this.mSm, null);
       this.mSm = null;
       this.mMsg = null;
@@ -1069,12 +1205,12 @@ public class StateMachine
       this.mDestState = null;
       this.mDeferredMessages.clear();
       this.mHasQuit = true;
-      AppMethodBeat.o(194264);
+      AppMethodBeat.o(243226);
     }
     
     private final void completeConstruction()
     {
-      AppMethodBeat.i(194268);
+      AppMethodBeat.i(243232);
       if (this.mDbg) {
         this.mSm.log("completeConstruction: E");
       }
@@ -1108,21 +1244,21 @@ public class StateMachine
         if (this.mDbg) {
           this.mSm.log("completeConstruction: X");
         }
-        AppMethodBeat.o(194268);
+        AppMethodBeat.o(243232);
         return;
       }
     }
     
     private final void deferMessage(Message paramMessage)
     {
-      AppMethodBeat.i(194299);
+      AppMethodBeat.i(243279);
       if (this.mDbg) {
         this.mSm.log("deferMessage: msg=" + paramMessage.what);
       }
       Message localMessage = obtainMessage();
       localMessage.copyFrom(paramMessage);
       this.mDeferredMessages.add(localMessage);
-      AppMethodBeat.o(194299);
+      AppMethodBeat.o(243279);
     }
     
     private final Message getCurrentMessage()
@@ -1315,22 +1451,22 @@ public class StateMachine
     
     private final void quit()
     {
-      AppMethodBeat.i(194301);
+      AppMethodBeat.i(243285);
       if (this.mDbg) {
         this.mSm.log("quit:");
       }
       sendMessage(obtainMessage(-1, mSmHandlerObj));
-      AppMethodBeat.o(194301);
+      AppMethodBeat.o(243285);
     }
     
     private final void quitNow()
     {
-      AppMethodBeat.i(194302);
+      AppMethodBeat.i(243291);
       if (this.mDbg) {
         this.mSm.log("quitNow:");
       }
       sendMessageAtFrontOfQueue(obtainMessage(-1, mSmHandlerObj));
-      AppMethodBeat.o(194302);
+      AppMethodBeat.o(243291);
     }
     
     private final void setDbg(boolean paramBoolean)
@@ -1340,17 +1476,17 @@ public class StateMachine
     
     private final void setInitialState(State paramState)
     {
-      AppMethodBeat.i(194295);
+      AppMethodBeat.i(243272);
       if (this.mDbg) {
         this.mSm.log("setInitialState: initialState=" + paramState.getName());
       }
       this.mInitialState = paramState;
-      AppMethodBeat.o(194295);
+      AppMethodBeat.o(243272);
     }
     
     private final void setupInitialStateStack()
     {
-      AppMethodBeat.i(194285);
+      AppMethodBeat.i(243252);
       if (this.mDbg) {
         this.mSm.log("setupInitialStateStack: E mInitialState=" + this.mInitialState.getName());
       }
@@ -1362,12 +1498,12 @@ public class StateMachine
       }
       this.mStateStackTopIndex = -1;
       moveTempStateStackToStateStack();
-      AppMethodBeat.o(194285);
+      AppMethodBeat.o(243252);
     }
     
     private final StateInfo setupTempStateStackWithStatesToEnter(State paramState)
     {
-      AppMethodBeat.i(194283);
+      AppMethodBeat.i(243248);
       this.mTempStateStackCount = 0;
       paramState = (StateInfo)this.mStateInfo.get(paramState);
       Object localObject;
@@ -1386,7 +1522,7 @@ public class StateMachine
       if (this.mDbg) {
         this.mSm.log("setupTempStateStackWithStatesToEnter: X mTempStateStackCount=" + this.mTempStateStackCount + ",curStateInfo: " + localObject);
       }
-      AppMethodBeat.o(194283);
+      AppMethodBeat.o(243248);
       return localObject;
     }
     
@@ -1486,7 +1622,7 @@ public class StateMachine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.sdk.statemachine.StateMachine
  * JD-Core Version:    0.7.0.1
  */

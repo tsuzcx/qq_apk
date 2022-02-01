@@ -2,25 +2,27 @@ package com.tencent.mm.pluginsdk.ui.applet;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ca;
+import com.tencent.mm.storage.cc;
 
 public class u
 {
+  public String AWk;
+  public int YcU = 1;
+  public String YcV = null;
   public int backgroundColor;
-  public Object bnW;
   public String chatroomName;
+  public Object cpt;
   public int end;
-  public ca fNz = null;
+  public Object extraData;
   public int fromScene = 0;
-  public int ilw;
+  public cc hTm = null;
+  public int kLv;
   public int linkColor;
   public String mSessionId;
   public int start;
   public int type;
   public String url;
   public String username;
-  public Object xJA;
-  public String xyW;
   
   @Deprecated
   public u(int paramInt1, int paramInt2)
@@ -29,27 +31,22 @@ public class u
     this.end = paramInt2;
     this.url = null;
     this.type = 0;
-    this.bnW = null;
+    this.cpt = null;
   }
   
   public u(String paramString, int paramInt, Object paramObject)
   {
     this.url = paramString;
-    this.bnW = paramObject;
+    this.cpt = paramObject;
     this.type = paramInt;
   }
   
-  public final String btD()
-  {
-    return this.url;
-  }
-  
-  public final <T> T bv(Class<T> paramClass)
+  public final <T> T cf(Class<T> paramClass)
   {
     AppMethodBeat.i(152234);
-    if (paramClass.isInstance(this.bnW))
+    if (paramClass.isInstance(this.cpt))
     {
-      paramClass = paramClass.cast(this.bnW);
+      paramClass = paramClass.cast(this.cpt);
       AppMethodBeat.o(152234);
       return paramClass;
     }
@@ -85,8 +82,8 @@ public class u
     }
     j = i + this.type + this.end + this.start;
     i = j;
-    if (this.bnW != null) {
-      i = j + this.bnW.hashCode();
+    if (this.cpt != null) {
+      i = j + this.cpt.hashCode();
     }
     AppMethodBeat.o(152235);
     return i;

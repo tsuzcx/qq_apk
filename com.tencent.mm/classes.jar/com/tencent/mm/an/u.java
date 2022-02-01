@@ -1,471 +1,89 @@
 package com.tencent.mm.an;
 
-import android.os.RemoteException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.f;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.oh;
+import com.tencent.mm.protocal.protobuf.oi;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class u
-  implements e
+  extends p
+  implements m
 {
-  private final f lCS;
+  private h callback;
+  private String luk;
+  private a<u> owM;
+  c rr;
   
-  public u(f paramf)
+  private u(String paramString1, String paramString2)
   {
-    this.lCS = paramf;
+    AppMethodBeat.i(124117);
+    this.luk = paramString1;
+    Log.i("MicroMsg.NetSceneBizAttrSync", "[BizAttr] NetSceneBizAttrSync (%s)", new Object[] { paramString1 });
+    paramString1 = new c.a();
+    paramString1.funcId = 1075;
+    paramString1.uri = "/cgi-bin/mmbiz-bin/bizattr/bizattrsync";
+    paramString1.otE = new oh();
+    paramString1.otF = new oi();
+    paramString1.otG = 0;
+    paramString1.respCmdId = 0;
+    this.rr = paramString1.bEF();
+    paramString1 = (oh)c.b.b(this.rr.otB);
+    paramString1.YRs = this.luk;
+    paramString1.YRt = new b(Util.decodeHexString(Util.nullAsNil(paramString2)));
+    AppMethodBeat.o(124117);
   }
   
-  public final byte[] TX(String paramString)
+  public u(String paramString1, String paramString2, a<u> parama)
   {
-    AppMethodBeat.i(132369);
-    try
-    {
-      paramString = this.lCS.TX(paramString);
-      AppMethodBeat.o(132369);
-      return paramString;
-    }
-    catch (RemoteException paramString)
-    {
-      Log.e("MicroMsg.RAccInfo", "exception:%s", new Object[] { Util.stackTraceToString(paramString) });
-      AppMethodBeat.o(132369);
-    }
-    return null;
+    this(paramString1, paramString2);
+    this.owM = parama;
   }
   
-  public final byte[] TY(String paramString)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(132379);
-    try
-    {
-      paramString = this.lCS.TY(paramString);
-      AppMethodBeat.o(132379);
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      Log.e("MicroMsg.RAccInfo", "exception:%s", new Object[] { Util.stackTraceToString(paramString) });
-      AppMethodBeat.o(132379);
-    }
-    return null;
+    AppMethodBeat.i(124119);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(124119);
+    return i;
   }
   
-  public final byte[] TZ(String paramString)
+  public final int getType()
   {
-    AppMethodBeat.i(132382);
-    try
-    {
-      paramString = this.lCS.TZ(paramString);
-      AppMethodBeat.o(132382);
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      Log.e("MicroMsg.RAccInfo", "exception:%s", new Object[] { Util.stackTraceToString(paramString) });
-      AppMethodBeat.o(132382);
-    }
-    return null;
+    return 1075;
   }
   
-  public final byte[] Ua(String paramString)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(132383);
-    try
-    {
-      paramString = this.lCS.Ua(paramString);
-      AppMethodBeat.o(132383);
-      return paramString;
+    AppMethodBeat.i(124118);
+    Log.i("MicroMsg.NetSceneBizAttrSync", "[BizAttr] onGYNetEnd netId %d, errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    catch (Exception paramString)
-    {
-      Log.e("MicroMsg.RAccInfo", "exception:%s", new Object[] { Util.stackTraceToString(paramString) });
-      AppMethodBeat.o(132383);
+    if (this.owM != null) {
+      this.owM.onNetSceneEndCallback(paramInt2, paramInt3, paramString, this);
     }
-    return null;
+    AppMethodBeat.o(124118);
   }
   
-  public final boolean Ub(String paramString)
+  public static abstract interface a<T extends p>
   {
-    AppMethodBeat.i(132384);
-    try
-    {
-      boolean bool = this.lCS.Ub(paramString);
-      AppMethodBeat.o(132384);
-      return bool;
-    }
-    catch (Exception paramString)
-    {
-      Log.e("MicroMsg.RAccInfo", "exception:%s", new Object[] { Util.stackTraceToString(paramString) });
-      AppMethodBeat.o(132384);
-    }
-    return false;
-  }
-  
-  public final void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt)
-  {
-    AppMethodBeat.i(132365);
-    try
-    {
-      this.lCS.a(paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramInt);
-      AppMethodBeat.o(132365);
-      return;
-    }
-    catch (RemoteException paramArrayOfByte1)
-    {
-      Log.e("MicroMsg.RAccInfo", "exception:%s", new Object[] { Util.stackTraceToString(paramArrayOfByte1) });
-      AppMethodBeat.o(132365);
-    }
-  }
-  
-  public final int av(byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(132375);
-    try
-    {
-      int i = this.lCS.av(paramArrayOfByte);
-      AppMethodBeat.o(132375);
-      return i;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      Log.e("MicroMsg.RAccInfo", "AccInfoCacheInWorker parseBuf exception:%s", new Object[] { Util.stackTraceToString(paramArrayOfByte) });
-      AppMethodBeat.o(132375);
-    }
-    return -6;
-  }
-  
-  public final int aw(byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(200163);
-    try
-    {
-      int i = this.lCS.aw(paramArrayOfByte);
-      AppMethodBeat.o(200163);
-      return i;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      Log.e("MicroMsg.RAccInfo", "exception:%s", new Object[] { Util.stackTraceToString(paramArrayOfByte) });
-      AppMethodBeat.o(200163);
-    }
-    return -1;
-  }
-  
-  public final void b(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    AppMethodBeat.i(132378);
-    try
-    {
-      this.lCS.b(paramInt, paramArrayOfByte1, paramArrayOfByte2);
-      AppMethodBeat.o(132378);
-      return;
-    }
-    catch (Exception paramArrayOfByte1)
-    {
-      Log.e("MicroMsg.RAccInfo", "exception:%s", new Object[] { Util.stackTraceToString(paramArrayOfByte1) });
-      AppMethodBeat.o(132378);
-    }
-  }
-  
-  public final byte[] bip()
-  {
-    AppMethodBeat.i(132359);
-    try
-    {
-      byte[] arrayOfByte = this.lCS.bip();
-      AppMethodBeat.o(132359);
-      return arrayOfByte;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      Log.e("MicroMsg.RAccInfo", "exception:%s", new Object[] { Util.stackTraceToString(localRemoteException) });
-      AppMethodBeat.o(132359);
-    }
-    return null;
-  }
-  
-  public final boolean biq()
-  {
-    AppMethodBeat.i(132363);
-    try
-    {
-      boolean bool = this.lCS.biq();
-      AppMethodBeat.o(132363);
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      Log.e("MicroMsg.RAccInfo", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
-      AppMethodBeat.o(132363);
-    }
-    return false;
-  }
-  
-  public final byte[] bir()
-  {
-    AppMethodBeat.i(132370);
-    try
-    {
-      byte[] arrayOfByte = this.lCS.bir();
-      AppMethodBeat.o(132370);
-      return arrayOfByte;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      Log.e("MicroMsg.RAccInfo", "exception:%s", new Object[] { Util.stackTraceToString(localRemoteException) });
-      AppMethodBeat.o(132370);
-    }
-    return null;
-  }
-  
-  public final String bis()
-  {
-    AppMethodBeat.i(132373);
-    try
-    {
-      String str = this.lCS.bis();
-      AppMethodBeat.o(132373);
-      return str;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      Log.e("MicroMsg.RAccInfo", "exception:%s", new Object[] { Util.stackTraceToString(localRemoteException) });
-      AppMethodBeat.o(132373);
-    }
-    return null;
-  }
-  
-  public final byte[] bit()
-  {
-    AppMethodBeat.i(132374);
-    try
-    {
-      byte[] arrayOfByte = this.lCS.bit();
-      AppMethodBeat.o(132374);
-      return arrayOfByte;
-    }
-    catch (Exception localException)
-    {
-      Log.e("MicroMsg.RAccInfo", "AccInfoCacheInWorker getCacheBuffer exception:%s", new Object[] { Util.stackTraceToString(localException) });
-      AppMethodBeat.o(132374);
-    }
-    return null;
-  }
-  
-  public final void biu()
-  {
-    AppMethodBeat.i(132380);
-    try
-    {
-      this.lCS.biu();
-      AppMethodBeat.o(132380);
-      return;
-    }
-    catch (Exception localException)
-    {
-      Log.e("MicroMsg.RAccInfo", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
-      AppMethodBeat.o(132380);
-    }
-  }
-  
-  public final void biv()
-  {
-    AppMethodBeat.i(132381);
-    try
-    {
-      this.lCS.biv();
-      AppMethodBeat.o(132381);
-      return;
-    }
-    catch (Exception localException)
-    {
-      Log.e("MicroMsg.RAccInfo", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
-      AppMethodBeat.o(132381);
-    }
-  }
-  
-  public final int getUin()
-  {
-    AppMethodBeat.i(132361);
-    try
-    {
-      int i = this.lCS.getUin();
-      AppMethodBeat.o(132361);
-      return i;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      Log.e("MicroMsg.RAccInfo", "exception:%s", new Object[] { Util.stackTraceToString(localRemoteException) });
-      AppMethodBeat.o(132361);
-    }
-    return 0;
-  }
-  
-  public final String getUsername()
-  {
-    AppMethodBeat.i(132362);
-    try
-    {
-      String str = this.lCS.getUsername();
-      AppMethodBeat.o(132362);
-      return str;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      Log.e("MicroMsg.RAccInfo", "exception:%s", new Object[] { Util.stackTraceToString(localRemoteException) });
-      AppMethodBeat.o(132362);
-    }
-    return null;
-  }
-  
-  public final void i(int paramInt, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(132377);
-    try
-    {
-      this.lCS.i(paramInt, paramArrayOfByte);
-      AppMethodBeat.o(132377);
-      return;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      Log.e("MicroMsg.RAccInfo", "exception:%s", new Object[] { Util.stackTraceToString(paramArrayOfByte) });
-      AppMethodBeat.o(132377);
-    }
-  }
-  
-  public final void i(String paramString, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(132368);
-    try
-    {
-      this.lCS.i(paramString, paramArrayOfByte);
-      AppMethodBeat.o(132368);
-      return;
-    }
-    catch (RemoteException paramString)
-    {
-      Log.e("MicroMsg.RAccInfo", "exception:%s", new Object[] { Util.stackTraceToString(paramString) });
-      AppMethodBeat.o(132368);
-    }
-  }
-  
-  public final boolean isForeground()
-  {
-    AppMethodBeat.i(132372);
-    try
-    {
-      boolean bool = this.lCS.isForeground();
-      AppMethodBeat.o(132372);
-      return bool;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      Log.e("MicroMsg.RAccInfo", "exception:%s", new Object[] { Util.stackTraceToString(localRemoteException) });
-      AppMethodBeat.o(132372);
-    }
-    return true;
-  }
-  
-  public final void reset()
-  {
-    AppMethodBeat.i(132366);
-    try
-    {
-      this.lCS.reset();
-      AppMethodBeat.o(132366);
-      return;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      Log.e("MicroMsg.RAccInfo", "exception:%s", new Object[] { Util.stackTraceToString(localRemoteException) });
-      AppMethodBeat.o(132366);
-    }
-  }
-  
-  public final byte[] sE(int paramInt)
-  {
-    AppMethodBeat.i(132360);
-    try
-    {
-      byte[] arrayOfByte = this.lCS.sE(paramInt);
-      AppMethodBeat.o(132360);
-      return arrayOfByte;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      Log.e("MicroMsg.RAccInfo", "exception:%s", new Object[] { Util.stackTraceToString(localRemoteException) });
-      AppMethodBeat.o(132360);
-    }
-    return null;
-  }
-  
-  public final void setForeground(boolean paramBoolean)
-  {
-    AppMethodBeat.i(132371);
-    try
-    {
-      this.lCS.setForeground(paramBoolean);
-      AppMethodBeat.o(132371);
-      return;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      Log.e("MicroMsg.RAccInfo", "exception:%s", new Object[] { Util.stackTraceToString(localRemoteException) });
-      AppMethodBeat.o(132371);
-    }
-  }
-  
-  public final void setUin(int paramInt)
-  {
-    AppMethodBeat.i(132376);
-    try
-    {
-      this.lCS.setUin(paramInt);
-      AppMethodBeat.o(132376);
-      return;
-    }
-    catch (Exception localException)
-    {
-      Log.e("MicroMsg.RAccInfo", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
-      AppMethodBeat.o(132376);
-    }
-  }
-  
-  public final void setUsername(String paramString)
-  {
-    AppMethodBeat.i(132364);
-    try
-    {
-      this.lCS.setUsername(paramString);
-      AppMethodBeat.o(132364);
-      return;
-    }
-    catch (RemoteException paramString)
-    {
-      Log.e("MicroMsg.RAccInfo", "exception:%s", new Object[] { Util.stackTraceToString(paramString) });
-      AppMethodBeat.o(132364);
-    }
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(132367);
-    String str = "RAccInfo:\n" + "|-uin     =" + getUin() + "\n";
-    str = str + "|-user    =" + getUsername() + "\n";
-    str = str + "|-singlesession =" + Util.dumpHex(sE(1)) + "\n";
-    str = str + "|-clientsession =" + Util.dumpHex(sE(2)) + "\n";
-    str = str + "|-serversession =" + Util.dumpHex(sE(3)) + "\n";
-    str = str + "|-ecdhkey =" + Util.dumpHex(bir()) + "\n";
-    str = str + "`-cookie  =" + Util.dumpHex(bip());
-    AppMethodBeat.o(132367);
-    return str;
+    public abstract void onNetSceneEndCallback(int paramInt1, int paramInt2, String paramString, T paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.an.u
  * JD-Core Version:    0.7.0.1
  */

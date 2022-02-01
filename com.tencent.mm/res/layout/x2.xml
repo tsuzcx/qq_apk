@@ -1,3 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.profile.ui.tab.view.BizProfileRecyclerView android:id="@id/gy2" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/iwt" android:background="@drawable/gm" android:layout_width="fill_parent" android:layout_height="96.0dip" android:layout_marginLeft="@dimen/k" android:layout_marginTop="@dimen/k" android:layout_marginRight="@dimen/k">
+        <RelativeLayout android:id="@id/kp_" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/i6" android:layout_marginTop="@dimen/i6" android:layout_marginBottom="@dimen/i6">
+            <TextView android:textSize="@dimen/t" android:textColor="@color/BW_0_Alpha_0_9" android:id="@id/l61" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/aqr" android:includeFontPadding="false" android:layout_alignParentTop="true" />
+            <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+                <TextView android:textSize="@dimen/m3" android:textColor="@color/FG_2" android:id="@id/l60" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/aqq" android:includeFontPadding="false" />
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="6.0dip" android:layout_height="10.0dip" android:layout_marginLeft="@dimen/m7" android:src="@raw/video_channel_arrow" app:iconColor="@color/FG_2" />
+            </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginTop="@dimen/i6" android:layout_marginRight="@dimen/i6" android:layout_marginBottom="@dimen/i6" android:layout_toRightOf="@id/kp_" android:layout_alignParentRight="true">
+            <LinearLayout android:orientation="horizontal" android:id="@id/l57" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

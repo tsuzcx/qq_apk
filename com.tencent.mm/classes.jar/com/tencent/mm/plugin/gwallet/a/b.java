@@ -8,8 +8,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
-import com.android.vending.billing.IInAppBillingService;
-import com.android.vending.billing.IInAppBillingService.a;
+import com.android.vending.a.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
@@ -20,12 +19,12 @@ import org.json.JSONException;
 
 public final class b
 {
-  public IInAppBillingService Drn;
-  private ServiceConnection Dro;
-  boolean Drp = false;
-  public boolean Drq = false;
-  public b Drr;
-  public String Drs;
+  public com.android.vending.a.a JkV;
+  private ServiceConnection JkW;
+  boolean JkX = false;
+  public boolean JkY = false;
+  public b JkZ;
+  public String Jla;
   public Context mContext;
   public int mRequestCode;
   
@@ -34,14 +33,7 @@ public final class b
     this.mContext = paramContext;
   }
   
-  public static void aLj(String paramString)
-  {
-    AppMethodBeat.i(64599);
-    Log.e("MicroMsg.IabHelper", "In-app billing error: ".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(64599);
-  }
-  
-  public static int ai(Bundle paramBundle)
+  public static int aA(Bundle paramBundle)
   {
     AppMethodBeat.i(64598);
     paramBundle = paramBundle.get("RESPONSE_CODE");
@@ -64,11 +56,18 @@ public final class b
       AppMethodBeat.o(64598);
       return i;
     }
-    aLj("Unexpected type for bundle response code.");
-    aLj(paramBundle.getClass().getName());
+    aIa("Unexpected type for bundle response code.");
+    aIa(paramBundle.getClass().getName());
     paramBundle = new RuntimeException("Unexpected type for bundle response code: " + paramBundle.getClass().getName());
     AppMethodBeat.o(64598);
     throw paramBundle;
+  }
+  
+  public static void aIa(String paramString)
+  {
+    AppMethodBeat.i(64599);
+    Log.e("MicroMsg.IabHelper", "In-app billing error: ".concat(String.valueOf(paramString)));
+    AppMethodBeat.o(64599);
   }
   
   public static String getResponseDesc(int paramInt)
@@ -103,50 +102,50 @@ public final class b
   public final void a(final a parama)
   {
     AppMethodBeat.i(64593);
-    if (this.Drp)
+    if (this.JkX)
     {
       parama = new IllegalStateException("IAB helper is already set up.");
       AppMethodBeat.o(64593);
       throw parama;
     }
     Log.d("MicroMsg.IabHelper", "Starting in-app billing setup.");
-    this.Dro = new ServiceConnection()
+    this.JkW = new ServiceConnection()
     {
       public final void onServiceConnected(ComponentName paramAnonymousComponentName, IBinder paramAnonymousIBinder)
       {
         AppMethodBeat.i(64588);
-        b.aLk("Billing service connected.");
-        b.this.Drn = IInAppBillingService.a.f(paramAnonymousIBinder);
+        b.aIb("Billing service connected.");
+        b.this.JkV = a.a.g(paramAnonymousIBinder);
         paramAnonymousComponentName = b.this.mContext.getPackageName();
         try
         {
-          b.aLk("Checking for in-app billing 3 support.");
-          int i = b.this.Drn.b(3, paramAnonymousComponentName, "inapp");
+          b.aIb("Checking for in-app billing 3 support.");
+          int i = b.this.JkV.c(3, paramAnonymousComponentName, "inapp");
           if (i != 0)
           {
             if (parama != null) {
               parama.a(new c(i, "Error checking for billing v3 support."));
             }
-            b.this.Drq = false;
+            b.this.JkY = false;
             AppMethodBeat.o(64588);
             return;
           }
-          b.aLk("In-app billing version 3 supported for ".concat(String.valueOf(paramAnonymousComponentName)));
-          i = b.this.Drn.b(3, paramAnonymousComponentName, "subs");
+          b.aIb("In-app billing version 3 supported for ".concat(String.valueOf(paramAnonymousComponentName)));
+          i = b.this.JkV.c(3, paramAnonymousComponentName, "subs");
           if (i == 0)
           {
-            b.aLk("Subscriptions AVAILABLE.");
-            b.this.Drq = true;
+            b.aIb("Subscriptions AVAILABLE.");
+            b.this.JkY = true;
           }
           for (;;)
           {
-            b.this.Drp = true;
+            b.this.JkX = true;
             if (parama != null) {
               parama.a(new c(0, "Setup successful."));
             }
             AppMethodBeat.o(64588);
             return;
-            b.aLk("Subscriptions NOT AVAILABLE. Response: ".concat(String.valueOf(i)));
+            b.aIb("Subscriptions NOT AVAILABLE. Response: ".concat(String.valueOf(i)));
           }
           return;
         }
@@ -163,8 +162,8 @@ public final class b
       public final void onServiceDisconnected(ComponentName paramAnonymousComponentName)
       {
         AppMethodBeat.i(64587);
-        b.aLk("Billing service disconnected.");
-        b.this.Drn = null;
+        b.aIb("Billing service disconnected.");
+        b.this.JkV = null;
         AppMethodBeat.o(64587);
       }
     };
@@ -172,7 +171,7 @@ public final class b
     localIntent.setPackage("com.android.vending");
     if ((this.mContext != null) && (this.mContext.getPackageManager() != null) && (this.mContext.getPackageManager().queryIntentServices(localIntent, 0) != null) && (!this.mContext.getPackageManager().queryIntentServices(localIntent, 0).isEmpty()))
     {
-      this.mContext.bindService(localIntent, this.Dro, 1);
+      this.mContext.bindService(localIntent, this.JkW, 1);
       AppMethodBeat.o(64593);
       return;
     }
@@ -183,7 +182,7 @@ public final class b
   public final boolean a(ArrayList<String> paramArrayList, c paramc)
   {
     AppMethodBeat.i(64596);
-    aLi("query details");
+    aHZ("query details");
     Intent localIntent = new Intent();
     if ((paramArrayList == null) || (paramArrayList.size() == 0))
     {
@@ -200,8 +199,8 @@ public final class b
       Log.d("MicroMsg.IabHelper", "query detail list with the size is " + paramArrayList.size());
       Object localObject = new Bundle();
       ((Bundle)localObject).putStringArrayList("ITEM_ID_LIST", paramArrayList);
-      paramArrayList = this.Drn.getSkuDetails(3, this.mContext.getPackageName(), "inapp", (Bundle)localObject);
-      int i = ai(paramArrayList);
+      paramArrayList = this.JkV.a(3, this.mContext.getPackageName(), "inapp", (Bundle)localObject);
+      int i = aA(paramArrayList);
       Log.d("MicroMsg.IabHelper", "detail response: " + String.valueOf(i));
       if (i != 0)
       {
@@ -225,7 +224,7 @@ public final class b
     }
     catch (RemoteException paramArrayList)
     {
-      aLj("RemoteException while launching query details ");
+      aIa("RemoteException while launching query details ");
       Log.printErrStackTrace("MicroMsg.IabHelper", paramArrayList, "", new Object[0]);
       paramArrayList = new c(-1001, "Remote exception while starting purchase flow");
       localIntent.putExtra("RESPONSE_CODE", 6);
@@ -237,10 +236,10 @@ public final class b
     return true;
   }
   
-  public final void aLi(String paramString)
+  public final void aHZ(String paramString)
   {
     AppMethodBeat.i(64595);
-    if (!this.Drp)
+    if (!this.JkX)
     {
       Log.e("MicroMsg.IabHelper", "Illegal state for operation (" + paramString + "): IAB helper is not set up.");
       paramString = new IllegalStateException("IAB helper is not set up. Can't perform operation: ".concat(String.valueOf(paramString)));
@@ -254,17 +253,17 @@ public final class b
   {
     AppMethodBeat.i(64594);
     Log.d("MicroMsg.IabHelper", "Disposing.");
-    this.Drp = false;
-    if (this.Dro != null) {
+    this.JkX = false;
+    if (this.JkW != null) {
       Log.d("MicroMsg.IabHelper", "Unbinding from service.");
     }
     try
     {
       if (this.mContext != null) {
-        this.mContext.unbindService(this.Dro);
+        this.mContext.unbindService(this.JkW);
       }
-      this.Dro = null;
-      this.Drn = null;
+      this.JkW = null;
+      this.JkV = null;
       AppMethodBeat.o(64594);
       return;
     }
@@ -294,7 +293,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.gwallet.a.b
  * JD-Core Version:    0.7.0.1
  */

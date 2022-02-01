@@ -1,29 +1,20 @@
 package com.tencent.mm.ui;
 
-import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.q.g;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.u.g;
 
 final class HomeUI$14
-  implements q.g
+  implements u.g
 {
   HomeUI$14(HomeUI paramHomeUI) {}
   
-  public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
+  public final void onCreateMMMenu(s params)
   {
-    AppMethodBeat.i(285951);
-    switch (paramMenuItem.getItemId())
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(285951);
-      return;
-      HomeUI.p(this.VWJ);
-      AppMethodBeat.o(285951);
-      return;
-      HomeUI.o(this.VWJ);
-    }
+    AppMethodBeat.i(249444);
+    params.c(1, "拍摄状态");
+    params.c(2, "属性配置");
+    AppMethodBeat.o(249444);
   }
 }
 

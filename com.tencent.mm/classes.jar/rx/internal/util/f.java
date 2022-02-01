@@ -9,28 +9,28 @@ import rx.j;
 public final class f
   implements j
 {
-  static int DdH;
-  private static final c<Object> abQI;
-  public static final int abQJ;
-  public static final d<Queue<Object>> abQK;
-  public static final d<Queue<Object>> abQL;
+  static int IXY;
+  private static final c<Object> akdA;
+  public static final int akdB;
+  public static final d<Queue<Object>> akdC;
+  public static final d<Queue<Object>> akdD;
   
   static
   {
     AppMethodBeat.i(90197);
-    abQI = c.iVP();
-    DdH = 128;
+    akdA = c.kKn();
+    IXY = 128;
     if (e.isAndroid()) {
-      DdH = 16;
+      IXY = 16;
     }
     String str = System.getProperty("rx.ring-buffer.size");
     if (str != null) {}
     try
     {
-      DdH = Integer.parseInt(str);
-      abQJ = DdH;
-      abQK = new d() {};
-      abQL = new d() {};
+      IXY = Integer.parseInt(str);
+      akdB = IXY;
+      akdC = new d() {};
+      akdD = new d() {};
       AppMethodBeat.o(90197);
       return;
     }
@@ -43,21 +43,21 @@ public final class f
     }
   }
   
-  public final void iVJ()
+  public final void kKh()
   {
     AppMethodBeat.i(90196);
     AppMethodBeat.o(90196);
     throw null;
   }
   
-  public final boolean iVK()
+  public final boolean kKi()
   {
     throw null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     rx.internal.util.f
  * JD-Core Version:    0.7.0.1
  */

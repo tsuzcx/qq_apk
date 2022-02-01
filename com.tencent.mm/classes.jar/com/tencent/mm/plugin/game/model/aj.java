@@ -1,18 +1,16 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.t;
-import com.tencent.mm.ay.a.a;
-import com.tencent.mm.kernel.h;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.modelimage.loader.a;
+import com.tencent.mm.modelimage.loader.b.d;
+import com.tencent.mm.modelimage.r;
 import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.game.api.f;
-import com.tencent.mm.plugin.game.protobuf.ax;
-import com.tencent.mm.plugin.game.protobuf.bq;
+import com.tencent.mm.plugin.game.protobuf.ay;
 import com.tencent.mm.plugin.game.protobuf.br;
+import com.tencent.mm.plugin.game.protobuf.bs;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -22,24 +20,24 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class aj
-  extends com.tencent.mm.an.q
+  extends p
   implements m
 {
-  public static final String CLO;
-  public static i jxB;
-  private i callback;
-  private final com.tencent.mm.an.d jTk;
+  public static final String IFV;
+  public static com.tencent.mm.am.h maV;
+  private com.tencent.mm.am.h callback;
+  private final com.tencent.mm.am.c mtC;
   
   static
   {
     AppMethodBeat.i(41591);
-    CLO = com.tencent.mm.plugin.game.commlib.e.c.c(com.tencent.mm.plugin.game.commlib.e.c.a.Czy) + "tabnav/";
-    jxB = new i()
+    IFV = com.tencent.mm.plugin.game.commlib.e.c.c(com.tencent.mm.plugin.game.commlib.e.c.a.Ito) + "tabnav/";
+    maV = new com.tencent.mm.am.h()
     {
-      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.an.q paramAnonymousq)
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
       {
         AppMethodBeat.i(41581);
-        h.aGY().b(2641, this);
+        com.tencent.mm.kernel.h.aZW().b(2641, this);
         if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
         {
           Log.i("MicroMsg.NetSceneGameIndex4TabNav", "update gameIndexTabNav data success");
@@ -48,7 +46,7 @@ public final class aj
             public final void run()
             {
               AppMethodBeat.i(41580);
-              aj.a(this.CLP);
+              aj.a(this.IFW);
               AppMethodBeat.o(41580);
             }
           });
@@ -65,40 +63,40 @@ public final class aj
   public aj()
   {
     AppMethodBeat.i(41584);
-    d.a locala = new d.a();
-    locala.lBU = new bq();
-    locala.lBV = new br();
+    com.tencent.mm.am.c.a locala = new com.tencent.mm.am.c.a();
+    locala.otE = new br();
+    locala.otF = new bs();
     locala.uri = "/cgi-bin/mmgame-bin/getgameindex4tabnav";
     locala.funcId = getType();
-    locala.lBW = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.jTk = locala.bgN();
+    this.mtC = locala.bEF();
     AppMethodBeat.o(41584);
   }
   
-  public static void a(br parambr)
+  public static void a(bs parambs)
   {
     AppMethodBeat.i(41588);
-    if (parambr == null)
+    if (parambs == null)
     {
       AppMethodBeat.o(41588);
       return;
     }
-    if (Util.isNullOrNil(parambr.COK))
+    if (Util.isNullOrNil(parambs.IIU))
     {
       Log.i("MicroMsg.NetSceneGameIndex4TabNav", "nav list is null");
       AppMethodBeat.o(41588);
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = parambr.COK.iterator();
+    Iterator localIterator = parambs.IIU.iterator();
     while (localIterator.hasNext())
     {
-      ax localax = (ax)localIterator.next();
-      if (localax != null)
+      ay localay = (ay)localIterator.next();
+      if (localay != null)
       {
-        localArrayList.add(localax.COW);
-        localArrayList.add(localax.COX);
+        localArrayList.add(localay.IJg);
+        localArrayList.add(localay.IJh);
       }
     }
     a(localArrayList, new a()
@@ -107,7 +105,7 @@ public final class aj
       {
         AppMethodBeat.i(41582);
         Log.i("MicroMsg.NetSceneGameIndex4TabNav", "nav icon download complete! save nav data");
-        ((f)h.ae(f.class)).evp().b("game_index4_tab_nav", this.CLP);
+        ((f)com.tencent.mm.kernel.h.ax(f.class)).fCi().b("game_index4_tab_nav", aj.this);
         AppMethodBeat.o(41582);
       }
     });
@@ -134,49 +132,49 @@ public final class aj
       }
       Log.e("MicroMsg.NetSceneGameIndex4TabNav", "iconUrl is null");
     }
-    Object localObject = CLO + com.tencent.mm.b.g.getMessageDigest(str.getBytes());
-    com.tencent.mm.ay.a.a.c.a locala = new com.tencent.mm.ay.a.a.c.a();
-    locala.lRD = true;
+    Object localObject = IFV + com.tencent.mm.b.g.getMessageDigest(str.getBytes());
+    com.tencent.mm.modelimage.loader.a.c.a locala = new com.tencent.mm.modelimage.loader.a.c.a();
+    locala.oKp = true;
     locala.fullPath = ((String)localObject);
-    localObject = locala.bmL();
-    com.tencent.mm.ay.q.bml().a(str, (com.tencent.mm.ay.a.a.c)localObject, new com.tencent.mm.ay.a.c.d()
+    localObject = locala.bKx();
+    r.bKe().a(str, (com.tencent.mm.modelimage.loader.a.c)localObject, new d()
     {
-      public final void a(boolean paramAnonymousBoolean, Object... paramAnonymousVarArgs)
+      public final void onImageDownload(boolean paramAnonymousBoolean, Object... paramAnonymousVarArgs)
       {
-        AppMethodBeat.i(193887);
-        Log.i("MicroMsg.NetSceneGameIndex4TabNav", "nav icon download %b! thumburl:%s", new Object[] { Boolean.valueOf(paramAnonymousBoolean), this.uDR });
+        AppMethodBeat.i(275408);
+        Log.i("MicroMsg.NetSceneGameIndex4TabNav", "nav icon download %b! thumburl:%s", new Object[] { Boolean.valueOf(paramAnonymousBoolean), aj.this });
         aj.b(paramList, parama);
-        AppMethodBeat.o(193887);
+        AppMethodBeat.o(275408);
       }
     });
     AppMethodBeat.o(41589);
   }
   
-  public static void updateData()
+  public static void dCn()
   {
     AppMethodBeat.i(41587);
     Log.i("MicroMsg.NetSceneGameIndex4TabNav", "update gameIndexTabNav data");
-    h.aGY().a(2641, jxB);
+    com.tencent.mm.kernel.h.aZW().a(2641, maV);
     aj localaj = new aj();
-    h.aGY().a(localaj, 0);
+    com.tencent.mm.kernel.h.aZW().a(localaj, 0);
     AppMethodBeat.o(41587);
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(com.tencent.mm.network.g paramg, com.tencent.mm.am.h paramh)
   {
     AppMethodBeat.i(41586);
-    this.callback = parami;
-    int i = dispatch(paramg, this.jTk, this);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.mtC, this);
     AppMethodBeat.o(41586);
     return i;
   }
   
-  public final br ezf()
+  public final bs fHb()
   {
-    AppMethodBeat.i(191975);
-    br localbr = (br)d.c.b(this.jTk.lBS);
-    AppMethodBeat.o(191975);
-    return localbr;
+    AppMethodBeat.i(275402);
+    bs localbs = (bs)c.c.b(this.mtC.otC);
+    AppMethodBeat.o(275402);
+    return localbs;
   }
   
   public final int getType()
@@ -184,7 +182,7 @@ public final class aj
     return 2641;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(41585);
     Log.i("MicroMsg.NetSceneGameIndex4TabNav", "errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString);
@@ -199,7 +197,7 @@ public final class aj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.aj
  * JD-Core Version:    0.7.0.1
  */

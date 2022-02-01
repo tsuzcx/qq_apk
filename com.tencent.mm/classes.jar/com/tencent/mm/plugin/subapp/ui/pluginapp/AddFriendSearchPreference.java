@@ -10,18 +10,20 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class AddFriendSearchPreference
   extends Preference
 {
-  private String MgP;
-  String MgQ;
-  private View.OnClickListener MgR;
-  View.OnClickListener MgS;
-  private View MgT;
+  private String SIm;
+  String SIn;
+  private View.OnClickListener SIo;
+  View.OnClickListener SIp;
+  private View SIq;
   private Context context;
-  private TextView nfC;
+  private TextView qcL;
   
   public AddFriendSearchPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,14 +34,14 @@ public class AddFriendSearchPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(29186);
-    this.MgP = "";
-    this.MgQ = "";
-    this.MgR = null;
-    this.MgS = null;
-    this.nfC = null;
-    this.MgT = null;
+    this.SIm = "";
+    this.SIn = "";
+    this.SIo = null;
+    this.SIp = null;
+    this.qcL = null;
+    this.SIq = null;
     this.context = paramContext;
-    setLayoutResource(R.i.eiN);
+    setLayoutResource(R.i.glM);
     AppMethodBeat.o(29186);
   }
   
@@ -54,30 +56,32 @@ public class AddFriendSearchPreference
         return true;
       }
     });
-    this.nfC = ((TextView)paramView.findViewById(R.h.dTN));
-    this.nfC.setText(this.MgQ);
-    this.MgT = paramView.findViewById(R.h.search_ll);
-    if (this.MgS != null) {
-      this.MgT.setOnTouchListener(new View.OnTouchListener()
+    this.qcL = ((TextView)paramView.findViewById(R.h.fVV));
+    this.qcL.setText(this.SIn);
+    this.qcL.setContentDescription(this.SIn);
+    this.SIq = paramView.findViewById(R.h.search_ll);
+    if (this.SIp != null) {
+      this.SIq.setOnClickListener(new View.OnClickListener()
       {
-        public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+        public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(29185);
-          if (paramAnonymousMotionEvent.getAction() == 1) {
-            AddFriendSearchPreference.a(AddFriendSearchPreference.this).onClick(paramAnonymousView);
-          }
-          AppMethodBeat.o(29185);
-          return true;
+          AppMethodBeat.i(292051);
+          b localb = new b();
+          localb.cH(paramAnonymousView);
+          a.c("com/tencent/mm/plugin/subapp/ui/pluginapp/AddFriendSearchPreference$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          AddFriendSearchPreference.a(AddFriendSearchPreference.this).onClick(paramAnonymousView);
+          a.a(this, "com/tencent/mm/plugin/subapp/ui/pluginapp/AddFriendSearchPreference$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(292051);
         }
       });
     }
-    auO(8);
+    aBq(8);
     AppMethodBeat.o(29187);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.pluginapp.AddFriendSearchPreference
  * JD-Core Version:    0.7.0.1
  */

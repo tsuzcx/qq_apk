@@ -8,7 +8,6 @@ import android.graphics.SurfaceTexture;
 import android.graphics.SurfaceTexture.OnFrameAvailableListener;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView.Renderer;
-import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
@@ -22,6 +21,7 @@ import com.tencent.liteav.basic.opengl.m;
 import com.tencent.liteav.basic.opengl.n;
 import com.tencent.liteav.basic.opengl.o;
 import com.tencent.liteav.basic.opengl.p;
+import com.tencent.liteav.basic.util.TXCBuild;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
@@ -299,7 +299,7 @@ public class TXCGLSurfaceView
     {
       if (this.g != null)
       {
-        if (Build.VERSION.SDK_INT >= 21)
+        if (TXCBuild.VersionInt() >= 21)
         {
           if (this.w == null)
           {
@@ -649,7 +649,7 @@ public class TXCGLSurfaceView
   {
     AppMethodBeat.i(16770);
     super.onDetachedFromWindow();
-    if ((Build.VERSION.SDK_INT >= 21) && (this.w != null))
+    if ((TXCBuild.VersionInt() >= 21) && (this.w != null))
     {
       this.w.getLooper().quitSafely();
       this.w = null;
@@ -877,7 +877,7 @@ public class TXCGLSurfaceView
     //   402: aload_0
     //   403: monitorenter
     //   404: aload_0
-    //   405: getfield 270	com/tencent/liteav/renderer/TXCGLSurfaceView:c	Z
+    //   405: getfield 271	com/tencent/liteav/renderer/TXCGLSurfaceView:c	Z
     //   408: ifne +177 -> 585
     //   411: iconst_1
     //   412: istore_2
@@ -893,7 +893,7 @@ public class TXCGLSurfaceView
     //   428: if_icmpeq +108 -> 536
     //   431: invokestatic 391	java/lang/System:currentTimeMillis	()J
     //   434: aload_0
-    //   435: getfield 263	com/tencent/liteav/renderer/TXCGLSurfaceView:G	J
+    //   435: getfield 264	com/tencent/liteav/renderer/TXCGLSurfaceView:G	J
     //   438: lsub
     //   439: ldc2_w 414
     //   442: lcmp
@@ -906,7 +906,7 @@ public class TXCGLSurfaceView
     //   459: invokestatic 429	com/tencent/liteav/basic/log/TXCLog:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   462: aload_0
     //   463: invokestatic 391	java/lang/System:currentTimeMillis	()J
-    //   466: putfield 263	com/tencent/liteav/renderer/TXCGLSurfaceView:G	J
+    //   466: putfield 264	com/tencent/liteav/renderer/TXCGLSurfaceView:G	J
     //   469: new 431	android/os/Bundle
     //   472: dup
     //   473: invokespecial 432	android/os/Bundle:<init>	()V
@@ -1070,9 +1070,9 @@ public class TXCGLSurfaceView
   
   public void setNotifyListener(b paramb)
   {
-    AppMethodBeat.i(220106);
+    AppMethodBeat.i(229695);
     this.a = new WeakReference(paramb);
-    AppMethodBeat.o(220106);
+    AppMethodBeat.o(229695);
   }
   
   public void setRendMirror(final int paramInt)
@@ -1151,7 +1151,7 @@ public class TXCGLSurfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.renderer.TXCGLSurfaceView
  * JD-Core Version:    0.7.0.1
  */

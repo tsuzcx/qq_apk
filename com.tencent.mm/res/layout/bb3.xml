@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <androidx.recyclerview.widget.RecyclerView android:id="@id/fhi" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="never" />
-    <TextView android:textSize="@dimen/l" android:textColor="@color/aaz" android:id="@id/fhh" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="120.0dip" android:text="@string/f1x" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+<LinearLayout android:gravity="top" android:orientation="horizontal" android:background="@color/a3s" android:paddingLeft="@dimen/aji" android:paddingTop="@dimen/ajj" android:paddingRight="@dimen/aji" android:paddingBottom="@dimen/ajj" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/a3u" android:id="@id/gmc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/ajk" android:includeFontPadding="false" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/a3t" android:gravity="right" android:id="@id/gmb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:includeFontPadding="false" />
+</LinearLayout>

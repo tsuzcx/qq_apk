@@ -10,9 +10,9 @@ final class g$b<T>
   
   g$b()
   {
-    AppMethodBeat.i(229083);
+    AppMethodBeat.i(193923);
     this.mPool = new Object[256];
-    AppMethodBeat.o(229083);
+    AppMethodBeat.o(193923);
   }
   
   public final T acquire()
@@ -28,7 +28,7 @@ final class g$b<T>
     return null;
   }
   
-  public final void b(T[] paramArrayOfT, int paramInt)
+  public final void i(T[] paramArrayOfT, int paramInt)
   {
     int i = paramInt;
     if (paramInt > paramArrayOfT.length) {
@@ -60,7 +60,7 @@ final class g$b<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     androidx.constraintlayout.a.g.b
  * JD-Core Version:    0.7.0.1
  */

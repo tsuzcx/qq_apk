@@ -1,223 +1,189 @@
 package com.tencent.mm.plugin.finder.live.widget;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.text.SpannableString;
-import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.live.report.s.av;
-import com.tencent.mm.plugin.finder.live.viewmodel.i.e;
+import com.tencent.mm.plugin.finder.live.p.e;
+import com.tencent.mm.plugin.finder.live.p.h;
+import com.tencent.mm.plugin.finder.live.viewmodel.k.f;
+import com.tencent.mm.plugin.finder.utils.t;
 import com.tencent.mm.ui.MMActivity;
-import java.util.Arrays;
-import kotlin.g.b.af;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.n.n;
+import java.util.HashSet;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/widget/FinderLivePostLicenseWidget;", "", "activity", "Lcom/tencent/mm/ui/MMActivity;", "licenseContainer", "Landroid/view/ViewGroup;", "callback", "Lcom/tencent/mm/plugin/finder/live/viewmodel/FinderLivePostUIC$WidgetStatusCallback;", "(Lcom/tencent/mm/ui/MMActivity;Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/finder/live/viewmodel/FinderLivePostUIC$WidgetStatusCallback;)V", "getActivity", "()Lcom/tencent/mm/ui/MMActivity;", "getCallback", "()Lcom/tencent/mm/plugin/finder/live/viewmodel/FinderLivePostUIC$WidgetStatusCallback;", "checkBox", "Landroid/widget/CheckBox;", "getCheckBox", "()Landroid/widget/CheckBox;", "setCheckBox", "(Landroid/widget/CheckBox;)V", "container", "Landroid/view/View;", "getContainer", "()Landroid/view/View;", "setContainer", "(Landroid/view/View;)V", "lastAction", "", "getLicenseContainer", "()Landroid/view/ViewGroup;", "licenseState", "getLicenseState", "()I", "setLicenseState", "(I)V", "licenseTxt", "Landroid/widget/TextView;", "getLicenseTxt", "()Landroid/widget/TextView;", "setLicenseTxt", "(Landroid/widget/TextView;)V", "checkLicenseState", "", "isReady", "", "reportOnClick", "saveLicenseState", "setLicenseText", "tv", "shakeIt", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveGamePostLicenseWidget;", "", "activity", "Lcom/tencent/mm/ui/MMActivity;", "licenseContainer", "Landroid/view/ViewGroup;", "forceShow", "", "callback", "Lcom/tencent/mm/plugin/finder/live/viewmodel/FinderLivePostUIC$WidgetStatusCallback;", "(Lcom/tencent/mm/ui/MMActivity;Landroid/view/ViewGroup;ZLcom/tencent/mm/plugin/finder/live/viewmodel/FinderLivePostUIC$WidgetStatusCallback;)V", "getActivity", "()Lcom/tencent/mm/ui/MMActivity;", "appId", "", "getCallback", "()Lcom/tencent/mm/plugin/finder/live/viewmodel/FinderLivePostUIC$WidgetStatusCallback;", "checkBox", "Landroid/widget/CheckBox;", "getCheckBox", "()Landroid/widget/CheckBox;", "setCheckBox", "(Landroid/widget/CheckBox;)V", "container", "Landroid/view/View;", "getContainer", "()Landroid/view/View;", "setContainer", "(Landroid/view/View;)V", "getForceShow", "()Z", "isMiniGame", "getLicenseContainer", "()Landroid/view/ViewGroup;", "licenseState", "", "getLicenseState", "()I", "setLicenseState", "(I)V", "licenseTxt", "Landroid/widget/TextView;", "getLicenseTxt", "()Landroid/widget/TextView;", "setLicenseTxt", "(Landroid/widget/TextView;)V", "checkLicenseState", "", "isReady", "refreshGameMode", "saveLicenseState", "setLicenseText", "tv", "Companion", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ag
 {
-  final MMActivity activity;
+  public static final ag.a EqH;
+  private static final HashSet<String> EqK;
+  public int Dma;
+  private final k.f Elx;
+  private final ViewGroup EqD;
+  private boolean EqF;
+  private final boolean EqI;
+  private TextView EqJ;
+  private final MMActivity activity;
+  private String appId;
   public CheckBox checkBox;
-  public View fyN;
-  public int yzc;
-  final i.e zlm;
-  private final ViewGroup znZ;
-  private TextView zoc;
-  private int zqm;
+  public View hDw;
   
-  public ag(MMActivity paramMMActivity, ViewGroup paramViewGroup, i.e parame)
+  static
   {
-    AppMethodBeat.i(276087);
+    AppMethodBeat.i(361665);
+    EqH = new ag.a((byte)0);
+    EqK = new HashSet();
+    AppMethodBeat.o(361665);
+  }
+  
+  public ag(MMActivity paramMMActivity, ViewGroup paramViewGroup, boolean paramBoolean, k.f paramf)
+  {
+    AppMethodBeat.i(361627);
     this.activity = paramMMActivity;
-    this.znZ = paramViewGroup;
-    this.zlm = parame;
-    paramMMActivity = com.tencent.c.a.a.a.a.a.Zlt;
-    this.yzc = com.tencent.c.a.a.a.a.a.imH();
-    this.fyN = ((View)this.znZ);
-    this.fyN.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.EqD = paramViewGroup;
+    this.EqI = paramBoolean;
+    this.Elx = paramf;
+    paramMMActivity = com.tencent.d.a.a.a.a.a.ahiX;
+    this.Dma = com.tencent.d.a.a.a.a.a.jTK();
+    this.appId = "";
+    this.hDw = ((View)this.EqD);
+    this.hDw.setOnClickListener(new ag..ExternalSyntheticLambda0(this));
+    paramMMActivity = this.hDw.findViewById(p.e.BZn);
+    s.s(paramMMActivity, "container.findViewById(R.id.post_license_checkbox)");
+    paramMMActivity = (CheckBox)paramMMActivity;
+    s.u(paramMMActivity, "<set-?>");
+    this.checkBox = paramMMActivity;
+    getCheckBox().setOnCheckedChangeListener(new ag..ExternalSyntheticLambda1(this));
+    paramMMActivity = this.hDw.findViewById(p.e.BZp);
+    s.s(paramMMActivity, "container.findViewById(R.id.post_license_tv)");
+    this.EqJ = ((TextView)paramMMActivity);
+    setLicenseText(this.EqJ);
+    AppMethodBeat.o(361627);
+  }
+  
+  private static final void a(ag paramag, View paramView)
+  {
+    int i = 1;
+    AppMethodBeat.i(361651);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramag);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/widget/FinderLiveGamePostLicenseWidget", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramag, "this$0");
+    paramView = paramag.getCheckBox();
+    boolean bool;
+    if (!paramag.getCheckBox().isChecked())
     {
-      public final void onClick(View paramAnonymousView)
-      {
-        int i = 1;
-        AppMethodBeat.i(279969);
-        b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/widget/FinderLivePostLicenseWidget$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        paramAnonymousView = this.zqn.getCheckBox();
-        boolean bool;
-        if (!this.zqn.getCheckBox().isChecked())
-        {
-          bool = true;
-          paramAnonymousView.setChecked(bool);
-          paramAnonymousView = this.zqn;
-          if (!this.zqn.getCheckBox().isChecked()) {
-            break label132;
-          }
-        }
-        for (;;)
-        {
-          paramAnonymousView.yzc = i;
-          this.zqn.zlm.onChange();
-          ag.a(this.zqn);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/widget/FinderLivePostLicenseWidget$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(279969);
-          return;
-          bool = false;
-          break;
-          label132:
-          i = 0;
-        }
+      bool = true;
+      paramView.setChecked(bool);
+      if (!paramag.getCheckBox().isChecked()) {
+        break label136;
       }
-    });
-    paramMMActivity = this.fyN.findViewById(b.f.post_license_checkbox);
-    p.j(paramMMActivity, "container.findViewById(R.id.post_license_checkbox)");
-    this.checkBox = ((CheckBox)paramMMActivity);
-    paramMMActivity = this.checkBox;
-    if (paramMMActivity == null) {
-      p.bGy("checkBox");
     }
-    paramMMActivity.setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener)new CompoundButton.OnCheckedChangeListener()
+    for (;;)
     {
-      public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
-      {
-        AppMethodBeat.i(283258);
-        paramAnonymousCompoundButton = this.zqn;
-        if (this.zqn.getCheckBox().isChecked()) {}
-        for (int i = 1;; i = 0)
-        {
-          paramAnonymousCompoundButton.yzc = i;
-          this.zqn.zlm.onChange();
-          ag.a(this.zqn);
-          AppMethodBeat.o(283258);
-          return;
-        }
-      }
-    });
-    paramMMActivity = this.fyN.findViewById(b.f.post_license_tv);
-    p.j(paramMMActivity, "container.findViewById(R.id.post_license_tv)");
-    this.zoc = ((TextView)paramMMActivity);
-    paramMMActivity = this.zoc;
-    paramViewGroup = paramMMActivity.getContext();
-    p.j(paramViewGroup, "tv.context");
-    paramViewGroup = paramViewGroup.getResources().getString(b.j.finder_live_anchor_iterms);
-    p.j(paramViewGroup, "tv.context.resources.get…inder_live_anchor_iterms)");
-    parame = paramMMActivity.getContext();
-    p.j(parame, "tv.context");
-    parame = parame.getResources().getString(b.j.finder_live_anchor_standard);
-    p.j(parame, "tv.context.resources.get…der_live_anchor_standard)");
-    Object localObject = af.aaBG;
-    localObject = paramMMActivity.getContext();
-    p.j(localObject, "tv.context");
-    localObject = ((Context)localObject).getResources().getString(b.j.finder_live_agree_new);
-    p.j(localObject, "tv.context.resources.get…ng.finder_live_agree_new)");
-    localObject = String.format((String)localObject, Arrays.copyOf(new Object[] { paramViewGroup, parame }, 2));
-    p.j(localObject, "java.lang.String.format(format, *args)");
-    int i = n.a((CharSequence)localObject, paramViewGroup, 0, false, 6);
-    int j = paramViewGroup.length();
-    int k = n.a((CharSequence)localObject, parame, 0, false, 6);
-    int m = parame.length();
-    paramViewGroup = new SpannableString((CharSequence)localObject);
-    parame = new a(this);
-    localObject = new b(this);
-    paramViewGroup.setSpan(parame, i, i + j, 33);
-    paramViewGroup.setSpan(localObject, k, k + m, 33);
-    parame = paramMMActivity.getContext();
-    p.j(parame, "tv.context");
-    paramMMActivity.setHighlightColor(parame.getResources().getColor(17170445));
-    paramMMActivity.setMovementMethod(LinkMovementMethod.getInstance());
-    paramMMActivity.setText((CharSequence)paramViewGroup);
-    this.zqm = s.av.yKf.action;
-    AppMethodBeat.o(276087);
+      paramag.Dma = i;
+      paramag.Elx.onChange();
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/live/widget/FinderLiveGamePostLicenseWidget", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(361651);
+      return;
+      bool = false;
+      break;
+      label136:
+      i = 0;
+    }
   }
   
-  public final void dIm()
+  private static final void a(ag paramag, CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    AppMethodBeat.i(276086);
-    com.tencent.c.a.a.a.a.a locala = com.tencent.c.a.a.a.a.a.Zlt;
-    com.tencent.c.a.a.a.a.a.aAh(this.yzc);
-    AppMethodBeat.o(276086);
+    AppMethodBeat.i(361661);
+    s.u(paramag, "this$0");
+    if (paramag.getCheckBox().isChecked()) {}
+    for (int i = 1;; i = 0)
+    {
+      paramag.Dma = i;
+      paramag.Elx.onChange();
+      AppMethodBeat.o(361661);
+      return;
+    }
   }
   
-  public final CheckBox getCheckBox()
+  private CheckBox getCheckBox()
   {
-    AppMethodBeat.i(276085);
+    AppMethodBeat.i(361640);
     CheckBox localCheckBox = this.checkBox;
-    if (localCheckBox == null) {
-      p.bGy("checkBox");
+    if (localCheckBox != null)
+    {
+      AppMethodBeat.o(361640);
+      return localCheckBox;
     }
-    AppMethodBeat.o(276085);
-    return localCheckBox;
+    s.bIx("checkBox");
+    AppMethodBeat.o(361640);
+    return null;
+  }
+  
+  private final void setLicenseText(TextView paramTextView)
+  {
+    AppMethodBeat.i(361645);
+    Object localObject = t.GgN;
+    localObject = t.d((Context)this.activity, p.h.Ckw, this.EqF);
+    paramTextView.setMovementMethod(LinkMovementMethod.getInstance());
+    paramTextView.setText((CharSequence)localObject);
+    AppMethodBeat.o(361645);
+  }
+  
+  public final void bF(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(361702);
+    s.u(paramString, "appId");
+    this.appId = paramString;
+    if (this.EqF != paramBoolean)
+    {
+      this.EqF = paramBoolean;
+      setLicenseText(this.EqJ);
+    }
+    AppMethodBeat.o(361702);
+  }
+  
+  public final void eAQ()
+  {
+    AppMethodBeat.i(361683);
+    if (this.EqI) {
+      this.Dma = 0;
+    }
+    if (this.Dma == 1)
+    {
+      this.hDw.setVisibility(0);
+      getCheckBox().setChecked(true);
+      this.Elx.onChange();
+      AppMethodBeat.o(361683);
+      return;
+    }
+    this.hDw.setVisibility(0);
+    AppMethodBeat.o(361683);
+  }
+  
+  public final void eAR()
+  {
+    AppMethodBeat.i(361694);
+    com.tencent.d.a.a.a.a.a locala = com.tencent.d.a.a.a.a.a.ahiX;
+    com.tencent.d.a.a.a.a.a.aGU(this.Dma);
+    if ((this.EqF) && (isReady())) {
+      EqK.add(this.appId);
+    }
+    AppMethodBeat.o(361694);
   }
   
   public final boolean isReady()
   {
-    return this.yzc == 1;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/widget/FinderLivePostLicenseWidget$setLicenseText$firstClickSpan$1", "Landroid/text/style/ClickableSpan;", "onClick", "", "widget", "Landroid/view/View;", "updateDrawState", "ds", "Landroid/text/TextPaint;", "plugin-finder_release"})
-  public static final class a
-    extends ClickableSpan
-  {
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(290047);
-      p.k(paramView, "widget");
-      paramView = new Intent();
-      paramView.putExtra("rawUrl", "https://weixin.qq.com/cgi-bin/readtemplate?t=finder_live_privacy");
-      c.b((Context)this.zqn.activity, "webview", ".ui.tools.WebViewUI", paramView);
-      AppMethodBeat.o(290047);
-    }
-    
-    public final void updateDrawState(TextPaint paramTextPaint)
-    {
-      AppMethodBeat.i(290048);
-      p.k(paramTextPaint, "ds");
-      paramTextPaint.setColor(Color.parseColor("#7D90A9"));
-      paramTextPaint.setUnderlineText(false);
-      paramTextPaint.clearShadowLayer();
-      AppMethodBeat.o(290048);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/widget/FinderLivePostLicenseWidget$setLicenseText$secondClickSpan$1", "Landroid/text/style/ClickableSpan;", "onClick", "", "widget", "Landroid/view/View;", "updateDrawState", "ds", "Landroid/text/TextPaint;", "plugin-finder_release"})
-  public static final class b
-    extends ClickableSpan
-  {
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(282967);
-      p.k(paramView, "widget");
-      paramView = new Intent();
-      paramView.putExtra("rawUrl", "https://weixin.qq.com/cgi-bin/readtemplate?t=finder_live_up_privacy");
-      c.b((Context)this.zqn.activity, "webview", ".ui.tools.WebViewUI", paramView);
-      AppMethodBeat.o(282967);
-    }
-    
-    public final void updateDrawState(TextPaint paramTextPaint)
-    {
-      AppMethodBeat.i(282968);
-      p.k(paramTextPaint, "ds");
-      paramTextPaint.setColor(Color.parseColor("#7D90A9"));
-      paramTextPaint.setUnderlineText(false);
-      paramTextPaint.clearShadowLayer();
-      AppMethodBeat.o(282968);
-    }
+    return this.Dma == 1;
   }
 }
 

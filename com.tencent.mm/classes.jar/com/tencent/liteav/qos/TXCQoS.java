@@ -59,7 +59,7 @@ public class TXCQoS
     localHashMap.put(Integer.valueOf(18), c.t);
     localHashMap.put(Integer.valueOf(19), c.u);
     RESOLUTION_MAP = Collections.unmodifiableMap(localHashMap);
-    h.f();
+    h.d();
     AppMethodBeat.o(16221);
   }
   
@@ -148,10 +148,10 @@ public class TXCQoS
   
   public static c getProperResolutionByVideoBitrate(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(248512);
+    AppMethodBeat.i(229477);
     paramInt1 = nativeGetProperResolutionByVideoBitrate(paramBoolean, paramInt1, paramInt2);
     c localc = (c)RESOLUTION_MAP.get(Integer.valueOf(paramInt1));
-    AppMethodBeat.o(248512);
+    AppMethodBeat.o(229477);
     return localc;
   }
   
@@ -251,7 +251,7 @@ public class TXCQoS
   
   public void setDefaultVideoResolution(c paramc)
   {
-    AppMethodBeat.i(248505);
+    AppMethodBeat.i(229623);
     TXCLog.i("TXCQos", "DefaultVideoResolution is ".concat(String.valueOf(paramc)));
     this.mWidth = 0;
     this.mHeight = 0;
@@ -270,7 +270,7 @@ public class TXCQoS
     {
       break;
       nativeSetVideoDefaultResolution(this.mInstance, i);
-      AppMethodBeat.o(248505);
+      AppMethodBeat.o(229623);
       return;
     }
   }
@@ -330,7 +330,7 @@ public class TXCQoS
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.qos.TXCQoS
  * JD-Core Version:    0.7.0.1
  */

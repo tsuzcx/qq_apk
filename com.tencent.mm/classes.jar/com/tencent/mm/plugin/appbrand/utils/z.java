@@ -1,298 +1,274 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
-import android.util.Base64;
+import android.text.TextUtils;
+import android.webkit.ValueCallback;
+import com.eclipsesource.mmv8.ScriptPartObject;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.d;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.l;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
-import com.tencent.mm.plugin.appbrand.m.i;
-import com.tencent.mm.plugin.appbrand.m.k;
+import com.tencent.mm.appbrand.v8.m.b;
+import com.tencent.mm.appbrand.v8.m.c;
+import com.tencent.mm.plugin.appbrand.n.i;
+import com.tencent.mm.plugin.appbrand.n.v;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.LinkedList;
+import java.util.Locale;
+import junit.framework.Assert;
 
 public final class z
 {
-  public static final z.b a(i parami, o paramo, JSONObject paramJSONObject, a parama)
+  private static final LinkedList<String> uqW;
+  
+  static
   {
-    AppMethodBeat.i(207844);
-    if ((parami == null) || (paramJSONObject == null))
-    {
-      boolean bool1;
-      if (parami == null)
-      {
-        bool1 = true;
-        if (paramJSONObject != null) {
-          break label71;
-        }
-      }
-      label71:
-      for (boolean bool2 = true;; bool2 = false)
-      {
-        Log.e("MicroMsg.NativeBufferUtil", "processNativeBufferToJs fail, invalid argument, jsruntime is null:[%b], data is null:[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-        parami = z.b.rjc;
-        AppMethodBeat.o(207844);
-        return parami;
-        bool1 = false;
-        break;
-      }
-    }
-    a locala = parama;
-    if (parama == null) {
-      locala = new a();
-    }
-    JSONArray localJSONArray = paramJSONObject.optJSONArray(locala.riY);
-    if (localJSONArray == null)
-    {
-      parami = z.b.rjc;
-      AppMethodBeat.o(207844);
-      return parami;
-    }
-    paramJSONObject.remove(locala.riY);
-    int k = localJSONArray.length();
-    int i = 0;
-    int j = 0;
-    for (;;)
-    {
-      if (j < k)
-      {
-        parama = localJSONArray.optJSONObject(j);
-        if (parama != null)
-        {
-          String str = parama.optString(locala.riZ);
-          if (!Util.isNullOrNil(str))
-          {
-            int m = parama.optInt(locala.rja, -1);
-            if (m == -1) {}
-            try
-            {
-              parama = parama.optString(locala.rjb, "");
-              if (Util.isNullOrNil(parama))
-              {
-                Log.i("MicroMsg.NativeBufferUtil", "processNativeBufferFromJs base64 is null");
-                paramJSONObject.put(str, ByteBuffer.allocate(0));
-              }
-              else
-              {
-                paramJSONObject.put(str, ByteBuffer.wrap(Base64.decode(parama.getBytes(Charset.forName("UTF-8")), 2)));
-              }
-            }
-            catch (JSONException parama)
-            {
-              Log.w("MicroMsg.NativeBufferUtil", "processNativeBufferFromJs JSONException :%s", new Object[] { parama.getMessage() });
-            }
-            parama = (k)parami.Q(k.class);
-            if (parama == null)
-            {
-              Log.w("MicroMsg.NativeBufferUtil", "processNativeBufferFromJs bufferAddon is null, not support");
-              break label465;
-            }
-            if (paramo == null) {}
-            for (parama = parama.P(m, false); parama == null; parama = paramo.a(str, parama, m))
-            {
-              Log.w("MicroMsg.NativeBufferUtil", "processNativeBufferFromJs byteBuffer is null");
-              break label465;
-            }
-            parama.position(0);
-            paramJSONObject.put(str, parama);
-            m = parama.capacity();
-            i = m + i;
-            break label465;
-          }
-        }
-      }
-      else
-      {
-        Log.d("MicroMsg.NativeBufferUtil", "processNativeBufferFromJs bufferSize %d", new Object[] { Integer.valueOf(i) });
-        if (i > locala.nXk)
-        {
-          Log.e("MicroMsg.NativeBufferUtil", "processNativeBufferFromJs fail, size exceed limit, bufferSize = %d, limit = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(locala.nXk) });
-          parami = z.b.rjd;
-          AppMethodBeat.o(207844);
-          return parami;
-        }
-        parami = z.b.rjc;
-        AppMethodBeat.o(207844);
-        return parami;
-      }
-      label465:
-      j += 1;
-    }
+    AppMethodBeat.i(135375);
+    uqW = new LinkedList();
+    AppMethodBeat.o(135375);
   }
   
-  public static final z.b a(i parami, Map paramMap, a parama)
+  public static void a(i parami, String paramString, a parama)
   {
-    boolean bool2 = false;
-    AppMethodBeat.i(140856);
-    boolean bool1;
-    if ((parami == null) || (paramMap == null))
+    AppMethodBeat.i(135372);
+    a(parami, null, paramString, parama);
+    AppMethodBeat.o(135372);
+  }
+  
+  public static void a(i parami, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5, final a parama)
+  {
+    AppMethodBeat.i(135373);
+    Log.i("MicroMsg.JsValidationInjector", "hy: injecting file %s", new Object[] { paramString1 });
+    final long l = System.currentTimeMillis();
+    if (Util.isNullOrNil(paramString4))
     {
-      if (parami == null) {}
-      for (bool1 = true;; bool1 = false)
+      Log.e("MicroMsg.JsValidationInjector", "hy: empty script!");
+      if (parama != null) {
+        parama.eW("isNullOrNil script");
+      }
+      AppMethodBeat.o(135373);
+      return;
+    }
+    paramString4 = paramString4 + String.format("\n;(function(){return %d;})();", new Object[] { Integer.valueOf(11111) });
+    String str = paramString4 + Util.nullAsNil(paramString5);
+    paramString5 = null;
+    paramString4 = paramString5;
+    if (paramString1 != null) {
+      paramString4 = paramString5;
+    }
+    try
+    {
+      if (paramString1.length() > 0) {
+        paramString4 = new URL(paramString1);
+      }
+      paramString5 = (v)parami.Z(v.class);
+      if (paramString5 != null)
       {
-        if (paramMap == null) {
-          bool2 = true;
-        }
-        Log.e("MicroMsg.NativeBufferUtil", "processNativeBufferToJs fail, invalid argument, jsruntime is null:[%b], map is null:[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-        parami = z.b.rjc;
-        AppMethodBeat.o(140856);
-        return parami;
+        paramString5.a(paramString4, paramString2, paramString3, paramInt, str, new m.b()
+        {
+          public final void onResult(String paramAnonymousString, m.c paramAnonymousc)
+          {
+            AppMethodBeat.i(135367);
+            z.a(z.this, parama, paramAnonymousString, l);
+            if ((parama instanceof z.b)) {
+              ((z.b)parama).a(paramAnonymousc);
+            }
+            AppMethodBeat.o(135367);
+          }
+        });
+        AppMethodBeat.o(135373);
+        return;
       }
     }
-    a locala = parama;
-    if (parama == null) {
-      locala = new a();
+    catch (MalformedURLException parami)
+    {
+      Log.e("MicroMsg.JsValidationInjector", "hy: MalformedURLException");
+      parama.eW("MalformedURLException");
+      AppMethodBeat.o(135373);
+      return;
     }
-    parama = (k)parami.Q(k.class);
-    JSONArray localJSONArray = new JSONArray();
-    Iterator localIterator = paramMap.entrySet().iterator();
-    int j = 0;
-    int i = 0;
-    Object localObject1;
-    Object localObject2;
-    int k;
+    if ((Util.isNullOrNil(paramString2)) || (Util.isNullOrNil(paramString3)))
+    {
+      parami.a(paramString4, str, new ValueCallback() {});
+      AppMethodBeat.o(135373);
+      return;
+    }
+    parami.a(paramString4, paramString2, paramString3, paramInt, str, new ValueCallback() {});
+    AppMethodBeat.o(135373);
+  }
+  
+  public static void a(i parami, URL paramURL, String paramString, a parama)
+  {
+    AppMethodBeat.i(317327);
+    if (Util.isNullOrNil(paramString))
+    {
+      if (parama != null) {
+        parama.eW("isNullOrNil script");
+      }
+      AppMethodBeat.o(317327);
+      return;
+    }
     for (;;)
     {
-      if (localIterator.hasNext())
+      synchronized (uqW)
       {
-        parami = (Map.Entry)localIterator.next();
-        localObject1 = (String)parami.getKey();
-        localObject2 = parami.getValue();
-        if ((localObject2 == null) || (!(localObject2 instanceof ByteBuffer))) {
+        Iterator localIterator = uqW.iterator();
+        if (!localIterator.hasNext()) {
+          break label164;
+        }
+        if (!paramString.startsWith((String)localIterator.next())) {
           continue;
         }
-        try
-        {
-          parami = new JSONObject();
-          parami.put(locala.riZ, localObject1);
-          if (parama != null)
-          {
-            k = parama.getNativeBufferId();
-            if (k != -1)
-            {
-              localObject1 = (ByteBuffer)localObject2;
-              if (localObject1 == null) {
-                Log.w("MicroMsg.NativeBufferUtil", "processNativeBufferToJs byteBuffer is null");
-              }
-            }
-          }
+        i = 0;
+        ??? = paramString;
+        if (i != 0) {
+          ??? = paramString + cNC();
         }
-        catch (JSONException parami) {}
+        paramString = new ValueCallback() {};
+        if (paramURL == null)
+        {
+          parami.evaluateJavascript((String)???, paramString);
+          AppMethodBeat.o(317327);
+          return;
+        }
       }
+      parami.a(paramURL, (String)???, paramString);
+      AppMethodBeat.o(317327);
+      return;
+      label164:
+      int i = 1;
     }
+  }
+  
+  public static void a(i parami, ArrayList<ScriptPartObject> paramArrayList, String paramString1, String paramString2, String paramString3, final a parama)
+  {
+    AppMethodBeat.i(176788);
+    if ((paramArrayList == null) || (paramArrayList.size() == 0))
+    {
+      Log.e("MicroMsg.JsValidationInjector", "empty script list, abort");
+      AppMethodBeat.o(176788);
+      return;
+    }
+    String str2 = null;
+    String str1 = null;
+    Object localObject = null;
+    Iterator localIterator = paramArrayList.iterator();
+    if (localIterator.hasNext())
+    {
+      ScriptPartObject localScriptPartObject = (ScriptPartObject)localIterator.next();
+      if (localScriptPartObject.type != 2) {
+        break label345;
+      }
+      str2 = localScriptPartObject.wxaPkgPath;
+      str1 = localScriptPartObject.wxaFileName;
+      localObject = localScriptPartObject.wxaPkgKeyFilePath;
+      Log.i("MicroMsg.JsValidationInjector", " contain wxa pkg: %s, file: %s", new Object[] { str2, str1 });
+    }
+    label345:
     for (;;)
     {
-      Log.w("MicroMsg.NativeBufferUtil", "processNativeBuffer JSONException :%s", new Object[] { parami.getMessage() });
-      localIterator.remove();
       break;
-      parama.setNativeBuffer(k, (ByteBuffer)localObject1);
-      parami.put(locala.rja, k);
-      k = ((ByteBuffer)localObject1).capacity();
-      i += k;
-      for (;;)
+      final long l = System.currentTimeMillis();
+      if ((Util.isNullOrNil(str2)) || (Util.isNullOrNil(str1)) || (Util.isNullOrNil((String)localObject)))
       {
-        try
+        Log.e("MicroMsg.JsValidationInjector", "empty wxa path or file path or key path!");
+        if (parama != null) {
+          parama.eW("isNullOrNil empty path");
+        }
+        AppMethodBeat.o(176788);
+        return;
+      }
+      str2 = null;
+      localObject = str2;
+      if (paramString1 != null) {
+        localObject = str2;
+      }
+      try
+      {
+        if (paramString1.length() > 0) {
+          localObject = new URL(paramString1);
+        }
+        paramString1 = new ScriptPartObject();
+        paramString1.type = 1;
+        paramString1.content = String.format(Locale.US, "\n;(function(){return %d;})();", new Object[] { Integer.valueOf(11111) });
+        paramArrayList.add(paramString1);
+        paramString1 = (v)parami.Z(v.class);
+        if (paramString1 == null)
         {
-          localJSONArray.put(parami);
-          j = 1;
+          Assert.fail("Only addonV8 supports wxa script");
+          AppMethodBeat.o(176788);
+          return;
         }
-        catch (JSONException parami) {}
-        localObject1 = new String(Base64.encode(d.m((ByteBuffer)localObject2), 2), StandardCharsets.UTF_8);
-        parami.put(locala.rjb, localObject1);
       }
-      if (parama != null) {}
-      for (bool1 = true;; bool1 = false)
+      catch (MalformedURLException parami)
       {
-        Log.d("MicroMsg.NativeBufferUtil", "ToJs useX5JSCore %b,bufferSize %d", new Object[] { Boolean.valueOf(bool1), Integer.valueOf(i) });
-        if (i <= locala.nXk) {
-          break;
-        }
-        Log.e("MicroMsg.NativeBufferUtil", "bufferSize exceed the limit, bufferSize = %d, limit = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(locala.nXk) });
-        parami = z.b.rjd;
-        AppMethodBeat.o(140856);
-        return parami;
+        Log.e("MicroMsg.JsValidationInjector", "MalformedURLException");
+        parama.eW("MalformedURLException");
+        AppMethodBeat.o(176788);
+        return;
       }
-      if (j != 0) {
-        paramMap.put(locala.riY, localJSONArray);
+      if (parama == null) {}
+      for (parami = null;; parami = new m.b()
+          {
+            public final void onResult(String paramAnonymousString, m.c paramAnonymousc)
+            {
+              AppMethodBeat.i(176787);
+              z.a(z.this, parama, paramAnonymousString, l);
+              if ((parama instanceof z.b)) {
+                ((z.b)parama).a(paramAnonymousc);
+              }
+              AppMethodBeat.o(176787);
+            }
+          })
+      {
+        paramString1.a(paramArrayList, (URL)localObject, paramString2, paramString3, parami);
+        AppMethodBeat.o(176788);
+        return;
       }
-      parami = z.b.rjc;
-      AppMethodBeat.o(140856);
-      return parami;
     }
   }
   
-  public static ByteBuffer bc(byte[] paramArrayOfByte)
+  public static void agG(String paramString)
   {
-    AppMethodBeat.i(140855);
-    if (paramArrayOfByte == null)
+    AppMethodBeat.i(135370);
+    if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(140855);
-      return null;
+      AppMethodBeat.o(135370);
+      return;
     }
-    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(paramArrayOfByte.length);
-    localByteBuffer.put(paramArrayOfByte, 0, paramArrayOfByte.length);
-    localByteBuffer.rewind();
-    AppMethodBeat.o(140855);
-    return localByteBuffer;
+    synchronized (uqW)
+    {
+      uqW.add(paramString);
+      AppMethodBeat.o(135370);
+      return;
+    }
   }
   
-  public static ByteBuffer n(ByteBuffer paramByteBuffer)
+  public static String cNC()
   {
-    AppMethodBeat.i(207842);
-    if (paramByteBuffer == null)
-    {
-      AppMethodBeat.o(207842);
-      return paramByteBuffer;
-    }
-    if (paramByteBuffer.isDirect())
-    {
-      AppMethodBeat.o(207842);
-      return paramByteBuffer;
-    }
-    if (!paramByteBuffer.hasArray())
-    {
-      AppMethodBeat.o(207842);
-      return paramByteBuffer;
-    }
-    paramByteBuffer = bc(paramByteBuffer.array());
-    AppMethodBeat.o(207842);
-    return paramByteBuffer;
+    AppMethodBeat.i(135371);
+    String str = String.format(Locale.ENGLISH, "\n;(function(){return %d;})();", new Object[] { Integer.valueOf(11111) });
+    AppMethodBeat.o(135371);
+    return str;
   }
   
-  public static void n(e parame, String paramString)
+  public static abstract interface a
   {
-    AppMethodBeat.i(140858);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("message", "convert native buffer parameter fail, event=" + paramString + ", error=native buffer exceed size limit");
-    localHashMap.put("stack", "");
-    parame.ct("onError", new JSONObject(localHashMap).toString());
-    AppMethodBeat.o(140858);
+    public abstract void eW(String paramString);
+    
+    public abstract void onSuccess(String paramString);
   }
   
-  public static class a
-    implements l
+  public static abstract interface b
+    extends z.a
   {
-    public int nXk = 2147483647;
-    public String riY = "__nativeBuffers__";
-    public String riZ = "key";
-    public String rja = "id";
-    public String rjb = "base64";
+    public abstract void a(m.c paramc);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.z
  * JD-Core Version:    0.7.0.1
  */

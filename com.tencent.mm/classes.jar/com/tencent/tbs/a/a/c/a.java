@@ -12,9 +12,14 @@ public final class a
   
   public a()
   {
-    AppMethodBeat.i(186701);
+    AppMethodBeat.i(174291);
     this.a = new ThreadLocal() {};
-    AppMethodBeat.o(186701);
+    AppMethodBeat.o(174291);
+  }
+  
+  public final boolean a()
+  {
+    return true;
   }
   
   public final String d(com.tencent.tbs.a.b paramb)
@@ -33,7 +38,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tbs.a.a.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,92 +1,214 @@
 package com.tencent.mm.modelmulti;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.p.b;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.contact.d;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dnc;
-import com.tencent.mm.protocal.protobuf.dnd;
-import com.tencent.mm.protocal.protobuf.evb;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.protocal.protobuf.dpi;
+import com.tencent.mm.protocal.protobuf.dpj;
+import com.tencent.mm.protocal.protobuf.li;
+import com.tencent.mm.protocal.protobuf.lj;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.q.a;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public final class h
-  extends q
+  extends p
   implements m
 {
-  private com.tencent.mm.an.i callback;
-  private int lSU;
-  private d rr;
+  private List<String> cBS;
+  private com.tencent.mm.am.h callback;
+  private int index;
+  private final int oLG;
+  private final int oLH;
+  private final int oLI;
+  private final int oLJ;
+  private final int oLK;
+  public List<String> oLL;
+  private int oLM;
+  public int op;
+  private c rr;
+  private int total;
+  private int type;
   
-  public h(int paramInt, String paramString)
+  public h(List<String> paramList, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(20546);
-    this.lSU = 0;
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new dnc();
-    ((d.a)localObject).lBV = new dnd();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/postinvitefriendsmsg";
-    ((d.a)localObject).funcId = 1804;
-    this.rr = ((d.a)localObject).bgN();
-    dnc localdnc = (dnc)d.b.b(this.rr.lBR);
-    localdnc.Tgp = paramInt;
-    localdnc.Tgr = paramString;
-    if ((paramInt & 0x10) > 0)
-    {
-      a locala = new a();
-      localObject = new evb();
-      if (locala.XZg == null) {
-        break label185;
-      }
-      paramString = (String)localObject;
-      if (!Util.isNullOrNil(locala.XZg.token))
-      {
-        ((evb)localObject).UwO = locala.XZg.token;
-        ((evb)localObject).UwP = locala.XZg.TEk;
-      }
-    }
-    label185:
-    for (paramString = (String)localObject;; paramString = null)
-    {
-      localdnc.TUs = paramString;
-      this.lSU = paramInt;
-      AppMethodBeat.o(20546);
-      return;
-    }
+    AppMethodBeat.i(243109);
+    this.oLG = 1000;
+    this.oLH = 0;
+    this.oLI = 1;
+    this.oLJ = 2;
+    this.oLK = 3;
+    this.oLL = new LinkedList();
+    this.cBS = paramList;
+    this.type = paramInt1;
+    this.op = paramInt2;
+    this.index = 0;
+    this.total = paramList.size();
+    this.oLM = paramInt3;
+    AppMethodBeat.o(243109);
   }
   
-  public final int doScene(g paramg, com.tencent.mm.an.i parami)
+  public final int bKN()
   {
-    AppMethodBeat.i(20548);
-    Log.d("MicroMsg.NetScenePostInviteFriendsMsg", "doScene");
-    this.callback = parami;
-    int i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(20548);
+    AppMethodBeat.i(243122);
+    int i = this.total;
+    int j = this.oLL.size();
+    AppMethodBeat.o(243122);
+    return i - j;
+  }
+  
+  public final lj bKO()
+  {
+    AppMethodBeat.i(243123);
+    lj locallj = (lj)c.c.b(this.rr.otC);
+    AppMethodBeat.o(243123);
+    return locallj;
+  }
+  
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
+  {
+    AppMethodBeat.i(243119);
+    this.callback = paramh;
+    paramh = new c.a();
+    paramh.uri = "/cgi-bin/micromsg-bin/batchmodcontacttype";
+    paramh.funcId = 3990;
+    paramh.otG = 0;
+    paramh.respCmdId = 0;
+    paramh.otE = new li();
+    paramh.otF = new lj();
+    this.rr = paramh.bEF();
+    paramh = (li)c.b.b(this.rr.otB);
+    paramh.YMZ = new LinkedList();
+    int i = 0;
+    while ((i < this.oLM) && (this.cBS.size() > 0))
+    {
+      dpi localdpi = new dpi();
+      localdpi.UserName = ((String)this.cBS.remove(0));
+      localdpi.aaWh = this.type;
+      localdpi.aaWi = this.op;
+      paramh.YMZ.add(localdpi);
+      i += 1;
+    }
+    paramh.YMY = paramh.YMZ.size();
+    if ((this.type == 134217728) || (this.type == 33554432)) {
+      paramh.scene = 1;
+    }
+    i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(243119);
     return i;
   }
   
   public final int getType()
   {
-    return 1804;
+    return 3990;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(20547);
-    Log.d("MicroMsg.NetScenePostInviteFriendsMsg", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
-    if ((paramInt2 != 0) || (paramInt3 != 0))
+    AppMethodBeat.i(243121);
+    Log.i("MicroMsg.NetSceneBatchModContactType", "errType:%d, errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    int i;
+    if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(20547);
-      return;
+      params = ((lj)c.c.b(this.rr.otC)).YNb.iterator();
+      paramInt1 = 0;
+      while (params.hasNext())
+      {
+        paramArrayOfByte = (dpj)params.next();
+        if (paramArrayOfByte.Idd == 0)
+        {
+          com.tencent.mm.kernel.h.baF();
+          au localau = ((n)com.tencent.mm.kernel.h.ax(n.class)).bzA().JE(paramArrayOfByte.aaWj.UserName);
+          if ((localau != null) && (d.rs(localau.field_type)))
+          {
+            switch (paramArrayOfByte.aaWj.aaWh)
+            {
+            }
+            for (;;)
+            {
+              com.tencent.mm.kernel.h.baF();
+              ((n)com.tencent.mm.kernel.h.ax(n.class)).bzA().d(localau.field_username, localau);
+              this.oLL.add(localau.field_username);
+              break;
+              if (paramArrayOfByte.aaWj.aaWi == 1)
+              {
+                localau.aSj();
+              }
+              else
+              {
+                localau.aSk();
+                continue;
+                if (paramArrayOfByte.aaWj.aaWi == 1)
+                {
+                  localau.aSl();
+                }
+                else
+                {
+                  localau.aSm();
+                  continue;
+                  if (paramArrayOfByte.aaWj.aaWi == 1) {
+                    localau.aSn();
+                  } else {
+                    localau.aSo();
+                  }
+                }
+              }
+            }
+          }
+        }
+        else
+        {
+          paramInt1 += 1;
+        }
+      }
+      i = paramInt1;
+      if (paramInt1 == 0)
+      {
+        i = paramInt1;
+        if (this.cBS.size() > 0)
+        {
+          if (doScene(dispatcher(), this.callback) < 0)
+          {
+            Log.e("MicroMsg.NetSceneBatchModContactType", "onGYNetEnd : doScene fail");
+            this.callback.onSceneEnd(3, -1, "", this);
+          }
+          AppMethodBeat.o(243121);
+        }
+      }
     }
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(20547);
+    else
+    {
+      i = 0;
+    }
+    params = this.callback;
+    if (i > 0) {
+      paramInt3 = -3500;
+    }
+    params.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(243121);
+  }
+  
+  public final int securityLimitCount()
+  {
+    return 10;
+  }
+  
+  public final p.b securityVerificationChecked(s params)
+  {
+    return p.b.ouh;
   }
 }
 

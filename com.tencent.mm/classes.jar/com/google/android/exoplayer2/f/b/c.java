@@ -7,31 +7,31 @@ import java.util.List;
 final class c
   implements d
 {
-  private final List<a> bkh;
+  private final List<a> deb;
   
   public c(List<a> paramList)
   {
-    this.bkh = paramList;
+    this.deb = paramList;
   }
   
-  public final int al(long paramLong)
+  public final int TD()
+  {
+    return 1;
+  }
+  
+  public final List<a> cA(long paramLong)
+  {
+    return this.deb;
+  }
+  
+  public final int cz(long paramLong)
   {
     return -1;
   }
   
-  public final List<a> am(long paramLong)
-  {
-    return this.bkh;
-  }
-  
-  public final long eX(int paramInt)
+  public final long in(int paramInt)
   {
     return 0L;
-  }
-  
-  public final int ua()
-  {
-    return 1;
   }
 }
 

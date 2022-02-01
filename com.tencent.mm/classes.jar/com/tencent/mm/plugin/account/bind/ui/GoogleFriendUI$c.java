@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.account.bind.ui;
 
 import android.os.AsyncTask;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.account.friend.a.m;
+import com.tencent.mm.plugin.account.friend.model.j;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -23,16 +23,16 @@ import org.json.JSONObject;
 final class GoogleFriendUI$c
   extends AsyncTask<Void, Void, Void>
 {
-  private String mRq;
-  private boolean mRs;
-  private String mRu;
+  private String pNX;
+  private boolean pNZ;
+  private String pOb;
   
   public GoogleFriendUI$c(GoogleFriendUI paramGoogleFriendUI, String paramString)
   {
-    this.mRu = paramString;
+    this.pOb = paramString;
   }
   
-  private String bxL()
+  private String bWA()
   {
     AppMethodBeat.i(110091);
     Object localObject1 = "";
@@ -45,11 +45,11 @@ final class GoogleFriendUI$c
     localHttpURLConnection.setDoInput(true);
     localHttpURLConnection.setDoOutput(true);
     Object localObject2 = new ArrayList();
-    ((List)localObject2).add(new BasicNameValuePair("refresh_token", this.mRu));
+    ((List)localObject2).add(new BasicNameValuePair("refresh_token", this.pOb));
     ((List)localObject2).add(new BasicNameValuePair("client_id", "369820936870.apps.googleusercontent.com"));
     ((List)localObject2).add(new BasicNameValuePair("client_secret", "wcFhvo-s7wNcmQ9Zjr00H06u"));
     ((List)localObject2).add(new BasicNameValuePair("grant_type", "refresh_token"));
-    localObject2 = m.aW((List)localObject2);
+    localObject2 = j.cB((List)localObject2);
     Log.i("MicroMsg.GoogleContact.GoogleFriendUI", "QueryString:%s".concat(String.valueOf(localObject2)));
     Object localObject3 = new BufferedWriter(new OutputStreamWriter(localHttpURLConnection.getOutputStream(), "UTF-8"));
     ((BufferedWriter)localObject3).write((String)localObject2);
@@ -89,16 +89,16 @@ final class GoogleFriendUI$c
     }
   }
   
-  private Void bxu()
+  private Void bWi()
   {
     AppMethodBeat.i(110090);
     Log.i("MicroMsg.GoogleContact.GoogleFriendUI", "doInBackground");
     try
     {
-      String str = bxL();
+      String str = bWA();
       Log.i("MicroMsg.GoogleContact.GoogleFriendUI", "refresh response:%s", new Object[] { str });
-      this.mRq = new JSONObject(str).optString("access_token");
-      this.mRs = true;
+      this.pNX = new JSONObject(str).optString("access_token");
+      this.pNZ = true;
       AppMethodBeat.o(110090);
       return null;
     }
@@ -137,7 +137,7 @@ final class GoogleFriendUI$c
     AppMethodBeat.i(110089);
     super.onPreExecute();
     Log.i("MicroMsg.GoogleContact.GoogleFriendUI", "onPreExecute");
-    this.mRs = false;
+    this.pNZ = false;
     AppMethodBeat.o(110089);
   }
 }

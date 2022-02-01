@@ -18,9 +18,9 @@ import org.json.JSONObject;
 @Deprecated
 public final class a
 {
-  private static String CSj = "";
+  private static String IMz = "";
   
-  public static String Md(String paramString)
+  public static String EM(String paramString)
   {
     AppMethodBeat.i(41852);
     if (Util.isNullOrNil(paramString))
@@ -44,20 +44,20 @@ public final class a
     }
   }
   
-  public static void a(int paramInt1, int paramInt2, int paramInt3, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
+  public static void a(int paramInt1, int paramInt2, int paramInt3, long paramLong1, String paramString1, String paramString2, String paramString3, long paramLong2, long paramLong3, String paramString4)
   {
-    AppMethodBeat.i(41850);
-    paramString1 = b.d(14683, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Long.valueOf(paramLong1), paramString1, null, paramString2, Long.valueOf(paramLong2), Long.valueOf(paramLong3), null });
-    com.tencent.mm.game.report.api.a.jTp.a(paramString1);
-    AppMethodBeat.o(41850);
+    AppMethodBeat.i(275313);
+    paramString1 = b.e(14683, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Long.valueOf(paramLong1), paramString1, paramString2, paramString3, Long.valueOf(paramLong2), Long.valueOf(paramLong3), paramString4 });
+    com.tencent.mm.game.report.api.a.mtH.a(paramString1);
+    AppMethodBeat.o(275313);
   }
   
-  public static void aKk(String paramString)
+  public static void aHa(String paramString)
   {
-    CSj = paramString;
+    IMz = paramString;
   }
   
-  public static String am(String paramString1, String paramString2, String paramString3)
+  public static String aw(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(41854);
     JSONObject localJSONObject = new JSONObject();
@@ -76,9 +76,9 @@ public final class a
     }
     paramString3 = paramString1;
     if (paramString2 != null) {
-      paramString3 = hW(paramString1, paramString2.toString());
+      paramString3 = jd(paramString1, paramString2.toString());
     }
-    paramString1 = Md(paramString3);
+    paramString1 = EM(paramString3);
     AppMethodBeat.o(41854);
     return paramString1;
   }
@@ -87,7 +87,7 @@ public final class a
   {
     AppMethodBeat.i(41849);
     Log.i("MicroMsg.GameReportUtil", "reportExposureInfo : " + paramInt1 + " , " + paramInt2 + " , " + paramInt3 + " , 1 , 0 , " + Util.nullAsNil(paramString1) + " , " + paramInt4 + " , 0 , " + Util.nullAsNil(null) + " , " + Util.nullAsNil(null) + " , " + Util.nullAsNil(paramString2));
-    h localh = h.IzE;
+    h localh = h.OAn;
     int j = Util.getInt(null, 0);
     int i;
     if (NetStatusUtil.is3G(paramContext)) {
@@ -95,7 +95,7 @@ public final class a
     }
     for (;;)
     {
-      localh.a(13384, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(1), Integer.valueOf(0), paramString1, Integer.valueOf(paramInt4), Integer.valueOf(0), null, Integer.valueOf(j), Integer.valueOf(i), paramString2 });
+      localh.b(13384, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(1), Integer.valueOf(0), paramString1, Integer.valueOf(paramInt4), Integer.valueOf(0), null, Integer.valueOf(j), Integer.valueOf(i), paramString2 });
       AppMethodBeat.o(41849);
       return;
       if (NetStatusUtil.is4G(paramContext)) {
@@ -126,17 +126,17 @@ public final class a
     }
   }
   
-  public static void bw(int paramInt, String paramString)
+  public static void cc(int paramInt, String paramString)
   {
     AppMethodBeat.i(41851);
     b localb = new b();
-    localb.jTq = paramInt;
-    localb.jTr = paramString;
-    com.tencent.mm.game.report.api.a.jTp.a(localb);
+    localb.mtI = paramInt;
+    localb.mtJ = paramString;
+    com.tencent.mm.game.report.api.a.mtH.a(localb);
     AppMethodBeat.o(41851);
   }
   
-  private static String hW(String paramString1, String paramString2)
+  private static String jd(String paramString1, String paramString2)
   {
     AppMethodBeat.i(41855);
     if (Util.isNullOrNil(paramString1))
@@ -189,7 +189,7 @@ public final class a
     }
   }
   
-  public static String m(Map<String, String> paramMap)
+  public static String t(Map<String, String> paramMap)
   {
     AppMethodBeat.i(41853);
     if (paramMap.size() == 0)

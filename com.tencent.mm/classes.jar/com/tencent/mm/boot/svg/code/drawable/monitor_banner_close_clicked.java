@@ -90,7 +90,7 @@ public class monitor_banner_close_clicked
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.monitor_banner_close_clicked
  * JD-Core Version:    0.7.0.1
  */

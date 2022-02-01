@@ -8,15 +8,15 @@ import java.util.Queue;
 public class FirebaseInstanceIdService
   extends zzb
 {
-  protected final Intent e(Intent paramIntent)
+  protected final Intent f(Intent paramIntent)
   {
     AppMethodBeat.i(4146);
-    paramIntent = (Intent)o.yL().bJt.poll();
+    paramIntent = (Intent)o.Yw().dDb.poll();
     AppMethodBeat.o(4146);
     return paramIntent;
   }
   
-  public final void f(Intent paramIntent)
+  public final void g(Intent paramIntent)
   {
     AppMethodBeat.i(4147);
     if ("com.google.firebase.iid.TOKEN_REFRESH".equals(paramIntent.getAction()))
@@ -35,14 +35,14 @@ public class FirebaseInstanceIdService
       }
       if (("RST".equals(str)) || ("RST_FULL".equals(str)))
       {
-        FirebaseInstanceId.yw().yB();
+        FirebaseInstanceId.Yh().Ym();
         AppMethodBeat.o(4147);
         return;
       }
       if ("SYNC".equals(str))
       {
-        paramIntent = FirebaseInstanceId.yw();
-        FirebaseInstanceId.bIL.cc("");
+        paramIntent = FirebaseInstanceId.Yh();
+        FirebaseInstanceId.dCt.dC("");
         paramIntent.startSync();
       }
     }
@@ -53,7 +53,7 @@ public class FirebaseInstanceIdService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.firebase.iid.FirebaseInstanceIdService
  * JD-Core Version:    0.7.0.1
  */

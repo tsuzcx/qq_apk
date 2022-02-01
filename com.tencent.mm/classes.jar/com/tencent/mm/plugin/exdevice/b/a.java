@@ -1,68 +1,68 @@
 package com.tencent.mm.plugin.exdevice.b;
 
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.sdk.platformtools.Log;
 
-public abstract class a<RequestType extends com.tencent.mm.cd.a, ResponseType extends com.tencent.mm.cd.a>
-  extends q
+public abstract class a<RequestType extends com.tencent.mm.bx.a, ResponseType extends com.tencent.mm.bx.a>
+  extends p
   implements m
 {
-  private i jQg;
-  protected d vcY;
+  private h mAY;
+  protected c yoM;
   
-  protected abstract RequestType cYM();
-  
-  protected abstract ResponseType cYN();
-  
-  public final ResponseType ctC()
+  public final ResponseType cWm()
   {
-    if ((this.vcY != null) && (d.c.b(this.vcY.lBS) != null)) {
-      return d.c.b(this.vcY.lBS);
+    if ((this.yoM != null) && (c.c.b(this.yoM.otC) != null)) {
+      return c.c.b(this.yoM.otC);
     }
     return null;
   }
   
-  public final int doScene(g paramg, i parami)
+  protected abstract RequestType dFd();
+  
+  protected abstract ResponseType dFe();
+  
+  public final int doScene(g paramg, h paramh)
   {
-    this.jQg = parami;
-    if (this.vcY == null)
+    this.mAY = paramh;
+    if (this.yoM == null)
     {
-      parami = new d.a();
-      parami.funcId = getType();
-      parami.uri = getUri();
-      parami.lBU = cYM();
-      parami.lBV = cYN();
-      parami.lBW = 0;
-      parami.respCmdId = 0;
-      this.vcY = parami.bgN();
-      i(d.b.b(this.vcY.lBR));
+      paramh = new c.a();
+      paramh.funcId = getType();
+      paramh.uri = getUri();
+      paramh.otE = dFd();
+      paramh.otF = dFe();
+      paramh.otG = 0;
+      paramh.respCmdId = 0;
+      this.yoM = paramh.bEF();
+      f(c.b.b(this.yoM.otB));
     }
-    return dispatch(paramg, this.vcY, this);
+    return dispatch(paramg, this.yoM, this);
   }
   
-  protected abstract String getUri();
+  protected void f(RequestType paramRequestType) {}
   
-  protected void i(RequestType paramRequestType) {}
+  protected abstract String getUri();
   
   public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     Log.i("MicroMsg.BaseNetScene", "onGYNetEnd netId %d, errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if (this.jQg != null) {
-      this.jQg.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    if (this.mAY != null) {
+      this.mAY.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.b.a
  * JD-Core Version:    0.7.0.1
  */

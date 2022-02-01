@@ -1,67 +1,31 @@
 package com.tencent.mm.plugin.finder.feed.ui;
 
-import android.app.Activity;
 import android.content.Context;
-import android.view.View;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.api.d;
 import com.tencent.mm.plugin.finder.api.d.a;
-import com.tencent.mm.plugin.finder.api.i;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.finder.api.m;
+import com.tencent.mm.plugin.finder.e.h;
 import com.tencent.mm.plugin.finder.ui.FinderConversationParentUI;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import java.util.HashMap;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderConvAliasUI;", "Lcom/tencent/mm/plugin/finder/ui/FinderConversationParentUI;", "()V", "getLayoutId", "", "getTitleResId", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderConvAliasUI;", "Lcom/tencent/mm/plugin/finder/ui/FinderConversationParentUI;", "()V", "getTitleResId", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderConvAliasUI
   extends FinderConversationParentUI
 {
-  private HashMap _$_findViewCache;
+  public final void _$_clearFindViewByIdCache() {}
   
-  public final void _$_clearFindViewByIdCache()
+  public final String eeH()
   {
-    AppMethodBeat.i(267956);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(267956);
-  }
-  
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(267955);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(267955);
-    return localView1;
-  }
-  
-  public final String duZ()
-  {
-    AppMethodBeat.i(267953);
-    Object localObject = d.wZQ;
-    localObject = d.a.dnj().getNickname();
-    localObject = MMApplicationContext.getContext().getString(b.j.finder_message_alias_holder, new Object[] { localObject });
-    p.j(localObject, "MMApplicationContext.get…lder,finderAliasNickName)");
-    AppMethodBeat.o(267953);
+    AppMethodBeat.i(365574);
+    Object localObject = d.AwY;
+    localObject = d.a.dUd().getNickname();
+    localObject = MMApplicationContext.getContext().getString(e.h.finder_message_alias_holder, new Object[] { localObject });
+    s.s(localObject, "getContext().getString(R…lder,finderAliasNickName)");
+    AppMethodBeat.o(365574);
     return localObject;
-  }
-  
-  public final int getLayoutId()
-  {
-    return b.g.finder_conversation_ui;
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

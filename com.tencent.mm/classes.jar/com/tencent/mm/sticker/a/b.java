@@ -6,94 +6,96 @@ import com.tencent.mm.ipcinvoker.j;
 import com.tencent.mm.ipcinvoker.m;
 import com.tencent.mm.kernel.f;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.protocal.protobuf.cqv;
-import com.tencent.mm.protocal.protobuf.cqw;
+import com.tencent.mm.protocal.protobuf.dhp;
+import com.tencent.mm.protocal.protobuf.dhq;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sticker.c.c;
 import com.tencent.mm.sticker.c.d.a;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.vfs.y;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.a;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 import kotlin.n.n;
-import kotlin.x;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/sticker/model/LensInfoUserCache;", "", "()V", "TAG", "", "checkingSize", "", "historyFile", "historyList", "Lcom/tencent/mm/protocal/protobuf/LensInfoList;", "historyListener", "Lkotlin/Function0;", "", "getHistoryListener", "()Lkotlin/jvm/functions/Function0;", "setHistoryListener", "(Lkotlin/jvm/functions/Function0;)V", "recommendFile", "recommendList", "stickerData", "getStickerData", "()Ljava/lang/String;", "appendHistory", "lensInfo", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "checkHistory", "cleanHistory", "getCacheDir", "getCacheDirInMM", "getHistory", "", "getRecommendList", "parseHistory", "parseRecommend", "removeHistory", "lensId", "saveHistory", "saveRecommend", "updateRecommend", "list", "IPCGetCacheDir", "plugin-sticker_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/sticker/model/LensInfoUserCache;", "", "()V", "TAG", "", "checkingSize", "", "historyFile", "historyList", "Lcom/tencent/mm/protocal/protobuf/LensInfoList;", "historyListener", "Lkotlin/Function0;", "", "getHistoryListener", "()Lkotlin/jvm/functions/Function0;", "setHistoryListener", "(Lkotlin/jvm/functions/Function0;)V", "recommendFile", "recommendList", "stickerData", "getStickerData", "()Ljava/lang/String;", "appendHistory", "lensInfo", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "checkHistory", "cleanHistory", "getCacheDir", "getCacheDirInMM", "getHistory", "", "getRecommendList", "parseHistory", "parseRecommend", "removeHistory", "lensId", "saveHistory", "saveRecommend", "updateRecommend", "list", "IPCGetCacheDir", "plugin-sticker_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  private static final String TAG = "MicroMsg.LensInfoUserCache";
-  private static final String VbL;
-  private static final String VbM;
-  private static final String VbN;
-  private static final cqw VbO;
-  static final cqw VbP;
-  private static int VbQ;
-  private static a<x> VbR;
-  public static final b VbS;
+  private static final String TAG;
+  public static final b acDc;
+  private static final String acDd;
+  private static final String acDe;
+  private static final String acDf;
+  private static final dhq acDg;
+  static final dhq acDh;
+  private static int acDi;
+  private static a<ah> acDj;
   
   static
   {
     AppMethodBeat.i(105971);
-    VbS = new b();
+    acDc = new b();
     TAG = "MicroMsg.LensInfoUserCache";
     Object localObject;
     if (MMApplicationContext.isMainProcess()) {
-      localObject = hvi();
+      localObject = iWJ();
     }
     for (;;)
     {
-      VbL = (String)localObject;
-      VbM = VbL + "recommend.proto";
-      VbN = VbL + "history.proto";
-      VbO = new cqw();
-      VbP = new cqw();
-      localObject = u.aY(VbM, 0, -1);
+      acDd = (String)localObject;
+      acDe = s.X((String)localObject, "recommend.proto");
+      acDf = s.X(acDd, "history.proto");
+      acDg = new dhq();
+      acDh = new dhq();
+      localObject = y.bi(acDe, 0, -1);
       int i;
       if (localObject != null)
       {
         if (localObject.length != 0) {
-          break label226;
+          break label204;
         }
         i = 1;
-        label122:
+        label94:
         if (i != 0) {
-          break label231;
+          break label209;
         }
         i = 1;
         if (i == 0) {}
       }
       try
       {
-        VbO.parseFrom((byte[])localObject);
-        Log.i(TAG, "parseRecommend: " + VbM + ' ' + VbO.Tyo.size());
-        hve();
+        acDg.parseFrom((byte[])localObject);
+        Log.i(TAG, "parseRecommend: " + acDe + ' ' + acDg.aaMV.size());
+        iWF();
         AppMethodBeat.o(105971);
         return;
         localObject = (Bundle)j.a(MMApplicationContext.getPackageName(), null, a.class);
-        if (localObject != null)
+        if (localObject == null)
         {
-          String str = ((Bundle)localObject).getString("data");
-          localObject = str;
-          if (str != null) {
-            continue;
-          }
+          localObject = "";
+          continue;
+        }
+        String str = ((Bundle)localObject).getString("data");
+        localObject = str;
+        if (str != null) {
+          continue;
         }
         localObject = "";
         continue;
-        label226:
+        label204:
         i = 0;
-        break label122;
-        label231:
+        break label94;
+        label209:
         i = 0;
       }
       catch (Exception localException)
@@ -106,47 +108,47 @@ public final class b
     }
   }
   
-  public static void an(a<x> parama)
-  {
-    VbR = parama;
-  }
-  
-  public static void bBj()
+  public static void caA()
   {
     AppMethodBeat.i(105966);
-    Object localObject = VbR;
+    Object localObject = acDj;
     if (localObject != null) {
       ((a)localObject).invoke();
     }
-    localObject = VbP.toByteArray();
-    u.bBD(VbL);
-    u.H(VbN, (byte[])localObject);
-    Log.i(TAG, "saveHistory: " + VbP.Tyo.size());
+    localObject = acDh.toByteArray();
+    y.bDX(acDd);
+    y.f(acDf, (byte[])localObject, localObject.length);
+    Log.i(TAG, s.X("saveHistory: ", Integer.valueOf(acDh.aaMV.size())));
     AppMethodBeat.o(105966);
   }
   
-  public static void f(cqv paramcqv)
+  public static void cc(a<ah> parama)
   {
-    AppMethodBeat.i(232830);
-    p.k(paramcqv, "lensInfo");
-    Object localObject = VbP.Tyo;
-    p.j(localObject, "historyList.lensInfoList");
+    acDj = parama;
+  }
+  
+  public static void f(dhp paramdhp)
+  {
+    AppMethodBeat.i(233893);
+    s.u(paramdhp, "lensInfo");
+    Object localObject = acDh.aaMV;
+    s.s(localObject, "historyList.lensInfoList");
     localObject = ((List)localObject).iterator();
     int i = 0;
     if (((Iterator)localObject).hasNext()) {
-      if (!p.h(((cqv)((Iterator)localObject).next()).LensId, paramcqv.LensId)) {}
+      if (!s.p(((dhp)((Iterator)localObject).next()).LensId, paramdhp.LensId)) {}
     }
     for (;;)
     {
-      if ((i >= 0) && (i < VbP.Tyo.size())) {
-        VbP.Tyo.remove(i);
+      if ((i >= 0) && (i < acDh.aaMV.size())) {
+        acDh.aaMV.remove(i);
       }
-      VbP.Tyo.add(0, paramcqv);
-      if (VbP.Tyo.size() > 4) {
-        VbP.Tyo.remove(VbP.Tyo.size() - 1);
+      acDh.aaMV.add(0, paramdhp);
+      if (acDh.aaMV.size() > 4) {
+        acDh.aaMV.remove(acDh.aaMV.size() - 1);
       }
-      bBj();
-      AppMethodBeat.o(232830);
+      caA();
+      AppMethodBeat.o(233893);
       return;
       i += 1;
       break;
@@ -154,10 +156,10 @@ public final class b
     }
   }
   
-  private static void hve()
+  private static void iWF()
   {
     AppMethodBeat.i(105965);
-    Object localObject1 = u.aY(VbN, 0, -1);
+    Object localObject1 = y.bi(acDf, 0, -1);
     if (localObject1 != null)
     {
       int i;
@@ -175,9 +177,9 @@ public final class b
         {
           try
           {
-            VbP.parseFrom((byte[])localObject1);
-            localObject1 = VbP.Tyo;
-            p.j(localObject1, "historyList.lensInfoList");
+            acDh.parseFrom((byte[])localObject1);
+            localObject1 = acDh.aaMV;
+            s.s(localObject1, "historyList.lensInfoList");
             Object localObject2 = (Iterable)localObject1;
             localObject1 = (Collection)new ArrayList();
             localObject2 = ((Iterable)localObject2).iterator();
@@ -186,8 +188,8 @@ public final class b
               if (((Iterator)localObject2).hasNext())
               {
                 Object localObject3 = ((Iterator)localObject2).next();
-                CharSequence localCharSequence = (CharSequence)((cqv)localObject3).LensId;
-                if ((localCharSequence == null) || (n.ba(localCharSequence)))
+                CharSequence localCharSequence = (CharSequence)((dhp)localObject3).LensId;
+                if ((localCharSequence == null) || (n.bp(localCharSequence)))
                 {
                   i = 1;
                   if (i != 0) {
@@ -218,9 +220,9 @@ public final class b
               i = 0;
             }
             List localList = (List)localException;
-            VbP.Tyo.clear();
-            VbP.Tyo.addAll((Collection)localList);
-            Log.i(TAG, "parseHistory: " + VbN + ' ' + VbP.Tyo.size());
+            acDh.aaMV.clear();
+            acDh.aaMV.addAll((Collection)localList);
+            Log.i(TAG, "parseHistory: " + acDf + ' ' + acDh.aaMV.size());
           }
         }
       }
@@ -228,114 +230,106 @@ public final class b
     AppMethodBeat.o(105965);
   }
   
-  public static List<cqv> hvf()
+  public static List<dhp> iWG()
   {
     AppMethodBeat.i(105967);
-    Object localObject = VbP.Tyo;
-    p.j(localObject, "historyList.lensInfoList");
+    Object localObject = acDh.aaMV;
+    s.s(localObject, "historyList.lensInfoList");
     localObject = (List)localObject;
     AppMethodBeat.o(105967);
     return localObject;
   }
   
-  public static void hvg()
+  public static void iWH()
   {
     AppMethodBeat.i(105968);
-    Log.i(TAG, "checkHistory: " + VbQ);
-    if (VbQ > 0)
+    Log.i(TAG, s.X("checkHistory: ", Integer.valueOf(acDi)));
+    if (acDi > 0)
     {
       AppMethodBeat.o(105968);
       return;
     }
-    Object localObject1 = VbP.Tyo;
-    p.j(localObject1, "historyList.lensInfoList");
+    Object localObject1 = acDh.aaMV;
+    s.s(localObject1, "historyList.lensInfoList");
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      cqv localcqv = (cqv)((Iterator)localObject1).next();
-      VbQ += 1;
-      Log.i(TAG, "checkHistory: " + localcqv.LensId);
-      Object localObject2 = com.tencent.mm.sticker.c.d.VbW;
-      localObject2 = localcqv.LensId;
-      p.j(localObject2, "it.LensId");
-      d.a.a(null, (String)localObject2, (c)new b(localcqv));
+      dhp localdhp = (dhp)((Iterator)localObject1).next();
+      acDi += 1;
+      Log.i(TAG, s.X("checkHistory: ", localdhp.LensId));
+      Object localObject2 = com.tencent.mm.sticker.c.d.acDm;
+      localObject2 = localdhp.LensId;
+      s.s(localObject2, "it.LensId");
+      d.a.a(null, (String)localObject2, (c)new b(localdhp));
     }
     AppMethodBeat.o(105968);
   }
   
-  public static void hvh()
+  public static void iWI()
   {
     AppMethodBeat.i(105969);
-    VbP.Tyo.clear();
-    bBj();
+    acDh.aaMV.clear();
+    caA();
     AppMethodBeat.o(105969);
   }
   
-  private static String hvi()
+  private static String iWJ()
   {
-    Object localObject1 = null;
     AppMethodBeat.i(105970);
-    Object localObject2 = h.aHG();
-    p.j(localObject2, "MMKernel.storage()");
-    localObject2 = ((f)localObject2).aHp().get(ar.a.Vxh, null);
-    if (!(localObject2 instanceof String)) {}
-    for (;;)
+    Object localObject1 = h.baE().ban().get(at.a.acYT, null);
+    if ((localObject1 instanceof String)) {}
+    for (localObject1 = (String)localObject1;; localObject1 = null)
     {
-      localObject2 = (String)localObject1;
-      localObject1 = localObject2;
-      if (Util.isNullOrNil((String)localObject2))
+      Object localObject2 = localObject1;
+      if (Util.isNullOrNil((String)localObject1))
       {
-        localObject1 = "lens_" + System.currentTimeMillis();
-        localObject2 = h.aHG();
-        p.j(localObject2, "MMKernel.storage()");
-        ((f)localObject2).aHp().set(ar.a.Vxh, localObject1);
+        localObject2 = s.X("lens_", Long.valueOf(System.currentTimeMillis()));
+        h.baE().ban().set(at.a.acYT, localObject2);
       }
-      localObject1 = com.tencent.mm.loader.j.b.aSE() + "sticker/data/" + (String)localObject1 + '/';
+      localObject1 = com.tencent.mm.loader.i.b.bms() + "sticker/data/" + localObject2 + '/';
       AppMethodBeat.o(105970);
       return localObject1;
-      localObject1 = localObject2;
     }
   }
   
-  public static void js(List<? extends cqv> paramList)
+  public static void mE(List<? extends dhp> paramList)
   {
     AppMethodBeat.i(105964);
-    p.k(paramList, "list");
-    VbO.Tyo.clear();
-    VbO.Tyo.addAll((Collection)paramList);
-    paramList = VbO.toByteArray();
-    u.bBD(VbL);
-    u.H(VbM, paramList);
-    Log.i(TAG, "saveRecommend: " + VbO.Tyo.size());
+    s.u(paramList, "list");
+    acDg.aaMV.clear();
+    acDg.aaMV.addAll((Collection)paramList);
+    paramList = acDg.toByteArray();
+    y.bDX(acDd);
+    y.f(acDe, paramList, paramList.length);
+    Log.i(TAG, s.X("saveRecommend: ", Integer.valueOf(acDg.aaMV.size())));
     AppMethodBeat.o(105964);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/sticker/model/LensInfoUserCache$IPCGetCacheDir;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Landroid/os/Bundle;", "()V", "invoke", "data", "plugin-sticker_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/sticker/model/LensInfoUserCache$IPCGetCacheDir;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Landroid/os/Bundle;", "()V", "invoke", "data", "plugin-sticker_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     implements m<Bundle, Bundle>
   {}
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/sticker/model/LensInfoUserCache$checkHistory$1$1", "Lcom/tencent/mm/sticker/task/GetLensInfoCallback;", "onResult", "", "errType", "", "info", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "plugin-sticker_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/sticker/model/LensInfoUserCache$checkHistory$1$1", "Lcom/tencent/mm/sticker/task/GetLensInfoCallback;", "onResult", "", "errType", "", "info", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "plugin-sticker_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
     implements c
   {
-    b(cqv paramcqv) {}
+    b(dhp paramdhp) {}
     
-    public final void a(final int paramInt, final cqv paramcqv)
+    public final void a(int paramInt, final dhp paramdhp)
     {
       AppMethodBeat.i(105962);
-      b localb = b.VbS;
-      Log.i(b.hvk(), "onResult: " + this.VbT.LensId + ", " + paramInt);
-      com.tencent.mm.ae.d.uiThread((a)new a(this, paramInt, paramcqv));
+      Log.i(b.aUw(), "onResult: " + this.acDk.LensId + ", " + paramInt);
+      com.tencent.mm.ae.d.uiThread((a)new a(paramInt, this.acDk, paramdhp));
       AppMethodBeat.o(105962);
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+    @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
     static final class a
-      extends q
-      implements a<x>
+      extends u
+      implements a<ah>
     {
-      a(b.b paramb, int paramInt, cqv paramcqv)
+      a(int paramInt, dhp paramdhp1, dhp paramdhp2)
       {
         super();
       }
@@ -344,7 +338,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.sticker.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,13 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.b;
+import com.tencent.mm.bx.b;
+import java.util.LinkedList;
 
 public class FinderTipsShowEntranceExtInfo
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String multi_username;
+  public LinkedList<String> multi_username;
   public long object_id;
   public String object_nonce_id;
   public String report_ext_info;
@@ -14,109 +15,113 @@ public class FinderTipsShowEntranceExtInfo
   public int tab_type;
   public String username;
   
+  public FinderTipsShowEntranceExtInfo()
+  {
+    AppMethodBeat.i(257808);
+    this.multi_username = new LinkedList();
+    AppMethodBeat.o(257808);
+  }
+  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(199690);
+    AppMethodBeat.i(257812);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bm(1, this.object_id);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bv(1, this.object_id);
       if (this.object_nonce_id != null) {
-        paramVarArgs.f(2, this.object_nonce_id);
+        paramVarArgs.g(2, this.object_nonce_id);
       }
-      paramVarArgs.aY(3, this.tab_type);
+      paramVarArgs.bS(3, this.tab_type);
       if (this.username != null) {
-        paramVarArgs.f(4, this.username);
+        paramVarArgs.g(4, this.username);
       }
-      if (this.multi_username != null) {
-        paramVarArgs.f(5, this.multi_username);
-      }
+      paramVarArgs.e(5, 1, this.multi_username);
       if (this.report_ext_info != null) {
-        paramVarArgs.f(6, this.report_ext_info);
+        paramVarArgs.g(6, this.report_ext_info);
       }
       if (this.tabTipsByPassInfo != null) {
-        paramVarArgs.c(7, this.tabTipsByPassInfo);
+        paramVarArgs.d(7, this.tabTipsByPassInfo);
       }
-      AppMethodBeat.o(199690);
+      AppMethodBeat.o(257812);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.p(1, this.object_id) + 0;
+      int i = i.a.a.b.b.a.q(1, this.object_id) + 0;
       paramInt = i;
       if (this.object_nonce_id != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.object_nonce_id);
+        paramInt = i + i.a.a.b.b.a.h(2, this.object_nonce_id);
       }
-      i = paramInt + g.a.a.b.b.a.bM(3, this.tab_type);
+      i = paramInt + i.a.a.b.b.a.cJ(3, this.tab_type);
       paramInt = i;
       if (this.username != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.username);
+        paramInt = i + i.a.a.b.b.a.h(4, this.username);
       }
-      i = paramInt;
-      if (this.multi_username != null) {
-        i = paramInt + g.a.a.b.b.a.g(5, this.multi_username);
-      }
+      i = paramInt + i.a.a.a.c(5, 1, this.multi_username);
       paramInt = i;
       if (this.report_ext_info != null) {
-        paramInt = i + g.a.a.b.b.a.g(6, this.report_ext_info);
+        paramInt = i + i.a.a.b.b.a.h(6, this.report_ext_info);
       }
       i = paramInt;
       if (this.tabTipsByPassInfo != null) {
-        i = paramInt + g.a.a.b.b.a.b(7, this.tabTipsByPassInfo);
+        i = paramInt + i.a.a.b.b.a.c(7, this.tabTipsByPassInfo);
       }
-      AppMethodBeat.o(199690);
+      AppMethodBeat.o(257812);
       return i;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.multi_username.clear();
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(199690);
+      AppMethodBeat.o(257812);
       return 0;
     }
     if (paramInt == 3)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       FinderTipsShowEntranceExtInfo localFinderTipsShowEntranceExtInfo = (FinderTipsShowEntranceExtInfo)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(199690);
+        AppMethodBeat.o(257812);
         return -1;
       case 1: 
-        localFinderTipsShowEntranceExtInfo.object_id = locala.abFh.AN();
-        AppMethodBeat.o(199690);
+        localFinderTipsShowEntranceExtInfo.object_id = locala.ajGk.aaw();
+        AppMethodBeat.o(257812);
         return 0;
       case 2: 
-        localFinderTipsShowEntranceExtInfo.object_nonce_id = locala.abFh.readString();
-        AppMethodBeat.o(199690);
+        localFinderTipsShowEntranceExtInfo.object_nonce_id = locala.ajGk.readString();
+        AppMethodBeat.o(257812);
         return 0;
       case 3: 
-        localFinderTipsShowEntranceExtInfo.tab_type = locala.abFh.AK();
-        AppMethodBeat.o(199690);
+        localFinderTipsShowEntranceExtInfo.tab_type = locala.ajGk.aar();
+        AppMethodBeat.o(257812);
         return 0;
       case 4: 
-        localFinderTipsShowEntranceExtInfo.username = locala.abFh.readString();
-        AppMethodBeat.o(199690);
+        localFinderTipsShowEntranceExtInfo.username = locala.ajGk.readString();
+        AppMethodBeat.o(257812);
         return 0;
       case 5: 
-        localFinderTipsShowEntranceExtInfo.multi_username = locala.abFh.readString();
-        AppMethodBeat.o(199690);
+        localFinderTipsShowEntranceExtInfo.multi_username.add(locala.ajGk.readString());
+        AppMethodBeat.o(257812);
         return 0;
       case 6: 
-        localFinderTipsShowEntranceExtInfo.report_ext_info = locala.abFh.readString();
-        AppMethodBeat.o(199690);
+        localFinderTipsShowEntranceExtInfo.report_ext_info = locala.ajGk.readString();
+        AppMethodBeat.o(257812);
         return 0;
       }
-      localFinderTipsShowEntranceExtInfo.tabTipsByPassInfo = locala.abFh.iUw();
-      AppMethodBeat.o(199690);
+      localFinderTipsShowEntranceExtInfo.tabTipsByPassInfo = locala.ajGk.kFX();
+      AppMethodBeat.o(257812);
       return 0;
     }
-    AppMethodBeat.o(199690);
+    AppMethodBeat.o(257812);
     return -1;
   }
 }

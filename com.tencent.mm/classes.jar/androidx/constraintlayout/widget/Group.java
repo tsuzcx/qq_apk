@@ -20,9 +20,18 @@ public class Group
     super(paramContext, paramAttributeSet, paramInt);
   }
   
+  public final void Di()
+  {
+    AppMethodBeat.i(194186);
+    ConstraintLayout.LayoutParams localLayoutParams = (ConstraintLayout.LayoutParams)getLayoutParams();
+    localLayoutParams.bml.setWidth(0);
+    localLayoutParams.bml.setHeight(0);
+    AppMethodBeat.o(194186);
+  }
+  
   public final void a(ConstraintLayout paramConstraintLayout)
   {
-    AppMethodBeat.i(194959);
+    AppMethodBeat.i(194176);
     int j = getVisibility();
     if (Build.VERSION.SDK_INT >= 21) {}
     for (float f = getElevation();; f = 0.0F)
@@ -30,7 +39,7 @@ public class Group
       int i = 0;
       while (i < this.mCount)
       {
-        View localView = paramConstraintLayout.bg(this.EA[i]);
+        View localView = paramConstraintLayout.dU(this.bkI[i]);
         if (localView != null)
         {
           localView.setVisibility(j);
@@ -40,31 +49,22 @@ public class Group
         }
         i += 1;
       }
-      AppMethodBeat.o(194959);
+      AppMethodBeat.o(194176);
       return;
     }
   }
   
   protected final void f(AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(194958);
+    AppMethodBeat.i(194159);
     super.f(paramAttributeSet);
-    this.EE = false;
-    AppMethodBeat.o(194958);
-  }
-  
-  public final void fZ()
-  {
-    AppMethodBeat.i(194961);
-    ConstraintLayout.LayoutParams localLayoutParams = (ConstraintLayout.LayoutParams)getLayoutParams();
-    localLayoutParams.Gh.setWidth(0);
-    localLayoutParams.Gh.setHeight(0);
-    AppMethodBeat.o(194961);
+    this.bkL = false;
+    AppMethodBeat.o(194159);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     androidx.constraintlayout.widget.Group
  * JD-Core Version:    0.7.0.1
  */

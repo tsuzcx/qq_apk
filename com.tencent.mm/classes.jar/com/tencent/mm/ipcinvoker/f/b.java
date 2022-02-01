@@ -9,18 +9,18 @@ import java.util.Set;
 
 public final class b
 {
-  private static final Map<String, Set<c>> jZc;
-  private static final Set<Object> jZr;
+  private static final Map<String, Set<c>> mza;
+  private static final Set<Object> mzs;
   
   static
   {
     AppMethodBeat.i(158826);
-    jZr = new HashSet();
-    jZc = new HashMap();
+    mzs = new HashSet();
+    mza = new HashMap();
     AppMethodBeat.o(158826);
   }
   
-  public static void Mt(String paramString)
+  public static void Fc(String paramString)
   {
     AppMethodBeat.i(158825);
     if ((paramString == null) || (paramString.length() == 0))
@@ -29,9 +29,9 @@ public final class b
       return;
     }
     Set localSet;
-    synchronized (jZc)
+    synchronized (mza)
     {
-      localSet = (Set)jZc.remove(paramString);
+      localSet = (Set)mza.remove(paramString);
       if (localSet == null)
       {
         AppMethodBeat.o(158825);
@@ -69,14 +69,14 @@ public final class b
     label125:
     for (;;)
     {
-      synchronized (jZc)
+      synchronized (mza)
       {
-        localObject = (Set)jZc.get(paramString);
+        localObject = (Set)mza.get(paramString);
         if (localObject != null) {
           break label125;
         }
         localObject = new HashSet();
-        jZc.put(paramString, localObject);
+        mza.put(paramString, localObject);
         com.tencent.mm.ipcinvoker.h.c.i("IPC.ObjectRecycler", "addIntoSet(%s)", new Object[] { paramString });
       }
       try
@@ -104,9 +104,9 @@ public final class b
       return false;
     }
     Set localSet;
-    synchronized (jZc)
+    synchronized (mza)
     {
-      localSet = (Set)jZc.get(paramString);
+      localSet = (Set)mza.get(paramString);
       if (localSet == null)
       {
         AppMethodBeat.o(158824);
@@ -125,18 +125,36 @@ public final class b
     }
   }
   
-  public static void br(Object paramObject)
+  public static void cL(Object paramObject)
   {
     AppMethodBeat.i(158821);
-    jZr.add(paramObject);
-    AppMethodBeat.o(158821);
+    if (paramObject == null)
+    {
+      AppMethodBeat.o(158821);
+      return;
+    }
+    synchronized (mzs)
+    {
+      mzs.add(paramObject);
+      AppMethodBeat.o(158821);
+      return;
+    }
   }
   
-  public static void bs(Object paramObject)
+  public static void cM(Object paramObject)
   {
     AppMethodBeat.i(158822);
-    jZr.remove(paramObject);
-    AppMethodBeat.o(158822);
+    if (paramObject == null)
+    {
+      AppMethodBeat.o(158822);
+      return;
+    }
+    synchronized (mzs)
+    {
+      mzs.remove(paramObject);
+      AppMethodBeat.o(158822);
+      return;
+    }
   }
 }
 

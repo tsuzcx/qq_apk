@@ -1,7 +1,6 @@
 package com.google.android.gms.common.net;
 
 import android.content.Context;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -23,29 +22,17 @@ public class SSLCertificateSocketFactory
   extends SSLSocketFactory
 {
   private static final TrustManager[] zzvf;
-  @VisibleForTesting
   private final Context mContext;
-  @VisibleForTesting
   private SSLSocketFactory zzvg;
-  @VisibleForTesting
   private SSLSocketFactory zzvh;
-  @VisibleForTesting
   private TrustManager[] zzvi;
-  @VisibleForTesting
   private KeyManager[] zzvj;
-  @VisibleForTesting
   private byte[] zzvk;
-  @VisibleForTesting
   private byte[] zzvl;
-  @VisibleForTesting
   private PrivateKey zzvm;
-  @VisibleForTesting
   private final int zzvn;
-  @VisibleForTesting
   private final boolean zzvo;
-  @VisibleForTesting
   private final boolean zzvp;
-  @VisibleForTesting
   private final String zzvq;
   
   static
@@ -137,7 +124,6 @@ public class SSLCertificateSocketFactory
     AppMethodBeat.o(4926);
   }
   
-  @VisibleForTesting
   private static void zza(Socket paramSocket, int paramInt)
   {
     AppMethodBeat.i(4946);
@@ -176,7 +162,6 @@ public class SSLCertificateSocketFactory
     }
   }
   
-  @VisibleForTesting
   private static void zza(Socket paramSocket, PrivateKey paramPrivateKey)
   {
     AppMethodBeat.i(4947);
@@ -215,7 +200,6 @@ public class SSLCertificateSocketFactory
     }
   }
   
-  @VisibleForTesting
   private static void zza(Socket paramSocket, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(4944);
@@ -302,7 +286,6 @@ public class SSLCertificateSocketFactory
     return arrayOfByte1;
   }
   
-  @VisibleForTesting
   private static void zzb(Socket paramSocket, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(4945);
@@ -341,7 +324,6 @@ public class SSLCertificateSocketFactory
     }
   }
   
-  @VisibleForTesting
   private final SSLSocketFactory zzcx()
   {
     for (;;)
@@ -699,7 +681,7 @@ public class SSLCertificateSocketFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.net.SSLCertificateSocketFactory
  * JD-Core Version:    0.7.0.1
  */

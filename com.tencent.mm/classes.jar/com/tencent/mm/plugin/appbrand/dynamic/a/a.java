@@ -2,59 +2,59 @@ package com.tencent.mm.plugin.appbrand.dynamic.a;
 
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelappbrand.e;
-import com.tencent.mm.plugin.appbrand.ac.h;
+import com.tencent.mm.modelappbrand.f;
+import com.tencent.mm.plugin.appbrand.af.j;
 import java.util.Map;
 import java.util.Set;
 
 final class a
-  implements e
+  implements f
 {
-  private final h<Object, View> ohl;
+  private final j<Object, View> rkP;
   
   a()
   {
     AppMethodBeat.i(121207);
-    this.ohl = new h();
+    this.rkP = new j();
     AppMethodBeat.o(121207);
   }
   
-  public final Map<Object, Set<View>> bgO()
+  public final Map<Object, Set<View>> bEG()
   {
     AppMethodBeat.i(121212);
-    Map localMap = this.ohl.clT();
+    Map localMap = this.rkP.cNk();
     AppMethodBeat.o(121212);
     return localMap;
-  }
-  
-  public final Set<View> ch(Object paramObject)
-  {
-    AppMethodBeat.i(121210);
-    paramObject = this.ohl.cN(paramObject);
-    AppMethodBeat.o(121210);
-    return paramObject;
-  }
-  
-  public final Set<View> ci(Object paramObject)
-  {
-    AppMethodBeat.i(121211);
-    paramObject = this.ohl.cO(paramObject);
-    AppMethodBeat.o(121211);
-    return paramObject;
   }
   
   public final boolean d(Object paramObject, View paramView)
   {
     AppMethodBeat.i(121208);
-    boolean bool = this.ohl.k(paramObject, paramView);
+    boolean bool = this.rkP.v(paramObject, paramView);
     AppMethodBeat.o(121208);
     return bool;
+  }
+  
+  public final Set<View> dA(Object paramObject)
+  {
+    AppMethodBeat.i(121211);
+    paramObject = this.rkP.ek(paramObject);
+    AppMethodBeat.o(121211);
+    return paramObject;
+  }
+  
+  public final Set<View> dz(Object paramObject)
+  {
+    AppMethodBeat.i(121210);
+    paramObject = this.rkP.ej(paramObject);
+    AppMethodBeat.o(121210);
+    return paramObject;
   }
   
   public final boolean e(Object paramObject, View paramView)
   {
     AppMethodBeat.i(121209);
-    boolean bool = this.ohl.D(paramObject, paramView);
+    boolean bool = this.rkP.O(paramObject, paramView);
     AppMethodBeat.o(121209);
     return bool;
   }

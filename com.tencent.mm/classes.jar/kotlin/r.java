@@ -2,82 +2,69 @@ package kotlin;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.Serializable;
-import kotlin.g.b.p;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/Triple;", "A", "B", "C", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "first", "second", "third", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V", "getFirst", "()Ljava/lang/Object;", "Ljava/lang/Object;", "getSecond", "getThird", "component1", "component2", "component3", "copy", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Triple;", "equals", "", "other", "", "hashCode", "", "toString", "", "kotlin-stdlib"})
-public final class r<A, B, C>
+@Metadata(d1={""}, d2={"Lkotlin/Pair;", "A", "B", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "first", "second", "(Ljava/lang/Object;Ljava/lang/Object;)V", "getFirst", "()Ljava/lang/Object;", "Ljava/lang/Object;", "getSecond", "component1", "component2", "copy", "(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;", "equals", "", "other", "", "hashCode", "", "toString", "", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
+public final class r<A, B>
   implements Serializable
 {
-  public final A Mx;
-  public final B My;
-  public final C aazK;
+  public final A bsC;
+  public final B bsD;
   
-  public r(A paramA, B paramB, C paramC)
+  public r(A paramA, B paramB)
   {
-    this.Mx = paramA;
-    this.My = paramB;
-    this.aazK = paramC;
+    this.bsC = paramA;
+    this.bsD = paramB;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(129588);
+    AppMethodBeat.i(129574);
     if (this != paramObject)
     {
       if ((paramObject instanceof r))
       {
         paramObject = (r)paramObject;
-        if ((!p.h(this.Mx, paramObject.Mx)) || (!p.h(this.My, paramObject.My)) || (!p.h(this.aazK, paramObject.aazK))) {}
+        if ((!s.p(this.bsC, paramObject.bsC)) || (!s.p(this.bsD, paramObject.bsD))) {}
       }
     }
     else
     {
-      AppMethodBeat.o(129588);
+      AppMethodBeat.o(129574);
       return true;
     }
-    AppMethodBeat.o(129588);
+    AppMethodBeat.o(129574);
     return false;
   }
   
   public final int hashCode()
   {
-    int k = 0;
-    AppMethodBeat.i(129587);
-    Object localObject = this.Mx;
-    int i;
-    if (localObject != null)
+    int j = 0;
+    AppMethodBeat.i(129573);
+    Object localObject = this.bsC;
+    if (localObject != null) {}
+    for (int i = localObject.hashCode();; i = 0)
     {
-      i = localObject.hashCode();
-      localObject = this.My;
-      if (localObject == null) {
-        break label80;
-      }
-    }
-    label80:
-    for (int j = localObject.hashCode();; j = 0)
-    {
-      localObject = this.aazK;
+      localObject = this.bsD;
       if (localObject != null) {
-        k = localObject.hashCode();
+        j = localObject.hashCode();
       }
-      AppMethodBeat.o(129587);
-      return (j + i * 31) * 31 + k;
-      i = 0;
-      break;
+      AppMethodBeat.o(129573);
+      return i * 31 + j;
     }
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(129586);
-    String str = "(" + this.Mx + ", " + this.My + ", " + this.aazK + ')';
-    AppMethodBeat.o(129586);
+    AppMethodBeat.i(129572);
+    String str = "(" + this.bsC + ", " + this.bsD + ')';
+    AppMethodBeat.o(129572);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlin.r
  * JD-Core Version:    0.7.0.1
  */

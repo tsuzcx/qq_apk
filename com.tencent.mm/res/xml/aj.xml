@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/bi_" />
+    <com.tencent.mm.plugin.exdevice.ui.DeviceProfileHeaderPreference android:key="device_profile_header" android:layout="@layout/a49" />
+    <Preference android:key="sub_device_desc" android:layout="@layout/a56" android:title="@string/cg4" />
     <PreferenceSmallCategory />
-    <Preference android:key="contact_info_voiceinput_install" android:layout="@layout/aw2" android:title="@string/gsq" />
-    <Preference android:key="contact_info_voiceinput_uninstall" android:layout="@layout/b2o" android:title="@string/gsv" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="message_manage" android:layout="@layout/bdi" android:title="@string/ceb" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="connect_setting" android:layout="@layout/bdi" android:title="@string/cd6" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="user_list" android:layout="@layout/bdi" android:title="@string/cga" />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_info_biz_go_chatting" android:layout="@layout/bdi" android:title="@string/bkg" />
+    <PreferenceSmallCategory />
+    <Preference android:key="bind_device" android:layout="@layout/b2b" android:title="@string/cc4" />
+    <Preference android:key="open_device_panel" android:layout="@layout/b2b" android:title="@string/cej" />
+    <PreferenceSmallCategory />
+    <Preference android:key="unbind_device" android:layout="@layout/cj8" android:title="@string/cg7" />
+    <PreferenceCategory />
 </PreferenceScreen>

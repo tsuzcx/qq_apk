@@ -2,330 +2,298 @@ package com.tencent.mm.plugin.finder.live.plugin;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Paint;
-import android.graphics.Point;
-import android.text.TextPaint;
-import android.util.DisplayMetrics;
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.live.c.b.c;
-import com.tencent.mm.plugin.finder.b.d;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.i;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.live.util.g;
-import com.tencent.mm.plugin.finder.loader.t.a;
-import com.tencent.mm.plugin.finder.utils.aj;
-import com.tencent.mm.plugin.finder.utils.m;
-import com.tencent.mm.plugin.findersdk.a.ak;
-import com.tencent.mm.protocal.protobuf.FinderAuthInfo;
-import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.ae.f;
+import com.tencent.mm.am.p;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.br.c;
+import com.tencent.mm.live.b.b.c;
+import com.tencent.mm.openim.model.q;
+import com.tencent.mm.plugin.finder.live.model.aj;
+import com.tencent.mm.plugin.finder.live.p.e;
+import com.tencent.mm.plugin.finder.live.p.f;
+import com.tencent.mm.plugin.finder.live.p.h;
+import com.tencent.mm.plugin.finder.live.view.convert.g;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.protocal.protobuf.bky;
+import com.tencent.mm.protocal.protobuf.bla;
+import com.tencent.mm.protocal.protobuf.evx;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.au;
-import com.tencent.mm.ui.ax;
-import kotlin.g.b.p;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.ui.af;
+import com.tencent.mm.ui.base.aa;
+import com.tencent.mm.ui.base.w;
+import kotlin.Metadata;
+import kotlin.ah;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveVisitorAfterPlugin;", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statueMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "TAG", "", "anchorAuthIcon", "Landroid/widget/ImageView;", "anchorExtAuthTv", "Landroid/widget/TextView;", "anchorExtFriendFollowCountTv", "anchorExtInfoLayout", "Landroid/widget/LinearLayout;", "anchorName", "anchorProfile", "avatar", "backBtn", "desc", "loadingProgressBar", "Landroid/widget/ProgressBar;", "needAnimation", "", "getNeedAnimation", "()Z", "setNeedAnimation", "(Z)V", "okBtn", "Landroid/widget/Button;", "rootContent", "Landroid/widget/RelativeLayout;", "title", "fillAnchorInfo", "", "authProfession", "friendFollowCount", "", "authInfo", "Lcom/tencent/mm/protocal/protobuf/FinderAuthInfo;", "show", "updateBg", "bgUrl", "contactUsername", "updateFinishInfo", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveWecomBubble;", "Lcom/tencent/mm/plugin/finder/live/plugin/IFinderLivePromoteItem;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "context", "Landroid/content/Context;", "buContext", "Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "TAG", "", "dialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "root", "Landroid/view/ViewGroup;", "afterAddAnim", "", "getView", "Landroid/view/View;", "handleSearchContactEnd", "scene", "Lcom/tencent/mm/openim/model/NetSceneSearchOpenIMContact;", "initView", "data", "", "onBubbleDel", "onPortraitDelayAction", "extraMsg", "Landroid/os/Bundle;", "extraData", "delayMs", "", "onSceneEnd", "errType", "", "errCode", "errMsg", "Lcom/tencent/mm/modelbase/NetSceneBase;", "refreshView", "Lcom/tencent/mm/plugin/finder/live/view/convert/PromoteLiveWeComItem;", "updateView", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class cw
-  extends d
+  implements com.tencent.mm.am.h, cx
 {
-  public final String TAG;
-  private final TextView jMg;
-  public final RelativeLayout kCI;
-  private final com.tencent.mm.live.c.b kCU;
-  private final ImageView kCv;
-  private final Button kEt;
-  private final ImageView mWb;
-  private final TextView msF;
-  private final TextView yyC;
-  private final TextView yyD;
-  private final LinearLayout yyE;
-  private final TextView yyF;
-  private final TextView yyG;
-  private final ImageView yyH;
-  public final ProgressBar yyI;
-  public boolean yyJ;
+  private final String TAG;
+  private final com.tencent.mm.plugin.finder.live.model.context.a buContext;
+  private final Context context;
+  private ViewGroup mJe;
+  private final com.tencent.mm.live.b.b nfT;
+  private w rYw;
   
-  public cw(final ViewGroup paramViewGroup, com.tencent.mm.live.c.b paramb)
+  public cw(Context paramContext, com.tencent.mm.plugin.finder.live.model.context.a parama, com.tencent.mm.live.b.b paramb)
   {
-    super(paramViewGroup, paramb);
-    AppMethodBeat.i(271497);
-    this.kCU = paramb;
-    this.TAG = "Finder.LiveVisitorAfterPlugin";
-    paramb = paramViewGroup.findViewById(b.f.title);
-    p.j(paramb, "root.findViewById(R.id.title)");
-    this.jMg = ((TextView)paramb);
-    paramb = paramViewGroup.findViewById(b.f.desc);
-    p.j(paramb, "root.findViewById(R.id.desc)");
-    this.msF = ((TextView)paramb);
-    paramb = paramViewGroup.findViewById(b.f.anchor_avatar);
-    p.j(paramb, "root.findViewById(R.id.anchor_avatar)");
-    this.mWb = ((ImageView)paramb);
-    paramb = paramViewGroup.findViewById(b.f.anchor_name);
-    p.j(paramb, "root.findViewById(R.id.anchor_name)");
-    this.yyC = ((TextView)paramb);
-    paramb = paramViewGroup.findViewById(b.f.visit_anchor_profile);
-    p.j(paramb, "root.findViewById(R.id.visit_anchor_profile)");
-    this.yyD = ((TextView)paramb);
-    paramb = paramViewGroup.findViewById(b.f.live_after_finish_btn);
-    p.j(paramb, "root.findViewById(R.id.live_after_finish_btn)");
-    this.kEt = ((Button)paramb);
-    paramb = paramViewGroup.findViewById(b.f.live_after_ui_root_group);
-    p.j(paramb, "root.findViewById(R.id.live_after_ui_root_group)");
-    this.kCI = ((RelativeLayout)paramb);
-    paramb = paramViewGroup.findViewById(b.f.anchor_ext_info_layout);
-    p.j(paramb, "root.findViewById(R.id.anchor_ext_info_layout)");
-    this.yyE = ((LinearLayout)paramb);
-    paramb = paramViewGroup.findViewById(b.f.anchor_ext_info_auth);
-    p.j(paramb, "root.findViewById(R.id.anchor_ext_info_auth)");
-    this.yyF = ((TextView)paramb);
-    paramb = paramViewGroup.findViewById(b.f.anchor_ext_info_friend_floow_count);
-    p.j(paramb, "root.findViewById(R.id.a…_info_friend_floow_count)");
-    this.yyG = ((TextView)paramb);
-    paramb = paramViewGroup.findViewById(b.f.anchor_auth_icon);
-    p.j(paramb, "root.findViewById(R.id.anchor_auth_icon)");
-    this.yyH = ((ImageView)paramb);
-    paramb = paramViewGroup.findViewById(b.f.back_icon);
-    p.j(paramb, "root.findViewById(R.id.back_icon)");
-    this.kCv = ((ImageView)paramb);
-    paramb = paramViewGroup.findViewById(b.f.loading_bar);
-    p.j(paramb, "root.findViewById(R.id.loading_bar)");
-    this.yyI = ((ProgressBar)paramb);
-    this.yyJ = true;
-    this.kEt.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    AppMethodBeat.i(353805);
+    this.context = paramContext;
+    this.buContext = parama;
+    this.nfT = paramb;
+    this.TAG = "FinderLiveWecomBubble";
+    paramContext = af.mU(this.context).inflate(p.f.Cgj, null);
+    if (paramContext == null)
     {
-      public final void onClick(View paramAnonymousView)
+      paramContext = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+      AppMethodBeat.o(353805);
+      throw paramContext;
+    }
+    this.mJe = ((ViewGroup)paramContext);
+    AppMethodBeat.o(353805);
+  }
+  
+  private static final void a(cw paramcw, g paramg, View paramView)
+  {
+    AppMethodBeat.i(353843);
+    Object localObject1 = new Object();
+    Object localObject2 = new com.tencent.mm.hellhoundlib.b.b();
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramcw);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramg);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/plugin/FinderLiveWecomBubble", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject1, ((com.tencent.mm.hellhoundlib.b.b)localObject2).aYj());
+    kotlin.g.b.s.u(paramcw, "this$0");
+    kotlin.g.b.s.u(paramg, "$data");
+    kotlin.g.b.s.X("close promote, data:", f.dh(paramg.DUL));
+    com.tencent.e.f.h.jXD();
+    paramView = com.tencent.mm.plugin.finder.live.component.statecomponent.b.CCd;
+    com.tencent.mm.plugin.finder.live.component.statecomponent.b.a(paramcw.buContext, 2, 3);
+    paramcw = aj.CGT;
+    paramcw = aj.elk();
+    if (paramcw != null)
+    {
+      paramView = b.c.ndQ;
+      localObject1 = new Bundle();
+      localObject2 = new bla();
+      ((bla)localObject2).id = paramg.DUI;
+      ((bla)localObject2).type = 3;
+      ((bla)localObject2).ZTU = new com.tencent.mm.bx.b(paramg.DUL.toByteArray());
+      paramg = ah.aiuX;
+      ((Bundle)localObject1).putByteArray("PARAM_FINDER_LIVE_PROMOTE_DATA", ((bla)localObject2).toByteArray());
+      paramg = ah.aiuX;
+      paramcw.statusChange(paramView, (Bundle)localObject1);
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/live/plugin/FinderLiveWecomBubble", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(353843);
+  }
+  
+  private final void a(g paramg)
+  {
+    AppMethodBeat.i(353822);
+    Object localObject2 = this.mJe;
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      kotlin.g.b.s.bIx("root");
+      localObject1 = null;
+    }
+    View localView1 = ((ViewGroup)localObject1).findViewById(p.e.BIb);
+    localObject2 = this.mJe;
+    localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      kotlin.g.b.s.bIx("root");
+      localObject1 = null;
+    }
+    TextView localTextView = (TextView)((ViewGroup)localObject1).findViewById(p.e.BUq);
+    localObject2 = this.mJe;
+    localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      kotlin.g.b.s.bIx("root");
+      localObject1 = null;
+    }
+    View localView2 = ((ViewGroup)localObject1).findViewById(p.e.item_detail_container);
+    com.tencent.mm.ui.aw.a((Paint)localTextView.getPaint(), 0.8F);
+    localObject2 = this.mJe;
+    localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      kotlin.g.b.s.bIx("root");
+      localObject1 = null;
+    }
+    localObject1 = (TextView)((ViewGroup)localObject1).findViewById(p.e.BUp);
+    com.tencent.mm.ui.aw.a((Paint)((TextView)localObject1).getPaint(), 0.8F);
+    localTextView.setText((CharSequence)paramg.DUL.ZTZ);
+    localObject2 = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+    if (com.tencent.mm.plugin.finder.live.utils.a.s(this.buContext))
+    {
+      localView1.setVisibility(4);
+      localView2.setOnClickListener(null);
+      ((TextView)localObject1).setVisibility(4);
+      AppMethodBeat.o(353822);
+      return;
+    }
+    ((TextView)localObject1).setVisibility(0);
+    localView1.setVisibility(0);
+    localView1.setOnClickListener(new cw..ExternalSyntheticLambda0(this, paramg));
+    localView2.setOnClickListener(new cw..ExternalSyntheticLambda1(this, paramg));
+    AppMethodBeat.o(353822);
+  }
+  
+  private static final void b(cw paramcw, g paramg, View paramView)
+  {
+    AppMethodBeat.i(353859);
+    Object localObject1 = new Object();
+    Object localObject2 = new com.tencent.mm.hellhoundlib.b.b();
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramcw);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramg);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/plugin/FinderLiveWecomBubble", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject1, ((com.tencent.mm.hellhoundlib.b.b)localObject2).aYj());
+    kotlin.g.b.s.u(paramcw, "this$0");
+    kotlin.g.b.s.u(paramg, "$data");
+    com.tencent.mm.kernel.h.aZW().a(372, (com.tencent.mm.am.h)paramcw);
+    localObject2 = paramg.DUL.ZUc;
+    kotlin.g.b.s.X("click to see wecom : ", localObject2);
+    com.tencent.e.f.h.jXD();
+    paramView = com.tencent.mm.plugin.finder.utils.aw.Gjk;
+    if (com.tencent.mm.plugin.finder.utils.aw.bgV())
+    {
+      localObject1 = paramcw.mJe;
+      paramView = (View)localObject1;
+      if (localObject1 == null)
       {
-        AppMethodBeat.i(289820);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/plugin/FinderLiveVisitorAfterPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        cw.a(this.yyK).statusChange(b.c.kyW, null);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/plugin/FinderLiveVisitorAfterPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(289820);
+        kotlin.g.b.s.bIx("root");
+        paramView = null;
       }
-    });
-    this.yyD.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+      aa.makeText(paramView.getContext(), (CharSequence)kotlin.g.b.s.X("contactid:", localObject2), 0).show();
+    }
+    com.tencent.mm.kernel.h.aZW().a((p)new q((String)localObject2, true), 0);
+    paramcw.rYw = w.a(paramcw.context, (CharSequence)paramcw.context.getString(p.h.loading_tips_1), true, 3, null);
+    paramView = com.tencent.mm.plugin.finder.live.component.statecomponent.b.CCd;
+    paramView = paramcw.buContext;
+    paramg = paramg.DUL.ZUc;
+    paramcw = paramg;
+    if (paramg == null) {
+      paramcw = "";
+    }
+    com.tencent.mm.plugin.finder.live.component.statecomponent.b.b(paramView, 5, 3, paramcw);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/live/plugin/FinderLiveWecomBubble", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(353859);
+  }
+  
+  public final void a(Bundle paramBundle, Object paramObject, long paramLong) {}
+  
+  public final void eoK() {}
+  
+  public final void eoL() {}
+  
+  public final void fs(Object paramObject)
+  {
+    AppMethodBeat.i(353928);
+    kotlin.g.b.s.u(paramObject, "data");
+    if ((paramObject instanceof g)) {
+      a((g)paramObject);
+    }
+    AppMethodBeat.o(353928);
+  }
+  
+  public final void ft(Object paramObject)
+  {
+    AppMethodBeat.i(353942);
+    kotlin.g.b.s.u(paramObject, "data");
+    if ((paramObject instanceof g))
     {
-      public final void onClick(View paramAnonymousView)
+      a((g)paramObject);
+      Object localObject = com.tencent.mm.plugin.finder.live.component.statecomponent.b.CCd;
+      com.tencent.mm.plugin.finder.live.model.context.a locala = this.buContext;
+      localObject = ((g)paramObject).DUL.ZUc;
+      paramObject = localObject;
+      if (localObject == null) {
+        paramObject = "";
+      }
+      com.tencent.mm.plugin.finder.live.component.statecomponent.b.b(locala, 1, 3, paramObject);
+    }
+    AppMethodBeat.o(353942);
+  }
+  
+  public final View getView()
+  {
+    AppMethodBeat.i(353953);
+    ViewGroup localViewGroup = this.mJe;
+    Object localObject = localViewGroup;
+    if (localViewGroup == null)
+    {
+      kotlin.g.b.s.bIx("root");
+      localObject = null;
+    }
+    localObject = (View)localObject;
+    AppMethodBeat.o(353953);
+    return localObject;
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
+  {
+    AppMethodBeat.i(353991);
+    paramString = this.rYw;
+    if (paramString != null) {
+      paramString.dismiss();
+    }
+    if ((paramInt1 == 0) && (paramInt2 == 0))
+    {
+      if (paramp == null)
       {
-        AppMethodBeat.i(225704);
-        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/plugin/FinderLiveVisitorAfterPlugin$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-        paramAnonymousView = ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)this.yyK.business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).kig;
+        paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.openim.model.NetSceneSearchOpenIMContact");
+        AppMethodBeat.o(353991);
+        throw paramString;
+      }
+      paramString = ((q)paramp).psC;
+      if (paramString != null)
+      {
+        paramp = paramString.UserName;
+        Object localObject = Util.nullAsNil(paramp);
+        kotlin.g.b.s.s(localObject, "nullAsNil(userName)");
+        if (((CharSequence)localObject).length() <= 0) {
+          break label206;
+        }
+        paramInt1 = 1;
+        if (paramInt1 == 0) {
+          break label211;
+        }
+        paramp = ((n)com.tencent.mm.kernel.h.ax(n.class)).bzA().JE(paramp);
         localObject = new Intent();
-        ((Intent)localObject).putExtra("finder_username", paramAnonymousView);
-        ((Intent)localObject).putExtra("key_enter_profile_type", 11);
-        ((ak)h.ag(ak.class)).enterFinderProfileUI(paramViewGroup.getContext(), (Intent)localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/plugin/FinderLiveVisitorAfterPlugin$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(225704);
+        com.tencent.mm.api.d.a((Intent)localObject, paramString, 161);
+        if ((paramp != null) && (!com.tencent.mm.contact.d.rs(paramp.field_type))) {
+          ((Intent)localObject).putExtra("Contact_IsLBSFriend", true);
+        }
+        c.b(this.context, "profile", ".ui.ContactInfoUI", (Intent)localObject);
       }
-    });
-    paramb = this.jMg;
-    if (paramb != null) {}
-    for (paramb = paramb.getLayoutParams(); paramb == null; paramb = null)
-    {
-      paramViewGroup = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-      AppMethodBeat.o(271497);
-      throw paramViewGroup;
-    }
-    paramb = (ViewGroup.MarginLayoutParams)paramb;
-    paramb.topMargin += ax.getStatusBarHeight(MMApplicationContext.getContext());
-    paramb = this.kEt;
-    if (paramb != null) {}
-    for (paramb = paramb.getLayoutParams(); paramb == null; paramb = null)
-    {
-      paramViewGroup = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-      AppMethodBeat.o(271497);
-      throw paramViewGroup;
-    }
-    paramb = (ViewGroup.MarginLayoutParams)paramb;
-    paramb.bottomMargin += ax.aB(MMApplicationContext.getContext());
-    ar.a((Paint)this.jMg.getPaint(), 0.8F);
-    ar.a((Paint)this.yyC.getPaint(), 0.8F);
-    ar.a((Paint)this.kEt.getPaint(), 0.8F);
-    this.kCI.setVisibility(8);
-    this.yyI.setVisibility(8);
-    this.kCv.setImageDrawable(au.o(paramViewGroup.getContext(), b.i.icons_filled_back, -1));
-    this.kCv.setOnClickListener((View.OnClickListener)new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(232483);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/plugin/FinderLiveVisitorAfterPlugin$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        cw.a(this.yyK).statusChange(b.c.kyW, null);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/plugin/FinderLiveVisitorAfterPlugin$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(232483);
-      }
-    });
-    paramViewGroup.setTranslationX(ax.au(paramViewGroup.getContext()).x);
-    AppMethodBeat.o(271497);
-  }
-  
-  public final void a(String paramString, int paramInt, FinderAuthInfo paramFinderAuthInfo)
-  {
-    AppMethodBeat.i(271496);
-    if ((Util.isNullOrNil(paramString)) && (paramInt <= 0)) {
-      this.yyE.setVisibility(8);
     }
     for (;;)
     {
-      if (paramFinderAuthInfo != null)
-      {
-        paramString = aj.AGc;
-        aj.a(this.yyH, paramFinderAuthInfo, 0);
-      }
-      AppMethodBeat.o(271496);
+      com.tencent.mm.kernel.h.aZW().b(372, (com.tencent.mm.am.h)this);
+      AppMethodBeat.o(353991);
       return;
-      Log.i(this.TAG, "authProfession:" + paramString + ", friendFollowCount:" + paramInt);
-      this.yyE.setVisibility(0);
-      Object localObject1;
-      if (!Util.isNullOrNil(paramString))
-      {
-        localObject1 = this.kiF.getContext();
-        p.j(localObject1, "root.context");
-        paramString = ((Context)localObject1).getResources().getString(b.j.finder_contact_auth, new Object[] { paramString });
-        p.j(paramString, "root.context.resources.g…act_auth, authProfession)");
-        this.yyF.setText((CharSequence)paramString);
-        this.yyF.setVisibility(0);
-        label162:
-        localObject1 = "";
-        if (paramInt <= 0) {
-          break label424;
-        }
-        localObject1 = this.kiF.getContext();
-        p.j(localObject1, "root.context");
-        localObject1 = ((Context)localObject1).getResources().getString(b.j.finder_friend_follow, new Object[] { m.QF(paramInt) });
-        p.j(localObject1, "root.context.resources.g…umber(friendFollowCount))");
-        this.yyG.setText((CharSequence)localObject1);
-        this.yyG.setVisibility(0);
-      }
-      for (;;)
-      {
-        Object localObject2 = this.kiF.getContext();
-        p.j(localObject2, "root.context");
-        localObject2 = ((Context)localObject2).getResources();
-        p.j(localObject2, "root.context.resources");
-        paramInt = ((Resources)localObject2).getDisplayMetrics().widthPixels;
-        localObject2 = this.kiF.getContext();
-        p.j(localObject2, "root.context");
-        int i = ((Context)localObject2).getResources().getDimensionPixelOffset(b.d.Edge_1_5_A);
-        localObject2 = this.yyF.getPaint();
-        float f1 = ((TextPaint)localObject2).measureText((String)localObject1);
-        float f2 = ((TextPaint)localObject2).measureText(paramString);
-        float f3 = i;
-        paramString = this.kiF.getContext();
-        p.j(paramString, "root.context");
-        if (f1 + f2 + f3 + paramString.getResources().getDimensionPixelOffset(b.d.Edge_3A) * 2 >= paramInt) {
-          break label436;
-        }
-        this.yyG.setPadding(i, 0, 0, 0);
-        this.yyE.setOrientation(0);
-        break;
-        this.yyF.setVisibility(8);
-        paramString = "";
-        break label162;
-        label424:
-        this.yyG.setVisibility(8);
-      }
-      label436:
-      this.yyG.setPadding(0, 0, 0, 0);
-      this.yyE.setOrientation(1);
-    }
-  }
-  
-  public final void gZ(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(271495);
-    p.k(paramString1, "bgUrl");
-    p.k(paramString2, "contactUsername");
-    Object localObject = g.yPJ;
-    g.a(paramString2, ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).dGE(), (View)this.kCI);
-    localObject = com.tencent.mm.plugin.finder.loader.t.ztT;
-    localObject = com.tencent.mm.plugin.finder.loader.t.dJh();
-    paramString1 = new com.tencent.mm.plugin.finder.loader.e(paramString1);
-    ImageView localImageView = this.mWb;
-    com.tencent.mm.plugin.finder.loader.t localt = com.tencent.mm.plugin.finder.loader.t.ztT;
-    ((com.tencent.mm.loader.d)localObject).a(paramString1, localImageView, com.tencent.mm.plugin.finder.loader.t.a(t.a.ztX));
-    paramString1 = aj.AGc;
-    localObject = ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).zeZ;
-    paramString1 = paramString2;
-    if (localObject != null)
-    {
-      localObject = ((FinderObject)localObject).contact;
-      paramString1 = paramString2;
-      if (localObject != null)
-      {
-        paramString1 = ((FinderContact)localObject).username;
-        if (paramString1 != null) {
-          break label346;
-        }
-        paramString1 = paramString2;
-      }
-    }
-    label310:
-    label330:
-    label346:
-    for (;;)
-    {
-      paramString2 = ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).zeZ;
-      if (paramString2 != null)
-      {
-        paramString2 = paramString2.contact;
-        if (paramString2 != null)
-        {
-          paramString2 = paramString2.nickname;
-          paramString1 = aj.ht(paramString1, paramString2);
-          this.yyC.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c(this.kiF.getContext(), (CharSequence)paramString1));
-          this.kCI.setVisibility(0);
-          this.yyI.setVisibility(8);
-          paramString2 = this.jMg;
-          paramString1 = ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.e)business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.e.class)).zhc;
-          if (paramString1 == null) {
-            break label310;
-          }
-        }
-      }
-      for (paramString1 = (CharSequence)paramString1;; paramString1 = (CharSequence)this.kiF.getContext().getString(b.j.live_after_over))
-      {
-        paramString2.setText(paramString1);
-        if (Util.isNullOrNil(((com.tencent.mm.plugin.finder.live.viewmodel.data.business.e)business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.e.class)).zhd)) {
-          break label330;
-        }
-        this.msF.setVisibility(0);
-        this.msF.setText((CharSequence)((com.tencent.mm.plugin.finder.live.viewmodel.data.business.e)business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.e.class)).zhd);
-        AppMethodBeat.o(271495);
-        return;
-        paramString2 = null;
-        break;
-      }
-      this.msF.setVisibility(8);
-      AppMethodBeat.o(271495);
-      return;
+      label206:
+      paramInt1 = 0;
+      break;
+      label211:
+      Toast.makeText(this.context, p.h.CrO, 0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.plugin.cw
  * JD-Core Version:    0.7.0.1
  */

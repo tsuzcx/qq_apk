@@ -12,217 +12,232 @@ import androidx.recyclerview.widget.RecyclerView.m;
 import androidx.recyclerview.widget.RecyclerView.s;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.d;
-import com.tencent.mm.plugin.finder.convert.cv;
-import com.tencent.mm.plugin.finder.convert.w;
+import com.tencent.mm.plugin.finder.convert.cz;
+import com.tencent.mm.plugin.finder.convert.u;
+import com.tencent.mm.plugin.finder.e.c;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.storage.ak;
+import com.tencent.mm.plugin.finder.storage.as;
 import com.tencent.mm.plugin.finder.view.manager.FinderStaggeredGridLayoutManager;
+import com.tencent.mm.plugin.finder.viewmodel.e;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.component.g;
-import com.tencent.mm.ui.component.g.a;
-import com.tencent.mm.view.recyclerview.e;
-import com.tencent.mm.view.recyclerview.i;
+import com.tencent.mm.ui.component.k;
+import com.tencent.mm.ui.component.k.b;
+import com.tencent.mm.view.recyclerview.f;
+import com.tencent.mm.view.recyclerview.j;
 import java.util.List;
+import kotlin.Metadata;
 import kotlin.g.a.b;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoStaggeredConfig;", "Lcom/tencent/mm/plugin/finder/storage/IFinderLayoutConfig;", "context", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "getContext", "()Lcom/tencent/mm/ui/MMActivity;", "spanCount", "", "getSpanCount", "()I", "bindConvert", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getDefaultConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "getItemConvertFactory", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "extraMap", "Lkotlin/Function1;", "getItemDecoration", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getLayoutManager", "Landroidx/recyclerview/widget/RecyclerView$LayoutManager;", "Landroid/content/Context;", "getViewPool", "Landroidx/recyclerview/widget/RecyclerView$RecycledViewPool;", "plugin-finder-nearby_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoStaggeredConfig;", "Lcom/tencent/mm/plugin/finder/storage/IFinderLayoutConfig;", "context", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "getContext", "()Lcom/tencent/mm/ui/MMActivity;", "spanCount", "", "getSpanCount", "()I", "bindConvert", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getDefaultConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "getItemConvertFactory", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "extraMap", "Lkotlin/Function1;", "getItemDecoration", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getLayoutManager", "Landroidx/recyclerview/widget/RecyclerView$LayoutManager;", "Landroid/content/Context;", "getViewPool", "Landroidx/recyclerview/widget/RecyclerView$RecycledViewPool;", "Companion", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
-  extends ak
+  extends as
 {
-  private final MMActivity iXq;
+  public static final a ERL;
+  final MMActivity lzt;
   private final int spanCount;
+  
+  static
+  {
+    AppMethodBeat.i(340159);
+    ERL = new a((byte)0);
+    AppMethodBeat.o(340159);
+  }
   
   public c(MMActivity paramMMActivity)
   {
-    AppMethodBeat.i(199837);
-    this.iXq = paramMMActivity;
+    AppMethodBeat.i(340121);
+    this.lzt = paramMMActivity;
     this.spanCount = 2;
-    AppMethodBeat.o(199837);
+    AppMethodBeat.o(340121);
   }
   
-  public final com.tencent.mm.view.recyclerview.f O(final b<? super Integer, ? extends e<?>> paramb)
+  public static f<?> eGS()
   {
-    AppMethodBeat.i(199835);
-    paramb = (com.tencent.mm.view.recyclerview.f)new a(this, paramb);
-    AppMethodBeat.o(199835);
+    AppMethodBeat.i(340132);
+    if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.IS_FLAVOR_RED))
+    {
+      localObject = new RuntimeException("type invalid");
+      AppMethodBeat.o(340132);
+      throw ((Throwable)localObject);
+    }
+    Log.printInfoStack("FinderGridLayoutConfig", "type invalid", new Object[0]);
+    Object localObject = (f)new com.tencent.mm.plugin.finder.convert.g();
+    AppMethodBeat.o(340132);
+    return localObject;
+  }
+  
+  public final com.tencent.mm.view.recyclerview.g au(final b<? super Integer, ? extends f<?>> paramb)
+  {
+    AppMethodBeat.i(340188);
+    paramb = (com.tencent.mm.view.recyclerview.g)new b(this, paramb);
+    AppMethodBeat.o(340188);
     return paramb;
   }
   
-  public final com.tencent.mm.view.recyclerview.f dtg()
+  public final com.tencent.mm.view.recyclerview.g ech()
   {
-    AppMethodBeat.i(199833);
-    com.tencent.mm.view.recyclerview.f localf = O(null);
-    AppMethodBeat.o(199833);
-    return localf;
+    AppMethodBeat.i(340179);
+    com.tencent.mm.view.recyclerview.g localg = au(null);
+    AppMethodBeat.o(340179);
+    return localg;
   }
   
-  public final RecyclerView.LayoutManager eW(Context paramContext)
+  public final RecyclerView.LayoutManager fT(Context paramContext)
   {
-    AppMethodBeat.i(199830);
-    p.k(paramContext, "context");
-    paramContext = new FinderStaggeredGridLayoutManager(this.spanCount);
+    AppMethodBeat.i(340165);
+    s.u(paramContext, "context");
+    paramContext = new FinderStaggeredGridLayoutManager(this.spanCount, 1);
     paramContext.setItemPrefetchEnabled(true);
     paramContext = (RecyclerView.LayoutManager)paramContext;
-    AppMethodBeat.o(199830);
+    AppMethodBeat.o(340165);
     return paramContext;
-  }
-  
-  public final RecyclerView.m g(MMActivity paramMMActivity)
-  {
-    AppMethodBeat.i(199836);
-    p.k(paramMMActivity, "context");
-    g localg = g.Xox;
-    paramMMActivity = ((com.tencent.mm.plugin.finder.viewmodel.c)g.b((AppCompatActivity)paramMMActivity).i(com.tencent.mm.plugin.finder.viewmodel.c.class)).BgV;
-    AppMethodBeat.o(199836);
-    return paramMMActivity;
   }
   
   public final RecyclerView.h getItemDecoration()
   {
-    AppMethodBeat.i(199832);
-    RecyclerView.h localh = (RecyclerView.h)new b();
-    AppMethodBeat.o(199832);
+    AppMethodBeat.i(340172);
+    RecyclerView.h localh = (RecyclerView.h)new c();
+    AppMethodBeat.o(340172);
     return localh;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/nearby/video/NearbyVideoStaggeredConfig$getItemConvertFactory$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder-nearby_release"})
-  public static final class a
-    implements com.tencent.mm.view.recyclerview.f
+  public final RecyclerView.m j(MMActivity paramMMActivity)
   {
-    a(b paramb) {}
+    AppMethodBeat.i(340198);
+    s.u(paramMMActivity, "context");
+    k localk = k.aeZF;
+    paramMMActivity = ((e)k.d((AppCompatActivity)paramMMActivity).q(e.class)).GKV;
+    AppMethodBeat.o(340198);
+    return paramMMActivity;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoStaggeredConfig$Companion;", "", "()V", "TAG", "", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/nearby/video/NearbyVideoStaggeredConfig$getItemConvertFactory$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+    implements com.tencent.mm.view.recyclerview.g
+  {
+    b(c paramc, b<? super Integer, ? extends f<?>> paramb) {}
     
-    public final e<?> yx(int paramInt)
+    public final f<?> yF(int paramInt)
     {
-      AppMethodBeat.i(203719);
+      AppMethodBeat.i(340081);
       switch (paramInt)
       {
       default: 
         localObject = paramb;
-        if (localObject != null)
-        {
-          e locale = (e)((b)localObject).invoke(Integer.valueOf(paramInt));
-          localObject = locale;
-          if (locale != null) {
-            break label183;
-          }
+        if (localObject != null) {
+          break;
         }
-        if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.IS_FLAVOR_RED))
-        {
-          localObject = (Throwable)new RuntimeException("type invalid");
-          AppMethodBeat.o(203719);
-          throw ((Throwable)localObject);
-        }
-        break;
-      case 4: 
-      case 9: 
-      case 3002: 
-        localObject = (e)new a(this);
-        AppMethodBeat.o(203719);
+      }
+      for (Object localObject = null; localObject == null; localObject = (f)((b)localObject).invoke(Integer.valueOf(paramInt)))
+      {
+        localObject = c.eGS();
+        AppMethodBeat.o(340081);
         return localObject;
-      case 2: 
-      case 3001: 
-        localObject = (e)new b(this);
-        AppMethodBeat.o(203719);
+        localObject = (f)new a(this.ERM);
+        AppMethodBeat.o(340081);
+        return localObject;
+        localObject = (f)new b(this.ERM);
+        AppMethodBeat.o(340081);
+        return localObject;
+        localObject = (f)new com.tencent.mm.plugin.finder.nearby.live.convert.c((Context)this.ERM.lzt);
+        AppMethodBeat.o(340081);
         return localObject;
       }
-      Log.printInfoStack("FinderGridLayoutConfig", "type invalid", new Object[0]);
-      Object localObject = (e)new com.tencent.mm.plugin.finder.convert.f();
-      label183:
-      AppMethodBeat.o(203719);
+      AppMethodBeat.o(340081);
       return localObject;
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/nearby/video/NearbyVideoStaggeredConfig$getItemConvertFactory$1$getItemConvert$1", "Lcom/tencent/mm/plugin/finder/convert/NearbyVideoFeedConvert;", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder-nearby_release"})
+    @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/nearby/video/NearbyVideoStaggeredConfig$getItemConvertFactory$1$getItemConvert$1", "Lcom/tencent/mm/plugin/finder/convert/NearbyVideoFeedConvert;", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
     public static final class a
-      extends cv
+      extends cz
     {
-      public final void a(i parami, BaseFinderFeed paramBaseFinderFeed, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
+      a(c paramc) {}
+      
+      public final void a(j paramj, BaseFinderFeed paramBaseFinderFeed, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
       {
-        AppMethodBeat.i(200431);
-        p.k(parami, "holder");
-        p.k(paramBaseFinderFeed, "item");
-        super.a(parami, paramBaseFinderFeed, paramInt1, paramInt2, paramBoolean, paramList);
-        c.m(parami, paramBaseFinderFeed);
-        AppMethodBeat.o(200431);
+        AppMethodBeat.i(340091);
+        s.u(paramj, "holder");
+        s.u(paramBaseFinderFeed, "item");
+        super.a(paramj, paramBaseFinderFeed, paramInt1, paramInt2, paramBoolean, paramList);
+        c.k(paramj, paramBaseFinderFeed);
+        AppMethodBeat.o(340091);
       }
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/nearby/video/NearbyVideoStaggeredConfig$getItemConvertFactory$1$getItemConvert$2", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedImageRoundCornerConvert;", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder-nearby_release"})
+    @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/nearby/video/NearbyVideoStaggeredConfig$getItemConvertFactory$1$getItemConvert$2", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedImageRoundCornerConvert;", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
     public static final class b
-      extends w
+      extends u
     {
-      public final void a(i parami, BaseFinderFeed paramBaseFinderFeed, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
+      b(c paramc) {}
+      
+      public final void a(j paramj, BaseFinderFeed paramBaseFinderFeed, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
       {
-        AppMethodBeat.i(201230);
-        p.k(parami, "holder");
-        p.k(paramBaseFinderFeed, "item");
-        super.a(parami, paramBaseFinderFeed, paramInt1, paramInt2, paramBoolean, paramList);
-        c.m(parami, paramBaseFinderFeed);
-        AppMethodBeat.o(201230);
+        AppMethodBeat.i(340092);
+        s.u(paramj, "holder");
+        s.u(paramBaseFinderFeed, "item");
+        super.a(paramj, paramBaseFinderFeed, paramInt1, paramInt2, paramBoolean, paramList);
+        c.k(paramj, paramBaseFinderFeed);
+        AppMethodBeat.o(340092);
       }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/nearby/video/NearbyVideoStaggeredConfig$getItemDecoration$1", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "plugin-finder-nearby_release"})
-  public static final class b
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/nearby/video/NearbyVideoStaggeredConfig$getItemDecoration$1", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
     extends RecyclerView.h
   {
     public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
     {
-      AppMethodBeat.i(200634);
-      p.k(paramRect, "outRect");
-      p.k(paramView, "view");
-      p.k(paramRecyclerView, "parent");
-      p.k(params, "state");
-      paramRecyclerView = paramView.getContext();
-      p.j(paramRecyclerView, "view.context");
-      int i = (int)paramRecyclerView.getResources().getDimension(b.d.Edge_0_5_A);
-      paramRecyclerView = paramView.getContext();
-      p.j(paramRecyclerView, "view.context");
-      int j = (int)paramRecyclerView.getResources().getDimension(b.d.finder_0_25_A);
+      AppMethodBeat.i(340087);
+      s.u(paramRect, "outRect");
+      s.u(paramView, "view");
+      s.u(paramRecyclerView, "parent");
+      s.u(params, "state");
+      int i = (int)paramView.getContext().getResources().getDimension(e.c.Edge_0_5_A);
+      int j = (int)paramView.getContext().getResources().getDimension(e.c.finder_0_25_A);
       paramRecyclerView = paramView.getLayoutParams();
       if (paramRecyclerView == null)
       {
-        paramRect = new t("null cannot be cast to non-null type androidx.recyclerview.widget.StaggeredGridLayoutManager.LayoutParams");
-        AppMethodBeat.o(200634);
+        paramRect = new NullPointerException("null cannot be cast to non-null type androidx.recyclerview.widget.StaggeredGridLayoutManager.LayoutParams");
+        AppMethodBeat.o(340087);
         throw paramRect;
       }
-      if (((StaggeredGridLayoutManager.LayoutParams)paramRecyclerView).mF())
+      if (((StaggeredGridLayoutManager.LayoutParams)paramRecyclerView).cbB)
       {
         paramRect.left = 0;
         paramRect.right = 0;
         paramRect.bottom = 0;
         paramRect.top = 0;
-        AppMethodBeat.o(200634);
+        AppMethodBeat.o(340087);
         return;
       }
       paramView = paramView.getLayoutParams();
       if (paramView == null)
       {
-        paramRect = new t("null cannot be cast to non-null type androidx.recyclerview.widget.StaggeredGridLayoutManager.LayoutParams");
-        AppMethodBeat.o(200634);
+        paramRect = new NullPointerException("null cannot be cast to non-null type androidx.recyclerview.widget.StaggeredGridLayoutManager.LayoutParams");
+        AppMethodBeat.o(340087);
         throw paramRect;
       }
-      if (((StaggeredGridLayoutManager.LayoutParams)paramView).kv() % 2 == 0)
+      if (((StaggeredGridLayoutManager.LayoutParams)paramView).Lh() % 2 == 0)
       {
         paramRect.left = i;
         paramRect.right = j;
         paramRect.bottom = j;
         paramRect.top = j;
-        AppMethodBeat.o(200634);
+        AppMethodBeat.o(340087);
         return;
       }
       paramRect.left = j;
       paramRect.right = i;
       paramRect.bottom = j;
       paramRect.top = j;
-      AppMethodBeat.o(200634);
+      AppMethodBeat.o(340087);
     }
   }
 }

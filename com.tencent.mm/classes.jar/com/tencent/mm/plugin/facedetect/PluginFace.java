@@ -2,17 +2,19 @@ package com.tencent.mm.plugin.facedetect;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
+import com.tencent.mm.plugin.expansions.e;
+import com.tencent.mm.plugin.facedetect.a.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vending.g.d.a;
+import com.tencent.mm.vending.g.c;
 
 public class PluginFace
   extends f
-  implements com.tencent.mm.plugin.facedetect.a.a
+  implements a
 {
   public static boolean isEnabled()
   {
     AppMethodBeat.i(103572);
-    boolean bool = com.tencent.mm.plugin.expansions.a.dbf();
+    boolean bool = e.isInstalled();
     AppMethodBeat.o(103572);
     return bool;
   }
@@ -21,8 +23,8 @@ public class PluginFace
   {
     AppMethodBeat.i(103571);
     Log.i("MicroMsg.PluginFace", "hy: starting execute.");
-    if (paramg.aIE()) {
-      com.tencent.mm.vending.g.g.ieN().d(new b()).a(new d.a() {});
+    if (paramg.bbA()) {
+      com.tencent.mm.vending.g.g.jJU().d(new b()).a(new PluginFace.1(this));
     }
     AppMethodBeat.o(103571);
   }

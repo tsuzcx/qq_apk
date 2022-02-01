@@ -1,26 +1,23 @@
 package com.tencent.mm.plugin.finder.live.util;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/util/BezierUtil;", "", "()V", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/util/BezierUtil;", "", "()V", "Companion", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
 {
-  public static final a yPH;
+  public static final f.a DIo;
   
   static
   {
-    AppMethodBeat.i(285690);
-    yPH = new a((byte)0);
-    AppMethodBeat.o(285690);
+    AppMethodBeat.i(351322);
+    DIo = new f.a((byte)0);
+    AppMethodBeat.o(351322);
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/util/BezierUtil$Companion;", "", "()V", "calculateBezierPointForCubic", "Landroid/graphics/PointF;", "t", "", "p0", "p1", "p2", "p3", "calculateBezierPointForQuadratic", "plugin-finder_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.util.f
  * JD-Core Version:    0.7.0.1
  */

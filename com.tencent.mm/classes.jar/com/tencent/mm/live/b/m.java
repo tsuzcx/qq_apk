@@ -1,610 +1,338 @@
 package com.tencent.mm.live.b;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Point;
-import android.os.Parcelable;
-import android.telephony.TelephonyManager;
+import android.os.Bundle;
+import android.os.Vibrator;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewPropertyAnimator;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.yx;
-import com.tencent.mm.f.a.yx.b;
-import com.tencent.mm.kernel.f;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.live.api.LiveConfig;
-import com.tencent.mm.live.api.LiveConfig.a;
-import com.tencent.mm.live.b.h;
-import com.tencent.mm.live.core.core.a.b.b;
-import com.tencent.mm.live.core.core.c.c.a;
-import com.tencent.mm.live.ui.dialog.LiveVisitorGuideView;
-import com.tencent.mm.protocal.protobuf.crl;
-import com.tencent.mm.protocal.protobuf.crq;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.am.p;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.live.b.e;
+import com.tencent.mm.live.b.g;
+import com.tencent.mm.live.model.a.q;
+import com.tencent.mm.live.model.j;
+import com.tencent.mm.live.model.l.b;
+import com.tencent.mm.live.model.o;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import com.tencent.mm.sdk.platformtools.NetStatusUtil;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.ui.ax;
-import com.tencent.mm.ui.widget.a.f.c;
-import com.tencent.mm.ui.widget.a.g;
-import kotlin.g.b.aa.f;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.ui.bb;
+import com.tencent.mm.ui.bd;
+import com.tencent.mm.ui.bf;
+import java.util.ArrayList;
+import java.util.Iterator;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.u;
+import kotlin.k.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/model/LiveEntranceJumperImpl;", "Lcom/tencent/mm/live/api/ILiveEntranceJumper;", "()V", "TAG", "", "gotoAnchorLive", "", "context", "Landroid/content/Context;", "configProvider", "Lcom/tencent/mm/live/api/LiveConfig;", "gotoVisitLive", "jumpToAnchorUI", "", "jumpToEntranceUI", "jumpToLiveUIA", "jumpToReplayUI", "jumpToVisitorUI", "LiveChecker", "plugin-logic_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/plugin/LiveGuestRightPanelPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "fetcherListener", "Lkotlin/Function0;", "", "likeBtn", "Landroid/widget/ImageView;", "likeBtnClickArea", "Landroid/widget/RelativeLayout;", "likeCount", "", "likeCountTv", "Landroid/widget/TextView;", "likeLayout", "Landroid/widget/LinearLayout;", "likeTooMuch", "", "liveVisitorMicPlugin", "Lcom/tencent/mm/live/plugin/LiveVisitorMicPlugin;", "needPostLike", "postLikeTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "vibrator", "", "kotlin.jvm.PlatformType", "checkBtnLayout", "isWaitingMic", "mount", "onBackPress", "onClick", "v", "Landroid/view/View;", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "postLike", "scaleAnimate", "target", "targetValue", "", "setVisible", "visible", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "unMount", "Companion", "plugin-logic_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class m
-  implements com.tencent.mm.live.api.a
+  extends a
+  implements View.OnClickListener, com.tencent.mm.am.h
 {
-  private static final String TAG = "MicroMsg.LiveEntranceJumper";
-  public static final m kuW;
+  public static final m.a nhM;
+  private int likeCount;
+  private final b nfT;
+  private final TextView nga;
+  public final ag nhN;
+  private final ImageView nhO;
+  private final RelativeLayout nhP;
+  private final LinearLayout nhQ;
+  private boolean nhR;
+  private final Object nhS;
+  private final kotlin.g.a.a<ah> nhT;
+  private final MTimerHandler nhU;
   
   static
   {
-    AppMethodBeat.i(195177);
-    kuW = new m();
-    TAG = "MicroMsg.LiveEntranceJumper";
-    AppMethodBeat.o(195177);
+    AppMethodBeat.i(247162);
+    nhM = new m.a((byte)0);
+    AppMethodBeat.o(247162);
   }
   
-  private static void e(final Context paramContext, final LiveConfig paramLiveConfig)
+  public m(ViewGroup paramViewGroup, b paramb)
   {
-    int j = 1;
-    AppMethodBeat.i(195161);
-    Object localObject1;
-    Object localObject2;
-    if (WeChatEnvironment.hasDebugger())
+    super(paramViewGroup, paramb);
+    AppMethodBeat.i(247087);
+    this.nfT = paramb;
+    paramb = paramViewGroup.findViewById(b.e.live_visitor_mic_parent);
+    kotlin.g.b.s.s(paramb, "root.findViewById(R.id.live_visitor_mic_parent)");
+    this.nhN = new ag((ViewGroup)paramb, this.nfT);
+    paramb = paramViewGroup.findViewById(b.e.live_right_panel_like);
+    kotlin.g.b.s.s(paramb, "root.findViewById(R.id.live_right_panel_like)");
+    this.nhO = ((ImageView)paramb);
+    paramb = paramViewGroup.findViewById(b.e.live_right_panel_like_click_area);
+    kotlin.g.b.s.s(paramb, "root.findViewById(R.id.l…ht_panel_like_click_area)");
+    this.nhP = ((RelativeLayout)paramb);
+    paramb = paramViewGroup.findViewById(b.e.live_right_panel_like_count_tv);
+    kotlin.g.b.s.s(paramb, "root.findViewById(R.id.l…ight_panel_like_count_tv)");
+    this.nga = ((TextView)paramb);
+    paramb = paramViewGroup.findViewById(b.e.live_like_layout);
+    kotlin.g.b.s.s(paramb, "root.findViewById(R.id.live_like_layout)");
+    this.nhQ = ((LinearLayout)paramb);
+    this.nhR = true;
+    this.nhS = paramViewGroup.getContext().getSystemService("vibrator");
+    this.nhT = ((kotlin.g.a.a)new c(paramViewGroup, this));
+    this.nhU = new MTimerHandler("RoomLiveLike::Timer", new m..ExternalSyntheticLambda1(this), true);
+    this.nhO.setImageDrawable(bb.e(paramViewGroup.getContext().getResources().getDrawable(b.g.icons_filled_call_good), -1));
+    this.nhP.setOnTouchListener(new m..ExternalSyntheticLambda0(this));
+    paramb = j.mXT;
+    j.g(name(), this.nhT);
+    if (paramViewGroup.findViewById(b.e.content_root_view) != null)
     {
-      localObject1 = l.e.kuB;
-      localObject1 = MultiProcessMMKV.getSingleMMKV(l.e.aNJ());
-      localObject2 = l.g.kuI;
-      if (((MultiProcessMMKV)localObject1).getBoolean(l.g.aNP(), false))
+      paramb = new LinearLayout.LayoutParams(-1, -1);
+      paramb.bottomMargin = bf.bk(paramViewGroup.getContext());
+      ((LinearLayout)paramViewGroup.findViewById(b.e.content_root_view)).setLayoutParams((ViewGroup.LayoutParams)paramb);
+    }
+    AppMethodBeat.o(247087);
+  }
+  
+  private static final boolean a(m paramm)
+  {
+    AppMethodBeat.i(247106);
+    kotlin.g.b.s.u(paramm, "this$0");
+    if (paramm.likeCount < 9)
+    {
+      if ((paramm.nhS instanceof Vibrator)) {
+        ((Vibrator)paramm.nhS).vibrate(10L);
+      }
+      paramm.likeCount += 1;
+      d.uiThread((kotlin.g.a.a)new e(paramm));
+      AppMethodBeat.o(247106);
+      return true;
+    }
+    AppMethodBeat.o(247106);
+    return false;
+  }
+  
+  private static final boolean a(m paramm, View paramView, MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(247116);
+    kotlin.g.b.s.u(paramm, "this$0");
+    switch (paramMotionEvent.getActionMasked())
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(247116);
+      return true;
+      t((View)paramm.nhP, 1.7F);
+      paramm.nga.setVisibility(4);
+      paramm.nhU.startTimer(0L, 200L);
+      continue;
+      paramm.nhU.stopTimer();
+      t((View)paramm.nhP, 1.0F);
+      paramm.nga.setVisibility(0);
+      if (paramm.nhR)
       {
-        i = 1;
-        localObject1 = h.aHG();
-        p.j(localObject1, "MMKernel.storage()");
-        localObject1 = ((f)localObject1).aHp().get(6);
-        if (localObject1 != null) {
-          break label237;
-        }
-        localObject1 = null;
-        label77:
-        if (i == 0) {
-          break label247;
-        }
-        if (paramLiveConfig != null) {
-          LiveConfig.eS(false);
-        }
-        label89:
-        localObject1 = u.kwz;
-        if (!u.aOF().kwC) {
-          break label328;
-        }
-        localObject1 = h.aHG();
-        p.j(localObject1, "MMKernel.storage()");
-        if (((f)localObject1).aHp().getInt(ar.a.VDi, 1) != 1) {
-          break label312;
-        }
+        paramView = o.mZb;
+        o.tA(paramm.likeCount);
+        paramm.nhR = false;
+        paramm.likeCount = 0;
       }
     }
-    label296:
-    label301:
-    label312:
-    for (int i = j;; i = 0)
+  }
+  
+  private static final void b(m paramm)
+  {
+    AppMethodBeat.i(247132);
+    kotlin.g.b.s.u(paramm, "this$0");
+    Object localObject1 = paramm.nhN.nks;
+    Object localObject2 = new ArrayList();
+    ((ArrayList)localObject2).add(localObject1);
+    ((ArrayList)localObject2).add(paramm.nhQ);
+    int i = k.qu(paramm.nhQ.getWidth(), ((LinearLayout)localObject1).getWidth());
+    localObject1 = ((Iterable)localObject2).iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      if (i == 0) {
-        break label317;
+      localObject2 = (View)((Iterator)localObject1).next();
+      int j = (i - ((View)localObject2).getWidth()) / 2;
+      ((View)localObject2).setPadding(((View)localObject2).getPaddingLeft(), ((View)localObject2).getPaddingTop(), j + ((View)localObject2).getPaddingRight(), ((View)localObject2).getPaddingBottom());
+    }
+    paramm.mJe.requestLayout();
+    AppMethodBeat.o(247132);
+  }
+  
+  private static void t(View paramView, float paramFloat)
+  {
+    AppMethodBeat.i(247096);
+    paramView.animate().setDuration(200L).scaleX(paramFloat).scaleY(paramFloat).start();
+    AppMethodBeat.o(247096);
+  }
+  
+  public final void mount()
+  {
+    AppMethodBeat.i(247234);
+    com.tencent.mm.kernel.h.baD().mCm.a(3957, (com.tencent.mm.am.h)this);
+    AppMethodBeat.o(247234);
+  }
+  
+  public final boolean onBackPress()
+  {
+    return false;
+  }
+  
+  public final void onClick(View paramView)
+  {
+    AppMethodBeat.i(247202);
+    Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+    ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/plugin/LiveGuestRightPanelPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
+    int i;
+    if (paramView == null)
+    {
+      paramView = null;
+      i = b.e.live_right_panel_like_click_area;
+      if (paramView != null) {
+        break label90;
       }
-      localObject1 = new g(paramContext, 0, 0);
-      ((g)localObject1).setHeight(ax.au(paramContext).y * 3 / 4);
-      localObject2 = new LiveVisitorGuideView(paramContext);
-      ((LiveVisitorGuideView)localObject2).setOnHideListener((kotlin.g.a.a)new m.b((g)localObject1));
-      ((LiveVisitorGuideView)localObject2).setOnOkListener((kotlin.g.a.a)new c((g)localObject1, paramContext, paramLiveConfig));
-      ((g)localObject1).setCustomView((View)localObject2);
-      ((g)localObject1).eik();
-      AppMethodBeat.o(195161);
+    }
+    for (;;)
+    {
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveGuestRightPanelPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(247202);
       return;
-      i = 0;
+      paramView = Integer.valueOf(paramView.getId());
       break;
-      label237:
-      localObject1 = (String)localObject1;
-      break label77;
-      label247:
-      localObject2 = u.kwz;
-      if (u.aOF().kwB)
+      label90:
+      if (paramView.intValue() == i)
       {
-        if (localObject1 != null) {
-          if (((CharSequence)localObject1).length() != 0) {
-            break label296;
-          }
-        }
-        for (i = 1;; i = 0)
+        paramView = new Bundle();
+        localObject = new int[2];
+        localObject[0] = 0;
+        localObject[1] = 0;
+        this.nhP.getLocationOnScreen((int[])localObject);
+        i = localObject[0];
+        int j = this.nhP.getWidth() / 2;
+        l.b localb = l.b.mYf;
+        paramView.putInt("PARAM_LIVE_LIKE_CONFETTI_X", i + j - l.b.bhn() / 2);
+        i = localObject[1];
+        j = bd.fromDPToPix(this.mJe.getContext(), 16);
+        localObject = l.b.mYf;
+        paramView.putInt("PARAM_LIVE_LIKE_CONFETTI_Y", i - j - l.b.bhn());
+        this.nfT.statusChange(b.c.ncI, paramView);
+        this.likeCount += 1;
+        if (this.nhR)
         {
-          if (i == 0) {
-            break label301;
-          }
-          if (paramLiveConfig == null) {
-            break;
-          }
-          LiveConfig.eS(true);
-          break;
+          paramView = o.mZb;
+          o.tA(this.likeCount);
+          this.nhR = false;
+          this.likeCount = 0;
         }
       }
-      if (paramLiveConfig == null) {
-        break label89;
+    }
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
+  {
+    AppMethodBeat.i(247264);
+    if ((paramp instanceof q))
+    {
+      if ((paramInt1 == 0) && (paramInt2 == 0)) {
+        d.uiThread((kotlin.g.a.a)new d(this));
       }
-      LiveConfig.eS(false);
-      break label89;
-    }
-    label317:
-    f(paramContext, paramLiveConfig);
-    AppMethodBeat.o(195161);
-    return;
-    label328:
-    f(paramContext, paramLiveConfig);
-    AppMethodBeat.o(195161);
-  }
-  
-  private static void f(Context paramContext, LiveConfig paramLiveConfig)
-  {
-    AppMethodBeat.i(195165);
-    if (paramLiveConfig != null) {
-      com.tencent.mm.live.b.c.c.getLiveTipsBarStorage().t(paramLiveConfig.aJg(), paramLiveConfig.getLiveId());
-    }
-    Intent localIntent = new Intent(paramContext, Class.forName("com.tencent.mm.live.ui.LiveUIA"));
-    localIntent.putExtra("KEY_PARAMS_CONFIG", (Parcelable)paramLiveConfig);
-    localIntent.addFlags(268435456);
-    paramLiveConfig = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramLiveConfig.aFh(), "com/tencent/mm/live/model/LiveEntranceJumperImpl", "jumpToLiveUIA", "(Landroid/content/Context;Lcom/tencent/mm/live/api/LiveConfig;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramLiveConfig.sf(0));
-    com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/live/model/LiveEntranceJumperImpl", "jumpToLiveUIA", "(Landroid/content/Context;Lcom/tencent/mm/live/api/LiveConfig;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(195165);
-  }
-  
-  private static void g(Context paramContext, LiveConfig paramLiveConfig)
-  {
-    AppMethodBeat.i(195171);
-    Intent localIntent = new Intent(paramContext, Class.forName("com.tencent.mm.live.ui.LiveUIA"));
-    localIntent.putExtra("KEY_PARAMS_CONFIG", (Parcelable)paramLiveConfig);
-    localIntent.addFlags(268435456);
-    paramLiveConfig = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramLiveConfig.aFh(), "com/tencent/mm/live/model/LiveEntranceJumperImpl", "gotoAnchorLive", "(Landroid/content/Context;Lcom/tencent/mm/live/api/LiveConfig;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramLiveConfig.sf(0));
-    com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/live/model/LiveEntranceJumperImpl", "gotoAnchorLive", "(Landroid/content/Context;Lcom/tencent/mm/live/api/LiveConfig;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(195171);
-  }
-  
-  public final boolean a(Context paramContext, LiveConfig paramLiveConfig)
-  {
-    AppMethodBeat.i(195133);
-    p.k(paramContext, "context");
-    try
-    {
-      Intent localIntent = new Intent(paramContext, Class.forName("com.tencent.mm.live.ui.LiveUIF"));
-      localIntent.putExtra("KEY_PARAMS_CONFIG", (Parcelable)paramLiveConfig);
-      paramLiveConfig = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramLiveConfig.aFh(), "com/tencent/mm/live/model/LiveEntranceJumperImpl", "jumpToEntranceUI", "(Landroid/content/Context;Lcom/tencent/mm/live/api/LiveConfig;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramLiveConfig.sf(0));
-      com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/live/model/LiveEntranceJumperImpl", "jumpToEntranceUI", "(Landroid/content/Context;Lcom/tencent/mm/live/api/LiveConfig;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      bool = true;
-    }
-    catch (ClassNotFoundException paramContext)
-    {
-      for (;;)
+      Log.i("MicroMsg.LiveGuestRightPanelPlugin", "onSceneEnd errType:" + paramInt1 + " errCode:" + paramInt2 + " likeCount:" + this.likeCount);
+      if (this.likeCount > 0)
       {
-        Log.printErrStackTrace(TAG, (Throwable)paramContext, "jumpToEntranceUI failed!", new Object[0]);
-        boolean bool = false;
+        paramString = o.mZb;
+        o.tA(this.likeCount);
+        this.nhR = false;
+        this.likeCount = 0;
+        AppMethodBeat.o(247264);
+        return;
       }
+      this.nhR = true;
+      this.likeCount = 0;
     }
-    AppMethodBeat.o(195133);
-    return bool;
+    AppMethodBeat.o(247264);
   }
   
-  public final boolean b(Context paramContext, LiveConfig paramLiveConfig)
+  public final void statusChange(b.c paramc, Bundle paramBundle)
   {
-    AppMethodBeat.i(195141);
-    p.k(paramContext, "context");
+    int i = 1;
+    AppMethodBeat.i(247223);
+    kotlin.g.b.s.u(paramc, "status");
+    super.statusChange(paramc, paramBundle);
+    switch (m.b.$EnumSwitchMapping$0[paramc.ordinal()])
+    {
+    }
     for (;;)
     {
-      try
+      AppMethodBeat.o(247223);
+      return;
+      tO(8);
+      AppMethodBeat.o(247223);
+      return;
+      tO(0);
+      this.mJe.post(new m..ExternalSyntheticLambda2(this));
+      AppMethodBeat.o(247223);
+      return;
+      if ((paramBundle != null) && (paramBundle.getBoolean("PARAM_IS_ENTERING_COMMENT") == true)) {}
+      while (i != 0)
       {
-        a locala = a.kuX;
-        p.k(paramContext, "context");
-        aa.f localf = new aa.f();
-        localObject = paramContext.getResources();
-        if (localObject == null) {
-          continue;
-        }
-        localObject = ((Resources)localObject).getString(b.h.live_open_new_tip_busy);
-        localf.aaBC = localObject;
-        localObject = new aa.f();
-        String str = paramContext.getResources().getString(b.h.app_i_know);
-        p.j(str, "context.resources.getString(R.string.app_i_know)");
-        ((aa.f)localObject).aaBC = str;
-        locala = locala.l((kotlin.g.a.a)new m.a.f(paramContext, (aa.f)localObject));
-        if (locala != null)
-        {
-          locala = locala.k((kotlin.g.a.a)new m.a.g(paramContext, (aa.f)localObject));
-          if (locala != null)
-          {
-            locala = locala.m((kotlin.g.a.a)new m.a.h(paramContext, (aa.f)localObject));
-            if ((locala != null) && (locala.a(paramLiveConfig, (kotlin.g.a.a)new m.a.i(paramContext, (aa.f)localObject, paramLiveConfig, localf)) != null))
-            {
-              localObject = com.tencent.mm.live.core.core.a.b.klq;
-              if (!b.b.aLi()) {
-                continue;
-              }
-              localObject = com.tencent.mm.live.core.core.a.b.klq;
-              b.b.aLh();
-              if (paramLiveConfig != null)
-              {
-                long l = paramLiveConfig.getLiveId();
-                localObject = u.kwz;
-                if (l == u.aOr().klE) {}
-              }
-              else
-              {
-                localObject = u.kwz;
-                u.ate();
-              }
-              e(paramContext, paramLiveConfig);
-            }
-          }
-        }
-        bool = true;
-      }
-      catch (ClassNotFoundException paramContext)
-      {
-        Object localObject;
-        Log.printErrStackTrace(TAG, (Throwable)paramContext, "jumpToEntranceUI failed!", new Object[0]);
-        boolean bool = false;
-        continue;
-      }
-      AppMethodBeat.o(195141);
-      return bool;
-      localObject = null;
-      continue;
-      localObject = com.tencent.mm.live.core.core.c.c.kqq;
-      if (c.a.aLi())
-      {
-        localObject = com.tencent.mm.live.core.core.c.c.kqq;
-        c.a.aMm();
-      }
-    }
-  }
-  
-  public final boolean c(Context paramContext, LiveConfig paramLiveConfig)
-  {
-    AppMethodBeat.i(195159);
-    p.k(paramContext, "context");
-    for (;;)
-    {
-      try
-      {
-        Object localObject2 = a.kuX;
-        p.k(paramContext, "context");
-        localObject1 = new aa.f();
-        Object localObject3 = paramContext.getResources().getString(b.h.app_i_know);
-        p.j(localObject3, "context.resources.getString(R.string.app_i_know)");
-        ((aa.f)localObject1).aaBC = localObject3;
-        localObject2 = ((a)localObject2).l((kotlin.g.a.a)new m.a.a(paramContext, (aa.f)localObject1));
-        if (localObject2 != null)
-        {
-          localObject2 = ((a)localObject2).k((kotlin.g.a.a)new m.a.b(paramContext, (aa.f)localObject1));
-          if (localObject2 != null)
-          {
-            localObject2 = ((a)localObject2).m((kotlin.g.a.a)new m.a.c(paramContext, (aa.f)localObject1));
-            if (localObject2 != null)
-            {
-              localObject1 = ((a)localObject2).a(paramLiveConfig, (kotlin.g.a.a)new m.a.d(paramContext, (aa.f)localObject1, paramLiveConfig));
-              if (localObject1 != null)
-              {
-                localObject2 = (kotlin.g.a.b)new m.a.e(paramContext, paramLiveConfig);
-                localObject3 = com.tencent.mm.live.b.c.a.kyw;
-                localObject3 = com.tencent.mm.live.b.c.a.aPm();
-                if ((paramLiveConfig == null) || (paramLiveConfig.getScene() != LiveConfig.khV) || (((crl)localObject3).klE == 0L)) {
-                  continue;
-                }
-                ((kotlin.g.a.b)localObject2).invoke(localObject3);
-                localObject1 = null;
-                if (localObject1 != null)
-                {
-                  localObject1 = com.tencent.mm.live.core.core.a.b.klq;
-                  if (!b.b.aLi()) {
-                    continue;
-                  }
-                  localObject1 = com.tencent.mm.live.core.core.a.b.klq;
-                  b.b.aLh();
-                  if (paramLiveConfig != null)
-                  {
-                    long l = paramLiveConfig.getLiveId();
-                    localObject1 = u.kwz;
-                    if (l == u.aOr().klE) {}
-                  }
-                  else
-                  {
-                    localObject1 = u.kwz;
-                    u.ate();
-                  }
-                  g(paramContext, paramLiveConfig);
-                }
-              }
-            }
-          }
-        }
-        bool = true;
-      }
-      catch (ClassNotFoundException paramContext)
-      {
-        Object localObject1;
-        Log.printErrStackTrace(TAG, (Throwable)paramContext, "jumpToAnchorUI failed!", new Object[0]);
-        boolean bool = false;
-        continue;
-      }
-      AppMethodBeat.o(195159);
-      return bool;
-      continue;
-      localObject1 = com.tencent.mm.live.core.core.c.c.kqq;
-      if (c.a.aLi())
-      {
-        localObject1 = com.tencent.mm.live.core.core.c.c.kqq;
-        c.a.aMm();
-      }
-    }
-  }
-  
-  public final boolean d(Context paramContext, LiveConfig paramLiveConfig)
-  {
-    AppMethodBeat.i(195150);
-    p.k(paramContext, "context");
-    try
-    {
-      Intent localIntent = new Intent(paramContext, Class.forName("com.tencent.mm.live.ui.LiveUID"));
-      localIntent.putExtra("KEY_PARAMS_CONFIG", (Parcelable)paramLiveConfig);
-      localIntent.addFlags(268435456);
-      localIntent.putExtra("FROM_SENCE", 1);
-      paramLiveConfig = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramLiveConfig.aFh(), "com/tencent/mm/live/model/LiveEntranceJumperImpl", "jumpToReplayUI", "(Landroid/content/Context;Lcom/tencent/mm/live/api/LiveConfig;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramLiveConfig.sf(0));
-      com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/live/model/LiveEntranceJumperImpl", "jumpToReplayUI", "(Landroid/content/Context;Lcom/tencent/mm/live/api/LiveConfig;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      bool = true;
-    }
-    catch (Exception paramContext)
-    {
-      for (;;)
-      {
-        Log.printErrStackTrace(TAG, (Throwable)paramContext, "jumpToReplayUI failed!", new Object[0]);
-        boolean bool = false;
-      }
-    }
-    AppMethodBeat.o(195150);
-    return bool;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/model/LiveEntranceJumperImpl$LiveChecker;", "", "()V", "checkAnchorLiving", "config", "Lcom/tencent/mm/live/api/LiveConfig;", "errorCallback", "Lkotlin/Function1;", "Lcom/tencent/mm/protocal/protobuf/LiveAnchorInfo;", "Lkotlin/ParameterName;", "name", "liveAnchorInfo", "", "checkIsUsePhone", "Lkotlin/Function0;", "checkLiveInfo", "checkNetwork", "checkTalkRoom", "goAnchorUIWithCheck", "context", "Landroid/content/Context;", "goVisitorUIWithCheck", "plugin-logic_release"})
-  public static final class a
-  {
-    public static final a kuX;
-    
-    static
-    {
-      AppMethodBeat.i(200399);
-      kuX = new a();
-      AppMethodBeat.o(200399);
-    }
-    
-    final a a(LiveConfig paramLiveConfig, kotlin.g.a.a<x> parama)
-    {
-      AppMethodBeat.i(200387);
-      Object localObject1 = u.kwz;
-      int i;
-      if (u.aOr().klE != 0L)
-      {
-        localObject1 = m.kuW;
-        String str = m.aNX();
-        localObject1 = new StringBuilder("curLiveId:");
-        Object localObject2 = u.kwz;
-        localObject2 = ((StringBuilder)localObject1).append(u.aOr().klE).append(" newLiveId:");
-        if (paramLiveConfig != null)
-        {
-          localObject1 = Long.valueOf(paramLiveConfig.getLiveId());
-          Log.i(str, localObject1);
-          localObject1 = u.kwz;
-          if (!u.aOD().kwJ)
-          {
-            localObject1 = u.kwz;
-            if (!u.aOD().kwH) {
-              break label147;
-            }
-          }
-          i = 1;
-        }
-      }
-      for (;;)
-      {
-        if (i != 0) {
-          break label269;
-        }
-        parama.invoke();
-        AppMethodBeat.o(200387);
-        return null;
-        localObject1 = null;
-        break;
-        label147:
-        if ((paramLiveConfig != null) && (paramLiveConfig.getLiveId() == 0L))
-        {
-          localObject1 = u.kwz;
-          localObject1 = (CharSequence)u.aOm();
-          if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0)) {}
-          for (i = 1;; i = 0)
-          {
-            if (i == 0)
-            {
-              localObject1 = u.kwz;
-              if (!Util.isEqual(u.aOm(), paramLiveConfig.aJg())) {}
-            }
-            else
-            {
-              if (paramLiveConfig.getScene() != LiveConfig.khV) {
-                break label259;
-              }
-            }
-            i = 0;
-            break;
-          }
-        }
-        localObject1 = u.kwz;
-        long l = u.aOr().klE;
-        if ((paramLiveConfig != null) && (l == paramLiveConfig.getLiveId())) {
-          label259:
-          i = 1;
-        } else {
-          i = 0;
-        }
-      }
-      label269:
-      AppMethodBeat.o(200387);
-      return this;
-    }
-    
-    final a k(kotlin.g.a.a<x> parama)
-    {
-      AppMethodBeat.i(200395);
-      int i;
-      try
-      {
-        Object localObject1 = MMApplicationContext.getContext().getSystemService("phone");
-        if (localObject1 != null) {
-          break label86;
-        }
-        localObject1 = new t("null cannot be cast to non-null type android.telephony.TelephonyManager");
-        AppMethodBeat.o(200395);
-        throw ((Throwable)localObject1);
-      }
-      catch (Exception localException1)
-      {
+        tO(8);
+        AppMethodBeat.o(247223);
+        return;
         i = 0;
       }
-      m localm = m.kuW;
-      Log.e(m.aNX(), "get callState error , errMsg is %s", new Object[] { localException1.getLocalizedMessage() });
-      for (;;)
-      {
-        if (i != 0)
-        {
-          parama.invoke();
-          AppMethodBeat.o(200395);
-          return null;
-          label86:
-          Object localObject2 = (TelephonyManager)localException1;
-          if (localObject2 != null)
-          {
-            int j = ((TelephonyManager)localObject2).getCallState();
-            switch (j)
-            {
-            default: 
-              i = 0;
-            }
-            for (;;)
-            {
-              try
-              {
-                localObject2 = m.kuW;
-                Log.i(m.aNX(), "TelephoneManager.callState is %d", new Object[] { Integer.valueOf(j) });
-              }
-              catch (Exception localException2) {}
-              break;
-              i = 0;
-              continue;
-              i = 1;
-            }
-          }
-        }
-        else
-        {
-          AppMethodBeat.o(200395);
-          return this;
-        }
-        i = 0;
-      }
-    }
-    
-    final a l(kotlin.g.a.a<x> parama)
-    {
-      AppMethodBeat.i(200396);
-      if (!NetStatusUtil.isConnected(MMApplicationContext.getContext()))
-      {
-        parama.invoke();
-        AppMethodBeat.o(200396);
-        return null;
-      }
-      AppMethodBeat.o(200396);
-      return this;
-    }
-    
-    final a m(kotlin.g.a.a<x> parama)
-    {
-      AppMethodBeat.i(200398);
-      yx localyx = new yx();
-      localyx.fYg.fYi = true;
-      EventCenter.instance.publish((IEvent)localyx);
-      if (!Util.isNullOrNil(localyx.fYh.fYk))
-      {
-        parama.invoke();
-        AppMethodBeat.o(200398);
-        return null;
-      }
-      AppMethodBeat.o(200398);
-      return this;
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-    static final class d
-      extends q
-      implements kotlin.g.a.a<x>
-    {
-      d(Context paramContext, aa.f paramf, LiveConfig paramLiveConfig)
-      {
-        super();
-      }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "liveAnchorInfo", "Lcom/tencent/mm/protocal/protobuf/LiveAnchorInfo;", "invoke"})
-    static final class e
-      extends q
-      implements kotlin.g.a.b<crl, x>
-    {
-      e(Context paramContext, LiveConfig paramLiveConfig)
-      {
-        super();
-      }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-    static final class i
-      extends q
-      implements kotlin.g.a.a<x>
-    {
-      i(Context paramContext, aa.f paramf1, LiveConfig paramLiveConfig, aa.f paramf2)
-      {
-        super();
-      }
+      tO(0);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  public final void tO(int paramInt)
+  {
+    AppMethodBeat.i(247213);
+    this.mJe.setVisibility(paramInt);
+    AppMethodBeat.o(247213);
+  }
+  
+  public final void unMount()
+  {
+    AppMethodBeat.i(247242);
+    com.tencent.mm.kernel.h.baD().mCm.b(3957, (com.tencent.mm.am.h)this);
+    AppMethodBeat.o(247242);
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    c(g paramg, Context paramContext, LiveConfig paramLiveConfig)
+    c(ViewGroup paramViewGroup, m paramm)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class d
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    d(m paramm)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class e
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    e(m paramm)
     {
       super();
     }
@@ -612,7 +340,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.live.b.m
  * JD-Core Version:    0.7.0.1
  */

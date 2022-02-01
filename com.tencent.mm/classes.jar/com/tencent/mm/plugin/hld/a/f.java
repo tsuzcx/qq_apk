@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.hld.a;
 
 public final class f
 {
-  public static final CharSequence Dug = "hld";
-  public static final CharSequence Duh = ":hld";
+  public static final CharSequence JnE = "hld";
+  public static final CharSequence JnF = ":hld";
 }
 
 

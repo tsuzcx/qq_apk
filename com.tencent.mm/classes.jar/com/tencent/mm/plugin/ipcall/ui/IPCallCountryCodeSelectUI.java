@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.ipcall.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -22,8 +21,8 @@ import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.tools.t;
-import com.tencent.mm.ui.tools.t.b;
+import com.tencent.mm.ui.tools.s;
+import com.tencent.mm.ui.tools.s.c;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -37,18 +36,18 @@ import java.util.Set;
 public class IPCallCountryCodeSelectUI
   extends MMActivity
 {
-  public LinearLayout DUL;
-  private boolean DUU = false;
-  private ListView DVk;
-  private f DVl;
-  private IPCallCountryCodeScrollbar DVm;
-  private IPCallCountryCodeScrollbar.a DVn;
-  private boolean DVo = false;
+  public LinearLayout JLU;
+  private boolean JMd = false;
+  private ListView JMt;
+  private f JMu;
+  private IPCallCountryCodeScrollbar JMv;
+  private IPCallCountryCodeScrollbar.a JMw;
+  private boolean JMx = false;
   private String countryCode;
-  private t jjS;
-  private String lSz;
+  private s lMw;
   private List<a> list;
-  private String mUI = "";
+  private String oLl;
+  private String pRp = "";
   
   public void finish()
   {
@@ -65,22 +64,22 @@ public class IPCallCountryCodeSelectUI
   
   public int getLayoutId()
   {
-    return R.i.ehO;
+    return R.i.gkJ;
   }
   
   public void initView()
   {
     AppMethodBeat.i(25739);
-    setMMTitle(R.l.enV);
-    this.jjS = new t((byte)0);
-    this.jjS.XUl = new t.b()
+    setMMTitle(R.l.gqV);
+    this.lMw = new s(true);
+    this.lMw.afKz = new s.c()
     {
-      public final boolean aat(String paramAnonymousString)
+      public final boolean SN(String paramAnonymousString)
       {
         return false;
       }
       
-      public final void aau(String paramAnonymousString)
+      public final void SO(String paramAnonymousString)
       {
         AppMethodBeat.i(25730);
         IPCallCountryCodeSelectUI.a(IPCallCountryCodeSelectUI.this, paramAnonymousString);
@@ -88,7 +87,7 @@ public class IPCallCountryCodeSelectUI
         AppMethodBeat.o(25730);
       }
       
-      public final void bxH()
+      public final void bWw()
       {
         AppMethodBeat.i(25731);
         IPCallCountryCodeSelectUI.a(IPCallCountryCodeSelectUI.this, "");
@@ -96,16 +95,16 @@ public class IPCallCountryCodeSelectUI
         AppMethodBeat.o(25731);
       }
       
-      public final void bxI() {}
+      public final void bWx() {}
       
-      public final void bxJ() {}
+      public final void bWy() {}
       
-      public final void bxK() {}
+      public final void bWz() {}
     };
-    addSearchMenu(true, this.jjS);
-    this.DVm = ((IPCallCountryCodeScrollbar)findViewById(R.h.dqz));
+    addSearchMenu(true, this.lMw);
+    this.JMv = ((IPCallCountryCodeScrollbar)findViewById(R.h.fqN));
     long l = System.currentTimeMillis();
-    Object localObject1 = c.eJb().eJe().iterator();
+    Object localObject1 = c.fRb().fRe().iterator();
     int i = 0;
     int j;
     Object localObject2;
@@ -114,8 +113,8 @@ public class IPCallCountryCodeSelectUI
       j = ((Integer)((Iterator)localObject1).next()).intValue();
       if (i < 5)
       {
-        localObject2 = com.tencent.mm.plugin.ipcall.a.a.aMC(String.valueOf(j));
-        if ((Util.isNullOrNil((String)localObject2)) || (c.eJb().Vg(j))) {
+        localObject2 = com.tencent.mm.plugin.ipcall.a.a.aJw(String.valueOf(j));
+        if ((Util.isNullOrNil((String)localObject2)) || (c.fRb().Zb(j))) {
           break label813;
         }
         this.list.add(new a((String)localObject2, String.valueOf(j), 0, "0"));
@@ -127,19 +126,19 @@ public class IPCallCountryCodeSelectUI
     {
       break;
       if (i > 0) {
-        this.DVo = true;
+        this.JMx = true;
       }
       Iterator localIterator;
       com.tencent.mm.plugin.ipcall.a.b localb;
       if (LocaleUtil.isChineseAppLang())
       {
-        localIterator = com.tencent.mm.plugin.ipcall.a.a.eKH().entrySet().iterator();
+        localIterator = com.tencent.mm.plugin.ipcall.a.a.fSH().entrySet().iterator();
         if (localIterator.hasNext())
         {
           localObject1 = (Map.Entry)localIterator.next();
           ((Map.Entry)localObject1).getKey();
           localb = (com.tencent.mm.plugin.ipcall.a.b)((Map.Entry)localObject1).getValue();
-          localObject2 = localb.DZY;
+          localObject2 = localb.JRg;
           localObject1 = localObject2;
           if (localObject2 != null) {
             if (!"".equals(((String)localObject2).trim())) {
@@ -153,10 +152,10 @@ public class IPCallCountryCodeSelectUI
             if (Util.isNullOrNil((String)localObject2)) {
               localObject1 = " ";
             }
-            if (c.eJb().Vg(Util.getInt(localb.DZX, 0))) {
+            if (c.fRb().Zb(Util.getInt(localb.JRf, 0))) {
               break;
             }
-            this.list.add(new a(localb.DZY, localb.DZX, ((String)localObject1).charAt(0), (String)localObject1));
+            this.list.add(new a(localb.JRg, localb.JRf, ((String)localObject1).charAt(0), (String)localObject1));
             break;
             label355:
             localObject1 = ((String)localObject2).toCharArray();
@@ -165,7 +164,7 @@ public class IPCallCountryCodeSelectUI
             i = 0;
             if (i < j)
             {
-              String str = SpellMap.D(localObject1[i]);
+              String str = SpellMap.v(localObject1[i]);
               if (!Util.isNullOrNil(str)) {
                 ((StringBuffer)localObject2).append(str);
               }
@@ -181,19 +180,19 @@ public class IPCallCountryCodeSelectUI
       }
       else
       {
-        localIterator = com.tencent.mm.plugin.ipcall.a.a.eKH().entrySet().iterator();
+        localIterator = com.tencent.mm.plugin.ipcall.a.a.fSH().entrySet().iterator();
         while (localIterator.hasNext())
         {
           localObject1 = (Map.Entry)localIterator.next();
           ((Map.Entry)localObject1).getKey();
           localb = (com.tencent.mm.plugin.ipcall.a.b)((Map.Entry)localObject1).getValue();
-          localObject2 = localb.DZY.toUpperCase();
+          localObject2 = localb.JRg.toUpperCase();
           localObject1 = localObject2;
           if (Util.isNullOrNil((String)localObject2)) {
             localObject1 = " ";
           }
-          if (!c.eJb().Vg(Util.getInt(localb.DZX, 0))) {
-            this.list.add(new a(localb.DZY, localb.DZX, ((String)localObject1).charAt(0), (String)localObject1));
+          if (!c.fRb().Zb(Util.getInt(localb.JRf, 0))) {
+            this.list.add(new a(localb.JRg, localb.JRf, ((String)localObject1).charAt(0), (String)localObject1));
           }
         }
       }
@@ -201,24 +200,24 @@ public class IPCallCountryCodeSelectUI
       localObject1 = this.list.iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        i = ((a)((Iterator)localObject1).next()).eKa();
+        i = ((a)((Iterator)localObject1).next()).fSa();
         if (i != 0)
         {
           char c = (char)i;
-          this.DVm.aMr(String.valueOf(c));
+          this.JMv.aJl(String.valueOf(c));
         }
       }
       Log.d("MicroMsg.IPCallCountryCodeSelectUI", "initCountryCode used: %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-      this.DUL = ((LinearLayout)findViewById(R.h.dqB));
-      this.DVk = ((ListView)findViewById(R.h.address_contactlist));
-      this.DVl = new f(this, this.list);
-      this.DVl.DUU = this.DUU;
-      this.DVl.DUV = this.DVo;
-      this.DVk.setAdapter(this.DVl);
-      this.DVk.setVisibility(0);
-      this.DVn = new IPCallCountryCodeScrollbar.a()
+      this.JLU = ((LinearLayout)findViewById(R.h.fqP));
+      this.JMt = ((ListView)findViewById(R.h.address_contactlist));
+      this.JMu = new f(this, this.list);
+      this.JMu.JMd = this.JMd;
+      this.JMu.JMe = this.JMx;
+      this.JMt.setAdapter(this.JMu);
+      this.JMt.setVisibility(0);
+      this.JMw = new IPCallCountryCodeScrollbar.a()
       {
-        public final void KH(String paramAnonymousString)
+        public final void onScollBarTouch(String paramAnonymousString)
         {
           int i = 0;
           AppMethodBeat.i(25732);
@@ -229,7 +228,7 @@ public class IPCallCountryCodeSelectUI
             AppMethodBeat.o(25732);
             return;
           }
-          paramAnonymousString = IPCallCountryCodeSelectUI.c(IPCallCountryCodeSelectUI.this).DUT;
+          paramAnonymousString = IPCallCountryCodeSelectUI.c(IPCallCountryCodeSelectUI.this).JMc;
           if (paramAnonymousString == null)
           {
             AppMethodBeat.o(25732);
@@ -248,7 +247,7 @@ public class IPCallCountryCodeSelectUI
           AppMethodBeat.o(25732);
         }
       };
-      this.DVm.setOnScrollBarTouchListener(this.DVn);
+      this.JMv.setOnScrollBarTouchListener(this.JMw);
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -264,22 +263,22 @@ public class IPCallCountryCodeSelectUI
           return true;
         }
       });
-      this.DVk.setOnItemClickListener(new AdapterView.OnItemClickListener()
+      this.JMt.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(25734);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousAdapterView);
-          localb.bn(paramAnonymousView);
-          localb.sg(paramAnonymousInt);
-          localb.Fs(paramAnonymousLong);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/ipcall/ui/IPCallCountryCodeSelectUI$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
+          localb.cH(paramAnonymousAdapterView);
+          localb.cH(paramAnonymousView);
+          localb.sc(paramAnonymousInt);
+          localb.hB(paramAnonymousLong);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/ipcall/ui/IPCallCountryCodeSelectUI$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aYj());
           paramAnonymousAdapterView = new Intent();
           if (paramAnonymousInt >= IPCallCountryCodeSelectUI.b(IPCallCountryCodeSelectUI.this).getHeaderViewsCount())
           {
             paramAnonymousView = (a)IPCallCountryCodeSelectUI.c(IPCallCountryCodeSelectUI.this).getItem(paramAnonymousInt - IPCallCountryCodeSelectUI.b(IPCallCountryCodeSelectUI.this).getHeaderViewsCount());
-            paramAnonymousAdapterView.putExtra("country_name", paramAnonymousView.lSz);
+            paramAnonymousAdapterView.putExtra("country_name", paramAnonymousView.oLl);
             paramAnonymousAdapterView.putExtra("couttry_code", paramAnonymousView.countryCode);
             IPCallCountryCodeSelectUI.this.setResult(100, paramAnonymousAdapterView);
           }
@@ -298,9 +297,9 @@ public class IPCallCountryCodeSelectUI
     AppMethodBeat.i(25736);
     super.onCreate(paramBundle);
     this.list = new ArrayList();
-    this.lSz = Util.nullAs(getIntent().getStringExtra("country_name"), "");
+    this.oLl = Util.nullAs(getIntent().getStringExtra("country_name"), "");
     this.countryCode = Util.nullAs(getIntent().getStringExtra("couttry_code"), "");
-    this.DUU = getIntent().getBooleanExtra("CountryCodeUI_isShowCountryCode", false);
+    this.JMd = getIntent().getBooleanExtra("CountryCodeUI_isShowCountryCode", false);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -321,7 +320,7 @@ public class IPCallCountryCodeSelectUI
     if (paramInt == 4)
     {
       paramKeyEvent = new Intent();
-      paramKeyEvent.putExtra("country_name", this.lSz);
+      paramKeyEvent.putExtra("country_name", this.oLl);
       paramKeyEvent.putExtra("couttry_code", this.countryCode);
       setResult(100, paramKeyEvent);
       finish();
@@ -337,8 +336,8 @@ public class IPCallCountryCodeSelectUI
   {
     AppMethodBeat.i(25738);
     super.onPause();
-    if (this.jjS != null) {
-      this.jjS.hVb();
+    if (this.lMw != null) {
+      this.lMw.jyO();
     }
     AppMethodBeat.o(25738);
   }
@@ -351,7 +350,7 @@ public class IPCallCountryCodeSelectUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallCountryCodeSelectUI
  * JD-Core Version:    0.7.0.1
  */

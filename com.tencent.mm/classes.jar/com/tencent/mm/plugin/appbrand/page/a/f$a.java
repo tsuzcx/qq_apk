@@ -9,28 +9,28 @@ public enum f$a
   static
   {
     AppMethodBeat.i(135307);
-    qxG = new a("LIGHT", 0);
-    qxH = new a("DARK", 1);
-    qxI = new a("IGNORE", 2);
-    qxJ = new a[] { qxG, qxH, qxI };
+    tCK = new a("LIGHT", 0);
+    tCL = new a("DARK", 1);
+    tCM = new a("IGNORE", 2);
+    tCN = new a[] { tCK, tCL, tCM };
     AppMethodBeat.o(135307);
   }
   
   private f$a() {}
   
-  public static a aB(String paramString, boolean paramBoolean)
+  public static a aN(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(243335);
+    AppMethodBeat.i(325035);
     if (TextUtils.isEmpty(paramString))
     {
       if (paramBoolean)
       {
-        paramString = qxG;
-        AppMethodBeat.o(243335);
+        paramString = tCK;
+        AppMethodBeat.o(325035);
         return paramString;
       }
-      paramString = qxH;
-      AppMethodBeat.o(243335);
+      paramString = tCL;
+      AppMethodBeat.o(325035);
       return paramString;
     }
     a[] arrayOfa = values();
@@ -48,7 +48,7 @@ public enum f$a
       }
       while (bool)
       {
-        AppMethodBeat.o(243335);
+        AppMethodBeat.o(325035);
         return locala;
         bool = false;
         continue;
@@ -59,26 +59,18 @@ public enum f$a
     Log.e("Luggage.AppBrandPageViewPullDownExtension.BackgroundTextStyle", "fromString(%s), unrecognized", new Object[] { paramString });
     if (paramBoolean)
     {
-      paramString = qxG;
-      AppMethodBeat.o(243335);
+      paramString = tCK;
+      AppMethodBeat.o(325035);
       return paramString;
     }
-    paramString = qxH;
-    AppMethodBeat.o(243335);
+    paramString = tCL;
+    AppMethodBeat.o(325035);
     return paramString;
-  }
-  
-  public final String cfF()
-  {
-    AppMethodBeat.i(292939);
-    String str = name().toLowerCase();
-    AppMethodBeat.o(292939);
-    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.a.f.a
  * JD-Core Version:    0.7.0.1
  */

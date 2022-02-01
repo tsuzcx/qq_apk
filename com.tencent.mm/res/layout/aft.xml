@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/d9o" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:background="@drawable/v4" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/fsn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/db">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/fsl" android:padding="@dimen/cp" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginLeft="@dimen/cp" android:src="@raw/icons_outlined_close" android:layout_alignParentLeft="true" android:layout_centerVertical="true" app:iconColor="@color/BW_100_Alpha_0_8" />
+        <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/fso" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dii" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/fsm" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

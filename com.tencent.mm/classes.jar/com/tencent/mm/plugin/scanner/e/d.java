@@ -3,57 +3,57 @@ package com.tencent.mm.plugin.scanner.e;
 import android.graphics.Point;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.scanner.api.e;
-import com.tencent.mm.protocal.protobuf.mi;
+import com.tencent.mm.plugin.scanner.util.g;
+import com.tencent.mm.protocal.protobuf.nn;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.util.ArrayList;
+import kotlin.Metadata;
 import kotlin.ResultKt;
-import kotlin.d.b.a.j;
+import kotlin.ah;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
-import kotlinx.coroutines.ak;
-import kotlinx.coroutines.br;
-import kotlinx.coroutines.g;
+import kotlin.g.b.s;
+import kotlinx.coroutines.aq;
+import kotlinx.coroutines.bu;
+import kotlinx.coroutines.j;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/image/AiScanDefaultImageCDNStrategy;", "Lcom/tencent/mm/plugin/scanner/image/IAiScanImageCDNStrategy;", "()V", "checkImageCdnStatus", "", "request", "Lcom/tencent/mm/plugin/scanner/api/ScanOpImageRequest;", "checkImageRequest", "Lcom/tencent/mm/plugin/scanner/image/AiScanImageCDNCheckHelper$CheckImageRequest;", "callback", "Lcom/tencent/mm/plugin/scanner/image/AiScanImageCDNCheckHelper$CheckImageCallback;", "getCDNImageInfoList", "getCDNInfoCallback", "Lcom/tencent/mm/plugin/scanner/image/IAiScanImageCDNStrategy$GetCDNInfoCallback;", "name", "", "Companion", "plugin-scan_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/image/AiScanDefaultImageCDNStrategy;", "Lcom/tencent/mm/plugin/scanner/image/IAiScanImageCDNStrategy;", "()V", "checkImageCdnStatus", "", "request", "Lcom/tencent/mm/plugin/scanner/api/ScanOpImageRequest;", "checkImageRequest", "Lcom/tencent/mm/plugin/scanner/image/AiScanImageCDNCheckHelper$CheckImageRequest;", "callback", "Lcom/tencent/mm/plugin/scanner/image/AiScanImageCDNCheckHelper$CheckImageCallback;", "getCDNImageInfoList", "getCDNInfoCallback", "Lcom/tencent/mm/plugin/scanner/image/IAiScanImageCDNStrategy$GetCDNInfoCallback;", "name", "", "Companion", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class d
   implements k
 {
-  public static final d.a IJA;
+  public static final d.a OQn;
   
   static
   {
-    AppMethodBeat.i(223494);
-    IJA = new d.a((byte)0);
-    AppMethodBeat.o(223494);
+    AppMethodBeat.i(313642);
+    OQn = new d.a((byte)0);
+    AppMethodBeat.o(313642);
   }
   
   protected static void a(e parame, final f.b paramb, final f.a parama)
   {
-    AppMethodBeat.i(223493);
-    p.k(parame, "request");
-    p.k(paramb, "checkImageRequest");
-    p.k(parama, "callback");
-    g.b((ak)br.abxo, null, (m)new b(parame, paramb, parama, null), 3);
-    AppMethodBeat.o(223493);
+    AppMethodBeat.i(313633);
+    s.u(parame, "request");
+    s.u(paramb, "checkImageRequest");
+    s.u(parama, "callback");
+    j.a((aq)bu.ajwo, null, null, (m)new b(parame, paramb, parama, null), 3);
+    AppMethodBeat.o(313633);
   }
   
   public void a(e parame, k.a parama)
   {
-    AppMethodBeat.i(223492);
-    p.k(parame, "request");
+    AppMethodBeat.i(313660);
+    s.u(parame, "request");
     f.b localb = new f.b(parame.sessionId, 3);
     Object localObject = parame.imagePath;
-    p.j(localObject, "request.imagePath");
+    s.s(localObject, "request.imagePath");
     localb.setImagePath((String)localObject);
-    localObject = com.tencent.mm.plugin.scanner.util.f.IYY;
-    localb.IJE = com.tencent.mm.plugin.scanner.util.f.aXy(parame.imagePath);
-    localb.lNK = 1;
-    localb.IJF = true;
+    localObject = g.PiK;
+    localb.OQs = g.aVg(parame.imagePath);
+    localb.oGu = 1;
+    localb.OQt = true;
     a(parame, localb, (f.a)new c(parama));
-    AppMethodBeat.o(223492);
+    AppMethodBeat.o(313660);
   }
   
   public String name()
@@ -61,116 +61,102 @@ public class d
     return "MicroMsg.AiScanDefaultImageCDNStrategy";
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends j
-    implements m<ak, kotlin.d.d<? super x>, Object>
+    extends kotlin.d.b.a.k
+    implements m<aq, kotlin.d.d<? super ah>, Object>
   {
-    Object L$0;
     int label;
-    private ak p$;
-    boolean pdt;
-    int rdc;
     
-    b(e parame, f.b paramb, f.a parama, kotlin.d.d paramd)
+    b(e parame, f.b paramb, f.a parama, kotlin.d.d<? super b> paramd)
     {
       super(paramd);
     }
     
-    public final kotlin.d.d<x> create(Object paramObject, kotlin.d.d<?> paramd)
+    public final kotlin.d.d<ah> create(Object paramObject, kotlin.d.d<?> paramd)
     {
-      AppMethodBeat.i(221581);
-      p.k(paramd, "completion");
-      paramd = new b(this.IJv, paramb, parama, paramd);
-      paramd.p$ = ((ak)paramObject);
-      AppMethodBeat.o(221581);
-      return paramd;
-    }
-    
-    public final Object invoke(Object paramObject1, Object paramObject2)
-    {
-      AppMethodBeat.i(221582);
-      paramObject1 = ((b)create(paramObject1, (kotlin.d.d)paramObject2)).invokeSuspend(x.aazN);
-      AppMethodBeat.o(221582);
-      return paramObject1;
+      AppMethodBeat.i(313583);
+      paramObject = (kotlin.d.d)new b(this.OQi, paramb, parama, paramd);
+      AppMethodBeat.o(313583);
+      return paramObject;
     }
     
     public final Object invokeSuspend(Object paramObject)
     {
-      AppMethodBeat.i(221575);
-      Object localObject2 = kotlin.d.a.a.aaAA;
+      AppMethodBeat.i(313579);
+      Object localObject2 = kotlin.d.a.a.aiwj;
       switch (this.label)
       {
       default: 
         paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-        AppMethodBeat.o(221575);
+        AppMethodBeat.o(313579);
         throw paramObject;
       case 0: 
         ResultKt.throwOnFailure(paramObject);
-        paramObject = this.p$;
-        int i = a.adm(this.IJv.IGy);
-        boolean bool = a.a(paramb.IJE, i);
-        Log.i("MicroMsg.AiScanDefaultImageCDNStrategy", "alvinluo checkImageCdnStatus needCompress: %s, maxImageSize: %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
-        if (!bool) {
-          break label374;
-        }
-        localObject1 = a.IJc;
-        localObject1 = paramb.imagePath;
-        this.L$0 = paramObject;
-        this.rdc = i;
-        this.pdt = bool;
-        this.label = 1;
-        localObject1 = a.b((String)localObject1, i, this);
-        paramObject = localObject1;
-        if (localObject1 == localObject2)
+        int i = a.ahJ(this.OQi.OMG);
+        boolean bool2 = a.a(paramb.OQs, i);
+        if (bool2) {}
+        for (boolean bool1 = true;; bool1 = false)
         {
-          AppMethodBeat.o(221575);
+          Log.i("MicroMsg.AiScanDefaultImageCDNStrategy", "alvinluo checkImageCdnStatus needCompress: %s, maxImageSize: %s", new Object[] { Boolean.valueOf(bool1), Integer.valueOf(i) });
+          if (!bool2) {
+            break label377;
+          }
+          paramObject = a.OPN;
+          paramObject = paramb.imagePath;
+          localObject1 = (kotlin.d.d)this;
+          this.label = 1;
+          localObject1 = a.e(paramObject, i, (kotlin.d.d)localObject1);
+          paramObject = localObject1;
+          if (localObject1 != localObject2) {
+            break;
+          }
+          AppMethodBeat.o(313579);
           return localObject2;
         }
-        break;
-      case 1: 
-        ResultKt.throwOnFailure(paramObject);
       }
+      ResultKt.throwOnFailure(paramObject);
       localObject2 = (a.a)paramObject;
-      if (localObject2 != null) {}
-      for (paramObject = ((a.a)localObject2).IJd; (localObject2 == null) || (!u.agG(paramObject)); paramObject = null)
+      if (localObject2 == null) {}
+      for (paramObject = null; (localObject2 == null) || (!y.ZC(paramObject)); paramObject = ((a.a)localObject2).OPR)
       {
         paramObject = parama;
         localObject1 = new f.c();
         ((f.c)localObject1).errType = 3;
         ((f.c)localObject1).errCode = 101;
         ((f.c)localObject1).setErrMsg("checkImageCdnStatus compress image failed");
+        localObject2 = ah.aiuX;
         paramObject.a((f.c)localObject1);
-        paramObject = x.aazN;
-        AppMethodBeat.o(221575);
+        paramObject = ah.aiuX;
+        AppMethodBeat.o(313579);
         return paramObject;
       }
-      if (paramb.IJE == null) {
-        paramb.IJE = new Point();
+      if (paramb.OQs == null) {
+        paramb.OQs = new Point();
       }
-      paramObject = paramb.IJE;
+      paramObject = paramb.OQs;
       if (paramObject != null) {
-        paramObject.set(((a.a)localObject2).IJe, ((a.a)localObject2).IJf);
+        paramObject.set(((a.a)localObject2).OPS, ((a.a)localObject2).OPT);
       }
       f.b localb = paramb;
-      Object localObject1 = ((a.a)localObject2).IJd;
+      Object localObject1 = ((a.a)localObject2).OPR;
       paramObject = localObject1;
       if (localObject1 == null) {
         paramObject = "";
       }
       localb.setImagePath(paramObject);
-      this.IJv.imagePath = ((a.a)localObject2).IJd;
-      paramb.IJF = true;
-      paramb.lNK = 1;
-      label374:
+      this.OQi.imagePath = ((a.a)localObject2).OPR;
+      paramb.OQt = true;
+      paramb.oGu = 1;
+      label377:
       f.a(paramb, parama);
-      paramObject = x.aazN;
-      AppMethodBeat.o(221575);
+      paramObject = ah.aiuX;
+      AppMethodBeat.o(313579);
       return paramObject;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/scanner/image/AiScanDefaultImageCDNStrategy$getCDNImageInfoList$1", "Lcom/tencent/mm/plugin/scanner/image/AiScanImageCDNCheckHelper$CheckImageCallback;", "onCDNStartUpload", "", "mediaId", "", "onCheckResult", "checkImageResult", "Lcom/tencent/mm/plugin/scanner/image/AiScanImageCDNCheckHelper$CheckImageResult;", "plugin-scan_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/scanner/image/AiScanDefaultImageCDNStrategy$getCDNImageInfoList$1", "Lcom/tencent/mm/plugin/scanner/image/AiScanImageCDNCheckHelper$CheckImageCallback;", "onCDNStartUpload", "", "mediaId", "", "onCheckResult", "checkImageResult", "Lcom/tencent/mm/plugin/scanner/image/AiScanImageCDNCheckHelper$CheckImageResult;", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class c
     implements f.a
   {
@@ -179,96 +165,91 @@ public class d
     public final void a(f.c paramc)
     {
       Object localObject2 = null;
-      AppMethodBeat.i(218479);
-      p.k(paramc, "checkImageResult");
+      AppMethodBeat.i(313585);
+      s.u(paramc, "checkImageResult");
       int i = paramc.errType;
       int j = paramc.errCode;
-      Object localObject1 = paramc.IJI;
+      Object localObject1 = paramc.OQw;
       Object localObject3;
-      mi localmi;
-      if (localObject1 != null)
+      nn localnn;
+      if (localObject1 == null)
       {
-        localObject3 = f.IJD;
-        localObject1 = f.a((mi)localObject1);
+        localObject1 = null;
         Log.i("MicroMsg.AiScanDefaultImageCDNStrategy", "alvinluo getCDNImageInfoList-default errType: %s, errCode: %s: reUploadInfo: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), localObject1 });
         if ((paramc.errType != 0) || (paramc.errCode != 0)) {
-          break label261;
+          break label253;
         }
-        if (paramc.IJI == null) {
-          break label228;
+        if (paramc.OQw == null) {
+          break label226;
         }
         localObject3 = new ArrayList();
-        localmi = new mi();
-        localmi.RSa = 1;
-        localmi.RRX = 3;
-        localObject1 = paramc.IJI;
-        if (localObject1 == null) {
-          break label216;
-        }
-      }
-      label216:
-      for (localObject1 = ((mi)localObject1).RRY;; localObject1 = null)
-      {
-        localmi.RRY = ((String)localObject1);
-        localObject1 = paramc.IJI;
-        paramc = localObject2;
+        localnn = new nn();
+        localnn.YPA = 1;
+        localnn.YPx = 3;
+        localObject1 = paramc.OQw;
         if (localObject1 != null) {
-          paramc = ((mi)localObject1).RRZ;
+          break label208;
         }
-        localmi.RRZ = paramc;
-        ((ArrayList)localObject3).add(localmi);
-        paramc = this.IJy;
-        if (paramc == null) {
-          break label222;
-        }
-        paramc.aZ((ArrayList)localObject3);
-        AppMethodBeat.o(218479);
-        return;
         localObject1 = null;
-        break;
+        label133:
+        localnn.YPy = ((String)localObject1);
+        paramc = paramc.OQw;
+        if (paramc != null) {
+          break label218;
+        }
       }
-      label222:
-      AppMethodBeat.o(218479);
-      return;
-      label228:
-      paramc = this.IJy;
+      label208:
+      label218:
+      for (paramc = localObject2;; paramc = paramc.YPz)
+      {
+        localnn.YPz = paramc;
+        paramc = ah.aiuX;
+        ((ArrayList)localObject3).add(localnn);
+        paramc = this.OQl;
+        if (paramc == null) {
+          break label283;
+        }
+        paramc.bx((ArrayList)localObject3);
+        AppMethodBeat.o(313585);
+        return;
+        localObject3 = f.OQq;
+        localObject1 = f.a((nn)localObject1);
+        break;
+        localObject1 = ((nn)localObject1).YPy;
+        break label133;
+      }
+      label226:
+      paramc = this.OQl;
       if (paramc != null)
       {
-        paramc.i(4, 403, "checkImageCdnStatus re-upload cdn error");
-        AppMethodBeat.o(218479);
+        paramc.j(4, 403, "checkImageCdnStatus re-upload cdn error");
+        AppMethodBeat.o(313585);
         return;
+        label253:
+        localObject1 = this.OQl;
+        if (localObject1 != null) {
+          ((k.a)localObject1).j(paramc.errType, paramc.errCode, paramc.errMsg);
+        }
       }
-      AppMethodBeat.o(218479);
-      return;
-      label261:
-      localObject1 = this.IJy;
-      if (localObject1 != null)
-      {
-        ((k.a)localObject1).i(paramc.errType, paramc.errCode, paramc.errMsg);
-        AppMethodBeat.o(218479);
-        return;
-      }
-      AppMethodBeat.o(218479);
+      label283:
+      AppMethodBeat.o(313585);
     }
     
-    public final void aXc(String paramString)
+    public final void aUD(String paramString)
     {
-      AppMethodBeat.i(218480);
-      p.k(paramString, "mediaId");
-      k.a locala = this.IJy;
-      if (locala != null)
-      {
-        locala.aXd(paramString);
-        AppMethodBeat.o(218480);
-        return;
+      AppMethodBeat.i(313596);
+      s.u(paramString, "mediaId");
+      k.a locala = this.OQl;
+      if (locala != null) {
+        locala.aUE(paramString);
       }
-      AppMethodBeat.o(218480);
+      AppMethodBeat.o(313596);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.e.d
  * JD-Core Version:    0.7.0.1
  */

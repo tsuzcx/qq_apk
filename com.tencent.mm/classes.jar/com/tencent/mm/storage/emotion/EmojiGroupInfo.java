@@ -4,164 +4,40 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.bi;
-import com.tencent.mm.protocal.protobuf.akh;
+import com.tencent.mm.autogen.b.bl;
+import com.tencent.mm.protocal.protobuf.cjb;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import java.lang.reflect.Field;
-import java.util.Map;
 
 public class EmojiGroupInfo
-  extends bi
+  extends bl
   implements Parcelable
 {
   public static final Parcelable.Creator<EmojiGroupInfo> CREATOR;
-  public static int YCp;
-  public static int YCq;
-  public static int YCr;
-  public static int YCs;
-  public static int YCt;
-  public static int YCu;
-  public static int YCv;
-  public static int YCw;
-  public static int YCx;
+  public static int aklA;
+  public static int aklB;
+  public static int aklC;
+  public static int aklD;
+  public static int aklE;
+  public static int aklF;
+  public static int aklG;
+  public static int akly;
+  public static int aklz;
   protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(104983);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[29];
-    localMAutoDBInfo.columns = new String[30];
-    StringBuilder localStringBuilder = new StringBuilder();
-    localMAutoDBInfo.columns[0] = "productID";
-    localMAutoDBInfo.colsMap.put("productID", "TEXT PRIMARY KEY  COLLATE NOCASE ");
-    localStringBuilder.append(" productID TEXT PRIMARY KEY  COLLATE NOCASE ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.primaryKey = "productID";
-    localMAutoDBInfo.columns[1] = "packIconUrl";
-    localMAutoDBInfo.colsMap.put("packIconUrl", "TEXT");
-    localStringBuilder.append(" packIconUrl TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[2] = "packGrayIconUrl";
-    localMAutoDBInfo.colsMap.put("packGrayIconUrl", "TEXT");
-    localStringBuilder.append(" packGrayIconUrl TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[3] = "packCoverUrl";
-    localMAutoDBInfo.colsMap.put("packCoverUrl", "TEXT");
-    localStringBuilder.append(" packCoverUrl TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[4] = "packName";
-    localMAutoDBInfo.colsMap.put("packName", "TEXT");
-    localStringBuilder.append(" packName TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[5] = "packDesc";
-    localMAutoDBInfo.colsMap.put("packDesc", "TEXT");
-    localStringBuilder.append(" packDesc TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[6] = "packAuthInfo";
-    localMAutoDBInfo.colsMap.put("packAuthInfo", "TEXT");
-    localStringBuilder.append(" packAuthInfo TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[7] = "packPrice";
-    localMAutoDBInfo.colsMap.put("packPrice", "TEXT");
-    localStringBuilder.append(" packPrice TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[8] = "packType";
-    localMAutoDBInfo.colsMap.put("packType", "INTEGER");
-    localStringBuilder.append(" packType INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[9] = "packFlag";
-    localMAutoDBInfo.colsMap.put("packFlag", "INTEGER");
-    localStringBuilder.append(" packFlag INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[10] = "packExpire";
-    localMAutoDBInfo.colsMap.put("packExpire", "LONG");
-    localStringBuilder.append(" packExpire LONG");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[11] = "packTimeStamp";
-    localMAutoDBInfo.colsMap.put("packTimeStamp", "LONG");
-    localStringBuilder.append(" packTimeStamp LONG");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[12] = "packCopyright";
-    localMAutoDBInfo.colsMap.put("packCopyright", "TEXT");
-    localStringBuilder.append(" packCopyright TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[13] = "type";
-    localMAutoDBInfo.colsMap.put("type", "INTEGER");
-    localStringBuilder.append(" type INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[14] = "status";
-    localMAutoDBInfo.colsMap.put("status", "INTEGER");
-    localStringBuilder.append(" status INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[15] = "sort";
-    localMAutoDBInfo.colsMap.put("sort", "INTEGER default '1' ");
-    localStringBuilder.append(" sort INTEGER default '1' ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[16] = "lastUseTime";
-    localMAutoDBInfo.colsMap.put("lastUseTime", "LONG");
-    localStringBuilder.append(" lastUseTime LONG");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[17] = "packStatus";
-    localMAutoDBInfo.colsMap.put("packStatus", "INTEGER default '0' ");
-    localStringBuilder.append(" packStatus INTEGER default '0' ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[18] = "flag";
-    localMAutoDBInfo.colsMap.put("flag", "INTEGER default '0' ");
-    localStringBuilder.append(" flag INTEGER default '0' ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[19] = "recommand";
-    localMAutoDBInfo.colsMap.put("recommand", "INTEGER default '0' ");
-    localStringBuilder.append(" recommand INTEGER default '0' ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[20] = "sync";
-    localMAutoDBInfo.colsMap.put("sync", "INTEGER default '0' ");
-    localStringBuilder.append(" sync INTEGER default '0' ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[21] = "idx";
-    localMAutoDBInfo.colsMap.put("idx", "INTEGER default '0' ");
-    localStringBuilder.append(" idx INTEGER default '0' ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[22] = "BigIconUrl";
-    localMAutoDBInfo.colsMap.put("BigIconUrl", "TEXT");
-    localStringBuilder.append(" BigIconUrl TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[23] = "MutiLanName";
-    localMAutoDBInfo.colsMap.put("MutiLanName", "TEXT");
-    localStringBuilder.append(" MutiLanName TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[24] = "recommandType";
-    localMAutoDBInfo.colsMap.put("recommandType", "INTEGER default '-1' ");
-    localStringBuilder.append(" recommandType INTEGER default '-1' ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[25] = "lang";
-    localMAutoDBInfo.colsMap.put("lang", "TEXT");
-    localStringBuilder.append(" lang TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[26] = "recommandWord";
-    localMAutoDBInfo.colsMap.put("recommandWord", "TEXT");
-    localStringBuilder.append(" recommandWord TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[27] = "buttonType";
-    localMAutoDBInfo.colsMap.put("buttonType", "INTEGER");
-    localStringBuilder.append(" buttonType INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[28] = "count";
-    localMAutoDBInfo.colsMap.put("count", "INTEGER");
-    localStringBuilder.append(" count INTEGER");
-    localMAutoDBInfo.columns[29] = "rowid";
-    localMAutoDBInfo.sql = localStringBuilder.toString();
-    info = localMAutoDBInfo;
-    YCp = 1;
-    YCq = 2;
-    YCr = 3;
-    YCs = 4;
-    YCt = 256;
-    YCu = 17;
-    YCv = 18;
-    YCw = 81;
-    YCx = 65;
-    CREATOR = new Parcelable.Creator() {};
+    info = bl.aJm();
+    akly = 1;
+    aklz = 2;
+    aklA = 3;
+    aklB = 4;
+    aklC = 256;
+    aklD = 17;
+    aklE = 18;
+    aklF = 81;
+    aklG = 65;
+    CREATOR = new EmojiGroupInfo.1();
     AppMethodBeat.o(104983);
   }
   
@@ -203,16 +79,6 @@ public class EmojiGroupInfo
     AppMethodBeat.o(104982);
   }
   
-  public final void bIQ(String paramString)
-  {
-    this.field_packName = paramString;
-  }
-  
-  public final String bnP()
-  {
-    return this.field_packName;
-  }
-  
   public int describeContents()
   {
     return 0;
@@ -223,40 +89,25 @@ public class EmojiGroupInfo
     return info;
   }
   
-  public final String hBl()
-  {
-    return this.field_productID;
-  }
-  
-  public final String hBm()
-  {
-    return this.field_packGrayIconUrl;
-  }
-  
-  public final akh hBn()
+  public final cjb kLX()
   {
     AppMethodBeat.i(104979);
-    akh localakh = new akh();
-    localakh.ProductID = this.field_productID;
-    localakh.CNj = this.field_packGrayIconUrl;
-    localakh.Suv = this.field_packName;
-    localakh.Tev = this.field_packDesc;
-    localakh.Tew = this.field_packAuthInfo;
-    localakh.Tex = this.field_packPrice;
-    localakh.Tey = this.field_packType;
-    localakh.TOG = this.field_packFlag;
-    localakh.Ufx = this.field_packCoverUrl;
-    localakh.Vdr = ((int)this.field_packExpire);
-    localakh.VHB = this.field_packCopyright;
-    localakh.Svi = ((int)this.field_packTimeStamp);
-    localakh.VHC = this.field_packPrice;
+    cjb localcjb = new cjb();
+    localcjb.ProductID = this.field_productID;
+    localcjb.IHo = this.field_packGrayIconUrl;
+    localcjb.Zul = this.field_packName;
+    localcjb.akka = this.field_packDesc;
+    localcjb.akkb = this.field_packAuthInfo;
+    localcjb.akkc = this.field_packPrice;
+    localcjb.akkd = this.field_packType;
+    localcjb.akke = this.field_packFlag;
+    localcjb.ZtY = this.field_packCoverUrl;
+    localcjb.akkh = ((int)this.field_packExpire);
+    localcjb.akki = this.field_packCopyright;
+    localcjb.Zvi = ((int)this.field_packTimeStamp);
+    localcjb.akkj = this.field_packPrice;
     AppMethodBeat.o(104979);
-    return localakh;
-  }
-  
-  public final void setProductID(String paramString)
-  {
-    this.field_productID = paramString;
+    return localcjb;
   }
   
   public String toString()

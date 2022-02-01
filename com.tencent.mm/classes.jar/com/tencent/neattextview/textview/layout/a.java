@@ -5,39 +5,39 @@ import java.util.List;
 
 public abstract interface a
 {
-  public abstract int E(int paramInt, float paramFloat);
+  public abstract int H(int paramInt, float paramFloat);
   
-  public abstract int Ji(int paramInt);
+  public abstract int aGH(int paramInt);
   
-  public abstract int aAa(int paramInt);
+  public abstract int aGI(int paramInt);
   
-  public abstract int azR(int paramInt);
+  public abstract int aGJ(int paramInt);
   
-  public abstract int azS(int paramInt);
+  public abstract float aGK(int paramInt);
   
-  public abstract int azT(int paramInt);
+  public abstract float aGL(int paramInt);
   
-  public abstract float azU(int paramInt);
+  public abstract int aGM(int paramInt);
   
-  public abstract float azV(int paramInt);
+  public abstract int aGN(int paramInt);
   
-  public abstract int azW(int paramInt);
+  public abstract int di(int paramInt);
   
-  public abstract int azX(int paramInt);
+  public abstract int dk(int paramInt);
   
-  public abstract float azY(int paramInt);
+  public abstract int du(int paramInt);
   
-  public abstract int azZ(int paramInt);
+  public abstract float dv(int paramInt);
   
-  public abstract int ikp();
+  public abstract int jQH();
   
-  public abstract List<c> ikq();
+  public abstract List<c> jQI();
   
-  public abstract int nE(int paramInt1, int paramInt2);
+  public abstract int pB(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.neattextview.textview.layout.a
  * JD-Core Version:    0.7.0.1
  */

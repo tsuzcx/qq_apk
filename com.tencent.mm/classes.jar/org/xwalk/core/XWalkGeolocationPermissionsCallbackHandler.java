@@ -1,17 +1,13 @@
 package org.xwalk.core;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
 
 public class XWalkGeolocationPermissionsCallbackHandler
   implements XWalkGeolocationPermissionsCallback
 {
   private Object bridge;
-  private ArrayList<Object> constructorParams;
-  private ArrayList<Object> constructorTypes;
   private XWalkCoreWrapper coreWrapper;
   private ReflectMethod invokeStringbooleanbooleanMethod;
-  private ReflectMethod postWrapperMethod;
   
   public XWalkGeolocationPermissionsCallbackHandler(Object paramObject)
   {
@@ -20,6 +16,20 @@ public class XWalkGeolocationPermissionsCallbackHandler
     this.bridge = paramObject;
     reflectionInit();
     AppMethodBeat.o(154734);
+  }
+  
+  private void reflectionInit()
+  {
+    AppMethodBeat.i(154736);
+    if (XWalkCoreWrapper.getInstance() == null)
+    {
+      XWalkReflectionInitHandler.reserveReflectObject(this);
+      AppMethodBeat.o(154736);
+      return;
+    }
+    this.coreWrapper = XWalkCoreWrapper.getInstance();
+    this.invokeStringbooleanbooleanMethod.init(this.bridge, null, "invokeSuper", new Class[] { String.class, Boolean.TYPE, Boolean.TYPE });
+    AppMethodBeat.o(154736);
   }
   
   protected Object getBridge()
@@ -48,25 +58,10 @@ public class XWalkGeolocationPermissionsCallbackHandler
       AppMethodBeat.o(154735);
     }
   }
-  
-  void reflectionInit()
-  {
-    AppMethodBeat.i(154736);
-    XWalkCoreWrapper.initEmbeddedMode();
-    this.coreWrapper = XWalkCoreWrapper.getInstance();
-    if (this.coreWrapper == null)
-    {
-      XWalkCoreWrapper.reserveReflectObject(this);
-      AppMethodBeat.o(154736);
-      return;
-    }
-    this.invokeStringbooleanbooleanMethod.init(this.bridge, null, "invokeSuper", new Class[] { String.class, Boolean.TYPE, Boolean.TYPE });
-    AppMethodBeat.o(154736);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.XWalkGeolocationPermissionsCallbackHandler
  * JD-Core Version:    0.7.0.1
  */

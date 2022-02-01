@@ -1,21 +1,14 @@
 package com.tencent.mm.plugin.finder.feed;
 
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.view.View;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.a;
-import androidx.recyclerview.widget.RecyclerView.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.c;
-import com.tencent.mm.plugin.finder.presenter.base.c.a;
-import com.tencent.mm.plugin.finder.view.decoration.b;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/FinderFeedDetailUIContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback;", "context", "Lcom/tencent/mm/ui/MMActivity;", "presenter", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedDetailUIContract$Presenter;", "scene", "", "commentScene", "commentSafeMode", "", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/plugin/finder/feed/FinderFeedDetailUIContract$Presenter;IIZ)V", "getEmptyView", "Landroid/view/View;", "getItemDecoration", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "onLoadInitDataError", "", "errCode", "errMsg", "", "onLoadMoreError", "onRefreshError", "onViewPrepared", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/FinderFeedDetailUIContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback;", "context", "Lcom/tencent/mm/ui/MMActivity;", "presenter", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedDetailUIContract$Presenter;", "scene", "", "commentScene", "commentSafeMode", "", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/plugin/finder/feed/FinderFeedDetailUIContract$Presenter;IIZ)V", "getEmptyView", "Landroid/view/View;", "getItemDecoration", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "onLoadInitDataError", "", "errCode", "errMsg", "", "onLoadMoreError", "onRefreshError", "onViewPrepared", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class k$b
   extends b.b
 {
@@ -26,16 +19,13 @@ public final class k$b
     AppMethodBeat.o(165720);
   }
   
-  public final void dsm()
+  public final void ebi()
   {
     AppMethodBeat.i(165718);
-    this.xvJ.setEnableLoadMore(false);
-    RecyclerView.a locala = this.xvJ.getRecyclerView().getAdapter();
-    if (locala != null)
-    {
+    this.ATx.setEnableLoadMore(false);
+    RecyclerView.a locala = this.ATx.getRecyclerView().getAdapter();
+    if (locala != null) {
       locala.getItemCount();
-      AppMethodBeat.o(165718);
-      return;
     }
     AppMethodBeat.o(165718);
   }
@@ -43,14 +33,6 @@ public final class k$b
   public final View getEmptyView()
   {
     return null;
-  }
-  
-  public final RecyclerView.h getItemDecoration()
-  {
-    AppMethodBeat.i(284222);
-    RecyclerView.h localh = (RecyclerView.h)new b((Drawable)new ColorDrawable(c.a.a(this).getColor(b.c.BG_0)), 0);
-    AppMethodBeat.o(284222);
-    return localh;
   }
 }
 

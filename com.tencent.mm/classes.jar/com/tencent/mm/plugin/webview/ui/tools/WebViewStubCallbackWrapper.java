@@ -12,7 +12,7 @@ public class WebViewStubCallbackWrapper
   implements Parcelable
 {
   public static final Parcelable.Creator<WebViewStubCallbackWrapper> CREATOR;
-  public f QeN;
+  public f WWL;
   public int id;
   
   static
@@ -25,13 +25,13 @@ public class WebViewStubCallbackWrapper
   private WebViewStubCallbackWrapper(IBinder paramIBinder)
   {
     AppMethodBeat.i(80037);
-    this.QeN = f.a.M(paramIBinder);
+    this.WWL = f.a.R(paramIBinder);
     AppMethodBeat.o(80037);
   }
   
   public WebViewStubCallbackWrapper(f paramf, int paramInt)
   {
-    this.QeN = paramf;
+    this.WWL = paramf;
     this.id = paramInt;
   }
   
@@ -52,7 +52,7 @@ public class WebViewStubCallbackWrapper
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(80036);
-    paramParcel.writeStrongBinder(this.QeN.asBinder());
+    paramParcel.writeStrongBinder(this.WWL.asBinder());
     AppMethodBeat.o(80036);
   }
 }

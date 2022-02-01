@@ -1,77 +1,49 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import android.os.Bundle;
 import com.tencent.luggage.bridge.k;
+import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.ipc.JsApiMMTask;
-import com.tencent.mm.plugin.webview.luggage.ipc.d;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.plugin.webview.luggage.n;
+import com.tencent.mm.sdk.platformtools.Log;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-public abstract class br<T extends com.tencent.luggage.d.a>
-  extends com.tencent.luggage.d.b<T>
+public class br
+  extends bw<g>
 {
-  public abstract void a(Context paramContext, String paramString, a parama);
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
   
-  public void a(final com.tencent.luggage.d.b<T>.a paramb)
+  public final void b(b<g>.a paramb)
   {
-    Object localObject;
-    if (cDj() == 1)
+    AppMethodBeat.i(78636);
+    Log.i("MicroMsg.JsApiShowMenuItems", "invokeInOwn");
+    JSONArray localJSONArray = paramb.eiZ.eif.optJSONArray("menuList");
+    if (localJSONArray == null)
     {
-      localObject = new JsApiMMTask();
-      ((JsApiMMTask)localObject).PRM = paramb;
-      ((JsApiMMTask)localObject).PRN = getClass().getName();
-      ((JsApiMMTask)localObject).oAb = paramb.crh.cqn.toString();
-      ((JsApiMMTask)localObject).bsM();
+      Log.i("MicroMsg.JsApiShowMenuItems", "data is null");
+      paramb.a("invalid_data", null);
+      AppMethodBeat.o(78636);
       return;
     }
-    if (cDj() == 2)
-    {
-      localObject = new Bundle();
-      ((Bundle)localObject).putString("jsapi_name", getClass().getName());
-      ((Bundle)localObject).putString("data", paramb.crh.cqn.toString());
-      com.tencent.mm.plugin.webview.luggage.ipc.b.a((MMActivity)((com.tencent.luggage.d.a)paramb.crg).getContext(), (Bundle)localObject, d.class, new com.tencent.mm.plugin.webview.luggage.ipc.a()
-      {
-        public final void C(Bundle paramAnonymousBundle)
-        {
-          AppMethodBeat.i(78641);
-          String str = paramAnonymousBundle.getString("err_msg");
-          paramAnonymousBundle = paramAnonymousBundle.getString("data");
-          if (!Util.isNullOrNil(str))
-          {
-            paramb.a(str, null);
-            AppMethodBeat.o(78641);
-            return;
-          }
-          try
-          {
-            paramAnonymousBundle = new JSONObject(paramAnonymousBundle);
-            paramb.a("", paramAnonymousBundle);
-            AppMethodBeat.o(78641);
-            return;
-          }
-          catch (Exception paramAnonymousBundle)
-          {
-            paramb.a("", null);
-            AppMethodBeat.o(78641);
-          }
-        }
-      });
-      return;
+    n localn = ((g)paramb.eiY).iuf();
+    if (localn != null) {
+      localn.ab(localJSONArray);
     }
-    b(paramb);
+    paramb.a("", null);
+    AppMethodBeat.o(78636);
   }
   
-  public abstract void b(com.tencent.luggage.d.b<T>.a paramb);
-  
-  public abstract int cDj();
-  
-  public static abstract class a
+  public final int dgI()
   {
-    public abstract void i(String paramString, JSONObject paramJSONObject);
+    return 0;
+  }
+  
+  public final String name()
+  {
+    return "showMenuItems";
   }
 }
 

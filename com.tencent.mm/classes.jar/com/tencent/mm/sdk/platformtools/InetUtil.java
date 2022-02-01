@@ -63,17 +63,17 @@ public final class InetUtil
   
   public static boolean isIPv6HexCompressedAddress(String paramString)
   {
-    AppMethodBeat.i(194056);
+    AppMethodBeat.i(243552);
     boolean bool = IPV6_HEX_COMPRESSED_PATTERN.matcher(paramString).matches();
-    AppMethodBeat.o(194056);
+    AppMethodBeat.o(243552);
     return bool;
   }
   
   public static boolean isIPv6StdAddress(String paramString)
   {
-    AppMethodBeat.i(194054);
+    AppMethodBeat.i(243548);
     boolean bool = IPV6_STD_PATTERN.matcher(paramString).matches();
-    AppMethodBeat.o(194054);
+    AppMethodBeat.o(243548);
     return bool;
   }
 }

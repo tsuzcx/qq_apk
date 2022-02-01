@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.conversation.presenter;
 
-import android.app.Activity;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity.a;
@@ -15,7 +14,7 @@ public abstract class BaseBizConversationUI
   {
     if (this.onActResult != null)
     {
-      this.onActResult.d(paramInt1, paramInt2, paramIntent);
+      this.onActResult.mmOnActivityResult(paramInt1, paramInt2, paramIntent);
       this.onActResult = null;
       return;
     }
@@ -30,7 +29,7 @@ public abstract class BaseBizConversationUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.presenter.BaseBizConversationUI
  * JD-Core Version:    0.7.0.1
  */

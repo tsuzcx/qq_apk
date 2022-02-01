@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.emojicapture.model.a;
 
 import com.tencent.mm.sticker.c;
 import java.util.List;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerRecommendCallback;", "", "updateData", "", "lensList", "", "Lcom/tencent/mm/sticker/LensItem;", "updateSelection", "position", "", "plugin-emojicapture_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerRecommendCallback;", "", "updateData", "", "lensList", "", "Lcom/tencent/mm/sticker/LensItem;", "updateSelection", "position", "", "plugin-emojicapture_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface h
 {
-  public abstract void JU(int paramInt);
+  public abstract void KS(int paramInt);
   
-  public abstract void aa(List<c> paramList);
+  public abstract void bz(List<c> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.model.a.h
  * JD-Core Version:    0.7.0.1
  */

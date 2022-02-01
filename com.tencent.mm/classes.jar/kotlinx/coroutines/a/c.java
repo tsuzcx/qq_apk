@@ -4,117 +4,326 @@ import TE;;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
+import kotlin.Metadata;
 import kotlin.Result;
-import kotlin.Result.Companion;
 import kotlin.ResultKt;
+import kotlin.ah;
 import kotlin.d.a.a;
 import kotlin.d.d;
-import kotlin.g.b.ag;
-import kotlin.t;
-import kotlinx.coroutines.ap;
-import kotlinx.coroutines.cn;
-import kotlinx.coroutines.internal.i;
-import kotlinx.coroutines.internal.j;
-import kotlinx.coroutines.internal.l.a;
+import kotlin.g.b.an;
+import kotlinx.coroutines.au;
+import kotlinx.coroutines.internal.m;
+import kotlinx.coroutines.internal.o;
+import kotlinx.coroutines.internal.p.a;
 import kotlinx.coroutines.internal.v;
-import kotlinx.coroutines.m;
-import kotlinx.coroutines.n;
-import kotlinx.coroutines.o;
+import kotlinx.coroutines.q;
+import kotlinx.coroutines.r;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/channels/AbstractSendChannel;", "E", "<init>", "()V", "", "cause", "", "close", "(Ljava/lang/Throwable;)Z", "", "countQueueSize", "()I", "element", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode$AddLastDesc;", "Lkotlinx/coroutines/internal/AddLastDesc;", "describeSendBuffered", "(Ljava/lang/Object;)Lkotlinx/coroutines/internal/LockFreeLinkedListNode$AddLastDesc;", "Lkotlinx/coroutines/channels/AbstractSendChannel$TryOfferDesc;", "describeTryOffer", "(Ljava/lang/Object;)Lkotlinx/coroutines/channels/AbstractSendChannel$TryOfferDesc;", "Lkotlinx/coroutines/channels/Send;", "send", "", "enqueueSend", "(Lkotlinx/coroutines/channels/Send;)Ljava/lang/Object;", "Lkotlinx/coroutines/channels/Closed;", "closed", "", "helpClose", "(Lkotlinx/coroutines/channels/Closed;)V", "helpCloseAndGetSendException", "(Lkotlinx/coroutines/channels/Closed;)Ljava/lang/Throwable;", "Lkotlin/Function1;", "Lkotlinx/coroutines/channels/Handler;", "handler", "invokeOnClose", "(Lkotlin/jvm/functions/Function1;)V", "invokeOnCloseHandler", "(Ljava/lang/Throwable;)V", "offer", "(Ljava/lang/Object;)Z", "offerInternal", "(Ljava/lang/Object;)Ljava/lang/Object;", "Lkotlinx/coroutines/selects/SelectInstance;", "select", "offerSelectInternal", "(Ljava/lang/Object;Lkotlinx/coroutines/selects/SelectInstance;)Ljava/lang/Object;", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "onClosedIdempotent", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;)V", "R", "Lkotlin/Function2;", "Lkotlinx/coroutines/channels/SendChannel;", "Lkotlin/coroutines/Continuation;", "block", "registerSelectSend", "(Lkotlinx/coroutines/selects/SelectInstance;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)V", "(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "Lkotlinx/coroutines/channels/ReceiveOrClosed;", "sendBuffered", "(Ljava/lang/Object;)Lkotlinx/coroutines/channels/ReceiveOrClosed;", "sendFair$kotlinx_coroutines_core", "sendFair", "sendSuspend", "takeFirstReceiveOrPeekClosed", "()Lkotlinx/coroutines/channels/ReceiveOrClosed;", "takeFirstSendOrPeekClosed", "()Lkotlinx/coroutines/channels/Send;", "", "toString", "()Ljava/lang/String;", "helpCloseAndResumeWithSendException", "(Lkotlin/coroutines/Continuation;Lkotlinx/coroutines/channels/Closed;)V", "getBufferDebugString", "bufferDebugString", "getClosedForReceive", "()Lkotlinx/coroutines/channels/Closed;", "closedForReceive", "getClosedForSend", "closedForSend", "isBufferAlwaysFull", "()Z", "isBufferFull", "isClosedForSend", "isFull", "isFullImpl", "Lkotlinx/coroutines/selects/SelectClause2;", "getOnSend", "()Lkotlinx/coroutines/selects/SelectClause2;", "onSend", "Lkotlinx/coroutines/internal/LockFreeLinkedListHead;", "queue", "Lkotlinx/coroutines/internal/LockFreeLinkedListHead;", "getQueue", "()Lkotlinx/coroutines/internal/LockFreeLinkedListHead;", "getQueueDebugStateString", "queueDebugStateString", "SendBuffered", "SendBufferedDesc", "SendSelect", "TryOfferDesc", "kotlinx-coroutines-core"})
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/channels/AbstractSendChannel;", "E", "Lkotlin/Function1;", "", "Lkotlinx/coroutines/internal/OnUndeliveredElement;", "onUndeliveredElement", "<init>", "(Lkotlin/jvm/functions/Function1;)V", "", "cause", "", "close", "(Ljava/lang/Throwable;)Z", "", "countQueueSize", "()I", "element", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode$AddLastDesc;", "Lkotlinx/coroutines/internal/AddLastDesc;", "describeSendBuffered", "(Ljava/lang/Object;)Lkotlinx/coroutines/internal/LockFreeLinkedListNode$AddLastDesc;", "Lkotlinx/coroutines/channels/AbstractSendChannel$TryOfferDesc;", "describeTryOffer", "(Ljava/lang/Object;)Lkotlinx/coroutines/channels/AbstractSendChannel$TryOfferDesc;", "Lkotlinx/coroutines/channels/Send;", "send", "", "enqueueSend", "(Lkotlinx/coroutines/channels/Send;)Ljava/lang/Object;", "Lkotlinx/coroutines/channels/Closed;", "closed", "helpClose", "(Lkotlinx/coroutines/channels/Closed;)V", "helpCloseAndGetSendException", "(Ljava/lang/Object;Lkotlinx/coroutines/channels/Closed;)Ljava/lang/Throwable;", "(Lkotlinx/coroutines/channels/Closed;)Ljava/lang/Throwable;", "Lkotlinx/coroutines/channels/Handler;", "handler", "invokeOnClose", "invokeOnCloseHandler", "(Ljava/lang/Throwable;)V", "offer", "(Ljava/lang/Object;)Z", "offerInternal", "(Ljava/lang/Object;)Ljava/lang/Object;", "Lkotlinx/coroutines/selects/SelectInstance;", "select", "offerSelectInternal", "(Ljava/lang/Object;Lkotlinx/coroutines/selects/SelectInstance;)Ljava/lang/Object;", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "onClosedIdempotent", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;)V", "R", "Lkotlin/Function2;", "Lkotlinx/coroutines/channels/SendChannel;", "Lkotlin/coroutines/Continuation;", "block", "registerSelectSend", "(Lkotlinx/coroutines/selects/SelectInstance;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)V", "(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "Lkotlinx/coroutines/channels/ReceiveOrClosed;", "sendBuffered", "(Ljava/lang/Object;)Lkotlinx/coroutines/channels/ReceiveOrClosed;", "sendSuspend", "takeFirstReceiveOrPeekClosed", "()Lkotlinx/coroutines/channels/ReceiveOrClosed;", "takeFirstSendOrPeekClosed", "()Lkotlinx/coroutines/channels/Send;", "", "toString", "()Ljava/lang/String;", "Lkotlinx/coroutines/channels/ChannelResult;", "trySend-JP2dKIU", "trySend", "helpCloseAndResumeWithSendException", "(Lkotlin/coroutines/Continuation;Ljava/lang/Object;Lkotlinx/coroutines/channels/Closed;)V", "getBufferDebugString", "bufferDebugString", "getClosedForReceive", "()Lkotlinx/coroutines/channels/Closed;", "closedForReceive", "getClosedForSend", "closedForSend", "isBufferAlwaysFull", "()Z", "isBufferFull", "isClosedForSend", "isFullImpl", "Lkotlinx/coroutines/selects/SelectClause2;", "getOnSend", "()Lkotlinx/coroutines/selects/SelectClause2;", "onSend", "Lkotlin/jvm/functions/Function1;", "Lkotlinx/coroutines/internal/LockFreeLinkedListHead;", "queue", "Lkotlinx/coroutines/internal/LockFreeLinkedListHead;", "getQueue", "()Lkotlinx/coroutines/internal/LockFreeLinkedListHead;", "getQueueDebugStateString", "queueDebugStateString", "SendBuffered", "SendBufferedDesc", "SendSelect", "TryOfferDesc", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class c<E>
-  implements x<E>
+  implements ab<E>
 {
-  private static final AtomicReferenceFieldUpdater abyj = AtomicReferenceFieldUpdater.newUpdater(c.class, Object.class, "onCloseHandler");
-  private final j abyi = new j();
-  private volatile Object onCloseHandler = null;
+  protected final kotlin.g.a.b<E, ah> ajxf;
+  private final kotlinx.coroutines.internal.n ajxp;
   
-  private static void a(d<?> paramd, k<?> paramk)
+  public c(kotlin.g.a.b<? super E, ah> paramb)
   {
-    c(paramk);
-    paramk = paramk.iSy();
-    Result.Companion localCompanion = Result.Companion;
-    paramd.resumeWith(Result.constructor-impl(ResultKt.createFailure(paramk)));
+    this.ajxf = paramb;
+    this.ajxp = new kotlinx.coroutines.internal.n();
+    this.onCloseHandler = null;
   }
   
-  private static Throwable b(k<?> paramk)
+  private final void a(d<?> paramd, E paramE, n<?> paramn)
   {
-    c(paramk);
-    return paramk.iSy();
+    c(paramn);
+    paramn = paramn.kDr();
+    kotlin.g.a.b localb = this.ajxf;
+    if (localb != null)
+    {
+      paramE = v.a(localb, paramE, null);
+      if (paramE != null)
+      {
+        kotlin.b.a((Throwable)paramE, paramn);
+        paramn = Result.Companion;
+        paramd.resumeWith(Result.constructor-impl(ResultKt.createFailure((Throwable)paramE)));
+        return;
+      }
+    }
+    paramE = Result.Companion;
+    paramd.resumeWith(Result.constructor-impl(ResultKt.createFailure(paramn)));
   }
   
-  private static void c(k<?> paramk)
+  private static Throwable b(n<?> paramn)
+  {
+    c(paramn);
+    return paramn.kDr();
+  }
+  
+  private static void c(n<?> paramn)
   {
     Object localObject1 = null;
-    kotlinx.coroutines.internal.l locall = paramk.iSN();
-    Object localObject2 = locall;
-    if (!(locall instanceof s)) {
-      localObject2 = null;
-    }
-    localObject2 = (s)localObject2;
-    if (localObject2 == null) {
-      if (localObject1 != null)
-      {
-        if ((localObject1 instanceof ArrayList)) {
-          break label73;
-        }
-        ((s)localObject1).a(paramk);
-      }
-    }
     for (;;)
     {
-      return;
-      if (!((s)localObject2).remove())
+      Object localObject2 = paramn.kEb();
+      if ((localObject2 instanceof w)) {}
+      for (localObject2 = (w)localObject2;; localObject2 = null)
       {
-        ((s)localObject2).iSP();
+        if (localObject2 == null) {
+          break label60;
+        }
+        if (((w)localObject2).remove()) {
+          break label50;
+        }
+        ((w)localObject2).kEd();
         break;
       }
-      localObject1 = i.S(localObject1, localObject2);
-      break;
-      label73:
+      label50:
+      localObject1 = m.ag(localObject1, localObject2);
+    }
+    label60:
+    if (localObject1 != null)
+    {
+      if ((localObject1 instanceof ArrayList)) {
+        break label80;
+      }
+      ((w)localObject1).a(paramn);
+    }
+    label80:
+    int i;
+    do
+    {
+      return;
       if (localObject1 == null) {
-        throw new t("null cannot be cast to non-null type kotlin.collections.ArrayList<E> /* = java.util.ArrayList<E> */");
+        throw new NullPointerException("null cannot be cast to non-null type java.util.ArrayList<E of kotlinx.coroutines.internal.InlineList>{ kotlin.collections.TypeAliasesKt.ArrayList<E of kotlinx.coroutines.internal.InlineList> }");
       }
       localObject1 = (ArrayList)localObject1;
-      int i = ((ArrayList)localObject1).size() - 1;
-      while (i >= 0)
-      {
-        ((s)((ArrayList)localObject1).get(i)).a(paramk);
-        i -= 1;
+      i = ((ArrayList)localObject1).size() - 1;
+    } while (i < 0);
+    for (;;)
+    {
+      int j = i - 1;
+      ((w)((ArrayList)localObject1).get(i)).a(paramn);
+      if (j < 0) {
+        break;
       }
+      i = j;
     }
   }
   
-  private final int iSm()
+  private final int kDe()
   {
     int i = 0;
-    j localj = this.abyi;
-    Object localObject = localj.iSL();
-    if (localObject == null) {
-      throw new t("null cannot be cast to non-null type kotlinx.coroutines.internal.Node /* = kotlinx.coroutines.internal.LockFreeLinkedListNode */");
-    }
-    localObject = (kotlinx.coroutines.internal.l)localObject;
-    while ((kotlin.g.b.p.h(localObject, localj) ^ true))
+    kotlinx.coroutines.internal.n localn = this.ajxp;
+    kotlinx.coroutines.internal.p localp = (kotlinx.coroutines.internal.p)localn.kDZ();
+    while (!kotlin.g.b.s.p(localp, localn))
     {
       int j = i;
-      if ((localObject instanceof kotlinx.coroutines.internal.l)) {
+      if ((localp instanceof kotlinx.coroutines.internal.p)) {
         j = i + 1;
       }
-      localObject = kotlinx.coroutines.internal.k.gx(((kotlinx.coroutines.internal.l)localObject).iSL());
+      localp = o.jk(localp.kDZ());
       i = j;
     }
     return i;
   }
   
-  public boolean I(Throwable paramThrowable)
+  public final boolean Ij()
   {
-    Object localObject = new k(paramThrowable);
-    kotlinx.coroutines.internal.l locall1 = (kotlinx.coroutines.internal.l)this.abyi;
-    kotlinx.coroutines.internal.l locall2 = locall1.iSN();
+    return kDb() != null;
+  }
+  
+  protected Object a(aa paramaa)
+  {
+    if (kCZ())
+    {
+      localp1 = (kotlinx.coroutines.internal.p)this.ajxp;
+      do
+      {
+        localObject = localp1.kEb();
+        if ((localObject instanceof y)) {
+          return localObject;
+        }
+      } while (!((kotlinx.coroutines.internal.p)localObject).a((kotlinx.coroutines.internal.p)paramaa, localp1));
+      return null;
+    }
+    kotlinx.coroutines.internal.p localp1 = (kotlinx.coroutines.internal.p)this.ajxp;
+    Object localObject = (p.a)new b((kotlinx.coroutines.internal.p)paramaa, this);
+    for (;;)
+    {
+      kotlinx.coroutines.internal.p localp2 = localp1.kEb();
+      if ((localp2 instanceof y)) {
+        return localp2;
+      }
+      switch (localp2.a((kotlinx.coroutines.internal.p)paramaa, localp1, (p.a)localObject))
+      {
+      }
+    }
+    for (int i = 1; i == 0; i = 0) {
+      return b.ajxn;
+    }
+  }
+  
+  public final Object b(E paramE, d<? super ah> paramd)
+  {
+    if (iT(paramE) == b.ajxk)
+    {
+      paramd = ah.aiuX;
+      return paramd;
+    }
+    q localq = kotlinx.coroutines.s.av(kotlin.d.a.b.au(paramd));
+    Object localObject2 = (kotlinx.coroutines.p)localq;
+    label33:
+    int i;
+    label58:
+    Object localObject1;
+    label81:
+    Object localObject3;
+    if ((!(o.jk(this.ajxp.kDZ()) instanceof y)) && (kDa()))
+    {
+      i = 1;
+      if (i == 0) {
+        break label248;
+      }
+      if (this.ajxf != null) {
+        break label162;
+      }
+      localObject1 = new ac(paramE, (kotlinx.coroutines.p)localObject2);
+      localObject3 = a((aa)localObject1);
+      if (localObject3 != null) {
+        break label184;
+      }
+      kotlinx.coroutines.s.a((kotlinx.coroutines.p)localObject2, (kotlinx.coroutines.internal.p)localObject1);
+    }
+    for (;;)
+    {
+      localObject1 = localq.getResult();
+      if (localObject1 == a.aiwj) {
+        kotlin.g.b.s.u(paramd, "frame");
+      }
+      paramE = (TE)localObject1;
+      if (localObject1 != a.aiwj) {
+        paramE = ah.aiuX;
+      }
+      paramd = paramE;
+      if (paramE == a.aiwj) {
+        break;
+      }
+      return ah.aiuX;
+      i = 0;
+      break label58;
+      label162:
+      localObject1 = (ac)new ad(paramE, (kotlinx.coroutines.p)localObject2, this.ajxf);
+      break label81;
+      label184:
+      if ((localObject3 instanceof n))
+      {
+        a((d)localObject2, paramE, (n)localObject3);
+      }
+      else
+      {
+        if ((localObject3 != b.ajxn) && (!(localObject3 instanceof w))) {
+          throw ((Throwable)new IllegalStateException(kotlin.g.b.s.X("enqueueSend returned ", localObject3).toString()));
+        }
+        label248:
+        localObject1 = iT(paramE);
+        if (localObject1 == b.ajxk)
+        {
+          paramE = (d)localObject2;
+          localObject1 = ah.aiuX;
+          localObject2 = Result.Companion;
+          paramE.resumeWith(Result.constructor-impl(localObject1));
+        }
+        else
+        {
+          if (localObject1 == b.ajxl) {
+            break label33;
+          }
+          if (!(localObject1 instanceof n)) {
+            break label327;
+          }
+          a((d)localObject2, paramE, (n)localObject1);
+        }
+      }
+    }
+    label327:
+    throw ((Throwable)new IllegalStateException(kotlin.g.b.s.X("offerInternal returned ", localObject1).toString()));
+  }
+  
+  protected Object iT(E paramE)
+  {
+    y localy;
+    kotlinx.coroutines.internal.ac localac;
+    do
+    {
+      localy = kCX();
+      if (localy == null) {
+        return b.ajxl;
+      }
+      localac = localy.iQ(paramE);
+    } while (localac == null);
+    if (au.ASSERTIONS_ENABLED)
+    {
+      if (localac == r.ajvr) {}
+      for (int i = 1; i == 0; i = 0) {
+        throw new AssertionError();
+      }
+    }
+    localy.iR(paramE);
+    return localy.kDt();
+  }
+  
+  protected final y<?> iU(E paramE)
+  {
+    kotlinx.coroutines.internal.p localp1 = (kotlinx.coroutines.internal.p)this.ajxp;
+    paramE = (kotlinx.coroutines.internal.p)new a(paramE);
+    kotlinx.coroutines.internal.p localp2;
+    do
+    {
+      localp2 = localp1.kEb();
+      if ((localp2 instanceof y)) {
+        return (y)localp2;
+      }
+    } while (!localp2.a(paramE, localp1));
+    return null;
+  }
+  
+  public final Object iV(E paramE)
+  {
+    paramE = iT(paramE);
+    if (paramE == b.ajxk)
+    {
+      paramE = l.ajxF;
+      return l.constructor-impl(ah.aiuX);
+    }
+    l.b localb;
+    if (paramE == b.ajxl)
+    {
+      paramE = kDb();
+      if (paramE == null)
+      {
+        paramE = l.ajxF;
+        return l.constructor-impl(l.kDq());
+      }
+      localb = l.ajxF;
+      return l.b.Y(b(paramE));
+    }
+    if ((paramE instanceof n))
+    {
+      localb = l.ajxF;
+      return l.b.Y(b((n)paramE));
+    }
+    throw ((Throwable)new IllegalStateException(kotlin.g.b.s.X("trySend returned ", paramE).toString()));
+  }
+  
+  public boolean k(Throwable paramThrowable)
+  {
+    Object localObject = new n(paramThrowable);
+    kotlinx.coroutines.internal.p localp1 = (kotlinx.coroutines.internal.p)this.ajxp;
+    kotlinx.coroutines.internal.p localp2 = localp1.kEb();
     int i;
     label36:
     boolean bool;
-    if (!(locall2 instanceof k))
+    if (!(localp2 instanceof n))
     {
       i = 1;
       if (i != 0) {
@@ -128,385 +337,247 @@ public abstract class c<E>
     }
     for (;;)
     {
-      c((k)localObject);
+      c((n)localObject);
       if (bool)
       {
         localObject = this.onCloseHandler;
-        if ((localObject != null) && (localObject != b.abyh) && (abyj.compareAndSet(this, localObject, b.abyh))) {
-          ((kotlin.g.a.b)ag.x(localObject, 1)).invoke(paramThrowable);
+        if ((localObject != null) && (localObject != b.ajxo) && (ajxq.compareAndSet(this, localObject, b.ajxo))) {
+          ((kotlin.g.a.b)an.y(localObject, 1)).invoke(paramThrowable);
         }
       }
       return bool;
       i = 0;
       break label36;
       label112:
-      if (!locall2.a((kotlinx.coroutines.internal.l)localObject, locall1)) {
+      if (!localp2.a((kotlinx.coroutines.internal.p)localObject, localp1)) {
         break;
       }
       bool = true;
       break label42;
       label132:
-      localObject = this.abyi.iSN();
-      if (localObject == null) {
-        throw new t("null cannot be cast to non-null type kotlinx.coroutines.channels.Closed<*>");
-      }
-      localObject = (k)localObject;
+      localObject = (n)this.ajxp.kEb();
     }
   }
   
-  protected Object a(w paramw)
+  protected y<E> kCX()
   {
-    if (iSh())
+    kotlinx.coroutines.internal.p localp2 = (kotlinx.coroutines.internal.p)this.ajxp;
+    for (;;)
     {
-      locall1 = (kotlinx.coroutines.internal.l)this.abyi;
+      kotlinx.coroutines.internal.p localp1 = (kotlinx.coroutines.internal.p)localp2.kDZ();
+      if (localp1 == localp2) {
+        localp1 = null;
+      }
+      kotlinx.coroutines.internal.p localp3;
       do
       {
-        localObject = locall1.iSN();
-        if ((localObject instanceof u)) {
-          return localObject;
-        }
-      } while (!((kotlinx.coroutines.internal.l)localObject).a((kotlinx.coroutines.internal.l)paramw, locall1));
+        do
+        {
+          for (;;)
+          {
+            return (y)localp1;
+            if ((localp1 instanceof y)) {
+              break;
+            }
+            localp1 = null;
+          }
+        } while ((((y)localp1 instanceof n)) && (!localp1.isRemoved()));
+        localp3 = localp1.kEc();
+      } while (localp3 == null);
+      localp3.kEe();
+    }
+  }
+  
+  protected final kotlinx.coroutines.internal.n kCY()
+  {
+    return this.ajxp;
+  }
+  
+  protected abstract boolean kCZ();
+  
+  protected abstract boolean kDa();
+  
+  protected final n<?> kDb()
+  {
+    Object localObject = this.ajxp.kEb();
+    if ((localObject instanceof n)) {}
+    for (localObject = (n)localObject; localObject == null; localObject = null) {
       return null;
     }
-    kotlinx.coroutines.internal.l locall1 = (kotlinx.coroutines.internal.l)this.abyi;
-    Object localObject = (l.a)new b((kotlinx.coroutines.internal.l)paramw, (kotlinx.coroutines.internal.l)paramw, this);
+    c((n)localObject);
+    return localObject;
+  }
+  
+  protected final n<?> kDc()
+  {
+    Object localObject = o.jk(this.ajxp.kDZ());
+    if ((localObject instanceof n)) {}
+    for (localObject = (n)localObject; localObject == null; localObject = null) {
+      return null;
+    }
+    c((n)localObject);
+    return localObject;
+  }
+  
+  protected final aa kDd()
+  {
+    kotlinx.coroutines.internal.p localp2 = (kotlinx.coroutines.internal.p)this.ajxp;
     for (;;)
     {
-      kotlinx.coroutines.internal.l locall2 = locall1.iSN();
-      if ((locall2 instanceof u)) {
-        return locall2;
+      kotlinx.coroutines.internal.p localp1 = (kotlinx.coroutines.internal.p)localp2.kDZ();
+      if (localp1 == localp2) {
+        localp1 = null;
       }
-      switch (locall2.a((kotlinx.coroutines.internal.l)paramw, locall1, (l.a)localObject))
-      {
-      }
-    }
-    for (int i = 1; i == 0; i = 0) {
-      return b.abyg;
-    }
-  }
-  
-  public final Object c(E paramE, d<? super kotlin.x> paramd)
-  {
-    if (go(paramE) == b.abyd)
-    {
-      paramE = kotlin.x.aazN;
-      return paramE;
-    }
-    Object localObject1 = kotlinx.coroutines.p.l(kotlin.d.a.b.k(paramd));
-    Object localObject2 = (m)localObject1;
-    label33:
-    int i;
-    label58:
-    Object localObject3;
-    Object localObject4;
-    if ((!(kotlinx.coroutines.internal.k.gx(this.abyi.iSL()) instanceof u)) && (iSi()))
-    {
-      i = 1;
-      if (i == 0) {
-        break label222;
-      }
-      localObject3 = new y(paramE, (m)localObject2);
-      localObject4 = a((w)localObject3);
-      if (localObject4 != null) {
-        break label157;
-      }
-      ((m)localObject2).am((kotlin.g.a.b)new cn((kotlinx.coroutines.internal.l)localObject3));
-    }
-    for (;;)
-    {
-      localObject1 = ((n)localObject1).getResult();
-      if (localObject1 == a.aaAA) {
-        kotlin.g.b.p.k(paramd, "frame");
-      }
-      paramE = (TE)localObject1;
-      if (localObject1 == a.aaAA) {
-        break;
-      }
-      return kotlin.x.aazN;
-      i = 0;
-      break label58;
-      label157:
-      if ((localObject4 instanceof k))
-      {
-        a((d)localObject2, (k)localObject4);
-      }
-      else
-      {
-        if ((localObject4 != b.abyg) && (!(localObject4 instanceof s))) {
-          throw ((Throwable)new IllegalStateException("enqueueSend returned ".concat(String.valueOf(localObject4)).toString()));
-        }
-        label222:
-        localObject3 = go(paramE);
-        if (localObject3 == b.abyd)
-        {
-          paramE = (d)localObject2;
-          localObject2 = kotlin.x.aazN;
-          localObject3 = Result.Companion;
-          paramE.resumeWith(Result.constructor-impl(localObject2));
-        }
-        else
-        {
-          if (localObject3 == b.abye) {
-            break label33;
-          }
-          if (!(localObject3 instanceof k)) {
-            break label299;
-          }
-          a((d)localObject2, (k)localObject3);
-        }
-      }
-    }
-    label299:
-    throw ((Throwable)new IllegalStateException("offerInternal returned ".concat(String.valueOf(localObject3)).toString()));
-  }
-  
-  protected Object go(E paramE)
-  {
-    u localu;
-    v localv;
-    do
-    {
-      localu = iSe();
-      if (localu == null) {
-        return b.abye;
-      }
-      localv = localu.gn(paramE);
-    } while (localv == null);
-    if (ap.iRg())
-    {
-      if (localv == o.abwj) {}
-      for (int i = 1; i == 0; i = 0) {
-        throw ((Throwable)new AssertionError());
-      }
-    }
-    localu.iSf();
-    return localu.iSA();
-  }
-  
-  protected final u<?> gp(E paramE)
-  {
-    kotlinx.coroutines.internal.l locall1 = (kotlinx.coroutines.internal.l)this.abyi;
-    paramE = (kotlinx.coroutines.internal.l)new a(paramE);
-    kotlinx.coroutines.internal.l locall2;
-    do
-    {
-      locall2 = locall1.iSN();
-      if ((locall2 instanceof u)) {
-        return (u)locall2;
-      }
-    } while (!locall2.a(paramE, locall1));
-    return null;
-  }
-  
-  protected u<E> iSe()
-  {
-    kotlinx.coroutines.internal.l locall1 = (kotlinx.coroutines.internal.l)this.abyi;
-    for (;;)
-    {
-      Object localObject = locall1.iSL();
-      if (localObject == null) {
-        throw new t("null cannot be cast to non-null type kotlinx.coroutines.internal.Node /* = kotlinx.coroutines.internal.LockFreeLinkedListNode */");
-      }
-      localObject = (kotlinx.coroutines.internal.l)localObject;
-      if (localObject == locall1) {
-        localObject = null;
-      }
-      kotlinx.coroutines.internal.l locall2;
+      kotlinx.coroutines.internal.p localp3;
       do
       {
         do
         {
           for (;;)
           {
-            return (u)localObject;
-            if ((localObject instanceof u)) {
+            return (aa)localp1;
+            if ((localp1 instanceof aa)) {
               break;
             }
-            localObject = null;
+            localp1 = null;
           }
-        } while ((((u)localObject instanceof k)) && (!((kotlinx.coroutines.internal.l)localObject).isRemoved()));
-        locall2 = ((kotlinx.coroutines.internal.l)localObject).iSO();
-      } while (locall2 == null);
-      locall2.iSQ();
+        } while ((((aa)localp1 instanceof n)) && (!localp1.isRemoved()));
+        localp3 = localp1.kEc();
+      } while (localp3 == null);
+      localp3.kEe();
     }
   }
   
-  protected final j iSg()
-  {
-    return this.abyi;
-  }
-  
-  protected abstract boolean iSh();
-  
-  protected abstract boolean iSi();
-  
-  protected final k<?> iSj()
-  {
-    kotlinx.coroutines.internal.l locall = this.abyi.iSN();
-    Object localObject = locall;
-    if (!(locall instanceof k)) {
-      localObject = null;
-    }
-    localObject = (k)localObject;
-    if (localObject != null)
-    {
-      c((k)localObject);
-      return localObject;
-    }
-    return null;
-  }
-  
-  protected final k<?> iSk()
-  {
-    kotlinx.coroutines.internal.l locall = kotlinx.coroutines.internal.k.gx(this.abyi.iSL());
-    Object localObject = locall;
-    if (!(locall instanceof k)) {
-      localObject = null;
-    }
-    localObject = (k)localObject;
-    if (localObject != null)
-    {
-      c((k)localObject);
-      return localObject;
-    }
-    return null;
-  }
-  
-  protected final w iSl()
-  {
-    kotlinx.coroutines.internal.l locall1 = (kotlinx.coroutines.internal.l)this.abyi;
-    for (;;)
-    {
-      Object localObject = locall1.iSL();
-      if (localObject == null) {
-        throw new t("null cannot be cast to non-null type kotlinx.coroutines.internal.Node /* = kotlinx.coroutines.internal.LockFreeLinkedListNode */");
-      }
-      localObject = (kotlinx.coroutines.internal.l)localObject;
-      if (localObject == locall1) {
-        localObject = null;
-      }
-      kotlinx.coroutines.internal.l locall2;
-      do
-      {
-        do
-        {
-          for (;;)
-          {
-            return (w)localObject;
-            if ((localObject instanceof w)) {
-              break;
-            }
-            localObject = null;
-          }
-        } while ((((w)localObject instanceof k)) && (!((kotlinx.coroutines.internal.l)localObject).isRemoved()));
-        locall2 = ((kotlinx.coroutines.internal.l)localObject).iSO();
-      } while (locall2 == null);
-      locall2.iSQ();
-    }
-  }
-  
-  protected String iSn()
+  protected String kDf()
   {
     return "";
   }
   
   public final boolean offer(E paramE)
   {
-    paramE = go(paramE);
-    if (paramE == b.abyd) {
-      return true;
-    }
-    if (paramE == b.abye)
+    try
     {
-      paramE = iSj();
-      if (paramE == null) {
-        return false;
+      boolean bool = ab.a.a((ab)this, paramE);
+      return bool;
+    }
+    finally
+    {
+      kotlin.g.a.b localb = this.ajxf;
+      if (localb != null)
+      {
+        paramE = v.a(localb, paramE, null);
+        if (paramE != null)
+        {
+          kotlin.b.a((Throwable)paramE, localThrowable);
+          throw paramE;
+        }
       }
-      throw kotlinx.coroutines.internal.u.L(b(paramE));
     }
-    if ((paramE instanceof k)) {
-      throw kotlinx.coroutines.internal.u.L(b((k)paramE));
+  }
+  
+  public final void p(kotlin.g.a.b<? super Throwable, ah> paramb)
+  {
+    if (!ajxq.compareAndSet(this, null, paramb))
+    {
+      paramb = this.onCloseHandler;
+      if (paramb == b.ajxo) {
+        throw new IllegalStateException("Another handler was already registered and successfully invoked");
+      }
+      throw new IllegalStateException(kotlin.g.b.s.X("Another handler was already registered: ", paramb));
     }
-    throw ((Throwable)new IllegalStateException("offerInternal returned ".concat(String.valueOf(paramE)).toString()));
+    n localn = kDb();
+    if ((localn != null) && (ajxq.compareAndSet(this, paramb, b.ajxo))) {
+      paramb.invoke(localn.aoY);
+    }
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder().append(getClass().getSimpleName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('{');
-    kotlinx.coroutines.internal.l locall1 = this.abyi.iSM();
+    kotlinx.coroutines.internal.p localp1 = this.ajxp.kEa();
     Object localObject;
-    if (locall1 == this.abyi)
+    if (localp1 == this.ajxp)
     {
       localObject = "EmptyQueue";
-      return (String)localObject + '}' + iSn();
+      return (String)localObject + '}' + kDf();
     }
     String str;
-    if ((locall1 instanceof k)) {
-      str = locall1.toString();
+    if ((localp1 instanceof n)) {
+      str = localp1.toString();
     }
     for (;;)
     {
-      kotlinx.coroutines.internal.l locall2 = this.abyi.iSN();
+      kotlinx.coroutines.internal.p localp2 = this.ajxp.kEb();
       localObject = str;
-      if (locall2 == locall1) {
+      if (localp2 == localp1) {
         break;
       }
-      str = str + ",queueSize=" + iSm();
+      str = str + ",queueSize=" + kDe();
       localObject = str;
-      if (!(locall2 instanceof k)) {
+      if (!(localp2 instanceof n)) {
         break;
       }
-      localObject = str + ",closedForSend=" + locall2;
+      localObject = str + ",closedForSend=" + localp2;
       break;
-      if ((locall1 instanceof s)) {
+      if ((localp1 instanceof w)) {
         str = "ReceiveQueued";
-      } else if ((locall1 instanceof w)) {
+      } else if ((localp1 instanceof aa)) {
         str = "SendQueued";
       } else {
-        str = "UNEXPECTED:".concat(String.valueOf(locall1));
+        str = kotlin.g.b.s.X("UNEXPECTED:", localp1);
       }
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/channels/AbstractSendChannel$SendBuffered;", "E", "Lkotlinx/coroutines/channels/Send;", "element", "(Ljava/lang/Object;)V", "Ljava/lang/Object;", "pollResult", "", "getPollResult", "()Ljava/lang/Object;", "completeResumeSend", "", "resumeSendClosed", "closed", "Lkotlinx/coroutines/channels/Closed;", "toString", "", "tryResumeSend", "Lkotlinx/coroutines/internal/Symbol;", "otherOp", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode$PrepareOp;", "kotlinx-coroutines-core"})
+  @Metadata(d1={""}, d2={"Lkotlinx/coroutines/channels/AbstractSendChannel$SendBuffered;", "E", "Lkotlinx/coroutines/channels/Send;", "element", "(Ljava/lang/Object;)V", "Ljava/lang/Object;", "pollResult", "", "getPollResult", "()Ljava/lang/Object;", "completeResumeSend", "", "resumeSendClosed", "closed", "Lkotlinx/coroutines/channels/Closed;", "toString", "", "tryResumeSend", "Lkotlinx/coroutines/internal/Symbol;", "otherOp", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode$PrepareOp;", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a<E>
-    extends w
+    extends aa
   {
-    public final E aaBC;
+    public final E aqH;
     
     public a(E paramE)
     {
-      this.aaBC = paramE;
+      this.aqH = paramE;
     }
     
-    public final void d(k<?> paramk) {}
-    
-    public final Object iSo()
+    public final void d(n<?> paramn)
     {
-      return this.aaBC;
+      AppMethodBeat.i(189369);
+      if (au.ASSERTIONS_ENABLED)
+      {
+        paramn = new AssertionError();
+        AppMethodBeat.o(189369);
+        throw paramn;
+      }
+      AppMethodBeat.o(189369);
     }
     
-    public final v iSp()
+    public final Object kDg()
     {
-      return o.abwj;
+      return this.aqH;
     }
     
-    public final void iSq() {}
+    public final kotlinx.coroutines.internal.ac kDh()
+    {
+      return r.ajvr;
+    }
+    
+    public final void kDi() {}
     
     public final String toString()
     {
-      AppMethodBeat.i(204494);
-      String str = "SendBuffered@" + Integer.toHexString(System.identityHashCode(this)) + '(' + this.aaBC + ')';
-      AppMethodBeat.o(204494);
+      AppMethodBeat.i(189377);
+      String str = "SendBuffered@" + Integer.toHexString(System.identityHashCode(this)) + '(' + this.aqH + ')';
+      AppMethodBeat.o(189377);
       return str;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"kotlinx/coroutines/internal/LockFreeLinkedListNode$makeCondAddOp$1", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode$CondAddOp;", "prepare", "", "affected", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "Lkotlinx/coroutines/internal/Node;", "kotlinx-coroutines-core"})
+  @Metadata(d1={""}, d2={"kotlinx/coroutines/internal/LockFreeLinkedListNode$makeCondAddOp$1", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode$CondAddOp;", "prepare", "", "affected", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "Lkotlinx/coroutines/internal/Node;", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
-    extends l.a
+    extends p.a
   {
-    public b(kotlinx.coroutines.internal.l paraml1, kotlinx.coroutines.internal.l paraml2, c paramc)
+    public b(kotlinx.coroutines.internal.p paramp, c paramc)
     {
       super();
     }
@@ -514,7 +585,7 @@ public abstract class c<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.a.c
  * JD-Core Version:    0.7.0.1
  */

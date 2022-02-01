@@ -5,47 +5,47 @@ import com.tencent.mm.kernel.f;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.aq;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
 public final class b
 {
-  public HashSet<String> GHj;
+  public HashSet<String> MEa;
   
   public b()
   {
     AppMethodBeat.i(66658);
-    this.GHj = new HashSet();
-    ate();
+    this.MEa = new HashSet();
+    aNm();
     AppMethodBeat.o(66658);
   }
   
-  private void ate()
+  private void aNm()
   {
     AppMethodBeat.i(66659);
-    this.GHj.clear();
-    h.aHH();
-    Iterator localIterator = Util.stringsToList(((String)h.aHG().aHp().b(204803, "")).split(";")).iterator();
+    this.MEa.clear();
+    h.baF();
+    Iterator localIterator = Util.stringsToList(((String)h.baE().ban().d(204803, "")).split(";")).iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      if ((!Util.isNullOrNil(str)) && (!this.GHj.contains(str))) {
-        this.GHj.add(str);
+      if ((!Util.isNullOrNil(str)) && (!this.MEa.contains(str))) {
+        this.MEa.add(str);
       }
     }
-    h.aHH();
-    h.aHG().aHp().i(204817, Integer.valueOf(this.GHj.size()));
-    Log.d("MicroMsg.WalletOrdersManager", "notifyTrans.size() : " + this.GHj.size());
+    h.baF();
+    h.baE().ban().B(204817, Integer.valueOf(this.MEa.size()));
+    Log.d("MicroMsg.WalletOrdersManager", "notifyTrans.size() : " + this.MEa.size());
     AppMethodBeat.o(66659);
   }
   
-  public final void adf()
+  public final void aFe()
   {
     AppMethodBeat.i(66660);
     StringBuffer localStringBuffer = new StringBuffer();
-    Iterator localIterator = this.GHj.iterator();
+    Iterator localIterator = this.MEa.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
@@ -53,8 +53,8 @@ public final class b
         localStringBuffer.append(str + ";");
       }
     }
-    h.aHH();
-    h.aHG().aHp().i(204803, localStringBuffer.toString());
+    h.baF();
+    h.baE().ban().B(204803, localStringBuffer.toString());
     AppMethodBeat.o(66660);
   }
 }

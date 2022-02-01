@@ -20,23 +20,23 @@ public final class GroundOverlayOptions
   
   static
   {
-    AppMethodBeat.i(237498);
+    AppMethodBeat.i(218018);
     Bitmap.Config localConfig = Bitmap.Config.ARGB_8888;
     TRANSPARENT_PIXEL = Bitmap.createBitmap(new int[] { 0 }, 1, 1, localConfig);
-    AppMethodBeat.o(237498);
+    AppMethodBeat.o(218018);
   }
   
   public GroundOverlayOptions()
   {
-    AppMethodBeat.i(237495);
+    AppMethodBeat.i(218017);
     this.mBitmapDescriptor = BitmapDescriptorFactory.fromBitmap(TRANSPARENT_PIXEL);
     this.mZoom = 18.0F;
     this.mAnchorU = 0.5F;
     this.mAnchorV = 0.5F;
     this.mAlpha = 1.0F;
     this.mVisibility = true;
-    this.mLevel = OverlayLevel.OverlayLevelAboveBuildings;
-    AppMethodBeat.o(237495);
+    this.mLevel = 1;
+    AppMethodBeat.o(218017);
   }
   
   public final GroundOverlayOptions alpha(float paramFloat)
@@ -116,7 +116,7 @@ public final class GroundOverlayOptions
   
   public final GroundOverlayOptions level(int paramInt)
   {
-    if ((paramInt < OverlayLevel.OverlayLevelAboveRoads) || (paramInt > OverlayLevel.OverlayLevelAboveLabels)) {
+    if ((paramInt < 0) || (paramInt > 2)) {
       return this;
     }
     this.mLevel = paramInt;
@@ -149,7 +149,7 @@ public final class GroundOverlayOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.GroundOverlayOptions
  * JD-Core Version:    0.7.0.1
  */

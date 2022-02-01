@@ -1,0 +1,44 @@
+{
+  "sdk_protocol": "1.2",
+  "_private_partner": "00e3d061e7debe5f88aec44e0b549b76",
+  "business_conf": {
+    "privacy_protection": true,
+    "http_proxy": [
+      {
+        "domain": "vectorsdk.map.qq.com",
+        "proxy_domain": "tencentmap.wechat.com/vectorsdk/"
+      },
+      {
+        "domain": "confinfo.map.qq.com",
+        "proxy_domain": "tencentmap.wechat.com/confinfo/"
+      },
+      {
+        "domain": "tafrtt.map.qq.com",
+        "proxy_domain": "tencentmap.wechat.com/tafrtt/"
+      },
+      {
+        "domain": "apikey.map.qq.com",
+        "proxy_domain": "tencentmap.wechat.com/apikey/"
+      },
+      {
+        "domain": "overseactrl.map.qq.com",
+        "proxy_domain": "tencentmap.wechat.com/overseactrl/"
+      },
+      {
+        "domain": "pr.map.qq.com",
+        "proxy_domain": "tencentmap.wechat.com/pr/"
+      },
+      {
+        "domain": "sdkgw.map.qq.com",
+        "proxy_domain": "tencentmap.wechat.com/sdkgw/"
+      },
+      {
+        "domain": "datalayer.map.qq.com",
+        "proxy_domain": "tencentmap.wechat.com/datalayer/"
+      }
+    ]
+  }
+}
+
+
+

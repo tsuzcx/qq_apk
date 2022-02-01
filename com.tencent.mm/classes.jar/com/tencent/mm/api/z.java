@@ -1,12 +1,11 @@
 package com.tencent.mm.api;
 
+import com.tencent.mm.kernel.b.a;
+
 public abstract interface z
+  extends a
 {
-  public abstract void a(h paramh);
-  
-  public abstract void a(h paramh, int paramInt, Object paramObject);
-  
-  public abstract void dd(boolean paramBoolean);
+  public abstract v getReceiver();
 }
 
 

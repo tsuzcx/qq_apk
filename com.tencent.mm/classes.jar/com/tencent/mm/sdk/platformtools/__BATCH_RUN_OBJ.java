@@ -3,15 +3,15 @@ package com.tencent.mm.sdk.platformtools;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 import java.util.Queue;
-import kotlin.l;
-import kotlinx.coroutines.by;
+import kotlin.Metadata;
+import kotlinx.coroutines.cb;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/sdk/platformtools/__BATCH_RUN_OBJ;", "", "()V", "batchData", "Ljava/util/HashMap;", "", "Ljava/util/Queue;", "Lkotlin/collections/HashMap;", "getBatchData", "()Ljava/util/HashMap;", "batchJobs", "Lkotlinx/coroutines/Job;", "getBatchJobs", "libcompatible_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/sdk/platformtools/__BATCH_RUN_OBJ;", "", "()V", "batchData", "Ljava/util/HashMap;", "", "Ljava/util/Queue;", "Lkotlin/collections/HashMap;", "getBatchData", "()Ljava/util/HashMap;", "batchJobs", "Lkotlinx/coroutines/Job;", "getBatchJobs", "libcompatible_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class __BATCH_RUN_OBJ
 {
   public static final __BATCH_RUN_OBJ INSTANCE;
   private static final HashMap<String, Queue<?>> batchData;
-  private static final HashMap<String, by> batchJobs;
+  private static final HashMap<String, cb> batchJobs;
   
   static
   {
@@ -27,7 +27,7 @@ public final class __BATCH_RUN_OBJ
     return batchData;
   }
   
-  public final HashMap<String, by> getBatchJobs()
+  public final HashMap<String, cb> getBatchJobs()
   {
     return batchJobs;
   }

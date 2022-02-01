@@ -5,23 +5,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class e
   extends d
 {
-  private static final e abRp;
+  private static final e akeh;
   
   static
   {
     AppMethodBeat.i(90487);
-    abRp = new e();
+    akeh = new e();
     AppMethodBeat.o(90487);
   }
   
-  public static d iWf()
+  public static d kKD()
   {
-    return abRp;
+    return akeh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     rx.d.e
  * JD-Core Version:    0.7.0.1
  */

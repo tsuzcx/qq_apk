@@ -9,7 +9,7 @@ class e
 {
   public static void a(Context paramContext, WebView paramWebView)
   {
-    AppMethodBeat.i(193934);
+    AppMethodBeat.i(219417);
     WebSettings localWebSettings = paramWebView.getSettings();
     localWebSettings.setJavaScriptEnabled(true);
     localWebSettings.setAllowFileAccess(true);
@@ -37,12 +37,12 @@ class e
     CookieSyncManager.createInstance(paramContext);
     CookieSyncManager.getInstance().sync();
     paramWebView.setDownloadListener(new e.1(paramContext));
-    AppMethodBeat.o(193934);
+    AppMethodBeat.o(219417);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.sdk.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mm.wallet_core.tenpay.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.ac;
+import com.tencent.mm.platformtools.z;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,23 +10,23 @@ import org.json.JSONObject;
 public class g
   extends p
 {
-  protected JSONObject YWh;
-  public boolean YWi;
-  public int YWj;
-  public boolean YWk;
+  protected JSONObject agUb;
+  public boolean agUc;
+  public int agUd;
+  public boolean agUe;
   
   public g(Map<String, String> paramMap)
   {
     AppMethodBeat.i(72891);
-    this.YWi = false;
-    this.YWj = 0;
-    this.YWk = false;
+    this.agUc = false;
+    this.agUd = 0;
+    this.agUe = false;
     Log.i("MicroMsg.NetSceneDelayQueryOrder", "NetSceneDelayQueryOrder call");
     setRequestData(paramMap);
     AppMethodBeat.o(72891);
   }
   
-  public final void au(boolean paramBoolean, int paramInt)
+  public final void ax(boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(72892);
     HashMap localHashMap = new HashMap();
@@ -57,9 +57,9 @@ public class g
     return "/cgi-bin/mmpay-bin/tenpay/payorderquery";
   }
   
-  public final JSONObject ijm()
+  public final JSONObject jPh()
   {
-    return this.YWh;
+    return this.agUb;
   }
   
   public void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
@@ -67,12 +67,12 @@ public class g
     AppMethodBeat.i(72893);
     super.onGYNetEnd(paramInt, paramString, paramJSONObject);
     JSONObject localJSONObject1 = paramJSONObject;
-    if (ac.mGM) {}
+    if (z.pDm) {}
     try
     {
       localJSONObject1 = new JSONObject("{\"retcode\":268447844,\"retmsg\":\"系统麻烦请稍后再试\",\"can_pay_retry\":1,\"show_retmsg_type\":1}");
       Log.i("MicroMsg.NetSceneDelayQueryOrder", "errCode = " + paramInt + "errMsg=" + paramString);
-      this.YWh = localJSONObject1;
+      this.agUb = localJSONObject1;
       if (localJSONObject1 != null)
       {
         Log.d("MicroMsg.NetSceneDelayQueryOrder", "ret json: %s", new Object[] { localJSONObject1.toString() });
@@ -83,8 +83,8 @@ public class g
       label129:
       for (boolean bool = true;; bool = false)
       {
-        this.YWi = bool;
-        this.YWj = localJSONObject1.optInt("show_retmsg_type");
+        this.agUc = bool;
+        this.agUd = localJSONObject1.optInt("show_retmsg_type");
         AppMethodBeat.o(72893);
         return;
       }
@@ -100,7 +100,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.wallet_core.tenpay.model.g
  * JD-Core Version:    0.7.0.1
  */

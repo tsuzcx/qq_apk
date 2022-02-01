@@ -55,10 +55,10 @@ public class SmcLogic
     return callBack.getKVCommPath();
   }
   
-  private static BaseInfo getKVCommReqBaseInfo()
+  private static SmcLogic.BaseInfo getKVCommReqBaseInfo()
   {
     if (callBack == null) {
-      return new BaseInfo();
+      return new SmcLogic.BaseInfo();
     }
     return callBack.getKVCommReqBaseInfo();
   }
@@ -124,15 +124,6 @@ public class SmcLogic
   
   public static native void writeKvPbDataWithType(long paramLong1, long paramLong2, byte[] paramArrayOfByte, boolean paramBoolean);
   
-  public static class BaseInfo
-  {
-    public String deviceBrand;
-    public String deviceModel;
-    public String languageVer;
-    public String osName;
-    public String osVersion;
-  }
-  
   public static abstract interface ICallBack
   {
     public abstract boolean OnSelfMonitorOpLogReady(byte[] paramArrayOfByte);
@@ -150,7 +141,7 @@ public class SmcLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mars.smc.SmcLogic
  * JD-Core Version:    0.7.0.1
  */

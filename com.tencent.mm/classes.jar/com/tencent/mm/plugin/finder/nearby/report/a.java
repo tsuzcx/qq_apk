@@ -1,131 +1,155 @@
 package com.tencent.mm.plugin.finder.nearby.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.dl;
+import com.tencent.mm.autogen.mmdata.rpt.es;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.plugin.expt.b.d;
 import com.tencent.mm.plugin.expt.hellhound.core.b;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.model.w;
+import com.tencent.mm.plugin.finder.model.x;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.bac;
+import com.tencent.mm.protocal.protobuf.bip;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/report/FinderLivePlayFeedEntranceLogReporter;", "", "()V", "commentScene", "", "getCommentScene", "()Ljava/lang/String;", "setCommentScene", "(Ljava/lang/String;)V", "lastClickFeedIndex", "", "getLastClickFeedIndex", "()J", "setLastClickFeedIndex", "(J)V", "report", "", "feed", "Lcom/tencent/mm/plugin/finder/model/FinderFeedLive;", "index", "action", "userName", "liveID", "feedID", "enterStatus", "sessionBuffer", "onlineNum", "reportClick", "", "reportEnter", "Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "reportExpose", "reset", "plugin-finder-nearby_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/report/FinderLivePlayFeedEntranceLogReporter;", "", "()V", "commentScene", "", "getCommentScene", "()Ljava/lang/String;", "setCommentScene", "(Ljava/lang/String;)V", "lastClickFeedIndex", "", "getLastClickFeedIndex", "()J", "setLastClickFeedIndex", "(J)V", "report", "", "feed", "Lcom/tencent/mm/plugin/finder/model/FinderFeedLive;", "index", "action", "userName", "liveID", "feedID", "enterStatus", "sessionBuffer", "onlineNum", "reportClick", "", "reportEnter", "Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "reportExpose", "reset", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  private static String yBr;
-  public static long zIY;
-  public static final a zIZ;
+  private static String Dol;
+  public static final a EQq;
+  private static long EQr;
   
   static
   {
-    AppMethodBeat.i(199919);
-    zIZ = new a();
-    zIY = -1L;
-    yBr = "94";
-    AppMethodBeat.o(199919);
+    AppMethodBeat.i(339763);
+    EQq = new a();
+    EQr = -1L;
+    Dol = "94";
+    AppMethodBeat.o(339763);
   }
   
-  public static void OD(int paramInt)
+  public static void Ra(int paramInt)
   {
-    AppMethodBeat.i(199908);
-    yBr = String.valueOf(paramInt);
-    AppMethodBeat.o(199908);
+    AppMethodBeat.i(339714);
+    Dol = String.valueOf(paramInt);
+    AppMethodBeat.o(339714);
   }
   
-  public static void a(w paramw, int paramInt)
+  public static void a(x paramx, int paramInt)
   {
-    AppMethodBeat.i(199909);
-    p.k(paramw, "feed");
-    a(paramw, paramInt, 1L);
-    AppMethodBeat.o(199909);
+    AppMethodBeat.i(339724);
+    s.u(paramx, "feed");
+    a(paramx, paramInt, 1L);
+    AppMethodBeat.o(339724);
   }
   
-  public static void a(w paramw, long paramLong1, long paramLong2)
+  private static void a(x paramx, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(199913);
-    String str1 = paramw.feedObject.getUserName();
-    Object localObject1 = paramw.feedObject.getLiveInfo();
-    if (localObject1 != null)
-    {
-      localObject2 = String.valueOf(((bac)localObject1).liveId);
-      localObject1 = localObject2;
-      if (localObject2 != null) {}
-    }
-    else
+    AppMethodBeat.i(339742);
+    String str1 = paramx.feedObject.getUserName();
+    Object localObject1 = paramx.feedObject.getLiveInfo();
+    String str2;
+    String str3;
+    Object localObject3;
+    Object localObject2;
+    long l1;
+    label101:
+    int i;
+    if (localObject1 == null)
     {
       localObject1 = "";
-    }
-    String str2 = b.Fw(paramw.feedObject.getFeedObject().id);
-    p.j(str2, "HellhoundUtil.long2Unsig…feedObject.feedObject.id)");
-    String str3 = yBr;
-    Object localObject3 = paramw.feedObject.getFeedObject().sessionBuffer;
-    Object localObject2 = localObject3;
-    if (localObject3 == null) {
-      localObject2 = "";
-    }
-    p.j(localObject2, "feed.feedObject.feedObject.sessionBuffer ?: \"\"");
-    localObject3 = paramw.feedObject.getLiveInfo();
-    long l1;
-    if (localObject3 != null)
-    {
-      l1 = ((bac)localObject3).SFG;
-      paramw = paramw.feedObject.getLiveInfo();
-      if ((paramw == null) || (paramw.liveStatus != 1)) {
+      str2 = b.hF(paramx.feedObject.getFeedObject().id);
+      s.s(str2, "long2UnsignedString(feed.feedObject.feedObject.id)");
+      str3 = Dol;
+      localObject3 = paramx.feedObject.getFeedObject().sessionBuffer;
+      localObject2 = localObject3;
+      if (localObject3 == null) {
+        localObject2 = "";
+      }
+      localObject3 = paramx.feedObject.getLiveInfo();
+      if (localObject3 != null) {
         break label186;
+      }
+      l1 = 0L;
+      paramx = paramx.feedObject.getLiveInfo();
+      if ((paramx == null) || (paramx.liveStatus != 1)) {
+        break label197;
+      }
+      i = 1;
+      label124:
+      if (i == 0) {
+        break label203;
       }
     }
     label186:
+    label197:
+    label203:
     for (long l2 = 1L;; l2 = 2L)
     {
       a(str1, (String)localObject1, str2, paramLong2, str3, paramLong1, l2, (String)localObject2, l1);
-      AppMethodBeat.o(199913);
+      AppMethodBeat.o(339742);
       return;
-      l1 = 0L;
+      localObject2 = Long.valueOf(((bip)localObject1).liveId).toString();
+      localObject1 = localObject2;
+      if (localObject2 != null) {
+        break;
+      }
+      localObject1 = "";
       break;
+      l1 = ((bip)localObject3).EOg;
+      break label101;
+      i = 0;
+      break label124;
     }
   }
   
   private static void a(String paramString1, String paramString2, String paramString3, long paramLong1, String paramString4, long paramLong2, long paramLong3, String paramString5, long paramLong4)
   {
-    AppMethodBeat.i(199917);
-    dl localdl = new dl();
-    localdl.pX(paramString1);
-    localdl.pY(paramString2);
-    localdl.pZ(paramString3);
-    paramString2 = ((c)h.ae(c.class)).dbr();
+    AppMethodBeat.i(339754);
+    es locales = new es();
+    locales.pg(paramString1);
+    locales.ph(paramString2);
+    locales.pi(paramString3);
+    paramString2 = ((d)h.ax(d.class)).dHN();
     paramString1 = paramString2;
     if (paramString2 == null) {
       paramString1 = "";
     }
-    localdl.qa(paramString1);
-    localdl.iK(cm.bfE());
-    localdl.iL(paramLong1);
-    localdl.qb(paramString4);
-    localdl.iM(paramLong2);
-    localdl.iN(paramLong3);
-    localdl.qc(e.zJs.agX());
-    localdl.qd("1001-" + cm.bfE());
-    localdl.qe(paramString5);
-    localdl.iO(paramLong4);
-    localdl.bpa();
-    Log.i("FinderLivePlayFeedEntranceLogReporter", localdl.agI());
-    AppMethodBeat.o(199917);
+    locales.pj(paramString1);
+    locales.iwW = cn.bDw();
+    locales.ikE = paramLong1;
+    locales.pk(paramString4);
+    locales.ikr = paramLong2;
+    locales.iwV = paramLong3;
+    locales.pl(g.ERj.eeL());
+    locales.pm(s.X("1001-", Long.valueOf(cn.bDw())));
+    locales.pn(paramString5);
+    locales.iEd = paramLong4;
+    locales.bMH();
+    Log.i("FinderLivePlayFeedEntranceLogReporter", locales.aIF());
+    AppMethodBeat.o(339754);
+  }
+  
+  public static void b(x paramx, int paramInt)
+  {
+    AppMethodBeat.i(339733);
+    s.u(paramx, "feed");
+    EQr = paramInt;
+    a(paramx, paramInt, 2L);
+    AppMethodBeat.o(339733);
   }
   
   public static void reset()
   {
-    zIY = -1L;
+    EQr = -1L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.nearby.report.a
  * JD-Core Version:    0.7.0.1
  */

@@ -7,23 +7,23 @@ import com.tencent.mm.ipcinvoker.h.c;
 public final class a
   implements IBinder.DeathRecipient
 {
-  private final String jZi;
+  private final String mzg;
   
   public a(String paramString)
   {
-    this.jZi = paramString;
+    this.mzg = paramString;
   }
   
   public final void binderDied()
   {
     AppMethodBeat.i(158820);
-    c.i("IPC.DeathRecipientImpl", "binderDied(%s)", new Object[] { this.jZi });
-    if ((this.jZi == null) || (this.jZi.length() == 0))
+    c.i("IPC.DeathRecipientImpl", "binderDied(%s)", new Object[] { this.mzg });
+    if ((this.mzg == null) || (this.mzg.length() == 0))
     {
       AppMethodBeat.o(158820);
       return;
     }
-    b.Mt(this.jZi);
+    b.Fc(this.mzg);
     AppMethodBeat.o(158820);
   }
 }

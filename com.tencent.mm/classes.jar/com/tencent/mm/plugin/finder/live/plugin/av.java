@@ -1,248 +1,318 @@
 package com.tencent.mm.plugin.finder.live.plugin;
 
-import android.content.Context;
-import android.content.res.Resources;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.view.ViewPropertyAnimator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.live.api.LiveConfig;
-import com.tencent.mm.live.c.b.c;
-import com.tencent.mm.plugin.finder.api.d.a;
-import com.tencent.mm.plugin.finder.api.i;
-import com.tencent.mm.plugin.finder.b.d;
-import com.tencent.mm.plugin.finder.b.e;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.cgi.an;
-import com.tencent.mm.plugin.finder.live.report.s.p;
-import com.tencent.mm.plugin.finder.live.report.s.q;
-import com.tencent.mm.plugin.finder.live.viewmodel.data.business.c;
-import com.tencent.mm.plugin.finder.live.viewmodel.data.f;
-import com.tencent.mm.plugin.finder.loader.e;
-import com.tencent.mm.plugin.finder.loader.t;
-import com.tencent.mm.plugin.finder.loader.t.a;
-import com.tencent.mm.plugin.finder.model.ai;
-import com.tencent.mm.protocal.protobuf.FinderAuthInfo;
-import com.tencent.mm.protocal.protobuf.bep;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.live.b.b.c;
+import com.tencent.mm.plugin.finder.live.model.q;
+import com.tencent.mm.plugin.finder.live.p.e;
+import com.tencent.mm.plugin.finder.live.viewmodel.data.business.e;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.base.w;
-import com.tencent.mm.ui.component.g;
-import com.tencent.mm.ui.component.g.a;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.x;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.ui.bd;
+import com.tencent.mm.ui.bf;
+import com.tencent.recovery.util.Util;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.u;
+import org.libpag.PAGFile;
+import org.libpag.PAGView;
+import org.libpag.PAGView.PAGViewListener;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveFollowGuidePlugin;", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "reportObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "oplogCallback", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModBlockPosterSetting;", "doBlockOpLog", "", "username", "", "showGuide", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveGiftPlayPlugin;", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "animLoopTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "curGiftId", "", "giftHideTipGroup", "Landroid/view/View;", "giftHideTipGroupAnim", "Landroid/view/ViewPropertyAnimator;", "giftPlayView", "Lorg/libpag/PAGView;", "canClearScreen", "", "hideGift", "", "hideSingleGift", "playGiftAnimation", "isForceReplace", "isFromSelf", "setVisible", "visible", "", "showGift", "giftId", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "tryShowHideTip", "unMount", "Companion", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class av
-  extends d
+  extends b
 {
-  @Deprecated
-  public static final a ypS;
-  private final com.tencent.mm.live.c.b kCL;
-  private com.tencent.mm.plugin.findersdk.a.aj<bep> ypR;
+  public static final av.a DaH;
+  private static final String TAG;
+  private final PAGView DaI;
+  private final View DaJ;
+  private ViewPropertyAnimator DaK;
+  private final MTimerHandler DaL;
+  private String Dap;
+  private final com.tencent.mm.live.b.b nfT;
   
   static
   {
-    AppMethodBeat.i(266937);
-    ypS = new a((byte)0);
-    AppMethodBeat.o(266937);
+    AppMethodBeat.i(354962);
+    DaH = new av.a((byte)0);
+    TAG = "Finder.FinderLiveGiftPlayPlugin";
+    AppMethodBeat.o(354962);
   }
   
-  private av(ViewGroup paramViewGroup, com.tencent.mm.live.c.b paramb)
+  public av(ViewGroup paramViewGroup, com.tencent.mm.live.b.b paramb)
   {
-    super(paramViewGroup, paramb, null);
-    AppMethodBeat.i(266936);
-    this.kCL = paramb;
-    AppMethodBeat.o(266936);
-  }
-  
-  public final void statusChange(final b.c paramc, Bundle paramBundle)
-  {
-    int j = 8;
-    AppMethodBeat.i(266935);
-    p.k(paramc, "status");
-    switch (aw.$EnumSwitchMapping$0[paramc.ordinal()])
+    super(paramViewGroup, paramb);
+    AppMethodBeat.i(354902);
+    this.nfT = paramb;
+    paramb = paramViewGroup.findViewById(p.e.BLS);
+    kotlin.g.b.s.s(paramb, "root.findViewById(R.id.finder_live_gift_play_view)");
+    this.DaI = ((PAGView)paramb);
+    paramb = paramViewGroup.findViewById(p.e.BLy);
+    kotlin.g.b.s.s(paramb, "root.findViewById(R.id.f…live_gift_hide_tip_group)");
+    this.DaJ = paramb;
+    this.DaL = new MTimerHandler(TAG, new av..ExternalSyntheticLambda1(this), true);
+    this.DaJ.getLayoutParams().height = ((int)(bf.bf(paramViewGroup.getContext()).y * 0.16F) + bf.bk(paramViewGroup.getContext()));
+    this.DaJ.setPadding(0, 0, 0, bd.fromDPToPix(paramViewGroup.getContext(), 48) + bf.bk(paramViewGroup.getContext()));
+    paramViewGroup = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+    if (!com.tencent.mm.plugin.finder.live.utils.a.bUx())
     {
-    default: 
-      AppMethodBeat.o(266935);
-      return;
-    }
-    paramc = (kotlin.g.a.a)new f(this);
-    if (isLandscape())
-    {
-      paramBundle = (LinearLayout)((View)this.kiF).findViewById(b.f.liveFollowGuideContentRoot);
-      p.j(paramBundle, "root.liveFollowGuideContentRoot");
-      paramBundle = paramBundle.getLayoutParams();
-      localObject1 = this.kiF.getContext();
-      p.j(localObject1, "root.context");
-      paramBundle.width = ((Context)localObject1).getResources().getDimensionPixelSize(b.d.finder_40_A);
-    }
-    paramBundle = (ImageView)((View)this.kiF).findViewById(b.f.liveFollowGuideAvatarIv);
-    Object localObject1 = this.kiF.getContext();
-    p.j(localObject1, "root.context");
-    paramBundle.setImageDrawable(((Context)localObject1).getResources().getDrawable(b.e.default_round_avatar));
-    paramBundle = com.tencent.mm.plugin.finder.api.d.wZQ;
-    paramBundle = d.a.aAK(getData().zey.aJk());
-    int i;
-    if (paramBundle != null)
-    {
-      localObject1 = t.ztT;
-      localObject1 = t.dJh();
-      Object localObject2 = new e(paramBundle.Mm());
-      Object localObject3 = (ImageView)((View)this.kiF).findViewById(b.f.liveFollowGuideAvatarIv);
-      p.j(localObject3, "root.liveFollowGuideAvatarIv");
-      Object localObject4 = t.ztT;
-      ((com.tencent.mm.loader.d)localObject1).a(localObject2, (ImageView)localObject3, t.a(t.a.ztX));
-      localObject1 = (TextView)((View)this.kiF).findViewById(b.f.liveFollowGuideNameTv);
-      p.j(localObject1, "root.liveFollowGuideNameTv");
-      localObject2 = this.kiF.getContext();
-      localObject3 = (CharSequence)paramBundle.getNickname();
-      localObject4 = (TextView)((View)this.kiF).findViewById(b.f.liveFollowGuideNameTv);
-      p.j(localObject4, "root.liveFollowGuideNameTv");
-      ((TextView)localObject1).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.b((Context)localObject2, (CharSequence)localObject3, ((TextView)localObject4).getTextSize()));
-      localObject1 = (ImageView)((View)this.kiF).findViewById(b.f.liveFollowGuideTagIv);
-      if (paramBundle.field_authInfo != null) {
-        if (paramBundle.field_authInfo.authIconType > 0)
-        {
-          i = 0;
-          label390:
-          ((ImageView)localObject1).setVisibility(i);
-          if (((ImageView)localObject1).getVisibility() == 0)
-          {
-            localObject2 = com.tencent.mm.plugin.finder.utils.aj.AGc;
-            p.j(localObject1, "this");
-            com.tencent.mm.plugin.finder.utils.aj.a((ImageView)localObject1, paramBundle.field_authInfo, 0);
-          }
-          localObject1 = (TextView)((View)this.kiF).findViewById(b.f.liveFollowGuideCntTv);
-          int k = ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)getBuContext().business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).friendFollowCount;
-          localObject2 = this.kiF.getContext();
-          p.j(localObject2, "root.context");
-          ((TextView)localObject1).setText((CharSequence)((Context)localObject2).getResources().getString(b.j.finder_friend_follow, new Object[] { com.tencent.mm.plugin.finder.utils.m.QF(k) }));
-          i = j;
-          if (k > 0) {
-            i = 0;
-          }
-          ((TextView)localObject1).setVisibility(i);
-          ((TextView)((View)this.kiF).findViewById(b.f.liveFollowGuideFollowQuitBtnTv)).setOnClickListener((View.OnClickListener)new c(paramBundle, this, paramc));
-        }
-      }
+      this.DaI.setClickable(true);
+      this.DaI.setOnClickListener(new av..ExternalSyntheticLambda0(this));
     }
     for (;;)
     {
-      ((TextView)((View)this.kiF).findViewById(b.f.liveFollowGuideQuitBtnTv)).setOnClickListener((View.OnClickListener)new e(paramc));
-      tU(0);
-      paramc = com.tencent.mm.plugin.finder.live.report.m.yCt;
-      com.tencent.mm.plugin.finder.live.report.m.a(s.q.yGy);
-      paramc = com.tencent.mm.plugin.finder.live.report.m.yCt;
-      com.tencent.mm.plugin.finder.live.report.m.a(s.q.yGz);
-      paramc = com.tencent.mm.plugin.finder.live.report.m.yCt;
-      com.tencent.mm.plugin.finder.live.report.m.a(s.q.yGA);
-      break;
-      i = 8;
-      break label390;
-      i = 8;
-      break label390;
-      ((TextView)((View)this.kiF).findViewById(b.f.liveFollowGuideFollowQuitBtnTv)).setOnClickListener((View.OnClickListener)new d(this, paramc));
+      this.DaI.addListener((PAGView.PAGViewListener)new PAGView.PAGViewListener()
+      {
+        public final void onAnimationCancel(PAGView paramAnonymousPAGView)
+        {
+          AppMethodBeat.i(353427);
+          Log.i(av.access$getTAG$cp(), "onAnimationCancel");
+          AppMethodBeat.o(353427);
+        }
+        
+        public final void onAnimationEnd(PAGView paramAnonymousPAGView)
+        {
+          AppMethodBeat.i(353422);
+          Log.i(av.access$getTAG$cp(), "onAnimationEnd");
+          AppMethodBeat.o(353422);
+        }
+        
+        public final void onAnimationRepeat(PAGView paramAnonymousPAGView)
+        {
+          AppMethodBeat.i(353417);
+          Log.i(av.access$getTAG$cp(), "onAnimationRepeat");
+          AppMethodBeat.o(353417);
+        }
+        
+        public final void onAnimationStart(PAGView paramAnonymousPAGView)
+        {
+          AppMethodBeat.i(353431);
+          Log.i(av.access$getTAG$cp(), "onAnimationStart");
+          av.c(this.DaM).setVisibility(0);
+          AppMethodBeat.o(353431);
+        }
+      });
+      AppMethodBeat.o(354902);
+      return;
+      this.DaI.setOnClickListener(null);
+      this.DaI.setClickable(false);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveFollowGuidePlugin$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  static final class a {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/plugin/FinderLiveFollowGuidePlugin$doBlockOpLog$1", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModBlockPosterSetting;", "onModifyResult", "", "req", "ret", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "plugin-finder_release"})
-  public static final class b
-    implements com.tencent.mm.plugin.findersdk.a.aj<bep>
-  {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/live/plugin/FinderLiveFollowGuidePlugin$showGuide$1$3"})
-  static final class c
-    implements View.OnClickListener
+  private static final void a(av paramav, View paramView)
   {
-    c(i parami, av paramav, kotlin.g.a.a parama) {}
-    
-    public final void onClick(View paramView)
+    AppMethodBeat.i(354918);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramav);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/plugin/FinderLiveGiftPlayPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    kotlin.g.b.s.u(paramav, "this$0");
+    paramav.DaI.setAlpha(0.0F);
+    paramav.DaI.setClickable(false);
+    paramav.DaJ.setVisibility(8);
+    paramav.DaJ.setAlpha(0.0F);
+    paramav = paramav.DaK;
+    if (paramav != null) {
+      paramav.cancel();
+    }
+    h.baE().ban().set(at.a.adeT, Boolean.TRUE);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/live/plugin/FinderLiveGiftPlayPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(354918);
+  }
+  
+  private static final boolean a(av paramav)
+  {
+    AppMethodBeat.i(354909);
+    kotlin.g.b.s.u(paramav, "this$0");
+    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new c(paramav));
+    AppMethodBeat.o(354909);
+    return true;
+  }
+  
+  private static final void b(av paramav)
+  {
+    AppMethodBeat.i(354930);
+    kotlin.g.b.s.u(paramav, "this$0");
+    PAGView localPAGView = paramav.DaI;
+    Object localObject = q.CFU;
+    String str = q.aww(paramav.Dap);
+    localObject = str;
+    if (str == null) {
+      localObject = "";
+    }
+    localPAGView.setFile(PAGFile.Load((String)localObject));
+    paramav.DaI.setScaleMode(3);
+    paramav.DaI.setRepeatCount(0);
+    paramav.DaI.play();
+    paramav.DaI.flush();
+    localObject = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+    if (!com.tencent.mm.plugin.finder.live.utils.a.bUx())
     {
-      AppMethodBeat.i(282050);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/plugin/FinderLiveFollowGuidePlugin$showGuide$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-      paramView = com.tencent.mm.plugin.finder.utils.aj.AGc;
-      boolean bool1 = com.tencent.mm.plugin.finder.utils.aj.j(this.xmS);
-      paramView = com.tencent.mm.plugin.finder.utils.aj.AGc;
-      boolean bool2 = com.tencent.mm.plugin.finder.utils.aj.k(this.xmS);
-      av.dBw();
-      Log.i("Finder.FinderLiveFollowGuidePlugin", "liveFollowGuideQuitBtnTv click, nickName:" + this.xmS.getNickname() + ", isPrivate:" + bool1 + " , isBlock" + bool2);
-      paramView = ai.zAJ;
-      paramView = g.Xox;
-      paramView = jdField_this.kiF.getContext();
-      p.j(paramView, "root.context");
-      paramView = ((com.tencent.mm.plugin.finder.viewmodel.component.aj)g.lm(paramView).i(com.tencent.mm.plugin.finder.viewmodel.component.aj.class)).ekY();
-      localObject = this.xmS.getUsername();
-      an localan = an.xci;
-      ai.a(paramView, (String)localObject, an.dnL(), ((c)jdField_this.business(c.class)).xbk, bool1);
-      w.cR(jdField_this.kiF.getContext(), jdField_this.kiF.getContext().getString(b.j.has_follow_tip));
-      if (bool2) {
-        av.a(jdField_this, this.xmS.getUsername());
+      paramav.DaL.stopTimer();
+      paramav.DaL.startTimer(paramav.DaI.duration() / 1000L);
+      localObject = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+      boolean bool = com.tencent.mm.plugin.finder.live.utils.a.euS();
+      if (bool) {
+        com.tencent.mm.ae.d.a(1000L, (kotlin.g.a.a)new d(paramav));
       }
-      paramc.invoke();
-      paramView = com.tencent.mm.plugin.finder.live.report.m.yCt;
-      com.tencent.mm.plugin.finder.live.report.m.a(s.p.yGv);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/plugin/FinderLiveFollowGuidePlugin$showGuide$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(282050);
+      Log.i(TAG, kotlin.g.b.s.X("tryShowHideTip showGiftTip:", Boolean.valueOf(bool)));
+    }
+    Log.i(TAG, kotlin.g.b.s.X("playGiftAnimation launch timer by ", Long.valueOf(paramav.DaI.duration() / 1000L)));
+    AppMethodBeat.o(354930);
+  }
+  
+  public final boolean eoI()
+  {
+    return true;
+  }
+  
+  public final void statusChange(b.c paramc, Bundle paramBundle)
+  {
+    AppMethodBeat.i(355013);
+    kotlin.g.b.s.u(paramc, "status");
+    switch (b.$EnumSwitchMapping$0[paramc.ordinal()])
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(355013);
+      return;
+      boolean bool1;
+      label65:
+      boolean bool2;
+      if (paramBundle == null)
+      {
+        bool1 = false;
+        if (paramBundle != null) {
+          break label293;
+        }
+        paramc = "";
+        if (paramBundle != null) {
+          break label315;
+        }
+        bool2 = false;
+      }
+      for (;;)
+      {
+        if (paramc != null)
+        {
+          paramBundle = q.CFU;
+          paramBundle = q.awx(paramc);
+          if ((paramBundle != null) && (!Util.isNullOrNil(paramBundle.field_animationPagUrl)))
+          {
+            Log.i(TAG, "show full screen gift,id:" + paramc + ", info:" + paramBundle + ",isForceReplace:" + bool2);
+            this.Dap = paramc;
+            tO(0);
+            boolean bool3 = ((e)business(e.class)).EeM;
+            paramc = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+            boolean bool4 = com.tencent.mm.plugin.finder.live.utils.a.bUx();
+            Log.i(TAG, "playGiftAnimation playViewIsPlaying:" + this.DaI.isPlaying() + ", isForceReplace:" + bool2 + ", isLandscape:" + isLandscape() + ", effectOff:" + bool3 + ", isAnchor:" + bool4);
+            if (((this.DaI.isPlaying()) && (!bool2)) || (isLandscape()))
+            {
+              AppMethodBeat.o(355013);
+              return;
+              bool1 = paramBundle.getBoolean("PARAM_LIVE_GIFT_IS_FROM_SELF", false);
+              break;
+              label293:
+              paramc = paramBundle.getString("PARAM_LIVE_GIFT_INFO");
+              if (paramc == null)
+              {
+                paramc = "";
+                break label65;
+              }
+              break label65;
+              label315:
+              bool2 = paramBundle.getBoolean("PARAM_LIVE_GIFT_IS_FORCE_REPLACE", false);
+              continue;
+            }
+            if ((bool4) || (!bool3) || (bool1)) {
+              this.DaI.post(new av..ExternalSyntheticLambda2(this));
+            }
+            AppMethodBeat.o(355013);
+            return;
+          }
+          Log.i(TAG, "skip show full screen gift id:" + paramc + ", giftPath is null");
+        }
+      }
+      AppMethodBeat.o(355013);
+      return;
+      Log.i(TAG, kotlin.g.b.s.X("hide full screen gift, id:", this.Dap));
+      tO(8);
+      this.DaI.setVisibility(8);
+      this.DaI.stop();
+      this.DaI.setAlpha(1.0F);
+      paramc = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+      if (!com.tencent.mm.plugin.finder.live.utils.a.bUx()) {
+        this.DaI.setClickable(true);
+      }
+      this.DaL.stopTimer();
+      this.DaJ.setVisibility(8);
+      this.DaJ.setAlpha(0.0F);
+      paramc = this.DaK;
+      if (paramc != null) {
+        paramc.cancel();
+      }
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/live/plugin/FinderLiveFollowGuidePlugin$showGuide$2$1"})
+  public final void tO(int paramInt)
+  {
+    AppMethodBeat.i(371433);
+    if (((com.tencent.mm.plugin.finder.live.viewmodel.data.business.s)business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.s.class)).kLm())
+    {
+      super.tO(8);
+      AppMethodBeat.o(371433);
+      return;
+    }
+    super.tO(paramInt);
+    AppMethodBeat.o(371433);
+  }
+  
+  public final void unMount()
+  {
+    AppMethodBeat.i(355021);
+    super.unMount();
+    this.DaI.setAlpha(1.0F);
+    Object localObject = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+    if (!com.tencent.mm.plugin.finder.live.utils.a.bUx()) {
+      this.DaI.setClickable(true);
+    }
+    this.DaL.stopTimer();
+    this.DaJ.setVisibility(8);
+    this.DaJ.setAlpha(0.0F);
+    localObject = this.DaK;
+    if (localObject != null) {
+      ((ViewPropertyAnimator)localObject).cancel();
+    }
+    AppMethodBeat.o(355021);
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    c(av paramav)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    implements View.OnClickListener
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    d(av paramav, kotlin.g.a.a parama) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(273174);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/plugin/FinderLiveFollowGuidePlugin$showGuide$$inlined$let$lambda$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramc.invoke();
-      paramView = com.tencent.mm.plugin.finder.live.report.m.yCt;
-      com.tencent.mm.plugin.finder.live.report.m.a(s.p.yGv);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/plugin/FinderLiveFollowGuidePlugin$showGuide$$inlined$let$lambda$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(273174);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class e
-    implements View.OnClickListener
-  {
-    e(kotlin.g.a.a parama) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(288336);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/plugin/FinderLiveFollowGuidePlugin$showGuide$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      this.ypV.invoke();
-      paramView = com.tencent.mm.plugin.finder.live.report.m.yCt;
-      com.tencent.mm.plugin.finder.live.report.m.a(s.p.yGu);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/plugin/FinderLiveFollowGuidePlugin$showGuide$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(288336);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class f
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    f(av paramav)
+    d(av paramav)
     {
       super();
     }

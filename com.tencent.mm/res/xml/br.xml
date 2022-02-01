@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <tech-list>
-        <tech>android.nfc.tech.IsoDep</tech>
-    </tech-list>
-    <tech-list>
-        <tech>android.nfc.tech.NfcA</tech>
-    </tech-list>
-</resources>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <PreferenceSmallCategory />
+    <com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference android:key="roominfo_contact_anchor" />
+    <PreferenceSmallCategory />
+    <Preference android:key="room_search_chatting_content" android:layout="@layout/bdi" android:title="@string/i92" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:key="room_notify_new_msg" android:title="@string/i7s" />
+    <CheckBoxPreference android:key="room_placed_to_the_top" android:layout="@layout/bdi" android:title="@string/i8_" />
+    <CheckBoxPreference android:key="room_accept_message" android:layout="@layout/bdi" android:title="@string/i5e" />
+    <CheckBoxPreference android:key="force_notify" android:persistent="false" android:title="@string/f1_" />
+    <PreferenceSmallCategory android:key="seperate_line_between_force_notify_and_background" />
+    <Preference android:key="room_set_chatting_background" android:layout="@layout/bdi" android:title="@string/i99" />
+    <PreferenceSmallCategory key="seperate_line_between_background_and_clear_history" />
+    <Preference android:key="room_clear_chatting_history" android:layout="@layout/bdi" android:title="@string/i63" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:key="room_add_blacklist" android:title="@string/i5f" />
+    <Preference android:key="room_expose" android:layout="@layout/bdi" android:title="@string/i6v" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/hez" android:key="close_chat" android:layout="@layout/bo3" android:title_color="@color/Red" />
+    <PreferenceCategory />
+</PreferenceScreen>

@@ -1,98 +1,152 @@
 package com.tencent.mm.plugin.game.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import i.a.a.b;
 
 public final class dt
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String CMC;
-  public String CMD;
-  public int CRx;
-  public String fwr;
+  public String IGG;
+  public String IGH;
+  public String IGI;
+  public String IHI;
+  public String IKJ;
+  public String hAP;
+  public String oOI;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(41834);
+    AppMethodBeat.i(41829);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.fwr != null) {
-        paramVarArgs.f(1, this.fwr);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.IKJ == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: AppName");
+        AppMethodBeat.o(41829);
+        throw paramVarArgs;
       }
-      if (this.CMD != null) {
-        paramVarArgs.f(2, this.CMD);
+      if (this.IKJ != null) {
+        paramVarArgs.g(1, this.IKJ);
       }
-      if (this.CMC != null) {
-        paramVarArgs.f(3, this.CMC);
+      if (this.IGH != null) {
+        paramVarArgs.g(2, this.IGH);
       }
-      paramVarArgs.aY(4, this.CRx);
-      AppMethodBeat.o(41834);
+      if (this.hAP != null) {
+        paramVarArgs.g(3, this.hAP);
+      }
+      if (this.IGG != null) {
+        paramVarArgs.g(4, this.IGG);
+      }
+      if (this.IHI != null) {
+        paramVarArgs.g(5, this.IHI);
+      }
+      if (this.IGI != null) {
+        paramVarArgs.g(6, this.IGI);
+      }
+      if (this.oOI != null) {
+        paramVarArgs.g(7, this.oOI);
+      }
+      AppMethodBeat.o(41829);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.fwr == null) {
-        break label378;
+      if (this.IKJ == null) {
+        break label622;
       }
     }
-    label378:
-    for (int i = g.a.a.b.b.a.g(1, this.fwr) + 0;; i = 0)
+    label622:
+    for (int i = i.a.a.b.b.a.h(1, this.IKJ) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.CMD != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.CMD);
+      if (this.IGH != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.IGH);
       }
       i = paramInt;
-      if (this.CMC != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.CMC);
+      if (this.hAP != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.hAP);
       }
-      paramInt = g.a.a.b.b.a.bM(4, this.CRx);
-      AppMethodBeat.o(41834);
-      return i + paramInt;
+      paramInt = i;
+      if (this.IGG != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.IGG);
+      }
+      i = paramInt;
+      if (this.IHI != null) {
+        i = paramInt + i.a.a.b.b.a.h(5, this.IHI);
+      }
+      paramInt = i;
+      if (this.IGI != null) {
+        paramInt = i + i.a.a.b.b.a.h(6, this.IGI);
+      }
+      i = paramInt;
+      if (this.oOI != null) {
+        i = paramInt + i.a.a.b.b.a.h(7, this.oOI);
+      }
+      AppMethodBeat.o(41829);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(41834);
+        if (this.IKJ == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: AppName");
+          AppMethodBeat.o(41829);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(41829);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         dt localdt = (dt)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(41834);
+          AppMethodBeat.o(41829);
           return -1;
         case 1: 
-          localdt.fwr = locala.abFh.readString();
-          AppMethodBeat.o(41834);
+          localdt.IKJ = locala.ajGk.readString();
+          AppMethodBeat.o(41829);
           return 0;
         case 2: 
-          localdt.CMD = locala.abFh.readString();
-          AppMethodBeat.o(41834);
+          localdt.IGH = locala.ajGk.readString();
+          AppMethodBeat.o(41829);
           return 0;
         case 3: 
-          localdt.CMC = locala.abFh.readString();
-          AppMethodBeat.o(41834);
+          localdt.hAP = locala.ajGk.readString();
+          AppMethodBeat.o(41829);
+          return 0;
+        case 4: 
+          localdt.IGG = locala.ajGk.readString();
+          AppMethodBeat.o(41829);
+          return 0;
+        case 5: 
+          localdt.IHI = locala.ajGk.readString();
+          AppMethodBeat.o(41829);
+          return 0;
+        case 6: 
+          localdt.IGI = locala.ajGk.readString();
+          AppMethodBeat.o(41829);
           return 0;
         }
-        localdt.CRx = locala.abFh.AK();
-        AppMethodBeat.o(41834);
+        localdt.oOI = locala.ajGk.readString();
+        AppMethodBeat.o(41829);
         return 0;
       }
-      AppMethodBeat.o(41834);
+      AppMethodBeat.o(41829);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.protobuf.dt
  * JD-Core Version:    0.7.0.1
  */

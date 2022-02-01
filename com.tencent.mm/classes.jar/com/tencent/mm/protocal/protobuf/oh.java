@@ -1,106 +1,100 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bx.b;
 import java.util.LinkedList;
 
 public final class oh
-  extends dyl
+  extends erp
 {
-  public int CPw;
-  public String ProductID;
-  public String RVx;
+  public String YRs;
+  public b YRt;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(124431);
+    AppMethodBeat.i(124406);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.ProductID != null) {
-        paramVarArgs.f(2, this.ProductID);
+      if (this.YRs != null) {
+        paramVarArgs.g(2, this.YRs);
       }
-      paramVarArgs.aY(3, this.CPw);
-      if (this.RVx != null) {
-        paramVarArgs.f(4, this.RVx);
+      if (this.YRt != null) {
+        paramVarArgs.d(3, this.YRt);
       }
-      AppMethodBeat.o(124431);
+      AppMethodBeat.o(124406);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label452;
+        break label404;
       }
     }
-    label452:
-    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label404:
+    for (int i = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.ProductID != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.ProductID);
-      }
-      i += g.a.a.b.b.a.bM(3, this.CPw);
       paramInt = i;
-      if (this.RVx != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.RVx);
+      if (this.YRs != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.YRs);
       }
-      AppMethodBeat.o(124431);
-      return paramInt;
+      i = paramInt;
+      if (this.YRt != null) {
+        i = paramInt + i.a.a.b.b.a.c(3, this.YRt);
+      }
+      AppMethodBeat.o(124406);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(124431);
+        AppMethodBeat.o(124406);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         oh localoh = (oh)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(124431);
+          AppMethodBeat.o(124406);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject = (byte[])paramVarArgs.get(paramInt);
-            jg localjg = new jg();
+            kc localkc = new kc();
             if ((localObject != null) && (localObject.length > 0)) {
-              localjg.parseFrom((byte[])localObject);
+              localkc.parseFrom((byte[])localObject);
             }
-            localoh.BaseRequest = localjg;
+            localoh.BaseRequest = localkc;
             paramInt += 1;
           }
-          AppMethodBeat.o(124431);
+          AppMethodBeat.o(124406);
           return 0;
         case 2: 
-          localoh.ProductID = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(124431);
-          return 0;
-        case 3: 
-          localoh.CPw = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(124431);
+          localoh.YRs = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(124406);
           return 0;
         }
-        localoh.RVx = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(124431);
+        localoh.YRt = ((i.a.a.a.a)localObject).ajGk.kFX();
+        AppMethodBeat.o(124406);
         return 0;
       }
-      AppMethodBeat.o(124431);
+      AppMethodBeat.o(124406);
       return -1;
     }
   }

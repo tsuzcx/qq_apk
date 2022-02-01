@@ -1,13 +1,12 @@
 package com.tencent.mm.plugin.multitalk.ui;
 
-import android.app.Activity;
 import android.app.KeyguardManager;
 import android.content.Context;
 import android.os.PowerManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.multitalk.a.b;
-import com.tencent.mm.plugin.multitalk.model.ad;
-import com.tencent.mm.plugin.multitalk.model.q;
+import com.tencent.mm.plugin.multitalk.model.ac;
+import com.tencent.mm.plugin.multitalk.model.p;
 import com.tencent.mm.plugin.multitalk.ui.widget.f;
 import com.tencent.mm.pluginsdk.ui.MultiSelectContactView;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -16,13 +15,13 @@ import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
 public class MultiTalkAddMembersUI
   extends MultiTalkSelectContactUI
 {
-  private boolean Fvh = false;
+  private boolean Lrq = false;
   
-  public final void eQp()
+  public final void fYZ()
   {
     AppMethodBeat.i(178894);
-    this.FvF = false;
-    super.eQp();
+    this.LrP = false;
+    super.fYZ();
     AppMethodBeat.o(178894);
   }
   
@@ -30,10 +29,10 @@ public class MultiTalkAddMembersUI
   {
     AppMethodBeat.i(114651);
     super.initView();
-    this.ETP.setBackgroundResource(a.b.default_bg_color);
-    MultiSelectContactView localMultiSelectContactView = this.ETP;
-    int i = f.FxG;
-    localMultiSelectContactView.setPadding(i, i, f.FxG, 0);
+    this.KOt.setBackgroundResource(a.b.default_bg_color);
+    MultiSelectContactView localMultiSelectContactView = this.KOt;
+    int i = f.LtS;
+    localMultiSelectContactView.setPadding(i, i, f.LtS, 0);
     AppMethodBeat.o(114651);
   }
   
@@ -49,7 +48,7 @@ public class MultiTalkAddMembersUI
     if (((bool2) || (!bool1)) && (bool3)) {}
     for (bool1 = true;; bool1 = false)
     {
-      this.Fvh = bool1;
+      this.Lrq = bool1;
       AppMethodBeat.o(178895);
       return;
     }
@@ -59,11 +58,11 @@ public class MultiTalkAddMembersUI
   {
     AppMethodBeat.i(178896);
     super.onStop();
-    if (this.FvF)
+    if (this.LrP)
     {
-      this.FvF = false;
-      eQp();
-      ad.eYc().uL(false);
+      this.LrP = false;
+      fYZ();
+      ac.ggS().za(false);
     }
     AppMethodBeat.o(178896);
   }

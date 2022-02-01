@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.g;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
 
 public class aw
 {
-  public e bIF()
+  public h cFb()
   {
     return null;
   }
   
-  public g cey()
+  public f cik()
   {
     return null;
   }

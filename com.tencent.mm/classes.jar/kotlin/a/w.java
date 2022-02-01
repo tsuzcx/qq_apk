@@ -1,97 +1,178 @@
 package kotlin.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.Serializable;
-import java.util.Map;
-import kotlin.g.b.a.a;
-import kotlin.g.b.p;
-import kotlin.l;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.RandomAccess;
+import kotlin.Metadata;
+import kotlin.g.a.b;
+import kotlin.g.b.an;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/collections/EmptyMap;", "", "", "", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "()V", "entries", "", "", "getEntries", "()Ljava/util/Set;", "keys", "getKeys", "serialVersionUID", "", "size", "", "getSize", "()I", "values", "", "getValues", "()Ljava/util/Collection;", "containsKey", "", "key", "containsValue", "value", "equals", "other", "get", "hashCode", "isEmpty", "readResolve", "toString", "", "kotlin-stdlib"})
-final class w
-  implements Serializable, Map, a
+@Metadata(d1={""}, d2={"addAll", "", "T", "", "elements", "", "(Ljava/util/Collection;[Ljava/lang/Object;)Z", "", "Lkotlin/sequences/Sequence;", "filterInPlace", "", "predicate", "Lkotlin/Function1;", "predicateResultToRemove", "filterInPlace$CollectionsKt__MutableCollectionsKt", "", "minusAssign", "", "element", "(Ljava/util/Collection;Ljava/lang/Object;)V", "(Ljava/util/Collection;[Ljava/lang/Object;)V", "plusAssign", "remove", "Lkotlin/internal/OnlyInputTypes;", "(Ljava/util/Collection;Ljava/lang/Object;)Z", "index", "", "(Ljava/util/List;I)Ljava/lang/Object;", "removeAll", "", "removeFirst", "(Ljava/util/List;)Ljava/lang/Object;", "removeFirstOrNull", "removeLast", "removeLastOrNull", "retainAll", "retainNothing", "retainNothing$CollectionsKt__MutableCollectionsKt", "kotlin-stdlib"}, k=5, mv={1, 5, 1}, xi=1, xs="kotlin/collections/CollectionsKt")
+public class w
+  extends v
 {
-  public static final w aaAe;
-  
-  static
+  public static final <T> boolean a(Iterable<? extends T> paramIterable, b<? super T, Boolean> paramb)
   {
-    AppMethodBeat.i(129139);
-    aaAe = new w();
-    AppMethodBeat.o(129139);
+    AppMethodBeat.i(191010);
+    s.u(paramIterable, "$this$removeAll");
+    s.u(paramb, "predicate");
+    boolean bool = b(paramIterable, paramb);
+    AppMethodBeat.o(191010);
+    return bool;
   }
   
-  private final Object readResolve()
+  public static final <T> boolean a(Collection<? super T> paramCollection, Iterable<? extends T> paramIterable)
   {
-    return aaAe;
-  }
-  
-  public final void clear()
-  {
-    AppMethodBeat.i(129140);
-    UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException("Operation is not supported for read-only collection");
-    AppMethodBeat.o(129140);
-    throw localUnsupportedOperationException;
-  }
-  
-  public final boolean containsKey(Object paramObject)
-  {
-    return false;
-  }
-  
-  public final boolean containsValue(Object paramObject)
-  {
-    AppMethodBeat.i(129138);
-    if (!(paramObject instanceof Void))
+    AppMethodBeat.i(129119);
+    s.u(paramCollection, "$this$addAll");
+    s.u(paramIterable, "elements");
+    if ((paramIterable instanceof Collection))
     {
-      AppMethodBeat.o(129138);
-      return false;
+      bool = paramCollection.addAll((Collection)paramIterable);
+      AppMethodBeat.o(129119);
+      return bool;
     }
-    p.k((Void)paramObject, "value");
-    AppMethodBeat.o(129138);
-    return false;
+    boolean bool = false;
+    paramIterable = paramIterable.iterator();
+    while (paramIterable.hasNext()) {
+      if (paramCollection.add(paramIterable.next())) {
+        bool = true;
+      }
+    }
+    AppMethodBeat.o(129119);
+    return bool;
   }
   
-  public final boolean equals(Object paramObject)
+  public static final <T> boolean a(Collection<? super T> paramCollection, T[] paramArrayOfT)
   {
-    AppMethodBeat.i(129137);
-    if (((paramObject instanceof Map)) && (((Map)paramObject).isEmpty()))
+    AppMethodBeat.i(168694);
+    s.u(paramCollection, "$this$addAll");
+    s.u(paramArrayOfT, "elements");
+    boolean bool = paramCollection.addAll((Collection)k.V(paramArrayOfT));
+    AppMethodBeat.o(168694);
+    return bool;
+  }
+  
+  private static final <T> boolean b(Iterable<? extends T> paramIterable, b<? super T, Boolean> paramb)
+  {
+    AppMethodBeat.i(191013);
+    paramIterable = paramIterable.iterator();
+    boolean bool = false;
+    if (paramIterable.hasNext())
     {
-      AppMethodBeat.o(129137);
+      if (((Boolean)paramb.invoke(paramIterable.next())).booleanValue() != true) {
+        break label63;
+      }
+      paramIterable.remove();
+      bool = true;
+    }
+    label63:
+    for (;;)
+    {
+      break;
+      AppMethodBeat.o(191013);
+      return bool;
+    }
+  }
+  
+  public static final <T> boolean e(List<T> paramList, b<? super T, Boolean> paramb)
+  {
+    AppMethodBeat.i(129122);
+    s.u(paramList, "$this$removeAll");
+    s.u(paramb, "predicate");
+    boolean bool = f(paramList, paramb);
+    AppMethodBeat.o(129122);
+    return bool;
+  }
+  
+  private static final <T> boolean f(List<T> paramList, b<? super T, Boolean> paramb)
+  {
+    AppMethodBeat.i(129123);
+    if (!(paramList instanceof RandomAccess))
+    {
+      if (paramList == null)
+      {
+        paramList = new NullPointerException("null cannot be cast to non-null type kotlin.collections.MutableIterable<T>");
+        AppMethodBeat.o(129123);
+        throw paramList;
+      }
+      boolean bool = b(an.hy(paramList), paramb);
+      AppMethodBeat.o(129123);
+      return bool;
+    }
+    int m = p.oE(paramList);
+    int i;
+    if (m >= 0)
+    {
+      int k = 0;
+      for (j = 0;; j = i)
+      {
+        Object localObject = paramList.get(k);
+        i = j;
+        if (((Boolean)paramb.invoke(localObject)).booleanValue() != true)
+        {
+          if (j != k) {
+            paramList.set(j, localObject);
+          }
+          i = j + 1;
+        }
+        j = i;
+        if (k == m) {
+          break;
+        }
+        k += 1;
+      }
+    }
+    int j = 0;
+    if (j < paramList.size())
+    {
+      i = p.oE(paramList);
+      if (i >= j) {
+        for (;;)
+        {
+          paramList.remove(i);
+          if (i == j) {
+            break;
+          }
+          i -= 1;
+        }
+      }
+      AppMethodBeat.o(129123);
       return true;
     }
-    AppMethodBeat.o(129137);
+    AppMethodBeat.o(129123);
     return false;
   }
   
-  public final int hashCode()
+  public static final <T> T oG(List<T> paramList)
   {
-    return 0;
+    AppMethodBeat.i(191021);
+    s.u(paramList, "$this$removeFirstOrNull");
+    if (paramList.isEmpty())
+    {
+      AppMethodBeat.o(191021);
+      return null;
+    }
+    paramList = paramList.remove(0);
+    AppMethodBeat.o(191021);
+    return paramList;
   }
   
-  public final boolean isEmpty()
+  public static final <T> T oH(List<T> paramList)
   {
-    return true;
-  }
-  
-  public final void putAll(Map paramMap)
-  {
-    AppMethodBeat.i(129141);
-    paramMap = new UnsupportedOperationException("Operation is not supported for read-only collection");
-    AppMethodBeat.o(129141);
-    throw paramMap;
-  }
-  
-  public final Object remove(Object paramObject)
-  {
-    AppMethodBeat.i(129142);
-    paramObject = new UnsupportedOperationException("Operation is not supported for read-only collection");
-    AppMethodBeat.o(129142);
-    throw paramObject;
-  }
-  
-  public final String toString()
-  {
-    return "{}";
+    AppMethodBeat.i(191029);
+    s.u(paramList, "$this$removeLastOrNull");
+    if (paramList.isEmpty())
+    {
+      AppMethodBeat.o(191029);
+      return null;
+    }
+    paramList = paramList.remove(p.oE(paramList));
+    AppMethodBeat.o(191029);
+    return paramList;
   }
 }
 

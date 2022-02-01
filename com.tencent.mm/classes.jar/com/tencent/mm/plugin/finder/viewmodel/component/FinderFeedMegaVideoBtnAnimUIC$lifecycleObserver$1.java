@@ -1,47 +1,49 @@
 package com.tencent.mm.plugin.finder.viewmodel.component;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.h;
-import androidx.lifecycle.h.a;
-import androidx.lifecycle.k;
-import androidx.lifecycle.t;
+import androidx.lifecycle.j;
+import androidx.lifecycle.j.a;
+import androidx.lifecycle.p;
+import androidx.lifecycle.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/viewmodel/component/FinderFeedMegaVideoBtnAnimUIC$lifecycleObserver$1", "Landroidx/lifecycle/LifecycleObserver;", "onDestroy", "", "onPause", "onResume", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/viewmodel/component/FinderFeedMegaVideoBtnAnimUIC$lifecycleObserver$1", "Landroidx/lifecycle/LifecycleObserver;", "onDestroy", "", "onPause", "onResume", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderFeedMegaVideoBtnAnimUIC$lifecycleObserver$1
-  implements k
+  implements p
 {
-  @t(jl=h.a.ON_DESTROY)
+  FinderFeedMegaVideoBtnAnimUIC$lifecycleObserver$1(t paramt) {}
+  
+  @z(Ho=j.a.ON_DESTROY)
   public final void onDestroy()
   {
-    AppMethodBeat.i(287678);
-    s.h(this.BjY).dead();
-    this.BjY.getActivity().getLifecycle().b((k)this);
-    AppMethodBeat.o(287678);
+    AppMethodBeat.i(337655);
+    t.g(this.GPw).dead();
+    this.GPw.getActivity().getLifecycle().removeObserver((p)this);
+    AppMethodBeat.o(337655);
   }
   
-  @t(jl=h.a.ON_PAUSE)
+  @z(Ho=j.a.ON_PAUSE)
   public final void onPause()
   {
-    AppMethodBeat.i(287677);
-    s.h(this.BjY).dead();
-    s.a(this.BjY, false);
-    AppMethodBeat.o(287677);
+    AppMethodBeat.i(337649);
+    t.g(this.GPw).dead();
+    t.a(this.GPw, false);
+    AppMethodBeat.o(337649);
   }
   
-  @t(jl=h.a.ON_RESUME)
+  @z(Ho=j.a.ON_RESUME)
   public final void onResume()
   {
-    AppMethodBeat.i(287676);
-    s.h(this.BjY).alive();
-    s.a(this.BjY, true);
-    AppMethodBeat.o(287676);
+    AppMethodBeat.i(337637);
+    t.g(this.GPw).alive();
+    t.a(this.GPw, true);
+    AppMethodBeat.o(337637);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.viewmodel.component.FinderFeedMegaVideoBtnAnimUIC.lifecycleObserver.1
  * JD-Core Version:    0.7.0.1
  */

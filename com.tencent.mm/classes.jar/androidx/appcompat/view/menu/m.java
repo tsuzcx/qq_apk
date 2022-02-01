@@ -16,7 +16,7 @@ import android.widget.PopupWindow.OnDismissListener;
 abstract class m
   implements AdapterView.OnItemClickListener, o, s
 {
-  Rect nq;
+  Rect om;
   
   protected static int a(ListAdapter paramListAdapter, ViewGroup paramViewGroup, Context paramContext, int paramInt)
   {
@@ -98,18 +98,18 @@ abstract class m
   
   public final void a(Context paramContext, h paramh) {}
   
-  public abstract void ag(int paramInt);
+  public abstract void ac(int paramInt);
   
-  public abstract void ah(int paramInt);
-  
-  protected boolean bW()
-  {
-    return true;
-  }
+  public abstract void ad(int paramInt);
   
   public final boolean c(j paramj)
   {
     return false;
+  }
+  
+  protected boolean cP()
+  {
+    return true;
   }
   
   public final boolean d(j paramj)
@@ -127,9 +127,9 @@ abstract class m
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     paramView = (ListAdapter)paramAdapterView.getAdapter();
-    paramAdapterView = a(paramView).mw;
+    paramAdapterView = a(paramView).nv;
     paramView = (MenuItem)paramView.getItem(paramInt);
-    if (bW()) {}
+    if (cP()) {}
     for (paramInt = 0;; paramInt = 4)
     {
       paramAdapterView.a(paramView, this, paramInt);
@@ -149,7 +149,7 @@ abstract class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.view.menu.m
  * JD-Core Version:    0.7.0.1
  */

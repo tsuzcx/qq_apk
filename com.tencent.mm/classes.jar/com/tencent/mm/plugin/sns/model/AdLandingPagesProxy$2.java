@@ -14,52 +14,52 @@ final class AdLandingPagesProxy$2
   
   public final void run()
   {
-    AppMethodBeat.i(239749);
+    AppMethodBeat.i(309459);
     str = "";
     try
     {
-      localg = h.o(this.val$appId, true, false);
+      localg = h.s(this.etl, true, false);
       if (localg != null) {
         break label150;
       }
-      Log.i("AdLandingPagesProxy", "getOpenSdkAppInfoMM, no cahcer, appId=" + this.val$appId);
-      localg = h.dl(this.val$appId, true);
+      Log.i("AdLandingPagesProxy", "getOpenSdkAppInfoMM, no cahcer, appId=" + this.etl);
+      localg = h.dV(this.etl, true);
     }
-    catch (Throwable localThrowable)
+    finally
     {
       try
       {
         g localg;
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("icon", Util.nullAsNil(localg.field_appIconUrl));
-        ((JSONObject)localObject).put("name", Util.nullAsNil(localg.field_appName));
-        ((JSONObject)localObject).put("pkg", Util.nullAsNil(localg.field_packageName));
-        for (localObject = ((JSONObject)localObject).toString();; localObject = str)
+        localObject2 = new JSONObject();
+        ((JSONObject)localObject2).put("icon", Util.nullAsNil(localg.field_appIconUrl));
+        ((JSONObject)localObject2).put("name", Util.nullAsNil(localg.field_appName));
+        ((JSONObject)localObject2).put("pkg", Util.nullAsNil(localg.field_packageName));
+        for (localObject2 = ((JSONObject)localObject2).toString();; localObject2 = str)
         {
-          this.JTn.CLIENT_CALL("onGetOpenSdkAppInfo", new Object[] { localObject, Long.valueOf(this.JTo) });
-          AppMethodBeat.o(239749);
+          this.Qqp.CLIENT_CALL("onGetOpenSdkAppInfo", new Object[] { localObject2, Long.valueOf(this.Qqq) });
+          AppMethodBeat.o(309459);
           return;
-          Log.i("AdLandingPagesProxy", "getOpenSdkAppInfoMM, hit cache, appId=" + this.val$appId);
+          Log.i("AdLandingPagesProxy", "getOpenSdkAppInfoMM, hit cache, appId=" + this.etl);
           break;
-          localThrowable = localThrowable;
-          Log.e("AdLandingPagesProxy", "getOpenSdkAppInfoMM, exp=" + localThrowable.toString());
+          localObject1 = finally;
+          Log.e("AdLandingPagesProxy", "getOpenSdkAppInfoMM, exp=" + localObject1.toString());
         }
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          Object localObject = str;
+          Object localObject2 = str;
         }
       }
     }
-    localObject = str;
+    localObject2 = str;
     if (localg == null) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.AdLandingPagesProxy.2
  * JD-Core Version:    0.7.0.1
  */

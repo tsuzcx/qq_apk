@@ -1,83 +1,77 @@
 package com.tencent.mm.plugin.webview.luggage;
 
-import android.view.MenuItem;
-import com.tencent.luggage.d.h;
+import android.os.Looper;
+import com.tencent.luggage.d.p;
+import com.tencent.luggage.d.r;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.b.n;
-import com.tencent.mm.ui.base.q.f;
-import com.tencent.mm.ui.base.q.g;
-import com.tencent.mm.ui.widget.a.e;
+import com.tencent.mm.plugin.webview.e.c;
+import com.tencent.mm.plugin.webview.e.e;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import java.util.HashMap;
 
-public class o
+public final class o
 {
-  g PPn;
-  n PQF;
-  e rZT;
+  private static HashMap<String, Integer> WHv;
   
-  public o(g paramg, n paramn)
+  static
   {
-    AppMethodBeat.i(78411);
-    this.PPn = paramg;
-    this.PQF = paramn;
-    this.rZT = new e(this.PPn.mContext, 0, false);
-    this.rZT.ODT = new q.f()
-    {
-      public final void onCreateMMMenu(com.tencent.mm.ui.base.o paramAnonymouso)
-      {
-        AppMethodBeat.i(78407);
-        o localo = o.this;
-        localo.PQF.b(localo.PPn.mContext, localo.PPn, paramAnonymouso);
-        AppMethodBeat.o(78407);
-      }
-    };
-    this.rZT.Ymx = new q.f()
-    {
-      public final void onCreateMMMenu(com.tencent.mm.ui.base.o paramAnonymouso)
-      {
-        AppMethodBeat.i(78408);
-        o localo = o.this;
-        localo.PQF.c(localo.PPn.mContext, localo.PPn, paramAnonymouso);
-        AppMethodBeat.o(78408);
-      }
-    };
-    this.rZT.ODU = new q.g()
-    {
-      public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(78409);
-        o.this.e(paramAnonymousMenuItem);
-        o.this.rZT.bYF();
-        AppMethodBeat.o(78409);
-      }
-    };
-    this.rZT.YmA = new q.g()
-    {
-      public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(78410);
-        o.this.e(paramAnonymousMenuItem);
-        o.this.rZT.bYF();
-        AppMethodBeat.o(78410);
-      }
-    };
-    this.rZT.eik();
-    AppMethodBeat.o(78411);
+    AppMethodBeat.i(78406);
+    WHv = new HashMap();
+    AppMethodBeat.o(78406);
   }
   
-  protected final void e(MenuItem paramMenuItem)
+  public static int a(p paramp, c paramc)
   {
-    AppMethodBeat.i(78412);
-    this.PQF.a(this.PPn.mContext, this.PPn, paramMenuItem);
-    AppMethodBeat.o(78412);
+    AppMethodBeat.i(295952);
+    int i = r.a(MMApplicationContext.getContext(), paramp).intValue();
+    e.a(paramp.hashCode(), paramc);
+    AppMethodBeat.o(295952);
+    return i;
   }
   
-  public final void gUW()
+  public static void remove(int paramInt)
   {
-    AppMethodBeat.i(78413);
-    if (this.rZT != null) {
-      this.rZT.bYF();
+    AppMethodBeat.i(78405);
+    p localp = r.d(Integer.valueOf(paramInt));
+    if (localp != null)
+    {
+      e.atM(localp.hashCode());
+      if (Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId()) {
+        try
+        {
+          localp.destroy();
+          AppMethodBeat.o(78405);
+          return;
+        }
+        catch (Exception localException)
+        {
+          Log.printErrStackTrace("MicroMsg.LuggageWebCoreStash", localException, "", new Object[0]);
+          AppMethodBeat.o(78405);
+          return;
+        }
+      }
+      MMHandlerThread.postToMainThread(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(78403);
+          try
+          {
+            o.this.destroy();
+            AppMethodBeat.o(78403);
+            return;
+          }
+          catch (Exception localException)
+          {
+            Log.printErrStackTrace("MicroMsg.LuggageWebCoreStash", localException, "", new Object[0]);
+            AppMethodBeat.o(78403);
+          }
+        }
+      });
     }
-    AppMethodBeat.o(78413);
+    AppMethodBeat.o(78405);
   }
 }
 

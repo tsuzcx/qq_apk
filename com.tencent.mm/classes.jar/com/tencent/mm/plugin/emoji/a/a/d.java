@@ -1,13 +1,12 @@
 package com.tencent.mm.plugin.emoji.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.emoji.i.a;
-import com.tencent.mm.plugin.emoji.model.l;
-import com.tencent.mm.plugin.emoji.model.p;
-import com.tencent.mm.protocal.protobuf.akh;
+import com.tencent.mm.plugin.emoji.model.m;
+import com.tencent.mm.plugin.emoji.model.s;
+import com.tencent.mm.protocal.protobuf.cjb;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.bh;
 import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.bl;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,12 +18,10 @@ public final class d
 {
   private final String TAG = "MicroMsg.emoji.EmojiListMineData";
   
-  public d(l paraml)
+  public d(m paramm)
   {
-    super(paraml);
+    super(paramm);
   }
-  
-  public final void cTS() {}
   
   public final void clear()
   {
@@ -33,27 +30,32 @@ public final class d
     AppMethodBeat.o(108372);
   }
   
+  public final void dyn() {}
+  
   public final void notifyDataSetChanged()
   {
     try
     {
       AppMethodBeat.i(108371);
-      Object localObject1 = p.getEmojiStorageMgr().VFI.hBh();
-      boolean bool = a.cWg();
-      this.mItemList = new ArrayList();
+      Object localObject1 = s.getEmojiStorageMgr().adjv.jdi();
+      boolean bool = com.tencent.mm.plugin.emoji.g.c.dBJ();
+      this.xHy = new ArrayList();
       Log.v("MicroMsg.emoji.EmojiListMineData", "============= refresh Data By DB");
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        akh localakh = ((EmojiGroupInfo)((Iterator)localObject1).next()).hBn();
-        f localf = new f(localakh);
-        if ((a.g(localakh)) && (bool))
+        cjb localcjb = ((EmojiGroupInfo)((Iterator)localObject1).next()).kLX();
+        f localf = new f(localcjb);
+        if (localcjb != null)
         {
-          bh localbh = new bh(localakh.ProductID);
-          this.uAW.put(localakh.ProductID, localbh);
+          if ((com.tencent.mm.plugin.emoji.g.c.i(localcjb)) && (bool))
+          {
+            bj localbj = new bj(localcjb.ProductID);
+            this.xHA.put(localcjb.ProductID, localbj);
+          }
+          localf.setStatus(9);
+          this.xHy.add(localf);
         }
-        localf.setStatus(9);
-        this.mItemList.add(localf);
       }
       AppMethodBeat.o(108371);
     }

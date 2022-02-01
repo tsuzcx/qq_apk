@@ -8,8 +8,8 @@ import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.kernel.f;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 
 final class LocationView$1
   implements View.OnClickListener
@@ -20,27 +20,27 @@ final class LocationView$1
   {
     AppMethodBeat.i(169199);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/pluginsdk/location/LocationView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    if (com.tencent.mm.az.b.WF((String)h.aHG().aHp().b(274436, null)))
+    localb.cH(paramView);
+    a.c("com/tencent/mm/pluginsdk/location/LocationView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    if (com.tencent.mm.au.b.OE((String)h.baE().ban().d(274436, null)))
     {
-      if (!com.tencent.mm.pluginsdk.permission.b.o(this.QSz.getContext(), "android.permission.ACCESS_FINE_LOCATION"))
+      if (!com.tencent.mm.pluginsdk.permission.b.s(this.XOy.getContext(), "android.permission.ACCESS_FINE_LOCATION"))
       {
-        if (!((Boolean)h.aHG().aHp().get(ar.a.VvE, Boolean.FALSE)).booleanValue()) {
-          LocationView.a(this.QSz);
+        if (!((Boolean)h.baE().ban().get(at.a.acXn, Boolean.FALSE)).booleanValue()) {
+          LocationView.a(this.XOy);
         }
         for (;;)
         {
           a.a(this, "com/tencent/mm/pluginsdk/location/LocationView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(169199);
           return;
-          com.tencent.mm.pluginsdk.permission.b.b((Activity)this.QSz.getContext(), "android.permission.ACCESS_FINE_LOCATION", 64);
+          com.tencent.mm.pluginsdk.permission.b.b((Activity)this.XOy.getContext(), "android.permission.ACCESS_FINE_LOCATION", 64);
         }
       }
     }
     else
     {
-      boolean bool = com.tencent.mm.pluginsdk.permission.b.a((Activity)this.QSz.getContext(), "android.permission.ACCESS_FINE_LOCATION", 64, "", "");
+      boolean bool = com.tencent.mm.pluginsdk.permission.b.a((Activity)this.XOy.getContext(), "android.permission.ACCESS_FINE_LOCATION", 64, "");
       Log.i("MicroMsg.LocationView", "summerper checkPermission checkLocation[%b]", new Object[] { Boolean.valueOf(bool) });
       if (!bool)
       {
@@ -49,7 +49,7 @@ final class LocationView$1
         return;
       }
     }
-    LocationView.b(this.QSz);
+    LocationView.b(this.XOy);
     a.a(this, "com/tencent/mm/pluginsdk/location/LocationView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(169199);
   }

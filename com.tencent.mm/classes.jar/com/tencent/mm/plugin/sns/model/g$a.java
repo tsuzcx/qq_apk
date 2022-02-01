@@ -7,9 +7,9 @@ public enum g$a
   static
   {
     AppMethodBeat.i(95473);
-    JUO = new a("IMG_SCENE_NONE", 0);
-    JUP = new a("IMG_SCENE_SNSUSER", 1);
-    JUQ = new a[] { JUO, JUP };
+    QrQ = new a("IMG_SCENE_NONE", 0);
+    QrR = new a("IMG_SCENE_SNSUSER", 1);
+    QrS = new a[] { QrQ, QrR };
     AppMethodBeat.o(95473);
   }
   
@@ -17,7 +17,7 @@ public enum g$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.g.a
  * JD-Core Version:    0.7.0.1
  */

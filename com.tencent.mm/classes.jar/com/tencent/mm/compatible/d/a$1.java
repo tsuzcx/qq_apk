@@ -6,18 +6,18 @@ import com.tencent.mm.sdk.platformtools.Log;
 final class a$1
   implements a.a
 {
-  public final void c(int paramInt, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(261320);
-    Log.w("MicroMsg.ReportDelegate", "hy: dummy reportKV, do nothing");
-    AppMethodBeat.o(261320);
-  }
-  
-  public final void w(long paramLong1, long paramLong2)
+  public final void U(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(155626);
     Log.w("MicroMsg.ReportDelegate", "hy: dummy reportIDKey, do nothing");
     AppMethodBeat.o(155626);
+  }
+  
+  public final void d(int paramInt, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(240778);
+    Log.w("MicroMsg.ReportDelegate", "hy: dummy reportKV, do nothing");
+    AppMethodBeat.o(240778);
   }
 }
 

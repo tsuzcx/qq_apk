@@ -2,167 +2,332 @@ package com.tencent.mm.plugin.voip.ui;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Color;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.MeasureSpec;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.voip.b.a;
-import com.tencent.mm.plugin.voip.b.c;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.aa;
+import com.tencent.mm.openim.room.a.a;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.plugin.voip.b.d;
 import com.tencent.mm.plugin.voip.b.e;
-import com.tencent.mm.plugin.voip.b.f;
 import com.tencent.mm.plugin.voip.b.g;
-import com.tencent.mm.plugin.voip.video.OpenGlRender;
-import com.tencent.mm.plugin.voip.video.camera.prev.CaptureView;
-import com.tencent.mm.plugin.voip.widget.BaseSmallView;
-import com.tencent.mm.ui.au;
+import com.tencent.mm.pluginsdk.ui.a.b;
+import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/voip/ui/VoIPAvatarContentLayoutUI;", "", "()V", "avatarContentLayout", "Landroid/view/View;", "getAvatarContentLayout", "()Landroid/view/View;", "setAvatarContentLayout", "(Landroid/view/View;)V", "mDynamicTextWrap", "Lcom/tencent/mm/plugin/voip/ui/VoipBaseFragment$DynamicTextWrap;", "mIsOpenIm", "", "mIvRemoteTalkerAvatar", "Landroid/widget/ImageView;", "mLlInviteTipsCtn", "mTips", "Landroid/widget/TextView;", "mTvInviteTipsDot", "mTvRemoteTalkerName", "mTvRemoteTalkerNameSubDetail", "applyUIEvent", "", "mUserName", "", "getLayout", "context", "Landroid/content/Context;", "rootView", "Landroid/widget/FrameLayout;", "isVideo", "incTopMarginOfRelativeLayout", "height", "", "release", "setMinWidthFitString", "tv", "textId", "showCalledInviting", "showCalledVoiceConnecting", "showCallingConnecting", "showCallingInviting", "showCallingWaitingAccept", "showConnecting", "showVoiceTalking", "Companion", "plugin-voip_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
-  extends BaseSmallView
 {
-  private ImageView jmf;
-  private TextView mrN;
-  private TextView timeTv;
-  private ImageView zpB;
+  public static final f.a UJn;
+  private ImageView UJo;
+  private TextView UJp;
+  private TextView UJq;
+  private TextView UJr;
+  private View UJs;
+  private TextView UJt;
+  VoipBaseFragment.c UJu;
+  View UJv;
+  private boolean UJw;
   
-  public f(Context paramContext)
+  static
   {
-    super(paramContext, null);
-    AppMethodBeat.i(115506);
-    LayoutInflater.from(paramContext).inflate(b.e.voip_voice_mini_widget_view, this);
-    this.zpB = ((ImageView)findViewById(b.d.voice_bg));
-    this.timeTv = ((TextView)findViewById(b.d.voip_voice_mini_time_tv));
-    this.mrN = ((TextView)findViewById(b.d.voip_voice_mini_tip_tv));
-    this.jmf = ((ImageView)findViewById(b.d.voip_voice_mini_icon_iv));
-    this.jmf.setImageDrawable(au.o(getContext(), b.f.icons_filled_call, Color.parseColor("#07C160")));
-    AppMethodBeat.o(115506);
+    AppMethodBeat.i(292451);
+    UJn = new f.a((byte)0);
+    AppMethodBeat.o(292451);
   }
   
-  public final void Be(boolean paramBoolean)
+  public f()
   {
-    AppMethodBeat.i(184091);
+    AppMethodBeat.i(292447);
+    this.UJu = new VoipBaseFragment.c();
+    AppMethodBeat.o(292447);
+  }
+  
+  public final void GD(boolean paramBoolean)
+  {
+    AppMethodBeat.i(292502);
+    Object localObject = this.UJv;
+    if (localObject != null) {
+      ((View)localObject).setVisibility(0);
+    }
+    localObject = this.UJs;
+    if (localObject != null) {
+      ((View)localObject).setVisibility(0);
+    }
     if (paramBoolean)
     {
-      this.timeTv.setVisibility(8);
-      this.mrN.setVisibility(0);
-      this.mrN.setText(b.g.voip_net_status_warning_hint_mini);
-      AppMethodBeat.o(184091);
-      return;
-    }
-    super.Be(false);
-    AppMethodBeat.o(184091);
-  }
-  
-  public final void aQM(String paramString)
-  {
-    AppMethodBeat.i(115508);
-    this.timeTv.setTextSize(1, 12.0F);
-    this.timeTv.setText(paramString);
-    setContentDescription(getContext().getString(b.g.chatting_voip_voice) + "," + paramString);
-    AppMethodBeat.o(115508);
-  }
-  
-  public final void aQN(String paramString)
-  {
-    AppMethodBeat.i(115507);
-    this.timeTv.setTextSize(1, 14.0F);
-    this.timeTv.setText(paramString);
-    setContentDescription(getContext().getString(b.g.chatting_voip_voice) + "," + paramString);
-    AppMethodBeat.o(115507);
-  }
-  
-  public final void eXH()
-  {
-    AppMethodBeat.i(184090);
-    this.mrN.setVisibility(0);
-    this.jmf.setImageDrawable(au.o(getContext(), b.f.icon_filled_mike_off, Color.parseColor("#FA5151")));
-    this.mrN.setTextColor(Color.parseColor("#FA5151"));
-    this.mrN.setText(b.g.voip_start_record_failed);
-    this.timeTv.setVisibility(8);
-    super.eXH();
-    AppMethodBeat.o(184090);
-  }
-  
-  public final boolean eYB()
-  {
-    AppMethodBeat.i(184087);
-    super.eYB();
-    this.timeTv.setVisibility(8);
-    this.mrN.setVisibility(0);
-    this.mrN.setTextColor(Color.parseColor("#FA5151"));
-    this.mrN.setText(b.g.voip_miniwindow_end_wording);
-    this.jmf.setImageDrawable(au.o(getContext(), b.f.icons_filled_call_end, Color.parseColor("#FA5151")));
-    AppMethodBeat.o(184087);
-    return true;
-  }
-  
-  public final void eYC()
-  {
-    AppMethodBeat.i(184088);
-    this.jmf.setImageDrawable(au.o(getContext(), b.f.icons_filled_call, Color.parseColor("#07C160")));
-    this.mrN.setVisibility(8);
-    this.mrN.setTextColor(Color.parseColor("#07C160"));
-    this.timeTv.setVisibility(0);
-    AppMethodBeat.o(184088);
-  }
-  
-  public final void eYD()
-  {
-    AppMethodBeat.i(184877);
-    super.eYD();
-    this.zpB.setBackground(au.o(getContext(), b.c.voip_mini_voice_rectangle, getResources().getColor(b.a.BG_2)));
-    AppMethodBeat.o(184877);
-  }
-  
-  public final OpenGlRender getBeautyData()
-  {
-    return null;
-  }
-  
-  public final OpenGlRender getSpatioTemporalFilterData()
-  {
-    return null;
-  }
-  
-  public final void onAnimationEnd() {}
-  
-  public final void setCaptureView(CaptureView paramCaptureView) {}
-  
-  public final void setVoicePlayDevice(int paramInt)
-  {
-    AppMethodBeat.i(184089);
-    if (this.NKw != paramInt)
-    {
-      this.NKw = paramInt;
-      this.mrN.setVisibility(0);
-      switch (paramInt)
+      localObject = this.UJq;
+      if (localObject != null) {
+        ((TextView)localObject).setText(b.g.voip_invited_video_tip);
+      }
+      if (this.UJt != null)
       {
+        if (!this.UJw) {
+          break label146;
+        }
+        localObject = this.UJt;
+        if (localObject != null) {
+          break label138;
+        }
+        localObject = null;
+        label78:
+        if (Util.isNullOrNil((CharSequence)localObject)) {
+          break label146;
+        }
+        localObject = this.UJt;
+        if (localObject != null) {
+          ((TextView)localObject).setVisibility(0);
+        }
       }
     }
     for (;;)
     {
-      this.timeTv.setVisibility(8);
-      super.setVoicePlayDevice(paramInt);
-      AppMethodBeat.o(184089);
+      this.UJu.a(this.UJr, VoipBaseFragment.UKa);
+      AppMethodBeat.o(292502);
       return;
-      this.jmf.setImageDrawable(au.o(getContext(), b.f.icons_filled_bluetooth, Color.parseColor("#07C160")));
-      this.mrN.setText(b.g.voip_mini_bluetooth);
-      continue;
-      this.jmf.setImageDrawable(au.o(getContext(), b.f.icons_filled_volume_up, Color.parseColor("#07C160")));
-      this.mrN.setText(b.g.voip_mini_mike);
-      continue;
-      this.jmf.setImageDrawable(au.o(getContext(), b.f.icons_filled_ear, Color.parseColor("#07C160")));
-      this.mrN.setText(b.g.voip_mini_earpiece);
-      continue;
-      this.jmf.setImageDrawable(au.o(getContext(), b.f.icons_filled_headset, Color.parseColor("#07C160")));
-      this.mrN.setText(b.g.voip_mini_headset);
+      localObject = this.UJq;
+      if (localObject == null) {
+        break;
+      }
+      ((TextView)localObject).setText(b.g.voip_invited_audio_tip);
+      break;
+      label138:
+      localObject = ((TextView)localObject).getText();
+      break label78;
+      label146:
+      localObject = this.UJt;
+      if (localObject != null) {
+        ((TextView)localObject).setVisibility(8);
+      }
     }
+  }
+  
+  public final View a(Context paramContext, FrameLayout paramFrameLayout, String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(292464);
+    s.u(paramContext, "context");
+    s.u(paramFrameLayout, "rootView");
+    s.u(paramString, "mUserName");
+    if (paramBoolean) {}
+    for (paramContext = LayoutInflater.from(paramContext).inflate(b.e.layout_voip_caller_video, (ViewGroup)paramFrameLayout);; paramContext = LayoutInflater.from(paramContext).inflate(b.e.layout_voip_caller_voice, (ViewGroup)paramFrameLayout))
+    {
+      this.UJv = paramContext;
+      paramContext = this.UJv;
+      if (paramContext == null) {
+        break label403;
+      }
+      paramFrameLayout = paramContext.findViewById(b.d.voip_remote_talker_avatar);
+      if (paramFrameLayout != null) {
+        break;
+      }
+      paramContext = new NullPointerException("null cannot be cast to non-null type android.widget.ImageView");
+      AppMethodBeat.o(292464);
+      throw paramContext;
+    }
+    this.UJo = ((ImageView)paramFrameLayout);
+    a.b.a(this.UJo, paramString, 0.125F, true);
+    paramFrameLayout = paramContext.findViewById(b.d.voip_remote_talker_name);
+    if (paramFrameLayout == null)
+    {
+      paramContext = new NullPointerException("null cannot be cast to non-null type android.widget.TextView");
+      AppMethodBeat.o(292464);
+      throw paramContext;
+    }
+    this.UJp = ((TextView)paramFrameLayout);
+    paramFrameLayout = this.UJp;
+    Context localContext;
+    CharSequence localCharSequence;
+    TextView localTextView;
+    if (paramFrameLayout != null)
+    {
+      localContext = paramContext.getContext();
+      localCharSequence = (CharSequence)aa.getDisplayName(paramString);
+      localTextView = this.UJp;
+      if (localTextView != null) {
+        break label244;
+      }
+    }
+    label244:
+    for (float f = 14.0F;; f = localTextView.getTextSize())
+    {
+      paramFrameLayout.setText((CharSequence)p.b(localContext, localCharSequence, f));
+      paramFrameLayout = paramContext.findViewById(b.d.voip_invite_tips_dot);
+      if (paramFrameLayout != null) {
+        break;
+      }
+      paramContext = new NullPointerException("null cannot be cast to non-null type android.widget.TextView");
+      AppMethodBeat.o(292464);
+      throw paramContext;
+    }
+    this.UJr = ((TextView)paramFrameLayout);
+    paramFrameLayout = paramContext.findViewById(b.d.voip_invite_tips);
+    if (paramFrameLayout == null)
+    {
+      paramContext = new NullPointerException("null cannot be cast to non-null type android.widget.TextView");
+      AppMethodBeat.o(292464);
+      throw paramContext;
+    }
+    this.UJq = ((TextView)paramFrameLayout);
+    this.UJs = paramContext.findViewById(b.d.voip_invite_tips_ctn);
+    this.UJt = ((TextView)paramContext.findViewById(b.d.voip_remote_talker_name_sub_detail));
+    paramContext = this.UJr;
+    int i = b.g.voip_three_dot;
+    if (paramContext == null) {
+      Log.e("MicroMsg.VoIPAvatarContentLayoutUI", "TextView is null or text is null");
+    }
+    for (;;)
+    {
+      paramContext = a.X(((n)h.ax(n.class)).bzA().JE(paramString));
+      this.UJw = au.bwO(paramString);
+      if (!Util.isNullOrNil(paramContext))
+      {
+        paramFrameLayout = this.UJt;
+        if (paramFrameLayout != null) {
+          paramFrameLayout.setText((CharSequence)paramContext);
+        }
+      }
+      label403:
+      paramContext = this.UJv;
+      AppMethodBeat.o(292464);
+      return paramContext;
+      paramContext.setText(i);
+      paramFrameLayout = this.UJv;
+      if (paramFrameLayout != null)
+      {
+        i = paramFrameLayout.getResources().getDisplayMetrics().widthPixels;
+        int j = paramFrameLayout.getResources().getDisplayMetrics().heightPixels;
+        paramContext.measure(View.MeasureSpec.makeMeasureSpec(i, -2147483648), View.MeasureSpec.makeMeasureSpec(j, -2147483648));
+        paramContext.setWidth(paramContext.getMeasuredWidth());
+      }
+    }
+  }
+  
+  public final void ial()
+  {
+    AppMethodBeat.i(292476);
+    Object localObject = this.UJv;
+    if (localObject != null) {
+      ((View)localObject).setVisibility(0);
+    }
+    localObject = this.UJq;
+    if (localObject != null) {
+      ((TextView)localObject).setText(b.g.voip_outcalling);
+    }
+    this.UJu.a(this.UJr, VoipBaseFragment.UKa);
+    localObject = this.UJs;
+    if (localObject != null) {
+      ((View)localObject).setVisibility(0);
+    }
+    AppMethodBeat.o(292476);
+  }
+  
+  public final void iau()
+  {
+    AppMethodBeat.i(292468);
+    Object localObject = this.UJq;
+    if (localObject != null) {
+      ((TextView)localObject).setText(b.g.voip_waitting);
+    }
+    this.UJu.a(this.UJr, VoipBaseFragment.UKa);
+    localObject = this.UJs;
+    if (localObject != null) {
+      ((View)localObject).setVisibility(0);
+    }
+    AppMethodBeat.o(292468);
+  }
+  
+  public final void iav()
+  {
+    AppMethodBeat.i(292486);
+    Object localObject = this.UJt;
+    if (localObject != null)
+    {
+      if ((!this.UJw) || (Util.isNullOrNil(((TextView)localObject).getText()))) {
+        break label102;
+      }
+      ((TextView)localObject).setVisibility(0);
+    }
+    for (;;)
+    {
+      localObject = this.UJv;
+      if (localObject != null) {
+        ((View)localObject).setVisibility(0);
+      }
+      localObject = this.UJq;
+      if (localObject != null) {
+        ((TextView)localObject).setText(b.g.voip_invite_waiting_tip);
+      }
+      this.UJu.a(this.UJr, VoipBaseFragment.UKa);
+      localObject = this.UJs;
+      if (localObject != null) {
+        ((View)localObject).setVisibility(0);
+      }
+      AppMethodBeat.o(292486);
+      return;
+      label102:
+      ((TextView)localObject).setVisibility(8);
+    }
+  }
+  
+  public final void iaw()
+  {
+    AppMethodBeat.i(292492);
+    TextView localTextView = this.UJq;
+    if (localTextView != null) {
+      localTextView.setText(b.g.voip_waitting);
+    }
+    this.UJu.a(this.UJr, VoipBaseFragment.UKa);
+    AppMethodBeat.o(292492);
+  }
+  
+  public final void iax()
+  {
+    AppMethodBeat.i(292506);
+    Object localObject = this.UJv;
+    if (localObject != null) {
+      ((View)localObject).setVisibility(0);
+    }
+    localObject = this.UJs;
+    if (localObject != null) {
+      ((View)localObject).setVisibility(0);
+    }
+    localObject = this.UJq;
+    if (localObject != null) {
+      ((TextView)localObject).setText(b.g.voip_waitting);
+    }
+    this.UJu.a(this.UJr, VoipBaseFragment.UKa);
+    AppMethodBeat.o(292506);
+  }
+  
+  public final void iay()
+  {
+    AppMethodBeat.i(292512);
+    View localView = this.UJs;
+    if (localView != null) {
+      localView.setVisibility(8);
+    }
+    localView = this.UJv;
+    if (localView != null) {
+      localView.setVisibility(0);
+    }
+    AppMethodBeat.o(292512);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.f
  * JD-Core Version:    0.7.0.1
  */

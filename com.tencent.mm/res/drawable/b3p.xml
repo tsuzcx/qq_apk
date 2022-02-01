@@ -1,22 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle" android:useLevel="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false">
-        <shape android:shape="rectangle">
-            <corners android:radius="@dimen/a0" />
-            <solid android:color="@color/UN_BW_0_Alpha_0_0_5" />
-        </shape>
-    </item>
-    <item android:state_pressed="true">
-        <shape android:shape="rectangle">
-            <corners android:radius="@dimen/a0" />
-            <solid android:color="#ffd7a400" />
-        </shape>
-    </item>
-    <item>
-        <shape android:shape="rectangle">
-            <corners android:radius="@dimen/a0" />
-            <solid android:color="@color/al" />
-        </shape>
-    </item>
-</selector>
+    <solid android:color="@color/a1e" />
+    <corners android:radius="5.0dip" />
+    <padding android:left="10.0dip" android:right="10.0dip" />
+    <size android:height="20.0dip" />
+</shape>

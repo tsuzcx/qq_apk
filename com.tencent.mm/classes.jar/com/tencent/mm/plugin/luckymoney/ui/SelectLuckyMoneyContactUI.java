@@ -1,17 +1,16 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
-import com.tencent.mm.f.c.ax;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.br.c;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.ab;
 import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.wxpay.a.a;
 import com.tencent.mm.plugin.wxpay.a.f;
@@ -21,9 +20,10 @@ import com.tencent.mm.pluginsdk.j;
 import com.tencent.mm.pluginsdk.ui.applet.y.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.au;
 import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
 import com.tencent.mm.ui.contact.a.a;
-import com.tencent.mm.ui.contact.ad;
+import com.tencent.mm.ui.contact.ae;
 import com.tencent.mm.ui.contact.p;
 import com.tencent.mm.ui.contact.r;
 import com.tencent.mm.ui.contact.u;
@@ -35,52 +35,52 @@ import java.util.List;
 public class SelectLuckyMoneyContactUI
   extends MMBaseSelectContactUI
 {
-  private View EOv;
-  private List<String> jkb;
+  private View KIU;
+  private List<String> lMF;
   
-  public final void N(View paramView, int paramInt)
+  public final void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(265498);
+    AppMethodBeat.i(284224);
     if (paramInt < getContentLV().getHeaderViewsCount())
     {
       Log.i("MicroMsg.SelectRemittanceContactUI", "Click HeaderView position=%d", new Object[] { Integer.valueOf(paramInt) });
       Log.i("MicroMsg.SelectRemittanceContactUI", "doCallSelectContactUI");
       paramInt = getIntent().getIntExtra("key_friends_num", 0);
-      paramView = new Intent();
-      int i = w.P(new int[] { 16, 1, 2, 4, 16384, 64, 65536, 131072 });
-      paramView.putExtra("list_type", 0);
-      paramView.putExtra("list_attr", i);
-      paramView.putExtra("max_limit_num", paramInt);
-      paramView.putExtra("titile", getString(a.i.lucky_money_select_contact_title, new Object[] { Integer.valueOf(paramInt) }));
-      paramView.putExtra("sub_title", getString(a.i.wechat_wxpay_authenticate));
-      c.d(this, ".ui.contact.SelectContactUI", paramView, 1);
+      paramAdapterView = new Intent();
+      int i = w.R(new int[] { 16, 1, 2, 4, 16384, 64, 65536, 131072 });
+      paramAdapterView.putExtra("list_type", 0);
+      paramAdapterView.putExtra("list_attr", i);
+      paramAdapterView.putExtra("max_limit_num", paramInt);
+      paramAdapterView.putExtra("titile", getString(a.i.lucky_money_select_contact_title, new Object[] { Integer.valueOf(paramInt) }));
+      paramAdapterView.putExtra("sub_title", getString(a.i.wechat_wxpay_authenticate));
+      c.d(this, ".ui.contact.SelectContactUI", paramAdapterView, 1);
       overridePendingTransition(a.a.push_up_in, a.a.fast_faded_out);
-      AppMethodBeat.o(265498);
+      AppMethodBeat.o(284224);
       return;
     }
-    paramView = (a)getContentLV().getAdapter().getItem(paramInt);
-    if (paramView == null)
+    paramAdapterView = (a)getContentLV().getAdapter().getItem(paramInt);
+    if (paramAdapterView == null)
     {
-      AppMethodBeat.o(265498);
+      AppMethodBeat.o(284224);
       return;
     }
-    paramView = paramView.contact;
-    if (paramView == null)
+    paramAdapterView = paramAdapterView.contact;
+    if (paramAdapterView == null)
     {
-      AppMethodBeat.o(265498);
+      AppMethodBeat.o(284224);
       return;
     }
-    String str = paramView.field_username;
-    Log.i("MicroMsg.SelectRemittanceContactUI", "doClickUser=%s", new Object[] { str });
+    paramView = paramAdapterView.field_username;
+    Log.i("MicroMsg.SelectRemittanceContactUI", "doClickUser=%s", new Object[] { paramView });
     final Intent localIntent = new Intent();
-    localIntent.putExtra("Select_Conv_User", str);
-    paramView = null;
-    if (ab.Lj(str)) {
-      paramView = getString(a.i.wallet_select_contact_num, new Object[] { Integer.valueOf(v.Pu(str)) });
+    localIntent.putExtra("Select_Conv_User", paramView);
+    paramAdapterView = null;
+    if (au.bwE(paramView)) {
+      paramAdapterView = getString(a.i.wallet_select_contact_num, new Object[] { Integer.valueOf(v.getMembersCountByChatRoomName(paramView)) });
     }
-    ((j)h.ae(j.class)).a(this.mController, str, getString(a.i.retransmit_to_conv_comfirm2), str, paramView, getString(a.i.app_send), new y.a()
+    ((j)h.ax(j.class)).a(this.mController, paramView, getString(a.i.retransmit_to_conv_comfirm2), paramView, paramAdapterView, getString(a.i.app_send), new y.a()
     {
-      public final void a(boolean paramAnonymousBoolean, String paramAnonymousString, int paramAnonymousInt)
+      public final void onDialogClick(boolean paramAnonymousBoolean, String paramAnonymousString, int paramAnonymousInt)
       {
         AppMethodBeat.i(65972);
         if (paramAnonymousBoolean)
@@ -91,51 +91,67 @@ public class SelectLuckyMoneyContactUI
         AppMethodBeat.o(65972);
       }
     });
-    AppMethodBeat.o(265498);
+    AppMethodBeat.o(284224);
   }
   
   public final void a(ListView paramListView, int paramInt)
   {
     AppMethodBeat.i(65978);
     super.a(paramListView, paramInt);
-    if (this.EOv == null)
+    if (this.KIU == null)
     {
       View localView = View.inflate(this, a.g.select_conversation_header, null);
-      this.EOv = localView.findViewById(a.f.content);
+      this.KIU = localView.findViewById(a.f.content);
       ((TextView)localView.findViewById(a.f.tip_tv)).setText(a.i.lucky_money_go_select_multi_contact_title);
       paramListView.addHeaderView(localView);
     }
-    this.EOv.setVisibility(paramInt);
+    this.KIU.setVisibility(paramInt);
     AppMethodBeat.o(65978);
   }
   
-  public final void ata()
+  public final void aNi()
   {
     AppMethodBeat.i(65973);
-    super.ata();
+    super.aNi();
     HashSet localHashSet = new HashSet();
-    localHashSet.addAll(w.hVh());
-    localHashSet.addAll(w.hVi());
+    localHashSet.addAll(w.jyV());
+    localHashSet.addAll(w.jyW());
     String str = getIntent().getStringExtra("Select_block_List");
     if (!Util.isNullOrNil(str)) {
       localHashSet.addAll(Util.stringsToList(str.split(",")));
     }
-    this.jkb = new ArrayList();
-    this.jkb.addAll(localHashSet);
+    this.lMF = new ArrayList();
+    this.lMF.addAll(localHashSet);
     AppMethodBeat.o(65973);
   }
   
-  public final boolean bwH()
+  public final r bVA()
+  {
+    AppMethodBeat.i(65976);
+    ae localae = new ae(this, this.lMF);
+    AppMethodBeat.o(65976);
+    return localae;
+  }
+  
+  public final p bVB()
+  {
+    AppMethodBeat.i(65977);
+    u localu = new u(this, this.lMF, false, this.scene);
+    AppMethodBeat.o(65977);
+    return localu;
+  }
+  
+  public final boolean bVx()
   {
     return false;
   }
   
-  public final boolean bwI()
+  public final boolean bVy()
   {
     return false;
   }
   
-  public final String bwJ()
+  public final String bVz()
   {
     AppMethodBeat.i(65975);
     String str = getString(a.i.lucky_money_select_friends);
@@ -143,31 +159,15 @@ public class SelectLuckyMoneyContactUI
     return str;
   }
   
-  public final r bwK()
-  {
-    AppMethodBeat.i(65976);
-    ad localad = new ad(this, this.jkb);
-    AppMethodBeat.o(65976);
-    return localad;
-  }
-  
-  public final p bwL()
-  {
-    AppMethodBeat.i(65977);
-    u localu = new u(this, this.jkb, false, this.scene);
-    AppMethodBeat.o(65977);
-    return localu;
-  }
-  
-  public final int[] dvA()
+  public final int[] efu()
   {
     return new int[] { 131072 };
   }
   
-  public final void eQp()
+  public final void fYZ()
   {
     AppMethodBeat.i(65979);
-    super.eQp();
+    super.fYZ();
     hideVKB();
     AppMethodBeat.o(65979);
   }
@@ -199,7 +199,7 @@ public class SelectLuckyMoneyContactUI
   {
     AppMethodBeat.i(65980);
     if (paramInt == 4) {
-      eQp();
+      fYZ();
     }
     boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
     AppMethodBeat.o(65980);

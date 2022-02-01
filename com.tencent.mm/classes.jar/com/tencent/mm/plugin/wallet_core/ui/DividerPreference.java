@@ -14,10 +14,10 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class DividerPreference
   extends Preference
 {
-  private boolean GJY;
-  private boolean GJZ;
+  private boolean MGN;
+  private boolean MGO;
   private View mView;
-  private boolean rDs;
+  private boolean uOJ;
   
   public DividerPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,14 +29,14 @@ public class DividerPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(70645);
     this.mView = null;
-    this.GJY = false;
-    this.GJZ = false;
-    this.rDs = true;
+    this.MGN = false;
+    this.MGO = false;
+    this.uOJ = true;
     setLayoutResource(a.g.divider_pref);
     AppMethodBeat.o(70645);
   }
   
-  public final View c(View paramView, ViewGroup paramViewGroup)
+  public final View b(View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(70646);
     if (this.mView == null) {
@@ -55,15 +55,15 @@ public class DividerPreference
     paramView = paramView.findViewById(a.f.divider_pref_line);
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
     int i = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.mContext, 10.0F);
-    if (this.GJY) {}
+    if (this.MGN) {}
     for (int j = i;; j = 0)
     {
-      if (this.GJZ) {}
+      if (this.MGO) {}
       for (;;)
       {
         localLayoutParams.setMargins(0, j, 0, i);
         paramView.setLayoutParams(localLayoutParams);
-        if (!this.rDs)
+        if (!this.uOJ)
         {
           paramView.setVisibility(4);
           AppMethodBeat.o(70647);

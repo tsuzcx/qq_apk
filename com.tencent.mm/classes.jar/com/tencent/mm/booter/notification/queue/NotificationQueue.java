@@ -7,31 +7,31 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.booter.notification.NotificationItem;
-import com.tencent.mm.n.g;
+import com.tencent.mm.k.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class NotificationQueue
 {
-  public ParcelNotificationQueue iSx;
+  public ParcelNotificationQueue luu;
   
-  private void arg()
+  private void sz()
   {
     AppMethodBeat.i(20014);
-    if (this.iSx == null)
+    if (this.luu == null)
     {
       AppMethodBeat.o(20014);
       return;
     }
-    Log.d("MicroMsg.NotificationCustomQueue", "jacks save: %d", new Object[] { Integer.valueOf(this.iSx.size()) });
-    if (this.iSx.isEmpty())
+    Log.d("MicroMsg.NotificationCustomQueue", "jacks save: %d", new Object[] { Integer.valueOf(this.luu.size()) });
+    if (this.luu.isEmpty())
     {
-      g.awe().edit().putString("com.tencent.preference.notification.queue", "").apply();
-      if (this.iSx == null) {
+      h.aQD().edit().putString("com.tencent.preference.notification.queue", "").apply();
+      if (this.luu == null) {
         restore();
       }
-      Log.d("MicroMsg.NotificationCustomQueue", "jacks _reset: %d", new Object[] { Integer.valueOf(this.iSx.size()) });
+      Log.d("MicroMsg.NotificationCustomQueue", "jacks _reset: %d", new Object[] { Integer.valueOf(this.luu.size()) });
       AppMethodBeat.o(20014);
       return;
     }
@@ -43,12 +43,12 @@ public final class NotificationQueue
     try
     {
       AppMethodBeat.i(20016);
-      if (this.iSx == null) {
+      if (this.luu == null) {
         restore();
       }
-      boolean bool = this.iSx.remove(paramNotificationItem);
+      boolean bool = this.luu.remove(paramNotificationItem);
       if (bool) {
-        arg();
+        sz();
       }
       AppMethodBeat.o(20016);
       return bool;
@@ -61,12 +61,12 @@ public final class NotificationQueue
     try
     {
       AppMethodBeat.i(20018);
-      if (this.iSx == null) {
+      if (this.luu == null) {
         restore();
       }
-      boolean bool = this.iSx.add(paramNotificationItem);
+      boolean bool = this.luu.add(paramNotificationItem);
       if (bool) {
-        arg();
+        sz();
       }
       AppMethodBeat.o(20018);
       return bool;
@@ -81,18 +81,18 @@ public final class NotificationQueue
       try
       {
         AppMethodBeat.i(20017);
-        if (this.iSx == null) {
+        if (this.luu == null) {
           restore();
         }
-        Iterator localIterator = this.iSx.iterator();
+        Iterator localIterator = this.luu.iterator();
         if (localIterator.hasNext())
         {
           NotificationItem localNotificationItem = (NotificationItem)localIterator.next();
           if (localNotificationItem.id != paramInt) {
             continue;
           }
-          if ((localNotificationItem != null) && (this.iSx.remove(localNotificationItem))) {
-            arg();
+          if ((localNotificationItem != null) && (this.luu.remove(localNotificationItem))) {
+            sz();
           }
           AppMethodBeat.o(20017);
           return localNotificationItem;
@@ -109,10 +109,10 @@ public final class NotificationQueue
     {
       AppMethodBeat.i(20015);
       Log.d("MicroMsg.NotificationCustomQueue", "jacks _restore");
-      if (this.iSx == null) {
-        this.iSx = new ParcelNotificationQueue();
+      if (this.luu == null) {
+        this.luu = new ParcelNotificationQueue();
       }
-      Log.d("MicroMsg.NotificationCustomQueue", "jacks _restore: %d", new Object[] { Integer.valueOf(this.iSx.size()) });
+      Log.d("MicroMsg.NotificationCustomQueue", "jacks _restore: %d", new Object[] { Integer.valueOf(this.luu.size()) });
       AppMethodBeat.o(20015);
       return;
     }
@@ -122,10 +122,10 @@ public final class NotificationQueue
   public final int size()
   {
     AppMethodBeat.i(20019);
-    if (this.iSx == null) {
+    if (this.luu == null) {
       restore();
     }
-    int i = this.iSx.size();
+    int i = this.luu.size();
     AppMethodBeat.o(20019);
     return i;
   }
@@ -162,7 +162,7 @@ public final class NotificationQueue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.booter.notification.queue.NotificationQueue
  * JD-Core Version:    0.7.0.1
  */

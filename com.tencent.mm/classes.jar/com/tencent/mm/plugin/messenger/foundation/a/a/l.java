@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.messenger.foundation.a.a;
 
 import com.tencent.mm.sdk.storage.IStorage;
-import com.tencent.mm.storage.cj;
+import com.tencent.mm.storage.cm;
 import java.util.List;
 
 public abstract interface l
   extends IStorage
 {
-  public abstract void Up(String paramString);
+  public abstract void Mo(String paramString);
   
-  public abstract cj aPi(String paramString);
+  public abstract cm aMh(String paramString);
   
-  public abstract void bV(String paramString, boolean paramBoolean);
+  public abstract void cr(String paramString, boolean paramBoolean);
   
-  public abstract List<cj> eSy();
+  public abstract List<cm> gbs();
   
-  public abstract void fk(String paramString, int paramInt);
+  public abstract void gd(String paramString, int paramInt);
   
   public abstract boolean has(String paramString);
   
-  public abstract void i(String paramString, boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void k(String paramString, boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

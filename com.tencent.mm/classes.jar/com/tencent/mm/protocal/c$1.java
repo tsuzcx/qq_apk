@@ -18,6 +18,8 @@ final class c$1
     add("configMpAdAttrs");
     add("saveWaid");
     add("batchPreloadMiniProgram");
+    add("preloadLiteApp");
+    add("openLiteApp");
     AppMethodBeat.o(152433);
   }
 }

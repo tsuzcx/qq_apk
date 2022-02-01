@@ -1,100 +1,63 @@
 package com.tencent.mm.plugin.webview.modeltools;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.crash.CrashReportFactory;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import java.util.HashSet;
+import java.util.Set;
 
 public final class n
+  extends MAutoStorage<i>
 {
-  private final LinkedList<String> PYk;
+  public static final String[] SQL_CREATE;
+  private final ISQLiteDatabase db;
   
-  public n()
+  static
   {
-    AppMethodBeat.i(79225);
-    this.PYk = new LinkedList();
-    AppMethodBeat.o(79225);
+    AppMethodBeat.i(79224);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(i.info, "WebViewHostsFilter") };
+    AppMethodBeat.o(79224);
   }
   
-  private void bls(String paramString)
+  public n(ISQLiteDatabase paramISQLiteDatabase)
   {
-    AppMethodBeat.i(79227);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(79227);
-      return;
-    }
-    synchronized (this.PYk)
-    {
-      String str = (String)this.PYk.peekLast();
-      paramString = URLEncoder.encode(paramString);
-      if ((str == null) || (!str.equals(paramString))) {
-        this.PYk.addLast(paramString);
-      }
-      if (this.PYk.size() > 10) {
-        this.PYk.removeFirst();
-      }
-      AppMethodBeat.o(79227);
-      return;
-    }
+    this(paramISQLiteDatabase, i.info, "WebViewHostsFilter");
   }
   
-  public final void add(String paramString)
+  private n(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString)
   {
-    AppMethodBeat.i(79226);
-    try
-    {
-      bls(paramString);
-      AppMethodBeat.o(79226);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      Log.e("MicroMsg.WebViewURLRouteList", "add exp = %s", new Object[] { Util.stackTraceToString(paramString) });
-      AppMethodBeat.o(79226);
-    }
+    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, null);
+    this.db = paramISQLiteDatabase;
   }
   
-  public final String[] gWE()
+  public final Set<String> iwi()
   {
-    AppMethodBeat.i(79228);
-    synchronized (this.PYk)
-    {
-      String[] arrayOfString = new String[this.PYk.size()];
-      Iterator localIterator = this.PYk.iterator();
-      int i = 0;
-      while (localIterator.hasNext())
+    AppMethodBeat.i(79223);
+    long l = Util.nowSecond();
+    Log.d("MicroMsg.WebViewStorage", "webview hijack deleteExpiredItem now = ".concat(String.valueOf(l)));
+    Log.i("MicroMsg.WebViewStorage", "delete expired items request  : [%b]", new Object[] { Boolean.valueOf(execSQL("WebViewHostsFilter", "delete from WebViewHostsFilter where expireTime < ".concat(String.valueOf(l)))) });
+    Cursor localCursor = this.db.query(getTableName(), new String[] { "host" }, null, null, null, null, null, 2);
+    HashSet localHashSet = new HashSet();
+    if ((localCursor != null) && (localCursor.moveToFirst())) {
+      do
       {
-        arrayOfString[i] = ((String)localIterator.next());
-        i += 1;
-      }
-      AppMethodBeat.o(79228);
-      return arrayOfString;
+        String str = localCursor.getString(0);
+        if (!Util.isNullOrNil(str))
+        {
+          localHashSet.add(str);
+          Log.d("MicroMsg.WebViewStorage", "webview hijack gethost = ".concat(String.valueOf(str)));
+        }
+      } while (localCursor.moveToNext());
     }
-  }
-  
-  public final void gWF()
-  {
-    AppMethodBeat.i(79229);
-    if (!CrashReportFactory.hasDebuger())
-    {
-      AppMethodBeat.o(79229);
-      return;
+    if (localCursor != null) {
+      localCursor.close();
     }
-    StringBuilder localStringBuilder = new StringBuilder("routeList: ");
-    synchronized (this.PYk)
-    {
-      Iterator localIterator = this.PYk.iterator();
-      if (localIterator.hasNext()) {
-        localStringBuilder.append(URLDecoder.decode((String)localIterator.next())).append("\n");
-      }
-    }
-    Log.d("MicroMsg.WebViewURLRouteList", localObject.toString());
-    AppMethodBeat.o(79229);
+    AppMethodBeat.o(79223);
+    return localHashSet;
   }
 }
 

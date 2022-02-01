@@ -4,127 +4,110 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class ar
-  extends dyl
+  extends erp
 {
-  public String RFj;
-  public String RFk;
-  public String cli_msg_id;
-  public long klE;
-  public String ktQ;
+  public int YBh;
+  public String YBi;
+  public boolean YBj;
+  public String chatroom_name;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(189101);
+    AppMethodBeat.i(113927);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.bm(2, this.klE);
-      if (this.ktQ != null) {
-        paramVarArgs.f(3, this.ktQ);
+      paramVarArgs.bS(2, this.YBh);
+      if (this.YBi != null) {
+        paramVarArgs.g(3, this.YBi);
       }
-      if (this.RFj != null) {
-        paramVarArgs.f(4, this.RFj);
+      if (this.chatroom_name != null) {
+        paramVarArgs.g(4, this.chatroom_name);
       }
-      if (this.cli_msg_id != null) {
-        paramVarArgs.f(5, this.cli_msg_id);
-      }
-      if (this.RFk != null) {
-        paramVarArgs.f(6, this.RFk);
-      }
-      AppMethodBeat.o(189101);
+      paramVarArgs.di(5, this.YBj);
+      AppMethodBeat.o(113927);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label576;
+        break label492;
       }
     }
-    label576:
-    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label492:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + g.a.a.b.b.a.p(2, this.klE);
+      int i = paramInt + i.a.a.b.b.a.cJ(2, this.YBh);
       paramInt = i;
-      if (this.ktQ != null) {
-        paramInt = i + g.a.a.b.b.a.g(3, this.ktQ);
+      if (this.YBi != null) {
+        paramInt = i + i.a.a.b.b.a.h(3, this.YBi);
       }
       i = paramInt;
-      if (this.RFj != null) {
-        i = paramInt + g.a.a.b.b.a.g(4, this.RFj);
+      if (this.chatroom_name != null) {
+        i = paramInt + i.a.a.b.b.a.h(4, this.chatroom_name);
       }
-      paramInt = i;
-      if (this.cli_msg_id != null) {
-        paramInt = i + g.a.a.b.b.a.g(5, this.cli_msg_id);
-      }
-      i = paramInt;
-      if (this.RFk != null) {
-        i = paramInt + g.a.a.b.b.a.g(6, this.RFk);
-      }
-      AppMethodBeat.o(189101);
-      return i;
+      paramInt = i.a.a.b.b.a.ko(5);
+      AppMethodBeat.o(113927);
+      return i + (paramInt + 1);
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(189101);
+        AppMethodBeat.o(113927);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         ar localar = (ar)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(189101);
+          AppMethodBeat.o(113927);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject = (byte[])paramVarArgs.get(paramInt);
-            jg localjg = new jg();
+            kc localkc = new kc();
             if ((localObject != null) && (localObject.length > 0)) {
-              localjg.parseFrom((byte[])localObject);
+              localkc.parseFrom((byte[])localObject);
             }
-            localar.BaseRequest = localjg;
+            localar.BaseRequest = localkc;
             paramInt += 1;
           }
-          AppMethodBeat.o(189101);
+          AppMethodBeat.o(113927);
           return 0;
         case 2: 
-          localar.klE = ((g.a.a.a.a)localObject).abFh.AN();
-          AppMethodBeat.o(189101);
+          localar.YBh = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(113927);
           return 0;
         case 3: 
-          localar.ktQ = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(189101);
+          localar.YBi = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(113927);
           return 0;
         case 4: 
-          localar.RFj = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(189101);
-          return 0;
-        case 5: 
-          localar.cli_msg_id = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(189101);
+          localar.chatroom_name = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(113927);
           return 0;
         }
-        localar.RFk = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(189101);
+        localar.YBj = ((i.a.a.a.a)localObject).ajGk.aai();
+        AppMethodBeat.o(113927);
         return 0;
       }
-      AppMethodBeat.o(189101);
+      AppMethodBeat.o(113927);
       return -1;
     }
   }

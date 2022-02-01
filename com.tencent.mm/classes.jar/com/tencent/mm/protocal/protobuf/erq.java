@@ -1,111 +1,200 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bx.b;
 import java.util.LinkedList;
 
 public final class erq
-  extends dyl
+  extends erp
 {
-  public LinkedList<aba> UtG;
-  
-  public erq()
-  {
-    AppMethodBeat.i(124565);
-    this.UtG = new LinkedList();
-    AppMethodBeat.o(124565);
-  }
+  public String OcL;
+  public String OcM;
+  public int Ocy;
+  public String YIM;
+  public int YXw;
+  public String abdU;
+  public int abvk;
+  public String abvl;
+  public int abvm;
+  public int abvn;
+  public b abvo;
+  public String hAk;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(124566);
+    AppMethodBeat.i(72581);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.e(2, 8, this.UtG);
-      AppMethodBeat.o(124566);
+      if (this.OcL != null) {
+        paramVarArgs.g(2, this.OcL);
+      }
+      if (this.OcM != null) {
+        paramVarArgs.g(3, this.OcM);
+      }
+      if (this.hAk != null) {
+        paramVarArgs.g(4, this.hAk);
+      }
+      paramVarArgs.bS(5, this.Ocy);
+      paramVarArgs.bS(6, this.abvk);
+      if (this.abvl != null) {
+        paramVarArgs.g(7, this.abvl);
+      }
+      paramVarArgs.bS(8, this.abvm);
+      paramVarArgs.bS(9, this.abvn);
+      if (this.YIM != null) {
+        paramVarArgs.g(10, this.YIM);
+      }
+      if (this.abdU != null) {
+        paramVarArgs.g(11, this.abdU);
+      }
+      if (this.abvo != null) {
+        paramVarArgs.d(12, this.abvo);
+      }
+      paramVarArgs.bS(13, this.YXw);
+      AppMethodBeat.o(72581);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label406;
+        break label936;
       }
     }
-    label406:
-    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label936:
+    for (int i = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
-      int i = g.a.a.a.c(2, 8, this.UtG);
-      AppMethodBeat.o(124566);
+      paramInt = i;
+      if (this.OcL != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.OcL);
+      }
+      i = paramInt;
+      if (this.OcM != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.OcM);
+      }
+      paramInt = i;
+      if (this.hAk != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.hAk);
+      }
+      i = paramInt + i.a.a.b.b.a.cJ(5, this.Ocy) + i.a.a.b.b.a.cJ(6, this.abvk);
+      paramInt = i;
+      if (this.abvl != null) {
+        paramInt = i + i.a.a.b.b.a.h(7, this.abvl);
+      }
+      i = paramInt + i.a.a.b.b.a.cJ(8, this.abvm) + i.a.a.b.b.a.cJ(9, this.abvn);
+      paramInt = i;
+      if (this.YIM != null) {
+        paramInt = i + i.a.a.b.b.a.h(10, this.YIM);
+      }
+      i = paramInt;
+      if (this.abdU != null) {
+        i = paramInt + i.a.a.b.b.a.h(11, this.abdU);
+      }
+      paramInt = i;
+      if (this.abvo != null) {
+        paramInt = i + i.a.a.b.b.a.c(12, this.abvo);
+      }
+      i = i.a.a.b.b.a.cJ(13, this.YXw);
+      AppMethodBeat.o(72581);
       return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.UtG.clear();
-        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(124566);
+        AppMethodBeat.o(72581);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         erq localerq = (erq)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(124566);
+          AppMethodBeat.o(72581);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new jg();
-            if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((jg)localObject2).parseFrom((byte[])localObject1);
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kc localkc = new kc();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkc.parseFrom((byte[])localObject);
             }
-            localerq.BaseRequest = ((jg)localObject2);
+            localerq.BaseRequest = localkc;
             paramInt += 1;
           }
-          AppMethodBeat.o(124566);
+          AppMethodBeat.o(72581);
+          return 0;
+        case 2: 
+          localerq.OcL = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(72581);
+          return 0;
+        case 3: 
+          localerq.OcM = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(72581);
+          return 0;
+        case 4: 
+          localerq.hAk = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(72581);
+          return 0;
+        case 5: 
+          localerq.Ocy = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(72581);
+          return 0;
+        case 6: 
+          localerq.abvk = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(72581);
+          return 0;
+        case 7: 
+          localerq.abvl = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(72581);
+          return 0;
+        case 8: 
+          localerq.abvm = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(72581);
+          return 0;
+        case 9: 
+          localerq.abvn = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(72581);
+          return 0;
+        case 10: 
+          localerq.YIM = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(72581);
+          return 0;
+        case 11: 
+          localerq.abdU = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(72581);
+          return 0;
+        case 12: 
+          localerq.abvo = ((i.a.a.a.a)localObject).ajGk.kFX();
+          AppMethodBeat.o(72581);
           return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject1 = (byte[])paramVarArgs.get(paramInt);
-          localObject2 = new aba();
-          if ((localObject1 != null) && (localObject1.length > 0)) {
-            ((aba)localObject2).parseFrom((byte[])localObject1);
-          }
-          localerq.UtG.add(localObject2);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(124566);
+        localerq.YXw = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(72581);
         return 0;
       }
-      AppMethodBeat.o(124566);
+      AppMethodBeat.o(72581);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.erq
  * JD-Core Version:    0.7.0.1
  */

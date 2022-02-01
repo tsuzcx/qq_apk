@@ -4,8 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public class ChatroomMsgPack
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
+  public int channel_id;
   public String cli_msg_id;
   public String from_username;
   public MsgContent msg_content;
@@ -17,102 +18,104 @@ public class ChatroomMsgPack
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(194868);
+    AppMethodBeat.i(275501);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.msg_type);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.msg_type);
       if (this.from_username != null) {
-        paramVarArgs.f(2, this.from_username);
+        paramVarArgs.g(2, this.from_username);
       }
       if (this.cli_msg_id != null) {
-        paramVarArgs.f(3, this.cli_msg_id);
+        paramVarArgs.g(3, this.cli_msg_id);
       }
-      paramVarArgs.bm(4, this.seq);
-      paramVarArgs.bm(5, this.send_time);
+      paramVarArgs.bv(4, this.seq);
+      paramVarArgs.bv(5, this.send_time);
       if (this.msg_content != null)
       {
-        paramVarArgs.oE(6, this.msg_content.computeSize());
+        paramVarArgs.qD(6, this.msg_content.computeSize());
         this.msg_content.writeFields(paramVarArgs);
       }
       if (this.msg_options != null)
       {
-        paramVarArgs.oE(7, this.msg_options.computeSize());
+        paramVarArgs.qD(7, this.msg_options.computeSize());
         this.msg_options.writeFields(paramVarArgs);
       }
-      paramVarArgs.aY(8, this.msg_sub_type);
-      AppMethodBeat.o(194868);
+      paramVarArgs.bS(8, this.msg_sub_type);
+      paramVarArgs.bS(9, this.channel_id);
+      AppMethodBeat.o(275501);
       return 0;
     }
     int i;
     if (paramInt == 1)
     {
-      i = g.a.a.b.b.a.bM(1, this.msg_type) + 0;
+      i = i.a.a.b.b.a.cJ(1, this.msg_type) + 0;
       paramInt = i;
       if (this.from_username != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.from_username);
+        paramInt = i + i.a.a.b.b.a.h(2, this.from_username);
       }
       i = paramInt;
       if (this.cli_msg_id != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.cli_msg_id);
+        i = paramInt + i.a.a.b.b.a.h(3, this.cli_msg_id);
       }
-      i = i + g.a.a.b.b.a.p(4, this.seq) + g.a.a.b.b.a.p(5, this.send_time);
+      i = i + i.a.a.b.b.a.q(4, this.seq) + i.a.a.b.b.a.q(5, this.send_time);
       paramInt = i;
       if (this.msg_content != null) {
-        paramInt = i + g.a.a.a.oD(6, this.msg_content.computeSize());
+        paramInt = i + i.a.a.a.qC(6, this.msg_content.computeSize());
       }
       i = paramInt;
       if (this.msg_options != null) {
-        i = paramInt + g.a.a.a.oD(7, this.msg_options.computeSize());
+        i = paramInt + i.a.a.a.qC(7, this.msg_options.computeSize());
       }
-      paramInt = g.a.a.b.b.a.bM(8, this.msg_sub_type);
-      AppMethodBeat.o(194868);
-      return i + paramInt;
+      paramInt = i.a.a.b.b.a.cJ(8, this.msg_sub_type);
+      int j = i.a.a.b.b.a.cJ(9, this.channel_id);
+      AppMethodBeat.o(275501);
+      return i + paramInt + j;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(194868);
+      AppMethodBeat.o(275501);
       return 0;
     }
     if (paramInt == 3)
     {
-      Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+      Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
       ChatroomMsgPack localChatroomMsgPack = (ChatroomMsgPack)paramVarArgs[1];
       paramInt = ((Integer)paramVarArgs[2]).intValue();
       Object localObject2;
       switch (paramInt)
       {
       default: 
-        AppMethodBeat.o(194868);
+        AppMethodBeat.o(275501);
         return -1;
       case 1: 
-        localChatroomMsgPack.msg_type = ((g.a.a.a.a)localObject1).abFh.AK();
-        AppMethodBeat.o(194868);
+        localChatroomMsgPack.msg_type = ((i.a.a.a.a)localObject1).ajGk.aar();
+        AppMethodBeat.o(275501);
         return 0;
       case 2: 
-        localChatroomMsgPack.from_username = ((g.a.a.a.a)localObject1).abFh.readString();
-        AppMethodBeat.o(194868);
+        localChatroomMsgPack.from_username = ((i.a.a.a.a)localObject1).ajGk.readString();
+        AppMethodBeat.o(275501);
         return 0;
       case 3: 
-        localChatroomMsgPack.cli_msg_id = ((g.a.a.a.a)localObject1).abFh.readString();
-        AppMethodBeat.o(194868);
+        localChatroomMsgPack.cli_msg_id = ((i.a.a.a.a)localObject1).ajGk.readString();
+        AppMethodBeat.o(275501);
         return 0;
       case 4: 
-        localChatroomMsgPack.seq = ((g.a.a.a.a)localObject1).abFh.AN();
-        AppMethodBeat.o(194868);
+        localChatroomMsgPack.seq = ((i.a.a.a.a)localObject1).ajGk.aaw();
+        AppMethodBeat.o(275501);
         return 0;
       case 5: 
-        localChatroomMsgPack.send_time = ((g.a.a.a.a)localObject1).abFh.AN();
-        AppMethodBeat.o(194868);
+        localChatroomMsgPack.send_time = ((i.a.a.a.a)localObject1).ajGk.aaw();
+        AppMethodBeat.o(275501);
         return 0;
       case 6: 
-        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
@@ -125,10 +128,10 @@ public class ChatroomMsgPack
           localChatroomMsgPack.msg_content = ((MsgContent)localObject2);
           paramInt += 1;
         }
-        AppMethodBeat.o(194868);
+        AppMethodBeat.o(275501);
         return 0;
       case 7: 
-        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
@@ -141,20 +144,24 @@ public class ChatroomMsgPack
           localChatroomMsgPack.msg_options = ((MsgOptions)localObject2);
           paramInt += 1;
         }
-        AppMethodBeat.o(194868);
+        AppMethodBeat.o(275501);
+        return 0;
+      case 8: 
+        localChatroomMsgPack.msg_sub_type = ((i.a.a.a.a)localObject1).ajGk.aar();
+        AppMethodBeat.o(275501);
         return 0;
       }
-      localChatroomMsgPack.msg_sub_type = ((g.a.a.a.a)localObject1).abFh.AK();
-      AppMethodBeat.o(194868);
+      localChatroomMsgPack.channel_id = ((i.a.a.a.a)localObject1).ajGk.aar();
+      AppMethodBeat.o(275501);
       return 0;
     }
-    AppMethodBeat.o(194868);
+    AppMethodBeat.o(275501);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.autogen.chatroom.ChatroomMsgPack
  * JD-Core Version:    0.7.0.1
  */

@@ -42,7 +42,7 @@ public abstract class MidasActivityAbility$AbsWXShare
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.midas.api.ability.MidasActivityAbility.AbsWXShare
  * JD-Core Version:    0.7.0.1
  */

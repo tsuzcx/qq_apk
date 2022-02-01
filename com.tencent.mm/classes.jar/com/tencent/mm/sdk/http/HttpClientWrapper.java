@@ -3,9 +3,9 @@ package com.tencent.mm.sdk.http;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.aa;
 import com.tencent.mm.vfs.u;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.vfs.y;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -58,10 +58,10 @@ public class HttpClientWrapper
   
   private void writePostStringContent(HttpWrapperBase.Request paramRequest, HttpRequestBase paramHttpRequestBase)
   {
-    AppMethodBeat.i(188342);
+    AppMethodBeat.i(243168);
     if (paramRequest.params == null)
     {
-      AppMethodBeat.o(188342);
+      AppMethodBeat.o(243168);
       return;
     }
     ArrayList localArrayList = new ArrayList();
@@ -72,12 +72,12 @@ public class HttpClientWrapper
       localArrayList.add(new BasicNameValuePair(str, (String)paramRequest.params.get(str)));
     }
     ((HttpPost)paramHttpRequestBase).setEntity(new UrlEncodedFormEntity(localArrayList, "utf-8"));
-    AppMethodBeat.o(188342);
+    AppMethodBeat.o(243168);
   }
   
   public void cancel()
   {
-    AppMethodBeat.i(188339);
+    AppMethodBeat.i(243193);
     Log.d("MicroMsg.HttpClientWrapper", "cancel conection.");
     this.isCancelled = true;
     if ((this.httpRequest != null) && (!this.httpRequest.isAborted())) {
@@ -86,14 +86,14 @@ public class HttpClientWrapper
     if (this.client != null) {
       this.client.getConnectionManager().shutdown();
     }
-    AppMethodBeat.o(188339);
+    AppMethodBeat.o(243193);
   }
   
   public void send(HttpWrapperBase.Request paramRequest, HttpWrapperBase.Response paramResponse)
   {
     Object localObject1 = null;
     int i = 503;
-    AppMethodBeat.i(188337);
+    AppMethodBeat.i(243187);
     Log.d("MicroMsg.HttpClientWrapper", "request: %s", new Object[] { paramRequest });
     for (;;)
     {
@@ -135,7 +135,7 @@ public class HttpClientWrapper
           if ((paramResponse.attachment == null) || (Util.isNullOrNil(paramResponse.attachment.filePath))) {
             continue;
           }
-          localObject1 = u.e(new q(paramResponse.attachment.filePath), true);
+          localObject1 = y.e(new u(paramResponse.attachment.filePath), true);
           byte[] arrayOfByte = new byte[1024];
           if (this.isCancelled) {
             continue;
@@ -180,7 +180,7 @@ public class HttpClientWrapper
         }
         paramResponse.status = this.result;
         paramResponse.cookie = parseCookie(paramRequest);
-        if ((localObject1 instanceof w))
+        if ((localObject1 instanceof aa))
         {
           paramRequest = "";
           paramResponse.content = paramRequest;
@@ -234,9 +234,9 @@ public class HttpClientWrapper
         if (this.client != null) {
           this.client.getConnectionManager().shutdown();
         }
-        AppMethodBeat.o(188337);
+        AppMethodBeat.o(243187);
       }
-      AppMethodBeat.o(188337);
+      AppMethodBeat.o(243187);
       return;
       label990:
       continue;
@@ -247,7 +247,7 @@ public class HttpClientWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sdk.http.HttpClientWrapper
  * JD-Core Version:    0.7.0.1
  */

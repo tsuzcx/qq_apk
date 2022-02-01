@@ -1,10 +1,9 @@
 package com.tencent.mm.plugin.wallet_payu.balance.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.p;
 import com.tencent.mm.plugin.wallet.balance.ui.WalletBalanceSaveUI;
 import com.tencent.mm.plugin.wallet_payu.balance.a.a;
 import com.tencent.mm.pluginsdk.wallet.f;
@@ -12,10 +11,10 @@ import com.tencent.mm.pluginsdk.wallet.f;
 public class WalletPayUBalanceSaveUI
   extends WalletBalanceSaveUI
 {
-  public final void gFX()
+  public final void ieW()
   {
     AppMethodBeat.i(71971);
-    doSceneProgress(new a(this.mMC, "ZAR"));
+    doSceneProgress(new a(this.pJk, "ZAR"));
     AppMethodBeat.o(71971);
   }
   
@@ -23,15 +22,15 @@ public class WalletPayUBalanceSaveUI
   {
     AppMethodBeat.i(71970);
     super.onCreate(paramBundle);
-    this.OmR.setVisibility(8);
+    this.Vbx.setVisibility(8);
     AppMethodBeat.o(71970);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(71972);
-    if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramq instanceof a))) {
-      f.c(this, ((a)paramq).fwv, "", 11, 1);
+    if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramp instanceof a))) {
+      f.b(this, ((a)paramp).hAT, "", 11, 1);
     }
     AppMethodBeat.o(71972);
     return false;
@@ -45,7 +44,7 @@ public class WalletPayUBalanceSaveUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.balance.ui.WalletPayUBalanceSaveUI
  * JD-Core Version:    0.7.0.1
  */

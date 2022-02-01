@@ -38,6 +38,7 @@ public class v2helper
   public static final int EMethodEhanceHeadsetEC = 416;
   public static final int EMethodEnableSpeakerEnhanceEC = 419;
   public static final int EMethodGetIosMicAbCheckFlag = 430;
+  public static final int EMethodGetNetworkQuality = 929;
   public static final int EMethodGraspMicAttempt = 403;
   public static final int EMethodHeadSetPlug = 425;
   public static final int EMethodInputVolumeScaleEnable = 414;
@@ -161,10 +162,13 @@ public class v2helper
   public static final int WXCONF_ERR_NETWORK_FAIL = 2;
   public static final int WXCONF_ERR_NOT_FRIEND = 5;
   public static final int WXCONF_ERR_NOT_IN_IMROOM = 13;
+  public static final int WXCONF_ERR_OVERLOAD = 18;
   public static final int WXCONF_ERR_REPLY_BY_OTHER = 15;
   public static final int WXCONF_ERR_ROOM_CLOSED = 11;
+  public static final int WXCONF_ERR_ROOM_EXIST = 17;
   public static final int WXCONF_ERR_UNKNOWN = 0;
   public static final int WXCONF_ERR_USER_NOT_EXIST = 12;
+  public static final int WXCONF_ERR_VERIFY_TOKEN = 19;
   public static final int WXCONF_EVENT_ACCEPT_FAIL = 15;
   public static final int WXCONF_EVENT_ACCEPT_SUCC = 14;
   public static final int WXCONF_EVENT_ACCEPT_TIMEOUT = 16;
@@ -191,6 +195,9 @@ public class v2helper
   public static final int WXCONF_EVENT_RECV_SIMU_CALL = 10;
   public static final int WXCONF_EVENT_REPLY_BY_OTHER = 17;
   public static final int WXCONF_EVENT_SOCKET_BINDTO_NETWORK = 27;
+  public static final int WXCONF_EVENT_START_PUBLISH_RET = 29;
+  public static final int WXCONF_EVENT_STOP_PUBLISH_RET = 30;
+  public static final int WXCONF_EVENT_SWITCHAV_FAIL = 31;
   public static final int WXCONF_EVENT_TALK_FAIL = 23;
   public static final int WXCONF_EVENT_TALK_SUCC = 22;
   public static final int WXVOIP_ERR_AUTHKEY_EXPIRED = 4;
@@ -341,7 +348,7 @@ public class v2helper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wxmm.v2helper
  * JD-Core Version:    0.7.0.1
  */

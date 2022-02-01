@@ -4,16 +4,17 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.m;
+import com.tencent.mm.plugin.appbrand.af.k;
 import com.tencent.mm.plugin.appbrand.appstorage.r;
+import com.tencent.mm.plugin.appbrand.appstorage.w;
 import com.tencent.mm.plugin.appbrand.jsapi.base.d;
+import com.tencent.mm.plugin.appbrand.jsapi.base.i;
 import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
-import com.tencent.mm.plugin.appbrand.jsapi.g;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.system.AndroidMediaUtil;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import com.tencent.rtmp.TXLivePlayer.ITXSnapshotListener;
 import java.io.IOException;
 import java.util.HashMap;
@@ -27,7 +28,7 @@ public final class e
   private static final int CTRL_INDEX = 367;
   public static final String NAME = "operateLivePlayer";
   
-  public final int K(JSONObject paramJSONObject)
+  public final int V(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(145885);
     int i = paramJSONObject.optInt("livePlayerId");
@@ -35,7 +36,7 @@ public final class e
     return i;
   }
   
-  public final boolean b(final g paramg, int paramInt, View paramView, JSONObject paramJSONObject, final com.tencent.mm.plugin.appbrand.jsapi.base.i parami)
+  public final boolean b(final h paramh, int paramInt, View paramView, JSONObject paramJSONObject, final i parami)
   {
     int j = 1;
     int i = 0;
@@ -47,7 +48,7 @@ public final class e
       AppMethodBeat.o(145886);
       return false;
     }
-    Object localObject1 = (View)((CoverViewContainer)paramView).aA(View.class);
+    Object localObject1 = (View)((CoverViewContainer)paramView).aT(View.class);
     if (!(localObject1 instanceof AppBrandLivePlayerView))
     {
       Log.e("MicroMsg.JsApiOperateLivePlayer", "targetView not AppBrandLivePlayerView");
@@ -67,21 +68,21 @@ public final class e
           if ((paramAnonymousBitmap == null) || (paramAnonymousBitmap.isRecycled()))
           {
             Log.e("MicroMsg.JsApiOperateLivePlayer", "onSnapshot: bitmap nil");
-            parami.aho(e.this.h("fail:snapshot error", null));
+            parami.aal(e.this.ZP("fail:snapshot error"));
             AppMethodBeat.o(145884);
             return;
           }
           String str = AndroidMediaUtil.getSysCameraDirPath() + String.format("%s%d.%s", new Object[] { "capture", Long.valueOf(System.currentTimeMillis()), "jpg" });
           int i = paramAnonymousBitmap.getWidth();
           int j = paramAnonymousBitmap.getHeight();
-          com.tencent.mm.plugin.appbrand.ac.i locali;
+          k localk;
           try
           {
             BitmapUtil.saveBitmapToImage(paramAnonymousBitmap, 90, Bitmap.CompressFormat.JPEG, str, true);
-            locali = new com.tencent.mm.plugin.appbrand.ac.i();
-            if (paramg.getFileSystem().a(new q(str), "jpg", true, locali) != m.nMR)
+            localk = new k();
+            if (paramh.getFileSystem().a(new u(str), "jpg", true, localk) != r.qML)
             {
-              parami.aho(e.this.h("fail:snapshot error", null));
+              parami.aal(e.this.ZP("fail:snapshot error"));
               AppMethodBeat.o(145884);
               return;
             }
@@ -89,7 +90,7 @@ public final class e
           catch (IOException paramAnonymousBitmap)
           {
             Log.e("MicroMsg.JsApiOperateLivePlayer", "onSnapshot: exception %s", new Object[] { paramAnonymousBitmap.getMessage() });
-            parami.aho(e.this.h("fail:snapshot error", null));
+            parami.aal(e.this.ZP("fail:snapshot error"));
             AppMethodBeat.o(145884);
             return;
           }
@@ -98,19 +99,19 @@ public final class e
             Log.i("MicroMsg.JsApiOperateLivePlayer", "bitmap recycle " + paramAnonymousBitmap.toString());
             paramAnonymousBitmap.recycle();
           }
-          Log.i("MicroMsg.JsApiOperateLivePlayer", "onSnapshot: actualPath:%s path:%s", new Object[] { str, locali.value });
+          Log.i("MicroMsg.JsApiOperateLivePlayer", "onSnapshot: actualPath:%s path:%s", new Object[] { str, localk.value });
           paramAnonymousBitmap = new HashMap();
-          paramAnonymousBitmap.put("tempImagePath", locali.value);
+          paramAnonymousBitmap.put("tempImagePath", localk.value);
           paramAnonymousBitmap.put("width", Integer.valueOf(i));
           paramAnonymousBitmap.put("height", Integer.valueOf(j));
-          parami.aho(e.this.m("ok", paramAnonymousBitmap));
+          parami.aal(e.this.m("ok", paramAnonymousBitmap));
           AppMethodBeat.o(145884);
         }
       });
-      if (!((AppBrandLivePlayerView)localObject1).j("snapshot", paramJSONObject)) {
-        parami.aho(h("fail:snapshot error", null));
+      if (!((AppBrandLivePlayerView)localObject1).k("snapshot", paramJSONObject)) {
+        parami.aal(ZP("fail:snapshot error"));
       }
-      boolean bool = super.b(paramg, paramInt, paramView, paramJSONObject, parami);
+      boolean bool = super.b(paramh, paramInt, paramView, paramJSONObject, parami);
       AppMethodBeat.o(145886);
       return bool;
     }
@@ -121,82 +122,82 @@ public final class e
       {
         Log.w("MicroMsg.JsApiOperateLivePlayer", "onOperateView directionArr nil");
         i = 0;
-        label242:
+        label241:
         Log.i("MicroMsg.AppBrandLivePlayerView", "enterFullScreen direction:%s", new Object[] { Integer.valueOf(i) });
-        if (((AppBrandLivePlayerView)localObject1).oVq != null) {
-          break label315;
+        if (((AppBrandLivePlayerView)localObject1).saN != null) {
+          break label313;
         }
         Log.w("MicroMsg.AppBrandLivePlayerView", "enterFullScreen mFullScreenDelegate null");
         i = 0;
-        label279:
+        label278:
         if (i == 0) {
-          break label374;
+          break label372;
         }
       }
-      label315:
-      label374:
+      label313:
+      label372:
       for (localObject1 = "ok";; localObject1 = "fail")
       {
-        parami.aho(h((String)localObject1, null));
+        parami.aal(ZP((String)localObject1));
         break;
         i = ((JSONArray)localObject2).optInt(0, 0);
-        break label242;
-        if (((AppBrandLivePlayerView)localObject1).oVq.QT())
+        break label241;
+        if (((AppBrandLivePlayerView)localObject1).saN.isFullScreen())
         {
           Log.i("MicroMsg.AppBrandLivePlayerView", "enterFullScreen already full screen");
           i = j;
-          break label279;
+          break label278;
         }
-        ((AppBrandLivePlayerView)localObject1).oVq.Az(i);
-        ((AppBrandLivePlayerView)localObject1).oVs = i;
-        ((AppBrandLivePlayerView)localObject1).ik(true);
+        ((AppBrandLivePlayerView)localObject1).saN.AM(i);
+        ((AppBrandLivePlayerView)localObject1).saP = i;
+        ((AppBrandLivePlayerView)localObject1).jo(true);
         i = j;
-        break label279;
+        break label278;
       }
     }
     if (((String)localObject2).equalsIgnoreCase("exitFullScreen"))
     {
       Log.i("MicroMsg.AppBrandLivePlayerView", "quitFullScreen");
-      if (((AppBrandLivePlayerView)localObject1).oVq == null)
+      if (((AppBrandLivePlayerView)localObject1).saN == null)
       {
         Log.w("MicroMsg.AppBrandLivePlayerView", "quitFullScreen mFullScreenDelegate null");
-        label413:
+        label411:
         if (i == 0) {
-          break label479;
+          break label476;
         }
       }
-      label479:
+      label476:
       for (localObject1 = "ok";; localObject1 = "fail")
       {
-        parami.aho(h((String)localObject1, null));
+        parami.aal(ZP((String)localObject1));
         break;
-        if (!((AppBrandLivePlayerView)localObject1).oVq.QT())
+        if (!((AppBrandLivePlayerView)localObject1).saN.isFullScreen())
         {
           Log.i("MicroMsg.AppBrandLivePlayerView", "quitFullScreen already quit full screen");
           i = 1;
-          break label413;
+          break label411;
         }
-        ((AppBrandLivePlayerView)localObject1).oVq.bSs();
+        ((AppBrandLivePlayerView)localObject1).saN.csz();
         i = 1;
-        break label413;
+        break label411;
       }
     }
-    if (((AppBrandLivePlayerView)localObject1).j((String)localObject2, paramJSONObject)) {}
+    if (((AppBrandLivePlayerView)localObject1).k((String)localObject2, paramJSONObject)) {}
     for (localObject1 = "ok";; localObject1 = "fail")
     {
-      parami.aho(h((String)localObject1, null));
+      parami.aal(ZP((String)localObject1));
       break;
     }
   }
   
-  public final boolean bQz()
+  public final boolean cqw()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.live.e
  * JD-Core Version:    0.7.0.1
  */

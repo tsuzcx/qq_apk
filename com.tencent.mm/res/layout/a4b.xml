@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:gravity="center_horizontal" android:background="#ffeeeeee" android:paddingTop="@dimen/hw" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/esk" android:layout_width="@dimen/hu" android:layout_height="@dimen/hu" android:src="@drawable/bzb" android:scaleType="fitCenter" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="@dimen/is" android:id="@id/c4e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hw" android:text="@string/bz1" android:layout_below="@id/esk" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:id="@id/c4f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hs" android:text="" android:layout_below="@id/c4e" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-    <ScrollView android:id="@id/dmk" android:background="#ffeeeeee" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/i1" android:fillViewport="true">
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <com.tencent.mm.ui.base.MaxListView android:id="@id/beb" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@color/ac_" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="@dimen/ks" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-            <Button android:id="@id/b_p" android:layout_marginLeft="@dimen/ir" android:layout_marginTop="@dimen/i1" android:layout_marginRight="@dimen/ir" android:text="@string/bzl" style="@style/ou" />
-            <Button android:id="@id/fyz" android:layout_marginLeft="@dimen/ir" android:layout_marginTop="@dimen/ir" android:layout_marginRight="@dimen/ir" android:text="@string/byh" style="@style/p1" />
-        </LinearLayout>
-    </ScrollView>
-</FrameLayout>
+    <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/iix" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ProgressBar android:id="@id/g3_" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:layout_centerInParent="true" style="@style/a85" />
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/FG_1" android:id="@id/hgx" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d4" android:layout_marginRight="@dimen/d4" android:text="@string/ced" android:layout_centerInParent="true" />
+</RelativeLayout>

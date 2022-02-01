@@ -1,140 +1,109 @@
 package com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.rtmp.TXLivePusher.VideoCustomProcessListener;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/LipStickInfo;", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IResInfo;", "alpha", "", "color", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/LipStickInfo$Color;", "type", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/LipStickInfo$LipStickType;", "faceModel", "", "mouthShape", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/LipStickInfo$MouthShape;", "(FLcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/LipStickInfo$Color;Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/LipStickInfo$LipStickType;ILcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/LipStickInfo$MouthShape;)V", "getAlpha", "()F", "getColor", "()Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/LipStickInfo$Color;", "getFaceModel", "()I", "getMouthShape", "()Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/LipStickInfo$MouthShape;", "getType", "()Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/LipStickInfo$LipStickType;", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "", "other", "", "getIdentityDesc", "", "hashCode", "toString", "Color", "LipStickType", "MouthShape", "luggage-xweb-ext_release"})
-public final class o
-  implements h
+public abstract interface o
+  extends TXLivePusher.VideoCustomProcessListener
 {
-  public final float alpha;
-  public final int cGI;
-  public final a cHA;
-  public final o.b cHB;
-  public final o.c cHC;
-  
-  public o(float paramFloat, a parama, o.b paramb, int paramInt, o.c paramc)
+  public static final o eAC = new o()
   {
-    AppMethodBeat.i(224378);
-    this.alpha = paramFloat;
-    this.cHA = parama;
-    this.cHB = paramb;
-    this.cGI = paramInt;
-    this.cHC = paramc;
-    AppMethodBeat.o(224378);
-  }
-  
-  public final String TD()
-  {
-    return "LipStickInfo()";
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    AppMethodBeat.i(224384);
-    if (this != paramObject)
-    {
-      if ((paramObject instanceof o))
-      {
-        paramObject = (o)paramObject;
-        if ((Float.compare(this.alpha, paramObject.alpha) != 0) || (!p.h(this.cHA, paramObject.cHA)) || (!p.h(this.cHB, paramObject.cHB)) || (this.cGI != paramObject.cGI) || (!p.h(this.cHC, paramObject.cHC))) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(224384);
-      return true;
-    }
-    AppMethodBeat.o(224384);
-    return false;
-  }
-  
-  public final int hashCode()
-  {
-    int k = 0;
-    AppMethodBeat.i(224383);
-    int m = Float.floatToIntBits(this.alpha);
-    Object localObject = this.cHA;
-    int i;
-    if (localObject != null)
-    {
-      i = localObject.hashCode();
-      localObject = this.cHB;
-      if (localObject == null) {
-        break label107;
-      }
-    }
-    label107:
-    for (int j = localObject.hashCode();; j = 0)
-    {
-      int n = this.cGI;
-      localObject = this.cHC;
-      if (localObject != null) {
-        k = localObject.hashCode();
-      }
-      AppMethodBeat.o(224383);
-      return ((j + (i + m * 31) * 31) * 31 + n) * 31 + k;
-      i = 0;
-      break;
-    }
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(224381);
-    String str = "LipStickInfo(alpha=" + this.alpha + ", color=" + this.cHA + ", type=" + this.cHB + ", faceModel=" + this.cGI + ", mouthShape=" + this.cHC + ")";
-    AppMethodBeat.o(224381);
-    return str;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/LipStickInfo$Color;", "", "colorR", "", "colorG", "colorB", "(III)V", "getColorB", "()I", "getColorG", "getColorR", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "toString", "", "luggage-xweb-ext_release"})
-  public static final class a
-  {
-    public final int cHD;
-    public final int cHE;
-    public final int cHF;
+    public final void a(o.a paramAnonymousa, float paramAnonymousFloat) {}
     
-    public a(int paramInt1, int paramInt2, int paramInt3)
-    {
-      this.cHD = paramInt1;
-      this.cHE = paramInt2;
-      this.cHF = paramInt3;
-    }
+    public final void a(o.b paramAnonymousb, String paramAnonymousString) {}
     
-    public final boolean equals(Object paramObject)
+    public final void a(o.c paramAnonymousc, String paramAnonymousString) {}
+    
+    public final void aul() {}
+    
+    public final void aum() {}
+    
+    public final void c(String paramAnonymousString, float paramAnonymousFloat) {}
+    
+    public final void clearFilters() {}
+    
+    public final boolean isEnabled()
     {
-      if (this != paramObject)
-      {
-        if ((paramObject instanceof a))
-        {
-          paramObject = (a)paramObject;
-          if ((this.cHD != paramObject.cHD) || (this.cHE != paramObject.cHE) || (this.cHF != paramObject.cHF)) {}
-        }
-      }
-      else {
-        return true;
-      }
       return false;
     }
     
-    public final int hashCode()
+    public final void onDetectFacePoints(float[] paramAnonymousArrayOfFloat) {}
+    
+    public final int onTextureCustomProcess(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
     {
-      return (this.cHD * 31 + this.cHE) * 31 + this.cHF;
+      return 0;
     }
     
-    public final String toString()
+    public final void onTextureDestoryed() {}
+  };
+  
+  public abstract void a(a parama, float paramFloat);
+  
+  public abstract void a(b paramb, String paramString);
+  
+  public abstract void a(c paramc, String paramString);
+  
+  public abstract void aul();
+  
+  public abstract void aum();
+  
+  public abstract void c(String paramString, float paramFloat);
+  
+  public abstract void clearFilters();
+  
+  public abstract boolean isEnabled();
+  
+  public static enum a
+  {
+    static
     {
-      AppMethodBeat.i(222779);
-      String str = "Color(colorR=" + this.cHD + ", colorG=" + this.cHE + ", colorB=" + this.cHF + ")";
-      AppMethodBeat.o(222779);
-      return str;
+      AppMethodBeat.i(220768);
+      eAD = new a("SKIN_BRIGHT", 0);
+      eAE = new a("SKIN_SMOOTH", 1);
+      eAF = new a("FACE_THIN", 2);
+      eAG = new a("EYE_BIGGER", 3);
+      eAH = new a[] { eAD, eAE, eAF, eAG };
+      AppMethodBeat.o(220768);
     }
+    
+    private a() {}
+  }
+  
+  public static enum b
+  {
+    static
+    {
+      AppMethodBeat.i(220763);
+      eAI = new b("MAKEUP_LIP_STICK", 0);
+      eAJ = new b("MAKEUP_EYE_SHADOW", 1);
+      eAK = new b("MAKEUP_BLUSHER_STICK", 2);
+      eAL = new b("MAKEUP_FACE_CONTOUR", 3);
+      eAM = new b("MAKEUP_EYE_BROW", 4);
+      eAN = new b[] { eAI, eAJ, eAK, eAL, eAM };
+      AppMethodBeat.o(220763);
+    }
+    
+    private b() {}
+  }
+  
+  public static enum c
+  {
+    static
+    {
+      AppMethodBeat.i(220724);
+      eAO = new c("STICKER_BACK", 0);
+      eAP = new c("STICKER_FRONT", 1);
+      eAQ = new c("STICKER_2D", 2);
+      eAR = new c[] { eAO, eAP, eAQ };
+      AppMethodBeat.o(220724);
+    }
+    
+    private c() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.o
  * JD-Core Version:    0.7.0.1
  */

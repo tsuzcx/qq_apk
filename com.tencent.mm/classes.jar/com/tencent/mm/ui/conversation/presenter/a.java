@@ -12,129 +12,127 @@ import android.view.View.OnCreateContextMenuListener;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.l;
-import com.tencent.mm.an.q;
-import com.tencent.mm.ao.af;
-import com.tencent.mm.ao.p;
+import com.tencent.mm.an.af;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.model.bq.a;
+import com.tencent.mm.model.br.a;
 import com.tencent.mm.model.c;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.bw;
-import com.tencent.mm.ui.base.q.g;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.storage.by;
+import com.tencent.mm.ui.base.u.i;
+import com.tencent.mm.ui.base.w;
 import com.tencent.mm.ui.conversation.BaseConversationUI;
-import com.tencent.mm.ui.conversation.m.a;
+import com.tencent.mm.ui.conversation.o.a;
 import com.tencent.mm.ui.h;
 
 public final class a
   implements d
 {
-  public b XGe;
-  public long XGf;
-  private final a XGg;
+  public b afup;
+  public long afuq;
+  private final a afur;
   BaseConversationUI ui;
   
   public a(BaseConversationUI paramBaseConversationUI, b paramb)
   {
-    AppMethodBeat.i(291879);
-    this.XGg = new a((byte)0);
+    AppMethodBeat.i(256940);
+    this.afur = new a((byte)0);
     this.ui = paramBaseConversationUI;
-    this.XGe = paramb;
-    AppMethodBeat.o(291879);
+    this.afup = paramb;
+    AppMethodBeat.o(256940);
   }
   
-  public final void a(m.a parama)
+  public final void a(o.a parama)
   {
-    AppMethodBeat.i(291880);
-    Object localObject = parama.XDp;
+    AppMethodBeat.i(256954);
+    Object localObject = parama.afqS;
     if (localObject == null)
     {
-      AppMethodBeat.o(291880);
+      AppMethodBeat.o(256954);
       return;
     }
-    parama = ((com.tencent.mm.ao.a.a)localObject).field_brandUserName;
-    long l = ((com.tencent.mm.ao.a.a)localObject).field_bizChatId;
+    parama = ((com.tencent.mm.an.a.a)localObject).field_brandUserName;
+    long l = ((com.tencent.mm.an.a.a)localObject).field_bizChatId;
     if (parama == null)
     {
-      AppMethodBeat.o(291880);
+      AppMethodBeat.o(256954);
       return;
     }
-    this.XGf = l;
+    this.afuq = l;
     localObject = new Bundle();
     ((Bundle)localObject).putLong("key_biz_chat_id", l);
     ((Bundle)localObject).putBoolean("key_need_send_video", false);
     ((Bundle)localObject).putBoolean("key_is_biz_chat", true);
     this.ui.startChatting(parama, (Bundle)localObject, true);
-    AppMethodBeat.o(291880);
+    AppMethodBeat.o(256954);
   }
   
-  public final boolean a(View paramView, Point paramPoint, int paramInt, long paramLong, m.a parama)
+  public final boolean a(View paramView, Point paramPoint, int paramInt, long paramLong, o.a parama)
   {
-    AppMethodBeat.i(291881);
-    if (parama.XDp == null)
+    AppMethodBeat.i(256965);
+    if (parama.afqS == null)
     {
-      AppMethodBeat.o(291881);
+      AppMethodBeat.o(256965);
       return false;
     }
-    a locala = this.XGg;
+    a locala = this.afur;
     int i = paramPoint.x;
     int j = paramPoint.y;
-    paramPoint = parama.XDp;
-    if (locala.szq == null)
+    paramPoint = parama.afqS;
+    if (locala.vEV == null)
     {
-      locala.snt = new a.a.2(locala);
-      locala.szq = new com.tencent.mm.ui.widget.b.a(locala.XGk.ui);
+      locala.vzr = new a.a.2(locala);
+      locala.vEV = new com.tencent.mm.ui.widget.b.a(locala.afuv.ui);
     }
-    locala.XGh = paramPoint;
-    locala.XGi = paramPoint.field_brandUserName;
-    locala.XGj = paramPoint.field_bizChatId;
-    locala.szq.a(paramView, paramInt, paramLong, locala, locala.snt, i, j);
-    AppMethodBeat.o(291881);
+    locala.afus = paramPoint;
+    locala.afut = paramPoint.field_brandUserName;
+    locala.afuu = paramPoint.field_bizChatId;
+    locala.vEV.a(paramView, paramInt, paramLong, locala, locala.vzr, i, j);
+    AppMethodBeat.o(256965);
     return true;
   }
   
   final class a
     implements View.OnCreateContextMenuListener
   {
-    com.tencent.mm.ao.a.a XGh;
-    String XGi;
-    long XGj;
+    com.tencent.mm.an.a.a afus;
+    String afut;
+    long afuu;
     private boolean isDeleteCancel = false;
-    q.g snt;
-    com.tencent.mm.ui.widget.b.a szq;
-    private s tipDialog;
+    private w tipDialog;
+    com.tencent.mm.ui.widget.b.a vEV;
+    u.i vzr;
     
     private a() {}
     
     public final void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
     {
-      AppMethodBeat.i(291328);
+      AppMethodBeat.i(256986);
       paramView = (AdapterView.AdapterContextMenuInfo)paramContextMenuInfo;
-      if (this.XGh.field_unReadCount <= 0)
+      if (this.afus.field_unReadCount <= 0)
       {
-        paramContextMenu.add(paramView.position, 1, 1, R.l.eLl);
-        af.bjy();
-        if (!com.tencent.mm.ao.a.b.c(this.XGh)) {
+        paramContextMenu.add(paramView.position, 1, 1, R.l.gNf);
+        af.bHi();
+        if (!com.tencent.mm.an.a.b.c(this.afus)) {
           break label107;
         }
-        paramContextMenu.add(paramView.position, 3, 2, R.l.eLm);
+        paramContextMenu.add(paramView.position, 3, 2, R.l.gNg);
       }
       for (;;)
       {
         paramContextMenu.add(paramView.position, 0, 3, R.l.main_delete);
-        AppMethodBeat.o(291328);
+        AppMethodBeat.o(256986);
         return;
-        paramContextMenu.add(paramView.position, 2, 1, R.l.eLj);
+        paramContextMenu.add(paramView.position, 2, 1, R.l.gNd);
         break;
         label107:
-        paramContextMenu.add(paramView.position, 3, 2, R.l.eLk);
+        paramContextMenu.add(paramView.position, 3, 2, R.l.gNe);
       }
     }
   }
   
   public static abstract interface b
   {
-    public abstract void Wj(long paramLong);
+    public abstract void Av(long paramLong);
   }
 }
 

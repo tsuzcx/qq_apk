@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="64.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@drawable/ahp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/ct" android:layout_marginRight="@dimen/c5" android:minHeight="@dimen/cp">
-        <ProgressBar android:layout_gravity="center" android:id="@id/glh" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a71" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/lol" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginLeft="@dimen/cp" android:src="@raw/icons_outlined_back" android:layout_centerVertical="true" android:contentDescription="@string/bfi" app:iconColor="@color/FG_0" />
+    <TextView android:textSize="15.0dip" android:textColor="@color/gg" android:gravity="center" android:id="@id/ap8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lje" android:singleLine="false" android:layout_centerInParent="true" />
+    <LinearLayout android:gravity="right" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:layout_marginRight="@dimen/cv" android:layout_toRightOf="@id/ap8" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <LinearLayout android:gravity="center|right" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/iti" android:focusable="true" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/da">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:gravity="center_vertical" android:id="@id/loz" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@raw/wecoin_balance_icons" android:layout_centerVertical="true" app:iconColor="@color/ar" />
+            <TextView android:textSize="15.0dip" android:textColor="@color/gg" android:gravity="center|right" android:id="@id/igq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.5dip" android:text=" " android:layout_toRightOf="@id/lox" android:layout_centerVertical="true" />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

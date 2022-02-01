@@ -1,49 +1,35 @@
 package com.tencent.mm.ui;
 
-import android.app.Activity;
+import android.content.ContentResolver;
+import android.provider.Settings.Global;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelstat.d;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.thread.ThreadPool;
 
 public final class l
 {
-  public static void a(Activity paramActivity, final int paramInt1, final int paramInt2, String paramString)
+  public static int a(ContentResolver paramContentResolver)
   {
-    AppMethodBeat.i(33284);
-    ThreadPool.post(new Runnable()
+    AppMethodBeat.i(249227);
+    int i = 0;
+    try
     {
-      public final void run()
+      int j = Settings.Global.getInt(paramContentResolver, "hn_fold_display_mode_prepare");
+      i = j;
+    }
+    catch (Exception paramContentResolver)
+    {
+      for (;;)
       {
-        AppMethodBeat.i(33283);
-        Activity localActivity = this.val$activity;
-        int i = paramInt1;
-        int j = paramInt2;
-        Log.i("MicroMsg.LauncherUI.HomeUtil", "clickFlowStat index:%d op:%d %s", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Util.getStack() });
-        if (j >= 0)
-        {
-          String str = "MainUI";
-          if (j == 1) {
-            str = "AddressUI";
-          }
-          if (j == 2) {
-            str = "FindMoreFriendUI";
-          }
-          if (j == 3) {
-            str = "MoreTabUI";
-          }
-          d.d(i, str, localActivity.hashCode() / 16 * 16 + j);
-        }
-        AppMethodBeat.o(33283);
+        Log.e("MicroMsg.HonorUtil", "error occur");
       }
-    }, paramString);
-    AppMethodBeat.o(33284);
+    }
+    AppMethodBeat.o(249227);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.l
  * JD-Core Version:    0.7.0.1
  */

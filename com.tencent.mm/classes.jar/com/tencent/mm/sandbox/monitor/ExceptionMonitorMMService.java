@@ -10,18 +10,18 @@ public class ExceptionMonitorMMService
   extends MMService
   implements b.a
 {
-  b URK = null;
+  b acmX = null;
   
-  private void q(Intent paramIntent)
+  private void r(Intent paramIntent)
   {
     AppMethodBeat.i(32606);
-    if (this.URK != null) {
-      this.URK.q(paramIntent);
+    if (this.acmX != null) {
+      this.acmX.r(paramIntent);
     }
     AppMethodBeat.o(32606);
   }
   
-  public final IBinder aqH()
+  public final IBinder aKF()
   {
     return null;
   }
@@ -36,8 +36,8 @@ public class ExceptionMonitorMMService
     AppMethodBeat.i(32602);
     super.onCreate();
     Log.i("MicroMsg.ExceptionMonitorMMService", "onCreate()");
-    this.URK = new b();
-    this.URK.a(this);
+    this.acmX = new b();
+    this.acmX.a(this);
     AppMethodBeat.o(32602);
   }
   
@@ -46,10 +46,10 @@ public class ExceptionMonitorMMService
     AppMethodBeat.i(32605);
     super.onDestroy();
     Log.i("MicroMsg.ExceptionMonitorMMService", "onDestroy()");
-    if (this.URK != null)
+    if (this.acmX != null)
     {
-      this.URK.onDestroy();
-      this.URK = null;
+      this.acmX.onDestroy();
+      this.acmX = null;
     }
     AppMethodBeat.o(32605);
   }
@@ -59,8 +59,8 @@ public class ExceptionMonitorMMService
     AppMethodBeat.i(32603);
     super.onStart(paramIntent, paramInt);
     Log.i("MicroMsg.ExceptionMonitorMMService", "onStart()");
-    if (this.URK != null) {
-      q(paramIntent);
+    if (this.acmX != null) {
+      r(paramIntent);
     }
     AppMethodBeat.o(32603);
   }
@@ -69,8 +69,8 @@ public class ExceptionMonitorMMService
   {
     AppMethodBeat.i(32604);
     Log.i("MicroMsg.ExceptionMonitorMMService", "onStartCommand()");
-    if (this.URK != null) {
-      q(paramIntent);
+    if (this.acmX != null) {
+      r(paramIntent);
     }
     AppMethodBeat.o(32604);
     return 1;
@@ -78,7 +78,7 @@ public class ExceptionMonitorMMService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.sandbox.monitor.ExceptionMonitorMMService
  * JD-Core Version:    0.7.0.1
  */

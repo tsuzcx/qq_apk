@@ -1,26 +1,58 @@
 package kotlin.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import java.util.AbstractMap;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import kotlin.Metadata;
+import kotlin.g.b.a.g;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"arrayOfNulls", "", "T", "reference", "size", "", "([Ljava/lang/Object;I)[Ljava/lang/Object;", "copyOfRangeToIndexCheck", "", "toIndex", "contentDeepHashCodeImpl", "contentDeepHashCode", "([Ljava/lang/Object;)I", "orEmpty", "([Ljava/lang/Object;)[Ljava/lang/Object;", "toString", "", "", "charset", "Ljava/nio/charset/Charset;", "toTypedArray", "", "(Ljava/util/Collection;)[Ljava/lang/Object;", "kotlin-stdlib"}, iBN=1)
-public class f
+@Metadata(d1={""}, d2={"Lkotlin/collections/AbstractMutableMap;", "K", "V", "", "Ljava/util/AbstractMap;", "()V", "put", "key", "value", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
+public abstract class f<K, V>
+  extends AbstractMap<K, V>
+  implements Map<K, V>, g
 {
-  public static final void oq(int paramInt1, int paramInt2)
+  public final Set<Map.Entry<K, V>> entrySet()
   {
-    AppMethodBeat.i(218662);
-    if (paramInt1 > paramInt2)
-    {
-      Throwable localThrowable = (Throwable)new IndexOutOfBoundsException("toIndex (" + paramInt1 + ") is greater than size (" + paramInt2 + ").");
-      AppMethodBeat.o(218662);
-      throw localThrowable;
-    }
-    AppMethodBeat.o(218662);
+    return qH();
+  }
+  
+  public int getSize()
+  {
+    return super.size();
+  }
+  
+  public final Set<K> keySet()
+  {
+    return qI();
+  }
+  
+  public abstract Set qH();
+  
+  public Set qI()
+  {
+    return super.keySet();
+  }
+  
+  public Collection qJ()
+  {
+    return super.values();
+  }
+  
+  public final int size()
+  {
+    return getSize();
+  }
+  
+  public final Collection<V> values()
+  {
+    return qJ();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     kotlin.a.f
  * JD-Core Version:    0.7.0.1
  */

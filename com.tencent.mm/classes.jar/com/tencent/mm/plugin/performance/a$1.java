@@ -11,7 +11,7 @@ final class a$1
 {
   a$1(a parama) {}
   
-  public final void abB()
+  public final void aDv()
   {
     AppMethodBeat.i(176885);
     ArrayList localArrayList = new ArrayList();
@@ -25,17 +25,17 @@ final class a$1
       localArrayList.add(localIDKey);
       localIDKey = new IDKey();
       localIDKey.SetID(1313);
-      localIDKey.SetKey(a.fnh());
+      localIDKey.SetKey(a.gxU());
       localIDKey.SetValue(1L);
       localArrayList.add(localIDKey);
-      com.tencent.mm.plugin.report.service.h.IzE.b(localArrayList, false);
-      com.tencent.mm.kernel.h.aHH().b(this);
+      com.tencent.mm.plugin.report.service.h.OAn.b(localArrayList, false);
+      com.tencent.mm.kernel.h.baF().b(this);
       AppMethodBeat.o(176885);
       return;
     }
   }
   
-  public final void dn(boolean paramBoolean) {}
+  public final void dZ(boolean paramBoolean) {}
 }
 
 

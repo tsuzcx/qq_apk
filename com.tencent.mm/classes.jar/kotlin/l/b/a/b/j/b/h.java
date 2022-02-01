@@ -5,54 +5,51 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l.b.a.b.b.y;
-import kotlin.l.b.a.b.m.ab;
-import kotlin.l.b.a.b.m.aj;
+import kotlin.a.k;
+import kotlin.a.p;
+import kotlin.l.b.a.b.b.ae;
+import kotlin.l.b.a.b.m.ad;
 
 public final class h
 {
-  public static final h abkY;
+  public static final h ajjE;
   
   static
   {
     AppMethodBeat.i(60059);
-    abkY = new h();
+    ajjE = new h();
     AppMethodBeat.o(60059);
   }
   
-  private final b a(List<?> paramList, kotlin.l.b.a.b.a.h paramh)
+  private final b a(List<?> paramList, kotlin.l.b.a.b.a.i parami)
   {
     AppMethodBeat.i(60058);
-    Object localObject1 = (Iterable)j.p((Iterable)paramList);
+    Object localObject = (Iterable)p.p((Iterable)paramList);
     paramList = (Collection)new ArrayList();
-    localObject1 = ((Iterable)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
+    localObject = ((Iterable)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      Object localObject2 = ((Iterator)localObject1).next();
-      localObject2 = ((h)this).fF(localObject2);
-      if (localObject2 != null) {
-        paramList.add(localObject2);
+      g localg = jdMethod_if(((Iterator)localObject).next());
+      if (localg != null) {
+        paramList.add(localg);
       }
     }
-    paramList = new b((List)paramList, (kotlin.g.a.b)new b(paramh));
+    paramList = new b((List)paramList, (kotlin.g.a.b)new b(parami));
     AppMethodBeat.o(60058);
     return paramList;
   }
   
-  public static b a(List<? extends g<?>> paramList, ab paramab)
+  public static b a(List<? extends g<?>> paramList, ad paramad)
   {
     AppMethodBeat.i(60056);
-    p.k(paramList, "value");
-    p.k(paramab, "type");
-    paramList = new b(paramList, (kotlin.g.a.b)new a(paramab));
+    kotlin.g.b.s.u(paramList, "value");
+    kotlin.g.b.s.u(paramad, "type");
+    paramList = new b(paramList, (kotlin.g.a.b)new a(paramad));
     AppMethodBeat.o(60056);
     return paramList;
   }
   
-  public final g<?> fF(Object paramObject)
+  public final g<?> jdMethod_if(Object paramObject)
   {
     AppMethodBeat.i(60057);
     if ((paramObject instanceof Byte))
@@ -63,7 +60,7 @@ public final class h
     }
     if ((paramObject instanceof Short))
     {
-      paramObject = (g)new u(((Number)paramObject).shortValue());
+      paramObject = (g)new t(((Number)paramObject).shortValue());
       AppMethodBeat.o(60057);
       return paramObject;
     }
@@ -75,7 +72,7 @@ public final class h
     }
     if ((paramObject instanceof Long))
     {
-      paramObject = (g)new s(((Number)paramObject).longValue());
+      paramObject = (g)new r(((Number)paramObject).longValue());
       AppMethodBeat.o(60057);
       return paramObject;
     }
@@ -105,61 +102,61 @@ public final class h
     }
     if ((paramObject instanceof String))
     {
-      paramObject = (g)new v((String)paramObject);
+      paramObject = (g)new u((String)paramObject);
       AppMethodBeat.o(60057);
       return paramObject;
     }
     if ((paramObject instanceof byte[]))
     {
-      paramObject = (g)a(kotlin.a.e.dD((byte[])paramObject), kotlin.l.b.a.b.a.h.aaHq);
+      paramObject = (g)a(k.dF((byte[])paramObject), kotlin.l.b.a.b.a.i.aiBJ);
       AppMethodBeat.o(60057);
       return paramObject;
     }
     if ((paramObject instanceof short[]))
     {
-      paramObject = (g)a(kotlin.a.e.b((short[])paramObject), kotlin.l.b.a.b.a.h.aaHr);
+      paramObject = (g)a(k.d((short[])paramObject), kotlin.l.b.a.b.a.i.aiBK);
       AppMethodBeat.o(60057);
       return paramObject;
     }
     if ((paramObject instanceof int[]))
     {
-      paramObject = (g)a(kotlin.a.e.X((int[])paramObject), kotlin.l.b.a.b.a.h.aaHs);
+      paramObject = (g)a(k.ae((int[])paramObject), kotlin.l.b.a.b.a.i.aiBL);
       AppMethodBeat.o(60057);
       return paramObject;
     }
     if ((paramObject instanceof long[]))
     {
-      paramObject = (g)a(kotlin.a.e.h((long[])paramObject), kotlin.l.b.a.b.a.h.aaHu);
+      paramObject = (g)a(k.k((long[])paramObject), kotlin.l.b.a.b.a.i.aiBN);
       AppMethodBeat.o(60057);
       return paramObject;
     }
     if ((paramObject instanceof char[]))
     {
-      paramObject = (g)a(kotlin.a.e.f((char[])paramObject), kotlin.l.b.a.b.a.h.aaHp);
+      paramObject = (g)a(k.f((char[])paramObject), kotlin.l.b.a.b.a.i.aiBI);
       AppMethodBeat.o(60057);
       return paramObject;
     }
     if ((paramObject instanceof float[]))
     {
-      paramObject = (g)a(kotlin.a.e.t((float[])paramObject), kotlin.l.b.a.b.a.h.aaHt);
+      paramObject = (g)a(k.D((float[])paramObject), kotlin.l.b.a.b.a.i.aiBM);
       AppMethodBeat.o(60057);
       return paramObject;
     }
     if ((paramObject instanceof double[]))
     {
-      paramObject = (g)a(kotlin.a.e.d((double[])paramObject), kotlin.l.b.a.b.a.h.aaHv);
+      paramObject = (g)a(k.f((double[])paramObject), kotlin.l.b.a.b.a.i.aiBO);
       AppMethodBeat.o(60057);
       return paramObject;
     }
     if ((paramObject instanceof boolean[]))
     {
-      paramObject = (g)a(kotlin.a.e.d((boolean[])paramObject), kotlin.l.b.a.b.a.h.aaHo);
+      paramObject = (g)a(k.f((boolean[])paramObject), kotlin.l.b.a.b.a.i.aiBH);
       AppMethodBeat.o(60057);
       return paramObject;
     }
     if (paramObject == null)
     {
-      paramObject = (g)new t();
+      paramObject = (g)new s();
       AppMethodBeat.o(60057);
       return paramObject;
     }
@@ -168,20 +165,20 @@ public final class h
   }
   
   static final class a
-    extends q
-    implements kotlin.g.a.b<y, ab>
+    extends kotlin.g.b.u
+    implements kotlin.g.a.b<ae, ad>
   {
-    a(ab paramab)
+    a(ad paramad)
     {
       super();
     }
   }
   
   static final class b
-    extends q
-    implements kotlin.g.a.b<y, aj>
+    extends kotlin.g.b.u
+    implements kotlin.g.a.b<ae, ad>
   {
-    b(kotlin.l.b.a.b.a.h paramh)
+    b(kotlin.l.b.a.b.a.i parami)
     {
       super();
     }
@@ -189,7 +186,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.j.b.h
  * JD-Core Version:    0.7.0.1
  */

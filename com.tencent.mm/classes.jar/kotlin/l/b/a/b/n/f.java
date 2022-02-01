@@ -1,8 +1,8 @@
 package kotlin.l.b.a.b.n;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.b.t;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.b.x;
 
 public abstract class f
   implements b
@@ -19,21 +19,20 @@ public abstract class f
     return this.description;
   }
   
-  public final String i(t paramt)
+  public final String i(x paramx)
   {
-    p.k(paramt, "functionDescriptor");
-    return b.a.a(this, paramt);
+    return b.a.a(this, paramx);
   }
   
   public static final class a
     extends f
   {
-    public static final a absO;
+    public static final a ajse;
     
     static
     {
       AppMethodBeat.i(61298);
-      absO = new a();
+      ajse = new a();
       AppMethodBeat.o(61298);
     }
     
@@ -42,11 +41,11 @@ public abstract class f
       super((byte)0);
     }
     
-    public final boolean h(t paramt)
+    public final boolean h(x paramx)
     {
       AppMethodBeat.i(61297);
-      p.k(paramt, "functionDescriptor");
-      if (paramt.iEF() != null)
+      s.u(paramx, "functionDescriptor");
+      if (paramx.knZ() != null)
       {
         AppMethodBeat.o(61297);
         return true;
@@ -59,12 +58,12 @@ public abstract class f
   public static final class b
     extends f
   {
-    public static final b absP;
+    public static final b ajsf;
     
     static
     {
       AppMethodBeat.i(61300);
-      absP = new b();
+      ajsf = new b();
       AppMethodBeat.o(61300);
     }
     
@@ -73,11 +72,11 @@ public abstract class f
       super((byte)0);
     }
     
-    public final boolean h(t paramt)
+    public final boolean h(x paramx)
     {
       AppMethodBeat.i(61299);
-      p.k(paramt, "functionDescriptor");
-      if ((paramt.iEF() != null) || (paramt.iEE() != null))
+      s.u(paramx, "functionDescriptor");
+      if ((paramx.knZ() != null) || (paramx.knY() != null))
       {
         AppMethodBeat.o(61299);
         return true;
@@ -89,7 +88,7 @@ public abstract class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.n.f
  * JD-Core Version:    0.7.0.1
  */

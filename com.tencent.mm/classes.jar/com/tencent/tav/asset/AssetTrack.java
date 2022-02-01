@@ -38,18 +38,18 @@ public class AssetTrack<Segment extends AssetTrackSegment>
   
   AssetTrack()
   {
-    AppMethodBeat.i(188313);
+    AppMethodBeat.i(215804);
     this.enabled = true;
     this.preferredVolume = 1.0F;
     this.preferredRotation = 0;
     this.nominalFrameRate = 30.0F;
     this.segments = new ArrayList();
-    AppMethodBeat.o(188313);
+    AppMethodBeat.o(215804);
   }
   
   AssetTrack(Asset paramAsset, int paramInt1, int paramInt2, CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(188315);
+    AppMethodBeat.i(215815);
     this.enabled = true;
     this.preferredVolume = 1.0F;
     this.preferredRotation = 0;
@@ -66,7 +66,7 @@ public class AssetTrack<Segment extends AssetTrackSegment>
       this.sourcePath = paramAsset.getSourcePath();
     }
     createAssetTrackSegments(paramAsset);
-    AppMethodBeat.o(188315);
+    AppMethodBeat.o(215815);
   }
   
   public List<AssetTrack> associatedTracksOfType(String paramString)
@@ -76,7 +76,7 @@ public class AssetTrack<Segment extends AssetTrackSegment>
   
   protected void createAssetTrackSegments(Asset paramAsset)
   {
-    AppMethodBeat.i(188347);
+    AppMethodBeat.i(215942);
     if (this.segments == null) {
       this.segments = new ArrayList();
     }
@@ -85,19 +85,19 @@ public class AssetTrack<Segment extends AssetTrackSegment>
       paramAsset = new AssetTrackSegment(this.timeRange, this.timeRange);
       this.segments.add(paramAsset);
     }
-    AppMethodBeat.o(188347);
+    AppMethodBeat.o(215942);
   }
   
   public Asset getAsset()
   {
-    AppMethodBeat.i(188317);
+    AppMethodBeat.i(215826);
     if (this.asset != null)
     {
       Asset localAsset = (Asset)this.asset.get();
-      AppMethodBeat.o(188317);
+      AppMethodBeat.o(215826);
       return localAsset;
     }
-    AppMethodBeat.o(188317);
+    AppMethodBeat.o(215826);
     return null;
   }
   
@@ -118,15 +118,15 @@ public class AssetTrack<Segment extends AssetTrackSegment>
   
   public CMTime getDuration()
   {
-    AppMethodBeat.i(188348);
+    AppMethodBeat.i(215949);
     if (this.timeRange != null)
     {
       localCMTime = this.timeRange.getDuration();
-      AppMethodBeat.o(188348);
+      AppMethodBeat.o(215949);
       return localCMTime;
     }
     CMTime localCMTime = CMTime.CMTimeZero;
-    AppMethodBeat.o(188348);
+    AppMethodBeat.o(215949);
     return localCMTime;
   }
   
@@ -182,12 +182,12 @@ public class AssetTrack<Segment extends AssetTrackSegment>
   
   public CMTimeRange getTimeRange()
   {
-    AppMethodBeat.i(188324);
+    AppMethodBeat.i(215851);
     if ((this.timeRange == null) || (this.timeRange == CMTimeRange.CMTimeRangeInvalid)) {
       this.timeRange = new CMTimeRange(CMTime.CMTimeZero, getDuration());
     }
     CMTimeRange localCMTimeRange = this.timeRange;
-    AppMethodBeat.o(188324);
+    AppMethodBeat.o(215851);
     return localCMTimeRange;
   }
   
@@ -218,7 +218,7 @@ public class AssetTrack<Segment extends AssetTrackSegment>
   
   public CMTime samplePresentationTimeForTrackTime(CMTime paramCMTime)
   {
-    AppMethodBeat.i(188343);
+    AppMethodBeat.i(215921);
     if ((this.asset != null) && (this.asset.get() != null))
     {
       AssetExtractor localAssetExtractor = ((Asset)this.asset.get()).getExtractor();
@@ -229,17 +229,17 @@ public class AssetTrack<Segment extends AssetTrackSegment>
           localAssetExtractor.seekTo(paramCMTime.getTimeUs(), 0);
         }
         paramCMTime = TimeUtil.us2CMTime(localAssetExtractor.getSampleTime());
-        AppMethodBeat.o(188343);
+        AppMethodBeat.o(215921);
         return paramCMTime;
       }
     }
-    AppMethodBeat.o(188343);
+    AppMethodBeat.o(215921);
     return null;
   }
   
   public AssetTrackSegment segmentForTrackTime(CMTime paramCMTime)
   {
-    AppMethodBeat.i(188341);
+    AppMethodBeat.i(215916);
     if (this.segments != null)
     {
       Iterator localIterator = this.segments.iterator();
@@ -251,13 +251,13 @@ public class AssetTrack<Segment extends AssetTrackSegment>
           CMTimeRange localCMTimeRange = localAssetTrackSegment.getTimeMapping().getTarget();
           if ((localCMTimeRange != null) && (localCMTimeRange.containsTime(paramCMTime)))
           {
-            AppMethodBeat.o(188341);
+            AppMethodBeat.o(215916);
             return localAssetTrackSegment;
           }
         }
       }
     }
-    AppMethodBeat.o(188341);
+    AppMethodBeat.o(215916);
     return null;
   }
   

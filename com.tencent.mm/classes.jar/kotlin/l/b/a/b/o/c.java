@@ -1,19 +1,19 @@
 package kotlin.l.b.a.b.o;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
+import kotlin.g.b.s;
 
 public final class c
 {
-  public static final boolean u(Throwable paramThrowable)
+  public static final boolean K(Throwable paramThrowable)
   {
     AppMethodBeat.i(61356);
-    p.k(paramThrowable, "$this$isProcessCanceledException");
+    s.u(paramThrowable, "<this>");
     paramThrowable = paramThrowable.getClass();
     Class localClass;
     do
     {
-      if (p.h(paramThrowable.getCanonicalName(), "com.intellij.openapi.progress.ProcessCanceledException"))
+      if (s.p(paramThrowable.getCanonicalName(), "com.intellij.openapi.progress.ProcessCanceledException"))
       {
         AppMethodBeat.o(61356);
         return true;
@@ -27,7 +27,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlin.l.b.a.b.o.c
  * JD-Core Version:    0.7.0.1
  */

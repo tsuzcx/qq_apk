@@ -1,87 +1,45 @@
 package com.tencent.mm.emojisearch.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.kernel.c;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.protocal.protobuf.enq;
+import com.tencent.mm.protocal.protobuf.enr;
 import com.tencent.mm.search.data.SimilarEmojiQueryModel;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.d.d;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emojisearch/data/EmojiSearchManager;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mm/emojisearch/data/IEmojiSearchManager;", "()V", "callback", "timeStart", "", "getEmojiSearchList", "", "model", "Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;", "onCrate", "onDestroy", "onSceneEnd", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emojisearch/data/EmojiSearchManager;", "Lcom/tencent/mm/emojisearch/data/IEmojiSearchManager;", "()V", "getEmojiSearchList", "Lcom/tencent/mm/protocal/protobuf/RecommendPanelEmojiResponse;", "model", "Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;", "(Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "Companion", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  implements i, b
+  implements c
 {
-  public static final a jPZ;
-  private i callback;
-  private long jPY;
+  public static final a moO;
   
   static
   {
-    AppMethodBeat.i(224227);
-    jPZ = new a((byte)0);
-    AppMethodBeat.o(224227);
+    AppMethodBeat.i(231444);
+    moO = new a((byte)0);
+    AppMethodBeat.o(231444);
   }
   
-  public final void a(SimilarEmojiQueryModel paramSimilarEmojiQueryModel, i parami)
+  public final Object a(SimilarEmojiQueryModel paramSimilarEmojiQueryModel, d<? super enr> paramd)
   {
-    AppMethodBeat.i(224222);
-    p.k(paramSimilarEmojiQueryModel, "model");
-    p.k(parami, "callback");
-    Log.i("MicroMsg.EmojiSearch", "do net request:[" + paramSimilarEmojiQueryModel + ']');
-    this.callback = parami;
-    paramSimilarEmojiQueryModel = new com.tencent.mm.emojisearch.c.a(paramSimilarEmojiQueryModel);
-    this.jPY = System.currentTimeMillis();
-    parami = h.aHF();
-    p.j(parami, "MMKernel.network()");
-    parami.aGY().b((q)paramSimilarEmojiQueryModel);
-    AppMethodBeat.o(224222);
+    AppMethodBeat.i(231446);
+    enq localenq = new enq();
+    localenq.YWK = paramSimilarEmojiQueryModel.query;
+    localenq.absf = paramSimilarEmojiQueryModel.acrY;
+    localenq.SessionId = String.valueOf(paramSimilarEmojiQueryModel.timestamp);
+    localenq.aauj = paramSimilarEmojiQueryModel.acrZ;
+    localenq.IJG = paramSimilarEmojiQueryModel.scene;
+    paramSimilarEmojiQueryModel = com.tencent.mm.af.b.a((com.tencent.mm.am.b)new com.tencent.mm.emoji.c.b(localenq), paramd);
+    AppMethodBeat.o(231446);
+    return paramSimilarEmojiQueryModel;
   }
   
-  public final void aDP()
-  {
-    AppMethodBeat.i(224212);
-    c localc = h.aHF();
-    p.j(localc, "MMKernel.network()");
-    localc.aGY().a(3793, (i)this);
-    AppMethodBeat.o(224212);
-  }
-  
-  public final void onDestroy()
-  {
-    AppMethodBeat.i(224215);
-    this.callback = null;
-    c localc = h.aHF();
-    p.j(localc, "MMKernel.network()");
-    localc.aGY().b(3793, (i)this);
-    localc = h.aHF();
-    p.j(localc, "MMKernel.network()");
-    localc.aGY().cancel(3793);
-    AppMethodBeat.o(224215);
-  }
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
-  {
-    AppMethodBeat.i(224225);
-    i locali = this.callback;
-    if (locali != null)
-    {
-      locali.onSceneEnd(paramInt1, paramInt2, paramString, paramq);
-      AppMethodBeat.o(224225);
-      return;
-    }
-    AppMethodBeat.o(224225);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emojisearch/data/EmojiSearchManager$Companion;", "", "()V", "TAG", "", "plugin-emojisdk_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/emojisearch/data/EmojiSearchManager$Companion;", "", "()V", "TAG", "", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.emojisearch.a.a
  * JD-Core Version:    0.7.0.1
  */

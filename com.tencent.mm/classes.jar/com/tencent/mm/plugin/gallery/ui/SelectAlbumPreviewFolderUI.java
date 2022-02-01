@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.gallery.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,8 +23,8 @@ import com.tencent.mm.plugin.gallery.model.GalleryItem.AlbumItem;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.ImageMediaItem;
 import com.tencent.mm.plugin.gallery.model.e;
 import com.tencent.mm.plugin.gallery.model.g;
-import com.tencent.mm.plugin.gallery.model.i.a;
-import com.tencent.mm.plugin.gallery.model.o;
+import com.tencent.mm.plugin.gallery.model.l.a;
+import com.tencent.mm.plugin.gallery.model.q;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import java.util.ArrayList;
@@ -34,31 +33,31 @@ import java.util.LinkedList;
 @com.tencent.mm.ui.base.a(19)
 public class SelectAlbumPreviewFolderUI
   extends MMActivity
-  implements i.a
+  implements l.a
 {
-  ArrayList<GalleryItem.AlbumItem> CdY;
-  private a CdZ;
-  private RecyclerView Cea;
-  GalleryItem.AlbumItem Ceb;
-  private String Cec;
+  ArrayList<GalleryItem.AlbumItem> HQd;
+  private a HQe;
+  private RecyclerView HQf;
+  GalleryItem.AlbumItem HQg;
+  private String HQh;
   
   public SelectAlbumPreviewFolderUI()
   {
     AppMethodBeat.i(111665);
-    this.CdY = new ArrayList(10);
+    this.HQd = new ArrayList(10);
     AppMethodBeat.o(111665);
   }
   
-  public final void be(final LinkedList<GalleryItem.AlbumItem> paramLinkedList)
+  public final void bm(final LinkedList<GalleryItem.AlbumItem> paramLinkedList)
   {
     AppMethodBeat.i(111669);
-    e.etm().postToMainThread(new Runnable()
+    e.fAo().postToMainThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(111659);
         SelectAlbumPreviewFolderUI.a(SelectAlbumPreviewFolderUI.this).addAll(paramLinkedList);
-        SelectAlbumPreviewFolderUI.b(SelectAlbumPreviewFolderUI.this).alc.notifyChanged();
+        SelectAlbumPreviewFolderUI.b(SelectAlbumPreviewFolderUI.this).bZE.notifyChanged();
         AppMethodBeat.o(111659);
       }
     });
@@ -82,16 +81,16 @@ public class SelectAlbumPreviewFolderUI
   {
     AppMethodBeat.i(111666);
     super.onCreate(paramBundle);
-    e.etl().b(this);
-    e.etl().a(this);
-    e.etl().etT();
-    this.Cea = ((RecyclerView)findViewById(b.e.folder_recycler_view));
-    this.CdZ = new a(this);
-    this.Cea.setLayoutManager(new LinearLayoutManager());
-    this.Cea.setAdapter(this.CdZ);
-    this.Cec = getIntent().getStringExtra("select_folder_name");
-    this.Ceb = new GalleryItem.AlbumItem("", 0);
-    this.Ceb.BVd = new GalleryItem.ImageMediaItem();
+    e.fAn().b(this);
+    e.fAn().a(this);
+    e.fAn().fAR();
+    this.HQf = ((RecyclerView)findViewById(b.e.folder_recycler_view));
+    this.HQe = new a(this);
+    this.HQf.setLayoutManager(new LinearLayoutManager());
+    this.HQf.setAdapter(this.HQe);
+    this.HQh = getIntent().getStringExtra("select_folder_name");
+    this.HQg = new GalleryItem.AlbumItem("", 0);
+    this.HQg.HHB = new GalleryItem.ImageMediaItem();
     setMMTitle(Util.nullAsNil(getString(b.i.app_field_new_pic)));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
@@ -110,7 +109,7 @@ public class SelectAlbumPreviewFolderUI
   {
     AppMethodBeat.i(111667);
     super.onDestroy();
-    e.etl().b(this);
+    e.fAn().b(this);
     AppMethodBeat.o(111667);
   }
   
@@ -143,8 +142,8 @@ public class SelectAlbumPreviewFolderUI
     {
       AppMethodBeat.i(111661);
       Object localObject = new b();
-      ((b)localObject).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/gallery/ui/SelectAlbumPreviewFolderUI$SelectImageFolderAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+      ((b)localObject).cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/gallery/ui/SelectAlbumPreviewFolderUI$SelectImageFolderAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
       localObject = new Intent(SelectAlbumPreviewFolderUI.this, AlbumPreviewUI.class);
       ((Intent)localObject).putExtra("select_folder_name", (GalleryItem.AlbumItem)paramView.getTag());
       ((Intent)localObject).setFlags(67108864);
@@ -158,30 +157,30 @@ public class SelectAlbumPreviewFolderUI
   final class b
     extends RecyclerView.v
   {
-    public ImageView BPW;
-    public TextView CbL;
-    public ImageView CbM;
+    public ImageView AoD;
+    public ImageView HLM;
+    public TextView HNN;
+    public ImageView HNO;
     public View convertView;
-    public TextView mrM;
-    public ImageView wSa;
+    public TextView plr;
     
     public b(View paramView)
     {
       super();
       AppMethodBeat.i(111664);
       this.convertView = paramView;
-      this.BPW = ((ImageView)this.convertView.findViewById(b.e.folder_thumb));
-      this.mrM = ((TextView)this.convertView.findViewById(b.e.folder_name));
-      this.wSa = ((ImageView)this.convertView.findViewById(b.e.video_mask));
-      this.CbL = ((TextView)this.convertView.findViewById(b.e.folder_count));
-      this.CbM = ((ImageView)this.convertView.findViewById(b.e.folder_selected_iv));
+      this.HLM = ((ImageView)this.convertView.findViewById(b.e.folder_thumb));
+      this.plr = ((TextView)this.convertView.findViewById(b.e.folder_name));
+      this.AoD = ((ImageView)this.convertView.findViewById(b.e.video_mask));
+      this.HNN = ((TextView)this.convertView.findViewById(b.e.folder_count));
+      this.HNO = ((ImageView)this.convertView.findViewById(b.e.folder_selected_iv));
       AppMethodBeat.o(111664);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.SelectAlbumPreviewFolderUI
  * JD-Core Version:    0.7.0.1
  */

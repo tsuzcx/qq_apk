@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<androidx.constraintlayout.widget.ConstraintLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/jf3" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:id="@id/j6x" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/dcj" android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <FrameLayout android:id="@id/j6z" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true">
-            <com.tencent.mm.plugin.sns.ui.OnlineVideoView android:id="@id/j6y" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        </FrameLayout>
-    </RelativeLayout>
-    <Button android:id="@id/dhi" android:visibility="gone" style="@style/a5s" />
-    <LinearLayout android:layout_gravity="bottom|center|right" android:orientation="horizontal" android:id="@id/kix" android:background="@drawable/cyu" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/ce" android:layout_marginBottom="@dimen/cs" android:layout_marginEnd="@dimen/cb">
-        <TextView android:textSize="@dimen/c5" android:textColor="@color/am" android:layout_gravity="center" android:id="@id/kv5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/c5" />
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:layout_width="@dimen/ct" android:layout_height="@dimen/cb" android:src="@raw/icons_outlined_arrow" android:layout_marginStart="@dimen/bt" android:layout_marginEnd="@dimen/c5" app:iconColor="@color/am" />
-    </LinearLayout>
-</FrameLayout>
+    <View android:id="@id/gye" android:background="@drawable/a8f" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="@dimen/bo" android:layout_marginBottom="@dimen/cp" app:layout_constraintBottom_toTopOf="@id/gyd" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <TextView android:ellipsize="end" android:id="@id/gyd" android:layout_width="0.0dip" android:layout_height="wrap_content" android:lineSpacingMultiplier="1.2" app:layout_constraintBottom_toTopOf="@id/gyb" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toLeftOf="@id/gyc" app:layout_constraintTop_toBottomOf="@id/gye" style="@style/z8" />
+    <TextView android:ellipsize="end" android:id="@id/gyb" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" app:layout_constraintBottom_toTopOf="@id/gya" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toLeftOf="@id/gyc" app:layout_constraintTop_toBottomOf="@id/gyd" style="@style/zn" />
+    <TextView android:textSize="@dimen/t" android:textColor="@color/BW_0_Alpha_0_3" android:id="@id/gyc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bv" android:layout_marginRight="@dimen/bv" app:layout_constraintBottom_toTopOf="@id/gya" app:layout_constraintLeft_toRightOf="@id/gyd" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="@id/gye" />
+    <View android:id="@id/gya" android:background="@drawable/a8f" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="@dimen/bo" android:layout_marginTop="@dimen/cp" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toBottomOf="@id/gyb" />
+</androidx.constraintlayout.widget.ConstraintLayout>

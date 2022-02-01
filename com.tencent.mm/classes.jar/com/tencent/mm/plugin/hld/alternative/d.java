@@ -7,149 +7,139 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.c;
 import com.tencent.mm.plugin.hld.a.d;
-import com.tencent.mm.plugin.hld.view.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.wxhld.info.Candidate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridAdapter;", "Lcom/tencent/mm/plugin/hld/view/ImeFourGridBaseAdapter;", "Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridViewHolder;", "Lcom/tencent/wxhld/info/Candidate;", "context", "Landroid/content/Context;", "candidateList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "listener", "Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridViewHolder$IAlternativeWordViewListener;", "(Landroid/content/Context;Ljava/util/ArrayList;Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridViewHolder$IAlternativeWordViewListener;)V", "getContext", "()Landroid/content/Context;", "footView", "Landroid/view/View;", "itemWidth", "", "mListener", "textView", "Landroid/widget/TextView;", "getFootView", "getItemCount", "getItemViewType", "position", "onBindViewHolder", "", "viewHolder", "onCreateViewHolder", "viewGroup", "Landroid/view/ViewGroup;", "setFootView", "view", "updateData", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "dataList", "", "arg", "", "holdPosition", "", "Companion", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridAdapter;", "Lcom/tencent/mm/plugin/hld/view/ImeFourGridBaseAdapter;", "Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridViewHolder;", "Lcom/tencent/wxhld/info/Candidate;", "context", "Landroid/content/Context;", "candidateList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "listener", "Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridViewHolder$IAlternativeWordViewListener;", "(Landroid/content/Context;Ljava/util/ArrayList;Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridViewHolder$IAlternativeWordViewListener;)V", "getContext", "()Landroid/content/Context;", "footView", "Landroid/view/View;", "itemWidth", "", "mListener", "textView", "Landroid/widget/TextView;", "getFootView", "getItemCount", "getItemViewType", "position", "onBindViewHolder", "", "viewHolder", "onCreateViewHolder", "viewGroup", "Landroid/view/ViewGroup;", "setFootView", "view", "updateData", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "dataList", "", "arg", "", "holdPosition", "", "Companion", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
-  extends f<e, Candidate>
+  extends com.tencent.mm.plugin.hld.view.e<e, Candidate>
 {
-  public static final a DtT;
-  private final e.a DtR;
-  private ArrayList<Candidate> DtS;
-  private TextView bFR;
+  public static final d.a Jnr;
+  private ArrayList<Candidate> Jns;
+  private final e.a Jnt;
   private final Context context;
-  View nnu;
-  private int tHY;
+  private TextView dyR;
+  View qkB;
+  private int wLI;
   
   static
   {
-    AppMethodBeat.i(217448);
-    DtT = new a((byte)0);
-    AppMethodBeat.o(217448);
+    AppMethodBeat.i(311693);
+    Jnr = new d.a((byte)0);
+    AppMethodBeat.o(311693);
   }
   
   public d(Context paramContext, ArrayList<Candidate> paramArrayList, e.a parama)
   {
-    AppMethodBeat.i(217446);
+    AppMethodBeat.i(311680);
     this.context = paramContext;
-    this.DtS = paramArrayList;
-    this.DtR = parama;
-    AppMethodBeat.o(217446);
+    this.Jns = paramArrayList;
+    this.Jnt = parama;
+    AppMethodBeat.o(311680);
   }
   
   public final void a(RecyclerView paramRecyclerView, List<? extends Candidate> paramList, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(217441);
-    p.k(paramRecyclerView, "recyclerView");
-    p.k(paramList, "dataList");
-    p.k(paramString, "arg");
-    this.DtS.clear();
+    AppMethodBeat.i(311716);
+    s.u(paramRecyclerView, "recyclerView");
+    s.u(paramList, "dataList");
+    s.u(paramString, "arg");
+    this.Jns.clear();
     if (!paramBoolean)
     {
       paramString = c.a(0, new com.tencent.mm.hellhoundlib.b.a());
-      com.tencent.mm.hellhoundlib.a.a.b(paramRecyclerView, paramString.aFh(), "com/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridAdapter", "updateData", "(Landroidx/recyclerview/widget/RecyclerView;Ljava/util/List;Ljava/lang/String;Z)V", "Undefined", "scrollToPosition", "(I)V");
-      paramRecyclerView.scrollToPosition(((Integer)paramString.sf(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.b(paramRecyclerView, paramString.aYi(), "com/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridAdapter", "updateData", "(Landroidx/recyclerview/widget/RecyclerView;Ljava/util/List;Ljava/lang/String;Z)V", "Undefined", "scrollToPosition", "(I)V");
+      paramRecyclerView.scrollToPosition(((Integer)paramString.sb(0)).intValue());
       com.tencent.mm.hellhoundlib.a.a.c(paramRecyclerView, "com/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridAdapter", "updateData", "(Landroidx/recyclerview/widget/RecyclerView;Ljava/util/List;Ljava/lang/String;Z)V", "Undefined", "scrollToPosition", "(I)V");
     }
-    this.DtS.addAll((Collection)paramList);
-    fF((List)this.DtS);
-    notifyDataSetChanged();
-    AppMethodBeat.o(217441);
+    this.Jns.addAll((Collection)paramList);
+    iC((List)this.Jns);
+    this.bZE.notifyChanged();
+    AppMethodBeat.o(311716);
   }
   
   public final int getItemCount()
   {
-    AppMethodBeat.i(217437);
-    if (this.nnu != null)
+    AppMethodBeat.i(311705);
+    if (this.qkB != null)
     {
-      i = this.DtS.size();
-      AppMethodBeat.o(217437);
+      i = this.Jns.size();
+      AppMethodBeat.o(311705);
       return i + 1;
     }
-    int i = this.DtS.size();
-    AppMethodBeat.o(217437);
+    int i = this.Jns.size();
+    AppMethodBeat.o(311705);
     return i;
   }
   
   public final int getItemViewType(int paramInt)
   {
-    AppMethodBeat.i(217443);
+    AppMethodBeat.i(311734);
     Object localObject1;
-    if (eHF().containsKey(Integer.valueOf(paramInt)))
+    if (fPr().containsKey(Integer.valueOf(paramInt)))
     {
-      localObject1 = eHF().get(Integer.valueOf(paramInt));
-      if (localObject1 == null) {
-        p.iCn();
-      }
+      localObject1 = fPr().get(Integer.valueOf(paramInt));
+      s.checkNotNull(localObject1);
+      s.s(localObject1, "viewTypeCacheMap[position]!!");
       paramInt = ((Number)localObject1).intValue();
-      AppMethodBeat.o(217443);
+      AppMethodBeat.o(311734);
       return paramInt;
     }
     for (;;)
     {
       try
       {
-        if (this.tHY == 0)
-        {
-          localObject1 = this.context.getResources();
-          p.j(localObject1, "context.resources");
-          this.tHY = (((Resources)localObject1).getDisplayMetrics().widthPixels / 5);
+        if (this.wLI == 0) {
+          this.wLI = (this.context.getResources().getDisplayMetrics().widthPixels / 5);
         }
-        if (this.bFR == null)
+        if (this.dyR == null)
         {
-          this.bFR = new TextView(this.context);
-          localObject1 = this.bFR;
-          if (localObject1 == null) {
-            p.iCn();
-          }
-          ((TextView)localObject1).setTextSize(0, com.tencent.mm.ci.a.aZ(this.context, a.d.S5_keys_button_text_size));
+          this.dyR = new TextView(this.context);
+          localObject1 = this.dyR;
+          s.checkNotNull(localObject1);
+          ((TextView)localObject1).setTextSize(0, com.tencent.mm.cd.a.bs(this.context, a.d.S5_keys_button_text_size));
         }
-        if (paramInt < this.DtS.size())
+        if (paramInt < this.Jns.size())
         {
-          localObject1 = ((Candidate)this.DtS.get(paramInt)).text;
-          if (paramInt >= this.DtS.size()) {
-            break label283;
+          localObject1 = ((Candidate)this.Jns.get(paramInt)).text;
+          if (paramInt >= this.Jns.size()) {
+            break label272;
           }
-          TextView localTextView = this.bFR;
-          if (localTextView == null) {
-            p.iCn();
-          }
-          paramInt = (int)localTextView.getPaint().measureText((String)localObject1) / this.tHY + 1;
+          TextView localTextView = this.dyR;
+          s.checkNotNull(localTextView);
+          paramInt = (int)localTextView.getPaint().measureText((String)localObject1) / this.wLI + 1;
           if (paramInt > 4)
           {
-            AppMethodBeat.o(217443);
+            AppMethodBeat.o(311734);
             return 4;
           }
-          AppMethodBeat.o(217443);
+          AppMethodBeat.o(311734);
           return paramInt;
         }
       }
       catch (Exception localException)
       {
         Log.e("WxIme.ImeAlternativeWordGridAdapter", "getItemViewType " + localException.getClass().getSimpleName() + ", " + localException.getMessage());
-        AppMethodBeat.o(217443);
+        AppMethodBeat.o(311734);
         return 1;
       }
       Object localObject2 = null;
       continue;
-      label283:
+      label272:
       paramInt = 4;
     }
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridAdapter$Companion;", "", "()V", "TAG", "", "plugin-hld_release"})
-  public static final class a {}
 }
 
 

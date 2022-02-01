@@ -15,8 +15,8 @@ import junit.framework.Assert;
 public class AsyncMaskImageView
   extends ImageView
 {
-  MMHandler KBt;
-  Runnable KBu;
+  MMHandler Rba;
+  Runnable Rbb;
   private int a;
   private int b;
   private boolean enable;
@@ -32,17 +32,8 @@ public class AsyncMaskImageView
     this.g = 0;
     this.b = 0;
     this.enable = true;
-    this.KBt = new MMHandler();
-    this.KBu = new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(97753);
-        AsyncMaskImageView.this.setPressed(false);
-        AsyncMaskImageView.this.invalidate();
-        AppMethodBeat.o(97753);
-      }
-    };
+    this.Rba = new MMHandler();
+    this.Rbb = new AsyncMaskImageView.1(this);
     super.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
@@ -63,9 +54,9 @@ public class AsyncMaskImageView
           return true;
           paramAnonymousView.setPressed(true);
           paramAnonymousView.invalidate();
-          localAsyncMaskImageView.KBt.removeCallbacks(localAsyncMaskImageView.KBu);
+          localAsyncMaskImageView.Rba.removeCallbacks(localAsyncMaskImageView.Rbb);
           continue;
-          localAsyncMaskImageView.KBt.post(localAsyncMaskImageView.KBu);
+          localAsyncMaskImageView.Rba.post(localAsyncMaskImageView.Rbb);
         }
         AppMethodBeat.o(97754);
         return false;
@@ -115,7 +106,7 @@ public class AsyncMaskImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.AsyncMaskImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true" android:state_pressed="true" android:drawable="@drawable/blj" />
-    <item android:state_focused="false" android:state_pressed="true" android:drawable="@drawable/blj" />
-    <item android:state_focused="true" android:drawable="@drawable/blh" />
-    <item android:state_focused="false" android:drawable="@drawable/bli" />
+    <item android:state_pressed="true">
+        <shape>
+            <corners android:radius="2.0dip" />
+            <solid android:color="@color/BW_0_Alpha_0_1" />
+        </shape>
+    </item>
+    <item android:drawable="@color/ahb" />
 </selector>

@@ -1,251 +1,221 @@
 package com.tencent.mm.plugin.sns.ad.i;
 
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.b.f;
-import com.tencent.mm.modelsns.o;
-import com.tencent.mm.plugin.sns.data.m;
-import com.tencent.mm.plugin.sns.data.p;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.model.aj;
-import com.tencent.mm.plugin.sns.model.c;
-import com.tencent.mm.plugin.sns.model.c.b;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
-import com.tencent.mm.protocal.protobuf.cvt;
-import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.bp;
-import com.tencent.mm.vfs.u;
-import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
 public final class a
 {
-  private static f<String, Bitmap> JLo;
-  
-  static
+  public static String aWG(String paramString)
   {
-    AppMethodBeat.i(268834);
-    JLo = new com.tencent.mm.b.h(3);
-    AppMethodBeat.o(268834);
+    AppMethodBeat.i(309659);
+    str1 = "";
+    try
+    {
+      String str2 = new JSONObject(paramString).optString("appId");
+      paramString = str2;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.e("OpenSdkAdHelper", "getAppIdFromExtra, exp=" + paramString.toString() + ", extInfo=" + paramString);
+        paramString = str1;
+      }
+    }
+    AppMethodBeat.o(309659);
+    return paramString;
   }
   
-  public static void a(final String paramString, final f.a parama)
+  public static boolean ajx(int paramInt)
   {
-    AppMethodBeat.i(268832);
-    final String str1 = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.fSq();
-    final String str2 = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.kX("adId_mm", paramString);
-    final String str3 = str1 + str2;
-    Log.i("SnsAd.AdCdnImageLoaderMM", "downloadImageByCdn, fileName=" + str2 + ", url=" + paramString);
-    if (u.agG(str3))
-    {
-      Log.i("SnsAd.AdCdnImageLoaderMM", "hit local cache, fileName=".concat(String.valueOf(str2)));
-      com.tencent.e.h.ZvG.bc(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(245721);
-          this.JLs.aYs(str3);
-          AppMethodBeat.o(245721);
-        }
-      });
-      AppMethodBeat.o(268832);
-      return;
-    }
-    u.bBD(str1);
-    cvt localcvt = o.a(str2, 2, paramString, paramString, 1, 1, "");
-    final p localp = new p(localcvt);
-    localp.JRn = 3;
-    localp.fIY = localcvt.Id;
-    com.tencent.e.h.ZvG.bc(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(212383);
-        aj.fOD().a(new a.a(this.JJb.Id, str3, paramString, parama));
-        c localc = aj.fOD();
-        cvt localcvt = this.JJb;
-        p localp = localp;
-        bp localbp = bp.hzh();
-        localbp.time = ((int)(System.currentTimeMillis() / 1000L));
-        localc.a(localcvt, 8, localp, localbp, str1, str2);
-        AppMethodBeat.o(212383);
-      }
-    });
-    AppMethodBeat.o(268832);
+    return paramInt == 29;
   }
   
-  public static void l(final String paramString, ImageView paramImageView)
+  public static String f(long paramLong, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(268830);
-    if (TextUtils.isEmpty(paramString))
+    AppMethodBeat.i(309655);
+    try
     {
-      AppMethodBeat.o(268830);
-      return;
-    }
-    if (!paramString.equals((String)paramImageView.getTag(i.f.sns_ad_card_img_url)))
-    {
-      paramImageView.setImageDrawable(null);
-      if (!TextUtils.isEmpty(paramString))
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("appId", Util.nullAsNil(paramString1));
+      if (paramLong == 0L) {}
+      for (paramString1 = "";; paramString1 = String.valueOf(paramLong))
       {
-        paramImageView.setTag(i.f.sns_ad_card_img_url, paramString);
-        Log.d("SnsAd.AdCdnImageLoaderMM", "loadImage, hash=" + paramImageView.hashCode() + ", url=" + paramString);
-        Bitmap localBitmap = (Bitmap)JLo.aX(paramString);
-        if ((localBitmap != null) && (!localBitmap.isRecycled()))
-        {
-          paramImageView.setImageBitmap(localBitmap);
-          Log.d("SnsAd.AdCdnImageLoaderMM", "hit mem cache, url=".concat(String.valueOf(paramString)));
-          AppMethodBeat.o(268830);
-          return;
-        }
-        a(paramString, new f.a()
-        {
-          public final void aYs(String paramAnonymousString)
-          {
-            AppMethodBeat.i(200566);
-            for (;;)
-            {
-              try
-              {
-                ImageView localImageView = (ImageView)this.JLp.get();
-                if (localImageView == null)
-                {
-                  Log.w("SnsAd.AdCdnImageLoaderMM", "imageViewRef released");
-                  AppMethodBeat.o(200566);
-                  return;
-                }
-                str = (String)localImageView.getTag(i.f.sns_ad_card_img_url);
-                if (TextUtils.isEmpty(str))
-                {
-                  str = "";
-                  if ((TextUtils.isEmpty(paramAnonymousString)) || (!paramAnonymousString.equals(str))) {
-                    break;
-                  }
-                  a.c(paramString, paramAnonymousString, localImageView);
-                  AppMethodBeat.o(200566);
-                  return;
-                }
-              }
-              catch (Throwable paramAnonymousString)
-              {
-                Log.e("SnsAd.AdCdnImageLoaderMM", "onDownloaded, exp=" + paramAnonymousString.toString());
-                AppMethodBeat.o(200566);
-                return;
-              }
-              String str = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.kU("adId_mm", str);
-            }
-            Log.d("SnsAd.AdCdnImageLoaderMM", "onDownloaded, url changed");
-            AppMethodBeat.o(200566);
-          }
-          
-          public final void fJU() {}
-          
-          public final void fJV()
-          {
-            AppMethodBeat.i(200563);
-            ImageView localImageView = (ImageView)this.JLp.get();
-            if (localImageView == null)
-            {
-              Log.w("SnsAd.AdCdnImageLoaderMM", "imageViewRef released");
-              AppMethodBeat.o(200563);
-              return;
-            }
-            localImageView.setTag(i.f.sns_ad_card_img_url, "");
-            localImageView.setImageDrawable(null);
-            Log.e("SnsAd.AdCdnImageLoaderMM", "onDownloadError, hash=" + localImageView.hashCode() + ", url=" + paramString);
-            AppMethodBeat.o(200563);
-          }
-        });
+        localJSONObject.put("canvasId", paramString1);
+        localJSONObject.put("uxInfo", Util.nullAsNil(paramString2));
+        paramString1 = localJSONObject.toString();
+        AppMethodBeat.o(309655);
+        return paramString1;
       }
+      return "";
     }
-    AppMethodBeat.o(268830);
+    catch (Exception paramString1)
+    {
+      AppMethodBeat.o(309655);
+    }
   }
   
-  static final class a
-    implements c.b
+  /* Error */
+  public static void gN(String paramString, int paramInt)
   {
-    f.a JLv;
-    String filePath;
-    private String mediaId;
-    private String xei;
-    
-    public a(String paramString1, String paramString2, String paramString3, f.a parama)
+    // Byte code:
+    //   0: ldc 87
+    //   2: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: invokestatic 93	com/tencent/mm/kernel/h:baz	()Z
+    //   8: ifne +45 -> 53
+    //   11: invokestatic 98	com/tencent/mm/sdk/platformtools/MMApplicationContext:isMainProcess	()Z
+    //   14: ifeq +39 -> 53
+    //   17: ldc 33
+    //   19: new 35	java/lang/StringBuilder
+    //   22: dup
+    //   23: ldc 100
+    //   25: invokespecial 38	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   28: iload_1
+    //   29: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   32: ldc 105
+    //   34: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   37: aload_0
+    //   38: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   41: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   44: invokestatic 57	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   47: ldc 87
+    //   49: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   52: return
+    //   53: ldc 33
+    //   55: new 35	java/lang/StringBuilder
+    //   58: dup
+    //   59: ldc 107
+    //   61: invokespecial 38	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   64: iload_1
+    //   65: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   68: ldc 105
+    //   70: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   73: aload_0
+    //   74: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   77: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   80: invokestatic 109	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   83: getstatic 115	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
+    //   86: sipush 1667
+    //   89: iload_1
+    //   90: invokevirtual 119	com/tencent/mm/plugin/report/service/h:kJ	(II)V
+    //   93: ldc 17
+    //   95: astore_2
+    //   96: aload_0
+    //   97: invokestatic 125	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   100: ifeq +36 -> 136
+    //   103: new 19	org/json/JSONObject
+    //   106: dup
+    //   107: invokespecial 66	org/json/JSONObject:<init>	()V
+    //   110: astore_0
+    //   111: aload_0
+    //   112: ldc 127
+    //   114: iload_1
+    //   115: invokevirtual 130	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   118: pop
+    //   119: aload_0
+    //   120: invokevirtual 80	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   123: astore_0
+    //   124: ldc 132
+    //   126: aload_0
+    //   127: invokestatic 137	com/tencent/mm/plugin/sns/data/m:lU	(Ljava/lang/String;Ljava/lang/String;)V
+    //   130: ldc 87
+    //   132: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   135: return
+    //   136: new 19	org/json/JSONObject
+    //   139: dup
+    //   140: aload_0
+    //   141: invokespecial 23	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   144: astore_0
+    //   145: aload_0
+    //   146: ldc 127
+    //   148: iload_1
+    //   149: invokevirtual 130	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   152: pop
+    //   153: aload_0
+    //   154: invokevirtual 80	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   157: astore_0
+    //   158: goto -34 -> 124
+    //   161: astore_0
+    //   162: ldc 33
+    //   164: new 35	java/lang/StringBuilder
+    //   167: dup
+    //   168: ldc 139
+    //   170: invokespecial 38	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   173: aload_0
+    //   174: invokevirtual 142	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   177: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   180: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   183: invokestatic 57	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   186: ldc 87
+    //   188: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   191: return
+    //   192: astore_0
+    //   193: aload_2
+    //   194: astore_0
+    //   195: goto -71 -> 124
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	198	0	paramString	String
+    //   0	198	1	paramInt	int
+    //   95	99	2	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   5	47	161	finally
+    //   53	93	161	finally
+    //   96	124	161	finally
+    //   124	130	161	finally
+    //   136	158	161	finally
+    //   96	124	192	java/lang/Exception
+    //   136	158	192	java/lang/Exception
+  }
+  
+  public static String lO(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(309665);
+    Object localObject2 = "";
+    String str = "";
+    Object localObject1 = localObject2;
+    try
     {
-      this.mediaId = paramString1;
-      this.JLv = parama;
-      this.filePath = paramString2;
-      this.xei = paramString3;
+      Object localObject3 = new JSONObject(paramString2);
+      localObject1 = localObject2;
+      localObject2 = ((JSONObject)localObject3).optString("canvasId");
+      localObject1 = localObject2;
+      localObject3 = ((JSONObject)localObject3).optString("uxInfo");
+      paramString2 = (String)localObject3;
+      localObject1 = localObject2;
+      return "";
     }
-    
-    public final void aYK(String paramString)
+    catch (Exception localException)
     {
-      AppMethodBeat.i(266048);
-      if ((!Util.isNullOrNil(new String[] { paramString, this.mediaId })) && (paramString.equals(this.mediaId)))
+      for (;;)
       {
-        Log.i("SnsAd.AdCdnImageLoaderMM", "onThumbFinish, mediaId=".concat(String.valueOf(paramString)));
-        aj.fOD().b(this);
-      }
-      AppMethodBeat.o(266048);
-    }
-    
-    public final void cq(String paramString, boolean paramBoolean)
-    {
-      AppMethodBeat.i(266049);
-      if ((!Util.isNullOrNil(new String[] { paramString, this.mediaId })) && (paramString.equals(this.mediaId)))
-      {
-        Log.i("SnsAd.AdCdnImageLoaderMM", "onSightFinish, mediaId=" + paramString + ", isOk=" + paramBoolean);
-        aj.fOD().b(this);
-      }
-      AppMethodBeat.o(266049);
-    }
-    
-    public final void cr(String paramString, final boolean paramBoolean)
-    {
-      AppMethodBeat.i(266050);
-      if ((!Util.isNullOrNil(new String[] { paramString, this.mediaId })) && (paramString.equals(this.mediaId)))
-      {
-        Log.i("SnsAd.AdCdnImageLoaderMM", "onImageFinish, mediaId=" + paramString + ", isOk=" + paramBoolean);
-        aj.fOD().b(this);
-        if (this.JLv == null)
+        try
         {
-          AppMethodBeat.o(266050);
-          return;
+          localObject2 = new JSONObject();
+          ((JSONObject)localObject2).put("appId", Util.nullAsNil(paramString1));
+          ((JSONObject)localObject2).put("canvasId", localObject1);
+          ((JSONObject)localObject2).put("uxInfo", paramString2);
+          paramString1 = ((JSONObject)localObject2).toString();
+          AppMethodBeat.o(309665);
+          return paramString1;
         }
-        com.tencent.e.h.ZvG.bc(new Runnable()
+        catch (Exception paramString1)
         {
-          public final void run()
-          {
-            AppMethodBeat.i(216759);
-            if (paramBoolean)
-            {
-              a.a.this.JLv.aYs(a.a.this.filePath);
-              AppMethodBeat.o(216759);
-              return;
-            }
-            a.a.this.JLv.fJV();
-            AppMethodBeat.o(216759);
-          }
-        });
-        if (paramBoolean)
-        {
-          m.b(0, 0, 1, this.xei);
-          AppMethodBeat.o(266050);
-          return;
+          AppMethodBeat.o(309665);
         }
-        m.b(1, 0, 1, this.xei);
+        localException = localException;
+        Log.e("OpenSdkAdHelper", "getOpenCanvasAdExtraInfo, appId=" + paramString1 + ", extInfo=" + paramString2);
+        paramString2 = str;
       }
-      AppMethodBeat.o(266050);
     }
-    
-    public final void fLL() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.i.a
  * JD-Core Version:    0.7.0.1
  */

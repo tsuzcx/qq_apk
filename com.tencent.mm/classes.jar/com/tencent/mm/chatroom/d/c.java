@@ -1,38 +1,48 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.protocal.protobuf.go;
-import com.tencent.mm.protocal.protobuf.gp;
+import com.tencent.mm.am.b;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.protocal.protobuf.er;
+import com.tencent.mm.protocal.protobuf.es;
+import com.tencent.mm.protocal.protobuf.zi;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class c
-  extends com.tencent.mm.an.c<gp>
+  extends b<es>
 {
-  public c(long paramLong, String paramString1, String paramString2, String paramString3, LinkedList<String> paramLinkedList)
+  public c(String paramString, LinkedList<String> paramLinkedList)
   {
-    AppMethodBeat.i(12453);
-    Log.d("MicroMsg.CgiApproveAddChatRoomMember", "inviterusername%s,roomname:%s,ticket:%s,username:%s approvenewmsgid:%s", new Object[] { paramString1, paramString2, Util.secPrint(paramString3), paramLinkedList, Long.valueOf(paramLong) });
-    go localgo = new go();
-    localgo.lWt = paramString1;
-    localgo.fHp = paramString2;
-    localgo.fAo = paramString3;
-    localgo.RLB = paramLinkedList;
-    localgo.RLC = paramLong;
-    paramString1 = new d.a();
-    paramString1.lBU = localgo;
-    paramString1.lBV = new gp();
-    paramString1.uri = "/cgi-bin/micromsg-bin/approveaddchatroommember";
-    paramString1.funcId = 774;
-    c(paramString1.bgN());
-    AppMethodBeat.o(12453);
+    AppMethodBeat.i(241430);
+    Log.d("MicroMsg.CgiAlterChatRoomWatchMembers", "roomname:%s", new Object[] { Util.nullAs(paramString, ""), Integer.valueOf(paramLinkedList.size()) });
+    LinkedList localLinkedList = new LinkedList();
+    paramLinkedList = paramLinkedList.iterator();
+    while (paramLinkedList.hasNext())
+    {
+      String str = (String)paramLinkedList.next();
+      zi localzi = new zi();
+      localzi.UserName = str;
+      localLinkedList.add(localzi);
+    }
+    paramLinkedList = new er();
+    paramLinkedList.YFk = Util.nullAs(paramString, "");
+    paramLinkedList.YGJ = localLinkedList.size();
+    paramLinkedList.YGK = localLinkedList;
+    paramString = new c.a();
+    paramString.otE = paramLinkedList;
+    paramString.otF = new es();
+    paramString.uri = "/cgi-bin/micromsg-bin/alterchatroomwatchmembers";
+    paramString.funcId = 447;
+    c(paramString.bEF());
+    AppMethodBeat.o(241430);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.chatroom.d.c
  * JD-Core Version:    0.7.0.1
  */

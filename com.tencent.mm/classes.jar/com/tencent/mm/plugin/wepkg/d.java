@@ -4,7 +4,7 @@ public final class d
 {
   public static final class a
   {
-    public static final int host_game_weixin_qq_com = 2131762079;
+    public static final int host_game_weixin_qq_com = 2131763734;
   }
 }
 

@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@drawable/ah0" android:padding="@dimen/j6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/ik"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
-        <ListView android:id="@id/h4" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/b0w" android:transcriptMode="disabled" android:cacheColorHint="#ffffffff" android:divider="@null" android:dividerHeight="0.0px" android:layout_weight="1.0" style="@style/rj" />
-        <RelativeLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent">
-            <com.tencent.mm.ui.base.AlphabetScrollBar android:id="@id/hl" android:layout_width="25.0dip" android:layout_height="wrap_content" android:layout_marginBottom="0.0dip" android:layout_alignParentRight="true" />
-        </RelativeLayout>
-    </FrameLayout>
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/a17" android:id="@id/kw_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/h9k" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/a17" android:id="@id/kwa" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 </LinearLayout>

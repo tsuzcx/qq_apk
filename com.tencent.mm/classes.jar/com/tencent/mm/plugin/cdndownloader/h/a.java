@@ -1,28 +1,28 @@
 package com.tencent.mm.plugin.cdndownloader.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.i.c;
-import com.tencent.mm.i.d;
-import com.tencent.mm.i.g;
-import com.tencent.mm.i.g.a;
-import com.tencent.mm.s.b;
+import com.tencent.mm.g.c;
+import com.tencent.mm.g.d;
+import com.tencent.mm.g.g;
+import com.tencent.mm.g.g.a;
+import com.tencent.mm.p.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.io.ByteArrayOutputStream;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class a
-  implements com.tencent.mm.s.a
+  implements com.tencent.mm.p.a
 {
-  private static a tLK = null;
-  private g.a tLH;
-  private Map<String, a> tLL;
+  private static a wOZ = null;
+  private g.a wOW;
+  private Map<String, a> wPa;
   
   public a()
   {
     AppMethodBeat.i(120819);
-    this.tLL = new ConcurrentHashMap();
-    this.tLH = new g.a()
+    this.wPa = new ConcurrentHashMap();
+    this.wOW = new g.a()
     {
       public final int a(String paramAnonymousString, int paramAnonymousInt, c paramAnonymousc, d paramAnonymousd, boolean paramAnonymousBoolean)
       {
@@ -82,7 +82,7 @@ public final class a
       
       public final void a(String paramAnonymousString, ByteArrayOutputStream paramAnonymousByteArrayOutputStream) {}
       
-      public final byte[] f(String paramAnonymousString, byte[] paramAnonymousArrayOfByte)
+      public final byte[] h(String paramAnonymousString, byte[] paramAnonymousArrayOfByte)
       {
         return new byte[0];
       }
@@ -90,16 +90,16 @@ public final class a
     AppMethodBeat.o(120819);
   }
   
-  public static a cMD()
+  public static a dqh()
   {
     try
     {
       AppMethodBeat.i(120820);
-      if (tLK == null) {
-        tLK = new a();
+      if (wOZ == null) {
+        wOZ = new a();
       }
-      com.tencent.mm.plugin.cdndownloader.c.a.cMu();
-      a locala = tLK;
+      com.tencent.mm.plugin.cdndownloader.c.a.dpY();
+      a locala = wOZ;
       AppMethodBeat.o(120820);
       return locala;
     }
@@ -114,17 +114,17 @@ public final class a
     localg.taskName = "task_FileDownloaderWAGameProxy";
     localg.field_mediaId = paramString1;
     localg.field_fullpath = paramString2;
-    localg.iUJ = paramString1;
-    localg.field_fileType = com.tencent.mm.i.a.iUp;
-    localg.iUG = this.tLH;
-    localg.iUK = 60;
-    localg.iUL = 600;
-    localg.iUN = false;
+    localg.lwO = paramString1;
+    localg.field_fileType = com.tencent.mm.g.a.lwu;
+    localg.lwL = this.wOW;
+    localg.lwP = 60;
+    localg.lwQ = 600;
+    localg.lwS = false;
     a locala = new a((byte)0);
-    locala.tLN = paramb;
-    locala.tLO = paramString2;
-    this.tLL.put(paramString1, locala);
-    int i = com.tencent.mm.plugin.cdndownloader.c.a.cMu().h(localg);
+    locala.wPc = paramb;
+    locala.wPd = paramString2;
+    this.wPa.put(paramString1, locala);
+    int i = com.tencent.mm.plugin.cdndownloader.c.a.dpY().i(localg);
     Log.i("FileDownloaderWAGameProxy", "addDownloadTask: ".concat(String.valueOf(i)));
     AppMethodBeat.o(120821);
     return i;
@@ -132,8 +132,8 @@ public final class a
   
   final class a
   {
-    public b tLN = null;
-    public String tLO = null;
+    public b wPc = null;
+    public String wPd = null;
     
     private a() {}
   }

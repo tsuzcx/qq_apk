@@ -12,25 +12,25 @@ import java.util.Locale;
 public final class a
   implements TransformationMethod
 {
-  private Locale jK;
+  private Locale kG;
   
   public a(Context paramContext)
   {
-    AppMethodBeat.i(238895);
-    this.jK = paramContext.getResources().getConfiguration().locale;
-    AppMethodBeat.o(238895);
+    AppMethodBeat.i(199249);
+    this.kG = paramContext.getResources().getConfiguration().locale;
+    AppMethodBeat.o(199249);
   }
   
   public final CharSequence getTransformation(CharSequence paramCharSequence, View paramView)
   {
-    AppMethodBeat.i(238896);
+    AppMethodBeat.i(199257);
     if (paramCharSequence != null)
     {
-      paramCharSequence = paramCharSequence.toString().toUpperCase(this.jK);
-      AppMethodBeat.o(238896);
+      paramCharSequence = paramCharSequence.toString().toUpperCase(this.kG);
+      AppMethodBeat.o(199257);
       return paramCharSequence;
     }
-    AppMethodBeat.o(238896);
+    AppMethodBeat.o(199257);
     return null;
   }
   
@@ -38,7 +38,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     androidx.appcompat.c.a
  * JD-Core Version:    0.7.0.1
  */

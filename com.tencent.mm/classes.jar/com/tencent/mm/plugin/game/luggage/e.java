@@ -4,7 +4,7 @@ import java.util.Map;
 
 public final class e
 {
-  public static String CzZ;
+  public static String ItK;
   public static long dX;
   public static Map<String, String> mHeaders;
 }

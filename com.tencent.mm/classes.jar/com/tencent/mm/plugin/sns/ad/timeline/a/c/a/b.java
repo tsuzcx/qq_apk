@@ -4,89 +4,117 @@ import android.content.Context;
 import android.util.ArrayMap;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ad.b.b.a;
-import com.tencent.mm.plugin.sns.ad.d.l;
+import com.tencent.mm.plugin.expt.hellhound.ext.b.b.c;
+import com.tencent.mm.plugin.sns.ad.adxml.e;
+import com.tencent.mm.plugin.sns.ad.d.n;
+import com.tencent.mm.plugin.sns.ad.d.r;
+import com.tencent.mm.plugin.sns.ad.timeline.a.d;
 import com.tencent.mm.plugin.sns.data.t;
 import com.tencent.mm.plugin.sns.storage.ADXml;
 import com.tencent.mm.plugin.sns.storage.SnsInfo;
-import com.tencent.mm.plugin.sns.ui.be;
+import com.tencent.mm.plugin.sns.ui.bf;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.w;
 import java.util.Map;
 
 public final class b
   extends com.tencent.mm.plugin.sns.ad.timeline.a.c.a
 {
-  public final boolean a(View paramView, int paramInt, SnsInfo paramSnsInfo, ADXml paramADXml)
+  private d PYG;
+  
+  public final boolean a(View paramView, int paramInt, SnsInfo paramSnsInfo, ADXml paramADXml, d paramd)
   {
-    AppMethodBeat.i(208777);
-    paramADXml = paramADXml.adFinderLiveInfo;
-    if ((paramView == null) || (paramADXml == null) || (paramSnsInfo == null))
+    AppMethodBeat.i(311383);
+    Log.i("SnsAd.FinderLiveClick.AdFinderLiveClick", "AdFinderLiveRoomClick doClick, source=".concat(String.valueOf(paramInt)));
+    e locale = paramADXml.adFinderLiveInfo;
+    if ((paramView == null) || (paramSnsInfo == null))
     {
-      AppMethodBeat.o(208777);
+      Log.e("SnsAd.FinderLiveClick.AdFinderLiveClick", "info null");
+      AppMethodBeat.o(311383);
       return false;
     }
-    final Context localContext = paramView.getContext();
+    Context localContext = paramView.getContext();
     if (localContext == null)
     {
-      AppMethodBeat.o(208777);
+      Log.e("SnsAd.FinderLiveClick.AdFinderLiveClick", "context null");
+      AppMethodBeat.o(311383);
       return false;
     }
-    String str1 = t.w(paramSnsInfo);
-    Log.i("SnsAd.FinderLiveClick", "the material of find live is clicked, snsId=".concat(String.valueOf(str1)));
+    int i;
+    if (locale != null)
+    {
+      if (!Util.isNullOrNil(new String[] { locale.finderUsername, locale.finderLiveId, locale.PLR, locale.PLS })) {}
+    }
+    else
+    {
+      i = 1;
+      if (i == 0) {
+        break label198;
+      }
+      Log.i("SnsAd.FinderLiveClick.AdFinderLiveClick", "click material, ready to jump FinderRoomPreview");
+      if (paramd != null)
+      {
+        paramd.put("isFinderRoomPreview", Boolean.TRUE);
+        this.PYG = paramd;
+      }
+      paramView = paramADXml.adFinderLivePreviewInfo;
+      if (paramView == null) {
+        break label190;
+      }
+      r.bN(localContext, r.a(paramView, paramSnsInfo));
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(311383);
+      return true;
+      i = 0;
+      break;
+      label190:
+      r.jL(localContext);
+    }
+    label198:
+    paramADXml = t.x(paramSnsInfo);
     try
     {
-      com.tencent.mm.plugin.sns.ad.timeline.dynamic.a.fLk().a(paramInt, paramSnsInfo);
-      String str2 = l.an(paramSnsInfo.getUxinfo(), str1, 3);
-      com.tencent.mm.plugin.expt.hellhound.a.b.b.c.gF(str2, paramADXml.finderUsername);
+      com.tencent.mm.plugin.sns.ad.timeline.dynamic.a.hbB().c(paramInt, paramSnsInfo);
+      paramd = n.aw(paramSnsInfo.getUxinfo(), paramADXml, 3);
+      c.hm(paramd, locale.finderUsername);
+      Log.i("SnsAd.FinderLiveClick.AdFinderLiveClick", "doClick, setSnsAdData, snsAdInfo=" + paramd + ", finderUsername=" + locale.finderUsername);
       paramView = paramView.getTag();
       paramInt = paramSnsInfo.localid;
-      if ((paramView instanceof be))
+      if ((paramView instanceof bf))
       {
-        paramInt = ((be)paramView).position;
-        com.tencent.mm.plugin.expt.hellhound.a.b.c.a.report21053OnClickOnSnsAd(paramSnsInfo.field_snsId, Util.safeParseLong(paramADXml.finderLiveId), paramADXml.finderUsername, paramInt);
+        paramInt = ((bf)paramView).position;
+        com.tencent.mm.plugin.expt.hellhound.ext.b.c.a.report21053OnClickOnSnsAd(paramSnsInfo.field_snsId, Util.safeParseLong(locale.finderLiveId), locale.finderUsername, paramInt);
         paramView = new ArrayMap();
         paramView.put("is_from_ad", Boolean.TRUE);
-        paramView.put("key_extra_info", str2);
-        com.tencent.mm.plugin.sns.ad.b.b.a(paramADXml.finderUsername, paramADXml.finderLiveId, paramADXml.Jyd, paramADXml.Jye, str1, new b.a()
-        {
-          public final void b(String paramAnonymousString, int paramAnonymousInt1, int paramAnonymousInt2, Object paramAnonymousObject)
-          {
-            AppMethodBeat.i(209038);
-            Log.i("SnsAd.FinderLiveClick", "the FinderLiveClick is called, snsId " + paramAnonymousString + ", errorCode=" + paramAnonymousInt2 + ", actType=" + paramAnonymousInt1);
-            if (paramAnonymousInt2 != 0)
-            {
-              paramAnonymousString = localContext;
-              try
-              {
-                w.cS(paramAnonymousString, "进入直播间失败");
-                AppMethodBeat.o(209038);
-                return;
-              }
-              catch (Throwable paramAnonymousString) {}
-            }
-            AppMethodBeat.o(209038);
-          }
-        });
-        AppMethodBeat.o(208777);
+        paramView.put("key_extra_info", paramd);
+        com.tencent.mm.plugin.sns.ad.b.b.a(locale.finderUsername, locale.finderLiveId, locale.PLR, locale.PLS, paramView, paramADXml, new b.1(this, localContext));
+        AppMethodBeat.o(311383);
         return true;
       }
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;) {}
     }
   }
   
-  public final int eCp()
+  public final int fKt()
   {
+    AppMethodBeat.i(311386);
+    if ((this.PYG != null) && (((Boolean)this.PYG.K("isFinderRoomPreview", Boolean.FALSE)).booleanValue()))
+    {
+      AppMethodBeat.o(311386);
+      return 48;
+    }
+    AppMethodBeat.o(311386);
     return 44;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.timeline.a.c.a.b
  * JD-Core Version:    0.7.0.1
  */

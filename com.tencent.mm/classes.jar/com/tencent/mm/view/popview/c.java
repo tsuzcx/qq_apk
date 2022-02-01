@@ -2,9 +2,9 @@ package com.tencent.mm.view.popview;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.b.b.ak;
-import com.tencent.mm.emoji.b.b.h;
-import com.tencent.mm.emoji.b.q;
+import com.tencent.mm.emoji.c.b.ak;
+import com.tencent.mm.emoji.c.b.h;
+import com.tencent.mm.emoji.c.q;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 
 public final class c
@@ -22,7 +22,7 @@ public final class c
       }
       if ((paramObject instanceof h))
       {
-        ((EmojiPopView)paramAbstractPopView).setEmojiInfo(((h)paramObject).jHh);
+        ((EmojiPopView)paramAbstractPopView).setEmojiInfo(((h)paramObject).mgK);
         AppMethodBeat.o(105304);
       }
     }
@@ -35,13 +35,13 @@ public final class c
         return;
       }
       if ((paramObject instanceof ak)) {
-        ((SmileyPopView)paramAbstractPopView).setSmileyItem(((ak)paramObject).jKg);
+        ((SmileyPopView)paramAbstractPopView).setSmileyItem(((ak)paramObject).mjw);
       }
     }
     AppMethodBeat.o(105304);
   }
   
-  public static AbstractPopView b(Context paramContext, Object paramObject)
+  public static AbstractPopView c(Context paramContext, Object paramObject)
   {
     AppMethodBeat.i(105303);
     if (((paramObject instanceof q)) || ((paramObject instanceof ak)))

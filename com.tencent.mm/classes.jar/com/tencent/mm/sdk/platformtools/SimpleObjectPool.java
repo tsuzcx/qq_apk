@@ -53,10 +53,10 @@ public class SimpleObjectPool<T>
   
   protected void put(T paramT)
   {
-    AppMethodBeat.i(189293);
+    AppMethodBeat.i(244075);
     if (this.mPool == null)
     {
-      AppMethodBeat.o(189293);
+      AppMethodBeat.o(244075);
       return;
     }
     if ((!isInPool(paramT)) && (this.mPoolSize < this.mPool.length))
@@ -64,7 +64,7 @@ public class SimpleObjectPool<T>
       this.mPool[this.mPoolSize] = paramT;
       this.mPoolSize += 1;
     }
-    AppMethodBeat.o(189293);
+    AppMethodBeat.o(244075);
   }
   
   public void putWithoutCheck(T paramT)
@@ -104,7 +104,7 @@ public class SimpleObjectPool<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.SimpleObjectPool
  * JD-Core Version:    0.7.0.1
  */

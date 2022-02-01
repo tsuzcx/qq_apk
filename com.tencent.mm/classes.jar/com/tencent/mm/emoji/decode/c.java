@@ -2,76 +2,91 @@ package com.tencent.mm.emoji.decode;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/decode/FramePicker;", "", "frameCount", "", "(I)V", "TAG", "", "allFrameValid", "", "getAllFrameValid", "()Z", "setAllFrameValid", "(Z)V", "getFrameCount", "()I", "<set-?>", "frameSum", "getFrameSum", "frameTimeList", "", "getFrameTimeList", "()[I", "findFrameIndex", "time", "setFrameTime", "", "index", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/decode/FramePicker;", "", "frameCount", "", "(I)V", "TAG", "", "allFrameValid", "", "getAllFrameValid", "()Z", "setAllFrameValid", "(Z)V", "getFrameCount", "()I", "<set-?>", "frameSum", "getFrameSum", "frameTimeList", "", "getFrameTimeList", "()[I", "findFrameIndex", "time", "setFrameTime", "", "index", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
 {
   private final String TAG;
   private final int frameCount;
-  private int jFA;
-  private final int[] jFy;
-  boolean jFz;
+  private final int[] mfl;
+  boolean mfm;
+  private int mfn;
   
   public c(int paramInt)
   {
-    AppMethodBeat.i(229781);
+    AppMethodBeat.i(242223);
     this.frameCount = paramInt;
     this.TAG = "MicroMsg.FramePicker";
-    this.jFy = new int[this.frameCount];
-    AppMethodBeat.o(229781);
+    this.mfl = new int[this.frameCount];
+    AppMethodBeat.o(242223);
   }
   
-  public final void cT(int paramInt1, int paramInt2)
+  public final void dG(int paramInt1, int paramInt2)
   {
     boolean bool = false;
-    AppMethodBeat.i(229776);
-    int i = this.frameCount;
-    if ((paramInt1 < 0) || (i <= paramInt1)) {
-      Log.i(this.TAG, "setFrameTime: invalid index ".concat(String.valueOf(paramInt1)));
-    }
-    this.jFA -= this.jFy[paramInt1];
-    this.jFy[paramInt1] = paramInt2;
-    this.jFA += this.jFy[paramInt1];
-    int[] arrayOfInt = this.jFy;
-    i = arrayOfInt.length;
-    paramInt1 = 0;
-    if (paramInt1 < i) {
-      if (arrayOfInt[paramInt1] > 0)
+    AppMethodBeat.i(242224);
+    int i;
+    if (paramInt1 >= 0) {
+      if (paramInt1 < this.frameCount)
       {
+        i = 1;
+        if (i == 0) {
+          Log.i(this.TAG, s.X("setFrameTime: invalid index ", Integer.valueOf(paramInt1)));
+        }
+        this.mfn -= this.mfl[paramInt1];
+        this.mfl[paramInt1] = paramInt2;
+        this.mfn += this.mfl[paramInt1];
+        int[] arrayOfInt = this.mfl;
+        i = arrayOfInt.length;
+        paramInt1 = 0;
+        label91:
+        if (paramInt1 >= i) {
+          break label143;
+        }
+        if (arrayOfInt[paramInt1] <= 0) {
+          break label131;
+        }
         paramInt2 = 1;
-        label101:
+        label105:
         if (paramInt2 != 0) {
-          break label122;
+          break label136;
         }
       }
     }
     for (;;)
     {
-      this.jFz = bool;
-      AppMethodBeat.o(229776);
+      this.mfm = bool;
+      AppMethodBeat.o(242224);
       return;
-      paramInt2 = 0;
-      break label101;
-      label122:
-      paramInt1 += 1;
+      i = 0;
       break;
+      i = 0;
+      break;
+      label131:
+      paramInt2 = 0;
+      break label105;
+      label136:
+      paramInt1 += 1;
+      break label91;
+      label143:
       bool = true;
     }
   }
   
-  public final int rx(int paramInt)
+  public final int rz(int paramInt)
   {
     int k = -1;
     if (this.frameCount <= 0) {}
-    while ((!this.jFz) && (paramInt > this.jFA)) {
+    while ((!this.mfm) && (paramInt > this.mfn)) {
       return k;
     }
     int i = paramInt;
-    if (this.jFz) {
-      i = paramInt % this.jFA;
+    if (this.mfm) {
+      i = paramInt % this.mfn;
     }
-    int j = this.jFy[0];
+    int j = this.mfl[0];
     paramInt = 0;
     for (;;)
     {
@@ -80,13 +95,13 @@ public final class c
         break;
       }
       paramInt += 1;
-      j += this.jFy[paramInt];
+      j += this.mfl[paramInt];
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.decode.c
  * JD-Core Version:    0.7.0.1
  */

@@ -16,18 +16,18 @@ public final class b
   extends a
   implements h.a, o.a
 {
-  public ViewGroup Rx;
-  a WfA;
-  boolean WfB;
-  private final Runnable WfC;
-  private boolean gh;
-  private h is;
+  a adLH;
+  boolean adLI;
+  private final Runnable adLJ;
+  public ViewGroup bxO;
+  private boolean hc;
+  private h jo;
   
   public b(Activity paramActivity, a parama)
   {
     super(paramActivity);
     AppMethodBeat.i(141510);
-    this.WfC = new Runnable()
+    this.adLJ = new Runnable()
     {
       public final void run()
       {
@@ -36,36 +36,33 @@ public final class b
         Object localObject = localb.mActivity;
         ActionBar localActionBar = localb.getSupportActionBar();
         if (localActionBar != null) {
-          localObject = localActionBar.aD();
+          localObject = localActionBar.bw();
         }
         localObject = new h((Context)localObject);
         ((h)localObject).a(localb);
-        if (b.this.WfA != null)
-        {
-          b.this.WfA.f((Menu)localObject);
-          b.this.WfA.e((Menu)localObject);
+        if ((b.this.adLH != null) && (b.this.adLH.f((Menu)localObject)) && (b.this.adLH.e((Menu)localObject))) {
           b.a(b.this, (h)localObject);
         }
         for (;;)
         {
-          ((h)localObject).H(true);
-          b.this.WfB = false;
+          ((h)localObject).L(true);
+          b.this.adLI = false;
           AppMethodBeat.o(141509);
           return;
           b.a(b.this, null);
         }
       }
     };
-    this.WfA = parama;
+    this.adLH = parama;
     AppMethodBeat.o(141510);
   }
   
-  private void aO()
+  private void bH()
   {
     AppMethodBeat.i(141512);
-    if (!this.gh)
+    if (!this.hc)
     {
-      this.gh = true;
+      this.hc = true;
       supportInvalidateOptionsMenu();
     }
     AppMethodBeat.o(141512);
@@ -73,43 +70,43 @@ public final class b
   
   public final void a(h paramh)
   {
-    AppMethodBeat.i(222157);
+    AppMethodBeat.i(250064);
     if (this.mActionBar != null)
     {
-      n localn = ((d)this.mActionBar).ht;
-      if ((localn != null) && (localn.cI()))
+      n localn = ((d)this.mActionBar).iq;
+      if ((localn != null) && (localn.dB()))
       {
-        if (!localn.cJ())
+        if (!localn.dC())
         {
           if (localn.getVisibility() == 0)
           {
-            localn.cC();
-            AppMethodBeat.o(222157);
+            localn.dv();
+            AppMethodBeat.o(250064);
           }
         }
         else {
-          localn.cL();
+          localn.dE();
         }
-        AppMethodBeat.o(222157);
+        AppMethodBeat.o(250064);
         return;
       }
     }
     paramh.close();
-    AppMethodBeat.o(222157);
+    AppMethodBeat.o(250064);
   }
   
   public final void a(h paramh, boolean paramBoolean) {}
   
   public final boolean a(h paramh, MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(222153);
-    if (this.WfA != null)
+    AppMethodBeat.i(250058);
+    if (this.adLH != null)
     {
-      boolean bool = this.WfA.g(paramMenuItem);
-      AppMethodBeat.o(222153);
+      boolean bool = this.adLH.i(paramMenuItem);
+      AppMethodBeat.o(250058);
       return bool;
     }
-    AppMethodBeat.o(222153);
+    AppMethodBeat.o(250058);
     return false;
   }
   
@@ -118,25 +115,25 @@ public final class b
     return false;
   }
   
-  public final ActionBar hJi()
+  public final ActionBar jlx()
   {
-    AppMethodBeat.i(222148);
-    aO();
+    AppMethodBeat.i(250053);
+    bH();
     if (this.mActionBar == null) {
-      this.mActionBar = new d(this.mActivity, this.Rx);
+      this.mActionBar = new d(this.mActivity, this.bxO);
     }
     ActionBar localActionBar = this.mActionBar;
-    AppMethodBeat.o(222148);
+    AppMethodBeat.o(250053);
     return localActionBar;
   }
   
   public final void supportInvalidateOptionsMenu()
   {
     AppMethodBeat.i(141515);
-    if (!this.WfB)
+    if (!this.adLI)
     {
-      this.WfB = true;
-      this.WfC.run();
+      this.adLI = true;
+      this.adLJ.run();
     }
     AppMethodBeat.o(141515);
   }
@@ -147,12 +144,12 @@ public final class b
     
     public abstract boolean f(Menu paramMenu);
     
-    public abstract boolean g(MenuItem paramMenuItem);
+    public abstract boolean i(MenuItem paramMenuItem);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.b.b
  * JD-Core Version:    0.7.0.1
  */

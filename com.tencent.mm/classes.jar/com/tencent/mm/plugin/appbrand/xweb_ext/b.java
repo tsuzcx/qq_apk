@@ -4,23 +4,23 @@ import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.cmd.a;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/UseXWebCanvas;", "Lcom/tencent/mm/pluginsdk/cmd/ProcessorCommand;", "()V", "processCommand", "", "context", "Landroid/content/Context;", "args", "", "", "username", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "Companion", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/UseXWebCanvas;", "Lcom/tencent/mm/pluginsdk/cmd/ProcessorCommand;", "()V", "processCommand", "", "context", "Landroid/content/Context;", "args", "", "", "username", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
   implements a
 {
-  public static final a rIb;
+  public static final a uTq;
   
   static
   {
     AppMethodBeat.i(51458);
-    rIb = new a((byte)0);
+    uTq = new a((byte)0);
     AppMethodBeat.o(51458);
   }
   
-  public static final void OO()
+  public static final void aoW()
   {
     AppMethodBeat.i(51459);
     com.tencent.mm.pluginsdk.cmd.b.a((a)new b(), new String[] { "//skia" });
@@ -30,10 +30,10 @@ public final class b
   public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
     AppMethodBeat.i(51457);
-    p.k(paramContext, "context");
-    p.k(paramArrayOfString, "args");
-    p.k(paramString, "username");
-    if (p.h("//skia", paramArrayOfString[0]))
+    s.u(paramContext, "context");
+    s.u(paramArrayOfString, "args");
+    s.u(paramString, "username");
+    if (s.p("//skia", paramArrayOfString[0]))
     {
       if (paramArrayOfString.length < 2)
       {
@@ -41,41 +41,39 @@ public final class b
         return false;
       }
       paramContext = paramArrayOfString[1];
-      switch (paramContext.hashCode())
+      if (s.p(paramContext, "true"))
       {
-      default: 
-        a.cqu().clear();
-        a.cqu().commit();
+        a.cTb().putBoolean("use_skia_canvas", true);
+        a.cTb().commit();
       }
       for (;;)
       {
         AppMethodBeat.o(51457);
         return true;
-        if (!paramContext.equals("true")) {
-          break;
+        if (s.p(paramContext, "false"))
+        {
+          a.cTb().putBoolean("use_skia_canvas", false);
+          a.cTb().commit();
         }
-        a.cqu().putBoolean("use_skia_canvas", true);
-        a.cqu().commit();
-        continue;
-        if (!paramContext.equals("false")) {
-          break;
+        else
+        {
+          a.cTb().clear();
+          a.cTb().commit();
         }
-        a.cqu().putBoolean("use_skia_canvas", false);
-        a.cqu().commit();
       }
     }
     AppMethodBeat.o(51457);
     return false;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/UseXWebCanvas$Companion;", "", "()V", "COMMAND_USE_XWEB_CANVAS", "", "TAG", "USE_SKIA_CANVAS", "kvCommand", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getKvCommand", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "register", "", "useSkiaCanvas", "", "()Ljava/lang/Boolean;", "plugin-appbrand-integration_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/UseXWebCanvas$Companion;", "", "()V", "COMMAND_USE_XWEB_CANVAS", "", "TAG", "USE_SKIA_CANVAS", "kvCommand", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getKvCommand", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "register", "", "useSkiaCanvas", "", "()Ljava/lang/Boolean;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
-    static MultiProcessMMKV cqu()
+    static MultiProcessMMKV cTb()
     {
       AppMethodBeat.i(51455);
       MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("MicroMsg.UseXWebCanvas");
-      p.j(localMultiProcessMMKV, "MultiProcessMMKV.getMMKV(TAG)");
+      s.s(localMultiProcessMMKV, "getMMKV(TAG)");
       AppMethodBeat.o(51455);
       return localMultiProcessMMKV;
     }

@@ -4,55 +4,53 @@ import android.content.ClipData;
 import android.content.ClipData.Item;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.c.i;
-import com.tencent.mm.plugin.webview.d.c.a;
-import com.tencent.mm.plugin.webview.d.f;
-import com.tencent.mm.plugin.webview.d.h;
-import com.tencent.mm.plugin.webview.d.n;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.plugin.webview.jsapi.e;
+import com.tencent.mm.plugin.webview.jsapi.h;
+import com.tencent.mm.plugin.webview.jsapi.p;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.HashMap;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiGetClipboardData;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "controlByte", "", "getControlByte", "()I", "funcName", "", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiGetClipboardData;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "controlByte", "", "getControlByte", "()I", "funcName", "", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class j
-  extends a
+  extends com.tencent.mm.plugin.webview.jsapi.c.a
 {
-  private static final int IIl = 404;
-  public static final j Qvc;
-  private static final String fXz = "getClipboardData";
+  private static final int OOk;
+  public static final j Xna;
+  private static final String idA;
   
   static
   {
-    AppMethodBeat.i(236309);
-    Qvc = new j();
-    IIl = 404;
-    fXz = "getClipboardData";
-    AppMethodBeat.o(236309);
+    AppMethodBeat.i(297861);
+    Xna = new j();
+    OOk = 404;
+    idA = "getClipboardData";
+    AppMethodBeat.o(297861);
   }
   
-  public final boolean a(f paramf, n paramn)
+  public final boolean a(h paramh, p paramp)
   {
-    AppMethodBeat.i(236304);
-    p.k(paramf, "env");
-    p.k(paramn, "msg");
+    AppMethodBeat.i(297872);
+    s.u(paramh, "env");
+    s.u(paramp, "msg");
     HashMap localHashMap = new HashMap();
     Object localObject = MMApplicationContext.getContext().getSystemService("clipboard");
     if (localObject == null)
     {
-      paramf = new t("null cannot be cast to non-null type android.content.ClipboardManager");
-      AppMethodBeat.o(236304);
-      throw paramf;
+      paramh = new NullPointerException("null cannot be cast to non-null type android.content.ClipboardManager");
+      AppMethodBeat.o(297872);
+      throw paramh;
     }
     localObject = ((ClipboardManager)localObject).getPrimaryClip();
     if ((localObject != null) && (((ClipData)localObject).getItemCount() > 0))
     {
       localObject = ((ClipData)localObject).getItemAt(0);
-      p.j(localObject, "item");
       CharSequence localCharSequence = ((ClipData.Item)localObject).getText();
       if (localCharSequence != null) {
         ((Map)localHashMap).put("data", localCharSequence);
@@ -62,20 +60,31 @@ public final class j
         ((Map)localHashMap).put("htmlText", localObject);
       }
     }
-    Toast.makeText(paramf.context, (CharSequence)paramf.context.getString(c.i.wv_get_clipboard), 0).show();
-    paramf.PNo.h(paramn.POu, paramn.function + ":ok", (Map)localHashMap);
-    AppMethodBeat.o(236304);
+    d.uiThread((kotlin.g.a.a)new a(paramh));
+    paramh.WDy.doCallback(paramp.WEH, s.X(paramp.function, ":ok"), (Map)localHashMap);
+    AppMethodBeat.o(297872);
     return true;
   }
   
-  public final String fCm()
+  public final String gPX()
   {
-    return fXz;
+    return idA;
   }
   
-  public final int fCn()
+  public final int gPZ()
   {
-    return IIl;
+    return OOk;
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    a(h paramh)
+    {
+      super();
+    }
   }
 }
 

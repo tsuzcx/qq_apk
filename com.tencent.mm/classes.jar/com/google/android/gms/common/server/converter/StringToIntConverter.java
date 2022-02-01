@@ -5,11 +5,6 @@ import android.os.Parcelable.Creator;
 import android.util.SparseArray;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
 import com.google.android.gms.common.server.response.FastJsonResponse.FieldConverter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
@@ -17,17 +12,14 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
-@SafeParcelable.Class(creator="StringToIntConverterCreator")
 public final class StringToIntConverter
   extends AbstractSafeParcelable
   implements FastJsonResponse.FieldConverter<String, Integer>
 {
   public static final Parcelable.Creator<StringToIntConverter> CREATOR;
-  @SafeParcelable.VersionField(id=1)
   private final int zzal;
   private final HashMap<String, Integer> zzwe;
   private final SparseArray<String> zzwf;
-  @SafeParcelable.Field(getter="getSerializedMap", id=2)
   private final ArrayList<Entry> zzwg;
   
   static
@@ -47,8 +39,7 @@ public final class StringToIntConverter
     AppMethodBeat.o(11943);
   }
   
-  @SafeParcelable.Constructor
-  StringToIntConverter(@SafeParcelable.Param(id=1) int paramInt, @SafeParcelable.Param(id=2) ArrayList<Entry> paramArrayList)
+  StringToIntConverter(int paramInt, ArrayList<Entry> paramArrayList)
   {
     AppMethodBeat.i(11942);
     this.zzal = paramInt;
@@ -129,16 +120,12 @@ public final class StringToIntConverter
     AppMethodBeat.o(11947);
   }
   
-  @SafeParcelable.Class(creator="StringToIntConverterEntryCreator")
   public static final class Entry
     extends AbstractSafeParcelable
   {
     public static final Parcelable.Creator<Entry> CREATOR;
-    @SafeParcelable.VersionField(id=1)
     private final int versionCode;
-    @SafeParcelable.Field(id=2)
     final String zzwh;
-    @SafeParcelable.Field(id=3)
     final int zzwi;
     
     static
@@ -148,8 +135,7 @@ public final class StringToIntConverter
       AppMethodBeat.o(11941);
     }
     
-    @SafeParcelable.Constructor
-    Entry(@SafeParcelable.Param(id=1) int paramInt1, @SafeParcelable.Param(id=2) String paramString, @SafeParcelable.Param(id=3) int paramInt2)
+    Entry(int paramInt1, String paramString, int paramInt2)
     {
       this.versionCode = paramInt1;
       this.zzwh = paramString;
@@ -177,7 +163,7 @@ public final class StringToIntConverter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.server.converter.StringToIntConverter
  * JD-Core Version:    0.7.0.1
  */

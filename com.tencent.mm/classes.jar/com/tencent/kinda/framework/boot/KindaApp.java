@@ -8,10 +8,13 @@ import com.tencent.kinda.gen.IAppKinda;
 import com.tencent.kinda.gen.ITransmitKvData;
 import com.tencent.kinda.modularize.KindaAppModuleManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.expansions.a;
 import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.wxpayreport.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.io.Writer;
 
 public class KindaApp
 {
@@ -24,16 +27,15 @@ public class KindaApp
   static
   {
     AppMethodBeat.i(18617);
-    tryLoadLibrary();
-    instance = new KindaApp();
+    WxCrossServices.tryLoadLibrary();
     AppMethodBeat.o(18617);
   }
   
-  public KindaApp()
+  private KindaApp()
   {
     AppMethodBeat.i(18612);
     Log.i("MicroMsg.Kinda.KindaApp", "create kinda app");
-    h.IzE.el(782, 30);
+    h.OAn.kJ(782, 30);
     this.appModuleManager = new KindaAppModuleManager();
     this.appModuleManager.registerModule(new KindaBaseViewModule());
     this.appModuleManager.registerModule(new KindaBaseServiceModule());
@@ -53,24 +55,37 @@ public class KindaApp
   
   public static KindaApp instance()
   {
-    return instance;
-  }
-  
-  public static boolean isEnabled()
-  {
-    AppMethodBeat.i(18609);
-    boolean bool = a.dbf();
-    AppMethodBeat.o(18609);
-    return bool;
-  }
-  
-  private static void tryLoadLibrary()
-  {
-    AppMethodBeat.i(18610);
-    if (isEnabled()) {
-      WxCrossServices.tryLoadLibrary();
+    AppMethodBeat.i(226302);
+    if (instance == null) {}
+    try
+    {
+      if (instance == null) {
+        instance = new KindaApp();
+      }
+      KindaApp localKindaApp = instance;
+      AppMethodBeat.o(226302);
+      return localKindaApp;
     }
-    AppMethodBeat.o(18610);
+    finally
+    {
+      AppMethodBeat.o(226302);
+    }
+  }
+  
+  public static void reportFatalError(Throwable paramThrowable)
+  {
+    AppMethodBeat.i(226309);
+    Object localObject = new StringWriter();
+    paramThrowable.printStackTrace(new PrintWriter((Writer)localObject));
+    localObject = ((StringWriter)localObject).toString();
+    Log.e("MicroMsg.Kinda.KindaApp", "reportFatalError stack : ".concat(String.valueOf(localObject)));
+    paramThrowable = (Throwable)localObject;
+    if (((String)localObject).length() > 6000) {
+      paramThrowable = ((String)localObject).substring(0, 6000);
+    }
+    localObject = g.XIU;
+    g.O("6", "1", "1", paramThrowable);
+    AppMethodBeat.o(226309);
   }
   
   public void notifyAllUseCases(ITransmitKvData paramITransmitKvData)
@@ -92,7 +107,7 @@ public class KindaApp
   public void onCreate()
   {
     AppMethodBeat.i(18613);
-    tryLoadLibrary();
+    WxCrossServices.tryLoadLibrary();
     this.appModuleManager.onAppCreate();
     AppMethodBeat.o(18613);
   }
@@ -107,13 +122,13 @@ public class KindaApp
   
   public void reInitModule()
   {
-    AppMethodBeat.i(264001);
+    AppMethodBeat.i(226317);
     if (this.appModuleManager != null)
     {
       this.appModuleManager.initAllModule();
       this.kinda = IAppKinda.getInstance();
     }
-    AppMethodBeat.o(264001);
+    AppMethodBeat.o(226317);
   }
   
   public void releaseAppKinda()
@@ -123,7 +138,7 @@ public class KindaApp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.kinda.framework.boot.KindaApp
  * JD-Core Version:    0.7.0.1
  */

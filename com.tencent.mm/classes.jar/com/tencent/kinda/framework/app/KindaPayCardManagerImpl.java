@@ -33,14 +33,14 @@ public class KindaPayCardManagerImpl
     localBundle.putBoolean("is_from_new_cashier", true);
     localBundle.putString("start_activity_class", localObject.getClass().getName());
     a.a((Activity)localObject, b.class, localBundle);
-    localObject = a.bF((Activity)localObject);
+    localObject = a.cm((Activity)localObject);
     if (!(localObject instanceof b))
     {
       Log.e("KindaPayCardManagerImpl", "Fail to get correct wallet process in addPayCardImpl, expect BindCardProcess got %s", new Object[] { localObject.getClass().getName() });
       AppMethodBeat.o(18461);
       return;
     }
-    ((b)localObject).OHE = new b.a()
+    ((b)localObject).Vxq = new b.a()
     {
       public void run(int paramAnonymousInt)
       {
@@ -60,7 +60,7 @@ public class KindaPayCardManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.app.KindaPayCardManagerImpl
  * JD-Core Version:    0.7.0.1
  */

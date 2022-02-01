@@ -6,29 +6,29 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.AbsoluteLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.i.a;
+import com.tencent.mm.plugin.sns.b.a;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 
 public final class b
 {
-  NotInterestMenu.c JwQ;
-  NotInterestMenu JwV;
-  ViewGroup JwW;
-  NotInterestMenu.b JwX;
-  Animation JwY;
-  Animation JwZ;
-  private Animation Jxa;
-  private Animation Jxb;
-  int Jxc;
-  int Jxd;
-  int Jxe;
-  int Jxf;
-  int Jxg;
-  boolean Jxh;
-  AbsoluteLayout Jxi;
-  boolean Jxj;
-  boolean Jxk;
+  private Animation PKA;
+  private Animation PKB;
+  int PKC;
+  int PKD;
+  int PKE;
+  int PKF;
+  int PKG;
+  boolean PKH;
+  AbsoluteLayout PKI;
+  boolean PKJ;
+  boolean PKK;
+  NotInterestMenu.c PKq;
+  NotInterestMenu PKv;
+  ViewGroup PKw;
+  NotInterestMenu.b PKx;
+  Animation PKy;
+  Animation PKz;
   int mActionBarHeight;
   int mScreenHeight;
   int mStatusBarHeight;
@@ -36,45 +36,45 @@ public final class b
   public b(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(94952);
-    this.JwX = new NotInterestMenu.b()
+    this.PKx = new NotInterestMenu.b()
     {
-      public final void fJA()
+      public final void gZu()
       {
         AppMethodBeat.i(94945);
-        b.this.fJB();
+        b.this.gZv();
         AppMethodBeat.o(94945);
       }
     };
-    this.JwY = null;
-    this.JwZ = null;
-    this.Jxa = null;
-    this.Jxb = null;
+    this.PKy = null;
+    this.PKz = null;
+    this.PKA = null;
+    this.PKB = null;
     this.mStatusBarHeight = 0;
     this.mActionBarHeight = 0;
-    this.Jxc = 0;
-    this.Jxd = 0;
-    this.Jxe = 0;
+    this.PKC = 0;
+    this.PKD = 0;
+    this.PKE = 0;
     this.mScreenHeight = 0;
-    this.Jxf = 0;
-    this.Jxg = 0;
-    this.Jxh = false;
-    this.Jxi = null;
-    this.Jxj = false;
-    this.Jxk = false;
-    this.JwW = paramViewGroup;
-    this.JwY = AnimationUtils.loadAnimation(MMApplicationContext.getContext(), i.a.dropdown_down);
-    this.JwY.setFillAfter(true);
-    this.JwY.setDuration(100L);
-    this.JwY.setAnimationListener(new Animation.AnimationListener()
+    this.PKF = 0;
+    this.PKG = 0;
+    this.PKH = false;
+    this.PKI = null;
+    this.PKJ = false;
+    this.PKK = false;
+    this.PKw = paramViewGroup;
+    this.PKy = AnimationUtils.loadAnimation(MMApplicationContext.getContext(), b.a.dropdown_down);
+    this.PKy.setFillAfter(true);
+    this.PKy.setDuration(100L);
+    this.PKy.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
         AppMethodBeat.i(94946);
-        if (b.this.JwV != null) {
-          b.this.JwV.setVisibility(0);
+        if (b.this.PKv != null) {
+          b.this.PKv.setVisibility(0);
         }
-        b.this.Jxj = false;
-        b.this.Jxh = true;
+        b.this.PKJ = false;
+        b.this.PKH = true;
         AppMethodBeat.o(94946);
       }
       
@@ -82,22 +82,22 @@ public final class b
       
       public final void onAnimationStart(Animation paramAnonymousAnimation)
       {
-        b.this.Jxj = true;
+        b.this.PKJ = true;
       }
     });
-    this.JwZ = AnimationUtils.loadAnimation(MMApplicationContext.getContext(), i.a.dropup_up);
-    this.JwZ.setFillAfter(true);
-    this.JwZ.setDuration(100L);
-    this.JwZ.setAnimationListener(new Animation.AnimationListener()
+    this.PKz = AnimationUtils.loadAnimation(MMApplicationContext.getContext(), b.a.dropup_up);
+    this.PKz.setFillAfter(true);
+    this.PKz.setDuration(100L);
+    this.PKz.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
         AppMethodBeat.i(94947);
-        if (b.this.JwV != null) {
-          b.this.JwV.setVisibility(0);
+        if (b.this.PKv != null) {
+          b.this.PKv.setVisibility(0);
         }
-        b.this.Jxj = false;
-        b.this.Jxh = true;
+        b.this.PKJ = false;
+        b.this.PKH = true;
         AppMethodBeat.o(94947);
       }
       
@@ -105,13 +105,13 @@ public final class b
       
       public final void onAnimationStart(Animation paramAnonymousAnimation)
       {
-        b.this.Jxj = true;
+        b.this.PKJ = true;
       }
     });
-    this.Jxa = AnimationUtils.loadAnimation(MMApplicationContext.getContext(), i.a.dropdown_up);
-    this.Jxa.setFillAfter(true);
-    this.Jxa.setDuration(100L);
-    this.Jxa.setAnimationListener(new Animation.AnimationListener()
+    this.PKA = AnimationUtils.loadAnimation(MMApplicationContext.getContext(), b.a.dropdown_up);
+    this.PKA.setFillAfter(true);
+    this.PKA.setDuration(100L);
+    this.PKA.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
@@ -121,11 +121,11 @@ public final class b
           public final void run()
           {
             AppMethodBeat.i(94948);
-            b.this.fJB();
+            b.this.gZv();
             AppMethodBeat.o(94948);
           }
         });
-        b.this.Jxj = false;
+        b.this.PKJ = false;
         AppMethodBeat.o(94949);
       }
       
@@ -133,13 +133,13 @@ public final class b
       
       public final void onAnimationStart(Animation paramAnonymousAnimation)
       {
-        b.this.Jxj = true;
+        b.this.PKJ = true;
       }
     });
-    this.Jxb = AnimationUtils.loadAnimation(MMApplicationContext.getContext(), i.a.dropup_down);
-    this.Jxb.setFillAfter(true);
-    this.Jxb.setDuration(100L);
-    this.Jxb.setAnimationListener(new Animation.AnimationListener()
+    this.PKB = AnimationUtils.loadAnimation(MMApplicationContext.getContext(), b.a.dropup_down);
+    this.PKB.setFillAfter(true);
+    this.PKB.setDuration(100L);
+    this.PKB.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
@@ -149,11 +149,11 @@ public final class b
           public final void run()
           {
             AppMethodBeat.i(94950);
-            b.this.fJB();
+            b.this.gZv();
             AppMethodBeat.o(94950);
           }
         });
-        b.this.Jxj = false;
+        b.this.PKJ = false;
         AppMethodBeat.o(94951);
       }
       
@@ -161,29 +161,29 @@ public final class b
       
       public final void onAnimationStart(Animation paramAnonymousAnimation)
       {
-        b.this.Jxj = true;
+        b.this.PKJ = true;
       }
     });
     AppMethodBeat.o(94952);
   }
   
-  public final void fJB()
+  public final void gZv()
   {
     AppMethodBeat.i(94953);
-    if ((this.Jxi != null) && (this.JwW != null) && (this.JwV != null))
+    if ((this.PKI != null) && (this.PKw != null) && (this.PKv != null))
     {
-      this.Jxi.removeView(this.JwV);
-      this.JwW.removeView(this.Jxi);
-      this.Jxi = null;
-      this.JwV = null;
-      this.Jxh = false;
+      this.PKI.removeView(this.PKv);
+      this.PKw.removeView(this.PKI);
+      this.PKI = null;
+      this.PKv = null;
+      this.PKH = false;
     }
     AppMethodBeat.o(94953);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.abtest.b
  * JD-Core Version:    0.7.0.1
  */

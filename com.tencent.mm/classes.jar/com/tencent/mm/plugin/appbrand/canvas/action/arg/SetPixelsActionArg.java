@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.g;
+import com.tencent.mm.plugin.appbrand.af.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Objects;
 import org.json.JSONArray;
@@ -76,10 +76,10 @@ public class SetPixelsActionArg
     return i;
   }
   
-  public final void i(Parcel paramParcel)
+  public final void k(Parcel paramParcel)
   {
     AppMethodBeat.i(145220);
-    super.i(paramParcel);
+    super.k(paramParcel);
     this.x = paramParcel.readInt();
     this.y = paramParcel.readInt();
     this.width = paramParcel.readInt();
@@ -93,10 +93,10 @@ public class SetPixelsActionArg
     AppMethodBeat.i(145222);
     super.parse(paramJSONObject);
     paramJSONObject = paramJSONObject.optJSONArray("data");
-    this.x = g.c(paramJSONObject, 0);
-    this.y = g.c(paramJSONObject, 1);
-    this.width = g.c(paramJSONObject, 2);
-    this.height = g.c(paramJSONObject, 3);
+    this.x = i.c(paramJSONObject, 0);
+    this.y = i.c(paramJSONObject, 1);
+    this.width = i.c(paramJSONObject, 2);
+    this.height = i.c(paramJSONObject, 3);
     try
     {
       this.bitmap = ((Bitmap)paramJSONObject.get(4));
@@ -124,7 +124,7 @@ public class SetPixelsActionArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetPixelsActionArg
  * JD-Core Version:    0.7.0.1
  */

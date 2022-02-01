@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.mmsight.segment;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.memory.o;
-import com.tencent.mm.memory.o.b;
+import com.tencent.mm.memory.n;
+import com.tencent.mm.memory.n.b;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.thread.ThreadPool;
@@ -88,9 +88,9 @@ public class FFmpegSightJNIThumbFetcher
         if ((this.mReusedBitmap == null) || (this.mReusedBitmap.isRecycled()) || (this.mReusedBitmap.getWidth() != this.mScaledWidth) || (this.mReusedBitmap.getHeight() != this.mScaledHeight))
         {
           if ((this.mReusedBitmap != null) && (!this.mReusedBitmap.isRecycled())) {
-            o.liV.E(this.mReusedBitmap);
+            n.nNG.M(this.mReusedBitmap);
           }
-          this.mReusedBitmap = o.liV.a(new o.b(this.mScaledWidth, this.mScaledHeight));
+          this.mReusedBitmap = n.nNG.a(new n.b(this.mScaledWidth, this.mScaledHeight));
         }
         Log.i("MicroMsg.FFmpegSightJNIThumbFetcher", "getFrameAtTime() dr return %d", new Object[] { Integer.valueOf(SightVideoJNI.drawScaledFrame(this.mBufId, this.mReusedBitmap, this.mScaledWidth, this.mScaledHeight)) });
         Bitmap localBitmap = this.mReusedBitmap;
@@ -177,7 +177,7 @@ public class FFmpegSightJNIThumbFetcher
     {
       AppMethodBeat.i(107629);
       if ((this.mReusedBitmap != null) && (!this.mReusedBitmap.isRecycled())) {
-        o.liV.E(this.mReusedBitmap);
+        n.nNG.M(this.mReusedBitmap);
       }
       SightVideoJNI.freeObj(this.mBufId);
       AppMethodBeat.o(107629);
@@ -186,7 +186,7 @@ public class FFmpegSightJNIThumbFetcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.FFmpegSightJNIThumbFetcher
  * JD-Core Version:    0.7.0.1
  */

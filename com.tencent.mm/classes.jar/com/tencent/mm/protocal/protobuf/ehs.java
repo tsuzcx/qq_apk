@@ -1,60 +1,80 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import i.a.a.b;
 
 public final class ehs
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String UjL;
+  public String abmM;
+  public int abmN;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(114078);
+    AppMethodBeat.i(32371);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.UjL != null) {
-        paramVarArgs.f(1, this.UjL);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.abmM == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: Ip");
+        AppMethodBeat.o(32371);
+        throw paramVarArgs;
       }
-      AppMethodBeat.o(114078);
+      if (this.abmM != null) {
+        paramVarArgs.g(1, this.abmM);
+      }
+      paramVarArgs.bS(2, this.abmN);
+      AppMethodBeat.o(32371);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.UjL == null) {
-        break label213;
+      if (this.abmM == null) {
+        break label314;
       }
     }
-    label213:
-    for (paramInt = g.a.a.b.b.a.g(1, this.UjL) + 0;; paramInt = 0)
+    label314:
+    for (paramInt = i.a.a.b.b.a.h(1, this.abmM) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(114078);
-      return paramInt;
+      int i = i.a.a.b.b.a.cJ(2, this.abmN);
+      AppMethodBeat.o(32371);
+      return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(114078);
+        if (this.abmM == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: Ip");
+          AppMethodBeat.o(32371);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(32371);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         ehs localehs = (ehs)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(114078);
+          AppMethodBeat.o(32371);
           return -1;
+        case 1: 
+          localehs.abmM = locala.ajGk.readString();
+          AppMethodBeat.o(32371);
+          return 0;
         }
-        localehs.UjL = locala.abFh.readString();
-        AppMethodBeat.o(114078);
+        localehs.abmN = locala.ajGk.aar();
+        AppMethodBeat.o(32371);
         return 0;
       }
-      AppMethodBeat.o(114078);
+      AppMethodBeat.o(32371);
       return -1;
     }
   }

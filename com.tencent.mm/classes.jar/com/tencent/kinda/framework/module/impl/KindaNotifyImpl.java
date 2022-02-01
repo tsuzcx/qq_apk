@@ -2,8 +2,7 @@ package com.tencent.kinda.framework.module.impl;
 
 import com.tencent.kinda.gen.KindaNotify;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.md;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.autogen.a.nj;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 
@@ -16,16 +15,16 @@ public class KindaNotifyImpl
   {
     AppMethodBeat.i(18645);
     Log.i("MicroMsg.KindaNotifyImpl", "key:%s, value:%s", new Object[] { paramString, paramHashMap.toString() });
-    md localmd = new md();
-    localmd.fKe.key = paramString;
-    localmd.fKe.fKf = paramHashMap;
-    EventCenter.instance.publish(localmd);
+    nj localnj = new nj();
+    localnj.hPK.key = paramString;
+    localnj.hPK.hPL = paramHashMap;
+    localnj.publish();
     AppMethodBeat.o(18645);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.module.impl.KindaNotifyImpl
  * JD-Core Version:    0.7.0.1
  */

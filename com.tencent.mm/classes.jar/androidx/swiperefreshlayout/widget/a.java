@@ -13,135 +13,135 @@ import android.os.Build.VERSION;
 import android.util.DisplayMetrics;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a
   extends ImageView
 {
-  Animation.AnimationListener aoa;
-  int aob;
+  Animation.AnimationListener ccK;
+  int ccL;
   
   a(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(256291);
+    AppMethodBeat.i(193233);
     float f = getContext().getResources().getDisplayMetrics().density;
     int i = (int)(1.75F * f);
     int j = (int)(0.0F * f);
-    this.aob = ((int)(3.5F * f));
-    if (mV())
+    this.ccL = ((int)(3.5F * f));
+    if (Lx())
     {
       paramContext = new ShapeDrawable(new OvalShape());
-      w.j(this, f * 4.0F);
+      z.k(this, f * 4.0F);
     }
     for (;;)
     {
       paramContext.getPaint().setColor(-328966);
-      w.a(this, paramContext);
-      AppMethodBeat.o(256291);
+      z.a(this, paramContext);
+      AppMethodBeat.o(193233);
       return;
-      paramContext = new ShapeDrawable(new a(this.aob));
+      paramContext = new ShapeDrawable(new a(this.ccL));
       setLayerType(1, paramContext.getPaint());
-      paramContext.getPaint().setShadowLayer(this.aob, j, i, 503316480);
-      i = this.aob;
+      paramContext.getPaint().setShadowLayer(this.ccL, j, i, 503316480);
+      i = this.ccL;
       setPadding(i, i, i, i);
     }
   }
   
-  private static boolean mV()
+  private static boolean Lx()
   {
     return Build.VERSION.SDK_INT >= 21;
   }
   
   public final void onAnimationEnd()
   {
-    AppMethodBeat.i(256294);
+    AppMethodBeat.i(193260);
     super.onAnimationEnd();
-    if (this.aoa != null) {
-      this.aoa.onAnimationEnd(getAnimation());
+    if (this.ccK != null) {
+      this.ccK.onAnimationEnd(getAnimation());
     }
-    AppMethodBeat.o(256294);
+    AppMethodBeat.o(193260);
   }
   
   public final void onAnimationStart()
   {
-    AppMethodBeat.i(256293);
+    AppMethodBeat.i(193255);
     super.onAnimationStart();
-    if (this.aoa != null) {
-      this.aoa.onAnimationStart(getAnimation());
+    if (this.ccK != null) {
+      this.ccK.onAnimationStart(getAnimation());
     }
-    AppMethodBeat.o(256293);
+    AppMethodBeat.o(193255);
   }
   
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(256292);
+    AppMethodBeat.i(193247);
     super.onMeasure(paramInt1, paramInt2);
-    if (!mV()) {
-      setMeasuredDimension(getMeasuredWidth() + this.aob * 2, getMeasuredHeight() + this.aob * 2);
+    if (!Lx()) {
+      setMeasuredDimension(getMeasuredWidth() + this.ccL * 2, getMeasuredHeight() + this.ccL * 2);
     }
-    AppMethodBeat.o(256292);
+    AppMethodBeat.o(193247);
   }
   
   public final void setBackgroundColor(int paramInt)
   {
-    AppMethodBeat.i(256295);
+    AppMethodBeat.i(193268);
     if ((getBackground() instanceof ShapeDrawable)) {
       ((ShapeDrawable)getBackground()).getPaint().setColor(paramInt);
     }
-    AppMethodBeat.o(256295);
+    AppMethodBeat.o(193268);
   }
   
   final class a
     extends OvalShape
   {
-    private RadialGradient aoc;
-    private Paint aod;
+    private RadialGradient ccM;
+    private Paint ccN;
     
     a(int paramInt)
     {
-      AppMethodBeat.i(256285);
-      this.aod = new Paint();
-      a.this.aob = paramInt;
-      du((int)rect().width());
-      AppMethodBeat.o(256285);
+      AppMethodBeat.i(193242);
+      this.ccN = new Paint();
+      a.this.ccL = paramInt;
+      gE((int)rect().width());
+      AppMethodBeat.o(193242);
     }
     
-    private void du(int paramInt)
+    private void gE(int paramInt)
     {
-      AppMethodBeat.i(256289);
+      AppMethodBeat.i(193246);
       float f1 = paramInt / 2;
       float f2 = paramInt / 2;
-      float f3 = a.this.aob;
+      float f3 = a.this.ccL;
       Shader.TileMode localTileMode = Shader.TileMode.CLAMP;
-      this.aoc = new RadialGradient(f1, f2, f3, new int[] { 1023410176, 0 }, null, localTileMode);
-      this.aod.setShader(this.aoc);
-      AppMethodBeat.o(256289);
+      this.ccM = new RadialGradient(f1, f2, f3, new int[] { 1023410176, 0 }, null, localTileMode);
+      this.ccN.setShader(this.ccM);
+      AppMethodBeat.o(193246);
     }
     
     public final void draw(Canvas paramCanvas, Paint paramPaint)
     {
-      AppMethodBeat.i(256288);
+      AppMethodBeat.i(193261);
       int i = a.this.getWidth();
       int j = a.this.getHeight();
-      paramCanvas.drawCircle(i / 2, j / 2, i / 2, this.aod);
-      paramCanvas.drawCircle(i / 2, j / 2, i / 2 - a.this.aob, paramPaint);
-      AppMethodBeat.o(256288);
+      paramCanvas.drawCircle(i / 2, j / 2, i / 2, this.ccN);
+      paramCanvas.drawCircle(i / 2, j / 2, i / 2 - a.this.ccL, paramPaint);
+      AppMethodBeat.o(193261);
     }
     
     protected final void onResize(float paramFloat1, float paramFloat2)
     {
-      AppMethodBeat.i(256287);
+      AppMethodBeat.i(193254);
       super.onResize(paramFloat1, paramFloat2);
-      du((int)paramFloat1);
-      AppMethodBeat.o(256287);
+      gE((int)paramFloat1);
+      AppMethodBeat.o(193254);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     androidx.swiperefreshlayout.widget.a
  * JD-Core Version:    0.7.0.1
  */

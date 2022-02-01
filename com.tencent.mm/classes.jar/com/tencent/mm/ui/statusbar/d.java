@@ -1,18 +1,15 @@
 package com.tencent.mm.ui.statusbar;
 
-import android.app.Activity;
-import android.content.Context;
 import android.os.Build.VERSION;
 import android.view.View;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.system.AndroidContextUtil;
-import com.tencent.mm.ui.t;
+import com.tencent.mm.ui.v;
 
 public final class d
-  extends t
+  extends v
 {
-  public static void e(Window paramWindow)
+  public static void g(Window paramWindow)
   {
     AppMethodBeat.i(133827);
     if (paramWindow == null)
@@ -29,7 +26,7 @@ public final class d
     AppMethodBeat.o(133827);
   }
   
-  public static boolean f(Window paramWindow)
+  public static boolean h(Window paramWindow)
   {
     AppMethodBeat.i(133826);
     if ((paramWindow == null) || (paramWindow.getDecorView() == null))
@@ -44,14 +41,6 @@ public final class d
     }
     AppMethodBeat.o(133826);
     return false;
-  }
-  
-  public static Activity lz(Context paramContext)
-  {
-    AppMethodBeat.i(292914);
-    paramContext = AndroidContextUtil.castActivityOrNull(paramContext);
-    AppMethodBeat.o(292914);
-    return paramContext;
   }
 }
 

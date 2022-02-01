@@ -1,63 +1,62 @@
 package com.tencent.mm.plugin.vlog.ui.plugin;
 
-import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.recordvideo.plugin.a;
-import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
+import com.tencent.mm.plugin.recordvideo.plugin.parent.a.b;
+import com.tencent.mm.plugin.recordvideo.plugin.parent.a.c;
 import com.tencent.mm.plugin.vlog.a.f;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.vlog.ui.widget.PagInputView;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.b;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/NormalModeContainerPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/AutoRegisterPlugin;", "parent", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "imageView", "Landroid/view/View;", "kotlin.jvm.PlatformType", "getParent", "()Landroid/view/ViewGroup;", "setParent", "(Landroid/view/ViewGroup;)V", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "videoView", "view", "setVisibility", "", "visibility", "", "setupImage", "setupVideo", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/plugin/PagEditTextPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/AutoRegisterPlugin;", "layout", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getLayout", "()Landroid/view/ViewGroup;", "pagInputView", "Lcom/tencent/mm/plugin/vlog/ui/widget/PagInputView;", "kotlin.jvm.PlatformType", "editPag", "", "text", "", "onBackPress", "", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class w
-  extends a
+  extends com.tencent.mm.plugin.recordvideo.plugin.a
 {
-  private d APl;
-  private final View Nwa;
-  private final View Nwb;
-  private ViewGroup parent;
-  private View view;
+  private final ViewGroup GrB;
+  final PagInputView Ujo;
   
-  public w(ViewGroup paramViewGroup, d paramd)
+  public w(ViewGroup paramViewGroup, final com.tencent.mm.plugin.recordvideo.plugin.parent.a parama)
   {
-    super(paramd, (byte)0);
-    AppMethodBeat.i(227814);
-    this.parent = paramViewGroup;
-    this.APl = paramd;
-    this.Nwa = this.parent.findViewById(a.f.normal_mode_image_container);
-    this.Nwb = this.parent.findViewById(a.f.vlog_editor_thumb_view);
-    this.view = this.Nwb;
-    AppMethodBeat.o(227814);
+    super(parama);
+    AppMethodBeat.i(282480);
+    this.GrB = paramViewGroup;
+    this.Ujo = ((PagInputView)this.GrB.findViewById(a.f.editor_pag_input));
+    this.Ujo.setTextChangeCallback((b)new u(parama) {});
+    AppMethodBeat.o(282480);
   }
   
-  public final void gvJ()
+  public final void bfr(String paramString)
   {
-    this.view = this.Nwa;
+    AppMethodBeat.i(282489);
+    s.u(paramString, "text");
+    this.Ujo.setup(paramString);
+    this.Ujo.setShow(true);
+    AppMethodBeat.o(282489);
   }
   
-  public final void gvK()
+  public final boolean onBackPress()
   {
-    AppMethodBeat.i(227806);
-    View localView = this.Nwa;
-    p.j(localView, "imageView");
-    localView.setVisibility(8);
-    this.view = this.Nwb;
-    AppMethodBeat.o(227806);
-  }
-  
-  public final void setVisibility(int paramInt)
-  {
-    AppMethodBeat.i(227808);
-    View localView = this.view;
-    p.j(localView, "view");
-    localView.setVisibility(paramInt);
-    AppMethodBeat.o(227808);
+    AppMethodBeat.i(282500);
+    if (this.Ujo.getVisibility() == 0) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      this.Ujo.setShow(false);
+      a.b.a(this.GrC, a.c.NOD);
+      AppMethodBeat.o(282500);
+      return true;
+    }
+    boolean bool = super.onBackPress();
+    AppMethodBeat.o(282500);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.plugin.w
  * JD-Core Version:    0.7.0.1
  */

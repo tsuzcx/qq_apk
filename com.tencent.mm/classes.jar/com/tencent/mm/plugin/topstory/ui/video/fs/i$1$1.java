@@ -8,11 +8,11 @@ import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.topstory.ui.c.g;
 import com.tencent.mm.plugin.topstory.ui.video.b;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.widget.a.f.a;
-import com.tencent.mm.ui.widget.a.f.c;
+import com.tencent.mm.ui.widget.a.g.a;
+import com.tencent.mm.ui.widget.a.g.c;
 
 final class i$1$1
   implements Runnable
@@ -22,18 +22,18 @@ final class i$1$1
   public final void run()
   {
     AppMethodBeat.i(126393);
-    f.a locala = new f.a(MMApplicationContext.getContext());
-    locala.bBl(i.e(this.Ncg.Ncf).eOa().getString(c.g.top_story_video_education)).HL(true);
-    locala.ayp(c.g.welcome_i_know).b(new f.c()
+    g.a locala = new g.a(MMApplicationContext.getContext());
+    locala.bDE(i.e(this.TOQ.TOO).fWt().getString(c.g.top_story_video_education)).NF(true);
+    locala.aEX(c.g.welcome_i_know).b(new g.c()
     {
-      public final void g(boolean paramAnonymousBoolean, String paramAnonymousString) {}
-    }).b(new DialogInterface.OnDismissListener()
+      public final void onDialogClick(boolean paramAnonymousBoolean, String paramAnonymousString) {}
+    }).d(new DialogInterface.OnDismissListener()
     {
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(126392);
-        h.aHG().aHp().set(ar.a.Vuq, Integer.valueOf(1));
-        h.aHG().aHp().hxT();
+        h.baE().ban().set(at.a.acVZ, Integer.valueOf(1));
+        h.baE().ban().iZy();
         AppMethodBeat.o(126392);
       }
     }).show();

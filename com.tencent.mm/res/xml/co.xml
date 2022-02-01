@@ -1,9 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <PreferenceSmallCategory />
-    <PreferenceSmallCategory />
-    <CheckBoxPreference android:defaultValue="true" android:key="settings_voip_sound" android:persistent="false" android:title="@string/gul" />
-    <CheckBoxPreference android:defaultValue="true" android:key="settings_voip_shake" android:persistent="false" android:title="@string/gtt" />
-    <PreferenceSmallCategory />
-</PreferenceScreen>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" />

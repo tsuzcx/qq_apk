@@ -10,75 +10,66 @@ import com.tencent.mm.ui.tools.i;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/uic/KeyboardProviderUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "Lcom/tencent/mm/ui/tools/KeyboardHeightObserver;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "keyboardHeightProvider", "Lcom/tencent/mm/ui/tools/KeyboardHeightProvider;", "observerList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "addObserver", "", "observer", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onKeyboardHeightChanged", "height", "", "isResized", "", "onPause", "onResume", "removeObserver", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/uic/KeyboardProviderUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "Lcom/tencent/mm/ui/tools/KeyboardHeightObserver;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "keyboardHeightProvider", "Lcom/tencent/mm/ui/tools/KeyboardHeightProvider;", "observerList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "addObserver", "", "observer", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onKeyboardHeightChanged", "height", "", "isResized", "", "onPause", "onResume", "removeObserver", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   extends UIComponent
   implements h
 {
-  public final ArrayList<h> Gik;
-  public i jij;
+  public final ArrayList<h> Mdq;
+  public i lKz;
   
   public a(AppCompatActivity paramAppCompatActivity)
   {
     super(paramAppCompatActivity);
-    AppMethodBeat.i(229422);
-    this.Gik = new ArrayList();
-    AppMethodBeat.o(229422);
-  }
-  
-  public final void A(int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(229418);
-    Iterator localIterator = ((Iterable)new ArrayList((Collection)this.Gik)).iterator();
-    while (localIterator.hasNext()) {
-      ((h)localIterator.next()).A(paramInt, paramBoolean);
-    }
-    AppMethodBeat.o(229418);
+    AppMethodBeat.i(287898);
+    this.Mdq = new ArrayList();
+    AppMethodBeat.o(287898);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(229411);
+    AppMethodBeat.i(287911);
     super.onCreate(paramBundle);
-    this.jij = new i((Activity)getActivity());
-    paramBundle = this.jij;
-    if (paramBundle != null)
-    {
-      paramBundle.setKeyboardHeightObserver((h)this);
-      AppMethodBeat.o(229411);
-      return;
+    this.lKz = new i((Activity)getActivity());
+    paramBundle = this.lKz;
+    if (paramBundle != null) {
+      paramBundle.afIL = ((h)this);
     }
-    AppMethodBeat.o(229411);
+    AppMethodBeat.o(287911);
+  }
+  
+  public final void onKeyboardHeightChanged(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(287942);
+    Iterator localIterator = ((Iterable)new ArrayList((Collection)this.Mdq)).iterator();
+    while (localIterator.hasNext()) {
+      ((h)localIterator.next()).onKeyboardHeightChanged(paramInt, paramBoolean);
+    }
+    AppMethodBeat.o(287942);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(229414);
+    AppMethodBeat.i(287929);
     super.onPause();
-    i locali = this.jij;
-    if (locali != null)
-    {
+    i locali = this.lKz;
+    if (locali != null) {
       locali.close();
-      AppMethodBeat.o(229414);
-      return;
     }
-    AppMethodBeat.o(229414);
+    AppMethodBeat.o(287929);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(229412);
+    AppMethodBeat.i(287921);
     super.onResume();
-    i locali = this.jij;
-    if (locali != null)
-    {
+    i locali = this.lKz;
+    if (locali != null) {
       locali.start();
-      AppMethodBeat.o(229412);
-      return;
     }
-    AppMethodBeat.o(229412);
+    AppMethodBeat.o(287921);
   }
 }
 

@@ -5,24 +5,24 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public enum b
 {
-  public final int cBU;
+  public final int euz;
   
   static
   {
     AppMethodBeat.i(147177);
-    pcD = new b("RELEASE", 0, 0);
-    pcE = new b("DEVELOP", 1, 1);
-    pcF = new b("TRIAL", 2, 2);
-    pcG = new b[] { pcD, pcE, pcF };
+    shS = new b("RELEASE", 0, 0);
+    shT = new b("DEVELOP", 1, 1);
+    shU = new b("TRIAL", 2, 2);
+    shV = new b[] { shS, shT, shU };
     AppMethodBeat.o(147177);
   }
   
   private b(int paramInt)
   {
-    this.cBU = paramInt;
+    this.euz = paramInt;
   }
   
-  public static b AF(int paramInt)
+  public static b AS(int paramInt)
   {
     AppMethodBeat.i(147176);
     Object localObject = values();
@@ -31,14 +31,14 @@ public enum b
     while (i < j)
     {
       b localb = localObject[i];
-      if (localb.cBU == paramInt)
+      if (localb.euz == paramInt)
       {
         AppMethodBeat.o(147176);
         return localb;
       }
       i += 1;
     }
-    localObject = pcD;
+    localObject = shS;
     AppMethodBeat.o(147176);
     return localObject;
   }
@@ -70,7 +70,7 @@ public enum b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.b
  * JD-Core Version:    0.7.0.1
  */

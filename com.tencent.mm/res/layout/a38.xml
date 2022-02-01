@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" style="@style/rj"
+<RelativeLayout android:padding="@dimen/j6" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.base.MMPullDownView android:id="@id/h8v" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/rj">
-        <ListView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/doc" android:background="@color/ac_" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ir" android:listSelector="@color/ac_" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" />
-    </com.tencent.mm.ui.base.MMPullDownView>
-</LinearLayout>
+    <ImageView android:id="@id/cey" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/abs" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/cfq" android:paddingLeft="@dimen/j6" android:paddingTop="@dimen/j6" android:paddingRight="@dimen/ig" android:paddingBottom="@dimen/j6" android:layout_width="120.0dip" android:layout_height="120.0dip" android:src="@drawable/icon" />
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/ig" android:paddingTop="@dimen/j6" android:paddingRight="@dimen/j6" android:paddingBottom="@dimen/j6" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/c" android:layout_gravity="left" android:id="@id/ci9" android:paddingTop="@dimen/m2" android:paddingBottom="@dimen/m2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{小崽子ss剧场}" style="@style/ma" />
+            <TextView android:layout_gravity="left" android:id="@id/cie" android:paddingBottom="@dimen/m2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{小崽子ss剧场}" style="@style/m_" />
+            <FrameLayout android:layout_gravity="left" android:layout_width="wrap_content" android:layout_height="32.0dip" android:layout_marginTop="@dimen/m2">
+                <Button android:id="@id/cff" android:layout_width="wrap_content" android:layout_height="32.0dip" android:maxWidth="100.0dip" android:text="@string/c8f" style="@style/oi" />
+                <ProgressBar android:layout_gravity="center_vertical" android:id="@id/cfg" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="wrap_content" style="@style/lz" />
+            </FrameLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

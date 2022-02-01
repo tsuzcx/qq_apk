@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/isd" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="start|center" android:orientation="horizontal" android:id="@id/iqy" android:paddingLeft="?j4" android:paddingTop="@dimen/mv" android:paddingRight="?j4" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@android:id/icon" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginRight="8.0dip" android:src="@null" android:scaleType="fitCenter" android:layout_marginEnd="8.0dip" />
-        <androidx.appcompat.widget.DialogTitle android:ellipsize="end" android:id="@id/li" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:textAlignment="viewStart" style="?android:windowTitleStyle" />
-    </LinearLayout>
-    <android.widget.Space android:id="@id/ipn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/mw" />
-</LinearLayout>
+    <androidx.appcompat.widget.ContentFrameLayout android:id="@id/dl" android:layout_width="fill_parent" android:layout_height="fill_parent" android:foreground="?android:windowContentOverlay" android:foregroundGravity="fill_horizontal|center|top" />
+</merge>

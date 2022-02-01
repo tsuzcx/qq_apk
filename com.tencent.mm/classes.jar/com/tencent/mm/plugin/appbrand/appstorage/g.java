@@ -1,499 +1,322 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.LinkedHashMap;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.Locale;
+import kotlin.ah;
+import kotlin.g.a.a;
 import kotlin.g.a.b;
 import kotlin.g.a.m;
-import kotlin.g.b.aa.d;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.n.k;
-import kotlin.n.n;
-import kotlin.t;
-import kotlin.x;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandMMKVStorage;", "Lcom/tencent/mm/plugin/appbrand/appstorage/IAppBrandKVStorage;", "uin", "", "(J)V", "MMKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getter", "Lkotlin/Function1;", "", "setter", "Lkotlin/Function2;", "", "appendTotalDataSize", "", "storageId", "appId", "size", "clear", "clearAll", "generateValue", "data", "dataType", "get", "", "", "key", "(ILjava/lang/String;Ljava/lang/String;)[Ljava/lang/Object;", "getAllStorageId", "", "getDataSize", "recordKey", "getQuota", "getTotalDataSize", "getTotalDataSizeAll", "info", "(ILjava/lang/String;)[Ljava/lang/Object;", "keys", "block", "keysSize", "remove", "Lcom/tencent/mm/plugin/appbrand/appstorage/IAppBrandKVStorage$ErrorType;", "set", "setTotalDataSize", "splitValue", "Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandMMKVStorage$StorageInfo;", "str", "willReachQuota", "", "Companion", "StorageInfo", "luggage-wechat-full-sdk_release"})
-public final class g
-  implements q
+public class g
+  extends MAutoStorage<f>
+  implements v
 {
-  private static final Map<Long, g> nMo;
-  public static final a nMp;
-  private final b<String, String> nLR;
-  private final m<String, String, x> nLS;
-  private MultiProcessMMKV nMn;
+  public static final String[] SQL_CREATE;
+  private ISQLiteDatabase qFJ;
+  private b<String, String> qLU;
+  private m<String, String, ah> qLV;
   
   static
   {
-    AppMethodBeat.i(147886);
-    nMp = new a((byte)0);
-    nMo = (Map)new LinkedHashMap();
-    AppMethodBeat.o(147886);
+    AppMethodBeat.i(146951);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(f.info, "AppBrandKVData"), "DROP TABLE IF EXISTS AppBrandStorageKVData;" };
+    AppMethodBeat.o(146951);
   }
   
-  private g(long paramLong)
+  public g(ISQLiteDatabase paramISQLiteDatabase)
   {
-    AppMethodBeat.i(147885);
-    Log.i("AppBrandMMKVStorage", "getMMKV uin:".concat(String.valueOf(paramLong)));
-    MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("AppBrandMMKVStorage".concat(String.valueOf(paramLong)));
-    p.j(localMultiProcessMMKV, "MultiProcessMMKV.getMMKV(NAME + uin)");
-    this.nMn = localMultiProcessMMKV;
-    this.nLR = ((b)new d(this));
-    this.nLS = ((m)new f(this));
-    AppMethodBeat.o(147885);
+    super(paramISQLiteDatabase, f.info, "AppBrandKVData", null);
+    AppMethodBeat.i(146935);
+    this.qLU = new b() {};
+    this.qLV = new m() {};
+    this.qFJ = paramISQLiteDatabase;
+    AppMethodBeat.o(146935);
   }
   
-  private final int ac(int paramInt, String paramString)
+  private int VY(String paramString)
   {
-    AppMethodBeat.i(147879);
-    paramString = v.c(paramInt, paramString, "@@@TOTAL@DATA@SIZE@@@", "++");
-    paramInt = Util.getInt(this.nMn.getString(paramString, ""), 0);
-    AppMethodBeat.o(147879);
-    return paramInt;
-  }
-  
-  private static g.b adE(String paramString)
-  {
-    AppMethodBeat.i(147874);
-    paramString = (CharSequence)paramString;
-    paramString = ((Collection)new k("#").u(paramString, 3)).toArray(new String[0]);
-    if (paramString == null)
+    AppMethodBeat.i(146948);
+    paramString = this.qFJ.query("AppBrandKVData", new String[] { "size" }, "key = ?", new String[] { paramString }, null, null, null, 2);
+    if (paramString.moveToFirst())
     {
-      paramString = new t("null cannot be cast to non-null type kotlin.Array<T>");
-      AppMethodBeat.o(147874);
-      throw paramString;
-    }
-    paramString = (String[])paramString;
-    if (paramString.length == 3)
-    {
-      paramString = new g.b(paramString[2], paramString[0], paramString[1]);
-      AppMethodBeat.o(147874);
-      return paramString;
-    }
-    paramString = new g.b("", "", "");
-    AppMethodBeat.o(147874);
-    return paramString;
-  }
-  
-  private int[] adv(String paramString)
-  {
-    AppMethodBeat.i(147884);
-    p.k(paramString, "appId");
-    paramString = v.a(paramString, this.nLR, this.nLS);
-    AppMethodBeat.o(147884);
-    return paramString;
-  }
-  
-  private final int adx(String paramString)
-  {
-    AppMethodBeat.i(147872);
-    String str = this.nMn.getString(paramString, "");
-    paramString = str;
-    if (str == null) {
-      paramString = "";
-    }
-    try
-    {
-      i = Integer.parseInt(adE(paramString).nMq);
-      AppMethodBeat.o(147872);
+      int i = paramString.getInt(0);
+      paramString.close();
+      AppMethodBeat.o(146948);
       return i;
     }
-    catch (NumberFormatException paramString)
-    {
-      for (;;)
-      {
-        int i = 0;
-      }
-    }
+    paramString.close();
+    AppMethodBeat.o(146948);
+    return 0;
   }
   
-  private void d(String paramString, b<? super String, x> paramb)
+  private v.a a(final int paramInt1, final String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2)
   {
-    AppMethodBeat.i(147880);
-    p.k(paramString, "appId");
-    p.k(paramb, "block");
-    k localk = new k("^([1-9]\\d*__)?" + paramString + "__.+$");
-    paramString = this.nMn.allKeys();
-    if (paramString == null) {
-      paramString = new String[0];
-    }
-    for (;;)
+    AppMethodBeat.i(323159);
+    if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
     {
-      int j = paramString.length;
-      int i = 0;
-      while (i < j)
+      paramString1 = v.a.qNi;
+      AppMethodBeat.o(323159);
+      return paramString1;
+    }
+    Object localObject1 = aa.c(paramInt1, paramString1, paramString2, "__");
+    final int j = paramInt2 - VY((String)localObject1);
+    if (ak(paramInt1, paramString1) + j >= aa.al(paramInt1, paramString1)) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      paramString1 = v.a.qNk;
+      AppMethodBeat.o(323159);
+      return paramString1;
+    }
+    Object localObject2 = new f();
+    ((f)localObject2).field_key = ((String)localObject1);
+    ((f)localObject2).field_data = paramString3;
+    ((f)localObject2).field_dataType = paramString4;
+    ((f)localObject2).field_size = paramInt2;
+    paramString4 = new a() {};
+    try
+    {
+      paramString3 = (v.a)paramString4.invoke();
+      AppMethodBeat.o(323159);
+      return paramString3;
+    }
+    catch (SQLiteException paramString3)
+    {
+      if (Util.nullAsNil(paramString3.getMessage()).contains("no such table"))
       {
-        Object localObject = paramString[i];
-        p.j(localObject, "key");
-        if (localk.aY((CharSequence)localObject)) {
-          paramb.invoke(localObject);
+        Log.e("AppBrandKVStorage", "set storageId[%d] appId[%s] key[%s], get exception[%s] try create table", new Object[] { Integer.valueOf(paramInt1), paramString1, paramString2, paramString3 });
+        try
+        {
+          Object localObject3 = f.info;
+          localObject1 = this.qFJ;
+          localObject2 = getTableName();
+          localObject3 = getUpdateSQLs((IAutoDBItem.MAutoDBInfo)localObject3, getTableName(), (ISQLiteDatabase)localObject1).iterator();
+          while (((Iterator)localObject3).hasNext())
+          {
+            String str = (String)((Iterator)localObject3).next();
+            if (!((ISQLiteDatabase)localObject1).execSQL((String)localObject2, str)) {
+              Log.e("AppBrandKVStorage", "updateColumnSQLs table failed %s, sql %s", new Object[] { localObject2, str });
+            }
+          }
+          paramString4 = (v.a)paramString4.invoke();
         }
-        i += 1;
+        catch (SQLiteException paramString4)
+        {
+          paramString1 = String.format(Locale.ENGLISH, "set storageId[%d] appId[%s] key[%s], get exception[%s] after retry", new Object[] { Integer.valueOf(paramInt1), paramString1, paramString2, paramString3 });
+          Log.e("AppBrandKVStorage", paramString1);
+          paramString1 = new SQLiteException(paramString1, paramString4);
+          AppMethodBeat.o(323159);
+          throw paramString1;
+        }
+        AppMethodBeat.o(323159);
+        return paramString4;
       }
-      AppMethodBeat.o(147880);
-      return;
+      AppMethodBeat.o(323159);
+      throw paramString3;
     }
   }
   
-  private final void g(int paramInt1, String paramString, int paramInt2)
+  private int ak(int paramInt, String paramString)
   {
-    AppMethodBeat.i(147870);
-    paramString = v.c(paramInt1, paramString, "@@@TOTAL@DATA@SIZE@@@", "++");
-    this.nMn.putString(paramString, String.valueOf(paramInt2));
-    AppMethodBeat.o(147870);
+    AppMethodBeat.i(146944);
+    f localf = new f();
+    localf.field_key = aa.q(paramInt, paramString, "@@@TOTAL@DATA@SIZE@@@");
+    if (super.get(localf, new String[0]))
+    {
+      paramInt = Util.getInt(localf.field_data, 0);
+      AppMethodBeat.o(146944);
+      return paramInt;
+    }
+    AppMethodBeat.o(146944);
+    return 0;
   }
   
-  private final int h(int paramInt1, String paramString, int paramInt2)
+  private void bO(String paramString, int paramInt)
   {
-    AppMethodBeat.i(147871);
-    paramInt2 = Math.max(0, ac(paramInt1, paramString) + paramInt2);
+    AppMethodBeat.i(146942);
+    aa.b(paramString, paramInt, this.qLU, this.qLV);
+    AppMethodBeat.o(146942);
+  }
+  
+  private void g(int paramInt1, String paramString, int paramInt2)
+  {
+    AppMethodBeat.i(146946);
+    f localf = new f();
+    localf.field_key = aa.q(paramInt1, paramString, "@@@TOTAL@DATA@SIZE@@@");
+    localf.field_data = String.valueOf(paramInt2);
+    super.replace(localf);
+    AppMethodBeat.o(146946);
+  }
+  
+  private int h(int paramInt1, String paramString, int paramInt2)
+  {
+    AppMethodBeat.i(146947);
+    paramInt2 = Math.max(0, ak(paramInt1, paramString) + paramInt2);
     g(paramInt1, paramString, paramInt2);
-    AppMethodBeat.o(147871);
+    AppMethodBeat.o(146947);
     return paramInt2;
   }
   
-  private final boolean i(int paramInt1, String paramString, int paramInt2)
+  public final int VT(String paramString)
   {
-    AppMethodBeat.i(147883);
-    if (ac(paramInt1, paramString) + paramInt2 >= v.ad(paramInt1, paramString))
-    {
-      AppMethodBeat.o(147883);
-      return true;
-    }
-    AppMethodBeat.o(147883);
-    return false;
-  }
-  
-  private static String v(String paramString1, String paramString2, int paramInt)
-  {
-    AppMethodBeat.i(147873);
-    paramString1 = paramString2 + "#" + paramInt + "#" + paramString1;
-    AppMethodBeat.o(147873);
-    return paramString1;
-  }
-  
-  public final void aa(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(147876);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(147876);
-      return;
-    }
-    if (paramInt == 0) {}
-    for (String str = p.I(paramString, "__");; str = String.valueOf(paramInt) + "__" + paramString + "__")
-    {
-      String[] arrayOfString2 = this.nMn.allKeys();
-      String[] arrayOfString1 = arrayOfString2;
-      if (arrayOfString2 == null) {
-        arrayOfString1 = new String[0];
-      }
-      int j = arrayOfString1.length;
-      int i = 0;
-      while (i < j)
-      {
-        arrayOfString2 = arrayOfString1[i];
-        p.j(arrayOfString2, "key");
-        if (n.M(arrayOfString2, str, false)) {
-          this.nMn.remove(arrayOfString2);
-        }
-        i += 1;
-      }
-    }
-    if (paramString == null) {
-      p.iCn();
-    }
-    g(paramInt, paramString, 0);
-    v.b(paramString, paramInt, this.nLR, this.nLS);
-    AppMethodBeat.o(147876);
-  }
-  
-  public final Object[] ab(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(147878);
-    if (paramString == null)
-    {
-      paramString = (List)kotlin.a.v.aaAd;
-      AppMethodBeat.o(147878);
-      return new Object[] { paramString, Integer.valueOf(0), Integer.valueOf(0) };
-    }
-    List localList = (List)new ArrayList();
-    if (paramInt == 0) {}
-    for (String str = paramString + "__";; str = String.valueOf(paramInt) + "__" + paramString + "__")
-    {
-      String[] arrayOfString2 = this.nMn.allKeys();
-      String[] arrayOfString1 = arrayOfString2;
-      if (arrayOfString2 == null) {
-        arrayOfString1 = new String[0];
-      }
-      int j = arrayOfString1.length;
-      i = 0;
-      while (i < j)
-      {
-        arrayOfString2 = arrayOfString1[i];
-        p.j(arrayOfString2, "key");
-        if (n.M(arrayOfString2, str, false)) {
-          localList.add(n.l(arrayOfString2, str, "", false));
-        }
-        i += 1;
-      }
-    }
-    int i = ac(paramInt, paramString);
-    paramInt = v.ad(paramInt, paramString);
-    AppMethodBeat.o(147878);
-    return new Object[] { localList, Integer.valueOf(i), Integer.valueOf(paramInt) };
-  }
-  
-  public final int adF(String paramString)
-  {
-    AppMethodBeat.i(147881);
-    p.k(paramString, "appId");
-    aa.d locald = new aa.d();
-    locald.aaBA = 0;
-    d(paramString, (b)new g.e(locald));
-    int i = locald.aaBA;
-    AppMethodBeat.o(147881);
-    return i;
-  }
-  
-  public final void adu(String paramString)
-  {
-    AppMethodBeat.i(147877);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(147877);
-      return;
-    }
-    if (paramString == null) {
-      p.iCn();
-    }
-    int[] arrayOfInt = adv(paramString);
-    int j = arrayOfInt.length;
-    int i = 0;
-    while (i < j)
-    {
-      g(arrayOfInt[i], paramString, 0);
-      i += 1;
-    }
-    d(paramString, (b)new c(this));
-    v.b(paramString, this.nLR, this.nLS);
-    AppMethodBeat.o(147877);
-  }
-  
-  public final int adw(String paramString)
-  {
-    AppMethodBeat.i(147882);
-    p.k(paramString, "appId");
-    int[] arrayOfInt = v.a(paramString, this.nLR, this.nLS);
+    AppMethodBeat.i(146945);
+    int[] arrayOfInt = VX(paramString);
     int k = arrayOfInt.length;
     int j = 0;
     int m;
     for (int i = 0; j < k; i = m + i)
     {
-      m = ac(arrayOfInt[j], paramString);
+      m = ak(arrayOfInt[j], paramString);
       j += 1;
     }
-    AppMethodBeat.o(147882);
+    AppMethodBeat.o(146945);
     return i;
   }
   
-  public final q.a d(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
+  public final void VW(String paramString)
   {
-    AppMethodBeat.i(147869);
-    p.k(paramString4, "dataType");
-    if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
+    AppMethodBeat.i(146940);
+    int i = 0;
+    while (i <= 2)
     {
-      paramString1 = q.a.nNp;
-      AppMethodBeat.o(147869);
-      return paramString1;
+      ai(i, paramString);
+      i += 1;
     }
-    if (paramString1 == null) {
-      p.iCn();
-    }
-    if (paramString2 == null) {
-      p.iCn();
-    }
-    String str = v.c(paramInt, paramString1, paramString2, "__");
-    int j = adx(str);
-    int i = v.cP(paramString2, paramString3);
-    j = i - j;
-    if (i(paramInt, paramString1, j))
+    AppMethodBeat.o(146940);
+  }
+  
+  public final int[] VX(String paramString)
+  {
+    AppMethodBeat.i(146941);
+    paramString = aa.a(paramString, this.qLU, this.qLV);
+    AppMethodBeat.o(146941);
+    return paramString;
+  }
+  
+  public final void ai(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(146939);
+    if (paramInt == 0) {}
+    for (String str = paramString + "__";; str = paramInt + "__" + paramString + "__")
     {
-      paramString1 = q.a.nNr;
-      AppMethodBeat.o(147869);
-      return paramString1;
+      bO(paramString, paramInt);
+      this.qFJ.delete("AppBrandKVData", String.format("%s like ? escape ? OR %s=?", new Object[] { "key", "key" }), new String[] { str.replace("_", "\\_") + "%", "\\", aa.q(paramInt, paramString, "@@@TOTAL@DATA@SIZE@@@") });
+      AppMethodBeat.o(146939);
+      return;
     }
-    this.nMn.putString(str, v(paramString3, paramString4, i));
-    h(paramInt, paramString1, j);
-    v.a(paramString1, paramInt, this.nLR, this.nLS);
-    paramString1 = q.a.nNn;
-    AppMethodBeat.o(147869);
+  }
+  
+  public final Object[] aj(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(146943);
+    if (paramInt == 0) {}
+    Object localObject1;
+    Object localObject2;
+    for (String str = paramString + "__";; str = paramInt + "__" + paramString + "__")
+    {
+      localObject1 = this.qFJ;
+      localObject2 = str.replace("_", "\\_") + "%";
+      localObject1 = ((ISQLiteDatabase)localObject1).query("AppBrandKVData", new String[] { "key" }, "key like ? escape ?", new String[] { localObject2, "\\" }, null, null, null, 2);
+      localObject2 = new ArrayList();
+      while (((Cursor)localObject1).moveToNext()) {
+        ((ArrayList)localObject2).add(((Cursor)localObject1).getString(0).replace(str, ""));
+      }
+    }
+    ((Cursor)localObject1).close();
+    int i = ak(paramInt, paramString);
+    paramInt = aa.al(paramInt, paramString);
+    AppMethodBeat.o(146943);
+    return new Object[] { localObject2, Integer.valueOf(i), Integer.valueOf(paramInt) };
+  }
+  
+  public final v.a d(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    AppMethodBeat.i(146937);
+    paramString1 = a(paramInt, paramString1, paramString2, paramString3, paramString4, aa.dg(paramString2, paramString3));
+    AppMethodBeat.o(146937);
     return paramString1;
   }
   
-  public final Object[] l(int paramInt, String paramString1, String paramString2)
+  public final v.a o(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(147868);
+    AppMethodBeat.i(146938);
     if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
     {
-      paramString1 = q.a.nNp;
-      AppMethodBeat.o(147868);
+      paramString1 = v.a.qNi;
+      AppMethodBeat.o(146938);
+      return paramString1;
+    }
+    paramString2 = aa.c(paramInt, paramString1, paramString2, "__");
+    int i = h(paramInt, paramString1, -VY(paramString2));
+    f localf = new f();
+    localf.field_key = paramString2;
+    super.delete(localf, new String[0]);
+    if (i <= 0) {
+      bO(paramString1, paramInt);
+    }
+    paramString1 = v.a.qNg;
+    AppMethodBeat.o(146938);
+    return paramString1;
+  }
+  
+  public final Object[] p(int paramInt, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(146936);
+    if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
+    {
+      paramString1 = v.a.qNi;
+      AppMethodBeat.o(146936);
       return new Object[] { paramString1 };
     }
-    if (paramString1 == null) {
-      p.iCn();
-    }
-    if (paramString2 == null) {
-      p.iCn();
-    }
-    paramString1 = v.c(paramInt, paramString1, paramString2, "__");
-    paramString2 = this.nMn.getString(paramString1, "");
-    paramString1 = paramString2;
-    if (paramString2 == null) {
-      paramString1 = "";
-    }
-    Object localObject = adE(paramString1);
-    if (((CharSequence)((g.b)localObject).data).length() == 0)
+    Object localObject2 = new f();
+    ((f)localObject2).field_key = aa.c(paramInt, paramString1, paramString2, "__");
+    try
     {
-      paramInt = 1;
-      if (paramInt == 0) {
-        break label217;
-      }
-      if (((CharSequence)((g.b)localObject).type).length() != 0) {
-        break label207;
-      }
-      paramInt = 1;
-      label129:
-      if (paramInt == 0) {
-        break label217;
-      }
-      if (((CharSequence)((g.b)localObject).nMq).length() != 0) {
-        break label212;
-      }
-      paramInt = 1;
-      label151:
-      if (paramInt == 0) {
-        break label217;
-      }
-    }
-    label207:
-    label212:
-    label217:
-    for (paramInt = 1;; paramInt = 0)
-    {
-      if (paramInt != 0) {
-        break label222;
-      }
-      paramString1 = q.a.nNn;
-      paramString2 = ((g.b)localObject).data;
-      localObject = ((g.b)localObject).type;
-      AppMethodBeat.o(147868);
-      return new Object[] { paramString1, paramString2, localObject };
-      paramInt = 0;
-      break;
-      paramInt = 0;
-      break label129;
-      paramInt = 0;
-      break label151;
-    }
-    label222:
-    paramString1 = v.nNu;
-    AppMethodBeat.o(147868);
-    return paramString1;
-  }
-  
-  public final q.a m(int paramInt, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(147875);
-    if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
-    {
-      paramString1 = q.a.nNp;
-      AppMethodBeat.o(147875);
-      return paramString1;
-    }
-    if (paramString1 == null) {
-      p.iCn();
-    }
-    if (paramString2 == null) {
-      p.iCn();
-    }
-    paramString2 = v.c(paramInt, paramString1, paramString2, "__");
-    int i = h(paramInt, paramString1, -adx(paramString2));
-    this.nMn.remove(paramString2);
-    if (i <= 0) {
-      v.b(paramString1, paramInt, this.nLR, this.nLS);
-    }
-    paramString1 = q.a.nNn;
-    AppMethodBeat.o(147875);
-    return paramString1;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandMMKVStorage$Companion;", "", "()V", "CACHE", "", "", "Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandMMKVStorage;", "NAME", "", "NORMAL_VALUE_TYPE_SEPARATOR", "TAG", "obtain", "uin", "onAccountRelease", "", "luggage-wechat-full-sdk_release"})
-  public static final class a
-  {
-    public static g Hk(long paramLong)
-    {
-      AppMethodBeat.i(147862);
-      synchronized (g.bIz())
+      if (super.get((IAutoDBItem)localObject2, new String[0]))
       {
-        if (!g.bIz().keySet().contains(Long.valueOf(paramLong))) {
-          g.bIz().put(Long.valueOf(paramLong), new g(paramLong, (byte)0));
-        }
-        x localx = x.aazN;
-        ??? = g.bIz().get(Long.valueOf(paramLong));
-        if (??? == null) {
-          p.iCn();
-        }
-        ??? = (g)???;
-        AppMethodBeat.o(147862);
-        return ???;
+        localObject1 = v.a.qNg;
+        String str = ((f)localObject2).field_data;
+        localObject2 = ((f)localObject2).field_dataType;
+        AppMethodBeat.o(146936);
+        return new Object[] { localObject1, str, localObject2 };
       }
+      Object localObject1 = aa.qNo;
+      AppMethodBeat.o(146936);
+      return localObject1;
     }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "key", "", "invoke"})
-  static final class c
-    extends kotlin.g.b.q
-    implements b<String, x>
-  {
-    c(g paramg)
+    catch (SQLiteException localSQLiteException)
     {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "key", "invoke"})
-  static final class d
-    extends kotlin.g.b.q
-    implements b<String, String>
-  {
-    d(g paramg)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<no name provided>", "", "key", "", "value", "invoke"})
-  static final class f
-    extends kotlin.g.b.q
-    implements m<String, String, x>
-  {
-    f(g paramg)
-    {
-      super();
+      if (Util.nullAsNil(localSQLiteException.getMessage()).contains("no such table"))
+      {
+        Log.e("AppBrandKVStorage", "get storageId[%d] appId[%s] key[%s], no such table, return RET_GET_NO_SUCH_KEY", new Object[] { Integer.valueOf(paramInt), paramString1, paramString2 });
+        paramString1 = aa.qNo;
+        AppMethodBeat.o(146936);
+        return paramString1;
+      }
+      if (localSQLiteException.getClass().getName().endsWith("CursorWindowAllocationException"))
+      {
+        paramString1 = v.a.qNl;
+        AppMethodBeat.o(146936);
+        return new Object[] { paramString1 };
+      }
+      AppMethodBeat.o(146936);
+      throw localSQLiteException;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.g
  * JD-Core Version:    0.7.0.1
  */

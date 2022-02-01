@@ -15,25 +15,7 @@ public final class a
   {
     super(paramContext);
     AppMethodBeat.i(145618);
-    this.mReplaceRunnable = new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(145617);
-        try
-        {
-          Log.i("MicroMsg.SafeDismissDialog", "run on hijack runnable");
-          a.a(a.this).run();
-          AppMethodBeat.o(145617);
-          return;
-        }
-        catch (Exception localException)
-        {
-          Log.e("MicroMsg.SafeDismissDialog", "protect : " + localException.getMessage());
-          AppMethodBeat.o(145617);
-        }
-      }
-    };
+    this.mReplaceRunnable = new a.1(this);
     hijackDismissAction();
     AppMethodBeat.o(145618);
   }
@@ -42,25 +24,7 @@ public final class a
   {
     super(paramContext, paramInt);
     AppMethodBeat.i(145619);
-    this.mReplaceRunnable = new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(145617);
-        try
-        {
-          Log.i("MicroMsg.SafeDismissDialog", "run on hijack runnable");
-          a.a(a.this).run();
-          AppMethodBeat.o(145617);
-          return;
-        }
-        catch (Exception localException)
-        {
-          Log.e("MicroMsg.SafeDismissDialog", "protect : " + localException.getMessage());
-          AppMethodBeat.o(145617);
-        }
-      }
-    };
+    this.mReplaceRunnable = new a.1(this);
     hijackDismissAction();
     AppMethodBeat.o(145619);
   }
@@ -70,7 +34,7 @@ public final class a
   {
     // Byte code:
     //   0: ldc 48
-    //   2: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: getstatic 54	android/os/Build$VERSION:SDK_INT	I
     //   8: bipush 28
     //   10: if_icmple +9 -> 19
@@ -165,7 +129,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.crashfix.b.a
  * JD-Core Version:    0.7.0.1
  */

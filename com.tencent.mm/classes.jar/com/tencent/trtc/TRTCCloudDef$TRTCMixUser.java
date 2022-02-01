@@ -55,15 +55,15 @@ public class TRTCCloudDef$TRTCMixUser
   
   public String toString()
   {
-    AppMethodBeat.i(215972);
+    AppMethodBeat.i(211276);
     String str = "userId=" + this.userId + ", roomId=" + this.roomId + ", x=" + this.x + ", y=" + this.y + ", width=" + this.width + ", height=" + this.height + ", zOrder=" + this.zOrder + ", streamType=" + this.streamType + ", pureAudio=" + this.pureAudio + ", inputType=" + this.inputType;
-    AppMethodBeat.o(215972);
+    AppMethodBeat.o(211276);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.trtc.TRTCCloudDef.TRTCMixUser
  * JD-Core Version:    0.7.0.1
  */

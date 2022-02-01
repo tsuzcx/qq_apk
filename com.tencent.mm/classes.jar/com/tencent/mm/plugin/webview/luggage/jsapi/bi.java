@@ -1,51 +1,48 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import android.content.res.Resources;
 import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
-import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.c.c;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.plugin.webview.ui.tools.e;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.plugin.webview.luggage.z;
 import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
 
 public class bi
-  extends bs<g>
+  extends bw<g>
 {
-  public final void a(Context paramContext, String paramString, br.a parama) {}
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
   
   public final void b(b<g>.a paramb)
   {
-    AppMethodBeat.i(78627);
-    Log.i("MicroMsg.JsApiSetPageTitle", "invokeInOwn");
-    String str = paramb.crh.cqn.optString("title");
-    if (!Util.isNullOrNil(paramb.crh.cqn.optString("color")))
-    {
-      int i = e.he(paramb.crh.cqn.optString("color"), ((g)paramb.crg).mContext.getResources().getColor(c.c.action_bar_tittle_color));
-      ((g)paramb.crg).eA(str, i);
+    AppMethodBeat.i(78624);
+    String str1 = paramb.eiZ.eif.optString("title");
+    String str2 = paramb.eiZ.eif.optString("icon_url");
+    String str3 = paramb.eiZ.eif.optString("jump_url");
+    z localz = new z();
+    if (!Util.isNullOrNil(str1)) {
+      localz.title = str1;
     }
-    for (;;)
-    {
-      paramb.a("", null);
-      AppMethodBeat.o(78627);
-      return;
-      ((g)paramb.crg).eA(str, 0);
+    if (!Util.isNullOrNil(str2)) {
+      localz.iconUrl = str2;
     }
+    if (!Util.isNullOrNil(str3)) {
+      localz.jumpUrl = str3;
+    }
+    paramb.a("", null);
+    AppMethodBeat.o(78624);
   }
   
-  public final int cDj()
+  public final int dgI()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "setPageTitle";
+    return "setDesktopInfo";
   }
 }
 

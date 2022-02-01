@@ -7,10 +7,10 @@ import com.tencent.kinda.gen.KRedirectUrl;
 import com.tencent.kinda.gen.KindaJumpRemindManager;
 import com.tencent.kinda.gen.VoidBoolStringCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.coj;
-import com.tencent.mm.protocal.protobuf.dvp;
-import com.tencent.mm.wallet_core.c.f;
-import com.tencent.mm.wallet_core.c.m;
+import com.tencent.mm.protocal.protobuf.dfd;
+import com.tencent.mm.protocal.protobuf.eol;
+import com.tencent.mm.wallet_core.model.f;
+import com.tencent.mm.wallet_core.model.m;
 
 public class KindaJumpRemindManagerImpl
   implements KindaJumpRemindManager
@@ -27,36 +27,36 @@ public class KindaJumpRemindManagerImpl
   public void jumpRemindImpl(KJumpRemindInfo paramKJumpRemindInfo, int paramInt1, int paramInt2, final VoidBoolStringCallback paramVoidBoolStringCallback1, final VoidBoolStringCallback paramVoidBoolStringCallback2)
   {
     AppMethodBeat.i(18451);
-    coj localcoj = new coj();
-    localcoj.jump_type = paramKJumpRemindInfo.mJumpType;
-    localcoj.Twp = paramKJumpRemindInfo.mIsPopUpWindows;
-    localcoj.wording = paramKJumpRemindInfo.mWording;
-    localcoj.oDJ = paramKJumpRemindInfo.mLeftButtonWording;
-    localcoj.oDK = paramKJumpRemindInfo.mRightButtonWording;
-    dvp localdvp = new dvp();
-    localdvp.type = paramKJumpRemindInfo.mUrl.mType;
-    localdvp.appid = paramKJumpRemindInfo.mUrl.mAppid;
-    localdvp.UbG = paramKJumpRemindInfo.mUrl.mAppVersion;
-    localdvp.path = paramKJumpRemindInfo.mUrl.mPath;
-    localdvp.jDV = paramKJumpRemindInfo.mUrl.mBtnName;
-    localcoj.Twq = localdvp;
-    localcoj.title = paramKJumpRemindInfo.mTitle;
-    this.jumpRemind = m.a(localcoj);
-    this.jumpRemind.YVl = true;
-    this.jumpRemind.iiP();
+    dfd localdfd = new dfd();
+    localdfd.jump_type = paramKJumpRemindInfo.mJumpType;
+    localdfd.aaKW = paramKJumpRemindInfo.mIsPopUpWindows;
+    localdfd.wording = paramKJumpRemindInfo.mWording;
+    localdfd.rGU = paramKJumpRemindInfo.mLeftButtonWording;
+    localdfd.right_button_wording = paramKJumpRemindInfo.mRightButtonWording;
+    eol localeol = new eol();
+    localeol.type = paramKJumpRemindInfo.mUrl.mType;
+    localeol.appid = paramKJumpRemindInfo.mUrl.mAppid;
+    localeol.absO = paramKJumpRemindInfo.mUrl.mAppVersion;
+    localeol.path = paramKJumpRemindInfo.mUrl.mPath;
+    localeol.mdR = paramKJumpRemindInfo.mUrl.mBtnName;
+    localdfd.aaKX = localeol;
+    localdfd.title = paramKJumpRemindInfo.mTitle;
+    this.jumpRemind = m.a(localdfd);
+    this.jumpRemind.agTf = true;
+    this.jumpRemind.jOK();
     this.jumpRemind.a((Activity)KindaContext.get(), new f()
     {
       public void onCancel()
       {
         AppMethodBeat.i(18447);
-        if (KindaJumpRemindManagerImpl.this.jumpRemind.iiO()) {
+        if (KindaJumpRemindManagerImpl.this.jumpRemind.jOJ()) {
           if (paramVoidBoolStringCallback2 != null) {
             paramVoidBoolStringCallback2.call(false, null);
           }
         }
         for (;;)
         {
-          KindaJumpRemindManagerImpl.this.jumpRemind.iiQ();
+          KindaJumpRemindManagerImpl.this.jumpRemind.jOL();
           AppMethodBeat.o(18447);
           return;
           if (paramVoidBoolStringCallback1 != null) {
@@ -70,14 +70,14 @@ public class KindaJumpRemindManagerImpl
       public void onUrlCancel()
       {
         AppMethodBeat.i(18449);
-        if (KindaJumpRemindManagerImpl.this.jumpRemind.iiO()) {
+        if (KindaJumpRemindManagerImpl.this.jumpRemind.jOJ()) {
           if (paramVoidBoolStringCallback2 != null) {
             paramVoidBoolStringCallback2.call(false, null);
           }
         }
         for (;;)
         {
-          KindaJumpRemindManagerImpl.this.jumpRemind.iiQ();
+          KindaJumpRemindManagerImpl.this.jumpRemind.jOL();
           AppMethodBeat.o(18449);
           return;
           if (paramVoidBoolStringCallback1 != null) {
@@ -89,14 +89,14 @@ public class KindaJumpRemindManagerImpl
       public void onUrlOk()
       {
         AppMethodBeat.i(18448);
-        if (KindaJumpRemindManagerImpl.this.jumpRemind.iiO()) {
+        if (KindaJumpRemindManagerImpl.this.jumpRemind.jOJ()) {
           if (paramVoidBoolStringCallback2 != null) {
             paramVoidBoolStringCallback2.call(true, null);
           }
         }
         for (;;)
         {
-          KindaJumpRemindManagerImpl.this.jumpRemind.iiQ();
+          KindaJumpRemindManagerImpl.this.jumpRemind.jOL();
           AppMethodBeat.o(18448);
           return;
           if (paramVoidBoolStringCallback1 != null) {
@@ -112,14 +112,14 @@ public class KindaJumpRemindManagerImpl
   {
     AppMethodBeat.i(18452);
     if (this.jumpRemind != null) {
-      this.jumpRemind.iiQ();
+      this.jumpRemind.jOL();
     }
     AppMethodBeat.o(18452);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.app.KindaJumpRemindManagerImpl
  * JD-Core Version:    0.7.0.1
  */

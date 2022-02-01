@@ -1,17 +1,14 @@
 package com.google.android.gms.common.api;
 
-import com.google.android.gms.common.annotation.KeepForSdk;
 import com.google.android.gms.common.internal.Preconditions;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@KeepForSdk
 public class BooleanResult
   implements Result
 {
   private final Status mStatus;
   private final boolean zzck;
   
-  @KeepForSdk
   public BooleanResult(Status paramStatus, boolean paramBoolean)
   {
     AppMethodBeat.i(10984);
@@ -20,7 +17,6 @@ public class BooleanResult
     AppMethodBeat.o(10984);
   }
   
-  @KeepForSdk
   public final boolean equals(Object paramObject)
   {
     AppMethodBeat.i(10986);
@@ -44,19 +40,16 @@ public class BooleanResult
     return false;
   }
   
-  @KeepForSdk
   public Status getStatus()
   {
     return this.mStatus;
   }
   
-  @KeepForSdk
   public boolean getValue()
   {
     return this.zzck;
   }
   
-  @KeepForSdk
   public final int hashCode()
   {
     AppMethodBeat.i(10985);
@@ -71,7 +64,7 @@ public class BooleanResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.BooleanResult
  * JD-Core Version:    0.7.0.1
  */

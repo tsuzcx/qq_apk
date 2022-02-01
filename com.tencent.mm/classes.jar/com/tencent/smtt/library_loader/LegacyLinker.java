@@ -101,44 +101,44 @@ class LegacyLinker
   public static byte[] readLibraryByFd(ParcelFileDescriptor paramParcelFileDescriptor, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     // Byte code:
-    //   0: ldc 136
+    //   0: ldc 134
     //   2: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 138	java/lang/StringBuilder
+    //   5: new 136	java/lang/StringBuilder
     //   8: dup
-    //   9: ldc 140
-    //   11: invokespecial 143	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   14: invokestatic 147	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   17: invokevirtual 151	java/lang/Thread:getStackTrace	()[Ljava/lang/StackTraceElement;
+    //   9: ldc 138
+    //   11: invokespecial 141	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   14: invokestatic 145	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   17: invokevirtual 149	java/lang/Thread:getStackTrace	()[Ljava/lang/StackTraceElement;
     //   20: iconst_2
     //   21: aaload
-    //   22: invokevirtual 157	java/lang/StackTraceElement:getMethodName	()Ljava/lang/String;
-    //   25: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   28: ldc 163
-    //   30: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   22: invokevirtual 155	java/lang/StackTraceElement:getMethodName	()Ljava/lang/String;
+    //   25: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   28: ldc 161
+    //   30: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   33: aload_0
-    //   34: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   37: ldc 168
-    //   39: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   34: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   37: ldc 166
+    //   39: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   42: iload_2
-    //   43: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   46: ldc 173
-    //   48: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   43: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   46: ldc 171
+    //   48: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   51: iload_1
-    //   52: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   55: ldc 175
-    //   57: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   52: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   55: ldc 173
+    //   57: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   60: iload_3
-    //   61: invokevirtual 178	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   61: invokevirtual 176	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   64: pop
-    //   65: new 180	java/io/FileInputStream
+    //   65: new 178	java/io/FileInputStream
     //   68: dup
     //   69: aload_0
-    //   70: invokevirtual 186	android/os/ParcelFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
-    //   73: invokespecial 189	java/io/FileInputStream:<init>	(Ljava/io/FileDescriptor;)V
+    //   70: invokevirtual 184	android/os/ParcelFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
+    //   73: invokespecial 187	java/io/FileInputStream:<init>	(Ljava/io/FileDescriptor;)V
     //   76: astore 15
-    //   78: new 191	java/io/ByteArrayOutputStream
+    //   78: new 189	java/io/ByteArrayOutputStream
     //   81: dup
-    //   82: invokespecial 192	java/io/ByteArrayOutputStream:<init>	()V
+    //   82: invokespecial 190	java/io/ByteArrayOutputStream:<init>	()V
     //   85: astore 14
     //   87: iconst_0
     //   88: istore 6
@@ -153,7 +153,7 @@ class LegacyLinker
     //   102: iconst_0
     //   103: istore 7
     //   105: getstatic 55	com/tencent/smtt/library_loader/LegacyLinker:buffered_read_data	Ljava/util/ArrayList;
-    //   108: invokevirtual 196	java/util/ArrayList:size	()I
+    //   108: invokevirtual 194	java/util/ArrayList:size	()I
     //   111: istore 13
     //   113: iconst_0
     //   114: istore 4
@@ -164,8 +164,8 @@ class LegacyLinker
     //   123: if_icmpge +35 -> 158
     //   126: getstatic 55	com/tencent/smtt/library_loader/LegacyLinker:buffered_read_data	Ljava/util/ArrayList;
     //   129: iload 4
-    //   131: invokevirtual 200	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   134: checkcast 202	[B
+    //   131: invokevirtual 198	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   134: checkcast 200	[B
     //   137: arraylength
     //   138: istore 11
     //   140: iload 4
@@ -181,27 +181,27 @@ class LegacyLinker
     //   158: iload 10
     //   160: iload_1
     //   161: isub
-    //   162: ifle +826 -> 988
+    //   162: ifle +798 -> 960
     //   165: iload 10
     //   167: iload_1
     //   168: isub
     //   169: istore 11
     //   171: iload 12
     //   173: istore 4
-    //   175: new 138	java/lang/StringBuilder
+    //   175: new 136	java/lang/StringBuilder
     //   178: dup
-    //   179: ldc 204
-    //   181: invokespecial 143	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   179: ldc 202
+    //   181: invokespecial 141	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   184: aload_0
-    //   185: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   188: ldc 206
-    //   190: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   185: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   188: ldc 204
+    //   190: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   193: iload 13
-    //   195: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   198: ldc 208
-    //   200: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   195: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   198: ldc 206
+    //   200: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   203: iload 11
-    //   205: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   205: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   208: pop
     //   209: iload 6
     //   211: istore 4
@@ -225,8 +225,8 @@ class LegacyLinker
     //   246: istore 4
     //   248: getstatic 55	com/tencent/smtt/library_loader/LegacyLinker:buffered_read_data	Ljava/util/ArrayList;
     //   251: iload 6
-    //   253: invokevirtual 200	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   256: checkcast 202	[B
+    //   253: invokevirtual 198	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   256: checkcast 200	[B
     //   259: astore_0
     //   260: iload 8
     //   262: istore 5
@@ -236,15 +236,15 @@ class LegacyLinker
     //   270: istore 9
     //   272: iload 8
     //   274: istore 4
-    //   276: new 138	java/lang/StringBuilder
+    //   276: new 136	java/lang/StringBuilder
     //   279: dup
-    //   280: ldc 210
-    //   282: invokespecial 143	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   280: ldc 208
+    //   282: invokespecial 141	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   285: aload_0
     //   286: arraylength
-    //   287: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   290: ldc 212
-    //   292: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   287: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   290: ldc 210
+    //   292: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   295: pop
     //   296: iload 7
     //   298: istore 9
@@ -261,7 +261,7 @@ class LegacyLinker
     //   317: istore 4
     //   319: aload 14
     //   321: aload_0
-    //   322: invokevirtual 216	java/io/ByteArrayOutputStream:write	([B)V
+    //   322: invokevirtual 214	java/io/ByteArrayOutputStream:write	([B)V
     //   325: iload 7
     //   327: istore 9
     //   329: iload 5
@@ -284,35 +284,35 @@ class LegacyLinker
     //   359: iload 7
     //   361: iadd
     //   362: istore 7
-    //   364: new 138	java/lang/StringBuilder
+    //   364: new 136	java/lang/StringBuilder
     //   367: dup
-    //   368: ldc 218
-    //   370: invokespecial 143	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   368: ldc 216
+    //   370: invokespecial 141	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   373: iload 6
-    //   375: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   378: ldc 220
-    //   380: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   375: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   378: ldc 218
+    //   380: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   383: iload 7
-    //   385: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   385: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   388: pop
     //   389: iload 5
     //   391: istore 4
     //   393: iload 7
     //   395: istore 5
-    //   397: new 138	java/lang/StringBuilder
+    //   397: new 136	java/lang/StringBuilder
     //   400: dup
-    //   401: ldc 222
-    //   403: invokespecial 143	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   401: ldc 220
+    //   403: invokespecial 141	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   406: iload 4
-    //   408: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   411: ldc 224
-    //   413: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   408: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   411: ldc 222
+    //   413: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   416: iload 6
-    //   418: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   421: ldc 220
-    //   423: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   418: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   421: ldc 218
+    //   423: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   426: iload 5
-    //   428: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   428: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   431: pop
     //   432: iload 4
     //   434: istore 7
@@ -322,32 +322,32 @@ class LegacyLinker
     //   441: iload 10
     //   443: isub
     //   444: ifle +222 -> 666
-    //   447: new 138	java/lang/StringBuilder
+    //   447: new 136	java/lang/StringBuilder
     //   450: dup
-    //   451: ldc 226
-    //   453: invokespecial 143	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   451: ldc 224
+    //   453: invokespecial 141	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   456: iload_1
     //   457: iload 10
     //   459: isub
-    //   460: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   460: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   463: pop
     //   464: aload 15
     //   466: iload_1
     //   467: iload 10
     //   469: isub
     //   470: i2l
-    //   471: invokevirtual 232	java/io/InputStream:skip	(J)J
+    //   471: invokevirtual 230	java/io/InputStream:skip	(J)J
     //   474: pop2
     //   475: iload 4
     //   477: istore_1
-    //   478: new 138	java/lang/StringBuilder
+    //   478: new 136	java/lang/StringBuilder
     //   481: dup
-    //   482: ldc 222
-    //   484: invokespecial 143	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   482: ldc 220
+    //   484: invokespecial 141	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   487: iload_1
-    //   488: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   491: ldc 234
-    //   493: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   488: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   491: ldc 232
+    //   493: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   496: pop
     //   497: sipush 1024
     //   500: newarray byte
@@ -361,14 +361,14 @@ class LegacyLinker
     //   513: iload_1
     //   514: isub
     //   515: istore 4
-    //   517: new 138	java/lang/StringBuilder
+    //   517: new 136	java/lang/StringBuilder
     //   520: dup
-    //   521: ldc 236
-    //   523: invokespecial 143	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   521: ldc 234
+    //   523: invokespecial 141	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   526: iload 4
-    //   528: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   531: ldc 238
-    //   533: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   528: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   531: ldc 236
+    //   533: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   536: pop
     //   537: iload 4
     //   539: ifle +326 -> 865
@@ -376,7 +376,7 @@ class LegacyLinker
     //   544: aload_0
     //   545: iconst_0
     //   546: iload 4
-    //   548: invokevirtual 242	java/io/InputStream:read	([BII)I
+    //   548: invokevirtual 240	java/io/InputStream:read	([BII)I
     //   551: istore 4
     //   553: iload 4
     //   555: ifle +310 -> 865
@@ -384,22 +384,22 @@ class LegacyLinker
     //   559: iload 4
     //   561: iadd
     //   562: istore_1
-    //   563: new 138	java/lang/StringBuilder
+    //   563: new 136	java/lang/StringBuilder
     //   566: dup
-    //   567: ldc 244
-    //   569: invokespecial 143	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   567: ldc 242
+    //   569: invokespecial 141	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   572: iload 4
-    //   574: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   577: ldc 246
-    //   579: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   574: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   577: ldc 244
+    //   579: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   582: iload_1
-    //   583: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   583: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   586: pop
     //   587: aload 14
     //   589: aload_0
     //   590: iconst_0
     //   591: iload 4
-    //   593: invokevirtual 249	java/io/ByteArrayOutputStream:write	([BII)V
+    //   593: invokevirtual 247	java/io/ByteArrayOutputStream:write	([BII)V
     //   596: iload_2
     //   597: iload_1
     //   598: isub
@@ -456,19 +456,19 @@ class LegacyLinker
     //   694: istore 7
     //   696: getstatic 55	com/tencent/smtt/library_loader/LegacyLinker:buffered_read_data	Ljava/util/ArrayList;
     //   699: iload 6
-    //   701: invokevirtual 200	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   704: checkcast 202	[B
+    //   701: invokevirtual 198	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   704: checkcast 200	[B
     //   707: astore_0
     //   708: iload 4
     //   710: istore 7
-    //   712: new 138	java/lang/StringBuilder
+    //   712: new 136	java/lang/StringBuilder
     //   715: dup
-    //   716: ldc 251
-    //   718: invokespecial 143	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   716: ldc 249
+    //   718: invokespecial 141	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   721: iload_1
-    //   722: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   725: ldc 212
-    //   727: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   722: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   725: ldc 210
+    //   727: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   730: pop
     //   731: iload 4
     //   733: istore 7
@@ -479,7 +479,7 @@ class LegacyLinker
     //   740: iload 5
     //   742: isub
     //   743: iload_1
-    //   744: invokevirtual 249	java/io/ByteArrayOutputStream:write	([BII)V
+    //   744: invokevirtual 247	java/io/ByteArrayOutputStream:write	([BII)V
     //   747: iload 4
     //   749: iload_1
     //   750: iadd
@@ -497,26 +497,26 @@ class LegacyLinker
     //   769: istore 7
     //   771: getstatic 55	com/tencent/smtt/library_loader/LegacyLinker:buffered_read_data	Ljava/util/ArrayList;
     //   774: iload 6
-    //   776: invokevirtual 200	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   779: checkcast 202	[B
+    //   776: invokevirtual 198	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   779: checkcast 200	[B
     //   782: astore_0
     //   783: iload_1
     //   784: istore 7
-    //   786: new 138	java/lang/StringBuilder
+    //   786: new 136	java/lang/StringBuilder
     //   789: dup
-    //   790: ldc 253
-    //   792: invokespecial 143	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   790: ldc 251
+    //   792: invokespecial 141	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   795: aload_0
     //   796: arraylength
-    //   797: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   800: ldc 212
-    //   802: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   797: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   800: ldc 210
+    //   802: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   805: pop
     //   806: iload_1
     //   807: istore 7
     //   809: aload 14
     //   811: aload_0
-    //   812: invokevirtual 216	java/io/ByteArrayOutputStream:write	([B)V
+    //   812: invokevirtual 214	java/io/ByteArrayOutputStream:write	([B)V
     //   815: iload_1
     //   816: istore 7
     //   818: aload_0
@@ -544,128 +544,99 @@ class LegacyLinker
     //   860: istore 4
     //   862: goto -325 -> 537
     //   865: aload 15
-    //   867: invokevirtual 256	java/io/InputStream:close	()V
+    //   867: invokevirtual 254	java/io/InputStream:close	()V
     //   870: aload 14
-    //   872: invokevirtual 257	java/io/ByteArrayOutputStream:close	()V
+    //   872: invokevirtual 255	java/io/ByteArrayOutputStream:close	()V
     //   875: aload 14
-    //   877: invokevirtual 261	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   877: invokevirtual 259	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   880: astore_0
     //   881: getstatic 55	com/tencent/smtt/library_loader/LegacyLinker:buffered_read_data	Ljava/util/ArrayList;
     //   884: aload_0
-    //   885: invokevirtual 264	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   885: invokevirtual 262	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   888: pop
-    //   889: new 138	java/lang/StringBuilder
+    //   889: new 136	java/lang/StringBuilder
     //   892: dup
-    //   893: ldc_w 266
-    //   896: invokespecial 143	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   893: ldc_w 264
+    //   896: invokespecial 141	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   899: aload_0
     //   900: arraylength
-    //   901: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   904: ldc_w 268
-    //   907: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   901: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   904: ldc_w 266
+    //   907: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   910: aload_0
-    //   911: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   911: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   914: pop
-    //   915: ldc 136
+    //   915: ldc 134
     //   917: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   920: aload_0
     //   921: areturn
     //   922: astore_0
     //   923: aload 15
-    //   925: invokevirtual 256	java/io/InputStream:close	()V
+    //   925: invokevirtual 254	java/io/InputStream:close	()V
     //   928: aload 14
-    //   930: invokevirtual 257	java/io/ByteArrayOutputStream:close	()V
+    //   930: invokevirtual 255	java/io/ByteArrayOutputStream:close	()V
     //   933: goto -58 -> 875
     //   936: astore_0
     //   937: goto -62 -> 875
     //   940: astore_0
-    //   941: aload 15
-    //   943: invokevirtual 256	java/io/InputStream:close	()V
-    //   946: aload 14
-    //   948: invokevirtual 257	java/io/ByteArrayOutputStream:close	()V
-    //   951: ldc 136
-    //   953: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   956: aload_0
-    //   957: athrow
-    //   958: astore_0
-    //   959: goto -89 -> 870
-    //   962: astore_0
-    //   963: goto -88 -> 875
-    //   966: astore_0
-    //   967: goto -39 -> 928
-    //   970: astore 15
-    //   972: goto -26 -> 946
-    //   975: astore 14
-    //   977: goto -26 -> 951
-    //   980: astore_0
-    //   981: iload 5
-    //   983: istore 4
-    //   985: goto -326 -> 659
-    //   988: iconst_0
-    //   989: istore 11
-    //   991: goto -820 -> 171
+    //   941: goto -71 -> 870
+    //   944: astore_0
+    //   945: goto -70 -> 875
+    //   948: astore_0
+    //   949: goto -21 -> 928
+    //   952: astore_0
+    //   953: iload 5
+    //   955: istore 4
+    //   957: goto -298 -> 659
+    //   960: iconst_0
+    //   961: istore 11
+    //   963: goto -792 -> 171
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	994	0	paramParcelFileDescriptor	ParcelFileDescriptor
-    //   0	994	1	paramInt1	int
-    //   0	994	2	paramInt2	int
-    //   0	994	3	paramBoolean	boolean
-    //   114	870	4	i	int
-    //   97	885	5	j	int
+    //   0	966	0	paramParcelFileDescriptor	ParcelFileDescriptor
+    //   0	966	1	paramInt1	int
+    //   0	966	2	paramInt2	int
+    //   0	966	3	paramBoolean	boolean
+    //   114	842	4	i	int
+    //   97	857	5	j	int
     //   88	687	6	k	int
     //   103	741	7	m	int
     //   94	547	8	n	int
     //   100	553	9	i1	int
     //   117	353	10	i2	int
-    //   138	852	11	i3	int
+    //   138	824	11	i3	int
     //   91	262	12	i4	int
     //   111	655	13	i5	int
-    //   85	862	14	localByteArrayOutputStream	java.io.ByteArrayOutputStream
-    //   975	1	14	localException1	java.lang.Exception
-    //   76	866	15	localFileInputStream	java.io.FileInputStream
-    //   970	1	15	localException2	java.lang.Exception
-    //   156	1	16	localThrowable	java.lang.Throwable
+    //   85	844	14	localByteArrayOutputStream	java.io.ByteArrayOutputStream
+    //   76	848	15	localFileInputStream	java.io.FileInputStream
+    //   156	1	16	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   126	140	156	java/lang/Throwable
-    //   175	209	651	java/lang/Throwable
-    //   248	260	651	java/lang/Throwable
-    //   276	296	651	java/lang/Throwable
-    //   304	311	651	java/lang/Throwable
-    //   319	325	651	java/lang/Throwable
-    //   333	337	651	java/lang/Throwable
-    //   621	625	651	java/lang/Throwable
-    //   696	708	842	java/lang/Throwable
-    //   712	731	842	java/lang/Throwable
-    //   735	747	842	java/lang/Throwable
-    //   771	783	842	java/lang/Throwable
-    //   786	806	842	java/lang/Throwable
-    //   809	815	842	java/lang/Throwable
-    //   818	822	842	java/lang/Throwable
-    //   447	475	922	java/lang/Throwable
-    //   478	503	922	java/lang/Throwable
-    //   517	537	922	java/lang/Throwable
-    //   542	553	922	java/lang/Throwable
-    //   563	596	922	java/lang/Throwable
+    //   126	140	156	finally
+    //   175	209	651	finally
+    //   248	260	651	finally
+    //   276	296	651	finally
+    //   304	311	651	finally
+    //   319	325	651	finally
+    //   333	337	651	finally
+    //   621	625	651	finally
+    //   696	708	842	finally
+    //   712	731	842	finally
+    //   735	747	842	finally
+    //   771	783	842	finally
+    //   786	806	842	finally
+    //   809	815	842	finally
+    //   818	822	842	finally
+    //   447	475	922	finally
+    //   478	503	922	finally
+    //   517	537	922	finally
+    //   542	553	922	finally
+    //   563	596	922	finally
     //   928	933	936	java/lang/Exception
-    //   447	475	940	finally
-    //   478	503	940	finally
-    //   517	537	940	finally
-    //   542	553	940	finally
-    //   563	596	940	finally
-    //   696	708	940	finally
-    //   712	731	940	finally
-    //   735	747	940	finally
-    //   771	783	940	finally
-    //   786	806	940	finally
-    //   809	815	940	finally
-    //   818	822	940	finally
-    //   865	870	958	java/lang/Exception
-    //   870	875	962	java/lang/Exception
-    //   923	928	966	java/lang/Exception
-    //   941	946	970	java/lang/Exception
-    //   946	951	975	java/lang/Exception
-    //   364	389	980	java/lang/Throwable
+    //   865	870	940	java/lang/Exception
+    //   870	875	944	java/lang/Exception
+    //   923	928	948	java/lang/Exception
+    //   364	389	952	finally
   }
   
   private void setupBaseLoadAddressLocked()
@@ -979,7 +950,7 @@ class LegacyLinker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.library_loader.LegacyLinker
  * JD-Core Version:    0.7.0.1
  */

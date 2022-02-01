@@ -1,40 +1,39 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
-import com.tencent.mm.plugin.appbrand.jsapi.aa;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.m.o;
+import com.tencent.mm.plugin.appbrand.jsapi.ab;
+import com.tencent.mm.plugin.appbrand.n.o;
 import org.json.JSONObject;
 
 abstract class f<T extends g>
-  extends aa
+  extends ab
 {
-  private final T oRH;
+  private final T rXh;
   
   public f(T paramT)
   {
-    this.oRH = paramT;
-    this.oRH.oRL = this;
+    this.rXh = paramT;
+    this.rXh.rXl = this;
   }
   
-  public final String a(e parame, JSONObject paramJSONObject)
+  public final String a(com.tencent.mm.plugin.appbrand.jsapi.f paramf, JSONObject paramJSONObject)
   {
-    return a(parame, paramJSONObject, parame.getJsRuntime());
+    return a(paramf, paramJSONObject, paramf.getJsRuntime());
   }
   
-  public String a(e parame, JSONObject paramJSONObject, o paramo)
+  public String a(com.tencent.mm.plugin.appbrand.jsapi.f paramf, JSONObject paramJSONObject, o paramo)
   {
-    paramJSONObject = this.oRH.a(parame, paramo, paramJSONObject);
-    return a(parame, paramJSONObject.errMsg, paramJSONObject.values);
+    paramJSONObject = this.rXh.a(paramf, paramo, paramJSONObject);
+    return a(paramf, paramJSONObject.errMsg, paramJSONObject.values);
   }
   
-  public boolean bPG()
+  public boolean cpN()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.f
  * JD-Core Version:    0.7.0.1
  */

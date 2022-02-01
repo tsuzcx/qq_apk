@@ -4,7 +4,7 @@ import android.graphics.Canvas;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.g;
+import com.tencent.mm.plugin.appbrand.af.i;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.d;
 import java.util.Objects;
@@ -34,7 +34,7 @@ public class RealSetStrokeStyleActionNormalArg
   public final boolean a(d paramd, Canvas paramCanvas)
   {
     AppMethodBeat.i(145093);
-    paramd.nTw.setColor(this.color);
+    paramd.qTi.setColor(this.color);
     AppMethodBeat.o(145093);
     return true;
   }
@@ -72,20 +72,6 @@ public class RealSetStrokeStyleActionNormalArg
     return false;
   }
   
-  public final void f(JSONArray paramJSONArray)
-  {
-    AppMethodBeat.i(145098);
-    super.f(paramJSONArray);
-    paramJSONArray = paramJSONArray.optJSONArray(1);
-    if ((paramJSONArray == null) || (paramJSONArray.length() < 4))
-    {
-      AppMethodBeat.o(145098);
-      return;
-    }
-    this.color = g.r(paramJSONArray);
-    AppMethodBeat.o(145098);
-  }
-  
   public int hashCode()
   {
     AppMethodBeat.i(145096);
@@ -94,10 +80,24 @@ public class RealSetStrokeStyleActionNormalArg
     return i;
   }
   
-  public final void i(Parcel paramParcel)
+  public final void i(JSONArray paramJSONArray)
+  {
+    AppMethodBeat.i(145098);
+    super.i(paramJSONArray);
+    paramJSONArray = paramJSONArray.optJSONArray(1);
+    if ((paramJSONArray == null) || (paramJSONArray.length() < 4))
+    {
+      AppMethodBeat.o(145098);
+      return;
+    }
+    this.color = i.u(paramJSONArray);
+    AppMethodBeat.o(145098);
+  }
+  
+  public final void k(Parcel paramParcel)
   {
     AppMethodBeat.i(145094);
-    super.i(paramParcel);
+    super.k(paramParcel);
     this.color = paramParcel.readInt();
     AppMethodBeat.o(145094);
   }
@@ -119,7 +119,7 @@ public class RealSetStrokeStyleActionNormalArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.RealSetStrokeStyleActionNormalArg
  * JD-Core Version:    0.7.0.1
  */

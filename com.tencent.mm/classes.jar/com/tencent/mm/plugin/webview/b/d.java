@@ -1,50 +1,18 @@
 package com.tencent.mm.plugin.webview.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.hv;
+import com.tencent.mm.autogen.b.ir;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import java.lang.reflect.Field;
-import java.util.Map;
 
 public final class d
-  extends hv
+  extends ir
 {
   protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(77856);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[6];
-    localMAutoDBInfo.columns = new String[7];
-    StringBuilder localStringBuilder = new StringBuilder();
-    localMAutoDBInfo.columns[0] = "recordId";
-    localMAutoDBInfo.colsMap.put("recordId", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" recordId TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.primaryKey = "recordId";
-    localMAutoDBInfo.columns[1] = "link";
-    localMAutoDBInfo.colsMap.put("link", "TEXT");
-    localStringBuilder.append(" link TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[2] = "title";
-    localMAutoDBInfo.colsMap.put("title", "TEXT");
-    localStringBuilder.append(" title TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[3] = "source";
-    localMAutoDBInfo.colsMap.put("source", "TEXT");
-    localStringBuilder.append(" source TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[4] = "imgUrl";
-    localMAutoDBInfo.colsMap.put("imgUrl", "TEXT");
-    localStringBuilder.append(" imgUrl TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[5] = "timeStamp";
-    localMAutoDBInfo.colsMap.put("timeStamp", "LONG");
-    localStringBuilder.append(" timeStamp LONG");
-    localMAutoDBInfo.columns[6] = "rowid";
-    localMAutoDBInfo.sql = localStringBuilder.toString();
-    info = localMAutoDBInfo;
+    info = ir.aJm();
     AppMethodBeat.o(77856);
   }
   

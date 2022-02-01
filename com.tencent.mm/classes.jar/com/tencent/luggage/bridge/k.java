@@ -5,38 +5,30 @@ import org.json.JSONObject;
 
 public final class k
 {
-  public int cqA;
-  private boolean cqB;
-  private f cqE;
-  boolean cqF;
-  public String cqG;
-  public JSONObject cqH;
-  public JSONObject cqn;
-  String cqz;
+  public JSONObject eiA;
+  public JSONObject eif;
+  String eir;
+  public int eit;
+  private boolean eiu;
+  private f eix;
+  boolean eiy;
+  public String eiz;
   
   k(f paramf, m paramm, boolean paramBoolean)
   {
     AppMethodBeat.i(140325);
-    this.cqE = paramf;
-    paramf = paramm.NN();
-    this.cqz = paramf.getString("method");
-    this.cqn = paramf.optJSONObject("data");
-    if (this.cqn == null) {
-      this.cqn = new JSONObject("{}");
+    this.eix = paramf;
+    paramf = paramm.anZ();
+    this.eir = paramf.getString("method");
+    this.eif = paramf.optJSONObject("data");
+    if (this.eif == null) {
+      this.eif = new JSONObject("{}");
     }
-    this.cqF = paramBoolean;
-    this.cqA = paramf.optInt("callbackId", 0);
-    this.cqB = false;
-    this.cqH = new JSONObject();
+    this.eiy = paramBoolean;
+    this.eit = paramf.optInt("callbackId", 0);
+    this.eiu = false;
+    this.eiA = new JSONObject();
     AppMethodBeat.o(140325);
-  }
-  
-  final e NP()
-  {
-    AppMethodBeat.i(140328);
-    c localc = new c(this.cqA, this.cqG, this.cqH, this.cqB);
-    AppMethodBeat.o(140328);
-    return localc;
   }
   
   public final void a(String paramString, JSONObject paramJSONObject)
@@ -46,12 +38,12 @@ public final class k
     if (paramString == null) {
       str = "";
     }
-    this.cqG = str;
+    this.eiz = str;
     if (paramJSONObject != null) {}
     for (;;)
     {
-      this.cqH = paramJSONObject;
-      if (this.cqA != 0) {
+      this.eiA = paramJSONObject;
+      if (this.eit != 0) {
         callback();
       }
       AppMethodBeat.o(140326);
@@ -60,10 +52,18 @@ public final class k
     }
   }
   
+  final e aoa()
+  {
+    AppMethodBeat.i(140328);
+    c localc = new c(this.eit, this.eiz, this.eiA, this.eiu);
+    AppMethodBeat.o(140328);
+    return localc;
+  }
+  
   public final void callback()
   {
     AppMethodBeat.i(140327);
-    this.cqE.a(NP());
+    this.eix.a(aoa());
     AppMethodBeat.o(140327);
   }
 }

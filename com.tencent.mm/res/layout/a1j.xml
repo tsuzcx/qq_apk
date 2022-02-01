@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textColor="@color/n2" android:id="@id/bzf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_marginStart="@dimen/ct"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="horizontal" android:id="@id/kbs" android:background="@color/aav" android:padding="@dimen/m2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/kbr" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="{正在同步}" android:layout_weight="1.0" />
+    <Button android:textColor="@color/aks" android:layout_gravity="center" android:id="@id/kbp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/or" />
+</LinearLayout>

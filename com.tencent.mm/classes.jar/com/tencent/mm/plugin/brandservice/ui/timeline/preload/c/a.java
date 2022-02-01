@@ -1,31 +1,31 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.c;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.protocal.protobuf.zv;
-import com.tencent.mm.protocal.protobuf.zw;
-import com.tencent.mm.protocal.protobuf.zx;
+import com.tencent.mm.am.b;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.protocal.protobuf.abv;
+import com.tencent.mm.protocal.protobuf.abw;
+import com.tencent.mm.protocal.protobuf.abx;
 import java.util.LinkedList;
 
 public final class a
-  extends c<zx>
+  extends b<abx>
 {
-  public a(LinkedList<zv> paramLinkedList, int paramInt, String paramString)
+  public a(LinkedList<abv> paramLinkedList, int paramInt, String paramString)
   {
     AppMethodBeat.i(6200);
-    d.a locala = new d.a();
+    c.a locala = new c.a();
     locala.funcId = 2731;
     locala.uri = "/cgi-bin/mmbiz-bin/checktmplver";
-    locala.lBW = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    zw localzw = new zw();
-    localzw.CPw = paramInt;
-    localzw.sSU = paramString;
-    localzw.Smi = paramLinkedList;
-    locala.lBU = localzw;
-    locala.lBV = new zx();
-    c(locala.bgN());
+    abw localabw = new abw();
+    localabw.IJG = paramInt;
+    localabw.vYk = paramString;
+    localabw.YML = paramLinkedList;
+    locala.otE = localabw;
+    locala.otF = new abx();
+    c(locala.bEF());
     AppMethodBeat.o(6200);
   }
 }

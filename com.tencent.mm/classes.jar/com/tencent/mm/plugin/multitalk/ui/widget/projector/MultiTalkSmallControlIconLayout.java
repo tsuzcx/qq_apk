@@ -13,107 +13,108 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.multitalk.a.e;
 import com.tencent.mm.plugin.multitalk.a.f;
 import com.tencent.mm.plugin.multitalk.a.i;
-import com.tencent.mm.ui.au;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.ui.bb;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/MultiTalkSmallControlIconLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "forbiddenDrawable", "", "iconDrawable", "iconIv", "Landroid/widget/ImageView;", "iconSize", "", "initStaus", "", "isChceked", "()Z", "setChceked", "(Z)V", "mRootView", "Landroid/view/View;", "singleStatus", "textColor", "isChecked", "onClickCalled", "", "setChecked", "setIconEnabled", "enable", "plugin-multitalk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/MultiTalkSmallControlIconLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "forbiddenDrawable", "", "iconDrawable", "iconIv", "Landroid/widget/ImageView;", "iconSize", "", "initStaus", "", "isChceked", "()Z", "setChceked", "(Z)V", "mRootView", "Landroid/view/View;", "singleStatus", "textColor", "isChecked", "onClickCalled", "", "setChecked", "setIconEnabled", "enable", "plugin-multitalk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class MultiTalkSmallControlIconLayout
   extends FrameLayout
 {
-  private boolean FBq;
-  boolean FBr;
-  private boolean FxD;
-  private float FxE;
-  private int forbiddenDrawable;
+  private boolean LtP;
+  private float LtQ;
+  private int Lxs;
+  private boolean Lxt;
+  boolean Lxu;
   private int iconDrawable;
-  private ImageView jmf;
-  private View mrI;
+  private ImageView lPb;
+  private View plc;
   private int textColor;
   
   public MultiTalkSmallControlIconLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(200346);
+    AppMethodBeat.i(285711);
     View localView = LayoutInflater.from(paramContext).inflate(a.f.multitalk_small_icons_layout, (ViewGroup)this);
-    p.j(localView, "LayoutInflater.from(cont…small_icons_layout, this)");
-    this.mrI = localView;
+    s.s(localView, "from(context).inflate(R.…small_icons_layout, this)");
+    this.plc = localView;
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.i.MultitalkControlIconStyle);
-    this.iconDrawable = paramAttributeSet.getResourceId(a.i.MultitalkControlIconStyle_iconDrawable, -1);
+    s.s(paramAttributeSet, "context.obtainStyledAttr…ultitalkControlIconStyle)");
+    this.iconDrawable = paramAttributeSet.getResourceId(a.i.MultitalkControlIconStyle_checkedIcon, -1);
     this.textColor = paramAttributeSet.getInteger(a.i.MultitalkControlIconStyle_iconTextColor, -1);
-    this.FxD = paramAttributeSet.getBoolean(a.i.MultitalkControlIconStyle_initStatus, false);
-    this.forbiddenDrawable = paramAttributeSet.getResourceId(a.i.MultitalkControlIconStyle_forbiddenDrawable, -1);
-    this.FxE = paramAttributeSet.getDimension(a.i.MultitalkControlIconStyle_iconSize, -1.0F);
-    this.FBq = paramAttributeSet.getBoolean(a.i.MultitalkControlIconStyle_singleStatus, false);
+    this.LtP = paramAttributeSet.getBoolean(a.i.MultitalkControlIconStyle_initStatus, false);
+    this.Lxs = paramAttributeSet.getResourceId(a.i.MultitalkControlIconStyle_uncheckedIcon, -1);
+    this.LtQ = paramAttributeSet.getDimension(a.i.MultitalkControlIconStyle_iconSize, -1.0F);
+    this.Lxt = paramAttributeSet.getBoolean(a.i.MultitalkControlIconStyle_singleStatus, false);
     paramAttributeSet.recycle();
     paramAttributeSet = findViewById(a.e.icon_iv);
-    p.j(paramAttributeSet, "findViewById(R.id.icon_iv)");
-    this.jmf = ((ImageView)paramAttributeSet);
+    s.s(paramAttributeSet, "findViewById(R.id.icon_iv)");
+    this.lPb = ((ImageView)paramAttributeSet);
     if (this.iconDrawable != -1)
     {
-      if (this.FxD)
+      if (this.LtP)
       {
-        this.jmf.setImageDrawable(au.o(paramContext, this.iconDrawable, -16777216));
-        AppMethodBeat.o(200346);
+        this.lPb.setImageDrawable(bb.m(paramContext, this.iconDrawable, -16777216));
+        AppMethodBeat.o(285711);
         return;
       }
-      this.jmf.setImageDrawable(au.o(paramContext, this.iconDrawable, -1));
+      this.lPb.setImageDrawable(bb.m(paramContext, this.iconDrawable, -1));
     }
-    AppMethodBeat.o(200346);
+    AppMethodBeat.o(285711);
   }
   
   public final void setChceked(boolean paramBoolean)
   {
-    this.FBr = paramBoolean;
+    this.Lxu = paramBoolean;
   }
   
   public final void setChecked(boolean paramBoolean)
   {
-    AppMethodBeat.i(200339);
-    this.FBr = paramBoolean;
+    AppMethodBeat.i(285728);
+    this.Lxu = paramBoolean;
     setSelected(paramBoolean);
-    if ((this.FBq) && (paramBoolean))
+    if ((this.Lxt) && (paramBoolean))
     {
-      AppMethodBeat.o(200339);
+      AppMethodBeat.o(285728);
       return;
     }
     Drawable localDrawable;
     if (this.iconDrawable != -1)
     {
-      if (!this.FBr) {
+      if (!this.Lxu) {
         break label82;
       }
-      if (this.FxD) {
+      if (this.LtP) {
         break label106;
       }
-      localDrawable = au.o(getContext(), this.iconDrawable, -16777216);
+      localDrawable = bb.m(getContext(), this.iconDrawable, -16777216);
     }
     for (;;)
     {
-      this.jmf.setImageDrawable(localDrawable);
-      AppMethodBeat.o(200339);
+      this.lPb.setImageDrawable(localDrawable);
+      AppMethodBeat.o(285728);
       return;
       label82:
-      if (this.FxD) {
-        localDrawable = au.o(getContext(), this.iconDrawable, -16777216);
+      if (this.LtP) {
+        localDrawable = bb.m(getContext(), this.iconDrawable, -16777216);
       } else {
         label106:
-        localDrawable = au.o(getContext(), this.forbiddenDrawable, -1);
+        localDrawable = bb.m(getContext(), this.Lxs, -1);
       }
     }
   }
   
   public final void setIconEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(200343);
+    AppMethodBeat.i(285738);
     if (paramBoolean)
     {
-      this.mrI.setAlpha(1.0F);
-      AppMethodBeat.o(200343);
+      this.plc.setAlpha(1.0F);
+      AppMethodBeat.o(285738);
       return;
     }
-    this.mrI.setAlpha(0.3F);
-    AppMethodBeat.o(200343);
+    this.plc.setAlpha(0.3F);
+    AppMethodBeat.o(285738);
   }
 }
 

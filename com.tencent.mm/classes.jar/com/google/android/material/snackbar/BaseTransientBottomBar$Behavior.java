@@ -9,50 +9,59 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class BaseTransientBottomBar$Behavior
   extends SwipeDismissBehavior<View>
 {
-  private final BaseTransientBottomBar.a bEz;
+  private final BaseTransientBottomBar.a dxA;
   
   public BaseTransientBottomBar$Behavior()
   {
-    AppMethodBeat.i(239143);
-    this.bEz = new BaseTransientBottomBar.a(this);
-    AppMethodBeat.o(239143);
+    AppMethodBeat.i(209799);
+    this.dxA = new BaseTransientBottomBar.a(this);
+    AppMethodBeat.o(209799);
   }
   
   public final boolean a(CoordinatorLayout paramCoordinatorLayout, View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(239147);
+    AppMethodBeat.i(209830);
     switch (paramMotionEvent.getActionMasked())
     {
     }
     for (;;)
     {
       boolean bool = super.a(paramCoordinatorLayout, paramView, paramMotionEvent);
-      AppMethodBeat.o(239147);
+      AppMethodBeat.o(209830);
       return bool;
-      if (!paramCoordinatorLayout.d(paramView, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY())) {
+      if (paramCoordinatorLayout.d(paramView, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))
+      {
+        a locala = a.WU();
+        synchronized (locala.lock)
+        {
+          if (locala.WV())
+          {
+            AppMethodBeat.o(209830);
+            throw null;
+          }
+        }
         continue;
-      }
-      a locala = a.xx();
-      synchronized (locala.lock)
-      {
-        locala.xy();
-      }
-      locala = a.xx();
-      synchronized (locala.lock)
-      {
-        locala.xy();
+        locala = a.WU();
+        synchronized (locala.lock)
+        {
+          if (locala.WV())
+          {
+            AppMethodBeat.o(209830);
+            throw null;
+          }
+        }
       }
     }
   }
   
-  public final boolean cf(View paramView)
+  public final boolean cB(View paramView)
   {
     return paramView instanceof BaseTransientBottomBar.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.snackbar.BaseTransientBottomBar.Behavior
  * JD-Core Version:    0.7.0.1
  */

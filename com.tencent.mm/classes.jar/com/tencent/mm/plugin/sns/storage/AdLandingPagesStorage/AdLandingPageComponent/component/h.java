@@ -8,10 +8,11 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.u;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.g.a;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.k;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MD5Util;
@@ -20,10 +21,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class h
-  extends m
+  extends n
 {
-  boolean Kqb = true;
-  ImageView fDJ;
+  boolean QOi = true;
+  ImageView hIz;
   ProgressBar progressBar;
   
   public h(Context paramContext, ViewGroup paramViewGroup)
@@ -36,19 +37,28 @@ public final class h
     super(paramContext, null, paramViewGroup);
   }
   
-  public final boolean by(JSONObject paramJSONObject)
+  public final void Gs()
+  {
+    AppMethodBeat.i(96452);
+    View localView = this.contentView;
+    this.hIz = ((ImageView)localView.findViewById(b.f.sns_ad_native_landing_pages_items_pure_image_img));
+    this.progressBar = ((ProgressBar)localView.findViewById(b.f.progressbar));
+    AppMethodBeat.o(96452);
+  }
+  
+  public final boolean bP(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(96456);
-    if (!super.by(paramJSONObject))
+    if (!super.bP(paramJSONObject))
     {
       AppMethodBeat.o(96456);
       return false;
     }
     try
     {
-      if (!this.Kqb)
+      if (!this.QOi)
       {
-        String str = MD5Util.getMD5String(((u)this.KqB).Kmf);
+        String str = MD5Util.getMD5String(((u)this.QOV).QKj);
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("urlMd5", str);
         localJSONObject.put("needDownload", 1);
@@ -65,35 +75,40 @@ public final class h
     return false;
   }
   
-  protected final void fKe()
+  protected final int getLayout()
+  {
+    return b.g.sns_ad_native_landing_pages_item_image;
+  }
+  
+  protected final void had()
   {
     AppMethodBeat.i(96453);
-    if ((this.contentView == null) || (this.fDJ == null) || (this.progressBar == null))
+    if ((this.contentView == null) || (this.hIz == null) || (this.progressBar == null))
     {
       AppMethodBeat.o(96453);
       return;
     }
-    if ((u)this.KqB == null)
+    if ((u)this.QOV == null)
     {
       AppMethodBeat.o(96453);
       return;
     }
-    float f1 = ((u)this.KqB).paddingTop;
-    float f2 = ((u)this.KqB).paddingBottom;
-    float f3 = ((u)this.KqB).paddingLeft;
-    float f4 = ((u)this.KqB).paddingRight;
-    String str = ((u)this.KqB).Kmf;
-    float f5 = ((u)this.KqB).height;
-    float f6 = ((u)this.KqB).width;
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.fDJ.getLayoutParams();
+    float f1 = ((u)this.QOV).paddingTop;
+    float f2 = ((u)this.QOV).paddingBottom;
+    float f3 = ((u)this.QOV).paddingLeft;
+    float f4 = ((u)this.QOV).paddingRight;
+    String str = ((u)this.QOV).QKj;
+    float f5 = ((u)this.QOV).height;
+    float f6 = ((u)this.QOV).width;
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.hIz.getLayoutParams();
     localLayoutParams.width = ((int)f6);
     localLayoutParams.height = ((int)f5);
-    this.fDJ.setLayoutParams(localLayoutParams);
-    this.Kqb = false;
+    this.hIz.setLayoutParams(localLayoutParams);
+    this.QOi = false;
     startLoading();
-    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a("adId", str, new f.a()
+    k.b("adId", str, new g.a()
     {
-      public final void aYs(String paramAnonymousString)
+      public final void aWn(String paramAnonymousString)
       {
         AppMethodBeat.i(96451);
         h localh;
@@ -108,7 +123,7 @@ public final class h
             AppMethodBeat.o(96451);
             return;
           }
-          if (localh.fDJ == null)
+          if (localh.hIz == null)
           {
             Log.e("AdLandingImageComp", "when set image the imageView is null!");
             AppMethodBeat.o(96451);
@@ -127,19 +142,19 @@ public final class h
           AppMethodBeat.o(96451);
           return;
         }
-        localh.fDJ.setImageBitmap(paramAnonymousString);
+        localh.hIz.setImageBitmap(paramAnonymousString);
         localh.progressBar.setVisibility(8);
         AppMethodBeat.o(96451);
       }
       
-      public final void fJU()
+      public final void gZM()
       {
         AppMethodBeat.i(96449);
         h.this.startLoading();
         AppMethodBeat.o(96449);
       }
       
-      public final void fJV()
+      public final void gZN()
       {
         AppMethodBeat.i(96450);
         h.this.stopLoading();
@@ -148,20 +163,6 @@ public final class h
     });
     this.contentView.setPadding((int)f3, (int)f1, (int)f4, (int)f2);
     AppMethodBeat.o(96453);
-  }
-  
-  public final void fKp()
-  {
-    AppMethodBeat.i(96452);
-    View localView = this.contentView;
-    this.fDJ = ((ImageView)localView.findViewById(i.f.sns_ad_native_landing_pages_items_pure_image_img));
-    this.progressBar = ((ProgressBar)localView.findViewById(i.f.progressbar));
-    AppMethodBeat.o(96452);
-  }
-  
-  protected final int getLayout()
-  {
-    return i.g.sns_ad_native_landing_pages_item_image;
   }
   
   public final void startLoading()
@@ -180,7 +181,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.h
  * JD-Core Version:    0.7.0.1
  */

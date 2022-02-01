@@ -1,255 +1,315 @@
 package com.tencent.mm.plugin.finder.video;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.media.MediaCodec;
-import android.media.MediaFormat;
-import android.os.HandlerThread;
-import android.view.TextureView;
-import android.view.TextureView.SurfaceTextureListener;
-import android.view.View;
-import com.tencent.e.c.d;
+import com.tencent.mars.cdn.CdnLogic;
+import com.tencent.mars.cdn.CdnLogic.DownloadInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.ab;
-import com.tencent.mm.compatible.deviceinfo.af;
-import com.tencent.mm.compatible.i.c;
-import com.tencent.mm.plugin.finder.view.FinderVideoFrameView;
-import com.tencent.mm.plugin.finder.view.s;
-import com.tencent.mm.plugin.finder.view.s.a;
-import com.tencent.mm.protocal.protobuf.csg;
+import com.tencent.mm.ae.e;
+import com.tencent.mm.ae.e.a;
+import com.tencent.mm.app.q;
+import com.tencent.mm.protocal.protobuf.akz;
+import com.tencent.mm.protocal.protobuf.aur;
+import com.tencent.mm.protocal.protobuf.awn;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.vfs.u;
-import java.io.FileDescriptor;
-import java.io.RandomAccessFile;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.threadpool.i;
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.concurrent.CopyOnWriteArrayList;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.a;
-import kotlin.g.a.b;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.n.n;
-import kotlin.x;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/video/FinderNormalVideoCoverPreview;", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoCoverPreview;", "context", "Landroid/content/Context;", "media", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;)V", "frameView", "Lcom/tencent/mm/plugin/finder/view/FinderVideoFrameView;", "seeker", "Lcom/tencent/mm/plugin/finder/view/FinderVideoFrameSeeker;", "destroy", "", "getBitmap", "Landroid/graphics/Bitmap;", "width", "", "height", "getView", "Landroid/view/View;", "seekTo", "timeMs", "", "start", "onReady", "Lkotlin/Function0;", "onDestroy", "onSeekFrame", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "frameUs", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/video/FinderNetworkStatusStatistic;", "", "()V", "TAG", "", "appForegroundListener", "com/tencent/mm/plugin/finder/video/FinderNetworkStatusStatistic$appForegroundListener$1", "Lcom/tencent/mm/plugin/finder/video/FinderNetworkStatusStatistic$appForegroundListener$1;", "downloadInfoAllList", "Ljava/util/concurrent/CopyOnWriteArrayList;", "Lcom/tencent/mm/protocal/protobuf/FinderDownloadInfo;", "getDownloadInfoAllList", "()Ljava/util/concurrent/CopyOnWriteArrayList;", "downloadInfoList", "getDownloadInfoList", "isSupportHevc", "", "preloadInfoList", "getPreloadInfoList", "recentFinderClientStatus", "Lcom/tencent/mm/protocal/protobuf/FinderClientStatus;", "recentFinderNetworkInfoList", "Lcom/tencent/mm/protocal/protobuf/DownloadSpeed;", "getRecentFinderNetworkInfoList", "recentWechatNetworkInfoList", "getRecentWechatNetworkInfoList", "recordNetworkStatusRunnable", "Ljava/lang/Runnable;", "addDownloadNetworkInfo", "", "info", "addDownloadNetworkInfoToFinderState", "addFinderNetworkInfo", "addPreloadNetworkInfo", "addWechatNetworkInfo", "cacheStatusToFile", "generateClientStatus", "recordFinderNetWorkStatus", "recordWechatNetWorkStatus", "release", "resumeStatusFromFile", "setup", "startRecordNetWorkStatus", "stopRecordNetWorkStatus", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
-  implements q
 {
-  private FinderVideoFrameView ALy;
-  private s ALz;
+  public static final f Gog;
+  private static final CopyOnWriteArrayList<awn> Goh;
+  private static final CopyOnWriteArrayList<awn> Goi;
+  private static final CopyOnWriteArrayList<awn> Goj;
+  private static final CopyOnWriteArrayList<akz> Gok;
+  private static final CopyOnWriteArrayList<akz> Gol;
+  private static aur Gom;
+  private static Runnable Gon;
+  public static a Goo;
+  public static boolean ygN;
   
-  public f(Context paramContext, csg paramcsg)
+  static
   {
-    AppMethodBeat.i(285427);
-    this.ALy = new FinderVideoFrameView(paramContext);
-    paramcsg = paramcsg.url;
-    paramContext = paramcsg;
-    if (paramcsg == null) {
-      paramContext = "";
-    }
-    this.ALz = new s(paramContext, this.ALy.getTextureView());
-    AppMethodBeat.o(285427);
+    AppMethodBeat.i(334842);
+    Gog = new f();
+    Goh = new CopyOnWriteArrayList();
+    Goi = new CopyOnWriteArrayList();
+    Goj = new CopyOnWriteArrayList();
+    Gok = new CopyOnWriteArrayList();
+    Gol = new CopyOnWriteArrayList();
+    Goo = new a();
+    ygN = true;
+    AppMethodBeat.o(334842);
   }
   
-  public final void a(a<x> parama1, a<x> parama2, b<? super Long, x> paramb)
+  public static void a(awn paramawn)
   {
-    AppMethodBeat.i(285423);
-    p.k(parama1, "onReady");
-    p.k(parama2, "onDestroy");
-    p.k(paramb, "onSeekFrame");
-    s locals = this.ALz;
-    p.k(parama1, "onTextureReady");
-    p.k(parama2, "onTextureDestroy");
-    p.k(paramb, "onSeekFrame");
-    Object localObject = d.ij("FinderVideoFrameSeeker_renderThread" + locals.hashCode(), -2);
-    p.j(localObject, "SpecialThreadFactory.cre…READ_PRIORITY_FOREGROUND)");
-    locals.Bbu = ((HandlerThread)localObject);
-    localObject = locals.Bbu;
-    if (localObject == null) {
-      p.bGy("ht");
+    AppMethodBeat.i(334731);
+    s.u(paramawn, "info");
+    Log.i("Finder.FinderNetworkStatusStatistic", "addDownloadNetworkInfo info:" + paramawn + " size:" + Goh.size());
+    if (Goh.size() > 3) {
+      Goh.remove(0);
     }
-    ((HandlerThread)localObject).start();
-    localObject = locals.Bbu;
-    if (localObject == null) {
-      p.bGy("ht");
-    }
-    locals.handler = new MMHandler(((HandlerThread)localObject).getLooper());
-    locals.miS = new c();
-    locals.Bbt = new c();
-    localObject = u.dO(locals.path, false);
-    p.j(localObject, "VFSFileOp.openRandomAccess(path, false)");
-    FileDescriptor localFileDescriptor = ((RandomAccessFile)localObject).getFD();
-    c localc;
-    int j;
-    int i;
-    if (af.juJ.juw == 1)
+    Goh.add(paramawn);
+    AppMethodBeat.o(334731);
+  }
+  
+  public static void b(awn paramawn)
+  {
+    AppMethodBeat.i(334745);
+    s.u(paramawn, "info");
+    Log.i("Finder.FinderNetworkStatusStatistic", "addNetworkInfoToFinderState info:" + paramawn + " size:" + Goi.size());
+    Goi.add(paramawn);
+    AppMethodBeat.o(334745);
+  }
+  
+  public static aur bTZ()
+  {
+    AppMethodBeat.i(334805);
+    aur localaur1 = new aur();
+    localaur1.osName = com.tencent.mm.protocal.d.Yxd;
+    localaur1.osVersion = com.tencent.mm.protocal.d.Yxe;
+    localaur1.deviceBrand = com.tencent.mm.protocal.d.Yxa;
+    localaur1.deviceModel = com.tencent.mm.protocal.d.Yxb;
+    localaur1.ZEZ = NetStatusUtil.getNetTypeString(MMApplicationContext.getContext());
+    try
     {
-      localc = locals.miS;
-      if (localc == null) {
-        p.bGy("extractor");
+      localaur1.netType = ((com.tencent.mm.plugin.h)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.h.class)).bUg();
+      localaur1.ZFa = CdnLogic.getRecentAverageSpeed(2);
+      localaur1.ZFb.addAll((Collection)Goh);
+      localaur1.ZFh.addAll((Collection)Goj);
+      localaur1.ZFc.add("h264");
+      if (ygN) {
+        localaur1.ZFc.add("h265");
       }
-      localc.setDataSource(localFileDescriptor, 0L, u.bBQ(locals.path));
-      localc = locals.Bbt;
-      if (localc == null) {
-        p.bGy("frameFlagExtractor");
-      }
-      localc.setDataSource(localFileDescriptor, 0L, u.bBQ(locals.path));
-      ((RandomAccessFile)localObject).close();
-      localObject = locals.miS;
-      if (localObject == null) {
-        p.bGy("extractor");
-      }
-      j = ((c)localObject).getTrackCount();
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i < j)
+      localaur1.ZFf.addAll((Collection)Gok);
+      localaur1.ZFg.addAll((Collection)Gol);
+      if ((localaur1.netType == 0) && (localaur1.ZFa == 0) && (Gom != null))
       {
-        localObject = locals.miS;
-        if (localObject == null) {
-          p.bGy("extractor");
-        }
-        localObject = ((c)localObject).getTrackFormat(i);
-        p.j(localObject, "extractor.getTrackFormat(i)");
-        locals.mediaFormat = ((MediaFormat)localObject);
-        localObject = locals.mediaFormat;
-        if (localObject == null) {
-          p.bGy("mediaFormat");
-        }
-        localObject = ((MediaFormat)localObject).getString("mime");
-        p.j(localObject, "mediaFormat.getString(MediaFormat.KEY_MIME)");
-        locals.aFM = ((String)localObject);
-        localObject = locals.aFM;
-        if (localObject == null) {
-          p.bGy("mime");
-        }
-        if (n.M((String)localObject, "video/", false))
+        aur localaur2 = Gom;
+        s.checkNotNull(localaur2);
+        if (localaur2.netType != 0)
         {
-          localObject = locals.miS;
-          if (localObject == null) {
-            p.bGy("extractor");
+          localaur2 = Gom;
+          s.checkNotNull(localaur2);
+          if (localaur2.ZFa != 0)
+          {
+            localaur1 = Gom;
+            s.checkNotNull(localaur1);
+            Log.w("Finder.FinderNetworkStatusStatistic", "generateClientStatus resume from cache.");
+            if (localaur1.netType == 0) {
+              e.a.a((e)com.tencent.mm.plugin.findersdk.b.HbT, "finder_nettype_error", false, null, false, (a)f.c.Goq, 28);
+            }
+            Log.i("Finder.FinderNetworkStatusStatistic", "generateClientStatus netType: " + localaur1.netType + " bandwidthKbps:" + localaur1.ZFa + " lastVideosDownloadInfo:" + localaur1.ZFb.size() + " last_preload_download_info:" + localaur1.ZFh.size() + " recent_finder_download_speed:" + localaur1.ZFf.size() + " recent_wechat_download_speed:" + localaur1.ZFg.size());
+            AppMethodBeat.o(334805);
+            return localaur1;
           }
-          ((c)localObject).selectTrack(i);
-          localObject = locals.Bbt;
-          if (localObject == null) {
-            p.bGy("frameFlagExtractor");
-          }
-          ((c)localObject).selectTrack(i);
         }
       }
-      else
-      {
-        locals.aND.setSurfaceTextureListener((TextureView.SurfaceTextureListener)new s.a(locals, parama2, paramb, parama1));
-        AppMethodBeat.o(285423);
-        return;
-        localc = locals.miS;
-        if (localc == null) {
-          p.bGy("extractor");
-        }
-        localc.setDataSource(localFileDescriptor);
-        localc = locals.Bbt;
-        if (localc == null) {
-          p.bGy("frameFlagExtractor");
-        }
-        localc.setDataSource(localFileDescriptor);
-        break;
-      }
-      i += 1;
     }
-  }
-  
-  public final void destroy()
-  {
-    AppMethodBeat.i(285425);
-    Object localObject = this.ALz;
-    ((s)localObject).releaseDecoder();
-    c localc = ((s)localObject).miS;
-    if (localc == null) {
-      p.bGy("extractor");
-    }
-    localc.release();
-    localc = ((s)localObject).Bbt;
-    if (localc == null) {
-      p.bGy("frameFlagExtractor");
-    }
-    localc.release();
-    localObject = ((s)localObject).Bbu;
-    if (localObject == null) {
-      p.bGy("ht");
-    }
-    ((HandlerThread)localObject).quit();
-    AppMethodBeat.o(285425);
-  }
-  
-  public final Bitmap getBitmap()
-  {
-    AppMethodBeat.i(285426);
-    Bitmap localBitmap = this.ALy.getTextureView().getBitmap();
-    AppMethodBeat.o(285426);
-    return localBitmap;
-  }
-  
-  public final View getView()
-  {
-    return (View)this.ALy;
-  }
-  
-  public final void seekTo(long paramLong)
-  {
-    AppMethodBeat.i(285424);
-    Object localObject2 = this.ALz;
-    synchronized (((s)localObject2).lock)
+    finally
     {
-      ((s)localObject2).Bbv = paramLong;
-      Object localObject4 = ((s)localObject2).Bbt;
-      if (localObject4 == null) {
-        p.bGy("frameFlagExtractor");
-      }
-      ((c)localObject4).seekTo(((s)localObject2).Bbv * 1000L, 0);
-      localObject4 = ((s)localObject2).Bbt;
-      if (localObject4 == null) {
-        p.bGy("frameFlagExtractor");
-      }
-      long l = ((c)localObject4).getSampleTime();
-      if ((l == ((s)localObject2).Bbw) && (((s)localObject2).Bby >= 0L) && (((s)localObject2).Bby < paramLong * 1000L))
+      for (;;)
       {
-        Log.i(((s)localObject2).TAG, "lxl same taget~");
-        if (!((s)localObject2).jVR)
-        {
-          localObject4 = ((s)localObject2).decoder;
-          if (localObject4 != null) {
-            ((MediaCodec)localObject4).start();
-          }
-          ((s)localObject2).jVR = true;
-        }
-        ((s)localObject2).lock.notify();
-        localObject2 = x.aazN;
-        AppMethodBeat.o(285424);
-        return;
+        Log.w("Finder.FinderNetworkStatusStatistic", s.X("generateClientStatus e:", localObject));
+        continue;
+        Gom = localaur1;
       }
-      ((s)localObject2).Bbw = l;
-      localObject4 = ((s)localObject2).miS;
-      if (localObject4 == null) {
-        p.bGy("extractor");
-      }
-      ((c)localObject4).seekTo(((s)localObject2).Bbv * 1000L, 0);
-      if (((s)localObject2).jVR)
+    }
+  }
+  
+  public static void c(awn paramawn)
+  {
+    AppMethodBeat.i(334761);
+    s.u(paramawn, "info");
+    Log.i("Finder.FinderNetworkStatusStatistic", "addNetworkInfo info:" + paramawn + " size:" + Goh.size());
+    if (Goj.size() > 10) {
+      Goj.remove(0);
+    }
+    Goj.add(paramawn);
+    AppMethodBeat.o(334761);
+  }
+  
+  public static CopyOnWriteArrayList<awn> fiS()
+  {
+    return Goh;
+  }
+  
+  public static CopyOnWriteArrayList<awn> fiT()
+  {
+    return Goi;
+  }
+  
+  public static CopyOnWriteArrayList<awn> fiU()
+  {
+    return Goj;
+  }
+  
+  public static CopyOnWriteArrayList<akz> fiV()
+  {
+    return Gok;
+  }
+  
+  public static CopyOnWriteArrayList<akz> fiW()
+  {
+    return Gol;
+  }
+  
+  public static void fiX()
+  {
+    AppMethodBeat.i(334785);
+    Object localObject = com.tencent.mm.plugin.finder.storage.d.FAy;
+    long l = ((Number)com.tencent.mm.plugin.finder.storage.d.eYq().bmg()).intValue();
+    if (Gon != null)
+    {
+      Log.i("Finder.FinderNetworkStatusStatistic", "startRecordNetWorkStatus return for started.");
+      AppMethodBeat.o(334785);
+      return;
+    }
+    Gon = new f..ExternalSyntheticLambda0(l);
+    if (l < 0L)
+    {
+      Log.i("Finder.FinderNetworkStatusStatistic", s.X("startRecordNetWorkStatus return for delayMs:", Long.valueOf(l)));
+      AppMethodBeat.o(334785);
+      return;
+    }
+    Log.i("Finder.FinderNetworkStatusStatistic", "startRecordNetWorkStatus delayMs:" + l + " recordNetworkStatusRunnable:" + Gon);
+    localObject = Gon;
+    if (localObject != null) {
+      com.tencent.threadpool.h.ahAA.p((Runnable)localObject, l);
+    }
+    AppMethodBeat.o(334785);
+  }
+  
+  public static void fiY()
+  {
+    AppMethodBeat.i(334792);
+    Log.i("Finder.FinderNetworkStatusStatistic", s.X("stopRecordNetWorkStatus recordNetworkStatusRunnable:", Gon));
+    Gon = null;
+    AppMethodBeat.o(334792);
+  }
+  
+  private static final void qV(long paramLong)
+  {
+    AppMethodBeat.i(334814);
+    Runnable localRunnable = Gon;
+    if (localRunnable != null)
+    {
+      Log.i("Finder.FinderNetworkStatusStatistic", "recordFinderNetWorkStatus");
+      CdnLogic.DownloadInfo localDownloadInfo = CdnLogic.getRecentDownloadInfo(251, 20302, 5);
+      akz localakz;
+      long l;
+      if (localDownloadInfo.recvedBytes > 0L)
       {
-        localObject4 = ((s)localObject2).decoder;
-        if (localObject4 != null) {
-          ((MediaCodec)localObject4).flush();
+        localakz = new akz();
+        localakz.Zsi = localDownloadInfo.recvedBytes;
+        localakz.Zsj = localDownloadInfo.transforMS;
+        l = System.currentTimeMillis();
+        localakz.Rsc = (l - (localDownloadInfo.endTickcount - localDownloadInfo.beginTickcount));
+        localakz.wwF = l;
+        localakz.Zoz = ((com.tencent.mm.plugin.h)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.h.class)).bUg();
+        s.u(localakz, "info");
+        Log.i("Finder.FinderNetworkStatusStatistic", "addFinderNetworkInfo info:" + localakz + " size:" + Gok.size());
+        if (Gok.size() > 24) {
+          Gok.remove(0);
         }
-        localObject4 = ((s)localObject2).decoder;
-        if (localObject4 != null) {
-          ((MediaCodec)localObject4).start();
-        }
+        Gok.add(localakz);
       }
-      Log.i(((s)localObject2).TAG, "lxl change taget, start sync time:" + ((s)localObject2).Bbw / 1000L + ", target time:" + paramLong + ", flush:" + ((s)localObject2).jVR);
+      Log.i("Finder.FinderNetworkStatusStatistic", "recordWechatNetWorkStatus");
+      localDownloadInfo = CdnLogic.getRecentDownloadInfo(0, 0, 5);
+      if (localDownloadInfo.recvedBytes > 0L)
+      {
+        localakz = new akz();
+        localakz.Zsi = localDownloadInfo.recvedBytes;
+        localakz.Zsj = localDownloadInfo.transforMS;
+        l = System.currentTimeMillis();
+        localakz.Rsc = (l - (localDownloadInfo.endTickcount - localDownloadInfo.beginTickcount));
+        localakz.wwF = l;
+        localakz.Zoz = ((com.tencent.mm.plugin.h)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.h.class)).bUg();
+        s.u(localakz, "info");
+        Log.i("Finder.FinderNetworkStatusStatistic", "addWechatNetworkInfo info:" + localakz + " size:" + Gol.size());
+        if (Gol.size() > 24) {
+          Gol.remove(0);
+        }
+        Gol.add(localakz);
+      }
+      com.tencent.threadpool.h.ahAA.p(localRunnable, paramLong);
+    }
+    AppMethodBeat.o(334814);
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/video/FinderNetworkStatusStatistic$appForegroundListener$1", "Lcom/tencent/mm/app/IAppForegroundListener;", "onAppBackground", "", "activity", "", "onAppForeground", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+    implements q
+  {
+    public final void onAppBackground(String paramString)
+    {
+      AppMethodBeat.i(334904);
+      paramString = f.Gog;
+      f.fjc();
+      AppMethodBeat.o(334904);
+    }
+    
+    public final void onAppForeground(String paramString)
+    {
+      AppMethodBeat.i(334894);
+      paramString = f.Gog;
+      f.fjb();
+      AppMethodBeat.o(334894);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  public static final class d
+    extends u
+    implements a<ah>
+  {
+    public static final d Gor;
+    
+    static
+    {
+      AppMethodBeat.i(334848);
+      Gor = new d();
+      AppMethodBeat.o(334848);
+    }
+    
+    d()
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  public static final class f
+    extends u
+    implements a<ah>
+  {
+    public static final f Got;
+    
+    static
+    {
+      AppMethodBeat.i(334863);
+      Got = new f();
+      AppMethodBeat.o(334863);
+    }
+    
+    f()
+    {
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.f
  * JD-Core Version:    0.7.0.1
  */

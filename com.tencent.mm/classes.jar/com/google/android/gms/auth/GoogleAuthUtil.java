@@ -1,7 +1,6 @@
 package com.google.android.gms.auth;
 
 import android.accounts.Account;
-import android.annotation.TargetApi;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -182,7 +181,6 @@ public final class GoogleAuthUtil
     AppMethodBeat.o(10608);
   }
   
-  @TargetApi(23)
   public static Bundle removeAccount(Context paramContext, Account paramAccount)
   {
     AppMethodBeat.i(10612);
@@ -191,7 +189,6 @@ public final class GoogleAuthUtil
     return paramContext;
   }
   
-  @TargetApi(26)
   public static Boolean requestGoogleAccountsAccess(Context paramContext)
   {
     AppMethodBeat.i(10613);
@@ -232,7 +229,7 @@ public final class GoogleAuthUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.GoogleAuthUtil
  * JD-Core Version:    0.7.0.1
  */

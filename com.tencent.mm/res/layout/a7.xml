@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/h8y" android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/dcj" android:background="@color/fm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mm.view.AnimationLayout android:id="@id/n0" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.ui.tools.MMGestureGallery android:id="@id/dci" android:focusable="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:spacing="0.0dip" android:unselectedAlpha="1.2" />
-    </com.tencent.mm.view.AnimationLayout>
-</RelativeLayout>
+    <LinearLayout android:id="@id/ax" android:background="@color/ahb" android:paddingTop="@dimen/n8" android:paddingBottom="@dimen/nb" android:layout_width="fill_parent" android:layout_height="0.0dip">
+        <TextView android:textSize="@dimen/mv" android:textColor="@color/xo" android:id="@id/ay" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/g3k" />
+    </LinearLayout>
+</FrameLayout>

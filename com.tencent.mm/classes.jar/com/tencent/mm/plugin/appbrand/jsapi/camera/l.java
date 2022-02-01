@@ -6,12 +6,12 @@ import android.util.Size;
 import android.view.View;
 import com.tencent.luggage.b.a.a.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.az;
+import com.tencent.mm.plugin.appbrand.jsapi.bc;
 import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
 import com.tencent.mm.plugin.appbrand.k;
 import com.tencent.mm.plugin.appbrand.k.c;
-import com.tencent.mm.plugin.appbrand.permission.r;
+import com.tencent.mm.plugin.appbrand.permission.s;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -24,10 +24,10 @@ public class l
 {
   private static final int CTRL_INDEX = 329;
   public static final String NAME = "insertCamera";
-  static a oMz;
-  private boolean oMA;
+  static a rQv;
+  private boolean rQw;
   
-  public final int K(JSONObject paramJSONObject)
+  public final int V(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(137472);
     int i = paramJSONObject.optInt("cameraId");
@@ -35,12 +35,12 @@ public class l
     return i;
   }
   
-  public final View a(com.tencent.mm.plugin.appbrand.jsapi.g paramg, JSONObject paramJSONObject)
+  public final View a(h paramh, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(137471);
-    this.oMA = false;
-    Context localContext = paramg.getContext();
-    f localf = oMz.dM(localContext);
+    this.rQw = false;
+    Context localContext = paramh.getContext();
+    f localf = rQv.eG(localContext);
     int k = paramJSONObject.optInt("cameraId");
     String str1 = paramJSONObject.optString("mode", "normal");
     String str2 = paramJSONObject.optString("devicePosition", "back");
@@ -58,37 +58,37 @@ public class l
         label155:
         boolean bool = paramJSONObject.optBoolean("needOutput", false);
         localObject = paramJSONObject.optString("resolution", "medium");
-        localf.setAppId(paramg.getAppId());
-        localf.setPage(paramg);
+        localf.setAppId(paramh.getAppId());
+        localf.setPage(paramh);
         localf.setCameraId(k);
         localf.setMode(str1);
-        localf.at(str2, true);
+        localf.aE(str2, true);
         localf.setFlash(str3);
         localf.setFrameLimitSize(i);
         localf.setNeedOutput(bool);
         localf.setResolution((String)localObject);
-        localf.setPageOrientation(paramg.bEN());
+        localf.setPageOrientation(paramh.cdZ());
         localObject = paramJSONObject.optJSONObject("position");
-        i = com.tencent.mm.plugin.appbrand.ac.g.a((JSONObject)localObject, "width", 0);
-        j = com.tencent.mm.plugin.appbrand.ac.g.a((JSONObject)localObject, "height", 0);
+        i = com.tencent.mm.plugin.appbrand.af.i.a((JSONObject)localObject, "width", 0);
+        j = com.tencent.mm.plugin.appbrand.af.i.a((JSONObject)localObject, "height", 0);
         if ((i != 0) && (j != 0)) {
-          localf.ey(i, j);
+          localf.fs(i, j);
         }
-        localObject = (e)paramg.K(e.class);
+        localObject = (e)paramh.T(e.class);
         if (localObject != null)
         {
-          paramg = ((e)localObject).r(paramg);
-          if ((paramg != null) && (paramg.length == 2) && (paramg[0] > 0) && (paramg[1] > 0))
+          paramh = ((e)localObject).t(paramh);
+          if ((paramh != null) && (paramh.length == 2) && (paramh[0] > 0) && (paramh[1] > 0))
           {
-            localf.setDisplayScreenSize(new Size(paramg[0], paramg[1]));
-            Log.i("MicroMsg.JsApiInsertCamera", "onInsertView screen width: %d, screen height: %d", new Object[] { Integer.valueOf(paramg[0]), Integer.valueOf(paramg[1]) });
+            localf.setDisplayScreenSize(new Size(paramh[0], paramh[1]));
+            Log.i("MicroMsg.JsApiInsertCamera", "onInsertView screen width: %d, screen height: %d", new Object[] { Integer.valueOf(paramh[0]), Integer.valueOf(paramh[1]) });
           }
         }
-        paramg = paramJSONObject.optJSONArray("scanArea");
-        if ((paramg != null) && (paramg.length() == 4))
+        paramh = paramJSONObject.optJSONArray("scanArea");
+        if ((paramh != null) && (paramh.length() == 4))
         {
-          Log.i("MicroMsg.JsApiInsertCamera", "scanAreaArray:%s, scanAreaArray.length:%d", new Object[] { paramg, Integer.valueOf(paramg.length()) });
-          localf.z(com.tencent.mm.plugin.appbrand.ac.g.Di(paramg.optInt(0)), com.tencent.mm.plugin.appbrand.ac.g.Di(paramg.optInt(1)), com.tencent.mm.plugin.appbrand.ac.g.Di(paramg.optInt(2)), com.tencent.mm.plugin.appbrand.ac.g.Di(paramg.optInt(3)));
+          Log.i("MicroMsg.JsApiInsertCamera", "scanAreaArray:%s, scanAreaArray.length:%d", new Object[] { paramh, Integer.valueOf(paramh.length()) });
+          localf.F(com.tencent.mm.plugin.appbrand.af.i.DC(paramh.optInt(0)), com.tencent.mm.plugin.appbrand.af.i.DC(paramh.optInt(1)), com.tencent.mm.plugin.appbrand.af.i.DC(paramh.optInt(2)), com.tencent.mm.plugin.appbrand.af.i.DC(paramh.optInt(3)));
           label499:
           localf.setScanFreq(paramJSONObject.optInt("scanFreq"));
           bool = paramJSONObject.optBoolean("centerCrop");
@@ -104,12 +104,12 @@ public class l
       break;
     }
     label719:
-    for (paramg = localContext.getString(a.g.app_brand_accessibility_camera_normal_mode);; paramg = localContext.getString(a.g.app_brand_accessibility_camera_scan_mode))
+    for (paramh = localContext.getString(a.g.app_brand_accessibility_camera_normal_mode);; paramh = localContext.getString(a.g.app_brand_accessibility_camera_scan_mode))
     {
-      paramJSONObject.setContentDescription(paramg);
-      paramg = new CoverViewContainer(localContext, (View)localf);
+      paramJSONObject.setContentDescription(paramh);
+      paramh = new CoverViewContainer(localContext, (View)localf);
       AppMethodBeat.o(137471);
-      return paramg;
+      return paramh;
       if (!((String)localObject).equals("small")) {
         break;
       }
@@ -131,44 +131,44 @@ public class l
       break label155;
       i = 720;
       break label155;
-      localf.z(0, 0, i, j);
+      localf.F(0, 0, i, j);
       break label499;
     }
   }
   
-  public final void a(com.tencent.mm.plugin.appbrand.jsapi.g paramg, int paramInt, View paramView, final JSONObject paramJSONObject, com.tencent.mm.plugin.appbrand.jsapi.base.i parami)
+  public final void a(h paramh, int paramInt, View paramView, final JSONObject paramJSONObject, com.tencent.mm.plugin.appbrand.jsapi.base.i parami)
   {
     AppMethodBeat.i(137473);
     Log.i("MicroMsg.JsApiInsertCamera", "onInsertView cameraId=%d", new Object[] { Integer.valueOf(paramInt) });
-    paramView = (f)((CoverViewContainer)paramView).aA(View.class);
+    paramView = (f)((CoverViewContainer)paramView).aT(View.class);
     if (paramView == null)
     {
       Log.e("MicroMsg.JsApiInsertCamera", "onInsertView(viewId : %d) failed, cameraView is null", new Object[] { Integer.valueOf(paramInt) });
-      parami.aho(h("fail:internal error", null));
+      parami.aal(ZP("fail:internal error"));
       AppMethodBeat.o(137473);
       return;
     }
     paramJSONObject = new WeakReference(paramView);
-    final WeakReference localWeakReference = new WeakReference(paramg);
-    a(paramg, paramView, parami);
-    a.a.bRr().a(paramView.getCameraId(), paramView);
-    paramg.a(paramView);
-    paramg.a(paramView);
-    paramg.a(paramView);
-    k.a(paramg.getAppId(), new k.c()
+    final WeakReference localWeakReference = new WeakReference(paramh);
+    a(paramh, paramView, parami);
+    a.a.cry().a(paramView.getCameraId(), paramView);
+    paramh.a(paramView);
+    paramh.a(paramView);
+    paramh.a(paramView);
+    k.a(paramh.getAppId(), new k.c()
     {
       public final void onDestroy()
       {
         AppMethodBeat.i(137469);
         f localf = (f)paramJSONObject.get();
-        com.tencent.mm.plugin.appbrand.jsapi.g localg = (com.tencent.mm.plugin.appbrand.jsapi.g)localWeakReference.get();
-        if ((localf != null) && (localg != null))
+        h localh = (h)localWeakReference.get();
+        if ((localf != null) && (localh != null))
         {
-          localg.b(localf);
-          localg.b(localf);
-          localg.b(localf);
-          a.a.bRr().O(localf.getCameraId(), true);
-          k.b(localg.getAppId(), this);
+          localh.b(localf);
+          localh.b(localf);
+          localh.b(localf);
+          a.a.cry().ad(localf.getCameraId(), true);
+          k.b(localh.getAppId(), this);
         }
         AppMethodBeat.o(137469);
       }
@@ -177,125 +177,90 @@ public class l
     AppMethodBeat.o(137473);
   }
   
-  final boolean a(com.tencent.mm.plugin.appbrand.jsapi.e parame, f paramf, final com.tencent.mm.plugin.appbrand.jsapi.base.i parami)
+  final boolean a(com.tencent.mm.plugin.appbrand.jsapi.f paramf, f paramf1, final com.tencent.mm.plugin.appbrand.jsapi.base.i parami)
   {
     AppMethodBeat.i(137474);
-    Object localObject = new WeakReference(paramf);
-    final WeakReference localWeakReference = new WeakReference(parame);
-    r.b(String.valueOf(parame.getAppId()), new androidx.core.app.a.a()
+    Object localObject = new WeakReference(paramf1);
+    final WeakReference localWeakReference = new WeakReference(paramf);
+    s.c(String.valueOf(paramf.getAppId()), new androidx.core.app.a.a()
     {
       public final void onRequestPermissionsResult(int paramAnonymousInt, String[] paramAnonymousArrayOfString, int[] paramAnonymousArrayOfInt)
       {
         AppMethodBeat.i(137470);
-        f localf = (f)this.oMB.get();
-        paramAnonymousArrayOfString = (com.tencent.mm.plugin.appbrand.jsapi.e)localWeakReference.get();
+        f localf = (f)this.rQx.get();
+        paramAnonymousArrayOfString = (com.tencent.mm.plugin.appbrand.jsapi.f)localWeakReference.get();
         if (paramAnonymousInt == 16)
         {
           if ((paramAnonymousArrayOfInt != null) && (paramAnonymousArrayOfInt.length > 0) && (paramAnonymousArrayOfInt[0] == 0) && (localf != null) && (paramAnonymousArrayOfString != null))
           {
-            a.a.bRr().oLp = true;
-            l.this.a(paramAnonymousArrayOfString, localf, parami);
-            AppMethodBeat.o(137470);
-            return;
-          }
-          paramAnonymousArrayOfInt = new HashMap();
-          if (localf != null)
-          {
-            paramAnonymousArrayOfInt.put("cameraId", Integer.valueOf(localf.getCameraId()));
-            if (paramAnonymousArrayOfString == null) {
-              break label175;
-            }
-            paramAnonymousArrayOfInt = new JSONObject(paramAnonymousArrayOfInt).toString();
-            new i().j(paramAnonymousArrayOfString).agU(paramAnonymousArrayOfInt).bPO();
-          }
-          for (;;)
-          {
-            a.a.bRr().oLp = false;
-            AppMethodBeat.o(137470);
-            return;
-            Log.w("MicroMsg.JsApiInsertCamera", "onRequestPermissionsResult weak camera is null, get Camera id fail");
-            break;
-            label175:
-            Log.w("MicroMsg.JsApiInsertCamera", "onRequestPermissionsResult weak camera is null, dispatch data fail");
-          }
-        }
-        if (paramAnonymousInt == 18)
-        {
-          if ((paramAnonymousArrayOfInt != null) && (paramAnonymousArrayOfInt.length > 0) && (paramAnonymousArrayOfInt[0] == 0) && (localf != null) && (paramAnonymousArrayOfString != null))
-          {
-            a.a.bRr().oLq = true;
+            a.a.cry().rPk = true;
             l.this.a(paramAnonymousArrayOfString, localf, parami);
             AppMethodBeat.o(137470);
             return;
           }
           paramAnonymousArrayOfInt = new HashMap();
           if (localf == null) {
-            break label322;
+            break label165;
           }
           paramAnonymousArrayOfInt.put("cameraId", Integer.valueOf(localf.getCameraId()));
           if (paramAnonymousArrayOfString == null) {
-            break label332;
+            break label175;
           }
           paramAnonymousArrayOfInt = new JSONObject(paramAnonymousArrayOfInt).toString();
-          new i().j(paramAnonymousArrayOfString).agU(paramAnonymousArrayOfInt).bPO();
+          new i().i(paramAnonymousArrayOfString).ZR(paramAnonymousArrayOfInt).cpV();
         }
         for (;;)
         {
-          a.a.bRr().oLq = false;
+          a.a.cry().rPk = false;
           AppMethodBeat.o(137470);
           return;
-          label322:
+          label165:
           Log.w("MicroMsg.JsApiInsertCamera", "onRequestPermissionsResult weak camera is null, get Camera id fail");
           break;
-          label332:
+          label175:
           Log.w("MicroMsg.JsApiInsertCamera", "onRequestPermissionsResult weak camera is null, dispatch data fail");
         }
       }
     });
-    localObject = (Activity)parame.getContext();
+    localObject = (Activity)paramf.getContext();
     if (localObject == null)
     {
       AppMethodBeat.o(137474);
       return false;
     }
-    boolean bool = com.tencent.luggage.k.i.a((Activity)localObject, "android.permission.CAMERA", 16, "", "");
-    a.a.bRr().oLp = bool;
+    boolean bool = com.tencent.luggage.l.i.a((Context)localObject, paramf, "android.permission.WRITE_EXTERNAL_STORAGE");
+    a.a.cry().jk(bool);
+    bool = com.tencent.luggage.l.i.a((Activity)localObject, paramf, "android.permission.CAMERA", 16, "", "");
+    a.a.cry().rPk = bool;
     if (!bool)
     {
       AppMethodBeat.o(137474);
       return false;
     }
-    bool = com.tencent.luggage.k.i.a((Activity)localObject, "android.permission.RECORD_AUDIO", 18, "", "");
-    a.a.bRr().oLq = bool;
-    if (!bool)
+    s.afs(paramf.getAppId());
+    if (!this.rQw)
     {
-      AppMethodBeat.o(137474);
-      return false;
-    }
-    r.amk(parame.getAppId());
-    if (!this.oMA)
-    {
-      parami.aho(h("ok", null));
-      paramf.initView();
-      this.oMA = true;
+      parami.aal(ZP("ok"));
+      paramf1.initView();
+      this.rQw = true;
     }
     AppMethodBeat.o(137474);
     return true;
   }
   
-  public final boolean bQz()
+  public final boolean cqw()
   {
     return true;
   }
   
   public static abstract interface a
   {
-    public abstract f dM(Context paramContext);
+    public abstract f eG(Context paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.camera.l
  * JD-Core Version:    0.7.0.1
  */

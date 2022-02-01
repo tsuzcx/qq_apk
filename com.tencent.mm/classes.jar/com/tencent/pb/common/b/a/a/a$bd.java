@@ -1,55 +1,55 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.b.a.b;
-import com.google.b.a.e;
+import com.google.d.a.b;
+import com.google.d.a.e;
 
 public final class a$bd
   extends e
 {
-  public int NOc = 0;
-  public long NOd = 0L;
-  public int Zik = 0;
+  public int UAZ = 0;
+  public long UBa = 0L;
+  public int ahgL = 0;
   
   public a$bd()
   {
-    this.ccR = -1;
-  }
-  
-  public final int JG()
-  {
-    int j = super.JG();
-    int i = j;
-    if (this.NOc != 0) {
-      i = j + b.bM(1, this.NOc);
-    }
-    j = i;
-    if (this.NOd != 0L) {
-      j = i + b.p(2, this.NOd);
-    }
-    i = j;
-    if (this.Zik != 0) {
-      i = j + b.bN(3, this.Zik);
-    }
-    return i;
+    this.dXv = -1;
   }
   
   public final void a(b paramb)
   {
-    if (this.NOc != 0) {
-      paramb.bJ(1, this.NOc);
+    if (this.UAZ != 0) {
+      paramb.cF(1, this.UAZ);
     }
-    if (this.NOd != 0L) {
-      paramb.r(2, this.NOd);
+    if (this.UBa != 0L) {
+      paramb.t(2, this.UBa);
     }
-    if (this.Zik != 0) {
-      paramb.bK(3, this.Zik);
+    if (this.ahgL != 0) {
+      paramb.cG(3, this.ahgL);
     }
     super.a(paramb);
+  }
+  
+  public final int akc()
+  {
+    int j = super.akc();
+    int i = j;
+    if (this.UAZ != 0) {
+      i = j + b.cJ(1, this.UAZ);
+    }
+    j = i;
+    if (this.UBa != 0L) {
+      j = i + b.q(2, this.UBa);
+    }
+    i = j;
+    if (this.ahgL != 0) {
+      i = j + b.cK(3, this.ahgL);
+    }
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.bd
  * JD-Core Version:    0.7.0.1
  */

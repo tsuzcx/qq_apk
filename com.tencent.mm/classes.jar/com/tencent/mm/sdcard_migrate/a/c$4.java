@@ -14,18 +14,18 @@ final class c$4
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(191703);
+    AppMethodBeat.i(257206);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    if (this.UWC != null) {
-      this.UWC.onClick(this.UWz, -1);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    if (this.acrN != null) {
+      this.acrN.onClick(this.acrK, -1);
     }
-    if (this.UWD) {
-      this.UWz.dismiss();
+    if (this.acrO) {
+      this.acrK.dismiss();
     }
     a.a(this, "com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(191703);
+    AppMethodBeat.o(257206);
   }
 }
 

@@ -4,15 +4,18 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appusage.ag;
-import com.tencent.mm.plugin.appbrand.au.i;
-import com.tencent.mm.plugin.appbrand.widget.g.c;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.appbrand.appusage.af;
+import com.tencent.mm.plugin.appbrand.ba.i;
+import com.tencent.mm.plugin.appbrand.widget.h.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.widget.a.e;
 
 public final class d
 {
-  private static void B(Context paramContext, final boolean paramBoolean)
+  private static void D(Context paramContext, final boolean paramBoolean)
   {
     AppMethodBeat.i(49042);
     MMHandlerThread.postToMainThread(new Runnable()
@@ -20,9 +23,9 @@ public final class d
       public final void run()
       {
         AppMethodBeat.i(49040);
-        Context localContext = this.val$context;
+        Context localContext = d.this;
         if (paramBoolean) {}
-        for (String str = this.val$context.getString(au.i.app_brand_collection_remove_failed);; str = this.val$context.getString(au.i.app_brand_collection_add_failed))
+        for (String str = d.this.getString(ba.i.app_brand_collection_remove_failed);; str = d.this.getString(ba.i.app_brand_collection_add_failed))
         {
           Toast.makeText(localContext, str, 0).show();
           AppMethodBeat.o(49040);
@@ -41,59 +44,59 @@ public final class d
     {
       try
       {
-        if (((ag)com.tencent.mm.kernel.h.ae(ag.class)).bA(paramString, paramInt))
+        if (((af)h.ax(af.class)).bS(paramString, paramInt))
         {
-          new c(paramContext).T(paramContext.getResources().getString(au.i.app_brand_usage_modify_collection_removed)).show();
+          new c(paramContext).X(paramContext.getResources().getString(ba.i.app_brand_usage_modify_collection_removed)).show();
           AppMethodBeat.o(49041);
           return true;
         }
-        B(paramContext, paramBoolean);
+        D(paramContext, paramBoolean);
       }
       catch (Exception localException)
       {
         int i;
-        com.tencent.mm.ui.widget.a.d locald1;
+        e locale1;
         Log.e("MicroMsg.CollectionModifyInteractLogic", "performClick, (%s %d) added = %b, modify e = %s", new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), localException });
-        B(paramContext, paramBoolean);
+        D(paramContext, paramBoolean);
         continue;
         if (i != -3) {
           continue;
         }
-        com.tencent.mm.ui.widget.a.d locald2 = com.tencent.mm.ui.base.h.a(paramContext, paramContext.getResources().getString(au.i.app_brand_add_collection_blocked), "", paramContext.getResources().getString(au.i.app_ok), null);
-        if (locald2 == null) {
+        e locale2 = k.a(paramContext, paramContext.getResources().getString(ba.i.app_brand_add_collection_blocked), "", paramContext.getResources().getString(ba.i.app_ok), null);
+        if (locale2 == null) {
           continue;
         }
-        locald2.setCanceledOnTouchOutside(false);
-        locald2.HD(true);
+        locale2.setCanceledOnTouchOutside(false);
+        locale2.Nz(true);
         continue;
-        B(paramContext, paramBoolean);
+        D(paramContext, paramBoolean);
         continue;
       }
       AppMethodBeat.o(49041);
       return false;
-      i = ((ag)com.tencent.mm.kernel.h.ae(ag.class)).bz(paramString, paramInt);
+      i = ((af)h.ax(af.class)).bR(paramString, paramInt);
       if (i == 0)
       {
-        new c(paramContext).T(paramContext.getResources().getString(au.i.app_brand_usage_modify_collection_added)).show();
+        new c(paramContext).X(paramContext.getResources().getString(ba.i.app_brand_usage_modify_collection_added)).show();
         AppMethodBeat.o(49041);
         return true;
       }
       if (i != -2) {
         continue;
       }
-      i = ((ag)com.tencent.mm.kernel.h.ae(ag.class)).bIW();
-      locald1 = com.tencent.mm.ui.base.h.a(paramContext, paramContext.getResources().getString(au.i.app_brand_desktop_add_collection_over_limit, new Object[] { Integer.valueOf(i) }), "", paramContext.getResources().getString(au.i.app_ok), null);
-      if (locald1 != null)
+      i = ((af)h.ax(af.class)).ciA();
+      locale1 = k.a(paramContext, paramContext.getResources().getString(ba.i.app_brand_desktop_add_collection_over_limit, new Object[] { Integer.valueOf(i) }), "", paramContext.getResources().getString(ba.i.app_ok), null);
+      if (locale1 != null)
       {
-        locald1.setCanceledOnTouchOutside(false);
-        locald1.HD(true);
+        locale1.setCanceledOnTouchOutside(false);
+        locale1.Nz(true);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.collection.d
  * JD-Core Version:    0.7.0.1
  */

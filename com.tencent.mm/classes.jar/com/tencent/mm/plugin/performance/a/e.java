@@ -5,7 +5,7 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface e
   extends a
 {
-  public abstract boolean bwe();
+  public abstract boolean bUX();
 }
 
 

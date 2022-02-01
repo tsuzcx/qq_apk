@@ -12,9 +12,9 @@ import org.b.g.e;
 
 public final class g
 {
-  private String abLO;
+  private String ajYH;
   public int code;
-  private InputStream ctN;
+  private InputStream elH;
   private Map<String, String> headers;
   
   /* Error */
@@ -33,8 +33,8 @@ public final class g
     //   18: putfield 38	org/b/d/g:code	I
     //   21: aload_0
     //   22: aload_1
-    //   23: invokestatic 41	org/b/d/g:i	(Ljava/net/HttpURLConnection;)Ljava/util/Map;
-    //   26: putfield 43	org/b/d/g:headers	Ljava/util/Map;
+    //   23: invokestatic 42	org/b/d/g:h	(Ljava/net/HttpURLConnection;)Ljava/util/Map;
+    //   26: putfield 44	org/b/d/g:headers	Ljava/util/Map;
     //   29: aload_0
     //   30: getfield 38	org/b/d/g:code	I
     //   33: sipush 200
@@ -48,30 +48,30 @@ public final class g
     //   51: iload_2
     //   52: ifeq +24 -> 76
     //   55: aload_1
-    //   56: invokevirtual 47	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   56: invokevirtual 48	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
     //   59: astore_1
     //   60: aload_0
     //   61: aload_1
-    //   62: putfield 49	org/b/d/g:ctN	Ljava/io/InputStream;
+    //   62: putfield 50	org/b/d/g:elH	Ljava/io/InputStream;
     //   65: ldc 21
-    //   67: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   67: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   70: return
     //   71: iconst_0
     //   72: istore_2
     //   73: goto -22 -> 51
     //   76: aload_1
-    //   77: invokevirtual 55	java/net/HttpURLConnection:getErrorStream	()Ljava/io/InputStream;
+    //   77: invokevirtual 56	java/net/HttpURLConnection:getErrorStream	()Ljava/io/InputStream;
     //   80: astore_1
     //   81: goto -21 -> 60
     //   84: astore_1
-    //   85: new 57	org/b/b/b
+    //   85: new 58	org/b/b/b
     //   88: dup
-    //   89: ldc 59
+    //   89: ldc 60
     //   91: aload_1
-    //   92: invokespecial 62	org/b/b/b:<init>	(Ljava/lang/String;Ljava/lang/Exception;)V
+    //   92: invokespecial 63	org/b/b/b:<init>	(Ljava/lang/String;Ljava/lang/Exception;)V
     //   95: astore_1
     //   96: ldc 21
-    //   98: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   98: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   101: aload_1
     //   102: athrow
     // Local variable table:
@@ -87,7 +87,7 @@ public final class g
     //   76	81	84	java/net/UnknownHostException
   }
   
-  private static Map<String, String> i(HttpURLConnection paramHttpURLConnection)
+  private static Map<String, String> h(HttpURLConnection paramHttpURLConnection)
   {
     AppMethodBeat.i(40512);
     HashMap localHashMap = new HashMap();
@@ -107,21 +107,21 @@ public final class g
   public final String getBody()
   {
     AppMethodBeat.i(40513);
-    if (this.abLO != null)
+    if (this.ajYH != null)
     {
-      str = this.abLO;
+      str = this.ajYH;
       AppMethodBeat.o(40513);
       return str;
     }
-    this.abLO = e.U(this.ctN);
-    String str = this.abLO;
+    this.ajYH = e.ak(this.elH);
+    String str = this.ajYH;
     AppMethodBeat.o(40513);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.b.d.g
  * JD-Core Version:    0.7.0.1
  */

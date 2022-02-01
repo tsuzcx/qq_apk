@@ -10,10 +10,8 @@ import android.os.Handler;
 import android.text.TextUtils;
 import com.google.android.gms.common.internal.BaseGmsClient;
 import com.google.android.gms.common.internal.Preconditions;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@VisibleForTesting
 public class SignUp
 {
   public static final String ACTION_OOB_SIGN_UP = "com.google.android.gms.common.oob.OOB_SIGN_UP";
@@ -116,7 +114,7 @@ public class SignUp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.android.gms.common.oob.SignUp
  * JD-Core Version:    0.7.0.1
  */

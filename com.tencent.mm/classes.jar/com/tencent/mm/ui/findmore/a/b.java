@@ -3,230 +3,371 @@ package com.tencent.mm.ui.findmore.a;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import androidx.lifecycle.r;
-import androidx.lifecycle.s;
+import androidx.lifecycle.q;
+import androidx.lifecycle.x;
+import androidx.lifecycle.y;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.e;
 import com.tencent.mm.R.f;
+import com.tencent.mm.R.g;
 import com.tencent.mm.R.k;
-import com.tencent.mm.bl.d;
+import com.tencent.mm.R.l;
+import com.tencent.mm.kernel.f;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.extension.reddot.h.a;
-import com.tencent.mm.plugin.finder.extension.reddot.j;
-import com.tencent.mm.plugin.findersdk.a.ak;
-import com.tencent.mm.plugin.findersdk.a.z;
-import com.tencent.mm.protocal.protobuf.bkn;
+import com.tencent.mm.plugin.finder.extension.reddot.l;
+import com.tencent.mm.plugin.finder.extension.reddot.l.a;
+import com.tencent.mm.plugin.finder.extension.reddot.m;
+import com.tencent.mm.plugin.finder.extension.reddot.m.a;
+import com.tencent.mm.plugin.finder.extension.reddot.n;
+import com.tencent.mm.plugin.finder.extension.reddot.p;
+import com.tencent.mm.plugin.findersdk.a.bl;
+import com.tencent.mm.plugin.findersdk.a.cn;
+import com.tencent.mm.protocal.protobuf.btx;
+import com.tencent.mm.protocal.protobuf.bxq;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.storage.by;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.storage.ca;
 import com.tencent.mm.ui.FindMoreFriendsUI;
 import com.tencent.mm.ui.FinderIconViewTipPreference;
-import com.tencent.mm.ui.au;
-import com.tencent.mm.ui.aw;
 import com.tencent.mm.ui.base.preference.IconPreference;
-import com.tencent.mm.ui.tools.w;
-import kotlin.g.b.p;
-import kotlin.t;
+import com.tencent.mm.ui.bb;
+import com.tencent.mm.ui.bd;
+import com.tencent.mm.ui.tools.v;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/findmore/entry/NearbyEntryPreferenceMgr;", "", "context", "Landroid/content/Context;", "findMoreFriendsUI", "Lcom/tencent/mm/ui/FindMoreFriendsUI;", "(Landroid/content/Context;Lcom/tencent/mm/ui/FindMoreFriendsUI;)V", "curObservePreference", "Lcom/tencent/mm/ui/FinderIconViewTipPreference;", "lastIsEnableFindLiveState", "", "nearbyEntranceRedDotObserver", "Landroidx/lifecycle/Observer;", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "handleNearbyEntranceLiveRedDot", "", "preference", "result", "info", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "handleNearbyEntranceLocalRedDot", "enableShowNearByEntranceRedDot", "handleNearbyEntranceRedDot", "observeNearbyEntrance", "observeNearbyFriendsRedDot", "enableNearbyFriends", "observeNearbyLiveFriendsRedDot", "startPreloadTargetPage", "isEnableShowFinderLiveEntranceRedDot", "updateNearbyEntry", "updateNearbyEntryV3", "updateNearbyFriendsEntry", "updateNearbyLiveFriendsEntry", "Companion", "app_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/findmore/entry/NearbyEntryPreferenceMgr;", "", "context", "Landroid/content/Context;", "findMoreFriendsUI", "Lcom/tencent/mm/ui/FindMoreFriendsUI;", "(Landroid/content/Context;Lcom/tencent/mm/ui/FindMoreFriendsUI;)V", "curObservePreference", "Lcom/tencent/mm/ui/FinderIconViewTipPreference;", "lastIsEnableFindLiveState", "", "nearbyEntranceRedDotObserver", "Landroidx/lifecycle/Observer;", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "handleNearbyEntranceLiveRedDot", "", "preference", "result", "info", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "handleNearbyEntranceLocalRedDot", "enableShowNearByEntranceRedDot", "handleNearbyEntranceRedDot", "observeNearbyEntrance", "observeNearbyFriendsRedDot", "enableNearbyFriends", "observeNearbyLiveFriendsRedDot", "startPreloadTargetPage", "isEnableShowFinderLiveEntranceRedDot", "updateNearbyEntry", "updateNearbyEntryV3", "updateNearbyFriendsEntry", "updateNearbyLiveFriendsEntry", "Companion", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  public static final b.a XHw;
-  private FinderIconViewTipPreference XHp;
-  private final FindMoreFriendsUI XHq;
-  private s<h.a> XHu;
-  private boolean XHv;
+  public static final b.a afvc;
+  private final FindMoreFriendsUI afuX;
+  private FinderIconViewTipPreference afva;
+  private y<l.a> afvd;
+  private boolean afve;
   private final Context context;
   
   static
   {
-    AppMethodBeat.i(279997);
-    XHw = new b.a((byte)0);
-    AppMethodBeat.o(279997);
+    AppMethodBeat.i(250750);
+    afvc = new b.a((byte)0);
+    AppMethodBeat.o(250750);
   }
   
   public b(Context paramContext, FindMoreFriendsUI paramFindMoreFriendsUI)
   {
-    AppMethodBeat.i(279995);
+    AppMethodBeat.i(250718);
     this.context = paramContext;
-    this.XHq = paramFindMoreFriendsUI;
-    paramContext = com.tencent.mm.plugin.finder.nearby.abtest.a.zDp;
-    this.XHv = com.tencent.mm.plugin.finder.nearby.abtest.a.dLo();
-    AppMethodBeat.o(279995);
+    this.afuX = paramFindMoreFriendsUI;
+    paramContext = com.tencent.mm.plugin.finder.nearby.abtest.a.EHr;
+    this.afve = com.tencent.mm.plugin.finder.nearby.abtest.a.eEi();
+    AppMethodBeat.o(250718);
   }
   
-  private final void GV(boolean paramBoolean)
+  private final void MN(boolean paramBoolean)
   {
-    AppMethodBeat.i(279994);
-    if ((paramBoolean) && (this.XHq.hGn()))
+    AppMethodBeat.i(250744);
+    if ((paramBoolean) && (this.afuX.hNd))
     {
       Intent localIntent = new Intent();
-      localIntent.putExtra("key_context_id", com.tencent.mm.ui.report.a.hXI());
-      com.tencent.mm.plugin.finder.nearby.preload.a.zIv.ao(localIntent);
+      localIntent.putExtra("key_context_id", com.tencent.mm.ui.report.a.jCp());
+      com.tencent.mm.plugin.finder.nearby.preload.a.EPD.aC(localIntent);
     }
-    AppMethodBeat.o(279994);
+    AppMethodBeat.o(250744);
   }
   
-  private final void a(FinderIconViewTipPreference paramFinderIconViewTipPreference)
+  private static final void MP(boolean paramBoolean)
   {
-    AppMethodBeat.i(279993);
-    this.XHp = paramFinderIconViewTipPreference;
-    Object localObject;
-    if (this.XHu != null)
-    {
-      localObject = new StringBuilder("observeNearbyEntrance lastIsEnableFindLiveState:").append(this.XHv).append(" isEnableFindLive:");
-      com.tencent.mm.plugin.finder.nearby.abtest.a locala = com.tencent.mm.plugin.finder.nearby.abtest.a.zDp;
-      Log.w("NearbyEntryPreferenceMgr", com.tencent.mm.plugin.finder.nearby.abtest.a.dLo() + "  preference: " + paramFinderIconViewTipPreference + ' ' + paramFinderIconViewTipPreference.hashCode() + " return for observing.");
-      boolean bool = this.XHv;
-      paramFinderIconViewTipPreference = com.tencent.mm.plugin.finder.nearby.abtest.a.zDp;
-      if (bool != com.tencent.mm.plugin.finder.nearby.abtest.a.dLo())
-      {
-        paramFinderIconViewTipPreference = com.tencent.mm.plugin.finder.nearby.abtest.a.zDp;
-        if (com.tencent.mm.plugin.finder.nearby.abtest.a.dLo()) {
-          break label159;
-        }
-        paramFinderIconViewTipPreference = com.tencent.mm.plugin.finder.extension.reddot.nearby.a.xuX;
-        com.tencent.mm.plugin.finder.extension.reddot.nearby.a.aBC("removeFinderLiveEntranceShowInfo");
-        paramFinderIconViewTipPreference = com.tencent.mm.plugin.finder.extension.reddot.h.xup;
-        paramFinderIconViewTipPreference = com.tencent.mm.plugin.finder.extension.reddot.h.drk();
-        localObject = com.tencent.mm.plugin.finder.extension.reddot.h.xup;
-        paramFinderIconViewTipPreference.L(com.tencent.mm.plugin.finder.extension.reddot.h.drk().getValue());
-      }
-      for (;;)
-      {
-        paramFinderIconViewTipPreference = com.tencent.mm.plugin.finder.nearby.abtest.a.zDp;
-        this.XHv = com.tencent.mm.plugin.finder.nearby.abtest.a.dLo();
-        AppMethodBeat.o(279993);
-        return;
-        label159:
-        paramFinderIconViewTipPreference = com.tencent.mm.plugin.finder.extension.reddot.nearby.a.xuX;
-        com.tencent.mm.plugin.finder.extension.reddot.nearby.a.aBB("removeNearbyEntryLiveShowInfo");
-        paramFinderIconViewTipPreference = com.tencent.mm.plugin.finder.extension.reddot.h.xup;
-        paramFinderIconViewTipPreference = com.tencent.mm.plugin.finder.extension.reddot.h.drj();
-        localObject = com.tencent.mm.plugin.finder.extension.reddot.h.xup;
-        paramFinderIconViewTipPreference.L(com.tencent.mm.plugin.finder.extension.reddot.h.drj().getValue());
-      }
+    AppMethodBeat.i(250749);
+    if (!paramBoolean) {
+      Log.i("NearbyEntryPreferenceMgr", "handleNearbyEntranceRedDot notify but enableShowNearByEntranceRedDot = false ,remove NearByEntrance ShowInfo");
     }
-    Log.i("NearbyEntryPreferenceMgr", "observeNearbyEntrance preference:" + paramFinderIconViewTipPreference + ' ' + paramFinderIconViewTipPreference.hashCode());
-    this.XHu = ((s)new c(this));
-    paramFinderIconViewTipPreference = this.XHu;
-    if (paramFinderIconViewTipPreference != null)
-    {
-      localObject = com.tencent.mm.plugin.finder.extension.reddot.h.xup;
-      com.tencent.mm.plugin.finder.extension.reddot.h.drk().a((androidx.lifecycle.l)this.XHq, paramFinderIconViewTipPreference);
-    }
-    paramFinderIconViewTipPreference = com.tencent.mm.plugin.finder.extension.reddot.h.xup;
-    paramFinderIconViewTipPreference = (h.a)com.tencent.mm.plugin.finder.extension.reddot.h.drk().getValue();
-    if (paramFinderIconViewTipPreference != null)
-    {
-      localObject = this.XHu;
-      if (localObject != null) {
-        ((s)localObject).onChanged(paramFinderIconViewTipPreference);
-      }
-    }
-    paramFinderIconViewTipPreference = com.tencent.mm.plugin.finder.nearby.abtest.a.zDp;
-    this.XHv = com.tencent.mm.plugin.finder.nearby.abtest.a.dLo();
-    AppMethodBeat.o(279993);
+    AppMethodBeat.o(250749);
   }
   
   private final void a(FinderIconViewTipPreference paramFinderIconViewTipPreference, boolean paramBoolean)
   {
-    AppMethodBeat.i(279991);
-    Object localObject = d.bqd();
-    p.j(localObject, "SubCoreVerify.getLBSVerifyMsgStg()");
-    int i = ((by)localObject).cHo();
+    AppMethodBeat.i(250736);
+    int i = com.tencent.mm.modelverify.d.bNJ().dkF();
     if (!paramBoolean) {
       i = 0;
     }
-    if (i <= 0)
+    if ((i <= 0) && (com.tencent.mm.kernel.h.baE().ban().getBoolean(at.a.aden, true)) && (((cn)com.tencent.mm.kernel.h.az(cn.class)).getRedDotManager().dZt()))
     {
-      localObject = com.tencent.mm.kernel.h.aHG();
-      p.j(localObject, "MMKernel.storage()");
-      if (((com.tencent.mm.kernel.f)localObject).aHp().getBoolean(ar.a.VBR, true))
-      {
-        localObject = com.tencent.mm.kernel.h.ag(ak.class);
-        p.j(localObject, "MMKernel.plugin(IPluginFinder::class.java)");
-        localObject = ((ak)localObject).getRedDotManager();
-        p.j(localObject, "MMKernel.plugin(IPluginF…class.java).redDotManager");
-        if (((z)localObject).dqJ())
-        {
-          Log.i("NearbyEntryPreferenceMgr", "updateNearbyLiveFriendsEntry: add nearby new red dot");
-          localObject = com.tencent.mm.kernel.h.ag(PluginFinder.class);
-          p.j(localObject, "MMKernel.plugin(PluginFinder::class.java)");
-          ((PluginFinder)localObject).getRedDotManager().xsL.drC();
-          localObject = com.tencent.mm.kernel.h.aHG();
-          p.j(localObject, "MMKernel.storage()");
-          ((com.tencent.mm.kernel.f)localObject).aHp().set(ar.a.VBR, Boolean.FALSE);
-        }
-      }
+      Log.i("NearbyEntryPreferenceMgr", "updateNearbyLiveFriendsEntry: add nearby new red dot");
+      ((PluginFinder)com.tencent.mm.kernel.h.az(PluginFinder.class)).getRedDotManager().AQu.ear();
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.aden, Boolean.FALSE);
     }
     b(paramFinderIconViewTipPreference, paramBoolean);
-    AppMethodBeat.o(279991);
+    AppMethodBeat.o(250736);
+  }
+  
+  private static final void a(b paramb, l.a parama)
+  {
+    boolean bool1 = true;
+    AppMethodBeat.i(250748);
+    s.u(paramb, "this$0");
+    if (paramb.afva == null)
+    {
+      Log.i("NearbyEntryPreferenceMgr", "handleNearbyEntranceRedDot return for null");
+      AppMethodBeat.o(250748);
+      return;
+    }
+    FinderIconViewTipPreference localFinderIconViewTipPreference = paramb.afva;
+    s.checkNotNull(localFinderIconViewTipPreference);
+    if (parama == null)
+    {
+      Log.i("NearbyEntryPreferenceMgr", "handleNearbyEntranceRedDot preference:" + localFinderIconViewTipPreference + ' ' + localFinderIconViewTipPreference.hashCode() + " return for null");
+      AppMethodBeat.o(250748);
+      return;
+    }
+    Object localObject1 = new StringBuilder("handleNearbyEntranceRedDot nearbyEntrance:");
+    Object localObject2 = l.ARA;
+    Log.i("Finder.RedDotNotifier", l.dZY().getValue() + " result:" + parama);
+    if (!parama.hBY)
+    {
+      localFinderIconViewTipPreference.yn(false);
+      FindMoreFriendsUI.ef("find_live_friends_by_near", false);
+      Log.w("NearbyEntryPreferenceMgr", "handleNearbyEntranceRedDot return for isShow");
+      AppMethodBeat.o(250748);
+      return;
+    }
+    int i;
+    if (parama.ASh != null)
+    {
+      localObject1 = parama.ASh;
+      s.checkNotNull(localObject1);
+      if (((p)localObject1).field_ctrType != 1013)
+      {
+        localObject1 = parama.ASh;
+        s.checkNotNull(localObject1);
+        if (((p)localObject1).field_ctrType != 1014)
+        {
+          localObject1 = parama.ASh;
+          s.checkNotNull(localObject1);
+          if (((p)localObject1).field_ctrType != 1011) {
+            break label286;
+          }
+        }
+      }
+      i = 1;
+    }
+    for (;;)
+    {
+      if (i == 0)
+      {
+        localObject1 = com.tencent.mm.plugin.finder.nearby.abtest.a.EHr;
+        if (com.tencent.mm.plugin.finder.nearby.abtest.a.eEi())
+        {
+          Log.w("NearbyEntryPreferenceMgr", s.X("handleNearbyEntranceRedDot return for nearby v3 result:", parama));
+          AppMethodBeat.o(250748);
+          return;
+          label286:
+          i = 0;
+          continue;
+        }
+      }
+      localObject1 = parama.ASg;
+      if (localObject1 == null)
+      {
+        Log.w("NearbyEntryPreferenceMgr", "handleNearbyEntranceRedDot info is null");
+        AppMethodBeat.o(250748);
+        return;
+      }
+      boolean bool2 = ((cn)com.tencent.mm.kernel.h.az(cn.class)).getRedDotManager().dZt();
+      Log.i("NearbyEntryPreferenceMgr", "handleNearbyEntranceRedDot preference:" + localFinderIconViewTipPreference + ' ' + localFinderIconViewTipPreference.hashCode() + " [onChanged] isEnableShowNearByEntranceRedDot:" + bool2 + " result" + parama);
+      if (i != 0) {
+        if ((((bxq)localObject1).show_type != 101) && (!bool2)) {
+          Log.i("NearbyEntryPreferenceMgr", "handleNearbyEntranceLocalRedDot return for enableShowNearByEntranceRedDot:" + bool2 + '.');
+        }
+      }
+      for (;;)
+      {
+        com.tencent.threadpool.h.ahAA.bo(new b..ExternalSyntheticLambda1(bool2));
+        AppMethodBeat.o(250748);
+        return;
+        if ((paramb.afuX.PtI & 0x200) == 0) {}
+        for (bool1 = true;; bool1 = false)
+        {
+          Log.i("NearbyEntryPreferenceMgr", s.X("handleNearbyEntranceLocalRedDot enableNearbyFriends:", Boolean.valueOf(bool1)));
+          FindMoreFriendsUI.ef("find_live_friends_by_near", true);
+          if (((bxq)localObject1).show_type != 6) {
+            break label564;
+          }
+          if ((com.tencent.mm.modelverify.d.bNJ().dkF() > 0) && (bool1)) {
+            break;
+          }
+          localFinderIconViewTipPreference.yn(false);
+          localFinderIconViewTipPreference.afx(0);
+          localFinderIconViewTipPreference.gv(paramb.context.getString(R.l.app_new), R.g.new_tips_bg);
+          break;
+        }
+        label564:
+        localFinderIconViewTipPreference.yn(false);
+        localFinderIconViewTipPreference.aBh(0);
+        localFinderIconViewTipPreference.aBi(0);
+        localFinderIconViewTipPreference.T(bb.m(paramb.context, R.k.icons_filled_footstep, paramb.context.getResources().getColor(R.e.arrow_color)));
+        localFinderIconViewTipPreference.oo(bd.bs(paramb.context, R.f.Edge_2_5_A), bd.bs(paramb.context, R.f.Edge_2_5_A));
+        if (((bxq)localObject1).show_type != 101)
+        {
+          i = ((bxq)localObject1).count;
+          localFinderIconViewTipPreference.afx(0);
+          localFinderIconViewTipPreference.gv(s.X("", Integer.valueOf(i)), v.bC(paramb.context, i));
+          paramb = m.ASi;
+          paramb = parama.ASh;
+          s.checkNotNull(paramb);
+          paramb = paramb.field_tipsId;
+          s.s(paramb, "result.ctrInfo!!.field_tipsId");
+          m.a.avF(paramb);
+          continue;
+          localObject2 = com.tencent.mm.plugin.finder.nearby.abtest.a.EHr;
+          if (com.tencent.mm.plugin.finder.nearby.abtest.a.eEi())
+          {
+            Log.w("NearbyEntryPreferenceMgr", "handleNearbyEntranceLiveRedDot return for isEnableFindLive");
+          }
+          else
+          {
+            if (com.tencent.mm.bp.a.iGm()) {
+              break;
+            }
+            Log.w("NearbyEntryPreferenceMgr", "handleNearbyEntranceLiveRedDot return for isEnableNearByLiveFriends");
+          }
+        }
+      }
+      localFinderIconViewTipPreference.aBh(8);
+      localFinderIconViewTipPreference.afx(8);
+      localFinderIconViewTipPreference.gv("", -1);
+      boolean bool3 = ((cn)com.tencent.mm.kernel.h.az(cn.class)).getRedDotManager().dZt();
+      Log.i("NearbyEntryPreferenceMgr", "handleNearbyEntranceLiveRedDot isEnableShowNearByEntranceRedDot:" + bool3 + " result:" + parama + " info:" + localObject1);
+      localObject2 = paramb.afuX;
+      parama = parama.ASh;
+      if (parama != null)
+      {
+        parama = parama.ASz;
+        if ((parama == null) || (parama.aabQ != 1)) {}
+      }
+      for (;;)
+      {
+        ((FindMoreFriendsUI)localObject2).a((bxq)localObject1, localFinderIconViewTipPreference, false, bool3, bool1);
+        paramb.MN(bool3);
+        break;
+        bool1 = false;
+      }
+      i = 0;
+    }
+  }
+  
+  private final void b(FinderIconViewTipPreference paramFinderIconViewTipPreference)
+  {
+    AppMethodBeat.i(250741);
+    this.afva = paramFinderIconViewTipPreference;
+    Object localObject;
+    if (this.afvd != null)
+    {
+      localObject = new StringBuilder("observeNearbyEntrance lastIsEnableFindLiveState:").append(this.afve).append(" isEnableFindLive:");
+      com.tencent.mm.plugin.finder.nearby.abtest.a locala = com.tencent.mm.plugin.finder.nearby.abtest.a.EHr;
+      Log.w("NearbyEntryPreferenceMgr", com.tencent.mm.plugin.finder.nearby.abtest.a.eEi() + "  preference: " + paramFinderIconViewTipPreference + ' ' + paramFinderIconViewTipPreference.hashCode() + " return for observing.");
+      boolean bool = this.afve;
+      paramFinderIconViewTipPreference = com.tencent.mm.plugin.finder.nearby.abtest.a.EHr;
+      if (bool != com.tencent.mm.plugin.finder.nearby.abtest.a.eEi())
+      {
+        paramFinderIconViewTipPreference = com.tencent.mm.plugin.finder.nearby.abtest.a.EHr;
+        if (com.tencent.mm.plugin.finder.nearby.abtest.a.eEi()) {
+          break label166;
+        }
+        paramFinderIconViewTipPreference = com.tencent.mm.plugin.finder.extension.reddot.nearby.a.ASI;
+        com.tencent.mm.plugin.finder.extension.reddot.nearby.a.avN("removeFinderLiveEntranceShowInfo");
+        paramFinderIconViewTipPreference = l.ARA;
+        paramFinderIconViewTipPreference = l.dZY();
+        localObject = l.ARA;
+        paramFinderIconViewTipPreference.t(l.dZY().getValue());
+      }
+      for (;;)
+      {
+        paramFinderIconViewTipPreference = com.tencent.mm.plugin.finder.nearby.abtest.a.EHr;
+        this.afve = com.tencent.mm.plugin.finder.nearby.abtest.a.eEi();
+        AppMethodBeat.o(250741);
+        return;
+        label166:
+        paramFinderIconViewTipPreference = com.tencent.mm.plugin.finder.extension.reddot.nearby.a.ASI;
+        com.tencent.mm.plugin.finder.extension.reddot.nearby.a.avM("removeNearbyEntryLiveShowInfo");
+        paramFinderIconViewTipPreference = l.ARA;
+        paramFinderIconViewTipPreference = l.dZX();
+        localObject = l.ARA;
+        paramFinderIconViewTipPreference.t(l.dZX().getValue());
+      }
+    }
+    Log.i("NearbyEntryPreferenceMgr", "observeNearbyEntrance preference:" + paramFinderIconViewTipPreference + ' ' + paramFinderIconViewTipPreference.hashCode());
+    this.afvd = new b..ExternalSyntheticLambda0(this);
+    paramFinderIconViewTipPreference = this.afvd;
+    if (paramFinderIconViewTipPreference != null)
+    {
+      localObject = l.ARA;
+      l.dZY().a((q)this.afuX, paramFinderIconViewTipPreference);
+    }
+    paramFinderIconViewTipPreference = l.ARA;
+    paramFinderIconViewTipPreference = (l.a)l.dZY().getValue();
+    if (paramFinderIconViewTipPreference != null)
+    {
+      localObject = this.afvd;
+      if (localObject != null) {
+        ((y)localObject).onChanged(paramFinderIconViewTipPreference);
+      }
+    }
+    paramFinderIconViewTipPreference = com.tencent.mm.plugin.finder.nearby.abtest.a.EHr;
+    this.afve = com.tencent.mm.plugin.finder.nearby.abtest.a.eEi();
+    AppMethodBeat.o(250741);
   }
   
   private final void b(FinderIconViewTipPreference paramFinderIconViewTipPreference, boolean paramBoolean)
   {
     int j = 0;
-    AppMethodBeat.i(279992);
-    Object localObject = d.bqd();
-    p.j(localObject, "SubCoreVerify.getLBSVerifyMsgStg()");
-    int i = ((by)localObject).cHo();
+    AppMethodBeat.i(250740);
+    int i = com.tencent.mm.modelverify.d.bNJ().dkF();
     if (!paramBoolean) {
       i = 0;
     }
     for (;;)
     {
-      if ((!com.tencent.mm.app.plugin.c.abO()) && (paramBoolean))
+      if ((!com.tencent.mm.app.plugin.c.aDN()) && (paramBoolean))
       {
         Log.i("NearbyEntryPreferenceMgr", "observeNearbyFriendsRedDot: add footprint red dot");
-        localObject = com.tencent.mm.kernel.h.ag(PluginFinder.class);
-        p.j(localObject, "MMKernel.plugin(PluginFinder::class.java)");
-        ((PluginFinder)localObject).getRedDotManager().xsL.drB();
-        localObject = com.tencent.mm.kernel.h.ag(PluginFinder.class);
-        p.j(localObject, "MMKernel.plugin(PluginFinder::class.java)");
-        localObject = ((PluginFinder)localObject).getRedDotManager().aBe("NearbyPeopleTab");
-        if (localObject != null) {
-          j = ((bkn)localObject).count;
+        ((PluginFinder)com.tencent.mm.kernel.h.az(PluginFinder.class)).getRedDotManager().AQu.eaq();
+        bxq localbxq = ((PluginFinder)com.tencent.mm.kernel.h.az(PluginFinder.class)).getRedDotManager().avp("NearbyPeopleTab");
+        if (localbxq != null) {
+          j = localbxq.count;
         }
         if (i <= 0) {
-          break label253;
+          break label189;
         }
         Log.i("NearbyEntryPreferenceMgr", "observeNearbyFriendsRedDot: add unread red dot,insideRedDotUnRedCount = " + j + ", unRead = " + i);
-        if (i > j)
-        {
-          localObject = com.tencent.mm.kernel.h.ag(PluginFinder.class);
-          p.j(localObject, "MMKernel.plugin(PluginFinder::class.java)");
-          ((PluginFinder)localObject).getRedDotManager().xsL.Ms(i);
+        if (i > j) {
+          ((PluginFinder)com.tencent.mm.kernel.h.az(PluginFinder.class)).getRedDotManager().AQu.Nz(i);
         }
       }
       for (;;)
       {
-        a(paramFinderIconViewTipPreference);
-        AppMethodBeat.o(279992);
+        b(paramFinderIconViewTipPreference);
+        AppMethodBeat.o(250740);
         return;
         Log.i("NearbyEntryPreferenceMgr", "observeNearbyFriendsRedDot: clear footprint red dot");
-        localObject = com.tencent.mm.kernel.h.ag(PluginFinder.class);
-        p.j(localObject, "MMKernel.plugin(PluginFinder::class.java)");
-        ((PluginFinder)localObject).getRedDotManager().Mp(1014);
+        ((PluginFinder)com.tencent.mm.kernel.h.az(PluginFinder.class)).getRedDotManager().Nv(1014);
         break;
-        label253:
+        label189:
         Log.i("NearbyEntryPreferenceMgr", "observeNearbyFriendsRedDot: clear unread red dot");
-        localObject = com.tencent.mm.kernel.h.ag(PluginFinder.class);
-        p.j(localObject, "MMKernel.plugin(PluginFinder::class.java)");
-        ((PluginFinder)localObject).getRedDotManager().Mp(1013);
+        ((PluginFinder)com.tencent.mm.kernel.h.az(PluginFinder.class)).getRedDotManager().Nv(1013);
       }
     }
   }
   
-  private final boolean hWW()
+  private final boolean jBt()
   {
-    AppMethodBeat.i(279988);
+    AppMethodBeat.i(250722);
     int i;
-    if (!this.XHq.Hh(70368744177664L))
+    if (!this.afuX.ju(70368744177664L))
     {
       i = 1;
-      if ((this.XHq.hGp() & 0x200) != 0) {
+      if ((this.afuX.PtI & 0x200) != 0) {
         break label87;
       }
     }
@@ -236,46 +377,39 @@ public final class b
       if (i != 0) {
         break label92;
       }
-      this.XHq.hGo().dz("find_friends_by_near_v3", true);
+      this.afuX.FUv.eh("find_friends_by_near_v3", true);
       Log.w("NearbyEntryPreferenceMgr", "updateNearbyEntryV3 return for openNearbyLiveFriends:%s", new Object[] { Boolean.FALSE });
-      AppMethodBeat.o(279988);
+      AppMethodBeat.o(250722);
       return false;
       i = 0;
       break;
     }
     label92:
-    if (this.XHq.hGn()) {
-      com.tencent.mm.ui.report.a.hXE();
+    if (this.afuX.hNd) {
+      com.tencent.mm.ui.report.a.jCl();
     }
-    this.XHq.hGo().dz("find_friends_by_near_v3", false);
-    Object localObject = this.XHq.hGo().byG("find_friends_by_near_v3");
+    this.afuX.FUv.eh("find_friends_by_near_v3", false);
+    Object localObject = this.afuX.FUv.bAi("find_friends_by_near_v3");
     if (localObject == null)
     {
-      localObject = new t("null cannot be cast to non-null type com.tencent.mm.ui.FinderIconViewTipPreference");
-      AppMethodBeat.o(279988);
+      localObject = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.ui.FinderIconViewTipPreference");
+      AppMethodBeat.o(250722);
       throw ((Throwable)localObject);
-    }
-    localObject = (FinderIconViewTipPreference)localObject;
-    if (localObject == null)
-    {
-      Log.w("NearbyEntryPreferenceMgr", "updateNearbyEntryV3 find_friends_by_near return for null.");
-      AppMethodBeat.o(279988);
-      return false;
     }
     b((FinderIconViewTipPreference)localObject, bool);
     Log.i("NearbyEntryPreferenceMgr", "updateNearbyEntryV3");
-    AppMethodBeat.o(279988);
+    AppMethodBeat.o(250722);
     return true;
   }
   
-  private final boolean hWX()
+  private final boolean jBu()
   {
-    AppMethodBeat.i(279989);
+    AppMethodBeat.i(250727);
     int i;
-    if (!this.XHq.Hh(70368744177664L))
+    if (!this.afuX.ju(70368744177664L))
     {
       i = 1;
-      if ((this.XHq.hGp() & 0x200) != 0) {
+      if ((this.afuX.PtI & 0x200) != 0) {
         break label87;
       }
     }
@@ -285,175 +419,147 @@ public final class b
       if (i != 0) {
         break label92;
       }
-      this.XHq.hGo().dz("find_live_friends_by_near", true);
+      this.afuX.FUv.eh("find_live_friends_by_near", true);
       Log.w("NearbyEntryPreferenceMgr", "updateNearbyLiveFriendsEntry return for openNearbyLiveFriends:%s", new Object[] { Boolean.FALSE });
-      AppMethodBeat.o(279989);
+      AppMethodBeat.o(250727);
       return false;
       i = 0;
       break;
     }
     label92:
-    if (this.XHq.hGn()) {
-      com.tencent.mm.ui.report.a.hXC();
+    if (this.afuX.hNd) {
+      com.tencent.mm.ui.report.a.jCj();
     }
-    this.XHq.hGo().dz("find_live_friends_by_near", false);
-    Object localObject = this.XHq.hGo().byG("find_live_friends_by_near");
+    this.afuX.FUv.eh("find_live_friends_by_near", false);
+    Object localObject = this.afuX.FUv.bAi("find_live_friends_by_near");
     if (localObject == null)
     {
-      localObject = new t("null cannot be cast to non-null type com.tencent.mm.ui.FinderIconViewTipPreference");
-      AppMethodBeat.o(279989);
+      localObject = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.ui.FinderIconViewTipPreference");
+      AppMethodBeat.o(250727);
       throw ((Throwable)localObject);
     }
     localObject = (FinderIconViewTipPreference)localObject;
-    if (localObject == null)
-    {
-      Log.w("NearbyEntryPreferenceMgr", "updateNearbyLiveFriendsEntry find_friends_by_near return for null.");
-      AppMethodBeat.o(279989);
-      return false;
-    }
     Log.i("NearbyEntryPreferenceMgr", "updateNearbyLiveFriendsEntry");
     a((FinderIconViewTipPreference)localObject, bool);
-    localObject = com.tencent.mm.kernel.h.ag(ak.class);
-    p.j(localObject, "MMKernel.plugin(IPluginFinder::class.java)");
-    localObject = ((ak)localObject).getRedDotManager();
-    p.j(localObject, "MMKernel.plugin(IPluginF…class.java).redDotManager");
-    GV(((z)localObject).dqJ());
-    AppMethodBeat.o(279989);
+    MN(((cn)com.tencent.mm.kernel.h.az(cn.class)).getRedDotManager().dZt());
+    AppMethodBeat.o(250727);
     return true;
   }
   
-  private final boolean hWY()
+  private final boolean jBv()
   {
-    AppMethodBeat.i(279990);
-    Object localObject1 = this.XHu;
-    Object localObject2;
-    if (localObject1 != null)
+    AppMethodBeat.i(250732);
+    Object localObject = this.afvd;
+    if (localObject != null)
     {
-      localObject2 = com.tencent.mm.plugin.finder.extension.reddot.h.xup;
-      com.tencent.mm.plugin.finder.extension.reddot.h.dqO().b((s)localObject1);
+      l locall = l.ARA;
+      l.dZC().b((y)localObject);
     }
-    if ((this.XHq.hGp() & 0x200) == 0) {}
+    if ((this.afuX.PtI & 0x200) == 0) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      boolean bool2 = com.tencent.mm.by.c.blP("nearby");
+      boolean bool2 = com.tencent.mm.br.c.blq("nearby");
       Log.i("NearbyEntryPreferenceMgr", "updateNearbyFriendsEntry enableNearbyFriends:" + bool1 + ", nearbyPluginInstalled:" + bool2);
       if ((bool1) && (bool2)) {
         break;
       }
-      this.XHq.hGo().dz("find_friends_by_near", true);
-      if (!this.XHq.hFY()) {
-        com.tencent.mm.plugin.report.service.h.IzE.p(953L, 5L, 1L);
+      this.afuX.FUv.eh("find_friends_by_near", true);
+      if (!this.afuX.jij()) {
+        com.tencent.mm.plugin.report.service.h.OAn.p(953L, 5L, 1L);
       }
-      AppMethodBeat.o(279990);
+      AppMethodBeat.o(250732);
       return false;
     }
-    this.XHq.hGo().dz("find_friends_by_near", false);
-    localObject1 = this.XHq.hGo().byG("find_friends_by_near");
-    if (localObject1 == null)
+    this.afuX.FUv.eh("find_friends_by_near", false);
+    localObject = this.afuX.FUv.bAi("find_friends_by_near");
+    if (localObject == null)
     {
-      localObject1 = new t("null cannot be cast to non-null type com.tencent.mm.ui.base.preference.IconPreference");
-      AppMethodBeat.o(279990);
-      throw ((Throwable)localObject1);
+      localObject = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.ui.base.preference.IconPreference");
+      AppMethodBeat.o(250732);
+      throw ((Throwable)localObject);
     }
-    localObject1 = (IconPreference)localObject1;
-    if (localObject1 == null)
-    {
-      Log.w("NearbyEntryPreferenceMgr", "updateNearbyEntry find_friends_by_near return for null.");
-      AppMethodBeat.o(279990);
-      return false;
-    }
+    localObject = (IconPreference)localObject;
     int i;
-    if (com.tencent.mm.app.plugin.c.abO())
+    if (com.tencent.mm.app.plugin.c.aDN())
     {
-      ((IconPreference)localObject1).auF(8);
-      localObject2 = d.bqd();
-      p.j(localObject2, "SubCoreVerify.getLBSVerifyMsgStg()");
-      i = ((by)localObject2).cHo();
-      if ((!com.tencent.mm.bw.a.hft()) || (com.tencent.mm.bw.a.hfs())) {
-        break label367;
+      ((IconPreference)localObject).aBh(8);
+      i = com.tencent.mm.modelverify.d.bNJ().dkF();
+      if ((!com.tencent.mm.bp.a.iGn()) || (com.tencent.mm.bp.a.iGm())) {
+        break label334;
       }
       if (i <= 0) {
-        break label357;
+        break label324;
       }
-      ((IconPreference)localObject1).aak(0);
-      com.tencent.mm.ui.report.a.Wl(i);
+      ((IconPreference)localObject).aeD(0);
+      com.tencent.mm.ui.report.a.Ax(i);
     }
     for (;;)
     {
-      AppMethodBeat.o(279990);
+      AppMethodBeat.o(250732);
       return true;
-      ((IconPreference)localObject1).auF(0);
-      ((IconPreference)localObject1).J(au.o(this.context, R.k.icons_filled_footstep, this.context.getResources().getColor(R.e.arrow_color)));
-      ((IconPreference)localObject1).mu(aw.aZ(this.context, R.f.Edge_2_5_A), aw.aZ(this.context, R.f.Edge_2_5_A));
+      ((IconPreference)localObject).aBh(0);
+      ((IconPreference)localObject).T(bb.m(this.context, R.k.icons_filled_footstep, this.context.getResources().getColor(R.e.arrow_color)));
+      ((IconPreference)localObject).oo(bd.bs(this.context, R.f.Edge_2_5_A), bd.bs(this.context, R.f.Edge_2_5_A));
       break;
-      label357:
-      ((IconPreference)localObject1).aak(8);
+      label324:
+      ((IconPreference)localObject).aeD(8);
       continue;
-      label367:
+      label334:
       if (i > 0)
       {
-        ((IconPreference)localObject1).abe(0);
-        ((IconPreference)localObject1).fC(String.valueOf(i), w.bj(this.context, i));
-        com.tencent.mm.ui.report.a.Wl(i);
+        ((IconPreference)localObject).afx(0);
+        ((IconPreference)localObject).gv(s.X("", Integer.valueOf(i)), v.bC(this.context, i));
+        com.tencent.mm.ui.report.a.Ax(i);
       }
       else
       {
-        ((IconPreference)localObject1).abe(8);
-        ((IconPreference)localObject1).fC("", -1);
+        ((IconPreference)localObject).afx(8);
+        ((IconPreference)localObject).gv("", -1);
       }
     }
   }
   
-  public final boolean hWV()
+  public final boolean jBs()
   {
-    AppMethodBeat.i(279987);
-    Object localObject = com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.teenmode.a.b.class);
-    p.j(localObject, "MMKernel.service(ITeenModeService::class.java)");
-    if (((com.tencent.mm.plugin.teenmode.a.b)localObject).ZM())
+    AppMethodBeat.i(250756);
+    if (((com.tencent.mm.plugin.teenmode.a.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.teenmode.a.d.class)).aBu())
     {
-      this.XHq.hGo().dz("find_friends_by_near", true);
-      this.XHq.hGo().dz("find_live_friends_by_near", true);
-      this.XHq.hGo().dz("find_friends_by_near_v3", true);
-      if (!this.XHq.hFY()) {
-        com.tencent.mm.plugin.report.service.h.IzE.p(953L, 5L, 1L);
+      this.afuX.FUv.eh("find_friends_by_near", true);
+      this.afuX.FUv.eh("find_live_friends_by_near", true);
+      this.afuX.FUv.eh("find_friends_by_near_v3", true);
+      if (!this.afuX.jij()) {
+        com.tencent.mm.plugin.report.service.h.OAn.p(953L, 5L, 1L);
       }
       Log.i("NearbyEntryPreferenceMgr", "updateNearbyEntry return for isTeenMode.");
-      AppMethodBeat.o(279987);
+      AppMethodBeat.o(250756);
       return false;
     }
-    localObject = com.tencent.mm.plugin.finder.nearby.abtest.a.zDp;
-    if (com.tencent.mm.plugin.finder.nearby.abtest.a.dLo())
+    com.tencent.mm.plugin.finder.nearby.abtest.a locala = com.tencent.mm.plugin.finder.nearby.abtest.a.EHr;
+    if (com.tencent.mm.plugin.finder.nearby.abtest.a.eEi())
     {
-      this.XHq.hGo().dz("find_friends_by_near", true);
-      this.XHq.hGo().dz("find_live_friends_by_near", true);
-      bool = hWW();
-      AppMethodBeat.o(279987);
+      this.afuX.FUv.eh("find_friends_by_near", true);
+      this.afuX.FUv.eh("find_live_friends_by_near", true);
+      bool = jBt();
+      AppMethodBeat.o(250756);
       return bool;
     }
-    this.XHq.hGo().dz("find_friends_by_near_v3", true);
-    if (com.tencent.mm.bw.a.hfs())
+    this.afuX.FUv.eh("find_friends_by_near_v3", true);
+    if (com.tencent.mm.bp.a.iGm())
     {
-      this.XHq.hGo().dz("find_friends_by_near", true);
-      bool = hWX();
-      AppMethodBeat.o(279987);
+      this.afuX.FUv.eh("find_friends_by_near", true);
+      bool = jBu();
+      AppMethodBeat.o(250756);
       return bool;
     }
-    this.XHq.hGo().dz("find_live_friends_by_near", true);
-    boolean bool = hWY();
-    AppMethodBeat.o(279987);
+    this.afuX.FUv.eh("find_live_friends_by_near", true);
+    boolean bool = jBv();
+    AppMethodBeat.o(250756);
     return bool;
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "kotlin.jvm.PlatformType", "onChanged"})
-  static final class c<T>
-    implements s<h.a>
-  {
-    c(b paramb) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.findmore.a.b
  * JD-Core Version:    0.7.0.1
  */

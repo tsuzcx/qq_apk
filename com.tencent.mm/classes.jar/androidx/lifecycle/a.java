@@ -1,17 +1,15 @@
 package androidx.lifecycle;
 
-import android.annotation.SuppressLint;
 import android.app.Application;
 
 public class a
-  extends x
+  extends af
 {
-  @SuppressLint({"StaticFieldLeak"})
-  private Application Zw;
+  private Application bGP;
   
   public a(Application paramApplication)
   {
-    this.Zw = paramApplication;
+    this.bGP = paramApplication;
   }
 }
 

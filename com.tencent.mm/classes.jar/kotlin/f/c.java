@@ -3,20 +3,20 @@ package kotlin.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.BufferedReader;
 import java.util.Iterator;
+import kotlin.Metadata;
 import kotlin.g.b.a.a;
-import kotlin.l;
 import kotlin.m.h;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/io/LinesSequence;", "Lkotlin/sequences/Sequence;", "", "reader", "Ljava/io/BufferedReader;", "(Ljava/io/BufferedReader;)V", "iterator", "", "kotlin-stdlib"})
+@Metadata(d1={""}, d2={"Lkotlin/io/LinesSequence;", "Lkotlin/sequences/Sequence;", "", "reader", "Ljava/io/BufferedReader;", "(Ljava/io/BufferedReader;)V", "iterator", "", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
 final class c
   implements h<String>
 {
-  final BufferedReader bjf;
+  private final BufferedReader dcZ;
   
   public c(BufferedReader paramBufferedReader)
   {
     AppMethodBeat.i(129277);
-    this.bjf = paramBufferedReader;
+    this.dcZ = paramBufferedReader;
     AppMethodBeat.o(129277);
   }
   
@@ -28,24 +28,24 @@ final class c
     return localIterator;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"kotlin/io/LinesSequence$iterator$1", "", "", "done", "", "nextValue", "hasNext", "next", "kotlin-stdlib"})
+  @Metadata(d1={""}, d2={"kotlin/io/LinesSequence$iterator$1", "", "", "done", "", "nextValue", "hasNext", "next", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
   public static final class a
     implements Iterator<String>, a
   {
-    private String aaAR;
+    private String aiwC;
     private boolean done;
     
     public final boolean hasNext()
     {
       AppMethodBeat.i(129264);
-      if ((this.aaAR == null) && (!this.done))
+      if ((this.aiwC == null) && (!this.done))
       {
-        this.aaAR = this.aaAS.bjf.readLine();
-        if (this.aaAR == null) {
+        this.aiwC = c.a(this.aiwD).readLine();
+        if (this.aiwC == null) {
           this.done = true;
         }
       }
-      if (this.aaAR != null)
+      if (this.aiwC != null)
       {
         AppMethodBeat.o(129264);
         return true;

@@ -6,63 +6,42 @@ import com.tencent.xweb.internal.CookieInternal.ICookieSyncManagerInternal;
 
 public final class d
 {
-  private static d ZZF;
-  static CookieInternal.ICookieSyncManagerInternal ZZG;
+  private static d aieo;
+  CookieInternal.ICookieSyncManagerInternal aiep;
   
-  private d(Context paramContext)
-  {
-    AppMethodBeat.i(156725);
-    if (ZZG != null) {
-      ZZG.init(paramContext);
-    }
-    AppMethodBeat.o(156725);
-  }
-  
-  public static d ivZ()
+  public static d kfq()
   {
     try
     {
       AppMethodBeat.i(156724);
-      if (ZZF == null)
-      {
-        IllegalStateException localIllegalStateException = new IllegalStateException("CookieSyncManager::createInstance() needs to be called before CookieSyncManager::getInstance()");
-        AppMethodBeat.o(156724);
-        throw localIllegalStateException;
+      if (aieo == null) {
+        aieo = new d();
       }
+      d locald = aieo;
+      AppMethodBeat.o(156724);
+      return locald;
     }
     finally {}
-    d locald = ZZF;
-    AppMethodBeat.o(156724);
-    return locald;
   }
   
-  public static d my(Context paramContext)
+  @Deprecated
+  public final void init(Context paramContext)
   {
     try
     {
-      AppMethodBeat.i(156723);
-      if (ZZF == null) {
-        ZZF = new d(paramContext.getApplicationContext());
+      AppMethodBeat.i(212390);
+      if ((this.aiep != null) && (paramContext != null)) {
+        this.aiep.init(paramContext.getApplicationContext());
       }
-      paramContext = ZZF;
-      AppMethodBeat.o(156723);
-      return paramContext;
+      AppMethodBeat.o(212390);
+      return;
     }
     finally {}
-  }
-  
-  public static void sync()
-  {
-    AppMethodBeat.i(156726);
-    if (ZZG != null) {
-      ZZG.sync();
-    }
-    AppMethodBeat.o(156726);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.d
  * JD-Core Version:    0.7.0.1
  */

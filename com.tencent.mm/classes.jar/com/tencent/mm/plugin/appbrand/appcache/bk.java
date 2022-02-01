@@ -13,12 +13,12 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 public final class bk
 {
   private static final Uri CONTENT_URI;
-  private static final bk nHD;
+  private static final bk qHq;
   
   static
   {
     AppMethodBeat.i(146008);
-    nHD = new bk();
+    qHq = new bk();
     CONTENT_URI = Uri.parse("content://" + a.AUTHORITY + "/AppBrandWxaPkgManifestRecord");
     AppMethodBeat.o(146008);
   }
@@ -47,14 +47,9 @@ public final class bk
     }
   }
   
-  public static bk bHD()
+  public static boolean bD(String paramString, int paramInt)
   {
-    return nHD;
-  }
-  
-  public static boolean bm(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(232392);
+    AppMethodBeat.i(320164);
     Log.i("Luggage.DevPkgLaunchExtInfoContentResolver", "deleteModuleList appId:%s, pkgType:%d, pkgVersion:%d", new Object[] { paramString, Integer.valueOf(paramInt), Integer.valueOf(-1) });
     try
     {
@@ -64,7 +59,7 @@ public final class bk
       localContentValues.put("CONTENT_KEY_PKG_TYPE", Integer.valueOf(paramInt));
       localContentValues.put("CONTENT_KEY_PKG_VERSION", Integer.valueOf(-1));
       MMApplicationContext.getContext().getContentResolver().update(CONTENT_URI, localContentValues, null, null);
-      AppMethodBeat.o(232392);
+      AppMethodBeat.o(320164);
       return true;
     }
     catch (Exception localException)
@@ -104,7 +99,12 @@ public final class bk
     }
   }
   
-  public static boolean r(String paramString1, int paramInt, String paramString2)
+  public static bk cha()
+  {
+    return qHq;
+  }
+  
+  public static boolean t(String paramString1, int paramInt, String paramString2)
   {
     AppMethodBeat.i(146005);
     Log.i("Luggage.DevPkgLaunchExtInfoContentResolver", "updateModuleList appId:%s, pkgType:%d, pkgVersion:%d", new Object[] { paramString1, Integer.valueOf(paramInt), Integer.valueOf(-1) });
@@ -130,7 +130,7 @@ public final class bk
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.bk
  * JD-Core Version:    0.7.0.1
  */

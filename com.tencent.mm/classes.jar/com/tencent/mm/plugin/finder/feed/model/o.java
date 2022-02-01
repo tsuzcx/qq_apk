@@ -1,17 +1,23 @@
 package com.tencent.mm.plugin.finder.feed.model;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/IFinderCache;", "", "id", "", "isValid", "", "plugin-finder-base_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/model/ICacheHelper;", "", "addCache", "", "cache", "Lcom/tencent/mm/plugin/finder/feed/model/IFinderCache;", "clearCache", "clearExpiredCache", "contains", "", "id", "", "getCache", "", "ids", "removeCache", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface o
 {
-  public abstract long dux();
+  public abstract void a(q paramq);
   
-  public abstract boolean isValid();
+  public abstract void clearCache();
+  
+  public abstract boolean contains(long paramLong);
+  
+  public abstract void nA(long paramLong);
+  
+  public abstract q nK(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.model.o
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/fl1" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/cb" android:textColor="@color/a2x" android:ellipsize="end" android:gravity="center" android:id="@id/czv" android:background="@drawable/a23" android:paddingLeft="@dimen/c5" android:paddingTop="2.0dip" android:paddingRight="@dimen/c5" android:paddingBottom="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:layout_marginTop="@dimen/bt" android:layout_marginRight="@dimen/ct" android:layout_marginBottom="@dimen/bt" android:text="aaaa" android:lines="1" android:includeFontPadding="false" />
-</FrameLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/ctb" android:paddingTop="@dimen/df" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mk">
+        <ImageView android:id="@id/a27" android:layout_width="@dimen/aw" android:layout_height="@dimen/aw" android:src="@drawable/b__" />
+        <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/fae" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cd" android:layout_toRightOf="@id/a27" android:layout_centerVertical="true">
+            <TextView android:ellipsize="end" android:id="@id/hga" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_" style="@style/x_" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView android:background="@drawable/a8f" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/da" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</LinearLayout>

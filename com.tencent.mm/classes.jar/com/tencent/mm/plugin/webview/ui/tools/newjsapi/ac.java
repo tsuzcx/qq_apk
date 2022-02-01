@@ -1,115 +1,58 @@
 package com.tencent.mm.plugin.webview.ui.tools.newjsapi;
 
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.d.c.a;
-import com.tencent.mm.plugin.webview.d.h;
-import com.tencent.mm.plugin.webview.d.n;
-import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.util.HashMap;
+import com.tencent.mm.plugin.webview.jsapi.c.a;
+import com.tencent.mm.plugin.webview.jsapi.h;
+import com.tencent.mm.plugin.webview.jsapi.p;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiShowKeyBoard;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "callbackID", "getCallbackID", "()Ljava/lang/String;", "setCallbackID", "(Ljava/lang/String;)V", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "sendRespToWeb", "", "jsApiHandler", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiHandler;", "text", "cancel", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiRequest;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ac
   extends a
 {
-  private static final int IIl = 187;
-  private static String QvO;
-  public static final ac QvP;
-  private static final String fXz = "showKeyboard";
+  private static final int OOk;
+  private static final String TAG;
+  public static final ac XnQ;
+  private static final String idA;
   
   static
   {
-    AppMethodBeat.i(250339);
-    QvP = new ac();
-    IIl = 187;
-    fXz = "showKeyboard";
-    AppMethodBeat.o(250339);
+    AppMethodBeat.i(175687);
+    XnQ = new ac();
+    TAG = "MicroMsg.JsApiRequest";
+    OOk = 331;
+    idA = "request";
+    AppMethodBeat.o(175687);
   }
   
-  public static void a(h paramh, String paramString, boolean paramBoolean)
+  private static final void a(h paramh, p paramp, String paramString, Map paramMap)
   {
-    AppMethodBeat.i(250336);
-    p.k(paramh, "jsApiHandler");
-    p.k(paramString, "text");
-    if (QvO == null)
-    {
-      Log.i("MicroMsg.JsApiShowKeyBoard", "callbackID == null, return");
-      AppMethodBeat.o(250336);
-      return;
-    }
-    Map localMap = (Map)new HashMap();
-    localMap.put("text", paramString);
-    if (paramBoolean) {}
-    for (paramString = "showKeyboard:cancel";; paramString = "showKeyboard:ok")
-    {
-      paramh.h(QvO, paramString, localMap);
-      QvO = null;
-      AppMethodBeat.o(250336);
-      return;
-    }
+    AppMethodBeat.i(297621);
+    s.u(paramh, "$env");
+    paramh.WDy.doCallback(paramp.WEH, paramString, paramMap);
+    AppMethodBeat.o(297621);
   }
   
-  public final boolean a(com.tencent.mm.plugin.webview.d.f paramf, n paramn)
+  public final boolean a(h paramh, p paramp)
   {
-    AppMethodBeat.i(250333);
-    p.k(paramf, "env");
-    p.k(paramn, "msg");
-    QvO = paramn.POu;
-    Bundle localBundle = new Bundle();
-    String str1 = (String)paramn.params.get("text");
-    String str2 = (String)paramn.params.get("placeholder");
-    Object localObject2 = paramn.params.get("maxLength");
-    Object localObject1 = localObject2;
-    if (!(localObject2 instanceof String)) {
-      localObject1 = null;
-    }
-    int i = Util.safeParseInt((String)localObject1);
-    localObject2 = paramn.params.get("showRemindWordCount");
-    localObject1 = localObject2;
-    if (!(localObject2 instanceof String)) {
-      localObject1 = null;
-    }
-    int j = Util.safeParseInt((String)localObject1);
-    if (!Util.getBoolean((String)paramn.params.get("hidden"), false)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localBundle.putString("show_kb_placeholder", str2);
-      localBundle.putInt("show_kb_max_length", i);
-      localBundle.putInt("show_kb_show_remind_word_count", j);
-      localBundle.putString("show_kb_text", str1);
-      localBundle.putBoolean("show_kb_to_show", bool);
-      Log.d("MicroMsg.JsApiShowKeyBoard", fXz + " text=" + str1 + ", placeholder=" + str2 + ", maxLength=" + i + ", showRemindWordCount=" + j + ", toShow=" + bool);
-      paramn = paramf.context;
-      paramf = paramn;
-      if (!(paramn instanceof WebViewUI)) {
-        paramf = null;
-      }
-      paramf = (WebViewUI)paramf;
-      if (paramf != null)
-      {
-        paramf = paramf.POP;
-        if (paramf != null) {
-          paramf.l(37, localBundle);
-        }
-      }
-      AppMethodBeat.o(250333);
-      return true;
-    }
+    AppMethodBeat.i(297640);
+    s.u(paramh, "env");
+    s.u(paramp, "msg");
+    boolean bool = com.tencent.mm.plugin.webview.g.e.a(paramp, new ac..ExternalSyntheticLambda0(paramh));
+    AppMethodBeat.o(297640);
+    return bool;
   }
   
-  public final String fCm()
+  public final String gPX()
   {
-    return fXz;
+    return idA;
   }
   
-  public final int fCn()
+  public final int gPZ()
   {
-    return IIl;
+    return OOk;
   }
 }
 

@@ -1,96 +1,68 @@
 package kotlin.l.b.a.b.m;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.List;
-import kotlin.a.v;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.b.a.g;
-import kotlin.l.b.a.b.b.a.g.a;
-import kotlin.l.b.a.b.j.f.h;
-import kotlin.l.b.a.b.m.c.k;
+import kotlin.g.a.a;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
+import kotlin.l.b.a.b.m.a.g;
+import kotlin.o;
 
 public final class aq
-  extends aj
-  implements k
+  extends ba
 {
-  private final h aaOs;
-  private final boolean abkQ;
-  private final at abqY;
-  private final at abql;
+  final kotlin.l.b.a.b.b.ba aiUy;
+  private final j ajqg;
   
-  private aq(at paramat1, boolean paramBoolean, at paramat2, h paramh)
+  public aq(kotlin.l.b.a.b.b.ba paramba)
   {
-    AppMethodBeat.i(60825);
-    this.abqY = paramat1;
-    this.abkQ = paramBoolean;
-    this.abql = paramat2;
-    this.aaOs = paramh;
-    AppMethodBeat.o(60825);
+    AppMethodBeat.i(60814);
+    this.aiUy = paramba;
+    this.ajqg = k.a(o.aiuG, (a)new a(this));
+    AppMethodBeat.o(60814);
   }
   
-  public final aj Jn(boolean paramBoolean)
+  public final boolean kAM()
   {
-    AppMethodBeat.i(60820);
-    if (paramBoolean == this.abkQ)
-    {
-      localaj = (aj)this;
-      AppMethodBeat.o(60820);
-      return localaj;
-    }
-    aj localaj = (aj)new aq(this.abqY, paramBoolean, this.abql, this.aaOs);
-    AppMethodBeat.o(60820);
-    return localaj;
+    return true;
   }
   
-  public final aj d(g paramg)
+  public final bl kAN()
   {
-    AppMethodBeat.i(60818);
-    p.k(paramg, "newAnnotations");
-    paramg = (aj)this;
-    AppMethodBeat.o(60818);
+    return bl.ajqO;
+  }
+  
+  public final ad koG()
+  {
+    AppMethodBeat.i(60812);
+    ad localad = (ad)this.ajqg.getValue();
+    AppMethodBeat.o(60812);
+    return localad;
+  }
+  
+  public final az o(g paramg)
+  {
+    AppMethodBeat.i(60813);
+    s.u(paramg, "kotlinTypeRefiner");
+    paramg = (az)this;
+    AppMethodBeat.o(60813);
     return paramg;
   }
   
-  public final g iDY()
+  static final class a
+    extends u
+    implements a<ad>
   {
-    AppMethodBeat.i(60817);
-    Object localObject = g.aaLw;
-    localObject = g.a.iGe();
-    AppMethodBeat.o(60817);
-    return localObject;
-  }
-  
-  public final h iEC()
-  {
-    return this.aaOs;
-  }
-  
-  public final boolean iIu()
-  {
-    return this.abkQ;
-  }
-  
-  public final List<av> iOR()
-  {
-    return (List)v.aaAd;
-  }
-  
-  public final at iOU()
-  {
-    return this.abql;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(60822);
-    String str = "NonFixed: " + this.abqY;
-    AppMethodBeat.o(60822);
-    return str;
+    a(aq paramaq)
+    {
+      super();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.m.aq
  * JD-Core Version:    0.7.0.1
  */

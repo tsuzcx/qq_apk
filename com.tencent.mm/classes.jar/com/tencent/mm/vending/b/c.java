@@ -28,7 +28,7 @@ public abstract class c<_Callback>
         }
         for (;;)
         {
-          this.mSchedulerInvoker.a(new com.tencent.mm.vending.c.a() {}, com.tencent.mm.vending.c.a.YAb, true);
+          this.mSchedulerInvoker.a(new com.tencent.mm.vending.c.a() {}, com.tencent.mm.vending.c.a.aguz, true);
           break;
           this.mSchedulerInvoker.c(d.current());
         }
@@ -78,7 +78,7 @@ public abstract class c<_Callback>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.vending.b.c
  * JD-Core Version:    0.7.0.1
  */

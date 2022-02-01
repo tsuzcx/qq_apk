@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.voiceprint.ui.VoiceHeaderPreference android:key="settings_voiceprint_header" />
-    <PreferenceCategory />
-    <PreferenceCategory />
-    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:key="settings_voiceprint_title" android:summary="@string/gwj" android:title="@string/gwi" />
-    <SummaryBelowPreference android:key="settings_voiceprint_create" android:summary="@string/gwg" android:title="@string/gwf" />
-    <Preference android:key="settings_voiceprint_reset" android:layout="@layout/b8j" android:title="@string/gwh" />
-    <Preference android:key="settings_voiceprint_unlock" android:layout="@layout/b8j" android:title="@string/gwk" />
-    <PreferenceCategory />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference android:defaultValue="false" android:key="sns_outside_permiss" android:persistent="false" android:title="@string/jfq" />
+    <CheckBoxPreference android:defaultValue="false" android:key="sns_black_permiss" android:persistent="false" android:title="@string/jb7" />
+    <PreferenceFooterCategory android:key="sns_openim_desc_footer" android:title="@string/jft" />
 </PreferenceScreen>

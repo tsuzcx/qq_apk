@@ -2,164 +2,154 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.item;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.drawable.AnimationDrawable;
+import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.u;
-import com.tencent.mm.aj.v;
-import com.tencent.mm.plugin.brandservice.d.b;
+import com.tencent.mm.message.m;
+import com.tencent.mm.message.u;
+import com.tencent.mm.message.v;
 import com.tencent.mm.plugin.brandservice.d.d;
 import com.tencent.mm.plugin.brandservice.d.e;
+import com.tencent.mm.plugin.brandservice.d.i;
+import com.tencent.mm.plugin.brandservice.ui.b.d;
+import com.tencent.mm.plugin.brandservice.ui.b.e;
 import com.tencent.mm.plugin.brandservice.ui.timeline.b;
-import com.tencent.mm.pluginsdk.ui.applet.m.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ab;
 import com.tencent.mm.ui.widget.MMNeat7extView;
 
 public final class at
-  extends ak
+  extends ah
 {
-  public ImageView sCR;
-  public RelativeLayout sHY;
+  public MMNeat7extView vIW;
+  public MMNeat7extView vJy;
+  public ImageView vMs;
+  public TextView vNC;
   
-  public final void a(int paramInt1, final v paramv, final z paramz, final int paramInt2, u paramu, int paramInt3)
+  public final void a(int paramInt1, v paramv, ab paramab, int paramInt2, u paramu, int paramInt3)
   {
-    AppMethodBeat.i(6058);
-    super.a(paramInt1, paramv, paramz, paramInt2, paramu, paramInt3);
+    AppMethodBeat.i(6067);
+    super.a(paramInt1, paramv, paramab, paramInt2, paramu, paramInt3);
     this.mCount = paramInt1;
-    this.sHc = false;
-    this.sDf.setVisibility(8);
-    dU(this.sHY);
-    dU(this.sCR);
-    this.sCR.setVisibility(0);
-    this.sDe.setTextColor(this.mContext.getResources().getColor(d.b.light_grey_text_color));
-    this.sDg.setBackgroundResource(d.d.mm_trans);
-    this.sDl.setTextColor(this.mContext.getResources().getColor(d.b.light_grey_text_color));
-    paramInt3 = this.sHf.sAc.getContentWidth();
-    this.sHf.sAc.a(paramz.field_msgId, 0, paramv, paramv.lpK, this.sCR, paramInt3, b.sAo, false, new m.a()
+    this.vMz = true;
+    label121:
+    boolean bool;
+    if (Util.isNullOrNil(paramv.title))
     {
-      public final void onFinish()
-      {
-        AppMethodBeat.i(6056);
-        at.this.sHc = true;
-        at.this.sDl.setTextColor(at.this.mContext.getResources().getColor(d.b.BW_100_Alpha_0_9));
-        if (at.this.sDf != null) {
-          at.this.sDf.setVisibility(0);
-        }
-        if (!at.a(at.this.mCount, paramv))
-        {
-          at.this.sDe.setTextColor(at.this.mContext.getResources().getColor(d.b.white_text_color));
-          if (at.this.b(paramv)) {
-            at.this.sDg.setBackgroundResource(d.d.spI);
-          }
-        }
-        for (;;)
-        {
-          at.this.sHf.sAc.p(paramz.field_msgId, paramInt2);
-          AppMethodBeat.o(6056);
-          return;
-          at.this.sDg.setBackgroundResource(d.d.dmA);
-          continue;
-          if (at.this.sHd > 0) {
-            at.this.sDg.setBackgroundResource(d.d.dmA);
-          }
-        }
+      this.vIW.aZ(this.mContext.getResources().getString(d.i.biz_time_line_item_voice_default_title));
+      if ((Util.isNullOrNil(paramv.nUO)) || (this.mCount != 1)) {
+        break label401;
       }
-      
-      public final void onStart() {}
-    }, b(paramv), this.sHe);
-    a(this.mCount, paramv, paramz);
-    label249:
-    b localb;
-    View localView;
-    if (a(this.mCount, paramv))
-    {
-      this.sDd.setPadding(this.sDd.getPaddingLeft(), 0, this.sDd.getPaddingRight(), b.sAt);
-      if (!b(paramv)) {
-        break label334;
+      Object localObject = d.ake(paramv.nUO);
+      this.vJy.setVisibility(0);
+      this.vJy.setMaxLines(2);
+      this.vJy.setEllipsize(TextUtils.TruncateAt.END);
+      this.vJy.aZ((CharSequence)localObject);
+      localObject = m.uD(paramv.nUQ);
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        break label413;
       }
-      this.sDf.setBackgroundResource(d.d.spA);
-      this.sDd.setBackgroundResource(d.d.spE);
-      if (!a(paramInt1, paramv)) {
-        a(this, paramz, paramv);
+      this.vNC.setVisibility(0);
+      this.vNC.setText((CharSequence)localObject);
+      label155:
+      localObject = this.vMs.getDrawable();
+      if (((localObject instanceof AnimationDrawable)) && (((AnimationDrawable)localObject).isRunning())) {
+        ((AnimationDrawable)localObject).stop();
       }
-      localb = this.sHf;
-      localView = this.sDd;
-      if (paramInt1 <= 1) {
-        break label381;
+      if (!(paramab.field_msgId + "_0").equals(d.dhS())) {
+        break label425;
       }
+      this.vMs.setImageResource(d.d.biz_time_line_item_voice_playing_selector);
+      if ((this.vMs.getDrawable() instanceof AnimationDrawable)) {
+        ((AnimationDrawable)this.vMs.getDrawable()).start();
+      }
+      label258:
+      a(this.vMs, paramab, 0, paramv.nUM);
+      a(this, paramab, paramv);
+      localObject = this.vMC;
+      View localView = this.vIV;
+      if (this.mCount <= 1) {
+        break label438;
+      }
+      bool = true;
+      label303:
+      ((b)localObject).a(paramv, paramab, paramInt2, paramu, localView, bool, 0);
+      if (this.mCount != 1) {
+        break label444;
+      }
+      this.vIV.setBackgroundResource(d.d.biz_time_line_item_bottom_bg);
     }
-    label334:
-    label381:
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
-      localb.a(paramv, paramz, paramInt2, paramu, localView, bool, 0);
-      AppMethodBeat.o(6058);
+      if (!Util.isNullOrNil(paramv.nUO)) {
+        break label457;
+      }
+      this.vIV.setPadding(this.vIV.getPaddingLeft(), 0, this.vIV.getPaddingRight(), b.vGf);
+      AppMethodBeat.o(6067);
       return;
-      this.sDd.setPadding(this.sDd.getPaddingLeft(), 0, this.sDd.getPaddingRight(), 0);
+      this.vIW.setVisibility(0);
+      this.vIW.aZ(paramv.title);
       break;
-      this.sDf.setBackgroundResource(d.d.spC);
-      if (a(this.mCount, paramv))
-      {
-        this.sDd.setBackgroundResource(d.d.spE);
-        break label249;
-      }
-      this.sDd.setBackgroundResource(d.d.spF);
-      break label249;
+      label401:
+      this.vJy.setVisibility(8);
+      break label121;
+      label413:
+      this.vNC.setVisibility(8);
+      break label155;
+      label425:
+      this.vMs.setImageResource(d.d.biz_time_line_item_voice_play_selector);
+      break label258;
+      label438:
+      bool = false;
+      break label303;
+      label444:
+      this.vIV.setBackgroundResource(d.d.biz_time_line_item_middle_bg);
     }
+    label457:
+    this.vIV.setPadding(this.vIV.getPaddingLeft(), b.vGi, this.vIV.getPaddingRight(), b.vGf);
+    AppMethodBeat.o(6067);
   }
   
   public final void a(View paramView, b paramb)
   {
-    AppMethodBeat.i(6057);
+    AppMethodBeat.i(6066);
     super.a(paramView, paramb);
-    if (this.sEi != null)
+    if (this.vJU != null)
     {
-      AppMethodBeat.o(6057);
+      AppMethodBeat.o(6066);
       return;
     }
-    paramb = (ViewStub)paramView.findViewById(d.e.dZy);
+    paramb = (ViewStub)paramView.findViewById(d.e.viewstub_top_voice_slot);
     if (paramb == null)
     {
-      AppMethodBeat.o(6057);
+      AppMethodBeat.o(6066);
       return;
     }
     paramb.inflate();
-    this.sEi = paramView.findViewById(d.e.sqP);
-    this.sDd = paramView.findViewById(d.e.sti);
-    cAo();
-    this.sCR = ((ImageView)this.sEi.findViewById(d.e.cover_iv));
-    this.sHY = ((RelativeLayout)this.sEi.findViewById(d.e.cover_layout));
-    this.sDe = ((MMNeat7extView)this.sEi.findViewById(d.e.title_tv));
-    this.sCT = ((ImageView)this.sEi.findViewById(d.e.dCV));
-    this.sDf = ((ImageView)this.sEi.findViewById(d.e.dRn));
-    this.sDg = ((LinearLayout)this.sEi.findViewById(d.e.srq));
-    this.sDh = ((LinearLayout)this.sEi.findViewById(d.e.ssU));
-    this.sDi = ((MMNeat7extView)this.sEi.findViewById(d.e.ssT));
-    this.sDj = ((MMNeat7extView)this.sEi.findViewById(d.e.dVp));
-    this.sHa = this.sEi.findViewById(d.e.stb);
-    this.sHb = ((TextView)this.sEi.findViewById(d.e.srU));
-    paramView = com.tencent.mm.plugin.brandservice.ui.b.d.sTw;
-    if (com.tencent.mm.plugin.brandservice.ui.b.d.cEs())
+    this.vJU = paramView.findViewById(d.e.biz_time_line_item_voice_slot);
+    this.vIV = paramView.findViewById(d.e.chatting_item_biz_voice_click_view);
+    ddp();
+    this.vIW = ((MMNeat7extView)this.vJU.findViewById(d.e.title_tv));
+    this.vNC = ((TextView)this.vJU.findViewById(d.e.play_time_tv));
+    this.vMs = ((ImageView)this.vJU.findViewById(d.e.big_play_icon));
+    this.vJy = ((MMNeat7extView)this.vJU.findViewById(d.e.biz_time_line_item_voice_digest));
+    paramView = e.vYK;
+    if (e.dhV())
     {
-      paramView = com.tencent.mm.plugin.brandservice.ui.b.d.sTw;
-      com.tencent.mm.plugin.brandservice.ui.b.d.e(this.sDe);
+      paramView = e.vYK;
+      e.e(this.vIW);
     }
-    paramView = com.tencent.mm.plugin.brandservice.ui.b.d.sTw;
-    if (com.tencent.mm.plugin.brandservice.ui.b.d.cEs())
-    {
-      paramView = com.tencent.mm.plugin.brandservice.ui.b.d.sTw;
-      com.tencent.mm.plugin.brandservice.ui.b.d.e(this.sDi);
-    }
-    AppMethodBeat.o(6057);
+    AppMethodBeat.o(6066);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.item.at
  * JD-Core Version:    0.7.0.1
  */

@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
+import org.xwalk.core.Log;
 
 public class XWalkResource
   extends Resources
@@ -38,15 +39,15 @@ public class XWalkResource
   
   public void updateConfiguration(Configuration paramConfiguration, DisplayMetrics paramDisplayMetrics)
   {
-    AppMethodBeat.i(204857);
-    new StringBuilder("[updateConfiguration] locale:").append(paramConfiguration.locale);
+    AppMethodBeat.i(187698);
+    Log.i("XWalkResource", "updateConfiguration, locale:" + paramConfiguration.locale);
     super.updateConfiguration(paramConfiguration, paramDisplayMetrics);
-    AppMethodBeat.o(204857);
+    AppMethodBeat.o(187698);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.resource.XWalkResource
  * JD-Core Version:    0.7.0.1
  */

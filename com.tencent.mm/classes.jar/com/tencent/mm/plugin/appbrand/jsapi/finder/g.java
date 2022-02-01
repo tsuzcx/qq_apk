@@ -1,153 +1,124 @@
 package com.tencent.mm.plugin.appbrand.jsapi.finder;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Point;
-import com.tencent.luggage.k.f;
-import com.tencent.luggage.k.f.b;
+import com.tencent.luggage.l.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.i;
-import com.tencent.mm.plugin.appbrand.appstorage.m;
-import com.tencent.mm.plugin.appbrand.appstorage.r;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.finder.ui.FinderAlbumUI;
-import com.tencent.mm.plugin.finder.utils.aj;
-import com.tencent.mm.plugin.sight.base.b;
-import com.tencent.mm.protocal.protobuf.FinderJsApiMediaObj;
-import com.tencent.mm.protocal.protobuf.FinderJsApiMediaThumbInfo;
+import com.tencent.mm.message.k.b;
+import com.tencent.mm.message.k.c;
+import com.tencent.mm.plugin.appbrand.ba.i;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.q;
-import com.tencent.mm.vfs.u;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.ui.base.w;
 import org.json.JSONObject;
 
 public final class g
-  extends c
+  extends com.tencent.mm.plugin.appbrand.jsapi.c
 {
   public static final int CTRL_INDEX = -2;
-  public static final String NAME = "openFinderPostPicker";
+  public static final String NAME = "shareFinderEndorsementToFriend";
+  private static com.tencent.mm.cp.c rYv;
+  private w rYw = null;
   
-  public final void a(final e parame, JSONObject paramJSONObject, final int paramInt)
+  static
   {
-    AppMethodBeat.i(163961);
-    if (!(parame.getContext() instanceof Activity))
+    AppMethodBeat.i(326613);
+    com.tencent.mm.cp.c local1 = new com.tencent.mm.cp.c() {};
+    rYv = local1;
+    k.c.a(local1);
+    AppMethodBeat.o(326613);
+  }
+  
+  public final void a(final f paramf, JSONObject paramJSONObject, final int paramInt)
+  {
+    AppMethodBeat.i(163989);
+    if ((!(paramf.getContext() instanceof Activity)) || (paramJSONObject == null))
     {
-      parame.j(paramInt, "fail");
-      AppMethodBeat.o(163961);
+      paramf.callback(paramInt, "fail");
+      AppMethodBeat.o(163989);
       return;
     }
-    paramJSONObject = new Intent(parame.getContext(), FinderAlbumUI.class);
-    paramJSONObject.addFlags(67108864);
-    paramJSONObject.putExtra("key_can_select_video_and_pic", true);
-    paramJSONObject.putExtra("is_hide_album_footer", true);
-    paramJSONObject.putExtra("show_header_view", false);
-    paramJSONObject.putExtra("max_select_count", 9);
-    paramJSONObject.putExtra("query_source_type", 25);
-    paramJSONObject.putExtra("query_media_type", 3);
-    paramJSONObject.putExtra("fromAppBrand", true);
-    f.aI(parame.getContext()).a(paramJSONObject, new f.b()
+    Object localObject = paramJSONObject.optString("title", "");
+    String str1 = paramJSONObject.optString("desc", "");
+    String str2 = paramJSONObject.optString("relativePath", "");
+    int i = paramJSONObject.optInt("scene", 0);
+    paramJSONObject.optString("sceneNote", "");
+    paramJSONObject = paramJSONObject.optString("appid", "");
+    k.b localb = new k.b();
+    com.tencent.mm.plugin.finder.api.e locale = new com.tencent.mm.plugin.finder.api.e();
+    locale.title = ((String)localObject);
+    locale.desc = str1;
+    locale.Axg = str2;
+    locale.appid = paramJSONObject;
+    locale.scene = i;
+    localb.type = 81;
+    localb.url = MMApplicationContext.getContext().getString(ba.i.low_version_upgrade_url);
+    localb.title = ((String)localObject);
+    localb.desc = str1;
+    localb.a(locale);
+    paramJSONObject = k.b.a(localb, null, null);
+    Log.i("MicroMsg.Finder.JsApiShareFinderEndorsementToFriend", "msgContent %s", new Object[] { paramJSONObject });
+    localObject = new Intent();
+    ((Intent)localObject).setClassName(paramf.getContext(), MMApplicationContext.getSourcePackageName() + ".ui.transmit.MsgRetransmitUI");
+    ((Intent)localObject).putExtra("Retr_Msg_Type", 19);
+    ((Intent)localObject).putExtra("Retr_Msg_content", paramJSONObject);
+    ((Intent)localObject).putExtra("Multi_Retr", false);
+    ((Intent)localObject).putExtra("Retr_go_to_chattingUI", false);
+    ((Intent)localObject).putExtra("Retr_show_success_tips", true);
+    com.tencent.luggage.l.e.bt(paramf.getContext()).a((Intent)localObject, new e.b()
     {
-      public final void a(int paramAnonymousInt, Intent paramAnonymousIntent)
+      public final void onResult(int paramAnonymousInt, Intent paramAnonymousIntent)
       {
-        AppMethodBeat.i(163960);
-        JSONArray localJSONArray = new JSONArray();
-        if (paramAnonymousInt == -1)
+        AppMethodBeat.i(326612);
+        for (;;)
         {
-          paramAnonymousInt = paramAnonymousIntent.getIntExtra("postType", 0);
-          ArrayList localArrayList1 = paramAnonymousIntent.getStringArrayListExtra("postMediaList");
-          paramAnonymousIntent = paramAnonymousIntent.getStringArrayListExtra("postThumbList");
-          Log.i("MicroMsg.Finder.JsApiOpenFinderPostPicker", "receive mediaType: %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
-          Log.i("MicroMsg.Finder.JsApiOpenFinderPostPicker", "receive mediaPath: %s", new Object[] { localArrayList1 });
-          Log.i("MicroMsg.Finder.JsApiOpenFinderPostPicker", "receive thumbPath: %s", new Object[] { paramAnonymousIntent });
-          ArrayList localArrayList2 = new ArrayList();
-          paramAnonymousInt = 0;
-          if (paramAnonymousInt < localArrayList1.size())
+          try
           {
-            Object localObject1 = new i();
-            FinderJsApiMediaObj localFinderJsApiMediaObj = new FinderJsApiMediaObj();
-            Object localObject2 = parame.getFileSystem().a(new q((String)localArrayList1.get(paramAnonymousInt)), null, false, (i)localObject1);
-            m localm;
-            if (localObject2 == m.nMR)
-            {
-              localFinderJsApiMediaObj.mediaPath = ((String)((i)localObject1).value);
-              if (localFinderJsApiMediaObj.mediaType == 2)
-              {
-                localFinderJsApiMediaObj.thumbInfo = new FinderJsApiMediaThumbInfo();
-                localObject2 = (String)paramAnonymousIntent.get(paramAnonymousInt);
-                localm = parame.getFileSystem().a(new q((String)localObject2), null, false, (i)localObject1);
-                if (localm == m.nMR)
-                {
-                  localFinderJsApiMediaObj.thumbInfo.thumbPath = ((String)((i)localObject1).value);
-                  localObject1 = aj.AGc;
-                  localObject1 = aj.aFH((String)localObject2);
-                  localFinderJsApiMediaObj.thumbInfo.thumbWidth = ((Point)localObject1).x;
-                  localFinderJsApiMediaObj.thumbInfo.thumbHeight = ((Point)localObject1).y;
-                  localArrayList2.add(localFinderJsApiMediaObj);
-                }
-              }
-            }
-            for (;;)
-            {
-              paramAnonymousInt += 1;
-              break;
-              Log.i("MicroMsg.Finder.JsApiOpenFinderPostPicker", "create thumb media file error %s %s %b %d", new Object[] { localm.name(), localObject2, Boolean.valueOf(u.agG((String)localObject2)), Long.valueOf(u.bBQ((String)localObject2)) });
+            paramAnonymousIntent = new JSONObject();
+            if (paramAnonymousInt != -1) {
               continue;
-              if (localFinderJsApiMediaObj.mediaType == 4)
-              {
-                localFinderJsApiMediaObj.thumbInfo = new FinderJsApiMediaThumbInfo();
-                localObject2 = (String)paramAnonymousIntent.get(paramAnonymousInt);
-                localm = parame.getFileSystem().a(new q((String)localObject2), null, false, (i)localObject1);
-                if (localm == m.nMR)
-                {
-                  localFinderJsApiMediaObj.thumbInfo.thumbPath = ((String)((i)localObject1).value);
-                  localObject1 = aj.AGc;
-                  localObject1 = aj.aFG((String)localObject2);
-                  if (localObject1 != null)
-                  {
-                    localFinderJsApiMediaObj.thumbInfo.thumbWidth = ((b)localObject1).width;
-                    localFinderJsApiMediaObj.thumbInfo.thumbHeight = ((b)localObject1).height;
-                  }
-                  localArrayList2.add(localFinderJsApiMediaObj);
-                }
-                else
-                {
-                  Log.i("MicroMsg.Finder.JsApiOpenFinderPostPicker", "create thumb media file error %s %s %b %d", new Object[] { localm.name(), localObject2, Boolean.valueOf(u.agG((String)localObject2)), Long.valueOf(u.bBQ((String)localObject2)) });
-                  continue;
-                  Log.i("MicroMsg.Finder.JsApiOpenFinderPostPicker", "create media file error %s %s", new Object[] { ((m)localObject2).name(), localArrayList1.get(paramAnonymousInt) });
-                }
-              }
             }
+            paramAnonymousIntent.put("isSuccess", true);
+            paramAnonymousIntent.put("isCancel", false);
+            paramf.callback(paramInt, a.a("", 0, paramAnonymousIntent));
           }
-          if (localArrayList2.size() > 0) {
-            try
-            {
-              a.b(localArrayList2, localJSONArray);
-              paramAnonymousIntent = a.a("", 0, localJSONArray);
-              Log.i("MicroMsg.Finder.JsApiOpenFinderPostPicker", "returnRetMsg %s", new Object[] { paramAnonymousIntent });
-              parame.j(paramInt, paramAnonymousIntent);
-              AppMethodBeat.o(163960);
-              return;
-            }
-            catch (Exception paramAnonymousIntent)
-            {
-              Log.printErrStackTrace("MicroMsg.Finder.JsApiOpenFinderPostPicker", paramAnonymousIntent, "JsApiOpenFinderImagePickerController", new Object[0]);
-              parame.j(paramInt, a.a(paramAnonymousIntent.getMessage(), -1, localJSONArray));
-              AppMethodBeat.o(163960);
-              return;
-            }
+          catch (Exception paramAnonymousIntent)
+          {
+            Log.i("MicroMsg.Finder.JsApiShareFinderEndorsementToFriend", paramAnonymousIntent.getMessage());
+            return;
+            paramAnonymousIntent.put("isSuccess", false);
+            paramAnonymousIntent.put("isCancel", false);
+            paramf.callback(paramInt, a.a("", paramAnonymousInt, paramAnonymousIntent));
+            continue;
           }
-          parame.j(paramInt, a.a("not select media", -1, localJSONArray));
-          AppMethodBeat.o(163960);
+          finally
+          {
+            if ((g.a(g.this) == null) || (!g.a(g.this).isShowing())) {
+              continue;
+            }
+            g.a(g.this).dismiss();
+            AppMethodBeat.o(326612);
+          }
+          if ((g.a(g.this) == null) || (!g.a(g.this).isShowing())) {
+            break label265;
+          }
+          g.a(g.this).dismiss();
+          AppMethodBeat.o(326612);
           return;
+          if (paramAnonymousInt != 0) {
+            continue;
+          }
+          paramAnonymousIntent.put("isSuccess", false);
+          paramAnonymousIntent.put("isCancel", true);
+          paramf.callback(paramInt, a.a("", 1, paramAnonymousIntent));
         }
-        parame.j(paramInt, a.a("cancel select media", -1, localJSONArray));
-        AppMethodBeat.o(163960);
+        label265:
+        AppMethodBeat.o(326612);
       }
     });
-    AppMethodBeat.o(163961);
+    AppMethodBeat.o(163989);
   }
 }
 

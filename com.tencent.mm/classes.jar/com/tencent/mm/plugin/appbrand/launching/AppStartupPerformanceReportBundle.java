@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.ps;
-import com.tencent.mm.plugin.appbrand.jsapi.l;
+import com.tencent.mm.autogen.mmdata.rpt.tl;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.plugin.appbrand.report.model.kv_14609;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
@@ -13,26 +13,26 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class AppStartupPerformanceReportBundle
-  implements Parcelable, l
+  implements Parcelable, m
 {
   public static final Parcelable.Creator<AppStartupPerformanceReportBundle> CREATOR;
-  public final String cBH;
-  public long pSY;
-  public long pTA;
-  public int pTB;
-  public boolean pTC;
-  public boolean pTD;
-  public boolean pTE;
-  public final List<ps> pTq;
-  public final List<kv_14609> pTr;
-  public long pTs;
-  public long pTt;
-  public long pTu;
-  public long pTv;
-  public long pTw;
-  public long pTx;
-  public long pTy;
-  public long pTz;
+  public final String eup;
+  public long sXY;
+  public long sYA;
+  public long sYB;
+  public long sYC;
+  public long sYD;
+  public long sYE;
+  public int sYF;
+  public boolean sYG;
+  public boolean sYH;
+  public boolean sYI;
+  public final List<tl> sYu;
+  public final List<kv_14609> sYv;
+  public long sYw;
+  public long sYx;
+  public long sYy;
+  public long sYz;
   
   static
   {
@@ -44,35 +44,35 @@ public class AppStartupPerformanceReportBundle
   private AppStartupPerformanceReportBundle(Parcel paramParcel)
   {
     AppMethodBeat.i(47156);
-    this.cBH = paramParcel.readString();
-    this.pTq = new LinkedList();
+    this.eup = paramParcel.readString();
+    this.sYu = new LinkedList();
     int j = paramParcel.readInt();
     if (j > 0)
     {
       int i = 0;
       while (i < j)
       {
-        this.pTq.add(new ps(paramParcel.readString()));
+        this.sYu.add(new tl(paramParcel.readString()));
         i += 1;
       }
     }
-    this.pTr = paramParcel.createTypedArrayList(kv_14609.CREATOR);
+    this.sYv = paramParcel.createTypedArrayList(kv_14609.CREATOR);
     if (paramParcel.readByte() > 0)
     {
       bool1 = true;
-      this.pTC = bool1;
-      this.pSY = paramParcel.readLong();
-      this.pTs = paramParcel.readLong();
-      this.pTt = paramParcel.readLong();
-      this.pTu = paramParcel.readLong();
-      this.pTv = paramParcel.readLong();
-      this.pTw = paramParcel.readLong();
+      this.sYG = bool1;
+      this.sXY = paramParcel.readLong();
+      this.sYw = paramParcel.readLong();
+      this.sYx = paramParcel.readLong();
+      this.sYy = paramParcel.readLong();
+      this.sYz = paramParcel.readLong();
+      this.sYA = paramParcel.readLong();
       if (paramParcel.readByte() <= 0) {
         break label219;
       }
       bool1 = true;
       label160:
-      this.pTD = bool1;
+      this.sYH = bool1;
       if (paramParcel.readByte() <= 0) {
         break label225;
       }
@@ -81,10 +81,10 @@ public class AppStartupPerformanceReportBundle
     label225:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.pTE = bool1;
-      this.pTx = paramParcel.readLong();
-      this.pTy = paramParcel.readLong();
-      this.pTB = paramParcel.readInt();
+      this.sYI = bool1;
+      this.sYB = paramParcel.readLong();
+      this.sYC = paramParcel.readLong();
+      this.sYF = paramParcel.readInt();
       AppMethodBeat.o(47156);
       return;
       bool1 = false;
@@ -97,25 +97,25 @@ public class AppStartupPerformanceReportBundle
   AppStartupPerformanceReportBundle(String paramString)
   {
     AppMethodBeat.i(47155);
-    this.cBH = paramString;
-    this.pTq = new LinkedList();
-    this.pTr = new LinkedList();
+    this.eup = paramString;
+    this.sYu = new LinkedList();
+    this.sYv = new LinkedList();
     AppMethodBeat.o(47155);
   }
   
-  public final boolean bZI()
+  public final boolean czT()
   {
     AppMethodBeat.i(47153);
-    if (this.pTr == null)
+    if (this.sYv == null)
     {
       AppMethodBeat.o(47153);
       return false;
     }
-    Iterator localIterator = this.pTr.iterator();
+    Iterator localIterator = this.sYv.iterator();
     while (localIterator.hasNext())
     {
       kv_14609 localkv_14609 = (kv_14609)localIterator.next();
-      if ((localkv_14609 != null) && (localkv_14609.bZI()))
+      if ((localkv_14609 != null) && (localkv_14609.czT()))
       {
         AppMethodBeat.o(47153);
         return true;
@@ -134,30 +134,30 @@ public class AppStartupPerformanceReportBundle
   {
     int i = 1;
     AppMethodBeat.i(47154);
-    paramParcel.writeString(this.cBH);
-    if (Util.isNullOrNil(this.pTq))
+    paramParcel.writeString(this.eup);
+    if (Util.isNullOrNil(this.sYu))
     {
       paramParcel.writeInt(-1);
-      paramParcel.writeTypedList(this.pTr);
-      if (!this.pTC) {
+      paramParcel.writeTypedList(this.sYv);
+      if (!this.sYG) {
         break label215;
       }
       paramInt = 1;
       label47:
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeLong(this.pSY);
-      paramParcel.writeLong(this.pTs);
-      paramParcel.writeLong(this.pTt);
-      paramParcel.writeLong(this.pTu);
-      paramParcel.writeLong(this.pTv);
-      paramParcel.writeLong(this.pTw);
-      if (!this.pTD) {
+      paramParcel.writeLong(this.sXY);
+      paramParcel.writeLong(this.sYw);
+      paramParcel.writeLong(this.sYx);
+      paramParcel.writeLong(this.sYy);
+      paramParcel.writeLong(this.sYz);
+      paramParcel.writeLong(this.sYA);
+      if (!this.sYH) {
         break label220;
       }
       paramInt = 1;
       label110:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.pTE) {
+      if (!this.sYI) {
         break label225;
       }
     }
@@ -167,15 +167,15 @@ public class AppStartupPerformanceReportBundle
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeLong(this.pTx);
-      paramParcel.writeLong(this.pTy);
-      paramParcel.writeInt(this.pTB);
+      paramParcel.writeLong(this.sYB);
+      paramParcel.writeLong(this.sYC);
+      paramParcel.writeInt(this.sYF);
       AppMethodBeat.o(47154);
       return;
-      paramParcel.writeInt(this.pTq.size());
-      Iterator localIterator = this.pTq.iterator();
+      paramParcel.writeInt(this.sYu.size());
+      Iterator localIterator = this.sYu.iterator();
       while (localIterator.hasNext()) {
-        paramParcel.writeString(((ps)localIterator.next()).agH());
+        paramParcel.writeString(((tl)localIterator.next()).aIE());
       }
       break;
       paramInt = 0;
@@ -187,7 +187,7 @@ public class AppStartupPerformanceReportBundle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.AppStartupPerformanceReportBundle
  * JD-Core Version:    0.7.0.1
  */

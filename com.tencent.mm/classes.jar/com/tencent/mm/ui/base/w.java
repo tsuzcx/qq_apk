@@ -1,399 +1,195 @@
 package com.tencent.mm.ui.base;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.util.DisplayMetrics;
+import android.content.DialogInterface.OnCancelListener;
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.Window;
-import android.widget.ImageButton;
-import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.a.d;
 import com.tencent.mm.ah.a.e;
 import com.tencent.mm.ah.a.g;
 import com.tencent.mm.ah.a.h;
-import com.tencent.mm.ah.a.j;
-import com.tencent.mm.ah.a.k;
-import com.tencent.mm.compatible.util.g;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
-import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import com.tencent.mm.sdk.platformtools.MTimerHandler;
-import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.widget.imageview.WeImageView;
-import com.tencent.mm.ui.widget.snackbar.b;
+import com.tencent.mm.ah.a.l;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.af;
 
-public final class w
-  extends Toast
+public class w
+  extends x
 {
-  private final TextView DVe;
-  private View Wnb;
-  private final Context context;
-  public long duration;
-  private int level;
-  public final MTimerHandler timer;
-  private int tzm;
+  private TextView acro;
+  private View mContentView;
+  private int style;
+  public ProgressBar uyz;
   
-  public w(Context paramContext)
+  protected w(Context paramContext, int paramInt1, int paramInt2)
   {
-    super(paramContext);
-    AppMethodBeat.i(142239);
-    this.timer = new MTimerHandler(new MTimerHandler.CallBack()
+    super(paramContext, paramInt1);
+    AppMethodBeat.i(142066);
+    this.style = paramInt2;
+    switch (this.style)
     {
-      public final boolean onTimerExpired()
+    default: 
+      paramInt1 = a.h.mm_progress_dialog;
+    }
+    for (;;)
+    {
+      this.mContentView = af.mU(getContext()).inflate(paramInt1, null);
+      this.acro = ((TextView)this.mContentView.findViewById(a.g.mm_progress_dialog_msg));
+      this.acro.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
       {
-        AppMethodBeat.i(142230);
-        if (w.a(w.this) == -1L)
+        public final void onGlobalLayout()
         {
-          w.this.show();
-          AppMethodBeat.o(142230);
-          return true;
+          AppMethodBeat.i(251420);
+          if (w.f(w.this).getLineCount() > 1) {
+            w.f(w.this).setTextSize(0, a.br(w.this.getContext(), a.e.DescTextSize));
+          }
+          w.f(w.this).getViewTreeObserver().removeOnGlobalLayoutListener(this);
+          AppMethodBeat.o(251420);
         }
-        w.b(w.this);
-        if (w.c(w.this) >= 0)
-        {
-          w.this.show();
-          AppMethodBeat.o(142230);
-          return true;
-        }
-        w.this.cancel();
-        AppMethodBeat.o(142230);
-        return false;
-      }
-    }, true);
-    this.context = paramContext;
-    this.level = 1;
-    this.duration = 2000L;
-    this.tzm = ((int)(this.duration / 70L) + 1);
-    this.Wnb = View.inflate(paramContext, a.h.toast_view, null);
-    setView(this.Wnb);
-    setGravity(55, 0, BackwardSupportUtil.BitmapFactory.fromDPToPix(paramContext, 40.0F));
-    setDuration(0);
-    this.DVe = ((TextView)this.Wnb.findViewById(a.g.toast_view_text));
-    switch (this.level)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(142239);
+      });
+      this.uyz = ((ProgressBar)this.mContentView.findViewById(a.g.mm_progress_dialog_icon));
+      setCanceledOnTouchOutside(true);
+      AppMethodBeat.o(142066);
       return;
-      this.DVe.setTextColor(-1);
-      AppMethodBeat.o(142239);
-      return;
-      this.DVe.setTextColor(this.context.getResources().getColor(a.d.toasterro));
+      paramInt1 = a.h.mm_progress_dialog;
+      continue;
+      paramInt1 = a.h.mm_progress_dialog_with_bg;
+      continue;
+      paramInt1 = a.h.mm_progress_dialog;
+      continue;
+      paramInt1 = a.h.mm_progress_dialog;
     }
   }
   
-  public static r a(Activity paramActivity, String paramString, long paramLong)
+  public static w a(Context paramContext, CharSequence paramCharSequence, boolean paramBoolean)
   {
-    AppMethodBeat.i(142242);
-    Object localObject = View.inflate(paramActivity, a.h.toast_view, null);
-    ((TextView)((View)localObject).findViewById(a.g.toast_view_text)).setText(paramString);
-    paramString = new r((View)localObject);
-    paramString.setWidth(-1);
-    paramString.setHeight(-2);
-    localObject = new Rect();
-    paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-    int i = ((Rect)localObject).top;
-    int j = ew(paramActivity);
-    paramString.showAtLocation(paramActivity.getWindow().getDecorView(), 48, 0, i + j);
-    new w.10(paramString).sendEmptyMessageDelayed(0, paramLong);
-    AppMethodBeat.o(142242);
-    return paramString;
+    AppMethodBeat.i(142070);
+    paramContext = a(paramContext, paramCharSequence, paramBoolean, 0, -1, null);
+    AppMethodBeat.o(142070);
+    return paramContext;
   }
   
-  public static void a(Context paramContext, String paramString, w.b paramb)
+  private static w a(Context paramContext, CharSequence paramCharSequence, boolean paramBoolean, int paramInt1, int paramInt2, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    AppMethodBeat.i(215520);
-    Toast localToast = Toast.makeText(paramContext, "", 0);
-    paramContext = View.inflate(paramContext, a.h.center_toast, null);
-    ((WeImageView)paramContext.findViewById(a.g.toast_img)).setImageResource(a.j.icons_filled_error);
-    ((TextView)paramContext.findViewById(a.g.toast_text)).setText(paramString);
-    paramb.eu(paramContext);
-    localToast.setGravity(17, 0, 0);
-    localToast.setView(paramContext);
-    localToast.show();
-    AppMethodBeat.o(215520);
-  }
-  
-  public static int at(Context paramContext)
-  {
-    AppMethodBeat.i(293215);
-    int i = ar.kJ(paramContext);
-    AppMethodBeat.o(293215);
-    return i;
-  }
-  
-  public static void cP(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(215510);
-    Toast localToast = Toast.makeText(paramContext, "", 0);
-    paramContext = View.inflate(paramContext, a.h.text_toast, null);
-    ((TextView)paramContext.findViewById(a.g.toast_text)).setText(paramString);
-    localToast.setGravity(17, 0, 0);
-    localToast.setView(paramContext);
-    localToast.show();
-    AppMethodBeat.o(215510);
-  }
-  
-  public static void cQ(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(215512);
-    Toast localToast = Toast.makeText(paramContext, "", 1);
-    paramContext = View.inflate(paramContext, a.h.text_toast, null);
-    ((TextView)paramContext.findViewById(a.g.toast_text)).setText(paramString);
-    localToast.setGravity(17, 0, 0);
-    localToast.setView(paramContext);
-    localToast.show();
-    AppMethodBeat.o(215512);
-  }
-  
-  public static void cR(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(142246);
-    Toast localToast = Toast.makeText(paramContext, "", 0);
-    View localView = View.inflate(paramContext, a.h.center_toast, null);
-    TextView localTextView = (TextView)localView.findViewById(a.g.toast_text);
-    localTextView.setText(paramString);
-    localTextView.getViewTreeObserver().addOnGlobalLayoutListener(new w.5(localTextView, paramContext));
-    localToast.setGravity(17, 0, 0);
-    localToast.setView(localView);
-    localToast.show();
-    AppMethodBeat.o(142246);
-  }
-  
-  public static void cS(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(142247);
-    Toast localToast = Toast.makeText(paramContext, "", 0);
-    View localView = View.inflate(paramContext, a.h.center_toast, null);
-    ((WeImageView)localView.findViewById(a.g.toast_img)).setImageResource(a.j.icons_filled_info);
-    TextView localTextView = (TextView)localView.findViewById(a.g.toast_text);
-    localTextView.setText(paramString);
-    localTextView.getViewTreeObserver().addOnGlobalLayoutListener(new w.8(localTextView, paramContext));
-    localToast.setGravity(17, 0, 0);
-    localToast.setView(localView);
-    localToast.show();
-    AppMethodBeat.o(142247);
-  }
-  
-  public static Toast d(Context paramContext, CharSequence paramCharSequence)
-  {
-    AppMethodBeat.i(215518);
-    Toast localToast = Toast.makeText(paramContext, "", 0);
-    View localView = View.inflate(paramContext, a.h.center_toast, null);
-    ((WeImageView)localView.findViewById(a.g.toast_img)).setImageResource(a.j.icons_filled_info);
-    TextView localTextView = (TextView)localView.findViewById(a.g.toast_text);
-    localTextView.setText(paramCharSequence);
-    localTextView.getViewTreeObserver().addOnGlobalLayoutListener(new w.9(localTextView, paramContext));
-    localToast.setGravity(17, 0, 0);
-    localToast.setView(localView);
-    localToast.show();
-    AppMethodBeat.o(215518);
-    return localToast;
-  }
-  
-  private static int ew(Context paramContext)
-  {
-    AppMethodBeat.i(142243);
-    int i;
-    if (((paramContext instanceof AppCompatActivity)) && (((AppCompatActivity)paramContext).getSupportActionBar() != null)) {
-      i = ((AppCompatActivity)paramContext).getSupportActionBar().getHeight();
-    }
-    while (i == 0)
-    {
-      i = paramContext.getResources().getDimensionPixelSize(a.e.DefaultActionbarHeightPort);
-      AppMethodBeat.o(142243);
-      return i;
-      DisplayMetrics localDisplayMetrics = paramContext.getResources().getDisplayMetrics();
-      if (localDisplayMetrics.widthPixels > localDisplayMetrics.heightPixels) {
-        i = paramContext.getResources().getDimensionPixelSize(a.e.DefaultActionbarHeightLand);
-      } else {
-        i = paramContext.getResources().getDimensionPixelSize(a.e.DefaultActionbarHeightPort);
-      }
-    }
-    AppMethodBeat.o(142243);
-    return i;
-  }
-  
-  public static void g(Context paramContext, View paramView)
-  {
-    AppMethodBeat.i(164156);
-    if (((paramContext instanceof Activity)) && (androidx.core.content.a.checkSelfPermission((Activity)paramContext, "android.permission.WRITE_EXTERNAL_STORAGE") != 0))
-    {
-      b.a(paramContext, paramView, paramContext.getString(a.k.permission_storage_request_reason_msg), paramContext.getString(a.k.app_set), new w.4(paramContext));
-      AppMethodBeat.o(164156);
-      return;
-    }
-    ld(paramContext);
-    AppMethodBeat.o(164156);
-  }
-  
-  public static Toast l(Context paramContext, CharSequence paramCharSequence, int paramInt)
-  {
-    AppMethodBeat.i(215516);
-    Toast localToast = Toast.makeText(paramContext, "", 0);
-    View localView = View.inflate(paramContext, a.h.center_toast, null);
-    Object localObject = (WeImageView)localView.findViewById(a.g.toast_img);
-    if (paramInt != 0) {
-      ((WeImageView)localObject).setImageResource(paramInt);
-    }
-    for (;;)
-    {
-      localObject = (TextView)localView.findViewById(a.g.toast_text);
-      ((TextView)localObject).setText(paramCharSequence);
-      ((TextView)localObject).getViewTreeObserver().addOnGlobalLayoutListener(new w.7((TextView)localObject, paramContext));
-      localToast.setGravity(17, 0, 0);
-      localToast.setView(localView);
-      localToast.show();
-      AppMethodBeat.o(215516);
-      return localToast;
-      ((WeImageView)localObject).setVisibility(8);
-    }
-  }
-  
-  public static void ld(Context paramContext)
-  {
-    AppMethodBeat.i(142248);
-    if (g.avJ().equals("mounted_ro"))
-    {
-      a.bi(paramContext, 3);
-      AppMethodBeat.o(142248);
-      return;
-    }
-    a.bi(paramContext, 1);
-    AppMethodBeat.o(142248);
-  }
-  
-  public static void le(Context paramContext)
-  {
-    AppMethodBeat.i(142249);
-    a.bi(paramContext, 2);
-    AppMethodBeat.o(142249);
-  }
-  
-  public static r q(Activity paramActivity, String paramString)
-  {
-    AppMethodBeat.i(215508);
-    View localView = View.inflate(paramActivity, a.h.listen_model_notify, null);
-    Object localObject = (TextView)localView.findViewById(a.g.listen_model_notify_text);
-    ((TextView)localObject).setText(paramString);
-    ((TextView)localObject).setOnClickListener(null);
-    ((ImageView)localView.findViewById(a.g.listen_model_notify_imageview)).setVisibility(8);
-    paramString = new r(localView);
-    paramString.setWidth(-1);
-    paramString.setHeight(-2);
-    localObject = new Rect();
-    paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-    int j = ((Rect)localObject).top;
-    int k = ew(paramActivity);
-    int i = j;
-    if (j == 0) {
-      i = ar.kJ(paramActivity);
-    }
-    MMHandlerThread.postToMainThread(new w.11(paramString, paramActivity, i + k));
-    MMHandlerThread.postToMainThreadDelayed(new w.2(paramString), 2000L);
-    paramActivity = (ImageButton)localView.findViewById(a.g.listen_model_notify_btn);
-    paramActivity.setVisibility(8);
-    paramActivity.setOnClickListener(new w.3(paramString));
-    AppMethodBeat.o(215508);
-    return paramString;
-  }
-  
-  public static void w(Context paramContext, String paramString, int paramInt)
-  {
-    AppMethodBeat.i(215514);
-    Toast localToast = Toast.makeText(paramContext, "", 0);
-    View localView = View.inflate(paramContext, a.h.center_toast, null);
-    Object localObject = (WeImageView)localView.findViewById(a.g.toast_img);
-    if (paramInt != 0) {
-      ((WeImageView)localObject).setImageResource(paramInt);
-    }
-    for (;;)
-    {
-      localObject = (TextView)localView.findViewById(a.g.toast_text);
-      ((TextView)localObject).setText(paramString);
-      ((TextView)localObject).getViewTreeObserver().addOnGlobalLayoutListener(new w.6((TextView)localObject, paramContext));
-      localToast.setGravity(17, 0, 0);
-      localToast.setView(localView);
-      localToast.show();
-      AppMethodBeat.o(215514);
-      return;
-      ((WeImageView)localObject).setVisibility(8);
-    }
-  }
-  
-  public final void hKh()
-  {
-    AppMethodBeat.i(215500);
-    cancel();
-    this.timer.stopTimer();
-    this.tzm = ((int)(this.duration / 70L) + 1);
-    this.timer.startTimer(70L);
-    AppMethodBeat.o(215500);
-  }
-  
-  public final void setText(int paramInt)
-  {
-    AppMethodBeat.i(142241);
-    this.DVe.setText(com.tencent.mm.ui.e.a.ll(this.context).getString(paramInt));
-    AppMethodBeat.o(142241);
-  }
-  
-  public final void setText(CharSequence paramCharSequence)
-  {
-    AppMethodBeat.i(142240);
-    this.DVe.setText(paramCharSequence);
-    AppMethodBeat.o(142240);
-  }
-  
-  static final class a
-  {
-    private static Toast BRG = null;
-    public static int lastType = 0;
-    
-    public static void bi(Context paramContext, int paramInt)
-    {
-      AppMethodBeat.i(142238);
-      paramContext = paramContext.getApplicationContext();
-      if (lastType != paramInt)
+    AppMethodBeat.i(142071);
+    int i = paramInt2;
+    if (paramInt2 <= 0) {
+      switch (paramInt1)
       {
-        BRG = null;
-        lastType = paramInt;
+      default: 
+        i = a.l.mmtipsdialog;
       }
-      if (BRG == null) {
-        BRG = Toast.makeText(paramContext, "", 1);
-      }
-      paramContext = View.inflate(paramContext, a.h.sdcard_eject_toast, null);
-      if (paramInt == 1) {
-        ((TextView)paramContext.findViewById(a.g.sdcard_toast_text)).setText(a.k.media_ejected);
-      }
-      for (;;)
-      {
-        BRG.setView(paramContext);
-        BRG.show();
-        AppMethodBeat.o(142238);
-        return;
-        if (paramInt == 3) {
-          ((TextView)paramContext.findViewById(a.g.sdcard_toast_text)).setText(a.k.media_ejected_readonly);
-        } else {
-          ((TextView)paramContext.findViewById(a.g.sdcard_toast_text)).setText(a.k.media_full);
-        }
-      }
+    }
+    for (;;)
+    {
+      paramContext = new w(paramContext, i, paramInt1);
+      paramContext.setMessage(paramCharSequence);
+      paramContext.setCancelable(paramBoolean);
+      paramContext.setOnCancelListener(paramOnCancelListener);
+      paramContext.setCanceledOnTouchOutside(false);
+      AppMethodBeat.o(142071);
+      return paramContext;
+      i = a.l.mmalertdialog;
+      continue;
+      i = a.l.mmalertdialog;
+      continue;
+      i = a.l.mmalertdialog;
+      continue;
+      i = a.l.mmtipsdialog;
+    }
+  }
+  
+  public static w a(Context paramContext, CharSequence paramCharSequence, boolean paramBoolean, int paramInt, DialogInterface.OnCancelListener paramOnCancelListener)
+  {
+    AppMethodBeat.i(142072);
+    paramContext = b(paramContext, paramCharSequence, paramBoolean, paramInt, -1, paramOnCancelListener);
+    AppMethodBeat.o(142072);
+    return paramContext;
+  }
+  
+  public static w b(Context paramContext, CharSequence paramCharSequence, boolean paramBoolean, int paramInt1, int paramInt2, DialogInterface.OnCancelListener paramOnCancelListener)
+  {
+    AppMethodBeat.i(142073);
+    paramContext = a(paramContext, paramCharSequence, paramBoolean, paramInt1, paramInt2, paramOnCancelListener);
+    paramContext.show();
+    AppMethodBeat.o(142073);
+    return paramContext;
+  }
+  
+  public void dismiss()
+  {
+    AppMethodBeat.i(142075);
+    try
+    {
+      super.dismiss();
+      AppMethodBeat.o(142075);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.MMProgressDialog", "dismiss exception, e = " + localException.getMessage());
+      AppMethodBeat.o(142075);
+    }
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    AppMethodBeat.i(142067);
+    super.onCreate(paramBundle);
+    setContentView(this.mContentView, new LinearLayout.LayoutParams(-1, -1));
+    paramBundle = getWindow().getAttributes();
+    paramBundle.width = -2;
+    paramBundle.height = -2;
+    if (this.style == 2)
+    {
+      getWindow().addFlags(2);
+      paramBundle.dimAmount = 0.65F;
+    }
+    onWindowAttributesChanged(paramBundle);
+    AppMethodBeat.o(142067);
+  }
+  
+  public void setCancelable(boolean paramBoolean)
+  {
+    AppMethodBeat.i(142068);
+    super.setCancelable(paramBoolean);
+    setCanceledOnTouchOutside(paramBoolean);
+    AppMethodBeat.o(142068);
+  }
+  
+  public void setMessage(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(142069);
+    this.acro.setText(paramCharSequence);
+    AppMethodBeat.o(142069);
+  }
+  
+  public void show()
+  {
+    AppMethodBeat.i(142074);
+    try
+    {
+      super.show();
+      AppMethodBeat.o(142074);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.printErrStackTrace("MicroMsg.MMProgressDialog", localException, "", new Object[0]);
+      AppMethodBeat.o(142074);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.base.w
  * JD-Core Version:    0.7.0.1
  */

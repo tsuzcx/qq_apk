@@ -1,36 +1,18 @@
 package com.tencent.mm.modelappbrand;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.mm.kernel.c.a;
-
 public abstract interface g
-  extends a
 {
-  public abstract void SI(String paramString);
+  public abstract void KI(String paramString);
   
-  public abstract String a(String paramString, View paramView, Bundle paramBundle, ab paramab);
+  public abstract void KJ(String paramString);
   
-  public abstract void a(String paramString, View paramView);
+  public abstract void bEH();
   
-  public abstract f bgQ();
-  
-  public abstract n bgR();
-  
-  public abstract void cJ(View paramView);
-  
-  public abstract p cK(View paramView);
-  
-  public abstract View cR(Context paramContext);
-  
-  public abstract void initialize();
-  
-  public abstract void shutdown();
+  public abstract void exit();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.g
  * JD-Core Version:    0.7.0.1
  */

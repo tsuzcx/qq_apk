@@ -4,44 +4,44 @@ import android.content.Context;
 import android.graphics.Color;
 import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.menu.v;
+import com.tencent.mm.plugin.appbrand.menu.w;
 import com.tencent.mm.plugin.appbrand.page.ad;
 import com.tencent.mm.plugin.appbrand.widget.actionbar.f.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.q.f;
-import com.tencent.mm.ui.base.q.g;
-import com.tencent.mm.ui.widget.a.e;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.u.g;
+import com.tencent.mm.ui.base.u.i;
+import com.tencent.mm.ui.widget.a.f;
 import java.util.List;
 
 public final class a
 {
-  private ad cvo;
+  private ad enm;
   private Context mContext;
-  private e nBc;
-  private List<v> nBd;
+  private f qAo;
+  private List<w> qAp;
   
-  public a(Context paramContext, ad paramad, List<v> paramList)
+  public a(Context paramContext, ad paramad, List<w> paramList)
   {
     AppMethodBeat.i(160561);
     this.mContext = paramContext;
-    this.cvo = paramad;
-    this.nBd = paramList;
-    this.nBc = new e(paramContext, false, 0);
-    paramContext = this.cvo.cep();
+    this.enm = paramad;
+    this.qAp = paramList;
+    this.qAo = new f(paramContext, false, 0);
+    paramContext = this.enm.fc(this.mContext);
     if (paramContext != null) {
-      this.nBc.Z(paramContext, true);
+      this.qAo.af(paramContext, true);
     }
-    this.nBc.ODT = new q.f()
+    this.qAo.Vtg = new u.g()
     {
-      public final void onCreateMMMenu(o paramAnonymouso)
+      public final void onCreateMMMenu(s paramAnonymouss)
       {
         AppMethodBeat.i(160557);
-        a.a(a.this, paramAnonymouso, true);
+        a.a(a.this, paramAnonymouss, true);
         AppMethodBeat.o(160557);
       }
     };
-    this.nBc.ODU = new q.g()
+    this.qAo.GAC = new u.i()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
@@ -50,16 +50,16 @@ public final class a
         AppMethodBeat.o(160558);
       }
     };
-    this.nBc.Ymx = new q.f()
+    this.qAo.GAz = new u.g()
     {
-      public final void onCreateMMMenu(o paramAnonymouso)
+      public final void onCreateMMMenu(s paramAnonymouss)
       {
         AppMethodBeat.i(160559);
-        a.a(a.this, paramAnonymouso, false);
+        a.a(a.this, paramAnonymouss, false);
         AppMethodBeat.o(160559);
       }
     };
-    this.nBc.YmA = new q.g()
+    this.qAo.agem = new u.i()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
@@ -68,18 +68,18 @@ public final class a
         AppMethodBeat.o(160560);
       }
     };
-    if (f.a.roU == this.cvo.qsD) {
-      this.nBc.setBackgroundColor(Color.parseColor("#000000"));
+    if (f.a.uzf == this.enm.txh) {
+      this.qAo.setBackgroundColor(Color.parseColor("#000000"));
     }
     AppMethodBeat.o(160561);
   }
   
-  public final boolean bEY()
+  public final boolean cem()
   {
     AppMethodBeat.i(160562);
     try
     {
-      this.nBc.eik();
+      this.qAo.dDn();
       AppMethodBeat.o(160562);
       return true;
     }
@@ -91,12 +91,12 @@ public final class a
     return false;
   }
   
-  public final boolean bEZ()
+  public final boolean cen()
   {
     AppMethodBeat.i(160563);
     try
     {
-      this.nBc.bYF();
+      this.qAo.cyW();
       AppMethodBeat.o(160563);
       return true;
     }
@@ -110,7 +110,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ad.ui.a
  * JD-Core Version:    0.7.0.1
  */

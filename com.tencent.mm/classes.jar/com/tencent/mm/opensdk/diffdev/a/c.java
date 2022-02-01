@@ -18,16 +18,16 @@ class c
   
   public c(String paramString, OAuthListener paramOAuthListener)
   {
-    AppMethodBeat.i(255203);
+    AppMethodBeat.i(242930);
     this.a = paramString;
     this.c = paramOAuthListener;
     this.b = String.format("https://long.open.weixin.qq.com/connect/l/qrconnect?f=json&uuid=%s", new Object[] { paramString });
-    AppMethodBeat.o(255203);
+    AppMethodBeat.o(242930);
   }
   
   protected Object doInBackground(Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(255208);
+    AppMethodBeat.i(242945);
     Thread.currentThread().setName("OpenSdkNoopingTask");
     paramArrayOfObject = this.a;
     Object localObject;
@@ -132,7 +132,7 @@ class c
       }
       for (;;)
       {
-        AppMethodBeat.o(255208);
+        AppMethodBeat.o(242945);
         return paramArrayOfObject;
         Log.e("MicroMsg.SDK.NoopingTask", String.format("nooping fail, errCode = %s, uuidStatusCode = %d", new Object[] { paramArrayOfObject.toString(), Integer.valueOf(((a)localObject).c) }));
         paramArrayOfObject = (Object[])localObject;
@@ -153,10 +153,10 @@ class c
   
   protected void onPostExecute(Object paramObject)
   {
-    AppMethodBeat.i(255205);
+    AppMethodBeat.i(242935);
     paramObject = (a)paramObject;
     this.c.onAuthFinish(paramObject.a, paramObject.b);
-    AppMethodBeat.o(255205);
+    AppMethodBeat.o(242935);
   }
   
   static class a
@@ -168,7 +168,7 @@ class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.opensdk.diffdev.a.c
  * JD-Core Version:    0.7.0.1
  */

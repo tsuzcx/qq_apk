@@ -1,19 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ajm" android:background="@drawable/a9a" android:padding="@dimen/ci" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cb" android:layout_marginStart="@dimen/ce" android:layout_marginEnd="@dimen/ce">
-        <com.tencent.mm.ui.widget.RoundCornerImageView android:id="@id/wn" android:layout_width="@dimen/cs" android:layout_height="@dimen/cs" android:src="@drawable/bca" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="72.0dip" android:layout_marginStart="@dimen/c5">
-            <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-                    <TextView android:textSize="@dimen/hd" android:textColor="@color/a2z" android:ellipsize="end" android:gravity="center|left|top" android:id="@id/fzd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="小赖你个小子算什么" android:singleLine="true" />
-                </LinearLayout>
-                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_marginStart="@dimen/cb">
-                    <TextView android:layout_gravity="center_vertical" android:id="@id/erd" android:background="@drawable/a9i" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_marginEnd="2.0dip" />
-                    <TextView android:textSize="@dimen/bd" android:textColor="@color/a2z" android:gravity="center|left" android:id="@id/ere" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/eap" android:layout_weight="1.0" />
-                </LinearLayout>
-            </LinearLayout>
-            <TextView android:textColor="@color/l5" android:ellipsize="end" android:id="@id/bow" android:layout_marginTop="@dimen/ct" android:text="我是设备名我是设备名我是设备名你好" android:singleLine="true" style="@style/zx" />
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/em7" android:layout_width="@dimen/m6" android:layout_height="@dimen/m6" android:layout_marginLeft="@dimen/gr" android:layout_marginTop="@dimen/gr" android:layout_marginRight="@dimen/vm" android:layout_marginBottom="@dimen/gr" android:src="@raw/icons_outlined_me" android:layout_centerVertical="true" />
+</RelativeLayout>

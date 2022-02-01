@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.mv.ui.uic;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import com.tencent.mm.plugin.mv.ui.view.MusicMvSliderSeekBar;
+import kotlin.Metadata;
 import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroidx/recyclerview/widget/LinearLayoutManager;", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/mv/ui/view/MusicMvSliderSeekBar;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
 final class m$n
-  extends q
-  implements a<LinearLayoutManager>
+  extends u
+  implements a<MusicMvSliderSeekBar>
 {
   m$n(AppCompatActivity paramAppCompatActivity)
   {

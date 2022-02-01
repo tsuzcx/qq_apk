@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.task.preload;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
@@ -14,27 +14,27 @@ import org.json.JSONObject;
 
 public class b
 {
-  private static volatile b qSu;
-  private static Map<Integer, LinkedList<Map<Integer, Map<Integer, Float>>>> qSv;
+  private static volatile b tWZ;
+  private static Map<Integer, LinkedList<Map<Integer, Map<Integer, Float>>>> tXa;
   
   static
   {
     AppMethodBeat.i(48502);
-    qSv = new HashMap();
-    cjk();
+    tXa = new HashMap();
+    cKk();
     AppMethodBeat.o(48502);
   }
   
-  public static b cjj()
+  public static b cKj()
   {
     AppMethodBeat.i(48499);
-    if (qSu == null) {}
+    if (tWZ == null) {}
     try
     {
-      if (qSu == null) {
-        qSu = new b();
+      if (tWZ == null) {
+        tWZ = new b();
       }
-      b localb = qSu;
+      b localb = tWZ;
       AppMethodBeat.o(48499);
       return localb;
     }
@@ -44,10 +44,10 @@ public class b
     }
   }
   
-  private static void cjk()
+  private static void cKk()
   {
     AppMethodBeat.i(48500);
-    Object localObject1 = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vVc, "");
+    Object localObject1 = ((com.tencent.mm.plugin.expt.b.c)h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.znG, "");
     if (Util.isNullOrNil((String)localObject1))
     {
       Log.e("MicroMsg.Predownload.AppBrandPreloadPredictLevel", "clicfg_preload_miniprogram jsonStr error!");
@@ -75,39 +75,39 @@ public class b
           float f3 = (float)((JSONObject)localObject3).optDouble("high");
           localObject3 = new HashMap();
           HashMap localHashMap = new HashMap();
-          localHashMap.put(Integer.valueOf(c.qSw.ordinal()), Float.valueOf(f1));
-          localHashMap.put(Integer.valueOf(c.qSx.ordinal()), Float.valueOf(f2));
-          localHashMap.put(Integer.valueOf(c.qSy.ordinal()), Float.valueOf(f3));
+          localHashMap.put(Integer.valueOf(c.tXb.ordinal()), Float.valueOf(f1));
+          localHashMap.put(Integer.valueOf(c.tXc.ordinal()), Float.valueOf(f2));
+          localHashMap.put(Integer.valueOf(c.tXd.ordinal()), Float.valueOf(f3));
           ((Map)localObject3).put(Integer.valueOf(m), localHashMap);
           localLinkedList.add(localObject3);
           j += 1;
         }
-        qSv.put(Integer.valueOf(k), localLinkedList);
+        tXa.put(Integer.valueOf(k), localLinkedList);
         i += 1;
       }
-      Log.d("MicroMsg.Predownload.AppBrandPreloadPredictLevel", "scenePredictMap :%s", new Object[] { qSv.toString() });
+      Log.d("MicroMsg.Predownload.AppBrandPreloadPredictLevel", "scenePredictMap :%s", new Object[] { tXa.toString() });
       AppMethodBeat.o(48500);
       return;
     }
     catch (JSONException localJSONException)
     {
       Log.e("MicroMsg.Predownload.AppBrandPreloadPredictLevel", "generateScenePredictMap json exception:%s", new Object[] { localJSONException });
-      qSv.clear();
-      qSv = null;
+      tXa.clear();
+      tXa = null;
       AppMethodBeat.o(48500);
     }
   }
   
-  public static Map<Integer, Float> eV(int paramInt1, int paramInt2)
+  public static Map<Integer, Float> fO(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(48501);
-    if ((qSv == null) || (qSv.size() <= 0))
+    if ((tXa == null) || (tXa.size() <= 0))
     {
       Log.e("MicroMsg.Predownload.AppBrandPreloadPredictLevel", "getScenePredictRate map null!");
       AppMethodBeat.o(48501);
       return null;
     }
-    Object localObject = (LinkedList)qSv.get(Integer.valueOf(paramInt1));
+    Object localObject = (LinkedList)tXa.get(Integer.valueOf(paramInt1));
     if (((LinkedList)localObject).size() > 0)
     {
       paramInt1 = 0;
@@ -129,7 +129,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.task.preload.b
  * JD-Core Version:    0.7.0.1
  */

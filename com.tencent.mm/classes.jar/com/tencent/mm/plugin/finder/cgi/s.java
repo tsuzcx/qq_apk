@@ -1,56 +1,50 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.c;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.protocal.protobuf.avz;
-import com.tencent.mm.protocal.protobuf.awa;
-import com.tencent.mm.protocal.protobuf.eaf;
-import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.plugin.findersdk.b.c;
+import com.tencent.mm.protocal.protobuf.azi;
+import com.tencent.mm.protocal.protobuf.azj;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.kd;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.List<Ljava.lang.String;>;
-import kotlin.a.j;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderGetUser;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/FinderGetUserResponse;", "nicknameList", "", "", "(Ljava/util/List;)V", "TAG", "onCgiBack", "", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderGetLiveIncomePage;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderGetLiveIncomePageResponse;", "finderUsername", "", "(Ljava/lang/String;)V", "TAG", "getFinderUsername", "()Ljava/lang/String;", "request", "Lcom/tencent/mm/protocal/protobuf/FinderGetLiveIncomePageRequest;", "initReqResp", "", "onCgiEnd", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class s
-  extends c<awa>
+  extends c<azj>
 {
+  private final azi Azi;
   private final String TAG;
+  private final String finderUsername;
   
-  public s(List<String> paramList)
+  public s(String paramString)
   {
-    AppMethodBeat.i(279248);
-    this.TAG = "Finder.CgiFinderGetUser";
-    Object localObject2 = new avz();
-    ((avz)localObject2).SIs.addAll((Collection)paramList);
-    Object localObject1 = new d.a();
-    ((d.a)localObject1).c((a)localObject2);
-    localObject2 = new awa();
-    ((awa)localObject2).setBaseResponse(new jh());
-    ((awa)localObject2).getBaseResponse().Tef = new eaf();
-    ((d.a)localObject1).d((a)localObject2);
-    ((d.a)localObject1).TW("/cgi-bin/micromsg-bin/findergetuser");
-    ((d.a)localObject1).vD(3512);
-    c(((d.a)localObject1).bgN());
-    localObject2 = this.TAG;
-    StringBuilder localStringBuilder = new StringBuilder("init nickname:");
-    localObject1 = (String)j.lp(paramList);
-    paramList = (List<String>)localObject1;
-    if (localObject1 == null) {
-      paramList = "";
-    }
-    Log.i((String)localObject2, paramList);
-    AppMethodBeat.o(279248);
+    AppMethodBeat.i(336404);
+    this.finderUsername = paramString;
+    this.TAG = "MicroMsg.CgiFinderGetLiveIncomePage";
+    this.Azi = new azi();
+    paramString = this.Azi;
+    Object localObject = bi.ABn;
+    paramString.YIY = bi.dVu();
+    this.Azi.YIZ = this.finderUsername;
+    paramString = new c.a();
+    paramString.otE = ((a)this.Azi);
+    localObject = new azj();
+    ((azj)localObject).setBaseResponse(new kd());
+    ((azj)localObject).getBaseResponse().akjO = new etl();
+    paramString.otF = ((a)localObject);
+    paramString.uri = "/cgi-bin/micromsg-bin/findergetliveincomepage";
+    paramString.funcId = 6477;
+    c(paramString.bEF());
+    Log.i(this.TAG, kotlin.g.b.s.X("init ", this.Azi.YIZ));
+    AppMethodBeat.o(336404);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.s
  * JD-Core Version:    0.7.0.1
  */

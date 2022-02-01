@@ -1,52 +1,28 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.hj;
-import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.autogen.b.ib;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import java.lang.reflect.Field;
-import java.util.Map;
 
 public final class cv
-  extends hj
+  extends ib
 {
   protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
-    AppMethodBeat.i(148673);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[3];
-    localMAutoDBInfo.columns = new String[4];
-    StringBuilder localStringBuilder = new StringBuilder();
-    localMAutoDBInfo.columns[0] = "msgId";
-    localMAutoDBInfo.colsMap.put("msgId", "LONG PRIMARY KEY ");
-    localStringBuilder.append(" msgId LONG PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.primaryKey = "msgId";
-    localMAutoDBInfo.columns[1] = "cmsgId";
-    localMAutoDBInfo.colsMap.put("cmsgId", "TEXT");
-    localStringBuilder.append(" cmsgId TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[2] = "content";
-    localMAutoDBInfo.colsMap.put("content", "TEXT default '' ");
-    localStringBuilder.append(" content TEXT default '' ");
-    localMAutoDBInfo.columns[3] = "rowid";
-    localMAutoDBInfo.sql = localStringBuilder.toString();
-    info = localMAutoDBInfo;
-    AppMethodBeat.o(148673);
+    AppMethodBeat.i(32886);
+    info = aJm();
+    AppMethodBeat.o(32886);
   }
   
-  public final void bxy(String paramString)
+  public cv() {}
+  
+  public cv(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(148672);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(148672);
-      return;
-    }
-    this.field_cmsgId = paramString;
-    AppMethodBeat.o(148672);
+    this.field_appId = paramString1;
+    this.field_username = paramString2;
+    this.field_openId = paramString3;
   }
   
   public final IAutoDBItem.MAutoDBInfo getDBInfo()
@@ -56,7 +32,7 @@ public final class cv
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.cv
  * JD-Core Version:    0.7.0.1
  */

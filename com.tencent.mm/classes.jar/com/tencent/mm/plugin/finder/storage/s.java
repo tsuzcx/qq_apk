@@ -1,54 +1,33 @@
 package com.tencent.mm.plugin.finder.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.cp;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.storage.IAutoDBItem;
-import com.tencent.mm.sdk.storage.ISQLiteDatabase;
-import com.tencent.mm.sdk.storage.MAutoStorage;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.autogen.b.cx;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderLocalOperationStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/finder/storage/FinderLocalOperation;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "getAllData", "", "insert", "", "item", "remove", "", "localId", "", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/FinderLocalOperation;", "Lcom/tencent/mm/autogen/table/BaseFinderLocalOperation;", "()V", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class s
-  extends MAutoStorage<r>
+  extends cx
 {
-  public static final a Alw;
-  private static final String[] SQL_CREATE;
-  private static final String TABLE_NAME = "FinderLocalOperation";
-  public static final String TAG = "Finder.FinderLocalOperationStorage";
-  public final ISQLiteDatabase db;
+  public static final a FKV;
+  private static final IAutoDBItem.MAutoDBInfo info;
   
   static
   {
-    AppMethodBeat.i(280090);
-    Alw = new a((byte)0);
-    TAG = "Finder.FinderLocalOperationStorage";
-    TABLE_NAME = "FinderLocalOperation";
-    r.a locala = r.Alv;
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(r.access$getInfo$cp(), "FinderLocalOperation") };
-    AppMethodBeat.o(280090);
+    AppMethodBeat.i(339257);
+    FKV = new a((byte)0);
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = cx.aJm();
+    kotlin.g.b.s.s(localMAutoDBInfo, "initAutoDBInfo(FinderLocalOperation::class.java)");
+    info = localMAutoDBInfo;
+    AppMethodBeat.o(339257);
   }
   
-  public s(ISQLiteDatabase paramISQLiteDatabase)
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    super(paramISQLiteDatabase, r.access$getInfo$cp(), "FinderLocalOperation", cp.INDEX_CREATE);
-    AppMethodBeat.i(280089);
-    this.db = paramISQLiteDatabase;
-    AppMethodBeat.o(280089);
+    return info;
   }
   
-  public final boolean a(r paramr)
-  {
-    AppMethodBeat.i(280087);
-    p.k(paramr, "item");
-    boolean bool = super.insert((IAutoDBItem)paramr);
-    Log.i(TAG, "insert " + paramr.field_localId + ", ret:" + bool);
-    AppMethodBeat.o(280087);
-    return bool;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderLocalOperationStorage$Companion;", "", "()V", "SQL_CREATE", "", "", "kotlin.jvm.PlatformType", "getSQL_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "TABLE_NAME", "getTABLE_NAME", "()Ljava/lang/String;", "TAG", "getTAG", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/FinderLocalOperation$Companion;", "", "()V", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

@@ -1,24 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/gs"
+<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/b8e" android:padding="@dimen/ig" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
-    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gu">
-        <TextView android:layout_gravity="right" android:id="@id/ayn" android:visibility="gone" style="@style/gy" />
-        <LinearLayout android:layout_gravity="right" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip">
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/ayd" android:paddingRight="@dimen/k5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/chatting_status_tick" />
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/ayb" android:visibility="gone" style="@style/h2" />
-            <FrameLayout android:id="@id/auf" android:background="@drawable/mf" android:padding="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <ImageView android:id="@id/aul" android:layout_width="wrap_content" android:layout_height="wrap_content" android:adjustViewBounds="true" android:maxWidth="@dimen/a7" />
-                <ImageView android:id="@id/aun" android:background="@drawable/mf" android:layout_width="0.0dip" android:layout_height="0.0dip" />
-                <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/j10" android:background="@drawable/mf" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <ProgressBar android:id="@id/j0y" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a63" />
-                    <TextView android:textColor="@color/ag2" android:id="@id/j0z" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-                </LinearLayout>
-            </FrameLayout>
-        </LinearLayout>
-        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:ellipsize="end" android:id="@id/atq" android:layout_marginLeft="0.0dip" android:text="{source}" android:singleLine="true" style="@style/gj" />
-        </LinearLayout>
-    </LinearLayout>
-    <include layout="@layout/qr" />
+    <TextView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/b4p" android:background="@drawable/lp" android:padding="@dimen/ig" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/b4o" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/j6" android:src="@drawable/ap1" />
 </LinearLayout>

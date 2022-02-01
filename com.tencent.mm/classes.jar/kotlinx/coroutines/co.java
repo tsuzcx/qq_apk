@@ -1,67 +1,43 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.Result;
-import kotlin.Result.Companion;
-import kotlin.ResultKt;
-import kotlin.d.d;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/ResumeAwaitOnCompletion;", "T", "Lkotlinx/coroutines/JobNode;", "Lkotlinx/coroutines/JobSupport;", "job", "continuation", "Lkotlinx/coroutines/CancellableContinuationImpl;", "(Lkotlinx/coroutines/JobSupport;Lkotlinx/coroutines/CancellableContinuationImpl;)V", "invoke", "", "cause", "", "toString", "", "kotlinx-coroutines-core"})
-final class co<T>
-  extends cd<ce>
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/NonDisposableHandle;", "Lkotlinx/coroutines/DisposableHandle;", "Lkotlinx/coroutines/ChildHandle;", "()V", "parent", "Lkotlinx/coroutines/Job;", "getParent", "()Lkotlinx/coroutines/Job;", "childCancelled", "", "cause", "", "dispose", "", "toString", "", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+public final class co
+  implements v
 {
-  private final n<T> abxM;
+  public static final co ajwK;
   
-  public co(ce paramce, n<? super T> paramn)
+  static
   {
-    super((by)paramce);
-    AppMethodBeat.i(204144);
-    this.abxM = paramn;
-    AppMethodBeat.o(204144);
+    AppMethodBeat.i(118190);
+    ajwK = new co();
+    AppMethodBeat.o(118190);
+  }
+  
+  public final boolean Q(Throwable paramThrowable)
+  {
+    AppMethodBeat.i(118189);
+    AppMethodBeat.o(118189);
+    return false;
+  }
+  
+  public final void dispose() {}
+  
+  public final cb kBL()
+  {
+    return null;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(118268);
-    String str = "ResumeAwaitOnCompletion[" + this.abxM + ']';
-    AppMethodBeat.o(118268);
-    return str;
-  }
-  
-  public final void y(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(118266);
-    Object localObject = ((ce)this.Gib).iRJ();
-    if (ap.iRg())
-    {
-      if (!(localObject instanceof bt)) {}
-      for (int i = 1; i == 0; i = 0)
-      {
-        paramThrowable = (Throwable)new AssertionError();
-        AppMethodBeat.o(118266);
-        throw paramThrowable;
-      }
-    }
-    if ((localObject instanceof x))
-    {
-      paramThrowable = (d)this.abxM;
-      localObject = ((x)localObject).cause;
-      localCompanion = Result.Companion;
-      paramThrowable.resumeWith(Result.constructor-impl(ResultKt.createFailure((Throwable)localObject)));
-      AppMethodBeat.o(118266);
-      return;
-    }
-    paramThrowable = (d)this.abxM;
-    localObject = cf.gl(localObject);
-    Result.Companion localCompanion = Result.Companion;
-    paramThrowable.resumeWith(Result.constructor-impl(localObject));
-    AppMethodBeat.o(118266);
+    return "NonDisposableHandle";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlinx.coroutines.co
  * JD-Core Version:    0.7.0.1
  */

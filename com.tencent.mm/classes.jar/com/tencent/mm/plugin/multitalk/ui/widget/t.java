@@ -5,13 +5,13 @@ import android.widget.RelativeLayout;
 import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.multitalk.a.e;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/ui/widget/SmallAvatarLayoutHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "avatarLayout", "Landroid/widget/RelativeLayout;", "plugin-multitalk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitalk/ui/widget/SmallAvatarLayoutHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "avatarLayout", "Landroid/widget/RelativeLayout;", "plugin-multitalk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class t
   extends RecyclerView.v
 {
-  public RelativeLayout FAS;
+  public RelativeLayout LwU;
   
   public t(View paramView)
   {
@@ -20,11 +20,11 @@ public final class t
     paramView = paramView.findViewById(a.e.small_invite_avatar);
     if (paramView == null)
     {
-      paramView = new kotlin.t("null cannot be cast to non-null type android.widget.RelativeLayout");
+      paramView = new NullPointerException("null cannot be cast to non-null type android.widget.RelativeLayout");
       AppMethodBeat.o(178992);
       throw paramView;
     }
-    this.FAS = ((RelativeLayout)paramView);
+    this.LwU = ((RelativeLayout)paramView);
     AppMethodBeat.o(178992);
   }
 }

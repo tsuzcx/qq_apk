@@ -7,13 +7,13 @@ import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.j;
-import com.tencent.mm.am.k;
-import com.tencent.mm.am.q;
-import com.tencent.mm.ao.af;
+import com.tencent.mm.an.af;
 import com.tencent.mm.b.g;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.h;
+import com.tencent.mm.modelavatar.j;
+import com.tencent.mm.modelavatar.k;
+import com.tencent.mm.modelavatar.q;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.plugin.webview.c.i;
 import com.tencent.mm.sdk.platformtools.IntentUtil;
@@ -22,27 +22,22 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatHosts;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
 public final class d
-  extends com.tencent.mm.plugin.am.a
+  extends com.tencent.mm.plugin.an.a
 {
-  public static String PTM = "";
+  public static String WKy = "";
   
-  public final int getType()
-  {
-    return 2;
-  }
-  
-  public final void k(Context paramContext, Intent paramIntent)
+  public final void C(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(78840);
-    final String str1 = com.tencent.mm.plugin.base.model.c.aoH(IntentUtil.getStringExtra(paramIntent, "id"));
-    final String str2 = com.tencent.mm.plugin.base.model.c.aoH(IntentUtil.getStringExtra(paramIntent, "ext_info"));
+    final String str1 = com.tencent.mm.plugin.base.model.c.aid(IntentUtil.getStringExtra(paramIntent, "id"));
+    final String str2 = com.tencent.mm.plugin.base.model.c.aid(IntentUtil.getStringExtra(paramIntent, "ext_info"));
     Object localObject1 = IntentUtil.getStringExtra(paramIntent, "token");
     if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)) || (TextUtils.isEmpty((CharSequence)localObject1)))
     {
@@ -51,8 +46,8 @@ public final class d
       return;
     }
     Object localObject2 = new StringBuilder();
-    h.aHE();
-    if (!((String)localObject1).equals(e.fm(str2, b.getUin())))
+    h.baC();
+    if (!((String)localObject1).equals(e.fD(str2, b.getUin())))
     {
       localObject2 = MMApplicationContext.getContext().getSharedPreferences("app_brand_global_sp", 0);
       if (localObject2 == null)
@@ -71,7 +66,7 @@ public final class d
       localObject2 = new HashSet();
       localObject3 = ((Set)localObject3).iterator();
       while (((Iterator)localObject3).hasNext()) {
-        ((Set)localObject2).add(com.tencent.mm.plugin.base.model.c.fm(str2, (String)((Iterator)localObject3).next()));
+        ((Set)localObject2).add(com.tencent.mm.plugin.base.model.c.fD(str2, (String)((Iterator)localObject3).next()));
       }
       if (!((Set)localObject2).contains(localObject1))
       {
@@ -85,8 +80,8 @@ public final class d
     paramIntent.putExtra("id", "");
     localObject2 = "https://" + WeChatHosts.domainString(c.i.host_game_weixin_qq_com) + "/cgi-bin/h5/static/gameloading/index.html?wegame_ssid=25&appid=" + str2;
     localObject1 = localObject2;
-    if (!Util.isNullOrNil(PTM)) {
-      localObject1 = (String)localObject2 + "&" + PTM;
+    if (!Util.isNullOrNil(WKy)) {
+      localObject1 = (String)localObject2 + "&" + WKy;
     }
     localObject2 = new Intent();
     ((Intent)localObject2).putExtra("rawUrl", (String)localObject1);
@@ -94,8 +89,8 @@ public final class d
     ((Intent)localObject2).putExtra("game_hv_menu_appid", str2);
     ((Intent)localObject2).addFlags(67108864);
     ((Intent)localObject2).addFlags(268435456);
-    com.tencent.mm.by.c.b(paramContext, "webview", ".ui.tools.game.H5GameWebViewUI", (Intent)localObject2);
-    af.bjI().Ui(str1);
+    com.tencent.mm.br.c.b(paramContext, "webview", ".ui.tools.game.H5GameWebViewUI", (Intent)localObject2);
+    af.bHt().Mh(str1);
     localObject1 = IntentUtil.getStringExtra(paramIntent, "digest");
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
@@ -103,28 +98,28 @@ public final class d
       AppMethodBeat.o(78840);
       return;
     }
-    localObject2 = ((n)h.ae(n.class)).bbL().RG(str1);
-    if ((localObject2 == null) || (Util.isNullOrNil(((as)localObject2).ayr())))
+    localObject2 = ((n)h.ax(n.class)).bzA().JE(str1);
+    if ((localObject2 == null) || (Util.isNullOrNil(((au)localObject2).aSU())))
     {
       Log.i("MicroMsg.WebViewShortcutEntry", "no need update, displayName is null");
       AppMethodBeat.o(78840);
       return;
     }
-    localObject2 = ((as)localObject2).ayr();
-    Object localObject3 = q.bhP().TS(str1);
-    if ((localObject3 == null) || (Util.isNullOrNil(((j)localObject3).bhI())))
+    localObject2 = ((au)localObject2).aSU();
+    Object localObject3 = q.bFE().LS(str1);
+    if ((localObject3 == null) || (Util.isNullOrNil(((j)localObject3).bFx())))
     {
       Log.i("MicroMsg.WebViewShortcutEntry", "no need update, imgFlag is null");
       AppMethodBeat.o(78840);
       return;
     }
-    if (((String)localObject1).equals(g.getMessageDigest(((String)localObject2 + ((j)localObject3).bhI()).getBytes())))
+    if (((String)localObject1).equals(g.getMessageDigest(((String)localObject2 + ((j)localObject3).bFx()).getBytes())))
     {
       Log.i("MicroMsg.WebViewShortcutEntry", "no need update, digest is same");
       AppMethodBeat.o(78840);
       return;
     }
-    localObject1 = com.tencent.mm.am.d.a(str1, false, -1, null);
+    localObject1 = com.tencent.mm.modelavatar.d.a(str1, false, -1, null);
     if ((localObject1 == null) || (((Bitmap)localObject1).isRecycled()))
     {
       Log.i("MicroMsg.WebViewShortcutEntry", "icon is not downloaded, next time update");
@@ -132,7 +127,7 @@ public final class d
       return;
     }
     Log.i("MicroMsg.WebViewShortcutEntry", "update shortcut, displayName = %s", new Object[] { localObject2 });
-    e.h(paramContext, str1, str2, com.tencent.mm.plugin.base.model.c.aoH(IntentUtil.getStringExtra(paramIntent, "ext_info_1")));
+    e.j(paramContext, str1, str2, com.tencent.mm.plugin.base.model.c.aid(IntentUtil.getStringExtra(paramIntent, "ext_info_1")));
     MMHandlerThread.postToMainThreadDelayed(new Runnable()
     {
       public final void run()
@@ -143,6 +138,11 @@ public final class d
       }
     }, 1000L);
     AppMethodBeat.o(78840);
+  }
+  
+  public final int getType()
+  {
+    return 2;
   }
 }
 

@@ -2,36 +2,28 @@ package com.tencent.mm.plugin.finder.convert;
 
 import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.model.an;
-import com.tencent.mm.protocal.protobuf.bda;
-import com.tencent.mm.view.recyclerview.e;
-import com.tencent.mm.view.recyclerview.i;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.live.p.f;
+import com.tencent.mm.plugin.finder.model.av;
+import com.tencent.mm.view.recyclerview.f;
+import com.tencent.mm.view.recyclerview.j;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/convert/FinderLiveTagConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderLiveTagData;", "selectedTagInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveTagInfo;", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveTagInfo;)V", "getSelectedTagInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveTagInfo;", "setSelectedTagInfo", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/convert/FinderLotteryRecordConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderLotteryRecordData;", "()V", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class aw
-  extends e<an>
+  extends f<av>
 {
-  private bda xne;
-  
-  public aw(bda parambda)
+  public final void a(RecyclerView paramRecyclerView, j paramj, int paramInt)
   {
-    this.xne = parambda;
-  }
-  
-  public final void a(RecyclerView paramRecyclerView, i parami, int paramInt)
-  {
-    AppMethodBeat.i(276375);
-    p.k(paramRecyclerView, "recyclerView");
-    p.k(parami, "holder");
-    AppMethodBeat.o(276375);
+    AppMethodBeat.i(350302);
+    s.u(paramRecyclerView, "recyclerView");
+    s.u(paramj, "holder");
+    AppMethodBeat.o(350302);
   }
   
   public final int getLayoutId()
   {
-    return b.g.finder_live_tag_item_ui;
+    return p.f.Cew;
   }
 }
 

@@ -39,6 +39,10 @@
         <subtype val="19" ios="1" android="1" desc="商家券按钮" />
         <subtype val="20" ios="1" android="1" desc="视频号直播预约按钮" />
 		<subtype val="21" ios="1" android="1" desc="跳转视频号profile页" />
+		<subtype val="22" ios="1" android="1" desc="跳转视频号Feeds页" />
+		<subtype val="23" ios="1" android="1" desc="领取表情" />
+		<subtype val="24" ios="1" android="1" desc="跳转客服会话页" />
+		<subtype val="25" ios="1" android="1" desc="新的预约按钮" />
 	</componenttype>
 	<componenttype val="41" ios="1" android="1" desc="纯图类型">
 		<subtype val="0" ios="1" android="1" desc="纯图default类型" />
@@ -124,6 +128,8 @@
 	<componenttype val="143" ios="1" android="1" desc="社交卡片">
 		<subtype val="0" ios="1" android="1" desc="社交卡片" />
 	</componenttype>
-
+	<componenttype val="144" ios="1" android="1" desc="红包卡片">
+		<subtype val="0" ios="1" android="1" desc="红包卡片" />
+	</componenttype>
 
 </canvasvalidtype>

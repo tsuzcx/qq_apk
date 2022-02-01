@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/bxx" android:visibility="invisible" android:layout_width="@dimen/a1x" android:layout_height="@dimen/a1x" android:layout_marginTop="@dimen/ag4" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
-    <FrameLayout android:id="@id/bz0" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mm.plugin.emojicapture.ui.editor.EditorOutsideView android:id="@id/bz1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <TextView android:textColor="@color/am" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/bx6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a1u" android:text="@string/bqf" android:drawableTop="@drawable/rh" android:drawablePadding="@dimen/a1s" android:layout_below="@id/bxx" />
-</merge>
+    <ImageView android:id="@id/ceo" android:padding="@dimen/df" android:layout_width="@dimen/a43" android:layout_height="@dimen/a43" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/o2" android:gravity="center_horizontal" android:id="@id/cep" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/df" android:maxLines="2" android:layout_below="@id/ceo" android:layout_centerHorizontal="true" />
+    <com.tencent.mm.plugin.emojicapture.ui.capture.StickerSelectFrame android:id="@id/ceu" android:visibility="gone" android:layout_width="@dimen/a43" android:layout_height="@dimen/a43" android:layout_centerHorizontal="true" />
+</RelativeLayout>

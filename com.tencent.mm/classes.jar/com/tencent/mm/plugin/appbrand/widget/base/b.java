@@ -8,7 +8,7 @@ import java.util.Iterator;
 public final class b
   implements Iterator<View>
 {
-  private int cCC = 0;
+  private int evg = 0;
   private final ViewGroup parent;
   
   public b(ViewGroup paramViewGroup)
@@ -19,7 +19,7 @@ public final class b
   public final boolean hasNext()
   {
     AppMethodBeat.i(131470);
-    if (this.cCC < this.parent.getChildCount())
+    if (this.evg < this.parent.getChildCount())
     {
       AppMethodBeat.o(131470);
       return true;
@@ -31,7 +31,7 @@ public final class b
   public final void remove()
   {
     AppMethodBeat.i(131471);
-    this.parent.removeViewAt(this.cCC - 1);
+    this.parent.removeViewAt(this.evg - 1);
     AppMethodBeat.o(131471);
   }
 }

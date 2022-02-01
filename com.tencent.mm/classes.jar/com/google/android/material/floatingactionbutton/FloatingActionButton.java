@@ -26,8 +26,8 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout.Behavior;
 import androidx.coordinatorlayout.widget.CoordinatorLayout.b;
 import androidx.coordinatorlayout.widget.CoordinatorLayout.d;
-import androidx.core.g.u;
-import androidx.core.g.w;
+import androidx.core.g.x;
+import androidx.core.g.z;
 import androidx.customview.view.AbsSavedState;
 import com.google.android.material.a.a;
 import com.google.android.material.a.b;
@@ -38,32 +38,32 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.c.c;
 import com.google.android.material.internal.VisibilityAwareImageButton;
 import com.google.android.material.internal.d;
-import com.google.android.material.internal.l;
+import com.google.android.material.internal.k;
 import com.google.android.material.stateful.ExtendableSavedState;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-@CoordinatorLayout.b(gf=Behavior.class)
+@CoordinatorLayout.b(Dr=Behavior.class)
 public class FloatingActionButton
   extends VisibilityAwareImageButton
-  implements u, androidx.core.widget.k, com.google.android.material.c.a
+  implements x, androidx.core.widget.l, com.google.android.material.c.a
 {
-  private ColorStateList bAk;
-  private PorterDuff.Mode bAl;
-  private int bAm;
-  private int bAn;
-  boolean bAo;
-  final Rect bAp;
-  private final Rect bAq;
-  private final androidx.appcompat.widget.h bAr;
-  private final c bAs;
-  private a bAt;
   private int borderWidth;
-  private PorterDuff.Mode byd;
-  private ColorStateList bye;
-  private ColorStateList byg;
+  private PorterDuff.Mode drg;
+  private ColorStateList drh;
+  private ColorStateList drj;
+  private ColorStateList dtl;
+  private PorterDuff.Mode dtm;
+  private int dtn;
+  private int dto;
+  boolean dtp;
+  final Rect dtq;
+  private final Rect dtr;
+  private final androidx.appcompat.widget.h dtt;
+  private final c dtu;
+  private a dtv;
   private int maxImageSize;
   private int size;
   
@@ -75,47 +75,85 @@ public class FloatingActionButton
   public FloatingActionButton(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(237196);
-    this.bAp = new Rect();
-    this.bAq = new Rect();
-    TypedArray localTypedArray = com.google.android.material.internal.k.a(paramContext, paramAttributeSet, a.k.FloatingActionButton, paramInt, a.j.Widget_Design_FloatingActionButton, new int[0]);
-    this.bye = com.google.android.material.e.a.b(paramContext, localTypedArray, a.k.FloatingActionButton_backgroundTint);
-    this.byd = l.c(localTypedArray.getInt(a.k.FloatingActionButton_backgroundTintMode, -1), null);
-    this.byg = com.google.android.material.e.a.b(paramContext, localTypedArray, a.k.FloatingActionButton_rippleColor);
+    AppMethodBeat.i(209936);
+    this.dtq = new Rect();
+    this.dtr = new Rect();
+    TypedArray localTypedArray = k.a(paramContext, paramAttributeSet, a.k.FloatingActionButton, paramInt, a.j.Widget_Design_FloatingActionButton, new int[0]);
+    this.drh = com.google.android.material.e.a.b(paramContext, localTypedArray, a.k.FloatingActionButton_backgroundTint);
+    this.drg = com.google.android.material.internal.l.c(localTypedArray.getInt(a.k.FloatingActionButton_backgroundTintMode, -1), null);
+    this.drj = com.google.android.material.e.a.b(paramContext, localTypedArray, a.k.FloatingActionButton_rippleColor);
     this.size = localTypedArray.getInt(a.k.FloatingActionButton_fabSize, -1);
-    this.bAm = localTypedArray.getDimensionPixelSize(a.k.FloatingActionButton_fabCustomSize, 0);
+    this.dtn = localTypedArray.getDimensionPixelSize(a.k.FloatingActionButton_fabCustomSize, 0);
     this.borderWidth = localTypedArray.getDimensionPixelSize(a.k.FloatingActionButton_borderWidth, 0);
     float f1 = localTypedArray.getDimension(a.k.FloatingActionButton_elevation, 0.0F);
     float f2 = localTypedArray.getDimension(a.k.FloatingActionButton_hoveredFocusedTranslationZ, 0.0F);
     float f3 = localTypedArray.getDimension(a.k.FloatingActionButton_pressedTranslationZ, 0.0F);
-    this.bAo = localTypedArray.getBoolean(a.k.FloatingActionButton_useCompatPadding, false);
+    this.dtp = localTypedArray.getBoolean(a.k.FloatingActionButton_useCompatPadding, false);
     this.maxImageSize = localTypedArray.getDimensionPixelSize(a.k.FloatingActionButton_maxImageSize, 0);
     com.google.android.material.a.h localh = com.google.android.material.a.h.a(paramContext, localTypedArray, a.k.FloatingActionButton_showMotionSpec);
     paramContext = com.google.android.material.a.h.a(paramContext, localTypedArray, a.k.FloatingActionButton_hideMotionSpec);
     localTypedArray.recycle();
-    this.bAr = new androidx.appcompat.widget.h(this);
-    this.bAr.a(paramAttributeSet, paramInt);
-    this.bAs = new c(this);
-    getImpl().a(this.bye, this.byd, this.byg, this.borderWidth);
-    getImpl().e(f1);
-    getImpl().Q(f2);
-    getImpl().R(f3);
+    this.dtt = new androidx.appcompat.widget.h(this);
+    this.dtt.a(paramAttributeSet, paramInt);
+    this.dtu = new c(this);
+    getImpl().a(this.drh, this.drg, this.drj, this.borderWidth);
+    getImpl().g(f1);
+    getImpl().aR(f2);
+    getImpl().aS(f3);
     paramAttributeSet = getImpl();
     paramInt = this.maxImageSize;
     if (paramAttributeSet.maxImageSize != paramInt)
     {
       paramAttributeSet.maxImageSize = paramInt;
-      paramAttributeSet.wX();
+      paramAttributeSet.Wv();
     }
-    getImpl().bze = localh;
-    getImpl().bzf = paramContext;
+    getImpl().dse = localh;
+    getImpl().dsf = paramContext;
     setScaleType(ImageView.ScaleType.MATRIX);
-    AppMethodBeat.o(237196);
+    AppMethodBeat.o(209936);
   }
   
-  private static int bA(int paramInt1, int paramInt2)
+  private void Wt()
   {
-    AppMethodBeat.i(237273);
+    AppMethodBeat.i(209944);
+    Drawable localDrawable = getDrawable();
+    if (localDrawable == null)
+    {
+      AppMethodBeat.o(209944);
+      return;
+    }
+    if (this.dtl == null)
+    {
+      androidx.core.graphics.drawable.a.r(localDrawable);
+      AppMethodBeat.o(209944);
+      return;
+    }
+    int i = this.dtl.getColorForState(getDrawableState(), 0);
+    PorterDuff.Mode localMode2 = this.dtm;
+    PorterDuff.Mode localMode1 = localMode2;
+    if (localMode2 == null) {
+      localMode1 = PorterDuff.Mode.SRC_IN;
+    }
+    localDrawable.mutate().setColorFilter(f.a(i, localMode1));
+    AppMethodBeat.o(209944);
+  }
+  
+  private a.d c(final a parama)
+  {
+    AppMethodBeat.i(209953);
+    if (parama == null)
+    {
+      AppMethodBeat.o(209953);
+      return null;
+    }
+    parama = new a.d() {};
+    AppMethodBeat.o(209953);
+    return parama;
+  }
+  
+  private static int cv(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(209958);
     int j = View.MeasureSpec.getMode(paramInt2);
     int i = View.MeasureSpec.getSize(paramInt2);
     paramInt2 = paramInt1;
@@ -123,230 +161,197 @@ public class FloatingActionButton
     {
     default: 
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException();
-      AppMethodBeat.o(237273);
+      AppMethodBeat.o(209958);
       throw localIllegalArgumentException;
     }
     for (paramInt2 = Math.min(paramInt1, i);; paramInt2 = i)
     {
-      AppMethodBeat.o(237273);
+      AppMethodBeat.o(209958);
       return paramInt2;
     }
   }
   
-  private a.d c(final a parama)
+  public final boolean Ws()
   {
-    AppMethodBeat.i(237250);
-    if (parama == null)
-    {
-      AppMethodBeat.o(237250);
-      return null;
-    }
-    parama = new a.d() {};
-    AppMethodBeat.o(237250);
-    return parama;
-  }
-  
-  private void wU()
-  {
-    AppMethodBeat.i(237236);
-    Drawable localDrawable = getDrawable();
-    if (localDrawable == null)
-    {
-      AppMethodBeat.o(237236);
-      return;
-    }
-    if (this.bAk == null)
-    {
-      androidx.core.graphics.drawable.a.o(localDrawable);
-      AppMethodBeat.o(237236);
-      return;
-    }
-    int i = this.bAk.getColorForState(getDrawableState(), 0);
-    PorterDuff.Mode localMode2 = this.bAl;
-    PorterDuff.Mode localMode1 = localMode2;
-    if (localMode2 == null) {
-      localMode1 = PorterDuff.Mode.SRC_IN;
-    }
-    localDrawable.mutate().setColorFilter(f.a(i, localMode1));
-    AppMethodBeat.o(237236);
+    return this.dtu.qv;
   }
   
   final void a(a parama)
   {
-    AppMethodBeat.i(237243);
+    AppMethodBeat.i(210104);
     Object localObject = getImpl();
     a.d locald = c(parama);
-    if (!((a)localObject).xf())
+    if (!((a)localObject).WD())
     {
-      if (((a)localObject).bAA != null) {
-        ((a)localObject).bAA.cancel();
+      if (((a)localObject).dtC != null) {
+        ((a)localObject).dtC.cancel();
       }
-      if (((a)localObject).xg())
+      if (((a)localObject).WE())
       {
-        if (((a)localObject).bAT.getVisibility() != 0)
+        if (((a)localObject).dtV.getVisibility() != 0)
         {
-          ((a)localObject).bAT.setAlpha(0.0F);
-          ((a)localObject).bAT.setScaleY(0.0F);
-          ((a)localObject).bAT.setScaleX(0.0F);
-          ((a)localObject).S(0.0F);
+          ((a)localObject).dtV.setAlpha(0.0F);
+          ((a)localObject).dtV.setScaleY(0.0F);
+          ((a)localObject).dtV.setScaleX(0.0F);
+          ((a)localObject).aT(0.0F);
         }
-        if (((a)localObject).bze != null) {}
-        for (parama = ((a)localObject).bze;; parama = ((a)localObject).bAB)
+        if (((a)localObject).dse != null) {}
+        for (parama = ((a)localObject).dse;; parama = ((a)localObject).dtD)
         {
           parama = ((a)localObject).a(parama, 1.0F, 1.0F, 1.0F);
           parama.addListener(new a.2((a)localObject, locald));
-          if (((a)localObject).bAM == null) {
+          if (((a)localObject).dtO == null) {
             break;
           }
-          localObject = ((a)localObject).bAM.iterator();
+          localObject = ((a)localObject).dtO.iterator();
           while (((Iterator)localObject).hasNext()) {
             parama.addListener((Animator.AnimatorListener)((Iterator)localObject).next());
           }
-          if (((a)localObject).bAB == null) {
-            ((a)localObject).bAB = com.google.android.material.a.h.y(((a)localObject).bAT.getContext(), a.a.design_fab_show_motion_spec);
+          if (((a)localObject).dtD == null) {
+            ((a)localObject).dtD = com.google.android.material.a.h.B(((a)localObject).dtV.getContext(), a.a.design_fab_show_motion_spec);
           }
         }
         parama.start();
-        AppMethodBeat.o(237243);
+        AppMethodBeat.o(210104);
         return;
       }
-      ((a)localObject).bAT.s(0, false);
-      ((a)localObject).bAT.setAlpha(1.0F);
-      ((a)localObject).bAT.setScaleY(1.0F);
-      ((a)localObject).bAT.setScaleX(1.0F);
-      ((a)localObject).S(1.0F);
+      ((a)localObject).dtV.G(0, false);
+      ((a)localObject).dtV.setAlpha(1.0F);
+      ((a)localObject).dtV.setScaleY(1.0F);
+      ((a)localObject).dtV.setScaleX(1.0F);
+      ((a)localObject).aT(1.0F);
     }
-    AppMethodBeat.o(237243);
+    AppMethodBeat.o(210104);
   }
   
   final void b(a parama)
   {
     int i = 1;
-    AppMethodBeat.i(237244);
+    AppMethodBeat.i(210116);
     Object localObject = getImpl();
     a.d locald = c(parama);
-    if (((a)localObject).bAT.getVisibility() == 0) {
-      if (((a)localObject).bAz == 1)
+    if (((a)localObject).dtV.getVisibility() == 0) {
+      if (((a)localObject).dtB == 1)
       {
         if (i != 0) {
           break label208;
         }
-        if (((a)localObject).bAA != null) {
-          ((a)localObject).bAA.cancel();
+        if (((a)localObject).dtC != null) {
+          ((a)localObject).dtC.cancel();
         }
-        if (!((a)localObject).xg()) {
+        if (!((a)localObject).WE()) {
           break label199;
         }
-        if (((a)localObject).bzf == null) {
+        if (((a)localObject).dsf == null) {
           break label156;
         }
       }
     }
-    for (parama = ((a)localObject).bzf;; parama = ((a)localObject).bAC)
+    for (parama = ((a)localObject).dsf;; parama = ((a)localObject).dtE)
     {
       parama = ((a)localObject).a(parama, 0.0F, 0.0F, 0.0F);
       parama.addListener(new a.1((a)localObject, locald));
-      if (((a)localObject).bAN == null) {
+      if (((a)localObject).dtP == null) {
         break label188;
       }
-      localObject = ((a)localObject).bAN.iterator();
+      localObject = ((a)localObject).dtP.iterator();
       while (((Iterator)localObject).hasNext()) {
         parama.addListener((Animator.AnimatorListener)((Iterator)localObject).next());
       }
       i = 0;
       break;
-      if (((a)localObject).bAz != 2) {
+      if (((a)localObject).dtB != 2) {
         break;
       }
       i = 0;
       break;
       label156:
-      if (((a)localObject).bAC == null) {
-        ((a)localObject).bAC = com.google.android.material.a.h.y(((a)localObject).bAT.getContext(), a.a.design_fab_hide_motion_spec);
+      if (((a)localObject).dtE == null) {
+        ((a)localObject).dtE = com.google.android.material.a.h.B(((a)localObject).dtV.getContext(), a.a.design_fab_hide_motion_spec);
       }
     }
     label188:
     parama.start();
-    AppMethodBeat.o(237244);
+    AppMethodBeat.o(210116);
     return;
     label199:
-    ((a)localObject).bAT.s(4, false);
+    ((a)localObject).dtV.G(4, false);
     label208:
-    AppMethodBeat.o(237244);
+    AppMethodBeat.o(210116);
   }
   
   protected void drawableStateChanged()
   {
-    AppMethodBeat.i(237263);
+    AppMethodBeat.i(210173);
     super.drawableStateChanged();
-    getImpl().p(getDrawableState());
-    AppMethodBeat.o(237263);
+    getImpl().s(getDrawableState());
+    AppMethodBeat.o(210173);
   }
   
   public ColorStateList getBackgroundTintList()
   {
-    return this.bye;
+    return this.drh;
   }
   
   public PorterDuff.Mode getBackgroundTintMode()
   {
-    return this.byd;
+    return this.drg;
   }
   
   public float getCompatElevation()
   {
-    AppMethodBeat.i(237275);
-    float f = getImpl().wW();
-    AppMethodBeat.o(237275);
+    AppMethodBeat.i(210211);
+    float f = getImpl().za();
+    AppMethodBeat.o(210211);
     return f;
   }
   
   public float getCompatHoveredFocusedTranslationZ()
   {
-    AppMethodBeat.i(237278);
-    float f = getImpl().bAJ;
-    AppMethodBeat.o(237278);
+    AppMethodBeat.i(210225);
+    float f = getImpl().dtL;
+    AppMethodBeat.o(210225);
     return f;
   }
   
   public float getCompatPressedTranslationZ()
   {
-    AppMethodBeat.i(237282);
-    float f = getImpl().bAK;
-    AppMethodBeat.o(237282);
+    AppMethodBeat.i(210237);
+    float f = getImpl().dtM;
+    AppMethodBeat.o(210237);
     return f;
   }
   
   public Drawable getContentBackground()
   {
-    AppMethodBeat.i(237272);
-    Drawable localDrawable = getImpl().bAI;
-    AppMethodBeat.o(237272);
+    AppMethodBeat.i(210200);
+    Drawable localDrawable = getImpl().dtK;
+    AppMethodBeat.o(210200);
     return localDrawable;
   }
   
   public int getCustomSize()
   {
-    return this.bAm;
+    return this.dtn;
   }
   
   public int getExpandedComponentIdHint()
   {
-    return this.bAs.bAj;
+    return this.dtu.dtk;
   }
   
   public com.google.android.material.a.h getHideMotionSpec()
   {
-    AppMethodBeat.i(237289);
-    com.google.android.material.a.h localh = getImpl().bzf;
-    AppMethodBeat.o(237289);
+    AppMethodBeat.i(210255);
+    com.google.android.material.a.h localh = getImpl().dsf;
+    AppMethodBeat.o(210255);
     return localh;
   }
   
   public a getImpl()
   {
-    AppMethodBeat.i(237294);
-    if (this.bAt == null) {
+    AppMethodBeat.i(210262);
+    if (this.dtv == null) {
       if (Build.VERSION.SDK_INT < 21) {
         break label56;
       }
@@ -354,9 +359,9 @@ public class FloatingActionButton
     label56:
     for (Object localObject = new b(this, new b());; localObject = new a(this, new b()))
     {
-      this.bAt = ((a)localObject);
-      localObject = this.bAt;
-      AppMethodBeat.o(237294);
+      this.dtv = ((a)localObject);
+      localObject = this.dtv;
+      AppMethodBeat.o(210262);
       return localObject;
     }
   }
@@ -364,27 +369,27 @@ public class FloatingActionButton
   @Deprecated
   public int getRippleColor()
   {
-    AppMethodBeat.i(237200);
-    if (this.byg != null)
+    AppMethodBeat.i(209986);
+    if (this.drj != null)
     {
-      int i = this.byg.getDefaultColor();
-      AppMethodBeat.o(237200);
+      int i = this.drj.getDefaultColor();
+      AppMethodBeat.o(209986);
       return i;
     }
-    AppMethodBeat.o(237200);
+    AppMethodBeat.o(209986);
     return 0;
   }
   
   public ColorStateList getRippleColorStateList()
   {
-    return this.byg;
+    return this.drj;
   }
   
   public com.google.android.material.a.h getShowMotionSpec()
   {
-    AppMethodBeat.i(237286);
-    com.google.android.material.a.h localh = getImpl().bze;
-    AppMethodBeat.o(237286);
+    AppMethodBeat.i(210247);
+    com.google.android.material.a.h localh = getImpl().dse;
+    AppMethodBeat.o(210247);
     return localh;
   }
   
@@ -395,15 +400,15 @@ public class FloatingActionButton
   
   int getSizeDimension()
   {
-    AppMethodBeat.i(237255);
+    AppMethodBeat.i(210157);
     int i = this.size;
     Resources localResources;
     for (;;)
     {
-      if (this.bAm != 0)
+      if (this.dtn != 0)
       {
-        i = this.bAm;
-        AppMethodBeat.o(237255);
+        i = this.dtn;
+        AppMethodBeat.o(210157);
         return i;
       }
       localResources = getResources();
@@ -412,7 +417,7 @@ public class FloatingActionButton
       case 0: 
       default: 
         i = localResources.getDimensionPixelSize(com.google.android.material.a.d.design_fab_size_normal);
-        AppMethodBeat.o(237255);
+        AppMethodBeat.o(210157);
         return i;
       case -1: 
         if (Math.max(localResources.getConfiguration().screenWidthDp, localResources.getConfiguration().screenHeightDp) < 470) {
@@ -424,161 +429,161 @@ public class FloatingActionButton
       }
     }
     i = localResources.getDimensionPixelSize(com.google.android.material.a.d.design_fab_size_mini);
-    AppMethodBeat.o(237255);
+    AppMethodBeat.o(210157);
     return i;
   }
   
   public ColorStateList getSupportBackgroundTintList()
   {
-    AppMethodBeat.i(237219);
+    AppMethodBeat.i(210036);
     ColorStateList localColorStateList = getBackgroundTintList();
-    AppMethodBeat.o(237219);
+    AppMethodBeat.o(210036);
     return localColorStateList;
   }
   
   public PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    AppMethodBeat.i(237223);
+    AppMethodBeat.i(210051);
     PorterDuff.Mode localMode = getBackgroundTintMode();
-    AppMethodBeat.o(237223);
+    AppMethodBeat.o(210051);
     return localMode;
   }
   
   public ColorStateList getSupportImageTintList()
   {
-    return this.bAk;
+    return this.dtl;
   }
   
   public PorterDuff.Mode getSupportImageTintMode()
   {
-    return this.bAl;
+    return this.dtm;
   }
   
   public boolean getUseCompatPadding()
   {
-    return this.bAo;
-  }
-  
-  @Deprecated
-  public final boolean i(Rect paramRect)
-  {
-    AppMethodBeat.i(237271);
-    if (w.ah(this))
-    {
-      paramRect.set(0, 0, getWidth(), getHeight());
-      j(paramRect);
-      AppMethodBeat.o(237271);
-      return true;
-    }
-    AppMethodBeat.o(237271);
-    return false;
-  }
-  
-  public final void j(Rect paramRect)
-  {
-    paramRect.left += this.bAp.left;
-    paramRect.top += this.bAp.top;
-    paramRect.right -= this.bAp.right;
-    paramRect.bottom -= this.bAp.bottom;
+    return this.dtp;
   }
   
   public void jumpDrawablesToCurrentState()
   {
-    AppMethodBeat.i(237267);
+    AppMethodBeat.i(210178);
     super.jumpDrawablesToCurrentState();
-    getImpl().wY();
-    AppMethodBeat.o(237267);
+    getImpl().Ww();
+    AppMethodBeat.o(210178);
+  }
+  
+  @Deprecated
+  public final boolean o(Rect paramRect)
+  {
+    AppMethodBeat.i(210193);
+    if (z.au(this))
+    {
+      paramRect.set(0, 0, getWidth(), getHeight());
+      p(paramRect);
+      AppMethodBeat.o(210193);
+      return true;
+    }
+    AppMethodBeat.o(210193);
+    return false;
   }
   
   protected void onAttachedToWindow()
   {
-    AppMethodBeat.i(237256);
+    AppMethodBeat.i(210162);
     super.onAttachedToWindow();
     a locala = getImpl();
-    if (locala.xb())
+    if (locala.Wz())
     {
-      if (locala.bAY == null) {
-        locala.bAY = new a.3(locala);
+      if (locala.dua == null) {
+        locala.dua = new a.3(locala);
       }
-      locala.bAT.getViewTreeObserver().addOnPreDrawListener(locala.bAY);
+      locala.dtV.getViewTreeObserver().addOnPreDrawListener(locala.dua);
     }
-    AppMethodBeat.o(237256);
+    AppMethodBeat.o(210162);
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(237262);
+    AppMethodBeat.i(210167);
     super.onDetachedFromWindow();
     a locala = getImpl();
-    if (locala.bAY != null)
+    if (locala.dua != null)
     {
-      locala.bAT.getViewTreeObserver().removeOnPreDrawListener(locala.bAY);
-      locala.bAY = null;
+      locala.dtV.getViewTreeObserver().removeOnPreDrawListener(locala.dua);
+      locala.dua = null;
     }
-    AppMethodBeat.o(237262);
+    AppMethodBeat.o(210167);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(237198);
+    AppMethodBeat.i(209979);
     int i = getSizeDimension();
-    this.bAn = ((i - this.maxImageSize) / 2);
-    getImpl().xa();
-    paramInt1 = Math.min(bA(i, paramInt1), bA(i, paramInt2));
-    setMeasuredDimension(this.bAp.left + paramInt1 + this.bAp.right, paramInt1 + this.bAp.top + this.bAp.bottom);
-    AppMethodBeat.o(237198);
+    this.dto = ((i - this.maxImageSize) / 2);
+    getImpl().Wy();
+    paramInt1 = Math.min(cv(i, paramInt1), cv(i, paramInt2));
+    setMeasuredDimension(this.dtq.left + paramInt1 + this.dtq.right, paramInt1 + this.dtq.top + this.dtq.bottom);
+    AppMethodBeat.o(209979);
   }
   
   protected void onRestoreInstanceState(Parcelable paramParcelable)
   {
-    AppMethodBeat.i(237270);
+    AppMethodBeat.i(210189);
     if (!(paramParcelable instanceof ExtendableSavedState))
     {
       super.onRestoreInstanceState(paramParcelable);
-      AppMethodBeat.o(237270);
+      AppMethodBeat.o(210189);
       return;
     }
     Object localObject = (ExtendableSavedState)paramParcelable;
-    super.onRestoreInstanceState(((AbsSavedState)localObject).Rb);
-    paramParcelable = this.bAs;
-    localObject = (Bundle)((ExtendableSavedState)localObject).bEM.get("expandableWidgetHelper");
-    paramParcelable.py = ((Bundle)localObject).getBoolean("expanded", false);
-    paramParcelable.bAj = ((Bundle)localObject).getInt("expandedComponentIdHint", 0);
-    if (paramParcelable.py)
+    super.onRestoreInstanceState(((AbsSavedState)localObject).bxs);
+    paramParcelable = this.dtu;
+    localObject = (Bundle)((ExtendableSavedState)localObject).dxM.get("expandableWidgetHelper");
+    paramParcelable.qv = ((Bundle)localObject).getBoolean("expanded", false);
+    paramParcelable.dtk = ((Bundle)localObject).getInt("expandedComponentIdHint", 0);
+    if (paramParcelable.qv)
     {
-      localObject = paramParcelable.bAi.getParent();
+      localObject = paramParcelable.dtj.getParent();
       if ((localObject instanceof CoordinatorLayout)) {
-        ((CoordinatorLayout)localObject).w(paramParcelable.bAi);
+        ((CoordinatorLayout)localObject).F(paramParcelable.dtj);
       }
     }
-    AppMethodBeat.o(237270);
+    AppMethodBeat.o(210189);
   }
   
   protected Parcelable onSaveInstanceState()
   {
-    AppMethodBeat.i(237269);
+    AppMethodBeat.i(210182);
     ExtendableSavedState localExtendableSavedState = new ExtendableSavedState(super.onSaveInstanceState());
-    g localg = localExtendableSavedState.bEM;
-    c localc = this.bAs;
+    g localg = localExtendableSavedState.dxM;
+    c localc = this.dtu;
     Bundle localBundle = new Bundle();
-    localBundle.putBoolean("expanded", localc.py);
-    localBundle.putInt("expandedComponentIdHint", localc.bAj);
+    localBundle.putBoolean("expanded", localc.qv);
+    localBundle.putInt("expandedComponentIdHint", localc.dtk);
     localg.put("expandableWidgetHelper", localBundle);
-    AppMethodBeat.o(237269);
+    AppMethodBeat.o(210182);
     return localExtendableSavedState;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(237274);
-    if ((paramMotionEvent.getAction() == 0) && (i(this.bAq)) && (!this.bAq.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY())))
+    AppMethodBeat.i(210206);
+    if ((paramMotionEvent.getAction() == 0) && (o(this.dtr)) && (!this.dtr.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY())))
     {
-      AppMethodBeat.o(237274);
+      AppMethodBeat.o(210206);
       return false;
     }
     boolean bool = super.onTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(237274);
+    AppMethodBeat.o(210206);
     return bool;
+  }
+  
+  public final void p(Rect paramRect)
+  {
+    paramRect.left += this.dtq.left;
+    paramRect.top += this.dtq.top;
+    paramRect.right -= this.dtq.right;
+    paramRect.bottom -= this.dtq.bottom;
   }
   
   public void setBackgroundColor(int paramInt) {}
@@ -589,337 +594,332 @@ public class FloatingActionButton
   
   public void setBackgroundTintList(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(237211);
-    if (this.bye != paramColorStateList)
+    AppMethodBeat.i(210018);
+    if (this.drh != paramColorStateList)
     {
-      this.bye = paramColorStateList;
+      this.drh = paramColorStateList;
       a locala = getImpl();
-      if (locala.bAF != null) {
-        androidx.core.graphics.drawable.a.a(locala.bAF, paramColorStateList);
+      if (locala.dtH != null) {
+        androidx.core.graphics.drawable.a.a(locala.dtH, paramColorStateList);
       }
-      if (locala.bAH != null) {
-        locala.bAH.d(paramColorStateList);
+      if (locala.dtJ != null) {
+        locala.dtJ.d(paramColorStateList);
       }
     }
-    AppMethodBeat.o(237211);
+    AppMethodBeat.o(210018);
   }
   
   public void setBackgroundTintMode(PorterDuff.Mode paramMode)
   {
-    AppMethodBeat.i(237215);
-    if (this.byd != paramMode)
+    AppMethodBeat.i(210025);
+    if (this.drg != paramMode)
     {
-      this.byd = paramMode;
+      this.drg = paramMode;
       a locala = getImpl();
-      if (locala.bAF != null) {
-        androidx.core.graphics.drawable.a.a(locala.bAF, paramMode);
+      if (locala.dtH != null) {
+        androidx.core.graphics.drawable.a.a(locala.dtH, paramMode);
       }
     }
-    AppMethodBeat.o(237215);
+    AppMethodBeat.o(210025);
   }
   
   public void setCompatElevation(float paramFloat)
   {
-    AppMethodBeat.i(237276);
-    getImpl().e(paramFloat);
-    AppMethodBeat.o(237276);
+    AppMethodBeat.i(210216);
+    getImpl().g(paramFloat);
+    AppMethodBeat.o(210216);
   }
   
   public void setCompatElevationResource(int paramInt)
   {
-    AppMethodBeat.i(237277);
+    AppMethodBeat.i(210220);
     setCompatElevation(getResources().getDimension(paramInt));
-    AppMethodBeat.o(237277);
+    AppMethodBeat.o(210220);
   }
   
   public void setCompatHoveredFocusedTranslationZ(float paramFloat)
   {
-    AppMethodBeat.i(237279);
-    getImpl().Q(paramFloat);
-    AppMethodBeat.o(237279);
+    AppMethodBeat.i(210228);
+    getImpl().aR(paramFloat);
+    AppMethodBeat.o(210228);
   }
   
   public void setCompatHoveredFocusedTranslationZResource(int paramInt)
   {
-    AppMethodBeat.i(237281);
+    AppMethodBeat.i(210232);
     setCompatHoveredFocusedTranslationZ(getResources().getDimension(paramInt));
-    AppMethodBeat.o(237281);
+    AppMethodBeat.o(210232);
   }
   
   public void setCompatPressedTranslationZ(float paramFloat)
   {
-    AppMethodBeat.i(237284);
-    getImpl().R(paramFloat);
-    AppMethodBeat.o(237284);
+    AppMethodBeat.i(210242);
+    getImpl().aS(paramFloat);
+    AppMethodBeat.o(210242);
   }
   
   public void setCompatPressedTranslationZResource(int paramInt)
   {
-    AppMethodBeat.i(237285);
+    AppMethodBeat.i(210243);
     setCompatPressedTranslationZ(getResources().getDimension(paramInt));
-    AppMethodBeat.o(237285);
+    AppMethodBeat.o(210243);
   }
   
   public void setCustomSize(int paramInt)
   {
-    AppMethodBeat.i(237251);
+    AppMethodBeat.i(210149);
     if (paramInt < 0)
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Custom size must be non-negative");
-      AppMethodBeat.o(237251);
+      AppMethodBeat.o(210149);
       throw localIllegalArgumentException;
     }
-    this.bAm = paramInt;
-    AppMethodBeat.o(237251);
+    this.dtn = paramInt;
+    AppMethodBeat.o(210149);
   }
   
   public void setExpandedComponentIdHint(int paramInt)
   {
-    this.bAs.bAj = paramInt;
+    this.dtu.dtk = paramInt;
   }
   
   public void setHideMotionSpec(com.google.android.material.a.h paramh)
   {
-    AppMethodBeat.i(237291);
-    getImpl().bzf = paramh;
-    AppMethodBeat.o(237291);
+    AppMethodBeat.i(210257);
+    getImpl().dsf = paramh;
+    AppMethodBeat.o(210257);
   }
   
   public void setHideMotionSpecResource(int paramInt)
   {
-    AppMethodBeat.i(237292);
-    setHideMotionSpec(com.google.android.material.a.h.y(getContext(), paramInt));
-    AppMethodBeat.o(237292);
+    AppMethodBeat.i(210260);
+    setHideMotionSpec(com.google.android.material.a.h.B(getContext(), paramInt));
+    AppMethodBeat.o(210260);
   }
   
   public void setImageDrawable(Drawable paramDrawable)
   {
-    AppMethodBeat.i(237242);
+    AppMethodBeat.i(210093);
     super.setImageDrawable(paramDrawable);
-    getImpl().wX();
-    AppMethodBeat.o(237242);
+    getImpl().Wv();
+    AppMethodBeat.o(210093);
   }
   
   public void setImageResource(int paramInt)
   {
-    AppMethodBeat.i(237240);
-    this.bAr.setImageResource(paramInt);
-    AppMethodBeat.o(237240);
+    AppMethodBeat.i(210088);
+    this.dtt.setImageResource(paramInt);
+    AppMethodBeat.o(210088);
   }
   
   public void setRippleColor(int paramInt)
   {
-    AppMethodBeat.i(237205);
+    AppMethodBeat.i(209998);
     setRippleColor(ColorStateList.valueOf(paramInt));
-    AppMethodBeat.o(237205);
+    AppMethodBeat.o(209998);
   }
   
   public void setRippleColor(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(237207);
-    if (this.byg != paramColorStateList)
+    AppMethodBeat.i(210007);
+    if (this.drj != paramColorStateList)
     {
-      this.byg = paramColorStateList;
-      getImpl().setRippleColor(this.byg);
+      this.drj = paramColorStateList;
+      getImpl().setRippleColor(this.drj);
     }
-    AppMethodBeat.o(237207);
+    AppMethodBeat.o(210007);
   }
   
   public void setShowMotionSpec(com.google.android.material.a.h paramh)
   {
-    AppMethodBeat.i(237287);
-    getImpl().bze = paramh;
-    AppMethodBeat.o(237287);
+    AppMethodBeat.i(210249);
+    getImpl().dse = paramh;
+    AppMethodBeat.o(210249);
   }
   
   public void setShowMotionSpecResource(int paramInt)
   {
-    AppMethodBeat.i(237288);
-    setShowMotionSpec(com.google.android.material.a.h.y(getContext(), paramInt));
-    AppMethodBeat.o(237288);
+    AppMethodBeat.i(210252);
+    setShowMotionSpec(com.google.android.material.a.h.B(getContext(), paramInt));
+    AppMethodBeat.o(210252);
   }
   
   public void setSize(int paramInt)
   {
-    AppMethodBeat.i(237247);
-    this.bAm = 0;
+    AppMethodBeat.i(210140);
+    this.dtn = 0;
     if (paramInt != this.size)
     {
       this.size = paramInt;
       requestLayout();
     }
-    AppMethodBeat.o(237247);
+    AppMethodBeat.o(210140);
   }
   
   public void setSupportBackgroundTintList(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(237217);
+    AppMethodBeat.i(210030);
     setBackgroundTintList(paramColorStateList);
-    AppMethodBeat.o(237217);
+    AppMethodBeat.o(210030);
   }
   
   public void setSupportBackgroundTintMode(PorterDuff.Mode paramMode)
   {
-    AppMethodBeat.i(237221);
+    AppMethodBeat.i(210043);
     setBackgroundTintMode(paramMode);
-    AppMethodBeat.o(237221);
+    AppMethodBeat.o(210043);
   }
   
   public void setSupportImageTintList(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(237226);
-    if (this.bAk != paramColorStateList)
+    AppMethodBeat.i(210055);
+    if (this.dtl != paramColorStateList)
     {
-      this.bAk = paramColorStateList;
-      wU();
+      this.dtl = paramColorStateList;
+      Wt();
     }
-    AppMethodBeat.o(237226);
+    AppMethodBeat.o(210055);
   }
   
   public void setSupportImageTintMode(PorterDuff.Mode paramMode)
   {
-    AppMethodBeat.i(237230);
-    if (this.bAl != paramMode)
+    AppMethodBeat.i(210059);
+    if (this.dtm != paramMode)
     {
-      this.bAl = paramMode;
-      wU();
+      this.dtm = paramMode;
+      Wt();
     }
-    AppMethodBeat.o(237230);
+    AppMethodBeat.o(210059);
   }
   
   public void setUseCompatPadding(boolean paramBoolean)
   {
-    AppMethodBeat.i(237245);
-    if (this.bAo != paramBoolean)
+    AppMethodBeat.i(210133);
+    if (this.dtp != paramBoolean)
     {
-      this.bAo = paramBoolean;
-      getImpl().wZ();
+      this.dtp = paramBoolean;
+      getImpl().Wx();
     }
-    AppMethodBeat.o(237245);
-  }
-  
-  public final boolean wT()
-  {
-    return this.bAs.py;
+    AppMethodBeat.o(210133);
   }
   
   protected static class BaseBehavior<T extends FloatingActionButton>
     extends CoordinatorLayout.Behavior<T>
   {
-    private FloatingActionButton.a bAw;
-    private boolean bAx;
-    private Rect bvn;
+    private FloatingActionButton.a dty;
+    private boolean dtz;
+    private Rect tmpRect;
     
     public BaseBehavior()
     {
-      this.bAx = true;
+      this.dtz = true;
     }
     
     public BaseBehavior(Context paramContext, AttributeSet paramAttributeSet)
     {
       super(paramAttributeSet);
-      AppMethodBeat.i(237091);
+      AppMethodBeat.i(209848);
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.k.FloatingActionButton_Behavior_Layout);
-      this.bAx = paramContext.getBoolean(a.k.FloatingActionButton_Behavior_Layout_behavior_autoHide, true);
+      this.dtz = paramContext.getBoolean(a.k.FloatingActionButton_Behavior_Layout_behavior_autoHide, true);
       paramContext.recycle();
-      AppMethodBeat.o(237091);
+      AppMethodBeat.o(209848);
     }
     
     private boolean a(View paramView, FloatingActionButton paramFloatingActionButton)
     {
-      AppMethodBeat.i(237098);
+      AppMethodBeat.i(209864);
       CoordinatorLayout.d locald = (CoordinatorLayout.d)paramFloatingActionButton.getLayoutParams();
-      if (!this.bAx)
+      if (!this.dtz)
       {
-        AppMethodBeat.o(237098);
+        AppMethodBeat.o(209864);
         return false;
       }
-      if (locald.Ht != paramView.getId())
+      if (locald.bnu != paramView.getId())
       {
-        AppMethodBeat.o(237098);
+        AppMethodBeat.o(209864);
         return false;
       }
       if (paramFloatingActionButton.getUserSetVisibility() != 0)
       {
-        AppMethodBeat.o(237098);
+        AppMethodBeat.o(209864);
         return false;
       }
-      AppMethodBeat.o(237098);
+      AppMethodBeat.o(209864);
       return true;
     }
     
     private boolean a(CoordinatorLayout paramCoordinatorLayout, AppBarLayout paramAppBarLayout, FloatingActionButton paramFloatingActionButton)
     {
-      AppMethodBeat.i(237100);
+      AppMethodBeat.i(209870);
       if (!a(paramAppBarLayout, paramFloatingActionButton))
       {
-        AppMethodBeat.o(237100);
+        AppMethodBeat.o(209870);
         return false;
       }
-      if (this.bvn == null) {
-        this.bvn = new Rect();
+      if (this.tmpRect == null) {
+        this.tmpRect = new Rect();
       }
-      Rect localRect = this.bvn;
+      Rect localRect = this.tmpRect;
       d.a(paramCoordinatorLayout, paramAppBarLayout, localRect);
       if (localRect.bottom <= paramAppBarLayout.getMinimumHeightForVisibleOverlappingContent()) {
-        paramFloatingActionButton.b(this.bAw);
+        paramFloatingActionButton.b(this.dty);
       }
       for (;;)
       {
-        AppMethodBeat.o(237100);
+        AppMethodBeat.o(209870);
         return true;
-        paramFloatingActionButton.a(this.bAw);
+        paramFloatingActionButton.a(this.dty);
       }
     }
     
     private boolean b(View paramView, FloatingActionButton paramFloatingActionButton)
     {
-      AppMethodBeat.i(237102);
+      AppMethodBeat.i(209878);
       if (!a(paramView, paramFloatingActionButton))
       {
-        AppMethodBeat.o(237102);
+        AppMethodBeat.o(209878);
         return false;
       }
       CoordinatorLayout.d locald = (CoordinatorLayout.d)paramFloatingActionButton.getLayoutParams();
       int i = paramView.getTop();
       int j = paramFloatingActionButton.getHeight() / 2;
       if (i < locald.topMargin + j) {
-        paramFloatingActionButton.b(this.bAw);
+        paramFloatingActionButton.b(this.dty);
       }
       for (;;)
       {
-        AppMethodBeat.o(237102);
+        AppMethodBeat.o(209878);
         return true;
-        paramFloatingActionButton.a(this.bAw);
+        paramFloatingActionButton.a(this.dty);
       }
     }
     
-    private static boolean ci(View paramView)
+    private static boolean cE(View paramView)
     {
-      AppMethodBeat.i(237096);
+      AppMethodBeat.i(209858);
       paramView = paramView.getLayoutParams();
       if ((paramView instanceof CoordinatorLayout.d))
       {
-        boolean bool = ((CoordinatorLayout.d)paramView).Hq instanceof BottomSheetBehavior;
-        AppMethodBeat.o(237096);
+        boolean bool = ((CoordinatorLayout.d)paramView).bnr instanceof BottomSheetBehavior;
+        AppMethodBeat.o(209858);
         return bool;
       }
-      AppMethodBeat.o(237096);
+      AppMethodBeat.o(209858);
       return false;
     }
     
     public void a(CoordinatorLayout.d paramd)
     {
-      if (paramd.Hv == 0) {
-        paramd.Hv = 80;
+      if (paramd.bnw == 0) {
+        paramd.bnw = 80;
       }
     }
     
     public boolean a(CoordinatorLayout paramCoordinatorLayout, FloatingActionButton paramFloatingActionButton, int paramInt)
     {
       int j = 0;
-      AppMethodBeat.i(237103);
-      Object localObject1 = paramCoordinatorLayout.x(paramFloatingActionButton);
+      AppMethodBeat.i(209899);
+      Object localObject1 = paramCoordinatorLayout.G(paramFloatingActionButton);
       int k = ((List)localObject1).size();
       int i = 0;
       Object localObject2;
@@ -936,7 +936,7 @@ public class FloatingActionButton
       {
         label70:
         paramCoordinatorLayout.h(paramFloatingActionButton, paramInt);
-        localObject1 = paramFloatingActionButton.bAp;
+        localObject1 = paramFloatingActionButton.dtq;
         if ((localObject1 != null) && (((Rect)localObject1).centerX() > 0) && (((Rect)localObject1).centerY() > 0))
         {
           localObject2 = (CoordinatorLayout.d)paramFloatingActionButton.getLayoutParams();
@@ -955,14 +955,14 @@ public class FloatingActionButton
         for (;;)
         {
           if (i != 0) {
-            w.s(paramFloatingActionButton, i);
+            z.s(paramFloatingActionButton, i);
           }
           if (paramInt != 0) {
-            w.u(paramFloatingActionButton, paramInt);
+            z.u(paramFloatingActionButton, paramInt);
           }
-          AppMethodBeat.o(237103);
+          AppMethodBeat.o(209899);
           return true;
-          if ((ci((View)localObject2)) && (b((View)localObject2, paramFloatingActionButton))) {
+          if ((cE((View)localObject2)) && (b((View)localObject2, paramFloatingActionButton))) {
             break label70;
           }
           label204:
@@ -986,24 +986,24 @@ public class FloatingActionButton
     
     public boolean a(CoordinatorLayout paramCoordinatorLayout, FloatingActionButton paramFloatingActionButton, Rect paramRect)
     {
-      AppMethodBeat.i(237104);
-      paramCoordinatorLayout = paramFloatingActionButton.bAp;
+      AppMethodBeat.i(209907);
+      paramCoordinatorLayout = paramFloatingActionButton.dtq;
       paramRect.set(paramFloatingActionButton.getLeft() + paramCoordinatorLayout.left, paramFloatingActionButton.getTop() + paramCoordinatorLayout.top, paramFloatingActionButton.getRight() - paramCoordinatorLayout.right, paramFloatingActionButton.getBottom() - paramCoordinatorLayout.bottom);
-      AppMethodBeat.o(237104);
+      AppMethodBeat.o(209907);
       return true;
     }
     
     public boolean a(CoordinatorLayout paramCoordinatorLayout, FloatingActionButton paramFloatingActionButton, View paramView)
     {
-      AppMethodBeat.i(237094);
+      AppMethodBeat.i(209890);
       if ((paramView instanceof AppBarLayout)) {
         a(paramCoordinatorLayout, (AppBarLayout)paramView, paramFloatingActionButton);
       }
       for (;;)
       {
-        AppMethodBeat.o(237094);
+        AppMethodBeat.o(209890);
         return false;
-        if (ci(paramView)) {
+        if (cE(paramView)) {
           b(paramView, paramFloatingActionButton);
         }
       }
@@ -1028,39 +1028,39 @@ public class FloatingActionButton
   {
     b() {}
     
-    public final void c(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+    public final boolean Wu()
     {
-      AppMethodBeat.i(237159);
-      FloatingActionButton.this.bAp.set(paramInt1, paramInt2, paramInt3, paramInt4);
+      return FloatingActionButton.this.dtp;
+    }
+    
+    public final void e(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+    {
+      AppMethodBeat.i(209898);
+      FloatingActionButton.this.dtq.set(paramInt1, paramInt2, paramInt3, paramInt4);
       FloatingActionButton localFloatingActionButton = FloatingActionButton.this;
       localFloatingActionButton.setPadding(FloatingActionButton.a(localFloatingActionButton) + paramInt1, FloatingActionButton.a(FloatingActionButton.this) + paramInt2, FloatingActionButton.a(FloatingActionButton.this) + paramInt3, FloatingActionButton.a(FloatingActionButton.this) + paramInt4);
-      AppMethodBeat.o(237159);
+      AppMethodBeat.o(209898);
     }
     
     public final float getRadius()
     {
-      AppMethodBeat.i(237157);
+      AppMethodBeat.i(209893);
       float f = FloatingActionButton.this.getSizeDimension() / 2.0F;
-      AppMethodBeat.o(237157);
+      AppMethodBeat.o(209893);
       return f;
     }
     
     public final void setBackgroundDrawable(Drawable paramDrawable)
     {
-      AppMethodBeat.i(237160);
+      AppMethodBeat.i(209902);
       FloatingActionButton.a(FloatingActionButton.this, paramDrawable);
-      AppMethodBeat.o(237160);
-    }
-    
-    public final boolean wV()
-    {
-      return FloatingActionButton.this.bAo;
+      AppMethodBeat.o(209902);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.floatingactionbutton.FloatingActionButton
  * JD-Core Version:    0.7.0.1
  */

@@ -1,856 +1,1830 @@
 package com.tencent.mm.plugin.finder.viewmodel.component;
 
+import android.app.Activity;
 import android.content.Context;
-import android.os.Build.VERSION;
-import android.os.Looper;
-import android.os.MessageQueue;
-import android.os.MessageQueue.IdleHandler;
-import android.os.SystemClock;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Message;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.k;
+import androidx.fragment.app.Fragment;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.pn;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.loader.ac;
-import com.tencent.mm.plugin.finder.utils.aj;
-import com.tencent.mm.plugin.finder.video.FinderCropVideoView;
-import com.tencent.mm.plugin.finder.video.FinderLivePlayView;
-import com.tencent.mm.plugin.finder.video.FinderThumbPlayerProxy;
-import com.tencent.mm.plugin.finder.video.FinderVLogCompositionPlayView;
-import com.tencent.mm.plugin.finder.video.FinderVideoLayout;
-import com.tencent.mm.plugin.finder.video.s;
-import com.tencent.mm.plugin.finder.video.v;
-import com.tencent.mm.plugin.findersdk.receiver.HeadsetReceiver;
-import com.tencent.mm.plugin.findersdk.receiver.HeadsetReceiver.b;
-import com.tencent.mm.protocal.protobuf.csg;
-import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.plugin.finder.activity.fragment.FinderActivityFragment;
+import com.tencent.mm.plugin.finder.event.b;
+import com.tencent.mm.plugin.finder.model.ay;
+import com.tencent.mm.plugin.finder.report.ad;
+import com.tencent.mm.plugin.finder.report.ae;
+import com.tencent.mm.plugin.finder.report.af;
+import com.tencent.mm.plugin.finder.report.al;
+import com.tencent.mm.plugin.finder.report.am;
+import com.tencent.mm.plugin.finder.report.au;
+import com.tencent.mm.plugin.finder.report.aw;
+import com.tencent.mm.plugin.finder.report.m.c;
+import com.tencent.mm.plugin.finder.report.q;
+import com.tencent.mm.plugin.finder.report.z;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.ui.FinderHomeUI;
+import com.tencent.mm.plugin.finder.ui.FinderShareFeedRelUI;
+import com.tencent.mm.plugin.finder.ui.MMFinderUI;
+import com.tencent.mm.plugin.finder.ui.fragment.FinderHomeTabFragment;
+import com.tencent.mm.plugin.finder.utils.av;
+import com.tencent.mm.plugin.findersdk.a.bn;
+import com.tencent.mm.protocal.protobuf.aps;
+import com.tencent.mm.protocal.protobuf.bui;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.MMFragmentActivity;
+import com.tencent.mm.ui.component.UIComponent;
+import com.tencent.mm.ui.component.k;
+import com.tencent.mm.ui.component.k.b;
+import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import kotlin.a.j;
-import kotlin.g.b.aa.d;
-import kotlin.g.b.aa.e;
-import kotlin.g.b.aa.f;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.o;
-import kotlin.t;
-import kotlin.x;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.CopyOnWriteArraySet;
+import kotlin.Metadata;
+import kotlin.a.ak;
+import kotlin.a.p;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.n.n;
+import kotlin.r;
+import kotlin.v;
+import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler;", "Lcom/tencent/mm/ui/component/UIComponentPlugin;", "Lcom/tencent/mm/plugin/finder/PluginFinder;", "Lcom/tencent/mm/plugin/finder/viewmodel/component/IFinderVideoRecycler;", "()V", "activityCount", "", "aliveActivitySet", "Ljava/util/HashSet;", "", "Lkotlin/collections/HashSet;", "createdVideoViews", "Ljava/util/concurrent/ConcurrentLinkedQueue;", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "headsetReceiver", "Lcom/tencent/mm/plugin/findersdk/receiver/HeadsetReceiver;", "isFinished", "", "isForceWaitForRelease", "maxVideoCount", "onHeadsetStateChangeListener", "Lcom/tencent/mm/plugin/findersdk/receiver/HeadsetReceiver$OnHeadsetStateChangeListener;", "onHeadsetStateChangeListenerList", "Ljava/util/LinkedList;", "onlineVideoEventListener", "com/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler$onlineVideoEventListener$1", "Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler$onlineVideoEventListener$1;", "preInflateCount", "preInflateVideoCount", "recycledVideoViews", "releasingVideoViewMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "uiHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "waitForCallback", "waitRecycledCallbacks", "Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler$IRecycledCallback;", "acrossCreatedVideoViews", "", "isRemoveFun", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "view", "addOnHeadsetStateChangeListener", "listener", "clearAllShouldPlayResumeVideoView", "createVideoView", "context", "Landroid/content/Context;", "videoType", "isCropVideo", "findOldestVideoView", "clazz", "Ljava/lang/Class;", "isForce", "getOrCreate", "parent", "Landroid/view/ViewGroup;", "finderVideo", "Lcom/tencent/mm/plugin/finder/loader/IFinderMediaLoaderData;", "completedTo", "videoView", "getVideoCount", "make", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "isPreInflate", "onCleared", "onFinish", "onInit", "onPreloadComplete", "mediaId", "pauseAllVideo", "filter", "pauseAndRecycle", "isForceRemove", "isTryKeep", "pauseFocusVideo", "preInflateVideoView", "recycledVideoView", "releaseVideoView", "source", "removeByContext", "removeOnHeadsetStateChangeListener", "removeViewFromParent", "Landroid/view/View;", "resumeFocusVideo", "Companion", "IRecycledCallback", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderReporterUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "Lcom/tencent/mm/plugin/finder/view/FinderFragmentChangeListener;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderReporterUIC;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "fragment", "Landroidx/fragment/app/Fragment;", "(Landroidx/fragment/app/Fragment;)V", "changeByClick", "", "chnlExtra", "", "getChnlExtra", "()Ljava/lang/String;", "setChnlExtra", "(Ljava/lang/String;)V", "clickFeedContextId", "getClickFeedContextId", "setClickFeedContextId", "clickFeedId", "", "getClickFeedId", "()J", "setClickFeedId", "(J)V", "clickSubTabContextId", "getClickSubTabContextId", "setClickSubTabContextId", "clickTabContextId", "getClickTabContextId", "setClickTabContextId", "commentScene", "", "getCommentScene", "()I", "setCommentScene", "(I)V", "commonExtraInfo", "getCommonExtraInfo", "setCommonExtraInfo", "contextId", "getContextId", "setContextId", "currentTabType", "getCurrentTabType", "setCurrentTabType", "currentTopicPageTag", "getCurrentTopicPageTag", "setCurrentTopicPageTag", "dataAdapterListener", "Ljava/util/LinkedList;", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "getDataAdapterListener", "()Ljava/util/LinkedList;", "setDataAdapterListener", "(Ljava/util/LinkedList;)V", "enterProfileType", "getEnterProfileType", "setEnterProfileType", "enterSourceInfo", "getEnterSourceInfo", "setEnterSourceInfo", "eventDispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "extraInfo", "getExtraInfo", "setExtraInfo", "feedSubscriber", "Lcom/tencent/mm/plugin/finder/event/FinderFeedSubscriber;", "firstFragmentVisible", "followEventDispatcher", "followFeedSubscriber", "followReporter", "Lcom/tencent/mm/plugin/finder/report/FinderSingleFeedFlowReporter;", "followSubscriber", "Lcom/tencent/mm/plugin/finder/report/FinderSingleFeedFlowEventSubscriber;", "friendEventDispatcher", "friendFeedSubscriber", "friendReporter", "friendSubscriber", "fromCommentScene", "getFromCommentScene", "setFromCommentScene", "fromProfileShareScene", "getFromProfileShareScene", "setFromProfileShareScene", "hashTagInfo", "getHashTagInfo", "setHashTagInfo", "isBlockTwoFeedReport", "()Z", "setBlockTwoFeedReport", "(Z)V", "isFirstOnResume", "isMegaVideo", "setMegaVideo", "jumpId", "getJumpId", "setJumpId", "lbsCardFlowReporter", "Lcom/tencent/mm/plugin/finder/report/LbsCardFlowReporter;", "machineEventDispatcher", "machineFeedSubscriber", "machineReporter", "Lcom/tencent/mm/plugin/finder/report/FinderImportantFeedFlowReporter;", "machineSubscriber", "megaVideoFeedFlowReporter", "Lcom/tencent/mm/plugin/finder/report/MegaVideoFeedFlowReporter;", "reportType", "getReportType", "setReportType", "scrollByUser", "sessionId", "getSessionId", "setSessionId", "singleFeedFlowReporter", "singleFeedFlowSubscriber", "timer", "com/tencent/mm/plugin/finder/viewmodel/component/FinderReporterUIC$timer$1", "Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderReporterUIC$timer$1;", "twoFeedFlowReporter", "Lcom/tencent/mm/plugin/finder/report/FinderTwoFeedFlowReporter;", "twoFeedFlowSubscriber", "Lcom/tencent/mm/plugin/finder/report/FinderTwoFeedFlowEventSubscriber;", "addDataAdapter", "", "adapter", "appendChnlExtra", "key", "value", "assignChnlExtra", "_chnlExtra", "assignClickSubTabContextId", "_clickSubTabContextId", "assignClickTabContextId", "_clickTabContextId", "assignContextId", "_contextId", "getAllDispatcher", "", "getCurrentReportObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "tabType", "getFeedEventDispatcher", "getFeedEventSubscriber", "getFeedFlowEventSubscriber", "Lcom/tencent/mm/plugin/finder/event/base/FinderFeedFlowEventSubscriber;", "getFeedFlowReporter", "Lcom/tencent/mm/plugin/finder/report/FinderFeedFlowReporter;", "getHomeFeedEventDispatcher", "getHomeFeedEventSubscriber", "getHomeFlowEventSubscriber", "getHomeFlowReporter", "getLastVisibleExtStats", "Lcom/tencent/mm/protocal/protobuf/ExtStats;", "getReportChnlExtra", "getReportClickSubTabContextId", "getReportCommentScene", "getReportContextId", "initActivityReporter", "initIntentParams", "context", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "feedId", "enterLbsUI", "isCampaign", "isHome", "isLbsCardFlow", "isMegaVideoFeedFlow", "isNearby", "isSingleFeedFlow", "isSnsAdExtraInfo", "isTwoFeedFlow", "onActivityResult", "requestCode", "resultCode", "data", "onBackPressed", "onCreateAfter", "savedInstanceState", "Landroid/os/Bundle;", "onCreateBefore", "onFragmentChange", "from", "to", "fromType", "toType", "onPageScrollStateChanged", "state", "onPageScrolled", "position", "positionOffset", "", "positionOffsetPixels", "onPause", "onPreDestroyed", "onResume", "onUserVisibleFocused", "onUserVisibleFragmentChange", "isUserVisibleFocused", "index", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "onUserVisibleUnFocused", "replaceExtraInfoFeedId", "contextObj", "sendStatsList", "finderUserName", "setExtraInfoFeedId", "setTwoFeedReportVisible", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class as
-  extends com.tencent.mm.ui.component.i<PluginFinder>
-  implements au
+  extends UIComponent
+  implements com.tencent.mm.plugin.finder.view.h, bn
 {
-  public static final a Bpl;
-  private boolean Bpb;
-  private int Bpc;
-  private int Bpd;
-  private final HashSet<s> Bpe;
-  private final ConcurrentLinkedQueue<WeakReference<? extends s>> Bpf;
-  private final HashMap<Integer, String> Bpg;
-  private final HashMap<Integer, b> Bph;
-  private final LinkedList<HeadsetReceiver.b> Bpi;
-  private final HashMap<Integer, Object> Bpj;
-  private final k Bpk;
-  private boolean isFinished;
-  private final MMHandler knk;
-  private int xUX;
-  private int xUY;
-  private final HashSet<String> xUZ;
-  private HeadsetReceiver.b zCi;
-  private HeadsetReceiver zFi;
+  public static final a GSQ;
+  private static final int GTx;
+  private static final int GTy;
+  private static final long GTz;
+  private static final String TAG;
+  private static final String THREAD_TAG;
+  long ADF;
+  public int AJo;
+  private com.tencent.mm.plugin.finder.event.base.c ANW;
+  public String DUN;
+  public String DnS;
+  private String DnT;
+  public int GKp;
+  String GSR;
+  private String GSS;
+  int GST;
+  public int GSU;
+  public String GSV;
+  String GSW;
+  private boolean GSX;
+  public boolean GSY;
+  private com.tencent.mm.plugin.finder.event.a GSZ;
+  private ad GTa;
+  private ae GTb;
+  private aw GTc;
+  private al GTd;
+  public am GTe;
+  private au GTf;
+  private com.tencent.mm.plugin.finder.event.base.c GTg;
+  private com.tencent.mm.plugin.finder.event.a GTh;
+  private ad GTi;
+  private ae GTj;
+  private com.tencent.mm.plugin.finder.event.base.c GTk;
+  private com.tencent.mm.plugin.finder.event.a GTl;
+  private ad GTm;
+  private ae GTn;
+  private com.tencent.mm.plugin.finder.event.base.c GTo;
+  private com.tencent.mm.plugin.finder.event.a GTp;
+  private ad GTq;
+  private q GTr;
+  private boolean GTs;
+  private boolean GTt;
+  private boolean GTu;
+  public LinkedList<WeakReference<WxRecyclerAdapter<?>>> GTv;
+  private final c GTw;
+  public String extraInfo;
+  public int hLK;
+  private int hYb;
+  private boolean isFirstOnResume;
+  public String sessionId;
+  public String zIB;
+  public String zIE;
+  public String zIO;
   
   static
   {
-    AppMethodBeat.i(278195);
-    Bpl = new a((byte)0);
-    AppMethodBeat.o(278195);
+    AppMethodBeat.i(338260);
+    GSQ = new a((byte)0);
+    THREAD_TAG = "FinderReporterThread";
+    TAG = "Finder.FinderReporterUIC";
+    GTx = 1;
+    GTy = 2;
+    GTz = 60000L;
+    AppMethodBeat.o(338260);
   }
   
-  public as()
+  public as(AppCompatActivity paramAppCompatActivity)
   {
-    AppMethodBeat.i(278194);
-    this.Bpb = true;
-    this.Bpc = 1;
-    this.knk = new MMHandler(Looper.getMainLooper());
-    this.Bpe = new HashSet();
-    this.Bpf = new ConcurrentLinkedQueue();
-    this.Bpg = new HashMap();
-    this.Bph = new HashMap();
-    this.xUZ = new HashSet();
-    this.Bpi = new LinkedList();
-    this.zCi = ((HeadsetReceiver.b)new j(this));
-    this.Bpj = new HashMap();
-    this.Bpk = new k(this);
-    AppMethodBeat.o(278194);
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(338108);
+    this.GSS = "";
+    this.DnT = "{}";
+    this.GSV = "";
+    this.extraInfo = "";
+    this.GSW = "";
+    this.zIE = "";
+    this.DUN = "";
+    this.GTs = true;
+    this.GTt = true;
+    this.isFirstOnResume = true;
+    this.GTv = new LinkedList();
+    this.GTw = new c(this, THREAD_TAG);
+    AppMethodBeat.o(338108);
   }
   
-  private final void a(final s params, String paramString)
+  public as(Fragment paramFragment)
   {
-    AppMethodBeat.i(278182);
-    if (this.Bpj.containsKey(Integer.valueOf(params.hashCode())))
+    super(paramFragment);
+    AppMethodBeat.i(338119);
+    this.GSS = "";
+    this.DnT = "{}";
+    this.GSV = "";
+    this.extraInfo = "";
+    this.GSW = "";
+    this.zIE = "";
+    this.DUN = "";
+    this.GTs = true;
+    this.GTt = true;
+    this.isFirstOnResume = true;
+    this.GTv = new LinkedList();
+    this.GTw = new c(this, THREAD_TAG);
+    AppMethodBeat.o(338119);
+  }
+  
+  private com.tencent.mm.plugin.finder.report.m Vp(int paramInt)
+  {
+    AppMethodBeat.i(338212);
+    Log.i(TAG, s.X("getHomeFlowReporter ", Integer.valueOf(paramInt)));
+    switch (paramInt)
     {
-      Log.w("Finder.VideoRecycler", "[releaseVideoView] videoView=" + params.hashCode() + " is releasing, source=" + paramString);
-      AppMethodBeat.o(278182);
-      return;
+    case 2: 
+    default: 
+      localm = (com.tencent.mm.plugin.finder.report.m)this.GTb;
+      AppMethodBeat.o(338212);
+      return localm;
+    case 3: 
+      localm = (com.tencent.mm.plugin.finder.report.m)this.GTj;
+      AppMethodBeat.o(338212);
+      return localm;
+    case 1: 
+      localm = (com.tencent.mm.plugin.finder.report.m)this.GTn;
+      AppMethodBeat.o(338212);
+      return localm;
     }
-    final long l = System.currentTimeMillis();
-    ((Map)this.Bpj).put(Integer.valueOf(params.hashCode()), new Object());
-    eV(params.getVideoView());
-    params.pause();
-    StringBuilder localStringBuilder = new StringBuilder("[releaseVideoView] async release videoView(").append(params.hashCode()).append(") parent=");
-    ViewParent localViewParent = params.getParentView();
-    if (localViewParent != null) {}
-    for (int i = localViewParent.hashCode();; i = 0)
-    {
-      Log.i("Finder.VideoRecycler", i + " source=" + paramString);
-      com.tencent.mm.ae.d.h((kotlin.g.a.a)new p(this, params, l, paramString));
-      AppMethodBeat.o(278182);
-      return;
+    com.tencent.mm.plugin.finder.report.m localm = (com.tencent.mm.plugin.finder.report.m)this.GTr;
+    AppMethodBeat.o(338212);
+    return localm;
+  }
+  
+  private static void a(bui parambui, String paramString)
+  {
+    if (parambui != null) {
+      parambui.zIE = paramString;
     }
   }
   
-  private int aM(Class<? extends s> paramClass)
+  private boolean foq()
   {
-    AppMethodBeat.i(278184);
-    aa.d locald = new aa.d();
-    locald.aaBA = 0;
-    P((kotlin.g.a.b)new as.h(paramClass, locald));
-    int i = locald.aaBA;
-    AppMethodBeat.o(278184);
-    return i;
+    return this.hYb == 2;
   }
   
-  private final s e(Context paramContext, int paramInt, boolean paramBoolean)
+  private boolean jdMethod_for()
   {
-    AppMethodBeat.i(278177);
-    long l = System.currentTimeMillis();
-    Object localObject;
-    if (paramInt == 1) {
-      localObject = (s)new FinderVLogCompositionPlayView(paramContext);
-    }
-    for (;;)
+    return this.hYb == 3;
+  }
+  
+  private boolean fos()
+  {
+    return this.hYb == 4;
+  }
+  
+  private final boolean fot()
+  {
+    return this.hYb == 5;
+  }
+  
+  private boolean isNearby()
+  {
+    AppMethodBeat.i(338138);
+    boolean bool = ((com.tencent.d.a.b.a.e)com.tencent.mm.kernel.h.az(com.tencent.d.a.b.a.e.class)).isNearby(getFragment());
+    AppMethodBeat.o(338138);
+    return bool;
+  }
+  
+  public final void K(long paramLong, String paramString)
+  {
+    Object localObject2 = null;
+    AppMethodBeat.i(338348);
+    Log.i(TAG, "setEnterSourceInfo:" + paramLong + "  finderUserName:" + paramString + '}');
+    Object localObject3 = new JSONObject();
+    Object localObject1 = z.FrZ;
+    String str = z.pL(paramLong);
+    this.ADF = paramLong;
+    ((JSONObject)localObject3).put("feedid", str);
+    if (paramString == null)
     {
-      this.Bpf.add(new WeakReference(localObject));
-      Log.i("Finder.VideoRecycler", "[createVideoView] activity=" + paramContext.getClass().getSimpleName() + " videoCount=" + a(this) + ' ' + "videoView=" + localObject.getClass().getSimpleName() + " cost=" + (System.currentTimeMillis() - l) + "ms");
-      AppMethodBeat.o(278177);
-      return localObject;
-      if (paramInt == 2)
+      localObject1 = "";
+      ((JSONObject)localObject3).put("finderusername", localObject1);
+      localObject3 = ((JSONObject)localObject3).toString();
+      s.s(localObject3, "enterSourceJson.toString()");
+      this.zIE = ((String)localObject3);
+      localObject1 = this.GTb;
+      if (localObject1 != null) {
+        break label227;
+      }
+      localObject1 = null;
+      label138:
+      a((bui)localObject1, (String)localObject3);
+      localObject1 = this.GTe;
+      if (localObject1 != null) {
+        break label237;
+      }
+    }
+    label227:
+    label237:
+    for (localObject1 = localObject2;; localObject1 = ((com.tencent.mm.plugin.finder.report.m)localObject1).Auc)
+    {
+      a((bui)localObject1, (String)localObject3);
+      getActivity().getIntent().putExtra("key_enter_source_info", this.zIE);
+      if (!Util.isNullOrNil(this.extraInfo))
       {
-        localObject = (s)new FinderLivePlayView(paramContext);
+        localObject1 = com.tencent.mm.plugin.finder.report.m.Fpx;
+        com.tencent.mm.plugin.finder.report.m.a.v(this.zIO, this.extraInfo, str, paramString);
       }
-      else
-      {
-        localObject = com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.thumbplayer.a.a.class);
-        p.j(localObject, "MMKernel.plugin(IPluginThumbPlayer::class.java)");
-        if ((((com.tencent.mm.plugin.thumbplayer.a.a)localObject).isOpenTPPlayer()) && (!paramBoolean))
-        {
-          localObject = MMApplicationContext.getContext();
-          p.j(localObject, "MMApplicationContext.getContext()");
-          localObject = (s)new FinderThumbPlayerProxy((Context)localObject);
-        }
-        else
-        {
-          localObject = (s)new FinderCropVideoView(paramContext);
-        }
-      }
-    }
-  }
-  
-  private final boolean eV(View paramView)
-  {
-    AppMethodBeat.i(278179);
-    if (paramView != null)
-    {
-      ViewParent localViewParent = paramView.getParent();
-      if (localViewParent != null)
-      {
-        ((Map)this.Bpg).put(Integer.valueOf(localViewParent.hashCode()), null);
-        if (localViewParent == null)
-        {
-          paramView = new t("null cannot be cast to non-null type android.view.ViewGroup");
-          AppMethodBeat.o(278179);
-          throw paramView;
-        }
-        ((ViewGroup)localViewParent).removeView(paramView);
-        Log.i("Finder.VideoRecycler", "[removeViewFromParent] parent=" + localViewParent.hashCode() + ", videoView=" + paramView.hashCode() + ", parentTag=" + ((ViewGroup)localViewParent).getTag());
-        AppMethodBeat.o(278179);
-        return true;
-      }
-    }
-    AppMethodBeat.o(278179);
-    return false;
-  }
-  
-  private final void onFinish()
-  {
-    AppMethodBeat.i(278174);
-    Log.i("Finder.VideoRecycler", "onFinish");
-    this.isFinished = true;
-    this.Bpk.dead();
-    this.knk.post((Runnable)new i(this));
-    this.xUZ.clear();
-    this.Bph.clear();
-    this.Bpi.clear();
-    HeadsetReceiver localHeadsetReceiver = this.zFi;
-    if (localHeadsetReceiver != null)
-    {
-      Context localContext = MMApplicationContext.getContext();
-      p.j(localContext, "MMApplicationContext.getContext()");
-      localHeadsetReceiver.gd(localContext);
-      AppMethodBeat.o(278174);
+      AppMethodBeat.o(338348);
       return;
-    }
-    AppMethodBeat.o(278174);
-  }
-  
-  public final void P(kotlin.g.a.b<? super s, Boolean> paramb)
-  {
-    AppMethodBeat.i(278183);
-    p.k(paramb, "isRemoveFun");
-    Iterator localIterator = this.Bpf.iterator();
-    while (localIterator.hasNext())
-    {
-      s locals = (s)((WeakReference)localIterator.next()).get();
-      if (locals != null)
-      {
-        if (((Boolean)paramb.invoke(locals)).booleanValue()) {
-          localIterator.remove();
-        }
-      }
-      else {
-        localIterator.remove();
-      }
-    }
-    AppMethodBeat.o(278183);
-  }
-  
-  public final void Q(final kotlin.g.a.b<? super s, Boolean> paramb)
-  {
-    AppMethodBeat.i(278191);
-    p.k(paramb, "filter");
-    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new l(this, paramb));
-    AppMethodBeat.o(278191);
-  }
-  
-  public final void a(final ViewGroup paramViewGroup, final ac paramac, final kotlin.g.a.b<? super s, x> paramb)
-  {
-    AppMethodBeat.i(278180);
-    p.k(paramViewGroup, "parent");
-    p.k(paramac, "finderVideo");
-    p.k(paramb, "completedTo");
-    final Context localContext = paramViewGroup.getContext();
-    Object localObject1 = paramac.dJw();
-    final String str = paramac.aBv();
-    paramac = aj.AGc;
-    final int i = aj.h((csg)localObject1);
-    paramac = aj.AGc;
-    if (aj.g((csg)localObject1))
-    {
-      paramac = aj.AGc;
-      if (!aj.i((csg)localObject1)) {}
-    }
-    for (final boolean bool1 = true;; bool1 = false)
-    {
-      localObject1 = paramViewGroup.findViewWithTag(Integer.valueOf(paramViewGroup.hashCode()));
-      paramac = (ac)localObject1;
-      if (!(localObject1 instanceof s)) {
-        paramac = null;
-      }
-      paramac = (s)paramac;
-      if ((paramac == null) || ((paramac.getVideoMediaId() != null) && (!p.h(paramac.getVideoMediaId(), str)))) {
-        break;
-      }
-      paramac.setTag(b.f.finder_video_view_usage_update_time, Long.valueOf(SystemClock.uptimeMillis()));
-      paramb.invoke(paramac);
-      AppMethodBeat.o(278180);
-      return;
-    }
-    if (paramac != null) {}
-    for (paramac = paramac.getVideoView();; paramac = null)
-    {
-      eV(paramac);
-      if (!this.Bpb) {
-        break label317;
-      }
-      paramac = (String)this.Bpg.get(Integer.valueOf(paramViewGroup.hashCode()));
-      if (!p.h(paramac, str)) {
-        break;
-      }
-      AppMethodBeat.o(278180);
-      return;
-    }
-    label317:
-    label372:
-    final as localas;
-    Object localObject2;
-    if (paramac != null)
-    {
-      ((Map)this.Bpg).put(Integer.valueOf(paramViewGroup.hashCode()), str);
-      Log.i("Finder.VideoRecycler", "replace callback. " + paramac + " => " + str + ", parent=" + paramViewGroup.hashCode());
-      localObject1 = (kotlin.g.a.b)new g(this, paramViewGroup, paramb);
-      if (i != 0) {
-        break label1034;
-      }
-      paramac = com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.thumbplayer.a.a.class);
-      p.j(paramac, "MMKernel.plugin(IPluginThumbPlayer::class.java)");
-      if ((!((com.tencent.mm.plugin.thumbplayer.a.a)paramac).isOpenTPPlayer()) || (bool1)) {
-        break label1027;
-      }
-      paramac = FinderThumbPlayerProxy.class;
-      paramb = (s)com.tencent.mm.ae.d.a(this.Bpe, (kotlin.g.a.b)new f(localContext, paramac));
-      if (paramb != null)
-      {
-        Log.i("Finder.VideoRecycler", "[getOrCreate] get a recycled videoView(" + paramb.hashCode() + ") parent=" + paramViewGroup.hashCode() + " videoCount=" + a(this));
-        ((kotlin.g.a.b)localObject1).invoke(paramb);
-        if (paramb != null) {}
-      }
-      else
-      {
-        localas = (as)this;
-        int j = localas.aM(paramac);
-        if (j < localas.Bpc) {
-          break label1158;
-        }
-        final boolean bool2 = localas.Bpb;
-        paramb = new aa.e();
-        paramb.aaBB = 9223372036854775807L;
-        localObject2 = new aa.f();
-        ((aa.f)localObject2).aaBC = null;
-        localas.P((kotlin.g.a.b)new d(localas, paramac, paramb, new int[2], bool2, (aa.f)localObject2));
-        StringBuilder localStringBuilder = new StringBuilder("[findOldestVideoView] activity=");
-        paramb = (s)((aa.f)localObject2).aaBC;
-        if (paramb == null) {
-          break label1054;
-        }
-        paramb = paramb.getVideoView();
-        if (paramb == null) {
-          break label1054;
-        }
-        paramb = paramb.getContext();
-        if (paramb == null) {
-          break label1054;
-        }
-        paramb = paramb.getClass();
-        if (paramb == null) {
-          break label1054;
-        }
-        paramb = paramb.getSimpleName();
-        label611:
-        localStringBuilder = localStringBuilder.append(paramb).append(" mediaid:");
-        paramb = (s)((aa.f)localObject2).aaBC;
-        if (paramb == null) {
-          break label1059;
-        }
-        paramb = paramb.getVideoMediaId();
-        label645:
-        localStringBuilder = localStringBuilder.append(paramb).append(" videoView=");
-        paramb = (s)((aa.f)localObject2).aaBC;
-        if (paramb == null) {
-          break label1064;
-        }
-        paramb = Integer.valueOf(paramb.hashCode());
-        label680:
-        localStringBuilder = localStringBuilder.append(paramb).append(' ').append("isAttachedToWindow=");
-        paramb = (s)((aa.f)localObject2).aaBC;
-        if (paramb == null) {
-          break label1069;
-        }
-        paramb = paramb.getVideoView();
-        if (paramb == null) {
-          break label1069;
-        }
-        paramb = Boolean.valueOf(paramb.isAttachedToWindow());
-        label731:
-        localStringBuilder = localStringBuilder.append(paramb).append(" parent=");
-        paramb = (s)((aa.f)localObject2).aaBC;
-        if (paramb == null) {
-          break label1074;
-        }
-        paramb = paramb.getParentView();
-        if (paramb == null) {
-          break label1074;
-        }
-        paramb = Integer.valueOf(paramb.hashCode());
-        label777:
-        Log.i("Finder.VideoRecycler", paramb);
-        localObject2 = (s)((aa.f)localObject2).aaBC;
-        localStringBuilder = new StringBuilder("[getOrCreate] over count(max=").append(localas.Bpc).append(':').append(j).append(") waitForRelease=").append(localas.Bpb).append(" oldest=");
-        if (localObject2 == null) {
-          break label1079;
-        }
-        paramb = Integer.valueOf(localObject2.hashCode());
-        label866:
-        Log.i("Finder.VideoRecycler", paramb);
-        if (!localas.Bpb) {
-          break label1113;
-        }
-        if (localObject2 == null) {
-          break label1084;
-        }
-        j = paramViewGroup.hashCode();
-        ((Map)localas.Bpg).put(Integer.valueOf(j), str);
-        ((Map)localas.Bph).put(Integer.valueOf(localObject2.hashCode()), new e(j, localas, paramac, paramViewGroup, str, (kotlin.g.a.b)localObject1, localContext, i, bool1));
-        localas.a((s)localObject2, "getOrCreate");
-      }
-    }
-    for (;;)
-    {
-      paramViewGroup = x.aazN;
-      AppMethodBeat.o(278180);
-      return;
-      Log.i("Finder.VideoRecycler", "wait for callback. mediaId=" + str + " parent=" + paramViewGroup.hashCode());
+      localObject1 = paramString;
       break;
-      label1027:
-      paramac = FinderCropVideoView.class;
-      break label372;
-      label1034:
-      if (i == 2)
-      {
-        paramac = FinderLivePlayView.class;
-        break label372;
-      }
-      paramac = FinderVLogCompositionPlayView.class;
-      break label372;
-      label1054:
-      paramb = null;
-      break label611;
-      label1059:
-      paramb = null;
-      break label645;
-      label1064:
-      paramb = null;
-      break label680;
-      label1069:
-      paramb = null;
-      break label731;
-      label1074:
-      paramb = null;
-      break label777;
-      label1079:
-      paramb = null;
-      break label866;
-      label1084:
-      Log.e("Finder.VideoRecycler", "[getOrCreate] oldest is null! parent=" + paramViewGroup.hashCode());
-      continue;
-      label1113:
-      if (localObject2 != null) {
-        localas.a((s)localObject2, "getOrCreate");
-      }
-      p.j(localContext, "context");
-      ((kotlin.g.a.b)localObject1).invoke(localas.e(localContext, i, bool1));
-      continue;
-      label1158:
-      p.j(localContext, "context");
-      ((kotlin.g.a.b)localObject1).invoke(localas.e(localContext, i, bool1));
+      localObject1 = ((com.tencent.mm.plugin.finder.report.m)localObject1).Auc;
+      break label138;
     }
   }
   
-  public final void a(ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2)
+  public final void N(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(278181);
-    p.k(paramViewGroup, "parent");
-    ((Map)this.Bpg).put(Integer.valueOf(paramViewGroup.hashCode()), null);
-    paramViewGroup = paramViewGroup.findViewWithTag(Integer.valueOf(paramViewGroup.hashCode()));
-    if (!(paramViewGroup instanceof s))
-    {
-      AppMethodBeat.o(278181);
-      return;
+    AppMethodBeat.i(338503);
+    Log.i(TAG, s.X("onFragmentChange ", Integer.valueOf(paramInt4)));
+    Object localObject1 = z.FrZ;
+    this.AJo = z.SD(paramInt4);
+    this.GKp = paramInt4;
+    if (paramInt1 >= 0) {
+      this.zIB = a.Vs(paramInt4);
     }
-    paramViewGroup = (s)paramViewGroup;
-    Log.i("Finder.VideoRecycler", "[pauseOrRecycle] pauseWithCancel mediaId:" + paramViewGroup.getVideoMediaId() + " videoView(" + paramViewGroup.hashCode() + ") isForceRemove=" + paramBoolean1 + " isTryKeep=" + paramBoolean2);
-    paramViewGroup.setVideoViewFocused(false);
-    if ((paramBoolean2) || (!paramBoolean1))
-    {
-      paramViewGroup.egW();
-      AppMethodBeat.o(278181);
-      return;
-    }
-    a(paramViewGroup, "pauseAndRecycle");
-    AppMethodBeat.o(278181);
-  }
-  
-  public final void a(AppCompatActivity paramAppCompatActivity, boolean paramBoolean)
-  {
-    AppMethodBeat.i(278172);
-    p.k(paramAppCompatActivity, "activity");
-    String str = String.valueOf(paramAppCompatActivity.hashCode());
-    Object localObject1;
+    localObject1 = Vl(paramInt4);
     Object localObject2;
-    if (this.xUY == 0)
+    switch (paramInt4)
     {
-      this.isFinished = false;
-      this.Bpk.alive();
-      localObject1 = com.tencent.mm.plugin.finder.storage.d.AjH;
-      localObject1 = com.tencent.mm.plugin.finder.storage.d.dSW();
-      this.Bpc = ((Number)((o)localObject1).Mx).intValue();
-      this.Bpb = ((Boolean)((o)localObject1).My).booleanValue();
-      this.Bpd = kotlin.k.i.ow(this.Bpc - 1, 4);
-      this.zFi = new HeadsetReceiver();
-      localObject1 = this.zFi;
-      if (localObject1 != null)
+    case 2: 
+    default: 
+      if (this.GTt)
       {
-        localObject2 = MMApplicationContext.getContext();
-        p.j(localObject2, "MMApplicationContext.getContext()");
-        ((HeadsetReceiver)localObject1).a((Context)localObject2, this.zCi);
-      }
-      Log.i("Finder.VideoRecycler", "[onInit] maxVideoCount=" + this.Bpc + " preInflateCount=" + this.Bpd + " waitForRelease=" + this.Bpb);
-    }
-    if (this.xUZ.add(str))
-    {
-      Log.i("Finder.VideoRecycler", "[register] activity=" + paramAppCompatActivity.getClass().getSimpleName() + " isPreInflate=" + paramBoolean);
-      if (paramBoolean)
-      {
-        localObject1 = (Context)paramAppCompatActivity;
-        if (Build.VERSION.SDK_INT >= 23)
-        {
-          localObject2 = Looper.getMainLooper();
-          p.j(localObject2, "Looper.getMainLooper()");
-          ((Looper)localObject2).getQueue().addIdleHandler((MessageQueue.IdleHandler)new n(this, (Context)localObject1));
+        localObject2 = k.aeZF;
+        localObject2 = ((FinderHomeUIC)k.d(getActivity()).q(FinderHomeUIC.class)).getActiveFragment().EHy;
+        if (localObject2 == null) {
+          paramInt1 = 1;
         }
       }
-      this.xUY += 1;
-      paramAppCompatActivity.getLifecycle().a((k)new FinderVideoRecycler.make.1(this, paramAppCompatActivity, str));
+      break;
     }
-    AppMethodBeat.o(278172);
-  }
-  
-  public final void a(HeadsetReceiver.b paramb)
-  {
-    AppMethodBeat.i(278175);
-    p.k(paramb, "listener");
-    this.Bpi.add(paramb);
-    AppMethodBeat.o(278175);
-  }
-  
-  public final void aGE(String paramString)
-  {
-    AppMethodBeat.i(278173);
-    p.k(paramString, "mediaId");
-    Object localObject = com.tencent.mm.plugin.finder.storage.d.AjH;
-    if (((Number)com.tencent.mm.plugin.finder.storage.d.dXi().aSr()).intValue() != 1)
+    for (;;)
     {
-      AppMethodBeat.o(278173);
+      localObject2 = z.FrZ;
+      z.a(paramInt3, paramInt4, (bui)localObject1, paramInt1);
+      if (paramInt3 > 0)
+      {
+        localObject1 = Vn(paramInt3);
+        if ((localObject1 != null) && ((localObject1 instanceof ae)))
+        {
+          localObject1 = (ae)localObject1;
+          localObject2 = com.tencent.mm.plugin.finder.report.m.Fpx;
+          ((ae)localObject1).azV(com.tencent.mm.plugin.finder.report.m.a.aj(ak.e(new r[] { v.Y("feedActionType", Integer.valueOf(2)), v.Y("toTab", Integer.valueOf(paramInt4)), v.Y("fromTab", Integer.valueOf(paramInt3)) })));
+        }
+      }
+      AppMethodBeat.o(338503);
+      return;
+      localObject2 = this.GTj;
+      if (localObject2 == null) {
+        break;
+      }
+      ((ae)localObject2).f((bui)localObject1);
+      break;
+      localObject2 = this.GTn;
+      if (localObject2 == null) {
+        break;
+      }
+      ((ae)localObject2).f((bui)localObject1);
+      break;
+      localObject2 = this.GTr;
+      if (localObject2 == null) {
+        break;
+      }
+      ((q)localObject2).f((bui)localObject1);
+      break;
+      paramInt1 = ((Bundle)localObject2).getInt("Source", 0);
+      continue;
+      this.GTt = true;
+      paramInt1 = 6;
+    }
+  }
+  
+  public final bui Vl(int paramInt)
+  {
+    AppMethodBeat.i(338383);
+    bui localbui = new bui();
+    localbui.hLK = this.hLK;
+    localbui.sessionId = this.sessionId;
+    localbui.zIO = this.zIO;
+    localbui.zIB = this.zIB;
+    localbui.ADF = this.ADF;
+    localbui.GSR = this.GSR;
+    Object localObject = z.FrZ;
+    localbui.AJo = z.SD(paramInt);
+    localbui.GSU = this.GSU;
+    localbui.GST = this.GST;
+    localbui.GSV = this.GSV;
+    String str = this.GSW;
+    localObject = str;
+    if (str == null) {
+      localObject = "";
+    }
+    localbui.GSW = ((String)localObject);
+    str = this.extraInfo;
+    localObject = str;
+    if (str == null) {
+      localObject = "";
+    }
+    localbui.extraInfo = ((String)localObject);
+    str = this.zIE;
+    localObject = str;
+    if (str == null) {
+      localObject = "";
+    }
+    localbui.zIE = ((String)localObject);
+    localbui.GSX = false;
+    localbui.GSS = this.GSS;
+    AppMethodBeat.o(338383);
+    return localbui;
+  }
+  
+  public final com.tencent.mm.plugin.finder.event.base.c Vm(int paramInt)
+  {
+    AppMethodBeat.i(338392);
+    if (fop())
+    {
+      if (paramInt == -1)
+      {
+        localc = Vr(this.GKp);
+        AppMethodBeat.o(338392);
+        return localc;
+      }
+      localc = Vr(paramInt);
+      AppMethodBeat.o(338392);
+      return localc;
+    }
+    com.tencent.mm.plugin.finder.event.base.c localc = this.ANW;
+    AppMethodBeat.o(338392);
+    return localc;
+  }
+  
+  public final com.tencent.mm.plugin.finder.report.m Vn(int paramInt)
+  {
+    AppMethodBeat.i(338460);
+    com.tencent.mm.plugin.finder.report.m localm;
+    if (fop())
+    {
+      if (paramInt == -1)
+      {
+        localm = Vp(this.GKp);
+        AppMethodBeat.o(338460);
+        return localm;
+      }
+      localm = Vp(paramInt);
+      AppMethodBeat.o(338460);
+      return localm;
+    }
+    if (foq())
+    {
+      localm = (com.tencent.mm.plugin.finder.report.m)this.GTb;
+      AppMethodBeat.o(338460);
+      return localm;
+    }
+    if (jdMethod_for())
+    {
+      localm = (com.tencent.mm.plugin.finder.report.m)this.GTe;
+      AppMethodBeat.o(338460);
+      return localm;
+    }
+    if (fos())
+    {
+      localm = (com.tencent.mm.plugin.finder.report.m)this.GTc;
+      AppMethodBeat.o(338460);
+      return localm;
+    }
+    if (fot())
+    {
+      localm = (com.tencent.mm.plugin.finder.report.m)this.GTf;
+      AppMethodBeat.o(338460);
+      return localm;
+    }
+    AppMethodBeat.o(338460);
+    return null;
+  }
+  
+  public final com.tencent.mm.plugin.finder.event.base.f Vo(int paramInt)
+  {
+    AppMethodBeat.i(338466);
+    com.tencent.mm.plugin.finder.event.base.f localf;
+    if (fop())
+    {
+      if (paramInt == -1)
+      {
+        localf = Vq(this.GKp);
+        AppMethodBeat.o(338466);
+        return localf;
+      }
+      localf = Vq(paramInt);
+      AppMethodBeat.o(338466);
+      return localf;
+    }
+    if (foq())
+    {
+      localf = (com.tencent.mm.plugin.finder.event.base.f)this.GTa;
+      AppMethodBeat.o(338466);
+      return localf;
+    }
+    if (jdMethod_for())
+    {
+      localf = (com.tencent.mm.plugin.finder.event.base.f)this.GTd;
+      AppMethodBeat.o(338466);
+      return localf;
+    }
+    if (fos())
+    {
+      localf = (com.tencent.mm.plugin.finder.event.base.f)this.GTa;
+      AppMethodBeat.o(338466);
+      return localf;
+    }
+    AppMethodBeat.o(338466);
+    return null;
+  }
+  
+  public final com.tencent.mm.plugin.finder.event.base.f Vq(int paramInt)
+  {
+    AppMethodBeat.i(338475);
+    Log.i(TAG, s.X("getHomeFlowEventSubscriber ", Integer.valueOf(paramInt)));
+    switch (paramInt)
+    {
+    case 2: 
+    default: 
+      localf = (com.tencent.mm.plugin.finder.event.base.f)this.GTa;
+      AppMethodBeat.o(338475);
+      return localf;
+    case 3: 
+      localf = (com.tencent.mm.plugin.finder.event.base.f)this.GTi;
+      AppMethodBeat.o(338475);
+      return localf;
+    case 1: 
+      localf = (com.tencent.mm.plugin.finder.event.base.f)this.GTm;
+      AppMethodBeat.o(338475);
+      return localf;
+    }
+    com.tencent.mm.plugin.finder.event.base.f localf = (com.tencent.mm.plugin.finder.event.base.f)this.GTq;
+    AppMethodBeat.o(338475);
+    return localf;
+  }
+  
+  public final com.tencent.mm.plugin.finder.event.base.c Vr(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 2: 
+    default: 
+      return this.ANW;
+    case 3: 
+      return this.GTg;
+    case 1: 
+      return this.GTk;
+    }
+    return this.GTo;
+  }
+  
+  public final void a(final WxRecyclerAdapter<?> paramWxRecyclerAdapter)
+  {
+    AppMethodBeat.i(338543);
+    s.u(paramWxRecyclerAdapter, "adapter");
+    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new b(this, paramWxRecyclerAdapter));
+    AppMethodBeat.o(338543);
+  }
+  
+  public final void a(boolean paramBoolean, int paramInt, FinderHomeTabFragment paramFinderHomeTabFragment)
+  {
+    AppMethodBeat.i(338489);
+    s.u(paramFinderHomeTabFragment, "fragment");
+    Object localObject;
+    if (paramBoolean)
+    {
+      localObject = k.aeZF;
+      localObject = k.cn(PluginFinder.class).q(com.tencent.mm.plugin.finder.viewmodel.d.class);
+      s.s(localObject, "UICProvider.of(PluginFin…meTabStateVM::class.java)");
+      localObject = (com.tencent.mm.plugin.finder.viewmodel.d)localObject;
+      if (!this.GTs) {
+        break label442;
+      }
+      if (((com.tencent.mm.plugin.finder.viewmodel.d)localObject).fmM() != paramFinderHomeTabFragment.hJx) {
+        break label144;
+      }
+      paramBoolean = true;
+    }
+    for (;;)
+    {
+      if (!((com.tencent.mm.plugin.finder.viewmodel.d)localObject).Rp(paramFinderHomeTabFragment.hJx)) {}
+      for (paramInt = 3;; paramInt = 2)
+      {
+        localObject = Vl(paramFinderHomeTabFragment.hJx);
+        switch (paramFinderHomeTabFragment.hJx)
+        {
+        }
+        for (;;)
+        {
+          this.GTs = false;
+          AppMethodBeat.o(338489);
+          return;
+          label144:
+          paramBoolean = false;
+          break;
+          paramFinderHomeTabFragment = this.GTi;
+          if (paramFinderHomeTabFragment != null) {
+            paramFinderHomeTabFragment.onVisible();
+          }
+          paramFinderHomeTabFragment = this.GTj;
+          if (paramFinderHomeTabFragment != null) {
+            paramFinderHomeTabFragment.onVisible();
+          }
+          paramFinderHomeTabFragment = this.GTm;
+          if (paramFinderHomeTabFragment != null) {
+            paramFinderHomeTabFragment.onInvisible();
+          }
+          paramFinderHomeTabFragment = this.GTn;
+          if (paramFinderHomeTabFragment != null) {
+            paramFinderHomeTabFragment.onInvisible();
+          }
+          paramFinderHomeTabFragment = this.GTq;
+          if (paramFinderHomeTabFragment != null) {
+            paramFinderHomeTabFragment.onInvisible();
+          }
+          paramFinderHomeTabFragment = this.GTr;
+          if (paramFinderHomeTabFragment != null) {
+            paramFinderHomeTabFragment.onInvisible();
+          }
+          paramFinderHomeTabFragment = com.tencent.mm.plugin.finder.extension.reddot.m.ASi;
+          com.tencent.mm.plugin.finder.extension.reddot.m.a.b(paramInt, (bui)localObject, this.GKp, paramBoolean);
+          continue;
+          paramFinderHomeTabFragment = this.GTm;
+          if (paramFinderHomeTabFragment != null) {
+            paramFinderHomeTabFragment.onVisible();
+          }
+          paramFinderHomeTabFragment = this.GTn;
+          if (paramFinderHomeTabFragment != null) {
+            paramFinderHomeTabFragment.onVisible();
+          }
+          paramFinderHomeTabFragment = this.GTi;
+          if (paramFinderHomeTabFragment != null) {
+            paramFinderHomeTabFragment.onInvisible();
+          }
+          paramFinderHomeTabFragment = this.GTj;
+          if (paramFinderHomeTabFragment != null) {
+            paramFinderHomeTabFragment.onInvisible();
+          }
+          paramFinderHomeTabFragment = this.GTq;
+          if (paramFinderHomeTabFragment != null) {
+            paramFinderHomeTabFragment.onInvisible();
+          }
+          paramFinderHomeTabFragment = this.GTr;
+          if (paramFinderHomeTabFragment != null) {
+            paramFinderHomeTabFragment.onInvisible();
+          }
+          paramFinderHomeTabFragment = com.tencent.mm.plugin.finder.extension.reddot.m.ASi;
+          com.tencent.mm.plugin.finder.extension.reddot.m.a.a(paramInt, (bui)localObject, this.GKp, paramBoolean);
+          continue;
+          paramFinderHomeTabFragment = this.GTq;
+          if (paramFinderHomeTabFragment != null) {
+            paramFinderHomeTabFragment.onVisible();
+          }
+          paramFinderHomeTabFragment = this.GTr;
+          if (paramFinderHomeTabFragment != null) {
+            paramFinderHomeTabFragment.onVisible();
+          }
+          paramFinderHomeTabFragment = this.GTm;
+          if (paramFinderHomeTabFragment != null) {
+            paramFinderHomeTabFragment.onInvisible();
+          }
+          paramFinderHomeTabFragment = this.GTn;
+          if (paramFinderHomeTabFragment != null) {
+            paramFinderHomeTabFragment.onInvisible();
+          }
+          paramFinderHomeTabFragment = this.GTi;
+          if (paramFinderHomeTabFragment != null) {
+            paramFinderHomeTabFragment.onInvisible();
+          }
+          paramFinderHomeTabFragment = this.GTj;
+          if (paramFinderHomeTabFragment != null) {
+            paramFinderHomeTabFragment.onInvisible();
+          }
+          paramFinderHomeTabFragment = com.tencent.mm.plugin.finder.extension.reddot.m.ASi;
+          com.tencent.mm.plugin.finder.extension.reddot.m.a.c(paramInt, (bui)localObject, this.GKp, paramBoolean);
+        }
+      }
+      label442:
+      paramBoolean = false;
+    }
+  }
+  
+  public final void aA(Context paramContext, Intent paramIntent)
+  {
+    AppMethodBeat.i(338572);
+    s.u(paramContext, "context");
+    s.u(paramIntent, "intent");
+    a.a(paramContext, paramIntent, 0L, null, 0, 0, false);
+    AppMethodBeat.o(338572);
+  }
+  
+  public final void aCN(String paramString)
+  {
+    this.zIO = paramString;
+  }
+  
+  public final void aCO(String paramString)
+  {
+    this.zIB = paramString;
+  }
+  
+  public final void aCP(String paramString)
+  {
+    this.DnS = paramString;
+  }
+  
+  public final void aCQ(String paramString)
+  {
+    AppMethodBeat.i(338443);
+    CharSequence localCharSequence = (CharSequence)paramString;
+    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      this.DnT = "{}";
+      AppMethodBeat.o(338443);
       return;
     }
-    localObject = ((Iterable)this.Bpf).iterator();
-    while (((Iterator)localObject).hasNext())
+    this.DnT = paramString;
+    AppMethodBeat.o(338443);
+  }
+  
+  public final void ayc(String paramString)
+  {
+    AppMethodBeat.i(338268);
+    s.u(paramString, "<set-?>");
+    this.DUN = paramString;
+    AppMethodBeat.o(338268);
+  }
+  
+  public final String foA()
+  {
+    return this.DnT;
+  }
+  
+  public final List<aps> foB()
+  {
+    AppMethodBeat.i(338590);
+    com.tencent.mm.plugin.finder.report.m localm = Vn(-1);
+    LinkedList localLinkedList = new LinkedList();
+    if ((localm instanceof ae))
     {
-      s locals = (s)((WeakReference)((Iterator)localObject).next()).get();
-      if (locals != null)
+      Iterator localIterator = ((Map)((ae)localm).Fsu).entrySet().iterator();
+      if (localIterator.hasNext())
       {
-        String str = locals.getVideoMediaId();
-        if (str != null)
+        localObject = (Map.Entry)localIterator.next();
+        aps localaps = new aps();
+        localaps.hKN = ((af)((Map.Entry)localObject).getValue()).feedId;
+        localObject = ((af)((Map.Entry)localObject).getValue()).ANj;
+        if (localObject == null) {
+          localObject = "";
+        }
+        for (;;)
         {
-          Log.i("Finder.VideoRecycler", "onPreloadComplete " + str + ' ' + paramString);
-          if (p.h(str, paramString)) {
-            locals.egw();
+          localaps.finderUsername = ((String)localObject);
+          localObject = z.FrZ;
+          String str = z.p(localaps.hKN, ((ae)localm).Auc.AJo);
+          localObject = str;
+          if (str == null) {
+            localObject = "";
+          }
+          localaps.sessionBuffer = ((String)localObject);
+          localLinkedList.add(localaps);
+          break;
+          str = ((FinderItem)localObject).getUserName();
+          localObject = str;
+          if (str == null) {
+            localObject = "";
           }
         }
       }
     }
-    AppMethodBeat.o(278173);
+    Object localObject = (List)localLinkedList;
+    AppMethodBeat.o(338590);
+    return localObject;
   }
   
-  public final void b(HeadsetReceiver.b paramb)
+  public final boolean fop()
   {
-    AppMethodBeat.i(278176);
-    p.k(paramb, "listener");
-    this.Bpi.remove(paramb);
-    AppMethodBeat.o(278176);
+    return this.hYb == 1;
   }
   
-  public final void elA()
+  public final bui fou()
   {
-    AppMethodBeat.i(278190);
-    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new c(this));
-    AppMethodBeat.o(278190);
-  }
-  
-  public final void ga(final Context paramContext)
-  {
-    AppMethodBeat.i(278186);
-    p.k(paramContext, "context");
-    j.a((Iterable)this.Bpe, (kotlin.g.a.b)new q(paramContext));
-    final aa.d locald = new aa.d();
-    locald.aaBA = 0;
-    P((kotlin.g.a.b)new r(this, paramContext, locald));
-    Log.i("Finder.VideoRecycler", "[removeByContext] simpleName=" + paramContext.getClass().getSimpleName() + " removeCount=" + locald.aaBA + " videoCount=" + a(this));
-    AppMethodBeat.o(278186);
-  }
-  
-  public final void gb(final Context paramContext)
-  {
-    AppMethodBeat.i(278188);
-    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new m(this, paramContext));
-    AppMethodBeat.o(278188);
-  }
-  
-  public final void gc(final Context paramContext)
-  {
-    AppMethodBeat.i(278189);
-    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new s(this, paramContext));
-    AppMethodBeat.o(278189);
-  }
-  
-  public final void onCleared()
-  {
-    AppMethodBeat.i(278187);
-    Log.i("Finder.VideoRecycler", "[onCleared] videoCount=" + a(this));
-    onFinish();
-    AppMethodBeat.o(278187);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler$IRecycledCallback;", "", "onRecycledCompleted", "", "videoView", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "plugin-finder_release"})
-  public static abstract interface b
-  {
-    public abstract boolean a(s params);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class c
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    c(as paramas)
+    AppMethodBeat.i(338358);
+    if (fop())
     {
-      super();
+      localObject = k.aeZF;
+      localObject = Vl(((FinderHomeUIC)k.d(getActivity()).q(FinderHomeUIC.class)).fnX());
+      AppMethodBeat.o(338358);
+      return localObject;
     }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "invoke"})
-  static final class d
-    extends q
-    implements kotlin.g.a.b<s, Boolean>
-  {
-    d(as paramas, Class paramClass, aa.e parame, int[] paramArrayOfInt, boolean paramBoolean, aa.f paramf)
-    {
-      super();
+    bui localbui = new bui();
+    localbui.hLK = this.hLK;
+    localbui.AJo = this.AJo;
+    localbui.sessionId = this.sessionId;
+    localbui.zIO = this.zIO;
+    localbui.zIB = this.zIB;
+    localbui.ADF = this.ADF;
+    localbui.GSR = this.GSR;
+    localbui.GSU = this.GSU;
+    localbui.GST = this.GST;
+    localbui.GSV = this.GSV;
+    String str = this.GSW;
+    Object localObject = str;
+    if (str == null) {
+      localObject = "";
     }
+    localbui.GSW = ((String)localObject);
+    str = this.extraInfo;
+    localObject = str;
+    if (str == null) {
+      localObject = "";
+    }
+    localbui.extraInfo = ((String)localObject);
+    str = this.zIE;
+    localObject = str;
+    if (str == null) {
+      localObject = "";
+    }
+    localbui.zIE = ((String)localObject);
+    localbui.GSX = this.GSX;
+    localbui.hJx = this.GKp;
+    localbui.GSS = this.GSS;
+    localbui.DUN = this.DUN;
+    AppMethodBeat.o(338358);
+    return localbui;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler$getOrCreate$3$1$1", "Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler$IRecycledCallback;", "onRecycledCompleted", "", "videoView", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "plugin-finder_release", "com/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler$$special$$inlined$let$lambda$1"})
-  public static final class e
-    implements as.b
+  public final String fov()
   {
-    e(int paramInt1, as paramas, Class paramClass, ViewGroup paramViewGroup, String paramString, kotlin.g.a.b paramb, Context paramContext, int paramInt2, boolean paramBoolean) {}
-    
-    public final boolean a(s params)
+    return this.zIO;
+  }
+  
+  public final int fow()
+  {
+    return this.AJo;
+  }
+  
+  public final List<com.tencent.mm.plugin.finder.event.base.c> fox()
+  {
+    AppMethodBeat.i(338398);
+    if (fop())
     {
-      AppMethodBeat.i(278742);
-      p.k(params, "videoView");
-      if (p.h((String)as.k(localas).get(Integer.valueOf(this.Bps)), str))
+      localList = (List)p.al(new com.tencent.mm.plugin.finder.event.base.c[] { this.GTg, this.GTk, this.GTo });
+      AppMethodBeat.o(338398);
+      return localList;
+    }
+    List localList = (List)p.al(new com.tencent.mm.plugin.finder.event.base.c[] { this.ANW });
+    AppMethodBeat.o(338398);
+    return localList;
+  }
+  
+  public final com.tencent.mm.plugin.finder.event.a foy()
+  {
+    AppMethodBeat.i(338409);
+    if (fop())
+    {
+      int i = this.GKp;
+      Log.i(TAG, s.X("getHomeFeedEventSubscriber ", Integer.valueOf(i)));
+      switch (i)
       {
-        Log.i("Finder.VideoRecycler", "[getOrCreate] wait for callback successfully. mediaId=" + str + " parent=" + this.Bps);
-        this.Bpv.invoke(params);
-        AppMethodBeat.o(278742);
-        return true;
+      case 2: 
+      default: 
+        locala = this.GSZ;
+        AppMethodBeat.o(338409);
+        return locala;
+      case 3: 
+        locala = this.GTh;
+        AppMethodBeat.o(338409);
+        return locala;
+      case 1: 
+        locala = this.GTl;
+        AppMethodBeat.o(338409);
+        return locala;
       }
-      Log.i("Finder.VideoRecycler", "wait for callback, but it(" + str + ") has been replace(" + (String)as.k(localas).get(Integer.valueOf(this.Bps)) + "). key=" + this.Bps);
-      AppMethodBeat.o(278742);
-      return false;
+      locala = this.GTp;
+      AppMethodBeat.o(338409);
+      return locala;
     }
+    com.tencent.mm.plugin.finder.event.a locala = this.GSZ;
+    AppMethodBeat.o(338409);
+    return locala;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "invoke"})
-  static final class f
-    extends q
-    implements kotlin.g.a.b<s, Boolean>
+  public final String foz()
   {
-    f(Context paramContext, Class paramClass)
-    {
-      super();
-    }
+    return this.DnS;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "videoView", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "invoke"})
-  static final class g
-    extends q
-    implements kotlin.g.a.b<s, x>
+  public final void iI(int paramInt1, int paramInt2)
   {
-    g(as paramas, ViewGroup paramViewGroup, kotlin.g.a.b paramb)
+    AppMethodBeat.i(338325);
+    Object localObject1 = com.tencent.mm.plugin.finder.utils.u.GgT;
+    this.DUN = com.tencent.mm.plugin.finder.utils.u.aN((Activity)getActivity());
+    this.hLK = getActivity().getIntent().getIntExtra("key_from_comment_scene", 0);
+    Object localObject2;
+    if (paramInt1 == 0)
     {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class i
-    implements Runnable
-  {
-    i(as paramas) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(269372);
-      Object localObject1 = new StringBuilder("onFinish createdVideoViews ");
-      Object localObject3 = (Iterable)as.e(this.Bpm);
-      Object localObject2 = (Collection)new ArrayList(j.a((Iterable)localObject3, 10));
-      localObject3 = ((Iterable)localObject3).iterator();
-      while (((Iterator)localObject3).hasNext()) {
-        ((Collection)localObject2).add(Integer.valueOf(((WeakReference)((Iterator)localObject3).next()).hashCode()));
-      }
-      Log.i("Finder.VideoRecycler", (List)localObject2);
-      localObject1 = ((Iterable)as.e(this.Bpm)).iterator();
-      while (((Iterator)localObject1).hasNext())
+      this.AJo = this.hLK;
+      this.hYb = paramInt2;
+      this.GSX = fos();
+      localObject2 = getActivity().getIntent().getStringExtra("key_context_id");
+      localObject1 = localObject2;
+      if (localObject2 == null)
       {
-        localObject2 = (s)((WeakReference)((Iterator)localObject1).next()).get();
-        if (localObject2 != null)
+        localObject1 = z.FrZ;
+        localObject1 = z.bUm();
+      }
+      this.zIO = ((String)localObject1);
+      localObject2 = ((com.tencent.mm.plugin.expt.b.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.d.class)).dHN();
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      this.sessionId = ((String)localObject1);
+      this.ADF = getActivity().getIntent().getLongExtra("key_click_feed_id", 0L);
+      this.GSR = getActivity().getIntent().getStringExtra("key_click_feed_context_id");
+      this.GST = getActivity().getIntent().getIntExtra("key_enter_profile_type", 0);
+      this.GSU = getActivity().getIntent().getIntExtra("key_from_profile_share_scene", 0);
+      if (!fop()) {
+        break label875;
+      }
+      localObject1 = k.aeZF;
+      this.GKp = ((FinderHomeUIC)k.d(getActivity()).q(FinderHomeUIC.class)).fnX();
+      localObject1 = z.FrZ;
+      this.AJo = z.SD(this.GKp);
+      this.zIB = a.Vs(this.GKp);
+      label267:
+      localObject2 = getActivity().getIntent().getStringExtra("key_common_extra_info");
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      this.GSW = ((String)localObject1);
+      localObject2 = getActivity().getIntent().getStringExtra("key_extra_info");
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      this.extraInfo = ((String)localObject1);
+      localObject2 = getActivity().getIntent().getStringExtra("key_enter_source_info");
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      this.zIE = ((String)localObject1);
+      Log.i(TAG, "initActivityReporter reportType:" + this.hYb + " commentScene:" + this.AJo + " fromCommentScene:" + this.hLK + " sessionId:" + this.sessionId + " contextId:" + this.zIO + " clickTabContextId:" + this.zIB + " currentTabType:" + this.GKp + " uxInfo:" + this.extraInfo + " commonExtraInfo:" + this.GSW);
+      if (!fop()) {
+        break label1318;
+      }
+      localObject2 = new com.tencent.mm.plugin.finder.event.base.c(THREAD_TAG);
+      this.GTi = new ad((com.tencent.mm.plugin.finder.event.base.c)localObject2);
+      this.GTh = new com.tencent.mm.plugin.finder.event.a((com.tencent.mm.plugin.finder.event.base.c)localObject2);
+      localObject1 = com.tencent.mm.plugin.finder.storage.d.FAy;
+      if (!com.tencent.mm.plugin.finder.storage.d.eTm()) {
+        break label1246;
+      }
+      localObject1 = new q((MMFragmentActivity)getActivity(), Vl(3));
+      ((com.tencent.mm.plugin.finder.event.base.c)localObject2).a((com.tencent.mm.plugin.finder.event.base.d)localObject1);
+      ((q)localObject1).onInvisible();
+      localObject1 = (ae)localObject1;
+      label586:
+      this.GTj = ((ae)localObject1);
+      ((com.tencent.mm.plugin.finder.event.base.c)localObject2).a((com.tencent.mm.plugin.finder.event.base.d)new b());
+      localObject1 = ah.aiuX;
+      this.GTg = ((com.tencent.mm.plugin.finder.event.base.c)localObject2);
+      localObject2 = new com.tencent.mm.plugin.finder.event.base.c(THREAD_TAG);
+      this.GTm = new ad((com.tencent.mm.plugin.finder.event.base.c)localObject2);
+      this.GTl = new com.tencent.mm.plugin.finder.event.a((com.tencent.mm.plugin.finder.event.base.c)localObject2);
+      localObject1 = com.tencent.mm.plugin.finder.storage.d.FAy;
+      if (!com.tencent.mm.plugin.finder.storage.d.eTm()) {
+        break label1282;
+      }
+      localObject1 = new q((MMFragmentActivity)getActivity(), Vl(1));
+      ((com.tencent.mm.plugin.finder.event.base.c)localObject2).a((com.tencent.mm.plugin.finder.event.base.d)localObject1);
+      ((q)localObject1).onInvisible();
+      localObject1 = (ae)localObject1;
+    }
+    for (;;)
+    {
+      this.GTn = ((ae)localObject1);
+      ((com.tencent.mm.plugin.finder.event.base.c)localObject2).a((com.tencent.mm.plugin.finder.event.base.d)new b());
+      localObject1 = ah.aiuX;
+      this.GTk = ((com.tencent.mm.plugin.finder.event.base.c)localObject2);
+      localObject1 = new com.tencent.mm.plugin.finder.event.base.c(THREAD_TAG);
+      this.GTq = new ad((com.tencent.mm.plugin.finder.event.base.c)localObject1);
+      this.GTp = new com.tencent.mm.plugin.finder.event.a((com.tencent.mm.plugin.finder.event.base.c)localObject1);
+      localObject2 = new q((MMFragmentActivity)getActivity(), Vl(4));
+      ((com.tencent.mm.plugin.finder.event.base.c)localObject1).a((com.tencent.mm.plugin.finder.event.base.d)localObject2);
+      ((q)localObject2).onInvisible();
+      this.GTr = ((q)localObject2);
+      ((com.tencent.mm.plugin.finder.event.base.c)localObject1).a((com.tencent.mm.plugin.finder.event.base.d)new b());
+      localObject2 = ah.aiuX;
+      this.GTo = ((com.tencent.mm.plugin.finder.event.base.c)localObject1);
+      localObject1 = k.aeZF;
+      ((FinderHomeUIC)k.d(getActivity()).q(FinderHomeUIC.class)).GRB.add(this);
+      AppMethodBeat.o(338325);
+      return;
+      this.AJo = paramInt1;
+      break;
+      label875:
+      if (isNearby())
+      {
+        this.GKp = ((com.tencent.d.a.b.a.e)com.tencent.mm.kernel.h.az(com.tencent.d.a.b.a.e.class)).getTabType(getFragment());
+        this.AJo = ((com.tencent.d.a.b.a.e)com.tencent.mm.kernel.h.az(com.tencent.d.a.b.a.e.class)).getCommentScene(getFragment());
+        this.zIB = (((com.tencent.d.a.b.a.e)com.tencent.mm.kernel.h.az(com.tencent.d.a.b.a.e.class)).getClickTabId(getFragment()) + '-' + cn.bDw());
+        break label267;
+      }
+      if ((getFragment() instanceof FinderActivityFragment))
+      {
+        localObject1 = getFragment();
+        if (localObject1 == null)
         {
-          ((s)localObject2).onUIDestroy();
-          ((s)localObject2).onRelease();
+          localObject1 = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.finder.activity.fragment.FinderActivityFragment");
+          AppMethodBeat.o(338325);
+          throw ((Throwable)localObject1);
+        }
+        this.GKp = (((FinderActivityFragment)localObject1).hJx + 1);
+        if (getFragment() == null)
+        {
+          localObject1 = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.finder.activity.fragment.FinderActivityFragment");
+          AppMethodBeat.o(338325);
+          throw ((Throwable)localObject1);
+        }
+        this.AJo = 59;
+        localObject1 = new JSONObject();
+        localObject2 = getFragment();
+        if (localObject2 == null)
+        {
+          localObject1 = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.finder.activity.fragment.FinderActivityFragment");
+          AppMethodBeat.o(338325);
+          throw ((Throwable)localObject1);
+        }
+        localObject2 = com.tencent.mm.ae.d.hF(((FinderActivityFragment)localObject2).AtC);
+        Fragment localFragment = getFragment();
+        if (localFragment == null)
+        {
+          localObject1 = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.finder.activity.fragment.FinderActivityFragment");
+          AppMethodBeat.o(338325);
+          throw ((Throwable)localObject1);
+        }
+        ((JSONObject)localObject1).put((String)localObject2, ((FinderActivityFragment)localFragment).AtD);
+        localObject2 = ah.aiuX;
+        localObject1 = ((JSONObject)localObject1).toString();
+        s.s(localObject1, "JSONObject().apply {\n   …\n            }.toString()");
+        this.GSS = ((String)localObject1);
+        this.zIB = a.Vs(paramInt1 + 100);
+        break label267;
+      }
+      localObject2 = getActivity().getIntent().getStringExtra("key_click_tab_context_id");
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      this.zIB = ((String)localObject1);
+      if (!Util.isNullOrNil(this.zIB)) {
+        break label267;
+      }
+      this.zIB = a.Vs(paramInt1 + 100);
+      break label267;
+      label1246:
+      localObject1 = new ae((MMFragmentActivity)getActivity(), Vl(3));
+      ((com.tencent.mm.plugin.finder.event.base.c)localObject2).a((com.tencent.mm.plugin.finder.event.base.d)localObject1);
+      ((ae)localObject1).onInvisible();
+      break label586;
+      label1282:
+      localObject1 = new ae((MMFragmentActivity)getActivity(), Vl(1));
+      ((com.tencent.mm.plugin.finder.event.base.c)localObject2).a((com.tencent.mm.plugin.finder.event.base.d)localObject1);
+      ((ae)localObject1).onInvisible();
+    }
+    label1318:
+    if (foq())
+    {
+      localObject1 = new com.tencent.mm.plugin.finder.event.base.c(THREAD_TAG);
+      this.GSZ = new com.tencent.mm.plugin.finder.event.a((com.tencent.mm.plugin.finder.event.base.c)localObject1);
+      this.GTa = new ad((com.tencent.mm.plugin.finder.event.base.c)localObject1);
+      localObject2 = new ae((MMFragmentActivity)getActivity(), fou());
+      ((com.tencent.mm.plugin.finder.event.base.c)localObject1).a((com.tencent.mm.plugin.finder.event.base.d)localObject2);
+      this.GTb = ((ae)localObject2);
+      ((com.tencent.mm.plugin.finder.event.base.c)localObject1).a((com.tencent.mm.plugin.finder.event.base.d)new b());
+      localObject2 = ah.aiuX;
+      this.ANW = ((com.tencent.mm.plugin.finder.event.base.c)localObject1);
+      AppMethodBeat.o(338325);
+      return;
+    }
+    if (jdMethod_for())
+    {
+      localObject2 = new com.tencent.mm.plugin.finder.event.base.c(THREAD_TAG);
+      this.GSZ = new com.tencent.mm.plugin.finder.event.a((com.tencent.mm.plugin.finder.event.base.c)localObject2);
+      this.GTd = new al((com.tencent.mm.plugin.finder.event.base.c)localObject2);
+      if ((getFragment() instanceof FinderActivityFragment)) {}
+      for (localObject1 = (am)new com.tencent.mm.plugin.finder.report.e((MMFragmentActivity)getActivity(), fou());; localObject1 = new am((MMFragmentActivity)getActivity(), fou()))
+      {
+        this.GTe = ((am)localObject1);
+        localObject1 = this.GTe;
+        if (localObject1 != null)
+        {
+          ((com.tencent.mm.plugin.finder.event.base.c)localObject2).a((com.tencent.mm.plugin.finder.event.base.d)localObject1);
+          localObject1 = ah.aiuX;
+          localObject1 = ah.aiuX;
+        }
+        this.ANW = ((com.tencent.mm.plugin.finder.event.base.c)localObject2);
+        AppMethodBeat.o(338325);
+        return;
+      }
+    }
+    if (fos())
+    {
+      localObject1 = new com.tencent.mm.plugin.finder.event.base.c(THREAD_TAG);
+      this.GSZ = new com.tencent.mm.plugin.finder.event.a((com.tencent.mm.plugin.finder.event.base.c)localObject1);
+      this.GTa = new ad((com.tencent.mm.plugin.finder.event.base.c)localObject1);
+      localObject2 = new aw((MMFragmentActivity)getActivity(), fou());
+      ((com.tencent.mm.plugin.finder.event.base.c)localObject1).a((com.tencent.mm.plugin.finder.event.base.d)localObject2);
+      this.GTc = ((aw)localObject2);
+      ((com.tencent.mm.plugin.finder.event.base.c)localObject1).a((com.tencent.mm.plugin.finder.event.base.d)new b());
+      localObject2 = ah.aiuX;
+      this.ANW = ((com.tencent.mm.plugin.finder.event.base.c)localObject1);
+      AppMethodBeat.o(338325);
+      return;
+    }
+    if (fot()) {
+      this.GTf = new au((MMActivity)getActivity(), fou());
+    }
+    AppMethodBeat.o(338325);
+  }
+  
+  public final void iw(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(338450);
+    s.u(paramString1, "key");
+    s.u(paramString2, "value");
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(n.m(this.DnT, ";", ",", false));
+      localJSONObject.put(paramString1, paramString2);
+      paramString1 = localJSONObject.toString();
+      s.s(paramString1, "jsonObject.toString()");
+      this.DnT = n.bV(paramString1, ",", ";");
+      AppMethodBeat.o(338450);
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      Log.i(TAG, String.valueOf(paramString1.getMessage()));
+      AppMethodBeat.o(338450);
+    }
+  }
+  
+  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(338581);
+    super.onActivityResult(paramInt1, paramInt2, paramIntent);
+    if (paramInt1 == 19999)
+    {
+      paramIntent = Vl(this.GKp);
+      z localz = z.FrZ;
+      z.b(2, this.GKp, paramIntent);
+    }
+    AppMethodBeat.o(338581);
+  }
+  
+  public final boolean onBackPressed()
+  {
+    AppMethodBeat.i(338558);
+    Object localObject = Vn(-1);
+    if ((localObject != null) && ((localObject instanceof ae)) && (!(getActivity() instanceof FinderHomeUI)))
+    {
+      localObject = (ae)localObject;
+      com.tencent.mm.plugin.finder.report.m.a locala = com.tencent.mm.plugin.finder.report.m.Fpx;
+      ((ae)localObject).azV(com.tencent.mm.plugin.finder.report.m.a.aj(ak.l(v.Y("feedActionType", Integer.valueOf(5)))));
+    }
+    boolean bool = super.onBackPressed();
+    AppMethodBeat.o(338558);
+    return bool;
+  }
+  
+  public final void onCreateAfter(Bundle paramBundle)
+  {
+    AppMethodBeat.i(338292);
+    super.onCreateAfter(paramBundle);
+    Object localObject;
+    if ((getActivity() instanceof FinderHomeUI))
+    {
+      paramBundle = z.FrZ;
+      localObject = this.zIO;
+      paramBundle = (Bundle)localObject;
+      if (localObject == null) {
+        paramBundle = "";
+      }
+      z.id(paramBundle, "OnCreate");
+      paramBundle = com.tencent.mm.plugin.finder.report.m.Fpx;
+      paramBundle = fou();
+      localObject = com.tencent.mm.plugin.finder.report.m.Fpx;
+      localObject = com.tencent.mm.plugin.finder.report.m.a.a(8, new String[] { String.valueOf(getActivity().getIntent().getIntExtra("FROM_SCENE_KEY", 2)) }).toString();
+      s.s(localObject, "FinderFeedFlowReporter.b…ORE_FRIEND)}\").toString()");
+      com.tencent.mm.plugin.finder.report.m.a.a(paramBundle, 0L, 8, (String)localObject, 0L, null, 48);
+    }
+    if ((getActivity() instanceof FinderShareFeedRelUI))
+    {
+      paramBundle = com.tencent.mm.plugin.finder.report.m.Fpx;
+      paramBundle = fou();
+      localObject = com.tencent.mm.plugin.finder.report.m.Fpx;
+      localObject = com.tencent.mm.plugin.finder.report.m.a.a(8, new String[] { String.valueOf(getActivity().getIntent().getIntExtra("FROM_SCENE_KEY", 1)) }).toString();
+      s.s(localObject, "FinderFeedFlowReporter.b…ARE_DETAIL)}\").toString()");
+      com.tencent.mm.plugin.finder.report.m.a.a(paramBundle, 0L, 8, (String)localObject, 0L, null, 48);
+    }
+    paramBundle = ay.EDk;
+    ay.startTimer();
+    this.GTw.sendEmptyMessage(GTx);
+    AppMethodBeat.o(338292);
+  }
+  
+  public final void onCreateBefore(Bundle paramBundle)
+  {
+    AppMethodBeat.i(338282);
+    super.onCreateBefore(paramBundle);
+    paramBundle = getFragment();
+    int i;
+    label39:
+    as localas;
+    if ((isNearby()) || ((getFragment() instanceof FinderActivityFragment)))
+    {
+      i = 1;
+      if (i == 0) {
+        break label119;
+      }
+      if (paramBundle != null) {
+        break label124;
+      }
+      paramBundle = null;
+      if (paramBundle == null)
+      {
+        localas = (as)this;
+        Log.i(TAG, s.X("onCreateBefore activity:", localas.getActivity()));
+        paramBundle = localas.getActivity();
+        if (!(localas.getActivity() instanceof MMFinderUI)) {
+          break label210;
         }
       }
-      as.e(this.Bpm).clear();
-      as.f(this.Bpm).clear();
-      as.g(this.Bpm).removeCallbacksAndMessages(null);
-      AppMethodBeat.o(269372);
     }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler$onHeadsetStateChangeListener$1", "Lcom/tencent/mm/plugin/findersdk/receiver/HeadsetReceiver$OnHeadsetStateChangeListener;", "onHeadsetStateChange", "", "on", "", "plugin-finder_release"})
-  public static final class j
-    implements HeadsetReceiver.b
-  {
-    public final void pR(boolean paramBoolean)
+    for (;;)
     {
-      AppMethodBeat.i(257511);
-      Log.i("Finder.VideoRecycler", "onHeadsetStateChange on:".concat(String.valueOf(paramBoolean)));
-      Iterator localIterator = ((Iterable)as.m(this.Bpm)).iterator();
-      while (localIterator.hasNext()) {
-        ((HeadsetReceiver.b)localIterator.next()).pR(paramBoolean);
+      if (paramBundle != null) {
+        localas.iI(((MMFinderUI)paramBundle).getCommentScene(), ((MMFinderUI)paramBundle).edC());
       }
-      AppMethodBeat.o(257511);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler$onlineVideoEventListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/OnlineVideoEvent;", "callback", "", "event", "plugin-finder_release"})
-  public static final class k
-    extends IListener<pn>
-  {
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "invoke", "com/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler$onlineVideoEventListener$1$callback$1$1"})
-    static final class a
-      extends q
-      implements kotlin.g.a.b<s, Boolean>
-    {
-      a(String paramString, as.k paramk)
+      AppMethodBeat.o(338282);
+      return;
+      i = 0;
+      break;
+      label119:
+      paramBundle = null;
+      break label39;
+      label124:
+      Log.i(TAG, s.X("onCreateBefore fragment:", getFragment()));
+      if (isNearby()) {
+        iI(((com.tencent.d.a.b.a.e)com.tencent.mm.kernel.h.az(com.tencent.d.a.b.a.e.class)).getCommentScene(getFragment()), ((com.tencent.d.a.b.a.e)com.tencent.mm.kernel.h.az(com.tencent.d.a.b.a.e.class)).getReportType(getFragment()));
+      }
+      for (;;)
       {
-        super();
+        break;
+        if ((getFragment() instanceof FinderActivityFragment)) {
+          iI(59, 3);
+        }
+      }
+      label210:
+      paramBundle = null;
+    }
+  }
+  
+  public final void onPageScrollStateChanged(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      this.GTu = true;
+      return;
+    }
+    this.GTu = false;
+  }
+  
+  public final void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  {
+    if (this.GTu)
+    {
+      this.GTt = false;
+      this.GTu = false;
+    }
+  }
+  
+  public final void onPause()
+  {
+    AppMethodBeat.i(338533);
+    super.onPause();
+    if (fop()) {
+      switch (this.GKp)
+      {
       }
     }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class l
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    l(as paramas, kotlin.g.a.b paramb)
+    for (;;)
     {
-      super();
+      Object localObject = ((Iterable)this.GTv).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        WxRecyclerAdapter localWxRecyclerAdapter = (WxRecyclerAdapter)((WeakReference)((Iterator)localObject).next()).get();
+        if (localWxRecyclerAdapter != null) {
+          localWxRecyclerAdapter.onPause();
+        }
+      }
+      localObject = this.GTi;
+      if (localObject != null) {
+        ((ad)localObject).onInvisible();
+      }
+      localObject = this.GTj;
+      if (localObject != null)
+      {
+        ((ae)localObject).onInvisible();
+        continue;
+        localObject = this.GTm;
+        if (localObject != null) {
+          ((ad)localObject).onInvisible();
+        }
+        localObject = this.GTn;
+        if (localObject != null)
+        {
+          ((ae)localObject).onInvisible();
+          continue;
+          localObject = this.GTq;
+          if (localObject != null) {
+            ((ad)localObject).onInvisible();
+          }
+          localObject = this.GTr;
+          if (localObject != null)
+          {
+            ((q)localObject).onInvisible();
+            continue;
+            if (foq())
+            {
+              localObject = this.GTa;
+              if (localObject != null) {
+                ((ad)localObject).onInvisible();
+              }
+              localObject = this.GTb;
+              if (localObject != null) {
+                ((ae)localObject).onInvisible();
+              }
+            }
+            else if (jdMethod_for())
+            {
+              localObject = this.GTd;
+              if (localObject != null) {
+                ((al)localObject).onInvisible();
+              }
+              localObject = this.GTe;
+              if (localObject != null) {
+                ((am)localObject).onInvisible();
+              }
+            }
+            else if (fos())
+            {
+              localObject = this.GTa;
+              if (localObject != null) {
+                ((ad)localObject).onInvisible();
+              }
+              localObject = this.GTc;
+              if (localObject != null) {
+                ((aw)localObject).onInvisible();
+              }
+            }
+            else if (fot())
+            {
+              localObject = this.GTf;
+              if (localObject != null) {
+                ((au)localObject).onInvisible();
+              }
+            }
+          }
+        }
+      }
     }
+    AppMethodBeat.o(338533);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class m
-    extends q
-    implements kotlin.g.a.a<x>
+  public final void onPreDestroyed()
   {
-    m(as paramas, Context paramContext)
+    AppMethodBeat.i(338566);
+    super.onPreDestroyed();
+    Log.i(TAG, "onPreDestroyed");
+    Object localObject2;
+    if ((getActivity() instanceof FinderHomeUI))
     {
-      super();
+      localObject1 = com.tencent.mm.plugin.finder.report.m.Fpx;
+      localObject1 = fou();
+      localObject2 = m.c.FpF;
+      com.tencent.mm.plugin.finder.report.m.a.a((bui)localObject1, 0L, 9, m.c.eMy(), 0L, null, 48);
+      localObject1 = z.FrZ;
+      localObject2 = this.zIO;
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      z.id((String)localObject1, "Exit");
     }
+    if ((getActivity() instanceof FinderShareFeedRelUI))
+    {
+      localObject1 = com.tencent.mm.plugin.finder.report.m.Fpx;
+      localObject1 = fou();
+      localObject2 = m.c.FpF;
+      com.tencent.mm.plugin.finder.report.m.a.a((bui)localObject1, 0L, 9, m.c.eMy(), 0L, null, 48);
+    }
+    Object localObject1 = this.ANW;
+    if (localObject1 != null) {
+      ((com.tencent.mm.plugin.finder.event.base.c)localObject1).onRelease();
+    }
+    localObject1 = this.GTg;
+    if (localObject1 != null) {
+      ((com.tencent.mm.plugin.finder.event.base.c)localObject1).onRelease();
+    }
+    localObject1 = this.GTk;
+    if (localObject1 != null) {
+      ((com.tencent.mm.plugin.finder.event.base.c)localObject1).onRelease();
+    }
+    localObject1 = this.GTo;
+    if (localObject1 != null) {
+      ((com.tencent.mm.plugin.finder.event.base.c)localObject1).onRelease();
+    }
+    localObject1 = ay.EDk;
+    ay.stopTimer();
+    this.GTw.removeCallbacksAndMessages(null);
+    this.GTw.sendEmptyMessage(GTy);
+    AppMethodBeat.o(338566);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "queueIdle"})
-  static final class n
-    implements MessageQueue.IdleHandler
+  public final void onResume()
   {
-    n(as paramas, Context paramContext) {}
+    AppMethodBeat.i(338525);
+    super.onResume();
+    if (this.isFirstOnResume)
+    {
+      this.isFirstOnResume = false;
+      AppMethodBeat.o(338525);
+      return;
+    }
+    Object localObject1;
+    if (fop())
+    {
+      localObject1 = Vl(this.GKp);
+      switch (this.GKp)
+      {
+      case 2: 
+      default: 
+        localObject1 = com.tencent.mm.plugin.finder.extension.reddot.m.ASi;
+        com.tencent.mm.plugin.finder.extension.reddot.m.a.a(1, fou(), this.GKp, false);
+        localObject1 = com.tencent.mm.plugin.finder.extension.reddot.m.ASi;
+        com.tencent.mm.plugin.finder.extension.reddot.m.a.b(1, fou(), this.GKp, false);
+        localObject1 = com.tencent.mm.plugin.finder.extension.reddot.m.ASi;
+        com.tencent.mm.plugin.finder.extension.reddot.m.a.c(1, fou(), this.GKp, false);
+        localObject1 = com.tencent.mm.plugin.finder.extension.reddot.m.ASi;
+        com.tencent.mm.plugin.finder.extension.reddot.m.a.a(1, fou());
+        localObject1 = com.tencent.mm.plugin.finder.extension.reddot.m.ASi;
+        com.tencent.mm.plugin.finder.extension.reddot.m.a.a(1, fou(), "");
+      }
+    }
+    for (;;)
+    {
+      localObject1 = ((Iterable)this.GTv).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (WxRecyclerAdapter)((WeakReference)((Iterator)localObject1).next()).get();
+        if (localObject2 != null) {
+          ((WxRecyclerAdapter)localObject2).onResume();
+        }
+      }
+      Object localObject2 = this.GTj;
+      if (localObject2 != null) {
+        ((ae)localObject2).f((bui)localObject1);
+      }
+      localObject1 = this.GTi;
+      if (localObject1 != null) {
+        ((ad)localObject1).onVisible();
+      }
+      localObject1 = this.GTj;
+      if (localObject1 == null) {
+        break;
+      }
+      ((ae)localObject1).onVisible();
+      break;
+      localObject2 = this.GTn;
+      if (localObject2 != null) {
+        ((ae)localObject2).f((bui)localObject1);
+      }
+      localObject1 = this.GTm;
+      if (localObject1 != null) {
+        ((ad)localObject1).onVisible();
+      }
+      localObject1 = this.GTn;
+      if (localObject1 == null) {
+        break;
+      }
+      ((ae)localObject1).onVisible();
+      break;
+      localObject2 = this.GTr;
+      if (localObject2 != null) {
+        ((q)localObject2).f((bui)localObject1);
+      }
+      localObject1 = this.GTq;
+      if (localObject1 != null) {
+        ((ad)localObject1).onVisible();
+      }
+      localObject1 = this.GTr;
+      if (localObject1 == null) {
+        break;
+      }
+      ((q)localObject1).onVisible();
+      break;
+      if (foq())
+      {
+        localObject1 = this.GTa;
+        if (localObject1 != null) {
+          ((ad)localObject1).onVisible();
+        }
+        localObject1 = this.GTb;
+        if (localObject1 != null) {
+          ((ae)localObject1).onVisible();
+        }
+      }
+      else if (jdMethod_for())
+      {
+        localObject1 = this.GTd;
+        if (localObject1 != null) {
+          ((al)localObject1).onVisible();
+        }
+        localObject1 = this.GTe;
+        if (localObject1 != null) {
+          ((am)localObject1).onVisible();
+        }
+      }
+      else if (fos())
+      {
+        localObject1 = this.GTa;
+        if (localObject1 != null) {
+          ((ad)localObject1).onVisible();
+        }
+        localObject1 = this.GTc;
+        if (localObject1 != null) {
+          ((aw)localObject1).onVisible();
+        }
+      }
+      else if (fot())
+      {
+        localObject1 = this.GTf;
+        if (localObject1 != null) {
+          ((au)localObject1).onVisible();
+        }
+      }
+    }
+    AppMethodBeat.o(338525);
+  }
+  
+  public final void onUserVisibleFocused()
+  {
+    AppMethodBeat.i(338549);
+    super.onUserVisibleFocused();
+    if (jdMethod_for())
+    {
+      Object localObject = this.GTd;
+      if (localObject != null) {
+        ((al)localObject).onVisible();
+      }
+      localObject = this.GTe;
+      if (localObject != null) {
+        ((am)localObject).onVisible();
+      }
+    }
+    AppMethodBeat.o(338549);
+  }
+  
+  public final void onUserVisibleUnFocused()
+  {
+    AppMethodBeat.i(338554);
+    super.onUserVisibleUnFocused();
+    if (jdMethod_for())
+    {
+      Object localObject = this.GTd;
+      if (localObject != null) {
+        ((al)localObject).onInvisible();
+      }
+      localObject = this.GTe;
+      if (localObject != null) {
+        ((am)localObject).onInvisible();
+      }
+    }
+    AppMethodBeat.o(338554);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderReporterUIC$Companion;", "", "()V", "CYCLE_TIME", "", "SEND", "", "STOP", "TAG", "", "THREAD_TAG", "getTHREAD_TAG", "()Ljava/lang/String;", "genClickTabContextId", "tabType", "initIntentParams", "", "context", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "feedId", "clickFeedContextId", "fromProfileShareScene", "enterProfileType", "enterLbsUI", "", "uic", "Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderReporterUIC;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+  {
+    public static String Vs(int paramInt)
+    {
+      AppMethodBeat.i(338735);
+      String str1 = paramInt + '-' + cn.bDw();
+      String str2 = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.zpd, "100");
+      Object localObject;
+      switch (paramInt)
+      {
+      default: 
+        localObject = "unknown";
+      }
+      for (;;)
+      {
+        Log.i(as.access$getTAG$cp(), "genClickTabContextId [%s] uiTabIndex[%s] blacklist[%s]", new Object[] { str1, localObject, str2 });
+        try
+        {
+          s.s(str2, "blacklist");
+          localObject = ((Iterable)n.a((CharSequence)str2, new char[] { ';' }, 0, 6)).iterator();
+          do
+          {
+            if (!((Iterator)localObject).hasNext()) {
+              break;
+            }
+          } while (!s.p((String)((Iterator)localObject).next(), String.valueOf(paramInt)));
+          AppMethodBeat.o(338735);
+          return str1;
+        }
+        catch (Exception localException)
+        {
+          com.tencent.mm.kernel.h.baE().ban().set(at.a.adeW, str1);
+          AppMethodBeat.o(338735);
+        }
+        localObject = "1";
+        continue;
+        localObject = "3";
+        continue;
+        localObject = "0";
+        continue;
+        localObject = "2";
+      }
+      return str1;
+    }
     
-    public final boolean queueIdle()
+    public static void a(Context paramContext, Intent paramIntent, long paramLong, String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
     {
-      AppMethodBeat.i(224279);
-      if ((as.h(this.Bpm) > 0) && (as.i(this.Bpm) < as.h(this.Bpm)) && (!as.j(this.Bpm)))
+      AppMethodBeat.i(338708);
+      s.u(paramContext, "context");
+      s.u(paramIntent, "intent");
+      if ((paramContext instanceof MMFragmentActivity))
       {
-        as.f(this.Bpm).add(as.a(this.Bpm, this.$context));
-        as localas = this.Bpm;
-        as.b(localas, as.i(localas) + 1);
-        AppMethodBeat.o(224279);
-        return true;
+        paramString = k.aeZF;
+        int i = ((as)k.d((AppCompatActivity)paramContext).q(as.class)).AJo;
+        paramString = av.GiL;
+        if (av.Um(i))
+        {
+          paramString = k.aeZF;
+          paramIntent.putExtra("key_from_comment_scene", ((as)k.d((AppCompatActivity)paramContext).q(as.class)).hLK);
+          paramString = k.aeZF;
+          paramString = ((as)k.d((AppCompatActivity)paramContext).q(as.class)).zIO;
+          Object localObject1 = (CharSequence)paramString;
+          if ((localObject1 != null) && (((CharSequence)localObject1).length() != 0)) {
+            break label752;
+          }
+          paramInt1 = 1;
+          label142:
+          if (paramInt1 == 0) {
+            paramIntent.putExtra("key_context_id", paramString);
+          }
+          paramString = k.aeZF;
+          paramString = ((as)k.d((AppCompatActivity)paramContext).q(as.class)).GSW;
+          if (!Util.isNullOrNil(paramString)) {
+            paramIntent.putExtra("key_common_extra_info", paramString);
+          }
+          paramString = k.aeZF;
+          paramString = ((as)k.d((AppCompatActivity)paramContext).q(as.class)).extraInfo;
+          if (!Util.isNullOrNil(paramString)) {
+            paramIntent.putExtra("key_extra_info", paramString);
+          }
+          paramString = k.aeZF;
+          paramString = ((as)k.d((AppCompatActivity)paramContext).q(as.class)).zIE;
+          if (!Util.isNullOrNil(paramString)) {
+            paramIntent.putExtra("key_enter_source_info", paramString);
+          }
+          if (!paramBoolean) {
+            break label758;
+          }
+          paramString = k.aeZF;
+          paramInt1 = ((as)k.d((AppCompatActivity)paramContext).q(as.class)).GKp;
+          paramString = k.aeZF;
+          ((as)k.d((AppCompatActivity)paramContext).q(as.class)).zIB = Vs(paramInt1);
+          localObject1 = Vs(2);
+          paramIntent.putExtra("key_click_tab_context_id", (String)localObject1);
+          paramString = k.aeZF;
+          Object localObject2 = (as)k.d((AppCompatActivity)paramContext).q(as.class);
+          if (localObject2 != null)
+          {
+            paramString = ((as)localObject2).fou();
+            paramString.zIB = ((String)localObject1);
+            localObject1 = z.FrZ;
+            z.b(paramInt1, 2, paramString);
+            localObject1 = ((as)localObject2).Vn(paramInt1);
+            if ((localObject1 != null) && ((localObject1 instanceof ae)))
+            {
+              localObject1 = (ae)localObject1;
+              localObject2 = com.tencent.mm.plugin.finder.report.m.Fpx;
+              ((ae)localObject1).azV(com.tencent.mm.plugin.finder.report.m.a.aj(ak.e(new r[] { v.Y("feedActionType", Integer.valueOf(2)), v.Y("toTab", Integer.valueOf(2)), v.Y("fromTab", Integer.valueOf(paramInt1)) })));
+            }
+            localObject1 = com.tencent.mm.plugin.finder.extension.reddot.m.ASi;
+            com.tencent.mm.plugin.finder.extension.reddot.m.a.a(2, paramString);
+          }
+          label513:
+          if (paramLong == 0L) {
+            break label792;
+          }
+          paramIntent.putExtra("key_click_feed_id", paramLong);
+          label528:
+          paramString = k.aeZF;
+          paramString = ((as)k.d((AppCompatActivity)paramContext).q(as.class)).GSR;
+          if (paramString != null) {
+            paramIntent.putExtra("key_click_feed_context_id", paramString);
+          }
+          paramString = k.aeZF;
+          paramInt1 = ((as)k.d((AppCompatActivity)paramContext).q(as.class)).GSU;
+          if (paramInt1 != 0) {
+            paramIntent.putExtra("key_from_profile_share_scene", paramInt1);
+          }
+          if (paramInt2 == 0) {
+            break label834;
+          }
+          paramIntent.putExtra("key_enter_profile_type", paramInt2);
+        }
+        for (;;)
+        {
+          paramInt1 = paramIntent.getIntExtra("key_entrance_type", -1);
+          paramInt2 = paramIntent.getIntExtra("key_to_comment_scene", 0);
+          if ((paramInt2 == 0) || (paramInt1 < 0)) {
+            break label877;
+          }
+          Log.i(as.access$getTAG$cp(), "[initIntentParams] commentScene=" + i + " toCommentScene=" + paramInt2 + " entranceType=" + paramInt1);
+          paramString = com.tencent.mm.plugin.finder.utils.u.GgT;
+          com.tencent.mm.plugin.finder.utils.u.a(paramContext, paramIntent, paramInt2, paramInt1);
+          AppMethodBeat.o(338708);
+          return;
+          paramString = k.aeZF;
+          paramIntent.putExtra("key_from_comment_scene", ((as)k.d((AppCompatActivity)paramContext).q(as.class)).AJo);
+          break;
+          label752:
+          paramInt1 = 0;
+          break label142;
+          label758:
+          paramString = k.aeZF;
+          paramIntent.putExtra("key_click_tab_context_id", ((as)k.d((AppCompatActivity)paramContext).q(as.class)).zIB);
+          break label513;
+          label792:
+          paramString = k.aeZF;
+          paramLong = ((as)k.d((AppCompatActivity)paramContext).q(as.class)).ADF;
+          if (paramLong == 0L) {
+            break label528;
+          }
+          paramIntent.putExtra("key_click_feed_id", paramLong);
+          break label528;
+          label834:
+          paramString = k.aeZF;
+          paramInt1 = ((as)k.d((AppCompatActivity)paramContext).q(as.class)).GST;
+          if (paramInt1 != 0) {
+            paramIntent.putExtra("key_enter_profile_type", paramInt1);
+          }
+        }
+        label877:
+        paramContext = ((MMFragmentActivity)paramContext).getIntent().getStringExtra("key_jump_id");
+        paramString = (CharSequence)paramContext;
+        if ((paramString == null) || (paramString.length() == 0)) {}
+        for (paramInt1 = 1;; paramInt1 = 0)
+        {
+          if ((paramInt1 == 0) && (!paramIntent.hasExtra("key_jump_id"))) {
+            paramIntent.putExtra("key_jump_id", paramContext);
+          }
+          Log.i(as.access$getTAG$cp(), s.X("[initIntentParams] jumpId=", paramContext));
+          AppMethodBeat.o(338708);
+          return;
+        }
       }
-      Log.i("Finder.VideoRecycler", "[preInflateVideoView] completed! preInflateCount=" + as.i(this.Bpm) + " targetCount=" + as.h(this.Bpm) + " isFinished=" + as.j(this.Bpm));
-      AppMethodBeat.o(224279);
-      return false;
+      Log.w(as.access$getTAG$cp(), "initIntentParams context is not MMFragmentActivity");
+      AppMethodBeat.o(338708);
+    }
+    
+    public static as hu(Context paramContext)
+    {
+      AppMethodBeat.i(338724);
+      s.u(paramContext, "context");
+      if ((paramContext instanceof MMFragmentActivity))
+      {
+        k localk = k.aeZF;
+        paramContext = (as)k.d((AppCompatActivity)paramContext).q(as.class);
+        AppMethodBeat.o(338724);
+        return paramContext;
+      }
+      AppMethodBeat.o(338724);
+      return null;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class p
-    extends q
-    implements kotlin.g.a.a<x>
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<ah>
   {
-    p(as paramas, s params, long paramLong, String paramString)
+    b(as paramas, WxRecyclerAdapter<?> paramWxRecyclerAdapter)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "invoke"})
-  static final class q
-    extends q
-    implements kotlin.g.a.b<s, Boolean>
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/viewmodel/component/FinderReporterUIC$timer$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
+    extends MMHandler
   {
-    q(Context paramContext)
+    c(as paramas, String paramString)
     {
       super();
     }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "invoke"})
-  static final class r
-    extends q
-    implements kotlin.g.a.b<s, Boolean>
-  {
-    r(as paramas, Context paramContext, aa.d paramd)
+    
+    public final void handleMessage(Message paramMessage)
     {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class s
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    s(as paramas, Context paramContext)
-    {
-      super();
+      AppMethodBeat.i(338677);
+      if (paramMessage != null)
+      {
+        as localas = this.GTA;
+        int i = paramMessage.what;
+        if (i == as.foD())
+        {
+          as.c(localas);
+          sendEmptyMessageDelayed(as.foD(), as.foE());
+          AppMethodBeat.o(338677);
+          return;
+        }
+        if (i == as.foF())
+        {
+          as.c(localas);
+          removeCallbacksAndMessages(null);
+        }
+      }
+      AppMethodBeat.o(338677);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.viewmodel.component.as
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,48 @@
 package kotlinx.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Arrays;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.ai;
+import kotlin.g.b.s;
+import kotlin.l.c;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/serialization/internal/ByteArrayBuilder;", "Lkotlinx/serialization/internal/PrimitiveArrayBuilder;", "", "bufferWithData", "([B)V", "buffer", "<set-?>", "", "position", "getPosition", "()I", "append", "", "c", "", "append$kotlinx_serialization_runtime", "build", "ensureCapacity", "requiredCapacity", "kotlinx-serialization-runtime"})
-public final class i
-  extends av<byte[]>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lkotlinx/serialization/descriptors/SerialKind;", "", "()V", "hashCode", "", "toString", "", "CONTEXTUAL", "ENUM", "Lkotlinx/serialization/descriptors/PrimitiveKind;", "Lkotlinx/serialization/descriptors/StructureKind;", "Lkotlinx/serialization/descriptors/PolymorphicKind;", "Lkotlinx/serialization/descriptors/SerialKind$ENUM;", "Lkotlinx/serialization/descriptors/SerialKind$CONTEXTUAL;", "kotlinx-serialization-runtime"}, k=1, mv={1, 4, 0})
+public abstract class i
 {
-  byte[] buffer;
-  int position;
-  
-  public i(byte[] paramArrayOfByte)
+  public int hashCode()
   {
-    AppMethodBeat.i(254517);
-    this.buffer = paramArrayOfByte;
-    this.position = paramArrayOfByte.length;
-    ensureCapacity(10);
-    AppMethodBeat.o(254517);
+    return toString().hashCode();
   }
   
-  public final void ensureCapacity(int paramInt)
+  public String toString()
   {
-    AppMethodBeat.i(254515);
-    if (this.buffer.length < paramInt)
+    String str = ai.cz(getClass()).klt();
+    s.checkNotNull(str);
+    return str;
+  }
+  
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lkotlinx/serialization/descriptors/SerialKind$CONTEXTUAL;", "Lkotlinx/serialization/descriptors/SerialKind;", "()V", "kotlinx-serialization-runtime"}, k=1, mv={1, 4, 0})
+  public static final class a
+    extends i
+  {
+    public static final a ajDh;
+    
+    static
     {
-      byte[] arrayOfByte = Arrays.copyOf(this.buffer, kotlin.k.i.ov(paramInt, this.buffer.length * 2));
-      p.j(arrayOfByte, "java.util.Arrays.copyOf(this, newSize)");
-      this.buffer = arrayOfByte;
+      AppMethodBeat.i(188457);
+      ajDh = new a();
+      AppMethodBeat.o(188457);
     }
-    AppMethodBeat.o(254515);
-  }
-  
-  public final int getPosition()
-  {
-    return this.position;
+    
+    private a()
+    {
+      super();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlinx.a.b.i
  * JD-Core Version:    0.7.0.1
  */

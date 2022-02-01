@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/d3b" android:layout_width="@dimen/i8" android:layout_height="@dimen/i8" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
-    <TextView android:textSize="@dimen/c5" android:textColor="@color/FG_1" android:ellipsize="end" android:gravity="center" android:id="@id/d3c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" android:lines="1" app:layout_constraintLeft_toLeftOf="@id/d3b" app:layout_constraintRight_toRightOf="@id/d3b" app:layout_constraintTop_toBottomOf="@id/d3b" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+<LinearLayout android:gravity="center|left" android:orientation="vertical" android:id="@id/dxk" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.finder.live.widget.FinderLivePromoteBannerWidget android:layout_gravity="center|left" android:id="@id/dxa" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</LinearLayout>

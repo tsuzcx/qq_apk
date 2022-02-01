@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/al1" android:background="@color/a74" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/a_7" />
-    <LinearLayout android:orientation="vertical" android:id="@id/ane" android:background="@drawable/ll" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:id="@id/akz" android:layout_height="@dimen/i6" style="@style/fw">
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/al3" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="5.0dip" />
-            <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:id="@id/al5" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
-            <TextView android:textSize="@dimen/hc" android:textColor="@color/l4" android:id="@id/al4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" />
-            <CheckBox android:id="@id/al2" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" style="@style/m6" />
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+    <include android:id="@id/lqa" layout="@layout/om" />
+    <ImageView android:id="@id/vt" android:visibility="visible" android:layout_width="@dimen/x2" android:layout_height="@dimen/x2" android:src="@drawable/c2e" android:scaleType="fitCenter" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    <View android:id="@id/asl" android:background="@drawable/q1" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/r" android:layout_marginRight="@dimen/r" android:layout_marginBottom="0.0dip" android:layout_alignBottom="@id/lqa" android:layerType="software" />
+    <ImageView android:id="@id/ata" android:background="@drawable/k7" android:padding="4.0dip" android:visibility="visible" android:layout_width="26.599976dip" android:layout_height="26.599976dip" android:layout_marginTop="@dimen/if" android:layout_marginRight="@dimen/if" android:src="@drawable/bqk" android:layout_alignTop="@id/lqa" android:layout_alignRight="@id/lqa" />
+</RelativeLayout>

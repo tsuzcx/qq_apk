@@ -45,7 +45,7 @@ public final class AppInfoChangedBlocker
       ShareTinkerLog.i("Tinker.AppInfoChangedBlocker", "tryStart done.", new Object[0]);
       return true;
     }
-    catch (Throwable paramApplication)
+    finally
     {
       ShareTinkerLog.e("Tinker.AppInfoChangedBlocker", "AppInfoChangedBlocker start failed, simply ignore.", new Object[] { paramApplication });
     }
@@ -67,7 +67,7 @@ public final class AppInfoChangedBlocker
         this.APPLICATION_INFO_CHANGED = i;
         return;
       }
-      catch (Throwable paramCallback)
+      finally
       {
         for (;;)
         {
@@ -103,7 +103,7 @@ public final class AppInfoChangedBlocker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.loader.AppInfoChangedBlocker
  * JD-Core Version:    0.7.0.1
  */

@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.order.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String GIb;
+  public String MER;
   public int month;
   public int year;
   
@@ -14,31 +14,31 @@ public final class d
     AppMethodBeat.i(91260);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.year);
-      paramVarArgs.aY(2, this.month);
-      if (this.GIb != null) {
-        paramVarArgs.f(3, this.GIb);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.year);
+      paramVarArgs.bS(2, this.month);
+      if (this.MER != null) {
+        paramVarArgs.g(3, this.MER);
       }
       AppMethodBeat.o(91260);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.bM(1, this.year) + 0 + g.a.a.b.b.a.bM(2, this.month);
+      int i = i.a.a.b.b.a.cJ(1, this.year) + 0 + i.a.a.b.b.a.cJ(2, this.month);
       paramInt = i;
-      if (this.GIb != null) {
-        paramInt = i + g.a.a.b.b.a.g(3, this.GIb);
+      if (this.MER != null) {
+        paramInt = i + i.a.a.b.b.a.h(3, this.MER);
       }
       AppMethodBeat.o(91260);
       return paramInt;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
       AppMethodBeat.o(91260);
@@ -46,7 +46,7 @@ public final class d
     }
     if (paramInt == 3)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       d locald = (d)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
@@ -54,15 +54,15 @@ public final class d
         AppMethodBeat.o(91260);
         return -1;
       case 1: 
-        locald.year = locala.abFh.AK();
+        locald.year = locala.ajGk.aar();
         AppMethodBeat.o(91260);
         return 0;
       case 2: 
-        locald.month = locala.abFh.AK();
+        locald.month = locala.ajGk.aar();
         AppMethodBeat.o(91260);
         return 0;
       }
-      locald.GIb = locala.abFh.readString();
+      locald.MER = locala.ajGk.readString();
       AppMethodBeat.o(91260);
       return 0;
     }
@@ -72,7 +72,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.order.model.d
  * JD-Core Version:    0.7.0.1
  */

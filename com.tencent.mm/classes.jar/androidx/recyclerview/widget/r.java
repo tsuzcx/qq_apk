@@ -1,25 +1,24 @@
 package androidx.recyclerview.widget;
 
-import java.util.List;
-
-public abstract class r<T, VH extends RecyclerView.v>
-  extends RecyclerView.a<VH>
+final class r
 {
-  private final d<T> ajB;
+  final a bYf;
   
-  protected r(h.c<T> paramc)
+  r(a parama)
   {
-    this.ajB = new d(new b(this), new c.a(paramc).kh());
+    this.bYf = parama;
   }
   
-  public int getItemCount()
+  static abstract interface a
   {
-    return this.ajB.afN.size();
+    public abstract a.b a(int paramInt1, int paramInt2, int paramInt3, Object paramObject);
+    
+    public abstract void c(a.b paramb);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.recyclerview.widget.r
  * JD-Core Version:    0.7.0.1
  */

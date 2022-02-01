@@ -6,16 +6,16 @@ import android.graphics.drawable.Drawable;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ao.c;
+import com.tencent.mm.autogen.b.bd;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.biz.b.b;
 import com.tencent.mm.plugin.biz.b.c;
 import com.tencent.mm.plugin.biz.b.f;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.pluginsdk.ui.tools.ab;
-import com.tencent.mm.protocal.protobuf.ahs;
-import com.tencent.mm.protocal.protobuf.aht;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.pluginsdk.ui.tools.aa;
+import com.tencent.mm.protocal.protobuf.akj;
+import com.tencent.mm.protocal.protobuf.akk;
+import com.tencent.mm.protocal.protobuf.pz;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMKVSlotManager;
@@ -23,47 +23,48 @@ import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
 import com.tencent.mm.sdk.platformtools.XmlParser;
-import com.tencent.mm.storage.az;
-import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.bb;
+import com.tencent.mm.ui.aw;
 import com.tencent.mm.ui.base.span.BoldForegroundColorSpan;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
-import kotlin.a.j;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.b.p;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.j;
+import kotlin.k;
 import kotlin.n.n;
-import kotlin.o;
+import kotlin.r;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/biz/util/BizDigestUtil;", "", "()V", "DIGEST_INFO_NO_UPDATE", "", "MILLSECONDS_OF_12HOUR", "", "TAG", "", "clickDigestInfo", "Lcom/tencent/mm/protocal/protobuf/DigestInfo;", "getClickDigestInfo", "()Lcom/tencent/mm/protocal/protobuf/DigestInfo;", "setClickDigestInfo", "(Lcom/tencent/mm/protocal/protobuf/DigestInfo;)V", "isShowBoldDigest", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMmkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "mmkv$delegate", "Lkotlin/Lazy;", "showingCustomDigest", "", "getShowingCustomDigest", "()Z", "setShowingCustomDigest", "(Z)V", "getDigestReportInfo", "Lkotlin/Pair;", "digestInfo", "getFinderLiveRedDotDigest", "", "size", "context", "Landroid/content/Context;", "conv", "Lcom/tencent/mm/storage/Conversation;", "getOfficialAccountsDigest", "getStartSpannableString", "Landroid/text/SpannableString;", "imgSpanSize", "isMsgDigestShow", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "bold", "isShowBoldDigestOpen", "onClick", "", "onDigestExpose", "saveDigestInfo", "item", "Lcom/tencent/mm/protocal/protobuf/BizMsgItem;", "key", "slot", "setDigestShowCount", "req", "Lcom/tencent/mm/protocal/protobuf/BizMsgReSortReq;", "setMsgDigestShow", "BoldDigestShowKey", "DigestKey", "DigestShowKey", "plugin-biz_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/biz/util/BizDigestUtil;", "", "()V", "DIGEST_INFO_NO_UPDATE", "", "MILLSECONDS_OF_12HOUR", "", "TAG", "", "clickDigestInfo", "Lcom/tencent/mm/protocal/protobuf/DigestInfo;", "getClickDigestInfo", "()Lcom/tencent/mm/protocal/protobuf/DigestInfo;", "setClickDigestInfo", "(Lcom/tencent/mm/protocal/protobuf/DigestInfo;)V", "isShowBoldDigest", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMmkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "mmkv$delegate", "Lkotlin/Lazy;", "showingCustomDigest", "", "getShowingCustomDigest", "()Z", "setShowingCustomDigest", "(Z)V", "getDigestReportInfo", "Lkotlin/Pair;", "digestInfo", "getFinderLiveRedDotDigest", "", "size", "context", "Landroid/content/Context;", "conv", "Lcom/tencent/mm/storage/Conversation;", "getOfficialAccountsDigest", "getStartSpannableString", "Landroid/text/SpannableString;", "imgSpanSize", "isMsgDigestShow", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "bold", "isShowBoldDigestOpen", "onClick", "", "onDigestExpose", "saveDigestInfo", "item", "Lcom/tencent/mm/protocal/protobuf/BizMsgItem;", "key", "slot", "setDigestShowCount", "req", "Lcom/tencent/mm/protocal/protobuf/BizMsgReSortReq;", "setMsgDigestShow", "BoldDigestShowKey", "DigestKey", "DigestShowKey", "plugin-biz_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  private static final f lrB;
-  private static int shm;
-  public static ahs shn;
-  private static boolean sho;
-  public static final a shp;
+  private static final j exj;
+  public static final a vtj;
+  private static int vtk;
+  public static akj vtl;
+  private static boolean vtm;
   
   static
   {
-    AppMethodBeat.i(206947);
-    shp = new a();
-    lrB = g.ar((kotlin.g.a.a)a.a.shq);
-    shm = -1;
-    AppMethodBeat.o(206947);
+    AppMethodBeat.i(260780);
+    vtj = new a();
+    exj = k.cm((kotlin.g.a.a)a.a.vtn);
+    vtk = -1;
+    AppMethodBeat.o(260780);
   }
   
-  public static CharSequence a(int paramInt, Context paramContext, az paramaz)
+  public static CharSequence a(int paramInt, Context paramContext, bb parambb)
   {
-    AppMethodBeat.i(206935);
-    p.k(paramContext, "context");
-    p.k(paramaz, "conv");
+    AppMethodBeat.i(260733);
+    s.u(paramContext, "context");
+    s.u(parambb, "conv");
     Object localObject1;
-    if (!paramaz.rp(128))
+    if (!parambb.rx(128))
     {
       localObject1 = null;
-      if ((localObject1 != null) && (!n.ba((CharSequence)localObject1))) {
+      if ((localObject1 != null) && (!n.bp((CharSequence)localObject1))) {
         break label219;
       }
     }
@@ -76,9 +77,9 @@ public final class a
       if (i != 0) {
         break label224;
       }
-      AppMethodBeat.o(206935);
+      AppMethodBeat.o(260733);
       return localObject1;
-      bool1 = paramaz.rp(256);
+      bool1 = parambb.rx(256);
       localObject1 = paramContext.getResources();
       if (bool1)
       {
@@ -88,15 +89,15 @@ public final class a
         localObject1 = new com.tencent.mm.ui.widget.a((Drawable)localObject1, 1);
         localObject3 = new SpannableString((CharSequence)"@");
         ((SpannableString)localObject3).setSpan(localObject1, 0, 1, 33);
-        if (!paramaz.rp(32)) {
+        if (!parambb.rx(32)) {
           break label209;
         }
       }
-      for (localObject1 = (CharSequence)c(paramInt, paramContext);; localObject1 = (CharSequence)"")
+      for (localObject1 = (CharSequence)e(paramInt, paramContext);; localObject1 = (CharSequence)"")
       {
-        localObject1 = TextUtils.concat(new CharSequence[] { (CharSequence)localObject3, localObject1, (CharSequence)paramaz.getDigest() });
+        localObject1 = TextUtils.concat(new CharSequence[] { (CharSequence)localObject3, localObject1, (CharSequence)parambb.field_digest });
         break;
-        if (ar.isDarkMode())
+        if (aw.isDarkMode())
         {
           i = b.c.finder_live_grey_icon_dm;
           break label81;
@@ -106,265 +107,270 @@ public final class a
       }
     }
     label224:
-    boolean bool1 = paramaz.rp(16);
+    boolean bool1 = parambb.rx(16);
     int j;
-    label335:
+    label318:
+    label358:
     Object localObject4;
-    label452:
+    label423:
+    label431:
     Object localObject5;
     if (!bool1)
     {
-      localObject1 = (CharSequence)paramaz.getContent();
-      if ((localObject1 == null) || (n.ba((CharSequence)localObject1)))
+      localObject1 = (CharSequence)parambb.field_content;
+      if ((localObject1 == null) || (n.bp((CharSequence)localObject1)))
       {
         i = 1;
         if (i != 0) {
-          break label742;
+          break label674;
         }
-        localObject1 = paramaz.getContent();
-        p.j(localObject1, "conv.content");
-        if (!n.M((String)localObject1, paramaz.apB() + ":", false)) {
-          break label742;
+        localObject1 = parambb.field_content;
+        s.s(localObject1, "conv.content");
+        if (!n.U((String)localObject1, s.X(parambb.field_digestUser, ":"), false)) {
+          break label674;
         }
-        j = paramaz.getContent().length();
-        localObject1 = paramaz.apB();
-        if (localObject1 == null) {
-          break label668;
+        j = parambb.field_content.length();
+        localObject1 = parambb.field_digestUser;
+        if (localObject1 != null) {
+          break label628;
         }
-        i = ((String)localObject1).length();
+        i = 0;
         if (j <= i) {
-          break label742;
+          break label674;
         }
-        localObject1 = paramaz.getContent().subSequence(paramaz.apB().length() + 1, paramaz.getContent().length());
-        if (localObject1 != null)
-        {
-          localObject3 = localObject1.toString();
-          localObject1 = localObject3;
-          if (localObject3 != null) {}
+        localObject1 = parambb.field_content.subSequence(parambb.field_digestUser.length() + 1, parambb.field_content.length());
+        if (localObject1 != null) {
+          break label637;
         }
-        else
-        {
-          localObject1 = "";
-        }
+        localObject1 = "";
         localObject4 = XmlParser.parseXml((String)localObject1, "digest_items", null);
         if ((localObject4 == null) || (((Map)localObject4).size() <= 1)) {
-          break label742;
+          break label674;
         }
-        boolean bool2 = paramaz.rp(64);
+        boolean bool2 = parambb.rx(64);
         localObject1 = (CharSequence)"";
         j = (((Map)localObject4).size() - 1) / 3;
-        if (j < 0) {
-          break label682;
+        localObject3 = localObject1;
+        if (j >= 0)
+        {
+          i = 0;
+          if (i != 0) {
+            break label660;
+          }
+          localObject3 = "";
+          localObject5 = s.X(".digest_items.item", localObject3);
+          localObject3 = (String)((Map)localObject4).get(s.X((String)localObject5, ".font_bold"));
+          localObject5 = (String)((Map)localObject4).get(s.X((String)localObject5, ".content"));
+          if ((localObject3 == null) || (localObject5 == null)) {
+            break label1391;
+          }
+          localObject5 = com.tencent.mm.pluginsdk.ui.span.p.d(paramContext, (CharSequence)localObject5, paramInt);
+          if ((bool2) && (s.p(localObject3, "1"))) {
+            ((SpannableString)localObject5).setSpan(new BoldForegroundColorSpan(androidx.core.content.a.w(paramContext, b.b.FG_0)), 0, ((SpannableString)localObject5).length(), 17);
+          }
+          localObject1 = TextUtils.concat(new CharSequence[] { localObject1, (CharSequence)localObject5 });
+          s.s(localObject1, "concat(digest, ss)");
         }
-        i = 0;
-        localObject5 = new StringBuilder(".digest_items.item");
-        if (i != 0) {
-          break label673;
-        }
-        localObject3 = "";
-        label472:
-        localObject5 = localObject3;
-        localObject3 = (String)((Map)localObject4).get((String)localObject5 + ".font_bold");
-        localObject5 = (String)((Map)localObject4).get((String)localObject5 + ".content");
-        if ((localObject3 == null) || (localObject5 == null)) {
-          break label1460;
-        }
-        localObject5 = com.tencent.mm.pluginsdk.ui.span.l.d(paramContext, (CharSequence)localObject5, paramInt);
-        if ((bool2) && (p.h(localObject3, "1"))) {
-          ((SpannableString)localObject5).setSpan(new BoldForegroundColorSpan(androidx.core.content.a.w(paramContext, b.b.FG_0)), 0, ((SpannableString)localObject5).length(), 17);
-        }
-        localObject1 = TextUtils.concat(new CharSequence[] { localObject1, (CharSequence)localObject5 });
-        p.j(localObject1, "TextUtils.concat(digest, ss)");
       }
     }
-    label668:
-    label673:
-    label682:
-    label1067:
-    label1073:
-    label1460:
+    label660:
+    label674:
+    label933:
+    label977:
+    label1002:
+    label1391:
     for (;;)
     {
-      localObject3 = localObject1;
-      if (i != j)
+      if (i == j)
       {
-        i += 1;
-        break label452;
-        i = 0;
-        break;
-        i = 0;
-        break label335;
-        localObject3 = Integer.valueOf(i);
-        break label472;
         localObject3 = localObject1;
-      }
-      Log.i("MicroMsg.BizDigestUtil", "getOfficialAccountsDigest digest_items digest: " + (CharSequence)localObject3);
-      if ((localObject3 == null) || (n.ba((CharSequence)localObject3))) {}
-      for (i = 1; i == 0; i = 0)
-      {
-        AppMethodBeat.o(206935);
-        return localObject3;
-      }
-      label742:
-      if ((bool1) && (paramaz.apz() > 0))
-      {
-        if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.DEBUG) || (WeChatEnvironment.hasDebugger()))
+        Log.i("MicroMsg.BizDigestUtil", s.X("getOfficialAccountsDigest digest_items digest: ", localObject3));
+        if (n.bp((CharSequence)localObject3)) {}
+        for (i = 1;; i = 0)
         {
-          i = 1;
-          if (i == 0) {
-            break label1449;
-          }
-          localObject3 = (CharSequence)"";
-          long l1 = bcJ().decodeLong("BizLastMsgId");
-          long l2 = bcJ().decodeLong("BizLastMsgTime");
-          localObject4 = (MMKVSlotManager)c.lEh;
-          localObject1 = aoK(l1 + '-' + l2);
-          localObject4 = (MultiProcessMMKV)((MMKVSlotManager)localObject4).findSlot((String)localObject1);
-          if (localObject4 == null) {
-            break label1073;
-          }
-          if (!((MultiProcessMMKV)localObject4).containsKey((String)localObject1)) {
-            break label1067;
-          }
-          localObject1 = ((MultiProcessMMKV)localObject4).decodeBytes((String)localObject1);
-          if (localObject1 == null) {
-            break label1067;
-          }
-          if (localObject1.length != 0) {
-            break label1037;
-          }
-          i = 1;
-          label894:
           if (i != 0) {
-            break label1042;
+            break label674;
           }
-          i = 1;
-          if (i == 0) {
-            break label1067;
+          AppMethodBeat.o(260733);
+          return localObject3;
+          i = 0;
+          break;
+          label628:
+          i = ((String)localObject1).length();
+          break label318;
+          label637:
+          localObject3 = localObject1.toString();
+          localObject1 = localObject3;
+          if (localObject3 != null) {
+            break label358;
           }
+          localObject1 = "";
+          break label358;
+          localObject3 = Integer.valueOf(i);
+          break label431;
         }
-        for (;;)
+        Object localObject2;
+        if ((bool1) && (parambb.field_unReadCount > 0))
         {
-          try
+          if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.DEBUG) || (WeChatEnvironment.hasDebugger()))
           {
-            localObject4 = ahs.class.newInstance();
-            ((com.tencent.mm.cd.a)localObject4).parseFrom((byte[])localObject1);
-            localObject1 = (com.tencent.mm.cd.a)localObject4;
-            localObject1 = (ahs)localObject1;
-            if (localObject1 != null) {
-              break label1079;
+            i = 1;
+            if (i == 0) {
+              break label1366;
             }
-            sho = false;
-            AppMethodBeat.o(206935);
+            localObject3 = "";
+            long l1 = atj().decodeLong("BizLastMsgId");
+            long l2 = atj().decodeLong("BizLastMsgTime");
+            localObject4 = (MMKVSlotManager)com.tencent.mm.an.c.ovO;
+            localObject1 = aig(l1 + '-' + l2);
+            localObject4 = (MultiProcessMMKV)((MMKVSlotManager)localObject4).findSlot((String)localObject1);
+            if (localObject4 != null) {
+              break label901;
+            }
+          }
+          for (localObject1 = null;; localObject2 = null)
+          {
+            localObject1 = (akj)localObject1;
+            if (localObject1 != null) {
+              break label1008;
+            }
+            vtm = false;
+            AppMethodBeat.o(260733);
             return null;
-          }
-          catch (Exception localException)
-          {
-            Log.printErrStackTrace("MultiProcessMMKV.decodeProtoBuffer", (Throwable)localException, "decode ProtoBuffer", new Object[0]);
-          }
-          if (shm != -1)
-          {
-            if (shm == 1)
+            if (vtk != -1)
+            {
+              if (vtk == 1)
+              {
+                i = 1;
+                break;
+              }
+              i = 0;
+              break;
+            }
+            vtk = ((com.tencent.mm.plugin.expt.b.c)h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yOl, 0);
+            Log.i("MicroMsg.BizDigestUtil", "isShowBoldDigestOpen open %d", new Object[] { Integer.valueOf(vtk) });
+            if (vtk == 1)
             {
               i = 1;
               break;
             }
             i = 0;
             break;
-          }
-          shm = ((b)h.ae(b.class)).a(b.a.vAv, 0);
-          Log.i("MicroMsg.BizDigestUtil", "isShowBoldDigestOpen open %d", new Object[] { Integer.valueOf(shm) });
-          if (shm == 1)
-          {
-            i = 1;
-            break;
-          }
-          i = 0;
-          break;
-          i = 0;
-          break label894;
-          i = 0;
-          break label900;
-          localObject2 = null;
-          continue;
-          localObject2 = null;
-        }
-        Object localObject2 = ((ahs)localObject2).RGi;
-        if (localObject2 != null)
-        {
-          localObject2 = j.l((Iterable)localObject2);
-          if (localObject2 != null)
-          {
-            localObject4 = ((Iterable)localObject2).iterator();
-            localObject2 = localObject3;
-            for (;;)
+            if (((MultiProcessMMKV)localObject4).containsKey((String)localObject1))
             {
-              localObject3 = localObject2;
-              if (!((Iterator)localObject4).hasNext()) {
-                break;
-              }
-              localObject3 = (aht)((Iterator)localObject4).next();
-              localObject5 = com.tencent.mm.pluginsdk.ui.span.l.d(paramContext, (CharSequence)((aht)localObject3).lpM, paramInt);
-              if (((aht)localObject3).Sst == 1)
+              localObject1 = ((MultiProcessMMKV)localObject4).decodeBytes((String)localObject1);
+              if (localObject1 != null)
               {
-                Log.d("MicroMsg.BizDigestUtil", "getOfficialAccountsDigest bold digest " + ((aht)localObject3).lpM);
-                ((SpannableString)localObject5).setSpan(new BoldForegroundColorSpan(paramContext.getResources().getColor(b.b.FG_0)), 0, ((SpannableString)localObject5).length(), 17);
+                if (localObject1.length == 0)
+                {
+                  i = 1;
+                  if (i != 0) {
+                    break label977;
+                  }
+                }
+                for (i = 1;; i = 0)
+                {
+                  for (;;)
+                  {
+                    if (i == 0) {
+                      break label1002;
+                    }
+                    try
+                    {
+                      localObject4 = akj.class.newInstance();
+                      ((com.tencent.mm.bx.a)localObject4).parseFrom((byte[])localObject1);
+                      localObject1 = (com.tencent.mm.bx.a)localObject4;
+                    }
+                    catch (Exception localException)
+                    {
+                      Log.printErrStackTrace("MultiProcessMMKV.decodeProtoBuffer", (Throwable)localException, "decode ProtoBuffer", new Object[0]);
+                    }
+                  }
+                  i = 0;
+                  break label933;
+                }
               }
-              localObject2 = TextUtils.concat(new CharSequence[] { localObject2, (CharSequence)localObject5 });
-              p.j(localObject2, "TextUtils.concat(digest, ss)");
             }
           }
+          label1008:
+          localObject2 = ((akj)localObject2).YCW;
+          if (localObject2 == null) {
+            break label1377;
+          }
+          localObject2 = kotlin.a.p.l((Iterable)localObject2);
+          if (localObject2 == null) {
+            break label1377;
+          }
+          localObject4 = ((Iterable)localObject2).iterator();
+          localObject2 = localObject3;
+          while (((Iterator)localObject4).hasNext())
+          {
+            localObject3 = (akk)((Iterator)localObject4).next();
+            localObject5 = com.tencent.mm.pluginsdk.ui.span.p.d(paramContext, (CharSequence)((akk)localObject3).nUO, paramInt);
+            if (((akk)localObject3).ZrB == 1)
+            {
+              Log.d("MicroMsg.BizDigestUtil", s.X("getOfficialAccountsDigest bold digest ", ((akk)localObject3).nUO));
+              ((SpannableString)localObject5).setSpan(new BoldForegroundColorSpan(paramContext.getResources().getColor(b.b.FG_0)), 0, ((SpannableString)localObject5).length(), 17);
+            }
+            localObject2 = TextUtils.concat(new CharSequence[] { (CharSequence)localObject2, (CharSequence)localObject5 });
+            s.s(localObject2, "concat(digest, ss)");
+          }
         }
-        if (((CharSequence)localObject3).length() == 0) {}
-        for (i = 1; i != 0; i = 0)
+        for (;;)
         {
-          sho = false;
-          AppMethodBeat.o(206935);
-          return null;
-        }
-        Log.d("MicroMsg.BizDigestUtil", "getOfficialAccountsDigest digest " + (CharSequence)localObject3);
-        localObject2 = paramContext.getString(b.f.main_conversation_biz_time_line_unread_count, new Object[] { Integer.valueOf(paramaz.apz()) });
-        p.j(localObject2, "context.getString(R.stri…_count, conv.unReadCount)");
-        sho = true;
-        if (paramaz.rp(32))
-        {
-          paramContext = c(paramInt, paramContext);
-          paramContext = TextUtils.concat(new CharSequence[] { (CharSequence)localObject2, (CharSequence)" ", (CharSequence)paramContext, localObject3 });
-          AppMethodBeat.o(206935);
+          if (((CharSequence)localObject2).length() == 0) {}
+          for (i = 1; i != 0; i = 0)
+          {
+            vtm = false;
+            AppMethodBeat.o(260733);
+            return null;
+          }
+          Log.d("MicroMsg.BizDigestUtil", s.X("getOfficialAccountsDigest digest ", localObject2));
+          localObject3 = paramContext.getString(b.f.main_conversation_biz_time_line_unread_count, new Object[] { Integer.valueOf(parambb.field_unReadCount) });
+          s.s(localObject3, "context.getString(R.stri…_count, conv.unReadCount)");
+          vtm = true;
+          if (parambb.rx(32))
+          {
+            paramContext = e(paramInt, paramContext);
+            paramContext = TextUtils.concat(new CharSequence[] { (CharSequence)localObject3, (CharSequence)" ", (CharSequence)paramContext, (CharSequence)localObject2 });
+            AppMethodBeat.o(260733);
+            return paramContext;
+          }
+          paramContext = TextUtils.concat(new CharSequence[] { (CharSequence)localObject3, (CharSequence)" ", (CharSequence)localObject2 });
+          AppMethodBeat.o(260733);
           return paramContext;
+          vtm = false;
+          AppMethodBeat.o(260733);
+          return null;
+          localObject2 = "";
         }
-        paramContext = TextUtils.concat(new CharSequence[] { (CharSequence)localObject2, (CharSequence)" ", localObject3 });
-        AppMethodBeat.o(206935);
-        return paramContext;
       }
-      label1079:
-      sho = false;
-      AppMethodBeat.o(206935);
-      return null;
+      i += 1;
+      break label423;
     }
   }
   
-  public static o<String, String> a(ahs paramahs)
+  public static r<String, String> a(akj paramakj)
   {
-    AppMethodBeat.i(206940);
-    if (paramahs == null)
+    AppMethodBeat.i(260761);
+    if (paramakj == null)
     {
-      paramahs = new o("", "");
-      AppMethodBeat.o(206940);
-      return paramahs;
+      paramakj = new r("", "");
+      AppMethodBeat.o(260761);
+      return paramakj;
     }
-    if (!sho)
+    if (!vtm)
     {
-      paramahs = new o("", "");
-      AppMethodBeat.o(206940);
-      return paramahs;
+      paramakj = new r("", "");
+      AppMethodBeat.o(260761);
+      return paramakj;
     }
     String str = "";
-    Object localObject2 = paramahs.RGi;
+    Object localObject2 = paramakj.YCW;
     Object localObject1 = str;
     if (localObject2 != null)
     {
-      localObject2 = j.l((Iterable)localObject2);
+      localObject2 = kotlin.a.p.l((Iterable)localObject2);
       localObject1 = str;
       if (localObject2 != null)
       {
@@ -375,244 +381,280 @@ public final class a
           if (!((Iterator)localObject2).hasNext()) {
             break;
           }
-          localObject1 = (aht)((Iterator)localObject2).next();
-          if (((aht)localObject1).Sst == 1)
+          localObject1 = (akk)((Iterator)localObject2).next();
+          if (((akk)localObject1).ZrB == 1)
           {
             CharSequence localCharSequence = (CharSequence)str;
-            if ((localCharSequence == null) || (n.ba(localCharSequence))) {}
+            if ((localCharSequence == null) || (n.bp(localCharSequence))) {}
             for (int i = 1;; i = 0)
             {
               if (i == 0) {
                 break label177;
               }
-              str = ((aht)localObject1).lpM;
-              p.j(str, "digestItem.digest");
+              str = ((akk)localObject1).nUO;
+              s.s(str, "digestItem.digest");
               break;
             }
             label177:
-            str = str + ";" + ((aht)localObject1).lpM;
+            str = str + ';' + ((akk)localObject1).nUO;
           }
         }
       }
     }
-    paramahs = new o(ab.aXb(Util.nullAsNil(paramahs.qJq)), ab.aXb((String)localObject1));
-    AppMethodBeat.o(206940);
-    return paramahs;
+    paramakj = new r(aa.aUC(Util.nullAsNil(paramakj.tNT)), aa.aUC((String)localObject1));
+    AppMethodBeat.o(260761);
+    return paramakj;
   }
   
-  public static o<String, String> a(z paramz)
+  public static void a(akj paramakj, ab paramab)
   {
-    Object localObject3 = null;
-    AppMethodBeat.i(206936);
-    p.k(paramz, "info");
-    MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)c.lEh.getSlotForWrite();
-    String str = String.valueOf(System.currentTimeMillis() / 43200000L);
-    if (!a(paramz, false))
+    AppMethodBeat.i(260772);
+    s.u(paramab, "info");
+    if (paramakj == null)
     {
-      localMultiProcessMMKV.encode(aoL(str), c.lEh.decodeInt(aoL(str), 0) + 1);
-      a(paramz, false, localMultiProcessMMKV);
+      AppMethodBeat.o(260772);
+      return;
     }
-    Object localObject4 = (MMKVSlotManager)c.lEh;
-    Object localObject1 = aoK(paramz.field_msgId + '-' + paramz.field_createTime);
-    localObject4 = (MultiProcessMMKV)((MMKVSlotManager)localObject4).findSlot((String)localObject1);
-    int i;
-    if (localObject4 != null) {
-      if (((MultiProcessMMKV)localObject4).containsKey((String)localObject1))
+    a(aig(paramab.field_msgId + '-' + paramab.field_createTime), paramakj, (MultiProcessMMKV)com.tencent.mm.an.c.ovO.getSlotForWrite());
+    AppMethodBeat.o(260772);
+  }
+  
+  public static void a(pz parampz, ab paramab)
+  {
+    int i = 1;
+    AppMethodBeat.i(260766);
+    s.u(parampz, "item");
+    s.u(paramab, "info");
+    String str = aig(paramab.field_msgId + '-' + paramab.field_createTime);
+    MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)com.tencent.mm.an.c.ovO.findSlot(str);
+    if ((parampz.YUs == null) || (Util.isNullOrNil((List)parampz.YUs.YCW)))
+    {
+      if ((localMultiProcessMMKV != null) && (localMultiProcessMMKV.containsKey(str) == true)) {}
+      for (;;)
       {
-        localObject1 = ((MultiProcessMMKV)localObject4).decodeBytes((String)localObject1);
-        if (localObject1 != null) {
+        if (i != 0)
+        {
+          if (localMultiProcessMMKV != null) {
+            localMultiProcessMMKV.removeValueForKey(str);
+          }
+          Log.i("MicroMsg.BizDigestUtil", "saveWebViewAlbumInfoInfo remove " + paramab.field_msgId + "  " + paramab.field_bizClientMsgId);
+        }
+        AppMethodBeat.o(260766);
+        return;
+        i = 0;
+      }
+    }
+    if ((parampz.eQp & 0x1) != 0)
+    {
+      if ((localMultiProcessMMKV != null) && (localMultiProcessMMKV.containsKey(str) == true)) {}
+      for (i = 1; i != 0; i = 0)
+      {
+        Log.d("MicroMsg.BizDigestUtil", "saveWebViewAlbumInfoInfo not update " + paramab.field_msgId + "  " + paramab.field_bizClientMsgId);
+        AppMethodBeat.o(260766);
+        return;
+      }
+    }
+    Log.i("MicroMsg.BizDigestUtil", "saveWebViewAlbumInfoInfo " + paramab.field_msgId + "  " + paramab.field_bizClientMsgId);
+    parampz = parampz.YUs;
+    s.s(parampz, "item.digest_info");
+    a(str, parampz, (MultiProcessMMKV)com.tencent.mm.an.c.ovO.getSlotForWrite());
+    AppMethodBeat.o(260766);
+  }
+  
+  private static void a(ab paramab, boolean paramBoolean, MultiProcessMMKV paramMultiProcessMMKV)
+  {
+    AppMethodBeat.i(260756);
+    paramMultiProcessMMKV.encode("digest_show_" + paramBoolean + '_' + paramab.field_msgId + '_' + paramab.field_createTime, true);
+    AppMethodBeat.o(260756);
+  }
+  
+  private static void a(String paramString, akj paramakj, MultiProcessMMKV paramMultiProcessMMKV)
+  {
+    AppMethodBeat.i(260775);
+    try
+    {
+      paramMultiProcessMMKV.encode(paramString, paramakj.toByteArray());
+      AppMethodBeat.o(260775);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      Log.e("MicroMsg.BizDigestUtil", s.X("saveWebViewAlbumInfoInfo ex ", paramString.getMessage()));
+      AppMethodBeat.o(260775);
+    }
+  }
+  
+  private static boolean a(ab paramab, boolean paramBoolean)
+  {
+    AppMethodBeat.i(260747);
+    paramab = "digest_show_" + paramBoolean + '_' + paramab.field_msgId + '_' + paramab.field_createTime;
+    paramBoolean = com.tencent.mm.an.c.ovO.decodeBool(paramab, false);
+    AppMethodBeat.o(260747);
+    return paramBoolean;
+  }
+  
+  public static String aig(String paramString)
+  {
+    AppMethodBeat.i(260682);
+    paramString = "digest_" + paramString + '}';
+    AppMethodBeat.o(260682);
+    return paramString;
+  }
+  
+  public static String aih(String paramString)
+  {
+    AppMethodBeat.i(260690);
+    paramString = "digest_show_" + paramString + '}';
+    AppMethodBeat.o(260690);
+    return paramString;
+  }
+  
+  public static String aii(String paramString)
+  {
+    AppMethodBeat.i(260697);
+    paramString = "digest_show_bold_" + paramString + '}';
+    AppMethodBeat.o(260697);
+    return paramString;
+  }
+  
+  public static MultiProcessMMKV atj()
+  {
+    AppMethodBeat.i(260703);
+    MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)exj.getValue();
+    AppMethodBeat.o(260703);
+    return localMultiProcessMMKV;
+  }
+  
+  public static r<String, String> b(ab paramab)
+  {
+    AppMethodBeat.i(260740);
+    s.u(paramab, "info");
+    MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)com.tencent.mm.an.c.ovO.getSlotForWrite();
+    String str = String.valueOf(System.currentTimeMillis() / 43200000L);
+    if (!a(paramab, false))
+    {
+      localMultiProcessMMKV.encode(aih(str), com.tencent.mm.an.c.ovO.decodeInt(aih(str), 0) + 1);
+      a(paramab, false, localMultiProcessMMKV);
+    }
+    Object localObject2 = (MMKVSlotManager)com.tencent.mm.an.c.ovO;
+    Object localObject1 = aig(paramab.field_msgId + '-' + paramab.field_createTime);
+    localObject2 = (MultiProcessMMKV)((MMKVSlotManager)localObject2).findSlot((String)localObject1);
+    if (localObject2 == null) {}
+    int i;
+    label191:
+    label233:
+    akj localakj;
+    label256:
+    for (localObject1 = null;; localakj = null)
+    {
+      localObject1 = (akj)localObject1;
+      if (localObject1 != null) {
+        break;
+      }
+      paramab = new r("", "");
+      AppMethodBeat.o(260740);
+      return paramab;
+      if (((MultiProcessMMKV)localObject2).containsKey((String)localObject1))
+      {
+        localObject1 = ((MultiProcessMMKV)localObject2).decodeBytes((String)localObject1);
+        if (localObject1 != null)
+        {
           if (localObject1.length == 0)
           {
             i = 1;
             if (i != 0) {
               break label233;
             }
-            i = 1;
-            label169:
-            if (i == 0) {
-              break label256;
+          }
+          for (i = 1;; i = 0)
+          {
+            for (;;)
+            {
+              if (i == 0) {
+                break label256;
+              }
+              try
+              {
+                localObject2 = akj.class.newInstance();
+                ((com.tencent.mm.bx.a)localObject2).parseFrom((byte[])localObject1);
+                localObject1 = (com.tencent.mm.bx.a)localObject2;
+              }
+              catch (Exception localException)
+              {
+                Log.printErrStackTrace("MultiProcessMMKV.decodeProtoBuffer", (Throwable)localException, "decode ProtoBuffer", new Object[0]);
+              }
             }
+            i = 0;
+            break label191;
           }
         }
       }
     }
-    for (;;)
+    Log.d("MicroMsg.BizDigestUtil", "onDigestExpose digest " + localakj.tNT + " showingCustomDigest=" + vtm);
+    if (!vtm)
     {
-      try
-      {
-        localObject4 = ahs.class.newInstance();
-        ((com.tencent.mm.cd.a)localObject4).parseFrom((byte[])localObject1);
-        localObject1 = (com.tencent.mm.cd.a)localObject4;
-        localObject4 = (ahs)localObject1;
-        if (localObject4 != null) {
-          break label266;
-        }
-        paramz = new o("", "");
-        AppMethodBeat.o(206936);
-        return paramz;
-      }
-      catch (Exception localException)
-      {
-        label233:
-        Log.printErrStackTrace("MultiProcessMMKV.decodeProtoBuffer", (Throwable)localException, "decode ProtoBuffer", new Object[0]);
-      }
-      i = 0;
-      break;
-      i = 0;
-      break label169;
-      label256:
-      localObject2 = null;
-      continue;
-      localObject2 = null;
+      paramab = new r("", "");
+      AppMethodBeat.o(260740);
+      return paramab;
     }
-    label266:
-    StringBuilder localStringBuilder = new StringBuilder("onDigestExpose digest ");
-    Object localObject2 = localObject3;
-    if (localObject4 != null) {
-      localObject2 = ((ahs)localObject4).qJq;
-    }
-    Log.d("MicroMsg.BizDigestUtil", (String)localObject2 + " showingCustomDigest=" + sho);
-    if (!sho)
-    {
-      paramz = new o("", "");
-      AppMethodBeat.o(206936);
-      return paramz;
-    }
-    localObject2 = ((ahs)localObject4).RGi;
+    localObject2 = localakj.YCW;
     int j;
     if (localObject2 != null)
     {
-      localObject2 = j.l((Iterable)localObject2);
+      localObject2 = kotlin.a.p.l((Iterable)localObject2);
       if (localObject2 != null)
       {
         localObject2 = ((Iterable)localObject2).iterator();
         i = 0;
         j = i;
         if (!((Iterator)localObject2).hasNext()) {
-          break label413;
+          break label401;
         }
-        if (((aht)((Iterator)localObject2).next()).Sst != 1) {
-          break label475;
+        if (((akk)((Iterator)localObject2).next()).ZrB != 1) {
+          break label462;
         }
         i = 1;
       }
     }
-    label413:
-    label475:
+    label401:
+    label462:
     for (;;)
     {
       break;
       j = 0;
-      if ((j != 0) && (j != 0) && (!a(paramz, true)))
+      if ((j != 0) && (j != 0) && (!a(paramab, true)))
       {
-        localMultiProcessMMKV.encode(aoM(str), c.lEh.decodeInt(aoM(str), 0) + 1);
-        a(paramz, true, localMultiProcessMMKV);
+        localMultiProcessMMKV.encode(aii(str), com.tencent.mm.an.c.ovO.decodeInt(aii(str), 0) + 1);
+        a(paramab, true, localMultiProcessMMKV);
       }
-      paramz = a((ahs)localObject4);
-      AppMethodBeat.o(206936);
-      return paramz;
+      paramab = a(localakj);
+      AppMethodBeat.o(260740);
+      return paramab;
     }
   }
   
-  public static void a(ahs paramahs, z paramz)
+  public static akj daz()
   {
-    AppMethodBeat.i(206942);
-    p.k(paramz, "info");
-    if (paramahs == null)
-    {
-      AppMethodBeat.o(206942);
-      return;
-    }
-    a(aoK(paramz.field_msgId + '-' + paramz.field_createTime), paramahs, (MultiProcessMMKV)c.lEh.getSlotForWrite());
-    AppMethodBeat.o(206942);
+    return vtl;
   }
   
-  private static void a(z paramz, boolean paramBoolean, MultiProcessMMKV paramMultiProcessMMKV)
+  public static SpannableString e(int paramInt, Context paramContext)
   {
-    AppMethodBeat.i(206938);
-    paramMultiProcessMMKV.encode("digest_show_" + paramBoolean + '_' + paramz.field_msgId + '_' + paramz.field_createTime, true);
-    AppMethodBeat.o(206938);
-  }
-  
-  public static void a(String paramString, ahs paramahs, MultiProcessMMKV paramMultiProcessMMKV)
-  {
-    AppMethodBeat.i(206944);
-    try
-    {
-      paramMultiProcessMMKV.encode(paramString, paramahs.toByteArray());
-      AppMethodBeat.o(206944);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      Log.e("MicroMsg.BizDigestUtil", "saveWebViewAlbumInfoInfo ex " + paramString.getMessage());
-      AppMethodBeat.o(206944);
-    }
-  }
-  
-  private static boolean a(z paramz, boolean paramBoolean)
-  {
-    AppMethodBeat.i(206937);
-    paramz = "digest_show_" + paramBoolean + '_' + paramz.field_msgId + '_' + paramz.field_createTime;
-    paramBoolean = c.lEh.decodeBool(paramz, false);
-    AppMethodBeat.o(206937);
-    return paramBoolean;
-  }
-  
-  public static String aoK(String paramString)
-  {
-    AppMethodBeat.i(206928);
-    paramString = "digest_" + paramString + '}';
-    AppMethodBeat.o(206928);
-    return paramString;
-  }
-  
-  public static String aoL(String paramString)
-  {
-    AppMethodBeat.i(206930);
-    paramString = "digest_show_" + paramString + '}';
-    AppMethodBeat.o(206930);
-    return paramString;
-  }
-  
-  public static String aoM(String paramString)
-  {
-    AppMethodBeat.i(206932);
-    paramString = "digest_show_bold_" + paramString + '}';
-    AppMethodBeat.o(206932);
-    return paramString;
-  }
-  
-  public static MultiProcessMMKV bcJ()
-  {
-    AppMethodBeat.i(206933);
-    MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)lrB.getValue();
-    AppMethodBeat.o(206933);
-    return localMultiProcessMMKV;
-  }
-  
-  public static SpannableString c(int paramInt, Context paramContext)
-  {
-    AppMethodBeat.i(206934);
-    p.k(paramContext, "context");
+    AppMethodBeat.i(260716);
+    s.u(paramContext, "context");
     paramContext = paramContext.getResources().getDrawable(b.c.biz_timeline_star_icon);
-    p.j(paramContext, "context.resources.getDra…e.biz_timeline_star_icon)");
+    s.s(paramContext, "context.resources.getDra…e.biz_timeline_star_icon)");
     paramContext.setBounds(0, 0, paramInt, paramInt);
     paramContext = new com.tencent.mm.ui.widget.a(paramContext, 1);
     SpannableString localSpannableString = new SpannableString((CharSequence)"@");
     localSpannableString.setSpan(paramContext, 0, 1, 33);
-    AppMethodBeat.o(206934);
+    AppMethodBeat.o(260716);
     return localSpannableString;
-  }
-  
-  public static ahs cxJ()
-  {
-    return shn;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.biz.b.a
  * JD-Core Version:    0.7.0.1
  */

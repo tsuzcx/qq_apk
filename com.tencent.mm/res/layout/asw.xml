@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:background="@color/ahb" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/br7" android:background="@drawable/a6_" android:paddingLeft="@dimen/cp" android:paddingRight="@dimen/cp" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/dc" android:layout_marginLeft="@dimen/cd" android:layout_marginTop="@dimen/cd" android:layout_marginRight="@dimen/cd">
+        <ViewStub android:id="@id/hi0" android:layout="@layout/asy" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/gua" android:layout="@layout/asz" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/m4" android:id="@id/kl4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cd" android:maxWidth="130.0dip" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/iql" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <TextView android:textSize="14.0dip" android:textColor="@color/Red" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:layout_marginRight="@dimen/df" android:maxWidth="@dimen/c2" android:text="重新设置" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/iji" android:background="@raw/refresh" android:layout_width="17.0dip" android:layout_height="17.0dip" app:iconColor="@color/a9z" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

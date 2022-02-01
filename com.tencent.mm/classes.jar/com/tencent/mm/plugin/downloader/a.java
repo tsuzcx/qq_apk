@@ -8,14 +8,14 @@ import com.tencent.mm.sdk.platformtools.Log;
 public final class a
   extends FileObserver
 {
-  private String ueb;
+  private String xke;
   
   public a(String paramString)
   {
     super(q.n(paramString, false), 618);
-    AppMethodBeat.i(218892);
-    this.ueb = paramString;
-    AppMethodBeat.o(218892);
+    AppMethodBeat.i(267079);
+    this.xke = paramString;
+    AppMethodBeat.o(267079);
   }
   
   public final void onEvent(int paramInt, String paramString)
@@ -27,7 +27,7 @@ public final class a
       AppMethodBeat.o(88814);
       return;
     }
-    paramString = this.ueb + paramString;
+    paramString = this.xke + paramString;
     switch (paramInt)
     {
     }

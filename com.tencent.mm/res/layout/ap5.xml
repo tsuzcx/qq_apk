@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/a4i" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="300.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.finder.live.view.FinderLiveCameraOptBeautyPowerfulSuitView android:id="@id/dg8" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.mm.plugin.finder.live.view.FinderLiveCameraOptBeautyPowerfulDetailsView android:id="@id/dg0" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <RelativeLayout android:gravity="center" android:id="@id/dfz" android:layout_width="@dimen/d_" android:layout_height="@dimen/d_" android:layout_marginLeft="12.0dip" android:layout_marginTop="12.0dip" android:contentDescription="@string/dvw">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:background="@drawable/ar2" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/icons_filled_arrow" android:rotation="90.0" app:iconColor="@color/BW_100_Alpha_0_5" />
+    </RelativeLayout>
+</RelativeLayout>

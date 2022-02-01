@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
@@ -12,7 +11,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
 import com.tencent.mm.R.l;
-import com.tencent.mm.by.c;
+import com.tencent.mm.br.c;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.e;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.e.c;
@@ -25,9 +24,9 @@ public class BakWaitingUI
   extends MMWizardActivity
   implements e.c
 {
-  private int Vh;
+  private int bUl;
   private MMHandler handler;
-  private boolean rUO;
+  private boolean vgd;
   
   public BakWaitingUI()
   {
@@ -36,7 +35,7 @@ public class BakWaitingUI
     AppMethodBeat.o(22044);
   }
   
-  public final void EY(final int paramInt)
+  public final void Fz(final int paramInt)
   {
     AppMethodBeat.i(22049);
     this.handler.post(new Runnable()
@@ -49,7 +48,7 @@ public class BakWaitingUI
         {
           Log.d("MicroMsg.BakWaitingUI", "BakToPcUI jump tips");
           Intent localIntent = new Intent();
-          localIntent.putExtra("title", BakWaitingUI.this.getString(R.l.ero));
+          localIntent.putExtra("title", BakWaitingUI.this.getString(R.l.gup));
           localIntent.putExtra("rawUrl", BakWaitingUI.this.getString(R.l.backup_not_support_doc, new Object[] { LocaleUtil.getApplicationLanguage() }));
           localIntent.putExtra("showShare", false);
           localIntent.putExtra("neverGetA8Key", true);
@@ -61,29 +60,29 @@ public class BakWaitingUI
     AppMethodBeat.o(22049);
   }
   
-  final void cuG()
+  final void cXq()
   {
     AppMethodBeat.i(22050);
-    if ((6 == this.Vh) || (1 == this.Vh))
+    if ((6 == this.bUl) || (1 == this.bUl))
     {
       Intent localIntent = new Intent(this, BakOperatingUI.class);
-      localIntent.putExtra("cmd", this.Vh);
-      MMWizardActivity.aH(this, localIntent);
+      localIntent.putExtra("cmd", this.bUl);
+      MMWizardActivity.aQ(this, localIntent);
     }
     AppMethodBeat.o(22050);
   }
   
   public int getLayoutId()
   {
-    return R.i.ebY;
+    return R.i.geG;
   }
   
   public void initView()
   {
     AppMethodBeat.i(22046);
-    setMMTitle(R.l.esv);
-    if (this.rUO) {
-      findViewById(R.h.dsU).setVisibility(8);
+    setMMTitle(R.l.gvw);
+    if (this.vgd) {
+      findViewById(R.h.ftl).setVisibility(8);
     }
     for (;;)
     {
@@ -99,11 +98,11 @@ public class BakWaitingUI
       });
       AppMethodBeat.o(22046);
       return;
-      findViewById(R.h.dsU).setVisibility(0);
+      findViewById(R.h.ftl).setVisibility(0);
     }
   }
   
-  public final void kv(final int paramInt)
+  public final void oc(final int paramInt)
   {
     AppMethodBeat.i(22052);
     this.handler.post(new Runnable()
@@ -116,7 +115,7 @@ public class BakWaitingUI
         {
           Log.d("MicroMsg.BakWaitingUI", "BakToPcUI jump tips");
           localIntent = new Intent();
-          localIntent.putExtra("title", BakWaitingUI.this.getString(R.l.ero));
+          localIntent.putExtra("title", BakWaitingUI.this.getString(R.l.gup));
           localIntent.putExtra("rawUrl", BakWaitingUI.this.getString(R.l.backup_not_support_doc, new Object[] { LocaleUtil.getApplicationLanguage() }));
           localIntent.putExtra("showShare", false);
           localIntent.putExtra("neverGetA8Key", true);
@@ -125,7 +124,7 @@ public class BakWaitingUI
           return;
         }
         Intent localIntent = new Intent(BakWaitingUI.this, BakConnErrorUI.class);
-        MMWizardActivity.aH(BakWaitingUI.this, localIntent);
+        MMWizardActivity.aQ(BakWaitingUI.this, localIntent);
         AppMethodBeat.o(22043);
       }
     });
@@ -141,12 +140,12 @@ public class BakWaitingUI
       AppMethodBeat.o(22045);
       return;
     }
-    a.cuk().cul().rTH = this;
-    this.Vh = a.cuk().cul().rTO;
-    this.rUO = getIntent().getBooleanExtra("from_back_finish", false);
-    Log.i("MicroMsg.BakWaitingUI", "BakWaitingUI onCreate nowCmd:%d isFromFinish:%b", new Object[] { Integer.valueOf(this.Vh), Boolean.valueOf(this.rUO) });
+    a.cWU().cWV().veX = this;
+    this.bUl = a.cWU().cWV().vfe;
+    this.vgd = getIntent().getBooleanExtra("from_back_finish", false);
+    Log.i("MicroMsg.BakWaitingUI", "BakWaitingUI onCreate nowCmd:%d isFromFinish:%b", new Object[] { Integer.valueOf(this.bUl), Boolean.valueOf(this.vgd) });
     initView();
-    cuG();
+    cXq();
     AppMethodBeat.o(22045);
   }
   
@@ -154,21 +153,21 @@ public class BakWaitingUI
   {
     AppMethodBeat.i(22048);
     super.onDestroy();
-    a.cuk().cul().rTH = null;
-    Log.i("MicroMsg.BakWaitingUI", "BakWaitingUI onDestroy nowCmd:%d isFromFinish:%b", new Object[] { Integer.valueOf(this.Vh), Boolean.valueOf(this.rUO) });
+    a.cWU().cWV().veX = null;
+    Log.i("MicroMsg.BakWaitingUI", "BakWaitingUI onDestroy nowCmd:%d isFromFinish:%b", new Object[] { Integer.valueOf(this.bUl), Boolean.valueOf(this.vgd) });
     AppMethodBeat.o(22048);
   }
   
   public final void onEvent(int paramInt)
   {
     AppMethodBeat.i(22047);
-    this.Vh = paramInt;
+    this.bUl = paramInt;
     this.handler.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(22041);
-        BakWaitingUI.this.cuG();
+        BakWaitingUI.this.cXq();
         AppMethodBeat.o(22041);
       }
     });
@@ -180,7 +179,7 @@ public class BakWaitingUI
     AppMethodBeat.i(22051);
     if (paramInt == 4)
     {
-      atX(1);
+      aAp(1);
       AppMethodBeat.o(22051);
       return true;
     }
@@ -197,7 +196,7 @@ public class BakWaitingUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcui.BakWaitingUI
  * JD-Core Version:    0.7.0.1
  */

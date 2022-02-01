@@ -26,7 +26,7 @@ public class Log
   
   static
   {
-    Object localObject = new LogImp()
+    Object localObject1 = new LogImp()
     {
       private Handler handler = new Handler(Looper.getMainLooper());
       
@@ -64,30 +64,30 @@ public class Log
       
       public final void logW(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt1, int paramAnonymousInt2, long paramAnonymousLong1, long paramAnonymousLong2, String paramAnonymousString4) {}
     };
-    debugLog = (LogImp)localObject;
-    logImp = (LogImp)localObject;
-    localObject = new StringBuilder();
+    debugLog = (LogImp)localObject1;
+    logImp = (LogImp)localObject1;
+    localObject1 = new StringBuilder();
     try
     {
-      ((StringBuilder)localObject).append("VERSION.RELEASE:[" + Build.VERSION.RELEASE);
-      ((StringBuilder)localObject).append("] VERSION.CODENAME:[" + Build.VERSION.CODENAME);
-      ((StringBuilder)localObject).append("] VERSION.INCREMENTAL:[" + Build.VERSION.INCREMENTAL);
-      ((StringBuilder)localObject).append("] BOARD:[" + Build.BOARD);
-      ((StringBuilder)localObject).append("] DEVICE:[" + Build.DEVICE);
-      ((StringBuilder)localObject).append("] DISPLAY:[" + Build.DISPLAY);
-      ((StringBuilder)localObject).append("] FINGERPRINT:[" + Build.FINGERPRINT);
-      ((StringBuilder)localObject).append("] HOST:[" + Build.HOST);
-      ((StringBuilder)localObject).append("] MANUFACTURER:[" + Build.MANUFACTURER);
-      ((StringBuilder)localObject).append("] MODEL:[" + Build.MODEL);
-      ((StringBuilder)localObject).append("] PRODUCT:[" + Build.PRODUCT);
-      ((StringBuilder)localObject).append("] TAGS:[" + Build.TAGS);
-      ((StringBuilder)localObject).append("] TYPE:[" + Build.TYPE);
-      ((StringBuilder)localObject).append("] USER:[" + Build.USER + "]");
+      ((StringBuilder)localObject1).append("VERSION.RELEASE:[" + Build.VERSION.RELEASE);
+      ((StringBuilder)localObject1).append("] VERSION.CODENAME:[" + Build.VERSION.CODENAME);
+      ((StringBuilder)localObject1).append("] VERSION.INCREMENTAL:[" + Build.VERSION.INCREMENTAL);
+      ((StringBuilder)localObject1).append("] BOARD:[" + Build.BOARD);
+      ((StringBuilder)localObject1).append("] DEVICE:[" + Build.DEVICE);
+      ((StringBuilder)localObject1).append("] DISPLAY:[" + Build.DISPLAY);
+      ((StringBuilder)localObject1).append("] FINGERPRINT:[" + Build.FINGERPRINT);
+      ((StringBuilder)localObject1).append("] HOST:[" + Build.HOST);
+      ((StringBuilder)localObject1).append("] MANUFACTURER:[" + Build.MANUFACTURER);
+      ((StringBuilder)localObject1).append("] MODEL:[" + Build.MODEL);
+      ((StringBuilder)localObject1).append("] PRODUCT:[" + Build.PRODUCT);
+      ((StringBuilder)localObject1).append("] TAGS:[" + Build.TAGS);
+      ((StringBuilder)localObject1).append("] TYPE:[" + Build.TYPE);
+      ((StringBuilder)localObject1).append("] USER:[" + Build.USER + "]");
       label360:
-      SYS_INFO = ((StringBuilder)localObject).toString();
+      SYS_INFO = ((StringBuilder)localObject1).toString();
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       break label360;
     }
@@ -328,7 +328,7 @@ public class Log
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mars.ilink.xlog.Log
  * JD-Core Version:    0.7.0.1
  */

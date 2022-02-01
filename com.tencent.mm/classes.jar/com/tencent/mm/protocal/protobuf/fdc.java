@@ -4,82 +4,73 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class fdc
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int UCU;
-  public LinkedList<fdb> UCV;
+  public LinkedList<fdd> abCG;
   
   public fdc()
   {
-    AppMethodBeat.i(115861);
-    this.UCV = new LinkedList();
-    AppMethodBeat.o(115861);
+    AppMethodBeat.i(104836);
+    this.abCG = new LinkedList();
+    AppMethodBeat.o(104836);
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(115862);
+    AppMethodBeat.i(104837);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.UCU);
-      paramVarArgs.e(2, 8, this.UCV);
-      AppMethodBeat.o(115862);
+      ((i.a.a.c.a)paramVarArgs[0]).e(1, 8, this.abCG);
+      AppMethodBeat.o(104837);
       return 0;
     }
-    int i;
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.bM(1, this.UCU);
-      i = g.a.a.a.c(2, 8, this.UCV);
-      AppMethodBeat.o(115862);
-      return paramInt + 0 + i;
+      paramInt = i.a.a.a.c(1, 8, this.abCG);
+      AppMethodBeat.o(104837);
+      return paramInt + 0;
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.UCV.clear();
-      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      this.abCG.clear();
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(115862);
+      AppMethodBeat.o(104837);
       return 0;
     }
     if (paramInt == 3)
     {
-      Object localObject = (g.a.a.a.a)paramVarArgs[0];
+      Object localObject = (i.a.a.a.a)paramVarArgs[0];
       fdc localfdc = (fdc)paramVarArgs[1];
       paramInt = ((Integer)paramVarArgs[2]).intValue();
       switch (paramInt)
       {
       default: 
-        AppMethodBeat.o(115862);
+        AppMethodBeat.o(104837);
         return -1;
-      case 1: 
-        localfdc.UCU = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(115862);
-        return 0;
       }
-      paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-      i = paramVarArgs.size();
+      paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+      int i = paramVarArgs.size();
       paramInt = 0;
       while (paramInt < i)
       {
         localObject = (byte[])paramVarArgs.get(paramInt);
-        fdb localfdb = new fdb();
+        fdd localfdd = new fdd();
         if ((localObject != null) && (localObject.length > 0)) {
-          localfdb.parseFrom((byte[])localObject);
+          localfdd.parseFrom((byte[])localObject);
         }
-        localfdc.UCV.add(localfdb);
+        localfdc.abCG.add(localfdd);
         paramInt += 1;
       }
-      AppMethodBeat.o(115862);
+      AppMethodBeat.o(104837);
       return 0;
     }
-    AppMethodBeat.o(115862);
+    AppMethodBeat.o(104837);
     return -1;
   }
 }

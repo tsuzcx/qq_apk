@@ -1,116 +1,184 @@
 package com.tencent.mm.plugin.appbrand.appcache.predownload.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cw.f;
-import com.tencent.mm.plugin.appbrand.appcache.au;
-import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
-import com.tencent.mm.plugin.appbrand.launching.d.d;
-import com.tencent.mm.protocal.protobuf.cpz;
-import com.tencent.mm.protocal.protobuf.fnd;
-import com.tencent.mm.protocal.protobuf.foc;
-import com.tencent.mm.protocal.protobuf.fpn;
-import com.tencent.mm.protocal.protobuf.fpv;
+import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.plugin.appbrand.appcache.ao;
+import com.tencent.mm.plugin.appbrand.appcache.ap;
+import com.tencent.mm.plugin.appbrand.appcache.aq;
+import com.tencent.mm.plugin.appbrand.appcache.ar;
+import com.tencent.mm.plugin.appbrand.appcache.be;
+import com.tencent.mm.plugin.appbrand.appcache.bm;
+import com.tencent.mm.protocal.MMProtocalJni;
+import com.tencent.mm.protocal.protobuf.gmv;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.vfs.y;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appcache/predownload/cmd/CmdPreLaunch;", "Lcom/tencent/mm/plugin/appbrand/appcache/predownload/cmd/AbstractCmd;", "", "Lcom/tencent/mm/protocal/protobuf/WxaSyncPreLaunchCmd;", "()V", "call", "username", "", "appId", "wxaSyncPreLaunchCmd", "(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/protocal/protobuf/WxaSyncPreLaunchCmd;)Ljava/lang/Boolean;", "callInner", "reportID", "", "getCmdBase", "Lcom/tencent/mm/protocal/protobuf/WxaSyncBaseCmd;", "getCmdName", "testBackdoor", "", "Companion", "plugin-appbrand-integration_release"})
-public final class h
-  extends a<Boolean, fpv>
+public class h
+  extends a<Boolean, gmv>
 {
-  public static final a nJV;
-  
-  static
+  public static boolean a(ao paramao, a parama)
   {
-    AppMethodBeat.i(50201);
-    nJV = new a((byte)0);
-    AppMethodBeat.o(50201);
+    AppMethodBeat.i(44398);
+    ar localar = (ar)n.ag(ar.class);
+    String str = paramao.field_appId;
+    int i = paramao.field_version;
+    aq localaq = new aq();
+    localaq.field_appId = str;
+    localaq.field_appVersion = i;
+    if (localar.get(localaq, new String[0])) {}
+    while (localaq == null)
+    {
+      Log.i("MicroMsg.AppBrand.Predownload.CmdIssueDecryptKey", "decryptPkgAndSave get null key with %s", new Object[] { paramao.cfO() });
+      AppMethodBeat.o(44398);
+      return false;
+      localaq = null;
+    }
+    boolean bool = a(paramao, localaq.field_decryptKey, localaq.field_pkgMd5, localaq.field_reportId, parama);
+    AppMethodBeat.o(44398);
+    return bool;
   }
   
-  private static Boolean a(String paramString1, final String paramString2, fpv paramfpv)
+  private static boolean a(ao paramao, String paramString1, String paramString2, int paramInt, a parama)
   {
-    AppMethodBeat.i(50197);
-    p.k(paramString1, "username");
-    p.k(paramString2, "appId");
-    p.k(paramfpv, "wxaSyncPreLaunchCmd");
-    if ((Util.isNullOrNil(paramString1)) && (Util.isNullOrNil(paramString2)))
+    boolean bool1 = false;
+    AppMethodBeat.i(44397);
+    Object localObject;
+    switch (1.qJz[parama.ordinal()])
     {
-      Log.e("MicroMsg.AppBrand.Predownload.CmdPreLaunch", "invalid username & appId");
-      paramString1 = Boolean.FALSE;
-      p.j(paramString1, "java.lang.Boolean.FALSE");
-      AppMethodBeat.o(50197);
-      return paramString1;
-    }
-    for (;;)
-    {
-      try
-      {
-        final int j = paramfpv.UNq.UNn;
-        paramfpv = d.pZb;
-        paramfpv = new cpz();
-        Object localObject = new fnd();
-        ((fnd)localObject).TuP = 0;
-        ((fnd)localObject).RTb = 0;
-        ((fnd)localObject).CPw = 0;
-        ((fnd)localObject).TBG = 1;
-        ((fnd)localObject).TBH = "";
-        ((fnd)localObject).TBF = 0;
-        paramfpv.Txh = ((fnd)localObject);
-        paramfpv.TkK = 3;
-        paramfpv.lVG = paramString2;
-        paramfpv.Txp = paramString1;
-        paramfpv.TnO = true;
-        localObject = new foc();
-        ICommLibReader localICommLibReader = au.bHb();
-        if (localICommLibReader != null)
+    default: 
+      i = 127;
+      localObject = com.tencent.mm.plugin.appbrand.appcache.predownload.c.a.qJY;
+      com.tencent.mm.plugin.appbrand.appcache.predownload.c.a.ac(paramInt, i);
+      localObject = be.bC(paramao.field_appId, paramao.field_version);
+      i = MMProtocalJni.aesDecryptFile(paramao.field_pkgPath, (String)localObject, paramString1.getBytes());
+      Log.i("MicroMsg.AppBrand.Predownload.CmdIssueDecryptKey", "decryptPkgAndSave, appId(%s), version(%d), ret %d", new Object[] { paramao.field_appId, Integer.valueOf(paramao.field_version), Integer.valueOf(i) });
+      if (i != 0) {
+        switch (1.qJz[parama.ordinal()])
         {
-          i = localICommLibReader.bGi();
-          ((foc)localObject).TBI = i;
-          paramfpv.Txj = ((foc)localObject);
-          new d(paramfpv, false).bhW().j((com.tencent.mm.vending.c.a)new b(paramString1, paramString2, j));
-          paramString1 = Boolean.TRUE;
-          AppMethodBeat.o(50197);
-          return paramString1;
         }
       }
-      catch (Exception paramString1)
+      break;
+    case 1: 
+      for (i = 129;; i = 133)
       {
-        Log.printErrStackTrace("MicroMsg.AppBrand.Predownload.CmdPreLaunch", (Throwable)paramString1, "", new Object[0]);
-        paramString1 = Boolean.FALSE;
-        AppMethodBeat.o(50197);
-        return paramString1;
+        paramao = com.tencent.mm.plugin.appbrand.appcache.predownload.c.a.qJY;
+        com.tencent.mm.plugin.appbrand.appcache.predownload.c.a.ac(paramInt, i);
+        AppMethodBeat.o(44397);
+        return false;
+        i = 131;
+        break;
       }
-      int i = -1;
+    }
+    paramString1 = y.bub((String)localObject);
+    if (!paramString1.equals(paramString2))
+    {
+      Log.e("MicroMsg.AppBrand.Predownload.CmdIssueDecryptKey", "decryptPkgAndSave, file_md5(%s) expect_md5(%s) mismatch", new Object[] { paramString1, paramString2 });
+      switch (1.qJz[parama.ordinal()])
+      {
+      }
+      for (i = 130;; i = 134)
+      {
+        paramao = com.tencent.mm.plugin.appbrand.appcache.predownload.c.a.qJY;
+        com.tencent.mm.plugin.appbrand.appcache.predownload.c.a.ac(paramInt, i);
+        AppMethodBeat.o(44397);
+        return false;
+      }
+    }
+    n.cfm().u(paramao.field_appId, paramao.field_version, paramString2);
+    boolean bool2 = n.cfm().f(paramao.field_appId, 0, paramao.field_version, (String)localObject);
+    switch (1.qJz[parama.ordinal()])
+    {
+    default: 
+      if (bool2)
+      {
+        i = 143;
+        paramString1 = com.tencent.mm.plugin.appbrand.appcache.predownload.c.a.qJY;
+        com.tencent.mm.plugin.appbrand.appcache.predownload.c.a.ac(paramInt, i);
+        y.deleteFile(paramao.field_pkgPath);
+        if (!((ap)n.ag(ap.class)).delete(paramao, new String[0])) {
+          break label549;
+        }
+        i = 139;
+        label398:
+        paramString1 = com.tencent.mm.plugin.appbrand.appcache.predownload.c.a.qJY;
+        com.tencent.mm.plugin.appbrand.appcache.predownload.c.a.ac(paramInt, i);
+        if (parama != a.qJB)
+        {
+          paramString1 = (ar)n.ag(ar.class);
+          paramString2 = paramao.field_appId;
+          i = paramao.field_version;
+          if (!Util.isNullOrNil(paramString2)) {
+            break label557;
+          }
+          label445:
+          if (!bool1) {
+            break label590;
+          }
+          i = 141;
+          label455:
+          paramao = com.tencent.mm.plugin.appbrand.appcache.predownload.c.a.qJY;
+          com.tencent.mm.plugin.appbrand.appcache.predownload.c.a.ac(paramInt, i);
+        }
+        switch (1.qJz[parama.ordinal()])
+        {
+        }
+      }
+      break;
+    }
+    for (int i = 128;; i = 132)
+    {
+      paramao = com.tencent.mm.plugin.appbrand.appcache.predownload.c.a.qJY;
+      com.tencent.mm.plugin.appbrand.appcache.predownload.c.a.ac(paramInt, i);
+      AppMethodBeat.o(44397);
+      return true;
+      if (bool2)
+      {
+        i = 147;
+        break;
+      }
+      i = 148;
+      break;
+      i = 144;
+      break;
+      label549:
+      i = 140;
+      break label398;
+      label557:
+      paramao = new aq();
+      paramao.field_appId = paramString2;
+      paramao.field_appVersion = i;
+      bool1 = paramString1.delete(paramao, new String[0]);
+      break label445;
+      label590:
+      i = 142;
+      break label455;
     }
   }
   
-  public static void cC(String paramString1, String paramString2)
+  final String cht()
   {
-    AppMethodBeat.i(50199);
-    p.k(paramString1, "username");
-    p.k(paramString2, "appId");
-    AppMethodBeat.o(50199);
+    return "CmdIssueDecryptKey";
   }
   
-  public final String bHX()
+  public static enum a
   {
-    return "CmdPreLaunch";
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appcache/predownload/cmd/CmdPreLaunch$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "cgiBack", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/LaunchWxaAppResponse;", "kotlin.jvm.PlatformType", "call"})
-  static final class b<_Ret, _Var>
-    implements com.tencent.mm.vending.c.a<_Ret, _Var>
-  {
-    b(String paramString1, String paramString2, int paramInt) {}
+    static
+    {
+      AppMethodBeat.i(44396);
+      qJA = new a("WXA_LAUNCH", 0);
+      qJB = new a("ISSUE_DECRYPT", 1);
+      qJC = new a("GET_CODE", 2);
+      qJD = new a[] { qJA, qJB, qJC };
+      AppMethodBeat.o(44396);
+    }
+    
+    private a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.predownload.b.h
  * JD-Core Version:    0.7.0.1
  */

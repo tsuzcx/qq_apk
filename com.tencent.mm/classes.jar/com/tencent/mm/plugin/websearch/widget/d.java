@@ -9,12 +9,12 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class d
 {
-  private static final d PCB;
+  private static final d Wtg;
   
   static
   {
     AppMethodBeat.i(116638);
-    PCB = new d();
+    Wtg = new d();
     AppMethodBeat.o(116638);
   }
   
@@ -93,9 +93,9 @@ public final class d
     AppMethodBeat.o(116637);
   }
   
-  public static d gRK()
+  public static d irb()
   {
-    return PCB;
+    return Wtg;
   }
 }
 

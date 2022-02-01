@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.base;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
@@ -16,29 +15,28 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class MMDotView
   extends LinearLayout
 {
-  private int WiX;
-  private int WiY;
-  private int iWH;
+  private int adPZ;
+  private int adQa;
+  private int lyL;
   
   public MMDotView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(141880);
-    this.iWH = 9;
-    this.WiX = a.f.page_normal;
-    this.WiY = a.f.page_active;
+    this.lyL = 9;
+    this.adPZ = a.f.page_normal;
+    this.adQa = a.f.page_active;
     init(paramContext, paramAttributeSet);
     AppMethodBeat.o(141880);
   }
   
-  @TargetApi(11)
   public MMDotView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(141879);
-    this.iWH = 9;
-    this.WiX = a.f.page_normal;
-    this.WiY = a.f.page_active;
+    this.lyL = 9;
+    this.adPZ = a.f.page_normal;
+    this.adQa = a.f.page_active;
     init(paramContext, paramAttributeSet);
     AppMethodBeat.o(141879);
   }
@@ -57,12 +55,12 @@ public class MMDotView
   {
     if (paramBoolean)
     {
-      this.WiX = a.f.page_normal_dark;
-      this.WiY = a.f.page_active_dark;
+      this.adPZ = a.f.page_normal_dark;
+      this.adQa = a.f.page_active_dark;
       return;
     }
-    this.WiX = a.f.page_normal;
-    this.WiY = a.f.page_active;
+    this.adPZ = a.f.page_normal;
+    this.adQa = a.f.page_active;
   }
   
   public void setDotCount(int paramInt)
@@ -75,22 +73,22 @@ public class MMDotView
       return;
     }
     int i = paramInt;
-    if (paramInt > this.iWH)
+    if (paramInt > this.lyL)
     {
       Log.i("MicroMsg.MMDotView", "large than max count");
-      i = this.iWH;
+      i = this.lyL;
     }
     removeAllViews();
     while (i != 0)
     {
       localImageView = (ImageView)View.inflate(getContext(), a.h.mmpage_control_image, null);
-      localImageView.setImageResource(this.WiX);
+      localImageView.setImageResource(this.adPZ);
       addView(localImageView);
       i -= 1;
     }
     ImageView localImageView = (ImageView)getChildAt(0);
     if (localImageView != null) {
-      localImageView.setImageResource(this.WiY);
+      localImageView.setImageResource(this.adQa);
     }
     AppMethodBeat.o(141883);
   }
@@ -99,19 +97,19 @@ public class MMDotView
   {
     if (paramBoolean)
     {
-      this.WiX = a.f.page_active;
-      this.WiY = a.f.page_normal;
+      this.adPZ = a.f.page_active;
+      this.adQa = a.f.page_normal;
       return;
     }
-    this.WiX = a.f.page_normal;
-    this.WiY = a.f.page_active;
+    this.adPZ = a.f.page_normal;
+    this.adQa = a.f.page_active;
   }
   
   public void setMaxCount(int paramInt)
   {
     AppMethodBeat.i(141882);
     Log.d("MicroMsg.MMDotView", "setMaxCount:%d", new Object[] { Integer.valueOf(paramInt) });
-    this.iWH = paramInt;
+    this.lyL = paramInt;
     AppMethodBeat.o(141882);
   }
   
@@ -129,7 +127,7 @@ public class MMDotView
       paramInt = 0;
       while (paramInt < getChildCount())
       {
-        ((ImageView)getChildAt(paramInt)).setImageResource(this.WiX);
+        ((ImageView)getChildAt(paramInt)).setImageResource(this.adPZ);
         paramInt += 1;
       }
       i = paramInt;
@@ -139,14 +137,14 @@ public class MMDotView
     }
     ImageView localImageView = (ImageView)getChildAt(i);
     if (localImageView != null) {
-      localImageView.setImageResource(this.WiY);
+      localImageView.setImageResource(this.adQa);
     }
     AppMethodBeat.o(141884);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMDotView
  * JD-Core Version:    0.7.0.1
  */

@@ -6,19 +6,19 @@ import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.loader.j.b;
-import com.tencent.mm.platformtools.s;
-import com.tencent.mm.platformtools.s.a;
-import com.tencent.mm.platformtools.s.b;
-import com.tencent.mm.plugin.game.g.d;
+import com.tencent.mm.loader.i.b;
+import com.tencent.mm.platformtools.p;
+import com.tencent.mm.platformtools.p.a;
+import com.tencent.mm.platformtools.p.b;
+import com.tencent.mm.plugin.game.h.d;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.IOException;
 
 public final class ai
-  implements s
+  implements p
 {
   protected String mPicUrl;
   
@@ -26,24 +26,24 @@ public final class ai
   {
     AppMethodBeat.i(41574);
     this.mPicUrl = paramString;
-    paramString = new q(b.aSQ());
-    if (!paramString.ifE()) {
-      paramString.ifK();
+    paramString = new u(b.bmE());
+    if (!paramString.jKS()) {
+      paramString.jKY();
     }
     AppMethodBeat.o(41574);
   }
   
-  public final Bitmap a(Bitmap paramBitmap, s.a parama, String paramString)
+  public final Bitmap a(Bitmap paramBitmap, p.a parama, String paramString)
   {
     AppMethodBeat.i(41579);
-    if (s.a.mEq == parama)
+    if (p.a.pAT == parama)
     {
       AppMethodBeat.o(41579);
       return paramBitmap;
     }
     try
     {
-      BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, bvq(), false);
+      BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, bTC(), false);
       AppMethodBeat.o(41579);
       return paramBitmap;
     }
@@ -56,27 +56,27 @@ public final class ai
     }
   }
   
-  public final void a(s.a parama) {}
+  public final void a(p.a parama) {}
   
-  public final s.b bvp()
+  public final p.b bTB()
   {
     return null;
   }
   
-  public final String bvq()
+  public final String bTC()
   {
     AppMethodBeat.i(41575);
-    String str = b.aSQ() + g.getMessageDigest(this.mPicUrl.getBytes());
+    String str = b.bmE() + g.getMessageDigest(this.mPicUrl.getBytes());
     AppMethodBeat.o(41575);
     return str;
   }
   
-  public final String bvr()
+  public final String bTD()
   {
     return this.mPicUrl;
   }
   
-  public final String bvs()
+  public final String bTE()
   {
     AppMethodBeat.i(41576);
     String str = this.mPicUrl.hashCode();
@@ -84,22 +84,27 @@ public final class ai
     return str;
   }
   
-  public final boolean bvt()
+  public final boolean bTF()
   {
     return true;
   }
   
-  public final Bitmap bvu()
+  public final boolean bTG()
+  {
+    return false;
+  }
+  
+  public final Bitmap bTH()
   {
     AppMethodBeat.i(41578);
-    Bitmap localBitmap = BitmapFactory.decodeResource(MMApplicationContext.getContext().getResources(), g.d.nosdcard_chatting_bg);
+    Bitmap localBitmap = BitmapFactory.decodeResource(MMApplicationContext.getContext().getResources(), h.d.nosdcard_chatting_bg);
     AppMethodBeat.o(41578);
     return localBitmap;
   }
   
-  public final void bvv() {}
+  public final void bTI() {}
   
-  public final void bvw() {}
+  public final void bTJ() {}
   
   public final String getCacheKey()
   {

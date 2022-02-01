@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/rj"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <EditText android:textColor="@color/a2x" android:textColorHint="@color/ui" android:gravity="center_vertical" android:id="@id/ik7" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="@dimen/hv" android:layout_marginRight="@dimen/hs" android:maxHeight="140.0dip" android:minLines="1" style="@style/nw" />
-    <TextView android:textColor="@color/a2x" android:id="@id/i50" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="@dimen/k5" android:layout_marginRight="@dimen/hs" />
-    <LinearLayout android:gravity="top" android:orientation="horizontal" android:id="@id/eqc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="@dimen/k5" android:layout_marginRight="@dimen/hs">
-        <ImageView android:layout_width="22.0dip" android:layout_height="22.0dip" android:src="@drawable/caz" />
-        <TextView android:textSize="@dimen/l" android:textColor="@color/a2x" android:id="@id/eqw" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/g" android:layout_weight="1.0" />
-    </LinearLayout>
-</LinearLayout>
+    <ImageView android:id="@id/fct" android:paddingLeft="@dimen/cv" android:paddingTop="@dimen/cr" android:paddingBottom="@dimen/cr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" />
+    <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="@color/FG_0" android:id="@id/kyy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+</RelativeLayout>

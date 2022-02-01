@@ -1,8 +1,7 @@
 package com.tencent.mm.obb.loader;
 
+import android.app.Application;
 import android.content.pm.ApplicationInfo;
-import androidx.annotation.Keep;
-import com.tencent.mm.app.Application;
 import com.tencent.tinker.loader.shareutil.ShareReflectUtil;
 import dalvik.system.BaseDexClassLoader;
 import dalvik.system.DexFile;
@@ -15,7 +14,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-@Keep
 public class ObbClassLoader
   extends PathClassLoader
 {
@@ -32,25 +30,24 @@ public class ObbClassLoader
   
   private static final Field findField(Class<?> paramClass, String paramString)
   {
-    Object localObject = paramClass;
+    Object localObject1 = paramClass;
     try
     {
-      Field localField = ((Class)localObject).getDeclaredField(paramString);
+      Field localField = ((Class)localObject1).getDeclaredField(paramString);
       localField.setAccessible(true);
       return localField;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Class localClass;
       do
       {
-        if (localObject == Object.class) {
+        if (localObject1 == Object.class) {
           break;
         }
-        localClass = ((Class)localObject).getSuperclass();
-        localObject = localClass;
+        localClass = ((Class)localObject1).getSuperclass();
+        localObject1 = localClass;
       } while (localClass != null);
-      throw new NoSuchFieldException("Cannot find field '" + paramString + "' in class " + paramClass.getName() + " or its super classes.");
     }
   }
   
@@ -63,24 +60,25 @@ public class ObbClassLoader
   {
     ClassLoader localClassLoader = paramApplication.getClass().getClassLoader();
     Object localObject1 = findField(BaseDexClassLoader.class, "pathList").get(localClassLoader);
-    Object localObject2 = "/" + paramApplication.getApplicationInfo().packageName + "/";
-    Object localObject3 = (Object[])findField(localObject1.getClass(), "dexElements").get(localObject1);
-    Field localField = findField(localObject3.getClass().getComponentType(), "dexFile");
+    Object localObject2 = paramApplication.getApplicationInfo();
+    Object localObject3 = "/" + ((ApplicationInfo)localObject2).packageName + "/";
+    Object[] arrayOfObject = (Object[])findField(localObject1.getClass(), "dexElements").get(localObject1);
+    Field localField = findField(arrayOfObject.getClass().getComponentType(), "dexFile");
     StringBuilder localStringBuilder = new StringBuilder();
-    int k = localObject3.length;
+    int k = arrayOfObject.length;
     int j = 0;
     int i = 1;
     if (j < k)
     {
-      Object localObject4 = localObject3[j];
+      Object localObject4 = arrayOfObject[j];
       if (i != 0) {
         i = 0;
       }
       for (;;)
       {
-        localObject4 = (DexFile)localField.get(localObject4);
-        if (((DexFile)localObject4).getName().contains((CharSequence)localObject2)) {
-          localStringBuilder.append(((DexFile)localObject4).getName());
+        localObject4 = ((DexFile)localField.get(localObject4)).getName();
+        if ((((String)localObject4).equals(((ApplicationInfo)localObject2).sourceDir)) || (((String)localObject4).contains((CharSequence)localObject3))) {
+          localStringBuilder.append((String)localObject4);
         }
         j += 1;
         break;
@@ -110,16 +108,13 @@ public class ObbClassLoader
   protected Class<?> findClass(String paramString)
   {
     Object localObject2;
-    if (paramString.startsWith(this.mAppClassName)) {
+    if (paramString.equals(this.mAppClassName)) {
       localObject2 = this.mAppClassLoader.loadClass(paramString);
     }
     for (;;)
     {
       return localObject2;
-      if (paramString.startsWith("com.tencent.tinker.loader.")) {
-        return this.mAppClassLoader.loadClass(paramString);
-      }
-      if (paramString.startsWith("com.tencent.mm.obb.loader.")) {
+      if ((paramString.startsWith("com.tencent.tinker.loader.")) && (!paramString.startsWith("com.tencent.tinker.loader.shareutil."))) {
         return this.mAppClassLoader.loadClass(paramString);
       }
       try
@@ -157,10 +152,9 @@ public class ObbClassLoader
   
   public Enumeration<URL> getResources(String paramString)
   {
-    return new CompoundEnumeration((Enumeration[])new Enumeration[] { Object.class.getClassLoader().getResources(paramString), findResources(paramString), this.mAppClassLoader.getResources(paramString) });
+    return new CompoundEnumeration(new Enumeration[] { Object.class.getClassLoader().getResources(paramString), findResources(paramString), this.mAppClassLoader.getResources(paramString) });
   }
   
-  @Keep
   class CompoundEnumeration<E>
     implements Enumeration<E>
   {
@@ -196,7 +190,7 @@ public class ObbClassLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.obb.loader.ObbClassLoader
  * JD-Core Version:    0.7.0.1
  */

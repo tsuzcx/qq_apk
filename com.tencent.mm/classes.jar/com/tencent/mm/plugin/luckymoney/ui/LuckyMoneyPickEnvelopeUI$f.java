@@ -14,32 +14,32 @@ final class LuckyMoneyPickEnvelopeUI$f
   public LuckyMoneyPickEnvelopeUI$f(final LuckyMoneyPickEnvelopeUI paramLuckyMoneyPickEnvelopeUI, View paramView)
   {
     super(paramView);
-    AppMethodBeat.i(273432);
+    AppMethodBeat.i(284221);
     paramView.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(236742);
+        AppMethodBeat.i(284168);
         Object localObject = new b();
-        ((b)localObject).bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyPickEnvelopeUI$HistoryEnvelopeEntranceVH$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
-        h.IzE.a(22302, new Object[] { Integer.valueOf(3) });
-        localObject = new Intent(LuckyMoneyPickEnvelopeUI.f.this.EMb.getContext(), WalletPayUPwdConfirmUI.class);
-        paramAnonymousView = LuckyMoneyPickEnvelopeUI.f.this.EMb;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-        com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyPickEnvelopeUI$HistoryEnvelopeEntranceVH$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+        ((b)localObject).cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyPickEnvelopeUI$HistoryEnvelopeEntranceVH$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
+        h.OAn.b(22302, new Object[] { Integer.valueOf(3) });
+        localObject = new Intent(LuckyMoneyPickEnvelopeUI.f.this.KGu.getContext(), WalletPayUPwdConfirmUI.class);
+        paramAnonymousView = LuckyMoneyPickEnvelopeUI.f.this.KGu;
+        localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+        com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyPickEnvelopeUI$HistoryEnvelopeEntranceVH$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
         com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyPickEnvelopeUI$HistoryEnvelopeEntranceVH$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyPickEnvelopeUI$HistoryEnvelopeEntranceVH$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(236742);
+        AppMethodBeat.o(284168);
       }
     });
-    AppMethodBeat.o(273432);
+    AppMethodBeat.o(284221);
   }
   
   public final void a(LuckyMoneyPickEnvelopeUI.e parame) {}
   
-  public final void tS(boolean paramBoolean) {}
+  public final void yh(boolean paramBoolean) {}
 }
 
 

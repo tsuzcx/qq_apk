@@ -14,8 +14,10 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.az.b.a;
+import com.tencent.mm.au.b.a;
+import com.tencent.mm.hellhoundlib.b.c;
 import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.account.bind.ui.BindMContactUI;
 import com.tencent.mm.plugin.groupsolitaire.b.b;
 import com.tencent.mm.plugin.groupsolitaire.b.e;
@@ -23,78 +25,79 @@ import com.tencent.mm.plugin.groupsolitaire.b.f;
 import com.tencent.mm.plugin.groupsolitaire.b.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.ui.base.k;
 import junit.framework.Assert;
 
 public final class a
 {
-  com.google.android.material.bottomsheet.a DpN;
-  private TextView DpO;
-  a DpP;
-  private Button kEt;
-  private Button kGN;
+  com.google.android.material.bottomsheet.a Jjv;
+  private TextView Jjw;
+  a Jjx;
   Context mContext;
-  String mZK;
-  private View oFW;
-  private int pMB;
-  private BottomSheetBehavior pMC;
+  private Button nhC;
+  private Button njI;
+  String pWt;
+  private View rootView;
+  private int sRu;
+  private BottomSheetBehavior sRv;
   
   public a(Context paramContext)
   {
     AppMethodBeat.i(110416);
     this.mContext = paramContext;
-    this.oFW = View.inflate(this.mContext, b.f.DoC, null);
-    this.DpN = new com.google.android.material.bottomsheet.a(this.mContext);
-    this.DpN.setContentView(this.oFW);
-    this.DpN.setOnDismissListener(new DialogInterface.OnDismissListener()
+    this.rootView = View.inflate(this.mContext, b.f.Jil, null);
+    this.Jjv = new com.google.android.material.bottomsheet.a(this.mContext);
+    this.Jjv.setContentView(this.rootView);
+    this.Jjv.setOnDismissListener(new DialogInterface.OnDismissListener()
     {
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
-        a.this.DpN = null;
+        a.this.Jjv = null;
       }
     });
-    this.DpO = ((TextView)this.oFW.findViewById(b.e.Doz));
-    paramContext = (FrameLayout.LayoutParams)this.oFW.getLayoutParams();
-    paramContext.height = com.tencent.mm.ci.a.fromDPToPix(this.mContext, 250);
-    this.oFW.setLayoutParams(paramContext);
-    this.pMB = com.tencent.mm.ci.a.fromDPToPix(this.mContext, 350);
-    this.pMC = BottomSheetBehavior.cg((View)this.oFW.getParent());
-    if (this.pMC != null)
+    this.Jjw = ((TextView)this.rootView.findViewById(b.e.Jii));
+    paramContext = (FrameLayout.LayoutParams)this.rootView.getLayoutParams();
+    paramContext.height = com.tencent.mm.cd.a.fromDPToPix(this.mContext, 250);
+    this.rootView.setLayoutParams(paramContext);
+    this.sRu = com.tencent.mm.cd.a.fromDPToPix(this.mContext, 350);
+    this.sRv = BottomSheetBehavior.cC((View)this.rootView.getParent());
+    if (this.sRv != null)
     {
-      this.pMC.D(this.pMB);
-      this.pMC.bxz = false;
+      this.sRv.setPeekHeight(this.sRu);
+      this.sRv.dqC = false;
     }
-    this.kEt = ((Button)this.oFW.findViewById(b.e.ok_btn));
-    this.kEt.setOnClickListener(new View.OnClickListener()
+    this.nhC = ((Button)this.rootView.findViewById(b.e.ok_btn));
+    this.nhC.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(110414);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/groupsolitaire/ui/GroupSolitatireContactsPhoneNumPicker$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-        if (a.this.DpP != null)
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/groupsolitaire/ui/GroupSolitatireContactsPhoneNumPicker$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
+        if (a.this.Jjx != null)
         {
-          paramAnonymousView = a.this.DpP;
+          paramAnonymousView = a.this.Jjx;
           localObject = a.this;
-          Log.i("MicroMsg.TiemDatePicker", "[getPhoneNum] :%s", new Object[] { ((a)localObject).mZK });
-          paramAnonymousView.aLd(((a)localObject).mZK);
+          Log.i("MicroMsg.TiemDatePicker", "[getPhoneNum] :%s", new Object[] { ((a)localObject).pWt });
+          paramAnonymousView.aHU(((a)localObject).pWt);
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/groupsolitaire/ui/GroupSolitatireContactsPhoneNumPicker$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(110414);
       }
     });
-    this.kGN = ((Button)this.oFW.findViewById(b.e.cancel_btn));
-    this.kGN.setOnClickListener(new View.OnClickListener()
+    this.njI = ((Button)this.rootView.findViewById(b.e.cancel_btn));
+    this.njI.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(110415);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/groupsolitaire/ui/GroupSolitatireContactsPhoneNumPicker$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        if (a.this.DpP != null) {
-          a.this.DpP.onCancel();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/groupsolitaire/ui/GroupSolitatireContactsPhoneNumPicker$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        if (a.this.Jjx != null) {
+          a.this.Jjx.onCancel();
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/groupsolitaire/ui/GroupSolitatireContactsPhoneNumPicker$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(110415);
@@ -106,8 +109,8 @@ public final class a
   public final void hide()
   {
     AppMethodBeat.i(110418);
-    if (this.DpN != null) {
-      this.DpN.dismiss();
+    if (this.Jjv != null) {
+      this.Jjv.dismiss();
     }
     AppMethodBeat.o(110418);
   }
@@ -115,14 +118,14 @@ public final class a
   public final void show()
   {
     AppMethodBeat.i(110417);
-    Object localObject = (String)com.tencent.mm.kernel.h.aHG().aHp().b(6, null);
+    Object localObject = (String)h.baE().ban().d(6, null);
     Log.d("MicroMsg.TiemDatePicker", "mobile :".concat(String.valueOf(localObject)));
     if ((localObject == null) || (((String)localObject).length() <= 0))
     {
       localObject = this.mContext;
-      String str1 = this.mContext.getString(b.g.DoI);
-      String str2 = this.mContext.getString(b.g.DoI);
-      String str3 = this.mContext.getString(b.g.DoJ);
+      String str1 = this.mContext.getString(b.g.Jir);
+      String str2 = this.mContext.getString(b.g.Jir);
+      String str3 = this.mContext.getString(b.g.Jis);
       String str4 = this.mContext.getString(b.g.app_cancel);
       DialogInterface.OnClickListener local1 = new DialogInterface.OnClickListener()
       {
@@ -134,11 +137,11 @@ public final class a
           paramAnonymousDialogInterface = ((TelephonyManager)a.this.mContext.getSystemService("phone")).getSimCountryIso();
           if (!Util.isNullOrNil(paramAnonymousDialogInterface))
           {
-            paramAnonymousDialogInterface = com.tencent.mm.az.b.bw(paramAnonymousDialogInterface, a.this.mContext.getString(b.g.country_code));
+            paramAnonymousDialogInterface = com.tencent.mm.au.b.bH(paramAnonymousDialogInterface, a.this.mContext.getString(b.g.country_code));
             if (paramAnonymousDialogInterface != null)
             {
-              localIntent.putExtra("country_name", paramAnonymousDialogInterface.lSz);
-              localIntent.putExtra("couttry_code", paramAnonymousDialogInterface.lSy);
+              localIntent.putExtra("country_name", paramAnonymousDialogInterface.oLl);
+              localIntent.putExtra("couttry_code", paramAnonymousDialogInterface.oLk);
             }
           }
           Context localContext = a.this.mContext;
@@ -157,7 +160,7 @@ public final class a
             if (paramAnonymousDialogInterface != null) {
               localIntent.putExtra("WizardTransactionId", paramAnonymousDialogInterface);
             }
-            ((Activity)localContext).startActivityForResult(localIntent, 4098);
+            com.tencent.mm.hellhoundlib.a.a.a((Activity)localContext, c.a(4098, new com.tencent.mm.hellhoundlib.b.a()).cG(localIntent).aYi(), "com/tencent/mm/plugin/groupsolitaire/ui/GroupSolitatireContactsPhoneNumPicker", "startBindActivity", "(Landroid/content/Context;Landroid/content/Intent;)V", "android/app/Activity", "startActivityForResult", "(Landroid/content/Intent;I)V");
             AppMethodBeat.o(110412);
             return;
             paramAnonymousDialogInterface = null;
@@ -175,28 +178,28 @@ public final class a
         }
       };
       int i = b.b.green_text_color;
-      com.tencent.mm.ui.base.h.a((Context)localObject, false, str1, str2, str3, str4, local1, local2, i, i);
+      k.a((Context)localObject, false, str1, str2, str3, str4, local1, local2, i, i);
       AppMethodBeat.o(110417);
       return;
     }
-    this.mZK = ((String)localObject);
-    this.DpO.setText(this.mZK);
-    if (this.DpN != null) {
-      this.DpN.show();
+    this.pWt = ((String)localObject);
+    this.Jjw.setText(this.pWt);
+    if (this.Jjv != null) {
+      this.Jjv.show();
     }
     AppMethodBeat.o(110417);
   }
   
   public static abstract interface a
   {
-    public abstract void aLd(String paramString);
+    public abstract void aHU(String paramString);
     
     public abstract void onCancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.groupsolitaire.ui.a
  * JD-Core Version:    0.7.0.1
  */

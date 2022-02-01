@@ -8,7 +8,7 @@ import com.tencent.mm.plugin.wallet_core.id_verify.util.a.a;
 import com.tencent.mm.plugin.wallet_core.model.u;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.wallet_core.d.i;
+import com.tencent.mm.wallet_core.c.i;
 
 public class KindaRealNameServiceImpl
   implements KRealNameService
@@ -58,7 +58,7 @@ public class KindaRealNameServiceImpl
     if ((paramVoidCallback1 instanceof MMActivity)) {}
     for (paramVoidCallback1 = (MMActivity)paramVoidCallback1;; paramVoidCallback1 = null)
     {
-      u.gJi();
+      u.iiw();
       u.b(paramVoidCallback1, locali, 1);
       AppMethodBeat.o(18508);
       return;
@@ -67,7 +67,7 @@ public class KindaRealNameServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.app.KindaRealNameServiceImpl
  * JD-Core Version:    0.7.0.1
  */

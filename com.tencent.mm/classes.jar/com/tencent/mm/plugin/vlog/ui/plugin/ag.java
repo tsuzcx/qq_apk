@@ -1,301 +1,357 @@
 package com.tencent.mm.plugin.vlog.ui.plugin;
 
+import android.content.Context;
 import android.os.Bundle;
-import android.util.LruCache;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.vlog.a.f;
+import com.tencent.mm.plugin.recordvideo.plugin.parent.a.c;
+import com.tencent.mm.plugin.recordvideo.ui.editor.EditorPanelHolder;
+import com.tencent.mm.plugin.vlog.a.i;
 import com.tencent.mm.plugin.vlog.model.ac;
 import com.tencent.mm.plugin.vlog.model.ad;
-import com.tencent.mm.plugin.vlog.ui.plugin.transition.e;
-import com.tencent.mm.plugin.vlog.ui.thumb.FrameListView;
-import com.tencent.mm.plugin.vlog.ui.thumb.h;
-import com.tencent.mm.plugin.vlog.ui.widget.VLogThumbView;
-import com.tencent.mm.plugin.vlog.ui.widget.VLogThumbView.b;
-import com.tencent.mm.plugin.vlog.ui.widget.VLogThumbView.d;
+import com.tencent.mm.plugin.vlog.ui.thumb.TrackCropView;
+import com.tencent.mm.plugin.vlog.ui.thumb.TrackCropView.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.videocomposition.b;
-import com.tencent.tav.coremedia.CMTimeRange;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import kotlin.a.ab;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.k.i;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/VLogThumbViewPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/AutoRegisterPlugin;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$PreviewSeekCallback;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$PreviewUpdateCallback;", "layout", "Landroid/view/View;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/View;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "lastLogProgressTime", "", "getLayout", "()Landroid/view/View;", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "thumbHeight", "", "thumbView", "Lcom/tencent/mm/plugin/vlog/ui/widget/VLogThumbView;", "getThumbView", "()Lcom/tencent/mm/plugin/vlog/ui/widget/VLogThumbView;", "thumbViewRoot", "thumbWidth", "clearFocus", "", "enableTrackTouchMove", "enable", "", "onFinish", "onProgress", "timeMs", "onStart", "seekable", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$Seekable;", "onUpdate", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "seekTo", "seekToOriginPosition", "release", "reset", "selectTrack", "index", "startTime", "endTime", "setVisibility", "visibility", "showTransitionMark", "visible", "stopScroll", "updateTransMarkStatus", "list", "", "Companion", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/plugin/VLogTrackEditPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/AutoRegisterPlugin;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$PreviewSeekCallback;", "holder", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "TAG", "", "audioSeekable", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$Seekable;", "cancelView", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "getCancelView", "()Landroid/widget/ImageView;", "cancelView$delegate", "Lkotlin/Lazy;", "confirmed", "", "cropEnd", "", "cropStart", "hintText", "Landroid/widget/TextView;", "getHintText", "()Landroid/widget/TextView;", "hintText$delegate", "getHolder", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder;", "inited", "okView", "getOkView", "okView$delegate", "onCropCallback", "com/tencent/mm/plugin/vlog/ui/plugin/VLogTrackEditPlugin$onCropCallback$1", "Lcom/tencent/mm/plugin/vlog/ui/plugin/VLogTrackEditPlugin$onCropCallback$1;", "originEnd", "originPlayRate", "", "originStart", "panelRoot", "Landroid/view/ViewGroup;", "getPanelRoot", "()Landroid/view/ViewGroup;", "panelRoot$delegate", "playStartOffset", "sourceDuration", "trackCropView", "Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackCropView;", "getTrackCropView", "()Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackCropView;", "trackCropView$delegate", "videoSeekable", "cancel", "", "checkInit", "isShowing", "onBackPress", "onFinish", "onProgress", "timeMs", "onStart", "seekable", "setEnableLengthEdit", "enable", "setMediaPlayer", "videoSeeker", "audioSeeker", "setTrack", "track", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "init", "maxTrackEnd", "setVisibility", "visibility", "", "updateHint", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ag
   extends com.tencent.mm.plugin.recordvideo.plugin.a
-  implements d.c, d.d
+  implements d.c
 {
-  public static final a NwO;
-  final com.tencent.mm.plugin.recordvideo.plugin.parent.d APl;
-  private final View NwL;
-  public final VLogThumbView NwM;
-  private long NwN;
-  private final View bvK;
-  private final int thumbHeight;
-  private final int thumbWidth;
+  final EditorPanelHolder Gvm;
+  final String TAG;
+  boolean UhB;
+  private final j Uhs;
+  private final j Uht;
+  private final j Uhu;
+  private final j Uhv;
+  private final j Uhw;
+  d.e Uia;
+  d.e Uib;
+  private long Uis;
+  private long Uit;
+  long Uiu;
+  long Uiv;
+  private long UjX;
+  private float UjY;
+  private long UjZ;
+  private final e Uka;
+  private boolean lYs;
   
-  static
+  public ag(EditorPanelHolder paramEditorPanelHolder, final com.tencent.mm.plugin.recordvideo.plugin.parent.a parama)
   {
-    AppMethodBeat.i(250757);
-    NwO = new a((byte)0);
-    AppMethodBeat.o(250757);
+    super(parama);
+    AppMethodBeat.i(282679);
+    this.Gvm = paramEditorPanelHolder;
+    this.TAG = "MicroMsg.VLogTrackEditPlugin";
+    this.Uhs = k.cm((kotlin.g.a.a)new f(this));
+    this.Uht = k.cm((kotlin.g.a.a)new g(this));
+    this.Uhu = k.cm((kotlin.g.a.a)new c(this));
+    this.Uhv = k.cm((kotlin.g.a.a)new a(this));
+    this.Uhw = k.cm((kotlin.g.a.a)new d(this));
+    this.UjY = 1.0F;
+    this.Uka = new e(this, parama);
+    AppMethodBeat.o(282679);
   }
   
-  public ag(View paramView, com.tencent.mm.plugin.recordvideo.plugin.parent.d paramd)
+  private void a(ad paramad, boolean paramBoolean, long paramLong)
   {
-    super(paramd, (byte)0);
-    AppMethodBeat.i(250755);
-    this.bvK = paramView;
-    this.APl = paramd;
-    paramView = this.bvK.findViewById(a.f.vlog_editor_thumb_view);
-    p.j(paramView, "layout.findViewById(R.id.vlog_editor_thumb_view)");
-    this.NwL = paramView;
-    paramView = this.bvK.findViewById(a.f.vlog_thumb_recycler);
-    p.j(paramView, "layout.findViewById(R.id.vlog_thumb_recycler)");
-    this.NwM = ((VLogThumbView)paramView);
-    this.thumbHeight = 112;
-    this.thumbWidth = 63;
-    this.NwM.setOnSelectCallback((VLogThumbView.b)new VLogThumbView.b()
+    AppMethodBeat.i(282705);
+    s.u(paramad, "track");
+    if ((paramBoolean) && (this.Uiv != 0L))
     {
-      public final void akl(int paramAnonymousInt)
-      {
-        AppMethodBeat.i(230127);
-        com.tencent.mm.plugin.recordvideo.plugin.parent.d locald = this.NwP.APl;
-        com.tencent.mm.plugin.recordvideo.plugin.parent.d.c localc = com.tencent.mm.plugin.recordvideo.plugin.parent.d.c.HTn;
-        Bundle localBundle = new Bundle();
-        localBundle.putInt("EDIT_SELECT_TRANSITION_INDEX", paramAnonymousInt);
-        locald.a(localc, localBundle);
-        AppMethodBeat.o(230127);
-      }
-      
-      public final void akm(int paramAnonymousInt)
-      {
-        AppMethodBeat.i(230130);
-        Bundle localBundle = new Bundle();
-        localBundle.putInt("EDIT_VLOG_SELECT_TRACK", paramAnonymousInt);
-        this.NwP.APl.a(com.tencent.mm.plugin.recordvideo.plugin.parent.d.c.HSQ, localBundle);
-        AppMethodBeat.o(230130);
-      }
-    });
-    this.NwN = -1L;
-    AppMethodBeat.o(250755);
-  }
-  
-  public final void Ax(boolean paramBoolean)
-  {
-    AppMethodBeat.i(250753);
-    this.NwM.Ax(paramBoolean);
-    AppMethodBeat.o(250753);
-  }
-  
-  public final void LX(final long paramLong)
-  {
-    AppMethodBeat.i(250742);
-    if ((this.NwN <= 0L) || (Util.ticksToNow(this.NwN) >= 1000L))
-    {
-      Log.d("MicroMsg.VLogThumbViewPlugin", "onProgress: " + paramLong + ", enableAutoScroll:" + this.NwM + ".enableAutoScroll");
-      this.NwN = Util.currentTicks();
-    }
-    if (!this.NwL.isShown())
-    {
-      Log.d("MicroMsg.VLogThumbViewPlugin", "onProgress thumbViewRoot not visible ignore");
-      AppMethodBeat.o(250742);
+      this.Uka.bz(this.Uiu, this.Uiv);
+      AppMethodBeat.o(282705);
       return;
     }
-    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new b(this, paramLong));
-    AppMethodBeat.o(250742);
-  }
-  
-  public final void a(ac paramac, long paramLong, boolean paramBoolean)
-  {
-    AppMethodBeat.i(250739);
-    if (this.NwL.getVisibility() != 0)
+    this.UhB = false;
+    if (!this.lYs)
     {
-      Log.i("MicroMsg.VLogThumbViewPlugin", "thumbViewRoot not visible ignore update");
-      AppMethodBeat.o(250739);
-      return;
-    }
-    if (paramac != null)
-    {
-      CMTimeRange localCMTimeRange = paramac.NmT.igH();
-      long l1 = localCMTimeRange.getStartUs() / 1000L;
-      long l2 = localCMTimeRange.getEndUs() / 1000L;
-      VLogThumbView localVLogThumbView = this.NwM;
-      long l3 = paramac.NmT.getDurationMs();
-      paramac = (Iterable)paramac.gtA();
-      Collection localCollection = (Collection)new ArrayList();
-      int i = 0;
-      Iterator localIterator = paramac.iterator();
-      while (localIterator.hasNext())
-      {
-        paramac = localIterator.next();
-        int j = i + 1;
-        if (i < 0) {
-          kotlin.a.j.iBO();
-        }
-        paramac = (ad)paramac;
-        if ((paramac.Nng.endTimeMs < l1) || (paramac.Nng.startTimeMs > l2)) {
-          paramac = null;
-        }
-        for (;;)
-        {
-          if (paramac == null) {
-            break label342;
-          }
-          localCollection.add(paramac);
-          i = j;
-          break;
-          paramac = new h(paramac);
-          paramac.trackIndex = i;
-          if (paramac.NDI.Nng.startTimeMs < l1) {
-            paramac.NCj = (paramac.NDI.Nng.MQV + ((float)(l1 - paramac.NDI.Nng.startTimeMs) * paramac.NDI.Nng.pvh));
-          }
-          if (paramac.NDI.Nng.endTimeMs > l2) {
-            paramac.NCk = (paramac.NDI.Nng.MQW - ((float)(paramac.NDI.Nng.endTimeMs - l2) * paramac.NDI.Nng.pvh));
-          }
-          paramac.height = this.thumbHeight;
-          paramac.width = this.thumbWidth;
-        }
-        label342:
-        i = j;
+      this.lYs = true;
+      this.Gvm.setCloseTouchOutside(false);
+      hTF().setCallback((TrackCropView.a)this.Uka);
+      localObject = (ImageView)this.Uhv.getValue();
+      if (localObject != null) {
+        ((ImageView)localObject).setOnClickListener(new ag..ExternalSyntheticLambda1(this));
       }
-      paramac = (List)localCollection;
-      p.k(localCMTimeRange, "playRange");
-      p.k(paramac, "tracks");
-      localVLogThumbView.NGq.setVisibility(0);
-      localVLogThumbView.NGz.clear();
-      localVLogThumbView.NGz.addAll((Collection)paramac);
-      localVLogThumbView.NzM = 0;
-      localVLogThumbView.kje = 0L;
-      localVLogThumbView.Glx = l3;
-      localVLogThumbView.AJV = (localCMTimeRange.getStartUs() / 1000L);
-      localVLogThumbView.MSZ = (localCMTimeRange.getEndUs() / 1000L);
-      l1 = localVLogThumbView.MSZ;
-      l2 = localVLogThumbView.AJV;
-      Log.i("MicroMsg.VLogThumbView", "onUpdate, duration:" + (localVLogThumbView.MSZ - localVLogThumbView.AJV) + ", visibility:" + localVLogThumbView.isShown() + " seekTo:" + paramLong + " seekToOrigin:" + paramBoolean);
-      localVLogThumbView.jLl.removeCallbacks(localVLogThumbView.NzW);
-      localVLogThumbView.NzW = ((Runnable)new VLogThumbView.d(localVLogThumbView, l1 - l2, paramLong, paramBoolean));
-      localVLogThumbView.NGy = false;
-      localVLogThumbView.NDj = false;
-      localVLogThumbView.NGs = localVLogThumbView.NDe;
-      localVLogThumbView.NDe = 0;
-      localVLogThumbView.Arh.au(0, 0);
-      paramac = localVLogThumbView.NzW;
-      if (paramac != null)
-      {
-        paramac.run();
-        AppMethodBeat.o(250739);
-        return;
+      localObject = (ImageView)this.Uhw.getValue();
+      if (localObject != null) {
+        ((ImageView)localObject).setOnClickListener(new ag..ExternalSyntheticLambda0(this));
       }
+      this.Gvm.setOnVisibleChangeCallback((kotlin.g.a.b)new b(this));
     }
-    AppMethodBeat.o(250739);
+    Object localObject = new ad(paramad.path, paramad.type);
+    ((ad)localObject).wC(paramad.UaI.UjZ);
+    ((ad)localObject).wA(((float)paramad.UaI.UjZ / paramad.UaI.sAn));
+    ((ad)localObject).setPlayRate(paramad.UaI.sAn);
+    ((ad)localObject).UaI.agDB = 0L;
+    ((ad)localObject).UaI.agDC = ((ad)localObject).UaI.endTimeMs;
+    ((ad)localObject).UaI.jLQ();
+    this.UjX = paramad.UaI.startTimeMs;
+    this.Uis = paramad.UaI.TDw;
+    this.Uit = Math.min(paramad.UaI.TDx, paramLong);
+    this.UjY = paramad.UaI.sAn;
+    this.Uiu = (((float)this.Uis / this.UjY));
+    this.Uiv = (((float)this.Uit / this.UjY));
+    this.UjZ = paramad.UaI.UjZ;
+    localObject = new ac(p.listOf(localObject));
+    ((ac)localObject).bs(((float)this.Uis / paramad.UaI.sAn), ((float)this.Uit / paramad.UaI.sAn));
+    paramad = hTF();
+    s.s(paramad, "trackCropView");
+    TrackCropView.a(paramad, (ac)localObject);
+    this.Gvm.setShow(true);
+    gVJ();
+    AppMethodBeat.o(282705);
   }
   
-  public final void a(d.e parame)
+  private static final void a(ag paramag, View paramView)
   {
-    AppMethodBeat.i(250741);
-    VLogThumbView localVLogThumbView = this.NwM;
-    localVLogThumbView.NuG = parame;
-    Log.i("MicroMsg.VLogThumbView", "onStart: ");
-    if (!localVLogThumbView.isShown())
+    AppMethodBeat.i(282729);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramag);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/VLogTrackEditPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramag, "this$0");
+    paramag.UhB = false;
+    paramag.Gvm.setShow(false);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/vlog/ui/plugin/VLogTrackEditPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(282729);
+  }
+  
+  private static final void b(ag paramag, View paramView)
+  {
+    AppMethodBeat.i(282738);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramag);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/VLogTrackEditPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramag, "this$0");
+    paramag.UhB = true;
+    paramag.Gvm.setShow(false);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/vlog/ui/plugin/VLogTrackEditPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(282738);
+  }
+  
+  private final TextView eOX()
+  {
+    AppMethodBeat.i(282687);
+    TextView localTextView = (TextView)this.Uhu.getValue();
+    AppMethodBeat.o(282687);
+    return localTextView;
+  }
+  
+  public final void a(d.e parame) {}
+  
+  public final void a(d.e parame1, d.e parame2)
+  {
+    this.Uia = parame1;
+    this.Uib = parame2;
+  }
+  
+  final void gVJ()
+  {
+    AppMethodBeat.i(282802);
+    Math.round((float)this.UjZ / this.UjY / 1000.0F);
+    int i = Math.round((float)(this.Uiv - this.Uiu) / 1000.0F);
+    eOX().setText((CharSequence)this.Gvm.getContext().getString(a.i.video_track_edit_duration_cut_off, new Object[] { Integer.valueOf(i) }));
+    AppMethodBeat.o(282802);
+  }
+  
+  final TrackCropView hTF()
+  {
+    AppMethodBeat.i(282766);
+    TrackCropView localTrackCropView = (TrackCropView)this.Uht.getValue();
+    AppMethodBeat.o(282766);
+    return localTrackCropView;
+  }
+  
+  public final boolean isShowing()
+  {
+    AppMethodBeat.i(282823);
+    if (this.Gvm.getVisibility() == 0)
     {
-      Log.i("MicroMsg.VLogThumbView", "onStart thumbViewRoot not visible ignore");
-      AppMethodBeat.o(250741);
-      return;
+      AppMethodBeat.o(282823);
+      return true;
     }
-    localVLogThumbView.NDj = true;
-    localVLogThumbView.canScroll = true;
-    AppMethodBeat.o(250741);
+    AppMethodBeat.o(282823);
+    return false;
   }
   
-  public final void gvP()
+  public final boolean onBackPress()
   {
-    this.NwM.NGA = false;
-  }
-  
-  public final void iH(List<Boolean> paramList)
-  {
-    AppMethodBeat.i(250751);
-    p.k(paramList, "list");
-    this.NwM.iH(paramList);
-    AppMethodBeat.o(250751);
-  }
-  
-  public final void release()
-  {
-    AppMethodBeat.i(250748);
-    super.release();
-    Object localObject2 = this.NwM;
-    Object localObject1 = (Iterable)i.ou(0, ((VLogThumbView)localObject2).jLl.getChildCount());
-    localObject2 = ((VLogThumbView)localObject2).jLl;
-    Collection localCollection = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject1, 10));
-    localObject1 = ((Iterable)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext()) {
-      localCollection.add(((RecyclerView)localObject2).getChildAt(((ab)localObject1).zD()));
+    AppMethodBeat.i(282790);
+    if (this.Gvm.cvt())
+    {
+      this.UhB = false;
+      this.Gvm.setShow(false);
+      AppMethodBeat.o(282790);
+      return true;
     }
-    localObject1 = ((Iterable)kotlin.a.j.a((Iterable)localCollection, FrameListView.class)).iterator();
-    while (((Iterator)localObject1).hasNext()) {
-      ((FrameListView)((Iterator)localObject1).next()).release();
-    }
-    localObject1 = com.tencent.mm.videocomposition.a.YHM;
-    com.tencent.mm.videocomposition.a.fgL().evictAll();
-    AppMethodBeat.o(250748);
+    boolean bool = super.onBackPress();
+    AppMethodBeat.o(282790);
+    return bool;
   }
   
-  public final void reset()
+  public final void qU(long paramLong)
   {
-    AppMethodBeat.i(250745);
-    super.reset();
-    VLogThumbView localVLogThumbView = this.NwM;
-    localVLogThumbView.NGr.NBK.clear();
-    localVLogThumbView.x(-1, 0L, 0L);
-    AppMethodBeat.o(250745);
+    AppMethodBeat.i(282816);
+    if (this.Gvm.cvt()) {
+      hTF().setProgress(paramLong);
+    }
+    AppMethodBeat.o(282816);
+  }
+  
+  public final void setEnableLengthEdit(boolean paramBoolean)
+  {
+    AppMethodBeat.i(282780);
+    hTF().setEnableLengthEdit(paramBoolean);
+    AppMethodBeat.o(282780);
   }
   
   public final void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(250737);
-    this.NwL.setVisibility(paramInt);
-    VLogThumbView localVLogThumbView = this.NwM;
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
+    AppMethodBeat.i(282783);
+    super.setVisibility(paramInt);
+    if (paramInt == 8)
     {
-      localVLogThumbView.NGA = bool;
-      this.NwM.NGq.setVisibility(paramInt);
-      AppMethodBeat.o(250737);
-      return;
+      this.UhB = false;
+      this.Gvm.setShow(false);
+    }
+    AppMethodBeat.o(282783);
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements kotlin.g.a.a<ImageView>
+  {
+    a(ag paramag)
+    {
+      super();
     }
   }
   
-  public final void x(int paramInt, long paramLong1, long paramLong2)
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements kotlin.g.a.b<Boolean, ah>
   {
-    AppMethodBeat.i(250743);
-    Log.i("MicroMsg.VLogThumbViewPlugin", "selectTrack:".concat(String.valueOf(paramInt)));
-    this.NwM.x(paramInt, paramLong1, paramLong2);
-    AppMethodBeat.o(250743);
+    b(ag paramag)
+    {
+      super();
+    }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/VLogThumbViewPlugin$Companion;", "", "()V", "TAG", "", "ThumbHeight", "", "ThumbWidth", "plugin-vlog_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class b
-    extends q
-    implements kotlin.g.a.a<x>
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends u
+    implements kotlin.g.a.a<TextView>
   {
-    b(ag paramag, long paramLong)
+    c(ag paramag)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class d
+    extends u
+    implements kotlin.g.a.a<ImageView>
+  {
+    d(ag paramag)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/vlog/ui/plugin/VLogTrackEditPlugin$onCropCallback$1", "Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackCropView$OnCropCallback;", "onCrop", "", "start", "", "end", "onUpdate", "pause", "seekTo", "time", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class e
+    implements TrackCropView.a
+  {
+    e(ag paramag, com.tencent.mm.plugin.recordvideo.plugin.parent.a parama) {}
+    
+    public final void bA(long paramLong1, long paramLong2)
+    {
+      AppMethodBeat.i(282563);
+      this.Ukb.Uiu = paramLong1;
+      this.Ukb.Uiv = paramLong2;
+      this.Ukb.gVJ();
+      AppMethodBeat.o(282563);
+    }
+    
+    public final void bz(long paramLong1, long paramLong2)
+    {
+      AppMethodBeat.i(282575);
+      Log.i(this.Ukb.TAG, "onScrollStateChanged: " + paramLong1 + ", " + paramLong2);
+      Object localObject = new Bundle();
+      this.Ukb.Uiu = paramLong1;
+      this.Ukb.Uiv = paramLong2;
+      this.Ukb.gVJ();
+      ((Bundle)localObject).putLong("EDIT_VLOG_TRACK_CROP_START", paramLong1);
+      ((Bundle)localObject).putLong("EDIT_VLOG_TRAKC_CROP_END", paramLong2);
+      ((Bundle)localObject).putBoolean("EDIT_VLOG_TRACK_CROP_CHANGE", true);
+      parama.a(a.c.NPx, (Bundle)localObject);
+      localObject = this.Ukb.Uia;
+      if (localObject != null) {
+        ((d.e)localObject).resume();
+      }
+      AppMethodBeat.o(282575);
+    }
+    
+    public final void pause()
+    {
+      AppMethodBeat.i(282578);
+      d.e locale = this.Ukb.Uia;
+      if (locale != null) {
+        locale.pause();
+      }
+      locale = this.Ukb.Uib;
+      if (locale != null) {
+        locale.pause();
+      }
+      AppMethodBeat.o(282578);
+    }
+    
+    public final void seekTo(long paramLong)
+    {
+      AppMethodBeat.i(282585);
+      d.e locale = this.Ukb.Uia;
+      if (locale != null) {
+        locale.wK(paramLong);
+      }
+      AppMethodBeat.o(282585);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/view/ViewGroup;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class f
+    extends u
+    implements kotlin.g.a.a<ViewGroup>
+  {
+    f(ag paramag)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackCropView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class g
+    extends u
+    implements kotlin.g.a.a<TrackCropView>
+  {
+    g(ag paramag)
     {
       super();
     }
@@ -303,7 +359,7 @@ public final class ag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.plugin.ag
  * JD-Core Version:    0.7.0.1
  */

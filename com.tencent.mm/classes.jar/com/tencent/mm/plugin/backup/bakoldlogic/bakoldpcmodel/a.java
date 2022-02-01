@@ -8,80 +8,80 @@ import com.tencent.mm.plugin.backup.b.d;
 public final class a
   extends d
 {
-  private static a rTd;
-  private e rTe;
-  private c rTf;
-  private b rTg;
+  private static a vet;
+  private e veu;
+  private c vev;
+  private b vew;
   
-  public static a cuk()
+  public static a cWU()
   {
     AppMethodBeat.i(21859);
-    if (rTd == null)
+    if (vet == null)
     {
       locala = new a();
-      rTd = locala;
+      vet = locala;
       a(locala);
     }
-    a locala = rTd;
+    a locala = vet;
     AppMethodBeat.o(21859);
     return locala;
   }
   
-  public final void crU()
+  public final void cUE()
   {
-    rTd = null;
+    vet = null;
   }
   
-  public final void csa() {}
+  public final void cUK() {}
   
-  public final void csb() {}
+  public final void cUL() {}
   
-  public final e cul()
+  public final e cWV()
   {
     AppMethodBeat.i(21861);
-    if (this.rTe == null) {
-      this.rTe = new e();
+    if (this.veu == null) {
+      this.veu = new e();
     }
-    e locale = this.rTe;
+    e locale = this.veu;
     AppMethodBeat.o(21861);
     return locale;
   }
   
-  public final c cum()
+  public final c cWW()
   {
     AppMethodBeat.i(21862);
-    if (this.rTf == null) {
-      this.rTf = new c();
+    if (this.vev == null) {
+      this.vev = new c();
     }
-    c localc = this.rTf;
+    c localc = this.vev;
     AppMethodBeat.o(21862);
     return localc;
   }
   
-  public final b cun()
+  public final b cWX()
   {
     AppMethodBeat.i(21863);
-    if (this.rTg == null) {
-      this.rTg = new b();
+    if (this.vew == null) {
+      this.vew = new b();
     }
-    b localb = this.rTg;
+    b localb = this.vew;
     AppMethodBeat.o(21863);
     return localb;
   }
   
-  public final void n(Object... paramVarArgs)
+  public final void p(Object... paramVarArgs)
   {
     AppMethodBeat.i(21860);
     paramVarArgs = (Context)paramVarArgs[0];
-    cuk().cun().cuo();
+    cWU().cWX().cWY();
     com.tencent.mm.plugin.backup.g.b.clear();
-    com.tencent.mm.by.c.bs(new Intent().setClassName(paramVarArgs, "com.tencent.mm.plugin.backup.bakoldlogic.bakoldmodel.BakOldUSBService"));
+    com.tencent.mm.br.c.bV(new Intent().setClassName(paramVarArgs, "com.tencent.mm.plugin.backup.bakoldlogic.bakoldmodel.BakOldUSBService"));
     AppMethodBeat.o(21860);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a
  * JD-Core Version:    0.7.0.1
  */

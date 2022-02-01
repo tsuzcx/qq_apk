@@ -10,13 +10,13 @@ import com.tencent.mm.vending.j.d;
 public class g
   implements b<f>
 {
-  public final c mLA;
-  public final b mLB;
-  public final f mLC;
-  protected f mLw;
-  public final d mLx;
-  public final a mLy;
-  public final e mLz;
+  protected f pIe;
+  public final d pIf;
+  public final a pIg;
+  public final e pIh;
+  public final c pIi;
+  public final b pIj;
+  public final f pIk;
   
   public g()
   {
@@ -28,13 +28,13 @@ public class g
   private g(f paramf)
   {
     AppMethodBeat.i(63469);
-    this.mLx = new d();
-    this.mLy = new a();
-    this.mLz = new e();
-    this.mLA = new c();
-    this.mLB = new b();
-    this.mLC = new f();
-    this.mLw = paramf;
+    this.pIf = new d();
+    this.pIg = new a();
+    this.pIh = new e();
+    this.pIi = new c();
+    this.pIj = new b();
+    this.pIk = new f();
+    this.pIe = paramf;
     AppMethodBeat.o(63469);
   }
   
@@ -43,16 +43,16 @@ public class g
   {
     public a() {}
     
-    public final String aqj()
+    public final String aKh()
     {
       return "Vending.LOGIC";
     }
     
-    public final com.tencent.mm.vending.g.c<s> l(long paramLong, String paramString)
+    public final com.tencent.mm.vending.g.c<s> n(long paramLong, String paramString)
     {
-      AppMethodBeat.i(275368);
-      paramString = com.tencent.mm.vending.g.g.H(Long.valueOf(paramLong), paramString).c(this);
-      AppMethodBeat.o(275368);
+      AppMethodBeat.i(268399);
+      paramString = com.tencent.mm.vending.g.g.S(Long.valueOf(paramLong), paramString).c(this);
+      AppMethodBeat.o(268399);
       return paramString;
     }
   }
@@ -62,7 +62,7 @@ public class g
   {
     public b() {}
     
-    public final String aqj()
+    public final String aKh()
     {
       return "Vending.LOGIC";
     }
@@ -73,7 +73,7 @@ public class g
   {
     public c() {}
     
-    public final String aqj()
+    public final String aKh()
     {
       return "Vending.LOGIC";
     }
@@ -81,7 +81,7 @@ public class g
     public final com.tencent.mm.vending.g.c<Void> b(long paramLong, String paramString1, String paramString2)
     {
       AppMethodBeat.i(63461);
-      paramString1 = com.tencent.mm.vending.g.g.g(Long.valueOf(paramLong), paramString1, paramString2).c(this);
+      paramString1 = com.tencent.mm.vending.g.g.f(Long.valueOf(paramLong), paramString1, paramString2).c(this);
       AppMethodBeat.o(63461);
       return paramString1;
     }
@@ -92,15 +92,15 @@ public class g
   {
     public d() {}
     
-    public final String aqj()
+    public final String aKh()
     {
       return "Vending.LOGIC";
     }
     
-    public final com.tencent.mm.vending.g.c<z> bwy()
+    public final com.tencent.mm.vending.g.c<z> bVq()
     {
       AppMethodBeat.i(63463);
-      com.tencent.mm.vending.g.c localc = com.tencent.mm.vending.g.g.ieN().c(this);
+      com.tencent.mm.vending.g.c localc = com.tencent.mm.vending.g.g.jJU().c(this);
       AppMethodBeat.o(63463);
       return localc;
     }
@@ -111,17 +111,17 @@ public class g
   {
     public e() {}
     
-    public final String aqj()
-    {
-      return "Vending.LOGIC";
-    }
-    
-    public final com.tencent.mm.vending.g.c<Void> z(String paramString1, String paramString2, String paramString3)
+    public final com.tencent.mm.vending.g.c<Void> C(String paramString1, String paramString2, String paramString3)
     {
       AppMethodBeat.i(63465);
-      paramString1 = com.tencent.mm.vending.g.g.g(paramString1, paramString2, paramString3).c(this);
+      paramString1 = com.tencent.mm.vending.g.g.f(paramString1, paramString2, paramString3).c(this);
       AppMethodBeat.o(63465);
       return paramString1;
+    }
+    
+    public final String aKh()
+    {
+      return "Vending.LOGIC";
     }
   }
   
@@ -130,7 +130,7 @@ public class g
   {
     public f() {}
     
-    public final String aqj()
+    public final String aKh()
     {
       return "Vending.LOGIC";
     }
@@ -138,7 +138,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.b.g
  * JD-Core Version:    0.7.0.1
  */

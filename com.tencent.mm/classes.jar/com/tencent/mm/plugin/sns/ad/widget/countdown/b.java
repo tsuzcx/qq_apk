@@ -1,87 +1,87 @@
 package com.tencent.mm.plugin.sns.ad.widget.countdown;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.plugin.sns.ad.d.k;
-import com.tencent.mm.plugin.sns.ad.d.k.a;
-import com.tencent.mm.plugin.sns.ad.d.k.b;
-import com.tencent.mm.plugin.sns.ad.i.f;
-import com.tencent.mm.plugin.sns.ad.i.f.a;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.plugin.sns.ad.d.m;
+import com.tencent.mm.plugin.sns.ad.d.m.a;
+import com.tencent.mm.plugin.sns.ad.d.m.b;
+import com.tencent.mm.plugin.sns.ad.j.f;
+import com.tencent.mm.plugin.sns.ad.j.f.a;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
-  implements k.a, d
+  implements m.a, d
 {
-  private k JLV;
-  private f.a JLW;
-  private c JLX;
+  private m Qfw;
+  private f.a Qfx;
+  private c Qfy;
   
   public b(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(241965);
-    this.JLV = new k(paramLong1, paramLong2)
+    AppMethodBeat.i(310416);
+    this.Qfw = new m(paramLong1, paramLong2)
     {
-      public final long fJZ()
+      public final long gZR()
       {
-        AppMethodBeat.i(231498);
-        long l = cm.bfE();
-        AppMethodBeat.o(231498);
+        AppMethodBeat.i(310406);
+        long l = cn.bDw();
+        AppMethodBeat.o(310406);
         return l;
       }
       
       public final boolean isValid()
       {
-        AppMethodBeat.i(231497);
-        boolean bool = f.aA(this.mStartTime, this.Jzz);
-        AppMethodBeat.o(231497);
+        AppMethodBeat.i(310395);
+        boolean bool = f.bk(this.mStartTime, this.POg);
+        AppMethodBeat.o(310395);
         return bool;
       }
     };
-    this.JLW = new f.a();
-    AppMethodBeat.o(241965);
-  }
-  
-  public final void Qh(long paramLong)
-  {
-    AppMethodBeat.i(241971);
-    f.a locala = f.a(paramLong, this.JLW);
-    c localc = this.JLX;
-    if (localc != null) {
-      localc.b(paramLong, locala);
-    }
-    AppMethodBeat.o(241971);
+    this.Qfx = new f.a();
+    AppMethodBeat.o(310416);
   }
   
   public final void a(c paramc)
   {
-    this.JLX = paramc;
+    this.Qfy = paramc;
   }
   
-  public final void dFU()
+  public final void exT()
   {
-    AppMethodBeat.i(241969);
-    Log.d("SnsAd.CountDownViewModel", "stopCountDown is called");
-    k localk = this.JLV;
-    if (localk.JzB != null)
-    {
-      localk.JzB.cancel();
-      localk.JzB = null;
-    }
-    localk.JzC = null;
-    AppMethodBeat.o(241969);
-  }
-  
-  public final void fMb()
-  {
-    AppMethodBeat.i(241968);
+    AppMethodBeat.i(310429);
     Log.d("SnsAd.CountDownViewModel", "startCountDown is called");
-    this.JLV.a(this);
-    AppMethodBeat.o(241968);
+    this.Qfw.a(this);
+    AppMethodBeat.o(310429);
+  }
+  
+  public final void exf()
+  {
+    AppMethodBeat.i(310439);
+    Log.d("SnsAd.CountDownViewModel", "stopCountDown is called");
+    m localm = this.Qfw;
+    if (localm.POi != null)
+    {
+      localm.POi.cancel();
+      localm.POi = null;
+    }
+    localm.POj = null;
+    AppMethodBeat.o(310439);
+  }
+  
+  public final void uo(long paramLong)
+  {
+    AppMethodBeat.i(310445);
+    f.a locala = f.a(paramLong, this.Qfx);
+    c localc = this.Qfy;
+    if (localc != null) {
+      localc.b(paramLong, locala);
+    }
+    AppMethodBeat.o(310445);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.widget.countdown.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,93 +1,102 @@
 package com.tencent.mm.chatroom.d;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.model.v;
-import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.l.e;
-import com.tencent.mm.protocal.protobuf.ace;
-import com.tencent.mm.protocal.protobuf.acf;
-import com.tencent.mm.protocal.protobuf.chv;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.chatroom.ui.a.i;
+import com.tencent.mm.protocal.protobuf.akp;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.w;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class h
-  extends q
-  implements m
+  implements com.tencent.mm.am.h
 {
-  private i callback;
-  private LinkedList<chv> fMn;
-  private final d rr;
+  public boolean hks;
+  public Runnable hkt;
+  public Runnable hku;
+  private AtomicBoolean hkv;
+  private a lyg;
+  private Context mContext;
+  private w tipDialog;
   
-  public h(LinkedList<chv> paramLinkedList)
+  public h(Context paramContext, a parama)
   {
-    AppMethodBeat.i(12458);
-    this.fMn = paramLinkedList;
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new ace();
-    ((d.a)localObject).lBV = new acf();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/collectchatroom";
-    ((d.a)localObject).funcId = 181;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (ace)d.b.b(this.rr.lBR);
-    ((ace)localObject).SnO = paramLinkedList;
-    ((ace)localObject).SnN = paramLinkedList.size();
-    AppMethodBeat.o(12458);
+    AppMethodBeat.i(241421);
+    this.hkv = new AtomicBoolean(false);
+    this.mContext = paramContext;
+    this.lyg = parama;
+    this.tipDialog = null;
+    AppMethodBeat.o(241421);
   }
   
-  public final int doScene(g paramg, i parami)
+  private void a(boolean paramBoolean, akp paramakp, int paramInt)
   {
-    AppMethodBeat.i(12459);
-    this.callback = parami;
-    int i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(12459);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 181;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(12460);
-    updateDispatchId(paramInt1);
-    Log.d("MicroMsg.NetSceneCollectChatRoom", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
-    d.c.b(((d)params).lBS);
-    if (params.getRespObj().getRetCode() != 0)
-    {
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(12460);
-      return;
+    AppMethodBeat.i(241423);
+    if (this.lyg != null) {
+      this.lyg.b(paramBoolean, paramakp, paramInt);
     }
-    if (this.fMn != null)
+    AppMethodBeat.o(241423);
+  }
+  
+  private void onStop()
+  {
+    AppMethodBeat.i(241426);
+    if (this.hks)
     {
-      params = this.fMn.iterator();
-      while (params.hasNext())
+      if (this.hku != null) {
+        MMHandlerThread.removeRunnable(this.hku);
+      }
+      if (this.tipDialog != null)
       {
-        paramArrayOfByte = (chv)params.next();
-        Log.d("MicroMsg.NetSceneCollectChatRoom", "del groupcard Name :" + paramArrayOfByte.Tpa);
-        v.Pp(paramArrayOfByte.Tpa);
+        this.tipDialog.dismiss();
+        this.tipDialog = null;
       }
     }
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(12460);
+    MMHandlerThread.removeRunnable(this.hkt);
+    com.tencent.mm.kernel.h.baD().mCm.b(6217, this);
+    AppMethodBeat.o(241426);
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
+  {
+    AppMethodBeat.i(241441);
+    Log.i("MicroMsg.CheckFinderManagerSwithFun", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2 + "," + paramString);
+    if ((!(paramp instanceof m)) || (paramp.getType() != 6217))
+    {
+      Log.w("MicroMsg.CheckFinderManagerSwithFun", "not expected scene,  type = " + paramp.getType());
+      AppMethodBeat.o(241441);
+      return;
+    }
+    onStop();
+    if ((paramInt1 == 0) && (paramInt2 == 0))
+    {
+      a(true, (akp)c.c.b(((m)paramp).rr.otC), 0);
+      AppMethodBeat.o(241441);
+      return;
+    }
+    if (!Util.isNullOrNil(paramString)) {
+      k.c(this.mContext, paramString, "", true);
+    }
+    a(false, null, paramInt2);
+    AppMethodBeat.o(241441);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void b(boolean paramBoolean, akp paramakp, int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.chatroom.d.h
  * JD-Core Version:    0.7.0.1
  */

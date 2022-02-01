@@ -7,9 +7,9 @@ public enum WheelView$b
   static
   {
     AppMethodBeat.i(175305);
-    mBR = new b("FILL", 0);
-    mBS = new b("WRAP", 1);
-    mBT = new b[] { mBR, mBS };
+    pyz = new b("FILL", 0);
+    pyA = new b("WRAP", 1);
+    pyB = new b[] { pyz, pyA };
     AppMethodBeat.o(175305);
   }
   

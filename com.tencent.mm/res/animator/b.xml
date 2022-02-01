@@ -2,10 +2,10 @@
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:state_enabled="true" app:state_liftable="true" app:state_lifted="false">
-        <objectAnimator android:duration="@integer/d" android:valueTo="0.0dip" android:valueType="floatType" android:propertyName="elevation" />
+        <objectAnimator android:duration="@integer/e" android:valueTo="0.0dip" android:valueType="floatType" android:propertyName="elevation" />
     </item>
     <item android:state_enabled="true">
-        <objectAnimator android:duration="@integer/d" android:valueTo="@dimen/yt" android:valueType="floatType" android:propertyName="elevation" />
+        <objectAnimator android:duration="@integer/e" android:valueTo="@dimen/a0v" android:valueType="floatType" android:propertyName="elevation" />
     </item>
     <item>
         <objectAnimator android:duration="0" android:valueTo="0" android:valueType="floatType" android:propertyName="elevation" />

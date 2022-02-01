@@ -1,14 +1,17 @@
 package com.tencent.mm.sdk.platformtools;
 
 import android.content.Context;
+import android.text.TextUtils;
 import com.tencent.matrix.hook.HookManager;
 import com.tencent.matrix.hook.HookManager.b;
 import com.tencent.matrix.hook.pthread.PthreadHook;
 import com.tencent.matrix.hook.pthread.PthreadHook.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.app.x;
-import com.tencent.mm.compatible.util.j;
+import com.tencent.mm.app.aa;
+import com.tencent.mm.compatible.util.k;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 
 public class ThreadStackShinkerWrapper
 {
@@ -19,25 +22,25 @@ public class ThreadStackShinkerWrapper
   
   private static File getDataStoreDir(Context paramContext)
   {
-    AppMethodBeat.i(262217);
+    AppMethodBeat.i(243892);
     paramContext = paramContext.getDir("threadstack_shinker", 0);
     if (!paramContext.exists()) {
       paramContext.mkdirs();
     }
-    AppMethodBeat.o(262217);
+    AppMethodBeat.o(243892);
     return paramContext;
   }
   
   public static boolean isEnabled(Context paramContext)
   {
-    AppMethodBeat.i(262215);
+    AppMethodBeat.i(243890);
     if (!isPreconditionsSatisfied(paramContext))
     {
-      AppMethodBeat.o(262215);
+      AppMethodBeat.o(243890);
       return false;
     }
     boolean bool = new File(getDataStoreDir(paramContext), "enabled").exists();
-    AppMethodBeat.o(262215);
+    AppMethodBeat.o(243890);
     return bool;
   }
   
@@ -50,7 +53,7 @@ public class ThreadStackShinkerWrapper
   private static void loadIgnoredCreatorSoPatterns(Context paramContext, PthreadHook.a parama)
   {
     // Byte code:
-    //   0: ldc 73
+    //   0: ldc 71
     //   2: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: new 41	java/io/File
     //   8: dup
@@ -59,344 +62,244 @@ public class ThreadStackShinkerWrapper
     //   13: ldc 16
     //   15: invokespecial 62	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   18: astore_0
-    //   19: new 75	java/io/BufferedReader
+    //   19: new 73	java/io/BufferedReader
     //   22: dup
-    //   23: new 77	java/io/FileReader
+    //   23: new 75	java/io/FileReader
     //   26: dup
     //   27: aload_0
-    //   28: invokespecial 80	java/io/FileReader:<init>	(Ljava/io/File;)V
-    //   31: invokespecial 83	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   34: astore_3
-    //   35: aconst_null
-    //   36: astore_2
-    //   37: aload_3
-    //   38: invokevirtual 87	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   41: astore_0
-    //   42: aload_0
-    //   43: ifnull +75 -> 118
-    //   46: aload_0
-    //   47: invokevirtual 92	java/lang/String:trim	()Ljava/lang/String;
-    //   50: astore_0
-    //   51: aload_1
-    //   52: aload_0
-    //   53: invokevirtual 98	com/tencent/matrix/hook/pthread/PthreadHook$a:ff	(Ljava/lang/String;)Lcom/tencent/matrix/hook/pthread/PthreadHook$a;
-    //   56: pop
-    //   57: ldc 19
-    //   59: ldc 100
-    //   61: iconst_1
-    //   62: anewarray 4	java/lang/Object
-    //   65: dup
-    //   66: iconst_0
-    //   67: aload_0
-    //   68: aastore
-    //   69: invokestatic 106	com/tencent/mm/app/x:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   72: goto -35 -> 37
-    //   75: astore_1
-    //   76: ldc 73
-    //   78: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   81: aload_1
-    //   82: athrow
-    //   83: astore_0
-    //   84: aload_1
-    //   85: ifnull +52 -> 137
-    //   88: aload_3
-    //   89: invokevirtual 109	java/io/BufferedReader:close	()V
-    //   92: ldc 73
-    //   94: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   97: aload_0
-    //   98: athrow
-    //   99: astore_0
-    //   100: ldc 19
-    //   102: aload_0
-    //   103: ldc 111
-    //   105: iconst_0
-    //   106: anewarray 4	java/lang/Object
-    //   109: invokestatic 114	com/tencent/mm/app/x:a	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   112: ldc 73
-    //   114: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   117: return
-    //   118: aload_3
-    //   119: invokevirtual 109	java/io/BufferedReader:close	()V
-    //   122: ldc 73
-    //   124: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   127: return
-    //   128: astore_2
-    //   129: aload_1
-    //   130: aload_2
-    //   131: invokevirtual 118	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
-    //   134: goto -42 -> 92
-    //   137: aload_3
-    //   138: invokevirtual 109	java/io/BufferedReader:close	()V
-    //   141: goto -49 -> 92
-    //   144: astore_0
-    //   145: aload_2
-    //   146: astore_1
-    //   147: goto -63 -> 84
+    //   28: invokespecial 78	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   31: invokespecial 81	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   34: astore_0
+    //   35: aload_0
+    //   36: invokevirtual 85	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   39: astore_2
+    //   40: aload_2
+    //   41: ifnull +63 -> 104
+    //   44: aload_2
+    //   45: invokevirtual 90	java/lang/String:trim	()Ljava/lang/String;
+    //   48: astore_2
+    //   49: aload_1
+    //   50: aload_2
+    //   51: invokevirtual 96	com/tencent/matrix/hook/pthread/PthreadHook$a:gD	(Ljava/lang/String;)Lcom/tencent/matrix/hook/pthread/PthreadHook$a;
+    //   54: pop
+    //   55: ldc 19
+    //   57: ldc 98
+    //   59: iconst_1
+    //   60: anewarray 4	java/lang/Object
+    //   63: dup
+    //   64: iconst_0
+    //   65: aload_2
+    //   66: aastore
+    //   67: invokestatic 104	com/tencent/mm/app/aa:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   70: goto -35 -> 35
+    //   73: astore_1
+    //   74: aload_0
+    //   75: invokevirtual 107	java/io/BufferedReader:close	()V
+    //   78: ldc 71
+    //   80: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   83: aload_1
+    //   84: athrow
+    //   85: astore_0
+    //   86: ldc 19
+    //   88: aload_0
+    //   89: ldc 109
+    //   91: iconst_0
+    //   92: anewarray 4	java/lang/Object
+    //   95: invokestatic 112	com/tencent/mm/app/aa:a	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   98: ldc 71
+    //   100: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   103: return
+    //   104: aload_0
+    //   105: invokevirtual 107	java/io/BufferedReader:close	()V
+    //   108: ldc 71
+    //   110: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   113: return
+    //   114: astore_0
+    //   115: aload_1
+    //   116: aload_0
+    //   117: invokevirtual 118	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   120: goto -42 -> 78
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	150	0	paramContext	Context
-    //   0	150	1	parama	PthreadHook.a
-    //   36	1	2	localObject	Object
-    //   128	18	2	localThrowable	Throwable
-    //   34	104	3	localBufferedReader	java.io.BufferedReader
+    //   0	123	0	paramContext	Context
+    //   0	123	1	parama	PthreadHook.a
+    //   39	27	2	str	String
     // Exception table:
     //   from	to	target	type
-    //   37	42	75	java/lang/Throwable
-    //   46	72	75	java/lang/Throwable
-    //   76	83	83	finally
-    //   19	35	99	java/lang/Throwable
-    //   92	99	99	java/lang/Throwable
-    //   118	127	99	java/lang/Throwable
-    //   129	134	99	java/lang/Throwable
-    //   137	141	99	java/lang/Throwable
-    //   88	92	128	java/lang/Throwable
-    //   37	42	144	finally
-    //   46	72	144	finally
+    //   35	40	73	finally
+    //   44	70	73	finally
+    //   19	35	85	finally
+    //   78	85	85	finally
+    //   104	113	85	finally
+    //   115	120	85	finally
+    //   74	78	114	finally
   }
   
   public static void markDisabled(Context paramContext)
   {
-    AppMethodBeat.i(262214);
+    AppMethodBeat.i(243883);
     try
     {
       boolean bool = isPreconditionsSatisfied(paramContext);
       if (!bool)
       {
-        AppMethodBeat.o(262214);
+        AppMethodBeat.o(243883);
         return;
       }
       paramContext = new File(getDataStoreDir(paramContext), "enabled");
       if ((!paramContext.exists()) || (paramContext.delete()))
       {
-        x.a("MicroMsg.ThreadStackShinkerWrapper", "[+] Mark disabled successfully.", new Object[0]);
-        AppMethodBeat.o(262214);
+        aa.a("MicroMsg.ThreadStackShinkerWrapper", "[+] Mark disabled successfully.", new Object[0]);
+        AppMethodBeat.o(243883);
         return;
       }
     }
-    catch (Throwable paramContext)
+    finally
     {
       Log.printErrStackTrace("MicroMsg.ThreadStackShinkerWrapper", paramContext, "[-] Fail to mark disabled.", new Object[0]);
-      AppMethodBeat.o(262214);
+      AppMethodBeat.o(243883);
       return;
     }
-    x.c("MicroMsg.ThreadStackShinkerWrapper", "[-] Fail to mark disabled.", new Object[0]);
-    AppMethodBeat.o(262214);
+    aa.c("MicroMsg.ThreadStackShinkerWrapper", "[-] Fail to mark disabled.", new Object[0]);
+    AppMethodBeat.o(243883);
   }
   
   public static void markEnabled(Context paramContext)
   {
-    AppMethodBeat.i(262211);
+    AppMethodBeat.i(243870);
     try
     {
       boolean bool = isPreconditionsSatisfied(paramContext);
       if (!bool)
       {
-        AppMethodBeat.o(262211);
+        AppMethodBeat.o(243870);
         return;
       }
-      x.a("MicroMsg.ThreadStackShinkerWrapper", "[+] markEnabled called.", new Object[0]);
+      aa.a("MicroMsg.ThreadStackShinkerWrapper", "[+] markEnabled called.", new Object[0]);
       paramContext = new File(getDataStoreDir(paramContext), "enabled");
       if ((paramContext.exists()) || (paramContext.createNewFile()))
       {
-        x.a("MicroMsg.ThreadStackShinkerWrapper", "[+] Mark enabled successfully.", new Object[0]);
-        AppMethodBeat.o(262211);
+        aa.a("MicroMsg.ThreadStackShinkerWrapper", "[+] Mark enabled successfully.", new Object[0]);
+        AppMethodBeat.o(243870);
         return;
       }
     }
-    catch (Throwable paramContext)
+    finally
     {
-      x.a("MicroMsg.ThreadStackShinkerWrapper", paramContext, "[-] Fail to mark enabled.", new Object[0]);
-      AppMethodBeat.o(262211);
+      aa.a("MicroMsg.ThreadStackShinkerWrapper", paramContext, "[-] Fail to mark enabled.", new Object[0]);
+      AppMethodBeat.o(243870);
       return;
     }
-    x.c("MicroMsg.ThreadStackShinkerWrapper", "[-] Fail to mark enabled.", new Object[0]);
-    AppMethodBeat.o(262211);
+    aa.c("MicroMsg.ThreadStackShinkerWrapper", "[-] Fail to mark enabled.", new Object[0]);
+    AppMethodBeat.o(243870);
   }
   
-  /* Error */
   public static void storeIgnoredCreatorSoPatterns(Context paramContext, String paramString)
   {
-    // Byte code:
-    //   0: ldc 150
-    //   2: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: aload_1
-    //   6: invokestatic 156	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   9: ifeq +16 -> 25
-    //   12: ldc 19
-    //   14: ldc 158
-    //   16: invokestatic 162	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   19: ldc 150
-    //   21: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   24: return
-    //   25: aload_1
-    //   26: ldc 164
-    //   28: invokevirtual 168	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   31: astore 5
-    //   33: aload 5
-    //   35: invokestatic 174	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	([Ljava/lang/String;)Z
-    //   38: ifeq +16 -> 54
-    //   41: ldc 19
-    //   43: ldc 158
-    //   45: invokestatic 162	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   48: ldc 150
-    //   50: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   53: return
-    //   54: new 41	java/io/File
-    //   57: dup
-    //   58: aload_0
-    //   59: invokestatic 59	com/tencent/mm/sdk/platformtools/ThreadStackShinkerWrapper:getDataStoreDir	(Landroid/content/Context;)Ljava/io/File;
-    //   62: ldc 16
-    //   64: invokespecial 62	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   67: astore_0
-    //   68: new 176	java/io/PrintWriter
-    //   71: dup
-    //   72: new 178	java/io/FileWriter
-    //   75: dup
-    //   76: aload_0
-    //   77: invokespecial 179	java/io/FileWriter:<init>	(Ljava/io/File;)V
-    //   80: invokespecial 182	java/io/PrintWriter:<init>	(Ljava/io/Writer;)V
-    //   83: astore 4
-    //   85: aconst_null
-    //   86: astore_1
-    //   87: aload 5
-    //   89: arraylength
-    //   90: istore_3
-    //   91: iconst_0
-    //   92: istore_2
-    //   93: iload_2
-    //   94: iload_3
-    //   95: if_icmpge +36 -> 131
-    //   98: aload 5
-    //   100: iload_2
-    //   101: aaload
-    //   102: astore_0
-    //   103: ldc 19
-    //   105: ldc 184
-    //   107: iconst_1
-    //   108: anewarray 4	java/lang/Object
-    //   111: dup
-    //   112: iconst_0
-    //   113: aload_0
-    //   114: aastore
-    //   115: invokestatic 106	com/tencent/mm/app/x:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   118: aload 4
-    //   120: aload_0
-    //   121: invokevirtual 188	java/io/PrintWriter:println	(Ljava/lang/String;)V
-    //   124: iload_2
-    //   125: iconst_1
-    //   126: iadd
-    //   127: istore_2
-    //   128: goto -35 -> 93
-    //   131: aload 4
-    //   133: invokevirtual 189	java/io/PrintWriter:close	()V
-    //   136: ldc 150
-    //   138: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   141: return
-    //   142: astore_0
-    //   143: ldc 19
-    //   145: aload_0
-    //   146: ldc 191
-    //   148: iconst_0
-    //   149: anewarray 4	java/lang/Object
-    //   152: invokestatic 114	com/tencent/mm/app/x:a	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   155: ldc 150
-    //   157: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   160: return
-    //   161: astore_1
-    //   162: ldc 150
-    //   164: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   167: aload_1
-    //   168: athrow
-    //   169: astore_0
-    //   170: aload_1
-    //   171: ifnull +26 -> 197
-    //   174: aload 4
-    //   176: invokevirtual 189	java/io/PrintWriter:close	()V
-    //   179: ldc 150
-    //   181: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   184: aload_0
-    //   185: athrow
-    //   186: astore 4
-    //   188: aload_1
-    //   189: aload 4
-    //   191: invokevirtual 118	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
-    //   194: goto -15 -> 179
-    //   197: aload 4
-    //   199: invokevirtual 189	java/io/PrintWriter:close	()V
-    //   202: goto -23 -> 179
-    //   205: astore_0
-    //   206: goto -36 -> 170
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	209	0	paramContext	Context
-    //   0	209	1	paramString	String
-    //   92	36	2	i	int
-    //   90	6	3	j	int
-    //   83	92	4	localPrintWriter	java.io.PrintWriter
-    //   186	12	4	localThrowable	Throwable
-    //   31	68	5	arrayOfString	String[]
-    // Exception table:
-    //   from	to	target	type
-    //   68	85	142	java/lang/Throwable
-    //   131	141	142	java/lang/Throwable
-    //   179	186	142	java/lang/Throwable
-    //   188	194	142	java/lang/Throwable
-    //   197	202	142	java/lang/Throwable
-    //   87	91	161	java/lang/Throwable
-    //   103	124	161	java/lang/Throwable
-    //   162	169	169	finally
-    //   174	179	186	java/lang/Throwable
-    //   87	91	205	finally
-    //   103	124	205	finally
+    AppMethodBeat.i(243880);
+    if (TextUtils.isEmpty(paramString))
+    {
+      Log.e("MicroMsg.ThreadStackShinkerWrapper", "patterns is empty or null, skip processing.");
+      AppMethodBeat.o(243880);
+      return;
+    }
+    paramString = paramString.split("\\s*(?<!\\\\),\\s*");
+    if (Util.isNullOrNil(paramString))
+    {
+      Log.e("MicroMsg.ThreadStackShinkerWrapper", "patterns is empty or null, skip processing.");
+      AppMethodBeat.o(243880);
+      return;
+    }
+    paramContext = new File(getDataStoreDir(paramContext), "ignored_patterns");
+    try
+    {
+      paramContext = new PrintWriter(new FileWriter(paramContext));
+      try
+      {
+        int j;
+        int i;
+        String str;
+        paramContext.close();
+        AppMethodBeat.o(243880);
+        throw paramString;
+      }
+      finally
+      {
+        paramString.addSuppressed(paramContext);
+      }
+    }
+    finally
+    {
+      try
+      {
+        j = paramString.length;
+        i = 0;
+        while (i < j)
+        {
+          str = paramString[i];
+          aa.a("MicroMsg.ThreadStackShinkerWrapper", "Pattern: %s was stored.", new Object[] { str });
+          paramContext.println(str);
+          i += 1;
+        }
+        paramContext.close();
+        AppMethodBeat.o(243880);
+        return;
+      }
+      finally {}
+      paramContext = finally;
+      aa.a("MicroMsg.ThreadStackShinkerWrapper", paramContext, "Fail to store ignored creator so patterns.", new Object[0]);
+      AppMethodBeat.o(243880);
+      return;
+    }
   }
   
   public static void tryToInstall(Context paramContext)
   {
-    AppMethodBeat.i(262210);
+    AppMethodBeat.i(243864);
     if (!isPreconditionsSatisfied(paramContext))
     {
-      AppMethodBeat.o(262210);
+      AppMethodBeat.o(243864);
       return;
     }
     if (!isEnabled(paramContext))
     {
-      x.a("MicroMsg.ThreadStackShinkerWrapper", "[+] Not enabled, skip installation.", new Object[0]);
-      AppMethodBeat.o(262210);
+      aa.a("MicroMsg.ThreadStackShinkerWrapper", "[+] Not enabled, skip installation.", new Object[0]);
+      AppMethodBeat.o(243864);
       return;
     }
-    HookManager.cYg.cYk = new HookManager.b()
+    HookManager.eUL.eUQ = new HookManager.b()
     {
-      public final void loadLibrary(String paramAnonymousString)
+      public void loadLibrary(String paramAnonymousString)
       {
-        AppMethodBeat.i(261247);
-        j.load(paramAnonymousString);
-        AppMethodBeat.o(261247);
+        AppMethodBeat.i(243521);
+        k.load(paramAnonymousString);
+        AppMethodBeat.o(243521);
       }
     };
     try
     {
       PthreadHook.a locala = new PthreadHook.a();
       locala.enabled = true;
-      locala = locala.ff(".*/app_tbs/.*").ff(".*/libmttwebview\\.so$").ff(".*/libmtticu\\.so$").ff(".*/libtbs_v8\\.so$").ff(".*/libmagicbrush.so\\.so$");
+      locala = locala.gD(".*/app_tbs/.*").gD(".*/libmttwebview\\.so$").gD(".*/libmtticu\\.so$").gD(".*/libtbs_v8\\.so$").gD(".*/libmagicbrush\\.so$").gD(".*/lib.*webview.*\\.so$").gD(".*/libc\\.so$");
       loadIgnoredCreatorSoPatterns(paramContext, locala);
-      paramContext = HookManager.cYg;
-      PthreadHook localPthreadHook = PthreadHook.cYv;
-      localPthreadHook.cYz = locala;
-      paramContext.a(localPthreadHook).WL();
-      x.a("MicroMsg.ThreadStackShinkerWrapper", "[+] install successfully.", new Object[0]);
-      AppMethodBeat.o(262210);
+      paramContext = HookManager.eUL;
+      PthreadHook localPthreadHook = PthreadHook.eVl;
+      localPthreadHook.eVp = locala;
+      paramContext.a(localPthreadHook).axJ();
+      aa.a("MicroMsg.ThreadStackShinkerWrapper", "[+] install successfully.", new Object[0]);
+      AppMethodBeat.o(243864);
       return;
     }
-    catch (Throwable paramContext)
+    finally
     {
-      x.a("MicroMsg.ThreadStackShinkerWrapper", paramContext, "[-] install failed.", new Object[0]);
-      AppMethodBeat.o(262210);
+      aa.a("MicroMsg.ThreadStackShinkerWrapper", paramContext, "[-] install failed.", new Object[0]);
+      AppMethodBeat.o(243864);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.ThreadStackShinkerWrapper
  * JD-Core Version:    0.7.0.1
  */

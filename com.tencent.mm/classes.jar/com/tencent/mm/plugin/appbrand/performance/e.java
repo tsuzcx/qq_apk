@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.performance;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -11,23 +11,23 @@ import java.io.RandomAccessFile;
 public final class e
   implements Closeable
 {
-  private final int acw;
-  private volatile RandomAccessFile qyU;
-  private volatile RandomAccessFile qyV;
-  private boolean qyW;
-  private long qyX;
-  private long qyY;
-  private long qyZ;
+  private final int bKf;
+  private volatile RandomAccessFile tDP;
+  private volatile RandomAccessFile tDQ;
+  private boolean tDR;
+  private long tDS;
+  private long tDT;
+  private long tDU;
   
   public e(int paramInt)
   {
-    this.acw = paramInt;
+    this.bKf = paramInt;
   }
   
-  public final double cfX()
+  public final double cGJ()
   {
     AppMethodBeat.i(147594);
-    if (this.qyW)
+    if (this.tDR)
     {
       AppMethodBeat.o(147594);
       return 0.0D;
@@ -38,15 +38,15 @@ public final class e
     {
       try
       {
-        if (this.qyV == null)
+        if (this.tDQ == null)
         {
           d2 = d3;
-          this.qyV = u.dO("/proc/" + this.acw + "/stat", false);
+          this.tDQ = y.eA("/proc/" + this.bKf + "/stat", false);
         }
         d2 = d3;
-        this.qyV.seek(0L);
+        this.tDQ.seek(0L);
         d2 = d3;
-        Object localObject1 = this.qyV.readLine();
+        Object localObject1 = this.tDQ.readLine();
         d2 = d3;
         boolean bool = Util.isNullOrNil((String)localObject1);
         if (bool)
@@ -64,15 +64,15 @@ public final class e
           return 0.0D;
         }
         d2 = d3;
-        if (this.qyU == null)
+        if (this.tDP == null)
         {
           d2 = d3;
-          this.qyU = u.dO("/proc/stat", false);
+          this.tDP = y.eA("/proc/stat", false);
         }
         d2 = d3;
-        this.qyU.seek(0L);
+        this.tDP.seek(0L);
         d2 = d3;
-        localObject2 = this.qyU.readLine();
+        localObject2 = this.tDP.readLine();
         d2 = d3;
         if (!Util.isNullOrNil((String)localObject2)) {
           continue;
@@ -84,23 +84,23 @@ public final class e
         l3 = Util.safeParseLong(localObject1[14]);
         d1 = d3;
         d2 = d3;
-        if (this.qyX != 0L)
+        if (this.tDS != 0L)
         {
           d2 = d3;
-          double d4 = (l2 - this.qyY) * 100L / (l1 - this.qyX);
+          double d4 = (l2 - this.tDT) * 100L / (l1 - this.tDS);
           d2 = d3;
-          d1 = (l3 - this.qyZ) * 100L / (l1 - this.qyX);
+          d1 = (l3 - this.tDU) * 100L / (l1 - this.tDS);
           d2 = d3;
           d4 = Math.max(0.0D, d4);
           d2 = d3;
           d1 = Math.max(0.0D, d1) + d4;
         }
         d2 = d1;
-        this.qyX = l1;
+        this.tDS = l1;
         d2 = d1;
-        this.qyY = l2;
+        this.tDT = l2;
         d2 = d1;
-        this.qyZ = l3;
+        this.tDU = l3;
       }
       catch (Exception localException)
       {
@@ -114,7 +114,7 @@ public final class e
         long l7;
         long l8;
         Log.e(" MicroMsg.CpuSampler", "read pid stat file error: ".concat(String.valueOf(localException)));
-        this.qyW = true;
+        this.tDR = true;
         double d1 = d2;
         continue;
       }
@@ -155,14 +155,14 @@ public final class e
     AppMethodBeat.i(147595);
     try
     {
-      if (this.qyV != null) {
-        this.qyV.close();
+      if (this.tDQ != null) {
+        this.tDQ.close();
       }
       try
       {
         label19:
-        if (this.qyU != null) {
-          this.qyU.close();
+        if (this.tDP != null) {
+          this.tDP.close();
         }
         AppMethodBeat.o(147595);
         return;
@@ -181,7 +181,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.performance.e
  * JD-Core Version:    0.7.0.1
  */

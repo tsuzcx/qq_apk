@@ -4,111 +4,110 @@ import android.net.Uri;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ae.d;
-import com.tencent.mm.plugin.webview.d.h;
-import com.tencent.mm.plugin.webview.d.n;
+import com.tencent.mm.plugin.webview.jsapi.e;
+import com.tencent.mm.plugin.webview.jsapi.h;
+import com.tencent.mm.plugin.webview.jsapi.p;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.List;
 import java.util.Map;
-import kotlin.g;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiGetAdIdInfo;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "hostList", "", "kotlin.jvm.PlatformType", "getHostList", "()Ljava/util/List;", "hostList$delegate", "Lkotlin/Lazy;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiGetAdIdInfo;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "hostList", "", "kotlin.jvm.PlatformType", "getHostList", "()Ljava/util/List;", "hostList$delegate", "Lkotlin/Lazy;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class i
-  extends com.tencent.mm.plugin.webview.d.c.a
+  extends com.tencent.mm.plugin.webview.jsapi.c.a
 {
-  private static final int IIl = 375;
-  private static final kotlin.f QuZ;
-  public static final i Qva;
-  private static final String fXz = "getAdIdInfo";
+  private static final int OOk;
+  public static final i XmW;
+  private static final j XmX;
+  private static final String idA;
   
   static
   {
-    AppMethodBeat.i(233810);
-    Qva = new i();
-    IIl = 375;
-    fXz = "getAdIdInfo";
-    QuZ = g.ar((kotlin.g.a.a)b.Qvb);
-    AppMethodBeat.o(233810);
+    AppMethodBeat.i(297862);
+    XmW = new i();
+    OOk = 375;
+    idA = "getAdIdInfo";
+    XmX = k.cm((kotlin.g.a.a)b.XmZ);
+    AppMethodBeat.o(297862);
   }
   
-  public final boolean a(com.tencent.mm.plugin.webview.d.f paramf, final n paramn)
+  public final boolean a(h paramh, final p paramp)
   {
-    AppMethodBeat.i(233806);
-    p.k(paramf, "env");
-    p.k(paramn, "msg");
-    if ((paramn.PNI == null) || (Util.isNullOrNil(paramn.PNI.getString("name"))))
+    AppMethodBeat.i(297874);
+    s.u(paramh, "env");
+    s.u(paramp, "msg");
+    if ((paramp.WDU == null) || (Util.isNullOrNil(paramp.WDU.getString("name"))))
     {
       try
       {
-        Object localObject1 = paramn.params.get("url");
-        if (localObject1 == null)
+        Object localObject = paramp.params.get("url");
+        if (localObject == null)
         {
-          localObject1 = new t("null cannot be cast to non-null type kotlin.String");
-          AppMethodBeat.o(233806);
-          throw ((Throwable)localObject1);
+          localObject = new NullPointerException("null cannot be cast to non-null type kotlin.String");
+          AppMethodBeat.o(297874);
+          throw ((Throwable)localObject);
         }
       }
       catch (Exception localException)
       {
-        Log.w("MicroMsg.JsApiGetAdIdInfo", "getAdIdInfo ex " + localException.getMessage());
-        paramf.PNo.h(paramn.POu, paramn.function + ":fail", null);
-        AppMethodBeat.o(233806);
+        Log.w("MicroMsg.JsApiGetAdIdInfo", s.X("getAdIdInfo ex ", localException.getMessage()));
+        paramh.WDy.doCallback(paramp.WEH, s.X(paramp.function, ":fail"), null);
+        AppMethodBeat.o(297874);
         return false;
       }
-      Object localObject2 = Uri.parse((String)localException);
-      p.j(localObject2, "Uri.parse(url)");
-      localObject2 = ((Uri)localObject2).getHost();
-      if ((Util.isNullOrNil((String)localObject2)) || (!((List)QuZ.getValue()).contains(localObject2)))
+      String str = Uri.parse((String)localException).getHost();
+      if ((Util.isNullOrNil(str)) || (!((List)XmX.getValue()).contains(str)))
       {
-        Log.w("MicroMsg.JsApiGetAdIdInfo", "getAdIdInfo but not valid host ".concat(String.valueOf(localObject2)));
-        paramf.PNo.h(paramn.POu, paramn.function + ":fail invalid host", null);
-        AppMethodBeat.o(233806);
+        Log.w("MicroMsg.JsApiGetAdIdInfo", s.X("getAdIdInfo but not valid host ", str));
+        paramh.WDy.doCallback(paramp.WEH, s.X(paramp.function, ":fail invalid host"), null);
+        AppMethodBeat.o(297874);
         return false;
       }
     }
-    d.h((kotlin.g.a.a)new a(paramf, paramn));
-    AppMethodBeat.o(233806);
+    d.B((kotlin.g.a.a)new a(paramh, paramp));
+    AppMethodBeat.o(297874);
     return true;
   }
   
-  public final String fCm()
+  public final String gPX()
   {
-    return fXz;
+    return idA;
   }
   
-  public final int fCn()
+  public final int gPZ()
   {
-    return IIl;
+    return OOk;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    a(com.tencent.mm.plugin.webview.d.f paramf, n paramn)
+    a(h paramh, p paramp)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
+    extends u
     implements kotlin.g.a.a<List<? extends String>>
   {
-    public static final b Qvb;
+    public static final b XmZ;
     
     static
     {
-      AppMethodBeat.i(266699);
-      Qvb = new b();
-      AppMethodBeat.o(266699);
+      AppMethodBeat.i(297878);
+      XmZ = new b();
+      AppMethodBeat.o(297878);
     }
     
     b()

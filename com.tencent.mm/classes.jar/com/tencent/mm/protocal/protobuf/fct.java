@@ -1,109 +1,74 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
-import java.util.LinkedList;
 
 public final class fct
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int Hna;
-  public int UCt;
-  public int UCu;
-  public eae UCv;
+  public String MFB;
+  public String ThumbUrl;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32499);
+    AppMethodBeat.i(91692);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.UCv == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: PieceData");
-        AppMethodBeat.o(32499);
-        throw paramVarArgs;
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.ThumbUrl != null) {
+        paramVarArgs.g(1, this.ThumbUrl);
       }
-      paramVarArgs.aY(1, this.Hna);
-      paramVarArgs.aY(2, this.UCt);
-      paramVarArgs.aY(3, this.UCu);
-      if (this.UCv != null)
-      {
-        paramVarArgs.oE(4, this.UCv.computeSize());
-        this.UCv.writeFields(paramVarArgs);
+      if (this.MFB != null) {
+        paramVarArgs.g(2, this.MFB);
       }
-      AppMethodBeat.o(32499);
+      AppMethodBeat.o(91692);
       return 0;
     }
-    int i;
-    if (paramInt == 1)
-    {
-      i = g.a.a.b.b.a.bM(1, this.Hna) + 0 + g.a.a.b.b.a.bM(2, this.UCt) + g.a.a.b.b.a.bM(3, this.UCu);
-      paramInt = i;
-      if (this.UCv != null) {
-        paramInt = i + g.a.a.a.oD(4, this.UCv.computeSize());
+    if (paramInt == 1) {
+      if (this.ThumbUrl == null) {
+        break label270;
       }
-      AppMethodBeat.o(32499);
-      return paramInt;
     }
-    if (paramInt == 2)
+    label270:
+    for (paramInt = i.a.a.b.b.a.h(1, this.ThumbUrl) + 0;; paramInt = 0)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+      int i = paramInt;
+      if (this.MFB != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.MFB);
+      }
+      AppMethodBeat.o(91692);
+      return i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
         }
-      }
-      if (this.UCv == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: PieceData");
-        AppMethodBeat.o(32499);
-        throw paramVarArgs;
-      }
-      AppMethodBeat.o(32499);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject = (g.a.a.a.a)paramVarArgs[0];
-      fct localfct = (fct)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
-      {
-      default: 
-        AppMethodBeat.o(32499);
-        return -1;
-      case 1: 
-        localfct.Hna = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(32499);
-        return 0;
-      case 2: 
-        localfct.UCt = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(32499);
-        return 0;
-      case 3: 
-        localfct.UCu = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(32499);
+        AppMethodBeat.o(91692);
         return 0;
       }
-      paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-      i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
+      if (paramInt == 3)
       {
-        localObject = (byte[])paramVarArgs.get(paramInt);
-        eae localeae = new eae();
-        if ((localObject != null) && (localObject.length > 0)) {
-          localeae.dd((byte[])localObject);
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+        fct localfct = (fct)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(91692);
+          return -1;
+        case 1: 
+          localfct.ThumbUrl = locala.ajGk.readString();
+          AppMethodBeat.o(91692);
+          return 0;
         }
-        localfct.UCv = localeae;
-        paramInt += 1;
+        localfct.MFB = locala.ajGk.readString();
+        AppMethodBeat.o(91692);
+        return 0;
       }
-      AppMethodBeat.o(32499);
-      return 0;
+      AppMethodBeat.o(91692);
+      return -1;
     }
-    AppMethodBeat.o(32499);
-    return -1;
   }
 }
 

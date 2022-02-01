@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a74" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/ap4" android:background="@color/a74" style="@style/g2" />
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/ayh" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="@dimen/c_" android:layout_height="@dimen/c_">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_horizontal" android:id="@id/kq8" android:layout_width="@dimen/d6" android:layout_height="@dimen/d6" android:src="@raw/toast_ok" app:iconColor="@color/az" />
+        <TextView android:textSize="@dimen/t" android:textColor="@color/al6" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/kq9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cd" android:layout_marginTop="@dimen/cd" android:layout_marginRight="@dimen/cd" android:maxLines="2" />
+    </LinearLayout>
 </LinearLayout>

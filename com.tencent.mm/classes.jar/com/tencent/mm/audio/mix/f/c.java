@@ -17,61 +17,53 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public final class c
 {
   public String appId;
-  public d fpM;
-  public com.tencent.mm.audio.mix.decode.a fpN;
-  public HashMap<String, Boolean> fpO;
-  private com.tencent.mm.audio.mix.c.f fpP;
-  public com.tencent.mm.audio.mix.b.a.d fpQ;
-  private volatile boolean fpR;
+  public d htV;
+  public com.tencent.mm.audio.mix.decode.a htW;
+  public HashMap<String, Boolean> htX;
+  private com.tencent.mm.audio.mix.c.f htY;
+  public com.tencent.mm.audio.mix.b.a.d htZ;
+  private volatile boolean hua;
   
   public c()
   {
     AppMethodBeat.i(136888);
-    this.fpO = new HashMap();
-    this.fpR = false;
-    this.fpM = new d();
-    this.fpN = new com.tencent.mm.audio.mix.decode.a(this.fpM);
-    this.fpM.fpN = this.fpN;
-    this.fpP = new com.tencent.mm.audio.mix.c.f();
-    this.fpQ = new com.tencent.mm.audio.mix.b.a.d();
+    this.htX = new HashMap();
+    this.hua = false;
+    this.htV = new d();
+    this.htW = new com.tencent.mm.audio.mix.decode.a(this.htV);
+    this.htV.htW = this.htW;
+    this.htY = new com.tencent.mm.audio.mix.c.f();
+    this.htZ = new com.tencent.mm.audio.mix.b.a.d();
     AppMethodBeat.o(136888);
-  }
-  
-  private com.tencent.mm.al.b hN(String paramString)
-  {
-    AppMethodBeat.i(136894);
-    paramString = this.fpM.hN(paramString);
-    AppMethodBeat.o(136894);
-    return paramString;
   }
   
   private void i(com.tencent.mm.al.b paramb)
   {
     AppMethodBeat.i(136897);
-    paramb.fmC = true;
-    int i = this.fpM.hW(paramb.fmF);
-    int j = this.fpM.aeA();
-    if (!this.fpR)
+    paramb.hqN = true;
+    int i = this.htV.jx(paramb.hqQ);
+    int j = this.htV.aGx();
+    if (!this.hua)
     {
       if (i <= 2000) {
-        paramb.fmC = false;
+        paramb.hqN = false;
       }
       if ((i >= 5000) || (j > 5)) {
         break label184;
       }
     }
     label184:
-    for (paramb.fmC = false;; paramb.fmC = true)
+    for (paramb.hqN = false;; paramb.hqN = true)
     {
       if (paramb.filePath.contains("scale_intro")) {
-        paramb.fmC = false;
+        paramb.hqN = false;
       }
       if (j <= 5) {
         break;
       }
-      Object localObject = this.fpM.aeB();
-      if (((ArrayList)localObject).contains(paramb.fmF)) {
-        ((ArrayList)localObject).remove(paramb.fmF);
+      Object localObject = this.htV.aGz();
+      if (((ArrayList)localObject).contains(paramb.hqQ)) {
+        ((ArrayList)localObject).remove(paramb.hqQ);
       }
       if (((ArrayList)localObject).size() <= 2) {
         break;
@@ -79,18 +71,116 @@ public final class c
       com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioMixPlayer", "do stop paused audio size:%d", new Object[] { Integer.valueOf(((ArrayList)localObject).size()) });
       localObject = ((ArrayList)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
-        hR((String)((Iterator)localObject).next());
+        js((String)((Iterator)localObject).next());
       }
     }
-    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioMixPlayer", "playingCount:%d, duration:%d, supportMixPlay:%b", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Boolean.valueOf(paramb.fmC) });
+    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioMixPlayer", "playingCount:%d, duration:%d, supportMixPlay:%b", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Boolean.valueOf(paramb.hqN) });
     AppMethodBeat.o(136897);
   }
   
-  public final boolean S(String paramString, int paramInt)
+  private com.tencent.mm.al.b jo(String paramString)
+  {
+    AppMethodBeat.i(136894);
+    paramString = this.htV.jo(paramString);
+    AppMethodBeat.o(136894);
+    return paramString;
+  }
+  
+  public final void a(b paramb)
+  {
+    this.htV.huk = paramb;
+  }
+  
+  public final void a(g paramg)
+  {
+    this.htV.hum = paramg;
+  }
+  
+  public final void aGn()
+  {
+    AppMethodBeat.i(136889);
+    ??? = this.htW;
+    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecodeMgr", "pauseAllOnBackground");
+    Object localObject2 = ((com.tencent.mm.audio.mix.decode.a)???).hrX.iterator();
+    Object localObject4;
+    while (((Iterator)localObject2).hasNext())
+    {
+      localObject4 = (String)((Iterator)localObject2).next();
+      localObject4 = (com.tencent.mm.audio.mix.decode.b)((com.tencent.mm.audio.mix.decode.a)???).hrU.get(localObject4);
+      if ((localObject4 != null) && (!((com.tencent.mm.audio.mix.decode.b)localObject4).hsa) && (!((com.tencent.mm.audio.mix.decode.b)localObject4).aFA()))
+      {
+        localObject4 = ((com.tencent.mm.audio.mix.decode.b)localObject4).hsb;
+        if ((localObject4 != null) && (!((l)localObject4).aFF())) {
+          ((l)localObject4).aFC();
+        }
+      }
+    }
+    ??? = this.htV;
+    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioMixPlayerImpl", "pauseAllOnBackground");
+    ((d)???).huj.aFZ();
+    ((d)???).aGr();
+    ??? = this.htY;
+    ((com.tencent.mm.audio.mix.c.f)???).appId = this.appId;
+    if (com.tencent.mm.audio.mix.c.f.hrP == 0L) {
+      com.tencent.mm.audio.mix.c.f.hrP = 0L;
+    }
+    long l = System.currentTimeMillis();
+    if (l - com.tencent.mm.audio.mix.c.f.hrP <= com.tencent.mm.audio.mix.c.f.hrM.longValue()) {
+      com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioScanConvertCacheController", "startClean the last clean time is in AUDIO_MIX_NO_SCAN_TIME time");
+    }
+    for (;;)
+    {
+      localObject2 = com.tencent.mm.audio.mix.b.f.aFr();
+      synchronized (((com.tencent.mm.audio.mix.b.f)localObject2).hri)
+      {
+        localObject4 = ((com.tencent.mm.audio.mix.b.f)localObject2).hrh.iterator();
+        Object localObject5;
+        do
+        {
+          if (!((Iterator)localObject4).hasNext()) {
+            break;
+          }
+          localObject5 = (String)((Iterator)localObject4).next();
+          localObject5 = (com.tencent.mm.audio.mix.a.d)((com.tencent.mm.audio.mix.b.f)localObject2).cache.get(localObject5);
+        } while ((localObject5 == null) || (!((com.tencent.mm.audio.mix.a.d)localObject5).ckB) || (!((com.tencent.mm.audio.mix.a.d)localObject5).hqO));
+        ((com.tencent.mm.audio.mix.a.d)localObject5).aEY();
+      }
+      com.tencent.mm.audio.mix.c.f.hrP = l;
+      com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioScanConvertCacheController", "start scan audio mix convert file");
+      i.a(new f.a((com.tencent.mm.audio.mix.c.f)???, "clean audio mix convert cache"));
+    }
+    com.tencent.mm.audio.mix.b.a.aFc().aFe();
+    AppMethodBeat.o(136889);
+  }
+  
+  public final boolean aGo()
+  {
+    AppMethodBeat.i(136909);
+    boolean bool = this.htV.hue.get();
+    AppMethodBeat.o(136909);
+    return bool;
+  }
+  
+  public final void aGp()
+  {
+    AppMethodBeat.i(136913);
+    String str = this.appId;
+    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioPcmDataTrackTaskController", "recycleAllCache appId:%s", new Object[] { str });
+    com.tencent.mm.audio.mix.b.a.d.a(new com.tencent.mm.audio.mix.b.a.c(str), "AudioPcmDataTrackRecycleCacheTask");
+    this.htX.clear();
+    AppMethodBeat.o(136913);
+  }
+  
+  public final long aGq()
+  {
+    return this.htV.huj.htl;
+  }
+  
+  public final boolean ab(String paramString, int paramInt)
   {
     AppMethodBeat.i(136902);
     com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioMixPlayer", "seekTo audioId:%s, position:%d", new Object[] { paramString, Integer.valueOf(paramInt) });
-    boolean bool2 = this.fpN.R(paramString, paramInt);
+    boolean bool2 = this.htW.aa(paramString, paramInt);
     if (!bool2)
     {
       com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioMixPlayer", "seekTo fail audioId:%s", new Object[] { Integer.valueOf(paramInt) });
@@ -98,10 +188,10 @@ public final class c
       return false;
     }
     r(10, paramString);
-    long l = this.fpM.ic(paramString);
-    int i = this.fpM.ie(paramString);
+    long l = this.htV.jD(paramString);
+    int i = this.htV.jE(paramString);
     boolean bool1;
-    if (!hZ(paramString))
+    if (!jA(paramString))
     {
       com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioMixPlayer", "seekTo cache is not exist");
       bool1 = true;
@@ -113,12 +203,12 @@ public final class c
       {
         AppMethodBeat.o(136902);
         return true;
-        if (hW(paramString) <= 2000)
+        if (jx(paramString) <= 2000)
         {
           com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioMixPlayer", "seekTo duration is not support seek");
-          if (!this.fpN.hz(paramString))
+          if (!this.htW.ja(paramString))
           {
-            bool2 = this.fpN.Q(paramString, paramInt);
+            bool2 = this.htW.Z(paramString, paramInt);
             bool1 = true;
           }
         }
@@ -136,14 +226,14 @@ public final class c
             bool1 = true;
             continue;
           }
-          if (!this.fpN.hz(paramString))
+          if (!this.htW.ja(paramString))
           {
-            this.fpM.fqa.f(paramString, paramInt, false);
-            bool2 = this.fpN.Q(paramString, paramInt);
+            this.htV.huj.g(paramString, paramInt, false);
+            bool2 = this.htW.Z(paramString, paramInt);
             bool1 = true;
             continue;
           }
-          bool1 = this.fpM.fqa.f(paramString, paramInt, true);
+          bool1 = this.htV.huj.g(paramString, paramInt, true);
         }
       }
       else
@@ -155,140 +245,50 @@ public final class c
     }
   }
   
-  public final void a(b paramb)
-  {
-    this.fpM.fqb = paramb;
-  }
-  
-  public final void a(g paramg)
-  {
-    this.fpM.fqd = paramg;
-  }
-  
-  public final void aeq()
-  {
-    AppMethodBeat.i(136889);
-    ??? = this.fpN;
-    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecodeMgr", "pauseAllOnBackground");
-    Object localObject2 = ((com.tencent.mm.audio.mix.decode.a)???).fnM.iterator();
-    Object localObject4;
-    while (((Iterator)localObject2).hasNext())
-    {
-      localObject4 = (String)((Iterator)localObject2).next();
-      localObject4 = (com.tencent.mm.audio.mix.decode.b)((com.tencent.mm.audio.mix.decode.a)???).fnJ.get(localObject4);
-      if ((localObject4 != null) && (!((com.tencent.mm.audio.mix.decode.b)localObject4).fnP) && (!((com.tencent.mm.audio.mix.decode.b)localObject4).adC()))
-      {
-        localObject4 = ((com.tencent.mm.audio.mix.decode.b)localObject4).fnQ;
-        if ((localObject4 != null) && (!((l)localObject4).adH())) {
-          ((l)localObject4).adE();
-        }
-      }
-    }
-    ??? = this.fpM;
-    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioMixPlayerImpl", "pauseAllOnBackground");
-    ((d)???).fqa.aeb();
-    ((d)???).aeu();
-    ??? = this.fpP;
-    ((com.tencent.mm.audio.mix.c.f)???).appId = this.appId;
-    if (com.tencent.mm.audio.mix.c.f.fnE == 0L) {
-      com.tencent.mm.audio.mix.c.f.fnE = 0L;
-    }
-    long l = System.currentTimeMillis();
-    if (l - com.tencent.mm.audio.mix.c.f.fnE <= com.tencent.mm.audio.mix.c.f.fnB.longValue()) {
-      com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioScanConvertCacheController", "startClean the last clean time is in AUDIO_MIX_NO_SCAN_TIME time");
-    }
-    for (;;)
-    {
-      localObject2 = com.tencent.mm.audio.mix.b.f.ads();
-      synchronized (((com.tencent.mm.audio.mix.b.f)localObject2).fmX)
-      {
-        localObject4 = ((com.tencent.mm.audio.mix.b.f)localObject2).fmW.iterator();
-        Object localObject5;
-        do
-        {
-          if (!((Iterator)localObject4).hasNext()) {
-            break;
-          }
-          localObject5 = (String)((Iterator)localObject4).next();
-          localObject5 = (com.tencent.mm.audio.mix.a.d)((com.tencent.mm.audio.mix.b.f)localObject2).cache.get(localObject5);
-        } while ((localObject5 == null) || (!((com.tencent.mm.audio.mix.a.d)localObject5).awf) || (!((com.tencent.mm.audio.mix.a.d)localObject5).fmD));
-        ((com.tencent.mm.audio.mix.a.d)localObject5).acY();
-      }
-      com.tencent.mm.audio.mix.c.f.fnE = l;
-      com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioScanConvertCacheController", "start scan audio mix convert file");
-      i.a(new f.a((com.tencent.mm.audio.mix.c.f)???, "clean audio mix convert cache"));
-    }
-    com.tencent.mm.audio.mix.b.a.adc().adf();
-    AppMethodBeat.o(136889);
-  }
-  
-  public final boolean aer()
-  {
-    AppMethodBeat.i(136909);
-    boolean bool = this.fpM.fpV.get();
-    AppMethodBeat.o(136909);
-    return bool;
-  }
-  
-  public final void aes()
-  {
-    AppMethodBeat.i(136913);
-    String str = this.appId;
-    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioPcmDataTrackTaskController", "recycleAllCache appId:%s", new Object[] { str });
-    com.tencent.mm.audio.mix.b.a.d.a(new com.tencent.mm.audio.mix.b.a.c(str), "AudioPcmDataTrackRecycleCacheTask");
-    this.fpO.clear();
-    AppMethodBeat.o(136913);
-  }
-  
-  public final long aet()
-  {
-    return this.fpM.fqa.fpb;
-  }
-  
   public final void clearCache()
   {
     AppMethodBeat.i(136890);
-    this.fpN.clearCache();
-    this.fpM.clearCache();
+    this.htW.clearCache();
+    this.htV.clearCache();
     AppMethodBeat.o(136890);
   }
   
-  public final void dv(boolean paramBoolean)
+  public final void eh(boolean paramBoolean)
   {
-    AppMethodBeat.i(257522);
-    com.tencent.mm.audio.mix.decode.a locala = this.fpN;
-    Iterator localIterator = locala.fnM.iterator();
+    AppMethodBeat.i(236184);
+    com.tencent.mm.audio.mix.decode.a locala = this.htW;
+    Iterator localIterator = locala.hrX.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      ((com.tencent.mm.al.b)locala.fnK.get(str)).fmC = paramBoolean;
+      ((com.tencent.mm.al.b)locala.hrV.get(str)).hqN = paramBoolean;
     }
-    AppMethodBeat.o(257522);
+    AppMethodBeat.o(236184);
   }
   
-  public final void dw(boolean paramBoolean)
+  public final void ei(boolean paramBoolean)
   {
-    AppMethodBeat.i(257525);
+    AppMethodBeat.i(236197);
     com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioMixPlayer", "forceMixPlay:%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.fpR = paramBoolean;
-    AppMethodBeat.o(257525);
+    this.hua = paramBoolean;
+    AppMethodBeat.o(236197);
   }
   
-  public final void dx(boolean paramBoolean)
+  public final void ej(boolean paramBoolean)
   {
-    AppMethodBeat.i(257526);
-    d locald = this.fpM;
+    AppMethodBeat.i(236198);
+    d locald = this.htV;
     com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioMixPlayerImpl", "setIsOutputMixBuffer:%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    locald.fqs = paramBoolean;
-    AppMethodBeat.o(257526);
+    locald.huB = paramBoolean;
+    AppMethodBeat.o(236198);
   }
   
   public final void f(com.tencent.mm.al.b paramb)
   {
     AppMethodBeat.i(136891);
     this.appId = paramb.appId;
-    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioMixPlayer", "preparePlay:%s", new Object[] { paramb.fmF });
-    ??? = com.tencent.mm.audio.mix.b.a.adc();
+    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioMixPlayer", "preparePlay:%s", new Object[] { paramb.hqQ });
+    ??? = com.tencent.mm.audio.mix.b.a.aFc();
     Object localObject3 = this.appId;
     Object localObject1 = null;
     if ((!TextUtils.isEmpty(((com.tencent.mm.audio.mix.b.a)???).currentAppId)) && (!((String)localObject3).equals(((com.tencent.mm.audio.mix.b.a)???).currentAppId)))
@@ -303,27 +303,27 @@ public final class c
       if (localObject1 != null) {
         com.tencent.mm.audio.mix.b.a.a((com.tencent.mm.audio.mix.b.a.f)localObject1, "init cache path");
       }
-      if ((ia(paramb.filePath)) && (paramb.lzI)) {
+      if ((jB(paramb.filePath)) && (paramb.orj)) {
         i(paramb);
       }
-      localObject1 = this.fpM;
+      localObject1 = this.htV;
       com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioMixPlayerImpl", "preparePlay");
-      if ((!paramb.lzX) && (paramb.lzI)) {
-        if (((d)localObject1).fpT.get())
+      if ((!paramb.ory) && (paramb.orj)) {
+        if (((d)localObject1).huc.get())
         {
-          ((d)localObject1).aev();
-          label181:
-          ((d)localObject1).fnK.put(paramb.fmF, paramb);
+          ((d)localObject1).aGs();
+          label180:
+          ((d)localObject1).hrV.put(paramb.hqQ, paramb);
         }
       }
-      synchronized (((d)localObject1).fpY)
+      synchronized (((d)localObject1).huh)
       {
         for (;;)
         {
-          ((d)localObject1).foY.put(paramb.fmF, Boolean.FALSE);
-          ((d)localObject1).fqa.hC(paramb.fmF);
-          ((d)localObject1).fqa.aea();
-          localObject1 = this.fpN;
+          ((d)localObject1).hti.put(paramb.hqQ, Boolean.FALSE);
+          ((d)localObject1).huj.jd(paramb.hqQ);
+          ((d)localObject1).huj.aFY();
+          localObject1 = this.htW;
           com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecodeMgr", "prepareDecode");
           if (paramb == null)
           {
@@ -337,26 +337,26 @@ public final class c
             com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioCachePathMgr", "init");
             localObject1 = new a.2((com.tencent.mm.audio.mix.b.a)???, (String)localObject3);
             break;
-            if (((d)localObject1).fpT.get()) {
-              break label181;
+            if (((d)localObject1).huc.get()) {
+              break label180;
             }
             com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioMixPlayerImpl", "initThread");
-            ((d)localObject1).fpT.set(true);
-            ((d)localObject1).fpV.set(false);
-            ((d)localObject1).fpU.set(false);
-            ((d)localObject1).aev();
-            break label181;
-            if (!paramb.lzX) {
-              break label181;
+            ((d)localObject1).huc.set(true);
+            ((d)localObject1).hue.set(false);
+            ((d)localObject1).hud.set(false);
+            ((d)localObject1).aGs();
+            break label180;
+            if (!paramb.ory) {
+              break label180;
             }
-            synchronized (((d)localObject1).fpY)
+            synchronized (((d)localObject1).huh)
             {
-              if (((d)localObject1).fqg.containsKey(paramb.fmF))
+              if (((d)localObject1).hup.containsKey(paramb.hqQ))
               {
-                localObject3 = (e)((d)localObject1).fqg.get(paramb.fmF);
+                localObject3 = (e)((d)localObject1).hup.get(paramb.hqQ);
                 if (localObject3 != null) {
-                  if (((e)localObject3).f(new Integer[] { Integer.valueOf(4) })) {
-                    ((d)localObject1).fqg.remove(paramb.fmF);
+                  if (((e)localObject3).i(new Integer[] { Integer.valueOf(4) })) {
+                    ((d)localObject1).hup.remove(paramb.hqQ);
                   }
                 }
               }
@@ -365,29 +365,29 @@ public final class c
         }
       }
     }
-    if (TextUtils.isEmpty(paramb.fmF))
+    if (TextUtils.isEmpty(paramb.hqQ))
     {
       com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecodeMgr", "audioId is empty!");
       AppMethodBeat.o(136891);
       return;
     }
-    if (!((com.tencent.mm.audio.mix.decode.a)localObject1).fnM.contains(paramb.fmF))
+    if (!((com.tencent.mm.audio.mix.decode.a)localObject1).hrX.contains(paramb.hqQ))
     {
-      ((com.tencent.mm.audio.mix.decode.a)localObject1).fnM.add(paramb.fmF);
-      ((com.tencent.mm.audio.mix.decode.a)localObject1).fnK.put(paramb.fmF, paramb);
+      ((com.tencent.mm.audio.mix.decode.a)localObject1).hrX.add(paramb.hqQ);
+      ((com.tencent.mm.audio.mix.decode.a)localObject1).hrV.put(paramb.hqQ, paramb);
       bool = false;
-      com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecodeMgr", "ids:%d, id2ParamMap:%d", new Object[] { Integer.valueOf(((com.tencent.mm.audio.mix.decode.a)localObject1).fnM.size()), Integer.valueOf(((com.tencent.mm.audio.mix.decode.a)localObject1).fnK.size()) });
-      if (!paramb.lzX) {
-        break label722;
+      com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecodeMgr", "ids:%d, id2ParamMap:%d", new Object[] { Integer.valueOf(((com.tencent.mm.audio.mix.decode.a)localObject1).hrX.size()), Integer.valueOf(((com.tencent.mm.audio.mix.decode.a)localObject1).hrV.size()) });
+      if (!paramb.ory) {
+        break label720;
       }
-      bool = ((com.tencent.mm.audio.mix.decode.a)localObject1).c(paramb.fmF, bool, true);
-      ??? = ((com.tencent.mm.audio.mix.decode.a)localObject1).fmX;
+      bool = ((com.tencent.mm.audio.mix.decode.a)localObject1).c(paramb.hqQ, bool, true);
+      ??? = ((com.tencent.mm.audio.mix.decode.a)localObject1).hri;
       if (!bool) {}
     }
     try
     {
-      if (!((com.tencent.mm.audio.mix.decode.a)localObject1).fnL.contains(paramb.filePath)) {
-        ((com.tencent.mm.audio.mix.decode.a)localObject1).fnL.add(paramb.filePath);
+      if (!((com.tencent.mm.audio.mix.decode.a)localObject1).hrW.contains(paramb.filePath)) {
+        ((com.tencent.mm.audio.mix.decode.a)localObject1).hrW.add(paramb.filePath);
       }
       return;
     }
@@ -395,29 +395,29 @@ public final class c
     {
       AppMethodBeat.o(136891);
     }
-    if (((com.tencent.mm.al.b)((com.tencent.mm.audio.mix.decode.a)localObject1).fnK.get(paramb.fmF)).j(paramb)) {
+    if (((com.tencent.mm.al.b)((com.tencent.mm.audio.mix.decode.a)localObject1).hrV.get(paramb.hqQ)).j(paramb)) {
       com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecodeMgr", "is same param");
     }
     for (boolean bool = false;; bool = true)
     {
-      ((com.tencent.mm.audio.mix.decode.a)localObject1).fnK.put(paramb.fmF, paramb);
+      ((com.tencent.mm.audio.mix.decode.a)localObject1).hrV.put(paramb.hqQ, paramb);
       break;
       com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecodeMgr", "force to decode");
     }
-    label722:
-    if (paramb.lzI)
+    label720:
+    if (paramb.orj)
     {
-      ((com.tencent.mm.audio.mix.decode.a)localObject1).c(paramb.fmF, bool, false);
+      ((com.tencent.mm.audio.mix.decode.a)localObject1).c(paramb.hqQ, bool, false);
       AppMethodBeat.o(136891);
       return;
     }
-    bool = ((com.tencent.mm.audio.mix.decode.a)localObject1).c(paramb.fmF, bool, true);
-    ??? = ((com.tencent.mm.audio.mix.decode.a)localObject1).fmX;
+    bool = ((com.tencent.mm.audio.mix.decode.a)localObject1).c(paramb.hqQ, bool, true);
+    ??? = ((com.tencent.mm.audio.mix.decode.a)localObject1).hri;
     if (bool) {}
     try
     {
-      if (!((com.tencent.mm.audio.mix.decode.a)localObject1).fnL.contains(paramb.filePath)) {
-        ((com.tencent.mm.audio.mix.decode.a)localObject1).fnL.add(paramb.filePath);
+      if (!((com.tencent.mm.audio.mix.decode.a)localObject1).hrW.contains(paramb.filePath)) {
+        ((com.tencent.mm.audio.mix.decode.a)localObject1).hrW.add(paramb.filePath);
       }
       return;
     }
@@ -430,136 +430,239 @@ public final class c
   public final void g(com.tencent.mm.al.b paramb)
   {
     AppMethodBeat.i(136892);
-    this.fpM.fnK.put(paramb.fmF, paramb);
-    this.fpN.fnK.put(paramb.fmF, paramb);
+    d locald = this.htV;
+    locald.hrV.put(paramb.hqQ, paramb);
+    if ((locald.aGy() == 1) && (locald.jF(paramb.hqQ)) && (locald.jb(paramb.hqQ)))
+    {
+      locald.setVolume((float)paramb.orl, (float)paramb.orl);
+      com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioMixPlayerImpl", "setPlayParam setVolume:%f", new Object[] { Double.valueOf(paramb.orl) });
+    }
+    this.htW.hrV.put(paramb.hqQ, paramb);
     AppMethodBeat.o(136892);
   }
   
   public final void h(com.tencent.mm.al.b paramb)
   {
     AppMethodBeat.i(136893);
-    Object localObject = this.fpM;
-    if (((d)localObject).fnK.containsKey(paramb.fmF)) {
-      ((d)localObject).fnK.put(paramb.fmF, paramb);
+    Object localObject = this.htV;
+    if (((d)localObject).hrV.containsKey(paramb.hqQ))
+    {
+      ((d)localObject).hrV.put(paramb.hqQ, paramb);
+      if ((((d)localObject).aGy() == 1) && (((d)localObject).jF(paramb.hqQ)) && (((d)localObject).jb(paramb.hqQ)))
+      {
+        ((d)localObject).setVolume((float)paramb.orl, (float)paramb.orl);
+        com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioMixPlayerImpl", "update setVolume:%f", new Object[] { Double.valueOf(paramb.orl) });
+      }
     }
-    localObject = this.fpN;
-    if (((com.tencent.mm.audio.mix.decode.a)localObject).fnK.containsKey(paramb.fmF)) {
-      ((com.tencent.mm.audio.mix.decode.a)localObject).fnK.put(paramb.fmF, paramb);
+    localObject = this.htW;
+    if (((com.tencent.mm.audio.mix.decode.a)localObject).hrV.containsKey(paramb.hqQ))
+    {
+      ((com.tencent.mm.audio.mix.decode.a)localObject).hrV.put(paramb.hqQ, paramb);
+      if (!((com.tencent.mm.audio.mix.decode.a)localObject).ja(paramb.hqQ))
+      {
+        localObject = (com.tencent.mm.audio.mix.decode.b)((com.tencent.mm.audio.mix.decode.a)localObject).hrU.get(paramb.hqQ);
+        if (localObject != null)
+        {
+          localObject = ((com.tencent.mm.audio.mix.decode.b)localObject).hsb;
+          if ((localObject != null) && (!((l)localObject).aFH())) {
+            ((l)localObject).setVolume((float)paramb.orl, (float)paramb.orl);
+          }
+        }
+      }
     }
     AppMethodBeat.o(136893);
   }
   
-  public final boolean hA(String paramString)
+  public final boolean iQ(String paramString)
+  {
+    AppMethodBeat.i(136895);
+    if (this.htV.hrV.containsKey(paramString))
+    {
+      AppMethodBeat.o(136895);
+      return true;
+    }
+    AppMethodBeat.o(136895);
+    return false;
+  }
+  
+  public final boolean isPaused(String paramString)
+  {
+    AppMethodBeat.i(136907);
+    d locald = this.htV;
+    if (locald.hup.containsKey(paramString))
+    {
+      paramString = (e)locald.hup.get(paramString);
+      if (paramString != null) {
+        if (paramString.i(new Integer[] { Integer.valueOf(2) }))
+        {
+          AppMethodBeat.o(136907);
+          return true;
+        }
+      }
+    }
+    AppMethodBeat.o(136907);
+    return false;
+  }
+  
+  public final boolean jA(String paramString)
+  {
+    AppMethodBeat.i(136915);
+    paramString = jo(paramString);
+    if (paramString != null)
+    {
+      if (this.htX.containsKey(paramString.filePath))
+      {
+        bool = ((Boolean)this.htX.get(paramString.filePath)).booleanValue();
+        AppMethodBeat.o(136915);
+        return bool;
+      }
+      boolean bool = com.tencent.mm.audio.mix.b.f.aFr().iT(paramString.filePath);
+      if (bool) {
+        this.htX.put(paramString.filePath, Boolean.valueOf(bool));
+      }
+      AppMethodBeat.o(136915);
+      return bool;
+    }
+    AppMethodBeat.o(136915);
+    return false;
+  }
+  
+  public final boolean jB(String paramString)
+  {
+    AppMethodBeat.i(136916);
+    if (this.htX.containsKey(paramString))
+    {
+      bool = ((Boolean)this.htX.get(paramString)).booleanValue();
+      AppMethodBeat.o(136916);
+      return bool;
+    }
+    boolean bool = com.tencent.mm.audio.mix.b.f.aFr().iT(paramString);
+    if (bool) {
+      this.htX.put(paramString, Boolean.valueOf(bool));
+    }
+    AppMethodBeat.o(136916);
+    return bool;
+  }
+  
+  public final boolean jC(String paramString)
+  {
+    AppMethodBeat.i(236195);
+    boolean bool = this.htW.iX(paramString);
+    AppMethodBeat.o(236195);
+    return bool;
+  }
+  
+  public final boolean jb(String paramString)
   {
     AppMethodBeat.i(136903);
-    boolean bool = this.fpM.hA(paramString);
+    boolean bool = this.htV.jb(paramString);
     AppMethodBeat.o(136903);
     return bool;
   }
   
-  public final void hO(String paramString)
+  public final void jp(String paramString)
   {
     AppMethodBeat.i(136896);
-    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioMixPlayer", "play audioId:%s, audio state:%d", new Object[] { paramString, Integer.valueOf(this.fpM.ie(paramString)) });
-    i(this.fpM.hN(paramString));
-    d locald = this.fpM;
-    locald.fpV.set(false);
-    locald.fpU.set(false);
-    locald.aez();
-    locald.aev();
-    synchronized (locald.fpY)
+    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioMixPlayer", "play audioId:%s, audio state:%d", new Object[] { paramString, Integer.valueOf(this.htV.jE(paramString)) });
+    i(this.htV.jo(paramString));
+    d locald = this.htV;
+    locald.hue.set(false);
+    locald.hud.set(false);
+    locald.aGw();
+    locald.aGs();
+    synchronized (locald.huh)
     {
-      locald.foY.put(paramString, Boolean.FALSE);
-      locald.fqa.hC(paramString);
-      locald.fqe.remove(paramString);
-      locald.fqf.put(paramString, Boolean.TRUE);
-      if ((locald.fpN.hz(paramString)) && (locald.fpN.hA(paramString))) {
+      locald.hti.put(paramString, Boolean.FALSE);
+      locald.huj.jd(paramString);
+      locald.hun.remove(paramString);
+      locald.huo.put(paramString, Boolean.TRUE);
+      if ((locald.htW.ja(paramString)) && (locald.htW.jb(paramString))) {
         locald.r(0, paramString);
       }
-      this.fpN.hx(paramString);
+      this.htW.iY(paramString);
       AppMethodBeat.o(136896);
       return;
     }
   }
   
-  public final void hP(String paramString)
+  public final void jq(String paramString)
   {
     AppMethodBeat.i(136898);
-    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioMixPlayer", "resume audioId:%s, audio state:%d", new Object[] { paramString, Integer.valueOf(this.fpM.ie(paramString)) });
-    i(this.fpM.hN(paramString));
-    d locald = this.fpM;
-    locald.fpV.set(false);
-    locald.fpU.set(false);
-    locald.aez();
-    locald.aev();
-    synchronized (locald.fpY)
+    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioMixPlayer", "resume audioId:%s, audio state:%d", new Object[] { paramString, Integer.valueOf(this.htV.jE(paramString)) });
+    i(this.htV.jo(paramString));
+    d locald = this.htV;
+    locald.hue.set(false);
+    locald.hud.set(false);
+    locald.aGw();
+    locald.aGs();
+    synchronized (locald.huh)
     {
-      locald.foY.put(paramString, Boolean.FALSE);
-      locald.fqa.hC(paramString);
-      locald.fqe.remove(paramString);
-      locald.fqf.put(paramString, Boolean.TRUE);
-      if ((locald.fpN.hz(paramString)) && (locald.fpN.hA(paramString))) {
+      locald.hti.put(paramString, Boolean.FALSE);
+      locald.huj.jd(paramString);
+      locald.hun.remove(paramString);
+      locald.huo.put(paramString, Boolean.TRUE);
+      if ((locald.htW.ja(paramString)) && (locald.htW.jb(paramString))) {
         locald.r(1, paramString);
       }
-      this.fpN.hx(paramString);
+      this.htW.iY(paramString);
       AppMethodBeat.o(136898);
       return;
     }
   }
   
-  public final void hQ(String paramString)
+  public final void jr(String paramString)
   {
     AppMethodBeat.i(136899);
-    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioMixPlayer", "pause audioId:%s, audio state:%d", new Object[] { paramString, Integer.valueOf(this.fpM.ie(paramString)) });
-    Object localObject = this.fpM;
-    ((d)localObject).fqa.hD(paramString);
-    if ((((d)localObject).fpN.hz(paramString)) && (((d)localObject).fpN.hA(paramString))) {
+    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioMixPlayer", "pause audioId:%s, audio state:%d", new Object[] { paramString, Integer.valueOf(this.htV.jE(paramString)) });
+    Object localObject = this.htV;
+    ((d)localObject).huj.je(paramString);
+    if ((((d)localObject).htW.ja(paramString)) && (((d)localObject).htW.jb(paramString))) {
       ((d)localObject).r(2, paramString);
     }
-    localObject = this.fpN;
+    localObject = this.htW;
     com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecodeMgr", "pauseDecode audioId:%s", new Object[] { paramString });
-    paramString = (com.tencent.mm.audio.mix.decode.b)((com.tencent.mm.audio.mix.decode.a)localObject).fnJ.get(paramString);
+    paramString = (com.tencent.mm.audio.mix.decode.b)((com.tencent.mm.audio.mix.decode.a)localObject).hrU.get(paramString);
     if (paramString == null)
     {
       com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioDecodeMgr", "task is not exist");
       AppMethodBeat.o(136899);
       return;
     }
-    if (paramString.fnP)
+    if (paramString.hsa)
     {
       com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioDecodeMgr", "task is execute end!");
       AppMethodBeat.o(136899);
       return;
     }
-    if (paramString.adC())
+    if (paramString.aFA())
     {
       com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioDecodeMgr", "task is isDetach!");
       AppMethodBeat.o(136899);
       return;
     }
-    paramString = paramString.fnQ;
+    paramString = paramString.hsb;
     if (paramString != null) {
       paramString.pause();
     }
     AppMethodBeat.o(136899);
   }
   
-  public final void hR(String paramString)
+  public final void js(String paramString)
   {
     AppMethodBeat.i(136900);
-    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioMixPlayer", "stop audioId:%s, audio state:%d", new Object[] { paramString, Integer.valueOf(this.fpM.ie(paramString)) });
-    this.fpM.hR(paramString);
-    this.fpN.hy(paramString);
+    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioMixPlayer", "stop audioId:%s, audio state:%d", new Object[] { paramString, Integer.valueOf(this.htV.jE(paramString)) });
+    this.htV.js(paramString);
+    this.htW.iZ(paramString);
     AppMethodBeat.o(136900);
   }
   
-  public final boolean hS(String paramString)
+  public final boolean jt(String paramString)
   {
     AppMethodBeat.i(136904);
-    d locald = this.fpM;
-    if (locald.fqf.containsKey(paramString))
+    d locald = this.htV;
+    if (locald.huo.containsKey(paramString))
     {
-      boolean bool = ((Boolean)locald.fqf.get(paramString)).booleanValue();
+      boolean bool = ((Boolean)locald.huo.get(paramString)).booleanValue();
       AppMethodBeat.o(136904);
       return bool;
     }
@@ -567,15 +670,15 @@ public final class c
     return false;
   }
   
-  public final boolean hT(String paramString)
+  public final boolean ju(String paramString)
   {
     AppMethodBeat.i(136905);
-    d locald = this.fpM;
-    if (locald.fqg.containsKey(paramString))
+    d locald = this.htV;
+    if (locald.hup.containsKey(paramString))
     {
-      paramString = (e)locald.fqg.get(paramString);
+      paramString = (e)locald.hup.get(paramString);
       if (paramString != null) {
-        if (paramString.f(new Integer[] { Integer.valueOf(9) }))
+        if (paramString.i(new Integer[] { Integer.valueOf(9) }))
         {
           AppMethodBeat.o(136905);
           return true;
@@ -586,15 +689,15 @@ public final class c
     return false;
   }
   
-  public final boolean hU(String paramString)
+  public final boolean jv(String paramString)
   {
     AppMethodBeat.i(136906);
-    d locald = this.fpM;
-    if (locald.fqg.containsKey(paramString))
+    d locald = this.htV;
+    if (locald.hup.containsKey(paramString))
     {
-      paramString = (e)locald.fqg.get(paramString);
+      paramString = (e)locald.hup.get(paramString);
       if (paramString != null) {
-        if (paramString.f(new Integer[] { Integer.valueOf(7) }))
+        if (paramString.i(new Integer[] { Integer.valueOf(7) }))
         {
           AppMethodBeat.o(136906);
           return true;
@@ -605,18 +708,18 @@ public final class c
     return false;
   }
   
-  public final boolean hV(String paramString)
+  public final boolean jw(String paramString)
   {
     AppMethodBeat.i(136908);
-    d locald = this.fpM;
-    if (locald.fqg.containsKey(paramString))
+    d locald = this.htV;
+    if (locald.hup.containsKey(paramString))
     {
-      paramString = (e)locald.fqg.get(paramString);
+      paramString = (e)locald.hup.get(paramString);
       if (paramString != null)
       {
-        if (!paramString.f(new Integer[] { Integer.valueOf(3) })) {
-          if (!paramString.f(new Integer[] { Integer.valueOf(4) })) {
-            if (!paramString.f(new Integer[] { Integer.valueOf(5) })) {
+        if (!paramString.i(new Integer[] { Integer.valueOf(3) })) {
+          if (!paramString.i(new Integer[] { Integer.valueOf(4) })) {
+            if (!paramString.i(new Integer[] { Integer.valueOf(5) })) {
               break label100;
             }
           }
@@ -630,38 +733,38 @@ public final class c
     return false;
   }
   
-  public final int hW(String paramString)
+  public final int jx(String paramString)
   {
     AppMethodBeat.i(136910);
-    int i = this.fpM.hW(paramString);
+    int i = this.htV.jx(paramString);
     AppMethodBeat.o(136910);
     return i;
   }
   
-  public final com.tencent.mm.al.d hX(String paramString)
+  public final com.tencent.mm.al.d jy(String paramString)
   {
     boolean bool2 = true;
     AppMethodBeat.i(136911);
-    d locald1 = this.fpM;
+    d locald1 = this.htV;
     com.tencent.mm.al.d locald;
     int j;
     int k;
     boolean bool1;
     int i;
-    if (locald1.fqh.containsKey(paramString))
+    if (locald1.huq.containsKey(paramString))
     {
-      locald = (com.tencent.mm.al.d)locald1.fqh.get(paramString);
-      j = locald1.hW(paramString);
-      k = locald1.ic(paramString);
-      bool1 = locald1.hA(paramString);
-      if (!locald1.fnK.containsKey(paramString)) {
+      locald = (com.tencent.mm.al.d)locald1.huq.get(paramString);
+      j = locald1.jx(paramString);
+      k = locald1.jD(paramString);
+      bool1 = locald1.jb(paramString);
+      if (!locald1.hrV.containsKey(paramString)) {
         break label300;
       }
-      Object localObject = ((com.tencent.mm.al.b)locald1.fnK.get(paramString)).filePath;
+      Object localObject = ((com.tencent.mm.al.b)locald1.hrV.get(paramString)).filePath;
       if (TextUtils.isEmpty((CharSequence)localObject)) {
         break label300;
       }
-      localObject = com.tencent.mm.audio.mix.b.f.ads().hq((String)localObject);
+      localObject = com.tencent.mm.audio.mix.b.f.aFr().iR((String)localObject);
       if ((localObject == null) || (((com.tencent.mm.audio.mix.a.d)localObject).duration <= 0L)) {
         break label300;
       }
@@ -684,26 +787,26 @@ public final class c
       if (bool1)
       {
         bool1 = false;
-        locald.lzZ = bool1;
-        if ((!locald1.fqe.containsKey(paramString)) || (!((Boolean)locald1.fqe.get(paramString)).booleanValue())) {
+        locald.orA = bool1;
+        if ((!locald1.hun.containsKey(paramString)) || (!((Boolean)locald1.hun.get(paramString)).booleanValue())) {
           break label311;
         }
       }
       for (bool1 = bool2;; bool1 = false)
       {
-        locald.lAa = bool1;
-        locald.lAb = (i * j / 100);
-        if (!locald1.fnK.containsKey(paramString)) {
+        locald.orB = bool1;
+        locald.orC = (i * j / 100);
+        if (!locald1.hrV.containsKey(paramString)) {
           break label317;
         }
-        paramString = (com.tencent.mm.al.b)locald1.fnK.get(paramString);
-        locald.fod = paramString.lzH;
-        locald.fmB = paramString.fnV;
-        locald.lzT = paramString.lzT;
+        paramString = (com.tencent.mm.al.b)locald1.hrV.get(paramString);
+        locald.startTime = paramString.ori;
+        locald.hqM = paramString.hsg;
+        locald.oru = paramString.oru;
         AppMethodBeat.o(136911);
         return locald;
         locald = new com.tencent.mm.al.d();
-        locald1.fqh.put(paramString, locald);
+        locald1.huq.put(paramString, locald);
         break;
         i = 0;
         break label129;
@@ -715,7 +818,7 @@ public final class c
     }
   }
   
-  public final void hY(String paramString)
+  public final void jz(String paramString)
   {
     AppMethodBeat.i(136914);
     String str = this.appId;
@@ -724,89 +827,10 @@ public final class c
     AppMethodBeat.o(136914);
   }
   
-  public final boolean hZ(String paramString)
-  {
-    AppMethodBeat.i(136915);
-    paramString = hN(paramString);
-    if (paramString != null)
-    {
-      if (this.fpO.containsKey(paramString.filePath))
-      {
-        bool = ((Boolean)this.fpO.get(paramString.filePath)).booleanValue();
-        AppMethodBeat.o(136915);
-        return bool;
-      }
-      boolean bool = com.tencent.mm.audio.mix.b.f.ads().hs(paramString.filePath);
-      if (bool) {
-        this.fpO.put(paramString.filePath, Boolean.valueOf(bool));
-      }
-      AppMethodBeat.o(136915);
-      return bool;
-    }
-    AppMethodBeat.o(136915);
-    return false;
-  }
-  
-  public final boolean hp(String paramString)
-  {
-    AppMethodBeat.i(136895);
-    if (this.fpM.fnK.containsKey(paramString))
-    {
-      AppMethodBeat.o(136895);
-      return true;
-    }
-    AppMethodBeat.o(136895);
-    return false;
-  }
-  
-  public final boolean ia(String paramString)
-  {
-    AppMethodBeat.i(136916);
-    if (this.fpO.containsKey(paramString))
-    {
-      bool = ((Boolean)this.fpO.get(paramString)).booleanValue();
-      AppMethodBeat.o(136916);
-      return bool;
-    }
-    boolean bool = com.tencent.mm.audio.mix.b.f.ads().hs(paramString);
-    if (bool) {
-      this.fpO.put(paramString, Boolean.valueOf(bool));
-    }
-    AppMethodBeat.o(136916);
-    return bool;
-  }
-  
-  public final boolean ib(String paramString)
-  {
-    AppMethodBeat.i(257523);
-    boolean bool = this.fpN.hw(paramString);
-    AppMethodBeat.o(257523);
-    return bool;
-  }
-  
-  public final boolean isPaused(String paramString)
-  {
-    AppMethodBeat.i(136907);
-    d locald = this.fpM;
-    if (locald.fqg.containsKey(paramString))
-    {
-      paramString = (e)locald.fqg.get(paramString);
-      if (paramString != null) {
-        if (paramString.f(new Integer[] { Integer.valueOf(2) }))
-        {
-          AppMethodBeat.o(136907);
-          return true;
-        }
-      }
-    }
-    AppMethodBeat.o(136907);
-    return false;
-  }
-  
   public final void r(int paramInt, String paramString)
   {
     AppMethodBeat.i(136912);
-    this.fpM.r(paramInt, paramString);
+    this.htV.r(paramInt, paramString);
     AppMethodBeat.o(136912);
   }
   
@@ -814,21 +838,21 @@ public final class c
   {
     AppMethodBeat.i(136901);
     com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioMixPlayer", "remove audioId:%s", new Object[] { paramString });
-    d locald = this.fpM;
-    locald.fnK.remove(paramString);
-    locald.fqe.remove(paramString);
-    locald.fqf.remove(paramString);
-    synchronized (locald.fpY)
+    d locald = this.htV;
+    locald.hrV.remove(paramString);
+    locald.hun.remove(paramString);
+    locald.huo.remove(paramString);
+    synchronized (locald.huh)
     {
-      locald.fqg.remove(paramString);
-      locald.foY.remove(paramString);
-      locald.fqh.remove(paramString);
-      ??? = this.fpN;
-      if ((((com.tencent.mm.audio.mix.decode.a)???).fnJ.containsKey(paramString)) && (((com.tencent.mm.audio.mix.decode.a)???).fnM.contains(paramString))) {
-        ((com.tencent.mm.audio.mix.decode.a)???).hy(paramString);
+      locald.hup.remove(paramString);
+      locald.hti.remove(paramString);
+      locald.huq.remove(paramString);
+      ??? = this.htW;
+      if ((((com.tencent.mm.audio.mix.decode.a)???).hrU.containsKey(paramString)) && (((com.tencent.mm.audio.mix.decode.a)???).hrX.contains(paramString))) {
+        ((com.tencent.mm.audio.mix.decode.a)???).iZ(paramString);
       }
-      ((com.tencent.mm.audio.mix.decode.a)???).fnK.remove(paramString);
-      ((com.tencent.mm.audio.mix.decode.a)???).fnM.remove(paramString);
+      ((com.tencent.mm.audio.mix.decode.a)???).hrV.remove(paramString);
+      ((com.tencent.mm.audio.mix.decode.a)???).hrX.remove(paramString);
       AppMethodBeat.o(136901);
       return;
     }

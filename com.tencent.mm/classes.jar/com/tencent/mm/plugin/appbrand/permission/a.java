@@ -1,43 +1,49 @@
 package com.tencent.mm.plugin.appbrand.permission;
 
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.SparseArray;
+import android.util.SparseIntArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.f;
-import com.tencent.mm.plugin.appbrand.jsapi.e.b;
-import com.tencent.mm.plugin.appbrand.jsapi.j;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
-import com.tencent.mm.plugin.appbrand.jsapi.x.a.a;
-import com.tencent.mm.plugin.appbrand.jsapi.x.b;
-import com.tencent.mm.plugin.appbrand.report.model.i;
-import com.tencent.mm.plugin.appbrand.t;
+import com.tencent.mm.plugin.appbrand.jsapi.aa.a.a;
+import com.tencent.mm.plugin.appbrand.jsapi.aa.b;
+import com.tencent.mm.plugin.appbrand.jsapi.f.b;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.page.x;
+import com.tencent.mm.plugin.appbrand.w;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.g.b.p;
+import kotlin.ah;
+import kotlin.g.b.s;
 
 public final class a
   extends f
 {
-  private final j psu;
-  private final t qzh;
-  private final com.tencent.mm.plugin.appbrand.jsapi.x.a qzi;
+  private final com.tencent.mm.plugin.appbrand.jsapi.k sxG;
+  private final w tEc;
+  private final com.tencent.mm.plugin.appbrand.jsapi.aa.a tEd;
+  private final SparseIntArray tEe;
   
-  public a(t paramt, j paramj)
+  public a(w paramw, com.tencent.mm.plugin.appbrand.jsapi.k paramk)
   {
-    super(paramt, paramj, paramt.cCQ);
-    this.qzh = paramt;
-    this.psu = paramj;
-    this.qzi = paramt.nws;
+    super(paramw, paramk, paramw.evw);
+    AppMethodBeat.i(318744);
+    this.tEe = new SparseIntArray();
+    this.tEc = paramw;
+    this.sxG = paramk;
+    this.tEd = paramw.qvx;
+    AppMethodBeat.o(318744);
   }
   
-  private String cfY()
+  private String cGK()
   {
     AppMethodBeat.i(47987);
-    if (this.qzh.Qv()) {
+    if (this.tEc.aqJ()) {
       try
       {
-        String str = Util.nullAsNil(this.qzh.bDy().nBq);
+        String str = Util.nullAsNil(this.tEc.getInitConfig().qAF);
         AppMethodBeat.o(47987);
         return str;
       }
@@ -47,79 +53,130 @@ public final class a
         return "";
       }
     }
-    Object localObject = this.qzh.bDz();
+    Object localObject = this.tEc.ccN();
     if (localObject == null)
     {
       AppMethodBeat.o(47987);
       return null;
     }
-    localObject = ((com.tencent.mm.plugin.appbrand.page.x)localObject).getCurrentUrl();
+    localObject = ((x)localObject).getCurrentUrl();
     AppMethodBeat.o(47987);
     return localObject;
   }
   
-  public final void X(int paramInt, String paramString)
+  public final void a(p arg1, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(47989);
-    super.X(paramInt, paramString);
-    this.qzi.aq(paramInt, paramString);
-    AppMethodBeat.o(47989);
-  }
-  
-  public final void a(o paramo, String paramString1, int paramInt, String paramString2)
-  {
-    AppMethodBeat.i(47990);
-    super.a(paramo, paramString1, paramInt, paramString2);
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      if (((BuildInfo.IS_FLAVOR_RED) || (com.tencent.mm.protocal.d.RAH) || (com.tencent.mm.protocal.d.RAG)) && ("fail:internal error invalid js component".equals(paramString2)))
-      {
-        paramo = new ClassCastException(String.format("Mismatch api(%s) component", new Object[] { paramo.getName() }));
-        AppMethodBeat.o(47990);
-        throw paramo;
-      }
-      this.qzi.aq(paramInt, paramString2);
+    AppMethodBeat.i(318768);
+    Object localObject1 = (b)com.tencent.mm.plugin.appbrand.jsapi.aa.a.b(this.tEd.srT, paramInt1);
+    if (localObject1 != null) {
+      ((b)localObject1).srY = paramInt2;
     }
-    AppMethodBeat.o(47990);
+    if (4 == paramInt2)
+    {
+      localObject1 = com.tencent.mm.plugin.wxpayreport.e.XIO;
+      if (com.tencent.mm.plugin.wxpayreport.e.boG(???.getName())) {
+        synchronized (this.tEe)
+        {
+          this.tEe.delete(paramInt1);
+          AppMethodBeat.o(318768);
+          return;
+        }
+      }
+    }
+    AppMethodBeat.o(318768);
   }
   
-  public final boolean a(o paramo, String paramString, int paramInt, e.b paramb)
+  public final void a(p paramp, String arg2, String paramString2, int paramInt, String paramString3)
   {
-    AppMethodBeat.i(47988);
-    ??? = this.qzi;
-    j localj = this.psu;
-    String str = cfY();
-    p.k(localj, "component");
-    p.k(paramo, "api");
-    Object localObject1;
-    if (!i.amJ(paramo.getName()))
+    AppMethodBeat.i(318774);
+    super.a(paramp, ???, paramString2, paramInt, paramString3);
+    synchronized (this.tEe)
     {
-      localObject1 = ((com.tencent.mm.plugin.appbrand.jsapi.x.a)???).pne.bUg();
+      this.tEe.delete(paramInt);
+      if (TextUtils.isEmpty(paramString3)) {
+        break label128;
+      }
+      if (((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED) || (com.tencent.mm.protocal.d.Yxl) || (com.tencent.mm.protocal.d.Yxk)) && ("fail:internal error invalid js component".equals(paramString3)))
+      {
+        paramp = new ClassCastException(String.format("Mismatch api(%s) component", new Object[] { paramp.getName() }));
+        AppMethodBeat.o(318774);
+        throw paramp;
+      }
+    }
+    this.tEd.aA(paramInt, paramString3);
+    label128:
+    AppMethodBeat.o(318774);
+  }
+  
+  public final boolean a(p paramp, String paramString1, String paramString2, int paramInt, f.b paramb)
+  {
+    AppMethodBeat.i(318764);
+    ??? = this.tEd;
+    com.tencent.mm.plugin.appbrand.jsapi.k localk = this.sxG;
+    String str = cGK();
+    s.u(localk, "component");
+    s.u(paramp, "api");
+    Object localObject1;
+    if (!com.tencent.mm.plugin.appbrand.report.model.k.afU(paramp.getName()))
+    {
+      localObject1 = ((com.tencent.mm.plugin.appbrand.jsapi.aa.a)???).srU.cut();
       long l = Util.currentTicks();
-      ((b)localObject1).png = localj;
-      ((b)localObject1).pnh = paramo;
-      ((b)localObject1).data = paramString;
+      ((b)localObject1).srW = localk;
+      ((b)localObject1).srX = paramp;
+      ((b)localObject1).data = paramString1;
       ((b)localObject1).startTime = l;
       ((b)localObject1).path = str;
+      ((b)localObject1).srY = 0;
     }
-    synchronized (((com.tencent.mm.plugin.appbrand.jsapi.x.a)???).pnd)
+    synchronized (((com.tencent.mm.plugin.appbrand.jsapi.aa.a)???).srT)
     {
       ((SparseArray)???).put(paramInt, localObject1);
-      localObject1 = kotlin.x.aazN;
-      if (s.a(this.psu, paramo, paramb))
+      localObject1 = ah.aiuX;
+      if (v.a(this.sxG, paramp, paramb))
       {
-        AppMethodBeat.o(47988);
+        AppMethodBeat.o(318764);
         return true;
       }
     }
-    boolean bool = super.a(paramo, paramString, paramInt, paramb);
-    AppMethodBeat.o(47988);
+    boolean bool = super.a(paramp, paramString1, paramString2, paramInt, paramb);
+    AppMethodBeat.o(318764);
     return bool;
+  }
+  
+  public final void af(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(47989);
+    super.af(paramInt, paramString);
+    this.tEd.aA(paramInt, paramString);
+    AppMethodBeat.o(47989);
+  }
+  
+  public final boolean da(String arg1, int paramInt)
+  {
+    AppMethodBeat.i(318779);
+    com.tencent.mm.plugin.wxpayreport.e locale = com.tencent.mm.plugin.wxpayreport.e.XIO;
+    if (com.tencent.mm.plugin.wxpayreport.e.boF(???)) {
+      synchronized (this.tEe)
+      {
+        this.tEe.put(paramInt, 1);
+        AppMethodBeat.o(318779);
+        return true;
+      }
+    }
+    AppMethodBeat.o(318779);
+    return false;
+  }
+  
+  public final void db(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(318785);
+    this.sxG.getAsyncHandler().post(new a..ExternalSyntheticLambda0(this, paramInt, paramString));
+    AppMethodBeat.o(318785);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.permission.a
  * JD-Core Version:    0.7.0.1
  */

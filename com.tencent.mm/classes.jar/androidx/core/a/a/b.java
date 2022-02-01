@@ -12,9 +12,9 @@ public abstract interface b
   
   public abstract b b(CharSequence paramCharSequence);
   
-  public abstract androidx.core.g.b bI();
-  
   public abstract b c(CharSequence paramCharSequence);
+  
+  public abstract androidx.core.g.b cB();
   
   public abstract boolean collapseActionView();
   
@@ -56,7 +56,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.core.a.a.b
  * JD-Core Version:    0.7.0.1
  */

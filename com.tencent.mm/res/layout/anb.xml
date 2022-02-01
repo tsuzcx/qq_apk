@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/hmt" android:background="@color/g_" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/d4"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hms" android:visibility="gone" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:src="@raw/icons_outlined_finder_icon" app:iconColor="@color/Orange_100" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/hmu" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d4" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d4">
+        <TextView android:textSize="15.0dip" android:textColor="#ffffffff" android:id="@id/hmv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/d8r" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/hmo" android:layout_width="@dimen/cd" android:layout_height="@dimen/cr" android:src="@raw/icons_outlined_arrow" android:layout_marginStart="@dimen/bv" app:iconColor="#ffffffff" />
+    </LinearLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/db" android:layout_height="@dimen/bv" android:layout_marginTop="@dimen/d4" android:src="@raw/finder_share_entrance_ending" app:iconColor="@color/aid" />
+</LinearLayout>

@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:id="@id/jql" android:background="@color/g_" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/nm" android:clipChildren="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/apv">
-        <LinearLayout android:orientation="vertical" android:id="@id/nq" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <TextView android:textSize="@dimen/t" android:textColor="#e6ffffff" android:gravity="center" android:id="@id/ns" android:layout_width="fill_parent" android:layout_height="@dimen/b9" android:text="@string/sb" />
-            <View android:background="#1a000000" android:layout_width="fill_parent" android:layout_height="1.0px" />
-            <LinearLayout android:orientation="vertical" android:clipChildren="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
-                <com.tencent.mm.plugin.taskbar.ui.TaskBarView android:id="@id/nt" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-            </LinearLayout>
-        </LinearLayout>
-    </FrameLayout>
-    <com.tencent.mm.plugin.taskbar.api.GyroView android:id="@id/dmt" android:layout_width="@dimen/a8w" android:layout_height="@dimen/a8v" android:layout_marginBottom="@dimen/b9" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    <com.tencent.mm.plugin.appbrand.widget.desktop.AppBrandDesktopContainerView android:id="@id/bnw" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <FrameLayout android:id="@id/nn" android:layout_width="fill_parent" android:layout_height="@dimen/apv" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+    <Button android:textSize="17.0dip" android:textColor="@color/al6" android:layout_gravity="center_horizontal" android:id="@id/jqk" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="25.0dip" android:layout_marginRight="25.0dip" />
+    <View android:id="@id/jqm" android:background="@drawable/it" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</com.tencent.mm.ui.widget.RoundedCornerFrameLayout>

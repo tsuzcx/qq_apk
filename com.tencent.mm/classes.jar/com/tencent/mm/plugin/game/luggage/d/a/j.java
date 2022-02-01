@@ -2,29 +2,31 @@ package com.tencent.mm.plugin.game.luggage.d.a;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
-import com.tencent.mm.plugin.lite.jsapi.b.a;
+import com.tencent.mm.br.c;
+import com.tencent.mm.plugin.game.luggage.b;
+import com.tencent.mm.plugin.lite.api.e;
+import com.tencent.mm.plugin.lite.api.e.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import org.json.JSONObject;
 
 public class j
-  extends com.tencent.mm.plugin.lite.jsapi.b
+  extends e
 {
   public final void a(String paramString, JSONObject paramJSONObject, boolean paramBoolean)
   {
-    AppMethodBeat.i(231630);
+    AppMethodBeat.i(277056);
     if (paramJSONObject == null)
     {
-      this.Ega.aNa("invalid_params");
-      AppMethodBeat.o(231630);
+      this.JZj.aJV("invalid_params");
+      AppMethodBeat.o(277056);
       return;
     }
     paramString = MMApplicationContext.getContext();
-    if (com.tencent.mm.plugin.game.luggage.b.gp(paramString))
+    if (b.fEl())
     {
-      this.Ega.aNa("exist_tab");
-      AppMethodBeat.o(231630);
+      this.JZj.aJV("exist_tab");
+      AppMethodBeat.o(277056);
       return;
     }
     String str = paramJSONObject.optString("tabKey");
@@ -41,11 +43,11 @@ public class j
     paramJSONObject.putExtra("game_report_sourceid", l1);
     paramJSONObject.putExtra("game_report_ssid", l2);
     c.b(paramString, "game", ".ui.GameCenterUI", paramJSONObject);
-    this.Ega.eLC();
-    AppMethodBeat.o(231630);
+    this.JZj.fTW();
+    AppMethodBeat.o(277056);
   }
   
-  public final int ewF()
+  public final int fEx()
   {
     return 1;
   }

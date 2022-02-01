@@ -10,7 +10,7 @@ import android.view.View.MeasureSpec;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import com.google.android.material.a.d;
 import com.google.android.material.a.f;
 import com.google.android.material.a.k;
@@ -19,75 +19,75 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class SnackbarContentLayout
   extends LinearLayout
 {
-  private TextView bEG;
-  private Button bEH;
-  private int bEI;
+  private TextView dxG;
+  private Button dxH;
+  private int dxI;
   private int maxWidth;
   
   public SnackbarContentLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(239387);
+    AppMethodBeat.i(209768);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.k.SnackbarLayout);
     this.maxWidth = paramContext.getDimensionPixelSize(a.k.SnackbarLayout_android_maxWidth, -1);
-    this.bEI = paramContext.getDimensionPixelSize(a.k.SnackbarLayout_maxActionInlineWidth, -1);
+    this.dxI = paramContext.getDimensionPixelSize(a.k.SnackbarLayout_maxActionInlineWidth, -1);
     paramContext.recycle();
-    AppMethodBeat.o(239387);
+    AppMethodBeat.o(209768);
   }
   
-  private static void o(View paramView, int paramInt1, int paramInt2)
+  private boolean P(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(239400);
-    if (w.ab(paramView))
-    {
-      w.g(paramView, w.L(paramView), paramInt1, w.M(paramView), paramInt2);
-      AppMethodBeat.o(239400);
-      return;
-    }
-    paramView.setPadding(paramView.getPaddingLeft(), paramInt1, paramView.getPaddingRight(), paramInt2);
-    AppMethodBeat.o(239400);
-  }
-  
-  private boolean z(int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(239398);
+    AppMethodBeat.i(209775);
     boolean bool = false;
     if (paramInt1 != getOrientation())
     {
       setOrientation(paramInt1);
       bool = true;
     }
-    if ((this.bEG.getPaddingTop() != paramInt2) || (this.bEG.getPaddingBottom() != paramInt3))
+    if ((this.dxG.getPaddingTop() != paramInt2) || (this.dxG.getPaddingBottom() != paramInt3))
     {
-      o(this.bEG, paramInt2, paramInt3);
+      o(this.dxG, paramInt2, paramInt3);
       bool = true;
     }
-    AppMethodBeat.o(239398);
+    AppMethodBeat.o(209775);
     return bool;
+  }
+  
+  private static void o(View paramView, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(209786);
+    if (z.ao(paramView))
+    {
+      z.g(paramView, z.X(paramView), paramInt1, z.Y(paramView), paramInt2);
+      AppMethodBeat.o(209786);
+      return;
+    }
+    paramView.setPadding(paramView.getPaddingLeft(), paramInt1, paramView.getPaddingRight(), paramInt2);
+    AppMethodBeat.o(209786);
   }
   
   public Button getActionView()
   {
-    return this.bEH;
+    return this.dxH;
   }
   
   public TextView getMessageView()
   {
-    return this.bEG;
+    return this.dxG;
   }
   
   protected void onFinishInflate()
   {
-    AppMethodBeat.i(239389);
+    AppMethodBeat.i(209794);
     super.onFinishInflate();
-    this.bEG = ((TextView)findViewById(a.f.snackbar_text));
-    this.bEH = ((Button)findViewById(a.f.snackbar_action));
-    AppMethodBeat.o(239389);
+    this.dxG = ((TextView)findViewById(a.f.snackbar_text));
+    this.dxH = ((Button)findViewById(a.f.snackbar_action));
+    AppMethodBeat.o(209794);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(239396);
+    AppMethodBeat.i(209823);
     super.onMeasure(paramInt1, paramInt2);
     int i = paramInt1;
     if (this.maxWidth > 0)
@@ -101,13 +101,13 @@ public class SnackbarContentLayout
     }
     int j = getResources().getDimensionPixelSize(a.d.design_snackbar_padding_vertical_2lines);
     int k = getResources().getDimensionPixelSize(a.d.design_snackbar_padding_vertical);
-    if (this.bEG.getLayout().getLineCount() > 1)
+    if (this.dxG.getLayout().getLineCount() > 1)
     {
       paramInt1 = 1;
-      if ((paramInt1 == 0) || (this.bEI <= 0) || (this.bEH.getMeasuredWidth() <= this.bEI)) {
+      if ((paramInt1 == 0) || (this.dxI <= 0) || (this.dxH.getMeasuredWidth() <= this.dxI)) {
         break label152;
       }
-      if (!z(1, j, j - k)) {
+      if (!P(1, j, j - k)) {
         break label180;
       }
       paramInt1 = 1;
@@ -117,7 +117,7 @@ public class SnackbarContentLayout
       if (paramInt1 != 0) {
         super.onMeasure(i, paramInt2);
       }
-      AppMethodBeat.o(239396);
+      AppMethodBeat.o(209823);
       return;
       paramInt1 = 0;
       break;
@@ -125,7 +125,7 @@ public class SnackbarContentLayout
       if (paramInt1 != 0) {}
       for (paramInt1 = j;; paramInt1 = k)
       {
-        if (!z(0, paramInt1, paramInt1)) {
+        if (!P(0, paramInt1, paramInt1)) {
           break label180;
         }
         paramInt1 = 1;
@@ -138,7 +138,7 @@ public class SnackbarContentLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.snackbar.SnackbarContentLayout
  * JD-Core Version:    0.7.0.1
  */

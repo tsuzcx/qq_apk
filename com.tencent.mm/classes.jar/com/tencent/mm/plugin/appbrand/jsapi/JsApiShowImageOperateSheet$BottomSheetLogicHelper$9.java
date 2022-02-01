@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.page.ah;
-import com.tencent.mm.plugin.appbrand.utils.e.a;
-import com.tencent.mm.pluginsdk.ui.tools.u;
+import com.tencent.mm.plugin.appbrand.utils.g.a;
+import com.tencent.mm.pluginsdk.ui.tools.t;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 final class JsApiShowImageOperateSheet$BottomSheetLogicHelper$9
-  implements e.a
+  implements g.a
 {
   JsApiShowImageOperateSheet$BottomSheetLogicHelper$9(JsApiShowImageOperateSheet.BottomSheetLogicHelper paramBottomSheetLogicHelper) {}
   
-  public final void dR(String paramString)
+  public final void onLoad(String paramString)
   {
     AppMethodBeat.i(45662);
     Log.i("MicroMsg.JsApiShowImageOperateSheet", "saveToSDCard localPath:%s", new Object[] { paramString });
@@ -21,7 +21,7 @@ final class JsApiShowImageOperateSheet$BottomSheetLogicHelper$9
       AppMethodBeat.o(45662);
       return;
     }
-    u.n(paramString, JsApiShowImageOperateSheet.BottomSheetLogicHelper.d(this.oxr).getContext());
+    t.o(paramString, JsApiShowImageOperateSheet.BottomSheetLogicHelper.d(this.rAQ).getContext());
     AppMethodBeat.o(45662);
   }
 }

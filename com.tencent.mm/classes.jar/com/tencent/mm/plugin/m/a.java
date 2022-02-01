@@ -4,9 +4,9 @@ public final class a
 {
   public static final class a
   {
-    public static final int anim_not_change = 2130771986;
-    public static final int push_down_out = 2130772128;
-    public static final int push_up_in = 2130772130;
+    public static final int anim_not_change = 2130771992;
+    public static final int push_down_out = 2130772140;
+    public static final int push_up_in = 2130772142;
   }
 }
 

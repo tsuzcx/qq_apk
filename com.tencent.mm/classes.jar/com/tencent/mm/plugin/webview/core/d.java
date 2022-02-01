@@ -1,13 +1,21 @@
 package com.tencent.mm.plugin.webview.core;
 
-import kotlin.l;
+import android.content.Intent;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/core/IWebViewUIConnectionBinder;", "", "onConnected", "", "conn", "Lcom/tencent/mm/plugin/webview/core/IWebViewUIConnection;", "onDisconnected", "", "webview-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/core/IWebViewUI;", "Lcom/tencent/mm/plugin/webview/core/IWebViewJsApiStub;", "currentURL", "", "getCurrentURL", "()Ljava/lang/String;", "intent", "Landroid/content/Intent;", "getIntent", "()Landroid/content/Intent;", "rawUrl", "getRawUrl", "getCachedAppId", "url", "getTransText", "", "content", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface d
+  extends c
 {
-  public abstract void a(c paramc);
+  public abstract String bjg(String paramString);
   
-  public abstract boolean gPK();
+  public abstract void bjj(String paramString);
+  
+  public abstract String dgY();
+  
+  public abstract String fqa();
+  
+  public abstract Intent getIntent();
 }
 
 

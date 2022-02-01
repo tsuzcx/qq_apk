@@ -12,27 +12,27 @@ import java.lang.ref.WeakReference;
 final class j$a
   extends AsyncTask<String, Integer, String>
 {
-  private static final String ErZ;
-  private final WeakReference<Context> ErX;
-  private final WeakReference<View> ErY;
+  private static final String KkF;
+  private final WeakReference<Context> KkD;
+  private final WeakReference<View> KkE;
   
   static
   {
-    AppMethodBeat.i(245166);
-    ErZ = "https://" + WeChatHosts.domainString(a.i.host_3gimg_qq_com) + "/tencentMapTouch/app/download/wx_android_download_ico.png";
-    AppMethodBeat.o(245166);
+    AppMethodBeat.i(264985);
+    KkF = "https://" + WeChatHosts.domainString(a.i.host_3gimg_qq_com) + "/tencentMapTouch/app/download/wx_android_download_ico.png";
+    AppMethodBeat.o(264985);
   }
   
   j$a(Context paramContext, View paramView)
   {
     AppMethodBeat.i(56163);
-    this.ErX = new WeakReference(paramContext);
-    this.ErY = new WeakReference(paramView);
+    this.KkD = new WeakReference(paramContext);
+    this.KkE = new WeakReference(paramView);
     AppMethodBeat.o(56163);
   }
   
   /* Error */
-  private static String aNv(String paramString)
+  private static String aKq(String paramString)
   {
     // Byte code:
     //   0: ldc 82
@@ -206,7 +206,7 @@ final class j$a
   protected final void onPreExecute()
   {
     AppMethodBeat.i(56164);
-    View localView = (View)this.ErY.get();
+    View localView = (View)this.KkE.get();
     if (localView != null) {
       localView.setVisibility(0);
     }

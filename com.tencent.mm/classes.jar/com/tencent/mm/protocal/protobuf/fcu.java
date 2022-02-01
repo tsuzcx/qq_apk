@@ -1,59 +1,12 @@
 package com.tencent.mm.protocal.protobuf;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-
-public final class fcu
-  extends com.tencent.mm.cd.a
+public abstract interface fcu
 {
-  public int RJS;
-  
-  public final int op(int paramInt, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(32500);
-    if (paramInt == 0)
-    {
-      ((g.a.a.c.a)paramVarArgs[0]).aY(1, this.RJS);
-      AppMethodBeat.o(32500);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = g.a.a.b.b.a.bM(1, this.RJS);
-      AppMethodBeat.o(32500);
-      return paramInt + 0;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
-      }
-      AppMethodBeat.o(32500);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      fcu localfcu = (fcu)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
-      {
-      default: 
-        AppMethodBeat.o(32500);
-        return -1;
-      }
-      localfcu.RJS = locala.abFh.AK();
-      AppMethodBeat.o(32500);
-      return 0;
-    }
-    AppMethodBeat.o(32500);
-    return -1;
-  }
+  public abstract int getRet();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.fcu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,109 +1,144 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import i.a.a.b;
 import java.util.LinkedList;
 
-public final class hl
-  extends com.tencent.mm.cd.a
+public class hl
+  extends com.tencent.mm.bx.a
 {
-  public LinkedList<hk> RMF;
-  public String desc;
-  public String title;
-  
-  public hl()
-  {
-    AppMethodBeat.i(123550);
-    this.RMF = new LinkedList();
-    AppMethodBeat.o(123550);
-  }
+  public String IGU;
+  public String YIQ;
+  public hm YIR;
+  public String crB;
+  public String hAP;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123551);
+    AppMethodBeat.i(125712);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.title != null) {
-        paramVarArgs.f(1, this.title);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.YIR == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: ArtisIcon");
+        AppMethodBeat.o(125712);
+        throw paramVarArgs;
       }
-      if (this.desc != null) {
-        paramVarArgs.f(2, this.desc);
+      if (this.IGU != null) {
+        paramVarArgs.g(1, this.IGU);
       }
-      paramVarArgs.e(3, 8, this.RMF);
-      AppMethodBeat.o(123551);
+      if (this.hAP != null) {
+        paramVarArgs.g(2, this.hAP);
+      }
+      if (this.YIQ != null) {
+        paramVarArgs.g(3, this.YIQ);
+      }
+      if (this.crB != null) {
+        paramVarArgs.g(4, this.crB);
+      }
+      if (this.YIR != null)
+      {
+        paramVarArgs.qD(5, this.YIR.computeSize());
+        this.YIR.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(125712);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.title == null) {
-        break label396;
+      if (this.IGU == null) {
+        break label572;
       }
     }
-    label396:
-    for (paramInt = g.a.a.b.b.a.g(1, this.title) + 0;; paramInt = 0)
+    label572:
+    for (int i = i.a.a.b.b.a.h(1, this.IGU) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.desc != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.desc);
+      paramInt = i;
+      if (this.hAP != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.hAP);
       }
-      paramInt = g.a.a.a.c(3, 8, this.RMF);
-      AppMethodBeat.o(123551);
-      return i + paramInt;
+      i = paramInt;
+      if (this.YIQ != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.YIQ);
+      }
+      paramInt = i;
+      if (this.crB != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.crB);
+      }
+      i = paramInt;
+      if (this.YIR != null) {
+        i = paramInt + i.a.a.a.qC(5, this.YIR.computeSize());
+      }
+      AppMethodBeat.o(125712);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.RMF.clear();
-        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(123551);
+        if (this.YIR == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: ArtisIcon");
+          AppMethodBeat.o(125712);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(125712);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         hl localhl = (hl)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(123551);
+          AppMethodBeat.o(125712);
           return -1;
         case 1: 
-          localhl.title = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(123551);
+          localhl.IGU = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(125712);
           return 0;
         case 2: 
-          localhl.desc = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(123551);
+          localhl.hAP = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(125712);
+          return 0;
+        case 3: 
+          localhl.YIQ = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(125712);
+          return 0;
+        case 4: 
+          localhl.crB = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(125712);
           return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject = (byte[])paramVarArgs.get(paramInt);
-          hk localhk = new hk();
+          hm localhm = new hm();
           if ((localObject != null) && (localObject.length > 0)) {
-            localhk.parseFrom((byte[])localObject);
+            localhm.parseFrom((byte[])localObject);
           }
-          localhl.RMF.add(localhk);
+          localhl.YIR = localhm;
           paramInt += 1;
         }
-        AppMethodBeat.o(123551);
+        AppMethodBeat.o(125712);
         return 0;
       }
-      AppMethodBeat.o(123551);
+      AppMethodBeat.o(125712);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.hl
  * JD-Core Version:    0.7.0.1
  */

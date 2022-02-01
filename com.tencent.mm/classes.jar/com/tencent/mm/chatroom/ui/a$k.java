@@ -2,11 +2,11 @@ package com.tencent.mm.chatroom.ui;
 
 public final class a$k
 {
-  public static final int jhF = 2132017237;
-  public static final int jhG = 2132017252;
-  public static final int jhH = 2132017253;
-  public static final int jhI = 2132017254;
-  public static final int jhJ = 2132017258;
+  public static final int lJV = 2132017226;
+  public static final int lJW = 2132017240;
+  public static final int lJX = 2132017241;
+  public static final int lJY = 2132017242;
+  public static final int lJZ = 2132017246;
 }
 
 

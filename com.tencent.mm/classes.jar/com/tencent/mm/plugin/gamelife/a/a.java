@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.gamelife.a;
 
-import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.au;
 
 public abstract interface a
 {
-  public abstract String Mm();
+  public abstract String amx();
   
-  public abstract as eAf();
+  public abstract au bSb();
   
-  public abstract String eAg();
+  public abstract String fIg();
   
-  public abstract int eAh();
+  public abstract int fIh();
   
   public abstract String getNickname();
   
@@ -22,7 +22,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelife.a.a
  * JD-Core Version:    0.7.0.1
  */

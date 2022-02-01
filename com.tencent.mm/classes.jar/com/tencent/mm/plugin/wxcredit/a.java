@@ -11,8 +11,8 @@ public class a
   static
   {
     AppMethodBeat.i(72241);
-    com.tencent.mm.wallet_core.a.j("WXCreditOpenProcess", e.class);
-    com.tencent.mm.wallet_core.a.j("WXCreditManagerProcess", d.class);
+    com.tencent.mm.wallet_core.a.n("WXCreditOpenProcess", e.class);
+    com.tencent.mm.wallet_core.a.n("WXCreditManagerProcess", d.class);
     AppMethodBeat.o(72241);
   }
   

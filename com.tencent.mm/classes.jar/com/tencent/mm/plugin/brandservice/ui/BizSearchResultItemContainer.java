@@ -12,38 +12,36 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.brandservice.b.m;
-import com.tencent.mm.plugin.brandservice.b.n;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
 import com.tencent.mm.plugin.brandservice.d.e;
 import com.tencent.mm.plugin.brandservice.d.f;
 import com.tencent.mm.plugin.brandservice.d.i;
-import com.tencent.mm.protocal.protobuf.ecf;
-import com.tencent.mm.protocal.protobuf.rn;
+import com.tencent.mm.plugin.brandservice.model.m;
+import com.tencent.mm.plugin.brandservice.model.n;
+import com.tencent.mm.protocal.protobuf.evw;
+import com.tencent.mm.protocal.protobuf.sy;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.util.List;
 
 public class BizSearchResultItemContainer
   extends LinearLayout
-  implements i
+  implements com.tencent.mm.am.h
 {
   private int mScene;
-  private int sxb;
-  private ListView sxp;
-  c sxq;
-  private TextView sxr;
-  c sxs;
-  private a sxt;
-  n sxu;
-  private b sxv;
-  private long[] sxw;
-  int sxx;
-  private boolean sxy;
-  private int sxz;
+  private int vCI;
+  private ListView vCW;
+  c vCX;
+  private TextView vCY;
+  c vCZ;
+  private a vDa;
+  n vDb;
+  private b vDc;
+  private long[] vDd;
+  int vDe;
+  private boolean vDf;
+  private int vDg;
   
   public BizSearchResultItemContainer(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -51,23 +49,23 @@ public class BizSearchResultItemContainer
     AppMethodBeat.i(5640);
     this.mScene = 0;
     paramContext = View.inflate(getContext(), d.f.search_result_lv, this);
-    this.sxs = new c((byte)0);
-    this.sxt = new a((byte)0);
-    this.sxr = ((TextView)paramContext.findViewById(d.e.srN));
-    this.sxp = ((ListView)paramContext.findViewById(d.e.ssP));
+    this.vCZ = new c((byte)0);
+    this.vDa = new a((byte)0);
+    this.vCY = ((TextView)paramContext.findViewById(d.e.emptyTipsTV));
+    this.vCW = ((ListView)paramContext.findViewById(d.e.resultLV));
     AppMethodBeat.o(5640);
   }
   
   private void c(String paramString, int paramInt, long paramLong)
   {
     AppMethodBeat.i(5642);
-    this.sxs.sxF = true;
-    h.aGY().a(1071, this);
+    this.vCZ.vDm = true;
+    com.tencent.mm.kernel.h.aZW().a(1071, this);
     Object localObject2 = null;
-    Object localObject1 = this.sxq.HR(this.sxw[(this.sxw.length - 1)]);
+    Object localObject1 = this.vCX.ki(this.vDd[(this.vDd.length - 1)]);
     if (localObject1 != null)
     {
-      localObject1 = ((c.a)localObject1).sxo;
+      localObject1 = ((c.a)localObject1).vCV;
       if ((localObject1 != null) && (((List)localObject1).size() != 0)) {
         break label201;
       }
@@ -80,26 +78,26 @@ public class BizSearchResultItemContainer
     }
     label201:
     label225:
-    for (localObject1 = ((rn)localObject1).Sas;; localObject1 = "")
+    for (localObject1 = ((sy)localObject1).YYr;; localObject1 = "")
     {
       Log.d("MicroMsg.BrandService.BizSearchResultItemContainer", "keyword(%s), offset(%d), businessType(%d), searchId(%s).", new Object[] { paramString, Integer.valueOf(paramInt), Long.valueOf(paramLong), localObject1 });
       paramString = new m(paramString, paramLong, paramInt, this.mScene, (String)localObject1);
-      h.aGY().a(paramString, 0);
-      this.sxt.updateStatus(1);
+      com.tencent.mm.kernel.h.aZW().a(paramString, 0);
+      this.vDa.updateStatus(1);
       AppMethodBeat.o(5642);
       return;
       localObject1 = null;
       break;
-      localObject1 = (rn)((List)localObject1).get(((List)localObject1).size() - 1);
+      localObject1 = (sy)((List)localObject1).get(((List)localObject1).size() - 1);
       break label108;
     }
   }
   
-  public final void dc(String paramString, int paramInt)
+  public final void dE(String paramString, int paramInt)
   {
     AppMethodBeat.i(5647);
-    if (this.sxq.isEmpty()) {
-      this.sxr.setVisibility(8);
+    if (this.vCX.isEmpty()) {
+      this.vCY.setVisibility(8);
     }
     if (paramString == null)
     {
@@ -107,95 +105,95 @@ public class BizSearchResultItemContainer
       return;
     }
     paramString = paramString.trim();
-    if (("".equals(paramString)) || ((paramString.equals(this.sxs.fwe)) && (!this.sxy)))
+    if (("".equals(paramString)) || ((paramString.equals(this.vCZ.hAB)) && (!this.vDf)))
     {
       AppMethodBeat.o(5647);
       return;
     }
-    if (this.sxs.sxF)
+    if (this.vCZ.vDm)
     {
       AppMethodBeat.o(5647);
       return;
     }
     reset();
-    this.sxs.sxF = true;
-    this.sxs.fwe = paramString;
-    this.sxx = paramInt;
-    if (this.sxz != 1)
+    this.vCZ.vDm = true;
+    this.vCZ.hAB = paramString;
+    this.vDe = paramInt;
+    if (this.vDg != 1)
     {
-      h.aGY().a(1070, this);
-      this.sxu = new n(this.sxs.fwe, this.sxs.swH, this.mScene);
-      h.aGY().a(this.sxu, 0);
+      com.tencent.mm.kernel.h.aZW().a(1070, this);
+      this.vDb = new n(this.vCZ.hAB, this.vCZ.vCo, this.mScene);
+      com.tencent.mm.kernel.h.aZW().a(this.vDb, 0);
     }
     for (;;)
     {
-      if (this.sxv != null) {
-        this.sxv.czA();
+      if (this.vDc != null) {
+        this.vDc.dcs();
       }
       AppMethodBeat.o(5647);
       return;
-      if (this.sxw.length == 0)
+      if (this.vDd.length == 0)
       {
         Log.i("MicroMsg.BrandService.BizSearchResultItemContainer", "business type size is 0.");
         AppMethodBeat.o(5647);
         return;
       }
-      c(paramString, paramInt, this.sxw[0]);
-      this.sxt.updateStatus(0);
+      c(paramString, paramInt, this.vDd[0]);
+      this.vDa.updateStatus(0);
     }
   }
   
   public c getAdapter()
   {
-    return this.sxq;
+    return this.vCX;
   }
   
   public b getIOnSearchStateChangedListener()
   {
-    return this.sxv;
+    return this.vDc;
   }
   
-  public final void lx(boolean paramBoolean)
+  public final void mP(boolean paramBoolean)
   {
     AppMethodBeat.i(5650);
-    this.sxq.J(paramBoolean, false);
+    this.vCX.N(paramBoolean, false);
     AppMethodBeat.o(5650);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     int i = 3;
     AppMethodBeat.i(5643);
     Log.i("MicroMsg.BrandService.BizSearchResultItemContainer", "errType (%d) , errCode (%d) , errMsg (errMsg)", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if (this.sxv != null) {
-      this.sxv.czB();
+    if (this.vDc != null) {
+      this.vDc.dct();
     }
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      this.sxs.sxF = false;
-      this.sxy = true;
+      this.vCZ.vDm = false;
+      this.vDf = true;
       Toast.makeText(getContext(), getContext().getString(d.i.fmt_search_err, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
       AppMethodBeat.o(5643);
       return;
     }
-    this.sxy = false;
-    if (paramq == null)
+    this.vDf = false;
+    if (paramp == null)
     {
       Log.e("MicroMsg.BrandService.BizSearchResultItemContainer", "scene is null.");
       AppMethodBeat.o(5643);
       return;
     }
-    if (paramq.getType() == 1070)
+    if (paramp.getType() == 1070)
     {
       Log.i("MicroMsg.BrandService.BizSearchResultItemContainer", "BizSearchHomePage.");
-      h.aGY().b(1070, this);
-      paramString = (n)paramq;
-      if (paramString.swI == null)
+      com.tencent.mm.kernel.h.aZW().b(1070, this);
+      paramString = (n)paramp;
+      if (paramString.vCp == null)
       {
         paramString = null;
-        this.sxq.m(this.sxs.fwe, paramString);
-        paramq = this.sxq.HR(this.sxw[(this.sxw.length - 1)]);
-        if ((paramq != null) && (!paramq.sxn)) {
+        this.vCX.r(this.vCZ.hAB, paramString);
+        paramp = this.vCX.ki(this.vDd[(this.vDd.length - 1)]);
+        if ((paramp != null) && (!paramp.vCU)) {
           break label399;
         }
         paramInt1 = 0;
@@ -207,12 +205,12 @@ public class BizSearchResultItemContainer
         label249:
         if ((paramString != null) && (paramString.size() > 0))
         {
-          paramString = (rn)paramString.get(paramString.size() - 1);
+          paramString = (sy)paramString.get(paramString.size() - 1);
           if (paramString != null) {
-            this.sxs.offset = (paramString.Sat + this.sxx);
+            this.vCZ.offset = (paramString.YYs + this.vDe);
           }
         }
-        if (!this.sxq.isEmpty()) {
+        if (!this.vCX.isEmpty()) {
           break label576;
         }
         new MMHandler(Looper.getMainLooper()).post(new Runnable()
@@ -234,26 +232,26 @@ public class BizSearchResultItemContainer
     }
     for (;;)
     {
-      this.sxs.continueFlag = paramInt1;
-      this.sxt.updateStatus(paramInt2);
-      this.sxs.sxF = false;
-      Log.v("MicroMsg.BrandService.BizSearchResultItemContainer", "The next load data offset is (%d).", new Object[] { Integer.valueOf(this.sxs.offset) });
+      this.vCZ.continueFlag = paramInt1;
+      this.vDa.updateStatus(paramInt2);
+      this.vCZ.vDm = false;
+      Log.v("MicroMsg.BrandService.BizSearchResultItemContainer", "The next load data offset is (%d).", new Object[] { Integer.valueOf(this.vCZ.offset) });
       AppMethodBeat.o(5643);
       return;
-      paramString = paramString.swI.UgW;
+      paramString = paramString.vCp.abyx;
       break;
       label399:
-      paramInt1 = paramq.continueFlag;
+      paramInt1 = paramp.continueFlag;
       break label242;
       label408:
       paramInt2 = 2;
       break label249;
-      if (paramq.getType() == 1071)
+      if (paramp.getType() == 1071)
       {
-        h.aGY().b(1071, this);
+        com.tencent.mm.kernel.h.aZW().b(1071, this);
         Log.i("MicroMsg.BrandService.BizSearchResultItemContainer", "BizSearchDetailPage.");
-        paramString = ((m)paramq).czv();
-        if ((paramString == null) || (paramString.COK == null)) {
+        paramString = ((m)paramp).dcn();
+        if ((paramString == null) || (paramString.IIU == null)) {
           Log.e("MicroMsg.BrandService.BizSearchResultItemContainer", "BusinessContent or itemList is null.");
         }
         if (paramString == null)
@@ -267,81 +265,81 @@ public class BizSearchResultItemContainer
         label541:
         for (paramInt2 = 3;; paramInt2 = 2)
         {
-          this.sxq.a(paramString, true);
+          this.vCX.a(paramString, true);
           if (paramString != null)
           {
-            Log.d("MicroMsg.BrandService.BizSearchResultItemContainer", "searchId : %s.", new Object[] { paramString.Sas });
-            this.sxs.offset = (paramString.Sat + this.sxx);
+            Log.d("MicroMsg.BrandService.BizSearchResultItemContainer", "searchId : %s.", new Object[] { paramString.YYr });
+            this.vCZ.offset = (paramString.YYs + this.vDe);
           }
           break;
-          paramInt1 = paramString.Saq;
+          paramInt1 = paramString.YYp;
           break label476;
         }
       }
-      Log.e("MicroMsg.BrandService.BizSearchResultItemContainer", "Error type(%d).", new Object[] { Integer.valueOf(paramq.getType()) });
+      Log.e("MicroMsg.BrandService.BizSearchResultItemContainer", "Error type(%d).", new Object[] { Integer.valueOf(paramp.getType()) });
       AppMethodBeat.o(5643);
       return;
       label576:
-      this.sxs.isSearchMode = true;
+      this.vCZ.isSearchMode = true;
     }
   }
   
   final void reset()
   {
     AppMethodBeat.i(5644);
-    this.sxq.czz();
-    this.sxt.updateStatus(0);
-    this.sxs.isSearchMode = false;
-    this.sxs.sxF = false;
-    this.sxs.offset = 0;
-    this.sxs.fwe = null;
-    this.sxs.continueFlag = 1;
+    this.vCX.dcr();
+    this.vDa.updateStatus(0);
+    this.vCZ.isSearchMode = false;
+    this.vCZ.vDm = false;
+    this.vCZ.offset = 0;
+    this.vCZ.hAB = null;
+    this.vCZ.continueFlag = 1;
     AppMethodBeat.o(5644);
   }
   
   public void setAdapter(c paramc)
   {
     AppMethodBeat.i(5641);
-    this.sxq = paramc;
-    if (this.sxq != null)
+    this.vCX = paramc;
+    if (this.vCX != null)
     {
-      this.sxq.setScene(this.mScene);
-      paramc = this.sxp;
-      a locala = this.sxt;
-      View localView = View.inflate(getContext(), d.f.ein, null);
-      locala.sxC = localView.findViewById(d.e.loading_progress);
-      locala.sxD = localView.findViewById(d.e.loading_end);
-      locala.sxE = localView.findViewById(d.e.dLy);
-      locala.sxC.setVisibility(8);
-      locala.sxD.setVisibility(8);
-      locala.sxE.setVisibility(8);
+      this.vCX.setScene(this.mScene);
+      paramc = this.vCW;
+      a locala = this.vDa;
+      View localView = View.inflate(getContext(), d.f.loading_footer, null);
+      locala.vDj = localView.findViewById(d.e.loading_progress);
+      locala.vDk = localView.findViewById(d.e.loading_end);
+      locala.vDl = localView.findViewById(d.e.loading_tip);
+      locala.vDj.setVisibility(8);
+      locala.vDk.setVisibility(8);
+      locala.vDl.setVisibility(8);
       paramc.addFooterView(localView, null, false);
-      this.sxp.setAdapter(this.sxq);
-      this.sxp.setOnScrollListener(new AbsListView.OnScrollListener()
+      this.vCW.setAdapter(this.vCX);
+      this.vCW.setOnScrollListener(new AbsListView.OnScrollListener()
       {
-        boolean sxA = false;
+        boolean vDh = false;
         
         public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
         {
           if (paramAnonymousInt1 + paramAnonymousInt2 == paramAnonymousInt3)
           {
-            this.sxA = true;
+            this.vDh = true;
             return;
           }
-          this.sxA = false;
+          this.vDh = false;
         }
         
         public final void onScrollStateChanged(AbsListView paramAnonymousAbsListView, int paramAnonymousInt)
         {
           AppMethodBeat.i(5636);
-          if ((paramAnonymousInt == 0) && (this.sxA) && (BizSearchResultItemContainer.a(BizSearchResultItemContainer.this))) {
-            BizSearchResultItemContainer.a(BizSearchResultItemContainer.this, BizSearchResultItemContainer.b(BizSearchResultItemContainer.this).fwe, BizSearchResultItemContainer.b(BizSearchResultItemContainer.this).offset, BizSearchResultItemContainer.c(BizSearchResultItemContainer.this)[(BizSearchResultItemContainer.c(BizSearchResultItemContainer.this).length - 1)]);
+          if ((paramAnonymousInt == 0) && (this.vDh) && (BizSearchResultItemContainer.a(BizSearchResultItemContainer.this))) {
+            BizSearchResultItemContainer.a(BizSearchResultItemContainer.this, BizSearchResultItemContainer.b(BizSearchResultItemContainer.this).hAB, BizSearchResultItemContainer.b(BizSearchResultItemContainer.this).offset, BizSearchResultItemContainer.c(BizSearchResultItemContainer.this)[(BizSearchResultItemContainer.c(BizSearchResultItemContainer.this).length - 1)]);
           }
           AppMethodBeat.o(5636);
         }
       });
-      this.sxp.setOnItemClickListener(this.sxq);
-      if (this.sxs.swH == 0L)
+      this.vCW.setOnItemClickListener(this.vCX);
+      if (this.vCZ.vCo == 0L)
       {
         setBusinessTypes(new long[] { 1L });
         AppMethodBeat.o(5641);
@@ -349,7 +347,7 @@ public class BizSearchResultItemContainer
     }
     else
     {
-      this.sxp.setAdapter(this.sxq);
+      this.vCW.setAdapter(this.vCX);
     }
     AppMethodBeat.o(5641);
   }
@@ -357,8 +355,8 @@ public class BizSearchResultItemContainer
   public void setAddContactScene(int paramInt)
   {
     AppMethodBeat.i(5649);
-    this.sxb = paramInt;
-    this.sxq.setAddContactScene(paramInt);
+    this.vCI = paramInt;
+    this.vCX.setAddContactScene(paramInt);
     AppMethodBeat.o(5649);
   }
   
@@ -367,43 +365,43 @@ public class BizSearchResultItemContainer
     AppMethodBeat.i(5645);
     if ((paramVarArgs != null) && (paramVarArgs.length > 0))
     {
-      this.sxw = paramVarArgs;
-      this.sxs.swH = 0L;
+      this.vDd = paramVarArgs;
+      this.vCZ.vCo = 0L;
       int i = 0;
       while (i < paramVarArgs.length)
       {
-        c localc = this.sxs;
-        localc.swH |= paramVarArgs[i];
+        c localc = this.vCZ;
+        localc.vCo |= paramVarArgs[i];
         i += 1;
       }
-      this.sxq.b(paramVarArgs);
+      this.vCX.d(paramVarArgs);
     }
     AppMethodBeat.o(5645);
   }
   
   public void setIOnSearchStateChangedListener(b paramb)
   {
-    this.sxv = paramb;
+    this.vDc = paramb;
   }
   
   public void setMode(int paramInt)
   {
-    this.sxz = paramInt;
+    this.vDg = paramInt;
   }
   
   public void setOnTouchListener(View.OnTouchListener paramOnTouchListener)
   {
     AppMethodBeat.i(5651);
     super.setOnTouchListener(paramOnTouchListener);
-    this.sxp.setOnTouchListener(paramOnTouchListener);
+    this.vCW.setOnTouchListener(paramOnTouchListener);
     AppMethodBeat.o(5651);
   }
   
   public void setReporter(c.b paramb)
   {
     AppMethodBeat.i(5646);
-    if (this.sxq != null) {
-      this.sxq.setReporter(paramb);
+    if (this.vCX != null) {
+      this.vCX.setReporter(paramb);
     }
     AppMethodBeat.o(5646);
   }
@@ -412,27 +410,27 @@ public class BizSearchResultItemContainer
   {
     AppMethodBeat.i(5648);
     this.mScene = paramInt;
-    this.sxq.setScene(this.mScene);
+    this.vCX.setScene(this.mScene);
     AppMethodBeat.o(5648);
   }
   
   static final class a
   {
-    View sxC;
-    View sxD;
-    View sxE;
+    View vDj;
+    View vDk;
+    View vDl;
     
-    private void K(boolean paramBoolean1, boolean paramBoolean2)
+    private void O(boolean paramBoolean1, boolean paramBoolean2)
     {
       int j = 0;
       AppMethodBeat.i(5639);
-      View localView = this.sxC;
+      View localView = this.vDj;
       if (paramBoolean1)
       {
         i = 0;
         localView.setVisibility(i);
-        this.sxD.setVisibility(8);
-        localView = this.sxE;
+        this.vDk.setVisibility(8);
+        localView = this.vDl;
         if (!paramBoolean2) {
           break label68;
         }
@@ -454,43 +452,43 @@ public class BizSearchResultItemContainer
       switch (paramInt)
       {
       default: 
-        K(false, false);
+        O(false, false);
         AppMethodBeat.o(5638);
         return;
       case 1: 
-        K(true, false);
+        O(true, false);
         AppMethodBeat.o(5638);
         return;
       case 2: 
-        K(false, true);
+        O(false, true);
         AppMethodBeat.o(5638);
         return;
       }
-      K(false, false);
+      O(false, false);
       AppMethodBeat.o(5638);
     }
   }
   
   public static abstract interface b
   {
-    public abstract void czA();
+    public abstract void dcs();
     
-    public abstract void czB();
+    public abstract void dct();
   }
   
   static final class c
   {
     public int continueFlag = 1;
-    public String fwe;
+    public String hAB;
     public boolean isSearchMode;
     public int offset;
-    public long swH;
-    public boolean sxF;
+    public long vCo;
+    public boolean vDm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.BizSearchResultItemContainer
  * JD-Core Version:    0.7.0.1
  */

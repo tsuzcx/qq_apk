@@ -10,38 +10,35 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.l;
 import com.tencent.mm.R.o;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.t;
-import com.tencent.mm.f.c.ax;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.autogen.b.az;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.model.c;
-import com.tencent.mm.platformtools.ac;
+import com.tencent.mm.modelavatar.AvatarStorage;
+import com.tencent.mm.modelavatar.q;
+import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.messenger.foundation.a.a.n;
-import com.tencent.mm.plugin.qmessage.a.b;
-import com.tencent.mm.plugin.qmessage.a.d;
-import com.tencent.mm.plugin.qmessage.a.e;
-import com.tencent.mm.plugin.qmessage.a.g;
+import com.tencent.mm.plugin.qmessage.model.d;
 import com.tencent.mm.pluginsdk.ui.preference.NormalUserHeaderPreference;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.platformtools.XmlParser;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.k;
 import com.tencent.mm.ui.base.preference.Preference;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 import junit.framework.Assert;
 
 public final class a
-  implements i, com.tencent.mm.pluginsdk.c.a
+  implements h, com.tencent.mm.pluginsdk.c.a
 {
-  private as contact;
+  private au contact;
   private Context context;
-  private ProgressDialog iXX;
+  private ProgressDialog lzP;
   private com.tencent.mm.ui.base.preference.f screen;
   
   public a(Context paramContext)
@@ -49,42 +46,42 @@ public final class a
     this.context = paramContext;
   }
   
-  private void cQY()
+  private void dvr()
   {
     AppMethodBeat.i(27740);
-    d locald = g.fsa().aVb(this.contact.field_username);
-    if ((locald == null) || (Util.nullAsNil(locald.getUsername()).length() <= 0))
+    com.tencent.mm.plugin.qmessage.model.c localc = com.tencent.mm.plugin.qmessage.model.f.gDI().aSj(this.contact.field_username);
+    if ((localc == null) || (Util.nullAsNil(localc.getUsername()).length() <= 0))
     {
       Log.e("MicroMsg.ContactWidgetQContact", "updateProfile : Qcontact is null");
       AppMethodBeat.o(27740);
       return;
     }
-    if (Util.nullAsNil(locald.bsH()).length() <= 0) {
+    if (Util.nullAsNil(localc.bQo()).length() <= 0) {
       Log.e("MicroMsg.ContactWidgetQContact", "updateProfile: QContact extInfo is null");
     }
-    Preference localPreference1 = this.screen.byG("contact_info_qcontact_sex");
-    Preference localPreference2 = this.screen.byG("contact_info_qcontact_age");
-    Preference localPreference3 = this.screen.byG("contact_info_qcontact_birthday");
-    Preference localPreference4 = this.screen.byG("contact_info_qcontact_address");
-    a locala = new a((byte)0);
-    locala.aVc(locald.bsH());
+    Preference localPreference1 = this.screen.bAi("contact_info_qcontact_sex");
+    Preference localPreference2 = this.screen.bAi("contact_info_qcontact_age");
+    Preference localPreference3 = this.screen.bAi("contact_info_qcontact_birthday");
+    Preference localPreference4 = this.screen.bAi("contact_info_qcontact_address");
+    a.a locala = new a.a(this, (byte)0);
+    locala.aSk(localc.bQo());
     if (localPreference1 != null) {
-      localPreference1.aF(locala.fsd());
+      localPreference1.aS(locala.gDL());
     }
     if (localPreference2 != null) {
-      localPreference2.aF(locala.fse());
+      localPreference2.aS(locala.gDM());
     }
     if (localPreference3 != null) {
-      localPreference3.aF(locala.fsg());
+      localPreference3.aS(locala.gDO());
     }
     if (localPreference4 != null) {
-      localPreference4.aF(locala.fsf());
+      localPreference4.aS(locala.gDN());
     }
     this.screen.notifyDataSetChanged();
     AppMethodBeat.o(27740);
   }
   
-  public final boolean a(final com.tencent.mm.ui.base.preference.f paramf, as paramas, boolean paramBoolean, int paramInt)
+  public final boolean a(final com.tencent.mm.ui.base.preference.f paramf, au paramau, boolean paramBoolean, int paramInt)
   {
     boolean bool = false;
     AppMethodBeat.i(27739);
@@ -92,45 +89,45 @@ public final class a
     {
       paramBoolean = true;
       Assert.assertTrue(paramBoolean);
-      if (paramas == null) {
+      if (paramau == null) {
         break label558;
       }
       paramBoolean = true;
       label25:
       Assert.assertTrue(paramBoolean);
-      Assert.assertTrue(as.bvJ(paramas.field_username));
-      bh.aGY().a(140, this);
-      this.contact = paramas;
+      Assert.assertTrue(au.bwN(paramau.field_username));
+      bh.aZW().a(140, this);
+      this.contact = paramau;
       this.screen = paramf;
-      paramf.auC(R.o.eXs);
-      paramf = (NormalUserHeaderPreference)paramf.byG("contact_info_header_normal");
+      paramf.aBe(R.o.haT);
+      paramf = (NormalUserHeaderPreference)paramf.bAi("contact_info_header_normal");
       if (paramf != null)
       {
-        paramf.RqQ = "ContactWidgetQContact";
+        paramf.Ynh = "ContactWidgetQContact";
         paramf.onDetach();
-        bh.beI();
-        c.bbL().add(paramf);
-        bh.beI();
-        c.bbM().a(paramf);
-        com.tencent.mm.am.q.bhz().d(paramf);
-        paramf.contact = paramas;
-        paramf.JpE = 0;
-        paramf.BLy = null;
-        paramf.RqA = paramf.iXq.getIntent().getBooleanExtra("Contact_IsLBSFriend", false);
-        paramf.RqJ = paramf.iXq.getIntent().getBooleanExtra("Contact_ShowFMessageList", false);
-        paramf.RqG = paramf.iXq.getIntent().getBooleanExtra("Contact_NeedShowChangeRemarkButton", false);
-        paramf.RqH = paramf.iXq.getIntent().getBooleanExtra("Contact_NeedShowChangeSnsPreButton", false);
-        paramf.RqI = paramf.iXq.getIntent().getBooleanExtra("Contact_AlwaysShowRemarkBtn", false);
-        paramf.Hbo = paramf.iXq.getIntent().getBooleanExtra("Contact_AlwaysShowSnsPreBtn", false);
-        paramf.RqK = paramf.iXq.getIntent().getStringExtra("Contact_RoomNickname");
-        if (paramas.field_deleteFlag != 1) {
+        bh.bCz();
+        com.tencent.mm.model.c.bzA().add(paramf);
+        bh.bCz();
+        com.tencent.mm.model.c.bzB().a(paramf);
+        q.bFp().d(paramf);
+        paramf.contact = paramau;
+        paramf.PCB = 0;
+        paramf.pPi = null;
+        paramf.YmR = paramf.lzt.getIntent().getBooleanExtra("Contact_IsLBSFriend", false);
+        paramf.Yna = paramf.lzt.getIntent().getBooleanExtra("Contact_ShowFMessageList", false);
+        paramf.YmX = paramf.lzt.getIntent().getBooleanExtra("Contact_NeedShowChangeRemarkButton", false);
+        paramf.YmY = paramf.lzt.getIntent().getBooleanExtra("Contact_NeedShowChangeSnsPreButton", false);
+        paramf.YmZ = paramf.lzt.getIntent().getBooleanExtra("Contact_AlwaysShowRemarkBtn", false);
+        paramf.MZv = paramf.lzt.getIntent().getBooleanExtra("Contact_AlwaysShowSnsPreBtn", false);
+        paramf.Ynb = paramf.lzt.getIntent().getStringExtra("Contact_RoomNickname");
+        if (paramau.field_deleteFlag != 1) {
           break label563;
         }
         paramBoolean = true;
         label275:
-        paramf.HaU = paramBoolean;
-        paramf.jaK = paramf.iXq.getIntent().getStringExtra("room_name");
-        if (Util.nullAsNil(paramas.field_username).length() <= 0) {
+        paramf.MZb = paramBoolean;
+        paramf.lyn = paramf.lzt.getIntent().getStringExtra("room_name");
+        if (Util.nullAsNil(paramau.field_username).length() <= 0) {
           break label568;
         }
         paramBoolean = true;
@@ -138,25 +135,25 @@ public final class a
         Assert.assertTrue("initView: contact username is null", paramBoolean);
         paramf.initView();
       }
-      cQY();
-      paramas = g.fsa().aVb(this.contact.field_username);
-      if (paramas != null)
+      dvr();
+      paramau = com.tencent.mm.plugin.qmessage.model.f.gDI().aSj(this.contact.field_username);
+      if (paramau != null)
       {
-        paramf = paramas;
-        if (Util.nullAsNil(paramas.getUsername()).length() > 0) {}
+        paramf = paramau;
+        if (Util.nullAsNil(paramau.getUsername()).length() > 0) {}
       }
       else
       {
         Log.e("MicroMsg.ContactWidgetQContact", "getProfileOrNot: QContact is null, should not in this way");
-        paramf = new d();
+        paramf = new com.tencent.mm.plugin.qmessage.model.c();
         paramf.username = this.contact.field_username;
-        paramf.cUP = -1;
-        g.fsa().a(paramf);
+        paramf.eQp = -1;
+        com.tencent.mm.plugin.qmessage.model.f.gDI().a(paramf);
       }
-      if (paramf.Hkz == 1)
+      if (paramf.Nim == 1)
       {
-        paramas = this.contact.field_username;
-        if (Util.nullAsNil(paramf.bsH()).length() > 0) {
+        paramau = this.contact.field_username;
+        if (Util.nullAsNil(paramf.bQo()).length() > 0) {
           break label573;
         }
       }
@@ -168,32 +165,32 @@ public final class a
     for (paramInt = 1;; paramInt = 0)
     {
       paramBoolean = bool;
-      if (Util.nullAsNil(paramas).length() > 0) {
+      if (Util.nullAsNil(paramau).length() > 0) {
         paramBoolean = true;
       }
       Assert.assertTrue(paramBoolean);
       paramf = new HashSet();
-      paramf.add(paramas);
-      paramf = new b(paramf);
+      paramf.add(paramau);
+      paramf = new com.tencent.mm.plugin.qmessage.model.a(paramf);
       new MMHandler().post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(27736);
-          bh.aGY().a(paramf, 0);
+          bh.aZW().a(paramf, 0);
           AppMethodBeat.o(27736);
         }
       });
       if (paramInt != 0)
       {
-        paramas = this.context;
+        paramau = this.context;
         this.context.getString(R.l.app_tip);
-        this.iXX = h.a(paramas, this.context.getString(R.l.app_loading_data), true, new DialogInterface.OnCancelListener()
+        this.lzP = k.a(paramau, this.context.getString(R.l.app_loading_data), true, new DialogInterface.OnCancelListener()
         {
           public final void onCancel(DialogInterface paramAnonymousDialogInterface)
           {
             AppMethodBeat.i(27737);
-            bh.aGY().a(paramf);
+            bh.aZW().a(paramf);
             AppMethodBeat.o(27737);
           }
         });
@@ -211,16 +208,16 @@ public final class a
     }
   }
   
-  public final boolean atw(String paramString)
+  public final boolean anl(String paramString)
   {
     return true;
   }
   
-  public final boolean cQX()
+  public final boolean dvq()
   {
     AppMethodBeat.i(27741);
-    bh.aGY().b(140, this);
-    NormalUserHeaderPreference localNormalUserHeaderPreference = (NormalUserHeaderPreference)this.screen.byG("contact_info_header_normal");
+    bh.aZW().b(140, this);
+    NormalUserHeaderPreference localNormalUserHeaderPreference = (NormalUserHeaderPreference)this.screen.bAi("contact_info_header_normal");
     if (localNormalUserHeaderPreference != null) {
       localNormalUserHeaderPreference.onDetach();
     }
@@ -230,19 +227,19 @@ public final class a
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     int i = 1;
     AppMethodBeat.i(27742);
-    if (paramq.getType() != 140)
+    if (paramp.getType() != 140)
     {
       AppMethodBeat.o(27742);
       return;
     }
-    if (this.iXX != null)
+    if (this.lzP != null)
     {
-      this.iXX.dismiss();
-      this.iXX = null;
+      this.lzP.dismiss();
+      this.lzP = null;
       switch (paramInt1)
       {
       default: 
@@ -255,12 +252,12 @@ public final class a
         }
         AppMethodBeat.o(27742);
         return;
-        if (!ac.mEX) {
+        if (!z.pBz) {
           break;
         }
         Toast.makeText(this.context, this.context.getString(R.l.fmt_http_err, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt2) }), 3000).show();
         continue;
-        if (!ac.mEX) {
+        if (!z.pBz) {
           break;
         }
         Toast.makeText(this.context, this.context.getString(R.l.fmt_iap_err, new Object[] { Integer.valueOf(2), Integer.valueOf(paramInt2) }), 3000).show();
@@ -269,7 +266,7 @@ public final class a
     label183:
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramString = g.fsa().aVb(this.contact.field_username);
+      paramString = com.tencent.mm.plugin.qmessage.model.f.gDI().aSj(this.contact.field_username);
       if ((paramString != null) && (Util.nullAsNil(paramString.getUsername()).length() > 0)) {
         break label261;
       }
@@ -277,96 +274,15 @@ public final class a
     }
     for (;;)
     {
-      cQY();
+      dvr();
       AppMethodBeat.o(27742);
       return;
       label261:
-      paramString.cUP = 8;
-      paramString.Hkz = 0;
-      if (!g.fsa().a(this.contact.field_username, paramString)) {
+      paramString.eQp = 8;
+      paramString.Nim = 0;
+      if (!com.tencent.mm.plugin.qmessage.model.f.gDI().a(this.contact.field_username, paramString)) {
         Log.e("MicroMsg.ContactWidgetQContact", "resetUpdateStatus: update Qcontact failed, username = " + this.contact.field_username);
       }
-    }
-  }
-  
-  public final class a
-  {
-    private String HkM = "";
-    private String HkN = "";
-    private String HkO = "";
-    private String city = "";
-    private String country = "";
-    private String lLg = "";
-    private String province = "";
-    
-    private a() {}
-    
-    public final void aVc(String paramString)
-    {
-      AppMethodBeat.i(27738);
-      if (Util.nullAsNil(paramString).length() <= 0)
-      {
-        Log.e("MicroMsg.ContactWidgetQContact", "QExtInfoContent : parse xml, but xml is null");
-        AppMethodBeat.o(27738);
-        return;
-      }
-      paramString = XmlParser.parseXml(paramString, "extinfo", null);
-      if (paramString != null)
-      {
-        this.HkM = ((String)paramString.get(".extinfo.sex"));
-        this.HkN = ((String)paramString.get(".extinfo.age"));
-        this.HkO = ((String)paramString.get(".extinfo.bd"));
-        this.country = ((String)paramString.get(".extinfo.country"));
-        this.province = ((String)paramString.get(".extinfo.province"));
-        this.city = ((String)paramString.get(".extinfo.city"));
-      }
-      if ((this.HkM != null) && (this.HkM.equals("1"))) {}
-      for (this.HkM = a.a(a.this).getString(R.l.sex_male);; this.HkM = a.a(a.this).getString(R.l.sex_female))
-      {
-        if (this.country != null) {
-          this.lLg = (this.lLg + this.country + " ");
-        }
-        if (this.province != null) {
-          this.lLg = (this.lLg + this.province + " ");
-        }
-        if (this.city != null) {
-          this.lLg += this.city;
-        }
-        AppMethodBeat.o(27738);
-        return;
-      }
-    }
-    
-    public final String fsd()
-    {
-      if (this.HkM == null) {
-        return "";
-      }
-      return this.HkM;
-    }
-    
-    public final String fse()
-    {
-      if (this.HkN == null) {
-        return "";
-      }
-      return this.HkN;
-    }
-    
-    public final String fsf()
-    {
-      if (this.lLg == null) {
-        return "";
-      }
-      return this.lLg;
-    }
-    
-    public final String fsg()
-    {
-      if (this.HkO == null) {
-        return "";
-      }
-      return this.HkO;
     }
   }
 }

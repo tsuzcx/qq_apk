@@ -1,143 +1,226 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.b.a.b;
-import com.google.b.a.e;
-import com.google.b.a.g;
+import com.google.d.a.b;
+import com.google.d.a.e;
+import com.google.d.a.g;
 import java.util.Arrays;
 
 public final class a$ay
   extends e
 {
-  public byte[] ZhA = g.ccX;
-  public int ZhB = 0;
-  public byte[] ZhC = g.ccX;
-  public byte[] ZhD = g.ccX;
-  public byte[] ZhE = g.ccX;
-  public int ZhF = 0;
-  public a.p[] ZhG = a.p.ikM();
-  public byte[] Zhm = g.ccX;
-  public long Zhn = 0L;
-  public byte[] Zho = g.ccX;
-  public byte[] Zhp = g.ccX;
-  public byte[] Zhq = g.ccX;
-  public a.bc Zhr = null;
-  public byte[] Zhs = g.ccX;
-  public a.au Zht = null;
-  public String Zhu = "";
-  public String Zhv = "";
-  public long Zhw = 0L;
-  public byte[] Zhx = g.ccX;
-  public byte[] Zhy = g.ccX;
-  public byte[] Zhz = g.ccX;
-  public int fEi = 0;
+  public byte[] ahfN = g.dXB;
+  public long ahfO = 0L;
+  public byte[] ahfP = g.dXB;
+  public byte[] ahfQ = g.dXB;
+  public byte[] ahfR = g.dXB;
+  public a.bc ahfS = null;
+  public byte[] ahfT = g.dXB;
+  public a.au ahfU = null;
+  public String ahfV = "";
+  public String ahfW = "";
+  public long ahfX = 0L;
+  public byte[] ahfY = g.dXB;
+  public byte[] ahfZ = g.dXB;
+  public byte[] ahga = g.dXB;
+  public byte[] ahgb = g.dXB;
+  public int ahgc = 0;
+  public byte[] ahgd = g.dXB;
+  public byte[] ahge = g.dXB;
+  public byte[] ahgf = g.dXB;
+  public int ahgg = 0;
+  public a.p[] ahgh = a.p.jRd();
+  public int hIY = 0;
   public String name = "";
   
   public a$ay()
   {
-    this.ccR = -1;
+    this.dXv = -1;
   }
   
-  public final int JG()
+  public final void a(b paramb)
   {
-    int j = super.JG();
+    if (!this.name.equals("")) {
+      paramb.g(1, this.name);
+    }
+    if (!Arrays.equals(this.ahfN, g.dXB)) {
+      paramb.b(2, this.ahfN);
+    }
+    if (this.hIY != 0) {
+      paramb.cF(3, this.hIY);
+    }
+    if (this.ahfO != 0L) {
+      paramb.n(4, this.ahfO);
+    }
+    if (!Arrays.equals(this.ahfP, g.dXB)) {
+      paramb.b(5, this.ahfP);
+    }
+    if (!Arrays.equals(this.ahfQ, g.dXB)) {
+      paramb.b(6, this.ahfQ);
+    }
+    if (!Arrays.equals(this.ahfR, g.dXB)) {
+      paramb.b(7, this.ahfR);
+    }
+    if (this.ahfS != null) {
+      paramb.a(8, this.ahfS);
+    }
+    if (!Arrays.equals(this.ahfT, g.dXB)) {
+      paramb.b(9, this.ahfT);
+    }
+    if (this.ahfU != null) {
+      paramb.a(10, this.ahfU);
+    }
+    if (!this.ahfV.equals("")) {
+      paramb.g(100, this.ahfV);
+    }
+    if (!this.ahfW.equals("")) {
+      paramb.g(101, this.ahfW);
+    }
+    if (this.ahfX != 0L) {
+      paramb.n(200, this.ahfX);
+    }
+    if (!Arrays.equals(this.ahfY, g.dXB)) {
+      paramb.b(201, this.ahfY);
+    }
+    if (!Arrays.equals(this.ahfZ, g.dXB)) {
+      paramb.b(202, this.ahfZ);
+    }
+    if (!Arrays.equals(this.ahga, g.dXB)) {
+      paramb.b(203, this.ahga);
+    }
+    if (!Arrays.equals(this.ahgb, g.dXB)) {
+      paramb.b(204, this.ahgb);
+    }
+    if (this.ahgc != 0) {
+      paramb.cF(220, this.ahgc);
+    }
+    if (!Arrays.equals(this.ahgd, g.dXB)) {
+      paramb.b(221, this.ahgd);
+    }
+    if (!Arrays.equals(this.ahge, g.dXB)) {
+      paramb.b(222, this.ahge);
+    }
+    if (!Arrays.equals(this.ahgf, g.dXB)) {
+      paramb.b(223, this.ahgf);
+    }
+    if (this.ahgg != 0) {
+      paramb.cG(224, this.ahgg);
+    }
+    if ((this.ahgh != null) && (this.ahgh.length > 0))
+    {
+      int i = 0;
+      while (i < this.ahgh.length)
+      {
+        a.p localp = this.ahgh[i];
+        if (localp != null) {
+          paramb.a(225, localp);
+        }
+        i += 1;
+      }
+    }
+    super.a(paramb);
+  }
+  
+  public final int akc()
+  {
+    int j = super.akc();
     int i = j;
     if (!this.name.equals("")) {
-      i = j + b.g(1, this.name);
+      i = j + b.h(1, this.name);
     }
     j = i;
-    if (!Arrays.equals(this.Zhm, g.ccX)) {
-      j = i + b.c(2, this.Zhm);
+    if (!Arrays.equals(this.ahfN, g.dXB)) {
+      j = i + b.c(2, this.ahfN);
     }
     i = j;
-    if (this.fEi != 0) {
-      i = j + b.bM(3, this.fEi);
+    if (this.hIY != 0) {
+      i = j + b.cJ(3, this.hIY);
     }
     j = i;
-    if (this.Zhn != 0L) {
-      j = i + b.q(4, this.Zhn);
+    if (this.ahfO != 0L) {
+      j = i + b.r(4, this.ahfO);
     }
     i = j;
-    if (!Arrays.equals(this.Zho, g.ccX)) {
-      i = j + b.c(5, this.Zho);
+    if (!Arrays.equals(this.ahfP, g.dXB)) {
+      i = j + b.c(5, this.ahfP);
     }
     j = i;
-    if (!Arrays.equals(this.Zhp, g.ccX)) {
-      j = i + b.c(6, this.Zhp);
+    if (!Arrays.equals(this.ahfQ, g.dXB)) {
+      j = i + b.c(6, this.ahfQ);
     }
     i = j;
-    if (!Arrays.equals(this.Zhq, g.ccX)) {
-      i = j + b.c(7, this.Zhq);
+    if (!Arrays.equals(this.ahfR, g.dXB)) {
+      i = j + b.c(7, this.ahfR);
     }
     j = i;
-    if (this.Zhr != null) {
-      j = i + b.b(8, this.Zhr);
+    if (this.ahfS != null) {
+      j = i + b.b(8, this.ahfS);
     }
     i = j;
-    if (!Arrays.equals(this.Zhs, g.ccX)) {
-      i = j + b.c(9, this.Zhs);
+    if (!Arrays.equals(this.ahfT, g.dXB)) {
+      i = j + b.c(9, this.ahfT);
     }
     j = i;
-    if (this.Zht != null) {
-      j = i + b.b(10, this.Zht);
+    if (this.ahfU != null) {
+      j = i + b.b(10, this.ahfU);
     }
     i = j;
-    if (!this.Zhu.equals("")) {
-      i = j + b.g(100, this.Zhu);
+    if (!this.ahfV.equals("")) {
+      i = j + b.h(100, this.ahfV);
     }
     j = i;
-    if (!this.Zhv.equals("")) {
-      j = i + b.g(101, this.Zhv);
+    if (!this.ahfW.equals("")) {
+      j = i + b.h(101, this.ahfW);
     }
     i = j;
-    if (this.Zhw != 0L) {
-      i = j + b.q(200, this.Zhw);
+    if (this.ahfX != 0L) {
+      i = j + b.r(200, this.ahfX);
     }
     j = i;
-    if (!Arrays.equals(this.Zhx, g.ccX)) {
-      j = i + b.c(201, this.Zhx);
+    if (!Arrays.equals(this.ahfY, g.dXB)) {
+      j = i + b.c(201, this.ahfY);
     }
     i = j;
-    if (!Arrays.equals(this.Zhy, g.ccX)) {
-      i = j + b.c(202, this.Zhy);
+    if (!Arrays.equals(this.ahfZ, g.dXB)) {
+      i = j + b.c(202, this.ahfZ);
     }
     j = i;
-    if (!Arrays.equals(this.Zhz, g.ccX)) {
-      j = i + b.c(203, this.Zhz);
+    if (!Arrays.equals(this.ahga, g.dXB)) {
+      j = i + b.c(203, this.ahga);
     }
     i = j;
-    if (!Arrays.equals(this.ZhA, g.ccX)) {
-      i = j + b.c(204, this.ZhA);
+    if (!Arrays.equals(this.ahgb, g.dXB)) {
+      i = j + b.c(204, this.ahgb);
     }
     j = i;
-    if (this.ZhB != 0) {
-      j = i + b.bM(220, this.ZhB);
+    if (this.ahgc != 0) {
+      j = i + b.cJ(220, this.ahgc);
     }
     i = j;
-    if (!Arrays.equals(this.ZhC, g.ccX)) {
-      i = j + b.c(221, this.ZhC);
+    if (!Arrays.equals(this.ahgd, g.dXB)) {
+      i = j + b.c(221, this.ahgd);
     }
     j = i;
-    if (!Arrays.equals(this.ZhD, g.ccX)) {
-      j = i + b.c(222, this.ZhD);
+    if (!Arrays.equals(this.ahge, g.dXB)) {
+      j = i + b.c(222, this.ahge);
     }
     int k = j;
-    if (!Arrays.equals(this.ZhE, g.ccX)) {
-      k = j + b.c(223, this.ZhE);
+    if (!Arrays.equals(this.ahgf, g.dXB)) {
+      k = j + b.c(223, this.ahgf);
     }
     i = k;
-    if (this.ZhF != 0) {
-      i = k + b.bN(224, this.ZhF);
+    if (this.ahgg != 0) {
+      i = k + b.cK(224, this.ahgg);
     }
     j = i;
-    if (this.ZhG != null)
+    if (this.ahgh != null)
     {
       j = i;
-      if (this.ZhG.length > 0)
+      if (this.ahgh.length > 0)
       {
         j = 0;
-        while (j < this.ZhG.length)
+        while (j < this.ahgh.length)
         {
-          a.p localp = this.ZhG[j];
+          a.p localp = this.ahgh[j];
           k = i;
           if (localp != null) {
             k = i + b.b(225, localp);
@@ -150,93 +233,10 @@ public final class a$ay
     }
     return j;
   }
-  
-  public final void a(b paramb)
-  {
-    if (!this.name.equals("")) {
-      paramb.f(1, this.name);
-    }
-    if (!Arrays.equals(this.Zhm, g.ccX)) {
-      paramb.b(2, this.Zhm);
-    }
-    if (this.fEi != 0) {
-      paramb.bJ(3, this.fEi);
-    }
-    if (this.Zhn != 0L) {
-      paramb.n(4, this.Zhn);
-    }
-    if (!Arrays.equals(this.Zho, g.ccX)) {
-      paramb.b(5, this.Zho);
-    }
-    if (!Arrays.equals(this.Zhp, g.ccX)) {
-      paramb.b(6, this.Zhp);
-    }
-    if (!Arrays.equals(this.Zhq, g.ccX)) {
-      paramb.b(7, this.Zhq);
-    }
-    if (this.Zhr != null) {
-      paramb.a(8, this.Zhr);
-    }
-    if (!Arrays.equals(this.Zhs, g.ccX)) {
-      paramb.b(9, this.Zhs);
-    }
-    if (this.Zht != null) {
-      paramb.a(10, this.Zht);
-    }
-    if (!this.Zhu.equals("")) {
-      paramb.f(100, this.Zhu);
-    }
-    if (!this.Zhv.equals("")) {
-      paramb.f(101, this.Zhv);
-    }
-    if (this.Zhw != 0L) {
-      paramb.n(200, this.Zhw);
-    }
-    if (!Arrays.equals(this.Zhx, g.ccX)) {
-      paramb.b(201, this.Zhx);
-    }
-    if (!Arrays.equals(this.Zhy, g.ccX)) {
-      paramb.b(202, this.Zhy);
-    }
-    if (!Arrays.equals(this.Zhz, g.ccX)) {
-      paramb.b(203, this.Zhz);
-    }
-    if (!Arrays.equals(this.ZhA, g.ccX)) {
-      paramb.b(204, this.ZhA);
-    }
-    if (this.ZhB != 0) {
-      paramb.bJ(220, this.ZhB);
-    }
-    if (!Arrays.equals(this.ZhC, g.ccX)) {
-      paramb.b(221, this.ZhC);
-    }
-    if (!Arrays.equals(this.ZhD, g.ccX)) {
-      paramb.b(222, this.ZhD);
-    }
-    if (!Arrays.equals(this.ZhE, g.ccX)) {
-      paramb.b(223, this.ZhE);
-    }
-    if (this.ZhF != 0) {
-      paramb.bK(224, this.ZhF);
-    }
-    if ((this.ZhG != null) && (this.ZhG.length > 0))
-    {
-      int i = 0;
-      while (i < this.ZhG.length)
-      {
-        a.p localp = this.ZhG[i];
-        if (localp != null) {
-          paramb.a(225, localp);
-        }
-        i += 1;
-      }
-    }
-    super.a(paramb);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.ay
  * JD-Core Version:    0.7.0.1
  */

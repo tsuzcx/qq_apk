@@ -1,41 +1,49 @@
 package com.tencent.mm.plugin.game.chatroom;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.chatroom.h.a;
-import com.tencent.mm.plugin.game.chatroom.h.b;
-import com.tencent.mm.plugin.game.chatroom.h.c;
-import com.tencent.mm.plugin.game.chatroom.h.e;
-import com.tencent.mm.plugin.game.chatroom.h.f;
-import com.tencent.mm.plugin.game.chatroom.h.g;
+import com.tencent.mm.plugin.game.chatroom.i.a;
+import com.tencent.mm.plugin.game.chatroom.i.b;
+import com.tencent.mm.plugin.game.chatroom.i.c;
+import com.tencent.mm.plugin.game.chatroom.i.e;
+import com.tencent.mm.plugin.game.chatroom.i.f;
+import com.tencent.mm.plugin.game.chatroom.i.g;
+import com.tencent.mm.plugin.game.chatroom.i.h;
+import com.tencent.mm.plugin.game.chatroom.i.i;
+import com.tencent.mm.plugin.game.chatroom.i.j;
+import com.tencent.mm.plugin.game.chatroom.i.k;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 public final class d
 {
-  private static Map<Integer, Class<? extends g>> CrR;
+  private static Map<Integer, Class<? extends k>> Ieh;
   
   static
   {
-    AppMethodBeat.i(211113);
-    CrR = new LinkedHashMap();
-    a(0, f.class);
-    a(10000, com.tencent.mm.plugin.game.chatroom.h.d.class);
-    a(10001, a.class);
-    a(10002, e.class);
-    a(10003, c.class);
-    a(10004, b.class);
-    AppMethodBeat.o(211113);
+    AppMethodBeat.i(275639);
+    Ieh = new LinkedHashMap();
+    b(0, j.class);
+    b(10000, h.class);
+    b(10001, a.class);
+    b(10002, i.class);
+    b(10003, g.class);
+    b(10004, e.class);
+    b(10005, b.class);
+    b(10006, com.tencent.mm.plugin.game.chatroom.i.d.class);
+    b(10007, f.class);
+    b(10008, c.class);
+    AppMethodBeat.o(275639);
   }
   
-  public static Class<? extends g> Tp(int paramInt)
+  public static Class<? extends k> Xa(int paramInt)
   {
-    AppMethodBeat.i(211109);
-    Class localClass = (Class)CrR.get(Integer.valueOf(paramInt));
-    AppMethodBeat.o(211109);
+    AppMethodBeat.i(275616);
+    Class localClass = (Class)Ieh.get(Integer.valueOf(paramInt));
+    AppMethodBeat.o(275616);
     return localClass;
   }
   
-  public static int Tq(int paramInt)
+  public static int Xb(int paramInt)
   {
     switch (paramInt)
     {
@@ -43,6 +51,10 @@ public final class d
     case 10000: 
     case 10001: 
     case 10002: 
+    case 10005: 
+    case 10006: 
+    case 10007: 
+    case 10008: 
     default: 
       return 1;
     case 10003: 
@@ -51,19 +63,22 @@ public final class d
     return 3;
   }
   
-  private static void a(int paramInt, Class<? extends g> paramClass)
+  private static void b(int paramInt, Class<? extends k> paramClass)
   {
-    AppMethodBeat.i(211112);
-    if (!CrR.containsKey(Integer.valueOf(paramInt))) {
-      CrR.put(Integer.valueOf(paramInt), paramClass);
+    AppMethodBeat.i(275633);
+    if (!Ieh.containsKey(Integer.valueOf(paramInt))) {
+      Ieh.put(Integer.valueOf(paramInt), paramClass);
     }
-    AppMethodBeat.o(211112);
+    AppMethodBeat.o(275633);
   }
   
-  public static int hC(int paramInt1, int paramInt2)
+  public static int jc(int paramInt1, int paramInt2)
   {
     if (paramInt1 == 1) {
       return 10000;
+    }
+    if (paramInt1 == 47) {
+      return 10005;
     }
     if (paramInt1 == 32) {}
     switch (paramInt2)
@@ -76,13 +91,19 @@ public final class d
       return 10002;
     case 3: 
       return 10003;
+    case 4: 
+      return 10004;
+    case 5: 
+      return 10006;
+    case 6: 
+      return 10007;
     }
-    return 10004;
+    return 10008;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.chatroom.d
  * JD-Core Version:    0.7.0.1
  */

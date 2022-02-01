@@ -7,54 +7,57 @@ import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.hld.a.b;
 import com.tencent.mm.plugin.hld.keyboard.selfdraw.KeyboardView;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/drawmethod/FloatDrawer;", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/drawmethod/DrawMethod;", "keyboard", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardView;", "(Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardView;)V", "attr", "", "getAttr", "()[I", "floatTextPaint", "Landroid/graphics/Paint;", "mainTextPaint", "drawButton", "", "canvas", "Landroid/graphics/Canvas;", "button", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/ImeButton;", "getType", "", "setStyle", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/drawmethod/FloatDrawer;", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/drawmethod/DrawMethod;", "keyboard", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardView;", "(Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardView;)V", "attr", "", "getAttr", "()[I", "floatTextPaint", "Landroid/graphics/Paint;", "mainTextPaint", "drawButton", "", "canvas", "Landroid/graphics/Canvas;", "button", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/ImeButton;", "getType", "", "setStyle", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
   extends b
 {
-  private final Paint DBc;
-  private final Paint DBd;
-  private final int[] DBe;
+  private final Paint Jub;
+  private final Paint Juc;
+  private final int[] Jud;
   
   public d(KeyboardView paramKeyboardView)
   {
     super(paramKeyboardView);
-    AppMethodBeat.i(214378);
+    AppMethodBeat.i(313052);
     paramKeyboardView = new Paint();
     paramKeyboardView.setTextAlign(Paint.Align.CENTER);
     paramKeyboardView.setAntiAlias(true);
-    this.DBc = paramKeyboardView;
+    ah localah = ah.aiuX;
+    this.Jub = paramKeyboardView;
     paramKeyboardView = new Paint();
     paramKeyboardView.setTextAlign(Paint.Align.CENTER);
     paramKeyboardView.setAntiAlias(true);
-    this.DBd = paramKeyboardView;
-    this.DBe = new int[] { a.b.textSize, a.b.textColor };
-    AppMethodBeat.o(214378);
+    localah = ah.aiuX;
+    this.Juc = paramKeyboardView;
+    this.Jud = new int[] { a.b.textSize, a.b.textColor };
+    AppMethodBeat.o(313052);
   }
   
   public final void a(Canvas paramCanvas, com.tencent.mm.plugin.hld.keyboard.selfdraw.b paramb)
   {
-    AppMethodBeat.i(214377);
-    p.k(paramCanvas, "canvas");
-    p.k(paramb, "button");
+    AppMethodBeat.i(313066);
+    s.u(paramCanvas, "canvas");
+    s.u(paramb, "button");
     b(paramCanvas, paramb);
-    Paint localPaint = this.DBc;
-    localPaint.setTextSize(paramb.DzE);
-    localPaint.setColor(paramb.DzF);
-    localPaint = this.DBd;
-    localPaint.setTextSize(paramb.DzG);
-    localPaint.setColor(paramb.DzH);
-    float f1 = paramb.DzD.centerX();
-    float f2 = paramb.DzD.centerY();
-    float f3 = this.DBc.getTextSize() / 3.0F;
-    paramCanvas.drawText(paramb.mainText, f1, f2 + f3, this.DBc);
-    f1 = paramb.DzD.centerX();
-    f2 = paramb.DzD.top;
-    f3 = this.DBd.getTextSize();
-    paramCanvas.drawText(paramb.floatText, f1, f2 + f3, this.DBd);
-    AppMethodBeat.o(214377);
+    Paint localPaint = this.Jub;
+    localPaint.setTextSize(paramb.JsH);
+    localPaint.setColor(paramb.JsI);
+    localPaint = this.Juc;
+    localPaint.setTextSize(paramb.JsJ);
+    localPaint.setColor(paramb.JsK);
+    float f1 = paramb.JsG.centerX();
+    float f2 = paramb.JsG.centerY();
+    float f3 = this.Jub.getTextSize() / 3.0F;
+    paramCanvas.drawText(paramb.mainText, f1, f2 + f3, this.Jub);
+    f1 = paramb.JsG.centerX();
+    f2 = paramb.JsG.top;
+    f3 = this.Juc.getTextSize();
+    paramCanvas.drawText(paramb.floatText, f1, f2 + f3, this.Juc);
+    AppMethodBeat.o(313066);
   }
   
   public final String getType()

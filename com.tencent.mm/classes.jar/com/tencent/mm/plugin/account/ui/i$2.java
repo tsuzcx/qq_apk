@@ -15,12 +15,12 @@ final class i$2
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(128264);
-    i.a(this.nfh);
+    i.a(this.qcp);
     paramDialogInterface = new StringBuilder();
-    h.aHE();
-    paramDialogInterface = paramDialogInterface.append(b.aGR()).append(",").append(getClass().getName()).append(",F200_200,");
-    h.aHE();
-    a.m(true, b.MN("F200_200") + ",2");
+    h.baC();
+    paramDialogInterface = paramDialogInterface.append(b.aZR()).append(",").append(getClass().getName()).append(",F200_200,");
+    h.baC();
+    a.z(true, b.Fw("F200_200") + ",2");
     AppMethodBeat.o(128264);
   }
 }

@@ -1,61 +1,64 @@
 package com.tencent.mm.plugin.game.chatroom.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.game.autogen.chatroom.KickOutChatroomMemberRequest;
-import com.tencent.mm.plugin.game.autogen.chatroom.KickOutChatroomMemberResponse;
+import com.tencent.mm.plugin.game.autogen.chatroom.GetCanJoinChatroomRequest;
+import com.tencent.mm.plugin.game.autogen.chatroom.GetCanJoinChatroomResponse;
+import com.tencent.mm.plugin.game.autogen.chatroom.Lbs;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class j
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  public final d jTk;
+  private h callback;
+  public final c mtC;
   
-  public j(String paramString)
+  public j(Lbs paramLbs)
   {
-    AppMethodBeat.i(212428);
-    d.a locala = new d.a();
-    locala.lBU = new KickOutChatroomMemberRequest();
-    locala.lBV = new KickOutChatroomMemberResponse();
-    locala.uri = "/cgi-bin/mmgame-bin/gamegamelifeappsvr/kickoutchatroommember";
-    locala.funcId = getType();
-    locala.lBW = 0;
-    locala.respCmdId = 0;
-    this.jTk = locala.bgN();
-    ((KickOutChatroomMemberRequest)d.b.b(this.jTk.lBR)).username = paramString;
-    Log.i("GameChatRoom.CgiKickOutChatroomMember", "userName:%s", new Object[] { paramString });
-    AppMethodBeat.o(212428);
+    AppMethodBeat.i(275794);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new GetCanJoinChatroomRequest();
+    ((c.a)localObject).otF = new GetCanJoinChatroomResponse();
+    ((c.a)localObject).uri = "/cgi-bin/mmgame-bin/gamegamelifeappsvr/getcanjoinchatroom";
+    ((c.a)localObject).funcId = getType();
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.mtC = ((c.a)localObject).bEF();
+    localObject = (GetCanJoinChatroomRequest)c.b.b(this.mtC.otB);
+    if (paramLbs != null) {
+      ((GetCanJoinChatroomRequest)localObject).lbs_info = paramLbs;
+    }
+    AppMethodBeat.o(275794);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(212430);
-    this.callback = parami;
-    int i = dispatch(paramg, this.jTk, this);
-    AppMethodBeat.o(212430);
+    AppMethodBeat.i(275822);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.mtC, this);
+    AppMethodBeat.o(275822);
     return i;
   }
   
   public final int getType()
   {
-    return 4596;
+    return 4631;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(212432);
-    Log.i("GameChatRoom.CgiKickOutChatroomMember", "errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString);
+    AppMethodBeat.i(275835);
+    Log.i("GameChatRoom.CgiGetRecommendChatRoom", "errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(212432);
+    AppMethodBeat.o(275835);
   }
 }
 

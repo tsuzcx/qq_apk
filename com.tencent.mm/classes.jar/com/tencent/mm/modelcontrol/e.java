@@ -9,22 +9,21 @@ import com.tencent.mm.b.i;
 import com.tencent.mm.compatible.deviceinfo.af;
 import com.tencent.mm.compatible.deviceinfo.k;
 import com.tencent.mm.compatible.deviceinfo.m;
+import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.model.be;
-import com.tencent.mm.modelvideo.s;
+import com.tencent.mm.modelvideo.aa;
 import com.tencent.mm.modelvideo.v;
-import com.tencent.mm.modelvideo.w;
-import com.tencent.mm.modelvideo.x;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.modelvideo.z;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.pointers.PInt;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import com.tencent.mm.storagebase.h.b;
-import com.tencent.mm.vfs.u;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
@@ -38,38 +37,39 @@ import org.json.JSONObject;
 public class e
   implements be
 {
-  private static final int lIW;
-  private a lIX;
-  private byte[] lIY;
-  private com.tencent.mm.plugin.a.b lIZ;
-  private f[] lJa;
-  private f[] lJb;
-  private f[] lJc;
-  private f[] lJd;
-  private f[] lJe;
-  private f[] lJf;
-  private f[] lJg;
-  private f[] lJh;
-  private f[] lJi;
-  private f[] lJj;
-  private f[] lJk;
+  private static final int oBx;
+  private com.tencent.mm.plugin.a.b oBA;
+  private f[] oBB;
+  private f[] oBC;
+  private f[] oBD;
+  private f[] oBE;
+  private f[] oBF;
+  private f[] oBG;
+  private f[] oBH;
+  private f[] oBI;
+  private f[] oBJ;
+  private f[] oBK;
+  private f[] oBL;
+  private f[] oBM;
+  private a oBy;
+  private byte[] oBz;
   
   static
   {
     AppMethodBeat.i(126773);
-    lIW = com.tencent.mm.plugin.a.c.bU("dscp");
+    oBx = com.tencent.mm.plugin.a.c.du("dscp");
     AppMethodBeat.o(126773);
   }
   
   public e()
   {
     AppMethodBeat.i(126747);
-    this.lIY = null;
-    this.lIX = new a();
+    this.oBz = null;
+    this.oBy = new a();
     AppMethodBeat.o(126747);
   }
   
-  private static f A(JSONObject paramJSONObject)
+  private static f K(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(126750);
     f localf = new f();
@@ -125,21 +125,21 @@ public class e
         Object localObject2 = paramJSONObject.getString("stepbr");
         continue;
         Collections.sort((List)localObject1);
-        if ((((List)localObject1).size() >= 2) && (!localf.lJo))
+        if ((((List)localObject1).size() >= 2) && (!localf.oBQ))
         {
-          j = ((g)((List)localObject1).get(0)).lJw;
+          j = ((g)((List)localObject1).get(0)).oBY;
           i = 1;
           if (i < ((List)localObject1).size())
           {
             paramJSONObject = (g)((List)localObject1).get(i);
-            paramJSONObject.lJv = j;
-            j = paramJSONObject.lJw;
+            paramJSONObject.oBX = j;
+            j = paramJSONObject.oBY;
             i += 1;
             continue;
           }
         }
-        localf.lJp = new g[((List)localObject1).size()];
-        ((List)localObject1).toArray(localf.lJp);
+        localf.oBR = new g[((List)localObject1).size()];
+        ((List)localObject1).toArray(localf.oBR);
         Log.d("MicroMsg.SubCoreVideoControl", "parseJsonObject %s", new Object[] { localf });
         AppMethodBeat.o(126750);
         return localf;
@@ -158,7 +158,57 @@ public class e
     }
   }
   
-  public static int M(int paramInt, String paramString)
+  private f[] NC(String paramString)
+  {
+    AppMethodBeat.i(126749);
+    String str = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.zero.b.a.class)).aRC().getValue(paramString);
+    if (Util.isNullOrNil(str))
+    {
+      Log.i("MicroMsg.SubCoreVideoControl", "key %s config is null", new Object[] { paramString });
+      AppMethodBeat.o(126749);
+      return null;
+    }
+    Log.i("MicroMsg.SubCoreVideoControl", "%s=%s ", new Object[] { paramString, str });
+    paramString = ND(str);
+    AppMethodBeat.o(126749);
+    return paramString;
+  }
+  
+  private static f[] ND(String paramString)
+  {
+    int i = 0;
+    AppMethodBeat.i(233805);
+    Object localObject = paramString;
+    if (!paramString.startsWith("[")) {
+      localObject = "[".concat(String.valueOf(paramString));
+    }
+    paramString = (String)localObject;
+    if (!((String)localObject).endsWith("]")) {
+      paramString = (String)localObject + "]";
+    }
+    try
+    {
+      paramString = new JSONArray(paramString);
+      int j = paramString.length();
+      Log.d("MicroMsg.SubCoreVideoControl", "parse config root length %d", new Object[] { Integer.valueOf(j) });
+      localObject = new f[j];
+      while (i < j)
+      {
+        localObject[i] = K(paramString.getJSONObject(i));
+        i += 1;
+      }
+      AppMethodBeat.o(233805);
+    }
+    catch (Exception paramString)
+    {
+      Log.e("MicroMsg.SubCoreVideoControl", "parse Configs error : " + paramString.toString());
+      AppMethodBeat.o(233805);
+      return null;
+    }
+    return localObject;
+  }
+  
+  public static int R(int paramInt, String paramString)
   {
     int i = 2;
     AppMethodBeat.i(126769);
@@ -174,13 +224,13 @@ public class e
       return paramInt;
       paramInt = 1;
       continue;
-      if (!vW(2)) {
+      if (!wb(2)) {
         break;
       }
       paramInt = i;
-      if (u.agG(paramString))
+      if (com.tencent.mm.vfs.y.ZC(paramString))
       {
-        if (!v.isH265Video(paramString)) {
+        if (!com.tencent.mm.modelvideo.y.isH265Video(paramString)) {
           break;
         }
         paramInt = i;
@@ -188,7 +238,7 @@ public class e
     }
   }
   
-  public static int N(int paramInt, String paramString)
+  public static int S(int paramInt, String paramString)
   {
     int i = 2;
     AppMethodBeat.i(126770);
@@ -204,13 +254,13 @@ public class e
       return paramInt;
       paramInt = 1;
       continue;
-      if (!vW(3)) {
+      if (!wb(3)) {
         break;
       }
       paramInt = i;
-      if (u.agG(paramString))
+      if (com.tencent.mm.vfs.y.ZC(paramString))
       {
-        if (!v.isH265Video(paramString)) {
+        if (!com.tencent.mm.modelvideo.y.isH265Video(paramString)) {
           break;
         }
         paramInt = i;
@@ -218,49 +268,7 @@ public class e
     }
   }
   
-  private static f[] VD(String paramString)
-  {
-    int i = 0;
-    AppMethodBeat.i(126749);
-    Object localObject2 = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.zero.b.a.class)).axc().getValue(paramString);
-    if (Util.isNullOrNil((String)localObject2))
-    {
-      Log.i("MicroMsg.SubCoreVideoControl", "key %s config is null", new Object[] { paramString });
-      AppMethodBeat.o(126749);
-      return null;
-    }
-    Object localObject1 = localObject2;
-    if (!((String)localObject2).startsWith("[")) {
-      localObject1 = "[".concat(String.valueOf(localObject2));
-    }
-    localObject2 = localObject1;
-    if (!((String)localObject1).endsWith("]")) {
-      localObject2 = (String)localObject1 + "]";
-    }
-    Log.i("MicroMsg.SubCoreVideoControl", "%s=%s ", new Object[] { paramString, localObject2 });
-    try
-    {
-      paramString = new JSONArray((String)localObject2);
-      int j = paramString.length();
-      Log.d("MicroMsg.SubCoreVideoControl", "parse config root length %d", new Object[] { Integer.valueOf(j) });
-      localObject1 = new f[j];
-      while (i < j)
-      {
-        localObject1[i] = A(paramString.getJSONObject(i));
-        i += 1;
-      }
-      AppMethodBeat.o(126749);
-    }
-    catch (Exception paramString)
-    {
-      Log.e("MicroMsg.SubCoreVideoControl", "parse Configs error : " + paramString.toString());
-      AppMethodBeat.o(126749);
-      return null;
-    }
-    return localObject1;
-  }
-  
-  public static int a(int paramInt, w paramw)
+  public static int a(int paramInt, z paramz)
   {
     AppMethodBeat.i(126767);
     switch (paramInt)
@@ -269,7 +277,7 @@ public class e
       paramInt = 1;
       Log.i("MicroMsg.SubCoreVideoControl", "check c2c video format[%d]", new Object[] { Integer.valueOf(paramInt) });
       if (paramInt == 2) {
-        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(354L, 130L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(354L, 130L, 1L, false);
       }
       break;
     }
@@ -279,31 +287,31 @@ public class e
       return paramInt;
       paramInt = 1;
       break;
-      paramInt = a(paramw);
+      paramInt = a(paramz);
       break;
-      paramInt = a(paramw);
+      paramInt = a(paramz);
       break;
-      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(354L, 131L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(354L, 131L, 1L, false);
     }
   }
   
-  private static int a(w paramw)
+  private static int a(z paramz)
   {
     int i = 1;
     AppMethodBeat.i(126768);
-    if (!vW(1))
+    if (!wb(1))
     {
       AppMethodBeat.o(126768);
       return 1;
     }
-    s.bqB();
-    paramw = x.XT(paramw.getFileName());
-    if (!u.agG(paramw))
+    v.bOh();
+    paramz = aa.PX(paramz.getFileName());
+    if (!com.tencent.mm.vfs.y.ZC(paramz))
     {
       AppMethodBeat.o(126768);
       return 2;
     }
-    if (!v.isH265Video(paramw)) {}
+    if (!com.tencent.mm.modelvideo.y.isH265Video(paramz)) {}
     for (;;)
     {
       AppMethodBeat.o(126768);
@@ -315,9 +323,9 @@ public class e
   private static VideoTransPara a(VideoTransPara paramVideoTransPara, int paramInt)
   {
     AppMethodBeat.i(126757);
-    label188:
+    label142:
     int i;
-    label374:
+    label328:
     Object localObject;
     String str;
     boolean bool2;
@@ -328,23 +336,21 @@ public class e
       {
       case 3: 
       default: 
-        paramVideoTransPara.lJz = 0;
-        paramVideoTransPara.lJG = 0;
-        paramVideoTransPara.lJA = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vuq, 0);
-        paramVideoTransPara.lJB = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vut, 10);
-        paramVideoTransPara.lJC = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vus, 10);
-        paramVideoTransPara.lJF = 0;
-        if (paramVideoTransPara.lJA != 0)
+        paramVideoTransPara.oCb = 0;
+        paramVideoTransPara.oCi = 0;
+        paramVideoTransPara.oCc = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yGV, 0);
+        paramVideoTransPara.oCh = 0;
+        if (paramVideoTransPara.oCc != 0)
         {
-          paramVideoTransPara.kSl = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vuI, 21);
-          paramVideoTransPara.kSm = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vuJ, 39);
-          paramVideoTransPara.lJI = paramVideoTransPara.videoBitrate;
-          paramVideoTransPara.lJJ = paramInt;
-          i = m.aus() & 0xFF;
+          paramVideoTransPara.nxU = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yHD, 21);
+          paramVideoTransPara.nxV = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yHE, 39);
+          paramVideoTransPara.oCk = paramVideoTransPara.videoBitrate;
+          paramVideoTransPara.oCl = paramInt;
+          i = m.aOK() & 0xFF;
           if ((i < 30) || (Build.VERSION.SDK_INT <= 25)) {
-            paramVideoTransPara.lJz = 0;
+            paramVideoTransPara.oCb = 0;
           }
-          Log.i("MicroMsg.SubCoreVideoControl", "ABA: Prams abaSwitch: [%d]  qpSwitch: [%d] abaUpgear: [%d] abaDowngear: [%d] ceilingVideoBR: [%d] flooringVideoBR:[%d] minQP: [%d] maxQP: [%d] CPUlevel: [%d] AndroidVersionSDK: [%d] remuxSecene: [%d] isEnable720p: [%d] maxVideoSize: [%d]", new Object[] { Integer.valueOf(paramVideoTransPara.lJz), Integer.valueOf(paramVideoTransPara.lJA), Integer.valueOf(paramVideoTransPara.lJB), Integer.valueOf(paramVideoTransPara.lJC), Integer.valueOf(paramVideoTransPara.lJD), Integer.valueOf(paramVideoTransPara.lJE), Integer.valueOf(paramVideoTransPara.kSl), Integer.valueOf(paramVideoTransPara.kSm), Integer.valueOf(i), Integer.valueOf(Build.VERSION.SDK_INT), Integer.valueOf(paramVideoTransPara.lJJ), Integer.valueOf(paramVideoTransPara.lJG), Integer.valueOf(paramVideoTransPara.lJH) });
+          Log.i("MicroMsg.SubCoreVideoControl", "ABA: Prams abaSwitch: [%d]  qpSwitch: [%d] swHevcRatio: [%f] hwHevcRatio: [%f] ceilingVideoBR: [%d] flooringVideoBR:[%d] minQP: [%d] maxQP: [%d] CPUlevel: [%d] AndroidVersionSDK: [%d] remuxSecene: [%d] isEnable1080p: [%d] maxVideoSize: [%d]", new Object[] { Integer.valueOf(paramVideoTransPara.oCb), Integer.valueOf(paramVideoTransPara.oCc), Float.valueOf(paramVideoTransPara.oCd), Float.valueOf(paramVideoTransPara.oCe), Integer.valueOf(paramVideoTransPara.oCf), Integer.valueOf(paramVideoTransPara.oCg), Integer.valueOf(paramVideoTransPara.nxU), Integer.valueOf(paramVideoTransPara.nxV), Integer.valueOf(i), Integer.valueOf(Build.VERSION.SDK_INT), Integer.valueOf(paramVideoTransPara.oCl), Integer.valueOf(paramVideoTransPara.oCi), Integer.valueOf(paramVideoTransPara.oCj) });
           localObject = MultiProcessMMKV.getMMKV("HardcoderQP");
           if (localObject != null)
           {
@@ -353,10 +359,10 @@ public class e
             if ((str != null) && (localObject != null))
             {
               bool2 = false;
-              i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vuq, 0);
-              j = af.juO.jtH;
+              i = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yGV, 0);
+              j = af.lYf.lWY;
               if (j != 0) {
-                break label1042;
+                break label1134;
               }
               bool1 = true;
             }
@@ -370,48 +376,54 @@ public class e
       Log.i("MicroMsg.SubCoreVideoControl", "steve:[hardcoder] get hardcoder QP key: min:%s, max:%s, forceHWQP:%s, qpSwitch:%s, deviceQPCfg:%s, forceHWQPOff:%s", new Object[] { str, localObject, Boolean.valueOf(bool2), Integer.valueOf(i), Integer.valueOf(j), Boolean.valueOf(bool1) });
       if ((!bool1) && ((bool2) || ((i & 0x2) != 0)))
       {
-        j = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vuI, 21);
-        i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vuJ, 39);
+        j = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yHD, 21);
+        i = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yHE, 39);
         j = Math.max(0, Math.min(51, j));
         i = Math.max(0, Math.min(51, i));
         if ((j != 0) && (i != 51))
         {
-          paramVideoTransPara.kSl = j;
-          paramVideoTransPara.kSm = i;
+          paramVideoTransPara.nxU = j;
+          paramVideoTransPara.nxV = i;
           Log.i("MicroMsg.SubCoreVideoControl", "steve:[hardcoder] get hardcoder QP key: min:%s, max:%s, value: minQP:%d, maxQP:%d, Scence:%d", new Object[] { str, localObject, Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(paramInt) });
         }
       }
       AppMethodBeat.o(126757);
       return paramVideoTransPara;
-      paramVideoTransPara.lJz = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vun, 1);
-      paramVideoTransPara.lJG = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vuL, 1);
-      paramVideoTransPara.lJD = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vuu, 10);
-      paramVideoTransPara.lJE = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vuv, 10);
-      paramVideoTransPara.lJH = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vuw, 36);
+      paramVideoTransPara.oCb = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yGS, 1);
+      paramVideoTransPara.oCi = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yHG, 0);
+      paramVideoTransPara.oCf = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yHb, 10);
+      paramVideoTransPara.oCg = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yHc, 10);
+      paramVideoTransPara.oCj = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yHd, 36);
+      paramVideoTransPara.oCd = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yGX, 0.7F);
+      paramVideoTransPara.oCe = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yGY, 1.0F);
       break;
-      paramVideoTransPara.lJz = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vuo, 1);
-      paramVideoTransPara.lJG = 0;
-      paramVideoTransPara.lJD = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vux, 10);
-      paramVideoTransPara.lJE = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vuy, 10);
-      paramVideoTransPara.lJH = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vuz, 36);
+      paramVideoTransPara.oCb = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yGT, 1);
+      paramVideoTransPara.oCi = 0;
+      paramVideoTransPara.oCf = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yHe, 25);
+      paramVideoTransPara.oCg = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yHg, 10);
+      paramVideoTransPara.oCj = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yHh, 36);
+      paramVideoTransPara.oCd = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yGZ, 0.7F);
+      paramVideoTransPara.oCe = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yHa, 1.0F);
       break;
-      paramVideoTransPara.lJz = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vup, 1);
-      paramVideoTransPara.lJG = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vuK, 0);
-      paramVideoTransPara.lJD = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vuu, 10);
-      paramVideoTransPara.lJE = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vuv, 10);
-      paramVideoTransPara.lJH = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vuw, 36);
+      paramVideoTransPara.oCb = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yGU, 1);
+      paramVideoTransPara.oCi = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yHF, 0);
+      paramVideoTransPara.oCf = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yHb, 10);
+      paramVideoTransPara.oCg = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yHc, 10);
+      paramVideoTransPara.oCj = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yHd, 36);
+      paramVideoTransPara.oCd = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yGX, 0.7F);
+      paramVideoTransPara.oCe = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yGY, 1.0F);
       break;
-      paramVideoTransPara.kSl = 0;
-      paramVideoTransPara.kSm = 51;
-      break label188;
-      paramVideoTransPara.lJz = 0;
-      paramVideoTransPara.lJA = 0;
-      paramVideoTransPara.lJI = paramVideoTransPara.videoBitrate;
-      paramVideoTransPara.kSl = 0;
-      paramVideoTransPara.kSm = 51;
+      paramVideoTransPara.nxU = 0;
+      paramVideoTransPara.nxV = 51;
+      break label142;
+      paramVideoTransPara.oCb = 0;
+      paramVideoTransPara.oCc = 0;
+      paramVideoTransPara.oCk = paramVideoTransPara.videoBitrate;
+      paramVideoTransPara.nxU = 0;
+      paramVideoTransPara.nxV = 51;
       Log.i("MicroMsg.SubCoreVideoControl", "ABA: it does not use the ABA or MinMax QP Limitation");
-      break label374;
-      label1042:
+      break label328;
+      label1134:
       if ((paramInt > 0) && (paramInt <= 3) && (j > 0) && ((1 << paramInt - 1 & j) != 0))
       {
         bool2 = true;
@@ -508,129 +520,156 @@ public class e
     return 1;
   }
   
-  public static boolean bkA()
+  public static e bIg()
   {
-    AppMethodBeat.i(126765);
-    int j = ((Integer)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.VmD, Integer.valueOf(-1))).intValue();
-    com.tencent.mm.storage.c localc = com.tencent.mm.model.c.d.bgB().Mu("100153");
-    if (localc.isValid()) {}
-    for (int i = Util.getInt((String)localc.hvz().get("snsStreamDownload"), 0);; i = 0)
-    {
-      boolean bool2 = bkB();
-      boolean bool1;
-      if ((j == 0) || (i == -1) || (!bool2)) {
-        bool1 = false;
+    AppMethodBeat.i(126748);
+    e locale = (e)com.tencent.mm.model.y.aL(e.class);
+    AppMethodBeat.o(126748);
+    return locale;
+  }
+  
+  private f[] bIo()
+  {
+    AppMethodBeat.i(233812);
+    if (bIs()) {
+      if (this.oBL == null) {
+        this.oBL = NC("C2CAlbumVideoStepConfig");
       }
-      for (;;)
-      {
-        Log.i("MicroMsg.SubCoreVideoControl", "check can sns online play video [%b] mmvideoplayer[%b] opcode[%d] abTestFlag[%d]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Integer.valueOf(j), Integer.valueOf(i) });
-        AppMethodBeat.o(126765);
-        return bool1;
-        if (j > 0) {
-          bool1 = true;
-        } else if (i > 0) {
-          bool1 = true;
-        } else {
-          bool1 = false;
-        }
+    }
+    for (f[] arrayOff = this.oBL;; arrayOff = this.oBK)
+    {
+      AppMethodBeat.o(233812);
+      return arrayOff;
+      if (this.oBK == null) {
+        this.oBK = NC("C2CAlbumVideoConfig");
       }
     }
   }
   
-  public static boolean bkB()
+  private static VideoTransPara bIq()
+  {
+    AppMethodBeat.i(126762);
+    VideoTransPara localVideoTransPara = new VideoTransPara();
+    localVideoTransPara.oBZ = true;
+    localVideoTransPara.width = 720;
+    localVideoTransPara.height = 1280;
+    localVideoTransPara.fps = 30;
+    localVideoTransPara.videoBitrate = 2000000;
+    localVideoTransPara.nCd = 10;
+    localVideoTransPara.audioBitrate = 64000;
+    localVideoTransPara.oBO = 2;
+    localVideoTransPara.oBP = 1;
+    localVideoTransPara.audioChannelCount = 1;
+    AppMethodBeat.o(126762);
+    return localVideoTransPara;
+  }
+  
+  private static VideoTransPara bIr()
+  {
+    AppMethodBeat.i(169099);
+    VideoTransPara localVideoTransPara = new VideoTransPara();
+    localVideoTransPara.oBZ = true;
+    localVideoTransPara.width = 1072;
+    localVideoTransPara.height = ((int)(localVideoTransPara.width * 3.5F / 3.0D));
+    localVideoTransPara.fps = 30;
+    localVideoTransPara.videoBitrate = 2000000;
+    localVideoTransPara.nCd = 1;
+    localVideoTransPara.audioBitrate = 128000;
+    localVideoTransPara.oBO = 2;
+    localVideoTransPara.oBP = 1;
+    localVideoTransPara.audioChannelCount = 1;
+    AppMethodBeat.o(169099);
+    return localVideoTransPara;
+  }
+  
+  private static boolean bIs()
+  {
+    AppMethodBeat.i(233816);
+    com.tencent.mm.storage.c localc = com.tencent.mm.model.newabtest.d.bEt().Fd("100157");
+    if ((localc != null) && (localc.isValid())) {}
+    for (int i = Util.getInt((String)localc.iWZ().get("VideoEncodeStep"), 1);; i = 1)
+    {
+      Log.i("MicroMsg.SubCoreVideoControl", "check c2c album encode step %d", new Object[] { Integer.valueOf(i) });
+      if (i > 0)
+      {
+        AppMethodBeat.o(233816);
+        return true;
+      }
+      AppMethodBeat.o(233816);
+      return false;
+    }
+  }
+  
+  public static boolean bIt()
+  {
+    AppMethodBeat.i(126764);
+    int i = ((Integer)com.tencent.mm.kernel.h.baE().ban().get(at.a.acNY, Integer.valueOf(-1))).intValue();
+    boolean bool2 = bIv();
+    if ((i == 0) || (!bool2)) {}
+    for (boolean bool1 = false;; bool1 = true)
+    {
+      Log.i("MicroMsg.SubCoreVideoControl", "check can c2c online play video [%b] mmvideoplayer[%b] opcode[%d] abTestFlag[%d]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Integer.valueOf(i), Integer.valueOf(1) });
+      AppMethodBeat.o(126764);
+      return bool1;
+    }
+  }
+  
+  public static boolean bIu()
+  {
+    AppMethodBeat.i(126765);
+    int i = ((Integer)com.tencent.mm.kernel.h.baE().ban().get(at.a.acNY, Integer.valueOf(-1))).intValue();
+    boolean bool2 = bIv();
+    if ((i == 0) || (!bool2)) {}
+    for (boolean bool1 = false;; bool1 = true)
+    {
+      Log.i("MicroMsg.SubCoreVideoControl", "check can sns online play video [%b] mmvideoplayer[%b] opcode[%d] abTestFlag[%d]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Integer.valueOf(i), Integer.valueOf(1) });
+      AppMethodBeat.o(126765);
+      return bool1;
+    }
+  }
+  
+  public static boolean bIv()
   {
     AppMethodBeat.i(126766);
     long l = Util.currentTicks();
-    int k = ((Integer)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.VmD, Integer.valueOf(-1))).intValue();
-    Object localObject1 = com.tencent.mm.model.c.d.bgB().Mu("100190");
-    Object localObject2;
-    int i;
-    if (((com.tencent.mm.storage.c)localObject1).isValid())
-    {
-      localObject2 = ((com.tencent.mm.storage.c)localObject1).hvz();
-      i = Util.getInt((String)((Map)localObject2).get("player"), 1);
-      localObject1 = (String)((Map)localObject2).get("apilevel");
-      localObject2 = (String)((Map)localObject2).get("devices");
+    int i = ((Integer)com.tencent.mm.kernel.h.baE().ban().get(at.a.acNY, Integer.valueOf(-1))).intValue();
+    int j = Build.VERSION.SDK_INT;
+    String str = Build.BRAND + q.aPo();
+    if (!Util.isNullOrNil(null)) {
+      throw new NullPointerException();
     }
     for (;;)
     {
-      int m = Build.VERSION.SDK_INT;
-      String str = Build.BRAND + Build.MODEL;
-      String[] arrayOfString;
-      int n;
-      int j;
-      if (!Util.isNullOrNil((String)localObject1))
-      {
-        arrayOfString = ((String)localObject1).split(";");
-        n = arrayOfString.length;
-        j = 0;
-        if (j < n) {
-          if (Util.getInt(arrayOfString[j], 0) != m) {}
-        }
+      if (!Util.isNullOrNil(null)) {
+        throw new NullPointerException();
       }
-      for (boolean bool1 = false;; bool1 = true)
-      {
-        boolean bool2 = bool1;
-        if (!Util.isNullOrNil((String)localObject2))
-        {
-          arrayOfString = ((String)localObject2).split(";");
-          n = arrayOfString.length;
-          j = 0;
-        }
-        for (;;)
-        {
-          bool2 = bool1;
-          if (j < n)
-          {
-            if (arrayOfString[j].equalsIgnoreCase(str)) {
-              bool2 = false;
-            }
-          }
-          else
-          {
-            if (com.tencent.mm.compatible.util.d.qW(18)) {
-              bool2 = false;
-            }
-            if (Build.BRAND.equalsIgnoreCase("meizu")) {
-              com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vos, Boolean.TRUE);
-            }
-            if (k == 0) {
-              bool2 = false;
-            }
-            if (i <= 0) {
-              bool2 = false;
-            }
-            Log.i("MicroMsg.SubCoreVideoControl", "check can use mmvideoplayer[%b] api[%d, %s] device[%s, %s] abTestFlag[%d] costTime[%d]", new Object[] { Boolean.valueOf(bool2), Integer.valueOf(m), localObject1, str, localObject2, Integer.valueOf(i), Long.valueOf(Util.ticksToNow(l)) });
-            AppMethodBeat.o(126766);
-            return bool2;
-            j += 1;
-            break;
-          }
-          j += 1;
-        }
+      if (com.tencent.mm.compatible.util.d.rc(18)) {
+        bool = false;
       }
-      localObject2 = null;
-      localObject1 = null;
-      i = 1;
+      if (Build.BRAND.equalsIgnoreCase("meizu")) {
+        com.tencent.mm.kernel.h.baE().ban().set(at.a.acPO, Boolean.TRUE);
+      }
+      if (i == 0) {
+        bool = false;
+      }
+      Log.i("MicroMsg.SubCoreVideoControl", "check can use mmvideoplayer[%b] api[%d, %s] device[%s, %s] abTestFlag[%d] costTime[%d]", new Object[] { Boolean.valueOf(bool), Integer.valueOf(j), null, str, null, Integer.valueOf(1), Long.valueOf(Util.ticksToNow(l)) });
+      AppMethodBeat.o(126766);
+      return bool;
+      boolean bool = true;
     }
   }
   
-  public static boolean bkC()
+  public static boolean bIw()
   {
-    AppMethodBeat.i(126771);
     String str = null;
-    Object localObject = com.tencent.mm.model.c.d.bgB().Mu("100253");
-    if (((com.tencent.mm.storage.c)localObject).isValid()) {
-      str = (String)((com.tencent.mm.storage.c)localObject).hvz().get("noCompleteRange");
+    AppMethodBeat.i(126771);
+    if (Util.isNullOrNil(null)) {
+      str = "20:00-23:30";
     }
-    localObject = str;
-    if (Util.isNullOrNil(str)) {
-      localObject = "20:00-23:30";
-    }
-    com.tencent.mm.kernel.h.aHE();
-    int i = i.cA(com.tencent.mm.kernel.b.getUin(), 30);
-    boolean bool = b.aJ((String)localObject, i);
-    Log.i("MicroMsg.SubCoreVideoControl", "check complete hevc needControl [%b] no complete range[%s] endHash[%d]", new Object[] { Boolean.valueOf(bool), localObject, Integer.valueOf(i) });
+    com.tencent.mm.kernel.h.baC();
+    int i = i.jdMethod_do(com.tencent.mm.kernel.b.getUin(), 30);
+    boolean bool = b.aU(str, i);
+    Log.i("MicroMsg.SubCoreVideoControl", "check complete hevc needControl [%b] no complete range[%s] endHash[%d]", new Object[] { Boolean.valueOf(bool), str, Integer.valueOf(i) });
     if (!bool)
     {
       AppMethodBeat.o(126771);
@@ -640,114 +679,41 @@ public class e
     return false;
   }
   
-  public static boolean bkD()
+  public static boolean bIx()
   {
-    AppMethodBeat.i(216209);
-    boolean bool = com.tencent.mm.plugin.u.f.eSL();
+    AppMethodBeat.i(233840);
+    boolean bool = com.tencent.mm.plugin.u.f.gbE();
     Log.i("MicroMsg.SubCoreVideoControl", "check device support hevcenc[%b]", new Object[] { Boolean.valueOf(bool) });
     if (!bool)
     {
       Log.i("MicroMsg.SubCoreVideoControl", "no hevc encoder found!");
-      AppMethodBeat.o(216209);
+      AppMethodBeat.o(233840);
       return false;
     }
-    bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vII, false);
+    bool = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yYM, false);
     Log.i("MicroMsg.SubCoreVideoControl", "further check checkDeviceSupportHevcEnc bH265EncDisabled:%b ", new Object[] { Boolean.valueOf(bool) });
     if (bool) {
-      Log.i("MicroMsg.SubCoreVideoControl", "model %s is hit", new Object[] { Build.MODEL.toLowerCase() });
+      Log.i("MicroMsg.SubCoreVideoControl", "model %s is hit", new Object[] { q.aPo().toLowerCase() });
     }
     for (bool = false;; bool = true)
     {
       Log.i("MicroMsg.SubCoreVideoControl", "check checkDeviceSupportHevcEnc, scene:%s, configResult:%s", new Object[] { Integer.valueOf(5), Boolean.valueOf(bool) });
-      AppMethodBeat.o(216209);
+      AppMethodBeat.o(233840);
       return bool;
     }
   }
   
-  public static e bkp()
-  {
-    AppMethodBeat.i(126748);
-    e locale = (e)com.tencent.mm.model.y.as(e.class);
-    AppMethodBeat.o(126748);
-    return locale;
-  }
-  
-  private static VideoTransPara bkx()
-  {
-    AppMethodBeat.i(126762);
-    VideoTransPara localVideoTransPara = new VideoTransPara();
-    localVideoTransPara.lJx = true;
-    localVideoTransPara.width = 720;
-    localVideoTransPara.height = 1280;
-    localVideoTransPara.fps = 30;
-    localVideoTransPara.videoBitrate = 2000000;
-    localVideoTransPara.kXt = 10;
-    localVideoTransPara.audioBitrate = 64000;
-    localVideoTransPara.lJm = 2;
-    localVideoTransPara.lJn = 1;
-    localVideoTransPara.audioChannelCount = 1;
-    AppMethodBeat.o(126762);
-    return localVideoTransPara;
-  }
-  
-  private static VideoTransPara bky()
-  {
-    AppMethodBeat.i(169099);
-    VideoTransPara localVideoTransPara = new VideoTransPara();
-    localVideoTransPara.lJx = true;
-    localVideoTransPara.width = 1072;
-    localVideoTransPara.height = ((int)(localVideoTransPara.width * 3.5F / 3.0D));
-    localVideoTransPara.fps = 30;
-    localVideoTransPara.videoBitrate = 2000000;
-    localVideoTransPara.kXt = 1;
-    localVideoTransPara.audioBitrate = 128000;
-    localVideoTransPara.lJm = 2;
-    localVideoTransPara.lJn = 1;
-    localVideoTransPara.audioChannelCount = 1;
-    AppMethodBeat.o(169099);
-    return localVideoTransPara;
-  }
-  
-  public static boolean bkz()
-  {
-    AppMethodBeat.i(126764);
-    int j = ((Integer)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.VmD, Integer.valueOf(-1))).intValue();
-    com.tencent.mm.storage.c localc = com.tencent.mm.model.c.d.bgB().Mu("100136");
-    if (localc.isValid()) {}
-    for (int i = Util.getInt((String)localc.hvz().get("streamingDownload"), 0);; i = 0)
-    {
-      boolean bool2 = bkB();
-      boolean bool1;
-      if ((j == 0) || (i == -1) || (!bool2)) {
-        bool1 = false;
-      }
-      for (;;)
-      {
-        Log.i("MicroMsg.SubCoreVideoControl", "check can c2c online play video [%b] mmvideoplayer[%b] opcode[%d] abTestFlag[%d]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Integer.valueOf(j), Integer.valueOf(i) });
-        AppMethodBeat.o(126764);
-        return bool1;
-        if (j > 0) {
-          bool1 = true;
-        } else if (i > 0) {
-          bool1 = true;
-        } else {
-          bool1 = false;
-        }
-      }
-    }
-  }
-  
   /* Error */
-  public static int j(int paramInt, String paramString1, String paramString2)
+  public static int m(int paramInt, String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: ldc_w 753
-    //   3: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc_w 778
+    //   3: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_2
     //   7: ifnull +248 -> 255
     //   10: aload_2
-    //   11: ldc_w 755
-    //   14: invokevirtual 759	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   11: ldc_w 780
+    //   14: invokevirtual 784	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   17: ifeq +238 -> 255
     //   20: iconst_1
     //   21: istore 8
@@ -778,35 +744,35 @@ public class e
     //   84: if_icmpne +400 -> 484
     //   87: iconst_1
     //   88: istore 6
-    //   90: ldc 96
-    //   92: new 192	java/lang/StringBuilder
+    //   90: ldc 97
+    //   92: new 193	java/lang/StringBuilder
     //   95: dup
-    //   96: ldc_w 761
-    //   99: invokespecial 197	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   96: ldc_w 786
+    //   99: invokespecial 198	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   102: iload_0
-    //   103: invokevirtual 764	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   106: ldc_w 766
-    //   109: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   103: invokevirtual 789	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   106: ldc_w 791
+    //   109: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   112: iload_3
-    //   113: invokevirtual 764	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   116: ldc_w 768
-    //   119: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   113: invokevirtual 789	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   116: ldc_w 793
+    //   119: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   122: iload 5
-    //   124: invokevirtual 771	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   127: ldc_w 773
-    //   130: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   124: invokevirtual 796	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   127: ldc_w 798
+    //   130: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   133: iload 4
-    //   135: invokevirtual 771	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   138: ldc_w 775
-    //   141: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   135: invokevirtual 796	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   138: ldc_w 800
+    //   141: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   144: aload_2
-    //   145: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   148: ldc_w 777
-    //   151: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   145: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   148: ldc_w 802
+    //   151: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   154: aload_1
-    //   155: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   158: invokevirtual 206	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   161: invokestatic 497	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   155: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   158: invokevirtual 207	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   161: invokestatic 518	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   164: iload 8
     //   166: ifne +5 -> 171
     //   169: iconst_1
@@ -817,33 +783,33 @@ public class e
     //   178: ifeq +312 -> 490
     //   181: iconst_1
     //   182: istore_0
-    //   183: getstatic 304	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
+    //   183: getstatic 309	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   186: sipush 1579
     //   189: iload_0
-    //   190: invokevirtual 781	com/tencent/mm/plugin/report/service/h:el	(II)V
-    //   193: ldc 96
-    //   195: new 192	java/lang/StringBuilder
+    //   190: invokevirtual 806	com/tencent/mm/plugin/report/service/h:kJ	(II)V
+    //   193: ldc 97
+    //   195: new 193	java/lang/StringBuilder
     //   198: dup
-    //   199: ldc_w 783
-    //   202: invokespecial 197	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   199: ldc_w 808
+    //   202: invokespecial 198	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   205: iload 8
-    //   207: invokevirtual 771	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   210: ldc_w 785
-    //   213: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   207: invokevirtual 796	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   210: ldc_w 810
+    //   213: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   216: iload 6
-    //   218: invokevirtual 771	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   221: ldc_w 787
-    //   224: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   218: invokevirtual 796	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   221: ldc_w 812
+    //   224: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   227: iload_0
-    //   228: invokevirtual 764	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   231: ldc_w 766
-    //   234: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   228: invokevirtual 789	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   231: ldc_w 791
+    //   234: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   237: iload_3
-    //   238: invokevirtual 764	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   241: invokevirtual 206	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   244: invokestatic 497	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   247: ldc_w 753
-    //   250: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   238: invokevirtual 789	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   241: invokevirtual 207	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   244: invokestatic 518	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   247: ldc_w 778
+    //   250: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   253: iload_3
     //   254: ireturn
     //   255: iconst_0
@@ -857,19 +823,19 @@ public class e
     //   269: iconst_0
     //   270: istore 5
     //   272: bipush 6
-    //   274: invokestatic 225	com/tencent/mm/modelcontrol/e:vW	(I)Z
+    //   274: invokestatic 285	com/tencent/mm/modelcontrol/e:wb	(I)Z
     //   277: istore 4
     //   279: iload 4
     //   281: istore 5
     //   283: aload_1
-    //   284: invokestatic 230	com/tencent/mm/vfs/u:agG	(Ljava/lang/String;)Z
+    //   284: invokestatic 290	com/tencent/mm/vfs/y:ZC	(Ljava/lang/String;)Z
     //   287: istore 9
     //   289: iload 9
     //   291: istore 5
     //   293: iload 5
     //   295: ifeq +9 -> 304
     //   298: aload_1
-    //   299: invokestatic 235	com/tencent/mm/modelvideo/v:isH265Video	(Ljava/lang/String;)Z
+    //   299: invokestatic 295	com/tencent/mm/modelvideo/y:isH265Video	(Ljava/lang/String;)Z
     //   302: istore 6
     //   304: iload 4
     //   306: istore 7
@@ -877,16 +843,16 @@ public class e
     //   310: istore 4
     //   312: iload 7
     //   314: ifne +142 -> 456
-    //   317: getstatic 603	android/os/Build:MODEL	Ljava/lang/String;
-    //   320: invokevirtual 691	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   317: invokestatic 688	com/tencent/mm/compatible/deviceinfo/q:aPo	()Ljava/lang/String;
+    //   320: invokevirtual 773	java/lang/String:toLowerCase	()Ljava/lang/String;
     //   323: astore 10
-    //   325: getstatic 304	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
+    //   325: getstatic 309	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   328: sipush 19789
     //   331: iconst_5
     //   332: anewarray 4	java/lang/Object
     //   335: dup
     //   336: iconst_0
-    //   337: ldc_w 789
+    //   337: ldc_w 814
     //   340: aastore
     //   341: dup
     //   342: iconst_1
@@ -895,18 +861,18 @@ public class e
     //   346: dup
     //   347: iconst_2
     //   348: iconst_0
-    //   349: invokestatic 221	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   349: invokestatic 272	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   352: aastore
     //   353: dup
     //   354: iconst_3
     //   355: iconst_0
-    //   356: invokestatic 221	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   356: invokestatic 272	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   359: aastore
     //   360: dup
     //   361: iconst_4
-    //   362: ldc 78
+    //   362: ldc 79
     //   364: aastore
-    //   365: invokevirtual 792	com/tencent/mm/plugin/report/service/h:a	(I[Ljava/lang/Object;)V
+    //   365: invokevirtual 817	com/tencent/mm/plugin/report/service/h:b	(I[Ljava/lang/Object;)V
     //   368: iconst_1
     //   369: istore_3
     //   370: goto -288 -> 82
@@ -915,16 +881,16 @@ public class e
     //   376: istore 4
     //   378: iload 5
     //   380: istore 6
-    //   382: ldc 96
-    //   384: new 192	java/lang/StringBuilder
+    //   382: ldc 97
+    //   384: new 193	java/lang/StringBuilder
     //   387: dup
-    //   388: ldc_w 794
-    //   391: invokespecial 197	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   388: ldc_w 819
+    //   391: invokespecial 198	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   394: aload 10
-    //   396: invokevirtual 795	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   399: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   402: invokevirtual 206	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   405: invokestatic 210	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   396: invokevirtual 822	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   399: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   402: invokevirtual 207	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   405: invokestatic 211	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   408: iload 4
     //   410: istore 5
     //   412: iload 7
@@ -933,16 +899,16 @@ public class e
     //   418: istore 7
     //   420: goto -108 -> 312
     //   423: astore 10
-    //   425: ldc 96
-    //   427: new 192	java/lang/StringBuilder
+    //   425: ldc 97
+    //   427: new 193	java/lang/StringBuilder
     //   430: dup
-    //   431: ldc_w 797
-    //   434: invokespecial 197	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   431: ldc_w 824
+    //   434: invokespecial 198	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   437: aload 10
-    //   439: invokevirtual 795	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   442: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   445: invokevirtual 206	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   448: invokestatic 210	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   439: invokevirtual 822	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   442: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   445: invokevirtual 207	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   448: invokestatic 211	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   451: iconst_1
     //   452: istore_3
     //   453: goto -371 -> 82
@@ -990,26 +956,26 @@ public class e
     //   21	470	8	bool5	boolean
     //   27	263	9	bool6	boolean
     //   323	21	10	str	String
-    //   373	22	10	localThrowable1	java.lang.Throwable
-    //   423	15	10	localThrowable2	java.lang.Throwable
-    //   505	1	10	localThrowable3	java.lang.Throwable
+    //   373	22	10	localObject1	Object
+    //   423	15	10	localObject2	Object
+    //   505	1	10	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   272	279	373	java/lang/Throwable
-    //   283	289	373	java/lang/Throwable
-    //   317	368	423	java/lang/Throwable
-    //   298	304	505	java/lang/Throwable
+    //   272	279	373	finally
+    //   283	289	373	finally
+    //   317	368	423	finally
+    //   298	304	505	finally
   }
   
-  private static VideoTransPara vV(int paramInt)
+  private static VideoTransPara wa(int paramInt)
   {
     AppMethodBeat.i(126763);
     VideoTransPara localVideoTransPara = new VideoTransPara();
-    localVideoTransPara.lJx = true;
-    localVideoTransPara.kXt = 1;
+    localVideoTransPara.oBZ = true;
+    localVideoTransPara.nCd = 1;
     localVideoTransPara.audioBitrate = 48000;
-    localVideoTransPara.lJm = 2;
-    localVideoTransPara.lJn = 1;
+    localVideoTransPara.oBO = 2;
+    localVideoTransPara.oBP = 1;
     localVideoTransPara.audioChannelCount = 1;
     if (paramInt <= 120)
     {
@@ -1027,21 +993,21 @@ public class e
     }
   }
   
-  public static boolean vW(int paramInt)
+  public static boolean wb(int paramInt)
   {
     boolean bool4 = false;
     AppMethodBeat.i(126772);
-    int j = ((Integer)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.Vqs, Integer.valueOf(-1))).intValue();
+    int j = ((Integer)com.tencent.mm.kernel.h.baE().ban().get(at.a.acRU, Integer.valueOf(-1))).intValue();
     int i = j;
     if (j == -1) {
-      if (!com.tencent.mm.plugin.u.f.eSH()) {
+      if (!com.tencent.mm.plugin.u.f.gbA()) {
         break label94;
       }
     }
     label94:
     for (i = 1;; i = 0)
     {
-      com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vqs, Integer.valueOf(i));
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acRU, Integer.valueOf(i));
       Log.i("MicroMsg.SubCoreVideoControl", "check device support hevc[%d]", new Object[] { Integer.valueOf(i) });
       if (i > 0) {
         break;
@@ -1049,13 +1015,13 @@ public class e
       AppMethodBeat.o(126772);
       return false;
     }
-    i = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.zero.b.a.class)).axc().getInt("VideoDownloadH265Flag", 0);
+    i = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.zero.b.a.class)).aRC().getInt("VideoDownloadH265Flag", 0);
     boolean bool1;
     switch (paramInt)
     {
     default: 
       bool1 = false;
-      j = af.juS.jsd;
+      j = af.lYj.lVs;
       if (j != -1) {
         if (j == 1) {
           bool1 = true;
@@ -1077,8 +1043,8 @@ public class e
         bool1 = bool2;
         if (bool2)
         {
-          String str1 = Build.MODEL.toLowerCase();
-          String str2 = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vvZ, "");
+          String str1 = q.aPo().toLowerCase();
+          String str2 = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yJa, "");
           boolean bool3 = bool2;
           if (!Util.isNullOrNil(str2))
           {
@@ -1095,7 +1061,7 @@ public class e
             bool1 = bool3;
             if (bool3)
             {
-              str2 = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vvg, "");
+              str2 = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yIc, "");
               bool1 = bool3;
               if (!Util.isNullOrNil(str2))
               {
@@ -1112,11 +1078,11 @@ public class e
       }
       if ((paramInt == 5) && (bool1))
       {
-        bool2 = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vIH, false);
+        bool2 = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yYL, false);
         Log.i("MicroMsg.SubCoreVideoControl", "further check checkDeviceSupportHevc bH265PlayDisabled:%b ", new Object[] { Boolean.valueOf(bool2) });
         if (bool2)
         {
-          Log.i("MicroMsg.SubCoreVideoControl", "model %s is hit", new Object[] { Build.MODEL.toLowerCase() });
+          Log.i("MicroMsg.SubCoreVideoControl", "model %s is hit", new Object[] { q.aPo().toLowerCase() });
           bool1 = bool4;
         }
       }
@@ -1167,18 +1133,18 @@ public class e
     }
   }
   
-  public final boolean VE(String paramString)
+  public final boolean NE(String paramString)
   {
     AppMethodBeat.i(126753);
-    if (this.lIZ == null) {
-      this.lIZ = new com.tencent.mm.plugin.a.b();
+    if (this.oBA == null) {
+      this.oBA = new com.tencent.mm.plugin.a.b();
     }
-    localObject1 = this.lIZ;
-    ((com.tencent.mm.plugin.a.b)localObject1).mHg = -1L;
-    ((com.tencent.mm.plugin.a.b)localObject1).mHi = -1L;
-    ((com.tencent.mm.plugin.a.b)localObject1).mHj = null;
+    localObject1 = this.oBA;
+    ((com.tencent.mm.plugin.a.b)localObject1).pDH = -1L;
+    ((com.tencent.mm.plugin.a.b)localObject1).fileLength = -1L;
+    ((com.tencent.mm.plugin.a.b)localObject1).pDJ = null;
     long l1 = Util.currentTicks();
-    long l2 = this.lIZ.ZY(paramString);
+    long l2 = this.oBA.Sl(paramString);
     if (l2 <= 0L)
     {
       AppMethodBeat.o(126753);
@@ -1190,7 +1156,7 @@ public class e
     Object localObject7 = null;
     try
     {
-      localRandomAccessFile = u.dO(paramString, false);
+      localRandomAccessFile = com.tencent.mm.vfs.y.eA(paramString, false);
       localObject1 = localRandomAccessFile;
       localObject2 = localRandomAccessFile;
       localRandomAccessFile.seek(l2);
@@ -1199,7 +1165,7 @@ public class e
       byte[] arrayOfByte = new byte[8];
       localObject1 = localRandomAccessFile;
       localObject2 = localRandomAccessFile;
-      localObject3 = com.tencent.mm.plugin.a.c.a(localRandomAccessFile, arrayOfByte, com.tencent.mm.plugin.a.a.aVL);
+      localObject3 = com.tencent.mm.plugin.a.c.a(localRandomAccessFile, arrayOfByte, com.tencent.mm.plugin.a.a.cPH);
       Object localObject4;
       Object localObject5;
       for (localObject1 = null;; localObject1 = localObject5)
@@ -1210,7 +1176,7 @@ public class e
         }
         localObject1 = localRandomAccessFile;
         localObject2 = localRandomAccessFile;
-        localObject5 = com.tencent.mm.plugin.a.c.a(localRandomAccessFile, arrayOfByte, lIW);
+        localObject5 = com.tencent.mm.plugin.a.c.a(localRandomAccessFile, arrayOfByte, oBx);
         localObject4 = localObject5;
         if (localObject5 != null) {
           break;
@@ -1220,7 +1186,7 @@ public class e
         localRandomAccessFile.seek(((com.tencent.mm.plugin.a.a)localObject3).getEndPos());
         localObject1 = localRandomAccessFile;
         localObject2 = localRandomAccessFile;
-        localObject3 = com.tencent.mm.plugin.a.c.a(localRandomAccessFile, arrayOfByte, com.tencent.mm.plugin.a.a.aVL);
+        localObject3 = com.tencent.mm.plugin.a.c.a(localRandomAccessFile, arrayOfByte, com.tencent.mm.plugin.a.a.cPH);
       }
       localObject3 = localObject7;
       if (localObject4 != null)
@@ -1230,7 +1196,7 @@ public class e
         localObject5 = new byte[(int)localObject4.getSize() - 8];
         localObject1 = localRandomAccessFile;
         localObject2 = localRandomAccessFile;
-        localRandomAccessFile.seek(localObject4.mHf + 8L);
+        localRandomAccessFile.seek(localObject4.pDG + 8L);
         localObject3 = localObject7;
         localObject1 = localRandomAccessFile;
         localObject2 = localRandomAccessFile;
@@ -1301,265 +1267,419 @@ public class e
     }
   }
   
-  public final VideoTransPara bkq()
+  public final VideoTransPara a(VideoTransPara paramVideoTransPara, String paramString)
+  {
+    AppMethodBeat.i(233881);
+    if (paramVideoTransPara == null)
+    {
+      Log.e("MicroMsg.SubCoreVideoControl", "get c2c album video para but original video para is null.");
+      AppMethodBeat.o(233881);
+      return null;
+    }
+    int i = paramVideoTransPara.duration;
+    Object localObject1 = com.tencent.mm.k.a.lZC;
+    if (i >= com.tencent.mm.k.a.aQy())
+    {
+      Log.w("MicroMsg.SubCoreVideoControl", "this video duration is large than %s s", new Object[] { Integer.valueOf(300) });
+      AppMethodBeat.o(233881);
+      return null;
+    }
+    long l = Util.currentTicks();
+    localObject1 = wa(paramVideoTransPara.duration);
+    boolean bool = true;
+    if (Util.isNullOrNil(paramString))
+    {
+      paramString = bIo();
+      if (paramString == null) {
+        break label336;
+      }
+      i = 0;
+      label107:
+      if (i >= paramString.length) {
+        break label331;
+      }
+      Object localObject2 = paramString[i];
+      if ((localObject2 == null) || (!localObject2.bIy())) {
+        break label324;
+      }
+      Log.i("MicroMsg.SubCoreVideoControl", "it busy time, try to calc c2c album config.");
+      i = a.a(localObject2.oBR, paramVideoTransPara, (VideoTransPara)localObject1);
+      bool = localObject2.oBQ;
+      label158:
+      if (i > 0) {
+        break label355;
+      }
+      paramString = wa(paramVideoTransPara.duration);
+      label170:
+      paramString = a(paramString, 1);
+      if (bool) {
+        break label367;
+      }
+      com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(422L, 1L, 1L, false);
+    }
+    for (;;)
+    {
+      int j = Util.nullAsNil((Integer)com.tencent.mm.plugin.report.service.h.a(paramString.videoBitrate / 1000, new int[] { 350, 544, 800, 1200, 1600 }, 3, 8));
+      com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(422L, j, 1L, false);
+      Log.i("MicroMsg.SubCoreVideoControl", "get c2c album para cost %d rpt %d. bitrate %d new para %s, original para %s", new Object[] { Long.valueOf(Util.ticksToNow(l)), Integer.valueOf(j), Integer.valueOf(i), paramString, paramVideoTransPara });
+      AppMethodBeat.o(233881);
+      return paramString;
+      paramString = ND(paramString);
+      break;
+      label324:
+      i += 1;
+      break label107;
+      label331:
+      i = 0;
+      break label158;
+      label336:
+      Log.i("MicroMsg.SubCoreVideoControl", "it not busy time, try to calc c2c album default config.");
+      i = a.a(null, paramVideoTransPara, (VideoTransPara)localObject1);
+      break label158;
+      label355:
+      ((VideoTransPara)localObject1).oBZ = false;
+      paramString = (String)localObject1;
+      break label170;
+      label367:
+      com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(422L, 2L, 1L, false);
+    }
+  }
+  
+  public final VideoTransPara bIh()
   {
     AppMethodBeat.i(126754);
     long l = Util.currentTicks();
-    if (this.lJa == null) {
-      this.lJa = VD("C2CRecordVideoConfig");
+    if (this.oBB == null) {
+      this.oBB = NC("C2CRecordVideoConfig");
     }
     int i;
     Object localObject;
     VideoTransPara localVideoTransPara;
-    if (this.lJa != null)
+    if (this.oBB != null)
     {
       i = 0;
-      if (i < this.lJa.length)
+      if (i < this.oBB.length)
       {
-        localObject = this.lJa[i];
-        if ((localObject != null) && (((f)localObject).bkE()))
+        localObject = this.oBB[i];
+        if ((localObject != null) && (((f)localObject).bIy()))
         {
           Log.i("MicroMsg.SubCoreVideoControl", "it busy time, try to get c2c Record config.");
-          localVideoTransPara = ((f)localObject).bkF();
+          localVideoTransPara = ((f)localObject).bIz();
         }
       }
     }
-    for (boolean bool = ((f)localObject).lJo;; bool = true)
+    for (boolean bool = ((f)localObject).oBQ;; bool = true)
     {
       localObject = localVideoTransPara;
       if (localVideoTransPara == null)
       {
         localObject = new VideoTransPara();
-        ((VideoTransPara)localObject).lJx = true;
+        ((VideoTransPara)localObject).oBZ = true;
         ((VideoTransPara)localObject).width = 540;
         ((VideoTransPara)localObject).height = 960;
         ((VideoTransPara)localObject).fps = 30;
         ((VideoTransPara)localObject).videoBitrate = 1200000;
-        ((VideoTransPara)localObject).kXt = 10;
+        ((VideoTransPara)localObject).nCd = 10;
         ((VideoTransPara)localObject).audioBitrate = 64000;
-        ((VideoTransPara)localObject).lJm = 2;
-        ((VideoTransPara)localObject).lJn = 1;
+        ((VideoTransPara)localObject).oBO = 2;
+        ((VideoTransPara)localObject).oBP = 1;
         ((VideoTransPara)localObject).audioChannelCount = 1;
       }
       ((VideoTransPara)localObject).audioSampleRate = 44100;
-      ((VideoTransPara)localObject).kXt = 10;
+      ((VideoTransPara)localObject).nCd = 10;
       localVideoTransPara = a((VideoTransPara)localObject, 1);
-      localVideoTransPara.duration = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vtV, 30);
+      localVideoTransPara.duration = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yGz, 15);
       if (!bool) {
-        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(422L, 11L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(422L, 11L, 1L, false);
       }
       for (;;)
       {
         i = Util.nullAsNil((Integer)com.tencent.mm.plugin.report.service.h.a(localVideoTransPara.videoBitrate / 1000, new int[] { 350, 544, 800, 1200, 1600 }, 13, 18));
-        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(422L, i, 1L, false);
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(422L, i, 1L, false);
         Log.i("MicroMsg.SubCoreVideoControl", "get c2c record para cost %d. %s rpt %d", new Object[] { Long.valueOf(Util.ticksToNow(l)), localVideoTransPara, Integer.valueOf(i) });
         AppMethodBeat.o(126754);
         return localVideoTransPara;
         i += 1;
         break;
-        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(422L, 12L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(422L, 12L, 1L, false);
       }
       localVideoTransPara = null;
     }
   }
   
-  public final VideoTransPara bkr()
+  public final VideoTransPara bIi()
   {
     AppMethodBeat.i(126755);
     long l = Util.currentTicks();
-    if (this.lJb == null) {
-      this.lJb = VD("SnsRecordVideoConfig");
+    if (this.oBC == null) {
+      this.oBC = NC("SnsRecordVideoConfig");
     }
     int i;
     f localf;
     VideoTransPara localVideoTransPara;
-    if (this.lJb != null)
+    if (this.oBC != null)
     {
       i = 0;
-      if (i < this.lJb.length)
+      if (i < this.oBC.length)
       {
-        localf = this.lJb[i];
-        if ((localf != null) && (localf.bkE()))
+        localf = this.oBC[i];
+        if ((localf != null) && (localf.bIy()))
         {
           Log.i("MicroMsg.SubCoreVideoControl", "it busy time, try to get sns Record config.");
-          localVideoTransPara = localf.bkF();
+          localVideoTransPara = localf.bIz();
         }
       }
     }
-    for (boolean bool = localf.lJo;; bool = true)
+    for (boolean bool = localf.oBQ;; bool = true)
     {
       if (localVideoTransPara == null) {
-        localVideoTransPara = bkx();
+        localVideoTransPara = bIq();
       }
       for (;;)
       {
         localVideoTransPara.audioSampleRate = 44100;
-        localVideoTransPara.kXt = 10;
-        localVideoTransPara.lJy = 200;
-        localVideoTransPara.duration = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vtT, 30);
+        localVideoTransPara.nCd = 10;
+        localVideoTransPara.oCa = 200;
+        localVideoTransPara.duration = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yGx, 30);
         localVideoTransPara = a(localVideoTransPara, 2);
         if (!bool) {
-          com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(422L, 31L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(422L, 31L, 1L, false);
         }
         for (;;)
         {
           i = Util.nullAsNil((Integer)com.tencent.mm.plugin.report.service.h.a(localVideoTransPara.videoBitrate / 1000, new int[] { 350, 544, 800, 1200, 1600 }, 33, 38));
-          com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(422L, i, 1L, false);
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(422L, i, 1L, false);
           Log.i("MicroMsg.SubCoreVideoControl", "get sns record para cost %d. %s rpt %d", new Object[] { Long.valueOf(Util.ticksToNow(l)), localVideoTransPara, Integer.valueOf(i) });
           AppMethodBeat.o(126755);
           return localVideoTransPara;
           i += 1;
           break;
-          com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(422L, 32L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(422L, 32L, 1L, false);
         }
       }
       localVideoTransPara = null;
     }
   }
   
-  public final VideoTransPara bks()
+  public final VideoTransPara bIj()
   {
-    AppMethodBeat.i(126756);
+    AppMethodBeat.i(233854);
+    Log.i("MicroMsg.SubCoreVideoControl", "getSnsTemplateVideoPara");
+    boolean bool = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yWq, true);
     long l = Util.currentTicks();
-    if (this.lJc == null) {
-      this.lJc = VD("SnsAlbumVideoConfig");
+    if ((this.oBD == null) || (bool)) {
+      this.oBD = NC("SnsVideoTemplateVideoConfig");
     }
     int i;
     f localf;
     VideoTransPara localVideoTransPara;
-    if (this.lJc != null)
+    if (this.oBD != null)
     {
       i = 0;
-      if (i < this.lJc.length)
+      if (i < this.oBD.length)
       {
-        localf = this.lJc[i];
-        if ((localf != null) && (localf.bkE()))
+        localf = this.oBD[i];
+        if ((localf != null) && (localf.bIy()))
         {
-          Log.i("MicroMsg.SubCoreVideoControl", "it busy time, try to get sns album config.");
-          localVideoTransPara = localf.bkF();
+          Log.i("MicroMsg.SubCoreVideoControl", "it busy time, try to get sns Record config.");
+          localVideoTransPara = localf.bIz();
         }
       }
     }
-    for (boolean bool = localf.lJo;; bool = true)
+    for (bool = localf.oBQ;; bool = true)
     {
       if (localVideoTransPara == null) {
-        localVideoTransPara = bkx();
+        localVideoTransPara = bIq();
       }
       for (;;)
       {
         localVideoTransPara.audioSampleRate = 44100;
-        localVideoTransPara.kXt = 10;
-        localVideoTransPara.lJy = 200;
-        localVideoTransPara.duration = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vtU, 30);
+        localVideoTransPara.nCd = 10;
+        localVideoTransPara.oCa = 200;
+        localVideoTransPara.duration = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.zeU, 60);
         localVideoTransPara = a(localVideoTransPara, 2);
         if (!bool) {
-          com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(422L, 21L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(422L, 31L, 1L, false);
         }
         for (;;)
         {
-          i = Util.nullAsNil((Integer)com.tencent.mm.plugin.report.service.h.a(localVideoTransPara.videoBitrate / 1000, new int[] { 350, 544, 800, 1200, 1600 }, 23, 28));
-          com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(422L, i, 1L, false);
-          Log.i("MicroMsg.SubCoreVideoControl", "get sns album para cost %d. %s rpt %d ", new Object[] { Long.valueOf(Util.ticksToNow(l)), localVideoTransPara, Integer.valueOf(i) });
-          AppMethodBeat.o(126756);
+          i = Util.nullAsNil((Integer)com.tencent.mm.plugin.report.service.h.a(localVideoTransPara.videoBitrate / 1000, new int[] { 350, 544, 800, 1200, 1600 }, 33, 38));
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(422L, i, 1L, false);
+          Log.i("MicroMsg.SubCoreVideoControl", "get sns template para cost %d. %s rpt %d", new Object[] { Long.valueOf(Util.ticksToNow(l)), localVideoTransPara, Integer.valueOf(i) });
+          AppMethodBeat.o(233854);
           return localVideoTransPara;
           i += 1;
           break;
-          com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(422L, 22L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(422L, 32L, 1L, false);
         }
       }
       localVideoTransPara = null;
     }
   }
   
-  public final VideoTransPara bkt()
+  public final VideoTransPara bIk()
+  {
+    AppMethodBeat.i(126756);
+    long l = Util.currentTicks();
+    boolean bool2 = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yWq, true);
+    boolean bool1;
+    int i;
+    label103:
+    VideoTransPara localVideoTransPara;
+    if ((this.oBE == null) || (bool2))
+    {
+      this.oBE = NC("SnsAlbumVideoConfig");
+      if (this.oBE == null)
+      {
+        bool1 = true;
+        Log.i("MicroMsg.SubCoreVideoControl", "snsAlbumControl is null:[%b] enable:[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+      }
+    }
+    else
+    {
+      bool1 = true;
+      if (this.oBE == null) {
+        break label427;
+      }
+      i = 0;
+      if (i >= this.oBE.length) {
+        break label427;
+      }
+      f localf = this.oBE[i];
+      if (localf != null) {
+        Log.i("MicroMsg.SubCoreVideoControl", "index:%d content:%s", new Object[] { Integer.valueOf(i), localf.toString() });
+      }
+      if ((localf == null) || (!localf.bIy())) {
+        break label400;
+      }
+      Log.i("MicroMsg.SubCoreVideoControl", "index:%d,it busy time, try to get sns album config.", new Object[] { Integer.valueOf(i) });
+      localVideoTransPara = localf.bIz();
+      bool1 = localf.oBQ;
+    }
+    for (;;)
+    {
+      if (localVideoTransPara == null) {
+        localVideoTransPara = bIq();
+      }
+      for (;;)
+      {
+        localVideoTransPara.audioSampleRate = 44100;
+        localVideoTransPara.nCd = 10;
+        localVideoTransPara.oCa = 200;
+        localVideoTransPara.duration = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yGy, 30);
+        localVideoTransPara = a(localVideoTransPara, 2);
+        if (!bool1) {
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(422L, 21L, 1L, false);
+        }
+        for (;;)
+        {
+          i = Util.nullAsNil((Integer)com.tencent.mm.plugin.report.service.h.a(localVideoTransPara.videoBitrate / 1000, new int[] { 350, 544, 800, 1200, 1600 }, 23, 28));
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(422L, i, 1L, false);
+          Log.i("MicroMsg.SubCoreVideoControl", "get sns album para cost %d. %s rpt %d ", new Object[] { Long.valueOf(Util.ticksToNow(l)), localVideoTransPara, Integer.valueOf(i) });
+          AppMethodBeat.o(126756);
+          return localVideoTransPara;
+          bool1 = false;
+          break;
+          label400:
+          i += 1;
+          break label103;
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(422L, 22L, 1L, false);
+        }
+      }
+      label427:
+      localVideoTransPara = null;
+    }
+  }
+  
+  public final VideoTransPara bIl()
   {
     AppMethodBeat.i(126758);
     long l = Util.currentTicks();
-    if (this.lJd == null) {
-      this.lJd = VD("StoryRecordVideoConfig");
+    if (this.oBF == null) {
+      this.oBF = NC("StoryRecordVideoConfig");
     }
     int i;
     Object localObject;
     VideoTransPara localVideoTransPara;
-    if (this.lJd != null)
+    if (this.oBF != null)
     {
       i = 0;
-      if (i < this.lJd.length)
+      if (i < this.oBF.length)
       {
-        localObject = this.lJd[i];
-        if ((localObject != null) && (((f)localObject).bkE()))
+        localObject = this.oBF[i];
+        if ((localObject != null) && (((f)localObject).bIy()))
         {
           Log.i("MicroMsg.SubCoreVideoControl", "it busy time, try to get story Record config.");
-          localVideoTransPara = ((f)localObject).bkF();
+          localVideoTransPara = ((f)localObject).bIz();
         }
       }
     }
-    for (boolean bool = ((f)localObject).lJo;; bool = true)
+    for (boolean bool = ((f)localObject).oBQ;; bool = true)
     {
       localObject = localVideoTransPara;
       if (localVideoTransPara == null)
       {
         localObject = new VideoTransPara();
-        ((VideoTransPara)localObject).lJx = true;
+        ((VideoTransPara)localObject).oBZ = true;
         ((VideoTransPara)localObject).width = 720;
         ((VideoTransPara)localObject).height = 1280;
         ((VideoTransPara)localObject).fps = 30;
         ((VideoTransPara)localObject).videoBitrate = 3500000;
-        ((VideoTransPara)localObject).kXt = 10;
+        ((VideoTransPara)localObject).nCd = 10;
         ((VideoTransPara)localObject).audioBitrate = 48000;
-        ((VideoTransPara)localObject).lJm = 2;
-        ((VideoTransPara)localObject).lJn = 1;
+        ((VideoTransPara)localObject).oBO = 2;
+        ((VideoTransPara)localObject).oBP = 1;
         ((VideoTransPara)localObject).audioChannelCount = 1;
       }
       ((VideoTransPara)localObject).audioSampleRate = 44100;
-      ((VideoTransPara)localObject).kXt = 10;
-      ((VideoTransPara)localObject).lJy = 200;
+      ((VideoTransPara)localObject).nCd = 10;
+      ((VideoTransPara)localObject).oCa = 200;
       localVideoTransPara = a((VideoTransPara)localObject, 3);
       if (localVideoTransPara.duration <= 0) {
-        localVideoTransPara.duration = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vvP, 15);
+        localVideoTransPara.duration = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yIQ, 15);
       }
       if (!bool) {
-        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(422L, 31L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(422L, 31L, 1L, false);
       }
       for (;;)
       {
         i = Util.nullAsNil((Integer)com.tencent.mm.plugin.report.service.h.a(localVideoTransPara.videoBitrate / 1000, new int[] { 350, 544, 800, 1200, 1600 }, 33, 38));
-        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(422L, i, 1L, false);
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(422L, i, 1L, false);
         Log.i("MicroMsg.SubCoreVideoControl", "get story record para cost %d. %s rpt %d", new Object[] { Long.valueOf(Util.ticksToNow(l)), localVideoTransPara, Integer.valueOf(i) });
         AppMethodBeat.o(126758);
         return localVideoTransPara;
         i += 1;
         break;
-        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(422L, 32L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(422L, 32L, 1L, false);
       }
       localVideoTransPara = null;
     }
   }
   
-  public final VideoTransPara bku()
+  public final VideoTransPara bIm()
   {
     AppMethodBeat.i(169097);
     long l = Util.currentTicks();
-    if (this.lJe == null) {
-      this.lJe = VD("FinderRecordVideoConfig");
+    if (this.oBG == null) {
+      this.oBG = NC("FinderRecordVideoConfig");
     }
     int i;
-    if (this.lJe != null)
+    if (this.oBG != null)
     {
       i = 0;
-      if (i < this.lJe.length)
+      if (i < this.oBG.length)
       {
-        localObject1 = this.lJe[i];
-        if ((localObject1 != null) && (((f)localObject1).bkE())) {
+        localObject1 = this.oBG[i];
+        if ((localObject1 != null) && (((f)localObject1).bIy())) {
           Log.i("MicroMsg.SubCoreVideoControl", "it busy time, try to get story Record config.");
         }
       }
     }
-    for (Object localObject1 = ((f)localObject1).bkG();; localObject1 = null)
+    for (Object localObject1 = ((f)localObject1).bIA();; localObject1 = null)
     {
       Object localObject2 = localObject1;
       if (localObject1 == null) {
-        localObject2 = bky();
+        localObject2 = bIr();
       }
       if (Log.getLogLevel() <= 1)
       {
@@ -1569,10 +1689,10 @@ public class e
         }
       }
       ((VideoTransPara)localObject2).audioSampleRate = 44100;
-      ((VideoTransPara)localObject2).lJy = 540;
+      ((VideoTransPara)localObject2).oCa = 540;
       localObject1 = a((VideoTransPara)localObject2, 4);
-      ((VideoTransPara)localObject1).duration = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vHF, 60);
-      ((VideoTransPara)localObject1).minDuration = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vHG, 1);
+      ((VideoTransPara)localObject1).duration = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yXJ, 60);
+      ((VideoTransPara)localObject1).minDuration = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yXK, 1);
       Log.i("MicroMsg.SubCoreVideoControl", "get finder record para cost %d. %s", new Object[] { Long.valueOf(Util.ticksToNow(l)), localObject1 });
       AppMethodBeat.o(169097);
       return localObject1;
@@ -1581,30 +1701,30 @@ public class e
     }
   }
   
-  public final VideoTransPara bkv()
+  public final VideoTransPara bIn()
   {
     AppMethodBeat.i(169098);
     long l = Util.currentTicks();
-    if (this.lJf == null) {
-      this.lJf = VD("FinderPublishVideoConfig");
+    if (this.oBH == null) {
+      this.oBH = NC("FinderPublishVideoConfig");
     }
     int i;
-    if (this.lJf != null)
+    if (this.oBH != null)
     {
       i = 0;
-      if (i < this.lJf.length)
+      if (i < this.oBH.length)
       {
-        localObject1 = this.lJf[i];
-        if ((localObject1 != null) && (((f)localObject1).bkE())) {
+        localObject1 = this.oBH[i];
+        if ((localObject1 != null) && (((f)localObject1).bIy())) {
           Log.i("MicroMsg.SubCoreVideoControl", "it busy time, try to get story Record config.");
         }
       }
     }
-    for (Object localObject1 = ((f)localObject1).bkG();; localObject1 = null)
+    for (Object localObject1 = ((f)localObject1).bIA();; localObject1 = null)
     {
       Object localObject2 = localObject1;
       if (localObject1 == null) {
-        localObject2 = bky();
+        localObject2 = bIr();
       }
       if (Log.getLogLevel() <= 1)
       {
@@ -1614,10 +1734,10 @@ public class e
         }
       }
       ((VideoTransPara)localObject2).audioSampleRate = 44100;
-      ((VideoTransPara)localObject2).lJy = 540;
+      ((VideoTransPara)localObject2).oCa = 540;
       localObject1 = a((VideoTransPara)localObject2, 4);
-      ((VideoTransPara)localObject1).duration = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vHH, 60);
-      ((VideoTransPara)localObject1).minDuration = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vHI, 1);
+      ((VideoTransPara)localObject1).duration = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yXL, 60);
+      ((VideoTransPara)localObject1).minDuration = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yXM, 1);
       Log.i("MicroMsg.SubCoreVideoControl", "get finder record para cost %d. %s", new Object[] { Long.valueOf(Util.ticksToNow(l)), localObject1 });
       AppMethodBeat.o(169098);
       return localObject1;
@@ -1626,55 +1746,55 @@ public class e
     }
   }
   
-  public final VideoTransPara bkw()
+  public final VideoTransPara bIp()
   {
     AppMethodBeat.i(126761);
     long l = Util.currentTicks();
-    if (this.lJk == null) {
-      this.lJk = VD("NearbyRecordVideoConfig");
+    if (this.oBM == null) {
+      this.oBM = NC("NearbyRecordVideoConfig");
     }
     int i;
     Object localObject;
     VideoTransPara localVideoTransPara;
-    if (this.lJk != null)
+    if (this.oBM != null)
     {
       i = 0;
-      if (i < this.lJk.length)
+      if (i < this.oBM.length)
       {
-        localObject = this.lJk[i];
-        if ((localObject != null) && (((f)localObject).bkE()))
+        localObject = this.oBM[i];
+        if ((localObject != null) && (((f)localObject).bIy()))
         {
           Log.i("MicroMsg.SubCoreVideoControl", "is busy time, try to get nearby record config.");
-          localVideoTransPara = ((f)localObject).bkF();
+          localVideoTransPara = ((f)localObject).bIz();
         }
       }
     }
-    for (boolean bool = ((f)localObject).lJo;; bool = true)
+    for (boolean bool = ((f)localObject).oBQ;; bool = true)
     {
       localObject = localVideoTransPara;
       if (localVideoTransPara == null) {
-        localObject = bkx();
+        localObject = bIq();
       }
       ((VideoTransPara)localObject).audioSampleRate = 44100;
-      ((VideoTransPara)localObject).kXt = 10;
-      ((VideoTransPara)localObject).lJy = 200;
+      ((VideoTransPara)localObject).nCd = 10;
+      ((VideoTransPara)localObject).oCa = 200;
       localVideoTransPara = a((VideoTransPara)localObject, 2);
       if (localVideoTransPara.duration <= 0) {
         localVideoTransPara.duration = 10;
       }
       if (!bool) {
-        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(422L, 31L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(422L, 31L, 1L, false);
       }
       for (;;)
       {
         i = Util.nullAsNil((Integer)com.tencent.mm.plugin.report.service.h.a(localVideoTransPara.videoBitrate / 1000, new int[] { 350, 544, 800, 1200, 1600 }, 33, 38));
-        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(422L, i, 1L, false);
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(422L, i, 1L, false);
         Log.i("MicroMsg.SubCoreVideoControl", "get nearby record para cost %d. %s rpt %d", new Object[] { Long.valueOf(Util.ticksToNow(l)), localVideoTransPara, Integer.valueOf(i) });
         AppMethodBeat.o(126761);
         return localVideoTransPara;
         i += 1;
         break;
-        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(422L, 32L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(422L, 32L, 1L, false);
       }
       localVideoTransPara = null;
     }
@@ -1683,99 +1803,9 @@ public class e
   public final VideoTransPara c(VideoTransPara paramVideoTransPara)
   {
     AppMethodBeat.i(126760);
-    if (paramVideoTransPara == null)
-    {
-      Log.e("MicroMsg.SubCoreVideoControl", "get c2c album video para but original video para is null.");
-      AppMethodBeat.o(126760);
-      return null;
-    }
-    int i = paramVideoTransPara.duration;
-    Object localObject1 = com.tencent.mm.n.a.jwk;
-    if (i >= com.tencent.mm.n.a.awa())
-    {
-      Log.w("MicroMsg.SubCoreVideoControl", "this video duration is large than %s s", new Object[] { Integer.valueOf(300) });
-      AppMethodBeat.o(126760);
-      return null;
-    }
-    long l = Util.currentTicks();
-    VideoTransPara localVideoTransPara = vV(paramVideoTransPara.duration);
-    boolean bool = true;
-    i = 1;
-    localObject1 = com.tencent.mm.model.c.d.bgB().Mu("100157");
-    if (((com.tencent.mm.storage.c)localObject1).isValid()) {
-      i = Util.getInt((String)((com.tencent.mm.storage.c)localObject1).hvz().get("VideoEncodeStep"), 1);
-    }
-    Log.i("MicroMsg.SubCoreVideoControl", "check c2c album encode step %d", new Object[] { Integer.valueOf(i) });
-    if (i > 0)
-    {
-      i = 1;
-      if (i == 0) {
-        break label409;
-      }
-      if (this.lJj == null) {
-        this.lJj = VD("C2CAlbumVideoStepConfig");
-      }
-      localObject1 = this.lJj;
-      label183:
-      if (localObject1 == null) {
-        break label447;
-      }
-      i = 0;
-      label190:
-      if (i >= localObject1.length) {
-        break label442;
-      }
-      Object localObject2 = localObject1[i];
-      if ((localObject2 == null) || (!localObject2.bkE())) {
-        break label435;
-      }
-      Log.i("MicroMsg.SubCoreVideoControl", "it busy time, try to calc c2c album config.");
-      i = a.a(localObject2.lJp, paramVideoTransPara, localVideoTransPara);
-      bool = localObject2.lJo;
-      label243:
-      if (i > 0) {
-        break label466;
-      }
-      localObject1 = vV(paramVideoTransPara.duration);
-      label256:
-      localObject1 = a((VideoTransPara)localObject1, 1);
-      if (bool) {
-        break label479;
-      }
-      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(422L, 1L, 1L, false);
-    }
-    for (;;)
-    {
-      int j = Util.nullAsNil((Integer)com.tencent.mm.plugin.report.service.h.a(((VideoTransPara)localObject1).videoBitrate / 1000, new int[] { 350, 544, 800, 1200, 1600 }, 3, 8));
-      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(422L, j, 1L, false);
-      Log.i("MicroMsg.SubCoreVideoControl", "get c2c album para cost %d rpt %d. bitrate %d new para %s, original para %s", new Object[] { Long.valueOf(Util.ticksToNow(l)), Integer.valueOf(j), Integer.valueOf(i), localObject1, paramVideoTransPara });
-      AppMethodBeat.o(126760);
-      return localObject1;
-      i = 0;
-      break;
-      label409:
-      if (this.lJi == null) {
-        this.lJi = VD("C2CAlbumVideoConfig");
-      }
-      localObject1 = this.lJi;
-      break label183;
-      label435:
-      i += 1;
-      break label190;
-      label442:
-      i = 0;
-      break label243;
-      label447:
-      Log.i("MicroMsg.SubCoreVideoControl", "it not busy time, try to calc c2c album default config.");
-      i = a.a(null, paramVideoTransPara, localVideoTransPara);
-      break label243;
-      label466:
-      localVideoTransPara.lJx = false;
-      localObject1 = localVideoTransPara;
-      break label256;
-      label479:
-      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(422L, 2L, 1L, false);
-    }
+    paramVideoTransPara = a(paramVideoTransPara, null);
+    AppMethodBeat.o(126760);
+    return paramVideoTransPara;
   }
   
   public void clearPluginData(int paramInt) {}
@@ -1788,13 +1818,13 @@ public class e
   public final byte[] getWeixinMeta()
   {
     AppMethodBeat.i(126752);
-    if (Util.isNullOrNil(this.lIY)) {}
+    if (Util.isNullOrNil(this.oBz)) {}
     try
     {
-      Object localObject = "{\"WXVer\":" + com.tencent.mm.protocal.d.RAD + "}";
-      this.lIY = ((String)localObject).getBytes("UTF-8");
+      Object localObject = "{\"WXVer\":" + com.tencent.mm.protocal.d.Yxh + "}";
+      this.oBz = ((String)localObject).getBytes("UTF-8");
       Log.i("MicroMsg.SubCoreVideoControl", "get weixin video meta %s", new Object[] { localObject });
-      localObject = this.lIY;
+      localObject = this.oBz;
       AppMethodBeat.o(126752);
       return localObject;
     }
@@ -1811,39 +1841,39 @@ public class e
   
   public void onAccountRelease()
   {
-    this.lJa = null;
-    this.lJj = null;
-    this.lJi = null;
-    this.lJb = null;
-    this.lJc = null;
+    this.oBB = null;
+    this.oBL = null;
+    this.oBK = null;
+    this.oBC = null;
+    this.oBE = null;
   }
   
   public void onSdcardMount(boolean paramBoolean) {}
   
-  public final VideoTransPara vT(int paramInt)
+  public final VideoTransPara vY(int paramInt)
   {
-    AppMethodBeat.i(216183);
+    AppMethodBeat.i(233875);
     long l = Util.currentTicks();
-    if (this.lJg == null) {
-      this.lJg = VD("PublishMegaVideoConfig");
+    if (this.oBI == null) {
+      this.oBI = NC("PublishMegaVideoConfig");
     }
     int i;
-    if (this.lJg != null)
+    if (this.oBI != null)
     {
       i = 0;
-      if (i < this.lJg.length)
+      if (i < this.oBI.length)
       {
-        localObject1 = this.lJg[i];
-        if ((localObject1 != null) && (((f)localObject1).bkE())) {
+        localObject1 = this.oBI[i];
+        if ((localObject1 != null) && (((f)localObject1).bIy())) {
           Log.i("MicroMsg.SubCoreVideoControl", "it busy time, try to get story Record config.");
         }
       }
     }
-    for (Object localObject1 = ((f)localObject1).bkG();; localObject1 = null)
+    for (Object localObject1 = ((f)localObject1).bIA();; localObject1 = null)
     {
       Object localObject2 = localObject1;
       if (localObject1 == null) {
-        localObject2 = bky();
+        localObject2 = bIr();
       }
       if (Log.getLogLevel() <= 1)
       {
@@ -1853,91 +1883,91 @@ public class e
         }
       }
       ((VideoTransPara)localObject2).audioSampleRate = 44100;
-      ((VideoTransPara)localObject2).lJy = 720;
+      ((VideoTransPara)localObject2).oCa = 720;
       localObject1 = a((VideoTransPara)localObject2, 4);
       ((VideoTransPara)localObject1).duration = paramInt;
-      ((VideoTransPara)localObject1).minDuration = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vHH, 60);
+      ((VideoTransPara)localObject1).minDuration = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yXL, 60);
       Log.i("MicroMsg.SubCoreVideoControl", "get finder record para cost %d. %s", new Object[] { Long.valueOf(Util.ticksToNow(l)), localObject1 });
-      AppMethodBeat.o(216183);
+      AppMethodBeat.o(233875);
       return localObject1;
       i += 1;
       break;
     }
   }
   
-  public final VideoTransPara vU(int paramInt)
+  public final VideoTransPara vZ(int paramInt)
   {
     AppMethodBeat.i(126759);
     long l = Util.currentTicks();
     int i;
-    if (this.lJh == null)
+    if (this.oBJ == null)
     {
       if (paramInt == 1) {
-        this.lJh = VD("GameRecordBigVideoConfig");
+        this.oBJ = NC("GameRecordBigVideoConfig");
       }
     }
     else
     {
-      if (this.lJh == null) {
-        break label362;
+      if (this.oBJ == null) {
+        break label364;
       }
       i = 0;
-      label41:
-      if (i >= this.lJh.length) {
-        break label362;
+      label42:
+      if (i >= this.oBJ.length) {
+        break label364;
       }
-      localObject1 = this.lJh[i];
-      if ((localObject1 == null) || (!((f)localObject1).bkE())) {
-        break label266;
+      localObject1 = this.oBJ[i];
+      if ((localObject1 == null) || (!((f)localObject1).bIy())) {
+        break label268;
       }
       Log.i("MicroMsg.SubCoreVideoControl", "it busy time, try to get game Record config.");
     }
-    label266:
-    label273:
-    label362:
-    for (Object localObject1 = ((f)localObject1).bkF();; localObject1 = null)
+    label268:
+    label275:
+    label364:
+    for (Object localObject1 = ((f)localObject1).bIz();; localObject1 = null)
     {
       Object localObject2 = localObject1;
       if (localObject1 == null)
       {
         if (paramInt != 1) {
-          break label273;
+          break label275;
         }
         localObject2 = new VideoTransPara();
-        ((VideoTransPara)localObject2).lJx = true;
+        ((VideoTransPara)localObject2).oBZ = true;
         ((VideoTransPara)localObject2).width = 1080;
         ((VideoTransPara)localObject2).height = 1920;
         ((VideoTransPara)localObject2).fps = 30;
         ((VideoTransPara)localObject2).videoBitrate = 3500000;
-        ((VideoTransPara)localObject2).kXt = 10;
+        ((VideoTransPara)localObject2).nCd = 10;
         ((VideoTransPara)localObject2).audioBitrate = 48000;
-        ((VideoTransPara)localObject2).lJm = 2;
-        ((VideoTransPara)localObject2).lJn = 1;
+        ((VideoTransPara)localObject2).oBO = 2;
+        ((VideoTransPara)localObject2).oBP = 1;
         ((VideoTransPara)localObject2).duration = 60;
       }
       for (((VideoTransPara)localObject2).audioChannelCount = 1;; ((VideoTransPara)localObject2).audioChannelCount = 1)
       {
         ((VideoTransPara)localObject2).audioSampleRate = 44100;
-        ((VideoTransPara)localObject2).kXt = 10;
-        ((VideoTransPara)localObject2).lJy = 200;
+        ((VideoTransPara)localObject2).nCd = 10;
+        ((VideoTransPara)localObject2).oCa = 200;
         localObject1 = a((VideoTransPara)localObject2, 1);
         Log.i("MicroMsg.SubCoreVideoControl", "get game record para cost %d. %s", new Object[] { Long.valueOf(Util.ticksToNow(l)), localObject1 });
         AppMethodBeat.o(126759);
         return localObject1;
-        this.lJh = VD("GameRecordVideoConfig");
+        this.oBJ = NC("GameRecordVideoConfig");
         break;
         i += 1;
-        break label41;
+        break label42;
         localObject2 = new VideoTransPara();
-        ((VideoTransPara)localObject2).lJx = true;
+        ((VideoTransPara)localObject2).oBZ = true;
         ((VideoTransPara)localObject2).width = 1080;
         ((VideoTransPara)localObject2).height = 1920;
         ((VideoTransPara)localObject2).fps = 30;
         ((VideoTransPara)localObject2).videoBitrate = 3500000;
-        ((VideoTransPara)localObject2).kXt = 10;
+        ((VideoTransPara)localObject2).nCd = 10;
         ((VideoTransPara)localObject2).audioBitrate = 48000;
-        ((VideoTransPara)localObject2).lJm = 2;
-        ((VideoTransPara)localObject2).lJn = 1;
+        ((VideoTransPara)localObject2).oBO = 2;
+        ((VideoTransPara)localObject2).oBP = 1;
         ((VideoTransPara)localObject2).duration = 60;
       }
     }
@@ -1945,7 +1975,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.modelcontrol.e
  * JD-Core Version:    0.7.0.1
  */

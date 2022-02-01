@@ -8,54 +8,54 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class ar
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private final View rys;
-  private final a ryt;
-  private int ryu;
-  private int ryv;
-  private boolean ryw;
+  private boolean uJA;
+  private final View uJw;
+  private final a uJx;
+  private int uJy;
+  private int uJz;
   
   private ar(View paramView, a parama)
   {
-    this.rys = paramView;
-    this.ryt = parama;
+    this.uJw = paramView;
+    this.uJx = parama;
   }
   
   public static void a(View paramView, a parama)
   {
     AppMethodBeat.i(133758);
     paramView = new ar(paramView, parama);
-    paramView.rys.getViewTreeObserver().addOnGlobalLayoutListener(paramView);
+    paramView.uJw.getViewTreeObserver().addOnGlobalLayoutListener(paramView);
     AppMethodBeat.o(133758);
   }
   
   public final void onGlobalLayout()
   {
     AppMethodBeat.i(133759);
-    if (!this.ryw)
+    if (!this.uJA)
     {
-      this.ryw = true;
-      this.ryu = this.rys.getWidth();
-      this.ryv = this.rys.getHeight();
+      this.uJA = true;
+      this.uJy = this.uJw.getWidth();
+      this.uJz = this.uJw.getHeight();
       AppMethodBeat.o(133759);
       return;
     }
-    if ((this.rys.getWidth() != this.ryu) || (this.rys.getHeight() != this.ryv))
+    if ((this.uJw.getWidth() != this.uJy) || (this.uJw.getHeight() != this.uJz))
     {
-      this.ryt.cnY();
-      this.ryu = this.rys.getWidth();
-      this.ryv = this.rys.getHeight();
+      this.uJx.cQA();
+      this.uJy = this.uJw.getWidth();
+      this.uJz = this.uJw.getHeight();
     }
     AppMethodBeat.o(133759);
   }
   
   public static abstract interface a
   {
-    public abstract void cnY();
+    public abstract void cQA();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.ar
  * JD-Core Version:    0.7.0.1
  */

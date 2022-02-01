@@ -14,23 +14,23 @@ import com.tencent.mm.sdk.platformtools.Log;
 public final class d
   extends a
 {
-  private TextView QIS;
+  private TextView XCr;
   
   public d(View paramView, k paramk)
   {
     super(paramView, paramk);
     AppMethodBeat.i(30854);
-    this.QIS = null;
-    this.QIS = ((TextView)paramView.findViewById(R.h.dPO));
-    this.QIS.setOnClickListener(new View.OnClickListener()
+    this.XCr = null;
+    this.XCr = ((TextView)paramView.findViewById(R.h.fRT));
+    this.XCr.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(30853);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wenote/ui/nativenote/itemholder/NoteComplaintItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        NoteEditorUI.hdX();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wenote/ui/nativenote/itemholder/NoteComplaintItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        NoteEditorUI.iEE();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wenote/ui/nativenote/itemholder/NoteComplaintItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(30853);
       }
@@ -41,18 +41,18 @@ public final class d
   public final void a(c paramc, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(30855);
-    Log.i("MicroMsg.Note.NoteTextItemHolder", "TextItemHolder position is " + mc());
+    Log.i("MicroMsg.Note.NoteTextItemHolder", "TextItemHolder position is " + KI());
     AppMethodBeat.o(30855);
   }
   
-  public final int cRD()
+  public final int dvW()
   {
     return 30;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import com.tencent.mm.modelgeo.b.a;
 final class k$b
   implements b.a
 {
-  public final boolean a(boolean paramBoolean, float paramFloat1, float paramFloat2, int paramInt, double paramDouble1, double paramDouble2)
+  public final boolean onGetLocation(boolean paramBoolean, float paramFloat1, float paramFloat2, int paramInt, double paramDouble1, double paramDouble2, double paramDouble3)
   {
     return paramBoolean;
   }

@@ -19,12 +19,12 @@ public class g
   {
     try
     {
-      AppMethodBeat.i(194169);
+      AppMethodBeat.i(219687);
       if (a == null) {
         a = new g();
       }
       g localg = a;
-      AppMethodBeat.o(194169);
+      AppMethodBeat.o(219687);
       return localg;
     }
     finally {}
@@ -32,7 +32,7 @@ public class g
   
   public static String a(String[] paramArrayOfString)
   {
-    AppMethodBeat.i(194174);
+    AppMethodBeat.i(219693);
     StringBuilder localStringBuilder = new StringBuilder();
     if ((paramArrayOfString != null) && (paramArrayOfString.length > 0))
     {
@@ -48,20 +48,20 @@ public class g
       localStringBuilder.append(paramArrayOfString[(paramArrayOfString.length - 1)]);
     }
     paramArrayOfString = localStringBuilder.toString();
-    AppMethodBeat.o(194174);
+    AppMethodBeat.o(219693);
     return paramArrayOfString;
   }
   
   public static String[] a(String paramString)
   {
-    AppMethodBeat.i(194172);
+    AppMethodBeat.i(219689);
     if (!TextUtils.isEmpty(paramString))
     {
       paramString = paramString.split(",");
-      AppMethodBeat.o(194172);
+      AppMethodBeat.o(219689);
       return paramString;
     }
-    AppMethodBeat.o(194172);
+    AppMethodBeat.o(219689);
     return null;
   }
   
@@ -69,9 +69,9 @@ public class g
   {
     try
     {
-      AppMethodBeat.i(194175);
+      AppMethodBeat.i(219697);
       paramContext = paramContext.getSharedPreferences("tbs_emergence", 4);
-      AppMethodBeat.o(194175);
+      AppMethodBeat.o(219697);
       return paramContext;
     }
     finally
@@ -83,46 +83,46 @@ public class g
   
   public List<String> a(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(194184);
+    AppMethodBeat.i(219731);
     paramString = b(paramContext).getString(paramString, "");
     paramContext = new ArrayList();
     paramString = paramString.split(";");
     if (paramString.length > 0) {
       paramContext.addAll(Arrays.asList(paramString));
     }
-    AppMethodBeat.o(194184);
+    AppMethodBeat.o(219731);
     return paramContext;
   }
   
   public void a(Context paramContext)
   {
-    AppMethodBeat.i(194178);
+    AppMethodBeat.i(219708);
     b = f.a(new File(paramContext.getFilesDir(), "prefs.lock"));
-    AppMethodBeat.o(194178);
+    AppMethodBeat.o(219708);
   }
   
   public void a(Context paramContext, String paramString, long paramLong)
   {
-    AppMethodBeat.i(194187);
+    AppMethodBeat.i(219746);
     paramContext = b(paramContext).edit();
     paramContext.putLong(paramString, paramLong);
     paramContext.apply();
     paramContext.commit();
-    AppMethodBeat.o(194187);
+    AppMethodBeat.o(219746);
   }
   
   public void a(Context paramContext, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(194177);
+    AppMethodBeat.i(219703);
     List localList = a(paramContext, paramString1);
     localList.add(paramString2);
     a(paramContext, paramString1, localList);
-    AppMethodBeat.o(194177);
+    AppMethodBeat.o(219703);
   }
   
   public void a(Context paramContext, String paramString, List<String> paramList)
   {
-    AppMethodBeat.i(194183);
+    AppMethodBeat.i(219723);
     paramContext = b(paramContext).edit();
     StringBuilder localStringBuilder = new StringBuilder();
     if ((paramList != null) && (!paramList.isEmpty()))
@@ -142,14 +142,14 @@ public class g
     paramContext.putString(paramString, localStringBuilder.toString());
     paramContext.apply();
     paramContext.commit();
-    AppMethodBeat.o(194183);
+    AppMethodBeat.o(219723);
   }
   
   public long b(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(194185);
+    AppMethodBeat.i(219738);
     long l = b(paramContext).getLong(paramString, -1L);
-    AppMethodBeat.o(194185);
+    AppMethodBeat.o(219738);
     return l;
   }
   
@@ -160,18 +160,18 @@ public class g
   
   public void c()
   {
-    AppMethodBeat.i(194181);
+    AppMethodBeat.i(219717);
     if (b != null)
     {
       b.b();
       b = null;
     }
-    AppMethodBeat.o(194181);
+    AppMethodBeat.o(219717);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.sdk.a.g
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,9 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.b.f;
 import com.tencent.mm.ui.widget.cedit.api.c;
 
 final class SnsUploadUI$18
@@ -16,20 +18,20 @@ final class SnsUploadUI$18
   
   public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(293262);
-    if (SnsUploadUI.a(this.LdU).getText().toString().trim().length() > 0)
+    AppMethodBeat.i(307834);
+    if (SnsUploadUI.a(this.REd).getText().toString().trim().length() > 10)
     {
-      this.LdU.enableOptionMenu(true);
-      AppMethodBeat.o(293262);
-      return;
+      paramCharSequence = this.REd.findViewById(b.f.sns_img_tips);
+      if (paramCharSequence != null) {
+        paramCharSequence.setVisibility(8);
+      }
     }
-    this.LdU.enableOptionMenu(false);
-    AppMethodBeat.o(293262);
+    AppMethodBeat.o(307834);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsUploadUI.18
  * JD-Core Version:    0.7.0.1
  */

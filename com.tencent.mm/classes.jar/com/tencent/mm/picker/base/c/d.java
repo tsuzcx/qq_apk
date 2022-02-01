@@ -10,11 +10,11 @@ import com.tencent.mm.picker.base.view.WheelView.a;
 public final class d
   extends Handler
 {
-  private final WheelView mBd;
+  private final WheelView pxN;
   
   public d(WheelView paramWheelView)
   {
-    this.mBd = paramWheelView;
+    this.pxN = paramWheelView;
   }
   
   public final void handleMessage(Message paramMessage)
@@ -27,15 +27,15 @@ public final class d
     {
       AppMethodBeat.o(175297);
       return;
-      this.mBd.invalidate();
+      this.pxN.invalidate();
       AppMethodBeat.o(175297);
       return;
-      this.mBd.a(WheelView.a.mBO);
+      this.pxN.a(WheelView.a.pyw);
       AppMethodBeat.o(175297);
       return;
-      paramMessage = this.mBd;
-      paramMessage.buI();
-      if (paramMessage.mBo != null) {
+      paramMessage = this.pxN;
+      paramMessage.bSR();
+      if (paramMessage.pxX != null) {
         paramMessage.postDelayed(new WheelView.1(paramMessage), 200L);
       }
     }
@@ -43,7 +43,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.picker.base.c.d
  * JD-Core Version:    0.7.0.1
  */

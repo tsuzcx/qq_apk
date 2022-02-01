@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.mall.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
+import com.tencent.mm.br.c;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -17,10 +17,10 @@ final class MallIndexUI$10
   {
     AppMethodBeat.i(66107);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/mall/ui/MallIndexUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/mall/ui/MallIndexUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
     Log.i("MicorMsg.MallIndexUI", "click settings btn");
-    c.ad(this.ERF.getContext(), "mall", ".ui.MallFunctionSettingsUI");
+    c.ai(this.KMe.getContext(), "mall", ".ui.MallFunctionSettingsUI");
     a.a(this, "com/tencent/mm/plugin/mall/ui/MallIndexUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(66107);
   }

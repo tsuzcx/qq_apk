@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.lite.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import androidx.appcompat.app.ActionBar;
 import com.tencent.luggage.f.a.c;
@@ -17,12 +16,12 @@ public class WxaVideoEditorUI
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(234282);
+    AppMethodBeat.i(271422);
     super.onCreate(paramBundle);
     if (getSupportActionBar() != null) {
       getSupportActionBar().hide();
     }
-    AppMethodBeat.o(234282);
+    AppMethodBeat.o(271422);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

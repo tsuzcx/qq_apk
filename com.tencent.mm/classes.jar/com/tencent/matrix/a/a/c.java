@@ -1,6 +1,6 @@
 package com.tencent.matrix.a.a;
 
-import com.tencent.matrix.a.a.a.j;
+import com.tencent.matrix.a.a.a.m;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -9,84 +9,75 @@ import java.util.concurrent.Callable;
 
 public final class c
 {
-  public Callable<String> cTA;
-  public long cTB = 120000L;
-  public int cTC = 30;
-  public long cTD = 30000L;
-  public long cTE = 1200000L;
-  public long cTF = 600000L;
-  public int cTG = 200;
-  public int cTH = 100;
-  public int cTI = 10000;
-  public int cTJ = 5000;
-  public boolean cTK = true;
-  public boolean cTL = false;
-  public boolean cTM = true;
-  public boolean cTN = false;
-  public boolean cTO = false;
-  public boolean cTP = false;
-  public boolean cTQ = false;
-  public int cTR = 0;
-  public boolean cTS = false;
-  public boolean cTT = false;
-  public List<String> cTU = Collections.emptyList();
-  public List<String> cTV = Collections.emptyList();
-  public List<String> cTW = Collections.emptyList();
-  public List<String> cTX = Collections.emptyList();
-  public final List<j> cTY = new ArrayList(3);
-  public b cTz = new b.a();
+  public final List<m> ePA = new ArrayList(3);
+  public b ePb = new b.a();
+  public Callable<String> ePc;
+  public long ePd = 120000L;
+  public int ePe = 30;
+  public long ePf = 30000L;
+  public long ePg = 1200000L;
+  public long ePh = 600000L;
+  public int ePi = 200;
+  public int ePj = 100;
+  public int ePk = 10000;
+  public int ePl = 5000;
+  public boolean ePm = true;
+  public boolean ePn = false;
+  public boolean ePo = true;
+  public boolean ePp = false;
+  public boolean ePq = false;
+  public boolean ePr = false;
+  public boolean ePs = false;
+  public int ePt = 0;
+  public boolean ePu = false;
+  public boolean ePv = false;
+  public List<String> ePw = Collections.emptyList();
+  public List<String> ePx = Collections.emptyList();
+  public List<String> ePy = Collections.emptyList();
+  public List<String> ePz = Collections.emptyList();
   
   public final String toString()
   {
-    return "BatteryMonitorConfig{wakelockTimeout=" + this.cTB + ", wakelockWarnCount=" + this.cTC + ", greyTime=" + this.cTD + ", foregroundLoopCheckTime=" + this.cTE + ", backgroundLoopCheckTime=" + this.cTF + ", overHeatCount=" + this.cTG + ", foregroundServiceLeakLimit=" + this.cTH + ", fgThreadWatchingLimit=" + this.cTI + ", bgThreadWatchingLimit=" + this.cTJ + ", isForegroundModeEnabled=" + this.cTK + ", isBackgroundModeEnabled=" + this.cTL + ", isBuiltinForegroundNotifyEnabled=" + this.cTM + ", isStatAsSample=" + this.cTN + ", isStatPidProc=" + this.cTO + ", isInspectiffiesError=" + this.cTP + ", isAmsHookEnabled=" + this.cTQ + ", isAggressiveMode=" + this.cTS + ", isUseThreadClock=" + this.cTT + ", tagWhiteList=" + this.cTU + ", tagBlackList=" + this.cTV + ", looperWatchList=" + this.cTW + ", threadWatchList=" + this.cTX + ", features=" + this.cTY + '}';
+    return "BatteryMonitorConfig{wakelockTimeout=" + this.ePd + ", wakelockWarnCount=" + this.ePe + ", greyTime=" + this.ePf + ", foregroundLoopCheckTime=" + this.ePg + ", backgroundLoopCheckTime=" + this.ePh + ", overHeatCount=" + this.ePi + ", foregroundServiceLeakLimit=" + this.ePj + ", fgThreadWatchingLimit=" + this.ePk + ", bgThreadWatchingLimit=" + this.ePl + ", isForegroundModeEnabled=" + this.ePm + ", isBackgroundModeEnabled=" + this.ePn + ", isBuiltinForegroundNotifyEnabled=" + this.ePo + ", isStatAsSample=" + this.ePp + ", isStatPidProc=" + this.ePq + ", isInspectiffiesError=" + this.ePr + ", isAmsHookEnabled=" + this.ePs + ", isAggressiveMode=" + this.ePu + ", isUseThreadClock=" + this.ePv + ", tagWhiteList=" + this.ePw + ", tagBlackList=" + this.ePx + ", looperWatchList=" + this.ePy + ", threadWatchList=" + this.ePz + ", features=" + this.ePA + '}';
   }
   
   public static final class a
   {
-    public final c cTZ = new c((byte)0);
+    public final c ePB = new c((byte)0);
     
-    public final a aa(Class<? extends j> paramClass)
+    public final a ak(Class<? extends m> paramClass)
     {
       try
       {
-        this.cTZ.cTY.add(paramClass.newInstance());
+        this.ePB.ePA.add(paramClass.newInstance());
         return this;
       }
       catch (Exception paramClass) {}
       return this;
     }
     
-    public final a eQ(String paramString)
+    public final a gp(String paramString)
     {
-      if (this.cTZ.cTU == Collections.EMPTY_LIST) {
-        this.cTZ.cTU = new ArrayList();
+      if (this.ePB.ePw == Collections.EMPTY_LIST) {
+        this.ePB.ePw = new ArrayList();
       }
-      this.cTZ.cTU.add(paramString);
+      this.ePB.ePw.add(paramString);
       return this;
     }
     
-    public final a eR(String paramString)
+    public final a gq(String paramString)
     {
-      if (this.cTZ.cTV == Collections.EMPTY_LIST) {
-        this.cTZ.cTV = new ArrayList();
+      if (this.ePB.ePx == Collections.EMPTY_LIST) {
+        this.ePB.ePx = new ArrayList();
       }
-      this.cTZ.cTV.add(paramString);
-      return this;
-    }
-    
-    public final a eS(String paramString)
-    {
-      if (this.cTZ.cTX == Collections.EMPTY_LIST) {
-        this.cTZ.cTX = new ArrayList();
-      }
-      this.cTZ.cTX.add(paramString);
+      this.ePB.ePx.add(paramString);
       return this;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.a.a.c
  * JD-Core Version:    0.7.0.1
  */

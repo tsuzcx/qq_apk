@@ -1,56 +1,58 @@
 package com.tencent.mm.plugin.scanner.box.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.f;
 import com.tencent.mm.plugin.scanner.box.a.a.b;
-import com.tencent.mm.plugin.webview.d.n;
+import com.tencent.mm.plugin.webview.jsapi.h;
+import com.tencent.mm.plugin.webview.jsapi.p;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/box/jsapi/JsApiReportKV;", "Lcom/tencent/mm/plugin/scanner/box/jsapi/base/ScanBaseJsApi;", "()V", "TAG", "", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-scan_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/box/jsapi/JsApiReportKV;", "Lcom/tencent/mm/plugin/scanner/box/jsapi/base/ScanBaseJsApi;", "()V", "TAG", "", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
   extends b
 {
-  public static final e IIe;
-  private static final String fXz = "reportKV";
+  public static final e OOd;
+  private static final String idA;
   
   static
   {
-    AppMethodBeat.i(217273);
-    IIe = new e();
-    fXz = "reportKV";
-    AppMethodBeat.o(217273);
+    AppMethodBeat.i(313784);
+    OOd = new e();
+    idA = "reportKV";
+    AppMethodBeat.o(313784);
   }
   
-  public final boolean a(com.tencent.mm.plugin.webview.d.f paramf, n paramn)
+  public final boolean a(h paramh, p paramp)
   {
-    AppMethodBeat.i(217272);
-    p.k(paramf, "env");
-    p.k(paramn, "msg");
-    Log.d("MicroMsg.JsApiReportKV", "ScanJsApi-Call:reportKV %s", new Object[] { paramn.params });
+    AppMethodBeat.i(313802);
+    s.u(paramh, "env");
+    s.u(paramp, "msg");
+    Log.d("MicroMsg.JsApiReportKV", "ScanJsApi-Call:reportKV %s", new Object[] { paramp.params });
     try
     {
-      paramf = new JSONObject(paramn.params);
-      int i = paramf.optInt("logid", 0);
-      paramf = paramf.optString("msg", "");
-      p.j(paramf, "paramsObj.optString(\"msg\", \"\")");
-      com.tencent.mm.plugin.report.f.Iyx.kvStat(i, paramf);
-      AppMethodBeat.o(217272);
+      paramh = new JSONObject(paramp.params);
+      int i = paramh.optInt("logid", 0);
+      paramh = paramh.optString("msg", "");
+      s.s(paramh, "paramsObj.optString(\"msg\", \"\")");
+      f.Ozc.kvStat(i, paramh);
+      AppMethodBeat.o(313802);
       return true;
     }
-    catch (Exception paramf)
+    catch (Exception paramh)
     {
       for (;;)
       {
-        Log.printErrStackTrace("MicroMsg.JsApiReportKV", (Throwable)paramf, "ScanJsApi-Call:reportKV exception", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.JsApiReportKV", (Throwable)paramh, "ScanJsApi-Call:reportKV exception", new Object[0]);
       }
     }
   }
   
-  public final String fCm()
+  public final String gPX()
   {
-    return fXz;
+    return idA;
   }
 }
 

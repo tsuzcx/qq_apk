@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Parcel;
@@ -8,8 +7,7 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ui.banner.AppBrandStickyBannerLogic.b;
-import com.tencent.mm.protocal.protobuf.cpv;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.protocal.protobuf.dgp;
 import java.lang.reflect.Constructor;
 
 public abstract class AppBrandLaunchErrorAction
@@ -17,18 +15,18 @@ public abstract class AppBrandLaunchErrorAction
 {
   public static final a CREATOR = new a();
   final String appId;
-  final int cBU;
+  final int euz;
   
   AppBrandLaunchErrorAction(Parcel paramParcel)
   {
     this.appId = paramParcel.readString();
-    this.cBU = paramParcel.readInt();
+    this.euz = paramParcel.readInt();
   }
   
   AppBrandLaunchErrorAction(String paramString, int paramInt)
   {
     this.appId = paramString;
-    this.cBU = paramInt;
+    this.euz = paramInt;
   }
   
   public abstract void ad(Context paramContext, String paramString);
@@ -42,43 +40,46 @@ public abstract class AppBrandLaunchErrorAction
   {
     paramParcel.writeString(getClass().getName());
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.cBU);
+    paramParcel.writeInt(this.euz);
   }
   
   static final class a
     implements Parcelable.Creator<AppBrandLaunchErrorAction>
   {
-    static AppBrandLaunchErrorAction a(String paramString, int paramInt, aj paramaj)
+    static AppBrandLaunchErrorAction a(String paramString, int paramInt, ak paramak)
     {
-      Intent localIntent = null;
+      Object localObject2 = null;
       AppMethodBeat.i(47042);
-      if ((paramaj == null) || (paramaj.field_launchAction == null))
+      if ((paramak == null) || (paramak.field_launchAction == null))
       {
         AppMethodBeat.o(47042);
         return null;
       }
-      switch (paramaj.field_launchAction.SZN)
+      Object localObject1 = localObject2;
+      switch (paramak.field_launchAction.aamK)
       {
       default: 
-        paramaj = localIntent;
+        localObject1 = localObject2;
       }
       for (;;)
       {
-        if (paramaj != null) {
-          AppBrandStickyBannerLogic.b.cL(paramString, paramInt);
+        if (localObject1 != null) {
+          AppBrandStickyBannerLogic.b.dl(paramString, paramInt);
         }
         AppMethodBeat.o(47042);
-        return paramaj;
-        paramaj = new AppBrandLaunchErrorActionAlert(paramString, paramInt, paramaj.field_launchAction.Tna, paramaj.field_launchAction.Txb);
+        return localObject1;
+        localObject1 = new AppBrandLaunchErrorActionAlert(paramString, paramInt, paramak.field_launchAction.aaBg, paramak.field_launchAction.aaLG);
         continue;
-        localIntent = new Intent();
-        localIntent.putExtra("rawUrl", paramaj.field_launchAction.TwZ);
-        localIntent.putExtra("forceHideShare", true);
-        paramaj = new AppBrandLaunchErrorActionStartActivity(paramString, paramInt, "webview", ".ui.tools.WebViewUI", localIntent);
+        localObject1 = new Intent();
+        ((Intent)localObject1).putExtra("rawUrl", paramak.field_launchAction.aaLE);
+        ((Intent)localObject1).putExtra("forceHideShare", true);
+        localObject1 = new AppBrandLaunchErrorActionStartActivity(paramString, paramInt, "webview", ".ui.tools.WebViewUI", (Intent)localObject1);
+        continue;
+        localObject1 = new AppBrandLaunchErrorActionBlockBackgroundLaunch(paramString, paramInt);
       }
     }
     
-    private static AppBrandLaunchErrorAction l(Parcel paramParcel)
+    private static AppBrandLaunchErrorAction o(Parcel paramParcel)
     {
       AppMethodBeat.i(47041);
       String str = paramParcel.readString();
@@ -103,7 +104,7 @@ public abstract class AppBrandLaunchErrorAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchErrorAction
  * JD-Core Version:    0.7.0.1
  */

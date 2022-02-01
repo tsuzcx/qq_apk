@@ -1,26 +1,21 @@
 package com.tencent.mm.plugin.webview;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/WebTransCheckResult;", "", "(Ljava/lang/String;I)V", "Unknown", "NeedTrans", "NoNeedTrans", "NotSure", "BadNet", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/WebTransCheckResult;", "", "(Ljava/lang/String;I)V", "Unknown", "NeedTrans", "NoNeedTrans", "NotSure", "BadNet", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public enum e
 {
   static
   {
-    AppMethodBeat.i(215123);
-    e locale1 = new e("Unknown", 0);
-    PDQ = locale1;
-    e locale2 = new e("NeedTrans", 1);
-    PDR = locale2;
-    e locale3 = new e("NoNeedTrans", 2);
-    PDS = locale3;
-    e locale4 = new e("NotSure", 3);
-    PDT = locale4;
-    e locale5 = new e("BadNet", 4);
-    PDU = locale5;
-    PDV = new e[] { locale1, locale2, locale3, locale4, locale5 };
-    AppMethodBeat.o(215123);
+    AppMethodBeat.i(294675);
+    Wut = new e("Unknown", 0);
+    Wuu = new e("NeedTrans", 1);
+    Wuv = new e("NoNeedTrans", 2);
+    Wuw = new e("NotSure", 3);
+    Wux = new e("BadNet", 4);
+    Wuy = new e[] { Wut, Wuu, Wuv, Wuw, Wux };
+    AppMethodBeat.o(294675);
   }
   
   private e() {}

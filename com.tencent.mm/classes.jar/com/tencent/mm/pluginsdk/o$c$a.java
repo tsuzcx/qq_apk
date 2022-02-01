@@ -2,11 +2,11 @@ package com.tencent.mm.pluginsdk;
 
 public abstract interface o$c$a
 {
-  public abstract String gOD();
+  public abstract String inR();
   
-  public abstract void gOE();
+  public abstract void inS();
   
-  public abstract boolean gOF();
+  public abstract boolean inT();
 }
 
 

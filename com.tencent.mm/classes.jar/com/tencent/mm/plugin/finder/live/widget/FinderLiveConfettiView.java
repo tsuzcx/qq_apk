@@ -6,232 +6,215 @@ import android.graphics.BitmapFactory;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.live.b.l.b;
-import com.tencent.mm.particles.b;
+import com.tencent.mm.live.model.l.b;
+import com.tencent.mm.particles.a.b;
+import com.tencent.mm.plugin.findersdk.a.an;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
-import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.b.aa.d;
-import kotlin.g.b.p;
-import kotlin.j.c.b;
-import kotlin.l;
-import kotlin.x;
+import java.util.Random;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.ah;
+import kotlin.g.b.ah.d;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.j.c.a;
+import kotlin.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveConfettiView;", "Landroid/widget/FrameLayout;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderLiveConfettView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "CONFETTI_INTERVAL", "", "TAG", "", "beginTimeStamp", "confettiBitmaps", "Ljava/util/ArrayList;", "Landroid/graphics/Bitmap;", "Lkotlin/collections/ArrayList;", "confettiManager", "Lcom/tencent/mm/particles/ConfettiManager;", "customConfettiBitmaps", "customConfettiRate", "customTotalRate", "iconAlpha", "", "initX", "initY", "scale", "timeHandler", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "getTimeHandler", "()Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "timeHandler$delegate", "Lkotlin/Lazy;", "addCustomBitmapsAndRate", "", "bitmaps", "rates", "addDefaultBitmap", "emitLikeConfetti", "getView", "nextInt", "next", "onDetachedFromWindow", "rollNextBitmap", "setIconAlpha", "alpha", "setInterval", "ms", "setScale", "setXy", "x", "y", "start", "stopAndDestroy", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveConfettiView;", "Landroid/widget/FrameLayout;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderLiveConfettView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "CONFETTI_INTERVAL", "", "TAG", "", "beginTimeStamp", "confettiBitmaps", "Ljava/util/ArrayList;", "Landroid/graphics/Bitmap;", "Lkotlin/collections/ArrayList;", "confettiManager", "Lcom/tencent/mm/particles/ConfettiManager;", "customConfettiBitmaps", "customConfettiRate", "customTotalRate", "iconAlpha", "", "initX", "initY", "scale", "timeHandler", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "getTimeHandler", "()Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "timeHandler$delegate", "Lkotlin/Lazy;", "addCustomBitmapsAndRate", "", "bitmaps", "rates", "addDefaultBitmap", "emitLikeConfetti", "getView", "nextInt", "next", "onDetachedFromWindow", "rollNextBitmap", "setIconAlpha", "alpha", "setInterval", "ms", "setScale", "setXy", "x", "y", "start", "stopAndDestroy", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderLiveConfettiView
   extends FrameLayout
-  implements com.tencent.mm.plugin.findersdk.a.q
+  implements an
 {
+  private final j Bwl;
+  private long DdE;
+  private ArrayList<Bitmap> Ddv;
+  private ArrayList<Integer> Ddw;
+  private int Ddx;
+  private int Eop;
+  private int Eoq;
+  private float Eor;
+  private long Eos;
   private final String TAG;
-  private com.tencent.mm.particles.c kFD;
-  private final ArrayList<Bitmap> kFE;
+  private com.tencent.mm.particles.c niE;
+  private final ArrayList<Bitmap> niF;
   private float scale;
-  private final f xVz;
-  private ArrayList<Bitmap> ysY;
-  private ArrayList<Integer> ysZ;
-  private int yta;
-  private long ytg;
-  private int znr;
-  private int zns;
-  private float znt;
-  private long znu;
   
   public FinderLiveConfettiView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(279766);
+    AppMethodBeat.i(361806);
     this.TAG = "FinderLiveConfettiView";
-    this.kFE = new ArrayList();
-    this.ysY = new ArrayList();
-    this.ysZ = new ArrayList();
-    paramContext = com.tencent.mm.plugin.finder.live.utils.a.yRm;
-    this.ytg = 500L;
+    this.niF = new ArrayList();
+    this.Ddv = new ArrayList();
+    this.Ddw = new ArrayList();
+    paramContext = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+    this.DdE = com.tencent.mm.plugin.finder.live.utils.a.euN();
     this.scale = 1.0F;
-    this.znt = 1.0F;
-    this.xVz = g.ar((kotlin.g.a.a)new b(this));
-    AppMethodBeat.o(279766);
+    this.Eor = 1.0F;
+    this.Bwl = k.cm((kotlin.g.a.a)new a(this));
+    AppMethodBeat.o(361806);
   }
   
   public FinderLiveConfettiView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(279767);
+    AppMethodBeat.i(361814);
     this.TAG = "FinderLiveConfettiView";
-    this.kFE = new ArrayList();
-    this.ysY = new ArrayList();
-    this.ysZ = new ArrayList();
-    paramContext = com.tencent.mm.plugin.finder.live.utils.a.yRm;
-    this.ytg = 500L;
+    this.niF = new ArrayList();
+    this.Ddv = new ArrayList();
+    this.Ddw = new ArrayList();
+    paramContext = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+    this.DdE = com.tencent.mm.plugin.finder.live.utils.a.euN();
     this.scale = 1.0F;
-    this.znt = 1.0F;
-    this.xVz = g.ar((kotlin.g.a.a)new b(this));
-    AppMethodBeat.o(279767);
+    this.Eor = 1.0F;
+    this.Bwl = k.cm((kotlin.g.a.a)new a(this));
+    AppMethodBeat.o(361814);
   }
   
   public FinderLiveConfettiView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(279769);
+    AppMethodBeat.i(361820);
     this.TAG = "FinderLiveConfettiView";
-    this.kFE = new ArrayList();
-    this.ysY = new ArrayList();
-    this.ysZ = new ArrayList();
-    paramContext = com.tencent.mm.plugin.finder.live.utils.a.yRm;
-    this.ytg = 500L;
+    this.niF = new ArrayList();
+    this.Ddv = new ArrayList();
+    this.Ddw = new ArrayList();
+    paramContext = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+    this.DdE = com.tencent.mm.plugin.finder.live.utils.a.euN();
     this.scale = 1.0F;
-    this.znt = 1.0F;
-    this.xVz = g.ar((kotlin.g.a.a)new b(this));
-    AppMethodBeat.o(279769);
+    this.Eor = 1.0F;
+    this.Bwl = k.cm((kotlin.g.a.a)new a(this));
+    AppMethodBeat.o(361820);
   }
   
-  private static int Nz(int paramInt)
+  private static int Pa(int paramInt)
   {
-    AppMethodBeat.i(279764);
+    AppMethodBeat.i(361834);
     if (paramInt <= 0)
     {
-      AppMethodBeat.o(279764);
+      AppMethodBeat.o(361834);
       return 0;
     }
-    paramInt = kotlin.j.c.aaBL.os(0, paramInt);
-    AppMethodBeat.o(279764);
+    paramInt = kotlin.j.c.aixl.qq(0, paramInt);
+    AppMethodBeat.o(361834);
     return paramInt;
   }
   
-  private final Bitmap dBP()
+  private static final b a(Bitmap paramBitmap, FinderLiveConfettiView paramFinderLiveConfettiView, Random paramRandom)
   {
-    AppMethodBeat.i(279765);
-    Object localObject1 = this.kFE.get(Nz(this.kFE.size()));
-    p.j(localObject1, "confettiBitmaps[nextInt(confettiBitmaps.size)]");
+    AppMethodBeat.i(361857);
+    s.u(paramBitmap, "$bitmap");
+    s.u(paramFinderLiveConfettiView, "this$0");
+    paramBitmap = (b)new com.tencent.mm.live.view.b.a(paramBitmap, paramFinderLiveConfettiView.Eor);
+    AppMethodBeat.o(361857);
+    return paramBitmap;
+  }
+  
+  private final Bitmap eqL()
+  {
+    AppMethodBeat.i(361847);
+    Object localObject1 = this.niF.get(Pa(this.niF.size()));
+    s.s(localObject1, "confettiBitmaps[nextInt(confettiBitmaps.size)]");
     Bitmap localBitmap = (Bitmap)localObject1;
-    Object localObject3;
-    int i;
-    int j;
-    if ((this.ysY.size() > 0) && (this.yta > 0))
+    if ((this.Ddv.size() > 0) && (this.Ddx > 0))
     {
-      synchronized (this.ysY)
+      synchronized (this.Ddv)
       {
-        localObject4 = ((Iterable)this.ysZ).iterator();
+        localObject4 = ((Iterable)this.Ddw).iterator();
         if (!((Iterator)localObject4).hasNext())
         {
           localObject1 = (Throwable)new UnsupportedOperationException("Empty collection can't be reduced.");
-          AppMethodBeat.o(279765);
+          AppMethodBeat.o(361847);
           throw ((Throwable)localObject1);
         }
       }
-      for (localObject3 = ((Iterator)localObject4).next(); ((Iterator)localObject4).hasNext(); localObject3 = Integer.valueOf(((Number)localObject3).intValue() + i)) {
+      for (Object localObject3 = ((Iterator)localObject4).next(); ((Iterator)localObject4).hasNext(); localObject3 = Integer.valueOf(((Number)localObject3).intValue() + i)) {
         i = ((Number)((Iterator)localObject4).next()).intValue();
       }
-      j = ((Number)localObject3).intValue();
+      int j = ((Number)localObject3).intValue();
       if (j < 100) {}
-      for (i = 100;; i = j)
+      for (int i = 100;; i = j)
       {
-        localObject3 = new aa.d();
-        ((aa.d)localObject3).aaBA = Nz(i);
-        i = ((aa.d)localObject3).aaBA;
+        localObject3 = new ah.d();
+        ((ah.d)localObject3).aixb = Pa(i);
+        i = ((ah.d)localObject3).aixb;
         if (i <= j) {
           break;
         }
-        AppMethodBeat.o(279765);
+        AppMethodBeat.o(361847);
         return localBitmap;
       }
-      Object localObject4 = (Iterable)this.ysZ;
+      Object localObject4 = (Iterable)this.Ddw;
       i = 0;
       localObject4 = ((Iterable)localObject4).iterator();
-      if (((Iterator)localObject4).hasNext())
+      while (((Iterator)localObject4).hasNext())
       {
         Object localObject5 = ((Iterator)localObject4).next();
         if (i < 0) {
-          j.iBO();
+          p.kkW();
         }
         j = ((Number)localObject5).intValue();
-        if (((aa.d)localObject3).aaBA <= j)
+        if (((ah.d)localObject3).aixb <= j)
         {
-          localObject3 = (Bitmap)j.M((List)this.ysY, i);
-          if (localObject3 != null) {
-            break label351;
+          localObject3 = (Bitmap)p.ae((List)this.Ddv, i);
+          if (localObject3 == null) {
+            localObject3 = localBitmap;
           }
-          localObject3 = localBitmap;
+          for (;;)
+          {
+            AppMethodBeat.o(361847);
+            return localObject3;
+          }
         }
+        ((ah.d)localObject3).aixb -= j;
+        i += 1;
       }
+      localObject3 = ah.aiuX;
     }
-    label351:
-    for (;;)
-    {
-      AppMethodBeat.o(279765);
-      return localObject3;
-      ((aa.d)localObject3).aaBA -= j;
-      i += 1;
-      break;
-      localObject3 = x.aazN;
-      AppMethodBeat.o(279765);
-      return localBitmap;
-    }
+    AppMethodBeat.o(361847);
+    return localBitmap;
   }
   
   private final MTimerHandler getTimeHandler()
   {
-    AppMethodBeat.i(279758);
-    MTimerHandler localMTimerHandler = (MTimerHandler)this.xVz.getValue();
-    AppMethodBeat.o(279758);
+    AppMethodBeat.i(361827);
+    MTimerHandler localMTimerHandler = (MTimerHandler)this.Bwl.getValue();
+    AppMethodBeat.o(361827);
     return localMTimerHandler;
   }
   
-  public final void ak(ArrayList<Integer> paramArrayList)
+  public final void ao(ArrayList<Integer> paramArrayList)
   {
-    AppMethodBeat.i(279762);
-    p.k(paramArrayList, "bitmaps");
-    this.kFE.clear();
+    AppMethodBeat.i(361920);
+    s.u(paramArrayList, "bitmaps");
+    this.niF.clear();
     paramArrayList = ((Iterable)paramArrayList).iterator();
     while (paramArrayList.hasNext())
     {
       int i = ((Number)paramArrayList.next()).intValue();
-      Object localObject = l.b.kum;
-      int j = (int)(l.b.aNC() * this.scale);
-      localObject = this.kFE;
-      Context localContext = getContext();
-      p.j(localContext, "context");
-      ((ArrayList)localObject).add(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(localContext.getResources(), i), j, j, true));
+      l.b localb = l.b.mYf;
+      int j = (int)(l.b.bhn() * this.scale);
+      this.niF.add(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getContext().getResources(), i), j, j, true));
     }
-    AppMethodBeat.o(279762);
+    AppMethodBeat.o(361920);
   }
   
-  public final void dIa()
+  public final void eAu()
   {
-    AppMethodBeat.i(279760);
+    AppMethodBeat.i(361899);
     getTimeHandler().stopTimer();
-    this.kFE.clear();
-    this.ysY.clear();
-    this.ysZ.clear();
-    this.yta = 0;
-    Log.i(this.TAG, "[stopAndDestroy]  startTime = " + this.znu);
-    AppMethodBeat.o(279760);
-  }
-  
-  public final void g(ArrayList<Bitmap> paramArrayList, ArrayList<Integer> paramArrayList1)
-  {
-    AppMethodBeat.i(279763);
-    p.k(paramArrayList, "bitmaps");
-    p.k(paramArrayList1, "rates");
-    this.ysY.addAll((Collection)paramArrayList);
-    this.ysZ.addAll((Collection)paramArrayList1);
-    paramArrayList = ((Iterable)paramArrayList1).iterator();
-    while (paramArrayList.hasNext()) {
-      this.yta = (((Number)paramArrayList.next()).intValue() + this.yta);
-    }
-    AppMethodBeat.o(279763);
-  }
-  
-  public final void gL(int paramInt1, int paramInt2)
-  {
-    this.znr = paramInt1;
-    this.zns = paramInt2;
+    this.niF.clear();
+    this.Ddv.clear();
+    this.Ddw.clear();
+    this.Ddx = 0;
+    Log.i(this.TAG, s.X("[stopAndDestroy]  startTime = ", Long.valueOf(this.Eos)));
+    AppMethodBeat.o(361899);
   }
   
   public final FrameLayout getView()
@@ -239,22 +222,42 @@ public final class FinderLiveConfettiView
     return (FrameLayout)this;
   }
   
+  public final void h(ArrayList<Bitmap> paramArrayList, ArrayList<Integer> paramArrayList1)
+  {
+    AppMethodBeat.i(361927);
+    s.u(paramArrayList, "bitmaps");
+    s.u(paramArrayList1, "rates");
+    this.Ddv.addAll((Collection)paramArrayList);
+    this.Ddw.addAll((Collection)paramArrayList1);
+    paramArrayList = ((Iterable)paramArrayList1).iterator();
+    while (paramArrayList.hasNext()) {
+      this.Ddx = (((Number)paramArrayList.next()).intValue() + this.Ddx);
+    }
+    AppMethodBeat.o(361927);
+  }
+  
+  public final void hQ(int paramInt1, int paramInt2)
+  {
+    this.Eop = paramInt1;
+    this.Eoq = paramInt2;
+  }
+  
   protected final void onDetachedFromWindow()
   {
-    AppMethodBeat.i(279761);
+    AppMethodBeat.i(361904);
     super.onDetachedFromWindow();
-    dIa();
-    AppMethodBeat.o(279761);
+    eAu();
+    AppMethodBeat.o(361904);
   }
   
   public final void setIconAlpha(float paramFloat)
   {
-    this.znt = paramFloat;
+    this.Eor = paramFloat;
   }
   
   public final void setInterval(long paramLong)
   {
-    this.ytg = paramLong;
+    this.DdE = paramLong;
   }
   
   public final void setScale(float paramFloat)
@@ -264,44 +267,31 @@ public final class FinderLiveConfettiView
   
   public final void start()
   {
-    AppMethodBeat.i(279759);
+    AppMethodBeat.i(361889);
     getTimeHandler().stopTimer();
-    getTimeHandler().startTimer(this.ytg);
-    this.znu = System.currentTimeMillis();
-    Log.i(this.TAG, "[start]  time = " + this.znu);
-    AppMethodBeat.o(279759);
+    getTimeHandler().startTimer(this.DdE);
+    this.Eos = System.currentTimeMillis();
+    Log.i(this.TAG, s.X("[start]  time = ", Long.valueOf(this.Eos)));
+    AppMethodBeat.o(361889);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/live/view/confetti/LiveLikeConfetti;", "it", "Ljava/util/Random;", "kotlin.jvm.PlatformType", "generateConfetti"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    implements b
-  {
-    a(FinderLiveConfettiView paramFinderLiveConfettiView, Bitmap paramBitmap) {}
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "invoke"})
-  static final class b
-    extends kotlin.g.b.q
+    extends u
     implements kotlin.g.a.a<MTimerHandler>
   {
-    b(FinderLiveConfettiView paramFinderLiveConfettiView)
+    a(FinderLiveConfettiView paramFinderLiveConfettiView)
     {
       super();
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onTimerExpired"})
-    static final class a
-      implements MTimerHandler.CallBack
+    private static final boolean b(FinderLiveConfettiView paramFinderLiveConfettiView)
     {
-      a(FinderLiveConfettiView.b paramb) {}
-      
-      public final boolean onTimerExpired()
-      {
-        AppMethodBeat.i(278418);
-        FinderLiveConfettiView.b(this.znw.znv);
-        AppMethodBeat.o(278418);
-        return true;
-      }
+      AppMethodBeat.i(361224);
+      s.u(paramFinderLiveConfettiView, "this$0");
+      FinderLiveConfettiView.a(paramFinderLiveConfettiView);
+      AppMethodBeat.o(361224);
+      return true;
     }
   }
 }

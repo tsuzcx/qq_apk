@@ -7,10 +7,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(78072);
-    PMI = new b("AUTO", 0);
-    PMJ = new b("LANDSCAPE", 1);
-    PMK = new b("PORTRAIT", 2);
-    PML = new b[] { PMI, PMJ, PMK };
+    WCP = new b("AUTO", 0);
+    WCQ = new b("LANDSCAPE", 1);
+    WCR = new b("PORTRAIT", 2);
+    WCS = new b[] { WCP, WCQ, WCR };
     AppMethodBeat.o(78072);
   }
   
@@ -18,7 +18,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.fts.ui.FtsWebVideoView.b
  * JD-Core Version:    0.7.0.1
  */

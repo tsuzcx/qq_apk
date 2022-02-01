@@ -1,44 +1,69 @@
 package com.tencent.mm.emoji.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.c.a;
-import com.tencent.mm.emoji.b.l;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.protocal.protobuf.ia;
+import com.tencent.mm.autogen.mmdata.rpt.bv;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.vending.c.a;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/report/EmojiPopupReport;", "", "()V", "ActionAddInDetail", "", "ActionDelete", "ActionDeleteConfirm", "ActionLongClick", "ActionTop", "ActionViewDetail", "SceneCapture", "SceneCustom", "SceneSearch", "SceneSimilar", "SceneStore", "TAG", "", "struct", "Lcom/tencent/mm/autogen/mmdata/rpt/EmoticonFastManagementStruct;", "getStruct", "()Lcom/tencent/mm/autogen/mmdata/rpt/EmoticonFastManagementStruct;", "report", "", "action", "setSceneFromType", "type", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
-  extends d
 {
-  public e(EmojiInfo paramEmojiInfo, boolean paramBoolean, d.a parama)
+  private static final String TAG;
+  public static final e mmt;
+  private static final bv mmu;
+  
+  static
   {
-    super(paramEmojiInfo, paramBoolean, parama);
-    AppMethodBeat.i(104489);
-    new f(paramEmojiInfo, paramBoolean, new d.a()
+    AppMethodBeat.i(183966);
+    mmt = new e();
+    TAG = "MicroMsg.EmojiPopupReport";
+    mmu = new bv();
+    AppMethodBeat.o(183966);
+  }
+  
+  public static bv aWd()
+  {
+    return mmu;
+  }
+  
+  public static void rG(int paramInt)
+  {
+    AppMethodBeat.i(183964);
+    mmu.ilm = paramInt;
+    mmu.bMH();
+    AppMethodBeat.o(183964);
+  }
+  
+  public static void rN(int paramInt)
+  {
+    int j = 1;
+    AppMethodBeat.i(183965);
+    bv localbv = mmu;
+    int i = j;
+    switch (paramInt)
     {
-      public final void B(int paramAnonymousInt, String paramAnonymousString)
-      {
-        AppMethodBeat.i(104487);
-        if (paramAnonymousInt == 0)
-        {
-          e.a(e.this, paramAnonymousString);
-          AppMethodBeat.o(104487);
-          return;
-        }
-        e.this.rP(paramAnonymousInt);
-        AppMethodBeat.o(104487);
-      }
-    });
-    AppMethodBeat.o(104489);
+    default: 
+      Log.e(TAG, "type scene mismatch");
+      i = j;
+    }
+    for (;;)
+    {
+      localbv.imW = i;
+      AppMethodBeat.o(183965);
+      return;
+      i = 2;
+      continue;
+      i = 4;
+      continue;
+      i = 3;
+      continue;
+      i = 5;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.d.e
  * JD-Core Version:    0.7.0.1
  */

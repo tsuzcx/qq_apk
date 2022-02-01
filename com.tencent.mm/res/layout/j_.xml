@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/rj"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout style="@style/lz">
-        <EditText android:id="@id/a4r" android:hint="@string/ag6" android:inputType="number" style="@style/nn" />
-        <View style="@style/nj" />
-        <EditText android:id="@id/a4q" android:hint="@string/ag5" style="@style/nm" />
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/aer" android:background="@drawable/hr" android:paddingLeft="@dimen/cv" android:paddingTop="@dimen/ig" android:paddingRight="@dimen/cv" android:paddingBottom="@dimen/ig" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/wv" android:id="@id/aes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a0t" android:singleLine="true" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="10.0dip" android:layout_height="20.0dip" android:layout_marginLeft="@dimen/g" android:src="@raw/biz_time_line_to_top_icon" app:iconColor="@color/wv" />
     </LinearLayout>
 </LinearLayout>

@@ -1,15 +1,15 @@
 package com.tencent.magicbrush.utils;
 
+import kotlin.Metadata;
 import kotlin.g.a.a;
-import kotlin.l;
 
-@l(iBK={1, 1, 16})
+@Metadata(bv={1, 0, 3}, k=3, mv={1, 1, 16})
 final class h
   implements Runnable
 {
   h(a parama)
   {
-    this.csv = parama;
+    this.aSH = parama;
   }
 }
 

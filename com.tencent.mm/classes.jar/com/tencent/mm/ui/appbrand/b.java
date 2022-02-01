@@ -29,15 +29,13 @@ import com.tencent.mm.R.i;
 import com.tencent.mm.R.l;
 import com.tencent.mm.R.m;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.appbrand.appusage.ag;
-import com.tencent.mm.plugin.voip.ui.MMCheckBox;
+import com.tencent.mm.plugin.voip.widget.MMCheckBox;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.MMStack;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ad;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.base.i;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.widget.a.i;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,179 +43,179 @@ public final class b
   extends i
   implements DialogInterface
 {
-  private LinearLayout UWb;
-  private int Wgg;
-  private ImageView Wgh;
-  private ImageView Wgi;
-  private Button Wgj;
-  private ViewGroup Wgk;
-  private TextView Wgl;
-  private TextView Wgm;
-  private TextView Wgn;
-  private TextView Wgo;
-  public List<b> Wgp;
-  public a Wgq;
-  CompoundButton.OnCheckedChangeListener Wgr;
-  private View.OnClickListener kte;
+  private LinearLayout acrm;
+  private int adNc;
+  private ImageView adNd;
+  private ImageView adNe;
+  private Button adNf;
+  private ViewGroup adNg;
+  private TextView adNh;
+  private TextView adNi;
+  private TextView adNj;
+  private TextView adNk;
+  public List<b> adNl;
+  public a adNm;
+  CompoundButton.OnCheckedChangeListener adNn;
   private int mMode;
-  private String pRV;
-  private boolean qTp;
-  private TextView unn;
+  private View.OnClickListener mWW;
+  private String sWX;
+  private boolean tYg;
+  private TextView xtJ;
   
   public b(Context paramContext, int paramInt, String paramString)
   {
     super(paramContext, R.m.TopstoryFeedbackDialog);
-    AppMethodBeat.i(279393);
-    this.Wgp = new ArrayList();
-    this.kte = new View.OnClickListener()
+    AppMethodBeat.i(249664);
+    this.adNl = new ArrayList();
+    this.mWW = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(288876);
+        AppMethodBeat.i(249667);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/appbrand/AppBrandNoticeMoreDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/appbrand/AppBrandNoticeMoreDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         int i = paramAnonymousView.getId();
         if (b.a(b.this) != null)
         {
-          if (i != R.h.dvN) {
+          if (i != R.h.fwe) {
             break label86;
           }
-          b.a(b.this).hJj();
+          b.a(b.this).jlN();
         }
         for (;;)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/appbrand/AppBrandNoticeMoreDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(288876);
+          AppMethodBeat.o(249667);
           return;
           label86:
-          if ((i == R.h.dvE) || (i == R.h.dvJ)) {
-            b.a(b.this).hJk();
-          } else if ((i == R.h.dvF) || (i == R.h.dvK)) {
-            b.a(b.this).hJl();
-          } else if (i == R.h.dvL) {
-            b.a(b.this).hJm();
+          if ((i == R.h.fvV) || (i == R.h.fwa)) {
+            b.a(b.this).jlO();
+          } else if ((i == R.h.fvW) || (i == R.h.fwb)) {
+            b.a(b.this).jlP();
+          } else if (i == R.h.fwc) {
+            b.a(b.this).esm();
           }
         }
       }
     };
-    this.Wgr = new CompoundButton.OnCheckedChangeListener()
+    this.adNn = new CompoundButton.OnCheckedChangeListener()
     {
       public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(271544);
-        ((b.b)paramAnonymousCompoundButton.getTag()).tsm = paramAnonymousBoolean;
+        AppMethodBeat.i(249668);
+        ((b.b)paramAnonymousCompoundButton.getTag()).wwJ = paramAnonymousBoolean;
         if (paramAnonymousBoolean) {
           b.b(b.this);
         }
         for (;;)
         {
           b.d(b.this);
-          AppMethodBeat.o(271544);
+          AppMethodBeat.o(249668);
           return;
           b.c(b.this);
         }
       }
     };
     this.mMode = paramInt;
-    this.pRV = paramString;
-    this.Wgg = 0;
+    this.sWX = paramString;
+    this.adNc = 0;
     if (!Util.isNullOrNil(paramString))
     {
-      if ((bC(paramString, 0)) || (bC(paramString, 1)) || (bC(paramString, 2))) {
+      if ((bU(paramString, 0)) || (bU(paramString, 1)) || (bU(paramString, 2))) {
         bool = true;
       }
-      this.qTp = bool;
+      this.tYg = bool;
     }
-    this.UWb = ((LinearLayout)ad.kS(paramContext).inflate(R.i.ecl, null));
-    this.Wgh = ((ImageView)this.UWb.findViewById(R.h.dvD));
-    this.Wgh.setColorFilter(paramContext.getResources().getColor(R.e.BG_2));
-    this.Wgi = ((ImageView)this.UWb.findViewById(R.h.dvC));
-    this.Wgi.setColorFilter(paramContext.getResources().getColor(R.e.BG_2));
+    this.acrm = ((LinearLayout)com.tencent.mm.ui.af.mU(paramContext).inflate(R.i.geS, null));
+    this.adNd = ((ImageView)this.acrm.findViewById(R.h.fvU));
+    this.adNd.setColorFilter(paramContext.getResources().getColor(R.e.BG_2));
+    this.adNe = ((ImageView)this.acrm.findViewById(R.h.fvT));
+    this.adNe.setColorFilter(paramContext.getResources().getColor(R.e.BG_2));
     setCanceledOnTouchOutside(true);
     if (this.mMode == 0)
     {
-      ((ViewStub)this.UWb.findViewById(R.h.dvI)).inflate();
-      this.Wgj = ((Button)this.UWb.findViewById(R.h.dvN));
-      this.Wgk = ((ViewGroup)this.UWb.findViewById(R.h.dvH));
-      this.Wgl = ((TextView)this.UWb.findViewById(R.h.dvE));
-      this.unn = ((TextView)this.UWb.findViewById(R.h.dvF));
-      this.Wgj.setOnClickListener(this.kte);
-      this.Wgl.setOnClickListener(this.kte);
-      this.unn.setOnClickListener(this.kte);
+      ((ViewStub)this.acrm.findViewById(R.h.fvZ)).inflate();
+      this.adNf = ((Button)this.acrm.findViewById(R.h.fwe));
+      this.adNg = ((ViewGroup)this.acrm.findViewById(R.h.fvY));
+      this.adNh = ((TextView)this.acrm.findViewById(R.h.fvV));
+      this.xtJ = ((TextView)this.acrm.findViewById(R.h.fvW));
+      this.adNf.setOnClickListener(this.mWW);
+      this.adNh.setOnClickListener(this.mWW);
+      this.xtJ.setOnClickListener(this.mWW);
       paramContext = new ArrayList();
-      paramString = this.UWb.getContext();
-      paramContext.add(new b(1, paramString.getString(R.l.eup)));
-      paramContext.add(new b(2, paramString.getString(R.l.euo)));
-      paramContext.add(new b(3, paramString.getString(R.l.euq)));
-      jV(paramContext);
-      AppMethodBeat.o(279393);
+      paramString = this.acrm.getContext();
+      paramContext.add(new b(1, paramString.getString(R.l.gwN)));
+      paramContext.add(new b(2, paramString.getString(R.l.gwM)));
+      paramContext.add(new b(3, paramString.getString(R.l.gwO)));
+      nk(paramContext);
+      AppMethodBeat.o(249664);
       return;
     }
-    ((ViewStub)this.UWb.findViewById(R.h.dvM)).inflate();
-    this.Wgm = ((TextView)this.UWb.findViewById(R.h.dvL));
-    this.Wgn = ((TextView)this.UWb.findViewById(R.h.dvJ));
-    this.Wgo = ((TextView)this.UWb.findViewById(R.h.dvK));
-    if (this.qTp) {
-      this.Wgm.setOnClickListener(this.kte);
+    ((ViewStub)this.acrm.findViewById(R.h.fwd)).inflate();
+    this.adNi = ((TextView)this.acrm.findViewById(R.h.fwc));
+    this.adNj = ((TextView)this.acrm.findViewById(R.h.fwa));
+    this.adNk = ((TextView)this.acrm.findViewById(R.h.fwb));
+    if (this.tYg) {
+      this.adNi.setOnClickListener(this.mWW);
     }
     for (;;)
     {
-      this.Wgn.setOnClickListener(this.kte);
-      this.Wgo.setOnClickListener(this.kte);
-      AppMethodBeat.o(279393);
+      this.adNj.setOnClickListener(this.mWW);
+      this.adNk.setOnClickListener(this.mWW);
+      AppMethodBeat.o(249664);
       return;
-      this.Wgm.setVisibility(8);
+      this.adNi.setVisibility(8);
     }
   }
   
-  private void FL(boolean paramBoolean)
+  private void Lx(boolean paramBoolean)
   {
-    AppMethodBeat.i(279397);
+    AppMethodBeat.i(249679);
     if (paramBoolean)
     {
-      this.Wgh.setVisibility(0);
-      this.Wgi.setVisibility(8);
-      AppMethodBeat.o(279397);
+      this.adNd.setVisibility(0);
+      this.adNe.setVisibility(8);
+      AppMethodBeat.o(249679);
       return;
     }
-    this.Wgh.setVisibility(8);
-    this.Wgi.setVisibility(0);
-    AppMethodBeat.o(279397);
+    this.adNd.setVisibility(8);
+    this.adNe.setVisibility(0);
+    AppMethodBeat.o(249679);
   }
   
   private MMCheckBox a(Context paramContext, b paramb)
   {
-    AppMethodBeat.i(279396);
-    MMCheckBox localMMCheckBox = new MMCheckBox(new ContextThemeWrapper(paramContext, R.m.eWe), null, R.m.eWe);
-    localMMCheckBox.setText(paramb.jmB);
+    AppMethodBeat.i(249673);
+    MMCheckBox localMMCheckBox = new MMCheckBox(new ContextThemeWrapper(paramContext, R.m.gZr), null, R.m.gZr);
+    localMMCheckBox.setText(paramb.displayName);
     localMMCheckBox.setTag(paramb);
-    localMMCheckBox.setTextSize(0, com.tencent.mm.ci.a.aY(paramContext, R.f.SmallTextSize));
-    localMMCheckBox.setOnCheckedChangeListener(this.Wgr);
-    AppMethodBeat.o(279396);
+    localMMCheckBox.setTextSize(0, com.tencent.mm.cd.a.br(paramContext, R.f.SmallTextSize));
+    localMMCheckBox.setOnCheckedChangeListener(this.adNn);
+    AppMethodBeat.o(249673);
     return localMMCheckBox;
   }
   
-  private static boolean bC(String paramString, int paramInt)
+  private static boolean bU(String paramString, int paramInt)
   {
-    AppMethodBeat.i(279401);
-    boolean bool = ((ag)h.ae(ag.class)).by(paramString, paramInt);
-    AppMethodBeat.o(279401);
+    AppMethodBeat.i(249682);
+    boolean bool = ((com.tencent.mm.plugin.appbrand.appusage.af)h.ax(com.tencent.mm.plugin.appbrand.appusage.af.class)).bP(paramString, paramInt);
+    AppMethodBeat.o(249682);
     return bool;
   }
   
-  private void jV(List<b> paramList)
+  private void nk(List<b> paramList)
   {
-    AppMethodBeat.i(279395);
+    AppMethodBeat.i(249670);
     if (paramList.isEmpty())
     {
       Log.i("MicroMsg.AppBrandNoticeMoreDialog", "has no reason data");
-      AppMethodBeat.o(279395);
+      AppMethodBeat.o(249670);
       return;
     }
-    this.Wgp.clear();
-    this.Wgp.addAll(paramList);
-    Context localContext = this.UWb.getContext();
+    this.adNl.clear();
+    this.adNl.addAll(paramList);
+    Context localContext = this.acrm.getContext();
     LinearLayout localLinearLayout = new LinearLayout(localContext);
     int i = 0;
     LinearLayout.LayoutParams localLayoutParams;
@@ -238,7 +236,7 @@ public final class b
       }
       i += 1;
     }
-    this.Wgk.addView(localLinearLayout);
+    this.adNg.addView(localLinearLayout);
     localLinearLayout = new LinearLayout(localContext);
     int j = 0;
     while (j < paramList.size() - i * 3)
@@ -253,46 +251,46 @@ public final class b
       localLinearLayout.addView((View)localObject, localLayoutParams);
       j += 1;
     }
-    this.Wgk.addView(localLinearLayout);
-    AppMethodBeat.o(279395);
+    this.adNg.addView(localLinearLayout);
+    AppMethodBeat.o(249670);
   }
   
   public final void dismiss()
   {
-    AppMethodBeat.i(279402);
+    AppMethodBeat.i(249693);
     if (Looper.myLooper() != Looper.getMainLooper())
     {
       MMHandlerThread.postToMainThread(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(281907);
+          AppMethodBeat.i(249674);
           b.this.dismiss();
-          AppMethodBeat.o(281907);
+          AppMethodBeat.o(249674);
         }
       });
       Log.e("MicroMsg.AppBrandNoticeMoreDialog", Util.getStack().toString());
-      AppMethodBeat.o(279402);
+      AppMethodBeat.o(249693);
       return;
     }
     try
     {
       super.dismiss();
-      AppMethodBeat.o(279402);
+      AppMethodBeat.o(249693);
       return;
     }
     catch (Exception localException)
     {
       Log.e("MicroMsg.AppBrandNoticeMoreDialog", "dismiss exception, e = " + localException.getMessage());
-      AppMethodBeat.o(279402);
+      AppMethodBeat.o(249693);
     }
   }
   
-  public final void hG(View paramView)
+  public final void lc(View paramView)
   {
-    AppMethodBeat.i(279399);
+    AppMethodBeat.i(249692);
     Context localContext = paramView.getContext();
-    Point localPoint = ar.au(localContext);
+    Point localPoint = aw.bf(localContext);
     int i;
     Window localWindow;
     WindowManager.LayoutParams localLayoutParams;
@@ -302,7 +300,7 @@ public final class b
     int m;
     if (this.mMode == 0)
     {
-      i = com.tencent.mm.ci.a.aZ(localContext, R.f.dlh) + com.tencent.mm.ci.a.aZ(localContext, R.f.dlf) + com.tencent.mm.ci.a.aZ(localContext, R.f.dle);
+      i = com.tencent.mm.cd.a.bs(localContext, R.f.flx) + com.tencent.mm.cd.a.bs(localContext, R.f.flv) + com.tencent.mm.cd.a.bs(localContext, R.f.flu);
       localWindow = getWindow();
       if (localWindow != null)
       {
@@ -312,15 +310,15 @@ public final class b
         localLayoutParams.horizontalMargin = 0.0F;
         arrayOfInt = new int[2];
         paramView.getLocationOnScreen(arrayOfInt);
-        localLayoutParams.x = (localPoint.x - arrayOfInt[0] - paramView.getMeasuredWidth() / 2 - com.tencent.mm.ci.a.aZ(localContext, R.f.dld) - com.tencent.mm.ci.a.aZ(localContext, R.f.dlf) / 2);
-        j = ar.kI(localContext);
-        k = com.tencent.mm.ci.a.aZ(localContext, R.f.dli);
-        m = com.tencent.mm.ci.a.aZ(localContext, R.f.dlg);
-        if (arrayOfInt[1] + paramView.getMeasuredHeight() + i + k - m <= localPoint.y - ar.aB(localContext)) {
+        localLayoutParams.x = (localPoint.x - arrayOfInt[0] - paramView.getMeasuredWidth() / 2 - com.tencent.mm.cd.a.bs(localContext, R.f.flt) - com.tencent.mm.cd.a.bs(localContext, R.f.flv) / 2);
+        j = aw.mL(localContext);
+        k = com.tencent.mm.cd.a.bs(localContext, R.f.fly);
+        m = com.tencent.mm.cd.a.bs(localContext, R.f.flw);
+        if (arrayOfInt[1] + paramView.getMeasuredHeight() + i + k - m <= localPoint.y - aw.bk(localContext)) {
           break label293;
         }
         localLayoutParams.y = (arrayOfInt[1] - j - i - k + m);
-        FL(false);
+        Lx(false);
       }
     }
     for (;;)
@@ -329,63 +327,63 @@ public final class b
       try
       {
         super.show();
-        AppMethodBeat.o(279399);
+        AppMethodBeat.o(249692);
         return;
       }
       catch (Exception paramView)
       {
         Log.printErrStackTrace("MicroMsg.AppBrandNoticeMoreDialog", paramView, "", new Object[0]);
-        AppMethodBeat.o(279399);
+        AppMethodBeat.o(249692);
       }
-      j = com.tencent.mm.ci.a.aZ(localContext, R.f.dlj) + com.tencent.mm.ci.a.aZ(localContext, R.f.dlf) + com.tencent.mm.ci.a.aZ(localContext, R.f.dle);
+      j = com.tencent.mm.cd.a.bs(localContext, R.f.flz) + com.tencent.mm.cd.a.bs(localContext, R.f.flv) + com.tencent.mm.cd.a.bs(localContext, R.f.flu);
       i = j;
-      if (this.qTp) {
+      if (this.tYg) {
         break;
       }
-      i = j - com.tencent.mm.ci.a.aZ(localContext, R.f.dlk);
+      i = j - com.tencent.mm.cd.a.bs(localContext, R.f.flA);
       break;
       label293:
       localLayoutParams.y = (arrayOfInt[1] - j + paramView.getMeasuredHeight() + k - m);
-      FL(true);
+      Lx(true);
     }
   }
   
   protected final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(279394);
+    AppMethodBeat.i(249688);
     super.onCreate(paramBundle);
-    setContentView(this.UWb);
-    AppMethodBeat.o(279394);
+    setContentView(this.acrm);
+    AppMethodBeat.o(249688);
   }
   
   public static abstract interface a
   {
-    public abstract void hJj();
+    public abstract void esm();
     
-    public abstract void hJk();
+    public abstract void jlN();
     
-    public abstract void hJl();
+    public abstract void jlO();
     
-    public abstract void hJm();
+    public abstract void jlP();
   }
   
   public final class b
   {
-    public int Wgt;
-    public String jmB;
-    public boolean tsm;
+    public int adNp;
+    public String displayName;
+    public boolean wwJ;
     
     public b(int paramInt, String paramString)
     {
-      this.Wgt = paramInt;
-      this.jmB = paramString;
-      this.tsm = false;
+      this.adNp = paramInt;
+      this.displayName = paramString;
+      this.wwJ = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.appbrand.b
  * JD-Core Version:    0.7.0.1
  */

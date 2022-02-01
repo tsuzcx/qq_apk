@@ -12,12 +12,12 @@ final class o$1
 {
   o$1(o paramo) {}
   
-  public final void d(boolean paramBoolean, String paramString, int paramInt)
+  public final void c(boolean paramBoolean, String paramString, int paramInt)
   {
     AppMethodBeat.i(47639);
     if (paramBoolean)
     {
-      h.IzE.a(15789, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(0), paramString });
+      h.OAn.b(15789, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(0), paramString });
       PluginAppBrand.getProcessSharedPrefs().edit().putBoolean("key_sendtodesktop_no_more_show_permission_notify_dialog", true).apply();
     }
     AppMethodBeat.o(47639);
@@ -25,7 +25,7 @@ final class o$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.o.1
  * JD-Core Version:    0.7.0.1
  */

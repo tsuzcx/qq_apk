@@ -6,9 +6,9 @@ import com.google.android.exoplayer2.drm.b;
 public final class d
   implements u
 {
-  private final b<com.google.android.exoplayer2.drm.d> aLu;
-  private final int aLv;
-  private final long aLw;
+  private final b<com.google.android.exoplayer2.drm.d> cFr;
+  private final int cFs;
+  private final long cFt;
   private final Context context;
   
   public d(Context paramContext)
@@ -21,7 +21,7 @@ public final class d
     this(paramContext, '\000');
   }
   
-  private d(Context paramContext, char paramChar)
+  public d(Context paramContext, char paramChar)
   {
     this(paramContext, null);
   }
@@ -29,9 +29,9 @@ public final class d
   private d(Context paramContext, b<com.google.android.exoplayer2.drm.d> paramb)
   {
     this.context = paramContext;
-    this.aLu = null;
-    this.aLv = 0;
-    this.aLw = 5000L;
+    this.cFr = null;
+    this.cFs = 0;
+    this.cFt = 5000L;
   }
   
   /* Error */
@@ -48,19 +48,19 @@ public final class d
     //   15: getfield 33	com/google/android/exoplayer2/d:context	Landroid/content/Context;
     //   18: astore 12
     //   20: aload_0
-    //   21: getfield 35	com/google/android/exoplayer2/d:aLu	Lcom/google/android/exoplayer2/drm/b;
+    //   21: getfield 35	com/google/android/exoplayer2/d:cFr	Lcom/google/android/exoplayer2/drm/b;
     //   24: astore 13
     //   26: aload_0
-    //   27: getfield 41	com/google/android/exoplayer2/d:aLw	J
+    //   27: getfield 41	com/google/android/exoplayer2/d:cFt	J
     //   30: lstore 9
     //   32: aload_0
-    //   33: getfield 37	com/google/android/exoplayer2/d:aLv	I
+    //   33: getfield 37	com/google/android/exoplayer2/d:cFs	I
     //   36: istore 7
     //   38: aload 11
     //   40: new 60	com/google/android/exoplayer2/video/c
     //   43: dup
     //   44: aload 12
-    //   46: getstatic 66	com/google/android/exoplayer2/e/c:bdq	Lcom/google/android/exoplayer2/e/c;
+    //   46: getstatic 66	com/google/android/exoplayer2/e/c:cXk	Lcom/google/android/exoplayer2/e/c;
     //   49: lload 9
     //   51: aload 13
     //   53: aload_1
@@ -139,23 +139,23 @@ public final class d
     //   176: getfield 33	com/google/android/exoplayer2/d:context	Landroid/content/Context;
     //   179: astore 12
     //   181: aload_0
-    //   182: getfield 35	com/google/android/exoplayer2/d:aLu	Lcom/google/android/exoplayer2/drm/b;
+    //   182: getfield 35	com/google/android/exoplayer2/d:cFr	Lcom/google/android/exoplayer2/drm/b;
     //   185: astore 13
     //   187: iconst_0
     //   188: anewarray 129	com/google/android/exoplayer2/a/d
     //   191: astore_2
     //   192: aload_0
-    //   193: getfield 37	com/google/android/exoplayer2/d:aLv	I
+    //   193: getfield 37	com/google/android/exoplayer2/d:cFs	I
     //   196: istore 8
     //   198: aload 11
     //   200: new 131	com/google/android/exoplayer2/a/i
     //   203: dup
-    //   204: getstatic 66	com/google/android/exoplayer2/e/c:bdq	Lcom/google/android/exoplayer2/e/c;
+    //   204: getstatic 66	com/google/android/exoplayer2/e/c:cXk	Lcom/google/android/exoplayer2/e/c;
     //   207: aload 13
     //   209: aload_1
     //   210: aload_3
     //   211: aload 12
-    //   213: invokestatic 137	com/google/android/exoplayer2/a/c:ab	(Landroid/content/Context;)Lcom/google/android/exoplayer2/a/c;
+    //   213: invokestatic 137	com/google/android/exoplayer2/a/c:aM	(Landroid/content/Context;)Lcom/google/android/exoplayer2/a/c;
     //   216: aload_2
     //   217: invokespecial 140	com/google/android/exoplayer2/a/i:<init>	(Lcom/google/android/exoplayer2/e/c;Lcom/google/android/exoplayer2/drm/b;Landroid/os/Handler;Lcom/google/android/exoplayer2/a/e;Lcom/google/android/exoplayer2/a/c;[Lcom/google/android/exoplayer2/a/d;)V
     //   220: invokevirtual 73	java/util/ArrayList:add	(Ljava/lang/Object;)Z

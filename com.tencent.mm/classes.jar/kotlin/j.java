@@ -1,12 +1,13 @@
 package kotlin;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"lazyOf", "Lkotlin/Lazy;", "T", "value", "(Ljava/lang/Object;)Lkotlin/Lazy;", "getValue", "thisRef", "", "property", "Lkotlin/reflect/KProperty;", "(Lkotlin/Lazy;Ljava/lang/Object;Lkotlin/reflect/KProperty;)Ljava/lang/Object;", "kotlin-stdlib"}, iBN=1)
-public class j
-  extends i
-{}
+@Metadata(d1={""}, d2={"Lkotlin/Lazy;", "T", "", "value", "getValue", "()Ljava/lang/Object;", "isInitialized", "", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
+public abstract interface j<T>
+{
+  public abstract T getValue();
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlin.j
  * JD-Core Version:    0.7.0.1
  */

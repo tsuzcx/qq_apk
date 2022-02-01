@@ -25,13 +25,13 @@ public class WXMiniProgramObject
   
   public WXMiniProgramObject()
   {
-    AppMethodBeat.i(253686);
+    AppMethodBeat.i(243000);
     this.miniprogramType = 0;
     this.disableforward = 0;
     this.isUpdatableMessage = false;
     this.isSecretMessage = false;
     this.extraInfoMap = null;
-    AppMethodBeat.o(253686);
+    AppMethodBeat.o(243000);
   }
   
   public boolean checkArgs()
@@ -62,7 +62,7 @@ public class WXMiniProgramObject
   
   public String getExtra(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(253690);
+    AppMethodBeat.i(243019);
     HashMap localHashMap = this.extraInfoMap;
     if (localHashMap != null)
     {
@@ -73,9 +73,9 @@ public class WXMiniProgramObject
     }
     for (;;)
     {
-      AppMethodBeat.o(253690);
+      AppMethodBeat.o(243019);
       return paramString2;
-      AppMethodBeat.o(253690);
+      AppMethodBeat.o(243019);
       return null;
       label41:
       paramString2 = paramString1;
@@ -84,14 +84,14 @@ public class WXMiniProgramObject
   
   public void putExtra(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(253689);
+    AppMethodBeat.i(243017);
     if (this.extraInfoMap == null) {
       this.extraInfoMap = new HashMap();
     }
     if (!b.b(paramString1)) {
       this.extraInfoMap.put(paramString1, paramString2);
     }
-    AppMethodBeat.o(253689);
+    AppMethodBeat.o(243017);
   }
   
   public void serialize(Bundle paramBundle)

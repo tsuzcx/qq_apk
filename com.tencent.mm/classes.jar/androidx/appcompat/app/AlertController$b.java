@@ -10,27 +10,27 @@ import java.lang.ref.WeakReference;
 final class AlertController$b
   extends Handler
 {
-  private WeakReference<DialogInterface> fL;
+  private WeakReference<DialogInterface> gG;
   
   public AlertController$b(DialogInterface paramDialogInterface)
   {
-    AppMethodBeat.i(237974);
-    this.fL = new WeakReference(paramDialogInterface);
-    AppMethodBeat.o(237974);
+    AppMethodBeat.i(200621);
+    this.gG = new WeakReference(paramDialogInterface);
+    AppMethodBeat.o(200621);
   }
   
   public final void handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(237976);
+    AppMethodBeat.i(200631);
     switch (paramMessage.what)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(237976);
+      AppMethodBeat.o(200631);
       return;
-      ((DialogInterface.OnClickListener)paramMessage.obj).onClick((DialogInterface)this.fL.get(), paramMessage.what);
-      AppMethodBeat.o(237976);
+      ((DialogInterface.OnClickListener)paramMessage.obj).onClick((DialogInterface)this.gG.get(), paramMessage.what);
+      AppMethodBeat.o(200631);
       return;
       ((DialogInterface)paramMessage.obj).dismiss();
     }

@@ -1,60 +1,40 @@
 package com.tencent.mm.plugin.finder.feed.model.internal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "FEED_DEFAULT", "FEED_TIMELINE_ALL", "FEED_TIMELINE_FRIEND", "FEED_TIMELINE_LBS", "FEED_NEARBY_LIVE", "FEED_TIMELINE_FOLLOW", "FEED_TIMELINE_MACHINE", "FEED_PROFILE", "FEED_PROFILE_TIMELINE", "FEED_LIKED_TIMELINE", "FEED_RETRANSMIT_SOURCE", "FEED_TOPIC_TIMELINE", "FEED_FAV_LIST", "FEED_FOLDED_LIST", "FEED_FRIEND_LIKE_LIST", "SELF_FEED_PROFILE", "SELF_FEED_FULL_PROFILE", "SELF_FEED_AT_MANAGER", "FEED_REL_RECOMMEND", "FEED_AT_TIMELINE", "Companion", "plugin-finder-base_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "FEED_DEFAULT", "FEED_TIMELINE_ALL", "FEED_TIMELINE_FRIEND", "FEED_TIMELINE_LBS", "FEED_NEARBY_LIVE", "FEED_TIMELINE_FOLLOW", "FEED_TIMELINE_MACHINE", "FEED_PROFILE", "FEED_PROFILE_TIMELINE", "FEED_LIKED_TIMELINE", "FEED_RETRANSMIT_SOURCE", "FEED_TOPIC_TIMELINE", "FEED_FAV_LIST", "FEED_FOLDED_LIST", "FEED_FRIEND_LIKE_LIST", "SELF_FEED_PROFILE", "SELF_FEED_FULL_PROFILE", "SELF_FEED_AT_MANAGER", "FEED_REL_RECOMMEND", "FEED_AT_TIMELINE", "Companion", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public enum g
 {
-  public static final a xKI;
+  public static final a Bkb;
   public final int value;
   
   static
   {
-    AppMethodBeat.i(263819);
-    g localg1 = new g("FEED_DEFAULT", 0, -1);
-    xKn = localg1;
-    g localg2 = new g("FEED_TIMELINE_ALL", 1, 0);
-    xKo = localg2;
-    g localg3 = new g("FEED_TIMELINE_FRIEND", 2, 1);
-    xKp = localg3;
-    g localg4 = new g("FEED_TIMELINE_LBS", 3, 2);
-    xKq = localg4;
-    g localg5 = new g("FEED_NEARBY_LIVE", 4, 1001);
-    xKr = localg5;
-    g localg6 = new g("FEED_TIMELINE_FOLLOW", 5, 3);
-    xKs = localg6;
-    g localg7 = new g("FEED_TIMELINE_MACHINE", 6, 4);
-    xKt = localg7;
-    g localg8 = new g("FEED_PROFILE", 7, 100);
-    xKu = localg8;
-    g localg9 = new g("FEED_PROFILE_TIMELINE", 8, 101);
-    xKv = localg9;
-    g localg10 = new g("FEED_LIKED_TIMELINE", 9, 102);
-    xKw = localg10;
-    g localg11 = new g("FEED_RETRANSMIT_SOURCE", 10, 103);
-    xKx = localg11;
-    g localg12 = new g("FEED_TOPIC_TIMELINE", 11, 104);
-    xKy = localg12;
-    g localg13 = new g("FEED_FAV_LIST", 12, 105);
-    xKz = localg13;
-    g localg14 = new g("FEED_FOLDED_LIST", 13, 106);
-    xKA = localg14;
-    g localg15 = new g("FEED_FRIEND_LIKE_LIST", 14, 107);
-    xKB = localg15;
-    g localg16 = new g("SELF_FEED_PROFILE", 15, 108);
-    xKC = localg16;
-    g localg17 = new g("SELF_FEED_FULL_PROFILE", 16, 109);
-    xKD = localg17;
-    g localg18 = new g("SELF_FEED_AT_MANAGER", 17, 200);
-    xKE = localg18;
-    g localg19 = new g("FEED_REL_RECOMMEND", 18, 17);
-    xKF = localg19;
-    g localg20 = new g("FEED_AT_TIMELINE", 19, 18);
-    xKG = localg20;
-    xKH = new g[] { localg1, localg2, localg3, localg4, localg5, localg6, localg7, localg8, localg9, localg10, localg11, localg12, localg13, localg14, localg15, localg16, localg17, localg18, localg19, localg20 };
-    xKI = new a((byte)0);
-    AppMethodBeat.o(263819);
+    AppMethodBeat.i(366607);
+    Bkc = new g("FEED_DEFAULT", 0, -1);
+    Bkd = new g("FEED_TIMELINE_ALL", 1, 0);
+    Bke = new g("FEED_TIMELINE_FRIEND", 2, 1);
+    Bkf = new g("FEED_TIMELINE_LBS", 3, 2);
+    Bkg = new g("FEED_NEARBY_LIVE", 4, 1001);
+    Bkh = new g("FEED_TIMELINE_FOLLOW", 5, 3);
+    Bki = new g("FEED_TIMELINE_MACHINE", 6, 4);
+    Bkj = new g("FEED_PROFILE", 7, 100);
+    Bkk = new g("FEED_PROFILE_TIMELINE", 8, 101);
+    Bkl = new g("FEED_LIKED_TIMELINE", 9, 102);
+    Bkm = new g("FEED_RETRANSMIT_SOURCE", 10, 103);
+    Bkn = new g("FEED_TOPIC_TIMELINE", 11, 104);
+    Bko = new g("FEED_FAV_LIST", 12, 105);
+    Bkp = new g("FEED_FOLDED_LIST", 13, 106);
+    Bkq = new g("FEED_FRIEND_LIKE_LIST", 14, 107);
+    Bkr = new g("SELF_FEED_PROFILE", 15, 108);
+    Bks = new g("SELF_FEED_FULL_PROFILE", 16, 109);
+    Bkt = new g("SELF_FEED_AT_MANAGER", 17, 200);
+    Bku = new g("FEED_REL_RECOMMEND", 18, 17);
+    Bkv = new g("FEED_AT_TIMELINE", 19, 18);
+    Bkw = new g[] { Bkc, Bkd, Bke, Bkf, Bkg, Bkh, Bki, Bkj, Bkk, Bkl, Bkm, Bkn, Bko, Bkp, Bkq, Bkr, Bks, Bkt, Bku, Bkv };
+    Bkb = new a((byte)0);
+    AppMethodBeat.o(366607);
   }
   
   private g(int paramInt)
@@ -62,60 +42,60 @@ public enum g
     this.value = paramInt;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene$Companion;", "", "()V", "get", "Lcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene;", "value", "", "plugin-finder-base_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene$Companion;", "", "()V", "get", "Lcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene;", "value", "", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
-    public static g MG(int paramInt)
+    public static g Od(int paramInt)
     {
-      if (paramInt == g.xKo.value) {
-        return g.xKo;
+      if (paramInt == g.Bkd.value) {
+        return g.Bkd;
       }
-      if (paramInt == g.xKt.value) {
-        return g.xKt;
+      if (paramInt == g.Bki.value) {
+        return g.Bki;
       }
-      if (paramInt == g.xKq.value) {
-        return g.xKq;
+      if (paramInt == g.Bkf.value) {
+        return g.Bkf;
       }
-      if (paramInt == g.xKs.value) {
-        return g.xKs;
+      if (paramInt == g.Bkh.value) {
+        return g.Bkh;
       }
-      if (paramInt == g.xKp.value) {
-        return g.xKp;
+      if (paramInt == g.Bke.value) {
+        return g.Bke;
       }
-      if (paramInt == g.xKr.value) {
-        return g.xKr;
+      if (paramInt == g.Bkg.value) {
+        return g.Bkg;
       }
-      if (paramInt == g.xKu.value) {
-        return g.xKu;
+      if (paramInt == g.Bkj.value) {
+        return g.Bkj;
       }
-      if (paramInt == g.xKv.value) {
-        return g.xKv;
+      if (paramInt == g.Bkk.value) {
+        return g.Bkk;
       }
-      if (paramInt == g.xKw.value) {
-        return g.xKw;
+      if (paramInt == g.Bkl.value) {
+        return g.Bkl;
       }
-      if (paramInt == g.xKx.value) {
-        return g.xKx;
+      if (paramInt == g.Bkm.value) {
+        return g.Bkm;
       }
-      if (paramInt == g.xKy.value) {
-        return g.xKy;
+      if (paramInt == g.Bkn.value) {
+        return g.Bkn;
       }
-      if (paramInt == g.xKz.value) {
-        return g.xKz;
+      if (paramInt == g.Bko.value) {
+        return g.Bko;
       }
-      if (paramInt == g.xKA.value) {
-        return g.xKA;
+      if (paramInt == g.Bkp.value) {
+        return g.Bkp;
       }
-      if (paramInt == g.xKB.value) {
-        return g.xKB;
+      if (paramInt == g.Bkq.value) {
+        return g.Bkq;
       }
-      if (paramInt == g.xKF.value) {
-        return g.xKF;
+      if (paramInt == g.Bku.value) {
+        return g.Bku;
       }
-      if (paramInt == g.xKG.value) {
-        return g.xKG;
+      if (paramInt == g.Bkv.value) {
+        return g.Bkv;
       }
-      return g.xKn;
+      return g.Bkc;
     }
   }
 }

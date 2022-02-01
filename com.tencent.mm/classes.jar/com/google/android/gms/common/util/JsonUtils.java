@@ -9,7 +9,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@VisibleForTesting
 public final class JsonUtils
 {
   private static final Pattern zzaae;
@@ -277,7 +276,7 @@ public final class JsonUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.gms.common.util.JsonUtils
  * JD-Core Version:    0.7.0.1
  */

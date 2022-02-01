@@ -1,7 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@color/x5" />
-    <item android:state_selected="true" android:drawable="@color/x5" />
-    <item android:drawable="@color/afz" />
-</selector>
+<ripple android:color="?android:colorControlHighlight"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

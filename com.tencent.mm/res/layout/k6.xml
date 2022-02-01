@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/ib" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/kc" />
-    <LinearLayout android:orientation="vertical" android:id="@id/a6i" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/n2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/krx" android:visibility="gone" android:layout_marginLeft="@dimen/cp" android:layout_marginRight="@dimen/cp" style="@style/i7" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/bs3" android:paddingTop="@dimen/cd" android:paddingBottom="@dimen/cd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/v8" android:layout_marginRight="@dimen/v8" android:baselineAligned="false">
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/kp_" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="40.0dip" android:layout_weight="1.0">
+            <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/j7" android:textColor="@color/FG_0" android:ellipsize="end" android:id="@id/kph" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/k1" android:maxLines="2" android:lineSpacingExtra="@dimen/vd" />
+        </LinearLayout>
+        <RelativeLayout android:id="@id/bup" android:layout_width="@dimen/v_" android:layout_height="@dimen/v_" android:layout_marginLeft="@dimen/cp">
+            <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/k4" />
+        </RelativeLayout>
+    </LinearLayout>
 </LinearLayout>

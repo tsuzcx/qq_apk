@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.hld.a;
 
 public final class e
 {
-  public CharSequence Dud;
-  public CharSequence Due;
-  public CharSequence Duf;
+  public CharSequence JnB;
+  public CharSequence JnC;
+  public CharSequence JnD;
   
   public e(CharSequence paramCharSequence1, CharSequence paramCharSequence2, CharSequence paramCharSequence3)
   {
-    this.Dud = paramCharSequence1;
-    this.Due = paramCharSequence2;
-    this.Duf = paramCharSequence3;
+    this.JnB = paramCharSequence1;
+    this.JnC = paramCharSequence2;
+    this.JnD = paramCharSequence3;
   }
 }
 

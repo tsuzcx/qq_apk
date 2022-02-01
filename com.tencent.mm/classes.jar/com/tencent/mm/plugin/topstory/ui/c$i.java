@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.topstory.ui;
 
 public final class c$i
 {
-  public static final int contact_info_pref_top_story = 2132017197;
-  public static final int topstory_setting_ui = 2132017298;
-  public static final int topstory_setting_visibility = 2132017299;
+  public static final int contact_info_pref_top_story = 2132017187;
+  public static final int topstory_setting_ui = 2132017291;
+  public static final int topstory_setting_visibility = 2132017292;
 }
 
 

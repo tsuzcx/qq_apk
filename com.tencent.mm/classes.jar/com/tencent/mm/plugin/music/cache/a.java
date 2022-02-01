@@ -5,33 +5,33 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
 {
-  public h FPA;
-  public int FPB;
-  public int FPC;
-  public com.tencent.mm.plugin.music.g.a.a FPy;
-  public d FPz;
+  public com.tencent.mm.plugin.music.g.a.a LKu;
+  public d LKv;
+  public h LKw;
+  public int LKx;
+  public int LKy;
+  public int Sc;
   private byte[] buffer;
   public int mSize;
-  public int zP;
   
   public a(com.tencent.mm.plugin.music.g.a.a parama)
   {
     AppMethodBeat.i(137148);
     this.buffer = new byte[81920];
-    this.zP = -1;
+    this.Sc = -1;
     this.mSize = 0;
-    this.FPB = -1;
-    this.FPC = 0;
-    this.FPy = parama;
+    this.LKx = -1;
+    this.LKy = 0;
+    this.LKu = parama;
     AppMethodBeat.o(137148);
   }
   
-  public final void L(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public final void J(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     try
     {
       AppMethodBeat.i(137150);
-      paramInt1 -= this.zP;
+      paramInt1 -= this.Sc;
       this.mSize = (paramInt1 + paramInt2);
       System.arraycopy(paramArrayOfByte, 0, this.buffer, paramInt1, paramInt2);
       AppMethodBeat.o(137150);
@@ -45,61 +45,17 @@ public final class a
   }
   
   /* Error */
-  public final boolean YY(int paramInt)
+  public final boolean adk(int paramInt)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 34	com/tencent/mm/plugin/music/cache/a:zP	I
-    //   6: iload_1
-    //   7: if_icmpgt +22 -> 29
-    //   10: aload_0
-    //   11: getfield 34	com/tencent/mm/plugin/music/cache/a:zP	I
-    //   14: istore_2
-    //   15: iload_1
-    //   16: iload_2
-    //   17: ldc 30
-    //   19: iadd
-    //   20: if_icmpgt +9 -> 29
-    //   23: iconst_1
-    //   24: istore_3
-    //   25: aload_0
-    //   26: monitorexit
-    //   27: iload_3
-    //   28: ireturn
-    //   29: iconst_0
-    //   30: istore_3
-    //   31: goto -6 -> 25
-    //   34: astore 4
-    //   36: aload_0
-    //   37: monitorexit
-    //   38: aload 4
-    //   40: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	41	0	this	a
-    //   0	41	1	paramInt	int
-    //   14	6	2	i	int
-    //   24	7	3	bool	boolean
-    //   34	5	4	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	15	34	finally
-  }
-  
-  /* Error */
-  public final boolean YZ(int paramInt)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 34	com/tencent/mm/plugin/music/cache/a:zP	I
+    //   3: getfield 34	com/tencent/mm/plugin/music/cache/a:Sc	I
     //   6: iload_1
     //   7: if_icmpgt +28 -> 35
     //   10: aload_0
-    //   11: getfield 34	com/tencent/mm/plugin/music/cache/a:zP	I
+    //   11: getfield 34	com/tencent/mm/plugin/music/cache/a:Sc	I
     //   14: istore_2
     //   15: aload_0
     //   16: getfield 36	com/tencent/mm/plugin/music/cache/a:mSize	I
@@ -136,13 +92,13 @@ public final class a
     //   2	20	41	finally
   }
   
-  public final void Za(int paramInt)
+  public final void adl(int paramInt)
   {
     try
     {
-      this.FPB = this.zP;
-      this.FPC = this.mSize;
-      this.zP = paramInt;
+      this.LKx = this.Sc;
+      this.LKy = this.mSize;
+      this.Sc = paramInt;
       this.mSize = 0;
       return;
     }
@@ -153,7 +109,7 @@ public final class a
     }
   }
   
-  public final boolean fdO()
+  public final boolean gmP()
   {
     int j = 0;
     boolean bool = false;
@@ -170,21 +126,21 @@ public final class a
       try
       {
         AppMethodBeat.i(137149);
-        if ((this.zP < 0) || (this.mSize <= 0))
+        if ((this.Sc < 0) || (this.mSize <= 0))
         {
-          Log.e("MicroMsg.Music.FileBytesCacheMgr", "flushBufferAll(), mOffset:%d, mSize:%d", new Object[] { Integer.valueOf(this.zP), Integer.valueOf(this.mSize) });
+          Log.e("MicroMsg.Music.FileBytesCacheMgr", "flushBufferAll(), mOffset:%d, mSize:%d", new Object[] { Integer.valueOf(this.Sc), Integer.valueOf(this.mSize) });
           AppMethodBeat.o(137149);
           return bool;
         }
         byte[] arrayOfByte = new byte[this.mSize];
         System.arraycopy(this.buffer, 0, arrayOfByte, 0, this.mSize);
-        this.FPA.c(arrayOfByte, this.zP, this.mSize);
-        locald = this.FPz;
-        m = this.zP;
+        this.LKw.c(arrayOfByte, this.Sc, this.mSize);
+        locald = this.LKv;
+        m = this.Sc;
         i = this.mSize;
-        if ((m < 0) || (i < 0) || (m > locald.mHi) || (m + i > locald.mHi))
+        if ((m < 0) || (i < 0) || (m > locald.fileLength) || (m + i > locald.fileLength))
         {
-          Log.i("MicroMsg.Music.IndexBitMgr", "getWriteBuffIndexRange offset %d, size %d, fileLength %d", new Object[] { Integer.valueOf(m), Integer.valueOf(i), Long.valueOf(locald.mHi) });
+          Log.i("MicroMsg.Music.IndexBitMgr", "getWriteBuffIndexRange offset %d, size %d, fileLength %d", new Object[] { Integer.valueOf(m), Integer.valueOf(i), Long.valueOf(locald.fileLength) });
           Log.e("MicroMsg.Music.IndexBitMgr", "getWriteBuffRange invalid parameter!");
           arrayOfByte = null;
           if (arrayOfByte != null) {
@@ -200,12 +156,12 @@ public final class a
       arrayOfInt[1] = -1;
       arrayOfInt[0] = -1;
       n = m + i;
-      k = locald.Me(m);
-      i1 = locald.Me(n);
+      k = locald.Ni(m);
+      i1 = locald.Ni(n);
       i = k;
       break;
       label278:
-      if (n != locald.mHi) {
+      if (n != locald.fileLength) {
         break label614;
       }
       if ((i1 != 0) || (m != 0)) {
@@ -224,7 +180,7 @@ public final class a
     {
       if (i <= arrayOfInt[1])
       {
-        this.FPz.Zd(i);
+        this.LKv.ado(i);
         i += 1;
       }
       else
@@ -235,16 +191,16 @@ public final class a
         {
           k -= 1;
           i = j;
-          if (!this.FPz.Zc(k))
+          if (!this.LKv.adn(k))
           {
             i = j;
-            if (this.FPB + this.FPC == this.zP)
+            if (this.LKx + this.LKy == this.Sc)
             {
               i = j;
               if (this.mSize > 0)
               {
                 i = j;
-                if (this.FPC >= 8192)
+                if (this.LKy >= 8192)
                 {
                   Log.i("MicroMsg.Music.FileBytesCacheMgr", "isCanSavePreviousIndex, save index :%d", new Object[] { Integer.valueOf(k) });
                   i = 1;
@@ -254,9 +210,9 @@ public final class a
           }
         }
         if (i != 0) {
-          this.FPz.Zd(arrayOfInt[0] - 1);
+          this.LKv.ado(arrayOfInt[0] - 1);
         }
-        this.FPz.fdT();
+        this.LKv.gmV();
         AppMethodBeat.o(137149);
         bool = true;
         break;
@@ -295,12 +251,12 @@ public final class a
     }
   }
   
-  public final void h(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  public final void j(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
     try
     {
       AppMethodBeat.i(137151);
-      paramInt2 -= this.zP;
+      paramInt2 -= this.Sc;
       this.mSize = (paramInt2 + paramInt3);
       System.arraycopy(paramArrayOfByte, paramInt1, this.buffer, paramInt2, paramInt3);
       AppMethodBeat.o(137151);
@@ -311,6 +267,50 @@ public final class a
       paramArrayOfByte = finally;
       throw paramArrayOfByte;
     }
+  }
+  
+  /* Error */
+  public final boolean kB(int paramInt)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 34	com/tencent/mm/plugin/music/cache/a:Sc	I
+    //   6: iload_1
+    //   7: if_icmpgt +22 -> 29
+    //   10: aload_0
+    //   11: getfield 34	com/tencent/mm/plugin/music/cache/a:Sc	I
+    //   14: istore_2
+    //   15: iload_1
+    //   16: iload_2
+    //   17: ldc 30
+    //   19: iadd
+    //   20: if_icmpgt +9 -> 29
+    //   23: iconst_1
+    //   24: istore_3
+    //   25: aload_0
+    //   26: monitorexit
+    //   27: iload_3
+    //   28: ireturn
+    //   29: iconst_0
+    //   30: istore_3
+    //   31: goto -6 -> 25
+    //   34: astore 4
+    //   36: aload_0
+    //   37: monitorexit
+    //   38: aload 4
+    //   40: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	41	0	this	a
+    //   0	41	1	paramInt	int
+    //   14	6	2	i	int
+    //   24	7	3	bool	boolean
+    //   34	5	4	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	15	34	finally
   }
 }
 

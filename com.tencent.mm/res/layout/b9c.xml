@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|left" android:paddingTop="@dimen/g" android:paddingBottom="@dimen/g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
-    <TextView android:id="@id/ipm" android:layout_width="@dimen/em" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i2" android:singleLine="true" style="@style/mi" />
-    <com.tencent.mm.ui.base.MMSingelLinePanel android:gravity="center|left" android:id="@id/bcb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" flowlayout:horizontalSpacing="@dimen/g" flowlayout:verticalSpacing="@dimen/g" />
+<LinearLayout android:orientation="horizontal" android:id="@id/iwo" android:background="@color/f" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="15.0dip" android:textColor="@color/a7b" android:gravity="left" android:layout_gravity="left" android:id="@id/eta" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="∙ " android:singleLine="false" />
+    <TextView android:textSize="15.0dip" android:textColor="@color/a7b" android:gravity="left" android:layout_gravity="left" android:id="@id/et_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="" android:singleLine="false" />
 </LinearLayout>

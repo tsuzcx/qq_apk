@@ -9,28 +9,28 @@ import java.security.PublicKey;
 
 public final class o
 {
-  private static o OQc;
-  private PublicKey OQd = null;
+  private static o VFW;
+  private PublicKey VFX = null;
   
-  public static o gJg()
+  public static o iiu()
   {
     AppMethodBeat.i(70303);
-    if (OQc == null) {
-      OQc = new o();
+    if (VFW == null) {
+      VFW = new o();
     }
-    o localo = OQc;
+    o localo = VFW;
     AppMethodBeat.o(70303);
     return localo;
   }
   
-  public final String cI(byte[] paramArrayOfByte)
+  public final String cL(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(70304);
     try
     {
-      this.OQd = m.q(MMApplicationContext.getContext(), "lbs_rsa_public_key.pem");
+      this.VFX = m.u(MMApplicationContext.getContext(), "lbs_rsa_public_key.pem");
       Log.i("MicroMsg.LocationEncrypt", "getPemPublickKeyFromAsset23 done2");
-      paramArrayOfByte = new String(Base64.encode(m.a(paramArrayOfByte, this.OQd, "RSA/ECB/PKCS1Padding"), 0));
+      paramArrayOfByte = new String(Base64.encode(m.a(paramArrayOfByte, this.VFX, "RSA/ECB/PKCS1Padding"), 0));
       AppMethodBeat.o(70304);
       return paramArrayOfByte;
     }

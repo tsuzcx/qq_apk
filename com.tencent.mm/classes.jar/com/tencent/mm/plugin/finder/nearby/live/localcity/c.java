@@ -3,296 +3,337 @@ package com.tencent.mm.plugin.finder.nearby.live.localcity;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.live.report.k;
-import com.tencent.mm.plugin.finder.live.report.s.t;
+import com.tencent.mm.plugin.finder.live.report.d;
+import com.tencent.mm.plugin.finder.live.report.j;
+import com.tencent.mm.plugin.finder.live.report.q.w;
 import com.tencent.mm.plugin.finder.nearby.base.AbsNearByFragment;
 import com.tencent.mm.plugin.finder.nearby.f.e;
 import com.tencent.mm.plugin.finder.nearby.live.b.a;
 import com.tencent.mm.plugin.finder.nearby.live.b.b;
-import com.tencent.mm.plugin.finder.viewmodel.component.aj;
+import com.tencent.mm.plugin.finder.nearby.live.f;
 import com.tencent.mm.plugin.finder.viewmodel.component.as;
-import com.tencent.mm.protocal.protobuf.bcz;
+import com.tencent.mm.plugin.finder.viewmodel.component.be;
+import com.tencent.mm.protocal.protobuf.bnn;
+import com.tencent.mm.protocal.protobuf.bui;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.component.UIComponent;
-import com.tencent.mm.ui.component.g;
-import com.tencent.mm.ui.component.g.a;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import com.tencent.mm.ui.component.k;
+import com.tencent.mm.ui.component.k.b;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/live/localcity/NearbyLocalCityUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "fragment", "Landroidx/fragment/app/Fragment;", "(Landroidx/fragment/app/Fragment;)V", "liveFriendsCallback", "Lcom/tencent/mm/plugin/finder/nearby/live/localcity/NearbyLiveLocalCityViewCallback;", "liveFriendsPresenter", "Lcom/tencent/mm/plugin/finder/nearby/live/localcity/NearbyLiveLocalCityPresenter;", "tabInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveTabInfo;", "getLayoutId", "", "getTabInfo", "onActionbarClick", "", "onActionbarDoubleClick", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "onStart", "onStop", "onUserVisibleFocused", "onUserVisibleUnFocused", "Companion", "plugin-finder-nearby_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/live/localcity/NearbyLocalCityUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "fragment", "Landroidx/fragment/app/Fragment;", "(Landroidx/fragment/app/Fragment;)V", "liveFriendsCallback", "Lcom/tencent/mm/plugin/finder/nearby/live/localcity/NearbyLiveLocalCityViewCallback;", "liveFriendsPresenter", "Lcom/tencent/mm/plugin/finder/nearby/live/localcity/NearbyLiveLocalCityPresenter;", "tabInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveTabInfo;", "getLayoutId", "", "getTabInfo", "onActionbarClick", "", "onActionbarDoubleClick", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "onStart", "onStop", "onUserVisibleFocused", "onUserVisibleUnFocused", "Companion", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
   extends UIComponent
 {
-  public static final a zFb;
-  private bcz zDU;
-  a zEZ;
-  private b zFa;
+  public static final a EJN;
+  private bnn EIq;
+  a EJO;
+  private b EJP;
   
   static
   {
-    AppMethodBeat.i(201886);
-    zFb = new a((byte)0);
-    AppMethodBeat.o(201886);
+    AppMethodBeat.i(340837);
+    EJN = new a((byte)0);
+    AppMethodBeat.o(340837);
   }
   
   public c(Fragment paramFragment)
   {
     super(paramFragment);
-    AppMethodBeat.i(201885);
-    AppMethodBeat.o(201885);
+    AppMethodBeat.i(340832);
+    AppMethodBeat.o(340832);
   }
   
   public final int getLayoutId()
   {
-    return f.e.zDk;
+    return f.e.EHd;
   }
   
   public final void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(201884);
-    p.k(paramConfiguration, "newConfig");
+    AppMethodBeat.i(340903);
+    s.u(paramConfiguration, "newConfig");
     super.onConfigurationChanged(paramConfiguration);
-    b localb = this.zFa;
-    if (localb == null) {
-      p.bGy("liveFriendsCallback");
+    b localb2 = this.EJP;
+    b localb1 = localb2;
+    if (localb2 == null)
+    {
+      s.bIx("liveFriendsCallback");
+      localb1 = null;
     }
-    localb.onConfigurationChanged(paramConfiguration);
-    AppMethodBeat.o(201884);
+    localb1.onConfigurationChanged(paramConfiguration);
+    AppMethodBeat.o(340903);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(201859);
+    AppMethodBeat.i(340852);
     super.onCreate(paramBundle);
-    this.zDU = new bcz();
-    paramBundle = this.zDU;
+    this.EIq = new bnn();
+    paramBundle = this.EIq;
     if (paramBundle != null) {
-      paramBundle.SOb = "同城直播";
+      paramBundle.ZWa = "同城直播";
     }
-    paramBundle = this.zDU;
+    paramBundle = this.EIq;
     if (paramBundle != null) {
-      paramBundle.SOa = 88889;
+      paramBundle.ZVZ = 88889;
     }
-    Object localObject1 = new StringBuilder("onCreate(), tab:");
-    paramBundle = this.zDU;
-    if (paramBundle != null) {}
-    for (paramBundle = paramBundle.SOb;; paramBundle = null)
+    paramBundle = this.EIq;
+    if (paramBundle == null)
     {
-      Log.i("NearbyLiveSquareTabUIC", paramBundle);
-      paramBundle = com.tencent.mm.plugin.finder.nearby.trace.c.zJD;
-      com.tencent.mm.plugin.finder.nearby.trace.c.dMD().aGV("livePageOnCreate");
+      paramBundle = null;
+      Log.i("NearbyLiveSquareTabUIC", s.X("onCreate(), tab:", paramBundle));
+      paramBundle = com.tencent.mm.plugin.finder.nearby.trace.c.ERD;
+      com.tencent.mm.plugin.finder.nearby.trace.c.eGR().aDn("livePageOnCreate");
       paramBundle = getFragment();
-      if (paramBundle != null)
-      {
-        localObject1 = g.Xox;
-        localObject1 = ((aj)g.h(paramBundle).i(aj.class)).ekY();
-        paramBundle = (Bundle)localObject1;
-        if (localObject1 != null) {}
+      if (paramBundle != null) {
+        break label203;
       }
-      else
-      {
-        paramBundle = g.Xox;
-        paramBundle = ((aj)g.b(getActivity()).i(aj.class)).ekY();
-      }
-      localObject1 = getActivity();
-      if (localObject1 != null) {
-        break;
-      }
-      paramBundle = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-      AppMethodBeat.o(201859);
-      throw paramBundle;
     }
-    localObject1 = (MMActivity)localObject1;
-    Object localObject2 = getFragment();
-    if (localObject2 == null) {
-      p.iCn();
-    }
-    this.zEZ = new a((MMActivity)localObject1, (Fragment)localObject2, paramBundle, this.zDU);
-    localObject1 = getActivity();
-    if (localObject1 == null)
+    Object localObject1;
+    MMActivity localMMActivity;
+    for (paramBundle = null;; paramBundle = ((as)k.y(paramBundle).q(as.class)).fou())
     {
-      paramBundle = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-      AppMethodBeat.o(201859);
+      localObject1 = paramBundle;
+      if (paramBundle == null)
+      {
+        paramBundle = k.aeZF;
+        localObject1 = ((as)k.d(getActivity()).q(as.class)).fou();
+      }
+      paramBundle = (MMActivity)getActivity();
+      localObject2 = getFragment();
+      s.checkNotNull(localObject2);
+      this.EJO = new a(paramBundle, (Fragment)localObject2, (bui)localObject1, this.EIq);
+      localMMActivity = (MMActivity)getActivity();
+      paramBundle = getFragment();
+      if (paramBundle != null) {
+        break label226;
+      }
+      paramBundle = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.finder.nearby.base.AbsNearByFragment");
+      AppMethodBeat.o(340852);
       throw paramBundle;
+      paramBundle = paramBundle.ZWa;
+      break;
+      label203:
+      localObject1 = k.aeZF;
     }
-    localObject1 = (MMActivity)localObject1;
-    localObject2 = getFragment();
+    label226:
+    AbsNearByFragment localAbsNearByFragment = (AbsNearByFragment)paramBundle;
+    Object localObject2 = this.EJO;
+    paramBundle = (Bundle)localObject2;
     if (localObject2 == null)
     {
-      paramBundle = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.nearby.base.AbsNearByFragment");
-      AppMethodBeat.o(201859);
-      throw paramBundle;
+      s.bIx("liveFriendsPresenter");
+      paramBundle = null;
     }
-    localObject2 = (AbsNearByFragment)localObject2;
-    a locala = this.zEZ;
-    if (locala == null) {
-      p.bGy("liveFriendsPresenter");
+    this.EJP = new b(localMMActivity, localAbsNearByFragment, (b.a)paramBundle, getRootView(), (bui)localObject1, this.EIq);
+    paramBundle = this.EJO;
+    if (paramBundle == null)
+    {
+      s.bIx("liveFriendsPresenter");
+      paramBundle = null;
     }
-    this.zFa = new b((MMActivity)localObject1, (AbsNearByFragment)localObject2, (b.a)locala, getRootView(), paramBundle);
-    paramBundle = this.zEZ;
-    if (paramBundle == null) {
-      p.bGy("liveFriendsPresenter");
+    for (;;)
+    {
+      localObject2 = this.EJP;
+      localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        s.bIx("liveFriendsCallback");
+        localObject1 = null;
+      }
+      paramBundle.b((b.b)localObject1);
+      AppMethodBeat.o(340852);
+      return;
     }
-    localObject1 = this.zFa;
-    if (localObject1 == null) {
-      p.bGy("liveFriendsCallback");
-    }
-    paramBundle.a((b.b)localObject1);
-    AppMethodBeat.o(201859);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(201881);
+    Object localObject2 = null;
+    AppMethodBeat.i(340895);
     super.onDestroy();
-    StringBuilder localStringBuilder = new StringBuilder("onDestroy() tab:");
-    Object localObject = this.zDU;
-    if (localObject != null) {}
-    for (localObject = ((bcz)localObject).SOb;; localObject = null)
+    Object localObject1 = this.EIq;
+    if (localObject1 == null)
     {
-      Log.i("NearbyLiveSquareTabUIC", (String)localObject);
-      localObject = this.zEZ;
-      if (localObject == null) {
-        p.bGy("liveFriendsPresenter");
+      localObject1 = null;
+      Log.i("NearbyLiveSquareTabUIC", s.X("onDestroy() tab:", localObject1));
+      a locala = this.EJO;
+      localObject1 = locala;
+      if (locala == null)
+      {
+        s.bIx("liveFriendsPresenter");
+        localObject1 = null;
       }
-      if (localObject != null) {
-        ((a)localObject).onFinishing();
+      ((a)localObject1).onFinishing();
+      localObject1 = this.EJO;
+      if (localObject1 != null) {
+        break label89;
       }
-      localObject = this.zEZ;
-      if (localObject == null) {
-        p.bGy("liveFriendsPresenter");
-      }
-      if (localObject == null) {
-        break;
-      }
-      ((a)localObject).onDetach();
-      AppMethodBeat.o(201881);
-      return;
+      s.bIx("liveFriendsPresenter");
+      localObject1 = localObject2;
     }
-    AppMethodBeat.o(201881);
+    label89:
+    for (;;)
+    {
+      ((a)localObject1).onDetach();
+      AppMethodBeat.o(340895);
+      return;
+      localObject1 = ((bnn)localObject1).ZWa;
+      break;
+    }
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(201866);
+    Object localObject2 = null;
+    AppMethodBeat.i(340873);
     super.onPause();
-    Object localObject = k.yBj;
-    localObject = this.zFa;
-    if (localObject == null) {
-      p.bGy("liveFriendsCallback");
+    a locala = this.EJO;
+    Object localObject1 = locala;
+    if (locala == null)
+    {
+      s.bIx("liveFriendsPresenter");
+      localObject1 = null;
     }
-    k.a(((b)localObject).getRecyclerView(), s.t.yGN, "80", com.tencent.mm.plugin.finder.live.report.c.yAj, -100, -100);
-    AppMethodBeat.o(201866);
+    ((a)localObject1).onStop();
+    localObject1 = j.Dob;
+    localObject1 = this.EJP;
+    if (localObject1 == null)
+    {
+      s.bIx("liveFriendsCallback");
+      localObject1 = localObject2;
+    }
+    for (;;)
+    {
+      j.a((RecyclerView)((f)localObject1).getRecyclerView(), q.w.DwP, "80", d.Dng, -100, -100);
+      AppMethodBeat.o(340873);
+      return;
+    }
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(201863);
+    AppMethodBeat.i(340865);
     super.onResume();
-    Object localObject = k.yBj;
-    localObject = this.zFa;
-    if (localObject == null) {
-      p.bGy("liveFriendsCallback");
+    Object localObject = j.Dob;
+    b localb = this.EJP;
+    localObject = localb;
+    if (localb == null)
+    {
+      s.bIx("liveFriendsCallback");
+      localObject = null;
     }
-    k.a(((b)localObject).getRecyclerView(), s.t.yGN, "80", com.tencent.mm.plugin.finder.live.report.c.yAi, -100, -100);
-    AppMethodBeat.o(201863);
+    j.a((RecyclerView)((f)localObject).getRecyclerView(), q.w.DwP, "80", d.Dnf, -100, -100);
+    AppMethodBeat.o(340865);
   }
   
   public final void onStart()
   {
-    AppMethodBeat.i(201862);
+    Object localObject2 = null;
+    AppMethodBeat.i(340856);
     super.onStart();
-    StringBuilder localStringBuilder = new StringBuilder("onStart() tab:");
-    Object localObject = this.zDU;
-    if (localObject != null) {}
-    for (localObject = ((bcz)localObject).SOb;; localObject = null)
+    Object localObject1 = this.EIq;
+    if (localObject1 == null)
     {
-      Log.i("NearbyLiveSquareTabUIC", (String)localObject);
-      localObject = this.zEZ;
-      if (localObject == null) {
-        p.bGy("liveFriendsPresenter");
+      localObject1 = null;
+      Log.i("NearbyLiveSquareTabUIC", s.X("onStart() tab:", localObject1));
+      localObject1 = this.EJO;
+      if (localObject1 != null) {
+        break label70;
       }
-      ((a)localObject).onStart();
-      AppMethodBeat.o(201862);
+      s.bIx("liveFriendsPresenter");
+      localObject1 = localObject2;
+    }
+    label70:
+    for (;;)
+    {
+      ((a)localObject1).onStart();
+      AppMethodBeat.o(340856);
       return;
+      localObject1 = ((bnn)localObject1).ZWa;
+      break;
     }
   }
   
   public final void onStop()
   {
-    AppMethodBeat.i(201870);
+    AppMethodBeat.i(340876);
     super.onStop();
-    StringBuilder localStringBuilder = new StringBuilder("onStop() tab:");
-    Object localObject = this.zDU;
-    if (localObject != null) {}
-    for (localObject = ((bcz)localObject).SOb;; localObject = null)
+    Object localObject = this.EIq;
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ((bnn)localObject).ZWa)
     {
-      Log.i("NearbyLiveSquareTabUIC", (String)localObject);
-      localObject = this.zEZ;
-      if (localObject == null) {
-        p.bGy("liveFriendsPresenter");
-      }
-      ((a)localObject).onStop();
-      AppMethodBeat.o(201870);
+      Log.i("NearbyLiveSquareTabUIC", s.X("onStop() tab:", localObject));
+      AppMethodBeat.o(340876);
       return;
     }
   }
   
   public final void onUserVisibleFocused()
   {
-    AppMethodBeat.i(201873);
+    Object localObject2 = null;
+    AppMethodBeat.i(340883);
     super.onUserVisibleFocused();
-    StringBuilder localStringBuilder = new StringBuilder("onUserVisibleFocused() tab:");
-    Object localObject = this.zDU;
-    if (localObject != null) {}
-    for (localObject = ((bcz)localObject).SOb;; localObject = null)
+    Object localObject1 = this.EIq;
+    if (localObject1 == null)
     {
-      Log.i("NearbyLiveSquareTabUIC", (String)localObject);
-      localObject = g.Xox;
-      ((as)g.bD(PluginFinder.class).i(as.class)).Q((kotlin.g.a.b)c.b.zFc);
-      localObject = this.zEZ;
-      if (localObject == null) {
-        p.bGy("liveFriendsPresenter");
+      localObject1 = null;
+      Log.i("NearbyLiveSquareTabUIC", s.X("onUserVisibleFocused() tab:", localObject1));
+      localObject1 = k.aeZF;
+      ((be)k.cn(PluginFinder.class).q(be.class)).aw((kotlin.g.a.b)c.b.EJQ);
+      localObject1 = this.EJO;
+      if (localObject1 != null) {
+        break label98;
       }
-      if (localObject == null) {
-        break;
-      }
-      ((a)localObject).onUserVisibleFocused();
-      AppMethodBeat.o(201873);
-      return;
+      s.bIx("liveFriendsPresenter");
+      localObject1 = localObject2;
     }
-    AppMethodBeat.o(201873);
+    label98:
+    for (;;)
+    {
+      ((a)localObject1).onUserVisibleFocused();
+      AppMethodBeat.o(340883);
+      return;
+      localObject1 = ((bnn)localObject1).ZWa;
+      break;
+    }
   }
   
   public final void onUserVisibleUnFocused()
   {
-    AppMethodBeat.i(201877);
+    Object localObject2 = null;
+    AppMethodBeat.i(340889);
     super.onUserVisibleUnFocused();
-    StringBuilder localStringBuilder = new StringBuilder("onUserVisibleUnFocused() tab:");
-    Object localObject = this.zDU;
-    if (localObject != null) {}
-    for (localObject = ((bcz)localObject).SOb;; localObject = null)
+    Object localObject1 = this.EIq;
+    if (localObject1 == null)
     {
-      Log.i("NearbyLiveSquareTabUIC", (String)localObject);
-      localObject = this.zEZ;
-      if (localObject == null) {
-        p.bGy("liveFriendsPresenter");
+      localObject1 = null;
+      Log.i("NearbyLiveSquareTabUIC", s.X("onUserVisibleUnFocused() tab:", localObject1));
+      localObject1 = this.EJO;
+      if (localObject1 != null) {
+        break label70;
       }
-      if (localObject == null) {
-        break;
-      }
-      ((a)localObject).onUserVisibleUnFocused();
-      AppMethodBeat.o(201877);
-      return;
+      s.bIx("liveFriendsPresenter");
+      localObject1 = localObject2;
     }
-    AppMethodBeat.o(201877);
+    label70:
+    for (;;)
+    {
+      ((a)localObject1).onUserVisibleUnFocused();
+      AppMethodBeat.o(340889);
+      return;
+      localObject1 = ((bnn)localObject1).ZWa;
+      break;
+    }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/live/localcity/NearbyLocalCityUIC$Companion;", "", "()V", "TAG", "", "plugin-finder-nearby_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/live/localcity/NearbyLocalCityUIC$Companion;", "", "()V", "TAG", "", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

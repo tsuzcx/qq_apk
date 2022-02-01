@@ -1,22 +1,24 @@
 package com.tencent.mm.plugin.game.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.aa;
-import com.tencent.mm.an.aa.a;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.q;
-import com.tencent.mm.plugin.downloader.g.a;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.z;
+import com.tencent.mm.am.z.a;
+import com.tencent.mm.plugin.downloader.f.a;
+import com.tencent.mm.plugin.downloader.model.d;
 import com.tencent.mm.plugin.game.autogen.a.h;
 import com.tencent.mm.plugin.game.autogen.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 
 public final class e
 {
   public static void report(long paramLong)
   {
     AppMethodBeat.i(40884);
-    Object localObject = com.tencent.mm.plugin.downloader.model.d.IF(paramLong);
+    Object localObject = d.la(paramLong);
     if (localObject == null)
     {
       Log.i("MicroMsg.ReportDownloadAppState", "report, info is null");
@@ -29,29 +31,29 @@ public final class e
       AppMethodBeat.o(40884);
       return;
     }
-    if ((((a)localObject).field_status == 3) && (!u.agG(((a)localObject).field_filePath)))
+    if ((((a)localObject).field_status == 3) && (!y.ZC(((a)localObject).field_filePath)))
     {
       Log.i("MicroMsg.ReportDownloadAppState", "download success, but file not exist");
       AppMethodBeat.o(40884);
       return;
     }
     h localh = new h();
-    localh.lVG = ((a)localObject).field_appId;
+    localh.oOI = ((a)localObject).field_appId;
     if (((a)localObject).field_status == 3) {
-      localh.rVU = a.CzP;
+      localh.vhk = a.ItA;
     }
     for (;;)
     {
-      localObject = new d.a();
-      ((d.a)localObject).funcId = 2683;
-      ((d.a)localObject).uri = "/cgi-bin/mmgame-bin/reportappdownloadstatus";
-      ((d.a)localObject).lBU = localh;
-      ((d.a)localObject).lBV = new i();
-      ((d.a)localObject).lBW = 0;
-      ((d.a)localObject).respCmdId = 0;
-      aa.a(((d.a)localObject).bgN(), new aa.a()
+      localObject = new c.a();
+      ((c.a)localObject).funcId = 2683;
+      ((c.a)localObject).uri = "/cgi-bin/mmgame-bin/reportappdownloadstatus";
+      ((c.a)localObject).otE = localh;
+      ((c.a)localObject).otF = new i();
+      ((c.a)localObject).otG = 0;
+      ((c.a)localObject).respCmdId = 0;
+      z.a(((c.a)localObject).bEF(), new z.a()
       {
-        public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.an.d paramAnonymousd, q paramAnonymousq)
+        public final int callback(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, c paramAnonymousc, p paramAnonymousp)
         {
           AppMethodBeat.i(40883);
           Log.i("MicroMsg.ReportDownloadAppState", "doCgi, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
@@ -62,16 +64,21 @@ public final class e
       AppMethodBeat.o(40884);
       return;
       if (((a)localObject).field_status == 4) {
-        localh.rVU = a.DOWNLOAD_STATUS_FAILED;
+        localh.vhk = a.DOWNLOAD_STATUS_FAILED;
       }
     }
   }
   
   static final class a
   {
-    static int CzO = 0;
-    static int CzP = 1;
     static int DOWNLOAD_STATUS_FAILED = 2;
+    static int ItA;
+    static int Itz = 0;
+    
+    static
+    {
+      ItA = 1;
+    }
   }
 }
 

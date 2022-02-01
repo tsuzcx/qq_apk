@@ -1,98 +1,127 @@
 package com.tencent.mm.bc;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
+import android.telephony.TelephonyManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ca;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.mm.autogen.a.os;
+import com.tencent.mm.autogen.a.os.b;
+import com.tencent.mm.bd.d;
+import com.tencent.mm.k.f;
+import com.tencent.mm.k.i;
+import com.tencent.mm.plugin.comm.c.h;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.ui.widget.a.e.a;
 
 public final class e
-  extends a
 {
-  public String fMS;
-  public LinkedList<String> lWw;
-  public String url;
-  
-  public e(Map<String, String> paramMap, ca paramca)
+  public static com.tencent.mm.ui.widget.a.e a(Context paramContext, int paramInt, Runnable paramRunnable)
   {
-    super(paramMap, paramca);
-    AppMethodBeat.i(101787);
-    this.lWw = new LinkedList();
-    AppMethodBeat.o(101787);
+    AppMethodBeat.i(151161);
+    paramContext = new e.a(paramContext);
+    paramContext.aEK(c.h.app_tip);
+    paramContext.aEO(paramInt);
+    paramContext.aER(c.h.app_i_known).c(new DialogInterface.OnClickListener()
+    {
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(151155);
+        if (e.this != null) {
+          e.this.run();
+        }
+        AppMethodBeat.o(151155);
+      }
+    });
+    paramContext.NC(true);
+    paramContext.e(new DialogInterface.OnCancelListener()
+    {
+      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+      {
+        AppMethodBeat.i(151156);
+        if (e.this != null) {
+          e.this.run();
+        }
+        AppMethodBeat.o(151156);
+      }
+    });
+    paramContext = paramContext.jHH();
+    paramContext.show();
+    AppMethodBeat.o(151161);
+    return paramContext;
   }
   
-  protected final boolean bcz()
+  public static boolean bNA()
   {
-    AppMethodBeat.i(101788);
-    if (this.values == null)
+    AppMethodBeat.i(151158);
+    os localos = new os();
+    localos.hRy.action = 2;
+    localos.publish();
+    boolean bool = localos.hRz.isStart;
+    AppMethodBeat.o(151158);
+    return bool;
+  }
+  
+  public static boolean bNB()
+  {
+    AppMethodBeat.i(151159);
+    if ((g.oXL != null) && (g.oXL.bNn()))
     {
-      Log.e("MicroMsg.DelChatroomMemberNewXmlMsg", "[parseXml] values == null ");
-      AppMethodBeat.o(101788);
-      return false;
-    }
-    Log.i("MicroMsg.DelChatroomMemberNewXmlMsg", "[parseXml] type:%s, values size:%s", new Object[] { Util.nullAsNil(this.TYPE), Integer.valueOf(this.values.size()) });
-    Object localObject1;
-    int i;
-    if ((!Util.isNullOrNil(this.TYPE)) && (this.TYPE.equalsIgnoreCase("delchatroommember")))
-    {
-      this.url = Util.nullAsNil((String)this.values.get(".sysmsg.delchatroommember.url"));
-      this.fMS = Util.nullAsNil((String)this.values.get(".sysmsg.delchatroommember.link.qrcode"));
-      this.lWw.add(this.values.get(".sysmsg.delchatroommember.link.memberlist.username"));
-      localObject1 = this.values.keySet().iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (String)((Iterator)localObject1).next();
-        if (((String)localObject2).startsWith(".sysmsg.delchatroommember.link.memberlist.username#")) {
-          this.lWw.add(this.values.get(localObject2));
-        }
-      }
-      localObject1 = new StringBuilder();
-      Object localObject2 = this.values.keySet().iterator();
-      i = 0;
-      while (((Iterator)localObject2).hasNext())
-      {
-        String str = (String)((Iterator)localObject2).next();
-        if (str.startsWith(lWe))
-        {
-          if (((StringBuilder)localObject1).length() > 0) {
-            ((StringBuilder)localObject1).insert(0, (String)this.values.get(str));
-          } else {
-            ((StringBuilder)localObject1).append((String)this.values.get(str));
-          }
-        }
-        else
-        {
-          if (!str.startsWith(".sysmsg.delchatroommember.link.text")) {
-            break label498;
-          }
-          ((StringBuilder)localObject1).append((String)this.values.get(str));
-          this.lWj.add(this.values.get(str));
-          i = ((String)this.values.get(str)).length();
-        }
-      }
-    }
-    label498:
-    for (;;)
-    {
-      break;
-      this.lWk.addFirst(Integer.valueOf(((StringBuilder)localObject1).length() - i));
-      this.lWl.add(Integer.valueOf(((StringBuilder)localObject1).length()));
-      this.lWg = ((StringBuilder)localObject1).toString();
-      Log.i("MicroMsg.DelChatroomMemberNewXmlMsg", "[parseXml] url:%s, qrcode:%s, members size :%s", new Object[] { this.url, this.fMS, Integer.valueOf(this.lWw.size()) });
-      AppMethodBeat.o(101788);
+      AppMethodBeat.o(151159);
       return true;
-      Log.e("MicroMsg.DelChatroomMemberNewXmlMsg", "[parseXml] type err :%s", new Object[] { Util.nullAsNil(this.TYPE) });
-      AppMethodBeat.o(101788);
-      return false;
     }
+    AppMethodBeat.o(151159);
+    return false;
+  }
+  
+  public static boolean bNC()
+  {
+    AppMethodBeat.i(151160);
+    if ((d.oXN != null) && (d.oXN.bNE()))
+    {
+      AppMethodBeat.o(151160);
+      return true;
+    }
+    AppMethodBeat.o(151160);
+    return false;
+  }
+  
+  public static boolean bND()
+  {
+    AppMethodBeat.i(231896);
+    if (i.aRC().getInt("MultitalkBlockReceiver", 0) == 0)
+    {
+      AppMethodBeat.o(231896);
+      return true;
+    }
+    AppMethodBeat.o(231896);
+    return false;
+  }
+  
+  public static boolean dl(Context paramContext)
+  {
+    AppMethodBeat.i(151157);
+    boolean bool = com.tencent.mm.n.a.dl(paramContext);
+    AppMethodBeat.o(151157);
+    return bool;
+  }
+  
+  public static boolean isCalling()
+  {
+    AppMethodBeat.i(231901);
+    if (((TelephonyManager)MMApplicationContext.getContext().getSystemService("phone")).getCallState() != 0)
+    {
+      AppMethodBeat.o(231901);
+      return true;
+    }
+    AppMethodBeat.o(231901);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.bc.e
  * JD-Core Version:    0.7.0.1
  */

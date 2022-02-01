@@ -10,24 +10,24 @@ import com.tencent.mm.plugin.appbrand.config.b.a;
 import com.tencent.mm.plugin.appbrand.page.ad;
 import com.tencent.mm.plugin.appbrand.page.c.c;
 import com.tencent.mm.plugin.appbrand.page.c.c.b;
-import com.tencent.mm.plugin.appbrand.ui.x;
+import com.tencent.mm.plugin.appbrand.ui.ae;
 import com.tencent.mm.sdk.system.AndroidContextUtil;
 
 final class a
   implements c
 {
-  private final ad cvV;
-  private c.b cvW = null;
+  private final ad enT;
+  private c.b enU = null;
   
   public a(ad paramad)
   {
-    this.cvV = paramad;
+    this.enT = paramad;
   }
   
-  private void cd(boolean paramBoolean)
+  private void cJ(boolean paramBoolean)
   {
     AppMethodBeat.i(130679);
-    Object localObject = AndroidContextUtil.castActivityOrNull(this.cvV.getContext());
+    Object localObject = AndroidContextUtil.castActivityOrNull(this.enT.getContext());
     if (localObject == null)
     {
       AppMethodBeat.o(130679);
@@ -36,48 +36,48 @@ final class a
     localObject = ((Activity)localObject).getWindow();
     if (paramBoolean)
     {
-      x.a((Window)localObject, true, true);
+      ae.a((Window)localObject, true, true);
       AppMethodBeat.o(130679);
       return;
     }
-    x.a((Window)localObject, false, false);
+    ae.a((Window)localObject, false, false);
     AppMethodBeat.o(130679);
   }
   
-  public final void PN()
+  public final void apW()
   {
     AppMethodBeat.i(130678);
-    if (this.cvW == null) {
-      if (!this.cvV.getRuntime().getAppConfig().nVY.nWm) {
+    if (this.enU == null) {
+      if (!this.enT.getRuntime().getAppConfig().qVI.qVX) {
         break label78;
       }
     }
     label78:
-    for (c.b localb = c.b.qyb;; localb = c.b.qyc)
+    for (c.b localb = c.b.tDb;; localb = c.b.tDc)
     {
-      this.cvW = localb;
-      switch (1.cvX[this.cvW.ordinal()])
+      this.enU = localb;
+      switch (1.enV[this.enU.ordinal()])
       {
       default: 
         AppMethodBeat.o(130678);
         return;
       }
     }
-    Qb();
+    aql();
     AppMethodBeat.o(130678);
     return;
-    Qc();
+    aqm();
     AppMethodBeat.o(130678);
   }
   
-  public final void Qb()
+  public final void aql()
   {
     AppMethodBeat.i(130676);
-    this.cvW = c.b.qyb;
-    cd(false);
-    if ((Build.VERSION.SDK_INT >= 21) && ((this.cvV.getContext() instanceof Activity)))
+    this.enU = c.b.tDb;
+    cJ(false);
+    if ((Build.VERSION.SDK_INT >= 21) && ((this.enT.getContext() instanceof Activity)))
     {
-      Window localWindow = ((Activity)this.cvV.getContext()).getWindow();
+      Window localWindow = ((Activity)this.enT.getContext()).getWindow();
       if (localWindow != null)
       {
         localWindow.addFlags(-2147483648);
@@ -87,22 +87,22 @@ final class a
     AppMethodBeat.o(130676);
   }
   
-  public final void Qc()
+  public final void aqm()
   {
     AppMethodBeat.i(130677);
-    this.cvW = c.b.qyc;
-    cd(true);
+    this.enU = c.b.tDc;
+    cJ(true);
     AppMethodBeat.o(130677);
   }
   
-  public final c.b Qd()
+  public final c.b aqn()
   {
-    return this.cvW;
+    return this.enU;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.game.page.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -12,20 +12,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ah.a.f;
 import com.tencent.mm.ah.a.g;
 import com.tencent.mm.ah.a.h;
-import com.tencent.mm.ui.h.a.a;
+import com.tencent.mm.ui.i.a.a;
 
 public final class HeadImgNewPreference
   extends Preference
 {
-  public View.OnClickListener Fms;
-  private View Rhq;
-  private String WqS;
-  private boolean WqT;
-  private boolean WqU;
-  private TextView WqW;
-  private a WqX;
-  private ImageView bwJ;
+  private View Ydw;
+  private String adYh;
+  public boolean adYi;
+  private boolean adYj;
+  private TextView adYl;
+  public a adYm;
+  private ImageView dpM;
   private int height;
+  public View.OnClickListener tyA;
   
   public HeadImgNewPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,87 +37,72 @@ public final class HeadImgNewPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(164166);
     this.height = -1;
-    this.WqU = false;
-    this.WqX = null;
+    this.adYj = false;
+    this.adYm = null;
     setLayoutResource(a.h.mm_preference);
     AppMethodBeat.o(164166);
   }
   
-  public final void a(a parama)
-  {
-    this.WqX = parama;
-  }
-  
-  public final void byF(String paramString)
+  public final void bAh(String paramString)
   {
     AppMethodBeat.i(164168);
-    this.WqS = null;
-    if (this.bwJ != null) {
-      if (this.WqX != null) {
-        this.WqX.b(paramString, this.bwJ);
+    this.adYh = null;
+    if (this.dpM != null) {
+      if (this.adYm != null) {
+        this.adYm.c(paramString, this.dpM);
       }
     }
     while (paramString == null)
     {
-      this.WqU = false;
+      this.adYj = false;
       AppMethodBeat.o(164168);
       return;
-      if (this.WqT)
+      if (this.adYi)
       {
-        a.d(this.bwJ, paramString);
+        a.h(this.dpM, paramString);
       }
       else
       {
-        a.c(this.bwJ, paramString);
+        a.g(this.dpM, paramString);
         continue;
-        this.WqS = paramString;
+        this.adYh = paramString;
       }
     }
-    this.WqU = true;
+    this.adYj = true;
     AppMethodBeat.o(164168);
-  }
-  
-  public final void hKG()
-  {
-    this.WqT = true;
-  }
-  
-  public final void j(View.OnClickListener paramOnClickListener)
-  {
-    this.Fms = paramOnClickListener;
   }
   
   protected final void onBindView(View paramView)
   {
     AppMethodBeat.i(164169);
     super.onBindView(paramView);
-    if (this.bwJ == null) {
-      this.bwJ = ((ImageView)paramView.findViewById(a.g.image_headimg));
+    if (this.dpM == null) {
+      this.dpM = ((ImageView)paramView.findViewById(a.g.image_headimg));
     }
-    if (this.WqW == null) {
-      this.WqW = ((TextView)paramView.findViewById(a.g.no_header_icon_tip));
+    if (this.adYl == null) {
+      this.adYl = ((TextView)paramView.findViewById(a.g.no_header_icon_tip));
     }
-    if (this.Rhq == null) {
-      this.Rhq = paramView.findViewById(a.g.mask_header_icon);
+    if (this.Ydw == null) {
+      this.Ydw = paramView.findViewById(a.g.mask_header_icon);
     }
-    if (this.Fms != null) {
-      this.Rhq.setOnClickListener(this.Fms);
+    if (this.tyA != null) {
+      this.Ydw.setOnClickListener(this.tyA);
     }
-    if (this.WqS != null)
+    if (this.adYh != null)
     {
-      if (this.WqX != null)
+      if (this.adYm != null)
       {
-        this.WqX.b(this.WqS, this.bwJ);
-        this.WqS = null;
+        this.adYm.c(this.adYh, this.dpM);
+        this.adYh = null;
       }
     }
     else
     {
-      if (this.WqU) {
+      if (this.adYj) {
         break label216;
       }
-      this.Rhq.setVisibility(8);
-      this.WqW.setVisibility(0);
+      this.Ydw.setVisibility(8);
+      this.adYl.setVisibility(0);
     }
     for (;;)
     {
@@ -127,20 +112,20 @@ public final class HeadImgNewPreference
       }
       AppMethodBeat.o(164169);
       return;
-      if (this.WqT)
+      if (this.adYi)
       {
-        a.d(this.bwJ, this.WqS);
+        a.h(this.dpM, this.adYh);
         break;
       }
-      a.c(this.bwJ, this.WqS);
+      a.g(this.dpM, this.adYh);
       break;
       label216:
-      this.WqW.setVisibility(8);
-      this.Rhq.setVisibility(0);
-      if (this.WqT) {
-        this.Rhq.setBackground(this.mContext.getDrawable(a.f.self_qrcode_header_round_icon_click));
+      this.adYl.setVisibility(8);
+      this.Ydw.setVisibility(0);
+      if (this.adYi) {
+        this.Ydw.setBackground(this.mContext.getDrawable(a.f.self_qrcode_header_round_icon_click));
       } else {
-        this.Rhq.setBackground(this.mContext.getDrawable(a.f.self_qrcode_header_icon_click));
+        this.Ydw.setBackground(this.mContext.getDrawable(a.f.self_qrcode_header_icon_click));
       }
     }
   }
@@ -152,21 +137,21 @@ public final class HeadImgNewPreference
     ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(a.g.content);
     localViewGroup.removeAllViews();
     View.inflate(this.mContext, a.h.mm_preference_content_avatar, localViewGroup);
-    this.bwJ = ((ImageView)paramViewGroup.findViewById(a.g.image_headimg));
-    this.WqW = ((TextView)paramViewGroup.findViewById(a.g.no_header_icon_tip));
-    this.Rhq = paramViewGroup.findViewById(a.g.mask_header_icon);
+    this.dpM = ((ImageView)paramViewGroup.findViewById(a.g.image_headimg));
+    this.adYl = ((TextView)paramViewGroup.findViewById(a.g.no_header_icon_tip));
+    this.Ydw = paramViewGroup.findViewById(a.g.mask_header_icon);
     AppMethodBeat.o(164167);
     return paramViewGroup;
   }
   
   public static abstract interface a
   {
-    public abstract void b(String paramString, ImageView paramImageView);
+    public abstract void c(String paramString, ImageView paramImageView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.HeadImgNewPreference
  * JD-Core Version:    0.7.0.1
  */

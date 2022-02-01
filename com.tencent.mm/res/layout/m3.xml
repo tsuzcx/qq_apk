@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/am" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:paddingTop="@dimen/ig" android:paddingBottom="@dimen/g" android:focusable="false" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ajy" android:background="@drawable/ll" android:padding="@dimen/ir" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <Button android:textSize="@dimen/is" android:textColor="@color/ag5" android:ellipsize="end" android:layout_gravity="center" android:id="@id/ajp" android:background="@drawable/k7" android:paddingLeft="@dimen/k5" android:paddingRight="@dimen/k5" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="42.0dip" android:layout_marginLeft="@dimen/ir" android:layout_marginRight="@dimen/ir" android:minWidth="168.0dip" android:text="@string/ann" android:singleLine="true" />
-        <TextView android:textSize="@dimen/hc" android:textColor="@color/a2t" android:ellipsize="end" android:gravity="center" android:id="@id/ajw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hv" android:layout_marginTop="@dimen/ir" android:layout_marginRight="@dimen/hv" android:singleLine="true" />
+    <TextView android:textSize="32.0dip" android:textColor="@color/m4" android:layout_gravity="center" android:id="@id/bfz" android:layout_width="252.0dip" android:layout_height="37.0dip" android:layout_marginTop="20.0dip" android:scaleType="fitXY" />
+    <View android:id="@id/bfe" android:background="@color/abn" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="35.0dip" android:layerType="software" />
+    <LinearLayout android:orientation="vertical" android:id="@id/bfm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="35.0dip">
+        <View android:background="@color/abn" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layerType="software" />
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.5dip" android:layout_marginBottom="15.5dip" android:layout_centerInParent="true">
+            <TextView android:textSize="17.0dip" android:textColor="@color/Purple" android:layout_gravity="center_horizontal" android:id="@id/bfo" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:textSize="13.0dip" android:textColor="@color/m4" android:layout_gravity="center_horizontal" android:id="@id/bfn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
+        </LinearLayout>
+        <View android:layout_gravity="bottom" android:background="@color/abn" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_alignParentBottom="true" android:layerType="software" />
     </LinearLayout>
-    <View android:id="@id/bsi" android:background="@color/a7t" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" android:layerType="software" />
-    <CheckBox android:textSize="@dimen/hc" android:textColor="@color/a2t" android:id="@id/ama" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ib" android:layout_marginBottom="@dimen/ib" android:checked="false" android:drawablePadding="5.0dip" style="@style/p9" />
 </LinearLayout>

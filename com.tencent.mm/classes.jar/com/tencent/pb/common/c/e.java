@@ -12,10 +12,10 @@ import java.util.Set;
 
 public final class e
 {
-  private static HashMap<String, String> ZiB = new HashMap();
+  private static HashMap<String, String> ahhc = new HashMap();
   private static Object sLock = new Object();
   
-  public static void S(int paramInt1, int paramInt2, String paramString)
+  public static void ad(int paramInt1, int paramInt2, String paramString)
   {
     if (paramString == null)
     {
@@ -30,7 +30,7 @@ public final class e
       localStringBuffer.append(paramInt2);
       synchronized (sLock)
       {
-        String str = (String)ZiB.get(localStringBuffer.toString());
+        String str = (String)ahhc.get(localStringBuffer.toString());
         Object localObject1 = paramString;
         if (str != null)
         {
@@ -43,18 +43,18 @@ public final class e
             localObject1 = ((StringBuffer)localObject1).toString();
           }
         }
-        ZiB.put(localStringBuffer.toString(), localObject1);
+        ahhc.put(localStringBuffer.toString(), localObject1);
         return;
       }
       return;
     }
-    catch (Throwable paramString)
+    finally
     {
       b.w("gyz", new Object[] { paramString });
     }
   }
   
-  private static void bK(ArrayList<a.y> paramArrayList)
+  private static void ck(ArrayList<a.y> paramArrayList)
   {
     for (;;)
     {
@@ -64,7 +64,7 @@ public final class e
       String str;
       synchronized (sLock)
       {
-        Object localObject2 = ZiB.keySet();
+        Object localObject2 = ahhc.keySet();
         if ((localObject2 == null) || (((Set)localObject2).size() <= 0))
         {
           return;
@@ -87,7 +87,7 @@ public final class e
       }
       synchronized (sLock)
       {
-        localObject4 = (String)ZiB.get(localObject4);
+        localObject4 = (String)ahhc.get(localObject4);
         if ((localObject4 == null) || (((String)localObject4).length() == 0)) {
           continue;
         }
@@ -107,12 +107,12 @@ public final class e
               ??? = localObject5[1];
             }
             localObject5 = new a.y();
-            ((a.y)localObject5).wDN = localObject3;
+            ((a.y)localObject5).zZY = localObject3;
             localStringBuffer.setLength(0);
             localStringBuffer.append(str);
             localStringBuffer.append("%");
             localStringBuffer.append((String)???);
-            ((a.y)localObject5).Zgo = localStringBuffer.toString();
+            ((a.y)localObject5).eqS = localStringBuffer.toString();
             paramArrayList.add(localObject5);
           }
           i += 1;
@@ -127,12 +127,12 @@ public final class e
   {
     synchronized (sLock)
     {
-      ZiB.clear();
+      ahhc.clear();
       return;
     }
   }
   
-  public static void ikZ()
+  public static void jRq()
   {
     if (!h.isNetworkConnected())
     {
@@ -140,14 +140,14 @@ public final class e
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    bK(localArrayList);
+    ck(localArrayList);
     a.c localc;
     if (localArrayList.size() > 0)
     {
       localc = new a.c();
       a.y[] arrayOfy = new a.y[localArrayList.size()];
       localArrayList.toArray(arrayOfy);
-      localc.ZeR = arrayOfy;
+      localc.ahdu = arrayOfy;
     }
     while (localc == null)
     {
@@ -156,9 +156,9 @@ public final class e
       localc = null;
     }
     b.w("yunying", new Object[] { "reportStatisticsData" });
-    b.d("StatisticsUtil", new Object[] { "reportStatisticsData start ret: ", Integer.valueOf(f.ikJ().a(new a()
+    b.d("StatisticsUtil", new Object[] { "reportStatisticsData start ret: ", Integer.valueOf(f.jRa().a(new a()
     {
-      public final void ie(String paramAnonymousString, int paramAnonymousInt)
+      public final void jq(String paramAnonymousString, int paramAnonymousInt)
       {
         if ("CsCmd.Cmd_CSClientReportReq".equals(paramAnonymousString))
         {
@@ -173,7 +173,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.pb.common.c.e
  * JD-Core Version:    0.7.0.1
  */

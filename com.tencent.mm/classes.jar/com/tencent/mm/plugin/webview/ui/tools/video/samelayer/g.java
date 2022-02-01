@@ -1,28 +1,28 @@
 package com.tencent.mm.plugin.webview.ui.tools.video.samelayer;
 
 import com.tencent.luggage.xweb_ext.extendplugin.a.b;
-import com.tencent.luggage.xweb_ext.extendplugin.component.video.b.c.a;
+import com.tencent.luggage.xweb_ext.extendplugin.a.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
-  implements com.tencent.luggage.xweb_ext.extendplugin.a.c
+  implements c
 {
-  private static g QvY;
+  private static g Xos;
   
-  public static g hbD()
+  public static g iBQ()
   {
-    AppMethodBeat.i(266784);
-    if (QvY == null) {
-      QvY = new g();
+    AppMethodBeat.i(297113);
+    if (Xos == null) {
+      Xos = new g();
     }
-    g localg = QvY;
-    AppMethodBeat.o(266784);
+    g localg = Xos;
+    AppMethodBeat.o(297113);
     return localg;
   }
   
-  public final b ex(String paramString)
+  public final b fU(String paramString)
   {
-    AppMethodBeat.i(266788);
+    AppMethodBeat.i(297116);
     int i = -1;
     switch (paramString.hashCode())
     {
@@ -32,7 +32,7 @@ public final class g
       switch (i)
       {
       default: 
-        AppMethodBeat.o(266788);
+        AppMethodBeat.o(297116);
         return null;
         if (paramString.equals("video")) {
           i = 0;
@@ -40,22 +40,15 @@ public final class g
         break;
       }
     }
-    paramString = new k();
-    Object localObject = new WebViewVideoEventHandler();
-    ((WebViewVideoEventHandler)localObject).Qwd = paramString;
-    paramString.Qwp = ((WebViewVideoEventHandler)localObject);
-    paramString.cJC = ((com.tencent.luggage.xweb_ext.extendplugin.component.video.b.c)new i());
-    localObject = paramString.cJC;
-    if (localObject != null) {
-      ((com.tencent.luggage.xweb_ext.extendplugin.component.video.b.c)localObject).a((c.a)new k.s(paramString));
-    }
-    AppMethodBeat.o(266788);
+    paramString = new j();
+    paramString.hUG();
+    AppMethodBeat.o(297116);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.video.samelayer.g
  * JD-Core Version:    0.7.0.1
  */

@@ -2,91 +2,94 @@ package com.tencent.mm.plugin.appbrand.report.quality;
 
 import android.os.Parcel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.pa;
+import com.tencent.mm.autogen.mmdata.rpt.st;
 import com.tencent.mm.plugin.appbrand.launching.AppStartupPerformanceReportBundle;
-import com.tencent.mm.plugin.appbrand.t;
+import com.tencent.mm.plugin.appbrand.w;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class QualitySessionRuntime
   extends QualitySession
 {
-  public boolean csz;
-  public t nAH;
-  public long qNA;
-  public long qNB;
-  public long qNC;
-  public long qND;
-  public long qNE;
-  public long qNF;
-  public AppStartupPerformanceReportBundle qNG;
-  public int qNH;
-  public final b.a qNI;
-  public final f qNJ;
-  public AtomicInteger qNK;
-  public final m qNL;
-  public j qNM;
-  public j qNN;
-  public long qNO;
-  public long qNP;
-  public long qNQ;
-  public volatile pa qNR;
-  public volatile boolean qNS;
-  public volatile boolean qNT;
-  public volatile boolean qNU;
-  public volatile boolean qNV;
-  private Boolean qNW;
+  public boolean ekt;
+  public w qxC;
+  public long tSA;
+  public volatile st tSB;
+  public volatile boolean tSC;
+  public volatile boolean tSD;
+  public volatile boolean tSE;
+  public volatile boolean tSF;
+  private Boolean tSG;
+  public long tSk;
+  public long tSl;
+  public long tSm;
+  public long tSn;
+  public long tSo;
+  public long tSp;
+  public AppStartupPerformanceReportBundle tSq;
+  public int tSr;
+  public final b.a tSs;
+  public final e tSt;
+  public AtomicInteger tSu;
+  public final l tSv;
+  public i tSw;
+  public i tSx;
+  public long tSy;
+  public long tSz;
   
   QualitySessionRuntime(Parcel paramParcel)
   {
     super(paramParcel);
     AppMethodBeat.i(48233);
-    this.qNI = new b.a();
-    this.qNJ = new f();
-    this.qNK = new AtomicInteger(0);
-    this.qNL = new m();
-    this.qNM = j.qNd;
-    this.qNN = j.qNd;
-    this.qNO = 0L;
-    this.qNR = new pa();
-    this.qNS = false;
-    this.qNT = false;
-    this.qNU = false;
-    this.qNV = false;
+    this.tSs = new b.a();
+    this.tSt = new e();
+    this.tSu = new AtomicInteger(0);
+    this.tSv = new l();
+    this.tSw = i.tRN;
+    this.tSx = i.tRN;
+    this.tSy = 0L;
+    this.tSC = false;
+    this.tSD = false;
+    this.tSE = false;
+    this.tSF = false;
+    this.tSB = new st();
+    this.tSB.jzF = 2L;
+    this.tSB.jys = 2L;
+    this.tSB.jzG = 2L;
     AppMethodBeat.o(48233);
   }
   
-  public final long cir()
+  public final long cJi()
   {
     int j = 1;
     AppMethodBeat.i(48231);
-    if (this.nAH.So()) {}
+    if (this.qxC.asE()) {}
     for (int k = 2;; k = 1)
     {
       int i;
-      if (this.qNM == j.qNe) {
+      if (this.tSw == i.tRO) {
         i = 1;
       }
       for (;;)
       {
         long l;
-        if (this.csz)
+        if (this.ekt)
         {
           l = k * 100 + i * 10 + 0;
           AppMethodBeat.o(48231);
           return l;
-          if (this.qNM == j.qNf) {
+          if (this.tSw == i.tRP) {
             i = 2;
           }
         }
         else
         {
-          if (this.qNN == j.qNe) {}
+          if (this.tSx == i.tRO) {}
           for (;;)
           {
             l = k * 100 + i * 10 + j;
             AppMethodBeat.o(48231);
             return l;
-            if (this.qNN == j.qNf) {
+            if (this.tSx == i.tRP) {
               j = 2;
             } else {
               j = 0;
@@ -99,30 +102,30 @@ public class QualitySessionRuntime
   }
   
   /* Error */
-  public final boolean cis()
+  public final boolean cJj()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 126
+    //   2: ldc 137
     //   4: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 128	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:qNW	Ljava/lang/Boolean;
+    //   8: getfield 139	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:tSG	Ljava/lang/Boolean;
     //   11: ifnonnull +14 -> 25
     //   14: iconst_0
     //   15: istore_1
-    //   16: ldc 126
-    //   18: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   16: ldc 137
+    //   18: invokestatic 115	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   21: aload_0
     //   22: monitorexit
     //   23: iload_1
     //   24: ireturn
     //   25: aload_0
-    //   26: getfield 128	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:qNW	Ljava/lang/Boolean;
-    //   29: invokevirtual 133	java/lang/Boolean:booleanValue	()Z
+    //   26: getfield 139	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:tSG	Ljava/lang/Boolean;
+    //   29: invokevirtual 144	java/lang/Boolean:booleanValue	()Z
     //   32: istore_1
-    //   33: ldc 126
-    //   35: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   33: ldc 137
+    //   35: invokestatic 115	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   38: goto -17 -> 21
     //   41: astore_2
     //   42: aload_0
@@ -142,13 +145,13 @@ public class QualitySessionRuntime
   }
   
   /* Error */
-  public final void cit()
+  public final void cJk()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 128	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:qNW	Ljava/lang/Boolean;
+    //   3: getfield 139	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:tSG	Ljava/lang/Boolean;
     //   6: astore_1
     //   7: aload_1
     //   8: ifnull +6 -> 14
@@ -156,8 +159,8 @@ public class QualitySessionRuntime
     //   12: monitorexit
     //   13: return
     //   14: aload_0
-    //   15: getstatic 137	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
-    //   18: putfield 128	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:qNW	Ljava/lang/Boolean;
+    //   15: getstatic 148	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
+    //   18: putfield 139	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:tSG	Ljava/lang/Boolean;
     //   21: goto -10 -> 11
     //   24: astore_1
     //   25: aload_0
@@ -175,28 +178,28 @@ public class QualitySessionRuntime
     //   14	21	24	finally
   }
   
-  public final long ciu()
+  public final long cJl()
   {
-    AppMethodBeat.i(259197);
-    switch (1.nLn[this.nAH.ntR.nKU.bIg().ordinal()])
+    AppMethodBeat.i(321417);
+    switch (1.qKW[this.qxC.qsB.qKC.chD().ordinal()])
     {
     default: 
-      AppMethodBeat.o(259197);
+      AppMethodBeat.o(321417);
       return 0L;
     case 1: 
-      AppMethodBeat.o(259197);
+      AppMethodBeat.o(321417);
       return 0L;
     case 2: 
-      AppMethodBeat.o(259197);
+      AppMethodBeat.o(321417);
       return 1L;
     }
-    AppMethodBeat.o(259197);
+    AppMethodBeat.o(321417);
     return 2L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.quality.QualitySessionRuntime
  * JD-Core Version:    0.7.0.1
  */

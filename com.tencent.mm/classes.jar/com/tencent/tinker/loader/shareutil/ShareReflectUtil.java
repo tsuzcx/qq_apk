@@ -19,13 +19,13 @@ public class ShareReflectUtil
     paramString.set(paramObject, arrayOfObject2);
   }
   
-  public static Constructor<?> findConstructor(Object paramObject, Class<?>... paramVarArgs)
+  public static Constructor<?> findConstructor(Class<?> paramClass, Class<?>... paramVarArgs)
   {
-    Class localClass = paramObject.getClass();
-    while (localClass != null) {
+    Object localObject = paramClass;
+    while (localObject != null) {
       try
       {
-        Constructor localConstructor = localClass.getDeclaredConstructor(paramVarArgs);
+        Constructor localConstructor = ((Class)localObject).getDeclaredConstructor(paramVarArgs);
         if (!localConstructor.isAccessible()) {
           localConstructor.setAccessible(true);
         }
@@ -33,10 +33,15 @@ public class ShareReflectUtil
       }
       catch (NoSuchMethodException localNoSuchMethodException)
       {
-        localClass = localClass.getSuperclass();
+        localObject = ((Class)localObject).getSuperclass();
       }
     }
-    throw new NoSuchMethodException("Constructor with parameters " + Arrays.asList(paramVarArgs) + " not found in " + paramObject.getClass());
+    throw new NoSuchMethodException("Constructor with parameters " + Arrays.asList(paramVarArgs) + " not found in " + paramClass);
+  }
+  
+  public static Constructor<?> findConstructor(Object paramObject, Class<?>... paramVarArgs)
+  {
+    return findConstructor(paramObject.getClass(), paramVarArgs);
   }
   
   public static Field findField(Class<?> paramClass, String paramString)
@@ -144,7 +149,7 @@ public class ShareReflectUtil
       }
       return paramClass;
     }
-    catch (Throwable paramContext) {}
+    finally {}
     return null;
   }
   
@@ -155,7 +160,7 @@ public class ShareReflectUtil
       int i = findField(paramClass, paramString).getInt(null);
       return i;
     }
-    catch (Throwable paramClass) {}
+    finally {}
     return paramInt;
   }
   
@@ -178,7 +183,7 @@ public class ShareReflectUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.loader.shareutil.ShareReflectUtil
  * JD-Core Version:    0.7.0.1
  */

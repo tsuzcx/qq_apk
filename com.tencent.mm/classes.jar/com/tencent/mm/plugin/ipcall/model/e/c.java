@@ -1,52 +1,51 @@
 package com.tencent.mm.plugin.ipcall.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cfm;
-import com.tencent.mm.protocal.protobuf.cfn;
+import com.tencent.mm.protocal.protobuf.cvp;
+import com.tencent.mm.protocal.protobuf.cvq;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
-  extends q
+  extends p
   implements m
 {
-  private cfm DRt;
-  public cfn DRu;
-  private i callback;
-  private d rr;
+  private cvp JID;
+  public cvq JIE;
+  private h callback;
+  private com.tencent.mm.am.c rr;
   
   public c()
   {
     AppMethodBeat.i(25457);
     this.rr = null;
-    this.DRt = null;
-    this.DRu = null;
+    this.JID = null;
+    this.JIE = null;
     this.callback = null;
-    d.a locala = new d.a();
-    locala.lBU = new cfm();
-    locala.lBV = new cfn();
+    c.a locala = new c.a();
+    locala.otE = new cvp();
+    locala.otF = new cvq();
     locala.funcId = 746;
     locala.uri = "/cgi-bin/micromsg-bin/getwcocallinfo";
-    locala.lBW = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.rr = locala.bgN();
-    this.DRt = ((cfm)d.b.b(this.rr.lBR));
+    this.rr = locala.bEF();
+    this.JID = ((cvp)c.b.b(this.rr.otB));
     Log.i("MicroMsg.NetSceneIPCallGetCallInfo", "NetSceneIPCallGetCallInfo");
     AppMethodBeat.o(25457);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(25458);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(25458);
     return i;
@@ -61,7 +60,7 @@ public final class c
   {
     AppMethodBeat.i(25459);
     Log.i("MicroMsg.NetSceneIPCallGetCallInfo", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.DRu = ((cfn)d.c.b(((d)params).lBS));
+    this.JIE = ((cvq)c.c.b(((com.tencent.mm.am.c)params).otC));
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

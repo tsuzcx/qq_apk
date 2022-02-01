@@ -4,13 +4,13 @@ import android.app.Activity;
 
 public abstract interface d
 {
-  public abstract boolean gR(String paramString);
+  public abstract boolean ir(String paramString);
   
-  public abstract Activity p(Activity paramActivity);
+  public abstract Activity q(Activity paramActivity);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.splash.d
  * JD-Core Version:    0.7.0.1
  */

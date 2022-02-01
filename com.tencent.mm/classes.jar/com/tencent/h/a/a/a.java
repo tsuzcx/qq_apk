@@ -10,121 +10,124 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class a
 {
-  public Handler ZQg;
-  public HandlerThread mHandlerThread;
+  public Handler ahWL;
+  private HandlerThread mHandlerThread;
   
   public a(String paramString)
-  {
-    ir(paramString, 0);
-  }
-  
-  public a(String paramString, byte paramByte)
-  {
-    ir(paramString, 5);
-  }
-  
-  private void b(int paramInt1, int paramInt2, Object paramObject, long paramLong)
-  {
-    if (this.ZQg != null)
-    {
-      Message localMessage = this.ZQg.obtainMessage();
-      localMessage.what = paramInt1;
-      localMessage.arg1 = paramInt2;
-      localMessage.arg2 = -1;
-      localMessage.obj = paramObject;
-      this.ZQg.sendMessageDelayed(localMessage, paramLong);
-    }
-  }
-  
-  private void ir(String paramString, int paramInt)
   {
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
       str = "worker_thread";
     }
-    this.mHandlerThread = new HandlerThread(str, paramInt);
+    this.mHandlerThread = new HandlerThread(str, 0);
     this.mHandlerThread.start();
-    this.ZQg = new Handler(this.mHandlerThread.getLooper())
+    this.ahWL = new Handler(this.mHandlerThread.getLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
-        AppMethodBeat.i(208442);
+        AppMethodBeat.i(212116);
         try
         {
-          a.this.q(paramAnonymousMessage);
-          AppMethodBeat.o(208442);
+          a.this.y(paramAnonymousMessage);
+          AppMethodBeat.o(212116);
           return;
         }
-        catch (Throwable paramAnonymousMessage)
+        finally
         {
           i.i("sensor_AsyncWorker", "[method: handleMessage ] e: " + paramAnonymousMessage.getCause());
-          a.this.q(paramAnonymousMessage);
-          AppMethodBeat.o(208442);
+          a.this.G(paramAnonymousMessage);
+          AppMethodBeat.o(212116);
         }
       }
     };
   }
   
-  private void l(int paramInt1, int paramInt2, Object paramObject)
+  private void b(int paramInt1, int paramInt2, Object paramObject, long paramLong)
   {
-    if (this.ZQg != null) {
+    if (this.ahWL != null)
+    {
+      Message localMessage = this.ahWL.obtainMessage();
+      localMessage.what = paramInt1;
+      localMessage.arg1 = paramInt2;
+      localMessage.arg2 = -1;
+      localMessage.obj = paramObject;
+      this.ahWL.sendMessageDelayed(localMessage, paramLong);
+    }
+  }
+  
+  private void m(int paramInt1, int paramInt2, Object paramObject)
+  {
+    if (this.ahWL != null) {
       b(paramInt1, paramInt2, paramObject, 0L);
     }
   }
   
-  public final void a(com.tencent.g.a.a parama)
+  public void G(Throwable paramThrowable) {}
+  
+  protected final void S(int paramInt, Object paramObject)
   {
-    if (parama != null) {
-      this.ZQg.removeCallbacks(parama);
+    if (this.ahWL != null) {
+      l(paramInt, -1, paramObject);
     }
   }
   
-  protected final void aCp(int paramInt)
+  protected final void aJc(int paramInt)
   {
-    if ((this.ZQg != null) && (this.ZQg != null) && (this.ZQg != null))
+    if ((this.ahWL != null) && (this.ahWL != null) && (this.ahWL != null))
     {
-      Message localMessage = this.ZQg.obtainMessage();
+      Message localMessage = this.ahWL.obtainMessage();
       localMessage.what = paramInt;
       localMessage.arg1 = -1;
       localMessage.arg2 = -1;
       localMessage.obj = null;
-      this.ZQg.sendMessageAtFrontOfQueue(localMessage);
+      this.ahWL.sendMessageAtFrontOfQueue(localMessage);
     }
   }
   
-  protected final void itI()
+  public final boolean isAlive()
   {
-    y(2, null);
+    if (this.mHandlerThread != null) {
+      return this.mHandlerThread.isAlive();
+    }
+    return false;
   }
   
-  protected final void itJ()
+  public final void kdd()
   {
-    if (this.ZQg != null) {
+    if (this.ahWL != null) {
+      this.ahWL.removeCallbacksAndMessages(null);
+    }
+    if (this.mHandlerThread != null)
+    {
+      i.i("sensor_AsyncWorker", "[method: quitHandlerThread ] ");
+      this.mHandlerThread.quit();
+    }
+  }
+  
+  protected final void kde()
+  {
+    S(2, null);
+  }
+  
+  protected final void kdf()
+  {
+    if (this.ahWL != null) {
       b(7, -1, null, 10000L);
     }
   }
   
-  protected final void k(int paramInt1, int paramInt2, Object paramObject)
+  protected final void l(int paramInt1, int paramInt2, Object paramObject)
   {
-    if (this.ZQg != null) {
-      l(paramInt1, paramInt2, paramObject);
+    if (this.ahWL != null) {
+      m(paramInt1, paramInt2, paramObject);
     }
   }
   
-  public void q(Message paramMessage) {}
-  
-  public void q(Throwable paramThrowable) {}
-  
-  protected final void y(int paramInt, Object paramObject)
-  {
-    if (this.ZQg != null) {
-      k(paramInt, -1, paramObject);
-    }
-  }
+  public void y(Message paramMessage) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.h.a.a.a
  * JD-Core Version:    0.7.0.1
  */

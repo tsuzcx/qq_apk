@@ -1,32 +1,63 @@
 package com.google.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.lang.reflect.Field;
+import java.util.Locale;
 
 public enum c
+  implements d
 {
-  static
+  private c() {}
+  
+  static String C(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(12216);
-    cdq = new c("ERROR_CORRECTION", 0);
-    cdr = new c("CHARACTER_SET", 1);
-    cds = new c("DATA_MATRIX_SHAPE", 2);
-    cdt = new c("MIN_SIZE", 3);
-    cdu = new c("MAX_SIZE", 4);
-    cdv = new c("MARGIN", 5);
-    cdw = new c("PDF417_COMPACT", 6);
-    cdx = new c("PDF417_COMPACTION", 7);
-    cdy = new c("PDF417_DIMENSIONS", 8);
-    cdz = new c("AZTEC_LAYERS", 9);
-    cdA = new c("QR_VERSION", 10);
-    cdB = new c[] { cdq, cdr, cds, cdt, cdu, cdv, cdw, cdx, cdy, cdz, cdA };
-    AppMethodBeat.o(12216);
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    int j = paramString1.length();
+    while (i < j)
+    {
+      char c = paramString1.charAt(i);
+      if ((Character.isUpperCase(c)) && (localStringBuilder.length() != 0)) {
+        localStringBuilder.append(paramString2);
+      }
+      localStringBuilder.append(c);
+      i += 1;
+    }
+    return localStringBuilder.toString();
   }
   
-  private c() {}
+  static String dI(String paramString)
+  {
+    int i = 0;
+    StringBuilder localStringBuilder = new StringBuilder();
+    char c = paramString.charAt(0);
+    int j = paramString.length();
+    while ((i < j - 1) && (!Character.isLetter(c)))
+    {
+      localStringBuilder.append(c);
+      i += 1;
+      c = paramString.charAt(i);
+    }
+    String str = paramString;
+    if (!Character.isUpperCase(c))
+    {
+      c = Character.toUpperCase(c);
+      i += 1;
+      if (i >= paramString.length()) {
+        break label120;
+      }
+    }
+    label120:
+    for (paramString = c + paramString.substring(i);; paramString = String.valueOf(c))
+    {
+      str = paramString;
+      return str;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.c.c
  * JD-Core Version:    0.7.0.1
  */

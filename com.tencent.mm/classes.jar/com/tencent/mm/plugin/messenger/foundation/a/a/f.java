@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.messenger.foundation.a.a;
 
 import com.tencent.mm.sdk.storage.IAutoStorage;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.bs;
 
 public abstract interface f
-  extends IAutoStorage<bq>
+  extends IAutoStorage<bs>
 {
   public abstract void a(a parama);
   
-  public abstract bq aOy(String paramString);
+  public abstract bs aLx(String paramString);
   
   public abstract void b(a parama);
   
-  public abstract int eSk();
+  public abstract int gbf();
   
-  public abstract int eSl();
+  public abstract int gbg();
   
   public static abstract interface a
   {
-    public abstract void a(bq parambq);
+    public abstract void a(bs parambs);
   }
 }
 

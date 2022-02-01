@@ -3,15 +3,15 @@ package com.tencent.mm.protocal.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class l
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int RCN;
-  public int RCO;
-  public int RCP;
-  public int RCQ;
-  public int RCR;
-  public int RCS;
-  public int RCT;
+  public int Yzp;
+  public int Yzq;
+  public int Yzr;
+  public int Yzs;
+  public int Yzt;
+  public int Yzu;
+  public int Yzv;
   public int action;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -19,37 +19,37 @@ public final class l
     AppMethodBeat.i(143955);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.RCN);
-      paramVarArgs.aY(2, this.action);
-      paramVarArgs.aY(3, this.RCO);
-      paramVarArgs.aY(4, this.RCP);
-      paramVarArgs.aY(5, this.RCQ);
-      paramVarArgs.aY(6, this.RCR);
-      paramVarArgs.aY(7, this.RCS);
-      paramVarArgs.aY(8, this.RCT);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.Yzp);
+      paramVarArgs.bS(2, this.action);
+      paramVarArgs.bS(3, this.Yzq);
+      paramVarArgs.bS(4, this.Yzr);
+      paramVarArgs.bS(5, this.Yzs);
+      paramVarArgs.bS(6, this.Yzt);
+      paramVarArgs.bS(7, this.Yzu);
+      paramVarArgs.bS(8, this.Yzv);
       AppMethodBeat.o(143955);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.bM(1, this.RCN);
-      int i = g.a.a.b.b.a.bM(2, this.action);
-      int j = g.a.a.b.b.a.bM(3, this.RCO);
-      int k = g.a.a.b.b.a.bM(4, this.RCP);
-      int m = g.a.a.b.b.a.bM(5, this.RCQ);
-      int n = g.a.a.b.b.a.bM(6, this.RCR);
-      int i1 = g.a.a.b.b.a.bM(7, this.RCS);
-      int i2 = g.a.a.b.b.a.bM(8, this.RCT);
+      paramInt = i.a.a.b.b.a.cJ(1, this.Yzp);
+      int i = i.a.a.b.b.a.cJ(2, this.action);
+      int j = i.a.a.b.b.a.cJ(3, this.Yzq);
+      int k = i.a.a.b.b.a.cJ(4, this.Yzr);
+      int m = i.a.a.b.b.a.cJ(5, this.Yzs);
+      int n = i.a.a.b.b.a.cJ(6, this.Yzt);
+      int i1 = i.a.a.b.b.a.cJ(7, this.Yzu);
+      int i2 = i.a.a.b.b.a.cJ(8, this.Yzv);
       AppMethodBeat.o(143955);
       return paramInt + 0 + i + j + k + m + n + i1 + i2;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
       AppMethodBeat.o(143955);
@@ -57,7 +57,7 @@ public final class l
     }
     if (paramInt == 3)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       l locall = (l)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
@@ -65,35 +65,35 @@ public final class l
         AppMethodBeat.o(143955);
         return -1;
       case 1: 
-        locall.RCN = locala.abFh.AK();
+        locall.Yzp = locala.ajGk.aar();
         AppMethodBeat.o(143955);
         return 0;
       case 2: 
-        locall.action = locala.abFh.AK();
+        locall.action = locala.ajGk.aar();
         AppMethodBeat.o(143955);
         return 0;
       case 3: 
-        locall.RCO = locala.abFh.AK();
+        locall.Yzq = locala.ajGk.aar();
         AppMethodBeat.o(143955);
         return 0;
       case 4: 
-        locall.RCP = locala.abFh.AK();
+        locall.Yzr = locala.ajGk.aar();
         AppMethodBeat.o(143955);
         return 0;
       case 5: 
-        locall.RCQ = locala.abFh.AK();
+        locall.Yzs = locala.ajGk.aar();
         AppMethodBeat.o(143955);
         return 0;
       case 6: 
-        locall.RCR = locala.abFh.AK();
+        locall.Yzt = locala.ajGk.aar();
         AppMethodBeat.o(143955);
         return 0;
       case 7: 
-        locall.RCS = locala.abFh.AK();
+        locall.Yzu = locala.ajGk.aar();
         AppMethodBeat.o(143955);
         return 0;
       }
-      locall.RCT = locala.abFh.AK();
+      locall.Yzv = locala.ajGk.aar();
       AppMethodBeat.o(143955);
       return 0;
     }
@@ -103,7 +103,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.a.a.l
  * JD-Core Version:    0.7.0.1
  */

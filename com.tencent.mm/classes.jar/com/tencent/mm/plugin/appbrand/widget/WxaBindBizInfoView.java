@@ -8,9 +8,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
-import com.tencent.mm.plugin.appbrand.au.f;
-import com.tencent.mm.plugin.appbrand.au.g;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.plugin.appbrand.ba.f;
+import com.tencent.mm.plugin.appbrand.ba.g;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaEntryInfo;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.LinkedList;
@@ -19,22 +19,22 @@ import java.util.List;
 public class WxaBindBizInfoView
   extends LinearLayout
 {
-  private static int rol;
-  private static int rom;
-  private ImageView oFa;
-  private TextView pPT;
-  private List<WxaAttributes.WxaEntryInfo> rof;
-  private View rog;
-  private TextView roh;
-  private LinearLayout roi;
-  private ViewGroup roj;
-  private View rok;
+  private static int uyg;
+  private static int uyh;
+  private ImageView rIe;
+  private TextView sUt;
+  private List<WxaAttributes.WxaEntryInfo> uya;
+  private View uyb;
+  private TextView uyc;
+  private LinearLayout uyd;
+  private ViewGroup uye;
+  private View uyf;
   
   static
   {
     AppMethodBeat.i(49377);
-    rol = a.fromDPToPix(MMApplicationContext.getContext(), 15);
-    rom = a.fromDPToPix(MMApplicationContext.getContext(), 30);
+    uyg = a.fromDPToPix(MMApplicationContext.getContext(), 15);
+    uyh = a.fromDPToPix(MMApplicationContext.getContext(), 30);
     AppMethodBeat.o(49377);
   }
   
@@ -57,26 +57,26 @@ public class WxaBindBizInfoView
   private void init()
   {
     AppMethodBeat.i(49376);
-    this.rof = new LinkedList();
-    View localView = View.inflate(getContext(), au.g.app_brand_profile_wxa_bind_biz_info_item, this);
-    this.rog = localView.findViewById(au.f.firstItemV);
-    this.oFa = ((ImageView)localView.findViewById(au.f.iconIv));
-    this.pPT = ((TextView)localView.findViewById(au.f.titleTv));
-    this.roh = ((TextView)localView.findViewById(au.f.countTv));
-    this.rok = localView.findViewById(au.f.moreV);
-    this.roi = ((LinearLayout)localView.findViewById(au.f.containerV));
-    this.roj = ((ViewGroup)localView.findViewById(au.f.itemContainerV));
+    this.uya = new LinkedList();
+    View localView = View.inflate(getContext(), ba.g.app_brand_profile_wxa_bind_biz_info_item, this);
+    this.uyb = localView.findViewById(ba.f.firstItemV);
+    this.rIe = ((ImageView)localView.findViewById(ba.f.iconIv));
+    this.sUt = ((TextView)localView.findViewById(ba.f.titleTv));
+    this.uyc = ((TextView)localView.findViewById(ba.f.countTv));
+    this.uyf = localView.findViewById(ba.f.moreV);
+    this.uyd = ((LinearLayout)localView.findViewById(ba.f.containerV));
+    this.uye = ((ViewGroup)localView.findViewById(ba.f.itemContainerV));
     AppMethodBeat.o(49376);
   }
   
   public List<WxaAttributes.WxaEntryInfo> getWxaEntryInfoList()
   {
-    return this.rof;
+    return this.uya;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.WxaBindBizInfoView
  * JD-Core Version:    0.7.0.1
  */

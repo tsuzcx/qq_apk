@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.hardwareopt.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cjd;
+import com.tencent.mm.protocal.protobuf.czg;
 
 public class a
 {
-  private static volatile a Dtq = null;
-  private cjd Dtr = null;
+  private static volatile a JmG = null;
+  private czg JmH = null;
   
-  public static a eCh()
+  public static a fKi()
   {
     AppMethodBeat.i(55555);
-    if (Dtq == null) {
+    if (JmG == null) {
       try
       {
-        if (Dtq == null) {
-          Dtq = new a();
+        if (JmG == null) {
+          JmG = new a();
         }
-        a locala1 = Dtq;
+        a locala1 = JmG;
         return locala1;
       }
       finally
@@ -25,25 +25,25 @@ public class a
         AppMethodBeat.o(55555);
       }
     }
-    a locala2 = Dtq;
+    a locala2 = JmG;
     AppMethodBeat.o(55555);
     return locala2;
   }
   
-  public final cjd eCi()
+  public final czg fKj()
   {
     AppMethodBeat.i(55556);
-    if (this.Dtr == null) {
-      this.Dtr = new cjd();
+    if (this.JmH == null) {
+      this.JmH = new czg();
     }
-    cjd localcjd = this.Dtr;
+    czg localczg = this.JmH;
     AppMethodBeat.o(55556);
-    return localcjd;
+    return localczg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.hardwareopt.b.a
  * JD-Core Version:    0.7.0.1
  */

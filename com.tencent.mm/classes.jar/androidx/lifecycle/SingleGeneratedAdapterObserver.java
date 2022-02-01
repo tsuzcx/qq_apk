@@ -1,20 +1,20 @@
 package androidx.lifecycle;
 
 class SingleGeneratedAdapterObserver
-  implements j
+  implements o
 {
-  private final f aaM;
+  private final h bIu;
   
-  SingleGeneratedAdapterObserver(f paramf)
+  SingleGeneratedAdapterObserver(h paramh)
   {
-    this.aaM = paramf;
+    this.bIu = paramh;
   }
   
-  public final void a(l paraml, h.a parama) {}
+  public void onStateChanged(q paramq, j.a parama) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     androidx.lifecycle.SingleGeneratedAdapterObserver
  * JD-Core Version:    0.7.0.1
  */

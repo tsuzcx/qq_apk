@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -18,18 +17,55 @@ import com.tencent.mm.plugin.appbrand.platform.window.c.c;
 import com.tencent.mm.plugin.appbrand.platform.window.d;
 import com.tencent.mm.plugin.appbrand.platform.window.d.b;
 import com.tencent.mm.plugin.appbrand.platform.window.e;
-import com.tencent.mm.plugin.appbrand.utils.o;
+import com.tencent.mm.plugin.appbrand.utils.r;
 import com.tencent.mm.plugin.appbrand.widget.input.n;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 import java.util.Map;
 
-@SuppressLint({"ViewConstructor"})
 public class q<RUNTIME extends AppBrandRuntime>
   extends FrameLayout
-  implements ak, c
+  implements ap, c
 {
-  public final void C(AppBrandRuntime paramAppBrandRuntime)
+  public final void A(final AppBrandRuntime paramAppBrandRuntime)
+  {
+    AppMethodBeat.i(316646);
+    if (paramAppBrandRuntime == null)
+    {
+      AppMethodBeat.o(316646);
+      return;
+    }
+    new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(318339);
+        Log.i("Luggage.WXA.AppBrandRuntimeContainerViewImpl", "removeImpl entered appId[%s]", new Object[] { paramAppBrandRuntime.mAppId });
+        new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(317228);
+            Log.i("Luggage.WXA.AppBrandRuntimeContainerViewImpl", "removeImpl, cleanupOut.run(), appId[%s]", new Object[] { q.2.this.evs.mAppId });
+            if (q.2.this.evs.mResumed) {
+              q.2.this.evs.dispatchPause();
+            }
+            q.2.this.evs.dispatchDestroy();
+            q.ccq().removeView(q.2.this.evs.qsk);
+            q.ccp().remove(q.2.this.evs.mAppId);
+            q.cco().remove(q.2.this.evs);
+            AppMethodBeat.o(317228);
+          }
+        };
+        AppMethodBeat.o(318339);
+        throw null;
+      }
+    };
+    AppMethodBeat.o(316646);
+    throw null;
+  }
+  
+  public final void E(AppBrandRuntime paramAppBrandRuntime)
   {
     if (paramAppBrandRuntime == null) {
       return;
@@ -37,26 +73,11 @@ public class q<RUNTIME extends AppBrandRuntime>
     throw null;
   }
   
-  public final boolean RZ()
-  {
-    return false;
-  }
-  
-  public boolean Sc()
-  {
-    return false;
-  }
-  
-  public final boolean Sd()
-  {
-    return false;
-  }
-  
   public final d a(d.b paramb)
   {
-    AppMethodBeat.i(243171);
-    paramb = (d)o.g("Luggage.WXA.WindowFullscreenHandler.Dummy", d.class);
-    AppMethodBeat.o(243171);
+    AppMethodBeat.i(316684);
+    paramb = (d)r.k("Luggage.WXA.WindowFullscreenHandler.Dummy", d.class);
+    AppMethodBeat.o(316684);
     return paramb;
   }
   
@@ -64,72 +85,70 @@ public class q<RUNTIME extends AppBrandRuntime>
   
   public final void a(final AppBrandRuntime paramAppBrandRuntime, final AppBrandInitConfig paramAppBrandInitConfig)
   {
-    AppMethodBeat.i(243164);
+    AppMethodBeat.i(316638);
     if (paramAppBrandInitConfig == null)
     {
-      AppMethodBeat.o(243164);
+      AppMethodBeat.o(316638);
       return;
     }
     new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(244435);
-        q.bDa().coE();
+        AppMethodBeat.i(318495);
+        q.ccn().cRg();
         if (paramAppBrandRuntime == null)
         {
-          AppMethodBeat.o(244435);
+          AppMethodBeat.o(318495);
           throw null;
         }
-        AppMethodBeat.o(244435);
+        AppMethodBeat.o(318495);
         throw null;
       }
     };
-    AppMethodBeat.o(243164);
+    AppMethodBeat.o(316638);
     throw null;
   }
   
-  public final void a(final AppBrandRuntime paramAppBrandRuntime, final Object paramObject)
-  {
-    AppMethodBeat.i(243166);
-    if (paramAppBrandRuntime == null)
-    {
-      AppMethodBeat.o(243166);
-      return;
-    }
-    new Runnable()
-    {
-      public final void run()
-      {
-        throw null;
-      }
-    };
-    AppMethodBeat.o(243166);
-    throw null;
-  }
+  public final void a(AppBrandRuntime paramAppBrandRuntime, Object paramObject, Runnable paramRunnable) {}
   
   public final void a(WxaWindowLayoutParams paramWxaWindowLayoutParams, AppBrandRuntime paramAppBrandRuntime) {}
   
-  public final boolean bCS()
+  public final boolean asq()
   {
     return false;
   }
   
-  public final boolean bCZ()
+  public boolean ast()
+  {
+    return false;
+  }
+  
+  public final boolean asu()
+  {
+    return false;
+  }
+  
+  public final boolean ccf()
+  {
+    return false;
+  }
+  
+  public final boolean ccm()
   {
     return false;
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(243159);
+    AppMethodBeat.i(316626);
     if ((paramKeyEvent.getAction() == 0) && (paramKeyEvent.getKeyCode() == 4))
     {
-      AppMethodBeat.o(243159);
+      AppMethodBeat.o(316626);
       throw null;
     }
     boolean bool = super.dispatchKeyEvent(paramKeyEvent);
-    AppMethodBeat.o(243159);
+    AppMethodBeat.o(316626);
     return bool;
   }
   
@@ -175,10 +194,10 @@ public class q<RUNTIME extends AppBrandRuntime>
   
   public DisplayMetrics getVDisplayMetrics()
   {
-    AppMethodBeat.i(243169);
+    AppMethodBeat.i(316670);
     DisplayMetrics localDisplayMetrics = getContext().getResources().getDisplayMetrics();
     new DisplayMetrics().setTo(localDisplayMetrics);
-    AppMethodBeat.o(243169);
+    AppMethodBeat.o(316670);
     throw null;
   }
   
@@ -196,59 +215,21 @@ public class q<RUNTIME extends AppBrandRuntime>
   
   public void setWindowDescription(c.a parama) {}
   
-  public final RUNTIME w(AppBrandRuntime paramAppBrandRuntime)
+  public final RUNTIME y(AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(243168);
+    AppMethodBeat.i(316659);
     if (paramAppBrandRuntime == null)
     {
       paramAppBrandRuntime = new NullPointerException("Null runtime");
-      AppMethodBeat.o(243168);
+      AppMethodBeat.o(316659);
       throw paramAppBrandRuntime;
     }
-    AppMethodBeat.o(243168);
+    AppMethodBeat.o(316659);
     throw null;
   }
   
-  public final boolean x(AppBrandRuntime paramAppBrandRuntime)
+  public final boolean z(AppBrandRuntime paramAppBrandRuntime)
   {
-    throw null;
-  }
-  
-  public final void y(final AppBrandRuntime paramAppBrandRuntime)
-  {
-    AppMethodBeat.i(243167);
-    if (paramAppBrandRuntime == null)
-    {
-      AppMethodBeat.o(243167);
-      return;
-    }
-    new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(242576);
-        Log.i("Luggage.WXA.AppBrandRuntimeContainerViewImpl", "removeImpl entered appId[%s]", new Object[] { paramAppBrandRuntime.mAppId });
-        new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(243976);
-            Log.i("Luggage.WXA.AppBrandRuntimeContainerViewImpl", "removeImpl, cleanupOut.run(), appId[%s]", new Object[] { q.3.this.cCM.mAppId });
-            if (q.3.this.cCM.mResumed) {
-              q.3.this.cCM.dispatchPause();
-            }
-            q.3.this.cCM.dispatchDestroy();
-            q.bDd().removeView(q.3.this.cCM.ntC);
-            q.bDc().remove(q.3.this.cCM.mAppId);
-            q.bDb().remove(q.3.this.cCM);
-            AppMethodBeat.o(243976);
-          }
-        };
-        AppMethodBeat.o(242576);
-        throw null;
-      }
-    };
-    AppMethodBeat.o(243167);
     throw null;
   }
   
@@ -256,7 +237,7 @@ public class q<RUNTIME extends AppBrandRuntime>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.q
  * JD-Core Version:    0.7.0.1
  */

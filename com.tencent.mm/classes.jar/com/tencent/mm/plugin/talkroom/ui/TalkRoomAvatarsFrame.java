@@ -7,7 +7,7 @@ import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
@@ -19,22 +19,22 @@ import java.util.List;
 public class TalkRoomAvatarsFrame
   extends FrameLayout
 {
-  private final int EmD;
-  private String EmR;
-  private final int MkY;
-  private final int MkZ;
-  private MMHorList Mla;
-  private TalkRoomAvatarsFrame.a Mlb;
-  private MTimerHandler Mlc;
+  private final int Kfm;
+  private String Kfz;
+  private final int SOs;
+  private final int SOt;
+  private MMHorList SOu;
+  private TalkRoomAvatarsFrame.a SOv;
+  private MTimerHandler SOw;
   private MMHandler mHandler;
   
   public TalkRoomAvatarsFrame(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(29582);
-    this.MkY = 2000;
-    this.MkZ = 5;
-    this.EmD = a.fromDPToPix(null, 58);
+    this.SOs = 2000;
+    this.SOt = 5;
+    this.Kfm = a.fromDPToPix(null, 58);
     initView();
     AppMethodBeat.o(29582);
   }
@@ -43,60 +43,60 @@ public class TalkRoomAvatarsFrame
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(29583);
-    this.MkY = 2000;
-    this.MkZ = 5;
-    this.EmD = a.fromDPToPix(null, 58);
+    this.SOs = 2000;
+    this.SOt = 5;
+    this.Kfm = a.fromDPToPix(null, 58);
     initView();
     AppMethodBeat.o(29583);
   }
   
-  private void eLm()
+  private void fTt()
   {
     AppMethodBeat.i(29587);
-    this.Mlb.EmR = this.EmR;
-    if (Util.isNullOrNil(this.EmR))
+    this.SOv.Kfz = this.Kfz;
+    if (Util.isNullOrNil(this.Kfz))
     {
-      this.Mlb.notifyDataSetChanged();
+      this.SOv.notifyDataSetChanged();
       AppMethodBeat.o(29587);
       return;
     }
-    if (this.Mla.getIsTouching())
+    if (this.SOu.getIsTouching())
     {
       AppMethodBeat.o(29587);
       return;
     }
-    int i = this.Mlb.bf(this.EmR) * this.EmD;
-    int j = this.Mla.getCurrentPosition();
+    int i = this.SOv.cs(this.Kfz) * this.Kfm;
+    int j = this.SOu.getCurrentPosition();
     if (i < j)
     {
-      this.Mla.auy(i);
+      this.SOu.Wa(i);
       AppMethodBeat.o(29587);
       return;
     }
-    if (i > j + this.EmD * 4)
+    if (i > j + this.Kfm * 4)
     {
-      this.Mla.auy(i - this.EmD * 4);
+      this.SOu.Wa(i - this.Kfm * 4);
       AppMethodBeat.o(29587);
       return;
     }
-    this.Mlb.notifyDataSetChanged();
+    this.SOv.notifyDataSetChanged();
     AppMethodBeat.o(29587);
   }
   
   private void initView()
   {
     AppMethodBeat.i(29584);
-    inflate(getContext(), R.i.elv, this);
-    this.Mla = ((MMHorList)findViewById(R.h.dIw));
-    this.Mla.setOverScrollEnabled(true);
-    this.Mla.setCenterInParent(true);
-    this.Mla.setItemWidth(this.EmD);
-    this.Mlb = new TalkRoomAvatarsFrame.a(getContext());
-    this.Mla.setAdapter(this.Mlb);
+    inflate(getContext(), R.i.goz, this);
+    this.SOu = ((MMHorList)findViewById(R.h.fJO));
+    this.SOu.setOverScrollEnabled(true);
+    this.SOu.setCenterInParent(true);
+    this.SOu.setItemWidth(this.Kfm);
+    this.SOv = new TalkRoomAvatarsFrame.a(getContext());
+    this.SOu.setAdapter(this.SOv);
     this.mHandler = new MMHandler(Looper.getMainLooper());
-    this.Mla.setHorListLitener(new MMHorList.a()
+    this.SOu.setHorListLitener(new MMHorList.a()
     {
-      public final void ePx()
+      public final void fYb()
       {
         AppMethodBeat.i(29575);
         TalkRoomAvatarsFrame.c(TalkRoomAvatarsFrame.this).post(new Runnable()
@@ -111,21 +111,21 @@ public class TalkRoomAvatarsFrame
         AppMethodBeat.o(29575);
       }
       
-      public final void fRF()
+      public final void hjF()
       {
         AppMethodBeat.i(29574);
         TalkRoomAvatarsFrame.a(TalkRoomAvatarsFrame.this).startTimer(2000L);
         AppMethodBeat.o(29574);
       }
       
-      public final void giM()
+      public final void hpY()
       {
         AppMethodBeat.i(29573);
         TalkRoomAvatarsFrame.a(TalkRoomAvatarsFrame.this).stopTimer();
         AppMethodBeat.o(29573);
       }
     });
-    this.Mlc = new MTimerHandler(new MTimerHandler.CallBack()
+    this.SOw = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -141,50 +141,50 @@ public class TalkRoomAvatarsFrame
   public void setCurMemeber(String paramString)
   {
     AppMethodBeat.i(29586);
-    if (this.Mla == null)
+    if (this.SOu == null)
     {
       AppMethodBeat.o(29586);
       return;
     }
-    if ((Util.isNullOrNil(this.EmR)) && (Util.isNullOrNil(paramString)))
+    if ((Util.isNullOrNil(this.Kfz)) && (Util.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(29586);
       return;
     }
-    if ((!Util.isNullOrNil(this.EmR)) && (this.EmR.equals(paramString)))
+    if ((!Util.isNullOrNil(this.Kfz)) && (this.Kfz.equals(paramString)))
     {
       AppMethodBeat.o(29586);
       return;
     }
-    this.EmR = paramString;
-    eLm();
+    this.Kfz = paramString;
+    fTt();
     AppMethodBeat.o(29586);
   }
   
   public void setMembersList(List<String> paramList)
   {
     AppMethodBeat.i(29585);
-    if (this.Mlb == null)
+    if (this.SOv == null)
     {
       AppMethodBeat.o(29585);
       return;
     }
-    TalkRoomAvatarsFrame.a locala = this.Mlb;
+    TalkRoomAvatarsFrame.a locala = this.SOv;
     if (paramList == null) {
-      locala.Mlf.clear();
+      locala.SOz.clear();
     }
     for (;;)
     {
       locala.notifyDataSetChanged();
       AppMethodBeat.o(29585);
       return;
-      locala.Mlf = paramList;
+      locala.SOz = paramList;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.ui.TalkRoomAvatarsFrame
  * JD-Core Version:    0.7.0.1
  */

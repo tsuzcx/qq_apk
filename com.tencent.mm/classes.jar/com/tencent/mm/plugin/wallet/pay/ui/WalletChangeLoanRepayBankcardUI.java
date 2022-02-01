@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.wallet.pay.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -8,35 +7,34 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.plugin.wallet_core.model.al;
+import com.tencent.mm.plugin.wallet_core.model.aj;
 import com.tencent.mm.plugin.wallet_core.model.u;
-import com.tencent.mm.plugin.wallet_core.ui.l;
+import com.tencent.mm.plugin.wallet_core.ui.m;
 import com.tencent.mm.ui.base.a;
 import java.util.ArrayList;
-import java.util.Collections;
 
 @a(3)
 public class WalletChangeLoanRepayBankcardUI
   extends WalletChangeBankcardUI
 {
-  private String Oyf;
+  private String Vnq;
   
-  protected final void amk(int paramInt)
+  protected final void arU(int paramInt)
   {
     AppMethodBeat.i(69339);
     int i;
     Object localObject;
-    if (this.OmN != null)
+    if (this.Vbt != null)
     {
-      i = this.OmN.size();
-      if ((this.OmN == null) || (paramInt >= i)) {
+      i = this.Vbt.size();
+      if ((this.Vbt == null) || (paramInt >= i)) {
         break label127;
       }
-      localObject = (Bankcard)this.OmN.get(paramInt);
-      this.OmO = ((Bankcard)localObject);
-      this.OxW.OYl = ((Bankcard)localObject).field_bindSerial;
-      this.Iub.setEnabled(true);
-      this.OxW.notifyDataSetChanged();
+      localObject = (Bankcard)this.Vbt.get(paramInt);
+      this.Vbu = ((Bankcard)localObject);
+      this.Vnh.VOz = ((Bankcard)localObject).field_bindSerial;
+      this.OrJ.setEnabled(true);
+      this.Vnh.notifyDataSetChanged();
       Intent localIntent = new Intent();
       localIntent.putExtra("bindSerial", ((Bankcard)localObject).field_bindSerial);
       localIntent.putExtra("ret", 0);
@@ -59,28 +57,26 @@ public class WalletChangeLoanRepayBankcardUI
     }
   }
   
-  protected final l gGX()
-  {
-    AppMethodBeat.i(69338);
-    this.OmN = u.gJp().OTP;
-    if (this.OmN != null) {
-      Collections.sort(this.OmN, new WalletChangeBankcardUI.2(this));
-    }
-    l locall = new l(this, this.OmN, this.OxV, this.Ivh);
-    locall.OYl = this.Oyf;
-    AppMethodBeat.o(69338);
-    return locall;
-  }
-  
   public int getForceOrientation()
   {
     return 1;
   }
   
+  protected final m igb()
+  {
+    AppMethodBeat.i(69338);
+    this.Vbt = u.iiD().VJV;
+    iga();
+    m localm = new m(this, this.Vbt, this.Vng, this.OsJ);
+    localm.VOz = this.Vnq;
+    AppMethodBeat.o(69338);
+    return localm;
+  }
+  
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(69337);
-    this.Oyf = getIntent().getStringExtra("bindSerial");
+    this.Vnq = getIntent().getStringExtra("bindSerial");
     super.onCreate(paramBundle);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
@@ -103,7 +99,7 @@ public class WalletChangeLoanRepayBankcardUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.ui.WalletChangeLoanRepayBankcardUI
  * JD-Core Version:    0.7.0.1
  */

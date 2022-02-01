@@ -1,120 +1,162 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class ciq
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int Tpw;
-  public com.tencent.mm.cd.b Tpx;
-  public com.tencent.mm.cd.b Tpy;
-  public com.tencent.mm.cd.b Tpz;
+  public int YWM;
+  public int aaqo;
+  public erm aard;
+  public boolean aarj;
+  public boolean aark;
+  public String aarl;
+  public int hGE;
+  public String md5;
+  public String url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(115844);
+    AppMethodBeat.i(175245);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.Tpx == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.hGE);
+      if (this.url != null) {
+        paramVarArgs.g(2, this.url);
+      }
+      if (this.md5 != null) {
+        paramVarArgs.g(3, this.md5);
+      }
+      paramVarArgs.bS(4, this.aaqo);
+      paramVarArgs.bS(5, this.YWM);
+      paramVarArgs.di(6, this.aarj);
+      paramVarArgs.di(7, this.aark);
+      if (this.aard != null)
       {
-        paramVarArgs = new g.a.a.b("Not all required fields were included: SPSBuf");
-        AppMethodBeat.o(115844);
-        throw paramVarArgs;
+        paramVarArgs.qD(20, this.aard.computeSize());
+        this.aard.writeFields(paramVarArgs);
       }
-      if (this.Tpy == null)
-      {
-        paramVarArgs = new g.a.a.b("Not all required fields were included: PPSBuf");
-        AppMethodBeat.o(115844);
-        throw paramVarArgs;
+      if (this.aarl != null) {
+        paramVarArgs.g(21, this.aarl);
       }
-      paramVarArgs.aY(1, this.Tpw);
-      if (this.Tpx != null) {
-        paramVarArgs.c(2, this.Tpx);
-      }
-      if (this.Tpy != null) {
-        paramVarArgs.c(3, this.Tpy);
-      }
-      if (this.Tpz != null) {
-        paramVarArgs.c(4, this.Tpz);
-      }
-      AppMethodBeat.o(115844);
+      AppMethodBeat.o(175245);
       return 0;
     }
+    int i;
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.bM(1, this.Tpw) + 0;
+      i = i.a.a.b.b.a.cJ(1, this.hGE) + 0;
       paramInt = i;
-      if (this.Tpx != null) {
-        paramInt = i + g.a.a.b.b.a.b(2, this.Tpx);
+      if (this.url != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.url);
       }
       i = paramInt;
-      if (this.Tpy != null) {
-        i = paramInt + g.a.a.b.b.a.b(3, this.Tpy);
+      if (this.md5 != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.md5);
       }
+      i = i + i.a.a.b.b.a.cJ(4, this.aaqo) + i.a.a.b.b.a.cJ(5, this.YWM) + (i.a.a.b.b.a.ko(6) + 1) + (i.a.a.b.b.a.ko(7) + 1);
       paramInt = i;
-      if (this.Tpz != null) {
-        paramInt = i + g.a.a.b.b.a.b(4, this.Tpz);
+      if (this.aard != null) {
+        paramInt = i + i.a.a.a.qC(20, this.aard.computeSize());
       }
-      AppMethodBeat.o(115844);
-      return paramInt;
+      i = paramInt;
+      if (this.aarl != null) {
+        i = paramInt + i.a.a.b.b.a.h(21, this.aarl);
+      }
+      AppMethodBeat.o(175245);
+      return i;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      if (this.Tpx == null)
-      {
-        paramVarArgs = new g.a.a.b("Not all required fields were included: SPSBuf");
-        AppMethodBeat.o(115844);
-        throw paramVarArgs;
-      }
-      if (this.Tpy == null)
-      {
-        paramVarArgs = new g.a.a.b("Not all required fields were included: PPSBuf");
-        AppMethodBeat.o(115844);
-        throw paramVarArgs;
-      }
-      AppMethodBeat.o(115844);
+      AppMethodBeat.o(175245);
       return 0;
     }
     if (paramInt == 3)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      Object localObject = (i.a.a.a.a)paramVarArgs[0];
       ciq localciq = (ciq)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
       {
+      case 8: 
+      case 9: 
+      case 10: 
+      case 11: 
+      case 12: 
+      case 13: 
+      case 14: 
+      case 15: 
+      case 16: 
+      case 17: 
+      case 18: 
+      case 19: 
       default: 
-        AppMethodBeat.o(115844);
+        AppMethodBeat.o(175245);
         return -1;
       case 1: 
-        localciq.Tpw = locala.abFh.AK();
-        AppMethodBeat.o(115844);
+        localciq.hGE = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(175245);
         return 0;
       case 2: 
-        localciq.Tpx = locala.abFh.iUw();
-        AppMethodBeat.o(115844);
+        localciq.url = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(175245);
         return 0;
       case 3: 
-        localciq.Tpy = locala.abFh.iUw();
-        AppMethodBeat.o(115844);
+        localciq.md5 = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(175245);
+        return 0;
+      case 4: 
+        localciq.aaqo = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(175245);
+        return 0;
+      case 5: 
+        localciq.YWM = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(175245);
+        return 0;
+      case 6: 
+        localciq.aarj = ((i.a.a.a.a)localObject).ajGk.aai();
+        AppMethodBeat.o(175245);
+        return 0;
+      case 7: 
+        localciq.aark = ((i.a.a.a.a)localObject).ajGk.aai();
+        AppMethodBeat.o(175245);
+        return 0;
+      case 20: 
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          erm localerm = new erm();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localerm.parseFrom((byte[])localObject);
+          }
+          localciq.aard = localerm;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(175245);
         return 0;
       }
-      localciq.Tpz = locala.abFh.iUw();
-      AppMethodBeat.o(115844);
+      localciq.aarl = ((i.a.a.a.a)localObject).ajGk.readString();
+      AppMethodBeat.o(175245);
       return 0;
     }
-    AppMethodBeat.o(115844);
+    AppMethodBeat.o(175245);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ciq
  * JD-Core Version:    0.7.0.1
  */

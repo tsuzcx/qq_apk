@@ -1,358 +1,440 @@
 package com.tencent.mm.plugin.finder.viewmodel.component;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ae.d;
-import com.tencent.mm.an.c.a;
+import com.tencent.mm.am.b.a;
+import com.tencent.mm.cp.f;
 import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.cgi.aj;
+import com.tencent.mm.plugin.finder.e.e;
 import com.tencent.mm.plugin.finder.feed.model.internal.m;
 import com.tencent.mm.plugin.finder.feed.model.internal.m.a;
 import com.tencent.mm.plugin.finder.loader.FinderAtFeedLoader;
-import com.tencent.mm.plugin.finder.report.n;
-import com.tencent.mm.protocal.protobuf.bex;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.plugin.finder.report.z;
+import com.tencent.mm.protocal.protobuf.bpy;
+import com.tencent.mm.ui.aw;
 import com.tencent.mm.ui.component.UIComponent;
-import com.tencent.mm.ui.component.g;
-import com.tencent.mm.ui.component.g.a;
+import com.tencent.mm.ui.component.k;
+import com.tencent.mm.ui.component.k.b;
 import java.util.LinkedList;
 import java.util.List;
-import kotlin.g.b.ag;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.o;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.r;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderAtManagerHeaderUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "backBtn", "Landroid/widget/LinearLayout;", "cancelText", "Landroid/widget/TextView;", "doneBtn", "Landroid/widget/Button;", "headerText", "manageText", "stateMachine", "Lcom/tencent/mm/plugin/finder/viewmodel/component/AtFeedSelectStateMachine;", "username", "", "addMentionInfo", "", "modList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/ModMentionedInfo;", "feedIdList", "", "", "opType", "", "fitTextViewBigFont", "initView", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onCreateAfter", "onDestroy", "onLoadMore", "increment", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "onPause", "onResume", "resetEnterUI", "resetExitUI", "plugin-finder_release"})
-@SuppressLint({"StaticFieldLeak"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderAtManagerHeaderUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "backBtn", "Landroid/widget/LinearLayout;", "cancelText", "Landroid/widget/TextView;", "doneBtn", "Landroid/widget/Button;", "headerText", "manageText", "stateMachine", "Lcom/tencent/mm/plugin/finder/viewmodel/component/AtFeedSelectStateMachine;", "username", "", "addMentionInfo", "", "modList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/ModMentionedInfo;", "feedIdList", "", "", "opType", "", "fitTextViewBigFont", "initView", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onCreateAfter", "onDestroy", "onLoadMore", "increment", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "onPause", "onResume", "resetEnterUI", "resetExitUI", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class h
   extends UIComponent
 {
-  b BiA;
-  private TextView Biw;
-  private TextView Bix;
-  private TextView Biy;
-  private Button Biz;
+  private LinearLayout AtN;
+  private TextView GNf;
+  private TextView GNg;
+  private TextView GNh;
+  private Button GNi;
+  b GNj;
   private String username;
-  private LinearLayout wWT;
   
   public h(AppCompatActivity paramAppCompatActivity)
   {
     super(paramAppCompatActivity);
-    AppMethodBeat.i(267588);
+    AppMethodBeat.i(337805);
     String str = getIntent().getStringExtra("KEY_PARAMS_USERNAME");
     paramAppCompatActivity = str;
     if (str == null) {
       paramAppCompatActivity = "";
     }
     this.username = paramAppCompatActivity;
-    AppMethodBeat.o(267588);
+    AppMethodBeat.o(337805);
+  }
+  
+  private static final void a(h paramh, View paramView)
+  {
+    AppMethodBeat.i(337816);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramh);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/finder/viewmodel/component/FinderAtManagerHeaderUIC", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramh, "this$0");
+    if (!paramh.getActivity().isFinishing())
+    {
+      paramView = z.FrZ;
+      paramView = k.aeZF;
+      z.a(1, "manage_return", "", ((as)k.d(paramh.getActivity()).q(as.class)).fou());
+      localObject = paramh.GNj;
+      paramView = (View)localObject;
+      if (localObject == null)
+      {
+        s.bIx("stateMachine");
+        paramView = null;
+      }
+      paramView.fmV();
+      paramh.getActivity().finish();
+    }
+    a.a(new Object(), "com/tencent/mm/plugin/finder/viewmodel/component/FinderAtManagerHeaderUIC", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(337816);
+  }
+  
+  private static final void b(h paramh, View paramView)
+  {
+    AppMethodBeat.i(337823);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramh);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/finder/viewmodel/component/FinderAtManagerHeaderUIC", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramh, "this$0");
+    paramView = paramh.GNj;
+    paramh = paramView;
+    if (paramView == null)
+    {
+      s.bIx("stateMachine");
+      paramh = null;
+    }
+    paramh.fmT();
+    a.a(new Object(), "com/tencent/mm/plugin/finder/viewmodel/component/FinderAtManagerHeaderUIC", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(337823);
+  }
+  
+  private static final void c(h paramh, View paramView)
+  {
+    AppMethodBeat.i(337831);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramh);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/finder/viewmodel/component/FinderAtManagerHeaderUIC", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramh, "this$0");
+    paramView = paramh.GNj;
+    paramh = paramView;
+    if (paramView == null)
+    {
+      s.bIx("stateMachine");
+      paramh = null;
+    }
+    paramh.fmU();
+    a.a(new Object(), "com/tencent/mm/plugin/finder/viewmodel/component/FinderAtManagerHeaderUIC", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(337831);
+  }
+  
+  private static final void d(h paramh, View paramView)
+  {
+    AppMethodBeat.i(337839);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramh);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/finder/viewmodel/component/FinderAtManagerHeaderUIC", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramh, "this$0");
+    paramView = paramh.GNj;
+    paramh = paramView;
+    if (paramView == null)
+    {
+      s.bIx("stateMachine");
+      paramh = null;
+    }
+    paramh.fmS();
+    a.a(new Object(), "com/tencent/mm/plugin/finder/viewmodel/component/FinderAtManagerHeaderUIC", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(337839);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(267580);
+    Object localObject1 = null;
+    AppMethodBeat.i(337920);
     super.onCreate(paramBundle);
-    paramBundle = getActivity().findViewById(b.f.backBtn);
-    p.j(paramBundle, "activity.findViewById(R.id.backBtn)");
-    this.wWT = ((LinearLayout)paramBundle);
-    paramBundle = getActivity().findViewById(b.f.at_feed_header_cancel_text);
-    p.j(paramBundle, "activity.findViewById(R.…_feed_header_cancel_text)");
-    this.Biw = ((TextView)paramBundle);
-    paramBundle = getActivity().findViewById(b.f.at_feed_header_text);
-    p.j(paramBundle, "activity.findViewById(R.id.at_feed_header_text)");
-    this.Bix = ((TextView)paramBundle);
-    paramBundle = getActivity().findViewById(b.f.at_feed_header_manage_text);
-    p.j(paramBundle, "activity.findViewById(R.…_feed_header_manage_text)");
-    this.Biy = ((TextView)paramBundle);
-    paramBundle = getActivity().findViewById(b.f.at_feed_header_manage_done_btn);
-    p.j(paramBundle, "activity.findViewById(R.…d_header_manage_done_btn)");
-    this.Biz = ((Button)paramBundle);
-    paramBundle = this.Bix;
-    if (paramBundle == null) {
-      p.bGy("headerText");
+    paramBundle = getActivity().findViewById(e.e.backBtn);
+    s.s(paramBundle, "activity.findViewById(R.id.backBtn)");
+    this.AtN = ((LinearLayout)paramBundle);
+    paramBundle = getActivity().findViewById(e.e.at_feed_header_cancel_text);
+    s.s(paramBundle, "activity.findViewById(R.…_feed_header_cancel_text)");
+    this.GNf = ((TextView)paramBundle);
+    paramBundle = getActivity().findViewById(e.e.at_feed_header_text);
+    s.s(paramBundle, "activity.findViewById(R.id.at_feed_header_text)");
+    this.GNg = ((TextView)paramBundle);
+    paramBundle = getActivity().findViewById(e.e.at_feed_header_manage_text);
+    s.s(paramBundle, "activity.findViewById(R.…_feed_header_manage_text)");
+    this.GNh = ((TextView)paramBundle);
+    paramBundle = getActivity().findViewById(e.e.at_feed_header_manage_done_btn);
+    s.s(paramBundle, "activity.findViewById(R.…d_header_manage_done_btn)");
+    this.GNi = ((Button)paramBundle);
+    Object localObject2 = this.GNg;
+    paramBundle = (Bundle)localObject2;
+    if (localObject2 == null)
+    {
+      s.bIx("headerText");
+      paramBundle = null;
     }
-    ar.a((Paint)paramBundle.getPaint(), 0.8F);
-    paramBundle = this.wWT;
-    if (paramBundle == null) {
-      p.bGy("backBtn");
+    aw.a((Paint)paramBundle.getPaint(), 0.8F);
+    localObject2 = this.AtN;
+    paramBundle = (Bundle)localObject2;
+    if (localObject2 == null)
+    {
+      s.bIx("backBtn");
+      paramBundle = null;
     }
-    paramBundle.setOnClickListener((View.OnClickListener)new a(this));
-    paramBundle = this.Biw;
-    if (paramBundle == null) {
-      p.bGy("cancelText");
+    paramBundle.setOnClickListener(new h..ExternalSyntheticLambda3(this));
+    localObject2 = this.GNf;
+    paramBundle = (Bundle)localObject2;
+    if (localObject2 == null)
+    {
+      s.bIx("cancelText");
+      paramBundle = null;
     }
-    paramBundle.setOnClickListener((View.OnClickListener)new b(this));
-    paramBundle = this.Biz;
-    if (paramBundle == null) {
-      p.bGy("doneBtn");
+    paramBundle.setOnClickListener(new h..ExternalSyntheticLambda0(this));
+    localObject2 = this.GNi;
+    paramBundle = (Bundle)localObject2;
+    if (localObject2 == null)
+    {
+      s.bIx("doneBtn");
+      paramBundle = null;
     }
-    paramBundle.setOnClickListener((View.OnClickListener)new c(this));
-    paramBundle = this.Biy;
-    if (paramBundle == null) {
-      p.bGy("manageText");
+    paramBundle.setOnClickListener(new h..ExternalSyntheticLambda1(this));
+    localObject2 = this.GNh;
+    paramBundle = (Bundle)localObject2;
+    if (localObject2 == null)
+    {
+      s.bIx("manageText");
+      paramBundle = null;
     }
-    paramBundle.setOnClickListener((View.OnClickListener)new d(this));
-    paramBundle = this.Biw;
-    if (paramBundle == null) {
-      p.bGy("cancelText");
+    paramBundle.setOnClickListener(new h..ExternalSyntheticLambda2(this));
+    localObject2 = this.GNf;
+    paramBundle = (Bundle)localObject2;
+    if (localObject2 == null)
+    {
+      s.bIx("cancelText");
+      paramBundle = null;
     }
     paramBundle.setTextSize(1, 17.0F);
-    paramBundle = this.Bix;
-    if (paramBundle == null) {
-      p.bGy("headerText");
+    localObject2 = this.GNg;
+    paramBundle = (Bundle)localObject2;
+    if (localObject2 == null)
+    {
+      s.bIx("headerText");
+      paramBundle = null;
     }
     paramBundle.setTextSize(1, 17.0F);
-    paramBundle = this.Biy;
-    if (paramBundle == null) {
-      p.bGy("manageText");
+    localObject2 = this.GNh;
+    paramBundle = (Bundle)localObject2;
+    if (localObject2 == null)
+    {
+      s.bIx("manageText");
+      paramBundle = null;
     }
     paramBundle.setTextSize(1, 17.0F);
-    paramBundle = this.Biz;
-    if (paramBundle == null) {
-      p.bGy("doneBtn");
+    paramBundle = this.GNi;
+    if (paramBundle == null)
+    {
+      s.bIx("doneBtn");
+      paramBundle = localObject1;
     }
-    paramBundle.setTextSize(1, 14.0F);
-    AppMethodBeat.o(267580);
+    for (;;)
+    {
+      paramBundle.setTextSize(1, 14.0F);
+      AppMethodBeat.o(337920);
+      return;
+    }
   }
   
   public final void onCreateAfter(Bundle paramBundle)
   {
-    AppMethodBeat.i(267582);
+    b.c localc = null;
+    AppMethodBeat.i(337939);
     super.onCreateAfter(paramBundle);
     paramBundle = getActivity();
-    Object localObject = g.Xox;
-    localObject = ((f)g.b(getActivity()).i(f.class)).ekp().getDataListJustForAdapter();
+    Object localObject = k.aeZF;
+    this.GNj = new b(paramBundle, (List)((g)k.d(getActivity()).q(g.class)).fnh().getDataListJustForAdapter());
+    localObject = this.GNj;
+    paramBundle = (Bundle)localObject;
     if (localObject == null)
     {
-      paramBundle = new t("null cannot be cast to non-null type kotlin.collections.MutableList<com.tencent.mm.plugin.finder.model.BaseFinderFeed>");
-      AppMethodBeat.o(267582);
-      throw paramBundle;
+      s.bIx("stateMachine");
+      paramBundle = null;
     }
-    this.BiA = new b(paramBundle, ag.ff(localObject));
-    paramBundle = this.BiA;
-    if (paramBundle == null) {
-      p.bGy("stateMachine");
+    paramBundle.GMg.alive();
+    paramBundle = this.GNj;
+    if (paramBundle == null)
+    {
+      s.bIx("stateMachine");
+      paramBundle = localc;
     }
-    paramBundle.BhI.alive();
-    paramBundle = this.BiA;
-    if (paramBundle == null) {
-      p.bGy("stateMachine");
+    for (;;)
+    {
+      localc = (b.c)new a(this);
+      s.u(localc, "listener");
+      if (!paramBundle.GMf.contains(localc)) {
+        paramBundle.GMf.add(localc);
+      }
+      AppMethodBeat.o(337939);
+      return;
     }
-    localObject = (b.c)new e(this);
-    p.k(localObject, "listener");
-    if (!paramBundle.BhH.contains(localObject)) {
-      paramBundle.BhH.add(localObject);
-    }
-    AppMethodBeat.o(267582);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(267587);
+    Object localObject2 = null;
+    AppMethodBeat.i(337958);
     super.onDestroy();
-    b localb = this.BiA;
-    if (localb == null) {
-      p.bGy("stateMachine");
+    b localb = this.GNj;
+    Object localObject1 = localb;
+    if (localb == null)
+    {
+      s.bIx("stateMachine");
+      localObject1 = null;
     }
-    localb.BhH.clear();
-    localb = this.BiA;
-    if (localb == null) {
-      p.bGy("stateMachine");
+    ((b)localObject1).GMf.clear();
+    localObject1 = this.GNj;
+    if (localObject1 == null)
+    {
+      s.bIx("stateMachine");
+      localObject1 = localObject2;
     }
-    localb.BhI.dead();
-    AppMethodBeat.o(267587);
+    for (;;)
+    {
+      ((b)localObject1).GMg.dead();
+      AppMethodBeat.o(337958);
+      return;
+    }
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(267585);
+    AppMethodBeat.i(337950);
     super.onPause();
-    AppMethodBeat.o(267585);
+    AppMethodBeat.o(337950);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(267583);
+    AppMethodBeat.i(337944);
     super.onResume();
-    AppMethodBeat.o(267583);
+    AppMethodBeat.o(337944);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/viewmodel/component/FinderAtManagerHeaderUIC$initView$1$1"})
-  static final class a
-    implements View.OnClickListener
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/viewmodel/component/FinderAtManagerHeaderUIC$onCreateAfter$1", "Lcom/tencent/mm/plugin/finder/viewmodel/component/AtFeedSelectStateMachine$StateListener;", "onStateChange", "", "state", "Lcom/tencent/mm/plugin/finder/viewmodel/component/AtFeedSelectStateMachine$TransitionState;", "data", "Lcom/tencent/mm/plugin/finder/viewmodel/component/AtFeedSelectStateMachine$StateData;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+    implements b.c
   {
     a(h paramh) {}
     
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(289198);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      a.c("com/tencent/mm/plugin/finder/viewmodel/component/FinderAtManagerHeaderUIC$initView$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      if (!this.BiB.getActivity().isFinishing())
-      {
-        paramView = n.zWF;
-        paramView = g.Xox;
-        n.a(1, "manage_return", "", ((aj)g.b(this.BiB.getActivity()).i(aj.class)).ekY());
-        h.a(this.BiB).a(b.d.BhR);
-        this.BiB.getActivity().finish();
-      }
-      a.a(this, "com/tencent/mm/plugin/finder/viewmodel/component/FinderAtManagerHeaderUIC$initView$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(289198);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class b
-    implements View.OnClickListener
-  {
-    b(h paramh) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(290739);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      a.c("com/tencent/mm/plugin/finder/viewmodel/component/FinderAtManagerHeaderUIC$initView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      h.a(this.BiB).ekg();
-      a.a(this, "com/tencent/mm/plugin/finder/viewmodel/component/FinderAtManagerHeaderUIC$initView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(290739);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class c
-    implements View.OnClickListener
-  {
-    c(h paramh) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(285406);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      a.c("com/tencent/mm/plugin/finder/viewmodel/component/FinderAtManagerHeaderUIC$initView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = h.a(this.BiB);
-      paramView.rB(false);
-      paramView.a(b.d.BhO);
-      a.a(this, "com/tencent/mm/plugin/finder/viewmodel/component/FinderAtManagerHeaderUIC$initView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(285406);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class d
-    implements View.OnClickListener
-  {
-    d(h paramh) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(279925);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-      a.c("com/tencent/mm/plugin/finder/viewmodel/component/FinderAtManagerHeaderUIC$initView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-      paramView = h.a(this.BiB);
-      localObject = paramView.BhD;
-      switch (c.$EnumSwitchMapping$0[localObject.ordinal()])
-      {
-      default: 
-        Log.i("Finder.AtFeedSelectStateMachine", "enterSelect transition error! state:" + paramView.BhD);
-      }
-      for (;;)
-      {
-        a.a(this, "com/tencent/mm/plugin/finder/viewmodel/component/FinderAtManagerHeaderUIC$initView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(279925);
-        return;
-        paramView.rB(true);
-        paramView.a(b.d.BhN);
-        continue;
-        paramView.rB(true);
-        paramView.a(b.d.BhN);
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/viewmodel/component/FinderAtManagerHeaderUIC$onCreateAfter$1", "Lcom/tencent/mm/plugin/finder/viewmodel/component/AtFeedSelectStateMachine$StateListener;", "onStateChange", "", "state", "Lcom/tencent/mm/plugin/finder/viewmodel/component/AtFeedSelectStateMachine$TransitionState;", "data", "Lcom/tencent/mm/plugin/finder/viewmodel/component/AtFeedSelectStateMachine$StateData;", "plugin-finder_release"})
-  public static final class e
-    implements b.c
-  {
     public final void a(b.d paramd, b.b paramb)
     {
-      AppMethodBeat.i(288801);
-      p.k(paramd, "state");
-      p.k(paramb, "data");
-      switch (i.$EnumSwitchMapping$0[paramd.ordinal()])
+      Object localObject1 = null;
+      List localList = null;
+      Object localObject2 = null;
+      AppMethodBeat.i(338575);
+      s.u(paramd, "state");
+      s.u(paramb, "data");
+      switch (a.$EnumSwitchMapping$0[paramd.ordinal()])
       {
+      default: 
+        AppMethodBeat.o(338575);
+        return;
+      case 1: 
+        paramd = k.aeZF;
+        paramb = ((g)k.d(this.GNk.getActivity()).q(g.class)).fnh();
+        paramd = h.a(this.GNk);
+        if (paramd == null)
+        {
+          s.bIx("stateMachine");
+          paramd = localObject2;
+        }
+        for (;;)
+        {
+          paramd = paramd.fmW();
+          paramb.J((List)paramd.bsC, 3);
+          paramb.J((List)paramd.bsD, 2);
+          h.b(this.GNk);
+          AppMethodBeat.o(338575);
+          return;
+        }
+      case 2: 
+        h.c(this.GNk);
+        AppMethodBeat.o(338575);
+        return;
+      case 3: 
+        paramd = new LinkedList();
+        localList = paramb.GMh;
+        if ((localList != null) && (localList.isEmpty() == true))
+        {
+          i = 1;
+          if (i != 0)
+          {
+            localList = paramb.GMi;
+            if ((localList == null) || (localList.isEmpty() != true)) {
+              break label353;
+            }
+          }
+        }
+        label353:
+        for (int i = 1;; i = 0)
+        {
+          if (i != 0) {
+            break label358;
+          }
+          h.a(paramd, paramb.GMh, 0);
+          h.a(paramd, paramb.GMi, 1);
+          paramd = new aj(0, 0L, h.d(this.GNk), paramd, null, 16).e((Context)this.GNk.getActivity(), "", 100L).bFJ().a((com.tencent.mm.vending.e.b)this.GNk.getActivity());
+          s.s(paramd, "CgiFinderModMentioned(Cg…e(activity as MMActivity)");
+          d.b((com.tencent.mm.vending.g.c)paramd, (kotlin.g.a.b)new b(this.GNk));
+          AppMethodBeat.o(338575);
+          return;
+          i = 0;
+          break;
+        }
+        label358:
+        paramd = h.a(this.GNk);
+        if (paramd == null)
+        {
+          s.bIx("stateMachine");
+          paramd = localObject1;
+        }
+        for (;;)
+        {
+          paramd.vj(false);
+          AppMethodBeat.o(338575);
+          return;
+        }
+      }
+      paramb = h.a(this.GNk);
+      paramd = paramb;
+      if (paramb == null)
+      {
+        s.bIx("stateMachine");
+        paramd = null;
+      }
+      paramd.fmT();
+      paramd = m.Bkx;
+      paramd = h.a(this.GNk);
+      if (paramd == null)
+      {
+        s.bIx("stateMachine");
+        paramd = localList;
       }
       for (;;)
       {
-        AppMethodBeat.o(288801);
-        return;
-        paramd = g.Xox;
-        paramd = ((f)g.b(this.BiB.getActivity()).i(f.class)).ekp();
-        paramb = h.a(this.BiB).ekh();
-        paramd.q((List)paramb.Mx, 3);
-        paramd.q((List)paramb.My, 2);
-        h.b(this.BiB);
-        AppMethodBeat.o(288801);
-        return;
-        h.c(this.BiB);
-        AppMethodBeat.o(288801);
-        return;
-        paramd = new LinkedList();
-        List localList = paramb.BhK;
-        if ((localList != null) && (localList.isEmpty() == true))
-        {
-          localList = paramb.BhL;
-          if ((localList != null) && (localList.isEmpty() == true)) {}
-        }
-        else
-        {
-          h.a(paramd, paramb.BhK, 0);
-          h.a(paramd, paramb.BhL, 1);
-          paramd = new com.tencent.mm.plugin.finder.cgi.x(0, 0L, h.d(this.BiB), paramd, null, 16).e((Context)this.BiB.getActivity(), "", 100L).bhW();
-          paramb = this.BiB.getActivity();
-          if (paramb == null)
-          {
-            paramd = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-            AppMethodBeat.o(288801);
-            throw paramd;
-          }
-          paramd = paramd.a((com.tencent.mm.vending.e.b)paramb);
-          p.j(paramd, "CgiFinderModMentioned(Cg…e(activity as MMActivity)");
-          d.b((com.tencent.mm.vending.g.c)paramd, (kotlin.g.a.b)new a(this));
-          AppMethodBeat.o(288801);
-          return;
-        }
-        h.a(this.BiB).rA(false);
-        AppMethodBeat.o(288801);
-        return;
-        h.a(this.BiB).ekg();
-        paramd = m.xKK;
-        m.a.c("atFeedManage", h.a(this.BiB).BhF);
+        m.a.c("atFeedManage", paramd.GMd);
+        break;
       }
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/FinderModMentionedResponse;", "invoke"})
-    static final class a
-      extends q
-      implements kotlin.g.a.b<c.a<bex>, kotlin.x>
+    @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/FinderModMentionedResponse;"}, k=3, mv={1, 5, 1}, xi=48)
+    static final class b
+      extends u
+      implements kotlin.g.a.b<b.a<bpy>, ah>
     {
-      a(h.e parame)
+      b(h paramh)
       {
         super();
       }

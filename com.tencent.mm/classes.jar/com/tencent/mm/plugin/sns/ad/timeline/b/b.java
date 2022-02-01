@@ -1,242 +1,185 @@
 package com.tencent.mm.plugin.sns.ad.timeline.b;
 
+import android.view.View;
+import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.sns.ad.c;
-import com.tencent.mm.plugin.sns.ad.d.d;
-import com.tencent.mm.plugin.sns.ad.timeline.c.b.a;
-import com.tencent.mm.plugin.sns.storage.ADXml;
+import com.tencent.mm.plugin.sns.ad.g.l;
+import com.tencent.mm.plugin.sns.ad.timeline.helper.j;
+import com.tencent.mm.plugin.sns.ad.timeline.video.online.d;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.model.al;
 import com.tencent.mm.plugin.sns.storage.SnsInfo;
-import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.adw;
-import com.tencent.mm.protocal.protobuf.cvt;
+import com.tencent.mm.plugin.sns.storage.w;
+import com.tencent.mm.plugin.sns.ui.aw;
+import com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem.BaseViewHolder;
+import com.tencent.mm.plugin.sns.ui.item.q;
+import com.tencent.mm.plugin.sns.ui.video.SnsTimelineVideoView.b;
+import com.tencent.mm.protocal.protobuf.dmz;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.LinkedList;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class b
+  extends q
 {
-  public static boolean a(ADXml paramADXml)
-  {
-    boolean bool = false;
-    AppMethodBeat.i(228063);
-    if (paramADXml != null)
-    {
-      if (paramADXml.videoPlayInStreamingMode > 0) {
-        bool = true;
-      }
-      Log.d("SnsAd.OnlinePlayerSwitchHelper", "enableOnlineVideoFeatureInAdXml return ".concat(String.valueOf(bool)));
-      AppMethodBeat.o(228063);
-      return bool;
-    }
-    Log.d("SnsAd.OnlinePlayerSwitchHelper", "enableOnlineVideoFeatureInAdXml : the adxml is null, so return false");
-    AppMethodBeat.o(228063);
-    return false;
-  }
+  private boolean Qbd = false;
+  private String Qbe = "";
   
-  public static boolean a(TimeLineObject paramTimeLineObject, ADXml paramADXml)
+  public final void a(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder, int paramInt)
   {
-    AppMethodBeat.i(228052);
-    boolean bool = c(paramTimeLineObject);
-    if ((paramADXml != null) && (paramADXml.isFullCardAd()))
+    AppMethodBeat.i(311219);
+    if (this.Qbd)
     {
-      if (paramADXml.isLongPressGestureAd())
+      Log.d("SnsAd.AdSightTimeLineItem", "the new video  item is online video");
+      if (paramBaseViewHolder == null)
       {
-        Log.i("SnsAd.OnlinePlayerSwitchHelper", "fullcard useOnlineVideoView preload false, longpressgesture offline");
-        AppMethodBeat.o(228052);
-        return false;
+        Log.e("SnsAd.AdSightTimeLineItem", "the holder is null");
+        AppMethodBeat.o(311219);
+        return;
       }
-      if (c.Jxs == 1)
+      dmz localdmz = j.a(paramBaseViewHolder);
+      String str1 = j.c(paramBaseViewHolder);
+      SnsInfo localSnsInfo = al.hgB().aZL(paramBaseViewHolder.hES);
+      l locall = j.a(this.QBJ);
+      String str2 = paramBaseViewHolder.hES;
+      if ((localdmz == null) || (str1 == null) || (localSnsInfo == null))
       {
-        Log.i("SnsAd.OnlinePlayerSwitchHelper", "fullcard useOnlineVideoView preload false, force offline");
-        AppMethodBeat.o(228052);
-        return false;
+        Log.e("SnsAd.AdSightTimeLineItem", "the media , timelineId, sns info is null");
+        AppMethodBeat.o(311219);
+        return;
       }
-      if (c.Jxs == 2)
+      com.tencent.mm.plugin.sns.ui.video.b.hsi().pause();
+      hce();
+      paramBaseViewHolder = (FrameLayout)paramBaseViewHolder.Qcj.RjL.findViewById(b.f.sns_video_container);
+      d locald = new d("SnsAd.AdSightTimeLineItem");
+      locald.mContainer = paramBaseViewHolder;
+      locald.QcU = localdmz;
+      locald.PJQ = localSnsInfo;
+      locald.yqW = str2;
+      locald.Qbe = str1;
+      locald.PYh = locall;
+      locald.a(1, new SnsTimelineVideoView.b()
       {
-        Log.i("SnsAd.OnlinePlayerSwitchHelper", "fullcard useOnlineVideoView preload true,  force online");
-        AppMethodBeat.o(228052);
-        return true;
-      }
-    }
-    if ((bool) && (a(paramADXml)))
-    {
-      if (fLw())
-      {
-        if ((paramADXml != null) && (!paramADXml.isCardAd()) && (!paramADXml.isFullCardAd()) && (!paramADXml.isSphereCardAd())) {}
-        for (int i = 1; i != 0; i = 0)
+        public final void ZW(String paramAnonymousString)
         {
-          Log.i("SnsAd.OnlinePlayerSwitchHelper", "the normal video preload is disable, because the online normal video preload is enable!");
-          AppMethodBeat.o(228052);
-          return true;
+          AppMethodBeat.i(311177);
+          if ((!Util.isNullOrNil(paramAnonymousString)) && (paramAnonymousString.equals(b.a(b.this))))
+          {
+            Log.w("SnsAd.AdSightTimeLineItem", "timelineVideoView setUICallback onDestroy, the tlId is " + paramAnonymousString + ", the timelineId is " + b.a(b.this));
+            b.b(b.this);
+          }
+          AppMethodBeat.o(311177);
         }
-      }
-      if ((fLx()) && (paramADXml.isCardAd()))
-      {
-        Log.i("SnsAd.OnlinePlayerSwitchHelper", "the base card ad video preload is disable, because the online base card prload is enable!");
-        AppMethodBeat.o(228052);
-        return true;
-      }
-      if ((a.fLC()) && (paramADXml.isFullCardAd()) && (!paramADXml.isLongPressGestureAd()))
-      {
-        Log.i("SnsAd.OnlinePlayerSwitchHelper", "fullcard useOnlineVideoView preload true");
-        AppMethodBeat.o(228052);
-        return true;
-      }
-      Log.i("SnsAd.OnlinePlayerSwitchHelper", "the ad video preload is not disable!");
+      });
+      AppMethodBeat.o(311219);
+      return;
     }
-    AppMethodBeat.o(228052);
-    return false;
+    Log.d("SnsAd.AdSightTimeLineItem", "the new video item is running, execute super play!");
+    super.a(paramBaseViewHolder, paramInt);
+    AppMethodBeat.o(311219);
   }
   
-  public static boolean b(ADXml paramADXml)
+  /* Error */
+  public final void a(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder, int paramInt1, com.tencent.mm.plugin.sns.ui.bo parambo, com.tencent.mm.protocal.protobuf.TimeLineObject paramTimeLineObject, int paramInt2, com.tencent.mm.plugin.sns.ui.bn parambn)
   {
-    AppMethodBeat.i(228071);
-    try
-    {
-      if (a(paramADXml))
-      {
-        boolean bool = fLw();
-        if (bool)
-        {
-          AppMethodBeat.o(228071);
-          return true;
-        }
-      }
-    }
-    catch (Throwable paramADXml)
-    {
-      AppMethodBeat.o(228071);
-    }
-    return false;
+    // Byte code:
+    //   0: ldc 164
+    //   2: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_3
+    //   6: ifnull +24 -> 30
+    //   9: aload_3
+    //   10: getfield 167	com/tencent/mm/plugin/sns/ui/bo:PJQ	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
+    //   13: ifnull +17 -> 30
+    //   16: aload_0
+    //   17: aload_3
+    //   18: getfield 167	com/tencent/mm/plugin/sns/ui/bo:PJQ	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
+    //   21: invokevirtual 173	com/tencent/mm/plugin/sns/storage/SnsInfo:getAdXml	()Lcom/tencent/mm/plugin/sns/storage/ADXml;
+    //   24: invokestatic 178	com/tencent/mm/plugin/sns/ad/timeline/helper/b:c	(Lcom/tencent/mm/plugin/sns/storage/ADXml;)Z
+    //   27: putfield 19	com/tencent/mm/plugin/sns/ad/timeline/b/b:Qbd	Z
+    //   30: aload 4
+    //   32: ifnull +20 -> 52
+    //   35: aload 4
+    //   37: getfield 183	com/tencent/mm/protocal/protobuf/TimeLineObject:Id	Ljava/lang/String;
+    //   40: ifnull +12 -> 52
+    //   43: aload_0
+    //   44: aload 4
+    //   46: getfield 183	com/tencent/mm/protocal/protobuf/TimeLineObject:Id	Ljava/lang/String;
+    //   49: putfield 23	com/tencent/mm/plugin/sns/ad/timeline/b/b:Qbe	Ljava/lang/String;
+    //   52: aload 4
+    //   54: getfield 187	com/tencent/mm/protocal/protobuf/TimeLineObject:ContentObj	Lcom/tencent/mm/protocal/protobuf/agh;
+    //   57: ifnull +81 -> 138
+    //   60: aload 4
+    //   62: getfield 187	com/tencent/mm/protocal/protobuf/TimeLineObject:ContentObj	Lcom/tencent/mm/protocal/protobuf/agh;
+    //   65: getfield 193	com/tencent/mm/protocal/protobuf/agh:Zpr	Ljava/util/LinkedList;
+    //   68: invokevirtual 199	java/util/LinkedList:size	()I
+    //   71: ifle +67 -> 138
+    //   74: aload 4
+    //   76: getfield 187	com/tencent/mm/protocal/protobuf/TimeLineObject:ContentObj	Lcom/tencent/mm/protocal/protobuf/agh;
+    //   79: getfield 193	com/tencent/mm/protocal/protobuf/agh:Zpr	Ljava/util/LinkedList;
+    //   82: iconst_0
+    //   83: invokevirtual 203	java/util/LinkedList:get	(I)Ljava/lang/Object;
+    //   86: checkcast 205	com/tencent/mm/protocal/protobuf/dmz
+    //   89: astore 7
+    //   91: aload_3
+    //   92: getfield 208	com/tencent/mm/plugin/sns/ui/bo:Rbg	Z
+    //   95: ifeq +19 -> 114
+    //   98: aload_0
+    //   99: getfield 19	com/tencent/mm/plugin/sns/ad/timeline/b/b:Qbd	Z
+    //   102: ifeq +42 -> 144
+    //   105: aload_3
+    //   106: getfield 167	com/tencent/mm/plugin/sns/ui/bo:PJQ	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
+    //   109: aload 7
+    //   111: invokestatic 213	com/tencent/mm/plugin/sns/ad/d/e:a	(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;Lcom/tencent/mm/protocal/protobuf/dmz;)V
+    //   114: aload_0
+    //   115: aload_1
+    //   116: iload_2
+    //   117: aload_3
+    //   118: aload 4
+    //   120: iload 5
+    //   122: aload 6
+    //   124: invokespecial 215	com/tencent/mm/plugin/sns/ui/item/q:a	(Lcom/tencent/mm/plugin/sns/ui/item/BaseTimeLineItem$BaseViewHolder;ILcom/tencent/mm/plugin/sns/ui/bo;Lcom/tencent/mm/protocal/protobuf/TimeLineObject;ILcom/tencent/mm/plugin/sns/ui/bn;)V
+    //   127: aload_3
+    //   128: iconst_3
+    //   129: invokestatic 218	com/tencent/mm/plugin/sns/ad/timeline/b/b:a	(Lcom/tencent/mm/plugin/sns/ui/bo;I)V
+    //   132: ldc 164
+    //   134: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   137: return
+    //   138: aconst_null
+    //   139: astore 7
+    //   141: goto -50 -> 91
+    //   144: aload 7
+    //   146: iconst_0
+    //   147: invokestatic 221	com/tencent/mm/plugin/sns/ad/d/e:a	(Lcom/tencent/mm/protocal/protobuf/dmz;Z)V
+    //   150: goto -36 -> 114
+    //   153: astore 7
+    //   155: goto -125 -> 30
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	158	0	this	b
+    //   0	158	1	paramBaseViewHolder	BaseTimeLineItem.BaseViewHolder
+    //   0	158	2	paramInt1	int
+    //   0	158	3	parambo	com.tencent.mm.plugin.sns.ui.bo
+    //   0	158	4	paramTimeLineObject	com.tencent.mm.protocal.protobuf.TimeLineObject
+    //   0	158	5	paramInt2	int
+    //   0	158	6	parambn	com.tencent.mm.plugin.sns.ui.bn
+    //   89	56	7	localdmz	dmz
+    //   153	1	7	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   9	30	153	finally
   }
   
-  public static boolean b(TimeLineObject paramTimeLineObject, ADXml paramADXml)
+  public final boolean hbX()
   {
-    AppMethodBeat.i(228067);
-    try
-    {
-      if ((c(paramTimeLineObject)) && (a(paramADXml)))
-      {
-        boolean bool = fLx();
-        if (bool)
-        {
-          AppMethodBeat.o(228067);
-          return true;
-        }
-      }
-    }
-    catch (Throwable paramTimeLineObject)
-    {
-      AppMethodBeat.o(228067);
-    }
-    return false;
+    return this.Qbd;
   }
   
-  private static boolean c(TimeLineObject paramTimeLineObject)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramTimeLineObject != null)
-    {
-      bool1 = bool2;
-      if (paramTimeLineObject.ContentObj != null)
-      {
-        bool1 = bool2;
-        if (paramTimeLineObject.ContentObj.Sqq == 15) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  private static boolean fLw()
-  {
-    AppMethodBeat.i(228042);
-    try
-    {
-      int i = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vvq, 0);
-      Log.i("SnsAd.OnlinePlayerSwitchHelper", "useOnlineVideoInNormalTimeline value is ".concat(String.valueOf(i)));
-      if (i > 0)
-      {
-        AppMethodBeat.o(228042);
-        return true;
-      }
-      AppMethodBeat.o(228042);
-      return false;
-    }
-    catch (Throwable localThrowable)
-    {
-      AppMethodBeat.o(228042);
-    }
-    return false;
-  }
-  
-  private static boolean fLx()
-  {
-    AppMethodBeat.i(228045);
-    try
-    {
-      int i = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vvp, 0);
-      Log.i("SnsAd.OnlinePlayerSwitchHelper", "useOnlineVideoInBaseCardTimeline value is  ".concat(String.valueOf(i)));
-      if (i > 0)
-      {
-        AppMethodBeat.o(228045);
-        return true;
-      }
-      AppMethodBeat.o(228045);
-      return false;
-    }
-    catch (Throwable localThrowable)
-    {
-      AppMethodBeat.o(228045);
-    }
-    return false;
-  }
-  
-  public static boolean n(SnsInfo paramSnsInfo)
-  {
-    AppMethodBeat.i(228059);
-    if (paramSnsInfo == null)
-    {
-      Log.w("SnsAd.OnlinePlayerSwitchHelper", "enableOnlineVideoPreload: the snsInfo is null!!");
-      AppMethodBeat.o(228059);
-      return false;
-    }
-    if (!paramSnsInfo.isAd())
-    {
-      Log.w("SnsAd.OnlinePlayerSwitchHelper", "enableOnlineVideoPreload: the snsInfo is not ad!!");
-      AppMethodBeat.o(228059);
-      return false;
-    }
-    TimeLineObject localTimeLineObject = paramSnsInfo.getTimeLine();
-    paramSnsInfo = paramSnsInfo.getAdXml();
-    boolean bool = a(localTimeLineObject, paramSnsInfo);
-    if (bool) {}
-    try
-    {
-      if ((localTimeLineObject.ContentObj != null) && (localTimeLineObject.ContentObj.Sqr.size() > 0))
-      {
-        cvt localcvt = (cvt)localTimeLineObject.ContentObj.Sqr.get(0);
-        Log.i("SnsAd.OnlinePlayerSwitchHelper", "AdH265Helper, enableAdOnlineVideoPreload, snsId=" + localTimeLineObject.Id);
-        d.a(paramSnsInfo, localcvt, localTimeLineObject.Id);
-      }
-      AppMethodBeat.o(228059);
-      return bool;
-    }
-    catch (Throwable paramSnsInfo)
-    {
-      for (;;)
-      {
-        Log.e("SnsAd.OnlinePlayerSwitchHelper", "AdH265Helper, enableAdOnlineVideoPreload exp=" + paramSnsInfo.toString());
-      }
-    }
-  }
+  public static class a
+    extends BaseTimeLineItem.BaseViewHolder
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.timeline.b.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.ipcinvoker;
 
 public abstract interface b
 {
-  public abstract void b(Runnable paramRunnable, String paramString);
+  public abstract void d(Runnable paramRunnable, String paramString);
 }
 
 

@@ -1,236 +1,287 @@
 package com.tencent.mm.plugin.profile.ui;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.R.l;
-import com.tencent.mm.R.o;
-import com.tencent.mm.f.c.ax;
+import com.tencent.mm.R.i;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.contact.d;
 import com.tencent.mm.model.ab;
+import com.tencent.mm.model.ar;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
+import com.tencent.mm.model.v;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.account.bind.ui.BindLinkedInUI;
-import com.tencent.mm.plugin.messenger.foundation.a.a.j;
-import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
-import com.tencent.mm.plugin.profile.b;
-import com.tencent.mm.pluginsdk.c.a;
-import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.protocal.protobuf.dlm;
+import com.tencent.mm.plugin.messenger.foundation.a.a.l;
+import com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference;
+import com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MTimerHandler;
-import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.storage.MStorageEx;
-import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.preference.Preference;
+import com.tencent.mm.ui.base.preference.PreferenceCategory;
+import com.tencent.mm.ui.base.preference.PreferenceSmallCategory;
 import com.tencent.mm.ui.base.preference.f;
-import com.tencent.mm.ui.v;
 import junit.framework.Assert;
 
 public final class i
-  implements a, MStorageEx.IOnStorageChange
+  implements com.tencent.mm.pluginsdk.c.a
 {
-  private HelperHeaderPreference.a GZu;
-  private as contact;
-  private Context context;
+  private boolean MVt;
+  private boolean MVu;
+  private int MXu;
+  ContactListExpandPreference MXv;
+  private au contact;
+  Context context;
+  aj lzy;
+  private int pUt;
+  private String roomId;
   private f screen;
   
   public i(Context paramContext)
   {
-    AppMethodBeat.i(27154);
+    AppMethodBeat.i(27148);
     this.context = paramContext;
-    this.GZu = new s(paramContext);
-    AppMethodBeat.o(27154);
+    this.MXv = new ContactListExpandPreference(paramContext, 0);
+    AppMethodBeat.o(27148);
   }
   
-  public static void F(Context paramContext, final boolean paramBoolean)
+  public final boolean a(f paramf, au paramau, boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(27159);
-    if (paramBoolean) {}
-    for (String str = paramContext.getString(R.l.settings_plugins_installing);; str = paramContext.getString(R.l.settings_plugins_uninstalling))
+    AppMethodBeat.i(27150);
+    boolean bool1;
+    label34:
+    label46:
+    boolean bool2;
+    int i;
+    if (paramau != null)
     {
-      paramContext.getString(R.l.app_tip);
-      new MTimerHandler(new MTimerHandler.CallBack()
-      {
-        public final boolean onTimerExpired()
-        {
-          AppMethodBeat.i(27153);
-          if (this.ucb != null) {
-            this.ucb.dismiss();
-          }
-          int i = z.bdn();
-          dlm localdlm;
-          if (paramBoolean)
-          {
-            i &= 0xFEFFFFFF;
-            bh.beI();
-            c.aHp().i(34, Integer.valueOf(i));
-            localdlm = new dlm();
-            localdlm.RFu = 16777216;
-            if (!paramBoolean) {
-              break label176;
-            }
-          }
-          label176:
-          for (i = 0;; i = 1)
-          {
-            localdlm.TSy = i;
-            bh.beI();
-            c.bbK().d(new k.a(39, localdlm));
-            if (this.ESS != null) {
-              this.ESS.onNotifyChange(null, null);
-            }
-            AppMethodBeat.o(27153);
-            return false;
-            i |= 0x1000000;
-            bh.beI();
-            c.aHp().i(286722, "");
-            bh.beI();
-            c.aHp().i(286721, "");
-            bh.beI();
-            c.aHp().i(286723, "");
-            break;
-          }
-        }
-      }, false).startTimer(1500L);
-      AppMethodBeat.o(27159);
-      return;
+      bool1 = true;
+      Assert.assertTrue(bool1);
+      if (Util.nullAsNil(paramau.field_username).length() <= 0) {
+        break label417;
+      }
+      bool1 = true;
+      Assert.assertTrue(bool1);
+      if (paramf == null) {
+        break label423;
+      }
+      bool1 = true;
+      Assert.assertTrue(bool1);
+      this.screen = paramf;
+      this.contact = paramau;
+      this.MVt = paramBoolean;
+      this.pUt = paramInt;
+      this.MVu = ((Activity)this.context).getIntent().getBooleanExtra("User_Verify", false);
+      this.MXu = ((Activity)this.context).getIntent().getIntExtra("Kdel_from", -1);
+      this.roomId = paramau.field_username;
+      bh.bCz();
+      this.lzy = c.bzK().Jv(this.roomId);
+      this.screen.removeAll();
+      paramf = new PreferenceSmallCategory(this.context);
+      this.screen.c(paramf);
+      this.MXv.setKey("roominfo_contact_anchor");
+      this.screen.c(this.MXv);
+      paramf = new PreferenceCategory(this.context);
+      this.screen.c(paramf);
+      paramf = new NormalUserFooterPreference(this.context);
+      paramf.setLayoutResource(R.i.gif);
+      paramf.setKey("contact_info_footer_normal");
+      paramau = this.contact;
+      bool2 = this.MVt;
+      bool1 = this.MVu;
+      paramInt = this.pUt;
+      i = this.MXu;
+      paramf.dvq();
+      if (paramau == null) {
+        break label429;
+      }
+      paramBoolean = true;
+      label280:
+      Assert.assertTrue(paramBoolean);
+      if (Util.nullAsNil(paramau.field_username).length() <= 0) {
+        break label434;
+      }
     }
-  }
-  
-  private void cQY()
-  {
-    AppMethodBeat.i(27158);
-    boolean bool = fqo();
-    this.screen.removeAll();
-    this.screen.auC(R.o.eXn);
-    ((HelperHeaderPreference)this.screen.byG("contact_info_header_helper")).a(this.contact, this.GZu);
-    if (bool)
-    {
-      this.screen.dz("contact_info_linkedin_account", false);
-      this.screen.byI("contact_info_linkedin_install");
-      AppMethodBeat.o(27158);
-      return;
-    }
-    this.screen.dz("contact_info_linkedin_account", true);
-    this.screen.byI("contact_info_linkedin_uninstall");
-    AppMethodBeat.o(27158);
-  }
-  
-  private static boolean fqo()
-  {
-    AppMethodBeat.i(27155);
-    if ((z.bdn() & 0x1000000) == 0)
-    {
-      AppMethodBeat.o(27155);
-      return true;
-    }
-    AppMethodBeat.o(27155);
-    return false;
-  }
-  
-  public final boolean a(f paramf, as paramas, boolean paramBoolean, int paramInt)
-  {
-    boolean bool = false;
-    AppMethodBeat.i(27157);
-    if (paramf != null) {}
+    label417:
+    label423:
+    label429:
+    label434:
     for (paramBoolean = true;; paramBoolean = false)
     {
       Assert.assertTrue(paramBoolean);
-      paramBoolean = bool;
-      if (paramas != null) {
-        paramBoolean = true;
+      if (!au.bxd(z.bAM()).equals(paramau.field_username)) {
+        break label439;
       }
-      Assert.assertTrue(paramBoolean);
-      Assert.assertTrue(ab.QH(paramas.field_username));
-      bh.beI();
-      c.aHp().add(this);
-      this.contact = paramas;
-      this.screen = paramf;
-      cQY();
-      AppMethodBeat.o(27157);
-      return true;
-    }
-  }
-  
-  public final boolean atw(String paramString)
-  {
-    AppMethodBeat.i(27156);
-    Log.d("MicroMsg.ContactWidgetLinkedIn", "handleEvent : key = ".concat(String.valueOf(paramString)));
-    if (Util.nullAsNil(paramString).length() <= 0)
-    {
-      AppMethodBeat.o(27156);
-      return false;
-    }
-    if (paramString.equals("contact_info_linkedin_install"))
-    {
-      F(this.context, true);
-      AppMethodBeat.o(27156);
-      return true;
-    }
-    if (paramString.equals("contact_info_linkedin_uninstall"))
-    {
-      h.c(this.context, this.context.getString(R.l.settings_plugins_uninstall_hint), "", this.context.getString(R.l.app_clear), this.context.getString(R.l.app_cancel), new DialogInterface.OnClickListener()
+      paramInt = 0;
+      if (paramInt != 0) {
+        this.screen.c(paramf);
+      }
+      this.MXv.a(this.screen, this.MXv.mKey);
+      paramf = v.Il(this.roomId);
+      this.MXv.JJ(false).JK(false);
+      this.MXv.y(this.roomId, paramf);
+      this.MXv.a(new ContactListExpandPreference.a()
       {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        public final void aMI() {}
+        
+        public final void e(ViewGroup paramAnonymousViewGroup, int paramAnonymousInt)
         {
-          AppMethodBeat.i(27152);
-          i.F(i.a(i.this), false);
-          AppMethodBeat.o(27152);
+          AppMethodBeat.i(305439);
+          if (i.this.MXv.awt(paramAnonymousInt))
+          {
+            Object localObject = i.this.MXv.awu(paramAnonymousInt);
+            if (Util.isNullOrNil((String)localObject))
+            {
+              AppMethodBeat.o(305439);
+              return;
+            }
+            paramAnonymousViewGroup = new Intent();
+            paramAnonymousViewGroup.setClass(i.this.context, ContactInfoUI.class);
+            paramAnonymousViewGroup.putExtra("Contact_User", (String)localObject);
+            paramAnonymousViewGroup.putExtra("Contact_RoomNickname", i.this.lzy.getDisplayName((String)localObject));
+            localObject = i.this.context;
+            paramAnonymousViewGroup = new com.tencent.mm.hellhoundlib.b.a().cG(paramAnonymousViewGroup);
+            com.tencent.mm.hellhoundlib.a.a.b(localObject, paramAnonymousViewGroup.aYi(), "com/tencent/mm/plugin/profile/ui/ContactWidgetGroupCard$1", "onItemNormalClick", "(Landroid/view/ViewGroup;Landroid/view/View;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            ((Context)localObject).startActivity((Intent)paramAnonymousViewGroup.sb(0));
+            com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/profile/ui/ContactWidgetGroupCard$1", "onItemNormalClick", "(Landroid/view/ViewGroup;Landroid/view/View;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          }
+          AppMethodBeat.o(305439);
         }
-      }, null);
-      AppMethodBeat.o(27156);
+        
+        public final void qw(int paramAnonymousInt) {}
+        
+        public final void qx(int paramAnonymousInt) {}
+      });
+      AppMethodBeat.o(27150);
       return true;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label34;
+      bool1 = false;
+      break label46;
+      paramBoolean = false;
+      break label280;
     }
-    if (paramString.equals("contact_info_linkedin_account"))
+    label439:
+    paramf.contact = paramau;
+    paramf.pPi = "";
+    paramf.MVt = bool2;
+    paramf.pUt = paramInt;
+    paramf.MXu = i;
+    paramf.MZc = Util.nullAs(Boolean.valueOf(ab.IQ(paramau.field_username)), false);
+    paramf.MUD = false;
+    paramf.MYZ = false;
+    paramf.MXS = 0L;
+    paramf.MZa = "";
+    paramf.MZw = false;
+    if (paramau.field_deleteFlag == 1)
     {
-      Intent localIntent = new Intent(this.context, BindLinkedInUI.class);
-      ((Activity)this.context).startActivityForResult(localIntent, 1);
+      paramBoolean = true;
+      label522:
+      paramf.MZb = paramBoolean;
+      paramf.MZv = paramf.lzt.getIntent().getBooleanExtra("Contact_AlwaysShowSnsPreBtn", false);
+      paramf.MXc = paramf.lzt.getIntent().getIntExtra("add_more_friend_search_scene", 0);
+      paramf.MZd = paramf.lzt.getIntent().getBooleanExtra("Contact_IsLbsChattingProfile", false);
+      paramf.MZe = paramf.lzt.getIntent().getBooleanExtra("Contact_IsLbsGotoChatting", false);
+      paramf.vsZ = paramf.lzt.getIntent().getStringExtra("lbs_ticket");
+      if (!z.Iy(paramau.field_username))
+      {
+        bh.bCz();
+        if (!c.bzJ().has(paramau.field_username)) {
+          break label677;
+        }
+      }
+      paramf.MZf = new NormalUserFooterPreference.c(paramf);
+      paramf.MZw = true;
     }
-    Log.e("MicroMsg.ContactWidgetLinkedIn", "handleEvent : unExpected key = ".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(27156);
-    return false;
+    for (;;)
+    {
+      paramf.initView();
+      paramInt = 1;
+      break;
+      paramBoolean = false;
+      break label522;
+      label677:
+      if (au.bwL(paramau.field_username))
+      {
+        paramf.MZf = new NormalUserFooterPreference.h(paramf);
+      }
+      else if (au.bwc(paramau.field_username))
+      {
+        paramf.MZf = new NormalUserFooterPreference.d(paramf);
+      }
+      else if (ab.IQ(paramau.field_username))
+      {
+        paramf.MZf = new NormalUserFooterPreference.g(paramf);
+      }
+      else if (au.bwM(paramau.field_username))
+      {
+        paramf.MZf = new NormalUserFooterPreference.f(paramf);
+      }
+      else if ((d.rs(paramau.field_type)) && (!au.bwS(paramau.field_username)))
+      {
+        paramf.MZf = new NormalUserFooterPreference.c(paramf);
+        paramf.MZw = true;
+      }
+      else if (bool1)
+      {
+        paramf.MZf = new NormalUserFooterPreference.j(paramf);
+        paramf.MZw = true;
+      }
+      else if (au.bwS(paramau.field_username))
+      {
+        paramf.MZf = new NormalUserFooterPreference.b(paramf);
+      }
+      else
+      {
+        paramf.MZf = new NormalUserFooterPreference.c(paramf);
+        paramf.MZw = true;
+      }
+    }
   }
   
-  public final boolean cQX()
+  public final boolean anl(String paramString)
   {
-    AppMethodBeat.i(27160);
-    bh.beI();
-    c.aHp().remove(this);
-    this.screen.byG("contact_info_header_helper");
-    b.mIH.abC();
-    AppMethodBeat.o(27160);
+    AppMethodBeat.i(27149);
+    Log.d("MicroMsg.ContactWidgetGroupCard", "handleEvent ".concat(String.valueOf(paramString)));
+    bh.bCz();
+    Object localObject = c.bzA().JE(paramString);
+    if ((localObject == null) || ((int)((d)localObject).maN <= 0))
+    {
+      AppMethodBeat.o(27149);
+      return true;
+    }
+    paramString = new Intent();
+    paramString.setClass(this.context, ContactInfoUI.class);
+    paramString.putExtra("Contact_User", ((az)localObject).field_username);
+    localObject = this.context;
+    paramString = new com.tencent.mm.hellhoundlib.b.a().cG(paramString);
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, paramString.aYi(), "com/tencent/mm/plugin/profile/ui/ContactWidgetGroupCard", "handleEvent", "(Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    ((Context)localObject).startActivity((Intent)paramString.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/profile/ui/ContactWidgetGroupCard", "handleEvent", "(Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(27149);
     return true;
   }
   
-  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public final boolean dvq()
   {
-    AppMethodBeat.i(27161);
-    if ((paramInt1 == 1) && (paramInt2 == -1)) {
-      cQY();
+    AppMethodBeat.i(27151);
+    NormalUserFooterPreference localNormalUserFooterPreference = (NormalUserFooterPreference)this.screen.bAi("contact_info_footer_normal");
+    if (localNormalUserFooterPreference != null) {
+      localNormalUserFooterPreference.dvq();
     }
-    AppMethodBeat.o(27161);
+    AppMethodBeat.o(27151);
+    return true;
   }
   
-  public final void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
-  {
-    AppMethodBeat.i(27162);
-    if ((paramObject instanceof Integer))
-    {
-      paramInt = ((Integer)paramObject).intValue();
-      if ((paramInt == 40) || (paramInt == 34)) {
-        cQY();
-      }
-    }
-    AppMethodBeat.o(27162);
-  }
+  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
 }
 
 

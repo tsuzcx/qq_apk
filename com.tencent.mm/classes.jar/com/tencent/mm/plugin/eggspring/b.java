@@ -1,42 +1,50 @@
 package com.tencent.mm.plugin.eggspring;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cw.f;
-import com.tencent.mm.protocal.protobuf.dyy;
+import com.tencent.mm.cp.f;
+import com.tencent.mm.protocal.protobuf.esc;
+import com.tencent.mm.vending.e.c;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.d.d;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
-import kotlinx.coroutines.m;
-import kotlinx.coroutines.n;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlinx.coroutines.p;
+import kotlinx.coroutines.q;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"sendCgi", "Response", "Lcom/tencent/mm/protocal/protobuf/ResponseProtoBuf;", "cgi", "Lcom/tencent/mm/modelbase/Cgi;", "(Lcom/tencent/mm/modelbase/Cgi;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "plugin-eggspring_release"})
+@Metadata(d1={""}, d2={"sendCgi", "Response", "Lcom/tencent/mm/protocal/protobuf/ResponseProtoBuf;", "cgi", "Lcom/tencent/mm/modelbase/Cgi;", "(Lcom/tencent/mm/modelbase/Cgi;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "plugin-eggspring_release"}, k=2, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  public static final <Response extends dyy> Object a(com.tencent.mm.an.c<Response> paramc, d<? super Response> paramd)
+  public static final <Response extends esc> Object b(com.tencent.mm.am.b<Response> paramb, d<? super Response> paramd)
   {
-    AppMethodBeat.i(249283);
-    n localn = new n(kotlin.d.a.b.k(paramd), 1);
-    localn.iQM();
-    m localm = (m)localn;
-    com.tencent.mm.vending.e.c localc = new com.tencent.mm.vending.e.c();
-    paramc.bhW().a((com.tencent.mm.vending.e.b)localc).g((com.tencent.mm.vending.c.a)new b.a(localm));
-    localm.am((kotlin.g.a.b)new b(localc));
-    paramc = localn.getResult();
-    if (paramc == kotlin.d.a.a.aaAA) {
-      p.k(paramd, "frame");
+    AppMethodBeat.i(266513);
+    q localq = new q(kotlin.d.a.b.au(paramd), 1);
+    localq.kBA();
+    p localp = (p)localq;
+    c localc = new c();
+    paramb.bFJ().a((com.tencent.mm.vending.e.b)localc).g((com.tencent.mm.vending.c.a)new a(localp));
+    localp.bg((kotlin.g.a.b)new b(localc));
+    paramb = localq.getResult();
+    if (paramb == kotlin.d.a.a.aiwj) {
+      s.u(paramd, "frame");
     }
-    AppMethodBeat.o(249283);
-    return paramc;
+    AppMethodBeat.o(266513);
+    return paramb;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Response", "Lcom/tencent/mm/protocal/protobuf/ResponseProtoBuf;", "it", "", "invoke"})
-  static final class b
-    extends q
-    implements kotlin.g.a.b<Throwable, x>
+  @Metadata(d1={""}, d2={"<anonymous>", "", "Response", "Lcom/tencent/mm/protocal/protobuf/ResponseProtoBuf;", "cgiBack", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a<_Ret, _Var>
+    implements com.tencent.mm.vending.c.a
   {
-    b(com.tencent.mm.vending.e.c paramc)
+    a(p<? super Response> paramp) {}
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "Response", "Lcom/tencent/mm/protocal/protobuf/ResponseProtoBuf;", "it", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements kotlin.g.a.b<Throwable, ah>
+  {
+    b(c<com.tencent.mm.vending.e.a> paramc)
     {
       super();
     }

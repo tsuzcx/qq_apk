@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/so"
+<RelativeLayout android:orientation="vertical" android:id="@id/gp1" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView style="@style/sp" />
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <include layout="@layout/blk" />
-        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <include layout="@layout/bsu" />
-        </LinearLayout>
-        <ImageView android:layout_width="fill_parent" android:layout_height="1.0px" style="@style/ss" />
+    <include android:id="@id/aq2" layout="@layout/cdb" />
+    <ImageView android:id="@id/lb_" android:background="@drawable/bm6" android:layout_width="@dimen/z7" android:layout_height="@dimen/z7" android:layout_marginTop="@dimen/i_" android:layout_below="@id/aq2" android:layout_centerHorizontal="true" />
+    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i_" android:layout_below="@id/lb_" android:layout_centerHorizontal="true">
+        <ProgressBar android:layout_gravity="center_vertical" android:id="@id/hhd" android:layout_width="30.0dip" android:layout_height="30.0dip" />
+        <TextView android:textSize="@dimen/l" android:textColor="@color/a7b" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/hhc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="@string/kdd" />
     </LinearLayout>
-</LinearLayout>
+    <TextView android:textSize="@dimen/s" android:textColor="@color/hi" android:id="@id/hhe" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="80.0dip" android:text="@string/a2j" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

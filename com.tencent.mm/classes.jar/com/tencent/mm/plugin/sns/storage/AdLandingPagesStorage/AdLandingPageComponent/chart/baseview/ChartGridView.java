@@ -23,9 +23,9 @@ public abstract class ChartGridView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected abstract int fQG();
+  protected abstract int hiE();
   
-  protected abstract int fQH();
+  protected abstract int hiF();
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
@@ -57,11 +57,11 @@ public abstract class ChartGridView
     {
       setMeasuredDimension(paramInt1, paramInt2);
       return;
-      paramInt1 = fQH();
+      paramInt1 = hiF();
       break;
       paramInt1 = getSuggestedMinimumWidth();
       break;
-      paramInt2 = fQG();
+      paramInt2 = hiE();
       continue;
       paramInt2 = getSuggestedMinimumHeight();
     }
@@ -74,7 +74,7 @@ public abstract class ChartGridView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.baseview.ChartGridView
  * JD-Core Version:    0.7.0.1
  */

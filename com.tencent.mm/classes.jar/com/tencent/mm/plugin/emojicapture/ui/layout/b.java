@@ -10,62 +10,62 @@ import androidx.recyclerview.widget.RecyclerView.h;
 import androidx.recyclerview.widget.RecyclerView.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.emojicapture.a.d;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emojicapture/ui/layout/RecommendStickerDecoration;", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "itemPadding", "", "itemWidth", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "plugin-emojicapture_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/emojicapture/ui/layout/RecommendStickerDecoration;", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "itemPadding", "", "itemWidth", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "plugin-emojicapture_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
   extends RecyclerView.h
 {
   private final int itemPadding;
-  private final int tHY;
+  private final int wLI;
   
   public b(Context paramContext)
   {
     AppMethodBeat.i(883);
-    this.tHY = paramContext.getResources().getDimensionPixelSize(a.d.uRo);
+    this.wLI = paramContext.getResources().getDimensionPixelSize(a.d.yec);
     this.itemPadding = paramContext.getResources().getDimensionPixelSize(a.d.Edge_A);
     AppMethodBeat.o(883);
   }
   
   public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
   {
-    AppMethodBeat.i(201533);
-    p.k(paramRect, "outRect");
-    p.k(paramView, "view");
-    p.k(paramRecyclerView, "parent");
-    p.k(params, "state");
-    int j = RecyclerView.bh(paramView);
+    AppMethodBeat.i(269451);
+    s.u(paramRect, "outRect");
+    s.u(paramView, "view");
+    s.u(paramRecyclerView, "parent");
+    s.u(params, "state");
+    int j = RecyclerView.bA(paramView);
     paramView = paramRecyclerView.getAdapter();
     int i;
-    if (paramView != null)
+    if (paramView == null)
     {
-      i = paramView.getItemCount();
+      i = 0;
       paramView = paramRecyclerView.getAdapter();
-      if (paramView == null) {
-        break label108;
+      if (paramView != null) {
+        break label100;
       }
     }
-    label108:
-    for (paramView = Integer.valueOf(paramView.getItemViewType(j));; paramView = null)
+    label100:
+    for (paramView = null;; paramView = Integer.valueOf(paramView.getItemViewType(j)))
     {
       if (j != 0) {
         break label113;
       }
-      paramRect.set((paramRecyclerView.getWidth() - this.tHY) / 2, 0, this.itemPadding, 0);
-      AppMethodBeat.o(201533);
+      paramRect.set((paramRecyclerView.getWidth() - this.wLI) / 2, 0, this.itemPadding, 0);
+      AppMethodBeat.o(269451);
       return;
-      i = 0;
+      i = paramView.getItemCount();
       break;
     }
     label113:
     if (j == i - 1)
     {
       if (paramView == null) {}
-      for (i = (paramRecyclerView.getWidth() - this.tHY) / 2;; i = paramRecyclerView.getWidth() / 2 - this.tHY / 2 * 3 - this.itemPadding * 2)
+      for (i = (paramRecyclerView.getWidth() - this.wLI) / 2;; i = paramRecyclerView.getWidth() / 2 - this.wLI / 2 * 3 - this.itemPadding * 2)
       {
         paramRect.set(this.itemPadding, 0, i, 0);
-        AppMethodBeat.o(201533);
+        AppMethodBeat.o(269451);
         return;
         if (paramView.intValue() != 2) {
           break;
@@ -73,7 +73,7 @@ public final class b
       }
     }
     paramRect.set(this.itemPadding, 0, this.itemPadding, 0);
-    AppMethodBeat.o(201533);
+    AppMethodBeat.o(269451);
   }
 }
 

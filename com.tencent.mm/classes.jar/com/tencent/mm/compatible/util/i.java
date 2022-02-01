@@ -1,73 +1,31 @@
 package com.tencent.mm.compatible.util;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.KeyBoardUtil;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import java.security.PrivilegedAction;
 
-@Deprecated
 public final class i
-  extends KeyBoardUtil
+  implements PrivilegedAction
 {
-  public static final void E(Context paramContext, int paramInt)
+  private String lYV;
+  private String lYW;
+  
+  public i(String paramString)
   {
-    AppMethodBeat.i(155904);
-    int j = KeyBoardUtil.getMinPanelHeightPx(paramContext);
-    int i = KeyBoardUtil.getMaxPanelHeightPx(paramContext);
-    if (paramInt < j) {
-      paramInt = j;
-    }
-    for (;;)
+    this.lYV = paramString;
+  }
+  
+  public final Object run()
+  {
+    AppMethodBeat.i(155902);
+    String str = System.getProperty(this.lYV);
+    if (str == null)
     {
-      if (paramInt > i) {
-        paramInt = i;
-      }
-      for (;;)
-      {
-        saveKeyBordHeightPx(paramContext, paramInt);
-        MultiProcessMMKV.getMMKV(MMApplicationContext.getDefaultPreferencePath()).putInt("com.tencent.mm.compatible.util.keybord.height", paramInt);
-        AppMethodBeat.o(155904);
-        return;
-      }
+      str = this.lYW;
+      AppMethodBeat.o(155902);
+      return str;
     }
-  }
-  
-  public static final int avL()
-  {
-    return CONTENT_HEIGHT;
-  }
-  
-  public static final int avM()
-  {
-    AppMethodBeat.i(155905);
-    int i = MultiProcessMMKV.getMMKV(MMApplicationContext.getDefaultPreferencePath()).getInt("com.tencent.mm.compatible.util.keybord.height", 0);
-    AppMethodBeat.o(155905);
-    return i;
-  }
-  
-  @TargetApi(11)
-  public static final void u(Activity paramActivity)
-  {
-    AppMethodBeat.i(155903);
-    if (paramActivity == null)
-    {
-      AppMethodBeat.o(155903);
-      return;
-    }
-    Rect localRect = new Rect();
-    paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
-    int i = localRect.top;
-    int j = a.t(paramActivity);
-    CONTENT_HEIGHT = paramActivity.getResources().getDisplayMetrics().heightPixels - j - i;
-    AppMethodBeat.o(155903);
+    AppMethodBeat.o(155902);
+    return str;
   }
 }
 

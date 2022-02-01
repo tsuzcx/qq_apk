@@ -8,7 +8,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ce.a.a.a;
+import com.tencent.mm.by.a.a.a;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -18,26 +18,26 @@ import java.io.IOException;
 public final class c
   extends a
 {
-  private float RbK;
-  private Paint RbL;
-  int[] RbM;
-  Bitmap fgf;
+  float XXQ;
+  int[] XXR;
+  Bitmap hkp;
+  private Paint uqo;
   
   private c(String paramString)
   {
-    super(a.b.hjf(), paramString);
+    super(a.b.iKa(), paramString);
     AppMethodBeat.i(152111);
-    this.RbK = 0.5F;
-    this.fgf = null;
-    this.RbL = new Paint();
-    this.RbM = new int[2];
+    this.XXQ = 0.5F;
+    this.hkp = null;
+    this.uqo = new Paint();
+    this.XXR = new int[2];
     AppMethodBeat.o(152111);
   }
   
   public c(String paramString, float paramFloat)
   {
     this(paramString);
-    this.RbK = paramFloat;
+    this.XXQ = paramFloat;
   }
   
   private void a(Canvas paramCanvas, Bitmap paramBitmap)
@@ -45,27 +45,27 @@ public final class c
     AppMethodBeat.i(152114);
     Rect localRect2 = getBounds();
     Rect localRect1 = null;
-    if ((this.RcO > 1.0F) || (this.FcG))
+    if ((this.XYU > 1.0F) || (this.KYp))
     {
       int i = paramBitmap.getHeight() / 15 / 2;
       int j = paramBitmap.getWidth() / 15 / 2;
       localRect1 = new Rect(j, i, paramBitmap.getWidth() - j, paramBitmap.getHeight() - i);
     }
-    paramCanvas.drawBitmap(paramBitmap, localRect1, localRect2, this.ljP);
+    paramCanvas.drawBitmap(paramBitmap, localRect1, localRect2, this.nOA);
     AppMethodBeat.o(152114);
   }
   
-  public final void TM(String paramString)
+  public final void LM(String paramString)
   {
     AppMethodBeat.i(152112);
-    super.TM(paramString);
+    super.LM(paramString);
     AppMethodBeat.o(152112);
   }
   
-  public final void aqc(int paramInt)
+  public final void awg(int paramInt)
   {
     AppMethodBeat.i(152115);
-    this.ljP.setAlpha(paramInt);
+    this.nOA.setAlpha(paramInt);
     AppMethodBeat.o(152115);
   }
   
@@ -73,42 +73,42 @@ public final class c
   {
     Object localObject1 = null;
     AppMethodBeat.i(152113);
-    String str = this.tag + "-" + this.RbK;
-    com.tencent.mm.ce.a.a locala = a.a.UOn;
+    String str = this.tag + "-" + this.XXQ;
+    com.tencent.mm.by.a.a locala = a.a.acjy;
     if (locala != null) {
-      localObject1 = a.a.UOn.aNh(str);
+      localObject1 = a.a.acjy.aKc(str);
     }
     if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled()))
     {
       a(paramCanvas, (Bitmap)localObject1);
-      if (this.RbI)
+      if (this.aLn)
       {
-        this.RbL.setColor(-16777216);
-        this.RbL.setAlpha(76);
-        this.RbL.setAntiAlias(true);
+        this.uqo.setColor(-16777216);
+        this.uqo.setAlpha(76);
+        this.uqo.setAntiAlias(true);
         localObject1 = new RectF(getBounds());
-        paramCanvas.drawRoundRect((RectF)localObject1, this.RbK * ((RectF)localObject1).width(), this.RbK * ((RectF)localObject1).height(), this.RbL);
+        paramCanvas.drawRoundRect((RectF)localObject1, this.XXQ * ((RectF)localObject1).width(), this.XXQ * ((RectF)localObject1).height(), this.uqo);
       }
       AppMethodBeat.o(152113);
       return;
     }
-    if (this.RcK)
+    if (this.XYQ)
     {
-      localObject1 = this.Hix.b(this.tag, paramCanvas.getWidth(), paramCanvas.getHeight(), 1);
+      localObject1 = this.Ngk.b(this.tag, paramCanvas.getWidth(), paramCanvas.getHeight(), 1);
       label184:
-      if (!(this.Hix instanceof j.b)) {
+      if (!(this.Ngk instanceof j.b)) {
         break label401;
       }
     }
     label401:
-    for (boolean bool = ((j.b)this.Hix).aDn(this.tag);; bool = true) {
+    for (boolean bool = ((j.b)this.Ngk).ayI(this.tag);; bool = true) {
       for (;;)
       {
         if (localObject1 != null)
         {
           Object localObject2 = localObject1;
           if (bool) {
-            localObject2 = BitmapUtil.getRoundedCornerBitmap((Bitmap)localObject1, false, this.RbK * ((Bitmap)localObject1).getWidth());
+            localObject2 = BitmapUtil.getRoundedCornerBitmap((Bitmap)localObject1, false, this.XXQ * ((Bitmap)localObject1).getWidth());
           }
           if (locala != null) {
             locala.p(str, (Bitmap)localObject2);
@@ -118,18 +118,18 @@ public final class c
           }
           a(paramCanvas, (Bitmap)localObject2);
           break;
-          localObject1 = this.Hix.gJ(this.tag);
+          localObject1 = this.Ngk.loadBitmap(this.tag);
           break label184;
         }
         if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled())) {
           break;
         }
-        if (this.fgf == null) {}
+        if (this.hkp == null) {}
         try
         {
-          this.fgf = BackwardSupportUtil.BitmapFactory.decodeStream(MMApplicationContext.getContext().getAssets().open("avatar/default_nor_avatar.png"), com.tencent.mm.ci.a.getDensity(null));
-          this.fgf = BitmapUtil.getRoundedCornerBitmap(this.fgf, false, this.RbK * this.fgf.getWidth());
-          localObject1 = this.fgf;
+          this.hkp = BackwardSupportUtil.BitmapFactory.decodeStream(MMApplicationContext.getContext().getAssets().open("avatar/default_nor_avatar.png"), com.tencent.mm.cd.a.getDensity(null));
+          this.hkp = BitmapUtil.getRoundedCornerBitmap(this.hkp, false, this.XXQ * this.hkp.getWidth());
+          localObject1 = this.hkp;
           if ((localObject1 == null) || (((Bitmap)localObject1).isRecycled())) {
             break;
           }
@@ -148,7 +148,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.c
  * JD-Core Version:    0.7.0.1
  */

@@ -6,19 +6,19 @@ import android.content.DialogInterface.OnClickListener;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Toast;
-import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.ipcinvoker.j;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.webview.c.h;
 import com.tencent.mm.plugin.webview.c.i;
-import com.tencent.mm.plugin.webview.luggage.w;
-import com.tencent.mm.plugin.webview.luggage.y;
+import com.tencent.mm.plugin.webview.luggage.x;
+import com.tencent.mm.plugin.webview.luggage.z;
 import com.tencent.mm.plugin.webview.model.au.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.o;
+import com.tencent.mm.ui.base.k;
 import java.net.URI;
 import java.net.URISyntaxException;
 import org.json.JSONObject;
@@ -31,7 +31,7 @@ public final class b
     super(29);
   }
   
-  private static String bkt(String paramString)
+  private static String bke(String paramString)
   {
     AppMethodBeat.i(78682);
     Uri localUri = Uri.parse(paramString);
@@ -68,11 +68,11 @@ public final class b
   {
     AppMethodBeat.i(78681);
     Bundle localBundle = new Bundle();
-    y localy = paramg.PPZ;
+    z localz = paramg.WGs;
     String str2;
-    if (Util.isNullOrNil(localy.iconUrl))
+    if (Util.isNullOrNil(localz.iconUrl))
     {
-      str2 = paramg.PPO.getIcon();
+      str2 = paramg.WGh.getIcon();
       if (Util.isNullOrNil(str2))
       {
         AppMethodBeat.o(78681);
@@ -90,11 +90,11 @@ public final class b
     {
       Log.i("MicroMsg.MenuDelegate_AddShortcut", "rawIconUrl : %s, newIconUrl : %s", new Object[] { str2, str1 });
       localBundle.putString("icon_url", str1);
-      if (Util.isNullOrNil(localy.jumpUrl))
+      if (Util.isNullOrNil(localz.jumpUrl))
       {
-        localBundle.putString("page_url", bkt(paramg.cDu()));
+        localBundle.putString("page_url", bke(paramg.dgY()));
         label153:
-        if (!Util.isNullOrNil(localy.title)) {
+        if (!Util.isNullOrNil(localz.title)) {
           break label264;
         }
         localBundle.putString("title", paramg.getTitle());
@@ -102,43 +102,43 @@ public final class b
       for (;;)
       {
         j.a(MainProcessIPCService.PROCESS_NAME, localBundle, a.class, new f() {});
-        com.tencent.mm.plugin.report.service.h.IzE.el(982, 12);
-        com.tencent.mm.game.report.g.a(paramContext, 34, 3401, 1, 2, 0, com.tencent.mm.game.report.g.au("url", paramg.cDu()));
+        h.OAn.kJ(982, 12);
+        com.tencent.mm.game.report.g.a(paramContext, 34, 3401, 1, 2, 0, com.tencent.mm.game.report.g.aC("url", paramg.dgY()));
         AppMethodBeat.o(78681);
         return;
-        localBundle.putString("icon_url", localy.iconUrl);
+        localBundle.putString("icon_url", localz.iconUrl);
         break;
-        localBundle.putString("page_url", localy.iconUrl);
+        localBundle.putString("page_url", localz.iconUrl);
         break label153;
-        localBundle.putString("title", localy.title);
+        localBundle.putString("title", localz.title);
       }
     }
   }
   
-  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg, o paramo)
+  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg, com.tencent.mm.ui.base.s params)
   {
     AppMethodBeat.i(78680);
-    boolean bool = paramg.mParams.getBoolean("from_shortcut", false);
-    Object localObject = paramg.PPZ;
+    boolean bool = paramg.ejT.getBoolean("from_shortcut", false);
+    Object localObject = paramg.WGs;
     String str;
-    if (Util.isNullOrNil(((y)localObject).title))
+    if (Util.isNullOrNil(((z)localObject).title))
     {
       str = paramg.getTitle();
-      if (!Util.isNullOrNil(((y)localObject).iconUrl)) {
+      if (!Util.isNullOrNil(((z)localObject).iconUrl)) {
         break label145;
       }
     }
     label145:
-    for (localObject = paramg.PPO.getIcon();; localObject = ((y)localObject).iconUrl)
+    for (localObject = paramg.WGh.getIcon();; localObject = ((z)localObject).iconUrl)
     {
-      if ((!bool) && (!Util.isNullOrNil(str)) && (!Util.isNullOrNil((String)localObject)) && (paramg.Tv(255)))
+      if ((!bool) && (!Util.isNullOrNil(str)) && (!Util.isNullOrNil((String)localObject)) && (paramg.Xp(255)))
       {
-        paramo.b(29, paramContext.getString(c.i.readerapp_add_shortcut), c.h.webview_add_shortcut);
-        com.tencent.mm.game.report.g.a(paramContext, 34, 3401, 1, 1, 0, com.tencent.mm.game.report.g.au("url", paramg.cDu()));
+        params.a(29, paramContext.getString(c.i.readerapp_add_shortcut), c.h.webview_add_shortcut);
+        com.tencent.mm.game.report.g.a(paramContext, 34, 3401, 1, 1, 0, com.tencent.mm.game.report.g.aC("url", paramg.dgY()));
       }
       AppMethodBeat.o(78680);
       return;
-      str = ((y)localObject).title;
+      str = ((z)localObject).title;
       break;
     }
   }

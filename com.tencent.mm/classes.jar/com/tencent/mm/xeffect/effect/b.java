@@ -1,11 +1,11 @@
 package com.tencent.mm.xeffect.effect;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.a.ae;
-import kotlin.l;
-import kotlin.s;
+import kotlin.Metadata;
+import kotlin.a.ak;
+import kotlin.v;
 
-@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/xeffect/effect/BlurEffect;", "Lcom/tencent/mm/xeffect/effect/VLogEffect;", "ptr", "", "(J)V", "setRadius", "", "radius", "", "setSampleFactor", "sampleFactor", "type", "Lcom/tencent/mm/xeffect/effect/EffectType;", "renderlib_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mm/xeffect/effect/BlurEffect;", "Lcom/tencent/mm/xeffect/effect/VLogEffect;", "ptr", "", "(J)V", "setRadius", "", "radius", "", "setSampleFactor", "sampleFactor", "type", "Lcom/tencent/mm/xeffect/effect/EffectType;", "renderlib_release"}, k=1, mv={1, 1, 15})
 public final class b
   extends af
 {
@@ -14,28 +14,28 @@ public final class b
     super(paramLong);
   }
   
-  public final j ika()
+  public final void eC(float paramFloat)
   {
-    return j.YZP;
+    AppMethodBeat.i(234570);
+    VLogEffectJNI.INSTANCE.setEffectParams$renderlib_release(this.ptr, ak.l(v.Y(Integer.valueOf(o.agYJ.ordinal()), Float.valueOf(paramFloat))));
+    AppMethodBeat.o(234570);
   }
   
-  public final void ikb()
+  public final j jQi()
   {
-    AppMethodBeat.i(195682);
-    VLogEffectJNI.INSTANCE.setEffectParams$renderlib_release(this.ptr, ae.d(s.M(Integer.valueOf(o.Zax.ordinal()), Float.valueOf(1.0F))));
-    AppMethodBeat.o(195682);
+    return j.agYb;
   }
   
   public final void setRadius(float paramFloat)
   {
-    AppMethodBeat.i(195679);
-    VLogEffectJNI.INSTANCE.setEffectParams$renderlib_release(this.ptr, ae.d(s.M(Integer.valueOf(o.Zaw.ordinal()), Float.valueOf(paramFloat))));
-    AppMethodBeat.o(195679);
+    AppMethodBeat.i(234564);
+    VLogEffectJNI.INSTANCE.setEffectParams$renderlib_release(this.ptr, ak.l(v.Y(Integer.valueOf(o.agYI.ordinal()), Float.valueOf(paramFloat))));
+    AppMethodBeat.o(234564);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.xeffect.effect.b
  * JD-Core Version:    0.7.0.1
  */

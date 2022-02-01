@@ -2,7 +2,7 @@ package com.google.android.material.internal;
 
 import android.graphics.PorterDuff.Mode;
 import android.view.View;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class l
@@ -37,19 +37,19 @@ public final class l
   
   public static boolean s(View paramView)
   {
-    AppMethodBeat.i(238357);
-    if (w.I(paramView) == 1)
+    AppMethodBeat.i(209287);
+    if (z.U(paramView) == 1)
     {
-      AppMethodBeat.o(238357);
+      AppMethodBeat.o(209287);
       return true;
     }
-    AppMethodBeat.o(238357);
+    AppMethodBeat.o(209287);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.internal.l
  * JD-Core Version:    0.7.0.1
  */

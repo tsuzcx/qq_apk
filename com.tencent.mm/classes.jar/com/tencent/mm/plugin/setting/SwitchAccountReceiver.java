@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cj.b;
+import com.tencent.mm.ce.d;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -47,7 +47,7 @@ public class SwitchAccountReceiver
     for (;;)
     {
       LocaleUtil.updateApplicationResourceLocale(paramContext.getApplicationContext(), paramIntent);
-      MMApplicationContext.setResources(b.a(paramContext.getApplicationContext().getResources(), paramContext.getApplicationContext(), str));
+      MMApplicationContext.setResources(d.a(paramContext.getApplicationContext().getResources(), paramContext.getApplicationContext(), str));
       AppMethodBeat.o(73757);
       return;
       label147:
@@ -57,7 +57,7 @@ public class SwitchAccountReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.SwitchAccountReceiver
  * JD-Core Version:    0.7.0.1
  */

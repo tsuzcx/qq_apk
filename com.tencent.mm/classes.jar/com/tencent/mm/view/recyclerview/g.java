@@ -1,17 +1,11 @@
 package com.tencent.mm.view.recyclerview;
 
-import android.view.MotionEvent;
-import android.view.View;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/recyclerview/OnItemConvertClickListener;", "D", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "", "onClick", "", "itemView", "Landroid/view/View;", "data", "position", "", "(Landroid/view/View;Lcom/tencent/mm/view/recyclerview/ConvertData;I)V", "onLongClick", "", "(Landroid/view/View;Lcom/tencent/mm/view/recyclerview/ConvertData;I)Z", "onTouch", "event", "Landroid/view/MotionEvent;", "item", "(Landroid/view/View;Landroid/view/MotionEvent;Lcom/tencent/mm/view/recyclerview/ConvertData;I)Z", "libmmui_release"})
-public abstract interface g<D extends a>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface g
 {
-  public abstract void a(View paramView, D paramD);
-  
-  public abstract boolean a(View paramView, MotionEvent paramMotionEvent, D paramD);
-  
-  public abstract boolean a(View paramView, D paramD, int paramInt);
+  public abstract f<?> yF(int paramInt);
 }
 
 

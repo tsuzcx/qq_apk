@@ -1,453 +1,190 @@
 package com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a;
 
-import android.annotation.TargetApi;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.az;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a;
-import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.b.a;
-import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.g;
-import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.h;
-import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.j;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.h;
+import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.a.e;
+import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.k;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.c;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.e;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
-@TargetApi(18)
 public final class l
   extends com.tencent.mm.plugin.appbrand.jsapi.c
 {
-  private static final int CTRL_INDEX = 173;
-  private static final String NAME = "openBluetoothAdapter";
+  private static final int CTRL_INDEX = 186;
+  private static final String NAME = "notifyBLECharacteristicValueChanged";
+  public static String rLb = "notification";
+  public static String rLc = "indication";
   
-  public final void a(final e parame, JSONObject paramJSONObject, int paramInt)
+  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.f paramf, JSONObject paramJSONObject, final int paramInt)
   {
-    AppMethodBeat.i(144515);
-    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.rE(0);
-    paramJSONObject = parame.getAppId();
-    Log.i("MicroMsg.JsApiOpenBluetoothAdapter", "appid:%s openBluetoothAdapter!", new Object[] { paramJSONObject });
-    paramJSONObject = a.a(paramJSONObject, new b.a()new h
+    AppMethodBeat.i(144505);
+    h.rG(71);
+    if (paramJSONObject == null)
     {
-      public final void jdMethod_if(boolean paramAnonymousBoolean)
-      {
-        AppMethodBeat.i(144506);
-        l.c.a(parame, paramAnonymousBoolean, false);
-        AppMethodBeat.o(144506);
-      }
-    }, new h()new g
-    {
-      public final void ar(String paramAnonymousString, boolean paramAnonymousBoolean)
-      {
-        AppMethodBeat.i(144507);
-        l.b.a(parame, paramAnonymousString, paramAnonymousBoolean);
-        AppMethodBeat.o(144507);
-      }
-    }, new g()
-    {
-      public final void j(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, String paramAnonymousString4)
-      {
-        AppMethodBeat.i(144508);
-        l.a.a(parame, paramAnonymousString1, paramAnonymousString2, paramAnonymousString3, paramAnonymousString4);
-        AppMethodBeat.o(144508);
-      }
-    });
-    HashMap localHashMap = new HashMap();
-    switch (paramJSONObject.errCode)
-    {
-    default: 
-      localHashMap.put("errCode", Integer.valueOf(paramJSONObject.errCode));
-      parame.j(paramInt, m(paramJSONObject.errMsg, localHashMap));
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.rE(2);
-      AppMethodBeat.o(144515);
-      return;
-    case 0: 
-      parame.j(paramInt, m("ok", localHashMap));
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.rE(1);
-      AppMethodBeat.o(144515);
-      return;
-    case 10009: 
-      localHashMap.put("errCode", Integer.valueOf(10009));
-      parame.j(paramInt, m("fail:system not support", localHashMap));
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.ex(2, 8);
-      AppMethodBeat.o(144515);
+      Log.e("MicroMsg.JsApiNotifyBLECharacteristicValueChanged", "JsApiNotifyBLECharacteristicValueChanged data is null");
+      paramJSONObject = new HashMap();
+      paramJSONObject.put("errCode", Integer.valueOf(10013));
+      paramf.callback(paramInt, a("fail:invalid data", a.e.rVz, paramJSONObject));
+      h.fr(73, 74);
+      AppMethodBeat.o(144505);
       return;
     }
-    localHashMap.put("errCode", Integer.valueOf(10001));
-    parame.j(paramInt, m("fail:not available", localHashMap));
-    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.ex(2, 7);
-    AppMethodBeat.o(144515);
-  }
-  
-  static final class a
-    extends az
-  {
-    private static final int CTRL_INDEX = 187;
-    private static final String NAME = "onBLECharacteristicValueChange";
-    private static a oHo;
-    private static JSONObject oHp;
-    
-    static
+    final String str4 = paramf.getAppId();
+    Log.i("MicroMsg.JsApiNotifyBLECharacteristicValueChanged", "appId:%s notifyBLECharacteristicValueChanged data %s", new Object[] { str4, paramJSONObject.toString() });
+    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.b localb = a.aan(paramf.getAppId());
+    if (localb == null)
     {
-      AppMethodBeat.i(144510);
-      oHo = new a();
-      oHp = new JSONObject();
-      AppMethodBeat.o(144510);
+      Log.e("MicroMsg.JsApiNotifyBLECharacteristicValueChanged", "bleWorker is null, may not open ble");
+      paramJSONObject = new HashMap();
+      paramJSONObject.put("errCode", Integer.valueOf(10000));
+      paramf.callback(paramInt, a(a.c.rUE, paramJSONObject));
+      h.fr(73, 76);
+      AppMethodBeat.o(144505);
+      return;
     }
-    
-    /* Error */
-    public static void a(e parame, String paramString1, String paramString2, String paramString3, String paramString4)
+    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.cru())
     {
-      // Byte code:
-      //   0: ldc 2
-      //   2: monitorenter
-      //   3: ldc 46
-      //   5: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-      //   8: aload_0
-      //   9: ifnonnull +19 -> 28
-      //   12: ldc 48
-      //   14: ldc 50
-      //   16: invokestatic 56	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-      //   19: ldc 46
-      //   21: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   24: ldc 2
-      //   26: monitorexit
-      //   27: return
-      //   28: getstatic 37	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$a:oHp	Lorg/json/JSONObject;
-      //   31: ldc 58
-      //   33: invokevirtual 62	org/json/JSONObject:remove	(Ljava/lang/String;)Ljava/lang/Object;
-      //   36: pop
-      //   37: getstatic 37	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$a:oHp	Lorg/json/JSONObject;
-      //   40: ldc 58
-      //   42: aload 4
-      //   44: invokevirtual 66	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-      //   47: pop
-      //   48: getstatic 37	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$a:oHp	Lorg/json/JSONObject;
-      //   51: ldc 68
-      //   53: invokevirtual 62	org/json/JSONObject:remove	(Ljava/lang/String;)Ljava/lang/Object;
-      //   56: pop
-      //   57: getstatic 37	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$a:oHp	Lorg/json/JSONObject;
-      //   60: ldc 68
-      //   62: aload_1
-      //   63: invokevirtual 66	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-      //   66: pop
-      //   67: getstatic 37	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$a:oHp	Lorg/json/JSONObject;
-      //   70: ldc 70
-      //   72: invokevirtual 62	org/json/JSONObject:remove	(Ljava/lang/String;)Ljava/lang/Object;
-      //   75: pop
-      //   76: getstatic 37	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$a:oHp	Lorg/json/JSONObject;
-      //   79: ldc 70
-      //   81: aload_2
-      //   82: invokevirtual 66	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-      //   85: pop
-      //   86: getstatic 37	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$a:oHp	Lorg/json/JSONObject;
-      //   89: ldc 72
-      //   91: invokevirtual 62	org/json/JSONObject:remove	(Ljava/lang/String;)Ljava/lang/Object;
-      //   94: pop
-      //   95: getstatic 37	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$a:oHp	Lorg/json/JSONObject;
-      //   98: ldc 72
-      //   100: aload_3
-      //   101: invokevirtual 66	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-      //   104: pop
-      //   105: aload_0
-      //   106: ifnonnull +43 -> 149
-      //   109: ldc 48
-      //   111: ldc 74
-      //   113: invokestatic 77	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-      //   116: ldc 46
-      //   118: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   121: goto -97 -> 24
-      //   124: astore_0
-      //   125: ldc 2
-      //   127: monitorexit
-      //   128: aload_0
-      //   129: athrow
-      //   130: astore_1
-      //   131: ldc 48
-      //   133: ldc 79
-      //   135: iconst_1
-      //   136: anewarray 81	java/lang/Object
-      //   139: dup
-      //   140: iconst_0
-      //   141: aload_1
-      //   142: aastore
-      //   143: invokestatic 84	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   146: goto -41 -> 105
-      //   149: getstatic 32	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$a:oHo	Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$a;
-      //   152: aload_0
-      //   153: aload_0
-      //   154: invokeinterface 90 1 0
-      //   159: invokevirtual 94	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$a:b	(Lcom/tencent/mm/plugin/appbrand/jsapi/e;I)Lcom/tencent/mm/plugin/appbrand/jsapi/az;
-      //   162: getstatic 37	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$a:oHp	Lorg/json/JSONObject;
-      //   165: invokevirtual 98	org/json/JSONObject:toString	()Ljava/lang/String;
-      //   168: invokevirtual 102	com/tencent/mm/plugin/appbrand/jsapi/az:agU	(Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/jsapi/az;
-      //   171: invokevirtual 105	com/tencent/mm/plugin/appbrand/jsapi/az:bPO	()V
-      //   174: ldc 48
-      //   176: ldc 107
-      //   178: iconst_1
-      //   179: anewarray 81	java/lang/Object
-      //   182: dup
-      //   183: iconst_0
-      //   184: getstatic 37	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$a:oHp	Lorg/json/JSONObject;
-      //   187: invokevirtual 98	org/json/JSONObject:toString	()Ljava/lang/String;
-      //   190: aastore
-      //   191: invokestatic 109	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   194: ldc 46
-      //   196: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   199: goto -175 -> 24
-      // Local variable table:
-      //   start	length	slot	name	signature
-      //   0	202	0	parame	e
-      //   0	202	1	paramString1	String
-      //   0	202	2	paramString2	String
-      //   0	202	3	paramString3	String
-      //   0	202	4	paramString4	String
-      // Exception table:
-      //   from	to	target	type
-      //   3	8	124	finally
-      //   12	24	124	finally
-      //   28	105	124	finally
-      //   109	121	124	finally
-      //   131	146	124	finally
-      //   149	199	124	finally
-      //   28	105	130	org/json/JSONException
+      Log.e("MicroMsg.JsApiNotifyBLECharacteristicValueChanged", "adapter is null or not enabled!");
+      paramJSONObject = new HashMap();
+      paramJSONObject.put("errCode", Integer.valueOf(10001));
+      paramf.callback(paramInt, a("fail:not available", a.c.rUF, paramJSONObject));
+      h.fr(73, 79);
+      AppMethodBeat.o(144505);
+      return;
     }
-  }
-  
-  static final class b
-    extends az
-  {
-    private static final int CTRL_INDEX = 188;
-    private static final String NAME = "onBLEConnectionStateChanged";
-    private static JSONObject oHp;
-    private static b oHq;
-    
-    static
+    String str3 = paramJSONObject.optString("deviceId");
+    String str5 = paramJSONObject.optString("serviceId");
+    String str6 = paramJSONObject.optString("characteristicId");
+    str2 = null;
+    Object localObject = str2;
+    if (paramJSONObject.has("handle")) {}
+    try
     {
-      AppMethodBeat.i(144512);
-      oHq = new b();
-      oHp = new JSONObject();
-      AppMethodBeat.o(144512);
+      int i = paramJSONObject.getInt("handle");
+      localObject = Integer.valueOf(i);
     }
-    
-    /* Error */
-    public static void a(e parame, String paramString, boolean paramBoolean)
+    catch (Exception localException)
     {
-      // Byte code:
-      //   0: ldc 2
-      //   2: monitorenter
-      //   3: ldc 47
-      //   5: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-      //   8: aload_0
-      //   9: ifnonnull +19 -> 28
-      //   12: ldc 49
-      //   14: ldc 51
-      //   16: invokestatic 57	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-      //   19: ldc 47
-      //   21: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   24: ldc 2
-      //   26: monitorexit
-      //   27: return
-      //   28: getstatic 37	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$b:oHp	Lorg/json/JSONObject;
-      //   31: ldc 59
-      //   33: invokevirtual 63	org/json/JSONObject:remove	(Ljava/lang/String;)Ljava/lang/Object;
-      //   36: pop
-      //   37: getstatic 37	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$b:oHp	Lorg/json/JSONObject;
-      //   40: ldc 59
-      //   42: aload_1
-      //   43: invokevirtual 67	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-      //   46: pop
-      //   47: getstatic 37	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$b:oHp	Lorg/json/JSONObject;
-      //   50: ldc 69
-      //   52: invokevirtual 63	org/json/JSONObject:remove	(Ljava/lang/String;)Ljava/lang/Object;
-      //   55: pop
-      //   56: getstatic 37	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$b:oHp	Lorg/json/JSONObject;
-      //   59: ldc 69
-      //   61: iload_2
-      //   62: invokevirtual 72	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
-      //   65: pop
-      //   66: aload_0
-      //   67: ifnonnull +43 -> 110
-      //   70: ldc 49
-      //   72: ldc 74
-      //   74: invokestatic 77	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-      //   77: ldc 47
-      //   79: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   82: goto -58 -> 24
-      //   85: astore_0
-      //   86: ldc 2
-      //   88: monitorexit
-      //   89: aload_0
-      //   90: athrow
-      //   91: astore_1
-      //   92: ldc 49
-      //   94: ldc 79
-      //   96: iconst_1
-      //   97: anewarray 81	java/lang/Object
-      //   100: dup
-      //   101: iconst_0
-      //   102: aload_1
-      //   103: aastore
-      //   104: invokestatic 84	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   107: goto -41 -> 66
-      //   110: getstatic 32	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$b:oHq	Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$b;
-      //   113: aload_0
-      //   114: aload_0
-      //   115: invokeinterface 90 1 0
-      //   120: invokevirtual 93	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$b:b	(Lcom/tencent/mm/plugin/appbrand/jsapi/e;I)Lcom/tencent/mm/plugin/appbrand/jsapi/az;
-      //   123: getstatic 37	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$b:oHp	Lorg/json/JSONObject;
-      //   126: invokevirtual 97	org/json/JSONObject:toString	()Ljava/lang/String;
-      //   129: invokevirtual 101	com/tencent/mm/plugin/appbrand/jsapi/az:agU	(Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/jsapi/az;
-      //   132: invokevirtual 104	com/tencent/mm/plugin/appbrand/jsapi/az:bPO	()V
-      //   135: ldc 49
-      //   137: ldc 106
-      //   139: iconst_1
-      //   140: anewarray 81	java/lang/Object
-      //   143: dup
-      //   144: iconst_0
-      //   145: getstatic 37	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$b:oHp	Lorg/json/JSONObject;
-      //   148: invokevirtual 97	org/json/JSONObject:toString	()Ljava/lang/String;
-      //   151: aastore
-      //   152: invokestatic 108	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   155: ldc 47
-      //   157: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   160: goto -136 -> 24
-      // Local variable table:
-      //   start	length	slot	name	signature
-      //   0	163	0	parame	e
-      //   0	163	1	paramString	String
-      //   0	163	2	paramBoolean	boolean
-      // Exception table:
-      //   from	to	target	type
-      //   3	8	85	finally
-      //   12	24	85	finally
-      //   28	66	85	finally
-      //   70	82	85	finally
-      //   92	107	85	finally
-      //   110	160	85	finally
-      //   28	66	91	org/json/JSONException
+      for (;;)
+      {
+        boolean bool3;
+        boolean bool4;
+        boolean bool5;
+        boolean bool6;
+        boolean bool1;
+        boolean bool2;
+        String str1 = str2;
+      }
     }
-  }
-  
-  public static final class c
-    extends az
-  {
-    private static final int CTRL_INDEX = 189;
-    private static final String NAME = "onBluetoothAdapterStateChange";
-    private static JSONObject oHp;
-    private static c oHr;
-    
-    static
+    bool3 = paramJSONObject.optBoolean("state");
+    str2 = paramJSONObject.optString("type", rLc);
+    bool4 = paramJSONObject.optBoolean("debug", false);
+    bool5 = paramJSONObject.optBoolean("mainThread", false);
+    bool6 = paramJSONObject.optBoolean("serial", true);
+    paramJSONObject = localb.a(str3, str5, str6, (Integer)localObject);
+    if (paramJSONObject == null)
     {
-      AppMethodBeat.i(144514);
-      oHr = new c();
-      oHp = new JSONObject();
-      AppMethodBeat.o(144514);
+      Log.e("MicroMsg.JsApiNotifyBLECharacteristicValueChanged", "bleCharacteristic is null, may not connect");
+      paramJSONObject = new HashMap();
+      paramJSONObject.put("errCode", Integer.valueOf(10005));
+      paramf.callback(paramInt, a("fail:no characteristic", a.c.rVh, paramJSONObject));
+      h.rG(73);
+      AppMethodBeat.o(144505);
+      return;
     }
-    
-    /* Error */
-    public static void a(e parame, boolean paramBoolean1, boolean paramBoolean2)
+    if (((paramJSONObject.okL) && (!paramJSONObject.rNq)) || ((paramJSONObject.okL) && (paramJSONObject.rNq) && (str2.toLowerCase().equals(rLb))))
     {
-      // Byte code:
-      //   0: ldc 2
-      //   2: monitorenter
-      //   3: ldc 47
-      //   5: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-      //   8: aload_0
-      //   9: ifnonnull +19 -> 28
-      //   12: ldc 49
-      //   14: ldc 51
-      //   16: invokestatic 57	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-      //   19: ldc 47
-      //   21: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   24: ldc 2
-      //   26: monitorexit
-      //   27: return
-      //   28: getstatic 37	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$c:oHp	Lorg/json/JSONObject;
-      //   31: ldc 59
-      //   33: invokevirtual 63	org/json/JSONObject:remove	(Ljava/lang/String;)Ljava/lang/Object;
-      //   36: pop
-      //   37: getstatic 37	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$c:oHp	Lorg/json/JSONObject;
-      //   40: ldc 59
-      //   42: iload_1
-      //   43: invokevirtual 67	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
-      //   46: pop
-      //   47: getstatic 37	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$c:oHp	Lorg/json/JSONObject;
-      //   50: ldc 69
-      //   52: invokevirtual 63	org/json/JSONObject:remove	(Ljava/lang/String;)Ljava/lang/Object;
-      //   55: pop
-      //   56: getstatic 37	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$c:oHp	Lorg/json/JSONObject;
-      //   59: ldc 69
-      //   61: iload_2
-      //   62: invokevirtual 67	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
-      //   65: pop
-      //   66: aload_0
-      //   67: ifnonnull +43 -> 110
-      //   70: ldc 49
-      //   72: ldc 71
-      //   74: invokestatic 74	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-      //   77: ldc 47
-      //   79: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   82: goto -58 -> 24
-      //   85: astore_0
-      //   86: ldc 2
-      //   88: monitorexit
-      //   89: aload_0
-      //   90: athrow
-      //   91: astore_3
-      //   92: ldc 49
-      //   94: ldc 76
-      //   96: iconst_1
-      //   97: anewarray 78	java/lang/Object
-      //   100: dup
-      //   101: iconst_0
-      //   102: aload_3
-      //   103: aastore
-      //   104: invokestatic 81	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   107: goto -41 -> 66
-      //   110: getstatic 32	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$c:oHr	Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$c;
-      //   113: aload_0
-      //   114: aload_0
-      //   115: invokeinterface 87 1 0
-      //   120: invokevirtual 91	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$c:b	(Lcom/tencent/mm/plugin/appbrand/jsapi/e;I)Lcom/tencent/mm/plugin/appbrand/jsapi/az;
-      //   123: getstatic 37	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$c:oHp	Lorg/json/JSONObject;
-      //   126: invokevirtual 95	org/json/JSONObject:toString	()Ljava/lang/String;
-      //   129: invokevirtual 99	com/tencent/mm/plugin/appbrand/jsapi/az:agU	(Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/jsapi/az;
-      //   132: invokevirtual 102	com/tencent/mm/plugin/appbrand/jsapi/az:bPO	()V
-      //   135: ldc 49
-      //   137: ldc 104
-      //   139: iconst_1
-      //   140: anewarray 78	java/lang/Object
-      //   143: dup
-      //   144: iconst_0
-      //   145: getstatic 37	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/a/l$c:oHp	Lorg/json/JSONObject;
-      //   148: invokevirtual 95	org/json/JSONObject:toString	()Ljava/lang/String;
-      //   151: aastore
-      //   152: invokestatic 106	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   155: ldc 47
-      //   157: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   160: goto -136 -> 24
-      // Local variable table:
-      //   start	length	slot	name	signature
-      //   0	163	0	parame	e
-      //   0	163	1	paramBoolean1	boolean
-      //   0	163	2	paramBoolean2	boolean
-      //   91	12	3	localJSONException	org.json.JSONException
-      // Exception table:
-      //   from	to	target	type
-      //   3	8	85	finally
-      //   12	24	85	finally
-      //   28	66	85	finally
-      //   70	82	85	finally
-      //   92	107	85	finally
-      //   110	160	85	finally
-      //   28	66	91	org/json/JSONException
+      bool1 = true;
+      if (((paramJSONObject.okL) || (!paramJSONObject.rNq)) && ((!paramJSONObject.okL) || (!paramJSONObject.rNq) || (!str2.toLowerCase().equals(rLc)))) {
+        break label613;
+      }
     }
+    label613:
+    for (bool2 = true;; bool2 = false)
+    {
+      Log.i("MicroMsg.JsApiNotifyBLECharacteristicValueChanged", "appId:%s notifyBLECharacteristicValueChanged isNotify:%b isIndicate:%b", new Object[] { str4, Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+      if (!bool1) {
+        break label619;
+      }
+      paramJSONObject = new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.a.f(str5, str6, (Integer)localObject, bool3);
+      paramJSONObject.debug = bool4;
+      paramJSONObject.rMf = bool5;
+      paramJSONObject.rMh = bool6;
+      localb.a(str3, paramJSONObject, new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.b()
+      {
+        public final void onResult(k paramAnonymousk)
+        {
+          AppMethodBeat.i(144503);
+          switch (paramAnonymousk.errCode)
+          {
+          default: 
+            HashMap localHashMap = new HashMap();
+            localHashMap.put("errCode", Integer.valueOf(paramAnonymousk.errCode));
+            paramf.callback(paramInt, l.this.a(paramAnonymousk.errMsg, paramAnonymousk.rKn, localHashMap));
+            h.rG(43);
+            AppMethodBeat.o(144503);
+            return;
+          }
+          paramAnonymousk = new HashMap();
+          paramAnonymousk.put("errCode", Integer.valueOf(0));
+          paramf.callback(paramInt, l.this.a(null, a.e.rVt, paramAnonymousk));
+          h.rG(42);
+          AppMethodBeat.o(144503);
+        }
+      });
+      AppMethodBeat.o(144505);
+      return;
+      bool1 = false;
+      break;
+    }
+    label619:
+    if (bool2)
+    {
+      paramJSONObject = new e(str5, str6, bool3);
+      paramJSONObject.debug = bool4;
+      paramJSONObject.rMf = bool5;
+      paramJSONObject.rMh = bool6;
+      localb.a(str3, paramJSONObject, new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.b()
+      {
+        public final void onResult(k paramAnonymousk)
+        {
+          AppMethodBeat.i(144504);
+          Log.i("MicroMsg.JsApiNotifyBLECharacteristicValueChanged", "appId:%s notifyBLECharacteristicValueChanged result:%s", new Object[] { str4, paramAnonymousk });
+          switch (paramAnonymousk.errCode)
+          {
+          default: 
+            new HashMap().put("errCode", Integer.valueOf(paramAnonymousk.errCode));
+            paramf.callback(paramInt, l.this.a(paramAnonymousk.errMsg, paramAnonymousk.rKn, null));
+            h.rG(43);
+            AppMethodBeat.o(144504);
+            return;
+          }
+          new HashMap().put("errCode", Integer.valueOf(0));
+          paramf.callback(paramInt, l.this.a(null, a.e.rVt, null));
+          h.rG(42);
+          AppMethodBeat.o(144504);
+        }
+      });
+      AppMethodBeat.o(144505);
+      return;
+    }
+    Log.i("MicroMsg.JsApiNotifyBLECharacteristicValueChanged", "not support notify and not support indicate...");
+    paramJSONObject = new HashMap();
+    paramJSONObject.put("errCode", Integer.valueOf(10007));
+    paramf.callback(paramInt, a("fail:internal error", a.c.rVj, paramJSONObject));
+    h.fr(73, 82);
+    AppMethodBeat.o(144505);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a.l
  * JD-Core Version:    0.7.0.1
  */

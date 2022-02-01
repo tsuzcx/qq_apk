@@ -12,17 +12,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class ScaleRelativeLayout
   extends RelativeLayout
 {
-  public float aGN = 3.0F;
-  private float aGO = 0.5F;
-  private float uQK = 1.0F;
-  private float uQL = 1.0F;
-  private float uQM = 0.0F;
-  private float uQN = 0.0F;
-  public float uQO = 6.0F;
-  private float uQP = 0.3F;
-  private View uQQ;
-  private boolean uQR = false;
-  private ValueAnimator uQS;
+  public float maxScale = 3.0F;
+  private float minScale = 0.5F;
+  private float ydA = 0.3F;
+  private View ydB;
+  private boolean ydC = false;
+  private ValueAnimator ydD;
+  private float ydv = 1.0F;
+  private float ydw = 1.0F;
+  private float ydx = 0.0F;
+  private float ydy = 0.0F;
+  public float ydz = 6.0F;
   
   public ScaleRelativeLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,16 +34,16 @@ public class ScaleRelativeLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void cWY()
+  private void dDo()
   {
-    AppMethodBeat.i(256050);
-    View localView = this.uQQ;
+    AppMethodBeat.i(270747);
+    View localView = this.ydB;
     if (localView != null)
     {
-      localView.setScaleX(this.uQK);
-      localView.setScaleY(this.uQK);
+      localView.setScaleX(this.ydv);
+      localView.setScaleY(this.ydv);
     }
-    AppMethodBeat.o(256050);
+    AppMethodBeat.o(270747);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -62,11 +62,11 @@ public class ScaleRelativeLayout
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(109436);
-    if ((!this.uQR) && (paramMotionEvent.getPointerCount() == 2))
+    if ((!this.ydC) && (paramMotionEvent.getPointerCount() == 2))
     {
-      this.uQR = true;
-      this.uQM = ((float)Math.hypot(paramMotionEvent.getX(0) - paramMotionEvent.getX(1), paramMotionEvent.getY(0) - paramMotionEvent.getY(1)));
-      this.uQL = this.uQK;
+      this.ydC = true;
+      this.ydx = ((float)Math.hypot(paramMotionEvent.getX(0) - paramMotionEvent.getX(1), paramMotionEvent.getY(0) - paramMotionEvent.getY(1)));
+      this.ydw = this.ydv;
     }
     switch (paramMotionEvent.getActionMasked())
     {
@@ -78,60 +78,60 @@ public class ScaleRelativeLayout
     case 6: 
       for (;;)
       {
-        if (this.uQM <= 0.0F) {
-          this.uQM = 0.1F;
+        if (this.ydx <= 0.0F) {
+          this.ydx = 0.1F;
         }
-        cWY();
+        dDo();
         AppMethodBeat.o(109436);
         return true;
         if (paramMotionEvent.getPointerCount() == 2)
         {
           f2 = (float)Math.hypot(paramMotionEvent.getX(0) - paramMotionEvent.getX(1), paramMotionEvent.getY(0) - paramMotionEvent.getY(1));
-          f1 = this.uQL * f2 / this.uQM;
-          if (f1 > this.uQO)
+          f1 = this.ydw * f2 / this.ydx;
+          if (f1 > this.ydz)
           {
-            f1 = this.uQO;
-            this.uQN = (this.uQM * f1);
+            f1 = this.ydz;
+            this.ydy = (this.ydx * f1);
           }
           for (;;)
           {
-            this.uQK = f1;
-            if (this.uQS == null) {
+            this.ydv = f1;
+            if (this.ydD == null) {
               break;
             }
-            this.uQS.cancel();
+            this.ydD.cancel();
             break;
-            if (f1 < this.uQP)
+            if (f1 < this.ydA)
             {
-              f1 = this.uQP;
-              this.uQN = (this.uQM * f1);
+              f1 = this.ydA;
+              this.ydy = (this.ydx * f1);
             }
             else
             {
-              this.uQN = f2;
+              this.ydy = f2;
             }
           }
           if (paramMotionEvent.getPointerCount() == 2)
           {
-            this.uQM = this.uQN;
-            this.uQL = this.uQK;
-            this.uQR = false;
+            this.ydx = this.ydy;
+            this.ydw = this.ydv;
+            this.ydC = false;
           }
         }
       }
     }
-    float f2 = this.uQK;
-    float f1 = this.uQK;
-    if (this.uQK < this.aGO) {
-      f1 = this.aGO;
+    float f2 = this.ydv;
+    float f1 = this.ydv;
+    if (this.ydv < this.minScale) {
+      f1 = this.minScale;
     }
     for (;;)
     {
-      if (this.uQS != null) {
-        this.uQS.cancel();
+      if (this.ydD != null) {
+        this.ydD.cancel();
       }
-      this.uQS = ValueAnimator.ofFloat(new float[] { f2, f1 });
-      this.uQS.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.ydD = ValueAnimator.ofFloat(new float[] { f2, f1 });
+      this.ydD.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
@@ -141,22 +141,22 @@ public class ScaleRelativeLayout
           AppMethodBeat.o(109434);
         }
       });
-      this.uQS.start();
+      this.ydD.start();
       break;
-      if (this.uQK > this.aGN) {
-        f1 = this.aGN;
+      if (this.ydv > this.maxScale) {
+        f1 = this.maxScale;
       }
     }
   }
   
   public void setScaleChild(View paramView)
   {
-    this.uQQ = paramView;
+    this.ydB = paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.widget.ScaleRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

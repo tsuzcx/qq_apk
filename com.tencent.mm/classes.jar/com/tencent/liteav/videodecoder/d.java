@@ -14,7 +14,7 @@ public class d
   
   private void a(c paramc)
   {
-    AppMethodBeat.i(230419);
+    AppMethodBeat.i(229897);
     int j = paramc.a("SPS: cpb_cnt_minus1");
     paramc.b(4, "HRD: bit_rate_scale");
     paramc.b(4, "HRD: cpb_size_scale");
@@ -30,12 +30,12 @@ public class d
     paramc.b(5, "HRD: cpb_removal_delay_length_minus1");
     paramc.b(5, "HRD: dpb_output_delay_length_minus1");
     paramc.b(5, "HRD: time_offset_length");
-    AppMethodBeat.o(230419);
+    AppMethodBeat.o(229897);
   }
   
   private boolean b(c paramc)
   {
-    AppMethodBeat.i(230423);
+    AppMethodBeat.i(229908);
     if ((paramc.d("VUI: aspect_ratio_info_present_flag")) && ((int)paramc.a(8, "VUI: aspect_ratio") == 255))
     {
       paramc.b(16, "VUI: sar_width");
@@ -92,7 +92,7 @@ public class d
         TXCLog.w("[H264SPSModifier]", "decode: do not add max_dec_frame_buffering when it is ".concat(String.valueOf(paramc.c(false))));
         this.b = true;
       }
-      AppMethodBeat.o(230423);
+      AppMethodBeat.o(229908);
       return false;
     }
     paramc.a(true, "VUI: set bitstream_restriction_flag");
@@ -108,14 +108,14 @@ public class d
       TXCLog.w("[H264SPSModifier]", "decode: add max_dec_frame_buffering 1 when it is no exist");
       this.b = true;
     }
-    AppMethodBeat.o(230423);
+    AppMethodBeat.o(229908);
     return true;
   }
   
   public byte[] a(InputStream paramInputStream)
   {
     int j = 0;
-    AppMethodBeat.i(230416);
+    AppMethodBeat.i(229931);
     Object localObject = new ByteArrayOutputStream();
     paramInputStream = new c(paramInputStream, (OutputStream)localObject);
     paramInputStream.b(8, "NALU type");
@@ -182,7 +182,7 @@ public class d
       if (b(paramInputStream)) {
         break label535;
       }
-      AppMethodBeat.o(230416);
+      AppMethodBeat.o(229931);
       return null;
       if (i == 1)
       {
@@ -238,13 +238,13 @@ public class d
         i += 1;
       }
     }
-    AppMethodBeat.o(230416);
+    AppMethodBeat.o(229931);
     return arrayOfByte;
   }
   
   public byte[] a(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(230413);
+    AppMethodBeat.i(229914);
     if (this.a)
     {
       String str1 = "";
@@ -261,13 +261,13 @@ public class d
       }
     }
     paramArrayOfByte = a(new ByteArrayInputStream(paramArrayOfByte));
-    AppMethodBeat.o(230413);
+    AppMethodBeat.o(229914);
     return paramArrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.videodecoder.d
  * JD-Core Version:    0.7.0.1
  */

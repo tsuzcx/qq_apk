@@ -6,6 +6,7 @@ public class APMidasResponse
 {
   public static final int PAYCHANEL_ACCT_QBQD = 11;
   public static final int PAYCHANEL_ACCT_QDQB = 0;
+  public static final int PAYCHANEL_FRIEND_PAY = 14;
   public static final int PAYCHANEL_GOLDCOUPONS = 10;
   public static final int PAYCHANEL_HF = 9;
   public static final int PAYCHANEL_MCARD = 5;
@@ -180,7 +181,7 @@ public class APMidasResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.midas.api.APMidasResponse
  * JD-Core Version:    0.7.0.1
  */

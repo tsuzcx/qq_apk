@@ -1,153 +1,32 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.m;
-import com.tencent.mm.plugin.appbrand.ac.m.a;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/utils/AppBrandHardwareABTests;", "", "()V", "isNfcUseReaderMode", "", "()Z", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class h
 {
-  private static final char[] INVALID;
-  private static final String[] VALID;
-  private static final Set<Object> riv;
+  public static final h uqw;
   
   static
   {
-    AppMethodBeat.i(135362);
-    riv = new HashSet();
-    INVALID = new char[] { 60, 62, 34, 39, 38, 32, 39 };
-    VALID = new String[] { "&lt;", "&gt;", "&quot;", "&apos;", "&amp;", "&nbsp;", "&#39;" };
-    AppMethodBeat.o(135362);
+    AppMethodBeat.i(317309);
+    uqw = new h();
+    AppMethodBeat.o(317309);
   }
   
-  public static String anj(String paramString)
+  public static boolean cNw()
   {
-    AppMethodBeat.i(135356);
-    StringBuffer localStringBuffer = new StringBuffer();
-    int m = paramString.length();
-    int i = 0;
-    while (i < m)
+    AppMethodBeat.i(317306);
+    c localc = (c)com.tencent.mm.kernel.h.ax(c.class);
+    if (localc != null) {}
+    for (boolean bool = localc.a(c.a.yQv, true);; bool = true)
     {
-      int j = 0;
-      while (j < INVALID.length)
-      {
-        String str = VALID[j];
-        int k = 0;
-        while ((k < str.length()) && (i + k < m) && (str.charAt(k) == paramString.charAt(i + k))) {
-          k += 1;
-        }
-        if (k == str.length()) {
-          break;
-        }
-        j += 1;
-      }
-      if (j != INVALID.length)
-      {
-        localStringBuffer.append(INVALID[j]);
-        i = VALID[j].length() + i;
-      }
-      else
-      {
-        localStringBuffer.append(paramString.charAt(i));
-        i += 1;
-      }
+      AppMethodBeat.o(317306);
+      return bool;
     }
-    paramString = localStringBuffer.toString();
-    AppMethodBeat.o(135356);
-    return paramString;
-  }
-  
-  public static String ank(String paramString)
-  {
-    AppMethodBeat.i(135357);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(135357);
-      return null;
-    }
-    paramString = paramString.replace(' ', '\n').replace(' ', '\n');
-    AppMethodBeat.o(135357);
-    return paramString;
-  }
-  
-  public static void bs(Object paramObject)
-  {
-    AppMethodBeat.i(135353);
-    riv.remove(paramObject);
-    AppMethodBeat.o(135353);
-  }
-  
-  public static <T> T cQ(T paramT)
-  {
-    AppMethodBeat.i(135352);
-    riv.add(paramT);
-    AppMethodBeat.o(135352);
-    return paramT;
-  }
-  
-  @Deprecated
-  public static void clU()
-  {
-    AppMethodBeat.i(135354);
-    m.clU();
-    AppMethodBeat.o(135354);
-  }
-  
-  @Deprecated
-  public static m.a clV()
-  {
-    AppMethodBeat.i(242729);
-    m.a locala = m.clV();
-    AppMethodBeat.o(242729);
-    return locala;
-  }
-  
-  public static String e(ComponentName paramComponentName)
-  {
-    AppMethodBeat.i(135358);
-    if (paramComponentName == null)
-    {
-      AppMethodBeat.o(135358);
-      return "[UNKNOWN]";
-    }
-    PackageManager localPackageManager = MMApplicationContext.getContext().getPackageManager();
-    if (localPackageManager == null)
-    {
-      AppMethodBeat.o(135358);
-      return "[UNKNOWN]";
-    }
-    try
-    {
-      paramComponentName = localPackageManager.getActivityInfo(paramComponentName, 128);
-      if (paramComponentName != null)
-      {
-        paramComponentName = paramComponentName.taskAffinity;
-        AppMethodBeat.o(135358);
-        return paramComponentName;
-      }
-    }
-    catch (Exception paramComponentName)
-    {
-      Log.e("MicroMsg.AppBrandUtil", "getActivityTaskAffinity e = %s", new Object[] { paramComponentName });
-      AppMethodBeat.o(135358);
-    }
-    return "[UNKNOWN]";
-  }
-  
-  public static String getMMString(int paramInt, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(135351);
-    paramVarArgs = MMApplicationContext.getResources().getString(paramInt, paramVarArgs);
-    AppMethodBeat.o(135351);
-    return paramVarArgs;
   }
 }
 

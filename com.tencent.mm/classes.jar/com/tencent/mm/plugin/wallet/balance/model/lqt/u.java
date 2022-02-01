@@ -1,31 +1,33 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dmt;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.protocal.protobuf.ein;
+import com.tencent.mm.protocal.protobuf.eio;
+import com.tencent.mm.wallet_core.model.z;
 
 public final class u
+  extends z<eio>
 {
-  public final dmt Olh;
-  public final int wwk;
-  
-  public u(a parama)
+  public u(int paramInt1, int paramInt2)
   {
-    this.Olh = parama.Olh;
-    this.wwk = parama.wwk;
-  }
-  
-  public static final class a
-  {
-    public dmt Olh;
-    public int wwk = -1;
-    
-    public final u gFx()
-    {
-      AppMethodBeat.i(213965);
-      u localu = new u(this);
-      AppMethodBeat.o(213965);
-      return localu;
-    }
+    AppMethodBeat.i(316097);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new ein();
+    ((c.a)localObject).otF = new eio();
+    ((c.a)localObject).funcId = 4981;
+    ((c.a)localObject).uri = "/cgi-bin/mmpay-bin/purchasefrombankguidestat";
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    localObject = ((c.a)localObject).bEF();
+    ein localein = (ein)c.b.b(((c)localObject).otB);
+    localein.abnu = paramInt1;
+    localein.abnv = paramInt2;
+    localein.Vbl = ai.ieD();
+    c((c)localObject);
+    AppMethodBeat.o(316097);
   }
 }
 

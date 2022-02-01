@@ -19,33 +19,33 @@ import java.util.Set;
 public final class e
   implements Handler.Callback
 {
-  private a cRw;
-  private b cRx;
-  g.f cRy;
-  long cRz = 0L;
+  private a eMN;
+  private b eMO;
+  g.f eMP;
+  long eMQ = 0L;
   Context mContext;
   Handler mHandler;
   
   e(b paramb, Context paramContext, g.f paramf, long paramLong)
   {
-    this.cRx = paramb;
+    this.eMO = paramb;
     if (this.mHandler == null) {
       this.mHandler = new Handler(Looper.getMainLooper(), this);
     }
     this.mContext = paramContext;
-    this.cRy = paramf;
-    this.cRz = Math.max(paramLong, 3000L);
+    this.eMP = paramf;
+    this.eMQ = Math.max(paramLong, 3000L);
   }
   
   private void b(Context paramContext, b paramb)
   {
     try
     {
-      if ((this.cRw != null) && (this.cRw.d(paramb) == 0))
+      if ((this.eMN != null) && (this.eMN.d(paramb) == 0))
       {
         c.i("Matrix.WarmUpScheduler", "Unregister idle receiver.", new Object[0]);
-        paramContext.unregisterReceiver(this.cRw);
-        this.cRw = null;
+        paramContext.unregisterReceiver(this.eMN);
+        this.eMN = null;
       }
       return;
     }
@@ -63,7 +63,7 @@ public final class e
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 66	com/tencent/matrix/backtrace/e:cRw	Lcom/tencent/matrix/backtrace/e$a;
+    //   3: getfield 66	com/tencent/matrix/backtrace/e:eMN	Lcom/tencent/matrix/backtrace/e$a;
     //   6: ifnonnull +99 -> 105
     //   9: aload_0
     //   10: new 12	com/tencent/matrix/backtrace/e$a
@@ -72,13 +72,13 @@ public final class e
     //   15: aload_0
     //   16: getfield 39	com/tencent/matrix/backtrace/e:mHandler	Landroid/os/Handler;
     //   19: aload_0
-    //   20: getfield 54	com/tencent/matrix/backtrace/e:cRy	Lcom/tencent/matrix/backtrace/g$f;
+    //   20: getfield 54	com/tencent/matrix/backtrace/e:eMP	Lcom/tencent/matrix/backtrace/g$f;
     //   23: aload_0
-    //   24: getfield 35	com/tencent/matrix/backtrace/e:cRz	J
+    //   24: getfield 35	com/tencent/matrix/backtrace/e:eMQ	J
     //   27: invokespecial 89	com/tencent/matrix/backtrace/e$a:<init>	(Landroid/content/Context;Landroid/os/Handler;Lcom/tencent/matrix/backtrace/g$f;J)V
-    //   30: putfield 66	com/tencent/matrix/backtrace/e:cRw	Lcom/tencent/matrix/backtrace/e$a;
+    //   30: putfield 66	com/tencent/matrix/backtrace/e:eMN	Lcom/tencent/matrix/backtrace/e$a;
     //   33: aload_0
-    //   34: getfield 66	com/tencent/matrix/backtrace/e:cRw	Lcom/tencent/matrix/backtrace/e$a;
+    //   34: getfield 66	com/tencent/matrix/backtrace/e:eMN	Lcom/tencent/matrix/backtrace/e$a;
     //   37: aload_2
     //   38: invokevirtual 93	com/tencent/matrix/backtrace/e$a:c	(Lcom/tencent/matrix/backtrace/e$b;)V
     //   41: ldc 72
@@ -104,19 +104,19 @@ public final class e
     //   81: invokevirtual 104	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   84: aload_1
     //   85: aload_0
-    //   86: getfield 66	com/tencent/matrix/backtrace/e:cRw	Lcom/tencent/matrix/backtrace/e$a;
+    //   86: getfield 66	com/tencent/matrix/backtrace/e:eMN	Lcom/tencent/matrix/backtrace/e$a;
     //   89: aload_2
     //   90: invokevirtual 114	android/content/Context:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
     //   93: pop
     //   94: aload_0
-    //   95: getfield 66	com/tencent/matrix/backtrace/e:cRw	Lcom/tencent/matrix/backtrace/e$a;
+    //   95: getfield 66	com/tencent/matrix/backtrace/e:eMN	Lcom/tencent/matrix/backtrace/e$a;
     //   98: aload_1
-    //   99: invokevirtual 118	com/tencent/matrix/backtrace/e$a:aV	(Landroid/content/Context;)V
+    //   99: invokevirtual 118	com/tencent/matrix/backtrace/e$a:bF	(Landroid/content/Context;)V
     //   102: aload_0
     //   103: monitorexit
     //   104: return
     //   105: aload_0
-    //   106: getfield 66	com/tencent/matrix/backtrace/e:cRw	Lcom/tencent/matrix/backtrace/e$a;
+    //   106: getfield 66	com/tencent/matrix/backtrace/e:eMN	Lcom/tencent/matrix/backtrace/e$a;
     //   109: aload_2
     //   110: invokevirtual 93	com/tencent/matrix/backtrace/e$a:c	(Lcom/tencent/matrix/backtrace/e$b;)V
     //   113: goto -11 -> 102
@@ -144,26 +144,26 @@ public final class e
       {
         e locale = e.this;
         e.b localb = paramb;
-        switch (e.2.cRC[locale.cRy.ordinal()])
+        switch (e.2.eMT[locale.eMP.ordinal()])
         {
         default: 
           return;
         case 1: 
-          switch (e.2.cRD[localb.ordinal()])
+          switch (e.2.eMU[localb.ordinal()])
           {
           default: 
             return;
           case 1: 
-            c.i("Matrix.WarmUpScheduler", "Schedule warm-up in %ss", new Object[] { Long.valueOf(locale.cRz / 1000L) });
-            locale.mHandler.sendMessageDelayed(Message.obtain(locale.mHandler, 1, new CancellationSignal()), locale.cRz);
+            c.i("Matrix.WarmUpScheduler", "Schedule warm-up in %ss", new Object[] { Long.valueOf(locale.eMQ / 1000L) });
+            locale.mHandler.sendMessageDelayed(Message.obtain(locale.mHandler, 1, new CancellationSignal()), locale.eMQ);
             return;
           case 2: 
-            c.i("Matrix.WarmUpScheduler", "Schedule clean-up in %ss", new Object[] { Long.valueOf(locale.cRz / 1000L) });
-            locale.mHandler.sendMessageDelayed(Message.obtain(locale.mHandler, 3, new CancellationSignal()), locale.cRz);
+            c.i("Matrix.WarmUpScheduler", "Schedule clean-up in %ss", new Object[] { Long.valueOf(locale.eMQ / 1000L) });
+            locale.mHandler.sendMessageDelayed(Message.obtain(locale.mHandler, 3, new CancellationSignal()), locale.eMQ);
             return;
           }
-          c.i("Matrix.WarmUpScheduler", "Schedule request consuming in %ss", new Object[] { Long.valueOf(locale.cRz / 1000L) });
-          locale.mHandler.sendMessageDelayed(Message.obtain(locale.mHandler, 2, new CancellationSignal()), locale.cRz);
+          c.i("Matrix.WarmUpScheduler", "Schedule request consuming in %ss", new Object[] { Long.valueOf(locale.eMQ / 1000L) });
+          locale.mHandler.sendMessageDelayed(Message.obtain(locale.mHandler, 2, new CancellationSignal()), locale.eMQ);
           return;
         }
         locale.a(locale.mContext, localb);
@@ -173,7 +173,7 @@ public final class e
   
   final void b(b paramb)
   {
-    switch (2.cRC[this.cRy.ordinal()])
+    switch (2.eMT[this.eMP.ordinal()])
     {
     default: 
       return;
@@ -190,42 +190,42 @@ public final class e
     {
       return false;
       paramMessage = (CancellationSignal)paramMessage.obj;
-      b localb = this.cRx;
-      localb.cQT.a(new b.1(localb, paramMessage), "warm-up");
+      b localb = this.eMO;
+      localb.eMk.a(new b.1(localb, paramMessage), "warm-up");
       continue;
       paramMessage = (CancellationSignal)paramMessage.obj;
-      localb = this.cRx;
-      localb.cQT.a(new b.3(localb, paramMessage), "consuming-up");
+      localb = this.eMO;
+      localb.eMk.a(new b.3(localb, paramMessage), "consuming-up");
       continue;
       paramMessage = (CancellationSignal)paramMessage.obj;
-      localb = this.cRx;
-      localb.cQT.a(new b.2(localb, paramMessage), "clean-up");
+      localb = this.eMO;
+      localb.eMk.a(new b.2(localb, paramMessage), "clean-up");
       continue;
       paramMessage = (CancellationSignal)paramMessage.obj;
-      localb = this.cRx;
-      localb.cQT.a(new b.4(localb, paramMessage), "compute-disk-usage");
+      localb = this.eMO;
+      localb.eMk.a(new b.4(localb, paramMessage), "compute-disk-usage");
     }
   }
   
   static final class a
     extends BroadcastReceiver
   {
-    private CancellationSignal cRE;
-    Handler cRF;
-    private Set<e.b> cRG = new HashSet();
-    private g.f cRy;
-    private long cRz;
+    private final g.f eMP;
+    private final long eMQ;
+    private CancellationSignal eMV;
+    Handler eMW;
+    private final Set<e.b> eMX = new HashSet();
     Context mContext;
     
     a(Context paramContext, Handler paramHandler, g.f paramf, long paramLong)
     {
       this.mContext = paramContext;
-      this.cRF = paramHandler;
-      this.cRy = paramf;
-      this.cRz = paramLong;
+      this.eMW = paramHandler;
+      this.eMP = paramf;
+      this.eMQ = paramLong;
     }
     
-    private void n(boolean paramBoolean1, boolean paramBoolean2)
+    private void p(boolean paramBoolean1, boolean paramBoolean2)
     {
       int j = 1;
       for (;;)
@@ -238,7 +238,7 @@ public final class e
           if (!paramBoolean1)
           {
             i = j;
-            if (this.cRy != g.f.cSz)
+            if (this.eMP != g.f.eNP)
             {
               if (!paramBoolean2) {
                 i = j;
@@ -246,25 +246,25 @@ public final class e
             }
             else
             {
-              if ((i == 0) || (this.cRE != null)) {
+              if ((i == 0) || (this.eMV != null)) {
                 break label419;
               }
-              this.cRE = new CancellationSignal();
-              Iterator localIterator = this.cRG.iterator();
+              this.eMV = new CancellationSignal();
+              Iterator localIterator = this.eMX.iterator();
               if (!localIterator.hasNext()) {
                 break label485;
               }
               localb = (e.b)localIterator.next();
             }
           }
-          switch (e.2.cRD[localb.ordinal()])
+          switch (e.2.eMU[localb.ordinal()])
           {
           case 1: 
-            if (f.aY(this.mContext).exists()) {
+            if (f.bI(this.mContext).exists()) {
               break label225;
             }
-            this.cRF.sendMessageDelayed(Message.obtain(this.cRF, 1, this.cRE), this.cRz);
-            c.i("Matrix.WarmUpScheduler", "System idle, trigger warm up in %s seconds.", new Object[] { Long.valueOf(this.cRz / 1000L) });
+            this.eMW.sendMessageDelayed(Message.obtain(this.eMW, 1, this.eMV), this.eMQ);
+            c.i("Matrix.WarmUpScheduler", "System idle, trigger warm up in %s seconds.", new Object[] { Long.valueOf(this.eMQ / 1000L) });
             continue;
             i = 0;
           }
@@ -274,11 +274,11 @@ public final class e
         label225:
         localObject.remove();
         continue;
-        this.cRF.sendMessageDelayed(Message.obtain(this.cRF, 2, this.cRE), this.cRz);
-        c.i("Matrix.WarmUpScheduler", "System idle, trigger consume requested qut in %s seconds.", new Object[] { Long.valueOf(this.cRz / 1000L) });
+        this.eMW.sendMessageDelayed(Message.obtain(this.eMW, 2, this.eMV), this.eMQ);
+        c.i("Matrix.WarmUpScheduler", "System idle, trigger consume requested qut in %s seconds.", new Object[] { Long.valueOf(this.eMQ / 1000L) });
         continue;
-        if (f.bc(this.mContext)) {
-          this.cRF.sendMessageDelayed(Message.obtain(this.cRF, 3, this.cRE), 3000L);
+        if (f.bM(this.mContext)) {
+          this.eMW.sendMessageDelayed(Message.obtain(this.eMW, 3, this.eMV), 3000L);
         }
         for (;;)
         {
@@ -286,8 +286,8 @@ public final class e
           break;
           localObject.remove();
         }
-        if (f.bd(this.mContext)) {
-          this.cRF.sendMessageDelayed(Message.obtain(this.cRF, 4, this.cRE), 3000L);
+        if (f.bN(this.mContext)) {
+          this.eMW.sendMessageDelayed(Message.obtain(this.eMW, 4, this.eMV), 3000L);
         }
         for (;;)
         {
@@ -296,14 +296,14 @@ public final class e
           localObject.remove();
         }
         label419:
-        if ((i == 0) && (this.cRE != null))
+        if ((i == 0) && (this.eMV != null))
         {
-          this.cRF.removeMessages(1);
-          this.cRF.removeMessages(2);
-          this.cRF.removeMessages(3);
-          this.cRF.removeMessages(4);
-          this.cRE.cancel();
-          this.cRE = null;
+          this.eMW.removeMessages(1);
+          this.eMW.removeMessages(2);
+          this.eMW.removeMessages(3);
+          this.eMW.removeMessages(4);
+          this.eMV.cancel();
+          this.eMV = null;
           c.i("Matrix.WarmUpScheduler", "Exit idle state, task cancelled.", new Object[0]);
         }
         label485:
@@ -311,7 +311,7 @@ public final class e
       }
     }
     
-    final void aV(Context paramContext)
+    final void bF(Context paramContext)
     {
       for (;;)
       {
@@ -328,7 +328,7 @@ public final class e
             if (i == 5)
             {
               break label81;
-              n(bool2, bool1);
+              p(bool2, bool1);
               return;
             }
             bool1 = false;
@@ -350,7 +350,7 @@ public final class e
       //   0: aload_0
       //   1: monitorenter
       //   2: aload_0
-      //   3: getfield 30	com/tencent/matrix/backtrace/e$a:cRG	Ljava/util/Set;
+      //   3: getfield 30	com/tencent/matrix/backtrace/e$a:eMX	Ljava/util/Set;
       //   6: aload_1
       //   7: invokeinterface 200 2 0
       //   12: istore_2
@@ -360,7 +360,7 @@ public final class e
       //   18: monitorexit
       //   19: return
       //   20: aload_0
-      //   21: getfield 30	com/tencent/matrix/backtrace/e$a:cRG	Ljava/util/Set;
+      //   21: getfield 30	com/tencent/matrix/backtrace/e$a:eMX	Ljava/util/Set;
       //   24: aload_1
       //   25: invokeinterface 203 2 0
       //   30: pop
@@ -385,8 +385,8 @@ public final class e
     {
       try
       {
-        this.cRG.remove(paramb);
-        int i = this.cRG.size();
+        this.eMX.remove(paramb);
+        int i = this.eMX.size();
         return i;
       }
       finally
@@ -410,7 +410,7 @@ public final class e
           switch (paramContext.hashCode())
           {
           case -1454123155: 
-            n(bool2, bool1);
+            p(bool2, bool1);
             return;
           }
         }
@@ -465,7 +465,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.backtrace.e
  * JD-Core Version:    0.7.0.1
  */

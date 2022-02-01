@@ -62,7 +62,7 @@ public class Util
         localStringBuilder.append("/");
         localStringBuilder.append((String)localObject);
       }
-      catch (Throwable paramView)
+      finally
       {
         continue;
       }
@@ -82,7 +82,7 @@ public class Util
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.accessibility.Util
  * JD-Core Version:    0.7.0.1
  */

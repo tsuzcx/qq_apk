@@ -49,7 +49,7 @@ public class Player
   
   public Player(PlayerItem paramPlayerItem)
   {
-    AppMethodBeat.i(192583);
+    AppMethodBeat.i(215953);
     this.mPlayerStatus = IPlayer.PlayerStatus.IDLE;
     this.loop = false;
     this.released = false;
@@ -59,25 +59,25 @@ public class Player
     this.asset = this.currentItem.getAsset();
     this.currentItem.start(this);
     this.mPlayThread = this.currentItem.getPlayerThreadMain();
-    AppMethodBeat.o(192583);
+    AppMethodBeat.o(215953);
   }
   
   public Player(String paramString)
   {
     this(new PlayerItem(paramString));
-    AppMethodBeat.i(192580);
-    AppMethodBeat.o(192580);
+    AppMethodBeat.i(215938);
+    AppMethodBeat.o(215938);
   }
   
   private void checkAndReady()
   {
     try
     {
-      AppMethodBeat.i(192675);
+      AppMethodBeat.i(215962);
       if (this.mPlayerStatus == IPlayer.PlayerStatus.IDLE) {
         this.mPlayThread.sendMessage(1, "main");
       }
-      AppMethodBeat.o(192675);
+      AppMethodBeat.o(215962);
       return;
     }
     finally {}
@@ -85,10 +85,10 @@ public class Player
   
   void bindLayer(PlayerLayer paramPlayerLayer)
   {
-    AppMethodBeat.i(192627);
+    AppMethodBeat.i(216269);
     this.playerLayer = paramPlayerLayer;
     this.currentItem.bindLayer(paramPlayerLayer);
-    AppMethodBeat.o(192627);
+    AppMethodBeat.o(216269);
   }
   
   public IPlayer.PlayerStatus currentStatus()
@@ -107,15 +107,15 @@ public class Player
   
   public CMTime currentTime()
   {
-    AppMethodBeat.i(192596);
+    AppMethodBeat.i(216052);
     if (this.mPlayThread == null)
     {
       localCMTime = CMTime.CMTimeZero;
-      AppMethodBeat.o(192596);
+      AppMethodBeat.o(216052);
       return localCMTime;
     }
     CMTime localCMTime = this.mPlayThread.getPosition();
-    AppMethodBeat.o(192596);
+    AppMethodBeat.o(216052);
     return localCMTime;
   }
   
@@ -163,19 +163,19 @@ public class Player
   
   public void enAbleAudioFocus(Context paramContext, boolean paramBoolean)
   {
-    AppMethodBeat.i(192617);
+    AppMethodBeat.i(216199);
     if (paramBoolean)
     {
       if (this.mAudioFocuser == null)
       {
         this.mAudioFocuser = new AudioFocusHelper(paramContext, this);
-        AppMethodBeat.o(192617);
+        AppMethodBeat.o(216199);
       }
     }
     else if (this.mAudioFocuser != null) {
       this.mAudioFocuser.release();
     }
-    AppMethodBeat.o(192617);
+    AppMethodBeat.o(216199);
   }
   
   public int getBgColor()
@@ -195,14 +195,14 @@ public class Player
   
   public CGRect getGlViewport()
   {
-    AppMethodBeat.i(192636);
+    AppMethodBeat.i(216317);
     if (this.mPlayThread == null)
     {
-      AppMethodBeat.o(192636);
+      AppMethodBeat.o(216317);
       return null;
     }
     CGRect localCGRect = this.mPlayThread.getGlViewportRect();
-    AppMethodBeat.o(192636);
+    AppMethodBeat.o(216317);
     return localCGRect;
   }
   
@@ -213,14 +213,14 @@ public class Player
   
   public RenderContextParams getRenderContextParams()
   {
-    AppMethodBeat.i(192598);
+    AppMethodBeat.i(216067);
     if (this.mPlayThread != null)
     {
       RenderContextParams localRenderContextParams = this.mPlayThread.getRenderContextParams();
-      AppMethodBeat.o(192598);
+      AppMethodBeat.o(216067);
       return localRenderContextParams;
     }
-    AppMethodBeat.o(192598);
+    AppMethodBeat.o(216067);
     return null;
   }
   
@@ -231,16 +231,16 @@ public class Player
   
   public boolean handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(192682);
+    AppMethodBeat.i(216521);
     if (this.released)
     {
-      AppMethodBeat.o(192682);
+      AppMethodBeat.o(216521);
       return false;
     }
     switch (paramMessage.what)
     {
     default: 
-      AppMethodBeat.o(192682);
+      AppMethodBeat.o(216521);
       return false;
     case 2: 
       this.mPosition = ((CMTime)paramMessage.obj);
@@ -261,7 +261,7 @@ public class Player
     }
     for (;;)
     {
-      AppMethodBeat.o(192682);
+      AppMethodBeat.o(216521);
       return true;
       label172:
       pause();
@@ -279,7 +279,7 @@ public class Player
         }
         finally
         {
-          AppMethodBeat.o(192682);
+          AppMethodBeat.o(216521);
         }
         if ((this.mPlayRange != null) && (this.mPlayRange.getDuration().getValue() > 0L)) {
           seekToTime(this.mPlayRange.getStart());
@@ -523,35 +523,35 @@ public class Player
   
   public void readSnapShootBitmap(OnReadSnapShootListener paramOnReadSnapShootListener)
   {
-    AppMethodBeat.i(192643);
+    AppMethodBeat.i(216350);
     if (this.mPlayThread == null)
     {
-      AppMethodBeat.o(192643);
+      AppMethodBeat.o(216350);
       return;
     }
     this.mPlayThread.sendMessage(24, paramOnReadSnapShootListener, "readSnapShootBitmap");
-    AppMethodBeat.o(192643);
+    AppMethodBeat.o(216350);
   }
   
   public void refreshSurface(Callback paramCallback)
   {
-    AppMethodBeat.i(192613);
+    AppMethodBeat.i(216176);
     if (this.released)
     {
-      AppMethodBeat.o(192613);
+      AppMethodBeat.o(216176);
       return;
     }
     this.mPlayThread.sendMessage(26, paramCallback, "main");
-    AppMethodBeat.o(192613);
+    AppMethodBeat.o(216176);
   }
   
   public void release()
   {
     try
     {
-      AppMethodBeat.i(192685);
+      AppMethodBeat.i(216534);
       release(null);
-      AppMethodBeat.o(192685);
+      AppMethodBeat.o(216534);
       return;
     }
     finally
@@ -565,7 +565,7 @@ public class Player
   {
     try
     {
-      AppMethodBeat.i(192690);
+      AppMethodBeat.i(216546);
       if (!this.released)
       {
         this.released = true;
@@ -582,7 +582,7 @@ public class Player
         }
         this.currentItem = null;
       }
-      AppMethodBeat.o(192690);
+      AppMethodBeat.o(216546);
       return;
     }
     finally {}
@@ -590,31 +590,31 @@ public class Player
   
   public void replaceCurrentItemWithPlayerItem(PlayerItem paramPlayerItem)
   {
-    AppMethodBeat.i(192603);
+    AppMethodBeat.i(216112);
     update(paramPlayerItem, position());
-    AppMethodBeat.o(192603);
+    AppMethodBeat.o(216112);
   }
   
   public void seekToTime(CMTime paramCMTime)
   {
-    AppMethodBeat.i(192604);
+    AppMethodBeat.i(216123);
     seekToTime(paramCMTime, null);
-    AppMethodBeat.o(192604);
+    AppMethodBeat.o(216123);
   }
   
   public void seekToTime(CMTime paramCMTime1, CMTime paramCMTime2, CMTime paramCMTime3)
   {
-    AppMethodBeat.i(192606);
+    AppMethodBeat.i(216136);
     seekToTime(paramCMTime1, paramCMTime2, paramCMTime3, null);
-    AppMethodBeat.o(192606);
+    AppMethodBeat.o(216136);
   }
   
   public void seekToTime(CMTime paramCMTime1, CMTime paramCMTime2, CMTime paramCMTime3, Callback paramCallback)
   {
-    AppMethodBeat.i(192611);
+    AppMethodBeat.i(216162);
     if (this.released)
     {
-      AppMethodBeat.o(192611);
+      AppMethodBeat.o(216162);
       return;
     }
     this.mSeekTargetTimeUs = paramCMTime1;
@@ -623,15 +623,15 @@ public class Player
     this.mPlayThread.enableScheduleNext(true);
     this.mPlayThread.cancelAllPendingSeeks();
     this.mPlayThread.sendMessage(5, this.mSeekTargetTimeUs, "main", paramCallback);
-    AppMethodBeat.o(192611);
+    AppMethodBeat.o(216162);
   }
   
   public void seekToTime(CMTime paramCMTime, Callback paramCallback)
   {
-    AppMethodBeat.i(192609);
+    AppMethodBeat.i(216147);
     CMTime localCMTime = CMTime.CMTimeZero;
     seekToTime(paramCMTime, localCMTime, localCMTime, paramCallback);
-    AppMethodBeat.o(192609);
+    AppMethodBeat.o(216147);
   }
   
   public void setBgColor(int paramInt)
@@ -641,11 +641,11 @@ public class Player
   
   public void setGetTavExtraListener(OnGetTavExtraListener paramOnGetTavExtraListener)
   {
-    AppMethodBeat.i(192646);
+    AppMethodBeat.i(216366);
     if (this.mPlayThread != null) {
       this.mPlayThread.sendMessage(25, paramOnGetTavExtraListener, "setGetTavExtraListener");
     }
-    AppMethodBeat.o(192646);
+    AppMethodBeat.o(216366);
   }
   
   public void setLoop(boolean paramBoolean)
@@ -671,13 +671,13 @@ public class Player
   {
     try
     {
-      AppMethodBeat.i(192651);
+      AppMethodBeat.i(216400);
       this.mPlayRange = paramCMTimeRange;
       if ((paramCMTimeRange != null) && (!paramCMTimeRange.containsTime(currentTime())) && (isPlaying())) {
         seekToTime(paramCMTimeRange.getStart());
       }
       this.mPlayThread.setPlayRange(paramCMTimeRange);
-      AppMethodBeat.o(192651);
+      AppMethodBeat.o(216400);
       return;
     }
     finally {}
@@ -690,31 +690,31 @@ public class Player
   
   public void setRate(float paramFloat)
   {
-    AppMethodBeat.i(192586);
+    AppMethodBeat.i(215993);
     setRate(paramFloat, 60);
-    AppMethodBeat.o(192586);
+    AppMethodBeat.o(215993);
   }
   
   public void setRate(float paramFloat, int paramInt)
   {
-    AppMethodBeat.i(192590);
+    AppMethodBeat.i(215999);
     if ((this.mPlayerStatus != IPlayer.PlayerStatus.PLAYING) && (this.mPlayerStatus != IPlayer.PlayerStatus.PAUSED))
     {
       this.rate = paramFloat;
       this.currentItem.setRate(paramFloat, paramInt);
     }
-    AppMethodBeat.o(192590);
+    AppMethodBeat.o(215999);
   }
   
   public void setRateAtTimeAndHostTime(float paramFloat, CMTime paramCMTime1, CMTime paramCMTime2) {}
   
   public void setRenderContextParams(RenderContextParams paramRenderContextParams)
   {
-    AppMethodBeat.i(192601);
+    AppMethodBeat.i(216081);
     if (this.mPlayThread != null) {
       this.mPlayThread.setRenderContextParams(paramRenderContextParams);
     }
-    AppMethodBeat.o(192601);
+    AppMethodBeat.o(216081);
   }
   
   public void setViewportUpdateListener(OnViewportUpdateListener paramOnViewportUpdateListener)
@@ -1120,39 +1120,39 @@ public class Player
   
   public void updateViewport(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(192670);
+    AppMethodBeat.i(216472);
     if (this.released)
     {
-      AppMethodBeat.o(192670);
+      AppMethodBeat.o(216472);
       return;
     }
     this.mPlayThread.sendMessage(21, new CGSize(paramInt1, paramInt2), "main");
-    AppMethodBeat.o(192670);
+    AppMethodBeat.o(216472);
   }
   
   public int videoHeight()
   {
-    AppMethodBeat.i(192622);
+    AppMethodBeat.i(216227);
     if (this.currentItem == null)
     {
-      AppMethodBeat.o(192622);
+      AppMethodBeat.o(216227);
       return 0;
     }
     int i = (int)this.currentItem.getPresentationSize().height;
-    AppMethodBeat.o(192622);
+    AppMethodBeat.o(216227);
     return i;
   }
   
   public int videoWidth()
   {
-    AppMethodBeat.i(192620);
+    AppMethodBeat.i(216212);
     if (this.currentItem == null)
     {
-      AppMethodBeat.o(192620);
+      AppMethodBeat.o(216212);
       return 0;
     }
     int i = (int)this.currentItem.getPresentationSize().width;
-    AppMethodBeat.o(192620);
+    AppMethodBeat.o(216212);
     return i;
   }
   

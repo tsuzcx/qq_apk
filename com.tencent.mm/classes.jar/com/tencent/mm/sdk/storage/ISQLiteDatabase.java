@@ -17,6 +17,8 @@ public abstract interface ISQLiteDatabase
   
   public abstract long insert(String paramString1, String paramString2, ContentValues paramContentValues);
   
+  public abstract long insertOrThrow(String paramString1, String paramString2, ContentValues paramContentValues);
+  
   public abstract boolean isClose();
   
   public abstract Cursor query(String paramString1, String[] paramArrayOfString1, String paramString2, String[] paramArrayOfString2, String paramString3, String paramString4, String paramString5);
@@ -35,7 +37,7 @@ public abstract interface ISQLiteDatabase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sdk.storage.ISQLiteDatabase
  * JD-Core Version:    0.7.0.1
  */

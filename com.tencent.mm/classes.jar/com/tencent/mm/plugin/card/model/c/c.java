@@ -2,40 +2,40 @@ package com.tencent.mm.plugin.card.model.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.model.a.j;
-import com.tencent.mm.protocal.protobuf.btg;
-import com.tencent.mm.protocal.protobuf.bth;
-import com.tencent.mm.protocal.protobuf.dyl;
-import com.tencent.mm.protocal.protobuf.dyy;
+import com.tencent.mm.protocal.protobuf.chz;
+import com.tencent.mm.protocal.protobuf.cia;
+import com.tencent.mm.protocal.protobuf.erp;
+import com.tencent.mm.protocal.protobuf.esc;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/card/model/v4/CgiGetCouponAndGiftList;", "Lcom/tencent/mm/plugin/card/model/v2/CommonCardCgi;", "Lcom/tencent/mm/protocal/protobuf/GetCouponAndGiftListResponse;", "pageNum", "", "pageSize", "scene", "", "(JJI)V", "Companion", "plugin-card_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/card/model/v4/CgiGetCouponAndGiftList;", "Lcom/tencent/mm/plugin/card/model/v2/CommonCardCgi;", "Lcom/tencent/mm/protocal/protobuf/GetCouponAndGiftListResponse;", "pageNum", "", "pageSize", "scene", "", "(JJI)V", "Companion", "plugin-card_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
-  extends j<bth>
+  extends j<cia>
 {
-  public static final a trF;
+  public static final a wwd;
   
   static
   {
-    AppMethodBeat.i(251246);
-    trF = new a((byte)0);
-    AppMethodBeat.o(251246);
+    AppMethodBeat.i(294527);
+    wwd = new a((byte)0);
+    AppMethodBeat.o(294527);
   }
   
   public c(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(251243);
-    btg localbtg = new btg();
-    bth localbth = new bth();
-    localbtg.Tdn = paramLong1;
-    localbtg.Tdo = paramLong2;
-    localbtg.scene = 1;
-    a((dyl)localbtg, (dyy)localbth, 4796, "/cgi-bin/mmpay-bin/mktgetcouponandgiftlist");
+    AppMethodBeat.i(294523);
+    chz localchz = new chz();
+    cia localcia = new cia();
+    localchz.aaqC = paramLong1;
+    localchz.aaqD = paramLong2;
+    localchz.scene = 1;
+    a((erp)localchz, (esc)localcia, 4796, "/cgi-bin/mmpay-bin/mktgetcouponandgiftlist");
     Log.i("MicroMsg.CgiGetCouponAndGiftList", "pageNum: " + paramLong1 + ", pageSize: " + paramLong2);
-    AppMethodBeat.o(251243);
+    AppMethodBeat.o(294523);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/card/model/v4/CgiGetCouponAndGiftList$Companion;", "", "()V", "TAG", "", "plugin-card_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/card/model/v4/CgiGetCouponAndGiftList$Companion;", "", "()V", "TAG", "", "plugin-card_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

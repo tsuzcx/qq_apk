@@ -1,93 +1,93 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.b.a.b;
-import com.google.b.a.c;
-import com.google.b.a.e;
+import com.google.d.a.b;
+import com.google.d.a.c;
+import com.google.d.a.e;
 
 public final class a$ar
   extends e
 {
-  private static volatile ar[] ZgQ;
-  public int RCR = 0;
-  public int ZgR = 0;
-  public int ZgS = 0;
-  public String fEC = "";
-  public int tQm = 0;
+  private static volatile ar[] ahfr;
+  public int Yzt = 0;
+  public int ahfs = 0;
+  public int ahft = 0;
+  public String hJs = "";
   public int videoStatus = 0;
+  public int wTC = 0;
   
   public a$ar()
   {
-    this.ccR = -1;
+    this.dXv = -1;
   }
   
-  public static ar[] ikR()
+  public static ar[] jRi()
   {
-    if (ZgQ == null) {}
-    synchronized (c.ccQ)
+    if (ahfr == null) {}
+    synchronized (c.dXu)
     {
-      if (ZgQ == null) {
-        ZgQ = new ar[0];
+      if (ahfr == null) {
+        ahfr = new ar[0];
       }
-      return ZgQ;
+      return ahfr;
     }
-  }
-  
-  public final int JG()
-  {
-    int j = super.JG();
-    int i = j;
-    if (this.tQm != 0) {
-      i = j + b.bN(1, this.tQm);
-    }
-    j = i;
-    if (!this.fEC.equals("")) {
-      j = i + b.g(2, this.fEC);
-    }
-    i = j;
-    if (this.RCR != 0) {
-      i = j + b.bN(3, this.RCR);
-    }
-    j = i;
-    if (this.videoStatus != 0) {
-      j = i + b.bN(4, this.videoStatus);
-    }
-    i = j;
-    if (this.ZgR != 0) {
-      i = j + b.bN(5, this.ZgR);
-    }
-    j = i;
-    if (this.ZgS != 0) {
-      j = i + b.bN(6, this.ZgS);
-    }
-    return j;
   }
   
   public final void a(b paramb)
   {
-    if (this.tQm != 0) {
-      paramb.bK(1, this.tQm);
+    if (this.wTC != 0) {
+      paramb.cG(1, this.wTC);
     }
-    if (!this.fEC.equals("")) {
-      paramb.f(2, this.fEC);
+    if (!this.hJs.equals("")) {
+      paramb.g(2, this.hJs);
     }
-    if (this.RCR != 0) {
-      paramb.bK(3, this.RCR);
+    if (this.Yzt != 0) {
+      paramb.cG(3, this.Yzt);
     }
     if (this.videoStatus != 0) {
-      paramb.bK(4, this.videoStatus);
+      paramb.cG(4, this.videoStatus);
     }
-    if (this.ZgR != 0) {
-      paramb.bK(5, this.ZgR);
+    if (this.ahfs != 0) {
+      paramb.cG(5, this.ahfs);
     }
-    if (this.ZgS != 0) {
-      paramb.bK(6, this.ZgS);
+    if (this.ahft != 0) {
+      paramb.cG(6, this.ahft);
     }
     super.a(paramb);
+  }
+  
+  public final int akc()
+  {
+    int j = super.akc();
+    int i = j;
+    if (this.wTC != 0) {
+      i = j + b.cK(1, this.wTC);
+    }
+    j = i;
+    if (!this.hJs.equals("")) {
+      j = i + b.h(2, this.hJs);
+    }
+    i = j;
+    if (this.Yzt != 0) {
+      i = j + b.cK(3, this.Yzt);
+    }
+    j = i;
+    if (this.videoStatus != 0) {
+      j = i + b.cK(4, this.videoStatus);
+    }
+    i = j;
+    if (this.ahfs != 0) {
+      i = j + b.cK(5, this.ahfs);
+    }
+    j = i;
+    if (this.ahft != 0) {
+      j = i + b.cK(6, this.ahft);
+    }
+    return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.ar
  * JD-Core Version:    0.7.0.1
  */

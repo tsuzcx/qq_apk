@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/hxz" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.sns.ui.view.ImageIndicatorView android:id="@id/hy0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="4.0dip" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" />
-    <androidx.constraintlayout.widget.Guideline android:orientation="horizontal" android:id="@id/hy1" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_end="12.0dip" />
-    <ImageView android:id="@id/hy3" android:layout_width="fill_parent" android:layout_height="0.0dip" android:scaleType="centerCrop" app:layout_constraintBottom_toTopOf="@id/hy1" app:layout_constraintHeight_default="i3y" app:layout_constraintTop_toTopOf="g8m" />
-    <ImageView android:id="@id/hy2" android:layout_width="@dimen/cl" android:layout_height="@dimen/cl" android:src="@raw/shortvideo_play_btn" app:layout_constraintBottom_toBottomOf="@id/hy3" app:layout_constraintEnd_toEndOf="@id/hy3" app:layout_constraintStart_toStartOf="@id/hy3" app:layout_constraintTop_toTopOf="@id/hy3" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+<LinearLayout android:id="@id/btf" android:layout_height="@dimen/j5" style="@style/nc"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="@dimen/iy" android:layout_height="@dimen/iy" android:layout_marginLeft="3.0dip">
+        <ImageView android:id="@id/a27" android:padding="3.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:id="@id/hga" android:layout_width="0.0dip" android:maxWidth="140.0dip" android:layout_weight="1.0" style="@style/ma" />
+            <TextView android:textColor="@color/a4r" android:gravity="right" android:layout_gravity="right" android:id="@id/l13" android:paddingRight="4.0dip" android:minWidth="65.0dip" style="@style/m9" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/bte" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip">
+            <TextView android:ellipsize="end" android:gravity="center|left" android:id="@id/h2x" android:maxWidth="200.0dip" android:width="200.0dip" android:singleLine="true" style="@style/m_" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

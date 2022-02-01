@@ -6,28 +6,17 @@ import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.internal.ReflectedParcelable;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import javax.annotation.Nullable;
 
-@SafeParcelable.Class(creator="SignInAccountCreator")
-@SafeParcelable.Reserved({1})
 public class SignInAccount
   extends AbstractSafeParcelable
   implements ReflectedParcelable
 {
   public static final Parcelable.Creator<SignInAccount> CREATOR;
   @Deprecated
-  @SafeParcelable.Field(defaultValue="", id=4)
   private String zzeo;
-  @SafeParcelable.Field(getter="getGoogleSignInAccount", id=7)
   private GoogleSignInAccount zzep;
   @Deprecated
-  @SafeParcelable.Field(defaultValue="", id=8)
   private String zzeq;
   
   static
@@ -37,8 +26,7 @@ public class SignInAccount
     AppMethodBeat.o(88296);
   }
   
-  @SafeParcelable.Constructor
-  SignInAccount(@SafeParcelable.Param(id=4) String paramString1, @SafeParcelable.Param(id=7) GoogleSignInAccount paramGoogleSignInAccount, @SafeParcelable.Param(id=8) String paramString2)
+  SignInAccount(String paramString1, GoogleSignInAccount paramGoogleSignInAccount, String paramString2)
   {
     AppMethodBeat.i(88294);
     this.zzep = paramGoogleSignInAccount;
@@ -47,7 +35,6 @@ public class SignInAccount
     AppMethodBeat.o(88294);
   }
   
-  @Nullable
   public final GoogleSignInAccount getGoogleSignInAccount()
   {
     return this.zzep;
@@ -66,7 +53,7 @@ public class SignInAccount
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.signin.SignInAccount
  * JD-Core Version:    0.7.0.1
  */

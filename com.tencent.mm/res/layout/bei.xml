@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="horizontal" android:id="@id/fsv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ce" android:layout_marginTop="@dimen/ci" android:layout_marginRight="@dimen/ce">
-        <ImageView android:id="@id/x1" android:background="@drawable/bcd" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" />
-        <TextView android:textSize="15.0dip" android:textColor="@color/fo" android:layout_gravity="center_vertical" android:id="@id/fzg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:text="{nickname}" />
-    </LinearLayout>
-    <com.tencent.mm.ui.widget.RoundCornerRelativeLayout android:id="@id/h9d" android:layout_width="fill_parent" android:layout_height="@dimen/bu" android:layout_marginTop="@dimen/ce" android:layout_marginStart="@dimen/ce" android:layout_marginEnd="@dimen/ce">
-        <View android:id="@id/a_q" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/fpx" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <com.tencent.mm.ui.widget.MMRoundCornerImageView android:id="@id/imb" android:layout_width="@dimen/bu" android:layout_height="@dimen/bu" android:src="@raw/icons_filled_music" android:scaleType="centerCrop" />
-            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/ct" android:layout_weight="1.0" android:layout_marginEnd="@dimen/c5">
-                <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:ellipsize="end" android:id="@id/fs3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="我要飞的更高" android:singleLine="true" />
-                <TextView android:textSize="@dimen/k6" android:textColor="@color/l4" android:ellipsize="end" android:id="@id/fs5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" android:text="BTS防弹少年团" android:singleLine="true" />
-            </LinearLayout>
-        </LinearLayout>
-    </com.tencent.mm.ui.widget.RoundCornerRelativeLayout>
-    <LinearLayout android:gravity="center_vertical" android:id="@id/aqw" android:background="@drawable/am6" android:paddingLeft="@dimen/c5" android:paddingRight="@dimen/c5" android:layout_width="wrap_content" android:layout_height="@dimen/ce" android:layout_marginLeft="@dimen/ce" android:layout_marginTop="@dimen/cb" android:layout_marginRight="@dimen/ce">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:src="@raw/common_icons_album" app:iconColor="@color/FG_0" />
-        <TextView android:textSize="@dimen/hc" android:textColor="@color/a2x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bt" android:text="@string/f9i" />
-    </LinearLayout>
-</LinearLayout>
+<RelativeLayout android:paddingTop="@dimen/m2" android:paddingBottom="@dimen/m2" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/ko8" android:visibility="gone" android:layout_width="@dimen/f9" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ig" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/m4" />
+    <TextView android:id="@id/il6" android:visibility="gone" android:drawableLeft="@raw/card_photoicon" android:drawablePadding="@dimen/m7" android:layout_toRightOf="@id/ko8" style="@style/m7" />
+    <TextView android:textColor="@color/a1_" android:gravity="center|left" android:id="@id/fgx" android:visibility="gone" android:layout_marginTop="@dimen/m2" android:layout_toRightOf="@id/ko8" android:layout_below="@id/il6" style="@style/m7" />
+</RelativeLayout>

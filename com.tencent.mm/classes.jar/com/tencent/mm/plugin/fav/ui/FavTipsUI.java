@@ -1,14 +1,13 @@
 package com.tencent.mm.plugin.fav.ui;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMBaseActivity;
-import com.tencent.mm.ui.widget.a.d;
-import com.tencent.mm.ui.widget.a.d.a;
+import com.tencent.mm.ui.widget.a.e;
+import com.tencent.mm.ui.widget.a.e.a;
 
 public class FavTipsUI
   extends MMBaseActivity
@@ -17,10 +16,10 @@ public class FavTipsUI
   {
     AppMethodBeat.i(106939);
     super.onCreate(paramBundle);
-    paramBundle = new d.a(this);
-    paramBundle.bBc(getString(s.i.favorite_intro_title));
-    paramBundle.bBd(getString(s.i.favorite_intro_p_1) + "\n\n" + getString(s.i.favorite_intro_p_2));
-    paramBundle.ayj(s.i.favorite_intro_btn).c(new DialogInterface.OnClickListener()
+    paramBundle = new e.a(this);
+    paramBundle.bDv(getString(q.i.favorite_intro_title));
+    paramBundle.bDw(getString(q.i.favorite_intro_p_1) + "\n\n" + getString(q.i.favorite_intro_p_2));
+    paramBundle.aER(q.i.favorite_intro_btn).c(new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -29,7 +28,7 @@ public class FavTipsUI
         AppMethodBeat.o(106937);
       }
     });
-    paramBundle.f(new DialogInterface.OnCancelListener()
+    paramBundle.e(new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
@@ -38,7 +37,7 @@ public class FavTipsUI
         AppMethodBeat.o(106938);
       }
     });
-    paramBundle.icu().show();
+    paramBundle.jHH().show();
     AppMethodBeat.o(106939);
   }
   
@@ -50,7 +49,7 @@ public class FavTipsUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.FavTipsUI
  * JD-Core Version:    0.7.0.1
  */

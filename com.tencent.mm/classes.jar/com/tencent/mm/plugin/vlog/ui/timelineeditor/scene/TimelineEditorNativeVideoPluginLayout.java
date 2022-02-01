@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
+import com.tencent.mm.plugin.recordvideo.plugin.parent.a.c;
 import com.tencent.mm.plugin.vlog.ui.timelineeditor.emojidecoder.b.a;
 import com.tencent.mm.plugin.vlog.ui.timelineeditor.emojidecoder.c;
 import com.tencent.mm.plugin.vlog.ui.timelineeditor.emojidecoder.c.a;
@@ -16,136 +16,126 @@ import com.tencent.mm.timelineedit.a.a.aa;
 import com.tencent.mm.timelineedit.a.a.w;
 import com.tencent.mm.timelineedit.a.g;
 import com.tencent.mm.xeffect.effect.af;
+import com.tencent.mm.xeffect.effect.p;
 import java.util.HashMap;
-import kotlin.l;
-import kotlin.o;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.r;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/timelineeditor/scene/TimelineEditorNativeVideoPluginLayout;", "Lcom/tencent/mm/plugin/vlog/ui/timelineeditor/scene/TimelineEditorBaseVideoPluginLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "initPlugin", "", "onTouchEvent", "", "event", "Landroid/view/MotionEvent;", "statusChange", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus$RecordStatus;", "param", "Landroid/os/Bundle;", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/timelineeditor/scene/TimelineEditorNativeVideoPluginLayout;", "Lcom/tencent/mm/plugin/vlog/ui/timelineeditor/scene/TimelineEditorBaseVideoPluginLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "initPlugin", "", "onTouchEvent", "", "event", "Landroid/view/MotionEvent;", "statusChange", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus$RecordStatus;", "param", "Landroid/os/Bundle;", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class TimelineEditorNativeVideoPluginLayout
   extends TimelineEditorBaseVideoPluginLayout
 {
   public TimelineEditorNativeVideoPluginLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(233979);
-    AppMethodBeat.o(233979);
+    AppMethodBeat.i(282157);
+    AppMethodBeat.o(282157);
   }
   
-  public final void a(d.c paramc, Bundle paramBundle)
+  public final void a(a.c paramc, Bundle paramBundle)
   {
     Object localObject1 = null;
     Object localObject2 = null;
-    AppMethodBeat.i(233975);
-    kotlin.g.b.p.k(paramc, "status");
-    Object localObject3;
-    switch (b.$EnumSwitchMapping$0[paramc.ordinal()])
+    AppMethodBeat.i(282180);
+    s.u(paramc, "status");
+    switch (a.$EnumSwitchMapping$0[paramc.ordinal()])
     {
     default: 
       super.a(paramc, paramBundle);
-      AppMethodBeat.o(233975);
-      return;
-    case 1: 
+    }
+    Object localObject3;
+    label204:
+    do
+    {
+      do
+      {
+        do
+        {
+          AppMethodBeat.o(282180);
+          return;
+        } while (paramBundle == null);
+        localObject1 = (EmojiInfo)paramBundle.getParcelable("PARAM_EDIT_EMOJI_INFO");
+      } while (localObject1 == null);
+      paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
       if (paramBundle != null)
       {
-        localObject1 = (EmojiInfo)paramBundle.getParcelable("PARAM_EDIT_EMOJI_INFO");
-        if (localObject1 != null)
+        paramc = getCurrentTrack();
+        if (paramc == null) {}
+        for (paramc = (a.c)localObject2;; paramc = Long.valueOf(paramc.id))
         {
-          paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
-          if (paramBundle != null)
-          {
-            kotlin.g.b.p.j(localObject1, "it");
-            localObject3 = getCurrentTrack();
-            paramc = (d.c)localObject2;
-            if (localObject3 != null) {
-              paramc = Long.valueOf(((com.tencent.mm.videocomposition.b)localObject3).id);
-            }
-            kotlin.g.b.p.k(localObject1, "emojiInfo");
-            localObject2 = paramBundle.NDO;
-            localObject3 = c.NEA;
-            localObject1 = ((EmojiInfo)localObject1).getMd5();
-            kotlin.g.b.p.j(localObject1, "emojiInfo.md5");
-            localObject1 = ((TimelineEditor)localObject2).byc(c.a.bfR((String)localObject1));
-            if (localObject1 != null)
-            {
-              if (paramc != null)
-              {
-                paramBundle.NDO.a((af)localObject1, paramc.longValue());
-                AppMethodBeat.o(233975);
-                return;
-              }
-              paramBundle.NDO.a((af)localObject1);
-              AppMethodBeat.o(233975);
-              return;
-            }
-            AppMethodBeat.o(233975);
-            return;
+          s.u(localObject1, "emojiInfo");
+          localObject2 = paramBundle.Uqp;
+          localObject3 = c.UqK;
+          localObject1 = ((EmojiInfo)localObject1).getMd5();
+          s.s(localObject1, "emojiInfo.md5");
+          localObject1 = ((TimelineEditor)localObject2).bzx(c.a.bfx((String)localObject1));
+          if (localObject1 == null) {
+            break label204;
           }
-          AppMethodBeat.o(233975);
+          if (paramc == null) {
+            break;
+          }
+          paramBundle.Uqp.a((af)localObject1, paramc.longValue());
+          AppMethodBeat.o(282180);
           return;
         }
+        paramBundle.Uqp.a((af)localObject1);
       }
-      AppMethodBeat.o(233975);
+      AppMethodBeat.o(282180);
       return;
-    }
-    guD();
-    TimelineEditorBaseVideoPluginLayout.a(this);
+      hSs();
+      TimelineEditorBaseVideoPluginLayout.a((TimelineEditorBaseVideoPluginLayout)this);
+    } while (paramBundle == null);
+    paramc = paramBundle.getCharSequence("PARAM_EDIT_TEXT_CONTENT");
+    int i = paramBundle.getInt("PARAM_EDIT_TEXT_COLOR");
+    int j = paramBundle.getInt("PARAM_EDIT_TEXT_COLOR_BG_INT");
+    localObject2 = paramBundle.getString("PARAM_EDIT_TEXT_FONT");
+    paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
     if (paramBundle != null)
     {
-      paramc = paramBundle.getCharSequence("PARAM_EDIT_TEXT_CONTENT");
-      int i = paramBundle.getInt("PARAM_EDIT_TEXT_COLOR");
-      int j = paramBundle.getInt("PARAM_EDIT_TEXT_COLOR_BG_INT");
-      localObject2 = paramBundle.getString("PARAM_EDIT_TEXT_FONT");
-      paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
-      if (paramBundle != null)
+      localObject3 = String.valueOf(paramc);
+      paramc = getCurrentTrack();
+      if (paramc == null) {}
+      for (paramc = (a.c)localObject1;; paramc = Long.valueOf(paramc.id))
       {
-        localObject3 = String.valueOf(paramc);
-        Object localObject4 = getCurrentTrack();
-        paramc = (d.c)localObject1;
-        if (localObject4 != null) {
-          paramc = Long.valueOf(((com.tencent.mm.videocomposition.b)localObject4).id);
+        s.u(localObject3, "text");
+        localObject1 = paramBundle.Uqp;
+        b.a locala = com.tencent.mm.plugin.vlog.ui.timelineeditor.emojidecoder.b.UqI;
+        localObject1 = ((TimelineEditor)localObject1).bzx(b.a.q((String)localObject3, i, j, (String)localObject2));
+        if (localObject1 == null) {
+          break label376;
         }
-        kotlin.g.b.p.k(localObject3, "text");
-        localObject1 = paramBundle.NDO;
-        localObject4 = com.tencent.mm.plugin.vlog.ui.timelineeditor.emojidecoder.b.NEy;
-        localObject1 = ((TimelineEditor)localObject1).byc(b.a.p((String)localObject3, i, j, (String)localObject2));
-        if (localObject1 != null)
-        {
-          if (paramc != null)
-          {
-            paramBundle.NDO.a((af)localObject1, paramc.longValue());
-            AppMethodBeat.o(233975);
-            return;
-          }
-          paramBundle.NDO.a((af)localObject1);
-          AppMethodBeat.o(233975);
-          return;
+        if (paramc == null) {
+          break;
         }
-        AppMethodBeat.o(233975);
+        paramBundle.Uqp.a((af)localObject1, paramc.longValue());
+        AppMethodBeat.o(282180);
         return;
       }
-      AppMethodBeat.o(233975);
-      return;
+      paramBundle.Uqp.a((af)localObject1);
     }
-    AppMethodBeat.o(233975);
+    label376:
+    AppMethodBeat.o(282180);
   }
   
-  protected final void gwJ()
+  protected final void hUG()
   {
-    AppMethodBeat.i(233971);
-    super.gwJ();
-    AppMethodBeat.o(233971);
+    AppMethodBeat.i(282162);
+    super.hUG();
+    AppMethodBeat.o(282162);
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(233977);
-    Object localObject1 = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
+    AppMethodBeat.i(282193);
+    Object localObject1 = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
     Object localObject2;
     Object localObject3;
     if ((localObject1 != null) && (paramMotionEvent != null))
     {
-      localObject1 = ((com.tencent.mm.plugin.vlog.ui.timelineeditor.b)localObject1).NDO;
-      kotlin.g.b.p.k(paramMotionEvent, "touchEvent");
+      localObject1 = ((com.tencent.mm.plugin.vlog.ui.timelineeditor.b)localObject1).Uqp;
+      s.t(paramMotionEvent, "touchEvent");
       int n = paramMotionEvent.getPointerCount();
       if (n > 0)
       {
@@ -155,47 +145,47 @@ public final class TimelineEditorNativeVideoPluginLayout
         int k = paramMotionEvent.getPointerId(0);
         int i = -1;
         int i1 = paramMotionEvent.getActionMasked();
-        int m = a.atc(i1);
+        int m = a.azs(i1);
         float f3 = paramMotionEvent.getX(0);
         float f4 = paramMotionEvent.getY(0);
         if (n >= 2)
         {
-          j = a.atc(i1);
+          j = a.azs(i1);
           f1 = paramMotionEvent.getX(1);
           f2 = paramMotionEvent.getY(1);
           i = paramMotionEvent.getPointerId(1);
         }
-        localObject2 = ((TimelineEditor)localObject1).nTouchMotionEvent(((TimelineEditor)localObject1).NmO, m, f3, f4, k, j, f1, f2, i);
+        localObject2 = ((TimelineEditor)localObject1).nTouchMotionEvent(((TimelineEditor)localObject1).nNg, m, f3, f4, k, j, f1, f2, i);
         if (localObject2 == null) {
           break label294;
         }
-        localObject3 = w.di((byte[])localObject2);
-        kotlin.g.b.p.j(localObject3, "touchResult");
-        if (((w)localObject3).hEa() <= 0L) {
+        localObject3 = w.dl((byte[])localObject2);
+        s.r(localObject3, "touchResult");
+        if (((w)localObject3).adro <= 0L) {
           break label309;
         }
-        localObject1 = (af)((TimelineEditor)localObject1).VLo.get(Long.valueOf(((w)localObject3).hEa()));
-        if ((localObject1 == null) || (!(localObject1 instanceof com.tencent.mm.xeffect.effect.p))) {
+        localObject1 = (af)((TimelineEditor)localObject1).adps.get(Long.valueOf(((w)localObject3).adro));
+        if ((localObject1 == null) || (!(localObject1 instanceof p))) {
           break label309;
         }
       }
     }
     label294:
     label309:
-    for (localObject1 = (com.tencent.mm.xeffect.effect.p)localObject1;; localObject1 = null)
+    for (localObject1 = (p)localObject1;; localObject1 = null)
     {
-      if (((w)localObject3).hEb())
+      if (((w)localObject3).jgl())
       {
         localObject2 = new g();
-        localObject3 = ((w)localObject3).hEc().toByteArray();
-        kotlin.g.b.p.j(localObject3, "touchResult.touchTrack.toByteArray()");
-        ((g)localObject2).dg((byte[])localObject3);
+        localObject3 = ((w)localObject3).jgm().toByteArray();
+        s.r(localObject3, "touchResult.touchTrack.toByteArray()");
+        ((g)localObject2).dj((byte[])localObject3);
       }
       for (;;)
       {
-        new o(localObject1, localObject2);
+        new r(localObject1, localObject2);
         boolean bool = super.onTouchEvent(paramMotionEvent);
-        AppMethodBeat.o(233977);
+        AppMethodBeat.o(282193);
         return bool;
         localObject2 = null;
         localObject1 = null;
@@ -207,7 +197,7 @@ public final class TimelineEditorNativeVideoPluginLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.timelineeditor.scene.TimelineEditorNativeVideoPluginLayout
  * JD-Core Version:    0.7.0.1
  */

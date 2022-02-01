@@ -24,14 +24,14 @@ public final class a
   
   static
   {
-    AppMethodBeat.i(249907);
+    AppMethodBeat.i(267082);
     BOUNDARY = "WEIXIN" + System.currentTimeMillis();
-    AppMethodBeat.o(249907);
+    AppMethodBeat.o(267082);
   }
   
   private static String a(c.e parame)
   {
-    AppMethodBeat.i(249905);
+    AppMethodBeat.i(267076);
     StringBuilder localStringBuilder = new StringBuilder();
     Iterator localIterator = parame.params.keySet().iterator();
     while (localIterator.hasNext())
@@ -43,19 +43,19 @@ public final class a
       localStringBuilder.append((String)parame.params.get(str));
       localStringBuilder.append("\r\n");
     }
-    AppMethodBeat.o(249905);
+    AppMethodBeat.o(267076);
     throw null;
   }
   
   public final c.f a(String paramString1, String paramString2, c.e parame, c.d paramd)
   {
-    AppMethodBeat.i(249902);
+    AppMethodBeat.i(267085);
     Log.d("MicroMsg.HttpClientUtil", "uri=" + paramString2 + ", " + parame);
     paramString1 = new DefaultHttpClient();
     try
     {
       a(parame);
-      AppMethodBeat.o(249902);
+      AppMethodBeat.o(267085);
       throw null;
     }
     catch (Exception paramString2)
@@ -67,18 +67,18 @@ public final class a
     finally
     {
       paramString1.getConnectionManager().shutdown();
-      AppMethodBeat.o(249902);
+      AppMethodBeat.o(267085);
     }
   }
   
   public final void cancel()
   {
-    AppMethodBeat.i(249903);
+    AppMethodBeat.i(267088);
     Log.d("MicroMsg.HttpClientUtil", "cancel conection.");
     if ((this.post != null) && (!this.post.isAborted())) {
       this.post.abort();
     }
-    AppMethodBeat.o(249903);
+    AppMethodBeat.o(267088);
   }
   
   final class a
@@ -91,9 +91,9 @@ public final class a
     
     public final InputStream getContent()
     {
-      AppMethodBeat.i(249630);
+      AppMethodBeat.i(266883);
       UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException("Multipart form entity does not implement #getContent()");
-      AppMethodBeat.o(249630);
+      AppMethodBeat.o(266883);
       throw localUnsupportedOperationException;
     }
     
@@ -109,9 +109,9 @@ public final class a
     
     public final Header getContentType()
     {
-      AppMethodBeat.i(249627);
+      AppMethodBeat.i(266878);
       BasicHeader localBasicHeader = new BasicHeader("Content-Type", "multipart/form-data; boundary=----" + a.BOUNDARY);
-      AppMethodBeat.o(249627);
+      AppMethodBeat.o(266878);
       return localBasicHeader;
     }
     
@@ -132,16 +132,16 @@ public final class a
     
     public final void writeTo(OutputStream paramOutputStream)
     {
-      AppMethodBeat.i(249631);
+      AppMethodBeat.i(266891);
       new DataOutputStream(paramOutputStream);
-      AppMethodBeat.o(249631);
+      AppMethodBeat.o(266891);
       throw null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.a
  * JD-Core Version:    0.7.0.1
  */

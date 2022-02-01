@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<inset android:insetLeft="16.0dip" android:insetRight="16.0dip" android:insetTop="16.0dip" android:insetBottom="16.0dip"
+<inset android:insetLeft="@dimen/p0" android:insetRight="@dimen/p0" android:insetTop="@dimen/p1" android:insetBottom="@dimen/oz"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <shape android:shape="rectangle">
-        <corners android:radius="?j0" />
-        <solid android:color="@android:color/white" />
-    </shape>
+    <selector>
+        <item android:state_enabled="false">
+            <nine-patch android:src="@drawable/b6j" android:tint="?g8" android:alpha="?android:disabledAlpha" />
+        </item>
+        <item android:state_focused="false" android:state_pressed="false">
+            <nine-patch android:src="@drawable/b6j" android:tint="?g8" />
+        </item>
+        <item>
+            <nine-patch android:src="@drawable/b6i" android:tint="?g6" />
+        </item>
+    </selector>
 </inset>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.widget.MMEditText android:id="@id/kye" android:layout_width="fill_parent" android:layout_height="wrap_content" android:inputType="number" />
-    <TextView android:gravity="center" android:id="@id/kyf" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="aaa" />
-</LinearLayout>
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/ma9" android:background="@drawable/cd0" android:layout_width="wrap_content" android:layout_height="@dimen/cv" android:layout_marginStart="@dimen/cp">
+        <TextView android:textSize="14.0dip" android:id="@id/ma_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" android:layout_centerInParent="true" android:layout_marginStart="@dimen/df" android:layout_marginEnd="@dimen/df" />
+    </RelativeLayout>
+</FrameLayout>

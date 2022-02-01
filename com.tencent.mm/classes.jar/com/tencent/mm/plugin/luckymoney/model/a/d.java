@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.luckymoney.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.luckymoney.model.ap;
+import com.tencent.mm.plugin.luckymoney.model.aq;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.net.URLEncoder;
@@ -9,11 +9,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class d
-  extends ap
+  extends aq
 {
   public d(String paramString1, int paramInt1, String paramString2, long paramLong, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt2)
   {
-    AppMethodBeat.i(267621);
+    AppMethodBeat.i(283901);
     HashMap localHashMap = new HashMap();
     localHashMap.put("sendId", paramString1);
     localHashMap.put("limit", "11");
@@ -31,12 +31,12 @@ public final class d
     }
     Log.i("MicroMsg.NetSceneLiveQryLuckyMoneyDetail", "sendId: %s, limit: %s，offet: %s, nativeUrl: %s，processContent: %s", new Object[] { paramString1, Integer.valueOf(11), Integer.valueOf(paramInt1), paramString2, paramString4 });
     setRequestData(localHashMap);
-    AppMethodBeat.o(267621);
+    AppMethodBeat.o(283901);
   }
   
   public d(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt2)
   {
-    AppMethodBeat.i(267622);
+    AppMethodBeat.i(283903);
     HashMap localHashMap = new HashMap();
     localHashMap.put("sendId", paramString1);
     localHashMap.put("limit", "11");
@@ -53,7 +53,7 @@ public final class d
     }
     Log.i("MicroMsg.NetSceneLiveQryLuckyMoneyDetail", "sendId: %s, limit: %s，offet: %s, nativeUrl: %s，processContent: %s", new Object[] { paramString1, Integer.valueOf(11), Integer.valueOf(paramInt1), paramString2, paramString4 });
     setRequestData(localHashMap);
-    AppMethodBeat.o(267622);
+    AppMethodBeat.o(283903);
   }
   
   public d(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt)
@@ -61,7 +61,7 @@ public final class d
     this(paramString1, 0, paramString2, paramString3, "", paramString4, paramString5, paramInt);
   }
   
-  public final String cOd()
+  public final String drI()
   {
     return "/cgi-bin/mmpay-bin/ftfhb/channelliveqrydetailwxhb";
   }
@@ -73,7 +73,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.a.d
  * JD-Core Version:    0.7.0.1
  */

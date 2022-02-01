@@ -11,39 +11,51 @@ import com.tencent.mm.modelappbrand.a.b.h;
 public abstract interface k
   extends a
 {
-  public abstract View a(Context paramContext, Bundle paramBundle, boolean paramBoolean, k.c paramc);
+  public abstract View a(Context paramContext, Bundle paramBundle, boolean paramBoolean, c paramc);
   
   public abstract b.f a(int paramInt1, int paramInt2, a parama);
   
-  public abstract void a(String paramString, View paramView);
-  
   public abstract boolean a(String paramString, View paramView, Bundle paramBundle);
   
-  public abstract boolean a(String paramString, View paramView, Bundle paramBundle, k.b paramb);
+  public abstract boolean a(String paramString, View paramView, Bundle paramBundle, b paramb);
   
-  public abstract b.h bgT();
+  public abstract void b(String paramString, View paramView);
   
-  public abstract b.f dK(int paramInt1, int paramInt2);
+  public abstract b.h bEK();
   
-  public abstract void i(int paramInt, Bundle paramBundle);
+  public abstract b.f eE(int paramInt1, int paramInt2);
+  
+  public abstract void j(int paramInt, Bundle paramBundle);
   
   public static enum a
   {
     static
     {
       AppMethodBeat.i(2625);
-      lys = new a("DECODE_TYPE_DEFAULT", 0);
-      lyt = new a("DECODE_TYPE_ORIGIN", 1);
-      lyu = new a[] { lys, lyt };
+      opT = new a("DECODE_TYPE_DEFAULT", 0);
+      opU = new a("DECODE_TYPE_ORIGIN", 1);
+      opV = new a[] { opT, opU };
       AppMethodBeat.o(2625);
     }
     
     private a() {}
   }
+  
+  public static abstract interface b
+  {
+    public abstract void vJ(int paramInt);
+  }
+  
+  public static abstract interface c
+  {
+    public abstract void bEL();
+    
+    public abstract void gU(boolean paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.k
  * JD-Core Version:    0.7.0.1
  */

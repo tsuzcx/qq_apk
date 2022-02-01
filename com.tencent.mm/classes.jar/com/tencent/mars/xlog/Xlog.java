@@ -3,9 +3,10 @@ package com.tencent.mars.xlog;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Log.LogImp;
 import com.tencent.mm.sdk.platformtools.LogDecryptor;
-import com.tencent.mm.vfs.q;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.ah;
 import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.w;
+import com.tencent.mm.vfs.y;
 
 public class Xlog
   implements Log.LogImp
@@ -35,6 +36,7 @@ public class Xlog
   private static String mCacheDir = null;
   private static String mLogDir = null;
   private static String xlog_pubkey = "1dac3876bd566b60c7dcbffd219ca6af2d2c07f045711bf2a6d111a2b1fc27c4df31c1f568879708c5159e370ab141e6627ea028b47f8a5cf4d39ca30d501f81";
+  private byte _hellAccFlag_;
   
   private static native void appenderOpen(XLogConfig paramXLogConfig);
   
@@ -47,7 +49,7 @@ public class Xlog
     return str;
   }
   
-  public static native void logWrite(XLoggerInfo paramXLoggerInfo, String paramString);
+  public static native void logWrite(Xlog.XLoggerInfo paramXLoggerInfo, String paramString);
   
   public static void logWrite2(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, int paramInt3, long paramLong1, long paramLong2, String paramString4)
   {
@@ -58,8 +60,13 @@ public class Xlog
   
   public static void open(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, int paramInt3)
   {
-    if (paramBoolean) {
-      System.loadLibrary("tencentxlog");
+    if (paramBoolean)
+    {
+      com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG("tencentxlog");
+      Object localObject = new Object();
+      com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/mars/xlog/Xlog", "open", "(ZIILjava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+      System.loadLibrary((String)locala.sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mars/xlog/Xlog", "open", "(ZIILjava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
     }
     Log.appenderOpen(paramInt1, paramInt2, paramString1, paramString2, paramString3, paramInt3);
   }
@@ -124,17 +131,17 @@ public class Xlog
     for (;;)
     {
       return;
-      Object localObject1 = new q(mCacheDir);
-      if (((q)localObject1).ifE())
+      Object localObject1 = new u(mCacheDir);
+      if (((u)localObject1).jKS())
       {
-        localObject1 = ((q)localObject1).a(new s()
+        localObject1 = ((u)localObject1).a(new w()
         {
-          public boolean accept(q paramAnonymousq)
+          public boolean accept(u paramAnonymousu)
           {
-            if (paramAnonymousq.isDirectory()) {
+            if (paramAnonymousu.isDirectory()) {
               return false;
             }
-            return paramAnonymousq.getName().toLowerCase().endsWith(".xlog");
+            return paramAnonymousu.getName().toLowerCase().endsWith(".xlog");
           }
         });
         if (localObject1.length != 0)
@@ -144,7 +151,7 @@ public class Xlog
           while (i < j)
           {
             Object localObject2 = localObject1[i];
-            u.oo(localObject2.getPath(), mLogDir + "/" + localObject2.getName());
+            y.qn(ah.v(localObject2.mUri), mLogDir + "/" + localObject2.getName());
             i += 1;
           }
         }
@@ -190,22 +197,10 @@ public class Xlog
     public String nameprefix;
     public String pubkey = "";
   }
-  
-  static class XLoggerInfo
-  {
-    public String filename;
-    public String funcname;
-    public int level;
-    public int line;
-    public long maintid;
-    public long pid;
-    public String tag;
-    public long tid;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mars.xlog.Xlog
  * JD-Core Version:    0.7.0.1
  */

@@ -1,171 +1,85 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
-import java.util.LinkedList;
+import org.json.JSONObject;
 
 public final class cvc
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public aiq RMV;
-  public eae RQU;
-  public String RRg;
-  public String RRt;
-  public String UserName;
+  public String openid;
+  
+  private JSONObject toJSON()
+  {
+    AppMethodBeat.i(257560);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      com.tencent.mm.bk.a.a(localJSONObject, "openid", this.openid, false);
+      label24:
+      AppMethodBeat.o(257560);
+      return localJSONObject;
+    }
+    catch (Exception localException)
+    {
+      break label24;
+    }
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(133178);
+    AppMethodBeat.i(117871);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.RQU == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: RandomEncryKey");
-        AppMethodBeat.o(133178);
-        throw paramVarArgs;
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.openid != null) {
+        paramVarArgs.g(1, this.openid);
       }
-      if (this.RMV == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: CliPubECDHKey");
-        AppMethodBeat.o(133178);
-        throw paramVarArgs;
-      }
-      if (this.RQU != null)
-      {
-        paramVarArgs.oE(1, this.RQU.computeSize());
-        this.RQU.writeFields(paramVarArgs);
-      }
-      if (this.RMV != null)
-      {
-        paramVarArgs.oE(2, this.RMV.computeSize());
-        this.RMV.writeFields(paramVarArgs);
-      }
-      if (this.UserName != null) {
-        paramVarArgs.f(3, this.UserName);
-      }
-      if (this.RRg != null) {
-        paramVarArgs.f(4, this.RRg);
-      }
-      if (this.RRt != null) {
-        paramVarArgs.f(5, this.RRt);
-      }
-      AppMethodBeat.o(133178);
+      AppMethodBeat.o(117871);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.RQU == null) {
-        break label698;
+      if (this.openid == null) {
+        break label209;
       }
     }
-    label698:
-    for (int i = g.a.a.a.oD(1, this.RQU.computeSize()) + 0;; i = 0)
+    label209:
+    for (paramInt = i.a.a.b.b.a.h(1, this.openid) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.RMV != null) {
-        paramInt = i + g.a.a.a.oD(2, this.RMV.computeSize());
-      }
-      i = paramInt;
-      if (this.UserName != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.UserName);
-      }
-      paramInt = i;
-      if (this.RRg != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.RRg);
-      }
-      i = paramInt;
-      if (this.RRt != null) {
-        i = paramInt + g.a.a.b.b.a.g(5, this.RRt);
-      }
-      AppMethodBeat.o(133178);
-      return i;
+      AppMethodBeat.o(117871);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.RQU == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: RandomEncryKey");
-          AppMethodBeat.o(133178);
-          throw paramVarArgs;
-        }
-        if (this.RMV == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: CliPubECDHKey");
-          AppMethodBeat.o(133178);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(133178);
+        AppMethodBeat.o(117871);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         cvc localcvc = (cvc)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(133178);
+          AppMethodBeat.o(117871);
           return -1;
-        case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new eae();
-            if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((eae)localObject2).dd((byte[])localObject1);
-            }
-            localcvc.RQU = ((eae)localObject2);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(133178);
-          return 0;
-        case 2: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new aiq();
-            if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((aiq)localObject2).parseFrom((byte[])localObject1);
-            }
-            localcvc.RMV = ((aiq)localObject2);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(133178);
-          return 0;
-        case 3: 
-          localcvc.UserName = ((g.a.a.a.a)localObject1).abFh.readString();
-          AppMethodBeat.o(133178);
-          return 0;
-        case 4: 
-          localcvc.RRg = ((g.a.a.a.a)localObject1).abFh.readString();
-          AppMethodBeat.o(133178);
-          return 0;
         }
-        localcvc.RRt = ((g.a.a.a.a)localObject1).abFh.readString();
-        AppMethodBeat.o(133178);
+        localcvc.openid = locala.ajGk.readString();
+        AppMethodBeat.o(117871);
         return 0;
       }
-      AppMethodBeat.o(133178);
+      AppMethodBeat.o(117871);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cvc
  * JD-Core Version:    0.7.0.1
  */

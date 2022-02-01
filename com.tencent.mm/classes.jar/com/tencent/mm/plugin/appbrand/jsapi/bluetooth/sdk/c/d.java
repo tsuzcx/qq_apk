@@ -19,66 +19,72 @@ import org.json.JSONObject;
 
 public final class d
 {
-  public String fzB;
+  public String hEl;
   public String name;
-  public SparseArray<byte[]> oJD;
-  public List<ParcelUuid> oJE;
-  public String oJF;
-  public Map<ParcelUuid, byte[]> oJG;
+  public SparseArray<byte[]> rNt;
+  public List<ParcelUuid> rNu;
+  public String rNv;
+  public Map<ParcelUuid, byte[]> rNw;
+  public Boolean rNx;
   public int rssi;
   
   public d(ScanResultCompat paramScanResultCompat)
   {
     AppMethodBeat.i(144591);
-    this.name = Util.nullAsNil(paramScanResultCompat.bRf().getName());
-    this.fzB = Util.nullAsNil(paramScanResultCompat.bRf().getAddress());
-    this.rssi = paramScanResultCompat.oLi;
-    i locali = paramScanResultCompat.oLh;
+    this.name = Util.nullAsNil(paramScanResultCompat.crn().getName());
+    this.hEl = Util.nullAsNil(paramScanResultCompat.crn().getAddress());
+    this.rssi = paramScanResultCompat.rPb;
+    this.rNx = paramScanResultCompat.rNx;
+    i locali = paramScanResultCompat.rPa;
     if (locali != null)
     {
-      if (a.bQQ().oIF) {}
-      for (paramScanResultCompat = locali.oLf;; paramScanResultCompat = locali.oLb)
+      if (a.cqY().rMo) {}
+      for (paramScanResultCompat = locali.rOY;; paramScanResultCompat = locali.rOU)
       {
-        this.oJD = paramScanResultCompat;
-        this.oJE = locali.oLa;
-        this.oJF = Util.nullAsNil(locali.mDeviceName);
-        this.oJG = locali.oLc;
+        this.rNt = paramScanResultCompat;
+        this.rNu = locali.rOT;
+        this.rNv = Util.nullAsNil(locali.mDeviceName);
+        this.rNw = locali.rOV;
         AppMethodBeat.o(144591);
         return;
       }
     }
-    this.oJF = "";
+    this.rNv = "";
     AppMethodBeat.o(144591);
   }
   
   public d(String paramString1, String paramString2)
   {
     this.name = paramString1;
-    this.fzB = paramString2;
+    this.hEl = paramString2;
+    this.rNx = null;
   }
   
-  public final JSONObject bPW()
+  public final JSONObject cqc()
   {
     AppMethodBeat.i(144592);
     JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("deviceId", this.fzB);
+    localJSONObject.put("deviceId", this.hEl);
     localJSONObject.put("name", this.name);
     localJSONObject.put("RSSI", this.rssi);
+    if (this.rNx != null) {
+      localJSONObject.put("connectable", this.rNx);
+    }
     Object localObject1 = new byte[0];
     Object localObject3 = new StringBuilder();
     Object localObject2 = localObject1;
-    if (this.oJD != null)
+    if (this.rNt != null)
     {
       localObject2 = localObject1;
-      if (this.oJD.size() >= 0)
+      if (this.rNt.size() >= 0)
       {
         int k = 0;
-        while (k < this.oJD.size())
+        while (k < this.rNt.size())
         {
-          int m = this.oJD.keyAt(k);
+          int m = this.rNt.keyAt(k);
           int i = (byte)(m & 0xFF);
           int j = (byte)(m >> 8 & 0xFF);
-          byte[] arrayOfByte = (byte[])this.oJD.valueAt(k);
+          byte[] arrayOfByte = (byte[])this.rNt.valueAt(k);
           localObject2 = new byte[localObject1.length + 2 + arrayOfByte.length];
           System.arraycopy(localObject1, 0, localObject2, 0, localObject1.length);
           m = localObject1.length;
@@ -93,23 +99,23 @@ public final class d
     ((StringBuilder)localObject3).append(new String(Base64.encode((byte[])localObject2, 2)));
     localJSONObject.put("advertisData", localObject3);
     localObject1 = new JSONArray();
-    if (this.oJE != null)
+    if (this.rNu != null)
     {
-      localObject2 = this.oJE.iterator();
+      localObject2 = this.rNu.iterator();
       while (((Iterator)localObject2).hasNext()) {
         ((JSONArray)localObject1).put(((ParcelUuid)((Iterator)localObject2).next()).getUuid().toString().toUpperCase());
       }
     }
     localJSONObject.put("advertisServiceUUIDs", localObject1);
-    localJSONObject.put("localName", this.oJF);
+    localJSONObject.put("localName", this.rNv);
     localObject1 = new JSONObject();
-    if ((this.oJG != null) && (this.oJG.size() > 0))
+    if ((this.rNw != null) && (this.rNw.size() > 0))
     {
-      localObject2 = this.oJG.keySet().iterator();
+      localObject2 = this.rNw.keySet().iterator();
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (ParcelUuid)((Iterator)localObject2).next();
-        ((JSONObject)localObject1).put(((ParcelUuid)localObject3).getUuid().toString().toUpperCase(), new String(Base64.encode((byte[])this.oJG.get(localObject3), 2)));
+        ((JSONObject)localObject1).put(((ParcelUuid)localObject3).getUuid().toString().toUpperCase(), new String(Base64.encode((byte[])this.rNw.get(localObject3), 2)));
       }
     }
     localJSONObject.put("serviceData", localObject1);
@@ -119,7 +125,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.d
  * JD-Core Version:    0.7.0.1
  */

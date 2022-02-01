@@ -18,29 +18,29 @@ public class WXChannelOpenProfile
     
     public boolean checkArgs()
     {
-      AppMethodBeat.i(254726);
+      AppMethodBeat.i(243053);
       if (b.b(this.userName))
       {
         Log.e("MicroMsg.SDK.WXChannelOpenProfile.Req", "userName is null");
-        AppMethodBeat.o(254726);
+        AppMethodBeat.o(243053);
         return false;
       }
       if (this.userName.length() > 1024)
       {
         Log.e("MicroMsg.SDK.WXChannelOpenProfile.Req", "userName.length too long");
-        AppMethodBeat.o(254726);
+        AppMethodBeat.o(243053);
         return false;
       }
-      AppMethodBeat.o(254726);
+      AppMethodBeat.o(243053);
       return true;
     }
     
     public void fromBundle(Bundle paramBundle)
     {
-      AppMethodBeat.i(254728);
+      AppMethodBeat.i(243056);
       super.fromBundle(paramBundle);
       this.userName = paramBundle.getString("_wxapi_finder_userName");
-      AppMethodBeat.o(254728);
+      AppMethodBeat.o(243056);
     }
     
     public int getType()
@@ -50,10 +50,10 @@ public class WXChannelOpenProfile
     
     public void toBundle(Bundle paramBundle)
     {
-      AppMethodBeat.i(254730);
+      AppMethodBeat.i(243059);
       super.toBundle(paramBundle);
       paramBundle.putString("_wxapi_finder_userName", this.userName);
-      AppMethodBeat.o(254730);
+      AppMethodBeat.o(243059);
     }
   }
   
@@ -66,9 +66,9 @@ public class WXChannelOpenProfile
     
     public Resp(Bundle paramBundle)
     {
-      AppMethodBeat.i(255047);
+      AppMethodBeat.i(243080);
       fromBundle(paramBundle);
-      AppMethodBeat.o(255047);
+      AppMethodBeat.o(243080);
     }
     
     public boolean checkArgs()
@@ -78,10 +78,10 @@ public class WXChannelOpenProfile
     
     public void fromBundle(Bundle paramBundle)
     {
-      AppMethodBeat.i(255050);
+      AppMethodBeat.i(243081);
       super.fromBundle(paramBundle);
       this.extMsg = paramBundle.getString("_wxapi_finder_extMsg");
-      AppMethodBeat.o(255050);
+      AppMethodBeat.o(243081);
     }
     
     public int getType()
@@ -91,10 +91,10 @@ public class WXChannelOpenProfile
     
     public void toBundle(Bundle paramBundle)
     {
-      AppMethodBeat.i(255052);
+      AppMethodBeat.i(243084);
       super.toBundle(paramBundle);
       paramBundle.putString("_wxapi_finder_extMsg", this.extMsg);
-      AppMethodBeat.o(255052);
+      AppMethodBeat.o(243084);
     }
   }
 }

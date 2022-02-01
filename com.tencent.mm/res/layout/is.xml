@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.base.MMSlideDelView android:id="@id/blp" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/hsk" android:background="@drawable/ahv" android:layout_width="112.0dip" android:layout_height="fill_parent">
-        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:src="@drawable/bhy" />
-        <TextView android:textSize="14.0sp" android:textColor="@color/ag2" android:id="@id/hsm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/h2p" />
-    </LinearLayout>
-</com.tencent.mm.ui.base.MMSlideDelView>
+    <ScrollView android:scrollbars="none" style="@style/o8">
+        <LinearLayout style="@style/lj">
+            <TextView android:gravity="center_horizontal" android:id="@id/a9v" android:layout_marginBottom="@dimen/j6" android:text="@string/al6" style="@style/lk" />
+            <TextView android:gravity="center_horizontal" android:id="@id/a9w" android:visibility="gone" android:layout_marginBottom="@dimen/j6" style="@style/n_" />
+            <LinearLayout android:gravity="bottom" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <EditText android:id="@id/a9x" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="@dimen/m2" android:layout_weight="1.0" android:inputType="phone" style="@style/n9" />
+                <Button android:id="@id/a9u" android:layout_width="wrap_content" android:minWidth="80.0dip" android:text="@string/akf" android:maxLines="1" style="@style/oi" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip">
+                <Button android:id="@id/a9z" android:visibility="gone" android:layout_marginTop="10.0dip" android:text="@string/alh" style="@style/or" />
+                <Button android:layout_gravity="center" android:id="@id/be8" android:visibility="gone" android:text="@string/iab" style="@style/sp" />
+            </LinearLayout>
+            <TextView android:gravity="center_horizontal" android:id="@id/a9r" android:visibility="gone" style="@style/lk" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,30 +1,35 @@
 package kotlinx.a.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
-import kotlin.l.b;
+import kotlin.Metadata;
+import kotlinx.a.b;
+import kotlinx.a.b.d;
+import kotlinx.a.b.d.b;
+import kotlinx.a.b.e;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/serialization/modules/SerializerAlreadyRegisteredException;", "Ljava/lang/IllegalArgumentException;", "Lkotlin/IllegalArgumentException;", "baseClass", "Lkotlin/reflect/KClass;", "concreteClass", "(Lkotlin/reflect/KClass;Lkotlin/reflect/KClass;)V", "forClass", "(Lkotlin/reflect/KClass;)V", "msg", "", "(Ljava/lang/String;)V", "kotlinx-serialization-runtime"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lkotlinx/serialization/internal/ByteSerializer;", "Lkotlinx/serialization/KSerializer;", "", "()V", "descriptor", "Lkotlinx/serialization/descriptors/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/descriptors/SerialDescriptor;", "deserialize", "decoder", "Lkotlinx/serialization/encoding/Decoder;", "(Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Byte;", "serialize", "", "encoder", "Lkotlinx/serialization/encoding/Encoder;", "value", "kotlinx-serialization-runtime"}, k=1, mv={1, 4, 0})
 public final class g
-  extends IllegalArgumentException
+  implements b<Byte>
 {
-  public g(String paramString)
+  private static final e Wki;
+  public static final g ajDr;
+  
+  static
   {
-    super(paramString);
-    AppMethodBeat.i(257270);
-    AppMethodBeat.o(257270);
+    AppMethodBeat.i(188591);
+    ajDr = new g();
+    Wki = (e)new ai("kotlin.Byte", (d)d.b.ajCL);
+    AppMethodBeat.o(188591);
   }
   
-  public g(b<?> paramb1, b<?> paramb2)
+  public final e iou()
   {
-    this("Serializer for " + paramb2 + " already registered in the scope of " + paramb1);
-    AppMethodBeat.i(257271);
-    AppMethodBeat.o(257271);
+    return Wki;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlinx.a.d.g
  * JD-Core Version:    0.7.0.1
  */

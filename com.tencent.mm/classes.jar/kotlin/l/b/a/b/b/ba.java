@@ -1,44 +1,34 @@
 package kotlin.l.b.a.b.b;
 
-import kotlin.l.b.a.b.j.f.a.e;
+import java.util.List;
+import kotlin.l.b.a.b.l.m;
+import kotlin.l.b.a.b.m.ad;
+import kotlin.l.b.a.b.m.ax;
+import kotlin.l.b.a.b.m.bl;
+import kotlin.l.b.a.b.m.c.p;
 
-public abstract class ba
+public abstract interface ba
+  extends h, p
 {
-  public final boolean aaLa;
-  private final String name;
+  public abstract int getIndex();
   
-  protected ba(String paramString, boolean paramBoolean)
-  {
-    this.name = paramString;
-    this.aaLa = paramBoolean;
-  }
+  public abstract List<ad> klF();
   
-  public abstract boolean b(e parame, p paramp, l paraml);
+  public abstract ax kmZ();
   
-  protected Integer c(ba paramba)
-  {
-    kotlin.g.b.p.k(paramba, "visibility");
-    return az.a(this, paramba);
-  }
+  public abstract m kol();
   
-  public String iGb()
-  {
-    return this.name;
-  }
+  public abstract bl kom();
   
-  public ba iGc()
-  {
-    return this;
-  }
+  public abstract boolean kon();
   
-  public final String toString()
-  {
-    return iGb();
-  }
+  public abstract boolean koo();
+  
+  public abstract ba kop();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.b.ba
  * JD-Core Version:    0.7.0.1
  */

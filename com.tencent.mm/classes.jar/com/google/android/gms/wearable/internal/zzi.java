@@ -4,24 +4,14 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SafeParcelable.Class(creator="AmsEntityUpdateParcelableCreator")
-@SafeParcelable.Reserved({1})
 public final class zzi
   extends AbstractSafeParcelable
 {
   public static final Parcelable.Creator<zzi> CREATOR;
-  @SafeParcelable.Field(getter="getValue", id=4)
   private final String value;
-  @SafeParcelable.Field(getter="getEntityId", id=2)
   private byte zzbd;
-  @SafeParcelable.Field(getter="getAttributeId", id=3)
   private final byte zzbe;
   
   static
@@ -31,8 +21,7 @@ public final class zzi
     AppMethodBeat.o(101430);
   }
   
-  @SafeParcelable.Constructor
-  public zzi(@SafeParcelable.Param(id=2) byte paramByte1, @SafeParcelable.Param(id=3) byte paramByte2, @SafeParcelable.Param(id=4) String paramString)
+  public zzi(byte paramByte1, byte paramByte2, String paramString)
   {
     this.zzbd = paramByte1;
     this.zzbe = paramByte2;
@@ -106,7 +95,7 @@ public final class zzi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzi
  * JD-Core Version:    0.7.0.1
  */

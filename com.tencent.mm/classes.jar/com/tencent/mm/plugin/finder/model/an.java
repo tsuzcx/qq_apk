@@ -1,64 +1,159 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.feed.model.internal.k;
-import com.tencent.mm.protocal.protobuf.bda;
-import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.report.z;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.storage.au;
+import com.tencent.mm.plugin.finder.storage.d;
+import com.tencent.mm.plugin.finder.storage.logic.h;
+import com.tencent.mm.plugin.finder.upload.action.l;
+import com.tencent.mm.plugin.findersdk.d.a;
+import com.tencent.mm.plugin.findersdk.storage.config.base.b;
+import com.tencent.mm.plugin.report.f;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.bui;
+import com.tencent.mm.protocal.protobuf.dne;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderLiveTagData;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "tagInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveTagInfo;", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveTagInfo;)V", "getTagInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveTagInfo;", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "", "getItemType", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/model/FinderLikeLogic;", "", "()V", "TAG", "", "likeComment", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "feedId", "", "objectNonceId", "comment", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "like", "", "scene1", "", "isPoster", "likeFeed", "likeAction", "finderObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "isPrivate", "scene", "isShowRecWording", "preIsPrivate", "fromPrivateAccount", "likeMegaVideo", "context", "Lcom/tencent/mm/ui/MMActivity;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class an
-  implements bu
 {
-  public final bda zAP;
+  public static final an ECX;
+  private static final String TAG;
   
-  public an(bda parambda)
+  static
   {
-    AppMethodBeat.i(282886);
-    this.zAP = parambda;
-    AppMethodBeat.o(282886);
+    AppMethodBeat.i(166395);
+    ECX = new an();
+    TAG = "Finder.FinderLikeLogic";
+    AppMethodBeat.o(166395);
   }
   
-  public final int a(k paramk)
+  public static void a(bui parambui, int paramInt1, FinderItem paramFinderItem, boolean paramBoolean1, boolean paramBoolean2, int paramInt2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
   {
-    AppMethodBeat.i(282885);
-    p.k(paramk, "obj");
-    if (!(paramk instanceof an)) {
-      paramk = null;
-    }
-    for (;;)
+    AppMethodBeat.i(332153);
+    s.u(parambui, "contextObj");
+    s.u(paramFinderItem, "finderObject");
+    Object localObject = a.Hdr;
+    if (a.aDj("like"))
     {
-      paramk = (an)paramk;
-      if (paramk != null)
-      {
-        if (Util.isEqual(paramk.zAP.SOi, this.zAP.SOi))
-        {
-          AppMethodBeat.o(282885);
-          return 0;
-        }
-        AppMethodBeat.o(282885);
-        return -1;
+      AppMethodBeat.o(332153);
+      return;
+    }
+    localObject = f.Ozc;
+    int i;
+    label67:
+    int j;
+    label81:
+    int k;
+    label121:
+    long l2;
+    if (paramBoolean1)
+    {
+      l1 = 0L;
+      ((f)localObject).idkeyStat(1278L, l1, 1L, false);
+      if (!paramBoolean1) {
+        break label207;
       }
-      AppMethodBeat.o(282885);
-      return -1;
+      i = 2;
+      if ((!paramBoolean2) && (!paramBoolean4)) {
+        break label213;
+      }
+      j = 6;
+      localObject = h.FNM;
+      localObject = h.TA(paramFinderItem.getFeedObject().objectType);
+      if ((paramBoolean5) || (paramBoolean2) || (paramBoolean4) || (localObject == null)) {
+        break label219;
+      }
+      k = 1;
+      localObject = z.FrZ;
+      l2 = paramFinderItem.getId();
+      if (k == 0) {
+        break label225;
+      }
+      k = 1;
+      label140:
+      localObject = paramFinderItem.getMegaVideo();
+      if (localObject != null) {
+        break label231;
+      }
+    }
+    label207:
+    label213:
+    label219:
+    label225:
+    label231:
+    for (long l1 = 0L;; l1 = ((dne)localObject).id)
+    {
+      z.a(parambui, l2, j, i, paramInt1, "", paramInt2, paramBoolean3, paramBoolean5, k, l1);
+      localObject = l.Gdj;
+      l.a(l.fek(), paramFinderItem, paramBoolean1, paramBoolean2, paramInt2, parambui);
+      AppMethodBeat.o(332153);
+      return;
+      l1 = 1L;
+      break;
+      i = 1;
+      break label67;
+      j = 1;
+      break label81;
+      k = 0;
+      break label121;
+      k = 0;
+      break label140;
     }
   }
   
-  public final int bAQ()
+  public static void a(bui parambui, long paramLong, String paramString, au paramau, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
-    AppMethodBeat.i(282884);
-    int i = an.class.hashCode();
-    AppMethodBeat.o(282884);
-    return i;
-  }
-  
-  public final long mf()
-  {
-    AppMethodBeat.i(282883);
-    long l = hashCode();
-    AppMethodBeat.o(282883);
-    return l;
+    AppMethodBeat.i(332172);
+    s.u(parambui, "contextObj");
+    s.u(paramString, "objectNonceId");
+    s.u(paramau, "comment");
+    Object localObject = a.Hdr;
+    if (a.aDj("like"))
+    {
+      AppMethodBeat.o(332172);
+      return;
+    }
+    localObject = d.FAy;
+    int i;
+    long l;
+    if (((Number)d.eSA().bmg()).intValue() != 1)
+    {
+      localObject = d.FAy;
+      if (d.eRy() == 1)
+      {
+        i = 1;
+        Log.i(TAG, "likeComment scene: " + i + ", scene1:" + paramInt);
+        localObject = f.Ozc;
+        if (!paramBoolean1) {
+          break label203;
+        }
+        l = 2L;
+        label127:
+        ((f)localObject).idkeyStat(1278L, l, 1L, false);
+        if (!paramBoolean1) {
+          break label211;
+        }
+      }
+    }
+    label203:
+    label211:
+    for (paramInt = 2;; paramInt = 1)
+    {
+      localObject = z.FrZ;
+      z.a(parambui, paramLong, 4, paramInt, 1, paramau.getUsername(), i);
+      localObject = l.Gdj;
+      l.a(l.fek(), paramLong, paramString, paramau, paramBoolean1, i, parambui, paramBoolean2);
+      AppMethodBeat.o(332172);
+      return;
+      i = paramInt;
+      break;
+      l = 3L;
+      break label127;
+    }
   }
 }
 

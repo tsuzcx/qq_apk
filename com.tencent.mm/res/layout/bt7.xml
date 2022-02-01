@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:layout_gravity="center_horizontal" android:id="@id/ut" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cb"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.emoji.view.CoverEmojiStatusView android:id="@id/ur" android:padding="4.0dip" android:layout_width="@dimen/a2x" android:layout_height="@dimen/a2x" android:src="@color/d" android:scaleType="fitCenter" app:layout_constraintBottom_toTopOf="@id/us" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
-    <TextView android:textSize="@dimen/y" android:textColor="@color/afz" android:id="@id/g9m" android:background="@color/a3b" android:paddingLeft="2.0dip" android:paddingRight="2.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/h2m" app:layout_constraintBottom_toBottomOf="@id/ur" app:layout_constraintEnd_toEndOf="@id/ur" />
-    <TextView android:textSize="12.0sp" android:textColor="?kb" android:id="@id/us" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toBottomOf="@id/ur" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.view.refreshLayout.WxRefreshLayout android:id="@id/ijl" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.plugin.repairer.ui.demo.refresh.view.DemoHeader android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/iiv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
+        <com.tencent.mm.plugin.repairer.ui.demo.refresh.view.DemoFooter android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </com.tencent.mm.view.refreshLayout.WxRefreshLayout>
+</LinearLayout>

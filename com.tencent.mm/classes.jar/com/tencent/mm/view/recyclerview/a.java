@@ -1,13 +1,13 @@
 package com.tencent.mm.view.recyclerview;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/recyclerview/ConvertData;", "", "getItemId", "", "getItemType", "", "libmmui_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/view/recyclerview/ConvertData;", "", "getItemId", "", "getItemType", "", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface a
 {
-  public abstract int bAQ();
+  public abstract long bZA();
   
-  public abstract long mf();
+  public abstract int bZB();
 }
 
 

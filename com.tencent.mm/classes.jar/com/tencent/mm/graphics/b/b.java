@@ -12,14 +12,14 @@ import java.util.List;
 public class b
   implements a
 {
-  private Context jVF;
-  private List<Double> jVG;
-  private int jVH;
-  public double jVI;
-  public double jVJ;
-  public double jVK;
-  public double jVL;
-  public double jVM;
+  private List<Double> mvA;
+  private int mvB;
+  public double mvC;
+  public double mvD;
+  public double mvE;
+  public double mvF;
+  public double mvG;
+  private Context mvz;
   
   static
   {
@@ -36,20 +36,20 @@ public class b
   public b(Context paramContext)
   {
     AppMethodBeat.i(136194);
-    this.jVG = new ArrayList(100);
-    this.jVH = 0;
-    this.jVI = 0.0D;
-    this.jVJ = 0.0D;
-    this.jVK = 2147483647.0D;
-    this.jVL = 0.0D;
-    this.jVM = 0.0D;
-    this.jVF = paramContext;
-    this.jVI = cF(paramContext);
-    Log.v("MicroMsg.MemoryRecord", "hy: init mem to " + this.jVI);
+    this.mvA = new ArrayList(100);
+    this.mvB = 0;
+    this.mvC = 0.0D;
+    this.mvD = 0.0D;
+    this.mvE = 2147483647.0D;
+    this.mvF = 0.0D;
+    this.mvG = 0.0D;
+    this.mvz = paramContext;
+    this.mvC = du(paramContext);
+    Log.v("MicroMsg.MemoryRecord", "hy: init mem to " + this.mvC);
     AppMethodBeat.o(136194);
   }
   
-  private static double cF(Context paramContext)
+  private static double du(Context paramContext)
   {
     AppMethodBeat.i(136197);
     paramContext = (ActivityManager)paramContext.getSystemService("activity");
@@ -66,69 +66,69 @@ public class b
     return d;
   }
   
-  public final void aEV()
+  public final void aXX()
   {
     AppMethodBeat.i(136195);
-    this.jVH = this.jVG.size();
-    if (this.jVH == 0)
+    this.mvB = this.mvA.size();
+    if (this.mvB == 0)
     {
       Log.w("MicroMsg.MemoryRecord", "hy: check frames 0!");
       AppMethodBeat.o(136195);
       return;
     }
-    Iterator localIterator = this.jVG.iterator();
+    Iterator localIterator = this.mvA.iterator();
     Double localDouble1 = Double.valueOf(0.0D);
     Double localDouble2;
     while (localIterator.hasNext())
     {
       localDouble2 = (Double)localIterator.next();
       localDouble1 = Double.valueOf(localDouble1.doubleValue() + localDouble2.doubleValue());
-      this.jVJ = Math.max(this.jVJ, localDouble2.doubleValue());
-      this.jVK = Math.min(this.jVK, localDouble2.doubleValue());
+      this.mvD = Math.max(this.mvD, localDouble2.doubleValue());
+      this.mvE = Math.min(this.mvE, localDouble2.doubleValue());
     }
-    localDouble1 = Double.valueOf(localDouble1.doubleValue() / this.jVH);
-    this.jVM = (localDouble1.doubleValue() - this.jVI);
-    this.jVJ -= this.jVI;
-    this.jVK -= this.jVI;
-    localIterator = this.jVG.iterator();
+    localDouble1 = Double.valueOf(localDouble1.doubleValue() / this.mvB);
+    this.mvG = (localDouble1.doubleValue() - this.mvC);
+    this.mvD -= this.mvC;
+    this.mvE -= this.mvC;
+    localIterator = this.mvA.iterator();
     double d;
     for (long l = 0L; localIterator.hasNext(); l = (Math.pow(localDouble2.doubleValue() - localDouble1.doubleValue(), 2.0D) + d))
     {
       localDouble2 = (Double)localIterator.next();
       d = l;
     }
-    this.jVL = Math.sqrt(l / this.jVH);
+    this.mvF = Math.sqrt(l / this.mvB);
     AppMethodBeat.o(136195);
   }
   
-  public final void aEW()
+  public final void aXY()
   {
     AppMethodBeat.i(136196);
-    if (this.jVG == null)
+    if (this.mvA == null)
     {
       AppMethodBeat.o(136196);
       return;
     }
-    if (this.jVG.size() > 10000)
+    if (this.mvA.size() > 10000)
     {
       AppMethodBeat.o(136196);
       return;
     }
-    if (this.jVF != null)
+    if (this.mvz != null)
     {
-      double d = cF(this.jVF);
-      this.jVI = Math.min(d, this.jVI);
-      if (this.jVI == d) {
-        Log.v("MicroMsg.MemoryRecord", "hy: updating min mem to " + this.jVI);
+      double d = du(this.mvz);
+      this.mvC = Math.min(d, this.mvC);
+      if (this.mvC == d) {
+        Log.v("MicroMsg.MemoryRecord", "hy: updating min mem to " + this.mvC);
       }
-      this.jVG.add(Double.valueOf(d));
+      this.mvA.add(Double.valueOf(d));
     }
     AppMethodBeat.o(136196);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.graphics.b.b
  * JD-Core Version:    0.7.0.1
  */

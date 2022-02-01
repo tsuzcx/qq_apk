@@ -1,23 +1,35 @@
 package com.tencent.mm.plugin.finder.feed.model.internal;
 
-import com.tencent.mm.an.c.a;
-import com.tencent.mm.cw.f;
-import com.tencent.mm.plugin.finder.model.bu;
-import com.tencent.mm.protocal.protobuf.dyy;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.cp.f;
+import com.tencent.mm.plugin.finder.model.cc;
+import com.tencent.mm.protocal.protobuf.esc;
+import com.tencent.mm.vending.e.c;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/internal/DataFetchCgi;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "()V", "lifeCycleKeeper", "Lcom/tencent/mm/vending/lifecycle/LifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "getLifeCycleKeeper", "()Lcom/tencent/mm/vending/lifecycle/LifeCycleKeeper;", "callInit", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "dead", "", "dealOnSceneEnd", "errType", "", "errCode", "errMsg", "", "requestCgi", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/ResponseProtoBuf;", "resp", "fetch", "request", "", "callback", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataCallback;", "fetchInit", "fetchLoadMore", "fetchPreload", "fetchRefresh", "genLoadMoreCgi", "genRefreshCgi", "plugin-finder-base_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/model/internal/DataFetchCgi;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "()V", "lifeCycleKeeper", "Lcom/tencent/mm/vending/lifecycle/LifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "getLifeCycleKeeper", "()Lcom/tencent/mm/vending/lifecycle/LifeCycleKeeper;", "setLifeCycleKeeper", "(Lcom/tencent/mm/vending/lifecycle/LifeCycleKeeper;)V", "alive", "", "callInit", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "dead", "dealOnSceneEnd", "errType", "", "errCode", "errMsg", "", "requestCgi", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/ResponseProtoBuf;", "resp", "fetch", "request", "", "callback", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataCallback;", "isAuto", "", "fetchInit", "fetchLoadMore", "fetchPreload", "fetchRefresh", "genLoadMoreCgi", "genRefreshCgi", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class b
-  extends i<bu>
+  extends i<cc>
 {
-  private final com.tencent.mm.vending.e.c<com.tencent.mm.vending.e.a> xbq = new com.tencent.mm.vending.e.c();
+  private c<com.tencent.mm.vending.e.a> AAh = new c();
   
-  public abstract IResponse<bu> a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.c<? extends dyy> paramc, dyy paramdyy);
+  private static final ah g(kotlin.g.a.b paramb, Object paramObject)
+  {
+    s.u(paramb, "$tmp0");
+    return (ah)paramb.invoke(paramObject);
+  }
   
-  public IResponse<bu> callInit()
+  public abstract IResponse<cc> a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.b<? extends esc> paramb, esc paramesc);
+  
+  public void alive()
+  {
+    super.alive();
+    this.AAh = new c();
+  }
+  
+  public IResponse<cc> callInit()
   {
     return (IResponse)new e();
   }
@@ -25,53 +37,58 @@ public abstract class b
   public void dead()
   {
     super.dead();
-    this.xbq.dead();
+    this.AAh.dead();
   }
   
-  public abstract com.tencent.mm.an.c<? extends dyy> duq();
+  public abstract com.tencent.mm.am.b<? extends esc> edO();
   
-  public abstract com.tencent.mm.an.c<? extends dyy> dur();
+  public abstract com.tencent.mm.am.b<? extends esc> edP();
   
-  public void fetch(final Object paramObject, final h<bu> paramh)
+  public void fetch(final Object paramObject, final h<cc> paramh, boolean paramBoolean)
   {
-    p.k(paramh, "callback");
-    if ((paramObject != null) && ((paramObject instanceof com.tencent.mm.an.c))) {
-      ((com.tencent.mm.an.c)paramObject).bhW().a((com.tencent.mm.vending.e.b)this.xbq).g((com.tencent.mm.vending.c.a)new a(this, paramObject, paramh));
+    s.u(paramh, "callback");
+    if ((paramObject != null) && ((paramObject instanceof com.tencent.mm.am.b))) {
+      ((com.tencent.mm.am.b)paramObject).bFJ().a((com.tencent.mm.vending.e.b)this.AAh).g(new b..ExternalSyntheticLambda0((kotlin.g.a.b)new a(this, paramObject, paramh)));
     }
   }
   
-  public void fetchInit(h<bu> paramh)
+  public void fetchInit(h<cc> paramh)
   {
-    p.k(paramh, "callback");
+    s.u(paramh, "callback");
     IResponse localIResponse = callInit();
     localIResponse.setPullType(1000);
+    ah localah = ah.aiuX;
     paramh.onFetchDone(localIResponse);
   }
   
-  public void fetchLoadMore(h<bu> paramh)
+  public void fetchLoadMore(h<cc> paramh, boolean paramBoolean)
   {
-    p.k(paramh, "callback");
-    fetch(dur(), paramh);
+    s.u(paramh, "callback");
+    i.fetch$default((i)this, edP(), paramh, false, 4, null);
   }
   
-  public void fetchPreload(h<bu> paramh)
+  public void fetchPreload(h<cc> paramh)
   {
-    p.k(paramh, "callback");
+    s.u(paramh, "callback");
     super.fetchPreload(paramh);
-    fetch(duq(), paramh);
+    i.fetch$default((i)this, edO(), paramh, false, 4, null);
   }
   
-  public void fetchRefresh(h<bu> paramh)
+  public void fetchRefresh(h<cc> paramh)
   {
-    p.k(paramh, "callback");
-    fetch(duq(), paramh);
+    s.u(paramh, "callback");
+    i.fetch$default((i)this, edO(), paramh, false, 4, null);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/ResponseProtoBuf;", "kotlin.jvm.PlatformType", "call"})
-  static final class a<_Ret, _Var>
-    implements com.tencent.mm.vending.c.a<_Ret, _Var>
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/ResponseProtoBuf;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements kotlin.g.a.b<com.tencent.mm.am.b.a<? extends esc>, ah>
   {
-    a(b paramb, Object paramObject, h paramh) {}
+    a(b paramb, Object paramObject, h<cc> paramh)
+    {
+      super();
+    }
   }
 }
 

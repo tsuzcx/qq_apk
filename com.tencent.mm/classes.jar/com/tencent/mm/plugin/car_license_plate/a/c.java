@@ -1,54 +1,56 @@
 package com.tencent.mm.plugin.car_license_plate.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ahg;
-import com.tencent.mm.protocal.protobuf.ahh;
-import com.tencent.mm.protocal.protobuf.dyl;
-import com.tencent.mm.protocal.protobuf.dyy;
+import com.tencent.mm.protocal.protobuf.ajv;
+import com.tencent.mm.protocal.protobuf.ajw;
+import com.tencent.mm.protocal.protobuf.erp;
+import com.tencent.mm.protocal.protobuf.esc;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.d.d;
-import kotlin.l;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/car_license_plate/cgi/CgiDeletePlateNo;", "Lcom/tencent/mm/plugin/car_license_plate/cgi/CarLicensePlateCgiBase;", "Lcom/tencent/mm/protocal/protobuf/DeleteUserPlateInfoRequest;", "Lcom/tencent/mm/protocal/protobuf/DeleteUserPlateInfoResponse;", "plateNo", "", "(Ljava/lang/String;)V", "CMD_ID", "", "getCMD_ID", "()I", "LOG_TAG", "getLOG_TAG", "()Ljava/lang/String;", "URL", "getURL", "getPlateNo", "send", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "plugin-car-license-plate_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/car_license_plate/cgi/CgiDeletePlateNo;", "Lcom/tencent/mm/plugin/car_license_plate/cgi/CarLicensePlateCgiBase;", "Lcom/tencent/mm/protocal/protobuf/DeleteUserPlateInfoRequest;", "Lcom/tencent/mm/protocal/protobuf/DeleteUserPlateInfoResponse;", "plateNo", "", "(Ljava/lang/String;)V", "CMD_ID", "", "getCMD_ID", "()I", "LOG_TAG", "getLOG_TAG", "()Ljava/lang/String;", "URL", "getURL", "getPlateNo", "send", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "plugin-car-license-plate_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
-  extends a<ahg, ahh>
+  extends a<ajv, ajw>
 {
   private final String LOG_TAG;
   private final String URL;
-  private final int sXA;
-  private final String sXB;
+  private final String wbV;
+  private final int wbW;
   
   public c(String paramString)
   {
-    super((dyl)localahg, (dyy)new ahh());
-    this.sXB = paramString;
+    super((erp)localajv, (esc)new ajw());
+    this.wbV = paramString;
     this.LOG_TAG = "MicroMsg.CgiDeletePlateNo";
     this.URL = "/cgi-bin/mmbiz-bin/wxabusiness/deleteuserplateinfo";
-    this.sXA = 5988;
-    AppMethodBeat.o(186492);
+    this.wbW = 5988;
+    AppMethodBeat.o(277566);
   }
   
-  public final String btD()
+  public final Object U(d<? super ajw> paramd)
+  {
+    AppMethodBeat.i(277585);
+    Np(s.X("send delete plateNo:", this.wbV));
+    paramd = super.U(paramd);
+    AppMethodBeat.o(277585);
+    return paramd;
+  }
+  
+  public final String cgR()
   {
     return this.URL;
   }
   
-  public final Object c(d<? super ahh> paramd)
-  {
-    AppMethodBeat.i(186489);
-    aqH("send delete plateNo:" + this.sXB);
-    paramd = super.c(paramd);
-    AppMethodBeat.o(186489);
-    return paramd;
-  }
-  
-  public final String cFu()
+  public final String diO()
   {
     return this.LOG_TAG;
   }
   
-  public final int cFv()
+  public final int diP()
   {
-    return this.sXA;
+    return this.wbW;
   }
 }
 

@@ -15,16 +15,16 @@ public class CardTextPreference
   extends Preference
 {
   Context mContext;
-  private TextView tHj;
-  public int tHk;
-  boolean tHl;
-  private TextView wB;
+  private TextView wKK;
+  public int wKL;
+  boolean wKM;
+  private TextView xw;
   
   public CardTextPreference(Context paramContext)
   {
     super(paramContext, null);
-    this.tHk = 0;
-    this.tHl = true;
+    this.wKL = 0;
+    this.wKM = true;
     this.mContext = paramContext;
   }
   
@@ -32,8 +32,8 @@ public class CardTextPreference
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(113886);
-    this.tHk = 0;
-    this.tHl = true;
+    this.wKL = 0;
+    this.wKM = true;
     setLayoutResource(a.e.mm_preference);
     this.mContext = paramContext;
     AppMethodBeat.o(113886);
@@ -42,8 +42,8 @@ public class CardTextPreference
   public CardTextPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.tHk = 0;
-    this.tHl = true;
+    this.wKL = 0;
+    this.wKM = true;
     this.mContext = paramContext;
   }
   
@@ -59,7 +59,7 @@ public class CardTextPreference
     AppMethodBeat.o(113892);
   }
   
-  private static Rect eb(View paramView)
+  private static Rect eP(View paramView)
   {
     AppMethodBeat.i(113891);
     Rect localRect = new Rect();
@@ -71,37 +71,37 @@ public class CardTextPreference
     return localRect;
   }
   
-  private void lO(boolean paramBoolean)
+  private void nj(boolean paramBoolean)
   {
     AppMethodBeat.i(113890);
-    if (this.wB != null)
+    if (this.xw != null)
     {
-      Rect localRect = eb(this.wB);
-      this.wB.setSingleLine(paramBoolean);
+      Rect localRect = eP(this.xw);
+      this.xw.setSingleLine(paramBoolean);
       if (!paramBoolean)
       {
         localRect.top = this.mContext.getResources().getDimensionPixelOffset(a.b.LargePadding);
         localRect.bottom = this.mContext.getResources().getDimensionPixelOffset(a.b.LargePadding);
-        e(this.wB, localRect);
+        e(this.xw, localRect);
       }
     }
     AppMethodBeat.o(113890);
   }
   
-  public final void cLl()
+  public final void doU()
   {
     AppMethodBeat.i(113888);
-    if ((this.tHj != null) && (this.tHk != 0)) {
-      this.tHj.setTextColor(this.tHk);
+    if ((this.wKK != null) && (this.wKL != 0)) {
+      this.wKK.setTextColor(this.wKL);
     }
     AppMethodBeat.o(113888);
   }
   
-  public final void cLm()
+  public final void doV()
   {
     AppMethodBeat.i(113889);
-    lO(false);
-    this.tHl = false;
+    nj(false);
+    this.wKM = false;
     AppMethodBeat.o(113889);
   }
   
@@ -109,16 +109,16 @@ public class CardTextPreference
   {
     AppMethodBeat.i(113887);
     super.onBindView(paramView);
-    this.tHj = ((TextView)paramView.findViewById(16908304));
-    this.wB = ((TextView)paramView.findViewById(16908310));
-    cLl();
-    lO(this.tHl);
+    this.wKK = ((TextView)paramView.findViewById(16908304));
+    this.xw = ((TextView)paramView.findViewById(16908310));
+    doU();
+    nj(this.wKM);
     AppMethodBeat.o(113887);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.card.widget.CardTextPreference
  * JD-Core Version:    0.7.0.1
  */

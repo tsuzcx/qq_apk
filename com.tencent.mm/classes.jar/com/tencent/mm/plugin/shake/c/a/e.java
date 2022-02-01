@@ -1,293 +1,207 @@
 package com.tencent.mm.plugin.shake.c.a;
 
-import android.text.TextUtils;
+import android.bluetooth.BluetoothAdapter;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.vq;
-import com.tencent.mm.model.bh;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.compatible.deviceinfo.q;
+import com.tencent.mm.model.cb;
+import com.tencent.mm.modelstat.n;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.dau;
+import com.tencent.mm.protocal.protobuf.dav;
+import com.tencent.mm.protocal.protobuf.dba;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.platformtools.XmlParser;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Collection;
+import java.util.Iterator;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class e
+  extends p
+  implements m
 {
-  private String Jnh;
-  public List<WeakReference<a>> cSF;
+  private long PBp;
+  int action;
+  private com.tencent.mm.am.h callback;
+  final c oDw;
   
-  public e()
+  public e(Collection<j.a> paramCollection, float paramFloat1, float paramFloat2, int paramInt)
   {
-    AppMethodBeat.i(28190);
-    this.cSF = new ArrayList();
-    this.Jnh = "";
-    this.Jnh = com.tencent.mm.plugin.shake.c.c.a.fHJ();
-    AppMethodBeat.o(28190);
-  }
-  
-  private static void a(b paramb)
-  {
-    AppMethodBeat.i(28194);
-    if (paramb == null)
+    AppMethodBeat.i(28280);
+    this.action = 1;
+    this.PBp = 0L;
+    this.action = 1;
+    Object localObject1 = new c.a();
+    ((c.a)localObject1).otE = new dau();
+    ((c.a)localObject1).otF = new dav();
+    ((c.a)localObject1).uri = "/cgi-bin/micromsg-bin/ibeaconboardcast";
+    ((c.a)localObject1).funcId = 658;
+    ((c.a)localObject1).otG = 0;
+    ((c.a)localObject1).respCmdId = 0;
+    this.oDw = ((c.a)localObject1).bEF();
+    Object localObject2 = cb.bDe();
+    localObject1 = Util.nullAsNil(((cb)localObject2).provinceCode);
+    localObject2 = Util.nullAsNil(((cb)localObject2).cityCode);
+    BluetoothAdapter localBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+    dau localdau = (dau)c.b.b(this.oDw.otB);
+    localdau.aaGq = Util.nullAsNil(null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{\"Beacons\":[");
+    if (paramCollection != null)
     {
-      Log.e("MicroMsg.ShakeCardMsgMgr", "saveEntranceMsg msg == null");
-      AppMethodBeat.o(28194);
-      return;
-    }
-    Log.i("MicroMsg.ShakeCardMsgMgr", "saveEntranceMsg msg");
-    if (!com.tencent.mm.plugin.shake.c.c.a.fHj()) {
-      Log.i("MicroMsg.ShakeCardMsgMgr", "saveEntranceMsg isShakeCardEntranceOpen is false");
-    }
-    Log.i("MicroMsg.ShakeCardMsgMgr", "saveEntranceMsg begintime:" + paramb.Jni + "  endtime:" + paramb.Jnj + "  flowlevelmin:" + paramb.Jnm + "  flowlevelmax:" + paramb.Jnn + " entrancename:" + paramb.Jnk + " activitytype:" + paramb.Jnl);
-    bh.beI();
-    com.tencent.mm.model.c.aHp().set(ar.a.Vgo, Integer.valueOf(paramb.Jni));
-    bh.beI();
-    com.tencent.mm.model.c.aHp().set(ar.a.Vgp, Integer.valueOf(paramb.Jnj));
-    bh.beI();
-    com.tencent.mm.model.c.aHp().set(ar.a.Vgq, paramb.Jnk);
-    bh.beI();
-    com.tencent.mm.model.c.aHp().set(ar.a.Vgu, Integer.valueOf(paramb.Jnl));
-    bh.beI();
-    com.tencent.mm.model.c.aHp().set(ar.a.Vgr, Integer.valueOf(paramb.Jnm));
-    bh.beI();
-    com.tencent.mm.model.c.aHp().set(ar.a.Vgs, Integer.valueOf(paramb.Jnn));
-    bh.beI();
-    com.tencent.mm.model.c.aHp().set(ar.a.Vgt, paramb.Jno);
-    AppMethodBeat.o(28194);
-  }
-  
-  private void a(d paramd)
-  {
-    AppMethodBeat.i(28196);
-    if (paramd == null)
-    {
-      Log.e("MicroMsg.ShakeCardMsgMgr", "saveRedDotMsg msg == null");
-      AppMethodBeat.o(28196);
-      return;
-    }
-    Log.i("MicroMsg.ShakeCardMsgMgr", "saveRedDotMsg msg reddotid is " + paramd.Jnp);
-    Log.i("MicroMsg.ShakeCardMsgMgr", "saveRedDotMsg pre reddotid is " + this.Jnh);
-    if (TextUtils.isEmpty(paramd.Jnp))
-    {
-      Log.i("MicroMsg.ShakeCardMsgMgr", "msg.reddotid is empty");
-      AppMethodBeat.o(28196);
-      return;
-    }
-    if (TextUtils.isEmpty(this.Jnh))
-    {
-      Log.i("MicroMsg.ShakeCardMsgMgr", "redDotId is empty, msg.reddotid is not empty");
-      com.tencent.mm.aa.c.aFn().D(262154, true);
-      bh.beI();
-      com.tencent.mm.model.c.aHp().set(ar.a.Vgv, paramd.Jnp);
-      bh.beI();
-      com.tencent.mm.model.c.aHp().set(ar.a.Vgw, paramd.Jnq);
-      bh.beI();
-      com.tencent.mm.model.c.aHp().set(ar.a.Vgx, paramd.Jnr);
-      onChange();
-      AppMethodBeat.o(28196);
-      return;
-    }
-    if (!this.Jnh.equals(paramd.Jnp))
-    {
-      Log.i("MicroMsg.ShakeCardMsgMgr", "redDotId and msg.reddotid is not empty, but no equals");
-      com.tencent.mm.aa.c.aFn().D(262154, true);
-      bh.beI();
-      com.tencent.mm.model.c.aHp().set(ar.a.Vgv, paramd.Jnp);
-      bh.beI();
-      com.tencent.mm.model.c.aHp().set(ar.a.Vgw, paramd.Jnq);
-      bh.beI();
-      com.tencent.mm.model.c.aHp().set(ar.a.Vgx, paramd.Jnr);
-      onChange();
-      AppMethodBeat.o(28196);
-      return;
-    }
-    if (this.Jnh.equals(paramd.Jnp)) {
-      Log.i("MicroMsg.ShakeCardMsgMgr", "redDotId equals msg.reddotid");
-    }
-    AppMethodBeat.o(28196);
-  }
-  
-  private static b aXT(String paramString)
-  {
-    AppMethodBeat.i(28193);
-    Object localObject = XmlParser.parseXml(paramString, "sysmsg", null);
-    if (localObject == null)
-    {
-      AppMethodBeat.o(28193);
-      return null;
-    }
-    paramString = new b();
-    String str = (String)((Map)localObject).get(".sysmsg.begintime");
-    if ((!TextUtils.isEmpty(str)) && (isNumeric(str)))
-    {
-      paramString.Jni = Util.getInt(str, 0);
-      str = (String)((Map)localObject).get(".sysmsg.endtime");
-      if ((TextUtils.isEmpty(str)) || (!isNumeric(str))) {
-        break label291;
-      }
-      paramString.Jnj = Util.getInt(str, 0);
-      label105:
-      paramString.Jnk = ((String)((Map)localObject).get(".sysmsg.entrancename"));
-      str = (String)((Map)localObject).get(".sysmsg.activitytype");
-      if ((TextUtils.isEmpty(str)) || (!isNumeric(str))) {
-        break label314;
-      }
-      paramString.Jnl = Util.getInt(str, 0);
-      label157:
-      Log.i("MicroMsg.ShakeCardMsgMgr", "parseEntrancedMsgFromMsgXml activitytype is ".concat(String.valueOf(str)));
-      str = (String)((Map)localObject).get(".sysmsg.flowcontrollevelmin");
-      if ((TextUtils.isEmpty(str)) || (!isNumeric(str))) {
-        break label322;
-      }
-      paramString.Jnm = Util.getInt(str, 0);
-      label208:
-      paramString.Jno = ((String)((Map)localObject).get(".sysmsg.shakecardentrancetip"));
-      localObject = (String)((Map)localObject).get(".sysmsg.flowcontrollevelmax");
-      if ((TextUtils.isEmpty((CharSequence)localObject)) || (!isNumeric((String)localObject))) {
-        break label345;
-      }
-    }
-    for (paramString.Jnn = Util.getInt((String)localObject, 0);; paramString.Jnn = 0)
-    {
-      AppMethodBeat.o(28193);
-      return paramString;
-      Log.e("MicroMsg.ShakeCardMsgMgr", "parseEntrancedMsgFromMsgXml begintime is ".concat(String.valueOf(str)));
-      paramString.Jni = 0;
-      break;
-      label291:
-      Log.e("MicroMsg.ShakeCardMsgMgr", "parseEntrancedMsgFromMsgXml endtime is ".concat(String.valueOf(str)));
-      paramString.Jnj = 0;
-      break label105;
-      label314:
-      paramString.Jnl = 1;
-      break label157;
-      label322:
-      Log.e("MicroMsg.ShakeCardMsgMgr", "parseEntrancedMsgFromMsgXml flowcontrollevelmin is ".concat(String.valueOf(str)));
-      paramString.Jnm = 0;
-      break label208;
-      label345:
-      Log.e("MicroMsg.ShakeCardMsgMgr", "parseEntrancedMsgFromMsgXml flowcontrollevelmax is ".concat(String.valueOf(localObject)));
-    }
-  }
-  
-  private static d aXU(String paramString)
-  {
-    AppMethodBeat.i(28195);
-    paramString = XmlParser.parseXml(paramString, "sysmsg", null);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(28195);
-      return null;
-    }
-    d locald = new d();
-    locald.Jnp = ((String)paramString.get(".sysmsg.reddotid"));
-    locald.Jnq = ((String)paramString.get(".sysmsg.reddotdesc"));
-    locald.Jnr = ((String)paramString.get(".sysmsg.reddottext"));
-    AppMethodBeat.o(28195);
-    return locald;
-  }
-  
-  private static void fHw()
-  {
-    AppMethodBeat.i(28192);
-    vq localvq = new vq();
-    EventCenter.instance.publish(localvq);
-    AppMethodBeat.o(28192);
-  }
-  
-  private static boolean isNumeric(String paramString)
-  {
-    AppMethodBeat.i(28197);
-    boolean bool = Pattern.compile("[0-9]*").matcher(paramString).matches();
-    AppMethodBeat.o(28197);
-    return bool;
-  }
-  
-  private void onChange()
-  {
-    AppMethodBeat.i(28198);
-    if (this.cSF == null)
-    {
-      AppMethodBeat.o(28198);
-      return;
-    }
-    int i = 0;
-    while (i < this.cSF.size())
-    {
-      Object localObject = (WeakReference)this.cSF.get(i);
-      if (localObject != null)
+      j = paramCollection.size();
+      Iterator localIterator = paramCollection.iterator();
+      i = 0;
+      while (localIterator.hasNext())
       {
-        localObject = (a)((WeakReference)localObject).get();
-        if (localObject != null) {
-          ((a)localObject).fHx();
+        j.a locala = (j.a)localIterator.next();
+        localStringBuilder.append("{\"UUID\":\"" + locala.uuid + "\",\"Location\":{\"Major\":" + locala.rid + ",\"Minor\":" + locala.rie + "},\"Distance\":" + locala.sgn + ",\"Extra\":\"\",\"MacAddress\":\"" + locala.PBy + "\",\"Rssi\":\"" + locala.PBz + "\",\"MeasurePower\":\"" + locala.PBA + "\"}");
+        if (i < j - 1) {
+          localStringBuilder.append(",");
+        }
+        i += 1;
+      }
+    }
+    int j = 1;
+    boolean bool = MMApplicationContext.getContext().getPackageManager().hasSystemFeature("android.hardware.bluetooth_le");
+    int i = j;
+    if (localBluetoothAdapter != null)
+    {
+      i = j;
+      if (localBluetoothAdapter.getState() == 12)
+      {
+        i = j;
+        if (Build.VERSION.SDK_INT >= 18)
+        {
+          i = j;
+          if (bool) {
+            i = 0;
+          }
         }
       }
-      i += 1;
     }
-    AppMethodBeat.o(28198);
+    localStringBuilder.append("],\"Action\":1,\"LBS\":{\"Latitude\":" + paramFloat1 + ",\"Longitude\":" + paramFloat2 + ",\"Province\":\"" + (String)localObject1 + "\",\"City\":\"" + (String)localObject2 + "\"},\"MachineID\":\"" + q.aPg() + "\",\"ZBBeaconState\":\"" + i + "\"}");
+    localdau.nUB = localStringBuilder.toString();
+    if (paramCollection != null) {}
+    for (i = paramCollection.size();; i = 0)
+    {
+      Log.i("MicroMsg.NetSceneShakeIbeacon", "[oneliang]beaconCollection.size:%d,json:%s", new Object[] { Integer.valueOf(i), localdau.nUB });
+      n.a(2008, paramFloat2, paramFloat1, paramInt);
+      AppMethodBeat.o(28280);
+      return;
+    }
   }
   
-  public final void n(String paramString, long paramLong, int paramInt)
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
-    AppMethodBeat.i(28191);
-    Log.i("MicroMsg.ShakeCardMsgMgr", "msg_id is ".concat(String.valueOf(paramLong)));
-    if (TextUtils.isEmpty(paramString))
+    AppMethodBeat.i(28281);
+    this.PBp = System.currentTimeMillis();
+    this.callback = paramh;
+    int i = dispatch(paramg, this.oDw, this);
+    AppMethodBeat.o(28281);
+    return i;
+  }
+  
+  public final int getType()
+  {
+    return 658;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(28282);
+    Log.i("MicroMsg.NetSceneShakeIbeacon", "[oneliang][NetSceneShakeIbeacon]:netId:%s,errType:%s,errCode:%s,errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    this.PBp = (System.currentTimeMillis() - this.PBp);
+    com.tencent.mm.plugin.report.service.h.OAn.b(11497, new Object[] { String.valueOf((int)(this.PBp / 1000L + 0.5D)), Integer.valueOf(1), Integer.valueOf((int)this.PBp) });
+    Object localObject1;
+    int i;
+    if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      Log.e("MicroMsg.ShakeCardMsgMgr", "onReceive() msgText is empty");
-      AppMethodBeat.o(28191);
-      return;
-    }
-    if (paramInt == 0)
-    {
-      Log.i("MicroMsg.ShakeCardMsgMgr", "onReceive() msgText is MSG_TYPE_ENTRANCE");
-      a(aXT(paramString));
-      fHw();
-    }
-    for (;;)
-    {
-      com.tencent.mm.plugin.shake.c.c.a.fHi();
-      AppMethodBeat.o(28191);
-      return;
-      if (paramInt == 1)
+      Log.d("MicroMsg.NetSceneShakeIbeacon", "[oneliang][NetSceneShakeIbeacon]:net end ok");
+      paramString = (dav)c.c.b(this.oDw.otC);
+      try
       {
-        Log.i("MicroMsg.ShakeCardMsgMgr", "onReceive() msgText is MSG_TYPE_RED_DOT");
-        a(aXU(paramString));
-        fHw();
+        params = new JSONObject(((dau)c.b.b(this.oDw.otB)).nUB);
+        localObject1 = params.getJSONArray("Beacons");
+        paramInt1 = ((JSONArray)localObject1).length();
+        paramArrayOfByte = params.getJSONObject("LBS");
+        paramInt2 = params.getInt("Action");
+        params = paramArrayOfByte.getString("Latitude");
+        paramArrayOfByte = paramArrayOfByte.getString("Longitude");
+        if (paramInt1 > 0)
+        {
+          Object localObject2 = ((JSONArray)localObject1).getJSONObject(0);
+          localObject1 = ((JSONObject)localObject2).getString("UUID");
+          localObject2 = ((JSONObject)localObject2).getJSONObject("Location");
+          paramInt3 = ((JSONObject)localObject2).getInt("Major");
+          i = ((JSONObject)localObject2).getInt("Minor");
+          if ((paramString.aaGr != null) && (paramString.aaGr.aaGv == 0))
+          {
+            localObject2 = paramString.aaGr.IHO;
+            if ((paramInt2 == 1) && (localObject2 != null) && (!((String)localObject2).equals("")) && (new JSONObject((String)localObject2).getJSONArray("msgs").length() == 0)) {
+              com.tencent.mm.plugin.report.service.h.OAn.b(12659, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt1), localObject1, Integer.valueOf(paramInt3), Integer.valueOf(i), params, paramArrayOfByte, Integer.valueOf(2), Integer.valueOf(paramString.aaGr.aaGv) });
+            }
+            AppMethodBeat.o(28282);
+            return;
+          }
+          com.tencent.mm.plugin.report.service.h.OAn.b(12659, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt1), localObject1, Integer.valueOf(paramInt3), Integer.valueOf(i), params, paramArrayOfByte, Integer.valueOf(2), Integer.valueOf(paramString.aaGr.aaGv) });
+          AppMethodBeat.o(28282);
+          return;
+        }
+      }
+      catch (JSONException paramString)
+      {
+        Log.e("MicroMsg.NetSceneShakeIbeacon", "parse IBeaconBoardcastRequest json error!");
+        AppMethodBeat.o(28282);
+        return;
+      }
+      com.tencent.mm.plugin.report.service.h.OAn.b(12659, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt1), "", Integer.valueOf(0), Integer.valueOf(0), params, paramArrayOfByte, Integer.valueOf(2), Integer.valueOf(paramString.aaGr.aaGv) });
+      AppMethodBeat.o(28282);
+      return;
+    }
+    Log.d("MicroMsg.NetSceneShakeIbeacon", "[oneliang][NetSceneShakeIbeacon]:net end not ok");
+    paramString = ((dau)c.b.b(this.oDw.otB)).nUB;
+    try
+    {
+      paramString = new JSONObject(paramString);
+      paramArrayOfByte = paramString.getJSONArray("Beacons");
+      paramInt1 = paramArrayOfByte.length();
+      params = paramString.getJSONObject("LBS");
+      paramString = params.getString("Latitude");
+      params = params.getString("Longitude");
+      if (paramInt1 > 0)
+      {
+        localObject1 = paramArrayOfByte.getJSONObject(0);
+        paramArrayOfByte = ((JSONObject)localObject1).getString("UUID");
+        localObject1 = ((JSONObject)localObject1).getJSONObject("Location");
+        paramInt2 = ((JSONObject)localObject1).getInt("Major");
+        i = ((JSONObject)localObject1).getInt("Minor");
+        com.tencent.mm.plugin.report.service.h.OAn.b(12659, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt1), paramArrayOfByte, Integer.valueOf(paramInt2), Integer.valueOf(i), paramString, params, Integer.valueOf(1), Integer.valueOf(paramInt3) });
+        AppMethodBeat.o(28282);
+        return;
       }
     }
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void fHx();
-  }
-  
-  public static final class b
-    extends e.c
-  {
-    protected int Jni = 0;
-    protected int Jnj = 0;
-    protected String Jnk = "";
-    protected int Jnl = 0;
-    protected int Jnm = 0;
-    protected int Jnn = 7;
-    protected String Jno = "";
-  }
-  
-  public static class c {}
-  
-  public static final class d
-    extends e.c
-  {
-    protected String Jnp;
-    protected String Jnq;
-    protected String Jnr;
+    catch (JSONException paramString)
+    {
+      Log.e("MicroMsg.NetSceneShakeIbeacon", "parse IBeaconBoardcastRequest json error!");
+      AppMethodBeat.o(28282);
+      return;
+    }
+    com.tencent.mm.plugin.report.service.h.OAn.b(12659, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt1), "", Integer.valueOf(0), Integer.valueOf(0), paramString, params, Integer.valueOf(1), Integer.valueOf(paramInt3) });
+    AppMethodBeat.o(28282);
   }
 }
 

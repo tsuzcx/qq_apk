@@ -1,139 +1,190 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.res.Resources;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.oa;
-import com.tencent.mm.plugin.remittance.model.ae;
-import com.tencent.mm.plugin.wxpay.a.c;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.protocal.protobuf.zh;
-import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.protocal.protobuf.asl;
+import com.tencent.mm.protocal.protobuf.asm;
+import com.tencent.mm.protocal.protobuf.sg;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.tools.g.a;
-import com.tencent.mm.ui.widget.MMNeat7extView;
-import com.tencent.mm.ui.widget.a.d;
-import com.tencent.mm.ui.widget.a.f.a;
-import com.tencent.mm.ui.widget.a.f.c;
+import java.math.BigInteger;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public final class c
 {
-  private zh ImL;
-  public a Ioa;
-  public Context mContext;
+  asl Olg = null;
+  sg Olh;
   
-  public c(Context paramContext)
+  private static boolean a(List<asm> paramList, asl paramasl)
   {
-    this.mContext = paramContext;
-  }
-  
-  public final void a(final ae paramae, final zh paramzh, final a parama)
-  {
-    AppMethodBeat.i(67940);
-    this.Ioa = parama;
-    this.ImL = paramzh;
-    Object localObject = View.inflate(this.mContext, a.g.real_name_check_dialog, null);
-    TextView localTextView = (TextView)((View)localObject).findViewById(a.f.last_name);
-    parama = (EditText)((View)localObject).findViewById(a.f.first_name);
-    ((MMNeat7extView)((View)localObject).findViewById(a.f.content)).aL(this.ImL.wording);
-    localTextView.setText(paramzh.GHJ);
-    paramzh = new f.a(this.mContext);
-    paramzh.aR(this.ImL.title).iK((View)localObject);
-    paramzh.bBp(this.mContext.getResources().getString(a.i.app_sure));
-    com.tencent.mm.ui.tools.b.c.i(parama).b(g.a.XSt).mM(1, 1).Hh(false).a(null);
-    parama.addTextChangedListener(new TextWatcher()
+    AppMethodBeat.i(67927);
+    if (paramasl.YXg.size() == 0)
     {
-      public final void afterTextChanged(Editable paramAnonymousEditable)
-      {
-        AppMethodBeat.i(186871);
-        if (paramzh.mUO != null)
-        {
-          if (parama.length() > 0)
-          {
-            paramzh.mUO.asd(c.this.mContext.getResources().getColor(a.c.Link_100));
-            paramzh.mUO.ayb(-1).setEnabled(true);
-            AppMethodBeat.o(186871);
-            return;
-          }
-          paramzh.mUO.asd(-2141754475);
-          paramzh.mUO.ayb(-1).setEnabled(false);
-        }
-        AppMethodBeat.o(186871);
-      }
-      
-      public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
-      
-      public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
-    });
-    MMHandlerThread.postToMainThreadDelayed(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(211052);
-        parama.requestFocus();
-        ((InputMethodManager)c.this.mContext.getSystemService("input_method")).showSoftInput(parama, 0);
-        AppMethodBeat.o(211052);
-      }
-    }, 200L);
-    localObject = new oa();
-    ((oa)localObject).has = paramae.amount;
-    localObject = ((oa)localObject).EJ(paramae.username);
-    ((oa)localObject).hal = 1L;
-    ((oa)localObject).bpa();
-    paramzh.c(new f.c()
-    {
-      public final void g(boolean paramAnonymousBoolean, String paramAnonymousString)
-      {
-        AppMethodBeat.i(270905);
-        if (paramAnonymousBoolean)
-        {
-          paramAnonymousString = new oa();
-          paramAnonymousString.has = paramae.amount;
-          paramAnonymousString = paramAnonymousString.EJ(paramae.username);
-          paramAnonymousString.hal = 3L;
-          paramAnonymousString.bpa();
-          c.this.Ioa.aWF(parama.getText().toString());
-          AppMethodBeat.o(270905);
-          return;
-        }
-        paramAnonymousString = new oa();
-        paramAnonymousString.has = paramae.amount;
-        paramAnonymousString = paramAnonymousString.EJ(paramae.username);
-        paramAnonymousString.hal = 2L;
-        paramAnonymousString.bpa();
-        c.this.Ioa.onCancel();
-        AppMethodBeat.o(270905);
-      }
-    }).show();
-    if ((paramzh.mUO != null) && (Util.isNullOrNil(parama.getText())))
-    {
-      paramzh.mUO.ayb(-1).setEnabled(false);
-      paramzh.mUO.asd(-2141754475);
+      AppMethodBeat.o(67927);
+      return false;
     }
-    AppMethodBeat.o(67940);
+    HashSet localHashSet = new HashSet();
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      localHashSet.add(Long.valueOf(((asm)paramList.next()).ZCm));
+    }
+    paramList = paramasl.YXg.iterator();
+    while (paramList.hasNext()) {
+      if (!localHashSet.contains(Long.valueOf(((asm)paramList.next()).ZCm)))
+      {
+        AppMethodBeat.o(67927);
+        return false;
+      }
+    }
+    AppMethodBeat.o(67927);
+    return true;
   }
   
-  public static abstract interface a
+  public final boolean a(List<asm> paramList, asm paramasm)
   {
-    public abstract void aWF(String paramString);
+    AppMethodBeat.i(67926);
+    if (this.Olh == null)
+    {
+      Log.e("MicroMsg.FavorInfoPicked", "error setFavorInfoList currentFavorResp is null");
+      AppMethodBeat.o(67926);
+      return false;
+    }
+    if (paramasm != null) {}
+    for (Object localObject1 = new BigInteger(Long.toBinaryString(paramasm.ZCm), 2).toString();; localObject1 = null)
+    {
+      Object localObject2 = new LinkedList();
+      Iterator localIterator = this.Olh.YXh.iterator();
+      while (localIterator.hasNext())
+      {
+        asl localasl = (asl)localIterator.next();
+        if ((paramasm == null) || ((!Util.isNullOrNil((String)localObject1)) && (localasl.ZCd.contains((CharSequence)localObject1)))) {
+          ((List)localObject2).add(localasl);
+        }
+      }
+      paramasm = new LinkedList();
+      localObject1 = ((List)localObject2).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (asl)((Iterator)localObject1).next();
+        if (a(paramList, (asl)localObject2)) {
+          paramasm.add(localObject2);
+        }
+      }
+      if (paramasm.size() > 0)
+      {
+        Collections.sort(paramasm, new a());
+        this.Olg = ((asl)paramasm.get(0));
+        AppMethodBeat.o(67926);
+        return true;
+      }
+      this.Olg = null;
+      AppMethodBeat.o(67926);
+      return false;
+    }
+  }
+  
+  public final void aUa(String paramString)
+  {
+    AppMethodBeat.i(67925);
+    this.Olg = null;
+    if (paramString == null)
+    {
+      this.Olg = null;
+      AppMethodBeat.o(67925);
+      return;
+    }
+    if (this.Olh == null)
+    {
+      Log.e("MicroMsg.FavorInfoPicked", "error setSelectFavorComposeId currentFavorResp is null");
+      this.Olg = null;
+      AppMethodBeat.o(67925);
+      return;
+    }
+    Iterator localIterator = this.Olh.YXh.iterator();
+    while (localIterator.hasNext())
+    {
+      asl localasl = (asl)localIterator.next();
+      if (paramString.equals(localasl.ZCd))
+      {
+        this.Olg = localasl;
+        AppMethodBeat.o(67925);
+        return;
+      }
+    }
+    AppMethodBeat.o(67925);
+  }
+  
+  public final void gMn()
+  {
+    AppMethodBeat.i(67922);
+    Log.i("MicroMsg.FavorInfoPicked", "cleanBusiF2FFavor");
+    this.Olh = null;
+    this.Olg = null;
+    AppMethodBeat.o(67922);
+  }
+  
+  public final List<asm> gMo()
+  {
+    AppMethodBeat.i(67923);
+    if (this.Olh != null)
+    {
+      localLinkedList = this.Olh.YXg;
+      AppMethodBeat.o(67923);
+      return localLinkedList;
+    }
+    LinkedList localLinkedList = new LinkedList();
+    AppMethodBeat.o(67923);
+    return localLinkedList;
+  }
+  
+  public final String gMp()
+  {
+    if (this.Olh == null) {
+      return "";
+    }
+    return this.Olh.YXj;
+  }
+  
+  public final boolean gMq()
+  {
+    return this.Olh != null;
+  }
+  
+  public final boolean gMr()
+  {
+    AppMethodBeat.i(67924);
+    if ((this.Olh != null) && (this.Olh.YXg != null) && (this.Olh.YXg.size() > 0))
+    {
+      AppMethodBeat.o(67924);
+      return true;
+    }
+    AppMethodBeat.o(67924);
+    return false;
+  }
+  
+  final class a
+    implements Comparator
+  {
+    a() {}
     
-    public abstract void onCancel();
+    public final int compare(Object paramObject1, Object paramObject2)
+    {
+      paramObject1 = (asl)paramObject1;
+      paramObject2 = (asl)paramObject2;
+      if (paramObject1.ZCh - paramObject2.ZCh > 0L) {
+        return -1;
+      }
+      return 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.c
  * JD-Core Version:    0.7.0.1
  */

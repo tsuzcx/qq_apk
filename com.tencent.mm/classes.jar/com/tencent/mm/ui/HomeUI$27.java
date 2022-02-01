@@ -1,32 +1,24 @@
 package com.tencent.mm.ui;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bh;
-import com.tencent.mm.model.c;
-import com.tencent.mm.storage.ao;
 
 final class HomeUI$27
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   HomeUI$27(HomeUI paramHomeUI) {}
   
-  public final void run()
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(226532);
-    if (bh.aHB())
-    {
-      bh.beI();
-      ao localao = c.aHp();
-      if (localao != null) {
-        localao.hxT();
-      }
-    }
-    AppMethodBeat.o(226532);
+    AppMethodBeat.i(33206);
+    HomeUI.E(this.adBf);
+    AppMethodBeat.o(33206);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.HomeUI.27
  * JD-Core Version:    0.7.0.1
  */

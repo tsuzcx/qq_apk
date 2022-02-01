@@ -1,23 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/bg1" android:background="@drawable/qa" android:layout_width="fill_parent" android:layout_height="@dimen/iq" android:baselineAligned="false" android:minHeight="@dimen/iq"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_gravity="center_vertical" android:layout_width="@dimen/il" android:layout_height="@dimen/il" android:layout_marginLeft="@dimen/k5" android:layout_marginRight="@dimen/k_">
-        <ImageView android:id="@id/x1" android:layout_width="@dimen/ij" android:layout_height="@dimen/ij" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
-        <TextView android:id="@id/iot" android:visibility="gone" android:layout_alignParentTop="true" android:layout_alignParentRight="true" style="@style/zr" />
-        <ImageView android:id="@id/x9" android:visibility="gone" android:layout_alignParentTop="true" android:layout_alignParentRight="true" style="@style/zs" />
-    </RelativeLayout>
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginRight="@dimen/k5">
-        <LinearLayout android:orientation="horizontal" android:paddingTop="@dimen/k5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/kb">
-            <com.tencent.mm.ui.tools.MMTruncTextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:id="@id/fzg" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" style="@style/mp" />
-            <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:gravity="center|right" android:id="@id/j0l" android:layout_width="100.0dip" android:layout_height="wrap_content" style="@style/mn" />
-        </LinearLayout>
-        <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:paddingBottom="@dimen/k5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/kb">
-            <com.tencent.mm.ui.tools.MMTruncTextView android:textSize="14.0dip" android:textColor="@color/l4" android:ellipsize="end" android:gravity="center|left" android:id="@id/e7t" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="{lastmsg}" android:layout_weight="1.0" style="@style/mo" />
-            <LinearLayout android:gravity="bottom|center|right" android:layout_width="60.0dip" android:layout_height="wrap_content">
-                <ImageView android:gravity="right" android:layout_gravity="center|right" android:id="@id/dvy" android:paddingRight="@dimen/k_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bb7" />
-                <ImageView android:gravity="right" android:layout_gravity="center|right" android:id="@id/dwf" android:paddingRight="@dimen/k_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/chat_mute_notify_normal" />
-                <ImageView android:gravity="center|right" android:layout_gravity="center_vertical" android:id="@id/iif" android:visibility="gone" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@raw/talk_room_mic_idle" android:contentDescription="@string/hb" />
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
+    <ImageView android:id="@id/gna" android:background="@null" android:layout_width="85.0dip" android:layout_height="85.0dip" android:layout_marginBottom="10.0dip" android:scaleType="fitXY" />
+    <TextView android:textSize="@dimen/l" android:textColor="@color/a7b" android:gravity="center" android:id="@id/gnb" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 </LinearLayout>

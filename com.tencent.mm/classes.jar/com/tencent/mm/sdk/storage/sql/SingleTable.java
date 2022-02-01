@@ -1,11 +1,10 @@
 package com.tencent.mm.sdk.storage.sql;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.sql.ISqlObj.TableJoinOperation;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/sdk/storage/sql/SingleTable;", "Lcom/tencent/mm/sdk/storage/sql/Table;", "name", "", "(Ljava/lang/String;)V", "getName", "()Ljava/lang/String;", "setName", "innerJoin", "Lcom/tencent/mm/sdk/storage/sql/MultiTable;", "singleTable", "leftJoin", "rightJoin", "toSql", "wechat-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/sdk/storage/sql/SingleTable;", "Lcom/tencent/mm/sdk/storage/sql/Table;", "name", "", "(Ljava/lang/String;)V", "getName", "()Ljava/lang/String;", "setName", "innerJoin", "Lcom/tencent/mm/sdk/storage/sql/MultiTable;", "singleTable", "leftJoin", "rightJoin", "toSql", "wechat-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class SingleTable
   extends Table
 {
@@ -13,18 +12,9 @@ public final class SingleTable
   
   public SingleTable(String paramString)
   {
-    AppMethodBeat.i(187966);
+    AppMethodBeat.i(244292);
     this.name = paramString;
-    if (p.h(this.name, "Contact"))
-    {
-      this.name = "RContact";
-      AppMethodBeat.o(187966);
-      return;
-    }
-    if (p.h(this.name, "Conversation")) {
-      this.name = "RConversation";
-    }
-    AppMethodBeat.o(187966);
+    AppMethodBeat.o(244292);
   }
   
   public final String getName()
@@ -34,37 +24,37 @@ public final class SingleTable
   
   public final MultiTable innerJoin(SingleTable paramSingleTable)
   {
-    AppMethodBeat.i(187949);
-    p.k(paramSingleTable, "singleTable");
+    AppMethodBeat.i(244302);
+    s.u(paramSingleTable, "singleTable");
     paramSingleTable = new MultiTable(this.name, paramSingleTable.name, ISqlObj.TableJoinOperation.InnerJoin);
-    AppMethodBeat.o(187949);
+    AppMethodBeat.o(244302);
     return paramSingleTable;
   }
   
   public final MultiTable leftJoin(SingleTable paramSingleTable)
   {
-    AppMethodBeat.i(187953);
-    p.k(paramSingleTable, "singleTable");
+    AppMethodBeat.i(244308);
+    s.u(paramSingleTable, "singleTable");
     paramSingleTable = new MultiTable(this.name, paramSingleTable.name, ISqlObj.TableJoinOperation.LeftJoin);
-    AppMethodBeat.o(187953);
+    AppMethodBeat.o(244308);
     return paramSingleTable;
   }
   
   public final MultiTable rightJoin(SingleTable paramSingleTable)
   {
-    AppMethodBeat.i(187957);
-    p.k(paramSingleTable, "singleTable");
+    AppMethodBeat.i(244314);
+    s.u(paramSingleTable, "singleTable");
     paramSingleTable = new MultiTable(this.name, paramSingleTable.name, ISqlObj.TableJoinOperation.RightJoin);
-    AppMethodBeat.o(187957);
+    AppMethodBeat.o(244314);
     return paramSingleTable;
   }
   
   public final void setName(String paramString)
   {
-    AppMethodBeat.i(187961);
-    p.k(paramString, "<set-?>");
+    AppMethodBeat.i(244296);
+    s.u(paramString, "<set-?>");
     this.name = paramString;
-    AppMethodBeat.o(187961);
+    AppMethodBeat.o(244296);
   }
   
   public final String toSql()
@@ -74,7 +64,7 @@ public final class SingleTable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.sdk.storage.sql.SingleTable
  * JD-Core Version:    0.7.0.1
  */

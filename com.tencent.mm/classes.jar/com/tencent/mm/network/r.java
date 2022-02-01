@@ -3,34 +3,34 @@ package com.tencent.mm.network;
 import com.tencent.mars.magicbox.IPxxLogic.ICallBack;
 import com.tencent.mars.mm.MMLogic;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.j.b;
+import com.tencent.mm.loader.i.b;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public final class r
   implements IPxxLogic.ICallBack
 {
-  private static long muC = 0L;
-  private static int muD = 0;
+  private static long pnW = 0L;
+  private static int pnX = 0;
   private final String TAG = "IPxxCallback";
   
-  private static void xw(int paramInt)
+  private static void eT(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(132756);
+    AppMethodBeat.i(241163);
     try
     {
-      af.btU().xx(paramInt);
-      AppMethodBeat.o(132756);
+      ag.bRx().eU(paramInt1, paramInt2);
+      AppMethodBeat.o(241163);
       return;
     }
     catch (Exception localException)
     {
       Log.e("IPxxCallback", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
-      AppMethodBeat.o(132756);
+      AppMethodBeat.o(241163);
     }
   }
   
@@ -39,8 +39,8 @@ public final class r
     AppMethodBeat.i(132751);
     Object localObject = new Date(System.currentTimeMillis() - paramInt * 86400000L);
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyyMMdd");
-    localObject = b.aSN() + "crash_" + localSimpleDateFormat.format((Date)localObject) + ".txt";
-    if (u.agG((String)localObject))
+    localObject = b.bmB() + "crash_" + localSimpleDateFormat.format((Date)localObject) + ".txt";
+    if (y.ZC((String)localObject))
     {
       AppMethodBeat.o(132751);
       return localObject;
@@ -55,7 +55,7 @@ public final class r
     try
     {
       paramString = new StringBuffer();
-      paramString.append("Device:").append(d.RAx).append(" ").append(d.RAy).append("\n");
+      paramString.append("Device:").append(d.Yxb).append(" ").append(d.Yxc).append("\n");
       paramString = paramString.toString();
       AppMethodBeat.o(132749);
       return paramString;
@@ -81,25 +81,25 @@ public final class r
     AppMethodBeat.o(132750);
   }
   
-  public final void uploadLogFail()
+  public final void uploadLogFail(int paramInt)
   {
-    AppMethodBeat.i(132754);
-    muD = 0;
-    xw(-1);
-    AppMethodBeat.o(132754);
+    AppMethodBeat.i(241167);
+    pnX = 0;
+    eT(paramInt, -1);
+    AppMethodBeat.o(241167);
   }
   
-  public final void uploadLogResponse(long paramLong1, long paramLong2)
+  public final void uploadLogResponse(int paramInt, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(132753);
-    Log.i("IPxxCallback", "ipxx progress totalSize:%d uploadSize:%d lastPercent:%d ", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(muD) });
+    AppMethodBeat.i(241166);
+    Log.i("IPxxCallback", "ipxx progress totalSize:%d uploadSize:%d lastPercent:%d ", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(pnX) });
     long l = Util.nowSecond();
-    if (l - 1L < muC)
+    if (l - 1L < pnW)
     {
-      AppMethodBeat.o(132753);
+      AppMethodBeat.o(241166);
       return;
     }
-    muC = l;
+    pnW = l;
     int j = 0;
     int i = j;
     if (paramLong2 >= 0L)
@@ -118,25 +118,25 @@ public final class r
       j = 100;
     }
     i = j;
-    if (muD > j) {
-      i = muD;
+    if (pnX > j) {
+      i = pnX;
     }
-    muD = i;
-    xw(i);
-    AppMethodBeat.o(132753);
+    pnX = i;
+    eT(paramInt, i);
+    AppMethodBeat.o(241166);
   }
   
-  public final void uploadLogSuccess()
+  public final void uploadLogSuccess(int paramInt)
   {
-    AppMethodBeat.i(132755);
-    muD = 0;
-    xw(100);
-    AppMethodBeat.o(132755);
+    AppMethodBeat.i(241169);
+    pnX = 0;
+    eT(paramInt, 100);
+    AppMethodBeat.o(241169);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.network.r
  * JD-Core Version:    0.7.0.1
  */

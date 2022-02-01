@@ -1,13 +1,18 @@
 package com.tencent.mm.plugin.record.a;
 
+import android.content.Context;
 import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.protocal.protobuf.dl;
+import com.tencent.mm.storage.cc;
 
 public abstract interface g
   extends a
 {
-  public abstract void Pm(long paramLong);
+  public abstract boolean a(Context paramContext, cc paramcc, dl paramdl);
   
-  public abstract boolean h(String paramString1, long paramLong, String paramString2);
+  public abstract boolean g(String paramString1, long paramLong, String paramString2);
+  
+  public abstract void tm(long paramLong);
 }
 
 

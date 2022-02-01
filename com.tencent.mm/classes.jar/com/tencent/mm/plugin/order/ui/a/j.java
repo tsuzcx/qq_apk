@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.plugin.order.model.MallOrderDetailObject.HelpCenter;
 import com.tencent.mm.plugin.wxpay.a.c;
 import com.tencent.mm.plugin.wxpay.a.d;
@@ -23,9 +23,9 @@ import java.util.List;
 public final class j
   extends Preference
 {
-  List<MallOrderDetailObject.HelpCenter> GHa;
-  String GKc;
-  View.OnClickListener GKd;
+  List<MallOrderDetailObject.HelpCenter> MDR;
+  String MGR;
+  View.OnClickListener MGS;
   View.OnClickListener mOnClickListener;
   private View mView;
   
@@ -35,13 +35,13 @@ public final class j
     AppMethodBeat.i(66831);
     this.mView = null;
     this.mOnClickListener = null;
-    this.GKd = null;
-    this.GHa = new LinkedList();
+    this.MGS = null;
+    this.MDR = new LinkedList();
     setLayoutResource(a.g.mall_order_multi_button_pref);
     AppMethodBeat.o(66831);
   }
   
-  public final View c(View paramView, ViewGroup paramViewGroup)
+  public final View b(View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(66832);
     if (this.mView == null) {
@@ -59,15 +59,15 @@ public final class j
     super.onBindView(paramView);
     paramView = (LinearLayout)paramView.findViewById(a.f.mall_order_multi_button);
     paramView.removeAllViews();
-    if (this.GHa == null)
+    if (this.MDR == null)
     {
       AppMethodBeat.o(66833);
       return;
     }
     int i;
-    if ((!Util.isNullOrNil(this.GKc)) && (this.GKd != null))
+    if ((!Util.isNullOrNil(this.MGR)) && (this.MGS != null))
     {
-      i = this.GHa.size();
+      i = this.MDR.size();
       if (i != 0) {
         break label464;
       }
@@ -81,12 +81,12 @@ public final class j
       Object localObject;
       for (;;)
       {
-        if (j < this.GHa.size())
+        if (j < this.MDR.size())
         {
-          localObject = (MallOrderDetailObject.HelpCenter)this.GHa.get(j);
+          localObject = (MallOrderDetailObject.HelpCenter)this.MDR.get(j);
           TextView localTextView = new TextView(this.mContext);
           localTextView.setTextColor(this.mContext.getResources().getColor(a.c.normal_text_color));
-          localTextView.setTextSize(0, a.aY(this.mContext, a.d.NormalTextSize));
+          localTextView.setTextSize(0, a.br(this.mContext, a.d.NormalTextSize));
           localTextView.setIncludeFontPadding(false);
           localTextView.setText(((MallOrderDetailObject.HelpCenter)localObject).name);
           localTextView.setTag(localObject);
@@ -100,24 +100,24 @@ public final class j
           {
             localObject = new View(this.mContext);
             ((View)localObject).setBackgroundColor(this.mContext.getResources().getColor(a.c.small_line_color));
-            paramView.addView((View)localObject, new LinearLayout.LayoutParams(a.aY(this.mContext, a.d.DividerSmallHeight), -1));
+            paramView.addView((View)localObject, new LinearLayout.LayoutParams(a.br(this.mContext, a.d.DividerSmallHeight), -1));
           }
           k += 1;
           j += 1;
           continue;
-          i = this.GHa.size() - 1;
+          i = this.MDR.size() - 1;
           break;
         }
       }
-      if ((!Util.isNullOrNil(this.GKc)) && (this.GKd != null))
+      if ((!Util.isNullOrNil(this.MGR)) && (this.MGS != null))
       {
         localObject = new TextView(this.mContext);
         ((TextView)localObject).setTextColor(this.mContext.getResources().getColor(a.c.normal_text_color));
-        ((TextView)localObject).setTextSize(0, a.aY(this.mContext, a.d.NormalTextSize));
+        ((TextView)localObject).setTextSize(0, a.br(this.mContext, a.d.NormalTextSize));
         ((TextView)localObject).setIncludeFontPadding(false);
-        ((TextView)localObject).setText(this.GKc);
+        ((TextView)localObject).setText(this.MGR);
         ((TextView)localObject).setGravity(17);
-        ((TextView)localObject).setOnClickListener(this.GKd);
+        ((TextView)localObject).setOnClickListener(this.MGS);
         if (k == i) {
           ((TextView)localObject).setTextColor(this.mContext.getResources().getColor(a.c.green_text_color));
         }
@@ -130,7 +130,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.order.ui.a.j
  * JD-Core Version:    0.7.0.1
  */

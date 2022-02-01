@@ -12,7 +12,7 @@ public final class g
     super("onWidgetResume", -2);
   }
   
-  public final JSONObject toJSONObject()
+  public final JSONObject aZh()
   {
     AppMethodBeat.i(121397);
     JSONObject localJSONObject = new JSONObject();
@@ -22,7 +22,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.f.g
  * JD-Core Version:    0.7.0.1
  */

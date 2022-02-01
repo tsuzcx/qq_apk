@@ -1,100 +1,142 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class bdk
-  extends com.tencent.mm.cd.a
+  extends erp
 {
-  public boolean SOt;
-  public String SOu;
-  public boolean SOv;
-  public boolean SOw;
-  public int SrY;
-  public String appid;
+  public atz YIY;
+  public String YIZ;
+  public long ZNV;
+  public long mMJ;
+  public long object_id;
+  public int scene;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(230230);
+    AppMethodBeat.i(259064);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.appid != null) {
-        paramVarArgs.f(1, this.appid);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.co(2, this.SOt);
-      if (this.SOu != null) {
-        paramVarArgs.f(3, this.SOu);
+      if (this.YIY != null)
+      {
+        paramVarArgs.qD(2, this.YIY.computeSize());
+        this.YIY.writeFields(paramVarArgs);
       }
-      paramVarArgs.co(4, this.SOv);
-      paramVarArgs.co(5, this.SOw);
-      paramVarArgs.aY(6, this.SrY);
-      AppMethodBeat.o(230230);
+      if (this.YIZ != null) {
+        paramVarArgs.g(3, this.YIZ);
+      }
+      paramVarArgs.bv(4, this.object_id);
+      paramVarArgs.bv(5, this.mMJ);
+      paramVarArgs.bv(6, this.ZNV);
+      paramVarArgs.bS(7, this.scene);
+      AppMethodBeat.o(259064);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.appid == null) {
-        break label450;
+      if (this.BaseRequest == null) {
+        break label662;
       }
     }
-    label450:
-    for (paramInt = g.a.a.b.b.a.g(1, this.appid) + 0;; paramInt = 0)
+    label662:
+    for (int i = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
-      int i = paramInt + (g.a.a.b.b.a.gL(2) + 1);
       paramInt = i;
-      if (this.SOu != null) {
-        paramInt = i + g.a.a.b.b.a.g(3, this.SOu);
+      if (this.YIY != null) {
+        paramInt = i + i.a.a.a.qC(2, this.YIY.computeSize());
       }
-      i = g.a.a.b.b.a.gL(4);
-      int j = g.a.a.b.b.a.gL(5);
-      int k = g.a.a.b.b.a.bM(6, this.SrY);
-      AppMethodBeat.o(230230);
-      return paramInt + (i + 1) + (j + 1) + k;
+      i = paramInt;
+      if (this.YIZ != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.YIZ);
+      }
+      paramInt = i.a.a.b.b.a.q(4, this.object_id);
+      int j = i.a.a.b.b.a.q(5, this.mMJ);
+      int k = i.a.a.b.b.a.q(6, this.ZNV);
+      int m = i.a.a.b.b.a.cJ(7, this.scene);
+      AppMethodBeat.o(259064);
+      return i + paramInt + j + k + m;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(230230);
+        AppMethodBeat.o(259064);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
         bdk localbdk = (bdk)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(230230);
+          AppMethodBeat.o(259064);
           return -1;
         case 1: 
-          localbdk.appid = locala.abFh.readString();
-          AppMethodBeat.o(230230);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new kc();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((kc)localObject2).parseFrom((byte[])localObject1);
+            }
+            localbdk.BaseRequest = ((kc)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(259064);
           return 0;
         case 2: 
-          localbdk.SOt = locala.abFh.AB();
-          AppMethodBeat.o(230230);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new atz();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((atz)localObject2).parseFrom((byte[])localObject1);
+            }
+            localbdk.YIY = ((atz)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(259064);
           return 0;
         case 3: 
-          localbdk.SOu = locala.abFh.readString();
-          AppMethodBeat.o(230230);
+          localbdk.YIZ = ((i.a.a.a.a)localObject1).ajGk.readString();
+          AppMethodBeat.o(259064);
           return 0;
         case 4: 
-          localbdk.SOv = locala.abFh.AB();
-          AppMethodBeat.o(230230);
+          localbdk.object_id = ((i.a.a.a.a)localObject1).ajGk.aaw();
+          AppMethodBeat.o(259064);
           return 0;
         case 5: 
-          localbdk.SOw = locala.abFh.AB();
-          AppMethodBeat.o(230230);
+          localbdk.mMJ = ((i.a.a.a.a)localObject1).ajGk.aaw();
+          AppMethodBeat.o(259064);
+          return 0;
+        case 6: 
+          localbdk.ZNV = ((i.a.a.a.a)localObject1).ajGk.aaw();
+          AppMethodBeat.o(259064);
           return 0;
         }
-        localbdk.SrY = locala.abFh.AK();
-        AppMethodBeat.o(230230);
+        localbdk.scene = ((i.a.a.a.a)localObject1).ajGk.aar();
+        AppMethodBeat.o(259064);
         return 0;
       }
-      AppMethodBeat.o(230230);
+      AppMethodBeat.o(259064);
       return -1;
     }
   }

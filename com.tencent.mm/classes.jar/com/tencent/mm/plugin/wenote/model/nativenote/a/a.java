@@ -11,19 +11,19 @@ import java.util.regex.Pattern;
 public final class a
 {
   private static String TAG;
-  private static f<String, Spanned> usf;
-  public static Spanned usg;
+  private static f<String, Spanned> xyB;
+  public static Spanned xyC;
   
   static
   {
     AppMethodBeat.i(30381);
     TAG = "MicroMsg.ConvertHtmlToSpanned";
-    usf = new com.tencent.mm.memory.a.c(30);
-    usg = null;
+    xyB = new com.tencent.mm.memory.a.c(30);
+    xyC = null;
     AppMethodBeat.o(30381);
   }
   
-  public static Spanned atL(String paramString)
+  public static Spanned anA(String paramString)
   {
     AppMethodBeat.i(30379);
     Object localObject = paramString;
@@ -31,13 +31,13 @@ public final class a
       localObject = "";
     }
     paramString = Pattern.compile("\n", 2).matcher((CharSequence)localObject).replaceAll("<br/>");
-    localObject = atM(paramString);
-    usf.put(paramString, localObject);
+    localObject = anB(paramString);
+    xyB.put(paramString, localObject);
     AppMethodBeat.o(30379);
     return localObject;
   }
   
-  private static Spanned atM(String paramString)
+  private static Spanned anB(String paramString)
   {
     AppMethodBeat.i(30380);
     String str = paramString;
@@ -50,7 +50,7 @@ public final class a
     }
     try
     {
-      usg = null;
+      xyC = null;
       paramString = Html.fromHtml(paramString, null, new c());
       if (paramString == null)
       {
@@ -58,13 +58,13 @@ public final class a
         return null;
       }
     }
-    catch (Throwable paramString)
+    finally
     {
       for (;;)
       {
-        if (usg != null)
+        if (xyC != null)
         {
-          paramString = usg;
+          paramString = xyC;
           continue;
           int i = paramString.toString().length();
           if ((i > 1) && (paramString.toString().endsWith("\n")))
@@ -91,7 +91,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,3 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textColor="#7fffffff" android:gravity="center" android:id="@id/air" android:background="@drawable/fi" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="@dimen/ci" android:text="@string/an2"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:id="@id/iwl" android:background="@color/BW_100" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.sns.ui.TestTimeForSns android:id="@id/kli" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.KeyboardLinearLayout android:orientation="vertical" android:id="@id/jx0" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/as9">
+            <com.tencent.mm.ui.base.MMOverScrollView android:id="@id/jvs" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <com.tencent.mm.plugin.sns.ui.AdListView android:id="@id/jvi" android:background="@color/act" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="#00000000" android:scrollingCache="false" android:divider="@null" android:overScrollMode="never" />
+            </com.tencent.mm.ui.base.MMOverScrollView>
+            <com.tencent.mm.plugin.sns.ui.SnsCommentFooter android:id="@id/bjn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </com.tencent.mm.ui.KeyboardLinearLayout>
+        <AbsoluteLayout android:paddingLeft="35.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mm.ui.widget.QFadeImageView android:gravity="center" android:id="@id/jvt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/friendactivity_refresh" android:scaleType="matrix" android:layout_y="-40.0dip" />
+        </AbsoluteLayout>
+    </com.tencent.mm.plugin.sns.ui.TestTimeForSns>
+    <ImageView android:id="@id/jt2" android:background="@drawable/c6t" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <RelativeLayout android:id="@id/jx_" android:background="@drawable/aut" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cv" android:layout_centerHorizontal="true" android:elevation="@dimen/bv">
+        <TextView android:textSize="14.0dip" android:textColor="@color/Brand" android:id="@id/jxb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:layout_marginBottom="@dimen/bv" android:text="@string/jjs" android:layout_centerInParent="true" android:layout_marginStart="@dimen/cv" android:layout_marginEnd="@dimen/cv" />
+    </RelativeLayout>
+</RelativeLayout>

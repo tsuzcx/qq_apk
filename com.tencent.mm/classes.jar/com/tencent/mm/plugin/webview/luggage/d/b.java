@@ -14,100 +14,100 @@ import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
 import com.tencent.mm.plugin.multitask.ui.a.b;
 import com.tencent.mm.plugin.secdata.ui.a;
 import com.tencent.mm.plugin.secdata.ui.a.a;
-import com.tencent.mm.protocal.protobuf.aco;
-import com.tencent.mm.protocal.protobuf.dal;
-import com.tencent.mm.protocal.protobuf.daq;
-import com.tencent.mm.protocal.protobuf.fky;
+import com.tencent.mm.protocal.protobuf.aet;
+import com.tencent.mm.protocal.protobuf.drt;
+import com.tencent.mm.protocal.protobuf.dry;
+import com.tencent.mm.protocal.protobuf.ghm;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/luggage/webview_impl/LuggageWebMultiTaskUIC;", "Lcom/tencent/mm/plugin/multitask/ui/MultiTaskUIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "fragment", "Landroidx/fragment/app/Fragment;", "(Landroidx/fragment/app/Fragment;)V", "getLayoutId", "", "getMultiTaskMode", "Lcom/tencent/mm/plugin/multitask/ui/IMultiTaskUIComponent$MultiTaskMode;", "onActivityResult", "", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "", "onBeforeFinish", "resultIntent", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onCreateAfter", "onCreateBefore", "onDestroy", "onKeyDown", "keyCode", "event", "Landroid/view/KeyEvent;", "onKeyUp", "onMultiTaskInit", "obj", "", "onMultiTaskItemClick", "view", "Landroid/view/View;", "info", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "animateData", "Lcom/tencent/mm/protocal/protobuf/MultiTaskAnimData;", "callback", "onMultiTaskItemDelete", "onMultiTaskPagePause", "onMultiTaskPageResume", "onPause", "onRequestPermissionsResult", "permissions", "", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onRestoreInstanceState", "onResume", "onSaveInstanceState", "outState", "onStart", "onStartActivityForResult", "intent", "options", "onStop", "onUserVisibleFocused", "onUserVisibleUnFocused", "supportMultiTaskType", "multiTaskType", "Companion", "IOnMultiTaskEventListener", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/luggage/webview_impl/LuggageWebMultiTaskUIC;", "Lcom/tencent/mm/plugin/multitask/ui/MultiTaskUIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "fragment", "Landroidx/fragment/app/Fragment;", "(Landroidx/fragment/app/Fragment;)V", "getLayoutId", "", "getMultiTaskMode", "Lcom/tencent/mm/plugin/multitask/ui/IMultiTaskUIComponent$MultiTaskMode;", "onActivityResult", "", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "", "onBeforeFinish", "resultIntent", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onCreateAfter", "onCreateBefore", "onDestroy", "onKeyDown", "keyCode", "event", "Landroid/view/KeyEvent;", "onKeyUp", "onMultiTaskInit", "obj", "", "onMultiTaskItemClick", "view", "Landroid/view/View;", "info", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "animateData", "Lcom/tencent/mm/protocal/protobuf/MultiTaskAnimData;", "callback", "onMultiTaskItemDelete", "onMultiTaskPagePause", "onMultiTaskPageResume", "onPause", "onRequestPermissionsResult", "permissions", "", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onRestoreInstanceState", "onResume", "onSaveInstanceState", "outState", "onStart", "onStartActivityForResult", "intent", "options", "onStop", "onUserVisibleFocused", "onUserVisibleUnFocused", "supportMultiTaskType", "multiTaskType", "Companion", "IOnMultiTaskEventListener", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
   extends com.tencent.mm.plugin.multitask.ui.c
 {
-  public static final a PTA;
-  private static final LinkedList<b> PTz;
+  public static final a WKl;
+  private static final LinkedList<b> WKm;
   
   static
   {
-    AppMethodBeat.i(250944);
-    PTA = new a((byte)0);
-    PTz = new LinkedList();
-    AppMethodBeat.o(250944);
+    AppMethodBeat.i(295987);
+    WKl = new a((byte)0);
+    WKm = new LinkedList();
+    AppMethodBeat.o(295987);
   }
   
   public b(AppCompatActivity paramAppCompatActivity)
   {
     super(paramAppCompatActivity);
-    AppMethodBeat.i(250939);
-    AppMethodBeat.o(250939);
+    AppMethodBeat.i(295979);
+    AppMethodBeat.o(295979);
   }
   
   public b(Fragment paramFragment)
   {
     super(paramFragment);
-    AppMethodBeat.i(250941);
-    AppMethodBeat.o(250941);
+    AppMethodBeat.i(295982);
+    AppMethodBeat.o(295982);
   }
   
-  public final boolean Of(int paramInt)
+  public final boolean Qs(int paramInt)
   {
     return paramInt == 2;
   }
   
-  public final void a(View paramView, MultiTaskInfo paramMultiTaskInfo, dal paramdal, Object paramObject)
+  public final void a(View paramView, MultiTaskInfo paramMultiTaskInfo, drt paramdrt, Object paramObject)
   {
-    AppMethodBeat.i(250929);
-    p.k(paramMultiTaskInfo, "info");
-    p.k(paramdal, "animateData");
-    Object localObject = new fky();
+    AppMethodBeat.i(296031);
+    s.u(paramMultiTaskInfo, "info");
+    s.u(paramdrt, "animateData");
+    Object localObject = new ghm();
     try
     {
-      ((fky)localObject).parseFrom(paramMultiTaskInfo.field_data);
+      ((ghm)localObject).parseFrom(paramMultiTaskInfo.field_data);
       label36:
       paramObject = new Intent();
-      paramObject.putExtra("rawUrl", ((fky)localObject).fXu);
-      paramObject.putExtra("title", ((fky)localObject).title);
+      paramObject.putExtra("rawUrl", ((ghm)localObject).idu);
+      paramObject.putExtra("title", ((ghm)localObject).title);
       paramObject.putExtra("KMutilTaskInfo", (Parcelable)paramMultiTaskInfo);
       paramObject.putExtra("webview_bg_color_rsID", 17170445);
-      localObject = new aco();
-      ((aco)localObject).Soh = paramdal;
+      localObject = new aet();
+      ((aet)localObject).ZmM = paramdrt;
       if (paramView != null)
       {
-        paramdal = a.JbV;
-        paramdal = paramView.getContext();
-        p.j(paramdal, "view.context");
-        if (a.a.hU(paramdal) != null)
+        paramdrt = a.PlI;
+        paramdrt = paramView.getContext();
+        s.s(paramdrt, "view.context");
+        if (a.a.jC(paramdrt) != null)
         {
-          paramdal = a.JbV;
+          paramdrt = a.PlI;
           paramView = paramView.getContext();
-          p.j(paramView, "view.context");
-          paramView = a.a.hU(paramView);
-          if (paramView == null) {
-            break label265;
+          s.s(paramView, "view.context");
+          paramView = a.a.jC(paramView);
+          if (paramView != null) {
+            break label243;
           }
-          paramView = (daq)paramView.aef(5);
-          if (paramView == null) {
-            break label270;
+          paramView = null;
+          if (paramView != null) {
+            break label255;
           }
         }
       }
-      label265:
-      label270:
-      for (paramView = paramView.wmL;; paramView = null)
+      label243:
+      label255:
+      for (paramView = null;; paramView = paramView.zIO)
       {
-        ((aco)localObject).wmL = paramView;
-        paramObject.putExtra("key_multi_task_common_info", ((aco)localObject).toByteArray());
+        ((aet)localObject).zIO = paramView;
+        paramObject.putExtra("key_multi_task_common_info", ((aet)localObject).toByteArray());
         paramObject.putExtra("float_ball_key", paramMultiTaskInfo.field_id);
-        Log.i("MicroMsg.LuggageWebMultiTaskUIC", "onMultiTaskItemClick, id = " + paramMultiTaskInfo.field_id);
-        com.tencent.mm.by.c.b((Context)getActivity(), "webview", ".ui.tools.WebViewUI", paramObject);
-        com.tencent.mm.ui.base.b.lc((Context)getActivity());
-        AppMethodBeat.o(250929);
+        Log.i("MicroMsg.LuggageWebMultiTaskUIC", s.X("onMultiTaskItemClick, id = ", paramMultiTaskInfo.field_id));
+        com.tencent.mm.br.c.b((Context)getActivity(), "webview", ".ui.tools.WebViewUI", paramObject);
+        com.tencent.mm.ui.base.b.ng((Context)getActivity());
+        AppMethodBeat.o(296031);
         return;
-        paramView = null;
+        paramView = (dry)paramView.aiK(5);
         break;
       }
     }
@@ -117,35 +117,35 @@ public final class b
     }
   }
   
-  public final void dI(Object paramObject)
+  public final void eDd() {}
+  
+  public final a.b eDe()
   {
-    AppMethodBeat.i(250932);
+    return a.b.LDq;
+  }
+  
+  public final void fZ(Object paramObject)
+  {
+    AppMethodBeat.i(296033);
     if ((paramObject instanceof MultiTaskInfo))
     {
       paramObject = (MultiTaskInfo)paramObject;
-      p.k(paramObject, "info");
-      Iterator localIterator = ((Iterable)PTz).iterator();
+      s.u(paramObject, "info");
+      Iterator localIterator = ((Iterable)WKm).iterator();
       while (localIterator.hasNext()) {
         ((b)localIterator.next()).r(paramObject);
       }
     }
-    AppMethodBeat.o(250932);
+    AppMethodBeat.o(296033);
   }
   
-  public final void dKo() {}
-  
-  public final a.b dKp()
-  {
-    return a.b.FHX;
-  }
-  
-  public final void dp(Object paramObject) {}
+  public final void fw(Object paramObject) {}
   
   public final int getLayoutId()
   {
-    AppMethodBeat.i(250916);
+    AppMethodBeat.i(296029);
     int i = super.getLayoutId();
-    AppMethodBeat.o(250916);
+    AppMethodBeat.o(296029);
     return i;
   }
   
@@ -160,16 +160,16 @@ public final class b
   
   public final void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(250903);
-    p.k(paramConfiguration, "newConfig");
-    AppMethodBeat.o(250903);
+    AppMethodBeat.i(296017);
+    s.u(paramConfiguration, "newConfig");
+    AppMethodBeat.o(296017);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(250891);
+    AppMethodBeat.i(295991);
     getRootView().findViewById(getLayoutId());
-    AppMethodBeat.o(250891);
+    AppMethodBeat.o(295991);
   }
   
   public final void onCreateAfter(Bundle paramBundle) {}
@@ -180,17 +180,17 @@ public final class b
   
   public final boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(250909);
-    p.k(paramKeyEvent, "event");
-    AppMethodBeat.o(250909);
+    AppMethodBeat.i(296023);
+    s.u(paramKeyEvent, "event");
+    AppMethodBeat.o(296023);
     return false;
   }
   
   public final boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(250913);
-    p.k(paramKeyEvent, "event");
-    AppMethodBeat.o(250913);
+    AppMethodBeat.i(296026);
+    s.u(paramKeyEvent, "event");
+    AppMethodBeat.o(296026);
     return false;
   }
   
@@ -198,10 +198,10 @@ public final class b
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(250902);
-    p.k(paramArrayOfString, "permissions");
-    p.k(paramArrayOfInt, "grantResults");
-    AppMethodBeat.o(250902);
+    AppMethodBeat.i(296014);
+    s.u(paramArrayOfString, "permissions");
+    s.u(paramArrayOfInt, "grantResults");
+    AppMethodBeat.o(296014);
   }
   
   public final void onRestoreInstanceState(Bundle paramBundle) {}
@@ -220,10 +220,10 @@ public final class b
   
   public final void onUserVisibleUnFocused() {}
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/luggage/webview_impl/LuggageWebMultiTaskUIC$Companion;", "", "()V", "TAG", "", "onMultiTaskEventListenerList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/webview/luggage/webview_impl/LuggageWebMultiTaskUIC$IOnMultiTaskEventListener;", "getOnMultiTaskEventListenerList", "()Ljava/util/LinkedList;", "addMultiTaskEventListener", "", "listener", "notifyItemClick", "info", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "notifyItemDelete", "removeMultiTaskEventListener", "plugin-webview_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/luggage/webview_impl/LuggageWebMultiTaskUIC$Companion;", "", "()V", "TAG", "", "onMultiTaskEventListenerList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/webview/luggage/webview_impl/LuggageWebMultiTaskUIC$IOnMultiTaskEventListener;", "getOnMultiTaskEventListenerList", "()Ljava/util/LinkedList;", "addMultiTaskEventListener", "", "listener", "notifyItemClick", "info", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "notifyItemDelete", "removeMultiTaskEventListener", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/luggage/webview_impl/LuggageWebMultiTaskUIC$IOnMultiTaskEventListener;", "", "onItemClick", "", "info", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "onItemDelete", "plugin-webview_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/luggage/webview_impl/LuggageWebMultiTaskUIC$IOnMultiTaskEventListener;", "", "onItemClick", "", "info", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "onItemDelete", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface b
   {
     public abstract void r(MultiTaskInfo paramMultiTaskInfo);

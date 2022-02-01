@@ -1,57 +1,54 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.c;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.protocal.protobuf.ase;
-import com.tencent.mm.protocal.protobuf.asf;
-import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.findersdk.b.c;
+import com.tencent.mm.protocal.protobuf.awg;
+import com.tencent.mm.protocal.protobuf.awh;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.kd;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderEnterPersonalMsg;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/FinderEnterPersonalMsgResponse;", "my_account_type", "", "to_username", "", "session_id", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(ILjava/lang/String;Ljava/lang/String;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "getTo_username", "()Ljava/lang/String;", "onCgiBack", "", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderDelDraft;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderDelDraftResponse;", "id", "", "(J)V", "TAG", "", "getId", "()J", "request", "Lcom/tencent/mm/protocal/protobuf/FinderDelDraftRequest;", "onCgiEnd", "", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class k
-  extends c<asf>
+  extends c<awh>
 {
-  public static final a xaE;
-  private final String sWA;
+  private awg AyJ;
+  private final String TAG;
+  private final long id;
   
-  static
+  public k(long paramLong)
   {
-    AppMethodBeat.i(283721);
-    xaE = new a((byte)0);
-    AppMethodBeat.o(283721);
+    super(null);
+    AppMethodBeat.i(336328);
+    this.id = paramLong;
+    this.TAG = "Finder.CgiFinderDelDraft";
+    this.AyJ = new awg();
+    this.AyJ.id = this.id;
+    Object localObject1 = this.AyJ;
+    Object localObject2 = bi.ABn;
+    ((awg)localObject1).YIY = bi.a(this.Auc);
+    this.AyJ.ZHe = z.bAW();
+    localObject1 = new c.a();
+    ((c.a)localObject1).otE = ((a)this.AyJ);
+    localObject2 = new awh();
+    ((awh)localObject2).setBaseResponse(new kd());
+    ((awh)localObject2).getBaseResponse().akjO = new etl();
+    ((c.a)localObject1).otF = ((a)localObject2);
+    ((c.a)localObject1).uri = "/cgi-bin/micromsg-bin/finderdeldraft";
+    ((c.a)localObject1).funcId = 6662;
+    c(((c.a)localObject1).bEF());
+    Log.i(this.TAG, s.X("init id:", Long.valueOf(this.id)));
+    AppMethodBeat.o(336328);
   }
-  
-  private k(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(283720);
-    this.sWA = paramString1;
-    paramString1 = new ase();
-    Object localObject = ao.xcj;
-    paramString1.RLM = ao.a(null);
-    paramString1.SFD = 1;
-    paramString1.sWA = this.sWA;
-    paramString1.session_id = paramString2;
-    localObject = new d.a();
-    ((d.a)localObject).c((a)paramString1);
-    paramString1 = new asf();
-    paramString1.setBaseResponse(new jh());
-    ((d.a)localObject).d((a)paramString1);
-    ((d.a)localObject).TW("/cgi-bin/micromsg-bin/finderenterpersonalmsg");
-    ((d.a)localObject).vD(6464);
-    c(((d.a)localObject).bgN());
-    Log.i("Cgi.FinderEnterPersonalMsg", "CgiFinderEnterPersonalMsg init my_account_type=1 to_username=" + this.sWA + " session_id=" + paramString2);
-    AppMethodBeat.o(283720);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderEnterPersonalMsg$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.k
  * JD-Core Version:    0.7.0.1
  */

@@ -1,104 +1,41 @@
 package kotlinx.coroutines.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.b;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/channels/ValueOrClosed;", "T", "", "holder", "constructor-impl", "(Ljava/lang/Object;)Ljava/lang/Object;", "closeCause", "", "closeCause$annotations", "()V", "getCloseCause-impl", "(Ljava/lang/Object;)Ljava/lang/Throwable;", "isClosed", "", "isClosed-impl", "(Ljava/lang/Object;)Z", "value", "value$annotations", "getValue-impl", "valueOrNull", "valueOrNull$annotations", "getValueOrNull-impl", "equals", "other", "hashCode", "", "toString", "", "toString-impl", "(Ljava/lang/Object;)Ljava/lang/String;", "Closed", "Companion", "kotlinx-coroutines-core"})
-public final class z<T>
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/channels/RendezvousChannel;", "E", "Lkotlinx/coroutines/channels/AbstractChannel;", "onUndeliveredElement", "Lkotlin/Function1;", "", "Lkotlinx/coroutines/internal/OnUndeliveredElement;", "(Lkotlin/jvm/functions/Function1;)V", "isBufferAlwaysEmpty", "", "()Z", "isBufferAlwaysFull", "isBufferEmpty", "isBufferFull", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+public final class z<E>
+  extends a<E>
 {
-  public static final z.b abyF;
-  public final Object abyE;
-  
-  static
+  public z(b<? super E, ah> paramb)
   {
-    AppMethodBeat.i(204421);
-    abyF = new z.b((byte)0);
-    AppMethodBeat.o(204421);
+    super(null);
   }
   
-  public static Object constructor-impl(Object paramObject)
+  protected final boolean kCR()
   {
-    return paramObject;
+    return true;
   }
   
-  public static final boolean gr(Object paramObject)
+  protected final boolean kCS()
   {
-    return paramObject instanceof z.a;
+    return true;
   }
   
-  public static final T gs(Object paramObject)
+  protected final boolean kCZ()
   {
-    AppMethodBeat.i(204416);
-    if ((paramObject instanceof z.a))
-    {
-      paramObject = (Throwable)new IllegalStateException("Channel was closed".toString());
-      AppMethodBeat.o(204416);
-      throw paramObject;
-    }
-    AppMethodBeat.o(204416);
-    return paramObject;
+    return true;
   }
   
-  public static final Throwable gt(Object paramObject)
+  protected final boolean kDa()
   {
-    AppMethodBeat.i(204417);
-    if ((paramObject instanceof z.a))
-    {
-      paramObject = ((z.a)paramObject).cause;
-      AppMethodBeat.o(204417);
-      return paramObject;
-    }
-    paramObject = (Throwable)new IllegalStateException("Channel was not closed".toString());
-    AppMethodBeat.o(204417);
-    throw paramObject;
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    AppMethodBeat.i(204424);
-    Object localObject = this.abyE;
-    if (((paramObject instanceof z)) && (p.h(localObject, ((z)paramObject).abyE)))
-    {
-      AppMethodBeat.o(204424);
-      return true;
-    }
-    AppMethodBeat.o(204424);
-    return false;
-  }
-  
-  public final int hashCode()
-  {
-    AppMethodBeat.i(204423);
-    Object localObject = this.abyE;
-    if (localObject != null)
-    {
-      int i = localObject.hashCode();
-      AppMethodBeat.o(204423);
-      return i;
-    }
-    AppMethodBeat.o(204423);
-    return 0;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(204414);
-    Object localObject = this.abyE;
-    if ((localObject instanceof z.a))
-    {
-      localObject = localObject.toString();
-      AppMethodBeat.o(204414);
-      return localObject;
-    }
-    localObject = "Value(" + localObject + ')';
-    AppMethodBeat.o(204414);
-    return localObject;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.a.z
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mm.videocomposition.effect;
 
 import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import kotlin.Metadata;
 import kotlin.g.a.b;
-import kotlin.l;
 
-@l(iBK={1, 1, 15})
+@Metadata(bv={1, 0, 3}, k=3, mv={1, 1, 15})
 public final class c
   implements SurfaceTexture.OnFrameAvailableListener
 {
   public c(b paramb)
   {
-    this.kMk = paramb;
+    this.agEq = paramb;
   }
 }
 

@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:id="@id/jj9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m2" android:layout_marginTop="@dimen/m2" android:layout_marginRight="@dimen/m2"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ana" android:background="@drawable/lw" android:paddingLeft="@dimen/r" android:paddingRight="@dimen/r" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="31.599976dip" android:layout_marginTop="@dimen/hs" android:layout_marginBottom="@dimen/i2">
-        <ImageView android:id="@id/an_" android:layout_width="@dimen/v9" android:layout_height="@dimen/v9" android:layout_marginRight="@dimen/ib" android:src="@drawable/c24" android:scaleType="fitCenter" />
-        <TextView android:textSize="@dimen/hc" android:textColor="#ff576b95" android:ellipsize="end" android:gravity="left" android:id="@id/anb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/aqa" android:singleLine="true" />
+    <RelativeLayout android:id="@id/jja" android:layout_width="fill_parent" android:layout_height="57.0dip">
+        <LinearLayout android:orientation="horizontal" android:id="@id/jj_" android:background="@drawable/bqt" android:layout_width="fill_parent" android:layout_height="57.0dip" android:layout_centerInParent="true">
+            <ImageView android:id="@id/jj3" android:visibility="visible" android:layout_width="@dimen/y0" android:layout_height="@dimen/y0" android:layout_marginLeft="@dimen/j6" android:layout_marginRight="@dimen/iq" android:src="@raw/actionbar_particular_icon" android:scaleType="fitXY" />
+            <TextView android:textSize="@dimen/j7" android:textColor="@color/ij" android:ellipsize="end" android:gravity="left" android:id="@id/jj4" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textSize="@dimen/j7" android:textColor="@color/ij" android:ellipsize="end" android:gravity="center" android:id="@id/jj6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/j6" android:layout_marginRight="@dimen/j6" android:singleLine="true" />
+        </LinearLayout>
+        <ImageView android:id="@id/jj5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/if" android:src="@drawable/br4" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <View android:id="@id/asl" android:background="@drawable/q1" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/iq" android:layout_marginRight="@dimen/iq" android:layout_marginBottom="0.0dip" android:layout_alignBottom="@id/jj_" android:layerType="software" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/jj7" android:background="@drawable/bqs" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.base.MMSmoothHorizontalScrollView android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true" android:overScrollMode="never">
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/jj8" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </com.tencent.mm.ui.base.MMSmoothHorizontalScrollView>
     </LinearLayout>
 </LinearLayout>

@@ -116,7 +116,7 @@ public class ic_appbrand_star_mark
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.ic_appbrand_star_mark
  * JD-Core Version:    0.7.0.1
  */

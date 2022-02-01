@@ -1,62 +1,57 @@
 package androidx.core.d;
 
-import android.util.Base64;
-import androidx.core.f.g;
+import android.graphics.Typeface;
+import android.os.Handler;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.List;
 
 public final class a
 {
-  final String Ll;
-  final String Lm;
-  final String Ln;
-  final List<List<byte[]>> Lo;
-  final int Lp;
-  final String Lq;
+  private final e.c brw;
+  private final Handler brx;
   
-  public a(String paramString1, String paramString2, String paramString3, List<List<byte[]>> paramList)
+  public a(e.c paramc, Handler paramHandler)
   {
-    AppMethodBeat.i(251055);
-    this.Ll = ((String)g.checkNotNull(paramString1));
-    this.Lm = ((String)g.checkNotNull(paramString2));
-    this.Ln = ((String)g.checkNotNull(paramString3));
-    this.Lo = ((List)g.checkNotNull(paramList));
-    this.Lp = 0;
-    this.Lq = (this.Ll + "-" + this.Lm + "-" + this.Ln);
-    AppMethodBeat.o(251055);
+    this.brw = paramc;
+    this.brx = paramHandler;
   }
   
-  public final String toString()
+  final void a(final d.a parama)
   {
-    AppMethodBeat.i(251057);
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("FontRequest {mProviderAuthority: " + this.Ll + ", mProviderPackage: " + this.Lm + ", mQuery: " + this.Ln + ", mCertificates:");
-    int i = 0;
-    while (i < this.Lo.size())
+    AppMethodBeat.i(196226);
+    if (parama.brM == 0) {}
+    for (final int i = 1; i != 0; i = 0)
     {
-      ((StringBuilder)localObject).append(" [");
-      List localList = (List)this.Lo.get(i);
-      int j = 0;
-      while (j < localList.size())
+      parama = parama.brL;
+      final e.c localc = this.brw;
+      this.brx.post(new Runnable()
       {
-        ((StringBuilder)localObject).append(" \"");
-        ((StringBuilder)localObject).append(Base64.encodeToString((byte[])localList.get(j), 0));
-        ((StringBuilder)localObject).append("\"");
-        j += 1;
-      }
-      ((StringBuilder)localObject).append(" ]");
-      i += 1;
+        public final void run()
+        {
+          AppMethodBeat.i(196271);
+          localc.d(parama);
+          AppMethodBeat.o(196271);
+        }
+      });
+      AppMethodBeat.o(196226);
+      return;
     }
-    ((StringBuilder)localObject).append("}");
-    ((StringBuilder)localObject).append("mCertificatesArray: " + this.Lp);
-    localObject = ((StringBuilder)localObject).toString();
-    AppMethodBeat.o(251057);
-    return localObject;
+    i = parama.brM;
+    parama = this.brw;
+    this.brx.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(196264);
+        parama.ei(i);
+        AppMethodBeat.o(196264);
+      }
+    });
+    AppMethodBeat.o(196226);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     androidx.core.d.a
  * JD-Core Version:    0.7.0.1
  */

@@ -12,51 +12,51 @@ import java.util.List;
 public final class d
   implements b, c
 {
-  private static d DNP;
+  private static d JFe;
   
-  public static String bbW()
+  public static String bzL()
   {
     AppMethodBeat.i(151494);
     Object localObject = new StringBuilder();
-    h.aHH();
-    localObject = h.aHG().kcB + "image/";
+    h.baF();
+    localObject = h.baE().mCJ + "image/";
     AppMethodBeat.o(151494);
     return localObject;
   }
   
-  public static String bbX()
+  public static String bzM()
   {
     AppMethodBeat.i(151495);
     Object localObject = new StringBuilder();
-    h.aHH();
-    localObject = h.aHG().kcB + "image2/";
+    h.baF();
+    localObject = h.baE().mCJ + "image2/";
     AppMethodBeat.o(151495);
     return localObject;
   }
   
-  public static d eIB()
+  public static d fQC()
   {
     try
     {
       AppMethodBeat.i(151492);
-      if (DNP == null) {
-        DNP = new d();
+      if (JFe == null) {
+        JFe = new d();
       }
-      d locald = DNP;
+      d locald = JFe;
       AppMethodBeat.o(151492);
       return locald;
     }
     finally {}
   }
   
-  public static String eIC()
+  public static String fQD()
   {
     AppMethodBeat.i(151496);
     AppMethodBeat.o(151496);
     return "wcf://bizimg/";
   }
   
-  public final List<String> aHP()
+  public final List<String> baM()
   {
     AppMethodBeat.i(151493);
     LinkedList localLinkedList = new LinkedList();

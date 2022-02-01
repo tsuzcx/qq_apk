@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.honey_pay.ui;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.p;
 import com.tencent.mm.plugin.honey_pay.a.d;
 import com.tencent.mm.plugin.honey_pay.a.g;
 import com.tencent.mm.plugin.honey_pay.a.n;
@@ -15,39 +15,41 @@ import com.tencent.mm.plugin.wallet_core.c.ac;
 import com.tencent.mm.plugin.wxpay.a.f;
 import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.protocal.protobuf.btl;
-import com.tencent.mm.protocal.protobuf.bxw;
-import com.tencent.mm.protocal.protobuf.esi;
+import com.tencent.mm.protocal.protobuf.agz;
+import com.tencent.mm.protocal.protobuf.cie;
+import com.tencent.mm.protocal.protobuf.cmz;
+import com.tencent.mm.protocal.protobuf.dag;
+import com.tencent.mm.protocal.protobuf.fnr;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.wallet_core.c.r;
-import com.tencent.mm.wallet_core.c.r.a;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.wallet_core.model.r;
+import com.tencent.mm.wallet_core.model.r.a;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView.a;
-import com.tencent.mm.wallet_core.ui.formview.a;
 import java.io.IOException;
 
 public class HoneyPayCheckPwdUI
   extends HoneyPayBaseUI
 {
-  private String DKa;
-  private esi DKb;
-  private EditHintPasswdView DLa;
-  private String DLb;
-  private String DLc;
-  private long DLd;
-  private TextView mMA;
+  private String JAW;
+  private fnr JAX;
+  private EditHintPasswdView JCc;
+  private String JCd;
+  private String JCe;
+  private long JCf;
   private int mScene;
-  private TextView pPT;
-  private String pRV;
-  private int tFt;
+  private TextView pJi;
+  private TextView sUt;
+  private String sWX;
+  private int wIT;
   
   public void cleanUiData(int paramInt)
   {
     AppMethodBeat.i(64744);
     super.cleanUiData(paramInt);
-    if (this.DLa != null) {
-      this.DLa.fuo();
+    if (this.JCc != null) {
+      this.JCc.gGd();
     }
     AppMethodBeat.o(64744);
   }
@@ -65,9 +67,9 @@ public class HoneyPayCheckPwdUI
   public void initView()
   {
     AppMethodBeat.i(64741);
-    this.DLa = ((EditHintPasswdView)findViewById(a.f.input_et));
-    a.a(this.DLa);
-    this.DLa.setOnInputValidListener(new EditHintPasswdView.a()
+    this.JCc = ((EditHintPasswdView)findViewById(a.f.input_et));
+    com.tencent.mm.wallet_core.ui.formview.a.a(this.JCc);
+    this.JCc.setOnInputValidListener(new EditHintPasswdView.a()
     {
       public final void onInputValidChange(boolean paramAnonymousBoolean)
       {
@@ -95,21 +97,21 @@ public class HoneyPayCheckPwdUI
         }
       }
     });
-    setEditFocusListener(this.DLa, 0, false);
-    this.pPT = ((TextView)findViewById(a.f.wallet_pwd_title));
-    this.mMA = ((TextView)findViewById(a.f.wallet_pwd_content_1));
+    setEditFocusListener(this.JCc, 0, false);
+    this.sUt = ((TextView)findViewById(a.f.wallet_pwd_title));
+    this.pJi = ((TextView)findViewById(a.f.wallet_pwd_content_1));
     if (this.mScene == 1) {
-      this.pPT.setText(a.i.honey_pay_check_pwd_create_desc_text);
+      this.sUt.setText(a.i.honey_pay_check_pwd_create_desc_text);
     }
     for (;;)
     {
-      this.mMA.setText(a.i.honey_pay_check_pwd_title_text);
+      this.pJi.setText(a.i.honey_pay_check_pwd_title_text);
       AppMethodBeat.o(64741);
       return;
       if (this.mScene == 2) {
-        this.pPT.setText(a.i.honey_pay_check_pwd_modify_desc_text);
+        this.sUt.setText(a.i.honey_pay_check_pwd_modify_desc_text);
       } else {
-        this.pPT.setText(a.i.honey_pay_check_pwd_unbind_desc_text);
+        this.sUt.setText(a.i.honey_pay_check_pwd_unbind_desc_text);
       }
     }
   }
@@ -118,23 +120,23 @@ public class HoneyPayCheckPwdUI
   {
     AppMethodBeat.i(64740);
     super.onCreate(paramBundle);
-    this.pRV = getIntent().getStringExtra("key_username");
-    this.DLb = getIntent().getStringExtra("key_take_message");
-    this.DLd = getIntent().getLongExtra("key_credit_line", 0L);
+    this.sWX = getIntent().getStringExtra("key_username");
+    this.JCd = getIntent().getStringExtra("key_take_message");
+    this.JCf = getIntent().getLongExtra("key_credit_line", 0L);
     this.mScene = getIntent().getIntExtra("key_scene", 0);
-    this.DKa = getIntent().getStringExtra("key_card_no");
-    this.DLc = getIntent().getStringExtra("key_wishing");
+    this.JAW = getIntent().getStringExtra("key_card_no");
+    this.JCe = getIntent().getStringExtra("key_wishing");
     if (this.mScene == 1)
     {
-      this.tFt = getIntent().getIntExtra("key_cardtype", 0);
-      if (this.tFt == 0)
+      this.wIT = getIntent().getIntExtra("key_cardtype", 0);
+      if (this.wIT == 0)
       {
-        Log.w("MicroMsg.HoneyPayCheckPwdUI", "error card type: %s", new Object[] { Integer.valueOf(this.tFt) });
+        Log.w("MicroMsg.HoneyPayCheckPwdUI", "error card type: %s", new Object[] { Integer.valueOf(this.wIT) });
         finish();
       }
     }
     if (this.mScene == 3) {
-      paramBundle = new esi();
+      paramBundle = new fnr();
     }
     try
     {
@@ -145,7 +147,7 @@ public class HoneyPayCheckPwdUI
         finish();
       }
       paramBundle.parseFrom(arrayOfByte);
-      this.DKb = paramBundle;
+      this.JAX = paramBundle;
     }
     catch (IOException paramBundle)
     {
@@ -177,21 +179,21 @@ public class HoneyPayCheckPwdUI
     AppMethodBeat.o(64742);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, final String paramString, q paramq)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, final String paramString, p paramp)
   {
     AppMethodBeat.i(64743);
     Log.d("MicroMsg.HoneyPayCheckPwdUI", "scene end. errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if ((paramq instanceof ac))
+    if ((paramp instanceof ac))
     {
-      paramq = (ac)paramq;
+      paramp = (ac)paramp;
       if ((paramInt1 == 0) && (paramInt2 == 0)) {
         if (this.mScene == 1)
         {
-          paramString = paramq.OIv;
+          paramString = paramp.Vyh;
           Log.i("MicroMsg.HoneyPayCheckPwdUI", "do give card");
           showSafeProgress();
-          paramString = new com.tencent.mm.plugin.honey_pay.a.c(paramString, this.DLd, this.pRV, this.DLb, this.tFt, this.DLc);
-          paramString.u(this);
+          paramString = new com.tencent.mm.plugin.honey_pay.a.c(paramString, this.JCf, this.sWX, this.JCd, this.wIT, this.JCe);
+          paramString.r(this);
           doSceneProgress(paramString, false);
         }
       }
@@ -202,104 +204,140 @@ public class HoneyPayCheckPwdUI
       return true;
       if (this.mScene == 2)
       {
-        paramString = paramq.OIv;
+        paramString = paramp.Vyh;
         Log.i("MicroMsg.HoneyPayCheckPwdUI", "do modify quota");
         showSafeProgress();
-        paramString = new com.tencent.mm.plugin.honey_pay.a.h(this.DLd, paramString, this.DKa);
-        paramString.u(this);
+        paramString = new com.tencent.mm.plugin.honey_pay.a.h(this.JCf, paramString, this.JAW);
+        paramString.r(this);
         doSceneProgress(paramString, false);
       }
       else if (this.mScene == 3)
       {
-        paramString = paramq.OIv;
-        Log.i("MicroMsg.HoneyPayCheckPwdUI", "do unbind: %s", new Object[] { this.DKa });
+        paramString = paramp.Vyh;
+        Log.i("MicroMsg.HoneyPayCheckPwdUI", "do unbind: %s", new Object[] { this.JAW });
         showSafeProgress();
-        paramString = new n(this.DKa, paramString);
-        paramString.u(this);
+        paramString = new n(this.JAW, paramString);
+        paramString.r(this);
         doSceneProgress(paramString, false);
         continue;
-        if (this.DLa != null) {
-          this.DLa.fuo();
+        if (this.JCc != null) {
+          this.JCc.gGd();
         }
         hideProgress();
-        if ((!paramq.hasProcessWalletError()) && (!Util.isNullOrNil(paramString)))
+        if ((!paramp.hasProcessWalletError()) && (!Util.isNullOrNil(paramString)))
         {
           Log.i("MicroMsg.HoneyPayCheckPwdUI", "show normal error msg");
-          com.tencent.mm.ui.base.h.a(getContext(), paramString, null, false, new DialogInterface.OnClickListener()
+          k.a(getContext(), paramString, null, false, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
           });
         }
         AppMethodBeat.o(64743);
         return true;
-        if ((paramq instanceof com.tencent.mm.plugin.honey_pay.a.c))
+        if ((paramp instanceof com.tencent.mm.plugin.honey_pay.a.c))
         {
-          paramString = (com.tencent.mm.plugin.honey_pay.a.c)paramq;
+          paramString = (com.tencent.mm.plugin.honey_pay.a.c)paramp;
           hideProgress();
-          paramString.a(new HoneyPayCheckPwdUI.13(this, paramString)).b(new r.a()
+          paramString.a(new r.a()
           {
-            public final void e(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+            public final void c(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
+            {
+              AppMethodBeat.i(64735);
+              Log.i("MicroMsg.HoneyPayCheckPwdUI", "create success");
+              paramAnonymousp = new Intent(HoneyPayCheckPwdUI.this.getContext(), HoneyPayMainUI.class);
+              paramAnonymousp.putExtra("key_create_succ", true);
+              if (paramString.JAx.Zqc != null)
+              {
+                paramAnonymousp.putExtra("key_card_no", paramString.JAx.Zqc.aatc);
+                paramAnonymousp.putExtra("key_card_type", paramString.JAx.Zqc.wtN);
+              }
+              Toast.makeText(HoneyPayCheckPwdUI.this.getContext(), a.i.honey_pay_create_card_success_word, 1).show();
+              paramAnonymousString = HoneyPayCheckPwdUI.this;
+              paramAnonymousp = new com.tencent.mm.hellhoundlib.b.a().cG(paramAnonymousp);
+              com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousString, paramAnonymousp.aYi(), "com/tencent/mm/plugin/honey_pay/ui/HoneyPayCheckPwdUI$5", "onCallback", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              paramAnonymousString.startActivity((Intent)paramAnonymousp.sb(0));
+              com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousString, "com/tencent/mm/plugin/honey_pay/ui/HoneyPayCheckPwdUI$5", "onCallback", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              com.tencent.mm.plugin.report.service.h.OAn.p(875L, 2L, 1L);
+              AppMethodBeat.o(64735);
+            }
+          }).b(new r.a()
+          {
+            public final void c(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
             {
               AppMethodBeat.i(64734);
               if (HoneyPayCheckPwdUI.e(HoneyPayCheckPwdUI.this) != null) {
-                HoneyPayCheckPwdUI.e(HoneyPayCheckPwdUI.this).fuo();
+                HoneyPayCheckPwdUI.e(HoneyPayCheckPwdUI.this).gGd();
               }
-              com.tencent.mm.plugin.report.service.h.IzE.p(875L, 3L, 1L);
+              com.tencent.mm.plugin.report.service.h.OAn.p(875L, 3L, 1L);
               AppMethodBeat.o(64734);
             }
           }).c(new r.a()
           {
-            public final void e(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+            public final void c(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
             {
               AppMethodBeat.i(64733);
               if (HoneyPayCheckPwdUI.e(HoneyPayCheckPwdUI.this) != null) {
-                HoneyPayCheckPwdUI.e(HoneyPayCheckPwdUI.this).fuo();
+                HoneyPayCheckPwdUI.e(HoneyPayCheckPwdUI.this).gGd();
               }
-              com.tencent.mm.plugin.report.service.h.IzE.p(875L, 3L, 1L);
+              com.tencent.mm.plugin.report.service.h.OAn.p(875L, 3L, 1L);
               AppMethodBeat.o(64733);
             }
           });
         }
-        else if ((paramq instanceof com.tencent.mm.plugin.honey_pay.a.h))
+        else if ((paramp instanceof com.tencent.mm.plugin.honey_pay.a.h))
         {
           hideProgress();
-          paramString = (com.tencent.mm.plugin.honey_pay.a.h)paramq;
-          paramString.a(new HoneyPayCheckPwdUI.16(this, paramString)).b(new r.a()
+          paramString = (com.tencent.mm.plugin.honey_pay.a.h)paramp;
+          paramString.a(new r.a()
           {
-            public final void e(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+            public final void c(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
+            {
+              AppMethodBeat.i(64738);
+              Log.i("MicroMsg.HoneyPayCheckPwdUI", "modify success");
+              paramAnonymousString = new Intent();
+              paramAnonymousString.putExtra("key_modify_create_line_succ", true);
+              paramAnonymousString.putExtra("key_credit_line", paramString.JAD);
+              HoneyPayCheckPwdUI.this.setResult(-1, paramAnonymousString);
+              HoneyPayCheckPwdUI.this.finish();
+              com.tencent.mm.plugin.report.service.h.OAn.p(875L, 8L, 1L);
+              AppMethodBeat.o(64738);
+            }
+          }).b(new r.a()
+          {
+            public final void c(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
             {
               AppMethodBeat.i(64737);
               if (HoneyPayCheckPwdUI.e(HoneyPayCheckPwdUI.this) != null) {
-                HoneyPayCheckPwdUI.e(HoneyPayCheckPwdUI.this).fuo();
+                HoneyPayCheckPwdUI.e(HoneyPayCheckPwdUI.this).gGd();
               }
-              com.tencent.mm.plugin.report.service.h.IzE.p(875L, 9L, 1L);
+              com.tencent.mm.plugin.report.service.h.OAn.p(875L, 9L, 1L);
               AppMethodBeat.o(64737);
             }
           }).c(new r.a()
           {
-            public final void e(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+            public final void c(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
             {
               AppMethodBeat.i(64736);
               if (HoneyPayCheckPwdUI.e(HoneyPayCheckPwdUI.this) != null) {
-                HoneyPayCheckPwdUI.e(HoneyPayCheckPwdUI.this).fuo();
+                HoneyPayCheckPwdUI.e(HoneyPayCheckPwdUI.this).gGd();
               }
-              com.tencent.mm.plugin.report.service.h.IzE.p(875L, 9L, 1L);
+              com.tencent.mm.plugin.report.service.h.OAn.p(875L, 9L, 1L);
               AppMethodBeat.o(64736);
             }
           });
         }
-        else if ((paramq instanceof d))
+        else if ((paramp instanceof d))
         {
-          paramString = (d)paramq;
+          paramString = (d)paramp;
           paramString.a(new r.a()
           {
-            public final void e(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+            public final void c(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
             {
               AppMethodBeat.i(64726);
-              HoneyPayCheckPwdUI.a(HoneyPayCheckPwdUI.this, paramString.DJC.TdE);
-              if (paramString.DJC.TdF != null)
+              HoneyPayCheckPwdUI.a(HoneyPayCheckPwdUI.this, paramString.JAy.aaqT);
+              if (paramString.JAy.aaqU != null)
               {
-                com.tencent.mm.plugin.honey_pay.model.c.a(HoneyPayCheckPwdUI.this, paramString.DJC.TdF, new DialogInterface.OnClickListener()
+                com.tencent.mm.plugin.honey_pay.model.c.a(HoneyPayCheckPwdUI.this, paramString.JAy.aaqU, new DialogInterface.OnClickListener()
                 {
                   public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                   {
@@ -317,11 +355,11 @@ public class HoneyPayCheckPwdUI
             }
           }).b(new r.a()
           {
-            public final void e(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+            public final void c(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
             {
               AppMethodBeat.i(64724);
-              if (paramString.DJC.TdF != null) {
-                com.tencent.mm.plugin.honey_pay.model.c.a(HoneyPayCheckPwdUI.this, paramString.DJC.TdF, new DialogInterface.OnClickListener()
+              if (paramString.JAy.aaqU != null) {
+                com.tencent.mm.plugin.honey_pay.model.c.a(HoneyPayCheckPwdUI.this, paramString.JAy.aaqU, new DialogInterface.OnClickListener()
                 {
                   public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                   {
@@ -337,30 +375,30 @@ public class HoneyPayCheckPwdUI
                 AppMethodBeat.o(64724);
                 return;
                 if (HoneyPayCheckPwdUI.e(HoneyPayCheckPwdUI.this) != null) {
-                  HoneyPayCheckPwdUI.e(HoneyPayCheckPwdUI.this).fuo();
+                  HoneyPayCheckPwdUI.e(HoneyPayCheckPwdUI.this).gGd();
                 }
               }
             }
           }).c(new r.a()
           {
-            public final void e(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+            public final void c(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
             {
               AppMethodBeat.i(64739);
               if (HoneyPayCheckPwdUI.e(HoneyPayCheckPwdUI.this) != null) {
-                HoneyPayCheckPwdUI.e(HoneyPayCheckPwdUI.this).fuo();
+                HoneyPayCheckPwdUI.e(HoneyPayCheckPwdUI.this).gGd();
               }
               HoneyPayCheckPwdUI.this.hideProgress();
               AppMethodBeat.o(64739);
             }
           });
         }
-        else if ((paramq instanceof g))
+        else if ((paramp instanceof g))
         {
-          paramString = (g)paramq;
-          this.DKb = paramString.DJF.TdE;
+          paramString = (g)paramp;
+          this.JAX = paramString.JAB.aaqT;
           paramString.a(new r.a()
           {
-            public final void e(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+            public final void c(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
             {
               AppMethodBeat.i(64729);
               HoneyPayCheckPwdUI.d(HoneyPayCheckPwdUI.this);
@@ -368,51 +406,61 @@ public class HoneyPayCheckPwdUI
             }
           }).b(new r.a()
           {
-            public final void e(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+            public final void c(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
             {
               AppMethodBeat.i(64728);
               if (HoneyPayCheckPwdUI.e(HoneyPayCheckPwdUI.this) != null) {
-                HoneyPayCheckPwdUI.e(HoneyPayCheckPwdUI.this).fuo();
+                HoneyPayCheckPwdUI.e(HoneyPayCheckPwdUI.this).gGd();
               }
               HoneyPayCheckPwdUI.this.hideProgress();
               AppMethodBeat.o(64728);
             }
           }).c(new r.a()
           {
-            public final void e(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+            public final void c(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
             {
               AppMethodBeat.i(64727);
               if (HoneyPayCheckPwdUI.e(HoneyPayCheckPwdUI.this) != null) {
-                HoneyPayCheckPwdUI.e(HoneyPayCheckPwdUI.this).fuo();
+                HoneyPayCheckPwdUI.e(HoneyPayCheckPwdUI.this).gGd();
               }
               HoneyPayCheckPwdUI.this.hideProgress();
               AppMethodBeat.o(64727);
             }
           });
         }
-        else if ((paramq instanceof n))
+        else if ((paramp instanceof n))
         {
           hideProgress();
-          ((n)paramq).a(new HoneyPayCheckPwdUI.9(this)).b(new r.a()
+          ((n)paramp).a(new r.a()
           {
-            public final void e(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+            public final void c(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
+            {
+              AppMethodBeat.i(64732);
+              HoneyPayCheckPwdUI.this.setResult(-1);
+              HoneyPayCheckPwdUI.this.finish();
+              com.tencent.mm.plugin.report.service.h.OAn.p(875L, 6L, 1L);
+              AppMethodBeat.o(64732);
+            }
+          }).b(new r.a()
+          {
+            public final void c(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
             {
               AppMethodBeat.i(64731);
               if (HoneyPayCheckPwdUI.e(HoneyPayCheckPwdUI.this) != null) {
-                HoneyPayCheckPwdUI.e(HoneyPayCheckPwdUI.this).fuo();
+                HoneyPayCheckPwdUI.e(HoneyPayCheckPwdUI.this).gGd();
               }
-              com.tencent.mm.plugin.report.service.h.IzE.p(875L, 7L, 1L);
+              com.tencent.mm.plugin.report.service.h.OAn.p(875L, 7L, 1L);
               AppMethodBeat.o(64731);
             }
           }).c(new r.a()
           {
-            public final void e(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+            public final void c(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
             {
               AppMethodBeat.i(64730);
               if (HoneyPayCheckPwdUI.e(HoneyPayCheckPwdUI.this) != null) {
-                HoneyPayCheckPwdUI.e(HoneyPayCheckPwdUI.this).fuo();
+                HoneyPayCheckPwdUI.e(HoneyPayCheckPwdUI.this).gGd();
               }
-              com.tencent.mm.plugin.report.service.h.IzE.p(875L, 7L, 1L);
+              com.tencent.mm.plugin.report.service.h.OAn.p(875L, 7L, 1L);
               AppMethodBeat.o(64730);
             }
           });
@@ -429,7 +477,7 @@ public class HoneyPayCheckPwdUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.honey_pay.ui.HoneyPayCheckPwdUI
  * JD-Core Version:    0.7.0.1
  */

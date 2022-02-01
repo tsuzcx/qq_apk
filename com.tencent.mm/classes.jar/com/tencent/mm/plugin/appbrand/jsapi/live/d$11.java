@@ -1,88 +1,76 @@
 package com.tencent.mm.plugin.appbrand.jsapi.live;
 
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.g;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.rtmp.TXLivePusher.OnBGMNotify;
+import com.tencent.rtmp.ITXLivePushListener;
+import java.util.Iterator;
+import java.util.Set;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 final class d$11
-  implements TXLivePusher.OnBGMNotify
+  implements ITXLivePushListener
 {
-  d$11(d paramd, int paramInt, g paramg) {}
+  d$11(d paramd, int paramInt, h paramh) {}
   
-  public final void onBGMComplete(int paramInt)
+  public final void onNetStatus(Bundle paramBundle)
   {
-    AppMethodBeat.i(145875);
-    Log.i("MicroMsg.JsApiInsertLivePusher", "onBGMComplete, error:%s", new Object[] { Integer.valueOf(paramInt) });
-    d.b localb = new d.b((byte)0);
+    AppMethodBeat.i(145872);
+    d.f localf = new d.f((byte)0);
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2;
+    try
+    {
+      localJSONObject1.put("livePusherId", this.rJm);
+      localJSONObject2 = new JSONObject();
+      if (paramBundle != null)
+      {
+        Iterator localIterator = paramBundle.keySet().iterator();
+        while (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          localJSONObject2.put(str, paramBundle.get(str));
+          continue;
+          this.rJh.a(localf.ZR(localJSONObject1.toString()), null);
+        }
+      }
+    }
+    catch (JSONException paramBundle) {}
+    for (;;)
+    {
+      AppMethodBeat.o(145872);
+      return;
+      localJSONObject1.put("info", localJSONObject2);
+    }
+  }
+  
+  public final void onPushEvent(int paramInt, Bundle paramBundle)
+  {
+    AppMethodBeat.i(145871);
+    Log.i("MicroMsg.JsApiInsertLivePusher", "onPushEvent errCode:%d", new Object[] { Integer.valueOf(paramInt) });
+    d.g localg = new d.g((byte)0);
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("errCode", paramInt);
-      localJSONObject.put("livePusherId", this.oGn);
-      this.oGi.a(localb.agU(localJSONObject.toString()), null);
-      AppMethodBeat.o(145875);
+      localJSONObject.put("errMsg", paramBundle.getString("EVT_MSG"));
+      localJSONObject.put("livePusherId", this.rJm);
+      label76:
+      this.rJh.a(localg.ZR(localJSONObject.toString()), null);
+      AppMethodBeat.o(145871);
       return;
     }
-    catch (JSONException localJSONException)
+    catch (JSONException paramBundle)
     {
-      for (;;)
-      {
-        Log.e("MicroMsg.JsApiInsertLivePusher", "onBGMComplete fail", new Object[] { localJSONException });
-      }
-    }
-  }
-  
-  public final void onBGMProgress(long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(145874);
-    d.c localc = new d.c((byte)0);
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("progress", paramLong1);
-      localJSONObject.put("duration", paramLong2);
-      localJSONObject.put("livePusherId", this.oGn);
-      this.oGi.a(localc.agU(localJSONObject.toString()), null);
-      AppMethodBeat.o(145874);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        Log.e("MicroMsg.JsApiInsertLivePusher", "onBGMProgress fail", new Object[] { localJSONException });
-      }
-    }
-  }
-  
-  public final void onBGMStart()
-  {
-    AppMethodBeat.i(145873);
-    Log.i("MicroMsg.JsApiInsertLivePusher", "onBGMStart");
-    d.d locald = new d.d((byte)0);
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("livePusherId", this.oGn);
-      this.oGi.a(locald.agU(localJSONObject.toString()), null);
-      AppMethodBeat.o(145873);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        Log.e("MicroMsg.JsApiInsertLivePusher", "onBGMStart fail", new Object[] { localJSONException });
-      }
+      break label76;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.live.d.11
  * JD-Core Version:    0.7.0.1
  */

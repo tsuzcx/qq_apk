@@ -14,11 +14,11 @@ import java.util.Map;
 
 public final class b
 {
-  ba PIx;
+  ba Wye;
   
   public b(ba paramba)
   {
-    this.PIx = paramba;
+    this.Wye = paramba;
   }
 }
 

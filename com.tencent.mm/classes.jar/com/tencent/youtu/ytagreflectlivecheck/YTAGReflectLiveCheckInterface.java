@@ -26,7 +26,7 @@ public class YTAGReflectLiveCheckInterface
   private static int ERRCODE_NET_RETURN_PARSE_NULL = 0;
   private static int ERRCODE_UPLOAD_VIDEO_FAILED = 0;
   private static final String TAG = "YoutuLightLiveCheck";
-  public static final String VERSION = "3.6.4.4";
+  public static final String VERSION = "3.6.9.2";
   private static GetLiveStyleResult getLiveStyleResultHandler;
   private static Lock initLock;
   public static YTAGReflectSettings mAGSettings;
@@ -38,6 +38,7 @@ public class YTAGReflectLiveCheckInterface
   private static TimerWorker mGetValueTimer;
   private static int mInitModel;
   private static int mOnGetValueCount;
+  private static int mOverlayAlpha;
   private static IYTReflectListener mReflectListener;
   public static YTReflectNotice mReflectNotice;
   private static int mState;
@@ -55,6 +56,7 @@ public class YTAGReflectLiveCheckInterface
     mInitModel = 0;
     initLock = new ReentrantLock();
     getLiveStyleResultHandler = null;
+    mOverlayAlpha = 0;
     AppMethodBeat.o(43327);
   }
   
@@ -171,9 +173,9 @@ public class YTAGReflectLiveCheckInterface
   
   public static RawYuvData[] getRawYuvDatas()
   {
-    AppMethodBeat.i(231548);
+    AppMethodBeat.i(218064);
     RawYuvData[] arrayOfRawYuvData = YTAGReflectLiveCheckJNIInterface.getInstance().FRGetRawYuvDatas();
-    AppMethodBeat.o(231548);
+    AppMethodBeat.o(218064);
     return arrayOfRawYuvData;
   }
   
@@ -183,112 +185,115 @@ public class YTAGReflectLiveCheckInterface
   }
   
   /* Error */
-  public static int initModel(String paramString)
+  public static int initModel(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc 215
-    //   5: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   3: ldc 218
+    //   5: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: iconst_0
-    //   9: istore_1
-    //   10: getstatic 94	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:initLock	Ljava/util/concurrent/locks/Lock;
-    //   13: invokeinterface 220 1 0
-    //   18: getstatic 89	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:mInitModel	I
-    //   21: ifle +36 -> 57
+    //   9: istore_2
+    //   10: getstatic 95	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:initLock	Ljava/util/concurrent/locks/Lock;
+    //   13: invokeinterface 223 1 0
+    //   18: getstatic 90	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:mInitModel	I
+    //   21: ifle +40 -> 61
     //   24: ldc 32
-    //   26: ldc 222
-    //   28: invokestatic 126	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:nativeLog	(Ljava/lang/String;Ljava/lang/String;)V
-    //   31: getstatic 89	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:mInitModel	I
+    //   26: ldc 225
+    //   28: invokestatic 129	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:nativeLog	(Ljava/lang/String;Ljava/lang/String;)V
+    //   31: getstatic 90	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:mInitModel	I
     //   34: iconst_1
     //   35: iadd
-    //   36: putstatic 89	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:mInitModel	I
-    //   39: getstatic 94	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:initLock	Ljava/util/concurrent/locks/Lock;
-    //   42: invokeinterface 225 1 0
-    //   47: ldc 215
-    //   49: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   52: ldc 2
-    //   54: monitorexit
-    //   55: iload_1
-    //   56: ireturn
-    //   57: aload_0
-    //   58: putstatic 80	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:mAppId	Ljava/lang/String;
+    //   36: putstatic 90	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:mInitModel	I
+    //   39: getstatic 95	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:initLock	Ljava/util/concurrent/locks/Lock;
+    //   42: invokeinterface 228 1 0
+    //   47: aload_1
+    //   48: invokestatic 232	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:SetPipelineVersion	(Ljava/lang/String;)V
+    //   51: ldc 218
+    //   53: invokestatic 102	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   56: ldc 2
+    //   58: monitorexit
+    //   59: iload_2
+    //   60: ireturn
     //   61: aload_0
-    //   62: ifnonnull -31 -> 31
-    //   65: ldc 78
-    //   67: putstatic 80	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:mAppId	Ljava/lang/String;
-    //   70: goto -39 -> 31
-    //   73: astore_0
-    //   74: ldc 32
-    //   76: new 227	java/lang/StringBuilder
-    //   79: dup
-    //   80: ldc 229
-    //   82: invokespecial 232	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   85: aload_0
-    //   86: invokevirtual 236	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   89: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   92: invokevirtual 243	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   95: invokestatic 126	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:nativeLog	(Ljava/lang/String;Ljava/lang/String;)V
-    //   98: iconst_m1
-    //   99: istore_1
-    //   100: getstatic 94	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:initLock	Ljava/util/concurrent/locks/Lock;
-    //   103: invokeinterface 225 1 0
-    //   108: goto -61 -> 47
-    //   111: astore_0
-    //   112: ldc 2
-    //   114: monitorexit
-    //   115: aload_0
-    //   116: athrow
-    //   117: astore_0
-    //   118: getstatic 94	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:initLock	Ljava/util/concurrent/locks/Lock;
-    //   121: invokeinterface 225 1 0
-    //   126: ldc 215
-    //   128: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   131: aload_0
-    //   132: athrow
+    //   62: putstatic 81	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:mAppId	Ljava/lang/String;
+    //   65: aload_0
+    //   66: ifnonnull -35 -> 31
+    //   69: ldc 79
+    //   71: putstatic 81	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:mAppId	Ljava/lang/String;
+    //   74: goto -43 -> 31
+    //   77: astore_0
+    //   78: ldc 32
+    //   80: new 234	java/lang/StringBuilder
+    //   83: dup
+    //   84: ldc 236
+    //   86: invokespecial 238	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   89: aload_0
+    //   90: invokevirtual 242	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   93: invokevirtual 246	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   96: invokevirtual 249	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   99: invokestatic 129	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:nativeLog	(Ljava/lang/String;Ljava/lang/String;)V
+    //   102: iconst_m1
+    //   103: istore_2
+    //   104: getstatic 95	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:initLock	Ljava/util/concurrent/locks/Lock;
+    //   107: invokeinterface 228 1 0
+    //   112: goto -65 -> 47
+    //   115: astore_0
+    //   116: ldc 2
+    //   118: monitorexit
+    //   119: aload_0
+    //   120: athrow
+    //   121: astore_0
+    //   122: getstatic 95	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:initLock	Ljava/util/concurrent/locks/Lock;
+    //   125: invokeinterface 228 1 0
+    //   130: ldc 218
+    //   132: invokestatic 102	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   135: aload_0
+    //   136: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	133	0	paramString	String
-    //   9	91	1	i	int
+    //   0	137	0	paramString1	String
+    //   0	137	1	paramString2	String
+    //   9	95	2	i	int
     // Exception table:
     //   from	to	target	type
-    //   10	31	73	java/lang/Exception
-    //   31	39	73	java/lang/Exception
-    //   57	61	73	java/lang/Exception
-    //   65	70	73	java/lang/Exception
-    //   3	8	111	finally
-    //   39	47	111	finally
-    //   47	52	111	finally
-    //   100	108	111	finally
-    //   118	133	111	finally
-    //   10	31	117	finally
-    //   31	39	117	finally
-    //   57	61	117	finally
-    //   65	70	117	finally
-    //   74	98	117	finally
+    //   10	31	77	java/lang/Exception
+    //   31	39	77	java/lang/Exception
+    //   61	65	77	java/lang/Exception
+    //   69	74	77	java/lang/Exception
+    //   3	8	115	finally
+    //   39	47	115	finally
+    //   47	56	115	finally
+    //   104	112	115	finally
+    //   122	137	115	finally
+    //   10	31	121	finally
+    //   31	39	121	finally
+    //   61	65	121	finally
+    //   69	74	121	finally
+    //   78	102	121	finally
   }
   
   public static void onCameraChanged(int paramInt)
   {
-    AppMethodBeat.i(231542);
+    AppMethodBeat.i(218060);
     try
     {
       Camera.Parameters localParameters = mCamera.getParameters();
       localParameters.setExposureCompensation(paramInt);
       mCamera.setParameters(localParameters);
-      AppMethodBeat.o(231542);
+      AppMethodBeat.o(218060);
       return;
     }
     catch (Exception localException)
     {
       new StringBuilder("on camera changed failed:").append(localException.getLocalizedMessage());
-      AppMethodBeat.o(231542);
+      AppMethodBeat.o(218060);
     }
   }
   
   public static int[] onFetchCameraInfo()
   {
-    AppMethodBeat.i(231546);
+    AppMethodBeat.i(218061);
     for (;;)
     {
       try
@@ -317,7 +322,7 @@ public class YTAGReflectLiveCheckInterface
           {
             k = localParameters.getMaxExposureCompensation();
             new StringBuilder("on fetch camera exp:").append(i).append(" min:").append(j).append(" max:").append(k);
-            AppMethodBeat.o(231546);
+            AppMethodBeat.o(218061);
             return new int[] { i, j, k };
           }
           catch (Exception localException3)
@@ -346,46 +351,88 @@ public class YTAGReflectLiveCheckInterface
   
   public static void onFinish()
   {
-    AppMethodBeat.i(231534);
+    AppMethodBeat.i(218054);
     YTAGReflectLiveCheckJNIInterface.nativeLog("YoutuLightLiveCheck", "on finished");
     int i = mCameraRotatedTag;
     i = YTAGReflectLiveCheckJNIInterface.getInstance().FRDoDetectionYuvs(false, i);
     YTAGReflectLiveCheckJNIInterface.nativeLog("YoutuLightLiveCheck", "on finished ".concat(String.valueOf(i)));
-    if (i == 0) {}
-    try
+    if (i == 0)
     {
       FullPack localFullPack = YTAGReflectLiveCheckJNIInterface.getInstance().FRGetAGin();
       mCheckResult.onSuccess(localFullPack);
-      AppMethodBeat.o(231534);
+      AppMethodBeat.o(218054);
       return;
     }
-    catch (Exception localException)
-    {
-      new StringBuilder("on state changed failed:").append(localException.getLocalizedMessage());
-      AppMethodBeat.o(231534);
-    }
     mCheckResult.onFailed(-1, "JNI return failed.[" + i + "]", "Please make sure you have called the YTAGReflectLiveCheckInterface.onPreviewFrame during the hole reflecting process. Check log for more information. code: ".concat(String.valueOf(i)));
-    AppMethodBeat.o(231534);
-    return;
+    AppMethodBeat.o(218054);
   }
   
   public static void onScreenChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat)
   {
-    AppMethodBeat.i(231536);
-    ColorMatrixColorFilter localColorMatrixColorFilter = new ColorMatrixColorFilter(new float[] { 0.0F, 0.0F, 0.0F, 0.0F, paramInt2, 0.0F, 0.0F, 0.0F, 0.0F, paramInt3, 0.0F, 0.0F, 0.0F, 0.0F, paramInt4, 0.0F, 0.0F, 0.0F, 0.0F, paramInt1 });
-    if (mReflectListener == null)
+    AppMethodBeat.i(218055);
+    Object localObject;
+    if (mOverlayAlpha != 0)
     {
-      YTAGReflectLiveCheckJNIInterface.nativeLog("YoutuLightLiveCheck", "On reflection screen change failed:mReflectListener is null");
-      AppMethodBeat.o(231536);
-      return;
+      localObject = new float[20];
+      localObject[0] = 0.0F;
+      localObject[1] = 0.0F;
+      localObject[2] = 0.0F;
+      localObject[3] = 0.0F;
+      localObject[4] = paramInt2;
+      localObject[5] = 0.0F;
+      localObject[6] = 0.0F;
+      localObject[7] = 0.0F;
+      localObject[8] = 0.0F;
+      localObject[9] = paramInt3;
+      localObject[10] = 0.0F;
+      localObject[11] = 0.0F;
+      localObject[12] = 0.0F;
+      localObject[13] = 0.0F;
+      localObject[14] = paramInt4;
+      localObject[15] = 0.0F;
+      localObject[16] = 0.0F;
+      localObject[17] = 0.0F;
+      localObject[18] = paramInt1;
+      localObject[19] = 0.0F;
     }
-    mReflectListener.onReflectEvent(localColorMatrixColorFilter, paramFloat);
-    AppMethodBeat.o(231536);
+    for (;;)
+    {
+      localObject = new ColorMatrixColorFilter((float[])localObject);
+      if (mReflectListener != null) {
+        break;
+      }
+      YTAGReflectLiveCheckJNIInterface.nativeLog("YoutuLightLiveCheck", "On reflection screen change failed:mReflectListener is null");
+      AppMethodBeat.o(218055);
+      return;
+      localObject = new float[20];
+      localObject[0] = 0.0F;
+      localObject[1] = 0.0F;
+      localObject[2] = 0.0F;
+      localObject[3] = 0.0F;
+      localObject[4] = paramInt2;
+      localObject[5] = 0.0F;
+      localObject[6] = 0.0F;
+      localObject[7] = 0.0F;
+      localObject[8] = 0.0F;
+      localObject[9] = paramInt3;
+      localObject[10] = 0.0F;
+      localObject[11] = 0.0F;
+      localObject[12] = 0.0F;
+      localObject[13] = 0.0F;
+      localObject[14] = paramInt4;
+      localObject[15] = 0.0F;
+      localObject[16] = 0.0F;
+      localObject[17] = 0.0F;
+      localObject[18] = 0.0F;
+      localObject[19] = paramInt1;
+    }
+    mReflectListener.onReflectEvent((ColorMatrixColorFilter)localObject, paramFloat);
+    AppMethodBeat.o(218055);
   }
   
   public static void onStateChanged(int paramInt)
   {
-    AppMethodBeat.i(231538);
+    AppMethodBeat.i(218056);
     mState = paramInt;
     new StringBuilder("on state changed call ").append(mState);
     if (paramInt == 0) {}
@@ -394,13 +441,13 @@ public class YTAGReflectLiveCheckInterface
       Camera.Parameters localParameters1 = mCamera.getParameters();
       localParameters1.setAutoWhiteBalanceLock(true);
       mCamera.setParameters(localParameters1);
-      AppMethodBeat.o(231538);
+      AppMethodBeat.o(218056);
       return;
     }
-    catch (Exception localException)
+    catch (Exception localException1)
     {
-      new StringBuilder("on state changed failed:").append(localException.getLocalizedMessage());
-      AppMethodBeat.o(231538);
+      YTAGReflectLiveCheckJNIInterface.nativeLog("YoutuLightLiveCheck", "on state changed failed:" + localException1.getLocalizedMessage());
+      AppMethodBeat.o(218056);
       return;
     }
     if (paramInt == 1)
@@ -408,22 +455,34 @@ public class YTAGReflectLiveCheckInterface
       if (mReflectNotice != null)
       {
         mReflectNotice.onDelayCalc();
-        AppMethodBeat.o(231538);
+        AppMethodBeat.o(218056);
       }
     }
-    else if (paramInt == 2)
-    {
-      Camera.Parameters localParameters2 = mCamera.getParameters();
-      localParameters2.setAutoWhiteBalanceLock(false);
-      mCamera.setParameters(localParameters2);
-      onFinish();
+    else if (paramInt == 2) {
+      try
+      {
+        Camera.Parameters localParameters2 = mCamera.getParameters();
+        localParameters2.setAutoWhiteBalanceLock(false);
+        mCamera.setParameters(localParameters2);
+        return;
+      }
+      catch (Exception localException2)
+      {
+        YTAGReflectLiveCheckJNIInterface.nativeLog("YoutuLightLiveCheck", "on finish get param failed:" + localException2.getLocalizedMessage());
+        return;
+      }
+      finally
+      {
+        onFinish();
+        AppMethodBeat.o(218056);
+      }
     }
-    AppMethodBeat.o(231538);
+    AppMethodBeat.o(218056);
   }
   
   public static void pushImageData(byte[] paramArrayOfByte, int paramInt1, int paramInt2, long paramLong, int paramInt3, float[] paramArrayOfFloat, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    AppMethodBeat.i(231540);
+    AppMethodBeat.i(218057);
     if (mState == 0)
     {
       int i = YTAGReflectLiveCheckJNIInterface.getInstance().FRGetConfigBegin() - 2;
@@ -437,7 +496,7 @@ public class YTAGReflectLiveCheckInterface
         YTAGReflectLiveCheckJNIInterface.getInstance().FRPushYuv(paramArrayOfByte, paramInt1, paramInt2, paramLong, paramInt3, paramArrayOfFloat);
         YTAGReflectLiveCheckJNIInterface.getInstance().FRPushCaptureTime(JNIUtils.getTimeval(paramLong));
       }
-      AppMethodBeat.o(231540);
+      AppMethodBeat.o(218057);
       return;
     }
     if (mState == 1)
@@ -446,7 +505,7 @@ public class YTAGReflectLiveCheckInterface
       YTAGReflectLiveCheckJNIInterface.getInstance().FRPushISOImgYuv(paramArrayOfByte, paramInt1, paramInt2);
       YTAGReflectLiveCheckJNIInterface.getInstance().FRPushISOCaptureTime(JNIUtils.getTimeval(paramLong));
     }
-    AppMethodBeat.o(231540);
+    AppMethodBeat.o(218057);
   }
   
   /* Error */
@@ -455,69 +514,67 @@ public class YTAGReflectLiveCheckInterface
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc_w 416
-    //   6: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: getstatic 94	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:initLock	Ljava/util/concurrent/locks/Lock;
-    //   12: invokeinterface 220 1 0
-    //   17: getstatic 89	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:mInitModel	I
+    //   3: ldc_w 425
+    //   6: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   9: getstatic 95	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:initLock	Ljava/util/concurrent/locks/Lock;
+    //   12: invokeinterface 223 1 0
+    //   17: getstatic 90	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:mInitModel	I
     //   20: iconst_1
     //   21: isub
     //   22: istore_0
     //   23: iload_0
-    //   24: putstatic 89	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:mInitModel	I
+    //   24: putstatic 90	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:mInitModel	I
     //   27: iload_0
-    //   28: ifgt +43 -> 71
+    //   28: ifgt +39 -> 67
     //   31: iconst_0
-    //   32: putstatic 89	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:mInitModel	I
+    //   32: putstatic 90	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:mInitModel	I
     //   35: aconst_null
-    //   36: putstatic 358	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:mReflectNotice	Lcom/tencent/youtu/ytagreflectlivecheck/notice/YTReflectNotice;
+    //   36: putstatic 363	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:mReflectNotice	Lcom/tencent/youtu/ytagreflectlivecheck/notice/YTReflectNotice;
     //   39: aconst_null
-    //   40: putstatic 210	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:mReflectListener	Lcom/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface$IYTReflectListener;
-    //   43: getstatic 110	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:mGetValueTimer	Lcom/tencent/youtu/ytagreflectlivecheck/worker/TimerWorker;
+    //   40: putstatic 213	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:mReflectListener	Lcom/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface$IYTReflectListener;
+    //   43: getstatic 113	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:mGetValueTimer	Lcom/tencent/youtu/ytagreflectlivecheck/worker/TimerWorker;
     //   46: ifnull +13 -> 59
-    //   49: getstatic 110	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:mGetValueTimer	Lcom/tencent/youtu/ytagreflectlivecheck/worker/TimerWorker;
-    //   52: invokevirtual 418	com/tencent/youtu/ytagreflectlivecheck/worker/TimerWorker:cancel	()V
+    //   49: getstatic 113	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:mGetValueTimer	Lcom/tencent/youtu/ytagreflectlivecheck/worker/TimerWorker;
+    //   52: invokevirtual 427	com/tencent/youtu/ytagreflectlivecheck/worker/TimerWorker:cancel	()V
     //   55: aconst_null
-    //   56: putstatic 110	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:mGetValueTimer	Lcom/tencent/youtu/ytagreflectlivecheck/worker/TimerWorker;
+    //   56: putstatic 113	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:mGetValueTimer	Lcom/tencent/youtu/ytagreflectlivecheck/worker/TimerWorker;
     //   59: aconst_null
-    //   60: putstatic 247	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:mCamera	Landroid/hardware/Camera;
+    //   60: putstatic 97	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:getLiveStyleResultHandler	Lcom/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface$GetLiveStyleResult;
     //   63: aconst_null
-    //   64: putstatic 96	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:getLiveStyleResultHandler	Lcom/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface$GetLiveStyleResult;
-    //   67: aconst_null
-    //   68: putstatic 320	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:mCheckResult	Lcom/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface$LightLiveCheckResult;
-    //   71: getstatic 94	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:initLock	Ljava/util/concurrent/locks/Lock;
-    //   74: invokeinterface 225 1 0
-    //   79: invokestatic 421	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:clearInstance	()V
-    //   82: ldc_w 416
-    //   85: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   88: ldc 2
-    //   90: monitorexit
-    //   91: return
-    //   92: astore_1
-    //   93: getstatic 94	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:initLock	Ljava/util/concurrent/locks/Lock;
-    //   96: invokeinterface 225 1 0
-    //   101: ldc_w 416
-    //   104: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   107: aload_1
-    //   108: athrow
-    //   109: astore_1
-    //   110: ldc 2
-    //   112: monitorexit
-    //   113: aload_1
-    //   114: athrow
+    //   64: putstatic 253	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:mCamera	Landroid/hardware/Camera;
+    //   67: getstatic 95	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:initLock	Ljava/util/concurrent/locks/Lock;
+    //   70: invokeinterface 228 1 0
+    //   75: invokestatic 430	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:clearInstance	()V
+    //   78: ldc_w 425
+    //   81: invokestatic 102	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   84: ldc 2
+    //   86: monitorexit
+    //   87: return
+    //   88: astore_1
+    //   89: getstatic 95	com/tencent/youtu/ytagreflectlivecheck/YTAGReflectLiveCheckInterface:initLock	Ljava/util/concurrent/locks/Lock;
+    //   92: invokeinterface 228 1 0
+    //   97: ldc_w 425
+    //   100: invokestatic 102	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   103: aload_1
+    //   104: athrow
+    //   105: astore_1
+    //   106: ldc 2
+    //   108: monitorexit
+    //   109: aload_1
+    //   110: athrow
     // Local variable table:
     //   start	length	slot	name	signature
     //   22	6	0	i	int
-    //   92	16	1	localObject1	Object
-    //   109	5	1	localObject2	Object
+    //   88	16	1	localObject1	Object
+    //   105	5	1	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   9	27	92	finally
-    //   31	59	92	finally
-    //   59	71	92	finally
-    //   3	9	109	finally
-    //   71	88	109	finally
-    //   93	109	109	finally
+    //   9	27	88	finally
+    //   31	59	88	finally
+    //   59	67	88	finally
+    //   3	9	105	finally
+    //   67	84	105	finally
+    //   89	105	105	finally
   }
   
   public static void setAGSettings(YTAGReflectSettings paramYTAGReflectSettings)
@@ -543,21 +600,39 @@ public class YTAGReflectLiveCheckInterface
     AppMethodBeat.o(43318);
   }
   
+  public static void setupConfig(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(218053);
+    if (paramString1 == "overlay_alpha") {
+      try
+      {
+        mOverlayAlpha = Integer.parseInt(paramString2);
+        AppMethodBeat.o(218053);
+        return;
+      }
+      catch (NumberFormatException paramString1)
+      {
+        mOverlayAlpha = 0;
+      }
+    }
+    AppMethodBeat.o(218053);
+  }
+  
   public static void start(Context paramContext, Camera paramCamera, int paramInt, String paramString, LightLiveCheckResult paramLightLiveCheckResult)
   {
-    AppMethodBeat.i(231531);
+    AppMethodBeat.i(218052);
     YTAGReflectLiveCheckJNIInterface.nativeLog("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.start] ---");
     if (paramLightLiveCheckResult == null)
     {
       YTAGReflectLiveCheckJNIInterface.nativeLog("YoutuLightLiveCheck", "On reflection start failed:checkResult is null");
-      AppMethodBeat.o(231531);
+      AppMethodBeat.o(218052);
       return;
     }
     mCheckResult = paramLightLiveCheckResult;
     if (mInitModel <= 0)
     {
       mCheckResult.onFailed(2, "Not init model.", "Call YTAGReflectLiveCheckInterface.initModel() before.");
-      AppMethodBeat.o(231531);
+      AppMethodBeat.o(218052);
       return;
     }
     mCameraRotatedTag = paramInt;
@@ -576,7 +651,7 @@ public class YTAGReflectLiveCheckInterface
     if (mReflectListener != null) {
       mReflectListener.onReflectStart(paramContext[0]);
     }
-    AppMethodBeat.o(231531);
+    AppMethodBeat.o(218052);
   }
   
   public static abstract interface GetLiveStyleResult
@@ -614,7 +689,7 @@ public class YTAGReflectLiveCheckInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.youtu.ytagreflectlivecheck.YTAGReflectLiveCheckInterface
  * JD-Core Version:    0.7.0.1
  */

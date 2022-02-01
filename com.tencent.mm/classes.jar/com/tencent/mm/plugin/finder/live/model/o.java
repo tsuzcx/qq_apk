@@ -1,188 +1,330 @@
 package com.tencent.mm.plugin.finder.live.model;
 
-import com.tencent.e.h;
-import com.tencent.e.i;
-import com.tencent.e.i.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.live.viewmodel.data.business.c;
-import com.tencent.mm.protocal.protobuf.bac;
+import com.tencent.mm.am.b.a;
+import com.tencent.mm.autogen.mmdata.rpt.cm;
+import com.tencent.mm.cp.f;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.expt.hellhound.ext.session.a.c;
+import com.tencent.mm.plugin.finder.live.model.cgi.m;
+import com.tencent.mm.plugin.finder.live.report.q.bo;
+import com.tencent.mm.plugin.finder.live.report.q.bu;
+import com.tencent.mm.plugin.finder.live.report.q.u;
+import com.tencent.mm.plugin.finder.live.viewmodel.data.g;
+import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.FinderObjectDesc;
+import com.tencent.mm.protocal.protobuf.bca;
+import com.tencent.mm.protocal.protobuf.bip;
+import com.tencent.mm.protocal.protobuf.bui;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import java.net.URLEncoder;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/FinderLiveGuard;", "", "()V", "HEART_BEAT_GUARD_INTERVAL", "", "KEEP_ALIVE_GUARD_ENABLE", "", "TAG", "", "heartbeatGuardFuture", "Lcom/tencent/threadpool/runnable/FutureEx;", "heartbeatGuardTask", "Ljava/lang/Runnable;", "keepAliveGuardFuture", "keepAliveGuardTask", "cancelHeartBeatGuard", "", "cancelKeepAliveGuard", "heartBeatGuard", "heartbeatGuardEnable", "keepAliveGuard", "delay", "keepAliveGuardEnable", "release", "setup", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/model/FinderLiveFeedFlowReporter;", "", "()V", "TAG", "", "cacheMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "", "clientValidWatchTime", "", "currentTask", "Ljava/lang/Runnable;", "timer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "checkAlreadyInCache", "", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "needCalculateWatchNumberOnFeedFlow", "tabType", "commentScene", "reportJoinLive", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderJoinLiveResp;", "finderObject", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "reportJoinLiveOnFeedFlow", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "startPlayLiveOnFeedFlow", "stopPlayLiveOnFeedFlow", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class o
 {
-  private static final String TAG = "FinderLiveGuard";
-  private static Runnable yfA;
-  private static boolean yfB;
-  private static d<?> yfC;
-  private static Runnable yfD;
-  public static final o yfE;
-  private static long yfy;
-  private static d<?> yfz;
+  private static final ConcurrentHashMap<String, Set<Long>> Bgw;
+  public static final o CFQ;
+  private static Runnable CFR;
+  private static final int CFS;
+  private static final MTimerHandler timer;
   
   static
   {
-    AppMethodBeat.i(273939);
-    yfE = new o();
-    TAG = "FinderLiveGuard";
-    yfy = 10000L;
-    yfB = true;
-    AppMethodBeat.o(273939);
+    AppMethodBeat.i(359443);
+    CFQ = new o();
+    Bgw = new ConcurrentHashMap();
+    com.tencent.d.a.a.a.a.a locala = com.tencent.d.a.a.a.a.a.ahiX;
+    CFS = ((Number)com.tencent.d.a.a.a.a.a.jTR().bmg()).intValue();
+    timer = new MTimerHandler("FinderLiveFeedFlowReporter::Timer", (MTimerHandler.CallBack)new o.a(), false);
+    AppMethodBeat.o(359443);
   }
   
-  public static void Lj(long paramLong)
+  private static final ah a(bip parambip, FinderObject paramFinderObject, b.a parama)
   {
-    AppMethodBeat.i(273937);
-    Object localObject1 = com.tencent.mm.plugin.finder.live.model.context.a.ykr;
-    localObject1 = com.tencent.mm.plugin.finder.live.model.context.a.dAc();
-    if (localObject1 != null)
+    AppMethodBeat.i(359426);
+    s.u(parambip, "$liveInfo");
+    s.u(paramFinderObject, "$finderObject");
+    int i = parama.errType;
+    int j = parama.errCode;
+    Object localObject1;
+    if ((i == 0) && (j == 0))
     {
-      Object localObject2 = (c)((com.tencent.mm.plugin.finder.live.model.context.a)localObject1).business(c.class);
-      if (localObject2 != null)
-      {
-        String str = TAG;
-        StringBuilder localStringBuilder = new StringBuilder("keepAliveGuard it.isLiveStarted():").append(((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)((c)localObject2).business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).isLiveStarted()).append(" heartbeatGuardEnable:").append(dyD()).append(" liveId:");
-        localObject1 = ((c)localObject2).liveInfo;
-        if (localObject1 != null) {}
-        for (localObject1 = Long.valueOf(((bac)localObject1).liveId);; localObject1 = null)
-        {
-          Log.i(str, ((Long)localObject1).longValue() + " HEART_BEAT_GUARD_INTERVAL:" + yfy);
-          if (!yfB) {
-            break label235;
-          }
-          if (!((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)((c)localObject2).business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).isLiveStarted()) {
-            break;
-          }
-          localObject1 = new ah.c(((c)localObject2).liveInfo.liveId);
-          localObject2 = yfC;
-          if (localObject2 != null) {
-            ((d)localObject2).cancel(false);
-          }
-          yfC = h.ZvG.n((Runnable)localObject1, 60000L + paramLong);
-          yfD = (Runnable)localObject1;
-          AppMethodBeat.o(273937);
-          return;
-        }
-        localObject1 = yfC;
-        if (localObject1 != null)
-        {
-          ((d)localObject1).cancel(false);
-          AppMethodBeat.o(273937);
-          return;
-        }
-        label235:
-        AppMethodBeat.o(273937);
-        return;
+      Object localObject2 = (ConcurrentMap)Bgw;
+      String str = z.bAW();
+      localObject1 = ((ConcurrentMap)localObject2).get(str);
+      if (localObject1 != null) {
+        break label189;
+      }
+      Log.i("Finder.FinderLiveFeedFlowReporter", s.X("create set for ", z.bAW()));
+      Set localSet = Collections.synchronizedSet((Set)new HashSet());
+      localObject2 = ((ConcurrentMap)localObject2).putIfAbsent(str, localSet);
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = localSet;
       }
     }
-    AppMethodBeat.o(273937);
-  }
-  
-  private static boolean dyD()
-  {
-    return yfy > 0L;
-  }
-  
-  public static void dyE()
-  {
-    d locald = null;
-    AppMethodBeat.i(273935);
-    Object localObject1 = com.tencent.mm.plugin.finder.live.model.context.a.ykr;
-    localObject1 = com.tencent.mm.plugin.finder.live.model.context.a.dAc();
-    if (localObject1 != null)
+    label189:
+    for (;;)
     {
-      Object localObject2 = (c)((com.tencent.mm.plugin.finder.live.model.context.a)localObject1).business(c.class);
-      if (localObject2 != null)
-      {
-        String str = TAG;
-        StringBuilder localStringBuilder = new StringBuilder("heartBeatGuard it.isLiveStarted():").append(((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)((c)localObject2).business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).isLiveStarted()).append(" heartbeatGuardEnable:").append(dyD()).append(" liveId:");
-        localObject1 = ((c)localObject2).liveInfo;
-        if (localObject1 != null) {}
-        for (localObject1 = Long.valueOf(((bac)localObject1).liveId);; localObject1 = null)
-        {
-          Log.i(str, ((Long)localObject1).longValue() + " HEART_BEAT_GUARD_INTERVAL:" + yfy);
-          if (!dyD()) {
-            break label249;
-          }
-          if (!((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)((c)localObject2).business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).isLiveStarted()) {
-            break;
-          }
-          localObject2 = ((c)localObject2).liveInfo;
-          localObject1 = locald;
-          if (localObject2 != null) {
-            localObject1 = Long.valueOf(((bac)localObject2).liveId);
-          }
-          localObject1 = new ah.b(((Long)localObject1).longValue());
-          locald = yfz;
-          if (locald != null) {
-            locald.cancel(false);
-          }
-          yfz = h.ZvG.n((Runnable)localObject1, yfy);
-          yfA = (Runnable)localObject1;
-          AppMethodBeat.o(273935);
-          return;
-        }
-        localObject1 = yfz;
-        if (localObject1 != null)
-        {
-          ((d)localObject1).cancel(false);
-          AppMethodBeat.o(273935);
-          return;
-        }
-        label249:
-        AppMethodBeat.o(273935);
-        return;
+      ((Set)localObject1).add(Long.valueOf(parambip.liveId));
+      Log.i("Finder.FinderLiveFeedFlowReporter", "add liveId:" + parambip.liveId + " to set");
+      a((bca)parama.ott, paramFinderObject);
+      parambip = ah.aiuX;
+      AppMethodBeat.o(359426);
+      return parambip;
+    }
+  }
+  
+  private static void a(bca parambca, FinderObject paramFinderObject)
+  {
+    AppMethodBeat.i(359404);
+    long l2 = System.currentTimeMillis();
+    cm localcm = new cm();
+    long l1;
+    Object localObject;
+    label74:
+    String str;
+    int i;
+    if (parambca == null)
+    {
+      l1 = 0L;
+      localcm.lK(com.tencent.mm.plugin.expt.hellhound.core.b.hF(l1));
+      localcm.lL(com.tencent.mm.plugin.expt.hellhound.core.b.hF(paramFinderObject.id));
+      localcm.lM(paramFinderObject.username);
+      localObject = paramFinderObject.objectDesc;
+      if (localObject != null) {
+        break label740;
+      }
+      localObject = "";
+      localcm.lN(URLEncoder.encode((String)localObject, "UTF-8"));
+      localcm.lO("");
+      str = com.tencent.mm.plugin.expt.hellhound.core.b.bys();
+      localObject = str;
+      if (str == null) {
+        localObject = "";
+      }
+      localcm.lP((String)localObject);
+      str = com.tencent.mm.plugin.expt.hellhound.core.b.dIX();
+      localObject = str;
+      if (str == null) {
+        localObject = "";
+      }
+      localcm.lQ((String)localObject);
+      str = c.dLD().dHN();
+      localObject = str;
+      if (str == null) {
+        localObject = "";
+      }
+      localcm.lR((String)localObject);
+      localcm.lT("");
+      localcm.lS(paramFinderObject.sessionBuffer);
+      localcm.iwR = l2;
+      if (parambca != null) {
+        break label764;
+      }
+      i = 0;
+      label213:
+      l1 = l2 - i;
+      if (l1 <= 0L) {
+        break label786;
       }
     }
-    AppMethodBeat.o(273935);
-  }
-  
-  public static void dyF()
-  {
-    AppMethodBeat.i(273936);
-    d locald = yfz;
-    if (locald != null)
+    for (;;)
     {
-      locald.cancel(true);
-      AppMethodBeat.o(273936);
+      localcm.iwS = l1;
+      localcm.iwV = q.u.DwE.status;
+      localcm.iwW = l2;
+      localcm.ikE = q.bu.DDj.action;
+      localcm.iwY = 0L;
+      localcm.iwZ = q.bo.DBL.action;
+      localcm.lU("");
+      localcm.bMH();
+      parambca = new StringBuilder();
+      parambca.append("reportJoinLive, liveId=").append(localcm.iuJ).append(", feedId=").append(localcm.iuI).append(", username=").append(localcm.irj).append(", topic=").append(localcm.iwN).append(", commentScene=").append(localcm.iwO).append(", isPrivate=").append(localcm.iwP).append(", contextId=").append(localcm.ipT).append(", clickTabContextId=").append(localcm.ipU).append(", sessionId=").append(localcm.iqO).append(", sessionBuffer=").append(localcm.iqp).append(", shopPermit=").append(localcm.iwQ).append(", enterSessionId=");
+      parambca.append(localcm.iwR).append(", liveTime=").append(localcm.iwS).append(", floatDuration=").append(localcm.iwU).append(", fullDuration=").append(localcm.iwT).append(", enterStatus=").append(localcm.iwV).append(", actionTS=").append(localcm.iwW).append(", action=").append(localcm.ikE).append(", enterIconType=").append(localcm.iwY).append(", pageType=").append(localcm.iwZ).append(", adData=").append(localcm.ixa).append(", scenenote=").append(localcm.ixb).append(", identityType=").append(localcm.ixc);
+      parambca.append(", request_id=").append(localcm.ixd).append(", actionStyle=").append(localcm.ixh).append(", actionResult=").append(localcm.iwX).append(", couponId=").append(localcm.ixi).append(", chnlExtra=").append(localcm.ixf);
+      Log.i("Finder.FinderLiveFeedFlowReporter", parambca.toString());
+      AppMethodBeat.o(359404);
       return;
+      localObject = parambca.liveInfo;
+      if (localObject == null)
+      {
+        l1 = 0L;
+        break;
+      }
+      l1 = ((bip)localObject).liveId;
+      break;
+      label740:
+      str = ((FinderObjectDesc)localObject).description;
+      localObject = str;
+      if (str != null) {
+        break label74;
+      }
+      localObject = "";
+      break label74;
+      label764:
+      parambca = parambca.liveInfo;
+      if (parambca == null)
+      {
+        i = 0;
+        break label213;
+      }
+      i = parambca.startTime;
+      break label213;
+      label786:
+      l1 = 0L;
     }
-    AppMethodBeat.o(273936);
   }
   
-  public static void dyG()
+  public static void b(FinderObject paramFinderObject, bui parambui)
   {
-    AppMethodBeat.i(273938);
-    d locald = yfC;
-    if (locald != null)
+    Object localObject2 = null;
+    AppMethodBeat.i(359380);
+    s.u(paramFinderObject, "finderObject");
+    Object localObject1 = paramFinderObject.liveInfo;
+    int i;
+    label42:
+    label51:
+    StringBuilder localStringBuilder;
+    if (localObject1 == null)
     {
-      locald.cancel(true);
-      AppMethodBeat.o(273938);
-      return;
+      i = 0;
+      if (i <= 0) {
+        break label162;
+      }
+      localObject1 = paramFinderObject.liveInfo;
+      if (localObject1 != null) {
+        break label151;
+      }
+      localObject1 = null;
+      if (localObject1 == null) {
+        break label162;
+      }
+      i = ((Integer)localObject1).intValue();
+      localStringBuilder = new StringBuilder("startPlayLiveOnFeedFlow: validWatchTime:").append(i).append(", serverConfigTime:");
+      localObject1 = paramFinderObject.liveInfo;
+      if (localObject1 != null) {
+        break label169;
+      }
     }
-    AppMethodBeat.o(273938);
-  }
-  
-  public static void release()
-  {
-    yfz = null;
-    yfC = null;
-  }
-  
-  public static void setup()
-  {
-    AppMethodBeat.i(273933);
-    com.tencent.c.a.a.a.a.a locala = com.tencent.c.a.a.a.a.a.Zlt;
-    yfy = ((Number)com.tencent.c.a.a.a.a.a.iln().aSr()).longValue();
-    locala = com.tencent.c.a.a.a.a.a.Zlt;
-    if (((Number)com.tencent.c.a.a.a.a.a.ilo().aSr()).intValue() == 1) {}
-    for (boolean bool = true;; bool = false)
+    label151:
+    label162:
+    label169:
+    for (localObject1 = localObject2;; localObject1 = Integer.valueOf(((bip)localObject1).ZSh))
     {
-      yfB = bool;
-      AppMethodBeat.o(273933);
+      Log.i("Finder.FinderLiveFeedFlowReporter", localObject1 + ", clientValidWatchTime:" + CFS);
+      CFR = new o..ExternalSyntheticLambda1(paramFinderObject, parambui);
+      timer.startTimer(i * 1000L, 0L);
+      AppMethodBeat.o(359380);
       return;
+      i = ((bip)localObject1).ZSh;
+      break;
+      localObject1 = Integer.valueOf(((bip)localObject1).ZSh);
+      break label42;
+      i = CFS;
+      break label51;
     }
+  }
+  
+  public static void bUp()
+  {
+    AppMethodBeat.i(359385);
+    Log.i("Finder.FinderLiveFeedFlowReporter", "stopPlayLiveOnFeedFlow");
+    CFR = null;
+    timer.stopTimer();
+    AppMethodBeat.o(359385);
+  }
+  
+  private static final void c(FinderObject paramFinderObject, bui parambui)
+  {
+    AppMethodBeat.i(359417);
+    s.u(paramFinderObject, "$finderObject");
+    bip localbip = paramFinderObject.liveInfo;
+    Object localObject1;
+    long l1;
+    String str1;
+    long l2;
+    String str2;
+    String str3;
+    Object localObject2;
+    if (localbip != null)
+    {
+      localObject1 = aj.CGT;
+      localObject1 = aj.egD();
+      if (localObject1 != null) {
+        break label138;
+      }
+      localObject1 = "";
+      l1 = localbip.liveId;
+      str1 = z.bAW();
+      l2 = paramFinderObject.id;
+      str2 = paramFinderObject.objectNonceId;
+      str3 = paramFinderObject.sessionBuffer;
+      if (aj.CGT != null) {
+        break label182;
+      }
+      localObject2 = null;
+    }
+    for (;;)
+    {
+      new m(l1, null, str1, l2, 2, str2, str3, null, 0, parambui, 1, null, (String)localObject2, (String)localObject1, 0, null, null, 117120).bFJ().g(new o..ExternalSyntheticLambda0(localbip, paramFinderObject));
+      AppMethodBeat.o(359417);
+      return;
+      label138:
+      localObject1 = ((g)localObject1).Eby;
+      if (localObject1 == null)
+      {
+        localObject1 = "";
+        break;
+      }
+      localObject2 = ((FinderLiveBundle)localObject1).ecSource;
+      localObject1 = localObject2;
+      if (localObject2 != null) {
+        break;
+      }
+      localObject1 = "";
+      break;
+      label182:
+      localObject2 = aj.getLiveCore();
+      if (localObject2 == null) {
+        localObject2 = null;
+      } else {
+        localObject2 = ((com.tencent.mm.live.core.core.trtc.a)localObject2).mSd;
+      }
+    }
+  }
+  
+  public static boolean j(BaseFinderFeed paramBaseFinderFeed)
+  {
+    AppMethodBeat.i(359412);
+    Set localSet = (Set)Bgw.get(z.bAW());
+    if (localSet == null)
+    {
+      AppMethodBeat.o(359412);
+      return false;
+    }
+    paramBaseFinderFeed = paramBaseFinderFeed.feedObject.getFeedObject().liveInfo;
+    if (paramBaseFinderFeed == null) {}
+    for (paramBaseFinderFeed = null; paramBaseFinderFeed == null; paramBaseFinderFeed = Long.valueOf(paramBaseFinderFeed.liveId))
+    {
+      AppMethodBeat.o(359412);
+      return false;
+    }
+    boolean bool = localSet.contains(Long.valueOf(paramBaseFinderFeed.longValue()));
+    AppMethodBeat.o(359412);
+    return bool;
   }
 }
 

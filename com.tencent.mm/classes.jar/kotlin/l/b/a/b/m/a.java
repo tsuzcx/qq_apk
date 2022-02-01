@@ -1,74 +1,56 @@
 package kotlin.l.b.a.b.m;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.b.a.g;
-import kotlin.l.b.a.b.m.a.i;
-import kotlin.t;
+import kotlin.g.b.s;
 
 public final class a
-  extends n
+  extends o
 {
-  public final aj aaWM;
-  public final aj abpJ;
+  public final al aiUV;
+  public final al ajoN;
   
-  public a(aj paramaj1, aj paramaj2)
+  public a(al paramal1, al paramal2)
   {
     AppMethodBeat.i(60568);
-    this.aaWM = paramaj1;
-    this.abpJ = paramaj2;
+    this.aiUV = paramal1;
+    this.ajoN = paramal2;
     AppMethodBeat.o(60568);
   }
   
-  private a JA(boolean paramBoolean)
+  private a PD(boolean paramBoolean)
   {
     AppMethodBeat.i(60560);
-    a locala = new a(this.aaWM.Jn(paramBoolean), this.abpJ.Jn(paramBoolean));
+    a locala = new a(this.aiUV.Pq(paramBoolean), this.ajoN.Pq(paramBoolean));
     AppMethodBeat.o(60560);
     return locala;
   }
   
-  private a f(g paramg)
+  private a f(kotlin.l.b.a.b.b.a.g paramg)
   {
     AppMethodBeat.i(60557);
-    p.k(paramg, "newAnnotations");
-    paramg = new a(this.aaWM.d(paramg), this.abpJ);
+    s.u(paramg, "newAnnotations");
+    paramg = new a(this.aiUV.d(paramg), this.ajoN);
     AppMethodBeat.o(60557);
     return paramg;
   }
   
-  private a h(i parami)
+  private a i(kotlin.l.b.a.b.m.a.g paramg)
   {
     AppMethodBeat.i(60564);
-    p.k(parami, "kotlinTypeRefiner");
-    Object localObject = parami.aK((ab)this.aaWM);
-    if (localObject == null)
-    {
-      parami = new t("null cannot be cast to non-null type org.jetbrains.kotlin.types.SimpleType");
-      AppMethodBeat.o(60564);
-      throw parami;
-    }
-    localObject = (aj)localObject;
-    parami = parami.aK((ab)this.abpJ);
-    if (parami == null)
-    {
-      parami = new t("null cannot be cast to non-null type org.jetbrains.kotlin.types.SimpleType");
-      AppMethodBeat.o(60564);
-      throw parami;
-    }
-    parami = new a((aj)localObject, (aj)parami);
+    s.u(paramg, "kotlinTypeRefiner");
+    paramg = new a((al)paramg.aD((ad)this.aiUV), (al)paramg.aD((ad)this.ajoN));
     AppMethodBeat.o(60564);
-    return parami;
+    return paramg;
   }
   
-  protected final aj iIq()
+  protected final al ksx()
   {
-    return this.aaWM;
+    return this.aiUV;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.m.a
  * JD-Core Version:    0.7.0.1
  */

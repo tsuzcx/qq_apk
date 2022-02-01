@@ -45,7 +45,7 @@ public final class n
     return bool;
   }
   
-  public final BaseDrawActionArg bKy()
+  public final BaseDrawActionArg cjY()
   {
     AppMethodBeat.i(144903);
     RotateActionArg localRotateActionArg = new RotateActionArg();
@@ -60,7 +60,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.n
  * JD-Core Version:    0.7.0.1
  */

@@ -6,56 +6,56 @@ import java.util.LinkedList;
 public final class l
   extends j
 {
-  public com.tencent.mm.cd.b rVk;
+  public com.tencent.mm.bx.b vgA;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(23494);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.vhK == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.ytL == null)
       {
-        paramVarArgs = new g.a.a.b("Not all required fields were included: BaseResponse");
+        paramVarArgs = new i.a.a.b("Not all required fields were included: BaseResponse");
         AppMethodBeat.o(23494);
         throw paramVarArgs;
       }
-      if (this.vhK != null)
+      if (this.ytL != null)
       {
-        paramVarArgs.oE(1, this.vhK.computeSize());
-        this.vhK.writeFields(paramVarArgs);
+        paramVarArgs.qD(1, this.ytL.computeSize());
+        this.ytL.writeFields(paramVarArgs);
       }
-      if (this.rVk != null) {
-        paramVarArgs.c(2, this.rVk);
+      if (this.vgA != null) {
+        paramVarArgs.d(2, this.vgA);
       }
       AppMethodBeat.o(23494);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.vhK == null) {
-        break label408;
+      if (this.ytL == null) {
+        break label404;
       }
     }
-    label408:
-    for (paramInt = g.a.a.a.oD(1, this.vhK.computeSize()) + 0;; paramInt = 0)
+    label404:
+    for (paramInt = i.a.a.a.qC(1, this.ytL.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.rVk != null) {
-        i = paramInt + g.a.a.b.b.a.b(2, this.rVk);
+      if (this.vgA != null) {
+        i = paramInt + i.a.a.b.b.a.c(2, this.vgA);
       }
       AppMethodBeat.o(23494);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = j.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = j.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.vhK == null)
+        if (this.ytL == null)
         {
-          paramVarArgs = new g.a.a.b("Not all required fields were included: BaseResponse");
+          paramVarArgs = new i.a.a.b("Not all required fields were included: BaseResponse");
           AppMethodBeat.o(23494);
           throw paramVarArgs;
         }
@@ -64,7 +64,7 @@ public final class l
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         l locall = (l)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
@@ -73,7 +73,7 @@ public final class l
           AppMethodBeat.o(23494);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -83,13 +83,13 @@ public final class l
             if ((localObject != null) && (localObject.length > 0)) {
               locale.parseFrom((byte[])localObject);
             }
-            locall.vhK = locale;
+            locall.ytL = locale;
             paramInt += 1;
           }
           AppMethodBeat.o(23494);
           return 0;
         }
-        locall.rVk = ((g.a.a.a.a)localObject).abFh.iUw();
+        locall.vgA = ((i.a.a.a.a)localObject).ajGk.kFX();
         AppMethodBeat.o(23494);
         return 0;
       }
@@ -100,7 +100,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.f.l
  * JD-Core Version:    0.7.0.1
  */

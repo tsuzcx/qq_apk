@@ -7,23 +7,23 @@ import junit.framework.Assert;
 public class d
 {
   public String event;
-  private String jZi;
-  public h jZj;
+  private String mzg;
+  public h mzh;
   
   public <T extends b> d(String paramString, Class<T> paramClass)
   {
     AppMethodBeat.i(158789);
     Assert.assertNotNull(paramString);
     Assert.assertNotNull(paramClass);
-    this.jZi = paramString;
+    this.mzg = paramString;
     this.event = paramClass.getName();
-    this.jZj = new h(paramString);
+    this.mzh = new h(paramString);
     AppMethodBeat.o(158789);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.d.d
  * JD-Core Version:    0.7.0.1
  */

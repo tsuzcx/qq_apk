@@ -4,9 +4,9 @@ import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.mm.plugin.setting.b.g;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/setting/ui/widget/SecondCheckBoxPreference;", "Lcom/tencent/mm/ui/base/preference/CheckBoxPreference;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "getLayoutId", "plugin-setting_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/setting/ui/widget/SecondCheckBoxPreference;", "Lcom/tencent/mm/ui/base/preference/CheckBoxPreference;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "getLayoutId", "plugin-setting_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class SecondCheckBoxPreference
   extends CheckBoxPreference
 {

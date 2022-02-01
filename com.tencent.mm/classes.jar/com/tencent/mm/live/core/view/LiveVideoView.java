@@ -6,71 +6,76 @@ import android.view.MotionEvent;
 import android.view.ViewConfiguration;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.rtmp.ui.TXCloudVideoView;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.m;
-import kotlin.l;
-import kotlin.x;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/view/LiveVideoView;", "Lcom/tencent/rtmp/ui/TXCloudVideoView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "downTime", "", "previewTouchListener", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "x", "y", "", "onTouchEvent", "", "event", "Landroid/view/MotionEvent;", "setPreviewTouchListener", "callback", "plugin-core_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/core/view/LiveVideoView;", "Lcom/tencent/rtmp/ui/TXCloudVideoView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "downTime", "", "previewTouchListener", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "x", "y", "", "disableTouch", "onTouchEvent", "", "event", "Landroid/view/MotionEvent;", "setPreviewTouchListener", "callback", "plugin-core_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class LiveVideoView
   extends TXCloudVideoView
 {
-  private m<? super Float, ? super Float, x> ksX;
-  private long ksY;
+  public m<? super Float, ? super Float, ah> mWQ;
+  private long mWR;
   
   public LiveVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
-    super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(200147);
-    this.ksY = -1L;
-    AppMethodBeat.o(200147);
+    super(paramContext.getApplicationContext(), paramAttributeSet);
+    AppMethodBeat.i(247546);
+    this.mWR = -1L;
+    AppMethodBeat.o(247546);
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(200143);
-    super.onTouchEvent(paramMotionEvent);
-    Object localObject;
-    if (paramMotionEvent != null)
+    AppMethodBeat.i(247569);
+    boolean bool = super.onTouchEvent(paramMotionEvent);
+    if (this.mWQ == null)
     {
-      localObject = Integer.valueOf(paramMotionEvent.getAction());
+      AppMethodBeat.o(247569);
+      return bool;
+    }
+    Object localObject;
+    if (paramMotionEvent == null)
+    {
+      localObject = null;
       if (localObject != null) {
-        break label43;
+        break label57;
       }
-      label27:
+      label35:
       if (localObject != null) {
-        break label60;
+        break label74;
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(200143);
+      AppMethodBeat.o(247569);
       return true;
-      localObject = null;
+      localObject = Integer.valueOf(paramMotionEvent.getAction());
       break;
-      label43:
+      label57:
       if (((Integer)localObject).intValue() != 0) {
-        break label27;
+        break label35;
       }
-      this.ksY = System.currentTimeMillis();
+      this.mWR = System.currentTimeMillis();
       continue;
-      label60:
+      label74:
       if (((Integer)localObject).intValue() == 1)
       {
-        if ((this.ksY > 0L) && (System.currentTimeMillis() - this.ksY <= ViewConfiguration.getTapTimeout()))
+        if ((this.mWR > 0L) && (System.currentTimeMillis() - this.mWR <= ViewConfiguration.getTapTimeout()))
         {
-          localObject = this.ksX;
+          localObject = this.mWQ;
           if (localObject != null) {
             ((m)localObject).invoke(Float.valueOf(paramMotionEvent.getRawX()), Float.valueOf(paramMotionEvent.getRawY()));
           }
         }
-        this.ksY = -1L;
+        this.mWR = -1L;
       }
     }
   }
   
-  public final void setPreviewTouchListener(m<? super Float, ? super Float, x> paramm)
+  public final void setPreviewTouchListener(m<? super Float, ? super Float, ah> paramm)
   {
-    this.ksX = paramm;
+    this.mWQ = paramm;
   }
 }
 

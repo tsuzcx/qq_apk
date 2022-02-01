@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/my"
+<LinearLayout android:orientation="vertical" android:id="@id/br7" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/bdp" android:background="@raw/default_avatar" android:layout_width="40.0dip" android:layout_height="40.0dip" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingLeft="8.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:id="@id/gmo" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/mi" />
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <TextView android:textSize="15.0dip" android:textColor="@color/c1" android:id="@id/gmk" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dix" android:drawableLeft="@drawable/bbh" android:drawablePadding="4.0dip" />
-        <TextView android:textSize="15.0dip" android:textColor="@color/w2" android:id="@id/gmm" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/diz" />
-        <TextView android:id="@id/gmj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dj1" style="@style/mk" />
-        <ImageView android:gravity="center" android:id="@id/gmr" android:padding="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/aie" />
-    </LinearLayout>
+    <ProgressBar android:layout_gravity="center" android:id="@id/g34" android:paddingTop="15.0dip" android:paddingBottom="6.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a85" />
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/bz" android:gravity="center|left" android:id="@id/bz1" android:background="@color/ahb" android:paddingLeft="@dimen/m2" android:paddingTop="@dimen/ig" android:paddingRight="@dimen/m2" android:paddingBottom="@dimen/m9" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 </LinearLayout>

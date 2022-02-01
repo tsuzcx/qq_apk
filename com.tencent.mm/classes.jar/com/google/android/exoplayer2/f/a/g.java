@@ -12,7 +12,7 @@ public final class g
     int j;
     do
     {
-      if (paramm.vg() == 0)
+      if (paramm.UF() == 0)
       {
         AppMethodBeat.o(92788);
         return -1;
@@ -28,36 +28,36 @@ public final class g
   public static void a(long paramLong, com.google.android.exoplayer2.i.m paramm, com.google.android.exoplayer2.c.m[] paramArrayOfm)
   {
     AppMethodBeat.i(92787);
-    while (paramm.vg() > 1)
+    while (paramm.UF() > 1)
     {
       int i = A(paramm);
       int j = A(paramm);
-      if ((j == -1) || (j > paramm.vg()))
+      if ((j == -1) || (j > paramm.UF()))
       {
         paramm.setPosition(paramm.limit);
       }
       else if (a(i, j, paramm))
       {
-        paramm.fu(8);
-        int k = paramm.readUnsignedByte() & 0x1F;
-        paramm.fu(1);
-        int m = k * 3;
-        int n = paramm.position;
-        int i1 = paramArrayOfm.length;
+        paramm.iH(8);
+        i = paramm.readUnsignedByte();
+        paramm.iH(1);
+        int k = (i & 0x1F) * 3;
+        int m = paramm.position;
+        int n = paramArrayOfm.length;
         i = 0;
-        while (i < i1)
+        while (i < n)
         {
           com.google.android.exoplayer2.c.m localm = paramArrayOfm[i];
-          paramm.setPosition(n);
-          localm.a(paramm, m);
-          localm.a(paramLong, 1, m, 0, null);
+          paramm.setPosition(m);
+          localm.a(paramm, k);
+          localm.a(paramLong, 1, k, 0, null);
           i += 1;
         }
-        paramm.fu(j - (k * 3 + 10));
+        paramm.iH(j - (k + 10));
       }
       else
       {
-        paramm.fu(j);
+        paramm.iH(j);
       }
     }
     AppMethodBeat.o(92787);
@@ -88,7 +88,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.f.a.g
  * JD-Core Version:    0.7.0.1
  */

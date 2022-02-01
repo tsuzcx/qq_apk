@@ -1,13 +1,12 @@
 package com.tencent.mm.plugin.findersdk.a;
 
-import com.tencent.mm.kernel.c.a;
-import kotlin.l;
+import com.tencent.mm.protocal.protobuf.bne;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/findersdk/api/IFinderModOverSeaAgree;", "Lcom/tencent/mm/kernel/service/IService;", "modOverSeaAgree", "", "isReset", "", "(Ljava/lang/Boolean;)V", "finder-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/findersdk/api/ICgiFinderLiveStreamCallback;", "", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderLiveStreamResponse;", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface u
-  extends a
 {
-  public abstract void p(Boolean paramBoolean);
+  public abstract void a(int paramInt1, int paramInt2, String paramString, bne parambne);
 }
 
 

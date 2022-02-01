@@ -17,7 +17,11 @@ public abstract interface a
   
   public abstract Activity getCrossActivity();
   
+  public abstract boolean isOfflineReady();
+  
   public abstract boolean isSwitch2InWxAppPay(String paramString);
+  
+  public abstract boolean isUseCaseAlive(String paramString);
   
   public abstract void notifyUploadCardSuccess();
   
@@ -39,6 +43,8 @@ public abstract interface a
   
   public abstract void startOfflinePay(Context paramContext, String paramString1, String paramString2, int paramInt);
   
+  public abstract void startOfflinePrePay(Context paramContext, int paramInt1, int paramInt2, int paramInt3, Map<String, String> paramMap);
+  
   public abstract boolean startOverseaWalletSuccPageUseCase(Context paramContext, Bundle paramBundle);
   
   public abstract boolean startPayIBGJsGetSuccPageUseCase(Context paramContext, Bundle paramBundle);
@@ -55,6 +61,8 @@ public abstract interface a
   
   public abstract void startWalletBalanceFetchUseCase(Context paramContext, Bundle paramBundle);
   
+  public abstract void startWalletBalanceSaveUseCase(Context paramContext, Bundle paramBundle);
+  
   public abstract void startWxpayAppPay(Context paramContext, Bundle paramBundle, String paramString1, String paramString2, String paramString3, String paramString4);
   
   public abstract void startWxpayH5Pay(Context paramContext, Bundle paramBundle, String paramString1, String paramString2, String paramString3, String paramString4);
@@ -65,7 +73,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.wallet.a
  * JD-Core Version:    0.7.0.1
  */

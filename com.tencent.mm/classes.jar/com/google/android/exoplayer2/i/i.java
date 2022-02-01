@@ -4,15 +4,15 @@ import com.google.android.exoplayer2.p;
 
 public abstract interface i
 {
-  public abstract p c(p paramp);
+  public abstract long Rq();
   
-  public abstract long rN();
+  public abstract p Ru();
   
-  public abstract p rR();
+  public abstract p b(p paramp);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.i.i
  * JD-Core Version:    0.7.0.1
  */

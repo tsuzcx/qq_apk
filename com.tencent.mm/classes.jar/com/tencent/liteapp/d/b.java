@@ -5,176 +5,137 @@ import android.content.res.Resources;
 import android.graphics.Rect;
 import android.util.DisplayMetrics;
 import android.view.View;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 
 public final class b
-  implements c
+  implements d
 {
-  private int cpY;
-  private final int[] cpZ;
-  private final Rect cqa;
-  private boolean cqb;
-  private View cqc;
-  private b cqd;
-  public final LinkedHashSet<c> cqe;
+  private int ehP;
+  private final int[] ehQ;
+  private final Rect ehR;
+  private boolean ehS;
+  private View ehT;
+  public final LinkedHashSet<b> ehU;
   
   public b()
   {
-    AppMethodBeat.i(258826);
-    this.cpY = 0;
-    this.cpZ = new int[2];
-    this.cqa = new Rect();
-    this.cqb = false;
-    this.cqe = new LinkedHashSet();
-    AppMethodBeat.o(258826);
+    AppMethodBeat.i(219066);
+    this.ehP = 0;
+    this.ehQ = new int[2];
+    this.ehR = new Rect();
+    this.ehS = false;
+    this.ehU = new LinkedHashSet();
+    AppMethodBeat.o(219066);
   }
   
-  private void a(a parama)
+  private Context getContext()
   {
-    AppMethodBeat.i(258833);
-    Iterator localIterator = ((LinkedHashSet)this.cqe.clone()).iterator();
-    while (localIterator.hasNext()) {
-      parama.a((c)localIterator.next());
+    AppMethodBeat.i(219085);
+    if (this.ehT == null)
+    {
+      localObject = com.tencent.liteapp.b.efD;
+      localObject = com.tencent.liteapp.b.a.getAppContext();
+      AppMethodBeat.o(219085);
+      return localObject;
     }
-    AppMethodBeat.o(258833);
+    Object localObject = this.ehT.getContext();
+    AppMethodBeat.o(219085);
+    return localObject;
   }
   
   private int getFrameHeight()
   {
-    AppMethodBeat.i(258829);
-    if (this.cqc == null) {}
-    for (Object localObject = null; localObject == null; localObject = this.cqc.getRootView())
+    AppMethodBeat.i(219098);
+    if (this.ehT == null) {}
+    for (Object localObject = null; localObject == null; localObject = this.ehT.getRootView())
     {
-      AppMethodBeat.o(258829);
+      AppMethodBeat.o(219098);
       return 0;
     }
-    Rect localRect = this.cqa;
-    m(localRect);
-    int i;
-    if (w.ah(this.cqc))
+    localObject = this.ehR;
+    s((Rect)localObject);
+    if (z.au(this.ehT)) {}
+    for (int i = this.ehT.getMeasuredHeight();; i = getContext().getResources().getDisplayMetrics().heightPixels)
     {
-      i = this.cqc.getMeasuredHeight();
-      int j = localRect.top;
-      AppMethodBeat.o(258829);
+      int j = ((Rect)localObject).top;
+      AppMethodBeat.o(219098);
       return i - j;
     }
-    if (this.cqc == null) {
-      localObject = com.tencent.liteapp.b.cox;
-    }
-    for (localObject = com.tencent.liteapp.b.a.getAppContext();; localObject = this.cqc.getContext())
-    {
-      i = ((Context)localObject).getResources().getDisplayMetrics().heightPixels;
-      break;
-    }
   }
   
-  private void m(Rect paramRect)
+  private void s(Rect paramRect)
   {
-    AppMethodBeat.i(258827);
-    if (this.cqc != null)
+    AppMethodBeat.i(219073);
+    if (this.ehT != null)
     {
-      this.cqc.getWindowVisibleDisplayFrame(paramRect);
-      this.cqc.getLocationInWindow(this.cpZ);
-      paramRect.top = this.cpZ[1];
+      this.ehT.getWindowVisibleDisplayFrame(paramRect);
+      this.ehT.getLocationInWindow(this.ehQ);
+      paramRect.top = this.ehQ[1];
     }
-    AppMethodBeat.o(258827);
+    AppMethodBeat.o(219073);
   }
   
-  public final void cr(View paramView)
+  public final void cN(View paramView)
   {
-    int i = 1;
-    AppMethodBeat.i(258831);
-    this.cqc = paramView;
-    paramView = this.cqa;
-    m(paramView);
+    final boolean bool = false;
+    AppMethodBeat.i(219119);
+    this.ehT = paramView;
+    paramView = this.ehR;
+    s(paramView);
     int j = paramView.height();
-    final boolean bool;
-    if (this.cpY == 0)
+    if (!f.bg(getContext())) {}
+    for (final int i = f.bk(getContext());; i = 0)
     {
-      this.cpY = j;
-      if (getFrameHeight() <= j) {
-        break label179;
-      }
-      bool = true;
-      label50:
-      if (this.cqb == bool) {
-        break label185;
-      }
-    }
-    for (;;)
-    {
-      if (i != 0)
+      i = Math.max(getFrameHeight() - j - i, 0);
+      if (f.bg(getContext()))
       {
-        if (this.cqd != null) {
-          this.cqd.ca(bool);
+        int k = f.bk(getContext());
+        if (getFrameHeight() - k > j) {
+          bool = true;
         }
-        a(new a()
+      }
+      while (this.ehS != bool)
+      {
+        paramView = new a()
         {
-          public final void a(b.c paramAnonymousc)
+          public final void a(b.b paramAnonymousb)
           {
-            AppMethodBeat.i(258823);
-            paramAnonymousc.ca(bool);
-            AppMethodBeat.o(258823);
+            AppMethodBeat.i(219058);
+            paramAnonymousb.e(bool, i);
+            AppMethodBeat.o(219058);
           }
-        });
-      }
-      this.cqb = bool;
-      this.cpY = j;
-      this.cqc = null;
-      AppMethodBeat.o(258831);
-      return;
-      final int k = getFrameHeight() - j;
-      if (k <= 0) {
-        break;
-      }
-      a(new a()
-      {
-        public final void a(b.c paramAnonymousc)
-        {
-          AppMethodBeat.i(258819);
-          if (paramAnonymousc.getHeight() != k) {
-            paramAnonymousc.iF(k);
-          }
-          AppMethodBeat.o(258819);
+        };
+        Iterator localIterator = ((LinkedHashSet)this.ehU.clone()).iterator();
+        while (localIterator.hasNext()) {
+          paramView.a((b)localIterator.next());
         }
-      });
-      if ((this.cqd == null) || (this.cqd.getHeight() == k)) {
-        break;
+        if (getFrameHeight() > j) {
+          bool = true;
+        }
       }
-      this.cqd.iF(k);
-      break;
-      label179:
-      bool = false;
-      break label50;
-      label185:
-      i = 0;
+      this.ehS = bool;
+      this.ehT = null;
+      AppMethodBeat.o(219119);
+      return;
     }
   }
   
   static abstract interface a
   {
-    public abstract void a(b.c paramc);
+    public abstract void a(b.b paramb);
   }
   
-  static abstract interface b
-    extends b.c
-  {}
-  
-  public static abstract interface c
+  public static abstract interface b
   {
-    public abstract void ca(boolean paramBoolean);
-    
-    public abstract int getHeight();
-    
-    public abstract void iF(int paramInt);
+    public abstract void e(boolean paramBoolean, int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.liteapp.d.b
  * JD-Core Version:    0.7.0.1
  */

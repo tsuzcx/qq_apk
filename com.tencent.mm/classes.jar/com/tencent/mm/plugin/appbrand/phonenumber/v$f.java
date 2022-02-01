@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.appbrand.phonenumber;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class v$f
-  extends q
-  implements a<x>
+  extends u
+  implements a<ah>
 {
-  public static final f qCw;
+  public static final f tHu;
   
   static
   {
     AppMethodBeat.i(148131);
-    qCw = new f();
+    tHu = new f();
     AppMethodBeat.o(148131);
   }
   
@@ -27,7 +27,7 @@ final class v$f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.phonenumber.v.f
  * JD-Core Version:    0.7.0.1
  */

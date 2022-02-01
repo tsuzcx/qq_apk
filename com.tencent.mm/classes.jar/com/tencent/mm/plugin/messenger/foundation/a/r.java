@@ -5,9 +5,9 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface r
   extends a
 {
-  public abstract z Wy(int paramInt);
-  
   public abstract void a(z paramz);
+  
+  public abstract z aaA(int paramInt);
 }
 
 

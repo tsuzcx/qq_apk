@@ -9,59 +9,59 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.game.report.g;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.game.api.f;
-import com.tencent.mm.plugin.game.g.f;
+import com.tencent.mm.plugin.game.h.f;
 import com.tencent.mm.plugin.game.model.s;
 import java.util.HashMap;
 
 public final class b
   extends FrameLayout
 {
-  private boolean DcA;
-  e DcR;
-  private int Dcz;
-  private View Xd;
-  private int jaR;
+  private int IWT;
+  private boolean IWU;
+  e IXj;
+  private View bEx;
+  private int lCR;
   
   public b(Context paramContext, int paramInt, boolean paramBoolean)
   {
     super(paramContext);
-    AppMethodBeat.i(196366);
-    this.jaR = paramInt;
-    this.DcA = paramBoolean;
-    this.Xd = LayoutInflater.from(getContext()).inflate(g.f.CnP, this, false);
-    if ((((f)h.ae(f.class)).evo().TI(2) != 0) && (this.DcA))
+    AppMethodBeat.i(276784);
+    this.lCR = paramInt;
+    this.IWU = paramBoolean;
+    this.bEx = LayoutInflater.from(getContext()).inflate(h.f.HZX, this, false);
+    if ((((f)h.ax(f.class)).fCh().XC(2) != 0) && (this.IWU))
     {
-      this.DcR = new e(getContext(), this.jaR);
-      this.DcR.setEmptyCallback(new c()
+      this.IXj = new e(getContext(), this.lCR);
+      this.IXj.setEmptyCallback(new c()
       {
-        public final void ezP()
+        public final void fHQ()
         {
-          AppMethodBeat.i(207449);
+          AppMethodBeat.i(276771);
           b.this.refreshView();
-          AppMethodBeat.o(207449);
+          AppMethodBeat.o(276771);
         }
       });
-      addView(this.DcR, new FrameLayout.LayoutParams(-1, -1));
-      AppMethodBeat.o(196366);
+      addView(this.IXj, new FrameLayout.LayoutParams(-1, -1));
+      AppMethodBeat.o(276784);
       return;
     }
-    addView(this.Xd);
-    AppMethodBeat.o(196366);
+    addView(this.bEx);
+    AppMethodBeat.o(276784);
   }
   
   public final void refreshView()
   {
-    AppMethodBeat.i(196374);
-    if (((f)h.ae(f.class)).evo().TI(2) == 0)
+    AppMethodBeat.i(276794);
+    if (((f)h.ax(f.class)).fCh().XC(2) == 0)
     {
-      if ((this.DcR != null) && (indexOfChild(this.DcR) >= 0)) {
-        removeView(this.DcR);
+      if ((this.IXj != null) && (indexOfChild(this.IXj) >= 0)) {
+        removeView(this.IXj);
       }
-      if ((this.Xd != null) && (indexOfChild(this.Xd) < 0)) {
-        addView(this.Xd);
+      if ((this.bEx != null) && (indexOfChild(this.bEx) < 0)) {
+        addView(this.bEx);
       }
     }
-    AppMethodBeat.o(196374);
+    AppMethodBeat.o(276794);
   }
   
   public final void resume()
@@ -69,20 +69,20 @@ public final class b
     AppMethodBeat.i(184807);
     HashMap localHashMap = new HashMap();
     localHashMap.put("tab", "2");
-    localHashMap.put("newnotice", String.valueOf(this.Dcz));
-    g.a(getContext(), 13, 1300, 0, 1, this.jaR, g.l(localHashMap));
-    this.Dcz = 0;
+    localHashMap.put("newnotice", String.valueOf(this.IWT));
+    g.a(getContext(), 13, 1300, 0, 1, this.lCR, g.s(localHashMap));
+    this.IWT = 0;
     AppMethodBeat.o(184807);
   }
   
   public final void setNewMessageCount(int paramInt)
   {
-    this.Dcz = paramInt;
+    this.IWT = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.message.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,11 +2,10 @@ package com.tencent.mm.plugin.welab;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.a.a.c;
-import com.tencent.mm.ay.a.a.c.a;
-import com.tencent.mm.f.a.nq;
-import com.tencent.mm.f.a.rt;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.autogen.a.oy;
+import com.tencent.mm.autogen.a.ti;
+import com.tencent.mm.modelimage.loader.a.c;
+import com.tencent.mm.modelimage.loader.a.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,27 +15,27 @@ import java.util.Map;
 
 public final class b
 {
-  public static final b QFc;
-  public c PCP;
-  public com.tencent.mm.plugin.welab.d.a QFd;
-  public Map<String, com.tencent.mm.plugin.welab.a.a.b> QFe;
-  public com.tencent.mm.plugin.welab.a.a.b QFf;
+  public static final b XyA;
+  public c Wtu;
+  public com.tencent.mm.plugin.welab.d.a XyB;
+  public Map<String, com.tencent.mm.plugin.welab.a.a.b> XyC;
+  public com.tencent.mm.plugin.welab.a.a.b XyD;
   
   static
   {
     AppMethodBeat.i(146208);
-    QFc = new b();
+    XyA = new b();
     AppMethodBeat.o(146208);
   }
   
   public b()
   {
     AppMethodBeat.i(146200);
-    this.QFe = new HashMap();
+    this.XyC = new HashMap();
     c.a locala = new c.a();
-    locala.lRD = true;
-    locala.lRC = true;
-    this.PCP = locala.bmL();
+    locala.oKp = true;
+    locala.oKo = true;
+    this.Wtu = locala.bKx();
     AppMethodBeat.o(146200);
   }
   
@@ -44,15 +43,15 @@ public final class b
   {
     AppMethodBeat.i(146201);
     String str = "";
-    Object localObject = QFc.bny(parama.field_LabsAppId);
+    Object localObject = XyA.bnm(parama.field_LabsAppId);
     if (localObject != null)
     {
-      str = ((com.tencent.mm.plugin.welab.a.a.b)localObject).hcZ();
+      str = ((com.tencent.mm.plugin.welab.a.a.b)localObject).iDH();
       Log.i("WelabMgr", "get appName from opener , appid %s, appName %s", new Object[] { parama.field_LabsAppId, str });
     }
     localObject = str;
     if (TextUtils.isEmpty(str)) {
-      localObject = parama.bnH("field_Title");
+      localObject = parama.bnv("field_Title");
     }
     AppMethodBeat.o(146201);
     return localObject;
@@ -62,10 +61,10 @@ public final class b
   {
     AppMethodBeat.i(146202);
     String str = "";
-    Object localObject = QFc.bny(parama.field_LabsAppId);
+    Object localObject = XyA.bnm(parama.field_LabsAppId);
     if (localObject != null)
     {
-      str = ((com.tencent.mm.plugin.welab.a.a.b)localObject).hcY();
+      str = ((com.tencent.mm.plugin.welab.a.a.b)localObject).iDG();
       Log.i("WelabMgr", "get icon url from opener , appid %s, url %s", new Object[] { parama.field_LabsAppId, str });
     }
     localObject = str;
@@ -76,22 +75,22 @@ public final class b
     return localObject;
   }
   
-  private com.tencent.mm.plugin.welab.a.a.b bny(String paramString)
+  private com.tencent.mm.plugin.welab.a.a.b bnm(String paramString)
   {
     AppMethodBeat.i(146203);
-    paramString = (com.tencent.mm.plugin.welab.a.a.b)this.QFe.get(paramString);
+    paramString = (com.tencent.mm.plugin.welab.a.a.b)this.XyC.get(paramString);
     AppMethodBeat.o(146203);
     return paramString;
   }
   
-  public static b hcS()
+  public static b iDA()
   {
-    return QFc;
+    return XyA;
   }
   
-  public static List<com.tencent.mm.plugin.welab.d.a.a> hcU()
+  public static List<com.tencent.mm.plugin.welab.d.a.a> iDC()
   {
-    AppMethodBeat.i(248551);
+    AppMethodBeat.i(262789);
     ArrayList localArrayList = new ArrayList();
     com.tencent.mm.plugin.welab.d.a.a locala = new com.tencent.mm.plugin.welab.d.a.a();
     locala.field_LabsAppId = "wximeplugin";
@@ -99,11 +98,11 @@ public final class b
     locala.field_Desc_cn = "在这里可以设置专属你的微信键盘";
     localArrayList.add(locala);
     Log.i("WelabMgr", "getHardcodeOnlineApp lab %s", new Object[] { localArrayList.toString() });
-    AppMethodBeat.o(248551);
+    AppMethodBeat.o(262789);
     return localArrayList;
   }
   
-  public static void jf(List<com.tencent.mm.plugin.welab.d.a.a> paramList)
+  public static void mo(List<com.tencent.mm.plugin.welab.d.a.a> paramList)
   {
     AppMethodBeat.i(146207);
     if (!paramList.isEmpty())
@@ -113,18 +112,18 @@ public final class b
       while (paramList.hasNext())
       {
         com.tencent.mm.plugin.welab.d.a.a locala = (com.tencent.mm.plugin.welab.d.a.a)paramList.next();
-        if ((!locala.hdd()) && (!locala.isExpired())) {
+        if ((!locala.iDK()) && (!locala.isExpired())) {
           localArrayList.add(locala.field_LabsAppId);
         }
       }
-      paramList = new rt();
-      paramList.fQV.fQW = localArrayList;
-      EventCenter.instance.publish(paramList);
+      paramList = new ti();
+      paramList.hWS.hWT = localArrayList;
+      paramList.publish();
       paramList = localArrayList.iterator();
       while (paramList.hasNext()) {
         if ("labs_nearbylife".equals((String)paramList.next()))
         {
-          EventCenter.instance.publish(new nq());
+          new oy().publish();
           AppMethodBeat.o(146207);
           return;
         }
@@ -133,10 +132,10 @@ public final class b
     AppMethodBeat.o(146207);
   }
   
-  public final com.tencent.mm.plugin.welab.d.a.a bnz(String paramString)
+  public final com.tencent.mm.plugin.welab.d.a.a bnn(String paramString)
   {
     AppMethodBeat.i(146206);
-    com.tencent.mm.plugin.welab.d.a locala = this.QFd;
+    com.tencent.mm.plugin.welab.d.a locala = this.XyB;
     com.tencent.mm.plugin.welab.d.a.a locala1 = new com.tencent.mm.plugin.welab.d.a.a();
     locala1.field_LabsAppId = paramString;
     locala.get(locala1, new String[0]);
@@ -144,26 +143,30 @@ public final class b
     return locala1;
   }
   
-  public final List<com.tencent.mm.plugin.welab.d.a.a> hcT()
+  public final List<com.tencent.mm.plugin.welab.d.a.a> iDB()
   {
     AppMethodBeat.i(146205);
-    List localList = this.QFd.hda();
-    Iterator localIterator = localList.iterator();
-    while (localIterator.hasNext())
+    List localList = this.XyB.iDI();
+    Object localObject = localList.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      com.tencent.mm.plugin.welab.d.a.a locala = (com.tencent.mm.plugin.welab.d.a.a)localIterator.next();
+      com.tencent.mm.plugin.welab.d.a.a locala = (com.tencent.mm.plugin.welab.d.a.a)((Iterator)localObject).next();
       if ((!locala.isRunning()) || ((locala.field_Switch != 2) && (locala.field_Switch != 1)) || ("labs1de6f3".equals(locala.field_LabsAppId))) {
-        localIterator.remove();
+        ((Iterator)localObject).remove();
       }
     }
-    Log.i("WelabMgr", "online lab %s", new Object[] { localList.toString() });
-    AppMethodBeat.o(146205);
-    return localList;
+    if (localList != null) {}
+    for (localObject = localList.toString();; localObject = "")
+    {
+      Log.i("WelabMgr", "online lab %s", new Object[] { localObject });
+      AppMethodBeat.o(146205);
+      return localList;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.b
  * JD-Core Version:    0.7.0.1
  */

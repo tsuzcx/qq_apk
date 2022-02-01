@@ -1,24 +1,27 @@
 package kotlinx.coroutines.android;
 
-import kotlin.l;
-import kotlinx.coroutines.av;
-import kotlinx.coroutines.av.a;
-import kotlinx.coroutines.be;
-import kotlinx.coroutines.ci;
+import kotlin.Metadata;
+import kotlin.d.f;
+import kotlinx.coroutines.ba;
+import kotlinx.coroutines.ba.a;
+import kotlinx.coroutines.bi;
+import kotlinx.coroutines.cm;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/android/HandlerDispatcher;", "Lkotlinx/coroutines/MainCoroutineDispatcher;", "Lkotlinx/coroutines/Delay;", "()V", "immediate", "getImmediate", "()Lkotlinx/coroutines/android/HandlerDispatcher;", "Lkotlinx/coroutines/android/HandlerContext;", "kotlinx-coroutines-android"})
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/android/HandlerDispatcher;", "Lkotlinx/coroutines/MainCoroutineDispatcher;", "Lkotlinx/coroutines/Delay;", "()V", "immediate", "getImmediate", "()Lkotlinx/coroutines/android/HandlerDispatcher;", "Lkotlinx/coroutines/android/HandlerContext;", "kotlinx-coroutines-android"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class b
-  extends ci
-  implements av
+  extends cm
+  implements ba
 {
-  public be d(long paramLong, Runnable paramRunnable)
+  public bi a(long paramLong, Runnable paramRunnable, f paramf)
   {
-    return av.a.e(paramLong, paramRunnable);
+    return ba.a.b(paramLong, paramRunnable, paramf);
   }
+  
+  public abstract b kCQ();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.android.b
  * JD-Core Version:    0.7.0.1
  */

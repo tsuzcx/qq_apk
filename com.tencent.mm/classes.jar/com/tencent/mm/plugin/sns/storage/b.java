@@ -1,50 +1,35 @@
 package com.tencent.mm.plugin.sns.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import com.tencent.mm.sdk.storage.ISQLiteDatabase;
-import com.tencent.mm.sdk.storage.MAutoStorage;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/sns/storage/AdBreakFrameInfo;", "", "mediaType", "", "alphaVideoInfo", "Lcom/tencent/mm/plugin/sns/storage/AlphaVideoInfo;", "clickInfo", "Lcom/tencent/mm/plugin/sns/storage/AdBreakFrameClickInfo;", "(Ljava/lang/String;Lcom/tencent/mm/plugin/sns/storage/AlphaVideoInfo;Lcom/tencent/mm/plugin/sns/storage/AdBreakFrameClickInfo;)V", "getAlphaVideoInfo", "()Lcom/tencent/mm/plugin/sns/storage/AlphaVideoInfo;", "getClickInfo", "()Lcom/tencent/mm/plugin/sns/storage/AdBreakFrameClickInfo;", "getMediaType", "()Ljava/lang/String;", "Companion", "plugin-sns_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends MAutoStorage<a>
 {
-  public static final String[] SQL_CREATE;
+  public static final b.a QIu;
+  public final h QIv;
+  public final a QIw;
+  private final String nBd;
   
   static
   {
-    AppMethodBeat.i(96282);
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(a.info, "CanvasInfo") };
-    AppMethodBeat.o(96282);
+    AppMethodBeat.i(306589);
+    QIu = new b.a((byte)0);
+    AppMethodBeat.o(306589);
   }
   
-  public b(ISQLiteDatabase paramISQLiteDatabase)
+  public b(String paramString, h paramh, a parama)
   {
-    this(paramISQLiteDatabase, a.info, "CanvasInfo", null);
-  }
-  
-  public b(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString, String[] paramArrayOfString)
-  {
-    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, paramArrayOfString);
-  }
-  
-  public final void a(a parama)
-  {
-    AppMethodBeat.i(96281);
-    if (parama == null)
-    {
-      AppMethodBeat.o(96281);
-      return;
-    }
-    parama.field_createTime = System.currentTimeMillis();
-    if (!insert(parama)) {
-      update(parama, new String[0]);
-    }
-    AppMethodBeat.o(96281);
+    AppMethodBeat.i(306582);
+    this.nBd = paramString;
+    this.QIv = paramh;
+    this.QIw = parama;
+    AppMethodBeat.o(306582);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.b
  * JD-Core Version:    0.7.0.1
  */

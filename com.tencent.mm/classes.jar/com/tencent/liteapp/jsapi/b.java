@@ -7,27 +7,27 @@ import org.json.JSONObject;
 
 public final class b
 {
-  private long coK;
-  private long coL;
-  private long coM;
-  private boolean coN;
-  private String mAppId;
+  public long efW;
+  public long efX;
+  public long efY;
+  private boolean efZ;
+  public String mAppId;
   
   public b(String paramString, long paramLong1, long paramLong2, long paramLong3, boolean paramBoolean)
   {
     this.mAppId = paramString;
-    this.coK = paramLong1;
-    this.coL = paramLong2;
-    this.coM = paramLong3;
-    this.coN = paramBoolean;
+    this.efW = paramLong1;
+    this.efX = paramLong2;
+    this.efY = paramLong3;
+    this.efZ = paramBoolean;
   }
   
   public final void a(JSONObject paramJSONObject, boolean paramBoolean)
   {
-    AppMethodBeat.i(258518);
-    if (this.coM < 0L)
+    AppMethodBeat.i(219071);
+    if (this.efY < 0L)
     {
-      AppMethodBeat.o(258518);
+      AppMethodBeat.o(219071);
       return;
     }
     JSONObject localJSONObject = new JSONObject();
@@ -47,8 +47,8 @@ public final class b
         com.tencent.liteapp.b.b.e("WxaLiteApp.LiteAppJsApiCallback", paramJSONObject.toString(), new Object[0]);
         continue;
       }
-      LiteAppCenter.jsApiCallback(this.mAppId, this.coK, this.coL, this.coM, localJSONObject.toString(), paramBoolean, this.coN);
-      AppMethodBeat.o(258518);
+      LiteAppCenter.jsApiCallback(this.mAppId, this.efW, this.efX, this.efY, localJSONObject.toString(), paramBoolean, this.efZ);
+      AppMethodBeat.o(219071);
       return;
       localJSONObject.put("data", new JSONObject());
     }
@@ -56,11 +56,13 @@ public final class b
   
   public final void i(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(258519);
-    JSONObject localJSONObject;
-    if (this.coM >= 0L) {
-      localJSONObject = new JSONObject();
+    AppMethodBeat.i(219080);
+    if (this.efY < 0L)
+    {
+      AppMethodBeat.o(219080);
+      return;
     }
+    JSONObject localJSONObject = new JSONObject();
     for (;;)
     {
       try
@@ -77,8 +79,8 @@ public final class b
         com.tencent.liteapp.b.b.e("WxaLiteApp.LiteAppJsApiCallback", paramString.toString(), new Object[0]);
         continue;
       }
-      LiteAppCenter.jsApiCallback(this.mAppId, this.coK, this.coL, this.coM, localJSONObject.toString(), paramBoolean, this.coN);
-      AppMethodBeat.o(258519);
+      LiteAppCenter.jsApiCallback(this.mAppId, this.efW, this.efX, this.efY, localJSONObject.toString(), paramBoolean, this.efZ);
+      AppMethodBeat.o(219080);
       return;
       localJSONObject.put("errMsg", "");
     }

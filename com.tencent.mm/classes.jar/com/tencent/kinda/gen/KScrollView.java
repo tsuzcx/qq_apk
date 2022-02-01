@@ -13,7 +13,7 @@ public abstract interface KScrollView
   
   public abstract boolean getVertical();
   
-  public abstract void scrollTo(KView paramKView);
+  public abstract void scrollTo(KView paramKView, float paramFloat1, float paramFloat2, boolean paramBoolean);
   
   public abstract void setContent(KView paramKView);
   
@@ -35,7 +35,7 @@ public abstract interface KScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.gen.KScrollView
  * JD-Core Version:    0.7.0.1
  */

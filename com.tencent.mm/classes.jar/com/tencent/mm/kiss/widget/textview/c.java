@@ -8,20 +8,20 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class c
 {
-  public static c kfZ;
-  public ConcurrentHashMap<Integer, b> kga;
+  public static c mGx;
+  public ConcurrentHashMap<Integer, b> mGy;
   
   static
   {
     AppMethodBeat.i(141017);
-    kfZ = new c();
+    mGx = new c();
     AppMethodBeat.o(141017);
   }
   
   public c()
   {
     AppMethodBeat.i(141012);
-    this.kga = new ConcurrentHashMap();
+    this.mGy = new ConcurrentHashMap();
     AppMethodBeat.o(141012);
   }
   
@@ -38,10 +38,10 @@ public final class c
     AppMethodBeat.i(141014);
     if (parama != null)
     {
-      parama = (b)this.kga.get(Integer.valueOf(parama.hashCode()));
+      parama = (b)this.mGy.get(Integer.valueOf(parama.hashCode()));
       if (parama != null)
       {
-        parama = parama.F(paramCharSequence);
+        parama = parama.J(paramCharSequence);
         AppMethodBeat.o(141014);
         return parama;
       }
@@ -58,34 +58,34 @@ public final class c
       AppMethodBeat.o(141013);
       return;
     }
-    b localb = (b)this.kga.get(Integer.valueOf(parama.hashCode()));
+    b localb = (b)this.mGy.get(Integer.valueOf(parama.hashCode()));
     if (localb != null)
     {
       localb.a(paramf);
-      this.kga.put(Integer.valueOf(parama.hashCode()), localb);
+      this.mGy.put(Integer.valueOf(parama.hashCode()), localb);
       AppMethodBeat.o(141013);
       return;
     }
     localb = new b();
     localb.a(paramf);
-    this.kga.put(Integer.valueOf(parama.hashCode()), localb);
+    this.mGy.put(Integer.valueOf(parama.hashCode()), localb);
     AppMethodBeat.o(141013);
   }
   
-  public final void aIM()
+  public final void bbI()
   {
     AppMethodBeat.i(141015);
-    Iterator localIterator = this.kga.values().iterator();
+    Iterator localIterator = this.mGy.values().iterator();
     while (localIterator.hasNext()) {
-      ((b)localIterator.next()).kfY.clear();
+      ((b)localIterator.next()).mGw.clear();
     }
-    this.kga.clear();
+    this.mGy.clear();
     AppMethodBeat.o(141015);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.kiss.widget.textview.c
  * JD-Core Version:    0.7.0.1
  */

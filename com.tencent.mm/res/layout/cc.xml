@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/bk" android:textColor="@color/ly" android:ellipsize="end" android:id="@id/ll" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/g" android:text="msg_title" />
-    <TextView android:textSize="@dimen/bk" android:textColor="@color/fx" android:ellipsize="end" android:id="@id/e6p" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="@dimen/g" android:text="detail" />
-</LinearLayout>
+<com.tencent.mm.plugin.sns.ad.widget.shakead.ShakeCardAnimView android:id="@id/jft" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

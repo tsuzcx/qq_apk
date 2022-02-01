@@ -1,53 +1,54 @@
 package com.tencent.mm.xeffect.effect;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.a.ae;
-import kotlin.s;
+import kotlin.Metadata;
+import kotlin.a.ak;
+import kotlin.v;
 
-@kotlin.l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/xeffect/effect/GradientBlurEffect;", "Lcom/tencent/mm/xeffect/effect/VLogEffect;", "ptr", "", "(J)V", "value", "", "blurBottom", "getBlurBottom", "()Z", "setBlurBottom", "(Z)V", "", "blurMaskRatio", "getBlurMaskRatio", "()F", "setBlurMaskRatio", "(F)V", "blurTop", "getBlurTop", "setBlurTop", "centerCropBlur", "getCenterCropBlur", "setCenterCropBlur", "contentOffset", "getContentOffset", "setContentOffset", "contentOffsetPercent", "getContentOffsetPercent", "setContentOffsetPercent", "setRadius", "", "radius", "type", "Lcom/tencent/mm/xeffect/effect/EffectType;", "renderlib_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mm/xeffect/effect/GradientBlurEffect;", "Lcom/tencent/mm/xeffect/effect/VLogEffect;", "ptr", "", "(J)V", "value", "", "blurBottom", "getBlurBottom", "()Z", "setBlurBottom", "(Z)V", "", "blurMaskRatio", "getBlurMaskRatio", "()F", "setBlurMaskRatio", "(F)V", "blurTop", "getBlurTop", "setBlurTop", "centerCropBlur", "getCenterCropBlur", "setCenterCropBlur", "contentOffset", "getContentOffset", "setContentOffset", "contentOffsetPercent", "getContentOffsetPercent", "setContentOffsetPercent", "setRadius", "", "radius", "type", "Lcom/tencent/mm/xeffect/effect/EffectType;", "renderlib_release"}, k=1, mv={1, 1, 15})
 public final class l
   extends af
 {
-  private boolean YZV = true;
-  private float YZW = 3.0F;
-  private boolean YZX = true;
-  private boolean YZY = true;
-  public float YZZ = 0.5F;
+  private boolean agYh = true;
+  private float agYi = 3.0F;
+  private boolean agYj = true;
+  private boolean agYk = true;
+  public float agYl = 0.5F;
   
   public l(long paramLong)
   {
     super(paramLong);
   }
   
-  public final void dh(float paramFloat)
+  public final void eD(float paramFloat)
   {
-    AppMethodBeat.i(195789);
+    AppMethodBeat.i(234572);
     VLogEffectJNI.INSTANCE.nSetGradientBlurEffectContentOffset(this.ptr, paramFloat);
-    AppMethodBeat.o(195789);
+    AppMethodBeat.o(234572);
   }
   
-  public final j ika()
+  public final j jQi()
   {
-    return j.YZN;
+    return j.agXZ;
   }
   
-  public final void ikg()
+  public final void jQn()
   {
-    AppMethodBeat.i(195788);
+    AppMethodBeat.i(234568);
     VLogEffectJNI.INSTANCE.nSetGradientBlurEffectCenterCropBlur(this.ptr, false);
-    AppMethodBeat.o(195788);
+    AppMethodBeat.o(234568);
   }
   
   public final void setRadius(float paramFloat)
   {
-    AppMethodBeat.i(195787);
-    VLogEffectJNI.INSTANCE.setEffectParams$renderlib_release(this.ptr, ae.d(s.M(Integer.valueOf(o.Zaw.ordinal()), Float.valueOf(paramFloat))));
-    AppMethodBeat.o(195787);
+    AppMethodBeat.i(234561);
+    VLogEffectJNI.INSTANCE.setEffectParams$renderlib_release(this.ptr, ak.l(v.Y(Integer.valueOf(o.agYI.ordinal()), Float.valueOf(paramFloat))));
+    AppMethodBeat.o(234561);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.xeffect.effect.l
  * JD-Core Version:    0.7.0.1
  */

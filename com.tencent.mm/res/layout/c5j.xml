@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="@dimen/cl"
+<LinearLayout android:orientation="horizontal" android:id="@id/fpn" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/gcc" android:layout_width="@dimen/ba" android:layout_height="@dimen/ba" android:layout_marginLeft="@dimen/k5" android:src="@raw/media_player_play_btn" android:layout_centerVertical="true" />
-    <TextView android:textSize="@dimen/kc" android:textColor="@color/abg" android:id="@id/gce" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k" android:text="00:00" android:layout_toRightOf="@id/gcc" android:layout_centerVertical="true" />
-    <TextView android:textSize="@dimen/kc" android:textColor="@color/abg" android:id="@id/gck" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/hs" android:text="00:00" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/gck" android:layout_toRightOf="@id/gce" android:layout_centerVertical="true">
-        <ImageView android:layout_gravity="center|left" android:id="@id/gcw" android:background="@color/a4k" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/hs" android:layout_marginRight="@dimen/hs" />
-        <ImageView android:layout_gravity="center|left" android:id="@id/gcx" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/hs" android:layout_marginRight="@dimen/hs" />
-        <ImageView android:id="@id/gd0" android:paddingLeft="@dimen/k" android:paddingTop="@dimen/k" android:paddingRight="@dimen/k" android:paddingBottom="@dimen/k" android:layout_width="@dimen/cl" android:layout_height="@dimen/cl" android:layout_marginLeft="@dimen/k5" android:src="@raw/media_player_control_btn" />
-    </FrameLayout>
-</RelativeLayout>
+    <LinearLayout android:gravity="center|left|top" android:orientation="vertical" android:id="@id/juj" android:layout_width="82.0dip" android:layout_height="wrap_content">
+        <LinearLayout android:layout_width="82.0dip" android:layout_height="36.0dip">
+            <com.tencent.mm.plugin.sns.ui.SnsUnScaleTextView android:textSize="30.0dip" android:textStyle="bold" android:textColor="@color/a7b" android:gravity="bottom" android:layout_gravity="bottom" android:id="@id/jt5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:singleLine="true" android:importantForAccessibility="no" />
+            <com.tencent.mm.plugin.sns.ui.SnsUnScaleTextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/a7b" android:gravity="center" android:layout_gravity="center" android:id="@id/jun" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="" android:singleLine="true" android:importantForAccessibility="no" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/m_" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/jo" android:layout_width="60.0dip" android:layout_height="wrap_content" android:text="" android:maxLines="2" />
+    </LinearLayout>
+</LinearLayout>

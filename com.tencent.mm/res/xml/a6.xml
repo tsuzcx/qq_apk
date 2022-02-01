@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_mini_shop_helper_header_helper" android:layout="@layout/bi_" />
+    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/bnr" />
     <PreferenceSmallCategory />
-    <Preference android:key="contact_info_mini_shop_helper_go_to" android:layout="@layout/b8j" android:title="@string/bcu" />
+    <Preference android:key="contact_info_readerappnews_view" android:layout="@layout/bdi" android:title="@string/fis" />
     <PreferenceSmallCategory />
-    <Preference android:key="contact_info_mini_shop_helper_my" android:layout="@layout/b8j" android:title="@string/bcw" />
+    <CheckBoxPreference android:key="contact_info_readerappnews_recv_remind" android:layout="@layout/bdi" android:persistent="false" android:title="@string/bps" />
+    <CheckBoxPreference android:key="contact_info_readerappnews_top" android:layout="@layout/bdi" android:persistent="false" android:title="@string/bi7" />
+    <CheckBoxPreference android:key="contact_info_readerappnews_mute" android:layout="@layout/bdi" android:persistent="false" android:title="@string/bpt" />
     <PreferenceSmallCategory />
-    <CheckBoxPreference android:key="contact_info_mini_shop_helper_top" android:layout="@layout/b8j" android:persistent="false" android:title="@string/bcz" />
-    <CheckBoxPreference android:key="contact_info_mini_shop_helper_not_disturb" android:layout="@layout/b8j" android:persistent="false" android:title="@string/bcx" />
+    <Preference android:key="contact_info_readerappnews_clear_data" android:layout="@layout/bdi" android:title="@string/blg" />
     <PreferenceSmallCategory />
-    <Preference android:key="contact_info_mini_shop_helper_help" android:layout="@layout/b8j" android:title="@string/bcv" />
-    <Preference android:key="contact_info_mini_shop_helper_clear_data" android:layout="@layout/b8j" android:title="@string/ba3" />
-    <PreferenceSmallCategory />
-    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/gsq" android:key="contact_info_mini_shop_helper_install" android:title_color="@color/ts" />
-    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/gsv" android:key="contact_info_mini_shop_helper_uninstall" android:layout="@layout/b2o" android:title_color="@color/a5e" />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/iww" android:key="contact_info_readerappnews_install" android:layout="@layout/bo3" android:title_color="@color/aks" />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/ix1" android:key="contact_info_readerappnews_uninstall" android:layout="@layout/bo3" android:title_color="@color/Red" />
     <PreferenceCategory />
 </PreferenceScreen>

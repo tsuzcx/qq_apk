@@ -6,25 +6,27 @@ import com.tencent.mm.plugin.game.autogen.chatroom.UserRole;
 
 public abstract interface c
 {
-  public abstract String Mm();
+  public abstract String amx();
   
-  public abstract long dnn();
+  public abstract long dUt();
   
-  public abstract boolean evA();
+  public abstract TagInfo fCq();
   
-  public abstract JumpInfo evB();
+  public abstract UserRole fCr();
   
-  public abstract String evC();
+  public abstract boolean fCs();
   
-  public abstract TagInfo evv();
+  public abstract boolean fCt();
   
-  public abstract UserRole evw();
+  public abstract boolean fCu();
   
-  public abstract boolean evx();
+  public abstract boolean fCv();
   
-  public abstract boolean evy();
+  public abstract JumpInfo fCw();
   
-  public abstract boolean evz();
+  public abstract String fCx();
+  
+  public abstract boolean fCy();
   
   public abstract String getNickName();
   
@@ -32,7 +34,7 @@ public abstract interface c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.chatroom.b.c
  * JD-Core Version:    0.7.0.1
  */

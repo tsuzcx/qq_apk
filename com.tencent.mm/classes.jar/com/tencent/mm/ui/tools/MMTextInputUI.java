@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.tools;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -21,25 +20,25 @@ import com.tencent.mm.ah.a.k;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.w.b;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.y.b;
 
 public class MMTextInputUI
   extends MMActivity
 {
-  private TextView XTf;
-  private int XTg;
-  private int XTh;
-  private boolean XTi;
-  private EditText bGw;
-  private int iWH;
+  private TextView afJu;
+  private int afJv;
+  private int afJw;
+  private boolean afJx;
+  private EditText dzv;
+  private int lyL;
   
   private void goBack()
   {
     AppMethodBeat.i(143185);
     if (getIntent().getBooleanExtra("key_show_confirm", false))
     {
-      h.a(getContext(), getString(a.k.quit_confirm_tips), "", new DialogInterface.OnClickListener()
+      k.a(getContext(), getString(a.k.quit_confirm_tips), "", new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -59,7 +58,7 @@ public class MMTextInputUI
     AppMethodBeat.o(143185);
   }
   
-  protected void X(CharSequence paramCharSequence) {}
+  protected void ac(CharSequence paramCharSequence) {}
   
   public int getLayoutId()
   {
@@ -70,14 +69,14 @@ public class MMTextInputUI
   {
     AppMethodBeat.i(143187);
     super.onCreate(paramBundle);
-    this.bGw = ((EditText)findViewById(a.g.text_edit));
-    this.XTf = ((TextView)findViewById(a.g.state_tv));
-    this.bGw.setHint(Util.nullAs(getIntent().getStringExtra("key_hint"), ""));
-    this.bGw.append(Util.nullAs(getIntent().getStringExtra("key_value"), ""));
-    this.iWH = (getIntent().getIntExtra("key_max_count", -1) << 1);
-    this.XTh = 0;
-    this.XTg = Math.max(this.iWH - 120, this.iWH * 9 / 10);
-    this.XTi = getIntent().getBooleanExtra("key_nullable", false);
+    this.dzv = ((EditText)findViewById(a.g.text_edit));
+    this.afJu = ((TextView)findViewById(a.g.state_tv));
+    this.dzv.setHint(Util.nullAs(getIntent().getStringExtra("key_hint"), ""));
+    this.dzv.append(Util.nullAs(getIntent().getStringExtra("key_value"), ""));
+    this.lyL = (getIntent().getIntExtra("key_max_count", -1) << 1);
+    this.afJw = 0;
+    this.afJv = Math.max(this.lyL - 120, this.lyL * 9 / 10);
+    this.afJx = getIntent().getBooleanExtra("key_nullable", false);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -93,7 +92,7 @@ public class MMTextInputUI
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(143183);
-        MMTextInputUI.this.X(MMTextInputUI.b(MMTextInputUI.this).getText());
+        MMTextInputUI.this.ac(MMTextInputUI.b(MMTextInputUI.this).getText());
         paramAnonymousMenuItem = new Intent();
         paramAnonymousMenuItem.putExtra("key_result", MMTextInputUI.b(MMTextInputUI.this).getText());
         MMTextInputUI.this.setResult(-1, paramAnonymousMenuItem);
@@ -101,10 +100,10 @@ public class MMTextInputUI
         AppMethodBeat.o(143183);
         return true;
       }
-    }, null, w.b.Wao);
-    enableOptionMenu(this.XTi);
-    if ((!this.XTi) || (this.iWH > 0)) {
-      this.bGw.addTextChangedListener(new TextWatcher()
+    }, null, y.b.adEJ);
+    enableOptionMenu(this.afJx);
+    if ((!this.afJx) || (this.lyL > 0)) {
+      this.dzv.addTextChangedListener(new TextWatcher()
       {
         public final void afterTextChanged(Editable paramAnonymousEditable)
         {
@@ -121,44 +120,44 @@ public class MMTextInputUI
           else
           {
             if (MMTextInputUI.d(MMTextInputUI.this) <= 0) {
-              break label412;
+              break label395;
             }
-            MMTextInputUI.a(MMTextInputUI.this, 0);
+            MMTextInputUI.e(MMTextInputUI.this);
             i = 0;
-            label61:
+            label60:
             if (i >= paramAnonymousEditable.length()) {
-              break label135;
+              break label118;
             }
             if (!Util.isChinese(paramAnonymousEditable.charAt(i))) {
-              break label115;
+              break label106;
             }
-            MMTextInputUI.a(MMTextInputUI.this, MMTextInputUI.e(MMTextInputUI.this) + 2);
+            MMTextInputUI.a(MMTextInputUI.this, 2);
           }
           for (;;)
           {
             i += 1;
-            break label61;
+            break label60;
             MMTextInputUI.this.enableOptionMenu(false);
             break;
-            label115:
-            MMTextInputUI.a(MMTextInputUI.this, MMTextInputUI.e(MMTextInputUI.this) + 1);
+            label106:
+            MMTextInputUI.a(MMTextInputUI.this, 1);
           }
-          label135:
-          if ((MMTextInputUI.e(MMTextInputUI.this) >= MMTextInputUI.f(MMTextInputUI.this)) && (MMTextInputUI.e(MMTextInputUI.this) <= MMTextInputUI.d(MMTextInputUI.this)))
+          label118:
+          if ((MMTextInputUI.f(MMTextInputUI.this) >= MMTextInputUI.g(MMTextInputUI.this)) && (MMTextInputUI.f(MMTextInputUI.this) <= MMTextInputUI.d(MMTextInputUI.this)))
           {
             MMTextInputUI.this.enableOptionMenu(true);
-            MMTextInputUI.g(MMTextInputUI.this).setVisibility(0);
-            MMTextInputUI.g(MMTextInputUI.this).setTextColor(MMTextInputUI.this.getResources().getColor(a.d.text_input_limit_tips));
-            MMTextInputUI.g(MMTextInputUI.this).setText(MMTextInputUI.this.getString(a.k.text_input_limit_tips, new Object[] { Integer.valueOf(MMTextInputUI.d(MMTextInputUI.this) - MMTextInputUI.e(MMTextInputUI.this) >> 1) }));
+            MMTextInputUI.h(MMTextInputUI.this).setVisibility(0);
+            MMTextInputUI.h(MMTextInputUI.this).setTextColor(MMTextInputUI.this.getResources().getColor(a.d.text_input_limit_tips));
+            MMTextInputUI.h(MMTextInputUI.this).setText(MMTextInputUI.this.getString(a.k.text_input_limit_tips, new Object[] { Integer.valueOf(MMTextInputUI.d(MMTextInputUI.this) - MMTextInputUI.f(MMTextInputUI.this) >> 1) }));
             AppMethodBeat.o(143184);
             return;
           }
-          if (MMTextInputUI.e(MMTextInputUI.this) > MMTextInputUI.d(MMTextInputUI.this))
+          if (MMTextInputUI.f(MMTextInputUI.this) > MMTextInputUI.d(MMTextInputUI.this))
           {
             MMTextInputUI.this.enableOptionMenu(false);
-            MMTextInputUI.g(MMTextInputUI.this).setVisibility(0);
-            MMTextInputUI.g(MMTextInputUI.this).setTextColor(MMTextInputUI.this.getResources().getColor(a.d.text_input_limit_warn));
-            MMTextInputUI.g(MMTextInputUI.this).setText(MMTextInputUI.this.getString(a.k.text_input_out_tips, new Object[] { Integer.valueOf((MMTextInputUI.e(MMTextInputUI.this) - MMTextInputUI.d(MMTextInputUI.this) >> 1) + 1) }));
+            MMTextInputUI.h(MMTextInputUI.this).setVisibility(0);
+            MMTextInputUI.h(MMTextInputUI.this).setTextColor(MMTextInputUI.this.getResources().getColor(a.d.text_input_limit_warn));
+            MMTextInputUI.h(MMTextInputUI.this).setText(MMTextInputUI.this.getString(a.k.text_input_out_tips, new Object[] { Integer.valueOf((MMTextInputUI.f(MMTextInputUI.this) - MMTextInputUI.d(MMTextInputUI.this) >> 1) + 1) }));
             AppMethodBeat.o(143184);
             return;
           }
@@ -169,11 +168,11 @@ public class MMTextInputUI
           for (;;)
           {
             paramAnonymousEditable.enableOptionMenu(bool);
-            MMTextInputUI.g(MMTextInputUI.this).setVisibility(8);
-            label412:
+            MMTextInputUI.h(MMTextInputUI.this).setVisibility(8);
+            label395:
             AppMethodBeat.o(143184);
             return;
-            if (MMTextInputUI.e(MMTextInputUI.this) > 0) {
+            if (MMTextInputUI.f(MMTextInputUI.this) > 0) {
               bool = true;
             }
           }
@@ -231,7 +230,7 @@ public class MMTextInputUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.tools.MMTextInputUI
  * JD-Core Version:    0.7.0.1
  */

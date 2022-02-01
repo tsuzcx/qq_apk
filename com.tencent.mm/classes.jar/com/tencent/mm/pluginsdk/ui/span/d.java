@@ -6,13 +6,13 @@ import com.tencent.mm.pluginsdk.ui.applet.u;
 
 public abstract interface d
 {
-  public abstract boolean a(Context paramContext, View paramView, u paramu, i parami);
+  public abstract u C(Context paramContext, String paramString);
   
-  public abstract u y(Context paramContext, String paramString);
+  public abstract boolean a(Context paramContext, View paramView, u paramu, m paramm);
   
   public static final class a
   {
-    public static d RrK;
+    public static d YnY;
   }
 }
 

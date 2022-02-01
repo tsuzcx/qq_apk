@@ -7,20 +7,20 @@ import java.util.Stack;
 final class a
   implements b
 {
-  private final byte[] aSi;
-  private final Stack<a> aSj;
-  private final f aSk;
-  private c aSl;
-  private int aSm;
-  private int aSn;
-  private long aSo;
+  private final byte[] cMe;
+  private final Stack<a> cMf;
+  private final f cMg;
+  private c cMh;
+  private int cMi;
+  private int cMj;
+  private long cMk;
   
   a()
   {
     AppMethodBeat.i(91999);
-    this.aSi = new byte[8];
-    this.aSj = new Stack();
-    this.aSk = new f();
+    this.cMe = new byte[8];
+    this.cMf = new Stack();
+    this.cMg = new f();
     AppMethodBeat.o(91999);
   }
   
@@ -28,11 +28,11 @@ final class a
   {
     int i = 0;
     AppMethodBeat.i(92002);
-    paramf.readFully(this.aSi, 0, paramInt);
+    paramf.readFully(this.cMe, 0, paramInt);
     long l = 0L;
     while (i < paramInt)
     {
-      l = l << 8 | this.aSi[i] & 0xFF;
+      l = l << 8 | this.cMe[i] & 0xFF;
       i += 1;
     }
     AppMethodBeat.o(92002);
@@ -41,23 +41,23 @@ final class a
   
   public final void a(c paramc)
   {
-    this.aSl = paramc;
+    this.cMh = paramc;
   }
   
   public final boolean c(com.google.android.exoplayer2.c.f paramf)
   {
     AppMethodBeat.i(92001);
     boolean bool;
-    if (this.aSl != null)
+    if (this.cMh != null)
     {
       bool = true;
       com.google.android.exoplayer2.i.a.checkState(bool);
     }
     for (;;)
     {
-      if ((!this.aSj.isEmpty()) && (paramf.getPosition() >= ((a)this.aSj.peek()).aSp))
+      if ((!this.cMf.isEmpty()) && (paramf.getPosition() >= ((a)this.cMf.peek()).cMl))
       {
-        this.aSl.en(((a)this.aSj.pop()).aSn);
+        this.cMh.hD(((a)this.cMf.pop()).cMj);
         AppMethodBeat.o(92001);
         return true;
         bool = false;
@@ -66,23 +66,23 @@ final class a
       long l2;
       long l1;
       int j;
-      if (this.aSm == 0)
+      if (this.cMi == 0)
       {
-        l2 = this.aSk.a(paramf, true, false, 4);
+        l2 = this.cMg.a(paramf, true, false, 4);
         l1 = l2;
         if (l2 == -2L) {
-          paramf.sp();
+          paramf.RS();
         }
         for (;;)
         {
-          paramf.b(this.aSi, 0, 4);
-          i = f.eo(this.aSi[0]);
+          paramf.b(this.cMe, 0, 4);
+          i = f.hE(this.cMe[0]);
           if ((i != -1) && (i <= 4))
           {
-            j = (int)f.a(this.aSi, i, false);
-            if (this.aSl.em(j))
+            j = (int)f.a(this.cMe, i, false);
+            if (this.cMh.hC(j))
             {
-              paramf.ed(i);
+              paramf.eP(i);
               l1 = j;
               if (l1 != -1L) {
                 break;
@@ -91,17 +91,17 @@ final class a
               return false;
             }
           }
-          paramf.ed(1);
+          paramf.eP(1);
         }
-        this.aSn = ((int)l1);
-        this.aSm = 1;
+        this.cMj = ((int)l1);
+        this.cMi = 1;
       }
-      if (this.aSm == 1)
+      if (this.cMi == 1)
       {
-        this.aSo = this.aSk.a(paramf, false, true, 8);
-        this.aSm = 2;
+        this.cMk = this.cMg.a(paramf, false, true, 8);
+        this.cMi = 2;
       }
-      int i = this.aSl.el(this.aSn);
+      int i = this.cMh.hB(this.cMj);
       c localc;
       switch (i)
       {
@@ -111,98 +111,98 @@ final class a
         throw paramf;
       case 1: 
         l1 = paramf.getPosition();
-        l2 = this.aSo;
-        this.aSj.add(new a(this.aSn, l2 + l1, (byte)0));
-        this.aSl.f(this.aSn, l1, this.aSo);
-        this.aSm = 0;
+        l2 = this.cMk;
+        this.cMf.add(new a(this.cMj, l2 + l1, (byte)0));
+        this.cMh.f(this.cMj, l1, this.cMk);
+        this.cMi = 0;
         AppMethodBeat.o(92001);
         return true;
       case 2: 
-        if (this.aSo > 8L)
+        if (this.cMk > 8L)
         {
-          paramf = new o("Invalid integer size: " + this.aSo);
+          paramf = new o("Invalid integer size: " + this.cMk);
           AppMethodBeat.o(92001);
           throw paramf;
         }
-        this.aSl.i(this.aSn, a(paramf, (int)this.aSo));
-        this.aSm = 0;
+        this.cMh.i(this.cMj, a(paramf, (int)this.cMk));
+        this.cMi = 0;
         AppMethodBeat.o(92001);
         return true;
       case 5: 
-        if ((this.aSo != 4L) && (this.aSo != 8L))
+        if ((this.cMk != 4L) && (this.cMk != 8L))
         {
-          paramf = new o("Invalid float size: " + this.aSo);
+          paramf = new o("Invalid float size: " + this.cMk);
           AppMethodBeat.o(92001);
           throw paramf;
         }
-        localc = this.aSl;
-        i = this.aSn;
-        j = (int)this.aSo;
+        localc = this.cMh;
+        i = this.cMj;
+        j = (int)this.cMk;
         l1 = a(paramf, j);
         if (j == 4) {}
         for (double d = Float.intBitsToFloat((int)l1);; d = Double.longBitsToDouble(l1))
         {
-          localc.b(i, d);
-          this.aSm = 0;
+          localc.c(i, d);
+          this.cMi = 0;
           AppMethodBeat.o(92001);
           return true;
         }
       case 3: 
-        if (this.aSo > 2147483647L)
+        if (this.cMk > 2147483647L)
         {
-          paramf = new o("String element size: " + this.aSo);
+          paramf = new o("String element size: " + this.cMk);
           AppMethodBeat.o(92001);
           throw paramf;
         }
-        localc = this.aSl;
-        i = this.aSn;
-        j = (int)this.aSo;
+        localc = this.cMh;
+        i = this.cMj;
+        j = (int)this.cMk;
         if (j == 0) {}
         byte[] arrayOfByte;
         for (paramf = "";; paramf = new String(arrayOfByte))
         {
-          localc.d(i, paramf);
-          this.aSm = 0;
+          localc.e(i, paramf);
+          this.cMi = 0;
           AppMethodBeat.o(92001);
           return true;
           arrayOfByte = new byte[j];
           paramf.readFully(arrayOfByte, 0, j);
         }
       case 4: 
-        this.aSl.a(this.aSn, (int)this.aSo, paramf);
-        this.aSm = 0;
+        this.cMh.a(this.cMj, (int)this.cMk, paramf);
+        this.cMi = 0;
         AppMethodBeat.o(92001);
         return true;
       }
-      paramf.ed((int)this.aSo);
-      this.aSm = 0;
+      paramf.eP((int)this.cMk);
+      this.cMi = 0;
     }
   }
   
   public final void reset()
   {
     AppMethodBeat.i(92000);
-    this.aSm = 0;
-    this.aSj.clear();
-    this.aSk.reset();
+    this.cMi = 0;
+    this.cMf.clear();
+    this.cMg.reset();
     AppMethodBeat.o(92000);
   }
   
   static final class a
   {
-    final int aSn;
-    final long aSp;
+    final int cMj;
+    final long cMl;
     
     private a(int paramInt, long paramLong)
     {
-      this.aSn = paramInt;
-      this.aSp = paramLong;
+      this.cMj = paramInt;
+      this.cMl = paramLong;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.c.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,15 @@
 package com.tencent.mm.plugin.webview.j;
 
 public abstract interface a
-  extends com.tencent.mm.kernel.c.a
-{}
+{
+  public abstract boolean iwL();
+  
+  public abstract void iwM();
+  
+  public abstract boolean iwN();
+  
+  public abstract void ot(String paramString1, String paramString2);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

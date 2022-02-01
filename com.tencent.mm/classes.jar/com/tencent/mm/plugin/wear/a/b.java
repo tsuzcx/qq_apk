@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public static final boolean bhY(String paramString)
+  public static final boolean bhH(String paramString)
   {
     AppMethodBeat.i(131330);
     try
@@ -20,7 +20,7 @@ public final class b
     return false;
   }
   
-  public static final int bhZ(String paramString)
+  public static final int bhI(String paramString)
   {
     AppMethodBeat.i(131331);
     try
@@ -38,7 +38,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.a.b
  * JD-Core Version:    0.7.0.1
  */

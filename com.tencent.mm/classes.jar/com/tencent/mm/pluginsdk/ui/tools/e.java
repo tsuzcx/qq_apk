@@ -5,38 +5,38 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.platformtools.s;
-import com.tencent.mm.platformtools.s.a;
-import com.tencent.mm.platformtools.s.b;
+import com.tencent.mm.platformtools.p;
+import com.tencent.mm.platformtools.p.a;
+import com.tencent.mm.platformtools.p.b;
 import com.tencent.mm.plugin.comm.c.d;
 import com.tencent.mm.plugin.image.d;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class e
-  implements s
+  implements p
 {
+  private String Ahe;
   private int height;
   private String url;
-  private String wKH;
   private int width;
   
   public e(String paramString1, String paramString2)
   {
-    this.wKH = paramString1;
+    this.Ahe = paramString1;
     this.url = paramString2;
     this.width = 0;
     this.height = 0;
   }
   
   /* Error */
-  public final Bitmap a(Bitmap paramBitmap, s.a parama, String paramString)
+  public final Bitmap a(Bitmap paramBitmap, p.a parama, String paramString)
   {
     // Byte code:
     //   0: ldc 33
     //   2: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
     //   6: astore_3
-    //   7: getstatic 45	com/tencent/mm/platformtools/s$a:mEp	Lcom/tencent/mm/platformtools/s$a;
+    //   7: getstatic 45	com/tencent/mm/platformtools/p$a:pAS	Lcom/tencent/mm/platformtools/p$a;
     //   10: aload_2
     //   11: if_acmpne +143 -> 154
     //   14: aload_1
@@ -77,23 +77,23 @@ public final class e
     //   71: astore_2
     //   72: aload_2
     //   73: astore_3
-    //   74: new 63	com/tencent/mm/vfs/q
+    //   74: new 63	com/tencent/mm/vfs/u
     //   77: dup
     //   78: aload_0
-    //   79: invokevirtual 67	com/tencent/mm/pluginsdk/ui/tools/e:bvq	()Ljava/lang/String;
-    //   82: invokespecial 70	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
+    //   79: invokevirtual 67	com/tencent/mm/pluginsdk/ui/tools/e:bTC	()Ljava/lang/String;
+    //   82: invokespecial 70	com/tencent/mm/vfs/u:<init>	(Ljava/lang/String;)V
     //   85: astore 5
     //   87: aload_2
     //   88: astore_3
     //   89: aload 5
-    //   91: invokevirtual 74	com/tencent/mm/vfs/q:ifM	()Z
+    //   91: invokevirtual 74	com/tencent/mm/vfs/u:jKZ	()Z
     //   94: pop
     //   95: aconst_null
     //   96: astore 4
     //   98: aconst_null
     //   99: astore_1
     //   100: aload 5
-    //   102: invokestatic 80	com/tencent/mm/vfs/u:an	(Lcom/tencent/mm/vfs/q;)Ljava/io/OutputStream;
+    //   102: invokestatic 80	com/tencent/mm/vfs/y:ap	(Lcom/tencent/mm/vfs/u;)Ljava/io/OutputStream;
     //   105: astore 5
     //   107: aload 5
     //   109: astore_1
@@ -172,7 +172,7 @@ public final class e
     //   start	length	slot	name	signature
     //   0	234	0	this	e
     //   0	234	1	paramBitmap	Bitmap
-    //   0	234	2	parama	s.a
+    //   0	234	2	parama	p.a
     //   0	234	3	paramString	String
     //   96	123	4	localObject1	Object
     //   85	63	5	localObject2	Object
@@ -198,37 +198,42 @@ public final class e
     //   165	177	210	finally
   }
   
-  public final void a(s.a parama) {}
+  public final void a(p.a parama) {}
   
-  public final s.b bvp()
+  public final p.b bTB()
   {
     return null;
   }
   
-  public final String bvq()
+  public final String bTC()
   {
     AppMethodBeat.i(152382);
-    String str = d.bbW() + "/" + g.getMessageDigest(this.url.getBytes());
+    String str = d.bzL() + "/" + g.getMessageDigest(this.url.getBytes());
     AppMethodBeat.o(152382);
     return str;
   }
   
-  public final String bvr()
+  public final String bTD()
   {
     return this.url;
   }
   
-  public final String bvs()
+  public final String bTE()
   {
-    return this.wKH;
+    return this.Ahe;
   }
   
-  public final boolean bvt()
+  public final boolean bTF()
   {
     return true;
   }
   
-  public final Bitmap bvu()
+  public final boolean bTG()
+  {
+    return false;
+  }
+  
+  public final Bitmap bTH()
   {
     AppMethodBeat.i(152383);
     Bitmap localBitmap = BitmapFactory.decodeResource(MMApplicationContext.getContext().getResources(), c.d.nosdcard_headimg);
@@ -236,13 +241,13 @@ public final class e
     return localBitmap;
   }
   
-  public final void bvv() {}
+  public final void bTI() {}
   
-  public final void bvw() {}
+  public final void bTJ() {}
   
   public final String getCacheKey()
   {
-    return this.wKH;
+    return this.Ahe;
   }
 }
 

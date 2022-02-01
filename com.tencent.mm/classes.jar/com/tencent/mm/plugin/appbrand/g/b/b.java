@@ -6,25 +6,25 @@ import java.util.Iterator;
 
 public final class b
 {
-  public String fzF;
+  public String hEr;
   public String host;
-  public String oeA;
-  public String oeB;
-  public String oeC;
-  public String oeD;
-  public ArrayList<f> oeE;
-  public ArrayList<Object> oeF;
-  public String oex;
-  public int oey;
-  public int oez;
+  public String mse;
   public int port;
+  public int rid;
+  public int rie;
+  public String rif;
+  public String rig;
+  public String rih;
+  public String rii;
+  public ArrayList<f> rij;
+  public ArrayList<Object> rik;
   public String uuid;
   
   public b()
   {
     AppMethodBeat.i(158911);
-    this.oeE = new ArrayList();
-    this.oeF = new ArrayList();
+    this.rij = new ArrayList();
+    this.rik = new ArrayList();
     AppMethodBeat.o(158911);
   }
   
@@ -39,7 +39,7 @@ public final class b
     if ((paramObject instanceof b))
     {
       paramObject = (b)paramObject;
-      if ((this.host.equals(paramObject.host)) && (this.port == paramObject.port) && (this.oeD.equals(paramObject.oeD)))
+      if ((this.host.equals(paramObject.host)) && (this.port == paramObject.port) && (this.rii.equals(paramObject.rii)))
       {
         AppMethodBeat.o(158913);
         return true;
@@ -55,7 +55,7 @@ public final class b
   {
     AppMethodBeat.i(158912);
     Object localObject = new StringBuilder();
-    Iterator localIterator = this.oeE.iterator();
+    Iterator localIterator = this.rij.iterator();
     while (localIterator.hasNext())
     {
       f localf = (f)localIterator.next();
@@ -63,14 +63,14 @@ public final class b
       ((StringBuilder)localObject).append(localf.toString());
       ((StringBuilder)localObject).append("]\n");
     }
-    localObject = "host=" + this.host + "\nport=" + this.port + "\nmajor=" + this.oey + "\nminor=" + this.oez + "\ndeviceType=" + this.fzF + "\nfriendlyName=" + this.oeA + "\nmanufacturer=" + this.oeB + "\nmodeName=" + this.oeC + "\nserviceCount=" + this.oeE.size() + "\nserviceList=\n" + ((StringBuilder)localObject).toString();
+    localObject = "host=" + this.host + "\nport=" + this.port + "\nmajor=" + this.rid + "\nminor=" + this.rie + "\ndeviceType=" + this.hEr + "\nfriendlyName=" + this.rif + "\nmanufacturer=" + this.rig + "\nmodeName=" + this.rih + "\nserviceCount=" + this.rij.size() + "\nserviceList=\n" + ((StringBuilder)localObject).toString();
     AppMethodBeat.o(158912);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.b.b
  * JD-Core Version:    0.7.0.1
  */

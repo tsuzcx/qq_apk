@@ -1,34 +1,43 @@
 package com.tencent.mm.plugin.setting;
 
-import android.annotation.SuppressLint;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.aa.c;
-import com.tencent.mm.an.h.a;
-import com.tencent.mm.an.h.c;
-import com.tencent.mm.kernel.b;
+import com.tencent.mm.am.g.a;
+import com.tencent.mm.am.g.c;
+import com.tencent.mm.autogen.b.az;
 import com.tencent.mm.kernel.f.c;
 import com.tencent.mm.model.be;
-import com.tencent.mm.model.ci;
-import com.tencent.mm.model.ck;
-import com.tencent.mm.model.ck.a;
+import com.tencent.mm.model.br;
+import com.tencent.mm.model.cj;
+import com.tencent.mm.model.cl;
+import com.tencent.mm.model.cl.a;
+import com.tencent.mm.model.z;
+import com.tencent.mm.platformtools.w;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.plugin.messenger.foundation.a.t;
 import com.tencent.mm.plugin.messenger.foundation.a.v;
-import com.tencent.mm.protocal.protobuf.db;
-import com.tencent.mm.protocal.protobuf.dlm;
-import com.tencent.mm.protocal.protobuf.yk;
+import com.tencent.mm.protocal.protobuf.aah;
+import com.tencent.mm.protocal.protobuf.dl;
+import com.tencent.mm.protocal.protobuf.edx;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tencent.mm.sdk.storage.MStorageEx;
 import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.cc;
 import com.tencent.mm.storagebase.h.b;
+import com.tencent.mm.ui.vas.VASActivity;
+import com.tencent.mm.ui.vas.VASActivity.a;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -36,27 +45,64 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import kotlin.g.b.s;
 
 public final class d
   implements be
 {
-  private static List<yk> Jdb = null;
-  private MStorageEx.IOnStorageChange Jdc;
-  private ck.a Jdd;
-  private t Jde;
-  private ck.a Jdf;
-  private t Jdg;
+  private static List<aah> PmY = null;
+  private MStorageEx.IOnStorageChange PmZ;
+  private cl.a Pna;
+  private t Pnb;
+  private t Pnc;
+  private cl.a Pnd;
+  private t Pne;
   
   public d()
   {
     AppMethodBeat.i(73751);
-    this.Jdc = new d.1(this);
-    this.Jdd = new ck.a()
+    this.PmZ = new MStorageEx.IOnStorageChange()
     {
-      public final void a(h.a paramAnonymousa)
+      public final void onNotifyChange(int paramAnonymousInt, final MStorageEx paramAnonymousMStorageEx, Object paramAnonymousObject)
+      {
+        AppMethodBeat.i(73746);
+        if (paramAnonymousInt == 2)
+        {
+          paramAnonymousMStorageEx = (String)paramAnonymousObject;
+          paramAnonymousObject = ((n)com.tencent.mm.kernel.h.ax(n.class)).bzA().bxq(paramAnonymousMStorageEx);
+          if ((paramAnonymousObject != null) && (!com.tencent.mm.contact.d.rs(paramAnonymousObject.field_type)) && (paramAnonymousObject.aSD()) && (!paramAnonymousObject.aSE())) {
+            com.tencent.mm.kernel.h.baH().postToWorkerDelayed(new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(73745);
+                Object localObject = ((n)com.tencent.mm.kernel.h.ax(n.class)).bzA().JE(paramAnonymousMStorageEx);
+                if ((localObject != null) && (!com.tencent.mm.contact.d.rs(((az)localObject).field_type)) && (((au)localObject).aSD()) && (!((au)localObject).aSE()))
+                {
+                  localObject = new cc();
+                  ((cc)localObject).pI(0);
+                  ((cc)localObject).BS(paramAnonymousMStorageEx);
+                  ((cc)localObject).setStatus(6);
+                  ((cc)localObject).setContent(MMApplicationContext.getContext().getString(b.i.settings_jump_to_verifypage_tips));
+                  ((cc)localObject).setCreateTime(br.D(paramAnonymousMStorageEx, System.currentTimeMillis() / 1000L));
+                  ((cc)localObject).setType(10000);
+                  ((n)com.tencent.mm.kernel.h.ax(n.class)).gaZ().ba((cc)localObject);
+                  Log.i("MicroMsg.SubCoreSetting", "insert chatcontact verify sysmsg. %s", new Object[] { paramAnonymousMStorageEx });
+                }
+                AppMethodBeat.o(73745);
+              }
+            }, 5000L);
+          }
+        }
+        AppMethodBeat.o(73746);
+      }
+    };
+    this.Pna = new cl.a()
+    {
+      public final void a(g.a paramAnonymousa)
       {
         AppMethodBeat.i(73747);
-        paramAnonymousa = com.tencent.mm.platformtools.z.a(paramAnonymousa.jQG.RIF);
+        paramAnonymousa = w.a(paramAnonymousa.mpN.YFG);
         if ((paramAnonymousa == null) || (paramAnonymousa.length() == 0))
         {
           Log.e("MicroMsg.SubCoreSetting", "onReceiveMsg, ShakeCardRedDotMsg msgContent is null");
@@ -79,17 +125,17 @@ public final class d
         }
         if (str.equals("my_setting_privaty_recentOption"))
         {
-          if (((Integer)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.VoM, Integer.valueOf(0))).intValue() >= i)
+          if (((Integer)com.tencent.mm.kernel.h.baE().ban().get(at.a.acQi, Integer.valueOf(0))).intValue() >= i)
           {
             AppMethodBeat.o(73747);
             return;
           }
-          com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VoM, Integer.valueOf(i));
-          com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VoN, Integer.valueOf(i));
-          com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VoP, Integer.valueOf(i));
-          com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VoR, Integer.valueOf(i));
-          com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VoT, Integer.valueOf(i));
-          c.aFn().D(266260, true);
+          com.tencent.mm.kernel.h.baE().ban().set(at.a.acQi, Integer.valueOf(i));
+          com.tencent.mm.kernel.h.baE().ban().set(at.a.acQj, Integer.valueOf(i));
+          com.tencent.mm.kernel.h.baE().ban().set(at.a.acQl, Integer.valueOf(i));
+          com.tencent.mm.kernel.h.baE().ban().set(at.a.acQn, Integer.valueOf(i));
+          com.tencent.mm.kernel.h.baE().ban().set(at.a.acQp, Integer.valueOf(i));
+          c.aYo().R(266260, true);
           AppMethodBeat.o(73747);
           return;
         }
@@ -101,13 +147,13 @@ public final class d
             AppMethodBeat.o(73747);
             return;
           }
-          if (((Integer)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.Vqd, Integer.valueOf(0))).intValue() >= i)
+          if (((Integer)com.tencent.mm.kernel.h.baE().ban().get(at.a.acRF, Integer.valueOf(0))).intValue() >= i)
           {
             AppMethodBeat.o(73747);
             return;
           }
-          com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vqd, Integer.valueOf(i));
-          str = (String)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.Vqe, "");
+          com.tencent.mm.kernel.h.baE().ban().set(at.a.acRF, Integer.valueOf(i));
+          str = (String)com.tencent.mm.kernel.h.baE().ban().get(at.a.acRG, "");
           if (Util.isNullOrNil(str)) {
             break label415;
           }
@@ -116,38 +162,39 @@ public final class d
         label415:
         for (;;)
         {
-          com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vqe, paramAnonymousa);
-          c.aFn().D(262158, true);
+          com.tencent.mm.kernel.h.baE().ban().set(at.a.acRG, paramAnonymousa);
+          c.aYo().R(262158, true);
           AppMethodBeat.o(73747);
           return;
         }
       }
       
-      public final void a(h.c paramAnonymousc) {}
+      public final void a(g.c paramAnonymousc) {}
     };
-    this.Jde = new d.3(this);
-    this.Jdf = new ck.a()
+    this.Pnb = new d.3(this);
+    this.Pnc = new d.4(this);
+    this.Pnd = new cl.a()
     {
-      public final void a(h.a paramAnonymousa)
+      public final void a(g.a paramAnonymousa)
       {
-        AppMethodBeat.i(73749);
-        paramAnonymousa = com.tencent.mm.platformtools.z.a(paramAnonymousa.jQG.RIF);
+        AppMethodBeat.i(298487);
+        paramAnonymousa = w.a(paramAnonymousa.mpN.YFG);
         if ((paramAnonymousa == null) || (paramAnonymousa.length() == 0))
         {
           Log.e("MicroMsg.SubCoreSetting", "onReceiveMsg, crowdtest msgContent is null");
-          AppMethodBeat.o(73749);
+          AppMethodBeat.o(298487);
           return;
         }
         paramAnonymousa = XmlParser.parseXml(paramAnonymousa, "sysmsg", null);
         if (paramAnonymousa == null)
         {
-          AppMethodBeat.o(73749);
+          AppMethodBeat.o(298487);
           return;
         }
         int i = Util.getInt((String)paramAnonymousa.get(".sysmsg.crowdtest.$clientversion"), 0);
-        if (i <= com.tencent.mm.protocal.d.RAD)
+        if (i <= com.tencent.mm.protocal.d.Yxh)
         {
-          AppMethodBeat.o(73749);
+          AppMethodBeat.o(298487);
           return;
         }
         long l1 = 0L;
@@ -167,40 +214,40 @@ public final class d
         }
         if (l1 < System.currentTimeMillis())
         {
-          d.fFI();
-          AppMethodBeat.o(73749);
+          d.gUQ();
+          AppMethodBeat.o(298487);
           return;
         }
         str1 = (String)paramAnonymousa.get(".sysmsg.crowdtest.apply.link");
         str2 = (String)paramAnonymousa.get(".sysmsg.crowdtest.feedback.link");
-        com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VpY, Integer.valueOf(i));
-        com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VpZ, Long.valueOf(l1));
-        com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vqa, str1);
-        com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vqb, str2);
+        com.tencent.mm.kernel.h.baE().ban().set(at.a.acRA, Integer.valueOf(i));
+        com.tencent.mm.kernel.h.baE().ban().set(at.a.acRB, Long.valueOf(l1));
+        com.tencent.mm.kernel.h.baE().ban().set(at.a.acRC, str1);
+        com.tencent.mm.kernel.h.baE().ban().set(at.a.acRD, str2);
         i = Util.getInt((String)paramAnonymousa.get(".sysmsg.crowdtest.apply.reddotlevel"), 0);
-        paramAnonymousa = c.aFn();
+        paramAnonymousa = c.aYo();
         if (i > 0) {}
         for (bool = true;; bool = false)
         {
-          paramAnonymousa.D(262157, bool);
+          paramAnonymousa.R(262157, bool);
           if (i < 3) {
-            c.aFn().dl(262157, 266261);
+            c.aYo().dX(262157, 266261);
           }
           if (i < 2) {
-            c.aFn().dl(262157, 266262);
+            c.aYo().dX(262157, 266262);
           }
-          AppMethodBeat.o(73749);
+          AppMethodBeat.o(298487);
           return;
         }
       }
       
-      public final void a(h.c paramAnonymousc) {}
+      public final void a(g.c paramAnonymousc) {}
     };
-    this.Jdg = new t()
+    this.Pne = new t()
     {
-      public final void onNewXmlReceived(String paramAnonymousString, Map<String, String> paramAnonymousMap, h.a paramAnonymousa)
+      public final void onNewXmlReceived(String paramAnonymousString, Map<String, String> paramAnonymousMap, g.a paramAnonymousa)
       {
-        AppMethodBeat.i(73750);
+        AppMethodBeat.i(298490);
         if (paramAnonymousMap != null)
         {
           paramAnonymousString = (String)paramAnonymousMap.get(".sysmsg.security");
@@ -208,15 +255,15 @@ public final class d
             try
             {
               int i = Util.getInt(paramAnonymousString, 0);
-              com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vuy, Integer.valueOf(i));
+              com.tencent.mm.kernel.h.baE().ban().set(at.a.acWh, Integer.valueOf(i));
               if (i != 0)
               {
-                c.aFn().b(ar.a.Vuw, true);
-                AppMethodBeat.o(73750);
+                c.aYo().b(at.a.acWf, true);
+                AppMethodBeat.o(298490);
                 return;
               }
-              c.aFn().b(ar.a.Vuw, false);
-              AppMethodBeat.o(73750);
+              c.aYo().b(at.a.acWf, false);
+              AppMethodBeat.o(298490);
               return;
             }
             catch (Exception paramAnonymousString)
@@ -225,30 +272,30 @@ public final class d
             }
           }
         }
-        AppMethodBeat.o(73750);
+        AppMethodBeat.o(298490);
       }
     };
     Log.i("MicroMsg.SubCoreSetting", "SubCoreSetting constructor: " + System.currentTimeMillis());
     AppMethodBeat.o(73751);
   }
   
-  private static void fFG()
+  private static void gUO()
   {
     AppMethodBeat.i(73756);
-    com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VpZ, Long.valueOf(0L));
-    com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vqa, "");
-    c.aFn().D(262157, false);
+    com.tencent.mm.kernel.h.baE().ban().set(at.a.acRB, Long.valueOf(0L));
+    com.tencent.mm.kernel.h.baE().ban().set(at.a.acRC, "");
+    c.aYo().R(262157, false);
     AppMethodBeat.o(73756);
   }
   
-  public static List<yk> fFH()
+  public static List<aah> gUP()
   {
-    return Jdb;
+    return PmY;
   }
   
-  public static void hl(List<yk> paramList)
+  public static void kn(List<aah> paramList)
   {
-    Jdb = paramList;
+    PmY = paramList;
   }
   
   public final void clearPluginData(int paramInt)
@@ -258,7 +305,6 @@ public final class d
     AppMethodBeat.o(73752);
   }
   
-  @SuppressLint({"UseSparseArrays"})
   public final HashMap<Integer, h.b> getBaseDBFactories()
   {
     return null;
@@ -267,43 +313,49 @@ public final class d
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(73753);
-    Log.i("MicroMsg.SubCoreSetting", "SubCoreSetting onAccountPostReset: " + System.currentTimeMillis());
-    ((v)com.tencent.mm.kernel.h.ag(v.class)).getSysCmdMsgExtension().a("redpointinfo", this.Jdd, true);
-    ((v)com.tencent.mm.kernel.h.ag(v.class)).getSysCmdMsgExtension().a("crowdtest", this.Jdf, true);
-    ((v)com.tencent.mm.kernel.h.ag(v.class)).getSysCmdMsgExtension().a("showtrustedfriends", this.Jde);
-    ((v)com.tencent.mm.kernel.h.ag(v.class)).getSysCmdMsgExtension().a("DeviceProtectRedSpot", this.Jdg);
-    int i = ((Integer)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.VpY, Integer.valueOf(com.tencent.mm.protocal.d.RAD))).intValue();
-    long l = ((Long)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.VpZ, Long.valueOf(0L))).longValue();
-    if ((i <= com.tencent.mm.protocal.d.RAD) || (l < System.currentTimeMillis())) {
-      fFG();
+    Object localObject1 = e.Pnh;
+    Log.i("MicroMsg.VAS.WxVAS", s.X("init isVASOpen:", Boolean.valueOf(((e)localObject1).gUR())));
+    com.tencent.mm.ui.MMFragmentActivity.aReporter = e.Pnj;
+    Object localObject2 = VASActivity.Companion;
+    VASActivity.a.a((com.tencent.mm.ui.vas.b.a)localObject1);
+    Log.i("MicroMsg.SubCoreSetting", "SubCoreSetting onAccountPostReset:%s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
+    ((v)com.tencent.mm.kernel.h.az(v.class)).getSysCmdMsgExtension().a("redpointinfo", this.Pna, true);
+    ((v)com.tencent.mm.kernel.h.az(v.class)).getSysCmdMsgExtension().a("crowdtest", this.Pnd, true);
+    ((v)com.tencent.mm.kernel.h.az(v.class)).getSysCmdMsgExtension().a("showtrustedfriends", this.Pnc);
+    ((v)com.tencent.mm.kernel.h.az(v.class)).getSysCmdMsgExtension().a("DeviceProtectRedSpot", this.Pne);
+    ((v)com.tencent.mm.kernel.h.az(v.class)).getSysCmdMsgExtension().a("showWCOpenService", this.Pnb);
+    int i = ((Integer)com.tencent.mm.kernel.h.baE().ban().get(at.a.acRA, Integer.valueOf(com.tencent.mm.protocal.d.Yxh))).intValue();
+    long l = ((Long)com.tencent.mm.kernel.h.baE().ban().get(at.a.acRB, Long.valueOf(0L))).longValue();
+    if ((i <= com.tencent.mm.protocal.d.Yxh) || (l < System.currentTimeMillis())) {
+      gUO();
     }
-    i = ((Integer)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.Vqc, Integer.valueOf(0))).intValue();
-    Log.i("MicroMsg.SubCoreSetting", "SubCoreSetting onAccountPostReset flavorBlueCV: " + i + ",CLIENT_VERSION:" + com.tencent.mm.protocal.d.RAD);
-    if ((BuildInfo.IS_FLAVOR_BLUE) && (i < com.tencent.mm.protocal.d.RAD))
+    i = ((Integer)com.tencent.mm.kernel.h.baE().ban().get(at.a.acRE, Integer.valueOf(0))).intValue();
+    Log.i("MicroMsg.SubCoreSetting", "SubCoreSetting onAccountPostReset flavorBlueCV: " + i + ",CLIENT_VERSION:" + com.tencent.mm.protocal.d.Yxh);
+    if ((BuildInfo.IS_FLAVOR_BLUE) && (i < com.tencent.mm.protocal.d.Yxh))
     {
-      c.aFn().D(262164, true);
-      com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vqc, Integer.valueOf(com.tencent.mm.protocal.d.RAD));
+      c.aYo().R(262164, true);
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acRE, Integer.valueOf(com.tencent.mm.protocal.d.Yxh));
     }
     if (paramBoolean)
     {
-      i = com.tencent.mm.model.z.bdn();
-      com.tencent.mm.kernel.h.aHG().aHp().i(34, Integer.valueOf(i & 0xFFEFFFFF & 0xFFBFFFFF));
-      Object localObject1 = new dlm();
-      ((dlm)localObject1).RFu = 1048576;
-      ((dlm)localObject1).TSy = 0;
-      ((n)com.tencent.mm.kernel.h.ae(n.class)).bbK().d(new k.a(39, (com.tencent.mm.cd.a)localObject1));
-      localObject1 = new dlm();
-      ((dlm)localObject1).RFu = 4194304;
-      ((dlm)localObject1).TSy = 0;
-      ((n)com.tencent.mm.kernel.h.ae(n.class)).bbK().d(new k.a(39, (com.tencent.mm.cd.a)localObject1));
+      i = z.bBf();
+      com.tencent.mm.kernel.h.baE().ban().B(34, Integer.valueOf(i & 0xFFEFFFFF & 0xFFBFFFFF));
+      localObject1 = new edx();
+      ((edx)localObject1).YBX = 1048576;
+      ((edx)localObject1).abiW = 0;
+      ((n)com.tencent.mm.kernel.h.ax(n.class)).bzz().d(new k.a(39, (com.tencent.mm.bx.a)localObject1));
+      localObject1 = new edx();
+      ((edx)localObject1).YBX = 4194304;
+      ((edx)localObject1).abiW = 0;
+      ((n)com.tencent.mm.kernel.h.ax(n.class)).bzz().d(new k.a(39, (com.tencent.mm.bx.a)localObject1));
       Log.i("MicroMsg.SubCoreSetting", "set void default open");
-      if (!androidx.core.app.h.M(MMApplicationContext.getContext()).gs())
+      if (!androidx.core.app.i.X(MMApplicationContext.getContext()).DB())
       {
         Log.w("MicroMsg.SubCoreSetting", "sys notification disable！");
-        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(500L, 18L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(500L, 18L, 1L, false);
       }
-      Log.i("MicroMsg.SubCoreSetting", "is update from %s", new Object[] { Integer.valueOf(com.tencent.mm.kernel.h.aHE().kbI.kcY) });
-      Object localObject2 = ci.lvQ.bfs();
+      Log.i("MicroMsg.SubCoreSetting", "is update from %s", new Object[] { Integer.valueOf(com.tencent.mm.kernel.h.baC().mBO.mDh) });
+      localObject2 = cj.ono.bDj();
       if (((Set)localObject2).size() == 2)
       {
         localObject1 = new String[2];
@@ -312,19 +364,23 @@ public final class d
         while (((Iterator)localObject2).hasNext())
         {
           String str = (String)((Iterator)localObject2).next();
-          localObject1[i] = ci.lvQ.getString(str, "login_user_name");
+          localObject1[i] = cj.ono.getString(str, "login_user_name");
           i += 1;
         }
         if ((!Util.isNullOrNil(new String[] { localObject1[0], localObject1[1] })) && (localObject1[0].equals(localObject1[1])))
         {
           Log.w("MicroMsg.SubCoreSetting", "old dirty data!!!");
-          ci.lvQ.Sa(localObject1[0]);
-          ci.lvQ.Sa(localObject1[1]);
+          cj.ono.Kb(localObject1[0]);
+          cj.ono.Kb(localObject1[1]);
         }
       }
+      i = a.jD(MMApplicationContext.getContext());
+      if ((com.tencent.mm.ce.b.iRp()) && (i == 5)) {
+        com.tencent.mm.ce.b.axU(5);
+      }
     }
-    if ((com.tencent.mm.n.h.axc().getInt("ShowTurnOnFriendVerificationSysmsgSwitch", 0) == 1) && ((com.tencent.mm.model.z.bdd() & 0x20) == 0)) {
-      ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().add(this.Jdc);
+    if ((com.tencent.mm.k.i.aRC().getInt("ShowTurnOnFriendVerificationSysmsgSwitch", 0) == 1) && ((z.bAQ() & 0x20) == 0)) {
+      ((n)com.tencent.mm.kernel.h.ax(n.class)).bzA().add(this.PmZ);
     }
     AppMethodBeat.o(73753);
   }
@@ -333,11 +389,11 @@ public final class d
   {
     AppMethodBeat.i(73755);
     Log.i("MicroMsg.SubCoreSetting", "SubCoreSetting onAccountRelease: " + System.currentTimeMillis());
-    ((v)com.tencent.mm.kernel.h.ag(v.class)).getSysCmdMsgExtension().b("redpointinfo", this.Jdd, true);
-    ((v)com.tencent.mm.kernel.h.ag(v.class)).getSysCmdMsgExtension().b("crowdtest", this.Jdf, true);
-    ((v)com.tencent.mm.kernel.h.ag(v.class)).getSysCmdMsgExtension().b("showtrustedfriends", this.Jde);
-    ((v)com.tencent.mm.kernel.h.ag(v.class)).getSysCmdMsgExtension().b("DeviceProtectRedSpot", this.Jdg);
-    ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().remove(this.Jdc);
+    ((v)com.tencent.mm.kernel.h.az(v.class)).getSysCmdMsgExtension().b("redpointinfo", this.Pna, true);
+    ((v)com.tencent.mm.kernel.h.az(v.class)).getSysCmdMsgExtension().b("crowdtest", this.Pnd, true);
+    ((v)com.tencent.mm.kernel.h.az(v.class)).getSysCmdMsgExtension().b("showtrustedfriends", this.Pnc);
+    ((v)com.tencent.mm.kernel.h.az(v.class)).getSysCmdMsgExtension().b("DeviceProtectRedSpot", this.Pne);
+    ((n)com.tencent.mm.kernel.h.ax(n.class)).bzA().remove(this.PmZ);
     AppMethodBeat.o(73755);
   }
   
@@ -350,7 +406,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.d
  * JD-Core Version:    0.7.0.1
  */

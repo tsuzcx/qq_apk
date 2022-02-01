@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:drawable="@drawable/qi" />
-    <item android:state_focused="true" android:drawable="@drawable/qg" />
-    <item android:drawable="@drawable/qh" />
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:bottomLeftRadius="@dimen/df" />
+            <solid android:color="@color/agb" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:bottomLeftRadius="@dimen/df" />
+            <solid android:color="@color/ahb" />
+        </shape>
+    </item>
 </selector>

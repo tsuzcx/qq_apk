@@ -5,7 +5,7 @@ import android.graphics.LinearGradient;
 import android.graphics.RadialGradient;
 import android.graphics.Shader.TileMode;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.g;
+import com.tencent.mm.plugin.appbrand.af.i;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
@@ -57,10 +57,10 @@ public final class af
         AppMethodBeat.o(144971);
         return false;
       }
-      f1 = g.f(paramCanvas, 0);
-      f2 = g.f(paramCanvas, 1);
-      f3 = g.f(paramCanvas, 2);
-      float f4 = g.f(paramCanvas, 3);
+      f1 = i.f(paramCanvas, 0);
+      f2 = i.f(paramCanvas, 1);
+      f3 = i.f(paramCanvas, 2);
+      float f4 = i.f(paramCanvas, 3);
       paramCanvas = paramJSONArray.optJSONArray(2);
       if ((paramCanvas == null) || (paramCanvas.length() == 0))
       {
@@ -76,12 +76,12 @@ public final class af
         if (localJSONArray.length() >= 2)
         {
           arrayOfFloat[i] = ((float)localJSONArray.optDouble(0));
-          paramJSONArray[i] = g.r(localJSONArray.optJSONArray(1));
+          paramJSONArray[i] = i.u(localJSONArray.optJSONArray(1));
         }
         i += 1;
       }
       paramCanvas = new LinearGradient(f1, f2, f3, f4, paramJSONArray, arrayOfFloat, Shader.TileMode.CLAMP);
-      paramd.nTw.setShader(paramCanvas);
+      paramd.qTi.setShader(paramCanvas);
     }
     for (;;)
     {
@@ -100,9 +100,9 @@ public final class af
           AppMethodBeat.o(144971);
           return false;
         }
-        f1 = g.f(paramCanvas, 1);
-        f2 = g.f(paramCanvas, 2);
-        f3 = g.f(paramCanvas, 3);
+        f1 = i.f(paramCanvas, 1);
+        f2 = i.f(paramCanvas, 2);
+        f3 = i.f(paramCanvas, 3);
         paramCanvas = paramJSONArray.optJSONArray(2);
         paramJSONArray = new int[paramCanvas.length()];
         arrayOfFloat = new float[paramCanvas.length()];
@@ -113,12 +113,12 @@ public final class af
           if (localJSONArray.length() >= 2)
           {
             arrayOfFloat[i] = ((float)localJSONArray.optDouble(0));
-            paramJSONArray[i] = g.r(localJSONArray.optJSONArray(1));
+            paramJSONArray[i] = i.u(localJSONArray.optJSONArray(1));
           }
           i += 1;
         }
         paramCanvas = new RadialGradient(f1, f2, f3, paramJSONArray, arrayOfFloat, Shader.TileMode.CLAMP);
-        paramd.nTw.setShader(paramCanvas);
+        paramd.qTi.setShader(paramCanvas);
       }
       else if ("normal".equalsIgnoreCase(paramCanvas))
       {
@@ -128,12 +128,12 @@ public final class af
           AppMethodBeat.o(144971);
           return false;
         }
-        paramd.nTw.setColor(g.r(paramCanvas));
+        paramd.qTi.setColor(i.u(paramCanvas));
       }
     }
   }
   
-  public final BaseDrawActionArg bKy()
+  public final BaseDrawActionArg cjY()
   {
     AppMethodBeat.i(144970);
     SetStrokeStyleActionArg localSetStrokeStyleActionArg = new SetStrokeStyleActionArg();
@@ -148,7 +148,7 @@ public final class af
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.af
  * JD-Core Version:    0.7.0.1
  */

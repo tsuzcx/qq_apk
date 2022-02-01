@@ -10,19 +10,19 @@ public final class c
 {
   public final com.tencent.mm.audio.mix.g.c b(b paramb)
   {
-    AppMethodBeat.i(257483);
+    AppMethodBeat.i(270861);
     ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
-    if (paramb.lzU != null) {
-      localConcurrentHashMap.put(paramb.fnV, paramb.lzU);
+    if (paramb.orv != null) {
+      localConcurrentHashMap.put(paramb.hsg, paramb.orv);
     }
     paramb = new d(new com.tencent.mm.plugin.music.g.a.a(localConcurrentHashMap), paramb);
-    AppMethodBeat.o(257483);
+    AppMethodBeat.o(270861);
     return paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.music.b.c
  * JD-Core Version:    0.7.0.1
  */

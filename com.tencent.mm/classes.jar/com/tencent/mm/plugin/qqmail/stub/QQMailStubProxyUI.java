@@ -21,7 +21,7 @@ public class QQMailStubProxyUI
     paramBundle = new c(this);
     paramBundle.a(new c.a()
     {
-      public final void fsx()
+      public final void gEf()
       {
         AppMethodBeat.i(122802);
         Log.d("MicroMsg.QQMail.QQMailStubProxyUI", "onAfterVerify");
@@ -31,7 +31,7 @@ public class QQMailStubProxyUI
         AppMethodBeat.o(122802);
       }
       
-      public final void fsy()
+      public final void gEg()
       {
         AppMethodBeat.i(122803);
         Log.e("MicroMsg.QQMail.QQMailStubProxyUI", "onVerifyFail, finish self");
@@ -52,7 +52,7 @@ public class QQMailStubProxyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.stub.QQMailStubProxyUI
  * JD-Core Version:    0.7.0.1
  */

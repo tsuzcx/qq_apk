@@ -1,6 +1,5 @@
 package com.tencent.luggage.bridge.impl;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.Looper;
@@ -19,7 +18,7 @@ public class BridgedAndroidWebViewBase
   extends WebView
   implements s
 {
-  private static boolean cqZ = false;
+  private static boolean eiS = false;
   
   public BridgedAndroidWebViewBase(Context paramContext)
   {
@@ -43,14 +42,14 @@ public class BridgedAndroidWebViewBase
     AppMethodBeat.o(140354);
   }
   
-  private boolean jdMethod_do(String paramString)
+  private boolean eB(String paramString)
   {
     AppMethodBeat.i(140358);
     try
     {
-      Object localObject = a.gY(a.gY(this).bIx("mProvider").object).bIx("mWebViewCore").object;
+      Object localObject = a.jP(a.jP(this).bLt("mProvider").object).bLt("mWebViewCore").object;
       paramString = Message.obtain(null, 194, paramString);
-      a.gY(localObject).t("sendMessage", new Object[] { paramString });
+      a.jP(localObject).y("sendMessage", new Object[] { paramString });
       AppMethodBeat.o(140358);
       return true;
     }
@@ -62,7 +61,6 @@ public class BridgedAndroidWebViewBase
     return false;
   }
   
-  @SuppressLint({"JavascriptInterface", "AddJavascriptInterface"})
   public void addJavascriptInterface(Object paramObject, String paramString)
   {
     AppMethodBeat.i(140355);
@@ -75,7 +73,7 @@ public class BridgedAndroidWebViewBase
     AppMethodBeat.o(140355);
   }
   
-  public final void dn(String paramString)
+  public final void eA(String paramString)
   {
     AppMethodBeat.i(140357);
     if (TextUtils.isEmpty(paramString))
@@ -90,12 +88,12 @@ public class BridgedAndroidWebViewBase
       AppMethodBeat.o(140357);
       return;
     }
-    if (cqZ)
+    if (eiS)
     {
-      if (jdMethod_do(paramString)) {
+      if (eB(paramString)) {
         break label82;
       }
-      cqZ = false;
+      eiS = false;
     }
     try
     {
@@ -115,11 +113,11 @@ public class BridgedAndroidWebViewBase
   
   public void evaluateJavascript(final String paramString, ValueCallback<String> paramValueCallback)
   {
-    AppMethodBeat.i(209540);
+    AppMethodBeat.i(220110);
     if (Looper.getMainLooper().getThread() == Thread.currentThread())
     {
-      dn(paramString);
-      AppMethodBeat.o(209540);
+      eA(paramString);
+      AppMethodBeat.o(220110);
       return;
     }
     post(new Runnable()
@@ -127,18 +125,18 @@ public class BridgedAndroidWebViewBase
       public final void run()
       {
         AppMethodBeat.i(140353);
-        BridgedAndroidWebViewBase.this.dn(paramString);
+        BridgedAndroidWebViewBase.this.eA(paramString);
         AppMethodBeat.o(140353);
       }
     });
-    AppMethodBeat.o(209540);
+    AppMethodBeat.o(220110);
   }
   
   public String getUserAgent()
   {
-    AppMethodBeat.i(209538);
+    AppMethodBeat.i(220103);
     String str = getSettings().getUserAgentString();
-    AppMethodBeat.o(209538);
+    AppMethodBeat.o(220103);
     return str;
   }
 }

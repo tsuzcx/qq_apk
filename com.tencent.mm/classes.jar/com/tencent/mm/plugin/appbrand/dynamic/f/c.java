@@ -20,7 +20,7 @@ public final class c
     super("onDataPush", paramInt);
   }
   
-  public final JSONObject toJSONObject()
+  public final JSONObject aZh()
   {
     AppMethodBeat.i(121393);
     JSONObject localJSONObject = new JSONObject();
@@ -39,7 +39,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.f.c
  * JD-Core Version:    0.7.0.1
  */

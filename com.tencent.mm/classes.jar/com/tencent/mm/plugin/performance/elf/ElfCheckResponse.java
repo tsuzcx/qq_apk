@@ -13,15 +13,15 @@ public class ElfCheckResponse
   implements Parcelable
 {
   public static final Parcelable.Creator<ElfCheckResponse> CREATOR;
-  public long FNJ;
-  boolean GNI;
-  boolean GNJ;
-  private String GNK;
-  private long GNL;
-  long GNM;
-  public boolean dih;
+  Bundle EHy;
+  public long LIF;
+  boolean MKX;
+  boolean MKY;
+  private String MKZ;
+  private long MLa;
+  long MLb;
+  public boolean egk;
   String processName;
-  Bundle zDr;
   
   static
   {
@@ -36,14 +36,14 @@ public class ElfCheckResponse
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.GNI = bool1;
+      this.MKX = bool1;
       if (paramParcel.readByte() == 0) {
         break label112;
       }
       bool1 = true;
       label34:
-      this.dih = bool1;
-      this.FNJ = paramParcel.readLong();
+      this.egk = bool1;
+      this.LIF = paramParcel.readLong();
       if (paramParcel.readByte() == 0) {
         break label117;
       }
@@ -52,12 +52,12 @@ public class ElfCheckResponse
     label117:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.GNJ = bool1;
-      this.GNK = paramParcel.readString();
+      this.MKY = bool1;
+      this.MKZ = paramParcel.readString();
       this.processName = paramParcel.readString();
-      this.GNL = paramParcel.readLong();
-      this.GNM = paramParcel.readLong();
-      this.zDr = paramParcel.readBundle();
+      this.MLa = paramParcel.readLong();
+      this.MLb = paramParcel.readLong();
+      this.EHy = paramParcel.readBundle();
       AppMethodBeat.o(124982);
       return;
       bool1 = false;
@@ -69,13 +69,13 @@ public class ElfCheckResponse
   
   public ElfCheckResponse(boolean paramBoolean1, long paramLong, boolean paramBoolean2, boolean paramBoolean3, String paramString1, String paramString2)
   {
-    this.GNJ = paramBoolean3;
-    this.GNI = paramBoolean2;
+    this.MKY = paramBoolean3;
+    this.MKX = paramBoolean2;
     this.processName = paramString1;
-    this.GNK = paramString2;
-    this.GNM = 1000L;
-    this.FNJ = paramLong;
-    this.dih = paramBoolean1;
+    this.MKZ = paramString2;
+    this.MLb = 1000L;
+    this.LIF = paramLong;
+    this.egk = paramBoolean1;
   }
   
   public int describeContents()
@@ -86,7 +86,7 @@ public class ElfCheckResponse
   public String toString()
   {
     AppMethodBeat.i(124980);
-    String str = this.GNI + "," + this.GNJ + "," + this.GNL + "," + this.processName + "," + this.GNK + "," + this.GNM;
+    String str = this.MKX + "," + this.MKY + "," + this.MLa + "," + this.processName + "," + this.MKZ + "," + this.MLb;
     AppMethodBeat.o(124980);
     return str;
   }
@@ -95,18 +95,18 @@ public class ElfCheckResponse
   {
     byte b2 = 1;
     AppMethodBeat.i(124981);
-    if (this.GNI)
+    if (this.MKX)
     {
       b1 = 1;
       paramParcel.writeByte(b1);
-      if (!this.dih) {
+      if (!this.egk) {
         break label110;
       }
       b1 = 1;
       label31:
       paramParcel.writeByte(b1);
-      paramParcel.writeLong(this.FNJ);
-      if (!this.GNJ) {
+      paramParcel.writeLong(this.LIF);
+      if (!this.MKY) {
         break label115;
       }
     }
@@ -115,11 +115,11 @@ public class ElfCheckResponse
     for (byte b1 = b2;; b1 = 0)
     {
       paramParcel.writeByte(b1);
-      paramParcel.writeString(this.GNK);
+      paramParcel.writeString(this.MKZ);
       paramParcel.writeString(this.processName);
-      paramParcel.writeLong(this.GNL);
-      paramParcel.writeLong(this.GNM);
-      paramParcel.writeBundle(this.zDr);
+      paramParcel.writeLong(this.MLa);
+      paramParcel.writeLong(this.MLb);
+      paramParcel.writeBundle(this.EHy);
       AppMethodBeat.o(124981);
       return;
       b1 = 0;

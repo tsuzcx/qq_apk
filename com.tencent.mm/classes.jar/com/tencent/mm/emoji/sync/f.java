@@ -1,47 +1,47 @@
 package com.tencent.mm.emoji.sync;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.at.a;
 import java.util.List;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.m;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/sync/EmojiSyncFetchList;", "", "customType", "", "(I)V", "TAG", "", "getCustomType", "()I", "start", "", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/sync/EmojiSyncFetchList;", "", "customType", "", "(I)V", "TAG", "", "getCustomType", "()I", "start", "", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
 {
   final String TAG;
-  final int jNY;
+  final int mmT;
   
   public f(int paramInt)
   {
-    this.jNY = paramInt;
+    this.mmT = paramInt;
     this.TAG = "MicroMsg.EmojiSyncFetchList";
   }
   
   public final void start()
   {
-    AppMethodBeat.i(237583);
-    final ar.a locala2;
-    if (this.jNY == 1) {
-      locala2 = ar.a.VgO;
+    AppMethodBeat.i(242565);
+    final at.a locala2;
+    if (this.mmT == 1) {
+      locala2 = at.a.acIe;
     }
-    for (final ar.a locala1 = ar.a.VgS;; locala1 = ar.a.VgR)
+    for (at.a locala1 = at.a.acIj;; locala1 = at.a.acIi)
     {
-      new h(this.jNY, (m)new a(this, locala1, locala2));
-      AppMethodBeat.o(237583);
+      new h(this.mmT, (m)new a(locala1, locala2, this));
+      AppMethodBeat.o(242565);
       return;
-      locala2 = ar.a.VgN;
+      locala2 = at.a.acId;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "result", "", "needInfoList", "", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "result", "", "needInfoList", "", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    extends q
-    implements m<Boolean, List<? extends String>, x>
+    extends u
+    implements m<Boolean, List<? extends String>, ah>
   {
-    a(f paramf, ar.a parama1, ar.a parama2)
+    a(at.a parama1, at.a parama2, f paramf)
     {
       super();
     }
@@ -49,7 +49,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.emoji.sync.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/cp" android:layout_marginTop="@dimen/iq" android:layout_marginRight="@dimen/cp" android:layout_marginBottom="@dimen/cp"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/gn7" android:background="@drawable/qa" android:layout_width="fill_parent" android:layout_height="56.0dip">
-        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingLeft="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <TextView android:id="@id/gn8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/mp" />
-            <TextView android:id="@id/gn5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-        </LinearLayout>
-        <CheckBox android:id="@id/gn9" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" />
-    </LinearLayout>
+    <TextView android:textSize="@dimen/m3" android:gravity="center" android:id="@id/bxq" android:layout_width="@dimen/d_" android:layout_height="wrap_content" />
+    <SeekBar android:gravity="center" android:layout_gravity="center" android:id="@id/j8w" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxHeight="@dimen/m9" android:progressDrawable="@drawable/akc" android:minHeight="@dimen/m9" android:thumb="@drawable/akd" android:layout_weight="1.0" />
+    <TextView android:textSize="@dimen/m3" android:gravity="center" android:id="@id/cjx" android:layout_width="@dimen/d_" android:layout_height="wrap_content" />
 </LinearLayout>

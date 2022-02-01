@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline;
 
-import com.tencent.mm.storage.z;
+import com.tencent.mm.storage.ab;
 
 public abstract interface i
 {
-  public abstract void a(z paramz, int paramInt1, int paramInt2);
+  public abstract void onClick(ab paramab, String paramString, int paramInt1, int paramInt2);
 }
 
 

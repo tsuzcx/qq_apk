@@ -8,7 +8,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
-import androidx.core.g.w;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -16,18 +15,18 @@ import java.util.ArrayList;
 class af
   implements ah
 {
-  protected a asT;
+  protected a chC;
   
   af(Context paramContext, ViewGroup paramViewGroup, View paramView)
   {
-    AppMethodBeat.i(193186);
-    this.asT = new a(paramContext, paramViewGroup, paramView, this);
-    AppMethodBeat.o(193186);
+    AppMethodBeat.i(201542);
+    this.chC = new a(paramContext, paramViewGroup, paramView, this);
+    AppMethodBeat.o(201542);
   }
   
-  static af bL(View paramView)
+  static af cf(View paramView)
   {
-    AppMethodBeat.i(193191);
+    AppMethodBeat.i(201552);
     Object localObject = paramView;
     label32:
     int j;
@@ -51,8 +50,8 @@ class af
       View localView = ((ViewGroup)localObject).getChildAt(i);
       if ((localView instanceof a))
       {
-        paramView = ((a)localView).asY;
-        AppMethodBeat.o(193191);
+        paramView = ((a)localView).chH;
+        AppMethodBeat.o(201552);
         return paramView;
         if (!(((View)localObject).getParent() instanceof ViewGroup)) {
           break;
@@ -66,94 +65,94 @@ class af
     }
     label112:
     paramView = new z(((ViewGroup)localObject).getContext(), (ViewGroup)localObject, paramView);
-    AppMethodBeat.o(193191);
+    AppMethodBeat.o(201552);
     return paramView;
     label133:
-    AppMethodBeat.o(193191);
+    AppMethodBeat.o(201552);
     return null;
   }
   
-  public final void u(Drawable paramDrawable)
+  public final void x(Drawable paramDrawable)
   {
-    AppMethodBeat.i(193194);
-    a locala = this.asT;
-    if (locala.asX == null) {
-      locala.asX = new ArrayList();
+    AppMethodBeat.i(201567);
+    a locala = this.chC;
+    if (locala.chG == null) {
+      locala.chG = new ArrayList();
     }
-    if (!locala.asX.contains(paramDrawable))
+    if (!locala.chG.contains(paramDrawable))
     {
-      locala.asX.add(paramDrawable);
+      locala.chG.add(paramDrawable);
       locala.invalidate(paramDrawable.getBounds());
       paramDrawable.setCallback(locala);
     }
-    AppMethodBeat.o(193194);
+    AppMethodBeat.o(201567);
   }
   
-  public final void v(Drawable paramDrawable)
+  public final void y(Drawable paramDrawable)
   {
-    AppMethodBeat.i(193197);
-    a locala = this.asT;
-    if (locala.asX != null)
+    AppMethodBeat.i(201574);
+    a locala = this.chC;
+    if (locala.chG != null)
     {
-      locala.asX.remove(paramDrawable);
+      locala.chG.remove(paramDrawable);
       locala.invalidate(paramDrawable.getBounds());
       paramDrawable.setCallback(null);
     }
-    AppMethodBeat.o(193197);
+    AppMethodBeat.o(201574);
   }
   
   static final class a
     extends ViewGroup
   {
-    static Method asU;
-    ViewGroup asV;
-    View asW;
-    ArrayList<Drawable> asX;
-    af asY;
+    static Method chD;
+    ViewGroup chE;
+    View chF;
+    ArrayList<Drawable> chG;
+    af chH;
     
     static
     {
-      AppMethodBeat.i(193179);
+      AppMethodBeat.i(201308);
       try
       {
-        asU = ViewGroup.class.getDeclaredMethod("invalidateChildInParentFast", new Class[] { Integer.TYPE, Integer.TYPE, Rect.class });
-        AppMethodBeat.o(193179);
+        chD = ViewGroup.class.getDeclaredMethod("invalidateChildInParentFast", new Class[] { Integer.TYPE, Integer.TYPE, Rect.class });
+        AppMethodBeat.o(201308);
         return;
       }
       catch (NoSuchMethodException localNoSuchMethodException)
       {
-        AppMethodBeat.o(193179);
+        AppMethodBeat.o(201308);
       }
     }
     
     a(Context paramContext, ViewGroup paramViewGroup, View paramView, af paramaf)
     {
       super();
-      AppMethodBeat.i(193157);
-      this.asX = null;
-      this.asV = paramViewGroup;
-      this.asW = paramView;
+      AppMethodBeat.i(201298);
+      this.chG = null;
+      this.chE = paramViewGroup;
+      this.chF = paramView;
       setRight(paramViewGroup.getWidth());
       setBottom(paramViewGroup.getHeight());
       paramViewGroup.addView(this);
-      this.asY = paramaf;
-      AppMethodBeat.o(193157);
+      this.chH = paramaf;
+      AppMethodBeat.o(201298);
     }
     
-    public final void bJ(View paramView)
+    public final void cd(View paramView)
     {
-      AppMethodBeat.i(193162);
+      AppMethodBeat.i(201332);
       if ((paramView.getParent() instanceof ViewGroup))
       {
         ViewGroup localViewGroup = (ViewGroup)paramView.getParent();
-        if ((localViewGroup != this.asV) && (localViewGroup.getParent() != null) && (w.al(localViewGroup)))
+        if ((localViewGroup != this.chE) && (localViewGroup.getParent() != null) && (androidx.core.g.z.ay(localViewGroup)))
         {
           int[] arrayOfInt1 = new int[2];
           int[] arrayOfInt2 = new int[2];
           localViewGroup.getLocationOnScreen(arrayOfInt1);
-          this.asV.getLocationOnScreen(arrayOfInt2);
-          w.u(paramView, arrayOfInt1[0] - arrayOfInt2[0]);
-          w.s(paramView, arrayOfInt1[1] - arrayOfInt2[1]);
+          this.chE.getLocationOnScreen(arrayOfInt2);
+          androidx.core.g.z.u(paramView, arrayOfInt1[0] - arrayOfInt2[0]);
+          androidx.core.g.z.s(paramView, arrayOfInt1[1] - arrayOfInt2[1]);
         }
         localViewGroup.removeView(paramView);
         if (paramView.getParent() != null) {
@@ -161,45 +160,45 @@ class af
         }
       }
       super.addView(paramView, getChildCount() - 1);
-      AppMethodBeat.o(193162);
+      AppMethodBeat.o(201332);
     }
     
-    public final void bK(View paramView)
+    public final void ce(View paramView)
     {
-      AppMethodBeat.i(193166);
+      AppMethodBeat.i(201340);
       super.removeView(paramView);
-      if ((getChildCount() == 0) && ((this.asX == null) || (this.asX.size() == 0))) {}
+      if ((getChildCount() == 0) && ((this.chG == null) || (this.chG.size() == 0))) {}
       for (int i = 1;; i = 0)
       {
         if (i != 0) {
-          this.asV.removeView(this);
+          this.chE.removeView(this);
         }
-        AppMethodBeat.o(193166);
+        AppMethodBeat.o(201340);
         return;
       }
     }
     
     protected final void dispatchDraw(Canvas paramCanvas)
     {
-      AppMethodBeat.i(193173);
+      AppMethodBeat.i(201358);
       int[] arrayOfInt1 = new int[2];
       int[] arrayOfInt2 = new int[2];
-      this.asV.getLocationOnScreen(arrayOfInt1);
-      this.asW.getLocationOnScreen(arrayOfInt2);
+      this.chE.getLocationOnScreen(arrayOfInt1);
+      this.chF.getLocationOnScreen(arrayOfInt2);
       paramCanvas.translate(arrayOfInt2[0] - arrayOfInt1[0], arrayOfInt2[1] - arrayOfInt1[1]);
-      paramCanvas.clipRect(new Rect(0, 0, this.asW.getWidth(), this.asW.getHeight()));
+      paramCanvas.clipRect(new Rect(0, 0, this.chF.getWidth(), this.chF.getHeight()));
       super.dispatchDraw(paramCanvas);
-      if (this.asX == null) {}
-      for (int i = 0;; i = this.asX.size())
+      if (this.chG == null) {}
+      for (int i = 0;; i = this.chG.size())
       {
         int j = 0;
         while (j < i)
         {
-          ((Drawable)this.asX.get(j)).draw(paramCanvas);
+          ((Drawable)this.chG.get(j)).draw(paramCanvas);
           j += 1;
         }
       }
-      AppMethodBeat.o(193173);
+      AppMethodBeat.o(201358);
     }
     
     public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -209,57 +208,57 @@ class af
     
     public final ViewParent invalidateChildInParent(int[] paramArrayOfInt, Rect paramRect)
     {
-      AppMethodBeat.i(193178);
-      if (this.asV != null)
+      AppMethodBeat.i(201374);
+      if (this.chE != null)
       {
         paramRect.offset(paramArrayOfInt[0], paramArrayOfInt[1]);
-        if ((this.asV instanceof ViewGroup))
+        if ((this.chE instanceof ViewGroup))
         {
           paramArrayOfInt[0] = 0;
           paramArrayOfInt[1] = 0;
           int[] arrayOfInt1 = new int[2];
           int[] arrayOfInt2 = new int[2];
           int[] arrayOfInt3 = new int[2];
-          this.asV.getLocationOnScreen(arrayOfInt2);
-          this.asW.getLocationOnScreen(arrayOfInt3);
+          this.chE.getLocationOnScreen(arrayOfInt2);
+          this.chF.getLocationOnScreen(arrayOfInt3);
           arrayOfInt3[0] -= arrayOfInt2[0];
           arrayOfInt3[1] -= arrayOfInt2[1];
           paramRect.offset(arrayOfInt1[0], arrayOfInt1[1]);
           paramArrayOfInt = super.invalidateChildInParent(paramArrayOfInt, paramRect);
-          AppMethodBeat.o(193178);
+          AppMethodBeat.o(201374);
           return paramArrayOfInt;
         }
         invalidate(paramRect);
       }
-      AppMethodBeat.o(193178);
+      AppMethodBeat.o(201374);
       return null;
     }
     
     public final void invalidateDrawable(Drawable paramDrawable)
     {
-      AppMethodBeat.i(193168);
+      AppMethodBeat.i(201348);
       invalidate(paramDrawable.getBounds());
-      AppMethodBeat.o(193168);
+      AppMethodBeat.o(201348);
     }
     
     protected final void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
     
     protected final boolean verifyDrawable(Drawable paramDrawable)
     {
-      AppMethodBeat.i(193160);
-      if ((super.verifyDrawable(paramDrawable)) || ((this.asX != null) && (this.asX.contains(paramDrawable))))
+      AppMethodBeat.i(201321);
+      if ((super.verifyDrawable(paramDrawable)) || ((this.chG != null) && (this.chG.contains(paramDrawable))))
       {
-        AppMethodBeat.o(193160);
+        AppMethodBeat.o(201321);
         return true;
       }
-      AppMethodBeat.o(193160);
+      AppMethodBeat.o(201321);
       return false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     androidx.transition.af
  * JD-Core Version:    0.7.0.1
  */

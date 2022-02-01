@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -20,20 +19,19 @@ import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
-import com.tencent.mm.f.a.gt;
+import com.tencent.mm.am.p;
+import com.tencent.mm.autogen.a.he;
 import com.tencent.mm.plugin.wxpay.a.c;
 import com.tencent.mm.plugin.wxpay.a.f;
 import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.w;
-import com.tencent.mm.wallet_core.c.ag;
+import com.tencent.mm.ui.base.aa;
 import com.tencent.mm.wallet_core.keyboard.WcPayKeyboard;
+import com.tencent.mm.wallet_core.model.ah;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.WalletTextView;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
@@ -44,20 +42,20 @@ import com.tenpay.android.wechat.TenpaySecureEditText;
 public class RemittanceF2fLargeMoneyUI
   extends WalletBaseUI
 {
-  private WalletFormView IjM;
-  private int Iko = 4;
-  private RelativeLayout IqN;
-  private double IqP;
+  private WalletFormView Ogy;
+  private int Ohb = 4;
+  private RelativeLayout Oos;
+  private double Oou;
   private String mDesc;
-  private TextView mMA;
-  private int mMr;
-  private WcPayKeyboard mMt;
-  private RelativeLayout mMx;
-  private TextView mMy;
-  private RelativeLayout mMz;
   private String mTitle;
-  private TextView pPT;
-  private RelativeLayout qcr;
+  private int pIZ;
+  private WcPayKeyboard pJb;
+  private RelativeLayout pJf;
+  private TextView pJg;
+  private RelativeLayout pJh;
+  private TextView pJi;
+  private TextView sUt;
+  private RelativeLayout thl;
   
   public void finish()
   {
@@ -90,30 +88,30 @@ public class RemittanceF2fLargeMoneyUI
         return true;
       }
     });
-    this.qcr = ((RelativeLayout)findViewById(a.f.root_view));
-    this.pPT = ((TextView)findViewById(a.f.f2f_large_money_title_tv));
-    this.mMA = ((TextView)findViewById(a.f.f2f_large_money_desc_tv));
-    this.IjM = ((WalletFormView)findViewById(a.f.remittance_busi_money_et));
-    this.mMt = ((WcPayKeyboard)findViewById(a.f.wp_kb));
-    this.mMz = ((RelativeLayout)findViewById(a.f.wallet_max_unit_container));
-    this.IqN = ((RelativeLayout)findViewById(a.f.wallet_max_unit_line_container));
-    this.pPT.setText(this.mTitle);
-    this.mMA.setText(this.mDesc);
-    ((WalletTextView)this.IjM.getTitleTv()).setTypeface(4);
-    Object localObject = (TenpaySecureEditText)this.IjM.getContentEt();
+    this.thl = ((RelativeLayout)findViewById(a.f.root_view));
+    this.sUt = ((TextView)findViewById(a.f.f2f_large_money_title_tv));
+    this.pJi = ((TextView)findViewById(a.f.f2f_large_money_desc_tv));
+    this.Ogy = ((WalletFormView)findViewById(a.f.remittance_busi_money_et));
+    this.pJb = ((WcPayKeyboard)findViewById(a.f.wp_kb));
+    this.pJh = ((RelativeLayout)findViewById(a.f.wallet_max_unit_container));
+    this.Oos = ((RelativeLayout)findViewById(a.f.wallet_max_unit_line_container));
+    this.sUt.setText(this.mTitle);
+    this.pJi.setText(this.mDesc);
+    ((WalletTextView)this.Ogy.getTitleTv()).setTypeface(4);
+    Object localObject = (TenpaySecureEditText)this.Ogy.getContentEt();
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)((TenpaySecureEditText)localObject).getLayoutParams();
     localLayoutParams.leftMargin = 0;
     ((TenpaySecureEditText)localObject).setLayoutParams(localLayoutParams);
-    localObject = this.IjM.getTitleTv();
+    localObject = this.Ogy.getTitleTv();
     localLayoutParams = (LinearLayout.LayoutParams)((TextView)localObject).getLayoutParams();
     localLayoutParams.width = -2;
     ((TextView)localObject).setLayoutParams(localLayoutParams);
-    setWPKeyboard(this.IjM.getContentEt(), true, true);
-    this.mMt.setActionText(getString(a.i.remittance_busi_confirm));
-    ((RelativeLayout.LayoutParams)this.mMt.getLayoutParams()).addRule(12);
-    this.IjM.ijD();
-    this.IjM.azN(com.tencent.mm.ci.a.fromDPToPix(getContext(), 2));
-    this.IjM.getContentEt().setOnEditorActionListener(new TextView.OnEditorActionListener()
+    setWPKeyboard(this.Ogy.getContentEt(), true, true);
+    this.pJb.setActionText(getString(a.i.remittance_busi_confirm));
+    ((RelativeLayout.LayoutParams)this.pJb.getLayoutParams()).addRule(12);
+    this.Ogy.jPD();
+    this.Ogy.aGD(com.tencent.mm.cd.a.fromDPToPix(getContext(), 2));
+    this.Ogy.getContentEt().setOnEditorActionListener(new TextView.OnEditorActionListener()
     {
       public final boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
@@ -123,16 +121,17 @@ public class RemittanceF2fLargeMoneyUI
           Log.i("MicroMsg.RemittanceF2fLargeMoneyUI", "click enter, mTotalAmt:%s", new Object[] { Double.valueOf(RemittanceF2fLargeMoneyUI.a(RemittanceF2fLargeMoneyUI.this)) });
           if (RemittanceF2fLargeMoneyUI.a(RemittanceF2fLargeMoneyUI.this) <= 0.0D)
           {
-            w.makeText(RemittanceF2fLargeMoneyUI.this.getContext(), a.i.wallet_balance_save_input_invalid, 0).show();
+            aa.makeText(RemittanceF2fLargeMoneyUI.this.getContext(), a.i.wallet_balance_save_input_invalid, 0).show();
             AppMethodBeat.o(163847);
             return true;
           }
           paramAnonymousInt = (int)Math.round(RemittanceF2fLargeMoneyUI.a(RemittanceF2fLargeMoneyUI.this) * 100.0D);
-          paramAnonymousTextView = new gt();
-          paramAnonymousTextView.fDg.fDh = RemittanceF2fLargeMoneyUI.this.getIntent().getStringExtra("key_amount_remind_sign");
-          paramAnonymousTextView.fDg.fDi = paramAnonymousInt;
-          paramAnonymousTextView.fDg.fDf = RemittanceF2fLargeMoneyUI.this;
-          EventCenter.instance.publish(paramAnonymousTextView);
+          paramAnonymousTextView = new he();
+          paramAnonymousTextView.hHV.hHW = RemittanceF2fLargeMoneyUI.this.getIntent().getStringExtra("key_amount_remind_sign");
+          paramAnonymousTextView.hHV.hHY = RemittanceF2fLargeMoneyUI.this.getIntent().getStringExtra("key_qr_code");
+          paramAnonymousTextView.hHV.hHX = paramAnonymousInt;
+          paramAnonymousTextView.hHV.hHU = RemittanceF2fLargeMoneyUI.this;
+          paramAnonymousTextView.publish();
           AppMethodBeat.o(163847);
           return true;
         }
@@ -140,7 +139,7 @@ public class RemittanceF2fLargeMoneyUI
         return true;
       }
     });
-    this.IjM.a(new TextWatcher()
+    this.Ogy.a(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
@@ -160,12 +159,12 @@ public class RemittanceF2fLargeMoneyUI
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     });
-    this.IqN.setVisibility(0);
+    this.Oos.setVisibility(0);
     if ((LocaleUtil.getApplicationLanguage().equals("zh_CN")) || (LocaleUtil.getApplicationLanguage().equals("zh_TW")) || (LocaleUtil.getApplicationLanguage().equals("zh_HK")))
     {
-      this.mMx = ((RelativeLayout)findViewById(a.f.wallet_max_unit_layout));
-      this.mMy = ((TextView)findViewById(a.f.wallet_max_unit_tv));
-      this.mMx.post(new Runnable()
+      this.pJf = ((RelativeLayout)findViewById(a.f.wallet_max_unit_layout));
+      this.pJg = ((TextView)findViewById(a.f.wallet_max_unit_tv));
+      this.pJf.post(new Runnable()
       {
         public final void run()
         {
@@ -176,7 +175,7 @@ public class RemittanceF2fLargeMoneyUI
           AppMethodBeat.o(163849);
         }
       });
-      this.IjM.setmWalletFormViewListener(new WalletFormView.c()
+      this.Ogy.setmWalletFormViewListener(new WalletFormView.c()
       {
         public final void f(CharSequence paramAnonymousCharSequence)
         {
@@ -199,12 +198,12 @@ public class RemittanceF2fLargeMoneyUI
           }
           if (i >= RemittanceF2fLargeMoneyUI.f(RemittanceF2fLargeMoneyUI.this))
           {
-            j = RemittanceF2fLargeMoneyUI.b(RemittanceF2fLargeMoneyUI.this).k(paramAnonymousCharSequence, RemittanceF2fLargeMoneyUI.e(RemittanceF2fLargeMoneyUI.this), j);
+            j = RemittanceF2fLargeMoneyUI.b(RemittanceF2fLargeMoneyUI.this).i(paramAnonymousCharSequence, RemittanceF2fLargeMoneyUI.e(RemittanceF2fLargeMoneyUI.this), j);
             j = RemittanceF2fLargeMoneyUI.b(RemittanceF2fLargeMoneyUI.this).getLeft() + j;
             if (j != 0)
             {
               RemittanceF2fLargeMoneyUI.d(RemittanceF2fLargeMoneyUI.this).setVisibility(0);
-              paramAnonymousCharSequence = ag.bk(MMApplicationContext.getContext(), i);
+              paramAnonymousCharSequence = ah.bD(MMApplicationContext.getContext(), i);
               RemittanceF2fLargeMoneyUI.g(RemittanceF2fLargeMoneyUI.this).setText(paramAnonymousCharSequence);
               paramAnonymousCharSequence = (RelativeLayout.LayoutParams)RemittanceF2fLargeMoneyUI.c(RemittanceF2fLargeMoneyUI.this).getLayoutParams();
               paramAnonymousCharSequence.leftMargin = j;
@@ -223,24 +222,19 @@ public class RemittanceF2fLargeMoneyUI
     }
     for (;;)
     {
-      this.qcr.setOnTouchListener(new View.OnTouchListener()
+      this.thl.setOnTouchListener(new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
           AppMethodBeat.i(163851);
-          if ((RemittanceF2fLargeMoneyUI.h(RemittanceF2fLargeMoneyUI.this) != null) && (RemittanceF2fLargeMoneyUI.i(RemittanceF2fLargeMoneyUI.this).isShown()) && (RemittanceF2fLargeMoneyUI.j(RemittanceF2fLargeMoneyUI.this).iir()))
-          {
-            RemittanceF2fLargeMoneyUI.k(RemittanceF2fLargeMoneyUI.this).iip();
-            AppMethodBeat.o(163851);
-            return true;
-          }
+          RemittanceF2fLargeMoneyUI.this.handleKeyboardTouchEvent(paramAnonymousMotionEvent);
           AppMethodBeat.o(163851);
           return false;
         }
       });
       AppMethodBeat.o(163853);
       return;
-      this.mMz.setVisibility(8);
+      this.pJh.setVisibility(8);
     }
   }
   
@@ -249,7 +243,7 @@ public class RemittanceF2fLargeMoneyUI
     AppMethodBeat.i(163852);
     super.onCreate(paramBundle);
     Log.i("MicroMsg.RemittanceF2fLargeMoneyUI", "RemittanceF2fLargeMoneyUI show");
-    this.Iko = getIntent().getIntExtra("key_amount_remind_bit", 4);
+    this.Ohb = getIntent().getIntExtra("key_amount_remind_bit", 4);
     this.mTitle = getIntent().getStringExtra("key_title");
     this.mDesc = getIntent().getStringExtra("key_desc");
     initView();
@@ -261,11 +255,11 @@ public class RemittanceF2fLargeMoneyUI
     AppMethodBeat.i(163854);
     super.onResume();
     Log.i("MicroMsg.RemittanceF2fLargeMoneyUI", "onResume()");
-    e.fAJ().fB(this);
+    f.gMD().jt(this);
     AppMethodBeat.o(163854);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     return false;
   }
@@ -278,7 +272,7 @@ public class RemittanceF2fLargeMoneyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.RemittanceF2fLargeMoneyUI
  * JD-Core Version:    0.7.0.1
  */

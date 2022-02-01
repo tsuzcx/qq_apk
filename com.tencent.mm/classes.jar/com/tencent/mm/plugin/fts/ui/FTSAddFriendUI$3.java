@@ -15,16 +15,16 @@ final class FTSAddFriendUI$3
   {
     AppMethodBeat.i(111820);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/fts/ui/FTSAddFriendUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    FTSAddFriendUI.a(this.BMz);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/fts/ui/FTSAddFriendUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    FTSAddFriendUI.a(this.Hxv);
     a.a(this, "com/tencent/mm/plugin/fts/ui/FTSAddFriendUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(111820);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.FTSAddFriendUI.3
  * JD-Core Version:    0.7.0.1
  */

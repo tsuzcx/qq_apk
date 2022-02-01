@@ -8,22 +8,22 @@ import org.json.JSONObject;
 
 final class q
 {
-  private static final long bJy;
-  private final String bJA;
-  final String bJz;
+  private static final long dDg;
+  final String dDh;
+  private final String dDi;
   private final long timestamp;
   
   static
   {
     AppMethodBeat.i(4200);
-    bJy = TimeUnit.DAYS.toMillis(7L);
+    dDg = TimeUnit.DAYS.toMillis(7L);
     AppMethodBeat.o(4200);
   }
   
   private q(String paramString1, String paramString2, long paramLong)
   {
-    this.bJz = paramString1;
-    this.bJA = paramString2;
+    this.dDh = paramString1;
+    this.dDi = paramString2;
     this.timestamp = paramLong;
   }
   
@@ -49,7 +49,7 @@ final class q
     return null;
   }
   
-  static q cd(String paramString)
+  static q dD(String paramString)
   {
     AppMethodBeat.i(4197);
     if (TextUtils.isEmpty(paramString))
@@ -78,10 +78,10 @@ final class q
     return paramString;
   }
   
-  final boolean ce(String paramString)
+  final boolean dE(String paramString)
   {
     AppMethodBeat.i(4199);
-    if ((System.currentTimeMillis() > this.timestamp + bJy) || (!paramString.equals(this.bJA)))
+    if ((System.currentTimeMillis() > this.timestamp + dDg) || (!paramString.equals(this.dDi)))
     {
       AppMethodBeat.o(4199);
       return true;

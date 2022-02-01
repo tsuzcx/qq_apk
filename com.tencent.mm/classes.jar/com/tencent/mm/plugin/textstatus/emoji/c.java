@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.textstatus.emoji;
 
 public abstract interface c
 {
-  public abstract void aLs(String paramString);
+  public abstract void aIj(String paramString);
   
-  public abstract void glC();
+  public abstract void hGY();
 }
 
 

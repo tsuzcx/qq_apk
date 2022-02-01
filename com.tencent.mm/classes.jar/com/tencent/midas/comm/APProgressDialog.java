@@ -25,7 +25,7 @@ public class APProgressDialog
   
   protected void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(253546);
+    AppMethodBeat.i(217151);
     super.onCreate(paramBundle);
     setContentView(APMidasCommMethod.getLayoutId(this.context, "unipay_layout_loadding"));
     paramBundle = (ProgressBar)findViewById(APMidasCommMethod.getId(this.context, "unipay_progress"));
@@ -38,34 +38,34 @@ public class APProgressDialog
     this.loading_txt = ((TextView)findViewById(APMidasCommMethod.getId(this.context, "unipay_id_LoadingTxt")));
     this.loading_txt.setText(this.loadingTxt);
     setCancelable(false);
-    AppMethodBeat.o(253546);
+    AppMethodBeat.o(217151);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(253549);
+    AppMethodBeat.i(217167);
     if (paramInt == 4)
     {
       cancel();
-      AppMethodBeat.o(253549);
+      AppMethodBeat.o(217167);
       return false;
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(253549);
+    AppMethodBeat.o(217167);
     return bool;
   }
   
   public void setMessage(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(253548);
+    AppMethodBeat.i(217160);
     super.setMessage(paramCharSequence);
     this.loadingTxt = String.valueOf(paramCharSequence);
-    AppMethodBeat.o(253548);
+    AppMethodBeat.o(217160);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.midas.comm.APProgressDialog
  * JD-Core Version:    0.7.0.1
  */

@@ -17,18 +17,28 @@ public final class d
     this.context = paramContext;
   }
   
-  public final void A(boolean paramBoolean, int paramInt) {}
+  public final void cSg() {}
   
-  public final void cpE() {}
+  public final void cSh() {}
   
-  public final void cpF() {}
+  public final boolean cSi()
+  {
+    return false;
+  }
+  
+  public final boolean cSj()
+  {
+    return false;
+  }
   
   public final void o(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(26512);
-    Toast.makeText(this.context, this.context.getString(R.l.eLy), 0).show();
+    Toast.makeText(this.context, this.context.getString(R.l.gNs), 0).show();
     AppMethodBeat.o(26512);
   }
+  
+  public final void y(boolean paramBoolean, int paramInt) {}
 }
 
 

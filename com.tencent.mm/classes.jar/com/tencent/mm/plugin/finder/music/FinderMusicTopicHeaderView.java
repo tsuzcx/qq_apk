@@ -11,184 +11,159 @@ import android.widget.FrameLayout;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.finder.b.d;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.i;
-import com.tencent.mm.protocal.protobuf.bfg;
-import com.tencent.mm.ui.ad;
+import com.tencent.mm.plugin.finder.e.c;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.e.g;
+import com.tencent.mm.protocal.protobuf.bqj;
+import com.tencent.mm.ui.af;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
-import java.util.HashMap;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/music/FinderMusicTopicHeaderView;", "Landroidx/constraintlayout/widget/ConstraintLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "musicInfo", "Lcom/tencent/mm/protocal/protobuf/FinderMusicInfo;", "getMusicInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderMusicInfo;", "setMusicInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderMusicInfo;)V", "pauseMusicListener", "Landroid/view/View$OnClickListener;", "playMusicListener", "player", "Lcom/tencent/mm/plugin/finder/music/FinderImgFeedMusicPlayer;", "getPlayer", "()Lcom/tencent/mm/plugin/finder/music/FinderImgFeedMusicPlayer;", "setPlayer", "(Lcom/tencent/mm/plugin/finder/music/FinderImgFeedMusicPlayer;)V", "bindMusicInfo", "", "initView", "onDetachedFromWindow", "onViewPause", "onViewResume", "onWindowFocusChanged", "hasWindowFocus", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/music/FinderMusicTopicHeaderView;", "Landroidx/constraintlayout/widget/ConstraintLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "musicInfo", "Lcom/tencent/mm/protocal/protobuf/FinderMusicInfo;", "getMusicInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderMusicInfo;", "setMusicInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderMusicInfo;)V", "pauseMusicListener", "Landroid/view/View$OnClickListener;", "playMusicListener", "player", "Lcom/tencent/mm/plugin/finder/music/FinderImgFeedMusicPlayer;", "getPlayer", "()Lcom/tencent/mm/plugin/finder/music/FinderImgFeedMusicPlayer;", "setPlayer", "(Lcom/tencent/mm/plugin/finder/music/FinderImgFeedMusicPlayer;)V", "bindMusicInfo", "", "initView", "onDetachedFromWindow", "onViewPause", "onViewResume", "onWindowFocusChanged", "hasWindowFocus", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderMusicTopicHeaderView
   extends ConstraintLayout
 {
-  private HashMap _$_findViewCache;
-  private bfg musicInfo;
-  private View.OnClickListener zBJ;
-  private View.OnClickListener zBK;
-  private a zBY;
+  private View.OnClickListener EED;
+  private View.OnClickListener EEE;
+  private a EEM;
+  private bqj musicInfo;
   
   public FinderMusicTopicHeaderView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(243309);
-    this.zBJ = ((View.OnClickListener)new b(this));
-    this.zBK = ((View.OnClickListener)new a(this));
-    bv(paramContext);
-    AppMethodBeat.o(243309);
+    AppMethodBeat.i(330782);
+    this.EED = new FinderMusicTopicHeaderView..ExternalSyntheticLambda1(this);
+    this.EEE = new FinderMusicTopicHeaderView..ExternalSyntheticLambda0(this);
+    ci(paramContext);
+    AppMethodBeat.o(330782);
   }
   
   public FinderMusicTopicHeaderView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(243310);
-    this.zBJ = ((View.OnClickListener)new b(this));
-    this.zBK = ((View.OnClickListener)new a(this));
-    bv(paramContext);
-    AppMethodBeat.o(243310);
+    AppMethodBeat.i(330793);
+    this.EED = new FinderMusicTopicHeaderView..ExternalSyntheticLambda1(this);
+    this.EEE = new FinderMusicTopicHeaderView..ExternalSyntheticLambda0(this);
+    ci(paramContext);
+    AppMethodBeat.o(330793);
   }
   
-  private final void bv(Context paramContext)
+  private static final void a(FinderMusicTopicHeaderView paramFinderMusicTopicHeaderView, View paramView)
   {
-    AppMethodBeat.i(243305);
-    ad.kS(paramContext).inflate(b.g.finder_music_topic_feed_header, (ViewGroup)this, true);
-    int i = paramContext.getResources().getDimensionPixelOffset(b.d.Edge_1_5_A);
-    int j = paramContext.getResources().getDimensionPixelOffset(b.d.Edge_2A);
-    setPadding(j, i, j, i);
-    AppMethodBeat.o(243305);
-  }
-  
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(243312);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
+    AppMethodBeat.i(330810);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramFinderMusicTopicHeaderView);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/music/FinderMusicTopicHeaderView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFinderMusicTopicHeaderView, "this$0");
+    if (paramFinderMusicTopicHeaderView.getMusicInfo() != null)
     {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
+      paramView = paramFinderMusicTopicHeaderView.getPlayer();
+      if (paramView != null) {
+        paramView.play();
+      }
+      ((WeImageView)paramFinderMusicTopicHeaderView.findViewById(e.e.finder_music_play_iv)).setImageResource(e.g.icons_filled_pause);
+      ((FrameLayout)paramFinderMusicTopicHeaderView.findViewById(e.e.finder_music_play_icon_container)).setOnClickListener(paramFinderMusicTopicHeaderView.EEE);
     }
-    AppMethodBeat.o(243312);
-    return localView1;
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/music/FinderMusicTopicHeaderView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(330810);
   }
   
-  public final bfg getMusicInfo()
+  private static final void b(FinderMusicTopicHeaderView paramFinderMusicTopicHeaderView, View paramView)
+  {
+    AppMethodBeat.i(330818);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramFinderMusicTopicHeaderView);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/music/FinderMusicTopicHeaderView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFinderMusicTopicHeaderView, "this$0");
+    if (paramFinderMusicTopicHeaderView.getMusicInfo() != null)
+    {
+      paramView = paramFinderMusicTopicHeaderView.getPlayer();
+      if (paramView != null) {
+        paramView.pause();
+      }
+      ((WeImageView)paramFinderMusicTopicHeaderView.findViewById(e.e.finder_music_play_iv)).setImageResource(e.g.icons_filled_play);
+      ((FrameLayout)paramFinderMusicTopicHeaderView.findViewById(e.e.finder_music_play_icon_container)).setOnClickListener(paramFinderMusicTopicHeaderView.EED);
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/music/FinderMusicTopicHeaderView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(330818);
+  }
+  
+  private final void ci(Context paramContext)
+  {
+    AppMethodBeat.i(330801);
+    af.mU(paramContext).inflate(e.f.finder_music_topic_feed_header, (ViewGroup)this, true);
+    int i = paramContext.getResources().getDimensionPixelOffset(e.c.Edge_1_5_A);
+    int j = paramContext.getResources().getDimensionPixelOffset(e.c.Edge_2A);
+    setPadding(j, i, j, i);
+    AppMethodBeat.o(330801);
+  }
+  
+  public final bqj getMusicInfo()
   {
     return this.musicInfo;
   }
   
   public final a getPlayer()
   {
-    return this.zBY;
+    return this.EEM;
   }
   
   protected final void onDetachedFromWindow()
   {
-    AppMethodBeat.i(243308);
+    AppMethodBeat.i(330861);
     super.onDetachedFromWindow();
-    a locala = this.zBY;
-    if (locala != null)
-    {
+    a locala = this.EEM;
+    if (locala != null) {
       locala.release();
-      AppMethodBeat.o(243308);
-      return;
     }
-    AppMethodBeat.o(243308);
+    AppMethodBeat.o(330861);
   }
   
   public final void onWindowFocusChanged(boolean paramBoolean)
   {
-    AppMethodBeat.i(243307);
+    int i = 1;
+    AppMethodBeat.i(330854);
     super.onWindowFocusChanged(paramBoolean);
     if (!paramBoolean)
     {
-      a locala = this.zBY;
-      if (locala == null) {
-        break label68;
-      }
-      if (locala.isPlaying() == true)
-      {
-        ((FrameLayout)_$_findCachedViewById(b.f.finder_music_play_icon_container)).setOnClickListener(this.zBK);
-        ((FrameLayout)_$_findCachedViewById(b.f.finder_music_play_icon_container)).performClick();
+      a locala = this.EEM;
+      if ((locala == null) || (locala.isPlaying() != true)) {
+        break label74;
       }
     }
-    AppMethodBeat.o(243307);
-    return;
-    label68:
-    AppMethodBeat.o(243307);
+    for (;;)
+    {
+      if (i != 0)
+      {
+        ((FrameLayout)findViewById(e.e.finder_music_play_icon_container)).setOnClickListener(this.EEE);
+        ((FrameLayout)findViewById(e.e.finder_music_play_icon_container)).performClick();
+      }
+      AppMethodBeat.o(330854);
+      return;
+      label74:
+      i = 0;
+    }
   }
   
-  public final void setMusicInfo(bfg parambfg)
+  public final void setMusicInfo(bqj parambqj)
   {
-    this.musicInfo = parambfg;
+    this.musicInfo = parambqj;
   }
   
   public final void setPlayer(a parama)
   {
-    this.zBY = parama;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class a
-    implements View.OnClickListener
-  {
-    a(FinderMusicTopicHeaderView paramFinderMusicTopicHeaderView) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(280017);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/music/FinderMusicTopicHeaderView$pauseMusicListener$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      if (this.zCr.getMusicInfo() != null)
-      {
-        paramView = this.zCr.getPlayer();
-        if (paramView != null) {
-          paramView.pause();
-        }
-        ((WeImageView)this.zCr._$_findCachedViewById(b.f.finder_music_play_iv)).setImageResource(b.i.icons_filled_play);
-        ((FrameLayout)this.zCr._$_findCachedViewById(b.f.finder_music_play_icon_container)).setOnClickListener(FinderMusicTopicHeaderView.b(this.zCr));
-      }
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/music/FinderMusicTopicHeaderView$pauseMusicListener$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(280017);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class b
-    implements View.OnClickListener
-  {
-    b(FinderMusicTopicHeaderView paramFinderMusicTopicHeaderView) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(289596);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/music/FinderMusicTopicHeaderView$playMusicListener$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      if (this.zCr.getMusicInfo() != null)
-      {
-        paramView = this.zCr.getPlayer();
-        if (paramView != null) {
-          paramView.play();
-        }
-        ((WeImageView)this.zCr._$_findCachedViewById(b.f.finder_music_play_iv)).setImageResource(b.i.icons_filled_pause);
-        ((FrameLayout)this.zCr._$_findCachedViewById(b.f.finder_music_play_icon_container)).setOnClickListener(FinderMusicTopicHeaderView.a(this.zCr));
-      }
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/music/FinderMusicTopicHeaderView$playMusicListener$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(289596);
-    }
+    this.EEM = parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.music.FinderMusicTopicHeaderView
  * JD-Core Version:    0.7.0.1
  */

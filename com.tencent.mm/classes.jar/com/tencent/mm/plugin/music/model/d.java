@@ -4,273 +4,379 @@ import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bb.f;
+import com.tencent.mm.autogen.mmdata.rpt.kn;
+import com.tencent.mm.aw.f;
+import com.tencent.mm.br.c;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.ball.model.BallInfo;
+import com.tencent.mm.plugin.findersdk.a.cp;
 import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
 import com.tencent.mm.plugin.music.a.c;
-import com.tencent.mm.plugin.music.e.e;
+import com.tencent.mm.plugin.music.logic.e;
 import com.tencent.mm.plugin.music.ui.FloatBallMusicView;
-import com.tencent.mm.protocal.protobuf.dbn;
-import com.tencent.mm.protocal.protobuf.dbr;
+import com.tencent.mm.protocal.protobuf.dte;
+import com.tencent.mm.protocal.protobuf.dtj;
+import com.tencent.mm.protocal.protobuf.dtk;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.bd;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArraySet;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/music/model/GlobalMusicPlayerFloatBallHelper;", "Lcom/tencent/mm/plugin/music/model/GlobalMusicFloatBallHelper;", "()V", "mCoverPath", "", "mCurrentMusicShareObject", "Lcom/tencent/mm/protocal/protobuf/MusicShareObject;", "mFloatBallMusicView", "Lcom/tencent/mm/plugin/music/ui/FloatBallMusicView;", "mMultiTaskHelper", "Lcom/tencent/mm/plugin/music/model/MusicPlayerMultiTaskHelper;", "mMvUIExtra", "Landroid/os/Bundle;", "musicDataChangedListeners", "Ljava/util/concurrent/CopyOnWriteArraySet;", "Lcom/tencent/mm/plugin/music/model/GlobalMusicPlayerFloatBallHelper$MusicPlayerDataChangedEventListener;", "addMusicFloatBall", "", "musicWrapper", "Lcom/tencent/mm/modelmusic/MusicWrapper;", "canHandleMusicPlayerEvent", "", "event", "Lcom/tencent/mm/autogen/events/MusicPlayerEvent;", "wrapper", "getFloatBallType", "", "getMusicMvUIIntent", "Landroid/content/Intent;", "initMusicFloatBallView", "notifyMusicDataChanged", "onClickMusicBall", "onFloatBallRemoved", "ballInfo", "Lcom/tencent/mm/plugin/ball/model/BallInfo;", "onMusicBallRemoved", "needStopMusic", "registerMusicDataChangedEventListener", "listener", "removeCurrentBall", "removeMusicBallState", "unRegisterMusicDataChangedEventListener", "updateMusicBallState", "updateMusicCoverPath", "coverPath", "notify", "updateMusicMvInfo", "musicShareObject", "updateMusicMvUIExtra", "extra", "updateMusicShareObject", "Companion", "Holder", "MusicPlayerDataChangedEventListener", "plugin-music_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/music/model/GlobalMusicPlayerFloatBallHelper;", "Lcom/tencent/mm/plugin/music/model/GlobalMusicFloatBallHelper;", "()V", "mCoverPath", "", "mCurrentMusicShareObject", "Lcom/tencent/mm/protocal/protobuf/MusicShareObject;", "mFloatBallMusicView", "Lcom/tencent/mm/plugin/music/ui/FloatBallMusicView;", "mMultiTaskHelper", "Lcom/tencent/mm/plugin/music/model/MusicPlayerMultiTaskHelper;", "mMvUIExtra", "Landroid/os/Bundle;", "markTryListen", "", "musicDataChangedListeners", "Ljava/util/concurrent/CopyOnWriteArraySet;", "Lcom/tencent/mm/plugin/music/model/GlobalMusicPlayerFloatBallHelper$MusicPlayerDataChangedEventListener;", "addMusicFloatBall", "", "musicWrapper", "Lcom/tencent/mm/modelmusic/MusicWrapper;", "canHandleMusicPlayerEvent", "event", "Lcom/tencent/mm/autogen/events/MusicPlayerEvent;", "wrapper", "getFloatBallType", "", "getMusicMvUIIntent", "Landroid/content/Intent;", "initMusicFloatBallView", "notifyMusicDataChanged", "onClickMusicBall", "onMusicBallRemoved", "ballInfo", "Lcom/tencent/mm/plugin/ball/model/BallInfo;", "needStopMusic", "registerMusicDataChangedEventListener", "listener", "removeCurrentBall", "removeMusicBallState", "unMarkTryListen", "unRegisterMusicDataChangedEventListener", "updateMusicBallState", "updateMusicCoverPath", "coverPath", "notify", "updateMusicMvInfo", "musicShareObject", "updateMusicMvUIExtra", "extra", "updateMusicShareObject", "Companion", "Holder", "MusicPlayerDataChangedEventListener", "plugin-music_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
   extends a
 {
-  public static final d.a FRm;
-  public final CopyOnWriteArraySet<c> FRg;
-  private FloatBallMusicView FRh;
-  Bundle FRi;
-  private String FRj;
-  dbr FRk;
-  private final k FRl;
+  public static final d.a LMb;
+  public final CopyOnWriteArraySet<c> LMc;
+  private FloatBallMusicView LMd;
+  Bundle LMe;
+  private String LMf;
+  dtj LMg;
+  private final k LMh;
+  boolean LMi;
   
   static
   {
-    AppMethodBeat.i(260290);
-    FRm = new d.a((byte)0);
-    AppMethodBeat.o(260290);
+    AppMethodBeat.i(271168);
+    LMb = new d.a((byte)0);
+    AppMethodBeat.o(271168);
   }
   
   public d()
   {
     super("MicroMsg.GlobalMusicPlayerFloatBallHelper");
-    AppMethodBeat.i(260289);
-    this.FRg = new CopyOnWriteArraySet();
-    this.FRl = new k();
-    AppMethodBeat.o(260289);
+    AppMethodBeat.i(271121);
+    this.LMc = new CopyOnWriteArraySet();
+    this.LMh = new k();
+    AppMethodBeat.o(271121);
   }
   
-  private final void feK()
+  private static final void a(d paramd, View paramView)
   {
-    AppMethodBeat.i(260285);
-    Iterator localIterator = ((Iterable)this.FRg).iterator();
+    AppMethodBeat.i(271145);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramd);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/music/model/GlobalMusicPlayerFloatBallHelper", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramd, "this$0");
+    paramView = new kn();
+    paramView.ioV = 2L;
+    paramView.iqr = 4L;
+    cp.a(paramView);
+    b.gnD();
+    paramd.cYp();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/music/model/GlobalMusicPlayerFloatBallHelper", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(271145);
+  }
+  
+  private static final void b(d paramd, View paramView)
+  {
+    AppMethodBeat.i(271153);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramd);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/music/model/GlobalMusicPlayerFloatBallHelper", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramd, "this$0");
+    paramView = new dtk();
+    localObject = com.tencent.mm.plugin.comm.a.xeG;
+    paramView.zIO = com.tencent.mm.plugin.comm.a.dsT();
+    paramView.scene = 4;
+    localObject = paramd.gnT();
+    ((Intent)localObject).putExtra("key_mv_report_data", paramView.toByteArray());
+    ((Intent)localObject).putExtra("markTryListen", paramd.LMi);
+    c.b(MMApplicationContext.getContext(), "mv", ".ui.MusicMvMainUI", (Intent)localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/music/model/GlobalMusicPlayerFloatBallHelper", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(271153);
+  }
+  
+  private final void gnS()
+  {
+    AppMethodBeat.i(271129);
+    Iterator localIterator = ((Iterable)this.LMc).iterator();
     while (localIterator.hasNext())
     {
       c localc = (c)localIterator.next();
       if (localc != null) {
-        localc.an(this.FRi);
+        localc.aL(this.LMe);
       }
     }
-    AppMethodBeat.o(260285);
+    AppMethodBeat.o(271129);
   }
   
-  public static final d feM()
+  public static final d gnU()
   {
-    AppMethodBeat.i(260292);
-    Object localObject = b.FRo;
-    localObject = b.feN();
-    AppMethodBeat.o(260292);
+    AppMethodBeat.i(271161);
+    Object localObject = b.LMj;
+    localObject = b.gnV();
+    AppMethodBeat.o(271161);
     return localObject;
   }
   
-  protected final void A(f paramf)
+  protected final boolean C(f paramf)
   {
-    AppMethodBeat.i(260275);
-    p.k(paramf, "wrapper");
-    if (paramf.lVX)
-    {
-      this.rYE.state = com.tencent.mm.plugin.ball.f.d.fu(this.rYE.state, 8);
-      Fi(this.rYE.state);
+    if ((paramf != null) && (paramf.oPa == true)) {}
+    for (int i = 1; i != 0; i = 0) {
+      return true;
     }
-    AppMethodBeat.o(260275);
+    return false;
   }
   
-  public final void am(Bundle paramBundle)
+  protected final void D(f paramf)
   {
-    AppMethodBeat.i(260284);
-    if ((p.h(this.FRi, paramBundle) ^ true))
+    AppMethodBeat.i(271215);
+    if (paramf != null)
     {
-      this.FRi = paramBundle;
-      paramBundle = this.FRi;
-      if (paramBundle == null) {
-        break label66;
+      Log.i("MicroMsg.GlobalMusicPlayerFloatBallHelper", "addMusicFloatBall isFromNewMusicPlayer: %s", new Object[] { Boolean.valueOf(paramf.oPa) });
+      if (paramf.oPa)
+      {
+        paramf = MMApplicationContext.getContext();
+        s.s(paramf, "getContext()");
+        this.LMd = new FloatBallMusicView(paramf);
+        paramf = this.LMd;
+        if (paramf != null) {
+          paramf.setOnCloseListener(new d..ExternalSyntheticLambda1(this));
+        }
+        paramf = this.LMd;
+        if (paramf != null) {
+          paramf.setOnMusicIconClickListener(new d..ExternalSyntheticLambda0(this));
+        }
+        paramf = this.LMd;
+        if (paramf != null) {
+          paramf.setCoverPath(this.LMf);
+        }
+        this.vjV.dyK = ((View)this.LMd);
+        if (this.vjV.vjC == null) {
+          this.vjV.vjC = new Point();
+        }
+        if (this.vjV.vjD == null) {
+          this.vjV.vjD = new Point();
+        }
+        this.vjV.vjC.x = bd.bs(MMApplicationContext.getContext(), a.c.float_ball_music_view_width);
+        this.vjV.vjC.y = bd.bs(MMApplicationContext.getContext(), a.c.float_ball_music_view_height);
+        this.vjV.vjD.x = com.tencent.mm.cd.a.fromDPToPix(MMApplicationContext.getContext(), 20);
+        this.vjV.vjD.y = com.tencent.mm.cd.a.fromDPToPix(MMApplicationContext.getContext(), 20);
+        this.vjV.trn = false;
+        this.vjV.vjH = true;
+        this.vjV.vjG = true;
+        this.vjV.lwK = false;
+        this.vjV.state = com.tencent.mm.plugin.ball.f.d.gn(this.vjV.state, 2);
+        this.vjV.state = com.tencent.mm.plugin.ball.f.d.gm(this.vjV.state, 8);
+        Log.v("MicroMsg.GlobalMusicPlayerFloatBallHelper", "initMusicFloatBallViewSize %s, ballInfo.state: %d", new Object[] { this.vjV.vjC, Integer.valueOf(this.vjV.state) });
+        cYq();
       }
     }
-    label66:
-    for (paramBundle = Integer.valueOf(paramBundle.hashCode());; paramBundle = null)
+    AppMethodBeat.o(271215);
+  }
+  
+  protected final void E(f paramf)
+  {
+    AppMethodBeat.i(271201);
+    s.u(paramf, "wrapper");
+    if (paramf.oPa)
+    {
+      this.vjV.state = com.tencent.mm.plugin.ball.f.d.gm(this.vjV.state, 8);
+      FJ(this.vjV.state);
+    }
+    AppMethodBeat.o(271201);
+  }
+  
+  public final void aK(Bundle paramBundle)
+  {
+    AppMethodBeat.i(271236);
+    if (!s.p(this.LMe, paramBundle))
+    {
+      this.LMe = paramBundle;
+      paramBundle = this.LMe;
+      if (paramBundle != null) {
+        break label60;
+      }
+    }
+    label60:
+    for (paramBundle = null;; paramBundle = Integer.valueOf(paramBundle.hashCode()))
     {
       Log.i("MicroMsg.GlobalMusicPlayerFloatBallHelper", "alvinluo updateMusicMvUIExtra hashCode: %s", new Object[] { paramBundle });
-      feK();
-      AppMethodBeat.o(260284);
+      gnS();
+      AppMethodBeat.o(271236);
       return;
     }
   }
   
-  public final void cb(String paramString, boolean paramBoolean)
+  public final void cYp()
   {
-    AppMethodBeat.i(260286);
-    Log.i("MicroMsg.GlobalMusicPlayerFloatBallHelper", "alvinluo updateMusicCoverPath %s, notify: %s", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
-    this.FRj = paramString;
-    if (paramBoolean)
-    {
-      FloatBallMusicView localFloatBallMusicView = this.FRh;
-      if (localFloatBallMusicView != null)
-      {
-        localFloatBallMusicView.setCoverPath(paramString);
-        AppMethodBeat.o(260286);
-        return;
-      }
+    AppMethodBeat.i(271196);
+    super.cYp();
+    FloatBallMusicView localFloatBallMusicView = this.LMd;
+    if (localFloatBallMusicView != null) {
+      ((com.tencent.mm.plugin.ball.c.b)h.ax(com.tencent.mm.plugin.ball.c.b.class)).b((com.tencent.mm.plugin.ball.c.g)localFloatBallMusicView.LOM);
     }
-    AppMethodBeat.o(260286);
+    this.LMd = null;
+    AppMethodBeat.o(271196);
   }
   
-  public final void cvE()
+  public final void cx(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(260274);
-    super.cvE();
-    FloatBallMusicView localFloatBallMusicView = this.FRh;
-    if (localFloatBallMusicView != null) {
-      ((com.tencent.mm.plugin.ball.c.b)h.ae(com.tencent.mm.plugin.ball.c.b.class)).b((com.tencent.mm.plugin.ball.c.g)localFloatBallMusicView.FTM);
+    AppMethodBeat.i(271239);
+    Log.i("MicroMsg.GlobalMusicPlayerFloatBallHelper", "alvinluo updateMusicCoverPath %s, notify: %s", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
+    this.LMf = paramString;
+    if (paramBoolean)
+    {
+      FloatBallMusicView localFloatBallMusicView = this.LMd;
+      if (localFloatBallMusicView != null) {
+        localFloatBallMusicView.setCoverPath(paramString);
+      }
     }
-    this.FRh = null;
-    AppMethodBeat.o(260274);
+    AppMethodBeat.o(271239);
   }
   
   public final String d(BallInfo paramBallInfo, boolean paramBoolean)
   {
-    Object localObject2 = null;
-    AppMethodBeat.i(260282);
-    Object localObject1 = com.tencent.mm.plugin.music.f.c.b.bm(e.class);
-    p.j(localObject1, "MusicCoreService.service…PrivateLogic::class.java)");
-    com.tencent.mm.plugin.music.model.e.a locala = ((e)localObject1).fei();
+    MultiTaskInfo localMultiTaskInfo = null;
+    Object localObject1 = null;
+    AppMethodBeat.i(271229);
+    com.tencent.mm.plugin.music.model.e.a locala = ((e)com.tencent.mm.plugin.music.e.c.b.bU(e.class)).gnl();
+    if (locala == null) {}
     k localk;
-    label130:
-    Object localObject3;
-    label175:
-    label198:
-    label221:
-    label244:
-    int i;
-    if (locala != null)
-    {
-      this.FRl.I(6, com.tencent.mm.plugin.multitask.g.au(locala.field_songName, locala.field_songSinger, locala.field_songAlbum));
-      localk = this.FRl;
-      localObject1 = this.FRk;
-      Bundle localBundle = this.FRi;
-      p.k(locala, "music");
-      if ((localObject1 == null) && (localBundle == null))
-      {
-        Log.w("MicroMsg.MusicPlayerMultiTaskHelper", "fillMultiTaskData failed");
-        localk.FHd = null;
-        this.FRl.Q(0, false);
-        paramBallInfo = super.d(paramBallInfo, paramBoolean);
-        AppMethodBeat.o(260282);
-        return paramBallInfo;
-      }
-      if (localObject1 != null) {
-        break label883;
-      }
-      localObject3 = new dbr();
-      if (localBundle != null)
-      {
-        localObject1 = localBundle.getString("key_mv_cover_url", null);
-        ((dbr)localObject3).Ruw = ((String)localObject1);
-        if (localBundle == null) {
-          break label764;
-        }
-        localObject1 = localBundle.getString("key_mv_poster", null);
-        ((dbr)localObject3).Rux = ((String)localObject1);
-        if (localBundle == null) {
-          break label770;
-        }
-        localObject1 = localBundle.getString("key_mv_nonce_id", null);
-        ((dbr)localObject3).Ruv = ((String)localObject1);
-        if (localBundle == null) {
-          break label776;
-        }
-        localObject1 = localBundle.getString("key_mv_feed_id", null);
-        ((dbr)localObject3).Ruu = ((String)localObject1);
-        if (localBundle == null) {
-          break label782;
-        }
-        localObject1 = localBundle.getString("key_mv_song_name", null);
-        label267:
-        ((dbr)localObject3).HLH = ((String)localObject1);
-        if (localBundle == null) {
-          break label788;
-        }
-        localObject1 = localBundle.getString("key_mv_song_lyric", "");
-        label292:
-        ((dbr)localObject3).songLyric = ((String)localObject1);
-        if (localBundle == null) {
-          break label794;
-        }
-        localObject1 = localBundle.getString("key_mv_singer_name", null);
-        label315:
-        ((dbr)localObject3).singerName = ((String)localObject1);
-        if (localBundle == null) {
-          break label800;
-        }
-        localObject1 = localBundle.getString("key_mv_album_name", null);
-        label338:
-        ((dbr)localObject3).albumName = ((String)localObject1);
-        if (localBundle == null) {
-          break label806;
-        }
-        localObject1 = localBundle.getString("key_mv_music_genre", null);
-        label361:
-        ((dbr)localObject3).musicGenre = ((String)localObject1);
-        if (localBundle == null) {
-          break label812;
-        }
-        localObject1 = localBundle.getString("key_mv_issue_date", "");
-        label386:
-        ((dbr)localObject3).issueDate = Util.safeParseLong((String)localObject1);
-        if (localBundle == null) {
-          break label818;
-        }
-        localObject1 = localBundle.getString("key_mv_album_cover_url", null);
-        label412:
-        ((dbr)localObject3).KGh = ((String)localObject1);
-        if (localBundle == null) {
-          break label824;
-        }
-        localObject1 = localBundle.getString("key_mv_identification", null);
-        label435:
-        ((dbr)localObject3).identification = ((String)localObject1);
-        if (localBundle == null) {
-          break label830;
-        }
-        localObject1 = localBundle.getString("key_mv_extra_info", null);
-        label458:
-        ((dbr)localObject3).extraInfo = ((String)localObject1);
-        if (localBundle == null) {
-          break label836;
-        }
-        i = localBundle.getInt("key_mv_music_duration", 0);
-        label480:
-        ((dbr)localObject3).FSG = i;
-        localObject1 = localObject2;
-        if (localBundle != null) {
-          localObject1 = localBundle.getString("key_mv_thumb_path", null);
-        }
-        ((dbr)localObject3).lVZ = ((String)localObject1);
-        localObject1 = localObject3;
-      }
-    }
-    label556:
-    label818:
-    label824:
-    label830:
-    label836:
-    label846:
-    label883:
+    Bundle localBundle;
     for (;;)
     {
-      localObject3 = localk.FHd;
-      if (localObject3 == null) {
+      if (localObject1 == null) {
+        Log.i("MicroMsg.GlobalMusicPlayerFloatBallHelper", "onFloatBallRemoved currentMusic is null");
+      }
+      paramBallInfo = super.d(paramBallInfo, paramBoolean);
+      AppMethodBeat.o(271229);
+      return paramBallInfo;
+      this.LMh.J(6, com.tencent.mm.plugin.multitask.g.aI(locala.field_songName, locala.field_songSinger, locala.field_songAlbum));
+      localk = this.LMh;
+      localObject1 = this.LMg;
+      localBundle = this.LMe;
+      s.u(locala, "music");
+      if ((localObject1 != null) || (localBundle != null)) {
+        break;
+      }
+      Log.w("MicroMsg.MusicPlayerMultiTaskHelper", "fillMultiTaskData failed");
+      localk.LCE = null;
+      this.LMh.af(0, false);
+      localObject1 = ah.aiuX;
+    }
+    Object localObject2;
+    label179:
+    label194:
+    label209:
+    label224:
+    label239:
+    label254:
+    int i;
+    if (localObject1 == null)
+    {
+      localObject2 = new dtj();
+      if (localBundle == null)
+      {
+        localObject1 = null;
+        ((dtj)localObject2).YqP = ((String)localObject1);
+        if (localBundle != null) {
+          break label659;
+        }
+        localObject1 = null;
+        ((dtj)localObject2).YqQ = ((String)localObject1);
+        if (localBundle != null) {
+          break label673;
+        }
+        localObject1 = null;
+        ((dtj)localObject2).YqO = ((String)localObject1);
+        if (localBundle != null) {
+          break label687;
+        }
+        localObject1 = null;
+        ((dtj)localObject2).YqN = ((String)localObject1);
+        if (localBundle != null) {
+          break label701;
+        }
+        localObject1 = null;
+        ((dtj)localObject2).songName = ((String)localObject1);
+        if (localBundle != null) {
+          break label715;
+        }
+        localObject1 = null;
+        ((dtj)localObject2).songLyric = ((String)localObject1);
+        if (localBundle != null) {
+          break label731;
+        }
+        localObject1 = null;
+        label269:
+        ((dtj)localObject2).singerName = ((String)localObject1);
+        if (localBundle != null) {
+          break label745;
+        }
+        localObject1 = null;
+        label284:
+        ((dtj)localObject2).albumName = ((String)localObject1);
+        if (localBundle != null) {
+          break label759;
+        }
+        localObject1 = null;
+        label299:
+        ((dtj)localObject2).musicGenre = ((String)localObject1);
+        if (localBundle != null) {
+          break label773;
+        }
+        localObject1 = null;
+        label314:
+        ((dtj)localObject2).issueDate = Util.safeParseLong((String)localObject1);
+        if (localBundle != null) {
+          break label789;
+        }
+        localObject1 = null;
+        label332:
+        ((dtj)localObject2).RfH = ((String)localObject1);
+        if (localBundle != null) {
+          break label803;
+        }
+        localObject1 = null;
+        label347:
+        ((dtj)localObject2).identification = ((String)localObject1);
+        if (localBundle != null) {
+          break label817;
+        }
+        localObject1 = null;
+        label362:
+        ((dtj)localObject2).extraInfo = ((String)localObject1);
+        if (localBundle != null) {
+          break label831;
+        }
+        i = 0;
+        label376:
+        ((dtj)localObject2).LNC = i;
+        if (localBundle != null) {
+          break label844;
+        }
+        localObject1 = null;
+        label390:
+        ((dtj)localObject2).oPc = ((String)localObject1);
+        if (localBundle != null) {
+          break label858;
+        }
+        localObject1 = localMultiTaskInfo;
+        label406:
+        ((dtj)localObject2).musicOperationUrl = ((String)localObject1);
+        localObject1 = localObject2;
+      }
+    }
+    label456:
+    label715:
+    label844:
+    label858:
+    for (;;)
+    {
+      localMultiTaskInfo = localk.LCE;
+      if (localMultiTaskInfo == null) {
         break;
       }
       localObject2 = (CharSequence)locala.field_songSinger;
@@ -278,364 +384,395 @@ public final class d
       {
         i = 1;
         if (i == 0) {
-          break label846;
+          break label877;
         }
       }
-      for (localObject2 = "";; localObject2 = " · " + locala.field_songSinger)
+      label731:
+      label745:
+      label877:
+      for (localObject2 = "";; localObject2 = s.X(" · ", locala.field_songSinger))
       {
-        ((MultiTaskInfo)localObject3).fbc().title = (locala.field_songName + (String)localObject2);
-        ((MultiTaskInfo)localObject3).fbc().nickname = ((dbr)localObject1).Rux;
-        localObject2 = new dbn();
-        ((dbn)localObject2).lVY = ((dbr)localObject1);
-        ((dbn)localObject2).musicType = locala.field_musicType;
-        ((dbn)localObject2).SOM = locala.field_songAlbumUrl;
-        ((dbn)localObject2).name = locala.field_songName;
-        ((dbn)localObject2).ozs = locala.field_songSinger;
-        ((dbn)localObject2).ozt = locala.field_songWebUrl;
-        ((dbn)localObject2).TIO = locala.field_songWapLinkUrl;
-        ((dbn)localObject2).TIQ = locala.field_songWifiUrl;
-        ((dbn)localObject2).fMd = locala.field_musicId;
-        ((dbn)localObject2).TIS = locala.field_songAlbumLocalPath;
-        ((dbn)localObject2).TIT = locala.field_songAlbum;
-        ((dbn)localObject2).appId = locala.field_appId;
-        ((dbn)localObject2).TIU = locala.field_songHAlbumUrl;
-        ((MultiTaskInfo)localObject3).field_data = ((dbn)localObject2).toByteArray();
+        localMultiTaskInfo.gkh().title = s.X(locala.field_songName, localObject2);
+        localMultiTaskInfo.gkh().nickname = ((dtj)localObject1).YqQ;
+        localObject2 = new dte();
+        ((dte)localObject2).oPb = ((dtj)localObject1);
+        ((dte)localObject2).musicType = locala.field_musicType;
+        ((dte)localObject2).ZWS = locala.field_songAlbumUrl;
+        ((dte)localObject2).name = locala.field_songName;
+        ((dte)localObject2).rDl = locala.field_songSinger;
+        ((dte)localObject2).rDm = locala.field_songWebUrl;
+        ((dte)localObject2).aaYE = locala.field_songWapLinkUrl;
+        ((dte)localObject2).aaYF = locala.field_songWifiUrl;
+        ((dte)localObject2).musicId = locala.field_musicId;
+        ((dte)localObject2).aaYH = locala.field_songAlbumLocalPath;
+        ((dte)localObject2).aaYI = locala.field_songAlbum;
+        ((dte)localObject2).appId = locala.field_appId;
+        ((dte)localObject2).aaYJ = locala.field_songHAlbumUrl;
+        localMultiTaskInfo.field_data = ((dte)localObject2).toByteArray();
         break;
-        localObject1 = null;
-        break label175;
-        label764:
-        localObject1 = null;
-        break label198;
-        localObject1 = null;
-        break label221;
-        localObject1 = null;
-        break label244;
-        localObject1 = null;
-        break label267;
-        localObject1 = null;
-        break label292;
-        localObject1 = null;
-        break label315;
-        localObject1 = null;
-        break label338;
-        localObject1 = null;
-        break label361;
-        localObject1 = null;
-        break label386;
-        localObject1 = null;
-        break label412;
-        localObject1 = null;
-        break label435;
-        localObject1 = null;
-        break label458;
+        localObject1 = localBundle.getString("key_mv_cover_url", null);
+        break label179;
+        localObject1 = localBundle.getString("key_mv_poster", null);
+        break label194;
+        localObject1 = localBundle.getString("key_mv_nonce_id", null);
+        break label209;
+        localObject1 = localBundle.getString("key_mv_feed_id", null);
+        break label224;
+        localObject1 = localBundle.getString("key_mv_song_name", null);
+        break label239;
+        localObject1 = localBundle.getString("key_mv_song_lyric", "");
+        break label254;
+        localObject1 = localBundle.getString("key_mv_singer_name", null);
+        break label269;
+        localObject1 = localBundle.getString("key_mv_album_name", null);
+        break label284;
+        label759:
+        localObject1 = localBundle.getString("key_mv_music_genre", null);
+        break label299;
+        localObject1 = localBundle.getString("key_mv_issue_date", "");
+        break label314;
+        localObject1 = localBundle.getString("key_mv_album_cover_url", null);
+        break label332;
+        localObject1 = localBundle.getString("key_mv_identification", null);
+        break label347;
+        localObject1 = localBundle.getString("key_mv_extra_info", null);
+        break label362;
+        i = localBundle.getInt("key_mv_music_duration", 0);
+        break label376;
+        localObject1 = localBundle.getString("key_mv_thumb_path", null);
+        break label390;
+        localObject1 = localBundle.getString("key_mv_music_operation_url", null);
+        break label406;
         i = 0;
-        break label480;
-        i = 0;
-        break label556;
+        break label456;
       }
-      Log.i("MicroMsg.GlobalMusicPlayerFloatBallHelper", "onFloatBallRemoved currentMusic is null");
-      break label130;
     }
   }
   
-  public final void d(dbr paramdbr)
+  public final void d(dtj paramdtj)
   {
-    AppMethodBeat.i(260283);
-    this.FRk = paramdbr;
-    paramdbr = this.FRk;
-    if (paramdbr != null) {}
-    for (paramdbr = Integer.valueOf(paramdbr.hashCode());; paramdbr = null)
+    AppMethodBeat.i(271232);
+    this.LMg = paramdtj;
+    paramdtj = this.LMg;
+    if (paramdtj == null) {}
+    for (paramdtj = null;; paramdtj = Integer.valueOf(paramdtj.hashCode()))
     {
-      Log.i("MicroMsg.GlobalMusicPlayerFloatBallHelper", "alvinluo updateMusicShareObject hashCode: %s", new Object[] { paramdbr });
-      AppMethodBeat.o(260283);
+      Log.i("MicroMsg.GlobalMusicPlayerFloatBallHelper", "alvinluo updateMusicShareObject hashCode: %s", new Object[] { paramdtj });
+      AppMethodBeat.o(271232);
       return;
     }
   }
   
-  public final Intent feL()
-  {
-    Object localObject2 = null;
-    Object localObject1 = null;
-    AppMethodBeat.i(260288);
-    Intent localIntent = new Intent();
-    if (this.FRi != null)
-    {
-      localObject2 = this.FRi;
-      if (localObject2 != null) {
-        localObject1 = Integer.valueOf(((Bundle)localObject2).hashCode());
-      }
-      Log.i("MicroMsg.GlobalMusicPlayerFloatBallHelper", "getMusicMvUIIntent jump by extra %s", new Object[] { localObject1 });
-      localObject1 = this.FRi;
-      if (localObject1 == null) {
-        p.iCn();
-      }
-      localIntent.putExtras((Bundle)localObject1);
-      AppMethodBeat.o(260288);
-      return localIntent;
-    }
-    dbr localdbr = this.FRk;
-    localObject1 = localObject2;
-    if (localdbr != null) {
-      localObject1 = Integer.valueOf(localdbr.hashCode());
-    }
-    Log.i("MicroMsg.GlobalMusicPlayerFloatBallHelper", "getMusicMvUIIntent jump by musicShareObject: %s", new Object[] { localObject1 });
-    localIntent.putExtra("key_scene", 6);
-    if (localdbr != null)
-    {
-      localObject2 = localdbr.Ruu;
-      localObject1 = localObject2;
-      if (localObject2 != null) {}
-    }
-    else
-    {
-      localObject1 = "";
-    }
-    localIntent.putExtra("key_mv_feed_id", (String)localObject1);
-    if (localdbr != null)
-    {
-      localObject2 = localdbr.Ruv;
-      localObject1 = localObject2;
-      if (localObject2 != null) {}
-    }
-    else
-    {
-      localObject1 = "";
-    }
-    localIntent.putExtra("key_mv_nonce_id", (String)localObject1);
-    if (localdbr != null)
-    {
-      localObject2 = localdbr.Ruw;
-      localObject1 = localObject2;
-      if (localObject2 != null) {}
-    }
-    else
-    {
-      localObject1 = "";
-    }
-    localIntent.putExtra("key_mv_cover_url", (String)localObject1);
-    if (localdbr != null)
-    {
-      localObject2 = localdbr.Rux;
-      localObject1 = localObject2;
-      if (localObject2 != null) {}
-    }
-    else
-    {
-      localObject1 = "";
-    }
-    localIntent.putExtra("key_mv_poster", (String)localObject1);
-    if (localdbr != null)
-    {
-      localObject2 = localdbr.HLH;
-      localObject1 = localObject2;
-      if (localObject2 != null) {}
-    }
-    else
-    {
-      localObject1 = "";
-    }
-    localIntent.putExtra("key_mv_song_name", (String)localObject1);
-    if (localdbr != null)
-    {
-      localObject2 = localdbr.songLyric;
-      localObject1 = localObject2;
-      if (localObject2 != null) {}
-    }
-    else
-    {
-      localObject1 = "";
-    }
-    localIntent.putExtra("key_mv_song_lyric", (String)localObject1);
-    if (localdbr != null)
-    {
-      localObject2 = localdbr.singerName;
-      localObject1 = localObject2;
-      if (localObject2 != null) {}
-    }
-    else
-    {
-      localObject1 = "";
-    }
-    localIntent.putExtra("key_mv_singer_name", (String)localObject1);
-    if (localdbr != null)
-    {
-      localObject2 = localdbr.albumName;
-      localObject1 = localObject2;
-      if (localObject2 != null) {}
-    }
-    else
-    {
-      localObject1 = "";
-    }
-    localIntent.putExtra("key_mv_album_name", (String)localObject1);
-    if (localdbr != null)
-    {
-      localObject2 = localdbr.musicGenre;
-      localObject1 = localObject2;
-      if (localObject2 != null) {}
-    }
-    else
-    {
-      localObject1 = "";
-    }
-    localIntent.putExtra("key_mv_music_genre", (String)localObject1);
-    if (localdbr != null)
-    {
-      localObject2 = String.valueOf(localdbr.issueDate);
-      localObject1 = localObject2;
-      if (localObject2 != null) {}
-    }
-    else
-    {
-      localObject1 = "";
-    }
-    localIntent.putExtra("key_mv_issue_date", (String)localObject1);
-    if (localdbr != null)
-    {
-      localObject2 = localdbr.KGh;
-      localObject1 = localObject2;
-      if (localObject2 != null) {}
-    }
-    else
-    {
-      localObject1 = "";
-    }
-    localIntent.putExtra("key_mv_album_cover_url", (String)localObject1);
-    if (localdbr != null)
-    {
-      localObject2 = localdbr.identification;
-      localObject1 = localObject2;
-      if (localObject2 != null) {}
-    }
-    else
-    {
-      localObject1 = "";
-    }
-    localIntent.putExtra("key_mv_identification", (String)localObject1);
-    if (localdbr != null)
-    {
-      localObject2 = localdbr.extraInfo;
-      localObject1 = localObject2;
-      if (localObject2 != null) {}
-    }
-    else
-    {
-      localObject1 = "";
-    }
-    localIntent.putExtra("key_mv_extra_info", (String)localObject1);
-    if (localdbr != null) {}
-    for (int i = localdbr.FSG;; i = 0)
-    {
-      localIntent.putExtra("key_mv_music_duration", i);
-      if (localdbr != null)
-      {
-        localObject2 = localdbr.lVZ;
-        localObject1 = localObject2;
-        if (localObject2 != null) {}
-      }
-      else
-      {
-        localObject1 = "";
-      }
-      localIntent.putExtra("key_mv_thumb_path", (String)localObject1);
-      localIntent.setFlags(268435456);
-      break;
-    }
-  }
-  
-  protected final int fey()
+  protected final int gnB()
   {
     return 23;
   }
   
-  protected final void fez()
+  protected final void gnC()
   {
-    AppMethodBeat.i(260276);
-    Fi(com.tencent.mm.plugin.ball.f.d.fv(this.rYE.state, 8));
-    AppMethodBeat.o(260276);
+    AppMethodBeat.i(271207);
+    FJ(com.tencent.mm.plugin.ball.f.d.gn(this.vjV.state, 8));
+    AppMethodBeat.o(271207);
   }
   
-  protected final boolean y(f paramf)
+  public final Intent gnT()
   {
-    return (paramf != null) && (paramf.lVX == true);
-  }
-  
-  protected final void z(f paramf)
-  {
-    AppMethodBeat.i(260279);
-    if (paramf != null)
+    Object localObject2 = null;
+    Object localObject1 = null;
+    AppMethodBeat.i(271246);
+    Intent localIntent = new Intent();
+    if (this.LMe != null)
     {
-      Log.i("MicroMsg.GlobalMusicPlayerFloatBallHelper", "addMusicFloatBall isFromNewMusicPlayer: %s", new Object[] { Boolean.valueOf(paramf.lVX) });
-      if (paramf.lVX)
+      localObject2 = this.LMe;
+      if (localObject2 == null) {}
+      for (;;)
       {
-        paramf = MMApplicationContext.getContext();
-        p.j(paramf, "MMApplicationContext.getContext()");
-        this.FRh = new FloatBallMusicView(paramf);
-        paramf = this.FRh;
-        if (paramf != null) {
-          paramf.setOnCloseListener((View.OnClickListener)new d.d(this));
-        }
-        paramf = this.FRh;
-        if (paramf != null) {
-          paramf.setOnMusicIconClickListener((View.OnClickListener)new d.e(this));
-        }
-        paramf = this.FRh;
-        if (paramf != null) {
-          paramf.setCoverPath(this.FRj);
-        }
-        this.rYE.bFK = ((View)this.FRh);
-        if (this.rYE.rYm == null) {
-          this.rYE.rYm = new Point();
-        }
-        if (this.rYE.rYn == null) {
-          this.rYE.rYn = new Point();
-        }
-        this.rYE.rYm.x = aw.aZ(MMApplicationContext.getContext(), a.c.float_ball_music_view_width);
-        this.rYE.rYm.y = aw.aZ(MMApplicationContext.getContext(), a.c.float_ball_music_view_height);
-        this.rYE.rYn.x = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 20);
-        this.rYE.rYn.y = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 20);
-        this.rYE.qmt = false;
-        this.rYE.rYr = true;
-        this.rYE.rYq = true;
-        this.rYE.iUF = false;
-        this.rYE.state = com.tencent.mm.plugin.ball.f.d.fv(this.rYE.state, 2);
-        this.rYE.state = com.tencent.mm.plugin.ball.f.d.fu(this.rYE.state, 8);
-        Log.v("MicroMsg.GlobalMusicPlayerFloatBallHelper", "initMusicFloatBallViewSize %s, ballInfo.state: %d", new Object[] { this.rYE.rYm, Integer.valueOf(this.rYE.state) });
-        cvF();
+        Log.i("MicroMsg.GlobalMusicPlayerFloatBallHelper", "getMusicMvUIIntent jump by extra %s", new Object[] { localObject1 });
+        localObject1 = this.LMe;
+        s.checkNotNull(localObject1);
+        localIntent.putExtras((Bundle)localObject1);
+        AppMethodBeat.o(271246);
+        return localIntent;
+        localObject1 = Integer.valueOf(((Bundle)localObject2).hashCode());
       }
     }
-    AppMethodBeat.o(260279);
+    dtj localdtj = this.LMg;
+    label100:
+    label231:
+    label250:
+    int i;
+    if (localdtj == null)
+    {
+      localObject1 = localObject2;
+      Log.i("MicroMsg.GlobalMusicPlayerFloatBallHelper", "getMusicMvUIIntent jump by musicShareObject: %s", new Object[] { localObject1 });
+      localIntent.putExtra("key_scene", 6);
+      if (localdtj != null) {
+        break label472;
+      }
+      localObject1 = "";
+      label136:
+      localIntent.putExtra("key_mv_feed_id", (String)localObject1);
+      if (localdtj != null) {
+        break label491;
+      }
+      localObject1 = "";
+      label155:
+      localIntent.putExtra("key_mv_nonce_id", (String)localObject1);
+      if (localdtj != null) {
+        break label510;
+      }
+      localObject1 = "";
+      label174:
+      localIntent.putExtra("key_mv_cover_url", (String)localObject1);
+      if (localdtj != null) {
+        break label529;
+      }
+      localObject1 = "";
+      label193:
+      localIntent.putExtra("key_mv_poster", (String)localObject1);
+      if (localdtj != null) {
+        break label548;
+      }
+      localObject1 = "";
+      label212:
+      localIntent.putExtra("key_mv_song_name", (String)localObject1);
+      if (localdtj != null) {
+        break label567;
+      }
+      localObject1 = "";
+      localIntent.putExtra("key_mv_song_lyric", (String)localObject1);
+      if (localdtj != null) {
+        break label586;
+      }
+      localObject1 = "";
+      localIntent.putExtra("key_mv_singer_name", (String)localObject1);
+      if (localdtj != null) {
+        break label605;
+      }
+      localObject1 = "";
+      label269:
+      localIntent.putExtra("key_mv_album_name", (String)localObject1);
+      if (localdtj != null) {
+        break label624;
+      }
+      localObject1 = "";
+      label288:
+      localIntent.putExtra("key_mv_music_genre", (String)localObject1);
+      if (localdtj != null) {
+        break label643;
+      }
+      localObject1 = "";
+      label307:
+      localIntent.putExtra("key_mv_issue_date", (String)localObject1);
+      if (localdtj != null) {
+        break label668;
+      }
+      localObject1 = "";
+      label326:
+      localIntent.putExtra("key_mv_album_cover_url", (String)localObject1);
+      if (localdtj != null) {
+        break label687;
+      }
+      localObject1 = "";
+      label345:
+      localIntent.putExtra("key_mv_identification", (String)localObject1);
+      if (localdtj != null) {
+        break label706;
+      }
+      localObject1 = "";
+      label364:
+      localIntent.putExtra("key_mv_extra_info", (String)localObject1);
+      if (localdtj != null) {
+        break label725;
+      }
+      i = 0;
+      label381:
+      localIntent.putExtra("key_mv_music_duration", i);
+      if (localdtj != null) {
+        break label734;
+      }
+      localObject1 = "";
+      label400:
+      localIntent.putExtra("key_mv_thumb_path", (String)localObject1);
+      if (localdtj != null) {
+        break label753;
+      }
+      localObject1 = "";
+      label419:
+      localIntent.putExtra("key_mv_music_operation_url", (String)localObject1);
+      if (localdtj != null) {
+        break label772;
+      }
+      localObject1 = "";
+    }
+    for (;;)
+    {
+      localIntent.putExtra("key_mv_song_mid", (String)localObject1);
+      localIntent.setFlags(268435456);
+      break;
+      localObject1 = Integer.valueOf(localdtj.hashCode());
+      break label100;
+      label472:
+      localObject2 = localdtj.YqN;
+      localObject1 = localObject2;
+      if (localObject2 != null) {
+        break label136;
+      }
+      localObject1 = "";
+      break label136;
+      label491:
+      localObject2 = localdtj.YqO;
+      localObject1 = localObject2;
+      if (localObject2 != null) {
+        break label155;
+      }
+      localObject1 = "";
+      break label155;
+      label510:
+      localObject2 = localdtj.YqP;
+      localObject1 = localObject2;
+      if (localObject2 != null) {
+        break label174;
+      }
+      localObject1 = "";
+      break label174;
+      label529:
+      localObject2 = localdtj.YqQ;
+      localObject1 = localObject2;
+      if (localObject2 != null) {
+        break label193;
+      }
+      localObject1 = "";
+      break label193;
+      label548:
+      localObject2 = localdtj.songName;
+      localObject1 = localObject2;
+      if (localObject2 != null) {
+        break label212;
+      }
+      localObject1 = "";
+      break label212;
+      label567:
+      localObject2 = localdtj.songLyric;
+      localObject1 = localObject2;
+      if (localObject2 != null) {
+        break label231;
+      }
+      localObject1 = "";
+      break label231;
+      label586:
+      localObject2 = localdtj.singerName;
+      localObject1 = localObject2;
+      if (localObject2 != null) {
+        break label250;
+      }
+      localObject1 = "";
+      break label250;
+      label605:
+      localObject2 = localdtj.albumName;
+      localObject1 = localObject2;
+      if (localObject2 != null) {
+        break label269;
+      }
+      localObject1 = "";
+      break label269;
+      label624:
+      localObject2 = localdtj.musicGenre;
+      localObject1 = localObject2;
+      if (localObject2 != null) {
+        break label288;
+      }
+      localObject1 = "";
+      break label288;
+      label643:
+      localObject2 = Long.valueOf(localdtj.issueDate).toString();
+      localObject1 = localObject2;
+      if (localObject2 != null) {
+        break label307;
+      }
+      localObject1 = "";
+      break label307;
+      label668:
+      localObject2 = localdtj.RfH;
+      localObject1 = localObject2;
+      if (localObject2 != null) {
+        break label326;
+      }
+      localObject1 = "";
+      break label326;
+      label687:
+      localObject2 = localdtj.identification;
+      localObject1 = localObject2;
+      if (localObject2 != null) {
+        break label345;
+      }
+      localObject1 = "";
+      break label345;
+      label706:
+      localObject2 = localdtj.extraInfo;
+      localObject1 = localObject2;
+      if (localObject2 != null) {
+        break label364;
+      }
+      localObject1 = "";
+      break label364;
+      label725:
+      i = localdtj.LNC;
+      break label381;
+      label734:
+      localObject2 = localdtj.oPc;
+      localObject1 = localObject2;
+      if (localObject2 != null) {
+        break label400;
+      }
+      localObject1 = "";
+      break label400;
+      label753:
+      localObject2 = localdtj.musicOperationUrl;
+      localObject1 = localObject2;
+      if (localObject2 != null) {
+        break label419;
+      }
+      localObject1 = "";
+      break label419;
+      label772:
+      localObject2 = localdtj.oOZ;
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+    }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/music/model/GlobalMusicPlayerFloatBallHelper$Holder;", "", "()V", "sHelper", "Lcom/tencent/mm/plugin/music/model/GlobalMusicPlayerFloatBallHelper;", "getSHelper", "()Lcom/tencent/mm/plugin/music/model/GlobalMusicPlayerFloatBallHelper;", "setSHelper", "(Lcom/tencent/mm/plugin/music/model/GlobalMusicPlayerFloatBallHelper;)V", "plugin-music_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/music/model/GlobalMusicPlayerFloatBallHelper$Holder;", "", "()V", "sHelper", "Lcom/tencent/mm/plugin/music/model/GlobalMusicPlayerFloatBallHelper;", "getSHelper", "()Lcom/tencent/mm/plugin/music/model/GlobalMusicPlayerFloatBallHelper;", "setSHelper", "(Lcom/tencent/mm/plugin/music/model/GlobalMusicPlayerFloatBallHelper;)V", "plugin-music_release"}, k=1, mv={1, 5, 1}, xi=48)
   static final class b
   {
-    private static d FRn;
-    public static final b FRo;
+    public static final b LMj;
+    private static d LMk;
     
     static
     {
-      AppMethodBeat.i(260125);
-      FRo = new b();
-      FRn = new d();
-      AppMethodBeat.o(260125);
+      AppMethodBeat.i(271265);
+      LMj = new b();
+      LMk = new d();
+      AppMethodBeat.o(271265);
     }
     
-    public static d feN()
+    public static d gnV()
     {
-      return FRn;
+      return LMk;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/music/model/GlobalMusicPlayerFloatBallHelper$MusicPlayerDataChangedEventListener;", "", "onMusicDataChanged", "", "extra", "Landroid/os/Bundle;", "plugin-music_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/music/model/GlobalMusicPlayerFloatBallHelper$MusicPlayerDataChangedEventListener;", "", "onMusicDataChanged", "", "extra", "Landroid/os/Bundle;", "plugin-music_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface c
   {
-    public abstract void an(Bundle paramBundle);
+    public abstract void aL(Bundle paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.d
  * JD-Core Version:    0.7.0.1
  */

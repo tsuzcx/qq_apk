@@ -59,7 +59,7 @@ public class TXCYuvTextureRender
   {
     AppMethodBeat.i(16749);
     TAG = TXCYuvTextureRender.class.getSimpleName();
-    h.f();
+    h.d();
     AppMethodBeat.o(16749);
   }
   
@@ -287,7 +287,7 @@ public class TXCYuvTextureRender
   
   public void flipVertical(boolean paramBoolean)
   {
-    AppMethodBeat.i(220899);
+    AppMethodBeat.i(229738);
     float[] arrayOfFloat;
     if (paramBoolean)
     {
@@ -315,7 +315,7 @@ public class TXCYuvTextureRender
       this.mTextureBuffer = ByteBuffer.allocateDirect(32).order(ByteOrder.nativeOrder()).asFloatBuffer();
       this.mTextureBuffer.put(arrayOfFloat);
       this.mTextureBuffer.position(0);
-      AppMethodBeat.o(220899);
+      AppMethodBeat.o(229738);
       return;
       arrayOfFloat = new float[8];
       float[] tmp100_99 = arrayOfFloat;
@@ -369,7 +369,7 @@ public class TXCYuvTextureRender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.renderer.TXCYuvTextureRender
  * JD-Core Version:    0.7.0.1
  */

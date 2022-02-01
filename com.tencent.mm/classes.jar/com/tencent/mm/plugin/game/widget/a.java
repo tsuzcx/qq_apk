@@ -20,25 +20,25 @@ import java.util.Iterator;
 
 public class a
 {
-  float Dei;
-  float Dej;
-  float Dek;
-  boolean Del;
-  private TextPaint Mf;
-  private float jAg;
+  float IYA;
+  float IYB;
+  boolean IYC;
+  float IYz;
+  private TextPaint bsk;
   private boolean mEnabled;
   private ArrayList<b> mListeners;
-  TextView rR;
-  private int sTC;
-  private TextWatcher uY;
+  TextView sQ;
+  private TextWatcher vU;
+  private int vYT;
+  private float xBL;
   
   private a(TextView paramTextView)
   {
     AppMethodBeat.i(42581);
-    this.uY = new a((byte)0);
+    this.vU = new a((byte)0);
     float f = paramTextView.getContext().getResources().getDisplayMetrics().scaledDensity;
-    this.rR = paramTextView;
-    this.Mf = new TextPaint();
+    this.sQ = paramTextView;
+    this.bsk = new TextPaint();
     setRawTextSize(paramTextView.getTextSize());
     int i = -1;
     TransformationMethod localTransformationMethod = paramTextView.getTransformationMethod();
@@ -47,10 +47,10 @@ public class a
     }
     for (;;)
     {
-      this.sTC = i;
-      this.Dei = (8.0F * f);
-      this.Dej = this.jAg;
-      this.Dek = 0.5F;
+      this.vYT = i;
+      this.IYz = (8.0F * f);
+      this.IYA = this.xBL;
+      this.IYB = 0.5F;
       AppMethodBeat.o(42581);
       return;
       if (Build.VERSION.SDK_INT >= 16) {
@@ -136,11 +136,11 @@ public class a
     paramTextView = new a(paramTextView);
     if (paramAttributeSet != null)
     {
-      int i = (int)paramTextView.Dei;
-      float f = paramTextView.Dek;
-      paramTextView.s(0, i).bq(f);
+      int i = (int)paramTextView.IYz;
+      float f = paramTextView.IYB;
+      paramTextView.v(0, i).cu(f);
     }
-    paramTextView.su(true);
+    paramTextView.wA(true);
     AppMethodBeat.o(42578);
     return paramTextView;
   }
@@ -196,18 +196,18 @@ public class a
     }
   }
   
-  private void br(float paramFloat)
+  private void cv(float paramFloat)
   {
     AppMethodBeat.i(42585);
-    if (paramFloat != this.Dei)
+    if (paramFloat != this.IYz)
     {
-      this.Dei = paramFloat;
-      eAc();
+      this.IYz = paramFloat;
+      fId();
     }
     AppMethodBeat.o(42585);
   }
   
-  private void eAd()
+  private void fIe()
   {
     AppMethodBeat.i(42589);
     if (this.mListeners == null)
@@ -222,13 +222,13 @@ public class a
     AppMethodBeat.o(42589);
   }
   
-  public final a TX(int paramInt)
+  public final a XS(int paramInt)
   {
     AppMethodBeat.i(42586);
-    if (this.sTC != paramInt)
+    if (this.vYT != paramInt)
     {
-      this.sTC = paramInt;
-      eAc();
+      this.vYT = paramInt;
+      fId();
     }
     AppMethodBeat.o(42586);
     return this;
@@ -245,52 +245,52 @@ public class a
     return this;
   }
   
-  public final a bq(float paramFloat)
+  public final a cu(float paramFloat)
   {
     AppMethodBeat.i(42583);
-    if (this.Dek != paramFloat)
+    if (this.IYB != paramFloat)
     {
-      this.Dek = paramFloat;
-      eAc();
+      this.IYB = paramFloat;
+      fId();
     }
     AppMethodBeat.o(42583);
     return this;
   }
   
-  public final void eAc()
+  public final void fId()
   {
     AppMethodBeat.i(42588);
-    float f = this.rR.getTextSize();
-    this.Del = true;
-    a(this.rR, this.Mf, this.Dei, this.Dej, this.sTC, this.Dek);
-    this.Del = false;
-    if (this.rR.getTextSize() != f) {
-      eAd();
+    float f = this.sQ.getTextSize();
+    this.IYC = true;
+    a(this.sQ, this.bsk, this.IYz, this.IYA, this.vYT, this.IYB);
+    this.IYC = false;
+    if (this.sQ.getTextSize() != f) {
+      fIe();
     }
     AppMethodBeat.o(42588);
   }
   
-  public final a s(int paramInt, float paramFloat)
+  final void setRawTextSize(float paramFloat)
+  {
+    if (this.xBL != paramFloat) {
+      this.xBL = paramFloat;
+    }
+  }
+  
+  public final a v(int paramInt, float paramFloat)
   {
     AppMethodBeat.i(42584);
-    Context localContext = this.rR.getContext();
+    Context localContext = this.sQ.getContext();
     Resources localResources = Resources.getSystem();
     if (localContext != null) {
       localResources = localContext.getResources();
     }
-    br(TypedValue.applyDimension(paramInt, paramFloat, localResources.getDisplayMetrics()));
+    cv(TypedValue.applyDimension(paramInt, paramFloat, localResources.getDisplayMetrics()));
     AppMethodBeat.o(42584);
     return this;
   }
   
-  final void setRawTextSize(float paramFloat)
-  {
-    if (this.jAg != paramFloat) {
-      this.jAg = paramFloat;
-    }
-  }
-  
-  public final a su(boolean paramBoolean)
+  public final a wA(boolean paramBoolean)
   {
     AppMethodBeat.i(42587);
     if (this.mEnabled != paramBoolean)
@@ -299,16 +299,16 @@ public class a
       if (!paramBoolean) {
         break label44;
       }
-      this.rR.addTextChangedListener(this.uY);
-      eAc();
+      this.sQ.addTextChangedListener(this.vU);
+      fId();
     }
     for (;;)
     {
       AppMethodBeat.o(42587);
       return this;
       label44:
-      this.rR.removeTextChangedListener(this.uY);
-      this.rR.setTextSize(0, this.jAg);
+      this.sQ.removeTextChangedListener(this.vU);
+      this.sQ.setTextSize(0, this.xBL);
     }
   }
   
@@ -324,7 +324,7 @@ public class a
     public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
     {
       AppMethodBeat.i(42577);
-      a.this.eAc();
+      a.this.fId();
       AppMethodBeat.o(42577);
     }
   }
@@ -333,7 +333,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.game.widget.a
  * JD-Core Version:    0.7.0.1
  */

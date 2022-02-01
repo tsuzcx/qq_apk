@@ -1,104 +1,70 @@
 package com.tencent.mm.plugin.finder.feed.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import android.view.View;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.i;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.live.viewmodel.k;
+import com.tencent.mm.plugin.finder.live.p.f;
+import com.tencent.mm.plugin.finder.live.p.g;
+import com.tencent.mm.plugin.finder.live.p.h;
+import com.tencent.mm.plugin.finder.live.viewmodel.m;
+import com.tencent.mm.plugin.finder.live.viewmodel.n;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.ui.component.UIComponent;
-import java.util.HashMap;
 import java.util.Set;
-import kotlin.a.ak;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.ar;
+import kotlin.g.b.s;
 
 @a(32)
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveVisitorRoleUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getLayoutId", "", "getReportTag", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "plugin-finder-live_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveVisitorRoleUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getLayoutId", "", "getReportTag", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderLiveVisitorRoleUI
   extends MMFinderUI
 {
   private final String TAG = "FinderLiveVisitorRoleUI";
-  private HashMap _$_findViewCache;
   
-  public final void _$_clearFindViewByIdCache()
+  private static final boolean a(FinderLiveVisitorRoleUI paramFinderLiveVisitorRoleUI, MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(233500);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(233500);
+    AppMethodBeat.i(364933);
+    s.u(paramFinderLiveVisitorRoleUI, "this$0");
+    paramFinderLiveVisitorRoleUI.onBackPressed();
+    AppMethodBeat.o(364933);
+    return true;
   }
   
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(233499);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(233499);
-    return localView1;
-  }
+  public final void _$_clearFindViewByIdCache() {}
   
-  public final String dvl()
+  public final String efe()
   {
     return this.TAG;
   }
   
   public final int getLayoutId()
   {
-    return b.g.finder_live_visitor_role_ui;
+    return p.f.Cge;
   }
   
   public final Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(233491);
-    Set localSet = ak.setOf(k.class);
-    AppMethodBeat.o(233491);
+    AppMethodBeat.i(364964);
+    Set localSet = ar.setOf(new Class[] { n.class, m.class });
+    AppMethodBeat.o(364964);
     return localSet;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(233493);
+    AppMethodBeat.i(364982);
     super.onCreate(paramBundle);
-    setMMTitle(b.j.finder_live_visitor_role_ui_tips);
-    setBackBtn((MenuItem.OnMenuItemClickListener)new a(this), b.i.icons_filled_close);
-    AppMethodBeat.o(233493);
+    setMMTitle(p.h.CtO);
+    setBackBtn(new FinderLiveVisitorRoleUI..ExternalSyntheticLambda0(this), p.g.icons_filled_close);
+    AppMethodBeat.o(364982);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class a
-    implements MenuItem.OnMenuItemClickListener
-  {
-    a(FinderLiveVisitorRoleUI paramFinderLiveVisitorRoleUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(233555);
-      this.xPX.onBackPressed();
-      AppMethodBeat.o(233555);
-      return true;
-    }
   }
 }
 

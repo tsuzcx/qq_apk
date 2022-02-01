@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.pluginsdk.ui.preference.NormalUserHeaderPreference android:key="contact_info_header_normal" android:layout="@layout/xb" />
+    <PreferenceSmallCategory android:key="contact_info_category_1" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_district" android:layout="@layout/bdi" android:title="@string/blw" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_signature" android:layout="@layout/bdi" android:title="@string/br0" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_source" android:layout="@layout/bdi" android:title="@string/bsf" />
+    <com.tencent.mm.pluginsdk.ui.preference.SnsPreference android:key="contact_info_sns" android:layout="@layout/bdi" android:title="@string/br1" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_invite_source" android:layout="@layout/bdi" android:title="@string/bn8" />
+    <com.tencent.mm.plugin.profile.ui.ContactMoreInfoPreference android:key="contact_info_more" android:layout="@layout/bdi" android:title="@string/boi" />
+    <com.tencent.mm.plugin.profile.ui.ContactSocialInfoPreference android:key="contact_info_social" android:layout="@layout/bdi" android:title="@string/br8" />
+    <com.tencent.mm.plugin.profile.ui.FriendPreference android:key="contact_info_facebook" android:layout="@layout/bdi" android:title="@string/fhc" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_verifyuser" android:layout="@layout/bdi" android:title="@string/bt3" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.plugin.profile.ui.NormalUserFooterPreference android:key="contact_info_footer_normal" android:layout="@layout/x7" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.TextPreference android:key="contact_info_hint" />
+</PreferenceScreen>

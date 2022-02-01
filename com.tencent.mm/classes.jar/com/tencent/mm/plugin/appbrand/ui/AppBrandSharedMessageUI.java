@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +14,8 @@ import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.appbrand.au.f;
-import com.tencent.mm.plugin.appbrand.au.g;
+import com.tencent.mm.plugin.appbrand.ba.f;
+import com.tencent.mm.plugin.appbrand.ba.g;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.MRecyclerView;
 import com.tencent.mm.ui.MMActivity;
 
@@ -24,38 +23,38 @@ public class AppBrandSharedMessageUI
   extends MMActivity
 {
   private ListView mListView;
-  private MRecyclerView qYj;
+  private MRecyclerView uem;
   
   public int getLayoutId()
   {
-    return au.g.app_brand_shared_message_ui;
+    return ba.g.app_brand_shared_message_ui;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(48788);
     super.onCreate(paramBundle);
-    this.mListView = ((ListView)findViewById(au.f.list_view));
-    this.qYj = ((MRecyclerView)findViewById(au.f.data_rv));
+    this.mListView = ((ListView)findViewById(ba.f.list_view));
+    this.uem = ((MRecyclerView)findViewById(ba.f.data_rv));
     this.mListView.setAdapter(new b(getLayoutInflater()));
     this.mListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
-        AppMethodBeat.i(273516);
+        AppMethodBeat.i(322457);
         b localb = new b();
-        localb.bn(paramAnonymousAdapterView);
-        localb.bn(paramAnonymousView);
-        localb.sg(paramAnonymousInt);
-        localb.Fs(paramAnonymousLong);
-        a.c("com/tencent/mm/plugin/appbrand/ui/AppBrandSharedMessageUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
+        localb.cH(paramAnonymousAdapterView);
+        localb.cH(paramAnonymousView);
+        localb.sc(paramAnonymousInt);
+        localb.hB(paramAnonymousLong);
+        a.c("com/tencent/mm/plugin/appbrand/ui/AppBrandSharedMessageUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aYj());
         a.a(this, "com/tencent/mm/plugin/appbrand/ui/AppBrandSharedMessageUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-        AppMethodBeat.o(273516);
+        AppMethodBeat.o(322457);
       }
     });
-    this.qYj.setLayoutManager(new LinearLayoutManager(1, false));
-    this.qYj.setAdapter(new a());
-    this.qYj.dI(getLayoutInflater().inflate(au.g.app_brand_shared_message_list_header, null));
+    this.uem.setLayoutManager(new LinearLayoutManager(1, false));
+    this.uem.setAdapter(new a());
+    this.uem.ev(getLayoutInflater().inflate(ba.g.app_brand_shared_message_list_header, null));
     AppMethodBeat.o(48788);
   }
   

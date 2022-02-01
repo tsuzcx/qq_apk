@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.talkroom.component;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.eqo;
-import com.tencent.mm.protocal.protobuf.fen;
+import com.tencent.mm.protocal.protobuf.fls;
+import com.tencent.mm.protocal.protobuf.gaz;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.SyncTask;
 import java.io.IOException;
@@ -16,29 +16,29 @@ final class f$5
     super(3000L, paramInteger);
   }
   
-  private Integer bts()
+  private Integer bRc()
   {
     AppMethodBeat.i(29403);
     for (;;)
     {
       try
       {
-        fen localfen = new fen();
-        Log.i("MicroMsg.TalkRoomEngineProxy", "Open Engine svr cnt %d", new Object[] { Integer.valueOf(this.Mjf.length) });
+        gaz localgaz = new gaz();
+        Log.i("MicroMsg.TalkRoomEngineProxy", "Open Engine svr cnt %d", new Object[] { Integer.valueOf(this.SMB.length) });
         i = 0;
-        if (i < this.Mjf.length)
+        if (i < this.SMB.length)
         {
-          eqo localeqo = new eqo();
-          localeqo.Utd = this.Mjf[i];
-          if (localeqo.Utd == null)
+          fls localfls = new fls();
+          localfls.abMk = this.SMB[i];
+          if (localfls.abMk == null)
           {
             Log.i("MicroMsg.TalkRoomEngineProxy", "Open Engine ip_str null skip");
           }
           else
           {
-            localeqo.port = this.Mjg[i];
-            localfen.UEt.add(localeqo);
-            Log.i("MicroMsg.TalkRoomEngineProxy", "Open Engine svr:[%s][%d] ", new Object[] { localeqo.Utd, Integer.valueOf(localeqo.port) });
+            localfls.port = this.SMC[i];
+            localgaz.abYE.add(localfls);
+            Log.i("MicroMsg.TalkRoomEngineProxy", "Open Engine svr:[%s][%d] ", new Object[] { localfls.abMk, Integer.valueOf(localfls.port) });
           }
         }
       }
@@ -48,8 +48,8 @@ final class f$5
         AppMethodBeat.o(29403);
         return Integer.valueOf(-1);
       }
-      Log.i("MicroMsg.TalkRoomEngineProxy", "Open Engine valid svr cnt %d", new Object[] { Integer.valueOf(localIOException.UEt.size()) });
-      int i = f.a(this.Mjd).Open(this.Mjh, this.uDO, this.Mji, this.Mjj, this.Mjk, this.Mjl, localIOException.toByteArray(), localIOException.toByteArray().length);
+      Log.i("MicroMsg.TalkRoomEngineProxy", "Open Engine valid svr cnt %d", new Object[] { Integer.valueOf(localIOException.abYE.size()) });
+      int i = f.a(this.SMz).Open(this.SMD, this.xMg, this.SME, this.SMF, this.SMG, this.SMH, localIOException.toByteArray(), localIOException.toByteArray().length);
       AppMethodBeat.o(29403);
       return Integer.valueOf(i);
       i += 1;
@@ -58,7 +58,7 @@ final class f$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.component.f.5
  * JD-Core Version:    0.7.0.1
  */

@@ -4,236 +4,192 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.megavideo.loader.BaseMegaVideoLoader;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.vending.e.b;
-import com.tencent.mm.view.RefreshLoadMoreLayout.c;
-import com.tencent.mm.view.j;
-import com.tencent.mm.view.recyclerview.f;
-import com.tencent.mm.view.recyclerview.h;
+import com.tencent.mm.view.RefreshLoadMoreLayout.d;
+import com.tencent.mm.view.k;
+import com.tencent.mm.view.recyclerview.g;
+import com.tencent.mm.view.recyclerview.i;
 import java.util.ArrayList;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/presenter/base/IPresenter;", "Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$ViewCallback;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "context", "Lcom/tencent/mm/ui/MMActivity;", "feedLoader", "Lcom/tencent/mm/plugin/finder/megavideo/loader/BaseMegaVideoLoader;", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/plugin/finder/megavideo/loader/BaseMegaVideoLoader;)V", "getContext", "()Lcom/tencent/mm/ui/MMActivity;", "getFeedLoader", "()Lcom/tencent/mm/plugin/finder/megavideo/loader/BaseMegaVideoLoader;", "proxyRLayout", "Lcom/tencent/mm/view/IViewActionCallback;", "getProxyRLayout", "()Lcom/tencent/mm/view/IViewActionCallback;", "setProxyRLayout", "(Lcom/tencent/mm/view/IViewActionCallback;)V", "viewCallback", "getViewCallback", "()Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$ViewCallback;", "setViewCallback", "(Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$ViewCallback;)V", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getIViewActionCallback", "initViewCallback", "", "keep", "p0", "loadInitData", "loadMoreData", "onAttach", "callback", "onBackPressed", "", "onDetach", "onUIPause", "onUIResume", "requestRefresh", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/presenter/base/IPresenter;", "Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$ViewCallback;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "context", "Lcom/tencent/mm/ui/MMActivity;", "feedLoader", "Lcom/tencent/mm/plugin/finder/megavideo/loader/BaseMegaVideoLoader;", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/plugin/finder/megavideo/loader/BaseMegaVideoLoader;)V", "getContext", "()Lcom/tencent/mm/ui/MMActivity;", "getFeedLoader", "()Lcom/tencent/mm/plugin/finder/megavideo/loader/BaseMegaVideoLoader;", "proxyRLayout", "Lcom/tencent/mm/view/IViewActionCallback;", "getProxyRLayout", "()Lcom/tencent/mm/view/IViewActionCallback;", "setProxyRLayout", "(Lcom/tencent/mm/view/IViewActionCallback;)V", "viewCallback", "getViewCallback", "()Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$ViewCallback;", "setViewCallback", "(Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$ViewCallback;)V", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getIViewActionCallback", "initViewCallback", "", "keep", "p0", "loadInitData", "loadMoreData", "onAttach", "callback", "onBackPressed", "", "onDetach", "onUIPause", "onUIResume", "requestRefresh", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class a$a
   implements com.tencent.mm.plugin.finder.presenter.base.a<a.b>, b<com.tencent.mm.vending.e.a>
 {
-  private final MMActivity iXq;
-  private j xvV;
-  a.b zxf;
-  final BaseMegaVideoLoader zxg;
+  private k ATF;
+  a.b EAa;
+  final BaseMegaVideoLoader EzZ;
+  private final MMActivity lzt;
   
   public a$a(MMActivity paramMMActivity, BaseMegaVideoLoader paramBaseMegaVideoLoader)
   {
-    this.iXq = paramMMActivity;
-    this.zxg = paramBaseMegaVideoLoader;
-    this.xvV = ((j)new j()
+    this.lzt = paramMMActivity;
+    this.EzZ = paramBaseMegaVideoLoader;
+    this.ATF = ((k)new k()
     {
       public final void onChanged()
       {
-        AppMethodBeat.i(286905);
-        Object localObject = this.zxh.zxf;
-        if (localObject != null)
-        {
-          localObject = (j)((a.b)localObject).xvJ;
-          if (localObject != null)
-          {
-            ((j)localObject).onChanged();
-            AppMethodBeat.o(286905);
-            return;
-          }
+        AppMethodBeat.i(342034);
+        a.b localb = this.EAb.EAa;
+        if (localb != null) {
+          ((k)localb.ATx).onChanged();
         }
-        AppMethodBeat.o(286905);
+        AppMethodBeat.o(342034);
       }
       
       public final void onItemRangeChanged(int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(286906);
-        Object localObject1 = this.zxh.zxf;
-        if (localObject1 != null)
+        AppMethodBeat.i(342039);
+        Object localObject = this.EAb.EAa;
+        a.b localb;
+        if (localObject != null)
         {
-          localObject1 = (j)((a.b)localObject1).xvJ;
-          if (localObject1 != null)
-          {
-            Object localObject2 = this.zxh.zxf;
-            if (localObject2 != null)
-            {
-              localObject2 = ((a.b)localObject2).getAdapter();
-              if (localObject2 == null) {}
-            }
-            for (int i = ((h)localObject2).YSk.size();; i = 0)
-            {
-              ((j)localObject1).onItemRangeChanged(i + paramAnonymousInt1, paramAnonymousInt2);
-              AppMethodBeat.o(286906);
-              return;
-            }
+          localObject = (k)((a.b)localObject).ATx;
+          localb = this.EAb.EAa;
+          if (localb != null) {
+            break label62;
           }
         }
-        AppMethodBeat.o(286906);
+        label62:
+        for (int i = 0;; i = localb.getAdapter().agOb.size())
+        {
+          ((k)localObject).onItemRangeChanged(i + paramAnonymousInt1, paramAnonymousInt2);
+          AppMethodBeat.o(342039);
+          return;
+        }
       }
       
       public final void onItemRangeChanged(int paramAnonymousInt1, int paramAnonymousInt2, Object paramAnonymousObject)
       {
-        AppMethodBeat.i(286907);
-        Object localObject1 = this.zxh.zxf;
-        if (localObject1 != null)
+        AppMethodBeat.i(342041);
+        Object localObject = this.EAb.EAa;
+        a.b localb;
+        if (localObject != null)
         {
-          localObject1 = (j)((a.b)localObject1).xvJ;
-          if (localObject1 != null)
-          {
-            Object localObject2 = this.zxh.zxf;
-            if (localObject2 != null)
-            {
-              localObject2 = ((a.b)localObject2).getAdapter();
-              if (localObject2 == null) {}
-            }
-            for (int i = ((h)localObject2).YSk.size();; i = 0)
-            {
-              ((j)localObject1).onItemRangeChanged(i + paramAnonymousInt1, paramAnonymousInt2, paramAnonymousObject);
-              AppMethodBeat.o(286907);
-              return;
-            }
+          localObject = (k)((a.b)localObject).ATx;
+          localb = this.EAb.EAa;
+          if (localb != null) {
+            break label65;
           }
         }
-        AppMethodBeat.o(286907);
+        label65:
+        for (int i = 0;; i = localb.getAdapter().agOb.size())
+        {
+          ((k)localObject).onItemRangeChanged(i + paramAnonymousInt1, paramAnonymousInt2, paramAnonymousObject);
+          AppMethodBeat.o(342041);
+          return;
+        }
       }
       
       public final void onItemRangeInserted(int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(286908);
-        Object localObject1 = this.zxh.zxf;
-        if (localObject1 != null)
+        AppMethodBeat.i(342044);
+        Object localObject = this.EAb.EAa;
+        a.b localb;
+        if (localObject != null)
         {
-          localObject1 = (j)((a.b)localObject1).xvJ;
-          if (localObject1 != null)
-          {
-            Object localObject2 = this.zxh.zxf;
-            if (localObject2 != null)
-            {
-              localObject2 = ((a.b)localObject2).getAdapter();
-              if (localObject2 == null) {}
-            }
-            for (int i = ((h)localObject2).YSk.size();; i = 0)
-            {
-              ((j)localObject1).onItemRangeInserted(i + paramAnonymousInt1, paramAnonymousInt2);
-              AppMethodBeat.o(286908);
-              return;
-            }
+          localObject = (k)((a.b)localObject).ATx;
+          localb = this.EAb.EAa;
+          if (localb != null) {
+            break label62;
           }
         }
-        AppMethodBeat.o(286908);
+        label62:
+        for (int i = 0;; i = localb.getAdapter().agOb.size())
+        {
+          ((k)localObject).onItemRangeInserted(i + paramAnonymousInt1, paramAnonymousInt2);
+          AppMethodBeat.o(342044);
+          return;
+        }
       }
       
       public final void onItemRangeRemoved(int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(286909);
-        Object localObject1 = this.zxh.zxf;
-        Object localObject2;
-        if (localObject1 != null)
+        AppMethodBeat.i(342052);
+        Object localObject = this.EAb.EAa;
+        a.b localb;
+        if (localObject != null)
         {
-          localObject1 = (j)((a.b)localObject1).xvJ;
-          if (localObject1 != null)
-          {
-            localObject2 = this.zxh.zxf;
-            if (localObject2 == null) {
-              break label105;
-            }
-            localObject2 = ((a.b)localObject2).getAdapter();
-            if (localObject2 == null) {
-              break label105;
-            }
+          localObject = (k)((a.b)localObject).ATx;
+          localb = this.EAb.EAa;
+          if (localb != null) {
+            break label81;
           }
         }
-        label105:
-        for (int i = ((h)localObject2).YSk.size();; i = 0)
+        label81:
+        for (int i = 0;; i = localb.getAdapter().agOb.size())
         {
-          ((j)localObject1).onItemRangeRemoved(i + paramAnonymousInt1, paramAnonymousInt2);
-          localObject1 = this.zxh.zxf;
-          if (localObject1 == null) {
-            break;
+          ((k)localObject).onItemRangeRemoved(i + paramAnonymousInt1, paramAnonymousInt2);
+          localObject = this.EAb.EAa;
+          if (localObject != null) {
+            ((a.b)localObject).dUO();
           }
-          ((a.b)localObject1).dsL();
-          AppMethodBeat.o(286909);
+          AppMethodBeat.o(342052);
           return;
         }
-        AppMethodBeat.o(286909);
       }
       
-      public final void onPreFinishLoadMore(RefreshLoadMoreLayout.c<Object> paramAnonymousc)
+      public final void onPreFinishLoadMore(RefreshLoadMoreLayout.d<Object> paramAnonymousd)
       {
-        AppMethodBeat.i(286903);
-        p.k(paramAnonymousc, "reason");
-        Object localObject = this.zxh.zxf;
-        if (localObject != null)
-        {
-          localObject = (j)((a.b)localObject).xvJ;
-          if (localObject != null)
-          {
-            ((j)localObject).onPreFinishLoadMore(paramAnonymousc);
-            AppMethodBeat.o(286903);
-            return;
-          }
+        AppMethodBeat.i(342021);
+        s.u(paramAnonymousd, "reason");
+        a.b localb = this.EAb.EAa;
+        if (localb != null) {
+          ((k)localb.ATx).onPreFinishLoadMore(paramAnonymousd);
         }
-        AppMethodBeat.o(286903);
+        AppMethodBeat.o(342021);
       }
       
-      public final void onPreFinishLoadMoreSmooth(RefreshLoadMoreLayout.c<Object> paramAnonymousc)
+      public final void onPreFinishLoadMoreSmooth(RefreshLoadMoreLayout.d<Object> paramAnonymousd)
       {
-        AppMethodBeat.i(286904);
-        p.k(paramAnonymousc, "reason");
-        Object localObject = this.zxh.zxf;
-        if (localObject != null)
-        {
-          localObject = (j)((a.b)localObject).xvJ;
-          if (localObject != null)
-          {
-            ((j)localObject).onPreFinishLoadMoreSmooth(paramAnonymousc);
-            AppMethodBeat.o(286904);
-            return;
-          }
+        AppMethodBeat.i(342027);
+        s.u(paramAnonymousd, "reason");
+        a.b localb = this.EAb.EAa;
+        if (localb != null) {
+          ((k)localb.ATx).onPreFinishLoadMoreSmooth(paramAnonymousd);
         }
-        AppMethodBeat.o(286904);
+        AppMethodBeat.o(342027);
       }
       
-      public final void onPreFinishRefresh(RefreshLoadMoreLayout.c<Object> paramAnonymousc)
+      public final void onPreFinishRefresh(RefreshLoadMoreLayout.d<Object> paramAnonymousd)
       {
-        AppMethodBeat.i(286902);
-        p.k(paramAnonymousc, "reason");
-        Object localObject = this.zxh.zxf;
-        if (localObject != null)
-        {
-          localObject = (j)((a.b)localObject).xvJ;
-          if (localObject != null)
-          {
-            ((j)localObject).onPreFinishRefresh(paramAnonymousc);
-            AppMethodBeat.o(286902);
-            return;
-          }
+        AppMethodBeat.i(342011);
+        s.u(paramAnonymousd, "reason");
+        a.b localb = this.EAb.EAa;
+        if (localb != null) {
+          ((k)localb.ATx).onPreFinishRefresh(paramAnonymousd);
         }
-        AppMethodBeat.o(286902);
+        AppMethodBeat.o(342011);
       }
     });
   }
   
-  public void a(a.b paramb)
+  public static boolean onBackPressed()
   {
-    p.k(paramb, "callback");
-    this.zxf = paramb;
-    this.zxg.register(this.xvV);
-    dsr();
+    return false;
   }
   
-  public abstract void byN();
+  public void a(a.b paramb)
+  {
+    s.u(paramb, "callback");
+    this.EAa = paramb;
+    this.EzZ.register(this.ATF);
+    dUM();
+  }
   
-  public void dsF() {}
+  public abstract void bXB();
   
-  public abstract void dsr();
+  public abstract g dUK();
   
-  public abstract f dsu();
+  public void dUL() {}
+  
+  public abstract void dUM();
   
   public void keep(com.tencent.mm.vending.e.a parama) {}
   
   public void onDetach()
   {
-    this.zxg.unregister(this.xvV);
+    this.EzZ.unregister(this.ATF);
   }
   
   public abstract void requestRefresh();

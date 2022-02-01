@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.collect.reward.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
@@ -37,7 +36,7 @@ public abstract class QrRewardBaseUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.reward.ui.QrRewardBaseUI
  * JD-Core Version:    0.7.0.1
  */

@@ -2,40 +2,40 @@ package com.tencent.mm.plugin.card.model.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.model.a.j;
-import com.tencent.mm.protocal.protobuf.bte;
-import com.tencent.mm.protocal.protobuf.btf;
-import com.tencent.mm.protocal.protobuf.dyl;
-import com.tencent.mm.protocal.protobuf.dyy;
+import com.tencent.mm.protocal.protobuf.chx;
+import com.tencent.mm.protocal.protobuf.chy;
+import com.tencent.mm.protocal.protobuf.erp;
+import com.tencent.mm.protocal.protobuf.esc;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/card/model/v4/CgiGetCouponAndGiftHistoryRequest;", "Lcom/tencent/mm/plugin/card/model/v2/CommonCardCgi;", "Lcom/tencent/mm/protocal/protobuf/GetCouponAndGiftHistoryResponse;", "pageNum", "", "pageSize", "scene", "", "(JJI)V", "Companion", "plugin-card_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/card/model/v4/CgiGetCouponAndGiftHistoryRequest;", "Lcom/tencent/mm/plugin/card/model/v2/CommonCardCgi;", "Lcom/tencent/mm/protocal/protobuf/GetCouponAndGiftHistoryResponse;", "pageNum", "", "pageSize", "scene", "", "(JJI)V", "Companion", "plugin-card_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends j<btf>
+  extends j<chy>
 {
-  public static final a trE;
+  public static final a wwc;
   
   static
   {
-    AppMethodBeat.i(244447);
-    trE = new a((byte)0);
-    AppMethodBeat.o(244447);
+    AppMethodBeat.i(294533);
+    wwc = new a((byte)0);
+    AppMethodBeat.o(294533);
   }
   
   public b(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(244446);
-    bte localbte = new bte();
-    btf localbtf = new btf();
-    localbte.Tdn = paramLong1;
-    localbte.Tdo = paramLong2;
-    localbte.scene = 1;
-    a((dyl)localbte, (dyy)localbtf, 4735, "/cgi-bin/mmpay-bin/mktgetcouponandgifthistory");
+    AppMethodBeat.i(294532);
+    chx localchx = new chx();
+    chy localchy = new chy();
+    localchx.aaqC = paramLong1;
+    localchx.aaqD = paramLong2;
+    localchx.scene = 1;
+    a((erp)localchx, (esc)localchy, 4735, "/cgi-bin/mmpay-bin/mktgetcouponandgifthistory");
     Log.i("MicroMsg.CgiGetMemberCardHistoryRequest", "pageNum: " + paramLong1 + ", pageSize: " + paramLong2);
-    AppMethodBeat.o(244446);
+    AppMethodBeat.o(294532);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/card/model/v4/CgiGetCouponAndGiftHistoryRequest$Companion;", "", "()V", "TAG", "", "plugin-card_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/card/model/v4/CgiGetCouponAndGiftHistoryRequest$Companion;", "", "()V", "TAG", "", "plugin-card_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

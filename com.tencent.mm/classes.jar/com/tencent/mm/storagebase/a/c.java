@@ -11,19 +11,19 @@ import com.tencent.wcdb.AbstractCursor;
 public final class c
   extends AbstractCursor
 {
-  SparseArray<Object[]> VJN;
-  public int VJO;
-  int VJP;
+  SparseArray<Object[]> adnR;
+  public int adnS;
+  int adnT;
   final int columnCount;
   private final String[] columnNames;
   
   private c(String[] paramArrayOfString)
   {
     AppMethodBeat.i(133434);
-    this.VJO = 3000;
+    this.adnS = 3000;
     this.columnNames = paramArrayOfString;
     this.columnCount = paramArrayOfString.length;
-    this.VJN = new SparseArray();
+    this.adnR = new SparseArray();
     AppMethodBeat.o(133434);
   }
   
@@ -47,17 +47,17 @@ public final class c
       AppMethodBeat.o(133435);
       throw ((Throwable)localObject);
     }
-    if (this.mPos >= this.VJP)
+    if (this.mPos >= this.adnT)
     {
       localObject = new CursorIndexOutOfBoundsException("After last row.");
       AppMethodBeat.o(133435);
       throw ((Throwable)localObject);
     }
-    int i = this.mPos / this.VJO;
+    int i = this.mPos / this.adnS;
     int j = this.mPos;
-    int k = this.VJO;
+    int k = this.adnS;
     int m = this.columnCount;
-    Object localObject = ((Object[])this.VJN.get(i))[(j % k * m + paramInt)];
+    Object localObject = ((Object[])this.adnR.get(i))[(j % k * m + paramInt)];
     AppMethodBeat.o(133435);
     return localObject;
   }
@@ -85,7 +85,7 @@ public final class c
   
   public final int getCount()
   {
-    return this.VJP;
+    return this.adnT;
   }
   
   public final double getDouble(int paramInt)
@@ -224,7 +224,7 @@ public final class c
   
   public final class a
   {
-    Object[] VJQ;
+    Object[] adnU;
     final int endIndex;
     int index;
     
@@ -232,13 +232,13 @@ public final class c
     {
       this.index = paramInt1;
       this.endIndex = paramInt2;
-      this.VJQ = paramArrayOfObject;
+      this.adnU = paramArrayOfObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.storagebase.a.c
  * JD-Core Version:    0.7.0.1
  */

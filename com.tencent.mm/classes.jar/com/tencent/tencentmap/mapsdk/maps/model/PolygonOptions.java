@@ -32,9 +32,10 @@ public class PolygonOptions
   public PolygonOptions()
   {
     AppMethodBeat.i(173295);
-    this.iLevel = OverlayLevel.OverlayLevelAboveLabels;
+    this.iLevel = 2;
     this.fStrokeWidth = 1.0F;
     this.iStrokeColor = -16777216;
+    this.mClickable = true;
     this.iFillColor = COLOR_DEFAULT_POLYGON;
     this.iZindex = 0;
     this.boIsVisble = true;
@@ -152,13 +153,13 @@ public class PolygonOptions
   
   public boolean isValid()
   {
-    AppMethodBeat.i(237890);
+    AppMethodBeat.i(218009);
     if ((this.listPts != null) && (this.listPts.size() > 2))
     {
-      AppMethodBeat.o(237890);
+      AppMethodBeat.o(218009);
       return true;
     }
-    AppMethodBeat.o(237890);
+    AppMethodBeat.o(218009);
     return false;
   }
   
@@ -169,7 +170,7 @@ public class PolygonOptions
   
   public PolygonOptions level(int paramInt)
   {
-    if ((paramInt < OverlayLevel.OverlayLevelAboveRoads) || (paramInt > OverlayLevel.OverlayLevelAboveLabels)) {
+    if ((paramInt < 0) || (paramInt > 2)) {
       return this;
     }
     this.iLevel = paramInt;
@@ -240,7 +241,7 @@ public class PolygonOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.PolygonOptions
  * JD-Core Version:    0.7.0.1
  */

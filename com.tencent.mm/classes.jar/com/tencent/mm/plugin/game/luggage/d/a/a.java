@@ -4,33 +4,33 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.widget.Toast;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.f.a.jl;
+import com.tencent.mm.autogen.a.km;
 import com.tencent.mm.modelstat.d;
-import com.tencent.mm.plugin.appbrand.o.a.a;
-import com.tencent.mm.plugin.appbrand.o.a.b;
+import com.tencent.mm.plugin.appbrand.p.a.a;
+import com.tencent.mm.plugin.appbrand.p.a.b;
+import com.tencent.mm.plugin.downloader.e.b;
 import com.tencent.mm.plugin.downloader.model.f;
 import com.tencent.mm.plugin.downloader.model.g.a;
 import com.tencent.mm.plugin.downloader.model.o;
 import com.tencent.mm.plugin.downloader.model.o.a;
-import com.tencent.mm.plugin.lite.jsapi.b.a;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.plugin.lite.api.e.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.base.k;
+import com.tencent.threadpool.i;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class a
-  extends com.tencent.mm.plugin.lite.jsapi.b
+  extends com.tencent.mm.plugin.lite.api.e
 {
-  private void ba(JSONObject paramJSONObject)
+  private void bn(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(231287);
-    jl localjl = new jl();
+    AppMethodBeat.i(277093);
+    km localkm = new km();
     String str1 = paramJSONObject.optString("task_name");
     String str2 = paramJSONObject.optString("task_url");
     String str3 = paramJSONObject.optString("alternative_url");
@@ -46,64 +46,64 @@ public class a
     int m = paramJSONObject.optInt("ssid");
     int n = paramJSONObject.optInt("uiarea");
     int i1 = paramJSONObject.optInt("notice_id");
-    localjl.fGJ.url = str2;
-    localjl.fGJ.md5 = str4;
-    localjl.fGJ.extInfo = str8;
-    localjl.fGJ.appId = str6;
-    localjl.fGJ.scene = i;
-    EventCenter.instance.publish(localjl);
+    localkm.hMf.url = str2;
+    localkm.hMf.md5 = str4;
+    localkm.hMf.extInfo = str8;
+    localkm.hMf.appId = str6;
+    localkm.hMf.scene = i;
+    localkm.publish();
     paramJSONObject = new g.a();
-    paramJSONObject.atc(str2);
-    paramJSONObject.atd(str3);
+    paramJSONObject.amR(str2);
+    paramJSONObject.amS(str3);
     paramJSONObject.setFileSize(l);
-    paramJSONObject.ate(str1);
+    paramJSONObject.amT(str1);
     paramJSONObject.setFileMD5(str4);
     paramJSONObject.setAppId(str6);
     paramJSONObject.setPackageName(str7);
-    paramJSONObject.me(true);
-    paramJSONObject.IS(Util.getInt(str5, 1));
+    paramJSONObject.nA(true);
+    paramJSONObject.JA(Util.getInt(str5, 1));
     paramJSONObject.setScene(i);
-    paramJSONObject.IW(k);
-    paramJSONObject.IT(m);
-    paramJSONObject.IU(n);
-    paramJSONObject.IV(i1);
-    paramJSONObject = paramJSONObject.uhY;
+    paramJSONObject.JE(k);
+    paramJSONObject.JB(m);
+    paramJSONObject.JC(n);
+    paramJSONObject.JD(i1);
+    paramJSONObject = paramJSONObject.xoe;
     if (j == 1) {}
-    for (l = f.cPZ().b(paramJSONObject);; l = f.cPZ().a(paramJSONObject))
+    for (l = f.duv().b(paramJSONObject);; l = f.duv().a(paramJSONObject))
     {
       d.d(10, "LuggageGameWebViewUI_addDownloadTask", hashCode());
       if (l > 0L) {
         break;
       }
-      this.Ega.aNa("fail");
-      AppMethodBeat.o(231287);
+      this.JZj.aJV("fail");
+      AppMethodBeat.o(277093);
       return;
     }
     try
     {
       paramJSONObject = new JSONObject();
       paramJSONObject.put("download_id", l);
-      this.Ega.bd(paramJSONObject);
-      AppMethodBeat.o(231287);
+      this.JZj.bq(paramJSONObject);
+      AppMethodBeat.o(277093);
       return;
     }
     catch (JSONException paramJSONObject)
     {
-      this.Ega.aNa("exception");
-      AppMethodBeat.o(231287);
+      this.JZj.aJV("exception");
+      AppMethodBeat.o(277093);
     }
   }
   
   public final void a(final String paramString, final JSONObject paramJSONObject, boolean paramBoolean)
   {
-    AppMethodBeat.i(231285);
+    AppMethodBeat.i(277117);
     paramString = paramJSONObject.optString("task_url");
     long l = paramJSONObject.optLong("task_size");
     if (Util.isNullOrNil(paramString))
     {
       Log.e("LiteAppJsApiAddDownloadTaskStraight", "url is null");
-      this.Ega.aNa("uri is null");
-      AppMethodBeat.o(231285);
+      this.JZj.aJV("uri is null");
+      AppMethodBeat.o(277117);
       return;
     }
     final String str1 = paramJSONObject.optString("appid");
@@ -112,111 +112,111 @@ public class a
     int k = paramJSONObject.optInt("ssid");
     int m = paramJSONObject.optInt("uiarea");
     int n = paramJSONObject.optInt("notice_id");
-    com.tencent.mm.plugin.downloader.f.a.a(9, new com.tencent.mm.plugin.downloader.f.b(str1, i, paramJSONObject.optString("extInfo"), m, k, n, j));
+    com.tencent.mm.plugin.downloader.e.a.a(9, new b(str1, i, paramJSONObject.optString("extInfo"), m, k, n, j));
     final String str2 = paramJSONObject.optString("currentUrl");
     if (paramJSONObject.optBoolean("use_downloader_widget", false))
     {
-      paramString = com.tencent.mm.plugin.downloader_app.a.a.aO(paramJSONObject);
+      paramString = com.tencent.mm.plugin.downloader_app.a.a.aZ(paramJSONObject);
       o.a(MMApplicationContext.getContext(), paramString, new o.a()
       {
-        public final void i(String paramAnonymousString, JSONObject paramAnonymousJSONObject)
+        public final void j(String paramAnonymousString, JSONObject paramAnonymousJSONObject)
         {
-          AppMethodBeat.i(231799);
+          AppMethodBeat.i(277109);
           if (paramAnonymousString != null)
           {
-            a.b(a.this).aNa(paramAnonymousString);
-            AppMethodBeat.o(231799);
+            a.b(a.this).aJV(paramAnonymousString);
+            AppMethodBeat.o(277109);
             return;
           }
-          a.c(a.this).bd(paramAnonymousJSONObject);
-          AppMethodBeat.o(231799);
+          a.c(a.this).bq(paramAnonymousJSONObject);
+          AppMethodBeat.o(277109);
         }
       });
       d.d(10, "LuggageGameWebViewUI_addDownloadTask", hashCode());
-      AppMethodBeat.o(231285);
+      AppMethodBeat.o(277117);
       return;
     }
     final Context localContext = MMApplicationContext.getContext();
     if (!NetStatusUtil.isNetworkConnected(localContext))
     {
-      this.Ega.aNa("fail_network_not_connected");
-      com.tencent.e.h.ZvG.bc(new Runnable()
+      this.JZj.aJV("fail_network_not_connected");
+      com.tencent.threadpool.h.ahAA.bk(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(231877);
+          AppMethodBeat.i(277108);
           Toast.makeText(localContext, localContext.getString(a.b.game_download_network_unavailable), 0).show();
-          AppMethodBeat.o(231877);
+          AppMethodBeat.o(277108);
         }
       });
       Log.i("LiteAppJsApiAddDownloadTaskStraight", " fail, network not ready");
-      AppMethodBeat.o(231285);
+      AppMethodBeat.o(277117);
       return;
     }
-    if (!e.avA())
+    if (!com.tencent.mm.compatible.util.e.aPU())
     {
-      this.Ega.aNa("sdcard_not_ready");
-      com.tencent.e.h.ZvG.bc(new Runnable()
+      this.JZj.aJV("sdcard_not_ready");
+      com.tencent.threadpool.h.ahAA.bk(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(231017);
+          AppMethodBeat.i(277105);
           Toast.makeText(localContext, localContext.getString(a.b.game_download_sdcard_unavailable), 0).show();
-          AppMethodBeat.o(231017);
+          AppMethodBeat.o(277105);
         }
       });
       Log.i("LiteAppJsApiAddDownloadTaskStraight", " fail, sdcard not ready");
-      AppMethodBeat.o(231285);
+      AppMethodBeat.o(277117);
       return;
     }
-    if ((l > 0L) && (!com.tencent.mm.plugin.downloader.model.h.IO(l)) && (!com.tencent.mm.plugin.downloader.model.h.IN(l)))
+    if ((l > 0L) && (!com.tencent.mm.plugin.downloader.model.h.lj(l)) && (!com.tencent.mm.plugin.downloader.model.h.li(l)))
     {
-      this.Ega.aNa("has_not_enough_space");
-      com.tencent.e.h.ZvG.bc(new Runnable()
+      this.JZj.aJV("has_not_enough_space");
+      com.tencent.threadpool.h.ahAA.bk(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(230920);
+          AppMethodBeat.i(277103);
           Toast.makeText(localContext, localContext.getString(a.b.game_download_not_enough_space), 0).show();
-          AppMethodBeat.o(230920);
+          AppMethodBeat.o(277103);
         }
       });
       Log.i("LiteAppJsApiAddDownloadTaskStraight", "fail, not enough space, require size = ".concat(String.valueOf(l)));
-      AppMethodBeat.o(231285);
+      AppMethodBeat.o(277117);
       return;
     }
     if (NetStatusUtil.isWifi(localContext))
     {
-      ba(paramJSONObject);
-      AppMethodBeat.o(231285);
+      bn(paramJSONObject);
+      AppMethodBeat.o(277117);
       return;
     }
-    com.tencent.mm.plugin.report.service.h.IzE.a(14217, new Object[] { str1, Integer.valueOf(4), str2, paramString, Integer.valueOf(3) });
-    com.tencent.mm.ui.base.h.a(localContext, localContext.getString(a.b.webview_download_ui_download_not_in_wifi_tips), localContext.getString(a.b.webview_download_ui_download_not_in_wifi_title), localContext.getString(a.b.webview_download_ui_btn_state_to_download), localContext.getString(a.b.app_cancel), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    com.tencent.mm.plugin.report.service.h.OAn.b(14217, new Object[] { str1, Integer.valueOf(4), str2, paramString, Integer.valueOf(3) });
+    k.a(localContext, localContext.getString(a.b.webview_download_ui_download_not_in_wifi_tips), localContext.getString(a.b.webview_download_ui_download_not_in_wifi_title), localContext.getString(a.b.webview_download_ui_btn_state_to_download), localContext.getString(a.b.app_cancel), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
-        AppMethodBeat.i(231624);
-        com.tencent.mm.plugin.report.service.h.IzE.a(14217, new Object[] { str1, Integer.valueOf(5), str2, paramString, Integer.valueOf(3) });
+        AppMethodBeat.i(277107);
+        com.tencent.mm.plugin.report.service.h.OAn.b(14217, new Object[] { str1, Integer.valueOf(5), str2, paramString, Integer.valueOf(3) });
         a.a(a.this, paramJSONObject);
         paramAnonymousDialogInterface.dismiss();
-        AppMethodBeat.o(231624);
+        AppMethodBeat.o(277107);
       }
     }, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
-        AppMethodBeat.i(231505);
-        com.tencent.mm.plugin.report.service.h.IzE.a(14217, new Object[] { str1, Integer.valueOf(6), str2, paramString, Integer.valueOf(3) });
+        AppMethodBeat.i(277104);
+        com.tencent.mm.plugin.report.service.h.OAn.b(14217, new Object[] { str1, Integer.valueOf(6), str2, paramString, Integer.valueOf(3) });
         paramAnonymousDialogInterface.dismiss();
-        a.a(a.this).aNa("network_not_wifi");
-        AppMethodBeat.o(231505);
+        a.a(a.this).aJV("network_not_wifi");
+        AppMethodBeat.o(277104);
       }
     }, a.a.wechat_green);
-    AppMethodBeat.o(231285);
+    AppMethodBeat.o(277117);
   }
   
-  public final int ewF()
+  public final int fEx()
   {
     return 1;
   }

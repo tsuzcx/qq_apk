@@ -1,72 +1,56 @@
 package kotlin.g.b;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l.b;
-import kotlin.l.e;
-import kotlin.l.j;
-import kotlin.l.p;
-import kotlin.l.r;
+import kotlin.l.o;
 
-public class ac
+public abstract class ac
+  extends f
+  implements o
 {
-  public String a(m paramm)
+  public ac() {}
+  
+  public ac(Object paramObject, Class paramClass, String paramString1, String paramString2, int paramInt) {}
+  
+  public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(128961);
-    paramm = paramm.getClass().getGenericInterfaces()[0].toString();
-    if (paramm.startsWith("kotlin.jvm.functions."))
+    if (paramObject == this) {}
+    do
     {
-      paramm = paramm.substring(21);
-      AppMethodBeat.o(128961);
-      return paramm;
+      return true;
+      if (!(paramObject instanceof ac)) {
+        break;
+      }
+      paramObject = (ac)paramObject;
+    } while ((avF().equals(paramObject.avF())) && (getName().equals(paramObject.getName())) && (getSignature().equals(paramObject.getSignature())) && (s.p(kln(), paramObject.kln())));
+    return false;
+    if ((paramObject instanceof o)) {
+      return paramObject.equals(klo());
     }
-    AppMethodBeat.o(128961);
-    return paramm;
+    return false;
   }
   
-  public String a(q paramq)
+  public int hashCode()
   {
-    AppMethodBeat.i(128960);
-    paramq = a(paramq);
-    AppMethodBeat.o(128960);
-    return paramq;
+    return (avF().hashCode() * 31 + getName().hashCode()) * 31 + getSignature().hashCode();
   }
   
-  public e a(n paramn)
+  protected final o klE()
   {
-    return paramn;
+    return (o)super.klp();
   }
   
-  public kotlin.l.h a(t paramt)
+  public String toString()
   {
-    return paramt;
-  }
-  
-  public j a(u paramu)
-  {
-    return paramu;
-  }
-  
-  public p a(x paramx)
-  {
-    return paramx;
-  }
-  
-  public r a(y paramy)
-  {
-    return paramy;
-  }
-  
-  public b bO(Class paramClass)
-  {
-    AppMethodBeat.i(128959);
-    paramClass = new h(paramClass);
-    AppMethodBeat.o(128959);
-    return paramClass;
+    b localb = klo();
+    if (localb != this) {
+      return localb.toString();
+    }
+    return "property " + getName() + " (Kotlin reflection is not available)";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.g.b.ac
  * JD-Core Version:    0.7.0.1
  */

@@ -13,16 +13,16 @@ final class LoginIndepPass$14
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(128160);
-    com.tencent.mm.plugin.b.a.bkD("L200_100");
-    Object localObject = new Intent(this.nes, MobileInputUI.class);
+    com.tencent.mm.plugin.b.a.TA("L200_100");
+    Object localObject = new Intent(this.qbg, MobileInputUI.class);
     ((Intent)localObject).putExtra("mobile_input_purpose", 1);
     ((Intent)localObject).addFlags(67108864);
-    paramMenuItem = this.nes;
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-    com.tencent.mm.hellhoundlib.a.a.b(paramMenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/account/ui/LoginIndepPass$7", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramMenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+    paramMenuItem = this.qbg;
+    localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(paramMenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/account/ui/LoginIndepPass$7", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramMenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
     com.tencent.mm.hellhoundlib.a.a.c(paramMenuItem, "com/tencent/mm/plugin/account/ui/LoginIndepPass$7", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    this.nes.finish();
+    this.qbg.finish();
     AppMethodBeat.o(128160);
     return true;
   }

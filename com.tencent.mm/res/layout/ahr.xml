@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:background="@drawable/a01" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="2.5" android:minHeight="@dimen/d_">
+            <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/l2_" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_centerVertical="true" android:layout_marginStart="@dimen/cp" android:layout_alignParentStart="true">
+                <TextView android:textSize="16.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:ellipsize="end" android:id="@id/fy1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:lines="1" android:singleLine="true" />
+                <ImageView android:id="@id/jfg" android:visibility="gone" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:layout_marginLeft="6.0dip" android:layout_toRightOf="@id/fy1" android:layout_centerVertical="true" />
+                <TextView android:gravity="center_vertical" android:id="@id/epx" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:layout_toRightOf="@id/jfg" android:layout_centerVertical="true" />
+            </LinearLayout>
+            <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/fy0" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.5" android:layout_marginEnd="@dimen/cp">
+                <com.tencent.mm.plugin.finder.view.FinderTagFlowLayout android:id="@id/fxz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" />
+            </RelativeLayout>
+        </LinearLayout>
+        <View android:id="@id/fvp" android:background="@color/BW_100_Alpha_0_0_5" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/df" android:layout_alignParentBottom="true" android:layout_marginStart="@dimen/cp" android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+</FrameLayout>

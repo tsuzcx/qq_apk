@@ -6,12 +6,12 @@ final class m$a<T>
   extends FutureTask<T>
   implements Comparable<a<T>>
 {
-  volatile long pyx = 0L;
+  volatile long sDC = 0L;
   
   public m$a(Runnable paramRunnable, long paramLong)
   {
     super(paramRunnable, null);
-    this.pyx = paramLong;
+    this.sDC = paramLong;
   }
 }
 

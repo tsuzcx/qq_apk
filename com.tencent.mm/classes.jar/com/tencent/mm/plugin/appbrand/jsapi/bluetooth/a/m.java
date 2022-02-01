@@ -1,76 +1,92 @@
 package com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a;
 
-import android.annotation.TargetApi;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a;
-import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.b;
-import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.a.h;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.b.a;
+import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.h;
+import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.k;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.c;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 import java.util.Map;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-@TargetApi(18)
-public final class m
-  extends com.tencent.mm.plugin.appbrand.jsapi.c
+public class m
+  extends c<f>
 {
-  private static final int CTRL_INDEX = 185;
-  private static final String NAME = "readBLECharacteristicValue";
+  public static final int CTRL_INDEX = 173;
+  public static final String NAME = "openBluetoothAdapter";
   
-  public final void a(e parame, JSONObject paramJSONObject, int paramInt)
+  protected k a(f paramf, k paramk)
   {
-    AppMethodBeat.i(144517);
-    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.rE(41);
-    if (paramJSONObject == null)
+    return paramk;
+  }
+  
+  public final void a(final f paramf, JSONObject paramJSONObject, int paramInt)
+  {
+    AppMethodBeat.i(144515);
+    h.rG(0);
+    Object localObject = paramf.getAppId();
+    Log.i("MicroMsg.JsApiOpenBluetoothAdapter", "appid:%s openBluetoothAdapter!", new Object[] { localObject });
+    k localk = a(paramf, com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a.a((String)localObject, new b.a()new m.2
     {
-      Log.e("MicroMsg.JsApiReadBLECharacteristicValue", "JsApiReadBLECharacteristicValue data is null");
-      paramJSONObject = new HashMap();
-      paramJSONObject.put("errCode", Integer.valueOf(10013));
-      parame.j(paramInt, m("fail:invalid data", paramJSONObject));
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.ex(43, 44);
-      AppMethodBeat.o(144517);
+      public final void onBluetoothStateChange(boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(144506);
+        m.d.a(paramf, paramAnonymousBoolean, false);
+        AppMethodBeat.o(144506);
+      }
+    }, new m.2(this, paramf), new m.3(this, paramf), new m.4(this, paramf)));
+    localObject = new HashMap();
+    switch (localk.errCode)
+    {
+    default: 
+      ((Map)localObject).put("errCode", Integer.valueOf(localk.errCode));
+      paramf.callback(paramInt, a(localk.errMsg, localk.rKn, (Map)localObject));
+      h.rG(2);
+      AppMethodBeat.o(144515);
+      return;
+    case 0: 
+      if (paramJSONObject != null)
+      {
+        Log.i("MicroMsg.JsApiOpenBluetoothAdapter", "doSomeGlobalConfigAfterOpenBluetoothAdapter, data: ".concat(String.valueOf(paramJSONObject)));
+        if (!paramJSONObject.has("refreshCache")) {
+          break;
+        }
+      }
+      break;
+    }
+    try
+    {
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.jg(paramJSONObject.getBoolean("refreshCache"));
+      label215:
+      paramf.callback(paramInt, a(a.e.rVt, (Map)localObject));
+      h.rG(1);
+      AppMethodBeat.o(144515);
+      return;
+      ((Map)localObject).put("errCode", Integer.valueOf(10009));
+      paramf.callback(paramInt, a(a.c.rUI, (Map)localObject));
+      h.fr(2, 8);
+      AppMethodBeat.o(144515);
+      return;
+      ((Map)localObject).put("errCode", Integer.valueOf(10001));
+      paramf.callback(paramInt, a("fail:not available", a.c.rUF, (Map)localObject));
+      h.fr(2, 7);
+      AppMethodBeat.o(144515);
       return;
     }
-    Log.i("MicroMsg.JsApiReadBLECharacteristicValue", "appId:%s readBLECharacteristicValue data %s", new Object[] { parame.getAppId(), paramJSONObject.toString() });
-    b localb = a.ahq(parame.getAppId());
-    if (localb == null)
+    catch (JSONException paramJSONObject)
     {
-      Log.e("MicroMsg.JsApiReadBLECharacteristicValue", "bleWorker is null, may not open ble");
-      paramJSONObject = new HashMap();
-      paramJSONObject.put("errCode", Integer.valueOf(10000));
-      parame.j(paramInt, m("fail:not init", paramJSONObject));
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.ex(43, 46);
-      AppMethodBeat.o(144517);
-      return;
+      break label215;
     }
-    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bRm())
-    {
-      Log.e("MicroMsg.JsApiReadBLECharacteristicValue", "adapter is null or not enabled!");
-      paramJSONObject = new HashMap();
-      paramJSONObject.put("errCode", Integer.valueOf(10001));
-      parame.j(paramInt, m("fail:not available", paramJSONObject));
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.ex(43, 48);
-      AppMethodBeat.o(144517);
-      return;
-    }
-    String str1 = paramJSONObject.optString("deviceId");
-    String str2 = paramJSONObject.optString("serviceId");
-    String str3 = paramJSONObject.optString("characteristicId");
-    boolean bool1 = paramJSONObject.optBoolean("debug", false);
-    boolean bool2 = paramJSONObject.optBoolean("mainThread", false);
-    boolean bool3 = paramJSONObject.optBoolean("serial", true);
-    paramJSONObject = new h(str2, str3);
-    paramJSONObject.aGM = bool1;
-    paramJSONObject.oIw = bool2;
-    paramJSONObject.oIy = bool3;
-    localb.a(str1, paramJSONObject, new m.1(this, parame, paramInt));
-    AppMethodBeat.o(144517);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a.m
  * JD-Core Version:    0.7.0.1
  */

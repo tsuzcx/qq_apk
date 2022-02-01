@@ -2,70 +2,69 @@ package com.tencent.mm.plugin.music.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.loader.j.b;
+import com.tencent.mm.loader.i.b;
 import java.nio.charset.Charset;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import kotlin.n.d;
-import kotlin.t;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/music/model/MusicMediaPath;", "", "()V", "musicCachePath", "", "getMusicCachePath", "()Ljava/lang/String;", "thumbSuffix", "getCaptureFilePath", "getCaptureThumbPath", "plugin-music_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/music/model/MusicMediaPath;", "", "()V", "musicCachePath", "", "getMusicCachePath", "()Ljava/lang/String;", "thumbSuffix", "getCaptureFilePath", "getCaptureThumbPath", "plugin-music_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class j
 {
-  private static final String FRH = "_thumb";
-  public static final j FRI;
+  public static final j LMC;
+  private static final String LMD;
   
   static
   {
-    AppMethodBeat.i(260214);
-    FRI = new j();
-    FRH = "_thumb";
-    AppMethodBeat.o(260214);
+    AppMethodBeat.i(271189);
+    LMC = new j();
+    LMD = "_thumb";
+    AppMethodBeat.o(271189);
   }
   
-  public static String egp()
+  public static String fip()
   {
-    AppMethodBeat.i(260209);
-    Object localObject1 = new StringBuilder().append(feT());
+    AppMethodBeat.i(271171);
+    Object localObject1 = goa();
     Object localObject2 = String.valueOf(System.currentTimeMillis());
     Charset localCharset = d.UTF_8;
     if (localObject2 == null)
     {
-      localObject1 = new t("null cannot be cast to non-null type java.lang.String");
-      AppMethodBeat.o(260209);
+      localObject1 = new NullPointerException("null cannot be cast to non-null type java.lang.String");
+      AppMethodBeat.o(271171);
       throw ((Throwable)localObject1);
     }
     localObject2 = ((String)localObject2).getBytes(localCharset);
-    p.j(localObject2, "(this as java.lang.String).getBytes(charset)");
-    localObject1 = g.getMessageDigest((byte[])localObject2);
-    AppMethodBeat.o(260209);
+    s.s(localObject2, "(this as java.lang.String).getBytes(charset)");
+    localObject1 = s.X((String)localObject1, g.getMessageDigest((byte[])localObject2));
+    AppMethodBeat.o(271171);
     return localObject1;
   }
   
-  private static String feT()
+  private static String goa()
   {
-    AppMethodBeat.i(260207);
-    String str = b.aSU() + "music/";
-    AppMethodBeat.o(260207);
+    AppMethodBeat.i(271165);
+    String str = s.X(b.bmI(), "music/");
+    AppMethodBeat.o(271165);
     return str;
   }
   
-  public static String feU()
+  public static String gob()
   {
-    AppMethodBeat.i(260211);
-    Object localObject1 = new StringBuilder().append(feT());
+    AppMethodBeat.i(271182);
+    Object localObject1 = new StringBuilder().append(goa());
     Object localObject2 = String.valueOf(System.currentTimeMillis());
     Charset localCharset = d.UTF_8;
     if (localObject2 == null)
     {
-      localObject1 = new t("null cannot be cast to non-null type java.lang.String");
-      AppMethodBeat.o(260211);
+      localObject1 = new NullPointerException("null cannot be cast to non-null type java.lang.String");
+      AppMethodBeat.o(271182);
       throw ((Throwable)localObject1);
     }
     localObject2 = ((String)localObject2).getBytes(localCharset);
-    p.j(localObject2, "(this as java.lang.String).getBytes(charset)");
-    localObject1 = g.getMessageDigest((byte[])localObject2) + FRH;
-    AppMethodBeat.o(260211);
+    s.s(localObject2, "(this as java.lang.String).getBytes(charset)");
+    localObject1 = g.getMessageDigest((byte[])localObject2) + LMD;
+    AppMethodBeat.o(271182);
     return localObject1;
   }
 }

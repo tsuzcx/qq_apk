@@ -9,19 +9,18 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.q;
-import com.tencent.mm.f.a.du;
+import com.tencent.mm.autogen.a.ee;
+import com.tencent.mm.modelimage.r;
 import com.tencent.mm.plugin.emoji.a.a.d;
 import com.tencent.mm.plugin.emoji.a.a.f;
-import com.tencent.mm.plugin.emoji.e.e;
-import com.tencent.mm.plugin.emoji.i.b;
-import com.tencent.mm.plugin.emoji.i.c;
-import com.tencent.mm.plugin.emoji.i.d;
-import com.tencent.mm.plugin.emoji.i.h;
-import com.tencent.mm.plugin.emoji.model.l;
-import com.tencent.mm.plugin.emoji.model.o.a;
-import com.tencent.mm.protocal.protobuf.akh;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.plugin.emoji.h.b;
+import com.tencent.mm.plugin.emoji.h.c;
+import com.tencent.mm.plugin.emoji.h.d;
+import com.tencent.mm.plugin.emoji.h.h;
+import com.tencent.mm.plugin.emoji.mgr.e;
+import com.tencent.mm.plugin.emoji.model.m;
+import com.tencent.mm.plugin.emoji.model.r.a;
+import com.tencent.mm.protocal.protobuf.cjb;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
@@ -29,97 +28,72 @@ public final class c
   extends com.tencent.mm.plugin.emoji.a.a.a
 {
   private final String TAG = "MicroMsg.emoji.EmojiMineAdapter";
-  private ProgressDialog mRa;
+  private ProgressDialog pNH;
   
   public c(Context paramContext)
   {
     super(paramContext);
   }
   
-  public final void Js(int paramInt) {}
+  public final void JZ(int paramInt) {}
   
-  public final void Jt(int paramInt) {}
+  public final void Ka(int paramInt) {}
   
-  public final void Ju(int paramInt) {}
+  public final void Kb(int paramInt) {}
   
-  public final com.tencent.mm.plugin.emoji.a.a.c a(l paraml)
+  public final com.tencent.mm.plugin.emoji.a.a.c a(m paramm)
   {
     AppMethodBeat.i(108306);
-    paraml = new d(paraml);
+    paramm = new d(paramm);
     AppMethodBeat.o(108306);
-    return paraml;
+    return paramm;
   }
   
   public final View b(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(108304);
     paramViewGroup = (a)paramView.getTag();
-    Object localObject = Jv(paramInt);
+    Object localObject = Kd(paramInt);
     if ((paramViewGroup != null) && (localObject != null))
     {
-      localObject = ((f)localObject).uBa;
+      localObject = ((f)localObject).xHE;
       if (localObject != null)
       {
-        if (!com.tencent.mm.plugin.emoji.i.a.g((akh)localObject)) {
-          break label90;
+        if (!com.tencent.mm.plugin.emoji.g.c.i((cjb)localObject)) {
+          break label70;
         }
-        paramViewGroup.setTitle(i.h.emoji_store_tuzi_title);
-        paramViewGroup.Jo(i.d.icon_002_cover);
+        paramViewGroup.setTitle(h.h.emoji_store_tuzi_title);
+        paramViewGroup.JV(h.d.icon_002_cover);
       }
     }
     for (;;)
     {
-      if (paramInt + 1 == getCount()) {
-        paramViewGroup.uzz.setBackgroundResource(i.d.comm_list_item_selector_no_divider);
-      }
       AppMethodBeat.o(108304);
       return paramView;
-      label90:
-      if (!Util.isNullOrNil(((akh)localObject).Suv)) {
-        paramViewGroup.setTitle(((akh)localObject).Suv);
+      label70:
+      if (!Util.isNullOrNil(((cjb)localObject).Zul)) {
+        paramViewGroup.setTitle(((cjb)localObject).Zul);
       }
       for (;;)
       {
-        if (Util.isNullOrNil(((akh)localObject).CNj)) {
-          break label164;
+        if (Util.isNullOrNil(((cjb)localObject).IHo)) {
+          break label144;
         }
-        q.bml().a(((akh)localObject).CNj, paramViewGroup.cTB(), e.gd(((akh)localObject).ProductID, ((akh)localObject).CNj));
+        r.bKe().a(((cjb)localObject).IHo, paramViewGroup.dxW(), e.gJ(((cjb)localObject).ProductID, ((cjb)localObject).IHo));
         break;
-        paramViewGroup.setTitle(((akh)localObject).ProductID);
+        paramViewGroup.setTitle(((cjb)localObject).ProductID);
       }
-      label164:
+      label144:
       Log.i("MicroMsg.emoji.EmojiMineAdapter", "Icon rul is null");
-      paramViewGroup.cTB().setImageDrawable(null);
+      paramViewGroup.dxW().setImageDrawable(null);
     }
-  }
-  
-  public final void cTL()
-  {
-    AppMethodBeat.i(108309);
-    super.cTL();
-    AppMethodBeat.o(108309);
-  }
-  
-  public final int cTM()
-  {
-    return 0;
-  }
-  
-  public final int cTN()
-  {
-    return 0;
-  }
-  
-  public final int cTO()
-  {
-    return 0;
   }
   
   public final void clear()
   {
     AppMethodBeat.i(108308);
-    if (this.mRa != null) {
-      this.mRa.cancel();
+    if (this.pNH != null) {
+      this.pNH.cancel();
     }
     super.clear();
     AppMethodBeat.o(108308);
@@ -129,25 +103,47 @@ public final class c
   {
     AppMethodBeat.i(108305);
     paramContext = new a(paramContext, paramView);
-    paramContext.a(this.uAP);
+    paramContext.a(this.xHs);
     AppMethodBeat.o(108305);
     return paramContext;
   }
   
-  public final void dw(String paramString, int paramInt)
+  public final void dX(String paramString, int paramInt)
   {
     AppMethodBeat.i(108307);
     if (paramInt == 7) {
-      super.dw(paramString, paramInt);
+      super.dX(paramString, paramInt);
     }
     AppMethodBeat.o(108307);
+  }
+  
+  public final void dyg()
+  {
+    AppMethodBeat.i(108309);
+    super.dyg();
+    AppMethodBeat.o(108309);
+  }
+  
+  public final int dyh()
+  {
+    return 0;
+  }
+  
+  public final int dyi()
+  {
+    return 0;
+  }
+  
+  public final int dyj()
+  {
+    return 0;
   }
   
   public final void notifyDataSetChanged()
   {
     AppMethodBeat.i(108303);
-    if (this.uAO == null) {
-      this.uAO = a(null);
+    if (this.xHr == null) {
+      this.xHr = a(null);
     }
     super.notifyDataSetChanged();
     AppMethodBeat.o(108303);
@@ -161,113 +157,113 @@ public final class c
       super(paramView);
     }
     
-    protected final boolean a(o.a parama, View paramView)
+    protected final boolean a(r.a parama, View paramView)
     {
       AppMethodBeat.i(108299);
-      cTE();
+      dxZ();
       boolean bool = super.a(parama, paramView);
       AppMethodBeat.o(108299);
       return bool;
     }
     
-    protected final void b(o.a parama, View paramView)
+    protected final void b(r.a parama, View paramView)
     {
       AppMethodBeat.i(108300);
       super.b(parama, paramView);
-      if (com.tencent.mm.plugin.emoji.i.a.ava(getProductId()))
+      if (com.tencent.mm.plugin.emoji.g.c.apa(getProductId()))
       {
-        parama = new du();
-        parama.fzn.productId = getProductId();
-        paramView = parama.fzn;
-        if (!com.tencent.mm.plugin.emoji.i.a.cWg()) {
-          break label98;
+        parama = new ee();
+        parama.hDW.productId = getProductId();
+        paramView = parama.hDW;
+        if (!com.tencent.mm.plugin.emoji.g.c.dBJ()) {
+          break label95;
         }
       }
-      label98:
+      label95:
       for (int i = 7;; i = 3)
       {
         paramView.status = i;
-        parama.fzn.progress = getProgress();
-        parama.fzn.fzo = this.uzy.uBd;
-        EventCenter.instance.publish(parama);
+        parama.hDW.progress = getProgress();
+        parama.hDW.hDX = this.xFY.xHI;
+        parama.publish();
         AppMethodBeat.o(108300);
         return;
       }
     }
     
-    protected final int cTA()
+    protected final void dxT()
+    {
+      AppMethodBeat.i(108298);
+      this.xGb.setVisibility(8);
+      this.xGc.setVisibility(8);
+      dxY();
+      this.xGi.setVisibility(8);
+      this.xGm.setVisibility(8);
+      this.xGn.setVisibility(8);
+      this.xGa.setVisibility(0);
+      this.sUt.setVisibility(0);
+      this.xGk.setVisibility(0);
+      this.xGj.setVisibility(0);
+      this.xGl.setVisibility(0);
+      AppMethodBeat.o(108298);
+    }
+    
+    protected final int[] dxU()
+    {
+      AppMethodBeat.i(108301);
+      int i = getContext().getResources().getDimensionPixelSize(h.c.BigIconSize);
+      AppMethodBeat.o(108301);
+      return new int[] { i, i };
+    }
+    
+    protected final int dxV()
     {
       return -1;
     }
     
-    protected final boolean cTG()
+    protected final boolean dyb()
     {
       return true;
     }
     
-    public final void cTJ()
+    public final void dye()
     {
       AppMethodBeat.i(108302);
-      if (this.uzy == null)
+      if (this.xFY == null)
       {
         AppMethodBeat.o(108302);
         return;
       }
-      switch (cTE())
+      switch (dxZ())
       {
       default: 
-        this.uzF.setVisibility(8);
-        this.uzG.setBackgroundResource(i.d.btn_solid_white);
-        this.uzG.setVisibility(0);
-        this.uzI.setVisibility(0);
-        this.uzI.setText(i.h.emoji_store_uninstall_emoji);
-        this.uzI.setTextColor(getContext().getResources().getColorStateList(i.b.black_text_color_selector));
-        this.uzJ.setVisibility(4);
-        this.uzJ.setImageResource(i.d.emoji_download);
-        this.uzK.setVisibility(4);
+        this.xGi.setVisibility(8);
+        this.xGj.setBackgroundResource(h.d.btn_solid_white);
+        this.xGj.setVisibility(0);
+        this.xGl.setVisibility(0);
+        this.xGl.setText(h.h.emoji_store_uninstall_emoji);
+        this.xGl.setTextColor(getContext().getResources().getColorStateList(h.b.black_text_color_selector));
+        this.xGm.setVisibility(4);
+        this.xGm.setImageResource(h.d.emoji_download);
+        this.xGn.setVisibility(4);
         AppMethodBeat.o(108302);
         return;
       case 0: 
       case 3: 
-        this.uzF.setVisibility(8);
-        this.uzG.setBackgroundResource(i.d.btn_solid_green);
-        this.uzG.setVisibility(0);
-        this.uzI.setVisibility(0);
-        this.uzI.setText(i.h.emoji_store_download);
-        this.uzI.setTextColor(getContext().getResources().getColorStateList(i.b.white_text_color_selector));
-        this.uzJ.setVisibility(4);
-        this.uzJ.setImageResource(i.d.emoji_download);
-        this.uzK.setVisibility(4);
+        this.xGi.setVisibility(8);
+        this.xGj.setBackgroundResource(h.d.btn_solid_green);
+        this.xGj.setVisibility(0);
+        this.xGl.setVisibility(0);
+        this.xGl.setText(h.h.emoji_store_download);
+        this.xGl.setTextColor(getContext().getResources().getColorStateList(h.b.white_text_color_selector));
+        this.xGm.setVisibility(4);
+        this.xGm.setImageResource(h.d.emoji_download);
+        this.xGn.setVisibility(4);
         AppMethodBeat.o(108302);
         return;
       }
-      cTH();
+      dyc();
       AppMethodBeat.o(108302);
-    }
-    
-    protected final void cTy()
-    {
-      AppMethodBeat.i(108298);
-      this.uzB.setVisibility(8);
-      this.uzC.setVisibility(8);
-      cTD();
-      this.uzF.setVisibility(8);
-      this.uzJ.setVisibility(8);
-      this.uzK.setVisibility(8);
-      this.uzA.setVisibility(0);
-      this.pPT.setVisibility(0);
-      this.uzH.setVisibility(0);
-      this.uzG.setVisibility(0);
-      this.uzI.setVisibility(0);
-      AppMethodBeat.o(108298);
-    }
-    
-    protected final int[] cTz()
-    {
-      AppMethodBeat.i(108301);
-      int i = getContext().getResources().getDimensionPixelSize(i.c.BigIconSize);
-      AppMethodBeat.o(108301);
-      return new int[] { i, i };
     }
   }
 }

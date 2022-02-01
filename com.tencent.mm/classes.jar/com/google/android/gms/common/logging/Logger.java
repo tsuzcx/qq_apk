@@ -1,6 +1,5 @@
 package com.google.android.gms.common.logging;
 
-import android.annotation.SuppressLint;
 import android.util.Log;
 import com.google.android.gms.common.internal.GmsLogger;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -175,7 +174,6 @@ public class Logger
     AppMethodBeat.o(4916);
   }
   
-  @SuppressLint({"WtfWithoutException"})
   public void wtf(String paramString, Object... paramVarArgs)
   {
     AppMethodBeat.i(4915);
@@ -192,7 +190,7 @@ public class Logger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.logging.Logger
  * JD-Core Version:    0.7.0.1
  */

@@ -21,30 +21,29 @@ import com.tencent.mm.plugin.multitask.j.f;
 import com.tencent.mm.plugin.multitask.j.g;
 import com.tencent.mm.plugin.multitask.j.h;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/animation/swipeahead/FloatMultiTaskIndicatorView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "animationHandler", "Lcom/tencent/mm/plugin/multitask/animation/swipeahead/FloatMultiTaskIndicatorViewAnimationHandler;", "backgroundImageView", "Landroid/widget/ImageView;", "hasReachFloatBallCountLimit", "", "indicatorImageView", "indicatorTextView", "Landroid/widget/TextView;", "orientationChangedListener", "Lcom/tencent/mm/plugin/multitask/animation/swipeahead/FloatMultiTaskIndicatorView$OnOrientationChangedListener;", "vibrator", "Landroid/os/Vibrator;", "zoomInAnimator", "Landroid/animation/Animator;", "zoomOutAnimator", "createZoomInAnimation", "Landroid/animation/AnimatorSet;", "createZoomOutAnimation", "hide", "", "withAnimation", "animatorListenerAdapter", "Landroid/animation/AnimatorListenerAdapter;", "init", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onDragEnd", "onDragEnter", "onDragExit", "onDragStart", "onFloatBallInfoCountChanged", "onHitChange", "isHit", "setOnOrientationChangedListener", "show", "vibrate", "Companion", "OnOrientationChangedListener", "plugin-multitask_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitask/animation/swipeahead/FloatMultiTaskIndicatorView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "animationHandler", "Lcom/tencent/mm/plugin/multitask/animation/swipeahead/FloatMultiTaskIndicatorViewAnimationHandler;", "backgroundImageView", "Landroid/widget/ImageView;", "hasReachFloatBallCountLimit", "", "indicatorImageView", "indicatorTextView", "Landroid/widget/TextView;", "orientationChangedListener", "Lcom/tencent/mm/plugin/multitask/animation/swipeahead/FloatMultiTaskIndicatorView$OnOrientationChangedListener;", "vibrator", "Landroid/os/Vibrator;", "zoomInAnimator", "Landroid/animation/Animator;", "zoomOutAnimator", "createZoomInAnimation", "Landroid/animation/AnimatorSet;", "createZoomOutAnimation", "hide", "", "withAnimation", "animatorListenerAdapter", "Landroid/animation/AnimatorListenerAdapter;", "init", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onDragEnd", "onDragEnter", "onDragExit", "onDragStart", "onFloatBallInfoCountChanged", "onHitChange", "isHit", "setOnOrientationChangedListener", "show", "vibrate", "Companion", "OnOrientationChangedListener", "plugin-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FloatMultiTaskIndicatorView
   extends FrameLayout
 {
-  public static final FloatMultiTaskIndicatorView.a FGh;
-  private c FGf;
-  private b FGg;
-  Vibrator rqC;
-  ImageView seg;
-  ImageView seh;
-  private TextView sei;
-  Animator sek;
-  Animator sel;
-  boolean sen;
+  public static final FloatMultiTaskIndicatorView.a LBZ;
+  private c LCa;
+  private b LCb;
+  Vibrator uAL;
+  ImageView vpW;
+  ImageView vpX;
+  private TextView vpY;
+  Animator vqa;
+  Animator vqb;
+  boolean vqd;
   
   static
   {
-    AppMethodBeat.i(248936);
-    FGh = new FloatMultiTaskIndicatorView.a((byte)0);
-    AppMethodBeat.o(248936);
+    AppMethodBeat.i(303916);
+    LBZ = new FloatMultiTaskIndicatorView.a((byte)0);
+    AppMethodBeat.o(303916);
   }
   
   public FloatMultiTaskIndicatorView(Context paramContext, AttributeSet paramAttributeSet)
@@ -55,106 +54,101 @@ public final class FloatMultiTaskIndicatorView
   public FloatMultiTaskIndicatorView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(248934);
+    AppMethodBeat.i(303904);
     View.inflate(paramContext, j.f.layout_multitask_float_indicator_view, (ViewGroup)this);
-    this.seg = ((ImageView)findViewById(j.e.backgroundImageView));
-    this.seh = ((ImageView)findViewById(j.e.indicatorImageView));
-    this.sei = ((TextView)findViewById(j.e.indicatorTextView));
-    if (paramContext != null) {}
-    for (paramContext = paramContext.getSystemService("vibrator"); paramContext == null; paramContext = null)
+    this.vpW = ((ImageView)findViewById(j.e.backgroundImageView));
+    this.vpX = ((ImageView)findViewById(j.e.indicatorImageView));
+    this.vpY = ((TextView)findViewById(j.e.indicatorTextView));
+    if (paramContext == null) {}
+    for (paramContext = null; paramContext == null; paramContext = paramContext.getSystemService("vibrator"))
     {
-      paramContext = new t("null cannot be cast to non-null type android.os.Vibrator");
-      AppMethodBeat.o(248934);
+      paramContext = new NullPointerException("null cannot be cast to non-null type android.os.Vibrator");
+      AppMethodBeat.o(303904);
       throw paramContext;
     }
-    this.rqC = ((Vibrator)paramContext);
-    this.FGf = new c((View)this);
-    float f = f.saR;
+    this.uAL = ((Vibrator)paramContext);
+    this.LCa = new c((View)this);
+    float f = f.vmj;
     paramContext = new AnimatorSet();
-    paramAttributeSet = ObjectAnimator.ofFloat(this.seg, "scaleX", new float[] { f, 1.0F });
-    p.j(paramAttributeSet, "scaleX");
+    paramAttributeSet = ObjectAnimator.ofFloat(this.vpW, "scaleX", new float[] { f, 1.0F });
     paramAttributeSet.setDuration(200L);
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.seg, "scaleY", new float[] { f, 1.0F });
-    p.j(localObjectAnimator, "scaleY");
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.vpW, "scaleY", new float[] { f, 1.0F });
     localObjectAnimator.setDuration(200L);
     paramContext.playTogether(new Animator[] { (Animator)paramAttributeSet, (Animator)localObjectAnimator });
-    this.sek = ((Animator)paramContext);
-    f = f.saR;
+    this.vqa = ((Animator)paramContext);
+    f = f.vmj;
     paramContext = new AnimatorSet();
-    paramAttributeSet = ObjectAnimator.ofFloat(this.seg, "scaleX", new float[] { 1.0F, f });
-    p.j(paramAttributeSet, "scaleX");
+    paramAttributeSet = ObjectAnimator.ofFloat(this.vpW, "scaleX", new float[] { 1.0F, f });
     paramAttributeSet.setDuration(200L);
-    localObjectAnimator = ObjectAnimator.ofFloat(this.seg, "scaleY", new float[] { 1.0F, f });
-    p.j(localObjectAnimator, "scaleY");
+    localObjectAnimator = ObjectAnimator.ofFloat(this.vpW, "scaleY", new float[] { 1.0F, f });
     localObjectAnimator.setDuration(200L);
     paramContext.playTogether(new Animator[] { (Animator)paramAttributeSet, (Animator)localObjectAnimator });
-    this.sel = ((Animator)paramContext);
-    AppMethodBeat.o(248934);
+    this.vqb = ((Animator)paramContext);
+    AppMethodBeat.o(303904);
   }
   
-  public final void faz()
+  public final void gjE()
   {
-    AppMethodBeat.i(248931);
+    AppMethodBeat.i(303934);
     Log.i("MicroMsg.FloatMultiTaskIndicatorView", "onFloatBallInfoCountChanged");
-    this.sen = false;
-    Object localObject = this.sei;
+    this.vqd = false;
+    Object localObject = this.vpY;
     if (localObject != null) {
       ((TextView)localObject).setText(j.h.enter_multi_task_float_ball);
     }
-    localObject = this.sei;
+    localObject = this.vpY;
     if (localObject != null) {
       ((TextView)localObject).setTextColor(androidx.core.content.a.w(getContext(), j.b.float_ball_multitask_corner_text_color));
     }
-    localObject = this.seg;
+    localObject = this.vpW;
     if (localObject != null) {
       ((ImageView)localObject).setImageResource(j.d.background_float_indicator_view);
     }
-    localObject = this.seh;
-    if (localObject != null)
-    {
-      ((ImageView)localObject).setImageDrawable(com.tencent.mm.svg.a.a.h(getResources(), j.g.multitask_indicator_icon));
-      AppMethodBeat.o(248931);
-      return;
+    localObject = this.vpX;
+    if (localObject != null) {
+      ((ImageView)localObject).setImageDrawable(com.tencent.mm.svg.a.a.i(getResources(), j.g.multitask_indicator_icon));
     }
-    AppMethodBeat.o(248931);
+    AppMethodBeat.o(303934);
   }
   
   protected final void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(248929);
-    p.k(paramConfiguration, "newConfig");
+    AppMethodBeat.i(303923);
+    s.u(paramConfiguration, "newConfig");
     super.onConfigurationChanged(paramConfiguration);
-    if (this.FGg != null)
+    b localb;
+    if (this.LCb != null)
     {
-      b localb = this.FGg;
-      if (localb != null)
-      {
-        if (paramConfiguration.orientation == 2) {}
-        for (boolean bool = true;; bool = false)
-        {
-          localb.lj(bool);
-          AppMethodBeat.o(248929);
-          return;
+      localb = this.LCb;
+      if (localb != null) {
+        if (paramConfiguration.orientation != 2) {
+          break label58;
         }
       }
     }
-    AppMethodBeat.o(248929);
+    label58:
+    for (boolean bool = true;; bool = false)
+    {
+      localb.mw(bool);
+      AppMethodBeat.o(303923);
+      return;
+    }
   }
   
   public final void setOnOrientationChangedListener(b paramb)
   {
-    this.FGg = paramb;
+    this.LCb = paramb;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/animation/swipeahead/FloatMultiTaskIndicatorView$OnOrientationChangedListener;", "", "onOrientationChanged", "", "isLandscape", "", "plugin-multitask_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitask/animation/swipeahead/FloatMultiTaskIndicatorView$OnOrientationChangedListener;", "", "onOrientationChanged", "", "isLandscape", "", "plugin-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface b
   {
-    public abstract void lj(boolean paramBoolean);
+    public abstract void mw(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.multitask.animation.swipeahead.FloatMultiTaskIndicatorView
  * JD-Core Version:    0.7.0.1
  */

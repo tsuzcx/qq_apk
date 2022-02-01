@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="bm" parent="@android:style/TextAppearance.Material.Widget.Button.Borderless.Colored" />
-    <style name="bn" parent="@android:style/TextAppearance.Material.Widget.Button.Colored" />
-    <style name="wp" parent="@style/wo" />
-    <style name="ws" parent="@style/wn" />
-    <style name="wu" parent="@style/wt" />
-    <style name="ww" parent="@style/wv" />
+    <style name="bo" parent="@android:style/TextAppearance.Material.Widget.Button.Borderless.Colored" />
+    <style name="bp" parent="@android:style/TextAppearance.Material.Widget.Button.Colored" />
+    <style name="wb" parent="@style/wa" />
+    <style name="we" parent="@style/w_" />
+    <style name="wg" parent="@style/wf" />
+    <style name="wi" parent="@style/wh" />
 </resources>

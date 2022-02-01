@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.scanner.box;
 
 import android.content.DialogInterface;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/box/BoxDialogOnShowListener;", "", "onCancel", "", "dialog", "Landroid/content/DialogInterface;", "onDismiss", "exitType", "", "onShow", "plugin-scan_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/box/BoxDialogOnShowListener;", "", "onCancel", "", "dialog", "Landroid/content/DialogInterface;", "onDismiss", "exitType", "", "onShow", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface g
 {
-  public abstract void a(DialogInterface paramDialogInterface, int paramInt);
+  public abstract void L(DialogInterface paramDialogInterface, int paramInt);
   
   public abstract void onCancel(DialogInterface paramDialogInterface);
   

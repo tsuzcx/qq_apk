@@ -11,55 +11,55 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class y
 {
-  private static final ThreadLocal<TypedValue> iw;
-  static final int[] wo;
-  static final int[] wp;
-  static final int[] wq;
-  static final int[] wr;
-  static final int[] ws;
-  static final int[] wt;
-  static final int[] wv;
-  static final int[] ww;
-  private static final int[] wx;
+  private static final ThreadLocal<TypedValue> jr;
+  static final int[] xk;
+  static final int[] xl;
+  static final int[] xm;
+  static final int[] xn;
+  static final int[] xo;
+  static final int[] xp;
+  static final int[] xq;
+  static final int[] xr;
+  private static final int[] xs;
   
   static
   {
-    AppMethodBeat.i(242013);
-    iw = new ThreadLocal();
-    wp = new int[] { -16842910 };
-    wq = new int[] { 16842908 };
-    wr = new int[] { 16843518 };
-    ws = new int[] { 16842919 };
-    wo = new int[] { 16842912 };
-    wt = new int[] { 16842913 };
-    wv = new int[] { -16842919, -16842908 };
-    ww = new int[0];
-    wx = new int[1];
-    AppMethodBeat.o(242013);
+    AppMethodBeat.i(199953);
+    jr = new ThreadLocal();
+    xl = new int[] { -16842910 };
+    xm = new int[] { 16842908 };
+    xn = new int[] { 16843518 };
+    xo = new int[] { 16842919 };
+    xk = new int[] { 16842912 };
+    xp = new int[] { 16842913 };
+    xq = new int[] { -16842919, -16842908 };
+    xr = new int[0];
+    xs = new int[1];
+    AppMethodBeat.o(199953);
   }
   
   public static int t(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(242008);
-    wx[0] = paramInt;
-    paramContext = ac.a(paramContext, null, wx);
+    AppMethodBeat.i(199886);
+    xs[0] = paramInt;
+    paramContext = ac.a(paramContext, null, xs);
     try
     {
-      paramInt = paramContext.m(0, 0);
+      paramInt = paramContext.r(0, 0);
       return paramInt;
     }
     finally
     {
-      paramContext.wA.recycle();
-      AppMethodBeat.o(242008);
+      paramContext.xv.recycle();
+      AppMethodBeat.o(199886);
     }
   }
   
   public static ColorStateList u(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(242010);
-    wx[0] = paramInt;
-    paramContext = ac.a(paramContext, null, wx);
+    AppMethodBeat.i(199925);
+    xs[0] = paramInt;
+    paramContext = ac.a(paramContext, null, xs);
     try
     {
       ColorStateList localColorStateList = paramContext.getColorStateList(0);
@@ -67,39 +67,39 @@ final class y
     }
     finally
     {
-      paramContext.wA.recycle();
-      AppMethodBeat.o(242010);
+      paramContext.xv.recycle();
+      AppMethodBeat.o(199925);
     }
   }
   
   public static int v(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(242012);
+    AppMethodBeat.i(199939);
     Object localObject = u(paramContext, paramInt);
     if ((localObject != null) && (((ColorStateList)localObject).isStateful()))
     {
-      paramInt = ((ColorStateList)localObject).getColorForState(wp, ((ColorStateList)localObject).getDefaultColor());
-      AppMethodBeat.o(242012);
+      paramInt = ((ColorStateList)localObject).getColorForState(xl, ((ColorStateList)localObject).getDefaultColor());
+      AppMethodBeat.o(199939);
       return paramInt;
     }
-    TypedValue localTypedValue = (TypedValue)iw.get();
+    TypedValue localTypedValue = (TypedValue)jr.get();
     localObject = localTypedValue;
     if (localTypedValue == null)
     {
       localObject = new TypedValue();
-      iw.set(localObject);
+      jr.set(localObject);
     }
     paramContext.getTheme().resolveAttribute(16842803, (TypedValue)localObject, true);
     float f = ((TypedValue)localObject).getFloat();
     paramInt = t(paramContext, paramInt);
-    paramInt = b.C(paramInt, Math.round(f * Color.alpha(paramInt)));
-    AppMethodBeat.o(242012);
+    paramInt = b.ax(paramInt, Math.round(f * Color.alpha(paramInt)));
+    AppMethodBeat.o(199939);
     return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.widget.y
  * JD-Core Version:    0.7.0.1
  */

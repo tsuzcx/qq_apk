@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.wallet.pay.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet.a.s;
+import com.tencent.mm.plugin.wallet.model.p;
 import com.tencent.mm.plugin.wallet.pay.a.a.n;
 import com.tencent.mm.plugin.wallet_core.model.Authen;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
-import com.tencent.mm.plugin.wallet_core.model.ao;
+import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.plugin.wallet_core.model.w;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -23,12 +23,12 @@ public final class a
       AppMethodBeat.o(69249);
       return null;
     }
-    PayInfo localPayInfo = paramAuthen.HzF;
+    PayInfo localPayInfo = paramAuthen.Nxi;
     String str1 = "";
     if (localPayInfo != null)
     {
       Log.i("MicroMsg.CgiManager", "get reqKey from payInfo");
-      str1 = localPayInfo.fwv;
+      str1 = localPayInfo.hAT;
     }
     String str2 = str1;
     if (Util.isNullOrNil(str1))
@@ -37,7 +37,7 @@ public final class a
       if (paramOrders != null)
       {
         Log.i("MicroMsg.CgiManager", "get reqKey from orders");
-        str2 = paramOrders.fwv;
+        str2 = paramOrders.hAT;
       }
     }
     if (Util.isNullOrNil(str2))
@@ -49,7 +49,7 @@ public final class a
     }
     Log.i("MicroMsg.CgiManager", "authen reqKey: %s", new Object[] { str2 });
     if ((localPayInfo != null) && (paramOrders != null)) {
-      Log.d("MicroMsg.CgiManager", "reqKey: %s, %s", new Object[] { localPayInfo.fwv, paramOrders.fwv });
+      Log.d("MicroMsg.CgiManager", "reqKey: %s, %s", new Object[] { localPayInfo.hAT, paramOrders.hAT });
     }
     Log.i("MicroMsg.CgiManager", "authen go new split cgi");
     if (str2.startsWith("sns_aa_"))
@@ -117,6 +117,83 @@ public final class a
     return paramAuthen;
   }
   
+  public static com.tencent.mm.plugin.wallet.pay.a.c.f a(PayInfo paramPayInfo, int paramInt)
+  {
+    AppMethodBeat.i(315534);
+    if ((paramPayInfo == null) || (Util.isNullOrNil(paramPayInfo.hAT)))
+    {
+      Log.i("MicroMsg.CgiManager", "no payInfo or reqKey");
+      AppMethodBeat.o(315534);
+      return null;
+    }
+    String str = paramPayInfo.hAT;
+    Log.i("MicroMsg.CgiManager", "qrorderinfo reqKey: %s", new Object[] { str });
+    Log.i("MicroMsg.CgiManager", "qrorderinfo go new split cgi");
+    if (str.startsWith("sns_aa_"))
+    {
+      paramPayInfo = new com.tencent.mm.plugin.wallet.pay.a.c.a(paramPayInfo, paramInt);
+      AppMethodBeat.o(315534);
+      return paramPayInfo;
+    }
+    if (str.startsWith("sns_tf_"))
+    {
+      paramPayInfo = new com.tencent.mm.plugin.wallet.pay.a.c.j(paramPayInfo, paramInt);
+      AppMethodBeat.o(315534);
+      return paramPayInfo;
+    }
+    if (str.startsWith("sns_ff_"))
+    {
+      paramPayInfo = new com.tencent.mm.plugin.wallet.pay.a.c.c(paramPayInfo, paramInt);
+      AppMethodBeat.o(315534);
+      return paramPayInfo;
+    }
+    if (str.startsWith("ts_"))
+    {
+      paramPayInfo = new com.tencent.mm.plugin.wallet.pay.a.c.d(paramPayInfo, paramInt);
+      AppMethodBeat.o(315534);
+      return paramPayInfo;
+    }
+    if (str.startsWith("sns_"))
+    {
+      paramPayInfo = new com.tencent.mm.plugin.wallet.pay.a.c.h(paramPayInfo, paramInt);
+      AppMethodBeat.o(315534);
+      return paramPayInfo;
+    }
+    if (str.startsWith("offline_"))
+    {
+      paramPayInfo = new com.tencent.mm.plugin.wallet.pay.a.c.e(paramPayInfo, paramInt);
+      AppMethodBeat.o(315534);
+      return paramPayInfo;
+    }
+    if (str.startsWith("up_"))
+    {
+      paramPayInfo = new com.tencent.mm.plugin.wallet.pay.a.c.k(paramPayInfo, paramInt);
+      AppMethodBeat.o(315534);
+      return paramPayInfo;
+    }
+    if (str.startsWith("seb_ff_"))
+    {
+      paramPayInfo = new com.tencent.mm.plugin.wallet.pay.a.c.g(paramPayInfo, paramInt);
+      AppMethodBeat.o(315534);
+      return paramPayInfo;
+    }
+    if (str.startsWith("tax_"))
+    {
+      paramPayInfo = new com.tencent.mm.plugin.wallet.pay.a.c.i(paramPayInfo, paramInt);
+      AppMethodBeat.o(315534);
+      return paramPayInfo;
+    }
+    if (str.startsWith("dc_"))
+    {
+      paramPayInfo = new com.tencent.mm.plugin.wallet.pay.a.c.b(paramPayInfo, paramInt);
+      AppMethodBeat.o(315534);
+      return paramPayInfo;
+    }
+    paramPayInfo = new com.tencent.mm.plugin.wallet.pay.a.c.f(paramPayInfo, paramInt);
+    AppMethodBeat.o(315534);
+    return paramPayInfo;
+  }
+  
   public static com.tencent.mm.plugin.wallet.pay.a.d.g a(w paramw, Orders paramOrders)
   {
     AppMethodBeat.i(69250);
@@ -126,18 +203,18 @@ public final class a
       AppMethodBeat.o(69250);
       return null;
     }
-    PayInfo localPayInfo = paramw.HzF;
+    PayInfo localPayInfo = paramw.Nxi;
     String str1 = "";
     if (localPayInfo != null)
     {
       Log.i("MicroMsg.CgiManager", "get reqKey from payInfo");
-      str1 = localPayInfo.fwv;
+      str1 = localPayInfo.hAT;
     }
     String str2 = str1;
     if (Util.isNullOrNil(str1))
     {
       Log.i("MicroMsg.CgiManager", "get reqKey from orders");
-      str2 = paramOrders.fwv;
+      str2 = paramOrders.hAT;
     }
     if (Util.isNullOrNil(str2))
     {
@@ -147,7 +224,7 @@ public final class a
       return paramw;
     }
     if (localPayInfo != null) {
-      Log.d("MicroMsg.CgiManager", "reqKey: %s, %s", new Object[] { localPayInfo.fwv, paramOrders.fwv });
+      Log.d("MicroMsg.CgiManager", "reqKey: %s, %s", new Object[] { localPayInfo.hAT, paramOrders.hAT });
     }
     Log.i("MicroMsg.CgiManager", "verify reqKey: %s", new Object[] { str2 });
     Log.i("MicroMsg.CgiManager", "verify go new split cgi");
@@ -213,11 +290,11 @@ public final class a
   public static com.tencent.mm.plugin.wallet.pay.a.a.c b(Authen paramAuthen, Orders paramOrders, boolean paramBoolean)
   {
     AppMethodBeat.i(69251);
-    s.gGL();
+    p.ifO();
     boolean bool1;
     boolean bool2;
-    if ((s.gGM().OUc != null) && (paramAuthen.HzF != null) && (!paramBoolean)) {
-      if ((paramAuthen.HzF.fOY == 31) || (paramAuthen.HzF.fOY == 32) || (paramAuthen.HzF.fOY == 33) || (paramAuthen.HzF.fOY == 42) || (paramAuthen.HzF.fOY == 37) || (paramAuthen.HzF.fOY == 56))
+    if ((p.ifP().VKi != null) && (paramAuthen.Nxi != null) && (!paramBoolean)) {
+      if ((paramAuthen.Nxi.hUR == 31) || (paramAuthen.Nxi.hUR == 32) || (paramAuthen.Nxi.hUR == 33) || (paramAuthen.Nxi.hUR == 42) || (paramAuthen.Nxi.hUR == 37) || (paramAuthen.Nxi.hUR == 56))
       {
         bool1 = false;
         bool2 = true;
@@ -254,15 +331,15 @@ public final class a
   public static com.tencent.mm.plugin.wallet.pay.a.d.b b(w paramw, Orders paramOrders)
   {
     AppMethodBeat.i(69252);
-    s.gGL();
+    p.ifO();
     boolean bool1;
     boolean bool2;
-    if ((s.gGM().OUc != null) && (paramw.HzF != null))
+    if ((p.ifP().VKi != null) && (paramw.Nxi != null))
     {
-      String str = paramw.fvP;
-      s.gGL();
-      if (str.equals(s.gGM().OUc.field_bankcardType)) {
-        if ((paramw.HzF.fOY == 31) || (paramw.HzF.fOY == 32) || (paramw.HzF.fOY == 33) || (paramw.HzF.fOY == 42) || (paramw.HzF.fOY == 37) || (paramw.HzF.fOY == 56))
+      String str = paramw.hAk;
+      p.ifO();
+      if (str.equals(p.ifP().VKi.field_bankcardType)) {
+        if ((paramw.Nxi.hUR == 31) || (paramw.Nxi.hUR == 32) || (paramw.Nxi.hUR == 33) || (paramw.Nxi.hUR == 42) || (paramw.Nxi.hUR == 37) || (paramw.Nxi.hUR == 56))
         {
           bool1 = false;
           bool2 = true;
@@ -299,7 +376,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.a.a
  * JD-Core Version:    0.7.0.1
  */

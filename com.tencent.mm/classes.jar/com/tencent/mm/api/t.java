@@ -1,15 +1,23 @@
 package com.tencent.mm.api;
 
-import com.tencent.mm.protocal.protobuf.db;
-import java.util.Map;
+import android.content.Context;
+import android.graphics.Bitmap;
 
 public abstract interface t
 {
-  public abstract void a(db paramdb, Map<String, String> paramMap, String paramString);
+  public abstract Bitmap F(Context paramContext, int paramInt);
+  
+  public abstract String getContent();
+  
+  public abstract String getMd5();
+  
+  public abstract int getSize();
+  
+  public abstract int getType();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.api.t
  * JD-Core Version:    0.7.0.1
  */

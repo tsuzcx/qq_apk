@@ -7,16 +7,16 @@ import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class MMAutoSizeTextView
   extends TextView
 {
-  private float Dej;
-  private float WiG;
-  private float WiH;
-  private Paint auY;
+  private float IYA;
+  private float adPH;
+  private float adPI;
+  private Paint cjv;
   
   public MMAutoSizeTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,7 +34,7 @@ public class MMAutoSizeTextView
     AppMethodBeat.o(141850);
   }
   
-  private void hF(String paramString, int paramInt)
+  private void iM(String paramString, int paramInt)
   {
     AppMethodBeat.i(141853);
     Log.i("MicroMsg.MMAutoSizeTextView", "autoAdjustTextSize[text=%s, viewWidth=%d]", new Object[] { paramString, Integer.valueOf(paramInt) });
@@ -44,41 +44,31 @@ public class MMAutoSizeTextView
       return;
     }
     paramInt = paramInt - getPaddingLeft() - getPaddingRight();
-    hJC();
-    float f1 = this.Dej;
-    this.auY.setTextSize(f1);
+    jmf();
+    float f1 = this.IYA;
+    this.cjv.setTextSize(f1);
     for (;;)
     {
       float f2 = f1;
-      if (f1 > this.WiG)
+      if (f1 > this.adPH)
       {
         f2 = f1;
-        if (this.auY.measureText(paramString) > paramInt)
+        if (this.cjv.measureText(paramString) > paramInt)
         {
           f1 -= 1.0F;
-          if (f1 > this.WiG) {
+          if (f1 > this.adPH) {
             break label177;
           }
-          f2 = this.WiG;
+          f2 = this.adPH;
         }
       }
-      Log.i("MicroMsg.MMAutoSizeTextView", "try size[%f], maxSize[%f], measureTextSize[%f], availableWidth[%d]", new Object[] { Float.valueOf(f2), Float.valueOf(this.Dej), Float.valueOf(this.auY.measureText(paramString)), Integer.valueOf(paramInt) });
+      Log.i("MicroMsg.MMAutoSizeTextView", "try size[%f], maxSize[%f], measureTextSize[%f], availableWidth[%d]", new Object[] { Float.valueOf(f2), Float.valueOf(this.IYA), Float.valueOf(this.cjv.measureText(paramString)), Integer.valueOf(paramInt) });
       setTextSize(0, f2);
       AppMethodBeat.o(141853);
       return;
       label177:
-      this.auY.setTextSize(f1);
+      this.cjv.setTextSize(f1);
     }
-  }
-  
-  private void hJC()
-  {
-    AppMethodBeat.i(141854);
-    this.Dej = getTextSize();
-    if (this.Dej <= this.WiG) {
-      this.Dej = this.WiH;
-    }
-    AppMethodBeat.o(141854);
   }
   
   private void init()
@@ -86,12 +76,22 @@ public class MMAutoSizeTextView
     AppMethodBeat.i(141852);
     setSingleLine();
     setEllipsize(TextUtils.TruncateAt.END);
-    this.WiG = a.fromDPToPix(getContext(), 8);
-    this.WiH = a.fromDPToPix(getContext(), 22);
-    this.auY = new Paint();
-    this.auY.set(getPaint());
-    hJC();
+    this.adPH = a.fromDPToPix(getContext(), 8);
+    this.adPI = a.fromDPToPix(getContext(), 22);
+    this.cjv = new Paint();
+    this.cjv.set(getPaint());
+    jmf();
     AppMethodBeat.o(141852);
+  }
+  
+  private void jmf()
+  {
+    AppMethodBeat.i(141854);
+    this.IYA = getTextSize();
+    if (this.IYA <= this.adPH) {
+      this.IYA = this.adPI;
+    }
+    AppMethodBeat.o(141854);
   }
   
   public int getBaseline()
@@ -103,7 +103,7 @@ public class MMAutoSizeTextView
       AppMethodBeat.o(141859);
       return i;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Log.printErrStackTrace("MicroMsg.MMAutoSizeTextView", localThrowable, "", new Object[0]);
       AppMethodBeat.o(141859);
@@ -120,7 +120,7 @@ public class MMAutoSizeTextView
       AppMethodBeat.o(141858);
       return;
     }
-    catch (Throwable paramCanvas)
+    finally
     {
       Log.printErrStackTrace("MicroMsg.MMAutoSizeTextView", paramCanvas, "", new Object[0]);
       AppMethodBeat.o(141858);
@@ -136,7 +136,7 @@ public class MMAutoSizeTextView
       AppMethodBeat.o(141857);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Log.printErrStackTrace("MicroMsg.MMAutoSizeTextView", localThrowable, "", new Object[0]);
       AppMethodBeat.o(141857);
@@ -149,10 +149,9 @@ public class MMAutoSizeTextView
     try
     {
       boolean bool = super.onPreDraw();
-      AppMethodBeat.o(141860);
       return bool;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       AppMethodBeat.o(141860);
     }
@@ -164,7 +163,7 @@ public class MMAutoSizeTextView
     AppMethodBeat.i(141856);
     Log.w("MicroMsg.MMAutoSizeTextView", "on size changed");
     if (paramInt1 != paramInt3) {
-      hF(getText().toString(), paramInt1);
+      iM(getText().toString(), paramInt1);
     }
     AppMethodBeat.o(141856);
   }
@@ -174,13 +173,13 @@ public class MMAutoSizeTextView
     AppMethodBeat.i(141855);
     Log.w("MicroMsg.MMAutoSizeTextView", "on text changed");
     super.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
-    hF(paramCharSequence.toString(), getWidth());
+    iM(paramCharSequence.toString(), getWidth());
     AppMethodBeat.o(141855);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMAutoSizeTextView
  * JD-Core Version:    0.7.0.1
  */

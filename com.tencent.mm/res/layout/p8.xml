@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/h9a" android:background="@color/kz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@drawable/b7q" android:layout_width="fill_parent" android:layout_height="@dimen/j5" android:minHeight="@dimen/j5"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.appbrand.widget.recyclerview.LoadMoreRecyclerView android:id="@id/bjb" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:dividerHeight="12.0dip" android:overScrollMode="never" />
-    <include android:visibility="gone" layout="@layout/n9" />
+    <ImageView android:id="@id/b0y" android:layout_width="@dimen/iy" android:layout_height="@dimen/iy" android:layout_marginLeft="@dimen/m2" android:layout_marginRight="@dimen/m2" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <TextView android:textColor="@color/hn" android:id="@id/b0x" android:background="@drawable/jc" android:padding="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/i6k" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <TextView android:id="@id/b0z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="{nick}" android:singleLine="true" android:layout_toLeftOf="@id/b0x" android:layout_toRightOf="@id/b0y" android:layout_centerVertical="true" style="@style/ma" />
 </RelativeLayout>

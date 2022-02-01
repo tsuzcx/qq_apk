@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.report.kvdata;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
+import i.a.a.b;
 import java.util.LinkedList;
 
 public class SDStatusInfo
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
   public long eAvailableBlockCount_;
   public int eAvailablePer_;
@@ -34,7 +34,7 @@ public class SDStatusInfo
     AppMethodBeat.i(151538);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
       if (this.weChatSDInfo_ == null)
       {
         paramVarArgs = new b("Not all required fields were included: weChatSDInfo_");
@@ -43,67 +43,67 @@ public class SDStatusInfo
       }
       if (this.weChatSDInfo_ != null)
       {
-        paramVarArgs.oE(1, this.weChatSDInfo_.computeSize());
+        paramVarArgs.qD(1, this.weChatSDInfo_.computeSize());
         this.weChatSDInfo_.writeFields(paramVarArgs);
       }
-      paramVarArgs.aY(2, this.weChatPer_);
-      paramVarArgs.aY(3, this.sizeHeavy_);
-      paramVarArgs.aY(4, this.ratioHeavy_);
-      paramVarArgs.aY(5, this.useExternal_);
-      paramVarArgs.aY(6, this.hasUnRemovable_);
-      paramVarArgs.bm(7, this.sBlockSize_);
-      paramVarArgs.bm(8, this.sBlockCount_);
-      paramVarArgs.bm(9, this.sTotalSize_);
-      paramVarArgs.bm(10, this.sAvailableBlockCount_);
-      paramVarArgs.bm(11, this.sAvailableSize_);
-      paramVarArgs.aY(12, this.sAvailablePer_);
-      paramVarArgs.bm(13, this.eBlockSize_);
-      paramVarArgs.bm(14, this.eBlockCount_);
-      paramVarArgs.bm(15, this.eTotalSize_);
-      paramVarArgs.bm(16, this.eAvailableBlockCount_);
-      paramVarArgs.bm(17, this.eAvailableSize_);
-      paramVarArgs.aY(18, this.eAvailablePer_);
+      paramVarArgs.bS(2, this.weChatPer_);
+      paramVarArgs.bS(3, this.sizeHeavy_);
+      paramVarArgs.bS(4, this.ratioHeavy_);
+      paramVarArgs.bS(5, this.useExternal_);
+      paramVarArgs.bS(6, this.hasUnRemovable_);
+      paramVarArgs.bv(7, this.sBlockSize_);
+      paramVarArgs.bv(8, this.sBlockCount_);
+      paramVarArgs.bv(9, this.sTotalSize_);
+      paramVarArgs.bv(10, this.sAvailableBlockCount_);
+      paramVarArgs.bv(11, this.sAvailableSize_);
+      paramVarArgs.bS(12, this.sAvailablePer_);
+      paramVarArgs.bv(13, this.eBlockSize_);
+      paramVarArgs.bv(14, this.eBlockCount_);
+      paramVarArgs.bv(15, this.eTotalSize_);
+      paramVarArgs.bv(16, this.eAvailableBlockCount_);
+      paramVarArgs.bv(17, this.eAvailableSize_);
+      paramVarArgs.bS(18, this.eAvailablePer_);
       if (this.ePath_ != null) {
-        paramVarArgs.f(19, this.ePath_);
+        paramVarArgs.g(19, this.ePath_);
       }
       if (this.root_ != null) {
-        paramVarArgs.f(20, this.root_);
+        paramVarArgs.g(20, this.root_);
       }
       if (this.fSystem_ != null) {
-        paramVarArgs.f(21, this.fSystem_);
+        paramVarArgs.g(21, this.fSystem_);
       }
       AppMethodBeat.o(151538);
       return 0;
     }
     if (paramInt == 1) {
       if (this.weChatSDInfo_ == null) {
-        break label1264;
+        break label1260;
       }
     }
-    label1264:
-    for (paramInt = g.a.a.a.oD(1, this.weChatSDInfo_.computeSize()) + 0;; paramInt = 0)
+    label1260:
+    for (paramInt = i.a.a.a.qC(1, this.weChatSDInfo_.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + g.a.a.b.b.a.bM(2, this.weChatPer_) + g.a.a.b.b.a.bM(3, this.sizeHeavy_) + g.a.a.b.b.a.bM(4, this.ratioHeavy_) + g.a.a.b.b.a.bM(5, this.useExternal_) + g.a.a.b.b.a.bM(6, this.hasUnRemovable_) + g.a.a.b.b.a.p(7, this.sBlockSize_) + g.a.a.b.b.a.p(8, this.sBlockCount_) + g.a.a.b.b.a.p(9, this.sTotalSize_) + g.a.a.b.b.a.p(10, this.sAvailableBlockCount_) + g.a.a.b.b.a.p(11, this.sAvailableSize_) + g.a.a.b.b.a.bM(12, this.sAvailablePer_) + g.a.a.b.b.a.p(13, this.eBlockSize_) + g.a.a.b.b.a.p(14, this.eBlockCount_) + g.a.a.b.b.a.p(15, this.eTotalSize_) + g.a.a.b.b.a.p(16, this.eAvailableBlockCount_) + g.a.a.b.b.a.p(17, this.eAvailableSize_) + g.a.a.b.b.a.bM(18, this.eAvailablePer_);
+      int i = paramInt + i.a.a.b.b.a.cJ(2, this.weChatPer_) + i.a.a.b.b.a.cJ(3, this.sizeHeavy_) + i.a.a.b.b.a.cJ(4, this.ratioHeavy_) + i.a.a.b.b.a.cJ(5, this.useExternal_) + i.a.a.b.b.a.cJ(6, this.hasUnRemovable_) + i.a.a.b.b.a.q(7, this.sBlockSize_) + i.a.a.b.b.a.q(8, this.sBlockCount_) + i.a.a.b.b.a.q(9, this.sTotalSize_) + i.a.a.b.b.a.q(10, this.sAvailableBlockCount_) + i.a.a.b.b.a.q(11, this.sAvailableSize_) + i.a.a.b.b.a.cJ(12, this.sAvailablePer_) + i.a.a.b.b.a.q(13, this.eBlockSize_) + i.a.a.b.b.a.q(14, this.eBlockCount_) + i.a.a.b.b.a.q(15, this.eTotalSize_) + i.a.a.b.b.a.q(16, this.eAvailableBlockCount_) + i.a.a.b.b.a.q(17, this.eAvailableSize_) + i.a.a.b.b.a.cJ(18, this.eAvailablePer_);
       paramInt = i;
       if (this.ePath_ != null) {
-        paramInt = i + g.a.a.b.b.a.g(19, this.ePath_);
+        paramInt = i + i.a.a.b.b.a.h(19, this.ePath_);
       }
       i = paramInt;
       if (this.root_ != null) {
-        i = paramInt + g.a.a.b.b.a.g(20, this.root_);
+        i = paramInt + i.a.a.b.b.a.h(20, this.root_);
       }
       paramInt = i;
       if (this.fSystem_ != null) {
-        paramInt = i + g.a.a.b.b.a.g(21, this.fSystem_);
+        paramInt = i + i.a.a.b.b.a.h(21, this.fSystem_);
       }
       AppMethodBeat.o(151538);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
         if (this.weChatSDInfo_ == null)
@@ -117,7 +117,7 @@ public class SDStatusInfo
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         SDStatusInfo localSDStatusInfo = (SDStatusInfo)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
@@ -126,7 +126,7 @@ public class SDStatusInfo
           AppMethodBeat.o(151538);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -142,83 +142,83 @@ public class SDStatusInfo
           AppMethodBeat.o(151538);
           return 0;
         case 2: 
-          localSDStatusInfo.weChatPer_ = ((g.a.a.a.a)localObject).abFh.AK();
+          localSDStatusInfo.weChatPer_ = ((i.a.a.a.a)localObject).ajGk.aar();
           AppMethodBeat.o(151538);
           return 0;
         case 3: 
-          localSDStatusInfo.sizeHeavy_ = ((g.a.a.a.a)localObject).abFh.AK();
+          localSDStatusInfo.sizeHeavy_ = ((i.a.a.a.a)localObject).ajGk.aar();
           AppMethodBeat.o(151538);
           return 0;
         case 4: 
-          localSDStatusInfo.ratioHeavy_ = ((g.a.a.a.a)localObject).abFh.AK();
+          localSDStatusInfo.ratioHeavy_ = ((i.a.a.a.a)localObject).ajGk.aar();
           AppMethodBeat.o(151538);
           return 0;
         case 5: 
-          localSDStatusInfo.useExternal_ = ((g.a.a.a.a)localObject).abFh.AK();
+          localSDStatusInfo.useExternal_ = ((i.a.a.a.a)localObject).ajGk.aar();
           AppMethodBeat.o(151538);
           return 0;
         case 6: 
-          localSDStatusInfo.hasUnRemovable_ = ((g.a.a.a.a)localObject).abFh.AK();
+          localSDStatusInfo.hasUnRemovable_ = ((i.a.a.a.a)localObject).ajGk.aar();
           AppMethodBeat.o(151538);
           return 0;
         case 7: 
-          localSDStatusInfo.sBlockSize_ = ((g.a.a.a.a)localObject).abFh.AN();
+          localSDStatusInfo.sBlockSize_ = ((i.a.a.a.a)localObject).ajGk.aaw();
           AppMethodBeat.o(151538);
           return 0;
         case 8: 
-          localSDStatusInfo.sBlockCount_ = ((g.a.a.a.a)localObject).abFh.AN();
+          localSDStatusInfo.sBlockCount_ = ((i.a.a.a.a)localObject).ajGk.aaw();
           AppMethodBeat.o(151538);
           return 0;
         case 9: 
-          localSDStatusInfo.sTotalSize_ = ((g.a.a.a.a)localObject).abFh.AN();
+          localSDStatusInfo.sTotalSize_ = ((i.a.a.a.a)localObject).ajGk.aaw();
           AppMethodBeat.o(151538);
           return 0;
         case 10: 
-          localSDStatusInfo.sAvailableBlockCount_ = ((g.a.a.a.a)localObject).abFh.AN();
+          localSDStatusInfo.sAvailableBlockCount_ = ((i.a.a.a.a)localObject).ajGk.aaw();
           AppMethodBeat.o(151538);
           return 0;
         case 11: 
-          localSDStatusInfo.sAvailableSize_ = ((g.a.a.a.a)localObject).abFh.AN();
+          localSDStatusInfo.sAvailableSize_ = ((i.a.a.a.a)localObject).ajGk.aaw();
           AppMethodBeat.o(151538);
           return 0;
         case 12: 
-          localSDStatusInfo.sAvailablePer_ = ((g.a.a.a.a)localObject).abFh.AK();
+          localSDStatusInfo.sAvailablePer_ = ((i.a.a.a.a)localObject).ajGk.aar();
           AppMethodBeat.o(151538);
           return 0;
         case 13: 
-          localSDStatusInfo.eBlockSize_ = ((g.a.a.a.a)localObject).abFh.AN();
+          localSDStatusInfo.eBlockSize_ = ((i.a.a.a.a)localObject).ajGk.aaw();
           AppMethodBeat.o(151538);
           return 0;
         case 14: 
-          localSDStatusInfo.eBlockCount_ = ((g.a.a.a.a)localObject).abFh.AN();
+          localSDStatusInfo.eBlockCount_ = ((i.a.a.a.a)localObject).ajGk.aaw();
           AppMethodBeat.o(151538);
           return 0;
         case 15: 
-          localSDStatusInfo.eTotalSize_ = ((g.a.a.a.a)localObject).abFh.AN();
+          localSDStatusInfo.eTotalSize_ = ((i.a.a.a.a)localObject).ajGk.aaw();
           AppMethodBeat.o(151538);
           return 0;
         case 16: 
-          localSDStatusInfo.eAvailableBlockCount_ = ((g.a.a.a.a)localObject).abFh.AN();
+          localSDStatusInfo.eAvailableBlockCount_ = ((i.a.a.a.a)localObject).ajGk.aaw();
           AppMethodBeat.o(151538);
           return 0;
         case 17: 
-          localSDStatusInfo.eAvailableSize_ = ((g.a.a.a.a)localObject).abFh.AN();
+          localSDStatusInfo.eAvailableSize_ = ((i.a.a.a.a)localObject).ajGk.aaw();
           AppMethodBeat.o(151538);
           return 0;
         case 18: 
-          localSDStatusInfo.eAvailablePer_ = ((g.a.a.a.a)localObject).abFh.AK();
+          localSDStatusInfo.eAvailablePer_ = ((i.a.a.a.a)localObject).ajGk.aar();
           AppMethodBeat.o(151538);
           return 0;
         case 19: 
-          localSDStatusInfo.ePath_ = ((g.a.a.a.a)localObject).abFh.readString();
+          localSDStatusInfo.ePath_ = ((i.a.a.a.a)localObject).ajGk.readString();
           AppMethodBeat.o(151538);
           return 0;
         case 20: 
-          localSDStatusInfo.root_ = ((g.a.a.a.a)localObject).abFh.readString();
+          localSDStatusInfo.root_ = ((i.a.a.a.a)localObject).ajGk.readString();
           AppMethodBeat.o(151538);
           return 0;
         }
-        localSDStatusInfo.fSystem_ = ((g.a.a.a.a)localObject).abFh.readString();
+        localSDStatusInfo.fSystem_ = ((i.a.a.a.a)localObject).ajGk.readString();
         AppMethodBeat.o(151538);
         return 0;
       }
@@ -229,7 +229,7 @@ public class SDStatusInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.report.kvdata.SDStatusInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -8,10 +8,10 @@ public class PAGTextLayer
 {
   static
   {
-    AppMethodBeat.i(195297);
+    AppMethodBeat.i(187356);
     b.loadLibrary("pag");
     nativeInit();
-    AppMethodBeat.o(195297);
+    AppMethodBeat.o(187356);
   }
   
   public PAGTextLayer(long paramLong)
@@ -33,9 +33,9 @@ public class PAGTextLayer
   
   public void setFont(PAGFont paramPAGFont)
   {
-    AppMethodBeat.i(195291);
+    AppMethodBeat.i(187382);
     setFont(paramPAGFont.fontFamily, paramPAGFont.fontStyle);
-    AppMethodBeat.o(195291);
+    AppMethodBeat.o(187382);
   }
   
   public native void setFontSize(float paramFloat);
@@ -50,7 +50,7 @@ public class PAGTextLayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.libpag.PAGTextLayer
  * JD-Core Version:    0.7.0.1
  */

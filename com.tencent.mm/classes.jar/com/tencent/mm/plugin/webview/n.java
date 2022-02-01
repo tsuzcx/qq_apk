@@ -1,22 +1,19 @@
 package com.tencent.mm.plugin.webview;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/WebTransStatus;", "", "(Ljava/lang/String;I)V", "None", "DoTrans", "DoRevert", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/WebTransStatus;", "", "(Ljava/lang/String;I)V", "None", "DoTrans", "DoRevert", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public enum n
 {
   static
   {
-    AppMethodBeat.i(268464);
-    n localn1 = new n("None", 0);
-    PEQ = localn1;
-    n localn2 = new n("DoTrans", 1);
-    PER = localn2;
-    n localn3 = new n("DoRevert", 2);
-    PES = localn3;
-    PET = new n[] { localn1, localn2, localn3 };
-    AppMethodBeat.o(268464);
+    AppMethodBeat.i(295413);
+    Wvq = new n("None", 0);
+    Wvr = new n("DoTrans", 1);
+    Wvs = new n("DoRevert", 2);
+    Wvt = new n[] { Wvq, Wvr, Wvs };
+    AppMethodBeat.o(295413);
   }
   
   private n() {}

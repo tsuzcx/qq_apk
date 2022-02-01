@@ -23,15 +23,15 @@ final class FindMoreFriendsUI$1
     {
       AppMethodBeat.o(33032);
       return;
-      if (FindMoreFriendsUI.a(this.VUs) != null) {
-        FindMoreFriendsUI.b(this.VUs);
+      if (FindMoreFriendsUI.a(this.adyF) != null) {
+        FindMoreFriendsUI.b(this.adyF);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.FindMoreFriendsUI.1
  * JD-Core Version:    0.7.0.1
  */

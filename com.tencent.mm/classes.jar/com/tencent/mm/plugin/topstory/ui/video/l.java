@@ -10,31 +10,31 @@ import com.tinkerboots.sdk.b.a;
 
 public final class l
 {
-  public int IYy;
-  public boolean Nah;
-  com.tencent.mm.plugin.topstory.a.c Nai;
-  private p.a tLw;
+  public int PhY;
+  public boolean TMQ;
+  com.tencent.mm.plugin.topstory.a.c TMR;
+  private p.a wOL;
   
   public l()
   {
     AppMethodBeat.i(126108);
-    this.tLw = new p.a()
+    this.wOL = new p.a()
     {
       public final void onNetworkChange(final int paramAnonymousInt)
       {
         AppMethodBeat.i(126107);
-        paramAnonymousInt = l.this.IYy;
-        l.this.IYy = l.fWI();
-        if (l.this.IYy != paramAnonymousInt)
+        paramAnonymousInt = l.this.PhY;
+        l.this.PhY = l.hoZ();
+        if (l.this.PhY != paramAnonymousInt)
         {
-          Log.i("MicroMsg.TopStory.TopStoryNetworkMgr", "network change current:%d change:%d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(l.this.IYy) });
+          Log.i("MicroMsg.TopStory.TopStoryNetworkMgr", "network change current:%d change:%d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(l.this.PhY) });
           MMHandlerThread.postToMainThread(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(126106);
-              if (l.this.Nai != null) {
-                l.this.Nai.ky(paramAnonymousInt, l.this.IYy);
+              if (l.this.TMR != null) {
+                l.this.TMR.mm(paramAnonymousInt, l.this.PhY);
               }
               AppMethodBeat.o(126106);
             }
@@ -43,13 +43,13 @@ public final class l
         AppMethodBeat.o(126107);
       }
     };
-    this.Nah = false;
-    this.IYy = fWI();
-    h.aHF().a(this.tLw);
+    this.TMQ = false;
+    this.PhY = hoZ();
+    h.baD().a(this.wOL);
     AppMethodBeat.o(126108);
   }
   
-  public static int fWI()
+  public static int hoZ()
   {
     AppMethodBeat.i(126110);
     if (!a.isConnected(MMApplicationContext.getContext()))
@@ -66,34 +66,34 @@ public final class l
     return 2;
   }
   
-  public final boolean eqb()
+  public final boolean fvi()
   {
-    return this.IYy == 1;
+    return this.PhY == 1;
   }
   
-  public final boolean grx()
+  public final boolean hOx()
   {
-    return this.IYy == 2;
+    return this.PhY == 2;
   }
   
   public final boolean isConnected()
   {
-    return this.IYy != 0;
+    return this.PhY != 0;
   }
   
   public final void onUIDestroy()
   {
     AppMethodBeat.i(126109);
-    h.aHF().b(this.tLw);
-    this.Nai = null;
-    this.IYy = 0;
-    this.Nah = false;
+    h.baD().b(this.wOL);
+    this.TMR = null;
+    this.PhY = 0;
+    this.TMQ = false;
     AppMethodBeat.o(126109);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.l
  * JD-Core Version:    0.7.0.1
  */

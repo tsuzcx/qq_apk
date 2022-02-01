@@ -10,9 +10,6 @@ import com.tencent.tinker.c.a.a.a.j;
 import com.tencent.tinker.c.a.a.a.l;
 import com.tencent.tinker.c.a.a.a.m;
 import com.tencent.tinker.c.a.a.a.o;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -21,32 +18,32 @@ import java.util.Arrays;
 
 public final class a
 {
-  private final com.tencent.tinker.a.a.i ZKh;
-  private final com.tencent.tinker.a.a.i ZKi;
-  private final com.tencent.tinker.c.a.b.a ZKj;
-  private final com.tencent.tinker.c.a.c.c ZKk;
-  private com.tencent.tinker.c.a.a.a.i<r> ZKl;
-  private com.tencent.tinker.c.a.a.a.i<Integer> ZKm;
-  private com.tencent.tinker.c.a.a.a.i<q> ZKn;
-  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.n> ZKo;
-  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.p> ZKp;
-  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.f> ZKq;
-  private com.tencent.tinker.c.a.a.a.i<t> ZKr;
-  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.c> ZKs;
-  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.b> ZKt;
-  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.e> ZKu;
-  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.g> ZKv;
-  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.h> ZKw;
-  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.a> ZKx;
-  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.k> ZKy;
-  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.d> ZKz;
+  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.k> ahPA;
+  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.d> ahPB;
+  private final com.tencent.tinker.a.a.i ahPj;
+  private final com.tencent.tinker.a.a.i ahPk;
+  private final com.tencent.tinker.c.a.b.a ahPl;
+  private final com.tencent.tinker.c.a.c.c ahPm;
+  private com.tencent.tinker.c.a.a.a.i<r> ahPn;
+  private com.tencent.tinker.c.a.a.a.i<Integer> ahPo;
+  private com.tencent.tinker.c.a.a.a.i<q> ahPp;
+  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.n> ahPq;
+  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.p> ahPr;
+  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.f> ahPs;
+  private com.tencent.tinker.c.a.a.a.i<t> ahPt;
+  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.c> ahPu;
+  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.b> ahPv;
+  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.e> ahPw;
+  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.g> ahPx;
+  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.h> ahPy;
+  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.a> ahPz;
   
   private a(com.tencent.tinker.a.a.i parami, com.tencent.tinker.c.a.b.a parama)
   {
-    this.ZKh = parami;
-    this.ZKj = parama;
-    this.ZKi = new com.tencent.tinker.a.a.i(parama.ZLi);
-    this.ZKk = new com.tencent.tinker.c.a.c.c();
+    this.ahPj = parami;
+    this.ahPl = parama;
+    this.ahPk = new com.tencent.tinker.a.a.i(parama.ahQk);
+    this.ahPm = new com.tencent.tinker.c.a.c.c();
   }
   
   public a(InputStream paramInputStream1, InputStream paramInputStream2)
@@ -54,134 +51,112 @@ public final class a
     this(new com.tencent.tinker.a.a.i(paramInputStream1), new com.tencent.tinker.c.a.b.a(paramInputStream2));
   }
   
-  public final void V(File paramFile)
-  {
-    try
-    {
-      BufferedOutputStream localBufferedOutputStream = new BufferedOutputStream(new FileOutputStream(paramFile));
-      com.tencent.tinker.c.b.b.closeQuietly(localBufferedOutputStream);
-    }
-    finally
-    {
-      try
-      {
-        c(localBufferedOutputStream);
-        com.tencent.tinker.c.b.b.closeQuietly(localBufferedOutputStream);
-        return;
-      }
-      finally {}
-      paramFile = finally;
-      localBufferedOutputStream = null;
-    }
-    throw paramFile;
-  }
-  
   public final void c(OutputStream paramOutputStream)
   {
     int j = 0;
-    Object localObject1 = this.ZKh.IB(false);
+    Object localObject1 = this.ahPj.OD(false);
     if (localObject1 == null) {
       throw new IOException("failed to compute old dex's signature.");
     }
-    if (this.ZKj == null) {
+    if (this.ahPl == null) {
       throw new IllegalArgumentException("patch file is null.");
     }
-    Object localObject2 = this.ZKj.ZLB;
-    if (com.tencent.tinker.a.a.b.c.r((byte[])localObject1, (byte[])localObject2) != 0) {
+    Object localObject2 = this.ahPl.ahQD;
+    if (com.tencent.tinker.a.a.b.c.s((byte[])localObject1, (byte[])localObject2) != 0) {
       throw new IOException(String.format("old dex signature mismatch! expected: %s, actual: %s", new Object[] { Arrays.toString((byte[])localObject1), Arrays.toString((byte[])localObject2) }));
     }
-    localObject1 = this.ZKi.ZIV;
-    ((s)localObject1).ZJp.off = 0;
-    ((s)localObject1).ZJp.size = 1;
-    ((s)localObject1).ZJw.size = 1;
-    ((s)localObject1).ZJq.off = this.ZKj.ZLk;
-    ((s)localObject1).ZJr.off = this.ZKj.ZLl;
-    ((s)localObject1).ZJx.off = this.ZKj.ZLr;
-    ((s)localObject1).ZJs.off = this.ZKj.ZLm;
-    ((s)localObject1).ZJt.off = this.ZKj.ZLn;
-    ((s)localObject1).ZJu.off = this.ZKj.ZLo;
-    ((s)localObject1).ZJv.off = this.ZKj.ZLp;
-    ((s)localObject1).ZJw.off = this.ZKj.ZLq;
-    ((s)localObject1).ZJC.off = this.ZKj.ZLw;
-    ((s)localObject1).ZJE.off = this.ZKj.ZLy;
-    ((s)localObject1).ZJz.off = this.ZKj.ZLt;
-    ((s)localObject1).ZJy.off = this.ZKj.ZLs;
-    ((s)localObject1).ZJG.off = this.ZKj.ZLA;
-    ((s)localObject1).ZJF.off = this.ZKj.ZLz;
-    ((s)localObject1).ZJD.off = this.ZKj.ZLx;
-    ((s)localObject1).ZJB.off = this.ZKj.ZLv;
-    ((s)localObject1).ZJA.off = this.ZKj.ZLu;
-    ((s)localObject1).fileSize = this.ZKj.ZLi;
-    Arrays.sort(((s)localObject1).ZJH);
-    ((s)localObject1).iss();
-    this.ZKl = new com.tencent.tinker.c.a.a.a.n(this.ZKj, this.ZKh, this.ZKi, this.ZKk);
-    this.ZKm = new o(this.ZKj, this.ZKh, this.ZKi, this.ZKk);
-    this.ZKn = new l(this.ZKj, this.ZKh, this.ZKi, this.ZKk);
-    this.ZKo = new j(this.ZKj, this.ZKh, this.ZKi, this.ZKk);
-    this.ZKp = new com.tencent.tinker.c.a.a.a.k(this.ZKj, this.ZKh, this.ZKi, this.ZKk);
-    this.ZKq = new com.tencent.tinker.c.a.a.a.f(this.ZKj, this.ZKh, this.ZKi, this.ZKk);
-    this.ZKr = new com.tencent.tinker.c.a.a.a.p(this.ZKj, this.ZKh, this.ZKi, this.ZKk);
-    this.ZKs = new com.tencent.tinker.c.a.a.a.b(this.ZKj, this.ZKh, this.ZKi, this.ZKk);
-    this.ZKt = new com.tencent.tinker.c.a.a.a.c(this.ZKj, this.ZKh, this.ZKi, this.ZKk);
-    this.ZKu = new com.tencent.tinker.c.a.a.a.e(this.ZKj, this.ZKh, this.ZKi, this.ZKk);
-    this.ZKv = new com.tencent.tinker.c.a.a.a.g(this.ZKj, this.ZKh, this.ZKi, this.ZKk);
-    this.ZKw = new com.tencent.tinker.c.a.a.a.h(this.ZKj, this.ZKh, this.ZKi, this.ZKk);
-    this.ZKx = new com.tencent.tinker.c.a.a.a.a(this.ZKj, this.ZKh, this.ZKi, this.ZKk);
-    this.ZKy = new m(this.ZKj, this.ZKh, this.ZKi, this.ZKk);
-    this.ZKz = new com.tencent.tinker.c.a.a.a.d(this.ZKj, this.ZKh, this.ZKi, this.ZKk);
-    this.ZKl.execute();
-    this.ZKm.execute();
-    this.ZKr.execute();
-    this.ZKn.execute();
-    this.ZKo.execute();
-    this.ZKp.execute();
-    this.ZKx.execute();
-    this.ZKt.execute();
-    this.ZKs.execute();
-    this.ZKz.execute();
-    this.ZKw.execute();
-    this.ZKv.execute();
-    this.ZKu.execute();
-    this.ZKy.execute();
-    this.ZKq.execute();
-    localObject2 = this.ZKi.aBv(((s)localObject1).ZJp.off);
+    localObject1 = this.ahPk.ahNX;
+    ((s)localObject1).ahOq.off = 0;
+    ((s)localObject1).ahOq.size = 1;
+    ((s)localObject1).ahOx.size = 1;
+    ((s)localObject1).ahOr.off = this.ahPl.ahQm;
+    ((s)localObject1).ahOs.off = this.ahPl.ahQn;
+    ((s)localObject1).ahOy.off = this.ahPl.ahQt;
+    ((s)localObject1).ahOt.off = this.ahPl.ahQo;
+    ((s)localObject1).ahOu.off = this.ahPl.ahQp;
+    ((s)localObject1).ahOv.off = this.ahPl.ahQq;
+    ((s)localObject1).ahOw.off = this.ahPl.ahQr;
+    ((s)localObject1).ahOx.off = this.ahPl.ahQs;
+    ((s)localObject1).ahOD.off = this.ahPl.ahQy;
+    ((s)localObject1).ahOF.off = this.ahPl.ahQA;
+    ((s)localObject1).ahOA.off = this.ahPl.ahQv;
+    ((s)localObject1).ahOz.off = this.ahPl.ahQu;
+    ((s)localObject1).ahOH.off = this.ahPl.ahQC;
+    ((s)localObject1).ahOG.off = this.ahPl.ahQB;
+    ((s)localObject1).ahOE.off = this.ahPl.ahQz;
+    ((s)localObject1).ahOC.off = this.ahPl.ahQx;
+    ((s)localObject1).ahOB.off = this.ahPl.ahQw;
+    ((s)localObject1).fileSize = this.ahPl.ahQk;
+    Arrays.sort(((s)localObject1).ahOI);
+    ((s)localObject1).kbS();
+    this.ahPn = new com.tencent.tinker.c.a.a.a.n(this.ahPl, this.ahPj, this.ahPk, this.ahPm);
+    this.ahPo = new o(this.ahPl, this.ahPj, this.ahPk, this.ahPm);
+    this.ahPp = new l(this.ahPl, this.ahPj, this.ahPk, this.ahPm);
+    this.ahPq = new j(this.ahPl, this.ahPj, this.ahPk, this.ahPm);
+    this.ahPr = new com.tencent.tinker.c.a.a.a.k(this.ahPl, this.ahPj, this.ahPk, this.ahPm);
+    this.ahPs = new com.tencent.tinker.c.a.a.a.f(this.ahPl, this.ahPj, this.ahPk, this.ahPm);
+    this.ahPt = new com.tencent.tinker.c.a.a.a.p(this.ahPl, this.ahPj, this.ahPk, this.ahPm);
+    this.ahPu = new com.tencent.tinker.c.a.a.a.b(this.ahPl, this.ahPj, this.ahPk, this.ahPm);
+    this.ahPv = new com.tencent.tinker.c.a.a.a.c(this.ahPl, this.ahPj, this.ahPk, this.ahPm);
+    this.ahPw = new com.tencent.tinker.c.a.a.a.e(this.ahPl, this.ahPj, this.ahPk, this.ahPm);
+    this.ahPx = new com.tencent.tinker.c.a.a.a.g(this.ahPl, this.ahPj, this.ahPk, this.ahPm);
+    this.ahPy = new com.tencent.tinker.c.a.a.a.h(this.ahPl, this.ahPj, this.ahPk, this.ahPm);
+    this.ahPz = new com.tencent.tinker.c.a.a.a.a(this.ahPl, this.ahPj, this.ahPk, this.ahPm);
+    this.ahPA = new m(this.ahPl, this.ahPj, this.ahPk, this.ahPm);
+    this.ahPB = new com.tencent.tinker.c.a.a.a.d(this.ahPl, this.ahPj, this.ahPk, this.ahPm);
+    this.ahPn.execute();
+    this.ahPo.execute();
+    this.ahPt.execute();
+    this.ahPp.execute();
+    this.ahPq.execute();
+    this.ahPr.execute();
+    this.ahPz.execute();
+    this.ahPv.execute();
+    this.ahPu.execute();
+    this.ahPB.execute();
+    this.ahPy.execute();
+    this.ahPx.execute();
+    this.ahPw.execute();
+    this.ahPA.execute();
+    this.ahPs.execute();
+    localObject2 = this.ahPk.aIh(((s)localObject1).ahOq.off);
     ((i.e)localObject2).write(("dex\n" + "035" + "").getBytes("UTF-8"));
-    ((i.e)localObject2).bV(((s)localObject1).mkZ);
-    ((i.e)localObject2).write(((s)localObject1).Evq);
-    ((i.e)localObject2).bV(((s)localObject1).fileSize);
-    ((i.e)localObject2).bV(112);
-    ((i.e)localObject2).bV(305419896);
-    ((i.e)localObject2).bV(((s)localObject1).ZJI);
-    ((i.e)localObject2).bV(((s)localObject1).ZJJ);
-    ((i.e)localObject2).bV(((s)localObject1).ZJw.off);
-    ((i.e)localObject2).bV(((s)localObject1).ZJq.size);
-    if (((s)localObject1).ZJq.ifE())
+    ((i.e)localObject2).aX(((s)localObject1).peK);
+    ((i.e)localObject2).write(((s)localObject1).KnY);
+    ((i.e)localObject2).aX(((s)localObject1).fileSize);
+    ((i.e)localObject2).aX(112);
+    ((i.e)localObject2).aX(305419896);
+    ((i.e)localObject2).aX(((s)localObject1).ahOJ);
+    ((i.e)localObject2).aX(((s)localObject1).ahOK);
+    ((i.e)localObject2).aX(((s)localObject1).ahOx.off);
+    ((i.e)localObject2).aX(((s)localObject1).ahOr.size);
+    if (((s)localObject1).ahOr.jKS())
     {
-      i = ((s)localObject1).ZJq.off;
-      ((i.e)localObject2).bV(i);
-      ((i.e)localObject2).bV(((s)localObject1).ZJr.size);
-      if (!((s)localObject1).ZJr.ifE()) {
+      i = ((s)localObject1).ahOr.off;
+      ((i.e)localObject2).aX(i);
+      ((i.e)localObject2).aX(((s)localObject1).ahOs.size);
+      if (!((s)localObject1).ahOs.jKS()) {
         break label1360;
       }
-      i = ((s)localObject1).ZJr.off;
+      i = ((s)localObject1).ahOs.off;
       label1125:
-      ((i.e)localObject2).bV(i);
-      ((i.e)localObject2).bV(((s)localObject1).ZJs.size);
-      if (!((s)localObject1).ZJs.ifE()) {
+      ((i.e)localObject2).aX(i);
+      ((i.e)localObject2).aX(((s)localObject1).ahOt.size);
+      if (!((s)localObject1).ahOt.jKS()) {
         break label1365;
       }
-      i = ((s)localObject1).ZJs.off;
+      i = ((s)localObject1).ahOt.off;
       label1164:
-      ((i.e)localObject2).bV(i);
-      ((i.e)localObject2).bV(((s)localObject1).ZJt.size);
-      if (!((s)localObject1).ZJt.ifE()) {
+      ((i.e)localObject2).aX(i);
+      ((i.e)localObject2).aX(((s)localObject1).ahOu.size);
+      if (!((s)localObject1).ahOu.jKS()) {
         break label1370;
       }
-      i = ((s)localObject1).ZJt.off;
+      i = ((s)localObject1).ahOu.off;
       label1203:
-      ((i.e)localObject2).bV(i);
-      ((i.e)localObject2).bV(((s)localObject1).ZJu.size);
-      if (!((s)localObject1).ZJu.ifE()) {
+      ((i.e)localObject2).aX(i);
+      ((i.e)localObject2).aX(((s)localObject1).ahOv.size);
+      if (!((s)localObject1).ahOv.jKS()) {
         break label1375;
       }
     }
@@ -189,20 +164,20 @@ public final class a
     label1365:
     label1370:
     label1375:
-    for (int i = ((s)localObject1).ZJu.off;; i = 0)
+    for (int i = ((s)localObject1).ahOv.off;; i = 0)
     {
-      ((i.e)localObject2).bV(i);
-      ((i.e)localObject2).bV(((s)localObject1).ZJv.size);
+      ((i.e)localObject2).aX(i);
+      ((i.e)localObject2).aX(((s)localObject1).ahOw.size);
       i = j;
-      if (((s)localObject1).ZJv.ifE()) {
-        i = ((s)localObject1).ZJv.off;
+      if (((s)localObject1).ahOw.jKS()) {
+        i = ((s)localObject1).ahOw.off;
       }
-      ((i.e)localObject2).bV(i);
-      ((i.e)localObject2).bV(((s)localObject1).dataSize);
-      ((i.e)localObject2).bV(((s)localObject1).ZJK);
-      ((s)localObject1).b(this.ZKi.aBv(((s)localObject1).ZJw.off));
-      this.ZKi.irV();
-      paramOutputStream.write(this.ZKi.aQU.array());
+      ((i.e)localObject2).aX(i);
+      ((i.e)localObject2).aX(((s)localObject1).dataSize);
+      ((i.e)localObject2).aX(((s)localObject1).ahOL);
+      ((s)localObject1).b(this.ahPk.aIh(((s)localObject1).ahOx.off));
+      this.ahPk.kbv();
+      paramOutputStream.write(this.ahPk.cKQ.array());
       paramOutputStream.flush();
       return;
       i = 0;
@@ -218,7 +193,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.tinker.c.a.a
  * JD-Core Version:    0.7.0.1
  */

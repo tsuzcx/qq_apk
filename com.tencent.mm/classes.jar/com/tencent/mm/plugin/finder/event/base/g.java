@@ -1,76 +1,99 @@
 package com.tencent.mm.plugin.finder.event.base;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.model.bu;
-import com.tencent.mm.view.recyclerview.j;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.model.cc;
+import com.tencent.mm.view.recyclerview.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/event/base/FlowScrollEventFeedData;", "", "feed", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "dataPos", "", "showInfo", "Lcom/tencent/mm/view/recyclerview/WxItemShowInfo;", "(Lcom/tencent/mm/plugin/finder/model/RVFeed;ILcom/tencent/mm/view/recyclerview/WxItemShowInfo;)V", "getDataPos", "()I", "getFeed", "()Lcom/tencent/mm/plugin/finder/model/RVFeed;", "getShowInfo", "()Lcom/tencent/mm/view/recyclerview/WxItemShowInfo;", "setShowInfo", "(Lcom/tencent/mm/view/recyclerview/WxItemShowInfo;)V", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-finder-base_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/event/base/FlowScrollEventFeedData;", "", "feed", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "dataPos", "", "showInfo", "Lcom/tencent/mm/view/recyclerview/WxItemShowInfo;", "(Lcom/tencent/mm/plugin/finder/model/RVFeed;ILcom/tencent/mm/view/recyclerview/WxItemShowInfo;)V", "getDataPos", "()I", "getFeed", "()Lcom/tencent/mm/plugin/finder/model/RVFeed;", "getShowInfo", "()Lcom/tencent/mm/view/recyclerview/WxItemShowInfo;", "setShowInfo", "(Lcom/tencent/mm/view/recyclerview/WxItemShowInfo;)V", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class g
 {
-  public final bu xrd;
-  public final int xre;
-  public j xrf;
+  public final cc AOm;
+  public final int AOn;
+  public l AOo;
   
-  private g(bu parambu, int paramInt)
+  private g(cc paramcc, int paramInt)
   {
-    AppMethodBeat.i(259074);
-    this.xrd = parambu;
-    this.xre = paramInt;
-    this.xrf = null;
-    AppMethodBeat.o(259074);
+    AppMethodBeat.i(330331);
+    this.AOm = paramcc;
+    this.AOn = paramInt;
+    this.AOo = null;
+    AppMethodBeat.o(330331);
+  }
+  
+  public final cc dYK()
+  {
+    return this.AOm;
+  }
+  
+  public final int dYL()
+  {
+    return this.AOn;
+  }
+  
+  public final l dYM()
+  {
+    return this.AOo;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(259083);
-    if (this != paramObject)
+    AppMethodBeat.i(330399);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof g))
-      {
-        paramObject = (g)paramObject;
-        if ((!p.h(this.xrd, paramObject.xrd)) || (this.xre != paramObject.xre) || (!p.h(this.xrf, paramObject.xrf))) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(259083);
+      AppMethodBeat.o(330399);
       return true;
     }
-    AppMethodBeat.o(259083);
-    return false;
+    if (!(paramObject instanceof g))
+    {
+      AppMethodBeat.o(330399);
+      return false;
+    }
+    paramObject = (g)paramObject;
+    if (!s.p(this.AOm, paramObject.AOm))
+    {
+      AppMethodBeat.o(330399);
+      return false;
+    }
+    if (this.AOn != paramObject.AOn)
+    {
+      AppMethodBeat.o(330399);
+      return false;
+    }
+    if (!s.p(this.AOo, paramObject.AOo))
+    {
+      AppMethodBeat.o(330399);
+      return false;
+    }
+    AppMethodBeat.o(330399);
+    return true;
   }
   
   public final int hashCode()
   {
-    int j = 0;
-    AppMethodBeat.i(259081);
-    Object localObject = this.xrd;
-    if (localObject != null) {}
-    for (int i = localObject.hashCode();; i = 0)
+    AppMethodBeat.i(330389);
+    int j = this.AOm.hashCode();
+    int k = this.AOn;
+    if (this.AOo == null) {}
+    for (int i = 0;; i = this.AOo.hashCode())
     {
-      int k = this.xre;
-      localObject = this.xrf;
-      if (localObject != null) {
-        j = localObject.hashCode();
-      }
-      AppMethodBeat.o(259081);
-      return (i * 31 + k) * 31 + j;
+      AppMethodBeat.o(330389);
+      return i + (j * 31 + k) * 31;
     }
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(259078);
-    String str = "FlowScrollEventFeedData(feed=" + this.xrd + ", dataPos=" + this.xre + ", showInfo=" + this.xrf + ")";
-    AppMethodBeat.o(259078);
+    AppMethodBeat.i(330379);
+    String str = "FlowScrollEventFeedData(feed=" + this.AOm + ", dataPos=" + this.AOn + ", showInfo=" + this.AOo + ')';
+    AppMethodBeat.o(330379);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.event.base.g
  * JD-Core Version:    0.7.0.1
  */

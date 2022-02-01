@@ -6,41 +6,41 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.emoji.i.h;
+import com.tencent.mm.plugin.emoji.h.h;
 import com.tencent.mm.plugin.emoji.model.j;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class g
   extends f
 {
-  private int uAn = 0;
-  private int uAo = 0;
-  private int uAp = 0;
+  private int xGQ = 0;
+  private int xGR = 0;
+  private int xGS = 0;
   
   public g(Context paramContext)
   {
     super(paramContext);
   }
   
-  public final void Js(int paramInt)
+  public final void JZ(int paramInt)
   {
-    this.uAn = paramInt;
+    this.xGQ = paramInt;
   }
   
-  public final void Jt(int paramInt)
+  public final void Ka(int paramInt)
   {
-    this.uAo = paramInt;
+    this.xGR = paramInt;
   }
   
-  public final void Ju(int paramInt)
+  public final void Kb(int paramInt)
   {
-    this.uAp = paramInt;
+    this.xGS = paramInt;
   }
   
-  public final com.tencent.mm.plugin.emoji.a.a.f Jv(int paramInt)
+  public final com.tencent.mm.plugin.emoji.a.a.f Kd(int paramInt)
   {
     AppMethodBeat.i(108329);
-    com.tencent.mm.plugin.emoji.a.a.f localf = super.Jv(paramInt);
+    com.tencent.mm.plugin.emoji.a.a.f localf = super.Kd(paramInt);
     AppMethodBeat.o(108329);
     return localf;
   }
@@ -49,22 +49,22 @@ public final class g
   {
     AppMethodBeat.i(108328);
     final f.a locala = (f.a)paramView.getTag();
-    if (this.uAn > 0) {
+    if (this.xGQ > 0) {
       if (paramInt == 0)
       {
-        locala.uzM.setVisibility(0);
-        locala.uzM.setText(getContext().getString(i.h.emoji_store_hot));
+        locala.xGp.setVisibility(0);
+        locala.xGp.setText(getContext().getString(h.h.emoji_store_hot));
       }
     }
     for (;;)
     {
-      if (locala.uzO != null) {
-        locala.uzO.postDelayed(new Runnable()
+      if (locala.xGr != null) {
+        locala.xGr.postDelayed(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(108326);
-            locala.uzO.setPressed(false);
+            locala.xGr.setPressed(false);
             AppMethodBeat.o(108326);
           }
         }, 100L);
@@ -72,81 +72,81 @@ public final class g
       paramView = super.b(paramInt, paramView, paramViewGroup);
       AppMethodBeat.o(108328);
       return paramView;
-      if ((this.uAo > 0) && (paramInt == this.uAn))
+      if ((this.xGR > 0) && (paramInt == this.xGQ))
       {
-        locala.uzM.setVisibility(0);
-        locala.uzM.setText(getContext().getString(i.h.emoji_store_recent));
+        locala.xGp.setVisibility(0);
+        locala.xGp.setText(getContext().getString(h.h.emoji_store_recent));
       }
-      else if (paramInt == this.uAn + this.uAo)
+      else if (paramInt == this.xGQ + this.xGR)
       {
-        locala.uzM.setVisibility(0);
-        if (!Util.isNullOrNil(j.cUG().uEt)) {
-          locala.uzM.setText(j.cUG().uEt);
-        } else if (j.cUG().uEr) {
-          locala.uzM.setText(i.h.emoji_store_recenedownload);
+        locala.xGp.setVisibility(0);
+        if (!Util.isNullOrNil(j.dzN().xMK)) {
+          locala.xGp.setText(j.dzN().xMK);
+        } else if (j.dzN().xMI) {
+          locala.xGp.setText(h.h.emoji_store_recenedownload);
         } else {
-          locala.uzM.setText(getContext().getString(i.h.emoji_store_all));
+          locala.xGp.setText(getContext().getString(h.h.emoji_store_all));
         }
       }
       else
       {
-        locala.uzM.setVisibility(8);
+        locala.xGp.setVisibility(8);
         continue;
-        if (this.uAo > 0)
+        if (this.xGR > 0)
         {
           if (paramInt == 0)
           {
-            locala.uzM.setVisibility(0);
-            locala.uzM.setText(getContext().getString(i.h.emoji_store_recent));
+            locala.xGp.setVisibility(0);
+            locala.xGp.setText(getContext().getString(h.h.emoji_store_recent));
           }
-          else if (paramInt == this.uAn + this.uAo)
+          else if (paramInt == this.xGQ + this.xGR)
           {
-            locala.uzM.setVisibility(0);
-            if (!Util.isNullOrNil(j.cUG().uEt)) {
-              locala.uzM.setText(j.cUG().uEt);
-            } else if (j.cUG().uEr) {
-              locala.uzM.setText(i.h.emoji_store_recenedownload);
+            locala.xGp.setVisibility(0);
+            if (!Util.isNullOrNil(j.dzN().xMK)) {
+              locala.xGp.setText(j.dzN().xMK);
+            } else if (j.dzN().xMI) {
+              locala.xGp.setText(h.h.emoji_store_recenedownload);
             } else {
-              locala.uzM.setText(getContext().getString(i.h.emoji_store_all));
+              locala.xGp.setText(getContext().getString(h.h.emoji_store_all));
             }
           }
           else
           {
-            locala.uzM.setVisibility(8);
+            locala.xGp.setVisibility(8);
           }
         }
         else if (paramInt == 0)
         {
-          locala.uzM.setVisibility(0);
-          if (!Util.isNullOrNil(j.cUG().uEt)) {
-            locala.uzM.setText(j.cUG().uEt);
-          } else if (j.cUG().uEr) {
-            locala.uzM.setText(i.h.emoji_store_recenedownload);
+          locala.xGp.setVisibility(0);
+          if (!Util.isNullOrNil(j.dzN().xMK)) {
+            locala.xGp.setText(j.dzN().xMK);
+          } else if (j.dzN().xMI) {
+            locala.xGp.setText(h.h.emoji_store_recenedownload);
           } else {
-            locala.uzM.setText(getContext().getString(i.h.emoji_store_all));
+            locala.xGp.setText(getContext().getString(h.h.emoji_store_all));
           }
         }
         else
         {
-          locala.uzM.setVisibility(8);
+          locala.xGp.setVisibility(8);
         }
       }
     }
   }
   
-  public final int cTM()
+  public final int dyh()
   {
-    return this.uAn;
+    return this.xGQ;
   }
   
-  public final int cTN()
+  public final int dyi()
   {
-    return this.uAo;
+    return this.xGR;
   }
   
-  public final int cTO()
+  public final int dyj()
   {
-    return this.uAp;
+    return this.xGS;
   }
   
   public final int getCount()

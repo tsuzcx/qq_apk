@@ -1,12 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/h8y" android:background="@color/afz" style="@style/rj"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="22.0dip" android:textColor="@color/a2x" android:id="@id/jf3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="57.0dip" android:text="@string/ilq" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/a2x" android:gravity="center" android:id="@id/dyz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="@dimen/hs" android:layout_marginRight="@dimen/hs" android:text="@string/ilm" android:layout_below="@id/jf3" android:layout_centerHorizontal="true" />
-    <View android:id="@id/aat" android:layout_marginLeft="32.0dip" android:layout_marginTop="48.0dip" android:layout_marginRight="32.0dip" android:layout_below="@id/dyz" android:layout_centerHorizontal="true" style="@style/hx" />
-    <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/duk" android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:layout_marginLeft="32.0dip" android:layout_marginRight="32.0dip" android:layout_below="@id/aat" android:layout_centerHorizontal="true" android:imeOptions="actionNext" wallet:contentHint="@string/i_8" wallet:titleText="@string/i_a" style="@style/a0o" />
-    <View android:id="@id/aas" android:layout_marginLeft="32.0dip" android:layout_marginRight="32.0dip" android:layout_below="@id/duk" android:layout_centerHorizontal="true" style="@style/hx" />
-    <TextView android:id="@id/jew" android:visibility="visible" android:text="@string/i__" android:layout_below="@id/aas" android:layout_centerHorizontal="true" style="@style/a0k" />
-    <Button android:id="@id/dz5" android:layout_marginBottom="96.0dip" android:text="@string/ilx" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/ov" />
-    <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/pe" />
-</RelativeLayout>
+<com.tencent.mm.ui.widget.SwipeBackLayout android:id="@id/kat" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

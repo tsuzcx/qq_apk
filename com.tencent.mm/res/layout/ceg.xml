@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/kdf" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/kgu" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <include android:id="@id/kgp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/ced" />
-</LinearLayout>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:paddingTop="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true" style="@style/zv">
+        <TextView android:id="@id/f84" android:text="@string/kuu" style="@style/a08" />
+        <LinearLayout style="@style/a0o">
+            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:gravity="center|right" android:id="@id/h_f" android:visibility="gone" android:clickable="false" wallet:contentClickable="false" wallet:contentEnabled="false" wallet:contentFocusable="false" wallet:contentTextColor="@color/xo" wallet:titleText="@string/kuq" style="@style/a0p" />
+            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/aw9" android:minHeight="45.0dip" wallet:contentHint="@string/kur" wallet:titleText="@string/kus" style="@style/zt" />
+        </LinearLayout>
+        <Button android:id="@id/hfl" android:layout_width="fill_parent" android:layout_marginTop="16.0dip" android:text="@string/a12" style="@style/a0k" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/aj_" android:layout_gravity="center_horizontal" android:id="@id/lg9" android:paddingBottom="@dimen/m2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i6" android:text="@string/kq7" style="@style/a01" />
+        <TextView android:layout_gravity="bottom" android:id="@id/ljw" android:layout_height="fill_parent" style="@style/a0t" />
+    </LinearLayout>
+    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/c9a" />
+</RelativeLayout>

@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public class Notification
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
   public Color background_color;
   public boolean click_after_close;
@@ -21,103 +21,103 @@ public class Notification
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(194757);
+    AppMethodBeat.i(275468);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
       if (this.word_color != null)
       {
-        paramVarArgs.oE(1, this.word_color.computeSize());
+        paramVarArgs.qD(1, this.word_color.computeSize());
         this.word_color.writeFields(paramVarArgs);
       }
       if (this.background_color != null)
       {
-        paramVarArgs.oE(2, this.background_color.computeSize());
+        paramVarArgs.qD(2, this.background_color.computeSize());
         this.background_color.writeFields(paramVarArgs);
       }
       if (this.wording != null) {
-        paramVarArgs.f(3, this.wording);
+        paramVarArgs.g(3, this.wording);
       }
       if (this.jump_info != null)
       {
-        paramVarArgs.oE(4, this.jump_info.computeSize());
+        paramVarArgs.qD(4, this.jump_info.computeSize());
         this.jump_info.writeFields(paramVarArgs);
       }
-      paramVarArgs.aY(5, this.type);
+      paramVarArgs.bS(5, this.type);
       if (this.left_icon_url != null) {
-        paramVarArgs.f(6, this.left_icon_url);
+        paramVarArgs.g(6, this.left_icon_url);
       }
       if (this.right_icon_url != null) {
-        paramVarArgs.f(7, this.right_icon_url);
+        paramVarArgs.g(7, this.right_icon_url);
       }
-      paramVarArgs.co(8, this.right_icon_can_close);
-      paramVarArgs.aY(9, this.disappear_second);
-      paramVarArgs.aY(10, this.priority);
-      paramVarArgs.aY(11, this.id);
-      paramVarArgs.co(12, this.click_after_close);
-      AppMethodBeat.o(194757);
+      paramVarArgs.di(8, this.right_icon_can_close);
+      paramVarArgs.bS(9, this.disappear_second);
+      paramVarArgs.bS(10, this.priority);
+      paramVarArgs.bS(11, this.id);
+      paramVarArgs.di(12, this.click_after_close);
+      AppMethodBeat.o(275468);
       return 0;
     }
     if (paramInt == 1) {
       if (this.word_color == null) {
-        break label1016;
+        break label1012;
       }
     }
-    label1016:
-    for (int i = g.a.a.a.oD(1, this.word_color.computeSize()) + 0;; i = 0)
+    label1012:
+    for (int i = i.a.a.a.qC(1, this.word_color.computeSize()) + 0;; i = 0)
     {
       paramInt = i;
       if (this.background_color != null) {
-        paramInt = i + g.a.a.a.oD(2, this.background_color.computeSize());
+        paramInt = i + i.a.a.a.qC(2, this.background_color.computeSize());
       }
       i = paramInt;
       if (this.wording != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.wording);
+        i = paramInt + i.a.a.b.b.a.h(3, this.wording);
       }
       paramInt = i;
       if (this.jump_info != null) {
-        paramInt = i + g.a.a.a.oD(4, this.jump_info.computeSize());
+        paramInt = i + i.a.a.a.qC(4, this.jump_info.computeSize());
       }
-      i = paramInt + g.a.a.b.b.a.bM(5, this.type);
+      i = paramInt + i.a.a.b.b.a.cJ(5, this.type);
       paramInt = i;
       if (this.left_icon_url != null) {
-        paramInt = i + g.a.a.b.b.a.g(6, this.left_icon_url);
+        paramInt = i + i.a.a.b.b.a.h(6, this.left_icon_url);
       }
       i = paramInt;
       if (this.right_icon_url != null) {
-        i = paramInt + g.a.a.b.b.a.g(7, this.right_icon_url);
+        i = paramInt + i.a.a.b.b.a.h(7, this.right_icon_url);
       }
-      paramInt = g.a.a.b.b.a.gL(8);
-      int j = g.a.a.b.b.a.bM(9, this.disappear_second);
-      int k = g.a.a.b.b.a.bM(10, this.priority);
-      int m = g.a.a.b.b.a.bM(11, this.id);
-      int n = g.a.a.b.b.a.gL(12);
-      AppMethodBeat.o(194757);
+      paramInt = i.a.a.b.b.a.ko(8);
+      int j = i.a.a.b.b.a.cJ(9, this.disappear_second);
+      int k = i.a.a.b.b.a.cJ(10, this.priority);
+      int m = i.a.a.b.b.a.cJ(11, this.id);
+      int n = i.a.a.b.b.a.ko(12);
+      AppMethodBeat.o(275468);
       return i + (paramInt + 1) + j + k + m + (n + 1);
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(194757);
+        AppMethodBeat.o(275468);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
         Notification localNotification = (Notification)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         Object localObject2;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(194757);
+          AppMethodBeat.o(275468);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -130,10 +130,10 @@ public class Notification
             localNotification.word_color = ((Color)localObject2);
             paramInt += 1;
           }
-          AppMethodBeat.o(194757);
+          AppMethodBeat.o(275468);
           return 0;
         case 2: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -146,14 +146,14 @@ public class Notification
             localNotification.background_color = ((Color)localObject2);
             paramInt += 1;
           }
-          AppMethodBeat.o(194757);
+          AppMethodBeat.o(275468);
           return 0;
         case 3: 
-          localNotification.wording = ((g.a.a.a.a)localObject1).abFh.readString();
-          AppMethodBeat.o(194757);
+          localNotification.wording = ((i.a.a.a.a)localObject1).ajGk.readString();
+          AppMethodBeat.o(275468);
           return 0;
         case 4: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -166,49 +166,49 @@ public class Notification
             localNotification.jump_info = ((JumpInfo)localObject2);
             paramInt += 1;
           }
-          AppMethodBeat.o(194757);
+          AppMethodBeat.o(275468);
           return 0;
         case 5: 
-          localNotification.type = ((g.a.a.a.a)localObject1).abFh.AK();
-          AppMethodBeat.o(194757);
+          localNotification.type = ((i.a.a.a.a)localObject1).ajGk.aar();
+          AppMethodBeat.o(275468);
           return 0;
         case 6: 
-          localNotification.left_icon_url = ((g.a.a.a.a)localObject1).abFh.readString();
-          AppMethodBeat.o(194757);
+          localNotification.left_icon_url = ((i.a.a.a.a)localObject1).ajGk.readString();
+          AppMethodBeat.o(275468);
           return 0;
         case 7: 
-          localNotification.right_icon_url = ((g.a.a.a.a)localObject1).abFh.readString();
-          AppMethodBeat.o(194757);
+          localNotification.right_icon_url = ((i.a.a.a.a)localObject1).ajGk.readString();
+          AppMethodBeat.o(275468);
           return 0;
         case 8: 
-          localNotification.right_icon_can_close = ((g.a.a.a.a)localObject1).abFh.AB();
-          AppMethodBeat.o(194757);
+          localNotification.right_icon_can_close = ((i.a.a.a.a)localObject1).ajGk.aai();
+          AppMethodBeat.o(275468);
           return 0;
         case 9: 
-          localNotification.disappear_second = ((g.a.a.a.a)localObject1).abFh.AK();
-          AppMethodBeat.o(194757);
+          localNotification.disappear_second = ((i.a.a.a.a)localObject1).ajGk.aar();
+          AppMethodBeat.o(275468);
           return 0;
         case 10: 
-          localNotification.priority = ((g.a.a.a.a)localObject1).abFh.AK();
-          AppMethodBeat.o(194757);
+          localNotification.priority = ((i.a.a.a.a)localObject1).ajGk.aar();
+          AppMethodBeat.o(275468);
           return 0;
         case 11: 
-          localNotification.id = ((g.a.a.a.a)localObject1).abFh.AK();
-          AppMethodBeat.o(194757);
+          localNotification.id = ((i.a.a.a.a)localObject1).ajGk.aar();
+          AppMethodBeat.o(275468);
           return 0;
         }
-        localNotification.click_after_close = ((g.a.a.a.a)localObject1).abFh.AB();
-        AppMethodBeat.o(194757);
+        localNotification.click_after_close = ((i.a.a.a.a)localObject1).ajGk.aai();
+        AppMethodBeat.o(275468);
         return 0;
       }
-      AppMethodBeat.o(194757);
+      AppMethodBeat.o(275468);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.autogen.chatroom.Notification
  * JD-Core Version:    0.7.0.1
  */

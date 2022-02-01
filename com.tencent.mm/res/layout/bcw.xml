@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@drawable/ak_" android:layout_width="@dimen/c3" android:layout_height="@dimen/c3"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/fov" android:background="@drawable/b74" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginTop="@dimen/ci" />
-    <TextView android:textSize="@dimen/cb" android:textColor="@color/a23" android:gravity="center" android:id="@id/fow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/cc" android:layout_marginRight="@dimen/c5" android:text="@string/f6u" />
-</LinearLayout>
+<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.Placeholder android:id="@id/hwz" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <androidx.constraintlayout.widget.Placeholder android:id="@id/hx0" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <androidx.constraintlayout.widget.Placeholder android:id="@id/hww" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.5dip" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toBottomOf="@id/hx0" />
+    <androidx.constraintlayout.widget.Placeholder android:id="@id/hwx" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="@id/hx0" app:layout_constraintRight_toRightOf="hr_" />
+    <androidx.constraintlayout.widget.Placeholder android:id="@id/hwy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.5dip" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toBottomOf="@id/hx0" />
+    <com.tencent.mm.ui.widget.MMNeat7extView android:ellipsize="end" android:id="@id/bsj" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <TextView android:ellipsize="end" android:id="@id/bri" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <TextView android:id="@id/bg_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cgk" android:includeFontPadding="false" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toBottomOf="@id/bsj" />
+    <ImageView android:id="@id/bg9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:adjustViewBounds="true" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toBottomOf="@id/bsj" />
+</merge>

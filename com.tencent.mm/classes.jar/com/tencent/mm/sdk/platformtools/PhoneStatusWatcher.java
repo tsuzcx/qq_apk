@@ -84,9 +84,9 @@ public class PhoneStatusWatcher
     }
     paramContext = this.tm;
     Object localObject = this.phoneStateListener;
-    localObject = c.a(32, new com.tencent.mm.hellhoundlib.b.a()).bm(localObject);
-    com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/sdk/platformtools/PhoneStatusWatcher", "begin", "(Landroid/content/Context;)V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
-    paramContext.listen((PhoneStateListener)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0), ((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(1)).intValue());
+    localObject = c.a(32, new com.tencent.mm.hellhoundlib.b.a()).cG(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/sdk/platformtools/PhoneStatusWatcher", "begin", "(Landroid/content/Context;)V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
+    paramContext.listen((PhoneStateListener)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0), ((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(1)).intValue());
     com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/sdk/platformtools/PhoneStatusWatcher", "begin", "(Landroid/content/Context;)V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
     AppMethodBeat.o(157778);
   }
@@ -106,9 +106,9 @@ public class PhoneStatusWatcher
     {
       TelephonyManager localTelephonyManager = this.tm;
       Object localObject = this.phoneStateListener;
-      localObject = c.a(0, new com.tencent.mm.hellhoundlib.b.a()).bm(localObject);
-      com.tencent.mm.hellhoundlib.a.a.b(localTelephonyManager, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/sdk/platformtools/PhoneStatusWatcher", "end", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
-      localTelephonyManager.listen((PhoneStateListener)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0), ((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(1)).intValue());
+      localObject = c.a(0, new com.tencent.mm.hellhoundlib.b.a()).cG(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(localTelephonyManager, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/sdk/platformtools/PhoneStatusWatcher", "end", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
+      localTelephonyManager.listen((PhoneStateListener)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0), ((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(1)).intValue());
       com.tencent.mm.hellhoundlib.a.a.c(localTelephonyManager, "com/tencent/mm/sdk/platformtools/PhoneStatusWatcher", "end", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
       this.phoneStateListener = null;
     }
@@ -117,9 +117,9 @@ public class PhoneStatusWatcher
   
   public void removePhoneCallListener(PhoneCallListener paramPhoneCallListener)
   {
-    AppMethodBeat.i(188786);
+    AppMethodBeat.i(243860);
     this.phoneCallListeners.remove(paramPhoneCallListener);
-    AppMethodBeat.o(188786);
+    AppMethodBeat.o(243860);
   }
   
   public static abstract interface PhoneCallListener
@@ -129,7 +129,7 @@ public class PhoneStatusWatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.PhoneStatusWatcher
  * JD-Core Version:    0.7.0.1
  */

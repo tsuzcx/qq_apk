@@ -6,31 +6,31 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface d
   extends a
 {
-  public abstract void Uq(int paramInt);
+  public abstract void Ym(int paramInt);
   
-  public abstract void eCB();
+  public abstract void fKE();
   
-  public abstract boolean eCC();
+  public abstract boolean fKF();
   
-  public abstract b eCD();
+  public abstract b fKG();
   
-  public abstract boolean eCE();
+  public abstract boolean fKH();
   
-  public abstract void eCF();
+  public abstract void fKI();
   
-  public abstract boolean eCG();
+  public abstract boolean fKJ();
   
-  public abstract boolean eCH();
+  public abstract boolean fKK();
   
-  public abstract void eCI();
+  public abstract void fKL();
   
-  public abstract void gH(Context paramContext);
+  public abstract void ia(Context paramContext);
   
-  public abstract void gI(Context paramContext);
+  public abstract void ib(Context paramContext);
   
-  public abstract boolean gJ(Context paramContext);
+  public abstract boolean ic(Context paramContext);
   
-  public abstract boolean gK(Context paramContext);
+  public abstract boolean id(Context paramContext);
 }
 
 

@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.favorite.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,43 +11,44 @@ import com.tencent.mm.model.z;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.opensdk.modelmsg.WXMusicVideoObject;
+import com.tencent.mm.opensdk.modelmsg.WXMusicVipInfo;
 import com.tencent.mm.plugin.base.stub.d;
+import com.tencent.mm.plugin.fav.a.b;
 import com.tencent.mm.pluginsdk.model.app.ReportUtil;
 import com.tencent.mm.pluginsdk.model.app.ReportUtil.ReportArgs;
 import com.tencent.mm.pluginsdk.ui.applet.y.a;
-import com.tencent.mm.pluginsdk.ui.tools.s;
-import com.tencent.mm.protocal.protobuf.anm;
-import com.tencent.mm.protocal.protobuf.ann;
-import com.tencent.mm.protocal.protobuf.aoc;
-import com.tencent.mm.protocal.protobuf.aoi;
-import com.tencent.mm.protocal.protobuf.dbr;
+import com.tencent.mm.pluginsdk.ui.tools.r;
+import com.tencent.mm.protocal.protobuf.arf;
+import com.tencent.mm.protocal.protobuf.arg;
+import com.tencent.mm.protocal.protobuf.arv;
+import com.tencent.mm.protocal.protobuf.asb;
+import com.tencent.mm.protocal.protobuf.dtj;
 import com.tencent.mm.sdk.platformtools.IntentUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.a;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.util.LinkedList;
 
-@a(7)
+@com.tencent.mm.ui.base.a(7)
 public class FavOpenApiEntry
   extends MMActivity
 {
+  private SendMessageToWX.Req Aqs;
+  private String Aqt;
+  private int Aqu;
   private String appId;
-  private Bundle fKb;
-  private Intent fKs;
+  private Bundle hPH;
+  private Intent hPY;
   private String source;
   private MTimerHandler timer;
-  private SendMessageToWX.Req wTP;
-  private String wTQ;
-  private int wTR;
   
   public FavOpenApiEntry()
   {
     AppMethodBeat.i(24619);
-    this.wTR = 0;
+    this.Aqu = 0;
     this.timer = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
@@ -67,7 +67,7 @@ public class FavOpenApiEntry
         }
         new d(FavOpenApiEntry.this, FavOpenApiEntry.c(FavOpenApiEntry.this), FavOpenApiEntry.d(FavOpenApiEntry.this).openId, new com.tencent.mm.plugin.base.stub.d.a()
         {
-          public final void lk(boolean paramAnonymous2Boolean)
+          public final void mC(boolean paramAnonymous2Boolean)
           {
             AppMethodBeat.i(24616);
             boolean bool = FavOpenApiEntry.this.isFinishing();
@@ -78,12 +78,12 @@ public class FavOpenApiEntry
               AppMethodBeat.o(24616);
               return;
             }
-            ReportUtil.ReportArgs localReportArgs = ReportUtil.d(FavOpenApiEntry.this.getIntent().getExtras(), -3);
+            ReportUtil.ReportArgs localReportArgs = ReportUtil.c(FavOpenApiEntry.this.getIntent().getExtras(), -3);
             ReportUtil.a(FavOpenApiEntry.this, localReportArgs, false);
             FavOpenApiEntry.this.finish();
             AppMethodBeat.o(24616);
           }
-        }).cxi();
+        }).cZW();
         AppMethodBeat.o(24617);
         return false;
       }
@@ -94,14 +94,14 @@ public class FavOpenApiEntry
   private void L(com.tencent.mm.plugin.fav.a.g paramg)
   {
     AppMethodBeat.i(24624);
-    aoi localaoi = new aoi();
-    localaoi.btD(this.appId);
-    localaoi.arz(4);
-    localaoi.btx(z.bcZ());
-    localaoi.bty(z.bcZ());
-    paramg.field_fromUser = localaoi.fLi;
-    paramg.field_toUser = localaoi.toUser;
-    paramg.field_favProto.a(localaoi);
+    asb localasb = new asb();
+    localasb.btu(this.appId);
+    localasb.axH(4);
+    localasb.bto(z.bAM());
+    localasb.btp(z.bAM());
+    paramg.field_fromUser = localasb.hQQ;
+    paramg.field_toUser = localasb.toUser;
+    paramg.field_favProto.a(localasb);
     AppMethodBeat.o(24624);
   }
   
@@ -110,20 +110,20 @@ public class FavOpenApiEntry
     AppMethodBeat.i(24627);
     paramWXMediaMessage = new y.a()
     {
-      public final void a(boolean paramAnonymousBoolean, String paramAnonymousString, int paramAnonymousInt)
+      public final void onDialogClick(boolean paramAnonymousBoolean, String paramAnonymousString, int paramAnonymousInt)
       {
         AppMethodBeat.i(24618);
         if (paramAnonymousBoolean)
         {
-          s.a(IntentUtil.getIntExtra(FavOpenApiEntry.this.getIntent(), "_mmessage_sdkVersion", 0), FavOpenApiEntry.c(FavOpenApiEntry.this), paramWXMediaMessage);
+          r.a(IntentUtil.getIntExtra(FavOpenApiEntry.this.getIntent(), "_mmessage_sdkVersion", 0), FavOpenApiEntry.c(FavOpenApiEntry.this), paramWXMediaMessage);
           FavOpenApiEntry.b(FavOpenApiEntry.this, paramWXMediaMessage);
-          paramAnonymousString = ReportUtil.d(FavOpenApiEntry.this.getIntent().getExtras(), 0);
+          paramAnonymousString = ReportUtil.c(FavOpenApiEntry.this.getIntent().getExtras(), 0);
           ReportUtil.a(FavOpenApiEntry.this, paramAnonymousString, false);
           AppMethodBeat.o(24618);
           return;
         }
         FavOpenApiEntry.this.finish();
-        ReportUtil.a(FavOpenApiEntry.this, ReportUtil.d(FavOpenApiEntry.this.getIntent().getExtras(), 0), true);
+        ReportUtil.a(FavOpenApiEntry.this, ReportUtil.c(FavOpenApiEntry.this.getIntent().getExtras(), 0), true);
         AppMethodBeat.o(24618);
       }
     };
@@ -131,35 +131,35 @@ public class FavOpenApiEntry
     return paramWXMediaMessage;
   }
   
-  private static anm a(WXMediaMessage paramWXMediaMessage, String paramString, byte[] paramArrayOfByte, int paramInt)
+  private static arf a(WXMediaMessage paramWXMediaMessage, String paramString, byte[] paramArrayOfByte, int paramInt)
   {
     AppMethodBeat.i(24625);
-    anm localanm = new anm();
-    localanm.bsx(paramWXMediaMessage.title);
-    localanm.bsy(paramWXMediaMessage.description);
-    localanm.arq(paramInt);
+    arf localarf = new arf();
+    localarf.bso(paramWXMediaMessage.title);
+    localarf.bsp(paramWXMediaMessage.description);
+    localarf.axy(paramInt);
     if (paramString != null)
     {
-      localanm.bsL(paramString);
-      localanm.bsH(u.asq(paramString));
-      a(paramWXMediaMessage, localanm, paramInt);
+      localarf.bsC(paramString);
+      localarf.bsy(y.alV(paramString));
+      a(paramWXMediaMessage, localarf, paramInt);
       AppMethodBeat.o(24625);
-      return localanm;
+      return localarf;
     }
     paramString = com.tencent.mm.b.g.getMessageDigest(paramArrayOfByte);
     if (paramArrayOfByte.length >= 256) {
-      localanm.bsJ(paramString);
+      localarf.bsA(paramString);
     }
     for (;;)
     {
-      localanm.bsI(paramString);
-      localanm.TY(paramArrayOfByte.length);
-      localanm.bsK(com.tencent.mm.plugin.fav.a.b.dN(localanm.toString(), paramInt));
-      u.F(com.tencent.mm.plugin.fav.a.b.d(localanm), paramArrayOfByte);
+      localarf.bsz(paramString);
+      localarf.yo(paramArrayOfByte.length);
+      localarf.bsB(b.er(localarf.toString(), paramInt));
+      y.e(b.d(localarf), paramArrayOfByte, paramArrayOfByte.length);
       break;
       byte[] arrayOfByte = new byte[256];
       System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, 256);
-      localanm.bsJ(com.tencent.mm.b.g.getMessageDigest(arrayOfByte));
+      localarf.bsA(com.tencent.mm.b.g.getMessageDigest(arrayOfByte));
     }
   }
   
@@ -167,71 +167,91 @@ public class FavOpenApiEntry
   {
     AppMethodBeat.i(24623);
     paramg.field_sourceType = 4;
-    paramg.field_favProto.btv(paramWXMediaMessage.title);
-    paramg.field_favProto.btw(paramWXMediaMessage.description);
+    paramg.field_favProto.btm(paramWXMediaMessage.title);
+    paramg.field_favProto.btn(paramWXMediaMessage.description);
     AppMethodBeat.o(24623);
   }
   
-  private static void a(WXMediaMessage paramWXMediaMessage, anm paramanm, int paramInt)
+  private static void a(WXMediaMessage paramWXMediaMessage, arf paramarf, int paramInt)
   {
     AppMethodBeat.i(24626);
     if (paramWXMediaMessage.thumbData != null)
     {
       Object localObject = com.tencent.mm.b.g.getMessageDigest(paramWXMediaMessage.thumbData);
-      paramanm.bsN((String)localObject);
+      paramarf.bsE((String)localObject);
       if (paramWXMediaMessage.thumbData.length >= 256) {
-        paramanm.bsO((String)localObject);
+        paramarf.bsF((String)localObject);
       }
       for (;;)
       {
-        if (Util.isNullOrNil(paramanm.fEa)) {
-          paramanm.bsK(com.tencent.mm.plugin.fav.a.b.dN(paramanm.toString(), paramInt));
+        if (Util.isNullOrNil(paramarf.hIQ)) {
+          paramarf.bsB(b.er(paramarf.toString(), paramInt));
         }
-        paramanm.TZ(paramWXMediaMessage.thumbData.length);
-        u.F(com.tencent.mm.plugin.fav.a.b.a(paramanm), paramWXMediaMessage.thumbData);
+        paramarf.yp(paramWXMediaMessage.thumbData.length);
+        paramarf = b.a(paramarf);
+        paramWXMediaMessage = paramWXMediaMessage.thumbData;
+        y.e(paramarf, paramWXMediaMessage, paramWXMediaMessage.length);
         AppMethodBeat.o(24626);
         return;
         localObject = new byte[256];
         System.arraycopy(paramWXMediaMessage.thumbData, 0, localObject, 0, 256);
-        paramanm.bsO(com.tencent.mm.b.g.getMessageDigest((byte[])localObject));
+        paramarf.bsF(com.tencent.mm.b.g.getMessageDigest((byte[])localObject));
       }
     }
-    paramanm.Ey(true);
+    paramarf.Kk(true);
     AppMethodBeat.o(24626);
   }
   
   private void a(WXMediaMessage paramWXMediaMessage, String paramString)
   {
-    AppMethodBeat.i(277418);
+    AppMethodBeat.i(261372);
     WXMusicVideoObject localWXMusicVideoObject = (WXMusicVideoObject)paramWXMediaMessage.mediaObject;
     com.tencent.mm.plugin.fav.a.g localg = new com.tencent.mm.plugin.fav.a.g();
     localg.field_type = 21;
     a(paramWXMediaMessage, localg);
-    anm localanm = new anm();
-    localanm.bsx(paramWXMediaMessage.title);
-    localanm.bsy(paramWXMediaMessage.description);
-    a(paramWXMediaMessage, localanm, localg.field_type);
-    localanm.Ex(true);
-    localanm.arq(localg.field_type);
-    localanm.bsD(localWXMusicVideoObject.musicUrl);
-    localanm.bsE(localWXMusicVideoObject.musicDataUrl);
-    localanm.btd(paramString);
-    localanm.bte(localWXMusicVideoObject.songLyric);
-    paramString = new dbr();
+    arf localarf = new arf();
+    localarf.bso(paramWXMediaMessage.title);
+    localarf.bsp(paramWXMediaMessage.description);
+    a(paramWXMediaMessage, localarf, localg.field_type);
+    localarf.Kj(true);
+    localarf.axy(localg.field_type);
+    localarf.bsu(localWXMusicVideoObject.musicUrl);
+    localarf.bsv(localWXMusicVideoObject.musicDataUrl);
+    localarf.bsU(paramString);
+    localarf.bsV(localWXMusicVideoObject.songLyric);
+    paramString = new dtj();
     paramString.singerName = localWXMusicVideoObject.singerName;
     paramString.albumName = localWXMusicVideoObject.albumName;
     paramString.musicGenre = localWXMusicVideoObject.musicGenre;
     paramString.issueDate = localWXMusicVideoObject.issueDate;
     paramString.identification = localWXMusicVideoObject.identification;
-    paramString.FSG = localWXMusicVideoObject.duration;
+    paramString.LNC = localWXMusicVideoObject.duration;
+    paramString.musicOperationUrl = localWXMusicVideoObject.musicOperationUrl;
     paramString.extraInfo = paramWXMediaMessage.messageExt;
-    paramWXMediaMessage = new ann();
-    paramWXMediaMessage.e(paramString);
-    localanm.a(paramWXMediaMessage);
-    localg.field_favProto.syG.add(localanm);
-    L(localg);
-    com.tencent.mm.plugin.fav.ui.b.C(localg);
-    AppMethodBeat.o(277418);
+    if (localWXMusicVideoObject.musicVipInfo != null)
+    {
+      paramWXMediaMessage = com.tencent.mm.aw.a.OK(localWXMusicVideoObject.musicVipInfo.musicId);
+      paramString.oOZ = paramWXMediaMessage;
+      paramWXMediaMessage = localWXMusicVideoObject.singerName;
+      if (localWXMusicVideoObject.musicVipInfo == null) {
+        break label337;
+      }
+    }
+    label337:
+    for (boolean bool = true;; bool = false)
+    {
+      Log.i("MicroMsg.FavOpenApiEntry", "share music mv to fav, singerName:%s, musicVipInfo is valid:%b", new Object[] { paramWXMediaMessage, Boolean.valueOf(bool) });
+      paramWXMediaMessage = new arg();
+      paramWXMediaMessage.e(paramString);
+      localarf.a(paramWXMediaMessage);
+      localg.field_favProto.vEn.add(localarf);
+      L(localg);
+      com.tencent.mm.plugin.fav.ui.a.C(localg);
+      AppMethodBeat.o(261372);
+      return;
+      paramWXMediaMessage = "";
+      break;
+    }
   }
   
   public int getLayoutId()
@@ -243,24 +263,24 @@ public class FavOpenApiEntry
   {
     AppMethodBeat.i(24620);
     super.onCreate(paramBundle);
-    if (this.fKs == null) {
-      this.fKs = getIntent();
+    if (this.hPY == null) {
+      this.hPY = getIntent();
     }
-    this.fKb = this.fKs.getExtras();
-    this.appId = this.fKb.getString("SendAppMessageWrapper_AppId");
+    this.hPH = this.hPY.getExtras();
+    this.appId = this.hPH.getString("SendAppMessageWrapper_AppId");
     if (this.appId == null) {
-      this.appId = Uri.parse(this.fKb.getString("_mmessage_content")).getQueryParameter("appid");
+      this.appId = Uri.parse(this.hPH.getString("_mmessage_content")).getQueryParameter("appid");
     }
-    this.wTP = new SendMessageToWX.Req(this.fKb);
-    if (this.wTP.scene != 2)
+    this.Aqs = new SendMessageToWX.Req(this.hPH);
+    if (this.Aqs.scene != 2)
     {
       Log.e("MicroMsg.FavOpenApiEntry", "scene not WXSceneFavorite!");
       finish();
       AppMethodBeat.o(24620);
       return;
     }
-    this.wTQ = getString(R.l.favorite);
-    paramBundle = com.tencent.mm.plugin.fav.a.b.getAppName(this, this.appId);
+    this.Aqt = getString(R.l.favorite);
+    paramBundle = b.getAppName(this, this.appId);
     this.source = getString(R.l.confirm_dialog_source, new Object[] { paramBundle });
     this.timer.startTimer(100L);
     AppMethodBeat.o(24620);
@@ -270,7 +290,7 @@ public class FavOpenApiEntry
   {
     AppMethodBeat.i(24621);
     super.onNewIntent(paramIntent);
-    this.fKs = paramIntent;
+    this.hPY = paramIntent;
     AppMethodBeat.o(24621);
   }
   
@@ -296,7 +316,7 @@ public class FavOpenApiEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.favorite.ui.FavOpenApiEntry
  * JD-Core Version:    0.7.0.1
  */

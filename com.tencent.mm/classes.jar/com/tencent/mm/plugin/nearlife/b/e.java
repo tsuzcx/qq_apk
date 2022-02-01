@@ -10,12 +10,12 @@ import java.util.HashMap;
 public final class e
   implements be
 {
-  private com.tencent.mm.pluginsdk.location.a GtZ;
+  private com.tencent.mm.pluginsdk.location.a MpY;
   
   public e()
   {
     AppMethodBeat.i(163198);
-    this.GtZ = new a();
+    this.MpY = new a();
     AppMethodBeat.o(163198);
   }
   
@@ -31,7 +31,7 @@ public final class e
     AppMethodBeat.i(26559);
     Log.i("MicroMsg.SubCoreNearLife", "onAccountPostReset SubCoreNearLife");
     h.b(com.tencent.mm.plugin.story.api.a.class, new com.tencent.mm.plugin.story.api.a() {});
-    h.b(com.tencent.mm.pluginsdk.location.a.class, this.GtZ);
+    h.b(com.tencent.mm.pluginsdk.location.a.class, this.MpY);
     AppMethodBeat.o(26559);
   }
   
@@ -41,7 +41,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.nearlife.b.e
  * JD-Core Version:    0.7.0.1
  */

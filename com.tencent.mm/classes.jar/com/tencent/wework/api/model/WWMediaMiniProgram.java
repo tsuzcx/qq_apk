@@ -6,15 +6,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class WWMediaMiniProgram
   extends WWMediaMessage.WWMediaObject
 {
-  public byte[] ZYw;
-  public int ZYx;
+  public byte[] aida;
+  private Bundle aidb;
   public String iconUrl;
+  public boolean isSecretMessage;
+  public int miniProgramType;
   public String name;
   public String path;
-  public String title;
   public int type;
   public String username;
   public String webpageUrl;
+  
+  public WWMediaMiniProgram()
+  {
+    AppMethodBeat.i(210621);
+    this.isSecretMessage = false;
+    this.aidb = new Bundle();
+    AppMethodBeat.o(210621);
+  }
   
   public final boolean checkArgs()
   {
@@ -29,7 +38,7 @@ public class WWMediaMiniProgram
       AppMethodBeat.o(106553);
       return false;
     }
-    if ((this.ZYw == null) || (this.ZYw.length <= 0) || (this.ZYw.length > 1048576))
+    if ((this.aida == null) || (this.aida.length <= 0) || (this.aida.length > 134217728))
     {
       AppMethodBeat.o(106553);
       return false;
@@ -40,18 +49,19 @@ public class WWMediaMiniProgram
   
   public final void fromBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(233426);
+    AppMethodBeat.i(210633);
     this.username = paramBundle.getString("_wwwxaobject_userName");
     this.path = paramBundle.getString("_wwwxaobject_path");
     this.iconUrl = paramBundle.getString("_wwwxaobject_iconUrl");
     this.name = paramBundle.getString("_wwwxaobject_name");
-    this.title = paramBundle.getString("_wwwxaobject_title");
-    this.ZYw = paramBundle.getByteArray("_wwwxaobject_hdImageData");
+    this.aida = paramBundle.getByteArray("_wwwxaobject_hdImageData");
     this.type = paramBundle.getInt("_wwwxaobject_type", 2);
     this.webpageUrl = paramBundle.getString("_wwwxaobject_webpageurl");
-    this.ZYx = paramBundle.getInt("_wwwxaobject_programtype", 0);
+    this.miniProgramType = paramBundle.getInt("_wwwxaobject_programtype", 0);
+    this.isSecretMessage = paramBundle.getBoolean("_wwwxminiprogram_issecretmsg", false);
+    this.aidb = paramBundle.getBundle("_wwwxminiprogram_ext");
     super.fromBundle(paramBundle);
-    AppMethodBeat.o(233426);
+    AppMethodBeat.o(210633);
   }
   
   public final void toBundle(Bundle paramBundle)
@@ -63,37 +73,32 @@ public class WWMediaMiniProgram
       str = "";
       paramBundle.putString("_wwwxaobject_path", str);
       if (this.iconUrl != null) {
-        break label149;
+        break label152;
       }
       str = "";
       label42:
       paramBundle.putString("_wwwxaobject_iconUrl", str);
       if (this.name != null) {
-        break label157;
+        break label160;
       }
       str = "";
       label59:
       paramBundle.putString("_wwwxaobject_name", str);
-      if (this.title != null) {
-        break label165;
-      }
-      str = "";
-      label76:
-      paramBundle.putString("_wwwxaobject_title", str);
-      paramBundle.putByteArray("_wwwxaobject_hdImageData", this.ZYw);
+      paramBundle.putByteArray("_wwwxaobject_hdImageData", this.aida);
       paramBundle.putInt("_wwwxaobject_type", this.type);
       if (this.webpageUrl != null) {
-        break label173;
+        break label168;
       }
     }
-    label149:
-    label157:
-    label165:
-    label173:
+    label152:
+    label160:
+    label168:
     for (String str = "";; str = this.webpageUrl)
     {
       paramBundle.putString("_wwwxaobject_webpageurl", str);
-      paramBundle.putInt("_wwwxaobject_programtype", this.ZYx);
+      paramBundle.putInt("_wwwxaobject_programtype", this.miniProgramType);
+      paramBundle.putBoolean("_wwwxminiprogram_issecretmsg", this.isSecretMessage);
+      paramBundle.putBundle("_wwwxminiprogram_ext", this.aidb);
       super.toBundle(paramBundle);
       AppMethodBeat.o(106554);
       return;
@@ -103,8 +108,6 @@ public class WWMediaMiniProgram
       break label42;
       str = this.name;
       break label59;
-      str = this.title;
-      break label76;
     }
   }
 }

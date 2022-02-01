@@ -8,8 +8,8 @@ public final class k
   public k(String paramString)
   {
     super("the error code is 104, " + paramString);
-    AppMethodBeat.i(208522);
-    AppMethodBeat.o(208522);
+    AppMethodBeat.i(212074);
+    AppMethodBeat.o(212074);
   }
 }
 

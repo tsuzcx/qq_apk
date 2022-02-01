@@ -14,13 +14,13 @@ import java.util.Objects;
 
 public final class q
 {
-  private static final Field cES;
+  private static final Field eyd;
   private final List<b> mListeners;
   private final SurfaceTexture mSurfaceTexture;
   
   static
   {
-    AppMethodBeat.i(222201);
+    AppMethodBeat.i(220616);
     Object localObject = null;
     try
     {
@@ -36,16 +36,16 @@ public final class q
         Log.w("MicroMsg.AppBrand.SurfaceTextureWrapper", "get mOnFrameAvailableHandler fail since " + localException.toString());
       }
     }
-    cES = localObject;
-    AppMethodBeat.o(222201);
+    eyd = localObject;
+    AppMethodBeat.o(220616);
   }
   
   private q(SurfaceTexture paramSurfaceTexture)
   {
-    AppMethodBeat.i(222190);
+    AppMethodBeat.i(220603);
     this.mListeners = new ArrayList();
     this.mSurfaceTexture = paramSurfaceTexture;
-    AppMethodBeat.o(222190);
+    AppMethodBeat.o(220603);
   }
   
   /* Error */
@@ -56,7 +56,7 @@ public final class q
     //   2: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
     //   6: monitorenter
-    //   7: getstatic 48	com/tencent/luggage/xweb_ext/extendplugin/component/q:cES	Ljava/lang/reflect/Field;
+    //   7: getstatic 48	com/tencent/luggage/xweb_ext/extendplugin/component/q:eyd	Ljava/lang/reflect/Field;
     //   10: ifnonnull +12 -> 22
     //   13: aload_0
     //   14: monitorexit
@@ -64,7 +64,7 @@ public final class q
     //   17: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   20: aconst_null
     //   21: areturn
-    //   22: getstatic 48	com/tencent/luggage/xweb_ext/extendplugin/component/q:cES	Ljava/lang/reflect/Field;
+    //   22: getstatic 48	com/tencent/luggage/xweb_ext/extendplugin/component/q:eyd	Ljava/lang/reflect/Field;
     //   25: aload_0
     //   26: invokevirtual 101	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   29: checkcast 103	android/os/Handler
@@ -88,7 +88,7 @@ public final class q
     //   64: invokestatic 109	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   67: aload_2
     //   68: checkcast 8	com/tencent/luggage/xweb_ext/extendplugin/component/q$a
-    //   71: getfield 113	com/tencent/luggage/xweb_ext/extendplugin/component/q$a:cEV	Lcom/tencent/luggage/xweb_ext/extendplugin/component/q;
+    //   71: getfield 113	com/tencent/luggage/xweb_ext/extendplugin/component/q$a:eyh	Lcom/tencent/luggage/xweb_ext/extendplugin/component/q;
     //   74: astore_1
     //   75: aload_0
     //   76: monitorexit
@@ -107,7 +107,7 @@ public final class q
     //   98: aload_1
     //   99: invokespecial 118	com/tencent/luggage/xweb_ext/extendplugin/component/q$a:<init>	(Landroid/os/Handler;Lcom/tencent/luggage/xweb_ext/extendplugin/component/q;)V
     //   102: astore_2
-    //   103: getstatic 48	com/tencent/luggage/xweb_ext/extendplugin/component/q:cES	Ljava/lang/reflect/Field;
+    //   103: getstatic 48	com/tencent/luggage/xweb_ext/extendplugin/component/q:eyd	Ljava/lang/reflect/Field;
     //   106: aload_0
     //   107: aload_2
     //   108: invokevirtual 122	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
@@ -171,38 +171,38 @@ public final class q
     {
       try
       {
-        AppMethodBeat.i(222195);
+        AppMethodBeat.i(220608);
         Iterator localIterator = this.mListeners.iterator();
         if (!localIterator.hasNext()) {
           break;
         }
         final b localb = (b)localIterator.next();
         if (localb.handler == null) {
-          localb.cEX.onFrameAvailable(this.mSurfaceTexture);
+          localb.eyj.onFrameAvailable(this.mSurfaceTexture);
         } else {
           localb.handler.post(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(226120);
-              localb.cEX.onFrameAvailable(q.a(q.this));
-              AppMethodBeat.o(226120);
+              AppMethodBeat.i(220622);
+              localb.eyj.onFrameAvailable(q.a(q.this));
+              AppMethodBeat.o(220622);
             }
           });
         }
       }
       finally {}
     }
-    AppMethodBeat.o(222195);
+    AppMethodBeat.o(220608);
   }
   
   public final void a(SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener)
   {
     try
     {
-      AppMethodBeat.i(222194);
+      AppMethodBeat.i(220621);
       this.mListeners.remove(new b(paramOnFrameAvailableListener, null));
-      AppMethodBeat.o(222194);
+      AppMethodBeat.o(220621);
       return;
     }
     finally
@@ -216,11 +216,11 @@ public final class q
   {
     try
     {
-      AppMethodBeat.i(222193);
+      AppMethodBeat.i(220619);
       paramOnFrameAvailableListener = new b(paramOnFrameAvailableListener, paramHandler);
       this.mListeners.remove(paramOnFrameAvailableListener);
       this.mListeners.add(paramOnFrameAvailableListener);
-      AppMethodBeat.o(222193);
+      AppMethodBeat.o(220619);
       return;
     }
     finally
@@ -233,62 +233,62 @@ public final class q
   static final class a
     extends Handler
   {
-    public final q cEV;
-    private final Handler cEW;
+    public final q eyh;
+    private final Handler eyi;
     
     public a(Handler paramHandler, q paramq)
     {
       super();
-      AppMethodBeat.i(222698);
-      this.cEW = paramHandler;
-      this.cEV = paramq;
-      AppMethodBeat.o(222698);
+      AppMethodBeat.i(220606);
+      this.eyi = paramHandler;
+      this.eyh = paramq;
+      AppMethodBeat.o(220606);
     }
     
     public final void handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(222699);
-      this.cEW.handleMessage(paramMessage);
-      q.b(this.cEV);
-      AppMethodBeat.o(222699);
+      AppMethodBeat.i(220610);
+      this.eyi.handleMessage(paramMessage);
+      q.b(this.eyh);
+      AppMethodBeat.o(220610);
     }
   }
   
   static final class b
   {
-    public final SurfaceTexture.OnFrameAvailableListener cEX;
+    public final SurfaceTexture.OnFrameAvailableListener eyj;
     public final Handler handler;
     
     public b(SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener, Handler paramHandler)
     {
-      this.cEX = paramOnFrameAvailableListener;
+      this.eyj = paramOnFrameAvailableListener;
       this.handler = paramHandler;
     }
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(224965);
+      AppMethodBeat.i(220611);
       if (this == paramObject)
       {
-        AppMethodBeat.o(224965);
+        AppMethodBeat.o(220611);
         return true;
       }
       if ((paramObject == null) || (getClass() != paramObject.getClass()))
       {
-        AppMethodBeat.o(224965);
+        AppMethodBeat.o(220611);
         return false;
       }
       paramObject = (b)paramObject;
-      boolean bool = this.cEX.equals(paramObject.cEX);
-      AppMethodBeat.o(224965);
+      boolean bool = this.eyj.equals(paramObject.eyj);
+      AppMethodBeat.o(220611);
       return bool;
     }
     
     public final int hashCode()
     {
-      AppMethodBeat.i(224967);
-      int i = Objects.hash(new Object[] { this.cEX });
-      AppMethodBeat.o(224967);
+      AppMethodBeat.i(220612);
+      int i = Objects.hash(new Object[] { this.eyj });
+      AppMethodBeat.o(220612);
       return i;
     }
   }

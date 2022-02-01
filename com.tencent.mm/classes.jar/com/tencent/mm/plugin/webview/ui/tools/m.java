@@ -1,180 +1,246 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import android.os.Bundle;
-import android.os.RemoteException;
+import android.content.Intent;
+import android.net.Uri;
+import android.net.Uri.Builder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelsns.n;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.webview.model.ba;
-import com.tencent.mm.plugin.webview.stub.e;
-import com.tencent.mm.sdk.platformtools.ConnectivityCompat;
-import com.tencent.mm.sdk.platformtools.ConnectivityCompat.Companion;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MD5Util;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.aw;
+import kotlin.Metadata;
+import kotlin.g.a.a;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.k;
+import kotlin.n.n;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/WebViewActionBarHelper;", "", "webViewUI", "Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;", "(Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;)V", "isCustomizeActionBarColor", "", "urlParams", "Lcom/tencent/mm/plugin/webview/ui/tools/UrlParams;", "getUrlParams", "()Lcom/tencent/mm/plugin/webview/ui/tools/UrlParams;", "setUrlParams", "(Lcom/tencent/mm/plugin/webview/ui/tools/UrlParams;)V", "initImmersivePageBgIsDark", "", "immersivePageBgIsDark", "", "initImmersiveStyle", "initParams", "initParamsFromUrl", "isBgDarkMode", "isImmersiveStyle", "isImmersiveVideoStyle", "setIsCustomizeActionBarColor", "custom", "Companion", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class m
 {
-  public static m Qer;
-  private String Qes;
-  private String bssid;
-  boolean lwF = false;
-  private int networkType;
-  private e pGC = null;
-  private String sessionId;
-  private String ssid;
-  String traceid;
+  public static final a WUo;
+  private static final kotlin.j<Boolean> WUr;
+  private static final kotlin.j<Boolean> WUs;
+  private static final kotlin.j<MultiProcessMMKV> exj;
+  final WebViewUI WUm;
+  j WUp;
+  public boolean WUq;
   
   static
   {
-    AppMethodBeat.i(79943);
-    Qer = new m();
-    AppMethodBeat.o(79943);
+    AppMethodBeat.i(296105);
+    WUo = new a((byte)0);
+    exj = k.cm((a)c.WUu);
+    WUr = k.cm((a)b.WUt);
+    WUs = k.cm((a)d.WUv);
+    AppMethodBeat.o(296105);
   }
   
-  private void s(int paramInt1, String paramString, int paramInt2)
+  public m(WebViewUI paramWebViewUI)
   {
-    AppMethodBeat.i(79942);
-    n localn = new n();
-    localn.m("20adInfo", this.traceid + ",");
-    localn.m("21optype", paramInt1 + ",");
-    localn.m("22sessionId", this.sessionId + ",");
-    localn.m("23currURL", this.Qes + ",");
-    localn.m("24referURL", paramString + ",");
-    localn.m("25errCode", paramInt2 + ",");
-    localn.m("26networkType", this.networkType + ",");
-    localn.m("27timeStamp", Util.nowMilliSecond() + ",");
-    localn.m("28ssid", this.ssid + ",");
-    localn.m("29bssid", this.bssid + ",");
-    Log.i("MicroMsg.WebViewReportUtil", "report logbuffer adPageOp(13791): optype:%d, sessionId:%s, currUrl:%s, referUrl:%s, errCode:%d, networkType:%d", new Object[] { Integer.valueOf(paramInt1), this.sessionId, this.Qes, paramString, Integer.valueOf(paramInt2), Integer.valueOf(this.networkType) });
-    h.IzE.a(13791, new Object[] { localn });
-    if (this.pGC == null)
+    AppMethodBeat.i(296094);
+    this.WUm = paramWebViewUI;
+    this.WUp = new j((byte)0);
+    paramWebViewUI = this.WUm.getIntent();
+    int j = paramWebViewUI.getIntExtra("immersiveUIStyle", 0);
+    int k = paramWebViewUI.getIntExtra("immersiveVideoStyle", 0);
+    boolean bool1;
+    if ((j == 1) || (k == 1))
     {
-      Log.e("MicroMsg.WebViewReportUtil", "report invoker null");
-      AppMethodBeat.o(79942);
+      localObject = this.WUp;
+      if (j == 1)
+      {
+        bool1 = true;
+        ((j)localObject).WGL = bool1;
+        localObject = this.WUp;
+        if (k != 1) {
+          break label140;
+        }
+      }
+      label140:
+      for (bool1 = bool2;; bool1 = false)
+      {
+        ((j)localObject).WUk = bool1;
+        auo(paramWebViewUI.getIntExtra("immersivePageBgIsDark", -1));
+        AppMethodBeat.o(296094);
+        return;
+        bool1 = false;
+        break;
+      }
+    }
+    paramWebViewUI = this.WUm.dgY();
+    s.s(paramWebViewUI, "webViewUI.rawUrl");
+    for (;;)
+    {
+      try
+      {
+        paramWebViewUI = Uri.parse(paramWebViewUI);
+        if (!((Boolean)WUr.getValue()).booleanValue())
+        {
+          localObject = paramWebViewUI.getHost();
+          if (localObject != null) {
+            break label347;
+          }
+          bool1 = false;
+          break label517;
+        }
+        this.WUp.WGL = s.p(Util.nullAsNil(paramWebViewUI.getQueryParameter("immersiveUIStyle")), "1");
+        if (!Util.isNullOrNil(paramWebViewUI.getQueryParameter("immersiveUIStyle"))) {
+          break;
+        }
+        localObject = paramWebViewUI.getPath();
+        if (localObject != null) {
+          break label359;
+        }
+        bool1 = false;
+        if (!bool1) {
+          break;
+        }
+        this.WUp.WGL = true;
+        auo(-1);
+        paramWebViewUI = paramWebViewUI.buildUpon().appendQueryParameter("immersiveUIStyle", "1").appendQueryParameter("immersivePageBgIsDark", "2").build().toString();
+        s.s(paramWebViewUI, "uri.buildUpon().appendQu…, \"2\").build().toString()");
+        this.WUm.getIntent().putExtra("rawUrl", paramWebViewUI);
+        Log.i("MicroMsg.WebViewActionBarHelper", s.X("initParamsFromUrl appendQueryParameter rawUrl = ", paramWebViewUI));
+        AppMethodBeat.o(296094);
+        return;
+      }
+      catch (Exception paramWebViewUI)
+      {
+        Log.e("MicroMsg.WebViewActionBarHelper", s.X("isTranslucentMode ex ", paramWebViewUI.getMessage()));
+      }
+      label341:
+      AppMethodBeat.o(296094);
       return;
+      label347:
+      bool1 = s.p(localObject, "support.weixin.qq.com");
+      break label517;
+      label359:
+      if (!((Boolean)WUs.getValue()).booleanValue()) {
+        bool1 = false;
+      } else {
+        bool1 = n.U((String)localObject, "/cgi-bin/mmsupport-bin/showredpacket", true);
+      }
     }
-    paramString = new Bundle();
-    paramString.putString("ad_report_data_str", localn.toString());
-    try
+    Object localObject = paramWebViewUI.getQueryParameter("immersivePageBgIsDark");
+    CharSequence localCharSequence = (CharSequence)localObject;
+    if ((localCharSequence != null) && (!n.bp(localCharSequence))) {}
+    for (;;)
     {
-      this.pGC.z(1295, paramString);
-      AppMethodBeat.o(79942);
-      return;
-    }
-    catch (RemoteException paramString)
-    {
-      Log.e("MicroMsg.WebViewReportUtil", "report: exp:%s", new Object[] { paramString });
-      AppMethodBeat.o(79942);
-    }
-  }
-  
-  public final void OR()
-  {
-    AppMethodBeat.i(216400);
-    Log.v("MicroMsg.WebViewReportUtil", "onPageFinished traceid %s", new Object[] { this.traceid });
-    if (Util.isNullOrNil(this.traceid))
-    {
-      AppMethodBeat.o(216400);
-      return;
-    }
-    rE(2);
-    AppMethodBeat.o(216400);
-  }
-  
-  public final void a(e parame)
-  {
-    this.pGC = parame;
-  }
-  
-  public final void aoB(int paramInt)
-  {
-    AppMethodBeat.i(79939);
-    Log.v("MicroMsg.WebViewReportUtil", "onReceivedError traceid %s", new Object[] { this.traceid });
-    if (Util.isNullOrNil(this.traceid))
-    {
-      AppMethodBeat.o(79939);
-      return;
-    }
-    s(3, "", paramInt);
-    AppMethodBeat.o(79939);
-  }
-  
-  public final void close()
-  {
-    AppMethodBeat.i(79940);
-    Log.v("MicroMsg.WebViewReportUtil", "close traceid %s", new Object[] { this.traceid });
-    this.lwF = true;
-    if (Util.isNullOrNil(this.traceid))
-    {
-      AppMethodBeat.o(79940);
-      return;
-    }
-    rE(4);
-    this.traceid = null;
-    AppMethodBeat.o(79940);
-  }
-  
-  public final void dv(String paramString)
-  {
-    AppMethodBeat.i(216399);
-    Log.v("MicroMsg.WebViewReportUtil", "onPageStarted url %s, currUrl %s, traceid %s", new Object[] { paramString, this.Qes, this.traceid });
-    String str = this.Qes;
-    this.Qes = paramString;
-    if (Util.isNullOrNil(this.traceid))
-    {
-      AppMethodBeat.o(216399);
-      return;
-    }
-    s(1, str, 0);
-    AppMethodBeat.o(216399);
-  }
-  
-  public final String getTraceId()
-  {
-    return this.traceid;
-  }
-  
-  public final void mF(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(79938);
-    Log.i("MicroMsg.WebViewReportUtil", "setting traceid " + paramString1 + ",usename " + paramString2);
-    this.traceid = paramString1;
-    this.networkType = ba.bTg();
-    this.sessionId = MD5Util.getMD5String(paramString2 + Util.nowMilliSecond());
-    this.ssid = ConnectivityCompat.Companion.getFormattedWiFiSsid();
-    this.bssid = ConnectivityCompat.Companion.getFormattedWiFiBssid();
-    this.lwF = false;
-    AppMethodBeat.o(79938);
-  }
-  
-  final void rE(int paramInt)
-  {
-    AppMethodBeat.i(79941);
-    s(paramInt, "", 0);
-    AppMethodBeat.o(79941);
-  }
-  
-  public final void setTraceId(String paramString)
-  {
-    AppMethodBeat.i(216396);
-    String str3 = "";
-    String str1 = str3;
-    if (this.pGC != null) {}
-    try
-    {
-      str1 = this.pGC.l(23, null).getString("config_info_username");
-      mF(paramString, str1);
-      AppMethodBeat.o(216396);
-      return;
-    }
-    catch (RemoteException localRemoteException)
-    {
+      if (i == 0)
+      {
+        auo(Util.safeParseInt((String)localObject));
+        paramWebViewUI = paramWebViewUI.getQueryParameter("hideShareOption");
+        if (paramWebViewUI == null) {
+          break label341;
+        }
+        i = paramWebViewUI.hashCode();
+        switch (i)
+        {
+        }
+      }
       for (;;)
       {
-        Log.e("MicroMsg.WebViewReportUtil", "setTraceId getConfigInfo exp:%s", new Object[] { localRemoteException });
-        String str2 = str3;
+        AppMethodBeat.o(296094);
+        return;
+        auo(-1);
+        break;
+        if (paramWebViewUI.equals("1")) {
+          this.WUm.getIntent().putExtra("showShare", false);
+        }
       }
+      label517:
+      if (!bool1) {
+        break label341;
+      }
+      break;
+      i = 1;
+    }
+  }
+  
+  private final void auo(int paramInt)
+  {
+    AppMethodBeat.i(296100);
+    switch (paramInt)
+    {
+    default: 
+      this.WUp.WGM = aw.isDarkMode();
+      AppMethodBeat.o(296100);
+      return;
+    case 0: 
+      this.WUp.WGM = false;
+      AppMethodBeat.o(296100);
+      return;
+    }
+    this.WUp.WGM = true;
+    AppMethodBeat.o(296100);
+  }
+  
+  public final boolean ixy()
+  {
+    return (this.WUp.WGL) || (this.WUp.WUk);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/WebViewActionBarHelper$Companion;", "", "()V", "TAG", "", "immersiveStyleFromUrl", "", "getImmersiveStyleFromUrl", "()Z", "immersiveStyleFromUrl$delegate", "Lkotlin/Lazy;", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMmkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "mmkv$delegate", "showRedPacketAlphaTitleBar", "getShowRedPacketAlphaTitleBar", "showRedPacketAlphaTitleBar$delegate", "isImmersiveStyleHost", "host", "isImmersiveStylePath", "path", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements a<Boolean>
+  {
+    public static final b WUt;
+    
+    static
+    {
+      AppMethodBeat.i(296192);
+      WUt = new b();
+      AppMethodBeat.o(296192);
+    }
+    
+    b()
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends u
+    implements a<MultiProcessMMKV>
+  {
+    public static final c WUu;
+    
+    static
+    {
+      AppMethodBeat.i(296186);
+      WUu = new c();
+      AppMethodBeat.o(296186);
+    }
+    
+    c()
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class d
+    extends u
+    implements a<Boolean>
+  {
+    public static final d WUv;
+    
+    static
+    {
+      AppMethodBeat.i(296189);
+      WUv = new d();
+      AppMethodBeat.o(296189);
+    }
+    
+    d()
+    {
+      super();
     }
   }
 }

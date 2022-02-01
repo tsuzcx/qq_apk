@@ -1,40 +1,237 @@
 package androidx.fragment.app;
 
-public abstract class i
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
+
+class i
 {
-  public abstract i O(int paramInt1, int paramInt2);
+  final CopyOnWriteArrayList<a> bCM;
+  private final FragmentManager mFragmentManager;
   
-  public abstract i a(int paramInt, Fragment paramFragment);
+  i(FragmentManager paramFragmentManager)
+  {
+    AppMethodBeat.i(193772);
+    this.bCM = new CopyOnWriteArrayList();
+    this.mFragmentManager = paramFragmentManager;
+    AppMethodBeat.o(193772);
+  }
   
-  public abstract i a(int paramInt, Fragment paramFragment, String paramString);
+  final void a(Fragment paramFragment, Bundle paramBundle)
+  {
+    AppMethodBeat.i(193791);
+    Fragment localFragment = this.mFragmentManager.getParent();
+    if (localFragment != null) {
+      localFragment.getParentFragmentManager().getLifecycleCallbacksDispatcher().a(paramFragment, paramBundle);
+    }
+    paramFragment = this.bCM.iterator();
+    while (paramFragment.hasNext()) {
+      paramFragment.next();
+    }
+    AppMethodBeat.o(193791);
+  }
   
-  public abstract i a(Fragment paramFragment);
+  final void a(Fragment paramFragment, View paramView, Bundle paramBundle)
+  {
+    AppMethodBeat.i(193815);
+    Fragment localFragment = this.mFragmentManager.getParent();
+    if (localFragment != null) {
+      localFragment.getParentFragmentManager().getLifecycleCallbacksDispatcher().a(paramFragment, paramView, paramBundle);
+    }
+    paramFragment = this.bCM.iterator();
+    while (paramFragment.hasNext()) {
+      paramFragment.next();
+    }
+    AppMethodBeat.o(193815);
+  }
   
-  public abstract i a(Fragment paramFragment, String paramString);
+  final void b(Fragment paramFragment, Bundle paramBundle)
+  {
+    AppMethodBeat.i(193799);
+    Fragment localFragment = this.mFragmentManager.getParent();
+    if (localFragment != null) {
+      localFragment.getParentFragmentManager().getLifecycleCallbacksDispatcher().b(paramFragment, paramBundle);
+    }
+    paramFragment = this.bCM.iterator();
+    while (paramFragment.hasNext()) {
+      paramFragment.next();
+    }
+    AppMethodBeat.o(193799);
+  }
   
-  public abstract i b(int paramInt, Fragment paramFragment);
+  final void c(Fragment paramFragment, Bundle paramBundle)
+  {
+    AppMethodBeat.i(193808);
+    Fragment localFragment = this.mFragmentManager.getParent();
+    if (localFragment != null) {
+      localFragment.getParentFragmentManager().getLifecycleCallbacksDispatcher().c(paramFragment, paramBundle);
+    }
+    paramFragment = this.bCM.iterator();
+    while (paramFragment.hasNext()) {
+      paramFragment.next();
+    }
+    AppMethodBeat.o(193808);
+  }
   
-  public abstract i b(Fragment paramFragment);
+  final void d(Fragment paramFragment, Bundle paramBundle)
+  {
+    AppMethodBeat.i(193847);
+    Fragment localFragment = this.mFragmentManager.getParent();
+    if (localFragment != null) {
+      localFragment.getParentFragmentManager().getLifecycleCallbacksDispatcher().d(paramFragment, paramBundle);
+    }
+    paramFragment = this.bCM.iterator();
+    while (paramFragment.hasNext()) {
+      paramFragment.next();
+    }
+    AppMethodBeat.o(193847);
+  }
   
-  public abstract i c(Fragment paramFragment);
+  final void f(Fragment paramFragment)
+  {
+    AppMethodBeat.i(193778);
+    this.mFragmentManager.getHost();
+    Fragment localFragment = this.mFragmentManager.getParent();
+    if (localFragment != null) {
+      localFragment.getParentFragmentManager().getLifecycleCallbacksDispatcher().f(paramFragment);
+    }
+    paramFragment = this.bCM.iterator();
+    while (paramFragment.hasNext()) {
+      paramFragment.next();
+    }
+    AppMethodBeat.o(193778);
+  }
   
-  public abstract i d(Fragment paramFragment);
+  final void g(Fragment paramFragment)
+  {
+    AppMethodBeat.i(193785);
+    this.mFragmentManager.getHost();
+    Fragment localFragment = this.mFragmentManager.getParent();
+    if (localFragment != null) {
+      localFragment.getParentFragmentManager().getLifecycleCallbacksDispatcher().g(paramFragment);
+    }
+    paramFragment = this.bCM.iterator();
+    while (paramFragment.hasNext()) {
+      paramFragment.next();
+    }
+    AppMethodBeat.o(193785);
+  }
   
-  public abstract i e(Fragment paramFragment);
+  final void h(Fragment paramFragment)
+  {
+    AppMethodBeat.i(193819);
+    Fragment localFragment = this.mFragmentManager.getParent();
+    if (localFragment != null) {
+      localFragment.getParentFragmentManager().getLifecycleCallbacksDispatcher().h(paramFragment);
+    }
+    paramFragment = this.bCM.iterator();
+    while (paramFragment.hasNext()) {
+      paramFragment.next();
+    }
+    AppMethodBeat.o(193819);
+  }
   
-  public abstract i ik();
+  final void i(Fragment paramFragment)
+  {
+    AppMethodBeat.i(193829);
+    Fragment localFragment = this.mFragmentManager.getParent();
+    if (localFragment != null) {
+      localFragment.getParentFragmentManager().getLifecycleCallbacksDispatcher().i(paramFragment);
+    }
+    paramFragment = this.bCM.iterator();
+    while (paramFragment.hasNext()) {
+      paramFragment.next();
+    }
+    AppMethodBeat.o(193829);
+  }
   
-  public abstract int in();
+  final void j(Fragment paramFragment)
+  {
+    AppMethodBeat.i(193836);
+    Fragment localFragment = this.mFragmentManager.getParent();
+    if (localFragment != null) {
+      localFragment.getParentFragmentManager().getLifecycleCallbacksDispatcher().j(paramFragment);
+    }
+    paramFragment = this.bCM.iterator();
+    while (paramFragment.hasNext()) {
+      paramFragment.next();
+    }
+    AppMethodBeat.o(193836);
+  }
   
-  public abstract int ip();
+  final void k(Fragment paramFragment)
+  {
+    AppMethodBeat.i(193843);
+    Fragment localFragment = this.mFragmentManager.getParent();
+    if (localFragment != null) {
+      localFragment.getParentFragmentManager().getLifecycleCallbacksDispatcher().k(paramFragment);
+    }
+    paramFragment = this.bCM.iterator();
+    while (paramFragment.hasNext()) {
+      paramFragment.next();
+    }
+    AppMethodBeat.o(193843);
+  }
   
-  public abstract void iq();
+  final void l(Fragment paramFragment)
+  {
+    AppMethodBeat.i(193853);
+    Fragment localFragment = this.mFragmentManager.getParent();
+    if (localFragment != null) {
+      localFragment.getParentFragmentManager().getLifecycleCallbacksDispatcher().l(paramFragment);
+    }
+    paramFragment = this.bCM.iterator();
+    while (paramFragment.hasNext()) {
+      paramFragment.next();
+    }
+    AppMethodBeat.o(193853);
+  }
   
-  public abstract void ir();
+  final void m(Fragment paramFragment)
+  {
+    AppMethodBeat.i(193860);
+    Fragment localFragment = this.mFragmentManager.getParent();
+    if (localFragment != null) {
+      localFragment.getParentFragmentManager().getLifecycleCallbacksDispatcher().m(paramFragment);
+    }
+    paramFragment = this.bCM.iterator();
+    while (paramFragment.hasNext()) {
+      paramFragment.next();
+    }
+    AppMethodBeat.o(193860);
+  }
+  
+  final void n(Fragment paramFragment)
+  {
+    AppMethodBeat.i(193868);
+    Fragment localFragment = this.mFragmentManager.getParent();
+    if (localFragment != null) {
+      localFragment.getParentFragmentManager().getLifecycleCallbacksDispatcher().n(paramFragment);
+    }
+    paramFragment = this.bCM.iterator();
+    while (paramFragment.hasNext()) {
+      paramFragment.next();
+    }
+    AppMethodBeat.o(193868);
+  }
+  
+  static final class a
+  {
+    final FragmentManager.c bCN;
+    final boolean bCO;
+    
+    a(FragmentManager.c paramc, boolean paramBoolean)
+    {
+      this.bCN = paramc;
+      this.bCO = paramBoolean;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.fragment.app.i
  * JD-Core Version:    0.7.0.1
  */

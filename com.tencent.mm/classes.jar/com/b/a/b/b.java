@@ -4,7 +4,7 @@ import java.util.Map;
 
 public abstract interface b
 {
-  public abstract Map<String, String> pt();
+  public abstract Map<String, String> Pa();
 }
 
 

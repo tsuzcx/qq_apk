@@ -1,21 +1,33 @@
 package kotlin.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Collections;
-import java.util.Set;
-import kotlin.g.b.p;
-import kotlin.l;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"setOf", "", "T", "element", "(Ljava/lang/Object;)Ljava/util/Set;", "sortedSetOf", "Ljava/util/TreeSet;", "elements", "", "([Ljava/lang/Object;)Ljava/util/TreeSet;", "comparator", "Ljava/util/Comparator;", "Lkotlin/Comparator;", "(Ljava/util/Comparator;[Ljava/lang/Object;)Ljava/util/TreeSet;", "kotlin-stdlib"}, iBN=1)
-public class al
+@Metadata(d1={""}, d2={"getOrImplicitDefault", "V", "K", "", "key", "getOrImplicitDefaultNullable", "(Ljava/util/Map;Ljava/lang/Object;)Ljava/lang/Object;", "withDefault", "defaultValue", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "", "withDefaultMutable", "kotlin-stdlib"}, k=5, mv={1, 5, 1}, xi=1, xs="kotlin/collections/MapsKt")
+class al
 {
-  public static final <T> Set<T> setOf(T paramT)
+  public static final <K, V> V d(Map<K, ? extends V> paramMap, K paramK)
   {
-    AppMethodBeat.i(129026);
-    paramT = Collections.singleton(paramT);
-    p.j(paramT, "java.util.Collections.singleton(element)");
-    AppMethodBeat.o(129026);
-    return paramT;
+    AppMethodBeat.i(129235);
+    s.u(paramMap, "$this$getOrImplicitDefault");
+    if ((paramMap instanceof aj))
+    {
+      paramMap = ((aj)paramMap).kkY();
+      AppMethodBeat.o(129235);
+      return paramMap;
+    }
+    Object localObject = paramMap.get(paramK);
+    if ((localObject == null) && (!paramMap.containsKey(paramK)))
+    {
+      paramMap = (Throwable)new NoSuchElementException("Key " + paramK + " is missing in the map.");
+      AppMethodBeat.o(129235);
+      throw paramMap;
+    }
+    AppMethodBeat.o(129235);
+    return localObject;
   }
 }
 

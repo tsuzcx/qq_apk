@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/b02" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<FrameLayout android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="@dimen/c3" android:layout_height="@dimen/c3">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_horizontal" android:id="@id/irc" android:layout_width="@dimen/cn" android:layout_height="@dimen/cn" android:src="@raw/toast_ok" app:iconColor="@color/am" />
-        <TextView android:textSize="@dimen/t" android:textColor="@color/ag2" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/ird" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/c5" android:layout_marginRight="@dimen/c5" android:maxLines="2" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d6">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_horizontal" android:layout_width="@dimen/db" android:layout_height="@dimen/db" android:src="@raw/icons_filled_error" app:iconColor="@color/Yellow" />
+        <TextView android:textSize="@dimen/hr" android:textColor="@color/a7b" android:gravity="center_horizontal" android:id="@id/kwn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d0" android:layout_marginStart="@dimen/cv" android:layout_marginEnd="@dimen/cv" />
+        <TextView android:textSize="@dimen/t" android:textColor="@color/a7b" android:gravity="center_horizontal" android:id="@id/kwm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d0" android:layout_marginStart="@dimen/d0" android:layout_marginEnd="@dimen/d0" />
     </LinearLayout>
-</LinearLayout>
+    <Button android:layout_gravity="bottom|center" android:id="@id/am1" android:layout_marginBottom="@dimen/c6" android:text="@string/lkh" style="@style/op" />
+</FrameLayout>

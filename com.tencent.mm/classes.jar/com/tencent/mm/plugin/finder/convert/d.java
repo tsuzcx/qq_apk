@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.finder.convert;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.text.Layout.Alignment;
@@ -9,138 +10,249 @@ import android.text.TextPaint;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.d;
+import com.tencent.mm.br.c;
+import com.tencent.mm.plugin.finder.e.c;
 import com.tencent.mm.plugin.finder.feed.ui.FinderProfileTimeLineUI;
-import com.tencent.mm.plugin.finder.model.s;
-import com.tencent.mm.plugin.finder.report.n;
-import com.tencent.mm.plugin.finder.storage.am;
-import com.tencent.mm.plugin.finder.viewmodel.component.aj;
-import com.tencent.mm.plugin.finder.viewmodel.component.aj.a;
+import com.tencent.mm.plugin.finder.model.t;
+import com.tencent.mm.plugin.finder.report.z;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.storage.au;
+import com.tencent.mm.plugin.finder.uniComments.storge.b;
+import com.tencent.mm.plugin.finder.viewmodel.component.as;
+import com.tencent.mm.plugin.finder.viewmodel.component.as.a;
+import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.protocal.protobuf.FinderObject;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.g.b.p;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/convert/FinderCommentConvertUtil;", "", "()V", "TAG", "", "lastProfileUsername", "getLastProfileUsername", "()Ljava/lang/String;", "setLastProfileUsername", "(Ljava/lang/String;)V", "calcTextWidth", "", "context", "Landroid/content/Context;", "length", "ellipseText", "tp", "Landroid/text/TextPaint;", "text", "maxWidth", "maxWithEllipseWidth", "getNickName", "", "paint", "spanText", "maxNameCount", "tv", "Landroid/widget/TextView;", "getTextViewWidth", "getTextWidth", "", "jumpProfile", "", "username", "item", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "commentScene", "measureByStaticLayout", "width", "extraMaxWidth", "setNickName", "setNicknameCalculateWidth", "feedCommentLayout", "Landroid/view/View;", "nickNameTv", "commentTime", "awesomeIv", "awesomeNumTv", "ownerTv", "friendTv", "nickNameCharsequence", "commentTimeText", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/convert/FinderCommentConvertUtil;", "", "()V", "TAG", "", "lastProfileUsername", "getLastProfileUsername", "()Ljava/lang/String;", "setLastProfileUsername", "(Ljava/lang/String;)V", "calcTextWidth", "", "context", "Landroid/content/Context;", "length", "ellipseText", "tp", "Landroid/text/TextPaint;", "text", "maxWidth", "maxWithEllipseWidth", "getNickName", "", "paint", "spanText", "maxNameCount", "tv", "Landroid/widget/TextView;", "getTextViewWidth", "getTextWidth", "", "jumpBizProfile", "", "bizUsername", "commentScene", "item", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "currentFeed", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "Lcom/tencent/mm/plugin/finder/uniComments/storge/UniFeedComment;", "jumpProfile", "username", "measureByStaticLayout", "width", "extraMaxWidth", "setNickName", "setNicknameCalculateWidth", "feedCommentLayout", "Landroid/view/View;", "nickNameTv", "commentTime", "awesomeIv", "awesomeNumTv", "ownerTv", "friendTv", "nickNameCharsequence", "commentTimeText", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
 {
-  private static final String TAG = "Finder.FinderCommentConvertUtil";
-  private static String xgI;
-  public static final d xgJ;
+  public static final d AHD;
+  private static String AHE;
+  private static final String TAG;
   
   static
   {
     AppMethodBeat.i(178099);
-    xgJ = new d();
+    AHD = new d();
     TAG = "Finder.FinderCommentConvertUtil";
-    xgI = "";
+    AHE = "";
     AppMethodBeat.o(178099);
   }
   
   public static CharSequence a(TextView paramTextView, CharSequence paramCharSequence, int paramInt)
   {
-    AppMethodBeat.i(283933);
-    p.k(paramTextView, "tv");
-    p.k(paramCharSequence, "spanText");
+    AppMethodBeat.i(350534);
+    s.u(paramTextView, "tv");
+    s.u(paramCharSequence, "spanText");
     Object localObject = paramTextView.getContext();
-    p.j(localObject, "tv.context");
-    int i = ae((Context)localObject, paramInt);
+    s.s(localObject, "tv.context");
+    int i = ao((Context)localObject, paramInt);
     localObject = paramTextView.getContext();
-    p.j(localObject, "tv.context");
-    paramInt = ae((Context)localObject, paramInt + 1);
+    s.s(localObject, "tv.context");
+    paramInt = ao((Context)localObject, paramInt + 1);
     localObject = new StaticLayout(paramCharSequence, 0, paramCharSequence.length(), paramTextView.getPaint(), i, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, true);
     if (new StaticLayout(paramCharSequence, 0, paramCharSequence.length(), paramTextView.getPaint(), paramInt, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, true).getLineCount() <= 1)
     {
-      AppMethodBeat.o(283933);
+      AppMethodBeat.o(350534);
       return paramCharSequence;
     }
     paramInt = ((StaticLayout)localObject).getLineEnd(0);
     paramTextView = paramTextView.getContext();
-    localObject = new StringBuilder();
     paramCharSequence = paramCharSequence.toString();
     if (paramCharSequence == null)
     {
-      paramTextView = new t("null cannot be cast to non-null type java.lang.String");
-      AppMethodBeat.o(283933);
+      paramTextView = new NullPointerException("null cannot be cast to non-null type java.lang.String");
+      AppMethodBeat.o(350534);
       throw paramTextView;
     }
     paramCharSequence = paramCharSequence.substring(0, paramInt);
-    p.j(paramCharSequence, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-    paramTextView = com.tencent.mm.pluginsdk.ui.span.l.c(paramTextView, (CharSequence)(paramCharSequence + "..."));
-    p.j(paramTextView, "MMSpanManager.spanForSmi…0, ellipseStart) + \"...\")");
+    s.s(paramCharSequence, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+    paramTextView = p.b(paramTextView, (CharSequence)s.X(paramCharSequence, "..."));
+    s.s(paramTextView, "{\n            val ellips…Start) + \"...\")\n        }");
     paramTextView = (CharSequence)paramTextView;
-    AppMethodBeat.o(283933);
+    AppMethodBeat.o(350534);
     return paramTextView;
   }
   
   public static String a(TextPaint paramTextPaint, String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(178097);
-    p.k(paramTextPaint, "tp");
+    s.u(paramTextPaint, "tp");
     if ((paramString == null) || (Util.isNullOrNil(paramString)))
     {
-      paramTextPaint = paramString;
-      if (paramString == null) {
-        paramTextPaint = "";
+      if (paramString == null)
+      {
+        AppMethodBeat.o(178097);
+        return "";
       }
       AppMethodBeat.o(178097);
-      return paramTextPaint;
+      return paramString;
     }
     StaticLayout localStaticLayout;
     try
     {
-      localObject = com.tencent.mm.pluginsdk.ui.span.l.c(MMApplicationContext.getContext(), (CharSequence)paramString);
-      localStaticLayout = new StaticLayout((CharSequence)localObject, 0, ((SpannableString)localObject).length(), paramTextPaint, paramInt1, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, true);
-      if (new StaticLayout((CharSequence)localObject, 0, ((SpannableString)localObject).length(), paramTextPaint, paramInt2, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, true).getLineCount() <= 1)
+      SpannableString localSpannableString = p.b(MMApplicationContext.getContext(), (CharSequence)paramString);
+      localStaticLayout = new StaticLayout((CharSequence)localSpannableString, 0, localSpannableString.length(), paramTextPaint, paramInt1, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, true);
+      if (new StaticLayout((CharSequence)localSpannableString, 0, localSpannableString.length(), paramTextPaint, paramInt2, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, true).getLineCount() <= 1)
       {
         AppMethodBeat.o(178097);
         return paramString;
       }
     }
-    catch (Throwable paramTextPaint)
+    finally
     {
-      Log.printErrStackTrace(TAG, paramTextPaint, "ellipseText: ".concat(String.valueOf(paramString)), new Object[0]);
+      Log.printErrStackTrace(TAG, paramTextPaint, s.X("ellipseText: ", paramString), new Object[0]);
       AppMethodBeat.o(178097);
       return paramString;
     }
     paramInt1 = localStaticLayout.getLineEnd(0);
-    paramTextPaint = new StringBuilder();
     if (paramString == null)
     {
-      paramTextPaint = new t("null cannot be cast to non-null type java.lang.String");
+      paramTextPaint = new NullPointerException("null cannot be cast to non-null type java.lang.String");
       AppMethodBeat.o(178097);
       throw paramTextPaint;
     }
-    Object localObject = paramString.substring(0, paramInt1);
-    p.j(localObject, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-    paramTextPaint = (String)localObject + "...";
+    paramTextPaint = paramString.substring(0, paramInt1);
+    s.s(paramTextPaint, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+    paramTextPaint = s.X(paramTextPaint, "...");
     AppMethodBeat.o(178097);
     return paramTextPaint;
   }
   
-  public static void a(final Context paramContext, View paramView1, final TextView paramTextView1, final TextView paramTextView2, final View paramView2, final TextView paramTextView3, final TextView paramTextView4, final TextView paramTextView5, CharSequence paramCharSequence, final String paramString)
+  public static void a(Context paramContext, View paramView1, TextView paramTextView1, TextView paramTextView2, View paramView2, TextView paramTextView3, TextView paramTextView4, TextView paramTextView5, CharSequence paramCharSequence, String paramString)
   {
     AppMethodBeat.i(178095);
-    p.k(paramContext, "context");
-    p.k(paramView1, "feedCommentLayout");
-    p.k(paramTextView1, "nickNameTv");
-    p.k(paramTextView2, "commentTime");
-    p.k(paramTextView4, "ownerTv");
-    p.k(paramTextView5, "friendTv");
-    p.k(paramCharSequence, "nickNameCharsequence");
-    p.k(paramString, "commentTimeText");
-    paramView1.post((Runnable)new a(paramView1, paramContext, paramTextView2, paramString, paramView2, paramTextView3, paramTextView4, paramTextView5, paramTextView1));
+    s.u(paramContext, "context");
+    s.u(paramView1, "feedCommentLayout");
+    s.u(paramTextView1, "nickNameTv");
+    s.u(paramTextView2, "commentTime");
+    s.u(paramTextView4, "ownerTv");
+    s.u(paramTextView5, "friendTv");
+    s.u(paramCharSequence, "nickNameCharsequence");
+    s.u(paramString, "commentTimeText");
+    paramView1.post(new d..ExternalSyntheticLambda0(paramView1, paramContext, paramTextView2, paramString, paramView2, paramTextView3, paramTextView4, paramTextView5, paramTextView1));
     AppMethodBeat.o(178095);
   }
   
-  public static void a(String paramString, s params, Context paramContext, int paramInt)
+  public static void a(Context paramContext, String paramString, int paramInt, t paramt, FinderItem paramFinderItem)
+  {
+    AppMethodBeat.i(350482);
+    s.u(paramContext, "context");
+    s.u(paramString, "bizUsername");
+    s.u(paramt, "item");
+    s.u(paramFinderItem, "currentFeed");
+    if (paramInt == 120)
+    {
+      Log.i(TAG, "jumpBizProfile: hit SOURCE_PROFILE_TIMELINE, avatar can't click.");
+      ((Activity)paramContext).finish();
+      AppMethodBeat.o(350482);
+      return;
+    }
+    Intent localIntent = new Intent();
+    as.a locala = as.GSQ;
+    as.a.a(paramContext, localIntent, paramt.ECu.field_feedId, 5, false, 64);
+    localIntent.putExtra("Contact_User", paramString);
+    localIntent.putExtra("Contact_Scene", 214);
+    localIntent.putExtra("biz_profile_enter_from_finder", true);
+    localIntent.putExtra("force_get_contact", true);
+    localIntent.putExtra("key_use_new_contact_profile", true);
+    localIntent.putExtra("biz_profile_tab_type", 1);
+    localIntent.putExtra("Contact_Scene_Note", paramFinderItem.getFeedObject().sessionBuffer);
+    c.b(paramContext, "profile", ".ui.ContactInfoUI", localIntent);
+    AppMethodBeat.o(350482);
+  }
+  
+  public static void a(Context paramContext, String paramString, int paramInt, com.tencent.mm.plugin.finder.uniComments.storge.d paramd)
+  {
+    AppMethodBeat.i(350491);
+    s.u(paramContext, "context");
+    s.u(paramString, "bizUsername");
+    s.u(paramd, "item");
+    if (paramInt == 120)
+    {
+      Log.i(TAG, "jumpBizProfile: hit SOURCE_PROFILE_TIMELINE, avatar can't click.");
+      ((Activity)paramContext).finish();
+      AppMethodBeat.o(350491);
+      return;
+    }
+    Intent localIntent = new Intent();
+    as.a locala = as.GSQ;
+    as.a.a(paramContext, localIntent, paramd.Gbp.field_feedId, 5, false, 64);
+    localIntent.putExtra("Contact_User", paramString);
+    localIntent.putExtra("Contact_Scene", 214);
+    localIntent.putExtra("biz_profile_enter_from_finder", true);
+    localIntent.putExtra("force_get_contact", true);
+    localIntent.putExtra("key_use_new_contact_profile", true);
+    localIntent.putExtra("biz_profile_tab_type", 1);
+    c.b(paramContext, "profile", ".ui.ContactInfoUI", localIntent);
+    AppMethodBeat.o(350491);
+  }
+  
+  private static final void a(View paramView1, Context paramContext, TextView paramTextView1, String paramString, View paramView2, TextView paramTextView2, TextView paramTextView3, TextView paramTextView4, TextView paramTextView5)
+  {
+    AppMethodBeat.i(350547);
+    s.u(paramView1, "$feedCommentLayout");
+    s.u(paramContext, "$context");
+    s.u(paramTextView1, "$commentTime");
+    s.u(paramString, "$commentTimeText");
+    s.u(paramTextView3, "$ownerTv");
+    s.u(paramTextView4, "$friendTv");
+    s.u(paramTextView5, "$nickNameTv");
+    if (paramView1.getWidth() > 0)
+    {
+      int n = paramView1.getWidth();
+      int i1 = com.tencent.mm.cd.a.br(paramContext, e.c.Edge_9A);
+      float f1 = paramTextView1.getPaint().measureText(paramString);
+      float f2 = com.tencent.mm.cd.a.br(paramContext, e.c.Edge_A);
+      int m = 0;
+      int k = 0;
+      int j = k;
+      int i = m;
+      if (paramView2 != null)
+      {
+        j = k;
+        i = m;
+        if (paramView2.getVisibility() == 0)
+        {
+          m = paramView2.getWidth();
+          j = k;
+          i = m;
+          if (paramTextView2 != null)
+          {
+            j = k;
+            i = m;
+            if (paramTextView2.getVisibility() == 0)
+            {
+              j = paramTextView2.getWidth() + com.tencent.mm.cd.a.br(paramContext, e.c.Edge_0_5_A);
+              i = m;
+            }
+          }
+        }
+      }
+      k = s(paramTextView3);
+      m = com.tencent.mm.cd.a.br(paramContext, e.c.Edge_0_5_A);
+      int i2 = s(paramTextView4);
+      int i3 = com.tencent.mm.cd.a.br(paramContext, e.c.Edge_0_5_A);
+      float f3 = n - i1;
+      float f4 = k + m + (i2 + i3);
+      float f5 = i;
+      paramTextView5.setMaxWidth((int)(f3 - (j + (f5 + (f1 + f2 + f4))) - com.tencent.mm.cd.a.br(paramContext, e.c.Edge_A)));
+    }
+    AppMethodBeat.o(350547);
+  }
+  
+  public static void a(String paramString, t paramt, Context paramContext, int paramInt)
   {
     AppMethodBeat.i(178094);
-    p.k(paramString, "username");
-    p.k(params, "item");
-    p.k(paramContext, "context");
-    if ((!Util.isNullOrNil(paramString)) && (Util.isEqual(xgI, paramString)) && ((paramContext instanceof FinderProfileTimeLineUI)))
+    s.u(paramString, "username");
+    s.u(paramt, "item");
+    s.u(paramContext, "context");
+    if ((!Util.isNullOrNil(paramString)) && (Util.isEqual(AHE, paramString)) && ((paramContext instanceof FinderProfileTimeLineUI)))
     {
       ((FinderProfileTimeLineUI)paramContext).finish();
       AppMethodBeat.o(178094);
@@ -148,94 +260,78 @@ public final class d
     }
     Intent localIntent = new Intent();
     localIntent.putExtra("finder_username", paramString);
-    Object localObject = aj.Bnu;
-    aj.a.a(paramContext, localIntent, params.zAt.field_feedId, 5, false, 64);
-    localObject = com.tencent.mm.plugin.finder.utils.a.ACH;
-    com.tencent.mm.plugin.finder.utils.a.enterFinderProfileUI(paramContext, localIntent);
-    paramContext = n.zWF;
-    n.a(5, params.zAt.field_feedId, paramInt, 1, paramString);
+    localIntent.putExtra("KEY_FROM_TIMELINE", true);
+    localIntent.putExtra("KEY_DO_NOT_CHECK_ENTER_BIZ_PROFILE", true);
+    as.a locala = as.GSQ;
+    as.a.a(paramContext, localIntent, paramt.ECu.field_feedId, 5, false, 64);
+    com.tencent.mm.plugin.finder.utils.a.GfO.enterFinderProfileUI(paramContext, localIntent);
+    paramContext = z.FrZ;
+    z.a(5, paramt.ECu.field_feedId, paramInt, 1, paramString);
     AppMethodBeat.o(178094);
   }
   
-  public static void aAZ(String paramString)
+  public static void a(String paramString, com.tencent.mm.plugin.finder.uniComments.storge.d paramd, Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(178093);
-    p.k(paramString, "<set-?>");
-    xgI = paramString;
-    AppMethodBeat.o(178093);
+    AppMethodBeat.i(350500);
+    s.u(paramString, "username");
+    s.u(paramd, "item");
+    s.u(paramContext, "context");
+    if ((!Util.isNullOrNil(paramString)) && (Util.isEqual(AHE, paramString)) && ((paramContext instanceof FinderProfileTimeLineUI)))
+    {
+      ((FinderProfileTimeLineUI)paramContext).finish();
+      AppMethodBeat.o(350500);
+      return;
+    }
+    Intent localIntent = new Intent();
+    localIntent.putExtra("finder_username", paramString);
+    localIntent.putExtra("KEY_FROM_TIMELINE", true);
+    localIntent.putExtra("KEY_DO_NOT_CHECK_ENTER_BIZ_PROFILE", true);
+    as.a locala = as.GSQ;
+    as.a.a(paramContext, localIntent, paramd.Gbp.field_feedId, 5, false, 64);
+    com.tencent.mm.plugin.finder.utils.a.GfO.enterFinderProfileUI(paramContext, localIntent);
+    paramContext = z.FrZ;
+    z.a(5, paramd.Gbp.field_feedId, paramInt, 1, paramString);
+    AppMethodBeat.o(350500);
   }
   
-  public static int ae(Context paramContext, int paramInt)
+  public static int ao(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(178096);
-    p.k(paramContext, "context");
-    paramInt = com.tencent.mm.ci.a.fromDPToPix(paramContext, paramInt * 15 + 1);
+    s.u(paramContext, "context");
+    paramInt = com.tencent.mm.cd.a.fromDPToPix(paramContext, paramInt * 15 + 1);
     AppMethodBeat.o(178096);
     return paramInt;
   }
   
-  public final void d(TextView paramTextView, CharSequence paramCharSequence)
+  public static void avl(String paramString)
+  {
+    AppMethodBeat.i(178093);
+    s.u(paramString, "<set-?>");
+    AHE = paramString;
+    AppMethodBeat.o(178093);
+  }
+  
+  public static void d(TextView paramTextView, CharSequence paramCharSequence)
   {
     AppMethodBeat.i(178098);
-    p.k(paramTextView, "tv");
-    p.k(paramCharSequence, "spanText");
-    paramTextView.setText(e(paramTextView, paramCharSequence));
+    s.u(paramTextView, "tv");
+    s.u(paramCharSequence, "spanText");
+    com.tencent.mm.plugin.finder.storage.d locald = com.tencent.mm.plugin.finder.storage.d.FAy;
+    paramTextView.setText(a(paramTextView, paramCharSequence, com.tencent.mm.plugin.finder.storage.d.eRC()));
     AppMethodBeat.o(178098);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class a
-    implements Runnable
+  private static int s(TextView paramTextView)
   {
-    a(View paramView1, Context paramContext, TextView paramTextView1, String paramString, View paramView2, TextView paramTextView2, TextView paramTextView3, TextView paramTextView4, TextView paramTextView5) {}
-    
-    public final void run()
+    AppMethodBeat.i(350512);
+    if (paramTextView.getVisibility() != 0)
     {
-      AppMethodBeat.i(178092);
-      int k;
-      int m;
-      float f1;
-      float f2;
-      int j;
-      int i;
-      if (this.xgK.getWidth() > 0)
-      {
-        k = this.xgK.getWidth();
-        m = com.tencent.mm.ci.a.aY(paramContext, b.d.Edge_9A);
-        f1 = paramTextView2.getPaint().measureText(paramString);
-        f2 = com.tencent.mm.ci.a.aY(paramContext, b.d.Edge_A);
-        if ((paramView2 == null) || (paramView2.getVisibility() != 0)) {
-          break label255;
-        }
-        j = paramView2.getWidth();
-        if ((paramTextView3 == null) || (paramTextView3.getVisibility() != 0)) {
-          break label249;
-        }
-        i = paramTextView3.getWidth() + com.tencent.mm.ci.a.aY(paramContext, b.d.Edge_0_5_A);
-      }
-      for (;;)
-      {
-        Object localObject = d.xgJ;
-        int n = d.o(paramTextView4);
-        int i1 = com.tencent.mm.ci.a.aY(paramContext, b.d.Edge_0_5_A);
-        localObject = d.xgJ;
-        int i2 = d.o(paramTextView5);
-        int i3 = com.tencent.mm.ci.a.aY(paramContext, b.d.Edge_0_5_A);
-        localObject = paramTextView1;
-        float f3 = k - m;
-        float f4 = n + i1 + (i2 + i3);
-        float f5 = j;
-        ((TextView)localObject).setMaxWidth((int)(f3 - (i + (f4 + (f1 + f2) + f5)) - com.tencent.mm.ci.a.aY(paramContext, b.d.Edge_A)));
-        AppMethodBeat.o(178092);
-        return;
-        label249:
-        i = 0;
-        continue;
-        label255:
-        i = 0;
-        j = 0;
-      }
+      AppMethodBeat.o(350512);
+      return 0;
     }
+    int i = (int)paramTextView.getPaint().measureText(paramTextView.getText().toString());
+    AppMethodBeat.o(350512);
+    return i + 1;
   }
 }
 

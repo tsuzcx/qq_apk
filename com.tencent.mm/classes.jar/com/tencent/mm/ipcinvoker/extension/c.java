@@ -10,24 +10,37 @@ import java.util.Map;
 
 public final class c
 {
-  private static List<a> jZk;
-  private static Map<String, a> jZl;
+  private static final List<a> mzi;
+  private static final Map<String, a> mzj;
+  private static final Object sLock;
   
   static
   {
     AppMethodBeat.i(158796);
-    jZk = new LinkedList();
-    jZl = new HashMap();
+    sLock = new byte[0];
+    mzi = new LinkedList();
+    mzj = new HashMap();
     AppMethodBeat.o(158796);
+  }
+  
+  private static a Fb(String paramString)
+  {
+    AppMethodBeat.i(235694);
+    synchronized (sLock)
+    {
+      paramString = (a)mzj.get(paramString);
+      AppMethodBeat.o(235694);
+      return paramString;
+    }
   }
   
   public static Object a(String paramString, Parcel paramParcel)
   {
     AppMethodBeat.i(158794);
-    paramString = (a)jZl.get(paramString);
+    paramString = Fb(paramString);
     if (paramString != null)
     {
-      paramString = paramString.d(paramParcel);
+      paramString = paramString.f(paramParcel);
       AppMethodBeat.o(158794);
       return paramString;
     }
@@ -38,41 +51,53 @@ public final class c
   public static void a(a parama)
   {
     AppMethodBeat.i(158795);
-    if ((parama == null) || (jZk.contains(parama)))
+    if (parama == null)
     {
       AppMethodBeat.o(158795);
       return;
     }
-    jZl.put(parama.getClass().getName(), parama);
-    jZk.add(parama);
-    AppMethodBeat.o(158795);
+    synchronized (sLock)
+    {
+      if (mzi.contains(parama))
+      {
+        AppMethodBeat.o(158795);
+        return;
+      }
+      mzj.put(parama.getClass().getName(), parama);
+      mzi.add(parama);
+      AppMethodBeat.o(158795);
+      return;
+    }
   }
   
   public static void a(Object paramObject, Parcel paramParcel)
   {
     AppMethodBeat.i(158793);
-    a locala = bq(paramObject);
+    a locala = cK(paramObject);
     if (locala != null) {
       locala.a(paramObject, paramParcel);
     }
     AppMethodBeat.o(158793);
   }
   
-  public static a bq(Object paramObject)
+  public static a cK(Object paramObject)
   {
     AppMethodBeat.i(158792);
-    Iterator localIterator = jZk.iterator();
-    while (localIterator.hasNext())
+    synchronized (sLock)
     {
-      a locala = (a)localIterator.next();
-      if (locala.bp(paramObject))
+      Iterator localIterator = mzi.iterator();
+      while (localIterator.hasNext())
       {
-        AppMethodBeat.o(158792);
-        return locala;
+        a locala = (a)localIterator.next();
+        if (locala.cJ(paramObject))
+        {
+          AppMethodBeat.o(158792);
+          return locala;
+        }
       }
+      AppMethodBeat.o(158792);
+      return null;
     }
-    AppMethodBeat.o(158792);
-    return null;
   }
 }
 

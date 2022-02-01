@@ -3,12 +3,12 @@ package com.tencent.mm.network;
 import android.content.SharedPreferences;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.cd.b;
-import com.tencent.mm.model.bj;
-import com.tencent.mm.protocal.protobuf.ckd;
-import com.tencent.mm.protocal.protobuf.cke;
-import com.tencent.mm.protocal.protobuf.eae;
-import com.tencent.mm.protocal.protobuf.hu;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.model.bk;
+import com.tencent.mm.protocal.protobuf.dak;
+import com.tencent.mm.protocal.protobuf.dal;
+import com.tencent.mm.protocal.protobuf.gol;
+import com.tencent.mm.protocal.protobuf.iq;
 import com.tencent.mm.sdk.platformtools.LVBuffer;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -27,91 +27,73 @@ public final class a
   extends f.a
   implements e
 {
-  private static b.a mua;
-  String fGe;
-  byte[] fYH;
+  private static b.a pnu;
   private boolean foreground;
-  private byte[] mtR;
-  private byte[] mtS;
-  private byte[] mtT;
-  private b mtU;
-  byte[] mtV;
-  private Map<String, byte[]> mtW;
-  private Map<Integer, cke> mtX;
-  private Map<ckd, a> mtY;
-  List<String> mtZ;
+  String hLv;
+  byte[] ieJ;
+  private byte[] pnl;
+  private byte[] pnm;
+  private byte[] pnn;
+  private b pno;
+  byte[] pnp;
+  private Map<String, byte[]> pnq;
+  private Map<Integer, dal> pnr;
+  private Map<dak, a> pns;
+  List<String> pnt;
   private int uin;
   String username;
   
   static
   {
-    AppMethodBeat.i(203917);
-    mua = new b.a();
-    AppMethodBeat.o(203917);
+    AppMethodBeat.i(241181);
+    pnu = new b.a();
+    AppMethodBeat.o(241181);
   }
   
   public a(b paramb)
   {
     AppMethodBeat.i(132629);
-    this.mtU = null;
+    this.pno = null;
     this.foreground = false;
-    this.mtW = new HashMap();
-    this.mtX = new HashMap();
-    this.mtY = new HashMap();
-    this.mtZ = new ArrayList();
-    this.mtU = paramb;
-    bsR();
+    this.pnq = new HashMap();
+    this.pnr = new HashMap();
+    this.pns = new HashMap();
+    this.pnt = new ArrayList();
+    this.pno = paramb;
+    bQA();
     AppMethodBeat.o(132629);
   }
   
-  public static void bN(String paramString1, String paramString2)
+  public static String[] bGk()
   {
-    AppMethodBeat.i(203915);
-    try
-    {
-      Log.i("MicroMsg.AccInfo", "saveBackUpCgiSignKeys " + paramString1.length() + " " + paramString2.length());
-      mua.mug = paramString1;
-      mua.muf = paramString2;
-      AppMethodBeat.o(203915);
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      Log.e("MicroMsg.AccInfo", paramString1.getLocalizedMessage());
-      AppMethodBeat.o(203915);
-    }
-  }
-  
-  public static String[] biA()
-  {
-    AppMethodBeat.i(203916);
+    AppMethodBeat.i(241177);
     String[] arrayOfString = new String[2];
-    if (mua != null)
+    if (pnu != null)
     {
-      arrayOfString[0] = mua.mug;
-      arrayOfString[1] = mua.muf;
-      AppMethodBeat.o(203916);
+      arrayOfString[0] = pnu.pnA;
+      arrayOfString[1] = pnu.pnz;
+      AppMethodBeat.o(241177);
       return arrayOfString;
     }
     Log.e("MicroMsg.AccInfo", "no find cgi sign keys");
-    AppMethodBeat.o(203916);
+    AppMethodBeat.o(241177);
     return arrayOfString;
   }
   
-  private void bsR()
+  private void bQA()
   {
     AppMethodBeat.i(132631);
-    this.fYH = Util.decodeHexString(bj.beN().getString("server_id", ""));
+    this.ieJ = Util.decodeHexString(bk.bCE().getString("server_id", ""));
     AppMethodBeat.o(132631);
   }
   
-  private String bsS()
+  private String bQB()
   {
     AppMethodBeat.i(132637);
     try
     {
       Object localObject = ByteBuffer.allocate(4096);
-      ((ByteBuffer)localObject).put(this.mtR).put(this.mtS).put(this.mtT).put(this.mtV).put(this.fYH).putInt(this.uin).put(this.fGe.getBytes()).put(this.username.getBytes());
+      ((ByteBuffer)localObject).put(this.pnl).put(this.pnm).put(this.pnn).put(this.pnp).put(this.ieJ).putInt(this.uin).put(this.hLv.getBytes()).put(this.username.getBytes());
       localObject = g.getMessageDigest(((ByteBuffer)localObject).array());
       AppMethodBeat.o(132637);
       return localObject;
@@ -123,27 +105,45 @@ public final class a
     return "";
   }
   
+  public static void bY(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(241174);
+    try
+    {
+      Log.i("MicroMsg.AccInfo", "saveBackUpCgiSignKeys " + paramString1.length() + " " + paramString2.length());
+      pnu.pnA = paramString1;
+      pnu.pnz = paramString2;
+      AppMethodBeat.o(241174);
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      Log.e("MicroMsg.AccInfo", paramString1.getLocalizedMessage());
+      AppMethodBeat.o(241174);
+    }
+  }
+  
   private void clear()
   {
     this.username = null;
-    this.mtR = null;
-    this.mtS = null;
-    this.mtT = null;
-    this.fYH = null;
+    this.pnl = null;
+    this.pnm = null;
+    this.pnn = null;
+    this.ieJ = null;
     this.uin = 0;
-    this.mtV = null;
-    this.fGe = null;
+    this.pnp = null;
+    this.hLv = null;
   }
   
-  public final byte[] TX(String paramString)
+  public final byte[] LW(String paramString)
   {
     AppMethodBeat.i(132635);
-    paramString = (byte[])this.mtW.get(paramString);
+    paramString = (byte[])this.pnq.get(paramString);
     AppMethodBeat.o(132635);
     return paramString;
   }
   
-  public final byte[] TY(String paramString)
+  public final byte[] LX(String paramString)
   {
     AppMethodBeat.i(132647);
     if ((paramString == null) || (paramString.length() == 0))
@@ -151,7 +151,7 @@ public final class a
       AppMethodBeat.o(132647);
       return null;
     }
-    Iterator localIterator = this.mtY.entrySet().iterator();
+    Iterator localIterator = this.pns.entrySet().iterator();
     Map.Entry localEntry;
     do
     {
@@ -159,15 +159,15 @@ public final class a
         break;
       }
       localEntry = (Map.Entry)localIterator.next();
-    } while (!paramString.equals(((ckd)localEntry.getKey()).TrL));
-    for (paramString = ((a)localEntry.getValue()).muc;; paramString = null)
+    } while (!paramString.equals(((dak)localEntry.getKey()).aaFX));
+    for (paramString = ((a)localEntry.getValue()).pnw;; paramString = null)
     {
       AppMethodBeat.o(132647);
       return paramString;
     }
   }
   
-  public final byte[] TZ(String paramString)
+  public final byte[] LY(String paramString)
   {
     AppMethodBeat.i(132652);
     if ((paramString == null) || (paramString.length() == 0))
@@ -175,7 +175,7 @@ public final class a
       AppMethodBeat.o(132652);
       return null;
     }
-    Iterator localIterator = this.mtY.entrySet().iterator();
+    Iterator localIterator = this.pns.entrySet().iterator();
     Map.Entry localEntry;
     do
     {
@@ -183,13 +183,13 @@ public final class a
         break;
       }
       localEntry = (Map.Entry)localIterator.next();
-    } while (!paramString.equals(((ckd)localEntry.getKey()).TrL));
-    for (paramString = ((a)localEntry.getValue()).mub;; paramString = null)
+    } while (!paramString.equals(((dak)localEntry.getKey()).aaFX));
+    for (paramString = ((a)localEntry.getValue()).pnv;; paramString = null)
     {
       if (paramString != null) {
         try
         {
-          paramString = paramString.RMm.Tkb.UH;
+          paramString = paramString.YJA.aaxD.Op;
           AppMethodBeat.o(132652);
           return paramString;
         }
@@ -205,7 +205,7 @@ public final class a
     }
   }
   
-  public final byte[] Ua(String paramString)
+  public final byte[] LZ(String paramString)
   {
     AppMethodBeat.i(132653);
     if ((paramString == null) || (paramString.length() == 0))
@@ -213,7 +213,7 @@ public final class a
       AppMethodBeat.o(132653);
       return null;
     }
-    Iterator localIterator = this.mtY.entrySet().iterator();
+    Iterator localIterator = this.pns.entrySet().iterator();
     Map.Entry localEntry;
     do
     {
@@ -221,13 +221,13 @@ public final class a
         break;
       }
       localEntry = (Map.Entry)localIterator.next();
-    } while (!paramString.equals(((ckd)localEntry.getKey()).TrL));
-    for (paramString = ((a)localEntry.getValue()).mub;; paramString = null)
+    } while (!paramString.equals(((dak)localEntry.getKey()).aaFX));
+    for (paramString = ((a)localEntry.getValue()).pnv;; paramString = null)
     {
       if (paramString != null) {
         try
         {
-          paramString = paramString.RMn.Tkb.UH;
+          paramString = paramString.YJB.aaxD.Op;
           AppMethodBeat.o(132653);
           return paramString;
         }
@@ -243,7 +243,7 @@ public final class a
     }
   }
   
-  public final boolean Ub(String paramString)
+  public final boolean Ma(String paramString)
   {
     AppMethodBeat.i(132646);
     if ((paramString == null) || (paramString.length() == 0))
@@ -251,10 +251,10 @@ public final class a
       AppMethodBeat.o(132646);
       return false;
     }
-    ckd localckd;
+    dak localdak;
     do
     {
-      Iterator localIterator = this.mtX.entrySet().iterator();
+      Iterator localIterator = this.pnr.entrySet().iterator();
       Object localObject;
       while (!((Iterator)localObject).hasNext())
       {
@@ -263,47 +263,47 @@ public final class a
           if (!localIterator.hasNext()) {
             break;
           }
-          localObject = (cke)((Map.Entry)localIterator.next()).getValue();
-        } while ((localObject == null) || (((cke)localObject).rVy == null));
-        localObject = ((cke)localObject).rVy.iterator();
+          localObject = (dal)((Map.Entry)localIterator.next()).getValue();
+        } while ((localObject == null) || (((dal)localObject).vgO == null));
+        localObject = ((dal)localObject).vgO.iterator();
       }
-      localckd = (ckd)((Iterator)localObject).next();
-    } while ((localckd == null) || (!paramString.equals(localckd.TrL)));
+      localdak = (dak)((Iterator)localObject).next();
+    } while ((localdak == null) || (!paramString.equals(localdak.aaFX)));
     AppMethodBeat.o(132646);
     return true;
     AppMethodBeat.o(132646);
     return false;
   }
   
-  public final void Zl(String paramString)
+  public final void Rp(String paramString)
   {
-    this.fGe = paramString;
+    this.hLv = paramString;
   }
   
-  public final boolean Zm(String paramString)
+  public final boolean Rq(String paramString)
   {
     AppMethodBeat.i(132650);
     if ("axhost".equals(paramString))
     {
-      bool = this.mtX.isEmpty();
+      bool = this.pnr.isEmpty();
       AppMethodBeat.o(132650);
       return bool;
     }
-    boolean bool = this.mtZ.isEmpty();
+    boolean bool = this.pnt.isEmpty();
     AppMethodBeat.o(132650);
     return bool;
   }
   
-  public final boolean Zn(String paramString)
+  public final boolean Rr(String paramString)
   {
     AppMethodBeat.i(132651);
-    if (!Ub(paramString))
+    if (!Ma(paramString))
     {
       AppMethodBeat.o(132651);
       return false;
     }
-    byte[] arrayOfByte = TZ(paramString);
-    paramString = Ua(paramString);
+    byte[] arrayOfByte = LY(paramString);
+    paramString = LZ(paramString);
     if ((arrayOfByte != null) && (arrayOfByte.length > 0) && (paramString != null) && (paramString.length > 0))
     {
       AppMethodBeat.o(132651);
@@ -317,37 +317,37 @@ public final class a
   {
     AppMethodBeat.i(132632);
     Log.i("MicroMsg.AccInfo", "summerauth update session info: session single[%s] cli[%s], svr[%s] uin:%d -> %d stack:[%s]", new Object[] { Util.secPrint(Util.dumpHex(paramArrayOfByte1)), Util.secPrint(Util.dumpHex(paramArrayOfByte2)), Util.secPrint(Util.dumpHex(paramArrayOfByte3)), Integer.valueOf(this.uin), Integer.valueOf(paramInt), Util.getStack() });
-    this.mtR = paramArrayOfByte1;
-    this.mtS = paramArrayOfByte2;
-    this.mtT = paramArrayOfByte3;
+    this.pnl = paramArrayOfByte1;
+    this.pnm = paramArrayOfByte2;
+    this.pnn = paramArrayOfByte3;
     this.uin = paramInt;
-    if (this.mtU != null) {
-      biq();
+    if (this.pno != null) {
+      bGa();
     }
     AppMethodBeat.o(132632);
   }
   
   public final void aG(byte[] paramArrayOfByte)
   {
-    this.fYH = paramArrayOfByte;
+    this.ieJ = paramArrayOfByte;
   }
   
   public final void aH(byte[] paramArrayOfByte)
   {
-    this.mtV = paramArrayOfByte;
+    this.pnp = paramArrayOfByte;
   }
   
   public final void aI(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(132648);
-    this.mtZ.add(new String(paramArrayOfByte));
+    this.pnt.add(new String(paramArrayOfByte));
     AppMethodBeat.o(132648);
   }
   
   public final boolean aJ(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(132649);
-    boolean bool = this.mtZ.contains(new String(paramArrayOfByte));
+    boolean bool = this.pnt.contains(new String(paramArrayOfByte));
     AppMethodBeat.o(132649);
     return bool;
   }
@@ -356,7 +356,7 @@ public final class a
   {
     AppMethodBeat.i(132639);
     long l = Util.nowMilliSecond();
-    if (biq())
+    if (bGa())
     {
       Log.e("MicroMsg.AccInfo", "AccInfoCacheInWorker parseBuf Error : isLogin == true ");
       AppMethodBeat.o(132639);
@@ -373,18 +373,18 @@ public final class a
         return -3;
       }
       this.username = localLVBuffer.getString();
-      this.fGe = localLVBuffer.getString();
+      this.hLv = localLVBuffer.getString();
       this.uin = localLVBuffer.getInt();
-      this.fYH = localLVBuffer.getBuffer();
-      this.mtV = localLVBuffer.getBuffer();
-      this.mtR = localLVBuffer.getBuffer();
-      this.mtS = localLVBuffer.getBuffer();
-      this.mtT = localLVBuffer.getBuffer();
-      mua.mug = new String(localLVBuffer.getBuffer(), StandardCharsets.ISO_8859_1);
-      mua.muf = new String(localLVBuffer.getBuffer(), StandardCharsets.ISO_8859_1);
-      Log.i("MicroMsg.AccInfo", "parseBuf " + mua.mug.length() + " " + mua.muf.length());
+      this.ieJ = localLVBuffer.getBuffer();
+      this.pnp = localLVBuffer.getBuffer();
+      this.pnl = localLVBuffer.getBuffer();
+      this.pnm = localLVBuffer.getBuffer();
+      this.pnn = localLVBuffer.getBuffer();
+      pnu.pnA = new String(localLVBuffer.getBuffer(), StandardCharsets.ISO_8859_1);
+      pnu.pnz = new String(localLVBuffer.getBuffer(), StandardCharsets.ISO_8859_1);
+      Log.i("MicroMsg.AccInfo", "parseBuf " + pnu.pnA.length() + " " + pnu.pnz.length());
       paramArrayOfByte = localLVBuffer.getString();
-      if ((Util.isNullOrNil(paramArrayOfByte)) || (!paramArrayOfByte.equals(bsS())))
+      if ((Util.isNullOrNil(paramArrayOfByte)) || (!paramArrayOfByte.equals(bQB())))
       {
         clear();
         Log.e("MicroMsg.AccInfo", "AccInfoCacheInWorker parseBuf Error : checksum failed");
@@ -406,7 +406,7 @@ public final class a
   
   public final int aw(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(203913);
+    AppMethodBeat.i(241225);
     long l = Util.nowMilliSecond();
     try
     {
@@ -415,37 +415,37 @@ public final class a
       if (i != 0)
       {
         Log.e("MicroMsg.AccInfo", "AccInfoCacheInWorker parseBuf Error : initParse: %s", new Object[] { Integer.valueOf(i) });
-        AppMethodBeat.o(203913);
+        AppMethodBeat.o(241225);
         return -3;
       }
       this.username = localLVBuffer.getString();
-      this.fGe = localLVBuffer.getString();
+      this.hLv = localLVBuffer.getString();
       this.uin = localLVBuffer.getInt();
-      this.fYH = localLVBuffer.getBuffer();
-      this.mtV = localLVBuffer.getBuffer();
-      this.mtR = localLVBuffer.getBuffer();
-      this.mtS = localLVBuffer.getBuffer();
-      this.mtT = localLVBuffer.getBuffer();
-      mua.mug = new String(localLVBuffer.getBuffer(), StandardCharsets.ISO_8859_1);
-      mua.muf = new String(localLVBuffer.getBuffer(), StandardCharsets.ISO_8859_1);
-      Log.i("MicroMsg.AccInfo", "parseBuf " + mua.mug.length() + " " + mua.muf.length());
+      this.ieJ = localLVBuffer.getBuffer();
+      this.pnp = localLVBuffer.getBuffer();
+      this.pnl = localLVBuffer.getBuffer();
+      this.pnm = localLVBuffer.getBuffer();
+      this.pnn = localLVBuffer.getBuffer();
+      pnu.pnA = new String(localLVBuffer.getBuffer(), StandardCharsets.ISO_8859_1);
+      pnu.pnz = new String(localLVBuffer.getBuffer(), StandardCharsets.ISO_8859_1);
+      Log.i("MicroMsg.AccInfo", "parseBuf " + pnu.pnA.length() + " " + pnu.pnz.length());
       paramArrayOfByte = localLVBuffer.getString();
-      if ((Util.isNullOrNil(paramArrayOfByte)) || (!paramArrayOfByte.equals(bsS())))
+      if ((Util.isNullOrNil(paramArrayOfByte)) || (!paramArrayOfByte.equals(bQB())))
       {
         clear();
         Log.e("MicroMsg.AccInfo", "AccInfoCacheInWorker parseBuf Error : checksum failed");
-        AppMethodBeat.o(203913);
+        AppMethodBeat.o(241225);
         return -4;
       }
       Log.i("MicroMsg.AccInfo", "AccInfoCacheInWorker parseBuf finish time:%s  md5:%s", new Object[] { Long.valueOf(Util.milliSecondsToNow(l)), paramArrayOfByte });
-      AppMethodBeat.o(203913);
+      AppMethodBeat.o(241225);
       return 0;
     }
     catch (Exception paramArrayOfByte)
     {
       clear();
       Log.e("MicroMsg.AccInfo", "AccInfoCacheInWorker parseBuf exception:%s", new Object[] { Util.stackTraceToString(paramArrayOfByte) });
-      AppMethodBeat.o(203913);
+      AppMethodBeat.o(241225);
     }
     return -5;
   }
@@ -454,27 +454,27 @@ public final class a
   {
     AppMethodBeat.i(132642);
     Log.i("MicroMsg.AccInfo", "setAxAuthSessionKey");
-    Object localObject = (cke)this.mtX.get(Integer.valueOf(paramInt));
-    if ((localObject == null) || (((cke)localObject).rVy.size() == 0))
+    Object localObject = (dal)this.pnr.get(Integer.valueOf(paramInt));
+    if ((localObject == null) || (((dal)localObject).vgO.size() == 0))
     {
       Log.w("MicroMsg.AccInfo", "can not get host list , buss type ".concat(String.valueOf(paramInt)));
       AppMethodBeat.o(132642);
       return;
     }
-    hu localhu = new hu();
+    iq localiq = new iq();
     try
     {
-      localhu.parseFrom(paramArrayOfByte1);
-      Log.i("MicroMsg.AccInfo", "axsession key length: server [%d], client [%d]", new Object[] { Integer.valueOf(localhu.RMn.Ufv), Integer.valueOf(localhu.RMm.Ufv) });
+      localiq.parseFrom(paramArrayOfByte1);
+      Log.i("MicroMsg.AccInfo", "axsession key length: server [%d], client [%d]", new Object[] { Integer.valueOf(localiq.YJB.abwJ), Integer.valueOf(localiq.YJA.abwJ) });
       paramArrayOfByte1 = new a();
-      paramArrayOfByte1.mub = localhu;
-      paramArrayOfByte1.muc = paramArrayOfByte2;
-      paramArrayOfByte2 = ((cke)localObject).rVy.iterator();
+      paramArrayOfByte1.pnv = localiq;
+      paramArrayOfByte1.pnw = paramArrayOfByte2;
+      paramArrayOfByte2 = ((dal)localObject).vgO.iterator();
       while (paramArrayOfByte2.hasNext())
       {
-        localObject = (ckd)paramArrayOfByte2.next();
-        this.mtY.put(localObject, paramArrayOfByte1);
-        Log.i("MicroMsg.AccInfo", "receive axauth host " + ((ckd)localObject).TrL);
+        localObject = (dak)paramArrayOfByte2.next();
+        this.pns.put(localObject, paramArrayOfByte1);
+        Log.i("MicroMsg.AccInfo", "receive axauth host " + ((dak)localObject).aaFX);
       }
       AppMethodBeat.o(132642);
     }
@@ -486,27 +486,27 @@ public final class a
     }
   }
   
-  public final byte[] bip()
+  public final byte[] bFZ()
   {
-    return this.fYH;
+    return this.ieJ;
   }
   
-  public final boolean biq()
+  public final boolean bGa()
   {
-    return (this.mtR != null) && (this.mtS != null) && (this.mtT != null) && (this.mtR.length > 0) && (this.mtS.length > 0) && (this.mtT.length > 0);
+    return (this.pnl != null) && (this.pnm != null) && (this.pnn != null) && (this.pnl.length > 0) && (this.pnm.length > 0) && (this.pnn.length > 0);
   }
   
-  public final byte[] bir()
+  public final byte[] bGb()
   {
-    return this.mtV;
+    return this.pnp;
   }
   
-  public final String bis()
+  public final String bGc()
   {
-    return this.fGe;
+    return this.hLv;
   }
   
-  public final byte[] bit()
+  public final byte[] bGd()
   {
     AppMethodBeat.i(132638);
     long l = Util.nowMilliSecond();
@@ -519,19 +519,19 @@ public final class a
       Log.e("MicroMsg.AccInfo", "AccInfoCacheInWorker getCacheBuffer Error : isCacheValid== false");
       AppMethodBeat.o(132638);
       return null;
-      if (Util.isNullOrNil(this.mtR)) {
+      if (Util.isNullOrNil(this.pnl)) {
         i = 0;
-      } else if (Util.isNullOrNil(this.mtS)) {
+      } else if (Util.isNullOrNil(this.pnm)) {
         i = 0;
-      } else if (Util.isNullOrNil(this.mtT)) {
+      } else if (Util.isNullOrNil(this.pnn)) {
         i = 0;
-      } else if (Util.isNullOrNil(this.fYH)) {
+      } else if (Util.isNullOrNil(this.ieJ)) {
         i = 0;
       } else if ((this.uin == 0) || (this.uin == -1)) {
         i = 0;
-      } else if (Util.isNullOrNil(this.mtV)) {
+      } else if (Util.isNullOrNil(this.pnp)) {
         i = 0;
-      } else if (Util.isNullOrNil(this.fGe)) {
+      } else if (Util.isNullOrNil(this.hLv)) {
         i = 0;
       } else {
         i = 1;
@@ -542,16 +542,16 @@ public final class a
       Object localObject = new LVBuffer();
       ((LVBuffer)localObject).initBuild();
       ((LVBuffer)localObject).putString(this.username);
-      ((LVBuffer)localObject).putString(this.fGe);
+      ((LVBuffer)localObject).putString(this.hLv);
       ((LVBuffer)localObject).putInt(this.uin);
-      ((LVBuffer)localObject).putBuffer(this.fYH);
-      ((LVBuffer)localObject).putBuffer(this.mtV);
-      ((LVBuffer)localObject).putBuffer(this.mtR);
-      ((LVBuffer)localObject).putBuffer(this.mtS);
-      ((LVBuffer)localObject).putBuffer(this.mtT);
-      ((LVBuffer)localObject).putBuffer(mua.mug.getBytes(StandardCharsets.ISO_8859_1));
-      ((LVBuffer)localObject).putBuffer(mua.muf.getBytes(StandardCharsets.ISO_8859_1));
-      String str = bsS();
+      ((LVBuffer)localObject).putBuffer(this.ieJ);
+      ((LVBuffer)localObject).putBuffer(this.pnp);
+      ((LVBuffer)localObject).putBuffer(this.pnl);
+      ((LVBuffer)localObject).putBuffer(this.pnm);
+      ((LVBuffer)localObject).putBuffer(this.pnn);
+      ((LVBuffer)localObject).putBuffer(pnu.pnA.getBytes(StandardCharsets.ISO_8859_1));
+      ((LVBuffer)localObject).putBuffer(pnu.pnz.getBytes(StandardCharsets.ISO_8859_1));
+      String str = bQB();
       ((LVBuffer)localObject).putString(str);
       localObject = ((LVBuffer)localObject).buildFinish();
       Log.i("MicroMsg.AccInfo", "AccInfoCacheInWorker getCacheBuffer finish time:%s buflen:%s md5:%s", new Object[] { Long.valueOf(Util.milliSecondsToNow(l)), Integer.valueOf(localObject.length), str });
@@ -566,29 +566,29 @@ public final class a
     return null;
   }
   
-  public final void biu()
+  public final void bGe()
   {
     AppMethodBeat.i(132644);
-    this.mtY.clear();
+    this.pns.clear();
     AppMethodBeat.o(132644);
   }
   
-  public final void biv()
+  public final void bGf()
   {
     AppMethodBeat.i(132645);
     Log.i("MicroMsg.AccInfo", "clearAxHost");
-    this.mtX.clear();
+    this.pnr.clear();
     AppMethodBeat.o(132645);
   }
   
-  public final void bsT()
+  public final void bQC()
   {
     AppMethodBeat.i(132643);
-    if ((this.mtS != null) || (this.mtT != null) || (!this.mtY.isEmpty()))
+    if ((this.pnm != null) || (this.pnn != null) || (!this.pns.isEmpty()))
     {
-      this.mtS = null;
-      this.mtT = null;
-      this.mtY.clear();
+      this.pnm = null;
+      this.pnn = null;
+      this.pns.clear();
     }
     AppMethodBeat.o(132643);
   }
@@ -607,12 +607,12 @@ public final class a
   {
     AppMethodBeat.i(132641);
     Log.i("MicroMsg.AccInfo", "addAxAuthHostList");
-    cke localcke = new cke();
+    dal localdal = new dal();
     try
     {
-      localcke.parseFrom(paramArrayOfByte);
-      this.mtX.put(Integer.valueOf(paramInt), localcke);
-      Log.i("MicroMsg.AccInfo", "add host " + paramInt + " host " + ((ckd)localcke.rVy.get(0)).TrK);
+      localdal.parseFrom(paramArrayOfByte);
+      this.pnr.put(Integer.valueOf(paramInt), localdal);
+      Log.i("MicroMsg.AccInfo", "add host " + paramInt + " host " + ((dak)localdal.vgO.get(0)).aaFW);
       AppMethodBeat.o(132641);
       return;
     }
@@ -623,16 +623,16 @@ public final class a
     }
   }
   
-  public final void i(String paramString, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(132634);
-    this.mtW.put(paramString, paramArrayOfByte);
-    AppMethodBeat.o(132634);
-  }
-  
   public final boolean isForeground()
   {
     return this.foreground;
+  }
+  
+  public final void k(String paramString, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(132634);
+    this.pnq.put(paramString, paramArrayOfByte);
+    AppMethodBeat.o(132634);
   }
   
   public final void reset()
@@ -640,26 +640,26 @@ public final class a
     AppMethodBeat.i(132630);
     Log.i("MicroMsg.AccInfo", "reset accinfo");
     this.username = "";
-    this.mtR = null;
-    bsR();
+    this.pnl = null;
+    bQA();
     this.uin = 0;
-    this.mtS = null;
-    this.mtT = null;
+    this.pnm = null;
+    this.pnn = null;
     AppMethodBeat.o(132630);
   }
   
-  public final byte[] sE(int paramInt)
+  public final byte[] sA(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     case 1: 
-      return this.mtR;
+      return this.pnl;
     case 2: 
-      return this.mtS;
+      return this.pnm;
     }
-    return this.mtT;
+    return this.pnn;
   }
   
   public final void setForeground(boolean paramBoolean)
@@ -688,21 +688,21 @@ public final class a
     AppMethodBeat.i(132633);
     String str = "AccInfo:\n" + "|-uin     =" + getUin() + "\n";
     str = str + "|-user    =" + getUsername() + "\n";
-    str = str + "|-wxuser  =" + bis() + "\n";
-    str = str + "|-wxuser  =" + bis() + "\n";
-    str = str + "|-singlesession =" + Util.dumpHex(sE(1)) + "\n";
-    str = str + "|-clientsession =" + Util.dumpHex(sE(2)) + "\n";
-    str = str + "|-serversession =" + Util.dumpHex(sE(3)) + "\n";
-    str = str + "|-ecdhkey =" + Util.dumpHex(bir()) + "\n";
-    str = str + "`-cookie  =" + Util.dumpHex(bip());
+    str = str + "|-wxuser  =" + bGc() + "\n";
+    str = str + "|-wxuser  =" + bGc() + "\n";
+    str = str + "|-singlesession =" + Util.dumpHex(sA(1)) + "\n";
+    str = str + "|-clientsession =" + Util.dumpHex(sA(2)) + "\n";
+    str = str + "|-serversession =" + Util.dumpHex(sA(3)) + "\n";
+    str = str + "|-ecdhkey =" + Util.dumpHex(bGb()) + "\n";
+    str = str + "`-cookie  =" + Util.dumpHex(bFZ());
     AppMethodBeat.o(132633);
     return str;
   }
   
   final class a
   {
-    public hu mub;
-    public byte[] muc;
+    public iq pnv;
+    public byte[] pnw;
     
     a() {}
   }
@@ -711,7 +711,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.network.a
  * JD-Core Version:    0.7.0.1
  */

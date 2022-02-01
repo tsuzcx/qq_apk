@@ -26,10 +26,9 @@ public class ScrollAlwaysTextView
     try
     {
       int i = super.getBaseline();
-      AppMethodBeat.o(141488);
       return i;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       AppMethodBeat.o(141488);
     }
@@ -47,10 +46,9 @@ public class ScrollAlwaysTextView
     try
     {
       super.onDraw(paramCanvas);
-      AppMethodBeat.o(141487);
       return;
     }
-    catch (Throwable paramCanvas)
+    finally
     {
       AppMethodBeat.o(141487);
     }
@@ -71,10 +69,9 @@ public class ScrollAlwaysTextView
     try
     {
       super.onMeasure(paramInt1, paramInt2);
-      AppMethodBeat.o(141486);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       AppMethodBeat.o(141486);
     }
@@ -86,10 +83,9 @@ public class ScrollAlwaysTextView
     try
     {
       boolean bool = super.onPreDraw();
-      AppMethodBeat.o(141489);
       return bool;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       AppMethodBeat.o(141489);
     }
@@ -107,7 +103,7 @@ public class ScrollAlwaysTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.ScrollAlwaysTextView
  * JD-Core Version:    0.7.0.1
  */

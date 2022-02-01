@@ -10,14 +10,14 @@ import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import com.tencent.mm.ui.MMWizardActivity;
 import com.tencent.mm.ui.tools.b.a;
-import com.tencent.mm.ui.widget.a.d;
+import com.tencent.mm.ui.widget.a.e;
 
 @Deprecated
 public abstract interface m
 {
   public abstract void a(Activity paramActivity, Intent paramIntent, int paramInt);
   
-  public abstract void a(Activity paramActivity, Intent paramIntent1, Intent paramIntent2, String paramString, int paramInt, b.a parama);
+  public abstract void a(Activity paramActivity, Intent paramIntent1, Intent paramIntent2, String paramString, b.a parama);
   
   public abstract void a(Activity paramActivity, String paramString1, WXMediaMessage paramWXMediaMessage, String paramString2, String paramString3);
   
@@ -45,7 +45,7 @@ public abstract interface m
   
   public abstract boolean a(Context paramContext, String paramString, Object... paramVarArgs);
   
-  public abstract void abF();
+  public abstract void aDA();
   
   public abstract void b(Intent paramIntent, Activity paramActivity);
   
@@ -53,17 +53,17 @@ public abstract interface m
   
   public abstract boolean b(Context paramContext, String paramString, Bundle paramBundle);
   
-  public abstract void bV(Context paramContext);
-  
-  public abstract d bW(Context paramContext);
-  
-  public abstract Intent bX(Context paramContext);
-  
-  public abstract void bY(Context paramContext);
-  
-  public abstract void bZ(Context paramContext);
-  
   public abstract void c(Intent paramIntent, Context paramContext);
+  
+  public abstract void cH(Context paramContext);
+  
+  public abstract e cI(Context paramContext);
+  
+  public abstract Intent cJ(Context paramContext);
+  
+  public abstract void cK(Context paramContext);
+  
+  public abstract void cL(Context paramContext);
   
   public abstract void d(Context paramContext, Intent paramIntent);
   
@@ -85,9 +85,9 @@ public abstract interface m
   
   public abstract void h(Intent paramIntent, Context paramContext);
   
-  public abstract void hg(String paramString);
-  
   public abstract void i(Intent paramIntent, Context paramContext);
+  
+  public abstract void iH(String paramString);
   
   public abstract void j(Intent paramIntent, Context paramContext);
   
@@ -109,7 +109,7 @@ public abstract interface m
   
   public abstract void s(Intent paramIntent, Context paramContext);
   
-  public abstract void v(Context paramContext, String paramString);
+  public abstract void z(Context paramContext, String paramString);
 }
 
 

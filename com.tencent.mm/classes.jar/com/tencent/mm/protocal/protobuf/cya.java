@@ -1,135 +1,103 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
-import java.util.LinkedList;
 
 public final class cya
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public eaf RIl;
-  public eaf TGe;
+  public String desc;
+  public String icon;
+  public String title;
+  public String url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(101828);
+    AppMethodBeat.i(91516);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.RIl == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: ChatRoomName");
-        AppMethodBeat.o(101828);
-        throw paramVarArgs;
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.title != null) {
+        paramVarArgs.g(1, this.title);
       }
-      if (this.TGe == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: ChatRoomTopic");
-        AppMethodBeat.o(101828);
-        throw paramVarArgs;
+      if (this.desc != null) {
+        paramVarArgs.g(2, this.desc);
       }
-      if (this.RIl != null)
-      {
-        paramVarArgs.oE(1, this.RIl.computeSize());
-        this.RIl.writeFields(paramVarArgs);
+      if (this.icon != null) {
+        paramVarArgs.g(3, this.icon);
       }
-      if (this.TGe != null)
-      {
-        paramVarArgs.oE(2, this.TGe.computeSize());
-        this.TGe.writeFields(paramVarArgs);
+      if (this.url != null) {
+        paramVarArgs.g(4, this.url);
       }
-      AppMethodBeat.o(101828);
+      AppMethodBeat.o(91516);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.RIl == null) {
-        break label518;
+      if (this.title == null) {
+        break label390;
       }
     }
-    label518:
-    for (paramInt = g.a.a.a.oD(1, this.RIl.computeSize()) + 0;; paramInt = 0)
+    label390:
+    for (int i = i.a.a.b.b.a.h(1, this.title) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.TGe != null) {
-        i = paramInt + g.a.a.a.oD(2, this.TGe.computeSize());
+      paramInt = i;
+      if (this.desc != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.desc);
       }
-      AppMethodBeat.o(101828);
-      return i;
+      i = paramInt;
+      if (this.icon != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.icon);
+      }
+      paramInt = i;
+      if (this.url != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.url);
+      }
+      AppMethodBeat.o(91516);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.RIl == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: ChatRoomName");
-          AppMethodBeat.o(101828);
-          throw paramVarArgs;
-        }
-        if (this.TGe == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: ChatRoomTopic");
-          AppMethodBeat.o(101828);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(101828);
+        AppMethodBeat.o(91516);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         cya localcya = (cya)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        eaf localeaf;
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(101828);
+          AppMethodBeat.o(91516);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject = (byte[])paramVarArgs.get(paramInt);
-            localeaf = new eaf();
-            if ((localObject != null) && (localObject.length > 0)) {
-              localeaf.de((byte[])localObject);
-            }
-            localcya.RIl = localeaf;
-            paramInt += 1;
-          }
-          AppMethodBeat.o(101828);
+          localcya.title = locala.ajGk.readString();
+          AppMethodBeat.o(91516);
+          return 0;
+        case 2: 
+          localcya.desc = locala.ajGk.readString();
+          AppMethodBeat.o(91516);
+          return 0;
+        case 3: 
+          localcya.icon = locala.ajGk.readString();
+          AppMethodBeat.o(91516);
           return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject = (byte[])paramVarArgs.get(paramInt);
-          localeaf = new eaf();
-          if ((localObject != null) && (localObject.length > 0)) {
-            localeaf.de((byte[])localObject);
-          }
-          localcya.TGe = localeaf;
-          paramInt += 1;
-        }
-        AppMethodBeat.o(101828);
+        localcya.url = locala.ajGk.readString();
+        AppMethodBeat.o(91516);
         return 0;
       }
-      AppMethodBeat.o(101828);
+      AppMethodBeat.o(91516);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cya
  * JD-Core Version:    0.7.0.1
  */

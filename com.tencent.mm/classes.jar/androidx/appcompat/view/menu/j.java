@@ -25,50 +25,50 @@ public final class j
 {
   private int cN = 16;
   private CharSequence cZ;
-  h is;
-  private final int kM;
-  private final int kN;
-  final int kO;
-  private CharSequence kP;
-  private char kQ;
-  int kR = 4096;
-  private char kS;
-  int kT = 4096;
-  private Drawable kU;
-  private int kV = 0;
-  private MenuItem.OnMenuItemClickListener kW;
-  private CharSequence kX;
-  private CharSequence kY;
-  private ColorStateList kZ = null;
-  private PorterDuff.Mode la = null;
-  private boolean lb = false;
-  private boolean lc = false;
+  h jo;
+  private final int lI;
+  private final int lJ;
+  final int lK;
+  private CharSequence lL;
+  private char lM;
+  int lN = 4096;
+  private char lO;
+  int lP = 4096;
+  private Drawable lQ;
+  private int lR = 0;
+  private MenuItem.OnMenuItemClickListener lS;
+  private CharSequence lT;
+  private CharSequence lU;
+  private ColorStateList lV = null;
+  private PorterDuff.Mode lW = null;
+  private boolean lX = false;
+  private boolean lY = false;
   private final int mId;
   private Intent mIntent;
-  private u na;
-  private Runnable nb;
-  private boolean nc = false;
-  private int nd = 0;
-  private View ne;
-  public androidx.core.g.b nf;
-  private MenuItem.OnActionExpandListener ng;
-  private boolean nh = false;
-  ContextMenu.ContextMenuInfo ni;
+  private u nW;
+  private Runnable nX;
+  private boolean nY = false;
+  private int nZ = 0;
+  private View oa;
+  public androidx.core.g.b ob;
+  private MenuItem.OnActionExpandListener oc;
+  private boolean od = false;
+  ContextMenu.ContextMenuInfo oe;
   
   j(h paramh, int paramInt1, int paramInt2, int paramInt3, int paramInt4, CharSequence paramCharSequence, int paramInt5)
   {
-    this.is = paramh;
+    this.jo = paramh;
     this.mId = paramInt2;
-    this.kM = paramInt1;
-    this.kN = paramInt3;
-    this.kO = paramInt4;
+    this.lI = paramInt1;
+    this.lJ = paramInt3;
+    this.lK = paramInt4;
     this.cZ = paramCharSequence;
-    this.nd = paramInt5;
+    this.nZ = paramInt5;
   }
   
-  private void J(boolean paramBoolean)
+  private void N(boolean paramBoolean)
   {
-    AppMethodBeat.i(239533);
+    AppMethodBeat.i(201001);
     int j = this.cN;
     int k = this.cN;
     if (paramBoolean) {}
@@ -76,66 +76,66 @@ public final class j
     {
       this.cN = (i | k & 0xFFFFFFFD);
       if (j != this.cN) {
-        this.is.H(false);
+        this.jo.L(false);
       }
-      AppMethodBeat.o(239533);
+      AppMethodBeat.o(201001);
       return;
     }
   }
   
   static void a(StringBuilder paramStringBuilder, int paramInt1, int paramInt2, String paramString)
   {
-    AppMethodBeat.i(239482);
+    AppMethodBeat.i(200980);
     if ((paramInt1 & paramInt2) == paramInt2) {
       paramStringBuilder.append(paramString);
     }
-    AppMethodBeat.o(239482);
+    AppMethodBeat.o(200980);
   }
   
-  private Drawable e(Drawable paramDrawable)
+  private Drawable f(Drawable paramDrawable)
   {
-    AppMethodBeat.i(239521);
+    AppMethodBeat.i(200989);
     Drawable localDrawable = paramDrawable;
     if (paramDrawable != null)
     {
       localDrawable = paramDrawable;
-      if (this.nc) {
-        if (!this.lb)
+      if (this.nY) {
+        if (!this.lX)
         {
           localDrawable = paramDrawable;
-          if (!this.lc) {}
+          if (!this.lY) {}
         }
         else
         {
-          localDrawable = androidx.core.graphics.drawable.a.p(paramDrawable).mutate();
-          if (this.lb) {
-            androidx.core.graphics.drawable.a.a(localDrawable, this.kZ);
+          localDrawable = androidx.core.graphics.drawable.a.s(paramDrawable).mutate();
+          if (this.lX) {
+            androidx.core.graphics.drawable.a.a(localDrawable, this.lV);
           }
-          if (this.lc) {
-            androidx.core.graphics.drawable.a.a(localDrawable, this.la);
+          if (this.lY) {
+            androidx.core.graphics.drawable.a.a(localDrawable, this.lW);
           }
-          this.nc = false;
+          this.nY = false;
         }
       }
     }
-    AppMethodBeat.o(239521);
+    AppMethodBeat.o(200989);
     return localDrawable;
   }
   
   private androidx.core.a.a.b j(View paramView)
   {
-    AppMethodBeat.i(239556);
-    this.ne = paramView;
-    this.nf = null;
+    AppMethodBeat.i(201012);
+    this.oa = paramView;
+    this.ob = null;
     if ((paramView != null) && (paramView.getId() == -1) && (this.mId > 0)) {
       paramView.setId(this.mId);
     }
-    this.is.ch();
-    AppMethodBeat.o(239556);
+    this.jo.da();
+    AppMethodBeat.o(201012);
     return this;
   }
   
-  public final void I(boolean paramBoolean)
+  public final void M(boolean paramBoolean)
   {
     int j = this.cN;
     if (paramBoolean) {}
@@ -146,7 +146,7 @@ public final class j
     }
   }
   
-  final boolean K(boolean paramBoolean)
+  final boolean O(boolean paramBoolean)
   {
     boolean bool = false;
     int j = this.cN;
@@ -163,7 +163,7 @@ public final class j
     }
   }
   
-  public final void L(boolean paramBoolean)
+  public final void P(boolean paramBoolean)
   {
     if (paramBoolean)
     {
@@ -173,320 +173,317 @@ public final class j
     this.cN &= 0xFFFFFFDF;
   }
   
-  public final void M(boolean paramBoolean)
+  public final void Q(boolean paramBoolean)
   {
-    AppMethodBeat.i(239580);
-    this.nh = paramBoolean;
-    this.is.H(false);
-    AppMethodBeat.o(239580);
+    AppMethodBeat.i(201493);
+    this.od = paramBoolean;
+    this.jo.L(false);
+    AppMethodBeat.o(201493);
   }
   
   public final androidx.core.a.a.b a(androidx.core.g.b paramb)
   {
-    AppMethodBeat.i(239571);
-    if (this.nf != null)
-    {
-      androidx.core.g.b localb = this.nf;
-      localb.MF = null;
-      localb.MD = null;
+    AppMethodBeat.i(201463);
+    if (this.ob != null) {
+      this.ob.reset();
     }
-    this.ne = null;
-    this.nf = paramb;
-    this.is.H(true);
-    if (this.nf != null) {
-      this.nf.a(new b.b()
+    this.oa = null;
+    this.ob = paramb;
+    this.jo.L(true);
+    if (this.ob != null) {
+      this.ob.a(new b.b()
       {
-        public final void cv()
+        public final void jdMethod_do()
         {
-          AppMethodBeat.i(239458);
-          j.this.is.cg();
-          AppMethodBeat.o(239458);
+          AppMethodBeat.i(200796);
+          j.this.jo.cZ();
+          AppMethodBeat.o(200796);
         }
       });
     }
-    AppMethodBeat.o(239571);
+    AppMethodBeat.o(201463);
     return this;
   }
   
   final CharSequence a(p.a parama)
   {
-    AppMethodBeat.i(239489);
-    if (parama.bL())
+    AppMethodBeat.i(201205);
+    if (parama.cE())
     {
       parama = getTitleCondensed();
-      AppMethodBeat.o(239489);
+      AppMethodBeat.o(201205);
       return parama;
     }
     parama = getTitle();
-    AppMethodBeat.o(239489);
+    AppMethodBeat.o(201205);
     return parama;
   }
   
   public final androidx.core.a.a.b b(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(239583);
-    this.kX = paramCharSequence;
-    this.is.H(false);
-    AppMethodBeat.o(239583);
+    AppMethodBeat.i(201517);
+    this.lT = paramCharSequence;
+    this.jo.L(false);
+    AppMethodBeat.o(201517);
     return this;
   }
   
   public final void b(u paramu)
   {
-    AppMethodBeat.i(239486);
-    this.na = paramu;
+    AppMethodBeat.i(201189);
+    this.nW = paramu;
     paramu.setHeaderTitle(getTitle());
-    AppMethodBeat.o(239486);
-  }
-  
-  public final androidx.core.g.b bI()
-  {
-    return this.nf;
+    AppMethodBeat.o(201189);
   }
   
   public final androidx.core.a.a.b c(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(239585);
-    this.kY = paramCharSequence;
-    this.is.H(false);
-    AppMethodBeat.o(239585);
+    AppMethodBeat.i(201532);
+    this.lU = paramCharSequence;
+    this.jo.L(false);
+    AppMethodBeat.o(201532);
     return this;
   }
   
-  public final boolean cm()
+  public final androidx.core.g.b cB()
   {
-    AppMethodBeat.i(239468);
-    if ((this.kW != null) && (this.kW.onMenuItemClick(this)))
+    return this.ob;
+  }
+  
+  public final boolean collapseActionView()
+  {
+    AppMethodBeat.i(201480);
+    if ((this.nZ & 0x8) == 0)
     {
-      AppMethodBeat.o(239468);
+      AppMethodBeat.o(201480);
+      return false;
+    }
+    if (this.oa == null)
+    {
+      AppMethodBeat.o(201480);
       return true;
     }
-    if (this.is.d(this.is, this))
+    if ((this.oc == null) || (this.oc.onMenuItemActionCollapse(this)))
     {
-      AppMethodBeat.o(239468);
+      boolean bool = this.jo.g(this);
+      AppMethodBeat.o(201480);
+      return bool;
+    }
+    AppMethodBeat.o(201480);
+    return false;
+  }
+  
+  public final boolean df()
+  {
+    AppMethodBeat.i(201028);
+    if ((this.lS != null) && (this.lS.onMenuItemClick(this)))
+    {
+      AppMethodBeat.o(201028);
       return true;
     }
-    if (this.nb != null)
+    if (this.jo.d(this.jo, this))
     {
-      this.nb.run();
-      AppMethodBeat.o(239468);
+      AppMethodBeat.o(201028);
+      return true;
+    }
+    if (this.nX != null)
+    {
+      this.nX.run();
+      AppMethodBeat.o(201028);
       return true;
     }
     if (this.mIntent != null) {
       try
       {
-        Context localContext = this.is.mContext;
+        Context localContext = this.jo.mContext;
         Object localObject = this.mIntent;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-        com.tencent.mm.hellhoundlib.a.a.b(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "androidx/appcompat/view/menu/MenuItemImpl", "invoke", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+        com.tencent.mm.hellhoundlib.a.a.b(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "androidx/appcompat/view/menu/MenuItemImpl", "invoke", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
         com.tencent.mm.hellhoundlib.a.a.c(localContext, "androidx/appcompat/view/menu/MenuItemImpl", "invoke", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        AppMethodBeat.o(239468);
+        AppMethodBeat.o(201028);
         return true;
       }
       catch (ActivityNotFoundException localActivityNotFoundException) {}
     }
-    if ((this.nf != null) && (this.nf.cx()))
+    if ((this.ob != null) && (this.ob.dq()))
     {
-      AppMethodBeat.o(239468);
+      AppMethodBeat.o(201028);
       return true;
     }
-    AppMethodBeat.o(239468);
+    AppMethodBeat.o(201028);
     return false;
   }
   
-  final char cn()
+  final char dg()
   {
-    AppMethodBeat.i(239481);
-    if (this.is.cc())
+    AppMethodBeat.i(201155);
+    if (this.jo.cV())
     {
-      c = this.kS;
-      AppMethodBeat.o(239481);
+      c = this.lO;
+      AppMethodBeat.o(201155);
       return c;
     }
-    char c = this.kQ;
-    AppMethodBeat.o(239481);
+    char c = this.lM;
+    AppMethodBeat.o(201155);
     return c;
   }
   
-  final boolean co()
+  final boolean dh()
   {
-    AppMethodBeat.i(239483);
-    if ((this.is.cd()) && (cn() != 0))
+    AppMethodBeat.i(201163);
+    if ((this.jo.cW()) && (dg() != 0))
     {
-      AppMethodBeat.o(239483);
+      AppMethodBeat.o(201163);
       return true;
     }
-    AppMethodBeat.o(239483);
+    AppMethodBeat.o(201163);
     return false;
   }
   
-  public final boolean collapseActionView()
-  {
-    AppMethodBeat.i(239575);
-    if ((this.nd & 0x8) == 0)
-    {
-      AppMethodBeat.o(239575);
-      return false;
-    }
-    if (this.ne == null)
-    {
-      AppMethodBeat.o(239575);
-      return true;
-    }
-    if ((this.ng == null) || (this.ng.onMenuItemActionCollapse(this)))
-    {
-      boolean bool = this.is.g(this);
-      AppMethodBeat.o(239575);
-      return bool;
-    }
-    AppMethodBeat.o(239575);
-    return false;
-  }
-  
-  public final boolean cp()
+  public final boolean di()
   {
     return (this.cN & 0x4) != 0;
   }
   
-  public final boolean cq()
+  public final boolean dj()
   {
     return (this.cN & 0x20) == 32;
   }
   
-  public final boolean cr()
+  public final boolean dk()
   {
-    return (this.nd & 0x1) == 1;
+    return (this.nZ & 0x1) == 1;
   }
   
-  public final boolean cs()
+  public final boolean dl()
   {
-    return (this.nd & 0x2) == 2;
+    return (this.nZ & 0x2) == 2;
   }
   
-  public final boolean ct()
+  public final boolean dm()
   {
-    return (this.nd & 0x4) == 4;
+    return (this.nZ & 0x4) == 4;
   }
   
-  public final boolean cu()
+  public final boolean dn()
   {
-    AppMethodBeat.i(239579);
-    if ((this.nd & 0x8) != 0)
+    AppMethodBeat.i(201487);
+    if ((this.nZ & 0x8) != 0)
     {
-      if ((this.ne == null) && (this.nf != null)) {
-        this.ne = this.nf.c(this);
+      if ((this.oa == null) && (this.ob != null)) {
+        this.oa = this.ob.c(this);
       }
-      if (this.ne != null)
+      if (this.oa != null)
       {
-        AppMethodBeat.o(239579);
+        AppMethodBeat.o(201487);
         return true;
       }
-      AppMethodBeat.o(239579);
+      AppMethodBeat.o(201487);
       return false;
     }
-    AppMethodBeat.o(239579);
+    AppMethodBeat.o(201487);
     return false;
   }
   
   public final boolean expandActionView()
   {
-    AppMethodBeat.i(239573);
-    if (!cu())
+    AppMethodBeat.i(201468);
+    if (!dn())
     {
-      AppMethodBeat.o(239573);
+      AppMethodBeat.o(201468);
       return false;
     }
-    if ((this.ng == null) || (this.ng.onMenuItemActionExpand(this)))
+    if ((this.oc == null) || (this.oc.onMenuItemActionExpand(this)))
     {
-      boolean bool = this.is.f(this);
-      AppMethodBeat.o(239573);
+      boolean bool = this.jo.f(this);
+      AppMethodBeat.o(201468);
       return bool;
     }
-    AppMethodBeat.o(239573);
+    AppMethodBeat.o(201468);
     return false;
   }
   
   public final ActionProvider getActionProvider()
   {
-    AppMethodBeat.i(239565);
+    AppMethodBeat.i(201447);
     UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException("This is not supported, use MenuItemCompat.getActionProvider()");
-    AppMethodBeat.o(239565);
+    AppMethodBeat.o(201447);
     throw localUnsupportedOperationException;
   }
   
   public final View getActionView()
   {
-    AppMethodBeat.i(239559);
+    AppMethodBeat.i(201433);
     View localView;
-    if (this.ne != null)
+    if (this.oa != null)
     {
-      localView = this.ne;
-      AppMethodBeat.o(239559);
+      localView = this.oa;
+      AppMethodBeat.o(201433);
       return localView;
     }
-    if (this.nf != null)
+    if (this.ob != null)
     {
-      this.ne = this.nf.c(this);
-      localView = this.ne;
-      AppMethodBeat.o(239559);
+      this.oa = this.ob.c(this);
+      localView = this.oa;
+      AppMethodBeat.o(201433);
       return localView;
     }
-    AppMethodBeat.o(239559);
+    AppMethodBeat.o(201433);
     return null;
   }
   
   public final int getAlphabeticModifiers()
   {
-    return this.kT;
+    return this.lP;
   }
   
   public final char getAlphabeticShortcut()
   {
-    return this.kS;
+    return this.lO;
   }
   
   public final CharSequence getContentDescription()
   {
-    return this.kX;
+    return this.lT;
   }
   
   public final int getGroupId()
   {
-    return this.kM;
+    return this.lI;
   }
   
   public final Drawable getIcon()
   {
-    AppMethodBeat.i(239504);
+    AppMethodBeat.i(201245);
     Drawable localDrawable;
-    if (this.kU != null)
+    if (this.lQ != null)
     {
-      localDrawable = e(this.kU);
-      AppMethodBeat.o(239504);
+      localDrawable = f(this.lQ);
+      AppMethodBeat.o(201245);
       return localDrawable;
     }
-    if (this.kV != 0)
+    if (this.lR != 0)
     {
-      localDrawable = androidx.appcompat.a.a.a.m(this.is.mContext, this.kV);
-      this.kV = 0;
-      this.kU = localDrawable;
-      localDrawable = e(localDrawable);
-      AppMethodBeat.o(239504);
+      localDrawable = androidx.appcompat.a.a.a.m(this.jo.mContext, this.lR);
+      this.lR = 0;
+      this.lQ = localDrawable;
+      localDrawable = f(localDrawable);
+      AppMethodBeat.o(201245);
       return localDrawable;
     }
-    AppMethodBeat.o(239504);
+    AppMethodBeat.o(201245);
     return null;
   }
   
   public final ColorStateList getIconTintList()
   {
-    return this.kZ;
+    return this.lV;
   }
   
   public final PorterDuff.Mode getIconTintMode()
   {
-    return this.la;
+    return this.lW;
   }
   
   public final Intent getIntent()
@@ -502,27 +499,27 @@ public final class j
   
   public final ContextMenu.ContextMenuInfo getMenuInfo()
   {
-    return this.ni;
+    return this.oe;
   }
   
   public final int getNumericModifiers()
   {
-    return this.kR;
+    return this.lN;
   }
   
   public final char getNumericShortcut()
   {
-    return this.kQ;
+    return this.lM;
   }
   
   public final int getOrder()
   {
-    return this.kN;
+    return this.lJ;
   }
   
   public final SubMenu getSubMenu()
   {
-    return this.na;
+    return this.nW;
   }
   
   @ViewDebug.CapturedViewProperty
@@ -533,31 +530,31 @@ public final class j
   
   public final CharSequence getTitleCondensed()
   {
-    AppMethodBeat.i(239499);
-    if (this.kP != null) {}
-    for (Object localObject = this.kP; (Build.VERSION.SDK_INT < 18) && (localObject != null) && (!(localObject instanceof String)); localObject = this.cZ)
+    AppMethodBeat.i(201230);
+    if (this.lL != null) {}
+    for (Object localObject = this.lL; (Build.VERSION.SDK_INT < 18) && (localObject != null) && (!(localObject instanceof String)); localObject = this.cZ)
     {
       localObject = ((CharSequence)localObject).toString();
-      AppMethodBeat.o(239499);
+      AppMethodBeat.o(201230);
       return localObject;
     }
-    AppMethodBeat.o(239499);
+    AppMethodBeat.o(201230);
     return localObject;
   }
   
   public final CharSequence getTooltipText()
   {
-    return this.kY;
+    return this.lU;
   }
   
   public final boolean hasSubMenu()
   {
-    return this.na != null;
+    return this.nW != null;
   }
   
   public final boolean isActionViewExpanded()
   {
-    return this.nh;
+    return this.od;
   }
   
   public final boolean isCheckable()
@@ -577,66 +574,66 @@ public final class j
   
   public final boolean isVisible()
   {
-    AppMethodBeat.i(239535);
-    if ((this.nf != null) && (this.nf.cy()))
+    AppMethodBeat.i(201353);
+    if ((this.ob != null) && (this.ob.dr()))
     {
-      if (((this.cN & 0x8) == 0) && (this.nf.isVisible()))
+      if (((this.cN & 0x8) == 0) && (this.ob.isVisible()))
       {
-        AppMethodBeat.o(239535);
+        AppMethodBeat.o(201353);
         return true;
       }
-      AppMethodBeat.o(239535);
+      AppMethodBeat.o(201353);
       return false;
     }
     if ((this.cN & 0x8) == 0)
     {
-      AppMethodBeat.o(239535);
+      AppMethodBeat.o(201353);
       return true;
     }
-    AppMethodBeat.o(239535);
+    AppMethodBeat.o(201353);
     return false;
   }
   
   public final MenuItem setActionProvider(ActionProvider paramActionProvider)
   {
-    AppMethodBeat.i(239562);
+    AppMethodBeat.i(201441);
     paramActionProvider = new UnsupportedOperationException("This is not supported, use MenuItemCompat.setActionProvider()");
-    AppMethodBeat.o(239562);
+    AppMethodBeat.o(201441);
     throw paramActionProvider;
   }
   
   public final MenuItem setAlphabeticShortcut(char paramChar)
   {
-    AppMethodBeat.i(239470);
-    if (this.kS == paramChar)
+    AppMethodBeat.i(201086);
+    if (this.lO == paramChar)
     {
-      AppMethodBeat.o(239470);
+      AppMethodBeat.o(201086);
       return this;
     }
-    this.kS = Character.toLowerCase(paramChar);
-    this.is.H(false);
-    AppMethodBeat.o(239470);
+    this.lO = Character.toLowerCase(paramChar);
+    this.jo.L(false);
+    AppMethodBeat.o(201086);
     return this;
   }
   
   public final MenuItem setAlphabeticShortcut(char paramChar, int paramInt)
   {
-    AppMethodBeat.i(239471);
-    if ((this.kS == paramChar) && (this.kT == paramInt))
+    AppMethodBeat.i(201095);
+    if ((this.lO == paramChar) && (this.lP == paramInt))
     {
-      AppMethodBeat.o(239471);
+      AppMethodBeat.o(201095);
       return this;
     }
-    this.kS = Character.toLowerCase(paramChar);
-    this.kT = KeyEvent.normalizeMetaState(paramInt);
-    this.is.H(false);
-    AppMethodBeat.o(239471);
+    this.lO = Character.toLowerCase(paramChar);
+    this.lP = KeyEvent.normalizeMetaState(paramInt);
+    this.jo.L(false);
+    AppMethodBeat.o(201095);
     return this;
   }
   
   public final MenuItem setCheckable(boolean paramBoolean)
   {
-    AppMethodBeat.i(239525);
+    AppMethodBeat.i(201310);
     int j = this.cN;
     int k = this.cN;
     if (paramBoolean) {}
@@ -644,27 +641,27 @@ public final class j
     {
       this.cN = (i | k & 0xFFFFFFFE);
       if (j != this.cN) {
-        this.is.H(false);
+        this.jo.L(false);
       }
-      AppMethodBeat.o(239525);
+      AppMethodBeat.o(201310);
       return this;
     }
   }
   
   public final MenuItem setChecked(boolean paramBoolean)
   {
-    AppMethodBeat.i(239531);
+    AppMethodBeat.i(201344);
     if ((this.cN & 0x4) != 0)
     {
-      h localh = this.is;
+      h localh = this.jo;
       int j = getGroupId();
       int k = localh.mItems.size();
-      localh.ce();
+      localh.cX();
       int i = 0;
       if (i < k)
       {
         j localj = (j)localh.mItems.get(i);
-        if ((localj.getGroupId() == j) && (localj.cp()) && (localj.isCheckable())) {
+        if ((localj.getGroupId() == j) && (localj.di()) && (localj.isCheckable())) {
           if (localj != this) {
             break label111;
           }
@@ -672,74 +669,74 @@ public final class j
         label111:
         for (paramBoolean = true;; paramBoolean = false)
         {
-          localj.J(paramBoolean);
+          localj.N(paramBoolean);
           i += 1;
           break;
         }
       }
-      localh.cf();
+      localh.cY();
     }
     for (;;)
     {
-      AppMethodBeat.o(239531);
+      AppMethodBeat.o(201344);
       return this;
-      J(paramBoolean);
+      N(paramBoolean);
     }
   }
   
   public final MenuItem setEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(239469);
+    AppMethodBeat.i(201039);
     if (paramBoolean) {}
     for (this.cN |= 0x10;; this.cN &= 0xFFFFFFEF)
     {
-      this.is.H(false);
-      AppMethodBeat.o(239469);
+      this.jo.L(false);
+      AppMethodBeat.o(201039);
       return this;
     }
   }
   
   public final MenuItem setIcon(int paramInt)
   {
-    AppMethodBeat.i(239511);
-    this.kU = null;
-    this.kV = paramInt;
-    this.nc = true;
-    this.is.H(false);
-    AppMethodBeat.o(239511);
+    AppMethodBeat.i(201260);
+    this.lQ = null;
+    this.lR = paramInt;
+    this.nY = true;
+    this.jo.L(false);
+    AppMethodBeat.o(201260);
     return this;
   }
   
   public final MenuItem setIcon(Drawable paramDrawable)
   {
-    AppMethodBeat.i(239507);
-    this.kV = 0;
-    this.kU = paramDrawable;
-    this.nc = true;
-    this.is.H(false);
-    AppMethodBeat.o(239507);
+    AppMethodBeat.i(201253);
+    this.lR = 0;
+    this.lQ = paramDrawable;
+    this.nY = true;
+    this.jo.L(false);
+    AppMethodBeat.o(201253);
     return this;
   }
   
   public final MenuItem setIconTintList(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(239512);
-    this.kZ = paramColorStateList;
-    this.lb = true;
-    this.nc = true;
-    this.is.H(false);
-    AppMethodBeat.o(239512);
+    AppMethodBeat.i(201271);
+    this.lV = paramColorStateList;
+    this.lX = true;
+    this.nY = true;
+    this.jo.L(false);
+    AppMethodBeat.o(201271);
     return this;
   }
   
   public final MenuItem setIconTintMode(PorterDuff.Mode paramMode)
   {
-    AppMethodBeat.i(239518);
-    this.la = paramMode;
-    this.lc = true;
-    this.nc = true;
-    this.is.H(false);
-    AppMethodBeat.o(239518);
+    AppMethodBeat.i(201287);
+    this.lW = paramMode;
+    this.lY = true;
+    this.nY = true;
+    this.jo.L(false);
+    AppMethodBeat.o(201287);
     return this;
   }
   
@@ -751,137 +748,137 @@ public final class j
   
   public final MenuItem setNumericShortcut(char paramChar)
   {
-    AppMethodBeat.i(239474);
-    if (this.kQ == paramChar)
+    AppMethodBeat.i(201120);
+    if (this.lM == paramChar)
     {
-      AppMethodBeat.o(239474);
+      AppMethodBeat.o(201120);
       return this;
     }
-    this.kQ = paramChar;
-    this.is.H(false);
-    AppMethodBeat.o(239474);
+    this.lM = paramChar;
+    this.jo.L(false);
+    AppMethodBeat.o(201120);
     return this;
   }
   
   public final MenuItem setNumericShortcut(char paramChar, int paramInt)
   {
-    AppMethodBeat.i(239476);
-    if ((this.kQ == paramChar) && (this.kR == paramInt))
+    AppMethodBeat.i(201131);
+    if ((this.lM == paramChar) && (this.lN == paramInt))
     {
-      AppMethodBeat.o(239476);
+      AppMethodBeat.o(201131);
       return this;
     }
-    this.kQ = paramChar;
-    this.kR = KeyEvent.normalizeMetaState(paramInt);
-    this.is.H(false);
-    AppMethodBeat.o(239476);
+    this.lM = paramChar;
+    this.lN = KeyEvent.normalizeMetaState(paramInt);
+    this.jo.L(false);
+    AppMethodBeat.o(201131);
     return this;
   }
   
   public final MenuItem setOnActionExpandListener(MenuItem.OnActionExpandListener paramOnActionExpandListener)
   {
-    this.ng = paramOnActionExpandListener;
+    this.oc = paramOnActionExpandListener;
     return this;
   }
   
   public final MenuItem setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
   {
-    this.kW = paramOnMenuItemClickListener;
+    this.lS = paramOnMenuItemClickListener;
     return this;
   }
   
   public final MenuItem setShortcut(char paramChar1, char paramChar2)
   {
-    AppMethodBeat.i(239478);
-    this.kQ = paramChar1;
-    this.kS = Character.toLowerCase(paramChar2);
-    this.is.H(false);
-    AppMethodBeat.o(239478);
+    AppMethodBeat.i(201140);
+    this.lM = paramChar1;
+    this.lO = Character.toLowerCase(paramChar2);
+    this.jo.L(false);
+    AppMethodBeat.o(201140);
     return this;
   }
   
   public final MenuItem setShortcut(char paramChar1, char paramChar2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(239479);
-    this.kQ = paramChar1;
-    this.kR = KeyEvent.normalizeMetaState(paramInt1);
-    this.kS = Character.toLowerCase(paramChar2);
-    this.kT = KeyEvent.normalizeMetaState(paramInt2);
-    this.is.H(false);
-    AppMethodBeat.o(239479);
+    AppMethodBeat.i(201146);
+    this.lM = paramChar1;
+    this.lN = KeyEvent.normalizeMetaState(paramInt1);
+    this.lO = Character.toLowerCase(paramChar2);
+    this.lP = KeyEvent.normalizeMetaState(paramInt2);
+    this.jo.L(false);
+    AppMethodBeat.o(201146);
     return this;
   }
   
   public final void setShowAsAction(int paramInt)
   {
-    AppMethodBeat.i(239553);
+    AppMethodBeat.i(201426);
     switch (paramInt & 0x3)
     {
     default: 
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("SHOW_AS_ACTION_ALWAYS, SHOW_AS_ACTION_IF_ROOM, and SHOW_AS_ACTION_NEVER are mutually exclusive.");
-      AppMethodBeat.o(239553);
+      AppMethodBeat.o(201426);
       throw localIllegalArgumentException;
     }
-    this.nd = paramInt;
-    this.is.ch();
-    AppMethodBeat.o(239553);
+    this.nZ = paramInt;
+    this.jo.da();
+    AppMethodBeat.o(201426);
   }
   
   public final MenuItem setTitle(int paramInt)
   {
-    AppMethodBeat.i(239495);
-    MenuItem localMenuItem = setTitle(this.is.mContext.getString(paramInt));
-    AppMethodBeat.o(239495);
+    AppMethodBeat.i(201220);
+    MenuItem localMenuItem = setTitle(this.jo.mContext.getString(paramInt));
+    AppMethodBeat.o(201220);
     return localMenuItem;
   }
   
   public final MenuItem setTitle(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(239493);
+    AppMethodBeat.i(201212);
     this.cZ = paramCharSequence;
-    this.is.H(false);
-    if (this.na != null) {
-      this.na.setHeaderTitle(paramCharSequence);
+    this.jo.L(false);
+    if (this.nW != null) {
+      this.nW.setHeaderTitle(paramCharSequence);
     }
-    AppMethodBeat.o(239493);
+    AppMethodBeat.o(201212);
     return this;
   }
   
   public final MenuItem setTitleCondensed(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(239502);
-    this.kP = paramCharSequence;
-    this.is.H(false);
-    AppMethodBeat.o(239502);
+    AppMethodBeat.i(201240);
+    this.lL = paramCharSequence;
+    this.jo.L(false);
+    AppMethodBeat.o(201240);
     return this;
   }
   
   public final MenuItem setVisible(boolean paramBoolean)
   {
-    AppMethodBeat.i(239538);
-    if (K(paramBoolean)) {
-      this.is.cg();
+    AppMethodBeat.i(201369);
+    if (O(paramBoolean)) {
+      this.jo.cZ();
     }
-    AppMethodBeat.o(239538);
+    AppMethodBeat.o(201369);
     return this;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(239540);
+    AppMethodBeat.i(201382);
     if (this.cZ != null)
     {
       String str = this.cZ.toString();
-      AppMethodBeat.o(239540);
+      AppMethodBeat.o(201382);
       return str;
     }
-    AppMethodBeat.o(239540);
+    AppMethodBeat.o(201382);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.view.menu.j
  * JD-Core Version:    0.7.0.1
  */

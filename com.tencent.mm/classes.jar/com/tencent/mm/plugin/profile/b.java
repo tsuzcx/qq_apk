@@ -7,17 +7,17 @@ import com.tencent.mm.pluginsdk.n;
 public final class b
   implements n
 {
-  public static m mIG;
-  public static l mIH;
+  public static m pFn;
+  public static l pFo;
   
   public final void a(l paraml)
   {
-    mIH = paraml;
+    pFo = paraml;
   }
   
   public final void a(m paramm)
   {
-    mIG = paramm;
+    pFn = paramm;
   }
 }
 

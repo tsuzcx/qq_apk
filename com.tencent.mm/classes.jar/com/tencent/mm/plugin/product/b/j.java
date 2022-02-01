@@ -1,95 +1,96 @@
 package com.tencent.mm.plugin.product.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.alj;
-import com.tencent.mm.protocal.protobuf.bb;
-import com.tencent.mm.protocal.protobuf.dnt;
-import com.tencent.mm.protocal.protobuf.dnu;
-import com.tencent.mm.protocal.protobuf.eak;
-import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
 public final class j
-  extends q
-  implements m
+  extends com.tencent.mm.bx.a
 {
-  public String GSX;
-  public LinkedList<alj> GTi;
-  public LinkedList<bb> GTj;
-  private i callback;
-  private d rr;
+  public g MRB;
+  public int eQp;
+  public String ttL;
   
-  public j(LinkedList<eak> paramLinkedList, int paramInt)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(66900);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new dnt();
-    ((d.a)localObject).lBV = new dnu();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/presubmitorder";
-    ((d.a)localObject).funcId = 554;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (dnt)d.b.b(this.rr.lBR);
-    ((dnt)localObject).Sdm = paramLinkedList;
-    if (paramLinkedList != null) {
-      i = paramLinkedList.size();
-    }
-    ((dnt)localObject).GIu = i;
-    ((dnt)localObject).TUY = paramInt;
-    AppMethodBeat.o(66900);
-  }
-  
-  public final int doScene(g paramg, i parami)
-  {
-    AppMethodBeat.i(66902);
-    this.callback = parami;
-    int i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(66902);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 554;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(66901);
-    paramArrayOfByte = (dnu)d.c.b(((d)params).lBS);
-    if ((paramInt2 == 0) && (paramInt3 == 0) && (paramArrayOfByte.RPr == 0))
+    AppMethodBeat.i(91276);
+    if (paramInt == 0)
     {
-      Log.d("MicroMsg.NetSceneMallPreSubmitOrder", "resp.ExpressCount " + paramArrayOfByte.Tgz);
-      Log.d("MicroMsg.NetSceneMallPreSubmitOrder", "resp.LockId " + paramArrayOfByte.Sdn);
-      this.GTi = paramArrayOfByte.TUZ;
-      this.GSX = paramArrayOfByte.Sdn;
-      this.GTj = paramArrayOfByte.TVa;
-    }
-    paramInt1 = paramInt3;
-    params = paramString;
-    if (paramInt3 == 0)
-    {
-      paramInt1 = paramInt3;
-      params = paramString;
-      if (paramArrayOfByte.RPr != 0)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.eQp);
+      if (this.MRB != null)
       {
-        paramInt1 = paramArrayOfByte.RPr;
-        params = paramArrayOfByte.RPs;
+        paramVarArgs.qD(2, this.MRB.computeSize());
+        this.MRB.writeFields(paramVarArgs);
       }
+      if (this.ttL != null) {
+        paramVarArgs.g(3, this.ttL);
+      }
+      AppMethodBeat.o(91276);
+      return 0;
     }
-    Log.d("MicroMsg.NetSceneMallPreSubmitOrder", "errCode " + paramInt1 + ", errMsg " + params);
-    this.callback.onSceneEnd(paramInt2, paramInt1, params, this);
-    AppMethodBeat.o(66901);
+    int i;
+    if (paramInt == 1)
+    {
+      i = i.a.a.b.b.a.cJ(1, this.eQp) + 0;
+      paramInt = i;
+      if (this.MRB != null) {
+        paramInt = i + i.a.a.a.qC(2, this.MRB.computeSize());
+      }
+      i = paramInt;
+      if (this.ttL != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.ttL);
+      }
+      AppMethodBeat.o(91276);
+      return i;
+    }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(91276);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject = (i.a.a.a.a)paramVarArgs[0];
+      j localj = (j)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(91276);
+        return -1;
+      case 1: 
+        localj.eQp = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(91276);
+        return 0;
+      case 2: 
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          g localg = new g();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localg.parseFrom((byte[])localObject);
+          }
+          localj.MRB = localg;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(91276);
+        return 0;
+      }
+      localj.ttL = ((i.a.a.a.a)localObject).ajGk.readString();
+      AppMethodBeat.o(91276);
+      return 0;
+    }
+    AppMethodBeat.o(91276);
+    return -1;
   }
 }
 

@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
   xmlns:android1="http://schemas.android.com/apk/res/android">
-    <PreferenceTitleCategory android:key="settings_auto_mul_terminal_sync_tip" android:title="@string/gnl" />
-    <CheckBoxPreference android:defaultValue="false" android:key="settings_auto_mul_terminal_sync" android:title="@string/gnk" />
-    <PreferenceTitleCategory android:key="settings_take_photo_auto_save_tip" android:title="@string/gv7" />
-    <CheckBoxPreference android:defaultValue="false" android:key="settings_take_photo_auto_save_photo" android:title="@string/gv6" />
-    <CheckBoxPreference android:defaultValue="false" android:key="settings_take_photo_auto_save_video" android:title="@string/gv8" />
-    <PreferenceTitleCategory android:key="settings_sns_auto_play_tip" android:title="@string/gu6" />
-    <CheckBoxPreference android:defaultValue="true" android:key="settings_sns_auto_play_switch" android:title="@string/gu5" />
-    <PreferenceTitleCategory android:key="settings_voip_audio_switch_mobile_net_tip" android:title="@string/gwq" />
-    <CheckBoxPreference android:defaultValue="true" android:key="settings_voip_audio_switch_mobile_net" android:title="@string/gwo" />
+    <PreferenceTitleCategory android:key="settings_notification_title" android:title="@string/ivv" />
+    <CheckBoxPreference android:key="settings_new_msg_notification_switch" android:persistent="false" android:title="@string/ivh" />
+    <CheckBoxPreference android:key="settings_new_voip_msg_invite_notification" android:persistent="false" android:title="@string/ivn" />
+    <CheckBoxPreference android:key="settings_finder_app_push_notification" android:persistent="false" android:title="@string/isl" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android1:defaultValue="true" android:dependency="settings_new_msg_notification" android:key="settings_new_msg_show_detail" android:persistent="false" android:title="@string/ivj" />
+    <PreferenceTitleCategory android:key="settings_new_msg_title" android:title="@string/ivk" />
+    <CheckBoxPreference android:defaultValue="true" android:dependency="settings_new_msg_notification" android:key="settings_new_msg_notification_sound" android:persistent="false" android:title="@string/izi" />
+    <Preference android:dependency="settings_new_msg_notification_sound" android:key="settings_new_msg_notification_ringtone" android:persistent="false" android:title="@string/iw2" />
+    <CheckBoxPreference android:defaultValue="true" android:dependency="settings_new_msg_notification" android:key="settings_new_msg_notification_shake" android:layout="@layout/bfo" android:persistent="false" android:title="@string/iyo" />
+    <PreferenceTitleCategory android:key="settings_notification_sound_shake" android:title="@string/iw6" />
+    <Preference android:key="setting_news_notification" android:summary="@string/ivy" android:title="@string/iw4" />
+    <Preference android:key="setting_voip_notification" android:summary="@string/ivy" android:title="@string/ivo" />
+    <CheckBoxPreference android:defaultValue="true" android:key="settings_voip_notification_both_shake_and_sound" android:title="@string/j2a" />
+    <SummaryBelowPreference android:key="settings_special_scene_notification_sound_and_shake" android:title="@string/izl" />
+    <PreferenceTitleCategory android:dependency="settings_new_voip_msg_invite_notification" android:key="settings_ringtone_title" android:title="@string/iw0" />
+    <Preference android:key="settings_new_msg_notification_channel_sound" android:title="@string/iw2" />
+    <Preference android:key="settings_notification_ringtone" android:title="@string/ivr" />
+    <CheckBoxPreference android:defaultValue="true" android:key="settings_notification_hear_ringtone_when_call_me" android:title="@string/ivz" />
+    <CheckBoxPreference android:defaultValue="true" android:dependency="settings_new_voip_msg_invite_notification" android:key="settings_voip_shake" android:layout="@layout/bfo" android:persistent="false" android:title="@string/iyo" />
+    <CheckBoxPreference android:defaultValue="true" android:dependency="settings_new_voip_msg_invite_notification" android:key="settings_voip_sound" android:layout="@layout/bfo" android:persistent="false" android:title="@string/izi" />
+    <PreferenceTitleCategory android:key="settings_update_notify_title" android:title="@string/j1n" />
+    <CheckBoxPreference android:defaultValue="true" android:dependency="settings_new_sns_notify" android:key="settings_sns_notify" android:title="@string/iz9" />
+    <CheckBoxPreference android:key="settings_notification_finder" android:title="@string/ivx" />
+    <CheckBoxPreference android:key="settings_notification_finder_live" android:title="@string/cvv" />
+    <CheckBoxPreference android:key="settings_notification_finder_nearby" android:title="@string/emf" />
+    <PreferenceFooterCategory android:key="settings_notification_tips" android:title="@string/emg" />
 </PreferenceScreen>

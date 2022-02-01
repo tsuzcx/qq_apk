@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="120px" height="120px" viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12072) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon / Default Avatar</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Icon-/-Default-Avatar" sketch:type="MSLayerGroup">
+            <rect id="Rectangle-14" fill="#F1F1F1" sketch:type="MSShapeGroup" x="0" y="0" width="120" height="120"></rect>
+            <path d="M50.8657829,61.3048882 C54.7215878,67.4300243 48.3199121,70.2033627 45.6462303,71.7439934 C34.1437865,78.2878262 29.1176471,80.7386834 29.1176471,83.9229495 L29.1176471,88.2725766 C29.1176471,89.6709453 30.1635702,90.8823529 31.7274234,90.8823529 L88.2725766,90.8823529 C89.8364298,90.8823529 90.8823529,89.6709453 90.8823529,88.2725766 L90.8823529,83.9229495 C90.8823529,80.7386834 85.8562135,78.2878262 74.3537697,71.7439934 C71.6800879,70.2033627 65.2784122,67.4300243 69.1342171,61.3048882 C72.5584424,56.21983 75.2303341,54.1484724 75.2236951,45.6462303 C75.2303341,37.5748081 69.2613916,29.1176471 60.4349627,29.1176471 C50.7386084,29.1176471 44.7696659,37.5748081 44.7763049,45.6462303 C44.7696659,54.1484724 47.4415576,56.21983 50.8657829,61.3048882 Z" id="Fill-24" fill="#C9C9C9" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>

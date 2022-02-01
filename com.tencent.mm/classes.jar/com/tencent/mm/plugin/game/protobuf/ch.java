@@ -1,115 +1,152 @@
 package com.tencent.mm.plugin.game.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import i.a.a.b;
 
 public final class ch
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String CQv;
-  public String desc;
-  public String lkF;
-  public String title;
-  public String ufH;
+  public String IGL;
+  public String IIu;
+  public String IKE;
+  public String hAP;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(41792);
+    AppMethodBeat.i(41791);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.title != null) {
-        paramVarArgs.f(1, this.title);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.IKE == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: LogoURL");
+        AppMethodBeat.o(41791);
+        throw paramVarArgs;
       }
-      if (this.lkF != null) {
-        paramVarArgs.f(2, this.lkF);
+      if (this.hAP == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: Title");
+        AppMethodBeat.o(41791);
+        throw paramVarArgs;
       }
-      if (this.ufH != null) {
-        paramVarArgs.f(3, this.ufH);
+      if (this.IIu == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: Detail");
+        AppMethodBeat.o(41791);
+        throw paramVarArgs;
       }
-      if (this.desc != null) {
-        paramVarArgs.f(4, this.desc);
+      if (this.IGL == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: WebURL");
+        AppMethodBeat.o(41791);
+        throw paramVarArgs;
       }
-      if (this.CQv != null) {
-        paramVarArgs.f(5, this.CQv);
+      if (this.IKE != null) {
+        paramVarArgs.g(1, this.IKE);
       }
-      AppMethodBeat.o(41792);
+      if (this.hAP != null) {
+        paramVarArgs.g(2, this.hAP);
+      }
+      if (this.IIu != null) {
+        paramVarArgs.g(3, this.IIu);
+      }
+      if (this.IGL != null) {
+        paramVarArgs.g(4, this.IGL);
+      }
+      AppMethodBeat.o(41791);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.title == null) {
-        break label454;
+      if (this.IKE == null) {
+        break label582;
       }
     }
-    label454:
-    for (int i = g.a.a.b.b.a.g(1, this.title) + 0;; i = 0)
+    label582:
+    for (int i = i.a.a.b.b.a.h(1, this.IKE) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.lkF != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.lkF);
+      if (this.hAP != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.hAP);
       }
       i = paramInt;
-      if (this.ufH != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.ufH);
+      if (this.IIu != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.IIu);
       }
       paramInt = i;
-      if (this.desc != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.desc);
+      if (this.IGL != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.IGL);
       }
-      i = paramInt;
-      if (this.CQv != null) {
-        i = paramInt + g.a.a.b.b.a.g(5, this.CQv);
-      }
-      AppMethodBeat.o(41792);
-      return i;
+      AppMethodBeat.o(41791);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(41792);
+        if (this.IKE == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: LogoURL");
+          AppMethodBeat.o(41791);
+          throw paramVarArgs;
+        }
+        if (this.hAP == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: Title");
+          AppMethodBeat.o(41791);
+          throw paramVarArgs;
+        }
+        if (this.IIu == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: Detail");
+          AppMethodBeat.o(41791);
+          throw paramVarArgs;
+        }
+        if (this.IGL == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: WebURL");
+          AppMethodBeat.o(41791);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(41791);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         ch localch = (ch)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(41792);
+          AppMethodBeat.o(41791);
           return -1;
         case 1: 
-          localch.title = locala.abFh.readString();
-          AppMethodBeat.o(41792);
+          localch.IKE = locala.ajGk.readString();
+          AppMethodBeat.o(41791);
           return 0;
         case 2: 
-          localch.lkF = locala.abFh.readString();
-          AppMethodBeat.o(41792);
+          localch.hAP = locala.ajGk.readString();
+          AppMethodBeat.o(41791);
           return 0;
         case 3: 
-          localch.ufH = locala.abFh.readString();
-          AppMethodBeat.o(41792);
-          return 0;
-        case 4: 
-          localch.desc = locala.abFh.readString();
-          AppMethodBeat.o(41792);
+          localch.IIu = locala.ajGk.readString();
+          AppMethodBeat.o(41791);
           return 0;
         }
-        localch.CQv = locala.abFh.readString();
-        AppMethodBeat.o(41792);
+        localch.IGL = locala.ajGk.readString();
+        AppMethodBeat.o(41791);
         return 0;
       }
-      AppMethodBeat.o(41792);
+      AppMethodBeat.o(41791);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.protobuf.ch
  * JD-Core Version:    0.7.0.1
  */

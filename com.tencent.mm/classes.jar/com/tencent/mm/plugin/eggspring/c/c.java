@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.eggspring.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/eggspring/model/LuckyBagInfo;", "", "keyword", "", "traceId", "appId", "hasLuckyBag", "", "interval", "", "url", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZILjava/lang/String;)V", "getAppId", "()Ljava/lang/String;", "setAppId", "(Ljava/lang/String;)V", "getHasLuckyBag", "()Z", "getInterval", "()I", "getKeyword", "getTraceId", "getUrl", "setUrl", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "other", "hashCode", "toString", "Companion", "plugin-eggspring_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/eggspring/model/LuckyBagInfo;", "", "keyword", "", "traceId", "appId", "hasLuckyBag", "", "interval", "", "url", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZILjava/lang/String;)V", "getAppId", "()Ljava/lang/String;", "setAppId", "(Ljava/lang/String;)V", "getHasLuckyBag", "()Z", "getInterval", "()I", "getKeyword", "getTraceId", "getUrl", "setUrl", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "other", "hashCode", "toString", "Companion", "plugin-eggspring_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
 {
-  public static final a uxS;
+  public static final a xEC;
   public String appId;
-  public final String fwe;
-  public final int interval;
-  public final String nTp;
+  public final String hAB;
+  private final int interval;
+  public final String qTb;
   public String url;
-  public final boolean uxR;
+  private final boolean xED;
   
   static
   {
     AppMethodBeat.i(108152);
-    uxS = new a((byte)0);
+    xEC = new a((byte)0);
     AppMethodBeat.o(108152);
   }
   
@@ -29,34 +29,62 @@ public final class c
   
   private c(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(249463);
-    this.fwe = paramString1;
-    this.nTp = paramString2;
+    AppMethodBeat.i(266504);
+    this.hAB = paramString1;
+    this.qTb = paramString2;
     this.appId = paramString3;
-    this.uxR = paramBoolean;
+    this.xED = paramBoolean;
     this.interval = paramInt;
     this.url = null;
-    AppMethodBeat.o(249463);
+    AppMethodBeat.o(266504);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(249469);
-    if (this != paramObject)
+    AppMethodBeat.i(266527);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof c))
-      {
-        paramObject = (c)paramObject;
-        if ((!p.h(this.fwe, paramObject.fwe)) || (!p.h(this.nTp, paramObject.nTp)) || (!p.h(this.appId, paramObject.appId)) || (this.uxR != paramObject.uxR) || (this.interval != paramObject.interval) || (!p.h(this.url, paramObject.url))) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(249469);
+      AppMethodBeat.o(266527);
       return true;
     }
-    AppMethodBeat.o(249469);
-    return false;
+    if (!(paramObject instanceof c))
+    {
+      AppMethodBeat.o(266527);
+      return false;
+    }
+    paramObject = (c)paramObject;
+    if (!s.p(this.hAB, paramObject.hAB))
+    {
+      AppMethodBeat.o(266527);
+      return false;
+    }
+    if (!s.p(this.qTb, paramObject.qTb))
+    {
+      AppMethodBeat.o(266527);
+      return false;
+    }
+    if (!s.p(this.appId, paramObject.appId))
+    {
+      AppMethodBeat.o(266527);
+      return false;
+    }
+    if (this.xED != paramObject.xED)
+    {
+      AppMethodBeat.o(266527);
+      return false;
+    }
+    if (this.interval != paramObject.interval)
+    {
+      AppMethodBeat.o(266527);
+      return false;
+    }
+    if (!s.p(this.url, paramObject.url))
+    {
+      AppMethodBeat.o(266527);
+      return false;
+    }
+    AppMethodBeat.o(266527);
+    return true;
   }
   
   public final int hashCode()
@@ -67,12 +95,12 @@ public final class c
   public final String toString()
   {
     AppMethodBeat.i(108151);
-    String str = "LuckyBagInfo(keyword=" + this.fwe + ", traceId=" + this.nTp + ", appId=" + this.appId + ", hasLuckyBag=" + this.uxR + ", interval=" + this.interval + ", url=" + this.url + ")";
+    String str = "LuckyBagInfo(keyword=" + this.hAB + ", traceId=" + this.qTb + ", appId=" + this.appId + ", hasLuckyBag=" + this.xED + ", interval=" + this.interval + ", url=" + this.url + ')';
     AppMethodBeat.o(108151);
     return str;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/eggspring/model/LuckyBagInfo$Companion;", "", "()V", "HAS_LUCKY_BAG", "", "NO_LUCKY_BAG", "plugin-eggspring_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/eggspring/model/LuckyBagInfo$Companion;", "", "()V", "HAS_LUCKY_BAG", "", "NO_LUCKY_BAG", "plugin-eggspring_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

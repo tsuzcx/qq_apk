@@ -3,12 +3,12 @@ package com.github.henryye.nativeiv;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.util.Base64;
-import androidx.annotation.Keep;
 import com.github.henryye.nativeiv.a.c.a;
 import com.github.henryye.nativeiv.a.c.b;
 import com.github.henryye.nativeiv.api.IImageDecodeService;
 import com.github.henryye.nativeiv.api.IImageDecodeService.a;
 import com.github.henryye.nativeiv.api.IImageDecodeService.b;
+import com.github.henryye.nativeiv.api.IImageDecodeService.b.a;
 import com.github.henryye.nativeiv.api.IImageDecodeService.c;
 import com.github.henryye.nativeiv.bitmap.BitmapType;
 import com.github.henryye.nativeiv.bitmap.IBitmap;
@@ -21,7 +21,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 
-@Keep
 public class BaseImageDecodeService
   implements IImageDecodeService
 {
@@ -40,7 +39,7 @@ public class BaseImageDecodeService
     this.mIsTrackInitImages = false;
     this.mDecodeSlave = null;
     this.mDecodeEventListeners = new LinkedList();
-    this.mCompactDecodeEventListener = new BaseImageDecodeService.a(this, (byte)0);
+    this.mCompactDecodeEventListener = new a((byte)0);
     this.mHttpImageStreamFetcher = new com.github.henryye.nativeiv.b.a();
     this.mImageStreamFetcherList = new LinkedList();
     addImageStreamFetcher(this.mHttpImageStreamFetcher, false);
@@ -98,13 +97,13 @@ public class BaseImageDecodeService
   private void runInThreadPool(Object paramObject, Runnable paramRunnable)
   {
     AppMethodBeat.i(127317);
-    if (this.mHttpImageStreamFetcher.V(paramObject))
+    if (this.mHttpImageStreamFetcher.be(paramObject))
     {
-      d.aKa.aKc.execute(paramRunnable);
+      d.cDW.cDY.execute(paramRunnable);
       AppMethodBeat.o(127317);
       return;
     }
-    d.aKa.aKd.execute(paramRunnable);
+    d.cDW.cDZ.execute(paramRunnable);
     AppMethodBeat.o(127317);
   }
   
@@ -209,7 +208,7 @@ public class BaseImageDecodeService
   public Bitmap getBitmap(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(127306);
-    Bitmap localBitmap = e.qF().aKi.bd(paramInt1, paramInt2);
+    Bitmap localBitmap = e.Qi().cEe.bY(paramInt1, paramInt2);
     AppMethodBeat.o(127306);
     return localBitmap;
   }
@@ -260,7 +259,7 @@ public class BaseImageDecodeService
         break;
       }
       paramImageDecodeConfig = (com.github.henryye.nativeiv.b.b)((Iterator)localObject).next();
-    } while (!paramImageDecodeConfig.V(paramObject));
+    } while (!paramImageDecodeConfig.be(paramObject));
     for (;;)
     {
       localObject = paramImageDecodeConfig;
@@ -368,7 +367,7 @@ public class BaseImageDecodeService
   public void setMaxDecodeDimension(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(127323);
-    this.mDecodeSlave.bc(paramInt1, paramInt2);
+    this.mDecodeSlave.bX(paramInt1, paramInt2);
     AppMethodBeat.o(127323);
   }
   
@@ -381,16 +380,42 @@ public class BaseImageDecodeService
       AppMethodBeat.o(127324);
       return;
     }
-    locala.aKQ = paramInt1;
-    locala.aKR = paramInt2;
+    locala.cEM = paramInt1;
+    locala.cEN = paramInt2;
     com.github.henryye.nativeiv.a.b.i("NativeImageHttpFetcher", "Http Timeout Set: connection[%d] read[%d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(127324);
+  }
+  
+  final class a
+    implements IImageDecodeService.b
+  {
+    private a() {}
+    
+    public final void a(String paramString, IImageDecodeService.b.a parama, com.github.henryye.nativeiv.api.a parama1)
+    {
+      AppMethodBeat.i(127299);
+      Iterator localIterator = new LinkedList(BaseImageDecodeService.this.mDecodeEventListeners).iterator();
+      while (localIterator.hasNext()) {
+        ((IImageDecodeService.b)localIterator.next()).a(paramString, parama, parama1);
+      }
+      AppMethodBeat.o(127299);
+    }
+    
+    public final void a(String paramString, Object paramObject, IImageDecodeService.c paramc, ImageDecodeConfig paramImageDecodeConfig)
+    {
+      AppMethodBeat.i(127300);
+      Iterator localIterator = new LinkedList(BaseImageDecodeService.this.mDecodeEventListeners).iterator();
+      while (localIterator.hasNext()) {
+        ((IImageDecodeService.b)localIterator.next()).a(paramString, paramObject, paramc, paramImageDecodeConfig);
+      }
+      AppMethodBeat.o(127300);
+    }
   }
   
   public static final class b
     implements IImageDecodeService.c
   {
-    public final void U(Object paramObject)
+    public final void bd(Object paramObject)
     {
       AppMethodBeat.i(127301);
       if (paramObject != null) {
@@ -403,38 +428,38 @@ public class BaseImageDecodeService
   static final class c
     implements Runnable
   {
-    private Object aJI;
-    private ImageDecodeConfig aJJ;
-    private volatile boolean aJK;
-    private WeakReference<BaseImageDecodeService> aJL;
-    private final BaseImageDecodeService.b aJM;
+    private Object cDF;
+    private ImageDecodeConfig cDG;
+    private volatile boolean cDH;
+    private WeakReference<BaseImageDecodeService> cDI;
+    private final BaseImageDecodeService.b cDJ;
     
     c(BaseImageDecodeService paramBaseImageDecodeService, Object paramObject, ImageDecodeConfig paramImageDecodeConfig)
     {
       AppMethodBeat.i(127302);
-      this.aJK = false;
-      this.aJM = new BaseImageDecodeService.b();
-      this.aJI = paramObject;
-      this.aJJ = paramImageDecodeConfig;
-      this.aJL = new WeakReference(paramBaseImageDecodeService);
+      this.cDH = false;
+      this.cDJ = new BaseImageDecodeService.b();
+      this.cDF = paramObject;
+      this.cDG = paramImageDecodeConfig;
+      this.cDI = new WeakReference(paramBaseImageDecodeService);
       AppMethodBeat.o(127302);
     }
     
     public final void run()
     {
       AppMethodBeat.i(127303);
-      if (this.aJK)
+      if (this.cDH)
       {
         AppMethodBeat.o(127303);
         return;
       }
-      if (this.aJL.get() == null)
+      if (this.cDI.get() == null)
       {
         AppMethodBeat.o(127303);
         return;
       }
-      IBitmap localIBitmap = ((BaseImageDecodeService)this.aJL.get()).loadBitmapSync(this.aJI, this.aJJ);
-      if (this.aJK)
+      IBitmap localIBitmap = ((BaseImageDecodeService)this.cDI.get()).loadBitmapSync(this.cDF, this.cDG);
+      if (this.cDH)
       {
         if (localIBitmap != null) {
           localIBitmap.recycle();
@@ -442,14 +467,14 @@ public class BaseImageDecodeService
         AppMethodBeat.o(127303);
         return;
       }
-      ((BaseImageDecodeService)this.aJL.get()).mCompactDecodeEventListener.a(this.aJI.toString(), localIBitmap, this.aJM, this.aJJ);
+      ((BaseImageDecodeService)this.cDI.get()).mCompactDecodeEventListener.a(this.cDF.toString(), localIBitmap, this.cDJ, this.cDG);
       AppMethodBeat.o(127303);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.github.henryye.nativeiv.BaseImageDecodeService
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -9,24 +8,24 @@ import android.view.Window;
 import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet.balance.model.lqt.CgiLqtPlanIndex;
-import com.tencent.mm.plugin.wallet.balance.model.lqt.r;
+import com.tencent.mm.plugin.wallet.balance.model.lqt.s;
 import com.tencent.mm.plugin.wxpay.a.c;
-import com.tencent.mm.protocal.protobuf.dlh;
+import com.tencent.mm.protocal.protobuf.eds;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.wallet_core.c.a;
-import com.tencent.mm.wallet_core.c.a.a;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.wallet_core.model.a;
+import com.tencent.mm.wallet_core.model.a.a;
 
 public class WalletLqtPlanBeforeHomeUI
   extends AppCompatActivity
 {
-  private void gGs()
+  private void ift()
   {
     AppMethodBeat.i(68901);
-    r localr = new r();
-    localr.d(new CgiLqtPlanIndex());
-    localr.a(new a.a() {}, 0L);
+    s locals = new s();
+    locals.d(new CgiLqtPlanIndex());
+    locals.a(new a.a() {}, 0L);
     AppMethodBeat.o(68901);
   }
   
@@ -40,9 +39,9 @@ public class WalletLqtPlanBeforeHomeUI
   
   public Resources getResources()
   {
-    AppMethodBeat.i(198446);
+    AppMethodBeat.i(316409);
     Resources localResources = MMApplicationContext.getResources();
-    AppMethodBeat.o(198446);
+    AppMethodBeat.o(316409);
     return localResources;
   }
   
@@ -54,7 +53,7 @@ public class WalletLqtPlanBeforeHomeUI
     {
       if (paramInt2 == -1)
       {
-        gGs();
+        ift();
         AppMethodBeat.o(68902);
         return;
       }
@@ -69,8 +68,8 @@ public class WalletLqtPlanBeforeHomeUI
     super.onCreate(paramBundle);
     overridePendingTransition(0, 0);
     getWindow().getDecorView().setSystemUiVisibility(1280);
-    ar.r(this, getResources().getColor(a.c.transparent));
-    gGs();
+    aw.t(this, getResources().getColor(a.c.transparent));
+    ift();
     AppMethodBeat.o(68899);
   }
   
@@ -82,7 +81,7 @@ public class WalletLqtPlanBeforeHomeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtPlanBeforeHomeUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="14.0dip" android:textColor="@color/a2x" android:ellipsize="end" android:id="@id/a5k" android:paddingTop="@dimen/r" android:paddingBottom="@dimen/r" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:maxLines="3" android:paddingStart="@dimen/iy" android:paddingEnd="@dimen/iy" />
+    <View android:background="@color/BW_97" android:layout_width="fill_parent" android:layout_height="@dimen/df" />
+    <TextView android:textSize="@dimen/t" android:textColor="@color/a7a" android:gravity="center" android:id="@id/aax" android:paddingTop="@dimen/cp" android:paddingBottom="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/aui" />
 </LinearLayout>

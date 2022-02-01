@@ -1,46 +1,45 @@
 package com.tencent.mm.plugin.fcm;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.eb;
-import com.tencent.mm.protocal.protobuf.ec;
+import com.tencent.mm.protocal.protobuf.ev;
+import com.tencent.mm.protocal.protobuf.ew;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  private final d rr;
+  private h callback;
+  private final com.tencent.mm.am.c rr;
   
   public c(String paramString)
   {
     AppMethodBeat.i(127575);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new eb();
-    ((d.a)localObject).lBV = new ec();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/androidfcmreg";
-    ((d.a)localObject).funcId = 216;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (eb)d.b.b(this.rr.lBR);
-    ((eb)localObject).RJs = paramString;
-    ((eb)localObject).CNb = 1;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new ev();
+    ((c.a)localObject).otF = new ew();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/androidfcmreg";
+    ((c.a)localObject).funcId = 216;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (ev)c.b.b(this.rr.otB);
+    ((ev)localObject).YGM = paramString;
+    ((ev)localObject).IHg = 1;
     AppMethodBeat.o(127575);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(127576);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(127576);
     return i;

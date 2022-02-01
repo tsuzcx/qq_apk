@@ -1,30 +1,47 @@
 package com.tencent.kinda.framework.widget.base;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.kinda.gen.KViewOnClickCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
+import java.lang.ref.WeakReference;
 
 class MMKView$2
-  implements View.OnClickListener
+  implements Runnable
 {
-  private byte _hellAccFlag_;
+  MMKView$2(MMKView paramMMKView1, MMKView paramMMKView2, MMKView paramMMKView3) {}
   
-  MMKView$2(MMKView paramMMKView) {}
-  
-  public void onClick(View paramView)
+  public void run()
   {
-    AppMethodBeat.i(19122);
-    b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/kinda/framework/widget/base/MMKView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    if (MMKView.access$500(this.this$0) != null) {
-      MMKView.access$500(this.this$0).onClick(this.this$0);
+    AppMethodBeat.i(226605);
+    int i;
+    if ((this.val$selfView instanceof MMKRichLabelView))
+    {
+      if ((((MMKRichLabelView)this.val$selfView).linkCallback == null) && (MMKView.access$500(this.val$selfView) == null)) {
+        break label126;
+      }
+      i = 1;
     }
-    a.a(this, "com/tencent/kinda/framework/widget/base/MMKView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(19122);
+    for (;;)
+    {
+      if (i != 0)
+      {
+        MMKView.access$602(this.val$targetView, new WeakReference(this.val$selfView));
+        this.val$targetView.setOnClickCallback(MMKView.access$500(this.val$targetView));
+      }
+      AppMethodBeat.o(226605);
+      return;
+      if ((this.val$selfView instanceof KindaSwitchViewImpl))
+      {
+        if (((KindaSwitchViewImpl)this.val$selfView).onChangeSwitchCallback != null) {
+          i = 1;
+        }
+      }
+      else if (MMKView.access$500(this.val$selfView) != null)
+      {
+        i = 1;
+        continue;
+      }
+      label126:
+      i = 0;
+    }
   }
 }
 

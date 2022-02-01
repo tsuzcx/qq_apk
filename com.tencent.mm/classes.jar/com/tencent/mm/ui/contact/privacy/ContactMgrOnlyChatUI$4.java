@@ -1,13 +1,13 @@
 package com.tencent.mm.ui.contact.privacy;
 
-import com.tencent.mm.ui.widget.a.f.c;
+import com.tencent.mm.ui.widget.a.g.c;
 
 final class ContactMgrOnlyChatUI$4
-  implements f.c
+  implements g.c
 {
   ContactMgrOnlyChatUI$4(ContactMgrOnlyChatUI paramContactMgrOnlyChatUI) {}
   
-  public final void g(boolean paramBoolean, String paramString) {}
+  public final void onDialogClick(boolean paramBoolean, String paramString) {}
 }
 
 

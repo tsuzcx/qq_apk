@@ -8,167 +8,167 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.plugin.fav.ui.s.a;
-import com.tencent.mm.plugin.fav.ui.s.e;
-import com.tencent.mm.plugin.fav.ui.s.i;
+import com.tencent.mm.plugin.fav.ui.q.a;
+import com.tencent.mm.plugin.fav.ui.q.e;
+import com.tencent.mm.plugin.fav.ui.q.i;
 
 public final class b
 {
-  private boolean wSL = false;
-  private View wSM;
-  private ImageButton wSQ;
-  private ImageButton wSR;
-  private ImageButton wSS;
-  private View wST;
-  private View wSU;
-  private View wSV;
-  public a wSW;
+  private boolean Apo = false;
+  private View App;
+  private ImageButton Apt;
+  private ImageButton Apu;
+  private ImageButton Apv;
+  private View Apw;
+  private View Apx;
+  private View Apy;
+  public a Apz;
   
-  public final void eo(View paramView)
+  public final void fj(View paramView)
   {
-    this.wSL = false;
-    this.wSM = paramView;
+    this.Apo = false;
+    this.App = paramView;
   }
   
-  public final void gR(boolean paramBoolean)
+  public final void hH(boolean paramBoolean)
   {
     AppMethodBeat.i(107519);
-    if (!this.wSL)
+    if (!this.Apo)
     {
       AppMethodBeat.o(107519);
       return;
     }
-    this.wSQ.setEnabled(paramBoolean);
-    this.wSR.setEnabled(paramBoolean);
-    this.wSS.setEnabled(paramBoolean);
+    this.Apt.setEnabled(paramBoolean);
+    this.Apu.setEnabled(paramBoolean);
+    this.Apv.setEnabled(paramBoolean);
     AppMethodBeat.o(107519);
   }
   
   public final void hide()
   {
     AppMethodBeat.i(107518);
-    if (!this.wSL)
+    if (!this.Apo)
     {
       AppMethodBeat.o(107518);
       return;
     }
-    if (this.wSM.getVisibility() != 8)
+    if (this.App.getVisibility() != 8)
     {
-      this.wSM.setVisibility(8);
-      this.wSM.startAnimation(AnimationUtils.loadAnimation(this.wSM.getContext(), s.a.fast_faded_out));
+      this.App.setVisibility(8);
+      this.App.startAnimation(AnimationUtils.loadAnimation(this.App.getContext(), q.a.fast_faded_out));
     }
     AppMethodBeat.o(107518);
   }
   
-  public final void nW(boolean paramBoolean)
+  public final void pw(boolean paramBoolean)
   {
     AppMethodBeat.i(107517);
-    if (!this.wSL)
+    if (!this.Apo)
     {
-      if (this.wSM == null)
+      if (this.App == null)
       {
         AppMethodBeat.o(107517);
         return;
       }
-      if ((this.wSM instanceof ViewStub)) {
-        this.wSM = ((ViewStub)this.wSM).inflate();
+      if ((this.App instanceof ViewStub)) {
+        this.App = ((ViewStub)this.App).inflate();
       }
-      this.wST = this.wSM.findViewById(s.e.fav_space_1);
-      this.wSU = this.wSM.findViewById(s.e.fav_space_2);
-      this.wSV = this.wSM.findViewById(s.e.fav_space_3);
-      this.wSQ = ((ImageButton)this.wSM.findViewById(s.e.fav_edit_forward));
-      this.wSQ.setEnabled(false);
-      this.wSQ.setContentDescription(this.wSQ.getContext().getString(s.i.transmit_btn));
-      this.wSQ.setOnClickListener(new View.OnClickListener()
+      this.Apw = this.App.findViewById(q.e.fav_space_1);
+      this.Apx = this.App.findViewById(q.e.fav_space_2);
+      this.Apy = this.App.findViewById(q.e.fav_space_3);
+      this.Apt = ((ImageButton)this.App.findViewById(q.e.fav_edit_forward));
+      this.Apt.setEnabled(false);
+      this.Apt.setContentDescription(this.Apt.getContext().getString(q.i.transmit_btn));
+      this.Apt.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(107514);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          a.c("com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-          if (b.this.wSW == null)
+          localb.cH(paramAnonymousView);
+          a.c("com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          if (b.this.Apz == null)
           {
             a.a(this, "com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(107514);
             return;
           }
-          b.this.wSW.dkY();
+          b.this.Apz.dRO();
           a.a(this, "com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(107514);
         }
       });
-      this.wSR = ((ImageButton)this.wSM.findViewById(s.e.fav_edit_addtag));
-      this.wSR.setEnabled(false);
-      this.wSR.setContentDescription(this.wSR.getContext().getString(s.i.edit_label_btn));
-      this.wSR.setOnClickListener(new View.OnClickListener()
+      this.Apu = ((ImageButton)this.App.findViewById(q.e.fav_edit_addtag));
+      this.Apu.setEnabled(false);
+      this.Apu.setContentDescription(this.Apu.getContext().getString(q.i.edit_label_btn));
+      this.Apu.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(107515);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          a.c("com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-          if (b.this.wSW == null)
+          localb.cH(paramAnonymousView);
+          a.c("com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          if (b.this.Apz == null)
           {
             a.a(this, "com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(107515);
             return;
           }
-          b.this.wSW.dkZ();
+          b.this.Apz.dRP();
           a.a(this, "com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(107515);
         }
       });
       if (paramBoolean)
       {
-        this.wSU.setVisibility(8);
-        this.wSR.setVisibility(8);
+        this.Apx.setVisibility(8);
+        this.Apu.setVisibility(8);
       }
-      this.wSS = ((ImageButton)this.wSM.findViewById(s.e.fav_edit_delete));
-      this.wSS.setEnabled(false);
-      this.wSS.setContentDescription(this.wSS.getContext().getString(s.i.delete_Imgbtn));
-      this.wSS.setOnClickListener(new View.OnClickListener()
+      this.Apv = ((ImageButton)this.App.findViewById(q.e.fav_edit_delete));
+      this.Apv.setEnabled(false);
+      this.Apv.setContentDescription(this.Apv.getContext().getString(q.i.delete_Imgbtn));
+      this.Apv.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(107516);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          a.c("com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-          if (b.this.wSW == null)
+          localb.cH(paramAnonymousView);
+          a.c("com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          if (b.this.Apz == null)
           {
             a.a(this, "com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(107516);
             return;
           }
-          b.this.wSW.dkL();
+          b.this.Apz.dRB();
           a.a(this, "com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(107516);
         }
       });
-      this.wSL = true;
+      this.Apo = true;
     }
-    if (this.wSM.getVisibility() != 0)
+    if (this.App.getVisibility() != 0)
     {
-      this.wSM.setVisibility(0);
-      this.wSM.startAnimation(AnimationUtils.loadAnimation(this.wSM.getContext(), s.a.fast_faded_in));
+      this.App.setVisibility(0);
+      this.App.startAnimation(AnimationUtils.loadAnimation(this.App.getContext(), q.a.fast_faded_in));
     }
     AppMethodBeat.o(107517);
   }
   
   public static abstract interface a
   {
-    public abstract void dkL();
+    public abstract void dRB();
     
-    public abstract void dkY();
+    public abstract void dRO();
     
-    public abstract void dkZ();
+    public abstract void dRP();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.widget.b
  * JD-Core Version:    0.7.0.1
  */

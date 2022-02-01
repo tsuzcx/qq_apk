@@ -1,6 +1,5 @@
 package org.xwalk.core;
 
-import android.annotation.TargetApi;
 import android.app.Presentation;
 import android.content.Context;
 import android.content.res.Resources;
@@ -15,7 +14,6 @@ import android.view.MotionEvent;
 import android.view.Surface;
 import android.view.Window;
 import android.widget.FrameLayout;
-import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class XWalkExtendPluginNativeViewClient
@@ -42,6 +40,15 @@ public class XWalkExtendPluginNativeViewClient
     AppMethodBeat.o(183758);
   }
   
+  public XWalkExtendPluginNativeViewClient(Context paramContext, Surface paramSurface, int paramInt1, int paramInt2)
+  {
+    this.mContext = paramContext;
+    this.mSurfaceTexture = null;
+    this.mSurface = paramSurface;
+    this.mWidth = paramInt1;
+    this.mHeight = paramInt2;
+  }
+  
   private void refresh(boolean paramBoolean)
   {
     AppMethodBeat.i(183763);
@@ -53,7 +60,9 @@ public class XWalkExtendPluginNativeViewClient
       this.mVirtualDisplay.setSurface(null);
       this.mVirtualDisplay.release();
     }
-    this.mSurfaceTexture.setDefaultBufferSize(this.mWidth, this.mHeight);
+    if (this.mSurfaceTexture != null) {
+      this.mSurfaceTexture.setDefaultBufferSize(this.mWidth, this.mHeight);
+    }
     DisplayManager localDisplayManager = (DisplayManager)getContext().getSystemService("display");
     int i = getContext().getResources().getDisplayMetrics().densityDpi;
     this.mVirtualDisplay = localDisplayManager.createVirtualDisplay("xweb-vd" + hashCode(), this.mWidth, this.mHeight, i, this.mSurface, 0);
@@ -133,8 +142,6 @@ public class XWalkExtendPluginNativeViewClient
     AppMethodBeat.o(183759);
   }
   
-  @TargetApi(17)
-  @Keep
   class NativeViewPresentation
     extends Presentation
   {
@@ -185,7 +192,7 @@ public class XWalkExtendPluginNativeViewClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.XWalkExtendPluginNativeViewClient
  * JD-Core Version:    0.7.0.1
  */

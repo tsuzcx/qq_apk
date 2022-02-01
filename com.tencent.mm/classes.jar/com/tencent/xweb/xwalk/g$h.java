@@ -2,29 +2,29 @@ package com.tencent.xweb.xwalk;
 
 import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.r;
+import com.tencent.xweb.t;
 
 public final class g$h
-  implements r
+  implements t
 {
-  ValueCallback<Boolean> aail;
+  private ValueCallback<Boolean> aioS;
   
   public g$h(ValueCallback<Boolean> paramValueCallback)
   {
-    this.aail = paramValueCallback;
+    this.aioS = paramValueCallback;
   }
   
   public final void cancel()
   {
     AppMethodBeat.i(154281);
-    this.aail.onReceiveValue(Boolean.FALSE);
+    this.aioS.onReceiveValue(Boolean.FALSE);
     AppMethodBeat.o(154281);
   }
   
   public final void proceed()
   {
     AppMethodBeat.i(154280);
-    this.aail.onReceiveValue(Boolean.TRUE);
+    this.aioS.onReceiveValue(Boolean.TRUE);
     AppMethodBeat.o(154280);
   }
 }

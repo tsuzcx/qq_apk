@@ -15,13 +15,13 @@ final class a$4
   {
     Object localObject = new Intent(MMApplicationContext.getContext(), AppUpdaterUI.class);
     ((Intent)localObject).addFlags(268435456);
-    ((Intent)localObject).putExtra("intent_extra_desc", (String)this.URz.get(".Response.desc"));
+    ((Intent)localObject).putExtra("intent_extra_desc", (String)this.acmM.get(".Response.desc"));
     ((Intent)localObject).putExtra("intent_update_type", 999);
-    ((Intent)localObject).putExtra("intent_extra_download_url", new String[] { (String)this.URz.get(".Response.url") });
+    ((Intent)localObject).putExtra("intent_extra_download_url", new String[] { (String)this.acmM.get(".Response.url") });
     Context localContext = MMApplicationContext.getContext();
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-    com.tencent.mm.hellhoundlib.a.a.b(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/sandbox/monitor/CrashUpload$4", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+    localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/sandbox/monitor/CrashUpload$4", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
     com.tencent.mm.hellhoundlib.a.a.c(localContext, "com/tencent/mm/sandbox/monitor/CrashUpload$4", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
   }
 }

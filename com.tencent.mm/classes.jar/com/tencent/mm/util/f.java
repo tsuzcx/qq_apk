@@ -1,8 +1,8 @@
 package com.tencent.mm.util;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/util/IGloCom;", "", "getTag", "", "getType", "", "onGloComCreate", "", "onGloComDestroy", "libcompatible_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/util/IGloCom;", "", "getTag", "", "getType", "", "onGloComCreate", "", "onGloComDestroy", "libcompatible_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface f
 {
   public abstract String getTag();

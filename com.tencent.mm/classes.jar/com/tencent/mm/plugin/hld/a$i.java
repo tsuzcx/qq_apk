@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.hld;
 
 public final class a$i
 {
-  public static final int icons_filled_capslock = 2131690515;
-  public static final int icons_filled_capslocked = 2131690516;
-  public static final int icons_filled_done2 = 2131690553;
-  public static final int icons_outlined_capslock = 2131690772;
+  public static final int icons_filled_capslock = 2131690615;
+  public static final int icons_filled_capslocked = 2131690616;
+  public static final int icons_filled_done2 = 2131690658;
+  public static final int icons_outlined_capslock = 2131690919;
 }
 
 

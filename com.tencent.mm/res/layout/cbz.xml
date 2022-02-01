@@ -1,3 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewSmileyGrid android:id="@id/hth" android:fadingEdgeLength="0.0dip" android:layout_width="300.0dip" android:layout_height="300.0dip" android:listSelector="@drawable/aij" android:cacheColorHint="#00000000"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/bun" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <ImageView android:id="@id/hhm" android:layout_width="0.0dip" android:layout_height="wrap_content" android:src="@drawable/boq" android:scaleType="centerCrop" android:adjustViewBounds="true" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintWidth_percent="0.7" />
+    <View android:id="@id/j_k" android:background="#a6000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/c77" android:background="#b3ffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.recordvideo.ui.editor.RoundCornerAudioWaveView android:id="@id/a04" android:layout_width="50.0dip" android:layout_height="@dimen/cd" android:layout_marginLeft="@dimen/bv" android:layout_marginBottom="@dimen/df" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" />
+    <ImageView android:id="@id/a00" android:visibility="gone" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginTop="@dimen/df" android:layout_marginRight="@dimen/df" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/h6o" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_marginLeft="@dimen/bv" android:layout_marginBottom="@dimen/bv" android:src="@raw/finder_bgm_gif_first_page" app:iconColor="@color/az" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" />
+    <TextView android:textSize="@dimen/m_" android:textColor="@color/al6" android:id="@id/e8w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bv" app:layout_constraintBottom_toBottomOf="@id/h6o" app:layout_constraintLeft_toRightOf="@id/h6o" app:layout_constraintTop_toTopOf="@id/h6o" />
+</androidx.constraintlayout.widget.ConstraintLayout>

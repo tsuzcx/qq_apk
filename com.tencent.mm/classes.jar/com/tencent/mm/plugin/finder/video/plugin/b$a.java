@@ -5,17 +5,18 @@ import com.tencent.mm.ad.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 import java.util.Map;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/video/plugin/FinderRecordBeautifyPlugin$Companion;", "", "()V", "KEY_BRIGHT_EYE", "", "KEY_BRIGHT_FACE", "KEY_CHEEK_BONE", "KEY_EYE_POUCH", "KEY_LOWER_JAWBONE", "KEY_MORPH_EYE", "KEY_MORPH_FACE", "KEY_ROSY", "KEY_SHARPEN", "KEY_SMALL_HEAD", "KEY_SMILE_FOLDS", "KEY_SMOOTH_FACE", "KEY_TEETH_BRIGHT", "KEY_WING_OF_NOSE", "TAG", "", "defaultJson", "defaultJson2", "defaultJson3", "defaultValueList", "Ljava/util/ArrayList;", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "Lkotlin/collections/ArrayList;", "selectedValueMap", "extractJsonToMap", "", "json", "map", "defaultVal", "initDefaultValue", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/video/plugin/FinderRecordBeautifyPlugin$Companion;", "", "()V", "KEY_BRIGHT_EYE", "", "KEY_BRIGHT_FACE", "KEY_CHEEK_BONE", "KEY_EYE_POUCH", "KEY_LOWER_JAWBONE", "KEY_MORPH_EYE", "KEY_MORPH_FACE", "KEY_ROSY", "KEY_SHARPEN", "KEY_SMALL_HEAD", "KEY_SMILE_FOLDS", "KEY_SMOOTH_FACE", "KEY_TEETH_BRIGHT", "KEY_WING_OF_NOSE", "TAG", "", "defaultJson", "defaultJson2", "defaultJson3", "defaultValueList", "Ljava/util/ArrayList;", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "Lkotlin/collections/ArrayList;", "selectedValueMap", "extractJsonToMap", "", "json", "map", "defaultVal", "initDefaultValue", "plugin-finder-publish_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b$a
 {
-  static void a(String paramString, HashMap<Integer, Integer> paramHashMap, int paramInt)
+  static void b(String paramString, HashMap<Integer, Integer> paramHashMap, int paramInt)
   {
-    AppMethodBeat.i(288975);
+    AppMethodBeat.i(335557);
     try
     {
-      Log.i(b.access$getTAG$cp(), "extractJsonToMap: ".concat(String.valueOf(paramString)));
+      Log.i(b.access$getTAG$cp(), s.X("extractJsonToMap: ", paramString));
       paramString = new i(paramString);
       ((Map)paramHashMap).put(Integer.valueOf(0), Integer.valueOf(paramString.optInt("skin_smooth", paramInt)));
       ((Map)paramHashMap).put(Integer.valueOf(1), Integer.valueOf(paramString.optInt("face_morph", paramInt)));
@@ -31,13 +32,13 @@ public final class b$a
       ((Map)paramHashMap).put(Integer.valueOf(11), Integer.valueOf(paramString.optInt("cheek_bone", paramInt)));
       ((Map)paramHashMap).put(Integer.valueOf(12), Integer.valueOf(paramString.optInt("lower_jawbone", paramInt)));
       ((Map)paramHashMap).put(Integer.valueOf(13), Integer.valueOf(paramString.optInt("wing_of_nose", paramInt)));
-      AppMethodBeat.o(288975);
+      AppMethodBeat.o(335557);
       return;
     }
     catch (Exception paramString)
     {
       Log.printErrStackTrace(b.access$getTAG$cp(), (Throwable)paramString, "json error: ", new Object[0]);
-      AppMethodBeat.o(288975);
+      AppMethodBeat.o(335557);
     }
   }
 }

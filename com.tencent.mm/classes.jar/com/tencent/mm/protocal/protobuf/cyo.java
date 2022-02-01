@@ -1,117 +1,132 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
 import java.util.LinkedList;
 
 public final class cyo
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int DeleteFlag;
-  public eaf SrH;
-  public int TGO;
-  public int TGP;
+  public boolean aaDs;
+  public cyn aate;
+  public String icon;
+  public String lym;
+  public int tNW;
+  public String wtN;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32351);
+    AppMethodBeat.i(72496);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.SrH == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: UserName");
-        AppMethodBeat.o(32351);
-        throw paramVarArgs;
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.wtN != null) {
+        paramVarArgs.g(1, this.wtN);
       }
-      if (this.SrH != null)
-      {
-        paramVarArgs.oE(1, this.SrH.computeSize());
-        this.SrH.writeFields(paramVarArgs);
+      if (this.lym != null) {
+        paramVarArgs.g(2, this.lym);
       }
-      paramVarArgs.aY(2, this.TGO);
-      paramVarArgs.aY(3, this.TGP);
-      paramVarArgs.aY(4, this.DeleteFlag);
-      AppMethodBeat.o(32351);
+      if (this.icon != null) {
+        paramVarArgs.g(3, this.icon);
+      }
+      paramVarArgs.di(4, this.aaDs);
+      paramVarArgs.bS(5, this.tNW);
+      if (this.aate != null)
+      {
+        paramVarArgs.qD(6, this.aate.computeSize());
+        this.aate.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(72496);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.SrH == null) {
-        break label486;
+      if (this.wtN == null) {
+        break label552;
       }
     }
-    label486:
-    for (paramInt = g.a.a.a.oD(1, this.SrH.computeSize()) + 0;; paramInt = 0)
+    label552:
+    for (int i = i.a.a.b.b.a.h(1, this.wtN) + 0;; i = 0)
     {
-      int i = g.a.a.b.b.a.bM(2, this.TGO);
-      int j = g.a.a.b.b.a.bM(3, this.TGP);
-      int k = g.a.a.b.b.a.bM(4, this.DeleteFlag);
-      AppMethodBeat.o(32351);
-      return paramInt + i + j + k;
+      paramInt = i;
+      if (this.lym != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.lym);
+      }
+      i = paramInt;
+      if (this.icon != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.icon);
+      }
+      i = i + (i.a.a.b.b.a.ko(4) + 1) + i.a.a.b.b.a.cJ(5, this.tNW);
+      paramInt = i;
+      if (this.aate != null) {
+        paramInt = i + i.a.a.a.qC(6, this.aate.computeSize());
+      }
+      AppMethodBeat.o(72496);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.SrH == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: UserName");
-          AppMethodBeat.o(32351);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(32351);
+        AppMethodBeat.o(72496);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         cyo localcyo = (cyo)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(32351);
+          AppMethodBeat.o(72496);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject = (byte[])paramVarArgs.get(paramInt);
-            eaf localeaf = new eaf();
-            if ((localObject != null) && (localObject.length > 0)) {
-              localeaf.de((byte[])localObject);
-            }
-            localcyo.SrH = localeaf;
-            paramInt += 1;
-          }
-          AppMethodBeat.o(32351);
+          localcyo.wtN = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(72496);
           return 0;
         case 2: 
-          localcyo.TGO = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(32351);
+          localcyo.lym = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(72496);
           return 0;
         case 3: 
-          localcyo.TGP = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(32351);
+          localcyo.icon = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(72496);
+          return 0;
+        case 4: 
+          localcyo.aaDs = ((i.a.a.a.a)localObject).ajGk.aai();
+          AppMethodBeat.o(72496);
+          return 0;
+        case 5: 
+          localcyo.tNW = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(72496);
           return 0;
         }
-        localcyo.DeleteFlag = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(32351);
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          cyn localcyn = new cyn();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localcyn.parseFrom((byte[])localObject);
+          }
+          localcyo.aate = localcyn;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(72496);
         return 0;
       }
-      AppMethodBeat.o(32351);
+      AppMethodBeat.o(72496);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cyo
  * JD-Core Version:    0.7.0.1
  */

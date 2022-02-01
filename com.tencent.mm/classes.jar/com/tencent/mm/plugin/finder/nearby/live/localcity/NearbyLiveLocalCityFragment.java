@@ -1,112 +1,98 @@
 package com.tencent.mm.plugin.finder.nearby.live.localcity;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.plugin.finder.e.h;
 import com.tencent.mm.plugin.finder.nearby.base.AbsNearByFragment;
-import com.tencent.mm.plugin.finder.nearby.report.e;
-import com.tencent.mm.plugin.finder.viewmodel.component.aj;
-import com.tencent.mm.protocal.protobuf.bcz;
+import com.tencent.mm.plugin.finder.nearby.report.g;
+import com.tencent.mm.plugin.finder.viewmodel.component.as;
+import com.tencent.mm.protocal.protobuf.bnn;
 import com.tencent.mm.ui.component.UIComponent;
-import java.util.HashMap;
 import java.util.Set;
-import kotlin.a.ak;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.ar;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/live/localcity/NearbyLiveLocalCityFragment;", "Lcom/tencent/mm/plugin/finder/nearby/base/AbsNearByFragment;", "()V", "isFirstOnResume", "", "tabInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveTabInfo;", "getTabInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveTabInfo;", "setTabInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveTabInfo;)V", "getClickSubTabId", "", "getClickTabId", "getCommentScene", "", "getPageName", "getReportType", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onActionbarClick", "", "onActionbarDoubleClick", "onDestroy", "onPause", "onResume", "onUserVisibleFocused", "onUserVisibleUnFocused", "plugin-finder-nearby_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/live/localcity/NearbyLiveLocalCityFragment;", "Lcom/tencent/mm/plugin/finder/nearby/base/AbsNearByFragment;", "()V", "isFirstOnResume", "", "tabInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveTabInfo;", "getTabInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveTabInfo;", "setTabInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveTabInfo;)V", "getClickSubTabId", "", "getClickTabId", "getCommentScene", "", "getPageName", "getReportType", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onActionbarClick", "", "onActionbarDoubleClick", "onDestroy", "onPause", "onResume", "onUserVisibleFocused", "onUserVisibleUnFocused", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class NearbyLiveLocalCityFragment
   extends AbsNearByFragment
 {
-  private HashMap _$_findViewCache;
-  private bcz zDU;
-  private boolean zEs = true;
+  private bnn EIq;
+  private boolean isFirstOnResume = true;
   
   public NearbyLiveLocalCityFragment()
   {
-    super(b.j.nearby_tab_live, 1006);
+    super(e.h.nearby_tab_live, 1006);
   }
   
-  public final void _$_clearFindViewByIdCache()
+  public final void eEq()
   {
-    AppMethodBeat.i(203553);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(203553);
-  }
-  
-  public final String akA()
-  {
-    AppMethodBeat.i(203551);
-    StringBuilder localStringBuilder = new StringBuilder("112-");
-    Object localObject = this.zDU;
-    if (localObject != null) {}
-    for (localObject = Integer.valueOf(((bcz)localObject).SOa);; localObject = "")
+    AppMethodBeat.i(340872);
+    super.eEq();
+    a locala2 = ((c)component(c.class)).EJO;
+    a locala1 = locala2;
+    if (locala2 == null)
     {
-      localObject = localObject;
-      AppMethodBeat.o(203551);
-      return localObject;
+      s.bIx("liveFriendsPresenter");
+      locala1 = null;
     }
+    locala1.onActionbarClick(false);
+    AppMethodBeat.o(340872);
   }
   
-  public final void dLt()
+  public final void eEr()
   {
-    AppMethodBeat.i(203545);
-    super.dLt();
-    a locala = ((c)component(c.class)).zEZ;
-    if (locala == null) {
-      p.bGy("liveFriendsPresenter");
-    }
-    if (locala != null)
+    AppMethodBeat.i(340879);
+    super.eEr();
+    a locala2 = ((c)component(c.class)).EJO;
+    a locala1 = locala2;
+    if (locala2 == null)
     {
-      locala.onActionbarClick(false);
-      AppMethodBeat.o(203545);
-      return;
+      s.bIx("liveFriendsPresenter");
+      locala1 = null;
     }
-    AppMethodBeat.o(203545);
+    locala1.onActionbarClick(true);
+    AppMethodBeat.o(340879);
   }
   
-  public final void dLu()
-  {
-    AppMethodBeat.i(203547);
-    super.dLu();
-    a locala = ((c)component(c.class)).zEZ;
-    if (locala == null) {
-      p.bGy("liveFriendsPresenter");
-    }
-    if (locala != null)
-    {
-      locala.onActionbarClick(true);
-      AppMethodBeat.o(203547);
-      return;
-    }
-    AppMethodBeat.o(203547);
-  }
-  
-  public final String dLv()
+  public final String eEt()
   {
     return "8003";
   }
   
-  public final String dLw()
+  public final String eEu()
   {
-    AppMethodBeat.i(203549);
-    Object localObject = this.zDU;
-    if (localObject != null) {}
-    for (localObject = Integer.valueOf(((bcz)localObject).SOa);; localObject = null)
+    AppMethodBeat.i(340899);
+    Object localObject = this.EIq;
+    if (localObject == null) {}
+    for (localObject = null;; localObject = Integer.valueOf(((bnn)localObject).ZVZ))
     {
-      String str = String.valueOf(localObject);
-      localObject = str;
-      if (str == null) {
-        localObject = "";
+      localObject = String.valueOf(localObject);
+      if (localObject != null) {
+        break;
       }
-      AppMethodBeat.o(203549);
+      AppMethodBeat.o(340899);
+      return "";
+    }
+    AppMethodBeat.o(340899);
+    return localObject;
+  }
+  
+  public final String eEw()
+  {
+    AppMethodBeat.i(340908);
+    StringBuilder localStringBuilder = new StringBuilder("112-");
+    Object localObject = this.EIq;
+    if (localObject == null) {}
+    for (localObject = "";; localObject = Integer.valueOf(((bnn)localObject).ZVZ))
+    {
+      localObject = localObject;
+      AppMethodBeat.o(340908);
       return localObject;
     }
   }
   
-  public final int duR()
+  public final int edC()
   {
     return 3;
   }
@@ -118,81 +104,75 @@ public final class NearbyLiveLocalCityFragment
   
   public final Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(203535);
-    Set localSet = ak.setOf(new Class[] { aj.class, c.class });
-    AppMethodBeat.o(203535);
+    AppMethodBeat.i(340836);
+    Set localSet = ar.setOf(new Class[] { as.class, c.class });
+    AppMethodBeat.o(340836);
     return localSet;
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(203543);
+    AppMethodBeat.i(340864);
     super.onDestroy();
-    com.tencent.mm.plugin.finder.nearby.live.report.a locala = com.tencent.mm.plugin.finder.nearby.live.report.a.zGc;
+    com.tencent.mm.plugin.finder.nearby.live.report.a locala = com.tencent.mm.plugin.finder.nearby.live.report.a.ELu;
     com.tencent.mm.plugin.finder.nearby.live.report.a.reset();
-    AppMethodBeat.o(203543);
+    AppMethodBeat.o(340864);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(203539);
+    AppMethodBeat.i(340849);
     super.onPause();
-    if (getActivity() != null)
-    {
-      locala = com.tencent.mm.plugin.finder.nearby.live.report.a.zGc;
-      com.tencent.mm.plugin.finder.nearby.live.report.a.c((AbsNearByFragment)this);
+    if (getActivity() != null) {
+      com.tencent.mm.plugin.finder.nearby.live.report.a.ELu.c((AbsNearByFragment)this);
     }
-    com.tencent.mm.plugin.finder.nearby.live.report.a locala = com.tencent.mm.plugin.finder.nearby.live.report.a.zGc;
+    com.tencent.mm.plugin.finder.nearby.live.report.a locala = com.tencent.mm.plugin.finder.nearby.live.report.a.ELu;
     com.tencent.mm.plugin.finder.nearby.live.report.a.onPause();
-    AppMethodBeat.o(203539);
+    AppMethodBeat.o(340849);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(203538);
+    AppMethodBeat.i(340841);
     super.onResume();
-    if ((!this.zEs) && (getActivity() != null))
-    {
-      locala = com.tencent.mm.plugin.finder.nearby.live.report.a.zGc;
-      com.tencent.mm.plugin.finder.nearby.live.report.a.b((AbsNearByFragment)this);
+    if ((!this.isFirstOnResume) && (getActivity() != null)) {
+      com.tencent.mm.plugin.finder.nearby.live.report.a.ELu.b((AbsNearByFragment)this);
     }
-    this.zEs = false;
-    com.tencent.mm.plugin.finder.nearby.live.report.a locala = com.tencent.mm.plugin.finder.nearby.live.report.a.zGc;
+    this.isFirstOnResume = false;
+    com.tencent.mm.plugin.finder.nearby.live.report.a locala = com.tencent.mm.plugin.finder.nearby.live.report.a.ELu;
     com.tencent.mm.plugin.finder.nearby.live.report.a.onResume();
-    AppMethodBeat.o(203538);
+    AppMethodBeat.o(340841);
   }
   
   public final void onUserVisibleFocused()
   {
-    AppMethodBeat.i(203540);
+    AppMethodBeat.i(340853);
     super.onUserVisibleFocused();
-    if (this.zDU == null)
+    if (this.EIq == null)
     {
-      this.zDU = new bcz();
-      localObject = this.zDU;
+      this.EIq = new bnn();
+      localObject = this.EIq;
       if (localObject != null) {
-        ((bcz)localObject).SOa = 88889;
+        ((bnn)localObject).ZVZ = 88889;
       }
-      localObject = "8003" + "-" + cm.bfE();
-      com.tencent.mm.plugin.finder.nearby.live.report.a locala = com.tencent.mm.plugin.finder.nearby.live.report.a.zGc;
-      com.tencent.mm.plugin.finder.nearby.live.report.a.a(e.zJs.agX(), (AbsNearByFragment)this, (String)localObject);
+      localObject = "8003" + '-' + cn.bDw();
+      com.tencent.mm.plugin.finder.nearby.live.report.a locala = com.tencent.mm.plugin.finder.nearby.live.report.a.ELu;
+      com.tencent.mm.plugin.finder.nearby.live.report.a.a(g.ERj.eeL(), (AbsNearByFragment)this, (String)localObject);
     }
-    Object localObject = e.zJs;
-    e.d((AbsNearByFragment)this);
-    localObject = com.tencent.mm.plugin.finder.nearby.live.report.a.zGc;
-    com.tencent.mm.plugin.finder.nearby.live.report.a.b((AbsNearByFragment)this);
-    AppMethodBeat.o(203540);
+    Object localObject = g.ERj;
+    g.d((AbsNearByFragment)this);
+    com.tencent.mm.plugin.finder.nearby.live.report.a.ELu.b((AbsNearByFragment)this);
+    AppMethodBeat.o(340853);
   }
   
   public final void onUserVisibleUnFocused()
   {
-    AppMethodBeat.i(203542);
+    AppMethodBeat.i(340857);
     super.onUserVisibleUnFocused();
-    Object localObject = e.zJs;
-    e.e((AbsNearByFragment)this);
-    localObject = com.tencent.mm.plugin.finder.nearby.live.report.a.zGc;
-    com.tencent.mm.plugin.finder.nearby.live.report.a.c((AbsNearByFragment)this);
-    AppMethodBeat.o(203542);
+    g localg = g.ERj;
+    g.e((AbsNearByFragment)this);
+    com.tencent.mm.plugin.finder.nearby.live.report.a.ELu.c((AbsNearByFragment)this);
+    AppMethodBeat.o(340857);
   }
 }
 

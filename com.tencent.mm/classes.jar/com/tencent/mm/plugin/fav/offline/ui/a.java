@@ -10,19 +10,20 @@ import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.sdk.platformtools.ImgUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.ah;
+import com.tencent.mm.vfs.u;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class a
 {
+  private com.tencent.mm.plugin.fav.offline.b.a Afs;
   private Context context;
-  private com.tencent.mm.plugin.fav.offline.b.a wIX;
   
   public a(Context paramContext, com.tencent.mm.plugin.fav.offline.b.a parama)
   {
     this.context = paramContext;
-    this.wIX = parama;
+    this.Afs = parama;
   }
   
   @android.webkit.JavascriptInterface
@@ -30,35 +31,35 @@ public final class a
   public final void doImgPreview(String paramString)
   {
     AppMethodBeat.i(73574);
-    Object localObject1 = new q(Uri.parse(paramString));
-    if (!((q)localObject1).ifE())
+    Object localObject1 = new u(Uri.parse(paramString));
+    if (!((u)localObject1).jKS())
     {
       Log.i("MicroMsg.offline.FavOfflineJavaObj", "doImgPreview() currentPath:%s no exist", new Object[] { paramString });
       AppMethodBeat.o(73574);
       return;
     }
-    if (ImgUtil.isGif(((q)localObject1).getPath()))
+    if (ImgUtil.isGif(ah.v(((u)localObject1).mUri)))
     {
       Log.d("MicroMsg.offline.FavOfflineJavaObj", "doImgPreview() currentPath:%s is a gif", new Object[] { paramString });
       AppMethodBeat.o(73574);
       return;
     }
     Log.i("MicroMsg.offline.FavOfflineJavaObj", "doImgPreview() currentPath:%s", new Object[] { paramString });
-    Object localObject2 = Util.stringToList(this.wIX.field_imgPaths, ",");
+    Object localObject2 = Util.stringToList(this.Afs.field_imgPaths, ",");
     ArrayList localArrayList = new ArrayList();
     int j = 0;
     int k = 0;
     int i = 0;
     if (j < ((List)localObject2).size())
     {
-      String str = this.wIX.field_imgDirPath + "/" + (String)((List)localObject2).get(j);
+      String str = this.Afs.field_imgDirPath + "/" + (String)((List)localObject2).get(j);
       int m = k;
       int n = i;
       if (!ImgUtil.isGif(str))
       {
         localArrayList.add(str);
         if ((k != 0) || (Util.isNullOrNil(paramString)) || (!paramString.endsWith((String)((List)localObject2).get(j)))) {
-          break label249;
+          break label252;
         }
         m = 1;
         n = i;
@@ -69,7 +70,7 @@ public final class a
         k = m;
         i = n;
         break;
-        label249:
+        label252:
         m = k;
         n = i;
         if (k == 0)
@@ -86,7 +87,7 @@ public final class a
     while (i < localArrayList.size())
     {
       localObject2[i] = ((String)localArrayList.get(i));
-      if (Util.isEqual((String)localArrayList.get(i), ((q)localObject1).getName())) {
+      if (Util.isEqual((String)localArrayList.get(i), ((u)localObject1).getName())) {
         j = i;
       }
       i += 1;
@@ -106,7 +107,7 @@ public final class a
     paramString.putInt("stat_scene", 4);
     paramString.putString("stat_url", "");
     ((Intent)localObject1).putExtra("_stat_obj", paramString);
-    com.tencent.mm.plugin.webview.a.a.mIG.o((Intent)localObject1, this.context);
+    com.tencent.mm.plugin.webview.a.a.pFn.o((Intent)localObject1, this.context);
     AppMethodBeat.o(73574);
   }
 }

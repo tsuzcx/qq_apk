@@ -2,8 +2,6 @@ package com.google.android.gms.auth;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -27,9 +25,7 @@ public class zzg
   public static final int CHANGE_TYPE_ACCOUNT_RENAMED_FROM = 3;
   public static final int CHANGE_TYPE_ACCOUNT_RENAMED_TO = 4;
   public static final String GOOGLE_ACCOUNT_TYPE = "com.google";
-  @SuppressLint({"InlinedApi"})
   public static final String KEY_ANDROID_PACKAGE_NAME;
-  @SuppressLint({"InlinedApi"})
   public static final String KEY_CALLER_UID;
   public static final String KEY_SUPPRESS_PROGRESS_SCREEN = "suppressProgressScreen";
   public static final String WORK_ACCOUNT_TYPE = "com.google.work";
@@ -152,7 +148,6 @@ public class zzg
     AppMethodBeat.o(10721);
   }
   
-  @TargetApi(23)
   public static Bundle removeAccount(Context paramContext, Account paramAccount)
   {
     AppMethodBeat.i(10725);
@@ -165,7 +160,6 @@ public class zzg
     return paramContext;
   }
   
-  @TargetApi(26)
   public static Boolean requestGoogleAccountsAccess(Context paramContext)
   {
     AppMethodBeat.i(10726);
@@ -182,75 +176,75 @@ public class zzg
   {
     // Byte code:
     //   0: sipush 10730
-    //   3: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 252	com/google/android/gms/common/BlockingServiceConnection
+    //   3: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: new 245	com/google/android/gms/common/BlockingServiceConnection
     //   9: dup
-    //   10: invokespecial 253	com/google/android/gms/common/BlockingServiceConnection:<init>	()V
+    //   10: invokespecial 246	com/google/android/gms/common/BlockingServiceConnection:<init>	()V
     //   13: astore_3
     //   14: aload_0
-    //   15: invokestatic 259	com/google/android/gms/common/internal/GmsClientSupervisor:getInstance	(Landroid/content/Context;)Lcom/google/android/gms/common/internal/GmsClientSupervisor;
+    //   15: invokestatic 252	com/google/android/gms/common/internal/GmsClientSupervisor:getInstance	(Landroid/content/Context;)Lcom/google/android/gms/common/internal/GmsClientSupervisor;
     //   18: astore 4
     //   20: aload 4
     //   22: aload_1
     //   23: aload_3
-    //   24: ldc 74
-    //   26: invokevirtual 263	com/google/android/gms/common/internal/GmsClientSupervisor:bindService	(Landroid/content/ComponentName;Landroid/content/ServiceConnection;Ljava/lang/String;)Z
+    //   24: ldc 71
+    //   26: invokevirtual 256	com/google/android/gms/common/internal/GmsClientSupervisor:bindService	(Landroid/content/ComponentName;Landroid/content/ServiceConnection;Ljava/lang/String;)Z
     //   29: ifeq +92 -> 121
     //   32: aload_2
     //   33: aload_3
-    //   34: invokevirtual 267	com/google/android/gms/common/BlockingServiceConnection:getService	()Landroid/os/IBinder;
-    //   37: invokeinterface 272 2 0
+    //   34: invokevirtual 260	com/google/android/gms/common/BlockingServiceConnection:getService	()Landroid/os/IBinder;
+    //   37: invokeinterface 265 2 0
     //   42: astore_0
     //   43: aload 4
     //   45: aload_1
     //   46: aload_3
-    //   47: ldc 74
-    //   49: invokevirtual 276	com/google/android/gms/common/internal/GmsClientSupervisor:unbindService	(Landroid/content/ComponentName;Landroid/content/ServiceConnection;Ljava/lang/String;)V
+    //   47: ldc 71
+    //   49: invokevirtual 269	com/google/android/gms/common/internal/GmsClientSupervisor:unbindService	(Landroid/content/ComponentName;Landroid/content/ServiceConnection;Ljava/lang/String;)V
     //   52: sipush 10730
-    //   55: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   55: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   58: aload_0
     //   59: areturn
     //   60: astore_0
-    //   61: getstatic 79	com/google/android/gms/auth/zzg:zzq	Lcom/google/android/gms/common/logging/Logger;
-    //   64: ldc 74
+    //   61: getstatic 76	com/google/android/gms/auth/zzg:zzq	Lcom/google/android/gms/common/logging/Logger;
+    //   64: ldc 71
     //   66: iconst_2
     //   67: anewarray 4	java/lang/Object
     //   70: dup
     //   71: iconst_0
-    //   72: ldc_w 278
+    //   72: ldc_w 271
     //   75: aastore
     //   76: dup
     //   77: iconst_1
     //   78: aload_0
     //   79: aastore
-    //   80: invokevirtual 281	com/google/android/gms/common/logging/Logger:i	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   83: new 283	java/io/IOException
+    //   80: invokevirtual 274	com/google/android/gms/common/logging/Logger:i	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   83: new 276	java/io/IOException
     //   86: dup
-    //   87: ldc_w 278
+    //   87: ldc_w 271
     //   90: aload_0
-    //   91: invokespecial 286	java/io/IOException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   91: invokespecial 279	java/io/IOException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   94: astore_0
     //   95: sipush 10730
-    //   98: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   98: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   101: aload_0
     //   102: athrow
     //   103: astore_0
     //   104: aload 4
     //   106: aload_1
     //   107: aload_3
-    //   108: ldc 74
-    //   110: invokevirtual 276	com/google/android/gms/common/internal/GmsClientSupervisor:unbindService	(Landroid/content/ComponentName;Landroid/content/ServiceConnection;Ljava/lang/String;)V
+    //   108: ldc 71
+    //   110: invokevirtual 269	com/google/android/gms/common/internal/GmsClientSupervisor:unbindService	(Landroid/content/ComponentName;Landroid/content/ServiceConnection;Ljava/lang/String;)V
     //   113: sipush 10730
-    //   116: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   116: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   119: aload_0
     //   120: athrow
-    //   121: new 283	java/io/IOException
+    //   121: new 276	java/io/IOException
     //   124: dup
-    //   125: ldc_w 288
-    //   128: invokespecial 289	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   125: ldc_w 281
+    //   128: invokespecial 282	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   131: astore_0
     //   132: sipush 10730
-    //   135: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   135: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   138: aload_0
     //   139: athrow
     //   140: astore_0
@@ -341,7 +335,7 @@ public class zzg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.zzg
  * JD-Core Version:    0.7.0.1
  */

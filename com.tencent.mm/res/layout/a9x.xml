@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.finder.view.FinderTouchLayout android:id="@id/b9l" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+<LinearLayout android:orientation="vertical" android:background="@drawable/a4r" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/c8l" android:background="@color/BW_0_Alpha_0_1_Night_Mode" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cp" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/f76" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/a27" android:layout_width="@dimen/d_" android:layout_height="@dimen/d_" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="12.0dip" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginBottom="12.0dip" android:layout_marginEnd="@dimen/cp">
+            <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/kpp" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginEnd="@dimen/bv">
+                    <TextView android:textColor="@color/BW_0_Alpha_0_9_Night_Mode" android:ellipsize="end" android:id="@id/kpx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:maxLines="1" android:includeFontPadding="false" style="@style/ma" />
+                    <ImageView android:layout_gravity="center_vertical" android:id="@id/a0h" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:scaleType="centerCrop" android:layout_marginStart="@dimen/bv" />
+                    <com.tencent.mm.plugin.finder.view.FinderLiveOnliveWidget android:id="@id/dve" android:paddingLeft="@dimen/bv" android:paddingRight="@dimen/bv" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="18.0dip" android:layout_marginStart="@dimen/bv" app:logo_mode="hmc" app:logo_style="f3g" />
+                </LinearLayout>
+                <TextView android:textSize="@dimen/m3" android:textColor="@color/BW_100_Alpha_0_3" android:layout_gravity="center_vertical" android:id="@id/ed1" android:padding="@dimen/bv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fjg" android:singleLine="true" android:includeFontPadding="false" style="@style/ma" />
+            </LinearLayout>
+            <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_5" android:id="@id/i4d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="{profession}" android:singleLine="true" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ecg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip">
+                <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_5" android:id="@id/c24" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/j6" android:text="{desc_1}" android:singleLine="true" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_5" android:id="@id/c25" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:layout_marginRight="@dimen/j6" android:text="{desc_2}" android:singleLine="true" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

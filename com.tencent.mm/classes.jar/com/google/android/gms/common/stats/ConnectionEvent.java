@@ -3,40 +3,22 @@ package com.google.android.gms.common.stats;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import javax.annotation.Nullable;
 
-@SafeParcelable.Class(creator="ConnectionEventCreator")
 public final class ConnectionEvent
   extends StatsEvent
 {
   public static final Parcelable.Creator<ConnectionEvent> CREATOR;
-  @SafeParcelable.VersionField(id=1)
   private final int zzal;
-  @SafeParcelable.Field(getter="getTimeMillis", id=2)
   private final long zzxv;
-  @SafeParcelable.Field(getter="getEventType", id=12)
   private int zzxw;
-  @SafeParcelable.Field(getter="getCallingProcess", id=4)
   private final String zzxx;
-  @SafeParcelable.Field(getter="getCallingService", id=5)
   private final String zzxy;
-  @SafeParcelable.Field(getter="getTargetProcess", id=6)
   private final String zzxz;
-  @SafeParcelable.Field(getter="getTargetService", id=7)
   private final String zzya;
-  @SafeParcelable.Field(getter="getStackTrace", id=8)
   private final String zzyb;
-  @SafeParcelable.Field(getter="getEventKey", id=13)
   private final String zzyc;
-  @SafeParcelable.Field(getter="getElapsedRealtime", id=10)
   private final long zzyd;
-  @SafeParcelable.Field(getter="getHeapAlloc", id=11)
   private final long zzye;
   private long zzyf;
   
@@ -47,8 +29,7 @@ public final class ConnectionEvent
     AppMethodBeat.o(4971);
   }
   
-  @SafeParcelable.Constructor
-  ConnectionEvent(@SafeParcelable.Param(id=1) int paramInt1, @SafeParcelable.Param(id=2) long paramLong1, @SafeParcelable.Param(id=12) int paramInt2, @SafeParcelable.Param(id=4) String paramString1, @SafeParcelable.Param(id=5) String paramString2, @SafeParcelable.Param(id=6) String paramString3, @SafeParcelable.Param(id=7) String paramString4, @SafeParcelable.Param(id=8) String paramString5, @SafeParcelable.Param(id=13) String paramString6, @SafeParcelable.Param(id=10) long paramLong2, @SafeParcelable.Param(id=11) long paramLong3)
+  ConnectionEvent(int paramInt1, long paramLong1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, long paramLong2, long paramLong3)
   {
     this.zzal = paramInt1;
     this.zzxv = paramLong1;
@@ -154,7 +135,6 @@ public final class ConnectionEvent
     }
   }
   
-  @Nullable
   public final String getStackTrace()
   {
     return this.zzyb;
@@ -219,7 +199,7 @@ public final class ConnectionEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.stats.ConnectionEvent
  * JD-Core Version:    0.7.0.1
  */

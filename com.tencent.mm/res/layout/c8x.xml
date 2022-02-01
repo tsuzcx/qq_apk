@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:paddingTop="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/hc" android:textColor="@color/a2g" android:ellipsize="end" android:id="@id/ipm" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:maxLines="2" android:layout_weight="0.6" />
-    <TextView android:textSize="@dimen/hc" android:textColor="@color/a2g" android:ellipsize="end" android:gravity="right" android:id="@id/idt" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:maxLines="2" android:layout_weight="0.4" />
-</LinearLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/BW_100_Alpha_0_5" android:gravity="center|left|top" android:id="@id/ko8" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/d0" android:layout_marginTop="@dimen/cp" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <FrameLayout android:id="@id/bqz" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cr" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toBottomOf="@id/ko8" />
+</androidx.constraintlayout.widget.ConstraintLayout>

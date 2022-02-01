@@ -1,103 +1,197 @@
 package com.tencent.mm.plugin.collect.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.wallet_core.tenpay.model.m;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import i.a.a.b;
 
-public final class t
-  extends m
+public class t
+  extends com.tencent.mm.bx.a
 {
-  public int fDi;
-  private int limit;
-  public boolean lwF;
-  public List<a> tVI;
-  public long tVc;
-  public int tVd;
-  public int type;
+  public String displayName;
+  public int fZW;
+  public String hAU;
+  public String hCH;
+  public int msgType;
+  public int scene;
+  public int status;
+  public String type;
+  public String username;
+  public double wZe;
+  public String wZg;
   
-  public t(int paramInt1, long paramLong, String paramString, int paramInt2)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(63846);
-    this.tVI = new ArrayList();
-    this.lwF = false;
-    this.limit = paramInt2;
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("type", String.valueOf(paramInt1));
-    localHashMap.put("from_timestamp", String.valueOf(paramLong));
-    localHashMap.put("last_bill_id", paramString);
-    localHashMap.put("num", String.valueOf(paramInt2));
-    setRequestData(localHashMap);
-    AppMethodBeat.o(63846);
-  }
-  
-  public final int getFuncId()
-  {
-    return 1963;
-  }
-  
-  public final int getTenpayCgicmd()
-  {
-    return 0;
-  }
-  
-  public final String getUri()
-  {
-    return "/cgi-bin/mmpay-bin/f2frcvdlist";
-  }
-  
-  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(63847);
-    this.tVd = paramJSONObject.optInt("total_num");
-    this.fDi = paramJSONObject.optInt("total_amt");
-    this.tVc = paramJSONObject.optLong("from_timestamp", 0L);
-    this.type = paramJSONObject.optInt("type", 0);
-    paramString = paramJSONObject.optJSONArray("records");
-    if ((paramString == null) || (paramString.length() <= 0))
+    AppMethodBeat.i(91250);
+    if (paramInt == 0)
     {
-      Log.i("MicroMsg.NetSceneTenpayF2fRecordList", "empty records");
-      if (this.tVI.size() < this.limit)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.username == null)
       {
-        Log.i("MicroMsg.NetSceneTenpayF2fRecordList", "finish query");
-        this.lwF = true;
+        paramVarArgs = new b("Not all required fields were included: username");
+        AppMethodBeat.o(91250);
+        throw paramVarArgs;
       }
-      AppMethodBeat.o(63847);
-      return;
+      if (this.hAU == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: transactionId");
+        AppMethodBeat.o(91250);
+        throw paramVarArgs;
+      }
+      if (this.hCH == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: feeType");
+        AppMethodBeat.o(91250);
+        throw paramVarArgs;
+      }
+      if (this.username != null) {
+        paramVarArgs.g(1, this.username);
+      }
+      if (this.hAU != null) {
+        paramVarArgs.g(2, this.hAU);
+      }
+      paramVarArgs.d(3, this.wZe);
+      if (this.hCH != null) {
+        paramVarArgs.g(4, this.hCH);
+      }
+      paramVarArgs.bS(5, this.fZW);
+      paramVarArgs.bS(6, this.scene);
+      paramVarArgs.bS(7, this.status);
+      if (this.displayName != null) {
+        paramVarArgs.g(8, this.displayName);
+      }
+      if (this.wZg != null) {
+        paramVarArgs.g(9, this.wZg);
+      }
+      paramVarArgs.bS(10, this.msgType);
+      if (this.type != null) {
+        paramVarArgs.g(11, this.type);
+      }
+      AppMethodBeat.o(91250);
+      return 0;
     }
-    paramInt = 0;
-    while (paramInt < paramString.length()) {
-      try
-      {
-        paramJSONObject = paramString.getJSONObject(paramInt);
-        a locala = new a();
-        locala.tUB = paramJSONObject.optString("bill_id");
-        locala.tUC = paramJSONObject.optString("trans_id");
-        locala.timestamp = paramJSONObject.optLong("timestamp", 0L);
-        locala.desc = paramJSONObject.optString("desc");
-        locala.fee = paramJSONObject.optInt("fee", 0);
-        this.tVI.add(locala);
-        paramInt += 1;
+    if (paramInt == 1) {
+      if (this.username == null) {
+        break label885;
       }
-      catch (JSONException paramJSONObject)
+    }
+    label885:
+    for (paramInt = i.a.a.b.b.a.h(1, this.username) + 0;; paramInt = 0)
+    {
+      int i = paramInt;
+      if (this.hAU != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.hAU);
+      }
+      i += i.a.a.b.b.a.ko(3) + 8;
+      paramInt = i;
+      if (this.hCH != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.hCH);
+      }
+      i = paramInt + i.a.a.b.b.a.cJ(5, this.fZW) + i.a.a.b.b.a.cJ(6, this.scene) + i.a.a.b.b.a.cJ(7, this.status);
+      paramInt = i;
+      if (this.displayName != null) {
+        paramInt = i + i.a.a.b.b.a.h(8, this.displayName);
+      }
+      i = paramInt;
+      if (this.wZg != null) {
+        i = paramInt + i.a.a.b.b.a.h(9, this.wZg);
+      }
+      i += i.a.a.b.b.a.cJ(10, this.msgType);
+      paramInt = i;
+      if (this.type != null) {
+        paramInt = i + i.a.a.b.b.a.h(11, this.type);
+      }
+      AppMethodBeat.o(91250);
+      return paramInt;
+      if (paramInt == 2)
       {
-        for (;;)
-        {
-          Log.printErrStackTrace("MicroMsg.NetSceneTenpayF2fRecordList", paramJSONObject, "", new Object[0]);
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
         }
+        if (this.username == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: username");
+          AppMethodBeat.o(91250);
+          throw paramVarArgs;
+        }
+        if (this.hAU == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: transactionId");
+          AppMethodBeat.o(91250);
+          throw paramVarArgs;
+        }
+        if (this.hCH == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: feeType");
+          AppMethodBeat.o(91250);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(91250);
+        return 0;
       }
+      if (paramInt == 3)
+      {
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+        t localt = (t)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(91250);
+          return -1;
+        case 1: 
+          localt.username = locala.ajGk.readString();
+          AppMethodBeat.o(91250);
+          return 0;
+        case 2: 
+          localt.hAU = locala.ajGk.readString();
+          AppMethodBeat.o(91250);
+          return 0;
+        case 3: 
+          localt.wZe = Double.longBitsToDouble(locala.ajGk.aay());
+          AppMethodBeat.o(91250);
+          return 0;
+        case 4: 
+          localt.hCH = locala.ajGk.readString();
+          AppMethodBeat.o(91250);
+          return 0;
+        case 5: 
+          localt.fZW = locala.ajGk.aar();
+          AppMethodBeat.o(91250);
+          return 0;
+        case 6: 
+          localt.scene = locala.ajGk.aar();
+          AppMethodBeat.o(91250);
+          return 0;
+        case 7: 
+          localt.status = locala.ajGk.aar();
+          AppMethodBeat.o(91250);
+          return 0;
+        case 8: 
+          localt.displayName = locala.ajGk.readString();
+          AppMethodBeat.o(91250);
+          return 0;
+        case 9: 
+          localt.wZg = locala.ajGk.readString();
+          AppMethodBeat.o(91250);
+          return 0;
+        case 10: 
+          localt.msgType = locala.ajGk.aar();
+          AppMethodBeat.o(91250);
+          return 0;
+        }
+        localt.type = locala.ajGk.readString();
+        AppMethodBeat.o(91250);
+        return 0;
+      }
+      AppMethodBeat.o(91250);
+      return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.t
  * JD-Core Version:    0.7.0.1
  */

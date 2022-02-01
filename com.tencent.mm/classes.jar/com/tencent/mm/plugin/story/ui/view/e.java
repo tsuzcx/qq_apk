@@ -6,10 +6,10 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.particles.a.b;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/view/CommentTipSmallConfetti;", "Lcom/tencent/mm/particles/confetti/Confetti;", "bitmap", "Landroid/graphics/Bitmap;", "(Landroid/graphics/Bitmap;)V", "TAG", "", "getBitmap", "()Landroid/graphics/Bitmap;", "centerX", "", "centerY", "drawInternal", "", "canvas", "Landroid/graphics/Canvas;", "matrix", "Landroid/graphics/Matrix;", "paint", "Landroid/graphics/Paint;", "x", "", "y", "rotation", "percentAnimated", "getHeight", "getWidth", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/ui/view/CommentTipSmallConfetti;", "Lcom/tencent/mm/particles/confetti/Confetti;", "bitmap", "Landroid/graphics/Bitmap;", "(Landroid/graphics/Bitmap;)V", "TAG", "", "getBitmap", "()Landroid/graphics/Bitmap;", "centerX", "", "centerY", "drawInternal", "", "canvas", "Landroid/graphics/Canvas;", "matrix", "Landroid/graphics/Matrix;", "paint", "Landroid/graphics/Paint;", "x", "", "y", "rotation", "percentAnimated", "getHeight", "getWidth", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
   extends b
 {
@@ -32,9 +32,9 @@ public final class e
   {
     paramFloat3 = 1.0F;
     AppMethodBeat.i(120045);
-    p.k(paramCanvas, "canvas");
-    p.k(paramMatrix, "matrix");
-    p.k(paramPaint, "paint");
+    s.u(paramCanvas, "canvas");
+    s.u(paramMatrix, "matrix");
+    s.u(paramPaint, "paint");
     float f = Math.max(1.0F - paramFloat4, 0.5F);
     if (paramFloat4 < 0.3F) {
       paramFloat3 = paramFloat4 / 0.3F;
@@ -73,7 +73,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,115 +1,169 @@
 package com.tencent.mm.plugin.webwx.ui;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.text.TextPaint;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.a;
 import com.tencent.mm.R.e;
-import com.tencent.mm.R.f;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
 import com.tencent.mm.R.k;
 import com.tencent.mm.R.l;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.f.a.acb;
-import com.tencent.mm.f.a.ni;
-import com.tencent.mm.f.a.ni.a;
-import com.tencent.mm.f.a.nj;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.app.f;
+import com.tencent.mm.autogen.a.ady;
+import com.tencent.mm.autogen.a.op;
+import com.tencent.mm.autogen.a.op.a;
+import com.tencent.mm.autogen.a.oq;
+import com.tencent.mm.autogen.a.oq.a;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
-import com.tencent.mm.plugin.webwx.a.e;
-import com.tencent.mm.protocal.protobuf.alz;
-import com.tencent.mm.protocal.protobuf.bmy;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.plugin.secdata.ui.MMSecDataActivity;
+import com.tencent.mm.plugin.webwx.model.e;
+import com.tencent.mm.protocal.protobuf.apk;
+import com.tencent.mm.protocal.protobuf.cas;
 import com.tencent.mm.sdk.event.IListener;
-import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.component.UIComponent;
+import java.util.HashSet;
 
 @com.tencent.mm.ui.base.a(3)
 public class ExtDeviceWXLoginUI
-  extends MMActivity
-  implements i
+  extends MMSecDataActivity
+  implements h
 {
-  private ProgressDialog Apv;
-  private boolean Ecm;
-  private String Ecp;
-  private int QEc;
-  private int QEd;
-  private boolean QEe;
-  private Button QEf;
-  private TextView QEg;
-  private ImageView QEh;
-  private String QEi;
-  private String QEj;
-  private IListener<acb> QEk;
-  private boolean fLM;
-  private String fTQ;
-  private int lZJ;
+  private ProgressDialog FPA;
+  private boolean JTq;
+  private String JTu;
+  private String KQa;
+  private String XwU;
+  private int XwV;
+  private int XwW;
+  private boolean XwX;
+  private Button XwY;
+  private TextView XwZ;
+  private String Xxa;
+  private int Xxb;
+  private String Xxc;
+  private TextView Xxd;
+  private TextView Xxe;
+  private TextView Xxf;
+  private RelativeLayout Xxg;
+  private CheckBox Xxh;
+  private RelativeLayout Xxi;
+  private CheckBox Xxj;
+  private IListener<ady> Xxk;
+  private boolean hRu;
+  private String hZO;
+  private int qvo;
   private int type;
   
   public ExtDeviceWXLoginUI()
   {
-    AppMethodBeat.i(291912);
+    AppMethodBeat.i(265347);
     this.type = 0;
-    this.fTQ = null;
-    this.Ecp = null;
-    this.Apv = null;
-    this.QEe = false;
-    this.Ecm = false;
-    this.fLM = false;
-    this.QEi = "";
-    this.lZJ = 0;
-    this.QEj = "";
-    this.QEk = new IListener() {};
-    AppMethodBeat.o(291912);
+    this.hZO = null;
+    this.XwU = null;
+    this.JTu = null;
+    this.FPA = null;
+    this.XwX = false;
+    this.JTq = false;
+    this.hRu = false;
+    this.Xxa = "";
+    this.Xxb = 0;
+    this.qvo = 0;
+    this.KQa = "";
+    this.Xxk = new ExtDeviceWXLoginUI.10(this, f.hfK);
+    AppMethodBeat.o(265347);
   }
   
-  private boolean Dz(boolean paramBoolean)
+  private boolean X(int paramInt1, int paramInt2, String paramString)
   {
-    AppMethodBeat.i(291914);
-    final e locale = new e(this.fTQ, this.Ecp, paramBoolean);
-    bh.aGY().a(locale, 0);
-    this.Apv = h.a(getContext(), getString(R.l.loading_tips), true, new DialogInterface.OnCancelListener()
+    AppMethodBeat.i(265363);
+    int k = paramInt1 / com.tencent.mm.cd.a.fromDPToPix(this, paramInt2);
+    int m = this.Xxe.getMeasuredWidth();
+    int j;
+    int i;
+    if (this.Xxf.getVisibility() == 0)
+    {
+      j = (int)this.Xxf.getPaint().measureText(paramString);
+      if (m > 0)
+      {
+        i = j / m + 0;
+        paramInt1 = i;
+        if (j % m <= 0) {}
+      }
+    }
+    for (paramInt1 = i + 1;; paramInt1 = 0)
+    {
+      if (this.Xxe.getVisibility() == 0)
+      {
+        int n = (int)this.Xxe.getPaint().measureText(paramString);
+        if (m > 0)
+        {
+          j = n / m + 0;
+          i = j;
+          if (n % m <= 0) {}
+        }
+      }
+      for (i = j + 1;; i = 0)
+      {
+        if (paramInt1 + i > k)
+        {
+          AppMethodBeat.o(265363);
+          return false;
+        }
+        paramInt1 = com.tencent.mm.cd.a.fromDPToPix(this, paramInt2);
+        this.Xxf.setTextSize(0, paramInt1);
+        this.Xxe.setTextSize(0, paramInt1);
+        AppMethodBeat.o(265363);
+        return true;
+      }
+    }
+  }
+  
+  private boolean bE(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(265351);
+    Log.i("MicroMsg.ExtDeviceWXLoginUI", "doDeviceWXLogin synchronize:%s, autoLogin:%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
+    final e locale = new e(this.hZO, this.JTu, paramBoolean1, paramBoolean2);
+    bh.aZW().a(locale, 0);
+    this.FPA = k.a(getContext(), getString(R.l.loading_tips), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
-        AppMethodBeat.i(30200);
-        bh.aGY().a(locale);
-        if (ExtDeviceWXLoginUI.i(ExtDeviceWXLoginUI.this) != null) {
-          ExtDeviceWXLoginUI.i(ExtDeviceWXLoginUI.this).cancel();
+        AppMethodBeat.i(265340);
+        bh.aZW().a(locale);
+        if (ExtDeviceWXLoginUI.k(ExtDeviceWXLoginUI.this) != null) {
+          ExtDeviceWXLoginUI.k(ExtDeviceWXLoginUI.this).cancel();
         }
-        AppMethodBeat.o(30200);
+        AppMethodBeat.o(265340);
       }
     });
-    AppMethodBeat.o(291914);
+    AppMethodBeat.o(265351);
     return true;
   }
   
@@ -123,232 +177,242 @@ public class ExtDeviceWXLoginUI
   
   public int getLayoutId()
   {
-    return R.i.efR;
+    return R.i.giQ;
   }
   
   public void initView()
   {
     AppMethodBeat.i(30204);
-    this.fTQ = getIntent().getStringExtra("intent.key.login.url");
+    setMMTitle(null);
+    setBackBtn(new ExtDeviceWXLoginUI.1(this), R.k.actionbar_icon_close_black);
+    hideActionbarLine();
+    this.hZO = getIntent().getStringExtra("intent.key.login.url");
+    this.XwU = getIntent().getStringExtra("intent.key.auto.login.switch.tip.string");
     this.type = getIntent().getIntExtra("intent.key.type", 0);
     Object localObject2 = getIntent().getStringExtra("intent.key.title.string");
-    this.lZJ = getIntent().getIntExtra("intent.key.icon.type", 0);
+    this.qvo = getIntent().getIntExtra("intent.key.icon.type", 0);
     String str1 = getIntent().getStringExtra("intent.key.ok.string");
     String str2 = getIntent().getStringExtra("intent.key.cancel.string");
     Object localObject1 = getIntent().getStringExtra("intent.key.content.string");
-    this.Ecp = getIntent().getStringExtra("intent.key.ok.session.list");
-    this.QEc = getIntent().getIntExtra("intent.key.login.client.version", 0);
-    this.QEd = getIntent().getIntExtra("intent.key.function.control", 0);
-    this.QEj = getIntent().getStringExtra("intent.key.usage.link");
-    this.QEi = getIntent().getStringExtra("intent.key.spam.url");
-    Log.i("MicroMsg.ExtDeviceWXLoginUI", "type:%s title:%s ok:%s content:%s usage:%s iconType:%s", new Object[] { Integer.valueOf(this.type), localObject2, str1, localObject1, this.QEj, Integer.valueOf(this.lZJ) });
+    this.JTu = getIntent().getStringExtra("intent.key.ok.session.list");
+    this.XwV = getIntent().getIntExtra("intent.key.login.client.version", 0);
+    this.XwW = getIntent().getIntExtra("intent.key.function.control", 0);
+    this.KQa = getIntent().getStringExtra("intent.key.usage.link");
+    this.Xxa = getIntent().getStringExtra("intent.key.spam.url");
+    this.Xxb = getIntent().getIntExtra("intent.key.multi.device.tips.type", 0);
+    this.Xxc = getIntent().getStringExtra("intent.key.multi.device.tips.string");
+    Log.i("MicroMsg.ExtDeviceWXLoginUI", "type:%s title:%s ok:%s content:%s usage:%s iconType:%s multiDeviceTipsType:%s multiDeviceTipsStr:%s, funcCtrl:%s", new Object[] { Integer.valueOf(this.type), localObject2, str1, localObject1, this.KQa, Integer.valueOf(this.qvo), Integer.valueOf(this.Xxb), Util.secPrint(this.Xxc), Integer.valueOf(this.XwW) });
     setMMTitle("");
-    this.QEh = ((ImageView)findViewById(R.h.eaB));
+    this.Xxd = ((TextView)findViewById(R.h.fYg));
     if (!Util.isNullOrNil((String)localObject2)) {
-      ((TextView)findViewById(R.h.dVJ)).setText((CharSequence)localObject2);
+      this.Xxd.setText((CharSequence)localObject2);
     }
-    localObject2 = new ni();
-    EventCenter.instance.publish((IEvent)localObject2);
-    int i = ((ni)localObject2).fLF.fLG;
-    int j = ((ni)localObject2).fLF.fLH;
-    int k = ((ni)localObject2).fLF.fLI;
-    switch (this.lZJ)
+    localObject2 = new op();
+    ((op)localObject2).publish();
+    int i = ((op)localObject2).hRn.hRo;
+    int j = ((op)localObject2).hRn.hRp;
+    int k = ((op)localObject2).hRn.hRq;
+    boolean bool;
+    switch (this.qvo)
     {
     default: 
-      bh.beI();
-      com.tencent.mm.model.c.aHp().set(ar.a.VnB, Integer.valueOf(0));
-      if (!Util.isNullOrNil((String)localObject1))
+      bh.bCz();
+      com.tencent.mm.model.c.ban().set(at.a.acOW, Integer.valueOf(0));
+      this.Xxf = ((TextView)findViewById(R.h.fOP));
+      if ((this.Xxb != 0) && (Util.isNullOrNil(this.Xxc))) {
+        this.Xxb = 0;
+      }
+      this.Xxi = ((RelativeLayout)findViewById(R.h.fYA));
+      this.Xxj = ((CheckBox)findViewById(R.h.fYz));
+      if (i >= 0)
       {
-        ((CheckBox)findViewById(R.h.dVF)).setVisibility(8);
-        ((TextView)findViewById(R.h.dVE)).setVisibility(0);
-        ((TextView)findViewById(R.h.dVE)).setText((CharSequence)localObject1);
-        label421:
-        if (!Util.isNullOrNil(this.QEj))
+        if ((this.XwW & 0x1) <= 0) {
+          break;
+        }
+        bool = true;
+        label541:
+        Log.i("MicroMsg.ExtDeviceWXLoginUI", "msgsynchronize needCheckedSync[%b], iconType[%d]", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.qvo) });
+        if (((this.qvo == 1) && (this.XwV >= j)) || ((this.qvo == 2) && (this.XwV >= k)))
         {
-          this.QEh.setVisibility(0);
-          this.QEh.setOnClickListener(new View.OnClickListener()
+          this.JTq = true;
+          this.Xxi.setVisibility(0);
+          if (bool)
+          {
+            bh.bCz();
+            if (((Boolean)com.tencent.mm.model.c.ban().get(at.a.acOV, Boolean.TRUE)).booleanValue()) {
+              break label1036;
+            }
+          }
+          this.Xxj.setChecked(false);
+          label654:
+          this.Xxi.setOnClickListener(new ExtDeviceWXLoginUI.2(this));
+        }
+      }
+      this.Xxg = ((RelativeLayout)findViewById(R.h.fsu));
+      this.Xxh = ((CheckBox)findViewById(R.h.fss));
+      if ((this.XwW & 0x2) > 0)
+      {
+        this.Xxg.setVisibility(0);
+        if ((this.XwW & 0x4) > 0)
+        {
+          bool = true;
+          label726:
+          this.Xxh.setChecked(bool);
+          this.Xxg.setOnClickListener(new View.OnClickListener()
           {
             public final void onClick(View paramAnonymousView)
             {
-              AppMethodBeat.i(30195);
+              AppMethodBeat.i(30197);
               com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-              localb.bn(paramAnonymousView);
-              com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/webwx/ui/ExtDeviceWXLoginUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-              paramAnonymousView = new Intent();
-              if (ExtDeviceWXLoginUI.a(ExtDeviceWXLoginUI.this)) {
-                paramAnonymousView.putExtra("title", ExtDeviceWXLoginUI.this.getString(R.l.eVJ));
+              localb.cH(paramAnonymousView);
+              com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/webwx/ui/ExtDeviceWXLoginUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+              boolean bool;
+              if (ExtDeviceWXLoginUI.b(ExtDeviceWXLoginUI.this).isChecked())
+              {
+                paramAnonymousView = ExtDeviceWXLoginUI.b(ExtDeviceWXLoginUI.this);
+                if (!ExtDeviceWXLoginUI.b(ExtDeviceWXLoginUI.this).isChecked())
+                {
+                  bool = true;
+                  paramAnonymousView.setChecked(bool);
+                }
               }
-              paramAnonymousView.putExtra("rawUrl", ExtDeviceWXLoginUI.b(ExtDeviceWXLoginUI.this) + "&lang=" + LocaleUtil.getApplicationLanguage());
-              paramAnonymousView.putExtra("showShare", false);
-              paramAnonymousView.putExtra("neverGetA8Key", false);
-              com.tencent.mm.by.c.b(ExtDeviceWXLoginUI.this, "webview", ".ui.tools.WebViewUI", paramAnonymousView);
-              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webwx/ui/ExtDeviceWXLoginUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-              AppMethodBeat.o(30195);
+              for (;;)
+              {
+                com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webwx/ui/ExtDeviceWXLoginUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+                AppMethodBeat.o(30197);
+                return;
+                bool = false;
+                break;
+                k.b(ExtDeviceWXLoginUI.this.getContext(), Util.nullAs(ExtDeviceWXLoginUI.c(ExtDeviceWXLoginUI.this), ExtDeviceWXLoginUI.this.getContext().getString(R.l.gYP)), ExtDeviceWXLoginUI.this.getContext().getString(R.l.gYR), ExtDeviceWXLoginUI.this.getContext().getString(R.l.gYQ), ExtDeviceWXLoginUI.this.getContext().getString(R.l.app_cancel), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+                {
+                  public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+                  {
+                    AppMethodBeat.i(265326);
+                    paramAnonymous2DialogInterface = ExtDeviceWXLoginUI.b(ExtDeviceWXLoginUI.this);
+                    if (!ExtDeviceWXLoginUI.b(ExtDeviceWXLoginUI.this).isChecked()) {}
+                    for (boolean bool = true;; bool = false)
+                    {
+                      paramAnonymous2DialogInterface.setChecked(bool);
+                      AppMethodBeat.o(265326);
+                      return;
+                    }
+                  }
+                }, new DialogInterface.OnClickListener()
+                {
+                  public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int) {}
+                });
+              }
             }
           });
-        }
-        localObject1 = (ImageView)findViewById(R.h.status_icon);
-        if (this.lZJ == 1) {
-          break label1024;
-        }
-        if (this.lZJ != 2) {
-          break label897;
-        }
-        ((ImageView)localObject1).setImageResource(R.k.connect_mac);
-        label490:
-        this.QEg = ((TextView)findViewById(R.h.eaJ));
-        this.QEg.setText(str2);
-        this.QEg.setOnClickListener(new View.OnClickListener()
-        {
-          public final void onClick(View paramAnonymousView)
+          label750:
+          this.Xxe = ((TextView)findViewById(R.h.fYc));
+          this.Xxh.post(new Runnable()
           {
-            AppMethodBeat.i(30196);
-            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bn(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/webwx/ui/ExtDeviceWXLoginUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-            ExtDeviceWXLoginUI.c(ExtDeviceWXLoginUI.this);
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webwx/ui/ExtDeviceWXLoginUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(30196);
+            public final void run()
+            {
+              AppMethodBeat.i(265333);
+              if (ExtDeviceWXLoginUI.d(ExtDeviceWXLoginUI.this) != null) {
+                ExtDeviceWXLoginUI.a(ExtDeviceWXLoginUI.this, this.val$content);
+              }
+              AppMethodBeat.o(265333);
+            }
+          });
+          if (!Util.isNullOrNil(this.KQa)) {
+            addIconOptionMenu(0, R.k.icons_outlined_help, new ExtDeviceWXLoginUI.5(this));
           }
-        });
-        this.QEf = ((Button)findViewById(R.h.eaG));
-        if (Util.isNullOrNil(str1)) {
-          break label1091;
+          localObject1 = (ImageView)findViewById(R.h.status_icon);
+          if (this.qvo == 1) {
+            break label1163;
+          }
+          if (this.qvo != 2) {
+            break label1065;
+          }
+          ((ImageView)localObject1).setImageResource(R.k.connect_mac);
+          label844:
+          this.XwZ = ((TextView)findViewById(R.h.gdo));
+          this.XwZ.setText(str2);
+          this.XwZ.setOnClickListener(new ExtDeviceWXLoginUI.6(this));
+          this.XwY = ((Button)findViewById(R.h.gdn));
+          if (Util.isNullOrNil(str1)) {
+            break label1230;
+          }
+          this.XwY.setText(str1);
+          if (this.type != 0) {
+            break label1174;
+          }
+          this.XwY.setEnabled(true);
         }
-        this.QEf.setText(str1);
-        if (this.type != 0) {
-          break label1035;
-        }
-        this.QEf.setEnabled(true);
       }
       break;
     }
     for (;;)
     {
-      this.QEf.setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(30197);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/webwx/ui/ExtDeviceWXLoginUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-          Log.i("MicroMsg.ExtDeviceWXLoginUI", "spam url %s", new Object[] { ExtDeviceWXLoginUI.d(ExtDeviceWXLoginUI.this) });
-          if ((ExtDeviceWXLoginUI.e(ExtDeviceWXLoginUI.this) == 0) && (!Util.isNullOrNil(ExtDeviceWXLoginUI.d(ExtDeviceWXLoginUI.this)))) {
-            ExtDeviceWXLoginUI.ci(ExtDeviceWXLoginUI.this, ExtDeviceWXLoginUI.d(ExtDeviceWXLoginUI.this));
-          }
-          for (;;)
-          {
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webwx/ui/ExtDeviceWXLoginUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(30197);
-            return;
-            ExtDeviceWXLoginUI.f(ExtDeviceWXLoginUI.this);
-          }
-        }
-      });
-      getContentView().getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
-      {
-        public final void onGlobalLayout()
-        {
-          AppMethodBeat.i(30198);
-          ExtDeviceWXLoginUI.g(ExtDeviceWXLoginUI.this).getViewTreeObserver().removeOnGlobalLayoutListener(this);
-          ExtDeviceWXLoginUI.h(ExtDeviceWXLoginUI.this);
-          AppMethodBeat.o(30198);
-        }
-      });
-      ((ImageView)findViewById(R.h.eaI)).setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(30199);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/webwx/ui/ExtDeviceWXLoginUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-          ExtDeviceWXLoginUI.this.finish();
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webwx/ui/ExtDeviceWXLoginUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(30199);
-        }
-      });
-      bh.aGY().a(972, this);
-      bh.aGY().a(973, this);
+      this.XwY.setOnClickListener(new ExtDeviceWXLoginUI.7(this));
+      bh.aZW().a(972, this);
+      bh.aZW().a(973, this);
       AppMethodBeat.o(30204);
       return;
-      bh.beI();
-      com.tencent.mm.model.c.aHp().set(ar.a.VnB, Integer.valueOf(3));
+      bh.bCz();
+      com.tencent.mm.model.c.ban().set(at.a.acOW, Integer.valueOf(3));
       break;
-      bh.beI();
-      com.tencent.mm.model.c.aHp().set(ar.a.VnB, Integer.valueOf(4));
+      bh.bCz();
+      com.tencent.mm.model.c.ban().set(at.a.acOW, Integer.valueOf(4));
       break;
-      bh.beI();
-      com.tencent.mm.model.c.aHp().set(ar.a.VnB, Integer.valueOf(2));
+      bh.bCz();
+      com.tencent.mm.model.c.ban().set(at.a.acOW, Integer.valueOf(2));
       break;
-      if (i < 0) {
-        break label421;
-      }
-      if ((this.QEd & 0x1) > 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        Log.i("MicroMsg.ExtDeviceWXLoginUI", "msgsynchronize needCheckedSync[%b], iconType[%d]", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.lZJ) });
-        if (((this.lZJ != 1) || (this.QEc < j)) && ((this.lZJ != 2) || (this.QEc < k))) {
-          break;
-        }
-        this.Ecm = true;
-        ((TextView)findViewById(R.h.dVE)).setVisibility(8);
-        ((CheckBox)findViewById(R.h.dVF)).setVisibility(0);
-        ((CheckBox)findViewById(R.h.dVF)).setText(R.l.eVJ);
-        if (bool)
-        {
-          bh.beI();
-          if (((Boolean)com.tencent.mm.model.c.aHp().get(ar.a.VnA, Boolean.TRUE)).booleanValue()) {
-            break;
-          }
-        }
-        ((CheckBox)findViewById(R.h.dVF)).setChecked(false);
-        break;
-      }
-      label897:
-      if (this.lZJ == 3)
+      bool = false;
+      break label541;
+      label1036:
+      this.Xxj.setChecked(true);
+      break label654;
+      bool = false;
+      break label726;
+      this.Xxg.setVisibility(8);
+      break label750;
+      label1065:
+      if (this.qvo == 3)
       {
         ((ImageView)localObject1).setImageResource(R.k.connect_ipad);
-        break label490;
+        break label844;
       }
-      if (this.lZJ == 5)
+      if (this.qvo == 5)
       {
         ((ImageView)localObject1).setImageResource(R.k.connect_wx_album);
-        break label490;
+        break label844;
       }
-      if (this.lZJ == 6)
+      if (this.qvo == 6)
       {
         ((ImageView)localObject1).setImageResource(R.k.connect_car);
-        localObject2 = (LinearLayout.LayoutParams)((ImageView)localObject1).getLayoutParams();
-        ((LinearLayout.LayoutParams)localObject2).width = com.tencent.mm.ci.a.aY(this, R.f.dlW);
-        ((LinearLayout.LayoutParams)localObject2).height = com.tencent.mm.ci.a.aY(this, R.f.dlW);
-        ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        ((ImageView)localObject1).setAlpha(0.3F);
-        break label490;
+        break label844;
       }
-      if (this.lZJ == 8)
+      if (this.qvo == 8)
       {
         ((ImageView)localObject1).setImageResource(R.k.connect_android_pad);
-        break label490;
+        break label844;
       }
-      label1024:
+      if (this.qvo == 10)
+      {
+        ((ImageView)localObject1).setImageResource(R.k.connect_folder);
+        break label844;
+      }
+      label1163:
       ((ImageView)localObject1).setImageResource(R.k.connect_pc);
-      break label490;
-      label1035:
+      break label844;
+      label1174:
       if (this.type == -1)
       {
-        this.QEf.setEnabled(false);
-        if (this.lZJ == 5) {
-          this.QEg.setVisibility(8);
+        this.XwY.setEnabled(false);
+        if (this.qvo == 5) {
+          this.XwZ.setVisibility(8);
         }
       }
       else if (this.type == -2)
       {
-        this.QEf.setEnabled(true);
+        this.XwY.setEnabled(true);
         continue;
-        label1091:
-        this.QEf.setVisibility(4);
+        label1230:
+        this.XwY.setVisibility(4);
       }
     }
   }
@@ -357,21 +421,20 @@ public class ExtDeviceWXLoginUI
   {
     AppMethodBeat.i(30202);
     super.onCreate(paramBundle);
-    getSupportActionBar().hide();
-    setActionbarColor(getResources().getColor(R.e.BG_2));
+    setActionbarColor(getResources().getColor(R.e.webwx_bg_color));
     initView();
     overridePendingTransition(R.a.push_up_in, R.a.anim_not_change);
-    this.QEk.alive();
+    this.Xxk.alive();
     AppMethodBeat.o(30202);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(30207);
-    this.QEk.dead();
+    this.Xxk.dead();
     super.onDestroy();
-    bh.aGY().b(972, this);
-    bh.aGY().b(973, this);
+    bh.aZW().b(972, this);
+    bh.aZW().b(973, this);
     AppMethodBeat.o(30207);
   }
   
@@ -379,22 +442,22 @@ public class ExtDeviceWXLoginUI
   {
     AppMethodBeat.i(30205);
     super.onPause();
-    bmy localbmy;
-    if ((this.QEe) && (bh.aHB()))
+    cas localcas;
+    if ((this.XwX) && (bh.baz()))
     {
-      localbmy = new bmy();
-      localbmy.SXP = 27;
-      if (!z.awX()) {
+      localcas = new cas();
+      localcas.aajJ = 27;
+      if (!z.aRx()) {
         break label84;
       }
     }
     label84:
     for (int i = 1;; i = 2)
     {
-      localbmy.HmX = i;
-      bh.beI();
-      com.tencent.mm.model.c.bbK().d(new k.a(23, localbmy));
-      this.QEe = false;
+      localcas.NkL = i;
+      bh.bCz();
+      com.tencent.mm.model.c.bzz().d(new k.a(23, localcas));
+      this.XwX = false;
       AppMethodBeat.o(30205);
       return;
     }
@@ -407,33 +470,41 @@ public class ExtDeviceWXLoginUI
     AppMethodBeat.o(30203);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(30208);
-    if (this.Apv != null)
+    if (this.FPA != null)
     {
-      this.Apv.dismiss();
-      this.Apv = null;
+      this.FPA.dismiss();
+      this.FPA = null;
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      Log.i("MicroMsg.ExtDeviceWXLoginUI", "onSceneEnd type[%d], [%d, %d]", new Object[] { Integer.valueOf(paramq.getType()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
-      bh.aGY().b(972, this);
-      if (paramq.getType() == 972)
+      Log.i("MicroMsg.ExtDeviceWXLoginUI", "onSceneEnd type[%d], [%d, %d]", new Object[] { Integer.valueOf(paramp.getType()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
+      bh.aZW().b(972, this);
+      if (paramp.getType() == 972)
       {
-        paramString = (e)paramq;
-        if ((paramString.Ecm) || (this.fLM))
+        e locale = (e)paramp;
+        if ((locale.JTq) || (this.hRu))
         {
-          paramString = (alz)d.c.b(paramString.lKU.lBS);
-          if ((paramString != null) && (paramString.Swl != null)) {
-            break label206;
+          paramString = (apk)c.c.b(locale.oDw.otC);
+          if ((paramString != null) && (paramString.Zwy != null)) {
+            break label246;
           }
           paramString = null;
-          paramq = new nj();
-          paramq.fLJ.fLK = paramString;
-          paramq.fLJ.fLL = this.lZJ;
-          paramq.fLJ.fLM = this.fLM;
-          EventCenter.instance.publish(paramq);
+          paramp = new oq();
+          paramp.hRr.hRs = paramString;
+          paramp.hRr.hRt = this.qvo;
+          paramp.hRr.hRu = this.hRu;
+          oq.a locala = paramp.hRr;
+          paramString = (apk)c.c.b(locale.oDw.otC);
+          if ((paramString != null) && (paramString.Zwz != null)) {
+            break label257;
+          }
+          paramString = null;
+          label218:
+          locala.hRv = paramString;
+          paramp.publish();
         }
       }
       for (;;)
@@ -442,10 +513,13 @@ public class ExtDeviceWXLoginUI
         finish();
         AppMethodBeat.o(30208);
         return;
-        label206:
-        paramString = paramString.Swl.toByteArray();
+        label246:
+        paramString = paramString.Zwy.toByteArray();
         break;
-        paramq.getType();
+        label257:
+        paramString = paramString.Zwz;
+        break label218;
+        paramp.getType();
       }
     }
     if (paramInt2 == -1)
@@ -453,15 +527,14 @@ public class ExtDeviceWXLoginUI
       this.type = -1;
       if (!Util.isNullOrNil(paramString))
       {
-        ((CheckBox)findViewById(R.h.dVF)).setVisibility(8);
-        ((TextView)findViewById(R.h.dVE)).setVisibility(0);
-        ((TextView)findViewById(R.h.dVE)).setText(paramString);
+        ((TextView)findViewById(R.h.fYc)).setVisibility(0);
+        ((TextView)findViewById(R.h.fYc)).setText(paramString);
       }
       if (this.type != -1) {
-        break label362;
+        break label394;
       }
-      if (this.QEf != null) {
-        this.QEf.setEnabled(false);
+      if (this.XwY != null) {
+        this.XwY.setEnabled(false);
       }
     }
     for (;;)
@@ -474,16 +547,16 @@ public class ExtDeviceWXLoginUI
       }
       this.type = -2;
       break;
-      label362:
+      label394:
       if (this.type == -2)
       {
-        if (this.QEf != null)
+        if (this.XwY != null)
         {
-          this.QEf.setEnabled(true);
-          this.QEf.setText(R.l.eVK);
+          this.XwY.setEnabled(true);
+          this.XwY.setText(R.l.gYU);
         }
-        if (this.QEg != null) {
-          this.QEg.setVisibility(4);
+        if (this.XwZ != null) {
+          this.XwZ.setVisibility(4);
         }
       }
     }
@@ -494,10 +567,18 @@ public class ExtDeviceWXLoginUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  public void superImportUIComponents(HashSet<Class<? extends UIComponent>> paramHashSet)
+  {
+    AppMethodBeat.i(265411);
+    super.superImportUIComponents(paramHashSet);
+    paramHashSet.add(com.tencent.mm.plugin.webwx.ui.a.a.class);
+    AppMethodBeat.o(265411);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.webwx.ui.ExtDeviceWXLoginUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.game.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,8 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.ad;
 import com.tencent.mm.model.ad.b;
-import com.tencent.mm.plugin.game.g.e;
-import com.tencent.mm.plugin.game.g.f;
+import com.tencent.mm.plugin.game.h.e;
+import com.tencent.mm.plugin.game.h.f;
 import com.tencent.mm.plugin.game.model.aa;
 import com.tencent.mm.plugin.game.model.c;
 import com.tencent.mm.plugin.game.model.k;
@@ -24,22 +23,22 @@ import com.tencent.mm.ui.MMActivity;
 public class GameDetailRankUI
   extends MMActivity
 {
-  public static String CUH = "extra_session_id";
-  public static String CUI = "gameDetailRankDataKey";
-  private ListView CUE;
-  private GameRankHeadView CUF;
-  private i CUG;
+  public static String IOZ = "extra_session_id";
+  public static String IPa = "gameDetailRankDataKey";
+  private ListView IOW;
+  private GameRankHeadView IOX;
+  private i IOY;
   private String appId;
   
   public int getLayoutId()
   {
-    return g.f.CmR;
+    return h.f.HYZ;
   }
   
   public void initView()
   {
     AppMethodBeat.i(42008);
-    setMMTitle(com.tencent.mm.pluginsdk.model.app.h.t(getContext(), this.appId));
+    setMMTitle(com.tencent.mm.pluginsdk.model.app.h.x(getContext(), this.appId));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -57,27 +56,27 @@ public class GameDetailRankUI
   {
     AppMethodBeat.i(42005);
     super.onCreate(paramBundle);
-    paramBundle = getIntent().getStringExtra(CUH);
-    paramBundle = ad.beh().Ro(paramBundle);
+    paramBundle = getIntent().getStringExtra(IOZ);
+    paramBundle = ad.bCb().Jn(paramBundle);
     if (paramBundle == null)
     {
       finish();
       AppMethodBeat.o(42005);
       return;
     }
-    paramBundle = (a)paramBundle.get(CUI);
-    this.CUE = ((ListView)findViewById(g.e.CiV));
-    if ((!Util.isNullOrNil(paramBundle.CUK)) && (!Util.isNullOrNil(paramBundle.CUL)))
+    paramBundle = (a)paramBundle.get(IPa);
+    this.IOW = ((ListView)findViewById(h.e.HVd));
+    if ((!Util.isNullOrNil(paramBundle.IPc)) && (!Util.isNullOrNil(paramBundle.IPd)))
     {
-      View localView = ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(g.f.CmY, this.CUE, false);
-      this.CUF = ((GameRankHeadView)localView.findViewById(g.e.Cki));
-      this.CUE.addHeaderView(localView);
-      this.CUF.setData(paramBundle);
+      View localView = ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(h.f.HZg, this.IOW, false);
+      this.IOX = ((GameRankHeadView)localView.findViewById(h.e.HWq));
+      this.IOW.addHeaderView(localView);
+      this.IOX.setData(paramBundle);
     }
-    this.CUG = new i(this);
-    this.CUG.QY = g.f.CmS;
-    this.CUE.setAdapter(this.CUG);
-    this.appId = paramBundle.CUM.field_appId;
+    this.IOY = new i(this);
+    this.IOY.bxp = h.f.HZa;
+    this.IOW.setAdapter(this.IOY);
+    this.appId = paramBundle.IPe.field_appId;
     if (Util.isNullOrNil(this.appId))
     {
       finish();
@@ -85,7 +84,7 @@ public class GameDetailRankUI
       return;
     }
     initView();
-    com.tencent.mm.kernel.h.aHJ().postToWorker(new Runnable()
+    com.tencent.mm.kernel.h.baH().postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -102,7 +101,7 @@ public class GameDetailRankUI
   {
     AppMethodBeat.i(42007);
     super.onDestroy();
-    k.b(this.CUF.CUR);
+    k.b(this.IOX.IPj);
     AppMethodBeat.o(42007);
   }
   
@@ -121,14 +120,14 @@ public class GameDetailRankUI
   
   public static class a
   {
-    public String CUK;
-    public String CUL;
-    c CUM;
+    public String IPc;
+    public String IPd;
+    c IPe;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameDetailRankUI
  * JD-Core Version:    0.7.0.1
  */

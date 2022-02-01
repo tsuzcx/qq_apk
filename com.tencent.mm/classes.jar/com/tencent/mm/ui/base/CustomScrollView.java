@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class CustomScrollView
   extends ScrollView
 {
-  private a Whm;
+  private a adOi;
   
   public CustomScrollView(Context paramContext)
   {
@@ -29,20 +29,20 @@ public class CustomScrollView
   {
     AppMethodBeat.i(159150);
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.Whm != null) {
-      this.Whm.a(this, paramInt2, paramInt4);
+    if (this.adOi != null) {
+      this.adOi.onScrollChange(this, paramInt1, paramInt2, paramInt3, paramInt4);
     }
     AppMethodBeat.o(159150);
   }
   
   public void setOnScrollChangeListener(a parama)
   {
-    this.Whm = parama;
+    this.adOi = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void a(ScrollView paramScrollView, int paramInt1, int paramInt2);
+    public abstract void onScrollChange(ScrollView paramScrollView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   }
 }
 

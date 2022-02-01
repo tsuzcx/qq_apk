@@ -2,34 +2,34 @@ package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.feed.model.internal.k;
-import com.tencent.mm.plugin.finder.storage.an;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.storage.av;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderMsgFriendObjectLikeLike;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderMsg;", "mention", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;", "(Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;)V", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemType", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/model/FinderMsgComment;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderMsg;", "mention", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;", "(Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;)V", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemType", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class bb
   extends a
 {
-  public bb(an paraman)
+  public bb(av paramav)
   {
-    super(paraman);
-    AppMethodBeat.i(272432);
-    AppMethodBeat.o(272432);
+    super(paramav);
+    AppMethodBeat.i(166403);
+    AppMethodBeat.o(166403);
   }
   
   public final int a(k paramk)
   {
-    AppMethodBeat.i(272430);
-    p.k(paramk, "obj");
-    AppMethodBeat.o(272430);
+    AppMethodBeat.i(166402);
+    s.u(paramk, "obj");
+    AppMethodBeat.o(166402);
     return 0;
   }
   
-  public final int bAQ()
+  public final int bZB()
   {
-    AppMethodBeat.i(272428);
+    AppMethodBeat.i(166401);
     int i = bb.class.getName().hashCode();
-    AppMethodBeat.o(272428);
+    AppMethodBeat.o(166401);
     return i;
   }
 }

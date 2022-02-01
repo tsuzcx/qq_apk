@@ -1,60 +1,49 @@
 package com.tencent.mm.plugin;
 
-import com.tencent.mm.live.core.core.model.g;
-import com.tencent.mm.plugin.finder.live.util.p;
-import com.tencent.mm.protocal.protobuf.dlk;
-import java.util.LinkedList;
-import kotlin.g.a.b;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.c.d.a;
+import com.tencent.c.d.c;
+import com.tencent.c.d.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.expt.b.c;
+import io.flutter.embedding.engine.plugins.FlutterPlugin;
+import io.flutter.embedding.engine.plugins.FlutterPlugin.FlutterPluginBinding;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/IFinderLiveService;", "Lcom/tencent/mm/kernel/service/IService;", "activateMic", "", "delay", "", "checkAcceptMicType", "liveData", "Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "micType", "", "checkIsPreciousGift", "", "giftId", "", "createGiftQueue", "Lcom/tencent/mm/plugin/finder/live/util/IGiftQueue;", "dumpBattlePlayerInfo", "info", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/PlayerInfo;", "enterRoom", "previewView", "Lcom/tencent/mm/live/core/view/LivePreviewView;", "liveRoomModel", "Lcom/tencent/mm/live/core/core/model/LiveRoomModel;", "action", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "enterCode", "isAnchor", "linkMicEnterRoomFail", "errCode", "roomId", "liveId", "liveCore", "Lcom/tencent/mm/live/core/core/trtc/AbsLiveTRTCCore;", "notifyAudienceMicUserChange", "refreshMic", "removeBattleEndDelayTimer", "requestStopMic", "requestStopPkMic", "setForbidden", "setupSdkParam", "Lcom/tencent/mm/live/model/AcceptLiveMicInfo;", "startBattleEndDelayTimer", "battleId", "startLinkMic", "stopActivateMic", "stopRefreshMic", "plugin-finder-base_release"})
-public abstract interface d
-  extends com.tencent.mm.kernel.c.a
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/FlutterExptPlugin;", "Lcom/tencent/pigeon/FlutterExptPigeon$FlutterExptHost;", "Lio/flutter/embedding/engine/plugins/FlutterPlugin;", "()V", "get", "Lcom/tencent/pigeon/FlutterExptPigeon$FlutterExptResponse;", "request", "Lcom/tencent/pigeon/FlutterExptPigeon$FlutterExptRequest;", "onAttachedToEngine", "", "binding", "Lio/flutter/embedding/engine/plugins/FlutterPlugin$FlutterPluginBinding;", "onDetachedFromEngine", "plugin-flutter-foundation_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class d
+  extends d.a
+  implements FlutterPlugin
 {
-  public abstract void a(com.tencent.mm.live.b.a parama);
+  public final d.d a(d.c paramc)
+  {
+    AppMethodBeat.i(260312);
+    s.u(paramc, "request");
+    d.d locald = new d.d();
+    locald.result = ((c)h.ax(c.class)).aqb(paramc.key);
+    AppMethodBeat.o(260312);
+    return locald;
+  }
   
-  public abstract void a(com.tencent.mm.plugin.finder.live.model.context.a parama);
+  public final void onAttachedToEngine(FlutterPlugin.FlutterPluginBinding paramFlutterPluginBinding)
+  {
+    AppMethodBeat.i(260304);
+    s.u(paramFlutterPluginBinding, "binding");
+    d.a.a(paramFlutterPluginBinding.getBinaryMessenger(), (d.a)this);
+    AppMethodBeat.o(260304);
+  }
   
-  public abstract boolean aae(String paramString);
-  
-  public abstract void b(g paramg, b<? super Integer, x> paramb);
-  
-  public abstract boolean bvS();
-  
-  public abstract com.tencent.mm.live.core.core.trtc.a bvT();
-  
-  public abstract void bvU();
-  
-  public abstract p bvV();
-  
-  public abstract void bvW();
-  
-  public abstract void bvX();
-  
-  public abstract void bvY();
-  
-  public abstract void bvZ();
-  
-  public abstract void bwa();
-  
-  public abstract void bwb();
-  
-  public abstract void bwc();
-  
-  public abstract void bwd();
-  
-  public abstract void i(int paramInt, long paramLong1, long paramLong2);
-  
-  public abstract void i(long paramLong, String paramString);
-  
-  public abstract void notifyAudienceMicUserChange();
-  
-  public abstract void s(LinkedList<dlk> paramLinkedList);
+  public final void onDetachedFromEngine(FlutterPlugin.FlutterPluginBinding paramFlutterPluginBinding)
+  {
+    AppMethodBeat.i(260307);
+    s.u(paramFlutterPluginBinding, "binding");
+    AppMethodBeat.o(260307);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.d
  * JD-Core Version:    0.7.0.1
  */

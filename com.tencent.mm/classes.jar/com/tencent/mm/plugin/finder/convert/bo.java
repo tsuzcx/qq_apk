@@ -1,72 +1,21 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import android.content.Context;
-import android.text.TextPaint;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.model.a;
-import com.tencent.mm.plugin.finder.model.bb;
-import com.tencent.mm.plugin.finder.storage.an;
-import com.tencent.mm.plugin.finder.utils.m;
-import com.tencent.mm.protocal.protobuf.beg;
-import com.tencent.mm.view.recyclerview.i;
-import kotlin.g.b.p;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.model.bi;
+import kotlin.Metadata;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/convert/FinderMsgFriendObjectLikeLikeConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderMsgConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderMsgFriendObjectLikeLike;", "scene", "", "(I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getScene", "()I", "convertMsg", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/convert/FinderMsgMentionedNewConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderMsgConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderMsgMentioned;", "scene", "", "(I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getScene", "()I", "convertMsg", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class bo
-  extends bj<bb>
+  extends bf<bi>
 {
   private final String TAG;
   private final int scene;
   
   public bo(int paramInt)
   {
-    super(b.g.finder_msg_item_of_friend_object_like_like, paramInt);
+    super(e.f.finder_msg_item_of_mentioned_new, paramInt);
     this.scene = paramInt;
-    this.TAG = "Finder.FinderMsgFriendObjectLikeLikeConvert";
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class a
-    implements Runnable
-  {
-    a(i parami, TextView paramTextView1, String paramString, TextView paramTextView2, bb parambb) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(264720);
-      Object localObject = this.tDl.RD(b.f.name_container);
-      p.j(localObject, "holder.getView<View>(R.id.name_container)");
-      int i = ((View)localObject).getWidth();
-      localObject = this.xkm;
-      p.j(localObject, "nickTv");
-      float f = ((TextView)localObject).getPaint().measureText(this.xnu);
-      if (i > f)
-      {
-        localObject = this.xnv;
-        p.j(localObject, "suffixTv");
-        ((TextView)localObject).setVisibility(8);
-        localObject = this.xkm;
-        p.j(localObject, "nickTv");
-        ((TextView)localObject).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c(this.tDl.getContext(), (CharSequence)this.xnu));
-        AppMethodBeat.o(264720);
-        return;
-      }
-      localObject = this.xnv;
-      p.j(localObject, "suffixTv");
-      ((TextView)localObject).setVisibility(0);
-      localObject = this.xnv;
-      p.j(localObject, "suffixTv");
-      ((TextView)localObject).setText((CharSequence)this.tDl.getContext().getString(b.j.finder_msg_suffix_desc, new Object[] { m.QG(this.xnB.zzT.field_aggregatedContacts.SPu) }));
-      localObject = this.xkm;
-      p.j(localObject, "nickTv");
-      ((TextView)localObject).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c(this.tDl.getContext(), (CharSequence)this.xnu));
-      AppMethodBeat.o(264720);
-    }
+    this.TAG = "Finder.FinderMsgMentionedConvert";
   }
 }
 

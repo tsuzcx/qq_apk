@@ -1,85 +1,43 @@
 package androidx.fragment.app;
 
-import android.os.Bundle;
-import java.io.FileDescriptor;
-import java.io.PrintWriter;
-import java.util.List;
+import androidx.core.f.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public abstract class e
+public class e
 {
-  public static final int POP_BACK_STACK_INCLUSIVE = 1;
+  final g<?> mHost;
   
-  public static void enableDebugLogging(boolean paramBoolean)
+  private e(g<?> paramg)
   {
-    FragmentManagerImpl.DEBUG = paramBoolean;
+    this.mHost = paramg;
   }
   
-  public abstract void addOnBackStackChangedListener(c paramc);
-  
-  public abstract i beginTransaction();
-  
-  public abstract void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString);
-  
-  public abstract boolean executePendingTransactions();
-  
-  public abstract Fragment findFragmentById(int paramInt);
-  
-  public abstract Fragment findFragmentByTag(String paramString);
-  
-  public abstract a getBackStackEntryAt(int paramInt);
-  
-  public abstract int getBackStackEntryCount();
-  
-  public abstract Fragment getFragment(Bundle paramBundle, String paramString);
-  
-  public abstract List<Fragment> getFragments();
-  
-  public abstract Fragment getPrimaryNavigationFragment();
-  
-  public abstract boolean isDestroyed();
-  
-  public abstract boolean isStateSaved();
-  
-  @Deprecated
-  public i openTransaction()
+  public static e a(g<?> paramg)
   {
-    return beginTransaction();
+    AppMethodBeat.i(193780);
+    paramg = new e((g)f.checkNotNull(paramg, "callbacks == null"));
+    AppMethodBeat.o(193780);
+    return paramg;
   }
   
-  public abstract void popBackStack();
-  
-  public abstract void popBackStack(int paramInt1, int paramInt2);
-  
-  public abstract void popBackStack(String paramString, int paramInt);
-  
-  public abstract boolean popBackStackImmediate();
-  
-  public abstract boolean popBackStackImmediate(int paramInt1, int paramInt2);
-  
-  public abstract boolean popBackStackImmediate(String paramString, int paramInt);
-  
-  public abstract void putFragment(Bundle paramBundle, String paramString, Fragment paramFragment);
-  
-  public abstract void registerFragmentLifecycleCallbacks(b paramb, boolean paramBoolean);
-  
-  public abstract void removeOnBackStackChangedListener(c paramc);
-  
-  public abstract Fragment.SavedState saveFragmentInstanceState(Fragment paramFragment);
-  
-  public abstract void unregisterFragmentLifecycleCallbacks(b paramb);
-  
-  public static abstract interface a {}
-  
-  public static abstract class b {}
-  
-  public static abstract interface c
+  public final boolean Gk()
   {
-    public abstract void onBackStackChanged();
+    AppMethodBeat.i(193803);
+    boolean bool = this.mHost.mFragmentManager.execPendingActions(true);
+    AppMethodBeat.o(193803);
+    return bool;
+  }
+  
+  public final void noteStateNotSaved()
+  {
+    AppMethodBeat.i(193794);
+    this.mHost.mFragmentManager.noteStateNotSaved();
+    AppMethodBeat.o(193794);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.fragment.app.e
  * JD-Core Version:    0.7.0.1
  */

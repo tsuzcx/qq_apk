@@ -1,121 +1,146 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class bmb
-  extends com.tencent.mm.cd.a
+  extends erp
 {
-  public String CSe;
-  public int CreateTime;
-  public String RIA;
-  public String RIC;
-  public int SXb;
-  public String SXc;
-  public String UserName;
+  public String AzS;
+  public int YAN;
+  public atz YIY;
+  public long mMJ;
+  public long object_id;
+  public String object_nonce_id;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(149139);
+    AppMethodBeat.i(259008);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.RIA != null) {
-        paramVarArgs.f(1, this.RIA);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aY(2, this.CreateTime);
-      paramVarArgs.aY(3, this.SXb);
-      if (this.RIC != null) {
-        paramVarArgs.f(4, this.RIC);
+      if (this.YIY != null)
+      {
+        paramVarArgs.qD(2, this.YIY.computeSize());
+        this.YIY.writeFields(paramVarArgs);
       }
-      if (this.SXc != null) {
-        paramVarArgs.f(5, this.SXc);
+      paramVarArgs.bv(3, this.mMJ);
+      paramVarArgs.bv(4, this.object_id);
+      if (this.object_nonce_id != null) {
+        paramVarArgs.g(5, this.object_nonce_id);
       }
-      if (this.UserName != null) {
-        paramVarArgs.f(6, this.UserName);
+      paramVarArgs.bS(6, this.YAN);
+      if (this.AzS != null) {
+        paramVarArgs.g(7, this.AzS);
       }
-      if (this.CSe != null) {
-        paramVarArgs.f(7, this.CSe);
-      }
-      AppMethodBeat.o(149139);
+      AppMethodBeat.o(259008);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.RIA == null) {
-        break label546;
+      if (this.BaseRequest == null) {
+        break label670;
       }
     }
-    label546:
-    for (paramInt = g.a.a.b.b.a.g(1, this.RIA) + 0;; paramInt = 0)
+    label670:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + g.a.a.b.b.a.bM(2, this.CreateTime) + g.a.a.b.b.a.bM(3, this.SXb);
+      int i = paramInt;
+      if (this.YIY != null) {
+        i = paramInt + i.a.a.a.qC(2, this.YIY.computeSize());
+      }
+      i = i + i.a.a.b.b.a.q(3, this.mMJ) + i.a.a.b.b.a.q(4, this.object_id);
       paramInt = i;
-      if (this.RIC != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.RIC);
+      if (this.object_nonce_id != null) {
+        paramInt = i + i.a.a.b.b.a.h(5, this.object_nonce_id);
       }
-      i = paramInt;
-      if (this.SXc != null) {
-        i = paramInt + g.a.a.b.b.a.g(5, this.SXc);
-      }
+      i = paramInt + i.a.a.b.b.a.cJ(6, this.YAN);
       paramInt = i;
-      if (this.UserName != null) {
-        paramInt = i + g.a.a.b.b.a.g(6, this.UserName);
+      if (this.AzS != null) {
+        paramInt = i + i.a.a.b.b.a.h(7, this.AzS);
       }
-      i = paramInt;
-      if (this.CSe != null) {
-        i = paramInt + g.a.a.b.b.a.g(7, this.CSe);
-      }
-      AppMethodBeat.o(149139);
-      return i;
+      AppMethodBeat.o(259008);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(149139);
+        AppMethodBeat.o(259008);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
         bmb localbmb = (bmb)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(149139);
+          AppMethodBeat.o(259008);
           return -1;
         case 1: 
-          localbmb.RIA = locala.abFh.readString();
-          AppMethodBeat.o(149139);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new kc();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((kc)localObject2).parseFrom((byte[])localObject1);
+            }
+            localbmb.BaseRequest = ((kc)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(259008);
           return 0;
         case 2: 
-          localbmb.CreateTime = locala.abFh.AK();
-          AppMethodBeat.o(149139);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new atz();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((atz)localObject2).parseFrom((byte[])localObject1);
+            }
+            localbmb.YIY = ((atz)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(259008);
           return 0;
         case 3: 
-          localbmb.SXb = locala.abFh.AK();
-          AppMethodBeat.o(149139);
+          localbmb.mMJ = ((i.a.a.a.a)localObject1).ajGk.aaw();
+          AppMethodBeat.o(259008);
           return 0;
         case 4: 
-          localbmb.RIC = locala.abFh.readString();
-          AppMethodBeat.o(149139);
+          localbmb.object_id = ((i.a.a.a.a)localObject1).ajGk.aaw();
+          AppMethodBeat.o(259008);
           return 0;
         case 5: 
-          localbmb.SXc = locala.abFh.readString();
-          AppMethodBeat.o(149139);
+          localbmb.object_nonce_id = ((i.a.a.a.a)localObject1).ajGk.readString();
+          AppMethodBeat.o(259008);
           return 0;
         case 6: 
-          localbmb.UserName = locala.abFh.readString();
-          AppMethodBeat.o(149139);
+          localbmb.YAN = ((i.a.a.a.a)localObject1).ajGk.aar();
+          AppMethodBeat.o(259008);
           return 0;
         }
-        localbmb.CSe = locala.abFh.readString();
-        AppMethodBeat.o(149139);
+        localbmb.AzS = ((i.a.a.a.a)localObject1).ajGk.readString();
+        AppMethodBeat.o(259008);
         return 0;
       }
-      AppMethodBeat.o(149139);
+      AppMethodBeat.o(259008);
       return -1;
     }
   }

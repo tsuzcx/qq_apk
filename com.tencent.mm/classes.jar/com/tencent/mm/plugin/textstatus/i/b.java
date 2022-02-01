@@ -1,265 +1,278 @@
 package com.tencent.mm.plugin.textstatus.i;
 
-import android.content.ContentValues;
-import android.database.Cursor;
-import com.tencent.mm.sdk.storage.IAutoDBItem;
-import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import com.tencent.mm.sdk.storage.sql.Column;
-import com.tencent.mm.sdk.storage.sql.SingleTable;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.mmdata.rpt.pr;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.plugin.secdata.g;
+import com.tencent.mm.plugin.textstatus.a.w;
+import com.tencent.mm.plugin.textstatus.proto.bh;
+import com.tencent.mm.plugin.textstatus.proto.p;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.threadpool.i;
+import java.util.Iterator;
+import java.util.LinkedList;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.n.n;
 
-public abstract class b
-  extends IAutoDBItem
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/textstatus/report/TextStatusReporter;", "", "()V", "TAG", "", "getExposeDataFromMem", "Lcom/tencent/mm/plugin/textstatus/proto/TextStateCardExposeData;", "post22219ByOtherActivity", "", "param", "Lcom/tencent/mm/plugin/textstatus/api/SetStatusParam;", "exitScene", "", "postReport", "cliPostID", "exitTopicID", "exitTextStatusID", "(Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;)V", "postReportByTextStatusEditActivity", "finishByPost", "", "postData", "Lcom/tencent/mm/plugin/textstatus/proto/TextStatusPostReportData;", "postReportImp", "(Lcom/tencent/mm/plugin/textstatus/proto/TextStatusPostReportData;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;)V", "report22208", "action", "actionResult", "sessionId", "btnStyle", "toStatusID", "report22210", "userName", "scene", "report22216", "context", "Landroid/content/Context;", "infoSet", "Lcom/tencent/mm/plugin/textstatus/model/storage/TextStatusItem;", "cardLeaveMethod", "cardStayTime", "listPos", "report22662", "source", "", "hasMoreFriendsButton", "moreFriendButtonNum", "report22663", "iconId", "sameStatusUsersCount", "toUserName", "uvPerIcon", "sceneStayTime", "report22895", "report23836", "Action", "ActionResult", "NotificationSessionID", "EnterScene", "SessionID", "EnterPosition", "UnreadInteractCount", "UnreadMsgCount", "UnreadHelloToMeCount", "ToUserSessionID", "ToUserIconID", "ToUserSourceID", "ToUserHashTag", "ToUserStatusID", "structLog", "struct", "Lcom/tencent/mm/plugin/report/AbsReportStruct;", "tryReport22895", "updateExposeDataToMem", "exposedData", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class b
 {
-  public static final Column C_CREATETIME;
-  public static final Column C_ROWID;
-  public static final Column C_TYPE;
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS TextStatusLike_TextStatusId_index ON TextStatusLike(TextStatusId)" };
-  public static final Column MGW;
-  private static final int MHU = "TopicInfo".hashCode();
-  private static final int MIE;
-  private static final int MIF;
-  private static final int MIG;
-  private static final int MIH;
-  private static final int MII;
-  private static final int MIJ;
-  private static final int MIK = "DeleteInMsgList".hashCode();
-  public static final Column MIs;
-  public static final Column MIt;
-  public static final Column MIu;
-  public static final Column MIv;
-  public static final Column MIw;
-  public static final SingleTable TABLE = new SingleTable("TextStatusLike");
-  public static final Column hAa;
-  public static final Column hHm;
-  private static final int hIO;
-  private static final int hVP;
-  private static final int hVR;
-  private static final int hVW;
-  public static final Column hsb;
-  public static final Column hww;
-  private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean MHt = true;
-  private boolean MIA = true;
-  private boolean MIB = true;
-  private boolean MIC = true;
-  private boolean MID = true;
-  private boolean MIx = true;
-  private boolean MIy = true;
-  private boolean MIz = true;
-  public int field_CreateTime;
-  public int field_DeleteInMsgList;
-  public String field_Description;
-  public String field_DisplayName;
-  public String field_HashUserName;
-  public String field_HeadImgUrl;
-  public int field_Notify;
-  public int field_Read;
-  public String field_TextStatusId;
-  public byte[] field_TopicInfo;
-  public int field_Type;
-  public String field_thumbUrl;
-  private boolean hIa = true;
-  private boolean hVG = true;
-  private boolean hVI = true;
-  private boolean hVN = true;
+  public static final b Trt;
   
   static
   {
-    C_ROWID = new Column("rowid", "long", "TextStatusLike", "");
-    MIs = new Column("textstatusid", "string", "TextStatusLike", "");
-    MIt = new Column("hashusername", "string", "TextStatusLike", "");
-    hAa = new Column("displayname", "string", "TextStatusLike", "");
-    hww = new Column("headimgurl", "string", "TextStatusLike", "");
-    hsb = new Column("description", "string", "TextStatusLike", "");
-    C_TYPE = new Column("type", "int", "TextStatusLike", "");
-    C_CREATETIME = new Column("createtime", "int", "TextStatusLike", "");
-    MIu = new Column("notify", "int", "TextStatusLike", "");
-    MIv = new Column("read", "int", "TextStatusLike", "");
-    hHm = new Column("thumburl", "string", "TextStatusLike", "");
-    MGW = new Column("topicinfo", "byte[]", "TextStatusLike", "");
-    MIw = new Column("deleteinmsglist", "int", "TextStatusLike", "");
-    MIE = "TextStatusId".hashCode();
-    MIF = "HashUserName".hashCode();
-    MIG = "DisplayName".hashCode();
-    MIH = "HeadImgUrl".hashCode();
-    hVR = "Description".hashCode();
-    hVW = "Type".hashCode();
-    hVP = "CreateTime".hashCode();
-    MII = "Notify".hashCode();
-    MIJ = "Read".hashCode();
-    hIO = "thumbUrl".hashCode();
+    AppMethodBeat.i(289724);
+    Trt = new b();
+    AppMethodBeat.o(289724);
   }
   
-  public static IAutoDBItem.MAutoDBInfo aoY()
+  public static void a(com.tencent.mm.plugin.report.a parama)
   {
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[12];
-    localMAutoDBInfo.columns = new String[13];
-    StringBuilder localStringBuilder = new StringBuilder();
-    localMAutoDBInfo.columns[0] = "TextStatusId";
-    localMAutoDBInfo.colsMap.put("TextStatusId", "TEXT");
-    localStringBuilder.append(" TextStatusId TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[1] = "HashUserName";
-    localMAutoDBInfo.colsMap.put("HashUserName", "TEXT");
-    localStringBuilder.append(" HashUserName TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[2] = "DisplayName";
-    localMAutoDBInfo.colsMap.put("DisplayName", "TEXT");
-    localStringBuilder.append(" DisplayName TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[3] = "HeadImgUrl";
-    localMAutoDBInfo.colsMap.put("HeadImgUrl", "TEXT");
-    localStringBuilder.append(" HeadImgUrl TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[4] = "Description";
-    localMAutoDBInfo.colsMap.put("Description", "TEXT");
-    localStringBuilder.append(" Description TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[5] = "Type";
-    localMAutoDBInfo.colsMap.put("Type", "INTEGER");
-    localStringBuilder.append(" Type INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[6] = "CreateTime";
-    localMAutoDBInfo.colsMap.put("CreateTime", "INTEGER");
-    localStringBuilder.append(" CreateTime INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[7] = "Notify";
-    localMAutoDBInfo.colsMap.put("Notify", "INTEGER");
-    localStringBuilder.append(" Notify INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[8] = "Read";
-    localMAutoDBInfo.colsMap.put("Read", "INTEGER");
-    localStringBuilder.append(" Read INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[9] = "thumbUrl";
-    localMAutoDBInfo.colsMap.put("thumbUrl", "TEXT");
-    localStringBuilder.append(" thumbUrl TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[10] = "TopicInfo";
-    localMAutoDBInfo.colsMap.put("TopicInfo", "BLOB");
-    localStringBuilder.append(" TopicInfo BLOB");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[11] = "DeleteInMsgList";
-    localMAutoDBInfo.colsMap.put("DeleteInMsgList", "INTEGER");
-    localStringBuilder.append(" DeleteInMsgList INTEGER");
-    localMAutoDBInfo.columns[12] = "rowid";
-    localMAutoDBInfo.sql = localStringBuilder.toString();
-    return localMAutoDBInfo;
+    AppMethodBeat.i(289651);
+    int i = parama.getId();
+    parama = parama.aIF();
+    s.s(parama, "struct.toShowString()");
+    Log.i("MicroMsg.TextStatus.tsReport", "report%s %s", new Object[] { Integer.valueOf(i), n.m(parama, "\r\n", " ", false) });
+    AppMethodBeat.o(289651);
   }
   
-  public void convertFrom(Cursor paramCursor)
+  public static void a(w paramw, long paramLong)
   {
-    String[] arrayOfString = paramCursor.getColumnNames();
-    if (arrayOfString == null) {
+    AppMethodBeat.i(289679);
+    if (paramw == null) {}
+    for (paramw = null;; paramw = ah.aiuX)
+    {
+      if (paramw == null) {
+        Log.e("MicroMsg.TextStatus.tsReport", "postReportByTextStatusDoWhatActivity: param is null");
+      }
+      AppMethodBeat.o(289679);
+      return;
+      pr localpr = new pr();
+      localpr.wW(Util.nullAs(paramw.sessionId, ""));
+      localpr.wX(String.valueOf(paramw.enterTime));
+      localpr.izg = paramw.Toi;
+      localpr.iuE = paramw.enterTime;
+      localpr.jnz = paramLong;
+      localpr.jkD = cn.bDw();
+      localpr.joe = paramw.Toj;
+      localpr.jof = paramw.Tok;
+      localpr.jog = 0L;
+      localpr.joa = paramw.Tol;
+      localpr.joc = paramw.Tom;
+      localpr.wY(paramw.Ton);
+      localpr.joo = paramw.Tos;
+      localpr.wZ(paramw.Tot);
+      localpr.xa(paramw.Tou);
+      localpr.xb(com.tencent.mm.plugin.textstatus.util.b.hKh().hKf());
+      localpr.bMH();
+      a((com.tencent.mm.plugin.report.a)localpr);
+    }
+  }
+  
+  private static final void a(bh parambh1, int paramInt, boolean paramBoolean, com.tencent.mm.plugin.secdata.a.b paramb, bh parambh2)
+  {
+    AppMethodBeat.i(289704);
+    Log.i("MicroMsg.TextStatus.tsReport", "postReportByTextStatusEditActivity onActionDone " + paramInt + ' ' + paramBoolean + ' ' + parambh1.Tqq);
+    AppMethodBeat.o(289704);
+  }
+  
+  private static void a(bh parambh, Long paramLong, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(289693);
+    com.tencent.threadpool.h.ahAA.bm(new b..ExternalSyntheticLambda2(parambh, paramLong, paramString1, paramString2));
+    AppMethodBeat.o(289693);
+  }
+  
+  public static void a(p paramp)
+  {
+    AppMethodBeat.i(289669);
+    s.u(paramp, "exposedData");
+    try
+    {
+      ((g)com.tencent.mm.kernel.h.az(g.class)).updateOnlyMemory(9, "TextStatusCardExposed", (com.tencent.mm.bx.a)paramp);
       return;
     }
-    int i = 0;
-    int j = arrayOfString.length;
-    label20:
-    int k;
-    if (i < j)
+    finally
     {
-      k = arrayOfString[i].hashCode();
-      if (MIE != k) {
-        break label60;
+      AppMethodBeat.o(289669);
+    }
+  }
+  
+  public static void a(String paramString1, Long paramLong, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(289687);
+    if (paramString1 == null) {}
+    for (paramString1 = null;; paramString1 = ah.aiuX)
+    {
+      if (paramString1 == null) {
+        Log.i("MicroMsg.TextStatus.tsReport", "postReport: cliPostID is null");
       }
-      this.field_TextStatusId = paramCursor.getString(i);
+      AppMethodBeat.o(289687);
+      return;
+      ((g)com.tencent.mm.kernel.h.az(g.class)).getWithoutClear(8, s.X("StatusTextPost_", paramString1), bh.class, new b..ExternalSyntheticLambda1(paramString1, paramLong, paramString2, paramString3));
+    }
+  }
+  
+  private static final void a(String paramString1, Long paramLong, String paramString2, String paramString3, int paramInt, boolean paramBoolean, com.tencent.mm.plugin.secdata.a.b paramb, bh parambh)
+  {
+    AppMethodBeat.i(289709);
+    Log.i("MicroMsg.TextStatus.tsReport", "postReport onActionDone " + paramInt + ' ' + paramBoolean + ' ' + paramString1);
+    if (parambh == null) {}
+    for (paramString2 = null;; paramString2 = ah.aiuX)
+    {
+      if (paramString2 == null) {
+        Log.e("MicroMsg.TextStatus.tsReport", "postReport: postData is null, " + paramString1 + ", " + paramLong);
+      }
+      AppMethodBeat.o(289709);
+      return;
+      a(parambh, paramLong, paramString2, paramString3);
+    }
+  }
+  
+  public static void a(boolean paramBoolean, bh parambh)
+  {
+    AppMethodBeat.i(289684);
+    if (parambh == null)
+    {
+      parambh = null;
+      if (parambh == null) {
+        Log.e("MicroMsg.TextStatus.tsReport", s.X("postReportByTextStatusEditActivity: postData is null, ", Boolean.valueOf(paramBoolean)));
+      }
+      AppMethodBeat.o(289684);
+      return;
+    }
+    if (paramBoolean) {
+      ((g)com.tencent.mm.kernel.h.az(g.class)).updateWithSave(8, s.X("StatusTextPost_", parambh.Tqq), (com.tencent.mm.bx.a)parambh, new b..ExternalSyntheticLambda0(parambh));
     }
     for (;;)
     {
-      i += 1;
-      break label20;
+      parambh = ah.aiuX;
       break;
-      label60:
-      if (MIF == k) {
-        this.field_HashUserName = paramCursor.getString(i);
-      } else if (MIG == k) {
-        this.field_DisplayName = paramCursor.getString(i);
-      } else if (MIH == k) {
-        this.field_HeadImgUrl = paramCursor.getString(i);
-      } else if (hVR == k) {
-        this.field_Description = paramCursor.getString(i);
-      } else if (hVW == k) {
-        this.field_Type = paramCursor.getInt(i);
-      } else if (hVP == k) {
-        this.field_CreateTime = paramCursor.getInt(i);
-      } else if (MII == k) {
-        this.field_Notify = paramCursor.getInt(i);
-      } else if (MIJ == k) {
-        this.field_Read = paramCursor.getInt(i);
-      } else if (hIO == k) {
-        this.field_thumbUrl = paramCursor.getString(i);
-      } else if (MHU == k) {
-        this.field_TopicInfo = paramCursor.getBlob(i);
-      } else if (MIK == k) {
-        this.field_DeleteInMsgList = paramCursor.getInt(i);
-      } else if (rowid_HASHCODE == k) {
-        this.systemRowid = paramCursor.getLong(i);
+      a(parambh, Long.valueOf(3L), "", "");
+    }
+  }
+  
+  private static final void b(bh parambh, Long paramLong, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(289720);
+    s.u(parambh, "$postData");
+    pr localpr = new pr();
+    localpr.wW(Util.nullAs(parambh.sessionId, ""));
+    localpr.izg = parambh.Toi;
+    localpr.wX(Util.nullAs(parambh.Tqq, ""));
+    localpr.iuE = parambh.enterTime;
+    long l;
+    if (paramLong == null)
+    {
+      l = 0L;
+      localpr.jnz = l;
+      localpr.jkD = cn.bDw();
+      localpr.jnA = localpr.F("ExitTopicID", Util.nullAs(paramString1, ""), true);
+      localpr.jnB = localpr.F("ExitTextStatusID", Util.nullAs(paramString2, ""), true);
+      paramLong = new StringBuilder();
+      paramString1 = parambh.Tqs.iterator();
+      label148:
+      if (!paramString1.hasNext()) {
+        break label219;
+      }
+      paramString2 = (String)paramString1.next();
+      if (((CharSequence)paramLong).length() <= 0) {
+        break label213;
       }
     }
+    label213:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        paramLong.append(";");
+      }
+      paramLong.append(paramString2);
+      break label148;
+      l = paramLong.longValue();
+      break;
+    }
+    label219:
+    localpr.jny = localpr.F("StatusIcons", paramLong.toString(), true);
+    localpr.jnC = parambh.Tqv;
+    localpr.jnD = parambh.Tqw;
+    localpr.jnE = parambh.Tqx;
+    localpr.jnF = parambh.Tqy;
+    localpr.jnG = parambh.Tqz;
+    localpr.jmS = localpr.F("SourceID", Util.nullAs(parambh.TqA, ""), true);
+    localpr.jmT = localpr.F("SourceActivityID", Util.nullAs(parambh.TqB, ""), true);
+    localpr.jmU = localpr.F("SourceName", Util.nullAs(parambh.sourceName, ""), true);
+    localpr.jnH = localpr.F("SourceIcon", Util.nullAs(parambh.sourceIcon, ""), true);
+    localpr.jnI = parambh.TqC;
+    localpr.jnJ = parambh.TqD;
+    localpr.jnK = parambh.TqE;
+    localpr.jnL = parambh.TqF;
+    localpr.jnM = parambh.TqG;
+    localpr.jnN = parambh.TqH;
+    localpr.jnO = parambh.TqI;
+    localpr.jnP = parambh.TqJ;
+    localpr.jnS = parambh.TqK;
+    localpr.jnT = parambh.TqL;
+    localpr.jnU = parambh.TqM;
+    localpr.jnV = parambh.TqN;
+    localpr.jnW = parambh.TqO;
+    localpr.jnX = parambh.TqP;
+    localpr.jnY = parambh.TqQ;
+    localpr.jnZ = parambh.TqR;
+    localpr.joe = parambh.Toj;
+    localpr.jof = parambh.Tok;
+    localpr.jog = 0L;
+    localpr.joh = parambh.TqU;
+    localpr.joi = parambh.TqV;
+    localpr.jnQ = parambh.Trl;
+    localpr.joj = localpr.F("RefBackgroundUser", parambh.TqX, true);
+    localpr.jok = localpr.F("RefBackgroundStatus", parambh.TqY, true);
+    localpr.jol = parambh.TqS;
+    localpr.jom = localpr.F("ImgVideoMd5Orig", parambh.TqT, true);
+    localpr.jon = localpr.F("FinderPickerSessionId", parambh.TqZ, true);
+    localpr.joa = parambh.Tra;
+    localpr.joc = parambh.Trb;
+    localpr.wY(parambh.Ton);
+    localpr.joo = parambh.Trc;
+    localpr.jop = parambh.Trd;
+    localpr.joq = parambh.Tre;
+    localpr.jor = parambh.Trf;
+    localpr.jos = parambh.Trg;
+    localpr.jot = parambh.Trh;
+    localpr.jou = localpr.F("FinalEmoticon", parambh.Tri, true);
+    localpr.jov = 2L;
+    localpr.jow = 2L;
+    localpr.wZ(parambh.Trj);
+    localpr.xa(parambh.Trk);
+    localpr.xb(com.tencent.mm.plugin.textstatus.util.b.hKh().hKf());
+    localpr.bMH();
+    a((com.tencent.mm.plugin.report.a)localpr);
+    AppMethodBeat.o(289720);
   }
   
-  public ContentValues convertTo()
+  public static p hHY()
   {
-    ContentValues localContentValues = new ContentValues();
-    if (this.MIx) {
-      localContentValues.put("TextStatusId", this.field_TextStatusId);
+    AppMethodBeat.i(289672);
+    try
+    {
+      p localp = (p)((g)com.tencent.mm.kernel.h.az(g.class)).getOnlyMemory(9, "TextStatusCardExposed");
+      AppMethodBeat.o(289672);
+      return localp;
     }
-    if (this.MIy) {
-      localContentValues.put("HashUserName", this.field_HashUserName);
+    finally
+    {
+      for (;;)
+      {
+        Object localObject2 = null;
+      }
     }
-    if (this.MIz) {
-      localContentValues.put("DisplayName", this.field_DisplayName);
-    }
-    if (this.MIA) {
-      localContentValues.put("HeadImgUrl", this.field_HeadImgUrl);
-    }
-    if (this.hVI) {
-      localContentValues.put("Description", this.field_Description);
-    }
-    if (this.hVN) {
-      localContentValues.put("Type", Integer.valueOf(this.field_Type));
-    }
-    if (this.hVG) {
-      localContentValues.put("CreateTime", Integer.valueOf(this.field_CreateTime));
-    }
-    if (this.MIB) {
-      localContentValues.put("Notify", Integer.valueOf(this.field_Notify));
-    }
-    if (this.MIC) {
-      localContentValues.put("Read", Integer.valueOf(this.field_Read));
-    }
-    if (this.hIa) {
-      localContentValues.put("thumbUrl", this.field_thumbUrl);
-    }
-    if (this.MHt) {
-      localContentValues.put("TopicInfo", this.field_TopicInfo);
-    }
-    if (this.MID) {
-      localContentValues.put("DeleteInMsgList", Integer.valueOf(this.field_DeleteInMsgList));
-    }
-    if (this.systemRowid > 0L) {
-      localContentValues.put("rowid", Long.valueOf(this.systemRowid));
-    }
-    return localContentValues;
-  }
-  
-  public String[] getIndexCreateSQL()
-  {
-    return INDEX_CREATE;
-  }
-  
-  public String getTableName()
-  {
-    return "TextStatusLike";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.i.b
  * JD-Core Version:    0.7.0.1
  */

@@ -4,9 +4,9 @@ import com.tencent.mm.plugin.gamelife.b.c;
 
 public abstract interface e
 {
-  public abstract String apJ();
+  public abstract String aJK();
   
-  public abstract c eAq();
+  public abstract c fIq();
   
   public abstract String getSelfUsername();
   
@@ -14,7 +14,7 @@ public abstract interface e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelife.a.e
  * JD-Core Version:    0.7.0.1
  */

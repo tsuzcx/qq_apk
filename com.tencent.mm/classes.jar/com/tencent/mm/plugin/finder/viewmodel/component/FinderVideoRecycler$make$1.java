@@ -2,44 +2,45 @@ package com.tencent.mm.plugin.finder.viewmodel.component;
 
 import android.content.Context;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.h;
-import androidx.lifecycle.h.a;
-import androidx.lifecycle.k;
-import androidx.lifecycle.t;
+import androidx.lifecycle.j;
+import androidx.lifecycle.j.a;
+import androidx.lifecycle.p;
+import androidx.lifecycle.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashSet;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler$make$1", "Landroidx/lifecycle/LifecycleObserver;", "onDestroy", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler$make$1", "Landroidx/lifecycle/LifecycleObserver;", "onDestroy", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderVideoRecycler$make$1
-  implements k
+  implements p
 {
-  FinderVideoRecycler$make$1(AppCompatActivity paramAppCompatActivity, String paramString) {}
+  FinderVideoRecycler$make$1(be parambe, AppCompatActivity paramAppCompatActivity, String paramString) {}
   
-  @t(jl=h.a.ON_DESTROY)
+  @z(Ho=j.a.ON_DESTROY)
   public final void onDestroy()
   {
-    AppMethodBeat.i(268734);
-    Log.i("Finder.VideoRecycler", "onDestroy activityCount:" + as.b(this.Bpm));
-    as localas = this.Bpm;
-    as.a(localas, as.b(localas) - 1);
-    if (as.b(this.Bpm) == 0) {
-      as.c(this.Bpm);
+    AppMethodBeat.i(338781);
+    Log.i("Finder.VideoRecycler", s.X("onDestroy activityCount:", Integer.valueOf(be.c(this.GVS))));
+    be localbe = this.GVS;
+    be.a(localbe, be.c(localbe) - 1);
+    if (be.c(this.GVS) == 0) {
+      be.d(this.GVS);
     }
     for (;;)
     {
-      as.d(this.Bpm).remove(this.$key);
-      this.wYZ.getLifecycle().b((k)this);
-      AppMethodBeat.o(268734);
+      be.e(this.GVS).remove(this.$key);
+      this.Awh.getLifecycle().removeObserver((p)this);
+      AppMethodBeat.o(338781);
       return;
-      this.Bpm.ga((Context)this.wYZ);
+      be.a(this.GVS, (Context)this.Awh);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.viewmodel.component.FinderVideoRecycler.make.1
  * JD-Core Version:    0.7.0.1
  */

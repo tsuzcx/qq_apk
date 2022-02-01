@@ -2,63 +2,63 @@ package com.tencent.mm.plugin.expt.hellhound.core.b.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.a.b;
-import com.tencent.mm.protocal.protobuf.bmm;
+import com.tencent.mm.protocal.protobuf.caf;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
 
 public final class d
 {
-  public static void a(bmm parambmm)
+  public static void a(caf paramcaf)
   {
     AppMethodBeat.i(169278);
-    if (parambmm == null)
+    if (paramcaf == null)
     {
       AppMethodBeat.o(169278);
       return;
     }
     try
     {
-      parambmm = parambmm.toByteArray();
-      b.r("hell_mmkv_fbm__", parambmm);
+      paramcaf = paramcaf.toByteArray();
+      b.u("hell_mmkv_fbm__", paramcaf);
       AppMethodBeat.o(169278);
       return;
     }
-    catch (IOException parambmm)
+    catch (IOException paramcaf)
     {
-      Log.printErrStackTrace("HABBYGE-MALI.FragmentFrontBackMonitor", parambmm, "HellMsgQDao, _write, crash: %s", new Object[] { parambmm.getMessage() });
+      Log.printErrStackTrace("HABBYGE-MALI.FragmentFrontBackMonitor", paramcaf, "HellMsgQDao, _write, crash: %s", new Object[] { paramcaf.getMessage() });
       AppMethodBeat.o(169278);
     }
   }
   
-  public static String dda()
+  public static String dJH()
   {
     AppMethodBeat.i(169276);
-    Object localObject = ddb();
+    Object localObject = dJI();
     if (localObject == null)
     {
       AppMethodBeat.o(169276);
       return null;
     }
-    localObject = ((bmm)localObject).SXp;
+    localObject = ((caf)localObject).aajh;
     AppMethodBeat.o(169276);
     return localObject;
   }
   
-  public static bmm ddb()
+  public static caf dJI()
   {
     AppMethodBeat.i(169277);
-    byte[] arrayOfByte = b.awZ("hell_mmkv_fbm__");
+    byte[] arrayOfByte = b.ard("hell_mmkv_fbm__");
     if ((arrayOfByte == null) || (arrayOfByte.length <= 0))
     {
       AppMethodBeat.o(169277);
       return null;
     }
-    bmm localbmm = new bmm();
+    caf localcaf = new caf();
     try
     {
-      localbmm.parseFrom(arrayOfByte);
+      localcaf.parseFrom(arrayOfByte);
       AppMethodBeat.o(169277);
-      return localbmm;
+      return localcaf;
     }
     catch (IOException localIOException)
     {
@@ -70,7 +70,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.b.b.d
  * JD-Core Version:    0.7.0.1
  */

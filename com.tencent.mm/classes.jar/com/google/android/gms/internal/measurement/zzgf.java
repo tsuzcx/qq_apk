@@ -6,7 +6,6 @@ import android.database.sqlite.SQLiteException;
 import android.text.TextUtils;
 import androidx.b.a;
 import com.google.android.gms.common.internal.Preconditions;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.measurement.AppMeasurement.Event;
 import com.google.android.gms.measurement.AppMeasurement.Param;
 import com.google.android.gms.measurement.AppMeasurement.UserProperty;
@@ -18,9 +17,7 @@ public final class zzgf
   extends zzjq
   implements zzeh
 {
-  @VisibleForTesting
   private static int zzalf = 65535;
-  @VisibleForTesting
   private static int zzalg = 2;
   private final Map<String, Map<String, String>> zzalh;
   private final Map<String, Map<String, Boolean>> zzali;
@@ -420,7 +417,7 @@ public final class zzgf
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzgf
  * JD-Core Version:    0.7.0.1
  */

@@ -6,13 +6,13 @@ public enum c$a
 {
   static
   {
-    AppMethodBeat.i(220781);
-    VOU = new a("LOW", 0);
-    VOV = new a("NORMAL", 1);
-    VOW = new a("HIGH", 2);
-    VOX = new a("IMMEDIATE", 3);
-    VOY = new a[] { VOU, VOV, VOW, VOX };
-    AppMethodBeat.o(220781);
+    AppMethodBeat.i(232018);
+    adsZ = new a("LOW", 0);
+    adta = new a("NORMAL", 1);
+    adtb = new a("HIGH", 2);
+    adtc = new a("IMMEDIATE", 3);
+    adtd = new a[] { adsZ, adta, adtb, adtc };
+    AppMethodBeat.o(232018);
   }
   
   private c$a() {}

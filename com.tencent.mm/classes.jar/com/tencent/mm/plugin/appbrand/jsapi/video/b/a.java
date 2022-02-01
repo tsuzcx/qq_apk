@@ -8,29 +8,29 @@ import com.tencent.mm.plugin.appbrand.jsapi.video.b.c.f;
 import com.tencent.mm.plugin.appbrand.jsapi.video.b.c.k;
 import com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h;
 import com.tencent.mm.plugin.appbrand.jsapi.video.b.e.j;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.util.List;
 
 public class a
 {
-  private static volatile a pvy;
+  private static volatile a sAE;
   public Context appContext;
   public String cacheDir;
-  public boolean dal = false;
-  public boolean pvA = true;
-  public boolean pvB = true;
-  public boolean pvC = true;
-  public boolean pvD = false;
-  public List<String> pvE;
-  public long pvF = 536870912L;
-  public long pvG = 1048576L;
-  public int pvH = 5;
-  public j pvI;
-  public com.tencent.mm.plugin.appbrand.jsapi.video.b.d.a pvJ;
-  public e pvK;
-  public f pvL;
-  public k pvu;
-  public boolean pvz = true;
+  public boolean eYL = false;
+  public k sAA;
+  public boolean sAF = true;
+  public boolean sAG = true;
+  public boolean sAH = true;
+  public boolean sAI = true;
+  public boolean sAJ = false;
+  public List<String> sAK;
+  public long sAL = 536870912L;
+  public long sAM = 1048576L;
+  public int sAN = 5;
+  public j sAO;
+  public com.tencent.mm.plugin.appbrand.jsapi.video.b.d.a sAP;
+  public e sAQ;
+  public f sAR;
   public String tmpDir;
   
   private a(Context paramContext)
@@ -38,71 +38,71 @@ public class a
     this.appContext = paramContext;
   }
   
-  private static String aiQ(String paramString)
+  private static String abP(String paramString)
   {
-    AppMethodBeat.i(230108);
+    AppMethodBeat.i(328296);
     if (!TextUtils.isEmpty(paramString))
     {
-      q localq = new q(paramString);
+      u localu = new u(paramString);
       boolean bool;
-      if (localq.ifH())
+      if (localu.jKV())
       {
-        bool = localq.cFq();
+        bool = localu.diJ();
         h.log(4, "PlayerConfig", "fileDir:" + paramString + " is file, delete result:" + bool);
       }
-      if (!localq.ifE())
+      if (!localu.jKS())
       {
-        bool = localq.ifL();
+        bool = localu.jKY();
         h.log(4, "PlayerConfig", "fileDir:" + paramString + " not exist, make dir result:" + bool);
       }
     }
-    AppMethodBeat.o(230108);
+    AppMethodBeat.o(328296);
     return paramString;
   }
   
-  public static a bVt()
+  public static a cvH()
   {
-    AppMethodBeat.i(230101);
-    if (pvy == null)
+    AppMethodBeat.i(328281);
+    if (sAE == null)
     {
       localObject = new RuntimeException("PlayerConfig not initialized!");
-      AppMethodBeat.o(230101);
+      AppMethodBeat.o(328281);
       throw ((Throwable)localObject);
     }
-    Object localObject = pvy;
-    AppMethodBeat.o(230101);
+    Object localObject = sAE;
+    AppMethodBeat.o(328281);
     return localObject;
   }
   
   public static void init(Context paramContext)
   {
-    AppMethodBeat.i(230103);
-    if (pvy == null) {
+    AppMethodBeat.i(328287);
+    if (sAE == null) {
       try
       {
-        if (pvy == null) {
-          pvy = new a(paramContext);
+        if (sAE == null) {
+          sAE = new a(paramContext);
         }
         return;
       }
       finally
       {
-        AppMethodBeat.o(230103);
+        AppMethodBeat.o(328287);
       }
     }
-    AppMethodBeat.o(230103);
+    AppMethodBeat.o(328287);
   }
   
-  public final String bVu()
+  public final String cvI()
   {
-    AppMethodBeat.i(230107);
+    AppMethodBeat.i(328317);
     if (TextUtils.isEmpty(this.tmpDir)) {
       try
       {
-        q localq = q.Q(this.appContext.getFilesDir());
-        if (localq == null)
+        u localu = u.V(this.appContext.getFilesDir());
+        if (localu == null)
         {
-          AppMethodBeat.o(230107);
+          AppMethodBeat.o(328317);
           return null;
         }
       }
@@ -110,30 +110,30 @@ public class a
       {
         for (;;)
         {
-          h.a(5, "PlayerConfig", "getTempDir fail", localException);
+          h.b(5, "PlayerConfig", "getTempDir fail", localException);
           localObject = null;
         }
-        localObject = aiQ(localObject + "/wxvideotmp");
-        AppMethodBeat.o(230107);
+        localObject = abP(localObject + "/wxvideotmp");
+        AppMethodBeat.o(328317);
         return localObject;
       }
     }
     Object localObject = this.tmpDir;
-    AppMethodBeat.o(230107);
+    AppMethodBeat.o(328317);
     return localObject;
   }
   
   public final String getCacheDir()
   {
-    AppMethodBeat.i(230106);
+    AppMethodBeat.i(328307);
     if (TextUtils.isEmpty(this.cacheDir)) {
       try
       {
-        q localq = q.Q(this.appContext.getExternalCacheDir());
-        if (localq == null)
+        u localu = u.V(this.appContext.getExternalCacheDir());
+        if (localu == null)
         {
           h.log(5, "PlayerConfig", "getCacheDir fail, extCacheDir not exist");
-          AppMethodBeat.o(230106);
+          AppMethodBeat.o(328307);
           return null;
         }
       }
@@ -141,22 +141,22 @@ public class a
       {
         for (;;)
         {
-          h.a(5, "PlayerConfig", "getCacheDir fail", localException);
+          h.b(5, "PlayerConfig", "getCacheDir fail", localException);
           localObject = null;
         }
-        localObject = aiQ(localObject + "/wxvideocache");
-        AppMethodBeat.o(230106);
+        localObject = abP(localObject + "/wxvideocache");
+        AppMethodBeat.o(328307);
         return localObject;
       }
     }
     Object localObject = this.cacheDir;
-    AppMethodBeat.o(230106);
+    AppMethodBeat.o(328307);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.a
  * JD-Core Version:    0.7.0.1
  */

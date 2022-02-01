@@ -1,40 +1,36 @@
 package com.tencent.mm.plugin.appbrand.openmaterial;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/openmaterial/GridBottomSheetEnhanceLogic$EnhanceState;", "", "type", "Lcom/tencent/mm/plugin/appbrand/openmaterial/IEnhanceBottomSheetController$EnhanceType;", "hidden", "", "(Lcom/tencent/mm/plugin/appbrand/openmaterial/IEnhanceBottomSheetController$EnhanceType;Z)V", "getHidden", "()Z", "getType", "()Lcom/tencent/mm/plugin/appbrand/openmaterial/IEnhanceBottomSheetController$EnhanceType;", "component1", "component2", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/openmaterial/GridBottomSheetEnhanceLogic$EnhanceState;", "", "type", "Lcom/tencent/mm/plugin/appbrand/openmaterial/IEnhanceBottomSheetController$EnhanceType;", "hidden", "", "(Lcom/tencent/mm/plugin/appbrand/openmaterial/IEnhanceBottomSheetController$EnhanceType;Z)V", "getHidden", "()Z", "getType", "()Lcom/tencent/mm/plugin/appbrand/openmaterial/IEnhanceBottomSheetController$EnhanceType;", "component1", "component2", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 final class e$b
 {
-  final j.a qms;
-  final boolean qmt;
+  final i.a trm;
+  final boolean trn;
   
-  public e$b(j.a parama, boolean paramBoolean)
+  public e$b(i.a parama, boolean paramBoolean)
   {
-    AppMethodBeat.i(279669);
-    this.qms = parama;
-    this.qmt = paramBoolean;
-    AppMethodBeat.o(279669);
+    AppMethodBeat.i(323653);
+    this.trm = parama;
+    this.trn = paramBoolean;
+    AppMethodBeat.o(323653);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(279676);
-    if (this != paramObject)
+    if (this == paramObject) {}
+    do
     {
-      if ((paramObject instanceof b))
-      {
-        paramObject = (b)paramObject;
-        if ((!p.h(this.qms, paramObject.qms)) || (this.qmt != paramObject.qmt)) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(279676);
       return true;
-    }
-    AppMethodBeat.o(279676);
+      if (!(paramObject instanceof b)) {
+        return false;
+      }
+      paramObject = (b)paramObject;
+      if (this.trm != paramObject.trm) {
+        return false;
+      }
+    } while (this.trn == paramObject.trn);
     return false;
   }
   
@@ -45,15 +41,15 @@ final class e$b
   
   public final String toString()
   {
-    AppMethodBeat.i(279671);
-    String str = "EnhanceState(type=" + this.qms + ", hidden=" + this.qmt + ")";
-    AppMethodBeat.o(279671);
+    AppMethodBeat.i(323665);
+    String str = "EnhanceState(type=" + this.trm + ", hidden=" + this.trn + ')';
+    AppMethodBeat.o(323665);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.openmaterial.e.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,40 @@
 package com.tencent.mm.modelsns;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.findersdk.a.am;
-import com.tencent.mm.protocal.protobuf.dbr;
+import com.tencent.mm.plugin.findersdk.a.cq;
+import com.tencent.mm.protocal.protobuf.dtj;
 import java.util.Map;
 
 public final class j
   implements k
 {
-  public dbr mbm;
+  public dtj oUg;
   
   public j()
   {
-    AppMethodBeat.i(260151);
-    this.mbm = new dbr();
-    AppMethodBeat.o(260151);
+    AppMethodBeat.i(233246);
+    this.oUg = new dtj();
+    AppMethodBeat.o(233246);
   }
   
-  public final String boV()
+  public final String bMC()
   {
-    AppMethodBeat.i(260152);
-    String str = am.a(this.mbm);
-    AppMethodBeat.o(260152);
+    AppMethodBeat.i(233250);
+    String str = cq.a(this.oUg);
+    AppMethodBeat.o(233250);
     return str;
   }
   
   public final void i(String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(260153);
-    this.mbm = am.C(paramString, paramMap);
-    AppMethodBeat.o(260153);
+    AppMethodBeat.i(233252);
+    this.oUg = cq.J(paramString, paramMap);
+    AppMethodBeat.o(233252);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.modelsns.j
  * JD-Core Version:    0.7.0.1
  */

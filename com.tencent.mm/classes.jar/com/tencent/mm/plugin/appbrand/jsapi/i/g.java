@@ -1,17 +1,15 @@
 package com.tencent.mm.plugin.appbrand.jsapi.i;
 
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.v;
-
 public final class g
-  extends c<v>
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<com.tencent.mm.plugin.appbrand.service.c>
 {
-  private static final int CTRL_INDEX = 77;
-  private static final String NAME = "setKeyboardValue";
+  public static final int CTRL_INDEX = 1077;
+  public static final String NAME = "shareInvitationToLiveRoom";
+  private static volatile boolean rZa = true;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.i.g
  * JD-Core Version:    0.7.0.1
  */

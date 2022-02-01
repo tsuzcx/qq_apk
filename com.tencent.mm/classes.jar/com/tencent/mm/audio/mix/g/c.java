@@ -4,9 +4,9 @@ import com.tencent.mm.al.b;
 
 public abstract interface c
 {
-  public abstract b aeD();
+  public abstract b aGB();
   
-  public abstract String aeE();
+  public abstract String aGC();
   
   public abstract void connect();
   

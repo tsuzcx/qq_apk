@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.u;
 
-import android.annotation.TargetApi;
 import android.media.MediaCodecInfo;
 import android.media.MediaCodecInfo.CodecCapabilities;
 import android.media.MediaCodecInfo.VideoCapabilities;
@@ -14,12 +13,12 @@ import java.util.ArrayList;
 
 public final class f
 {
-  private static long EWN = 0L;
-  public static final String[] EWO = { "OMX.qcom.", "OMX.Exynos.", "OMX.hisi" };
+  public static final String[] KSA = { "OMX.qcom.", "OMX.Exynos.", "OMX.hisi" };
+  private static long KSz = 0L;
   
-  public static boolean aPq(String paramString)
+  public static boolean aMo(String paramString)
   {
-    AppMethodBeat.i(205160);
+    AppMethodBeat.i(260375);
     for (;;)
     {
       int i;
@@ -40,17 +39,17 @@ public final class f
           boolean bool = localArrayList.isEmpty();
           if (bool)
           {
-            AppMethodBeat.o(205160);
+            AppMethodBeat.o(260375);
             return false;
           }
-          AppMethodBeat.o(205160);
+          AppMethodBeat.o(260375);
           return true;
         }
       }
       catch (Exception paramString)
       {
         Log.printErrStackTrace("MicroMsg.MediaCodecUtil", paramString, "isSupportHevc error", new Object[0]);
-        AppMethodBeat.o(205160);
+        AppMethodBeat.o(260375);
         return false;
       }
       i += 1;
@@ -78,7 +77,7 @@ public final class f
   
   private static String b(MediaCodecInfo paramMediaCodecInfo, String paramString)
   {
-    AppMethodBeat.i(205164);
+    AppMethodBeat.i(260390);
     paramMediaCodecInfo = paramMediaCodecInfo.getSupportedTypes();
     int i = 0;
     while (i < paramMediaCodecInfo.length)
@@ -86,17 +85,16 @@ public final class f
       String str = paramMediaCodecInfo[i];
       if ((!Util.isNullOrNil(str)) && (str.contains(paramString)))
       {
-        AppMethodBeat.o(205164);
+        AppMethodBeat.o(260390);
         return str;
       }
       i += 1;
     }
-    AppMethodBeat.o(205164);
+    AppMethodBeat.o(260390);
     return "";
   }
   
-  @TargetApi(21)
-  public static boolean eSH()
+  public static boolean gbA()
   {
     AppMethodBeat.i(133903);
     for (;;)
@@ -104,7 +102,7 @@ public final class f
       int i;
       try
       {
-        if (d.qV(21))
+        if (d.rb(21))
         {
           MediaCodecInfo[] arrayOfMediaCodecInfo = new MediaCodecList(1).getCodecInfos();
           int j = arrayOfMediaCodecInfo.length;
@@ -148,10 +146,10 @@ public final class f
     }
   }
   
-  public static boolean eSI()
+  public static boolean gbB()
   {
     AppMethodBeat.i(133904);
-    if (Util.milliSecondsToNow(EWN) > 86400000L)
+    if (Util.milliSecondsToNow(KSz) > 86400000L)
     {
       AppMethodBeat.o(133904);
       return true;
@@ -160,18 +158,18 @@ public final class f
     return false;
   }
   
-  public static String eSJ()
+  public static String gbC()
   {
     AppMethodBeat.i(133905);
-    Log.d("MicroMsg.MediaCodecUtil", "check hevc info last rpt time[%d]", new Object[] { Long.valueOf(EWN) });
+    Log.d("MicroMsg.MediaCodecUtil", "check hevc info last rpt time[%d]", new Object[] { Long.valueOf(KSz) });
     for (;;)
     {
       int i;
       int i5;
       try
       {
-        EWN = Util.nowMilliSecond();
-        if (!d.qV(21)) {
+        KSz = Util.nowMilliSecond();
+        if (!d.rb(21)) {
           continue;
         }
         l = Util.currentTicks();
@@ -270,7 +268,7 @@ public final class f
         localException.append(1).append(",");
         continue;
       }
-      catch (Throwable localThrowable)
+      finally
       {
         int i6;
         Log.printErrStackTrace("MicroMsg.MediaCodecUtil", localThrowable, "report hevc info error %s", new Object[] { localThrowable.toString() });
@@ -282,7 +280,7 @@ public final class f
         continue;
         localThrowable.append(1).append(",");
         continue;
-        String str = eSK();
+        String str = gbD();
         AppMethodBeat.o(133905);
         return str;
       }
@@ -318,7 +316,7 @@ public final class f
     }
   }
   
-  private static String eSK()
+  private static String gbD()
   {
     AppMethodBeat.i(133906);
     long l = Util.currentTicks();
@@ -409,10 +407,9 @@ public final class f
     }
   }
   
-  @TargetApi(21)
-  public static boolean eSL()
+  public static boolean gbE()
   {
-    AppMethodBeat.i(205165);
+    AppMethodBeat.i(260392);
     for (;;)
     {
       int i;
@@ -420,7 +417,7 @@ public final class f
       int k;
       try
       {
-        if (d.qV(21))
+        if (d.rb(21))
         {
           MediaCodecInfo[] arrayOfMediaCodecInfo = new MediaCodecList(1).getCodecInfos();
           int m = arrayOfMediaCodecInfo.length;
@@ -441,7 +438,7 @@ public final class f
             if ((!Util.isNullOrNil(arrayOfString1[j])) && (arrayOfString1[j].contains("hevc")))
             {
               String str = localMediaCodecInfo.getName();
-              String[] arrayOfString2 = EWO;
+              String[] arrayOfString2 = KSA;
               int n = arrayOfString2.length;
               k = 0;
               if (k < n)
@@ -460,23 +457,23 @@ public final class f
             boolean bool = localArrayList1.isEmpty();
             if (bool)
             {
-              AppMethodBeat.o(205165);
+              AppMethodBeat.o(260392);
               return false;
             }
-            AppMethodBeat.o(205165);
+            AppMethodBeat.o(260392);
             return true;
           }
         }
         else
         {
-          AppMethodBeat.o(205165);
+          AppMethodBeat.o(260392);
           return false;
         }
       }
       catch (Exception localException)
       {
         Log.printErrStackTrace("MicroMsg.MediaCodecUtil", localException, "isSupportHevcEnc error", new Object[0]);
-        AppMethodBeat.o(205165);
+        AppMethodBeat.o(260392);
         return false;
       }
       j += 1;
@@ -491,7 +488,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.u.f
  * JD-Core Version:    0.7.0.1
  */

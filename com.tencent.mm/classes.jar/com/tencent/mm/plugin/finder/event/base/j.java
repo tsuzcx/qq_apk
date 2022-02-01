@@ -1,44 +1,30 @@
 package com.tencent.mm.plugin.finder.event.base;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.model.bu;
-import java.util.LinkedList;
-import java.util.List;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/event/base/SingleFeedFlowScrollEvent;", "Lcom/tencent/mm/plugin/finder/event/base/ScrollEvent;", "type", "", "(I)V", "acrossFeedList", "", "Lcom/tencent/mm/plugin/finder/event/base/FlowScrollEventFeedData;", "getAcrossFeedList", "()Ljava/util/List;", "setAcrossFeedList", "(Ljava/util/List;)V", "lastCenterFeedId", "", "getLastCenterFeedId", "()J", "setLastCenterFeedId", "(J)V", "lastFirstVisibleItemPosition", "getLastFirstVisibleItemPosition", "()I", "setLastFirstVisibleItemPosition", "lastLastVisibleItemPosition", "getLastLastVisibleItemPosition", "setLastLastVisibleItemPosition", "visibleFeedList", "getVisibleFeedList", "setVisibleFeedList", "visibleNotFeedList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "getVisibleNotFeedList", "()Ljava/util/LinkedList;", "setVisibleNotFeedList", "(Ljava/util/LinkedList;)V", "toString", "", "plugin-finder-base_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/event/base/SelectEvent;", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "type", "", "(I)V", "feedId", "", "getFeedId", "()J", "setFeedId", "(J)V", "pos", "getPos", "()I", "setPos", "getType", "setType", "Companion", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class j
-  extends h
+  extends b
 {
-  public int sCr = -1;
-  public int sCs = -1;
-  public long xjA = -1L;
-  public List<g> xrq;
-  public List<g> xrr;
-  public LinkedList<bu> xrs;
+  public static final a AOz;
+  public long feedId;
+  public int pos = -1;
+  public int type = 1;
   
-  public j(int paramInt)
+  static
   {
-    super(paramInt);
+    AppMethodBeat.i(330322);
+    AOz = new a((byte)0);
+    AppMethodBeat.o(330322);
   }
   
-  public final String toString()
-  {
-    AppMethodBeat.i(259326);
-    StringBuilder localStringBuilder = new StringBuilder("ScrollEvent(type=").append(this.type).append(", ").append(this.xrg).append(", ").append(this.xrh).append(", ").append(this.xri).append(", ").append(this.xrj).append(", itemCount=").append(this.afI).append(", newState=").append(this.xrk).append(") idleAcrossFeedList=");
-    Object localObject = this.xrq;
-    if (localObject != null) {}
-    for (localObject = Integer.valueOf(((List)localObject).size());; localObject = null)
-    {
-      localObject = localObject;
-      AppMethodBeat.o(259326);
-      return localObject;
-    }
-  }
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/event/base/SelectEvent$Companion;", "", "()V", "SELECT_STATE_ON_SELECTED", "", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.event.base.j
  * JD-Core Version:    0.7.0.1
  */

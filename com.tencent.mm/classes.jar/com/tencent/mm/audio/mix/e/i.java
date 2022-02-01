@@ -6,13 +6,13 @@ import java.util.List;
 
 public abstract interface i
 {
-  public abstract b M(List<e> paramList);
+  public abstract b bm(List<e> paramList);
   
   public abstract void init();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.audio.mix.e.i
  * JD-Core Version:    0.7.0.1
  */

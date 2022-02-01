@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/dvz" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <TextView android:textColor="@color/a0j" android:ellipsize="none" android:gravity="center_vertical" android:id="@id/ied" android:layout_marginLeft="3.0dip" android:singleLine="false" android:lineSpacingExtra="@dimen/bt" style="@style/ml" />
+    <com.tencent.mm.plugin.game.ui.GameBannerView android:id="@id/em6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="120.0dip" />
 </LinearLayout>

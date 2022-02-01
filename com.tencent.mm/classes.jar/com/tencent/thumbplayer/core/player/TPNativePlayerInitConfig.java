@@ -10,6 +10,7 @@ public class TPNativePlayerInitConfig
   public static final int BOOL_ENABLE_AUDIO_FRAME_CALLBACK = 402;
   public static final int BOOL_ENABLE_AUDIO_PASSTHROUGH = 210;
   public static final int BOOL_ENABLE_AUDIO_RENDERER_LATENCY_COMPENSATION = 401;
+  public static final int BOOL_ENABLE_AUDIO_SYNC_FREE_RUN = 411;
   public static final int BOOL_ENABLE_AV_SYNC = 400;
   public static final int BOOL_ENABLE_COLOR_MANAGEMENT = 407;
   public static final int BOOL_ENABLE_DROPFRAME_BY_REFRESHRATE = 406;
@@ -32,6 +33,7 @@ public class TPNativePlayerInitConfig
   public static final int FLOAT_VIDEO_DROP_FRAME_DETECT_MIN_RATE = 208;
   public static final int INT_AUDIO_RENDERER_TYPE = 404;
   public static final int INT_DECODER_MAX_TOLERATED_ERROR_COUNT = 200;
+  public static final int INT_ENABLE_RENDERER_SHARPEN = 451;
   public static final int INT_FRAME_SIZE_BYTE = 303;
   public static final int INT_HEIGHT = 312;
   public static final int INT_PIXEL_FORMAT = 310;
@@ -40,6 +42,7 @@ public class TPNativePlayerInitConfig
   public static final int INT_SAMPLE_FORMAT = 300;
   public static final int INT_SAMPLE_RATE_HZ = 302;
   public static final int INT_STREAM_DEMUXER_FORMAT = 116;
+  public static final int INT_STREAM_TYPE = 304;
   public static final int INT_TCP_RETRY_COUNT = 109;
   public static final int INT_VIDEO_RENDERER_TYPE = 405;
   public static final int INT_WIDTH = 311;
@@ -60,28 +63,31 @@ public class TPNativePlayerInitConfig
   public static final int QUEUE_INT_AUDIO_DECODER_TYPE = 202;
   public static final int QUEUE_INT_VIDEO_DECODER_TYPE = 203;
   public static final int QUEUE_STRING_HLS_TAG_CALLBACK = 113;
+  public static final int STRING_SHARPEN_SHADER_PATH = 452;
   private HashMap<Integer, Boolean> mBoolMap;
   private HashMap<Integer, Float> mFloatMap;
   private HashMap<Integer, Integer> mIntMap;
   private HashMap<Integer, Long> mLongMap;
   private HashMap<Integer, Vector<Integer>> mQueueIntMap;
   private HashMap<Integer, Vector<String>> mQueueStringMap;
+  private HashMap<Integer, String> mStringMap;
   
   public TPNativePlayerInitConfig()
   {
-    AppMethodBeat.i(223828);
+    AppMethodBeat.i(228249);
     this.mIntMap = new HashMap();
+    this.mStringMap = new HashMap();
     this.mLongMap = new HashMap();
     this.mFloatMap = new HashMap();
     this.mBoolMap = new HashMap();
     this.mQueueIntMap = new HashMap();
     this.mQueueStringMap = new HashMap();
-    AppMethodBeat.o(223828);
+    AppMethodBeat.o(228249);
   }
   
   public void addQueueInt(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(223833);
+    AppMethodBeat.i(228254);
     Vector localVector2 = (Vector)this.mQueueIntMap.get(Integer.valueOf(paramInt1));
     Vector localVector1 = localVector2;
     if (localVector2 == null)
@@ -90,12 +96,12 @@ public class TPNativePlayerInitConfig
       this.mQueueIntMap.put(Integer.valueOf(paramInt1), localVector1);
     }
     localVector1.add(Integer.valueOf(paramInt2));
-    AppMethodBeat.o(223833);
+    AppMethodBeat.o(228254);
   }
   
   public void addQueueString(int paramInt, String paramString)
   {
-    AppMethodBeat.i(223835);
+    AppMethodBeat.i(228261);
     Vector localVector2 = (Vector)this.mQueueStringMap.get(Integer.valueOf(paramInt));
     Vector localVector1 = localVector2;
     if (localVector2 == null)
@@ -104,7 +110,7 @@ public class TPNativePlayerInitConfig
       this.mQueueStringMap.put(Integer.valueOf(paramInt), localVector1);
     }
     localVector1.add(paramString);
-    AppMethodBeat.o(223835);
+    AppMethodBeat.o(228261);
   }
   
   public HashMap<Integer, Boolean> getBoolMap()
@@ -137,37 +143,49 @@ public class TPNativePlayerInitConfig
     return this.mQueueStringMap;
   }
   
+  public HashMap<Integer, String> getStringMap()
+  {
+    return this.mStringMap;
+  }
+  
   public void setBool(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(223840);
+    AppMethodBeat.i(228287);
     this.mBoolMap.put(Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean));
-    AppMethodBeat.o(223840);
+    AppMethodBeat.o(228287);
   }
   
   public void setFloat(int paramInt, float paramFloat)
   {
-    AppMethodBeat.i(223839);
+    AppMethodBeat.i(228282);
     this.mFloatMap.put(Integer.valueOf(paramInt), Float.valueOf(paramFloat));
-    AppMethodBeat.o(223839);
+    AppMethodBeat.o(228282);
   }
   
   public void setInt(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(223837);
+    AppMethodBeat.i(228267);
     this.mIntMap.put(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
-    AppMethodBeat.o(223837);
+    AppMethodBeat.o(228267);
   }
   
   public void setLong(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(223838);
+    AppMethodBeat.i(228278);
     this.mLongMap.put(Integer.valueOf(paramInt), Long.valueOf(paramLong));
-    AppMethodBeat.o(223838);
+    AppMethodBeat.o(228278);
+  }
+  
+  public void setString(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(228272);
+    this.mStringMap.put(Integer.valueOf(paramInt), paramString);
+    AppMethodBeat.o(228272);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.player.TPNativePlayerInitConfig
  * JD-Core Version:    0.7.0.1
  */

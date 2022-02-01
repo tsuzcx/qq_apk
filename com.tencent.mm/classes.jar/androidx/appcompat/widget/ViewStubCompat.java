@@ -1,6 +1,5 @@
 package androidx.appcompat.widget;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -17,10 +16,10 @@ public final class ViewStubCompat
   extends View
 {
   private LayoutInflater mInflater;
-  private int xQ;
-  private int xR;
-  private WeakReference<View> xS;
-  private a xT;
+  private int yL;
+  private int yM;
+  private WeakReference<View> yN;
+  private a yO;
   
   public ViewStubCompat(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -30,39 +29,38 @@ public final class ViewStubCompat
   public ViewStubCompat(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(242503);
-    this.xQ = 0;
+    AppMethodBeat.i(200269);
+    this.yL = 0;
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.j.ViewStubCompat, paramInt, 0);
-    this.xR = paramContext.getResourceId(a.j.ViewStubCompat_android_inflatedId, -1);
-    this.xQ = paramContext.getResourceId(a.j.ViewStubCompat_android_layout, 0);
+    this.yM = paramContext.getResourceId(a.j.ViewStubCompat_android_inflatedId, -1);
+    this.yL = paramContext.getResourceId(a.j.ViewStubCompat_android_layout, 0);
     setId(paramContext.getResourceId(a.j.ViewStubCompat_android_id, -1));
     paramContext.recycle();
     setVisibility(8);
     setWillNotDraw(true);
-    AppMethodBeat.o(242503);
+    AppMethodBeat.o(200269);
   }
   
   protected final void dispatchDraw(Canvas paramCanvas) {}
   
-  @SuppressLint({"MissingSuperCall"})
   public final void draw(Canvas paramCanvas) {}
   
-  public final View eI()
+  public final View fF()
   {
-    AppMethodBeat.i(242507);
+    AppMethodBeat.i(200343);
     Object localObject = getParent();
     if ((localObject != null) && ((localObject instanceof ViewGroup)))
     {
-      if (this.xQ != 0)
+      if (this.yL != 0)
       {
         ViewGroup localViewGroup = (ViewGroup)localObject;
         int i;
         if (this.mInflater != null)
         {
           localObject = this.mInflater;
-          localObject = ((LayoutInflater)localObject).inflate(this.xQ, localViewGroup, false);
-          if (this.xR != -1) {
-            ((View)localObject).setId(this.xR);
+          localObject = ((LayoutInflater)localObject).inflate(this.yL, localViewGroup, false);
+          if (this.yM != -1) {
+            ((View)localObject).setId(this.yM);
           }
           i = localViewGroup.indexOfChild(this);
           localViewGroup.removeViewInLayout(this);
@@ -74,8 +72,8 @@ public final class ViewStubCompat
         }
         for (;;)
         {
-          this.xS = new WeakReference(localObject);
-          AppMethodBeat.o(242507);
+          this.yN = new WeakReference(localObject);
+          AppMethodBeat.o(200343);
           return localObject;
           localObject = LayoutInflater.from(getContext());
           break;
@@ -84,17 +82,17 @@ public final class ViewStubCompat
         }
       }
       localObject = new IllegalArgumentException("ViewStub must have a valid layoutResource");
-      AppMethodBeat.o(242507);
+      AppMethodBeat.o(200343);
       throw ((Throwable)localObject);
     }
     localObject = new IllegalStateException("ViewStub must have a non-null ViewGroup viewParent");
-    AppMethodBeat.o(242507);
+    AppMethodBeat.o(200343);
     throw ((Throwable)localObject);
   }
   
   public final int getInflatedId()
   {
-    return this.xR;
+    return this.yM;
   }
   
   public final LayoutInflater getLayoutInflater()
@@ -104,19 +102,19 @@ public final class ViewStubCompat
   
   public final int getLayoutResource()
   {
-    return this.xQ;
+    return this.yL;
   }
   
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(242504);
+    AppMethodBeat.i(200302);
     setMeasuredDimension(0, 0);
-    AppMethodBeat.o(242504);
+    AppMethodBeat.o(200302);
   }
   
   public final void setInflatedId(int paramInt)
   {
-    this.xR = paramInt;
+    this.yM = paramInt;
   }
   
   public final void setLayoutInflater(LayoutInflater paramLayoutInflater)
@@ -126,42 +124,42 @@ public final class ViewStubCompat
   
   public final void setLayoutResource(int paramInt)
   {
-    this.xQ = paramInt;
+    this.yL = paramInt;
   }
   
   public final void setOnInflateListener(a parama)
   {
-    this.xT = parama;
+    this.yO = parama;
   }
   
   public final void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(242506);
-    if (this.xS != null)
+    AppMethodBeat.i(200333);
+    if (this.yN != null)
     {
-      Object localObject = (View)this.xS.get();
+      Object localObject = (View)this.yN.get();
       if (localObject != null)
       {
         ((View)localObject).setVisibility(paramInt);
-        AppMethodBeat.o(242506);
+        AppMethodBeat.o(200333);
         return;
       }
       localObject = new IllegalStateException("setVisibility called on un-referenced view");
-      AppMethodBeat.o(242506);
+      AppMethodBeat.o(200333);
       throw ((Throwable)localObject);
     }
     super.setVisibility(paramInt);
     if ((paramInt == 0) || (paramInt == 4)) {
-      eI();
+      fF();
     }
-    AppMethodBeat.o(242506);
+    AppMethodBeat.o(200333);
   }
   
   public static abstract interface a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     androidx.appcompat.widget.ViewStubCompat
  * JD-Core Version:    0.7.0.1
  */

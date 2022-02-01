@@ -4,49 +4,55 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.app.m;
-import com.tencent.mm.plugin.appbrand.appcache.ae;
+import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.plugin.appbrand.appcache.af;
 import com.tencent.mm.plugin.appbrand.appcache.bh;
 import com.tencent.mm.plugin.appbrand.appcache.bm;
 import com.tencent.mm.plugin.appbrand.appcache.bq;
-import com.tencent.mm.protocal.protobuf.epy;
+import com.tencent.mm.plugin.appbrand.appusage.j;
+import com.tencent.mm.plugin.appbrand.config.w;
+import com.tencent.mm.protocal.protobuf.flb;
 import com.tencent.mm.sdk.storage.IAutoDBItem;
-import com.tencent.mm.vfs.q;
 import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
-import kotlin.a.v;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.ab;
+import kotlin.a.k;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appcache/predownload/export/PrefetchForNonStandardAppUtils;", "", "()V", "collectBatchSyncVersionReqList", "", "Lcom/tencent/mm/protocal/protobuf/SyncVersionSingleReqInfo;", "convertFrom", "", "Lcom/tencent/mm/sdk/storage/IAutoDBItem;", "values", "Landroid/content/ContentValues;", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/appcache/predownload/export/PrefetchForNonStandardAppUtils;", "", "()V", "FORCE_SYNC_APPID_WHITE_LIST", "", "", "[Ljava/lang/String;", "collectBatchSyncVersionReqList", "", "Lcom/tencent/mm/protocal/protobuf/SyncVersionSingleReqInfo;", "convertFrom", "", "Lcom/tencent/mm/sdk/storage/IAutoDBItem;", "values", "Landroid/content/ContentValues;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public static final a nKe;
+  public static final a qJN;
+  private static final String[] uxw;
   
   static
   {
-    AppMethodBeat.i(269087);
-    nKe = new a();
-    AppMethodBeat.o(269087);
+    AppMethodBeat.i(320552);
+    qJN = new a();
+    uxw = new String[] { "wx1975249228c5cea8", "wx6509e7dc7bdc968d" };
+    AppMethodBeat.o(320552);
   }
   
   public static void a(IAutoDBItem paramIAutoDBItem, ContentValues paramContentValues)
   {
-    AppMethodBeat.i(269086);
-    p.k(paramIAutoDBItem, "$this$convertFrom");
-    p.k(paramContentValues, "values");
+    AppMethodBeat.i(320546);
+    s.u(paramIAutoDBItem, "<this>");
+    s.u(paramContentValues, "values");
     Object localObject = paramContentValues.keySet();
-    p.j(localObject, "values.keySet()");
+    s.s(localObject, "values.keySet()");
     localObject = ((Collection)localObject).toArray(new String[0]);
     if (localObject == null)
     {
-      paramIAutoDBItem = new kotlin.t("null cannot be cast to non-null type kotlin.Array<T>");
-      AppMethodBeat.o(269086);
+      paramIAutoDBItem = new NullPointerException("null cannot be cast to non-null type kotlin.Array<T>");
+      AppMethodBeat.o(320546);
       throw paramIAutoDBItem;
     }
     localObject = (String[])localObject;
@@ -63,61 +69,96 @@ public final class a
     }
     localMatrixCursor.addRow(arrayOfObject);
     paramIAutoDBItem.convertFrom((Cursor)localMatrixCursor);
-    AppMethodBeat.o(269086);
+    AppMethodBeat.o(320546);
   }
   
-  public static final List<epy> bHZ()
+  public static final List<flb> chv()
   {
-    AppMethodBeat.i(269085);
-    Object localObject1 = m.bFP();
-    if (localObject1 == null)
+    AppMethodBeat.i(320538);
+    bm localbm = n.cfm();
+    if (localbm == null)
     {
-      localObject1 = (List)v.aaAd;
-      AppMethodBeat.o(269085);
+      localObject1 = (List)ab.aivy;
+      AppMethodBeat.o(320538);
       return localObject1;
     }
     LinkedList localLinkedList = new LinkedList();
-    Object localObject2 = com.tencent.mm.plugin.appbrand.config.t.oak;
-    localObject2 = com.tencent.mm.plugin.appbrand.config.t.bLv().iterator();
-    label288:
-    while (((Iterator)localObject2).hasNext())
+    Object localObject1 = w.raK;
+    Iterator localIterator = w.ckS().iterator();
+    Object localObject3;
+    String str;
+    Object localObject4;
+    for (;;)
     {
-      String str = (String)((Iterator)localObject2).next();
-      Object localObject3 = new ae(str, "", 0).toString();
-      p.j(localObject3, "PkgQueryKey(appId, \"\", 0).toString()");
-      localObject3 = ((bm)localObject1).c((String)localObject3, 0, new String[] { "pkgPath", "version", "versionMd5", "NewMd5" });
-      if (localObject3 != null)
+      if (!localIterator.hasNext()) {
+        break label371;
+      }
+      localObject3 = (String)localIterator.next();
+      localObject1 = w.raK;
+      str = (String)w.ckT().get(localObject3);
+      try
       {
-        Object localObject4 = (CharSequence)((bh)localObject3).field_pkgPath;
-        if ((localObject4 == null) || (((CharSequence)localObject4).length() == 0)) {}
-        for (int i = 1;; i = 0)
+        bool = ((j)n.ag(j.class)).WI(str);
+        if (!bool)
         {
-          if ((i != 0) || (!u.agG(((bh)localObject3).field_pkgPath))) {
-            break label288;
+          localObject1 = new af((String)localObject3, "", 0).toString();
+          s.s(localObject1, "PkgQueryKey(appId, \"\", 0).toString()");
+          localObject1 = localbm.c((String)localObject1, 0, new String[] { "pkgPath", "version", "versionMd5", "NewMd5" });
+          if (localObject1 == null)
+          {
+            localObject1 = null;
+            if ((localObject1 != null) || (!k.contains(uxw, localObject3))) {
+              continue;
+            }
+            localObject1 = new flb();
+            ((flb)localObject1).aaLU = str;
+            ((flb)localObject1).oOI = ((String)localObject3);
+            localObject3 = ah.aiuX;
+            localLinkedList.add(localObject1);
           }
-          if (!bq.a(new q(((bh)localObject3).field_pkgPath), new String[] { ((bh)localObject3).field_versionMd5, ((bh)localObject3).field_NewMd5 }, str, "collectBatchSyncVersionReqList")) {
-            break;
-          }
-          localObject4 = new epy();
-          com.tencent.mm.plugin.appbrand.config.t localt = com.tencent.mm.plugin.appbrand.config.t.oak;
-          ((epy)localObject4).Txp = ((String)com.tencent.mm.plugin.appbrand.config.t.bLw().get(str));
-          ((epy)localObject4).Usv = ((bh)localObject3).field_version;
-          ((epy)localObject4).Usw = ((bh)localObject3).field_version;
-          ((epy)localObject4).CqK = null;
-          ((epy)localObject4).lVG = str;
-          localLinkedList.add(localObject4);
-          break;
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          boolean bool = false;
+        }
+        localObject4 = (CharSequence)localException.field_pkgPath;
+        if (localObject4 == null) {
+          break label244;
         }
       }
     }
-    localObject1 = (List)localLinkedList;
-    AppMethodBeat.o(269085);
-    return localObject1;
+    if (((CharSequence)localObject4).length() == 0) {}
+    label244:
+    for (int i = 1;; i = 0)
+    {
+      if ((i == 0) && (y.ZC(localException.field_pkgPath))) {
+        if (bq.a(new u(localException.field_pkgPath), new String[] { localException.field_versionMd5, localException.field_NewMd5 }, (String)localObject3, "collectBatchSyncVersionReqList"))
+        {
+          localObject4 = new flb();
+          ((flb)localObject4).aaLU = str;
+          ((flb)localObject4).abLC = localException.field_version;
+          ((flb)localObject4).abLD = localException.field_version;
+          ((flb)localObject4).IcT = null;
+          ((flb)localObject4).oOI = ((String)localObject3);
+          localObject2 = ah.aiuX;
+          localLinkedList.add(localObject4);
+        }
+      }
+      localObject2 = ah.aiuX;
+      break;
+    }
+    label371:
+    Object localObject2 = (List)localLinkedList;
+    AppMethodBeat.o(320538);
+    return localObject2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.predownload.export.a
  * JD-Core Version:    0.7.0.1
  */

@@ -5,61 +5,53 @@ import java.util.concurrent.Callable;
 
 public final class AppBrands
 {
-  private static Callable<AppBrandAppInfo> sAppBrandInfoGetterSupplier;
+  private static Callable<AppBrands.AppBrandAppInfo> sAppBrandInfoGetterSupplier;
   
   static
   {
-    AppMethodBeat.i(249019);
+    AppMethodBeat.i(244127);
     sAppBrandInfoGetterSupplier = new Callable()
     {
-      public final AppBrands.AppBrandAppInfo call()
+      public AppBrands.AppBrandAppInfo call()
       {
         return null;
       }
     };
-    AppMethodBeat.o(249019);
+    AppMethodBeat.o(244127);
   }
   
-  public static AppBrandAppInfo getAppBrandInfo()
+  public static AppBrands.AppBrandAppInfo getAppBrandInfo()
   {
-    AppMethodBeat.i(249018);
+    AppMethodBeat.i(244119);
     try
     {
-      AppBrandAppInfo localAppBrandAppInfo = (AppBrandAppInfo)sAppBrandInfoGetterSupplier.call();
-      AppMethodBeat.o(249018);
+      AppBrands.AppBrandAppInfo localAppBrandAppInfo = (AppBrands.AppBrandAppInfo)sAppBrandInfoGetterSupplier.call();
+      AppMethodBeat.o(244119);
       return localAppBrandAppInfo;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(249018);
+      AppMethodBeat.o(244119);
     }
     return null;
   }
   
   public static boolean isAppBrandProc()
   {
-    AppMethodBeat.i(249016);
+    AppMethodBeat.i(244112);
     boolean bool = MMApplicationContext.isAppBrandProcess();
-    AppMethodBeat.o(249016);
+    AppMethodBeat.o(244112);
     return bool;
   }
   
-  public static void setAppBrandInfoGetterSupplier(Callable<AppBrandAppInfo> paramCallable)
+  public static void setAppBrandInfoGetterSupplier(Callable<AppBrands.AppBrandAppInfo> paramCallable)
   {
     sAppBrandInfoGetterSupplier = paramCallable;
-  }
-  
-  public static final class AppBrandAppInfo
-  {
-    public String appId;
-    public String appName;
-    public int appType;
-    public int appVersion;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.AppBrands
  * JD-Core Version:    0.7.0.1
  */

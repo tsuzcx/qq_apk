@@ -9,57 +9,43 @@ import java.util.Iterator;
 
 public final class ao
 {
-  private static ao PVC;
-  HashMap<String, WebViewJSSDKFileItem> PVD;
+  private static ao WMj;
+  public HashMap<String, WebViewJSSDKFileItem> WMk;
   
   static
   {
     AppMethodBeat.i(79009);
-    PVC = new ao();
+    WMj = new ao();
     AppMethodBeat.o(79009);
   }
   
   public ao()
   {
     AppMethodBeat.i(79005);
-    this.PVD = new HashMap();
+    this.WMk = new HashMap();
     AppMethodBeat.o(79005);
   }
   
-  public static final ao gVN()
+  public static final ao ivu()
   {
-    return PVC;
+    return WMj;
   }
   
   public final void a(WebViewJSSDKFileItem paramWebViewJSSDKFileItem)
   {
     AppMethodBeat.i(79006);
-    if ((paramWebViewJSSDKFileItem == null) || (Util.isNullOrNil(paramWebViewJSSDKFileItem.fCM)))
+    if ((paramWebViewJSSDKFileItem == null) || (Util.isNullOrNil(paramWebViewJSSDKFileItem.hHB)))
     {
       Log.e("MicroMsg.WebViewJSSDKFileItemManager", "item is null or local id is null, ignore this add");
       AppMethodBeat.o(79006);
       return;
     }
-    Log.i("MicroMsg.WebViewJSSDKFileItemManager", "add jssdk file item, local id : %s, file path : %s", new Object[] { paramWebViewJSSDKFileItem.fCM, paramWebViewJSSDKFileItem.nVa });
-    this.PVD.put(paramWebViewJSSDKFileItem.fCM, paramWebViewJSSDKFileItem);
+    Log.i("MicroMsg.WebViewJSSDKFileItemManager", "add jssdk file item, local id : %s, file path : %s", new Object[] { paramWebViewJSSDKFileItem.hHB, paramWebViewJSSDKFileItem.qUK });
+    this.WMk.put(paramWebViewJSSDKFileItem.hHB, paramWebViewJSSDKFileItem);
     AppMethodBeat.o(79006);
   }
   
-  public final void bkH(String paramString)
-  {
-    AppMethodBeat.i(236025);
-    if (Util.isNullOrNil(paramString))
-    {
-      Log.e("MicroMsg.WebViewJSSDKFileItemManager", "removeJSSDKFileItem, local id is null");
-      AppMethodBeat.o(236025);
-      return;
-    }
-    Log.i("MicroMsg.WebViewJSSDKFileItemManager", "removeJSSDKFileItem, localId:%s", new Object[] { paramString });
-    this.PVD.remove(paramString);
-    AppMethodBeat.o(236025);
-  }
-  
-  public final WebViewJSSDKFileItem bkI(String paramString)
+  public final WebViewJSSDKFileItem bks(String paramString)
   {
     AppMethodBeat.i(79007);
     if (Util.isNullOrNil(paramString))
@@ -68,12 +54,12 @@ public final class ao
       AppMethodBeat.o(79007);
       return null;
     }
-    paramString = (WebViewJSSDKFileItem)this.PVD.get(paramString);
+    paramString = (WebViewJSSDKFileItem)this.WMk.get(paramString);
     AppMethodBeat.o(79007);
     return paramString;
   }
   
-  public final WebViewJSSDKFileItem bkJ(String paramString)
+  public final WebViewJSSDKFileItem bkt(String paramString)
   {
     AppMethodBeat.i(79008);
     if (Util.isNullOrNil(paramString))
@@ -82,11 +68,11 @@ public final class ao
       AppMethodBeat.o(79008);
       return null;
     }
-    Iterator localIterator = this.PVD.values().iterator();
+    Iterator localIterator = this.WMk.values().iterator();
     while (localIterator.hasNext())
     {
       WebViewJSSDKFileItem localWebViewJSSDKFileItem = (WebViewJSSDKFileItem)localIterator.next();
-      if (Util.nullAsNil(localWebViewJSSDKFileItem.nVb).equals(paramString))
+      if (Util.nullAsNil(localWebViewJSSDKFileItem.qUL).equals(paramString))
       {
         AppMethodBeat.o(79008);
         return localWebViewJSSDKFileItem;

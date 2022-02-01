@@ -15,13 +15,14 @@ import com.tencent.mm.ui.widget.imageview.WeImageView;
 public class WalletIconImageView
   extends WeImageView
 {
-  private int NHm = -1;
-  private int RyW = -1;
-  private int RyX = 0;
-  private int RyY = 4;
-  private int RyZ = -1;
-  private Drawable Rza;
-  private View.OnClickListener Rzb = null;
+  private int Utm = -1;
+  private int Yvs = -1;
+  private int Yvt = 0;
+  private int Yvu = 4;
+  private int Yvv = -1;
+  private Drawable Yvw;
+  private String Yvx;
+  private View.OnClickListener Yvy = null;
   
   public WalletIconImageView(Context paramContext)
   {
@@ -38,33 +39,39 @@ public class WalletIconImageView
     super(paramContext, paramAttributeSet);
   }
   
-  public final void hoc()
+  public final void iOU()
   {
     AppMethodBeat.i(72413);
-    super.setVisibility(this.RyY);
-    setImageResource(this.RyW);
-    if (this.RyX != -1)
+    super.setVisibility(this.Yvu);
+    setImageResource(this.Yvs);
+    setContentDescription(this.Yvx);
+    if (this.Yvt != -1)
     {
-      super.setColorFilter(this.RyX, PorterDuff.Mode.SRC_ATOP);
-      setIconColor(this.RyX);
+      super.setColorFilter(this.Yvt, PorterDuff.Mode.SRC_ATOP);
+      setIconColor(this.Yvt);
     }
-    if (this.Rzb != null) {
-      super.setOnClickListener(this.Rzb);
+    if (this.Yvy != null) {
+      super.setOnClickListener(this.Yvy);
     }
     AppMethodBeat.o(72413);
   }
   
   public final void setClearBtnDrawableId(int paramInt1, int paramInt2)
   {
-    this.NHm = paramInt1;
-    this.RyZ = paramInt2;
+    this.Utm = paramInt1;
+    this.Yvv = paramInt2;
+  }
+  
+  public void setIconContentDescription(String paramString)
+  {
+    this.Yvx = paramString;
   }
   
   public void setImageResource(int paramInt)
   {
     AppMethodBeat.i(72410);
-    this.RyW = paramInt;
-    if (this.RyW != -1) {
+    this.Yvs = paramInt;
+    if (this.Yvs != -1) {
       super.setImageResource(paramInt);
     }
     AppMethodBeat.o(72410);
@@ -72,21 +79,21 @@ public class WalletIconImageView
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.Rzb = paramOnClickListener;
+    this.Yvy = paramOnClickListener;
   }
   
   public void setToClearState(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(72412);
     super.setVisibility(0);
-    if (this.Rza != null)
+    if (this.Yvw != null)
     {
-      if (this.RyZ != -1)
+      if (this.Yvv != -1)
       {
-        super.setColorFilter(this.RyZ, PorterDuff.Mode.SRC_ATOP);
-        setIconColor(this.RyZ);
+        super.setColorFilter(this.Yvv, PorterDuff.Mode.SRC_ATOP);
+        setIconColor(this.Yvv);
       }
-      setImageDrawable(this.Rza);
+      setImageDrawable(this.Yvw);
     }
     for (;;)
     {
@@ -94,22 +101,22 @@ public class WalletIconImageView
       super.setOnClickListener(paramOnClickListener);
       AppMethodBeat.o(72412);
       return;
-      if (this.NHm != -1)
+      if (this.Utm != -1)
       {
-        super.setImageResource(this.NHm);
-        if (this.RyZ != -1)
+        super.setImageResource(this.Utm);
+        if (this.Yvv != -1)
         {
-          super.setColorFilter(this.RyZ, PorterDuff.Mode.SRC_ATOP);
-          setIconColor(this.RyZ);
+          super.setColorFilter(this.Yvv, PorterDuff.Mode.SRC_ATOP);
+          setIconColor(this.Yvv);
         }
       }
       else
       {
         super.setImageResource(a.e.list_clear);
-        if (this.RyZ != -1)
+        if (this.Yvv != -1)
         {
-          super.setColorFilter(this.RyZ, PorterDuff.Mode.SRC_ATOP);
-          setIconColor(this.RyZ);
+          super.setColorFilter(this.Yvv, PorterDuff.Mode.SRC_ATOP);
+          setIconColor(this.Yvv);
         }
         else
         {
@@ -123,7 +130,7 @@ public class WalletIconImageView
   public void setVisibility(int paramInt)
   {
     AppMethodBeat.i(72411);
-    this.RyY = paramInt;
+    this.Yvu = paramInt;
     super.setVisibility(paramInt);
     AppMethodBeat.o(72411);
   }
@@ -131,7 +138,7 @@ public class WalletIconImageView
   public void setmUserSetImageIconColor(int paramInt)
   {
     AppMethodBeat.i(174532);
-    this.RyX = paramInt;
+    this.Yvt = paramInt;
     if (paramInt != -1) {
       setIconColor(paramInt);
     }
@@ -140,7 +147,7 @@ public class WalletIconImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -6,116 +6,143 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import com.tencent.mm.ui.MMFragmentActivity;
 import com.tencent.mm.ui.component.glocom.b.a;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/widget/IPullDownView;", "Lcom/tencent/mm/ui/component/glocom/IGloUIComponent;", "()V", "isOpen", "", "()Z", "setOpen", "(Z)V", "checkIsPullDownValid", "", "listener", "Lcom/tencent/mm/ui/widget/IPullDownView$CheckValidListener;", "getCurCycle", "", "isPauseMusic", "onJumpDetail", "onPostClose", "onPostOpen", "onPreClose", "onPreOpen", "onTransAnim", "percent", "", "CheckValidListener", "libmmui_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/widget/IPullDownView;", "Lcom/tencent/mm/ui/component/glocom/IGloUIComponent;", "()V", "isOpen", "", "()Z", "setOpen", "(Z)V", "beforeJumpDetail", "", "beforeJumpSource", "checkIsPullDownValid", "listener", "Lcom/tencent/mm/ui/widget/IPullDownView$CheckValidListener;", "getCurCycle", "", "isInterceptMusicHandle", "isPauseMusic", "onPostClose", "onPostOpen", "onPreClose", "onPreOpen", "onTransAnim", "percent", "", "CheckValidListener", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class b
   implements com.tencent.mm.ui.component.glocom.b
 {
-  public boolean gZ;
+  public boolean hU;
   
-  public final void a(MMFragmentActivity paramMMFragmentActivity)
+  public final void c(MMFragmentActivity paramMMFragmentActivity)
   {
-    p.k(paramMMFragmentActivity, "activity");
     b.a.a(this, paramMMFragmentActivity);
   }
   
-  public final void b(MMFragmentActivity paramMMFragmentActivity)
+  public final void d(MMFragmentActivity paramMMFragmentActivity)
   {
-    p.k(paramMMFragmentActivity, "activity");
     b.a.b(this, paramMMFragmentActivity);
   }
   
-  public abstract void dDB();
+  public abstract void etL();
   
-  public abstract void dDC();
+  public abstract void etM();
   
-  public boolean dDD()
+  public boolean etN()
   {
     return false;
   }
   
-  public void dDE()
+  public void etO()
   {
-    this.gZ = true;
+    this.hU = true;
   }
   
-  public long ejq()
+  public long flv()
   {
     return 1L;
   }
   
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
+  public void gpi() {}
+  
+  public boolean gpj()
+  {
+    return false;
+  }
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    b.a.c((com.tencent.mm.ui.component.glocom.b)this);
+  }
   
   public boolean onBackPressed()
   {
-    return false;
+    return b.a.d((com.tencent.mm.ui.component.glocom.b)this);
   }
   
-  public void onBeforeFinish(Intent paramIntent) {}
+  public void onBeforeFinish(Intent paramIntent)
+  {
+    b.a.e((com.tencent.mm.ui.component.glocom.b)this);
+  }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    p.k(paramConfiguration, "newConfig");
-    p.k(paramConfiguration, "newConfig");
-    p.k(paramConfiguration, "newConfig");
+    b.a.a((com.tencent.mm.ui.component.glocom.b)this, paramConfiguration);
   }
   
-  public void onCreateAfter(Bundle paramBundle) {}
+  public void onCreateAfter(Bundle paramBundle)
+  {
+    b.a.f((com.tencent.mm.ui.component.glocom.b)this);
+  }
   
-  public void onCreateBefore(Bundle paramBundle) {}
+  public void onCreateBefore(Bundle paramBundle)
+  {
+    b.a.g((com.tencent.mm.ui.component.glocom.b)this);
+  }
   
-  public void onDestroy() {}
+  public void onDestroy()
+  {
+    b.a.h((com.tencent.mm.ui.component.glocom.b)this);
+  }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    p.k(paramKeyEvent, "event");
-    p.k(paramKeyEvent, "event");
-    p.k(paramKeyEvent, "event");
-    return false;
+    return b.a.a((com.tencent.mm.ui.component.glocom.b)this, paramKeyEvent);
   }
   
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
-    p.k(paramKeyEvent, "event");
-    p.k(paramKeyEvent, "event");
-    p.k(paramKeyEvent, "event");
-    return false;
+    return b.a.b((com.tencent.mm.ui.component.glocom.b)this, paramKeyEvent);
   }
   
-  public void onNewIntent(Intent paramIntent) {}
+  public void onNewIntent(Intent paramIntent)
+  {
+    b.a.i((com.tencent.mm.ui.component.glocom.b)this);
+  }
   
-  public void onPause() {}
+  public void onPause()
+  {
+    b.a.j((com.tencent.mm.ui.component.glocom.b)this);
+  }
   
   public void onPostClose()
   {
-    this.gZ = false;
+    this.hU = false;
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    p.k(paramArrayOfString, "permissions");
-    p.k(paramArrayOfInt, "grantResults");
-    p.k(paramArrayOfString, "permissions");
-    p.k(paramArrayOfInt, "grantResults");
-    p.k(paramArrayOfString, "permissions");
-    p.k(paramArrayOfInt, "grantResults");
+    b.a.a((com.tencent.mm.ui.component.glocom.b)this, paramArrayOfString, paramArrayOfInt);
   }
   
-  public void onRestoreInstanceState(Bundle paramBundle) {}
+  public void onRestoreInstanceState(Bundle paramBundle)
+  {
+    b.a.k((com.tencent.mm.ui.component.glocom.b)this);
+  }
   
-  public void onResume() {}
+  public void onResume()
+  {
+    b.a.l((com.tencent.mm.ui.component.glocom.b)this);
+  }
   
-  public void onSaveInstanceState(Bundle paramBundle) {}
+  public void onSaveInstanceState(Bundle paramBundle)
+  {
+    b.a.m((com.tencent.mm.ui.component.glocom.b)this);
+  }
   
-  public void onStart() {}
+  public void onStart()
+  {
+    b.a.n((com.tencent.mm.ui.component.glocom.b)this);
+  }
   
-  public void onStop() {}
+  public void onStop()
+  {
+    b.a.o((com.tencent.mm.ui.component.glocom.b)this);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.widget.b
  * JD-Core Version:    0.7.0.1
  */

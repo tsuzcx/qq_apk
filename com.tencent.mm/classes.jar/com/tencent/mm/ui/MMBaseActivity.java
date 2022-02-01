@@ -46,7 +46,7 @@ public class MMBaseActivity
     Object localObject = super.getSystemService(paramString);
     if ((getAssets() != null) && ("layout_inflater".equals(paramString)))
     {
-      paramString = ad.b((LayoutInflater)localObject);
+      paramString = af.b((LayoutInflater)localObject);
       AppMethodBeat.o(141355);
       return paramString;
     }
@@ -57,26 +57,26 @@ public class MMBaseActivity
   public WindowManager getWindowManager()
   {
     AppMethodBeat.i(141366);
-    Object localObject;
+    Object localObject1;
     if (!isDestroyed())
     {
-      localObject = super.getWindowManager();
+      localObject1 = super.getWindowManager();
       AppMethodBeat.o(141366);
-      return localObject;
+      return localObject1;
     }
     try
     {
-      localObject = new Throwable().getStackTrace();
-      if ((localObject != null) && (localObject.length >= 2) && (localObject[1].getMethodName().equals("handleDestroyActivity")))
+      localObject1 = new Throwable().getStackTrace();
+      if ((localObject1 != null) && (localObject1.length >= 2) && (localObject1[1].getMethodName().equals("handleDestroyActivity")))
       {
-        localObject = com.tencent.mm.plugin.crashfix.b.a.a.a(super.getWindowManager());
+        localObject1 = com.tencent.mm.plugin.crashfix.b.a.a.a(super.getWindowManager());
         AppMethodBeat.o(141366);
-        return localObject;
+        return localObject1;
       }
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      Log.e("MicroMsg.MMBaseActivity", localThrowable.getMessage());
+      Log.e("MicroMsg.MMBaseActivity", localObject2.getMessage());
       WindowManager localWindowManager = super.getWindowManager();
       AppMethodBeat.o(141366);
       return localWindowManager;
@@ -128,7 +128,7 @@ public class MMBaseActivity
       AppMethodBeat.o(141359);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Log.printErrStackTrace("MicroMsg.MMBaseActivity", localThrowable, "AndroidOSafety.safety uncaught", new Object[0]);
       AppMethodBeat.o(141359);
@@ -189,7 +189,7 @@ public class MMBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.MMBaseActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.readerapp;
 
 public final class a$f
 {
-  public static final int HxL = 2131496129;
-  public static final int HxM = 2131496133;
-  public static final int HxN = 2131496135;
-  public static final int HxO = 2131496140;
-  public static final int HxP = 2131496142;
-  public static final int HxQ = 2131496143;
-  public static final int HxR = 2131496147;
-  public static final int HxS = 2131496148;
+  public static final int Nvq = 2131496223;
+  public static final int Nvr = 2131496224;
+  public static final int Nvs = 2131496225;
+  public static final int Nvt = 2131496226;
+  public static final int Nvu = 2131496228;
+  public static final int Nvv = 2131496229;
+  public static final int Nvw = 2131496232;
+  public static final int Nvx = 2131496233;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.readerapp.a.f
  * JD-Core Version:    0.7.0.1
  */

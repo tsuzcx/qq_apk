@@ -7,120 +7,91 @@ import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import org.json.JSONArray;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/DiffLiveList;", "", "()V", "incrementList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedLiveListItem;", "Lkotlin/collections/ArrayList;", "getIncrementList", "()Ljava/util/ArrayList;", "setIncrementList", "(Ljava/util/ArrayList;)V", "incrementListUsername", "", "getIncrementListUsername", "()Ljava/lang/String;", "setIncrementListUsername", "(Ljava/lang/String;)V", "removeList", "getRemoveList", "setRemoveList", "removeListUsername", "getRemoveListUsername", "setRemoveListUsername", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/model/DiffLiveList;", "", "()V", "incrementList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedLiveListItem;", "Lkotlin/collections/ArrayList;", "getIncrementList", "()Ljava/util/ArrayList;", "setIncrementList", "(Ljava/util/ArrayList;)V", "incrementListUsername", "", "getIncrementListUsername", "()Ljava/lang/String;", "setIncrementListUsername", "(Ljava/lang/String;)V", "removeList", "getRemoveList", "setRemoveList", "removeListUsername", "getRemoveListUsername", "setRemoveListUsername", "Companion", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
 {
-  public static final a zAb;
-  public ArrayList<y> rho;
-  public String zAa;
-  public ArrayList<y> zzY;
-  public String zzZ;
+  public static final a ECf;
+  public ArrayList<z> ECg;
+  public String ECh;
+  public String ECi;
+  public ArrayList<z> upm;
   
   static
   {
-    AppMethodBeat.i(284912);
-    zAb = new a((byte)0);
-    AppMethodBeat.o(284912);
+    AppMethodBeat.i(332164);
+    ECf = new a((byte)0);
+    AppMethodBeat.o(332164);
   }
   
   public d()
   {
-    AppMethodBeat.i(284911);
-    this.zzY = new ArrayList();
-    this.rho = new ArrayList();
-    this.zzZ = "";
-    this.zAa = "";
-    AppMethodBeat.o(284911);
+    AppMethodBeat.i(332159);
+    this.ECg = new ArrayList();
+    this.upm = new ArrayList();
+    this.ECh = "";
+    this.ECi = "";
+    AppMethodBeat.o(332159);
   }
   
-  public final void aDr(String paramString)
+  public final void as(ArrayList<z> paramArrayList)
   {
-    AppMethodBeat.i(284909);
-    p.k(paramString, "<set-?>");
-    this.zzZ = paramString;
-    AppMethodBeat.o(284909);
+    AppMethodBeat.i(332171);
+    s.u(paramArrayList, "<set-?>");
+    this.ECg = paramArrayList;
+    AppMethodBeat.o(332171);
   }
   
-  public final void aDs(String paramString)
+  public final void at(ArrayList<z> paramArrayList)
   {
-    AppMethodBeat.i(284910);
-    p.k(paramString, "<set-?>");
-    this.zAa = paramString;
-    AppMethodBeat.o(284910);
+    AppMethodBeat.i(332178);
+    s.u(paramArrayList, "<set-?>");
+    this.upm = paramArrayList;
+    AppMethodBeat.o(332178);
   }
   
-  public final void al(ArrayList<y> paramArrayList)
+  public final void ayN(String paramString)
   {
-    AppMethodBeat.i(284907);
-    p.k(paramArrayList, "<set-?>");
-    this.zzY = paramArrayList;
-    AppMethodBeat.o(284907);
+    AppMethodBeat.i(332182);
+    s.u(paramString, "<set-?>");
+    this.ECh = paramString;
+    AppMethodBeat.o(332182);
   }
   
-  public final void am(ArrayList<y> paramArrayList)
+  public final void ayO(String paramString)
   {
-    AppMethodBeat.i(284908);
-    p.k(paramArrayList, "<set-?>");
-    this.rho = paramArrayList;
-    AppMethodBeat.o(284908);
+    AppMethodBeat.i(332188);
+    s.u(paramString, "<set-?>");
+    this.ECi = paramString;
+    AppMethodBeat.o(332188);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/DiffLiveList$Companion;", "", "()V", "diff", "Lcom/tencent/mm/plugin/finder/model/DiffLiveList;", "localList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedLiveListItem;", "Lkotlin/collections/ArrayList;", "remoteList", "getLiveListUsername", "", "list", "parseLiveListUsername", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/model/DiffLiveList$Companion;", "", "()V", "diff", "Lcom/tencent/mm/plugin/finder/model/DiffLiveList;", "localList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedLiveListItem;", "Lkotlin/collections/ArrayList;", "remoteList", "getLiveListUsername", "", "list", "parseLiveListUsername", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
-    public static ArrayList<String> aDt(String paramString)
+    public static String au(ArrayList<z> paramArrayList)
     {
-      AppMethodBeat.i(228974);
-      p.k(paramString, "list");
-      localArrayList = new ArrayList();
-      try
-      {
-        JSONArray localJSONArray = new JSONArray(paramString);
-        int j = localJSONArray.length();
-        int i = 0;
-        while (i < j)
-        {
-          String str = localJSONArray.optString(i);
-          paramString = str;
-          if (str == null) {
-            paramString = "";
-          }
-          localArrayList.add(paramString);
-          i += 1;
-        }
-        return localArrayList;
-      }
-      catch (Exception paramString)
-      {
-        Log.e("FinderFeedLiveList", paramString.getMessage());
-        AppMethodBeat.o(228974);
-      }
-    }
-    
-    public static String an(ArrayList<y> paramArrayList)
-    {
-      AppMethodBeat.i(228972);
+      AppMethodBeat.i(331858);
       Object localObject = (Collection)paramArrayList;
       if ((localObject == null) || (((Collection)localObject).isEmpty())) {}
       for (int i = 1; i != 0; i = 0)
       {
-        AppMethodBeat.o(228972);
+        AppMethodBeat.o(331858);
         return "";
       }
       localObject = new JSONArray();
       Iterator localIterator = ((Iterable)paramArrayList).iterator();
       while (localIterator.hasNext())
       {
-        paramArrayList = (y)localIterator.next();
-        if ((paramArrayList instanceof y))
+        paramArrayList = (z)localIterator.next();
+        if ((paramArrayList instanceof z))
         {
-          paramArrayList = paramArrayList.zAF.contact;
-          if (paramArrayList != null) {}
-          for (paramArrayList = paramArrayList.username;; paramArrayList = null)
+          paramArrayList = paramArrayList.ECN.contact;
+          if (paramArrayList == null) {}
+          for (paramArrayList = null;; paramArrayList = paramArrayList.username)
           {
             ((JSONArray)localObject).put(paramArrayList);
             break;
@@ -128,56 +99,94 @@ public final class d
         }
       }
       paramArrayList = ((JSONArray)localObject).toString();
-      p.j(paramArrayList, "array.toString()");
-      AppMethodBeat.o(228972);
+      s.s(paramArrayList, "array.toString()");
+      AppMethodBeat.o(331858);
       return paramArrayList;
     }
     
-    public static d h(ArrayList<y> paramArrayList1, ArrayList<y> paramArrayList2)
+    public static ArrayList<String> ayP(String paramString)
     {
-      AppMethodBeat.i(228965);
+      AppMethodBeat.i(331866);
+      s.u(paramString, "list");
+      ArrayList localArrayList = new ArrayList();
+      try
+      {
+        localJSONArray = new JSONArray(paramString);
+        k = localJSONArray.length();
+        i = 0;
+        if (k <= 0) {
+          break label77;
+        }
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          JSONArray localJSONArray;
+          int k;
+          int j;
+          String str;
+          Log.e("FinderFeedLiveList", paramString.getMessage());
+          continue;
+          int i = j;
+        }
+      }
+      j = i + 1;
+      str = localJSONArray.optString(i);
+      paramString = str;
+      if (str == null) {
+        paramString = "";
+      }
+      localArrayList.add(paramString);
+      if (j >= k)
+      {
+        label77:
+        AppMethodBeat.o(331866);
+        return localArrayList;
+      }
+    }
+    
+    public static d i(ArrayList<z> paramArrayList1, ArrayList<z> paramArrayList2)
+    {
+      AppMethodBeat.i(331846);
       d locald = new d();
       if ((paramArrayList1 == null) && (paramArrayList2 == null))
       {
-        AppMethodBeat.o(228965);
+        AppMethodBeat.o(331846);
         return locald;
       }
       if ((paramArrayList1 == null) && (paramArrayList2 != null))
       {
-        locald.al(paramArrayList2);
-        locald.aDr(an(paramArrayList2));
-        Log.i("FinderFeedLiveList", "[updateLiveList]increment list:".concat(String.valueOf(paramArrayList2)));
-        AppMethodBeat.o(228965);
+        locald.as(paramArrayList2);
+        locald.ayN(au(paramArrayList2));
+        Log.i("FinderFeedLiveList", s.X("[updateLiveList]increment list:", paramArrayList2));
+        AppMethodBeat.o(331846);
         return locald;
       }
       if ((paramArrayList1 != null) && (paramArrayList2 == null))
       {
-        locald.am(paramArrayList1);
-        locald.aDs(an(paramArrayList1));
-        Log.i("FinderFeedLiveList", "[updateLiveList]remove list:".concat(String.valueOf(paramArrayList1)));
-        AppMethodBeat.o(228965);
+        locald.at(paramArrayList1);
+        locald.ayO(au(paramArrayList1));
+        Log.i("FinderFeedLiveList", s.X("[updateLiveList]remove list:", paramArrayList1));
+        AppMethodBeat.o(331846);
         return locald;
       }
-      if (paramArrayList1 == null) {
-        p.iCn();
-      }
+      s.checkNotNull(paramArrayList1);
       ArrayList localArrayList = new ArrayList((Collection)paramArrayList1);
       paramArrayList1 = new ArrayList((Collection)paramArrayList1);
-      if (paramArrayList2 == null) {
-        p.iCn();
-      }
+      s.checkNotNull(paramArrayList2);
       paramArrayList2 = new ArrayList((Collection)paramArrayList2);
       localArrayList.retainAll((Collection)paramArrayList2);
       paramArrayList1.removeAll((Collection)localArrayList);
       paramArrayList2.removeAll((Collection)localArrayList);
-      Log.i("FinderFeedLiveList", "[updateLiveList]mix list:".concat(String.valueOf(localArrayList)));
-      Log.i("FinderFeedLiveList", "[updateLiveList]remove list:".concat(String.valueOf(paramArrayList1)));
-      Log.i("FinderFeedLiveList", "[updateLiveList]increment list:".concat(String.valueOf(paramArrayList2)));
-      locald.am(paramArrayList1);
-      locald.al(paramArrayList2);
-      locald.aDs(an(paramArrayList1));
-      locald.aDr(an(paramArrayList2));
-      AppMethodBeat.o(228965);
+      Log.i("FinderFeedLiveList", s.X("[updateLiveList]mix list:", localArrayList));
+      Log.i("FinderFeedLiveList", s.X("[updateLiveList]remove list:", paramArrayList1));
+      Log.i("FinderFeedLiveList", s.X("[updateLiveList]increment list:", paramArrayList2));
+      locald.at(paramArrayList1);
+      locald.as(paramArrayList2);
+      locald.ayO(au(paramArrayList1));
+      locald.ayN(au(paramArrayList2));
+      AppMethodBeat.o(331846);
       return locald;
     }
   }

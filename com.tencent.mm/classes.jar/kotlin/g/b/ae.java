@@ -1,62 +1,30 @@
 package kotlin.g.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
-import java.util.Collections;
+import kotlin.l.e;
+import kotlin.l.q.a;
 
-public final class ae
+public class ae
+  extends ad
 {
-  public final ArrayList<Object> fmA;
-  
-  public ae(int paramInt)
+  public ae(Object paramObject, Class paramClass, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(128982);
-    this.fmA = new ArrayList(paramInt);
-    AppMethodBeat.o(128982);
+    super(paramObject, paramClass, paramString1, paramString2, 0);
   }
   
-  public final void add(Object paramObject)
-  {
-    AppMethodBeat.i(128984);
-    this.fmA.add(paramObject);
-    AppMethodBeat.o(128984);
-  }
+  public ae(e parame, String paramString1, String paramString2) {}
   
-  public final void eZ(Object paramObject)
+  public Object get()
   {
-    AppMethodBeat.i(128983);
-    if (paramObject == null)
-    {
-      AppMethodBeat.o(128983);
-      return;
-    }
-    if ((paramObject instanceof Object[]))
-    {
-      paramObject = (Object[])paramObject;
-      if (paramObject.length > 0)
-      {
-        this.fmA.ensureCapacity(this.fmA.size() + paramObject.length);
-        Collections.addAll(this.fmA, paramObject);
-      }
-      AppMethodBeat.o(128983);
-      return;
-    }
-    paramObject = new UnsupportedOperationException("Don't know how to spread " + paramObject.getClass());
-    AppMethodBeat.o(128983);
-    throw paramObject;
-  }
-  
-  public final Object[] toArray(Object[] paramArrayOfObject)
-  {
-    AppMethodBeat.i(128985);
-    paramArrayOfObject = this.fmA.toArray(paramArrayOfObject);
-    AppMethodBeat.o(128985);
-    return paramArrayOfObject;
+    AppMethodBeat.i(128936);
+    Object localObject = klB().ap(new Object[0]);
+    AppMethodBeat.o(128936);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.g.b.ae
  * JD-Core Version:    0.7.0.1
  */

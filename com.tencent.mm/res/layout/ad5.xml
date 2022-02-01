@@ -1,3 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.sns.ad.widget.shakead.ShakeCardAnimView android:id="@id/kzz" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@color/ahb" android:layout_width="wrap_content" android:layout_height="@dimen/d4"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" android:paddingStart="@dimen/cd">
+        <TextView android:textSize="@dimen/hn" android:textStyle="bold" android:textColor="@color/m4" android:ellipsize="end" android:gravity="center" android:id="@id/kd0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:includeFontPadding="false" />
+        <ImageView android:id="@id/kcx" android:visibility="invisible" android:layout_width="@dimen/df" android:layout_height="@dimen/df" android:layout_marginTop="-4.0dip" android:layout_alignTop="@id/kd0" android:layout_toEndOf="@id/kd0" style="@style/zi" />
+        <ImageView android:id="@id/a8u" android:visibility="visible" android:layout_width="@dimen/cd" android:layout_height="@dimen/cd" android:layout_marginTop="-5.5dip" android:layout_alignTop="@id/kd0" android:layout_marginStart="1.0dip" android:layout_toEndOf="@id/kd0" />
+        <FrameLayout android:id="@id/kd2" android:background="@drawable/a1h" android:visibility="invisible" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginTop="-10.0dip" android:layout_alignTop="@id/kd0" android:layout_marginStart="-6.0dip" android:layout_toEndOf="@id/kd0">
+            <ImageView android:id="@id/kd1" android:padding="2.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@raw/finder_icon_live_onlive" />
+        </FrameLayout>
+        <TextView android:textSize="9.0dip" android:textColor="@color/az" android:id="@id/kd5" android:background="@drawable/a4k" android:paddingLeft="4.0dip" android:paddingTop="0.0dip" android:paddingRight="4.0dip" android:paddingBottom="0.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="13.0dip" android:layout_marginTop="-9.0dip" android:layout_alignTop="@id/kd0" android:layout_alignRight="@id/pz" />
+        <View android:id="@id/pz" android:visibility="gone" android:layout_width="@dimen/cp" android:layout_height="1.0dip" android:layout_alignTop="@id/kd0" android:layout_toEndOf="@id/kd0" />
+    </RelativeLayout>
+</LinearLayout>

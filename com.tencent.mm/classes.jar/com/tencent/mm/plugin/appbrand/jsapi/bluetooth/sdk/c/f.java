@@ -4,13 +4,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
-  public static String Ah(int paramInt)
+  public static String Ay(int paramInt)
   {
     AppMethodBeat.i(144593);
     switch (paramInt)
     {
     default: 
-      String str = Ai(paramInt);
+      String str = Az(paramInt);
       AppMethodBeat.o(144593);
       return str;
     case 1: 
@@ -39,7 +39,7 @@ public final class f
     return "GATT ERROR";
   }
   
-  private static String Ai(int paramInt)
+  private static String Az(int paramInt)
   {
     AppMethodBeat.i(144594);
     switch (paramInt)
@@ -166,7 +166,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.f
  * JD-Core Version:    0.7.0.1
  */

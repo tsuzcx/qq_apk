@@ -3,6 +3,7 @@ package com.tencent.recovery.wx.util;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public class NetUtil
 {
@@ -15,7 +16,7 @@ public class NetUtil
   
   public static String getCurrentNetWorkStatus(Context paramContext)
   {
-    paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+    paramContext = (ConnectivityManager)MMApplicationContext.getContext().getSystemService("connectivity");
     if (paramContext == null) {
       return "NOT_NETWORK";
     }
@@ -45,7 +46,7 @@ public class NetUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.recovery.wx.util.NetUtil
  * JD-Core Version:    0.7.0.1
  */

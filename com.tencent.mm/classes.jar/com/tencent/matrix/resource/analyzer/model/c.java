@@ -23,7 +23,7 @@ public enum c
         ((c)localObject2).a(localb1);
         d.b localb2 = (d.b)localb1;
         localObject2 = ((c)localObject2).name();
-        localb2.dbS.name = ((String)localObject2);
+        localb2.far.name = ((String)localObject2);
       }
     }
     return localb1;
@@ -38,7 +38,7 @@ public enum c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.matrix.resource.analyzer.model.c
  * JD-Core Version:    0.7.0.1
  */

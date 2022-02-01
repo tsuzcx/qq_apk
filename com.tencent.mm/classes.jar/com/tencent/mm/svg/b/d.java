@@ -2,17 +2,17 @@ package com.tencent.mm.svg.b;
 
 public final class d
 {
-  private static a VLj = null;
+  private static a adpn = null;
   
-  public static void hCs() {}
+  public static void jey() {}
   
-  public static void hCt() {}
+  public static void jez() {}
   
   public static abstract interface a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.svg.b.d
  * JD-Core Version:    0.7.0.1
  */

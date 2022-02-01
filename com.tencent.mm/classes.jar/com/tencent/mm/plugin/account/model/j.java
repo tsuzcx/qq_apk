@@ -9,12 +9,12 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.thread.ThreadPool;
-import com.tencent.mm.ui.i.a.a;
-import com.tencent.mm.ui.i.a.a.1;
-import com.tencent.mm.ui.i.a.a.a;
-import com.tencent.mm.ui.i.a.c;
-import com.tencent.mm.ui.i.a.e;
-import com.tencent.mm.ui.i.a.f;
+import com.tencent.mm.ui.mmfb.sdk.a;
+import com.tencent.mm.ui.mmfb.sdk.a.1;
+import com.tencent.mm.ui.mmfb.sdk.a.a;
+import com.tencent.mm.ui.mmfb.sdk.f;
+import com.tencent.mm.ui.mmfb.sdk.h;
+import com.tencent.mm.ui.mmfb.sdk.i;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -26,16 +26,16 @@ import org.json.JSONObject;
 public final class j
 {
   MMHandler handler;
-  private c mZT;
-  a mZU;
+  private f pWC;
+  a pWD;
   
-  public j(c paramc, a parama)
+  public j(f paramf, a parama)
   {
-    this.mZT = paramc;
-    this.mZU = parama;
+    this.pWC = paramf;
+    this.pWD = parama;
   }
   
-  public final void bxF()
+  public final void bWu()
   {
     AppMethodBeat.i(127846);
     this.handler = new MMHandler()
@@ -50,42 +50,26 @@ public final class j
         {
           AppMethodBeat.o(127841);
           return;
-          if (j.this.mZU != null)
+          if (j.this.pWD != null)
           {
-            j.this.mZU.onError(paramAnonymousMessage.arg1, (String)paramAnonymousMessage.obj);
+            j.this.pWD.onError(paramAnonymousMessage.arg1, (String)paramAnonymousMessage.obj);
             AppMethodBeat.o(127841);
             return;
-            if (j.this.mZU != null) {
-              j.this.mZU.K(paramAnonymousMessage.getData());
+            if (j.this.pWD != null) {
+              j.this.pWD.T(paramAnonymousMessage.getData());
             }
           }
         }
       }
     };
     Bundle localBundle = new Bundle();
-    localBundle.putString("client_id", MMApplicationContext.getContext().getString(r.j.facebook_app_id));
+    localBundle.putString("client_id", "290293790992170");
     localBundle.putString("client_secret", MMApplicationContext.getContext().getString(r.j.facebook_client_secrect));
     localBundle.putString("grant_type", "fb_exchange_token");
-    localBundle.putString("fb_exchange_token", this.mZT.mRq);
+    localBundle.putString("fb_exchange_token", this.pWC.pNX);
     a.a local2 = new a.a()
     {
-      public final void a(FileNotFoundException paramAnonymousFileNotFoundException)
-      {
-        AppMethodBeat.i(127844);
-        Log.e("MicroMsg.RefreshTokenRunner", "onFileNotFoundException");
-        j.a(j.this, 2, paramAnonymousFileNotFoundException.getMessage());
-        AppMethodBeat.o(127844);
-      }
-      
-      public final void a(MalformedURLException paramAnonymousMalformedURLException)
-      {
-        AppMethodBeat.i(127845);
-        Log.e("MicroMsg.RefreshTokenRunner", "onMalformedURLException");
-        j.a(j.this, 2, paramAnonymousMalformedURLException.getMessage());
-        AppMethodBeat.o(127845);
-      }
-      
-      public final void aaT(String paramAnonymousString)
+      public final void Tm(String paramAnonymousString)
       {
         AppMethodBeat.i(127842);
         if ((paramAnonymousString == null) || (paramAnonymousString.length() == 0))
@@ -106,7 +90,7 @@ public final class j
             String str2;
             try
             {
-              localObject1 = f.bAs(paramAnonymousString);
+              localObject1 = i.bCp(paramAnonymousString);
               if (((JSONObject)localObject1).has("access_token"))
               {
                 paramAnonymousString = new Bundle();
@@ -128,7 +112,7 @@ public final class j
                 break label254;
               }
             }
-            catch (Throwable paramAnonymousString)
+            finally
             {
               Log.printErrStackTrace("MicroMsg.RefreshTokenRunner", paramAnonymousString, "", new Object[0]);
               j.a(j.this, 2, "decodeUrl fail");
@@ -186,7 +170,7 @@ public final class j
         }
         try
         {
-          f.bAs(paramAnonymousString);
+          i.bCp(paramAnonymousString);
           j.a(j.this, 2, "parseJson error");
           AppMethodBeat.o(127842);
           return;
@@ -199,14 +183,30 @@ public final class j
             Log.printErrStackTrace("MicroMsg.RefreshTokenRunner", paramAnonymousString, "", new Object[0]);
           }
         }
-        catch (e paramAnonymousString)
+        catch (h paramAnonymousString)
         {
-          localObject1 = "errCode = " + paramAnonymousString.mErrorCode + ", errType = " + paramAnonymousString.XHd + ", errMsg = " + paramAnonymousString.getMessage();
+          localObject1 = "errCode = " + paramAnonymousString.mErrorCode + ", errType = " + paramAnonymousString.afzj + ", errMsg = " + paramAnonymousString.getMessage();
           Log.e("MicroMsg.RefreshTokenRunner", "parseJson facebookerror, ".concat(String.valueOf(localObject1)));
           Log.printErrStackTrace("MicroMsg.RefreshTokenRunner", paramAnonymousString, "", new Object[0]);
           j.a(j.this, 3, (String)localObject1);
           AppMethodBeat.o(127842);
         }
+      }
+      
+      public final void a(FileNotFoundException paramAnonymousFileNotFoundException)
+      {
+        AppMethodBeat.i(127844);
+        Log.e("MicroMsg.RefreshTokenRunner", "onFileNotFoundException");
+        j.a(j.this, 2, paramAnonymousFileNotFoundException.getMessage());
+        AppMethodBeat.o(127844);
+      }
+      
+      public final void a(MalformedURLException paramAnonymousMalformedURLException)
+      {
+        AppMethodBeat.i(127845);
+        Log.e("MicroMsg.RefreshTokenRunner", "onMalformedURLException");
+        j.a(j.this, 2, paramAnonymousMalformedURLException.getMessage());
+        AppMethodBeat.o(127845);
       }
       
       public final void c(IOException paramAnonymousIOException)
@@ -217,20 +217,20 @@ public final class j
         AppMethodBeat.o(127843);
       }
     };
-    ThreadPool.post(new a.1(new a(this.mZT), "oauth/access_token", localBundle, "GET", local2), "AsyncFacebookRunner_request");
+    ThreadPool.post(new a.1(new a(this.pWC), "oauth/access_token", localBundle, "GET", local2), "AsyncFacebookRunner_request");
     AppMethodBeat.o(127846);
   }
   
   public static abstract interface a
   {
-    public abstract void K(Bundle paramBundle);
+    public abstract void T(Bundle paramBundle);
     
     public abstract void onError(int paramInt, String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.model.j
  * JD-Core Version:    0.7.0.1
  */

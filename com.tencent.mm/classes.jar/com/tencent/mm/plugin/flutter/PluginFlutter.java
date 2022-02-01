@@ -1,80 +1,143 @@
 package com.tencent.mm.plugin.flutter;
 
-import com.tencent.e.i;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.api.bucket.c;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.kernel.f.c;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.flutter.b.a.2;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.plugin.flutter.b.c.2;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import io.flutter.view.FlutterMain;
+import com.tencent.mm.util.b.a;
+import com.tencent.mm.util.i;
+import io.flutter.FlutterInjector;
+import io.flutter.embedding.engine.loader.FlutterLoader;
 
 public class PluginFlutter
   extends f
-  implements c, com.tencent.mm.plugin.flutter.a.b
+  implements com.tencent.mm.kernel.api.bucket.c, com.tencent.mm.plugin.flutter.a.b
 {
-  private a BCp;
-  private com.tencent.mm.plugin.flutter.b.a BCq;
-  private boolean BCr;
+  private a HjW;
+  private com.tencent.mm.plugin.flutter.b.c HjX;
+  private boolean HjY;
   
-  private void initFlutter()
+  public void configure(g paramg)
+  {
+    AppMethodBeat.i(148841);
+    if (paramg.bbA()) {
+      h.b(com.tencent.mm.plugin.flutter.a.a.class, new b());
+    }
+    AppMethodBeat.o(148841);
+  }
+  
+  public void execute(g paramg)
+  {
+    AppMethodBeat.i(262977);
+    boolean bool;
+    if (paramg.bbA())
+    {
+      paramg = i.agtt;
+      int i = i.a(b.a.agqL, 0);
+      if (i == 0) {
+        break label74;
+      }
+      if (i != 1) {
+        break label69;
+      }
+      bool = true;
+    }
+    for (;;)
+    {
+      Log.i("MicroMsg.PluginFlutter", "need warmup flutter engine:%s", new Object[] { Boolean.valueOf(bool) });
+      if (bool) {
+        com.tencent.mm.plugin.flutter.b.b.Hke.fuX();
+      }
+      AppMethodBeat.o(262977);
+      return;
+      label69:
+      bool = false;
+      continue;
+      label74:
+      if (((com.tencent.mm.plugin.expt.b.c)h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.zxq, 1) == 1) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+    }
+  }
+  
+  public com.tencent.mm.plugin.flutter.b.c getFlutterEngineMgr()
+  {
+    return this.HjX;
+  }
+  
+  public void initFlutter()
   {
     AppMethodBeat.i(148844);
+    if (this.HjY)
+    {
+      AppMethodBeat.o(148844);
+      return;
+    }
     try
     {
-      if (isOpenFlutter())
-      {
-        long l1 = System.currentTimeMillis();
-        FlutterMain.startInitialization(MMApplicationContext.getContext());
-        FlutterMain.ensureInitializationComplete(MMApplicationContext.getContext(), new String[0]);
-        long l2 = System.currentTimeMillis();
-        this.BCr = true;
-        Log.i("MicroMsg.Flutter", "initFlutterEngine useTime %d", new Object[] { Long.valueOf(l2 - l1) });
-      }
+      long l1 = System.currentTimeMillis();
+      Context localContext = MMApplicationContext.getContext();
+      FlutterLoader localFlutterLoader = FlutterInjector.instance().flutterLoader();
+      localFlutterLoader.startInitialization(localContext);
+      localFlutterLoader.ensureInitializationComplete(localContext, new String[0]);
+      long l2 = System.currentTimeMillis();
+      this.HjY = true;
+      Log.i("MicroMsg.PluginFlutter", "initFlutterEngine useTime %d", new Object[] { Long.valueOf(l2 - l1) });
       AppMethodBeat.o(148844);
       return;
     }
     catch (Exception localException)
     {
+      Log.printErrStackTrace("MicroMsg.PluginFlutter", localException, "failed to initFlutter", new Object[0]);
       AppMethodBeat.o(148844);
     }
   }
   
-  public void configure(g paramg)
+  public void initFlutterAsync(Runnable paramRunnable)
   {
-    AppMethodBeat.i(148841);
-    if (paramg.aIE()) {
-      com.tencent.mm.kernel.h.b(com.tencent.mm.plugin.flutter.a.a.class, new b());
+    AppMethodBeat.i(263019);
+    if (this.HjY)
+    {
+      paramRunnable.run();
+      AppMethodBeat.o(263019);
+      return;
     }
-    AppMethodBeat.o(148841);
-  }
-  
-  public void execute(g paramg) {}
-  
-  public com.tencent.mm.plugin.flutter.b.a getFlutterEngineMgr()
-  {
-    return this.BCq;
+    try
+    {
+      long l1 = System.currentTimeMillis();
+      Context localContext = MMApplicationContext.getContext();
+      FlutterLoader localFlutterLoader = FlutterInjector.instance().flutterLoader();
+      localFlutterLoader.startInitializationAsync(localContext);
+      Handler localHandler = new Handler(Looper.getMainLooper());
+      localFlutterLoader.ensureInitializationCompleteAsync(localContext, new String[0], localHandler, paramRunnable);
+      long l2 = System.currentTimeMillis();
+      this.HjY = true;
+      Log.i("MicroMsg.PluginFlutter", "initFlutterEngine useTime %d", new Object[] { Long.valueOf(l2 - l1) });
+      AppMethodBeat.o(263019);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.printErrStackTrace("MicroMsg.PluginFlutter", localException, "failed to initFlutter", new Object[0]);
+      paramRunnable.run();
+      AppMethodBeat.o(263019);
+    }
   }
   
   public boolean isInitFlutter()
   {
-    return this.BCr;
-  }
-  
-  public boolean isOpenFlutter()
-  {
-    AppMethodBeat.i(220547);
-    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vOH, false))
-    {
-      AppMethodBeat.o(220547);
-      return true;
-    }
-    AppMethodBeat.o(220547);
-    return false;
+    return this.HjY;
   }
   
   public String name()
@@ -85,51 +148,42 @@ public class PluginFlutter
   public void onAccountInitialized(f.c paramc)
   {
     AppMethodBeat.i(148842);
-    this.BCq = new com.tencent.mm.plugin.flutter.b.a();
-    this.BCp = new a();
-    com.tencent.mm.pluginsdk.cmd.b.a(this.BCp, new String[] { "//flutter" });
-    com.tencent.e.h.ZvG.n(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(148840);
-        PluginFlutter.access$000(PluginFlutter.this);
-        AppMethodBeat.o(148840);
-      }
-    }, 500L);
+    this.HjX = new com.tencent.mm.plugin.flutter.b.c();
+    this.HjW = new a();
+    com.tencent.mm.pluginsdk.cmd.b.a(this.HjW, new String[] { "//flutter" });
     AppMethodBeat.o(148842);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(148843);
-    if (this.BCp != null)
+    if (this.HjW != null)
     {
-      com.tencent.mm.pluginsdk.cmd.b.W(new String[] { "//flutter" });
-      this.BCp = null;
+      com.tencent.mm.pluginsdk.cmd.b.X(new String[] { "//flutter" });
+      this.HjW = null;
     }
-    com.tencent.mm.plugin.flutter.b.a locala;
-    if (this.BCq != null)
+    com.tencent.mm.plugin.flutter.b.c localc;
+    if (this.HjX != null)
     {
-      locala = this.BCq;
+      localc = this.HjX;
       if (!MMHandlerThread.isMainThread()) {
         break label62;
       }
-      locala.onDestroy();
+      localc.onDestroy();
     }
     for (;;)
     {
-      this.BCq = null;
+      this.HjX = null;
       AppMethodBeat.o(148843);
       return;
       label62:
-      MMHandlerThread.postToMainThread(new a.2(locala));
+      MMHandlerThread.postToMainThread(new c.2(localc));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.flutter.PluginFlutter
  * JD-Core Version:    0.7.0.1
  */

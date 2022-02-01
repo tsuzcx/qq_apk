@@ -3,30 +3,30 @@ package com.tencent.mm.ui.contact.privacy;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.l;
-import com.tencent.mm.by.c;
+import com.tencent.mm.br.c;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.WeChatHosts;
-import com.tencent.mm.ui.widget.a.f.c;
+import com.tencent.mm.ui.widget.a.g.c;
 
 final class ContactMgrOnlyChatUI$3
-  implements f.c
+  implements g.c
 {
   ContactMgrOnlyChatUI$3(ContactMgrOnlyChatUI paramContactMgrOnlyChatUI) {}
   
-  public final void g(boolean paramBoolean, String paramString)
+  public final void onDialogClick(boolean paramBoolean, String paramString)
   {
-    AppMethodBeat.i(287094);
-    this.Xyr.hideVKB();
+    AppMethodBeat.i(253431);
+    this.afkI.hideVKB();
     if (!paramBoolean)
     {
-      paramString = "https://" + WeChatHosts.domainString(R.l.host_support_weixin_qq_com) + "/cgi-bin/mmsupport-bin/newreadtemplate?t=contact/faq1&wechat_real_lang=" + LocaleUtil.getCurrentLanguage(this.Xyr.getContext());
+      paramString = "https://" + WeChatHosts.domainString(R.l.host_support_weixin_qq_com) + "/cgi-bin/mmsupport-bin/newreadtemplate?t=contact/faq1&wechat_real_lang=" + LocaleUtil.getCurrentLanguage(this.afkI.getContext());
       Intent localIntent = new Intent();
       localIntent.putExtra("rawUrl", paramString);
       localIntent.putExtra("showShare", false);
       localIntent.putExtra("show_bottom", false);
-      c.b(this.Xyr.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
+      c.b(this.afkI.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
     }
-    AppMethodBeat.o(287094);
+    AppMethodBeat.o(253431);
   }
 }
 

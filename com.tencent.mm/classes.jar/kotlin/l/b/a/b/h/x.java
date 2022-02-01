@@ -5,7 +5,7 @@ import java.util.List;
 public final class x
   extends RuntimeException
 {
-  private final List<String> cbo = null;
+  private final List<String> dVP = null;
   
   public x()
   {
@@ -14,7 +14,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.h.x
  * JD-Core Version:    0.7.0.1
  */

@@ -3,114 +3,89 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class fs
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String RKL;
-  public int RKM;
-  public int RKN;
-  public long RKO;
-  public int RKP;
-  public int idx;
-  public long lqo;
-  public String url;
+  public String YHe;
+  public String YHf;
+  public String YHg;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(124388);
+    AppMethodBeat.i(125710);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.RKL != null) {
-        paramVarArgs.f(1, this.RKL);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.YHe != null) {
+        paramVarArgs.g(1, this.YHe);
       }
-      paramVarArgs.bm(2, this.lqo);
-      paramVarArgs.aY(3, this.idx);
-      paramVarArgs.aY(4, this.RKM);
-      paramVarArgs.aY(5, this.RKN);
-      paramVarArgs.bm(6, this.RKO);
-      paramVarArgs.aY(7, this.RKP);
-      if (this.url != null) {
-        paramVarArgs.f(8, this.url);
+      if (this.YHf != null) {
+        paramVarArgs.g(2, this.YHf);
       }
-      AppMethodBeat.o(124388);
+      if (this.YHg != null) {
+        paramVarArgs.g(3, this.YHg);
+      }
+      AppMethodBeat.o(125710);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.RKL == null) {
-        break label534;
+      if (this.YHe == null) {
+        break label330;
       }
     }
-    label534:
-    for (paramInt = g.a.a.b.b.a.g(1, this.RKL) + 0;; paramInt = 0)
+    label330:
+    for (int i = i.a.a.b.b.a.h(1, this.YHe) + 0;; i = 0)
     {
-      int i = paramInt + g.a.a.b.b.a.p(2, this.lqo) + g.a.a.b.b.a.bM(3, this.idx) + g.a.a.b.b.a.bM(4, this.RKM) + g.a.a.b.b.a.bM(5, this.RKN) + g.a.a.b.b.a.p(6, this.RKO) + g.a.a.b.b.a.bM(7, this.RKP);
       paramInt = i;
-      if (this.url != null) {
-        paramInt = i + g.a.a.b.b.a.g(8, this.url);
+      if (this.YHf != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.YHf);
       }
-      AppMethodBeat.o(124388);
-      return paramInt;
+      i = paramInt;
+      if (this.YHg != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.YHg);
+      }
+      AppMethodBeat.o(125710);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(124388);
+        AppMethodBeat.o(125710);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         fs localfs = (fs)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(124388);
+          AppMethodBeat.o(125710);
           return -1;
         case 1: 
-          localfs.RKL = locala.abFh.readString();
-          AppMethodBeat.o(124388);
+          localfs.YHe = locala.ajGk.readString();
+          AppMethodBeat.o(125710);
           return 0;
         case 2: 
-          localfs.lqo = locala.abFh.AN();
-          AppMethodBeat.o(124388);
-          return 0;
-        case 3: 
-          localfs.idx = locala.abFh.AK();
-          AppMethodBeat.o(124388);
-          return 0;
-        case 4: 
-          localfs.RKM = locala.abFh.AK();
-          AppMethodBeat.o(124388);
-          return 0;
-        case 5: 
-          localfs.RKN = locala.abFh.AK();
-          AppMethodBeat.o(124388);
-          return 0;
-        case 6: 
-          localfs.RKO = locala.abFh.AN();
-          AppMethodBeat.o(124388);
-          return 0;
-        case 7: 
-          localfs.RKP = locala.abFh.AK();
-          AppMethodBeat.o(124388);
+          localfs.YHf = locala.ajGk.readString();
+          AppMethodBeat.o(125710);
           return 0;
         }
-        localfs.url = locala.abFh.readString();
-        AppMethodBeat.o(124388);
+        localfs.YHg = locala.ajGk.readString();
+        AppMethodBeat.o(125710);
         return 0;
       }
-      AppMethodBeat.o(124388);
+      AppMethodBeat.o(125710);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.fs
  * JD-Core Version:    0.7.0.1
  */

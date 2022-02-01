@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/u3" android:top="239.0dip" android:bottom="0.0dip" />
-    <item android:drawable="@drawable/u6" android:top="0.0dip" android:bottom="16.0dip" />
-    <item android:drawable="@drawable/u3" android:top="239.0dip" android:bottom="0.0dip" />
-    <item android:drawable="@drawable/u6" android:top="0.0dip" android:bottom="16.0dip" />
-</layer-list>
+    <item android:state_focused="true" android:drawable="@drawable/bvt" />
+    <item android:state_pressed="true" android:drawable="@drawable/bvt" />
+    <item android:drawable="@drawable/bvs" />
+</selector>

@@ -1,45 +1,13 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.x.a;
-import com.tencent.mm.sdk.platformtools.Log;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.mm.ipcinvoker.f;
 
 public final class br
-  extends c
+  extends c<k>
 {
-  public static final int CTRL_INDEX = -2;
-  public static final String NAME = "opNativeRedDot";
-  
-  public final void a(e parame, JSONObject paramJSONObject, int paramInt)
-  {
-    AppMethodBeat.i(45560);
-    String str = paramJSONObject.optString("op");
-    int j = paramJSONObject.optInt("redDotType", 0);
-    Log.i("MicroMsg.JsApiOpNativeRedDot", "op:%s redDotType:%d", new Object[] { str, Integer.valueOf(j) });
-    int i = -1;
-    switch (str.hashCode())
-    {
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        Log.w("MicroMsg.JsApiOpNativeRedDot", "unknown op:%s", new Object[] { str });
-        parame.j(paramInt, h("fail unknown op", null));
-        AppMethodBeat.o(45560);
-        return;
-        if (str.equals("clear")) {
-          i = 0;
-        }
-        break;
-      }
-    }
-    a.CH(j);
-    parame.j(paramInt, h("ok", null));
-    AppMethodBeat.o(45560);
-  }
+  public static final int CTRL_INDEX = 868;
+  public static final String NAME = "requestQueryCashier";
 }
 
 

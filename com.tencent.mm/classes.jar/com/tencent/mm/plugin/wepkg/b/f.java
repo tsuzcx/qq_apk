@@ -7,36 +7,36 @@ import com.tencent.mm.plugin.wepkg.model.WepkgVersion;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.MAutoStorage;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.util.ArrayList;
 import java.util.List;
 
 public class f
   extends MAutoStorage<e>
 {
-  private static volatile f QLp;
   public static final String[] SQL_CREATE;
-  private final com.tencent.mm.storagebase.h lvy;
-  public final boolean omY;
+  private static volatile f XEO;
+  private final com.tencent.mm.storagebase.h omV;
+  public final boolean rqI;
   
   static
   {
     AppMethodBeat.i(110588);
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(e.lqK, "WepkgVersion") };
-    QLp = null;
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(e.nVV, "WepkgVersion") };
+    XEO = null;
     AppMethodBeat.o(110588);
   }
   
   private f(com.tencent.mm.storagebase.h paramh)
   {
-    super(paramh, e.lqK, "WepkgVersion", e.INDEX_CREATE);
+    super(paramh, e.nVV, "WepkgVersion", e.INDEX_CREATE);
     AppMethodBeat.i(110572);
-    this.lvy = paramh;
+    this.omV = paramh;
     if (paramh != null) {}
     for (boolean bool = true;; bool = false)
     {
-      this.omY = bool;
-      if (!this.omY) {
+      this.rqI = bool;
+      if (!this.rqI) {
         Log.e("MicroMsg.Wepkg.WepkgVersionStorage", "storage can not work!!!");
       }
       AppMethodBeat.o(110572);
@@ -44,23 +44,23 @@ public class f
     }
   }
   
-  public static f hew()
+  public static f iFe()
   {
     AppMethodBeat.i(110571);
     f localf;
-    if ((!com.tencent.mm.kernel.h.aHB()) || (!com.tencent.mm.plugin.wepkg.utils.b.QNx))
+    if ((!com.tencent.mm.kernel.h.baz()) || (!com.tencent.mm.plugin.wepkg.utils.b.XGV))
     {
       localf = new f(null);
       AppMethodBeat.o(110571);
       return localf;
     }
-    if (QLp == null) {}
+    if (XEO == null) {}
     try
     {
-      if ((QLp == null) || (!QLp.omY)) {
-        QLp = new f(com.tencent.mm.kernel.h.aHG().kcF);
+      if ((XEO == null) || (!XEO.rqI)) {
+        XEO = new f(com.tencent.mm.kernel.h.baE().mCN);
       }
-      localf = QLp;
+      localf = XEO;
       AppMethodBeat.o(110571);
       return localf;
     }
@@ -70,15 +70,15 @@ public class f
     }
   }
   
-  public final boolean E(String paramString1, String paramString2, boolean paramBoolean)
+  public final boolean K(String paramString1, String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(110582);
-    if ((!this.omY) || (Util.isNullOrNil(paramString1)))
+    if ((!this.rqI) || (Util.isNullOrNil(paramString1)))
     {
       AppMethodBeat.o(110582);
       return false;
     }
-    e locale = bom(paramString1);
+    e locale = boa(paramString1);
     if (locale == null)
     {
       AppMethodBeat.o(110582);
@@ -95,36 +95,36 @@ public class f
   public final boolean a(e parame, WePkgDiffInfo paramWePkgDiffInfo)
   {
     AppMethodBeat.i(110581);
-    if ((!this.omY) || (Util.isNullOrNil(parame.field_pkgId)))
+    if ((!this.rqI) || (Util.isNullOrNil(parame.field_pkgId)))
     {
       AppMethodBeat.o(110581);
       return false;
     }
     if ((paramWePkgDiffInfo != null) && (!Util.isNullOrNil(paramWePkgDiffInfo.downloadUrl)))
     {
-      Object localObject = hew().bom(parame.field_pkgId);
-      if ((localObject != null) && (u.agG(((e)localObject).field_pkgPath)))
+      Object localObject = iFe().boa(parame.field_pkgId);
+      if ((localObject != null) && (y.ZC(((e)localObject).field_pkgPath)))
       {
-        paramWePkgDiffInfo.jTB = ((e)localObject).field_pkgId;
+        paramWePkgDiffInfo.mtT = ((e)localObject).field_pkgId;
         paramWePkgDiffInfo.oldVersion = ((e)localObject).field_version;
-        paramWePkgDiffInfo.QMr = ((e)localObject).field_pkgPath;
-        b.heu().ho(paramWePkgDiffInfo.jTB);
-        localObject = b.heu();
+        paramWePkgDiffInfo.XFP = ((e)localObject).field_pkgPath;
+        b.iFc().iP(paramWePkgDiffInfo.mtT);
+        localObject = b.iFc();
         a locala = new a();
-        locala.field_pkgId = paramWePkgDiffInfo.jTB;
+        locala.field_pkgId = paramWePkgDiffInfo.mtT;
         locala.field_oldVersion = paramWePkgDiffInfo.oldVersion;
-        locala.field_oldPath = paramWePkgDiffInfo.QMr;
+        locala.field_oldPath = paramWePkgDiffInfo.XFP;
         locala.field_version = paramWePkgDiffInfo.version;
         locala.field_downloadUrl = paramWePkgDiffInfo.downloadUrl;
         locala.field_md5 = paramWePkgDiffInfo.md5;
         locala.field_pkgSize = paramWePkgDiffInfo.fileSize;
-        locala.field_downloadNetType = paramWePkgDiffInfo.QMs;
+        locala.field_downloadNetType = paramWePkgDiffInfo.XFQ;
         ((b)localObject).insert(locala);
         Log.i("MicroMsg.Wepkg.WepkgVersionStorage", "insertDiffPkg");
       }
     }
-    hew().bol(parame.field_pkgId);
-    d.hev().bol(parame.field_pkgId);
+    iFe().bnZ(parame.field_pkgId);
+    d.iFd().bnZ(parame.field_pkgId);
     parame.field_nextCheckTime = (com.tencent.mm.plugin.wepkg.utils.d.currentTime() + parame.field_checkIntervalTime);
     parame.field_createTime = com.tencent.mm.plugin.wepkg.utils.d.currentTime();
     parame.field_accessTime = com.tencent.mm.plugin.wepkg.utils.d.currentTime();
@@ -137,12 +137,12 @@ public class f
   public final boolean a(String paramString, boolean paramBoolean, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(110580);
-    if (!this.omY)
+    if (!this.rqI)
     {
       AppMethodBeat.o(110580);
       return false;
     }
-    e locale = bom(paramString);
+    e locale = boa(paramString);
     if (locale == null)
     {
       AppMethodBeat.o(110580);
@@ -159,10 +159,10 @@ public class f
     return bool;
   }
   
-  public final boolean bol(String paramString)
+  public final boolean bnZ(String paramString)
   {
     AppMethodBeat.i(110578);
-    if ((!this.omY) || (Util.isNullOrNil(paramString)))
+    if ((!this.rqI) || (Util.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(110578);
       return false;
@@ -175,10 +175,10 @@ public class f
     return bool;
   }
   
-  public final e bom(String paramString)
+  public final e boa(String paramString)
   {
     AppMethodBeat.i(110573);
-    if ((!this.omY) || (Util.isNullOrNil(paramString)))
+    if ((!this.rqI) || (Util.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(110573);
       return null;
@@ -199,10 +199,10 @@ public class f
     return null;
   }
   
-  public final e bon(String paramString)
+  public final e bob(String paramString)
   {
     AppMethodBeat.i(110574);
-    if ((!this.omY) || (Util.isNullOrNil(paramString)))
+    if ((!this.rqI) || (Util.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(110574);
       return null;
@@ -225,15 +225,15 @@ public class f
     return null;
   }
   
-  public final boolean boo(String paramString)
+  public final boolean boc(String paramString)
   {
     AppMethodBeat.i(110579);
-    if (!this.omY)
+    if (!this.rqI)
     {
       AppMethodBeat.o(110579);
       return false;
     }
-    e locale = bom(paramString);
+    e locale = boa(paramString);
     if (locale == null)
     {
       AppMethodBeat.o(110579);
@@ -246,10 +246,10 @@ public class f
     return bool;
   }
   
-  public final boolean bop(String paramString)
+  public final boolean bod(String paramString)
   {
     AppMethodBeat.i(110584);
-    if ((!this.omY) || (Util.isNullOrNil(paramString)))
+    if ((!this.rqI) || (Util.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(110584);
       return false;
@@ -259,15 +259,15 @@ public class f
     return true;
   }
   
-  public final boolean boq(String paramString)
+  public final boolean boe(String paramString)
   {
     AppMethodBeat.i(110585);
-    if ((!this.omY) || (Util.isNullOrNil(paramString)))
+    if ((!this.rqI) || (Util.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(110585);
       return false;
     }
-    e locale = bom(paramString);
+    e locale = boa(paramString);
     if (locale == null)
     {
       AppMethodBeat.o(110585);
@@ -280,15 +280,15 @@ public class f
     return bool;
   }
   
-  public final boolean bor(String paramString)
+  public final boolean bof(String paramString)
   {
     AppMethodBeat.i(110586);
-    if ((!this.omY) || (Util.isNullOrNil(paramString)))
+    if ((!this.rqI) || (Util.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(110586);
       return false;
     }
-    e locale = bom(paramString);
+    e locale = boa(paramString);
     if (locale == null)
     {
       AppMethodBeat.o(110586);
@@ -301,15 +301,15 @@ public class f
     return bool;
   }
   
-  public final boolean dj(String paramString, boolean paramBoolean)
+  public final boolean dT(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(110583);
-    if ((!this.omY) || (Util.isNullOrNil(paramString)))
+    if ((!this.rqI) || (Util.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(110583);
       return false;
     }
-    e locale = bom(paramString);
+    e locale = boa(paramString);
     if (locale == null)
     {
       AppMethodBeat.o(110583);
@@ -322,10 +322,10 @@ public class f
     return bool;
   }
   
-  public final List<String> hex()
+  public final List<String> iFf()
   {
     AppMethodBeat.i(110575);
-    if (!this.omY)
+    if (!this.rqI)
     {
       AppMethodBeat.o(110575);
       return null;
@@ -349,10 +349,10 @@ public class f
     return localArrayList;
   }
   
-  public final List<WepkgVersion> hey()
+  public final List<WepkgVersion> iFg()
   {
     AppMethodBeat.i(110577);
-    if (!this.omY)
+    if (!this.rqI)
     {
       AppMethodBeat.o(110577);
       return null;
@@ -388,10 +388,10 @@ public class f
     return null;
   }
   
-  public final boolean hez()
+  public final boolean iFh()
   {
     AppMethodBeat.i(110587);
-    if (!this.omY)
+    if (!this.rqI)
     {
       AppMethodBeat.o(110587);
       return false;

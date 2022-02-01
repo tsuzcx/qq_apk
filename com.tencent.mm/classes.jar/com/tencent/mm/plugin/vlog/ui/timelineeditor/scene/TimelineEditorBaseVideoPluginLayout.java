@@ -18,25 +18,25 @@ import android.view.Window;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem;
+import com.tencent.mm.plugin.recordvideo.activity.a.a;
 import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.AutoRegisterPluginLayout;
-import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
+import com.tencent.mm.plugin.recordvideo.plugin.parent.a.b;
+import com.tencent.mm.plugin.recordvideo.plugin.parent.a.c;
 import com.tencent.mm.plugin.recordvideo.ui.editor.EditorInputView;
 import com.tencent.mm.plugin.recordvideo.ui.editor.EditorPanelHolder;
 import com.tencent.mm.plugin.vlog.a.e;
 import com.tencent.mm.plugin.vlog.a.f;
 import com.tencent.mm.plugin.vlog.a.g;
 import com.tencent.mm.plugin.vlog.a.h;
-import com.tencent.mm.plugin.vlog.model.ac;
-import com.tencent.mm.plugin.vlog.ui.plugin.ad;
-import com.tencent.mm.plugin.vlog.ui.plugin.ag;
-import com.tencent.mm.plugin.vlog.ui.plugin.ai;
+import com.tencent.mm.plugin.vlog.ui.plugin.af;
+import com.tencent.mm.plugin.vlog.ui.plugin.d.b;
 import com.tencent.mm.plugin.vlog.ui.plugin.d.d;
 import com.tencent.mm.plugin.vlog.ui.plugin.d.d.a;
 import com.tencent.mm.plugin.vlog.ui.plugin.d.e;
+import com.tencent.mm.plugin.vlog.ui.plugin.t;
+import com.tencent.mm.plugin.vlog.ui.plugin.t.a;
 import com.tencent.mm.plugin.vlog.ui.plugin.timeedit.TimeEditorItemContainer;
-import com.tencent.mm.plugin.vlog.ui.plugin.u;
-import com.tencent.mm.plugin.vlog.ui.plugin.u.a;
 import com.tencent.mm.plugin.vlog.ui.thumb.MultiTrackCropView;
 import com.tencent.mm.plugin.vlog.ui.timelineeditor.b.c;
 import com.tencent.mm.plugin.vlog.ui.timelineeditor.view.TimelineEditorDragRectView;
@@ -52,8 +52,7 @@ import com.tencent.mm.timelineedit.TimelineEditor.j;
 import com.tencent.mm.timelineedit.TimelineEditor.o;
 import com.tencent.mm.timelineedit.TimelineEditor.p;
 import com.tencent.mm.timelineedit.a.a.q;
-import com.tencent.mm.timelineedit.a.c;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.aw;
 import com.tencent.mm.ui.widget.InsectRelativeLayout;
 import com.tencent.mm.videocomposition.play.VideoCompositionPlayView;
 import com.tencent.mm.xeffect.effect.EffectManager;
@@ -63,94 +62,100 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import kotlin.Metadata;
 import kotlin.ResultKt;
+import kotlin.d.b.a.k;
 import kotlin.g.a.m;
-import kotlin.g.b.aa.e;
-import kotlin.g.b.aa.f;
-import kotlin.t;
-import kotlin.x;
-import kotlinx.coroutines.ak;
-import kotlinx.coroutines.bc;
-import kotlinx.coroutines.br;
+import kotlin.g.b.s;
+import kotlinx.coroutines.aq;
+import kotlinx.coroutines.bg;
+import kotlinx.coroutines.bu;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/timelineeditor/scene/TimelineEditorBaseVideoPluginLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/AutoRegisterPluginLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "bottomLayout", "Landroid/view/ViewGroup;", "captureInfo", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "getCaptureInfo", "()Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "setCaptureInfo", "(Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;)V", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "getConfigProvider", "()Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "setConfigProvider", "(Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;)V", "editId", "", "getEditId", "()Ljava/lang/String;", "setEditId", "(Ljava/lang/String;)V", "headLayout", "isMediaMute", "", "()Z", "setMediaMute", "(Z)V", "maxCropVideoDurationMs", "", "getMaxCropVideoDurationMs", "()J", "setMaxCropVideoDurationMs", "(J)V", "navigator", "Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;", "pluginLayout", "getPluginLayout", "()Landroid/view/ViewGroup;", "editSingleTrack", "getCurrentTrack", "Lcom/tencent/mm/videocomposition/CompositionTrack;", "getCurrentTrackPlayRange", "Lcom/tencent/mm/timelineedit/model/TimeRange;", "hideOperation", "", "initLogic", "initPlugin", "initPluginLogic", "initPluginStyle", "isPlaying", "loadCurrentPage", "model", "logTag", "onBackPress", "pauseVideo", "release", "reset", "resumeVideo", "seekTo", "(Ljava/lang/Long;)V", "setSingleTrackPlayRange", "seekStart", "showOperation", "statusChange", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus$RecordStatus;", "param", "Landroid/os/Bundle;", "Companion", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/timelineeditor/scene/TimelineEditorBaseVideoPluginLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/AutoRegisterPluginLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "bottomLayout", "Landroid/view/ViewGroup;", "captureInfo", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "getCaptureInfo", "()Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "setCaptureInfo", "(Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;)V", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "getConfigProvider", "()Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "setConfigProvider", "(Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;)V", "editId", "", "getEditId", "()Ljava/lang/String;", "setEditId", "(Ljava/lang/String;)V", "headLayout", "isMediaMute", "", "()Z", "setMediaMute", "(Z)V", "maxCropVideoDurationMs", "", "getMaxCropVideoDurationMs", "()J", "setMaxCropVideoDurationMs", "(J)V", "navigator", "Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;", "pluginLayout", "getPluginLayout", "()Landroid/view/ViewGroup;", "adjustBottomLayoutForAccessibility", "", "editSingleTrack", "getCurrentTrack", "Lcom/tencent/mm/videocomposition/CompositionTrack;", "getCurrentTrackPlayRange", "Lcom/tencent/mm/timelineedit/model/TimeRange;", "hideOperation", "initLogic", "initPlugin", "initPluginLogic", "initPluginStyle", "isPlaying", "loadCurrentPage", "model", "logTag", "onBackPress", "onDetach", "pauseVideo", "release", "reset", "resumeVideo", "seekTo", "(Ljava/lang/Long;)V", "setSingleTrackPlayRange", "seekStart", "showOperation", "statusChange", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus$RecordStatus;", "param", "Landroid/os/Bundle;", "Companion", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class TimelineEditorBaseVideoPluginLayout
   extends AutoRegisterPluginLayout
 {
-  public static final a NEP;
-  private com.tencent.mm.plugin.recordvideo.activity.a ALU;
-  private RecordConfigProvider ALV;
-  private com.tencent.mm.media.widget.camerarecordview.b.b HNh;
-  private final ViewGroup NEM;
-  private final ViewGroup NEN;
-  private final ViewGroup NEO;
-  private boolean NrL;
-  private long Nrw;
+  public static final TimelineEditorBaseVideoPluginLayout.a Ura;
+  private com.tencent.mm.plugin.recordvideo.activity.a Fiu;
+  private com.tencent.mm.media.widget.camerarecordview.b.b NKf;
+  private long Uff;
+  private boolean Ufu;
+  private final ViewGroup Urb;
+  private final ViewGroup Urc;
+  private final ViewGroup Urd;
   private String editId;
+  private RecordConfigProvider oaV;
   
   static
   {
-    AppMethodBeat.i(233646);
-    NEP = new a((byte)0);
-    AppMethodBeat.o(233646);
+    AppMethodBeat.i(282332);
+    Ura = new TimelineEditorBaseVideoPluginLayout.a((byte)0);
+    AppMethodBeat.o(282332);
   }
   
   public TimelineEditorBaseVideoPluginLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(233645);
+    AppMethodBeat.i(282249);
     this.editId = "";
-    this.Nrw = 60000L;
-    Log.i(gwK(), "create TimelineEditorVideoPluginLayout instance[" + hashCode() + ']');
-    paramAttributeSet = ((Activity)paramContext).findViewById(a.f.record_ui_root);
-    kotlin.g.b.p.j(paramAttributeSet, "(context as Activity).fi…oup>(R.id.record_ui_root)");
-    if (((ViewGroup)paramAttributeSet).getChildCount() == 0)
-    {
-      paramAttributeSet = ((Activity)paramContext).getWindow();
-      kotlin.g.b.p.j(paramAttributeSet, "context.window");
-      paramAttributeSet = paramAttributeSet.getDecorView().findViewById(16908290);
-      kotlin.g.b.p.j(paramAttributeSet, "context.window.decorView…up>(android.R.id.content)");
-      ((ViewGroup)paramAttributeSet).setAlpha(0.0F);
+    this.Uff = 60000L;
+    Log.i(hUH(), "create TimelineEditorVideoPluginLayout instance[" + hashCode() + ']');
+    if (((ViewGroup)((Activity)paramContext).findViewById(a.f.record_ui_root)).getChildCount() == 0) {
+      ((ViewGroup)((Activity)paramContext).getWindow().getDecorView().findViewById(16908290)).setAlpha(0.0F);
     }
     LayoutInflater.from(paramContext).inflate(a.g.timeline_editor_plugin_layout, (ViewGroup)this, true);
-    ((Activity)paramContext).getWindow().setSoftInputMode(48);
     paramContext = findViewById(a.f.plugin_layout);
     ((InsectRelativeLayout)paramContext).setDiscardKeyboard(true);
-    kotlin.g.b.p.j(paramContext, "findViewById<InsectRelat…Keyboard = true\n        }");
-    this.NEM = ((ViewGroup)paramContext);
+    paramAttributeSet = kotlin.ah.aiuX;
+    s.s(paramContext, "findViewById<InsectRelat…Keyboard = true\n        }");
+    this.Urb = ((ViewGroup)paramContext);
     paramContext = findViewById(a.f.timeline_editor_bottom_layout);
-    kotlin.g.b.p.j(paramContext, "findViewById(R.id.timeline_editor_bottom_layout)");
-    this.NEN = ((ViewGroup)paramContext);
+    s.s(paramContext, "findViewById(R.id.timeline_editor_bottom_layout)");
+    this.Urc = ((ViewGroup)paramContext);
     paramContext = findViewById(a.f.timeline_editor_head_layout);
-    kotlin.g.b.p.j(paramContext, "findViewById(R.id.timeline_editor_head_layout)");
-    this.NEO = ((ViewGroup)paramContext);
-    AppMethodBeat.o(233645);
+    s.s(paramContext, "findViewById(R.id.timeline_editor_head_layout)");
+    this.Urd = ((ViewGroup)paramContext);
+    paramContext = this.Urc.findViewById(a.f.timeline_finish);
+    if (paramContext != null)
+    {
+      paramAttributeSet = com.tencent.mm.plugin.vlog.util.a.UsM;
+      com.tencent.mm.plugin.vlog.util.a.iM(paramContext);
+    }
+    AppMethodBeat.o(282249);
+  }
+  
+  private static final void b(TimelineEditorBaseVideoPluginLayout paramTimelineEditorBaseVideoPluginLayout)
+  {
+    AppMethodBeat.i(282306);
+    s.u(paramTimelineEditorBaseVideoPluginLayout, "this$0");
+    paramTimelineEditorBaseVideoPluginLayout.getPluginLayout().setVisibility(4);
+    AppMethodBeat.o(282306);
   }
   
   private final com.tencent.mm.timelineedit.a.f getCurrentTrackPlayRange()
   {
-    AppMethodBeat.i(233637);
-    Object localObject1 = (com.tencent.mm.plugin.vlog.ui.plugin.p)bp(com.tencent.mm.plugin.vlog.ui.plugin.p.class);
+    AppMethodBeat.i(282294);
+    Object localObject1 = (com.tencent.mm.plugin.vlog.ui.plugin.p)bZ(com.tencent.mm.plugin.vlog.ui.plugin.p.class);
     int i;
     Object localObject3;
     Object localObject2;
     if (localObject1 != null)
     {
-      i = ((com.tencent.mm.plugin.vlog.ui.plugin.p)localObject1).Nmo;
+      i = ((com.tencent.mm.plugin.vlog.ui.plugin.p)localObject1).TZU;
       if (i >= 0)
       {
-        localObject1 = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
+        localObject1 = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
         if (localObject1 != null)
         {
-          localObject3 = ((com.tencent.mm.plugin.vlog.ui.timelineeditor.b)localObject1).NmT;
+          localObject3 = ((com.tencent.mm.plugin.vlog.ui.timelineeditor.b)localObject1).Uaw;
           if (localObject3 != null)
           {
-            localObject2 = (com.tencent.mm.videocomposition.b)((List)((com.tencent.mm.videocomposition.j)localObject3).MQY).get(i);
+            localObject2 = (com.tencent.mm.videocomposition.b)((List)((com.tencent.mm.videocomposition.j)localObject3).TDz).get(i);
             localObject1 = new com.tencent.mm.timelineedit.a.f(((com.tencent.mm.videocomposition.b)localObject2).startTimeMs, ((com.tencent.mm.videocomposition.b)localObject2).endTimeMs);
-            if (!((com.tencent.mm.videocomposition.b)localObject2).MQX.isValid()) {
+            if (!((com.tencent.mm.videocomposition.b)localObject2).TDy.isValid()) {
               break label257;
             }
-            localObject1 = new com.tencent.mm.timelineedit.a.f(((com.tencent.mm.timelineedit.a.f)localObject1).startTimeMs - ((com.tencent.mm.videocomposition.b)localObject2).MQX.duration / 2L, ((com.tencent.mm.timelineedit.a.f)localObject1).endTimeMs);
+            localObject1 = new com.tencent.mm.timelineedit.a.f(((com.tencent.mm.timelineedit.a.f)localObject1).startTimeMs - ((com.tencent.mm.videocomposition.b)localObject2).TDy.duration / 2L, ((com.tencent.mm.timelineedit.a.f)localObject1).endTimeMs);
           }
         }
       }
@@ -159,283 +164,278 @@ public class TimelineEditorBaseVideoPluginLayout
     for (;;)
     {
       localObject2 = localObject1;
-      if (i + 1 < ((List)((com.tencent.mm.videocomposition.j)localObject3).MQY).size())
+      if (i + 1 < ((List)((com.tencent.mm.videocomposition.j)localObject3).TDz).size())
       {
-        localObject3 = (com.tencent.mm.videocomposition.b)((List)((com.tencent.mm.videocomposition.j)localObject3).MQY).get(i + 1);
+        localObject3 = (com.tencent.mm.videocomposition.b)((List)((com.tencent.mm.videocomposition.j)localObject3).TDz).get(i + 1);
         localObject2 = localObject1;
-        if (((com.tencent.mm.videocomposition.b)localObject3).MQX.isValid())
+        if (((com.tencent.mm.videocomposition.b)localObject3).TDy.isValid())
         {
           long l1 = ((com.tencent.mm.timelineedit.a.f)localObject1).startTimeMs;
           long l2 = ((com.tencent.mm.timelineedit.a.f)localObject1).endTimeMs;
-          localObject2 = new com.tencent.mm.timelineedit.a.f(l1, ((com.tencent.mm.videocomposition.b)localObject3).MQX.duration / 2L + l2);
+          localObject2 = new com.tencent.mm.timelineedit.a.f(l1, ((com.tencent.mm.videocomposition.b)localObject3).TDy.duration / 2L + l2);
         }
       }
-      AppMethodBeat.o(233637);
+      AppMethodBeat.o(282294);
       return localObject2;
-      AppMethodBeat.o(233637);
+      AppMethodBeat.o(282294);
       return null;
     }
   }
   
   private final void setSingleTrackPlayRange(boolean paramBoolean)
   {
-    AppMethodBeat.i(233633);
+    AppMethodBeat.i(282275);
     com.tencent.mm.timelineedit.a.f localf = getCurrentTrackPlayRange();
     if (localf != null)
     {
-      com.tencent.mm.plugin.vlog.ui.timelineeditor.f localf1 = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+      com.tencent.mm.plugin.vlog.ui.timelineeditor.f localf1 = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
       if (localf1 != null) {
-        localf1.aG(localf.startTimeMs, localf.endTimeMs);
+        localf1.bs(localf.startTimeMs, localf.endTimeMs);
       }
       if (paramBoolean)
       {
-        localf1 = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
-        if (localf1 != null)
-        {
+        localf1 = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+        if (localf1 != null) {
           localf1.seek(localf.startTimeMs);
-          AppMethodBeat.o(233633);
-          return;
         }
       }
-      AppMethodBeat.o(233633);
-      return;
     }
-    AppMethodBeat.o(233633);
+    AppMethodBeat.o(282275);
   }
   
   public void a(com.tencent.mm.media.widget.camerarecordview.b.b paramb)
   {
-    Object localObject2 = null;
-    AppMethodBeat.i(233603);
-    Log.i(gwK(), "loadCurrentPage time:" + System.currentTimeMillis() + " model:" + paramb);
+    AppMethodBeat.i(282613);
+    Log.i(hUH(), "loadCurrentPage time:" + System.currentTimeMillis() + " model:" + paramb);
     super.a(paramb);
     Object localObject1 = new StringBuilder();
-    kotlin.g.b.p.j(com.tencent.mm.kernel.h.aHE(), "MMKernel.account()");
-    this.editId = (com.tencent.mm.kernel.b.aGq() + '_' + Util.nowMilliSecond());
-    this.HNh = paramb;
-    com.tencent.mm.plugin.vlog.ui.timelineeditor.e locale = (com.tencent.mm.plugin.vlog.ui.timelineeditor.e)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.e.class);
+    com.tencent.mm.kernel.h.baC();
+    this.editId = (com.tencent.mm.kernel.b.aZs() + '_' + Util.nowMilliSecond());
+    this.NKf = paramb;
+    Object localObject2 = (com.tencent.mm.plugin.vlog.ui.timelineeditor.e)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.e.class);
     Object localObject3;
     float f1;
-    if (locale != null)
+    if (localObject2 != null)
     {
-      localObject1 = this.ALU;
+      localObject1 = this.Fiu;
+      s.checkNotNull(localObject1);
+      localObject3 = getConfigProvider();
+      s.checkNotNull(localObject3);
+      s.u(localObject1, "navigator");
+      s.u(localObject3, "configProvider");
+      localObject1 = ((RecordConfigProvider)localObject3).oSS;
       if (localObject1 == null) {
-        kotlin.g.b.p.iCn();
-      }
-      localObject3 = this.ALV;
-      if (localObject3 == null) {
-        kotlin.g.b.p.iCn();
-      }
-      kotlin.g.b.p.k(localObject1, "navigator");
-      kotlin.g.b.p.k(localObject3, "configProvider");
-      localObject1 = ((RecordConfigProvider)localObject3).mab;
-      if (localObject1 == null) {
-        break label1088;
+        break label1052;
       }
       localObject1 = ((Bundle)localObject1).getParcelableArrayList("media_list");
       if (localObject1 == null) {
-        break label1088;
+        break label1052;
       }
-      kotlin.g.b.p.j(localObject1, "list");
-      localObject3 = (GalleryItem.MediaItem)kotlin.a.j.lo((List)localObject1);
-      kotlin.g.b.p.j(localObject3, "firstMediaItem");
-      if (((GalleryItem.MediaItem)localObject3).getType() != 2) {
-        break label1061;
-      }
-      localObject3 = com.tencent.mm.plugin.gallery.a.d.CeY;
-      localObject1 = com.tencent.mm.plugin.gallery.a.d.aFG(((GalleryItem.MediaItem)kotlin.a.j.lo((List)localObject1)).AAz);
-      f1 = ((com.tencent.mm.plugin.sight.base.b)localObject1).width / ((com.tencent.mm.plugin.sight.base.b)localObject1).height;
-    }
-    for (;;)
-    {
-      localObject1 = ar.au(locale.context);
-      int i = ((Point)localObject1).x;
-      int j = ((Point)localObject1).y;
-      new Size(i, j);
-      int k = ((Point)localObject1).x;
-      k = ((Point)localObject1).y;
-      localObject1 = com.tencent.mm.plugin.vlog.util.a.NGN;
-      localObject1 = com.tencent.mm.plugin.vlog.util.a.NGN;
-      com.tencent.mm.plugin.vlog.util.a.gwN();
-      f1 = i / f1;
-      float f2 = (j - f1) / 2.0F;
-      localObject3 = locale.NEb.getParent();
-      localObject1 = localObject3;
-      if (!(localObject3 instanceof CropOperationContainer)) {
-        localObject1 = null;
-      }
-      localObject1 = (CropOperationContainer)localObject1;
-      if (localObject1 != null) {
-        ((CropOperationContainer)localObject1).setEditorItemFirstTouch(false);
-      }
-      locale.vav = new RectF(0.0F, f2, i, f2 + f1);
-      locale.NEb.a(locale.NEc, locale.vav);
-      locale.NEc = locale.vav;
-      locale.NEb.a(locale.NEc, locale.vav);
-      locale.NEb.setVisibility(4);
-      localObject1 = com.tencent.mm.plugin.recordvideo.background.e.HGz;
-      com.tencent.mm.plugin.recordvideo.background.e.fuW().top = ((int)locale.vav.top);
-      localObject1 = com.tencent.mm.plugin.recordvideo.background.e.HGz;
-      com.tencent.mm.plugin.recordvideo.background.e.fuW().bottom = ((int)locale.vav.bottom);
-      localObject3 = new Rect();
-      locale.vav.round((Rect)localObject3);
-      localObject1 = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
-      if (localObject1 != null)
+      localObject3 = (GalleryItem.MediaItem)kotlin.a.p.oK((List)localObject1);
+      if (((GalleryItem.MediaItem)localObject3).getType() == 2)
       {
-        kotlin.g.b.p.k(localObject3, "valid");
-        Object localObject4 = ar.au(MMApplicationContext.getContext());
-        Object localObject5 = new Rect(0, 0, ((Point)localObject4).x, ((Point)localObject4).y);
-        kotlin.g.b.p.k(localObject5, "canvasRect");
-        kotlin.g.b.p.k(localObject3, "validRect");
-        localObject4 = ((com.tencent.mm.plugin.vlog.ui.timelineeditor.b)localObject1).NDO;
-        c localc = ((com.tencent.mm.plugin.vlog.ui.timelineeditor.b)localObject1).NDQ;
-        kotlin.g.b.p.k(localObject5, "canvasRect");
-        kotlin.g.b.p.k(localObject3, "validRect");
-        kotlin.g.b.p.k(localc, "config");
-        TimelineEditor.Companion.access$checkInitJNI(TimelineEditor.VLq);
-        localObject5 = com.tencent.mm.timelineedit.a.a.z((Rect)localObject5).toByteArray();
-        kotlin.g.b.p.j(localObject5, "canvasRect.toProto().toByteArray()");
-        localObject3 = com.tencent.mm.timelineedit.a.a.z((Rect)localObject3).toByteArray();
-        kotlin.g.b.p.j(localObject3, "validRect.toProto().toByteArray()");
-        ((TimelineEditor)localObject4).NmO = ((TimelineEditor)localObject4).nCreate((byte[])localObject5, (byte[])localObject3, localc.hCx());
-        localObject1 = ((com.tencent.mm.plugin.vlog.ui.timelineeditor.b)localObject1).NDO.getEffectManager();
-        if (localObject1 != null)
-        {
-          localObject3 = (IStickerDecoderFactory)new com.tencent.mm.plugin.vlog.ui.timelineeditor.emojidecoder.d();
-          kotlin.g.b.p.k(localObject3, "factory");
-          ((EffectManager)localObject1).nSetDecoderFactory(((EffectManager)localObject1).NmO, (IStickerDecoderFactory)new StickerDecoderFactoryWrapper((IStickerDecoderFactory)localObject3));
+        localObject3 = com.tencent.mm.plugin.gallery.b.g.HRf;
+        localObject1 = com.tencent.mm.plugin.gallery.b.g.aBH(((GalleryItem.MediaItem)kotlin.a.p.oK((List)localObject1)).Gcc);
+        f1 = ((com.tencent.mm.plugin.sight.base.b)localObject1).width / ((com.tencent.mm.plugin.sight.base.b)localObject1).height;
+        localObject1 = aw.bf(((com.tencent.mm.plugin.vlog.ui.timelineeditor.e)localObject2).context);
+        int i = ((Point)localObject1).x;
+        int j = ((Point)localObject1).y;
+        new Size(i, j);
+        int k = ((Point)localObject1).x;
+        k = ((Point)localObject1).y;
+        localObject1 = com.tencent.mm.plugin.vlog.util.a.UsM;
+        localObject1 = com.tencent.mm.plugin.vlog.util.a.UsM;
+        com.tencent.mm.plugin.vlog.util.a.hUK();
+        f1 = i / f1;
+        float f2 = (j - f1) / 2.0F;
+        localObject1 = ((com.tencent.mm.plugin.vlog.ui.timelineeditor.e)localObject2).Uqy.getParent();
+        if (!(localObject1 instanceof CropOperationContainer)) {
+          break label1057;
         }
-      }
-      localObject1 = com.tencent.mm.plugin.vlog.util.a.NGN;
-      localObject1 = com.tencent.mm.plugin.vlog.util.a.j(locale.vav);
-      localObject3 = (ai)bp(ai.class);
-      if (localObject3 != null) {
-        ((ai)localObject3).h((RectF)localObject1);
-      }
-      localObject3 = com.tencent.mm.plugin.recordvideo.background.e.HGz;
-      ((RectF)localObject1).round(com.tencent.mm.plugin.recordvideo.background.e.getVisibleRect());
-      localObject3 = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
-      localObject1 = localObject2;
-      if (localObject3 != null) {
-        localObject1 = ((com.tencent.mm.plugin.vlog.ui.timelineeditor.b)localObject3).NDO.getEffectManager();
-      }
-      com.tencent.mm.plugin.vlog.model.local.a.Nol.b((EffectManager)localObject1);
-      localObject1 = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
-      if (localObject1 != null) {
-        ((com.tencent.mm.plugin.vlog.ui.timelineeditor.b)localObject1).AC(this.NrL);
-      }
-      localObject1 = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
-      if (localObject1 != null)
-      {
-        ((com.tencent.mm.plugin.vlog.ui.timelineeditor.b)localObject1).o(this.ALV);
-        localObject1 = ((com.tencent.mm.plugin.vlog.ui.timelineeditor.b)localObject1).NmT;
+        localObject1 = (CropOperationContainer)localObject1;
+        label336:
+        if (localObject1 != null) {
+          ((CropOperationContainer)localObject1).setEditorItemFirstTouch(false);
+        }
+        ((com.tencent.mm.plugin.vlog.ui.timelineeditor.e)localObject2).ymw = new RectF(0.0F, f2, i, f2 + f1);
+        ((com.tencent.mm.plugin.vlog.ui.timelineeditor.e)localObject2).Uqy.a(((com.tencent.mm.plugin.vlog.ui.timelineeditor.e)localObject2).Uqz, ((com.tencent.mm.plugin.vlog.ui.timelineeditor.e)localObject2).ymw);
+        ((com.tencent.mm.plugin.vlog.ui.timelineeditor.e)localObject2).Uqz = ((com.tencent.mm.plugin.vlog.ui.timelineeditor.e)localObject2).ymw;
+        ((com.tencent.mm.plugin.vlog.ui.timelineeditor.e)localObject2).Uqy.a(((com.tencent.mm.plugin.vlog.ui.timelineeditor.e)localObject2).Uqz, ((com.tencent.mm.plugin.vlog.ui.timelineeditor.e)localObject2).ymw);
+        ((com.tencent.mm.plugin.vlog.ui.timelineeditor.e)localObject2).Uqy.setVisibility(4);
+        localObject1 = com.tencent.mm.plugin.recordvideo.background.e.NDU;
+        com.tencent.mm.plugin.recordvideo.background.e.gGM().top = ((int)((com.tencent.mm.plugin.vlog.ui.timelineeditor.e)localObject2).ymw.top);
+        localObject1 = com.tencent.mm.plugin.recordvideo.background.e.NDU;
+        com.tencent.mm.plugin.recordvideo.background.e.gGM().bottom = ((int)((com.tencent.mm.plugin.vlog.ui.timelineeditor.e)localObject2).ymw.bottom);
+        localObject3 = new Rect();
+        ((com.tencent.mm.plugin.vlog.ui.timelineeditor.e)localObject2).ymw.round((Rect)localObject3);
+        localObject1 = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
         if (localObject1 != null)
         {
-          localObject2 = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+          s.u(localObject3, "valid");
+          Object localObject4 = aw.bf(MMApplicationContext.getContext());
+          Object localObject5 = new Rect(0, 0, ((Point)localObject4).x, ((Point)localObject4).y);
+          s.u(localObject5, "canvasRect");
+          s.u(localObject3, "validRect");
+          localObject4 = ((com.tencent.mm.plugin.vlog.ui.timelineeditor.b)localObject1).Uqp;
+          com.tencent.mm.timelineedit.a.c localc = ((com.tencent.mm.plugin.vlog.ui.timelineeditor.b)localObject1).Uqo;
+          s.t(localObject5, "canvasRect");
+          s.t(localObject3, "validRect");
+          s.t(localc, "config");
+          TimelineEditor.Companion.access$checkInitJNI(TimelineEditor.adpu);
+          localObject5 = com.tencent.mm.timelineedit.a.a.H((Rect)localObject5).toByteArray();
+          s.r(localObject5, "canvasRect.toProto().toByteArray()");
+          localObject3 = com.tencent.mm.timelineedit.a.a.H((Rect)localObject3).toByteArray();
+          s.r(localObject3, "validRect.toProto().toByteArray()");
+          ((TimelineEditor)localObject4).nNg = ((TimelineEditor)localObject4).nCreate((byte[])localObject5, (byte[])localObject3, localc.jeD());
+          localObject1 = ((com.tencent.mm.plugin.vlog.ui.timelineeditor.b)localObject1).Uqp.getEffectManager();
+          if (localObject1 != null)
+          {
+            localObject3 = (IStickerDecoderFactory)new com.tencent.mm.plugin.vlog.ui.timelineeditor.emojidecoder.d();
+            s.t(localObject3, "factory");
+            ((EffectManager)localObject1).nSetDecoderFactory(((EffectManager)localObject1).nNg, (IStickerDecoderFactory)new StickerDecoderFactoryWrapper((IStickerDecoderFactory)localObject3));
+          }
+        }
+        localObject1 = com.tencent.mm.plugin.vlog.util.a.UsM;
+        localObject1 = com.tencent.mm.plugin.vlog.util.a.j(((com.tencent.mm.plugin.vlog.ui.timelineeditor.e)localObject2).ymw);
+        localObject2 = (com.tencent.mm.plugin.vlog.ui.plugin.ah)bZ(com.tencent.mm.plugin.vlog.ui.plugin.ah.class);
+        if (localObject2 != null) {
+          ((com.tencent.mm.plugin.vlog.ui.plugin.ah)localObject2).setVisibleRect((RectF)localObject1);
+        }
+        localObject2 = com.tencent.mm.plugin.recordvideo.background.e.NDU;
+        ((RectF)localObject1).round(com.tencent.mm.plugin.recordvideo.background.e.getVisibleRect());
+      }
+    }
+    else
+    {
+      localObject1 = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
+      if (localObject1 != null) {
+        break label1063;
+      }
+    }
+    label1052:
+    label1057:
+    label1063:
+    for (localObject1 = null;; localObject1 = ((com.tencent.mm.plugin.vlog.ui.timelineeditor.b)localObject1).Uqp.getEffectManager())
+    {
+      com.tencent.mm.plugin.vlog.model.local.a.UbD.b((EffectManager)localObject1);
+      localObject1 = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
+      if (localObject1 != null) {
+        ((com.tencent.mm.plugin.vlog.ui.timelineeditor.b)localObject1).Gb(this.Ufu);
+      }
+      localObject1 = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
+      if (localObject1 != null)
+      {
+        ((com.tencent.mm.plugin.vlog.ui.timelineeditor.b)localObject1).u(getConfigProvider());
+        localObject1 = ((com.tencent.mm.plugin.vlog.ui.timelineeditor.b)localObject1).Uaw;
+        if (localObject1 != null)
+        {
+          localObject2 = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
           if (localObject2 != null)
           {
-            kotlin.g.b.p.k(localObject1, "composition");
-            ((com.tencent.mm.plugin.vlog.ui.timelineeditor.f)localObject2).NmT = ((com.tencent.mm.videocomposition.j)localObject1);
-            ((com.tencent.mm.plugin.vlog.ui.timelineeditor.f)localObject2).AJS.a((com.tencent.mm.videocomposition.j)localObject1);
+            s.u(localObject1, "composition");
+            ((com.tencent.mm.plugin.vlog.ui.timelineeditor.f)localObject2).Uaw = ((com.tencent.mm.videocomposition.j)localObject1);
+            ((com.tencent.mm.plugin.vlog.ui.timelineeditor.f)localObject2).GmD.a((com.tencent.mm.videocomposition.j)localObject1);
           }
-          localObject2 = (ag)bp(ag.class);
+          localObject2 = (af)bZ(af.class);
           if (localObject2 != null) {
             d.d.a.a((d.d)localObject2, com.tencent.mm.plugin.vlog.ui.timelineeditor.modelparse.a.d((com.tencent.mm.videocomposition.j)localObject1));
           }
-          if (((com.tencent.mm.videocomposition.j)localObject1).getDurationMs() > this.Nrw) {
-            com.tencent.mm.plugin.recordvideo.plugin.parent.d.b.a(this, d.c.HSb);
+          if (((com.tencent.mm.videocomposition.j)localObject1).getDurationMs() > getMaxCropVideoDurationMs()) {
+            a.b.a((com.tencent.mm.plugin.recordvideo.plugin.parent.a)this, a.c.NOH);
           }
         }
       }
-      localObject1 = (com.tencent.mm.plugin.vlog.ui.a)bp(com.tencent.mm.plugin.vlog.ui.a.class);
+      localObject1 = (com.tencent.mm.plugin.vlog.ui.a)bZ(com.tencent.mm.plugin.vlog.ui.a.class);
       if (localObject1 != null)
       {
-        if (paramb == null) {
-          kotlin.g.b.p.iCn();
+        s.checkNotNull(paramb);
+        com.tencent.mm.plugin.vlog.ui.a.a((com.tencent.mm.plugin.vlog.ui.a)localObject1, paramb, this.oaV, false, this.Ufu, false, 20);
+      }
+      paramb = this.oaV;
+      if (paramb != null)
+      {
+        localObject1 = (com.tencent.mm.plugin.vlog.ui.plugin.caption.b)bZ(com.tencent.mm.plugin.vlog.ui.plugin.caption.b.class);
+        if (localObject1 != null) {
+          ((com.tencent.mm.plugin.vlog.ui.plugin.caption.b)localObject1).a(paramb);
         }
-        com.tencent.mm.plugin.vlog.ui.a.a((com.tencent.mm.plugin.vlog.ui.a)localObject1, paramb, this.ALV, false, this.NrL, false, 20);
       }
-      paramb = (com.tencent.mm.plugin.vlog.ui.plugin.caption.b)bp(com.tencent.mm.plugin.vlog.ui.plugin.caption.b.class);
-      if (paramb == null) {
-        break;
-      }
-      paramb.n(this.ALV);
-      AppMethodBeat.o(233603);
+      AppMethodBeat.o(282613);
       return;
-      label1061:
-      localObject1 = BitmapUtil.getImageOptions(((GalleryItem.MediaItem)localObject3).AAz);
+      localObject1 = BitmapUtil.getImageOptions(((GalleryItem.MediaItem)localObject3).Gcc);
       f1 = ((BitmapFactory.Options)localObject1).outWidth / ((BitmapFactory.Options)localObject1).outHeight;
-      continue;
-      label1088:
+      break;
       f1 = 1.0F;
+      break;
+      localObject1 = null;
+      break label336;
     }
-    AppMethodBeat.o(233603);
   }
   
   public void a(com.tencent.mm.plugin.recordvideo.activity.a parama, RecordConfigProvider paramRecordConfigProvider)
   {
-    AppMethodBeat.i(233591);
-    kotlin.g.b.p.k(parama, "navigator");
-    kotlin.g.b.p.k(paramRecordConfigProvider, "configProvider");
-    this.ALV = paramRecordConfigProvider;
-    this.ALU = parama;
-    Object localObject1 = this.ALV;
-    if (localObject1 != null)
+    AppMethodBeat.i(282505);
+    s.u(parama, "navigator");
+    s.u(paramRecordConfigProvider, "configProvider");
+    this.oaV = paramRecordConfigProvider;
+    this.Fiu = parama;
+    Object localObject = this.oaV;
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ((RecordConfigProvider)localObject).oSS)
     {
-      localObject1 = ((RecordConfigProvider)localObject1).mab;
-      if (localObject1 != null) {
-        ((Bundle)localObject1).setClassLoader(GalleryItem.MediaItem.class.getClassLoader());
+      if (localObject != null) {
+        ((Bundle)localObject).setClassLoader(GalleryItem.MediaItem.class.getClassLoader());
       }
-    }
-    localObject1 = com.tencent.mm.plugin.recordvideo.e.d.IeU;
-    com.tencent.mm.plugin.recordvideo.e.d.g(paramRecordConfigProvider);
-    Log.i("MicroMsg.TimelineEditorFirstEnterOperate", "checkResUpdate");
-    com.tencent.mm.plugin.recordvideo.res.e.HVb.bkQ();
-    com.tencent.mm.plugin.recordvideo.res.f.HVc.bkQ();
-    com.tencent.mm.plugin.recordvideo.res.g.HVd.bkQ();
-    com.tencent.mm.plugin.recordvideo.res.e.HVb.fxH();
-    com.tencent.mm.plugin.recordvideo.res.f.HVc.fxH();
-    com.tencent.mm.plugin.recordvideo.res.g.HVd.fxH();
-    gwJ();
-    Object localObject2 = (com.tencent.mm.plugin.vlog.ui.a)bp(com.tencent.mm.plugin.vlog.ui.a.class);
-    if (localObject2 != null)
-    {
-      int i = a.h.popvideo_post_selected_origin;
-      if (i > 0)
+      localObject = com.tencent.mm.plugin.recordvideo.util.f.Obq;
+      com.tencent.mm.plugin.recordvideo.util.f.l(paramRecordConfigProvider);
+      Log.i("MicroMsg.TimelineEditorFirstEnterOperate", "checkResUpdate");
+      com.tencent.mm.plugin.recordvideo.res.e.NRR.bIJ();
+      com.tencent.mm.plugin.recordvideo.res.f.NRS.bIJ();
+      com.tencent.mm.plugin.recordvideo.res.g.NRT.bIJ();
+      com.tencent.mm.plugin.recordvideo.res.e.NRR.gJw();
+      com.tencent.mm.plugin.recordvideo.res.f.NRS.gJw();
+      com.tencent.mm.plugin.recordvideo.res.g.NRT.gJw();
+      hUG();
+      localObject = (com.tencent.mm.plugin.vlog.ui.a)bZ(com.tencent.mm.plugin.vlog.ui.a.class);
+      if (localObject != null)
       {
-        localObject1 = ((com.tencent.mm.plugin.vlog.ui.a)localObject2).HQp;
-        localObject2 = ((com.tencent.mm.plugin.vlog.ui.a)localObject2).parent.getContext();
-        kotlin.g.b.p.j(localObject2, "parent.context");
-        ((ImageView)localObject1).setImageDrawable(((Context)localObject2).getResources().getDrawable(i));
+        int i = a.h.popvideo_post_selected_origin;
+        if (i > 0) {
+          ((com.tencent.mm.plugin.vlog.ui.a)localObject).NMT.setImageDrawable(((com.tencent.mm.plugin.vlog.ui.a)localObject).parent.getContext().getResources().getDrawable(i));
+        }
       }
+      localObject = (com.tencent.mm.plugin.recordvideo.plugin.e)bZ(com.tencent.mm.plugin.recordvideo.plugin.e.class);
+      if (localObject != null) {
+        ((com.tencent.mm.plugin.recordvideo.plugin.e)localObject).c(Integer.valueOf(a.e.btn_solid_orange), null);
+      }
+      b(parama, paramRecordConfigProvider);
+      super.a(parama, paramRecordConfigProvider);
+      AppMethodBeat.o(282505);
+      return;
     }
-    localObject1 = (com.tencent.mm.plugin.recordvideo.plugin.d)bp(com.tencent.mm.plugin.recordvideo.plugin.d.class);
-    if (localObject1 != null) {
-      ((com.tencent.mm.plugin.recordvideo.plugin.d)localObject1).a(Integer.valueOf(a.e.btn_solid_orange), null);
-    }
-    b(parama, paramRecordConfigProvider);
-    AppMethodBeat.o(233591);
   }
   
-  public void a(d.c paramc, Bundle paramBundle)
+  public void a(final a.c paramc, Bundle paramBundle)
   {
-    AppMethodBeat.i(233613);
-    kotlin.g.b.p.k(paramc, "status");
-    float f;
-    label821:
-    long l2;
-    final long l1;
-    Object localObject1;
-    label1169:
-    label1234:
-    label1243:
-    label1258:
-    label1270:
+    AppMethodBeat.i(282709);
+    s.u(paramc, "status");
+    label647:
     final int i;
+    label699:
+    label959:
+    label965:
+    label977:
     int j;
-    Object localObject2;
-    Object localObject3;
-    switch (a.$EnumSwitchMapping$0[paramc.ordinal()])
+    Object localObject;
+    label1355:
+    label1660:
+    final long l1;
+    label1679:
+    label1846:
+    label1857:
+    label1868:
+    label2012:
+    long l2;
+    switch (b.$EnumSwitchMapping$0[paramc.ordinal()])
     {
     default: 
     case 1: 
@@ -449,614 +449,506 @@ public class TimelineEditorBaseVideoPluginLayout
     case 9: 
     case 10: 
     case 11: 
-    case 12: 
-    case 13: 
-    case 14: 
-    case 15: 
-    case 16: 
-    case 17: 
-    case 18: 
-    case 19: 
-    case 20: 
-    case 21: 
       do
       {
-        AppMethodBeat.o(233613);
+        AppMethodBeat.o(282709);
         return;
-        paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.i)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.i.class);
+        paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.i)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.i.class);
         if (paramc != null)
         {
           paramc.hideLoading();
-          paramc = x.aazN;
+          paramc = kotlin.ah.aiuX;
         }
         paramc = getContext();
         if (paramc == null)
         {
-          paramc = new t("null cannot be cast to non-null type android.app.Activity");
-          AppMethodBeat.o(233613);
+          paramc = new NullPointerException("null cannot be cast to non-null type android.app.Activity");
+          AppMethodBeat.o(282709);
           throw paramc;
         }
-        paramc = ((Activity)paramc).getWindow();
-        kotlin.g.b.p.j(paramc, "(context as Activity).window");
-        paramc = paramc.getDecorView().findViewById(16908290);
-        kotlin.g.b.p.j(paramc, "(context as Activity).wi…up>(android.R.id.content)");
-        ((ViewGroup)paramc).setAlpha(1.0F);
-        paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
-        if (paramc != null)
+        ((ViewGroup)((Activity)paramc).getWindow().getDecorView().findViewById(16908290)).setAlpha(1.0F);
+        paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+        if (paramc == null) {}
+        for (paramc = null;; paramc = paramc.GmD)
         {
-          paramc = paramc.NmT;
+          if (paramc != null) {
+            paramc.setAlpha(1.0F);
+          }
+          paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
           if (paramc != null)
           {
-            paramBundle = (ai)bp(ai.class);
-            if (paramBundle != null)
-            {
-              paramBundle.b(paramc);
-              paramc = x.aazN;
-            }
-            paramc = (ai)bp(ai.class);
+            paramc = paramc.Uaw;
             if (paramc != null)
             {
-              paramc.setVisibility(0);
-              paramc = x.aazN;
-              AppMethodBeat.o(233613);
-              return;
+              paramBundle = (com.tencent.mm.plugin.vlog.ui.plugin.ah)bZ(com.tencent.mm.plugin.vlog.ui.plugin.ah.class);
+              if (paramBundle != null)
+              {
+                paramBundle.b(paramc);
+                paramc = kotlin.ah.aiuX;
+              }
+              paramc = (com.tencent.mm.plugin.vlog.ui.plugin.ah)bZ(com.tencent.mm.plugin.vlog.ui.plugin.ah.class);
+              if (paramc != null)
+              {
+                paramc.setVisibility(0);
+                paramc = kotlin.ah.aiuX;
+              }
             }
-            AppMethodBeat.o(233613);
-            return;
           }
+          AppMethodBeat.o(282709);
+          return;
         }
-        AppMethodBeat.o(233613);
-        return;
         onBackPress();
-        AppMethodBeat.o(233613);
+        AppMethodBeat.o(282709);
         return;
-        cSG();
-        AppMethodBeat.o(233613);
+        dwY();
+        AppMethodBeat.o(282709);
         return;
-        guD();
-        AppMethodBeat.o(233613);
+        hSs();
+        AppMethodBeat.o(282709);
         return;
-        paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+        paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
         if (paramc != null)
         {
           paramc.seek(0L);
-          paramc = x.aazN;
+          paramc = kotlin.ah.aiuX;
         }
-        m(null);
-        AppMethodBeat.o(233613);
+        a(this);
+        AppMethodBeat.o(282709);
         return;
         if (paramBundle != null)
         {
           bool1 = paramBundle.getBoolean("PARAM_EDIT_ORIGIN_VOICE_MUTE_BOOLEAN");
-          paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
+          paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
           if (paramc != null) {
-            paramc.AC(bool1);
+            paramc.Gb(bool1);
           }
-          paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
-          if (paramc != null)
-          {
-            paramc = paramc.NmT;
-            if (paramc != null)
-            {
-              paramc = (List)paramc.MQY;
-              if (paramc != null)
-              {
-                paramc = ((Iterable)paramc).iterator();
-                while (paramc.hasNext())
-                {
-                  paramBundle = (com.tencent.mm.videocomposition.b)paramc.next();
-                  if (paramBundle.type != 3)
-                  {
-                    if (bool1) {}
-                    for (f = 0.0F;; f = 1.0F)
-                    {
-                      paramBundle.setVolume(f);
-                      break;
-                    }
-                  }
-                }
-              }
-            }
-            paramc = x.aazN;
-            AppMethodBeat.o(233613);
-            return;
-          }
-          AppMethodBeat.o(233613);
-          return;
+          paramc = kotlin.ah.aiuX;
+          paramc = kotlin.ah.aiuX;
         }
-        AppMethodBeat.o(233613);
+        AppMethodBeat.o(282709);
         return;
-        cSG();
-        paramc = (u)bp(u.class);
+        dwY();
+        paramc = (t)bZ(t.class);
         if (paramc != null)
         {
-          paramc.gvC();
-          paramc = x.aazN;
+          paramc.hTr();
+          paramc = kotlin.ah.aiuX;
         }
-        paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
+        paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
         if (paramc != null)
         {
-          paramc = paramc.gwA();
+          paramc = paramc.hUy();
           if (paramc != null)
           {
-            paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
+            paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
             if (paramBundle != null)
             {
-              paramBundle = paramBundle.NDO;
-              paramBundle.nSave(paramBundle.NmO);
-              paramBundle = x.aazN;
+              paramBundle = paramBundle.Uqp;
+              paramBundle.nSave(paramBundle.nNg);
+              paramBundle = kotlin.ah.aiuX;
             }
-            paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.a)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.a.class);
+            paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.a)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.a.class);
             if (paramBundle != null)
             {
               com.tencent.mm.plugin.vlog.ui.timelineeditor.a.a(paramBundle, paramc);
-              paramBundle = x.aazN;
+              paramBundle = kotlin.ah.aiuX;
             }
-            paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+            paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
             if (paramBundle != null)
             {
               com.tencent.mm.plugin.vlog.ui.timelineeditor.f.a(paramBundle, paramc, false, false, 0L, 14);
-              paramc = x.aazN;
-              AppMethodBeat.o(233613);
-              return;
-            }
-            AppMethodBeat.o(233613);
-            return;
-          }
-        }
-        AppMethodBeat.o(233613);
-        return;
-        if (paramBundle != null) {}
-        for (bool1 = paramBundle.getBoolean("PARAM_1_BOOLEAN", false);; bool1 = false)
-        {
-          if (!bool1)
-          {
-            if (bool1) {
-              break;
-            }
-            paramc = (u)bp(u.class);
-            if (paramc == null) {
-              break label821;
-            }
-            if (paramc.NvP != true) {
-              break;
-            }
-          }
-          m(null);
-          AppMethodBeat.o(233613);
-          return;
-        }
-        AppMethodBeat.o(233613);
-        return;
-        dmf();
-        AppMethodBeat.o(233613);
-        return;
-        if (paramBundle != null)
-        {
-          boolean bool2 = paramBundle.getBoolean("EDIT_VLOG_TRACK_CROP_CONFIRM");
-          paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
-          if (paramc != null)
-          {
-            if (!bool2)
-            {
-              bool1 = true;
-              paramBundle = paramc.NDO;
-              paramBundle = (com.tencent.mm.videocomposition.j)TimelineEditor.a((kotlin.g.a.a)new TimelineEditor.o(paramBundle, bool1), (kotlin.g.a.b)new TimelineEditor.p(paramBundle));
-              if (bool1) {
-                paramc.setComposition(paramBundle);
-              }
-              paramc = paramc.NmT;
-              if (paramc == null) {
-                break label1243;
-              }
-              if (paramc.getDurationMs() <= this.Nrw + 200L) {
-                break label1270;
-              }
-              if (!bool2) {
-                break label1258;
-              }
-              paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
-              if (paramc == null) {
-                break label1234;
-              }
-              l2 = this.Nrw;
-              l1 = 0L;
-              paramBundle = paramc.NmT;
-              if (paramBundle != null)
-              {
-                paramBundle = (List)paramBundle.MQY;
-                if (paramBundle != null) {
-                  paramBundle = ((Iterable)paramBundle).iterator();
-                }
-              }
-            }
-            else
-            {
-              for (;;)
-              {
-                if (!paramBundle.hasNext()) {
-                  break label1169;
-                }
-                localObject1 = (com.tencent.mm.videocomposition.b)paramBundle.next();
-                if (l1 >= l2)
-                {
-                  paramc.setComposition(paramc.NDO.c(com.tencent.mm.timelineedit.a.a.c((com.tencent.mm.videocomposition.b)localObject1)));
-                  continue;
-                  bool1 = false;
-                  break;
-                }
-                if (((com.tencent.mm.videocomposition.b)localObject1).endTimeMs - ((com.tencent.mm.videocomposition.b)localObject1).startTimeMs + l1 > l2)
-                {
-                  ((com.tencent.mm.videocomposition.b)localObject1).Sl(l1);
-                  ((com.tencent.mm.videocomposition.b)localObject1).Sm(l2);
-                  ((com.tencent.mm.videocomposition.b)localObject1).Sn(((com.tencent.mm.videocomposition.b)localObject1).MQV);
-                  ((com.tencent.mm.videocomposition.b)localObject1).So(((float)(((com.tencent.mm.videocomposition.b)localObject1).endTimeMs - ((com.tencent.mm.videocomposition.b)localObject1).startTimeMs) * ((com.tencent.mm.videocomposition.b)localObject1).pvh + (float)((com.tencent.mm.videocomposition.b)localObject1).MQV));
-                  paramc.setComposition(paramc.NDO.b(com.tencent.mm.timelineedit.a.a.c((com.tencent.mm.videocomposition.b)localObject1)));
-                }
-                l1 += ((com.tencent.mm.videocomposition.b)localObject1).endTimeMs - ((com.tencent.mm.videocomposition.b)localObject1).startTimeMs;
-              }
-            }
-            paramc = paramc.NmT;
-            if (paramc != null)
-            {
-              paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
-              if (paramBundle != null)
-              {
-                com.tencent.mm.plugin.vlog.ui.timelineeditor.f.a(paramBundle, paramc, false, false, 0L, 12);
-                paramBundle = x.aazN;
-              }
-              paramBundle = (ag)bp(ag.class);
-              if (paramBundle != null)
-              {
-                d.d.a.a(paramBundle, com.tencent.mm.plugin.vlog.ui.timelineeditor.modelparse.a.d(paramc));
-                paramc = x.aazN;
-              }
-            }
-            m(null);
-          }
-          for (;;)
-          {
-            paramc = x.aazN;
-            guD();
-            paramc = x.aazN;
-            AppMethodBeat.o(233613);
-            return;
-            onBackPress();
-            AppMethodBeat.o(233613);
-            return;
-            paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
-            if (paramBundle != null)
-            {
-              com.tencent.mm.plugin.vlog.ui.timelineeditor.f.a(paramBundle, paramc, false, false, 0L, 12);
-              paramBundle = x.aazN;
-            }
-            if (bool2)
-            {
-              paramBundle = (ag)bp(ag.class);
-              if (paramBundle != null)
-              {
-                d.d.a.a(paramBundle, com.tencent.mm.plugin.vlog.ui.timelineeditor.modelparse.a.d(paramc));
-                paramc = x.aazN;
-              }
-            }
-            m(null);
-          }
-        }
-        AppMethodBeat.o(233613);
-        return;
-        if (paramBundle != null)
-        {
-          dmf();
-          paramc = paramBundle.getCharSequence("PARAM_EDIT_TEXT_CONTENT");
-          i = paramBundle.getInt("PARAM_EDIT_TEXT_COLOR");
-          j = paramBundle.getInt("PARAM_EDIT_TEXT_COLOR_BG_INT");
-          paramBundle = paramBundle.getString("PARAM_EDIT_TEXT_FONT");
-          localObject1 = (com.tencent.mm.plugin.recordvideo.plugin.d)bp(com.tencent.mm.plugin.recordvideo.plugin.d.class);
-          if (localObject1 != null)
-          {
-            ((com.tencent.mm.plugin.recordvideo.plugin.d)localObject1).a(paramc, i, j, paramBundle);
-            paramc = x.aazN;
-          }
-          paramc = x.aazN;
-        }
-        AppMethodBeat.o(233613);
-        return;
-        cSG();
-        dmf();
-        AppMethodBeat.o(233613);
-        return;
-        guD();
-        m(null);
-        AppMethodBeat.o(233613);
-        return;
-        paramc = (com.tencent.mm.plugin.recordvideo.plugin.d)bp(com.tencent.mm.plugin.recordvideo.plugin.d.class);
-        if (paramc != null)
-        {
-          paramc.fwG();
-          paramc = x.aazN;
-          AppMethodBeat.o(233613);
-          return;
-        }
-        AppMethodBeat.o(233613);
-        return;
-        paramc = (com.tencent.mm.plugin.recordvideo.plugin.b)bp(com.tencent.mm.plugin.recordvideo.plugin.b.class);
-        if (paramc != null)
-        {
-          paramc.fwE();
-          paramc = x.aazN;
-          AppMethodBeat.o(233613);
-          return;
-        }
-        AppMethodBeat.o(233613);
-        return;
-        if (paramBundle != null)
-        {
-          i = paramBundle.getInt("EDIT_VLOG_SELECT_TRACK", -1);
-          paramc = (com.tencent.mm.plugin.vlog.ui.plugin.p)bp(com.tencent.mm.plugin.vlog.ui.plugin.p.class);
-          if (((paramc == null) || (paramc.Nmo != i)) && (i >= 0))
-          {
-            this.NEO.setVisibility(4);
-            this.NEN.setVisibility(4);
-            paramc = (com.tencent.mm.plugin.vlog.ui.plugin.p)bp(com.tencent.mm.plugin.vlog.ui.plugin.p.class);
-            if (paramc != null) {
-              paramc.Nmo = i;
-            }
-            paramc = (com.tencent.mm.plugin.vlog.ui.plugin.p)bp(com.tencent.mm.plugin.vlog.ui.plugin.p.class);
-            if (paramc != null)
-            {
-              paramc.setVisibility(0);
-              paramc = x.aazN;
-            }
-            setSingleTrackPlayRange(true);
-          }
-          paramc = x.aazN;
-          AppMethodBeat.o(233613);
-          return;
-        }
-        AppMethodBeat.o(233613);
-        return;
-        if (this.NEO.getVisibility() != 0)
-        {
-          paramc = (com.tencent.mm.plugin.vlog.ui.plugin.p)bp(com.tencent.mm.plugin.vlog.ui.plugin.p.class);
-          if (paramc != null) {
-            paramc.Nmo = -1;
-          }
-          paramc = (com.tencent.mm.plugin.vlog.ui.plugin.p)bp(com.tencent.mm.plugin.vlog.ui.plugin.p.class);
-          if (paramc != null)
-          {
-            paramc.setVisibility(4);
-            paramc = x.aazN;
-          }
-          this.NEO.setVisibility(0);
-          this.NEN.setVisibility(0);
-          paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
-          if (paramc != null)
-          {
-            paramc = paramc.NmT;
-            if (paramc != null)
-            {
-              paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
-              if (paramBundle != null)
-              {
-                paramBundle.aG(paramc.getPlayStart(), paramc.gtw());
-                paramc = x.aazN;
-              }
-              paramc = (ag)bp(ag.class);
-              if (paramc != null)
-              {
-                paramc.x(-1, 0L, 0L);
-                paramc = x.aazN;
-              }
+              paramc = kotlin.ah.aiuX;
             }
           }
         }
-        paramc = (u)bp(u.class);
-        if (paramc == null) {
+        AppMethodBeat.o(282709);
+        return;
+        if (paramBundle != null) {
+          break label699;
+        }
+        bool1 = false;
+        if (bool1) {
           break;
         }
-      } while (paramc.NvP != true);
-      m(null);
-      AppMethodBeat.o(233613);
+      } while (bool1);
+      paramc = (t)bZ(t.class);
+      if ((paramc != null) && (paramc.Ujc == true)) {}
+      for (i = 1; i != 0; i = 0)
+      {
+        a(this);
+        AppMethodBeat.o(282709);
+        return;
+        bool1 = paramBundle.getBoolean("PARAM_1_BOOLEAN", false);
+        break label647;
+      }
+    case 12: 
+    case 13: 
+      dSW();
+      AppMethodBeat.o(282709);
       return;
-      AppMethodBeat.o(233613);
+    case 14: 
+      boolean bool2;
+      if (paramBundle != null)
+      {
+        bool2 = paramBundle.getBoolean("EDIT_VLOG_TRACK_CROP_CONFIRM");
+        paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
+        if (paramc != null)
+        {
+          if (bool2) {
+            break label959;
+          }
+          bool1 = true;
+          paramBundle = paramc.Uqp;
+          paramBundle = (com.tencent.mm.videocomposition.j)TimelineEditor.a((kotlin.g.a.a)new TimelineEditor.o(paramBundle, bool1), (kotlin.g.a.b)new TimelineEditor.p(paramBundle));
+          if (bool1) {
+            paramc.setComposition(paramBundle);
+          }
+          paramc = paramc.Uaw;
+          if (paramc != null)
+          {
+            if (paramc.getDurationMs() <= getMaxCropVideoDurationMs() + 200L) {
+              break label977;
+            }
+            if (!bool2) {
+              break label965;
+            }
+            paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
+            if (paramc != null)
+            {
+              paramc = paramc.wQ(getMaxCropVideoDurationMs());
+              if (paramc != null)
+              {
+                paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+                if (paramBundle != null)
+                {
+                  com.tencent.mm.plugin.vlog.ui.timelineeditor.f.a(paramBundle, paramc, false, false, 0L, 12);
+                  paramBundle = kotlin.ah.aiuX;
+                }
+                paramBundle = (af)bZ(af.class);
+                if (paramBundle != null)
+                {
+                  d.d.a.a((d.d)paramBundle, com.tencent.mm.plugin.vlog.ui.timelineeditor.modelparse.a.d(paramc));
+                  paramc = kotlin.ah.aiuX;
+                }
+              }
+            }
+            a(this);
+          }
+        }
+      }
+      for (;;)
+      {
+        paramc = kotlin.ah.aiuX;
+        paramc = kotlin.ah.aiuX;
+        hSs();
+        paramc = kotlin.ah.aiuX;
+        paramc = kotlin.ah.aiuX;
+        AppMethodBeat.o(282709);
+        return;
+        bool1 = false;
+        break;
+        onBackPress();
+        AppMethodBeat.o(282709);
+        return;
+        paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+        if (paramBundle != null)
+        {
+          com.tencent.mm.plugin.vlog.ui.timelineeditor.f.a(paramBundle, paramc, false, false, 0L, 12);
+          paramBundle = kotlin.ah.aiuX;
+        }
+        if (bool2)
+        {
+          paramBundle = (af)bZ(af.class);
+          if (paramBundle != null)
+          {
+            d.d.a.a((d.d)paramBundle, com.tencent.mm.plugin.vlog.ui.timelineeditor.modelparse.a.d(paramc));
+            paramc = kotlin.ah.aiuX;
+          }
+        }
+        a(this);
+      }
+    case 15: 
+      if (paramBundle != null)
+      {
+        dSW();
+        paramc = paramBundle.getCharSequence("PARAM_EDIT_TEXT_CONTENT");
+        i = paramBundle.getInt("PARAM_EDIT_TEXT_COLOR");
+        j = paramBundle.getInt("PARAM_EDIT_TEXT_COLOR_BG_INT");
+        paramBundle = paramBundle.getString("PARAM_EDIT_TEXT_FONT");
+        localObject = (com.tencent.mm.plugin.recordvideo.plugin.e)bZ(com.tencent.mm.plugin.recordvideo.plugin.e.class);
+        if (localObject != null)
+        {
+          ((com.tencent.mm.plugin.recordvideo.plugin.e)localObject).a(paramc, i, j, paramBundle);
+          paramc = kotlin.ah.aiuX;
+        }
+        paramc = kotlin.ah.aiuX;
+      }
+      AppMethodBeat.o(282709);
       return;
+    case 16: 
+      dwY();
+      dSW();
+      AppMethodBeat.o(282709);
+      return;
+    case 17: 
+      hSs();
+      a(this);
+      AppMethodBeat.o(282709);
+      return;
+    case 18: 
+      paramc = (com.tencent.mm.plugin.recordvideo.plugin.e)bZ(com.tencent.mm.plugin.recordvideo.plugin.e.class);
+      if (paramc != null)
+      {
+        paramc.gIo();
+        paramc = kotlin.ah.aiuX;
+      }
+      AppMethodBeat.o(282709);
+      return;
+    case 19: 
+      paramc = (com.tencent.mm.plugin.recordvideo.plugin.c)bZ(com.tencent.mm.plugin.recordvideo.plugin.c.class);
+      if (paramc != null)
+      {
+        paramc.gIn();
+        paramc = kotlin.ah.aiuX;
+      }
+      AppMethodBeat.o(282709);
+      return;
+    case 20: 
+      if (paramBundle != null)
+      {
+        j = paramBundle.getInt("EDIT_VLOG_SELECT_TRACK", -1);
+        paramc = (com.tencent.mm.plugin.vlog.ui.plugin.p)bZ(com.tencent.mm.plugin.vlog.ui.plugin.p.class);
+        if ((paramc == null) || (paramc.TZU != j)) {
+          break label1355;
+        }
+      }
+      for (i = 1;; i = 0)
+      {
+        if ((i == 0) && (j >= 0))
+        {
+          this.Urd.setVisibility(4);
+          this.Urc.setVisibility(4);
+          paramc = (com.tencent.mm.plugin.vlog.ui.plugin.p)bZ(com.tencent.mm.plugin.vlog.ui.plugin.p.class);
+          if (paramc != null) {
+            paramc.TZU = j;
+          }
+          paramc = (com.tencent.mm.plugin.vlog.ui.plugin.p)bZ(com.tencent.mm.plugin.vlog.ui.plugin.p.class);
+          if (paramc != null)
+          {
+            paramc.setVisibility(0);
+            paramc = kotlin.ah.aiuX;
+          }
+          setSingleTrackPlayRange(true);
+        }
+        paramc = kotlin.ah.aiuX;
+        paramc = kotlin.ah.aiuX;
+        AppMethodBeat.o(282709);
+        return;
+      }
+    case 21: 
+      if (this.Urd.getVisibility() != 0)
+      {
+        paramc = (com.tencent.mm.plugin.vlog.ui.plugin.p)bZ(com.tencent.mm.plugin.vlog.ui.plugin.p.class);
+        if (paramc != null) {
+          paramc.TZU = -1;
+        }
+        paramc = (com.tencent.mm.plugin.vlog.ui.plugin.p)bZ(com.tencent.mm.plugin.vlog.ui.plugin.p.class);
+        if (paramc != null)
+        {
+          paramc.setVisibility(4);
+          paramc = kotlin.ah.aiuX;
+        }
+        this.Urd.setVisibility(0);
+        this.Urc.setVisibility(0);
+        paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
+        if (paramc != null)
+        {
+          paramc = paramc.Uaw;
+          if (paramc != null)
+          {
+            paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+            if (paramBundle != null)
+            {
+              paramBundle.bs(paramc.getPlayStart(), paramc.hQW());
+              paramc = kotlin.ah.aiuX;
+            }
+            paramc = (af)bZ(af.class);
+            if (paramc != null)
+            {
+              paramc.w(-1, 0L, 0L);
+              paramc = kotlin.ah.aiuX;
+            }
+          }
+        }
+      }
+      paramc = (t)bZ(t.class);
+      if ((paramc != null) && (paramc.Ujc == true)) {}
+      for (i = 1; i != 0; i = 0)
+      {
+        a(this);
+        AppMethodBeat.o(282709);
+        return;
+      }
     case 22: 
       paramc = getCurrentTrack();
       if (paramc != null)
       {
-        paramBundle = (ad)bp(ad.class);
+        paramBundle = (com.tencent.mm.plugin.vlog.ui.plugin.ac)bZ(com.tencent.mm.plugin.vlog.ui.plugin.ac.class);
         if (paramBundle != null)
         {
-          paramBundle.cq(paramc.pvh);
-          paramc = x.aazN;
+          paramBundle.dC(paramc.sAn);
+          paramc = kotlin.ah.aiuX;
         }
-        paramc = (ad)bp(ad.class);
+        paramc = (com.tencent.mm.plugin.vlog.ui.plugin.ac)bZ(com.tencent.mm.plugin.vlog.ui.plugin.ac.class);
         if (paramc != null)
         {
-          paramc = paramc.ATq;
+          paramc = paramc.Gvm;
           if (paramc != null)
           {
             paramc.setShow(true);
-            paramc = x.aazN;
-            AppMethodBeat.o(233613);
-            return;
+            paramc = kotlin.ah.aiuX;
           }
         }
-        AppMethodBeat.o(233613);
-        return;
       }
-      AppMethodBeat.o(233613);
+      AppMethodBeat.o(282709);
       return;
     case 23: 
     case 24: 
+      float f;
+      t localt;
       if (paramBundle != null)
       {
         f = paramBundle.getFloat("EDIT_TRACK_DURATION_SCALE", 1.0F);
         paramBundle = getCurrentTrack();
-        if (paramBundle != null) {}
-        for (paramBundle = Long.valueOf(paramBundle.id);; paramBundle = null)
+        if (paramBundle != null) {
+          break label1846;
+        }
+        paramBundle = null;
+        localObject = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
+        if (localObject != null) {
+          break label1857;
+        }
+        paramBundle = null;
+        localObject = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+        if (localObject != null)
         {
-          localObject1 = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
-          if (localObject1 == null) {
-            break label2294;
+          localt = (t)bZ(t.class);
+          if (localt != null) {
+            break label1868;
           }
-          if (paramBundle == null) {
-            break;
-          }
-          ((Number)paramBundle).longValue();
-          localObject2 = ((com.tencent.mm.plugin.vlog.ui.timelineeditor.b)localObject1).NmT;
-          if (localObject2 == null) {
-            break;
-          }
-          localObject2 = (List)((com.tencent.mm.videocomposition.j)localObject2).MQY;
-          if (localObject2 == null) {
-            break;
-          }
-          localObject2 = ((Iterable)localObject2).iterator();
-          while (((Iterator)localObject2).hasNext())
+        }
+      }
+      for (bool1 = false;; bool1 = localt.hLy)
+      {
+        com.tencent.mm.plugin.vlog.ui.timelineeditor.f.a((com.tencent.mm.plugin.vlog.ui.timelineeditor.f)localObject, paramBundle, bool1, false, 0L, 8);
+        paramBundle = kotlin.ah.aiuX;
+        setSingleTrackPlayRange(true);
+        paramBundle = kotlin.ah.aiuX;
+        paramBundle = kotlin.ah.aiuX;
+        if (paramc != a.c.NPI) {
+          break;
+        }
+        paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
+        if (paramc != null)
+        {
+          paramc = paramc.Uaw;
+          if (paramc != null)
           {
-            localObject3 = (com.tencent.mm.videocomposition.b)((Iterator)localObject2).next();
-            l1 = ((com.tencent.mm.videocomposition.b)localObject3).id;
-            if ((paramBundle != null) && (l1 == paramBundle.longValue()))
+            paramBundle = (af)bZ(af.class);
+            if (paramBundle != null)
             {
-              ((com.tencent.mm.videocomposition.b)localObject3).setPlayRate(f);
-              ((com.tencent.mm.plugin.vlog.ui.timelineeditor.b)localObject1).setComposition(((com.tencent.mm.plugin.vlog.ui.timelineeditor.b)localObject1).NDO.b(com.tencent.mm.timelineedit.a.a.c((com.tencent.mm.videocomposition.b)localObject3)));
+              d.d.a.a((d.d)paramBundle, com.tencent.mm.plugin.vlog.ui.timelineeditor.modelparse.a.d(paramc));
+              paramc = kotlin.ah.aiuX;
+            }
+            paramc = (af)bZ(af.class);
+            if (paramc != null)
+            {
+              paramc = paramc.UjU;
+              if (paramc != null)
+              {
+                paramc.UpN = true;
+                paramc = kotlin.ah.aiuX;
+              }
             }
           }
         }
-        ((com.tencent.mm.plugin.vlog.ui.timelineeditor.b)localObject1).gwB();
-        paramBundle = ((com.tencent.mm.plugin.vlog.ui.timelineeditor.b)localObject1).NmT;
-        localObject1 = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
-        if (localObject1 != null)
-        {
-          localObject2 = (u)bp(u.class);
-          if (localObject2 == null) {
-            break label2299;
-          }
-        }
-      }
-      for (bool1 = ((u)localObject2).fGh;; bool1 = false)
-      {
-        com.tencent.mm.plugin.vlog.ui.timelineeditor.f.a((com.tencent.mm.plugin.vlog.ui.timelineeditor.f)localObject1, paramBundle, bool1, false, 0L, 8);
-        paramBundle = x.aazN;
-        setSingleTrackPlayRange(true);
-        paramBundle = x.aazN;
-        if (paramc != d.c.HTc) {
-          break;
-        }
-        paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
-        if (paramc == null) {
-          break label2312;
-        }
-        paramc = paramc.NmT;
-        if (paramc == null) {
-          break label2312;
-        }
-        paramBundle = (ag)bp(ag.class);
-        if (paramBundle != null)
-        {
-          d.d.a.a(paramBundle, com.tencent.mm.plugin.vlog.ui.timelineeditor.modelparse.a.d(paramc));
-          paramc = x.aazN;
-        }
-        paramc = (ag)bp(ag.class);
-        if (paramc == null) {
-          break label2305;
-        }
-        paramc = paramc.NwM;
-        if (paramc == null) {
-          break label2305;
-        }
-        paramc.NDj = true;
-        paramc = x.aazN;
-        AppMethodBeat.o(233613);
+        AppMethodBeat.o(282709);
         return;
-        paramBundle = null;
-        break label2130;
+        paramBundle = Long.valueOf(paramBundle.id);
+        break label1660;
+        paramBundle = ((com.tencent.mm.plugin.vlog.ui.timelineeditor.b)localObject).a(paramBundle, f);
+        break label1679;
       }
-      AppMethodBeat.o(233613);
-      return;
-      AppMethodBeat.o(233613);
-      return;
     case 25: 
       paramBundle = getCurrentTrack();
       if (paramBundle != null)
       {
-        paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
+        paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
+        if (paramc != null) {
+          break label2012;
+        }
+      }
+      for (paramc = null;; paramc = (com.tencent.mm.videocomposition.j)TimelineEditor.a((kotlin.g.a.a)new TimelineEditor.i(paramc, l1), (kotlin.g.a.b)new TimelineEditor.j(paramc)))
+      {
+        localObject = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+        if (localObject != null)
+        {
+          com.tencent.mm.plugin.vlog.ui.timelineeditor.f.a((com.tencent.mm.plugin.vlog.ui.timelineeditor.f)localObject, paramc, false, false, 0L, 14);
+          paramc = kotlin.ah.aiuX;
+        }
+        paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
         if (paramc != null)
         {
-          l1 = paramBundle.id;
-          paramc = paramc.NDO;
+          paramc.bs(((float)paramBundle.TDw / paramBundle.sAn), ((float)paramBundle.TDx / paramBundle.sAn));
+          paramc = kotlin.ah.aiuX;
         }
-        for (paramc = (com.tencent.mm.videocomposition.j)TimelineEditor.a((kotlin.g.a.a)new TimelineEditor.i(paramc, l1), (kotlin.g.a.b)new TimelineEditor.j(paramc));; paramc = null)
+        paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.h)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.h.class);
+        if (paramc != null)
         {
-          localObject1 = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
-          if (localObject1 != null)
-          {
-            com.tencent.mm.plugin.vlog.ui.timelineeditor.f.a((com.tencent.mm.plugin.vlog.ui.timelineeditor.f)localObject1, paramc, false, false, 0L, 14);
-            paramc = x.aazN;
-          }
-          paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
-          if (paramc != null)
-          {
-            paramc.aG(((float)paramBundle.MQV / paramBundle.pvh), ((float)paramBundle.MQW / paramBundle.pvh));
-            paramc = x.aazN;
-          }
-          paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.h)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.h.class);
-          if (paramc == null) {
-            break;
-          }
           com.tencent.mm.plugin.vlog.ui.timelineeditor.h.a(paramc, paramBundle);
-          paramc = x.aazN;
-          AppMethodBeat.o(233613);
-          return;
+          paramc = kotlin.ah.aiuX;
         }
-        AppMethodBeat.o(233613);
+        AppMethodBeat.o(282709);
         return;
+        l1 = paramBundle.id;
+        paramc = paramc.Uqp;
       }
-      AppMethodBeat.o(233613);
-      return;
     case 26: 
       if ((getCurrentTrack() != null) && (paramBundle != null))
       {
         l1 = paramBundle.getLong("EDIT_VLOG_TRACK_CROP_START");
         l2 = paramBundle.getLong("EDIT_VLOG_TRAKC_CROP_END");
         paramc = getCurrentTrack();
-        if (paramc != null) {}
-        for (paramc = Long.valueOf(paramc.id); paramBundle.getBoolean("EDIT_VLOG_TRACK_CROP_CHANGE", false); paramc = null)
+        if (paramc == null) {}
+        for (paramc = null; paramBundle.getBoolean("EDIT_VLOG_TRACK_CROP_CHANGE", false); paramc = Long.valueOf(paramc.id))
         {
-          kotlinx.coroutines.g.b((ak)br.abxo, (kotlin.d.f)bc.iRs(), (m)new c(paramc, l1, l2, null, this, paramBundle), 2);
-          AppMethodBeat.o(233613);
+          kotlinx.coroutines.j.a((aq)bu.ajwo, (kotlin.d.f)bg.kCi(), null, (m)new c(this, paramc, l1, l2, null), 2);
+          AppMethodBeat.o(282709);
           return;
         }
-        paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+        paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
         if (paramc != null)
         {
-          paramc.aG(l1, l2);
-          paramc = x.aazN;
+          paramc.bs(l1, l2);
+          paramc = kotlin.ah.aiuX;
         }
-        m(null);
-        paramc = x.aazN;
-        AppMethodBeat.o(233613);
-        return;
+        a(this);
+        paramc = kotlin.ah.aiuX;
       }
-      AppMethodBeat.o(233613);
+      AppMethodBeat.o(282709);
       return;
     case 27: 
       if (paramBundle != null)
       {
         l1 = paramBundle.getLong("PARAM_1_LONG");
-        paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+        paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
         if (paramc != null)
         {
           paramc.seek(l1);
-          paramc = x.aazN;
-          AppMethodBeat.o(233613);
-          return;
+          paramc = kotlin.ah.aiuX;
         }
-        AppMethodBeat.o(233613);
-        return;
       }
-      AppMethodBeat.o(233613);
+      AppMethodBeat.o(282709);
       return;
     case 28: 
       long l3;
@@ -1067,194 +959,157 @@ public class TimelineEditorBaseVideoPluginLayout
         l3 = paramBundle.getLong("EDIT_CROP_VLOG_SEEKTIME_LONG");
         if (paramBundle.getBoolean("EDIT_CROP_VLOG_ON_UP_BOOLEAN"))
         {
-          m(null);
-          paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+          a(this);
+          paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
           if (paramc != null)
           {
-            paramc.aG(l1, l2);
-            paramc = x.aazN;
+            paramc.bs(l1, l2);
+            paramc = kotlin.ah.aiuX;
           }
-          paramc = x.aazN;
+          paramc = kotlin.ah.aiuX;
         }
       }
       else
       {
-        AppMethodBeat.o(233613);
+        AppMethodBeat.o(282709);
         return;
       }
-      dmf();
-      paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+      dSW();
+      paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
       if (paramc != null)
       {
         paramc.seek(l3);
-        paramc = x.aazN;
+        paramc = kotlin.ah.aiuX;
       }
-      paramc = (com.tencent.mm.plugin.vlog.ui.plugin.timeedit.a)bp(com.tencent.mm.plugin.vlog.ui.plugin.timeedit.a.class);
-      if (paramc != null) {}
-      for (paramc = paramc.NAo.getAllTTSData();; paramc = null)
+      paramc = (com.tencent.mm.plugin.vlog.ui.plugin.timeedit.a)bZ(com.tencent.mm.plugin.vlog.ui.plugin.timeedit.a.class);
+      if (paramc == null) {}
+      for (paramc = null;; paramc = paramc.Und.getAllTTSData())
       {
-        paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
+        paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
         if (paramBundle == null) {
           break;
         }
-        paramc = paramBundle.iJ(paramc);
+        paramc = paramBundle.lR(paramc);
         if (paramc == null) {
           break;
         }
-        paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+        paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
         if (paramBundle == null) {
           break;
         }
         com.tencent.mm.plugin.vlog.ui.timelineeditor.f.a(paramBundle, paramc, false, false, 0L, 14);
-        paramc = x.aazN;
+        paramc = kotlin.ah.aiuX;
         break;
       }
     case 29: 
       if (paramBundle != null)
       {
-        j = paramBundle.getInt("EDIT_SELECT_TRANSITION_INDEX");
-        paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
+        i = paramBundle.getInt("EDIT_SELECT_TRANSITION_INDEX");
+        paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
         if (paramc != null)
         {
-          paramBundle = paramc.NmT;
+          paramBundle = paramc.Uaw;
           if (paramBundle != null)
           {
-            localObject1 = (com.tencent.mm.videocomposition.b)((List)paramBundle.MQY).get(j);
-            paramc = (com.tencent.mm.videocomposition.b)((List)paramBundle.MQY).get(j + 1);
-            l2 = ((com.tencent.mm.videocomposition.b)localObject1).endTimeMs - paramc.MQX.duration / 2L;
+            localObject = (com.tencent.mm.videocomposition.b)((List)paramBundle.TDz).get(i);
+            paramc = (com.tencent.mm.videocomposition.b)((List)paramBundle.TDz).get(i + 1);
+            l2 = ((com.tencent.mm.videocomposition.b)localObject).endTimeMs - paramc.TDy.duration / 2L;
             l1 = Math.max(0L, l2 - 1000L);
             l2 = Math.min(paramBundle.getDurationMs(), l2 + 1000L);
-            paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+            paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
             if (paramBundle != null)
             {
-              paramBundle.aG(l1, l2);
-              paramBundle = x.aazN;
+              paramBundle.bs(l1, l2);
+              paramBundle = kotlin.ah.aiuX;
             }
-            paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+            paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
             if (paramBundle != null)
             {
               paramBundle.seek(l1);
-              paramBundle = x.aazN;
+              paramBundle = kotlin.ah.aiuX;
             }
-            paramBundle = (com.tencent.mm.plugin.vlog.ui.plugin.transition.a)bp(com.tencent.mm.plugin.vlog.ui.plugin.transition.a.class);
+            paramBundle = (com.tencent.mm.plugin.vlog.ui.plugin.transition.a)bZ(com.tencent.mm.plugin.vlog.ui.plugin.transition.a.class);
             if (paramBundle != null) {
-              paramBundle.NBf = l1;
+              paramBundle.UnR = l1;
             }
-            paramBundle = (com.tencent.mm.plugin.vlog.ui.plugin.transition.a)bp(com.tencent.mm.plugin.vlog.ui.plugin.transition.a.class);
+            paramBundle = (com.tencent.mm.plugin.vlog.ui.plugin.transition.a)bZ(com.tencent.mm.plugin.vlog.ui.plugin.transition.a.class);
             if (paramBundle != null)
             {
-              paramc = paramc.MQX.path;
-              paramBundle.gws();
-              localObject1 = paramBundle.gwr();
-              localObject2 = com.tencent.mm.plugin.vlog.model.local.a.Nol;
-              localObject2 = (Iterable)com.tencent.mm.plugin.vlog.model.local.a.gtJ();
-              i = 0;
-              localObject2 = ((Iterable)localObject2).iterator();
-              if (((Iterator)localObject2).hasNext())
-              {
-                localObject3 = ((Iterator)localObject2).next();
-                if (i < 0) {
-                  kotlin.a.j.iBO();
-                }
-                if (kotlin.g.b.p.h(((com.tencent.mm.plugin.vlog.model.local.a.a)localObject3).assetPath, paramc)) {
-                  ((com.tencent.mm.plugin.vlog.ui.plugin.transition.b)localObject1).kL(j, i + 1);
-                }
-              }
-              for (;;)
-              {
-                paramBundle.ATq.setShow(true);
-                paramc = x.aazN;
-                AppMethodBeat.o(233613);
-                return;
-                i += 1;
-                break;
-                ((com.tencent.mm.plugin.vlog.ui.plugin.transition.b)localObject1).kL(j, -1);
-              }
+              paramBundle.dw(i, paramc.TDy.path);
+              paramc = kotlin.ah.aiuX;
             }
-            AppMethodBeat.o(233613);
-            return;
           }
         }
-        AppMethodBeat.o(233613);
-        return;
       }
-      AppMethodBeat.o(233613);
+      AppMethodBeat.o(282709);
       return;
     case 30: 
-      paramc = (com.tencent.mm.plugin.vlog.ui.plugin.p)bp(com.tencent.mm.plugin.vlog.ui.plugin.p.class);
-      if (paramc != null)
+      paramc = (com.tencent.mm.plugin.vlog.ui.plugin.p)bZ(com.tencent.mm.plugin.vlog.ui.plugin.p.class);
+      if (paramc == null)
       {
-        i = paramc.Nmo;
+        i = -1;
         if (i < 0) {
-          break label3410;
-        }
-        i = 1;
-      }
-      for (;;)
-      {
-        if (i != 0)
-        {
-          if (getCurrentTrack() != null)
-          {
-            paramc = getCurrentTrackPlayRange();
-            if (paramc != null)
-            {
-              paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
-              if (paramBundle != null)
-              {
-                paramBundle.aG(paramc.startTimeMs, paramc.endTimeMs);
-                paramBundle = x.aazN;
-              }
-              paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
-              if (paramBundle != null)
-              {
-                paramBundle.seek(paramc.startTimeMs);
-                paramc = x.aazN;
-                AppMethodBeat.o(233613);
-                return;
-                i = -1;
-                break;
-                i = 0;
-                continue;
-              }
-              AppMethodBeat.o(233613);
-              return;
-            }
-          }
-          AppMethodBeat.o(233613);
-          return;
+          break label2800;
         }
       }
-      paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
-      if (paramc != null)
+      for (i = 1;; i = 0)
       {
-        paramc = paramc.NmT;
-        if (paramc != null)
+        if (i == 0) {
+          break label2806;
+        }
+        if (getCurrentTrack() != null)
         {
-          paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
-          if (paramBundle != null)
-          {
-            paramBundle.aG(paramc.YId, paramc.igG());
-            paramc = x.aazN;
-          }
-          paramc = (com.tencent.mm.plugin.vlog.ui.plugin.transition.a)bp(com.tencent.mm.plugin.vlog.ui.plugin.transition.a.class);
+          paramc = getCurrentTrackPlayRange();
           if (paramc != null)
           {
-            l1 = paramc.NBf;
-            paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+            paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+            if (paramBundle != null)
+            {
+              paramBundle.bs(paramc.startTimeMs, paramc.endTimeMs);
+              paramBundle = kotlin.ah.aiuX;
+            }
+            paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+            if (paramBundle != null)
+            {
+              paramBundle.seek(paramc.startTimeMs);
+              paramc = kotlin.ah.aiuX;
+            }
+          }
+        }
+        AppMethodBeat.o(282709);
+        return;
+        i = paramc.TZU;
+        break;
+      }
+      paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
+      if (paramc != null)
+      {
+        paramc = paramc.Uaw;
+        if (paramc != null)
+        {
+          paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+          if (paramBundle != null)
+          {
+            paramBundle.bs(paramc.agDK, paramc.jLU());
+            paramc = kotlin.ah.aiuX;
+          }
+          paramc = (com.tencent.mm.plugin.vlog.ui.plugin.transition.a)bZ(com.tencent.mm.plugin.vlog.ui.plugin.transition.a.class);
+          if (paramc != null)
+          {
+            l1 = paramc.UnR;
+            paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
             if (paramc != null)
             {
               paramc.seek(l1);
-              paramc = x.aazN;
+              paramc = kotlin.ah.aiuX;
             }
           }
-          m(null);
-          paramc = x.aazN;
-          AppMethodBeat.o(233613);
-          return;
+          a(this);
+          paramc = kotlin.ah.aiuX;
+          paramc = kotlin.ah.aiuX;
         }
       }
-      AppMethodBeat.o(233613);
+      AppMethodBeat.o(282709);
       return;
     case 31: 
       if (paramBundle != null)
@@ -1262,303 +1117,250 @@ public class TimelineEditorBaseVideoPluginLayout
         paramc = paramBundle.getString("PARAM_1_STRING");
         l1 = paramBundle.getLong("PARAM_1_INT");
         j = paramBundle.getInt("EDIT_SELECT_TRANSITION_INDEX");
-        paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
+        paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
         if (paramBundle != null)
         {
-          paramc = paramBundle.r(paramc, l1, j);
+          paramc = paramBundle.u(paramc, l1, j);
           if (paramc != null)
           {
-            paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+            paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
             if (paramBundle != null)
             {
               com.tencent.mm.plugin.vlog.ui.timelineeditor.f.a(paramBundle, paramc, false, false, 0L, 14);
-              paramc = x.aazN;
+              paramc = kotlin.ah.aiuX;
             }
-            paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
+            paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
             if (paramc != null)
             {
-              paramBundle = paramc.NmT;
-              if (paramBundle != null)
-              {
-                paramBundle = (List)paramBundle.MQY;
-                if (paramBundle != null)
-                {
-                  i = paramBundle.size();
-                  if (i <= j + 1) {
-                    break label3815;
-                  }
-                  paramc = paramc.NmT;
-                  if (paramc == null) {
-                    kotlin.g.b.p.iCn();
-                  }
-                  paramc = (com.tencent.mm.videocomposition.b)((List)paramc.MQY).get(j);
-                  l1 = paramc.MQX.duration;
-                  l1 = paramc.endTimeMs - l1 / 2L;
-                  paramc = new com.tencent.mm.timelineedit.a.f(l1 - 1000L, l1 + 1000L);
-                }
+              paramBundle = paramc.Uaw;
+              if (paramBundle != null) {
+                break label3161;
               }
-              for (;;)
-              {
-                if (paramc != null)
-                {
-                  paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
-                  if (paramBundle != null)
-                  {
-                    paramBundle.aG(paramc.startTimeMs, paramc.endTimeMs);
-                    paramc = x.aazN;
-                    AppMethodBeat.o(233613);
-                    return;
-                    i = 0;
-                    break;
-                    paramc = null;
-                    continue;
-                  }
-                  AppMethodBeat.o(233613);
-                  return;
-                }
+              i = 0;
+              if (i <= j + 1) {
+                break label3190;
               }
+              paramc = paramc.Uaw;
+              s.checkNotNull(paramc);
+              paramc = (com.tencent.mm.videocomposition.b)((List)paramc.TDz).get(j);
+              l1 = paramc.TDy.duration;
+              l1 = paramc.endTimeMs - l1 / 2L;
             }
-            AppMethodBeat.o(233613);
-            return;
           }
         }
       }
-      AppMethodBeat.o(233613);
-      return;
+      for (paramc = new com.tencent.mm.timelineedit.a.f(l1 - 1000L, l1 + 1000L);; paramc = null)
+      {
+        if (paramc != null)
+        {
+          paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+          if (paramBundle != null)
+          {
+            paramBundle.bs(paramc.startTimeMs, paramc.endTimeMs);
+            paramc = kotlin.ah.aiuX;
+          }
+        }
+        AppMethodBeat.o(282709);
+        return;
+        paramBundle = (List)paramBundle.TDz;
+        if (paramBundle == null)
+        {
+          i = 0;
+          break;
+        }
+        i = paramBundle.size();
+        break;
+      }
     case 32: 
       if (paramBundle != null)
       {
         paramc = paramBundle.getString("PARAM_1_STRING");
         l1 = paramBundle.getLong("PARAM_1_INT");
-        paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
+        paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
         if (paramBundle != null)
         {
-          localObject1 = paramBundle.NmT;
-          if (localObject1 != null)
-          {
-            localObject1 = (List)((com.tencent.mm.videocomposition.j)localObject1).MQY;
-            if (localObject1 != null)
-            {
-              localObject1 = ((Iterable)localObject1).iterator();
-              i = 0;
-              while (((Iterator)localObject1).hasNext())
-              {
-                ((Iterator)localObject1).next();
-                if (i < 0) {
-                  kotlin.a.j.iBO();
-                }
-                paramBundle.r(paramc, l1, i);
-                i += 1;
-              }
-            }
-          }
-          paramc = paramBundle.NmT;
+          paramc = paramBundle.bN(paramc, l1);
           if (paramc != null)
           {
-            paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+            paramBundle = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
             if (paramBundle != null)
             {
               com.tencent.mm.plugin.vlog.ui.timelineeditor.f.a(paramBundle, paramc, false, false, 0L, 14);
-              paramc = x.aazN;
-              AppMethodBeat.o(233613);
-              return;
+              paramc = kotlin.ah.aiuX;
             }
-            AppMethodBeat.o(233613);
-            return;
           }
         }
       }
-      AppMethodBeat.o(233613);
+      AppMethodBeat.o(282709);
       return;
     case 33: 
-      paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
+      paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
       if (paramc != null)
       {
-        paramc = paramc.NmT;
+        paramc = paramc.Uaw;
         if (paramc != null)
         {
-          paramBundle = (List)paramc.MQY;
+          paramBundle = (List)paramc.TDz;
           if (paramBundle != null)
           {
-            paramc = (ag)bp(ag.class);
+            paramc = (af)bZ(af.class);
             if (paramc != null)
             {
-              localObject1 = (Iterable)kotlin.a.j.O(paramBundle, paramBundle.size() - 1);
-              paramBundle = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject1, 10));
-              localObject1 = ((Iterable)localObject1).iterator();
-              if (((Iterator)localObject1).hasNext())
+              localObject = (Iterable)kotlin.a.p.ag(paramBundle, paramBundle.size() - 1);
+              paramBundle = (Collection)new ArrayList(kotlin.a.p.a((Iterable)localObject, 10));
+              localObject = ((Iterable)localObject).iterator();
+              if (((Iterator)localObject).hasNext())
               {
-                if (((com.tencent.mm.videocomposition.b)((Iterator)localObject1).next()).MQX.duration > 0L) {}
+                if (((com.tencent.mm.videocomposition.b)((Iterator)localObject).next()).TDy.duration > 0L) {}
                 for (bool1 = true;; bool1 = false)
                 {
                   paramBundle.add(Boolean.valueOf(bool1));
                   break;
                 }
               }
-              paramc.iH((List)paramBundle);
-              paramc = x.aazN;
-              AppMethodBeat.o(233613);
-              return;
+              paramc.lP((List)paramBundle);
+              paramc = kotlin.ah.aiuX;
             }
-            AppMethodBeat.o(233613);
-            return;
           }
         }
       }
-      AppMethodBeat.o(233613);
+      AppMethodBeat.o(282709);
       return;
     case 34: 
-      paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.d)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.d.class);
+      paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.d)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.d.class);
       if (paramc != null)
       {
-        ((com.google.android.material.bottomsheet.a)paramc.NvG.getValue()).show();
-        paramc = x.aazN;
-        AppMethodBeat.o(233613);
-        return;
+        ((com.google.android.material.bottomsheet.a)paramc.UiV.getValue()).show();
+        paramc = kotlin.ah.aiuX;
       }
-      AppMethodBeat.o(233613);
+      AppMethodBeat.o(282709);
       return;
     case 35: 
     case 36: 
-      label2130:
-      label2294:
-      label2299:
+      label2800:
+      label2806:
       if (paramBundle != null)
       {
         i = paramBundle.getInt("EDIT_COMPOSITION_TRACK_INDEX");
         bool1 = paramBundle.getBoolean("EDIT_COMPOSITION_LEFT");
         l1 = paramBundle.getLong("EDIT_VLOG_TRACK_CROP_START");
         l2 = paramBundle.getLong("EDIT_VLOG_TRAKC_CROP_END");
-        paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
-        if (paramc != null)
-        {
-          kotlinx.coroutines.g.b((ak)br.abxo, (kotlin.d.f)bc.iRs(), (m)new d(paramc, null, i, l1, l2, bool1, this), 2);
-          AppMethodBeat.o(233613);
-          return;
+        paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
+        if (paramc != null) {
+          kotlinx.coroutines.j.a((aq)bu.ajwo, (kotlin.d.f)bg.kCi(), null, (m)new d(paramc, i, l1, l2, bool1, this, null), 2);
         }
-        AppMethodBeat.o(233613);
-        return;
       }
-      label2305:
-      label2312:
-      label3410:
-      label3815:
-      AppMethodBeat.o(233613);
+      label3161:
+      label3190:
+      AppMethodBeat.o(282709);
       return;
     }
-    if (paramBundle != null) {}
-    for (final boolean bool1 = paramBundle.getBoolean("PARAM_1_BOOLEAN", false);; bool1 = false)
+    if (paramBundle == null) {}
+    for (final boolean bool1 = false;; bool1 = paramBundle.getBoolean("PARAM_1_BOOLEAN", false))
     {
-      paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
+      paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
       if (paramc != null)
       {
-        paramc = paramc.NmT;
+        paramc = paramc.Uaw;
         if (paramc != null)
         {
-          paramBundle = com.tencent.mm.plugin.vlog.model.local.a.Nol;
+          paramBundle = com.tencent.mm.plugin.vlog.model.local.a.UbD;
           com.tencent.mm.plugin.vlog.model.local.a.a(paramc, bool1);
-          paramc = x.aazN;
+          paramc = kotlin.ah.aiuX;
+          paramc = kotlin.ah.aiuX;
         }
       }
-      paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+      paramc = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
       if (paramc == null) {
         break;
       }
-      paramc.AJS.bXe();
-      paramc = x.aazN;
-      AppMethodBeat.o(233613);
-      return;
+      paramc.GmD.cxp();
+      paramc = kotlin.ah.aiuX;
+      break;
     }
   }
   
   protected void b(com.tencent.mm.plugin.recordvideo.activity.a parama, RecordConfigProvider paramRecordConfigProvider)
   {
     boolean bool1 = false;
-    AppMethodBeat.i(233596);
-    kotlin.g.b.p.k(parama, "navigator");
-    kotlin.g.b.p.k(paramRecordConfigProvider, "configProvider");
-    parama = paramRecordConfigProvider.mab;
+    AppMethodBeat.i(282569);
+    s.u(parama, "navigator");
+    s.u(paramRecordConfigProvider, "configProvider");
+    parama = paramRecordConfigProvider.oSS;
     if (parama != null)
     {
       boolean bool2 = parama.getBoolean("KEY_DISABLE_VIDEO_ENHANCEMENT", false);
-      parama = (ai)bp(ai.class);
+      parama = (com.tencent.mm.plugin.vlog.ui.plugin.ah)bZ(com.tencent.mm.plugin.vlog.ui.plugin.ah.class);
       if (parama != null)
       {
         if (!bool2) {
           bool1 = true;
         }
         parama.setEnable(bool1);
-        AppMethodBeat.o(233596);
-        return;
       }
-      AppMethodBeat.o(233596);
-      return;
     }
-    AppMethodBeat.o(233596);
+    AppMethodBeat.o(282569);
   }
   
-  protected final void cSG()
+  protected final void dSW()
   {
-    AppMethodBeat.i(233620);
-    this.NEM.animate().cancel();
-    this.NEM.animate().alpha(0.0F).setDuration(100L).withEndAction((Runnable)new b(this)).start();
-    AppMethodBeat.o(233620);
-  }
-  
-  protected final void dmf()
-  {
-    AppMethodBeat.i(233621);
-    Object localObject = (u)bp(u.class);
+    AppMethodBeat.i(282785);
+    Object localObject = (t)bZ(t.class);
     if (localObject != null) {
-      ((u)localObject).gvD();
+      ((t)localObject).hTs();
     }
-    localObject = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+    localObject = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
     if (localObject != null) {
       ((com.tencent.mm.plugin.vlog.ui.timelineeditor.f)localObject).pause();
     }
-    localObject = (com.tencent.mm.plugin.vlog.ui.a)bp(com.tencent.mm.plugin.vlog.ui.a.class);
-    if (localObject != null)
-    {
-      ((com.tencent.mm.plugin.vlog.ui.a)localObject).bnt();
-      AppMethodBeat.o(233621);
-      return;
+    localObject = (com.tencent.mm.plugin.vlog.ui.a)bZ(com.tencent.mm.plugin.vlog.ui.a.class);
+    if (localObject != null) {
+      ((com.tencent.mm.plugin.vlog.ui.a)localObject).bLg();
     }
-    AppMethodBeat.o(233621);
+    AppMethodBeat.o(282785);
+  }
+  
+  protected final void dwY()
+  {
+    AppMethodBeat.i(282773);
+    this.Urb.animate().cancel();
+    this.Urb.animate().alpha(0.0F).setDuration(100L).withEndAction(new TimelineEditorBaseVideoPluginLayout..ExternalSyntheticLambda0(this)).start();
+    AppMethodBeat.o(282773);
   }
   
   protected final com.tencent.mm.media.widget.camerarecordview.b.b getCaptureInfo()
   {
-    return this.HNh;
+    return this.NKf;
   }
   
   protected final RecordConfigProvider getConfigProvider()
   {
-    return this.ALV;
+    return this.oaV;
   }
   
   protected final com.tencent.mm.videocomposition.b getCurrentTrack()
   {
-    AppMethodBeat.i(233631);
-    Object localObject = (com.tencent.mm.plugin.vlog.ui.plugin.p)bp(com.tencent.mm.plugin.vlog.ui.plugin.p.class);
+    AppMethodBeat.i(282817);
+    Object localObject = (com.tencent.mm.plugin.vlog.ui.plugin.p)bZ(com.tencent.mm.plugin.vlog.ui.plugin.p.class);
     if (localObject != null)
     {
-      int i = ((com.tencent.mm.plugin.vlog.ui.plugin.p)localObject).Nmo;
+      int i = ((com.tencent.mm.plugin.vlog.ui.plugin.p)localObject).TZU;
       if (i >= 0)
       {
-        localObject = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
+        localObject = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
         if (localObject != null)
         {
-          localObject = ((com.tencent.mm.plugin.vlog.ui.timelineeditor.b)localObject).NmT;
+          localObject = ((com.tencent.mm.plugin.vlog.ui.timelineeditor.b)localObject).Uaw;
           if (localObject != null)
           {
-            localObject = (com.tencent.mm.videocomposition.b)((List)((com.tencent.mm.videocomposition.j)localObject).MQY).get(i);
-            AppMethodBeat.o(233631);
+            localObject = (com.tencent.mm.videocomposition.b)((List)((com.tencent.mm.videocomposition.j)localObject).TDz).get(i);
+            AppMethodBeat.o(282817);
             return localObject;
           }
         }
       }
     }
-    AppMethodBeat.o(233631);
+    AppMethodBeat.o(282817);
     return null;
   }
   
@@ -1569,502 +1371,478 @@ public class TimelineEditorBaseVideoPluginLayout
   
   protected final long getMaxCropVideoDurationMs()
   {
-    return this.Nrw;
+    return this.Uff;
   }
   
   protected final ViewGroup getPluginLayout()
   {
-    return this.NEM;
+    return this.Urb;
   }
   
-  protected final void guD()
+  protected final void hSs()
   {
-    AppMethodBeat.i(233618);
-    this.NEM.setVisibility(0);
-    this.NEM.animate().cancel();
-    this.NEM.animate().alpha(1.0F).setDuration(100L).start();
-    AppMethodBeat.o(233618);
+    AppMethodBeat.i(282743);
+    this.Urb.setVisibility(0);
+    this.Urb.animate().cancel();
+    this.Urb.animate().alpha(1.0F).setDuration(100L).start();
+    AppMethodBeat.o(282743);
   }
   
-  protected final boolean gwI()
+  protected final boolean hUF()
   {
-    return this.NrL;
+    return this.Ufu;
   }
   
-  protected void gwJ()
+  protected void hUG()
   {
-    AppMethodBeat.i(233595);
+    AppMethodBeat.i(282551);
     Object localObject1 = findViewById(a.f.video_composition_player);
-    kotlin.g.b.p.j(localObject1, "findViewById(R.id.video_composition_player)");
-    localObject1 = new com.tencent.mm.plugin.vlog.ui.timelineeditor.f((VideoCompositionPlayView)localObject1, (com.tencent.mm.plugin.recordvideo.plugin.parent.d)this);
-    Object localObject2 = new c();
-    Object localObject3 = this.ALV;
+    s.s(localObject1, "findViewById(R.id.video_composition_player)");
+    localObject1 = new com.tencent.mm.plugin.vlog.ui.timelineeditor.f((VideoCompositionPlayView)localObject1, (com.tencent.mm.plugin.recordvideo.plugin.parent.a)this);
+    Object localObject2 = new com.tencent.mm.timelineedit.a.c();
+    Object localObject3 = this.oaV;
     long l;
     if (localObject3 != null)
     {
-      l = ((RecordConfigProvider)localObject3).mab.getLong("video_max_duration", 60000L);
-      "getMaxDurationMs by parse:".concat(String.valueOf(l));
-      com.tencent.d.f.h.ioq();
+      l = ((RecordConfigProvider)localObject3).oSS.getLong("video_max_duration", 60000L);
+      Log.i("MicroMsg.TimelineEditorModelParser", s.X("getMaxDurationMs by parse:", Long.valueOf(l)));
     }
     for (;;)
     {
-      this.Nrw = l;
-      ((c)localObject2).atd(com.tencent.mm.ci.a.kr(MMApplicationContext.getContext()) / 2);
-      ((c)localObject2).ate(com.tencent.mm.ci.a.ks(MMApplicationContext.getContext()) / 2);
-      new com.tencent.mm.plugin.vlog.ui.timelineeditor.b((com.tencent.mm.plugin.recordvideo.plugin.parent.d)this, (c)localObject2);
+      this.Uff = l;
+      ((com.tencent.mm.timelineedit.a.c)localObject2).azt(com.tencent.mm.cd.a.ms(MMApplicationContext.getContext()) / 2);
+      ((com.tencent.mm.timelineedit.a.c)localObject2).azu(com.tencent.mm.cd.a.mt(MMApplicationContext.getContext()) / 2);
+      new com.tencent.mm.plugin.vlog.ui.timelineeditor.b((com.tencent.mm.plugin.recordvideo.plugin.parent.a)this, (com.tencent.mm.timelineedit.a.c)localObject2);
       localObject2 = getContext();
-      kotlin.g.b.p.j(localObject2, "context");
-      com.tencent.mm.plugin.vlog.ui.timelineeditor.i.a(new com.tencent.mm.plugin.vlog.ui.timelineeditor.i((Context)localObject2, (com.tencent.mm.plugin.recordvideo.plugin.parent.d)this));
+      s.s(localObject2, "context");
+      com.tencent.mm.plugin.vlog.ui.timelineeditor.i.a(new com.tencent.mm.plugin.vlog.ui.timelineeditor.i((Context)localObject2, (com.tencent.mm.plugin.recordvideo.plugin.parent.a)this));
       localObject2 = (ViewGroup)this;
       localObject3 = findViewById(a.f.editor_add_emoji);
-      kotlin.g.b.p.j(localObject3, "findViewById(R.id.editor_add_emoji)");
-      new com.tencent.mm.plugin.recordvideo.plugin.b((ViewGroup)localObject2, (ImageView)localObject3, (com.tencent.mm.plugin.recordvideo.plugin.parent.d)this);
+      s.s(localObject3, "findViewById(R.id.editor_add_emoji)");
+      new com.tencent.mm.plugin.recordvideo.plugin.c((ViewGroup)localObject2, (ImageView)localObject3, (com.tencent.mm.plugin.recordvideo.plugin.parent.a)this);
       localObject2 = findViewById(a.f.change_text_root);
-      kotlin.g.b.p.j(localObject2, "findViewById(R.id.change_text_root)");
-      localObject2 = new com.tencent.mm.plugin.recordvideo.plugin.h((EditorInputView)localObject2, (com.tencent.mm.plugin.recordvideo.plugin.parent.d)this);
-      ((com.tencent.mm.plugin.recordvideo.plugin.h)localObject2).HMM.setEnableClickOutsideConfirm(true);
-      new com.tencent.mm.plugin.recordvideo.plugin.d((ViewGroup)this, (com.tencent.mm.plugin.recordvideo.plugin.parent.d)this, ((com.tencent.mm.plugin.recordvideo.plugin.h)localObject2).HMM);
-      new com.tencent.mm.plugin.vlog.ui.plugin.l((ViewGroup)this, (com.tencent.mm.plugin.recordvideo.plugin.parent.d)this);
-      localObject2 = new com.tencent.mm.plugin.vlog.ui.a((ViewGroup)this, (com.tencent.mm.plugin.recordvideo.plugin.parent.d)this);
-      ((com.tencent.mm.plugin.vlog.ui.a)localObject2).HQs = true;
+      s.s(localObject2, "findViewById(R.id.change_text_root)");
+      localObject2 = new com.tencent.mm.plugin.recordvideo.plugin.i((EditorInputView)localObject2, (com.tencent.mm.plugin.recordvideo.plugin.parent.a)this);
+      ((com.tencent.mm.plugin.recordvideo.plugin.i)localObject2).NJH.setEnableClickOutsideConfirm(true);
+      new com.tencent.mm.plugin.recordvideo.plugin.e((ViewGroup)this, (com.tencent.mm.plugin.recordvideo.plugin.parent.a)this, ((com.tencent.mm.plugin.recordvideo.plugin.i)localObject2).NJH);
+      new com.tencent.mm.plugin.vlog.ui.plugin.l((ViewGroup)this, (com.tencent.mm.plugin.recordvideo.plugin.parent.a)this);
+      localObject2 = new com.tencent.mm.plugin.vlog.ui.a((ViewGroup)this, (com.tencent.mm.plugin.recordvideo.plugin.parent.a)this);
+      ((com.tencent.mm.plugin.vlog.ui.a)localObject2).NMW = true;
       ((com.tencent.mm.plugin.vlog.ui.a)localObject2).setBackground(a.e.video_edit_panel_bg);
-      ((com.tencent.mm.plugin.vlog.ui.timelineeditor.f)localObject1).NuH = ((d.e)localObject2);
+      ((com.tencent.mm.plugin.vlog.ui.timelineeditor.f)localObject1).Uib = ((d.e)localObject2);
       localObject2 = findViewById(a.f.timeline_editor_back);
-      kotlin.g.b.p.j(localObject2, "findViewById(R.id.timeline_editor_back)");
-      new com.tencent.mm.plugin.recordvideo.plugin.f((ImageView)localObject2, (com.tencent.mm.plugin.recordvideo.plugin.parent.d)this);
-      new com.tencent.mm.plugin.vlog.ui.timelineeditor.e((ViewGroup)this, (com.tencent.mm.plugin.recordvideo.plugin.parent.d)this);
-      localObject2 = new com.tencent.mm.plugin.vlog.ui.timelineeditor.a((ViewGroup)this, (com.tencent.mm.plugin.recordvideo.plugin.parent.d)this);
-      ((com.tencent.mm.plugin.vlog.ui.timelineeditor.f)localObject1).a((com.tencent.mm.plugin.vlog.ui.plugin.d.b)localObject2);
-      new u((ViewGroup)this, (com.tencent.mm.plugin.recordvideo.plugin.parent.d)this).a((u.a)localObject2);
-      ((com.tencent.mm.plugin.vlog.ui.timelineeditor.f)localObject1).a((com.tencent.mm.plugin.vlog.ui.plugin.d.b)new ag((View)this, (com.tencent.mm.plugin.recordvideo.plugin.parent.d)this));
-      new com.tencent.mm.plugin.vlog.ui.plugin.p((ViewGroup)this, (com.tencent.mm.plugin.recordvideo.plugin.parent.d)this);
+      s.s(localObject2, "findViewById(R.id.timeline_editor_back)");
+      new com.tencent.mm.plugin.recordvideo.plugin.g((ImageView)localObject2, (com.tencent.mm.plugin.recordvideo.plugin.parent.a)this);
+      new com.tencent.mm.plugin.vlog.ui.timelineeditor.e((ViewGroup)this, (com.tencent.mm.plugin.recordvideo.plugin.parent.a)this);
+      localObject2 = new com.tencent.mm.plugin.vlog.ui.timelineeditor.a((ViewGroup)this, (com.tencent.mm.plugin.recordvideo.plugin.parent.a)this);
+      ((com.tencent.mm.plugin.vlog.ui.timelineeditor.f)localObject1).a((d.b)localObject2);
+      new t((ViewGroup)this, (com.tencent.mm.plugin.recordvideo.plugin.parent.a)this).a((t.a)localObject2);
+      ((com.tencent.mm.plugin.vlog.ui.timelineeditor.f)localObject1).a((d.b)new af((View)this, (com.tencent.mm.plugin.recordvideo.plugin.parent.a)this));
+      new com.tencent.mm.plugin.vlog.ui.plugin.p((ViewGroup)this, (com.tencent.mm.plugin.recordvideo.plugin.parent.a)this);
       localObject2 = findViewById(a.f.editor_track_play_rate_panel);
-      kotlin.g.b.p.j(localObject2, "findViewById(R.id.editor_track_play_rate_panel)");
-      new ad((EditorPanelHolder)localObject2, (com.tencent.mm.plugin.recordvideo.plugin.parent.d)this);
+      s.s(localObject2, "findViewById(R.id.editor_track_play_rate_panel)");
+      new com.tencent.mm.plugin.vlog.ui.plugin.ac((EditorPanelHolder)localObject2, (com.tencent.mm.plugin.recordvideo.plugin.parent.a)this);
       localObject2 = findViewById(a.f.editor_track_edit_panel);
-      kotlin.g.b.p.j(localObject2, "findViewById(R.id.editor_track_edit_panel)");
-      ((com.tencent.mm.plugin.vlog.ui.timelineeditor.f)localObject1).a((com.tencent.mm.plugin.vlog.ui.plugin.d.b)new com.tencent.mm.plugin.vlog.ui.timelineeditor.h((EditorPanelHolder)localObject2, (com.tencent.mm.plugin.recordvideo.plugin.parent.d)this));
-      new com.tencent.mm.plugin.vlog.ui.plugin.transition.a((ViewGroup)this, (com.tencent.mm.plugin.recordvideo.plugin.parent.d)this, false);
+      s.s(localObject2, "findViewById(R.id.editor_track_edit_panel)");
+      ((com.tencent.mm.plugin.vlog.ui.timelineeditor.f)localObject1).a((d.b)new com.tencent.mm.plugin.vlog.ui.timelineeditor.h((EditorPanelHolder)localObject2, (com.tencent.mm.plugin.recordvideo.plugin.parent.a)this));
+      new com.tencent.mm.plugin.vlog.ui.plugin.transition.a((ViewGroup)this, (com.tencent.mm.plugin.recordvideo.plugin.parent.a)this, false);
       localObject2 = findViewById(a.f.editor_add_caption_group);
-      kotlin.g.b.p.j(localObject2, "findViewById(R.id.editor_add_caption_group)");
+      s.s(localObject2, "findViewById(R.id.editor_add_caption_group)");
       localObject2 = (ViewGroup)localObject2;
       localObject3 = findViewById(a.f.editor_caption_preview_panel);
-      kotlin.g.b.p.j(localObject3, "findViewById(R.id.editor_caption_preview_panel)");
+      s.s(localObject3, "findViewById(R.id.editor_caption_preview_panel)");
       localObject3 = (EditorPanelHolder)localObject3;
       View localView = findViewById(a.f.editor_caption_edit_panel);
-      kotlin.g.b.p.j(localView, "findViewById(R.id.editor_caption_edit_panel)");
-      ((com.tencent.mm.plugin.vlog.ui.timelineeditor.f)localObject1).a((com.tencent.mm.plugin.vlog.ui.plugin.d.b)new com.tencent.mm.plugin.vlog.ui.plugin.caption.b((ViewGroup)localObject2, (EditorPanelHolder)localObject3, (EditorPanelHolder)localView, (com.tencent.mm.plugin.recordvideo.plugin.parent.d)this));
+      s.s(localView, "findViewById(R.id.editor_caption_edit_panel)");
+      ((com.tencent.mm.plugin.vlog.ui.timelineeditor.f)localObject1).a((d.b)new com.tencent.mm.plugin.vlog.ui.plugin.caption.b((ViewGroup)localObject2, (EditorPanelHolder)localObject3, (EditorPanelHolder)localView, (com.tencent.mm.plugin.recordvideo.plugin.parent.a)this));
       localObject2 = findViewById(a.f.editor_tts_panel);
-      kotlin.g.b.p.j(localObject2, "findViewById(R.id.editor_tts_panel)");
-      ((com.tencent.mm.plugin.vlog.ui.timelineeditor.f)localObject1).a((com.tencent.mm.plugin.vlog.ui.plugin.d.b)new com.tencent.mm.plugin.vlog.ui.plugin.read.a((ViewGroup)localObject2, (com.tencent.mm.plugin.recordvideo.plugin.parent.d)this));
-      new ai((ViewGroup)this, (com.tencent.mm.plugin.recordvideo.plugin.parent.d)this);
-      AppMethodBeat.o(233595);
+      s.s(localObject2, "findViewById(R.id.editor_tts_panel)");
+      ((com.tencent.mm.plugin.vlog.ui.timelineeditor.f)localObject1).a((d.b)new com.tencent.mm.plugin.vlog.ui.plugin.read.a((ViewGroup)localObject2, (com.tencent.mm.plugin.recordvideo.plugin.parent.a)this));
+      new com.tencent.mm.plugin.vlog.ui.plugin.ah((ViewGroup)this, (com.tencent.mm.plugin.recordvideo.plugin.parent.a)this);
+      AppMethodBeat.o(282551);
       return;
-      com.tencent.d.f.h.ioq();
+      Log.i("MicroMsg.TimelineEditorModelParser", "getMaxDurationMs by default:60000");
       l = 60000L;
     }
   }
   
-  protected String gwK()
+  protected String hUH()
   {
     return "MicroMsg.TimelineEditorVideoPluginLayout";
   }
   
-  protected final void m(Long paramLong)
-  {
-    AppMethodBeat.i(233625);
-    Object localObject = (u)bp(u.class);
-    if (localObject != null) {
-      ((u)localObject).gvC();
-    }
-    localObject = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
-    if (localObject != null) {
-      ((com.tencent.mm.plugin.vlog.ui.timelineeditor.f)localObject).AJS.resume();
-    }
-    localObject = (com.tencent.mm.plugin.vlog.ui.a)bp(com.tencent.mm.plugin.vlog.ui.a.class);
-    if (localObject != null) {
-      ((com.tencent.mm.plugin.vlog.ui.a)localObject).bnu();
-    }
-    if (paramLong != null)
-    {
-      localObject = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
-      if (localObject != null)
-      {
-        ((com.tencent.mm.plugin.vlog.ui.timelineeditor.f)localObject).seek(paramLong.longValue());
-        AppMethodBeat.o(233625);
-        return;
-      }
-    }
-    AppMethodBeat.o(233625);
-  }
-  
   public boolean onBackPress()
   {
-    AppMethodBeat.i(233638);
+    AppMethodBeat.i(282830);
     if (!super.onBackPress())
     {
-      com.tencent.mm.plugin.recordvideo.activity.a locala = this.ALU;
+      com.tencent.mm.plugin.recordvideo.activity.a locala = this.Fiu;
       if (locala != null) {
-        com.tencent.mm.plugin.recordvideo.activity.a.a.a(locala);
+        a.a.a(locala);
       }
     }
-    AppMethodBeat.o(233638);
+    AppMethodBeat.o(282830);
     return true;
+  }
+  
+  public final void onDetach()
+  {
+    AppMethodBeat.i(282759);
+    super.onDetach();
+    Object localObject = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+    if (localObject != null)
+    {
+      localObject = ((com.tencent.mm.plugin.vlog.ui.timelineeditor.f)localObject).GmD;
+      if (localObject != null) {
+        ((VideoCompositionPlayView)localObject).stop();
+      }
+    }
+    localObject = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ((com.tencent.mm.plugin.vlog.ui.timelineeditor.f)localObject).GmD)
+    {
+      if (localObject != null) {
+        ((VideoCompositionPlayView)localObject).setAlpha(0.0F);
+      }
+      AppMethodBeat.o(282759);
+      return;
+    }
   }
   
   public final void release()
   {
-    AppMethodBeat.i(233640);
+    AppMethodBeat.i(282840);
     super.release();
-    com.tencent.mm.plugin.vlog.model.local.a.Nol.unInit();
-    AppMethodBeat.o(233640);
+    com.tencent.mm.plugin.vlog.model.local.a.UbD.unInit();
+    AppMethodBeat.o(282840);
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(233616);
+    AppMethodBeat.i(282728);
     super.reset();
-    this.NEO.setVisibility(0);
-    this.NEN.setVisibility(0);
-    AppMethodBeat.o(233616);
+    this.Urd.setVisibility(0);
+    this.Urc.setVisibility(0);
+    AppMethodBeat.o(282728);
+  }
+  
+  protected final void s(Long paramLong)
+  {
+    AppMethodBeat.i(282801);
+    Object localObject = (t)bZ(t.class);
+    if (localObject != null) {
+      ((t)localObject).hTr();
+    }
+    localObject = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+    if (localObject != null) {
+      ((com.tencent.mm.plugin.vlog.ui.timelineeditor.f)localObject).GmD.resume();
+    }
+    localObject = (com.tencent.mm.plugin.vlog.ui.a)bZ(com.tencent.mm.plugin.vlog.ui.a.class);
+    if (localObject != null) {
+      ((com.tencent.mm.plugin.vlog.ui.a)localObject).bLh();
+    }
+    if (paramLong != null)
+    {
+      localObject = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+      if (localObject != null) {
+        ((com.tencent.mm.plugin.vlog.ui.timelineeditor.f)localObject).seek(paramLong.longValue());
+      }
+    }
+    AppMethodBeat.o(282801);
   }
   
   protected final void setCaptureInfo(com.tencent.mm.media.widget.camerarecordview.b.b paramb)
   {
-    this.HNh = paramb;
+    this.NKf = paramb;
   }
   
   protected final void setConfigProvider(RecordConfigProvider paramRecordConfigProvider)
   {
-    this.ALV = paramRecordConfigProvider;
+    this.oaV = paramRecordConfigProvider;
   }
   
   protected final void setEditId(String paramString)
   {
-    AppMethodBeat.i(233583);
-    kotlin.g.b.p.k(paramString, "<set-?>");
+    AppMethodBeat.i(282422);
+    s.u(paramString, "<set-?>");
     this.editId = paramString;
-    AppMethodBeat.o(233583);
+    AppMethodBeat.o(282422);
   }
   
   protected final void setMaxCropVideoDurationMs(long paramLong)
   {
-    this.Nrw = paramLong;
+    this.Uff = paramLong;
   }
   
   protected final void setMediaMute(boolean paramBoolean)
   {
-    this.NrL = paramBoolean;
+    this.Ufu = paramBoolean;
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/timelineeditor/scene/TimelineEditorBaseVideoPluginLayout$Companion;", "", "()V", "Profile_Tag", "", "plugin-vlog_release"})
-  public static final class a {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
-  {
-    b(TimelineEditorBaseVideoPluginLayout paramTimelineEditorBaseVideoPluginLayout) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(224489);
-      this.NEQ.getPluginLayout().setVisibility(4);
-      AppMethodBeat.o(224489);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "com/tencent/mm/plugin/vlog/ui/timelineeditor/scene/TimelineEditorBaseVideoPluginLayout$statusChange$12$1$1", "com/tencent/mm/plugin/vlog/ui/timelineeditor/scene/TimelineEditorBaseVideoPluginLayout$$special$$inlined$let$lambda$1"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends kotlin.d.b.a.j
-    implements m<ak, kotlin.d.d<? super x>, Object>
+    extends k
+    implements m<aq, kotlin.d.d<? super kotlin.ah>, Object>
   {
-    Object L$0;
+    long Yx;
     int label;
-    Object oDA;
-    private ak p$;
-    Object pGq;
-    Object pGr;
     
-    c(Long paramLong, long paramLong1, long paramLong2, kotlin.d.d paramd, TimelineEditorBaseVideoPluginLayout paramTimelineEditorBaseVideoPluginLayout, Bundle paramBundle)
+    c(TimelineEditorBaseVideoPluginLayout paramTimelineEditorBaseVideoPluginLayout, Long paramLong, long paramLong1, long paramLong2, kotlin.d.d<? super c> paramd)
     {
       super(paramd);
     }
     
-    public final kotlin.d.d<x> create(Object paramObject, kotlin.d.d<?> paramd)
+    public final kotlin.d.d<kotlin.ah> create(Object paramObject, kotlin.d.d<?> paramd)
     {
-      AppMethodBeat.i(232442);
-      kotlin.g.b.p.k(paramd, "completion");
-      paramd = new c(this.NER, l1, this.NES, paramd, this.NEQ, this.ypn);
-      paramd.p$ = ((ak)paramObject);
-      AppMethodBeat.o(232442);
-      return paramd;
+      AppMethodBeat.i(282199);
+      paramd = new c(this.Ure, paramc, l1, this.Urg, paramd);
+      paramd.L$0 = paramObject;
+      paramObject = (kotlin.d.d)paramd;
+      AppMethodBeat.o(282199);
+      return paramObject;
     }
     
-    public final Object invoke(Object paramObject1, Object paramObject2)
+    public final Object invokeSuspend(Object paramObject)
     {
-      AppMethodBeat.i(232443);
-      paramObject1 = ((c)create(paramObject1, (kotlin.d.d)paramObject2)).invokeSuspend(x.aazN);
-      AppMethodBeat.o(232443);
-      return paramObject1;
-    }
-    
-    public final Object invokeSuspend(final Object paramObject)
-    {
-      AppMethodBeat.i(232440);
-      kotlin.d.a.a locala = kotlin.d.a.a.aaAA;
-      final aa.e locale;
+      AppMethodBeat.i(282191);
+      kotlin.d.a.a locala = kotlin.d.a.a.aiwj;
+      final long l1;
       Object localObject1;
       Object localObject2;
       switch (this.label)
       {
       default: 
         paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-        AppMethodBeat.o(232440);
+        AppMethodBeat.o(282191);
         throw paramObject;
       case 0: 
         ResultKt.throwOnFailure(paramObject);
-        paramObject = this.p$;
-        locale = new aa.e();
-        locale.aaBB = System.currentTimeMillis();
-        localObject1 = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)this.NEQ.bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
+        paramObject = (aq)this.L$0;
+        l1 = System.currentTimeMillis();
+        localObject1 = (com.tencent.mm.plugin.vlog.ui.timelineeditor.b)this.Ure.bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.b.class);
         if (localObject1 != null)
         {
-          localObject2 = this.NER;
-          long l1 = l1;
-          long l2 = this.NES;
+          localObject2 = paramc;
+          long l2 = l1;
+          long l3 = this.Urg;
+          kotlin.d.d locald = (kotlin.d.d)this;
           this.L$0 = paramObject;
-          this.oDA = locale;
+          this.Yx = l1;
           this.label = 1;
-          localObject1 = ((com.tencent.mm.plugin.vlog.ui.timelineeditor.b)localObject1).a((Long)localObject2, l1, l2, this);
+          localObject1 = ((com.tencent.mm.plugin.vlog.ui.timelineeditor.b)localObject1).a((Long)localObject2, l2, l3, locald);
           if (localObject1 != locala) {
-            break label424;
+            break label356;
           }
-          AppMethodBeat.o(232440);
+          AppMethodBeat.o(282191);
           return locala;
         }
         break;
       case 1: 
-        locale = (aa.e)this.oDA;
-        localObject2 = (ak)this.L$0;
+        l1 = this.Yx;
+        localObject2 = (aq)this.L$0;
         ResultKt.throwOnFailure(paramObject);
         localObject1 = paramObject;
         paramObject = localObject2;
       }
-      label424:
+      label356:
       for (;;)
       {
-        localObject1 = (com.tencent.mm.videocomposition.j)localObject1;
-        if (localObject1 != null)
+        localObject2 = (com.tencent.mm.videocomposition.j)localObject1;
+        if (localObject2 != null)
         {
-          Log.i("MicroMsg.TimelineProfile", "jni updateTrackDuration coast:" + (System.currentTimeMillis() - locale.aaBB));
-          kotlinx.coroutines.g.a(paramObject, null, (m)new kotlin.d.b.a.j((com.tencent.mm.videocomposition.j)localObject1, null)
-          {
-            int label;
-            private ak p$;
-            
-            public final kotlin.d.d<x> create(Object paramAnonymousObject, kotlin.d.d<?> paramAnonymousd)
-            {
-              AppMethodBeat.i(231483);
-              kotlin.g.b.p.k(paramAnonymousd, "completion");
-              paramAnonymousd = new 1(this.Nku, paramAnonymousd, jdField_this, paramObject, locale);
-              paramAnonymousd.p$ = ((ak)paramAnonymousObject);
-              AppMethodBeat.o(231483);
-              return paramAnonymousd;
-            }
-            
-            public final Object invoke(Object paramAnonymousObject1, Object paramAnonymousObject2)
-            {
-              AppMethodBeat.i(231484);
-              paramAnonymousObject1 = ((1)create(paramAnonymousObject1, (kotlin.d.d)paramAnonymousObject2)).invokeSuspend(x.aazN);
-              AppMethodBeat.o(231484);
-              return paramAnonymousObject1;
-            }
-            
-            public final Object invokeSuspend(Object paramAnonymousObject)
-            {
-              AppMethodBeat.i(231480);
-              kotlin.d.a.a locala = kotlin.d.a.a.aaAA;
-              switch (this.label)
-              {
-              default: 
-                paramAnonymousObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-                AppMethodBeat.o(231480);
-                throw paramAnonymousObject;
-              }
-              ResultKt.throwOnFailure(paramAnonymousObject);
-              paramAnonymousObject = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)jdField_this.NEQ.bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
-              if (paramAnonymousObject != null)
-              {
-                com.tencent.mm.plugin.vlog.ui.timelineeditor.f.a(paramAnonymousObject, this.Nku, false, false, 0L, 14);
-                paramAnonymousObject = x.aazN;
-                AppMethodBeat.o(231480);
-                return paramAnonymousObject;
-              }
-              AppMethodBeat.o(231480);
-              return null;
-            }
-          }, 3);
-          Log.i("MicroMsg.TimelineProfile", "updateComposition:" + (System.currentTimeMillis() - locale.aaBB));
-          localObject2 = new aa.f();
-          ((aa.f)localObject2).aaBC = com.tencent.mm.plugin.vlog.ui.timelineeditor.modelparse.a.d((com.tencent.mm.videocomposition.j)localObject1);
-          Log.i("MicroMsg.TimelineProfile", "videoComposition2VLogComposition coast:" + (System.currentTimeMillis() - locale.aaBB));
-          kotlin.d.f localf = (kotlin.d.f)bc.iRr();
-          m localm = (m)new kotlin.d.b.a.j((aa.f)localObject2, null)
-          {
-            int label;
-            private ak p$;
-            
-            public final kotlin.d.d<x> create(Object paramAnonymousObject, kotlin.d.d<?> paramAnonymousd)
-            {
-              AppMethodBeat.i(228954);
-              kotlin.g.b.p.k(paramAnonymousd, "completion");
-              paramAnonymousd = new 2(this.NEV, paramAnonymousd, jdField_this, paramObject, locale);
-              paramAnonymousd.p$ = ((ak)paramAnonymousObject);
-              AppMethodBeat.o(228954);
-              return paramAnonymousd;
-            }
-            
-            public final Object invoke(Object paramAnonymousObject1, Object paramAnonymousObject2)
-            {
-              AppMethodBeat.i(228956);
-              paramAnonymousObject1 = ((2)create(paramAnonymousObject1, (kotlin.d.d)paramAnonymousObject2)).invokeSuspend(x.aazN);
-              AppMethodBeat.o(228956);
-              return paramAnonymousObject1;
-            }
-            
-            public final Object invokeSuspend(Object paramAnonymousObject)
-            {
-              AppMethodBeat.i(228951);
-              kotlin.d.a.a locala = kotlin.d.a.a.aaAA;
-              switch (this.label)
-              {
-              default: 
-                paramAnonymousObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-                AppMethodBeat.o(228951);
-                throw paramAnonymousObject;
-              }
-              ResultKt.throwOnFailure(paramAnonymousObject);
-              paramAnonymousObject = (ag)jdField_this.NEQ.bp(ag.class);
-              if (paramAnonymousObject != null) {
-                d.d.a.a(paramAnonymousObject, (ac)this.NEV.aaBC);
-              }
-              Log.i("MicroMsg.TimelineProfile", "VLogThumbViewPlugin:" + (System.currentTimeMillis() - locale.aaBB));
-              TimelineEditorBaseVideoPluginLayout.b(jdField_this.NEQ);
-              paramAnonymousObject = (ag)jdField_this.NEQ.bp(ag.class);
-              if (paramAnonymousObject != null)
-              {
-                paramAnonymousObject = paramAnonymousObject.NwM;
-                if (paramAnonymousObject != null)
-                {
-                  paramAnonymousObject.NDj = true;
-                  paramAnonymousObject = x.aazN;
-                  AppMethodBeat.o(228951);
-                  return paramAnonymousObject;
-                }
-              }
-              AppMethodBeat.o(228951);
-              return null;
-            }
-          };
-          this.L$0 = paramObject;
-          this.oDA = locale;
-          this.pGq = localObject1;
-          this.pGr = localObject2;
+          localObject1 = this.Ure;
+          Log.i("MicroMsg.TimelineProfile", s.X("jni updateTrackDuration coast:", kotlin.d.b.a.b.BF(System.currentTimeMillis() - l1)));
+          kotlinx.coroutines.j.a(paramObject, null, (m)new a((TimelineEditorBaseVideoPluginLayout)localObject1, (com.tencent.mm.videocomposition.j)localObject2, null), 3);
+          Log.i("MicroMsg.TimelineProfile", s.X("updateComposition:", kotlin.d.b.a.b.BF(System.currentTimeMillis() - l1)));
+          localObject2 = com.tencent.mm.plugin.vlog.ui.timelineeditor.modelparse.a.d((com.tencent.mm.videocomposition.j)localObject2);
+          Log.i("MicroMsg.TimelineProfile", s.X("videoComposition2VLogComposition coast:", kotlin.d.b.a.b.BF(System.currentTimeMillis() - l1)));
+          paramObject = (kotlin.d.f)bg.kCh();
+          localObject1 = (m)new b((TimelineEditorBaseVideoPluginLayout)localObject1, (com.tencent.mm.plugin.vlog.model.ac)localObject2, l1, null);
+          this.L$0 = null;
           this.label = 2;
-          if (kotlinx.coroutines.i.a(localf, localm, this) == locala)
+          if (kotlinx.coroutines.l.a(paramObject, (m)localObject1, this) == locala)
           {
-            AppMethodBeat.o(232440);
+            AppMethodBeat.o(282191);
             return locala;
             ResultKt.throwOnFailure(paramObject);
           }
         }
-        paramObject = x.aazN;
-        AppMethodBeat.o(232440);
+        paramObject = kotlin.ah.aiuX;
+        AppMethodBeat.o(282191);
+        return paramObject;
+      }
+    }
+    
+    @Metadata(d1={""}, d2={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;"}, k=3, mv={1, 5, 1}, xi=48)
+    static final class a
+      extends k
+      implements m<aq, kotlin.d.d<? super kotlin.ah>, Object>
+    {
+      int label;
+      
+      a(TimelineEditorBaseVideoPluginLayout paramTimelineEditorBaseVideoPluginLayout, com.tencent.mm.videocomposition.j paramj, kotlin.d.d<? super a> paramd)
+      {
+        super(paramd);
+      }
+      
+      public final kotlin.d.d<kotlin.ah> create(Object paramObject, kotlin.d.d<?> paramd)
+      {
+        AppMethodBeat.i(282175);
+        paramObject = (kotlin.d.d)new a(this.Ure, this.TXm, paramd);
+        AppMethodBeat.o(282175);
+        return paramObject;
+      }
+      
+      public final Object invokeSuspend(Object paramObject)
+      {
+        AppMethodBeat.i(282168);
+        kotlin.d.a.a locala = kotlin.d.a.a.aiwj;
+        switch (this.label)
+        {
+        default: 
+          paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
+          AppMethodBeat.o(282168);
+          throw paramObject;
+        }
+        ResultKt.throwOnFailure(paramObject);
+        paramObject = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)this.Ure.bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+        if (paramObject == null)
+        {
+          AppMethodBeat.o(282168);
+          return null;
+        }
+        com.tencent.mm.plugin.vlog.ui.timelineeditor.f.a(paramObject, this.TXm, false, false, 0L, 14);
+        paramObject = kotlin.ah.aiuX;
+        AppMethodBeat.o(282168);
+        return paramObject;
+      }
+    }
+    
+    @Metadata(d1={""}, d2={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;"}, k=3, mv={1, 5, 1}, xi=48)
+    static final class b
+      extends k
+      implements m<aq, kotlin.d.d<? super kotlin.ah>, Object>
+    {
+      int label;
+      
+      b(TimelineEditorBaseVideoPluginLayout paramTimelineEditorBaseVideoPluginLayout, com.tencent.mm.plugin.vlog.model.ac paramac, long paramLong, kotlin.d.d<? super b> paramd)
+      {
+        super(paramd);
+      }
+      
+      public final kotlin.d.d<kotlin.ah> create(Object paramObject, kotlin.d.d<?> paramd)
+      {
+        AppMethodBeat.i(282188);
+        paramObject = (kotlin.d.d)new b(this.Ure, this.Urh, l1, paramd);
+        AppMethodBeat.o(282188);
+        return paramObject;
+      }
+      
+      public final Object invokeSuspend(Object paramObject)
+      {
+        AppMethodBeat.i(282181);
+        kotlin.d.a.a locala = kotlin.d.a.a.aiwj;
+        switch (this.label)
+        {
+        default: 
+          paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
+          AppMethodBeat.o(282181);
+          throw paramObject;
+        }
+        ResultKt.throwOnFailure(paramObject);
+        paramObject = (af)this.Ure.bZ(af.class);
+        if (paramObject != null) {
+          d.d.a.a((d.d)paramObject, this.Urh);
+        }
+        Log.i("MicroMsg.TimelineProfile", s.X("VLogThumbViewPlugin:", kotlin.d.b.a.b.BF(System.currentTimeMillis() - l1)));
+        TimelineEditorBaseVideoPluginLayout.c(this.Ure);
+        paramObject = (af)this.Ure.bZ(af.class);
+        if (paramObject != null)
+        {
+          paramObject = paramObject.UjU;
+          if (paramObject != null) {
+            paramObject.UpN = true;
+          }
+        }
+        paramObject = kotlin.ah.aiuX;
+        AppMethodBeat.o(282181);
         return paramObject;
       }
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "com/tencent/mm/plugin/vlog/ui/timelineeditor/scene/TimelineEditorBaseVideoPluginLayout$statusChange$21$1$1", "com/tencent/mm/plugin/vlog/ui/timelineeditor/scene/TimelineEditorBaseVideoPluginLayout$$special$$inlined$let$lambda$2"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    extends kotlin.d.b.a.j
-    implements m<ak, kotlin.d.d<? super x>, Object>
+    extends k
+    implements m<aq, kotlin.d.d<? super kotlin.ah>, Object>
   {
-    Object L$0;
     int label;
-    private ak p$;
     
-    d(com.tencent.mm.plugin.vlog.ui.timelineeditor.b paramb, kotlin.d.d paramd, int paramInt, long paramLong1, long paramLong2, boolean paramBoolean, TimelineEditorBaseVideoPluginLayout paramTimelineEditorBaseVideoPluginLayout)
+    d(com.tencent.mm.plugin.vlog.ui.timelineeditor.b paramb, int paramInt, long paramLong1, long paramLong2, boolean paramBoolean, TimelineEditorBaseVideoPluginLayout paramTimelineEditorBaseVideoPluginLayout, kotlin.d.d<? super d> paramd)
     {
       super(paramd);
     }
     
-    public final kotlin.d.d<x> create(Object paramObject, kotlin.d.d<?> paramd)
+    public final kotlin.d.d<kotlin.ah> create(Object paramObject, kotlin.d.d<?> paramd)
     {
-      AppMethodBeat.i(242016);
-      kotlin.g.b.p.k(paramd, "completion");
-      paramd = new d(this.NEX, paramd, i, l1, bool1, this.NFb, this.NEQ);
-      paramd.p$ = ((ak)paramObject);
-      AppMethodBeat.o(242016);
-      return paramd;
-    }
-    
-    public final Object invoke(Object paramObject1, Object paramObject2)
-    {
-      AppMethodBeat.i(242019);
-      paramObject1 = ((d)create(paramObject1, (kotlin.d.d)paramObject2)).invokeSuspend(x.aazN);
-      AppMethodBeat.o(242019);
-      return paramObject1;
+      AppMethodBeat.i(282198);
+      paramObject = (kotlin.d.d)new d(this.Urj, i, l1, bool1, this.Urn, this.Ure, paramd);
+      AppMethodBeat.o(282198);
+      return paramObject;
     }
     
     public final Object invokeSuspend(Object paramObject)
     {
-      AppMethodBeat.i(242015);
-      Object localObject = kotlin.d.a.a.aaAA;
+      AppMethodBeat.i(282190);
+      Object localObject1 = kotlin.d.a.a.aiwj;
+      int i;
+      Object localObject2;
       switch (this.label)
       {
       default: 
         paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-        AppMethodBeat.o(242015);
+        AppMethodBeat.o(282190);
         throw paramObject;
       case 0: 
         ResultKt.throwOnFailure(paramObject);
-        paramObject = this.p$;
-        com.tencent.mm.plugin.vlog.ui.timelineeditor.b localb = this.NEX;
-        int i = i;
+        paramObject = this.Urj;
+        i = i;
         l1 = l1;
         long l2 = bool1;
-        this.L$0 = paramObject;
+        localObject2 = (kotlin.d.d)this;
         this.label = 1;
-        if (kotlinx.coroutines.i.a((kotlin.d.f)bc.iRs(), (m)new b.c(localb, i, l1, l2, null), this) == localObject)
+        if (kotlinx.coroutines.l.a((kotlin.d.f)bg.kCi(), (m)new b.c(i, paramObject, l1, l2, null), (kotlin.d.d)localObject2) == localObject1)
         {
-          AppMethodBeat.o(242015);
-          return localObject;
+          AppMethodBeat.o(282190);
+          return localObject1;
         }
         break;
       case 1: 
         ResultKt.throwOnFailure(paramObject);
       }
-      paramObject = this.NEX.gwA();
-      if (paramObject != null) {
-        if (!this.NFb) {
-          break label244;
+      paramObject = this.Urj.hUy();
+      if (paramObject != null)
+      {
+        boolean bool = this.Urn;
+        i = i;
+        localObject1 = this.Ure;
+        if (!bool) {
+          break label247;
         }
       }
-      label244:
-      for (long l1 = ((com.tencent.mm.videocomposition.b)((List)paramObject.MQY).get(i)).startTimeMs;; l1 = ((com.tencent.mm.videocomposition.b)((List)paramObject.MQY).get(i)).endTimeMs)
+      label247:
+      for (long l1 = ((com.tencent.mm.videocomposition.b)((List)paramObject.TDz).get(i)).startTimeMs;; l1 = ((com.tencent.mm.videocomposition.b)((List)paramObject.TDz).get(i)).endTimeMs)
       {
-        localObject = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)this.NEQ.bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
-        if (localObject != null) {
-          ((com.tencent.mm.plugin.vlog.ui.timelineeditor.f)localObject).a(paramObject, false, true, l1);
+        localObject2 = (com.tencent.mm.plugin.vlog.ui.timelineeditor.f)((TimelineEditorBaseVideoPluginLayout)localObject1).bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.f.class);
+        if (localObject2 != null) {
+          ((com.tencent.mm.plugin.vlog.ui.timelineeditor.f)localObject2).a(paramObject, false, true, l1);
         }
-        paramObject = (com.tencent.mm.plugin.vlog.ui.timelineeditor.a)this.NEQ.bp(com.tencent.mm.plugin.vlog.ui.timelineeditor.a.class);
+        paramObject = (com.tencent.mm.plugin.vlog.ui.timelineeditor.a)((TimelineEditorBaseVideoPluginLayout)localObject1).bZ(com.tencent.mm.plugin.vlog.ui.timelineeditor.a.class);
         if (paramObject != null) {
-          paramObject.guO().SB(l1);
+          paramObject.hSD().wP(l1);
         }
-        paramObject = x.aazN;
-        AppMethodBeat.o(242015);
+        paramObject = kotlin.ah.aiuX;
+        AppMethodBeat.o(282190);
         return paramObject;
       }
     }
@@ -2072,7 +1850,7 @@ public class TimelineEditorBaseVideoPluginLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.timelineeditor.scene.TimelineEditorBaseVideoPluginLayout
  * JD-Core Version:    0.7.0.1
  */

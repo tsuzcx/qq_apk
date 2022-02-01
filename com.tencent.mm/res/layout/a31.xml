@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/h8v" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/rj"
+<merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bnm" android:background="@drawable/emoji_store_v2_single_bar" android:paddingLeft="@dimen/ir" android:paddingRight="@dimen/ir" android:layout_width="fill_parent" android:layout_height="@dimen/k4" android:layout_marginTop="@dimen/i1" android:layout_marginBottom="@dimen/i1" style="@style/rj">
-        <TextView android:ellipsize="end" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/buz" android:singleLine="true" style="@style/mp" />
-        <TextView android:textColor="@color/ag2" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/fxj" android:background="@drawable/b1a" android:visibility="gone" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginLeft="@dimen/i2" android:layout_marginRight="@dimen/i2" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bzs" android:background="@color/afz" android:paddingLeft="@dimen/ir" android:paddingTop="@dimen/ib" android:paddingRight="@dimen/ir" android:paddingBottom="@dimen/ib" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/rj">
-        <TextView android:gravity="center|left" android:layout_gravity="center|left" android:id="@id/c04" android:layout_width="0.0dip" android:text="@string/bsi" android:layout_weight="1.0" style="@style/mp" />
-        <TextView android:gravity="center|right" android:layout_gravity="center|right" android:id="@id/c0i" android:layout_width="0.0dip" android:text="@string/buq" android:drawableRight="@raw/emoji_arrow" android:layout_weight="1.0" style="@style/mo" />
-    </LinearLayout>
-</LinearLayout>
+    <TextView android:id="@id/ko8" android:layout_width="wrap_content" android:layout_height="fill_parent" style="@style/mf" />
+    <EditText android:id="@id/cd6" android:imeOptions="actionDone" android:contentDescription="@string/c9q" style="@style/me" />
+</merge>

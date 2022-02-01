@@ -3,7 +3,6 @@ package com.tencent.live2.a;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
-import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.Surface;
 import android.view.SurfaceHolder;
@@ -12,6 +11,7 @@ import android.view.SurfaceView;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.util.TXCBuild;
 import com.tencent.liteav.basic.util.h;
 import com.tencent.live2.V2TXLiveDef.V2TXLiveBufferType;
 import com.tencent.live2.V2TXLiveDef.V2TXLiveFillMode;
@@ -64,7 +64,7 @@ public class a
   
   public a(V2TXLivePlayer paramV2TXLivePlayer, Context paramContext)
   {
-    AppMethodBeat.i(214582);
+    AppMethodBeat.i(211771);
     this.j = V2TXLiveDef.V2TXLivePlayStatus.V2TXLivePlayStatusStopped;
     this.k = V2TXLiveDef.V2TXLivePlayStatus.V2TXLivePlayStatusStopped;
     this.r = -1;
@@ -79,24 +79,24 @@ public class a
     this.c.setConfig(this.d);
     this.c.enableHardwareDecode(true);
     this.c.setAudioVolumeEvaluationListener(this);
-    AppMethodBeat.o(214582);
+    AppMethodBeat.o(211771);
   }
   
   public static int a(String paramString)
   {
-    AppMethodBeat.i(214651);
+    AppMethodBeat.i(211861);
     if ((paramString.startsWith("rtmp://")) || (paramString.startsWith("room://")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
     {
-      AppMethodBeat.o(214651);
+      AppMethodBeat.o(211861);
       return 0;
     }
-    AppMethodBeat.o(214651);
+    AppMethodBeat.o(211861);
     return -2;
   }
   
   private void a()
   {
-    AppMethodBeat.i(214629);
+    AppMethodBeat.i(211779);
     c("stopPlayInner: ");
     this.e = false;
     this.f = false;
@@ -105,51 +105,51 @@ public class a
     this.i = new V2TXLiveDef.V2TXLivePlayerStatistics();
     c();
     this.c.stopPlay(true);
-    AppMethodBeat.o(214629);
+    AppMethodBeat.o(211779);
   }
   
   private void a(V2TXLiveDef.V2TXLivePlayStatus paramV2TXLivePlayStatus, V2TXLiveDef.V2TXLiveStatusChangeReason paramV2TXLiveStatusChangeReason)
   {
-    AppMethodBeat.i(214630);
+    AppMethodBeat.i(211791);
     if (!b.a(this.j, paramV2TXLivePlayStatus, paramV2TXLiveStatusChangeReason))
     {
-      AppMethodBeat.o(214630);
+      AppMethodBeat.o(211791);
       return;
     }
     this.j = paramV2TXLivePlayStatus;
     if (this.m != null) {
       this.m.onAudioPlayStatusUpdate(this.b, this.j, paramV2TXLiveStatusChangeReason, new Bundle());
     }
-    AppMethodBeat.o(214630);
+    AppMethodBeat.o(211791);
   }
   
   private int b(String paramString)
   {
-    AppMethodBeat.i(214634);
+    AppMethodBeat.i(211806);
     if (this.r != -1)
     {
       c("force set url type:" + this.r);
       int i1 = this.r;
-      AppMethodBeat.o(214634);
+      AppMethodBeat.o(211806);
       return i1;
     }
     if (paramString == null)
     {
-      AppMethodBeat.o(214634);
+      AppMethodBeat.o(211806);
       return 1;
     }
     if (paramString.startsWith("rtmp"))
     {
-      AppMethodBeat.o(214634);
+      AppMethodBeat.o(211806);
       return 0;
     }
-    AppMethodBeat.o(214634);
+    AppMethodBeat.o(211806);
     return 1;
   }
   
   private void b()
   {
-    AppMethodBeat.i(214636);
+    AppMethodBeat.i(211819);
     TXCloudVideoView localTXCloudVideoView = this.o;
     Object localObject1 = this.p;
     Object localObject2 = this.q;
@@ -159,7 +159,7 @@ public class a
       this.c.setSurface(null);
       this.c.setSurfaceSize(0, 0);
       this.c.setPlayerView(localTXCloudVideoView);
-      AppMethodBeat.o(214636);
+      AppMethodBeat.o(211819);
       return;
     }
     if (localObject1 != null)
@@ -175,7 +175,7 @@ public class a
         this.c.setSurface((Surface)localObject2);
         this.c.setSurfaceSize(((TextureView)localObject1).getWidth(), ((TextureView)localObject1).getHeight());
       }
-      AppMethodBeat.o(214636);
+      AppMethodBeat.o(211819);
       return;
     }
     if (localObject2 != null)
@@ -190,31 +190,31 @@ public class a
         this.c.setSurface((Surface)localObject1);
         this.c.setSurfaceSize(((SurfaceView)localObject2).getWidth(), ((SurfaceView)localObject2).getHeight());
       }
-      AppMethodBeat.o(214636);
+      AppMethodBeat.o(211819);
       return;
     }
     d("bindRender: all view is null, bind fail.");
-    AppMethodBeat.o(214636);
+    AppMethodBeat.o(211819);
   }
   
   private void b(V2TXLiveDef.V2TXLivePlayStatus paramV2TXLivePlayStatus, V2TXLiveDef.V2TXLiveStatusChangeReason paramV2TXLiveStatusChangeReason)
   {
-    AppMethodBeat.i(214632);
+    AppMethodBeat.i(211799);
     if (!b.a(this.k, paramV2TXLivePlayStatus, paramV2TXLiveStatusChangeReason))
     {
-      AppMethodBeat.o(214632);
+      AppMethodBeat.o(211799);
       return;
     }
     this.k = paramV2TXLivePlayStatus;
     if (this.m != null) {
       this.m.onVideoPlayStatusUpdate(this.b, this.j, paramV2TXLiveStatusChangeReason, new Bundle());
     }
-    AppMethodBeat.o(214632);
+    AppMethodBeat.o(211799);
   }
   
   private void c()
   {
-    AppMethodBeat.i(214637);
+    AppMethodBeat.i(211828);
     Object localObject = this.p;
     if (localObject != null)
     {
@@ -231,33 +231,33 @@ public class a
       this.c.setSurface(null);
       this.c.setSurfaceSize(0, 0);
     }
-    AppMethodBeat.o(214637);
+    AppMethodBeat.o(211828);
   }
   
   private void c(String paramString)
   {
-    AppMethodBeat.i(214647);
+    AppMethodBeat.i(211837);
     TXCLog.i("V2-TXRTMPPlayerImpl", "v2_api_rtmp_player(" + this + ") " + paramString);
-    AppMethodBeat.o(214647);
+    AppMethodBeat.o(211837);
   }
   
   private void d(String paramString)
   {
-    AppMethodBeat.i(214648);
+    AppMethodBeat.i(211846);
     TXCLog.e("V2-TXRTMPPlayerImpl", "v2_api_rtmp_player(" + this + ") " + paramString);
-    AppMethodBeat.o(214648);
+    AppMethodBeat.o(211846);
   }
   
   private void e(String paramString)
   {
-    AppMethodBeat.i(214649);
+    AppMethodBeat.i(211852);
     TXCLog.w("V2-TXRTMPPlayerImpl", "v2_api_rtmp_player(" + this + ") " + paramString);
-    AppMethodBeat.o(214649);
+    AppMethodBeat.o(211852);
   }
   
   public int enableCustomRendering(boolean paramBoolean, V2TXLiveDef.V2TXLivePixelFormat paramV2TXLivePixelFormat, V2TXLiveDef.V2TXLiveBufferType paramV2TXLiveBufferType)
   {
-    AppMethodBeat.i(214611);
+    AppMethodBeat.i(211937);
     c("setVideoFrameObserver: enable-" + paramBoolean + " format-" + paramV2TXLivePixelFormat + " type-" + paramV2TXLiveBufferType);
     if ((paramV2TXLivePixelFormat == V2TXLiveDef.V2TXLivePixelFormat.V2TXLivePixelFormatI420) && (paramV2TXLiveBufferType == V2TXLiveDef.V2TXLiveBufferType.V2TXLiveBufferTypeByteArray))
     {
@@ -268,7 +268,7 @@ public class a
       for (paramV2TXLivePixelFormat = this;; paramV2TXLivePixelFormat = null)
       {
         paramV2TXLiveBufferType.setVideoRawDataListener(paramV2TXLivePixelFormat);
-        AppMethodBeat.o(214611);
+        AppMethodBeat.o(211937);
         return 0;
       }
     }
@@ -281,20 +281,20 @@ public class a
       for (paramV2TXLivePixelFormat = this;; paramV2TXLivePixelFormat = null)
       {
         paramV2TXLiveBufferType.setVideoRenderListener(paramV2TXLivePixelFormat, null);
-        AppMethodBeat.o(214611);
+        AppMethodBeat.o(211937);
         return 0;
       }
     }
     this.c.setVideoRawDataListener(null);
     this.c.setVideoRenderListener(null, null);
     d("setVideoFrameObserver: format or type isn't support. force clean observer. format-" + paramV2TXLivePixelFormat + " type-" + paramV2TXLiveBufferType);
-    AppMethodBeat.o(214611);
+    AppMethodBeat.o(211937);
     return -4;
   }
   
   public int enableVolumeEvaluation(int paramInt)
   {
-    AppMethodBeat.i(214610);
+    AppMethodBeat.i(211934);
     int i1 = paramInt;
     if (paramInt < 0)
     {
@@ -302,7 +302,7 @@ public class a
       i1 = 0;
     }
     this.c.enableAudioVolumeEvaluation(i1);
-    AppMethodBeat.o(214610);
+    AppMethodBeat.o(211934);
     return 0;
   }
   
@@ -316,24 +316,24 @@ public class a
   
   public void onAudioInfoChanged(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(214621);
+    AppMethodBeat.i(211948);
     c("onAudioInfoChanged: sampleRate-" + paramInt1 + " channels-" + paramInt2 + " bits-" + paramInt3);
-    AppMethodBeat.o(214621);
+    AppMethodBeat.o(211948);
   }
   
   public void onAudioVolumeEvaluationNotify(int paramInt)
   {
-    AppMethodBeat.i(214622);
+    AppMethodBeat.i(211951);
     V2TXLivePlayerObserver localV2TXLivePlayerObserver = this.m;
     if (localV2TXLivePlayerObserver != null) {
       localV2TXLivePlayerObserver.onPlayoutVolumeUpdate(this.b, paramInt);
     }
-    AppMethodBeat.o(214622);
+    AppMethodBeat.o(211951);
   }
   
   public void onNetStatus(Bundle paramBundle)
   {
-    AppMethodBeat.i(214628);
+    AppMethodBeat.i(211957);
     try
     {
       localObject = h.a();
@@ -361,14 +361,14 @@ public class a
     if ((localObject != null) && ((localObject instanceof com.tencent.live2.impl.a.a))) {
       ((com.tencent.live2.impl.a.a)localObject).onPlayNetStatus(paramBundle);
     }
-    AppMethodBeat.o(214628);
+    AppMethodBeat.o(211957);
   }
   
   public void onPcmDataAvailable(byte[] paramArrayOfByte, long paramLong) {}
   
   public void onPlayEvent(int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(214625);
+    AppMethodBeat.i(211954);
     c("onPlayEvent event:" + paramInt + " param:" + paramBundle);
     V2TXLivePlayerObserver localV2TXLivePlayerObserver = this.m;
     switch (paramInt)
@@ -381,7 +381,7 @@ public class a
         if ((localV2TXLivePlayerObserver != null) && ((localV2TXLivePlayerObserver instanceof com.tencent.live2.impl.a.a))) {
           ((com.tencent.live2.impl.a.a)localV2TXLivePlayerObserver).onPlayEvent(paramInt, paramBundle);
         }
-        AppMethodBeat.o(214625);
+        AppMethodBeat.o(211954);
         return;
         if (this.h)
         {
@@ -440,7 +440,7 @@ public class a
   
   public void onRenderVideoFrame(TXLivePlayer.TXLiteAVTexture paramTXLiteAVTexture)
   {
-    AppMethodBeat.i(214616);
+    AppMethodBeat.i(211943);
     V2TXLivePlayerObserver localV2TXLivePlayerObserver = this.m;
     V2TXLiveDef.V2TXLiveVideoFrame localV2TXLiveVideoFrame;
     if ((localV2TXLivePlayerObserver != null) && (paramTXLiteAVTexture != null))
@@ -461,10 +461,10 @@ public class a
     for (;;)
     {
       localV2TXLivePlayerObserver.onRenderVideoFrame(this.b, localV2TXLiveVideoFrame);
-      AppMethodBeat.o(214616);
+      AppMethodBeat.o(211943);
       return;
       label124:
-      if ((Build.VERSION.SDK_INT >= 17) && ((paramTXLiteAVTexture.eglContext instanceof android.opengl.EGLContext))) {
+      if ((TXCBuild.VersionInt() >= 17) && ((paramTXLiteAVTexture.eglContext instanceof android.opengl.EGLContext))) {
         localV2TXLiveVideoFrame.texture.eglContext14 = ((android.opengl.EGLContext)paramTXLiteAVTexture.eglContext);
       }
     }
@@ -472,37 +472,37 @@ public class a
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(214642);
+    AppMethodBeat.i(211963);
     c("TextureView: available width-" + paramInt1 + " height-" + paramInt2);
     if (paramSurfaceTexture != null) {
       this.c.setSurface(new Surface(paramSurfaceTexture));
     }
     this.c.setSurfaceSize(paramInt1, paramInt2);
-    AppMethodBeat.o(214642);
+    AppMethodBeat.o(211963);
   }
   
   public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
-    AppMethodBeat.i(214645);
+    AppMethodBeat.i(211965);
     c("TextureView: destroyed.");
     this.c.setSurface(null);
-    AppMethodBeat.o(214645);
+    AppMethodBeat.o(211965);
     return false;
   }
   
   public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(214644);
+    AppMethodBeat.i(211964);
     c("TextureView: size changed width-" + paramInt1 + " height-" + paramInt2);
     this.c.setSurfaceSize(paramInt1, paramInt2);
-    AppMethodBeat.o(214644);
+    AppMethodBeat.o(211964);
   }
   
   public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
   
   public void onVideoRawDataAvailable(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(214618);
+    AppMethodBeat.i(211944);
     V2TXLivePlayerObserver localV2TXLivePlayerObserver = this.m;
     if (localV2TXLivePlayerObserver != null)
     {
@@ -515,22 +515,22 @@ public class a
       localV2TXLiveVideoFrame.rotation = 0;
       localV2TXLivePlayerObserver.onRenderVideoFrame(this.b, localV2TXLiveVideoFrame);
     }
-    AppMethodBeat.o(214618);
+    AppMethodBeat.o(211944);
   }
   
   public int pauseAudio()
   {
-    AppMethodBeat.i(214601);
+    AppMethodBeat.i(211915);
     this.l = true;
     this.c.setMute(true);
     a(V2TXLiveDef.V2TXLivePlayStatus.V2TXLivePlayStatusStopped, V2TXLiveDef.V2TXLiveStatusChangeReason.V2TXLiveStatusChangeReasonLocalStopped);
-    AppMethodBeat.o(214601);
+    AppMethodBeat.o(211915);
     return 0;
   }
   
   public int pauseVideo()
   {
-    AppMethodBeat.i(214605);
+    AppMethodBeat.i(211922);
     if (this.o != null) {
       this.c.setPlayerView(null);
     }
@@ -543,7 +543,7 @@ public class a
           b(V2TXLiveDef.V2TXLivePlayStatus.V2TXLivePlayStatusLoading, V2TXLiveDef.V2TXLiveStatusChangeReason.V2TXLiveStatusChangeReasonBufferingBegin);
         }
       }
-      AppMethodBeat.o(214605);
+      AppMethodBeat.o(211922);
       return 0;
       if ((this.q != null) || (this.p != null)) {
         this.c.setSurface(null);
@@ -553,7 +553,7 @@ public class a
   
   public int resumeAudio()
   {
-    AppMethodBeat.i(214603);
+    AppMethodBeat.i(211918);
     this.l = false;
     this.c.setMute(false);
     if (this.f)
@@ -563,20 +563,20 @@ public class a
         a(V2TXLiveDef.V2TXLivePlayStatus.V2TXLivePlayStatusLoading, V2TXLiveDef.V2TXLiveStatusChangeReason.V2TXLiveStatusChangeReasonBufferingBegin);
       }
     }
-    AppMethodBeat.o(214603);
+    AppMethodBeat.o(211918);
     return 0;
   }
   
   public int resumeVideo()
   {
-    AppMethodBeat.i(214607);
+    AppMethodBeat.i(211927);
     if (this.o != null) {
       this.c.setPlayerView(this.o);
     }
     for (;;)
     {
       b(V2TXLiveDef.V2TXLivePlayStatus.V2TXLivePlayStatusPlaying, V2TXLiveDef.V2TXLiveStatusChangeReason.V2TXLiveStatusChangeReasonLocalStarted);
-      AppMethodBeat.o(214607);
+      AppMethodBeat.o(211927);
       return 0;
       Object localObject;
       if (this.p != null)
@@ -598,7 +598,7 @@ public class a
   
   public int setCacheParams(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(214609);
+    AppMethodBeat.i(211932);
     if (paramFloat1 > paramFloat2) {
       e("force fix error params. min:" + paramFloat2 + " max:" + paramFloat1);
     }
@@ -612,7 +612,7 @@ public class a
       for (boolean bool = true;; bool = false)
       {
         localTXLivePlayConfig.setAutoAdjustCacheTime(bool);
-        AppMethodBeat.o(214609);
+        AppMethodBeat.o(211932);
         return 0;
       }
       float f1 = paramFloat1;
@@ -628,15 +628,15 @@ public class a
   
   public int setPlayoutVolume(int paramInt)
   {
-    AppMethodBeat.i(214608);
+    AppMethodBeat.i(211929);
     this.c.setVolume(paramInt);
-    AppMethodBeat.o(214608);
+    AppMethodBeat.o(211929);
     return 0;
   }
   
   public int setProperty(String paramString, Object paramObject)
   {
-    AppMethodBeat.i(214586);
+    AppMethodBeat.i(211890);
     int i1 = -1;
     switch (paramString.hashCode())
     {
@@ -648,7 +648,7 @@ public class a
     }
     for (;;)
     {
-      AppMethodBeat.o(214586);
+      AppMethodBeat.o(211890);
       return 0;
       if (!paramString.equals("setSurface")) {
         break;
@@ -699,7 +699,7 @@ public class a
   
   public int setRenderFillMode(V2TXLiveDef.V2TXLiveFillMode paramV2TXLiveFillMode)
   {
-    AppMethodBeat.i(214597);
+    AppMethodBeat.i(211904);
     V2TXLiveDef.V2TXLiveFillMode localV2TXLiveFillMode = paramV2TXLiveFillMode;
     if (paramV2TXLiveFillMode == null)
     {
@@ -707,13 +707,13 @@ public class a
       localV2TXLiveFillMode = V2TXLiveDef.V2TXLiveFillMode.V2TXLiveFillModeFill;
     }
     this.c.setRenderMode(b.a(localV2TXLiveFillMode));
-    AppMethodBeat.o(214597);
+    AppMethodBeat.o(211904);
     return 0;
   }
   
   public int setRenderRotation(V2TXLiveDef.V2TXLiveRotation paramV2TXLiveRotation)
   {
-    AppMethodBeat.i(214595);
+    AppMethodBeat.i(211901);
     V2TXLiveDef.V2TXLiveRotation localV2TXLiveRotation = paramV2TXLiveRotation;
     if (paramV2TXLiveRotation == null)
     {
@@ -721,75 +721,75 @@ public class a
       localV2TXLiveRotation = V2TXLiveDef.V2TXLiveRotation.V2TXLiveRotation0;
     }
     this.c.setRenderRotation(b.a(localV2TXLiveRotation));
-    AppMethodBeat.o(214595);
+    AppMethodBeat.o(211901);
     return 0;
   }
   
   public int setRenderView(SurfaceView paramSurfaceView)
   {
-    AppMethodBeat.i(214594);
+    AppMethodBeat.i(211899);
     c();
     this.q = paramSurfaceView;
     b();
-    AppMethodBeat.o(214594);
+    AppMethodBeat.o(211899);
     return 0;
   }
   
   public int setRenderView(TextureView paramTextureView)
   {
-    AppMethodBeat.i(214592);
+    AppMethodBeat.i(211897);
     c();
     this.p = paramTextureView;
     b();
-    AppMethodBeat.o(214592);
+    AppMethodBeat.o(211897);
     return 0;
   }
   
   public int setRenderView(TXCloudVideoView paramTXCloudVideoView)
   {
-    AppMethodBeat.i(214590);
+    AppMethodBeat.i(211893);
     c();
     if (paramTXCloudVideoView != null) {
       paramTXCloudVideoView.showLog(this.n);
     }
     this.o = paramTXCloudVideoView;
     b();
-    AppMethodBeat.o(214590);
+    AppMethodBeat.o(211893);
     return 0;
   }
   
   public void showDebugView(boolean paramBoolean)
   {
-    AppMethodBeat.i(214613);
+    AppMethodBeat.i(211940);
     this.n = paramBoolean;
     if (this.o != null) {
       this.o.showLog(paramBoolean);
     }
-    AppMethodBeat.o(214613);
+    AppMethodBeat.o(211940);
   }
   
   public int snapshot()
   {
-    AppMethodBeat.i(214612);
+    AppMethodBeat.i(211938);
     this.c.snapshot(new TXLivePlayer.ITXSnapshotListener()
     {
       public void onSnapshot(Bitmap paramAnonymousBitmap)
       {
-        AppMethodBeat.i(214422);
+        AppMethodBeat.i(211749);
         V2TXLivePlayerObserver localV2TXLivePlayerObserver = a.a(a.this);
         if (localV2TXLivePlayerObserver != null) {
           localV2TXLivePlayerObserver.onSnapshotComplete(a.b(a.this), paramAnonymousBitmap);
         }
-        AppMethodBeat.o(214422);
+        AppMethodBeat.o(211749);
       }
     });
-    AppMethodBeat.o(214612);
+    AppMethodBeat.o(211938);
     return 0;
   }
   
   public int startPlay(String paramString)
   {
-    AppMethodBeat.i(214599);
+    AppMethodBeat.i(211908);
     int i1 = b(paramString);
     c("startPlay: url-" + paramString + " type-" + i1);
     c();
@@ -809,62 +809,62 @@ public class a
       d("startPlay: play fail, force stop.");
       a();
     }
-    AppMethodBeat.o(214599);
+    AppMethodBeat.o(211908);
     return 0;
   }
   
   public int stopPlay()
   {
-    AppMethodBeat.i(214600);
+    AppMethodBeat.i(211911);
     c("stopPlay:");
     if (!this.g)
     {
       e("stopPlay: player have been stop.");
-      AppMethodBeat.o(214600);
+      AppMethodBeat.o(211911);
       return 0;
     }
     a();
     a(V2TXLiveDef.V2TXLivePlayStatus.V2TXLivePlayStatusStopped, V2TXLiveDef.V2TXLiveStatusChangeReason.V2TXLiveStatusChangeReasonLocalStopped);
     b(V2TXLiveDef.V2TXLivePlayStatus.V2TXLivePlayStatusStopped, V2TXLiveDef.V2TXLiveStatusChangeReason.V2TXLiveStatusChangeReasonLocalStopped);
-    AppMethodBeat.o(214600);
+    AppMethodBeat.o(211911);
     return 0;
   }
   
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(214640);
+    AppMethodBeat.i(211960);
     c("SurfaceView: onSizeChanged.");
     this.c.setSurfaceSize(paramInt2, paramInt3);
-    AppMethodBeat.o(214640);
+    AppMethodBeat.o(211960);
   }
   
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    AppMethodBeat.i(214639);
+    AppMethodBeat.i(211958);
     c("SurfaceView: onCreate.");
     this.c.setSurface(paramSurfaceHolder.getSurface());
-    AppMethodBeat.o(214639);
+    AppMethodBeat.o(211958);
   }
   
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
-    AppMethodBeat.i(214641);
+    AppMethodBeat.i(211962);
     c("SurfaceView: onDestroyed.");
     this.c.setSurface(null);
-    AppMethodBeat.o(214641);
+    AppMethodBeat.o(211962);
   }
   
   public String toString()
   {
-    AppMethodBeat.i(214650);
+    AppMethodBeat.i(211997);
     String str = "@" + Integer.toHexString(hashCode());
-    AppMethodBeat.o(214650);
+    AppMethodBeat.o(211997);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.live2.a.a
  * JD-Core Version:    0.7.0.1
  */

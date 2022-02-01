@@ -18,31 +18,31 @@ import java.util.Map;
 public final class m$b
   extends c.a
 {
-  public static Map<String, WeakReference<b>> XfM;
-  ImageView XdI;
-  RTChattingEmojiView XfH;
-  ImageView XfI;
-  ProgressBar XfJ;
-  ImageView XfK;
-  TextView XfL;
+  public static Map<String, WeakReference<b>> aePO;
+  ImageView aeNG;
+  RTChattingEmojiView aePJ;
+  ImageView aePK;
+  ProgressBar aePL;
+  ImageView aePM;
+  TextView aePN;
   
   static
   {
     AppMethodBeat.i(36923);
-    XfM = new HashMap();
+    aePO = new HashMap();
     AppMethodBeat.o(36923);
   }
   
-  public static void v(String paramString, int paramInt1, int paramInt2)
+  public static void y(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(36922);
-    if (!XfM.containsKey(paramString))
+    if (!aePO.containsKey(paramString))
     {
       Log.i("AppMsgEmojiItemHolder", "no contain attchid:%s");
       AppMethodBeat.o(36922);
       return;
     }
-    paramString = (b)((WeakReference)XfM.get(paramString)).get();
+    paramString = (b)((WeakReference)aePO.get(paramString)).get();
     if (paramString != null) {
       switch (paramInt2)
       {
@@ -52,58 +52,58 @@ public final class m$b
     {
       AppMethodBeat.o(36922);
       return;
-      paramString.XfJ.setVisibility(8);
-      paramString.XfL.setVisibility(8);
-      paramString.XfK.setVisibility(8);
+      paramString.aePL.setVisibility(8);
+      paramString.aePN.setVisibility(8);
+      paramString.aePM.setVisibility(8);
       AppMethodBeat.o(36922);
       return;
-      paramString.XfJ.setVisibility(8);
-      paramString.XfL.setVisibility(8);
-      paramString.XfK.setVisibility(0);
-      paramString.XfJ.setProgress(paramInt1);
-      paramString.XfK.setImageResource(R.g.emoji_download_failed_btn);
+      paramString.aePL.setVisibility(8);
+      paramString.aePN.setVisibility(8);
+      paramString.aePM.setVisibility(0);
+      paramString.aePL.setProgress(paramInt1);
+      paramString.aePM.setImageResource(R.g.emoji_download_failed_btn);
       AppMethodBeat.o(36922);
       return;
-      paramString.XfJ.setVisibility(0);
-      paramString.XfL.setVisibility(8);
-      paramString.XfK.setVisibility(8);
-      paramString.XfJ.setProgress(0);
+      paramString.aePL.setVisibility(0);
+      paramString.aePN.setVisibility(8);
+      paramString.aePM.setVisibility(8);
+      paramString.aePL.setProgress(0);
     }
   }
   
-  public final c.a J(View paramView, boolean paramBoolean)
+  public final c.a P(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(36921);
     super.create(paramView);
-    this.timeTV = ((TextView)paramView.findViewById(R.h.dzs));
-    this.XfH = ((RTChattingEmojiView)paramView.findViewById(R.h.dxe));
-    this.checkBox = ((CheckBox)paramView.findViewById(R.h.dwZ));
-    this.maskView = paramView.findViewById(R.h.dyD);
-    this.XfJ = ((ProgressBar)paramView.findViewById(R.h.dxm));
-    this.XfK = ((ImageView)paramView.findViewById(R.h.dzq));
-    this.XfL = ((TextView)paramView.findViewById(R.h.dzj));
+    this.timeTV = ((TextView)paramView.findViewById(R.h.fAm));
+    this.aePJ = ((RTChattingEmojiView)paramView.findViewById(R.h.fxz));
+    this.checkBox = ((CheckBox)paramView.findViewById(R.h.fxt));
+    this.maskView = paramView.findViewById(R.h.fzn);
+    this.aePL = ((ProgressBar)paramView.findViewById(R.h.fxH));
+    this.aePM = ((ImageView)paramView.findViewById(R.h.fAk));
+    this.aePN = ((TextView)paramView.findViewById(R.h.fAd));
     if (!paramBoolean)
     {
-      this.uploadingPB = ((ProgressBar)paramView.findViewById(R.h.dYz));
-      this.stateIV = ((ImageView)paramView.findViewById(R.h.dzp));
-      this.XdI = ((ImageView)paramView.findViewById(R.h.chatting_status_tick));
+      this.uploadingPB = ((ProgressBar)paramView.findViewById(R.h.gbo));
+      this.stateIV = ((ImageView)paramView.findViewById(R.h.fAj));
+      this.aeNG = ((ImageView)paramView.findViewById(R.h.chatting_status_tick));
     }
-    if (this.XfI != null) {
-      ((ViewGroup)this.XfI.getParent()).setBackgroundDrawable(null);
+    if (this.aePK != null) {
+      ((ViewGroup)this.aePK.getParent()).setBackgroundDrawable(null);
     }
-    this.userTV = ((TextView)paramView.findViewById(R.h.chatting_user_tv));
+    this.userTV = ((TextView)paramView.findViewById(R.h.fAr));
     AppMethodBeat.o(36921);
     return this;
   }
   
   public final View getMainContainerView()
   {
-    return this.XfH;
+    return this.aePJ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.m.b
  * JD-Core Version:    0.7.0.1
  */

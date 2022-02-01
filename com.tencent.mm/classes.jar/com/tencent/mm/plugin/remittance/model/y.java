@@ -1,69 +1,68 @@
 package com.tencent.mm.plugin.remittance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
 import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dyj;
-import com.tencent.mm.protocal.protobuf.dyk;
+import com.tencent.mm.protocal.protobuf.um;
+import com.tencent.mm.protocal.protobuf.un;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.model.w;
 
 public final class y
-  extends q
-  implements m
+  extends w
 {
-  public dyk Imb;
-  private dyj Imc;
-  private i callback;
-  private final d rr;
+  private um Ojq;
+  public un Ojr;
+  private h callback;
+  private final c rr;
   
-  public y(String paramString1, String paramString2)
+  public y(String paramString1, String paramString2, long paramLong)
   {
-    AppMethodBeat.i(187306);
-    Log.i("MicroMsg.NetScenePersonalPayRequestPayment", "appID = %s，out_prepay_id = %s", new Object[] { paramString1, paramString2 });
-    d.a locala = new d.a();
-    locala.lBU = new dyj();
-    locala.lBV = new dyk();
-    locala.funcId = 4912;
-    locala.uri = "/cgi-bin/mmpay-bin/personalpayrequestpayment";
-    this.rr = locala.bgN();
-    this.Imc = ((dyj)d.b.b(this.rr.lBR));
-    this.Imc.appid = paramString1;
-    this.Imc.InS = paramString2;
-    AppMethodBeat.o(187306);
+    AppMethodBeat.i(288842);
+    Log.i("MicroMsg.NetScenePersonalPayPlaceOrder", "appID = %s ，outPrepayId = %s ,,totalAmount = %s", new Object[] { paramString1, paramString2, Long.valueOf(paramLong) });
+    c.a locala = new c.a();
+    locala.otE = new um();
+    locala.otF = new un();
+    locala.funcId = 4304;
+    locala.uri = "/cgi-bin/mmpay-bin/personalpayplaceorder";
+    this.rr = locala.bEF();
+    this.Ojq = ((um)c.b.b(this.rr.otB));
+    this.Ojq.appid = paramString1;
+    this.Ojq.Olk = paramString2;
+    this.Ojq.Oll = paramLong;
+    AppMethodBeat.o(288842);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(187308);
-    this.callback = parami;
+    AppMethodBeat.i(288849);
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(187308);
+    AppMethodBeat.o(288849);
     return i;
   }
   
   public final int getType()
   {
-    return 4912;
+    return 4304;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte, long paramLong)
   {
-    AppMethodBeat.i(187311);
-    Log.i("MicroMsg.NetScenePersonalPayRequestPayment", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(288853);
+    Log.i("MicroMsg.NetScenePersonalPayPlaceOrder", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      this.Imb = ((dyk)d.c.b(((d)params).lBS));
+      this.Ojr = ((un)c.c.b(((c)params).otC));
     }
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(187311);
+    AppMethodBeat.o(288853);
   }
 }
 

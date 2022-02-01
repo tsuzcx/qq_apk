@@ -1,13 +1,10 @@
 package com.tencent.sqlitelint.behaviour.alert;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -37,25 +34,7 @@ public class CheckResultActivity
     setTitle(getString(R.string.check_result_title, new Object[] { localObject }));
     localObject = (ListView)findViewById(R.id.list);
     this.mAdapter = new CheckResultListAdapter();
-    ((ListView)localObject).setOnItemClickListener(new AdapterView.OnItemClickListener()
-    {
-      private byte _hellAccFlag_;
-      
-      public void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
-      {
-        AppMethodBeat.i(52880);
-        paramAnonymousView = (SQLiteLintIssue)paramAnonymousAdapterView.getItemAtPosition(paramAnonymousInt);
-        paramAnonymousAdapterView = new Intent();
-        paramAnonymousAdapterView.putExtra("issue", paramAnonymousView);
-        paramAnonymousAdapterView.setClass(CheckResultActivity.this.getBaseContext(), IssueDetailActivity.class);
-        paramAnonymousView = CheckResultActivity.this;
-        paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().bm(paramAnonymousAdapterView);
-        com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, paramAnonymousAdapterView.aFh(), "com/tencent/sqlitelint/behaviour/alert/CheckResultActivity$1", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.sf(0));
-        com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/sqlitelint/behaviour/alert/CheckResultActivity$1", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        AppMethodBeat.o(52880);
-      }
-    });
+    ((ListView)localObject).setOnItemClickListener(new CheckResultActivity.1(this));
     ((ListView)localObject).setAdapter(this.mAdapter);
     this.mAdapter.notifyDataSetChanged();
     AppMethodBeat.o(52889);
@@ -180,7 +159,7 @@ public class CheckResultActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.sqlitelint.behaviour.alert.CheckResultActivity
  * JD-Core Version:    0.7.0.1
  */

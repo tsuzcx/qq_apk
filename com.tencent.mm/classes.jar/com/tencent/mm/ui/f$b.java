@@ -2,8 +2,7 @@ package com.tencent.mm.ui;
 
 public final class f$b
 {
-  public static final String VRT = f.r.VSK;
-  public static final String VRU = f.r.VSL;
+  public static final String adwc = f.s.adwT;
 }
 
 

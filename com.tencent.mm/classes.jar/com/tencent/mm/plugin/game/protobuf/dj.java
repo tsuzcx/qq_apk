@@ -1,96 +1,91 @@
 package com.tencent.mm.plugin.game.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
-import java.util.LinkedList;
 
 public final class dj
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public eq CRf;
+  public String IGI;
+  public String IHo;
+  public String hAP;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(41825);
+    AppMethodBeat.i(41818);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.CRf == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: AppInfo");
-        AppMethodBeat.o(41825);
-        throw paramVarArgs;
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.IHo != null) {
+        paramVarArgs.g(1, this.IHo);
       }
-      if (this.CRf != null)
-      {
-        paramVarArgs.oE(1, this.CRf.computeSize());
-        this.CRf.writeFields(paramVarArgs);
+      if (this.hAP != null) {
+        paramVarArgs.g(2, this.hAP);
       }
-      AppMethodBeat.o(41825);
+      if (this.IGI != null) {
+        paramVarArgs.g(3, this.IGI);
+      }
+      AppMethodBeat.o(41818);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.CRf == null) {
-        break label336;
+      if (this.IHo == null) {
+        break label330;
       }
     }
-    label336:
-    for (paramInt = g.a.a.a.oD(1, this.CRf.computeSize()) + 0;; paramInt = 0)
+    label330:
+    for (int i = i.a.a.b.b.a.h(1, this.IHo) + 0;; i = 0)
     {
-      AppMethodBeat.o(41825);
-      return paramInt;
+      paramInt = i;
+      if (this.hAP != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.hAP);
+      }
+      i = paramInt;
+      if (this.IGI != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.IGI);
+      }
+      AppMethodBeat.o(41818);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.CRf == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: AppInfo");
-          AppMethodBeat.o(41825);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(41825);
+        AppMethodBeat.o(41818);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         dj localdj = (dj)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(41825);
+          AppMethodBeat.o(41818);
           return -1;
+        case 1: 
+          localdj.IHo = locala.ajGk.readString();
+          AppMethodBeat.o(41818);
+          return 0;
+        case 2: 
+          localdj.hAP = locala.ajGk.readString();
+          AppMethodBeat.o(41818);
+          return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-        int i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject = (byte[])paramVarArgs.get(paramInt);
-          eq localeq = new eq();
-          if ((localObject != null) && (localObject.length > 0)) {
-            localeq.parseFrom((byte[])localObject);
-          }
-          localdj.CRf = localeq;
-          paramInt += 1;
-        }
-        AppMethodBeat.o(41825);
+        localdj.IGI = locala.ajGk.readString();
+        AppMethodBeat.o(41818);
         return 0;
       }
-      AppMethodBeat.o(41825);
+      AppMethodBeat.o(41818);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.protobuf.dj
  * JD-Core Version:    0.7.0.1
  */

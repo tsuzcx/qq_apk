@@ -1,43 +1,13 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload.ui;
 
-import android.app.Activity;
-import android.view.View;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.HashMap;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/ContentTmplWebViewUI;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI;", "()V", "plugin-brandservice_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/ContentTmplWebViewUI;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI;", "()V", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ContentTmplWebViewUI
   extends TmplWebViewToolUI
 {
-  private HashMap _$_findViewCache;
-  
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(266608);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(266608);
-  }
-  
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(266607);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(266607);
-    return localView1;
-  }
+  public final void _$_clearFindViewByIdCache() {}
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {

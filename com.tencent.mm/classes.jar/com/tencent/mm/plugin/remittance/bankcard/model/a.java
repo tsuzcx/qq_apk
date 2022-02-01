@@ -8,10 +8,10 @@ import java.math.BigDecimal;
 
 public final class a
 {
-  public static char aWy(String paramString)
+  public static char aTM(String paramString)
   {
     AppMethodBeat.i(67398);
-    paramString = SpellMap.D(paramString.charAt(0));
+    paramString = SpellMap.v(paramString.charAt(0));
     Log.d("MicroMsg.BankRemitUtil", "pinyin: %s", new Object[] { paramString });
     if (!Util.isNullOrNil(paramString))
     {
@@ -23,15 +23,15 @@ public final class a
     return '#';
   }
   
-  public static double acL(int paramInt)
+  public static double ahe(int paramInt)
   {
     AppMethodBeat.i(67397);
-    double d = jY(String.valueOf(paramInt), "100");
+    double d = lu(String.valueOf(paramInt), "100");
     AppMethodBeat.o(67397);
     return d;
   }
   
-  public static long jX(String paramString1, String paramString2)
+  public static long lt(String paramString1, String paramString2)
   {
     AppMethodBeat.i(67394);
     try
@@ -52,7 +52,7 @@ public final class a
     }
   }
   
-  public static double jY(String paramString1, String paramString2)
+  public static double lu(String paramString1, String paramString2)
   {
     AppMethodBeat.i(67395);
     try
@@ -73,7 +73,7 @@ public final class a
     }
   }
   
-  public static double jZ(String paramString1, String paramString2)
+  public static double lv(String paramString1, String paramString2)
   {
     AppMethodBeat.i(67396);
     try
@@ -101,7 +101,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.model.a
  * JD-Core Version:    0.7.0.1
  */

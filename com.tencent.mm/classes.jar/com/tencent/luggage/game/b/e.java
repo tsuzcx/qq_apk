@@ -11,31 +11,31 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public class e
 {
-  private static final a.a csR;
+  private static final a.a ekL;
   
   static
   {
     AppMethodBeat.i(130481);
-    csR = new a.a();
+    ekL = new a.a();
     AppMethodBeat.o(130481);
   }
   
-  public final void OO()
+  public final void aoW()
   {
     AppMethodBeat.i(130478);
-    a.a(csR, new Runnable()
+    a.a(ekL, new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(130472);
-        e.this.OQ();
+        e.this.aoY();
         AppMethodBeat.o(130472);
       }
     });
     AppMethodBeat.o(130478);
   }
   
-  protected void OP()
+  protected void aoX()
   {
     AppMethodBeat.i(130479);
     long l = Util.currentTicks();
@@ -44,10 +44,10 @@ public class e
     AppMethodBeat.o(130479);
   }
   
-  protected final void OQ()
+  protected final void aoY()
   {
     AppMethodBeat.i(130480);
-    OP();
+    aoX();
     c.c.a(new c.b()
     {
       public final void d(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
@@ -90,7 +90,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.game.b.e
  * JD-Core Version:    0.7.0.1
  */

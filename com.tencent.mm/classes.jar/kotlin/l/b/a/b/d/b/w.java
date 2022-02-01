@@ -2,25 +2,27 @@ package kotlin.l.b.a.b.d.b;
 
 import java.util.Collection;
 import kotlin.l.b.a.b.b.e;
-import kotlin.l.b.a.b.m.ab;
+import kotlin.l.b.a.b.m.ad;
 
 public abstract interface w<T>
 {
-  public abstract ab V(ab paramab);
+  public abstract ad M(ad paramad);
   
-  public abstract void a(ab paramab, e parame);
+  public abstract ad N(Collection<ad> paramCollection);
   
-  public abstract T t(e parame);
+  public abstract void a(ad paramad, e parame);
   
-  public abstract String u(e parame);
+  public abstract boolean ksY();
+  
+  public abstract T u(e parame);
   
   public abstract String v(e parame);
   
-  public abstract ab w(Collection<ab> paramCollection);
+  public abstract String w(e parame);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.d.b.w
  * JD-Core Version:    0.7.0.1
  */

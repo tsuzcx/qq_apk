@@ -3,17 +3,18 @@ package com.tencent.mm.plugin.appbrand.jsapi.video;
 import android.graphics.Bitmap;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract interface d
 {
-  public abstract boolean a(double paramDouble, boolean paramBoolean);
+  public abstract boolean G(double paramDouble);
   
-  public abstract boolean aO(float paramFloat);
+  public abstract void b(boolean paramBoolean, String paramString, int paramInt);
   
-  public abstract void bUF();
+  public abstract boolean b(double paramDouble, boolean paramBoolean);
   
-  public abstract void c(boolean paramBoolean, String paramString, int paramInt);
+  public abstract boolean bM(float paramFloat);
+  
+  public abstract void cuV();
   
   public abstract int getCacheTimeSec();
   
@@ -37,23 +38,21 @@ public abstract interface d
   
   public abstract void onUIResume();
   
-  public abstract boolean p(double paramDouble);
-  
   public abstract boolean pause();
   
   public abstract void setCover(Bitmap paramBitmap);
   
   public abstract void setFullDirection(int paramInt);
   
-  public abstract void setIMMVideoViewCallback(c paramc);
+  public abstract void setIMMVideoViewCallback(d.c paramc);
   
   public abstract void setIsShowBasicControls(boolean paramBoolean);
   
   public abstract void setMute(boolean paramBoolean);
   
-  public abstract void setScaleType(h paramh);
+  public abstract void setScaleType(d.h paramh);
   
-  public abstract void setVideoFooterView(b paramb);
+  public abstract void setVideoFooterView(d.b paramb);
   
   public abstract void setVideoSource(int paramInt);
   
@@ -63,35 +62,35 @@ public abstract interface d
   
   public static abstract interface a
   {
-    public abstract void Nq();
-    
     public abstract void a(d.f paramf);
     
-    public abstract void bSs();
+    public abstract void anJ();
     
-    public abstract void bUI();
+    public abstract void csz();
     
-    public abstract boolean bVa();
+    public abstract void cuX();
     
-    public abstract void bVb();
+    public abstract boolean cvA();
     
-    public abstract void bVc();
+    public abstract boolean cvq();
     
-    public abstract boolean bVd();
+    public abstract void cvr();
     
-    public abstract boolean bVe();
+    public abstract void cvs();
     
-    public abstract boolean bVf();
+    public abstract boolean cvt();
     
-    public abstract void bVg();
+    public abstract boolean cvu();
     
-    public abstract void bVh();
+    public abstract boolean cvv();
     
-    public abstract void bVi();
+    public abstract void cvw();
     
-    public abstract void bVj();
+    public abstract void cvx();
     
-    public abstract boolean bVk();
+    public abstract void cvy();
+    
+    public abstract void cvz();
     
     public abstract void hide();
     
@@ -138,41 +137,11 @@ public abstract interface d
     public abstract void setTitle(String paramString);
   }
   
-  public static abstract interface b
-  {
-    public abstract void AS(int paramInt);
-    
-    public abstract int getVideoTotalTime();
-    
-    public abstract void iF(boolean paramBoolean);
-    
-    public abstract void setVideoTotalTime(int paramInt);
-  }
-  
-  public static abstract interface c
-  {
-    public abstract void c(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2);
-    
-    public abstract void d(String paramString1, String paramString2, int paramInt1, int paramInt2);
-    
-    public abstract void dS(String paramString1, String paramString2);
-    
-    public abstract void dT(String paramString1, String paramString2);
-    
-    public abstract void dU(String paramString1, String paramString2);
-    
-    public abstract void dV(String paramString1, String paramString2);
-    
-    public abstract void dW(String paramString1, String paramString2);
-    
-    public abstract void dX(String paramString1, String paramString2);
-  }
-  
   public static abstract interface d
   {
-    public abstract void aRo();
+    public abstract void blc();
     
-    public abstract void tY(int paramInt);
+    public abstract void tS(int paramInt);
   }
   
   public static abstract interface e
@@ -187,35 +156,19 @@ public abstract interface d
   
   public static abstract interface g
   {
-    public abstract void iE(boolean paramBoolean);
-  }
-  
-  public static enum h
-  {
-    static
-    {
-      AppMethodBeat.i(137806);
-      pvl = new h("DEFAULT", 0);
-      pvm = new h("FILL", 1);
-      pvn = new h("CONTAIN", 2);
-      pvo = new h("COVER", 3);
-      pvp = new h[] { pvl, pvm, pvn, pvo };
-      AppMethodBeat.o(137806);
-    }
-    
-    private h() {}
+    public abstract void jI(boolean paramBoolean);
   }
   
   public static abstract interface i
   {
-    public abstract int bUQ();
+    public abstract int cvf();
     
-    public abstract int bUR();
+    public abstract int cvg();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="horizontal" android:background="@drawable/p5" style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/i84" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/ft" />
-    <ImageView android:id="@id/i80" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/fs" android:layout_marginStart="8.0dip" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/i81" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageView android:id="@id/i82" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginStart="8.0dip" />
-        <TextView android:layout_gravity="center_vertical" android:id="@id/i83" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hgr" android:layout_marginStart="4.0dip" />
-    </LinearLayout>
-</merge>
+    <com.tencent.mm.ui.MMImageView android:layout_gravity="center_vertical" android:id="@id/fas" android:paddingLeft="@dimen/i6" android:paddingRight="@dimen/i6" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_centerVertical="true" />
+    <TextView android:layout_gravity="center_vertical" android:id="@id/fc6" android:layout_width="fill_parent" android:layout_height="@dimen/m1" style="@style/ma" />
+</LinearLayout>

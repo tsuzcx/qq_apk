@@ -1,49 +1,39 @@
 package com.tencent.mm.modelappbrand;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.protocal.protobuf.cha;
-import com.tencent.mm.protocal.protobuf.chb;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.report.f;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/modelappbrand/CgiGetNotifyConfig;", "", "()V", "Companion", "plugin-compat_release"})
 public final class c
 {
-  public static final a lyq;
+  public static String opP;
+  public static String opQ;
   
-  static
+  public static String bED()
   {
-    AppMethodBeat.i(207745);
-    lyq = new a((byte)0);
-    AppMethodBeat.o(207745);
+    AppMethodBeat.i(153189);
+    Object localObject = new StringBuilder("sid_");
+    h.baC();
+    opP = b.getUin() + "_" + Util.nowMilliSecond();
+    Log.v("MicroMsg.AppBrandReporter", "refreshWeAppSearchSessionId : %s", new Object[] { opP });
+    localObject = opP;
+    AppMethodBeat.o(153189);
+    return localObject;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/modelappbrand/CgiGetNotifyConfig$Companion;", "", "()V", "buildInstance", "Lcom/tencent/mm/modelbase/CommReqResp;", "plugin-compat_release"})
-  public static final class a
+  public static void bEE()
   {
-    public static d bgN()
-    {
-      AppMethodBeat.i(207513);
-      Object localObject = new d.a();
-      ((d.a)localObject).c((a)new cha());
-      ((d.a)localObject).d((a)new chb());
-      ((d.a)localObject).TW("/cgi-bin/mmbiz-bin/wxaapp/getwxamsgconfig");
-      ((d.a)localObject).vD(357);
-      ((d.a)localObject).vF(0);
-      ((d.a)localObject).vG(0);
-      localObject = ((d.a)localObject).bgN();
-      p.j(localObject, "builder.buildInstance()");
-      AppMethodBeat.o(207513);
-      return localObject;
-    }
+    AppMethodBeat.i(233813);
+    f.Ozc.idkeyStat(365L, 5L, 1L, false);
+    AppMethodBeat.o(233813);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.c
  * JD-Core Version:    0.7.0.1
  */

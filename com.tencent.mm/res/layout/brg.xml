@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="@dimen/ci" android:paddingEnd="@dimen/ci"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dud" android:layout_width="@dimen/cn" android:layout_height="@dimen/cn" android:layout_marginTop="@dimen/ci" android:layout_marginBottom="@dimen/ce" />
-        <com.tencent.mm.ui.MMImageView android:id="@id/dhh" android:visibility="gone" android:layout_width="@dimen/cn" android:layout_height="@dimen/cn" android:layout_marginTop="@dimen/ci" android:layout_marginBottom="@dimen/ce" android:src="@raw/icons_outlined_colorful_game" />
-        <TextView android:textSize="@dimen/hd" android:textColor="@color/a2x" android:gravity="center" android:id="@id/ir3" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <TextView android:textSize="@dimen/t" android:textColor="@color/a2x" android:gravity="center" android:id="@id/bn6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" />
-    </LinearLayout>
-</RelativeLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/xo" android:gravity="center_horizontal" android:id="@id/hgw" android:background="@color/c" android:paddingTop="@dimen/ic" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/xh" />
+        <ListView android:id="@id/fpj" android:focusable="true" android:scrollbars="none" android:transcriptMode="disabled" style="@style/na" />
+        <com.tencent.mm.ui.base.sortview.SortViewScrollBar android:layout_gravity="center|right" android:id="@id/jyg" android:layout_width="@dimen/e" android:layout_height="fill_parent" />
+    </FrameLayout>
+</LinearLayout>

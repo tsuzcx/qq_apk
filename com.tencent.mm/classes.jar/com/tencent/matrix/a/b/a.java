@@ -9,10 +9,10 @@ import java.util.List;
 
 public class a
 {
-  private static boolean cXl;
-  private static j.b cXm = new j.b()
+  private static boolean eTs;
+  private static n.b eTt = new n.b()
   {
-    public final Object b(Object paramAnonymousObject, Method paramAnonymousMethod, Object[] paramAnonymousArrayOfObject)
+    public final Object a(Object paramAnonymousObject, Method paramAnonymousMethod, Object[] paramAnonymousArrayOfObject)
     {
       return null;
     }
@@ -23,8 +23,8 @@ public class a
       a.a(paramAnonymousMethod, paramAnonymousArrayOfObject);
     }
   };
-  private static j cXn = new j("alarm", "android.app.IAlarmManager", cXm);
-  private static List<b> cXo = new ArrayList();
+  private static n eTu = new n("alarm", "android.app.IAlarmManager", eTt);
+  private static List<b> eTv = new ArrayList();
   
   public static void a(b paramb)
   {
@@ -34,15 +34,15 @@ public class a
       return;
       try
       {
-        if (cXo.contains(paramb)) {
+        if (eTv.contains(paramb)) {
           continue;
         }
-        cXo.add(paramb);
-        if ((cXl) || (cXo.isEmpty())) {
+        eTv.add(paramb);
+        if ((eTs) || (eTv.isEmpty())) {
           continue;
         }
-        c.i("Matrix.battery.AlarmHooker", "checkHook hookRet:%b", new Object[] { Boolean.valueOf(cXn.doHook()) });
-        cXl = true;
+        c.i("Matrix.battery.AlarmHooker", "checkHook hookRet:%b", new Object[] { Boolean.valueOf(eTu.doHook()) });
+        eTs = true;
       }
       finally {}
     }
@@ -56,12 +56,12 @@ public class a
       return;
       try
       {
-        cXo.remove(paramb);
-        if ((!cXl) || (!cXo.isEmpty())) {
+        eTv.remove(paramb);
+        if ((!eTs) || (!eTv.isEmpty())) {
           continue;
         }
-        c.i("Matrix.battery.AlarmHooker", "checkUnHook unHookRet:%b", new Object[] { Boolean.valueOf(cXn.doUnHook()) });
-        cXl = false;
+        c.i("Matrix.battery.AlarmHooker", "checkUnHook unHookRet:%b", new Object[] { Boolean.valueOf(eTu.doUnHook()) });
+        eTs = false;
       }
       finally {}
     }
@@ -69,8 +69,8 @@ public class a
   
   static final class a
   {
-    PendingIntent cXp;
-    AlarmManager.OnAlarmListener cXq;
+    PendingIntent eTw;
+    AlarmManager.OnAlarmListener eTx;
   }
   
   public static abstract interface b
@@ -82,18 +82,18 @@ public class a
   
   static final class c
   {
-    long cUM;
-    long cUN;
-    long cUO;
-    PendingIntent cXp;
-    AlarmManager.OnAlarmListener cXq;
+    long eQm;
+    long eQn;
+    long eQo;
+    PendingIntent eTw;
+    AlarmManager.OnAlarmListener eTx;
     int flags;
     int type;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.a.b.a
  * JD-Core Version:    0.7.0.1
  */

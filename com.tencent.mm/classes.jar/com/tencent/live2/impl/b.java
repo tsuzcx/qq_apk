@@ -29,10 +29,10 @@ public class b
   public static int a(V2TXLiveDef.V2TXLiveBufferType paramV2TXLiveBufferType)
   {
     int j = 0;
-    AppMethodBeat.i(214720);
+    AppMethodBeat.i(211695);
     if (paramV2TXLiveBufferType == null)
     {
-      AppMethodBeat.o(214720);
+      AppMethodBeat.o(211695);
       return 0;
     }
     int i = j;
@@ -43,7 +43,7 @@ public class b
     }
     for (;;)
     {
-      AppMethodBeat.o(214720);
+      AppMethodBeat.o(211695);
       return i;
       i = 3;
       continue;
@@ -56,10 +56,10 @@ public class b
   public static int a(V2TXLiveDef.V2TXLiveFillMode paramV2TXLiveFillMode)
   {
     int j = 0;
-    AppMethodBeat.i(214710);
+    AppMethodBeat.i(211643);
     if (paramV2TXLiveFillMode == null)
     {
-      AppMethodBeat.o(214710);
+      AppMethodBeat.o(211643);
       return 0;
     }
     int i = j;
@@ -68,7 +68,7 @@ public class b
     }
     for (i = j;; i = 1)
     {
-      AppMethodBeat.o(214710);
+      AppMethodBeat.o(211643);
       return i;
     }
   }
@@ -76,10 +76,10 @@ public class b
   public static int a(V2TXLiveDef.V2TXLivePixelFormat paramV2TXLivePixelFormat)
   {
     int j = 0;
-    AppMethodBeat.i(214718);
+    AppMethodBeat.i(211687);
     if (paramV2TXLivePixelFormat == null)
     {
-      AppMethodBeat.o(214718);
+      AppMethodBeat.o(211687);
       return 0;
     }
     int i = j;
@@ -90,7 +90,7 @@ public class b
     }
     for (;;)
     {
-      AppMethodBeat.o(214718);
+      AppMethodBeat.o(211687);
       return i;
       i = 1;
       continue;
@@ -101,10 +101,10 @@ public class b
   public static int a(V2TXLiveDef.V2TXLiveRotation paramV2TXLiveRotation)
   {
     int j = 0;
-    AppMethodBeat.i(214709);
+    AppMethodBeat.i(211632);
     if (paramV2TXLiveRotation == null)
     {
-      AppMethodBeat.o(214709);
+      AppMethodBeat.o(211632);
       return 0;
     }
     int i = j;
@@ -115,7 +115,7 @@ public class b
     }
     for (;;)
     {
-      AppMethodBeat.o(214709);
+      AppMethodBeat.o(211632);
       return i;
       i = 270;
       continue;
@@ -128,7 +128,7 @@ public class b
   public static int a(V2TXLiveDef.V2TXLiveVideoResolution paramV2TXLiveVideoResolution)
   {
     int j = 1;
-    AppMethodBeat.i(214723);
+    AppMethodBeat.i(211710);
     int i = j;
     switch (1.f[paramV2TXLiveVideoResolution.ordinal()])
     {
@@ -137,7 +137,7 @@ public class b
     }
     for (;;)
     {
-      AppMethodBeat.o(214723);
+      AppMethodBeat.o(211710);
       return i;
       i = 19;
       continue;
@@ -165,26 +165,26 @@ public class b
   
   public static V2TXLiveDef.V2TXLiveMode a(String paramString)
   {
-    AppMethodBeat.i(214708);
+    AppMethodBeat.i(211624);
     if ((paramString.startsWith("trtc://")) || (paramString.startsWith("room://cloud.tencent.com/rtc")) || (paramString.startsWith("room://rtc.tencent.com")))
     {
       TXCLog.i("V2TXLiveUtils", "parseLiveMode: rtc.");
       paramString = V2TXLiveDef.V2TXLiveMode.TXLiveMode_RTC;
-      AppMethodBeat.o(214708);
+      AppMethodBeat.o(211624);
       return paramString;
     }
     TXCLog.i("V2TXLiveUtils", "parseLiveMode: rtmp.");
     paramString = V2TXLiveDef.V2TXLiveMode.TXLiveMode_RTMP;
-    AppMethodBeat.o(214708);
+    AppMethodBeat.o(211624);
     return paramString;
   }
   
   public static V2TXLiveDef.V2TXLiveVideoFrame a(TRTCCloudDef.TRTCVideoFrame paramTRTCVideoFrame)
   {
-    AppMethodBeat.i(214717);
+    AppMethodBeat.i(211680);
     if (paramTRTCVideoFrame == null)
     {
-      AppMethodBeat.o(214717);
+      AppMethodBeat.o(211680);
       return null;
     }
     V2TXLiveDef.V2TXLiveVideoFrame localV2TXLiveVideoFrame = new V2TXLiveDef.V2TXLiveVideoFrame();
@@ -210,7 +210,7 @@ public class b
         localV2TXLiveVideoFrame.texture.eglContext14 = paramTRTCVideoFrame.texture.eglContext14;
         localV2TXLiveVideoFrame.texture.textureId = paramTRTCVideoFrame.texture.textureId;
       }
-      AppMethodBeat.o(214717);
+      AppMethodBeat.o(211680);
       return localV2TXLiveVideoFrame;
       localV2TXLiveVideoFrame.pixelFormat = V2TXLiveDef.V2TXLivePixelFormat.V2TXLivePixelFormatUnknown;
       break;
@@ -230,7 +230,7 @@ public class b
   
   public static b a(V2TXLiveDef.V2TXLiveVideoResolution paramV2TXLiveVideoResolution, V2TXLiveDef.V2TXLiveVideoResolutionMode paramV2TXLiveVideoResolutionMode)
   {
-    AppMethodBeat.i(214724);
+    AppMethodBeat.i(211726);
     b localb = new b(544, 960);
     switch (1.f[paramV2TXLiveVideoResolution.ordinal()])
     {
@@ -239,7 +239,7 @@ public class b
     }
     for (;;)
     {
-      AppMethodBeat.o(214724);
+      AppMethodBeat.o(211726);
       return paramV2TXLiveVideoResolution;
       paramV2TXLiveVideoResolution = new b(160, 160);
       continue;
@@ -329,10 +329,10 @@ public class b
   
   public static TRTCCloudDef.TRTCTranscodingConfig a(V2TXLiveDef.V2TXLiveTranscodingConfig paramV2TXLiveTranscodingConfig)
   {
-    AppMethodBeat.i(214722);
+    AppMethodBeat.i(211704);
     if (paramV2TXLiveTranscodingConfig == null)
     {
-      AppMethodBeat.o(214722);
+      AppMethodBeat.o(211704);
       return null;
     }
     TRTCCloudDef.TRTCTranscodingConfig localTRTCTranscodingConfig = new TRTCCloudDef.TRTCTranscodingConfig();
@@ -384,16 +384,16 @@ public class b
         }
       }
     }
-    AppMethodBeat.o(214722);
+    AppMethodBeat.o(211704);
     return localTRTCTranscodingConfig;
   }
   
   public static TRTCCloudDef.TRTCVideoFrame a(V2TXLiveDef.V2TXLiveVideoFrame paramV2TXLiveVideoFrame)
   {
-    AppMethodBeat.i(214715);
+    AppMethodBeat.i(211666);
     if (paramV2TXLiveVideoFrame == null)
     {
-      AppMethodBeat.o(214715);
+      AppMethodBeat.o(211666);
       return null;
     }
     TRTCCloudDef.TRTCVideoFrame localTRTCVideoFrame = new TRTCCloudDef.TRTCVideoFrame();
@@ -419,7 +419,7 @@ public class b
       localTRTCVideoFrame.width = paramV2TXLiveVideoFrame.width;
       localTRTCVideoFrame.height = paramV2TXLiveVideoFrame.height;
       localTRTCVideoFrame.rotation = paramV2TXLiveVideoFrame.rotation;
-      AppMethodBeat.o(214715);
+      AppMethodBeat.o(211666);
       return localTRTCVideoFrame;
       localTRTCVideoFrame.pixelFormat = 0;
       break;
@@ -439,7 +439,7 @@ public class b
   
   public static void a(V2TXLiveDef.V2TXLiveVideoFrame paramV2TXLiveVideoFrame, TRTCCloudDef.TRTCVideoFrame paramTRTCVideoFrame)
   {
-    AppMethodBeat.i(214716);
+    AppMethodBeat.i(211674);
     switch (1.c[paramV2TXLiveVideoFrame.pixelFormat.ordinal()])
     {
     default: 
@@ -461,7 +461,7 @@ public class b
       paramTRTCVideoFrame.width = paramV2TXLiveVideoFrame.width;
       paramTRTCVideoFrame.height = paramV2TXLiveVideoFrame.height;
       paramTRTCVideoFrame.rotation = paramV2TXLiveVideoFrame.rotation;
-      AppMethodBeat.o(214716);
+      AppMethodBeat.o(211674);
       return;
       paramTRTCVideoFrame.pixelFormat = 0;
       break;
@@ -514,7 +514,7 @@ public class b
   
   public static boolean a(V2TXLiveDef.V2TXLivePlayStatus paramV2TXLivePlayStatus1, V2TXLiveDef.V2TXLivePlayStatus paramV2TXLivePlayStatus2, V2TXLiveDef.V2TXLiveStatusChangeReason paramV2TXLiveStatusChangeReason)
   {
-    AppMethodBeat.i(214729);
+    AppMethodBeat.i(211759);
     boolean bool2 = false;
     boolean bool1;
     switch (1.g[paramV2TXLivePlayStatus1.ordinal()])
@@ -527,7 +527,7 @@ public class b
       if (!bool1) {
         TXCLog.e("V2TXLiveUtils", "play state invalid.[current:" + paramV2TXLivePlayStatus1 + "][next:" + paramV2TXLivePlayStatus2 + "][reason:" + paramV2TXLiveStatusChangeReason + "]");
       }
-      AppMethodBeat.o(214729);
+      AppMethodBeat.o(211759);
       return bool1;
       if ((paramV2TXLivePlayStatus2 != V2TXLiveDef.V2TXLivePlayStatus.V2TXLivePlayStatusLoading) || (paramV2TXLiveStatusChangeReason != V2TXLiveDef.V2TXLiveStatusChangeReason.V2TXLiveStatusChangeReasonBufferingBegin))
       {
@@ -579,10 +579,10 @@ public class b
   public static int b(V2TXLiveDef.V2TXLiveFillMode paramV2TXLiveFillMode)
   {
     int j = 0;
-    AppMethodBeat.i(214713);
+    AppMethodBeat.i(211658);
     if (paramV2TXLiveFillMode == null)
     {
-      AppMethodBeat.o(214713);
+      AppMethodBeat.o(211658);
       return 0;
     }
     int i = j;
@@ -591,7 +591,7 @@ public class b
     }
     for (i = j;; i = 1)
     {
-      AppMethodBeat.o(214713);
+      AppMethodBeat.o(211658);
       return i;
     }
   }
@@ -599,10 +599,10 @@ public class b
   public static int b(V2TXLiveDef.V2TXLiveRotation paramV2TXLiveRotation)
   {
     int j = 0;
-    AppMethodBeat.i(214712);
+    AppMethodBeat.i(211649);
     if (paramV2TXLiveRotation == null)
     {
-      AppMethodBeat.o(214712);
+      AppMethodBeat.o(211649);
       return 0;
     }
     int i = j;
@@ -613,7 +613,7 @@ public class b
     }
     for (;;)
     {
-      AppMethodBeat.o(214712);
+      AppMethodBeat.o(211649);
       return i;
       i = 1;
       continue;
@@ -626,7 +626,7 @@ public class b
   public static a b(V2TXLiveDef.V2TXLiveVideoResolution paramV2TXLiveVideoResolution)
   {
     int j = 350;
-    AppMethodBeat.i(214725);
+    AppMethodBeat.i(211742);
     int i = 1500;
     switch (1.f[paramV2TXLiveVideoResolution.ordinal()])
     {
@@ -636,7 +636,7 @@ public class b
     for (;;)
     {
       paramV2TXLiveVideoResolution = new a(j, i);
-      AppMethodBeat.o(214725);
+      AppMethodBeat.o(211742);
       return paramV2TXLiveVideoResolution;
       i = 150;
       j = 100;
@@ -677,10 +677,10 @@ public class b
   public static String b(String paramString)
   {
     int i = 0;
-    AppMethodBeat.i(214726);
+    AppMethodBeat.i(211751);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(214726);
+      AppMethodBeat.o(211751);
       return paramString;
     }
     label148:
@@ -732,7 +732,7 @@ public class b
         localException1 = localException1;
       }
       str2 = paramString;
-      AppMethodBeat.o(214726);
+      AppMethodBeat.o(211751);
       return str2;
     }
   }
@@ -763,7 +763,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.live2.impl.b
  * JD-Core Version:    0.7.0.1
  */

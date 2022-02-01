@@ -1,54 +1,72 @@
 package com.tencent.mm.plugin.finder.storage.data;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.asx;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.protocal.protobuf.axl;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/data/CachePage;", "", "type", "", "name", "", "page", "Lcom/tencent/mm/protocal/protobuf/FinderFirstPage;", "read", "", "(ILjava/lang/String;Lcom/tencent/mm/protocal/protobuf/FinderFirstPage;Z)V", "getName", "()Ljava/lang/String;", "getPage", "()Lcom/tencent/mm/protocal/protobuf/FinderFirstPage;", "setPage", "(Lcom/tencent/mm/protocal/protobuf/FinderFirstPage;)V", "getRead", "()Z", "setRead", "(Z)V", "getType", "()I", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "toString", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/data/CachePage;", "", "type", "", "name", "", "page", "Lcom/tencent/mm/protocal/protobuf/FinderFirstPage;", "read", "", "(ILjava/lang/String;Lcom/tencent/mm/protocal/protobuf/FinderFirstPage;Z)V", "getName", "()Ljava/lang/String;", "getPage", "()Lcom/tencent/mm/protocal/protobuf/FinderFirstPage;", "setPage", "(Lcom/tencent/mm/protocal/protobuf/FinderFirstPage;)V", "getRead", "()Z", "setRead", "(Z)V", "getType", "()I", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "toString", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public asx AmO;
+  public axl FMI;
   final String name;
-  boolean oJz;
+  public boolean rNn;
   final int type;
   
-  private a(int paramInt, String paramString, asx paramasx)
+  private a(int paramInt, String paramString, axl paramaxl)
   {
-    AppMethodBeat.i(288244);
+    AppMethodBeat.i(339367);
     this.type = paramInt;
     this.name = paramString;
-    this.AmO = paramasx;
-    this.oJz = false;
-    AppMethodBeat.o(288244);
+    this.FMI = paramaxl;
+    this.rNn = false;
+    AppMethodBeat.o(339367);
   }
   
-  public final void a(asx paramasx)
+  public final void a(axl paramaxl)
   {
-    AppMethodBeat.i(288243);
-    p.k(paramasx, "<set-?>");
-    this.AmO = paramasx;
-    AppMethodBeat.o(288243);
+    AppMethodBeat.i(339381);
+    s.u(paramaxl, "<set-?>");
+    this.FMI = paramaxl;
+    AppMethodBeat.o(339381);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(288248);
-    if (this != paramObject)
+    AppMethodBeat.i(339402);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof a))
-      {
-        paramObject = (a)paramObject;
-        if ((this.type != paramObject.type) || (!p.h(this.name, paramObject.name)) || (!p.h(this.AmO, paramObject.AmO)) || (this.oJz != paramObject.oJz)) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(288248);
+      AppMethodBeat.o(339402);
       return true;
     }
-    AppMethodBeat.o(288248);
-    return false;
+    if (!(paramObject instanceof a))
+    {
+      AppMethodBeat.o(339402);
+      return false;
+    }
+    paramObject = (a)paramObject;
+    if (this.type != paramObject.type)
+    {
+      AppMethodBeat.o(339402);
+      return false;
+    }
+    if (!s.p(this.name, paramObject.name))
+    {
+      AppMethodBeat.o(339402);
+      return false;
+    }
+    if (!s.p(this.FMI, paramObject.FMI))
+    {
+      AppMethodBeat.o(339402);
+      return false;
+    }
+    if (this.rNn != paramObject.rNn)
+    {
+      AppMethodBeat.o(339402);
+      return false;
+    }
+    AppMethodBeat.o(339402);
+    return true;
   }
   
   public final int hashCode()
@@ -58,15 +76,15 @@ public final class a
   
   public final String toString()
   {
-    AppMethodBeat.i(288245);
-    String str = "CachePage(type=" + this.type + ", name=" + this.name + ", page=" + this.AmO + ", read=" + this.oJz + ")";
-    AppMethodBeat.o(288245);
+    AppMethodBeat.i(339391);
+    String str = "CachePage(type=" + this.type + ", name=" + this.name + ", page=" + this.FMI + ", read=" + this.rNn + ')';
+    AppMethodBeat.o(339391);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.data.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,9 @@
 package com.tencent.thumbplayer.a;
 
+import android.content.res.AssetFileDescriptor;
 import android.os.ParcelFileDescriptor;
 import android.text.TextUtils;
+import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.thumbplayer.a.a.e;
 import com.tencent.thumbplayer.api.TPOptionalParam;
@@ -19,50 +21,52 @@ import java.util.Set;
 
 public final class c
 {
-  public Object Zyd;
-  Map<String, d> Zye;
-  Map<String, a> Zyf;
-  ArrayList<c> Zyg;
-  private Map<Integer, TPOptionalParam> Zyh;
-  public f Zyi;
-  public b Zyj;
-  public boolean Zyk;
-  public float Zyl;
-  String Zym;
-  public float Zyn;
-  public Map<Integer, TPTrackInfo> Zyo;
-  ArrayList<TPTrackInfo> Zyp;
-  TPProgramInfo Zyq;
+  public Object ahDg;
+  Map<String, d> ahDh;
+  Map<String, a> ahDi;
+  ArrayList<c> ahDj;
+  private Map<Integer, TPOptionalParam> ahDk;
+  public f ahDl;
+  public b ahDm;
+  public boolean ahDn;
+  public float ahDo;
+  String ahDp;
+  public float ahDq;
+  public Map<Integer, TPTrackInfo> ahDr;
+  ArrayList<TPTrackInfo> ahDs;
+  TPProgramInfo ahDt;
+  public int lSR;
   int trackId;
   
   public c()
   {
-    AppMethodBeat.i(218632);
+    AppMethodBeat.i(228467);
+    this.lSR = 0;
     this.trackId = -1;
-    this.Zye = new HashMap(0);
-    this.Zyf = new HashMap(0);
-    this.Zyi = new f();
-    this.Zyh = new HashMap(0);
-    this.Zyo = new HashMap(0);
-    this.Zyp = new ArrayList();
-    this.Zyg = new ArrayList();
-    AppMethodBeat.o(218632);
+    this.ahDh = new HashMap(0);
+    this.ahDi = new HashMap(0);
+    this.ahDl = new f();
+    this.ahDk = new HashMap(0);
+    this.ahDr = new HashMap(0);
+    this.ahDs = new ArrayList();
+    this.ahDj = new ArrayList();
+    AppMethodBeat.o(228467);
   }
   
   public final void a(int paramInt, long paramLong, TPTrackInfo paramTPTrackInfo)
   {
-    AppMethodBeat.i(218655);
-    this.Zyo.put(Integer.valueOf(paramTPTrackInfo.getTrackType()), paramTPTrackInfo);
-    if ((paramInt < 0) || (paramInt >= this.Zyp.size()))
+    AppMethodBeat.i(228602);
+    this.ahDr.put(Integer.valueOf(paramTPTrackInfo.getTrackType()), paramTPTrackInfo);
+    if ((paramInt < 0) || (paramInt >= this.ahDs.size()))
     {
-      g.w("TPPlaybackParams", "track Index:" + paramInt + " is invalid, trackInfoList size:" + this.Zyp.size());
-      AppMethodBeat.o(218655);
+      g.w("TPPlaybackParams", "track Index:" + paramInt + " is invalid, trackInfoList size:" + this.ahDs.size());
+      AppMethodBeat.o(228602);
       return;
     }
     c localc = new c();
     localc.trackIndex = paramInt;
-    localc.Zyu = paramLong;
-    Iterator localIterator = this.Zyp.iterator();
+    localc.ahDx = paramLong;
+    Iterator localIterator = this.ahDs.iterator();
     while (localIterator.hasNext())
     {
       TPTrackInfo localTPTrackInfo = (TPTrackInfo)localIterator.next();
@@ -70,7 +74,7 @@ public final class c
         if (((TextUtils.isEmpty(localTPTrackInfo.name)) && (TextUtils.isEmpty(paramTPTrackInfo.name))) || (localTPTrackInfo.name.equals(paramTPTrackInfo.name)))
         {
           localTPTrackInfo.isSelected = true;
-          localc.Zyv = localTPTrackInfo;
+          localc.ahDy = localTPTrackInfo;
         }
         else
         {
@@ -78,21 +82,21 @@ public final class c
         }
       }
     }
-    this.Zyg.add(localc);
-    AppMethodBeat.o(218655);
+    this.ahDj.add(localc);
+    AppMethodBeat.o(228602);
   }
   
   public final void a(int paramInt, TPTrackInfo paramTPTrackInfo)
   {
-    AppMethodBeat.i(218660);
-    this.Zyo.remove(Integer.valueOf(paramTPTrackInfo.getTrackType()));
-    if ((paramInt < 0) || (paramInt >= this.Zyp.size()))
+    AppMethodBeat.i(228615);
+    this.ahDr.remove(Integer.valueOf(paramTPTrackInfo.getTrackType()));
+    if ((paramInt < 0) || (paramInt >= this.ahDs.size()))
     {
-      g.w("TPPlaybackParams", "track Index:" + paramInt + " is invalid, trackInfoList size:" + this.Zyp.size());
-      AppMethodBeat.o(218660);
+      g.w("TPPlaybackParams", "track Index:" + paramInt + " is invalid, trackInfoList size:" + this.ahDs.size());
+      AppMethodBeat.o(228615);
       return;
     }
-    Iterator localIterator = this.Zyp.iterator();
+    Iterator localIterator = this.ahDs.iterator();
     Object localObject;
     while (localIterator.hasNext())
     {
@@ -101,203 +105,225 @@ public final class c
         ((TPTrackInfo)localObject).isSelected = false;
       }
     }
-    localIterator = this.Zyg.iterator();
+    localIterator = this.ahDj.iterator();
     while (localIterator.hasNext())
     {
       localObject = (c)localIterator.next();
-      if ((((c)localObject).Zyv != null) && (((c)localObject).Zyv.equals(paramTPTrackInfo)))
+      if ((((c)localObject).ahDy != null) && (((c)localObject).ahDy.equals(paramTPTrackInfo)))
       {
-        this.Zyg.remove(localObject);
-        AppMethodBeat.o(218660);
+        this.ahDj.remove(localObject);
+        AppMethodBeat.o(228615);
         return;
       }
     }
-    AppMethodBeat.o(218660);
+    AppMethodBeat.o(228615);
   }
   
   public final void a(e parame, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(218648);
-    f localf = this.Zyi;
+    AppMethodBeat.i(228553);
+    f localf = this.ahDl;
     localf.mUrl = null;
     localf.mType = 3;
-    localf.ZyX = null;
-    localf.Zza = parame;
-    this.Zyi.ct(paramMap);
-    AppMethodBeat.o(218648);
+    localf.ahEa = null;
+    localf.JgJ = null;
+    localf.ahEc = parame;
+    this.ahDl.dm(paramMap);
+    AppMethodBeat.o(228553);
   }
   
   public final void a(TPOptionalParam paramTPOptionalParam)
   {
-    AppMethodBeat.i(218636);
+    AppMethodBeat.i(228498);
     if (paramTPOptionalParam != null) {
-      this.Zyh.put(Integer.valueOf(paramTPOptionalParam.getKey()), paramTPOptionalParam);
+      this.ahDk.put(Integer.valueOf(paramTPOptionalParam.getKey()), paramTPOptionalParam);
     }
-    AppMethodBeat.o(218636);
+    AppMethodBeat.o(228498);
   }
   
-  public final TPOptionalParam aAE(int paramInt)
+  public final TPOptionalParam aHq(int paramInt)
   {
-    AppMethodBeat.i(218667);
-    TPOptionalParam localTPOptionalParam = (TPOptionalParam)this.Zyh.get(Integer.valueOf(paramInt));
-    AppMethodBeat.o(218667);
+    AppMethodBeat.i(228655);
+    TPOptionalParam localTPOptionalParam = (TPOptionalParam)this.ahDk.get(Integer.valueOf(paramInt));
+    AppMethodBeat.o(228655);
     return localTPOptionalParam;
   }
   
-  public final boolean iqm()
+  public final boolean jZH()
   {
-    AppMethodBeat.i(218661);
-    if (this.Zyi != null)
+    AppMethodBeat.i(228621);
+    if (this.ahDl != null)
     {
-      f localf = this.Zyi;
-      if ((!TextUtils.isEmpty(localf.mUrl)) || (localf.ZyX != null) || (localf.ZyZ != null) || (localf.Zza != null)) {}
+      f localf = this.ahDl;
+      if ((!TextUtils.isEmpty(localf.mUrl)) || (localf.ahEa != null) || (localf.JgJ != null) || (localf.ahEb != null) || (localf.ahEc != null)) {}
       for (int i = 1; i != 0; i = 0)
       {
-        AppMethodBeat.o(218661);
+        AppMethodBeat.o(228621);
         return true;
       }
     }
-    AppMethodBeat.o(218661);
+    AppMethodBeat.o(228621);
     return false;
   }
   
-  public final List<d> iqn()
+  public final List<d> jZI()
   {
-    AppMethodBeat.i(218663);
-    ArrayList localArrayList = new ArrayList(this.Zye.size());
-    Iterator localIterator = this.Zye.entrySet().iterator();
+    AppMethodBeat.i(228631);
+    ArrayList localArrayList = new ArrayList(this.ahDh.size());
+    Iterator localIterator = this.ahDh.entrySet().iterator();
     while (localIterator.hasNext()) {
       localArrayList.add(((Map.Entry)localIterator.next()).getValue());
     }
-    AppMethodBeat.o(218663);
+    AppMethodBeat.o(228631);
     return localArrayList;
   }
   
-  public final List<a> iqo()
+  public final List<a> jZJ()
   {
-    AppMethodBeat.i(218664);
-    ArrayList localArrayList = new ArrayList(this.Zyf.size());
-    Iterator localIterator = this.Zyf.entrySet().iterator();
+    AppMethodBeat.i(228644);
+    ArrayList localArrayList = new ArrayList(this.ahDi.size());
+    Iterator localIterator = this.ahDi.entrySet().iterator();
     while (localIterator.hasNext()) {
       localArrayList.add(((Map.Entry)localIterator.next()).getValue());
     }
-    AppMethodBeat.o(218664);
+    AppMethodBeat.o(228644);
     return localArrayList;
   }
   
-  public final List<TPOptionalParam> iqp()
+  public final List<TPOptionalParam> jZK()
   {
-    AppMethodBeat.i(218665);
-    ArrayList localArrayList = new ArrayList(this.Zyh.size());
-    Iterator localIterator = this.Zyh.entrySet().iterator();
+    AppMethodBeat.i(228649);
+    ArrayList localArrayList = new ArrayList(this.ahDk.size());
+    Iterator localIterator = this.ahDk.entrySet().iterator();
     while (localIterator.hasNext()) {
       localArrayList.add(((Map.Entry)localIterator.next()).getValue());
     }
-    AppMethodBeat.o(218665);
+    AppMethodBeat.o(228649);
     return localArrayList;
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(218634);
-    this.Zye.clear();
-    this.Zyf.clear();
-    this.Zyk = false;
-    this.Zyl = 1.0F;
-    this.Zym = "";
-    this.Zyn = 1.0F;
-    this.Zyo.clear();
-    this.Zyd = null;
-    this.Zyh.clear();
-    this.Zyi = new f();
-    this.Zyj = null;
-    this.Zyq = null;
+    AppMethodBeat.i(228481);
+    this.ahDh.clear();
+    this.ahDi.clear();
+    this.ahDn = false;
+    this.ahDo = 1.0F;
+    this.ahDp = "";
+    this.ahDq = 1.0F;
+    this.ahDr.clear();
+    this.ahDg = null;
+    this.lSR = 0;
+    this.ahDk.clear();
+    this.ahDl = new f();
+    this.ahDm = null;
+    this.ahDt = null;
     this.trackId = -1;
-    this.Zyp.clear();
-    this.Zyg.clear();
-    AppMethodBeat.o(218634);
+    this.ahDs.clear();
+    this.ahDj.clear();
+    AppMethodBeat.o(228481);
+  }
+  
+  public final void setDataSource(AssetFileDescriptor paramAssetFileDescriptor)
+  {
+    AppMethodBeat.i(228567);
+    f localf = this.ahDl;
+    localf.mUrl = null;
+    localf.mType = 4;
+    localf.mHttpHeaders.clear();
+    localf.ahEa = null;
+    localf.JgJ = paramAssetFileDescriptor;
+    AppMethodBeat.o(228567);
   }
   
   public final void setDataSource(ParcelFileDescriptor paramParcelFileDescriptor)
   {
-    AppMethodBeat.i(218650);
-    f localf = this.Zyi;
+    AppMethodBeat.i(228575);
+    f localf = this.ahDl;
     localf.mUrl = null;
     localf.mType = 1;
-    localf.ZyY.clear();
-    localf.ZyX = paramParcelFileDescriptor;
-    AppMethodBeat.o(218650);
+    localf.mHttpHeaders.clear();
+    localf.ahEa = paramParcelFileDescriptor;
+    localf.JgJ = null;
+    AppMethodBeat.o(228575);
   }
   
   public final void setDataSource(ITPMediaAsset paramITPMediaAsset)
   {
-    AppMethodBeat.i(218652);
-    f localf = this.Zyi;
+    AppMethodBeat.i(228587);
+    f localf = this.ahDl;
     localf.mUrl = null;
     localf.mType = 2;
-    localf.ZyY.clear();
-    localf.ZyX = null;
-    localf.ZyZ = paramITPMediaAsset;
-    AppMethodBeat.o(218652);
+    localf.mHttpHeaders.clear();
+    localf.ahEa = null;
+    localf.JgJ = null;
+    localf.ahEb = paramITPMediaAsset;
+    AppMethodBeat.o(228587);
   }
   
   public final void setDataSource(String paramString)
   {
-    AppMethodBeat.i(218643);
-    this.Zyi.setUrl(paramString);
-    AppMethodBeat.o(218643);
+    AppMethodBeat.i(228528);
+    this.ahDl.setUrl(paramString);
+    AppMethodBeat.o(228528);
   }
   
   public final void setDataSource(String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(218645);
-    this.Zyi.setUrl(paramString);
-    this.Zyi.ct(paramMap);
-    AppMethodBeat.o(218645);
+    AppMethodBeat.i(228540);
+    this.ahDl.setUrl(paramString);
+    this.ahDl.dm(paramMap);
+    AppMethodBeat.o(228540);
   }
   
   public final void setLoopback(boolean paramBoolean)
   {
-    AppMethodBeat.i(218639);
-    if (this.Zyj == null) {
-      this.Zyj = new b();
+    AppMethodBeat.i(228508);
+    if (this.ahDm == null) {
+      this.ahDm = new b();
     }
-    this.Zyj.Zys = paramBoolean;
-    this.Zyj.startPositionMs = 0L;
-    this.Zyj.Zyt = -1L;
-    AppMethodBeat.o(218639);
+    this.ahDm.ahDv = paramBoolean;
+    this.ahDm.startPositionMs = 0L;
+    this.ahDm.ahDw = -1L;
+    AppMethodBeat.o(228508);
   }
   
   public final void setLoopback(boolean paramBoolean, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(218641);
-    if (this.Zyj == null) {
-      this.Zyj = new b();
+    AppMethodBeat.i(228516);
+    if (this.ahDm == null) {
+      this.ahDm = new b();
     }
-    this.Zyj.Zys = paramBoolean;
-    this.Zyj.startPositionMs = paramLong1;
-    this.Zyj.Zyt = paramLong2;
-    AppMethodBeat.o(218641);
+    this.ahDm.ahDv = paramBoolean;
+    this.ahDm.startPositionMs = paramLong1;
+    this.ahDm.ahDw = paramLong2;
+    AppMethodBeat.o(228516);
+  }
+  
+  public final void v(Surface paramSurface)
+  {
+    this.ahDg = paramSurface;
+    this.lSR = this.lSR;
   }
   
   public static final class a
   {
-    public List<TPOptionalParam> Zyr;
+    public List<TPOptionalParam> ahDu;
     public String name;
     public String url;
   }
   
   public static final class b
   {
-    public boolean Zys;
-    public long Zyt;
+    public boolean ahDv;
+    public long ahDw;
     public long startPositionMs;
   }
   
   public static final class c
   {
-    public long Zyu;
-    public TPTrackInfo Zyv;
+    public long ahDx;
+    public TPTrackInfo ahDy;
     public int trackIndex;
   }
   
@@ -310,7 +336,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -5,51 +5,53 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
+import java.util.Map.Entry;
+import java.util.Set;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandStorageQuotaManager$CleanupTempFilesOnExitParams;", "Landroid/os/Parcelable;", "appId", "", "minTempSize", "", "maxTempSize", "maxTotalTempSize", "storageKey2Path", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "report", "", "appVersion", "appState", "", "appType", "storageSpaceStatisticsEnable", "supportRuntimeSpaceStaticsMap", "", "", "(Ljava/lang/String;JJJLjava/util/HashMap;ZJIJZLjava/util/Map;)V", "getAppId", "()Ljava/lang/String;", "getAppState", "()I", "getAppType", "()J", "getAppVersion", "getMaxTempSize", "getMaxTotalTempSize", "getMinTempSize", "getReport", "()Z", "getStorageKey2Path", "()Ljava/util/HashMap;", "getStorageSpaceStatisticsEnable", "getSupportRuntimeSpaceStaticsMap", "()Ljava/util/Map;", "component1", "component10", "component11", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "describeContents", "equals", "other", "", "hashCode", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandStorageQuotaManager$CleanupTempFilesOnExitParams;", "Landroid/os/Parcelable;", "appId", "", "minTempSize", "", "maxTempSize", "maxTotalTempSize", "storageKey2Path", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "report", "", "appVersion", "appState", "", "appType", "storageSpaceStatisticsEnable", "supportRuntimeSpaceStaticsMap", "", "", "(Ljava/lang/String;JJJLjava/util/HashMap;ZJIJZLjava/util/Map;)V", "getAppId", "()Ljava/lang/String;", "getAppState", "()I", "getAppType", "()J", "getAppVersion", "getMaxTempSize", "getMaxTotalTempSize", "getMinTempSize", "getReport", "()Z", "getStorageKey2Path", "()Ljava/util/HashMap;", "getStorageSpaceStatisticsEnable", "getSupportRuntimeSpaceStaticsMap", "()Ljava/util/Map;", "component1", "component10", "component11", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "describeContents", "equals", "other", "", "hashCode", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class AppBrandStorageQuotaManager$CleanupTempFilesOnExitParams
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR;
+  public static final Parcelable.Creator<CleanupTempFilesOnExitParams> CREATOR;
   final String appId;
-  final int fvc;
-  final long nMA;
-  final long nMB;
-  final boolean nMC;
-  final HashMap<String, String> nMt;
-  final Map<String, List<String>> nMu;
-  final long nMw;
-  final long nMx;
-  final long nMy;
-  final boolean nMz;
+  final int hzw;
+  final long qMA;
+  final long qMB;
+  final boolean qMC;
+  final HashMap<String, String> qMu;
+  final Map<String, List<String>> qMv;
+  final long qMw;
+  final long qMx;
+  final long qMy;
+  final boolean qMz;
   
   static
   {
-    AppMethodBeat.i(276657);
-    CREATOR = new a();
-    AppMethodBeat.o(276657);
+    AppMethodBeat.i(323163);
+    CREATOR = (Parcelable.Creator)new a();
+    AppMethodBeat.o(323163);
   }
   
   public AppBrandStorageQuotaManager$CleanupTempFilesOnExitParams(String paramString, long paramLong1, long paramLong2, long paramLong3, HashMap<String, String> paramHashMap, boolean paramBoolean1, long paramLong4, int paramInt, long paramLong5, boolean paramBoolean2, Map<String, List<String>> paramMap)
   {
-    AppMethodBeat.i(276643);
+    AppMethodBeat.i(323155);
     this.appId = paramString;
-    this.nMw = paramLong1;
-    this.nMx = paramLong2;
-    this.nMy = paramLong3;
-    this.nMt = paramHashMap;
-    this.nMz = paramBoolean1;
-    this.nMA = paramLong4;
-    this.fvc = paramInt;
-    this.nMB = paramLong5;
-    this.nMC = paramBoolean2;
-    this.nMu = paramMap;
-    AppMethodBeat.o(276643);
+    this.qMw = paramLong1;
+    this.qMx = paramLong2;
+    this.qMy = paramLong3;
+    this.qMu = paramHashMap;
+    this.qMz = paramBoolean1;
+    this.qMA = paramLong4;
+    this.hzw = paramInt;
+    this.qMB = paramLong5;
+    this.qMC = paramBoolean2;
+    this.qMv = paramMap;
+    AppMethodBeat.o(323155);
   }
   
   public final int describeContents()
@@ -59,22 +61,75 @@ public final class AppBrandStorageQuotaManager$CleanupTempFilesOnExitParams
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(276651);
-    if (this != paramObject)
+    AppMethodBeat.i(323179);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof CleanupTempFilesOnExitParams))
-      {
-        paramObject = (CleanupTempFilesOnExitParams)paramObject;
-        if ((!p.h(this.appId, paramObject.appId)) || (this.nMw != paramObject.nMw) || (this.nMx != paramObject.nMx) || (this.nMy != paramObject.nMy) || (!p.h(this.nMt, paramObject.nMt)) || (this.nMz != paramObject.nMz) || (this.nMA != paramObject.nMA) || (this.fvc != paramObject.fvc) || (this.nMB != paramObject.nMB) || (this.nMC != paramObject.nMC) || (!p.h(this.nMu, paramObject.nMu))) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(276651);
+      AppMethodBeat.o(323179);
       return true;
     }
-    AppMethodBeat.o(276651);
-    return false;
+    if (!(paramObject instanceof CleanupTempFilesOnExitParams))
+    {
+      AppMethodBeat.o(323179);
+      return false;
+    }
+    paramObject = (CleanupTempFilesOnExitParams)paramObject;
+    if (!s.p(this.appId, paramObject.appId))
+    {
+      AppMethodBeat.o(323179);
+      return false;
+    }
+    if (this.qMw != paramObject.qMw)
+    {
+      AppMethodBeat.o(323179);
+      return false;
+    }
+    if (this.qMx != paramObject.qMx)
+    {
+      AppMethodBeat.o(323179);
+      return false;
+    }
+    if (this.qMy != paramObject.qMy)
+    {
+      AppMethodBeat.o(323179);
+      return false;
+    }
+    if (!s.p(this.qMu, paramObject.qMu))
+    {
+      AppMethodBeat.o(323179);
+      return false;
+    }
+    if (this.qMz != paramObject.qMz)
+    {
+      AppMethodBeat.o(323179);
+      return false;
+    }
+    if (this.qMA != paramObject.qMA)
+    {
+      AppMethodBeat.o(323179);
+      return false;
+    }
+    if (this.hzw != paramObject.hzw)
+    {
+      AppMethodBeat.o(323179);
+      return false;
+    }
+    if (this.qMB != paramObject.qMB)
+    {
+      AppMethodBeat.o(323179);
+      return false;
+    }
+    if (this.qMC != paramObject.qMC)
+    {
+      AppMethodBeat.o(323179);
+      return false;
+    }
+    if (!s.p(this.qMv, paramObject.qMv))
+    {
+      AppMethodBeat.o(323179);
+      return false;
+    }
+    AppMethodBeat.o(323179);
+    return true;
   }
   
   public final int hashCode()
@@ -84,74 +139,67 @@ public final class AppBrandStorageQuotaManager$CleanupTempFilesOnExitParams
   
   public final String toString()
   {
-    AppMethodBeat.i(276646);
-    String str = "CleanupTempFilesOnExitParams(appId=" + this.appId + ", minTempSize=" + this.nMw + ", maxTempSize=" + this.nMx + ", maxTotalTempSize=" + this.nMy + ", storageKey2Path=" + this.nMt + ", report=" + this.nMz + ", appVersion=" + this.nMA + ", appState=" + this.fvc + ", appType=" + this.nMB + ", storageSpaceStatisticsEnable=" + this.nMC + ", supportRuntimeSpaceStaticsMap=" + this.nMu + ")";
-    AppMethodBeat.o(276646);
-    return str;
+    AppMethodBeat.i(323170);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("CleanupTempFilesOnExitParams(appId=").append(this.appId).append(", minTempSize=").append(this.qMw).append(", maxTempSize=").append(this.qMx).append(", maxTotalTempSize=").append(this.qMy).append(", storageKey2Path=").append(this.qMu).append(", report=").append(this.qMz).append(", appVersion=").append(this.qMA).append(", appState=").append(this.hzw).append(", appType=").append(this.qMB).append(", storageSpaceStatisticsEnable=").append(this.qMC).append(", supportRuntimeSpaceStaticsMap=").append(this.qMv).append(')');
+    localObject = ((StringBuilder)localObject).toString();
+    AppMethodBeat.o(323170);
+    return localObject;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+    int i = 1;
+    AppMethodBeat.i(323187);
+    s.u(paramParcel, "out");
+    paramParcel.writeString(this.appId);
+    paramParcel.writeLong(this.qMw);
+    paramParcel.writeLong(this.qMx);
+    paramParcel.writeLong(this.qMy);
+    Object localObject1 = this.qMu;
+    paramParcel.writeInt(((HashMap)localObject1).size());
+    localObject1 = ((HashMap)localObject1).entrySet().iterator();
+    Object localObject2;
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = ((Iterator)localObject1).next();
+      paramParcel.writeString((String)((Map.Entry)localObject2).getKey());
+      paramParcel.writeString((String)((Map.Entry)localObject2).getValue());
+    }
+    if (this.qMz)
+    {
+      paramInt = 1;
+      paramParcel.writeInt(paramInt);
+      paramParcel.writeLong(this.qMA);
+      paramParcel.writeInt(this.hzw);
+      paramParcel.writeLong(this.qMB);
+      if (!this.qMC) {
+        break label272;
+      }
+    }
+    label272:
+    for (paramInt = i;; paramInt = 0)
+    {
+      paramParcel.writeInt(paramInt);
+      localObject1 = this.qMv;
+      paramParcel.writeInt(((Map)localObject1).size());
+      localObject1 = ((Map)localObject1).entrySet().iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = ((Iterator)localObject1).next();
+        paramParcel.writeString((String)((Map.Entry)localObject2).getKey());
+        paramParcel.writeStringList((List)((Map.Entry)localObject2).getValue());
+      }
+      paramInt = 0;
+      break;
+    }
+    AppMethodBeat.o(323187);
   }
   
-  @l(iBK={1, 1, 16})
+  @Metadata(k=3, mv={1, 5, 1}, xi=48)
   public static final class a
-    implements Parcelable.Creator
-  {
-    public final Object createFromParcel(Parcel paramParcel)
-    {
-      AppMethodBeat.i(268328);
-      p.k(paramParcel, "in");
-      String str = paramParcel.readString();
-      long l1 = paramParcel.readLong();
-      long l2 = paramParcel.readLong();
-      long l3 = paramParcel.readLong();
-      int i = paramParcel.readInt();
-      HashMap localHashMap = new HashMap(i);
-      while (i != 0)
-      {
-        localHashMap.put(paramParcel.readString(), paramParcel.readString());
-        i -= 1;
-      }
-      boolean bool1;
-      long l4;
-      int j;
-      long l5;
-      if (paramParcel.readInt() != 0)
-      {
-        bool1 = true;
-        l4 = paramParcel.readLong();
-        j = paramParcel.readInt();
-        l5 = paramParcel.readLong();
-        if (paramParcel.readInt() == 0) {
-          break label165;
-        }
-      }
-      LinkedHashMap localLinkedHashMap;
-      label165:
-      for (boolean bool2 = true;; bool2 = false)
-      {
-        i = paramParcel.readInt();
-        localLinkedHashMap = new LinkedHashMap(i);
-        while (i != 0)
-        {
-          localLinkedHashMap.put(paramParcel.readString(), (List)paramParcel.createStringArrayList());
-          i -= 1;
-        }
-        bool1 = false;
-        break;
-      }
-      paramParcel = new AppBrandStorageQuotaManager.CleanupTempFilesOnExitParams(str, l1, l2, l3, localHashMap, bool1, l4, j, l5, bool2, localLinkedHashMap);
-      AppMethodBeat.o(268328);
-      return paramParcel;
-    }
-    
-    public final Object[] newArray(int paramInt)
-    {
-      return new AppBrandStorageQuotaManager.CleanupTempFilesOnExitParams[paramInt];
-    }
-  }
+    implements Parcelable.Creator<AppBrandStorageQuotaManager.CleanupTempFilesOnExitParams>
+  {}
 }
 
 

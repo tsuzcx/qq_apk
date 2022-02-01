@@ -4,15 +4,13 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import androidx.annotation.Keep;
 import com.tencent.luggage.b.a.a.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class AppBrandEmptyPickerView
   extends View
-  implements com.tencent.mm.plugin.appbrand.jsapi.s.c<Object>
+  implements com.tencent.mm.plugin.appbrand.jsapi.v.c<Object>
 {
-  @Keep
   AppBrandEmptyPickerView(Context paramContext)
   {
     super(paramContext);
@@ -45,7 +43,7 @@ public class AppBrandEmptyPickerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.AppBrandEmptyPickerView
  * JD-Core Version:    0.7.0.1
  */

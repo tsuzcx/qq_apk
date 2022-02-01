@@ -1,145 +1,123 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.f;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.protocal.protobuf.cgu;
+import com.tencent.mm.model.au;
+import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.plugin.appbrand.appcache.bm;
+import com.tencent.mm.plugin.appbrand.n.ad;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.storage.c;
-import java.util.Collections;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mm.sdk.storage.ISQLiteDatabaseEx;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.vfs.ah;
+import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public enum q
+public final class q
+  extends au
 {
-  private static volatile cgu nPg;
-  private static final Set<Object> nPh;
-  
-  static
+  public final String getTag()
   {
-    AppMethodBeat.i(44546);
-    nPi = new q[0];
-    nPh = Collections.newSetFromMap(new ConcurrentHashMap());
-    AppMethodBeat.o(44546);
+    return "AppBrandPluginCodeCodeCacheTransfer";
   }
   
-  public static boolean bJk()
+  public final void vb(int paramInt)
   {
-    return true;
-  }
-  
-  public static boolean bJl()
-  {
-    AppMethodBeat.i(44539);
-    switch (1.nPj[bJm().ordinal()])
+    AppMethodBeat.i(319319);
+    try
     {
-    }
-    do
-    {
-      AppMethodBeat.o(44539);
-      return false;
-      AppMethodBeat.o(44539);
-      return false;
-      AppMethodBeat.o(44539);
-      return true;
-      if (bJn())
-      {
-        AppMethodBeat.o(44539);
-        return true;
+      localObject1 = n.cfm().qHv.rawQuery(String.format("select distinct %s from %s where %s like '%%$%s' ", new Object[] { "appId", "AppBrandWxaPkgManifestRecord", "appId", "__PLUGINCODE__" }), null, 2);
+      ArrayList localArrayList = new ArrayList();
+      while (((Cursor)localObject1).moveToNext()) {
+        localArrayList.add(((Cursor)localObject1).getString(0));
       }
-    } while (nPg == null);
-    if (nPg.rMN >= nPg.Tob)
-    {
-      AppMethodBeat.o(44539);
-      return true;
+      ((Cursor)localObject1).close();
     }
-    AppMethodBeat.o(44539);
-    return false;
-  }
-  
-  static a bJm()
-  {
-    int i = 0;
-    AppMethodBeat.i(44541);
-    if (!h.aHB())
+    catch (Exception localException)
     {
-      localObject = a.nPk;
-      AppMethodBeat.o(44541);
-      return localObject;
+      Log.printErrStackTrace("AppBrandPluginCodeCodeCacheTransfer", localException, "transfer failed", new Object[0]);
+      AppMethodBeat.o(319319);
+      return;
     }
-    Object localObject = com.tencent.mm.model.c.d.bgB().Mu("100215");
-    if (((c)localObject).isValid())
+    if ((Util.isNullOrNil(localException)) || (localException.size() <= 0))
     {
-      int j = Util.getInt((String)((c)localObject).hvz().get("isOpenNewNearEntry"), 0);
-      localObject = a.values();
-      int k = localObject.length;
-      while (i < k)
+      Log.i("AppBrandPluginCodeCodeCacheTransfer", "no need to transfer pluginAppIdList :%d", new Object[] { Integer.valueOf(localException.size()) });
+      h.baE().ban().set(at.a.acNH, Boolean.TRUE);
+      AppMethodBeat.o(319319);
+      return;
+    }
+    Object localObject1 = new u(ad.cpf()).jKX();
+    int i = localObject1.length;
+    paramInt = 0;
+    for (;;)
+    {
+      if (paramInt < i)
       {
-        a locala = localObject[i];
-        if (locala.value == j)
+        Object localObject2 = localObject1[paramInt];
+        if (localObject2.isDirectory())
         {
-          AppMethodBeat.o(44541);
-          return locala;
+          String str1 = localObject2.getName();
+          Log.d("AppBrandPluginCodeCodeCacheTransfer", "fileName:%s", new Object[] { str1 });
+          if (!Util.isNullOrNil(str1))
+          {
+            Iterator localIterator = localException.iterator();
+            String str2;
+            do
+            {
+              if (!localIterator.hasNext()) {
+                break;
+              }
+              str2 = (String)localIterator.next();
+            } while (!str1.startsWith(str2.substring(0, str2.indexOf("$"))));
+            boolean bool = localObject2.diJ();
+            if (localObject2.isDirectory()) {
+              bool = y.ew(ah.v(localObject2.mUri), true);
+            }
+            for (;;)
+            {
+              Log.d("AppBrandPluginCodeCodeCacheTransfer", "delete file:%s ret:%b", new Object[] { str1, Boolean.valueOf(bool) });
+              break;
+              if (localObject2.jKV()) {
+                bool = localObject2.diJ();
+              }
+            }
+          }
         }
-        i += 1;
       }
+      else
+      {
+        h.baE().ban().set(at.a.acNH, Boolean.TRUE);
+        AppMethodBeat.o(319319);
+        return;
+      }
+      paramInt += 1;
     }
-    localObject = a.nPl;
-    AppMethodBeat.o(44541);
-    return localObject;
   }
   
-  static boolean bJn()
+  public final boolean vc(int paramInt)
   {
-    AppMethodBeat.i(44542);
-    boolean bool = h.aHG().aHp().getBoolean(ar.a.Vmg, false);
-    AppMethodBeat.o(44542);
-    return bool;
-  }
-  
-  static void bJo()
-  {
-    AppMethodBeat.i(44543);
-    h.aHG().aHp().set(ar.a.Vmg, Boolean.TRUE);
-    AppMethodBeat.o(44543);
-  }
-  
-  public static cgu bJp()
-  {
-    return nPg;
-  }
-  
-  public static void clearData()
-  {
-    nPg = null;
-  }
-  
-  static enum a
-  {
-    final int value;
-    
-    static
+    AppMethodBeat.i(319323);
+    boolean bool = h.baE().ban().getBoolean(at.a.acNH, false);
+    Log.d("AppBrandPluginCodeCodeCacheTransfer", "needTransfer doneIssue %b", new Object[] { Boolean.valueOf(bool) });
+    if (!bool)
     {
-      AppMethodBeat.i(44534);
-      nPk = new a("FORCE_OFF", 0, 0);
-      nPl = new a("FORCE_ON", 1, 1);
-      nPm = new a("DYNAMIC_THRESHOLD", 2, 2);
-      nPn = new a[] { nPk, nPl, nPm };
-      AppMethodBeat.o(44534);
+      AppMethodBeat.o(319323);
+      return true;
     }
-    
-    private a(int paramInt)
-    {
-      this.value = paramInt;
-    }
+    AppMethodBeat.o(319323);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.q
  * JD-Core Version:    0.7.0.1
  */

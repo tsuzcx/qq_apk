@@ -14,12 +14,12 @@ public class T2BSceneServiceImpl
   {
     AppMethodBeat.i(18719);
     ITransmitKvData localITransmitKvData = super.generateSnsUseCaseData();
-    if ((this.mBean.getPayInfo() == null) || (this.mBean.getPayInfo().lfu == null))
+    if ((this.mBean.getPayInfo() == null) || (this.mBean.getPayInfo().nKf == null))
     {
       AppMethodBeat.o(18719);
       return localITransmitKvData;
     }
-    Object localObject = this.mBean.getPayInfo().lfu;
+    Object localObject = this.mBean.getPayInfo().nKf;
     String str = ((Bundle)localObject).getString("extinfo_key_3");
     localObject = ((Bundle)localObject).getString("extinfo_key_4");
     str = this.mBean.getContext().getString(R.string.bank_remit_select_payee_name_with_remark, new Object[] { str, localObject }) + this.mBean.getTrueName();
@@ -30,7 +30,7 @@ public class T2BSceneServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.sns_cross.T2BSceneServiceImpl
  * JD-Core Version:    0.7.0.1
  */

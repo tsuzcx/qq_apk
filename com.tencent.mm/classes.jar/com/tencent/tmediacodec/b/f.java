@@ -1,6 +1,5 @@
 package com.tencent.tmediacodec.b;
 
-import android.annotation.TargetApi;
 import android.graphics.SurfaceTexture;
 import android.media.MediaCodec;
 import android.media.MediaCodec.BufferInfo;
@@ -36,55 +35,55 @@ import org.json.JSONObject;
 public abstract class f
   implements c
 {
-  private static final Map<Surface, f> ZOB = new ConcurrentHashMap();
-  public boolean QCj;
-  private int[] ZOA = new int[2];
-  private boolean ZOC = false;
-  private boolean ZOD = false;
-  private int ZOE = 0;
-  public f.b ZOl = f.b.ZOQ;
-  public final e ZOm;
-  protected final b ZOn;
-  private String ZOo = "";
-  private boolean ZOp;
-  private f.a ZOq = f.a.ZOI;
-  private final a.a ZOr;
-  private final HashSet<Integer> ZOs = new HashSet();
-  private long ZOt;
-  private final ArrayList<Long> ZOu = new ArrayList();
-  public com.tencent.tmediacodec.a.a ZOv;
-  private boolean ZOw;
-  private a.b ZOx = a.b.ZPm;
-  private boolean ZOy;
-  private final Set<SurfaceTexture> ZOz = new LinkedHashSet();
-  public boolean bcA;
-  public boolean bcB;
-  private MediaCodecInfo.CodecCapabilities bcC;
-  private final MediaCodec bcN;
-  protected final String juk;
+  private static final Map<Surface, f> ahTC = new ConcurrentHashMap();
+  public boolean Xvs;
+  private final Set<SurfaceTexture> ahTA = new LinkedHashSet();
+  private int[] ahTB = new int[2];
+  private boolean ahTD = false;
+  private boolean ahTE = false;
+  private int ahTF = 0;
+  public b ahTm = b.ahTR;
+  public final e ahTn;
+  protected final b ahTo;
+  private String ahTp = "";
+  private boolean ahTq;
+  private a ahTr = a.ahTJ;
+  private final a.a ahTs;
+  private final HashSet<Integer> ahTt = new HashSet();
+  private long ahTu;
+  private final ArrayList<Long> ahTv = new ArrayList();
+  public com.tencent.tmediacodec.a.a ahTw;
+  private boolean ahTx;
+  private a.b ahTy = a.b.ahUn;
+  private boolean ahTz;
+  public boolean cWv;
+  public boolean cWw;
+  private MediaCodecInfo.CodecCapabilities cWx;
+  private final MediaCodec codec;
+  protected final String lXB;
   protected Surface mSurface;
   
   public f(MediaCodec paramMediaCodec, e parame)
   {
-    this.bcN = paramMediaCodec;
-    this.ZOm = parame;
-    this.ZOn = new b(parame.maxWidth, parame.maxHeight, parame.aMR);
-    this.juk = d.a(this.bcN);
-    paramMediaCodec = this.juk;
+    this.codec = paramMediaCodec;
+    this.ahTn = parame;
+    this.ahTo = new b(parame.maxWidth, parame.maxHeight, parame.cGO);
+    this.lXB = d.a(this.codec);
+    paramMediaCodec = this.lXB;
     if ((Build.VERSION.SDK_INT <= 25) && ("OMX.Exynos.avc.dec.secure" == paramMediaCodec) && ((Build.MODEL.startsWith("SM-T585")) || (Build.MODEL.startsWith("SM-A510")) || (Build.MODEL.startsWith("SM-A520")) || (Build.MODEL.startsWith("SM-J700"))))
     {
-      paramMediaCodec = a.a.ZPk;
-      this.ZOr = paramMediaCodec;
+      paramMediaCodec = a.a.ahUl;
+      this.ahTs = paramMediaCodec;
       if (Build.VERSION.SDK_INT >= 18) {
-        this.bcC = this.bcN.getCodecInfo().getCapabilitiesForType(parame.aMQ);
+        this.cWx = this.codec.getCodecInfo().getCapabilitiesForType(parame.cGN);
       }
-      if ((this.bcC == null) || (!d.a(this.bcC))) {
+      if ((this.cWx == null) || (!d.isAdaptive(this.cWx))) {
         break label347;
       }
       bool1 = true;
       label250:
-      this.bcA = bool1;
-      if ((this.bcC == null) || (!d.b(this.bcC))) {
+      this.cWv = bool1;
+      if ((this.cWx == null) || (!d.isSecure(this.cWx))) {
         break label352;
       }
     }
@@ -92,40 +91,45 @@ public abstract class f
     label352:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.bcB = bool1;
+      this.cWw = bool1;
       return;
       if ((Build.VERSION.SDK_INT < 24) && (("OMX.Nvidia.h264.decode" == paramMediaCodec) || ("OMX.Nvidia.h264.decode.secure" == paramMediaCodec)) && (("flounder" == Build.DEVICE) || ("flounder_lte" == Build.DEVICE) || ("grouper" == Build.DEVICE) || ("tilapia" == Build.DEVICE)))
       {
-        paramMediaCodec = a.a.ZPj;
+        paramMediaCodec = a.a.ahUk;
         break;
       }
-      paramMediaCodec = a.a.ZPi;
+      paramMediaCodec = a.a.ahUj;
       break;
       bool1 = false;
       break label250;
     }
   }
   
-  private void IC(boolean paramBoolean)
+  private void L(Set paramSet)
+  {
+    e(paramSet, Collections.emptySet());
+  }
+  
+  private void OF(boolean paramBoolean)
   {
     if (com.tencent.tmediacodec.g.b.isLogEnable())
     {
-      new StringBuilder().append(this).append(", releaseStoreSurfaceTexture mStoreToRelease:").append(this.ZOz);
-      com.tencent.tmediacodec.g.b.bDP("ReuseCodecWrapper");
+      new StringBuilder().append(this).append(", releaseStoreSurfaceTexture mStoreToRelease:").append(this.ahTA);
+      com.tencent.tmediacodec.g.b.O("ReuseCodecWrapper");
     }
     final ArrayList localArrayList;
-    if (!this.ZOz.isEmpty())
+    if (!this.ahTA.isEmpty())
     {
-      localArrayList = new ArrayList(this.ZOz);
-      this.ZOz.clear();
+      localArrayList = new ArrayList(this.ahTA);
+      this.ahTA.clear();
       if (paramBoolean) {
         com.tencent.tmediacodec.g.e.execute(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(224302);
+            AppMethodBeat.i(210787);
             f.a(f.this, localArrayList);
-            AppMethodBeat.o(224302);
+            AppMethodBeat.o(210787);
           }
         });
       }
@@ -134,12 +138,12 @@ public abstract class f
     {
       return;
     }
-    kY(localArrayList);
+    ov(localArrayList);
   }
   
   public static c a(MediaCodec paramMediaCodec, String paramString, e parame)
   {
-    if (d.bJ(paramString)) {
+    if (d.isVideo(paramString)) {
       return new g(paramMediaCodec, parame);
     }
     return new a(paramMediaCodec, parame);
@@ -147,7 +151,7 @@ public abstract class f
   
   private void a(int paramInt, String paramString, Throwable paramThrowable, boolean paramBoolean, Surface paramSurface)
   {
-    this.ZOC = true;
+    this.ahTD = true;
     String str;
     if (paramThrowable == null) {
       str = "";
@@ -158,7 +162,7 @@ public abstract class f
       int i = paramInt;
       if (paramBoolean)
       {
-        int j = r(paramSurface);
+        int j = w(paramSurface);
         i = paramInt;
         if (j != 0) {
           i = j;
@@ -169,13 +173,13 @@ public abstract class f
       {
         paramSurface.put("errorCode", i);
         paramSurface.put("exceptionMsg", paramString);
-        if (this.ZOv != null) {
-          this.ZOv.onReuseCodecAPIException(paramSurface.toString(), paramThrowable);
+        if (this.ahTw != null) {
+          this.ahTw.onReuseCodecAPIException(paramSurface.toString(), paramThrowable);
         }
         label118:
-        new StringBuilder("hasReused:").append(this.ZOw).append("    errorCode:").append(i).append(", ").append(paramString);
-        com.tencent.tmediacodec.g.b.bDU("ReuseCodecWrapper");
-        aCj(i);
+        new StringBuilder("hasReused:").append(this.ahTx).append("    errorCode:").append(i).append(", ").append(paramString);
+        com.tencent.tmediacodec.g.b.U("ReuseCodecWrapper");
+        aIY(i);
         return;
         str = paramThrowable.getLocalizedMessage();
       }
@@ -186,7 +190,7 @@ public abstract class f
     }
   }
   
-  private void aCj(int paramInt)
+  private void aIY(int paramInt)
   {
     if (paramInt < 40000) {}
     for (int i = 1;; i = 0)
@@ -194,21 +198,21 @@ public abstract class f
       if (i != 0)
       {
         new StringBuilder().append(this).append("    releaseCodecWhenError, errorCode:").append(paramInt);
-        com.tencent.tmediacodec.g.b.bDT("ReuseCodecWrapper");
+        com.tencent.tmediacodec.g.b.T("ReuseCodecWrapper");
         release();
       }
       return;
     }
   }
   
-  private final void bDM(String paramString)
+  private final void bGr(String paramString)
   {
     if (com.tencent.tmediacodec.g.b.isLogEnable())
     {
       new StringBuilder().append(this).append(", removeStoreSurfaceTexture nameSurfaceTexture:").append(paramString);
-      com.tencent.tmediacodec.g.b.bDP("ReuseCodecWrapper");
+      com.tencent.tmediacodec.g.b.O("ReuseCodecWrapper");
     }
-    Iterator localIterator = this.ZOz.iterator();
+    Iterator localIterator = this.ahTA.iterator();
     while (localIterator.hasNext()) {
       if (TextUtils.equals(localIterator.next().toString(), paramString)) {
         localIterator.remove();
@@ -216,29 +220,28 @@ public abstract class f
     }
   }
   
-  @TargetApi(23)
   private void c(Surface paramSurface, boolean paramBoolean)
   {
     if (this.mSurface == paramSurface)
     {
       new StringBuilder().append(this).append(", innerSetOutputSurface error surface:").append(paramSurface).append(" is same, stack:").append(Log.getStackTraceString(new Throwable()));
-      com.tencent.tmediacodec.g.b.bDR("ReuseCodecWrapper");
+      com.tencent.tmediacodec.g.b.R("ReuseCodecWrapper");
       return;
     }
     String str = null;
     if (com.tencent.tmediacodec.g.b.isLogEnable())
     {
-      str = this + " configure, call innerSetOutputSurface surface:" + paramSurface + "  decodeState:" + this.ZOl + " callByInner:" + paramBoolean;
-      com.tencent.tmediacodec.g.b.bDP("ReuseCodecWrapper");
+      str = this + " configure, call innerSetOutputSurface surface:" + paramSurface + "  decodeState:" + this.ahTm + " callByInner:" + paramBoolean;
+      com.tencent.tmediacodec.g.b.O("ReuseCodecWrapper");
     }
     try
     {
       setSurface(paramSurface);
-      this.bcN.setOutputSurface(paramSurface);
-      IC(true);
+      this.codec.setOutputSurface(paramSurface);
+      OF(true);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       i = 0;
       if (!(localThrowable instanceof IllegalStateException)) {
@@ -257,24 +260,19 @@ public abstract class f
     }
   }
   
-  private void d(int paramInt, String paramString, Throwable paramThrowable)
-  {
-    a(paramInt, paramString, paramThrowable, false, this.mSurface);
-  }
-  
-  private void d(Set paramSet1, Set paramSet2)
+  private void e(Set paramSet1, Set paramSet2)
   {
     if (com.tencent.tmediacodec.g.b.isLogEnable())
     {
       new StringBuilder().append(this).append(", removeSurfaceBinding toReleaseNameSet:").append(paramSet1).append(" toReleaseCodecSet:").append(paramSet2);
-      com.tencent.tmediacodec.g.b.bDP("ReuseCodecWrapper");
+      com.tencent.tmediacodec.g.b.O("ReuseCodecWrapper");
     }
-    Iterator localIterator = ZOB.entrySet().iterator();
+    Iterator localIterator = ahTC.entrySet().iterator();
     label147:
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
-      String str = d.s((Surface)localEntry.getKey());
+      String str = d.x((Surface)localEntry.getKey());
       if ((paramSet1.contains(str)) || (paramSet2.contains(localEntry.getValue()))) {}
       for (int i = 1;; i = 0)
       {
@@ -282,42 +280,47 @@ public abstract class f
           break label147;
         }
         localIterator.remove();
-        com.tencent.tmediacodec.hook.a.bDN(str);
+        com.tencent.tmediacodec.hook.a.bGs(str);
         break;
       }
     }
   }
   
-  private boolean itb()
+  private void f(int paramInt, String paramString, Throwable paramThrowable)
   {
-    return Thread.currentThread().getId() != this.ZOt;
+    a(paramInt, paramString, paramThrowable, false, this.mSurface);
   }
   
-  private final void kY(List<SurfaceTexture> paramList)
+  private boolean kcv()
+  {
+    return Thread.currentThread().getId() != this.ahTu;
+  }
+  
+  private final void ov(List<SurfaceTexture> paramList)
   {
     if (com.tencent.tmediacodec.g.b.isLogEnable())
     {
       new StringBuilder().append(this).append(", releaseSurfaceTexture toReleaseSet:").append(paramList);
-      com.tencent.tmediacodec.g.b.bDP("ReuseCodecWrapper");
+      com.tencent.tmediacodec.g.b.O("ReuseCodecWrapper");
     }
     LinkedHashSet localLinkedHashSet = new LinkedHashSet();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       SurfaceTexture localSurfaceTexture = (SurfaceTexture)paramList.next();
-      com.tencent.tmediacodec.hook.a.w(localSurfaceTexture);
+      com.tencent.tmediacodec.hook.a.y(localSurfaceTexture);
       localLinkedHashSet.add(localSurfaceTexture.toString());
     }
-    z(localLinkedHashSet);
+    L(localLinkedHashSet);
   }
   
-  private void od(int paramInt1, int paramInt2)
+  private void qa(int paramInt1, int paramInt2)
   {
     Object localObject;
-    if ((!this.ZOD) && (oe(paramInt1, paramInt2)))
+    if ((!this.ahTE) && (qb(paramInt1, paramInt2)))
     {
-      this.ZOD = true;
-      StringBuilder localStringBuilder = new StringBuilder().append(this).append(", trackDecodeApi state:").append(this.ZOq).append("  surfaceState:");
+      this.ahTE = true;
+      StringBuilder localStringBuilder = new StringBuilder().append(this).append(", trackDecodeApi state:").append(this.ahTr).append("  surfaceState:");
       if (this.mSurface == null) {
         break label95;
       }
@@ -326,7 +329,7 @@ public abstract class f
       if (paramInt1 != 0) {
         break label100;
       }
-      d(40002, (String)localObject, null);
+      f(40002, (String)localObject, null);
     }
     label95:
     label100:
@@ -336,26 +339,112 @@ public abstract class f
       localObject = null;
       break;
     }
-    d(60002, (String)localObject, null);
+    f(60002, (String)localObject, null);
   }
   
-  private boolean oe(int paramInt1, int paramInt2)
+  private boolean qb(int paramInt1, int paramInt2)
   {
     boolean bool = false;
     if (paramInt2 == -1)
     {
-      int[] arrayOfInt = this.ZOA;
+      int[] arrayOfInt = this.ahTB;
       arrayOfInt[paramInt1] += 1;
-      if (this.ZOA[paramInt1] > 100) {
+      if (this.ahTB[paramInt1] > 100) {
         bool = true;
       }
       return bool;
     }
-    this.ZOA[paramInt1] = 0;
+    this.ahTB[paramInt1] = 0;
     return false;
   }
   
-  private static int r(Surface paramSurface)
+  private final void setSurface(Surface paramSurface)
+  {
+    if (com.tencent.tmediacodec.g.b.isLogEnable())
+    {
+      new StringBuilder().append(this).append(", oldSurface:").append(this.mSurface).append(" CodecWrapperSetSurface surface:").append(paramSurface);
+      com.tencent.tmediacodec.g.b.Q("ReuseCodecWrapper");
+    }
+    com.tencent.tmediacodec.hook.a.bGs(this.ahTp);
+    L(new HashSet(Collections.singletonList(this.ahTp)));
+    localObject1 = this.mSurface;
+    try
+    {
+      if ((localObject1 instanceof PreloadSurface))
+      {
+        SurfaceTexture localSurfaceTexture = ((PreloadSurface)localObject1).surfaceTexture;
+        if ((localSurfaceTexture instanceof com.tencent.tmediacodec.hook.b)) {
+          this.ahTA.add(localSurfaceTexture);
+        }
+        if (com.tencent.tmediacodec.g.b.isLogEnable())
+        {
+          new StringBuilder("markPreloadSurfaceTexture oldSurface:").append(localObject1).append(" success");
+          com.tencent.tmediacodec.g.b.O("ReuseCodecWrapper");
+        }
+      }
+    }
+    finally
+    {
+      for (;;)
+      {
+        new StringBuilder("markPreloadSurfaceTexture oldSurface:").append(localObject1).append(" failed");
+        com.tencent.tmediacodec.g.b.U("ReuseCodecWrapper");
+        continue;
+        boolean bool = false;
+      }
+    }
+    this.mSurface = paramSurface;
+    this.ahTp = "";
+    if (paramSurface != null) {
+      this.ahTp = d.x(paramSurface);
+    }
+    bGr(this.ahTp);
+    if (paramSurface != null)
+    {
+      if (com.tencent.tmediacodec.g.b.isLogEnable())
+      {
+        new StringBuilder().append(this).append(" checkSurfaceBinding size:").append(ahTC.size()).append(" mSurfaceMap:").append(ahTC);
+        com.tencent.tmediacodec.g.b.O("ReuseCodecWrapper");
+      }
+      if (ahTC.containsKey(paramSurface))
+      {
+        localObject1 = (f)ahTC.get(paramSurface);
+        if ((localObject1 == null) || (!((f)localObject1).ahTq)) {
+          break label399;
+        }
+        bool = true;
+        if (com.tencent.tmediacodec.g.b.isLogEnable())
+        {
+          new StringBuilder().append(this).append(", surface:").append(paramSurface).append(" has been used by ").append(localObject1).append(" isReleaseCalled:").append(bool).append(", ignore but we can release it...");
+          com.tencent.tmediacodec.g.b.T("ReuseCodecWrapper");
+        }
+        if (bool) {
+          ((f)localObject1).recycle();
+        }
+      }
+      ahTC.put(paramSurface, this);
+      com.tencent.tmediacodec.hook.a.a(this.ahTp, new com.tencent.tmediacodec.hook.c()
+      {
+        public final void x(SurfaceTexture paramAnonymousSurfaceTexture)
+        {
+          AppMethodBeat.i(210795);
+          if (TextUtils.equals(f.a(f.this), paramAnonymousSurfaceTexture.toString()))
+          {
+            f.b(f.this).add(paramAnonymousSurfaceTexture);
+            new StringBuilder().append(f.this).append("      surfaceDestroyed ... surfaceTexture:").append(paramAnonymousSurfaceTexture).append("     mStoreToRelease.size:").append(f.b(f.this).size());
+            com.tencent.tmediacodec.g.b.R("ReuseCodecWrapper");
+          }
+          AppMethodBeat.o(210795);
+        }
+      });
+    }
+    else
+    {
+      return;
+    }
+  }
+  
+  private static int w(Surface paramSurface)
   {
     if (paramSurface == null) {
       return 10003;
@@ -366,233 +455,36 @@ public abstract class f
     return 0;
   }
   
-  private final void setSurface(Surface paramSurface)
-  {
-    if (com.tencent.tmediacodec.g.b.isLogEnable())
-    {
-      new StringBuilder().append(this).append(", oldSurface:").append(this.mSurface).append(" CodecWrapperSetSurface surface:").append(paramSurface);
-      com.tencent.tmediacodec.g.b.bDQ("ReuseCodecWrapper");
-    }
-    com.tencent.tmediacodec.hook.a.bDN(this.ZOo);
-    z(new HashSet(Collections.singletonList(this.ZOo)));
-    localObject = this.mSurface;
-    try
-    {
-      if ((localObject instanceof PreloadSurface))
-      {
-        SurfaceTexture localSurfaceTexture = ((PreloadSurface)localObject).surfaceTexture;
-        if ((localSurfaceTexture instanceof com.tencent.tmediacodec.hook.b)) {
-          this.ZOz.add(localSurfaceTexture);
-        }
-        if (com.tencent.tmediacodec.g.b.isLogEnable())
-        {
-          new StringBuilder("markPreloadSurfaceTexture oldSurface:").append(localObject).append(" success");
-          com.tencent.tmediacodec.g.b.bDP("ReuseCodecWrapper");
-        }
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        new StringBuilder("markPreloadSurfaceTexture oldSurface:").append(localObject).append(" failed");
-        com.tencent.tmediacodec.g.b.bDU("ReuseCodecWrapper");
-        continue;
-        boolean bool = false;
-      }
-    }
-    this.mSurface = paramSurface;
-    this.ZOo = "";
-    if (paramSurface != null) {
-      this.ZOo = d.s(paramSurface);
-    }
-    bDM(this.ZOo);
-    if (paramSurface != null)
-    {
-      if (com.tencent.tmediacodec.g.b.isLogEnable())
-      {
-        new StringBuilder().append(this).append(" checkSurfaceBinding size:").append(ZOB.size()).append(" mSurfaceMap:").append(ZOB);
-        com.tencent.tmediacodec.g.b.bDP("ReuseCodecWrapper");
-      }
-      if (ZOB.containsKey(paramSurface))
-      {
-        localObject = (f)ZOB.get(paramSurface);
-        if ((localObject == null) || (!((f)localObject).ZOp)) {
-          break label399;
-        }
-        bool = true;
-        if (com.tencent.tmediacodec.g.b.isLogEnable())
-        {
-          new StringBuilder().append(this).append(", surface:").append(paramSurface).append(" has been used by ").append(localObject).append(" isReleaseCalled:").append(bool).append(", ignore but we can release it...");
-          com.tencent.tmediacodec.g.b.bDT("ReuseCodecWrapper");
-        }
-        if (bool) {
-          ((f)localObject).recycle();
-        }
-      }
-      ZOB.put(paramSurface, this);
-      com.tencent.tmediacodec.hook.a.a(this.ZOo, new com.tencent.tmediacodec.hook.c()
-      {
-        public final void v(SurfaceTexture paramAnonymousSurfaceTexture)
-        {
-          AppMethodBeat.i(224297);
-          if (TextUtils.equals(f.a(f.this), paramAnonymousSurfaceTexture.toString()))
-          {
-            f.b(f.this).add(paramAnonymousSurfaceTexture);
-            new StringBuilder().append(f.this).append("      surfaceDestroyed ... surfaceTexture:").append(paramAnonymousSurfaceTexture).append("     mStoreToRelease.size:").append(f.b(f.this).size());
-            com.tencent.tmediacodec.g.b.bDR("ReuseCodecWrapper");
-          }
-          AppMethodBeat.o(224297);
-        }
-      });
-    }
-    else
-    {
-      return;
-    }
-  }
-  
-  private void z(Set paramSet)
-  {
-    d(paramSet, Collections.emptySet());
-  }
-  
-  public final int EX(long paramLong)
-  {
-    int i = 0;
-    if (itb())
-    {
-      com.tencent.tmediacodec.g.b.bDR("ReuseCodecWrapper");
-      return -1;
-    }
-    Object localObject2 = null;
-    String str = null;
-    Object localObject1 = localObject2;
-    try
-    {
-      int j = this.bcN.dequeueInputBuffer(paramLong);
-      localObject1 = localObject2;
-      if (com.tencent.tmediacodec.g.b.isLogEnable())
-      {
-        localObject1 = localObject2;
-        str = this + ", dequeueInputBuffer state:" + this.ZOq + " decodeState:" + this.ZOl + " , result=" + j;
-        localObject1 = str;
-        com.tencent.tmediacodec.g.b.bDO("ReuseCodecWrapper");
-      }
-      localObject1 = str;
-      this.ZOl = f.b.ZOR;
-      localObject1 = str;
-      this.ZOq = f.a.ZOM;
-      localObject1 = str;
-      od(0, j);
-      return j;
-    }
-    catch (Throwable localThrowable)
-    {
-      if (!(localThrowable instanceof IllegalStateException)) {
-        break label176;
-      }
-    }
-    i = 40000;
-    for (;;)
-    {
-      d(i, (String)localObject1, localThrowable);
-      throw localThrowable;
-      label176:
-      if ((localThrowable instanceof IllegalArgumentException)) {
-        i = 40001;
-      }
-    }
-  }
-  
-  public final int a(MediaCodec.BufferInfo paramBufferInfo, long paramLong)
-  {
-    if (itb())
-    {
-      com.tencent.tmediacodec.g.b.bDR("ReuseCodecWrapper");
-      return -1;
-    }
-    String str = null;
-    Object localObject2 = null;
-    Object localObject1 = str;
-    int i;
-    try
-    {
-      i = this.bcN.dequeueOutputBuffer(paramBufferInfo, paramLong);
-      paramBufferInfo = localObject2;
-      localObject1 = str;
-      if (com.tencent.tmediacodec.g.b.isLogEnable())
-      {
-        localObject1 = str;
-        str = this + ", dequeueOutputBuffer outIndex:" + i;
-        paramBufferInfo = str;
-        localObject1 = str;
-        if ((this instanceof g))
-        {
-          localObject1 = str;
-          com.tencent.tmediacodec.g.b.bDO("ReuseCodecWrapper");
-          paramBufferInfo = str;
-        }
-      }
-      localObject1 = paramBufferInfo;
-      this.ZOs.add(Integer.valueOf(i));
-      localObject1 = paramBufferInfo;
-      this.ZOl = f.b.ZOT;
-      localObject1 = paramBufferInfo;
-      od(1, i);
-      return i;
-    }
-    catch (Throwable paramBufferInfo)
-    {
-      i = 0;
-      if (Build.VERSION.SDK_INT < 21) {
-        break label181;
-      }
-    }
-    if ((paramBufferInfo instanceof MediaCodec.CodecException)) {
-      i = 60001;
-    }
-    for (;;)
-    {
-      d(i, (String)localObject1, paramBufferInfo);
-      throw paramBufferInfo;
-      label181:
-      if ((paramBufferInfo instanceof IllegalStateException)) {
-        i = 60000;
-      }
-    }
-  }
-  
   public abstract a.b a(e parame);
   
   public final void a(int paramInt1, int paramInt2, long paramLong, int paramInt3)
   {
-    if (itb())
+    if (kcv())
     {
-      com.tencent.tmediacodec.g.b.bDR("ReuseCodecWrapper");
+      com.tencent.tmediacodec.g.b.R("ReuseCodecWrapper");
       return;
     }
     String str;
     if (com.tencent.tmediacodec.g.b.isLogEnable())
     {
-      str = this + ", queueInputBuffer index:" + paramInt1 + " offset:0 size:" + paramInt2 + " presentationTimeUs:" + paramLong + ' ' + "flags:" + paramInt3 + " state:" + this.ZOq + " decodeState:" + this.ZOl;
-      com.tencent.tmediacodec.g.b.bDO("ReuseCodecWrapper");
+      str = this + ", queueInputBuffer index:" + paramInt1 + " offset:0 size:" + paramInt2 + " presentationTimeUs:" + paramLong + ' ' + "flags:" + paramInt3 + " state:" + this.ahTr + " decodeState:" + this.ahTm;
+      com.tencent.tmediacodec.g.b.bGt("ReuseCodecWrapper");
     }
     for (;;)
     {
       try
       {
-        if (!this.ZOw) {
+        if (!this.ahTx) {
           break label243;
         }
-        switch (4.ZOH[this.ZOx.ordinal()])
+        switch (4.ahTI[this.ahTy.ordinal()])
         {
         case 1: 
-          this.ZOl = f.b.ZOS;
+          this.ahTm = b.ahTT;
           return;
         }
       }
-      catch (Throwable localThrowable)
+      finally
       {
         if (Build.VERSION.SDK_INT < 21) {
           break label259;
@@ -603,16 +495,16 @@ public abstract class f
       }
       for (;;)
       {
-        d(paramInt1, str, localThrowable);
+        f(paramInt1, str, localThrowable);
         throw localThrowable;
-        com.tencent.tmediacodec.g.b.bDR("ReuseCodecWrapper");
+        com.tencent.tmediacodec.g.b.R("ReuseCodecWrapper");
         break;
-        this.bcN.queueInputBuffer(paramInt1, 0, paramInt2, paramLong, paramInt3);
+        this.codec.queueInputBuffer(paramInt1, 0, paramInt2, paramLong, paramInt3);
         break;
-        this.bcN.queueInputBuffer(paramInt1, 0, paramInt2, paramLong, paramInt3);
+        this.codec.queueInputBuffer(paramInt1, 0, paramInt2, paramLong, paramInt3);
         break;
         label243:
-        this.bcN.queueInputBuffer(paramInt1, 0, paramInt2, paramLong, paramInt3);
+        this.codec.queueInputBuffer(paramInt1, 0, paramInt2, paramLong, paramInt3);
         break;
         label259:
         if ((localThrowable instanceof IllegalStateException)) {
@@ -627,24 +519,35 @@ public abstract class f
     }
   }
   
-  public final void a(MediaFormat paramMediaFormat, Surface paramSurface, MediaCrypto paramMediaCrypto, int paramInt)
+  public final void a(com.tencent.tmediacodec.a.a parama)
+  {
+    this.ahTw = parama;
+  }
+  
+  public final a.b b(e parame)
+  {
+    this.ahTy = a(parame);
+    return this.ahTy;
+  }
+  
+  public final void configure(MediaFormat paramMediaFormat, Surface paramSurface, MediaCrypto paramMediaCrypto, int paramInt)
   {
     paramInt = 0;
-    if (itb()) {
-      com.tencent.tmediacodec.g.b.bDR("ReuseCodecWrapper");
+    if (kcv()) {
+      com.tencent.tmediacodec.g.b.R("ReuseCodecWrapper");
     }
     label218:
     do
     {
       return;
-      this.ZOy = true;
+      this.ahTz = true;
       for (;;)
       {
         try
         {
-          this.ZOp = false;
-          Object localObject1 = this.ZOq;
-          Object localObject2 = f.a.ZOI;
+          this.ahTq = false;
+          Object localObject1 = this.ahTr;
+          Object localObject2 = a.ahTJ;
           if (localObject1 != localObject2) {
             break;
           }
@@ -656,19 +559,19 @@ public abstract class f
             if (com.tencent.tmediacodec.g.b.isLogEnable())
             {
               localObject1 = localObject3;
-              localObject2 = this + ", realConfigure mediaFormat:" + paramMediaFormat + " surface:" + paramSurface + " crypto:" + paramMediaCrypto + " flags:0" + " state:" + this.ZOq + " mHasConfigureCalled：" + this.ZOy;
+              localObject2 = this + ", realConfigure mediaFormat:" + paramMediaFormat + " surface:" + paramSurface + " crypto:" + paramMediaCrypto + " flags:0" + " state:" + this.ahTr + " mHasConfigureCalled：" + this.ahTz;
               localObject1 = localObject2;
-              com.tencent.tmediacodec.g.b.bDP("ReuseCodecWrapper");
+              com.tencent.tmediacodec.g.b.O("ReuseCodecWrapper");
             }
             localObject1 = localObject2;
-            this.bcN.configure(paramMediaFormat, paramSurface, paramMediaCrypto, 0);
+            this.codec.configure(paramMediaFormat, paramSurface, paramMediaCrypto, 0);
             localObject1 = localObject2;
             setSurface(paramSurface);
             localObject1 = localObject2;
-            this.ZOq = f.a.ZOJ;
+            this.ahTr = a.ahTK;
             return;
           }
-          catch (Throwable paramMediaFormat)
+          finally
           {
             if (!(paramMediaFormat instanceof IllegalStateException)) {
               break label218;
@@ -678,35 +581,127 @@ public abstract class f
           a(paramInt, (String)localObject1, paramMediaFormat, true, paramSurface);
           throw paramMediaFormat;
         }
-        catch (Throwable paramMediaFormat)
-        {
-          throw paramMediaFormat;
-        }
+        finally {}
         if ((paramMediaFormat instanceof MediaCodec.CryptoException)) {
           paramInt = 10001;
         }
       }
     } while (paramSurface == null);
-    this.ZOA[0] = 0;
-    this.ZOA[1] = 0;
+    this.ahTB[0] = 0;
+    this.ahTB[1] = 0;
     c(paramSurface, true);
   }
   
-  public final void a(com.tencent.tmediacodec.a.a parama)
+  public final int dequeueInputBuffer(long paramLong)
   {
-    this.ZOv = parama;
+    int i = 0;
+    if (kcv())
+    {
+      com.tencent.tmediacodec.g.b.R("ReuseCodecWrapper");
+      return -1;
+    }
+    Object localObject2 = null;
+    String str = null;
+    Object localObject1 = localObject2;
+    try
+    {
+      int j = this.codec.dequeueInputBuffer(paramLong);
+      localObject1 = localObject2;
+      if (com.tencent.tmediacodec.g.b.isLogEnable())
+      {
+        localObject1 = localObject2;
+        str = this + ", dequeueInputBuffer state:" + this.ahTr + " decodeState:" + this.ahTm + " , result=" + j;
+        localObject1 = str;
+        com.tencent.tmediacodec.g.b.bGt("ReuseCodecWrapper");
+      }
+      localObject1 = str;
+      this.ahTm = b.ahTS;
+      localObject1 = str;
+      this.ahTr = a.ahTN;
+      localObject1 = str;
+      qa(0, j);
+      return j;
+    }
+    finally
+    {
+      if (!(localThrowable instanceof IllegalStateException)) {
+        break label176;
+      }
+    }
+    i = 40000;
+    for (;;)
+    {
+      f(i, (String)localObject1, localThrowable);
+      throw localThrowable;
+      label176:
+      if ((localThrowable instanceof IllegalArgumentException)) {
+        i = 40001;
+      }
+    }
   }
   
-  public final a.b b(e parame)
+  public final int dequeueOutputBuffer(MediaCodec.BufferInfo paramBufferInfo, long paramLong)
   {
-    this.ZOx = a(parame);
-    return this.ZOx;
+    if (kcv())
+    {
+      com.tencent.tmediacodec.g.b.R("ReuseCodecWrapper");
+      return -1;
+    }
+    String str = null;
+    Object localObject2 = null;
+    Object localObject1 = str;
+    int i;
+    try
+    {
+      i = this.codec.dequeueOutputBuffer(paramBufferInfo, paramLong);
+      paramBufferInfo = localObject2;
+      localObject1 = str;
+      if (com.tencent.tmediacodec.g.b.isLogEnable())
+      {
+        localObject1 = str;
+        str = this + ", dequeueOutputBuffer outIndex:" + i;
+        paramBufferInfo = str;
+        localObject1 = str;
+        if ((this instanceof g))
+        {
+          localObject1 = str;
+          com.tencent.tmediacodec.g.b.bGt("ReuseCodecWrapper");
+          paramBufferInfo = str;
+        }
+      }
+      localObject1 = paramBufferInfo;
+      this.ahTt.add(Integer.valueOf(i));
+      localObject1 = paramBufferInfo;
+      this.ahTm = b.ahTU;
+      localObject1 = paramBufferInfo;
+      qa(1, i);
+      return i;
+    }
+    finally
+    {
+      i = 0;
+      if (Build.VERSION.SDK_INT < 21) {
+        break label181;
+      }
+    }
+    if ((paramBufferInfo instanceof MediaCodec.CodecException)) {
+      i = 60001;
+    }
+    for (;;)
+    {
+      f(i, (String)localObject1, paramBufferInfo);
+      throw paramBufferInfo;
+      label181:
+      if ((paramBufferInfo instanceof IllegalStateException)) {
+        i = 60000;
+      }
+    }
   }
   
   public final void flush()
   {
-    if (itb()) {
-      com.tencent.tmediacodec.g.b.bDR("ReuseCodecWrapper");
+    if (kcv()) {
+      com.tencent.tmediacodec.g.b.R("ReuseCodecWrapper");
     }
     Object localObject2 = null;
     String str = null;
@@ -717,17 +712,17 @@ public abstract class f
       if (com.tencent.tmediacodec.g.b.isLogEnable())
       {
         localObject1 = localObject2;
-        str = this + ", flush state:" + this.ZOq;
+        str = this + ", flush state:" + this.ahTr;
         localObject1 = str;
-        com.tencent.tmediacodec.g.b.bDP("ReuseCodecWrapper");
+        com.tencent.tmediacodec.g.b.O("ReuseCodecWrapper");
       }
       localObject1 = str;
-      this.bcN.flush();
+      this.codec.flush();
       localObject1 = str;
-      this.ZOq = f.a.ZOL;
+      this.ahTr = a.ahTM;
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       i = 0;
       if (Build.VERSION.SDK_INT < 21) {
@@ -739,7 +734,7 @@ public abstract class f
     }
     for (;;)
     {
-      d(i, (String)localObject1, localThrowable);
+      f(i, (String)localObject1, localThrowable);
       throw localThrowable;
       label116:
       if ((localThrowable instanceof IllegalStateException)) {
@@ -748,184 +743,178 @@ public abstract class f
     }
   }
   
-  public final MediaCodec isY()
+  public final MediaCodec kcs()
   {
-    return this.bcN;
+    return this.codec;
   }
   
-  public final void isZ()
+  public final void kct()
   {
     long l = Thread.currentThread().getId();
-    if (this.ZOu.contains(Long.valueOf(l))) {}
+    if (this.ahTv.contains(Long.valueOf(l))) {}
     do
     {
       return;
-      this.ZOt = l;
-      this.ZOu.add(Long.valueOf(this.ZOt));
-    } while (this.ZOu.size() <= 100);
-    this.ZOu.remove(0);
+      this.ahTu = l;
+      this.ahTv.add(Long.valueOf(this.ahTu));
+    } while (this.ahTv.size() <= 100);
+    this.ahTv.remove(0);
   }
   
-  public final void ita()
+  public final void kcu()
   {
-    this.ZOD = false;
-    this.ZOE = 0;
-    if (this.ZOq != f.a.ZOL) {
+    this.ahTE = false;
+    this.ahTF = 0;
+    if (this.ahTr != a.ahTM) {
       flush();
     }
-    this.ZOw = true;
+    this.ahTx = true;
   }
   
-  public boolean itc()
+  public boolean kcw()
   {
-    return (!this.ZOC) && (com.tencent.tmediacodec.a.isT().ZNN);
+    return (!this.ahTD) && (com.tencent.tmediacodec.a.kcn().ahSO);
   }
   
-  public final void itd()
+  public final void kcx()
   {
-    this.ZOE += 1;
+    this.ahTF += 1;
   }
   
-  public final boolean ite()
+  public final boolean kcy()
   {
-    return this.ZOE >= 3;
+    return this.ahTF >= 3;
   }
   
-  public final String itf()
+  public final String kcz()
   {
-    return this.juk;
-  }
-  
-  @TargetApi(23)
-  public final void q(Surface paramSurface)
-  {
-    c(paramSurface, false);
+    return this.lXB;
   }
   
   public final void recycle()
   {
     if (com.tencent.tmediacodec.g.b.isLogEnable())
     {
-      new StringBuilder().append(this).append(", recycle isRecycled:").append(this.QCj).append(" ...... stack:").append(Log.getStackTraceString(new Throwable()));
-      com.tencent.tmediacodec.g.b.bDP("ReuseCodecWrapper");
+      new StringBuilder().append(this).append(", recycle isRecycled:").append(this.Xvs).append(" ...... stack:").append(Log.getStackTraceString(new Throwable()));
+      com.tencent.tmediacodec.g.b.O("ReuseCodecWrapper");
     }
-    this.ZOy = false;
-    this.QCj = true;
-    d(Collections.emptySet(), Collections.singleton(this));
+    this.ahTz = false;
+    this.Xvs = true;
+    e(Collections.emptySet(), Collections.singleton(this));
     com.tencent.tmediacodec.g.e.runOnSubThread(new Runnable()
     {
       /* Error */
       public final void run()
       {
         // Byte code:
-        //   0: ldc 24
-        //   2: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+        //   0: ldc 22
+        //   2: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
         //   5: aload_0
-        //   6: getfield 17	com/tencent/tmediacodec/b/f$3:ZOF	Lcom/tencent/tmediacodec/b/f;
-        //   9: invokestatic 34	com/tencent/tmediacodec/b/f:c	(Lcom/tencent/tmediacodec/b/f;)Landroid/media/MediaCodec;
-        //   12: invokevirtual 39	android/media/MediaCodec:stop	()V
+        //   6: getfield 17	com/tencent/tmediacodec/b/f$3:ahTG	Lcom/tencent/tmediacodec/b/f;
+        //   9: invokestatic 32	com/tencent/tmediacodec/b/f:c	(Lcom/tencent/tmediacodec/b/f;)Landroid/media/MediaCodec;
+        //   12: invokevirtual 37	android/media/MediaCodec:stop	()V
         //   15: aload_0
-        //   16: getfield 17	com/tencent/tmediacodec/b/f$3:ZOF	Lcom/tencent/tmediacodec/b/f;
-        //   19: invokestatic 34	com/tencent/tmediacodec/b/f:c	(Lcom/tencent/tmediacodec/b/f;)Landroid/media/MediaCodec;
-        //   22: invokevirtual 42	android/media/MediaCodec:release	()V
+        //   16: getfield 17	com/tencent/tmediacodec/b/f$3:ahTG	Lcom/tencent/tmediacodec/b/f;
+        //   19: invokestatic 32	com/tencent/tmediacodec/b/f:c	(Lcom/tencent/tmediacodec/b/f;)Landroid/media/MediaCodec;
+        //   22: invokevirtual 40	android/media/MediaCodec:release	()V
         //   25: aload_0
-        //   26: getfield 17	com/tencent/tmediacodec/b/f$3:ZOF	Lcom/tencent/tmediacodec/b/f;
-        //   29: invokestatic 45	com/tencent/tmediacodec/b/f:d	(Lcom/tencent/tmediacodec/b/f;)V
+        //   26: getfield 17	com/tencent/tmediacodec/b/f$3:ahTG	Lcom/tencent/tmediacodec/b/f;
+        //   29: invokestatic 43	com/tencent/tmediacodec/b/f:d	(Lcom/tencent/tmediacodec/b/f;)V
         //   32: aload_0
-        //   33: getfield 17	com/tencent/tmediacodec/b/f$3:ZOF	Lcom/tencent/tmediacodec/b/f;
-        //   36: invokestatic 49	com/tencent/tmediacodec/b/f:e	(Lcom/tencent/tmediacodec/b/f;)Lcom/tencent/tmediacodec/a/a;
+        //   33: getfield 17	com/tencent/tmediacodec/b/f$3:ahTG	Lcom/tencent/tmediacodec/b/f;
+        //   36: invokestatic 47	com/tencent/tmediacodec/b/f:e	(Lcom/tencent/tmediacodec/b/f;)Lcom/tencent/tmediacodec/a/a;
         //   39: ifnull +15 -> 54
         //   42: aload_0
-        //   43: getfield 17	com/tencent/tmediacodec/b/f$3:ZOF	Lcom/tencent/tmediacodec/b/f;
-        //   46: invokestatic 49	com/tencent/tmediacodec/b/f:e	(Lcom/tencent/tmediacodec/b/f;)Lcom/tencent/tmediacodec/a/a;
-        //   49: invokeinterface 54 1 0
-        //   54: ldc 24
-        //   56: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   43: getfield 17	com/tencent/tmediacodec/b/f$3:ahTG	Lcom/tencent/tmediacodec/b/f;
+        //   46: invokestatic 47	com/tencent/tmediacodec/b/f:e	(Lcom/tencent/tmediacodec/b/f;)Lcom/tencent/tmediacodec/a/a;
+        //   49: invokeinterface 52 1 0
+        //   54: ldc 22
+        //   56: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   59: return
         //   60: astore_1
         //   61: aload_0
-        //   62: getfield 17	com/tencent/tmediacodec/b/f$3:ZOF	Lcom/tencent/tmediacodec/b/f;
-        //   65: invokestatic 34	com/tencent/tmediacodec/b/f:c	(Lcom/tencent/tmediacodec/b/f;)Landroid/media/MediaCodec;
-        //   68: invokevirtual 42	android/media/MediaCodec:release	()V
-        //   71: ldc 24
-        //   73: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   62: getfield 17	com/tencent/tmediacodec/b/f$3:ahTG	Lcom/tencent/tmediacodec/b/f;
+        //   65: invokestatic 32	com/tencent/tmediacodec/b/f:c	(Lcom/tencent/tmediacodec/b/f;)Landroid/media/MediaCodec;
+        //   68: invokevirtual 40	android/media/MediaCodec:release	()V
+        //   71: ldc 22
+        //   73: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   76: aload_1
         //   77: athrow
         //   78: astore_1
-        //   79: ldc 59
-        //   81: invokestatic 65	com/tencent/tmediacodec/g/b:bDS	(Ljava/lang/String;)V
+        //   79: ldc 57
+        //   81: invokestatic 63	com/tencent/tmediacodec/g/b:S	(Ljava/lang/String;)V
         //   84: goto -52 -> 32
         // Local variable table:
         //   start	length	slot	name	signature
         //   0	87	0	this	3
-        //   60	17	1	localObject	Object
-        //   78	1	1	localThrowable	Throwable
+        //   60	17	1	localObject1	Object
+        //   78	1	1	localObject2	Object
         // Exception table:
         //   from	to	target	type
         //   5	15	60	finally
-        //   15	32	78	java/lang/Throwable
-        //   61	78	78	java/lang/Throwable
+        //   15	32	78	finally
+        //   61	78	78	finally
       }
     });
     if (this.mSurface != null) {
-      ZOB.remove(this.mSurface);
+      ahTC.remove(this.mSurface);
     }
-    this.ZOq = f.a.ZOI;
+    this.ahTr = a.ahTJ;
   }
   
   public final void release()
   {
     if (com.tencent.tmediacodec.g.b.isLogEnable())
     {
-      new StringBuilder().append(this).append(" call release mHoldBufferOutIndex:").append(this.ZOs).append(" mReleaseCalled:").append(this.ZOp).append(" stack:").append(Log.getStackTraceString(new Throwable()));
-      com.tencent.tmediacodec.g.b.bDP("ReuseCodecWrapper");
+      new StringBuilder().append(this).append(" call release mHoldBufferOutIndex:").append(this.ahTt).append(" mReleaseCalled:").append(this.ahTq).append(" stack:").append(Log.getStackTraceString(new Throwable()));
+      com.tencent.tmediacodec.g.b.O("ReuseCodecWrapper");
     }
-    this.ZOp = true;
-    this.ZOy = false;
-    if (itc())
+    this.ahTq = true;
+    this.ahTz = false;
+    if (kcw())
     {
       flush();
-      com.tencent.tmediacodec.a.isT().b(this);
+      com.tencent.tmediacodec.a.kcn().b(this);
       return;
     }
     if (com.tencent.tmediacodec.g.b.isLogEnable())
     {
-      new StringBuilder("Don't not keep the codec, release it ..., mErrorHappened:").append(this.ZOC);
-      com.tencent.tmediacodec.g.b.bDR("ReuseCodecWrapper");
+      new StringBuilder("Don't not keep the codec, release it ..., mErrorHappened:").append(this.ahTD);
+      com.tencent.tmediacodec.g.b.R("ReuseCodecWrapper");
     }
-    com.tencent.tmediacodec.a.isT().a(this);
+    com.tencent.tmediacodec.a.kcn().a(this);
     recycle();
-    this.ZOq = f.a.ZOO;
+    this.ahTr = a.ahTP;
   }
   
   public final void releaseOutputBuffer(int paramInt, boolean paramBoolean)
   {
-    if (itb())
+    if (kcv())
     {
-      com.tencent.tmediacodec.g.b.bDR("ReuseCodecWrapper");
+      com.tencent.tmediacodec.g.b.R("ReuseCodecWrapper");
       return;
     }
     String str;
     if (com.tencent.tmediacodec.g.b.isLogEnable())
     {
       str = this + ", releaseOutputBuffer render:" + paramBoolean;
-      com.tencent.tmediacodec.g.b.bDO("ReuseCodecWrapper");
+      com.tencent.tmediacodec.g.b.bGt("ReuseCodecWrapper");
     }
     for (;;)
     {
       try
       {
-        this.ZOs.remove(Integer.valueOf(paramInt));
-        this.bcN.releaseOutputBuffer(paramInt, paramBoolean);
-        this.ZOl = f.b.ZOU;
+        this.ahTt.remove(Integer.valueOf(paramInt));
+        this.codec.releaseOutputBuffer(paramInt, paramBoolean);
+        this.ahTm = b.ahTV;
         return;
       }
-      catch (Throwable localThrowable)
+      finally
       {
-        if (this.ZOq != f.a.ZOL)
+        if (this.ahTr != a.ahTM)
         {
           new StringBuilder().append(this).append(", releaseOutputBuffer failed, ignore e:");
-          com.tencent.tmediacodec.g.b.bDS("ReuseCodecWrapper");
+          com.tencent.tmediacodec.g.b.S("ReuseCodecWrapper");
         }
         paramInt = 0;
         if (Build.VERSION.SDK_INT < 21) {
@@ -937,7 +926,7 @@ public abstract class f
       }
       for (;;)
       {
-        d(paramInt, str, localThrowable);
+        f(paramInt, str, localThrowable);
         break;
         label149:
         if ((localThrowable instanceof IllegalStateException)) {
@@ -948,12 +937,17 @@ public abstract class f
     }
   }
   
+  public final void setOutputSurface(Surface paramSurface)
+  {
+    c(paramSurface, false);
+  }
+  
   public final void start()
   {
-    if (this.ZOq != f.a.ZOJ)
+    if (this.ahTr != a.ahTK)
     {
-      new StringBuilder("start ignore:").append(this.ZOq);
-      com.tencent.tmediacodec.g.b.bDP("ReuseCodecWrapper");
+      new StringBuilder("start ignore:").append(this.ahTr);
+      com.tencent.tmediacodec.g.b.O("ReuseCodecWrapper");
     }
     Object localObject1;
     int i;
@@ -968,21 +962,21 @@ public abstract class f
         if (com.tencent.tmediacodec.g.b.isLogEnable())
         {
           localObject1 = localObject2;
-          str = this + ", start state:" + this.ZOq;
+          str = this + ", start state:" + this.ahTr;
           localObject1 = str;
-          com.tencent.tmediacodec.g.b.bDP("ReuseCodecWrapper");
+          com.tencent.tmediacodec.g.b.O("ReuseCodecWrapper");
         }
         localObject1 = str;
-        if (this.ZOq == f.a.ZOJ)
+        if (this.ahTr == a.ahTK)
         {
           localObject1 = str;
-          this.bcN.start();
+          this.codec.start();
           localObject1 = str;
-          this.ZOq = f.a.ZOM;
+          this.ahTr = a.ahTN;
           return;
         }
       }
-      catch (Throwable localThrowable)
+      finally
       {
         i = 0;
         if (Build.VERSION.SDK_INT < 21) {
@@ -995,7 +989,7 @@ public abstract class f
     }
     for (;;)
     {
-      d(i, (String)localObject1, localThrowable);
+      f(i, (String)localObject1, localThrowable);
       throw localThrowable;
       label150:
       if ((localThrowable instanceof IllegalStateException)) {
@@ -1009,23 +1003,59 @@ public abstract class f
     if (com.tencent.tmediacodec.g.b.isLogEnable())
     {
       new StringBuilder().append(this).append(", stop");
-      com.tencent.tmediacodec.g.b.bDP("ReuseCodecWrapper");
+      com.tencent.tmediacodec.g.b.O("ReuseCodecWrapper");
     }
-    if (!itc())
+    if (!kcw())
     {
       if (com.tencent.tmediacodec.g.b.isLogEnable())
       {
         new StringBuilder().append(this).append(", codec real stop");
-        com.tencent.tmediacodec.g.b.bDP("ReuseCodecWrapper");
+        com.tencent.tmediacodec.g.b.O("ReuseCodecWrapper");
       }
-      this.bcN.stop();
-      this.ZOq = f.a.ZOI;
+      this.codec.stop();
+      this.ahTr = a.ahTJ;
     }
   }
   
   public String toString()
   {
-    return super.toString() + " mReleaseCalled:" + this.ZOp + " isRecycled:" + this.QCj;
+    return super.toString() + " mReleaseCalled:" + this.ahTq + " isRecycled:" + this.Xvs;
+  }
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(210784);
+      ahTJ = new a("Uninitialized", 0);
+      ahTK = new a("Configured", 1);
+      ahTL = new a("Error", 2);
+      ahTM = new a("Flushed", 3);
+      ahTN = new a("Running", 4);
+      ahTO = new a("EndOfStream", 5);
+      ahTP = new a("Released", 6);
+      ahTQ = new a[] { ahTJ, ahTK, ahTL, ahTM, ahTN, ahTO, ahTP };
+      AppMethodBeat.o(210784);
+    }
+    
+    private a() {}
+  }
+  
+  public static enum b
+  {
+    static
+    {
+      AppMethodBeat.i(210790);
+      ahTR = new b("Started", 0);
+      ahTS = new b("DequeueIn", 1);
+      ahTT = new b("QueueIn", 2);
+      ahTU = new b("DequeueOut", 3);
+      ahTV = new b("ReleaseOut", 4);
+      ahTW = new b[] { ahTR, ahTS, ahTT, ahTU, ahTV };
+      AppMethodBeat.o(210790);
+    }
+    
+    private b() {}
   }
 }
 

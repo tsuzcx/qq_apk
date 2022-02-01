@@ -1,98 +1,97 @@
 package com.tencent.mm.plugin.appbrand.jsapi.auth;
 
-import android.app.Activity;
-import com.tencent.mm.plugin.appbrand.g;
-import com.tencent.mm.plugin.appbrand.jsapi.j;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
-import com.tencent.mm.plugin.appbrand.v;
-import com.tencent.mm.plugin.appbrand.widget.dialog.c.c;
-import com.tencent.mm.protocal.protobuf.eax;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.system.AndroidContextUtil;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.a.e;
+import com.tencent.mm.ui.widget.a.g.a;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-public abstract class i
-  extends com.tencent.mm.plugin.appbrand.jsapi.c<g>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthorizeRiskInterceptionHelper;", "", "()V", "Companion", "IPositivePerformer", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class i
 {
-  protected boolean lBT = false;
+  public static final a rEU;
   
-  protected static <T> LinkedList<T> B(ArrayList<T> paramArrayList)
+  static
   {
-    if (paramArrayList == null) {
-      return null;
-    }
-    LinkedList localLinkedList = new LinkedList();
-    localLinkedList.addAll(paramArrayList);
-    return localLinkedList;
+    AppMethodBeat.i(326882);
+    rEU = new a((byte)0);
+    AppMethodBeat.o(326882);
   }
   
-  protected static Activity b(j paramj)
+  public static final void a(Context paramContext, String paramString1, String paramString2, String paramString3, i.b paramb, DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    if ((paramj instanceof v)) {}
-    for (paramj = ((v)paramj).ax(Activity.class); paramj == null; paramj = paramj.getContext()) {
-      return null;
-    }
-    return AndroidContextUtil.castActivityOrNull(paramj);
+    AppMethodBeat.i(326881);
+    a.a(paramContext, paramString1, paramString2, paramString3, paramb, paramOnDismissListener);
+    AppMethodBeat.o(326881);
   }
   
-  protected static LinkedList<c.c> z(LinkedList<eax> paramLinkedList)
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthorizeRiskInterceptionHelper$Companion;", "", "()V", "TAG", "", "showDialog", "", "context", "Landroid/content/Context;", "content", "positiveBtnText", "negativeBtnText", "positivePerformer", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthorizeRiskInterceptionHelper$IPositivePerformer;", "dismissListener", "Landroid/content/DialogInterface$OnDismissListener;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
   {
-    LinkedList localLinkedList = new LinkedList();
-    paramLinkedList = paramLinkedList.iterator();
-    while (paramLinkedList.hasNext())
+    private static final void E(boolean paramBoolean, String paramString) {}
+    
+    public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, i.b paramb, DialogInterface.OnDismissListener paramOnDismissListener)
     {
-      eax localeax = (eax)paramLinkedList.next();
-      c.c localc = new c.c();
-      localc.scope = localeax.RXY;
-      localc.desc = localeax.CMB;
-      localc.state = localeax.UfR;
-      localLinkedList.add(localc);
-    }
-    return localLinkedList;
-  }
-  
-  public void a(g paramg, JSONObject paramJSONObject, int paramInt)
-  {
-    this.lBT = paramJSONObject.optBoolean("keepAlive", false);
-    boolean bool = paramJSONObject.optBoolean("requestInQueue", true);
-    if ("adOperateWXData".equalsIgnoreCase(getName()))
-    {
-      a(paramg, paramJSONObject, paramInt, null);
-      return;
-    }
-    try
-    {
-      paramJSONObject.put("wxdataQueueTimestamp", Util.nowMilliSecond());
-      label51:
-      if (!bool)
+      boolean bool2 = true;
+      AppMethodBeat.i(326733);
+      s.u(paramContext, "context");
+      s.u(paramString1, "content");
+      s.u(paramString2, "positiveBtnText");
+      s.u(paramString3, "negativeBtnText");
+      s.u(paramb, "positivePerformer");
+      paramContext = new g.a(paramContext);
+      paramContext.bDE(paramString1);
+      paramContext.bDI(paramString2);
+      int i;
+      if (((CharSequence)paramString3).length() > 0)
       {
-        b.V(paramg.getRuntime()).a(this, paramg, paramJSONObject, paramInt);
-        return;
+        i = 1;
+        if (i != 0) {
+          paramContext.bDJ(paramString3);
+        }
+        paramContext.a(i.a..ExternalSyntheticLambda1.INSTANCE, new i.a..ExternalSyntheticLambda0(paramb));
+        paramContext.d(paramOnDismissListener);
+        paramContext.show();
+        paramString1 = paramContext.pRv;
+        if (((CharSequence)paramString3).length() <= 0) {
+          break label182;
+        }
+        bool1 = true;
+        label134:
+        paramString1.cX(-2, bool1);
+        paramContext = paramContext.pRv;
+        if (((CharSequence)paramString2).length() <= 0) {
+          break label188;
+        }
       }
-      d.W(paramg.getRuntime()).a(this, paramg, paramJSONObject, paramInt);
-      return;
+      label182:
+      label188:
+      for (boolean bool1 = bool2;; bool1 = false)
+      {
+        paramContext.cX(-1, bool1);
+        AppMethodBeat.o(326733);
+        return;
+        i = 0;
+        break;
+        bool1 = false;
+        break label134;
+      }
     }
-    catch (JSONException localJSONException)
+    
+    private static final void a(i.b paramb, boolean paramBoolean, String paramString)
     {
-      break label51;
+      AppMethodBeat.i(326745);
+      s.u(paramb, "$positivePerformer");
+      paramb.perform();
+      AppMethodBeat.o(326745);
     }
-  }
-  
-  protected abstract void a(g paramg, JSONObject paramJSONObject, int paramInt, e parame);
-  
-  @Deprecated
-  final void b(j paramj, int paramInt, String paramString)
-  {
-    paramj.j(paramInt, h(paramString, null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.auth.i
  * JD-Core Version:    0.7.0.1
  */

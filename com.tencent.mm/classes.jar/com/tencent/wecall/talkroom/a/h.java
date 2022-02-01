@@ -1,6 +1,6 @@
 package com.tencent.wecall.talkroom.a;
 
-import com.google.b.a.e;
+import com.google.d.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.pb.common.b.a.a.a.am;
 import com.tencent.pb.common.b.a.a.a.m;
@@ -11,7 +11,7 @@ import com.tencent.wecall.talkroom.model.j;
 public final class h
   extends d
 {
-  public long DPJ;
+  public long Hnt;
   public String groupId;
   public int roomId;
   
@@ -25,18 +25,18 @@ public final class h
       try
       {
         localm.groupId = paramString;
-        localm.NOc = paramInt1;
-        localm.NOd = paramLong;
-        localm.tQm = paramInt2;
-        localm.ZeW = 2;
-        localm.netType = j.mv(com.tencent.pb.common.c.c.NYh);
+        localm.UAZ = paramInt1;
+        localm.UBa = paramLong;
+        localm.wTC = paramInt2;
+        localm.ahdz = 2;
+        localm.netType = j.oL(com.tencent.pb.common.c.c.UMe);
         if (paramInt3 != 0) {
           continue;
         }
-        localm.Zfm = 0;
-        b.w(this.TAG2, new Object[] { "NetSceneRedirect redirect type:", Integer.valueOf(localm.Zfm) });
-        aAc(3);
-        aAd(com.tencent.wecall.talkroom.model.c.iuI().bEi(paramString));
+        localm.ahdP = 0;
+        b.w(this.TAG2, new Object[] { "NetSceneRedirect redirect type:", Integer.valueOf(localm.ahdP) });
+        aGP(3);
+        aGQ(com.tencent.wecall.talkroom.model.c.ked().bGH(paramString));
       }
       catch (Exception paramString)
       {
@@ -46,11 +46,11 @@ public final class h
       c(211, localm);
       AppMethodBeat.o(175625);
       return;
-      localm.Zfm = 1;
+      localm.ahdP = 1;
     }
   }
   
-  public final Object dn(byte[] paramArrayOfByte)
+  public final Object dp(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62546);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
@@ -78,14 +78,14 @@ public final class h
     return 211;
   }
   
-  public final String ikF()
+  public final String jQW()
   {
     return "CsCmd.Cmd_V_CSVoiceRedirectReq";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.h
  * JD-Core Version:    0.7.0.1
  */

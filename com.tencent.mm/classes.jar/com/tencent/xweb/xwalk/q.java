@@ -1,81 +1,75 @@
 package com.tencent.xweb.xwalk;
 
-import android.webkit.WebBackForwardList;
+import android.graphics.Bitmap;
 import android.webkit.WebHistoryItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import org.xwalk.core.XWalkNavigationHistory;
+import org.xwalk.core.XWalkNavigationItem;
 
 public final class q
-  extends WebBackForwardList
+  extends WebHistoryItem
 {
-  XWalkNavigationHistory aajC;
+  private XWalkNavigationItem aipz;
   
-  public q(XWalkNavigationHistory paramXWalkNavigationHistory)
+  public q(XWalkNavigationItem paramXWalkNavigationItem)
   {
-    this.aajC = paramXWalkNavigationHistory;
+    this.aipz = paramXWalkNavigationItem;
   }
   
-  protected final WebBackForwardList clone()
+  protected final WebHistoryItem clone()
   {
-    AppMethodBeat.i(204479);
-    q localq = new q(this.aajC);
-    AppMethodBeat.o(204479);
+    AppMethodBeat.i(212822);
+    q localq = new q(this.aipz);
+    AppMethodBeat.o(212822);
     return localq;
   }
   
-  public final int getCurrentIndex()
+  public final Bitmap getFavicon()
   {
-    AppMethodBeat.i(204475);
-    if (this.aajC == null) {}
-    for (Integer localInteger = null;; localInteger = Integer.valueOf(this.aajC.getCurrentIndex()))
-    {
-      int i = localInteger.intValue();
-      AppMethodBeat.o(204475);
-      return i;
-    }
+    return null;
   }
   
-  public final WebHistoryItem getCurrentItem()
+  public final String getOriginalUrl()
   {
-    AppMethodBeat.i(204473);
-    if (this.aajC == null)
+    AppMethodBeat.i(212810);
+    if (this.aipz == null)
     {
-      AppMethodBeat.o(204473);
+      AppMethodBeat.o(212810);
       return null;
     }
-    r localr = new r(this.aajC.getCurrentItem());
-    AppMethodBeat.o(204473);
-    return localr;
+    String str = this.aipz.getOriginalUrl();
+    AppMethodBeat.o(212810);
+    return str;
   }
   
-  public final WebHistoryItem getItemAtIndex(int paramInt)
+  public final String getTitle()
   {
-    AppMethodBeat.i(204476);
-    if (this.aajC == null)
+    AppMethodBeat.i(212817);
+    if (this.aipz == null)
     {
-      AppMethodBeat.o(204476);
+      AppMethodBeat.o(212817);
       return null;
     }
-    r localr = new r(this.aajC.getItemAt(paramInt));
-    AppMethodBeat.o(204476);
-    return localr;
+    String str = this.aipz.getTitle();
+    AppMethodBeat.o(212817);
+    return str;
   }
   
-  public final int getSize()
+  public final String getUrl()
   {
-    AppMethodBeat.i(204477);
-    if (this.aajC == null) {}
-    for (Integer localInteger = null;; localInteger = Integer.valueOf(this.aajC.size()))
+    AppMethodBeat.i(212805);
+    if (this.aipz == null)
     {
-      int i = localInteger.intValue();
-      AppMethodBeat.o(204477);
-      return i;
+      AppMethodBeat.o(212805);
+      return null;
     }
+    String str = this.aipz.getUrl();
+    AppMethodBeat.o(212805);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.xwalk.q
  * JD-Core Version:    0.7.0.1
  */

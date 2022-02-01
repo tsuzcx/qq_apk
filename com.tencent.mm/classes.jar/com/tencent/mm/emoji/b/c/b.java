@@ -1,181 +1,162 @@
 package com.tencent.mm.emoji.b.c;
 
+import com.tencent.mars.cdn.CdnLogic;
+import com.tencent.mars.cdn.CdnLogic.C2CDownloadRequest;
+import com.tencent.mars.cdn.CdnLogic.C2CDownloadResult;
+import com.tencent.mars.cdn.CdnLogic.DownloadCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.x;
+import com.tencent.mm.vfs.u;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/model/search/EmojiSuggest;", "Lcom/tencent/mm/emoji/model/search/AbsEmojiSuggest;", "lifeCycleKeeper", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "(Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;)V", "local", "Lcom/tencent/mm/emoji/model/search/EmojiSuggestLocal;", "remote", "Lcom/tencent/mm/emoji/model/search/EmojiSuggestRemote;", "resultList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/emoji/model/search/SuggestEmojiItem;", "checkMatch", "", "desc", "", "distinctResult", "", "", "newList", "", "searchSuggest", "callback", "Lcom/tencent/mm/emoji/model/search/IEmojiSuggest$SuggestCallback;", "setRequestInfo", "chatId", "sessionId", "Companion", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/loader/fetcher/EmojiCdnHttpsFetcher;", "Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcher;", "()V", "TAG", "", "callback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "success", "", "cdnCallback", "com/tencent/mm/emoji/loader/fetcher/EmojiCdnHttpsFetcher$cdnCallback$1", "Lcom/tencent/mm/emoji/loader/fetcher/EmojiCdnHttpsFetcher$cdnCallback$1;", "cdnMediaType", "", "fetcherConfig", "Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcherConfig;", "startRet", "startTime", "", "fetch", "reportResult", "reportStart", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends a
+  implements d
 {
-  public static final b.a jKr;
-  private final e jKo;
-  public final f jKp;
-  private final LinkedList<l> jKq;
+  private final String TAG;
+  private kotlin.g.a.b<? super Boolean, ah> callback;
+  private e mgu;
+  private int mgx;
+  private int mgy;
+  private final a mgz;
+  private long startTime;
   
-  static
+  public b()
   {
-    AppMethodBeat.i(226730);
-    jKr = new b.a((byte)0);
-    AppMethodBeat.o(226730);
+    AppMethodBeat.i(242746);
+    this.TAG = "MicroMsg.EmojiCdnHttpsFetcher";
+    this.mgz = new a(this);
+    AppMethodBeat.o(242746);
   }
   
-  public b(com.tencent.mm.vending.e.b<com.tencent.mm.vending.e.a> paramb)
+  private final void fb(boolean paramBoolean)
   {
-    super(paramb);
-    AppMethodBeat.i(226727);
-    this.jKo = new e();
-    this.jKp = new f(paramb);
-    this.jKq = new LinkedList();
-    AppMethodBeat.o(226727);
+    AppMethodBeat.i(242747);
+    e locale = this.mgu;
+    if (locale != null)
+    {
+      if (paramBoolean)
+      {
+        com.tencent.mm.plugin.emoji.d.lo(21L);
+        com.tencent.mm.plugin.emoji.d.lo(2L);
+        AppMethodBeat.o(242747);
+        return;
+      }
+      com.tencent.mm.plugin.emoji.d.lo(22L);
+      com.tencent.mm.plugin.emoji.d.lo(3L);
+      switch (locale.mgL)
+      {
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(242747);
+      return;
+      com.tencent.mm.plugin.emoji.d.a(locale.mgK.getMd5(), 4, 1, 1, locale.mgK.field_groupId, 1, locale.mgK.field_designerID);
+      AppMethodBeat.o(242747);
+      return;
+      com.tencent.mm.plugin.emoji.d.a(locale.mgK.getMd5(), 2, 1, 1, locale.mgK.field_groupId, 1, locale.mgK.field_designerID);
+      AppMethodBeat.o(242747);
+      return;
+      com.tencent.mm.plugin.emoji.d.a(locale.mgK.getMd5(), 4, 1, 1, locale.mgK.field_groupId, 1, locale.mgK.field_designerID);
+    }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  public static final class b
-    extends q
-    implements kotlin.g.a.a<x>
+  public final void a(e parame, kotlin.g.a.b<? super Boolean, ah> paramb)
   {
-    public b(b paramb, String paramString, j.b paramb1)
-    {
-      super();
+    AppMethodBeat.i(242751);
+    s.u(parame, "fetcherConfig");
+    this.mgu = parame;
+    this.callback = paramb;
+    paramb = new u(parame.path).jKP();
+    if (paramb != null) {
+      paramb.jKY();
     }
-    
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/emoji/model/search/EmojiSuggest$searchSuggest$1$localCallback$1", "Lcom/tencent/mm/emoji/model/search/IEmojiSuggest$SuggestCallback;", "onResult", "", "emojiList", "", "Lcom/tencent/mm/emoji/model/search/SuggestEmojiItem;", "wordInfo", "Lcom/tencent/mm/emoji/model/search/SuggestWordInfo;", "plugin-emojisdk_release"})
-    public static final class a
-      implements j.b
+    int i;
+    if (parame.mgL == 2)
     {
-      a(LinkedList paramLinkedList, b.b.b paramb) {}
-      
-      public final void a(List<l> paramList, m paramm)
-      {
-        AppMethodBeat.i(230434);
-        p.k(paramList, "emojiList");
-        p.k(paramm, "wordInfo");
-        Log.i(k.aBy(), "onResult: local " + paramList.size());
-        if (!this.jKv.jKs.dfl)
+      i = 20403;
+      this.mgx = i;
+      this.startTime = Util.nowMilliSecond();
+      paramb = new CdnLogic.C2CDownloadRequest();
+      paramb.queueTimeoutSeconds = 60;
+      paramb.transforTimeoutSeconds = 60;
+      paramb.taskStartTime = this.startTime;
+      paramb.fileType = this.mgx;
+      paramb.fileKey = s.X(d.a.aUx(), parame.mgK.getMd5());
+      paramb.url = parame.url;
+      paramb.setSavePath(parame.path);
+      this.mgy = CdnLogic.startHttpsDownload(paramb, (CdnLogic.DownloadCallback)this.mgz);
+      Log.i(this.TAG, "fetch: start " + parame.mgK.getMd5() + ' ' + this.mgy);
+      com.tencent.mm.plugin.emoji.d.lo(20L);
+      parame = this.mgu;
+      if (parame != null) {
+        switch (parame.mgL)
         {
-          AppMethodBeat.o(230434);
-          return;
         }
-        this.jKw.addAll((Collection)paramList);
-        b.b(this.jKv.jKs).a(this.jKv.jKt, (j.b)this.jKx);
-        AppMethodBeat.o(230434);
       }
     }
-    
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/emoji/model/search/EmojiSuggest$searchSuggest$1$remoteCallback$1", "Lcom/tencent/mm/emoji/model/search/IEmojiSuggest$SuggestCallback;", "onResult", "", "emojiList", "", "Lcom/tencent/mm/emoji/model/search/SuggestEmojiItem;", "wordInfo", "Lcom/tencent/mm/emoji/model/search/SuggestWordInfo;", "plugin-emojisdk_release"})
-    public static final class b
-      implements j.b
+    for (;;)
     {
-      b(boolean paramBoolean, LinkedList paramLinkedList) {}
-      
-      public final void a(List<l> paramList, m paramm)
+      if (this.mgy != 0)
       {
-        AppMethodBeat.i(225876);
-        p.k(paramList, "emojiList");
-        p.k(paramm, "wordInfo");
-        Log.i(k.aBy(), "onResult: remote " + paramList.size());
-        if (!this.jKv.jKs.dfl)
-        {
-          AppMethodBeat.o(225876);
-          return;
+        parame = this.callback;
+        if (parame != null) {
+          parame.invoke(Boolean.FALSE);
         }
-        Object localObject1;
-        Iterator localIterator;
-        long l1;
-        label287:
-        Object localObject2;
-        long l2;
-        if (this.jKy)
-        {
-          localObject1 = new LinkedList((Collection)paramList);
-          ((LinkedList)localObject1).addAll((Collection)this.jKw);
-          localIterator = ((Iterable)localObject1).iterator();
-          if (!localIterator.hasNext()) {
-            localObject1 = null;
-          }
-          do
-          {
-            localObject1 = (l)localObject1;
-            if (localObject1 != null)
-            {
-              ((l)localObject1).jKP = 1;
-              b.c(this.jKv.jKs).add(localObject1);
-            }
-            b.d((List)b.c(this.jKv.jKs), paramList);
-            b.d((List)b.c(this.jKv.jKs), (List)this.jKw);
-            paramList = this.jKv.jKu;
-            if (paramList != null) {
-              paramList.a((List)b.c(this.jKv.jKs), paramm);
-            }
-            paramList = d.jKB;
-            d.Z((List)b.c(this.jKv.jKs));
-            AppMethodBeat.o(225876);
-            return;
-            localObject1 = localIterator.next();
-          } while (!localIterator.hasNext());
-          l1 = ((l)localObject1).jHh.field_lastUseTime;
-          localObject2 = localIterator.next();
-          l2 = ((l)localObject2).jHh.field_lastUseTime;
-          if (l1 >= l2) {
-            break label532;
-          }
-          l1 = l2;
-          localObject1 = localObject2;
-        }
-        label527:
-        label532:
-        for (;;)
-        {
-          if (!localIterator.hasNext())
-          {
-            break;
-            localIterator = ((Iterable)this.jKw).iterator();
-            if (!localIterator.hasNext()) {
-              localObject1 = null;
-            }
-            for (;;)
-            {
-              localObject1 = (l)localObject1;
-              if (localObject1 != null)
-              {
-                ((l)localObject1).jKP = 1;
-                b.c(this.jKv.jKs).add(localObject1);
-              }
-              b.d((List)b.c(this.jKv.jKs), (List)this.jKw);
-              b.d((List)b.c(this.jKv.jKs), paramList);
-              break;
-              localObject1 = localIterator.next();
-              if (localIterator.hasNext())
-              {
-                l1 = ((l)localObject1).jHh.field_lastUseTime;
-                localObject2 = localIterator.next();
-                l2 = ((l)localObject2).jHh.field_lastUseTime;
-                if (l1 < l2)
-                {
-                  l1 = l2;
-                  localObject1 = localObject2;
-                }
-                for (;;)
-                {
-                  if (!localIterator.hasNext()) {
-                    break label527;
-                  }
-                  break;
-                }
-              }
-            }
-          }
-          break label287;
-        }
+        fb(false);
       }
+      AppMethodBeat.o(242751);
+      return;
+      i = 20401;
+      break;
+      com.tencent.mm.plugin.emoji.d.lo(1L);
+      continue;
+      com.tencent.mm.plugin.emoji.d.lo(6L);
+      continue;
+      com.tencent.mm.plugin.emoji.d.lo(10L);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/emoji/loader/fetcher/EmojiCdnHttpsFetcher$cdnCallback$1", "Lcom/tencent/mars/cdn/CdnLogic$DownloadCallback;", "onC2CDownloadCompleted", "", "filekey", "", "result", "Lcom/tencent/mars/cdn/CdnLogic$C2CDownloadResult;", "onDownloadProgressChanged", "finished", "", "total", "tryshow", "", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+    implements CdnLogic.DownloadCallback
+  {
+    a(b paramb) {}
+    
+    public final void onC2CDownloadCompleted(String paramString, CdnLogic.C2CDownloadResult paramC2CDownloadResult)
+    {
+      AppMethodBeat.i(242744);
+      s.u(paramString, "filekey");
+      s.u(paramC2CDownloadResult, "result");
+      Log.i(b.a(this.mgA), "onC2CDownloadCompleted: " + paramString + ", " + paramC2CDownloadResult.errorCode);
+      if (paramC2CDownloadResult.errorCode != 0)
+      {
+        paramString = b.b(this.mgA);
+        if (paramString != null) {
+          paramString.invoke(Boolean.FALSE);
+        }
+        b.a(this.mgA, false);
+        AppMethodBeat.o(242744);
+        return;
+      }
+      paramString = b.b(this.mgA);
+      if (paramString != null) {
+        paramString.invoke(Boolean.TRUE);
+      }
+      b.a(this.mgA, true);
+      AppMethodBeat.o(242744);
+    }
+    
+    public final void onDownloadProgressChanged(String paramString, long paramLong1, long paramLong2, boolean paramBoolean)
+    {
+      AppMethodBeat.i(242745);
+      s.u(paramString, "filekey");
+      AppMethodBeat.o(242745);
     }
   }
 }

@@ -1,45 +1,45 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.fpi;
+import com.tencent.mm.protocal.protobuf.gmi;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 final class AppBrandProfileUI$c
 {
-  public final List<fpi> qXP;
+  public final List<gmi> udQ;
   
-  public AppBrandProfileUI$c(List<fpi> paramList)
+  public AppBrandProfileUI$c(List<gmi> paramList)
   {
-    this.qXP = paramList;
+    this.udQ = paramList;
   }
   
   public final int size()
   {
-    AppMethodBeat.i(276537);
-    if ((this.qXP == null) || (this.qXP.isEmpty()))
+    AppMethodBeat.i(322069);
+    if ((this.udQ == null) || (this.udQ.isEmpty()))
     {
-      AppMethodBeat.o(276537);
+      AppMethodBeat.o(322069);
       return 0;
     }
-    Iterator localIterator = this.qXP.iterator();
+    Iterator localIterator = this.udQ.iterator();
     label43:
-    fpi localfpi;
-    for (int i = 0; localIterator.hasNext(); i = localfpi.UNa.size() + i)
+    gmi localgmi;
+    for (int i = 0; localIterator.hasNext(); i = localgmi.achw.size() + i)
     {
-      localfpi = (fpi)localIterator.next();
-      if ((localfpi == null) || (localfpi.UNa == null) || (localfpi.UNa.isEmpty())) {
+      localgmi = (gmi)localIterator.next();
+      if ((localgmi == null) || (localgmi.achw == null) || (localgmi.achw.isEmpty())) {
         break label43;
       }
     }
-    AppMethodBeat.o(276537);
+    AppMethodBeat.o(322069);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandProfileUI.c
  * JD-Core Version:    0.7.0.1
  */

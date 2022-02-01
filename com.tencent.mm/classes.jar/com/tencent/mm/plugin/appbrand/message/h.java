@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.appbrand.message;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.h.a;
-import com.tencent.mm.an.h.b;
+import com.tencent.mm.am.g.a;
+import com.tencent.mm.am.g.b;
 import com.tencent.mm.kernel.b;
-import com.tencent.mm.plugin.appbrand.app.m;
+import com.tencent.mm.plugin.appbrand.app.n;
 import com.tencent.mm.plugin.appbrand.config.e;
 import com.tencent.mm.plugin.messenger.foundation.a.s;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -17,24 +17,24 @@ public enum h
   static
   {
     AppMethodBeat.i(47746);
-    qhn = new h("INSTANCE");
-    qho = new h[] { qhn };
+    tlY = new h("INSTANCE");
+    tlZ = new h[] { tlY };
     AppMethodBeat.o(47746);
   }
   
   private h() {}
   
-  public static Long eJ(String paramString1, String paramString2)
+  public static Long fa(String paramString1, String paramString2)
   {
     AppMethodBeat.i(47744);
-    Object localObject = m.QG();
+    Object localObject = n.aqS();
     if (localObject == null)
     {
-      Log.e("MicroMsg.WxaWeAppPushCommandMgr", "getExpireTime(appId:%s, type:%s), kvStorage==NULL, account initialized:%b", new Object[] { paramString1, paramString2, Boolean.valueOf(com.tencent.mm.kernel.h.aHE().kbT) });
+      Log.e("MicroMsg.WxaWeAppPushCommandMgr", "getExpireTime(appId:%s, type:%s), kvStorage==NULL, account initialized:%b", new Object[] { paramString1, paramString2, Boolean.valueOf(com.tencent.mm.kernel.h.baC().mBZ) });
       AppMethodBeat.o(47744);
       return null;
     }
-    localObject = ((e)localObject).L(eK(paramString1, paramString2), "");
+    localObject = ((e)localObject).O(fb(paramString1, paramString2), "");
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
       AppMethodBeat.o(47744);
@@ -42,7 +42,7 @@ public enum h
     }
     if (Long.valueOf((String)localObject).longValue() < System.currentTimeMillis())
     {
-      m.QG().ho(eK(paramString1, paramString2));
+      n.aqS().iP(fb(paramString1, paramString2));
       Log.i("MicroMsg.WxaWeAppPushCommandMgr", "delete data app id=".concat(String.valueOf(paramString1)));
     }
     paramString1 = Long.valueOf((String)localObject);
@@ -50,7 +50,7 @@ public enum h
     return paramString1;
   }
   
-  private static String eK(String paramString1, String paramString2)
+  private static String fb(String paramString1, String paramString2)
   {
     AppMethodBeat.i(47745);
     paramString1 = paramString1 + "#WxaWeAppPushCommandMgr#" + paramString2;
@@ -58,7 +58,7 @@ public enum h
     return paramString1;
   }
   
-  public final h.b a(String paramString, Map<String, String> paramMap, h.a parama)
+  public final g.b a(String paramString, Map<String, String> paramMap, g.a parama)
   {
     AppMethodBeat.i(47743);
     int i;
@@ -111,7 +111,7 @@ public enum h
         j = 0;
         break label172;
         long l = Long.valueOf(paramString).longValue();
-        m.QG().cW(eK(str, "copypath"), String.valueOf(l * 1000L + System.currentTimeMillis()));
+        n.aqS().dn(fb(str, "copypath"), String.valueOf(l * 1000L + System.currentTimeMillis()));
         break label192;
       }
     }
@@ -119,7 +119,7 @@ public enum h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.message.h
  * JD-Core Version:    0.7.0.1
  */

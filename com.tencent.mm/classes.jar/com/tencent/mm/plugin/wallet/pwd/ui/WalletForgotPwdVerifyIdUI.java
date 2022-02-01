@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.wallet.pwd.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -8,7 +7,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Display;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
 import android.view.View.OnLayoutChangeListener;
 import android.view.ViewGroup.MarginLayoutParams;
@@ -18,13 +16,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
 import com.tencent.mm.plugin.wallet.pwd.a.a;
-import com.tencent.mm.plugin.wallet.pwd.a.t;
-import com.tencent.mm.plugin.wallet_core.c.ae;
-import com.tencent.mm.plugin.wallet_core.d.k;
-import com.tencent.mm.plugin.wallet_core.model.an;
-import com.tencent.mm.plugin.wallet_core.model.ao;
+import com.tencent.mm.plugin.wallet.pwd.a.s;
+import com.tencent.mm.plugin.wallet_core.model.al;
+import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.plugin.wallet_core.model.u;
 import com.tencent.mm.plugin.wxpay.a.c;
 import com.tencent.mm.plugin.wxpay.a.f;
@@ -33,39 +28,40 @@ import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.bd;
 import com.tencent.mm.ui.widget.MMEditText;
-import com.tencent.mm.wallet_core.c.ad;
-import com.tencent.mm.wallet_core.c.p;
-import com.tencent.mm.wallet_core.d;
+import com.tencent.mm.wallet_core.c.g;
+import com.tencent.mm.wallet_core.e;
+import com.tencent.mm.wallet_core.model.b;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
+import com.tencent.mm.wallet_core.ui.i;
 
 @com.tencent.mm.ui.base.a(3)
 public class WalletForgotPwdVerifyIdUI
   extends WalletBaseUI
   implements View.OnLayoutChangeListener
 {
-  private int DIF = 0;
-  private boolean OBA;
-  private TextView OBF;
-  private WalletFormView OBG;
-  private Button OBH;
-  private TextView OBI;
-  private LinearLayout OBJ;
-  ViewGroup.MarginLayoutParams OBK;
-  ViewGroup.MarginLayoutParams OBL;
-  private View OBM;
-  private boolean OBN = false;
-  private boolean OBO = false;
-  private boolean OBP = false;
-  private boolean OBQ = false;
-  private TextView jMg;
-  private View oFW;
-  private int pEk = 0;
-  private MMEditText wXT;
+  private MMEditText Avj;
+  private int JzI = 0;
+  private boolean McI = false;
+  private boolean VqN;
+  private TextView VqS;
+  private WalletFormView VqT;
+  private Button VqU;
+  private TextView VqV;
+  private LinearLayout VqW;
+  ViewGroup.MarginLayoutParams VqX;
+  ViewGroup.MarginLayoutParams VqY;
+  private View VqZ;
+  private boolean Vra = false;
+  private boolean Vrb = false;
+  private boolean Vrc = false;
+  private TextView mll;
+  private int pvg = 0;
+  private View rootView;
   
-  private void gHK()
+  private void igP()
   {
     AppMethodBeat.i(69693);
     Log.i("MicroMsg.WalletForgotPwdVerifyIdUI", " setChangParams()");
@@ -76,12 +72,12 @@ public class WalletForgotPwdVerifyIdUI
         AppMethodBeat.i(69684);
         WalletForgotPwdVerifyIdUI.c(WalletForgotPwdVerifyIdUI.this).setVisibility(8);
         WalletForgotPwdVerifyIdUI.d(WalletForgotPwdVerifyIdUI.this).setVisibility(8);
-        WalletForgotPwdVerifyIdUI.this.OBK = ((ViewGroup.MarginLayoutParams)WalletForgotPwdVerifyIdUI.e(WalletForgotPwdVerifyIdUI.this).getLayoutParams());
-        WalletForgotPwdVerifyIdUI.this.OBK.topMargin = aw.fromDPToPix(WalletForgotPwdVerifyIdUI.this, 47);
-        WalletForgotPwdVerifyIdUI.e(WalletForgotPwdVerifyIdUI.this).setLayoutParams(WalletForgotPwdVerifyIdUI.this.OBK);
-        WalletForgotPwdVerifyIdUI.this.OBL = ((ViewGroup.MarginLayoutParams)WalletForgotPwdVerifyIdUI.f(WalletForgotPwdVerifyIdUI.this).getLayoutParams());
-        WalletForgotPwdVerifyIdUI.this.OBL.topMargin = aw.fromDPToPix(WalletForgotPwdVerifyIdUI.this, 48);
-        WalletForgotPwdVerifyIdUI.f(WalletForgotPwdVerifyIdUI.this).setLayoutParams(WalletForgotPwdVerifyIdUI.this.OBL);
+        WalletForgotPwdVerifyIdUI.this.VqX = ((ViewGroup.MarginLayoutParams)WalletForgotPwdVerifyIdUI.e(WalletForgotPwdVerifyIdUI.this).getLayoutParams());
+        WalletForgotPwdVerifyIdUI.this.VqX.topMargin = bd.fromDPToPix(WalletForgotPwdVerifyIdUI.this, 47);
+        WalletForgotPwdVerifyIdUI.e(WalletForgotPwdVerifyIdUI.this).setLayoutParams(WalletForgotPwdVerifyIdUI.this.VqX);
+        WalletForgotPwdVerifyIdUI.this.VqY = ((ViewGroup.MarginLayoutParams)WalletForgotPwdVerifyIdUI.f(WalletForgotPwdVerifyIdUI.this).getLayoutParams());
+        WalletForgotPwdVerifyIdUI.this.VqY.topMargin = bd.fromDPToPix(WalletForgotPwdVerifyIdUI.this, 48);
+        WalletForgotPwdVerifyIdUI.f(WalletForgotPwdVerifyIdUI.this).setLayoutParams(WalletForgotPwdVerifyIdUI.this.VqY);
         AppMethodBeat.o(69684);
       }
     }, 100L);
@@ -92,17 +88,17 @@ public class WalletForgotPwdVerifyIdUI
   {
     AppMethodBeat.i(69691);
     Log.i("MicroMsg.WalletForgotPwdVerifyIdUI", "updateView");
-    int i = u.gJj().gKZ().field_cre_type;
-    String str1 = u.gJj().gKZ().field_cre_name;
-    String str2 = u.gJj().gKZ().field_true_name;
-    this.wXT.setHint(getString(a.i.wallet_card_username_hint_forget, new Object[] { com.tencent.mm.wallet_core.ui.g.bCp(str2) }));
+    int i = u.iix().ijK().field_cre_type;
+    String str1 = u.iix().ijK().field_cre_name;
+    String str2 = u.iix().ijK().field_true_name;
+    this.Avj.setHint(getString(a.i.wallet_card_username_hint_forget, new Object[] { i.bEN(str2) }));
     if (!Util.isNullOrNil(str1)) {
-      this.OBF.setText(str1);
+      this.VqS.setText(str1);
     }
     while (i == 1)
     {
-      com.tencent.mm.wallet_core.ui.formview.a.d(this.OBG);
-      setEditFocusListener(this.OBG, 1, false, false, true);
+      com.tencent.mm.wallet_core.ui.formview.a.d(this.VqT);
+      setEditFocusListener(this.VqT, 1, false, false, true);
       AppMethodBeat.o(69691);
       return;
       Log.w("MicroMsg.WalletForgotPwdVerifyIdUI", "creName is null");
@@ -116,9 +112,9 @@ public class WalletForgotPwdVerifyIdUI
     AppMethodBeat.i(69690);
     super.finish();
     getIntent().putExtra("process_id", com.tencent.mm.plugin.wallet.pwd.a.class.hashCode());
-    com.tencent.mm.plugin.wallet.pwd.a locala = (com.tencent.mm.plugin.wallet.pwd.a)com.tencent.mm.wallet_core.a.bF(this);
-    if ((locala != null) && (locala.OzI != null)) {
-      locala.OzI.run(-1);
+    com.tencent.mm.plugin.wallet.pwd.a locala = (com.tencent.mm.plugin.wallet.pwd.a)com.tencent.mm.wallet_core.a.cm(this);
+    if ((locala != null) && (locala.VoT != null)) {
+      locala.VoT.run(-1);
     }
     AppMethodBeat.o(69690);
   }
@@ -141,55 +137,51 @@ public class WalletForgotPwdVerifyIdUI
     setActionbarColor(getContext().getResources().getColor(a.c.white));
     hideActionbarLine();
     setMMTitleVisibility(8);
-    this.OBM = findViewById(a.f.root_layout);
-    this.pEk = getWindowManager().getDefaultDisplay().getHeight();
-    this.DIF = (this.pEk / 3);
-    this.OBM.addOnLayoutChangeListener(this);
-    this.OBA = getInput().getBoolean("key_is_force_bind", false);
-    if (!this.OBA)
+    this.VqZ = findViewById(a.f.root_layout);
+    this.pvg = getWindowManager().getDefaultDisplay().getHeight();
+    this.JzI = (this.pvg / 3);
+    this.VqZ.addOnLayoutChangeListener(this);
+    this.VqN = getInput().getBoolean("key_is_force_bind", false);
+    if (!this.VqN)
     {
-      doSceneProgress(new ae(null, 6));
+      doSceneProgress(new com.tencent.mm.plugin.wallet_core.c.ae(null, 6));
       setContentViewVisibility(4);
     }
-    this.wXT = ((MMEditText)findViewById(a.f.name_edit));
-    this.OBF = ((TextView)findViewById(a.f.identity_type_tv));
-    this.OBG = ((WalletFormView)findViewById(a.f.identity_et));
-    this.OBH = ((Button)findViewById(a.f.next_btn));
-    this.OBI = ((TextView)findViewById(a.f.qa_tv));
-    this.oFW = findViewById(a.f.root);
-    this.jMg = ((TextView)findViewById(a.f.title));
-    this.OBJ = ((LinearLayout)findViewById(a.f.name_layout));
-    this.OBG.setEnabled(false);
-    this.OBG.setFocusable(false);
-    this.OBH.setOnClickListener(new View.OnClickListener()
+    this.Avj = ((MMEditText)findViewById(a.f.name_edit));
+    this.VqS = ((TextView)findViewById(a.f.identity_type_tv));
+    this.VqT = ((WalletFormView)findViewById(a.f.identity_et));
+    this.VqU = ((Button)findViewById(a.f.next_btn));
+    this.VqV = ((TextView)findViewById(a.f.qa_tv));
+    this.rootView = findViewById(a.f.root);
+    this.mll = ((TextView)findViewById(a.f.title));
+    this.VqW = ((LinearLayout)findViewById(a.f.name_layout));
+    this.VqT.setEnabled(false);
+    this.VqT.setFocusable(false);
+    this.VqU.setOnClickListener(new com.tencent.mm.wallet_core.ui.k()
     {
-      public final void onClick(View paramAnonymousView)
+      public final void dr(View paramAnonymousView)
       {
-        AppMethodBeat.i(69682);
-        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet/pwd/ui/WalletForgotPwdVerifyIdUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+        AppMethodBeat.i(315658);
         paramAnonymousView = WalletForgotPwdVerifyIdUI.a(WalletForgotPwdVerifyIdUI.this).getText();
-        int i = u.gJo().gKa();
-        localObject = WalletForgotPwdVerifyIdUI.b(WalletForgotPwdVerifyIdUI.this).getText().toString();
-        if ((!Util.isNullOrNil(paramAnonymousView)) && (!Util.isNullOrNil((String)localObject)))
+        int i = u.iiC().ijr();
+        String str = WalletForgotPwdVerifyIdUI.b(WalletForgotPwdVerifyIdUI.this).getText().toString();
+        if ((!Util.isNullOrNil(paramAnonymousView)) && (!Util.isNullOrNil(str)))
         {
           WalletForgotPwdVerifyIdUI.this.getInput().putString("key_identity", paramAnonymousView);
           WalletForgotPwdVerifyIdUI.this.getInput().putInt("key_id_type", i);
-          WalletForgotPwdVerifyIdUI.this.getInput().putString("key_true_name", (String)localObject);
+          WalletForgotPwdVerifyIdUI.this.getInput().putString("key_true_name", str);
           if (WalletForgotPwdVerifyIdUI.this.getProcess() != null)
           {
-            WalletForgotPwdVerifyIdUI.this.getProcess().fKb.putString("key_identity", paramAnonymousView);
-            WalletForgotPwdVerifyIdUI.this.getProcess().fKb.putInt("key_id_type", i);
-            WalletForgotPwdVerifyIdUI.this.getProcess().fKb.putString("key_true_name", (String)localObject);
+            WalletForgotPwdVerifyIdUI.this.getProcess().hPH.putString("key_identity", paramAnonymousView);
+            WalletForgotPwdVerifyIdUI.this.getProcess().hPH.putInt("key_id_type", i);
+            WalletForgotPwdVerifyIdUI.this.getProcess().hPH.putString("key_true_name", str);
           }
-          WalletForgotPwdVerifyIdUI.this.getNetController().r(new Object[] { paramAnonymousView, Integer.valueOf(i), localObject });
+          WalletForgotPwdVerifyIdUI.this.getNetController().t(new Object[] { paramAnonymousView, Integer.valueOf(i), str });
         }
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet/pwd/ui/WalletForgotPwdVerifyIdUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(69682);
+        AppMethodBeat.o(315658);
       }
     });
-    this.OBI.setOnClickListener(new WalletForgotPwdVerifyIdUI.2(this));
+    this.VqV.setOnClickListener(new WalletForgotPwdVerifyIdUI.2(this));
     updateView();
     setTenpayKBStateListener(new com.tencent.mm.wallet_core.ui.a()
     {
@@ -210,7 +202,7 @@ public class WalletForgotPwdVerifyIdUI
         AppMethodBeat.o(69687);
       }
     });
-    this.wXT.setOnFocusChangeListener(new View.OnFocusChangeListener()
+    this.Avj.setOnFocusChangeListener(new View.OnFocusChangeListener()
     {
       public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
       {
@@ -226,7 +218,7 @@ public class WalletForgotPwdVerifyIdUI
         AppMethodBeat.o(69688);
       }
     });
-    this.wXT.addTextChangedListener(new TextWatcher()
+    this.Avj.addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable) {}
       
@@ -248,7 +240,7 @@ public class WalletForgotPwdVerifyIdUI
         }
       }
     });
-    this.OBG.a(new TextWatcher()
+    this.VqT.a(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable) {}
       
@@ -275,26 +267,26 @@ public class WalletForgotPwdVerifyIdUI
   public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
     AppMethodBeat.i(69694);
-    if ((paramInt8 != 0) && (paramInt4 != 0) && (paramInt8 - paramInt4 > this.DIF))
+    if ((paramInt8 != 0) && (paramInt4 != 0) && (paramInt8 - paramInt4 > this.JzI))
     {
       Log.i("MicroMsg.WalletForgotPwdVerifyIdUI", " up");
-      gHK();
+      igP();
       AppMethodBeat.o(69694);
       return;
     }
-    if ((paramInt8 != 0) && (paramInt4 != 0) && (paramInt4 - paramInt8 > this.DIF)) {
+    if ((paramInt8 != 0) && (paramInt4 != 0) && (paramInt4 - paramInt8 > this.JzI)) {
       Log.i("MicroMsg.WalletForgotPwdVerifyIdUI", " down");
     }
     AppMethodBeat.o(69694);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
   {
     AppMethodBeat.i(69692);
-    Log.i("MicroMsg.WalletForgotPwdVerifyIdUI", " errCode: %s errMsg: %s  scene: %s", new Object[] { Integer.valueOf(paramInt2), paramString, paramq });
+    Log.i("MicroMsg.WalletForgotPwdVerifyIdUI", " errCode: %s errMsg: %s  scene: %s", new Object[] { Integer.valueOf(paramInt2), paramString, paramp });
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if (!(paramq instanceof ae)) {
+      if (!(paramp instanceof com.tencent.mm.plugin.wallet_core.c.ae)) {
         break label67;
       }
       updateView();
@@ -305,22 +297,22 @@ public class WalletForgotPwdVerifyIdUI
       AppMethodBeat.o(69692);
       return false;
       label67:
-      if ((paramq instanceof t))
+      if ((paramp instanceof s))
       {
-        paramString = (t)paramq;
-        getInput().putInt("key_is_support_face", paramString.OAt);
+        paramString = (s)paramp;
+        getInput().putInt("key_is_support_face", paramString.VpG);
         getInput().putInt("key_face_action_scene", paramString.scene);
         getInput().putString("key_face_action_package", paramString.packageName);
-        getInput().putString("key_face_action_package_sign", paramString.fSC);
-        if (paramString.OAu == 1)
+        getInput().putString("key_face_action_package_sign", paramString.hYz);
+        if (paramString.VpH == 1)
         {
-          ad.iiX();
-          paramq = ad.getCrtNo();
-          com.tencent.mm.wallet_core.c.b.iiL();
-          if (!com.tencent.mm.wallet_core.c.b.isCertExist(paramq))
+          com.tencent.mm.wallet_core.model.ae.jOT();
+          paramp = com.tencent.mm.wallet_core.model.ae.getCrtNo();
+          b.jOG();
+          if (!b.isCertExist(paramp))
           {
             Log.i("MicroMsg.WalletForgotPwdVerifyIdUI", "checkInstallCert, crt not installed");
-            doSceneForceProgress(new p(paramString.OAr, paramString.OAs));
+            doSceneForceProgress(new com.tencent.mm.wallet_core.model.p(paramString.VpE, paramString.VpF));
           }
           else
           {
@@ -334,7 +326,7 @@ public class WalletForgotPwdVerifyIdUI
           getProcess().a(this, 0, getInput());
         }
       }
-      else if ((paramq instanceof p))
+      else if ((paramp instanceof com.tencent.mm.wallet_core.model.p))
       {
         Log.i("MicroMsg.WalletForgotPwdVerifyIdUI", "install cert finish, go to next process");
         getProcess().a(this, 0, getInput());
@@ -350,7 +342,7 @@ public class WalletForgotPwdVerifyIdUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.WalletForgotPwdVerifyIdUI
  * JD-Core Version:    0.7.0.1
  */

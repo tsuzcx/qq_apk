@@ -14,16 +14,16 @@ final class SelectContactUI$25
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(287609);
+    AppMethodBeat.i(253470);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/ui/contact/SelectContactUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    localb.cH(paramView);
+    a.c("com/tencent/mm/ui/contact/SelectContactUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
     paramView = new Intent();
-    paramView.setClassName(this.Xwj, "com.tencent.mm.ui.contact.GroupCardSelectUI");
+    paramView.setClassName(this.afik, "com.tencent.mm.ui.contact.GroupCardSelectUI");
     paramView.putExtra("group_select_type", false);
-    this.Xwj.startActivityForResult(paramView, 1);
+    this.afik.startActivityForResult(paramView, 1);
     a.a(this, "com/tencent/mm/ui/contact/SelectContactUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(287609);
+    AppMethodBeat.o(253470);
   }
 }
 

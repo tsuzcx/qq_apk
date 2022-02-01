@@ -10,8 +10,10 @@ import com.tencent.wework.api.util.SessionProvider;
 public abstract class WWBaseMessage
   extends BaseMessage
 {
+  public String aicE;
+  protected boolean aicU;
   public String appId;
-  public String nYD;
+  public String qYG;
   
   public boolean checkArgs()
   {
@@ -22,13 +24,15 @@ public abstract class WWBaseMessage
   {
     this.transaction = paramBundle.getString("_wwapi_basereq_transaction");
     this.appId = paramBundle.getString("_wwapi_basereq_openid");
-    this.nYD = paramBundle.getString("_wwapi_basereq_agentid");
+    this.qYG = paramBundle.getString("_wwapi_basereq_agentid");
+    this.aicE = paramBundle.getString("_schema");
     this.appName = paramBundle.getString("_wwapi_basereq_appname");
-    this.ZYp = paramBundle.getString("_wwapi_basereq_appbundle");
+    this.aicQ = paramBundle.getString("_wwapi_basereq_appbundle");
     this.sdkVer = paramBundle.getInt("_wwobject_sdkVer", 0);
-    this.ZYq = paramBundle.getString("_wwobject_sdkVername");
-    if ((ZYr != null) && (TextUtils.isEmpty(this.EsO))) {
-      this.EsO = ZYr.ivn();
+    this.aicR = paramBundle.getString("_wwobject_sdkVername");
+    this.aicU = paramBundle.getBoolean("needUpdateSession");
+    if ((aicS != null) && (TextUtils.isEmpty(this.Klu))) {
+      this.Klu = aicS.keJ();
     }
   }
   
@@ -38,22 +42,24 @@ public abstract class WWBaseMessage
     this.transaction = str;
     paramBundle.putString("_wwapi_basereq_transaction", str);
     paramBundle.putString("_wwapi_basereq_openid", this.appId);
-    paramBundle.putString("_wwapi_basereq_agentid", this.nYD);
+    paramBundle.putString("_wwapi_basereq_agentid", this.qYG);
+    paramBundle.putString("_schema", this.aicE);
     try
     {
       paramBundle.putString("_wwapi_basereq_appbundle", this.mContext.getPackageName());
       paramBundle.putString("_wwapi_basereq_appname", this.mContext.getString(this.mContext.getApplicationInfo().labelRes));
-      label75:
+      label85:
       paramBundle.putInt("_wwobject_sdkVer", 4);
-      paramBundle.putString("_wwobject_sdkVername", "2.0.11.21");
-      if ((ZYr != null) && (TextUtils.isEmpty(this.EsO))) {
-        this.EsO = ZYr.ivn();
+      paramBundle.putString("_wwobject_sdkVername", "2.0.12.7");
+      paramBundle.putBoolean("needUpdateSession", this.aicU);
+      if ((aicS != null) && (TextUtils.isEmpty(this.Klu))) {
+        this.Klu = aicS.keJ();
       }
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      break label75;
+      break label85;
     }
   }
 }

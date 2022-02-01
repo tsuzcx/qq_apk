@@ -3,8 +3,8 @@ package kotlin.l.b.a.b.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collection;
 import java.util.Iterator;
-import kotlin.g.b.i;
-import kotlin.g.b.p;
+import kotlin.g.b.j;
+import kotlin.g.b.s;
 
 public final class b
   implements Collection<a>, kotlin.g.b.a.a
@@ -33,7 +33,7 @@ public final class b
       AppMethodBeat.o(59345);
       return false;
     }
-    p.k((a)paramObject, "element");
+    s.u((a)paramObject, "element");
     AppMethodBeat.o(59345);
     throw null;
   }
@@ -41,7 +41,7 @@ public final class b
   public final boolean containsAll(Collection<? extends Object> paramCollection)
   {
     AppMethodBeat.i(59346);
-    p.k(paramCollection, "elements");
+    s.u(paramCollection, "elements");
     AppMethodBeat.o(59346);
     throw null;
   }
@@ -49,7 +49,7 @@ public final class b
   public final boolean equals(Object paramObject)
   {
     AppMethodBeat.i(59342);
-    if ((b)this == paramObject)
+    if (this == paramObject)
     {
       AppMethodBeat.o(59342);
       return true;
@@ -111,7 +111,7 @@ public final class b
   public final Object[] toArray()
   {
     AppMethodBeat.i(59355);
-    Object[] arrayOfObject = i.u(this);
+    Object[] arrayOfObject = j.L((Collection)this);
     AppMethodBeat.o(59355);
     return arrayOfObject;
   }
@@ -119,7 +119,8 @@ public final class b
   public final <T> T[] toArray(T[] paramArrayOfT)
   {
     AppMethodBeat.i(59356);
-    paramArrayOfT = i.b(this, paramArrayOfT);
+    s.u(paramArrayOfT, "array");
+    paramArrayOfT = j.b((Collection)this, paramArrayOfT);
     AppMethodBeat.o(59356);
     return paramArrayOfT;
   }
@@ -127,7 +128,7 @@ public final class b
   public final String toString()
   {
     AppMethodBeat.i(59341);
-    p.k(this, "$this$presentableDescription");
+    s.u(this, "<this>");
     AppMethodBeat.o(59341);
     throw null;
   }

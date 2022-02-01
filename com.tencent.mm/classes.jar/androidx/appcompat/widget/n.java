@@ -8,11 +8,11 @@ import android.view.ViewGroup;
 import android.view.Window.Callback;
 import androidx.appcompat.view.menu.h.a;
 import androidx.appcompat.view.menu.o.a;
-import androidx.core.g.aa;
+import androidx.core.g.ad;
 
 public abstract interface n
 {
-  public abstract void O(int paramInt);
+  public abstract void M(int paramInt);
   
   public abstract void a(Menu paramMenu, o.a parama);
   
@@ -20,31 +20,31 @@ public abstract interface n
   
   public abstract void a(w paramw);
   
-  public abstract int aC();
+  public abstract ad b(int paramInt, long paramLong);
   
-  public abstract aa b(int paramInt, long paramLong);
+  public abstract int bZ();
   
-  public abstract int bg();
+  public abstract int bu();
   
-  public abstract boolean cC();
+  public abstract boolean dB();
   
-  public abstract boolean cI();
+  public abstract boolean dC();
   
-  public abstract boolean cJ();
+  public abstract boolean dD();
   
-  public abstract boolean cK();
+  public abstract boolean dE();
   
-  public abstract boolean cL();
+  public abstract void dF();
   
-  public abstract void cM();
+  public abstract void dN();
   
-  public abstract void cU();
+  public abstract boolean dv();
   
-  public abstract ViewGroup dE();
+  public abstract ViewGroup eD();
   
-  public abstract boolean dF();
+  public abstract boolean eE();
   
-  public abstract void dG();
+  public abstract void eF();
   
   public abstract Context getContext();
   
@@ -80,7 +80,7 @@ public abstract interface n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.widget.n
  * JD-Core Version:    0.7.0.1
  */

@@ -13,15 +13,15 @@ final class WebViewRedesignInputFooter$1
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(214252);
+    AppMethodBeat.i(298052);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/webview/ui/tools/widget/input/WebViewRedesignInputFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    this.Qzj.setVisibility(8);
-    this.Qzk.hide();
-    this.Qzk.hcg();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/webview/ui/tools/widget/input/WebViewRedesignInputFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    this.Xsd.setVisibility(8);
+    this.Xse.hide();
+    this.Xse.iCF();
     a.a(this, "com/tencent/mm/plugin/webview/ui/tools/widget/input/WebViewRedesignInputFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(214252);
+    AppMethodBeat.o(298052);
   }
 }
 

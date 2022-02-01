@@ -1,43 +1,50 @@
 package com.tencent.mm.plugin.appbrand.pip;
 
+import android.graphics.Point;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.ad;
-import com.tencent.mm.plugin.appbrand.platform.window.c;
-import java.util.Iterator;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.appbrand.config.e;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/pip/AppBrandPipFixLeak;", "", "()V", "resetWindowAndroid", "", "Lcom/tencent/mm/plugin/appbrand/pip/AppBrandPipManager;", "windowAndroid", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowAndroid;", "luggage-wxa-app_release"})
-public final class r
+@com.tencent.mm.ipcinvoker.c.a
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/pip/StablePosTask;", "", "()V", "storage", "Lcom/tencent/mm/plugin/appbrand/pip/PipStablePosStorage;", "getStorage", "()Lcom/tencent/mm/plugin/appbrand/pip/PipStablePosStorage;", "storage$delegate", "Lkotlin/Lazy;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+abstract class r
 {
-  public static final r rrE;
+  private final j sZg = k.cm((kotlin.g.a.a)a.tKT);
   
-  static
+  protected final p cHM()
   {
-    AppMethodBeat.i(292935);
-    rrE = new r();
-    AppMethodBeat.o(292935);
+    return (p)this.sZg.getValue();
   }
   
-  public static final void a(f paramf, c paramc)
+  @Metadata(d1={""}, d2={"<anonymous>", "com/tencent/mm/plugin/appbrand/pip/StablePosTask$storage$2$1"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements kotlin.g.a.a<1>
   {
-    AppMethodBeat.i(292934);
-    p.k(paramf, "$this$resetWindowAndroid");
-    paramf = paramf.bIy();
-    p.j(paramf, "this.allPageScopedPipInfoStructs");
-    paramf = ((Iterable)paramf).iterator();
-    while (paramf.hasNext())
+    public static final a tKT;
+    
+    static
     {
-      ad localad = ((a)paramf.next()).cvo;
-      p.j(localad, "it.mPageView");
-      localad.b(paramc);
+      AppMethodBeat.i(319593);
+      tKT = new a();
+      AppMethodBeat.o(319593);
     }
-    AppMethodBeat.o(292934);
+    
+    a()
+    {
+      super();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.pip.r
  * JD-Core Version:    0.7.0.1
  */

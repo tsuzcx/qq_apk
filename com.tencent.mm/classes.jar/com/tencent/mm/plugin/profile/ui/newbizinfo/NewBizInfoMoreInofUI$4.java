@@ -17,13 +17,13 @@ final class NewBizInfoMoreInofUI$4
     AppMethodBeat.i(27548);
     Object localObject = new Intent("android.intent.action.DIAL");
     ((Intent)localObject).setFlags(268435456);
-    ((Intent)localObject).setData(Uri.parse("tel:" + this.tAt));
-    if (Util.isIntentAvailable(this.Hel, (Intent)localObject))
+    ((Intent)localObject).setData(Uri.parse("tel:" + this.wEQ));
+    if (Util.isIntentAvailable(this.NbR, (Intent)localObject))
     {
-      paramDialogInterface = this.Hel;
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-      com.tencent.mm.hellhoundlib.a.a.b(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoMoreInofUI$4", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+      paramDialogInterface = this.NbR;
+      localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoMoreInofUI$4", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
       com.tencent.mm.hellhoundlib.a.a.c(paramDialogInterface, "com/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoMoreInofUI$4", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
     AppMethodBeat.o(27548);

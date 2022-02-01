@@ -9,22 +9,22 @@ import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComp
 import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract class a
-  extends m
+  extends n
 {
   public a(Context paramContext, c paramc, ViewGroup paramViewGroup)
   {
     super(paramContext, paramc, paramViewGroup);
   }
   
-  protected final void d(LinearLayout paramLinearLayout)
+  protected final void f(LinearLayout paramLinearLayout)
   {
-    Object localObject = (c)this.KqB;
+    Object localObject = (c)this.QOV;
     if (paramLinearLayout == null) {
       return;
     }
-    int i = Double.compare(((c)localObject).Klc, ((c)localObject).Kld);
-    int m = (int)((c)localObject).Klc;
-    int n = (int)((c)localObject).Kld;
+    int i = Double.compare(((c)localObject).QJj, ((c)localObject).QJk);
+    int m = (int)((c)localObject).QJj;
+    int n = (int)((c)localObject).QJk;
     int k;
     if (i == 0)
     {
@@ -60,7 +60,7 @@ public abstract class a
       if (m == 0)
       {
         j = m;
-        if (((c)localObject).Klc != 0.0D) {
+        if (((c)localObject).QJj != 0.0D) {
           j = 1;
         }
       }
@@ -70,7 +70,7 @@ public abstract class a
       {
         k = n;
         i = j;
-        if (((c)localObject).Kld != 0.0D)
+        if (((c)localObject).QJk != 0.0D)
         {
           k = 1;
           i = j;
@@ -81,7 +81,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.a
  * JD-Core Version:    0.7.0.1
  */

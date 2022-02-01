@@ -9,18 +9,18 @@ import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public class RemoteDebugMoveView
   extends FrameLayout
 {
-  int bxE;
-  float dit;
-  float diu;
-  int jMo;
-  float odl;
-  float odm;
+  int aMZ;
+  int dqH;
+  float fif;
+  float fig;
+  float rec;
+  float ree;
   
   public RemoteDebugMoveView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -38,13 +38,13 @@ public class RemoteDebugMoveView
     super.onConfigurationChanged(paramConfiguration);
     getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
     {
-      private int cCC = 0;
+      private int evg = 0;
       
       public final void onGlobalLayout()
       {
         AppMethodBeat.i(147040);
-        int i = this.cCC + 1;
-        this.cCC = i;
+        int i = this.evg + 1;
+        this.evg = i;
         if (i < 2)
         {
           AppMethodBeat.o(147040);
@@ -86,29 +86,29 @@ public class RemoteDebugMoveView
     {
       AppMethodBeat.o(147043);
       return true;
-      this.dit = paramMotionEvent.getRawX();
-      this.diu = paramMotionEvent.getRawY();
+      this.fif = paramMotionEvent.getRawX();
+      this.fig = paramMotionEvent.getRawY();
       continue;
-      this.odl = paramMotionEvent.getRawX();
-      this.odm = paramMotionEvent.getRawY();
-      float f1 = getX() + (this.odl - this.dit);
-      if ((0.0F < f1) && (f1 < this.jMo - getWidth())) {
+      this.rec = paramMotionEvent.getRawX();
+      this.ree = paramMotionEvent.getRawY();
+      float f1 = getX() + (this.rec - this.fif);
+      if ((0.0F < f1) && (f1 < this.aMZ - getWidth())) {
         setX(f1);
       }
-      f1 = this.odm - this.diu;
-      float f2 = this.bxE - getHeight();
+      f1 = this.ree - this.fig;
+      float f2 = this.dqH - getHeight();
       float f3 = getY() + f1;
       if (((0.0F < f3) && (f3 < f2)) || ((f3 <= 0.0F) && (f1 > 0.0F)) || ((f3 >= f2) && (f1 < 0.0F))) {
         setY(f3);
       }
-      this.dit = this.odl;
-      this.diu = this.odm;
+      this.fif = this.rec;
+      this.fig = this.ree;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.debugger.RemoteDebugMoveView
  * JD-Core Version:    0.7.0.1
  */

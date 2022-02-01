@@ -1,50 +1,20 @@
 package kotlinx.coroutines;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ServiceLoader;
-import kotlin.d.f;
-import kotlin.l;
-import kotlin.m.i;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.b;
+import kotlinx.coroutines.internal.p;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"handlers", "", "Lkotlinx/coroutines/CoroutineExceptionHandler;", "handleCoroutineExceptionImpl", "", "context", "Lkotlin/coroutines/CoroutineContext;", "exception", "", "kotlinx-coroutines-core"})
-public final class ag
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/CompletionHandlerBase;", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "Lkotlinx/coroutines/CompletionHandler;", "()V", "invoke", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract class ag
+  extends p
+  implements b<Throwable, ah>
 {
-  private static final List<CoroutineExceptionHandler> tKi;
-  
-  static
-  {
-    AppMethodBeat.i(118160);
-    tKi = i.c(i.d(ServiceLoader.load(CoroutineExceptionHandler.class, CoroutineExceptionHandler.class.getClassLoader()).iterator()));
-    AppMethodBeat.o(118160);
-  }
-  
-  public static final void a(f paramf, Throwable paramThrowable)
-  {
-    AppMethodBeat.i(118159);
-    Iterator localIterator = tKi.iterator();
-    while (localIterator.hasNext())
-    {
-      CoroutineExceptionHandler localCoroutineExceptionHandler = (CoroutineExceptionHandler)localIterator.next();
-      try
-      {
-        localCoroutineExceptionHandler.handleException(paramf, paramThrowable);
-      }
-      catch (Throwable localThrowable)
-      {
-        Thread localThread = Thread.currentThread();
-        localThread.getUncaughtExceptionHandler().uncaughtException(localThread, ah.b(paramThrowable, localThrowable));
-      }
-    }
-    paramf = Thread.currentThread();
-    paramf.getUncaughtExceptionHandler().uncaughtException(paramf, paramThrowable);
-    AppMethodBeat.o(118159);
-  }
+  public abstract void N(Throwable paramThrowable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.ag
  * JD-Core Version:    0.7.0.1
  */

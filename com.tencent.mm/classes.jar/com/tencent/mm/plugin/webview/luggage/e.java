@@ -4,7 +4,7 @@ import android.os.Build.VERSION;
 import android.webkit.WebResourceResponse;
 import com.tencent.luggage.webview.a.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.d;
+import com.tencent.mm.plugin.appbrand.af.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.io.ByteArrayInputStream;
 import java.util.HashMap;
@@ -12,21 +12,21 @@ import java.util.HashMap;
 public final class e
   implements c
 {
-  private String PPp = "";
+  private String WFI = "";
   
   public e() {}
   
   public e(String paramString)
   {
-    this.PPp = paramString;
+    this.WFI = paramString;
   }
   
-  public final String SK()
+  public final String atp()
   {
     return "weixin://bridge.js";
   }
   
-  public final WebResourceResponse dx(String paramString)
+  public final WebResourceResponse eI(String paramString)
   {
     AppMethodBeat.i(78212);
     if (Build.VERSION.SDK_INT < 21)
@@ -34,8 +34,8 @@ public final class e
       AppMethodBeat.o(78212);
       return null;
     }
-    paramString = d.anc("LuggageBridge.js");
-    paramString = paramString + this.PPp;
+    paramString = d.ags("LuggageBridge.js");
+    paramString = paramString + this.WFI;
     try
     {
       paramString = new WebResourceResponse("application/javascript", "utf-8", new ByteArrayInputStream(paramString.getBytes("UTF-8")));

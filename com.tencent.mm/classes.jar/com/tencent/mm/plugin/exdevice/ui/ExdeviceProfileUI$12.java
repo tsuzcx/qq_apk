@@ -5,9 +5,9 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.k;
 import com.tencent.mm.R.l;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.q.f;
-import com.tencent.mm.ui.widget.a.e;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.u.g;
+import com.tencent.mm.ui.widget.a.f;
 
 final class ExdeviceProfileUI$12
   implements MenuItem.OnMenuItemClickListener
@@ -17,26 +17,26 @@ final class ExdeviceProfileUI$12
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(24106);
-    paramMenuItem = new e(this.vpc.getContext(), 1, false);
-    paramMenuItem.ODT = new q.f()
+    paramMenuItem = new f(this.yBy.getContext(), 1, false);
+    paramMenuItem.Vtg = new u.g()
     {
-      public final void onCreateMMMenu(o paramAnonymouso)
+      public final void onCreateMMMenu(s paramAnonymouss)
       {
         AppMethodBeat.i(24105);
-        paramAnonymouso.b(0, ExdeviceProfileUI.12.this.vpc.getString(R.l.eDK), R.k.bottomsheet_icon_transmit);
-        paramAnonymouso.b(1, ExdeviceProfileUI.12.this.vpc.getString(R.l.eDM), R.k.bottomsheet_icon_moment);
+        paramAnonymouss.a(0, ExdeviceProfileUI.12.this.yBy.getString(R.l.gGy), R.k.bottomsheet_icon_transmit);
+        paramAnonymouss.a(1, ExdeviceProfileUI.12.this.yBy.getString(R.l.gGA), R.k.bottomsheet_icon_moment);
         AppMethodBeat.o(24105);
       }
     };
-    paramMenuItem.ODU = ExdeviceProfileUI.j(this.vpc);
-    paramMenuItem.eik();
+    paramMenuItem.GAC = ExdeviceProfileUI.j(this.yBy);
+    paramMenuItem.dDn();
     AppMethodBeat.o(24106);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceProfileUI.12
  * JD-Core Version:    0.7.0.1
  */

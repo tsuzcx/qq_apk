@@ -24,363 +24,363 @@ class u
   public u(Resources paramResources)
   {
     super(paramResources.getAssets(), paramResources.getDisplayMetrics(), paramResources.getConfiguration());
-    AppMethodBeat.i(241453);
+    AppMethodBeat.i(199750);
     this.mResources = paramResources;
-    AppMethodBeat.o(241453);
+    AppMethodBeat.o(199750);
   }
   
   public XmlResourceParser getAnimation(int paramInt)
   {
-    AppMethodBeat.i(241484);
+    AppMethodBeat.i(200008);
     XmlResourceParser localXmlResourceParser = this.mResources.getAnimation(paramInt);
-    AppMethodBeat.o(241484);
+    AppMethodBeat.o(200008);
     return localXmlResourceParser;
   }
   
   public boolean getBoolean(int paramInt)
   {
-    AppMethodBeat.i(241479);
+    AppMethodBeat.i(199982);
     boolean bool = this.mResources.getBoolean(paramInt);
-    AppMethodBeat.o(241479);
+    AppMethodBeat.o(199982);
     return bool;
   }
   
   public int getColor(int paramInt)
   {
-    AppMethodBeat.i(241477);
+    AppMethodBeat.i(199967);
     paramInt = this.mResources.getColor(paramInt);
-    AppMethodBeat.o(241477);
+    AppMethodBeat.o(199967);
     return paramInt;
   }
   
   public ColorStateList getColorStateList(int paramInt)
   {
-    AppMethodBeat.i(241478);
+    AppMethodBeat.i(199976);
     ColorStateList localColorStateList = this.mResources.getColorStateList(paramInt);
-    AppMethodBeat.o(241478);
+    AppMethodBeat.o(199976);
     return localColorStateList;
   }
   
   public Configuration getConfiguration()
   {
-    AppMethodBeat.i(241502);
+    AppMethodBeat.i(200104);
     Configuration localConfiguration = this.mResources.getConfiguration();
-    AppMethodBeat.o(241502);
+    AppMethodBeat.o(200104);
     return localConfiguration;
   }
   
   public float getDimension(int paramInt)
   {
-    AppMethodBeat.i(241467);
+    AppMethodBeat.i(199853);
     float f = this.mResources.getDimension(paramInt);
-    AppMethodBeat.o(241467);
+    AppMethodBeat.o(199853);
     return f;
   }
   
   public int getDimensionPixelOffset(int paramInt)
   {
-    AppMethodBeat.i(241468);
+    AppMethodBeat.i(199862);
     paramInt = this.mResources.getDimensionPixelOffset(paramInt);
-    AppMethodBeat.o(241468);
+    AppMethodBeat.o(199862);
     return paramInt;
   }
   
   public int getDimensionPixelSize(int paramInt)
   {
-    AppMethodBeat.i(241469);
+    AppMethodBeat.i(199873);
     paramInt = this.mResources.getDimensionPixelSize(paramInt);
-    AppMethodBeat.o(241469);
+    AppMethodBeat.o(199873);
     return paramInt;
   }
   
   public DisplayMetrics getDisplayMetrics()
   {
-    AppMethodBeat.i(241501);
+    AppMethodBeat.i(200100);
     DisplayMetrics localDisplayMetrics = this.mResources.getDisplayMetrics();
-    AppMethodBeat.o(241501);
+    AppMethodBeat.o(200100);
     return localDisplayMetrics;
   }
   
   public Drawable getDrawable(int paramInt)
   {
-    AppMethodBeat.i(241471);
+    AppMethodBeat.i(199889);
     Drawable localDrawable = this.mResources.getDrawable(paramInt);
-    AppMethodBeat.o(241471);
+    AppMethodBeat.o(199889);
     return localDrawable;
   }
   
   public Drawable getDrawable(int paramInt, Resources.Theme paramTheme)
   {
-    AppMethodBeat.i(241472);
+    AppMethodBeat.i(199926);
     paramTheme = this.mResources.getDrawable(paramInt, paramTheme);
-    AppMethodBeat.o(241472);
+    AppMethodBeat.o(199926);
     return paramTheme;
   }
   
   public Drawable getDrawableForDensity(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(241473);
+    AppMethodBeat.i(199933);
     Drawable localDrawable = this.mResources.getDrawableForDensity(paramInt1, paramInt2);
-    AppMethodBeat.o(241473);
+    AppMethodBeat.o(199933);
     return localDrawable;
   }
   
   public Drawable getDrawableForDensity(int paramInt1, int paramInt2, Resources.Theme paramTheme)
   {
-    AppMethodBeat.i(241474);
+    AppMethodBeat.i(199944);
     paramTheme = this.mResources.getDrawableForDensity(paramInt1, paramInt2, paramTheme);
-    AppMethodBeat.o(241474);
+    AppMethodBeat.o(199944);
     return paramTheme;
   }
   
   public float getFraction(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(241470);
+    AppMethodBeat.i(199882);
     float f = this.mResources.getFraction(paramInt1, paramInt2, paramInt3);
-    AppMethodBeat.o(241470);
+    AppMethodBeat.o(199882);
     return f;
   }
   
   public int getIdentifier(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(241503);
+    AppMethodBeat.i(200113);
     int i = this.mResources.getIdentifier(paramString1, paramString2, paramString3);
-    AppMethodBeat.o(241503);
+    AppMethodBeat.o(200113);
     return i;
   }
   
   public int[] getIntArray(int paramInt)
   {
-    AppMethodBeat.i(241465);
+    AppMethodBeat.i(199832);
     int[] arrayOfInt = this.mResources.getIntArray(paramInt);
-    AppMethodBeat.o(241465);
+    AppMethodBeat.o(199832);
     return arrayOfInt;
   }
   
   public int getInteger(int paramInt)
   {
-    AppMethodBeat.i(241481);
+    AppMethodBeat.i(199991);
     paramInt = this.mResources.getInteger(paramInt);
-    AppMethodBeat.o(241481);
+    AppMethodBeat.o(199991);
     return paramInt;
   }
   
   public XmlResourceParser getLayout(int paramInt)
   {
-    AppMethodBeat.i(241483);
+    AppMethodBeat.i(199998);
     XmlResourceParser localXmlResourceParser = this.mResources.getLayout(paramInt);
-    AppMethodBeat.o(241483);
+    AppMethodBeat.o(199998);
     return localXmlResourceParser;
   }
   
   public Movie getMovie(int paramInt)
   {
-    AppMethodBeat.i(241476);
+    AppMethodBeat.i(199959);
     Movie localMovie = this.mResources.getMovie(paramInt);
-    AppMethodBeat.o(241476);
+    AppMethodBeat.o(199959);
     return localMovie;
   }
   
   public String getQuantityString(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(241461);
+    AppMethodBeat.i(199799);
     String str = this.mResources.getQuantityString(paramInt1, paramInt2);
-    AppMethodBeat.o(241461);
+    AppMethodBeat.o(199799);
     return str;
   }
   
   public String getQuantityString(int paramInt1, int paramInt2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(241460);
+    AppMethodBeat.i(199790);
     paramVarArgs = this.mResources.getQuantityString(paramInt1, paramInt2, paramVarArgs);
-    AppMethodBeat.o(241460);
+    AppMethodBeat.o(199790);
     return paramVarArgs;
   }
   
   public CharSequence getQuantityText(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(241456);
+    AppMethodBeat.i(199767);
     CharSequence localCharSequence = this.mResources.getQuantityText(paramInt1, paramInt2);
-    AppMethodBeat.o(241456);
+    AppMethodBeat.o(199767);
     return localCharSequence;
   }
   
   public String getResourceEntryName(int paramInt)
   {
-    AppMethodBeat.i(241511);
+    AppMethodBeat.i(200143);
     String str = this.mResources.getResourceEntryName(paramInt);
-    AppMethodBeat.o(241511);
+    AppMethodBeat.o(200143);
     return str;
   }
   
   public String getResourceName(int paramInt)
   {
-    AppMethodBeat.i(241504);
+    AppMethodBeat.i(200119);
     String str = this.mResources.getResourceName(paramInt);
-    AppMethodBeat.o(241504);
+    AppMethodBeat.o(200119);
     return str;
   }
   
   public String getResourcePackageName(int paramInt)
   {
-    AppMethodBeat.i(241506);
+    AppMethodBeat.i(200129);
     String str = this.mResources.getResourcePackageName(paramInt);
-    AppMethodBeat.o(241506);
+    AppMethodBeat.o(200129);
     return str;
   }
   
   public String getResourceTypeName(int paramInt)
   {
-    AppMethodBeat.i(241508);
+    AppMethodBeat.i(200133);
     String str = this.mResources.getResourceTypeName(paramInt);
-    AppMethodBeat.o(241508);
+    AppMethodBeat.o(200133);
     return str;
   }
   
   public String getString(int paramInt)
   {
-    AppMethodBeat.i(241458);
+    AppMethodBeat.i(199775);
     String str = this.mResources.getString(paramInt);
-    AppMethodBeat.o(241458);
+    AppMethodBeat.o(199775);
     return str;
   }
   
   public String getString(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(241459);
+    AppMethodBeat.i(199781);
     paramVarArgs = this.mResources.getString(paramInt, paramVarArgs);
-    AppMethodBeat.o(241459);
+    AppMethodBeat.o(199781);
     return paramVarArgs;
   }
   
   public String[] getStringArray(int paramInt)
   {
-    AppMethodBeat.i(241464);
+    AppMethodBeat.i(199823);
     String[] arrayOfString = this.mResources.getStringArray(paramInt);
-    AppMethodBeat.o(241464);
+    AppMethodBeat.o(199823);
     return arrayOfString;
   }
   
   public CharSequence getText(int paramInt)
   {
-    AppMethodBeat.i(241454);
+    AppMethodBeat.i(199757);
     CharSequence localCharSequence = this.mResources.getText(paramInt);
-    AppMethodBeat.o(241454);
+    AppMethodBeat.o(199757);
     return localCharSequence;
   }
   
   public CharSequence getText(int paramInt, CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(241462);
+    AppMethodBeat.i(199806);
     paramCharSequence = this.mResources.getText(paramInt, paramCharSequence);
-    AppMethodBeat.o(241462);
+    AppMethodBeat.o(199806);
     return paramCharSequence;
   }
   
   public CharSequence[] getTextArray(int paramInt)
   {
-    AppMethodBeat.i(241463);
+    AppMethodBeat.i(199815);
     CharSequence[] arrayOfCharSequence = this.mResources.getTextArray(paramInt);
-    AppMethodBeat.o(241463);
+    AppMethodBeat.o(199815);
     return arrayOfCharSequence;
   }
   
   public void getValue(int paramInt, TypedValue paramTypedValue, boolean paramBoolean)
   {
-    AppMethodBeat.i(241493);
+    AppMethodBeat.i(200056);
     this.mResources.getValue(paramInt, paramTypedValue, paramBoolean);
-    AppMethodBeat.o(241493);
+    AppMethodBeat.o(200056);
   }
   
   public void getValue(String paramString, TypedValue paramTypedValue, boolean paramBoolean)
   {
-    AppMethodBeat.i(241497);
+    AppMethodBeat.i(200072);
     this.mResources.getValue(paramString, paramTypedValue, paramBoolean);
-    AppMethodBeat.o(241497);
+    AppMethodBeat.o(200072);
   }
   
   public void getValueForDensity(int paramInt1, int paramInt2, TypedValue paramTypedValue, boolean paramBoolean)
   {
-    AppMethodBeat.i(241495);
+    AppMethodBeat.i(200065);
     this.mResources.getValueForDensity(paramInt1, paramInt2, paramTypedValue, paramBoolean);
-    AppMethodBeat.o(241495);
+    AppMethodBeat.o(200065);
   }
   
   public XmlResourceParser getXml(int paramInt)
   {
-    AppMethodBeat.i(241486);
+    AppMethodBeat.i(200020);
     XmlResourceParser localXmlResourceParser = this.mResources.getXml(paramInt);
-    AppMethodBeat.o(241486);
+    AppMethodBeat.o(200020);
     return localXmlResourceParser;
   }
   
   public TypedArray obtainAttributes(AttributeSet paramAttributeSet, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(241499);
+    AppMethodBeat.i(200082);
     paramAttributeSet = this.mResources.obtainAttributes(paramAttributeSet, paramArrayOfInt);
-    AppMethodBeat.o(241499);
+    AppMethodBeat.o(200082);
     return paramAttributeSet;
   }
   
   public TypedArray obtainTypedArray(int paramInt)
   {
-    AppMethodBeat.i(241466);
+    AppMethodBeat.i(199841);
     TypedArray localTypedArray = this.mResources.obtainTypedArray(paramInt);
-    AppMethodBeat.o(241466);
+    AppMethodBeat.o(199841);
     return localTypedArray;
   }
   
   public InputStream openRawResource(int paramInt)
   {
-    AppMethodBeat.i(241487);
+    AppMethodBeat.i(200029);
     InputStream localInputStream = this.mResources.openRawResource(paramInt);
-    AppMethodBeat.o(241487);
+    AppMethodBeat.o(200029);
     return localInputStream;
   }
   
   public InputStream openRawResource(int paramInt, TypedValue paramTypedValue)
   {
-    AppMethodBeat.i(241489);
+    AppMethodBeat.i(200038);
     paramTypedValue = this.mResources.openRawResource(paramInt, paramTypedValue);
-    AppMethodBeat.o(241489);
+    AppMethodBeat.o(200038);
     return paramTypedValue;
   }
   
   public AssetFileDescriptor openRawResourceFd(int paramInt)
   {
-    AppMethodBeat.i(241491);
+    AppMethodBeat.i(200046);
     AssetFileDescriptor localAssetFileDescriptor = this.mResources.openRawResourceFd(paramInt);
-    AppMethodBeat.o(241491);
+    AppMethodBeat.o(200046);
     return localAssetFileDescriptor;
   }
   
   public void parseBundleExtra(String paramString, AttributeSet paramAttributeSet, Bundle paramBundle)
   {
-    AppMethodBeat.i(241517);
+    AppMethodBeat.i(200161);
     this.mResources.parseBundleExtra(paramString, paramAttributeSet, paramBundle);
-    AppMethodBeat.o(241517);
+    AppMethodBeat.o(200161);
   }
   
   public void parseBundleExtras(XmlResourceParser paramXmlResourceParser, Bundle paramBundle)
   {
-    AppMethodBeat.i(241514);
+    AppMethodBeat.i(200149);
     this.mResources.parseBundleExtras(paramXmlResourceParser, paramBundle);
-    AppMethodBeat.o(241514);
+    AppMethodBeat.o(200149);
   }
   
   public void updateConfiguration(Configuration paramConfiguration, DisplayMetrics paramDisplayMetrics)
   {
-    AppMethodBeat.i(241500);
+    AppMethodBeat.i(200090);
     super.updateConfiguration(paramConfiguration, paramDisplayMetrics);
     if (this.mResources != null) {
       this.mResources.updateConfiguration(paramConfiguration, paramDisplayMetrics);
     }
-    AppMethodBeat.o(241500);
+    AppMethodBeat.o(200090);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     androidx.appcompat.widget.u
  * JD-Core Version:    0.7.0.1
  */

@@ -4,36 +4,36 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.model.bu;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.model.cc;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ad;
+import com.tencent.mm.ui.af;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
 import java.util.ArrayList;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/FinderFeedRelTimelineContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$ViewCallback;", "context", "Lcom/tencent/mm/ui/MMActivity;", "presenter", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedRelTimelineContract$Presenter;", "scene", "", "commentScene", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/plugin/finder/feed/FinderFeedRelTimelineContract$Presenter;II)V", "getEmptyView", "Landroid/view/View;", "initRecyclerView", "", "data", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lkotlin/collections/ArrayList;", "onLoadInitDataError", "errCode", "errMsg", "", "onLoadMoreError", "onRefreshError", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/FinderFeedRelatedTimelineContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$ViewCallback;", "context", "Lcom/tencent/mm/ui/MMActivity;", "presenter", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedRelatedTimelineContract$Presenter;", "scene", "", "commentScene", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/plugin/finder/feed/FinderFeedRelatedTimelineContract$Presenter;II)V", "getEmptyView", "Landroid/view/View;", "getLoadMoreFooter", "initRecyclerView", "", "data", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "onLoadInitDataError", "errCode", "errMsg", "", "onLoadMoreError", "onRefreshError", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class m$b
-  extends aa.b
+  extends ae.b
 {
-  public m$b(MMActivity paramMMActivity, m.a parama, int paramInt)
+  public m$b(MMActivity paramMMActivity, m.a parama, int paramInt1, int paramInt2)
   {
-    super(paramMMActivity, (aa.a)parama, paramInt, 20);
-    AppMethodBeat.i(270360);
-    AppMethodBeat.o(270360);
+    super(paramMMActivity, (ae.a)parama, paramInt1, paramInt2);
+    AppMethodBeat.i(363822);
+    AppMethodBeat.o(363822);
   }
   
-  public final void aa(ArrayList<bu> paramArrayList)
+  public final void af(ArrayList<cc> paramArrayList)
   {
-    AppMethodBeat.i(270355);
-    p.k(paramArrayList, "data");
-    super.aa(paramArrayList);
-    paramArrayList = this.xvJ;
-    View localView = ad.kS((Context)this.iXq).inflate(b.g.load_more_footer, null);
-    p.j(localView, "MMLayoutInflater.getInfl…t.load_more_footer, null)");
+    AppMethodBeat.i(363832);
+    s.u(paramArrayList, "data");
+    super.af(paramArrayList);
+    paramArrayList = this.ATx;
+    View localView = af.mU((Context)this.lzt).inflate(e.f.load_more_footer, null);
+    s.s(localView, "getInflater(context).inf…t.load_more_footer, null)");
     paramArrayList.setLoadMoreFooter(localView);
-    AppMethodBeat.o(270355);
+    AppMethodBeat.o(363832);
   }
   
   public final View getEmptyView()

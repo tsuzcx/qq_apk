@@ -1,7 +1,7 @@
 package com.tencent.mm.sdk.storage;
 
 import android.os.Looper;
-import com.tencent.e.j.a;
+import com.tencent.threadpool.j.a;
 
 public abstract interface IStorageEx
 {

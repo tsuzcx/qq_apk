@@ -1,67 +1,113 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
+import org.json.JSONObject;
 
 public final class cvz
-  extends com.tencent.mm.cd.a
+  extends erp
 {
-  public int TET;
-  public int scene;
+  public String aaBk;
+  
+  private JSONObject toJSON()
+  {
+    AppMethodBeat.i(260184);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      com.tencent.mm.bk.a.a(localJSONObject, "BaseRequest", this.BaseRequest, false);
+      com.tencent.mm.bk.a.a(localJSONObject, "QueryJson", this.aaBk, false);
+      label35:
+      AppMethodBeat.o(260184);
+      return localJSONObject;
+    }
+    catch (Exception localException)
+    {
+      break label35;
+    }
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(200371);
+    AppMethodBeat.i(117873);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.TET);
-      paramVarArgs.aY(2, this.scene);
-      AppMethodBeat.o(200371);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = g.a.a.b.b.a.bM(1, this.TET);
-      int i = g.a.a.b.b.a.bM(2, this.scene);
-      AppMethodBeat.o(200371);
-      return paramInt + 0 + i;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
-      }
-      AppMethodBeat.o(200371);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      cvz localcvz = (cvz)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
       {
-      default: 
-        AppMethodBeat.o(200371);
-        return -1;
-      case 1: 
-        localcvz.TET = locala.abFh.AK();
-        AppMethodBeat.o(200371);
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
+      }
+      if (this.aaBk != null) {
+        paramVarArgs.g(2, this.aaBk);
+      }
+      AppMethodBeat.o(117873);
+      return 0;
+    }
+    if (paramInt == 1) {
+      if (this.BaseRequest == null) {
+        break label344;
+      }
+    }
+    label344:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    {
+      int i = paramInt;
+      if (this.aaBk != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.aaBk);
+      }
+      AppMethodBeat.o(117873);
+      return i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(117873);
         return 0;
       }
-      localcvz.scene = locala.abFh.AK();
-      AppMethodBeat.o(200371);
-      return 0;
+      if (paramInt == 3)
+      {
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
+        cvz localcvz = (cvz)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(117873);
+          return -1;
+        case 1: 
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kc localkc = new kc();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkc.parseFrom((byte[])localObject);
+            }
+            localcvz.BaseRequest = localkc;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(117873);
+          return 0;
+        }
+        localcvz.aaBk = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(117873);
+        return 0;
+      }
+      AppMethodBeat.o(117873);
+      return -1;
     }
-    AppMethodBeat.o(200371);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cvz
  * JD-Core Version:    0.7.0.1
  */

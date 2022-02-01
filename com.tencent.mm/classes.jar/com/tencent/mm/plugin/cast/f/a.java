@@ -1,159 +1,207 @@
 package com.tencent.mm.plugin.cast.f;
 
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Paint;
-import android.media.Image;
-import android.media.Image.Plane;
-import android.media.ImageReader;
-import android.media.ImageReader.OnImageAvailableListener;
-import android.os.Handler;
-import android.os.Looper;
-import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.nio.Buffer;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.plugin.report.service.h;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import org.xwalk.core.Log;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/cast/render/ScreenCastImageReader;", "", "width", "", "height", "(II)V", "bmp", "Landroid/graphics/Bitmap;", "encodeSurface", "Landroid/view/Surface;", "getHeight", "()I", "setHeight", "(I)V", "imageReader", "Landroid/media/ImageReader;", "inputSurface", "getInputSurface", "()Landroid/view/Surface;", "setInputSurface", "(Landroid/view/Surface;)V", "lock", "paint", "Landroid/graphics/Paint;", "getWidth", "setWidth", "doSendData", "", "initScreenCastImageReader", "looper", "Landroid/os/Looper;", "setEncodeSurface", "surface", "stopRenderer", "Companion", "plugin-cast_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/cast/report/CastReportHelper;", "", "()V", "ID", "", "TAG", "", "doScreenCastPcKvReport", "", "bitrate", "", "videoHeight", "videoWidth", "videoFrameRate", "times", "batteryCost", "encodeStrategy", "renderStrategy", "firstFrameRenderCost", "firstFrameEncodeCost", "avgFrameRenderCost", "transportStatus", "markBatteryCost", "cost", "markClickPermissionCancelReport", "markClickStartScreenCastBtnReport", "markClickStartScreenCastRetry", "markEnterScreenCastReport", "markInitVideoEncoderFailed", "markRecordingCost", "markScreenCastDiffNetWork", "markScreenCastFailedCauseNotFinderUserReport", "markScreenCastFailedNetSceneCallbackFailedReport", "markScreenCastNetConnectSucc", "markScreenCastNetSceneCallbackSuccReport", "markScreenCastNetSdkConnectFailed", "markScreenCastNetSdkConnectTimeOut", "markStartScreenCastReport", "markVideoEncodeFirstFrameCost", "markVideoEncodeFrameCostAvg", "markVideoEncodingUseAsync", "markVideoEncodingUseSync", "markVideoRenderFirstFrameCost", "markVideoRenderFrameCostAvg", "markVideoRendererUseImageReader", "markVideoRendererUseOpenGL", "plugin-cast_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public static final a.a tJO;
-  int height;
-  Surface inputSurface;
-  ImageReader jUA;
-  final Object lock;
-  final Paint paint;
-  public Surface tJM;
-  Bitmap tJN;
-  int width;
+  public static final a wNt;
   
   static
   {
-    AppMethodBeat.i(190335);
-    tJO = new a.a((byte)0);
-    AppMethodBeat.o(190335);
+    AppMethodBeat.i(274189);
+    wNt = new a();
+    AppMethodBeat.o(274189);
   }
   
-  public a(int paramInt1, int paramInt2)
+  public static void IP(int paramInt)
   {
-    AppMethodBeat.i(190333);
-    this.width = paramInt1;
-    this.height = paramInt2;
-    this.lock = new Object();
-    this.paint = new Paint();
-    AppMethodBeat.o(190333);
+    AppMethodBeat.i(274146);
+    Log.i("MicroMsg.CastReportHelper", s.X("markVideoRenderFrameCostAvg ", Integer.valueOf(paramInt)));
+    h.OAn.c(1634, 16, 17, paramInt, true);
+    AppMethodBeat.o(274146);
   }
   
-  public final void cLC()
+  public static void IQ(int paramInt)
   {
-    AppMethodBeat.i(190331);
-    Object localObject = this.tJM;
-    if (localObject != null) {
-      ((Surface)localObject).release();
-    }
-    localObject = this.inputSurface;
-    if (localObject != null) {
-      ((Surface)localObject).release();
-    }
-    this.inputSurface = null;
-    localObject = this.jUA;
-    if (localObject != null) {
-      ((ImageReader)localObject).close();
-    }
-    this.jUA = null;
-    AppMethodBeat.o(190331);
+    AppMethodBeat.i(274150);
+    Log.i("MicroMsg.CastReportHelper", s.X("markVideoEncodeFrameCostAvg ", Integer.valueOf(paramInt)));
+    h.OAn.c(1634, 22, 23, paramInt, true);
+    AppMethodBeat.o(274150);
   }
   
-  public final void h(Looper paramLooper)
+  public static void IR(int paramInt)
   {
-    AppMethodBeat.i(190326);
-    p.k(paramLooper, "looper");
-    this.jUA = ImageReader.newInstance(this.width, this.height, 1, 1);
-    ImageReader localImageReader = this.jUA;
-    if (localImageReader != null) {
-      localImageReader.setOnImageAvailableListener((ImageReader.OnImageAvailableListener)new b(this), new Handler(paramLooper));
-    }
-    paramLooper = this.jUA;
-    if (paramLooper != null) {}
-    for (paramLooper = paramLooper.getSurface();; paramLooper = null)
-    {
-      this.inputSurface = paramLooper;
-      AppMethodBeat.o(190326);
-      return;
-    }
+    AppMethodBeat.i(274157);
+    Log.i("MicroMsg.CastReportHelper", s.X("markVideoRenderFirstFrameCost ", Integer.valueOf(paramInt)));
+    h.OAn.c(1634, 25, 26, paramInt, true);
+    AppMethodBeat.o(274157);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "reader", "Landroid/media/ImageReader;", "kotlin.jvm.PlatformType", "onImageAvailable"})
-  static final class b
-    implements ImageReader.OnImageAvailableListener
+  public static void IS(int paramInt)
   {
-    b(a parama) {}
-    
-    public final void onImageAvailable(ImageReader paramImageReader)
-    {
-      int j = 1;
-      AppMethodBeat.i(189613);
-      paramImageReader = paramImageReader.acquireLatestImage();
-      int i;
-      if (paramImageReader != null)
-      {
-        ??? = paramImageReader.getPlanes();
-        p.j(???, "planes");
-        if (???.length != 0) {
-          break label229;
-        }
-        i = 1;
-      }
-      for (;;)
-      {
-        Object localObject1;
-        Object localObject3;
-        int k;
-        if (i == 0)
-        {
-          i = j;
-          if (i != 0)
-          {
-            localObject1 = ???[0];
-            p.j(localObject1, "planes[0]");
-            localObject1 = ((Image.Plane)localObject1).getBuffer();
-            localObject3 = ???[0];
-            p.j(localObject3, "planes[0]");
-            i = ((Image.Plane)localObject3).getPixelStride();
-            ??? = ???[0];
-            p.j(???, "planes[0]");
-            j = ((Image.Plane)???).getRowStride();
-            k = this.tJP.width;
-          }
-        }
-        synchronized (a.a(this.tJP))
-        {
-          if (a.b(this.tJP) == null)
-          {
-            Log.i("MicroMsg.ScreenCastImageReader", "image reader render ");
-            localObject3 = this.tJP;
-            int m = this.tJP.width;
-            a.a((a)localObject3, Bitmap.createBitmap((j - k * i) / i + m, this.tJP.height, Bitmap.Config.ARGB_8888));
-          }
-          localObject3 = a.b(this.tJP);
-          if (localObject3 != null)
-          {
-            ((Bitmap)localObject3).copyPixelsFromBuffer((Buffer)localObject1);
-            localObject1 = x.aazN;
-          }
-          paramImageReader.close();
-          AppMethodBeat.o(189613);
-          return;
-          label229:
-          i = 0;
-          continue;
-          i = 0;
-        }
-      }
-    }
+    AppMethodBeat.i(274160);
+    Log.i("MicroMsg.CastReportHelper", s.X("markBatteryCost ", Integer.valueOf(paramInt)));
+    h.OAn.c(1634, 28, 29, paramInt, true);
+    AppMethodBeat.o(274160);
+  }
+  
+  public static void IT(int paramInt)
+  {
+    AppMethodBeat.i(274165);
+    Log.i("MicroMsg.CastReportHelper", s.X("markRecordingCost ", Integer.valueOf(paramInt)));
+    h.OAn.c(1634, 31, 32, paramInt, true);
+    AppMethodBeat.o(274165);
+  }
+  
+  public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11, int paramInt12)
+  {
+    AppMethodBeat.i(274182);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("doScreenCastPcKvReport is bitrate: ").append(paramInt1).append(",videoHeight : ").append(paramInt2).append(",videoWidth : ").append(paramInt3).append(",videoFrameRate: ").append(paramInt4).append(",times: ").append(paramInt5).append(",batteryCost : ").append(paramInt6).append(",encodeStrategy : ").append(paramInt7).append(",renderStrategy : ").append(paramInt8).append(",firstFrameRenderCost: ").append(paramInt9).append(",firstFrameEncodeCost: ").append(paramInt10).append(",avgFrameRenderCost: ").append(paramInt11).append(' ');
+    Log.i("MicroMsg.CastReportHelper", localStringBuilder.toString());
+    h.OAn.a(22393, true, true, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), Integer.valueOf(paramInt8), Integer.valueOf(paramInt9), Integer.valueOf(paramInt10), Integer.valueOf(paramInt11), Integer.valueOf(paramInt12) });
+    AppMethodBeat.o(274182);
+  }
+  
+  public static void dpj()
+  {
+    AppMethodBeat.i(274062);
+    Log.i("MicroMsg.CastReportHelper", "markEnterScreenCastReport");
+    h.OAn.p(1634L, 0L, 1L);
+    AppMethodBeat.o(274062);
+  }
+  
+  public static void dpk()
+  {
+    AppMethodBeat.i(274065);
+    Log.i("MicroMsg.CastReportHelper", "markScreenCastFailedCauseNotFinderUserReport");
+    h.OAn.p(1634L, 1L, 1L);
+    AppMethodBeat.o(274065);
+  }
+  
+  public static void dpl()
+  {
+    AppMethodBeat.i(274069);
+    Log.i("MicroMsg.CastReportHelper", "markScreenCastFailedNetSceneCallbackFailedReport");
+    h.OAn.p(1634L, 2L, 1L);
+    AppMethodBeat.o(274069);
+  }
+  
+  public static void dpm()
+  {
+    AppMethodBeat.i(274075);
+    Log.i("MicroMsg.CastReportHelper", "markScreenCastNetSceneCallbackSuccReport");
+    h.OAn.p(1634L, 3L, 1L);
+    AppMethodBeat.o(274075);
+  }
+  
+  public static void dpn()
+  {
+    AppMethodBeat.i(274082);
+    Log.i("MicroMsg.CastReportHelper", "markClickStartScreenCastBtnReport");
+    h.OAn.p(1634L, 4L, 1L);
+    AppMethodBeat.o(274082);
+  }
+  
+  public static void dpo()
+  {
+    AppMethodBeat.i(274087);
+    Log.i("MicroMsg.CastReportHelper", "markClickStartScreenCastRetry");
+    h.OAn.p(1634L, 5L, 1L);
+    AppMethodBeat.o(274087);
+  }
+  
+  public static void dpp()
+  {
+    AppMethodBeat.i(274094);
+    Log.i("MicroMsg.CastReportHelper", "markClickPermissionCancelReport");
+    h.OAn.p(1634L, 6L, 1L);
+    AppMethodBeat.o(274094);
+  }
+  
+  public static void dpq()
+  {
+    AppMethodBeat.i(274099);
+    Log.i("MicroMsg.CastReportHelper", "markStartScreenCastReport");
+    h.OAn.p(1634L, 7L, 1L);
+    AppMethodBeat.o(274099);
+  }
+  
+  public static void dpr()
+  {
+    AppMethodBeat.i(274102);
+    Log.i("MicroMsg.CastReportHelper", "markScreenCastDiffNetWork");
+    h.OAn.p(1634L, 8L, 1L);
+    AppMethodBeat.o(274102);
+  }
+  
+  public static void dps()
+  {
+    AppMethodBeat.i(274106);
+    Log.i("MicroMsg.CastReportHelper", "markScreenCastNetSdkConnectFailed");
+    h.OAn.p(1634L, 9L, 1L);
+    AppMethodBeat.o(274106);
+  }
+  
+  public static void dpt()
+  {
+    AppMethodBeat.i(274109);
+    Log.i("MicroMsg.CastReportHelper", "markScreenCastNetSdkConnectTimeOut");
+    h.OAn.p(1634L, 10L, 1L);
+    AppMethodBeat.o(274109);
+  }
+  
+  public static void dpu()
+  {
+    AppMethodBeat.i(274114);
+    Log.i("MicroMsg.CastReportHelper", "markScreenCastNetConnectSucc");
+    h.OAn.p(1634L, 11L, 1L);
+    AppMethodBeat.o(274114);
+  }
+  
+  public static void dpv()
+  {
+    AppMethodBeat.i(274121);
+    Log.i("MicroMsg.CastReportHelper", "markVideoEncodingUseSync");
+    h.OAn.p(1634L, 12L, 1L);
+    AppMethodBeat.o(274121);
+  }
+  
+  public static void dpw()
+  {
+    AppMethodBeat.i(274127);
+    Log.i("MicroMsg.CastReportHelper", "markVideoEncodingUseAsync");
+    h.OAn.p(1634L, 13L, 1L);
+    AppMethodBeat.o(274127);
+  }
+  
+  public static void dpx()
+  {
+    AppMethodBeat.i(274130);
+    Log.i("MicroMsg.CastReportHelper", "markVideoRendererUseOpenGL");
+    h.OAn.p(1634L, 14L, 1L);
+    AppMethodBeat.o(274130);
+  }
+  
+  public static void dpy()
+  {
+    AppMethodBeat.i(274136);
+    Log.i("MicroMsg.CastReportHelper", "markVideoRendererUseImageReader");
+    h.OAn.p(1634L, 15L, 1L);
+    AppMethodBeat.o(274136);
+  }
+  
+  public static void dpz()
+  {
+    AppMethodBeat.i(274171);
+    Log.i("MicroMsg.CastReportHelper", "markInitVideoEncoderFailed");
+    h.OAn.p(1634L, 34L, 1L);
+    AppMethodBeat.o(274171);
   }
 }
 

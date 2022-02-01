@@ -11,23 +11,23 @@ public final class c
     super(paramMMActivity);
   }
   
-  public final boolean cKm()
+  public final boolean dnC()
   {
-    AppMethodBeat.i(250846);
-    boolean bool = cJq();
-    AppMethodBeat.o(250846);
+    AppMethodBeat.i(293805);
+    boolean bool = dmH();
+    AppMethodBeat.o(293805);
     return bool;
   }
   
-  public final boolean cKp()
+  public final boolean dnF()
   {
     return false;
   }
   
-  public final boolean cKq()
+  public final boolean dnG()
   {
     AppMethodBeat.i(113639);
-    if ((cJq()) && (super.cKq()))
+    if ((dmH()) && (super.dnG()))
     {
       AppMethodBeat.o(113639);
       return true;
@@ -36,19 +36,19 @@ public final class c
     return false;
   }
   
-  public final boolean cKu()
+  public final boolean dnK()
   {
     return false;
   }
   
-  public final boolean cKv()
+  public final boolean dnL()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.a.c
  * JD-Core Version:    0.7.0.1
  */

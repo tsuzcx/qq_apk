@@ -1,59 +1,59 @@
 package com.tencent.mm.plugin.sns.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.protocal.protobuf.fam;
-import com.tencent.mm.storage.as;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.pluginsdk.model.v;
+import com.tencent.mm.protocal.protobuf.fws;
+import com.tencent.mm.storage.au;
 import java.util.LinkedList;
 
 public final class b
 {
-  public static q a(String paramString, i parami, int paramInt)
+  public static p a(String paramString, com.tencent.mm.am.h paramh, int paramInt)
   {
-    AppMethodBeat.i(270566);
-    c(parami);
-    if (as.bvK(paramString))
+    AppMethodBeat.i(309570);
+    c(paramh);
+    if (au.bwO(paramString))
     {
-      paramString = new com.tencent.mm.openim.b.b(paramString, "");
-      AppMethodBeat.o(270566);
+      paramString = new com.tencent.mm.openim.model.b(paramString, "");
+      AppMethodBeat.o(309570);
       return paramString;
     }
-    parami = new LinkedList();
-    parami.add(Integer.valueOf(79));
+    paramh = new LinkedList();
+    paramh.add(Integer.valueOf(79));
     LinkedList localLinkedList = new LinkedList();
     localLinkedList.add(paramString);
-    paramString = new com.tencent.mm.pluginsdk.model.t(1, localLinkedList, parami, new LinkedList(), "", "", null, "", null);
-    parami = new fam();
+    paramString = new v(1, localLinkedList, paramh, new LinkedList(), "", "", null, "", null);
+    paramh = new fws();
     if (paramInt == 182) {}
-    for (parami.RKI = 2;; parami.RKI = 1)
+    for (paramh.YIc = 2;; paramh.YIc = 1)
     {
-      paramString.a(parami);
-      AppMethodBeat.o(270566);
+      paramString.a(paramh);
+      AppMethodBeat.o(309570);
       return paramString;
     }
   }
   
-  private static void c(i parami)
+  private static void c(com.tencent.mm.am.h paramh)
   {
-    AppMethodBeat.i(270567);
-    h.aGY().a(30, parami);
-    h.aGY().a(667, parami);
-    AppMethodBeat.o(270567);
+    AppMethodBeat.i(309573);
+    com.tencent.mm.kernel.h.aZW().a(30, paramh);
+    com.tencent.mm.kernel.h.aZW().a(667, paramh);
+    AppMethodBeat.o(309573);
   }
   
-  public static void d(i parami)
+  public static void d(com.tencent.mm.am.h paramh)
   {
-    AppMethodBeat.i(270568);
-    h.aGY().b(30, parami);
-    h.aGY().b(667, parami);
-    AppMethodBeat.o(270568);
+    AppMethodBeat.i(309575);
+    com.tencent.mm.kernel.h.aZW().b(30, paramh);
+    com.tencent.mm.kernel.h.aZW().b(667, paramh);
+    AppMethodBeat.o(309575);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.b
  * JD-Core Version:    0.7.0.1
  */

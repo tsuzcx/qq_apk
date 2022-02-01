@@ -10,7 +10,7 @@ import java.util.Iterator;
 public abstract class d
   implements Iterable<Byte>
 {
-  public static final d abgb;
+  public static final d ajeU;
   
   static
   {
@@ -18,12 +18,12 @@ public abstract class d
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      abgb = new q(new byte[0]);
+      ajeU = new q(new byte[0]);
       return;
     }
   }
   
-  public static d F(Iterable<d> paramIterable)
+  public static d G(Iterable<d> paramIterable)
   {
     ArrayList localArrayList;
     if (!(paramIterable instanceof Collection))
@@ -35,12 +35,12 @@ public abstract class d
       }
     }
     for (paramIterable = localArrayList; paramIterable.isEmpty(); paramIterable = (Collection)paramIterable) {
-      return abgb;
+      return ajeU;
     }
     return a(paramIterable.iterator(), paramIterable.size());
   }
   
-  public static d X(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public static d V(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     byte[] arrayOfByte = new byte[paramInt2];
     System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, 0, paramInt2);
@@ -57,7 +57,7 @@ public abstract class d
     return a(paramIterator, i).a(a(paramIterator, paramInt - i));
   }
   
-  public static d bHg(String paramString)
+  public static d bJj(String paramString)
   {
     try
     {
@@ -70,17 +70,21 @@ public abstract class d
     }
   }
   
-  public static d dG(byte[] paramArrayOfByte)
+  public static d dJ(byte[] paramArrayOfByte)
   {
-    return X(paramArrayOfByte, 0, paramArrayOfByte.length);
+    return V(paramArrayOfByte, 0, paramArrayOfByte.length);
   }
   
-  public static b iNH()
+  public static b kya()
   {
     return new b();
   }
   
-  public final String Ap()
+  protected abstract int Q(int paramInt1, int paramInt2, int paramInt3);
+  
+  protected abstract int R(int paramInt1, int paramInt2, int paramInt3);
+  
+  public final String ZV()
   {
     try
     {
@@ -93,9 +97,11 @@ public abstract class d
     }
   }
   
-  public abstract boolean Aq();
+  public abstract boolean ZW();
   
-  protected abstract int As();
+  protected abstract int ZY();
+  
+  protected abstract int ZZ();
   
   public final d a(d paramd)
   {
@@ -125,17 +131,7 @@ public abstract class d
   
   abstract void b(OutputStream paramOutputStream, int paramInt1, int paramInt2);
   
-  protected abstract int bn(int paramInt1, int paramInt2, int paramInt3);
-  
-  protected abstract int bo(int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract a iNG();
-  
-  protected abstract int iNI();
-  
-  protected abstract boolean iNJ();
-  
-  public final void k(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  public final void b(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
     if (paramInt1 < 0) {
       throw new IndexOutOfBoundsException(30 + "Source offset < 0: " + paramInt1);
@@ -153,11 +149,15 @@ public abstract class d
       throw new IndexOutOfBoundsException(34 + "Target end offset < 0: " + (paramInt2 + paramInt3));
     }
     if (paramInt3 > 0) {
-      m(paramArrayOfByte, paramInt1, paramInt2, paramInt3);
+      c(paramArrayOfByte, paramInt1, paramInt2, paramInt3);
     }
   }
   
-  protected abstract void m(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3);
+  protected abstract void c(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract a kxZ();
+  
+  protected abstract boolean kyb();
   
   public abstract int size();
   
@@ -168,7 +168,7 @@ public abstract class d
       return k.EMPTY_BYTE_ARRAY;
     }
     byte[] arrayOfByte = new byte[i];
-    m(arrayOfByte, 0, 0, i);
+    c(arrayOfByte, 0, 0, i);
     return arrayOfByte;
   }
   
@@ -189,28 +189,28 @@ public abstract class d
     extends OutputStream
   {
     private static final byte[] EMPTY_BYTE_ARRAY = new byte[0];
-    private final int abgc;
-    private final ArrayList<d> abgd;
-    private int abge;
+    private final int ajeV;
+    private final ArrayList<d> ajeW;
+    private int ajeX;
     private byte[] buffer;
-    private int ccP;
+    private int dXt;
     
     b()
     {
       AppMethodBeat.i(59370);
-      this.abgc = 128;
-      this.abgd = new ArrayList();
+      this.ajeV = 128;
+      this.ajeW = new ArrayList();
       this.buffer = new byte[''];
       AppMethodBeat.o(59370);
     }
     
-    private void aFq(int paramInt)
+    private void aMh(int paramInt)
     {
       AppMethodBeat.i(59375);
-      this.abgd.add(new q(this.buffer));
-      this.abge += this.buffer.length;
-      this.buffer = new byte[Math.max(this.abgc, Math.max(paramInt, this.abge >>> 1))];
-      this.ccP = 0;
+      this.ajeW.add(new q(this.buffer));
+      this.ajeX += this.buffer.length;
+      this.buffer = new byte[Math.max(this.ajeV, Math.max(paramInt, this.ajeX >>> 1))];
+      this.dXt = 0;
       AppMethodBeat.o(59375);
     }
     
@@ -218,8 +218,8 @@ public abstract class d
     {
       try
       {
-        int i = this.abge;
-        int j = this.ccP;
+        int i = this.ajeX;
+        int j = this.dXt;
         return i + j;
       }
       finally
@@ -230,7 +230,7 @@ public abstract class d
     }
     
     /* Error */
-    public final d iNK()
+    public final d kyc()
     {
       // Byte code:
       //   0: aload_0
@@ -238,19 +238,19 @@ public abstract class d
       //   2: ldc 70
       //   4: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   7: aload_0
-      //   8: getfield 65	kotlin/l/b/a/b/h/d$b:ccP	I
+      //   8: getfield 65	kotlin/l/b/a/b/h/d$b:dXt	I
       //   11: aload_0
       //   12: getfield 41	kotlin/l/b/a/b/h/d$b:buffer	[B
       //   15: arraylength
       //   16: if_icmpge +88 -> 104
       //   19: aload_0
-      //   20: getfield 65	kotlin/l/b/a/b/h/d$b:ccP	I
+      //   20: getfield 65	kotlin/l/b/a/b/h/d$b:dXt	I
       //   23: ifle +46 -> 69
       //   26: aload_0
       //   27: getfield 41	kotlin/l/b/a/b/h/d$b:buffer	[B
       //   30: astore_2
       //   31: aload_0
-      //   32: getfield 65	kotlin/l/b/a/b/h/d$b:ccP	I
+      //   32: getfield 65	kotlin/l/b/a/b/h/d$b:dXt	I
       //   35: istore_1
       //   36: iload_1
       //   37: newarray byte
@@ -265,7 +265,7 @@ public abstract class d
       //   47: invokestatic 73	java/lang/Math:min	(II)I
       //   50: invokestatic 79	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
       //   53: aload_0
-      //   54: getfield 39	kotlin/l/b/a/b/h/d$b:abgd	Ljava/util/ArrayList;
+      //   54: getfield 39	kotlin/l/b/a/b/h/d$b:ajeW	Ljava/util/ArrayList;
       //   57: new 48	kotlin/l/b/a/b/h/q
       //   60: dup
       //   61: aload_3
@@ -274,17 +274,17 @@ public abstract class d
       //   68: pop
       //   69: aload_0
       //   70: aload_0
-      //   71: getfield 57	kotlin/l/b/a/b/h/d$b:abge	I
+      //   71: getfield 57	kotlin/l/b/a/b/h/d$b:ajeX	I
       //   74: aload_0
-      //   75: getfield 65	kotlin/l/b/a/b/h/d$b:ccP	I
+      //   75: getfield 65	kotlin/l/b/a/b/h/d$b:dXt	I
       //   78: iadd
-      //   79: putfield 57	kotlin/l/b/a/b/h/d$b:abge	I
+      //   79: putfield 57	kotlin/l/b/a/b/h/d$b:ajeX	I
       //   82: aload_0
       //   83: iconst_0
-      //   84: putfield 65	kotlin/l/b/a/b/h/d$b:ccP	I
+      //   84: putfield 65	kotlin/l/b/a/b/h/d$b:dXt	I
       //   87: aload_0
-      //   88: getfield 39	kotlin/l/b/a/b/h/d$b:abgd	Ljava/util/ArrayList;
-      //   91: invokestatic 83	kotlin/l/b/a/b/h/d:F	(Ljava/lang/Iterable;)Lkotlin/l/b/a/b/h/d;
+      //   88: getfield 39	kotlin/l/b/a/b/h/d$b:ajeW	Ljava/util/ArrayList;
+      //   91: invokestatic 83	kotlin/l/b/a/b/h/d:G	(Ljava/lang/Iterable;)Lkotlin/l/b/a/b/h/d;
       //   94: astore_2
       //   95: ldc 70
       //   97: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -293,7 +293,7 @@ public abstract class d
       //   102: aload_2
       //   103: areturn
       //   104: aload_0
-      //   105: getfield 39	kotlin/l/b/a/b/h/d$b:abgd	Ljava/util/ArrayList;
+      //   105: getfield 39	kotlin/l/b/a/b/h/d$b:ajeW	Ljava/util/ArrayList;
       //   108: new 48	kotlin/l/b/a/b/h/q
       //   111: dup
       //   112: aload_0
@@ -337,12 +337,12 @@ public abstract class d
       try
       {
         AppMethodBeat.i(59371);
-        if (this.ccP == this.buffer.length) {
-          aFq(1);
+        if (this.dXt == this.buffer.length) {
+          aMh(1);
         }
         byte[] arrayOfByte = this.buffer;
-        int i = this.ccP;
-        this.ccP = (i + 1);
+        int i = this.dXt;
+        this.dXt = (i + 1);
         arrayOfByte[i] = ((byte)paramInt);
         AppMethodBeat.o(59371);
         return;
@@ -363,7 +363,7 @@ public abstract class d
       //   9: getfield 41	kotlin/l/b/a/b/h/d$b:buffer	[B
       //   12: arraylength
       //   13: aload_0
-      //   14: getfield 65	kotlin/l/b/a/b/h/d$b:ccP	I
+      //   14: getfield 65	kotlin/l/b/a/b/h/d$b:dXt	I
       //   17: isub
       //   18: if_icmpgt +35 -> 53
       //   21: aload_1
@@ -371,15 +371,15 @@ public abstract class d
       //   23: aload_0
       //   24: getfield 41	kotlin/l/b/a/b/h/d$b:buffer	[B
       //   27: aload_0
-      //   28: getfield 65	kotlin/l/b/a/b/h/d$b:ccP	I
+      //   28: getfield 65	kotlin/l/b/a/b/h/d$b:dXt	I
       //   31: iload_3
       //   32: invokestatic 79	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
       //   35: aload_0
       //   36: aload_0
-      //   37: getfield 65	kotlin/l/b/a/b/h/d$b:ccP	I
+      //   37: getfield 65	kotlin/l/b/a/b/h/d$b:dXt	I
       //   40: iload_3
       //   41: iadd
-      //   42: putfield 65	kotlin/l/b/a/b/h/d$b:ccP	I
+      //   42: putfield 65	kotlin/l/b/a/b/h/d$b:dXt	I
       //   45: ldc 118
       //   47: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   50: aload_0
@@ -389,7 +389,7 @@ public abstract class d
       //   54: getfield 41	kotlin/l/b/a/b/h/d$b:buffer	[B
       //   57: arraylength
       //   58: aload_0
-      //   59: getfield 65	kotlin/l/b/a/b/h/d$b:ccP	I
+      //   59: getfield 65	kotlin/l/b/a/b/h/d$b:dXt	I
       //   62: isub
       //   63: istore 4
       //   65: aload_1
@@ -397,7 +397,7 @@ public abstract class d
       //   67: aload_0
       //   68: getfield 41	kotlin/l/b/a/b/h/d$b:buffer	[B
       //   71: aload_0
-      //   72: getfield 65	kotlin/l/b/a/b/h/d$b:ccP	I
+      //   72: getfield 65	kotlin/l/b/a/b/h/d$b:dXt	I
       //   75: iload 4
       //   77: invokestatic 79	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
       //   80: iload_3
@@ -406,7 +406,7 @@ public abstract class d
       //   84: istore_3
       //   85: aload_0
       //   86: iload_3
-      //   87: invokespecial 116	kotlin/l/b/a/b/h/d$b:aFq	(I)V
+      //   87: invokespecial 116	kotlin/l/b/a/b/h/d$b:aMh	(I)V
       //   90: aload_1
       //   91: iload_2
       //   92: iload 4
@@ -418,7 +418,7 @@ public abstract class d
       //   101: invokestatic 79	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
       //   104: aload_0
       //   105: iload_3
-      //   106: putfield 65	kotlin/l/b/a/b/h/d$b:ccP	I
+      //   106: putfield 65	kotlin/l/b/a/b/h/d$b:dXt	I
       //   109: ldc 118
       //   111: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   114: goto -64 -> 50
@@ -444,7 +444,7 @@ public abstract class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.h.d
  * JD-Core Version:    0.7.0.1
  */

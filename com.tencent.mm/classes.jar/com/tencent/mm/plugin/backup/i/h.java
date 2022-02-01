@@ -4,15 +4,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class h
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int rVx;
-  public LinkedList<g> rVy;
+  public int vgN;
+  public LinkedList<g> vgO;
   
   public h()
   {
     AppMethodBeat.i(22108);
-    this.rVy = new LinkedList();
+    this.vgO = new LinkedList();
     AppMethodBeat.o(22108);
   }
   
@@ -21,28 +21,28 @@ public final class h
     AppMethodBeat.i(22109);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.rVx);
-      paramVarArgs.e(2, 8, this.rVy);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.vgN);
+      paramVarArgs.e(2, 8, this.vgO);
       AppMethodBeat.o(22109);
       return 0;
     }
     int i;
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.bM(1, this.rVx);
-      i = g.a.a.a.c(2, 8, this.rVy);
+      paramInt = i.a.a.b.b.a.cJ(1, this.vgN);
+      i = i.a.a.a.c(2, 8, this.vgO);
       AppMethodBeat.o(22109);
       return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.rVy.clear();
-      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      this.vgO.clear();
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
       AppMethodBeat.o(22109);
@@ -50,7 +50,7 @@ public final class h
     }
     if (paramInt == 3)
     {
-      Object localObject = (g.a.a.a.a)paramVarArgs[0];
+      Object localObject = (i.a.a.a.a)paramVarArgs[0];
       h localh = (h)paramVarArgs[1];
       paramInt = ((Integer)paramVarArgs[2]).intValue();
       switch (paramInt)
@@ -59,11 +59,11 @@ public final class h
         AppMethodBeat.o(22109);
         return -1;
       case 1: 
-        localh.rVx = ((g.a.a.a.a)localObject).abFh.AK();
+        localh.vgN = ((i.a.a.a.a)localObject).ajGk.aar();
         AppMethodBeat.o(22109);
         return 0;
       }
-      paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+      paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
       i = paramVarArgs.size();
       paramInt = 0;
       while (paramInt < i)
@@ -73,7 +73,7 @@ public final class h
         if ((localObject != null) && (localObject.length > 0)) {
           localg.parseFrom((byte[])localObject);
         }
-        localh.rVy.add(localg);
+        localh.vgO.add(localg);
         paramInt += 1;
       }
       AppMethodBeat.o(22109);

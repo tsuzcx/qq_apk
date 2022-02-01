@@ -1,187 +1,235 @@
 package com.tencent.mm.plugin.finder.storage;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.cf;
-import com.tencent.mm.plugin.finder.api.i;
-import com.tencent.mm.plugin.finder.api.i.a;
-import com.tencent.mm.sdk.storage.ISQLiteDatabase;
-import com.tencent.mm.sdk.storage.MAutoStorage;
-import java.util.Collection;
+import com.tencent.mm.plugin.finder.convert.ae;
+import com.tencent.mm.plugin.finder.convert.live.a;
+import com.tencent.mm.plugin.finder.convert.z;
+import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.mm.plugin.finder.utils.r;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.bip;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.view.d;
+import com.tencent.mm.view.recyclerview.f;
+import com.tencent.mm.view.recyclerview.g;
+import com.tencent.mm.view.recyclerview.j;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import java.util.List<Ljava.lang.Object;>;
+import kotlin.Metadata;
+import kotlin.g.a.b;
+import kotlin.g.a.m;
+import kotlin.g.a.q;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderContactStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/autogen/table/BaseFinderContact;", "storage", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getStorage", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "getContact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "username", "", "insertContact", "", "contact", "replaceContactInDB", "", "ct", "reportSize", "", "updateContact", "Companion", "plugin-finder-base_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/FinderConfigForNewLiveCardStyle;", "Lcom/tencent/mm/plugin/finder/storage/FinderStaggeredConfig;", "baseContext", "Landroid/content/Context;", "commentScene", "", "(Landroid/content/Context;I)V", "getBaseContext", "()Landroid/content/Context;", "getCommentScene", "()I", "bindLive", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "extraMap", "Lkotlin/Function1;", "onBind", "Lkotlin/Function3;", "Lkotlin/ParameterName;", "name", "position", "getItemConvertFactory", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "jumpProfile", "context", "feedId", "", "username", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
-  extends MAutoStorage<cf>
+  extends ao
 {
-  public static final a AkB;
-  private static final String[] INDEX_CREATE;
-  private static final String[] SQL_CREATE;
-  public final ISQLiteDatabase AkA;
+  final int AJo;
+  final Context FJU;
   
-  static
+  public e(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(166958);
-    AkB = new a((byte)0);
-    Object localObject = i.xai;
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(i.access$getInfo$cp(), "FinderContact") };
-    localObject = cf.INDEX_CREATE;
-    p.j(localObject, "BaseFinderContact.INDEX_CREATE");
-    localObject = kotlin.a.e.ab((Object[])localObject);
-    ((List)localObject).add(0, "DROP INDEX username_index");
-    localObject = ((Collection)localObject).toArray(new String[0]);
-    if (localObject == null)
+    AppMethodBeat.i(339170);
+    this.FJU = paramContext;
+    this.AJo = paramInt;
+    AppMethodBeat.o(339170);
+  }
+  
+  public final f<?> a(int paramInt, b<? super Integer, ? extends f<?>> paramb, final q<? super j, ? super BaseFinderFeed, ? super Integer, kotlin.ah> paramq)
+  {
+    AppMethodBeat.i(339185);
+    switch (paramInt)
     {
-      localObject = new t("null cannot be cast to non-null type kotlin.Array<T>");
-      AppMethodBeat.o(166958);
-      throw ((Throwable)localObject);
+    default: 
+      if (paramb != null) {
+        break;
+      }
     }
-    INDEX_CREATE = (String[])localObject;
-    AppMethodBeat.o(166958);
+    for (paramb = null; paramb == null; paramb = (f)paramb.invoke(Integer.valueOf(paramInt)))
+    {
+      paramb = Ts(paramInt);
+      AppMethodBeat.o(339185);
+      return paramb;
+      paramb = (f)new a(paramq);
+      AppMethodBeat.o(339185);
+      return paramb;
+      paramb = (f)new b(this, paramq, MMApplicationContext.getContext().getResources().getDimension(com.tencent.mm.plugin.finder.e.c.Edge_1_5_A), new c(this));
+      AppMethodBeat.o(339185);
+      return paramb;
+      paramb = (f)new d(paramq);
+      AppMethodBeat.o(339185);
+      return paramb;
+      paramb = (f)new ae();
+      AppMethodBeat.o(339185);
+      return paramb;
+      paramb = (f)new z();
+      AppMethodBeat.o(339185);
+      return paramb;
+    }
+    AppMethodBeat.o(339185);
+    return paramb;
   }
   
-  public e(ISQLiteDatabase paramISQLiteDatabase)
+  public final g au(final b<? super Integer, ? extends f<?>> paramb)
   {
-    super(paramISQLiteDatabase, i.access$getInfo$cp(), "FinderContact", INDEX_CREATE);
-    AppMethodBeat.i(166957);
-    this.AkA = paramISQLiteDatabase;
-    AppMethodBeat.o(166957);
+    AppMethodBeat.i(339174);
+    paramb = (g)new e(this, paramb);
+    AppMethodBeat.o(339174);
+    return paramb;
   }
   
-  /* Error */
-  public final i aAK(String paramString)
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/storage/FinderConfigForNewLiveCardStyle$getItemConvert$1", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedVideoRoundCornerConvert;", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+    extends com.tencent.mm.plugin.finder.convert.ah
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: ldc 138
-    //   5: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: aload_1
-    //   9: ldc 139
-    //   11: invokestatic 125	kotlin/g/b/p:k	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   14: new 141	java/lang/StringBuilder
-    //   17: dup
-    //   18: ldc 143
-    //   20: invokespecial 144	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   23: aload_1
-    //   24: invokestatic 150	com/tencent/mm/storagebase/h:Mi	(Ljava/lang/String;)Ljava/lang/String;
-    //   27: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   33: astore 5
-    //   35: invokestatic 164	android/os/SystemClock:uptimeMillis	()J
-    //   38: lstore_2
-    //   39: aload_0
-    //   40: getfield 131	com/tencent/mm/plugin/finder/storage/e:AkA	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
-    //   43: aload 5
-    //   45: aconst_null
-    //   46: iconst_2
-    //   47: invokeinterface 170 4 0
-    //   52: astore_1
-    //   53: new 172	com/tencent/mm/plugin/finder/conv/c$a
-    //   56: dup
-    //   57: invokespecial 174	com/tencent/mm/plugin/finder/conv/c$a:<init>	()V
-    //   60: astore 6
-    //   62: invokestatic 180	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   65: astore 7
-    //   67: aload 7
-    //   69: ldc 182
-    //   71: invokestatic 88	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   74: aload 7
-    //   76: invokevirtual 185	java/lang/Thread:getName	()Ljava/lang/String;
-    //   79: astore 7
-    //   81: aload 7
-    //   83: ldc 187
-    //   85: invokestatic 88	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   88: aload 6
-    //   90: aload 7
-    //   92: invokevirtual 191	com/tencent/mm/plugin/finder/conv/c$a:aAY	(Ljava/lang/String;)Lcom/tencent/mm/plugin/finder/conv/c$a;
-    //   95: aload 5
-    //   97: invokevirtual 194	com/tencent/mm/plugin/finder/conv/c$a:aAX	(Ljava/lang/String;)Lcom/tencent/mm/plugin/finder/conv/c$a;
-    //   100: astore 5
-    //   102: aload 5
-    //   104: invokestatic 164	android/os/SystemClock:uptimeMillis	()J
-    //   107: lload_2
-    //   108: lsub
-    //   109: putfield 198	com/tencent/mm/plugin/finder/conv/c$a:duration	J
-    //   112: aload 5
-    //   114: ldc 200
-    //   116: invokevirtual 203	com/tencent/mm/plugin/finder/conv/c$a:aAW	(Ljava/lang/String;)Lcom/tencent/mm/plugin/finder/conv/c$a;
-    //   119: invokevirtual 207	com/tencent/mm/plugin/finder/conv/c$a:dpk	()Lcom/tencent/mm/plugin/finder/conv/c$b;
-    //   122: invokevirtual 212	com/tencent/mm/plugin/finder/conv/c$b:report	()V
-    //   125: aload_1
-    //   126: checkcast 214	java/io/Closeable
-    //   129: astore 5
-    //   131: aload 5
-    //   133: checkcast 216	android/database/Cursor
-    //   136: astore 6
-    //   138: aload 6
-    //   140: ifnull +46 -> 186
-    //   143: aload 6
-    //   145: invokeinterface 220 1 0
-    //   150: iconst_1
-    //   151: if_icmpne +69 -> 220
-    //   154: new 58	com/tencent/mm/plugin/finder/api/i
-    //   157: dup
-    //   158: invokespecial 221	com/tencent/mm/plugin/finder/api/i:<init>	()V
-    //   161: astore_1
-    //   162: aload_1
-    //   163: aload 6
-    //   165: invokevirtual 225	com/tencent/mm/plugin/finder/api/i:convertFrom	(Landroid/database/Cursor;)V
-    //   168: getstatic 231	kotlin/x:aazN	Lkotlin/x;
-    //   171: astore 6
-    //   173: aload 5
-    //   175: aconst_null
-    //   176: invokestatic 236	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   179: ldc 138
-    //   181: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   184: aload_1
-    //   185: areturn
-    //   186: aconst_null
-    //   187: astore_1
-    //   188: goto -20 -> 168
-    //   191: astore 4
-    //   193: ldc 138
-    //   195: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   198: aload 4
-    //   200: athrow
-    //   201: astore_1
-    //   202: aload 5
-    //   204: aload 4
-    //   206: invokestatic 236	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   209: ldc 138
-    //   211: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   214: aload_1
-    //   215: athrow
-    //   216: astore_1
-    //   217: goto -15 -> 202
-    //   220: aconst_null
-    //   221: astore_1
-    //   222: goto -54 -> 168
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	225	0	this	e
-    //   0	225	1	paramString	String
-    //   38	70	2	l	long
-    //   1	1	4	localObject1	Object
-    //   191	14	4	localThrowable	Throwable
-    //   33	170	5	localObject2	Object
-    //   60	112	6	localObject3	Object
-    //   65	26	7	localObject4	Object
-    // Exception table:
-    //   from	to	target	type
-    //   131	138	191	java/lang/Throwable
-    //   143	168	191	java/lang/Throwable
-    //   168	173	191	java/lang/Throwable
-    //   193	201	201	finally
-    //   131	138	216	finally
-    //   143	168	216	finally
-    //   168	173	216	finally
+    a(q<? super j, ? super BaseFinderFeed, ? super Integer, kotlin.ah> paramq) {}
+    
+    public final void a(j paramj, BaseFinderFeed paramBaseFinderFeed, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
+    {
+      AppMethodBeat.i(339020);
+      s.u(paramj, "holder");
+      s.u(paramBaseFinderFeed, "item");
+      super.a(paramj, paramBaseFinderFeed, paramInt1, paramInt2, paramBoolean, paramList);
+      paramList = this.Bbi;
+      if (paramList != null) {
+        paramList.invoke(paramj, paramBaseFinderFeed, Integer.valueOf(paramInt1));
+      }
+      AppMethodBeat.o(339020);
+    }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderContactStorage$Companion;", "", "()V", "INDEX_CREATE", "", "", "kotlin.jvm.PlatformType", "getINDEX_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "SQL_CREATE", "getSQL_CREATE", "TAG", "plugin-finder-base_release"})
-  public static final class a {}
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/storage/FinderConfigForNewLiveCardStyle$getItemConvert$2", "Lcom/tencent/mm/plugin/finder/convert/live/FinderLiveSquareLiveFeedConvert;", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+    extends a
+  {
+    b(e parame, q<? super j, ? super BaseFinderFeed, ? super Integer, kotlin.ah> paramq, float paramFloat, e.c paramc)
+    {
+      super(false, false, (m)paramc);
+      AppMethodBeat.i(339015);
+      AppMethodBeat.o(339015);
+    }
+    
+    public final void a(j paramj, BaseFinderFeed paramBaseFinderFeed, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
+    {
+      AppMethodBeat.i(339025);
+      s.u(paramj, "holder");
+      s.u(paramBaseFinderFeed, "item");
+      super.a(paramj, paramBaseFinderFeed, paramInt1, paramInt2, paramBoolean, paramList);
+      View localView = paramj.UH(com.tencent.mm.plugin.finder.e.e.finder_live_online_layout);
+      TextView localTextView2 = (TextView)paramj.UH(com.tencent.mm.plugin.finder.e.e.rec_reason_tv);
+      TextView localTextView1 = (TextView)paramj.UH(com.tencent.mm.plugin.finder.e.e.watch_count_history_tv);
+      paramList = paramj.UH(com.tencent.mm.plugin.finder.e.e.finder_live_onlive_widget);
+      Object localObject = paramBaseFinderFeed.feedObject.getLiveInfo();
+      if ((localObject != null) && (((bip)localObject).liveStatus == 1))
+      {
+        paramInt2 = 1;
+        if (paramInt2 == 0) {
+          break label347;
+        }
+        localView.setVisibility(0);
+        paramList.setVisibility(0);
+        localObject = paramBaseFinderFeed.feedObject.getFeedObject().recommendReason;
+        paramList = (List<Object>)localObject;
+        if (localObject == null) {
+          paramList = "";
+        }
+        if (!TextUtils.isEmpty((CharSequence)paramList)) {
+          break label308;
+        }
+        localView.setVisibility(8);
+        label158:
+        paramList = paramBaseFinderFeed.feedObject.getLiveInfo();
+        if (paramList != null) {
+          break label327;
+        }
+        paramInt2 = 0;
+        label175:
+        if (paramInt2 <= 0) {
+          break label337;
+        }
+        localTextView1.setText((CharSequence)String.valueOf(r.TS(paramInt2)));
+        localTextView1.setVisibility(0);
+        localTextView1.setBackground(paramj.context.getDrawable(com.tencent.mm.plugin.finder.e.d.finder_stagged_feed_float_bg));
+        localTextView1.setPadding(d.e(paramj.context, 6.0F), d.e(paramj.context, 1.0F), d.e(paramj.context, 6.0F), d.e(paramj.context, 1.0F));
+      }
+      for (;;)
+      {
+        ((TextView)paramj.UH(com.tencent.mm.plugin.finder.e.e.finder_desc)).setVisibility(8);
+        paramList = paramq;
+        if (paramList != null) {
+          paramList.invoke(paramj, paramBaseFinderFeed, Integer.valueOf(paramInt1));
+        }
+        AppMethodBeat.o(339025);
+        return;
+        paramInt2 = 0;
+        break;
+        label308:
+        localTextView2.setText((CharSequence)paramList);
+        localView.setVisibility(0);
+        break label158;
+        label327:
+        paramInt2 = paramList.EOg;
+        break label175;
+        label337:
+        localTextView1.setVisibility(8);
+        continue;
+        label347:
+        paramList.setVisibility(8);
+      }
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "feedId", "", "username", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends kotlin.g.b.u
+    implements m<Long, String, kotlin.ah>
+  {
+    c(e parame)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/storage/FinderConfigForNewLiveCardStyle$getItemConvert$4", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedImageRoundCornerConvert;", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class d
+    extends com.tencent.mm.plugin.finder.convert.u
+  {
+    d(q<? super j, ? super BaseFinderFeed, ? super Integer, kotlin.ah> paramq) {}
+    
+    public final void a(j paramj, BaseFinderFeed paramBaseFinderFeed, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
+    {
+      AppMethodBeat.i(339014);
+      s.u(paramj, "holder");
+      s.u(paramBaseFinderFeed, "item");
+      super.a(paramj, paramBaseFinderFeed, paramInt1, paramInt2, paramBoolean, paramList);
+      paramList = this.Bbi;
+      if (paramList != null) {
+        paramList.invoke(paramj, paramBaseFinderFeed, Integer.valueOf(paramInt1));
+      }
+      AppMethodBeat.o(339014);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/storage/FinderConfigForNewLiveCardStyle$getItemConvertFactory$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class e
+    implements g
+  {
+    e(e parame, b<? super Integer, ? extends f<?>> paramb) {}
+    
+    public final f<?> yF(int paramInt)
+    {
+      AppMethodBeat.i(339012);
+      f localf = this.FJV.a(paramInt, paramb, null);
+      AppMethodBeat.o(339012);
+      return localf;
+    }
+  }
 }
 
 

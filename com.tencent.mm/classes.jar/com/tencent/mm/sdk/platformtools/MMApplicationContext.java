@@ -7,8 +7,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
+import androidx.core.content.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.app.d;
+import com.tencent.mm.app.e;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -37,11 +38,11 @@ public final class MMApplicationContext
   
   public static List<String> getAliveProcess()
   {
-    AppMethodBeat.i(249234);
+    AppMethodBeat.i(243816);
     LinkedList localLinkedList = new LinkedList();
     if ((context == null) || (pkgName == null))
     {
-      AppMethodBeat.o(249234);
+      AppMethodBeat.o(243816);
       return localLinkedList;
     }
     if (mActivityManager == null) {
@@ -57,18 +58,18 @@ public final class MMApplicationContext
         int i = localRunningAppProcessInfo.pid;
         localLinkedList.add(str + "@" + i);
       }
-      AppMethodBeat.o(249234);
+      AppMethodBeat.o(243816);
     }
     catch (Exception localException)
     {
       Log.e("MicroMsg.MMApplicationContext", "isMMProcessExist Exception: " + localException.toString());
-      AppMethodBeat.o(249234);
+      AppMethodBeat.o(243816);
       return localLinkedList;
     }
     catch (Error localError)
     {
       Log.e("MicroMsg.MMApplicationContext", "isMMProcessExist Error: " + localError.toString());
-      AppMethodBeat.o(249234);
+      AppMethodBeat.o(243816);
       return localLinkedList;
     }
     return localLinkedList;
@@ -79,11 +80,11 @@ public final class MMApplicationContext
     return pkgName;
   }
   
-  public static int getColor(@androidx.annotation.a int paramInt)
+  public static int getColor(int paramInt)
   {
-    AppMethodBeat.i(249239);
-    paramInt = androidx.core.content.a.w(getContext(), paramInt);
-    AppMethodBeat.o(249239);
+    AppMethodBeat.i(243832);
+    paramInt = a.w(getContext(), paramInt);
+    AppMethodBeat.o(243832);
     return paramInt;
   }
   
@@ -115,28 +116,28 @@ public final class MMApplicationContext
   
   public static SharedPreferences getExdeviceProcessPreference()
   {
-    AppMethodBeat.i(249209);
+    AppMethodBeat.i(243729);
     if (context != null)
     {
       if (Build.VERSION.SDK_INT >= 11)
       {
         localSharedPreferences = context.getSharedPreferences(getExdeviceProcessPreferencePath(), 4);
-        AppMethodBeat.o(249209);
+        AppMethodBeat.o(243729);
         return localSharedPreferences;
       }
       SharedPreferences localSharedPreferences = context.getSharedPreferences(getExdeviceProcessPreferencePath(), 0);
-      AppMethodBeat.o(249209);
+      AppMethodBeat.o(243729);
       return localSharedPreferences;
     }
-    AppMethodBeat.o(249209);
+    AppMethodBeat.o(243729);
     return null;
   }
   
   public static String getExdeviceProcessPreferencePath()
   {
-    AppMethodBeat.i(249207);
+    AppMethodBeat.i(243718);
     String str = pkgName + "_preferences_exdevice_";
-    AppMethodBeat.o(249207);
+    AppMethodBeat.o(243718);
     return str;
   }
   
@@ -147,9 +148,9 @@ public final class MMApplicationContext
   
   public static String getLiteProcessName()
   {
-    AppMethodBeat.i(249240);
+    AppMethodBeat.i(243839);
     String str = pkgName + ":lite";
-    AppMethodBeat.o(249240);
+    AppMethodBeat.o(243839);
     return str;
   }
   
@@ -166,7 +167,7 @@ public final class MMApplicationContext
   
   public static String getProcessName()
   {
-    return d.cQP;
+    return e.eMg;
   }
   
   public static Resources getResources()
@@ -181,22 +182,22 @@ public final class MMApplicationContext
   
   public static String getString(int paramInt)
   {
-    AppMethodBeat.i(249237);
+    AppMethodBeat.i(243829);
     String str = getResources().getString(paramInt);
-    AppMethodBeat.o(249237);
+    AppMethodBeat.o(243829);
     return str;
   }
   
   public static SharedPreferences getTmpPreference()
   {
-    AppMethodBeat.i(249210);
+    AppMethodBeat.i(243739);
     if (context != null)
     {
       SharedPreferences localSharedPreferences = context.getSharedPreferences(getTmpPreferencePath(), 0);
-      AppMethodBeat.o(249210);
+      AppMethodBeat.o(243739);
       return localSharedPreferences;
     }
-    AppMethodBeat.o(249210);
+    AppMethodBeat.o(243739);
     return null;
   }
   
@@ -210,9 +211,9 @@ public final class MMApplicationContext
   
   public static String getToolsProcessPreferencePath()
   {
-    AppMethodBeat.i(249205);
+    AppMethodBeat.i(243715);
     String str = pkgName + "_preferences_tools";
-    AppMethodBeat.o(249205);
+    AppMethodBeat.o(243715);
     return str;
   }
   
@@ -255,7 +256,7 @@ public final class MMApplicationContext
   
   public static boolean isBacktraceProcess()
   {
-    AppMethodBeat.i(249226);
+    AppMethodBeat.i(243782);
     String str2 = getProcessName();
     String str1;
     if (str2 != null)
@@ -268,7 +269,7 @@ public final class MMApplicationContext
       str1 = pkgName;
     }
     boolean bool = (pkgName + ":backtrace__").equalsIgnoreCase(str1);
-    AppMethodBeat.o(249226);
+    AppMethodBeat.o(243782);
     return bool;
   }
   
@@ -293,7 +294,7 @@ public final class MMApplicationContext
   
   public static boolean isHotpotDotDotProcess()
   {
-    AppMethodBeat.i(249224);
+    AppMethodBeat.i(243778);
     String str2 = getProcessName();
     String str1;
     if (str2 != null)
@@ -306,13 +307,13 @@ public final class MMApplicationContext
       str1 = pkgName;
     }
     boolean bool = (pkgName + ":hotpot..").equalsIgnoreCase(str1);
-    AppMethodBeat.o(249224);
+    AppMethodBeat.o(243778);
     return bool;
   }
   
   public static boolean isImeProcess()
   {
-    AppMethodBeat.i(249229);
+    AppMethodBeat.i(243789);
     String str2 = getProcessName();
     String str1;
     if (str2 != null)
@@ -325,13 +326,13 @@ public final class MMApplicationContext
       str1 = pkgName;
     }
     boolean bool = (pkgName + ":hld").equalsIgnoreCase(str1);
-    AppMethodBeat.o(249229);
+    AppMethodBeat.o(243789);
     return bool;
   }
   
   public static boolean isLiteProcess()
   {
-    AppMethodBeat.i(249227);
+    AppMethodBeat.i(243783);
     String str2 = getProcessName();
     String str1;
     if (str2 != null)
@@ -344,7 +345,7 @@ public final class MMApplicationContext
       str1 = pkgName;
     }
     boolean bool = getLiteProcessName().equalsIgnoreCase(str1);
-    AppMethodBeat.o(249227);
+    AppMethodBeat.o(243783);
     return bool;
   }
   
@@ -368,7 +369,7 @@ public final class MMApplicationContext
   public static boolean isMainProcess()
   {
     AppMethodBeat.i(125275);
-    String str2 = d.cQP;
+    String str2 = e.eMg;
     String str1;
     if (str2 != null)
     {
@@ -386,7 +387,7 @@ public final class MMApplicationContext
   
   public static boolean isNoSpaceProcess()
   {
-    AppMethodBeat.i(249230);
+    AppMethodBeat.i(243796);
     String str2 = getProcessName();
     String str1;
     if (str2 != null)
@@ -399,7 +400,7 @@ public final class MMApplicationContext
       str1 = pkgName;
     }
     boolean bool = (pkgName + ":nospace").equalsIgnoreCase(str1);
-    AppMethodBeat.o(249230);
+    AppMethodBeat.o(243796);
     return bool;
   }
   
@@ -462,6 +463,25 @@ public final class MMApplicationContext
     return bool;
   }
   
+  public static boolean isRecoveryProcess()
+  {
+    AppMethodBeat.i(243801);
+    String str2 = getProcessName();
+    String str1;
+    if (str2 != null)
+    {
+      str1 = str2;
+      if (str2.length() != 0) {}
+    }
+    else
+    {
+      str1 = pkgName;
+    }
+    boolean bool = (pkgName + ":recovery").equalsIgnoreCase(str1);
+    AppMethodBeat.o(243801);
+    return bool;
+  }
+  
   public static boolean isSandBoxProcess()
   {
     AppMethodBeat.i(125282);
@@ -483,7 +503,7 @@ public final class MMApplicationContext
   
   public static boolean isSupportProcess()
   {
-    AppMethodBeat.i(249220);
+    AppMethodBeat.i(243768);
     String str2 = getProcessName();
     String str1;
     if (str2 != null)
@@ -496,13 +516,13 @@ public final class MMApplicationContext
       str1 = pkgName;
     }
     boolean bool = (pkgName + ":support").equalsIgnoreCase(str1);
-    AppMethodBeat.o(249220);
+    AppMethodBeat.o(243768);
     return bool;
   }
   
   public static boolean isSwitchProcess()
   {
-    AppMethodBeat.i(249222);
+    AppMethodBeat.i(243775);
     String str2 = getProcessName();
     String str1;
     if (str2 != null)
@@ -515,14 +535,14 @@ public final class MMApplicationContext
       str1 = pkgName;
     }
     boolean bool = (pkgName + ":switch").equalsIgnoreCase(str1);
-    AppMethodBeat.o(249222);
+    AppMethodBeat.o(243775);
     return bool;
   }
   
   public static boolean isToolsIsolatedProcess()
   {
     AppMethodBeat.i(125279);
-    String str2 = d.cQP;
+    String str2 = e.eMg;
     String str1;
     if (str2 != null)
     {
@@ -533,9 +553,13 @@ public final class MMApplicationContext
     {
       str1 = pkgName;
     }
-    boolean bool = (pkgName + ":isolated_process0").equalsIgnoreCase(str1);
+    if (((pkgName + ":isolated_process0").equalsIgnoreCase(str1)) || (str1.startsWith(pkgName + ":xweb_sandboxed_process")))
+    {
+      AppMethodBeat.o(125279);
+      return true;
+    }
     AppMethodBeat.o(125279);
-    return bool;
+    return false;
   }
   
   public static boolean isToolsMpProcess()
@@ -605,7 +629,7 @@ public final class MMApplicationContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.MMApplicationContext
  * JD-Core Version:    0.7.0.1
  */

@@ -23,11 +23,11 @@ public final class ServiceFreeActionResponse
     AppMethodBeat.i(102257);
     if (cache_revertField == null)
     {
-      byte[] arrayOfByte = (byte[])new byte[1];
+      byte[] arrayOfByte = new byte[1];
       cache_revertField = arrayOfByte;
-      ((byte[])arrayOfByte)[0] = 0;
+      arrayOfByte[0] = 0;
     }
-    this.revertField = ((byte[])paramJceInputStream.read(cache_revertField, 0, false));
+    this.revertField = paramJceInputStream.read(cache_revertField, 0, false);
     AppMethodBeat.o(102257);
   }
   
@@ -42,7 +42,7 @@ public final class ServiceFreeActionResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.param.jce.ServiceFreeActionResponse
  * JD-Core Version:    0.7.0.1
  */

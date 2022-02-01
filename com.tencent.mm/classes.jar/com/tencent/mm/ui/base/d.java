@@ -12,39 +12,34 @@ import java.util.Queue;
 public abstract class d
   extends a
 {
-  private Queue<View> Whk;
-  private int Whl = 0;
+  private Queue<View> adOg;
+  private int adOh = 0;
   public Context context;
   
   public d(Context paramContext)
   {
     this.context = paramContext;
-    this.Whk = new LinkedList();
+    this.adOg = new LinkedList();
   }
   
   public abstract View a(View paramView, ViewGroup paramViewGroup, int paramInt);
   
-  public abstract int bAR();
+  public abstract int bZC();
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
     paramObject = (View)paramObject;
     paramViewGroup.removeView(paramObject);
-    this.Whk.add(paramObject);
-    yy(paramInt);
-    Log.d("MicroMsg.CustomPagerAdapter", "recycle queue size %d", new Object[] { Integer.valueOf(this.Whk.size()) });
-  }
-  
-  public final Context getContext()
-  {
-    return this.context;
+    this.adOg.add(paramObject);
+    yG(paramInt);
+    Log.d("MicroMsg.CustomPagerAdapter", "recycle queue size %d", new Object[] { Integer.valueOf(this.adOg.size()) });
   }
   
   public int getItemPosition(Object paramObject)
   {
-    if (this.Whl > 0)
+    if (this.adOh > 0)
     {
-      this.Whl -= 1;
+      this.adOh -= 1;
       return -2;
     }
     return super.getItemPosition(paramObject);
@@ -53,7 +48,7 @@ public abstract class d
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
     long l = System.currentTimeMillis();
-    View localView = a((View)this.Whk.poll(), paramViewGroup, paramInt);
+    View localView = a((View)this.adOg.poll(), paramViewGroup, paramInt);
     if (localView.getLayoutParams() == null) {
       localView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
     }
@@ -69,15 +64,15 @@ public abstract class d
   
   public void notifyDataSetChanged()
   {
-    this.Whl = bAR();
+    this.adOh = bZC();
     super.notifyDataSetChanged();
   }
   
-  public abstract void yy(int paramInt);
+  public abstract void yG(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.base.d
  * JD-Core Version:    0.7.0.1
  */

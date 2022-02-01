@@ -4,7 +4,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static final char[] oLo = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
+  private static final char[] rPi = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
+  
+  public static byte[] aQa(String paramString)
+  {
+    AppMethodBeat.i(26678);
+    int j = paramString.length();
+    byte[] arrayOfByte = new byte[j / 2];
+    int i = 0;
+    while (i < j)
+    {
+      arrayOfByte[(i / 2)] = ((byte)((Character.digit(paramString.charAt(i), 16) << 4) + Character.digit(paramString.charAt(i + 1), 16)));
+      i += 2;
+    }
+    AppMethodBeat.o(26678);
+    return arrayOfByte;
+  }
   
   public static String byteArrayToHexString(byte[] paramArrayOfByte)
   {
@@ -19,8 +34,8 @@ public final class a
     while (i < paramArrayOfByte.length)
     {
       int j = paramArrayOfByte[i] & 0xFF;
-      arrayOfChar[(i * 2)] = oLo[(j >>> 4)];
-      arrayOfChar[(i * 2 + 1)] = oLo[(j & 0xF)];
+      arrayOfChar[(i * 2)] = rPi[(j >>> 4)];
+      arrayOfChar[(i * 2 + 1)] = rPi[(j & 0xF)];
       i += 1;
     }
     paramArrayOfByte = new String(arrayOfChar);
@@ -28,24 +43,9 @@ public final class a
     return paramArrayOfByte;
   }
   
-  public static byte[] c(short paramShort)
+  public static byte[] f(short paramShort)
   {
     return new byte[] { (byte)(paramShort >>> 8 & 0xFF), (byte)(paramShort & 0xFF) };
-  }
-  
-  public static byte[] hexStringToByteArray(String paramString)
-  {
-    AppMethodBeat.i(26678);
-    int j = paramString.length();
-    byte[] arrayOfByte = new byte[j / 2];
-    int i = 0;
-    while (i < j)
-    {
-      arrayOfByte[(i / 2)] = ((byte)((Character.digit(paramString.charAt(i), 16) << 4) + Character.digit(paramString.charAt(i + 1), 16)));
-      i += 2;
-    }
-    AppMethodBeat.o(26678);
-    return arrayOfByte;
   }
 }
 

@@ -36,7 +36,7 @@ public final class e
   {
     super(paramContext, c.j.GameMenuSheetStyle);
     AppMethodBeat.i(80990);
-    bb();
+    bU();
     this.mContext = paramContext;
     AppMethodBeat.o(80990);
   }
@@ -79,15 +79,15 @@ public final class e
     }
     for (;;)
     {
-      if (haG()) {
+      if (fku()) {
         localView.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(80989);
             b localb = new b();
-            localb.bn(paramAnonymousView);
-            a.c("com/tencent/mm/plugin/webview/ui/tools/game/menu/GameSheetDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+            localb.cH(paramAnonymousView);
+            a.c("com/tencent/mm/plugin/webview/ui/tools/game/menu/GameSheetDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
             if (e.this.isShowing()) {
               e.this.cancel();
             }
@@ -109,7 +109,7 @@ public final class e
     }
   }
   
-  private boolean haG()
+  private boolean fku()
   {
     AppMethodBeat.i(80996);
     if (Build.VERSION.SDK_INT < 11)

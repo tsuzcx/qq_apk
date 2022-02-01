@@ -11,11 +11,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.JsResult;
 import com.tencent.xweb.WebResourceRequest;
 import com.tencent.xweb.WebResourceResponse;
-import com.tencent.xweb.a.a;
-import com.tencent.xweb.j;
-import com.tencent.xweb.o;
+import com.tencent.xweb.ab;
+import com.tencent.xweb.ac;
+import com.tencent.xweb.l;
 import com.tencent.xweb.q;
-import com.tencent.xweb.z;
+import com.tencent.xweb.s;
 import java.io.File;
 import java.util.Map;
 import org.xwalk.core.CustomViewCallback;
@@ -48,17 +48,17 @@ public final class g
   public static final class a
     implements WebChromeClient.CustomViewCallback
   {
-    CustomViewCallback aaih;
+    CustomViewCallback aioO;
     
     a(CustomViewCallback paramCustomViewCallback)
     {
-      this.aaih = paramCustomViewCallback;
+      this.aioO = paramCustomViewCallback;
     }
     
     public final void onCustomViewHidden()
     {
       AppMethodBeat.i(154265);
-      this.aaih.onCustomViewHidden();
+      this.aioO.onCustomViewHidden();
       AppMethodBeat.o(154265);
     }
   }
@@ -66,18 +66,18 @@ public final class g
   public static final class b
     implements GeolocationPermissions.Callback
   {
-    XWalkGeolocationPermissionsCallback aaii;
+    private XWalkGeolocationPermissionsCallback aioP;
     
     public b(XWalkGeolocationPermissionsCallback paramXWalkGeolocationPermissionsCallback)
     {
-      this.aaii = paramXWalkGeolocationPermissionsCallback;
+      this.aioP = paramXWalkGeolocationPermissionsCallback;
     }
     
     public final void invoke(String paramString, boolean paramBoolean1, boolean paramBoolean2)
     {
       AppMethodBeat.i(154266);
-      if (this.aaii != null) {
-        this.aaii.invoke(paramString, paramBoolean1, paramBoolean2);
+      if (this.aioP != null) {
+        this.aioP.invoke(paramString, paramBoolean1, paramBoolean2);
       }
       AppMethodBeat.o(154266);
     }
@@ -86,31 +86,31 @@ public final class g
   public static final class c
     extends JsResult
   {
-    public XWalkJavascriptResult aaij;
+    public XWalkJavascriptResult aioQ;
     
     public c(XWalkJavascriptResult paramXWalkJavascriptResult)
     {
-      this.aaij = paramXWalkJavascriptResult;
+      this.aioQ = paramXWalkJavascriptResult;
     }
     
     public final void cancel()
     {
       AppMethodBeat.i(154269);
-      this.aaij.cancel();
+      this.aioQ.cancel();
       AppMethodBeat.o(154269);
     }
     
     public final void confirm()
     {
       AppMethodBeat.i(154268);
-      this.aaij.confirm();
+      this.aioQ.confirm();
       AppMethodBeat.o(154268);
     }
     
     public final void confirmWithResult(String paramString)
     {
       AppMethodBeat.i(154267);
-      this.aaij.confirmWithResult(paramString);
+      this.aioQ.confirmWithResult(paramString);
       AppMethodBeat.o(154267);
     }
   }
@@ -118,17 +118,17 @@ public final class g
   public static final class d
     extends XWalkLongScreenshotCallback
   {
-    private q aaik;
+    private s aioR;
     
-    public d(q paramq)
+    public d(s params)
     {
-      this.aaik = paramq;
+      this.aioR = params;
     }
     
     public final File getCacheFileDir()
     {
       AppMethodBeat.i(154271);
-      File localFile = this.aaik.getCacheFileDir();
+      File localFile = this.aioR.getCacheFileDir();
       AppMethodBeat.o(154271);
       return localFile;
     }
@@ -136,7 +136,7 @@ public final class g
     public final int getMaxHeightSupported()
     {
       AppMethodBeat.i(154274);
-      int i = this.aaik.getMaxHeightSupported();
+      int i = this.aioR.getMaxHeightSupported();
       AppMethodBeat.o(154274);
       return i;
     }
@@ -144,7 +144,7 @@ public final class g
     public final File getResultFileDir()
     {
       AppMethodBeat.i(154272);
-      File localFile = this.aaik.getResultFileDir();
+      File localFile = this.aioR.getResultFileDir();
       AppMethodBeat.o(154272);
       return localFile;
     }
@@ -152,47 +152,47 @@ public final class g
     public final void onLongScreenshotFinished(int paramInt, String paramString)
     {
       AppMethodBeat.i(154270);
-      this.aaik.onLongScreenshotFinished(paramInt, paramString);
+      this.aioR.onLongScreenshotFinished(paramInt, paramString);
       AppMethodBeat.o(154270);
     }
     
     public final Bitmap overrideScreenshot(Bitmap paramBitmap)
     {
       AppMethodBeat.i(154273);
-      paramBitmap = this.aaik.overrideScreenshot(paramBitmap);
+      paramBitmap = this.aioR.overrideScreenshot(paramBitmap);
       AppMethodBeat.o(154273);
       return paramBitmap;
     }
   }
   
   public static final class e
-    extends o
+    extends q
   {
-    public XWalkJavascriptResult aaij;
+    public XWalkJavascriptResult aioQ;
     
     public e(XWalkJavascriptResult paramXWalkJavascriptResult)
     {
-      this.aaij = paramXWalkJavascriptResult;
+      this.aioQ = paramXWalkJavascriptResult;
     }
     
     public final void cancel()
     {
       AppMethodBeat.i(154277);
-      this.aaij.cancel();
+      this.aioQ.cancel();
       AppMethodBeat.o(154277);
     }
     
     public final void confirm()
     {
       AppMethodBeat.i(154276);
-      this.aaij.confirm();
+      this.aioQ.confirm();
       AppMethodBeat.o(154276);
     }
     
     public final void confirmWithResult(String paramString)
     {
       AppMethodBeat.i(154275);
-      this.aaij.confirmWithResult(paramString);
+      this.aioQ.confirmWithResult(paramString);
       AppMethodBeat.o(154275);
     }
   }
@@ -200,19 +200,19 @@ public final class g
   public static final class f
     extends XWalkDownloadListener
   {
-    DownloadListener aagc;
+    DownloadListener aimQ;
     
     public f(Context paramContext, DownloadListener paramDownloadListener)
     {
       super();
-      this.aagc = paramDownloadListener;
+      this.aimQ = paramDownloadListener;
     }
     
     public final void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
     {
       AppMethodBeat.i(154278);
-      if (this.aagc != null) {
-        this.aagc.onDownloadStart(paramString1, paramString2, paramString3, paramString4, paramLong);
+      if (this.aimQ != null) {
+        this.aimQ.onDownloadStart(paramString1, paramString2, paramString3, paramString4, paramLong);
       }
       AppMethodBeat.o(154278);
     }
@@ -221,18 +221,18 @@ public final class g
   public static final class g
     extends XWalkFindListener
   {
-    WebView.FindListener aagd;
+    private WebView.FindListener aimR;
     
     public g(WebView.FindListener paramFindListener)
     {
-      this.aagd = paramFindListener;
+      this.aimR = paramFindListener;
     }
     
     public final void onFindResultReceived(int paramInt1, int paramInt2, boolean paramBoolean)
     {
       AppMethodBeat.i(154279);
-      if (this.aagd != null) {
-        this.aagd.onFindResultReceived(paramInt1, paramInt2, paramBoolean);
+      if (this.aimR != null) {
+        this.aimR.onFindResultReceived(paramInt1, paramInt2, paramBoolean);
       }
       AppMethodBeat.o(154279);
     }
@@ -241,32 +241,32 @@ public final class g
   public static final class i
     implements WebResourceRequest
   {
-    private boolean Plg;
-    private Map<String, String> RaC;
-    private boolean aafm;
-    private boolean aafn;
-    a aafo;
+    private Map<String, String> XWH;
+    private boolean aikA;
+    private boolean aikB;
+    ab aikC;
+    private Uri aikz;
+    private boolean aioT;
     private String method;
-    private Uri url;
     
     public i(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
     {
       AppMethodBeat.i(154283);
       try
       {
-        this.url = Uri.parse(paramString1);
-        this.aafm = paramBoolean1;
-        this.aafn = paramBoolean2;
+        this.aikz = Uri.parse(paramString1);
+        this.aikA = paramBoolean1;
+        this.aikB = paramBoolean2;
         this.method = paramString2;
-        this.Plg = paramBoolean3;
+        this.aioT = paramBoolean3;
         AppMethodBeat.o(154283);
         return;
       }
-      catch (Exception localException)
+      finally
       {
         for (;;)
         {
-          Log.e("WebResourceRequestImpl", "parse url failed , url = ".concat(String.valueOf(paramString1)));
+          Log.e("WebResourceRequestImpl", "parse url failed, url = ".concat(String.valueOf(paramString1)));
         }
       }
     }
@@ -276,12 +276,12 @@ public final class g
       AppMethodBeat.i(154282);
       if (paramXWalkWebResourceRequest != null)
       {
-        this.url = paramXWalkWebResourceRequest.getUrl();
-        this.aafm = paramXWalkWebResourceRequest.isForMainFrame();
-        this.aafn = paramXWalkWebResourceRequest.hasGesture();
+        this.aikz = paramXWalkWebResourceRequest.getUrl();
+        this.aikA = paramXWalkWebResourceRequest.isForMainFrame();
+        this.aikB = paramXWalkWebResourceRequest.hasGesture();
         this.method = paramXWalkWebResourceRequest.getMethod();
-        this.RaC = paramXWalkWebResourceRequest.getRequestHeaders();
-        this.aafo = new a(this);
+        this.XWH = paramXWalkWebResourceRequest.getRequestHeaders();
+        this.aikC = new ab(this);
       }
       AppMethodBeat.o(154282);
     }
@@ -293,46 +293,46 @@ public final class g
     
     public final Map<String, String> getRequestHeaders()
     {
-      return this.RaC;
+      return this.XWH;
     }
     
     public final Uri getUrl()
     {
-      return this.url;
+      return this.aikz;
     }
     
     public final boolean hasGesture()
     {
-      return this.aafn;
+      return this.aikB;
     }
     
     public final boolean isForMainFrame()
     {
-      return this.aafm;
+      return this.aikA;
     }
   }
   
   public static final class j
-    implements j
+    implements l
   {
-    XWalkHttpAuthHandler aaim;
+    private XWalkHttpAuthHandler aioU;
     
     public j(XWalkHttpAuthHandler paramXWalkHttpAuthHandler)
     {
-      this.aaim = paramXWalkHttpAuthHandler;
+      this.aioU = paramXWalkHttpAuthHandler;
     }
     
     public final void cancel()
     {
-      AppMethodBeat.i(205047);
-      this.aaim.cancel();
-      AppMethodBeat.o(205047);
+      AppMethodBeat.i(212959);
+      this.aioU.cancel();
+      AppMethodBeat.o(212959);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.xwalk.g
  * JD-Core Version:    0.7.0.1
  */

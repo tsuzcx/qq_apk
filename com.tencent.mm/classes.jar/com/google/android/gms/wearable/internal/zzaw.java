@@ -4,27 +4,16 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
 import com.google.android.gms.wearable.ChannelApi.ChannelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SafeParcelable.Class(creator="ChannelEventParcelableCreator")
-@SafeParcelable.Reserved({1})
 public final class zzaw
   extends AbstractSafeParcelable
 {
   public static final Parcelable.Creator<zzaw> CREATOR;
-  @SafeParcelable.Field(id=3)
   private final int type;
-  @SafeParcelable.Field(id=5)
   private final int zzcj;
-  @SafeParcelable.Field(id=2)
   private final zzay zzck;
-  @SafeParcelable.Field(id=4)
   private final int zzg;
   
   static
@@ -34,8 +23,7 @@ public final class zzaw
     AppMethodBeat.o(101024);
   }
   
-  @SafeParcelable.Constructor
-  public zzaw(@SafeParcelable.Param(id=2) zzay paramzzay, @SafeParcelable.Param(id=3) int paramInt1, @SafeParcelable.Param(id=4) int paramInt2, @SafeParcelable.Param(id=5) int paramInt3)
+  public zzaw(zzay paramzzay, int paramInt1, int paramInt2, int paramInt3)
   {
     this.zzck = paramzzay;
     this.type = paramInt1;
@@ -127,7 +115,7 @@ public final class zzaw
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzaw
  * JD-Core Version:    0.7.0.1
  */

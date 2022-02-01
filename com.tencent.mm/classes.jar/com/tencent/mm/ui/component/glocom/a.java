@@ -12,37 +12,78 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
-import kotlin.g.b.p;
-import kotlin.l;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/component/glocom/GloComUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "fragment", "Landroidx/fragment/app/Fragment;", "(Landroidx/fragment/app/Fragment;)V", "gloComMap", "Ljava/util/HashMap;", "", "Ljava/util/LinkedList;", "Lcom/tencent/mm/ui/component/glocom/IGloUIComponent;", "Lkotlin/collections/HashMap;", "getGloComMap", "()Ljava/util/HashMap;", "onActivityResult", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "", "onBeforeFinish", "resultIntent", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreateAfter", "savedInstanceState", "Landroid/os/Bundle;", "onCreateBefore", "onDestroy", "onKeyDown", "keyCode", "event", "Landroid/view/KeyEvent;", "onKeyUp", "onNewIntent", "intent", "onPause", "onRequestPermissionsResult", "permissions", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onRestoreInstanceState", "onResume", "onSaveInstanceState", "outState", "onStart", "onStop", "registerGloCom", "gloCom", "unregisterGloCom", "libmmui_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/component/glocom/GloComUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "fragment", "Landroidx/fragment/app/Fragment;", "(Landroidx/fragment/app/Fragment;)V", "gloComMap", "Ljava/util/HashMap;", "", "Ljava/util/LinkedList;", "Lcom/tencent/mm/ui/component/glocom/IGloUIComponent;", "Lkotlin/collections/HashMap;", "getGloComMap", "()Ljava/util/HashMap;", "onActivityResult", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "", "onBeforeFinish", "resultIntent", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreateAfter", "savedInstanceState", "Landroid/os/Bundle;", "onCreateBefore", "onDestroy", "onKeyDown", "keyCode", "event", "Landroid/view/KeyEvent;", "onKeyUp", "onNewIntent", "intent", "onPause", "onRequestPermissionsResult", "permissions", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onRestoreInstanceState", "onResume", "onSaveInstanceState", "outState", "onStart", "onStop", "registerGloCom", "gloCom", "unregisterGloCom", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   extends UIComponent
 {
-  final HashMap<String, LinkedList<b>> XoQ;
+  private final HashMap<String, LinkedList<b>> afab;
   
   public a(AppCompatActivity paramAppCompatActivity)
   {
     super(paramAppCompatActivity);
-    AppMethodBeat.i(193401);
-    this.XoQ = new HashMap();
-    AppMethodBeat.o(193401);
+    AppMethodBeat.i(250383);
+    this.afab = new HashMap();
+    AppMethodBeat.o(250383);
   }
   
   public a(Fragment paramFragment)
   {
     super(paramFragment);
-    AppMethodBeat.i(193403);
-    this.XoQ = new HashMap();
-    AppMethodBeat.o(193403);
+    AppMethodBeat.i(250390);
+    this.afab = new HashMap();
+    AppMethodBeat.o(250390);
+  }
+  
+  public final void a(b paramb)
+  {
+    AppMethodBeat.i(250393);
+    s.u(paramb, "gloCom");
+    Object localObject;
+    if (this.afab.containsKey(paramb.getTag()))
+    {
+      localObject = (LinkedList)this.afab.get(paramb.getTag());
+      if (localObject != null)
+      {
+        ((LinkedList)localObject).add(paramb);
+        AppMethodBeat.o(250393);
+      }
+    }
+    else
+    {
+      localObject = (Map)this.afab;
+      String str = paramb.getTag();
+      LinkedList localLinkedList = new LinkedList();
+      localLinkedList.add(paramb);
+      ((Map)localObject).put(str, localLinkedList);
+    }
+    AppMethodBeat.o(250393);
+  }
+  
+  public final void b(b paramb)
+  {
+    AppMethodBeat.i(250397);
+    s.u(paramb, "gloCom");
+    LinkedList localLinkedList = (LinkedList)this.afab.get(paramb.getTag());
+    if (localLinkedList != null)
+    {
+      localLinkedList.remove(paramb);
+      if (localLinkedList.isEmpty()) {
+        this.afab.remove(paramb.getTag());
+      }
+    }
+    AppMethodBeat.o(250397);
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(193372);
+    AppMethodBeat.i(250459);
     Object localObject1 = new LinkedList();
-    Object localObject2 = this.XoQ.values();
-    p.j(localObject2, "gloComMap.values");
+    Object localObject2 = this.afab.values();
+    s.s(localObject2, "gloComMap.values");
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((LinkedList)localObject1).addAll((Collection)((Iterator)localObject2).next());
@@ -51,15 +92,15 @@ public final class a
     while (((Iterator)localObject1).hasNext()) {
       ((b)((Iterator)localObject1).next()).onActivityResult(paramInt1, paramInt2, paramIntent);
     }
-    AppMethodBeat.o(193372);
+    AppMethodBeat.o(250459);
   }
   
   public final boolean onBackPressed()
   {
-    AppMethodBeat.i(193385);
+    AppMethodBeat.i(250476);
     Object localObject1 = new LinkedList();
-    Object localObject2 = this.XoQ.values();
-    p.j(localObject2, "gloComMap.values");
+    Object localObject2 = this.afab.values();
+    s.s(localObject2, "gloComMap.values");
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((LinkedList)localObject1).addAll((Collection)((Iterator)localObject2).next());
@@ -68,20 +109,20 @@ public final class a
     while (((Iterator)localObject1).hasNext()) {
       if (((b)((Iterator)localObject1).next()).onBackPressed())
       {
-        AppMethodBeat.o(193385);
+        AppMethodBeat.o(250476);
         return true;
       }
     }
-    AppMethodBeat.o(193385);
+    AppMethodBeat.o(250476);
     return false;
   }
   
   public final void onBeforeFinish(Intent paramIntent)
   {
-    AppMethodBeat.i(193400);
+    AppMethodBeat.i(250504);
     Object localObject1 = new LinkedList();
-    Object localObject2 = this.XoQ.values();
-    p.j(localObject2, "gloComMap.values");
+    Object localObject2 = this.afab.values();
+    s.s(localObject2, "gloComMap.values");
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((LinkedList)localObject1).addAll((Collection)((Iterator)localObject2).next());
@@ -90,16 +131,16 @@ public final class a
     while (((Iterator)localObject1).hasNext()) {
       ((b)((Iterator)localObject1).next()).onBeforeFinish(paramIntent);
     }
-    AppMethodBeat.o(193400);
+    AppMethodBeat.o(250504);
   }
   
   public final void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(193380);
-    p.k(paramConfiguration, "newConfig");
+    AppMethodBeat.i(250471);
+    s.u(paramConfiguration, "newConfig");
     Object localObject1 = new LinkedList();
-    Object localObject2 = this.XoQ.values();
-    p.j(localObject2, "gloComMap.values");
+    Object localObject2 = this.afab.values();
+    s.s(localObject2, "gloComMap.values");
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((LinkedList)localObject1).addAll((Collection)((Iterator)localObject2).next());
@@ -108,15 +149,15 @@ public final class a
     while (((Iterator)localObject1).hasNext()) {
       ((b)((Iterator)localObject1).next()).onConfigurationChanged(paramConfiguration);
     }
-    AppMethodBeat.o(193380);
+    AppMethodBeat.o(250471);
   }
   
   public final void onCreateAfter(Bundle paramBundle)
   {
-    AppMethodBeat.i(193330);
+    AppMethodBeat.i(250407);
     Object localObject1 = new LinkedList();
-    Object localObject2 = this.XoQ.values();
-    p.j(localObject2, "gloComMap.values");
+    Object localObject2 = this.afab.values();
+    s.s(localObject2, "gloComMap.values");
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((LinkedList)localObject1).addAll((Collection)((Iterator)localObject2).next());
@@ -125,15 +166,15 @@ public final class a
     while (((Iterator)localObject1).hasNext()) {
       ((b)((Iterator)localObject1).next()).onCreateAfter(paramBundle);
     }
-    AppMethodBeat.o(193330);
+    AppMethodBeat.o(250407);
   }
   
   public final void onCreateBefore(Bundle paramBundle)
   {
-    AppMethodBeat.i(193323);
+    AppMethodBeat.i(250403);
     Object localObject1 = new LinkedList();
-    Object localObject2 = this.XoQ.values();
-    p.j(localObject2, "gloComMap.values");
+    Object localObject2 = this.afab.values();
+    s.s(localObject2, "gloComMap.values");
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((LinkedList)localObject1).addAll((Collection)((Iterator)localObject2).next());
@@ -142,15 +183,15 @@ public final class a
     while (((Iterator)localObject1).hasNext()) {
       ((b)((Iterator)localObject1).next()).onCreateBefore(paramBundle);
     }
-    AppMethodBeat.o(193323);
+    AppMethodBeat.o(250403);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(193367);
+    AppMethodBeat.i(250453);
     Object localObject1 = new LinkedList();
-    Object localObject2 = this.XoQ.values();
-    p.j(localObject2, "gloComMap.values");
+    Object localObject2 = this.afab.values();
+    s.s(localObject2, "gloComMap.values");
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((LinkedList)localObject1).addAll((Collection)((Iterator)localObject2).next());
@@ -159,16 +200,16 @@ public final class a
     while (((Iterator)localObject1).hasNext()) {
       ((b)((Iterator)localObject1).next()).onDestroy();
     }
-    AppMethodBeat.o(193367);
+    AppMethodBeat.o(250453);
   }
   
   public final boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(193391);
-    p.k(paramKeyEvent, "event");
+    AppMethodBeat.i(250492);
+    s.u(paramKeyEvent, "event");
     Object localObject1 = new LinkedList();
-    Object localObject2 = this.XoQ.values();
-    p.j(localObject2, "gloComMap.values");
+    Object localObject2 = this.afab.values();
+    s.s(localObject2, "gloComMap.values");
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((LinkedList)localObject1).addAll((Collection)((Iterator)localObject2).next());
@@ -177,21 +218,21 @@ public final class a
     while (((Iterator)localObject1).hasNext()) {
       if (((b)((Iterator)localObject1).next()).onKeyDown(paramInt, paramKeyEvent))
       {
-        AppMethodBeat.o(193391);
+        AppMethodBeat.o(250492);
         return true;
       }
     }
-    AppMethodBeat.o(193391);
+    AppMethodBeat.o(250492);
     return false;
   }
   
   public final boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(193397);
-    p.k(paramKeyEvent, "event");
+    AppMethodBeat.i(250499);
+    s.u(paramKeyEvent, "event");
     Object localObject1 = new LinkedList();
-    Object localObject2 = this.XoQ.values();
-    p.j(localObject2, "gloComMap.values");
+    Object localObject2 = this.afab.values();
+    s.s(localObject2, "gloComMap.values");
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((LinkedList)localObject1).addAll((Collection)((Iterator)localObject2).next());
@@ -200,20 +241,20 @@ public final class a
     while (((Iterator)localObject1).hasNext()) {
       if (((b)((Iterator)localObject1).next()).onKeyUp(paramInt, paramKeyEvent))
       {
-        AppMethodBeat.o(193397);
+        AppMethodBeat.o(250499);
         return true;
       }
     }
-    AppMethodBeat.o(193397);
+    AppMethodBeat.o(250499);
     return false;
   }
   
   public final void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(193388);
+    AppMethodBeat.i(250484);
     Object localObject1 = new LinkedList();
-    Object localObject2 = this.XoQ.values();
-    p.j(localObject2, "gloComMap.values");
+    Object localObject2 = this.afab.values();
+    s.s(localObject2, "gloComMap.values");
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((LinkedList)localObject1).addAll((Collection)((Iterator)localObject2).next());
@@ -222,15 +263,15 @@ public final class a
     while (((Iterator)localObject1).hasNext()) {
       ((b)((Iterator)localObject1).next()).onNewIntent(paramIntent);
     }
-    AppMethodBeat.o(193388);
+    AppMethodBeat.o(250484);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(193353);
+    AppMethodBeat.i(250439);
     Object localObject1 = new LinkedList();
-    Object localObject2 = this.XoQ.values();
-    p.j(localObject2, "gloComMap.values");
+    Object localObject2 = this.afab.values();
+    s.s(localObject2, "gloComMap.values");
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((LinkedList)localObject1).addAll((Collection)((Iterator)localObject2).next());
@@ -239,17 +280,17 @@ public final class a
     while (((Iterator)localObject1).hasNext()) {
       ((b)((Iterator)localObject1).next()).onPause();
     }
-    AppMethodBeat.o(193353);
+    AppMethodBeat.o(250439);
   }
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(193376);
-    p.k(paramArrayOfString, "permissions");
-    p.k(paramArrayOfInt, "grantResults");
+    AppMethodBeat.i(250465);
+    s.u(paramArrayOfString, "permissions");
+    s.u(paramArrayOfInt, "grantResults");
     Object localObject1 = new LinkedList();
-    Object localObject2 = this.XoQ.values();
-    p.j(localObject2, "gloComMap.values");
+    Object localObject2 = this.afab.values();
+    s.s(localObject2, "gloComMap.values");
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((LinkedList)localObject1).addAll((Collection)((Iterator)localObject2).next());
@@ -258,15 +299,15 @@ public final class a
     while (((Iterator)localObject1).hasNext()) {
       ((b)((Iterator)localObject1).next()).onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
     }
-    AppMethodBeat.o(193376);
+    AppMethodBeat.o(250465);
   }
   
   public final void onRestoreInstanceState(Bundle paramBundle)
   {
-    AppMethodBeat.i(193341);
+    AppMethodBeat.i(250418);
     Object localObject1 = new LinkedList();
-    Object localObject2 = this.XoQ.values();
-    p.j(localObject2, "gloComMap.values");
+    Object localObject2 = this.afab.values();
+    s.s(localObject2, "gloComMap.values");
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((LinkedList)localObject1).addAll((Collection)((Iterator)localObject2).next());
@@ -275,15 +316,15 @@ public final class a
     while (((Iterator)localObject1).hasNext()) {
       ((b)((Iterator)localObject1).next()).onRestoreInstanceState(paramBundle);
     }
-    AppMethodBeat.o(193341);
+    AppMethodBeat.o(250418);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(193349);
+    AppMethodBeat.i(250433);
     Object localObject1 = new LinkedList();
-    Object localObject2 = this.XoQ.values();
-    p.j(localObject2, "gloComMap.values");
+    Object localObject2 = this.afab.values();
+    s.s(localObject2, "gloComMap.values");
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((LinkedList)localObject1).addAll((Collection)((Iterator)localObject2).next());
@@ -292,15 +333,15 @@ public final class a
     while (((Iterator)localObject1).hasNext()) {
       ((b)((Iterator)localObject1).next()).onResume();
     }
-    AppMethodBeat.o(193349);
+    AppMethodBeat.o(250433);
   }
   
   public final void onSaveInstanceState(Bundle paramBundle)
   {
-    AppMethodBeat.i(193336);
+    AppMethodBeat.i(250411);
     Object localObject1 = new LinkedList();
-    Object localObject2 = this.XoQ.values();
-    p.j(localObject2, "gloComMap.values");
+    Object localObject2 = this.afab.values();
+    s.s(localObject2, "gloComMap.values");
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((LinkedList)localObject1).addAll((Collection)((Iterator)localObject2).next());
@@ -309,15 +350,15 @@ public final class a
     while (((Iterator)localObject1).hasNext()) {
       ((b)((Iterator)localObject1).next()).onSaveInstanceState(paramBundle);
     }
-    AppMethodBeat.o(193336);
+    AppMethodBeat.o(250411);
   }
   
   public final void onStart()
   {
-    AppMethodBeat.i(193346);
+    AppMethodBeat.i(250427);
     Object localObject1 = new LinkedList();
-    Object localObject2 = this.XoQ.values();
-    p.j(localObject2, "gloComMap.values");
+    Object localObject2 = this.afab.values();
+    s.s(localObject2, "gloComMap.values");
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((LinkedList)localObject1).addAll((Collection)((Iterator)localObject2).next());
@@ -326,15 +367,15 @@ public final class a
     while (((Iterator)localObject1).hasNext()) {
       ((b)((Iterator)localObject1).next()).onStart();
     }
-    AppMethodBeat.o(193346);
+    AppMethodBeat.o(250427);
   }
   
   public final void onStop()
   {
-    AppMethodBeat.i(193362);
+    AppMethodBeat.i(250447);
     Object localObject1 = new LinkedList();
-    Object localObject2 = this.XoQ.values();
-    p.j(localObject2, "gloComMap.values");
+    Object localObject2 = this.afab.values();
+    s.s(localObject2, "gloComMap.values");
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((LinkedList)localObject1).addAll((Collection)((Iterator)localObject2).next());
@@ -343,7 +384,7 @@ public final class a
     while (((Iterator)localObject1).hasNext()) {
       ((b)((Iterator)localObject1).next()).onStop();
     }
-    AppMethodBeat.o(193362);
+    AppMethodBeat.o(250447);
   }
 }
 

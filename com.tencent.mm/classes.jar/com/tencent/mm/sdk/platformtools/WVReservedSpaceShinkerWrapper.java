@@ -9,252 +9,218 @@ import com.tencent.matrix.hook.a;
 import com.tencent.matrix.hook.a.a;
 import com.tencent.matrix.hook.memory.WVPreAllocHook;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.app.d;
-import com.tencent.mm.app.x;
-import com.tencent.mm.compatible.util.j;
+import com.tencent.mm.app.aa;
+import com.tencent.mm.app.e;
+import com.tencent.mm.compatible.util.k;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.concurrent.TimeUnit;
 
 public class WVReservedSpaceShinkerWrapper
 {
   private static final String DATA_DIR_NAME = "wv_reserved_space_shinker";
   private static final String ENABLED_MARK_FILE_NAME = "enabled";
+  private static final PeriodRecorder REPORT_FREQ_LIMIT;
   private static final String TAG = "MicroMsg.WVReservedSpaceShinkerWrapper";
+  
+  static
+  {
+    AppMethodBeat.i(243473);
+    REPORT_FREQ_LIMIT = new PeriodRecorder("wv_rss_rpt", TimeUnit.HOURS.toMillis(24L), true, true);
+    AppMethodBeat.o(243473);
+  }
   
   /* Error */
   private static int getAndIncEnableCounter(Context paramContext)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: ldc 26
-    //   4: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: aload_0
-    //   8: ldc 13
-    //   10: invokestatic 36	com/tencent/mm/sdk/platformtools/WVReservedSpaceShinkerWrapper:getMarkerFileName	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
-    //   13: astore_2
-    //   14: aload_2
-    //   15: invokestatic 42	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   18: ifeq +21 -> 39
-    //   21: ldc 16
-    //   23: ldc 44
-    //   25: iconst_0
-    //   26: anewarray 4	java/lang/Object
-    //   29: invokestatic 50	com/tencent/mm/app/x:c	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   32: ldc 26
-    //   34: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   37: iconst_m1
-    //   38: ireturn
-    //   39: new 55	java/io/File
-    //   42: dup
-    //   43: aload_0
-    //   44: invokestatic 59	com/tencent/mm/sdk/platformtools/WVReservedSpaceShinkerWrapper:getDataStoreDir	(Landroid/content/Context;)Ljava/io/File;
-    //   47: aload_2
-    //   48: invokespecial 62	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   51: astore 4
-    //   53: aload 4
-    //   55: invokevirtual 66	java/io/File:exists	()Z
-    //   58: ifne +21 -> 79
-    //   61: ldc 16
-    //   63: ldc 68
-    //   65: iconst_0
-    //   66: anewarray 4	java/lang/Object
-    //   69: invokestatic 50	com/tencent/mm/app/x:c	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   72: ldc 26
-    //   74: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   77: iconst_m1
-    //   78: ireturn
-    //   79: new 70	java/io/DataInputStream
+    //   0: ldc 58
+    //   2: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: ldc 13
+    //   8: invokestatic 62	com/tencent/mm/sdk/platformtools/WVReservedSpaceShinkerWrapper:getMarkerFileName	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+    //   11: astore_2
+    //   12: aload_2
+    //   13: invokestatic 68	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   16: ifeq +21 -> 37
+    //   19: ldc 18
+    //   21: ldc 70
+    //   23: iconst_0
+    //   24: anewarray 4	java/lang/Object
+    //   27: invokestatic 76	com/tencent/mm/app/aa:c	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   30: ldc 58
+    //   32: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   35: iconst_m1
+    //   36: ireturn
+    //   37: new 78	java/io/File
+    //   40: dup
+    //   41: aload_0
+    //   42: invokestatic 82	com/tencent/mm/sdk/platformtools/WVReservedSpaceShinkerWrapper:getDataStoreDir	(Landroid/content/Context;)Ljava/io/File;
+    //   45: aload_2
+    //   46: invokespecial 85	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   49: astore_0
+    //   50: aload_0
+    //   51: invokevirtual 89	java/io/File:exists	()Z
+    //   54: ifne +21 -> 75
+    //   57: ldc 18
+    //   59: ldc 91
+    //   61: iconst_0
+    //   62: anewarray 4	java/lang/Object
+    //   65: invokestatic 76	com/tencent/mm/app/aa:c	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   68: ldc 58
+    //   70: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   73: iconst_m1
+    //   74: ireturn
+    //   75: new 93	java/io/DataInputStream
+    //   78: dup
+    //   79: new 95	java/io/FileInputStream
     //   82: dup
-    //   83: new 72	java/io/FileInputStream
-    //   86: dup
-    //   87: aload 4
-    //   89: invokespecial 75	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   92: invokespecial 78	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
-    //   95: astore 5
-    //   97: aload 5
-    //   99: invokevirtual 82	java/io/DataInputStream:readInt	()I
-    //   102: istore_1
-    //   103: aload 5
-    //   105: invokevirtual 85	java/io/DataInputStream:close	()V
-    //   108: new 87	java/io/DataOutputStream
-    //   111: dup
-    //   112: new 89	java/io/FileOutputStream
-    //   115: dup
-    //   116: aload 4
-    //   118: invokespecial 90	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   121: invokespecial 93	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   124: astore 4
-    //   126: aload_3
-    //   127: astore_0
-    //   128: aload 4
-    //   130: iload_1
-    //   131: iconst_1
-    //   132: iadd
-    //   133: invokevirtual 96	java/io/DataOutputStream:writeInt	(I)V
-    //   136: aload 4
-    //   138: invokevirtual 97	java/io/DataOutputStream:close	()V
-    //   141: ldc 26
-    //   143: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   146: iload_1
-    //   147: ireturn
-    //   148: astore_2
-    //   149: ldc 26
-    //   151: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   154: aload_2
-    //   155: athrow
-    //   156: astore_0
-    //   157: aload_2
-    //   158: ifnull +44 -> 202
-    //   161: aload 5
-    //   163: invokevirtual 85	java/io/DataInputStream:close	()V
-    //   166: ldc 26
-    //   168: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   171: aload_0
-    //   172: athrow
+    //   83: aload_0
+    //   84: invokespecial 98	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   87: invokespecial 101	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   90: astore_3
+    //   91: aload_3
+    //   92: invokevirtual 105	java/io/DataInputStream:readInt	()I
+    //   95: istore_1
+    //   96: aload_3
+    //   97: invokevirtual 108	java/io/DataInputStream:close	()V
+    //   100: new 110	java/io/DataOutputStream
+    //   103: dup
+    //   104: new 112	java/io/FileOutputStream
+    //   107: dup
+    //   108: aload_0
+    //   109: invokespecial 113	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   112: invokespecial 116	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   115: astore_2
+    //   116: aload_2
+    //   117: iload_1
+    //   118: iconst_1
+    //   119: iadd
+    //   120: invokevirtual 119	java/io/DataOutputStream:writeInt	(I)V
+    //   123: aload_2
+    //   124: invokevirtual 120	java/io/DataOutputStream:close	()V
+    //   127: ldc 58
+    //   129: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   132: iload_1
+    //   133: ireturn
+    //   134: astore_2
+    //   135: aload_3
+    //   136: invokevirtual 108	java/io/DataInputStream:close	()V
+    //   139: ldc 58
+    //   141: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   144: aload_2
+    //   145: athrow
+    //   146: astore_2
+    //   147: ldc 18
+    //   149: aload_2
+    //   150: ldc 122
+    //   152: iconst_0
+    //   153: anewarray 4	java/lang/Object
+    //   156: invokestatic 126	com/tencent/mm/app/aa:a	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   159: iconst_0
+    //   160: istore_1
+    //   161: goto -61 -> 100
+    //   164: astore_3
+    //   165: aload_2
+    //   166: aload_3
+    //   167: invokevirtual 132	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   170: goto -31 -> 139
     //   173: astore_0
-    //   174: ldc 16
-    //   176: aload_0
-    //   177: ldc 99
-    //   179: iconst_0
-    //   180: anewarray 4	java/lang/Object
-    //   183: invokestatic 103	com/tencent/mm/app/x:a	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   186: iconst_0
-    //   187: istore_1
-    //   188: goto -80 -> 108
-    //   191: astore 5
-    //   193: aload_2
-    //   194: aload 5
-    //   196: invokevirtual 107	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
-    //   199: goto -33 -> 166
-    //   202: aload 5
-    //   204: invokevirtual 85	java/io/DataInputStream:close	()V
-    //   207: goto -41 -> 166
-    //   210: astore_2
-    //   211: aload_2
-    //   212: astore_0
-    //   213: ldc 26
-    //   215: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   218: aload_2
-    //   219: astore_0
-    //   220: aload_2
-    //   221: athrow
-    //   222: astore_2
-    //   223: aload_0
-    //   224: ifnull +44 -> 268
-    //   227: aload 4
-    //   229: invokevirtual 97	java/io/DataOutputStream:close	()V
-    //   232: ldc 26
-    //   234: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   237: aload_2
-    //   238: athrow
-    //   239: astore_0
-    //   240: ldc 16
-    //   242: aload_0
-    //   243: ldc 109
-    //   245: iconst_0
-    //   246: anewarray 4	java/lang/Object
-    //   249: invokestatic 103	com/tencent/mm/app/x:a	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   252: ldc 26
-    //   254: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   257: iconst_m1
-    //   258: ireturn
-    //   259: astore_3
-    //   260: aload_0
-    //   261: aload_3
-    //   262: invokevirtual 107	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
-    //   265: goto -33 -> 232
-    //   268: aload 4
-    //   270: invokevirtual 97	java/io/DataOutputStream:close	()V
-    //   273: goto -41 -> 232
-    //   276: astore_0
-    //   277: aconst_null
-    //   278: astore_2
-    //   279: goto -122 -> 157
+    //   174: aload_2
+    //   175: invokevirtual 120	java/io/DataOutputStream:close	()V
+    //   178: ldc 58
+    //   180: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   183: aload_0
+    //   184: athrow
+    //   185: astore_0
+    //   186: ldc 18
+    //   188: aload_0
+    //   189: ldc 134
+    //   191: iconst_0
+    //   192: anewarray 4	java/lang/Object
+    //   195: invokestatic 126	com/tencent/mm/app/aa:a	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   198: ldc 58
+    //   200: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   203: iconst_m1
+    //   204: ireturn
+    //   205: astore_2
+    //   206: aload_0
+    //   207: aload_2
+    //   208: invokevirtual 132	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   211: goto -33 -> 178
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	282	0	paramContext	Context
-    //   102	86	1	i	int
-    //   13	35	2	str	String
-    //   148	46	2	localThrowable1	Throwable
-    //   210	11	2	localThrowable2	Throwable
-    //   222	16	2	localObject1	Object
-    //   278	1	2	localObject2	Object
-    //   1	126	3	localObject3	Object
-    //   259	3	3	localThrowable3	Throwable
-    //   51	218	4	localObject4	Object
-    //   95	67	5	localDataInputStream	java.io.DataInputStream
-    //   191	12	5	localThrowable4	Throwable
+    //   0	214	0	paramContext	Context
+    //   95	66	1	i	int
+    //   11	113	2	localObject1	Object
+    //   134	11	2	localObject2	Object
+    //   146	29	2	localThrowable1	Throwable
+    //   205	3	2	localThrowable2	Throwable
+    //   90	46	3	localDataInputStream	java.io.DataInputStream
+    //   164	3	3	localThrowable3	Throwable
     // Exception table:
     //   from	to	target	type
-    //   97	103	148	java/lang/Throwable
-    //   149	156	156	finally
-    //   79	97	173	java/lang/Throwable
-    //   103	108	173	java/lang/Throwable
-    //   166	173	173	java/lang/Throwable
-    //   193	199	173	java/lang/Throwable
-    //   202	207	173	java/lang/Throwable
-    //   161	166	191	java/lang/Throwable
-    //   128	136	210	java/lang/Throwable
-    //   128	136	222	finally
-    //   213	218	222	finally
-    //   220	222	222	finally
-    //   108	126	239	java/lang/Throwable
-    //   136	141	239	java/lang/Throwable
-    //   232	239	239	java/lang/Throwable
-    //   260	265	239	java/lang/Throwable
-    //   268	273	239	java/lang/Throwable
-    //   227	232	259	java/lang/Throwable
-    //   97	103	276	finally
+    //   91	96	134	finally
+    //   75	91	146	finally
+    //   96	100	146	finally
+    //   139	146	146	finally
+    //   165	170	146	finally
+    //   135	139	164	finally
+    //   116	123	173	finally
+    //   100	116	185	finally
+    //   123	127	185	finally
+    //   178	185	185	finally
+    //   206	211	185	finally
+    //   174	178	205	finally
   }
   
   private static File getDataStoreDir(Context paramContext)
   {
-    AppMethodBeat.i(263263);
+    AppMethodBeat.i(243463);
     paramContext = paramContext.getDir("wv_reserved_space_shinker", 0);
     if (!paramContext.exists()) {
       paramContext.mkdirs();
     }
-    AppMethodBeat.o(263263);
+    AppMethodBeat.o(243463);
     return paramContext;
   }
   
   private static String getMarkerFileName(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(263264);
-    String str2 = d.cQP;
+    AppMethodBeat.i(243466);
+    String str2 = e.eMg;
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
       str1 = Util.getProcessNameByPid(paramContext, Process.myPid());
     }
     if (TextUtils.isEmpty(str1))
     {
-      AppMethodBeat.o(263264);
+      AppMethodBeat.o(243466);
       return null;
     }
     paramContext = str1.replace('.', '_').replace(":", "__") + "_" + paramString;
-    AppMethodBeat.o(263264);
+    AppMethodBeat.o(243466);
     return paramContext;
   }
   
   public static boolean isEnabled(Context paramContext)
   {
-    AppMethodBeat.i(263260);
+    AppMethodBeat.i(243436);
     if (!isPreconditionsSatisfied(paramContext))
     {
-      AppMethodBeat.o(263260);
+      AppMethodBeat.o(243436);
       return false;
     }
     String str = getMarkerFileName(paramContext, "enabled");
     if (!TextUtils.isEmpty(str))
     {
       boolean bool = new File(getDataStoreDir(paramContext), str).exists();
-      AppMethodBeat.o(263260);
+      AppMethodBeat.o(243436);
       return bool;
     }
-    x.c("MicroMsg.WVReservedSpaceShinkerWrapper", "[-] Fail to get marker file name, treat as disabled.", new Object[0]);
-    AppMethodBeat.o(263260);
+    aa.c("MicroMsg.WVReservedSpaceShinkerWrapper", "[-] Fail to get marker file name, treat as disabled.", new Object[0]);
+    AppMethodBeat.o(243436);
     return false;
   }
   
@@ -265,211 +231,202 @@ public class WVReservedSpaceShinkerWrapper
   
   public static void markDisabled(Context paramContext)
   {
-    AppMethodBeat.i(263258);
+    AppMethodBeat.i(243427);
     try
     {
       boolean bool = isPreconditionsSatisfied(paramContext);
       if (!bool)
       {
-        AppMethodBeat.o(263258);
+        AppMethodBeat.o(243427);
         return;
       }
       String str = getMarkerFileName(paramContext, "enabled");
       if (TextUtils.isEmpty(str))
       {
-        x.c("MicroMsg.WVReservedSpaceShinkerWrapper", "[-] Fail to get marker file name, skip marking disabled.", new Object[0]);
-        AppMethodBeat.o(263258);
+        aa.c("MicroMsg.WVReservedSpaceShinkerWrapper", "[-] Fail to get marker file name, skip marking disabled.", new Object[0]);
+        AppMethodBeat.o(243427);
         return;
       }
       paramContext = new File(getDataStoreDir(paramContext), str);
       if ((!paramContext.exists()) || (paramContext.delete()))
       {
-        x.a("MicroMsg.WVReservedSpaceShinkerWrapper", "[+] Mark disabled successfully.", new Object[0]);
-        AppMethodBeat.o(263258);
+        aa.a("MicroMsg.WVReservedSpaceShinkerWrapper", "[+] Mark disabled successfully.", new Object[0]);
+        AppMethodBeat.o(243427);
         return;
       }
     }
-    catch (Throwable paramContext)
+    finally
     {
-      x.a("MicroMsg.WVReservedSpaceShinkerWrapper", paramContext, "[-] Fail to mark disabled.", new Object[0]);
-      AppMethodBeat.o(263258);
+      aa.a("MicroMsg.WVReservedSpaceShinkerWrapper", paramContext, "[-] Fail to mark disabled.", new Object[0]);
+      AppMethodBeat.o(243427);
       return;
     }
-    x.c("MicroMsg.WVReservedSpaceShinkerWrapper", "[-] Fail to mark disabled.", new Object[0]);
-    AppMethodBeat.o(263258);
+    aa.c("MicroMsg.WVReservedSpaceShinkerWrapper", "[-] Fail to mark disabled.", new Object[0]);
+    AppMethodBeat.o(243427);
   }
   
   public static void markEnabled(Context paramContext)
   {
-    AppMethodBeat.i(263257);
+    AppMethodBeat.i(243423);
     try
     {
       boolean bool = isPreconditionsSatisfied(paramContext);
       if (!bool)
       {
-        AppMethodBeat.o(263257);
+        AppMethodBeat.o(243423);
         return;
       }
-      x.a("MicroMsg.WVReservedSpaceShinkerWrapper", "[+] markEnabled called.", new Object[0]);
+      aa.a("MicroMsg.WVReservedSpaceShinkerWrapper", "[+] markEnabled called.", new Object[0]);
       String str = getMarkerFileName(paramContext, "enabled");
       if (TextUtils.isEmpty(str))
       {
-        x.c("MicroMsg.WVReservedSpaceShinkerWrapper", "[-] Fail to get marker file name, skip marking enabled.", new Object[0]);
-        AppMethodBeat.o(263257);
+        aa.c("MicroMsg.WVReservedSpaceShinkerWrapper", "[-] Fail to get marker file name, skip marking enabled.", new Object[0]);
+        AppMethodBeat.o(243423);
         return;
       }
       paramContext = new File(getDataStoreDir(paramContext), str);
       if ((paramContext.exists()) || (paramContext.createNewFile()))
       {
-        x.a("MicroMsg.WVReservedSpaceShinkerWrapper", "[+] Mark enabled successfully.", new Object[0]);
-        AppMethodBeat.o(263257);
+        aa.a("MicroMsg.WVReservedSpaceShinkerWrapper", "[+] Mark enabled successfully.", new Object[0]);
+        AppMethodBeat.o(243423);
         return;
       }
     }
-    catch (Throwable paramContext)
+    finally
     {
-      x.a("MicroMsg.WVReservedSpaceShinkerWrapper", paramContext, "[-] Fail to mark enabled.", new Object[0]);
-      AppMethodBeat.o(263257);
+      aa.a("MicroMsg.WVReservedSpaceShinkerWrapper", paramContext, "[-] Fail to mark enabled.", new Object[0]);
+      AppMethodBeat.o(243423);
       return;
     }
-    x.c("MicroMsg.WVReservedSpaceShinkerWrapper", "[-] Fail to mark enabled.", new Object[0]);
-    AppMethodBeat.o(263257);
+    aa.c("MicroMsg.WVReservedSpaceShinkerWrapper", "[-] Fail to mark enabled.", new Object[0]);
+    AppMethodBeat.o(243423);
   }
   
   public static void markStartupFine(Context paramContext)
   {
-    AppMethodBeat.i(263259);
+    AppMethodBeat.i(243431);
     resetEnableCounter(paramContext);
-    AppMethodBeat.o(263259);
+    AppMethodBeat.o(243431);
   }
   
   private static void resetEnableCounter(Context paramContext)
   {
-    AppMethodBeat.i(263262);
-    String str = getMarkerFileName(paramContext, "enabled");
-    if (TextUtils.isEmpty(str))
+    AppMethodBeat.i(243456);
+    localObject = getMarkerFileName(paramContext, "enabled");
+    if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      x.c("MicroMsg.WVReservedSpaceShinkerWrapper", "[-] Fail to get marker file name, skip reset enable counter.", new Object[0]);
-      AppMethodBeat.o(263262);
+      aa.c("MicroMsg.WVReservedSpaceShinkerWrapper", "[-] Fail to get marker file name, skip reset enable counter.", new Object[0]);
+      AppMethodBeat.o(243456);
       return;
     }
-    paramContext = new File(getDataStoreDir(paramContext), str);
+    paramContext = new File(getDataStoreDir(paramContext), (String)localObject);
     if (!paramContext.exists())
     {
-      x.c("MicroMsg.WVReservedSpaceShinkerWrapper", "[-] Not enabled, skip reset enable counter.", new Object[0]);
-      AppMethodBeat.o(263262);
+      aa.c("MicroMsg.WVReservedSpaceShinkerWrapper", "[-] Not enabled, skip reset enable counter.", new Object[0]);
+      AppMethodBeat.o(243456);
       return;
     }
     try
     {
-      DataOutputStream localDataOutputStream = new DataOutputStream(new FileOutputStream(paramContext));
-      paramContext = null;
+      localObject = new DataOutputStream(new FileOutputStream(paramContext));
       try
       {
-        localDataOutputStream.close();
-        AppMethodBeat.o(263262);
-        throw localObject;
-      }
-      catch (Throwable localThrowable2)
-      {
-        for (;;)
-        {
-          paramContext.addSuppressed(localThrowable2);
-        }
-      }
-    }
-    catch (Throwable paramContext)
-    {
-      try
-      {
-        localDataOutputStream.writeInt(0);
-        localDataOutputStream.close();
-        AppMethodBeat.o(263262);
-        return;
-      }
-      catch (Throwable localThrowable1)
-      {
-        paramContext = localThrowable1;
-        AppMethodBeat.o(263262);
-        paramContext = localThrowable1;
-        throw localThrowable1;
+        ((DataOutputStream)localObject).close();
+        AppMethodBeat.o(243456);
+        throw paramContext;
       }
       finally
       {
-        if (paramContext == null) {
-          break label162;
-        }
+        paramContext.addSuppressed(localThrowable);
       }
-      paramContext = paramContext;
-      x.a("MicroMsg.WVReservedSpaceShinkerWrapper", paramContext, "[-] Fail to update marker file.", new Object[0]);
-      AppMethodBeat.o(263262);
-      return;
     }
-    for (;;)
+    finally
     {
-      label162:
-      localThrowable2.close();
+      try
+      {
+        ((DataOutputStream)localObject).writeInt(0);
+        ((DataOutputStream)localObject).close();
+        AppMethodBeat.o(243456);
+        return;
+      }
+      finally {}
+      paramContext = finally;
+      aa.a("MicroMsg.WVReservedSpaceShinkerWrapper", paramContext, "[-] Fail to update marker file.", new Object[0]);
+      AppMethodBeat.o(243456);
+      return;
     }
   }
   
   public static void tryToInstall(Context paramContext)
   {
-    AppMethodBeat.i(263255);
+    AppMethodBeat.i(243417);
     if (!isPreconditionsSatisfied(paramContext))
     {
-      x.a("MicroMsg.WVReservedSpaceShinkerWrapper", "[+] Env condition is not satisfied, skip installation.", new Object[0]);
-      AppMethodBeat.o(263255);
+      aa.a("MicroMsg.WVReservedSpaceShinkerWrapper", "[+] Env condition is not satisfied, skip installation.", new Object[0]);
+      AppMethodBeat.o(243417);
       return;
     }
     if (!isEnabled(paramContext))
     {
-      x.a("MicroMsg.WVReservedSpaceShinkerWrapper", "[+] Not enabled, skip installation.", new Object[0]);
-      AppMethodBeat.o(263255);
+      aa.a("MicroMsg.WVReservedSpaceShinkerWrapper", "[+] Not enabled, skip installation.", new Object[0]);
+      AppMethodBeat.o(243417);
       return;
     }
     if (getAndIncEnableCounter(paramContext) >= 3)
     {
-      x.c("MicroMsg.WVReservedSpaceShinkerWrapper", "[-] Startup failure count was out of limit, mark disable and skip installation.", new Object[0]);
+      aa.c("MicroMsg.WVReservedSpaceShinkerWrapper", "[-] Startup failure count was out of limit, mark disable and skip installation.", new Object[0]);
       markDisabled(paramContext);
-      AppMethodBeat.o(263255);
+      AppMethodBeat.o(243417);
       return;
     }
-    StartupILogsReport.reportNumericValue(paramContext, -536739839, Integer.valueOf(1));
-    HookManager.cYg.cYk = new HookManager.b()
+    HookManager.eUL.eUQ = new HookManager.b()
     {
-      public final void loadLibrary(String paramAnonymousString)
+      public void loadLibrary(String paramAnonymousString)
       {
-        AppMethodBeat.i(261882);
-        j.load(paramAnonymousString);
-        AppMethodBeat.o(261882);
+        AppMethodBeat.i(243743);
+        k.load(paramAnonymousString);
+        AppMethodBeat.o(243743);
       }
     };
     try
     {
-      HookManager.cYg.a(WVPreAllocHook.cYu).WL();
-      if (WVPreAllocHook.cYu.cXZ == a.a.cYb)
+      HookManager.eUL.a(WVPreAllocHook.eVk).axJ();
+      if (WVPreAllocHook.eVk.eUE == a.a.eUG)
       {
-        x.a("MicroMsg.WVReservedSpaceShinkerWrapper", "[+] install successfully.", new Object[0]);
+        aa.a("MicroMsg.WVReservedSpaceShinkerWrapper", "[+] install successfully.", new Object[0]);
+        if (!REPORT_FREQ_LIMIT.isExpired("do_rpt")) {
+          break label271;
+        }
+        StartupILogsReport.reportNumericValue(paramContext, -536739839, Integer.valueOf(1));
         StartupILogsReport.reportNumericValue(paramContext, -536739839, Integer.valueOf(2));
-        AppMethodBeat.o(263255);
+        AppMethodBeat.o(243417);
         return;
       }
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      x.a("MicroMsg.WVReservedSpaceShinkerWrapper", localThrowable, "[-] install failed.", new Object[0]);
-      StartupILogsReport.reportNumericValue(paramContext, -536739839, Integer.valueOf(3));
-      AppMethodBeat.o(263255);
+      aa.a("MicroMsg.WVReservedSpaceShinkerWrapper", localThrowable, "[-] install failed.", new Object[0]);
+      if (REPORT_FREQ_LIMIT.isExpired("do_rpt"))
+      {
+        StartupILogsReport.reportNumericValue(paramContext, -536739839, Integer.valueOf(1));
+        StartupILogsReport.reportNumericValue(paramContext, -536739839, Integer.valueOf(3));
+      }
+      AppMethodBeat.o(243417);
       return;
     }
-    x.c("MicroMsg.WVReservedSpaceShinkerWrapper", "[-] install failed.", new Object[0]);
-    StartupILogsReport.reportNumericValue(paramContext, -536739839, Integer.valueOf(3));
-    AppMethodBeat.o(263255);
+    aa.c("MicroMsg.WVReservedSpaceShinkerWrapper", "[-] install failed.", new Object[0]);
+    if (REPORT_FREQ_LIMIT.isExpired("do_rpt"))
+    {
+      StartupILogsReport.reportNumericValue(paramContext, -536739839, Integer.valueOf(1));
+      StartupILogsReport.reportNumericValue(paramContext, -536739839, Integer.valueOf(3));
+    }
+    label271:
+    AppMethodBeat.o(243417);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.WVReservedSpaceShinkerWrapper
  * JD-Core Version:    0.7.0.1
  */

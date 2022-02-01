@@ -7,13 +7,13 @@ public abstract interface g
 {
   public abstract int a(String paramString, c paramc);
   
-  public abstract String aiM(String paramString);
+  public abstract String abM(String paramString);
   
   public abstract void report(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.g
  * JD-Core Version:    0.7.0.1
  */

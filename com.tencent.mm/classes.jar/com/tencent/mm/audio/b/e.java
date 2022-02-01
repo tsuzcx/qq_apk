@@ -2,11 +2,11 @@ package com.tencent.mm.audio.b;
 
 import android.media.AudioRecord;
 import android.os.Process;
-import com.tencent.e.c;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.b.b;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.threadpool.c;
+import com.tencent.threadpool.i;
 import java.util.Arrays;
 import java.util.concurrent.Future;
 import java.util.concurrent.locks.Lock;
@@ -15,20 +15,20 @@ import java.util.concurrent.locks.ReentrantLock;
 public final class e
   extends f
 {
-  boolean frV;
-  b fsA;
-  b fsB;
-  c.a fsC;
-  final Object fsD;
-  final byte[] fsE;
-  final Object fsF;
-  Future<?> fsG;
+  private int Ke;
+  int hwM;
+  b hwP;
+  b hwQ;
+  c.a hwR;
+  final Object hwS;
+  final byte[] hwT;
+  final Object hwU;
+  Future<?> hwV;
   @Deprecated
-  boolean fsH;
-  private boolean fsI;
-  AudioRecord fsj;
-  int fsw;
-  private int fsz;
+  boolean hwW;
+  private boolean hwX;
+  boolean hwj;
+  AudioRecord hwx;
   boolean mIsMute;
   int mStatus;
   
@@ -36,41 +36,41 @@ public final class e
   {
     AppMethodBeat.i(130002);
     this.mStatus = 0;
-    this.fsz = 12800;
+    this.Ke = 12800;
     this.mIsMute = false;
-    this.fsA = new b();
-    this.fsB = null;
-    this.fsD = new Object();
-    this.fsE = new byte[0];
-    this.fsF = new Object();
-    this.fsG = null;
-    this.fsH = false;
-    this.fsI = false;
-    this.fsj = paramAudioRecord;
-    this.frV = paramBoolean1;
-    this.fsw = paramInt;
-    this.fsC = parama;
-    this.fsI = paramBoolean2;
+    this.hwP = new b();
+    this.hwQ = null;
+    this.hwS = new Object();
+    this.hwT = new byte[0];
+    this.hwU = new Object();
+    this.hwV = null;
+    this.hwW = false;
+    this.hwX = false;
+    this.hwx = paramAudioRecord;
+    this.hwj = paramBoolean1;
+    this.hwM = paramInt;
+    this.hwR = parama;
+    this.hwX = paramBoolean2;
     AppMethodBeat.o(130002);
   }
   
-  public final boolean aeU()
+  public final boolean aGR()
   {
     int i = -1;
     AppMethodBeat.i(130003);
     Log.i("MicroMsg.RecordModeAsyncRead", "startRecord");
     for (;;)
     {
-      synchronized (this.fsF)
+      synchronized (this.hwU)
       {
         this.mStatus = 1;
-        Log.i("MicroMsg.RecordModeAsyncRead", "[startRecord] dumpRunningTask:%s", new Object[] { com.tencent.e.h.ZvH.ipD() });
-        com.tencent.e.h.ZvG.be(this.fsA);
-        if (true != this.fsI) {
+        Log.i("MicroMsg.RecordModeAsyncRead", "[startRecord] dumpRunningTask:%s", new Object[] { com.tencent.threadpool.h.ahAB.jYS() });
+        com.tencent.threadpool.h.ahAA.bm(this.hwP);
+        if (true != this.hwX) {
           break label292;
         }
-        this.fsB = new b();
-        if (this.fsB == null)
+        this.hwQ = new b();
+        if (this.hwQ == null)
         {
           Log.e("MicroMsg.RecordModeAsyncRead", "new m_audioBuffer error ");
           i = 0;
@@ -82,10 +82,10 @@ public final class e
           return false;
         }
       }
-      this.fsz = (this.fsw * 20);
-      Log.i("MicroMsg.RecordModeAsyncRead", "audioBuffer init mAudioBufferSize: " + this.fsz);
-      ??? = this.fsB;
-      int j = this.fsz;
+      this.Ke = (this.hwM * 20);
+      Log.i("MicroMsg.RecordModeAsyncRead", "audioBuffer init mAudioBufferSize: " + this.Ke);
+      ??? = this.hwQ;
+      int j = this.Ke;
       if (j <= 0) {}
       for (;;)
       {
@@ -95,12 +95,12 @@ public final class e
         Log.e("MicroMsg.RecordModeAsyncRead", "audioBuffer init failed, error code = -1");
         i = 0;
         break;
-        ((b)???).jmN = new byte[j];
-        if (((b)???).jmN != null)
+        ((b)???).lPY = new byte[j];
+        if (((b)???).lPY != null)
         {
-          ((b)???).jmL = j;
-          if (((b)???).jmQ) {
-            ((b)???).jmR = new ReentrantLock();
+          ((b)???).lPW = j;
+          if (((b)???).lQb) {
+            ((b)???).lQc = new ReentrantLock();
           }
           i = 0;
         }
@@ -108,40 +108,40 @@ public final class e
       label235:
       i = 1;
     }
-    if (this.fsG != null)
+    if (this.hwV != null)
     {
       Log.e("MicroMsg.RecordModeAsyncRead", "startRecord failed : last record is NOT stopped now");
       AppMethodBeat.o(130003);
       return false;
     }
-    this.fsG = com.tencent.e.h.ZvG.a(new a(), 60L, 20L);
-    this.fsH = true;
+    this.hwV = com.tencent.threadpool.h.ahAA.a(new a(), 60L, 20L);
+    this.hwW = true;
     label292:
     AppMethodBeat.o(130003);
     return true;
   }
   
-  public final int aeY()
+  public final int aGW()
   {
-    synchronized (this.fsD)
+    synchronized (this.hwS)
     {
-      if (this.fsB != null)
+      if (this.hwQ != null)
       {
-        int i = this.fsB.jmL;
+        int i = this.hwQ.lPW;
         return i;
       }
       return -1;
     }
   }
   
-  public final int aeZ()
+  public final int aGX()
   {
     AppMethodBeat.i(130005);
-    synchronized (this.fsD)
+    synchronized (this.hwS)
     {
-      if (this.fsB != null)
+      if (this.hwQ != null)
       {
-        int i = this.fsB.atF();
+        int i = this.hwQ.aOd();
         AppMethodBeat.o(130005);
         return i;
       }
@@ -150,7 +150,7 @@ public final class e
     }
   }
   
-  public final void dE(boolean paramBoolean)
+  public final void eq(boolean paramBoolean)
   {
     this.mIsMute = paramBoolean;
   }
@@ -159,45 +159,45 @@ public final class e
   {
     AppMethodBeat.i(130004);
     Log.i("MicroMsg.RecordModeAsyncRead", "stopRecord");
-    synchronized (this.fsF)
+    synchronized (this.hwU)
     {
       this.mStatus = 3;
-      this.fsA.fsN = new c()
+      this.hwP.hxc = new c()
       {
         public final void finish()
         {
           AppMethodBeat.i(129998);
-          e.this.fsA.fsN = null;
+          e.this.hwP.hxc = null;
           Log.i("MicroMsg.RecordModeAsyncRead", "finish stopRecord");
-          if (e.this.fsB != null)
+          if (e.this.hwQ != null)
           {
-            if (e.this.fsG != null)
+            if (e.this.hwV != null)
             {
-              e.this.fsG.cancel(false);
-              e.this.fsG = null;
+              e.this.hwV.cancel(false);
+              e.this.hwV = null;
             }
-            ??? = e.this.fsB;
-            ((b)???).jmL = 0;
-            ((b)???).jmM = 0;
-            ((b)???).jmO = 0;
-            ((b)???).jmP = 0;
-            ((b)???).jmN = null;
+            ??? = e.this.hwQ;
+            ((b)???).lPW = 0;
+            ((b)???).lPX = 0;
+            ((b)???).lPZ = 0;
+            ((b)???).lQa = 0;
+            ((b)???).lPY = null;
           }
-          synchronized (e.this.fsD)
+          synchronized (e.this.hwS)
           {
-            e.this.fsB = null;
-            e.this.fsC = null;
-            e.this.fsH = false;
-            e.this.fsB = null;
+            e.this.hwQ = null;
+            e.this.hwR = null;
+            e.this.hwW = false;
+            e.this.hwQ = null;
             AppMethodBeat.o(129998);
             return;
           }
         }
       };
     }
-    synchronized (this.fsE)
+    synchronized (this.hwT)
     {
-      this.fsE.notify();
+      this.hwT.notify();
       AppMethodBeat.o(130004);
       return;
       localObject2 = finally;
@@ -206,24 +206,24 @@ public final class e
     }
   }
   
-  public final int z(byte[] paramArrayOfByte, int paramInt)
+  public final int x(byte[] paramArrayOfByte, int paramInt)
   {
     int j = -1;
     AppMethodBeat.i(130006);
     for (;;)
     {
       b localb;
-      synchronized (this.fsD)
+      synchronized (this.hwS)
       {
-        if (this.fsB == null) {
+        if (this.hwQ == null) {
           break label300;
         }
-        localb = this.fsB;
+        localb = this.hwQ;
         i = j;
         if (paramInt > 0)
         {
           i = j;
-          if (paramInt <= localb.atF())
+          if (paramInt <= localb.aOd())
           {
             if (paramArrayOfByte != null) {
               continue;
@@ -234,31 +234,31 @@ public final class e
         AppMethodBeat.o(130006);
         return i;
         i = j;
-        if (localb.jmO == localb.jmP) {
+        if (localb.lPZ == localb.lQa) {
           continue;
         }
-        if (localb.jmQ) {
-          localb.jmR.lock();
+        if (localb.lQb) {
+          localb.lQc.lock();
         }
-        if (localb.jmO < localb.jmP)
+        if (localb.lPZ < localb.lQa)
         {
-          System.arraycopy(localb.jmN, localb.jmO, paramArrayOfByte, 0, paramInt);
-          localb.jmO += paramInt;
-          if (!localb.jmQ) {
+          System.arraycopy(localb.lPY, localb.lPZ, paramArrayOfByte, 0, paramInt);
+          localb.lPZ += paramInt;
+          if (!localb.lQb) {
             break label310;
           }
-          localb.jmR.unlock();
+          localb.lQc.unlock();
           break label310;
         }
-        if (paramInt <= localb.jmL - localb.jmO)
+        if (paramInt <= localb.lPW - localb.lPZ)
         {
-          System.arraycopy(localb.jmN, localb.jmO, paramArrayOfByte, 0, paramInt);
-          localb.jmO += paramInt;
+          System.arraycopy(localb.lPY, localb.lPZ, paramArrayOfByte, 0, paramInt);
+          localb.lPZ += paramInt;
         }
       }
-      System.arraycopy(localb.jmN, localb.jmO, paramArrayOfByte, 0, localb.jmL - localb.jmO);
-      System.arraycopy(localb.jmN, 0, paramArrayOfByte, localb.jmL - localb.jmO, paramInt - (localb.jmL - localb.jmO));
-      localb.jmO = (paramInt - (localb.jmL - localb.jmO));
+      System.arraycopy(localb.lPY, localb.lPZ, paramArrayOfByte, 0, localb.lPW - localb.lPZ);
+      System.arraycopy(localb.lPY, 0, paramArrayOfByte, localb.lPW - localb.lPZ, paramInt - (localb.lPW - localb.lPZ));
+      localb.lPZ = (paramInt - (localb.lPW - localb.lPZ));
       continue;
       label300:
       AppMethodBeat.o(130006);
@@ -271,16 +271,16 @@ public final class e
   final class a
     implements Runnable
   {
-    private int fsK;
-    private int fsL;
-    byte[] fsM;
+    private int hwZ;
+    private int hxa;
+    byte[] hxb;
     
     a()
     {
       AppMethodBeat.i(129999);
-      this.fsK = (e.this.fsw * 2);
-      this.fsL = e.this.fsw;
-      this.fsM = new byte[this.fsK];
+      this.hwZ = (e.this.hwM * 2);
+      this.hxa = e.this.hwM;
+      this.hxb = new byte[this.hwZ];
       AppMethodBeat.o(129999);
     }
     
@@ -290,12 +290,12 @@ public final class e
       int j;
       if (!e.this.mIsPause)
       {
-        j = (int)(0.8D * e.this.aeY());
+        j = (int)(0.8D * e.this.aGW());
         i = j;
-        if (j < e.this.fsw * 8) {
-          i = e.this.fsw * 8;
+        if (j < e.this.hwM * 8) {
+          i = e.this.hwM * 8;
         }
-        if (e.this.aeZ() <= i) {
+        if (e.this.aGX() <= i) {
           break label140;
         }
       }
@@ -305,9 +305,9 @@ public final class e
         j = 0;
         while (j < i)
         {
-          int k = e.this.z(this.fsM, this.fsL);
-          if ((e.this.fsC != null) && (k == 0)) {
-            e.this.fsC.w(this.fsM, this.fsL);
+          int k = e.this.x(this.hxb, this.hxa);
+          if ((e.this.hwR != null) && (k == 0)) {
+            e.this.hwR.u(this.hxb, this.hxa);
           }
           j += 1;
         }
@@ -318,9 +318,9 @@ public final class e
   }
   
   final class b
-    implements com.tencent.e.i.h
+    implements com.tencent.threadpool.i.h
   {
-    volatile e.c fsN;
+    volatile e.c hxc;
     
     b() {}
     
@@ -332,17 +332,17 @@ public final class e
     public final void run()
     {
       AppMethodBeat.i(130001);
-      Log.i("MicroMsg.RecordModeAsyncRead", "RecordThread started. frameSize:%d", new Object[] { Integer.valueOf(e.this.fsw) });
-      if (-123456789 != e.this.frZ)
+      Log.i("MicroMsg.RecordModeAsyncRead", "RecordThread started. frameSize:%d", new Object[] { Integer.valueOf(e.this.hwM) });
+      if (-123456789 != e.this.hwn)
       {
-        Log.i("MicroMsg.RecordModeAsyncRead", "set priority to " + e.this.frZ);
-        Process.setThreadPriority(e.this.frZ);
+        Log.i("MicroMsg.RecordModeAsyncRead", "set priority to " + e.this.hwn);
+        Process.setThreadPriority(e.this.hwn);
       }
       for (;;)
       {
-        synchronized (e.this.fsF)
+        synchronized (e.this.hwU)
         {
-          Log.i("MicroMsg.RecordModeAsyncRead", "RecordRunnable#run lock[%s] mStatusLock[%s]", new Object[] { Long.valueOf(Thread.currentThread().getId()), e.this.fsF });
+          Log.i("MicroMsg.RecordModeAsyncRead", "RecordRunnable#run lock[%s] mStatusLock[%s]", new Object[] { Long.valueOf(Thread.currentThread().getId()), e.this.hwU });
           if (1 != e.this.mStatus)
           {
             Log.e("MicroMsg.RecordModeAsyncRead", "status is not inited, now status: " + e.this.mStatus);
@@ -350,9 +350,9 @@ public final class e
             return;
           }
           e.this.mStatus = 2;
-          ??? = new byte[e.this.fsw];
+          ??? = new byte[e.this.hwM];
           if (2 == e.this.mStatus) {
-            synchronized (e.this.fsE)
+            synchronized (e.this.hwT)
             {
               boolean bool = e.this.mIsPause;
               if (!bool) {}
@@ -361,15 +361,15 @@ public final class e
         }
         try
         {
-          e.this.fsE.wait();
+          e.this.hwT.wait();
           label237:
           if (2 != e.this.mStatus) {}
           Object localObject6;
           int i;
           for (;;)
           {
-            if (this.fsN != null) {
-              this.fsN.finish();
+            if (this.hxc != null) {
+              this.hxc.finish();
             }
             Log.i("MicroMsg.RecordModeAsyncRead", "RecordThread exited.");
             AppMethodBeat.o(130001);
@@ -377,10 +377,10 @@ public final class e
             localObject4 = finally;
             AppMethodBeat.o(130001);
             throw localObject4;
-            if (e.this.fsj == null)
+            if (e.this.hwx == null)
             {
               Log.i("MicroMsg.RecordModeAsyncRead", "mAudioRecord is null, so stop record.");
-              synchronized (e.this.fsF)
+              synchronized (e.this.hwU)
               {
                 e.this.mStatus = 3;
               }
@@ -389,24 +389,24 @@ public final class e
               throw localObject2;
             }
             localObject6 = localObject2;
-            if (e.this.frV) {
-              localObject6 = new byte[e.this.fsw];
+            if (e.this.hwj) {
+              localObject6 = new byte[e.this.hwM];
             }
-            e.this.fsO += 1;
+            e.this.hxd += 1;
             new com.tencent.mm.compatible.util.f.a();
-            i = e.this.fsj.read((byte[])localObject6, 0, e.this.fsw);
+            i = e.this.hwx.read((byte[])localObject6, 0, e.this.hwM);
             if (2 == e.this.mStatus) {
               break;
             }
             Log.i("MicroMsg.RecordModeAsyncRead", "record mode has not been running and break");
           }
-          if (e.this.fss != null) {
-            e.this.fss.d(i, (byte[])localObject6);
+          if (e.this.hwI != null) {
+            e.this.hwI.d(i, (byte[])localObject6);
           }
-          if (e.this.fsw != i) {
+          if (e.this.hwM != i) {
             Log.i("MicroMsg.RecordModeAsyncRead", "read len ".concat(String.valueOf(i)));
           }
-          if (i < e.this.fsw) {
+          if (i < e.this.hwM) {
             Log.i("MicroMsg.RecordModeAsyncRead", "read too fast? sleep 10 ms");
           }
           try
@@ -414,7 +414,7 @@ public final class e
             Thread.sleep(10L);
             label530:
             Object localObject3 = localObject6;
-            if (e.this.fsC == null) {
+            if (e.this.hwR == null) {
               continue;
             }
             localObject3 = localObject6;
@@ -425,21 +425,21 @@ public final class e
             if (i > localObject6.length) {
               j = localObject6.length;
             }
-            if (e.this.fsB != null)
+            if (e.this.hwQ != null)
             {
               if (e.this.mIsMute) {
                 Arrays.fill((byte[])localObject6, 0, j, (byte)0);
               }
-              localObject3 = e.this.fsB;
+              localObject3 = e.this.hwQ;
               if (j > 0)
               {
-                if (((b)localObject3).jmQ) {
-                  ((b)localObject3).jmR.lock();
+                if (((b)localObject3).lQb) {
+                  ((b)localObject3).lQc.lock();
                 }
-                if (((b)localObject3).jmO != ((b)localObject3).jmP) {
+                if (((b)localObject3).lPZ != ((b)localObject3).lQa) {
                   break label699;
                 }
-                i = ((b)localObject3).jmL;
+                i = ((b)localObject3).lPW;
                 label643:
                 if (j <= i) {
                   break label825;
@@ -451,62 +451,62 @@ public final class e
                 if (i == 0) {
                   break;
                 }
-                Log.e("MicroMsg.RecordModeAsyncRead", "WriteToBuffer Failed, ret:%d AudioBuffer length: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(e.this.fsB.atF()) });
+                Log.e("MicroMsg.RecordModeAsyncRead", "WriteToBuffer Failed, ret:%d AudioBuffer length: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(e.this.hwQ.aOd()) });
                 localObject3 = localObject6;
                 break;
                 label699:
-                if ((((b)localObject3).jmP + 1) % ((b)localObject3).jmL == ((b)localObject3).jmO)
+                if ((((b)localObject3).lQa + 1) % ((b)localObject3).lPW == ((b)localObject3).lPZ)
                 {
                   i = 0;
                   break label643;
                 }
-                if (((b)localObject3).jmO < ((b)localObject3).jmP) {
-                  ((b)localObject3).jmM = (((b)localObject3).jmP - ((b)localObject3).jmO);
+                if (((b)localObject3).lPZ < ((b)localObject3).lQa) {
+                  ((b)localObject3).lPX = (((b)localObject3).lQa - ((b)localObject3).lPZ);
                 }
                 for (;;)
                 {
-                  if (((b)localObject3).jmQ) {
-                    ((b)localObject3).jmR.unlock();
+                  if (((b)localObject3).lQb) {
+                    ((b)localObject3).lQc.unlock();
                   }
-                  i = ((b)localObject3).jmL - ((b)localObject3).jmM;
+                  i = ((b)localObject3).lPW - ((b)localObject3).lPX;
                   break;
-                  if (((b)localObject3).jmO > ((b)localObject3).jmP) {
-                    ((b)localObject3).jmM = (((b)localObject3).jmP + ((b)localObject3).jmL - ((b)localObject3).jmO);
+                  if (((b)localObject3).lPZ > ((b)localObject3).lQa) {
+                    ((b)localObject3).lPX = (((b)localObject3).lQa + ((b)localObject3).lPW - ((b)localObject3).lPZ);
                   }
                 }
                 label825:
-                if ((((b)localObject3).jmP + j) % ((b)localObject3).jmL != ((b)localObject3).jmO) {
+                if ((((b)localObject3).lQa + j) % ((b)localObject3).lPW != ((b)localObject3).lPZ) {
                   break label851;
                 }
               }
               label851:
-              if (((b)localObject3).jmQ) {
-                ((b)localObject3).jmR.lock();
+              if (((b)localObject3).lQb) {
+                ((b)localObject3).lQc.lock();
               }
-              if ((((b)localObject3).jmO < ((b)localObject3).jmP) && (j > ((b)localObject3).jmL - ((b)localObject3).jmP))
+              if ((((b)localObject3).lPZ < ((b)localObject3).lQa) && (j > ((b)localObject3).lPW - ((b)localObject3).lQa))
               {
-                System.arraycopy(localObject6, 0, ((b)localObject3).jmN, ((b)localObject3).jmP, ((b)localObject3).jmL - ((b)localObject3).jmP);
-                System.arraycopy(localObject6, ((b)localObject3).jmL - ((b)localObject3).jmP, ((b)localObject3).jmN, 0, j - (((b)localObject3).jmL - ((b)localObject3).jmP));
-                ((b)localObject3).jmP = (j - (((b)localObject3).jmL - ((b)localObject3).jmP));
+                System.arraycopy(localObject6, 0, ((b)localObject3).lPY, ((b)localObject3).lQa, ((b)localObject3).lPW - ((b)localObject3).lQa);
+                System.arraycopy(localObject6, ((b)localObject3).lPW - ((b)localObject3).lQa, ((b)localObject3).lPY, 0, j - (((b)localObject3).lPW - ((b)localObject3).lQa));
+                ((b)localObject3).lQa = (j - (((b)localObject3).lPW - ((b)localObject3).lQa));
               }
-              for (((b)localObject3).jmP %= ((b)localObject3).jmL;; ((b)localObject3).jmP = ((j + ((b)localObject3).jmP) % ((b)localObject3).jmL))
+              for (((b)localObject3).lQa %= ((b)localObject3).lPW;; ((b)localObject3).lQa = ((j + ((b)localObject3).lQa) % ((b)localObject3).lPW))
               {
-                if (((b)localObject3).jmQ) {
-                  ((b)localObject3).jmR.unlock();
+                if (((b)localObject3).lQb) {
+                  ((b)localObject3).lQc.unlock();
                 }
                 i = 0;
                 break;
-                System.arraycopy(localObject6, 0, ((b)localObject3).jmN, ((b)localObject3).jmP, j);
+                System.arraycopy(localObject6, 0, ((b)localObject3).lPY, ((b)localObject3).lQa, j);
               }
             }
             localObject3 = localObject6;
-            if (e.this.fsC == null) {
+            if (e.this.hwR == null) {
               continue;
             }
             if (e.this.mIsMute) {
               Arrays.fill((byte[])localObject6, 0, j, (byte)0);
             }
-            e.this.fsC.w((byte[])localObject6, j);
+            e.this.hwR.u((byte[])localObject6, j);
             localObject3 = localObject6;
           }
           catch (InterruptedException localInterruptedException1)
@@ -529,7 +529,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.audio.b.e
  * JD-Core Version:    0.7.0.1
  */

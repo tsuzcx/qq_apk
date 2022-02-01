@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@raw/biz_voice_playing_icon_inner3" />
-</selector>
+    <item android:left="-0.5dip" android:bottom="-0.5dip">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/BW_97" />
+            <stroke android:width="0.5dip" android:color="@color/BW_0_Alpha_0_1" />
+        </shape>
+    </item>
+</layer-list>

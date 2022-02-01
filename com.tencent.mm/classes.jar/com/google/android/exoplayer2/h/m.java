@@ -11,47 +11,47 @@ import java.lang.reflect.InvocationTargetException;
 public final class m
   implements g
 {
-  private g aRo;
-  private final g boN;
-  private g boO;
-  private g boP;
-  private g boQ;
-  private g boR;
-  private final w<? super g> bol;
+  private g cLk;
   private final Context context;
+  private final g diD;
+  private g diE;
+  private g diF;
+  private g diG;
+  private g diH;
+  private final w<? super g> did;
   
   public m(Context paramContext, w<? super g> paramw, g paramg)
   {
     AppMethodBeat.i(93059);
     this.context = paramContext.getApplicationContext();
-    this.bol = paramw;
-    this.boN = ((g)a.checkNotNull(paramg));
+    this.did = paramw;
+    this.diD = ((g)a.checkNotNull(paramg));
     AppMethodBeat.o(93059);
   }
   
-  private g uK()
+  private g Ul()
   {
     AppMethodBeat.i(93064);
-    if (this.boP == null) {
-      this.boP = new c(this.context, this.bol);
+    if (this.diF == null) {
+      this.diF = new c(this.context, this.did);
     }
-    g localg = this.boP;
+    g localg = this.diF;
     AppMethodBeat.o(93064);
     return localg;
   }
   
-  private g uL()
+  private g Um()
   {
     AppMethodBeat.i(93065);
-    if (this.boR == null) {}
+    if (this.diH == null) {}
     try
     {
-      this.boR = ((g)Class.forName("com.google.android.exoplayer2.ext.rtmp.RtmpDataSource").getDeclaredConstructor(new Class[0]).newInstance(new Object[0]));
+      this.diH = ((g)Class.forName("com.google.android.exoplayer2.ext.rtmp.RtmpDataSource").getDeclaredConstructor(new Class[0]).newInstance(new Object[0]));
       label38:
-      if (this.boR == null) {
-        this.boR = this.boN;
+      if (this.diH == null) {
+        this.diH = this.diD;
       }
-      g localg = this.boR;
+      g localg = this.diH;
       AppMethodBeat.o(93065);
       return localg;
     }
@@ -82,51 +82,51 @@ public final class m
     AppMethodBeat.i(93060);
     boolean bool;
     String str;
-    if (this.aRo == null)
+    if (this.cLk == null)
     {
       bool = true;
       a.checkState(bool);
       str = paramj.uri.getScheme();
-      if (!x.f(paramj.uri)) {
+      if (!x.h(paramj.uri)) {
         break label116;
       }
       if (!paramj.uri.getPath().startsWith("/android_asset/")) {
         break label83;
       }
-      this.aRo = uK();
+      this.cLk = Ul();
     }
     for (;;)
     {
-      long l = this.aRo.a(paramj);
+      long l = this.cLk.a(paramj);
       AppMethodBeat.o(93060);
       return l;
       bool = false;
       break;
       label83:
-      if (this.boO == null) {
-        this.boO = new q(this.bol);
+      if (this.diE == null) {
+        this.diE = new q(this.did);
       }
-      this.aRo = this.boO;
+      this.cLk = this.diE;
       continue;
       label116:
       if ("asset".equals(str))
       {
-        this.aRo = uK();
+        this.cLk = Ul();
       }
       else if ("content".equals(str))
       {
-        if (this.boQ == null) {
-          this.boQ = new e(this.context, this.bol);
+        if (this.diG == null) {
+          this.diG = new e(this.context, this.did);
         }
-        this.aRo = this.boQ;
+        this.cLk = this.diG;
       }
       else if ("rtmp".equals(str))
       {
-        this.aRo = uL();
+        this.cLk = Um();
       }
       else
       {
-        this.aRo = this.boN;
+        this.cLk = this.diD;
       }
     }
   }
@@ -134,15 +134,15 @@ public final class m
   public final void close()
   {
     AppMethodBeat.i(93063);
-    if (this.aRo != null) {
+    if (this.cLk != null) {
       try
       {
-        this.aRo.close();
+        this.cLk.close();
         return;
       }
       finally
       {
-        this.aRo = null;
+        this.cLk = null;
         AppMethodBeat.o(93063);
       }
     }
@@ -152,12 +152,12 @@ public final class m
   public final Uri getUri()
   {
     AppMethodBeat.i(93062);
-    if (this.aRo == null)
+    if (this.cLk == null)
     {
       AppMethodBeat.o(93062);
       return null;
     }
-    Uri localUri = this.aRo.getUri();
+    Uri localUri = this.cLk.getUri();
     AppMethodBeat.o(93062);
     return localUri;
   }
@@ -165,14 +165,14 @@ public final class m
   public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(93061);
-    paramInt1 = this.aRo.read(paramArrayOfByte, paramInt1, paramInt2);
+    paramInt1 = this.cLk.read(paramArrayOfByte, paramInt1, paramInt2);
     AppMethodBeat.o(93061);
     return paramInt1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.h.m
  * JD-Core Version:    0.7.0.1
  */

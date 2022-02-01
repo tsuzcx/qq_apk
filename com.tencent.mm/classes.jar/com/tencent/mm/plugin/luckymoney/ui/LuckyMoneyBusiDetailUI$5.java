@@ -1,34 +1,28 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.luckymoney.model.ag;
+import com.tencent.mm.plugin.luckymoney.model.ah;
 import com.tencent.mm.plugin.luckymoney.model.q;
 import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.wallet_core.ui.k;
 
 final class LuckyMoneyBusiDetailUI$5
-  implements View.OnClickListener
+  extends k
 {
   LuckyMoneyBusiDetailUI$5(LuckyMoneyBusiDetailUI paramLuckyMoneyBusiDetailUI, q paramq) {}
   
-  public final void onClick(View paramView)
+  public final void dr(View paramView)
   {
-    AppMethodBeat.i(65454);
-    b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyBusiDetailUI$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    h.IzE.a(11701, new Object[] { Integer.valueOf(LuckyMoneyBusiDetailUI.Wc(this.EGT.Ezs)), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(3) });
-    ag.a(this.EGR, 1, false);
-    a.a(this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyBusiDetailUI$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(65454);
+    AppMethodBeat.i(284092);
+    h.OAn.b(11701, new Object[] { Integer.valueOf(LuckyMoneyBusiDetailUI.ZY(this.KAd.Ksf)), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(3) });
+    ah.a(this.KAb, 1, false);
+    AppMethodBeat.o(284092);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyBusiDetailUI.5
  * JD-Core Version:    0.7.0.1
  */

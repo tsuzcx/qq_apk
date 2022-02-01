@@ -1,232 +1,82 @@
 package com.tencent.mm.plugin.webview.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.ac;
-import com.tencent.mm.protocal.GeneralControlWrapper;
-import com.tencent.mm.protocal.JsapiPermissionWrapper;
-import com.tencent.mm.protocal.protobuf.bob;
+import com.tencent.mm.plugin.webview.jsapi.c.a;
+import com.tencent.mm.plugin.webview.jsapi.e;
+import com.tencent.mm.plugin.webview.jsapi.g;
+import com.tencent.mm.plugin.webview.jsapi.h;
+import com.tencent.mm.plugin.webview.jsapi.p;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 import java.util.Map;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/prefecher/WebPrefetcherJsApiPool;", "Lcom/tencent/mm/plugin/webview/jsapi/IWebViewJsApiPool;", "()V", "TAG", "", "jsApis", "", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "initJsApis", "", "jsApiList", "", "isLog", "support", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
+  implements g
 {
-  private Map<String, a> PYM;
-  private JsapiPermissionWrapper PYN;
-  private GeneralControlWrapper PYO;
-  private final JsapiPermissionWrapper PYP;
-  private final GeneralControlWrapper PYQ;
+  private static Map<String, a> WEL;
+  public static final d WPX;
   
-  public d()
+  static
   {
-    AppMethodBeat.i(211840);
-    this.PYM = new HashMap();
-    this.PYP = new JsapiPermissionWrapper(2);
-    this.PYQ = GeneralControlWrapper.RAY;
-    this.PYN = null;
-    if ((ac.mFH == null) || (ac.mFH.length() == 0))
+    AppMethodBeat.i(294618);
+    WPX = new d();
+    WEL = (Map)new HashMap();
+    AppMethodBeat.o(294618);
+  }
+  
+  public static void ck(Map<String, ? extends a> paramMap)
+  {
+    AppMethodBeat.i(294607);
+    s.u(paramMap, "jsApiList");
+    WEL.clear();
+    WEL.putAll(paramMap);
+    AppMethodBeat.o(294607);
+  }
+  
+  public final boolean a(h paramh, p paramp)
+  {
+    AppMethodBeat.i(294637);
+    s.u(paramh, "env");
+    s.u(paramp, "msg");
+    if (WEL.containsKey(paramp.function))
     {
-      Log.i("MicroMsg.LuggageGetA8KeyPermission", "setHardcodeJsPermission, Test.jsapiPermission is null");
-      this.PYO = null;
-      if ((ac.mFI != null) && (ac.mFI.length() != 0)) {
-        break label223;
-      }
-      Log.i("MicroMsg.LuggageGetA8KeyPermission", "setHardcodeGeneralCtrl, Test.generalCtrl is null");
-    }
-    for (;;)
-    {
-      int i;
-      for (;;)
-      {
-        Log.i("MicroMsg.LuggageGetA8KeyPermission", "hardcodeJsPerm = " + null + ", hardcodeGenCtrl = " + null);
-        AppMethodBeat.o(211840);
-        return;
-        try
-        {
-          i = Util.getInt(ac.mFH, 0);
-          if (i < 0) {
-            Log.w("MicroMsg.LuggageGetA8KeyPermission", "setHardcodeJsPermission, Test.jsapiPermission wrong");
-          }
-        }
-        catch (Exception localException1)
-        {
-          Log.e("MicroMsg.LuggageGetA8KeyPermission", "setHardcodeJsPermission, parse jsapi fail, ex = " + localException1.getMessage());
-          this.PYN = null;
-        }
+      Object localObject = WEL.get(paramp.function);
+      s.checkNotNull(localObject);
+      localObject = (a)localObject;
+      if (paramh.sk(((a)localObject).gPZ())) {
+        ((a)localObject).a(paramh, paramp);
       }
       for (;;)
       {
-        Log.i("MicroMsg.LuggageGetA8KeyPermission", "setHardcodeJsPermission, hardcodeJsPerm = " + this.PYN);
-        break;
-        this.PYN = new JsapiPermissionWrapper(i);
-      }
-      try
-      {
-        label223:
-        i = Util.getInt(ac.mFI, 0);
-        Log.i("MicroMsg.LuggageGetA8KeyPermission", "setHardcodeGeneralCtrl, permission = %d", new Object[] { Integer.valueOf(i) });
-        bob localbob = new bob();
-        localbob.SZd = i;
-        this.PYO = new GeneralControlWrapper(localbob);
-        Log.i("MicroMsg.LuggageGetA8KeyPermission", "setHardcodeGeneralCtrl, hardcodeGenCtrl = " + this.PYO);
-      }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          Log.e("MicroMsg.LuggageGetA8KeyPermission", "setHardcodeGeneralCtrl fail, ex = %s", new Object[] { localException2.getMessage() });
-          this.PYO = null;
+        AppMethodBeat.o(294637);
+        return true;
+        Log.e("MicroMsg.WebPrefetcherJsApiPool", s.X("handleMsg access denied func: ", paramp.function));
+        if (!s.p(paramp.function, "log")) {
+          paramh.WDy.doCallback(paramp.WEH, "system:access_denied", null);
         }
       }
     }
-  }
-  
-  private static String bks(String paramString)
-  {
-    AppMethodBeat.i(211857);
-    int i = paramString.indexOf("#");
-    if (i < 0)
-    {
-      AppMethodBeat.o(211857);
-      return paramString;
-    }
-    paramString = paramString.substring(0, i);
-    AppMethodBeat.o(211857);
-    return paramString;
-  }
-  
-  public final void a(String paramString, JsapiPermissionWrapper paramJsapiPermissionWrapper, GeneralControlWrapper paramGeneralControlWrapper)
-  {
-    AppMethodBeat.i(211845);
-    if (Util.isNullOrNil(paramString))
-    {
-      Log.e("MicroMsg.LuggageGetA8KeyPermission", "update fail, url is null");
-      AppMethodBeat.o(211845);
-      return;
-    }
-    paramString = bks(paramString);
-    Log.i("MicroMsg.LuggageGetA8KeyPermission", "edw update, jsPerm = " + paramJsapiPermissionWrapper + ", genCtrl = " + paramGeneralControlWrapper + ", url = " + paramString);
-    this.PYM.put(paramString, new a(paramJsapiPermissionWrapper, paramGeneralControlWrapper));
-    AppMethodBeat.o(211845);
-  }
-  
-  public final GeneralControlWrapper blA(String paramString)
-  {
-    AppMethodBeat.i(211854);
-    if (this.PYO != null)
-    {
-      Log.i("MicroMsg.LuggageGetA8KeyPermission", "getGenCtrl, return hardcodeGenCtrl = " + this.PYO);
-      paramString = this.PYO;
-      AppMethodBeat.o(211854);
-      return paramString;
-    }
-    if (Util.isNullOrNil(paramString))
-    {
-      Log.e("MicroMsg.LuggageGetA8KeyPermission", "getGenCtrl fail, url = ".concat(String.valueOf(paramString)));
-      paramString = this.PYQ;
-      AppMethodBeat.o(211854);
-      return paramString;
-    }
-    String str = bks(paramString);
-    a locala = (a)this.PYM.get(str);
-    StringBuilder localStringBuilder = new StringBuilder("edw getGenCtrl, genCtrl = ");
-    if (locala == null) {}
-    for (paramString = null;; paramString = locala.PYR)
-    {
-      Log.i("MicroMsg.LuggageGetA8KeyPermission", paramString + ", url = " + str);
-      if (locala != null) {
-        break;
-      }
-      paramString = this.PYQ;
-      AppMethodBeat.o(211854);
-      return paramString;
-    }
-    paramString = locala.PYR;
-    AppMethodBeat.o(211854);
-    return paramString;
-  }
-  
-  public final JsapiPermissionWrapper blE(String paramString)
-  {
-    AppMethodBeat.i(211852);
-    if (this.PYN != null)
-    {
-      Log.i("MicroMsg.LuggageGetA8KeyPermission", "getJsPerm, return hardcodeJsPerm = " + this.PYN);
-      paramString = this.PYN;
-      AppMethodBeat.o(211852);
-      return paramString;
-    }
-    if (Util.isNullOrNil(paramString))
-    {
-      Log.e("MicroMsg.LuggageGetA8KeyPermission", "getJsPerm fail, url = ".concat(String.valueOf(paramString)));
-      paramString = this.PYP;
-      AppMethodBeat.o(211852);
-      return paramString;
-    }
-    paramString = bks(paramString);
-    if (this.PYM == null)
-    {
-      Log.e("MicroMsg.LuggageGetA8KeyPermission", "getJsPerm fail, permMap is null");
-      paramString = this.PYP;
-      AppMethodBeat.o(211852);
-      return paramString;
-    }
-    paramString = (a)this.PYM.get(paramString);
-    if (paramString == null)
-    {
-      paramString = this.PYP;
-      AppMethodBeat.o(211852);
-      return paramString;
-    }
-    paramString = paramString.PvI;
-    AppMethodBeat.o(211852);
-    return paramString;
-  }
-  
-  public final boolean has(String paramString)
-  {
-    AppMethodBeat.i(211848);
-    if (Util.isNullOrNil(paramString))
-    {
-      Log.e("MicroMsg.LuggageGetA8KeyPermission", "has fail, url is null");
-      AppMethodBeat.o(211848);
-      return false;
-    }
-    paramString = bks(paramString);
-    paramString = (a)this.PYM.get(paramString);
-    if ((paramString != null) && (paramString.PvI != this.PYP) && (paramString.PYR != this.PYQ))
-    {
-      AppMethodBeat.o(211848);
-      return true;
-    }
-    AppMethodBeat.o(211848);
+    paramh.WDy.doCallback(paramp.WEH, "system:function_not_exist", null);
+    AppMethodBeat.o(294637);
     return false;
   }
   
-  static final class a
+  public final boolean b(h paramh, p paramp)
   {
-    public GeneralControlWrapper PYR;
-    public JsapiPermissionWrapper PvI;
-    
-    public a(JsapiPermissionWrapper paramJsapiPermissionWrapper, GeneralControlWrapper paramGeneralControlWrapper)
+    AppMethodBeat.i(294629);
+    s.u(paramh, "env");
+    s.u(paramp, "msg");
+    if (!WEL.isEmpty()) {}
+    for (int i = 1; (i != 0) && (s.p(paramh.WDy.itt(), this)); i = 0)
     {
-      this.PvI = paramJsapiPermissionWrapper;
-      this.PYR = paramGeneralControlWrapper;
+      AppMethodBeat.o(294629);
+      return true;
     }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(207661);
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("Permission: jsPerm = ");
-      ((StringBuilder)localObject).append(this.PvI);
-      ((StringBuilder)localObject).append(", genCtrl = ");
-      ((StringBuilder)localObject).append(this.PYR);
-      localObject = ((StringBuilder)localObject).toString();
-      AppMethodBeat.o(207661);
-      return localObject;
-    }
+    AppMethodBeat.o(294629);
+    return false;
   }
 }
 

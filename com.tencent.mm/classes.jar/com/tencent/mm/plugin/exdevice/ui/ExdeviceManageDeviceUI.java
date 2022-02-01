@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
@@ -8,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -21,23 +19,24 @@ import com.tencent.mm.R.g;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
 import com.tencent.mm.R.l;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.t;
-import com.tencent.mm.ay.a.a.c.a;
-import com.tencent.mm.f.a.eg;
-import com.tencent.mm.f.c.ds;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.autogen.a.eq;
+import com.tencent.mm.autogen.b.ee;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.plugin.exdevice.model.ae;
-import com.tencent.mm.plugin.exdevice.model.y;
-import com.tencent.mm.protocal.protobuf.ciu;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.modelimage.loader.a.c.a;
+import com.tencent.mm.modelimage.r;
+import com.tencent.mm.plugin.exdevice.model.ab;
+import com.tencent.mm.plugin.exdevice.model.ah;
+import com.tencent.mm.protocal.protobuf.cyx;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.q.g;
-import com.tencent.mm.ui.base.s;
-import com.tencent.mm.ui.tools.m;
+import com.tencent.mm.ui.base.u.i;
+import com.tencent.mm.ui.base.w;
+import com.tencent.mm.ui.tools.l;
 import java.lang.ref.WeakReference;
 import java.util.LinkedList;
 import java.util.List;
@@ -46,28 +45,28 @@ public class ExdeviceManageDeviceUI
   extends MMActivity
 {
   private ListView mListView;
-  private a voi;
+  private a yAE;
   
   public int getLayoutId()
   {
-    return R.i.egz;
+    return R.i.gjs;
   }
   
   public void initView()
   {
     AppMethodBeat.i(24068);
     this.mListView = ((ListView)findViewById(R.h.listview));
-    this.voi = new a(this);
-    View.inflate(this, R.i.egn, null);
-    this.mListView.setAdapter(this.voi);
+    this.yAE = new a(this);
+    View.inflate(this, R.i.gjg, null);
+    this.mListView.setAdapter(this.yAE);
     AppMethodBeat.o(24068);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(24069);
-    this.voi.aa(ae.cZx().dao());
-    this.voi.notifyDataSetChanged();
+    this.yAE.bz(ah.dFO().dGH());
+    this.yAE.notifyDataSetChanged();
     AppMethodBeat.o(24069);
   }
   
@@ -75,22 +74,13 @@ public class ExdeviceManageDeviceUI
   {
     AppMethodBeat.i(24067);
     super.onCreate(paramBundle);
-    setBackBtn(new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        AppMethodBeat.i(24052);
-        ExdeviceManageDeviceUI.this.finish();
-        AppMethodBeat.o(24052);
-        return true;
-      }
-    });
-    setMMTitle(R.l.eDF);
-    paramBundle = new eg();
-    paramBundle.fzU.fzV = true;
-    EventCenter.instance.publish(paramBundle);
+    setBackBtn(new ExdeviceManageDeviceUI.1(this));
+    setMMTitle(R.l.gGt);
+    paramBundle = new eq();
+    paramBundle.hEF.hEG = true;
+    paramBundle.publish();
     initView();
-    bh.aGY().a(537, this.voi);
+    bh.aZW().a(537, this.yAE);
     AppMethodBeat.o(24067);
   }
   
@@ -98,20 +88,20 @@ public class ExdeviceManageDeviceUI
   {
     AppMethodBeat.i(24070);
     super.onDestroy();
-    bh.aGY().b(537, this.voi);
+    bh.aZW().b(537, this.yAE);
     AppMethodBeat.o(24070);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(24071);
-    if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0) && (this.voi.vok))
+    if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0) && (this.yAE.yAG))
     {
       updateOptionMenuText(0, getString(R.l.app_edit));
-      paramKeyEvent = this.voi;
-      if (paramKeyEvent.vok)
+      paramKeyEvent = this.yAE;
+      if (paramKeyEvent.yAG)
       {
-        paramKeyEvent.vok = false;
+        paramKeyEvent.yAG = false;
         MMHandlerThread.postToMainThread(new ExdeviceManageDeviceUI.a.5(paramKeyEvent));
       }
       AppMethodBeat.o(24071);
@@ -130,30 +120,30 @@ public class ExdeviceManageDeviceUI
   
   static final class a
     extends BaseAdapter
-    implements i
+    implements h
   {
-    private WeakReference<Context> sJr;
-    private q.g szy;
-    private s tipDialog;
-    private List<com.tencent.mm.plugin.exdevice.i.b> vkQ;
-    private com.tencent.mm.ay.a.a.c vle;
-    boolean vok;
-    private View.OnClickListener vol;
-    private m vom;
-    private volatile int von;
+    private w tipDialog;
+    private u.i vFd;
+    private WeakReference<Context> vPu;
+    boolean yAG;
+    private View.OnClickListener yAH;
+    private l yAI;
+    private volatile int yAJ;
+    private com.tencent.mm.modelimage.loader.a.c yxG;
+    private List<com.tencent.mm.plugin.exdevice.i.b> yxt;
     
     public a(Context paramContext)
     {
       AppMethodBeat.i(24058);
       this.tipDialog = null;
-      this.von = -1;
-      this.sJr = new WeakReference(paramContext);
-      this.vkQ = new LinkedList();
-      this.vom = new m(paramContext);
+      this.yAJ = -1;
+      this.vPu = new WeakReference(paramContext);
+      this.yxt = new LinkedList();
+      this.yAI = new l(paramContext);
       paramContext = new c.a();
-      paramContext.lRP = R.g.dnt;
-      this.vle = paramContext.bmL();
-      this.szy = new q.g()
+      paramContext.oKB = R.g.fnH;
+      this.yxG = paramContext.bKx();
+      this.vFd = new u.i()
       {
         public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
         {
@@ -172,14 +162,14 @@ public class ExdeviceManageDeviceUI
           AppMethodBeat.o(24053);
         }
       };
-      this.vol = new View.OnClickListener()
+      this.yAH = new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(24054);
           Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-          ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/exdevice/ui/ExdeviceManageDeviceUI$DeviceAdapter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/exdevice/ui/ExdeviceManageDeviceUI$DeviceAdapter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
           if (ExdeviceManageDeviceUI.a.b(ExdeviceManageDeviceUI.a.this))
           {
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/exdevice/ui/ExdeviceManageDeviceUI$DeviceAdapter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -200,7 +190,7 @@ public class ExdeviceManageDeviceUI
             AppMethodBeat.o(24054);
             return;
           }
-          paramAnonymousView = ExdeviceManageDeviceUI.a.this.Kp(i);
+          paramAnonymousView = ExdeviceManageDeviceUI.a.this.Lo(i);
           localObject = (Context)ExdeviceManageDeviceUI.a.c(ExdeviceManageDeviceUI.a.this).get();
           if (localObject == null)
           {
@@ -214,35 +204,35 @@ public class ExdeviceManageDeviceUI
           AppMethodBeat.o(24054);
         }
       };
-      aa(ae.cZx().dao());
+      bz(ah.dFO().dGH());
       AppMethodBeat.o(24058);
     }
     
-    public final com.tencent.mm.plugin.exdevice.i.b Kp(int paramInt)
+    public final com.tencent.mm.plugin.exdevice.i.b Lo(int paramInt)
     {
       AppMethodBeat.i(24061);
-      com.tencent.mm.plugin.exdevice.i.b localb = (com.tencent.mm.plugin.exdevice.i.b)this.vkQ.get(paramInt);
+      com.tencent.mm.plugin.exdevice.i.b localb = (com.tencent.mm.plugin.exdevice.i.b)this.yxt.get(paramInt);
       AppMethodBeat.o(24061);
       return localb;
     }
     
-    public final void aa(List<com.tencent.mm.plugin.exdevice.i.b> paramList)
+    public final void bz(List<com.tencent.mm.plugin.exdevice.i.b> paramList)
     {
       AppMethodBeat.i(24059);
-      this.vkQ.clear();
+      this.yxt.clear();
       if ((paramList == null) || (paramList.size() == 0))
       {
         AppMethodBeat.o(24059);
         return;
       }
-      this.vkQ.addAll(paramList);
+      this.yxt.addAll(paramList);
       AppMethodBeat.o(24059);
     }
     
     public final int getCount()
     {
       AppMethodBeat.i(24060);
-      int i = this.vkQ.size();
+      int i = this.yxt.size();
       AppMethodBeat.o(24060);
       return i;
     }
@@ -255,16 +245,16 @@ public class ExdeviceManageDeviceUI
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(24062);
-      com.tencent.mm.plugin.exdevice.i.b localb = Kp(paramInt);
+      com.tencent.mm.plugin.exdevice.i.b localb = Lo(paramInt);
       View localView;
       if (paramView == null)
       {
         paramView = new a((byte)0);
-        localView = View.inflate(paramViewGroup.getContext(), R.i.egy, null);
-        paramView.voq = localView.findViewById(R.h.container);
-        paramView.mYd = ((TextView)localView.findViewById(R.h.dNd));
-        paramView.vor = localView.findViewById(R.h.dEd);
-        paramView.qps = ((ImageView)localView.findViewById(R.h.dIy));
+        localView = View.inflate(paramViewGroup.getContext(), R.i.gjr, null);
+        paramView.rIY = localView.findViewById(R.h.container);
+        paramView.pUL = ((TextView)localView.findViewById(R.h.fOX));
+        paramView.yAM = localView.findViewById(R.h.fEV);
+        paramView.ttT = ((ImageView)localView.findViewById(R.h.iconIV));
         localView.setTag(paramView);
         paramViewGroup = paramView;
       }
@@ -272,35 +262,35 @@ public class ExdeviceManageDeviceUI
       {
         paramView = "";
         Log.d("MicroMsg.ExdeviceManageDeviceUI", "position(%s), name(%s), mac(%s).", new Object[] { Integer.valueOf(paramInt), paramView, Long.valueOf(localb.field_mac) });
-        paramViewGroup.mYd.setText(paramView);
-        com.tencent.mm.ay.q.bml().a(localb.iconUrl, paramViewGroup.qps, this.vle);
-        paramViewGroup.vor.setTag(Integer.valueOf(paramInt));
-        if (!this.vok) {
+        paramViewGroup.pUL.setText(paramView);
+        r.bKe().a(localb.iconUrl, paramViewGroup.ttT, this.yxG);
+        paramViewGroup.yAM.setTag(Integer.valueOf(paramInt));
+        if (!this.yAG) {
           break label329;
         }
-        paramViewGroup.vor.setVisibility(0);
+        paramViewGroup.yAM.setVisibility(0);
         label197:
-        paramViewGroup.voq.setTag(Integer.valueOf(paramInt));
-        paramViewGroup.voq.setOnClickListener(this.vol);
+        paramViewGroup.rIY.setTag(Integer.valueOf(paramInt));
+        paramViewGroup.rIY.setOnClickListener(this.yAH);
         AppMethodBeat.o(24062);
         return localView;
         paramViewGroup = (a)paramView.getTag();
         localView = paramView;
       }
-      if (!Util.isNullOrNil(localb.idS)) {
-        paramView = localb.idS;
+      if (!Util.isNullOrNil(localb.kDc)) {
+        paramView = localb.kDc;
       }
       for (;;)
       {
         paramView = Util.nullAsNil(paramView);
         break;
-        if (!Util.isNullOrNil(localb.idT))
+        if (!Util.isNullOrNil(localb.kDd))
         {
-          paramView = localb.idT;
+          paramView = localb.kDd;
         }
         else if (localb.field_mac != 0L)
         {
-          paramView = com.tencent.mm.plugin.exdevice.k.b.Jx(localb.field_mac);
+          paramView = com.tencent.mm.plugin.exdevice.k.b.lO(localb.field_mac);
         }
         else
         {
@@ -309,7 +299,7 @@ public class ExdeviceManageDeviceUI
             paramView = localb.field_deviceID;
             continue;
             label329:
-            paramViewGroup.vor.setVisibility(8);
+            paramViewGroup.yAM.setVisibility(8);
             break label197;
           }
           paramView = null;
@@ -317,23 +307,23 @@ public class ExdeviceManageDeviceUI
       }
     }
     
-    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
+    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
     {
       AppMethodBeat.i(24063);
-      if (paramq == null)
+      if (paramp == null)
       {
         Log.e("MicroMsg.ExdeviceManageDeviceUI", "scene is null.");
         AppMethodBeat.o(24063);
         return;
       }
-      if ((paramq instanceof y))
+      if ((paramp instanceof ab))
       {
         if ((this.tipDialog != null) && (this.tipDialog.isShowing())) {
           this.tipDialog.dismiss();
         }
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          if ((this.von < 0) || (this.von >= this.vkQ.size()))
+          if ((this.yAJ < 0) || (this.yAJ >= this.yxt.size()))
           {
             AppMethodBeat.o(24063);
             return;
@@ -356,16 +346,16 @@ public class ExdeviceManageDeviceUI
     
     static final class a
     {
-      TextView mYd;
-      ImageView qps;
-      View voq;
-      View vor;
+      TextView pUL;
+      View rIY;
+      ImageView ttT;
+      View yAM;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceManageDeviceUI
  * JD-Core Version:    0.7.0.1
  */

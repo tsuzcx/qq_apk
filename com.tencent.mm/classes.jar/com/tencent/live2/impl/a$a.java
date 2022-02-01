@@ -15,9 +15,9 @@ public class a$a
   
   public String toString()
   {
-    AppMethodBeat.i(214703);
+    AppMethodBeat.i(211537);
     String str = "[width:" + this.a + "][height:" + this.b + "]";
-    AppMethodBeat.o(214703);
+    AppMethodBeat.o(211537);
     return str;
   }
 }

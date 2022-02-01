@@ -57,7 +57,7 @@ public class PassiveTimedConnectionMatcher
           i = this.zzyo.size() - 1;
           if (i >= 0)
           {
-            if (l2 - ((Long)this.zzyo.aM(i)).longValue() > l1) {
+            if (l2 - ((Long)this.zzyo.bl(i)).longValue() > l1) {
               this.zzyo.removeAt(i);
             }
           }
@@ -135,7 +135,7 @@ public class PassiveTimedConnectionMatcher
       {
         if (i < size())
         {
-          String str = (String)this.zzyo.aO(i);
+          String str = (String)this.zzyo.bn(i);
           if ((str != null) && (str.startsWith(paramString)))
           {
             this.zzyo.remove(str);
@@ -171,7 +171,7 @@ public class PassiveTimedConnectionMatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.stats.PassiveTimedConnectionMatcher
  * JD-Core Version:    0.7.0.1
  */

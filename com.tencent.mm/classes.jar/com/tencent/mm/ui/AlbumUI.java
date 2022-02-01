@@ -1,52 +1,48 @@
 package com.tencent.mm.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.e;
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
 import com.tencent.mm.R.k;
 import com.tencent.mm.R.l;
-import com.tencent.mm.kernel.f;
-import com.tencent.mm.kernel.k;
-import com.tencent.mm.plugin.sns.model.aj;
-import com.tencent.mm.plugin.sns.storage.m;
-import com.tencent.mm.plugin.textstatus.a.t;
+import com.tencent.mm.plugin.expt.e.d;
+import com.tencent.mm.plugin.newtips.a.i;
+import com.tencent.mm.plugin.secdata.ui.MMSecDataActivity;
+import com.tencent.mm.plugin.sns.model.al;
+import com.tencent.mm.plugin.sns.storage.v;
+import com.tencent.mm.plugin.textstatus.a.ac;
+import com.tencent.mm.protocal.protobuf.fng;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import com.tencent.mm.ui.base.CustomViewPager;
-import com.tencent.mm.ui.report.MMSecDataActivity;
 import java.util.HashMap;
 
-@k
+@com.tencent.mm.kernel.k
 public class AlbumUI
   extends MMSecDataActivity
 {
-  private DoubleTabView VPU;
-  private HashMap<Integer, MMFragment> VPV;
-  private boolean VPW;
-  private boolean VPX;
+  private DoubleTabView adua;
+  private HashMap<Integer, MMFragment> adub;
+  private boolean aduc;
+  private boolean adud;
   private CustomViewPager mViewPager;
   
   public AlbumUI()
   {
     AppMethodBeat.i(32932);
-    this.VPU = null;
+    this.adua = null;
     this.mViewPager = null;
-    this.VPV = new HashMap();
-    this.VPW = false;
-    this.VPX = false;
+    this.adub = new HashMap();
+    this.aduc = false;
+    this.adud = false;
     AppMethodBeat.o(32932);
   }
   
@@ -54,100 +50,101 @@ public class AlbumUI
   {
     AppMethodBeat.i(32934);
     super.dealContentView(paramView);
-    this.VPW = getIntent().getBooleanExtra("story_only", false);
-    this.VPX = getIntent().getBooleanExtra("story_dot", false);
-    if (Util.getInt(com.tencent.mm.plugin.expt.h.d.dgX().a("clicfg_sns_reset_userpage_md5", "0", false, true), 0) > 0)
+    this.aduc = getIntent().getBooleanExtra("story_only", false);
+    this.adud = getIntent().getBooleanExtra("story_dot", false);
+    if (Util.getInt(d.dNI().a("clicfg_sns_reset_userpage_md5", "1", false, true), 1) > 0)
     {
       Log.i("MicroMsg.AlbumUI", "AlbumUI resetMd5");
-      aj.fOM().fSI();
+      al.hgF().hkU();
     }
-    this.VPU = ((DoubleTabView)findViewById(R.h.dqL));
-    if (this.VPW)
+    this.adua = ((DoubleTabView)findViewById(R.h.fqZ));
+    if (this.aduc)
     {
-      this.VPU.setVisibility(8);
-      this.mViewPager = ((CustomViewPager)findViewById(R.h.dqM));
+      this.adua.setVisibility(8);
+      this.mViewPager = ((CustomViewPager)findViewById(R.h.fra));
       this.mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener()
       {
         public final void onPageScrollStateChanged(int paramAnonymousInt) {}
         
         public final void onPageScrolled(int paramAnonymousInt1, float paramAnonymousFloat, int paramAnonymousInt2)
         {
-          AppMethodBeat.i(279883);
-          AlbumUI.b(AlbumUI.this).q(paramAnonymousInt1, paramAnonymousFloat);
-          AppMethodBeat.o(279883);
+          AppMethodBeat.i(249410);
+          AlbumUI.b(AlbumUI.this).t(paramAnonymousInt1, paramAnonymousFloat);
+          AppMethodBeat.o(249410);
         }
         
         public final void onPageSelected(int paramAnonymousInt)
         {
-          AppMethodBeat.i(279884);
+          AppMethodBeat.i(249414);
           AlbumUI.b(AlbumUI.this).setTo(paramAnonymousInt);
-          Object localObject;
+          com.tencent.mm.plugin.textstatus.a.f localf;
           if (paramAnonymousInt == 0)
           {
-            localObject = com.tencent.mm.plugin.story.h.h.LOJ;
-            com.tencent.mm.plugin.story.h.h.geI().gnG = 3L;
+            localObject = com.tencent.mm.plugin.story.g.h.SqZ;
+            com.tencent.mm.plugin.story.g.h.hya().iwZ = 3L;
+            localObject = com.tencent.mm.plugin.story.g.h.SqZ;
+            com.tencent.mm.plugin.story.g.h.hyb();
+            if ((!ac.hFS()) || (paramAnonymousInt != 1)) {
+              break label166;
+            }
+            localf = (com.tencent.mm.plugin.textstatus.a.f)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.textstatus.a.f.class);
+            if (!AlbumUI.b(AlbumUI.this).adxU) {
+              break label160;
+            }
           }
-          for (;;)
+          label160:
+          for (Object localObject = "1";; localObject = "0")
           {
-            localObject = com.tencent.mm.plugin.story.h.h.LOJ;
-            com.tencent.mm.plugin.story.h.h.geJ();
-            if ((!t.gkZ()) || (paramAnonymousInt != 1)) {
+            localf.report22208(13L, (String)localObject);
+            com.tencent.mm.plugin.newtips.a.gtf().aeI(37);
+            AlbumUI.this.showOptionMenu(true);
+            AppMethodBeat.o(249414);
+            return;
+            localObject = com.tencent.mm.plugin.story.g.h.SqZ;
+            com.tencent.mm.plugin.story.g.h.hya().iwZ = 2L;
+            if (!AlbumUI.c(AlbumUI.this)) {
               break;
             }
-            ((com.tencent.mm.plugin.textstatus.a.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.textstatus.a.d.class)).report22208(13L, "");
-            AlbumUI.this.showOptionMenu(true);
-            AppMethodBeat.o(279884);
-            return;
-            localObject = com.tencent.mm.plugin.story.h.h.LOJ;
-            com.tencent.mm.plugin.story.h.h.geI().gnG = 2L;
-            if (AlbumUI.c(AlbumUI.this))
-            {
-              localObject = AlbumUI.b(AlbumUI.this);
-              if (((DoubleTabView)localObject).VTE != null) {
-                ((DoubleTabView)localObject).VTE.FA(false);
-              }
-              com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vxi, Boolean.FALSE);
-            }
+            AlbumUI.b(AlbumUI.this).KW(false);
+            com.tencent.mm.kernel.h.baE().ban().set(at.a.acYU, Boolean.FALSE);
+            break;
           }
+          label166:
           AlbumUI.this.showOptionMenu(false);
-          AppMethodBeat.o(279884);
+          AppMethodBeat.o(249414);
         }
       });
-      this.mViewPager.setAdapter(new a(getSupportFragmentManager()));
-      paramView = com.tencent.mm.plugin.story.h.h.LOJ;
-      com.tencent.mm.plugin.story.h.h.geI().gnG = 3L;
-      paramView = com.tencent.mm.plugin.story.h.h.LOJ;
-      com.tencent.mm.plugin.story.h.h.geJ();
+      this.mViewPager.setAdapter(new AlbumUI.a(this, getSupportFragmentManager()));
+      paramView = com.tencent.mm.plugin.story.g.h.SqZ;
+      com.tencent.mm.plugin.story.g.h.hya().iwZ = 3L;
+      paramView = com.tencent.mm.plugin.story.g.h.SqZ;
+      com.tencent.mm.plugin.story.g.h.hyb();
       AppMethodBeat.o(32934);
       return;
     }
-    this.VPU.setFirstTabString(getResources().getString(R.l.eoe));
-    if (t.gkZ()) {}
-    for (paramView = getResources().getString(R.l.eog);; paramView = getResources().getString(R.l.eoh))
+    this.adua.setFirstTabString(getResources().getString(R.l.grd));
+    boolean bool = ac.hFS();
+    if (bool) {}
+    for (paramView = getResources().getString(R.l.gre);; paramView = getResources().getString(R.l.grf))
     {
-      this.VPU.setSecondTabString(paramView);
-      if (t.gkZ())
+      this.adua.setSecondTabString(paramView);
+      if (bool)
       {
-        addIconOptionMenu(0, R.k.icons_outlined_more, new MenuItem.OnMenuItemClickListener()
-        {
-          public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-          {
-            AppMethodBeat.i(270706);
-            ((com.tencent.mm.plugin.textstatus.a.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.textstatus.a.d.class)).goLikeListFromSelfHistory(AlbumUI.this.getContext());
-            ((com.tencent.mm.plugin.textstatus.a.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.textstatus.a.d.class)).report22208(18L, "");
-            AppMethodBeat.o(270706);
-            return true;
-          }
-        });
+        paramView = new b(this.adua, "textstate_history");
+        com.tencent.mm.plugin.newtips.a.gtf().h(paramView);
+      }
+      if (bool)
+      {
+        addIconOptionMenu(0, R.k.icons_outlined_more, new AlbumUI.1(this));
         showOptionMenu(false);
       }
-      this.VPU.setOnTabClickListener(new DoubleTabView.a()
+      this.adua.setOnTabClickListener(new DoubleTabView.a()
       {
         public final void onTabClick(int paramAnonymousInt)
         {
-          AppMethodBeat.i(275974);
+          AppMethodBeat.i(249396);
           AlbumUI.a(AlbumUI.this).setCurrentItem(paramAnonymousInt, true);
-          AppMethodBeat.o(275974);
+          AppMethodBeat.o(249396);
         }
       });
       break;
@@ -156,12 +153,13 @@ public class AlbumUI
   
   protected int getLayoutId()
   {
-    return R.i.eiH;
+    return R.i.glG;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(32933);
+    aw.bW(this);
     fixStatusbar(true);
     super.onCreate(paramBundle);
     MultiProcessMMKV.getMMKV("SnsMMKV").encode("SnsMMKVSnsUI", true);
@@ -171,10 +169,10 @@ public class AlbumUI
   
   public void onDestroy()
   {
-    AppMethodBeat.i(290027);
+    AppMethodBeat.i(249242);
     MultiProcessMMKV.getMMKV("SnsMMKV").encode("SnsMMKVSnsUI", false);
     super.onDestroy();
-    AppMethodBeat.o(290027);
+    AppMethodBeat.o(249242);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -183,38 +181,83 @@ public class AlbumUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  final class a
-    extends androidx.fragment.app.h
+  static final class b
+    implements com.tencent.mm.plugin.newtips.a.a
   {
-    public a(e parame)
+    public DoubleTabView aduf;
+    public String path;
+    
+    public b(DoubleTabView paramDoubleTabView, String paramString)
     {
-      super();
+      this.aduf = paramDoubleTabView;
+      this.path = paramString;
     }
     
-    public final int getCount()
+    public final void a(com.tencent.mm.plugin.newtips.a.k paramk, boolean paramBoolean) {}
+    
+    public final boolean a(boolean paramBoolean, fng paramfng)
     {
-      AppMethodBeat.i(291735);
-      if (AlbumUI.d(AlbumUI.this))
-      {
-        AppMethodBeat.o(291735);
-        return 1;
+      return false;
+    }
+    
+    public final boolean b(boolean paramBoolean, fng paramfng)
+    {
+      return false;
+    }
+    
+    public final boolean c(boolean paramBoolean, fng paramfng)
+    {
+      return false;
+    }
+    
+    public final boolean d(boolean paramBoolean, fng paramfng)
+    {
+      return false;
+    }
+    
+    public final boolean fZD()
+    {
+      return false;
+    }
+    
+    public final String getPath()
+    {
+      return this.path;
+    }
+    
+    public final View getRoot()
+    {
+      return this.aduf;
+    }
+    
+    public final boolean ym(boolean paramBoolean)
+    {
+      return false;
+    }
+    
+    public final boolean yn(boolean paramBoolean)
+    {
+      AppMethodBeat.i(249107);
+      if (paramBoolean) {
+        this.aduf.KW(true);
       }
-      AppMethodBeat.o(291735);
-      return 2;
+      for (;;)
+      {
+        AppMethodBeat.o(249107);
+        return true;
+        this.aduf.KW(false);
+      }
     }
     
-    public final Fragment getItem(int paramInt)
+    public final boolean yo(boolean paramBoolean)
     {
-      AppMethodBeat.i(291734);
-      MMFragment localMMFragment = AlbumUI.a(AlbumUI.this, paramInt);
-      AppMethodBeat.o(291734);
-      return localMMFragment;
+      return false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.AlbumUI
  * JD-Core Version:    0.7.0.1
  */

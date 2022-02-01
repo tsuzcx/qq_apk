@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/rs" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:orientation="vertical" android:paddingTop="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/cp" android:paddingEnd="@dimen/cp"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:id="@id/hee" style="@style/oo">
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/dtx" android:layout_width="@dimen/ij" android:layout_height="@dimen/ij" android:layout_marginRight="@dimen/cb" />
-        <TextView android:layout_gravity="center_vertical" android:id="@id/ior" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="{tip}" android:layout_weight="1.0" style="@style/mp" />
+    <TextView android:textSize="@dimen/io" android:textColor="@color/FG_0" android:ellipsize="end" android:gravity="start" android:id="@id/d_r" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="5" android:includeFontPadding="false" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/bqz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/d_r">
+        <TextView android:textSize="@dimen/io" android:textColor="@color/FG_0" android:ellipsize="end" android:gravity="center" android:id="@id/d_q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:includeFontPadding="true" />
+        <View android:id="@id/daa" android:layout_width="@dimen/bv" android:layout_height="0.0dip" />
+        <TextView android:textSize="@dimen/m_" android:textColor="@color/FG_1" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/ewc" android:background="@color/b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:includeFontPadding="true" android:paddingStart="@dimen/bv" android:paddingEnd="@dimen/bv" />
     </LinearLayout>
+    <View android:id="@id/c8l" android:background="@color/abn" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="@dimen/cp" android:layout_below="@id/bqz" />
 </RelativeLayout>

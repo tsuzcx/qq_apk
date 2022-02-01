@@ -10,47 +10,47 @@ import java.util.Map;
 
 public final class z
 {
-  public static boolean jtO = false;
-  String jtP = "";
-  Map<String, String> jtQ = null;
-  private int jtR = 0;
+  public static boolean lXf = false;
+  String lXg = "";
+  Map<String, String> lXh = null;
+  private int lXi = 0;
   
-  public static boolean avg()
+  public static boolean aPB()
   {
     boolean bool = false;
-    if (jtO)
+    if (lXf)
     {
-      jtO = false;
+      lXf = false;
       bool = true;
     }
     return bool;
   }
   
-  public final void KQ(String paramString)
+  public final void Dv(String paramString)
   {
-    this.jtP = paramString;
+    this.lXg = paramString;
   }
   
-  public final void j(Map<String, String> paramMap)
+  public final void q(Map<String, String> paramMap)
   {
-    this.jtQ = paramMap;
+    this.lXh = paramMap;
   }
   
-  public final void qP(int paramInt)
+  public final void qW(int paramInt)
   {
     AppMethodBeat.i(155767);
-    this.jtR = paramInt;
-    jtO = true;
+    this.lXi = paramInt;
+    lXf = true;
     SharedPreferences.Editor localEditor = MultiProcessSharedPreferences.getSharedPreferences(MMApplicationContext.getContext(), "system_config_prefs", 4).edit();
     localEditor.putInt("update_swip_back_status", paramInt);
     localEditor.commit();
-    Log.v("MicroMsg.ManuFacturerInfo", "update mSwipBackStatus(%s)", new Object[] { Integer.valueOf(this.jtR) });
+    Log.v("MicroMsg.ManuFacturerInfo", "update mSwipBackStatus(%s)", new Object[] { Integer.valueOf(this.lXi) });
     AppMethodBeat.o(155767);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.compatible.deviceinfo.z
  * JD-Core Version:    0.7.0.1
  */

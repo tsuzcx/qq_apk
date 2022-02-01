@@ -11,33 +11,33 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class PostMessageService
   extends Service
 {
-  private c.a yD;
+  private c.a zz;
   
   public PostMessageService()
   {
-    AppMethodBeat.i(191342);
-    this.yD = new c.a()
+    AppMethodBeat.i(192979);
+    this.zz = new c.a()
     {
       public final void a(a paramAnonymousa, Bundle paramAnonymousBundle)
       {
-        AppMethodBeat.i(191334);
-        paramAnonymousa.b(paramAnonymousBundle);
-        AppMethodBeat.o(191334);
+        AppMethodBeat.i(192965);
+        paramAnonymousa.c(paramAnonymousBundle);
+        AppMethodBeat.o(192965);
       }
       
       public final void a(a paramAnonymousa, String paramAnonymousString, Bundle paramAnonymousBundle)
       {
-        AppMethodBeat.i(191337);
+        AppMethodBeat.i(192977);
         paramAnonymousa.c(paramAnonymousString, paramAnonymousBundle);
-        AppMethodBeat.o(191337);
+        AppMethodBeat.o(192977);
       }
     };
-    AppMethodBeat.o(191342);
+    AppMethodBeat.o(192979);
   }
   
   public IBinder onBind(Intent paramIntent)
   {
-    return this.yD;
+    return this.zz;
   }
 }
 

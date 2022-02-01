@@ -11,30 +11,30 @@ import java.nio.LongBuffer;
 
 public final class Tensor
 {
-  public final a abML;
-  int[] abMM;
-  private final int[] abMN;
-  private final a abMO;
+  public final a ajZE;
+  int[] ajZF;
+  private final int[] ajZG;
+  private final a ajZH;
   public long nativeHandle;
   
   private Tensor(long paramLong)
   {
-    AppMethodBeat.i(239294);
+    AppMethodBeat.i(187295);
     this.nativeHandle = paramLong;
-    this.abML = a.aGh(dtype(paramLong));
-    this.abMM = shape(paramLong);
-    this.abMN = shapeSignature(paramLong);
-    this.abMO = new a(quantizationScale(paramLong), quantizationZeroPoint(paramLong));
-    AppMethodBeat.o(239294);
+    this.ajZE = a.aNw(dtype(paramLong));
+    this.ajZF = shape(paramLong);
+    this.ajZG = shapeSignature(paramLong);
+    this.ajZH = new a(quantizationScale(paramLong), quantizationZeroPoint(paramLong));
+    AppMethodBeat.o(187295);
   }
   
   private static void a(Object paramObject, int paramInt, int[] paramArrayOfInt)
   {
     int i = 0;
-    AppMethodBeat.i(239290);
+    AppMethodBeat.i(187285);
     if ((paramArrayOfInt == null) || (paramInt == paramArrayOfInt.length))
     {
-      AppMethodBeat.o(239290);
+      AppMethodBeat.o(187285);
       return;
     }
     int j = Array.getLength(paramObject);
@@ -49,18 +49,18 @@ public final class Tensor
       if (paramArrayOfInt[paramInt] != j)
       {
         paramObject = new IllegalArgumentException(String.format("Mismatched lengths (%d and %d) in dimension %d", new Object[] { Integer.valueOf(paramArrayOfInt[paramInt]), Integer.valueOf(j), Integer.valueOf(paramInt) }));
-        AppMethodBeat.o(239290);
+        AppMethodBeat.o(187285);
         throw paramObject;
       }
     }
-    AppMethodBeat.o(239290);
+    AppMethodBeat.o(187285);
   }
   
-  static Tensor aG(long paramLong, int paramInt)
+  static Tensor aX(long paramLong, int paramInt)
   {
-    AppMethodBeat.i(239282);
+    AppMethodBeat.i(187248);
     Tensor localTensor = new Tensor(create(paramLong, paramInt));
-    AppMethodBeat.o(239282);
+    AppMethodBeat.o(187248);
     return localTensor;
   }
   
@@ -72,9 +72,13 @@ public final class Tensor
   
   private static native int dtype(long paramLong);
   
-  private a gZ(Object paramObject)
+  static native boolean hasDelegateBufferHandle(long paramLong);
+  
+  private static native int index(long paramLong);
+  
+  private a jQ(Object paramObject)
   {
-    AppMethodBeat.i(239285);
+    AppMethodBeat.i(187265);
     if (paramObject != null)
     {
       Class localClass = paramObject.getClass();
@@ -85,44 +89,44 @@ public final class Tensor
         }
         if (Float.TYPE.equals(localClass))
         {
-          paramObject = a.abMi;
-          AppMethodBeat.o(239285);
+          paramObject = a.ajZc;
+          AppMethodBeat.o(187265);
           return paramObject;
         }
         if (Integer.TYPE.equals(localClass))
         {
-          paramObject = a.abMj;
-          AppMethodBeat.o(239285);
+          paramObject = a.ajZd;
+          AppMethodBeat.o(187265);
           return paramObject;
         }
         if (Byte.TYPE.equals(localClass))
         {
-          if (this.abML == a.abMm)
+          if (this.ajZE == a.ajZg)
           {
-            paramObject = a.abMm;
-            AppMethodBeat.o(239285);
+            paramObject = a.ajZg;
+            AppMethodBeat.o(187265);
             return paramObject;
           }
-          paramObject = a.abMk;
-          AppMethodBeat.o(239285);
+          paramObject = a.ajZe;
+          AppMethodBeat.o(187265);
           return paramObject;
         }
         if (Long.TYPE.equals(localClass))
         {
-          paramObject = a.abMl;
-          AppMethodBeat.o(239285);
+          paramObject = a.ajZf;
+          AppMethodBeat.o(187265);
           return paramObject;
         }
         if (Boolean.TYPE.equals(localClass))
         {
-          paramObject = a.abMn;
-          AppMethodBeat.o(239285);
+          paramObject = a.ajZh;
+          AppMethodBeat.o(187265);
           return paramObject;
         }
         if (String.class.equals(localClass))
         {
-          paramObject = a.abMm;
-          AppMethodBeat.o(239285);
+          paramObject = a.ajZg;
+          AppMethodBeat.o(187265);
           return paramObject;
         }
       }
@@ -130,69 +134,65 @@ public final class Tensor
       {
         if ((Float.class.equals(localClass)) || ((paramObject instanceof FloatBuffer)))
         {
-          paramObject = a.abMi;
-          AppMethodBeat.o(239285);
+          paramObject = a.ajZc;
+          AppMethodBeat.o(187265);
           return paramObject;
         }
         if ((Integer.class.equals(localClass)) || ((paramObject instanceof IntBuffer)))
         {
-          paramObject = a.abMj;
-          AppMethodBeat.o(239285);
+          paramObject = a.ajZd;
+          AppMethodBeat.o(187265);
           return paramObject;
         }
         if (Byte.class.equals(localClass))
         {
-          paramObject = a.abMk;
-          AppMethodBeat.o(239285);
+          paramObject = a.ajZe;
+          AppMethodBeat.o(187265);
           return paramObject;
         }
         if ((Long.class.equals(localClass)) || ((paramObject instanceof LongBuffer)))
         {
-          paramObject = a.abMl;
-          AppMethodBeat.o(239285);
+          paramObject = a.ajZf;
+          AppMethodBeat.o(187265);
           return paramObject;
         }
         if (Boolean.class.equals(localClass))
         {
-          paramObject = a.abMn;
-          AppMethodBeat.o(239285);
+          paramObject = a.ajZh;
+          AppMethodBeat.o(187265);
           return paramObject;
         }
         if (String.class.equals(localClass))
         {
-          paramObject = a.abMm;
-          AppMethodBeat.o(239285);
+          paramObject = a.ajZg;
+          AppMethodBeat.o(187265);
           return paramObject;
         }
       }
     }
     paramObject = new IllegalArgumentException("DataType error: cannot resolve DataType of " + paramObject.getClass().getName());
-    AppMethodBeat.o(239285);
+    AppMethodBeat.o(187265);
     throw paramObject;
   }
   
-  static native boolean hasDelegateBufferHandle(long paramLong);
-  
-  private static int hb(Object paramObject)
+  private static int jS(Object paramObject)
   {
-    AppMethodBeat.i(239288);
+    AppMethodBeat.i(187271);
     if ((paramObject == null) || (!paramObject.getClass().isArray()))
     {
-      AppMethodBeat.o(239288);
+      AppMethodBeat.o(187271);
       return 0;
     }
     if (Array.getLength(paramObject) == 0)
     {
       paramObject = new IllegalArgumentException("Array lengths cannot be 0.");
-      AppMethodBeat.o(239288);
+      AppMethodBeat.o(187271);
       throw paramObject;
     }
-    int i = hb(Array.get(paramObject, 0));
-    AppMethodBeat.o(239288);
+    int i = jS(Array.get(paramObject, 0));
+    AppMethodBeat.o(187271);
     return i + 1;
   }
-  
-  private static native int index(long paramLong);
   
   public static native String name(long paramLong);
   
@@ -214,28 +214,20 @@ public final class Tensor
   
   static native void writeScalar(long paramLong, Object paramObject);
   
-  final ByteBuffer SE()
-  {
-    AppMethodBeat.i(239297);
-    ByteBuffer localByteBuffer = buffer(this.nativeHandle).order(ByteOrder.nativeOrder());
-    AppMethodBeat.o(239297);
-    return localByteBuffer;
-  }
-  
   final void close()
   {
-    AppMethodBeat.i(239283);
+    AppMethodBeat.i(187414);
     delete(this.nativeHandle);
     this.nativeHandle = 0L;
-    AppMethodBeat.o(239283);
+    AppMethodBeat.o(187414);
   }
   
-  final int[] ha(Object paramObject)
+  final int[] jR(Object paramObject)
   {
-    AppMethodBeat.i(239287);
-    int i = hb(paramObject);
+    AppMethodBeat.i(187436);
+    int i = jS(paramObject);
     Object localObject;
-    if (this.abML == a.abMm)
+    if (this.ajZE == a.ajZg)
     {
       localObject = paramObject.getClass();
       if (((Class)localObject).isArray())
@@ -252,56 +244,64 @@ public final class Tensor
     {
       localObject = new int[i];
       a(paramObject, 0, (int[])localObject);
-      AppMethodBeat.o(239287);
+      AppMethodBeat.o(187436);
       return localObject;
     }
   }
   
-  final void hc(Object paramObject)
+  final void jT(Object paramObject)
   {
-    AppMethodBeat.i(239292);
+    AppMethodBeat.i(187445);
     if ((paramObject instanceof ByteBuffer))
     {
-      AppMethodBeat.o(239292);
+      AppMethodBeat.o(187445);
       return;
     }
-    a locala = gZ(paramObject);
-    if (locala != this.abML)
+    a locala = jQ(paramObject);
+    if (locala != this.ajZE)
     {
-      if (locala.iVB().equals(this.abML.iVB()))
+      if (locala.kJZ().equals(this.ajZE.kJZ()))
       {
-        AppMethodBeat.o(239292);
+        AppMethodBeat.o(187445);
         return;
       }
-      paramObject = new IllegalArgumentException(String.format("Cannot convert between a TensorFlowLite tensor with type %s and a Java object of type %s (which is compatible with the TensorFlowLite type %s).", new Object[] { this.abML, paramObject.getClass().getName(), locala }));
-      AppMethodBeat.o(239292);
+      paramObject = new IllegalArgumentException(String.format("Cannot convert between a TensorFlowLite tensor with type %s and a Java object of type %s (which is compatible with the TensorFlowLite type %s).", new Object[] { this.ajZE, paramObject.getClass().getName(), locala }));
+      AppMethodBeat.o(187445);
       throw paramObject;
     }
-    AppMethodBeat.o(239292);
+    AppMethodBeat.o(187445);
   }
   
-  final void iVC()
+  final void kKa()
   {
-    AppMethodBeat.i(239284);
-    this.abMM = shape(this.nativeHandle);
-    AppMethodBeat.o(239284);
+    AppMethodBeat.i(187421);
+    this.ajZF = shape(this.nativeHandle);
+    AppMethodBeat.o(187421);
+  }
+  
+  final ByteBuffer kKb()
+  {
+    AppMethodBeat.i(187454);
+    ByteBuffer localByteBuffer = buffer(this.nativeHandle).order(ByteOrder.nativeOrder());
+    AppMethodBeat.o(187454);
+    return localByteBuffer;
   }
   
   public static final class a
   {
-    private final int abMP;
+    private final int ajZI;
     private final float scale;
     
     public a(float paramFloat, int paramInt)
     {
       this.scale = paramFloat;
-      this.abMP = paramInt;
+      this.ajZI = paramInt;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     org.tensorflow.lite.Tensor
  * JD-Core Version:    0.7.0.1
  */

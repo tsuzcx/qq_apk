@@ -1,176 +1,161 @@
 package com.tencent.mm.plugin.webview.ui.tools.newjsapi;
 
-import android.os.Bundle;
-import android.os.Parcelable;
+import com.tencent.luggage.xweb_ext.extendplugin.b.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.i;
-import com.tencent.mm.ipcinvoker.j;
-import com.tencent.mm.ipcinvoker.m;
-import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
-import com.tencent.mm.plugin.brandservice.a.f.a;
-import com.tencent.mm.plugin.webview.d.c.a;
+import com.tencent.mm.plugin.webview.jsapi.e;
+import com.tencent.mm.plugin.webview.jsapi.h;
+import com.tencent.mm.plugin.webview.jsapi.p;
+import com.tencent.mm.pluginsdk.ui.tools.aa;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMKVSlotManager;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.ui.widget.MMWebView;
+import com.tencent.xweb.ao;
+import java.util.HashMap;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOnWebPageUrlExposed;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "BIZ_TYPE_PREFETCH_WEB_PAGE", "", "BIZ_TYPE_PRELOAD_VIDEO", "TAG", "", "controlByte", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "WebPrefetchTask", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiHandleVideoAction;", "Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/BasePluginJsApi;", "()V", "TAG", "", "actionInsertSameLayerVideo", "actionOperateSameLayerVideo", "actionRemoveSameLayerVideo", "actionUpdateSameLayerVideo", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "getPluginType", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class s
   extends a
 {
-  public static final s Qvv;
+  private static final int OOk;
+  public static final s Xnp;
+  private static final String idA;
   
   static
   {
-    AppMethodBeat.i(218543);
-    Qvv = new s();
-    AppMethodBeat.o(218543);
+    AppMethodBeat.i(297761);
+    Xnp = new s();
+    OOk = 371;
+    idA = "handleVideoAction";
+    AppMethodBeat.o(297761);
   }
   
-  public final boolean a(com.tencent.mm.plugin.webview.d.f paramf, com.tencent.mm.plugin.webview.d.n paramn)
+  public final boolean a(h paramh, p paramp)
   {
-    AppMethodBeat.i(218542);
-    p.k(paramf, "env");
-    p.k(paramn, "msg");
-    String str = (String)paramn.params.get("urlList");
-    if (Util.isNullOrNil(str))
+    AppMethodBeat.i(297788);
+    kotlin.g.b.s.u(paramh, "env");
+    kotlin.g.b.s.u(paramp, "msg");
+    Object localObject1 = (String)paramp.params.get("action");
+    Log.i("MicroMsg.JsApiHandleVideoAction", "HandleVideoAction action=%s", new Object[] { localObject1 });
+    if (Util.isNullOrNil((String)localObject1))
     {
-      com.tencent.d.f.h.ioq();
-      paramf.PNo.h(paramn.POu, paramn.function + ":fail", null);
-      AppMethodBeat.o(218542);
+      paramh.WDy.doCallback(paramp.WEH, kotlin.g.b.s.X(paramp.function, ":fail action is empty"), null);
+      AppMethodBeat.o(297788);
       return true;
     }
-    Object localObject = paramn.params.get("bizType");
-    if (localObject == null) {
-      localObject = "";
-    }
-    for (;;)
+    if ((kotlin.g.b.s.p("insertSameLayerVideo", localObject1)) || (kotlin.g.b.s.p("updateSameLayerVideo", localObject1)) || (kotlin.g.b.s.p("operateSameLayerVideo", localObject1)) || (kotlin.g.b.s.p("removeSameLayerVideo", localObject1)))
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("urlList", str);
-      if (p.h(localObject, "1"))
+      if (!aa.iOK())
       {
-        localBundle.putInt("bizType", 1);
-        if (!((Bundle)j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)localBundle, a.class)).getBoolean("ret")) {
-          break label215;
-        }
-        paramf.PNo.h(paramn.POu, paramn.function + ":ok", null);
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(218542);
+        Log.e("MicroMsg.JsApiHandleVideoAction", "handleVideoAction not useSameLayerForVideo");
+        paramh.WDy.doCallback(paramp.WEH, kotlin.g.b.s.X(paramp.function, ":fail not support"), null);
+        AppMethodBeat.o(297788);
         return true;
-        localBundle.putInt("bizType", 0);
-        break;
-        label215:
-        paramf.PNo.h(paramn.POu, paramn.function + ":fail", null);
       }
+      boolean bool = d(paramh, paramp);
+      if ((kotlin.g.b.s.p("removeSameLayerVideo", localObject1)) && (paramp.WEI != null) && (paramp.WEI.has("viewId")))
+      {
+        paramh = c(paramh);
+        if (paramh != null) {
+          paramh.H("video", paramp.WEI.optInt("viewId"));
+        }
+      }
+      AppMethodBeat.o(297788);
+      return bool;
     }
-  }
-  
-  public final String fCm()
-  {
-    return "onWebPageUrlExposed";
-  }
-  
-  public final int fCn()
-  {
-    return 373;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOnWebPageUrlExposed$WebPrefetchTask;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Landroid/os/Bundle;", "()V", "invoke", "data", "plugin-webview_release"})
-  public static final class a
-    implements m<Bundle, Bundle>
-  {
-    private static Bundle P(Bundle paramBundle)
+    if (kotlin.g.b.s.p("supportIFrameSameLayer", localObject1))
     {
-      AppMethodBeat.i(242582);
-      Bundle localBundle = new Bundle();
-      if (paramBundle == null)
-      {
-        localBundle.putBoolean("ret", false);
-        AppMethodBeat.o(242582);
-        return localBundle;
-      }
-      ArrayList localArrayList = new ArrayList();
-      for (;;)
-      {
-        try
-        {
-          str = paramBundle.getString("urlList");
-          i = paramBundle.getInt("bizType", 0);
-        }
-        catch (Exception paramBundle)
-        {
-          String str;
-          int k;
-          int j;
-          Object localObject;
-          int m;
-          int i = 0;
-          continue;
-          continue;
-          j += 1;
-          continue;
-        }
-        try
-        {
-          paramBundle = new com.tencent.mm.ad.f(str);
-          if (paramBundle.length() <= 0)
-          {
-            com.tencent.d.f.h.ioq();
-            localBundle.putBoolean("ret", false);
-            AppMethodBeat.o(242582);
-            return localBundle;
-          }
-          k = paramBundle.length();
-          j = 0;
-          if (j >= k) {
-            continue;
-          }
-          localObject = paramBundle.sy(j);
-          str = ((i)localObject).optString("url");
-          m = ((i)localObject).optInt("bizScene");
-          if ((str != null) && (kotlin.n.n.ba((CharSequence)str) == true))
-          {
-            com.tencent.d.f.h.ioq();
-          }
-          else
-          {
-            localObject = ((i)localObject).optString("extInfo");
-            f.a locala = new f.a();
-            locala.url = str;
-            locala.extInfo = ((String)localObject);
-            locala.svv = 176;
-            locala.svw = m;
-            localArrayList.add(locala);
-          }
-        }
-        catch (Exception paramBundle) {}
-      }
-      com.tencent.d.f.h.ioq();
-      if (localArrayList.isEmpty())
-      {
-        com.tencent.d.f.h.ioq();
-        localBundle.putBoolean("ret", false);
-        AppMethodBeat.o(242582);
-        return localBundle;
-      }
-      localBundle.putBoolean("ret", true);
-      "WebPrefetchTask  bizType:".concat(String.valueOf(i));
-      com.tencent.d.f.h.ioq();
-      if (i == 1) {
-        ((com.tencent.mm.plugin.brandservice.a.f)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.brandservice.a.f.class)).cr((List)localArrayList);
+      localObject1 = paramh.WDz;
+      kotlin.g.b.s.checkNotNull(localObject1);
+      if ((((MMWebView)localObject1).isXWalkKernel()) && (ao.isCurrentVersionSupportNativeView())) {
+        paramh.WDy.doCallback(paramp.WEH, kotlin.g.b.s.X(paramp.function, ":ok"), null);
       }
       for (;;)
       {
-        AppMethodBeat.o(242582);
-        return localBundle;
-        ((com.tencent.mm.plugin.brandservice.a.f)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.brandservice.a.f.class)).cq((List)localArrayList);
+        AppMethodBeat.o(297788);
+        return true;
+        paramh.WDy.doCallback(paramp.WEH, kotlin.g.b.s.X(paramp.function, ":fail"), null);
       }
     }
+    Object localObject2 = com.tencent.mm.plugin.webview.ui.tools.video.a.Xok;
+    if ((com.tencent.mm.plugin.webview.ui.tools.video.a.iBO()) && (kotlin.g.b.s.p("getInitialParams", localObject1)))
+    {
+      localObject1 = com.tencent.mm.plugin.webview.ui.tools.video.a.Xok;
+      HashMap localHashMap = new HashMap();
+      String str = com.tencent.mm.plugin.webview.ui.tools.video.a.Xom.decodeString("MicroMsg.MPVideoPreviewDataMgr_prepareOnReceivePageData_vid", "");
+      if (Util.isNullOrNil(str))
+      {
+        Log.i("MicroMsg.MPVideoPreviewDataMgr", "getInitialParams vid null");
+        localObject1 = null;
+        paramh.WDy.doCallback(paramp.WEH, kotlin.g.b.s.X(paramp.function, ":ok"), (Map)localObject1);
+        AppMethodBeat.o(297788);
+        return true;
+      }
+      Map localMap1 = com.tencent.mm.plugin.webview.ui.tools.video.a.bmP(str);
+      Map localMap2 = (Map)localHashMap;
+      if (localMap1 == null)
+      {
+        localObject1 = null;
+        label448:
+        localObject2 = localObject1;
+        if (localObject1 == null) {
+          localObject2 = new Object();
+        }
+        localMap2.put("videoInitialTime", localObject2);
+        localMap2 = (Map)localHashMap;
+        if (localMap1 != null) {
+          break label604;
+        }
+      }
+      label604:
+      for (localObject1 = null;; localObject1 = localMap1.get("videoInitialSnapshot"))
+      {
+        localObject2 = localObject1;
+        if (localObject1 == null) {
+          localObject2 = new Object();
+        }
+        localMap2.put("videoInitialSnapshot", localObject2);
+        ((MultiProcessMMKV)com.tencent.mm.plugin.webview.ui.tools.video.a.Xom.getSlotForWrite()).encode("MicroMsg.MPVideoPreviewDataMgr_prepareOnReceivePageData_vid", "");
+        Log.i("MicroMsg.MPVideoPreviewDataMgr", "getInitialParams vid = " + str + ", time = " + localHashMap.get("videoInitialTime"));
+        localObject1 = (Map)localHashMap;
+        break;
+        localObject1 = localMap1.get("videoInitialTime");
+        break label448;
+      }
+    }
+    if (kotlin.g.b.s.p("supportCodec", localObject1))
+    {
+      if (cr(paramp.params)) {
+        paramh.WDy.doCallback(paramp.WEH, kotlin.g.b.s.X(paramp.function, ":ok"), null);
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(297788);
+        return true;
+        paramh.WDy.doCallback(paramp.WEH, kotlin.g.b.s.X(paramp.function, ":fail"), null);
+      }
+    }
+    AppMethodBeat.o(297788);
+    return false;
+  }
+  
+  public final String cog()
+  {
+    return "video";
+  }
+  
+  public final String gPX()
+  {
+    return idA;
+  }
+  
+  public final int gPZ()
+  {
+    return OOk;
   }
 }
 

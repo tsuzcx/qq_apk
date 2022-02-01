@@ -1,6 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="20.0dip" />
-    <solid android:color="@color/afz" />
-</shape>
+    <item android:state_enabled="false" android:state_selected="false">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/a0" />
+            <solid android:color="@color/hz" />
+            <stroke android:width="@dimen/a2" android:color="@color/ho" />
+        </shape>
+    </item>
+    <item android:state_selected="false" android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/a0" />
+            <solid android:color="@color/i1" />
+            <stroke android:width="@dimen/a2" android:color="@color/hq" />
+        </shape>
+    </item>
+    <item android:state_selected="false">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/a0" />
+            <solid android:color="@color/i0" />
+            <stroke android:width="@dimen/a2" android:color="@color/hp" />
+        </shape>
+    </item>
+    <item android:state_enabled="false" android:state_selected="true">
+        <layer-list>
+            <item>
+                <shape android:shape="rectangle">
+                    <corners android:radius="@dimen/a0" />
+                    <solid android:color="@color/hz" />
+                    <stroke android:width="@dimen/a2" android:color="@color/ho" />
+                </shape>
+            </item>
+            <item>
+                <inset android:insetLeft="-4.0dip" android:insetRight="-4.0dip" android:insetTop="-4.0dip" android:insetBottom="1.0dip">
+                    <shape android:shape="rectangle">
+                        <padding />
+                        <stroke android:width="3.0dip" android:color="@color/hj" />
+                    </shape>
+                </inset>
+            </item>
+        </layer-list>
+    </item>
+    <item android:state_selected="true" android:state_pressed="true">
+        <layer-list>
+            <item>
+                <shape android:shape="rectangle">
+                    <corners android:radius="@dimen/a0" />
+                    <solid android:color="@color/i1" />
+                    <stroke android:width="@dimen/a2" android:color="@color/hq" />
+                </shape>
+            </item>
+            <item>
+                <inset android:insetLeft="-4.0dip" android:insetRight="-4.0dip" android:insetTop="-4.0dip" android:insetBottom="1.0dip">
+                    <shape android:shape="rectangle">
+                        <padding />
+                        <stroke android:width="3.0dip" android:color="@color/hj" />
+                    </shape>
+                </inset>
+            </item>
+        </layer-list>
+    </item>
+    <item android:state_selected="true">
+        <layer-list>
+            <item>
+                <shape android:shape="rectangle">
+                    <corners android:radius="@dimen/a0" />
+                    <solid android:color="@color/i0" />
+                    <stroke android:width="@dimen/a2" android:color="@color/hp" />
+                </shape>
+            </item>
+            <item>
+                <inset android:insetLeft="-4.0dip" android:insetRight="-4.0dip" android:insetTop="-4.0dip" android:insetBottom="1.0dip">
+                    <shape android:shape="rectangle">
+                        <padding />
+                        <stroke android:width="3.0dip" android:color="@color/hj" />
+                    </shape>
+                </inset>
+            </item>
+        </layer-list>
+    </item>
+</selector>

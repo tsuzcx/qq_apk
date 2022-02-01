@@ -6,120 +6,109 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.wxhld.info.Syllable;
 import java.util.ArrayList;
-import java.util.Collection;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/symbol/ImeSboAndSybKeysAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/hld/symbol/ImeSboAndSybKeysViewHolder;", "dataList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "listener", "Lcom/tencent/mm/plugin/hld/symbol/ImeSboAndSybKeysViewHolder$ISboAndSybKeysViewListener;", "(Ljava/util/ArrayList;Lcom/tencent/mm/plugin/hld/symbol/ImeSboAndSybKeysViewHolder$ISboAndSybKeysViewListener;)V", "currentSelectItem", "Lcom/tencent/wxhld/info/Syllable;", "mListener", "viewHolderList", "getItemCount", "", "onBindViewHolder", "", "viewHolder", "position", "onCreateViewHolder", "viewGroup", "Landroid/view/ViewGroup;", "p1", "reset", "selectItemByPy", "syllable", "Companion", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/symbol/ImeSboAndSybKeysAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/hld/symbol/ImeSboAndSybKeysViewHolder;", "dataList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "listener", "Lcom/tencent/mm/plugin/hld/symbol/ImeSboAndSybKeysViewHolder$ISboAndSybKeysViewListener;", "(Ljava/util/ArrayList;Lcom/tencent/mm/plugin/hld/symbol/ImeSboAndSybKeysViewHolder$ISboAndSybKeysViewListener;)V", "currentSelectItem", "Lcom/tencent/wxhld/info/Syllable;", "mListener", "viewHolderList", "getItemCount", "", "onBindViewHolder", "", "viewHolder", "position", "onCreateViewHolder", "viewGroup", "Landroid/view/ViewGroup;", "p1", "reset", "selectItemByPy", "syllable", "Companion", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
   extends RecyclerView.a<c>
 {
-  public static final a DFg;
-  private final ArrayList<c> AXn;
-  private final c.a DFf;
-  private Syllable DtH;
-  private final ArrayList<Object> mXB;
+  public static final b.a JwM;
+  private final ArrayList<c> GyR;
+  private Syllable Jnk;
+  private final c.a JwN;
+  private final ArrayList<Object> pUj;
   
   static
   {
-    AppMethodBeat.i(217548);
-    DFg = new a((byte)0);
-    AppMethodBeat.o(217548);
+    AppMethodBeat.i(312149);
+    JwM = new b.a((byte)0);
+    AppMethodBeat.o(312149);
   }
   
   public b(ArrayList<Object> paramArrayList, c.a parama)
   {
-    AppMethodBeat.i(217546);
-    this.mXB = paramArrayList;
-    this.AXn = new ArrayList();
-    this.DFf = parama;
-    AppMethodBeat.o(217546);
+    AppMethodBeat.i(312143);
+    this.pUj = paramArrayList;
+    this.GyR = new ArrayList();
+    this.JwN = parama;
+    AppMethodBeat.o(312143);
   }
   
   public final void a(Syllable paramSyllable)
   {
-    AppMethodBeat.i(217544);
-    this.DtH = paramSyllable;
-    for (;;)
+    AppMethodBeat.i(312168);
+    this.Jnk = paramSyllable;
+    try
     {
-      int i;
-      Object localObject2;
-      String str2;
-      try
-      {
-        int j = ((Collection)this.AXn).size();
-        i = 0;
-        if (i < j)
-        {
-          if (this.DtH == null)
-          {
-            ((c)this.AXn.get(i)).sF(false);
-            break label225;
-          }
-          localObject2 = (c)this.AXn.get(i);
-          localObject1 = this.DtH;
-          if (localObject1 == null) {
-            p.iCn();
-          }
-          str2 = ((Syllable)localObject1).syllable;
-          localObject1 = this.mXB.get(i);
-          if (localObject1 != null) {
-            break label190;
-          }
-          localObject1 = new t("null cannot be cast to non-null type com.tencent.wxhld.info.Syllable");
-          AppMethodBeat.o(217544);
-          throw ((Throwable)localObject1);
-        }
+      k = this.GyR.size() - 1;
+      if (k < 0) {
+        break label188;
       }
-      catch (Exception localException)
+      i = 0;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        localObject2 = new StringBuilder("selectItemByPy ");
-        if (paramSyllable != null)
-        {
-          localObject1 = paramSyllable.syllable;
-          paramSyllable = (Syllable)localObject1;
-          if (localObject1 != null) {}
-        }
-        else
-        {
+        int k;
+        int j;
+        Object localObject1;
+        Object localObject2 = new StringBuilder("selectItemByPy ");
+        if (paramSyllable == null) {
           paramSyllable = "";
         }
-        Log.e("WxIme.ImeSymbolKeysAdapter", paramSyllable + ' ' + localException.getMessage());
-        AppMethodBeat.o(217544);
-        return;
+        for (;;)
+        {
+          Log.e("WxIme.ImeSymbolKeysAdapter", paramSyllable + ' ' + localException.getMessage());
+          AppMethodBeat.o(312168);
+          return;
+          localObject1 = paramSyllable.syllable;
+          paramSyllable = (Syllable)localObject1;
+          if (localObject1 == null) {
+            paramSyllable = "";
+          }
+        }
+        int i = j;
       }
-      label190:
-      String str1 = ((Syllable)localObject1).syllable;
-      Object localObject1 = str1;
+    }
+    j = i + 1;
+    if (this.Jnk == null) {
+      ((c)this.GyR.get(i)).wL(false);
+    }
+    while (j > k)
+    {
+      AppMethodBeat.o(312168);
+      return;
+      localObject2 = (c)this.GyR.get(i);
+      localObject1 = this.Jnk;
+      s.checkNotNull(localObject1);
+      String str2 = ((Syllable)localObject1).syllable;
+      String str1 = ((Syllable)this.pUj.get(i)).syllable;
+      localObject1 = str1;
       if (str1 == null) {
         localObject1 = "";
       }
-      ((c)localObject2).sF(Util.isEqual(str2, (String)localObject1));
-      label225:
-      i += 1;
+      ((c)localObject2).wL(Util.isEqual(str2, (String)localObject1));
     }
   }
   
   public final int getItemCount()
   {
-    AppMethodBeat.i(217542);
-    int i = this.mXB.size();
-    AppMethodBeat.o(217542);
+    AppMethodBeat.i(312157);
+    int i = this.pUj.size();
+    AppMethodBeat.o(312157);
     return i;
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(217545);
-    this.DtH = null;
-    this.AXn.clear();
-    this.mXB.clear();
-    AppMethodBeat.o(217545);
+    AppMethodBeat.i(312175);
+    this.Jnk = null;
+    this.GyR.clear();
+    this.pUj.clear();
+    AppMethodBeat.o(312175);
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/symbol/ImeSboAndSybKeysAdapter$Companion;", "", "()V", "TAG", "", "plugin-hld_release"})
-  public static final class a {}
 }
 
 

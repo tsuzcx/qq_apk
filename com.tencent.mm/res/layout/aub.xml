@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="bottom" android:orientation="vertical" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/zn"
+<LinearLayout android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textColor="@color/tx" android:id="@android:id/title" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:singleLine="true" style="@style/or" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/arl" android:layout_width="fill_parent" android:layout_height="@dimen/dc" android:minHeight="@dimen/bb">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/a27" android:layout_width="@dimen/d6" android:layout_height="@dimen/d6" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cd" />
+        <com.tencent.mm.ui.base.EllipsizeTextView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/hga" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{title}" android:singleLine="true" android:layout_weight="1.0" style="@style/ma" />
+        <TextView android:textSize="@dimen/t" android:textColor="@color/m4" android:layout_gravity="center_vertical" android:id="@id/h1m" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawablePadding="8.0dip" android:drawableEnd="@drawable/bk0" android:paddingEnd="@dimen/cp" android:layout_marginStart="@dimen/m2" />
+    </LinearLayout>
+    <View android:id="@id/h1o" android:background="@color/a1e" android:layout_width="fill_parent" android:layout_height="@dimen/bo" android:layout_marginStart="76.0dip" />
 </LinearLayout>

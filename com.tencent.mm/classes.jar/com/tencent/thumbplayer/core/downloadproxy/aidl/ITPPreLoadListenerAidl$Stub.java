@@ -85,7 +85,7 @@ public abstract class ITPPreLoadListenerAidl$Stub
     
     public void onPrepareDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString)
     {
-      AppMethodBeat.i(255404);
+      AppMethodBeat.i(228194);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -104,13 +104,13 @@ public abstract class ITPPreLoadListenerAidl$Stub
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(255404);
+        AppMethodBeat.o(228194);
       }
     }
     
     public void onPrepareError(int paramInt1, int paramInt2, String paramString)
     {
-      AppMethodBeat.i(255402);
+      AppMethodBeat.i(228187);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -127,13 +127,13 @@ public abstract class ITPPreLoadListenerAidl$Stub
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(255402);
+        AppMethodBeat.o(228187);
       }
     }
     
     public void onPrepareOK()
     {
-      AppMethodBeat.i(255398);
+      AppMethodBeat.i(228179);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -147,7 +147,7 @@ public abstract class ITPPreLoadListenerAidl$Stub
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(255398);
+        AppMethodBeat.o(228179);
       }
     }
   }

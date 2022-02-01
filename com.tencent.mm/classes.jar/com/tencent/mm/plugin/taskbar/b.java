@@ -4,9 +4,9 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/taskbar/DeleteTaskInfoTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Landroid/os/Bundle;", "()V", "TAG", "", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-taskbar_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/taskbar/DeleteTaskInfoTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Landroid/os/Bundle;", "()V", "TAG", "", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-taskbar_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
   implements d<Bundle, Bundle>
 {
@@ -14,10 +14,10 @@ public final class b
   
   public b()
   {
-    AppMethodBeat.i(215606);
+    AppMethodBeat.i(263971);
     this.TAG = "MicroMsg.TaskBar.DeleteTaskInfoTask";
     Log.i(this.TAG, "create delete task info");
-    AppMethodBeat.o(215606);
+    AppMethodBeat.o(263971);
   }
 }
 

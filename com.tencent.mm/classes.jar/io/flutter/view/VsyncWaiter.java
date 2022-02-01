@@ -19,12 +19,12 @@ public class VsyncWaiter
     AppMethodBeat.i(9732);
     this.asyncWaitForVsyncDelegate = new FlutterJNI.AsyncWaitForVsyncDelegate()
     {
-      public final void asyncWaitForVsync(final long paramAnonymousLong)
+      public void asyncWaitForVsync(final long paramAnonymousLong)
       {
         AppMethodBeat.i(9798);
         Choreographer.getInstance().postFrameCallback(new Choreographer.FrameCallback()
         {
-          public final void doFrame(long paramAnonymous2Long)
+          public void doFrame(long paramAnonymous2Long)
           {
             AppMethodBeat.i(9684);
             FlutterJNI.nativeOnVsync(paramAnonymous2Long, paramAnonymous2Long + (1000000000.0D / VsyncWaiter.this.windowManager.getDefaultDisplay().getRefreshRate()), paramAnonymousLong);
@@ -59,7 +59,7 @@ public class VsyncWaiter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     io.flutter.view.VsyncWaiter
  * JD-Core Version:    0.7.0.1
  */

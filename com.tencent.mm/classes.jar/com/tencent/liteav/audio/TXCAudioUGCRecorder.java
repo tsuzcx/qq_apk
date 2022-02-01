@@ -44,14 +44,14 @@ public class TXCAudioUGCRecorder
   static
   {
     AppMethodBeat.i(16329);
-    h.f();
+    h.d();
     INSTANCE = new TXCAudioUGCRecorder();
     AppMethodBeat.o(16329);
   }
   
   private TXCAudioUGCRecorder()
   {
-    AppMethodBeat.i(247990);
+    AppMethodBeat.i(230388);
     this.AAC_SAMPLE_NUM = 1024;
     this.mSampleRate = new AtomicInteger(48000);
     this.mChannels = 1;
@@ -74,7 +74,7 @@ public class TXCAudioUGCRecorder
     this.mEncodedAudioList = new ArrayList();
     TXCAudioSysRecord.getInstance();
     nativeClassInit();
-    AppMethodBeat.o(247990);
+    AppMethodBeat.o(230388);
   }
   
   public static TXCAudioUGCRecorder getInstance()
@@ -104,7 +104,7 @@ public class TXCAudioUGCRecorder
     {
       try
       {
-        AppMethodBeat.i(248007);
+        AppMethodBeat.i(230395);
         boolean bool = false;
         if ((!this.mEnableBGMRecord) && (this.mAECType != 1))
         {
@@ -123,7 +123,7 @@ public class TXCAudioUGCRecorder
             }
             nativeEnableMixMode(bool);
             nativeSetSpeedRate(((Float)this.mSpeedRate.get()).floatValue());
-            AppMethodBeat.o(248007);
+            AppMethodBeat.o(230395);
             return;
           }
           nativeSetVolume(this.mVolume);
@@ -205,22 +205,22 @@ public class TXCAudioUGCRecorder
   
   public g getListener()
   {
-    AppMethodBeat.i(247996);
+    AppMethodBeat.i(230529);
     if (this.mWeakRecordListener != null)
     {
       g localg = (g)this.mWeakRecordListener.get();
-      AppMethodBeat.o(247996);
+      AppMethodBeat.o(230529);
       return localg;
     }
-    AppMethodBeat.o(247996);
+    AppMethodBeat.o(230529);
     return null;
   }
   
   public int getSampleRate()
   {
-    AppMethodBeat.i(248000);
+    AppMethodBeat.i(230573);
     int i = this.mSampleRate.get();
-    AppMethodBeat.o(248000);
+    AppMethodBeat.o(230573);
     return i;
   }
   
@@ -315,11 +315,11 @@ public class TXCAudioUGCRecorder
   
   public void onEncodedData(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(248001);
+    AppMethodBeat.i(230629);
     synchronized (this.mEncodedAudioList)
     {
       this.mEncodedAudioList.add(paramArrayOfByte);
-      AppMethodBeat.o(248001);
+      AppMethodBeat.o(230629);
       return;
     }
   }
@@ -372,11 +372,11 @@ public class TXCAudioUGCRecorder
   {
     try
     {
-      AppMethodBeat.i(248008);
+      AppMethodBeat.i(230682);
       TXCLog.i("AudioCenter:TXCAudioUGCRecorder", "setChangerType: ".concat(String.valueOf(paramInt)));
       this.mVoiceChangerType = paramInt;
       nativeSetChangerType(paramInt);
-      AppMethodBeat.o(248008);
+      AppMethodBeat.o(230682);
       return;
     }
     finally
@@ -590,7 +590,7 @@ public class TXCAudioUGCRecorder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.audio.TXCAudioUGCRecorder
  * JD-Core Version:    0.7.0.1
  */

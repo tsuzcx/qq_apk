@@ -1,38 +1,39 @@
 package com.tencent.mm.plugin.appbrand.permission;
 
-import android.annotation.SuppressLint;
+import com.tencent.luggage.game.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.ac;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.sdk.platformtools.BuildInfo;
-import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.plugin.appbrand.jsapi.aa.e;
+import com.tencent.mm.plugin.appbrand.jsapi.aa.f;
+import com.tencent.mm.plugin.appbrand.jsapi.aa.g;
+import com.tencent.mm.plugin.appbrand.jsapi.aa.h;
+import java.util.Collection;
 
 public final class p
-  extends d
+  extends o
 {
-  private static final boolean qzO;
+  public static final p tEM;
   
   static
   {
-    if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      qzO = bool;
-      return;
-    }
+    AppMethodBeat.i(47997);
+    tEM = new p();
+    AppMethodBeat.o(47997);
   }
   
-  @SuppressLint({"WrongConstant"})
-  public p(AppBrandRuntime paramAppBrandRuntime)
+  private p()
   {
-    super(paramAppBrandRuntime, -Util.getInt(ac.mFH, 0), qzO);
-    AppMethodBeat.i(47998);
-    AppMethodBeat.o(47998);
+    AppMethodBeat.i(47996);
+    this.tEL.add(f.class);
+    this.tEL.add(g.class);
+    this.tEL.add(h.class);
+    this.tEL.add(e.class);
+    this.tEL.add(b.class);
+    AppMethodBeat.o(47996);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.permission.p
  * JD-Core Version:    0.7.0.1
  */

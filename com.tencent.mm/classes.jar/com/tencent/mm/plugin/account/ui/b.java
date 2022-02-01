@@ -16,16 +16,16 @@ public final class b
   extends BaseAdapter
 {
   private Context mContext;
-  private LayoutInflater mYa;
-  private String[] nbG;
-  private Drawable nbH;
-  private View.OnTouchListener nbI;
+  private LayoutInflater pUI;
+  private String[] pYN;
+  private Drawable pYO;
+  private View.OnTouchListener pYP;
   
   public b(Context paramContext, String[] paramArrayOfString)
   {
     AppMethodBeat.i(127865);
-    this.nbH = null;
-    this.nbI = new View.OnTouchListener()
+    this.pYO = null;
+    this.pYP = new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -46,27 +46,27 @@ public final class b
         return false;
       }
     };
-    this.nbG = paramArrayOfString;
+    this.pYN = paramArrayOfString;
     this.mContext = paramContext;
-    this.mYa = LayoutInflater.from(paramContext);
-    this.nbH = paramContext.getResources().getDrawable(r.e.signup_chose_line);
-    this.nbH.setBounds(0, 0, this.nbH.getIntrinsicWidth(), this.nbH.getIntrinsicHeight());
+    this.pUI = LayoutInflater.from(paramContext);
+    this.pYO = paramContext.getResources().getDrawable(r.e.signup_chose_line);
+    this.pYO.setBounds(0, 0, this.pYO.getIntrinsicWidth(), this.pYO.getIntrinsicHeight());
     AppMethodBeat.o(127865);
   }
   
-  private boolean yr(int paramInt)
+  private boolean yx(int paramInt)
   {
-    return paramInt == this.nbG.length - 1;
+    return paramInt == this.pYN.length - 1;
   }
   
   public final int getCount()
   {
-    return this.nbG.length;
+    return this.pYN.length;
   }
   
   public final Object getItem(int paramInt)
   {
-    return this.nbG[paramInt];
+    return this.pYN[paramInt];
   }
   
   public final long getItemId(int paramInt)
@@ -80,15 +80,15 @@ public final class b
     AppMethodBeat.i(127866);
     paramViewGroup = paramView;
     if (paramView == null) {
-      paramViewGroup = this.mYa.inflate(r.g.alias_item, null);
+      paramViewGroup = this.pUI.inflate(r.g.alias_item, null);
     }
     paramView = (TextView)paramViewGroup.findViewById(r.f.alias_tv);
-    paramViewGroup.setOnTouchListener(this.nbI);
+    paramViewGroup.setOnTouchListener(this.pYP);
     int i;
     if (paramInt == 0)
     {
       i = 1;
-      if ((i == 0) || (!yr(paramInt))) {
+      if ((i == 0) || (!yx(paramInt))) {
         break label112;
       }
       paramView.setPadding(25, 0, 25, 10);
@@ -97,7 +97,7 @@ public final class b
     }
     for (;;)
     {
-      paramView.setText(this.nbG[paramInt]);
+      paramView.setText(this.pYN[paramInt]);
       AppMethodBeat.o(127866);
       return paramViewGroup;
       i = 0;
@@ -111,11 +111,11 @@ public final class b
         }
         paramView.setPadding(25, 0, 10, 10);
         paramView.setCompoundDrawablePadding(10);
-        paramView.setCompoundDrawables(null, null, this.nbH, null);
+        paramView.setCompoundDrawables(null, null, this.pYO, null);
         break;
       }
       label162:
-      if (yr(paramInt))
+      if (yx(paramInt))
       {
         paramView.setPadding(0, 0, 25, 10);
         paramView.setCompoundDrawablePadding(0);
@@ -125,14 +125,14 @@ public final class b
       {
         paramView.setPadding(0, 0, 10, 10);
         paramView.setCompoundDrawablePadding(10);
-        paramView.setCompoundDrawables(null, null, this.nbH, null);
+        paramView.setCompoundDrawables(null, null, this.pYO, null);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.b
  * JD-Core Version:    0.7.0.1
  */

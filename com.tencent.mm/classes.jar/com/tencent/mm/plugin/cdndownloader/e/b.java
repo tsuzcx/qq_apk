@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.cdndownloader.e;
 
 public abstract interface b
 {
-  public abstract void cMx();
-  
   public abstract void clear();
+  
+  public abstract void dqb();
   
   public abstract void remove();
 }

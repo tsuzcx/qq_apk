@@ -30,7 +30,7 @@ public abstract interface IPlayer
   
   public abstract void setPlayRange(CMTimeRange paramCMTimeRange);
   
-  public abstract void setPlayerListener(IPlayer.PlayerListener paramPlayerListener);
+  public abstract void setPlayerListener(PlayerListener paramPlayerListener);
   
   public abstract void setVolume(float paramFloat);
   
@@ -48,11 +48,18 @@ public abstract interface IPlayer
   
   public abstract void waitForRelease(long paramLong);
   
+  public static abstract interface PlayerListener
+  {
+    public abstract void onPositionChanged(CMTime paramCMTime);
+    
+    public abstract void onStatusChanged(IPlayer.PlayerStatus paramPlayerStatus);
+  }
+  
   public static enum PlayerStatus
   {
     static
     {
-      AppMethodBeat.i(192541);
+      AppMethodBeat.i(215902);
       IDLE = new PlayerStatus("IDLE", 0);
       READY = new PlayerStatus("READY", 1);
       PLAYING = new PlayerStatus("PLAYING", 2);
@@ -62,7 +69,7 @@ public abstract interface IPlayer
       ERROR = new PlayerStatus("ERROR", 6);
       REPLAY = new PlayerStatus("REPLAY", 7);
       $VALUES = new PlayerStatus[] { IDLE, READY, PLAYING, STOPPED, PAUSED, FINISHED, ERROR, REPLAY };
-      AppMethodBeat.o(192541);
+      AppMethodBeat.o(215902);
     }
     
     private PlayerStatus() {}
@@ -70,7 +77,7 @@ public abstract interface IPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.player.IPlayer
  * JD-Core Version:    0.7.0.1
  */

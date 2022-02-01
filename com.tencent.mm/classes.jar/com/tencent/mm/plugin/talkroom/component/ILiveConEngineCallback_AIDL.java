@@ -22,7 +22,7 @@ public abstract interface ILiveConEngineCallback_AIDL
       attachInterface(this, "com.tencent.mm.plugin.talkroom.component.ILiveConEngineCallback_AIDL");
     }
     
-    public static ILiveConEngineCallback_AIDL H(IBinder paramIBinder)
+    public static ILiveConEngineCallback_AIDL M(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -34,9 +34,9 @@ public abstract interface ILiveConEngineCallback_AIDL
       return new a(paramIBinder);
     }
     
-    public static ILiveConEngineCallback_AIDL gig()
+    public static ILiveConEngineCallback_AIDL hCh()
     {
-      return a.MiV;
+      return a.SMr;
     }
     
     public IBinder asBinder()
@@ -68,7 +68,7 @@ public abstract interface ILiveConEngineCallback_AIDL
     static final class a
       implements ILiveConEngineCallback_AIDL
     {
-      public static ILiveConEngineCallback_AIDL MiV;
+      public static ILiveConEngineCallback_AIDL SMr;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -90,9 +90,9 @@ public abstract interface ILiveConEngineCallback_AIDL
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.talkroom.component.ILiveConEngineCallback_AIDL");
           localParcel1.writeInt(paramInt);
-          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (ILiveConEngineCallback_AIDL.a.gig() != null))
+          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (ILiveConEngineCallback_AIDL.a.hCh() != null))
           {
-            ILiveConEngineCallback_AIDL.a.gig().keep_OnError(paramInt);
+            ILiveConEngineCallback_AIDL.a.hCh().keep_OnError(paramInt);
             return;
           }
           localParcel2.readException();
@@ -114,9 +114,9 @@ public abstract interface ILiveConEngineCallback_AIDL
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.talkroom.component.ILiveConEngineCallback_AIDL");
-          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (ILiveConEngineCallback_AIDL.a.gig() != null))
+          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (ILiveConEngineCallback_AIDL.a.hCh() != null))
           {
-            ILiveConEngineCallback_AIDL.a.gig().keep_OnOpenSuccess();
+            ILiveConEngineCallback_AIDL.a.hCh().keep_OnOpenSuccess();
             return;
           }
           localParcel2.readException();
@@ -134,7 +134,7 @@ public abstract interface ILiveConEngineCallback_AIDL
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.component.ILiveConEngineCallback_AIDL
  * JD-Core Version:    0.7.0.1
  */

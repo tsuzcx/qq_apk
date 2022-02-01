@@ -23,25 +23,25 @@ public class MultiProcSharedPreferences$DynamicConfigStorage
   
   private static boolean getValue(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(261268);
+    AppMethodBeat.i(243767);
     reload();
     if (mPref == null)
     {
       Log.w("MicroMsg.MultiProcSharedPreferences", "SharedPreferences in DynamicConfigStorage initialize failed.");
-      AppMethodBeat.o(261268);
+      AppMethodBeat.o(243767);
       return paramBoolean;
     }
     paramBoolean = mPref.getBoolean(paramString, paramBoolean);
     Log.d("MicroMsg.MultiProcSharedPreferences", "DynamicConfigStorage, getValue:%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    AppMethodBeat.o(261268);
+    AppMethodBeat.o(243767);
     return paramBoolean;
   }
   
   private static boolean isDisabledManually()
   {
-    AppMethodBeat.i(261265);
+    AppMethodBeat.i(243758);
     boolean bool = getValue(PREF_KEY_IS_DISABLED_MULTIPROC_SP_MANUALLY, false);
-    AppMethodBeat.o(261265);
+    AppMethodBeat.o(243758);
     return bool;
   }
   

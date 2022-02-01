@@ -1,13 +1,10 @@
 package com.google.android.gms.internal.measurement;
 
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Binder;
 import android.os.Build.VERSION;
-import androidx.core.content.b;
-import javax.annotation.Nullable;
+import androidx.core.content.c;
 
 public abstract class zzws<T>
 {
@@ -15,7 +12,6 @@ public abstract class zzws<T>
   private static boolean zzbnd = false;
   private static volatile Boolean zzbne = null;
   private static volatile Boolean zzbnf = null;
-  @SuppressLint({"StaticFieldLeak"})
   private static Context zzqx = null;
   private final zzxc zzbng;
   final String zzbnh;
@@ -136,8 +132,6 @@ public abstract class zzws<T>
     return false;
   }
   
-  @Nullable
-  @TargetApi(24)
   private final T zzry()
   {
     String str;
@@ -170,7 +164,6 @@ public abstract class zzws<T>
     }
   }
   
-  @Nullable
   private final T zzrz()
   {
     if (zzsa())
@@ -212,7 +205,7 @@ public abstract class zzws<T>
       if (zzqx != null)
       {
         bool1 = bool2;
-        if (b.f(zzqx, "com.google.android.providers.gsf.permission.READ_GSERVICES") == 0) {
+        if (c.h(zzqx, "com.google.android.providers.gsf.permission.READ_GSERVICES") == 0) {
           bool1 = true;
         }
         zzbne = Boolean.valueOf(bool1);
@@ -245,7 +238,7 @@ public abstract class zzws<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzws
  * JD-Core Version:    0.7.0.1
  */

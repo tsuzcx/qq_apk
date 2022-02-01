@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:gravity="center" android:drawable="@raw/voice_password_icon_normal" />
-    <item>
-        <shape android:shape="oval">
-            <solid android:color="@color/a7t" />
-            <size android:height="80.0dip" android:width="80.0dip" />
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="8.0dip" />
+            <solid android:color="@color/BW_0_Alpha_0_1" />
         </shape>
     </item>
-</layer-list>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="8.0dip" />
+            <solid android:color="@color/ahb" />
+        </shape>
+    </item>
+</selector>

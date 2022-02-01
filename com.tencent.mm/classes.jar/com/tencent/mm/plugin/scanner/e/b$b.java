@@ -1,23 +1,25 @@
 package com.tencent.mm.plugin.scanner.e;
 
-import kotlin.g.b.aa.a;
-import kotlin.g.b.aa.f;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.q;
+import kotlin.g.b.ah.a;
+import kotlin.g.b.ah.f;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "imagePath", "", "isHd", "", "hasHd", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", "", "imagePath", "", "isHd", "", "hasHd"}, k=3, mv={1, 5, 1}, xi=48)
 final class b$b
-  extends kotlin.g.b.q
-  implements kotlin.g.a.q<String, Boolean, Boolean, x>
+  extends u
+  implements q<String, Boolean, Boolean, ah>
 {
-  b$b(aa.f paramf, aa.a parama1, aa.a parama2)
+  b$b(ah.f<String> paramf, ah.a parama1, ah.a parama2)
   {
     super(3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.e.b.b
  * JD-Core Version:    0.7.0.1
  */

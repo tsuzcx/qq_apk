@@ -18,8 +18,8 @@ public class b
     super.onDestroy();
     com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(0, new com.tencent.mm.hellhoundlib.b.a());
     Object localObject = new Object();
-    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aFh(), "com/tencent/tbs/one/impl/c/a/b", "onDestroy", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
-    System.exit(((Integer)locala.sf(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/tbs/one/impl/c/a/b", "onDestroy", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
+    System.exit(((Integer)locala.sb(0)).intValue());
     com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/tbs/one/impl/c/a/b", "onDestroy", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
     AppMethodBeat.o(173812);
   }
@@ -61,7 +61,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tbs.one.impl.c.a.b
  * JD-Core Version:    0.7.0.1
  */

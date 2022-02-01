@@ -34,32 +34,32 @@ public class InvoiceEditView
   extends RelativeLayout
   implements View.OnFocusChangeListener
 {
-  private boolean bCn;
   private int background;
+  private boolean bcF;
   private int editType;
-  private int ek;
+  private int fl;
   private int inputType;
-  private TextView mrN;
-  private ImageView nlA;
-  private String nlB;
-  private String nlC;
-  private int nlD;
-  private int nlE;
-  public boolean nlF;
-  private int nlG;
-  public boolean nlH;
-  private int nlI;
-  private int nlJ;
-  private View.OnClickListener nlK;
-  private String nlL;
-  public boolean nlN;
-  private a nlO;
-  private c nlP;
-  private b nlQ;
-  private int nlR;
-  public boolean nlS;
-  private View.OnFocusChangeListener nly;
-  EditText nlz;
+  private TextView pls;
+  private View.OnFocusChangeListener qiH;
+  EditText qiI;
+  private ImageView qiJ;
+  private String qiK;
+  private String qiL;
+  private int qiM;
+  private int qiN;
+  public boolean qiO;
+  private int qiP;
+  public boolean qiQ;
+  private int qiR;
+  private int qiS;
+  private View.OnClickListener qiT;
+  private String qiU;
+  public boolean qiW;
+  private a qiX;
+  private c qiY;
+  private b qiZ;
+  private int qja;
+  public boolean qjb;
   
   public InvoiceEditView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -70,35 +70,35 @@ public class InvoiceEditView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(20876);
-    this.nlN = false;
-    this.nlB = "";
-    this.nlC = "";
+    this.qiW = false;
+    this.qiK = "";
+    this.qiL = "";
     this.inputType = 1;
-    this.nlR = 0;
-    this.ek = 19;
+    this.qja = 0;
+    this.fl = 19;
     this.editType = -1;
     this.background = -1;
-    this.nlE = -1;
-    this.nlF = true;
-    this.nlS = true;
-    this.nlH = false;
-    this.nlI = 0;
-    this.nlJ = 100;
-    this.bCn = true;
-    this.nlK = new View.OnClickListener()
+    this.qiN = -1;
+    this.qiO = true;
+    this.qjb = true;
+    this.qiQ = false;
+    this.qiR = 0;
+    this.qiS = 100;
+    this.bcF = true;
+    this.qiT = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(20875);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/address/ui/InvoiceEditView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/address/ui/InvoiceEditView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         if (InvoiceEditView.f(InvoiceEditView.this).getVisibility() == 0)
         {
-          if ((!InvoiceEditView.this.nlF) || (InvoiceEditView.a(InvoiceEditView.this) == 2) || (Util.isNullOrNil(InvoiceEditView.this.getText()))) {
+          if ((!InvoiceEditView.this.qiO) || (InvoiceEditView.a(InvoiceEditView.this) == 2) || (Util.isNullOrNil(InvoiceEditView.this.getText()))) {
             break label130;
           }
-          InvoiceEditView.this.nlz.setText("");
+          InvoiceEditView.this.qiI.setText("");
           InvoiceEditView.a(InvoiceEditView.this, InvoiceEditView.e(InvoiceEditView.this).isFocused());
         }
         for (;;)
@@ -113,37 +113,37 @@ public class InvoiceEditView
         }
       }
     };
-    this.nlL = null;
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.n.eWJ, paramInt, 0);
-    paramInt = paramAttributeSet.getResourceId(R.n.eWQ, 0);
+    this.qiU = null;
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.n.ham, paramInt, 0);
+    paramInt = paramAttributeSet.getResourceId(R.n.hat, 0);
     if (paramInt != 0) {
-      this.nlB = paramContext.getString(paramInt);
+      this.qiK = paramContext.getString(paramInt);
     }
-    paramInt = paramAttributeSet.getResourceId(R.n.eWU, 0);
+    paramInt = paramAttributeSet.getResourceId(R.n.hax, 0);
     if (paramInt != 0) {
-      this.nlC = paramContext.getString(paramInt);
+      this.qiL = paramContext.getString(paramInt);
     }
-    this.inputType = paramAttributeSet.getInteger(R.n.eWM, 1);
-    this.editType = paramAttributeSet.getInteger(R.n.eWO, 0);
-    this.nlF = paramAttributeSet.getBoolean(R.n.eWP, true);
-    this.ek = paramAttributeSet.getInt(R.n.eWK, 19);
-    this.nlD = paramAttributeSet.getInteger(R.n.eWN, 5);
-    this.background = paramAttributeSet.getResourceId(R.n.eWL, R.g.transparent_background);
-    this.nlG = paramAttributeSet.getResourceId(R.n.eWS, -1);
-    this.nlE = paramAttributeSet.getResourceId(R.n.eWR, R.g.transparent_background);
-    this.bCn = paramAttributeSet.getBoolean(R.n.eWT, true);
+    this.inputType = paramAttributeSet.getInteger(R.n.hap, 1);
+    this.editType = paramAttributeSet.getInteger(R.n.har, 0);
+    this.qiO = paramAttributeSet.getBoolean(R.n.has, true);
+    this.fl = paramAttributeSet.getInt(R.n.han, 19);
+    this.qiM = paramAttributeSet.getInteger(R.n.haq, 5);
+    this.background = paramAttributeSet.getResourceId(R.n.hao, R.g.transparent_background);
+    this.qiP = paramAttributeSet.getResourceId(R.n.hav, -1);
+    this.qiN = paramAttributeSet.getResourceId(R.n.hau, R.g.transparent_background);
+    this.bcF = paramAttributeSet.getBoolean(R.n.haw, true);
     paramAttributeSet.recycle();
-    paramAttributeSet = LayoutInflater.from(paramContext).inflate(R.i.ehF, this, true);
-    this.nlz = ((EditText)paramAttributeSet.findViewById(R.h.hint_et));
-    this.nlz.setTextSize(0, com.tencent.mm.ci.a.aY(paramContext, R.f.NormalTextSize));
-    this.mrN = ((TextView)paramAttributeSet.findViewById(R.h.tip_tv));
-    this.nlA = ((ImageView)paramAttributeSet.findViewById(R.h.info_iv));
-    this.nlA.setOnClickListener(this.nlK);
-    this.nlz.setImeOptions(this.nlD);
-    this.nlz.setInputType(this.inputType);
+    paramAttributeSet = LayoutInflater.from(paramContext).inflate(R.i.gkA, this, true);
+    this.qiI = ((EditText)paramAttributeSet.findViewById(R.h.hint_et));
+    this.qiI.setTextSize(0, com.tencent.mm.cd.a.br(paramContext, R.f.NormalTextSize));
+    this.pls = ((TextView)paramAttributeSet.findViewById(R.h.tip_tv));
+    this.qiJ = ((ImageView)paramAttributeSet.findViewById(R.h.info_iv));
+    this.qiJ.setOnClickListener(this.qiT);
+    this.qiI.setImeOptions(this.qiM);
+    this.qiI.setInputType(this.inputType);
     if (this.inputType == 2)
     {
-      this.nlz.setKeyListener(new NumberKeyListener()
+      this.qiI.setKeyListener(new NumberKeyListener()
       {
         protected final char[] getAcceptedChars()
         {
@@ -155,8 +155,8 @@ public class InvoiceEditView
           return 2;
         }
       });
-      hd(this.nlz.isFocused());
-      this.nlz.addTextChangedListener(new TextWatcher()
+      hS(this.qiI.isFocused());
+      this.qiI.addTextChangedListener(new TextWatcher()
       {
         public final void afterTextChanged(Editable paramAnonymousEditable)
         {
@@ -166,14 +166,14 @@ public class InvoiceEditView
             InvoiceEditView.a(InvoiceEditView.this, paramAnonymousEditable.toString().length());
             InvoiceEditView.this.setBankNumberValStr(paramAnonymousEditable.toString());
           }
-          boolean bool = InvoiceEditView.this.bAz();
-          if ((bool != InvoiceEditView.this.nlH) && (InvoiceEditView.c(InvoiceEditView.this) != null))
+          boolean bool = InvoiceEditView.this.bZp();
+          if ((bool != InvoiceEditView.this.qiQ) && (InvoiceEditView.c(InvoiceEditView.this) != null))
           {
             Log.d("MicroMsg.InvoiceEditView", "View:" + InvoiceEditView.d(InvoiceEditView.this) + ", editType:" + InvoiceEditView.a(InvoiceEditView.this) + " inputValid change to " + bool);
-            InvoiceEditView.this.nlH = bool;
-            InvoiceEditView.c(InvoiceEditView.this).bAv();
+            InvoiceEditView.this.qiQ = bool;
+            InvoiceEditView.c(InvoiceEditView.this).bZl();
           }
-          if (((!InvoiceEditView.this.nlN) || (InvoiceEditView.this.nlH)) && (InvoiceEditView.this.nlN) && (InvoiceEditView.this.nlH)) {
+          if (((!InvoiceEditView.this.qiW) || (InvoiceEditView.this.qiQ)) && (InvoiceEditView.this.qiW) && (InvoiceEditView.this.qiQ)) {
             InvoiceEditView.e(InvoiceEditView.this).setTextColor(InvoiceEditView.this.getResources().getColor(R.e.normal_text_color));
           }
           InvoiceEditView.a(InvoiceEditView.this, InvoiceEditView.e(InvoiceEditView.this).isFocused());
@@ -184,46 +184,46 @@ public class InvoiceEditView
         
         public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       });
-      this.nlz.setOnFocusChangeListener(this);
-      if (!Util.isNullOrNil(this.nlB)) {
-        this.nlz.setHint(this.nlB);
+      this.qiI.setOnFocusChangeListener(this);
+      if (!Util.isNullOrNil(this.qiK)) {
+        this.qiI.setHint(this.qiK);
       }
-      if (!Util.isNullOrNil(this.nlC)) {
-        this.mrN.setText(this.nlC);
+      if (!Util.isNullOrNil(this.qiL)) {
+        this.pls.setText(this.qiL);
       }
       paramContext = new Rect();
-      d(this.nlz, paramContext);
-      if (this.nlF) {
+      d(this.qiI, paramContext);
+      if (this.qiO) {
         break label685;
       }
-      this.nlz.setEnabled(false);
-      this.nlz.setTextColor(getResources().getColor(R.e.djW));
-      this.nlz.setFocusable(false);
-      this.nlz.setClickable(false);
-      this.nlz.setBackgroundResource(R.g.transparent_background);
-      if (this.nlS) {
+      this.qiI.setEnabled(false);
+      this.qiI.setTextColor(getResources().getColor(R.e.fjX));
+      this.qiI.setFocusable(false);
+      this.qiI.setClickable(false);
+      this.qiI.setBackgroundResource(R.g.transparent_background);
+      if (this.qjb) {
         setBackgroundResource(R.g.comm_list_item_selector);
       }
-      setPadding(com.tencent.mm.ci.a.fromDPToPix(getContext(), 8), getPaddingTop(), getPaddingRight(), getPaddingBottom());
+      setPadding(com.tencent.mm.cd.a.fromDPToPix(getContext(), 8), getPaddingTop(), getPaddingRight(), getPaddingBottom());
     }
     for (;;)
     {
-      e(this.nlz, paramContext);
-      if (this.nlG != -1) {
-        this.nlA.setImageResource(this.nlG);
+      e(this.qiI, paramContext);
+      if (this.qiP != -1) {
+        this.qiJ.setImageResource(this.qiP);
       }
-      if (!this.bCn) {
-        this.nlz.setSingleLine(false);
+      if (!this.bcF) {
+        this.qiI.setSingleLine(false);
       }
       AppMethodBeat.o(20876);
       return;
       if (this.inputType == 3)
       {
-        this.nlz.setKeyListener(new NumberKeyListener()
+        this.qiI.setKeyListener(new NumberKeyListener()
         {
           protected final char[] getAcceptedChars()
           {
-            if (InvoiceEditView.this.nlN) {
+            if (InvoiceEditView.this.qiW) {
               return new char[] { 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 32, 32 };
             }
             return new char[] { 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 45, 43, 95, 8212, 32, 32, 40, 41, -248, -247, 64, 126, 42, 38, 94, 37, 36, 35, 64, 33, 59, 58, -230, -229, 123, 125, 91, 93, -165, -163, 12304, 12305, 60, 62, -28820, 126, 96, 183, 61, 61, 43 };
@@ -236,11 +236,11 @@ public class InvoiceEditView
         });
         break;
       }
-      this.nlz.setInputType(this.inputType);
+      this.qiI.setInputType(this.inputType);
       break;
       label685:
-      this.nlH = false;
-      this.nlz.setBackgroundResource(this.nlE);
+      this.qiQ = false;
+      this.qiI.setBackgroundResource(this.qiN);
       setBackgroundResource(this.background);
     }
   }
@@ -266,7 +266,7 @@ public class InvoiceEditView
   {
     AppMethodBeat.i(20895);
     Rect localRect = new Rect();
-    this.nlA.getHitRect(localRect);
+    this.qiJ.getHitRect(localRect);
     localRect.left -= 50;
     localRect.right += 50;
     localRect.top -= 25;
@@ -275,17 +275,17 @@ public class InvoiceEditView
     return localRect;
   }
   
-  private void hd(boolean paramBoolean)
+  private void hS(boolean paramBoolean)
   {
     AppMethodBeat.i(20883);
-    if ((this.nlF) && (!Util.isNullOrNil(getText())))
+    if ((this.qiO) && (!Util.isNullOrNil(getText())))
     {
-      this.nlA.setImageResource(R.g.list_clear);
-      this.nlA.setContentDescription(getContext().getString(R.l.clear_btn));
+      this.qiJ.setImageResource(R.g.list_clear);
+      this.qiJ.setContentDescription(getContext().getString(R.l.clear_btn));
       switch (this.editType)
       {
       default: 
-        this.nlA.setVisibility(8);
+        this.qiJ.setVisibility(8);
         AppMethodBeat.o(20883);
         return;
       case 0: 
@@ -294,76 +294,64 @@ public class InvoiceEditView
       case 5: 
         if (paramBoolean)
         {
-          this.nlA.setVisibility(0);
+          this.qiJ.setVisibility(0);
           AppMethodBeat.o(20883);
           return;
         }
-        this.nlA.setVisibility(8);
+        this.qiJ.setVisibility(8);
         AppMethodBeat.o(20883);
         return;
       case 3: 
-        this.nlA.setVisibility(0);
-        this.nlA.setContentDescription(getContext().getString(R.l.address_location));
+        this.qiJ.setVisibility(0);
+        this.qiJ.setContentDescription(getContext().getString(R.l.address_location));
         AppMethodBeat.o(20883);
         return;
       }
-      this.nlA.setVisibility(0);
-      this.nlA.setContentDescription(getContext().getString(R.l.address_contact));
+      this.qiJ.setVisibility(0);
+      this.qiJ.setContentDescription(getContext().getString(R.l.address_contact));
       AppMethodBeat.o(20883);
       return;
     }
     switch (this.editType)
     {
     default: 
-      this.nlA.setVisibility(8);
+      this.qiJ.setVisibility(8);
       AppMethodBeat.o(20883);
       return;
     case 0: 
     case 1: 
     case 4: 
-      this.nlA.setVisibility(8);
+      this.qiJ.setVisibility(8);
       AppMethodBeat.o(20883);
       return;
     case 3: 
-      this.nlA.setVisibility(0);
-      this.nlA.setContentDescription(getContext().getString(R.l.address_location));
+      this.qiJ.setVisibility(0);
+      this.qiJ.setContentDescription(getContext().getString(R.l.address_location));
       AppMethodBeat.o(20883);
       return;
     }
-    this.nlA.setVisibility(0);
-    this.nlA.setContentDescription(getContext().getString(R.l.address_contact));
+    this.qiJ.setVisibility(0);
+    this.qiJ.setContentDescription(getContext().getString(R.l.address_contact));
     AppMethodBeat.o(20883);
   }
   
-  public final boolean bAA()
-  {
-    AppMethodBeat.i(20890);
-    if (getText().equals(Util.nullAsNil(this.nlL)))
-    {
-      AppMethodBeat.o(20890);
-      return false;
-    }
-    AppMethodBeat.o(20890);
-    return true;
-  }
-  
-  public final boolean bAz()
+  public final boolean bZp()
   {
     AppMethodBeat.i(20882);
-    String str = this.nlz.getText().toString();
+    String str = this.qiI.getText().toString();
     switch (this.editType)
     {
     case 2: 
     case 3: 
     default: 
-      if ((str.length() >= this.nlI) && (str.length() <= this.nlJ))
+      if ((str.length() >= this.qiR) && (str.length() <= this.qiS))
       {
         AppMethodBeat.o(20882);
         return true;
       }
       break;
     case 0: 
-      if ((str.length() >= this.nlI) && (str.length() <= this.nlJ))
+      if ((str.length() >= this.qiR) && (str.length() <= this.qiS))
       {
         AppMethodBeat.o(20882);
         return true;
@@ -371,7 +359,7 @@ public class InvoiceEditView
       AppMethodBeat.o(20882);
       return false;
     case 1: 
-      if ((str.length() == 0) || ((str.length() >= this.nlI) && (str.length() <= this.nlJ)))
+      if ((str.length() == 0) || ((str.length() >= this.qiR) && (str.length() <= this.qiS)))
       {
         AppMethodBeat.o(20882);
         return true;
@@ -399,10 +387,22 @@ public class InvoiceEditView
     return false;
   }
   
+  public final boolean bZq()
+  {
+    AppMethodBeat.i(20890);
+    if (getText().equals(Util.nullAsNil(this.qiU)))
+    {
+      AppMethodBeat.o(20890);
+      return false;
+    }
+    AppMethodBeat.o(20890);
+    return true;
+  }
+  
   public String getText()
   {
     AppMethodBeat.i(20877);
-    String str = this.nlz.getText().toString();
+    String str = this.qiI.getText().toString();
     AppMethodBeat.o(20877);
     return str;
   }
@@ -410,17 +410,17 @@ public class InvoiceEditView
   public void onFocusChange(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(20885);
-    if (this.nly != null) {
-      this.nly.onFocusChange(this, paramBoolean);
+    if (this.qiH != null) {
+      this.qiH.onFocusChange(this, paramBoolean);
     }
-    Log.d("MicroMsg.InvoiceEditView", "View:" + this.nlC + ", editType:" + this.editType + " onFocusChange to " + paramBoolean);
-    if (this.nlP != null) {
-      this.nlP.bAv();
+    Log.d("MicroMsg.InvoiceEditView", "View:" + this.qiL + ", editType:" + this.editType + " onFocusChange to " + paramBoolean);
+    if (this.qiY != null) {
+      this.qiY.bZl();
     }
-    if (!this.nlH)
+    if (!this.qiQ)
     {
-      this.mrN.setEnabled(false);
-      if (paramView == this.nlz)
+      this.pls.setEnabled(false);
+      if (paramView == this.qiI)
       {
         paramView = new Rect();
         d(this, paramView);
@@ -433,10 +433,10 @@ public class InvoiceEditView
     for (;;)
     {
       e(this, paramView);
-      hd(paramBoolean);
+      hS(paramBoolean);
       AppMethodBeat.o(20885);
       return;
-      this.mrN.setEnabled(true);
+      this.pls.setEnabled(true);
       break;
       label164:
       setBackgroundResource(R.g.input_bar_bg_normal);
@@ -447,9 +447,9 @@ public class InvoiceEditView
   {
     AppMethodBeat.i(20880);
     int i;
-    if (!this.nlF)
+    if (!this.qiO)
     {
-      if (this.nlA.getVisibility() != 0) {
+      if (this.qiJ.getVisibility() != 0) {
         break label63;
       }
       i = 1;
@@ -516,20 +516,20 @@ public class InvoiceEditView
         str1 = str2.substring(str2.length() / 4 * 4, str2.length());
       }
     }
-    this.nlz.setText(str1);
-    this.nlz.setSelection(this.nlz.getText().length());
+    this.qiI.setText(str1);
+    this.qiI.setSelection(this.qiI.getText().length());
     AppMethodBeat.o(20889);
   }
   
   public void setEditBG(int paramInt)
   {
     AppMethodBeat.i(20891);
-    if (this.nlz != null)
+    if (this.qiI != null)
     {
       Rect localRect = new Rect();
-      d(this.nlz, localRect);
-      this.nlz.setBackgroundResource(paramInt);
-      e(this.nlz, localRect);
+      d(this.qiI, localRect);
+      this.qiI.setBackgroundResource(paramInt);
+      e(this.qiI, localRect);
     }
     AppMethodBeat.o(20891);
   }
@@ -537,7 +537,7 @@ public class InvoiceEditView
   public void setEllipsize(TextUtils.TruncateAt paramTruncateAt)
   {
     AppMethodBeat.i(20878);
-    this.nlz.setEllipsize(paramTruncateAt);
+    this.qiI.setEllipsize(paramTruncateAt);
     AppMethodBeat.o(20878);
   }
   
@@ -545,34 +545,34 @@ public class InvoiceEditView
   {
     AppMethodBeat.i(20879);
     super.setEnabled(paramBoolean);
-    this.nlF = paramBoolean;
-    this.nlA.setEnabled(true);
+    this.qiO = paramBoolean;
+    this.qiJ.setEnabled(true);
     AppMethodBeat.o(20879);
   }
   
   public void setHintStr(String paramString)
   {
     AppMethodBeat.i(20886);
-    this.nlz.setHint(paramString);
+    this.qiI.setHint(paramString);
     AppMethodBeat.o(20886);
   }
   
   public void setImeOptions(int paramInt)
   {
     AppMethodBeat.i(20893);
-    this.nlz.setImeOptions(paramInt);
+    this.qiI.setImeOptions(paramInt);
     AppMethodBeat.o(20893);
   }
   
   public void setInfoIvOnClickListener(a parama)
   {
-    this.nlO = parama;
+    this.qiX = parama;
   }
   
   public void setInfoIvVisible(int paramInt)
   {
     AppMethodBeat.i(20894);
-    this.nlA.setVisibility(paramInt);
+    this.qiJ.setVisibility(paramInt);
     AppMethodBeat.o(20894);
   }
   
@@ -587,32 +587,32 @@ public class InvoiceEditView
   {
     AppMethodBeat.i(20884);
     super.setOnFocusChangeListener(paramOnFocusChangeListener);
-    this.nly = paramOnFocusChangeListener;
+    this.qiH = paramOnFocusChangeListener;
     AppMethodBeat.o(20884);
   }
   
   public void setOnInputInvoiceTypeChangeListener(b paramb)
   {
-    this.nlQ = paramb;
+    this.qiZ = paramb;
   }
   
   public void setOnInputValidChangeListener(c paramc)
   {
-    this.nlP = paramc;
+    this.qiY = paramc;
   }
   
   public void setTipStr(String paramString)
   {
     AppMethodBeat.i(20887);
-    this.mrN.setText(paramString);
+    this.pls.setText(paramString);
     AppMethodBeat.o(20887);
   }
   
   public void setTipTextColor(int paramInt)
   {
     AppMethodBeat.i(20892);
-    if (this.mrN != null) {
-      this.mrN.setTextColor(paramInt);
+    if (this.pls != null) {
+      this.pls.setTextColor(paramInt);
     }
     AppMethodBeat.o(20892);
   }
@@ -620,9 +620,9 @@ public class InvoiceEditView
   public void setValStr(String paramString)
   {
     AppMethodBeat.i(20888);
-    this.nlz.setText(paramString);
-    this.nlz.setSelection(this.nlz.getText().length());
-    this.nlL = paramString;
+    this.qiI.setText(paramString);
+    this.qiI.setSelection(this.qiI.getText().length());
+    this.qiU = paramString;
     AppMethodBeat.o(20888);
   }
   
@@ -632,12 +632,12 @@ public class InvoiceEditView
   
   public static abstract interface c
   {
-    public abstract void bAv();
+    public abstract void bZl();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.address.ui.InvoiceEditView
  * JD-Core Version:    0.7.0.1
  */

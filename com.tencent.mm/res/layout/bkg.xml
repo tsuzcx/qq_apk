@@ -1,3 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:gravity="center|left" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/k4" android:drawableLeft="@raw/radio_off" android:drawablePadding="@dimen/ir"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:background="@drawable/ay7" android:layout_width="fill_parent" android:layout_height="@dimen/m1">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/h_x" android:layout_width="@dimen/m6" android:layout_height="@dimen/m6" android:layout_marginLeft="28.0dip" android:layout_marginRight="24.0dip" android:contentDescription="@string/a0t" app:iconColor="@color/BW_50" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/agv" android:id="@id/hae" android:layout_width="0.0dip" android:text="@string/alp" android:layout_weight="1.0" style="@style/m4" />
+    </LinearLayout>
+</LinearLayout>

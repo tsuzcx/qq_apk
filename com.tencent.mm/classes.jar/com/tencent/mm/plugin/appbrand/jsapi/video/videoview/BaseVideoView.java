@@ -10,10 +10,10 @@ import com.tencent.mm.sdk.platformtools.Util;
 public abstract class BaseVideoView
   extends AbstractVideoView
 {
-  protected boolean bjq;
-  private boolean mfK = false;
-  protected int puP = 0;
-  protected int pvi;
+  protected boolean ddk;
+  private boolean oYG = false;
+  protected int sAo;
+  protected int szV = 0;
   protected String url;
   
   public BaseVideoView(Context paramContext)
@@ -31,72 +31,60 @@ public abstract class BaseVideoView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final boolean a(double paramDouble, boolean paramBoolean)
+  public final void b(boolean paramBoolean, String paramString, int paramInt)
+  {
+    this.ddk = paramBoolean;
+    this.url = paramString;
+    this.sAo = paramInt;
+  }
+  
+  public final boolean b(double paramDouble, boolean paramBoolean)
   {
     if (isLive())
     {
-      Log.w("MicroMsg.Video.BaseVideoView", "%s it is live, don't seek ", new Object[] { bqf() });
+      Log.w("MicroMsg.Video.BaseVideoView", "%s it is live, don't seek ", new Object[] { bNL() });
       return false;
     }
-    return super.a(paramDouble, paramBoolean);
+    return super.b(paramDouble, paramBoolean);
   }
   
-  public final boolean aO(float paramFloat)
+  public final boolean bM(float paramFloat)
   {
     boolean bool = false;
-    Log.i("MicroMsg.Video.BaseVideoView", "%s set play rate [%f]", new Object[] { bqf(), Float.valueOf(paramFloat) });
-    if ((this.pDQ instanceof AbstractVideoTextureView)) {
-      bool = ((AbstractVideoTextureView)this.pDQ).aO(paramFloat);
+    Log.i("MicroMsg.Video.BaseVideoView", "%s set play rate [%f]", new Object[] { bNL(), Float.valueOf(paramFloat) });
+    if ((this.sJc instanceof AbstractVideoTextureView)) {
+      bool = ((AbstractVideoTextureView)this.sJc).bM(paramFloat);
     }
     return bool;
   }
   
-  public final void bUF()
+  public final void cuV()
   {
-    if (this.pDQ != null)
+    if (this.sJc != null)
     {
-      Log.i("MicroMsg.Video.BaseVideoView", "%s preloadVideo url:%s, path:%s", new Object[] { bqf(), this.url, this.pDQ.getVideoPath() });
-      if (Util.isNullOrNil(this.pDQ.getVideoPath()))
+      Log.i("MicroMsg.Video.BaseVideoView", "%s preloadVideo url:%s, path:%s", new Object[] { bNL(), this.url, this.sJc.getVideoPath() });
+      if (Util.isNullOrNil(this.sJc.getVideoPath()))
       {
-        this.pDQ.setVideoPath(this.url);
-        this.pDW = false;
+        this.sJc.setVideoPath(this.url);
+        this.sJi = false;
       }
     }
   }
   
-  public final void c(boolean paramBoolean, String paramString, int paramInt)
+  protected final a eR(Context paramContext)
   {
-    this.bjq = paramBoolean;
-    this.url = paramString;
-    this.pvi = paramInt;
+    return eS(paramContext);
   }
   
-  protected final a dX(Context paramContext)
-  {
-    return dY(paramContext);
-  }
-  
-  protected abstract a dY(Context paramContext);
-  
-  public final void eN(int paramInt1, int paramInt2)
-  {
-    Log.i("MicroMsg.Video.BaseVideoView", "%s onInfo [%d %d]", new Object[] { bqf(), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if (paramInt1 == 701) {
-      showLoading();
-    }
-    while (paramInt1 != 702) {
-      return;
-    }
-    super.hideLoading();
-  }
+  protected abstract a eS(Context paramContext);
   
   public int getCacheTimeSec()
   {
     try
     {
-      if ((this.pDQ instanceof AbstractVideoTextureView))
+      if ((this.sJc instanceof AbstractVideoTextureView))
       {
-        int i = ((AbstractVideoTextureView)this.pDQ).getDownloadPercent();
+        int i = ((AbstractVideoTextureView)this.sJc).getDownloadPercent();
         int j = super.getVideoDurationSec();
         float f = j;
         return (int)(i * 1.0F / 100.0F * f);
@@ -104,22 +92,22 @@ public abstract class BaseVideoView
     }
     catch (Exception localException)
     {
-      Log.printErrStackTrace("MicroMsg.Video.BaseVideoView", localException, "%s get cache time sec error", new Object[] { bqf() });
+      Log.printErrStackTrace("MicroMsg.Video.BaseVideoView", localException, "%s get cache time sec error", new Object[] { bNL() });
     }
     return 0;
   }
   
   public int getVideoDurationSec()
   {
-    if (this.pvi <= 0) {
+    if (this.sAo <= 0) {
       return super.getVideoDurationSec();
     }
-    return this.pvi;
+    return this.sAo;
   }
   
   public int getVideoSource()
   {
-    return this.puP;
+    return this.szV;
   }
   
   public View getView()
@@ -135,13 +123,13 @@ public abstract class BaseVideoView
   public final boolean isLive()
   {
     boolean bool2 = false;
-    boolean bool3 = ayN();
+    boolean bool3 = cxs();
     int i;
     boolean bool1;
-    if (this.pDQ != null)
+    if (this.sJc != null)
     {
-      i = this.pDQ.getDuration();
-      if (!this.bjq) {
+      i = this.sJc.getDuration();
+      if (!this.ddk) {
         break label41;
       }
       bool1 = true;
@@ -165,7 +153,7 @@ public abstract class BaseVideoView
   {
     if (isLive())
     {
-      Log.i("MicroMsg.Video.BaseVideoView", "%s it is live video, do not completion", new Object[] { bqf() });
+      Log.i("MicroMsg.Video.BaseVideoView", "%s it is live video, do not completion", new Object[] { bNL() });
       stop();
       start();
     }
@@ -173,8 +161,20 @@ public abstract class BaseVideoView
     {
       return;
       super.onCompletion();
-    } while (!this.mfK);
-    a(0.0D, true);
+    } while (!this.oYG);
+    b(0.0D, true);
+  }
+  
+  public final void onInfo(int paramInt1, int paramInt2)
+  {
+    Log.i("MicroMsg.Video.BaseVideoView", "%s onInfo [%d %d]", new Object[] { bNL(), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if (paramInt1 == 701) {
+      showLoading();
+    }
+    while (paramInt1 != 702) {
+      return;
+    }
+    super.hideLoading();
   }
   
   public final void onUIPause()
@@ -184,14 +184,14 @@ public abstract class BaseVideoView
   
   public final void onUIResume()
   {
-    boolean bool1 = this.pDI;
+    boolean bool1 = this.sIU;
     super.onUIResume();
-    if ((this.pDQ != null) && ((this.pDQ instanceof AbstractVideoTextureView)))
+    if ((this.sJc != null) && ((this.sJc instanceof AbstractVideoTextureView)))
     {
-      if (!this.pDU) {
+      if (!this.sJg) {
         break label39;
       }
-      bqo();
+      bNU();
     }
     label39:
     boolean bool2;
@@ -201,35 +201,35 @@ public abstract class BaseVideoView
       bool2 = isShown();
       Log.i("MicroMsg.Video.BaseVideoView", "onUIResume, oldIsUIAvailable: %b, isShown: %b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
     } while ((bool1) || (!bool2));
-    ((AbstractVideoTextureView)this.pDQ).bXe();
+    ((AbstractVideoTextureView)this.sJc).cxp();
   }
   
   public void setLoop(boolean paramBoolean)
   {
-    this.mfK = paramBoolean;
+    this.oYG = paramBoolean;
   }
   
   public void setScaleType(d.h paramh)
   {
-    if ((this.pDQ instanceof AbstractVideoTextureView)) {
-      ((AbstractVideoTextureView)this.pDQ).setScaleType(paramh);
+    if ((this.sJc instanceof AbstractVideoTextureView)) {
+      ((AbstractVideoTextureView)this.sJc).setScaleType(paramh);
     }
   }
   
   public void setVideoSource(int paramInt)
   {
-    this.puP = paramInt;
+    this.szV = paramInt;
   }
   
   public final void start()
   {
-    if (this.pDQ != null)
+    if (this.sJc != null)
     {
-      Log.i("MicroMsg.Video.BaseVideoView", "%s start path [%s] [%s]", new Object[] { bqf(), this.pDQ.getVideoPath(), Util.getStack() });
-      if (Util.isNullOrNil(this.pDQ.getVideoPath()))
+      Log.i("MicroMsg.Video.BaseVideoView", "%s start path [%s] [%s]", new Object[] { bNL(), this.sJc.getVideoPath(), Util.getStack() });
+      if (Util.isNullOrNil(this.sJc.getVideoPath()))
       {
-        this.pDQ.setVideoPath(this.url);
-        this.pDW = true;
+        this.sJc.setVideoPath(this.url);
+        this.sJi = true;
         showLoading();
       }
     }
@@ -237,13 +237,13 @@ public abstract class BaseVideoView
     {
       return;
     }
-    this.pDW = true;
-    bqo();
+    this.sJi = true;
+    bNU();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.videoview.BaseVideoView
  * JD-Core Version:    0.7.0.1
  */

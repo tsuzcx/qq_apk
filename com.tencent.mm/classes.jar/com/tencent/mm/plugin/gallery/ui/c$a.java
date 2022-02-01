@@ -2,13 +2,14 @@ package com.tencent.mm.plugin.gallery.ui;
 
 import android.content.Context;
 import android.content.res.Resources;
+import androidx.core.content.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c$a
 {
-  boolean CbQ;
-  private int CbR;
-  private int CbS;
+  public boolean HNS;
+  private int HNT;
+  private int HNU;
   private int mColor;
   private Context mContext;
   private Resources mResources;
@@ -18,54 +19,48 @@ public final class c$a
     AppMethodBeat.i(111506);
     this.mContext = paramContext;
     this.mResources = paramContext.getResources();
-    this.CbQ = true;
-    this.CbR = 0;
-    this.CbS = 0;
+    this.HNS = true;
+    this.HNT = 0;
+    this.HNU = 0;
     this.mColor = -1;
     AppMethodBeat.o(111506);
   }
   
-  public final a Tc(@androidx.annotation.a int paramInt)
+  public final a WK(int paramInt)
   {
-    AppMethodBeat.i(244476);
-    this.mColor = androidx.core.content.a.w(this.mContext, paramInt);
-    AppMethodBeat.o(244476);
+    AppMethodBeat.i(289561);
+    this.mColor = a.w(this.mContext, paramInt);
+    AppMethodBeat.o(289561);
     return this;
   }
   
-  public final a Td(int paramInt)
+  public final a WL(int paramInt)
   {
-    AppMethodBeat.i(244477);
-    this.CbS = this.mResources.getDimensionPixelSize(paramInt);
-    AppMethodBeat.o(244477);
+    AppMethodBeat.i(289563);
+    this.HNU = this.mResources.getDimensionPixelSize(paramInt);
+    AppMethodBeat.o(289563);
     return this;
   }
   
-  public final a Te(int paramInt)
+  public final a WM(int paramInt)
   {
-    AppMethodBeat.i(244478);
-    this.CbR = this.mResources.getDimensionPixelSize(paramInt);
-    AppMethodBeat.o(244478);
+    AppMethodBeat.i(289564);
+    this.HNT = this.mResources.getDimensionPixelSize(paramInt);
+    AppMethodBeat.o(289564);
     return this;
   }
   
-  public final a euF()
+  public final c fBB()
   {
-    this.CbQ = false;
-    return this;
-  }
-  
-  public final c euG()
-  {
-    AppMethodBeat.i(244479);
-    c localc = new c(this.CbR, this.CbS, this.mColor, this.CbQ, (byte)0);
-    AppMethodBeat.o(244479);
+    AppMethodBeat.i(289566);
+    c localc = new c(this.HNT, this.HNU, this.mColor, this.HNS, (byte)0);
+    AppMethodBeat.o(289566);
     return localc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.c.a
  * JD-Core Version:    0.7.0.1
  */

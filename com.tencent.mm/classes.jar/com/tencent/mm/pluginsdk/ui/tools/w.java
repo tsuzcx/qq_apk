@@ -1,78 +1,41 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.widget.RelativeLayout.LayoutParams;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
+import com.tencent.mm.compatible.deviceinfo.af;
+import com.tencent.mm.compatible.deviceinfo.k;
+import com.tencent.mm.compatible.util.m;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class w
 {
-  private static int RxX = -1;
-  
-  public static void a(View paramView, VideoSightView paramVideoSightView)
+  public static i lG(Context paramContext)
   {
-    AppMethodBeat.i(116268);
-    if ((paramView == null) || (paramVideoSightView == null))
+    AppMethodBeat.i(116317);
+    if (Util.nullAs(af.lYj.lVl, "").equals("surface"))
     {
-      Log.e("VideoSightHelper", "null view object " + paramView + "," + paramVideoSightView);
-      AppMethodBeat.o(116268);
-      return;
+      Log.i("MicroMsg.VideoViewFactory", "match full type surface");
+      paramContext = new VideoSurfaceView(paramContext);
+      AppMethodBeat.o(116317);
+      return paramContext;
     }
-    if (paramView.getVisibility() == 0) {
-      paramVideoSightView.addOnLayoutChangeListener(new View.OnLayoutChangeListener()
-      {
-        public final void onLayoutChange(final View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, int paramAnonymousInt5, int paramAnonymousInt6, int paramAnonymousInt7, int paramAnonymousInt8)
-        {
-          AppMethodBeat.i(116267);
-          paramAnonymousInt1 = paramAnonymousInt4 - paramAnonymousInt2;
-          if ((paramAnonymousInt1 > 0) && (paramAnonymousInt8 - paramAnonymousInt6 != paramAnonymousInt1)) {
-            paramAnonymousView.post(new Runnable()
-            {
-              public final void run()
-              {
-                AppMethodBeat.i(116266);
-                int j = paramAnonymousView.getResources().getDisplayMetrics().heightPixels - paramAnonymousView.getHeight() >>> 1;
-                int i = (int)(j / 1.618D - (w.1.this.RxY.getHeight() >>> 1));
-                if (i >= 0)
-                {
-                  if (w.RxX < 0) {
-                    w.access$002(BackwardSupportUtil.BitmapFactory.fromDPToPix(paramAnonymousView.getContext(), 20.0F));
-                  }
-                  if (w.1.this.RxY.getHeight() + i + w.RxX <= j) {
-                    break label192;
-                  }
-                  i -= w.1.this.RxY.getHeight() + i + w.RxX - j;
-                }
-                label192:
-                for (;;)
-                {
-                  RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)w.1.this.RxY.getLayoutParams();
-                  if ((i > 0) && (i != localLayoutParams.bottomMargin))
-                  {
-                    Log.i("VideoSightHelper", "setting tip marginBottom ".concat(String.valueOf(i)));
-                    localLayoutParams.setMargins(localLayoutParams.leftMargin, localLayoutParams.topMargin, localLayoutParams.rightMargin, i);
-                    w.1.this.RxY.setLayoutParams(localLayoutParams);
-                  }
-                  AppMethodBeat.o(116266);
-                  return;
-                }
-              }
-            });
-          }
-          AppMethodBeat.o(116267);
-        }
-      });
+    if (m.aQq())
+    {
+      Log.i("MicroMsg.VideoViewFactory", "IS MTK platform");
+      paramContext = new VideoSightView(paramContext);
+      AppMethodBeat.o(116317);
+      return paramContext;
     }
-    AppMethodBeat.o(116268);
+    Log.i("MicroMsg.VideoViewFactory", "default settings, use sightview");
+    paramContext = new VideoSightView(paramContext);
+    AppMethodBeat.o(116317);
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.w
  * JD-Core Version:    0.7.0.1
  */

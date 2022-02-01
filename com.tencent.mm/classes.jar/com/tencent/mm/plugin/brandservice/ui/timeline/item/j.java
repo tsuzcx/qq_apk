@@ -1,187 +1,385 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.item;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.aa.a;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.ao.af;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.z;
+import com.tencent.mm.an.af;
+import com.tencent.mm.cp.f;
+import com.tencent.mm.cp.g;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.protocal.protobuf.amf;
-import com.tencent.mm.protocal.protobuf.eqg;
-import com.tencent.mm.protocal.protobuf.pg;
-import com.tencent.mm.protocal.protobuf.ph;
-import com.tencent.mm.protocal.protobuf.pi;
-import com.tencent.mm.protocal.protobuf.pj;
+import com.tencent.mm.protocal.protobuf.apx;
+import com.tencent.mm.protocal.protobuf.flj;
+import com.tencent.mm.protocal.protobuf.pt;
+import com.tencent.mm.protocal.protobuf.qn;
+import com.tencent.mm.protocal.protobuf.qo;
+import com.tencent.mm.protocal.protobuf.qp;
+import com.tencent.mm.protocal.protobuf.qq;
+import com.tencent.mm.protocal.protobuf.qr;
+import com.tencent.mm.protocal.protobuf.qs;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ac;
+import com.tencent.mm.storage.ac.a;
+import com.tencent.mm.storage.ac.b;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.atomic.AtomicInteger;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLCardUpdateMgr;", "", "()V", "STATE_IDLE", "", "STATE_UPDATING", "TAG", "", "isUpdateCardOpen", "", "()Z", "isUpdateCardOpen$delegate", "Lkotlin/Lazy;", "mgrState", "Ljava/util/concurrent/atomic/AtomicInteger;", "getMgrState", "()Ljava/util/concurrent/atomic/AtomicInteger;", "setMgrState", "(Ljava/util/concurrent/atomic/AtomicInteger;)V", "setQueue", "Ljava/util/HashSet;", "", "Lkotlin/collections/HashSet;", "getSetQueue", "()Ljava/util/HashSet;", "updateQueue", "Ljava/util/concurrent/ConcurrentLinkedDeque;", "Lcom/tencent/mm/protocal/protobuf/BizRecArticleCardLite;", "getUpdateQueue", "()Ljava/util/concurrent/ConcurrentLinkedDeque;", "addUpdateQueue", "", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "checkUpdate", "tryUpdate", "plugin-brandservice_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLCardUpdateMgr;", "", "()V", "STATE_IDLE", "", "STATE_UPDATING", "TAG", "", "hasUpdateQueue", "Ljava/util/HashSet;", "", "Lkotlin/collections/HashSet;", "getHasUpdateQueue", "()Ljava/util/HashSet;", "isUpdateCardOpen", "", "()Z", "isUpdateCardOpen$delegate", "Lkotlin/Lazy;", "mgrState", "Ljava/util/concurrent/atomic/AtomicInteger;", "getMgrState", "()Ljava/util/concurrent/atomic/AtomicInteger;", "setMgrState", "(Ljava/util/concurrent/atomic/AtomicInteger;)V", "setQueue", "getSetQueue", "updateQueue", "Ljava/util/concurrent/ConcurrentLinkedDeque;", "Lcom/tencent/mm/protocal/protobuf/BizRecArticleCardLite;", "getUpdateQueue", "()Ljava/util/concurrent/ConcurrentLinkedDeque;", "addUpdateQueue", "", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "checkUpdate", "clearUpdateQueue", "tryUpdate", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class j
 {
-  private static final HashSet<Long> sDA;
-  private static final kotlin.f sDB;
-  public static final j sDC;
-  private static AtomicInteger sDy;
-  private static final ConcurrentLinkedDeque<ph> sDz;
+  public static final j vJo;
+  private static AtomicInteger vJp;
+  private static final ConcurrentLinkedDeque<qq> vJq;
+  private static final HashSet<Long> vJr;
+  private static final HashSet<Long> vJs;
+  private static final kotlin.j vJt;
   
   static
   {
-    AppMethodBeat.i(266943);
-    sDC = new j();
-    sDy = new AtomicInteger(2);
-    sDz = new ConcurrentLinkedDeque();
-    sDA = new HashSet();
-    sDB = kotlin.g.ar((kotlin.g.a.a)a.sDD);
-    AppMethodBeat.o(266943);
+    AppMethodBeat.i(302766);
+    vJo = new j();
+    vJp = new AtomicInteger(2);
+    vJq = new ConcurrentLinkedDeque();
+    vJr = new HashSet();
+    vJs = new HashSet();
+    vJt = k.cm((kotlin.g.a.a)a.vJu);
+    AppMethodBeat.o(302766);
   }
   
-  public static AtomicInteger cAp()
+  private static final ah a(ab paramab, qs paramqs, Void paramVoid)
   {
-    return sDy;
+    AppMethodBeat.i(302749);
+    s.u(paramab, "$info");
+    s.u(paramqs, "$resp");
+    paramVoid = paramab.iYp();
+    if (paramVoid == null) {}
+    for (paramVoid = null; paramVoid == null; paramVoid = paramVoid.abLM)
+    {
+      paramab = ah.aiuX;
+      AppMethodBeat.o(302749);
+      return paramab;
+    }
+    switch (paramab.iYp().style)
+    {
+    default: 
+      paramVoid = paramab.iYp();
+      paramVoid.abLM.YFu = paramqs.YVM.YFu;
+      paramVoid.abLM.Zxn = paramqs.YVM.hAP;
+      paramVoid.abLM.YSB = paramqs.YVM.YSB;
+    }
+    for (paramVoid.lastUpdateTime = System.currentTimeMillis();; paramVoid.lastUpdateTime = System.currentTimeMillis())
+    {
+      paramab.b(paramab.iYp());
+      af.bHl().updateNotify((IAutoDBItem)paramab, false, new String[] { "msgId" });
+      paramab = ah.aiuX;
+      AppMethodBeat.o(302749);
+      return paramab;
+      paramVoid = paramab.iYp();
+      paramVoid.abLM.YFu = paramqs.YVM.YFu;
+      Object localObject1 = paramVoid.abLM.YSB;
+      s.s(localObject1, "extraInfo.BizInfo");
+      localObject1 = ((Iterable)localObject1).iterator();
+      int i = 0;
+      while (((Iterator)localObject1).hasNext())
+      {
+        Object localObject2 = ((Iterator)localObject1).next();
+        if (i < 0) {
+          kotlin.a.p.kkW();
+        }
+        localObject2 = (qo)localObject2;
+        if ((i < paramqs.YVM.YSB.size()) && (paramqs.YVM.YSB.get(i) != null))
+        {
+          paramVoid.abLM.YSB.set(i, paramqs.YVM.YSB.get(i));
+          ((qo)paramVoid.abLM.YSB.get(i)).YVA = ((qo)localObject2).YVA;
+          ((qo)paramVoid.abLM.YSB.get(i)).YVB = ((qo)localObject2).YVB;
+          Object localObject3 = ((qo)paramVoid.abLM.YSB.get(i)).YVI;
+          s.s(localObject3, "extraInfo.BizInfo[index].AppMsg");
+          localObject3 = ((Iterable)localObject3).iterator();
+          int j = 0;
+          while (((Iterator)localObject3).hasNext())
+          {
+            Object localObject4 = ((Iterator)localObject3).next();
+            if (j < 0) {
+              kotlin.a.p.kkW();
+            }
+            localObject4 = (qn)localObject4;
+            if ((((qo)localObject2).YVI != null) && (((qo)localObject2).YVI.get(j) != null))
+            {
+              qn localqn = (qn)((qo)localObject2).YVI.get(j);
+              ((qn)localObject4).YVA = localqn.YVA;
+              ((qn)localObject4).YVB = localqn.YVB;
+              if (((qn)localObject4).YFu != 1) {
+                ((qn)localObject4).YFu = localqn.YFu;
+              }
+              ((qn)localObject4).YVF = localqn.YVF;
+              ((qn)localObject4).YVE = localqn.YVE;
+            }
+            j += 1;
+          }
+        }
+        i += 1;
+      }
+    }
   }
   
-  public static HashSet<Long> cAq()
+  private static final ah a(ab paramab, ah paramah)
   {
-    return sDA;
+    AppMethodBeat.i(302754);
+    s.u(paramab, "$info");
+    paramah = new ac.a();
+    paramah.acFX = ac.b.acGb;
+    LinkedList localLinkedList = new LinkedList();
+    localLinkedList.add(paramab);
+    paramab = ah.aiuX;
+    paramah.list = ((List)localLinkedList);
+    af.bHl().a(paramah);
+    paramab = ah.aiuX;
+    AppMethodBeat.o(302754);
+    return paramab;
   }
   
-  private final void cAr()
+  private static final int c(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.c paramc, com.tencent.mm.am.p paramp)
   {
-    AppMethodBeat.i(266942);
-    if (sDz.size() <= 0)
+    AppMethodBeat.i(302761);
+    s.u(paramc, "rr");
+    s.u(paramp, "scene");
+    vJp.set(2);
+    vJo.ddr();
+    if ((paramInt1 != 0) || (paramInt2 != 0))
+    {
+      AppMethodBeat.o(302761);
+      return 0;
+    }
+    paramString = c.c.b(paramc.otC);
+    if ((paramString instanceof qs)) {}
+    for (paramString = (qs)paramString; paramString == null; paramString = null)
+    {
+      AppMethodBeat.o(302761);
+      return 0;
+    }
+    paramc = c.b.b(paramc.otB);
+    if ((paramc instanceof qr)) {}
+    for (paramc = (qr)paramc; paramc == null; paramc = null)
+    {
+      AppMethodBeat.o(302761);
+      return 0;
+    }
+    if (paramc.YVL.YVJ != paramString.YVM.YVJ)
+    {
+      AppMethodBeat.o(302761);
+      return 0;
+    }
+    paramc = af.bHl().aq(paramc.YVL.YVJ, "msgId");
+    if (paramc == null)
+    {
+      AppMethodBeat.o(302761);
+      return 0;
+    }
+    if ((paramString.YVM == null) || (Util.isNullOrNil((List)paramString.YVM.YSB)))
+    {
+      AppMethodBeat.o(302761);
+      return 0;
+    }
+    vJr.remove(Long.valueOf(paramc.field_msgId));
+    MultiProcessMMKV.getSingleMMKV("brandService").encode("BizRecommendCardRefreshIntervalSec", Math.min(60, paramString.YRq));
+    Log.i("MicroMsg.BizTLCardUpdateMgr", s.X("tryUpdate success msgId = ", Long.valueOf(paramc.field_msgId)));
+    g.jPX().h(new j..ExternalSyntheticLambda2(paramc, paramString)).b(new j..ExternalSyntheticLambda1(paramc));
+    AppMethodBeat.o(302761);
+    return 0;
+  }
+  
+  public static void ddq()
+  {
+    AppMethodBeat.i(302712);
+    vJs.clear();
+    AppMethodBeat.o(302712);
+  }
+  
+  private final void ddr()
+  {
+    AppMethodBeat.i(302742);
+    if (vJq.size() <= 0)
     {
       Log.i("MicroMsg.BizTLCardUpdateMgr", "tryUpdate size <= 0");
-      AppMethodBeat.o(266942);
+      AppMethodBeat.o(302742);
       return;
     }
     try
     {
-      int i = sDy.get();
+      int i = vJp.get();
       if (i == 1) {
         return;
       }
-      sDy.set(1);
-      Object localObject1 = x.aazN;
-      localObject1 = new d.a();
-      ((d.a)localObject1).c((com.tencent.mm.cd.a)new pi());
-      ((d.a)localObject1).d((com.tencent.mm.cd.a)new pj());
-      ((d.a)localObject1).TW("/cgi-bin/mmbiz-bin/timeline/bizrecommendarticle");
-      ((d.a)localObject1).vD(1084);
-      localObject1 = ((d.a)localObject1).bgN();
-      localObject2 = ((d)localObject1).bhX();
+      vJp.set(1);
+      Object localObject1 = ah.aiuX;
+      localObject1 = new com.tencent.mm.am.c.a();
+      ((com.tencent.mm.am.c.a)localObject1).otE = ((com.tencent.mm.bx.a)new qr());
+      ((com.tencent.mm.am.c.a)localObject1).otF = ((com.tencent.mm.bx.a)new qs());
+      ((com.tencent.mm.am.c.a)localObject1).uri = "/cgi-bin/mmbiz-bin/timeline/bizrecommendarticle";
+      ((com.tencent.mm.am.c.a)localObject1).funcId = 1084;
+      localObject1 = ((com.tencent.mm.am.c.a)localObject1).bEF();
+      localObject2 = c.b.b(((com.tencent.mm.am.c)localObject1).otB);
       if (localObject2 == null)
       {
-        localObject1 = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.BizRecommendArticleReq");
-        AppMethodBeat.o(266942);
+        localObject1 = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.BizRecommendArticleReq");
+        AppMethodBeat.o(302742);
         throw ((Throwable)localObject1);
       }
     }
     finally
     {
-      AppMethodBeat.o(266942);
+      AppMethodBeat.o(302742);
     }
-    Object localObject2 = (pi)localObject2;
-    ((pi)localObject2).RXP = ((ph)sDz.removeFirst());
-    Log.i("MicroMsg.BizTLCardUpdateMgr", "tryUpdate msgId = " + ((pi)localObject2).RXP.RXN);
-    com.tencent.mm.an.aa.a(locald, (aa.a)b.sDE);
-    AppMethodBeat.o(266942);
+    Object localObject2 = (qr)localObject2;
+    ((qr)localObject2).YVL = ((qq)vJq.removeFirst());
+    Log.i("MicroMsg.BizTLCardUpdateMgr", s.X("tryUpdate msgId = ", Long.valueOf(((qr)localObject2).YVL.YVJ)));
+    z.a(localc, j..ExternalSyntheticLambda0.INSTANCE);
+    AppMethodBeat.o(302742);
   }
   
-  public static final boolean k(z paramz)
+  public static final boolean j(ab paramab)
   {
     int i = 0;
-    AppMethodBeat.i(266941);
-    p.k(paramz, "info");
-    if ((paramz.hwL() == null) || (!paramz.hwB()))
+    AppMethodBeat.i(302726);
+    s.u(paramab, "info");
+    if ((paramab.iYp() == null) || (!paramab.iYf()))
     {
-      AppMethodBeat.o(266941);
+      AppMethodBeat.o(302726);
       return false;
     }
-    switch (paramz.hwL().style)
+    switch (paramab.iYp().style)
     {
     default: 
-      AppMethodBeat.o(266941);
+      AppMethodBeat.o(302726);
       return false;
     case 101: 
     case 102: 
     case 103: 
-      Log.i("MicroMsg.BizTLCardUpdateMgr", "checkUpdate msgId = " + paramz.field_msgId);
-      j localj = sDC;
-      p.k(paramz, "info");
-      Object localObject;
-      if ((((Boolean)sDB.getValue()).booleanValue()) && (paramz.hwB()) && (((b)h.ae(b.class)).a(b.a.vAG, 1) != 0))
+      Log.i("MicroMsg.BizTLCardUpdateMgr", s.X("checkUpdate msgId = ", Long.valueOf(paramab.field_msgId)));
+      j localj = vJo;
+      s.u(paramab, "info");
+      Object localObject2;
+      Object localObject1;
+      if ((((Boolean)vJt.getValue()).booleanValue()) && (paramab.iYf()) && (((com.tencent.mm.plugin.expt.b.c)h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(com.tencent.mm.plugin.expt.b.c.a.yOv, 1) != 0))
       {
-        eqg localeqg = paramz.hwL();
-        if (localeqg == null) {
-          break label276;
+        localObject2 = paramab.iYp();
+        if (localObject2 != null) {
+          break label222;
         }
-        localObject = localeqg.UsD;
-        if ((localObject != null) && (localeqg.UsF != null) && (!Util.isNullOrNil((List)localeqg.UsF.RVd)))
-        {
-          p.k(localeqg, "$this$isExpire");
-          int j = MultiProcessMMKV.getSingleMMKV("brandService").decodeInt("BizRecommendCardRefreshIntervalSec", 300);
-          if (Math.abs(System.currentTimeMillis() - localeqg.lastUpdateTime) / 1000L > j) {
-            i = 1;
-          }
-          if (i != 0) {
-            break label281;
-          }
+        localObject1 = null;
+        if ((localObject1 != null) && (((flj)localObject2).abLM != null) && (!Util.isNullOrNil((List)((flj)localObject2).abLM.YSB))) {
+          break label231;
         }
       }
       for (;;)
       {
-        AppMethodBeat.o(266941);
+        AppMethodBeat.o(302726);
         return true;
-        label276:
-        localObject = null;
+        label222:
+        localObject1 = ((flj)localObject2).abLK;
         break;
-        try
+        label231:
+        if (vJs.contains(Long.valueOf(paramab.field_msgId)))
         {
-          label281:
-          if (!sDA.contains(Long.valueOf(paramz.field_msgId)))
-          {
-            localObject = k.l(paramz);
-            sDA.add(Long.valueOf(((ph)localObject).RXN));
-            sDz.add(localObject);
-            Log.i("MicroMsg.BizTLCardUpdateMgr", "addUpdateQueue msgId = " + paramz.field_msgId + ", queue size = " + sDz.size());
+          s.s(localObject2, "wrapper");
+          s.u(localObject2, "<this>");
+          int j = MultiProcessMMKV.getSingleMMKV("brandService").decodeInt("BizRecommendCardRefreshIntervalSec", 300);
+          if (Math.abs(System.currentTimeMillis() - ((flj)localObject2).lastUpdateTime) / 1000L > j) {
+            i = 1;
           }
-          paramz = x.aazN;
-          localj.cAr();
+          if (i == 0)
+          {
+            Log.d("MicroMsg.BizTLCardUpdateMgr", "Has not expired, not to update now.");
+            continue;
+          }
         }
-        finally
+        vJs.add(Long.valueOf(paramab.field_msgId));
+        Object localObject3;
+        for (;;)
         {
-          AppMethodBeat.o(266941);
+          pt localpt;
+          try
+          {
+            if (vJr.contains(Long.valueOf(paramab.field_msgId))) {
+              break label717;
+            }
+            s.u(paramab, "<this>");
+            localObject1 = new qq();
+            ((qq)localObject1).YVJ = paramab.field_msgId;
+            ((qq)localObject1).bcb = paramab.acFD.style;
+            ((qq)localObject1).YSD = paramab.acFD.event;
+            ((qq)localObject1).YVK = paramab.acFD.hRR;
+            localObject2 = ((qq)localObject1).YSB;
+            localObject3 = paramab.iYp().abLM.YSB;
+            s.s(localObject3, "info.tlRecCardWrapper.extraInfo.BizInfo");
+            Object localObject4 = (Iterable)localObject3;
+            localObject3 = (Collection)new ArrayList(kotlin.a.p.a((Iterable)localObject4, 10));
+            localObject4 = ((Iterable)localObject4).iterator();
+            if (!((Iterator)localObject4).hasNext()) {
+              break;
+            }
+            Object localObject5 = (qo)((Iterator)localObject4).next();
+            localpt = new pt();
+            localpt.YRs = ((qo)localObject5).UserName;
+            LinkedList localLinkedList = localpt.YTk;
+            localObject5 = ((qo)localObject5).YVI;
+            s.s(localObject5, "info.AppMsg");
+            Object localObject6 = (Iterable)localObject5;
+            localObject5 = (Collection)new ArrayList(kotlin.a.p.a((Iterable)localObject6, 10));
+            localObject6 = ((Iterable)localObject6).iterator();
+            if (((Iterator)localObject6).hasNext())
+            {
+              ((Collection)localObject5).add(((qn)((Iterator)localObject6).next()).YQK);
+              continue;
+            }
+            localLinkedList.addAll((Collection)localObject5);
+          }
+          finally
+          {
+            AppMethodBeat.o(302726);
+          }
+          ((Collection)localObject3).add(localpt);
         }
+        ((LinkedList)localObject2).addAll((Collection)localObject3);
+        vJr.add(Long.valueOf(((qq)localObject1).YVJ));
+        vJq.add(localObject1);
+        Log.i("MicroMsg.BizTLCardUpdateMgr", "addUpdateQueue msgId = " + paramab.field_msgId + ", queue size = " + vJq.size());
+        label717:
+        paramab = ah.aiuX;
+        localj.ddr();
       }
     }
-    AppMethodBeat.o(266941);
+    AppMethodBeat.o(302726);
     return true;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    extends kotlin.g.b.q
+    extends u
     implements kotlin.g.a.a<Boolean>
   {
-    public static final a sDD;
+    public static final a vJu;
     
     static
     {
-      AppMethodBeat.i(266026);
-      sDD = new a();
-      AppMethodBeat.o(266026);
+      AppMethodBeat.i(302449);
+      vJu = new a();
+      AppMethodBeat.o(302449);
     }
     
     a()
@@ -189,87 +387,10 @@ public final class j
       super();
     }
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "errType", "errCode", "errMsg", "", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "callback"})
-  static final class b
-    implements aa.a
-  {
-    public static final b sDE;
-    
-    static
-    {
-      AppMethodBeat.i(266917);
-      sDE = new b();
-      AppMethodBeat.o(266917);
-    }
-    
-    public final int a(int paramInt1, int paramInt2, String paramString, d paramd, final com.tencent.mm.an.q paramq)
-    {
-      Object localObject = null;
-      AppMethodBeat.i(266916);
-      p.k(paramd, "rr");
-      p.k(paramq, "scene");
-      paramString = j.sDC;
-      j.cAp().set(2);
-      j.a(j.sDC);
-      if ((paramInt1 != 0) || (paramInt2 != 0))
-      {
-        AppMethodBeat.o(266916);
-        return 0;
-      }
-      paramq = paramd.bhY();
-      paramString = paramq;
-      if (!(paramq instanceof pj)) {
-        paramString = null;
-      }
-      paramq = (pj)paramString;
-      if (paramq == null)
-      {
-        AppMethodBeat.o(266916);
-        return 0;
-      }
-      paramString = paramd.bhX();
-      if (!(paramString instanceof pi)) {
-        paramString = localObject;
-      }
-      for (;;)
-      {
-        paramString = (pi)paramString;
-        if (paramString == null)
-        {
-          AppMethodBeat.o(266916);
-          return 0;
-        }
-        if (paramString.RXP.RXN != paramq.RXQ.RXN)
-        {
-          AppMethodBeat.o(266916);
-          return 0;
-        }
-        paramString = af.bjB().Uw(paramString.RXP.RXN);
-        if (paramString == null)
-        {
-          AppMethodBeat.o(266916);
-          return 0;
-        }
-        if ((paramq.RXQ == null) || (Util.isNullOrNil((List)paramq.RXQ.RVd)))
-        {
-          AppMethodBeat.o(266916);
-          return 0;
-        }
-        paramd = j.sDC;
-        j.cAq().remove(Long.valueOf(paramString.field_msgId));
-        MultiProcessMMKV.getSingleMMKV("brandService").encode("BizRecommendCardRefreshIntervalSec", Math.min(300, paramq.RTQ));
-        Log.i("MicroMsg.BizTLCardUpdateMgr", "tryUpdate success msgId = " + paramString.field_msgId);
-        com.tencent.mm.cw.g.ijP().h((com.tencent.mm.vending.c.a)new com.tencent.mm.vending.c.a() {}).b((com.tencent.mm.vending.c.a)new j.b.2(paramString));
-        AppMethodBeat.o(266916);
-        return 0;
-      }
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.item.j
  * JD-Core Version:    0.7.0.1
  */

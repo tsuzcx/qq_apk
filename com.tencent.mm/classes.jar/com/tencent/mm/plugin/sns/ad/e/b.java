@@ -7,7 +7,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 public final class b
   implements a
 {
-  public final void a(int paramInt, Object... paramVarArgs)
+  public final void b(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(94967);
     switch (paramInt)
@@ -18,11 +18,11 @@ public final class b
       return;
     case 0: 
     case 1: 
-      h.IzE.a(11855, paramVarArgs);
+      h.OAn.b(11855, paramVarArgs);
       AppMethodBeat.o(94967);
       return;
     }
-    h.IzE.a(14646, paramVarArgs);
+    h.OAn.b(14646, paramVarArgs);
     AppMethodBeat.o(94967);
   }
   
@@ -31,10 +31,10 @@ public final class b
     return 11855;
   }
   
-  public final void v(Object... paramVarArgs)
+  public final void x(Object... paramVarArgs)
   {
     AppMethodBeat.i(94966);
-    a(0, paramVarArgs);
+    b(0, paramVarArgs);
     AppMethodBeat.o(94966);
   }
 }

@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.talkroom.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.ako;
-import com.tencent.mm.protocal.protobuf.akp;
-import com.tencent.mm.protocal.protobuf.eqt;
-import com.tencent.mm.protocal.protobuf.equ;
+import com.tencent.mm.protocal.protobuf.any;
+import com.tencent.mm.protocal.protobuf.anz;
+import com.tencent.mm.protocal.protobuf.flx;
+import com.tencent.mm.protocal.protobuf.fly;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
@@ -20,69 +20,69 @@ import java.util.LinkedList;
 public final class a
   extends f
 {
-  public long DPJ;
-  private final String Enu;
-  public LinkedList<eqt> MkA;
-  public LinkedList<equ> MkS;
-  public int Mkx;
-  public int Mky;
-  private i callback;
+  public long Hnt;
+  private final String Kgc;
+  public int SNS;
+  public int SNT;
+  public LinkedList<flx> SNV;
+  public LinkedList<fly> SOm;
+  private h callback;
   public int roomId;
-  private final d rr;
+  private final c rr;
   private int sceneType;
   
   public a(String paramString, int paramInt)
   {
     AppMethodBeat.i(29549);
     this.sceneType = 0;
-    d.a locala = new d.a();
+    c.a locala = new c.a();
     this.sceneType = paramInt;
-    locala.lBU = new ako();
-    locala.lBV = new akp();
+    locala.otE = new any();
+    locala.otF = new anz();
     locala.uri = "/cgi-bin/micromsg-bin/entertalkroom";
     locala.funcId = 332;
-    locala.lBW = 147;
+    locala.otG = 147;
     locala.respCmdId = 1000000147;
-    this.rr = locala.bgN();
-    ((ako)d.b.b(this.rr.lBR)).Svt = paramString;
-    ((ako)d.b.b(this.rr.lBR)).CPw = paramInt;
-    this.Enu = paramString;
+    this.rr = locala.bEF();
+    ((any)c.b.b(this.rr.otB)).Zvy = paramString;
+    ((any)c.b.b(this.rr.otB)).IJG = paramInt;
+    this.Kgc = paramString;
     AppMethodBeat.o(29549);
   }
   
-  private static LinkedList<equ> bN(LinkedList<equ> paramLinkedList)
+  private static LinkedList<fly> bW(LinkedList<fly> paramLinkedList)
   {
     AppMethodBeat.i(29552);
     LinkedList localLinkedList = new LinkedList();
     paramLinkedList = paramLinkedList.iterator();
     while (paramLinkedList.hasNext())
     {
-      equ localequ = (equ)paramLinkedList.next();
-      if (!Util.isNullOrNil(localequ.UserName)) {
-        localLinkedList.add(localequ);
+      fly localfly = (fly)paramLinkedList.next();
+      if (!Util.isNullOrNil(localfly.UserName)) {
+        localLinkedList.add(localfly);
       }
     }
     AppMethodBeat.o(29552);
     return localLinkedList;
   }
   
-  private static LinkedList<eqt> bO(LinkedList<eqt> paramLinkedList)
+  private static LinkedList<flx> bX(LinkedList<flx> paramLinkedList)
   {
     AppMethodBeat.i(29553);
     LinkedList localLinkedList = new LinkedList();
     paramLinkedList = paramLinkedList.iterator();
     while (paramLinkedList.hasNext()) {
-      localLinkedList.add((eqt)paramLinkedList.next());
+      localLinkedList.add((flx)paramLinkedList.next());
     }
     AppMethodBeat.o(29553);
     return localLinkedList;
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(29550);
     Log.d("MicroMsg.NetSceneEnterTalkRoom", "doScene %d", new Object[] { Integer.valueOf(this.sceneType) });
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(29550);
     return i;
@@ -93,12 +93,12 @@ public final class a
     return 332;
   }
   
-  public final String giK()
+  public final String hCL()
   {
-    return this.Enu;
+    return this.Kgc;
   }
   
-  public final int giL()
+  public final int hCM()
   {
     return this.sceneType;
   }
@@ -113,14 +113,14 @@ public final class a
       AppMethodBeat.o(29551);
       return;
     }
-    params = (akp)d.c.b(this.rr.lBS);
+    params = (anz)c.c.b(this.rr.otC);
     Log.i("MicroMsg.NetSceneEnterTalkRoom", "resp %s", new Object[] { params.toString() });
-    this.roomId = params.Svu;
-    this.DPJ = params.Svv;
-    this.Mkx = params.Svw;
-    this.Mky = params.Svy;
-    this.MkS = bN(params.RIk);
-    this.MkA = bO(params.RNx);
+    this.roomId = params.Zvz;
+    this.Hnt = params.ZvA;
+    this.SNS = params.ZvB;
+    this.SNT = params.ZvD;
+    this.SOm = bW(params.YFm);
+    this.SNV = bX(params.YKL);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(29551);
   }

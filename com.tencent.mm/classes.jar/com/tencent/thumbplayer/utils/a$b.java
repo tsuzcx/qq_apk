@@ -6,21 +6,21 @@ final class a$b
 {
   static byte[] copyOfRange(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(222098);
+    AppMethodBeat.i(227141);
     int i = paramInt2 - paramInt1;
     if (i < 0)
     {
       paramArrayOfByte = new IllegalArgumentException(paramInt1 + " > " + paramInt2);
-      AppMethodBeat.o(222098);
+      AppMethodBeat.o(227141);
       throw paramArrayOfByte;
     }
     byte[] arrayOfByte = new byte[i];
     System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, 0, Math.min(paramArrayOfByte.length - paramInt1, i));
-    AppMethodBeat.o(222098);
+    AppMethodBeat.o(227141);
     return arrayOfByte;
   }
   
-  static int dx(byte[] paramArrayOfByte)
+  static int dz(byte[] paramArrayOfByte)
   {
     int i = 0;
     while (i < paramArrayOfByte.length)
@@ -35,21 +35,21 @@ final class a$b
   
   static boolean hasDateInfo(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(222090);
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 15) && (paramArrayOfByte[13] == 45) && (dx(paramArrayOfByte) > 14))
+    AppMethodBeat.i(227125);
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 15) && (paramArrayOfByte[13] == 45) && (dz(paramArrayOfByte) > 14))
     {
-      AppMethodBeat.o(222090);
+      AppMethodBeat.o(227125);
       return true;
     }
-    AppMethodBeat.o(222090);
+    AppMethodBeat.o(227125);
     return false;
   }
   
   static boolean isDue(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(222089);
+    AppMethodBeat.i(227112);
     if (hasDateInfo(paramArrayOfByte)) {
-      paramArrayOfByte = new String[] { new String(copyOfRange(paramArrayOfByte, 0, 13)), new String(copyOfRange(paramArrayOfByte, 14, dx(paramArrayOfByte))) };
+      paramArrayOfByte = new String[] { new String(copyOfRange(paramArrayOfByte, 0, 13)), new String(copyOfRange(paramArrayOfByte, 14, dz(paramArrayOfByte))) };
     }
     while (paramArrayOfByte != null)
     {
@@ -72,17 +72,17 @@ final class a$b
         long l3 = System.currentTimeMillis();
         if (l3 > l1 + l2 * 1000L)
         {
-          AppMethodBeat.o(222089);
+          AppMethodBeat.o(227112);
           return true;
         }
       }
       catch (Exception paramArrayOfByte)
       {
-        AppMethodBeat.o(222089);
+        AppMethodBeat.o(227112);
         return false;
       }
     }
-    AppMethodBeat.o(222089);
+    AppMethodBeat.o(227112);
     return false;
   }
 }

@@ -4,16 +4,16 @@ public final class d
 {
   public int currentTime = -1;
   public int duration = -1;
-  public String fmB;
-  public int fod = 0;
-  public boolean lAa = false;
-  public int lAb = -1;
-  public String lzT = null;
-  public boolean lzZ = false;
+  public String hqM;
+  public boolean orA = false;
+  public boolean orB = false;
+  public int orC = -1;
+  public String oru = null;
+  public int startTime = 0;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.al.d
  * JD-Core Version:    0.7.0.1
  */

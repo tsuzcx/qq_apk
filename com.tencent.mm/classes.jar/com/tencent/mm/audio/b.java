@@ -5,127 +5,122 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.audio.c.a.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.sdk.platformtools.MMHandler.Callback;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/audio/SceneVoiceRecorderAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseRecorderAudioManager;", "onStartRecord", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isImmediatelyResponse", "", "(Lkotlin/jvm/functions/Function1;)V", "isRequestBluetoothStart", "getOnStartRecord", "()Lkotlin/jvm/functions/Function1;", "setOnStartRecord", "startRecordHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "onAudioDeviceStateChanged", "status", "", "releaseAudioRecordDevice", "requestAudioRecordDevice", "Companion", "plugin-audiologic_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/audio/SceneVoiceRecorderAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseRecorderAudioManager;", "onStartRecord", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isImmediatelyResponse", "", "(Lkotlin/jvm/functions/Function1;)V", "isRequestBluetoothStart", "getOnStartRecord", "()Lkotlin/jvm/functions/Function1;", "setOnStartRecord", "startRecordHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "onAudioDeviceStateChanged", "status", "", "releaseAudioRecordDevice", "requestAudioRecordDevice", "Companion", "plugin-audiologic_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
   extends com.tencent.mm.plugin.audio.b.d
 {
-  public static final b.a fmv;
-  private final MMHandler fms;
-  private boolean fmt;
-  kotlin.g.a.b<? super Boolean, x> fmu;
+  public static final b.a hqE;
+  private kotlin.g.a.b<? super Boolean, ah> hqF;
+  private final MMHandler hqG;
+  private boolean hqH;
   
   static
   {
-    AppMethodBeat.i(226388);
-    fmv = new b.a((byte)0);
-    AppMethodBeat.o(226388);
+    AppMethodBeat.i(236154);
+    hqE = new b.a((byte)0);
+    AppMethodBeat.o(236154);
   }
   
-  public b(kotlin.g.a.b<? super Boolean, x> paramb)
+  public b(kotlin.g.a.b<? super Boolean, ah> paramb)
   {
-    AppMethodBeat.i(226386);
-    this.fmu = paramb;
-    com.tencent.mm.plugin.audio.d.b.crG();
-    com.tencent.mm.plugin.audio.d.d.crG();
-    paramb = com.tencent.mm.plugin.audio.c.a.rJX;
+    AppMethodBeat.i(236148);
+    this.hqF = paramb;
+    com.tencent.mm.plugin.audio.d.b.cUq();
+    com.tencent.mm.plugin.audio.d.d.cUq();
+    paramb = com.tencent.mm.plugin.audio.c.a.uVi;
     a.a.a((com.tencent.mm.plugin.audio.b.a)this, "record");
-    this.fms = new MMHandler((MMHandler.Callback)new b(this));
-    AppMethodBeat.o(226386);
+    this.hqG = new MMHandler(new b..ExternalSyntheticLambda0(this));
+    AppMethodBeat.o(236148);
   }
   
-  public final void acU()
+  private static final boolean a(b paramb, Message paramMessage)
   {
-    AppMethodBeat.i(226378);
-    Object localObject = com.tencent.mm.plugin.audio.c.a.rJX;
+    AppMethodBeat.i(236151);
+    s.u(paramb, "this$0");
+    s.u(paramMessage, "it");
+    paramb.hqF.invoke(Boolean.FALSE);
+    AppMethodBeat.o(236151);
+    return false;
+  }
+  
+  public final void aEU()
+  {
+    AppMethodBeat.i(236159);
+    Object localObject = com.tencent.mm.plugin.audio.c.a.uVi;
     a.a.a((com.tencent.mm.plugin.audio.b.a)this, "record");
     Log.i("MicroMsg.SceneVoiceRecorderAudioManager", "some one has been request audio to record");
-    localObject = com.tencent.mm.plugin.audio.c.a.rJX;
-    localObject = com.tencent.mm.plugin.audio.d.b.rKe;
-    if (com.tencent.mm.plugin.audio.d.b.crr())
+    localObject = com.tencent.mm.plugin.audio.c.a.uVi;
+    localObject = com.tencent.mm.plugin.audio.d.b.uVo;
+    if (com.tencent.mm.plugin.audio.d.b.cUa())
     {
-      localObject = com.tencent.mm.plugin.audio.d.b.rKe;
-      if (com.tencent.mm.plugin.audio.d.b.crH())
+      localObject = com.tencent.mm.plugin.audio.d.b.uVo;
+      if (com.tencent.mm.plugin.audio.d.b.cUr())
       {
-        if (crm())
+        if (cTV())
         {
-          this.fmt = true;
-          this.fmu.invoke(Boolean.TRUE);
+          this.hqH = true;
+          this.hqF.invoke(Boolean.TRUE);
           b("record", Integer.valueOf(1));
-          AppMethodBeat.o(226378);
+          AppMethodBeat.o(236159);
           return;
         }
-        this.fmt = true;
+        this.hqH = true;
         if (b("record", Integer.valueOf(4)) != -1)
         {
-          this.fms.sendEmptyMessageDelayed(0, 1000L);
-          AppMethodBeat.o(226378);
+          this.hqG.sendEmptyMessageDelayed(0, 1000L);
+          AppMethodBeat.o(236159);
           return;
         }
-        this.fmu.invoke(Boolean.TRUE);
-        AppMethodBeat.o(226378);
+        this.hqF.invoke(Boolean.TRUE);
+        AppMethodBeat.o(236159);
         return;
       }
     }
-    this.fmu.invoke(Boolean.TRUE);
-    AppMethodBeat.o(226378);
+    this.hqF.invoke(Boolean.TRUE);
+    AppMethodBeat.o(236159);
   }
   
-  public final void acV()
+  public final void aEV()
   {
-    AppMethodBeat.i(226381);
-    this.fms.removeCallbacksAndMessages(null);
-    if (this.fmt)
+    AppMethodBeat.i(236162);
+    this.hqG.removeCallbacksAndMessages(null);
+    if (this.hqH)
     {
-      anT("record");
-      this.fmt = false;
+      ahq("record");
+      this.hqH = false;
     }
-    a.a locala = com.tencent.mm.plugin.audio.c.a.rJX;
-    a.a.anX("record");
-    AppMethodBeat.o(226381);
+    a.a locala = com.tencent.mm.plugin.audio.c.a.uVi;
+    a.a.ahu("record");
+    AppMethodBeat.o(236162);
   }
   
-  public final void ko(int paramInt)
+  public final void nW(int paramInt)
   {
-    AppMethodBeat.i(226383);
-    super.ko(paramInt);
+    AppMethodBeat.i(236165);
+    super.nW(paramInt);
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(226383);
+      AppMethodBeat.o(236165);
       return;
-      this.fms.removeCallbacksAndMessages(null);
-      if (anU("record"))
+      this.hqG.removeCallbacksAndMessages(null);
+      if (ahr("record"))
       {
         Log.i("MicroMsg.SceneVoiceRecorderAudioManager", "checkIfSomeRequestAvailable available");
-        this.fmu.invoke(Boolean.TRUE);
+        this.hqF.invoke(Boolean.TRUE);
       }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/os/Message;", "kotlin.jvm.PlatformType", "handleMessage"})
-  static final class b
-    implements MMHandler.Callback
-  {
-    b(b paramb) {}
-    
-    public final boolean handleMessage(Message paramMessage)
-    {
-      AppMethodBeat.i(227763);
-      this.fmw.fmu.invoke(Boolean.FALSE);
-      AppMethodBeat.o(227763);
-      return false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.audio.b
  * JD-Core Version:    0.7.0.1
  */

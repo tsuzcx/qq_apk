@@ -10,21 +10,21 @@ import java.util.List;
 public final class g
   extends b
 {
-  private final f bnl;
-  private final m bnm;
-  private final e.a bnn;
-  private final a bno;
-  private final List<d> bnp;
+  private final f dhg;
+  private final m dhh;
+  private final e.a dhi;
+  private final a dhj;
+  private final List<d> dhk;
   
   public g()
   {
     super("WebvttDecoder");
     AppMethodBeat.i(92908);
-    this.bnl = new f();
-    this.bnm = new m();
-    this.bnn = new e.a();
-    this.bno = new a();
-    this.bnp = new ArrayList();
+    this.dhg = new f();
+    this.dhh = new m();
+    this.dhi = new e.a();
+    this.dhj = new a();
+    this.dhk = new ArrayList();
     AppMethodBeat.o(92908);
   }
   

@@ -1,6 +1,5 @@
 package com.tencent.tinker.loader.shareutil;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.Signature;
 import com.tencent.tinker.loader.TinkerRuntimeException;
@@ -49,7 +48,6 @@ public class ShareSecurityCheck
     return false;
   }
   
-  @SuppressLint({"PackageManagerGetSignatures"})
   private void init(Context paramContext)
   {
     try
@@ -108,49 +106,49 @@ public class ShareSecurityCheck
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokestatic 166	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:isLegalFile	(Ljava/io/File;)Z
+    //   1: invokestatic 162	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:isLegalFile	(Ljava/io/File;)Z
     //   4: ifne +5 -> 9
     //   7: iconst_0
     //   8: ireturn
-    //   9: new 168	java/util/jar/JarFile
+    //   9: new 164	java/util/jar/JarFile
     //   12: dup
     //   13: aload_1
-    //   14: invokespecial 171	java/util/jar/JarFile:<init>	(Ljava/io/File;)V
+    //   14: invokespecial 167	java/util/jar/JarFile:<init>	(Ljava/io/File;)V
     //   17: astore 4
     //   19: aload 4
     //   21: astore_3
     //   22: aload 4
-    //   24: invokevirtual 175	java/util/jar/JarFile:entries	()Ljava/util/Enumeration;
+    //   24: invokevirtual 171	java/util/jar/JarFile:entries	()Ljava/util/Enumeration;
     //   27: astore 5
     //   29: aload 4
     //   31: astore_3
     //   32: aload 5
-    //   34: invokeinterface 180 1 0
+    //   34: invokeinterface 176 1 0
     //   39: ifeq +137 -> 176
     //   42: aload 4
     //   44: astore_3
     //   45: aload 5
-    //   47: invokeinterface 184 1 0
-    //   52: checkcast 186	java/util/jar/JarEntry
+    //   47: invokeinterface 180 1 0
+    //   52: checkcast 182	java/util/jar/JarEntry
     //   55: astore 6
     //   57: aload 6
     //   59: ifnull -30 -> 29
     //   62: aload 4
     //   64: astore_3
     //   65: aload 6
-    //   67: invokevirtual 189	java/util/jar/JarEntry:getName	()Ljava/lang/String;
+    //   67: invokevirtual 185	java/util/jar/JarEntry:getName	()Ljava/lang/String;
     //   70: astore 7
     //   72: aload 4
     //   74: astore_3
     //   75: aload 7
-    //   77: ldc 191
-    //   79: invokevirtual 147	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   77: ldc 187
+    //   79: invokevirtual 143	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   82: ifne -53 -> 29
     //   85: aload 4
     //   87: astore_3
     //   88: aload 7
-    //   90: ldc 193
-    //   92: invokevirtual 196	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   90: ldc 189
+    //   92: invokevirtual 192	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   95: ifeq -66 -> 29
     //   98: aload 4
     //   100: astore_3
@@ -159,13 +157,13 @@ public class ShareSecurityCheck
     //   105: aload 7
     //   107: aload 4
     //   109: aload 6
-    //   111: invokestatic 200	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:loadDigestes	(Ljava/util/jar/JarFile;Ljava/util/jar/JarEntry;)Ljava/lang/String;
-    //   114: invokevirtual 159	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   111: invokestatic 196	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:loadDigestes	(Ljava/util/jar/JarFile;Ljava/util/jar/JarEntry;)Ljava/lang/String;
+    //   114: invokevirtual 155	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   117: pop
     //   118: aload 4
     //   120: astore_3
     //   121: aload 6
-    //   123: invokevirtual 204	java/util/jar/JarEntry:getCertificates	()[Ljava/security/cert/Certificate;
+    //   123: invokevirtual 200	java/util/jar/JarEntry:getCertificates	()[Ljava/security/cert/Certificate;
     //   126: astore 6
     //   128: aload 6
     //   130: ifnull +18 -> 148
@@ -174,12 +172,12 @@ public class ShareSecurityCheck
     //   136: aload_0
     //   137: aload_1
     //   138: aload 6
-    //   140: invokespecial 206	com/tencent/tinker/loader/shareutil/ShareSecurityCheck:check	(Ljava/io/File;[Ljava/security/cert/Certificate;)Z
+    //   140: invokespecial 202	com/tencent/tinker/loader/shareutil/ShareSecurityCheck:check	(Ljava/io/File;[Ljava/security/cert/Certificate;)Z
     //   143: istore_2
     //   144: iload_2
     //   145: ifne -116 -> 29
     //   148: aload 4
-    //   150: invokevirtual 209	java/util/jar/JarFile:close	()V
+    //   150: invokevirtual 205	java/util/jar/JarFile:close	()V
     //   153: iconst_0
     //   154: ireturn
     //   155: astore_3
@@ -195,7 +193,7 @@ public class ShareSecurityCheck
     //   170: invokestatic 70	com/tencent/tinker/loader/shareutil/ShareTinkerLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   173: goto -20 -> 153
     //   176: aload 4
-    //   178: invokevirtual 209	java/util/jar/JarFile:close	()V
+    //   178: invokevirtual 205	java/util/jar/JarFile:close	()V
     //   181: iconst_1
     //   182: ireturn
     //   183: astore_3
@@ -213,9 +211,9 @@ public class ShareSecurityCheck
     //   204: astore 5
     //   206: aconst_null
     //   207: astore_3
-    //   208: new 101	com/tencent/tinker/loader/TinkerRuntimeException
+    //   208: new 98	com/tencent/tinker/loader/TinkerRuntimeException
     //   211: dup
-    //   212: ldc 211
+    //   212: ldc 207
     //   214: iconst_2
     //   215: anewarray 4	java/lang/Object
     //   218: dup
@@ -226,12 +224,12 @@ public class ShareSecurityCheck
     //   225: dup
     //   226: iconst_1
     //   227: aload_1
-    //   228: invokevirtual 214	java/io/File:length	()J
-    //   231: invokestatic 220	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   228: invokevirtual 210	java/io/File:length	()J
+    //   231: invokestatic 216	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   234: aastore
-    //   235: invokestatic 224	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   235: invokestatic 220	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   238: aload 5
-    //   240: invokespecial 111	com/tencent/tinker/loader/TinkerRuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   240: invokespecial 108	com/tencent/tinker/loader/TinkerRuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   243: athrow
     //   244: astore 5
     //   246: aload_3
@@ -241,7 +239,7 @@ public class ShareSecurityCheck
     //   252: aload 4
     //   254: ifnull +8 -> 262
     //   257: aload 4
-    //   259: invokevirtual 209	java/util/jar/JarFile:close	()V
+    //   259: invokevirtual 205	java/util/jar/JarFile:close	()V
     //   262: aload_3
     //   263: athrow
     //   264: astore 4
@@ -314,7 +312,7 @@ public class ShareSecurityCheck
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.loader.shareutil.ShareSecurityCheck
  * JD-Core Version:    0.7.0.1
  */

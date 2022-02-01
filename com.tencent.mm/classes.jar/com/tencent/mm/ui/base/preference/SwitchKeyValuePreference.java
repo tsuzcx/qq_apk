@@ -6,12 +6,12 @@ import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ah.a.h;
-import com.tencent.mm.ui.tools.v;
+import com.tencent.mm.ui.tools.u;
 
 public class SwitchKeyValuePreference
   extends Preference
 {
-  private TextView GZI;
+  private TextView MXN;
   private boolean enable;
   
   public SwitchKeyValuePreference(Context paramContext, AttributeSet paramAttributeSet)
@@ -31,22 +31,22 @@ public class SwitchKeyValuePreference
   private void updateView()
   {
     AppMethodBeat.i(142678);
-    if (this.GZI == null)
+    if (this.MXN == null)
     {
       AppMethodBeat.o(142678);
       return;
     }
     if (this.enable)
     {
-      this.GZI.setTextColor(v.lC(this.mContext));
+      this.MXN.setTextColor(u.nF(this.mContext));
       AppMethodBeat.o(142678);
       return;
     }
-    this.GZI.setTextColor(v.lD(this.mContext));
+    this.MXN.setTextColor(u.nG(this.mContext));
     AppMethodBeat.o(142678);
   }
   
-  public final void FY(boolean paramBoolean)
+  public final void LK(boolean paramBoolean)
   {
     AppMethodBeat.i(142677);
     this.enable = paramBoolean;
@@ -58,7 +58,7 @@ public class SwitchKeyValuePreference
   {
     AppMethodBeat.i(142676);
     super.onBindView(paramView);
-    this.GZI = ((TextView)paramView.findViewById(16908304));
+    this.MXN = ((TextView)paramView.findViewById(16908304));
     updateView();
     AppMethodBeat.o(142676);
   }

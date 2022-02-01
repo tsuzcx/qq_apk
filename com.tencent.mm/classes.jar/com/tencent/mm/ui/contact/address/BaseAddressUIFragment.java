@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.contact.address;
 
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -9,16 +10,24 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.ui.AbstractTabChildActivity.AbStractTabFragment;
 import com.tencent.mm.ui.LauncherUI;
-import com.tencent.mm.ui.ax;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.bf;
 
 public abstract class BaseAddressUIFragment
   extends AbstractTabChildActivity.AbStractTabFragment
 {
   private int getTopHeight()
   {
-    int j = ax.ew(getContext());
-    int i = ax.F(getContext(), -1);
+    int j = bf.fs(getContext());
+    int i = bf.I(getContext(), -1);
     View localView = getView().getRootView().findViewById(R.h.action_bar_container);
+    if (aw.jkY())
+    {
+      if (localView != null) {
+        return localView.getTop() + j;
+      }
+      return i + j;
+    }
     if ((Build.VERSION.SDK_INT >= 24) && (LauncherUI.getInstance() != null)) {}
     for (boolean bool1 = LauncherUI.getInstance().isInMultiWindowMode();; bool1 = false)
     {
@@ -27,11 +36,11 @@ public abstract class BaseAddressUIFragment
       {
         localSharedPreferences = MMApplicationContext.getDefaultPreference();
         if (localSharedPreferences == null) {
-          break label158;
+          break label181;
         }
       }
-      label153:
-      label158:
+      label176:
+      label181:
       for (boolean bool2 = localSharedPreferences.getBoolean("Main_need_read_top_margin", false);; bool2 = false)
       {
         if (bool2)
@@ -43,7 +52,7 @@ public abstract class BaseAddressUIFragment
         }
         if (bool1) {
           if (localView == null) {
-            break label153;
+            break label176;
           }
         }
         for (i = localView.getTop();; i = 0)
@@ -55,63 +64,63 @@ public abstract class BaseAddressUIFragment
     }
   }
   
-  public abstract void GH(boolean paramBoolean);
+  public abstract void Mw(boolean paramBoolean);
   
   public abstract String getLogTag();
   
-  public void gkE() {}
+  public void hFp() {}
   
-  public void gkF() {}
+  public void hFq() {}
   
-  public void hFb() {}
+  public void jhn() {}
   
-  public void hFc() {}
+  public void jho() {}
   
-  public void hFd() {}
+  public void jhp() {}
   
-  public void hFe() {}
+  public void jhq() {}
   
-  public void hFf() {}
+  public void jhr() {}
   
-  public void hFg() {}
+  public void jhs() {}
   
-  public void hFh() {}
+  public void jht() {}
   
-  public void hFi() {}
+  public void jhu() {}
   
-  public void hFj() {}
+  public void jhv() {}
   
-  protected final void hGa()
+  protected final void jil()
   {
-    final View localView = getView().getRootView().findViewById(R.h.dKR);
-    int i = ax.ew(getContext());
-    int j = ax.F(getContext(), -1);
+    final View localView = getView().getRootView().findViewById(R.h.fMt);
+    int i = bf.fs(getContext());
+    int j = bf.I(getContext(), -1);
     Runnable local1 = new Runnable()
     {
-      int kQn = 0;
+      int nrQ = 0;
       
       public final void run()
       {
-        AppMethodBeat.i(276153);
+        AppMethodBeat.i(253254);
         if (BaseAddressUIFragment.this.getView() == null)
         {
-          AppMethodBeat.o(276153);
+          AppMethodBeat.o(253254);
           return;
         }
-        int i = ax.ew(BaseAddressUIFragment.this.getContext());
-        int j = ax.F(BaseAddressUIFragment.this.getContext(), -1);
+        int i = bf.fs(BaseAddressUIFragment.this.getContext());
+        int j = bf.I(BaseAddressUIFragment.this.getContext(), -1);
         if (j <= 0) {
-          if (this.kQn < 2)
+          if (this.nrQ < 2)
           {
             Log.i(BaseAddressUIFragment.this.getLogTag(), "[trySetParentViewPadding] try getStatusHeight again!");
             BaseAddressUIFragment.this.getView().post(this);
-            this.kQn += 1;
+            this.nrQ += 1;
           }
         }
         for (;;)
         {
-          Log.i(BaseAddressUIFragment.this.getLogTag(), "[trySetParentViewPadding] tryCount:%s actionBarHeight:%s actionBarHeight:%s", new Object[] { Integer.valueOf(this.kQn), Integer.valueOf(j), Integer.valueOf(i) });
-          AppMethodBeat.o(276153);
+          Log.i(BaseAddressUIFragment.this.getLogTag(), "[trySetParentViewPadding] tryCount:%s actionBarHeight:%s actionBarHeight:%s", new Object[] { Integer.valueOf(this.nrQ), Integer.valueOf(j), Integer.valueOf(i) });
+          AppMethodBeat.o(253254);
           return;
           Log.e(BaseAddressUIFragment.this.getLogTag(), "[trySetParentViewPadding] try getStatusHeight finally!");
           break;
@@ -139,11 +148,17 @@ public abstract class BaseAddressUIFragment
     getView().postDelayed(local1, 100L);
   }
   
-  public abstract void hUl();
+  public abstract void jyb();
   
   public boolean noActionBar()
   {
     return true;
+  }
+  
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    jil();
   }
   
   public boolean supportNavigationSwipeBack()

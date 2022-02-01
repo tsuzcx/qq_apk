@@ -5,26 +5,26 @@ import java.util.Locale;
 
 public final class e
 {
-  public static final d Mk;
-  public static final d Ml;
-  public static final d Mm;
-  public static final d Mn;
-  public static final d Mo;
-  public static final d Mp;
+  public static final d bsp;
+  public static final d bsq;
+  public static final d bsr;
+  public static final d bss;
+  public static final d bst;
+  public static final d bsu;
   
   static
   {
-    AppMethodBeat.i(251302);
-    Mk = new e(null, false);
-    Ml = new e(null, true);
-    Mm = new e(b.Ms, false);
-    Mn = new e(b.Ms, true);
-    Mo = new e(a.Mr, false);
-    Mp = f.Mv;
-    AppMethodBeat.o(251302);
+    AppMethodBeat.i(195469);
+    bsp = new e(null, false);
+    bsq = new e(null, true);
+    bsr = new e(b.bsx, false);
+    bss = new e(b.bsx, true);
+    bst = new e(a.bsw, false);
+    bsu = f.bsA;
+    AppMethodBeat.o(195469);
   }
   
-  static int bt(int paramInt)
+  static int ej(int paramInt)
   {
     switch (paramInt)
     {
@@ -36,7 +36,7 @@ public final class e
     return 0;
   }
   
-  static int bu(int paramInt)
+  static int ek(int paramInt)
   {
     switch (paramInt)
     {
@@ -53,40 +53,40 @@ public final class e
   static final class a
     implements e.c
   {
-    static final a Mr;
-    private final boolean Mq = true;
+    static final a bsw;
+    private final boolean bsv = true;
     
     static
     {
-      AppMethodBeat.i(251283);
-      Mr = new a();
-      AppMethodBeat.o(251283);
+      AppMethodBeat.i(195496);
+      bsw = new a();
+      AppMethodBeat.o(195496);
     }
     
     public final int b(CharSequence paramCharSequence, int paramInt)
     {
-      AppMethodBeat.i(251282);
+      AppMethodBeat.i(195508);
       int j = 0;
       int i = 0;
       if (j < paramInt + 0)
       {
-        switch (e.bt(Character.getDirectionality(paramCharSequence.charAt(j))))
+        switch (e.ej(Character.getDirectionality(paramCharSequence.charAt(j))))
         {
         }
         for (;;)
         {
           j += 1;
           break;
-          if (this.Mq)
+          if (this.bsv)
           {
-            AppMethodBeat.o(251282);
+            AppMethodBeat.o(195508);
             return 0;
           }
           i = 1;
           continue;
-          if (!this.Mq)
+          if (!this.bsv)
           {
-            AppMethodBeat.o(251282);
+            AppMethodBeat.o(195508);
             return 1;
           }
           i = 1;
@@ -94,15 +94,15 @@ public final class e
       }
       if (i != 0)
       {
-        if (this.Mq)
+        if (this.bsv)
         {
-          AppMethodBeat.o(251282);
+          AppMethodBeat.o(195508);
           return 1;
         }
-        AppMethodBeat.o(251282);
+        AppMethodBeat.o(195508);
         return 0;
       }
-      AppMethodBeat.o(251282);
+      AppMethodBeat.o(195508);
       return 2;
     }
   }
@@ -110,26 +110,26 @@ public final class e
   static final class b
     implements e.c
   {
-    static final b Ms;
+    static final b bsx;
     
     static
     {
-      AppMethodBeat.i(251288);
-      Ms = new b();
-      AppMethodBeat.o(251288);
+      AppMethodBeat.i(195495);
+      bsx = new b();
+      AppMethodBeat.o(195495);
     }
     
     public final int b(CharSequence paramCharSequence, int paramInt)
     {
-      AppMethodBeat.i(251287);
+      AppMethodBeat.i(195502);
       int i = 0;
       int j = 2;
       while ((i < paramInt + 0) && (j == 2))
       {
-        j = e.bu(Character.getDirectionality(paramCharSequence.charAt(i)));
+        j = e.ek(Character.getDirectionality(paramCharSequence.charAt(i)));
         i += 1;
       }
-      AppMethodBeat.o(251287);
+      AppMethodBeat.o(195502);
       return j;
     }
   }
@@ -142,61 +142,61 @@ public final class e
   static abstract class d
     implements d
   {
-    private final e.c Mt;
+    private final e.c bsy;
     
     d(e.c paramc)
     {
-      this.Mt = paramc;
+      this.bsy = paramc;
     }
+    
+    protected abstract boolean Ec();
     
     public final boolean a(CharSequence paramCharSequence, int paramInt)
     {
       if ((paramCharSequence == null) || (paramInt < 0) || (paramCharSequence.length() - paramInt < 0)) {
         throw new IllegalArgumentException();
       }
-      if (this.Mt == null) {
-        return gT();
+      if (this.bsy == null) {
+        return Ec();
       }
-      switch (this.Mt.b(paramCharSequence, paramInt))
+      switch (this.bsy.b(paramCharSequence, paramInt))
       {
       default: 
-        return gT();
+        return Ec();
       case 0: 
         return true;
       }
       return false;
     }
-    
-    protected abstract boolean gT();
   }
   
   static final class e
     extends e.d
   {
-    private final boolean Mu;
+    private final boolean bsz;
     
     e(e.c paramc, boolean paramBoolean)
     {
       super();
-      this.Mu = paramBoolean;
+      this.bsz = paramBoolean;
     }
     
-    protected final boolean gT()
+    protected final boolean Ec()
     {
-      return this.Mu;
+      return this.bsz;
     }
   }
   
   static final class f
     extends e.d
   {
-    static final f Mv;
+    static final f bsA;
     
     static
     {
-      AppMethodBeat.i(251300);
-      Mv = new f();
-      AppMethodBeat.o(251300);
+      AppMethodBeat.i(195478);
+      bsA = new f();
+      AppMethodBeat.o(195478);
     }
     
     f()
@@ -204,22 +204,22 @@ public final class e
       super();
     }
     
-    protected final boolean gT()
+    protected final boolean Ec()
     {
-      AppMethodBeat.i(251298);
+      AppMethodBeat.i(195486);
       if (f.d(Locale.getDefault()) == 1)
       {
-        AppMethodBeat.o(251298);
+        AppMethodBeat.o(195486);
         return true;
       }
-      AppMethodBeat.o(251298);
+      AppMethodBeat.o(195486);
       return false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.core.e.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,68 +1,94 @@
 package com.tencent.mm.plugin.appbrand.permission;
 
-import androidx.core.f.a;
+import android.text.TextUtils;
+import androidx.core.app.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.e.b;
-import com.tencent.mm.plugin.appbrand.jsapi.j;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
-import com.tencent.mm.sdk.platformtools.WeChatBrands.Business.AvailabilityAlertSupplier;
-import com.tencent.mm.sdk.platformtools.WeChatBrands.Business.Entries;
-import java.io.Reader;
-import java.io.StringReader;
-import java.util.LinkedList;
-import kotlin.f.d;
-import kotlin.g.a.b;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.plugin.appbrand.af.j;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.Collection;
+import java.util.Iterator;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/permission/WeChatBrandsApiInvokeInterceptor;", "", "()V", "ERR_MSG_BANNED", "", "PAY_API_CHECK_ISSUED_TEXT", "PAY_API_CHECK_LIST", "Ljava/util/LinkedList;", "shouldInterceptInvoke", "", "env", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWithExtra;", "api", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi;", "interceptHandler", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent$InterceptHandler;", "plugin-appbrand-integration_release"})
 public final class s
 {
-  private static final String qzR;
-  private static final LinkedList<String> qzS;
-  public static final s qzT;
+  private static final j<String, a.a> tEP;
   
   static
   {
-    AppMethodBeat.i(281841);
-    qzT = new s();
-    qzR = "requestPayment\nrequestPaymentToBank\nsendBizRedPacket\nrequestVirtualPayment\nopenOfflinePayView\nopenWCPayCardList\nrequestMallPayment\nopenWCPayLQTDetail\nopenWCPayLQTSave\nopenWCPayLQTDepositPlan\nopenWCPayLQTDepositPlanAdd\nsetCurrentPaySpeech\nloadPaySpeechDialectConfig\nopenWCPayOverseaPaymentReceive\nhandleWCPayOverseaWalletBuffer\nrequestH5Transaction\nrequestJointPayment\ngetWCPayOverseaPrepayRequest\nrequestVerifyUserIdentity\nopenSelectPayment\nrequestEntrustAuthorization\nrequestPayCardVerify\nrequestBizSplitBillPayment\nrequestQueryCashier\n\nsendRedPacket\nopenRedPacket\nopenWCCardHomePage\nopenWCCertHomePage\nhandleWCPayOverseaWalletBuffer\ngetWCPayOverseaPrepayRequest\nrequestMidasFriendPayment\nrequestFacetoFacePayment";
-    qzS = new LinkedList();
-    d.a((Reader)new StringReader(qzR), (b)1.qzU);
-    AppMethodBeat.o(281841);
+    AppMethodBeat.i(140777);
+    tEP = new j();
+    AppMethodBeat.o(140777);
   }
   
-  public static final boolean a(final j paramj, final o paramo, e.b paramb)
+  public static void a(String paramString, int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(281840);
-    p.k(paramj, "env");
-    p.k(paramo, "api");
-    if (qzS.contains(paramo.getName()))
+    AppMethodBeat.i(140776);
+    if ((paramString == null) || (paramString.length() == 0))
     {
-      if (!WeChatBrands.Business.Entries.PaymentAppbrandJsb.checkAvailableSlient(paramj.getContext(), (a)new a(paramb, paramo, paramj)))
-      {
-        AppMethodBeat.o(281840);
-        return true;
-      }
-      AppMethodBeat.o(281840);
-      return false;
+      Log.e("Luggage.RequestPermissionRegistry", "removeCallback fail, invalid id");
+      AppMethodBeat.o(140776);
+      return;
     }
-    AppMethodBeat.o(281840);
-    return false;
+    paramString = tEP.ej(paramString);
+    if (paramString != null)
+    {
+      paramString = paramString.iterator();
+      while (paramString.hasNext()) {
+        ((a.a)paramString.next()).onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+      }
+    }
+    AppMethodBeat.o(140776);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "supplier", "Lcom/tencent/mm/sdk/platformtools/WeChatBrands$Business$AvailabilityAlertSupplier;", "kotlin.jvm.PlatformType", "accept"})
-  static final class a<T>
-    implements a<WeChatBrands.Business.AvailabilityAlertSupplier>
+  public static void a(String paramString, a.a parama)
   {
-    a(e.b paramb, o paramo, j paramj) {}
+    AppMethodBeat.i(318730);
+    if ((TextUtils.isEmpty(paramString)) || (parama == null))
+    {
+      Log.e("Luggage.RequestPermissionRegistry", "addCallback fail, invalid arguments");
+      AppMethodBeat.o(318730);
+      return;
+    }
+    tEP.v(paramString, parama);
+    AppMethodBeat.o(318730);
+  }
+  
+  public static void afs(String paramString)
+  {
+    AppMethodBeat.i(140775);
+    if (TextUtils.isEmpty(paramString))
+    {
+      Log.e("Luggage.RequestPermissionRegistry", "removeCallbacks fail, invalid arguments");
+      AppMethodBeat.o(140775);
+      return;
+    }
+    tEP.ek(paramString);
+    AppMethodBeat.o(140775);
+  }
+  
+  public static void b(String paramString, a.a parama)
+  {
+    AppMethodBeat.i(318732);
+    if (TextUtils.isEmpty(paramString))
+    {
+      Log.e("Luggage.RequestPermissionRegistry", "removeCallback fail, invalid arguments");
+      AppMethodBeat.o(318732);
+      return;
+    }
+    tEP.O(paramString, parama);
+    AppMethodBeat.o(318732);
+  }
+  
+  @Deprecated
+  public static void c(String paramString, a.a parama)
+  {
+    AppMethodBeat.i(318735);
+    a(paramString, parama);
+    AppMethodBeat.o(318735);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.permission.s
  * JD-Core Version:    0.7.0.1
  */

@@ -8,21 +8,21 @@ public abstract interface m
 {
   public abstract void a(Menu paramMenu, o.a parama);
   
-  public abstract void aV();
+  public abstract void aj(int paramInt);
   
-  public abstract void al(int paramInt);
+  public abstract void bO();
   
-  public abstract boolean cC();
+  public abstract boolean dB();
   
-  public abstract boolean cI();
+  public abstract boolean dC();
   
-  public abstract boolean cJ();
+  public abstract boolean dD();
   
-  public abstract boolean cK();
+  public abstract boolean dE();
   
-  public abstract boolean cL();
+  public abstract void dF();
   
-  public abstract void cM();
+  public abstract boolean dv();
   
   public abstract void setWindowCallback(Window.Callback paramCallback);
   
@@ -30,7 +30,7 @@ public abstract interface m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.widget.m
  * JD-Core Version:    0.7.0.1
  */

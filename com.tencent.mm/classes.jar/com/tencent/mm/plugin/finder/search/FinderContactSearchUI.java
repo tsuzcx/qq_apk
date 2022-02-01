@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.finder.search;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -14,55 +13,59 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnCreateContextMenuListener;
 import android.view.View.OnLongClickListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.q;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
 import androidx.recyclerview.widget.RecyclerView.l;
 import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.hm;
-import com.tencent.mm.plugin.finder.b.c;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.cgi.cj;
-import com.tencent.mm.plugin.finder.event.base.d;
-import com.tencent.mm.plugin.finder.live.report.s.l;
-import com.tencent.mm.plugin.finder.live.report.s.t;
-import com.tencent.mm.plugin.finder.report.o;
+import com.tencent.mm.autogen.a.hx;
+import com.tencent.mm.plugin.finder.cgi.dk;
+import com.tencent.mm.plugin.finder.e.b;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.e.h;
+import com.tencent.mm.plugin.finder.live.report.q.n;
+import com.tencent.mm.plugin.finder.live.report.q.w;
+import com.tencent.mm.plugin.finder.report.z;
+import com.tencent.mm.plugin.finder.storage.ar.a;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
-import com.tencent.mm.plugin.finder.utils.e;
 import com.tencent.mm.plugin.finder.view.manager.FinderLinearLayoutManager;
-import com.tencent.mm.plugin.finder.viewmodel.component.an;
-import com.tencent.mm.plugin.report.f;
+import com.tencent.mm.plugin.finder.viewmodel.component.as;
+import com.tencent.mm.plugin.finder.viewmodel.component.as.a;
+import com.tencent.mm.plugin.finder.viewmodel.component.az;
+import com.tencent.mm.plugin.findersdk.a.ce;
+import com.tencent.mm.plugin.findersdk.a.v;
 import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.ass;
-import com.tencent.mm.protocal.protobuf.bid;
-import com.tencent.mm.protocal.protobuf.bip;
-import com.tencent.mm.protocal.protobuf.bir;
-import com.tencent.mm.protocal.protobuf.cse;
+import com.tencent.mm.protocal.protobuf.axg;
+import com.tencent.mm.protocal.protobuf.bui;
+import com.tencent.mm.protocal.protobuf.buy;
+import com.tencent.mm.protocal.protobuf.bva;
+import com.tencent.mm.protocal.protobuf.djg;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ad;
-import com.tencent.mm.ui.base.q.g;
+import com.tencent.mm.ui.af;
+import com.tencent.mm.ui.base.u.i;
 import com.tencent.mm.ui.component.UIComponent;
 import com.tencent.mm.ui.search.FTSEditTextView;
-import com.tencent.mm.ui.search.FTSEditTextView.b;
 import com.tencent.mm.ui.search.FTSEditTextView.c;
-import com.tencent.mm.ui.search.a.b;
-import com.tencent.mm.ui.search.a.c;
+import com.tencent.mm.ui.search.FTSEditTextView.d;
+import com.tencent.mm.ui.search.FTSSearchView;
+import com.tencent.mm.ui.search.FTSSearchView.b;
+import com.tencent.mm.ui.search.FTSSearchView.c;
+import com.tencent.mm.ui.y;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
-import com.tencent.mm.view.RefreshLoadMoreLayout.a;
-import com.tencent.mm.view.RefreshLoadMoreLayout.c;
+import com.tencent.mm.view.RefreshLoadMoreLayout.b;
 import com.tencent.mm.view.TouchableLayout;
 import com.tencent.mm.view.TouchableLayout.a;
 import java.util.ArrayList;
@@ -73,232 +76,202 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
-import kotlin.a.ak;
-import kotlin.g.b.aa.d;
-import kotlin.g.b.p;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.a.ar;
+import kotlin.ah;
+import kotlin.g.b.ah.d;
+import kotlin.g.b.u;
+import kotlin.n.n;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/search/FinderContactSearchUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/ui/search/FTSSearchView$FTSSearchViewListener;", "Lcom/tencent/mm/ui/search/FTSEditTextView$FTSEditTextListener;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "TAG", "", "contactChangelistener", "com/tencent/mm/plugin/finder/search/FinderContactSearchUI$contactChangelistener$1", "Lcom/tencent/mm/plugin/finder/search/FinderContactSearchUI$contactChangelistener$1;", "contactList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/FinderSearchInfo;", "Lkotlin/collections/ArrayList;", "continueFlag", "", "eventDispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "exposeMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/finder/search/FinderExposeItem;", "fromAtContact", "", "historyLogic", "Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic;", "initPosition", "isForceNightMode", "lastBuff", "Lcom/tencent/mm/protobuf/ByteString;", "loadingView", "Landroid/view/View;", "mOnHellScrollListener", "com/tencent/mm/plugin/finder/search/FinderContactSearchUI$mOnHellScrollListener$1", "Lcom/tencent/mm/plugin/finder/search/FinderContactSearchUI$mOnHellScrollListener$1;", "needHistory", "netSceneFinderSearch", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderSearch;", "noResultView", "Landroid/widget/TextView;", "offset", "query", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "requestId", "requestType", "rlLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "searchSuggestionManager", "Lcom/tencent/mm/plugin/finder/search/FinderSearchSuggestionManager;", "searchType", "searchView", "Lcom/tencent/mm/ui/search/FTSSearchView;", "adapteNightMode", "", "addExposeItem", "id", "position", "type", "getCommentScene", "getLayoutId", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "initContentView", "initData", "initSearchView", "initSuggestion", "onClickBackBtn", "view", "onClickCancelBtn", "onClickClearTextBtn", "onContactItemClick", "finderSearchInfo", "onContactItemLongClick", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onEditTextChange", "totalText", "inEditText", "tagList", "", "Lcom/tencent/mm/ui/search/FTSSearchView$IFTSTagModel;", "textChangeStatus", "Lcom/tencent/mm/ui/search/FTSEditTextView$TextChangeStatus;", "onEditTextFocusChange", "hasFocus", "onPause", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onSearchKeyDown", "onTagClick", "index", "tag", "reportSearch", "isAccountEmpty", "reportSearchExpose", "needClear", "startSearch", "ContactSearchProfileAdapter", "FinderFeedSearchReporter", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/search/FinderContactSearchUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/ui/search/FTSSearchView$FTSSearchViewListener;", "Lcom/tencent/mm/ui/search/FTSEditTextView$FTSEditTextListener;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "TAG", "", "contactChangelistener", "com/tencent/mm/plugin/finder/search/FinderContactSearchUI$contactChangelistener$1", "Lcom/tencent/mm/plugin/finder/search/FinderContactSearchUI$contactChangelistener$1;", "contactList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/FinderSearchInfo;", "Lkotlin/collections/ArrayList;", "continueFlag", "", "eventDispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "exposeMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/finder/search/FinderExposeItem;", "fromAtContact", "", "historyLogic", "Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic;", "initPosition", "isForceNightMode", "lastBuff", "Lcom/tencent/mm/protobuf/ByteString;", "loadingView", "Landroid/view/View;", "mOnHellScrollListener", "com/tencent/mm/plugin/finder/search/FinderContactSearchUI$mOnHellScrollListener$1", "Lcom/tencent/mm/plugin/finder/search/FinderContactSearchUI$mOnHellScrollListener$1;", "needHistory", "netSceneFinderSearch", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderSearch;", "noResultView", "Landroid/widget/TextView;", "offset", "query", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "requestId", "requestType", "rlLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "searchSuggestionManager", "Lcom/tencent/mm/plugin/finder/search/FinderSearchSuggestionManager;", "searchType", "searchView", "Lcom/tencent/mm/ui/search/FTSSearchView;", "adapteNightMode", "", "addExposeItem", "id", "position", "type", "getCommentScene", "getLayoutId", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "initContentView", "initData", "initSearchView", "initSuggestion", "onClickBackBtn", "view", "onClickCancelBtn", "onClickClearTextBtn", "onContactItemClick", "finderSearchInfo", "onContactItemLongClick", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onEditTextChange", "totalText", "inEditText", "tagList", "", "Lcom/tencent/mm/ui/search/FTSSearchView$IFTSTagModel;", "textChangeStatus", "Lcom/tencent/mm/ui/search/FTSEditTextView$TextChangeStatus;", "onEditTextFocusChange", "hasFocus", "onPause", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onSearchKeyDown", "onTagClick", "index", "tag", "reportSearch", "isAccountEmpty", "reportSearchExpose", "needClear", "startSearch", "ContactSearchProfileAdapter", "FinderFeedSearchReporter", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderContactSearchUI
   extends MMFinderUI
-  implements com.tencent.mm.an.i, FTSEditTextView.b, a.b
+  implements com.tencent.mm.am.h, FTSEditTextView.c, FTSSearchView.b
 {
-  private final c Aac;
-  private final i Aad;
+  private boolean ALp;
+  private final com.tencent.mm.plugin.finder.event.base.c ANW;
+  private RefreshLoadMoreLayout ATx;
+  private com.tencent.mm.bx.b BgS;
+  private ArrayList<buy> BmO;
+  private TextView BnA;
+  private j BnB;
+  private l BnC;
+  private dk BnD;
+  private FTSSearchView Bny;
+  private boolean FvC;
+  boolean FvD;
+  private HashMap<String, a> FvE;
+  private final contactChangelistener.1 FvJ;
+  private final g FvK;
   final String TAG;
-  private HashMap _$_findViewCache;
   private int continueFlag;
-  String fIY;
-  private RecyclerView jLl;
-  private View kGT;
-  private int mBD;
+  String hOG;
+  private RecyclerView mkw;
+  private View njN;
   private int offset;
+  private int pyl;
   String query;
   private int requestType;
-  int uMD;
-  private com.tencent.mm.cd.b xHE;
-  private ArrayList<bip> xMG;
-  private com.tencent.mm.ui.search.a xNC;
-  private TextView xND;
-  private i xNE;
-  private k xNF;
-  private cj xNG;
-  private boolean xnL;
-  private final com.tencent.mm.plugin.finder.event.base.c xqM;
-  private RefreshLoadMoreLayout xvJ;
-  private boolean zZT;
-  boolean zZU;
-  private HashMap<String, a> zZV;
+  int xVf;
   
   public FinderContactSearchUI()
   {
     AppMethodBeat.i(166742);
     this.TAG = "Finder.FinderContactSearchUI";
     this.query = "";
-    this.xMG = new ArrayList();
-    this.fIY = "";
-    this.zZT = true;
-    this.zZV = new HashMap();
-    this.uMD = 1;
-    this.xqM = new com.tencent.mm.plugin.finder.event.base.c();
-    this.Aac = new c(this);
-    this.Aad = new i();
+    this.BmO = new ArrayList();
+    this.hOG = "";
+    this.FvC = true;
+    this.FvE = new HashMap();
+    this.xVf = 1;
+    this.ANW = new com.tencent.mm.plugin.finder.event.base.c();
+    this.FvJ = new IListener(com.tencent.mm.app.f.hfK)
+    {
+      @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+      static final class a
+        extends u
+        implements kotlin.g.a.a<ah>
+      {
+        a(hx paramhx, FinderContactSearchUI paramFinderContactSearchUI)
+        {
+          super();
+        }
+      }
+    };
+    this.FvK = new g();
     AppMethodBeat.o(166742);
   }
   
-  private final void aEi(String paramString)
+  private static final boolean a(FinderContactSearchUI paramFinderContactSearchUI, View paramView, MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(342477);
+    kotlin.g.b.s.u(paramFinderContactSearchUI, "this$0");
+    paramMotionEvent = paramFinderContactSearchUI.Bny;
+    paramView = paramMotionEvent;
+    if (paramMotionEvent == null)
+    {
+      kotlin.g.b.s.bIx("searchView");
+      paramView = null;
+    }
+    paramView.getFtsEditText().dzv.clearFocus();
+    paramFinderContactSearchUI.hideVKB();
+    AppMethodBeat.o(342477);
+    return false;
+  }
+  
+  private final void awg(String paramString)
   {
     AppMethodBeat.i(166738);
     this.query = paramString;
     this.offset = 0;
     this.continueFlag = 0;
-    this.xHE = null;
-    this.xMG.clear();
+    this.BgS = null;
+    this.BmO.clear();
     Object localObject = UUID.randomUUID().toString();
-    p.j(localObject, "UUID.randomUUID().toString()");
-    this.fIY = ((String)localObject);
-    if (this.xNG != null) {
-      com.tencent.mm.kernel.h.aGY().a((com.tencent.mm.an.q)this.xNG);
+    kotlin.g.b.s.s(localObject, "randomUUID().toString()");
+    this.hOG = ((String)localObject);
+    if (this.BnD != null) {
+      com.tencent.mm.kernel.h.aZW().a((com.tencent.mm.am.p)this.BnD);
     }
-    this.xNG = new cj(paramString, this.offset, this.fIY, this.xHE, this.requestType, null, null, null, 480);
-    com.tencent.mm.kernel.h.aGY().b((com.tencent.mm.an.q)this.xNG);
-    com.tencent.mm.kernel.h.aGY().a(3820, (com.tencent.mm.an.i)this);
-    paramString = this.kGT;
-    if (paramString == null) {
-      p.bGy("loadingView");
+    this.BnD = new dk(paramString, this.offset, this.hOG, this.BgS, this.requestType, null, null, null, 480);
+    com.tencent.mm.kernel.h.aZW().a((com.tencent.mm.am.p)this.BnD, 0);
+    com.tencent.mm.kernel.h.aZW().a(3820, (com.tencent.mm.am.h)this);
+    localObject = this.njN;
+    paramString = (String)localObject;
+    if (localObject == null)
+    {
+      kotlin.g.b.s.bIx("loadingView");
+      paramString = null;
     }
     paramString.setVisibility(0);
-    paramString = this.xND;
-    if (paramString == null) {
-      p.bGy("noResultView");
+    localObject = this.BnA;
+    paramString = (String)localObject;
+    if (localObject == null)
+    {
+      kotlin.g.b.s.bIx("noResultView");
+      paramString = null;
     }
     paramString.setVisibility(8);
-    paramString = this.xvJ;
-    if (paramString == null) {
-      p.bGy("rlLayout");
+    localObject = this.ATx;
+    paramString = (String)localObject;
+    if (localObject == null)
+    {
+      kotlin.g.b.s.bIx("rlLayout");
+      paramString = null;
     }
     paramString.setVisibility(8);
-    paramString = this.jLl;
-    if (paramString == null) {
-      p.bGy("recyclerView");
+    localObject = this.mkw;
+    paramString = (String)localObject;
+    if (localObject == null)
+    {
+      kotlin.g.b.s.bIx("recyclerView");
+      paramString = null;
     }
     localObject = com.tencent.mm.hellhoundlib.b.c.a(0, new com.tencent.mm.hellhoundlib.b.a());
-    com.tencent.mm.hellhoundlib.a.a.b(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/finder/search/FinderContactSearchUI", "startSearch", "(Ljava/lang/String;)V", "Undefined", "scrollToPosition", "(I)V");
-    paramString.scrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.b(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/finder/search/FinderContactSearchUI", "startSearch", "(Ljava/lang/String;)V", "Undefined", "scrollToPosition", "(I)V");
+    paramString.scrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0)).intValue());
     com.tencent.mm.hellhoundlib.a.a.c(paramString, "com/tencent/mm/plugin/finder/search/FinderContactSearchUI", "startSearch", "(Ljava/lang/String;)V", "Undefined", "scrollToPosition", "(I)V");
     AppMethodBeat.o(166738);
   }
   
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(264097);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(264097);
-  }
+  public final void _$_clearFindViewByIdCache() {}
   
-  public final View _$_findCachedViewById(int paramInt)
+  public final boolean aWU()
   {
-    AppMethodBeat.i(264096);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(264096);
-    return localView1;
-  }
-  
-  public final void a(String paramString1, String paramString2, List<a.c> paramList, FTSEditTextView.c paramc)
-  {
-    AppMethodBeat.i(166733);
-    if (paramString1 != null)
-    {
-      if (paramString1 == null)
-      {
-        paramString1 = new kotlin.t("null cannot be cast to non-null type kotlin.CharSequence");
-        AppMethodBeat.o(166733);
-        throw paramString1;
-      }
-      paramString2 = kotlin.n.n.bb((CharSequence)paramString1).toString();
-      paramString1 = paramString2;
-      if (paramString2 != null) {}
-    }
-    else
-    {
-      paramString1 = "";
-    }
-    if (Util.isNullOrNil(paramString1))
-    {
-      paramString2 = this.kGT;
-      if (paramString2 == null) {
-        p.bGy("loadingView");
-      }
-      paramString2.setVisibility(8);
-      paramString2 = this.xND;
-      if (paramString2 == null) {
-        p.bGy("noResultView");
-      }
-      paramString2.setVisibility(8);
-      paramString2 = this.xvJ;
-      if (paramString2 == null) {
-        p.bGy("rlLayout");
-      }
-      paramString2.setVisibility(8);
-    }
-    paramString2 = this.xNE;
-    if (paramString2 != null)
-    {
-      paramString2.aEm(paramString1);
-      AppMethodBeat.o(166733);
-      return;
-    }
-    AppMethodBeat.o(166733);
-  }
-  
-  public final boolean aDV()
-  {
+    Object localObject2 = null;
     AppMethodBeat.i(166736);
     hideVKB();
-    Object localObject1 = this.xNC;
+    Object localObject3 = this.Bny;
+    Object localObject1 = localObject3;
+    if (localObject3 == null)
+    {
+      kotlin.g.b.s.bIx("searchView");
+      localObject1 = null;
+    }
+    localObject1 = ((FTSSearchView)localObject1).getFtsEditText().getTotalQuery();
     if (localObject1 == null) {
-      p.bGy("searchView");
-    }
-    localObject1 = ((com.tencent.mm.ui.search.a)localObject1).getFtsEditText();
-    p.j(localObject1, "searchView.ftsEditText");
-    localObject1 = ((FTSEditTextView)localObject1).getTotalQuery();
-    if (localObject1 != null)
-    {
-      if (localObject1 == null)
-      {
-        localObject1 = new kotlin.t("null cannot be cast to non-null type kotlin.CharSequence");
-        AppMethodBeat.o(166736);
-        throw ((Throwable)localObject1);
-      }
-      localObject2 = kotlin.n.n.bb((CharSequence)localObject1).toString();
-      localObject1 = localObject2;
-      if (localObject2 != null) {}
-    }
-    else
-    {
       localObject1 = "";
     }
-    if (Util.isNullOrNil((String)localObject1))
+    while (Util.isNullOrNil((String)localObject1))
     {
       AppMethodBeat.o(166736);
       return true;
+      localObject3 = n.bq((CharSequence)localObject1).toString();
+      localObject1 = localObject3;
+      if (localObject3 == null) {
+        localObject1 = "";
+      }
     }
-    this.uMD = 1;
-    aEi((String)localObject1);
-    Object localObject2 = this.xNE;
-    if (localObject2 != null) {
-      ((i)localObject2).aEn((String)localObject1);
+    this.xVf = 1;
+    awg((String)localObject1);
+    localObject3 = this.BnB;
+    if (localObject3 != null) {
+      ((j)localObject3).azd((String)localObject1);
     }
-    localObject1 = this.xNF;
-    if (localObject1 == null) {
-      p.bGy("searchSuggestionManager");
+    localObject1 = this.BnC;
+    if (localObject1 == null)
+    {
+      kotlin.g.b.s.bIx("searchSuggestionManager");
+      localObject1 = localObject2;
     }
-    ((k)localObject1).dRj();
-    f.Iyx.idkeyStat(1265L, 9L, 1L, false);
-    AppMethodBeat.o(166736);
-    return false;
+    for (;;)
+    {
+      ((l)localObject1).ePg();
+      com.tencent.mm.plugin.report.f.Ozc.idkeyStat(1265L, 9L, 1L, false);
+      AppMethodBeat.o(166736);
+      return false;
+    }
   }
   
-  public final void dvg() {}
+  public final void eeU() {}
   
-  public final void eF(boolean paramBoolean)
+  public final void fq(boolean paramBoolean)
   {
     AppMethodBeat.i(166734);
     if (paramBoolean)
     {
-      o localo = o.zWG;
-      o.dPE();
+      com.tencent.mm.plugin.finder.report.aa localaa = com.tencent.mm.plugin.finder.report.aa.Fsi;
+      com.tencent.mm.plugin.finder.report.aa.eMZ();
     }
     AppMethodBeat.o(166734);
   }
@@ -310,24 +283,18 @@ public final class FinderContactSearchUI
   
   public final int getLayoutId()
   {
-    if (this.xnL) {
-      return b.g.finder_contact_search_ui_night_mode;
+    if (this.ALp) {
+      return e.f.finder_contact_search_ui_night_mode;
     }
-    return b.g.finder_contact_search_ui;
+    return e.f.finder_contact_search_ui;
   }
   
   public final Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(264085);
-    Object localObject = com.tencent.mm.plugin.finder.utils.aj.AGc;
-    if (com.tencent.mm.plugin.finder.utils.aj.isOtherEnableFullScreenEnjoy())
-    {
-      localObject = ak.setOf(an.class);
-      AppMethodBeat.o(264085);
-      return localObject;
-    }
-    AppMethodBeat.o(264085);
-    return null;
+    AppMethodBeat.i(342608);
+    Set localSet = ar.setOf(az.class);
+    AppMethodBeat.o(342608);
+    return localSet;
   }
   
   public final void onClickBackBtn(View paramView)
@@ -349,483 +316,661 @@ public final class FinderContactSearchUI
   public final void onClickClearTextBtn(View paramView)
   {
     AppMethodBeat.i(166735);
-    paramView = this.xNC;
-    if (paramView == null) {
-      p.bGy("searchView");
+    FTSSearchView localFTSSearchView = this.Bny;
+    paramView = localFTSSearchView;
+    if (localFTSSearchView == null)
+    {
+      kotlin.g.b.s.bIx("searchView");
+      paramView = null;
     }
-    paramView.getFtsEditText().aDU();
+    paramView.getFtsEditText().aWT();
     showVKB();
     AppMethodBeat.o(166735);
   }
   
   public final void onContactItemLongClick(View paramView)
   {
-    AppMethodBeat.i(264092);
-    p.k(paramView, "view");
+    AppMethodBeat.i(342700);
+    kotlin.g.b.s.u(paramView, "view");
     if (this.requestType == 8)
     {
       com.tencent.mm.ui.widget.b.a locala = new com.tencent.mm.ui.widget.b.a((Context)getContext());
-      if (this.jLl == null) {
-        p.bGy("recyclerView");
+      if (this.mkw == null) {
+        kotlin.g.b.s.bIx("recyclerView");
       }
-      final int i = RecyclerView.bh(paramView);
-      Object localObject = new aa.d();
-      ((aa.d)localObject).aaBA = 1;
-      localObject = (View.OnCreateContextMenuListener)new j((aa.d)localObject);
-      q.g localg = (q.g)new k(this, i);
-      TouchableLayout.a locala1 = TouchableLayout.YOD;
-      int j = TouchableLayout.igZ();
-      locala1 = TouchableLayout.YOD;
-      locala.a(paramView, i, 0L, (View.OnCreateContextMenuListener)localObject, localg, j, TouchableLayout.iha());
-      locala.hTd();
+      int i = RecyclerView.bA(paramView);
+      Object localObject = new ah.d();
+      ((ah.d)localObject).aixb = 1;
+      localObject = (View.OnCreateContextMenuListener)new h((ah.d)localObject);
+      u.i locali = (u.i)new i(i, this);
+      TouchableLayout.a locala1 = TouchableLayout.agKp;
+      int j = TouchableLayout.jMn();
+      locala1 = TouchableLayout.agKp;
+      locala.a(paramView, i, 0L, (View.OnCreateContextMenuListener)localObject, locali, j, TouchableLayout.jMo());
+      locala.cMz();
     }
-    AppMethodBeat.o(264092);
+    AppMethodBeat.o(342700);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
+    Object localObject1 = null;
     AppMethodBeat.i(166730);
     super.onCreate(paramBundle);
-    this.xnL = getIntent().getBooleanExtra("is_force_night_mode", false);
-    if (this.xnL)
+    this.ALp = getIntent().getBooleanExtra("is_force_night_mode", false);
+    if (this.ALp)
     {
-      paramBundle = getController();
-      localObject1 = getContext();
-      p.j(localObject1, "context");
-      paramBundle.setActionbarColor(((AppCompatActivity)localObject1).getResources().getColor(b.c.Dark_0));
-      setBackGroundColorResource(b.c.Dark_0);
+      getController().setActionbarColor(getContext().getResources().getColor(e.b.Dark_0));
+      setBackGroundColorResource(e.b.Dark_0);
     }
-    this.xNC = new com.tencent.mm.ui.search.a((Context)this, this.xnL);
-    paramBundle = this.xNC;
-    if (paramBundle == null) {
-      p.bGy("searchView");
-    }
-    paramBundle.setSearchViewListener((a.b)this);
-    paramBundle = this.xNC;
-    if (paramBundle == null) {
-      p.bGy("searchView");
-    }
-    paramBundle.getFtsEditText().setHint(getString(b.j.app_search));
-    paramBundle = this.xNC;
-    if (paramBundle == null) {
-      p.bGy("searchView");
-    }
-    paramBundle.getFtsEditText().setFtsEditTextListener((FTSEditTextView.b)this);
-    paramBundle = this.xNC;
-    if (paramBundle == null) {
-      p.bGy("searchView");
-    }
-    paramBundle.getFtsEditText().setCanDeleteTag(false);
-    paramBundle = this.xNC;
-    if (paramBundle == null) {
-      p.bGy("searchView");
-    }
-    paramBundle.getFtsEditText().hXB();
-    paramBundle = getSupportActionBar();
-    if (paramBundle == null) {
-      p.iCn();
-    }
-    p.j(paramBundle, "supportActionBar!!");
-    Object localObject1 = this.xNC;
-    if (localObject1 == null) {
-      p.bGy("searchView");
-    }
-    paramBundle.setCustomView((View)localObject1);
-    this.requestType = getIntent().getIntExtra("request_type", 2);
-    this.zZU = getIntent().getBooleanExtra("from_at_contact", false);
-    this.zZT = getIntent().getBooleanExtra("need_history", true);
-    paramBundle = j.Acs;
-    if (j.dRh() != null)
+    this.Bny = new FTSSearchView((Context)this, this.ALp);
+    paramBundle = this.Bny;
+    if (paramBundle == null)
     {
-      paramBundle = j.Acs;
-      localObject2 = j.dRh();
-      if (localObject2 == null) {
-        p.iCn();
+      kotlin.g.b.s.bIx("searchView");
+      paramBundle = null;
+    }
+    Object localObject3;
+    for (;;)
+    {
+      paramBundle.setSearchViewListener((FTSSearchView.b)this);
+      localObject2 = this.Bny;
+      paramBundle = (Bundle)localObject2;
+      if (localObject2 == null)
+      {
+        kotlin.g.b.s.bIx("searchView");
+        paramBundle = null;
       }
-      paramBundle = j.Acs;
-      j.a(null);
-      localObject1 = ((ass)localObject2).fIY;
-      paramBundle = (Bundle)localObject1;
-      if (localObject1 == null) {
+      paramBundle.getFtsEditText().setHint(getString(e.h.app_search));
+      localObject2 = this.Bny;
+      paramBundle = (Bundle)localObject2;
+      if (localObject2 == null)
+      {
+        kotlin.g.b.s.bIx("searchView");
+        paramBundle = null;
+      }
+      paramBundle.getFtsEditText().setFtsEditTextListener((FTSEditTextView.c)this);
+      localObject2 = this.Bny;
+      paramBundle = (Bundle)localObject2;
+      if (localObject2 == null)
+      {
+        kotlin.g.b.s.bIx("searchView");
+        paramBundle = null;
+      }
+      paramBundle.getFtsEditText().setCanDeleteTag(false);
+      localObject2 = this.Bny;
+      paramBundle = (Bundle)localObject2;
+      if (localObject2 == null)
+      {
+        kotlin.g.b.s.bIx("searchView");
+        paramBundle = null;
+      }
+      paramBundle.getFtsEditText().jBL();
+      localObject3 = getSupportActionBar();
+      kotlin.g.b.s.checkNotNull(localObject3);
+      localObject2 = this.Bny;
+      paramBundle = (Bundle)localObject2;
+      if (localObject2 == null)
+      {
+        kotlin.g.b.s.bIx("searchView");
+        paramBundle = null;
+      }
+      ((ActionBar)localObject3).setCustomView((View)paramBundle);
+      this.requestType = getIntent().getIntExtra("request_type", 2);
+      this.FvD = getIntent().getBooleanExtra("from_at_contact", false);
+      this.FvC = getIntent().getBooleanExtra("need_history", true);
+      paramBundle = k.FxZ;
+      if (k.ePe() == null) {
+        break;
+      }
+      paramBundle = k.FxZ;
+      localObject3 = k.ePe();
+      kotlin.g.b.s.checkNotNull(localObject3);
+      paramBundle = k.FxZ;
+      k.a(null);
+      localObject2 = ((axg)localObject3).hOG;
+      paramBundle = (Bundle)localObject2;
+      if (localObject2 == null) {
         paramBundle = "";
       }
-      this.fIY = paramBundle;
-      localObject1 = ((ass)localObject2).query;
-      paramBundle = (Bundle)localObject1;
-      if (localObject1 == null) {
+      this.hOG = paramBundle;
+      localObject2 = ((axg)localObject3).query;
+      paramBundle = (Bundle)localObject2;
+      if (localObject2 == null) {
         paramBundle = "";
       }
       this.query = paramBundle;
-      this.offset = ((ass)localObject2).offset;
-      this.continueFlag = ((ass)localObject2).continueFlag;
-      this.xHE = ((ass)localObject2).xHE;
-      this.mBD = ((ass)localObject2).SFT;
-      paramBundle = ((ass)localObject2).SFU;
-      p.j(paramBundle, "finderFeedObj.contactList");
-      localObject1 = (Iterable)paramBundle;
-      paramBundle = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject1, 10));
-      localObject1 = ((Iterable)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
+      this.offset = ((axg)localObject3).offset;
+      this.continueFlag = ((axg)localObject3).continueFlag;
+      this.BgS = ((axg)localObject3).BgS;
+      this.pyl = ((axg)localObject3).ERV;
+      paramBundle = ((axg)localObject3).ZIt;
+      kotlin.g.b.s.s(paramBundle, "finderFeedObj.contactList");
+      localObject2 = (Iterable)paramBundle;
+      paramBundle = (Collection)new ArrayList(kotlin.a.p.a((Iterable)localObject2, 10));
+      localObject2 = ((Iterable)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        localObject2 = (bip)((Iterator)localObject1).next();
-        paramBundle.add(Boolean.valueOf(this.xMG.add(localObject2)));
+        localObject3 = (buy)((Iterator)localObject2).next();
+        paramBundle.add(Boolean.valueOf(this.BmO.add(localObject3)));
       }
     }
     paramBundle = UUID.randomUUID().toString();
-    p.j(paramBundle, "UUID.randomUUID().toString()");
-    this.fIY = paramBundle;
+    kotlin.g.b.s.s(paramBundle, "randomUUID().toString()");
+    this.hOG = paramBundle;
     this.query = "";
-    paramBundle = this.xNC;
-    if (paramBundle == null) {
-      p.bGy("searchView");
+    Object localObject2 = this.Bny;
+    paramBundle = (Bundle)localObject2;
+    if (localObject2 == null)
+    {
+      kotlin.g.b.s.bIx("searchView");
+      paramBundle = null;
     }
-    paramBundle.getFtsEditText().aDU();
-    paramBundle = this.xNC;
-    if (paramBundle == null) {
-      p.bGy("searchView");
+    paramBundle.getFtsEditText().aWT();
+    localObject2 = this.Bny;
+    paramBundle = (Bundle)localObject2;
+    if (localObject2 == null)
+    {
+      kotlin.g.b.s.bIx("searchView");
+      paramBundle = null;
     }
-    paramBundle.getFtsEditText().aDT();
-    if (this.zZT) {
-      this.xNE = new i((MMActivity)this, false, this.xnL, (kotlin.g.a.b)new f(this), (l)new g());
+    paramBundle.getFtsEditText().aWS();
+    if (this.FvC) {
+      this.BnB = new j((MMActivity)this, false, this.ALp, (kotlin.g.a.b)new d(this), (m)new e());
     }
     for (;;)
     {
-      if (this.zZU) {
+      if (this.FvD) {
         setResult(0, getIntent());
       }
-      Log.i(this.TAG, "fromAtContact:%s", new Object[] { Boolean.valueOf(this.zZU) });
-      paramBundle = (MMActivity)this;
-      localObject1 = this.xNC;
-      if (localObject1 == null) {
-        p.bGy("searchView");
+      Log.i(this.TAG, "fromAtContact:%s", new Object[] { Boolean.valueOf(this.FvD) });
+      localObject3 = (MMActivity)this;
+      localObject2 = this.Bny;
+      paramBundle = (Bundle)localObject2;
+      if (localObject2 == null)
+      {
+        kotlin.g.b.s.bIx("searchView");
+        paramBundle = null;
       }
-      localObject1 = ((com.tencent.mm.ui.search.a)localObject1).getFtsEditText();
-      p.j(localObject1, "searchView.ftsEditText");
-      this.xNF = new k(paramBundle, (FTSEditTextView)localObject1, 0, 2, false, this.xnL, (kotlin.g.a.b)new h(this));
-      paramBundle = getContext().findViewById(b.f.rl_layout);
-      p.j(paramBundle, "context.findViewById(R.id.rl_layout)");
-      this.xvJ = ((RefreshLoadMoreLayout)paramBundle);
-      paramBundle = this.xvJ;
-      if (paramBundle == null) {
-        p.bGy("rlLayout");
+      paramBundle = paramBundle.getFtsEditText();
+      kotlin.g.b.s.s(paramBundle, "searchView.ftsEditText");
+      this.BnC = new l((MMActivity)localObject3, paramBundle, 0, 2, false, this.ALp, (kotlin.g.a.b)new f(this));
+      paramBundle = getContext().findViewById(e.e.rl_layout);
+      kotlin.g.b.s.s(paramBundle, "context.findViewById(R.id.rl_layout)");
+      this.ATx = ((RefreshLoadMoreLayout)paramBundle);
+      localObject2 = this.ATx;
+      paramBundle = (Bundle)localObject2;
+      if (localObject2 == null)
+      {
+        kotlin.g.b.s.bIx("rlLayout");
+        paramBundle = null;
       }
-      this.jLl = paramBundle.getRecyclerView();
-      paramBundle = getContext().findViewById(b.f.no_result_tv);
-      p.j(paramBundle, "context.findViewById(R.id.no_result_tv)");
-      this.xND = ((TextView)paramBundle);
-      paramBundle = getContext().findViewById(b.f.loading_layout);
-      p.j(paramBundle, "context.findViewById(R.id.loading_layout)");
-      this.kGT = paramBundle;
-      if (!this.xnL) {
-        break label948;
+      this.mkw = paramBundle.getRecyclerView();
+      paramBundle = getContext().findViewById(e.e.no_result_tv);
+      kotlin.g.b.s.s(paramBundle, "context.findViewById(R.id.no_result_tv)");
+      this.BnA = ((TextView)paramBundle);
+      paramBundle = getContext().findViewById(e.e.loading_layout);
+      kotlin.g.b.s.s(paramBundle, "context.findViewById(R.id.loading_layout)");
+      this.njN = paramBundle;
+      if (!this.ALp) {
+        break label991;
       }
-      paramBundle = getContext().findViewById(b.f.main_rv);
-      if (paramBundle != null) {
+      localObject3 = getContext().findViewById(e.e.main_rv);
+      if (localObject3 != null) {
         break;
       }
-      paramBundle = new kotlin.t("null cannot be cast to non-null type android.view.View");
+      paramBundle = new NullPointerException("null cannot be cast to non-null type android.view.View");
       AppMethodBeat.o(166730);
       throw paramBundle;
-      paramBundle = findViewById(b.f.history_lv);
-      p.j(paramBundle, "findViewById<View>(R.id.history_lv)");
-      paramBundle.setVisibility(8);
+      findViewById(e.e.history_lv).setVisibility(8);
     }
-    localObject1 = this.xvJ;
-    if (localObject1 == null) {
-      p.bGy("rlLayout");
-    }
-    Object localObject2 = getContext();
-    p.j(localObject2, "context");
-    ((RefreshLoadMoreLayout)localObject1).setBackgroundColor(((AppCompatActivity)localObject2).getResources().getColor(b.c.Dark_0));
-    localObject1 = getContext();
-    p.j(localObject1, "context");
-    paramBundle.setBackgroundColor(((AppCompatActivity)localObject1).getResources().getColor(b.c.Dark_0));
-    label948:
-    paramBundle = new FinderLinearLayoutManager((Context)this);
-    localObject1 = this.jLl;
-    if (localObject1 == null) {
-      p.bGy("recyclerView");
-    }
-    ((RecyclerView)localObject1).setLayoutManager((RecyclerView.LayoutManager)paramBundle);
-    paramBundle = this.jLl;
-    if (paramBundle == null) {
-      p.bGy("recyclerView");
-    }
-    paramBundle.setAdapter((RecyclerView.a)new a(this.xnL));
-    paramBundle = this.jLl;
-    if (paramBundle == null) {
-      p.bGy("recyclerView");
-    }
-    paramBundle.setHasFixedSize(true);
-    paramBundle = this.jLl;
-    if (paramBundle == null) {
-      p.bGy("recyclerView");
-    }
-    paramBundle.setItemViewCacheSize(5);
-    paramBundle = this.jLl;
-    if (paramBundle == null) {
-      p.bGy("recyclerView");
-    }
-    paramBundle.setOnTouchListener((View.OnTouchListener)new d(this));
-    paramBundle = this.xvJ;
-    if (paramBundle == null) {
-      p.bGy("rlLayout");
-    }
-    paramBundle.setEnablePullDownHeader(false);
-    paramBundle = this.xvJ;
-    if (paramBundle == null) {
-      p.bGy("rlLayout");
-    }
-    localObject1 = ad.kS((Context)getContext());
-    if (this.xnL) {}
-    for (int i = b.g.load_more_footer_night_mode;; i = b.g.load_more_footer)
+    localObject2 = this.ATx;
+    paramBundle = (Bundle)localObject2;
+    if (localObject2 == null)
     {
-      localObject1 = ((LayoutInflater)localObject1).inflate(i, null);
-      p.j(localObject1, "MMLayoutInflater.getInfl…oter\n            }, null)");
-      paramBundle.setLoadMoreFooter((View)localObject1);
-      paramBundle = this.xvJ;
-      if (paramBundle == null) {
-        p.bGy("rlLayout");
+      kotlin.g.b.s.bIx("rlLayout");
+      paramBundle = null;
+    }
+    paramBundle.setBackgroundColor(getContext().getResources().getColor(e.b.Dark_0));
+    ((View)localObject3).setBackgroundColor(getContext().getResources().getColor(e.b.Dark_0));
+    label991:
+    localObject2 = new FinderLinearLayoutManager((Context)this);
+    paramBundle = this.mkw;
+    label1047:
+    label1198:
+    int i;
+    if (paramBundle == null)
+    {
+      kotlin.g.b.s.bIx("recyclerView");
+      paramBundle = null;
+      paramBundle.setLayoutManager((RecyclerView.LayoutManager)localObject2);
+      paramBundle = this.mkw;
+      if (paramBundle != null) {
+        break label1551;
       }
-      paramBundle.setActionCallback((RefreshLoadMoreLayout.a)new e(this));
-      paramBundle = this.query;
-      if (paramBundle != null)
+      kotlin.g.b.s.bIx("recyclerView");
+      paramBundle = null;
+      paramBundle.setAdapter((RecyclerView.a)new a(this.ALp));
+      localObject2 = this.mkw;
+      paramBundle = (Bundle)localObject2;
+      if (localObject2 == null)
       {
-        localObject1 = this.xNF;
-        if (localObject1 == null) {
-          p.bGy("searchSuggestionManager");
-        }
-        ((k)localObject1).aEq(paramBundle);
-        localObject1 = this.xNC;
-        if (localObject1 == null) {
-          p.bGy("searchView");
-        }
-        ((com.tencent.mm.ui.search.a)localObject1).getFtsEditText().O(paramBundle, null);
+        kotlin.g.b.s.bIx("recyclerView");
+        paramBundle = null;
       }
-      paramBundle = this.jLl;
-      if (paramBundle == null) {
-        p.bGy("recyclerView");
+      paramBundle.setHasFixedSize(true);
+      localObject2 = this.mkw;
+      paramBundle = (Bundle)localObject2;
+      if (localObject2 == null)
+      {
+        kotlin.g.b.s.bIx("recyclerView");
+        paramBundle = null;
+      }
+      paramBundle.setItemViewCacheSize(5);
+      localObject2 = this.mkw;
+      paramBundle = (Bundle)localObject2;
+      if (localObject2 == null)
+      {
+        kotlin.g.b.s.bIx("recyclerView");
+        paramBundle = null;
+      }
+      paramBundle.setOnTouchListener(new FinderContactSearchUI..ExternalSyntheticLambda0(this));
+      localObject2 = this.ATx;
+      paramBundle = (Bundle)localObject2;
+      if (localObject2 == null)
+      {
+        kotlin.g.b.s.bIx("rlLayout");
+        paramBundle = null;
+      }
+      paramBundle.setEnablePullDownHeader(false);
+      paramBundle = this.ATx;
+      if (paramBundle != null) {
+        break label1554;
+      }
+      kotlin.g.b.s.bIx("rlLayout");
+      paramBundle = null;
+      localObject2 = af.mU((Context)getContext());
+      if (!this.ALp) {
+        break label1557;
+      }
+      i = e.f.load_more_footer_night_mode;
+      label1221:
+      localObject2 = ((LayoutInflater)localObject2).inflate(i, null);
+      kotlin.g.b.s.s(localObject2, "getInflater(context).inf…oter\n            }, null)");
+      paramBundle.setLoadMoreFooter((View)localObject2);
+      paramBundle = this.ATx;
+      if (paramBundle != null) {
+        break label1564;
+      }
+      kotlin.g.b.s.bIx("rlLayout");
+      paramBundle = null;
+      label1261:
+      paramBundle.setActionCallback((RefreshLoadMoreLayout.b)new c(this));
+      localObject3 = this.query;
+      if (localObject3 != null)
+      {
+        localObject2 = this.BnC;
+        paramBundle = (Bundle)localObject2;
+        if (localObject2 == null)
+        {
+          kotlin.g.b.s.bIx("searchSuggestionManager");
+          paramBundle = null;
+        }
+        paramBundle.aAj((String)localObject3);
+        localObject2 = this.Bny;
+        paramBundle = (Bundle)localObject2;
+        if (localObject2 == null)
+        {
+          kotlin.g.b.s.bIx("searchView");
+          paramBundle = null;
+        }
+        paramBundle.getFtsEditText().V((String)localObject3, null);
+      }
+      localObject2 = this.mkw;
+      paramBundle = (Bundle)localObject2;
+      if (localObject2 == null)
+      {
+        kotlin.g.b.s.bIx("recyclerView");
+        paramBundle = null;
       }
       paramBundle = paramBundle.getAdapter();
       if (paramBundle != null) {
-        paramBundle.notifyDataSetChanged();
+        paramBundle.bZE.notifyChanged();
       }
-      paramBundle = this.jLl;
-      if (paramBundle == null) {
-        p.bGy("recyclerView");
+      localObject2 = this.mkw;
+      paramBundle = (Bundle)localObject2;
+      if (localObject2 == null)
+      {
+        kotlin.g.b.s.bIx("recyclerView");
+        paramBundle = null;
       }
-      localObject1 = com.tencent.mm.hellhoundlib.b.c.a(this.mBD, new com.tencent.mm.hellhoundlib.b.a());
-      com.tencent.mm.hellhoundlib.a.a.b(paramBundle, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aFh(), "com/tencent/mm/plugin/finder/search/FinderContactSearchUI", "initContentView", "()V", "Undefined", "scrollToPosition", "(I)V");
-      paramBundle.scrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject1).sf(0)).intValue());
+      localObject2 = com.tencent.mm.hellhoundlib.b.c.a(this.pyl, new com.tencent.mm.hellhoundlib.b.a());
+      com.tencent.mm.hellhoundlib.a.a.b(paramBundle, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aYi(), "com/tencent/mm/plugin/finder/search/FinderContactSearchUI", "initContentView", "()V", "Undefined", "scrollToPosition", "(I)V");
+      paramBundle.scrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject2).sb(0)).intValue());
       com.tencent.mm.hellhoundlib.a.a.c(paramBundle, "com/tencent/mm/plugin/finder/search/FinderContactSearchUI", "initContentView", "()V", "Undefined", "scrollToPosition", "(I)V");
-      this.xqM.a((d)new b());
-      this.Aac.alive();
-      paramBundle = this.jLl;
-      if (paramBundle == null) {
-        p.bGy("recyclerView");
+      this.ANW.a((com.tencent.mm.plugin.finder.event.base.d)new b());
+      this.FvJ.alive();
+      paramBundle = this.mkw;
+      if (paramBundle != null) {
+        break label1567;
       }
-      paramBundle.a((RecyclerView.l)this.Aad);
+      kotlin.g.b.s.bIx("recyclerView");
+      paramBundle = localObject1;
+    }
+    label1551:
+    label1554:
+    label1557:
+    label1564:
+    label1567:
+    for (;;)
+    {
+      paramBundle.a((RecyclerView.l)this.FvK);
       AppMethodBeat.o(166730);
       return;
+      break;
+      break label1047;
+      break label1198;
+      i = e.f.load_more_footer;
+      break label1221;
+      break label1261;
     }
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(166737);
-    this.Aac.dead();
-    Object localObject = this.xNE;
+    this.FvJ.dead();
+    Object localObject = this.BnB;
     if (localObject != null) {
-      ((i)localObject).onDestroy();
+      ((j)localObject).onDestroy();
     }
-    this.xqM.onRelease();
-    com.tencent.mm.kernel.h.aGY().b(3820, (com.tencent.mm.an.i)this);
-    localObject = this.jLl;
-    if (localObject == null) {
-      p.bGy("recyclerView");
+    this.ANW.onRelease();
+    com.tencent.mm.kernel.h.aZW().b(3820, (com.tencent.mm.am.h)this);
+    localObject = this.mkw;
+    if (localObject == null)
+    {
+      kotlin.g.b.s.bIx("recyclerView");
+      localObject = null;
     }
-    ((RecyclerView)localObject).b((RecyclerView.l)this.Aad);
-    super.onDestroy();
-    AppMethodBeat.o(166737);
+    for (;;)
+    {
+      ((RecyclerView)localObject).b((RecyclerView.l)this.FvK);
+      super.onDestroy();
+      AppMethodBeat.o(166737);
+      return;
+    }
+  }
+  
+  public final void onEditTextChange(String paramString1, String paramString2, List<FTSSearchView.c> paramList, FTSEditTextView.d paramd)
+  {
+    paramList = null;
+    AppMethodBeat.i(166733);
+    if (paramString1 == null)
+    {
+      paramString1 = "";
+      if (Util.isNullOrNil(paramString1))
+      {
+        paramd = this.njN;
+        paramString2 = paramd;
+        if (paramd == null)
+        {
+          kotlin.g.b.s.bIx("loadingView");
+          paramString2 = null;
+        }
+        paramString2.setVisibility(8);
+        paramd = this.BnA;
+        paramString2 = paramd;
+        if (paramd == null)
+        {
+          kotlin.g.b.s.bIx("noResultView");
+          paramString2 = null;
+        }
+        paramString2.setVisibility(8);
+        paramString2 = this.ATx;
+        if (paramString2 != null) {
+          break label145;
+        }
+        kotlin.g.b.s.bIx("rlLayout");
+        paramString2 = paramList;
+      }
+    }
+    label145:
+    for (;;)
+    {
+      paramString2.setVisibility(8);
+      paramString2 = this.BnB;
+      if (paramString2 != null) {
+        paramString2.aAg(paramString1);
+      }
+      AppMethodBeat.o(166733);
+      return;
+      paramString2 = n.bq((CharSequence)paramString1).toString();
+      paramString1 = paramString2;
+      if (paramString2 != null) {
+        break;
+      }
+      paramString1 = "";
+      break;
+    }
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(264089);
+    Object localObject2 = null;
+    AppMethodBeat.i(342673);
     super.onPause();
-    Object localObject = com.tencent.mm.plugin.finder.live.report.k.yBj;
-    localObject = this.jLl;
-    if (localObject == null) {
-      p.bGy("recyclerView");
+    ce localce = (ce)com.tencent.mm.kernel.h.ax(ce.class);
+    RecyclerView localRecyclerView = this.mkw;
+    Object localObject1 = localRecyclerView;
+    if (localRecyclerView == null)
+    {
+      kotlin.g.b.s.bIx("recyclerView");
+      localObject1 = null;
     }
-    com.tencent.mm.plugin.finder.live.report.k.b((RecyclerView)localObject, s.t.yGM, s.l.yFR.scene, com.tencent.mm.plugin.finder.live.report.c.yAj);
-    localObject = this.xNF;
-    if (localObject == null) {
-      p.bGy("searchSuggestionManager");
+    localce.b((RecyclerView)localObject1, q.w.DwO, q.n.Dtv.scene, com.tencent.mm.plugin.finder.live.report.d.Dng);
+    localObject1 = this.BnC;
+    if (localObject1 == null)
+    {
+      kotlin.g.b.s.bIx("searchSuggestionManager");
+      localObject1 = localObject2;
     }
-    ((k)localObject).onActivityPause();
-    AppMethodBeat.o(264089);
+    for (;;)
+    {
+      ((l)localObject1).onActivityPause();
+      AppMethodBeat.o(342673);
+      return;
+    }
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(264087);
+    Object localObject2 = null;
+    AppMethodBeat.i(342665);
     super.onResume();
-    Object localObject = com.tencent.mm.plugin.finder.live.report.k.yBj;
-    localObject = this.jLl;
-    if (localObject == null) {
-      p.bGy("recyclerView");
+    ce localce = (ce)com.tencent.mm.kernel.h.ax(ce.class);
+    RecyclerView localRecyclerView = this.mkw;
+    Object localObject1 = localRecyclerView;
+    if (localRecyclerView == null)
+    {
+      kotlin.g.b.s.bIx("recyclerView");
+      localObject1 = null;
     }
-    com.tencent.mm.plugin.finder.live.report.k.b((RecyclerView)localObject, s.t.yGM, s.l.yFR.scene, com.tencent.mm.plugin.finder.live.report.c.yAi);
-    localObject = this.xNF;
-    if (localObject == null) {
-      p.bGy("searchSuggestionManager");
+    localce.b((RecyclerView)localObject1, q.w.DwO, q.n.Dtv.scene, com.tencent.mm.plugin.finder.live.report.d.Dnf);
+    localObject1 = this.BnC;
+    if (localObject1 == null)
+    {
+      kotlin.g.b.s.bIx("searchSuggestionManager");
+      localObject1 = localObject2;
     }
-    ((k)localObject).onActivityResume();
-    AppMethodBeat.o(264087);
+    for (;;)
+    {
+      ((l)localObject1).onActivityResume();
+      AppMethodBeat.o(342665);
+      return;
+    }
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
   {
     AppMethodBeat.i(166739);
-    com.tencent.mm.kernel.h.aGY().b(3820, (com.tencent.mm.an.i)this);
-    int j = this.xMG.size();
-    int i = this.xMG.size();
+    com.tencent.mm.kernel.h.aZW().b(3820, (com.tencent.mm.am.h)this);
+    int j = this.BmO.size();
+    int i = this.BmO.size();
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      f.Iyx.idkeyStat(1265L, 10L, 1L, false);
-      paramString = this.xNG;
-      if (paramString != null) {}
-      for (paramString = paramString.xea; paramString == null; paramString = null)
+      com.tencent.mm.plugin.report.f.Ozc.idkeyStat(1265L, 10L, 1L, false);
+      paramString = this.BnD;
+      if (paramString == null) {}
+      for (paramString = null; paramString == null; paramString = paramString.ADk)
       {
-        paramString = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderSearchResponse");
+        paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderSearchResponse");
         AppMethodBeat.o(166739);
         throw paramString;
       }
-      paramq = paramString.ESJ;
-      p.j(paramq, "response.infoList");
-      Object localObject1 = (Iterable)paramq;
-      paramq = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject1, 10));
+      paramp = paramString.KNn;
+      kotlin.g.b.s.s(paramp, "response.infoList");
+      Object localObject1 = (Iterable)paramp;
+      paramp = (Collection)new ArrayList(kotlin.a.p.a((Iterable)localObject1, 10));
       localObject1 = ((Iterable)localObject1).iterator();
       Object localObject2;
       while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (bip)((Iterator)localObject1).next();
-        paramq.add(Boolean.valueOf(this.xMG.add(localObject2)));
+        localObject2 = (buy)((Iterator)localObject1).next();
+        paramp.add(Boolean.valueOf(this.BmO.add(localObject2)));
       }
       this.offset = paramString.offset;
       this.continueFlag = paramString.continueFlag;
-      this.xHE = paramString.xHE;
-      paramInt2 = this.xMG.size();
-      Log.i(this.TAG, "onSceneEnd " + paramString.offset + ' ' + paramString.continueFlag + ' ' + this.xMG.size());
-      paramq = this.query;
-      boolean bool = paramString.ESJ.isEmpty();
-      i = this.uMD;
+      this.BgS = paramString.BgS;
+      paramInt2 = this.BmO.size();
+      Log.i(this.TAG, "onSceneEnd " + paramString.offset + ' ' + paramString.continueFlag + ' ' + this.BmO.size());
+      paramp = this.query;
+      boolean bool = paramString.KNn.isEmpty();
+      i = this.xVf;
       if (bool)
       {
         paramInt1 = 1;
-        paramString = com.tencent.mm.plugin.finder.report.n.zWF;
-        paramString = com.tencent.mm.plugin.finder.report.n.zWF;
-        localObject1 = com.tencent.mm.plugin.finder.report.n.dPC();
-        localObject2 = this.fIY;
-        paramString = com.tencent.mm.plugin.finder.viewmodel.component.aj.Bnu;
+        paramString = z.FrZ;
+        paramString = z.FrZ;
+        localObject1 = z.eMW();
+        localObject2 = this.hOG;
+        paramString = as.GSQ;
         paramString = getContext();
-        p.j(paramString, "context");
-        paramString = com.tencent.mm.plugin.finder.viewmodel.component.aj.a.fZ((Context)paramString);
-        if (paramString == null) {
-          break label510;
+        kotlin.g.b.s.s(paramString, "context");
+        paramString = as.a.hu((Context)paramString);
+        if (paramString != null) {
+          break label545;
         }
-        paramString = paramString.ekY();
-        label361:
-        com.tencent.mm.plugin.finder.report.n.a((String)localObject1, (String)localObject2, paramq, 2, i, 2, paramInt1, 1, paramString);
+        paramString = null;
+        label358:
+        z.a((String)localObject1, (String)localObject2, paramp, 2, i, 2, paramInt1, 1, paramString);
         paramInt1 = paramInt2;
-        label379:
-        paramString = this.xvJ;
-        if (paramString == null) {
-          p.bGy("rlLayout");
+        label376:
+        paramp = this.ATx;
+        paramString = paramp;
+        if (paramp == null)
+        {
+          kotlin.g.b.s.bIx("rlLayout");
+          paramString = null;
         }
-        paramString.azs(0);
+        paramString.aFW(0);
         if (paramInt1 != 0) {
-          break label535;
+          break label573;
         }
-        paramString = this.kGT;
-        if (paramString == null) {
-          p.bGy("loadingView");
+        paramp = this.njN;
+        paramString = paramp;
+        if (paramp == null)
+        {
+          kotlin.g.b.s.bIx("loadingView");
+          paramString = null;
         }
         paramString.setVisibility(8);
-        paramString = this.xND;
-        if (paramString == null) {
-          p.bGy("noResultView");
+        paramp = this.BnA;
+        paramString = paramp;
+        if (paramp == null)
+        {
+          kotlin.g.b.s.bIx("noResultView");
+          paramString = null;
         }
         paramString.setVisibility(0);
-        paramString = this.xvJ;
-        if (paramString == null) {
-          p.bGy("rlLayout");
+        paramp = this.ATx;
+        paramString = paramp;
+        if (paramp == null)
+        {
+          kotlin.g.b.s.bIx("rlLayout");
+          paramString = null;
         }
         paramString.setVisibility(8);
       }
     }
     for (;;)
     {
-      if (j == 0)
-      {
-        paramString = this.jLl;
-        if (paramString == null) {
-          p.bGy("recyclerView");
-        }
-        paramString = paramString.getAdapter();
-        if (paramString != null)
-        {
-          paramString.notifyDataSetChanged();
-          AppMethodBeat.o(166739);
-          return;
-          paramInt1 = 2;
-          break;
-          label510:
-          paramString = null;
-          break label361;
-          f.Iyx.idkeyStat(1265L, 11L, 1L, false);
-          paramInt1 = i;
-          break label379;
-          label535:
-          paramString = this.kGT;
-          if (paramString == null) {
-            p.bGy("loadingView");
-          }
-          paramString.setVisibility(8);
-          paramString = this.xND;
-          if (paramString == null) {
-            p.bGy("noResultView");
-          }
-          paramString.setVisibility(8);
-          paramString = this.xvJ;
-          if (paramString == null) {
-            p.bGy("rlLayout");
-          }
-          paramString.setVisibility(0);
-          continue;
-        }
-        AppMethodBeat.o(166739);
-        return;
+      if (j != 0) {
+        break label659;
       }
+      paramp = this.mkw;
+      paramString = paramp;
+      if (paramp == null)
+      {
+        kotlin.g.b.s.bIx("recyclerView");
+        paramString = null;
+      }
+      paramString = paramString.getAdapter();
+      if (paramString == null) {
+        break label706;
+      }
+      paramString.bZE.notifyChanged();
+      AppMethodBeat.o(166739);
+      return;
+      paramInt1 = 2;
+      break;
+      label545:
+      paramString = paramString.fou();
+      break label358;
+      com.tencent.mm.plugin.report.f.Ozc.idkeyStat(1265L, 11L, 1L, false);
+      paramInt1 = i;
+      break label376;
+      label573:
+      paramp = this.njN;
+      paramString = paramp;
+      if (paramp == null)
+      {
+        kotlin.g.b.s.bIx("loadingView");
+        paramString = null;
+      }
+      paramString.setVisibility(8);
+      paramp = this.BnA;
+      paramString = paramp;
+      if (paramp == null)
+      {
+        kotlin.g.b.s.bIx("noResultView");
+        paramString = null;
+      }
+      paramString.setVisibility(8);
+      paramp = this.ATx;
+      paramString = paramp;
+      if (paramp == null)
+      {
+        kotlin.g.b.s.bIx("rlLayout");
+        paramString = null;
+      }
+      paramString.setVisibility(0);
     }
+    label659:
     if (j < paramInt1)
     {
-      paramString = this.jLl;
-      if (paramString == null) {
-        p.bGy("recyclerView");
-      }
-      if (paramString != null)
+      paramp = this.mkw;
+      paramString = paramp;
+      if (paramp == null)
       {
-        paramString = paramString.getAdapter();
-        if (paramString != null)
-        {
-          paramString.aG(j, paramInt1 - j);
-          AppMethodBeat.o(166739);
-          return;
-        }
+        kotlin.g.b.s.bIx("recyclerView");
+        paramString = null;
+      }
+      paramString = paramString.getAdapter();
+      if (paramString != null) {
+        paramString.bA(j, paramInt1 - j);
       }
     }
+    label706:
     AppMethodBeat.o(166739);
   }
   
@@ -835,460 +980,523 @@ public final class FinderContactSearchUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/search/FinderContactSearchUI$ContactSearchProfileAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "isForceNightMode", "", "(Lcom/tencent/mm/plugin/finder/search/FinderContactSearchUI;Z)V", "()Z", "bindData", "", "holder", "position", "", "bindImage", "getData", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/FinderSearchInfo;", "Lkotlin/collections/ArrayList;", "getItemCount", "onBindViewHolder", "payloads", "", "", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/search/FinderContactSearchUI$ContactSearchProfileAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "Lcom/tencent/mm/plugin/findersdk/api/IContactSearchProfileAdapter;", "isForceNightMode", "", "(Lcom/tencent/mm/plugin/finder/search/FinderContactSearchUI;Z)V", "()Z", "bindData", "", "holder", "position", "", "bindImage", "getData", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/FinderSearchInfo;", "Lkotlin/collections/ArrayList;", "getItemCount", "onBindViewHolder", "payloads", "", "", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public final class a
     extends RecyclerView.a<RecyclerView.v>
+    implements v
   {
-    private final boolean xnL;
+    private final boolean ALp;
     
     public a()
     {
+      AppMethodBeat.i(342509);
       boolean bool;
-      this.xnL = bool;
+      this.ALp = bool;
+      AppMethodBeat.o(342509);
     }
     
-    private final void i(RecyclerView.v paramv, final int paramInt)
+    private static final void a(FinderContactSearchUI paramFinderContactSearchUI, int paramInt, View paramView)
     {
-      AppMethodBeat.i(290259);
-      Object localObject1 = FinderContactSearchUI.a(FinderContactSearchUI.this).get(paramInt);
-      p.j(localObject1, "contactList[position]");
-      bip localbip = (bip)localObject1;
-      Object localObject2 = FinderContactSearchUI.this;
-      localObject1 = localbip.contact;
-      if (localObject1 != null) {}
-      for (localObject1 = ((FinderContact)localObject1).username;; localObject1 = null)
+      AppMethodBeat.i(342530);
+      Object localObject1 = new Object();
+      Object localObject2 = new com.tencent.mm.hellhoundlib.b.b();
+      ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramFinderContactSearchUI);
+      ((com.tencent.mm.hellhoundlib.b.b)localObject2).sc(paramInt);
+      ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/search/FinderContactSearchUI$ContactSearchProfileAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject1, ((com.tencent.mm.hellhoundlib.b.b)localObject2).aYj());
+      kotlin.g.b.s.u(paramFinderContactSearchUI, "this$0");
+      paramView = paramView.getTag();
+      if (paramView == null)
       {
-        FinderContactSearchUI.a((FinderContactSearchUI)localObject2, (String)localObject1, paramInt);
-        if (paramv != null) {
-          break;
-        }
-        paramv = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.search.FinderMixSearchContactItemHolder");
-        AppMethodBeat.o(290259);
-        throw paramv;
+        paramFinderContactSearchUI = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderSearchInfo");
+        AppMethodBeat.o(342530);
+        throw paramFinderContactSearchUI;
       }
-      paramv = (c)paramv;
-      localObject1 = (View.OnClickListener)new a(this, paramInt);
-      localObject2 = (View.OnLongClickListener)new b(this);
-      if (paramInt != 0) {}
+      localObject2 = (buy)paramView;
+      kotlin.g.b.s.u(localObject2, "finderSearchInfo");
+      if (paramFinderContactSearchUI.FvD)
+      {
+        Log.i(paramFinderContactSearchUI.TAG, "onContactItemClick select atContact");
+        paramView = com.tencent.mm.plugin.finder.utils.h.Gga;
+        localObject1 = ((buy)localObject2).contact;
+        paramView = (View)localObject1;
+        if (localObject1 == null) {
+          paramView = new FinderContact();
+        }
+        paramView = com.tencent.mm.plugin.finder.utils.h.i(paramView);
+        localObject1 = paramFinderContactSearchUI.getIntent();
+        if (paramView == null)
+        {
+          paramView = null;
+          ((Intent)localObject1).putExtra("at_select_contact", paramView);
+          paramFinderContactSearchUI.setResult(-1, paramFinderContactSearchUI.getIntent());
+          paramFinderContactSearchUI.finish();
+        }
+      }
+      int i;
+      label238:
+      boolean bool;
+      label265:
+      label307:
+      label336:
+      label484:
+      do
+      {
+        com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/search/FinderContactSearchUI$ContactSearchProfileAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(342530);
+        return;
+        paramView = paramView.toByteArray();
+        break;
+        paramView = ((buy)localObject2).contact;
+        if ((paramView == null) || (paramView.liveStatus != 1)) {
+          break label654;
+        }
+        i = 1;
+        if (i != 0)
+        {
+          localObject3 = (ce)com.tencent.mm.kernel.h.ax(ce.class);
+          paramView = ((buy)localObject2).contact;
+          if (paramView != null) {
+            break label659;
+          }
+          paramView = "";
+          ((ce)localObject3).a(null, paramView, paramInt, q.w.DwR, q.n.Dtv.scene);
+        }
+        Object localObject3 = new Intent();
+        paramView = ((buy)localObject2).contact;
+        if (paramView != null) {
+          break label679;
+        }
+        paramView = "";
+        ((Intent)localObject3).putExtra("finder_username", paramView);
+        paramView = ((buy)localObject2).contact;
+        if ((paramView == null) || (com.tencent.mm.plugin.finder.api.c.c(paramView))) {
+          break label699;
+        }
+        bool = true;
+        ((Intent)localObject3).putExtra("KEY_DO_NOT_CHECK_ENTER_BIZ_PROFILE", bool);
+        paramView = as.GSQ;
+        paramView = paramFinderContactSearchUI.getContext();
+        kotlin.g.b.s.s(paramView, "context");
+        as.a.a((Context)paramView, (Intent)localObject3, 0L, 7, false, 64);
+        paramView = com.tencent.mm.plugin.finder.utils.a.GfO;
+        localObject1 = paramFinderContactSearchUI.getContext();
+        kotlin.g.b.s.s(localObject1, "context");
+        paramView.enterFinderProfileUI((Context)localObject1, (Intent)localObject3);
+        i = paramFinderContactSearchUI.xVf;
+        paramView = z.FrZ;
+        localObject3 = paramFinderContactSearchUI.hOG;
+        String str1 = paramFinderContactSearchUI.query;
+        paramView = ((buy)localObject2).contact;
+        if (paramView != null) {
+          break label705;
+        }
+        paramView = "";
+        localObject1 = z.FrZ;
+        String str2 = z.eMW();
+        localObject1 = as.GSQ;
+        localObject1 = paramFinderContactSearchUI.getContext();
+        kotlin.g.b.s.s(localObject1, "context");
+        localObject1 = as.a.hu((Context)localObject1);
+        if (localObject1 != null) {
+          break label725;
+        }
+        localObject1 = null;
+        z.a((String)localObject3, str1, 1, 1, paramView, paramInt, 2, str2, i, (bui)localObject1);
+        paramView = z.FrZ;
+        localObject3 = paramFinderContactSearchUI.hOG;
+        str1 = paramFinderContactSearchUI.query;
+        paramView = ((buy)localObject2).contact;
+        if (paramView != null) {
+          break label735;
+        }
+        paramView = "";
+        localObject1 = z.FrZ;
+        str2 = z.eMW();
+        localObject1 = as.GSQ;
+        localObject1 = paramFinderContactSearchUI.getContext();
+        kotlin.g.b.s.s(localObject1, "context");
+        localObject1 = as.a.hu((Context)localObject1);
+        if (localObject1 != null) {
+          break label755;
+        }
+        localObject1 = null;
+        z.a((String)localObject3, str1, 1, 1, paramView, paramInt, 2, str2, 2, i, (bui)localObject1);
+        paramView = as.GSQ;
+        paramFinderContactSearchUI = paramFinderContactSearchUI.getContext();
+        kotlin.g.b.s.s(paramFinderContactSearchUI, "context");
+        paramFinderContactSearchUI = as.a.hu((Context)paramFinderContactSearchUI);
+      } while (paramFinderContactSearchUI == null);
+      label438:
+      label576:
+      paramView = z.FrZ;
+      label530:
+      paramInt = paramFinderContactSearchUI.AJo;
+      paramFinderContactSearchUI = ((buy)localObject2).contact;
+      if (paramFinderContactSearchUI == null) {}
+      for (paramFinderContactSearchUI = null;; paramFinderContactSearchUI = paramFinderContactSearchUI.username)
+      {
+        z.a(6, 0L, paramInt, 1, paramFinderContactSearchUI);
+        break;
+        label654:
+        i = 0;
+        break label238;
+        label659:
+        localObject1 = paramView.username;
+        paramView = (View)localObject1;
+        if (localObject1 != null) {
+          break label265;
+        }
+        paramView = "";
+        break label265;
+        label679:
+        localObject1 = paramView.username;
+        paramView = (View)localObject1;
+        if (localObject1 != null) {
+          break label307;
+        }
+        paramView = "";
+        break label307;
+        label699:
+        bool = false;
+        break label336;
+        label705:
+        localObject1 = paramView.username;
+        paramView = (View)localObject1;
+        if (localObject1 != null) {
+          break label438;
+        }
+        paramView = "";
+        break label438;
+        label725:
+        localObject1 = ((as)localObject1).fou();
+        break label484;
+        label735:
+        localObject1 = paramView.username;
+        paramView = (View)localObject1;
+        if (localObject1 != null) {
+          break label530;
+        }
+        paramView = "";
+        break label530;
+        label755:
+        localObject1 = ((as)localObject1).fou();
+        break label576;
+      }
+    }
+    
+    private static final boolean a(FinderContactSearchUI paramFinderContactSearchUI, View paramView)
+    {
+      AppMethodBeat.i(342539);
+      Object localObject = new Object();
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.cH(paramFinderContactSearchUI);
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/search/FinderContactSearchUI$ContactSearchProfileAdapter", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", localObject, localb.aYj());
+      kotlin.g.b.s.u(paramFinderContactSearchUI, "this$0");
+      kotlin.g.b.s.s(paramView, "it");
+      paramFinderContactSearchUI.onContactItemLongClick(paramView);
+      com.tencent.mm.hellhoundlib.a.a.a(true, new Object(), "com/tencent/mm/plugin/finder/search/FinderContactSearchUI$ContactSearchProfileAdapter", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+      AppMethodBeat.o(342539);
+      return true;
+    }
+    
+    private final void i(RecyclerView.v paramv, int paramInt)
+    {
+      AppMethodBeat.i(342517);
+      Object localObject1 = FinderContactSearchUI.m(FinderContactSearchUI.this).get(paramInt);
+      kotlin.g.b.s.s(localObject1, "contactList[position]");
+      buy localbuy = (buy)localObject1;
+      Object localObject2 = FinderContactSearchUI.this;
+      localObject1 = localbuy.contact;
+      if (localObject1 == null)
+      {
+        localObject1 = null;
+        FinderContactSearchUI.a((FinderContactSearchUI)localObject2, (String)localObject1, paramInt);
+        paramv = (d)paramv;
+        localObject1 = new FinderContactSearchUI.a..ExternalSyntheticLambda0(FinderContactSearchUI.this, paramInt);
+        localObject2 = new FinderContactSearchUI.a..ExternalSyntheticLambda1(FinderContactSearchUI.this);
+        if (paramInt == 0) {
+          break label129;
+        }
+      }
+      label129:
       for (boolean bool = true;; bool = false)
       {
-        paramv.a(localbip, (View.OnClickListener)localObject1, (View.OnLongClickListener)localObject2, bool);
-        AppMethodBeat.o(290259);
+        paramv.a(localbuy, (View.OnClickListener)localObject1, (View.OnLongClickListener)localObject2, bool);
+        AppMethodBeat.o(342517);
         return;
+        localObject1 = ((FinderContact)localObject1).username;
+        break;
       }
     }
     
     public final void a(RecyclerView.v paramv, int paramInt, List<Object> paramList)
     {
-      AppMethodBeat.i(290257);
-      p.k(paramv, "holder");
-      p.k(paramList, "payloads");
+      AppMethodBeat.i(342575);
+      kotlin.g.b.s.u(paramv, "holder");
+      kotlin.g.b.s.u(paramList, "payloads");
       i(paramv, paramInt);
-      AppMethodBeat.o(290257);
+      AppMethodBeat.o(342575);
     }
     
     public final RecyclerView.v b(ViewGroup paramViewGroup, int paramInt)
     {
       boolean bool = false;
-      AppMethodBeat.i(290256);
-      p.k(paramViewGroup, "parent");
+      AppMethodBeat.i(342569);
+      kotlin.g.b.s.u(paramViewGroup, "parent");
       Object localObject = FinderContactSearchUI.this.getContext();
-      if (localObject == null) {
-        p.iCn();
-      }
+      kotlin.g.b.s.checkNotNull(localObject);
       localObject = ((AppCompatActivity)localObject).getLayoutInflater();
-      if (this.xnL) {}
-      for (paramInt = b.g.finder_contact_search_item_night_mode;; paramInt = b.g.finder_contact_search_item)
+      if (this.ALp) {}
+      for (paramInt = e.f.finder_contact_search_item_night_mode;; paramInt = e.f.finder_contact_search_item)
       {
         paramViewGroup = ((LayoutInflater)localObject).inflate(paramInt, paramViewGroup, false);
-        p.j(paramViewGroup, "contactLayout");
-        if (!this.xnL) {
+        kotlin.g.b.s.s(paramViewGroup, "contactLayout");
+        if (!this.ALp) {
           bool = true;
         }
-        paramViewGroup = (RecyclerView.v)new c(paramViewGroup, bool);
-        AppMethodBeat.o(290256);
+        paramViewGroup = (RecyclerView.v)new d(paramViewGroup, bool);
+        AppMethodBeat.o(342569);
         return paramViewGroup;
       }
     }
     
     public final void d(RecyclerView.v paramv, int paramInt)
     {
-      AppMethodBeat.i(290260);
-      p.k(paramv, "holder");
+      AppMethodBeat.i(342581);
+      kotlin.g.b.s.u(paramv, "holder");
       i(paramv, paramInt);
-      AppMethodBeat.o(290260);
+      AppMethodBeat.o(342581);
+    }
+    
+    public final ArrayList<buy> dwi()
+    {
+      AppMethodBeat.i(342585);
+      ArrayList localArrayList = FinderContactSearchUI.m(FinderContactSearchUI.this);
+      AppMethodBeat.o(342585);
+      return localArrayList;
     }
     
     public final int getItemCount()
     {
       AppMethodBeat.i(166721);
-      int i = FinderContactSearchUI.a(FinderContactSearchUI.this).size();
+      int i = FinderContactSearchUI.m(FinderContactSearchUI.this).size();
       AppMethodBeat.o(166721);
       return i;
     }
-    
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-    static final class a
-      implements View.OnClickListener
-    {
-      a(FinderContactSearchUI.a parama, int paramInt) {}
-      
-      public final void onClick(View paramView)
-      {
-        AppMethodBeat.i(166720);
-        Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject1).bn(paramView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/search/FinderContactSearchUI$ContactSearchProfileAdapter$bindData$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).aFi());
-        p.j(paramView, "it");
-        paramView = paramView.getTag();
-        if (paramView == null)
-        {
-          paramView = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderSearchInfo");
-          AppMethodBeat.o(166720);
-          throw paramView;
-        }
-        bip localbip = (bip)paramView;
-        FinderContactSearchUI localFinderContactSearchUI = this.Aaf.Aae;
-        int i = paramInt;
-        p.k(localbip, "finderSearchInfo");
-        if (localFinderContactSearchUI.zZU)
-        {
-          Log.i(localFinderContactSearchUI.TAG, "onContactItemClick select atContact");
-          paramView = e.ACV;
-          localObject1 = localbip.contact;
-          paramView = (View)localObject1;
-          if (localObject1 == null) {
-            paramView = new FinderContact();
-          }
-          paramView = e.f(paramView);
-          localFinderContactSearchUI.getIntent().putExtra("at_select_contact", paramView.toByteArray());
-          localFinderContactSearchUI.setResult(-1, localFinderContactSearchUI.getIntent());
-          localFinderContactSearchUI.finish();
-        }
-        label466:
-        do
-        {
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/search/FinderContactSearchUI$ContactSearchProfileAdapter$bindData$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(166720);
-          return;
-          paramView = localbip.contact;
-          if ((paramView != null) && (paramView.liveStatus == 1))
-          {
-            localObject2 = com.tencent.mm.plugin.finder.live.report.k.yBj;
-            paramView = localbip.contact;
-            if (paramView != null)
-            {
-              localObject1 = paramView.username;
-              paramView = (View)localObject1;
-              if (localObject1 != null) {}
-            }
-            else
-            {
-              paramView = "";
-            }
-            ((com.tencent.mm.plugin.finder.live.report.k)localObject2).a(null, paramView, i, s.t.yGP, s.l.yFR.scene);
-          }
-          Object localObject2 = new Intent();
-          paramView = localbip.contact;
-          if (paramView != null)
-          {
-            localObject1 = paramView.username;
-            paramView = (View)localObject1;
-            if (localObject1 != null) {}
-          }
-          else
-          {
-            paramView = "";
-          }
-          ((Intent)localObject2).putExtra("finder_username", paramView);
-          paramView = com.tencent.mm.plugin.finder.viewmodel.component.aj.Bnu;
-          paramView = localFinderContactSearchUI.getContext();
-          p.j(paramView, "context");
-          com.tencent.mm.plugin.finder.viewmodel.component.aj.a.a((Context)paramView, (Intent)localObject2, 0L, 7, false, 64);
-          paramView = com.tencent.mm.plugin.finder.utils.a.ACH;
-          paramView = localFinderContactSearchUI.getContext();
-          p.j(paramView, "context");
-          com.tencent.mm.plugin.finder.utils.a.enterFinderProfileUI((Context)paramView, (Intent)localObject2);
-          int j = localFinderContactSearchUI.uMD;
-          paramView = com.tencent.mm.plugin.finder.report.n.zWF;
-          localObject2 = localFinderContactSearchUI.fIY;
-          String str1 = localFinderContactSearchUI.query;
-          paramView = localbip.contact;
-          if (paramView != null)
-          {
-            localObject1 = paramView.username;
-            paramView = (View)localObject1;
-            if (localObject1 != null) {}
-          }
-          else
-          {
-            paramView = "";
-          }
-          localObject1 = com.tencent.mm.plugin.finder.report.n.zWF;
-          String str2 = com.tencent.mm.plugin.finder.report.n.dPC();
-          localObject1 = com.tencent.mm.plugin.finder.viewmodel.component.aj.Bnu;
-          localObject1 = localFinderContactSearchUI.getContext();
-          p.j(localObject1, "context");
-          localObject1 = com.tencent.mm.plugin.finder.viewmodel.component.aj.a.fZ((Context)localObject1);
-          if (localObject1 == null) {
-            break;
-          }
-          localObject1 = ((com.tencent.mm.plugin.finder.viewmodel.component.aj)localObject1).ekY();
-          com.tencent.mm.plugin.finder.report.n.a((String)localObject2, str1, 1, 1, paramView, i, 2, str2, j, (bid)localObject1);
-          paramView = com.tencent.mm.plugin.finder.report.n.zWF;
-          localObject2 = localFinderContactSearchUI.fIY;
-          str1 = localFinderContactSearchUI.query;
-          paramView = localbip.contact;
-          if (paramView != null)
-          {
-            localObject1 = paramView.username;
-            paramView = (View)localObject1;
-            if (localObject1 != null) {}
-          }
-          else
-          {
-            paramView = "";
-          }
-          localObject1 = com.tencent.mm.plugin.finder.report.n.zWF;
-          str2 = com.tencent.mm.plugin.finder.report.n.dPC();
-          localObject1 = com.tencent.mm.plugin.finder.viewmodel.component.aj.Bnu;
-          localObject1 = localFinderContactSearchUI.getContext();
-          p.j(localObject1, "context");
-          localObject1 = com.tencent.mm.plugin.finder.viewmodel.component.aj.a.fZ((Context)localObject1);
-          if (localObject1 == null) {
-            break label668;
-          }
-          localObject1 = ((com.tencent.mm.plugin.finder.viewmodel.component.aj)localObject1).ekY();
-          com.tencent.mm.plugin.finder.report.n.a((String)localObject2, str1, 1, 1, paramView, i, 2, str2, 2, j, (bid)localObject1);
-          paramView = com.tencent.mm.plugin.finder.viewmodel.component.aj.Bnu;
-          paramView = localFinderContactSearchUI.getContext();
-          p.j(paramView, "context");
-          paramView = com.tencent.mm.plugin.finder.viewmodel.component.aj.a.fZ((Context)paramView);
-        } while (paramView == null);
-        label579:
-        localObject1 = com.tencent.mm.plugin.finder.report.n.zWF;
-        i = paramView.xkX;
-        paramView = localbip.contact;
-        if (paramView != null) {}
-        for (paramView = paramView.username;; paramView = null)
-        {
-          com.tencent.mm.plugin.finder.report.n.a(6, 0L, i, 1, paramView);
-          break;
-          localObject1 = null;
-          break label466;
-          label668:
-          localObject1 = null;
-          break label579;
-        }
-      }
-    }
-    
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
-    static final class b
-      implements View.OnLongClickListener
-    {
-      b(FinderContactSearchUI.a parama) {}
-      
-      public final boolean onLongClick(View paramView)
-      {
-        AppMethodBeat.i(271341);
-        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/search/FinderContactSearchUI$ContactSearchProfileAdapter$bindData$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-        localObject = this.Aaf.Aae;
-        p.j(paramView, "it");
-        ((FinderContactSearchUI)localObject).onContactItemLongClick(paramView);
-        com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/finder/search/FinderContactSearchUI$ContactSearchProfileAdapter$bindData$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-        AppMethodBeat.o(271341);
-        return true;
-      }
-    }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/search/FinderContactSearchUI$FinderFeedSearchReporter;", "Lcom/tencent/mm/plugin/finder/event/base/EventObserver;", "(Lcom/tencent/mm/plugin/finder/search/FinderContactSearchUI;)V", "isAsync", "", "onEventHappen", "", "event", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/search/FinderContactSearchUI$FinderFeedSearchReporter;", "Lcom/tencent/mm/plugin/finder/event/base/EventObserver;", "(Lcom/tencent/mm/plugin/finder/search/FinderContactSearchUI;)V", "isAsync", "", "onEventHappen", "", "event", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public final class b
-    extends d
+    extends com.tencent.mm.plugin.finder.event.base.d
   {
+    public b()
+    {
+      AppMethodBeat.i(342671);
+      AppMethodBeat.o(342671);
+    }
+    
     public final void a(com.tencent.mm.plugin.finder.event.base.b paramb)
     {
       AppMethodBeat.i(166726);
-      p.k(paramb, "event");
+      kotlin.g.b.s.u(paramb, "event");
+      int i;
+      int j;
       if ((paramb instanceof com.tencent.mm.plugin.finder.event.base.h))
       {
-        int i = ((com.tencent.mm.plugin.finder.event.base.h)paramb).xrh;
-        int j = ((com.tencent.mm.plugin.finder.event.base.h)paramb).xrj;
-        if (i <= j)
+        i = ((com.tencent.mm.plugin.finder.event.base.h)paramb).AOr;
+        j = ((com.tencent.mm.plugin.finder.event.base.h)paramb).AOt;
+        if (i > j) {}
+      }
+      for (;;)
+      {
+        FinderContactSearchUI localFinderContactSearchUI = this.FvL;
+        paramb = ((buy)FinderContactSearchUI.m(this.FvL).get(i)).contact;
+        if (paramb == null) {}
+        for (paramb = null;; paramb = paramb.username)
         {
-          FinderContactSearchUI localFinderContactSearchUI = this.Aae;
-          paramb = ((bip)FinderContactSearchUI.a(this.Aae).get(i)).contact;
-          if (paramb != null) {}
-          for (paramb = paramb.username;; paramb = null)
-          {
-            FinderContactSearchUI.a(localFinderContactSearchUI, paramb, i);
-            if (i == j) {
-              break label96;
-            }
-            i += 1;
+          FinderContactSearchUI.a(localFinderContactSearchUI, paramb, i);
+          if (i != j) {
             break;
           }
+          AppMethodBeat.o(166726);
+          return;
         }
+        i += 1;
       }
-      label96:
-      AppMethodBeat.o(166726);
     }
     
-    public final boolean dpw()
+    public final boolean dXA()
     {
       return true;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/search/FinderContactSearchUI$contactChangelistener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/FeedContactChangeEvent;", "callback", "", "event", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/search/FinderContactSearchUI$initContentView$2", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback2;", "onLoadMoreBegin", "", "loadMoreType", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class c
-    extends IListener<hm>
+    extends RefreshLoadMoreLayout.b
   {
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-    static final class a
-      extends kotlin.g.b.q
-      implements kotlin.g.a.a<x>
-    {
-      a(FinderContactSearchUI.c paramc, hm paramhm)
-      {
-        super();
-      }
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/MotionEvent;", "onTouch"})
-  static final class d
-    implements View.OnTouchListener
-  {
-    d(FinderContactSearchUI paramFinderContactSearchUI) {}
+    c(FinderContactSearchUI paramFinderContactSearchUI) {}
     
-    public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+    public final void qI(int paramInt)
     {
-      AppMethodBeat.i(166727);
-      FinderContactSearchUI.c(this.Aae).getFtsEditText().hUu();
-      this.Aae.hideVKB();
-      AppMethodBeat.o(166727);
-      return false;
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/search/FinderContactSearchUI$initContentView$2", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback;", "onLoadMoreBegin", "", "plugin-finder_release"})
-  public static final class e
-    extends RefreshLoadMoreLayout.a
-  {
-    public final void Ie(int paramInt)
-    {
-      AppMethodBeat.i(285238);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.sg(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/search/FinderContactSearchUI$initContentView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V", this, localb.aFi());
-      super.Ie(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/search/FinderContactSearchUI$initContentView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V");
-      AppMethodBeat.o(285238);
-    }
-    
-    public final void a(RefreshLoadMoreLayout.c paramc)
-    {
-      AppMethodBeat.i(285240);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramc);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/search/FinderContactSearchUI$initContentView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.aFi());
-      super.a(paramc);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/search/FinderContactSearchUI$initContentView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V");
-      AppMethodBeat.o(285240);
-    }
-    
-    public final void cKQ()
-    {
-      AppMethodBeat.i(166728);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/search/FinderContactSearchUI$initContentView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreBegin", "()V", this);
-      Log.i(FinderContactSearchUI.d(this.Aae), "onLoadMoreBegin");
-      Object localObject = FinderContactSearchUI.f(this.Aae);
+      RefreshLoadMoreLayout localRefreshLoadMoreLayout2 = null;
+      RefreshLoadMoreLayout localRefreshLoadMoreLayout1 = null;
+      AppMethodBeat.i(342660);
+      Log.i(FinderContactSearchUI.c(this.FvL), "onLoadMoreBegin");
+      Object localObject = FinderContactSearchUI.e(this.FvL);
       if (localObject != null)
       {
-        if (FinderContactSearchUI.g(this.Aae) != 1) {
-          break label257;
-        }
-        FinderContactSearchUI.a(this.Aae, new cj((String)localObject, FinderContactSearchUI.i(this.Aae), FinderContactSearchUI.j(this.Aae), FinderContactSearchUI.k(this.Aae), FinderContactSearchUI.l(this.Aae), null, null, null, 480));
-        com.tencent.mm.kernel.h.aGY().b((com.tencent.mm.an.q)FinderContactSearchUI.h(this.Aae));
-        com.tencent.mm.kernel.h.aGY().a(3820, (com.tencent.mm.an.i)this.Aae);
-        localObject = FinderContactSearchUI.m(this.Aae).getLoadMoreFooter();
-        if (localObject != null)
+        FinderContactSearchUI localFinderContactSearchUI = this.FvL;
+        if (FinderContactSearchUI.f(localFinderContactSearchUI) == 1)
         {
-          localObject = (TextView)((View)localObject).findViewById(b.f.load_more_footer_tip_tv);
-          if (localObject != null) {
-            ((TextView)localObject).setText(b.j.finder_load_more_footer_tip);
+          FinderContactSearchUI.a(localFinderContactSearchUI, new dk((String)localObject, FinderContactSearchUI.g(localFinderContactSearchUI), FinderContactSearchUI.h(localFinderContactSearchUI), FinderContactSearchUI.i(localFinderContactSearchUI), FinderContactSearchUI.j(localFinderContactSearchUI), null, null, null, 480));
+          com.tencent.mm.kernel.h.aZW().a((com.tencent.mm.am.p)FinderContactSearchUI.k(localFinderContactSearchUI), 0);
+          com.tencent.mm.kernel.h.aZW().a(3820, (com.tencent.mm.am.h)localFinderContactSearchUI);
+          localRefreshLoadMoreLayout2 = FinderContactSearchUI.l(localFinderContactSearchUI);
+          localObject = localRefreshLoadMoreLayout2;
+          if (localRefreshLoadMoreLayout2 == null)
+          {
+            kotlin.g.b.s.bIx("rlLayout");
+            localObject = null;
           }
-        }
-        localObject = FinderContactSearchUI.m(this.Aae).getLoadMoreFooter();
-        if (localObject != null)
-        {
-          localObject = (TextView)((View)localObject).findViewById(b.f.load_more_footer_tip_tv);
-          if (localObject != null) {
-            ((TextView)localObject).setVisibility(0);
+          localObject = ((RefreshLoadMoreLayout)localObject).getLoadMoreFooter();
+          if (localObject != null)
+          {
+            localObject = (TextView)((View)localObject).findViewById(e.e.load_more_footer_tip_tv);
+            if (localObject != null) {
+              ((TextView)localObject).setText(e.h.finder_load_more_footer_tip);
+            }
           }
-        }
-        localObject = FinderContactSearchUI.m(this.Aae).getLoadMoreFooter();
-        if (localObject != null)
-        {
-          localObject = ((View)localObject).findViewById(b.f.load_more_footer_end_layout);
-          if (localObject != null) {
+          localRefreshLoadMoreLayout2 = FinderContactSearchUI.l(localFinderContactSearchUI);
+          localObject = localRefreshLoadMoreLayout2;
+          if (localRefreshLoadMoreLayout2 == null)
+          {
+            kotlin.g.b.s.bIx("rlLayout");
+            localObject = null;
+          }
+          localObject = ((RefreshLoadMoreLayout)localObject).getLoadMoreFooter();
+          if (localObject == null)
+          {
+            localObject = null;
+            if (localObject != null) {
+              ((TextView)localObject).setVisibility(0);
+            }
+            localRefreshLoadMoreLayout2 = FinderContactSearchUI.l(localFinderContactSearchUI);
+            localObject = localRefreshLoadMoreLayout2;
+            if (localRefreshLoadMoreLayout2 == null)
+            {
+              kotlin.g.b.s.bIx("rlLayout");
+              localObject = null;
+            }
+            localObject = ((RefreshLoadMoreLayout)localObject).getLoadMoreFooter();
+            if (localObject != null) {
+              break label276;
+            }
+          }
+          label276:
+          for (localObject = localRefreshLoadMoreLayout1;; localObject = ((View)localObject).findViewById(e.e.load_more_footer_end_layout))
+          {
+            if (localObject == null) {
+              break label417;
+            }
             ((View)localObject).setVisibility(8);
+            AppMethodBeat.o(342660);
+            return;
+            localObject = (TextView)((View)localObject).findViewById(e.e.load_more_footer_tip_tv);
+            break;
           }
         }
+        localRefreshLoadMoreLayout1 = FinderContactSearchUI.l(localFinderContactSearchUI);
+        localObject = localRefreshLoadMoreLayout1;
+        if (localRefreshLoadMoreLayout1 == null)
+        {
+          kotlin.g.b.s.bIx("rlLayout");
+          localObject = null;
+        }
+        localObject = ((RefreshLoadMoreLayout)localObject).getLoadMoreFooter();
+        if (localObject != null)
+        {
+          localObject = (TextView)((View)localObject).findViewById(e.e.load_more_footer_tip_tv);
+          if (localObject != null) {
+            ((TextView)localObject).setText(e.h.finder_load_more_no_result_tip);
+          }
+        }
+        localRefreshLoadMoreLayout1 = FinderContactSearchUI.l(localFinderContactSearchUI);
+        localObject = localRefreshLoadMoreLayout1;
+        if (localRefreshLoadMoreLayout1 == null)
+        {
+          kotlin.g.b.s.bIx("rlLayout");
+          localObject = null;
+        }
+        localObject = ((RefreshLoadMoreLayout)localObject).getLoadMoreFooter();
+        if (localObject != null) {
+          break label423;
+        }
+        localObject = null;
+        if (localObject != null) {
+          ((TextView)localObject).setVisibility(8);
+        }
+        localRefreshLoadMoreLayout1 = FinderContactSearchUI.l(localFinderContactSearchUI);
+        localObject = localRefreshLoadMoreLayout1;
+        if (localRefreshLoadMoreLayout1 == null)
+        {
+          kotlin.g.b.s.bIx("rlLayout");
+          localObject = null;
+        }
+        localObject = ((RefreshLoadMoreLayout)localObject).getLoadMoreFooter();
+        if (localObject != null) {
+          break label437;
+        }
       }
-      for (;;)
+      label417:
+      label423:
+      label437:
+      for (localObject = localRefreshLoadMoreLayout2;; localObject = ((View)localObject).findViewById(e.e.load_more_footer_end_layout))
       {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/search/FinderContactSearchUI$initContentView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreBegin", "()V");
-        AppMethodBeat.o(166728);
+        if (localObject != null) {
+          ((View)localObject).setVisibility(0);
+        }
+        AppMethodBeat.o(342660);
         return;
-        label257:
-        localObject = FinderContactSearchUI.m(this.Aae).getLoadMoreFooter();
-        if (localObject != null)
-        {
-          localObject = (TextView)((View)localObject).findViewById(b.f.load_more_footer_tip_tv);
-          if (localObject != null) {
-            ((TextView)localObject).setText(b.j.finder_load_more_no_result_tip);
-          }
-        }
-        localObject = FinderContactSearchUI.m(this.Aae).getLoadMoreFooter();
-        if (localObject != null)
-        {
-          localObject = (TextView)((View)localObject).findViewById(b.f.load_more_footer_tip_tv);
-          if (localObject != null) {
-            ((TextView)localObject).setVisibility(8);
-          }
-        }
-        localObject = FinderContactSearchUI.m(this.Aae).getLoadMoreFooter();
-        if (localObject != null)
-        {
-          localObject = ((View)localObject).findViewById(b.f.load_more_footer_end_layout);
-          if (localObject != null) {
-            ((View)localObject).setVisibility(0);
-          }
-        }
+        localObject = (TextView)((View)localObject).findViewById(e.e.load_more_footer_tip_tv);
+        break;
       }
-    }
-    
-    public final void onRefreshEnd(RefreshLoadMoreLayout.c paramc)
-    {
-      AppMethodBeat.i(285239);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramc);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/search/FinderContactSearchUI$initContentView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.aFi());
-      super.onRefreshEnd(paramc);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/search/FinderContactSearchUI$initContentView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V");
-      AppMethodBeat.o(285239);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "query", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class contactChangelistener$1$a
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    contactChangelistener$1$a(hx paramhx, FinderContactSearchUI paramFinderContactSearchUI)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "query", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class d
+    extends u
+    implements kotlin.g.a.b<String, ah>
+  {
+    d(FinderContactSearchUI paramFinderContactSearchUI)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/search/FinderContactSearchUI$initData$3", "Lcom/tencent/mm/plugin/finder/search/OnHistoryClearListener;", "onClear", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class e
+    implements m
+  {}
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "suggestion", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class f
-    extends kotlin.g.b.q
-    implements kotlin.g.a.b<String, x>
+    extends u
+    implements kotlin.g.a.b<String, ah>
   {
     f(FinderContactSearchUI paramFinderContactSearchUI)
     {
@@ -1296,126 +1504,111 @@ public final class FinderContactSearchUI
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/search/FinderContactSearchUI$initData$3", "Lcom/tencent/mm/plugin/finder/search/OnHistoryClearListener;", "onClear", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/search/FinderContactSearchUI$mOnHellScrollListener$1", "Landroidx/recyclerview/widget/RecyclerView$OnScrollListener;", "onScrolled", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "dx", "", "dy", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class g
-    implements l
-  {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "suggestion", "", "invoke"})
-  static final class h
-    extends kotlin.g.b.q
-    implements kotlin.g.a.b<String, x>
-  {
-    h(FinderContactSearchUI paramFinderContactSearchUI)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/search/FinderContactSearchUI$mOnHellScrollListener$1", "Landroidx/recyclerview/widget/RecyclerView$OnScrollListener;", "onScrolled", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "dx", "", "dy", "plugin-finder_release"})
-  public static final class i
     extends RecyclerView.l
   {
     public final void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
     {
-      AppMethodBeat.i(287391);
+      AppMethodBeat.i(342607);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramRecyclerView);
-      localb.sg(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/search/FinderContactSearchUI$mOnHellScrollListener$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aFi());
+      localb.cH(paramRecyclerView);
+      localb.sc(paramInt);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/search/FinderContactSearchUI$mOnHellScrollListener$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aYj());
       super.onScrollStateChanged(paramRecyclerView, paramInt);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/search/FinderContactSearchUI$mOnHellScrollListener$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
-      AppMethodBeat.o(287391);
+      AppMethodBeat.o(342607);
     }
     
     public final void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(287390);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramRecyclerView);
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).sg(paramInt1);
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).sg(paramInt2);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/search/FinderContactSearchUI$mOnHellScrollListener$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-      p.k(paramRecyclerView, "recyclerView");
+      AppMethodBeat.i(342601);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.cH(paramRecyclerView);
+      localb.sc(paramInt1);
+      localb.sc(paramInt2);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/search/FinderContactSearchUI$mOnHellScrollListener$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aYj());
+      kotlin.g.b.s.u(paramRecyclerView, "recyclerView");
       super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-      localObject = com.tencent.mm.plugin.finder.live.report.k.yBj;
-      com.tencent.mm.plugin.finder.live.report.k.b(paramRecyclerView, s.t.yGM, s.l.yFR.scene, com.tencent.mm.plugin.finder.live.report.c.yAh);
+      ((ce)com.tencent.mm.kernel.h.ax(ce.class)).b(paramRecyclerView, q.w.DwO, q.n.Dtv.scene, com.tencent.mm.plugin.finder.live.report.d.Dne);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/search/FinderContactSearchUI$mOnHellScrollListener$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
-      AppMethodBeat.o(287390);
+      AppMethodBeat.o(342601);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/search/FinderContactSearchUI$onContactItemLongClick$1", "Landroid/view/View$OnCreateContextMenuListener;", "onCreateContextMenu", "", "menu", "Landroid/view/ContextMenu;", "v", "Landroid/view/View;", "menuInfo", "Landroid/view/ContextMenu$ContextMenuInfo;", "plugin-finder_release"})
-  public static final class j
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/search/FinderContactSearchUI$onContactItemLongClick$1", "Landroid/view/View$OnCreateContextMenuListener;", "onCreateContextMenu", "", "menu", "Landroid/view/ContextMenu;", "v", "Landroid/view/View;", "menuInfo", "Landroid/view/ContextMenu$ContextMenuInfo;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class h
     implements View.OnCreateContextMenuListener
   {
-    j(aa.d paramd) {}
+    h(ah.d paramd) {}
     
     public final void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
     {
-      AppMethodBeat.i(288446);
-      if (paramContextMenu != null)
-      {
-        paramContextMenu.add(0, this.Aah.aaBA, 0, b.j.finder_mod_block_poster_del);
-        AppMethodBeat.o(288446);
-        return;
+      AppMethodBeat.i(342580);
+      if (paramContextMenu != null) {
+        paramContextMenu.add(0, this.FvM.aixb, 0, e.h.finder_mod_block_poster_del);
       }
-      AppMethodBeat.o(288446);
+      AppMethodBeat.o(342580);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/search/FinderContactSearchUI$onContactItemLongClick$2", "Lcom/tencent/mm/ui/base/MMMenuListener$OnMMMenuItemSelectedListener;", "onMMMenuItemSelected", "", "menuItem", "Landroid/view/MenuItem;", "index", "", "plugin-finder_release"})
-  public static final class k
-    implements q.g
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/search/FinderContactSearchUI$onContactItemLongClick$2", "Lcom/tencent/mm/ui/base/MMMenuListener$OnMMMenuItemSelectedListener;", "onMMMenuItemSelected", "", "menuItem", "Landroid/view/MenuItem;", "index", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class i
+    implements u.i
   {
-    k(int paramInt) {}
+    i(int paramInt, FinderContactSearchUI paramFinderContactSearchUI) {}
     
-    public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
+    public final void onMMMenuItemSelected(MenuItem paramMenuItem, final int paramInt)
     {
-      AppMethodBeat.i(289231);
-      if ((i >= 0) && (i < FinderContactSearchUI.a(this.Aae).size()))
+      AppMethodBeat.i(342620);
+      if ((this.EXC >= 0) && (this.EXC < FinderContactSearchUI.m(jdField_this).size()))
       {
-        paramMenuItem = (bip)FinderContactSearchUI.a(this.Aae).get(i);
+        paramMenuItem = (buy)FinderContactSearchUI.m(jdField_this).get(this.EXC);
         if (paramMenuItem != null)
         {
           paramMenuItem = paramMenuItem.contact;
           if (paramMenuItem != null)
           {
-            com.tencent.mm.plugin.finder.storage.c localc = new com.tencent.mm.plugin.finder.storage.c();
-            p.j(paramMenuItem, "it");
-            localc.a(paramMenuItem, (com.tencent.mm.plugin.finder.storage.aj.a)new a(this));
-            AppMethodBeat.o(289231);
-            return;
+            FinderContactSearchUI localFinderContactSearchUI = jdField_this;
+            paramInt = this.EXC;
+            new com.tencent.mm.plugin.finder.storage.c().a(paramMenuItem, (ar.a)new a(localFinderContactSearchUI, paramInt));
           }
         }
       }
-      AppMethodBeat.o(289231);
+      AppMethodBeat.o(342620);
     }
     
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/search/FinderContactSearchUI$onContactItemLongClick$2$onMMMenuItemSelected$1$1", "Lcom/tencent/mm/plugin/finder/storage/IFinderBlockListConfig$OnItemDelCallBack;", "onDel", "", "success", "", "plugin-finder_release"})
+    @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/search/FinderContactSearchUI$onContactItemLongClick$2$onMMMenuItemSelected$1$1", "Lcom/tencent/mm/plugin/finder/storage/IFinderBlockListConfig$OnItemDelCallBack;", "onDel", "", "success", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
     public static final class a
-      implements com.tencent.mm.plugin.finder.storage.aj.a
+      implements ar.a
     {
-      a(FinderContactSearchUI.k paramk) {}
+      a(FinderContactSearchUI paramFinderContactSearchUI, int paramInt) {}
       
-      public final void pX(boolean paramBoolean)
+      public final void tb(boolean paramBoolean)
       {
-        AppMethodBeat.i(289261);
+        AppMethodBeat.i(342311);
         if (paramBoolean)
         {
-          FinderContactSearchUI.a(this.Aai.Aae).remove(this.Aai.zMM);
-          RecyclerView.a locala = FinderContactSearchUI.n(this.Aai.Aae).getAdapter();
-          if (locala != null)
+          FinderContactSearchUI.m(this.FvL).remove(paramInt);
+          RecyclerView localRecyclerView = FinderContactSearchUI.n(this.FvL);
+          Object localObject = localRecyclerView;
+          if (localRecyclerView == null)
           {
-            locala.cN(this.Aai.zMM);
-            AppMethodBeat.o(289261);
-            return;
+            kotlin.g.b.s.bIx("recyclerView");
+            localObject = null;
           }
-          AppMethodBeat.o(289261);
-          return;
+          localObject = ((RecyclerView)localObject).getAdapter();
+          if (localObject != null)
+          {
+            ((RecyclerView.a)localObject).fX(paramInt);
+            AppMethodBeat.o(342311);
+          }
         }
-        com.tencent.mm.ui.base.w.makeText((Context)this.Aai.Aae.getContext(), (CharSequence)"failed", 0).show();
-        AppMethodBeat.o(289261);
+        else
+        {
+          com.tencent.mm.ui.base.aa.makeText((Context)this.FvL.getContext(), (CharSequence)"failed", 0).show();
+        }
+        AppMethodBeat.o(342311);
       }
     }
   }

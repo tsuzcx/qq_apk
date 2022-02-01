@@ -22,7 +22,7 @@ public final class i
   public final void notifyLongTask(final long paramLong)
   {
     AppMethodBeat.i(175050);
-    com.tencent.e.h.ZvG.d(new Runnable()
+    com.tencent.threadpool.h.ahAA.g(new Runnable()
     {
       public final void run()
       {
@@ -35,10 +35,10 @@ public final class i
         }
         for (;;)
         {
-          com.tencent.mm.plugin.report.service.h.IzE.el(1246, i);
-          com.tencent.mm.plugin.report.service.h.IzE.el(1246, 0);
+          com.tencent.mm.plugin.report.service.h.OAn.kJ(1246, i);
+          com.tencent.mm.plugin.report.service.h.OAn.kJ(1246, 0);
           str = String.format("%d,%s", new Object[] { Long.valueOf(l), str });
-          a.qIj.a(18794, new Object[] { str });
+          a.tMQ.b(18794, new Object[] { str });
           Log.v("MicroMsg.PageLongTaskReporterWC", "doReport %s", new Object[] { str });
           AppMethodBeat.o(175048);
           return;
@@ -63,7 +63,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.performance.i
  * JD-Core Version:    0.7.0.1
  */

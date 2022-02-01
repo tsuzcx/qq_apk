@@ -8,10 +8,10 @@ public final class aj
 {
   public aj()
   {
-    this.abFM = 327;
+    this.ajGQ = 327;
   }
   
-  private static int dS(byte[] paramArrayOfByte)
+  private static int dV(byte[] paramArrayOfByte)
   {
     if (paramArrayOfByte != null)
     {
@@ -25,27 +25,27 @@ public final class aj
   
   public final byte[] a(long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    AppMethodBeat.i(187850);
-    int j = dS(paramArrayOfByte1);
-    int i = dS(paramArrayOfByte2);
+    AppMethodBeat.i(186463);
+    int j = dV(paramArrayOfByte1);
+    int i = dV(paramArrayOfByte2);
     byte[] arrayOfByte = new byte[j + 6 + 2 + i];
     util.d(arrayOfByte, 0, 522017402L);
-    util.ai(arrayOfByte, 4, j);
+    util.ag(arrayOfByte, 4, j);
     System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 6, j);
     j += 6;
-    util.ai(arrayOfByte, j, i);
+    util.ag(arrayOfByte, j, i);
     System.arraycopy(paramArrayOfByte2, 0, arrayOfByte, j + 2, i);
-    super.aGe(this.abFM);
-    super.am(arrayOfByte, arrayOfByte.length);
-    super.iUJ();
-    paramArrayOfByte1 = super.iUF();
-    AppMethodBeat.o(187850);
+    super.aMR(this.ajGQ);
+    super.an(arrayOfByte, arrayOfByte.length);
+    super.kGk();
+    paramArrayOfByte1 = super.kGg();
+    AppMethodBeat.o(186463);
     return paramArrayOfByte1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     oicq.wlogin_sdk.a.aj
  * JD-Core Version:    0.7.0.1
  */

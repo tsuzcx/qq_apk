@@ -5,22 +5,14 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 
-@SafeParcelable.Class(creator="EventParamsCreator")
-@SafeParcelable.Reserved({1})
 public final class zzer
   extends AbstractSafeParcelable
   implements Iterable<String>
 {
   public static final Parcelable.Creator<zzer> CREATOR;
-  @SafeParcelable.Field(getter="z", id=2)
   private final Bundle zzafy;
   
   static
@@ -30,8 +22,7 @@ public final class zzer
     AppMethodBeat.o(1262);
   }
   
-  @SafeParcelable.Constructor
-  zzer(@SafeParcelable.Param(id=2) Bundle paramBundle)
+  zzer(Bundle paramBundle)
   {
     this.zzafy = paramBundle;
   }
@@ -111,7 +102,7 @@ public final class zzer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzer
  * JD-Core Version:    0.7.0.1
  */

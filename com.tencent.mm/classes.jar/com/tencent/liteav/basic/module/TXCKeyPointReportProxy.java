@@ -30,9 +30,9 @@ public class TXCKeyPointReportProxy
   
   public static void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(238889);
+    AppMethodBeat.i(230079);
     nativeSetLocalQuality(paramInt1, paramInt2, paramInt3);
-    AppMethodBeat.o(238889);
+    AppMethodBeat.o(230079);
   }
   
   public static void a(Context paramContext)
@@ -72,9 +72,9 @@ public class TXCKeyPointReportProxy
   
   public static void a(a parama)
   {
-    AppMethodBeat.i(238878);
+    AppMethodBeat.i(230054);
     nativeSetDeviceInfo(parama.a, parama.b, parama.c, parama.d, parama.e, parama.f, parama.g, parama.h);
-    AppMethodBeat.o(238878);
+    AppMethodBeat.o(230054);
   }
   
   public static void a(String paramString, int paramInt)
@@ -86,16 +86,16 @@ public class TXCKeyPointReportProxy
   
   public static void a(String paramString, int paramInt1, long paramLong, int paramInt2)
   {
-    AppMethodBeat.i(238887);
+    AppMethodBeat.i(230074);
     nativesetRemoteQuality(paramString, paramInt1, paramLong, paramInt2);
-    AppMethodBeat.o(238887);
+    AppMethodBeat.o(230074);
   }
   
   public static void b(int paramInt)
   {
-    AppMethodBeat.i(238894);
+    AppMethodBeat.i(230086);
     nativeSetErrorCode(paramInt);
-    AppMethodBeat.o(238894);
+    AppMethodBeat.o(230086);
   }
   
   public static void b(int paramInt1, int paramInt2)
@@ -107,16 +107,16 @@ public class TXCKeyPointReportProxy
   
   public static void b(String paramString, int paramInt)
   {
-    AppMethodBeat.i(238885);
+    AppMethodBeat.i(230071);
     nativeTagKeyPointAudio(paramString, paramInt);
-    AppMethodBeat.o(238885);
+    AppMethodBeat.o(230071);
   }
   
   public static void c(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(238891);
+    AppMethodBeat.i(230082);
     nativeSetBasicInfo(paramInt1, paramInt2);
-    AppMethodBeat.o(238891);
+    AppMethodBeat.o(230082);
   }
   
   private static native void nativeInit(String paramString);
@@ -157,7 +157,7 @@ public class TXCKeyPointReportProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.basic.module.TXCKeyPointReportProxy
  * JD-Core Version:    0.7.0.1
  */

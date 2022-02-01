@@ -14,7 +14,6 @@ import com.google.android.gms.common.internal.Preconditions;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 import java.util.concurrent.ExecutorService;
-import javax.annotation.concurrent.GuardedBy;
 
 public final class zzch<R extends Result>
   extends TransformedResult<R>
@@ -71,7 +70,6 @@ public final class zzch<R extends Result>
     AppMethodBeat.o(11378);
   }
   
-  @GuardedBy("mSyncToken")
   private final void zzcb()
   {
     AppMethodBeat.i(11374);
@@ -98,7 +96,6 @@ public final class zzch<R extends Result>
     AppMethodBeat.o(11374);
   }
   
-  @GuardedBy("mSyncToken")
   private final boolean zzcd()
   {
     AppMethodBeat.i(11377);
@@ -239,7 +236,7 @@ public final class zzch<R extends Result>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.zzch
  * JD-Core Version:    0.7.0.1
  */

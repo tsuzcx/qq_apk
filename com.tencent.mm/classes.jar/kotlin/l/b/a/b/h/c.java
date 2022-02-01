@@ -6,8 +6,8 @@ import java.util.NoSuchElementException;
 final class c
   extends q
 {
-  final int bPk;
-  private final int bPl;
+  final int dIO;
+  private final int dIP;
   
   c(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
@@ -31,17 +31,24 @@ final class c
       AppMethodBeat.o(59365);
       throw paramArrayOfByte;
     }
-    this.bPk = paramInt1;
-    this.bPl = paramInt2;
+    this.dIO = paramInt1;
+    this.dIP = paramInt2;
     AppMethodBeat.o(59365);
   }
   
-  protected final int At()
+  protected final int aaa()
   {
-    return this.bPk;
+    return this.dIO;
   }
   
-  public final d.a iNG()
+  protected final void c(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(59367);
+    System.arraycopy(this.Op, this.dIO + paramInt1, paramArrayOfByte, paramInt2, paramInt3);
+    AppMethodBeat.o(59367);
+  }
+  
+  public final d.a kxZ()
   {
     AppMethodBeat.i(59368);
     a locala = new a((byte)0);
@@ -49,16 +56,9 @@ final class c
     return locala;
   }
   
-  protected final void m(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(59367);
-    System.arraycopy(this.UH, this.bPk + paramInt1, paramArrayOfByte, paramInt2, paramInt3);
-    AppMethodBeat.o(59367);
-  }
-  
   public final int size()
   {
-    return this.bPl;
+    return this.dIP;
   }
   
   final class a
@@ -70,7 +70,7 @@ final class c
     private a()
     {
       AppMethodBeat.i(59361);
-      this.position = c.this.bPk;
+      this.position = c.this.dIO;
       this.limit = (this.position + c.this.size());
       AppMethodBeat.o(59361);
     }
@@ -89,7 +89,7 @@ final class c
         AppMethodBeat.o(59362);
         throw ((Throwable)localObject);
       }
-      Object localObject = c.this.UH;
+      Object localObject = c.this.Op;
       int i = this.position;
       this.position = (i + 1);
       byte b = localObject[i];
@@ -108,7 +108,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.h.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,62 @@
 package kotlin.l.b.a.b.m;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.a.g;
-import kotlin.l.b.a.b.m.a.i;
+import kotlin.g.b.s;
 
 public final class an
-  extends aw
+  extends o
+  implements bh
 {
-  private final ab abqT;
+  public final al aiUV;
+  private final ad ajpJ;
   
-  public an(g paramg)
+  public an(al paramal, ad paramad)
   {
-    AppMethodBeat.i(60809);
-    paramg = paramg.iDv();
-    p.j(paramg, "kotlinBuiltIns.nullableAnyType");
-    this.abqT = ((ab)paramg);
-    AppMethodBeat.o(60809);
+    AppMethodBeat.i(60801);
+    this.aiUV = paramal;
+    this.ajpJ = paramad;
+    AppMethodBeat.o(60801);
   }
   
-  public final ab iFN()
+  private an n(kotlin.l.b.a.b.m.a.g paramg)
   {
-    return this.abqT;
+    AppMethodBeat.i(60797);
+    s.u(paramg, "kotlinTypeRefiner");
+    paramg = new an((al)paramg.aD((ad)this.aiUV), paramg.aD(this.ajpJ));
+    AppMethodBeat.o(60797);
+    return paramg;
   }
   
-  public final boolean iPZ()
+  public final al Pq(boolean paramBoolean)
   {
-    return true;
+    AppMethodBeat.i(60794);
+    al localal = (al)bi.b((bk)this.aiUV.Pq(paramBoolean), (ad)this.ajpJ.kAK().Pp(paramBoolean));
+    AppMethodBeat.o(60794);
+    return localal;
   }
   
-  public final bh iQa()
+  public final al d(kotlin.l.b.a.b.b.a.g paramg)
   {
-    return bh.abrr;
+    AppMethodBeat.i(60792);
+    s.u(paramg, "newAnnotations");
+    paramg = (al)bi.b((bk)this.aiUV.d(paramg), this.ajpJ);
+    AppMethodBeat.o(60792);
+    return paramg;
   }
   
-  public final av m(i parami)
+  public final ad kAG()
   {
-    AppMethodBeat.i(60808);
-    p.k(parami, "kotlinTypeRefiner");
-    parami = (av)this;
-    AppMethodBeat.o(60808);
-    return parami;
+    return this.ajpJ;
+  }
+  
+  protected final al ksx()
+  {
+    return this.aiUV;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.m.an
  * JD-Core Version:    0.7.0.1
  */

@@ -1,124 +1,91 @@
 package com.tencent.matrix.c;
 
-import android.annotation.SuppressLint;
-import com.tencent.e.i.k;
+import com.tencent.matrix.a.a.a.b;
 import com.tencent.matrix.a.a.a.b.a;
-import com.tencent.matrix.a.a.a.j.a.a;
-import com.tencent.matrix.a.a.a.j.a.c.b;
-import com.tencent.matrix.a.a.b.a.a;
-import com.tencent.matrix.a.a.d;
-import com.tencent.matrix.a.b.k.c;
+import com.tencent.matrix.a.a.a.m.a.a;
+import com.tencent.matrix.a.a.c;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandler.TaskWatch;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import java.util.List;
 
 public final class f
-  extends com.tencent.matrix.a.a.a.b
+  extends b
 {
-  private com.tencent.matrix.report.c cZq;
-  private a cZx;
+  private com.tencent.matrix.report.d eWp;
   
-  public final void G(List<j.a.a<b.a>> paramList)
+  public final void a(int paramInt, String paramString, long paramLong)
   {
-    if (this.cZq != null)
-    {
-      com.tencent.matrix.report.c localc = this.cZq;
-      Log.i("Matrix.battery.listener", "#onTraceOverHeat, size = " + paramList.size());
-      if (!paramList.isEmpty())
+    if (a.aym()) {
+      Log.i("Matrix.battery.MMHandlerJiffies", "#onStatTask, tid = " + paramInt + ", stamp = " + paramLong + ", key = " + paramString);
+    }
+    super.a(paramInt, paramString, paramLong);
+  }
+  
+  public final void awI()
+  {
+    super.awI();
+    if (MMApplicationContext.isMainProcess()) {
+      h.baH().getWorkerHandler().setTaskWatch(new MMHandler.TaskWatch()
       {
-        Object localObject = (j.a.a)paramList.get(0);
-        if ((localObject != null) && (((Long)((b.a)((j.a.a)localObject).cWo).cUC.cWu).longValue() > 0L))
+        public final void onTaskFinish(Runnable paramAnonymousRunnable)
         {
-          localObject = new b.a.a();
-          ((b.a.a)localObject).VV();
-          ((b.a.a)localObject).aM("| ThreadPool Task Jiffies Tracing OverHeat").aM("\n");
-          localc.a(paramList, com.tencent.matrix.a.a.a.VQ(), (b.a.a)localObject);
-          ((b.a.a)localObject).VW();
-          ((b.a.a)localObject).Y();
+          f.b(f.this, paramAnonymousRunnable.getClass().getName(), paramAnonymousRunnable.hashCode());
         }
-      }
+        
+        public final void onTaskStart(Runnable paramAnonymousRunnable)
+        {
+          f.a(f.this, paramAnonymousRunnable.getClass().getName(), paramAnonymousRunnable.hashCode());
+        }
+      });
     }
   }
   
-  public final void H(String paramString, int paramInt)
+  public final void awJ()
   {
-    super.H(paramString, paramInt);
+    super.awJ();
   }
   
-  public final void I(String paramString, int paramInt)
-  {
-    super.I(paramString, paramInt);
-  }
-  
-  public final void VZ()
-  {
-    super.VZ();
-    com.tencent.e.c.b.Zwh = new f.a.1(this.cZx);
-  }
-  
-  public final void Wa()
-  {
-    super.Wa();
-    com.tencent.e.c.b.Zwh = this.cZx.cZy;
-  }
-  
-  public final int Wh()
+  public final int awQ()
   {
     return 0;
   }
   
-  public final void b(int paramInt, String paramString, long paramLong)
+  public final boolean b(m.a.a<b.a> parama)
   {
-    a.Xf();
-    super.b(paramInt, paramString, paramLong);
+    if (a.aym()) {
+      return true;
+    }
+    return super.b(parama);
   }
   
-  public final void f(d paramd)
+  public final void be(List<m.a.a<b.a>> paramList)
   {
-    super.f(paramd);
-    this.cUx = a.Xd();
-    this.cZx = new a(com.tencent.e.c.b.Zwh, (byte)0);
-    paramd = paramd.cUb.cTz;
-    if ((paramd instanceof com.tencent.matrix.report.c)) {
-      this.cZq = ((com.tencent.matrix.report.c)paramd);
+    if (this.eWp != null) {
+      this.eWp.bh(paramList);
     }
   }
   
-  @SuppressLint({"RestrictedApi"})
-  public final k.c h(int paramInt, long paramLong1, long paramLong2)
+  public final void g(com.tencent.matrix.a.a.d paramd)
   {
-    k.c localc = super.h(paramInt, paramLong1, paramLong2);
-    a.Xg();
-    return localc;
-  }
-  
-  public final boolean i(j.a.a<b.a> parama)
-  {
-    a.Xf();
-    return super.i(parama);
-  }
-  
-  @SuppressLint({"RestrictedApi"})
-  public final void j(j.a.a<b.a> parama)
-  {
-    super.j(parama);
-    a.Xg();
-  }
-  
-  public final void js(int paramInt) {}
-  
-  final class a
-  {
-    final com.tencent.e.b.c cZy;
-    
-    private a(com.tencent.e.b.c paramc)
-    {
-      this.cZy = paramc;
+    super.g(paramd);
+    paramd = paramd.ePD.ePb;
+    if ((paramd instanceof com.tencent.matrix.report.d)) {
+      this.eWp = ((com.tencent.matrix.report.d)paramd);
     }
+  }
+  
+  public final String getTag()
+  {
+    return "Matrix.battery.MMHandlerJiffies";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.c.f
  * JD-Core Version:    0.7.0.1
  */

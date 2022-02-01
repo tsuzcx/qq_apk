@@ -2,52 +2,49 @@ package com.tencent.mm.emoji.panel.a;
 
 import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.b.b.t;
+import com.tencent.mm.emoji.c.b.t;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.m.a.g;
 import com.tencent.mm.plugin.m.a.j;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/panel/adapter/CaptureEmptyViewHolder;", "Lcom/tencent/mm/emoji/panel/adapter/PanelViewHolder;", "Lcom/tencent/mm/emoji/model/panel/GroupExpandItem;", "itemView", "Landroid/view/View;", "onClick", "Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "(Landroid/view/View;Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;)V", "icon", "kotlin.jvm.PlatformType", "getIcon", "()Landroid/view/View;", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/panel/adapter/CaptureEmptyViewHolder;", "Lcom/tencent/mm/emoji/panel/adapter/PanelViewHolder;", "Lcom/tencent/mm/emoji/model/panel/GroupExpandItem;", "itemView", "Landroid/view/View;", "onClick", "Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "(Landroid/view/View;Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;)V", "icon", "kotlin.jvm.PlatformType", "getIcon", "()Landroid/view/View;", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends s<t>
+  extends q<t>
 {
-  private final View jLy;
+  private final View mkH;
   
-  public a(View paramView, p paramp)
+  public a(View paramView, n paramn)
   {
-    super(paramView, paramp);
+    super(paramView, paramn);
     AppMethodBeat.i(105627);
-    this.jLy = paramView.findViewById(a.g.capture_emoji_empty_btn);
+    this.mkH = paramView.findViewById(a.g.capture_emoji_empty_btn);
     paramView.setOnClickListener(null);
-    this.jLy.setOnClickListener((View.OnClickListener)new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(105626);
-        Object localObject = new b();
-        ((b)localObject).bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/emoji/panel/adapter/CaptureEmptyViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
-        localObject = this.jLz.jMs;
-        if (localObject != null)
-        {
-          kotlin.g.b.p.j(paramAnonymousView, "it");
-          Context localContext = paramAnonymousView.getContext();
-          kotlin.g.b.p.j(localContext, "it.context");
-          ((p)localObject).a(paramAnonymousView, localContext, this.jLz.md(), this.jLz.jMr);
-        }
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/emoji/panel/adapter/CaptureEmptyViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(105626);
-      }
-    });
-    paramView = this.jLy;
-    kotlin.g.b.p.j(paramView, "icon");
-    paramp = this.jLy;
-    kotlin.g.b.p.j(paramp, "icon");
-    paramView.setContentDescription((CharSequence)paramp.getContext().getString(a.j.capture_emoji_entrance));
+    this.mkH.setOnClickListener(new a..ExternalSyntheticLambda0(this));
+    this.mkH.setContentDescription((CharSequence)this.mkH.getContext().getString(a.j.capture_my_emoji));
     AppMethodBeat.o(105627);
+  }
+  
+  private static final void a(a parama, View paramView)
+  {
+    AppMethodBeat.i(242464);
+    Object localObject1 = new Object();
+    Object localObject2 = new b();
+    ((b)localObject2).cH(parama);
+    ((b)localObject2).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/emoji/panel/adapter/CaptureEmptyViewHolder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject1, ((b)localObject2).aYj());
+    s.u(parama, "this$0");
+    localObject1 = parama.aVS();
+    if (localObject1 != null)
+    {
+      localObject2 = paramView.getContext();
+      s.s(localObject2, "it.context");
+      ((n)localObject1).a(paramView, (Context)localObject2, parama.KJ(), parama.aVT());
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/emoji/panel/adapter/CaptureEmptyViewHolder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(242464);
   }
 }
 

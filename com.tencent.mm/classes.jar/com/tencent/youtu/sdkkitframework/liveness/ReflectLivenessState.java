@@ -15,6 +15,7 @@ import com.tencent.youtu.sdkkitframework.framework.YtFSM;
 import com.tencent.youtu.sdkkitframework.framework.YtFSMBaseState;
 import com.tencent.youtu.sdkkitframework.framework.YtSDKKitCommon.StateNameHelper;
 import com.tencent.youtu.sdkkitframework.framework.YtSDKKitCommon.StateNameHelper.StateClassName;
+import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework;
 import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYTReflectListener;
 import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.YtFrameworkFireEventType;
 import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.YtSDKKitFrameworkWorkMode;
@@ -84,15 +85,15 @@ public class ReflectLivenessState
   
   static
   {
-    AppMethodBeat.i(247444);
+    AppMethodBeat.i(218276);
     TAG = ReflectLivenessState.class.getSimpleName();
-    AppMethodBeat.o(247444);
+    AppMethodBeat.o(218276);
   }
   
   public ReflectLivenessState()
   {
-    AppMethodBeat.i(247409);
-    this.legitimateReflectVersion = "3.6.2";
+    AppMethodBeat.i(218172);
+    this.legitimateReflectVersion = "3.6.9.1";
     this.poseState = SilentLivenessState.FacePreviewingAdvise.ADVISE_NAN;
     this.currentProcessType = ReflectProcessType.RPT_TIPWAIT;
     this.continuousDetectCount = 0;
@@ -113,24 +114,24 @@ public class ReflectLivenessState
     this.actReflectUXMode = 0;
     this.tipsTimer = new TimeoutCounter("reflect tips timeout counter");
     this.needCheckMultiFaces = false;
-    AppMethodBeat.o(247409);
+    AppMethodBeat.o(218172);
   }
   
   private void clearData()
   {
-    AppMethodBeat.i(247413);
+    AppMethodBeat.i(218180);
     this.currentProcessType = ReflectProcessType.RPT_TIPWAIT;
     this.continuousDetectCount = 0;
     this.poseState = SilentLivenessState.FacePreviewingAdvise.ADVISE_NAN;
     this.needCheckFaces = true;
     YTAGReflectLiveCheckInterface.cancel();
     this.nextStateName = YtSDKKitCommon.StateNameHelper.StateClassName.SILENT_STATE;
-    AppMethodBeat.o(247413);
+    AppMethodBeat.o(218180);
   }
   
   private ActionReflectReq getActionReflectLiveReq(FullPack paramFullPack, YTActReflectData paramYTActReflectData, String paramString)
   {
-    AppMethodBeat.i(247430);
+    AppMethodBeat.i(218221);
     ActionReflectReq localActionReflectReq = new ActionReflectReq();
     localActionReflectReq.app_id = YTAGReflectLiveCheckInterface.mAppId;
     localActionReflectReq.color_data = paramString;
@@ -145,13 +146,13 @@ public class ReflectLivenessState
     localActionReflectReq.compare_image = null;
     localActionReflectReq.mode = 0;
     localActionReflectReq.session_id = null;
-    AppMethodBeat.o(247430);
+    AppMethodBeat.o(218221);
     return localActionReflectReq;
   }
   
   private ReflectLiveReq getReflectLiveReq(FullPack paramFullPack, String paramString)
   {
-    AppMethodBeat.i(247432);
+    AppMethodBeat.i(218229);
     ReflectLiveReq localReflectLiveReq = new ReflectLiveReq();
     localReflectLiveReq.color_data = paramString;
     localReflectLiveReq.platform = 2;
@@ -163,13 +164,13 @@ public class ReflectLivenessState
     localReflectLiveReq.compare_image = null;
     localReflectLiveReq.session_id = null;
     localReflectLiveReq.app_id = YTAGReflectLiveCheckInterface.mAppId;
-    AppMethodBeat.o(247432);
+    AppMethodBeat.o(218229);
     return localReflectLiveReq;
   }
   
   private void handleFailure(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(247428);
+    AppMethodBeat.i(218217);
     paramString2 = "message:" + paramString1 + "\ntips:" + paramString2 + "\ncode:" + paramInt;
     YtLogger.e(TAG, "failed :".concat(String.valueOf(paramString2)));
     paramString2 = SilentLivenessState.convertAdvise(this.poseState);
@@ -184,15 +185,15 @@ public class ReflectLivenessState
     paramString2.put("message", paramString1);
     YtFSM.getInstance().sendFSMEvent(paramString2);
     this.currentProcessType = ReflectProcessType.RPT_FINISH;
-    AppMethodBeat.o(247428);
+    AppMethodBeat.o(218217);
   }
   
   private void handleSuccess(FullPack paramFullPack)
   {
-    AppMethodBeat.i(247426);
+    AppMethodBeat.i(218208);
     if (this.currentProcessType == ReflectProcessType.RPT_TIPWAIT)
     {
-      AppMethodBeat.o(247426);
+      AppMethodBeat.o(218208);
       return;
     }
     ByteArrayOutputStream localByteArrayOutputStream;
@@ -233,7 +234,7 @@ public class ReflectLivenessState
           continue;
         }
         this.nextStateName = YtSDKKitCommon.StateNameHelper.StateClassName.NET_LIVENESS_REQ_RESULT_STATE;
-        AppMethodBeat.o(247426);
+        AppMethodBeat.o(218208);
         return;
         i = k;
       }
@@ -270,7 +271,7 @@ public class ReflectLivenessState
   
   private static Bitmap imageScale(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(247423);
+    AppMethodBeat.i(218185);
     int i = paramBitmap.getWidth();
     int j = paramBitmap.getHeight();
     float f1 = paramInt1 / i;
@@ -278,7 +279,7 @@ public class ReflectLivenessState
     Matrix localMatrix = new Matrix();
     localMatrix.postScale(f1, f2);
     paramBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, i, j, localMatrix, true);
-    AppMethodBeat.o(247423);
+    AppMethodBeat.o(218185);
     return paramBitmap;
   }
   
@@ -287,9 +288,10 @@ public class ReflectLivenessState
   private void startReflect()
   {
     boolean bool = false;
-    AppMethodBeat.i(247424);
+    AppMethodBeat.i(218194);
     YtFSM.getInstance().sendFSMEvent(new HashMap() {});
     Object localObject = this.mOriginParam;
+    YtLogger.d(TAG, "param: ".concat(String.valueOf(localObject)));
     ((YTFaceTrackParam)localObject).detect_interval = -1;
     YTFaceTrack.getInstance().SetFaceTrackParam((YTFaceTrackParam)localObject);
     this.currentProcessType = ReflectProcessType.RPT_REFLECT;
@@ -310,39 +312,39 @@ public class ReflectLivenessState
     {
       public void onFailed(int paramAnonymousInt, String paramAnonymousString1, String paramAnonymousString2)
       {
-        AppMethodBeat.i(247340);
+        AppMethodBeat.i(218167);
         ReflectLivenessState.access$600(ReflectLivenessState.this, paramAnonymousInt, paramAnonymousString1, paramAnonymousString2);
-        AppMethodBeat.o(247340);
+        AppMethodBeat.o(218167);
       }
       
       public void onSuccess(FullPack paramAnonymousFullPack)
       {
-        AppMethodBeat.i(247339);
+        AppMethodBeat.i(218160);
         YtLogger.i(ReflectLivenessState.TAG, "on start succeed!!!!!");
         ReflectLivenessState.access$500(ReflectLivenessState.this, paramAnonymousFullPack);
-        AppMethodBeat.o(247339);
+        AppMethodBeat.o(218160);
       }
     });
-    AppMethodBeat.o(247424);
+    AppMethodBeat.o(218194);
   }
   
   private ColorImgData translation(RawImgData paramRawImgData)
   {
-    AppMethodBeat.i(247438);
+    AppMethodBeat.i(218244);
     ColorImgData localColorImgData = new ColorImgData();
     localColorImgData.setImage(new String(Base64.encode(paramRawImgData.frameBuffer, 2)));
     localColorImgData.checksum = paramRawImgData.checksum;
     localColorImgData.setCapture_time(paramRawImgData.captureTime);
     localColorImgData.setX(paramRawImgData.x);
     localColorImgData.setY(paramRawImgData.y);
-    AppMethodBeat.o(247438);
+    AppMethodBeat.o(218244);
     return localColorImgData;
   }
   
   private ReflectColorData translation(DataPack paramDataPack)
   {
     int j = 0;
-    AppMethodBeat.i(247436);
+    AppMethodBeat.i(218237);
     ReflectColorData localReflectColorData = new ReflectColorData();
     ArrayList localArrayList = new ArrayList();
     int i = 0;
@@ -366,13 +368,13 @@ public class ReflectLivenessState
     localReflectColorData.setLandmark_num(paramDataPack.landMarkNum);
     localReflectColorData.setWidth(paramDataPack.width);
     localReflectColorData.setHeight(paramDataPack.height);
-    localReflectColorData.version = "3.6.4.4";
+    localReflectColorData.version = "3.6.9.2";
     try
     {
       localReflectColorData.setLog(new String(paramDataPack.log, "UTF-8"));
       label205:
       localReflectColorData.setConfig_begin(paramDataPack.config_begin);
-      AppMethodBeat.o(247436);
+      AppMethodBeat.o(218237);
       return localReflectColorData;
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
@@ -383,7 +385,7 @@ public class ReflectLivenessState
   
   public void enter()
   {
-    AppMethodBeat.i(247417);
+    AppMethodBeat.i(218341);
     super.enter();
     Object localObject = YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.SILENT_STATE));
     label388:
@@ -437,7 +439,7 @@ public class ReflectLivenessState
           this.currentProcessType = ReflectProcessType.RPT_FINISH;
           handleSuccess(null);
         }
-        AppMethodBeat.o(247417);
+        AppMethodBeat.o(218341);
         return;
         if (this.needRandom)
         {
@@ -450,7 +452,7 @@ public class ReflectLivenessState
       {
         YtLogger.e(TAG, "reflection enter failed " + localException.getLocalizedMessage());
         CommonUtils.reportException("reflection enter failed ", localException);
-        AppMethodBeat.o(247417);
+        AppMethodBeat.o(218341);
         return;
       }
     }
@@ -458,33 +460,33 @@ public class ReflectLivenessState
   
   public void enterFirst()
   {
-    AppMethodBeat.i(247416);
+    AppMethodBeat.i(218326);
     YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.SILENT_STATE)).handleStateAction("reset_timeout", null);
     this.tipsTimer.reset();
     YtFSM.getInstance().cleanUpQueue();
-    AppMethodBeat.o(247416);
+    AppMethodBeat.o(218326);
   }
   
   public void exit()
   {
-    AppMethodBeat.i(247419);
+    AppMethodBeat.i(218366);
     super.exit();
-    AppMethodBeat.o(247419);
+    AppMethodBeat.o(218366);
   }
   
   public void handleEvent(YtSDKKitFramework.YtFrameworkFireEventType paramYtFrameworkFireEventType, Object paramObject)
   {
-    AppMethodBeat.i(247415);
+    AppMethodBeat.i(218317);
     super.handleEvent(paramYtFrameworkFireEventType, paramObject);
     if ((this.needManualTrigger) && (paramYtFrameworkFireEventType == YtSDKKitFramework.YtFrameworkFireEventType.YT_EVENT_TRIGGER_CANCEL_LIVENESS)) {
       clearData();
     }
-    AppMethodBeat.o(247415);
+    AppMethodBeat.o(218317);
   }
   
   public void loadStateWith(String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(247410);
+    AppMethodBeat.i(218290);
     super.loadStateWith(paramString, paramJSONObject);
     for (;;)
     {
@@ -544,8 +546,8 @@ public class ReflectLivenessState
       if (!this.isLoadResourceOnline) {
         FileUtils.loadLibrary("YTAGReflectLiveCheck");
       }
-      YtLogger.i(TAG, "Reflection version:3.6.4.4");
-      paramString = "3.6.4.4".split("\\.");
+      YtLogger.i(TAG, "Reflection version:3.6.9.2");
+      paramString = "3.6.9.2".split("\\.");
       localObject = this.legitimateReflectVersion;
       YtLogger.i(TAG, "Wanted Reflection Version: ".concat(String.valueOf(localObject)));
       localObject = ((String)localObject).split("\\.");
@@ -575,7 +577,8 @@ public class ReflectLivenessState
         YTAGReflectLiveCheckInterface.setReflectListener(null);
         continue;
       }
-      i = YTAGReflectLiveCheckInterface.initModel(this.appId);
+      paramString = YtSDKKitFramework.getInstance().version().split("-");
+      i = YTAGReflectLiveCheckInterface.initModel(this.appId, paramString[0]);
       if (i != 0)
       {
         YtLogger.e(TAG, "failed to init reflect sdk ".concat(String.valueOf(i)));
@@ -583,6 +586,7 @@ public class ReflectLivenessState
         YtFSM.getInstance().sendFSMEvent(new HashMap() {});
       }
       this.mOriginParam = YTFaceTrack.getInstance().GetFaceTrackParam();
+      YtLogger.d(TAG, "mOriginParam: " + this.mOriginParam);
       if (this.needRandom) {
         this.randomColorData = YTAGReflectLiveCheckJNIInterface.FRGenConfigData(this.changePointNum, this.extraConfig);
       }
@@ -590,19 +594,19 @@ public class ReflectLivenessState
       {
         public void onDelayCalc()
         {
-          AppMethodBeat.i(247352);
+          AppMethodBeat.i(218136);
           ReflectLivenessState.access$102(ReflectLivenessState.this, false);
-          AppMethodBeat.o(247352);
+          AppMethodBeat.o(218136);
         }
       });
       if (YtFSM.getInstance().getContext().reflectListener == null) {
-        break label725;
+        break label767;
       }
       YTAGReflectLiveCheckInterface.setReflectListener(new YTAGReflectLiveCheckInterface.IYTReflectListener()
       {
         public float onGetAppBrightness()
         {
-          AppMethodBeat.i(247367);
+          AppMethodBeat.i(218153);
           float f1 = -1.0F;
           try
           {
@@ -616,13 +620,13 @@ public class ReflectLivenessState
               YtLogger.e(ReflectLivenessState.TAG, localException.getLocalizedMessage());
             }
           }
-          AppMethodBeat.o(247367);
+          AppMethodBeat.o(218153);
           return f1;
         }
         
         public void onReflectEvent(ColorMatrixColorFilter paramAnonymousColorMatrixColorFilter, float paramAnonymousFloat)
         {
-          AppMethodBeat.i(247361);
+          AppMethodBeat.i(218145);
           try
           {
             if (!ReflectLivenessState.this.stateData.containsKey("refcontrol_begin"))
@@ -631,29 +635,29 @@ public class ReflectLivenessState
               ReflectLivenessState.this.stateData.put("refcontrol_begin", String.valueOf(l * 1000L));
             }
             YtFSM.getInstance().getContext().reflectListener.onReflectEvent(paramAnonymousColorMatrixColorFilter, paramAnonymousFloat);
-            AppMethodBeat.o(247361);
+            AppMethodBeat.o(218145);
             return;
           }
           catch (Exception paramAnonymousColorMatrixColorFilter)
           {
             YtLogger.e(ReflectLivenessState.TAG, paramAnonymousColorMatrixColorFilter.getLocalizedMessage());
-            AppMethodBeat.o(247361);
+            AppMethodBeat.o(218145);
           }
         }
         
         public void onReflectStart(long paramAnonymousLong)
         {
-          AppMethodBeat.i(247363);
+          AppMethodBeat.i(218149);
           try
           {
             YtFSM.getInstance().getContext().reflectListener.onReflectStart(paramAnonymousLong);
-            AppMethodBeat.o(247363);
+            AppMethodBeat.o(218149);
             return;
           }
           catch (Exception localException)
           {
             YtLogger.e(ReflectLivenessState.TAG, localException.getLocalizedMessage());
-            AppMethodBeat.o(247363);
+            AppMethodBeat.o(218149);
           }
         }
       });
@@ -663,12 +667,12 @@ public class ReflectLivenessState
       {
         public void log(String paramAnonymousString1, String paramAnonymousString2)
         {
-          AppMethodBeat.i(247377);
+          AppMethodBeat.i(218150);
           YtLogger.d(paramAnonymousString1, paramAnonymousString2);
-          AppMethodBeat.o(247377);
+          AppMethodBeat.o(218150);
         }
       });
-      AppMethodBeat.o(247410);
+      AppMethodBeat.o(218290);
       return;
       this.simiThreshold = 70;
     }
@@ -676,53 +680,53 @@ public class ReflectLivenessState
   
   public void moveToNextState()
   {
-    AppMethodBeat.i(247422);
+    AppMethodBeat.i(218388);
     super.moveToNextState();
     if (this.nextStateName == YtSDKKitCommon.StateNameHelper.StateClassName.SILENT_STATE)
     {
       YtFSM.getInstance().transitNextRound(YtSDKKitCommon.StateNameHelper.classNameOfState(this.nextStateName));
-      AppMethodBeat.o(247422);
+      AppMethodBeat.o(218388);
       return;
     }
     YTFaceTrack.getInstance().SetFaceTrackParam(this.mOriginParam);
     YtFSM.getInstance().transitNow(YtSDKKitCommon.StateNameHelper.classNameOfState(this.nextStateName));
-    AppMethodBeat.o(247422);
+    AppMethodBeat.o(218388);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(247420);
+    AppMethodBeat.i(218373);
     super.onPause();
-    AppMethodBeat.o(247420);
+    AppMethodBeat.o(218373);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(247421);
+    AppMethodBeat.i(218381);
     super.onResume();
-    AppMethodBeat.o(247421);
+    AppMethodBeat.o(218381);
   }
   
   public void reset()
   {
-    AppMethodBeat.i(247414);
+    AppMethodBeat.i(218310);
     clearData();
     super.reset();
-    AppMethodBeat.o(247414);
+    AppMethodBeat.o(218310);
   }
   
   public void unload()
   {
-    AppMethodBeat.i(247412);
+    AppMethodBeat.i(218302);
     super.unload();
     YTAGReflectLiveCheckInterface.cancel();
     YTAGReflectLiveCheckInterface.releaseModel();
-    AppMethodBeat.o(247412);
+    AppMethodBeat.o(218302);
   }
   
   public void update(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
-    AppMethodBeat.i(247418);
+    AppMethodBeat.i(218356);
     super.update(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramLong);
     switch (12.$SwitchMap$com$tencent$youtu$sdkkitframework$liveness$ReflectLivenessState$ReflectProcessType[this.currentProcessType.ordinal()])
     {
@@ -732,7 +736,7 @@ public class ReflectLivenessState
       for (;;)
       {
         moveToNextState();
-        AppMethodBeat.o(247418);
+        AppMethodBeat.o(218356);
         return;
         if ((this.tipsTimer.isRunning()) && (!this.tipsTimer.checkTimeout()))
         {
@@ -777,18 +781,18 @@ public class ReflectLivenessState
   
   public void updateSDKSetting(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(247411);
+    AppMethodBeat.i(218297);
     try
     {
       this.needCheckPose = paramJSONObject.optBoolean("force_pose_check", this.needCheckPose);
       this.needCheckMultiFaces = paramJSONObject.optBoolean("need_check_multiface", this.needCheckMultiFaces);
-      AppMethodBeat.o(247411);
+      AppMethodBeat.o(218297);
       return;
     }
     catch (Exception paramJSONObject)
     {
       YtLogger.e(TAG, paramJSONObject.getLocalizedMessage());
-      AppMethodBeat.o(247411);
+      AppMethodBeat.o(218297);
     }
   }
   
@@ -796,13 +800,13 @@ public class ReflectLivenessState
   {
     static
     {
-      AppMethodBeat.i(247397);
+      AppMethodBeat.i(218179);
       RPT_TIPWAIT = new ReflectProcessType("RPT_TIPWAIT", 0);
       RPT_INIT = new ReflectProcessType("RPT_INIT", 1);
       RPT_REFLECT = new ReflectProcessType("RPT_REFLECT", 2);
       RPT_FINISH = new ReflectProcessType("RPT_FINISH", 3);
       $VALUES = new ReflectProcessType[] { RPT_TIPWAIT, RPT_INIT, RPT_REFLECT, RPT_FINISH };
-      AppMethodBeat.o(247397);
+      AppMethodBeat.o(218179);
     }
     
     private ReflectProcessType() {}
@@ -810,7 +814,7 @@ public class ReflectLivenessState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.liveness.ReflectLivenessState
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,10 @@
 package com.tencent.mm.live.core.view;
 
 import android.content.Context;
-import android.graphics.Point;
 import android.view.GestureDetector;
-import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
-import android.view.SurfaceView;
+import android.view.TextureView;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
@@ -16,13 +14,11 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.live.core.a.d;
 import com.tencent.mm.live.core.a.e;
-import com.tencent.mm.ui.ax;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -31,28 +27,28 @@ public final class b
   extends RelativeLayout
   implements View.OnClickListener
 {
-  public WeakReference<b> koF;
-  private boolean koV;
-  private boolean kpr;
-  SurfaceView ktd;
-  private View.OnClickListener kte;
-  private GestureDetector ktf;
-  private LinearLayout ktg;
-  private Button kth;
-  private Button kti;
-  private Button ktj;
-  private FrameLayout ktk;
-  private TextView ktl;
-  private ImageView ktm;
-  private ViewGroup ktn;
-  private HashMap<Integer, Integer> kto;
-  boolean ktp;
-  private boolean ktq;
-  private boolean ktr;
-  b.a kts;
-  private float ktt;
-  private float ktu;
-  TXCloudVideoView mVideoView;
+  private boolean mSJ;
+  public WeakReference<b> mSv;
+  private boolean mTi;
+  public TXCloudVideoView mVideoView;
+  TextureView mWV;
+  private View.OnClickListener mWW;
+  private GestureDetector mWX;
+  private LinearLayout mWY;
+  private Button mWZ;
+  private Button mXa;
+  private Button mXb;
+  private FrameLayout mXc;
+  private TextView mXd;
+  private ImageView mXe;
+  private ViewGroup mXf;
+  private HashMap<Integer, Integer> mXg;
+  boolean mXh;
+  private boolean mXi;
+  private boolean mXj;
+  a mXk;
+  private float mXl;
+  private float mXm;
   
   public b(Context paramContext, boolean paramBoolean)
   {
@@ -62,129 +58,51 @@ public final class b
   private b(Context paramContext, boolean paramBoolean, byte paramByte)
   {
     super(paramContext, null);
-    AppMethodBeat.i(200409);
-    this.kto = null;
-    this.ktq = false;
-    this.koV = true;
-    this.kpr = true;
-    this.ktr = false;
-    this.kts = null;
-    this.ktt = 0.0F;
-    this.ktu = 0.0F;
-    this.ktr = paramBoolean;
-    this.ktn = ((ViewGroup)LayoutInflater.from(getContext()).inflate(a.e.layout_trtc_func, this, true));
-    if (this.ktr)
+    AppMethodBeat.i(247591);
+    this.mXg = null;
+    this.mXi = false;
+    this.mSJ = true;
+    this.mTi = true;
+    this.mXj = false;
+    this.mXk = null;
+    this.mXl = 0.0F;
+    this.mXm = 0.0F;
+    this.mXj = paramBoolean;
+    this.mXf = ((ViewGroup)LayoutInflater.from(getContext()).inflate(a.e.layout_trtc_func, this, true));
+    if (this.mXj)
     {
-      this.mVideoView = ((TXCloudVideoView)this.ktn.findViewById(a.d.live_tx_view));
+      this.mVideoView = ((TXCloudVideoView)this.mXf.findViewById(a.d.live_tx_view));
       this.mVideoView.setVisibility(0);
     }
     for (;;)
     {
-      this.ktg = ((LinearLayout)this.ktn.findViewById(a.d.trtc_ll_controller));
-      this.kth = ((Button)this.ktn.findViewById(a.d.trtc_btn_mute_video));
-      this.kth.setOnClickListener(this);
-      this.kti = ((Button)this.ktn.findViewById(a.d.trtc_btn_mute_audio));
-      this.kti.setOnClickListener(this);
-      this.ktj = ((Button)this.ktn.findViewById(a.d.trtc_btn_fill));
-      this.ktj.setOnClickListener(this);
-      this.ktk = ((FrameLayout)this.ktn.findViewById(a.d.trtc_fl_no_video));
-      this.ktl = ((TextView)this.ktn.findViewById(a.d.trtc_tv_content));
-      this.ktm = ((ImageView)this.ktn.findViewById(a.d.trtc_iv_nos));
-      ((ToggleButton)this.ktn.findViewById(a.d.mute_in_speaker)).setOnClickListener(this);
-      this.ktf = new GestureDetector(getContext(), new GestureDetector.SimpleOnGestureListener()
-      {
-        public final boolean onContextClick(MotionEvent paramAnonymousMotionEvent)
-        {
-          AppMethodBeat.i(198050);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousMotionEvent);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/core/view/TRTCVideoLayout$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
-          boolean bool = super.onContextClick(paramAnonymousMotionEvent);
-          com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/live/core/view/TRTCVideoLayout$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
-          AppMethodBeat.o(198050);
-          return bool;
-        }
-        
-        public final boolean onDoubleTap(MotionEvent paramAnonymousMotionEvent)
-        {
-          AppMethodBeat.i(198046);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousMotionEvent);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/core/view/TRTCVideoLayout$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
-          boolean bool = super.onDoubleTap(paramAnonymousMotionEvent);
-          com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/live/core/view/TRTCVideoLayout$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
-          AppMethodBeat.o(198046);
-          return bool;
-        }
-        
-        public final boolean onDown(MotionEvent paramAnonymousMotionEvent)
-        {
-          return true;
-        }
-        
-        public final void onLongPress(MotionEvent paramAnonymousMotionEvent)
-        {
-          AppMethodBeat.i(198042);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousMotionEvent);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/core/view/TRTCVideoLayout$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aFi());
-          super.onLongPress(paramAnonymousMotionEvent);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/core/view/TRTCVideoLayout$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-          AppMethodBeat.o(198042);
-        }
-        
-        public final boolean onScroll(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
-        {
-          AppMethodBeat.i(198040);
-          if (!b.b(b.this))
-          {
-            AppMethodBeat.o(198040);
-            return false;
-          }
-          if ((b.this.getLayoutParams() instanceof RelativeLayout.LayoutParams))
-          {
-            RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)b.this.getLayoutParams();
-            int j = (int)(localLayoutParams.leftMargin + (paramAnonymousMotionEvent2.getX() - paramAnonymousMotionEvent1.getX()));
-            int i = (int)(localLayoutParams.topMargin + (paramAnonymousMotionEvent2.getY() - paramAnonymousMotionEvent1.getY()));
-            j = Math.max(Math.min(ax.au(b.this.getContext()).x - b.this.getWidth(), j), 0);
-            i = Math.max(Math.min(ax.au(b.this.getContext()).y - b.this.getHeight(), i), 0);
-            localLayoutParams.leftMargin = j;
-            localLayoutParams.topMargin = i;
-            b.this.setLayoutParams(localLayoutParams);
-          }
-          AppMethodBeat.o(198040);
-          return true;
-        }
-        
-        public final boolean onSingleTapUp(MotionEvent paramAnonymousMotionEvent)
-        {
-          AppMethodBeat.i(198031);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousMotionEvent);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/core/view/TRTCVideoLayout$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
-          if (b.a(b.this) != null) {
-            b.a(b.this).onClick(b.this);
-          }
-          com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/live/core/view/TRTCVideoLayout$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
-          AppMethodBeat.o(198031);
-          return true;
-        }
-      });
+      this.mWY = ((LinearLayout)this.mXf.findViewById(a.d.trtc_ll_controller));
+      this.mWZ = ((Button)this.mXf.findViewById(a.d.trtc_btn_mute_video));
+      this.mWZ.setOnClickListener(this);
+      this.mXa = ((Button)this.mXf.findViewById(a.d.trtc_btn_mute_audio));
+      this.mXa.setOnClickListener(this);
+      this.mXb = ((Button)this.mXf.findViewById(a.d.trtc_btn_fill));
+      this.mXb.setOnClickListener(this);
+      this.mXc = ((FrameLayout)this.mXf.findViewById(a.d.trtc_fl_no_video));
+      this.mXd = ((TextView)this.mXf.findViewById(a.d.trtc_tv_content));
+      this.mXe = ((ImageView)this.mXf.findViewById(a.d.trtc_iv_nos));
+      ((ToggleButton)this.mXf.findViewById(a.d.mute_in_speaker)).setOnClickListener(this);
+      this.mWX = new GestureDetector(getContext(), new b.1(this));
       setOnTouchListener(new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
-          AppMethodBeat.i(199077);
+          AppMethodBeat.i(247522);
           switch (paramAnonymousMotionEvent.getActionMasked())
           {
           }
           for (;;)
           {
             paramAnonymousView = b.f(b.this);
-            paramAnonymousMotionEvent = new com.tencent.mm.hellhoundlib.b.a().bm(paramAnonymousMotionEvent);
-            com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, paramAnonymousMotionEvent.aFh(), "com/tencent/mm/live/core/view/TRTCVideoLayout$2", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-            boolean bool = com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousView.onTouchEvent((MotionEvent)paramAnonymousMotionEvent.sf(0)), "com/tencent/mm/live/core/view/TRTCVideoLayout$2", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-            AppMethodBeat.o(199077);
+            paramAnonymousMotionEvent = new com.tencent.mm.hellhoundlib.b.a().cG(paramAnonymousMotionEvent);
+            com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, paramAnonymousMotionEvent.aYi(), "com/tencent/mm/live/core/view/TRTCVideoLayout$2", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+            boolean bool = com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousView.onTouchEvent((MotionEvent)paramAnonymousMotionEvent.sb(0)), "com/tencent/mm/live/core/view/TRTCVideoLayout$2", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+            AppMethodBeat.o(247522);
             return bool;
             b.a(b.this, paramAnonymousMotionEvent.getRawX());
             b.b(b.this, paramAnonymousMotionEvent.getRawY());
@@ -194,84 +112,84 @@ public final class b
             float f3 = paramAnonymousMotionEvent.getRawY();
             float f4 = b.d(b.this);
             if ((b.b(b.this)) && (b.e(b.this) != null)) {
-              b.e(b.this).E(f1 - f2, f3 - f4);
+              b.e(b.this).onMove(f1 - f2, f3 - f4);
             }
           }
         }
       });
-      this.kto = new HashMap();
-      AppMethodBeat.o(200409);
+      this.mXg = new HashMap();
+      AppMethodBeat.o(247591);
       return;
-      this.ktd = ((SurfaceView)this.ktn.findViewById(a.d.live_camera_view));
-      this.ktd.setVisibility(0);
+      this.mWV = ((TextureView)this.mXf.findViewById(a.d.live_camera_view));
+      this.mWV.setVisibility(0);
     }
   }
   
-  public final void NT(String paramString)
+  public final void Gh(String paramString)
   {
-    AppMethodBeat.i(200412);
-    if (this.ktl != null) {
-      this.ktl.setText(paramString);
+    AppMethodBeat.i(247654);
+    if (this.mXd != null) {
+      this.mXd.setText(paramString);
     }
-    if (this.ktk != null) {
-      this.ktk.setVisibility(8);
+    if (this.mXc != null) {
+      this.mXc.setVisibility(8);
     }
-    AppMethodBeat.o(200412);
+    AppMethodBeat.o(247654);
   }
   
   public final void a(b paramb)
   {
-    AppMethodBeat.i(200420);
-    this.koF = new WeakReference(paramb);
-    AppMethodBeat.o(200420);
+    AppMethodBeat.i(247680);
+    this.mSv = new WeakReference(paramb);
+    AppMethodBeat.o(247680);
   }
   
-  public final void aNo()
+  public final void bhb()
   {
-    AppMethodBeat.i(200411);
-    if (this.ktg != null) {
-      this.ktg.setVisibility(8);
+    AppMethodBeat.i(247645);
+    if (this.mWY != null) {
+      this.mWY.setVisibility(8);
     }
-    AppMethodBeat.o(200411);
+    AppMethodBeat.o(247645);
   }
   
   public final void onClick(View paramView)
   {
     boolean bool2 = true;
     boolean bool1 = true;
-    AppMethodBeat.i(200419);
+    AppMethodBeat.i(247671);
     Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-    ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/core/view/TRTCVideoLayout", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-    if (this.koF != null) {}
-    for (localObject = (b)this.koF.get(); localObject == null; localObject = null)
+    ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/core/view/TRTCVideoLayout", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
+    if (this.mSv != null) {}
+    for (localObject = (b)this.mSv.get(); localObject == null; localObject = null)
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/core/view/TRTCVideoLayout", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(200419);
+      AppMethodBeat.o(247671);
       return;
     }
     int i = paramView.getId();
     if (i == a.d.trtc_btn_fill) {
-      if (!this.ktq)
+      if (!this.mXi)
       {
         bool1 = true;
-        this.ktq = bool1;
+        this.mXi = bool1;
         ((b)localObject).g(this);
       }
     }
     for (;;)
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/core/view/TRTCVideoLayout", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(200419);
+      AppMethodBeat.o(247671);
       return;
       bool1 = false;
       break;
       if (i == a.d.trtc_btn_mute_audio)
       {
-        if (!this.koV) {}
+        if (!this.mSJ) {}
         for (;;)
         {
-          this.koV = bool1;
+          this.mSJ = bool1;
           ((b)localObject).h(this);
           break;
           bool1 = false;
@@ -279,10 +197,10 @@ public final class b
       }
       if (i == a.d.trtc_btn_mute_video)
       {
-        if (!this.kpr) {}
+        if (!this.mTi) {}
         for (bool1 = bool2;; bool1 = false)
         {
-          this.kpr = bool1;
+          this.mTi = bool1;
           ((b)localObject).i(this);
           break;
         }
@@ -297,7 +215,12 @@ public final class b
   
   public final void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.kte = paramOnClickListener;
+    this.mWW = paramOnClickListener;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void onMove(float paramFloat1, float paramFloat2);
   }
   
   public static abstract interface b
@@ -313,7 +236,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.live.core.view.b
  * JD-Core Version:    0.7.0.1
  */

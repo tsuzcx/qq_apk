@@ -13,24 +13,24 @@ import com.tencent.mm.ui.base.preference.Preference;
 public final class h
   extends Preference
 {
-  boolean GJY;
-  boolean GJZ;
+  boolean MGN;
+  boolean MGO;
   private View mView;
-  boolean rDs;
+  boolean uOJ;
   
   public h(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(66824);
     this.mView = null;
-    this.GJY = false;
-    this.GJZ = false;
-    this.rDs = true;
+    this.MGN = false;
+    this.MGO = false;
+    this.uOJ = true;
     setLayoutResource(a.g.mall_order_divider_pref);
     AppMethodBeat.o(66824);
   }
   
-  public final View c(View paramView, ViewGroup paramViewGroup)
+  public final View b(View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(66825);
     if (this.mView == null) {
@@ -49,15 +49,15 @@ public final class h
     paramView = paramView.findViewById(a.f.mall_order_divider_pref_line);
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
     int i = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.mContext, 10.0F);
-    if (this.GJY) {}
+    if (this.MGN) {}
     for (int j = i;; j = 0)
     {
-      if (this.GJZ) {}
+      if (this.MGO) {}
       for (;;)
       {
         localLayoutParams.setMargins(0, j, 0, i);
         paramView.setLayoutParams(localLayoutParams);
-        if (!this.rDs)
+        if (!this.uOJ)
         {
           paramView.setVisibility(4);
           AppMethodBeat.o(66826);
@@ -73,7 +73,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.order.ui.a.h
  * JD-Core Version:    0.7.0.1
  */

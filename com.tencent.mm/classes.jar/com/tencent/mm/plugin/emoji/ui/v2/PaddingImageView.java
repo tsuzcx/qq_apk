@@ -5,15 +5,15 @@ import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
-import com.tencent.mm.plugin.emoji.i.c;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.plugin.emoji.h.c;
 
 public class PaddingImageView
   extends FrameLayout
 {
-  ImageView cJr;
-  ImageView uQp;
-  private int uQq;
+  ImageView ewg;
+  ImageView xZa;
+  private int xZb;
   
   public PaddingImageView(Context paramContext)
   {
@@ -42,21 +42,21 @@ public class PaddingImageView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(109411);
-    this.uQq = a.aY(getContext(), i.c.NormalPadding);
-    this.cJr = new ImageView(paramContext);
-    this.cJr.setPadding(this.uQq, this.uQq, this.uQq, this.uQq);
-    this.uQp = new ImageView(paramContext);
+    this.xZb = a.br(getContext(), h.c.NormalPadding);
+    this.ewg = new ImageView(paramContext);
+    this.ewg.setPadding(this.xZb, this.xZb, this.xZb, this.xZb);
+    this.xZa = new ImageView(paramContext);
     AppMethodBeat.o(109411);
   }
   
   public ImageView getImageView()
   {
-    return this.cJr;
+    return this.ewg;
   }
   
   public ImageView getImageViewFG()
   {
-    return this.uQp;
+    return this.xZa;
   }
 }
 

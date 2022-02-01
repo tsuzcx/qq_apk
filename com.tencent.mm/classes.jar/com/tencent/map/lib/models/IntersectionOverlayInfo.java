@@ -1,9 +1,7 @@
 package com.tencent.map.lib.models;
 
 import android.graphics.Rect;
-import androidx.annotation.Keep;
 
-@Keep
 public class IntersectionOverlayInfo
 {
   protected Rect mBounds;
@@ -39,7 +37,7 @@ public class IntersectionOverlayInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.map.lib.models.IntersectionOverlayInfo
  * JD-Core Version:    0.7.0.1
  */

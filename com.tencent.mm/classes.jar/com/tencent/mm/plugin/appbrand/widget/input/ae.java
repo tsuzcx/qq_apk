@@ -6,21 +6,21 @@ import com.tencent.mm.plugin.appbrand.page.ad;
 
 public abstract interface ae<Input extends EditText,  extends af>
 {
-  public abstract boolean A(ad paramad);
+  public abstract boolean B(ad paramad);
   
-  public abstract void DJ(int paramInt);
+  public abstract void Ej(int paramInt);
   
   public abstract void a(String paramString, Integer paramInteger);
   
-  public abstract boolean cob();
+  public abstract boolean cQD();
   
-  public abstract Input coc();
+  public abstract Input cQE();
   
-  public abstract boolean coj();
+  public abstract boolean cQL();
   
-  public abstract int cok();
+  public abstract int cQM();
   
-  public abstract boolean col();
+  public abstract boolean cQN();
   
   public abstract int getInputId();
   
@@ -30,7 +30,7 @@ public abstract interface ae<Input extends EditText,  extends af>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.ae
  * JD-Core Version:    0.7.0.1
  */

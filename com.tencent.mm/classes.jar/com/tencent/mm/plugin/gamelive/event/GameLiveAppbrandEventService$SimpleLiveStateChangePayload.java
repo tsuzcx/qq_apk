@@ -5,32 +5,31 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelive/event/GameLiveAppbrandEventService$SimpleLiveStateChangePayload;", "Landroid/os/Parcelable;", "data", "", "", "", "(Ljava/util/Map;)V", "getData", "()Ljava/util/Map;", "component1", "copy", "describeContents", "equals", "", "other", "", "hashCode", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "plugin-gamelive_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/gamelive/event/GameLiveAppbrandEventService$SimpleLiveStateChangePayload;", "Landroid/os/Parcelable;", "data", "", "", "", "(Ljava/util/Map;)V", "getData", "()Ljava/util/Map;", "component1", "copy", "describeContents", "equals", "", "other", "", "hashCode", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "plugin-gamelive_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class GameLiveAppbrandEventService$SimpleLiveStateChangePayload
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR;
+  public static final Parcelable.Creator<SimpleLiveStateChangePayload> CREATOR;
   public final Map<String, Integer> data;
   
   static
   {
-    AppMethodBeat.i(208335);
-    CREATOR = new a();
-    AppMethodBeat.o(208335);
+    AppMethodBeat.i(277446);
+    CREATOR = (Parcelable.Creator)new a();
+    AppMethodBeat.o(277446);
   }
   
   public GameLiveAppbrandEventService$SimpleLiveStateChangePayload(Map<String, Integer> paramMap)
   {
-    AppMethodBeat.i(208330);
+    AppMethodBeat.i(277438);
     this.data = paramMap;
-    AppMethodBeat.o(208330);
+    AppMethodBeat.o(277438);
   }
   
   public final int describeContents()
@@ -40,87 +39,63 @@ public final class GameLiveAppbrandEventService$SimpleLiveStateChangePayload
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(208333);
-    if (this != paramObject)
+    AppMethodBeat.i(277468);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof SimpleLiveStateChangePayload))
-      {
-        paramObject = (SimpleLiveStateChangePayload)paramObject;
-        if (!p.h(this.data, paramObject.data)) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(208333);
+      AppMethodBeat.o(277468);
       return true;
     }
-    AppMethodBeat.o(208333);
-    return false;
+    if (!(paramObject instanceof SimpleLiveStateChangePayload))
+    {
+      AppMethodBeat.o(277468);
+      return false;
+    }
+    paramObject = (SimpleLiveStateChangePayload)paramObject;
+    if (!s.p(this.data, paramObject.data))
+    {
+      AppMethodBeat.o(277468);
+      return false;
+    }
+    AppMethodBeat.o(277468);
+    return true;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(208332);
-    Map localMap = this.data;
-    if (localMap != null)
-    {
-      int i = localMap.hashCode();
-      AppMethodBeat.o(208332);
-      return i;
-    }
-    AppMethodBeat.o(208332);
-    return 0;
+    AppMethodBeat.i(277461);
+    int i = this.data.hashCode();
+    AppMethodBeat.o(277461);
+    return i;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(208331);
-    String str = "SimpleLiveStateChangePayload(data=" + this.data + ")";
-    AppMethodBeat.o(208331);
+    AppMethodBeat.i(277453);
+    String str = "SimpleLiveStateChangePayload(data=" + this.data + ')';
+    AppMethodBeat.o(277453);
     return str;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(208334);
-    p.k(paramParcel, "parcel");
+    AppMethodBeat.i(277487);
+    s.u(paramParcel, "out");
     Object localObject1 = this.data;
     paramParcel.writeInt(((Map)localObject1).size());
     localObject1 = ((Map)localObject1).entrySet().iterator();
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = ((Iterator)localObject1).next();
-      paramParcel.writeString((String)localObject2.getKey());
-      paramParcel.writeInt(((Integer)localObject2.getValue()).intValue());
+      paramParcel.writeString((String)((Map.Entry)localObject2).getKey());
+      paramParcel.writeInt(((Number)((Map.Entry)localObject2).getValue()).intValue());
     }
-    AppMethodBeat.o(208334);
+    AppMethodBeat.o(277487);
   }
   
-  @l(iBK={1, 1, 16})
+  @Metadata(k=3, mv={1, 5, 1}, xi=48)
   public static final class a
-    implements Parcelable.Creator
-  {
-    public final Object createFromParcel(Parcel paramParcel)
-    {
-      AppMethodBeat.i(208716);
-      p.k(paramParcel, "in");
-      int i = paramParcel.readInt();
-      LinkedHashMap localLinkedHashMap = new LinkedHashMap(i);
-      while (i != 0)
-      {
-        localLinkedHashMap.put(paramParcel.readString(), Integer.valueOf(paramParcel.readInt()));
-        i -= 1;
-      }
-      paramParcel = new GameLiveAppbrandEventService.SimpleLiveStateChangePayload(localLinkedHashMap);
-      AppMethodBeat.o(208716);
-      return paramParcel;
-    }
-    
-    public final Object[] newArray(int paramInt)
-    {
-      return new GameLiveAppbrandEventService.SimpleLiveStateChangePayload[paramInt];
-    }
-  }
+    implements Parcelable.Creator<GameLiveAppbrandEventService.SimpleLiveStateChangePayload>
+  {}
 }
 
 

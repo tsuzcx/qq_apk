@@ -11,7 +11,7 @@ public class a<K, V>
   extends g<K, V>
   implements Map<K, V>
 {
-  f<K, V> zu;
+  f<K, V> RH;
   
   public a() {}
   
@@ -25,102 +25,101 @@ public class a<K, V>
     super(paramg);
   }
   
-  private f<K, V> eX()
+  private f<K, V> lg()
   {
-    AppMethodBeat.i(210145);
-    if (this.zu == null) {
-      this.zu = new f()
+    AppMethodBeat.i(194544);
+    if (this.RH == null) {
+      this.RH = new f()
       {
-        protected final V a(int paramAnonymousInt, V paramAnonymousV)
+        protected final Object B(int paramAnonymousInt1, int paramAnonymousInt2)
         {
-          a locala = a.this;
-          paramAnonymousInt = (paramAnonymousInt << 1) + 1;
-          Object localObject = locala.zD[paramAnonymousInt];
-          locala.zD[paramAnonymousInt] = paramAnonymousV;
-          return localObject;
+          return a.this.RQ[((paramAnonymousInt1 << 1) + paramAnonymousInt2)];
         }
         
-        protected final void aG(int paramAnonymousInt)
+        protected final V b(int paramAnonymousInt, V paramAnonymousV)
         {
-          AppMethodBeat.i(210127);
+          AppMethodBeat.i(194574);
+          paramAnonymousV = a.this.c(paramAnonymousInt, paramAnonymousV);
+          AppMethodBeat.o(194574);
+          return paramAnonymousV;
+        }
+        
+        protected final void bf(int paramAnonymousInt)
+        {
+          AppMethodBeat.i(194585);
           a.this.removeAt(paramAnonymousInt);
-          AppMethodBeat.o(210127);
+          AppMethodBeat.o(194585);
         }
         
-        protected final void b(K paramAnonymousK, V paramAnonymousV)
+        protected final void d(K paramAnonymousK, V paramAnonymousV)
         {
-          AppMethodBeat.i(210123);
+          AppMethodBeat.i(194565);
           a.this.put(paramAnonymousK, paramAnonymousV);
-          AppMethodBeat.o(210123);
+          AppMethodBeat.o(194565);
         }
         
-        protected final int eY()
+        protected final int lh()
         {
           return a.this.mSize;
         }
         
-        protected final Map<K, V> eZ()
+        protected final Map<K, V> li()
         {
           return a.this;
         }
         
-        protected final void fa()
+        protected final void lj()
         {
-          AppMethodBeat.i(210129);
+          AppMethodBeat.i(194593);
           a.this.clear();
-          AppMethodBeat.o(210129);
+          AppMethodBeat.o(194593);
         }
         
-        protected final int o(Object paramAnonymousObject)
+        protected final int w(Object paramAnonymousObject)
         {
-          AppMethodBeat.i(210116);
-          int i = a.this.q(paramAnonymousObject);
-          AppMethodBeat.o(210116);
+          AppMethodBeat.i(194538);
+          int i = a.this.y(paramAnonymousObject);
+          AppMethodBeat.o(194538);
           return i;
         }
         
-        protected final int p(Object paramAnonymousObject)
+        protected final int x(Object paramAnonymousObject)
         {
-          AppMethodBeat.i(210119);
-          int i = a.this.r(paramAnonymousObject);
-          AppMethodBeat.o(210119);
+          AppMethodBeat.i(194546);
+          int i = a.this.z(paramAnonymousObject);
+          AppMethodBeat.o(194546);
           return i;
-        }
-        
-        protected final Object t(int paramAnonymousInt1, int paramAnonymousInt2)
-        {
-          return a.this.zD[((paramAnonymousInt1 << 1) + paramAnonymousInt2)];
         }
       };
     }
-    f localf = this.zu;
-    AppMethodBeat.o(210145);
+    f localf = this.RH;
+    AppMethodBeat.o(194544);
     return localf;
   }
   
   public Set<Map.Entry<K, V>> entrySet()
   {
-    AppMethodBeat.i(210152);
-    Object localObject = eX();
-    if (((f)localObject).zM == null) {
-      ((f)localObject).zM = new f.b((f)localObject);
+    AppMethodBeat.i(194571);
+    Object localObject = lg();
+    if (((f)localObject).RZ == null) {
+      ((f)localObject).RZ = new f.b((f)localObject);
     }
-    localObject = ((f)localObject).zM;
-    AppMethodBeat.o(210152);
+    localObject = ((f)localObject).RZ;
+    AppMethodBeat.o(194571);
     return localObject;
   }
   
   public Set<K> keySet()
   {
-    AppMethodBeat.i(210154);
-    Set localSet = eX().getKeySet();
-    AppMethodBeat.o(210154);
+    AppMethodBeat.i(194580);
+    Set localSet = lg().ln();
+    AppMethodBeat.o(194580);
     return localSet;
   }
   
   public void putAll(Map<? extends K, ? extends V> paramMap)
   {
-    AppMethodBeat.i(210149);
+    AppMethodBeat.i(194555);
     ensureCapacity(this.mSize + paramMap.size());
     paramMap = paramMap.entrySet().iterator();
     while (paramMap.hasNext())
@@ -128,24 +127,32 @@ public class a<K, V>
       Map.Entry localEntry = (Map.Entry)paramMap.next();
       put(localEntry.getKey(), localEntry.getValue());
     }
-    AppMethodBeat.o(210149);
+    AppMethodBeat.o(194555);
+  }
+  
+  public final boolean retainAll(Collection<?> paramCollection)
+  {
+    AppMethodBeat.i(194562);
+    boolean bool = f.a(this, paramCollection);
+    AppMethodBeat.o(194562);
+    return bool;
   }
   
   public Collection<V> values()
   {
-    AppMethodBeat.i(210156);
-    Object localObject = eX();
-    if (((f)localObject).zO == null) {
-      ((f)localObject).zO = new f.e((f)localObject);
+    AppMethodBeat.i(194589);
+    Object localObject = lg();
+    if (((f)localObject).Sb == null) {
+      ((f)localObject).Sb = new f.e((f)localObject);
     }
-    localObject = ((f)localObject).zO;
-    AppMethodBeat.o(210156);
+    localObject = ((f)localObject).Sb;
+    AppMethodBeat.o(194589);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.b.a
  * JD-Core Version:    0.7.0.1
  */

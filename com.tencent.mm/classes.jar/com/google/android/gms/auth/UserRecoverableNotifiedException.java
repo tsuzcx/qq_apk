@@ -1,11 +1,8 @@
 package com.google.android.gms.auth;
 
-import com.google.android.gms.common.util.VisibleForTesting;
-
 public class UserRecoverableNotifiedException
   extends GoogleAuthException
 {
-  @VisibleForTesting
   public UserRecoverableNotifiedException(String paramString)
   {
     super(paramString);
@@ -13,7 +10,7 @@ public class UserRecoverableNotifiedException
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.UserRecoverableNotifiedException
  * JD-Core Version:    0.7.0.1
  */

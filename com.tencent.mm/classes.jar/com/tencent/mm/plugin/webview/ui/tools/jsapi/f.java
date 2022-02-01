@@ -1,80 +1,62 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.service.j;
-import com.tencent.mm.plugin.webview.d.n;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.plugin.appbrand.service.k;
+import com.tencent.mm.plugin.webview.jsapi.c.a;
+import com.tencent.mm.plugin.webview.jsapi.e;
+import com.tencent.mm.plugin.webview.jsapi.p;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/JsApiInvokeMiniProgramAPI;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "binderID", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "getBinderID", "(Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;)I", "handleMsg", "", "env", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/JsApiInvokeMiniProgramAPI;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "binderID", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "getBinderID", "(Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;)I", "handleMsg", "", "env", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
-  extends com.tencent.mm.plugin.webview.d.c.a
+  extends a
 {
-  private static final int IIl = 295;
-  public static final f Qqb;
-  static final String fXz = "invokeMiniProgramAPI";
+  private static final int OOk;
+  public static final f Xip;
+  static final String idA;
   
   static
   {
     AppMethodBeat.i(175672);
-    Qqb = new f();
-    IIl = 295;
-    fXz = "invokeMiniProgramAPI";
+    Xip = new f();
+    OOk = 295;
+    idA = "invokeMiniProgramAPI";
     AppMethodBeat.o(175672);
   }
   
-  public final boolean a(com.tencent.mm.plugin.webview.d.f paramf, n paramn)
+  public final boolean a(com.tencent.mm.plugin.webview.jsapi.h paramh, p paramp)
   {
-    AppMethodBeat.i(267858);
-    p.k(paramf, "env");
-    p.k(paramn, "msg");
-    j localj = (j)com.tencent.mm.kernel.h.ae(j.class);
-    if (localj != null)
+    AppMethodBeat.i(297481);
+    s.u(paramh, "env");
+    s.u(paramp, "msg");
+    Object localObject1 = (k)com.tencent.mm.kernel.h.ax(k.class);
+    if (localObject1 == null) {}
+    for (localObject1 = null;; localObject1 = ah.aiuX)
     {
-      String str = paramn.POv.optString("name");
-      Object localObject = paramn.POv.opt("arg");
-      localj.a(paramf.PNo.getBinderID(), str, localObject);
-    }
-    for (;;)
-    {
-      paramf.PNo.h(paramn.POu, fXz + ":ok", null);
-      AppMethodBeat.o(267858);
+      if (localObject1 == null) {
+        Log.e("MicroMsg.WebView.JsApiInvokeMiniProgramAPI", "invoke but get NULL IAppBrandServiceForWebView");
+      }
+      paramh.WDy.doCallback(paramp.WEH, s.X(idA, ":ok"), null);
+      AppMethodBeat.o(297481);
       return true;
-      ((kotlin.g.a.a)a.Qqc).invoke();
+      String str = paramp.WEI.optString("name");
+      Object localObject2 = paramp.WEI.opt("arg");
+      ((k)localObject1).a(paramh.WDy.getBinderID(), str, localObject2);
     }
   }
   
-  public final String fCm()
+  public final String gPX()
   {
-    return fXz;
+    return idA;
   }
   
-  public final int fCn()
+  public final int gPZ()
   {
-    return IIl;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class a
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    public static final a Qqc;
-    
-    static
-    {
-      AppMethodBeat.i(175670);
-      Qqc = new a();
-      AppMethodBeat.o(175670);
-    }
-    
-    a()
-    {
-      super();
-    }
+    return OOk;
   }
 }
 

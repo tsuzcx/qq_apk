@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.scanner.ui.VcardContactUserHeaderPreference android:key="v_contact_info_header" android:layout="@layout/c53" />
-    <com.tencent.mm.plugin.scanner.ui.VcardContactLinkPreference android:key="v_contact_info_photo_uri" android:layout="@layout/b8j" android:title="@string/huw" />
-    <PreferenceCategory android:key="v_category_photo_uri" />
-    <com.tencent.mm.plugin.scanner.ui.VcardContactLinkPreference android:key="v_contact_info_email" android:layout="@layout/b8j" android:title="@string/huo" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="v_contact_info_org" android:layout="@layout/b8j" android:title="@string/huv" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="v_contact_info_agent" android:layout="@layout/b8j" android:title="@string/hul" />
-    <com.tencent.mm.plugin.scanner.ui.VcardContactLinkPreference android:key="c_contact_info_wx_id" android:layout="@layout/b8j" android:title="@string/hv1" />
-    <PreferenceCategory android:key="v_category_main" />
-    <com.tencent.mm.plugin.scanner.ui.VcardContactLinkPreference android:key="v_contact_info_home_page" android:layout="@layout/b8j" android:title="@string/huq" />
-    <PreferenceCategory android:key="v_category_home_page" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="v_contact_info_birthday" android:layout="@layout/b8j" android:title="@string/hum" />
-    <PreferenceCategory android:key="v_category_birthday" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="v_contact_info_remark" android:layout="@layout/b8j" android:title="@string/hux" />
-    <PreferenceCategory android:key="v_category_remark" />
-    <com.tencent.mm.plugin.scanner.ui.VcardContactLinkPreference android:key="v_contact_info_logo" android:layout="@layout/b8j" android:title="@string/hus" />
-    <PreferenceCategory android:key="v_category_logo" />
-    <Preference android:key="add_vcard_contact" android:layout="@layout/cd" android:title="@string/huh" />
-    <PreferenceCategory />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.wallet.pwd.ui.WalletDelayTransferUISelectPreference android:key="wallet_transfer_realtime" android:title="@string/ks6" />
+    <com.tencent.mm.plugin.wallet.pwd.ui.WalletDelayTransferUISelectPreference android:key="wallet_transfer_2h" android:title="@string/ks1" />
+    <com.tencent.mm.plugin.wallet.pwd.ui.WalletDelayTransferUISelectPreference android:key="wallet_transfer_24h" android:title="@string/krz" />
 </PreferenceScreen>

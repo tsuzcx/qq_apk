@@ -5,29 +5,29 @@ import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.b.b;
-import com.tencent.mm.plugin.wallet_core.model.ao;
+import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.plugin.wallet_core.model.u;
 import com.tencent.mm.plugin.wallet_core.ui.WalletBankcardIdUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletCardImportUI;
-import com.tencent.mm.plugin.wallet_core.utils.j;
+import com.tencent.mm.plugin.wallet_core.utils.m;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.wallet_core.c.ab;
-import com.tencent.mm.wallet_core.c.z;
-import com.tencent.mm.wallet_core.d;
+import com.tencent.mm.wallet_core.e;
+import com.tencent.mm.wallet_core.model.aa;
+import com.tencent.mm.wallet_core.model.ac;
 
 public class a
   extends b
 {
-  public final d a(Activity paramActivity, Bundle paramBundle)
+  public final e a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(71704);
-    L(new Object[] { "start", paramActivity, paramBundle });
+    P(new Object[] { "start", paramActivity, paramBundle });
     Log.d("MicroMsg.BindCardProcess", "start Process : BindCardProcess");
     if (paramBundle != null)
     {
-      ab.ny(6, paramBundle.getInt("key_bind_scene"));
-      z.azF(paramBundle.getInt("key_bind_scene"));
-      if (!u.gJo().gJQ()) {
+      ac.pu(6, paramBundle.getInt("key_bind_scene"));
+      aa.aGq(paramBundle.getInt("key_bind_scene"));
+      if (!u.iiC().ijf()) {
         break label133;
       }
       if (paramBundle == null) {
@@ -42,8 +42,8 @@ public class a
     {
       AppMethodBeat.o(71704);
       return this;
-      ab.ny(6, 0);
-      z.azF(0);
+      ac.pu(6, 0);
+      aa.aGq(0);
       break;
       label108:
       b(paramActivity, WalletBankcardIdUI.class, paramBundle);
@@ -54,7 +54,7 @@ public class a
     return paramActivity;
     label133:
     if (paramBundle != null) {
-      j.ll(paramBundle.getInt("key_bind_scene", 0), 1);
+      m.mW(paramBundle.getInt("key_bind_scene", 0), 1);
     }
     if ((paramBundle != null) && (paramBundle.getBoolean("key_is_import_bind", false)))
     {
@@ -81,14 +81,14 @@ public class a
     AppMethodBeat.o(71705);
   }
   
-  public final String epb()
+  public final String fud()
   {
     return "OpenECardBindCardProcess";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_ecard.b.a
  * JD-Core Version:    0.7.0.1
  */

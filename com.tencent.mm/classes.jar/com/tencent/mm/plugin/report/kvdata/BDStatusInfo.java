@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public class BDStatusInfo
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
   public long favDBSize_;
   public long mmDBSize_;
@@ -24,23 +24,23 @@ public class BDStatusInfo
     AppMethodBeat.i(151533);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bm(1, this.mmDBSize_);
-      paramVarArgs.bm(2, this.snsDBSize_);
-      paramVarArgs.aY(3, this.mmDBTableCount_);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bv(1, this.mmDBSize_);
+      paramVarArgs.bv(2, this.snsDBSize_);
+      paramVarArgs.bS(3, this.mmDBTableCount_);
       paramVarArgs.e(4, 8, this.tableList_);
-      paramVarArgs.bm(5, this.favDBSize_);
+      paramVarArgs.bv(5, this.favDBSize_);
       AppMethodBeat.o(151533);
       return 0;
     }
     int i;
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.p(1, this.mmDBSize_);
-      i = g.a.a.b.b.a.p(2, this.snsDBSize_);
-      int j = g.a.a.b.b.a.bM(3, this.mmDBTableCount_);
-      int k = g.a.a.a.c(4, 8, this.tableList_);
-      int m = g.a.a.b.b.a.p(5, this.favDBSize_);
+      paramInt = i.a.a.b.b.a.q(1, this.mmDBSize_);
+      i = i.a.a.b.b.a.q(2, this.snsDBSize_);
+      int j = i.a.a.b.b.a.cJ(3, this.mmDBTableCount_);
+      int k = i.a.a.a.c(4, 8, this.tableList_);
+      int m = i.a.a.b.b.a.q(5, this.favDBSize_);
       AppMethodBeat.o(151533);
       return paramInt + 0 + i + j + k + m;
     }
@@ -48,10 +48,10 @@ public class BDStatusInfo
     {
       paramVarArgs = (byte[])paramVarArgs[0];
       this.tableList_.clear();
-      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
       AppMethodBeat.o(151533);
@@ -59,7 +59,7 @@ public class BDStatusInfo
     }
     if (paramInt == 3)
     {
-      Object localObject = (g.a.a.a.a)paramVarArgs[0];
+      Object localObject = (i.a.a.a.a)paramVarArgs[0];
       BDStatusInfo localBDStatusInfo = (BDStatusInfo)paramVarArgs[1];
       paramInt = ((Integer)paramVarArgs[2]).intValue();
       switch (paramInt)
@@ -68,19 +68,19 @@ public class BDStatusInfo
         AppMethodBeat.o(151533);
         return -1;
       case 1: 
-        localBDStatusInfo.mmDBSize_ = ((g.a.a.a.a)localObject).abFh.AN();
+        localBDStatusInfo.mmDBSize_ = ((i.a.a.a.a)localObject).ajGk.aaw();
         AppMethodBeat.o(151533);
         return 0;
       case 2: 
-        localBDStatusInfo.snsDBSize_ = ((g.a.a.a.a)localObject).abFh.AN();
+        localBDStatusInfo.snsDBSize_ = ((i.a.a.a.a)localObject).ajGk.aaw();
         AppMethodBeat.o(151533);
         return 0;
       case 3: 
-        localBDStatusInfo.mmDBTableCount_ = ((g.a.a.a.a)localObject).abFh.AK();
+        localBDStatusInfo.mmDBTableCount_ = ((i.a.a.a.a)localObject).ajGk.aar();
         AppMethodBeat.o(151533);
         return 0;
       case 4: 
-        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
@@ -96,7 +96,7 @@ public class BDStatusInfo
         AppMethodBeat.o(151533);
         return 0;
       }
-      localBDStatusInfo.favDBSize_ = ((g.a.a.a.a)localObject).abFh.AN();
+      localBDStatusInfo.favDBSize_ = ((i.a.a.a.a)localObject).ajGk.aaw();
       AppMethodBeat.o(151533);
       return 0;
     }
@@ -106,7 +106,7 @@ public class BDStatusInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.report.kvdata.BDStatusInfo
  * JD-Core Version:    0.7.0.1
  */

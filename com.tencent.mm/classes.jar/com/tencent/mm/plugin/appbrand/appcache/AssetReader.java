@@ -10,13 +10,13 @@ public final class AssetReader
   extends AbsReader
 {
   public static final Parcelable.Creator<AssetReader> CREATOR;
-  public static final AssetReader nEa;
-  private final WxaPkgWrappingInfo nDZ;
+  public static final AssetReader qDV;
+  private final WxaPkgWrappingInfo qDU;
   
   static
   {
     AppMethodBeat.i(139824);
-    nEa = new AssetReader();
+    qDV = new AssetReader();
     CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(139824);
   }
@@ -24,11 +24,11 @@ public final class AssetReader
   public AssetReader()
   {
     AppMethodBeat.i(139822);
-    this.nDZ = new WxaPkgWrappingInfo();
-    this.nDZ.nIa = true;
-    this.nDZ.nHY = 0;
-    this.nDZ.pkgVersion = bb.VERSION;
-    this.nDZ.md5 = "";
+    this.qDU = new WxaPkgWrappingInfo();
+    this.qDU.qHQ = true;
+    this.qDU.qHO = 0;
+    this.qDU.pkgVersion = bc.VERSION;
+    this.qDU.md5 = "";
     AppMethodBeat.o(139822);
   }
   
@@ -37,10 +37,10 @@ public final class AssetReader
     this();
   }
   
-  public final InputStream Tf(String paramString)
+  public final InputStream Lh(String paramString)
   {
     AppMethodBeat.i(139821);
-    paramString = bb.Tf(paramString);
+    paramString = bc.Lh(paramString);
     AppMethodBeat.o(139821);
     return paramString;
   }
@@ -55,7 +55,7 @@ public final class AssetReader
   public final String toString()
   {
     AppMethodBeat.i(139823);
-    String str = String.format(Locale.ENGLISH, "AssetReader[%d][%s]", new Object[] { Integer.valueOf(bGi()), bGg() });
+    String str = String.format(Locale.ENGLISH, "AssetReader[%d][%s]", new Object[] { Integer.valueOf(cfG()), cfD() });
     AppMethodBeat.o(139823);
     return str;
   }
@@ -64,7 +64,7 @@ public final class AssetReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.AssetReader
  * JD-Core Version:    0.7.0.1
  */

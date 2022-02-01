@@ -20,35 +20,35 @@ public final class a$q
   extends i.c<q>
   implements s
 {
-  public static t<q> aaZC;
-  private static final q abcw;
-  private final d aaZB;
-  public int aaZS;
-  public List<a.r> abal;
-  public List<Integer> abaz;
-  public int abbb;
-  public int abcA;
-  public List<a.a> abcB;
-  public a.p abcx;
-  public int abcy;
-  public a.p abcz;
-  private int bQS;
-  private byte bRd = -1;
-  private int bXW = -1;
+  public static t<q> aiYa;
+  private static final q ajaX;
+  private final d aiXZ;
+  public List<a.r> aiYJ;
+  public int aiYq;
+  public int aiZC;
+  public List<Integer> aiZa;
+  public a.p ajaY;
+  public int ajaZ;
+  public a.p ajba;
+  public int ajbb;
+  public List<a.a> ajbc;
+  private int bitField0_;
+  private int dRJ = -1;
+  private byte memoizedIsInitialized = -1;
   
   static
   {
     AppMethodBeat.i(58897);
-    aaZC = new b() {};
+    aiYa = new b() {};
     q localq = new q();
-    abcw = localq;
-    localq.iIN();
+    ajaX = localq;
+    localq.ktf();
     AppMethodBeat.o(58897);
   }
   
   private a$q()
   {
-    this.aaZB = d.abgb;
+    this.aiXZ = d.ajeU;
   }
   
   /* Error */
@@ -61,19 +61,19 @@ public final class a$q
     //   6: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: aload_0
     //   10: iconst_m1
-    //   11: putfield 68	kotlin/l/b/a/b/e/a$q:bRd	B
+    //   11: putfield 68	kotlin/l/b/a/b/e/a$q:memoizedIsInitialized	B
     //   14: aload_0
     //   15: iconst_m1
-    //   16: putfield 70	kotlin/l/b/a/b/e/a$q:bXW	I
+    //   16: putfield 70	kotlin/l/b/a/b/e/a$q:dRJ	I
     //   19: aload_0
-    //   20: invokespecial 61	kotlin/l/b/a/b/e/a$q:iIN	()V
+    //   20: invokespecial 61	kotlin/l/b/a/b/e/a$q:ktf	()V
     //   23: iconst_0
     //   24: istore_3
-    //   25: invokestatic 87	kotlin/l/b/a/b/h/d:iNH	()Lkotlin/l/b/a/b/h/d$b;
+    //   25: invokestatic 87	kotlin/l/b/a/b/h/d:kya	()Lkotlin/l/b/a/b/h/d$b;
     //   28: astore 10
     //   30: aload 10
     //   32: iconst_1
-    //   33: invokestatic 93	kotlin/l/b/a/b/h/f:f	(Ljava/io/OutputStream;I)Lkotlin/l/b/a/b/h/f;
+    //   33: invokestatic 92	kotlin/l/b/a/b/h/f:i	(Ljava/io/OutputStream;I)Lkotlin/l/b/a/b/h/f;
     //   36: astore 11
     //   38: iconst_0
     //   39: istore 8
@@ -86,7 +86,7 @@ public final class a$q
     //   52: iload_3
     //   53: istore 6
     //   55: aload_1
-    //   56: invokevirtual 99	kotlin/l/b/a/b/h/e:Av	()I
+    //   56: invokevirtual 98	kotlin/l/b/a/b/h/e:aac	()I
     //   59: istore 7
     //   61: iload 7
     //   63: lookupswitch	default:+1194->1257, 0:+1197->1260, 8:+125->188, 16:+274->337, 26:+354->417, 34:+425->488, 40:+550->613, 50:+590->653, 56:+718->781, 66:+758->821, 248:+835->898, 250:+911->974
@@ -100,7 +100,7 @@ public final class a$q
     //   171: aload 11
     //   173: aload_2
     //   174: iload 7
-    //   176: invokevirtual 102	kotlin/l/b/a/b/e/a$q:a	(Lkotlin/l/b/a/b/h/e;Lkotlin/l/b/a/b/h/f;Lkotlin/l/b/a/b/h/g;I)Z
+    //   176: invokevirtual 101	kotlin/l/b/a/b/e/a$q:a	(Lkotlin/l/b/a/b/h/e;Lkotlin/l/b/a/b/h/f;Lkotlin/l/b/a/b/h/g;I)Z
     //   179: ifne +1075 -> 1254
     //   182: iconst_1
     //   183: istore 8
@@ -113,10 +113,10 @@ public final class a$q
     //   195: istore 6
     //   197: aload_0
     //   198: aload_0
-    //   199: getfield 104	kotlin/l/b/a/b/e/a$q:bQS	I
+    //   199: getfield 103	kotlin/l/b/a/b/e/a$q:bitField0_	I
     //   202: iconst_1
     //   203: ior
-    //   204: putfield 104	kotlin/l/b/a/b/e/a$q:bQS	I
+    //   204: putfield 103	kotlin/l/b/a/b/e/a$q:bitField0_	I
     //   207: iload_3
     //   208: istore 4
     //   210: iload_3
@@ -125,15 +125,15 @@ public final class a$q
     //   214: istore 6
     //   216: aload_0
     //   217: aload_1
-    //   218: invokevirtual 107	kotlin/l/b/a/b/h/e:AK	()I
-    //   221: putfield 109	kotlin/l/b/a/b/e/a$q:aaZS	I
+    //   218: invokevirtual 106	kotlin/l/b/a/b/h/e:aar	()I
+    //   221: putfield 108	kotlin/l/b/a/b/e/a$q:aiYq	I
     //   224: goto -183 -> 41
     //   227: astore_1
     //   228: iload 4
     //   230: istore_3
     //   231: aload_1
     //   232: aload_0
-    //   233: putfield 113	kotlin/l/b/a/b/h/l:abgy	Lkotlin/l/b/a/b/h/r;
+    //   233: putfield 112	kotlin/l/b/a/b/h/l:ajfp	Lkotlin/l/b/a/b/h/r;
     //   236: iload 4
     //   238: istore_3
     //   239: ldc 83
@@ -150,9 +150,9 @@ public final class a$q
     //   254: if_icmpne +14 -> 268
     //   257: aload_0
     //   258: aload_0
-    //   259: getfield 115	kotlin/l/b/a/b/e/a$q:abal	Ljava/util/List;
-    //   262: invokestatic 121	java/util/Collections:unmodifiableList	(Ljava/util/List;)Ljava/util/List;
-    //   265: putfield 115	kotlin/l/b/a/b/e/a$q:abal	Ljava/util/List;
+    //   259: getfield 114	kotlin/l/b/a/b/e/a$q:aiYJ	Ljava/util/List;
+    //   262: invokestatic 120	java/util/Collections:unmodifiableList	(Ljava/util/List;)Ljava/util/List;
+    //   265: putfield 114	kotlin/l/b/a/b/e/a$q:aiYJ	Ljava/util/List;
     //   268: iload_3
     //   269: sipush 128
     //   272: iand
@@ -160,9 +160,9 @@ public final class a$q
     //   276: if_icmpne +14 -> 290
     //   279: aload_0
     //   280: aload_0
-    //   281: getfield 123	kotlin/l/b/a/b/e/a$q:abcB	Ljava/util/List;
-    //   284: invokestatic 121	java/util/Collections:unmodifiableList	(Ljava/util/List;)Ljava/util/List;
-    //   287: putfield 123	kotlin/l/b/a/b/e/a$q:abcB	Ljava/util/List;
+    //   281: getfield 122	kotlin/l/b/a/b/e/a$q:ajbc	Ljava/util/List;
+    //   284: invokestatic 120	java/util/Collections:unmodifiableList	(Ljava/util/List;)Ljava/util/List;
+    //   287: putfield 122	kotlin/l/b/a/b/e/a$q:ajbc	Ljava/util/List;
     //   290: iload_3
     //   291: sipush 256
     //   294: iand
@@ -170,17 +170,17 @@ public final class a$q
     //   298: if_icmpne +14 -> 312
     //   301: aload_0
     //   302: aload_0
-    //   303: getfield 125	kotlin/l/b/a/b/e/a$q:abaz	Ljava/util/List;
-    //   306: invokestatic 121	java/util/Collections:unmodifiableList	(Ljava/util/List;)Ljava/util/List;
-    //   309: putfield 125	kotlin/l/b/a/b/e/a$q:abaz	Ljava/util/List;
+    //   303: getfield 124	kotlin/l/b/a/b/e/a$q:aiZa	Ljava/util/List;
+    //   306: invokestatic 120	java/util/Collections:unmodifiableList	(Ljava/util/List;)Ljava/util/List;
+    //   309: putfield 124	kotlin/l/b/a/b/e/a$q:aiZa	Ljava/util/List;
     //   312: aload 11
-    //   314: invokevirtual 128	kotlin/l/b/a/b/h/f:flush	()V
+    //   314: invokevirtual 127	kotlin/l/b/a/b/h/f:flush	()V
     //   317: aload_0
     //   318: aload 10
-    //   320: invokevirtual 134	kotlin/l/b/a/b/h/d$b:iNK	()Lkotlin/l/b/a/b/h/d;
-    //   323: putfield 77	kotlin/l/b/a/b/e/a$q:aaZB	Lkotlin/l/b/a/b/h/d;
+    //   320: invokevirtual 133	kotlin/l/b/a/b/h/d$b:kyc	()Lkotlin/l/b/a/b/h/d;
+    //   323: putfield 77	kotlin/l/b/a/b/e/a$q:aiXZ	Lkotlin/l/b/a/b/h/d;
     //   326: aload_0
-    //   327: invokevirtual 137	kotlin/l/b/a/b/e/a$q:HZ	()V
+    //   327: invokevirtual 136	kotlin/l/b/a/b/e/a$q:makeExtensionsImmutable	()V
     //   330: ldc 83
     //   332: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   335: aload_1
@@ -193,10 +193,10 @@ public final class a$q
     //   344: istore 6
     //   346: aload_0
     //   347: aload_0
-    //   348: getfield 104	kotlin/l/b/a/b/e/a$q:bQS	I
+    //   348: getfield 103	kotlin/l/b/a/b/e/a$q:bitField0_	I
     //   351: iconst_2
     //   352: ior
-    //   353: putfield 104	kotlin/l/b/a/b/e/a$q:bQS	I
+    //   353: putfield 103	kotlin/l/b/a/b/e/a$q:bitField0_	I
     //   356: iload_3
     //   357: istore 4
     //   359: iload_3
@@ -205,8 +205,8 @@ public final class a$q
     //   363: istore 6
     //   365: aload_0
     //   366: aload_1
-    //   367: invokevirtual 107	kotlin/l/b/a/b/h/e:AK	()I
-    //   370: putfield 139	kotlin/l/b/a/b/e/a$q:abbb	I
+    //   367: invokevirtual 106	kotlin/l/b/a/b/h/e:aar	()I
+    //   370: putfield 138	kotlin/l/b/a/b/e/a$q:aiZC	I
     //   373: goto -332 -> 41
     //   376: astore_1
     //   377: iload 5
@@ -216,14 +216,14 @@ public final class a$q
     //   384: new 80	kotlin/l/b/a/b/h/l
     //   387: dup
     //   388: aload_1
-    //   389: invokevirtual 143	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   392: invokespecial 146	kotlin/l/b/a/b/h/l:<init>	(Ljava/lang/String;)V
+    //   389: invokevirtual 142	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   392: invokespecial 145	kotlin/l/b/a/b/h/l:<init>	(Ljava/lang/String;)V
     //   395: astore_1
     //   396: iload 4
     //   398: istore_3
     //   399: aload_1
     //   400: aload_0
-    //   401: putfield 113	kotlin/l/b/a/b/h/l:abgy	Lkotlin/l/b/a/b/h/r;
+    //   401: putfield 112	kotlin/l/b/a/b/h/l:ajfp	Lkotlin/l/b/a/b/h/r;
     //   404: iload 4
     //   406: istore_3
     //   407: ldc 83
@@ -246,10 +246,10 @@ public final class a$q
     //   433: iload_3
     //   434: istore 6
     //   436: aload_0
-    //   437: new 148	java/util/ArrayList
+    //   437: new 147	java/util/ArrayList
     //   440: dup
-    //   441: invokespecial 149	java/util/ArrayList:<init>	()V
-    //   444: putfield 115	kotlin/l/b/a/b/e/a$q:abal	Ljava/util/List;
+    //   441: invokespecial 148	java/util/ArrayList:<init>	()V
+    //   444: putfield 114	kotlin/l/b/a/b/e/a$q:aiYJ	Ljava/util/List;
     //   447: iload_3
     //   448: iconst_4
     //   449: ior
@@ -261,12 +261,12 @@ public final class a$q
     //   460: iload 7
     //   462: istore 6
     //   464: aload_0
-    //   465: getfield 115	kotlin/l/b/a/b/e/a$q:abal	Ljava/util/List;
+    //   465: getfield 114	kotlin/l/b/a/b/e/a$q:aiYJ	Ljava/util/List;
     //   468: aload_1
-    //   469: getstatic 152	kotlin/l/b/a/b/e/a$r:aaZC	Lkotlin/l/b/a/b/h/t;
+    //   469: getstatic 151	kotlin/l/b/a/b/e/a$r:aiYa	Lkotlin/l/b/a/b/h/t;
     //   472: aload_2
-    //   473: invokevirtual 155	kotlin/l/b/a/b/h/e:a	(Lkotlin/l/b/a/b/h/t;Lkotlin/l/b/a/b/h/g;)Lkotlin/l/b/a/b/h/r;
-    //   476: invokeinterface 161 2 0
+    //   473: invokevirtual 154	kotlin/l/b/a/b/h/e:a	(Lkotlin/l/b/a/b/h/t;Lkotlin/l/b/a/b/h/g;)Lkotlin/l/b/a/b/h/r;
+    //   476: invokeinterface 160 2 0
     //   481: pop
     //   482: iload 7
     //   484: istore_3
@@ -278,7 +278,7 @@ public final class a$q
     //   494: iload_3
     //   495: istore 6
     //   497: aload_0
-    //   498: getfield 104	kotlin/l/b/a/b/e/a$q:bQS	I
+    //   498: getfield 103	kotlin/l/b/a/b/e/a$q:bitField0_	I
     //   501: iconst_4
     //   502: iand
     //   503: iconst_4
@@ -290,8 +290,8 @@ public final class a$q
     //   513: iload_3
     //   514: istore 6
     //   516: aload_0
-    //   517: getfield 163	kotlin/l/b/a/b/e/a$q:abcx	Lkotlin/l/b/a/b/e/a$p;
-    //   520: invokevirtual 169	kotlin/l/b/a/b/e/a$p:iLz	()Lkotlin/l/b/a/b/e/a$p$b;
+    //   517: getfield 162	kotlin/l/b/a/b/e/a$q:ajaY	Lkotlin/l/b/a/b/e/a$p;
+    //   520: invokevirtual 168	kotlin/l/b/a/b/e/a$p:kvU	()Lkotlin/l/b/a/b/e/a$p$b;
     //   523: astore 9
     //   525: iload_3
     //   526: istore 4
@@ -301,11 +301,11 @@ public final class a$q
     //   532: istore 6
     //   534: aload_0
     //   535: aload_1
-    //   536: getstatic 170	kotlin/l/b/a/b/e/a$p:aaZC	Lkotlin/l/b/a/b/h/t;
+    //   536: getstatic 169	kotlin/l/b/a/b/e/a$p:aiYa	Lkotlin/l/b/a/b/h/t;
     //   539: aload_2
-    //   540: invokevirtual 155	kotlin/l/b/a/b/h/e:a	(Lkotlin/l/b/a/b/h/t;Lkotlin/l/b/a/b/h/g;)Lkotlin/l/b/a/b/h/r;
-    //   543: checkcast 165	kotlin/l/b/a/b/e/a$p
-    //   546: putfield 163	kotlin/l/b/a/b/e/a$q:abcx	Lkotlin/l/b/a/b/e/a$p;
+    //   540: invokevirtual 154	kotlin/l/b/a/b/h/e:a	(Lkotlin/l/b/a/b/h/t;Lkotlin/l/b/a/b/h/g;)Lkotlin/l/b/a/b/h/r;
+    //   543: checkcast 164	kotlin/l/b/a/b/e/a$p
+    //   546: putfield 162	kotlin/l/b/a/b/e/a$q:ajaY	Lkotlin/l/b/a/b/e/a$p;
     //   549: aload 9
     //   551: ifnull +40 -> 591
     //   554: iload_3
@@ -316,8 +316,8 @@ public final class a$q
     //   561: istore 6
     //   563: aload 9
     //   565: aload_0
-    //   566: getfield 163	kotlin/l/b/a/b/e/a$q:abcx	Lkotlin/l/b/a/b/e/a$p;
-    //   569: invokevirtual 176	kotlin/l/b/a/b/e/a$p$b:j	(Lkotlin/l/b/a/b/e/a$p;)Lkotlin/l/b/a/b/e/a$p$b;
+    //   566: getfield 162	kotlin/l/b/a/b/e/a$q:ajaY	Lkotlin/l/b/a/b/e/a$p;
+    //   569: invokevirtual 175	kotlin/l/b/a/b/e/a$p$b:k	(Lkotlin/l/b/a/b/e/a$p;)Lkotlin/l/b/a/b/e/a$p$b;
     //   572: pop
     //   573: iload_3
     //   574: istore 4
@@ -327,8 +327,8 @@ public final class a$q
     //   580: istore 6
     //   582: aload_0
     //   583: aload 9
-    //   585: invokevirtual 180	kotlin/l/b/a/b/e/a$p$b:iLI	()Lkotlin/l/b/a/b/e/a$p;
-    //   588: putfield 163	kotlin/l/b/a/b/e/a$q:abcx	Lkotlin/l/b/a/b/e/a$p;
+    //   585: invokevirtual 179	kotlin/l/b/a/b/e/a$p$b:kwd	()Lkotlin/l/b/a/b/e/a$p;
+    //   588: putfield 162	kotlin/l/b/a/b/e/a$q:ajaY	Lkotlin/l/b/a/b/e/a$p;
     //   591: iload_3
     //   592: istore 4
     //   594: iload_3
@@ -337,10 +337,10 @@ public final class a$q
     //   598: istore 6
     //   600: aload_0
     //   601: aload_0
-    //   602: getfield 104	kotlin/l/b/a/b/e/a$q:bQS	I
+    //   602: getfield 103	kotlin/l/b/a/b/e/a$q:bitField0_	I
     //   605: iconst_4
     //   606: ior
-    //   607: putfield 104	kotlin/l/b/a/b/e/a$q:bQS	I
+    //   607: putfield 103	kotlin/l/b/a/b/e/a$q:bitField0_	I
     //   610: goto -569 -> 41
     //   613: iload_3
     //   614: istore 4
@@ -350,10 +350,10 @@ public final class a$q
     //   620: istore 6
     //   622: aload_0
     //   623: aload_0
-    //   624: getfield 104	kotlin/l/b/a/b/e/a$q:bQS	I
+    //   624: getfield 103	kotlin/l/b/a/b/e/a$q:bitField0_	I
     //   627: bipush 8
     //   629: ior
-    //   630: putfield 104	kotlin/l/b/a/b/e/a$q:bQS	I
+    //   630: putfield 103	kotlin/l/b/a/b/e/a$q:bitField0_	I
     //   633: iload_3
     //   634: istore 4
     //   636: iload_3
@@ -362,8 +362,8 @@ public final class a$q
     //   640: istore 6
     //   642: aload_0
     //   643: aload_1
-    //   644: invokevirtual 107	kotlin/l/b/a/b/h/e:AK	()I
-    //   647: putfield 182	kotlin/l/b/a/b/e/a$q:abcy	I
+    //   644: invokevirtual 106	kotlin/l/b/a/b/h/e:aar	()I
+    //   647: putfield 181	kotlin/l/b/a/b/e/a$q:ajaZ	I
     //   650: goto -609 -> 41
     //   653: iload_3
     //   654: istore 4
@@ -372,7 +372,7 @@ public final class a$q
     //   659: iload_3
     //   660: istore 6
     //   662: aload_0
-    //   663: getfield 104	kotlin/l/b/a/b/e/a$q:bQS	I
+    //   663: getfield 103	kotlin/l/b/a/b/e/a$q:bitField0_	I
     //   666: bipush 16
     //   668: iand
     //   669: bipush 16
@@ -384,8 +384,8 @@ public final class a$q
     //   680: iload_3
     //   681: istore 6
     //   683: aload_0
-    //   684: getfield 184	kotlin/l/b/a/b/e/a$q:abcz	Lkotlin/l/b/a/b/e/a$p;
-    //   687: invokevirtual 169	kotlin/l/b/a/b/e/a$p:iLz	()Lkotlin/l/b/a/b/e/a$p$b;
+    //   684: getfield 183	kotlin/l/b/a/b/e/a$q:ajba	Lkotlin/l/b/a/b/e/a$p;
+    //   687: invokevirtual 168	kotlin/l/b/a/b/e/a$p:kvU	()Lkotlin/l/b/a/b/e/a$p$b;
     //   690: astore 9
     //   692: iload_3
     //   693: istore 4
@@ -395,11 +395,11 @@ public final class a$q
     //   699: istore 6
     //   701: aload_0
     //   702: aload_1
-    //   703: getstatic 170	kotlin/l/b/a/b/e/a$p:aaZC	Lkotlin/l/b/a/b/h/t;
+    //   703: getstatic 169	kotlin/l/b/a/b/e/a$p:aiYa	Lkotlin/l/b/a/b/h/t;
     //   706: aload_2
-    //   707: invokevirtual 155	kotlin/l/b/a/b/h/e:a	(Lkotlin/l/b/a/b/h/t;Lkotlin/l/b/a/b/h/g;)Lkotlin/l/b/a/b/h/r;
-    //   710: checkcast 165	kotlin/l/b/a/b/e/a$p
-    //   713: putfield 184	kotlin/l/b/a/b/e/a$q:abcz	Lkotlin/l/b/a/b/e/a$p;
+    //   707: invokevirtual 154	kotlin/l/b/a/b/h/e:a	(Lkotlin/l/b/a/b/h/t;Lkotlin/l/b/a/b/h/g;)Lkotlin/l/b/a/b/h/r;
+    //   710: checkcast 164	kotlin/l/b/a/b/e/a$p
+    //   713: putfield 183	kotlin/l/b/a/b/e/a$q:ajba	Lkotlin/l/b/a/b/e/a$p;
     //   716: aload 9
     //   718: ifnull +40 -> 758
     //   721: iload_3
@@ -410,8 +410,8 @@ public final class a$q
     //   728: istore 6
     //   730: aload 9
     //   732: aload_0
-    //   733: getfield 184	kotlin/l/b/a/b/e/a$q:abcz	Lkotlin/l/b/a/b/e/a$p;
-    //   736: invokevirtual 176	kotlin/l/b/a/b/e/a$p$b:j	(Lkotlin/l/b/a/b/e/a$p;)Lkotlin/l/b/a/b/e/a$p$b;
+    //   733: getfield 183	kotlin/l/b/a/b/e/a$q:ajba	Lkotlin/l/b/a/b/e/a$p;
+    //   736: invokevirtual 175	kotlin/l/b/a/b/e/a$p$b:k	(Lkotlin/l/b/a/b/e/a$p;)Lkotlin/l/b/a/b/e/a$p$b;
     //   739: pop
     //   740: iload_3
     //   741: istore 4
@@ -421,8 +421,8 @@ public final class a$q
     //   747: istore 6
     //   749: aload_0
     //   750: aload 9
-    //   752: invokevirtual 180	kotlin/l/b/a/b/e/a$p$b:iLI	()Lkotlin/l/b/a/b/e/a$p;
-    //   755: putfield 184	kotlin/l/b/a/b/e/a$q:abcz	Lkotlin/l/b/a/b/e/a$p;
+    //   752: invokevirtual 179	kotlin/l/b/a/b/e/a$p$b:kwd	()Lkotlin/l/b/a/b/e/a$p;
+    //   755: putfield 183	kotlin/l/b/a/b/e/a$q:ajba	Lkotlin/l/b/a/b/e/a$p;
     //   758: iload_3
     //   759: istore 4
     //   761: iload_3
@@ -431,10 +431,10 @@ public final class a$q
     //   765: istore 6
     //   767: aload_0
     //   768: aload_0
-    //   769: getfield 104	kotlin/l/b/a/b/e/a$q:bQS	I
+    //   769: getfield 103	kotlin/l/b/a/b/e/a$q:bitField0_	I
     //   772: bipush 16
     //   774: ior
-    //   775: putfield 104	kotlin/l/b/a/b/e/a$q:bQS	I
+    //   775: putfield 103	kotlin/l/b/a/b/e/a$q:bitField0_	I
     //   778: goto -737 -> 41
     //   781: iload_3
     //   782: istore 4
@@ -444,10 +444,10 @@ public final class a$q
     //   788: istore 6
     //   790: aload_0
     //   791: aload_0
-    //   792: getfield 104	kotlin/l/b/a/b/e/a$q:bQS	I
+    //   792: getfield 103	kotlin/l/b/a/b/e/a$q:bitField0_	I
     //   795: bipush 32
     //   797: ior
-    //   798: putfield 104	kotlin/l/b/a/b/e/a$q:bQS	I
+    //   798: putfield 103	kotlin/l/b/a/b/e/a$q:bitField0_	I
     //   801: iload_3
     //   802: istore 4
     //   804: iload_3
@@ -456,8 +456,8 @@ public final class a$q
     //   808: istore 6
     //   810: aload_0
     //   811: aload_1
-    //   812: invokevirtual 107	kotlin/l/b/a/b/h/e:AK	()I
-    //   815: putfield 186	kotlin/l/b/a/b/e/a$q:abcA	I
+    //   812: invokevirtual 106	kotlin/l/b/a/b/h/e:aar	()I
+    //   815: putfield 185	kotlin/l/b/a/b/e/a$q:ajbb	I
     //   818: goto -777 -> 41
     //   821: iload_3
     //   822: istore 7
@@ -473,10 +473,10 @@ public final class a$q
     //   841: iload_3
     //   842: istore 6
     //   844: aload_0
-    //   845: new 148	java/util/ArrayList
+    //   845: new 147	java/util/ArrayList
     //   848: dup
-    //   849: invokespecial 149	java/util/ArrayList:<init>	()V
-    //   852: putfield 123	kotlin/l/b/a/b/e/a$q:abcB	Ljava/util/List;
+    //   849: invokespecial 148	java/util/ArrayList:<init>	()V
+    //   852: putfield 122	kotlin/l/b/a/b/e/a$q:ajbc	Ljava/util/List;
     //   855: iload_3
     //   856: sipush 128
     //   859: ior
@@ -488,12 +488,12 @@ public final class a$q
     //   870: iload 7
     //   872: istore 6
     //   874: aload_0
-    //   875: getfield 123	kotlin/l/b/a/b/e/a$q:abcB	Ljava/util/List;
+    //   875: getfield 122	kotlin/l/b/a/b/e/a$q:ajbc	Ljava/util/List;
     //   878: aload_1
-    //   879: getstatic 189	kotlin/l/b/a/b/e/a$a:aaZC	Lkotlin/l/b/a/b/h/t;
+    //   879: getstatic 188	kotlin/l/b/a/b/e/a$a:aiYa	Lkotlin/l/b/a/b/h/t;
     //   882: aload_2
-    //   883: invokevirtual 155	kotlin/l/b/a/b/h/e:a	(Lkotlin/l/b/a/b/h/t;Lkotlin/l/b/a/b/h/g;)Lkotlin/l/b/a/b/h/r;
-    //   886: invokeinterface 161 2 0
+    //   883: invokevirtual 154	kotlin/l/b/a/b/h/e:a	(Lkotlin/l/b/a/b/h/t;Lkotlin/l/b/a/b/h/g;)Lkotlin/l/b/a/b/h/r;
+    //   886: invokeinterface 160 2 0
     //   891: pop
     //   892: iload 7
     //   894: istore_3
@@ -512,10 +512,10 @@ public final class a$q
     //   918: iload_3
     //   919: istore 6
     //   921: aload_0
-    //   922: new 148	java/util/ArrayList
+    //   922: new 147	java/util/ArrayList
     //   925: dup
-    //   926: invokespecial 149	java/util/ArrayList:<init>	()V
-    //   929: putfield 125	kotlin/l/b/a/b/e/a$q:abaz	Ljava/util/List;
+    //   926: invokespecial 148	java/util/ArrayList:<init>	()V
+    //   929: putfield 124	kotlin/l/b/a/b/e/a$q:aiZa	Ljava/util/List;
     //   932: iload_3
     //   933: sipush 256
     //   936: ior
@@ -527,11 +527,11 @@ public final class a$q
     //   947: iload 7
     //   949: istore 6
     //   951: aload_0
-    //   952: getfield 125	kotlin/l/b/a/b/e/a$q:abaz	Ljava/util/List;
+    //   952: getfield 124	kotlin/l/b/a/b/e/a$q:aiZa	Ljava/util/List;
     //   955: aload_1
-    //   956: invokevirtual 107	kotlin/l/b/a/b/h/e:AK	()I
-    //   959: invokestatic 195	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   962: invokeinterface 161 2 0
+    //   956: invokevirtual 106	kotlin/l/b/a/b/h/e:aar	()I
+    //   959: invokestatic 194	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   962: invokeinterface 160 2 0
     //   967: pop
     //   968: iload 7
     //   970: istore_3
@@ -544,8 +544,8 @@ public final class a$q
     //   981: istore 6
     //   983: aload_1
     //   984: aload_1
-    //   985: invokevirtual 107	kotlin/l/b/a/b/h/e:AK	()I
-    //   988: invokevirtual 199	kotlin/l/b/a/b/h/e:gA	(I)I
+    //   985: invokevirtual 106	kotlin/l/b/a/b/h/e:aar	()I
+    //   988: invokevirtual 198	kotlin/l/b/a/b/h/e:jO	(I)I
     //   991: istore 7
     //   993: iload_3
     //   994: sipush 256
@@ -559,7 +559,7 @@ public final class a$q
     //   1010: iload_3
     //   1011: istore 6
     //   1013: aload_1
-    //   1014: invokevirtual 202	kotlin/l/b/a/b/h/e:AM	()I
+    //   1014: invokevirtual 201	kotlin/l/b/a/b/h/e:aat	()I
     //   1017: ifle +222 -> 1239
     //   1020: iload_3
     //   1021: istore 4
@@ -568,28 +568,28 @@ public final class a$q
     //   1026: iload_3
     //   1027: istore 6
     //   1029: aload_0
-    //   1030: new 148	java/util/ArrayList
+    //   1030: new 147	java/util/ArrayList
     //   1033: dup
-    //   1034: invokespecial 149	java/util/ArrayList:<init>	()V
-    //   1037: putfield 125	kotlin/l/b/a/b/e/a$q:abaz	Ljava/util/List;
+    //   1034: invokespecial 148	java/util/ArrayList:<init>	()V
+    //   1037: putfield 124	kotlin/l/b/a/b/e/a$q:aiZa	Ljava/util/List;
     //   1040: iload_3
     //   1041: sipush 256
     //   1044: ior
     //   1045: istore_3
     //   1046: aload_1
-    //   1047: invokevirtual 202	kotlin/l/b/a/b/h/e:AM	()I
+    //   1047: invokevirtual 201	kotlin/l/b/a/b/h/e:aat	()I
     //   1050: ifle +23 -> 1073
     //   1053: aload_0
-    //   1054: getfield 125	kotlin/l/b/a/b/e/a$q:abaz	Ljava/util/List;
+    //   1054: getfield 124	kotlin/l/b/a/b/e/a$q:aiZa	Ljava/util/List;
     //   1057: aload_1
-    //   1058: invokevirtual 107	kotlin/l/b/a/b/h/e:AK	()I
-    //   1061: invokestatic 195	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1064: invokeinterface 161 2 0
+    //   1058: invokevirtual 106	kotlin/l/b/a/b/h/e:aar	()I
+    //   1061: invokestatic 194	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1064: invokeinterface 160 2 0
     //   1069: pop
     //   1070: goto -24 -> 1046
     //   1073: aload_1
     //   1074: iload 7
-    //   1076: invokevirtual 205	kotlin/l/b/a/b/h/e:gB	(I)V
+    //   1076: invokevirtual 204	kotlin/l/b/a/b/h/e:jP	(I)V
     //   1079: goto -1038 -> 41
     //   1082: iload_3
     //   1083: iconst_4
@@ -598,9 +598,9 @@ public final class a$q
     //   1086: if_icmpne +14 -> 1100
     //   1089: aload_0
     //   1090: aload_0
-    //   1091: getfield 115	kotlin/l/b/a/b/e/a$q:abal	Ljava/util/List;
-    //   1094: invokestatic 121	java/util/Collections:unmodifiableList	(Ljava/util/List;)Ljava/util/List;
-    //   1097: putfield 115	kotlin/l/b/a/b/e/a$q:abal	Ljava/util/List;
+    //   1091: getfield 114	kotlin/l/b/a/b/e/a$q:aiYJ	Ljava/util/List;
+    //   1094: invokestatic 120	java/util/Collections:unmodifiableList	(Ljava/util/List;)Ljava/util/List;
+    //   1097: putfield 114	kotlin/l/b/a/b/e/a$q:aiYJ	Ljava/util/List;
     //   1100: iload_3
     //   1101: sipush 128
     //   1104: iand
@@ -608,9 +608,9 @@ public final class a$q
     //   1108: if_icmpne +14 -> 1122
     //   1111: aload_0
     //   1112: aload_0
-    //   1113: getfield 123	kotlin/l/b/a/b/e/a$q:abcB	Ljava/util/List;
-    //   1116: invokestatic 121	java/util/Collections:unmodifiableList	(Ljava/util/List;)Ljava/util/List;
-    //   1119: putfield 123	kotlin/l/b/a/b/e/a$q:abcB	Ljava/util/List;
+    //   1113: getfield 122	kotlin/l/b/a/b/e/a$q:ajbc	Ljava/util/List;
+    //   1116: invokestatic 120	java/util/Collections:unmodifiableList	(Ljava/util/List;)Ljava/util/List;
+    //   1119: putfield 122	kotlin/l/b/a/b/e/a$q:ajbc	Ljava/util/List;
     //   1122: iload_3
     //   1123: sipush 256
     //   1126: iand
@@ -618,31 +618,31 @@ public final class a$q
     //   1130: if_icmpne +14 -> 1144
     //   1133: aload_0
     //   1134: aload_0
-    //   1135: getfield 125	kotlin/l/b/a/b/e/a$q:abaz	Ljava/util/List;
-    //   1138: invokestatic 121	java/util/Collections:unmodifiableList	(Ljava/util/List;)Ljava/util/List;
-    //   1141: putfield 125	kotlin/l/b/a/b/e/a$q:abaz	Ljava/util/List;
+    //   1135: getfield 124	kotlin/l/b/a/b/e/a$q:aiZa	Ljava/util/List;
+    //   1138: invokestatic 120	java/util/Collections:unmodifiableList	(Ljava/util/List;)Ljava/util/List;
+    //   1141: putfield 124	kotlin/l/b/a/b/e/a$q:aiZa	Ljava/util/List;
     //   1144: aload 11
-    //   1146: invokevirtual 128	kotlin/l/b/a/b/h/f:flush	()V
+    //   1146: invokevirtual 127	kotlin/l/b/a/b/h/f:flush	()V
     //   1149: aload_0
     //   1150: aload 10
-    //   1152: invokevirtual 134	kotlin/l/b/a/b/h/d$b:iNK	()Lkotlin/l/b/a/b/h/d;
-    //   1155: putfield 77	kotlin/l/b/a/b/e/a$q:aaZB	Lkotlin/l/b/a/b/h/d;
+    //   1152: invokevirtual 133	kotlin/l/b/a/b/h/d$b:kyc	()Lkotlin/l/b/a/b/h/d;
+    //   1155: putfield 77	kotlin/l/b/a/b/e/a$q:aiXZ	Lkotlin/l/b/a/b/h/d;
     //   1158: aload_0
-    //   1159: invokevirtual 137	kotlin/l/b/a/b/e/a$q:HZ	()V
+    //   1159: invokevirtual 136	kotlin/l/b/a/b/e/a$q:makeExtensionsImmutable	()V
     //   1162: ldc 83
     //   1164: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1167: return
     //   1168: astore_1
     //   1169: aload_0
     //   1170: aload 10
-    //   1172: invokevirtual 134	kotlin/l/b/a/b/h/d$b:iNK	()Lkotlin/l/b/a/b/h/d;
-    //   1175: putfield 77	kotlin/l/b/a/b/e/a$q:aaZB	Lkotlin/l/b/a/b/h/d;
+    //   1172: invokevirtual 133	kotlin/l/b/a/b/h/d$b:kyc	()Lkotlin/l/b/a/b/h/d;
+    //   1175: putfield 77	kotlin/l/b/a/b/e/a$q:aiXZ	Lkotlin/l/b/a/b/h/d;
     //   1178: goto -20 -> 1158
     //   1181: astore_1
     //   1182: aload_0
     //   1183: aload 10
-    //   1185: invokevirtual 134	kotlin/l/b/a/b/h/d$b:iNK	()Lkotlin/l/b/a/b/h/d;
-    //   1188: putfield 77	kotlin/l/b/a/b/e/a$q:aaZB	Lkotlin/l/b/a/b/h/d;
+    //   1185: invokevirtual 133	kotlin/l/b/a/b/h/d$b:kyc	()Lkotlin/l/b/a/b/h/d;
+    //   1188: putfield 77	kotlin/l/b/a/b/e/a$q:aiXZ	Lkotlin/l/b/a/b/h/d;
     //   1191: ldc 83
     //   1193: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1196: aload_1
@@ -650,14 +650,14 @@ public final class a$q
     //   1198: astore_2
     //   1199: aload_0
     //   1200: aload 10
-    //   1202: invokevirtual 134	kotlin/l/b/a/b/h/d$b:iNK	()Lkotlin/l/b/a/b/h/d;
-    //   1205: putfield 77	kotlin/l/b/a/b/e/a$q:aaZB	Lkotlin/l/b/a/b/h/d;
+    //   1202: invokevirtual 133	kotlin/l/b/a/b/h/d$b:kyc	()Lkotlin/l/b/a/b/h/d;
+    //   1205: putfield 77	kotlin/l/b/a/b/e/a$q:aiXZ	Lkotlin/l/b/a/b/h/d;
     //   1208: goto -882 -> 326
     //   1211: astore_1
     //   1212: aload_0
     //   1213: aload 10
-    //   1215: invokevirtual 134	kotlin/l/b/a/b/h/d$b:iNK	()Lkotlin/l/b/a/b/h/d;
-    //   1218: putfield 77	kotlin/l/b/a/b/e/a$q:aaZB	Lkotlin/l/b/a/b/h/d;
+    //   1215: invokevirtual 133	kotlin/l/b/a/b/h/d$b:kyc	()Lkotlin/l/b/a/b/h/d;
+    //   1218: putfield 77	kotlin/l/b/a/b/e/a$q:aiXZ	Lkotlin/l/b/a/b/h/d;
     //   1221: ldc 83
     //   1223: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1226: aload_1
@@ -819,180 +819,155 @@ public final class a$q
   private a$q(i.b<q, ?> paramb)
   {
     super(paramb);
-    this.aaZB = paramb.aaZB;
+    this.aiXZ = paramb.aiXZ;
   }
   
   public static q e(InputStream paramInputStream, g paramg)
   {
     AppMethodBeat.i(58894);
-    paramInputStream = (q)aaZC.i(paramInputStream, paramg);
+    paramInputStream = (q)aiYa.i(paramInputStream, paramg);
     AppMethodBeat.o(58894);
     return paramInputStream;
   }
   
-  private void iIN()
+  private void ktf()
   {
     AppMethodBeat.i(58890);
-    this.aaZS = 6;
-    this.abbb = 0;
-    this.abal = Collections.emptyList();
-    this.abcx = a.p.iLm();
-    this.abcy = 0;
-    this.abcz = a.p.iLm();
-    this.abcA = 0;
-    this.abcB = Collections.emptyList();
-    this.abaz = Collections.emptyList();
+    this.aiYq = 6;
+    this.aiZC = 0;
+    this.aiYJ = Collections.emptyList();
+    this.ajaY = a.p.kvH();
+    this.ajaZ = 0;
+    this.ajba = a.p.kvH();
+    this.ajbb = 0;
+    this.ajbc = Collections.emptyList();
+    this.aiZa = Collections.emptyList();
     AppMethodBeat.o(58890);
   }
   
-  public static q iLK()
+  public static q kwf()
   {
-    return abcw;
-  }
-  
-  public final int Ad()
-  {
-    AppMethodBeat.i(58893);
-    int i = this.bXW;
-    if (i != -1)
-    {
-      AppMethodBeat.o(58893);
-      return i;
-    }
-    if ((this.bQS & 0x1) == 1) {}
-    for (int j = f.bM(1, this.aaZS) + 0;; j = 0)
-    {
-      i = j;
-      if ((this.bQS & 0x2) == 2) {
-        i = j + f.bM(2, this.abbb);
-      }
-      j = 0;
-      while (j < this.abal.size())
-      {
-        i += f.c(3, (r)this.abal.get(j));
-        j += 1;
-      }
-      j = i;
-      if ((this.bQS & 0x4) == 4) {
-        j = i + f.c(4, this.abcx);
-      }
-      i = j;
-      if ((this.bQS & 0x8) == 8) {
-        i = j + f.bM(5, this.abcy);
-      }
-      j = i;
-      if ((this.bQS & 0x10) == 16) {
-        j = i + f.c(6, this.abcz);
-      }
-      i = j;
-      if ((this.bQS & 0x20) == 32) {
-        i = j + f.bM(7, this.abcA);
-      }
-      j = 0;
-      while (j < this.abcB.size())
-      {
-        i += f.c(8, (r)this.abcB.get(j));
-        j += 1;
-      }
-      int k = 0;
-      int m;
-      for (j = 0; k < this.abaz.size(); j = m + j)
-      {
-        m = f.gM(((Integer)this.abaz.get(k)).intValue());
-        k += 1;
-      }
-      i = i + j + this.abaz.size() * 2 + Ii() + this.aaZB.size();
-      this.bXW = i;
-      AppMethodBeat.o(58893);
-      return i;
-    }
-  }
-  
-  public final boolean Cc()
-  {
-    return (this.bQS & 0x2) == 2;
+    return ajaX;
   }
   
   public final void a(f paramf)
   {
     int k = 0;
     AppMethodBeat.i(58892);
-    Ad();
-    i.c.a locala = iNU();
-    if ((this.bQS & 0x1) == 1) {
-      paramf.bJ(1, this.aaZS);
+    getSerializedSize();
+    i.c.a locala = kym();
+    if ((this.bitField0_ & 0x1) == 1) {
+      paramf.cF(1, this.aiYq);
     }
-    if ((this.bQS & 0x2) == 2) {
-      paramf.bJ(2, this.abbb);
+    if ((this.bitField0_ & 0x2) == 2) {
+      paramf.cF(2, this.aiZC);
     }
     int i = 0;
-    while (i < this.abal.size())
+    while (i < this.aiYJ.size())
     {
-      paramf.a(3, (r)this.abal.get(i));
+      paramf.a(3, (r)this.aiYJ.get(i));
       i += 1;
     }
-    if ((this.bQS & 0x4) == 4) {
-      paramf.a(4, this.abcx);
+    if ((this.bitField0_ & 0x4) == 4) {
+      paramf.a(4, this.ajaY);
     }
-    if ((this.bQS & 0x8) == 8) {
-      paramf.bJ(5, this.abcy);
+    if ((this.bitField0_ & 0x8) == 8) {
+      paramf.cF(5, this.ajaZ);
     }
-    if ((this.bQS & 0x10) == 16) {
-      paramf.a(6, this.abcz);
+    if ((this.bitField0_ & 0x10) == 16) {
+      paramf.a(6, this.ajba);
     }
-    if ((this.bQS & 0x20) == 32) {
-      paramf.bJ(7, this.abcA);
+    if ((this.bitField0_ & 0x20) == 32) {
+      paramf.cF(7, this.ajbb);
     }
     i = 0;
     int j;
     for (;;)
     {
       j = k;
-      if (i >= this.abcB.size()) {
+      if (i >= this.ajbc.size()) {
         break;
       }
-      paramf.a(8, (r)this.abcB.get(i));
+      paramf.a(8, (r)this.ajbc.get(i));
       i += 1;
     }
-    while (j < this.abaz.size())
+    while (j < this.aiZa.size())
     {
-      paramf.bJ(31, ((Integer)this.abaz.get(j)).intValue());
+      paramf.cF(31, ((Integer)this.aiZa.get(j)).intValue());
       j += 1;
     }
     locala.b(200, paramf);
-    paramf.e(this.aaZB);
+    paramf.e(this.aiXZ);
     AppMethodBeat.o(58892);
   }
   
-  public final boolean iJj()
+  public final int getSerializedSize()
   {
-    return (this.bQS & 0x1) == 1;
+    AppMethodBeat.i(58893);
+    int i = this.dRJ;
+    if (i != -1)
+    {
+      AppMethodBeat.o(58893);
+      return i;
+    }
+    if ((this.bitField0_ & 0x1) == 1) {}
+    for (int j = f.cJ(1, this.aiYq) + 0;; j = 0)
+    {
+      i = j;
+      if ((this.bitField0_ & 0x2) == 2) {
+        i = j + f.cJ(2, this.aiZC);
+      }
+      j = 0;
+      while (j < this.aiYJ.size())
+      {
+        i += f.c(3, (r)this.aiYJ.get(j));
+        j += 1;
+      }
+      j = i;
+      if ((this.bitField0_ & 0x4) == 4) {
+        j = i + f.c(4, this.ajaY);
+      }
+      i = j;
+      if ((this.bitField0_ & 0x8) == 8) {
+        i = j + f.cJ(5, this.ajaZ);
+      }
+      j = i;
+      if ((this.bitField0_ & 0x10) == 16) {
+        j = i + f.c(6, this.ajba);
+      }
+      i = j;
+      if ((this.bitField0_ & 0x20) == 32) {
+        i = j + f.cJ(7, this.ajbb);
+      }
+      j = 0;
+      while (j < this.ajbc.size())
+      {
+        i += f.c(8, (r)this.ajbc.get(j));
+        j += 1;
+      }
+      int k = 0;
+      int m;
+      for (j = 0; k < this.aiZa.size(); j = m + j)
+      {
+        m = f.kp(((Integer)this.aiZa.get(k)).intValue());
+        k += 1;
+      }
+      i = i + j + this.aiZa.size() * 2 + aie() + this.aiXZ.size();
+      this.dRJ = i;
+      AppMethodBeat.o(58893);
+      return i;
+    }
   }
   
-  public final boolean iLL()
+  public final boolean hasName()
   {
-    return (this.bQS & 0x4) == 4;
-  }
-  
-  public final boolean iLM()
-  {
-    return (this.bQS & 0x8) == 8;
-  }
-  
-  public final boolean iLN()
-  {
-    return (this.bQS & 0x10) == 16;
-  }
-  
-  public final boolean iLO()
-  {
-    return (this.bQS & 0x20) == 32;
+    return (this.bitField0_ & 0x2) == 2;
   }
   
   public final boolean isInitialized()
   {
     AppMethodBeat.i(58891);
-    int i = this.bRd;
+    int i = this.memoizedIsInitialized;
     if (i == 1)
     {
       AppMethodBeat.o(58891);
@@ -1003,195 +978,220 @@ public final class a$q
       AppMethodBeat.o(58891);
       return false;
     }
-    if (!Cc())
+    if (!hasName())
     {
-      this.bRd = 0;
+      this.memoizedIsInitialized = 0;
       AppMethodBeat.o(58891);
       return false;
     }
     i = 0;
-    while (i < this.abal.size())
+    while (i < this.aiYJ.size())
     {
-      if (!((a.r)this.abal.get(i)).isInitialized())
+      if (!((a.r)this.aiYJ.get(i)).isInitialized())
       {
-        this.bRd = 0;
+        this.memoizedIsInitialized = 0;
         AppMethodBeat.o(58891);
         return false;
       }
       i += 1;
     }
-    if ((iLL()) && (!this.abcx.isInitialized()))
+    if ((kwg()) && (!this.ajaY.isInitialized()))
     {
-      this.bRd = 0;
+      this.memoizedIsInitialized = 0;
       AppMethodBeat.o(58891);
       return false;
     }
-    if ((iLN()) && (!this.abcz.isInitialized()))
+    if ((kwi()) && (!this.ajba.isInitialized()))
     {
-      this.bRd = 0;
+      this.memoizedIsInitialized = 0;
       AppMethodBeat.o(58891);
       return false;
     }
     i = 0;
-    while (i < this.abcB.size())
+    while (i < this.ajbc.size())
     {
-      if (!((a.a)this.abcB.get(i)).isInitialized())
+      if (!((a.a)this.ajbc.get(i)).isInitialized())
       {
-        this.bRd = 0;
+        this.memoizedIsInitialized = 0;
         AppMethodBeat.o(58891);
         return false;
       }
       i += 1;
     }
-    if (!Ig())
+    if (!aic())
     {
-      this.bRd = 0;
+      this.memoizedIsInitialized = 0;
       AppMethodBeat.o(58891);
       return false;
     }
-    this.bRd = 1;
+    this.memoizedIsInitialized = 1;
     AppMethodBeat.o(58891);
     return true;
+  }
+  
+  public final boolean ktB()
+  {
+    return (this.bitField0_ & 0x1) == 1;
+  }
+  
+  public final boolean kwg()
+  {
+    return (this.bitField0_ & 0x4) == 4;
+  }
+  
+  public final boolean kwh()
+  {
+    return (this.bitField0_ & 0x8) == 8;
+  }
+  
+  public final boolean kwi()
+  {
+    return (this.bitField0_ & 0x10) == 16;
+  }
+  
+  public final boolean kwj()
+  {
+    return (this.bitField0_ & 0x20) == 32;
   }
   
   public static final class a
     extends i.b<a.q, a>
     implements s
   {
-    private int aaZS;
-    private List<a.r> abal;
-    private List<Integer> abaz;
-    private int abbb;
-    private int abcA;
-    private List<a.a> abcB;
-    private a.p abcx;
-    private int abcy;
-    private a.p abcz;
-    private int bQS;
+    private List<a.r> aiYJ;
+    private int aiYq;
+    private int aiZC;
+    private List<Integer> aiZa;
+    private a.p ajaY;
+    private int ajaZ;
+    private a.p ajba;
+    private int ajbb;
+    private List<a.a> ajbc;
+    private int bitField0_;
     
     private a()
     {
       AppMethodBeat.i(58867);
-      this.aaZS = 6;
-      this.abal = Collections.emptyList();
-      this.abcx = a.p.iLm();
-      this.abcz = a.p.iLm();
-      this.abcB = Collections.emptyList();
-      this.abaz = Collections.emptyList();
+      this.aiYq = 6;
+      this.aiYJ = Collections.emptyList();
+      this.ajaY = a.p.kvH();
+      this.ajba = a.p.kvH();
+      this.ajbc = Collections.emptyList();
+      this.aiZa = Collections.emptyList();
       AppMethodBeat.o(58867);
     }
     
-    private a aEL(int paramInt)
+    private a aLC(int paramInt)
     {
-      this.bQS |= 0x1;
-      this.aaZS = paramInt;
+      this.bitField0_ |= 0x1;
+      this.aiYq = paramInt;
       return this;
     }
     
-    private a aEM(int paramInt)
+    private a aLD(int paramInt)
     {
-      this.bQS |= 0x2;
-      this.abbb = paramInt;
+      this.bitField0_ |= 0x2;
+      this.aiZC = paramInt;
       return this;
     }
     
-    private a aEN(int paramInt)
+    private a aLE(int paramInt)
     {
-      this.bQS |= 0x10;
-      this.abcy = paramInt;
+      this.bitField0_ |= 0x10;
+      this.ajaZ = paramInt;
       return this;
     }
     
-    private a aEO(int paramInt)
+    private a aLF(int paramInt)
     {
-      this.bQS |= 0x40;
-      this.abcA = paramInt;
+      this.bitField0_ |= 0x40;
+      this.ajbb = paramInt;
       return this;
     }
     
-    private void iJJ()
-    {
-      AppMethodBeat.i(58877);
-      if ((this.bQS & 0x100) != 256)
-      {
-        this.abaz = new ArrayList(this.abaz);
-        this.bQS |= 0x100;
-      }
-      AppMethodBeat.o(58877);
-    }
-    
-    private void iJz()
+    private void ktU()
     {
       AppMethodBeat.i(58873);
-      if ((this.bQS & 0x4) != 4)
+      if ((this.bitField0_ & 0x4) != 4)
       {
-        this.abal = new ArrayList(this.abal);
-        this.bQS |= 0x4;
+        this.aiYJ = new ArrayList(this.aiYJ);
+        this.bitField0_ |= 0x4;
       }
       AppMethodBeat.o(58873);
     }
     
-    private a iLP()
+    private void kue()
+    {
+      AppMethodBeat.i(58877);
+      if ((this.bitField0_ & 0x100) != 256)
+      {
+        this.aiZa = new ArrayList(this.aiZa);
+        this.bitField0_ |= 0x100;
+      }
+      AppMethodBeat.o(58877);
+    }
+    
+    private a kwk()
     {
       AppMethodBeat.i(58868);
-      a locala = new a().e(iLQ());
+      a locala = new a().e(kwl());
       AppMethodBeat.o(58868);
       return locala;
     }
     
-    private a.q iLQ()
+    private a.q kwl()
     {
       int j = 1;
       AppMethodBeat.i(58869);
       a.q localq = new a.q(this, (byte)0);
-      int k = this.bQS;
+      int k = this.bitField0_;
       if ((k & 0x1) == 1) {}
       for (;;)
       {
-        a.q.a(localq, this.aaZS);
+        a.q.a(localq, this.aiYq);
         int i = j;
         if ((k & 0x2) == 2) {
           i = j | 0x2;
         }
-        a.q.b(localq, this.abbb);
-        if ((this.bQS & 0x4) == 4)
+        a.q.b(localq, this.aiZC);
+        if ((this.bitField0_ & 0x4) == 4)
         {
-          this.abal = Collections.unmodifiableList(this.abal);
-          this.bQS &= 0xFFFFFFFB;
+          this.aiYJ = Collections.unmodifiableList(this.aiYJ);
+          this.bitField0_ &= 0xFFFFFFFB;
         }
-        a.q.a(localq, this.abal);
+        a.q.a(localq, this.aiYJ);
         j = i;
         if ((k & 0x8) == 8) {
           j = i | 0x4;
         }
-        a.q.a(localq, this.abcx);
+        a.q.a(localq, this.ajaY);
         i = j;
         if ((k & 0x10) == 16) {
           i = j | 0x8;
         }
-        a.q.c(localq, this.abcy);
+        a.q.c(localq, this.ajaZ);
         j = i;
         if ((k & 0x20) == 32) {
           j = i | 0x10;
         }
-        a.q.b(localq, this.abcz);
+        a.q.b(localq, this.ajba);
         i = j;
         if ((k & 0x40) == 64) {
           i = j | 0x20;
         }
-        a.q.d(localq, this.abcA);
-        if ((this.bQS & 0x80) == 128)
+        a.q.d(localq, this.ajbb);
+        if ((this.bitField0_ & 0x80) == 128)
         {
-          this.abcB = Collections.unmodifiableList(this.abcB);
-          this.bQS &= 0xFFFFFF7F;
+          this.ajbc = Collections.unmodifiableList(this.ajbc);
+          this.bitField0_ &= 0xFFFFFF7F;
         }
-        a.q.b(localq, this.abcB);
-        if ((this.bQS & 0x100) == 256)
+        a.q.b(localq, this.ajbc);
+        if ((this.bitField0_ & 0x100) == 256)
         {
-          this.abaz = Collections.unmodifiableList(this.abaz);
-          this.bQS &= 0xFFFFFEFF;
+          this.aiZa = Collections.unmodifiableList(this.aiZa);
+          this.bitField0_ &= 0xFFFFFEFF;
         }
-        a.q.c(localq, this.abaz);
+        a.q.c(localq, this.aiZa);
         a.q.e(localq, i);
         AppMethodBeat.o(58869);
         return localq;
@@ -1199,36 +1199,36 @@ public final class a$q
       }
     }
     
-    private void iLR()
+    private void kwm()
     {
       AppMethodBeat.i(58876);
-      if ((this.bQS & 0x80) != 128)
+      if ((this.bitField0_ & 0x80) != 128)
       {
-        this.abcB = new ArrayList(this.abcB);
-        this.bQS |= 0x80;
+        this.ajbc = new ArrayList(this.ajbc);
+        this.bitField0_ |= 0x80;
       }
       AppMethodBeat.o(58876);
     }
     
-    private a n(a.p paramp)
+    private a o(a.p paramp)
     {
       AppMethodBeat.i(58874);
-      if (((this.bQS & 0x8) == 8) && (this.abcx != a.p.iLm())) {}
-      for (this.abcx = a.p.f(this.abcx).j(paramp).iLI();; this.abcx = paramp)
+      if (((this.bitField0_ & 0x8) == 8) && (this.ajaY != a.p.kvH())) {}
+      for (this.ajaY = a.p.g(this.ajaY).k(paramp).kwd();; this.ajaY = paramp)
       {
-        this.bQS |= 0x8;
+        this.bitField0_ |= 0x8;
         AppMethodBeat.o(58874);
         return this;
       }
     }
     
-    private a o(a.p paramp)
+    private a p(a.p paramp)
     {
       AppMethodBeat.i(58875);
-      if (((this.bQS & 0x20) == 32) && (this.abcz != a.p.iLm())) {}
-      for (this.abcz = a.p.f(this.abcz).j(paramp).iLI();; this.abcz = paramp)
+      if (((this.bitField0_ & 0x20) == 32) && (this.ajba != a.p.kvH())) {}
+      for (this.ajba = a.p.g(this.ajba).k(paramp).kwd();; this.ajba = paramp)
       {
-        this.bQS |= 0x20;
+        this.bitField0_ |= 0x20;
         AppMethodBeat.o(58875);
         return this;
       }
@@ -1242,173 +1242,175 @@ public final class a$q
       //   2: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aconst_null
       //   6: astore_3
-      //   7: getstatic 165	kotlin/l/b/a/b/e/a$q:aaZC	Lkotlin/l/b/a/b/h/t;
+      //   7: getstatic 165	kotlin/l/b/a/b/e/a$q:aiYa	Lkotlin/l/b/a/b/h/t;
       //   10: aload_1
       //   11: aload_2
       //   12: invokeinterface 170 3 0
       //   17: checkcast 9	kotlin/l/b/a/b/e/a$q
       //   20: astore_1
-      //   21: aload_0
-      //   22: aload_1
-      //   23: invokevirtual 102	kotlin/l/b/a/b/e/a$q$a:e	(Lkotlin/l/b/a/b/e/a$q;)Lkotlin/l/b/a/b/e/a$q$a;
-      //   26: pop
-      //   27: ldc 161
-      //   29: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   32: aload_0
-      //   33: areturn
-      //   34: astore_1
-      //   35: aload_1
-      //   36: getfield 174	kotlin/l/b/a/b/h/l:abgy	Lkotlin/l/b/a/b/h/r;
-      //   39: checkcast 9	kotlin/l/b/a/b/e/a$q
-      //   42: astore_2
-      //   43: ldc 161
-      //   45: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   48: aload_1
-      //   49: athrow
-      //   50: astore_1
-      //   51: aload_2
-      //   52: ifnull +9 -> 61
-      //   55: aload_0
-      //   56: aload_2
-      //   57: invokevirtual 102	kotlin/l/b/a/b/e/a$q$a:e	(Lkotlin/l/b/a/b/e/a$q;)Lkotlin/l/b/a/b/e/a$q$a;
-      //   60: pop
-      //   61: ldc 161
-      //   63: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   66: aload_1
-      //   67: athrow
-      //   68: astore_1
-      //   69: aload_3
-      //   70: astore_2
-      //   71: goto -20 -> 51
+      //   21: aload_1
+      //   22: ifnull +9 -> 31
+      //   25: aload_0
+      //   26: aload_1
+      //   27: invokevirtual 102	kotlin/l/b/a/b/e/a$q$a:e	(Lkotlin/l/b/a/b/e/a$q;)Lkotlin/l/b/a/b/e/a$q$a;
+      //   30: pop
+      //   31: ldc 161
+      //   33: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   36: aload_0
+      //   37: areturn
+      //   38: astore_1
+      //   39: aload_1
+      //   40: getfield 174	kotlin/l/b/a/b/h/l:ajfp	Lkotlin/l/b/a/b/h/r;
+      //   43: checkcast 9	kotlin/l/b/a/b/e/a$q
+      //   46: astore_2
+      //   47: ldc 161
+      //   49: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   52: aload_1
+      //   53: athrow
+      //   54: astore_1
+      //   55: aload_2
+      //   56: ifnull +9 -> 65
+      //   59: aload_0
+      //   60: aload_2
+      //   61: invokevirtual 102	kotlin/l/b/a/b/e/a$q$a:e	(Lkotlin/l/b/a/b/e/a$q;)Lkotlin/l/b/a/b/e/a$q$a;
+      //   64: pop
+      //   65: ldc 161
+      //   67: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   70: aload_1
+      //   71: athrow
+      //   72: astore_1
+      //   73: aload_3
+      //   74: astore_2
+      //   75: goto -20 -> 55
       // Local variable table:
       //   start	length	slot	name	signature
-      //   0	74	0	this	a
-      //   0	74	1	parame	kotlin.l.b.a.b.h.e
-      //   0	74	2	paramg	g
-      //   6	64	3	localObject	java.lang.Object
+      //   0	78	0	this	a
+      //   0	78	1	parame	kotlin.l.b.a.b.h.e
+      //   0	78	2	paramg	g
+      //   6	68	3	localObject	java.lang.Object
       // Exception table:
       //   from	to	target	type
-      //   7	21	34	kotlin/l/b/a/b/h/l
-      //   43	50	50	finally
-      //   7	21	68	finally
-      //   35	43	68	finally
+      //   7	21	38	kotlin/l/b/a/b/h/l
+      //   47	54	54	finally
+      //   7	21	72	finally
+      //   39	47	72	finally
     }
     
     public final a e(a.q paramq)
     {
       AppMethodBeat.i(58870);
-      if (paramq == a.q.iLK())
+      if (paramq == a.q.kwf())
       {
         AppMethodBeat.o(58870);
         return this;
       }
-      if (paramq.iJj()) {
-        aEL(paramq.aaZS);
+      if (paramq.ktB()) {
+        aLC(paramq.aiYq);
       }
-      if (paramq.Cc()) {
-        aEM(paramq.abbb);
+      if (paramq.hasName()) {
+        aLD(paramq.aiZC);
       }
       if (!a.q.a(paramq).isEmpty())
       {
-        if (this.abal.isEmpty())
+        if (this.aiYJ.isEmpty())
         {
-          this.abal = a.q.a(paramq);
-          this.bQS &= 0xFFFFFFFB;
+          this.aiYJ = a.q.a(paramq);
+          this.bitField0_ &= 0xFFFFFFFB;
         }
       }
       else
       {
-        if (paramq.iLL()) {
-          n(paramq.abcx);
+        if (paramq.kwg()) {
+          o(paramq.ajaY);
         }
-        if (paramq.iLM()) {
-          aEN(paramq.abcy);
+        if (paramq.kwh()) {
+          aLE(paramq.ajaZ);
         }
-        if (paramq.iLN()) {
-          o(paramq.abcz);
+        if (paramq.kwi()) {
+          p(paramq.ajba);
         }
-        if (paramq.iLO()) {
-          aEO(paramq.abcA);
+        if (paramq.kwj()) {
+          aLF(paramq.ajbb);
         }
         if (!a.q.b(paramq).isEmpty())
         {
-          if (!this.abcB.isEmpty()) {
+          if (!this.ajbc.isEmpty()) {
             break label294;
           }
-          this.abcB = a.q.b(paramq);
-          this.bQS &= 0xFFFFFF7F;
+          this.ajbc = a.q.b(paramq);
+          this.bitField0_ &= 0xFFFFFF7F;
         }
         label202:
         if (!a.q.c(paramq).isEmpty())
         {
-          if (!this.abaz.isEmpty()) {
+          if (!this.aiZa.isEmpty()) {
             break label315;
           }
-          this.abaz = a.q.c(paramq);
-          this.bQS &= 0xFFFFFEFF;
+          this.aiZa = a.q.c(paramq);
+          this.bitField0_ &= 0xFFFFFEFF;
         }
       }
       for (;;)
       {
         a(paramq);
-        this.aaZB = this.aaZB.a(a.q.d(paramq));
+        this.aiXZ = this.aiXZ.a(a.q.d(paramq));
         AppMethodBeat.o(58870);
         return this;
-        iJz();
-        this.abal.addAll(a.q.a(paramq));
+        ktU();
+        this.aiYJ.addAll(a.q.a(paramq));
         break;
         label294:
-        iLR();
-        this.abcB.addAll(a.q.b(paramq));
+        kwm();
+        this.ajbc.addAll(a.q.b(paramq));
         break label202;
         label315:
-        iJJ();
-        this.abaz.addAll(a.q.c(paramq));
+        kue();
+        this.aiZa.addAll(a.q.c(paramq));
       }
     }
     
     public final boolean isInitialized()
     {
       AppMethodBeat.i(58871);
-      if ((this.bQS & 0x2) == 2) {}
+      if ((this.bitField0_ & 0x2) == 2) {}
       for (int i = 1; i == 0; i = 0)
       {
         AppMethodBeat.o(58871);
         return false;
       }
       i = 0;
-      while (i < this.abal.size())
+      while (i < this.aiYJ.size())
       {
-        if (!((a.r)this.abal.get(i)).isInitialized())
+        if (!((a.r)this.aiYJ.get(i)).isInitialized())
         {
           AppMethodBeat.o(58871);
           return false;
         }
         i += 1;
       }
-      if ((this.bQS & 0x8) == 8) {}
-      for (i = 1; (i != 0) && (!this.abcx.isInitialized()); i = 0)
+      if ((this.bitField0_ & 0x8) == 8) {}
+      for (i = 1; (i != 0) && (!this.ajaY.isInitialized()); i = 0)
       {
         AppMethodBeat.o(58871);
         return false;
       }
-      if ((this.bQS & 0x20) == 32) {}
-      for (i = 1; (i != 0) && (!this.abcz.isInitialized()); i = 0)
+      if ((this.bitField0_ & 0x20) == 32) {}
+      for (i = 1; (i != 0) && (!this.ajba.isInitialized()); i = 0)
       {
         AppMethodBeat.o(58871);
         return false;
       }
       i = 0;
-      while (i < this.abcB.size())
+      while (i < this.ajbc.size())
       {
-        if (!((a.a)this.abcB.get(i)).isInitialized())
+        if (!((a.a)this.ajbc.get(i)).isInitialized())
         {
           AppMethodBeat.o(58871);
           return false;
         }
         i += 1;
       }
-      if (!Ig())
+      if (!aic())
       {
         AppMethodBeat.o(58871);
         return false;
@@ -1420,7 +1422,7 @@ public final class a$q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.e.a.q
  * JD-Core Version:    0.7.0.1
  */

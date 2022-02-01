@@ -14,11 +14,11 @@ public final class a
 {
   public static int c(Activity paramActivity, int paramInt)
   {
-    AppMethodBeat.i(261698);
+    AppMethodBeat.i(240840);
     if (paramActivity == null)
     {
       Log.w("MicroMsg.ActionBarCompatHelper", "[getActionBarHeight] activity is null!");
-      AppMethodBeat.o(261698);
+      AppMethodBeat.o(240840);
       return paramInt;
     }
     int i;
@@ -36,7 +36,7 @@ public final class a
         j = paramInt;
       }
       Log.i("MicroMsg.ActionBarCompatHelper", "[getActionBarHeight] real:%s defaultVal:%s", new Object[] { Integer.valueOf(j), Integer.valueOf(paramInt) });
-      AppMethodBeat.o(261698);
+      AppMethodBeat.o(240840);
       return j;
       if (paramActivity.getActionBar() != null) {
         i = paramActivity.getActionBar().getHeight();
@@ -47,7 +47,7 @@ public final class a
     }
   }
   
-  public static int cu(Context paramContext)
+  public static int di(Context paramContext)
   {
     AppMethodBeat.i(155863);
     TypedValue localTypedValue = new TypedValue();
@@ -68,7 +68,7 @@ public final class a
     return 0;
   }
   
-  public static int t(Activity paramActivity)
+  public static int v(Activity paramActivity)
   {
     AppMethodBeat.i(155862);
     if ((paramActivity instanceof AppCompatActivity))
@@ -86,14 +86,14 @@ public final class a
       AppMethodBeat.o(155862);
       return i;
     }
-    int i = cu(paramActivity);
+    int i = di(paramActivity);
     AppMethodBeat.o(155862);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.compatible.util.a
  * JD-Core Version:    0.7.0.1
  */

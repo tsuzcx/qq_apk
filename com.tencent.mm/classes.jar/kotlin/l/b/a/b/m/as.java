@@ -1,154 +1,58 @@
 package kotlin.l.b.a.b.m;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
+import kotlin.l.b.a.b.m.c.l;
 
 public final class as
+  extends e
+  implements l
 {
-  public static final boolean at(ab paramab)
+  private final kotlin.l.b.a.b.j.g.h aiLf;
+  private final ax ajpu;
+  
+  private as(ax paramax1, boolean paramBoolean, ax paramax2)
   {
-    AppMethodBeat.i(60826);
-    p.k(paramab, "$this$isCustomTypeVariable");
-    bg localbg = paramab.iPX();
-    paramab = localbg;
-    if (!(localbg instanceof k)) {
-      paramab = null;
-    }
-    paramab = (k)paramab;
-    if (paramab != null)
-    {
-      boolean bool = paramab.iIt();
-      AppMethodBeat.o(60826);
-      return bool;
-    }
-    AppMethodBeat.o(60826);
-    return false;
+    super(paramax1, paramBoolean);
+    AppMethodBeat.i(191564);
+    this.ajpu = paramax2;
+    this.aiLf = paramax1.koV().kmO().knP();
+    AppMethodBeat.o(191564);
   }
   
-  public static final k au(ab paramab)
+  public final e PF(boolean paramBoolean)
   {
-    AppMethodBeat.i(60827);
-    p.k(paramab, "$this$getCustomTypeVariable");
-    bg localbg = paramab.iPX();
-    paramab = localbg;
-    if (!(localbg instanceof k)) {
-      paramab = null;
-    }
-    paramab = (k)paramab;
-    if (paramab != null)
-    {
-      if (paramab.iIt())
-      {
-        AppMethodBeat.o(60827);
-        return paramab;
-      }
-      AppMethodBeat.o(60827);
-      return null;
-    }
-    AppMethodBeat.o(60827);
-    return null;
+    AppMethodBeat.i(191569);
+    e locale = (e)new as(this.ajoR, paramBoolean, this.ajpu);
+    AppMethodBeat.o(191569);
+    return locale;
   }
   
-  public static final ab av(ab paramab)
+  public final kotlin.l.b.a.b.j.g.h knP()
   {
-    AppMethodBeat.i(60828);
-    p.k(paramab, "$this$getSubtypeRepresentative");
-    Object localObject2 = paramab.iPX();
-    Object localObject1 = localObject2;
-    if (!(localObject2 instanceof ar)) {
-      localObject1 = null;
-    }
-    localObject2 = (ar)localObject1;
-    localObject1 = paramab;
-    if (localObject2 != null)
-    {
-      localObject1 = ((ar)localObject2).iOS();
-      if (localObject1 != null) {
-        break label58;
-      }
-      localObject1 = paramab;
-    }
-    label58:
-    for (;;)
-    {
-      AppMethodBeat.o(60828);
-      return localObject1;
-    }
+    return this.aiLf;
   }
   
-  public static final ab aw(ab paramab)
+  public final ax kzm()
   {
-    AppMethodBeat.i(60829);
-    p.k(paramab, "$this$getSupertypeRepresentative");
-    Object localObject2 = paramab.iPX();
-    Object localObject1 = localObject2;
-    if (!(localObject2 instanceof ar)) {
-      localObject1 = null;
-    }
-    localObject2 = (ar)localObject1;
-    localObject1 = paramab;
-    if (localObject2 != null)
-    {
-      localObject1 = ((ar)localObject2).iOT();
-      if (localObject1 != null) {
-        break label58;
-      }
-      localObject1 = paramab;
-    }
-    label58:
-    for (;;)
-    {
-      AppMethodBeat.o(60829);
-      return localObject1;
-    }
+    return this.ajpu;
   }
   
-  public static final boolean b(ab paramab1, ab paramab2)
+  public final String toString()
   {
-    AppMethodBeat.i(60830);
-    p.k(paramab1, "first");
-    p.k(paramab2, "second");
-    bg localbg = paramab1.iPX();
-    Object localObject = localbg;
-    if (!(localbg instanceof ar)) {
-      localObject = null;
-    }
-    localObject = (ar)localObject;
-    if (localObject != null)
+    AppMethodBeat.i(191577);
+    StringBuilder localStringBuilder = new StringBuilder("Stub (BI): ").append(this.ajoR);
+    if (ksB()) {}
+    for (String str = "?";; str = "")
     {
-      bool = ((ar)localObject).ac(paramab2);
-      if (!bool)
-      {
-        localObject = paramab2.iPX();
-        paramab2 = (ab)localObject;
-        if (!(localObject instanceof ar)) {
-          paramab2 = null;
-        }
-        paramab2 = (ar)paramab2;
-        if (paramab2 == null) {
-          break label106;
-        }
-      }
+      str = str;
+      AppMethodBeat.o(191577);
+      return str;
     }
-    label106:
-    for (boolean bool = paramab2.ac(paramab1);; bool = false)
-    {
-      if (!bool) {
-        break label111;
-      }
-      AppMethodBeat.o(60830);
-      return true;
-      bool = false;
-      break;
-    }
-    label111:
-    AppMethodBeat.o(60830);
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.m.as
  * JD-Core Version:    0.7.0.1
  */

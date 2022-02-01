@@ -6,6 +6,9 @@ import android.net.Uri;
 import com.google.android.gms.common.api.GoogleApi;
 import com.google.android.gms.common.api.GoogleApi.Settings;
 import com.google.android.gms.tasks.Task;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.util.Map;
 
 public abstract class CapabilityClient
@@ -43,6 +46,12 @@ public abstract class CapabilityClient
   
   public abstract Task<Void> removeLocalCapability(String paramString);
   
+  @Retention(RetentionPolicy.SOURCE)
+  public static @interface CapabilityFilterType {}
+  
+  @Retention(RetentionPolicy.SOURCE)
+  public static @interface NodeFilterType {}
+  
   public static abstract interface OnCapabilityChangedListener
     extends CapabilityApi.CapabilityListener
   {
@@ -51,7 +60,7 @@ public abstract class CapabilityClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.CapabilityClient
  * JD-Core Version:    0.7.0.1
  */

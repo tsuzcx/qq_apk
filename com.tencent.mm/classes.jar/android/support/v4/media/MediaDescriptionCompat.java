@@ -68,7 +68,7 @@ public final class MediaDescriptionCompat
       if (localBundle == null) {
         break label235;
       }
-      MediaSessionCompat.d(localBundle);
+      MediaSessionCompat.e(localBundle);
     }
     label211:
     label235:
@@ -184,7 +184,7 @@ public final class MediaDescriptionCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v4.media.MediaDescriptionCompat
  * JD-Core Version:    0.7.0.1
  */

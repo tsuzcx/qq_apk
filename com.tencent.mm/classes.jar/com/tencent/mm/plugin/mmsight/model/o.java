@@ -6,29 +6,29 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class o
 {
-  public boolean EZU = false;
-  public int Fai = 1;
-  public int Faj = -1;
-  public boolean Fak = false;
-  public boolean Fal = true;
-  public boolean Fam = false;
-  h.c Fan;
-  public int jth = 2;
-  public int laT = -1;
-  public VideoTransPara lgX;
-  public boolean lhV = false;
-  public int nrq = -1;
-  public boolean uTJ = true;
+  public int Ddk = -1;
+  public boolean KVG = false;
+  public int KVT = 1;
+  public boolean KVU = false;
+  public boolean KVV = true;
+  public boolean KVW = false;
+  h.c KVX;
+  public int lWy = 2;
+  public int nFY = -1;
+  public VideoTransPara nLH;
+  public boolean nME = false;
+  public int qpX = -1;
   public int videoBitrate;
+  public boolean ygy = true;
   
   public o() {}
   
   private o(int paramInt, VideoTransPara paramVideoTransPara)
   {
-    this.lgX = paramVideoTransPara;
-    this.jth = paramInt;
+    this.nLH = paramVideoTransPara;
+    this.lWy = paramInt;
     this.videoBitrate = paramVideoTransPara.videoBitrate;
-    this.laT = paramVideoTransPara.width;
+    this.nFY = paramVideoTransPara.width;
   }
   
   public static o a(int paramInt, VideoTransPara paramVideoTransPara)
@@ -45,7 +45,7 @@ public final class o
     for (;;)
     {
       if (paramVideoTransPara != null) {
-        paramVideoTransPara.Faj = paramInt;
+        paramVideoTransPara.Ddk = paramInt;
       }
       AppMethodBeat.o(89447);
       return paramVideoTransPara;
@@ -78,18 +78,9 @@ public final class o
     AppMethodBeat.i(89448);
     Log.i("MicroMsg.RecoderParameter", "setToPresetConfig1");
     paramVideoTransPara = new o(2, paramVideoTransPara);
-    paramVideoTransPara.Fak = false;
+    paramVideoTransPara.KVU = false;
     AppMethodBeat.o(89448);
     return paramVideoTransPara;
-  }
-  
-  private o eTy()
-  {
-    this.laT = 1080;
-    if ((this.nrq > 0) && (this.laT > this.nrq)) {
-      this.laT = this.nrq;
-    }
-    return this;
   }
   
   private static o f(VideoTransPara paramVideoTransPara)
@@ -97,8 +88,8 @@ public final class o
     AppMethodBeat.i(89449);
     Log.i("MicroMsg.RecoderParameter", "setToPresetConfig2");
     paramVideoTransPara = new o(2, paramVideoTransPara);
-    paramVideoTransPara.Fak = false;
-    paramVideoTransPara = paramVideoTransPara.eTw().eTv();
+    paramVideoTransPara.KVU = false;
+    paramVideoTransPara = paramVideoTransPara.gcp().gco();
     AppMethodBeat.o(89449);
     return paramVideoTransPara;
   }
@@ -108,9 +99,18 @@ public final class o
     AppMethodBeat.i(89450);
     Log.i("MicroMsg.RecoderParameter", "setToPresetConfig3");
     paramVideoTransPara = new o(1, paramVideoTransPara);
-    paramVideoTransPara.Fak = false;
+    paramVideoTransPara.KVU = false;
     AppMethodBeat.o(89450);
     return paramVideoTransPara;
+  }
+  
+  private o gcr()
+  {
+    this.nFY = 1080;
+    if ((this.qpX > 0) && (this.nFY > this.qpX)) {
+      this.nFY = this.qpX;
+    }
+    return this;
   }
   
   private static o h(VideoTransPara paramVideoTransPara)
@@ -118,8 +118,8 @@ public final class o
     AppMethodBeat.i(89451);
     Log.i("MicroMsg.RecoderParameter", "setToPresetConfig4");
     paramVideoTransPara = new o(1, paramVideoTransPara);
-    paramVideoTransPara.Fak = false;
-    paramVideoTransPara = paramVideoTransPara.eTw().eTv();
+    paramVideoTransPara.KVU = false;
+    paramVideoTransPara = paramVideoTransPara.gcp().gco();
     AppMethodBeat.o(89451);
     return paramVideoTransPara;
   }
@@ -129,9 +129,9 @@ public final class o
     AppMethodBeat.i(89452);
     Log.i("MicroMsg.RecoderParameter", "setToPresetConfig5");
     paramVideoTransPara = new o(2, paramVideoTransPara);
-    paramVideoTransPara.Fak = true;
-    paramVideoTransPara.lhV = false;
-    paramVideoTransPara = paramVideoTransPara.eTv();
+    paramVideoTransPara.KVU = true;
+    paramVideoTransPara.nME = false;
+    paramVideoTransPara = paramVideoTransPara.gco();
     AppMethodBeat.o(89452);
     return paramVideoTransPara;
   }
@@ -141,8 +141,8 @@ public final class o
     AppMethodBeat.i(89453);
     Log.i("MicroMsg.RecoderParameter", "setToPresetConfig6");
     paramVideoTransPara = new o(1, paramVideoTransPara);
-    paramVideoTransPara.Fak = true;
-    paramVideoTransPara = paramVideoTransPara.eTv();
+    paramVideoTransPara.KVU = true;
+    paramVideoTransPara = paramVideoTransPara.gco();
     AppMethodBeat.o(89453);
     return paramVideoTransPara;
   }
@@ -152,9 +152,9 @@ public final class o
     AppMethodBeat.i(89454);
     Log.i("MicroMsg.RecoderParameter", "setToPresetConfig7");
     paramVideoTransPara = new o(2, paramVideoTransPara);
-    paramVideoTransPara.Fak = true;
-    paramVideoTransPara = paramVideoTransPara.eTx();
-    paramVideoTransPara.lhV = false;
+    paramVideoTransPara.KVU = true;
+    paramVideoTransPara = paramVideoTransPara.gcq();
+    paramVideoTransPara.nME = false;
     AppMethodBeat.o(89454);
     return paramVideoTransPara;
   }
@@ -164,9 +164,9 @@ public final class o
     AppMethodBeat.i(89455);
     Log.i("MicroMsg.RecoderParameter", "setToPresetConfig8");
     paramVideoTransPara = new o(2, paramVideoTransPara);
-    paramVideoTransPara.Fak = true;
-    paramVideoTransPara = paramVideoTransPara.eTx();
-    paramVideoTransPara.lhV = true;
+    paramVideoTransPara.KVU = true;
+    paramVideoTransPara = paramVideoTransPara.gcq();
+    paramVideoTransPara.nME = true;
     AppMethodBeat.o(89455);
     return paramVideoTransPara;
   }
@@ -175,9 +175,9 @@ public final class o
   {
     AppMethodBeat.i(89456);
     paramVideoTransPara = new o(1, paramVideoTransPara);
-    paramVideoTransPara.Fak = true;
-    paramVideoTransPara = paramVideoTransPara.eTx();
-    paramVideoTransPara.lhV = false;
+    paramVideoTransPara.KVU = true;
+    paramVideoTransPara = paramVideoTransPara.gcq();
+    paramVideoTransPara.nME = false;
     AppMethodBeat.o(89456);
     return paramVideoTransPara;
   }
@@ -187,9 +187,9 @@ public final class o
     AppMethodBeat.i(89457);
     Log.i("MicroMsg.RecoderParameter", "setToPresetConfig10");
     paramVideoTransPara = new o(1, paramVideoTransPara);
-    paramVideoTransPara.Fak = true;
-    paramVideoTransPara = paramVideoTransPara.eTx();
-    paramVideoTransPara.lhV = true;
+    paramVideoTransPara.KVU = true;
+    paramVideoTransPara = paramVideoTransPara.gcq();
+    paramVideoTransPara.nME = true;
     AppMethodBeat.o(89457);
     return paramVideoTransPara;
   }
@@ -199,10 +199,10 @@ public final class o
     AppMethodBeat.i(89458);
     Log.i("MicroMsg.RecoderParameter", "setToPresetConfig10");
     paramVideoTransPara = new o(2, paramVideoTransPara);
-    paramVideoTransPara.Fak = true;
-    paramVideoTransPara = paramVideoTransPara.eTx();
-    paramVideoTransPara.lhV = false;
-    paramVideoTransPara = paramVideoTransPara.eTw();
+    paramVideoTransPara.KVU = true;
+    paramVideoTransPara = paramVideoTransPara.gcq();
+    paramVideoTransPara.nME = false;
+    paramVideoTransPara = paramVideoTransPara.gcp();
     AppMethodBeat.o(89458);
     return paramVideoTransPara;
   }
@@ -212,48 +212,48 @@ public final class o
     AppMethodBeat.i(89459);
     Log.i("MicroMsg.RecoderParameter", "setToPresetConfig10");
     paramVideoTransPara = new o(2, paramVideoTransPara);
-    paramVideoTransPara.Fak = true;
-    paramVideoTransPara = paramVideoTransPara.eTy();
-    paramVideoTransPara.lhV = false;
-    paramVideoTransPara = paramVideoTransPara.eTw();
+    paramVideoTransPara.KVU = true;
+    paramVideoTransPara = paramVideoTransPara.gcr();
+    paramVideoTransPara.nME = false;
+    paramVideoTransPara = paramVideoTransPara.gcp();
     AppMethodBeat.o(89459);
     return paramVideoTransPara;
   }
   
-  public final o eTv()
+  public final o gco()
   {
-    this.laT = 720;
-    if ((this.nrq > 0) && (this.laT > this.nrq)) {
-      this.laT = this.nrq;
+    this.nFY = 720;
+    if ((this.qpX > 0) && (this.nFY > this.qpX)) {
+      this.nFY = this.qpX;
     }
     return this;
   }
   
-  public final o eTw()
+  public final o gcp()
   {
-    this.videoBitrate = (this.lgX.videoBitrate * 2);
-    this.Fam = true;
+    this.videoBitrate = (this.nLH.videoBitrate * 2);
+    this.KVW = true;
     return this;
   }
   
-  public final o eTx()
+  public final o gcq()
   {
-    this.laT = (this.lgX.width * 2);
-    if ((this.nrq > 0) && (this.laT > this.nrq)) {
-      this.laT = this.nrq;
+    this.nFY = (this.nLH.width * 2);
+    if ((this.qpX > 0) && (this.nFY > this.qpX)) {
+      this.nFY = this.qpX;
     }
     return this;
   }
   
-  public final boolean eTz()
+  public final boolean gcs()
   {
-    return this.lgX.width < this.laT;
+    return this.nLH.width < this.nFY;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(89460);
-    String str = String.format("mediatype %s videoBitrate : %s isEnableLandscapeMode %s needRotateEachFrame %s isNeedRealtimeScale %s resolutionLimit %s videoParams %s", new Object[] { Integer.valueOf(this.jth), Integer.valueOf(this.videoBitrate), Boolean.valueOf(this.EZU), Boolean.valueOf(this.lhV), Boolean.valueOf(this.Fak), Integer.valueOf(this.laT), this.lgX });
+    String str = String.format("mediatype %s videoBitrate : %s isEnableLandscapeMode %s needRotateEachFrame %s isNeedRealtimeScale %s resolutionLimit %s videoParams %s", new Object[] { Integer.valueOf(this.lWy), Integer.valueOf(this.videoBitrate), Boolean.valueOf(this.KVG), Boolean.valueOf(this.nME), Boolean.valueOf(this.KVU), Integer.valueOf(this.nFY), this.nLH });
     AppMethodBeat.o(89460);
     return str;
   }

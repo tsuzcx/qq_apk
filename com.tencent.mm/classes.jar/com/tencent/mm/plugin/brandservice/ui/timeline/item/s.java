@@ -1,265 +1,370 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.item;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.drawable.AnimationDrawable;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewStub;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import com.tencent.e.h;
-import com.tencent.e.i;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ao.af;
-import com.tencent.mm.plugin.brandservice.ui.timeline.b;
-import com.tencent.mm.plugin.brandservice.ui.timeline.video.MPVideoPreviewMgr;
+import com.tencent.mm.message.v;
+import com.tencent.mm.plugin.brandservice.api.c;
+import com.tencent.mm.plugin.brandservice.d.d;
+import com.tencent.mm.plugin.brandservice.d.e;
+import com.tencent.mm.plugin.brandservice.d.f;
+import com.tencent.mm.pluginsdk.ui.applet.m.a;
+import com.tencent.mm.protocal.protobuf.fle;
+import com.tencent.mm.protocal.protobuf.flf;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.aa;
-import com.tencent.mm.storage.z;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.a.a;
-import kotlin.n.n;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.ui.widget.MMNeat7extView;
+import java.util.Iterator;
+import java.util.LinkedList;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.ah;
+import kotlin.g.a.m;
+import kotlin.g.b.u;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCanvas;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardTmpl;", "context", "Landroid/content/Context;", "adapter", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;)V", "getAdapter", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "canvasView", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardCanvasView;", "getCanvasView", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardCanvasView;", "canvasView$delegate", "Lkotlin/Lazy;", "newTipsLayout", "Landroid/widget/LinearLayout;", "getNewTipsLayout", "()Landroid/widget/LinearLayout;", "newTipsLayout$delegate", "topLayout", "getTopLayout", "topLayout$delegate", "updatedAdExpose", "", "getUpdatedAdExpose", "()Z", "setUpdatedAdExpose", "(Z)V", "viewParent", "Landroid/view/ViewGroup;", "getViewParent", "()Landroid/view/ViewGroup;", "viewParent$delegate", "clickCard", "", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "extra", "", "filling", "pos", "", "convertView", "Landroid/view/View;", "parent", "getVideoRelativePos", "", "getVideoStatus", "getVideoView", "getView", "inflate", "isVideoCard", "registerCard", "cardTmpl", "resetUnReadIfNeed", "setVideoStatus", "status", "updateAdExposeStatus", "Companion", "plugin-brandservice_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontent;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardItem;", "adapter", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "context", "Landroid/content/Context;", "(Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;Landroid/content/Context;)V", "item", "Landroid/view/View;", "slotContainer", "Landroid/widget/LinearLayout;", "slotView", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontent$BizRecCardCommonSlot;", "viewPool", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizSimpleViewPool;", "filling", "", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "position", "", "convertView", "parent", "hide", "inflate", "BizRecCardCommonSlot", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class s
-  extends ae
+  extends BizTLRecCardItem
 {
-  public static final a sEg;
-  private final Context context;
-  private final b sCg;
-  private final f sEb;
-  private final f sEc;
-  private final f sEd;
-  private final f sEe;
-  private boolean sEf;
+  private View vJU;
+  private LinearLayout vJV;
+  private LinkedList<a> vJW;
+  private final i<a> vJX;
   
-  static
+  public s(final com.tencent.mm.plugin.brandservice.ui.timeline.b paramb, final Context paramContext)
   {
-    AppMethodBeat.i(257132);
-    sEg = new a((byte)0);
-    AppMethodBeat.o(257132);
+    super(paramContext, paramb);
+    AppMethodBeat.i(302651);
+    this.vJW = new LinkedList();
+    this.vJX = new i((kotlin.g.a.a)new b(this, paramb, paramContext));
+    AppMethodBeat.o(302651);
   }
   
-  public s(Context paramContext, b paramb)
+  public final void a(ab paramab, int paramInt, View paramView1, View paramView2)
   {
-    AppMethodBeat.i(257131);
-    this.context = paramContext;
-    this.sCg = paramb;
-    this.sEb = g.ar((a)new g(this));
-    this.sEc = g.ar((a)new b(this));
-    this.sEd = g.ar((a)new e(this));
-    this.sEe = g.ar((a)new c(this));
-    AppMethodBeat.o(257131);
-  }
-  
-  private final BizTLRecCardCanvasView cAB()
-  {
-    AppMethodBeat.i(257124);
-    BizTLRecCardCanvasView localBizTLRecCardCanvasView = (BizTLRecCardCanvasView)this.sEc.getValue();
-    AppMethodBeat.o(257124);
-    return localBizTLRecCardCanvasView;
-  }
-  
-  @SuppressLint({"ClickableViewAccessibility"})
-  public final void a(z paramz, int paramInt, View paramView1, View paramView2)
-  {
-    AppMethodBeat.i(257125);
-    kotlin.g.b.p.k(paramz, "info");
-    kotlin.g.b.p.k(paramView1, "convertView");
-    kotlin.g.b.p.k(paramView2, "parent");
-    paramView2 = "__ad_card_" + paramz.hwO();
-    Log.i("MicroMsg.BizTLRecCanvas", "filling#" + paramView2 + " msgId=" + paramz.field_msgId + " pathType = " + paramz.getPathType());
-    cAB().setBizTimeLineInfo(paramz);
-    BizTLRecCardCanvasView localBizTLRecCardCanvasView = cAB();
-    long l = paramz.field_msgId;
-    paramView1 = (CharSequence)paramz.getPathType();
-    int i;
-    if ((paramView1 == null) || (n.ba(paramView1)))
+    AppMethodBeat.i(302664);
+    kotlin.g.b.s.u(paramab, "info");
+    kotlin.g.b.s.u(paramView1, "convertView");
+    kotlin.g.b.s.u(paramView2, "parent");
+    super.a(paramab, paramInt, paramView1, paramView2);
+    paramView2 = paramab.iYo();
+    if (paramView2 == null) {}
+    for (paramView1 = null; paramView1 == null; paramView1 = paramView2.abLF)
     {
-      i = 1;
-      if (i == 0) {
-        break label337;
-      }
-    }
-    label337:
-    for (paramView1 = "ad";; paramView1 = paramz.getPathType())
-    {
-      kotlin.g.b.p.j(paramView1, "if(info.pathType.isNullO…) \"ad\" else info.pathType");
-      String str = paramz.ahl();
-      kotlin.g.b.p.j(str, "info.adData");
-      localBizTLRecCardCanvasView.a(l, paramView2, paramView1, str);
-      this.sCg.a(paramInt, paramz, (View)this.sEd.getValue(), (View)this.sEe.getValue());
-      paramView1 = af.bjB();
-      kotlin.g.b.p.j(paramView1, "SubCoreBiz.getBizTimeLineInfoStorage()");
-      l = paramView1.hxb();
-      if ((paramz.hwv() != l) && ((paramz.field_status != 4) || (paramz.field_hasShow != 1)))
-      {
-        paramz.field_status = 4;
-        paramz.field_hasShow = 1;
-        h.ZvG.be((Runnable)new d(paramz));
-      }
-      a(paramz, (ae)this);
-      if (!this.sEf)
-      {
-        this.sEf = true;
-        h.ZvG.be((Runnable)new f(paramz));
-      }
-      AppMethodBeat.o(257125);
+      AppMethodBeat.o(302664);
       return;
-      i = 0;
-      break;
     }
-  }
-  
-  public final void a(z paramz, ae paramae)
-  {
-    AppMethodBeat.i(257126);
-    kotlin.g.b.p.k(paramz, "info");
-    kotlin.g.b.p.k(paramae, "cardTmpl");
-    MPVideoPreviewMgr localMPVideoPreviewMgr = MPVideoPreviewMgr.sSn;
-    MPVideoPreviewMgr.a(paramz, paramae);
-    AppMethodBeat.o(257126);
-  }
-  
-  public final void a(z paramz, String paramString)
-  {
-    AppMethodBeat.i(257130);
-    kotlin.g.b.p.k(paramz, "info");
-    kotlin.g.b.p.k(paramString, "extra");
-    paramString = MPVideoPreviewMgr.sSn;
-    MPVideoPreviewMgr.a(paramz, "");
-    AppMethodBeat.o(257130);
-  }
-  
-  public final ViewGroup cAA()
-  {
-    AppMethodBeat.i(257122);
-    ViewGroup localViewGroup = (ViewGroup)this.sEb.getValue();
-    AppMethodBeat.o(257122);
-    return localViewGroup;
-  }
-  
-  public final boolean cAC()
-  {
-    boolean bool2 = true;
-    AppMethodBeat.i(257127);
-    BizTLRecCardCanvasView localBizTLRecCardCanvasView = cAB();
-    boolean bool1 = bool2;
-    if (localBizTLRecCardCanvasView.sEK.bic(localBizTLRecCardCanvasView.getCanvasId()) == null)
+    paramView1 = this.vJU;
+    if (paramView1 != null) {
+      paramView1.setVisibility(0);
+    }
+    paramView1 = ((Iterable)this.vJW).iterator();
+    Object localObject1;
+    Object localObject2;
+    while (paramView1.hasNext())
     {
-      z localz = localBizTLRecCardCanvasView.sBt;
-      if ((localz == null) || (localz.fYu() != true)) {
-        break label96;
+      localObject1 = (a)paramView1.next();
+      localObject2 = this.vJV;
+      if (localObject2 != null) {
+        ((LinearLayout)localObject2).removeView(((a)localObject1).vJY);
       }
+      this.vJX.et(localObject1);
     }
-    label96:
-    for (bool1 = bool2;; bool1 = false)
+    this.vJW.clear();
+    paramView1 = paramView2.YVI;
+    if (paramView1 != null)
     {
-      Log.i(localBizTLRecCardCanvasView.TAG, "isVideoCard = " + bool1 + ", " + localBizTLRecCardCanvasView.getCanvasId());
-      AppMethodBeat.o(257127);
-      return bool1;
-    }
-  }
-  
-  public final View getVideoView()
-  {
-    AppMethodBeat.i(257128);
-    View localView = (View)cAB();
-    AppMethodBeat.o(257128);
-    return localView;
-  }
-  
-  public final void setVideoStatus(int paramInt)
-  {
-    AppMethodBeat.i(257129);
-    cAB().setVideoStatus(paramInt);
-    AppMethodBeat.o(257129);
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCanvas$Companion;", "", "()V", "TAG", "", "plugin-brandservice_release"})
-  public static final class a {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardCanvasView;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class b
-    extends kotlin.g.b.q
-    implements a<BizTLRecCardCanvasView>
-  {
-    b(s params)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/LinearLayout;", "invoke"})
-  static final class c
-    extends kotlin.g.b.q
-    implements a<LinearLayout>
-  {
-    c(s params)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class d
-    implements Runnable
-  {
-    d(z paramz) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(258803);
-      af.bjB().d(this.sAV, false);
-      AppMethodBeat.o(258803);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/LinearLayout;", "invoke"})
-  static final class e
-    extends kotlin.g.b.q
-    implements a<LinearLayout>
-  {
-    e(s params)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class f
-    implements Runnable
-  {
-    f(z paramz) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(263639);
-      long l = System.currentTimeMillis();
-      Object localObject = MultiProcessMMKV.getSingleMMKV("biz_timeline_ad");
-      if (!Util.isEqual(this.sAV.hwO(), ((MultiProcessMMKV)localObject).decodeString("BizLastExposeAdAId")))
+      paramView1 = ((Iterable)paramView1).iterator();
+      paramInt = 0;
+      while (paramView1.hasNext())
       {
-        ((MultiProcessMMKV)localObject).encode("BizLastExposeAdTime", l);
-        ((MultiProcessMMKV)localObject).encode("BizLastExposeAdAId", this.sAV.hwO());
+        localObject1 = paramView1.next();
+        int i = paramInt + 1;
+        if (paramInt < 0) {
+          p.kkW();
+        }
+        localObject1 = (flf)localObject1;
+        if ((localObject1 != null) && ((((flf)localObject1).YFu & 0x1) == 0))
+        {
+          localObject2 = (a)this.vJX.get();
+          LinearLayout localLinearLayout = this.vJV;
+          if (localLinearLayout != null) {
+            localLinearLayout.addView(((a)localObject2).vJY);
+          }
+          this.vJW.add(localObject2);
+          kotlin.g.b.s.s(paramView2, "recCard");
+          ((a)localObject2).a(paramab, paramView2, (flf)localObject1, paramInt);
+          paramInt = i;
+        }
+        else
+        {
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(1149L, 6L, 1L, false);
+          paramInt = i;
+        }
       }
-      localObject = com.tencent.mm.plugin.webcanvas.l.PuB;
-      com.tencent.mm.plugin.webcanvas.l.Tt(69L);
-      localObject = new com.tencent.mm.storage.p();
-      ((com.tencent.mm.storage.p)localObject).field_aId = this.sAV.hwO();
-      ((com.tencent.mm.storage.p)localObject).field_msgId = this.sAV.field_msgId;
-      ((com.tencent.mm.storage.p)localObject).field_exposeTime = l;
-      af.bjC().a((com.tencent.mm.storage.p)localObject);
-      AppMethodBeat.o(263639);
+    }
+    com.tencent.mm.plugin.brandservice.ui.b.d.w(paramab);
+    AppMethodBeat.o(302664);
+  }
+  
+  public final void eF(View paramView)
+  {
+    AppMethodBeat.i(302673);
+    kotlin.g.b.s.u(paramView, "parent");
+    if (this.vJU == null)
+    {
+      paramView = ((ViewStub)paramView.findViewById(d.e.viewstub_bizcontent)).inflate();
+      kotlin.g.b.s.s(paramView, "this");
+      eG(paramView);
+      this.vJV = ((LinearLayout)paramView.findViewById(d.e.biz_rec_card_common_slot));
+      ah localah = ah.aiuX;
+      this.vJU = paramView;
+    }
+    AppMethodBeat.o(302673);
+  }
+  
+  public final void hide()
+  {
+    AppMethodBeat.i(302677);
+    View localView = this.vJU;
+    if (localView != null) {
+      localView.setVisibility(8);
+    }
+    AppMethodBeat.o(302677);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontent$BizRecCardCommonSlot;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTimeLineCommSlot;", "adapter", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "context", "Landroid/content/Context;", "(Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontent;Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;Landroid/content/Context;)V", "getContext", "()Landroid/content/Context;", "readerItem", "Lcom/tencent/mm/message/BizReaderItem;", "getReaderItem", "()Lcom/tencent/mm/message/BizReaderItem;", "slotView", "Landroid/view/View;", "kotlin.jvm.PlatformType", "getSlotView", "()Landroid/view/View;", "refreshUI", "", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "recCard", "Lcom/tencent/mm/protocal/protobuf/TLRecCard;", "appMsg", "Lcom/tencent/mm/protocal/protobuf/TLRecCardAppMsg;", "index", "", "setPaddingAndMargin", "setPlayIcon", "position", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public final class a
+    extends ag
+  {
+    private final Context context;
+    final v vIN;
+    final View vJY;
+    
+    public a(Context paramContext)
+    {
+      super(localObject);
+      AppMethodBeat.i(302764);
+      this.context = localObject;
+      this.vJY = View.inflate(this.context, d.f.biz_time_line_rec_card_common_slot, null);
+      this.vIN = new v();
+      this.plj = this.vJY.findViewById(d.e.top_line);
+      this.uoA = ((ViewGroup)this.vJY.findViewById(d.e.content_ll));
+      this$1 = this.vJY.findViewById(d.e.title_neat_tv);
+      if (s.this == null)
+      {
+        this$1 = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.ui.widget.MMNeat7extView");
+        AppMethodBeat.o(302764);
+        throw s.this;
+      }
+      this.vMn = ((MMNeat7extView)s.this);
+      this.vMo = ((TextView)this.vJY.findViewById(d.e.summary));
+      this.vMp = this.vJY.findViewById(d.e.cover_area);
+      this.vIK = ((ImageView)this.vJY.findViewById(d.e.cover_iv));
+      this.vMq = this.vJY.findViewById(d.e.biz_slot_voice_layout);
+      this.vMr = ((ImageView)this.vJY.findViewById(d.e.biz_time_line_voice_play_icon));
+      this.vMs = ((ImageView)this.vJY.findViewById(d.e.play_icon));
+      this.vJc = this.vJY.findViewById(d.e.stat_layout);
+      this$1 = this.vJY.findViewById(d.e.friends_read_tv);
+      if (s.this == null)
+      {
+        this$1 = new NullPointerException("null cannot be cast to non-null type android.widget.TextView");
+        AppMethodBeat.o(302764);
+        throw s.this;
+      }
+      this.vJd = ((TextView)s.this);
+      this.vMt = this.vJY.findViewById(d.e.pic_cover_mask_layout);
+      this.vMu = this.vJY.findViewById(d.e.pic_cover_mask);
+      this.vJJ = ((TextView)this.vJY.findViewById(d.e.pic_num));
+      AppMethodBeat.o(302764);
+    }
+    
+    private static final void a(a parama, View paramView)
+    {
+      AppMethodBeat.i(302782);
+      Object localObject = new Object();
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.cH(parama);
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontent$BizRecCardCommonSlot", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+      kotlin.g.b.s.u(parama, "this$0");
+      ((com.tencent.mm.plugin.brandservice.api.b)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.brandservice.api.b.class)).eA((View)parama.vMr);
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontent$BizRecCardCommonSlot", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(302782);
+    }
+    
+    private static final void a(s params, ab paramab, flf paramflf, int paramInt, View paramView)
+    {
+      AppMethodBeat.i(302773);
+      Object localObject = new Object();
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.cH(params);
+      localb.cH(paramab);
+      localb.cH(paramflf);
+      localb.sc(paramInt);
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontent$BizRecCardCommonSlot", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+      kotlin.g.b.s.u(params, "this$0");
+      kotlin.g.b.s.u(paramab, "$info");
+      kotlin.g.b.s.u(paramflf, "$appMsg");
+      params.a(paramab, paramflf, paramInt);
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontent$BizRecCardCommonSlot", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(302773);
+    }
+    
+    public final void a(final ab paramab, fle paramfle, flf paramflf, final int paramInt)
+    {
+      AppMethodBeat.i(302808);
+      kotlin.g.b.s.u(paramab, "info");
+      kotlin.g.b.s.u(paramfle, "recCard");
+      kotlin.g.b.s.u(paramflf, "appMsg");
+      Object localObject2 = paramflf.hAP;
+      paramfle = paramflf.YQK;
+      int j = paramflf.nUA;
+      Object localObject1 = paramflf.YQM;
+      String str = paramflf.YQN;
+      this.vMn.aZ((CharSequence)localObject2);
+      localObject2 = this.vJY;
+      if (paramInt == 0) {}
+      for (int i = d.d.biz_time_line_item_middle_bg;; i = d.d.biz_time_line_item_bottom_bg)
+      {
+        ((View)localObject2).setBackgroundResource(i);
+        this.vJY.setOnClickListener(new s.a..ExternalSyntheticLambda1(s.this, paramab, paramflf, paramInt));
+        if ((((c)com.tencent.mm.kernel.h.ax(c.class)).GV(1)) && (!Util.isNullOrNil(paramfle))) {
+          ((c)com.tencent.mm.kernel.h.ax(c.class)).a(paramfle, j, 90, new Object[0]);
+        }
+        this.vIN.type = j;
+        this.vIN.nUM = ((String)localObject1);
+        this.vIN.nVd = str;
+        this.vIN.url = paramfle;
+        a(this.vJc, this.vJd, paramab, this.vIN);
+        this.vMs.setVisibility(8);
+        this.vMq.setVisibility(8);
+        com.tencent.mm.plugin.brandservice.ui.timeline.preload.d.ajs(paramab.getId());
+        if (this.vIN.type != 7) {
+          break label586;
+        }
+        this.vIK.setVisibility(8);
+        kotlin.g.b.s.u(paramab, "info");
+        kotlin.g.b.s.u(paramflf, "appMsg");
+        this.vMs.setVisibility(8);
+        this.vMq.setVisibility(0);
+        paramfle = this.vMr.getDrawable();
+        if (((paramfle instanceof AnimationDrawable)) && (((AnimationDrawable)paramfle).isRunning())) {
+          ((AnimationDrawable)paramfle).stop();
+        }
+        if (!kotlin.g.b.s.p(paramab.field_msgId + '_' + paramInt, com.tencent.mm.plugin.brandservice.ui.b.d.dhS())) {
+          break label495;
+        }
+        this.vMr.setImageResource(d.d.biz_time_line_item_voice_playing_selector);
+        if (!(this.vMr.getDrawable() instanceof AnimationDrawable)) {
+          break label428;
+        }
+        paramfle = this.vMr.getDrawable();
+        if (paramfle != null) {
+          break;
+        }
+        paramab = new NullPointerException("null cannot be cast to non-null type android.graphics.drawable.AnimationDrawable");
+        AppMethodBeat.o(302808);
+        throw paramab;
+      }
+      ((AnimationDrawable)paramfle).start();
+      label428:
+      paramfle = paramflf.YVC;
+      if (Util.isNullOrNil(paramfle))
+      {
+        Log.i("MicroMsg.BizTimeLineItem", "BizTLRecCardBizcontent playUrl null");
+        label449:
+        paramab = (m)s.a.b.vKc;
+        paramfle = (kotlin.g.a.s)s.a.c.vKd;
+        switch (paramInt)
+        {
+        }
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(302808);
+        return;
+        label495:
+        this.vMr.setImageResource(d.d.biz_time_line_item_voice_play_selector);
+        break;
+        ((com.tencent.mm.plugin.brandservice.api.b)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.brandservice.api.b.class)).a((View)this.vMr, paramab.field_msgId + '_' + paramInt, paramflf.hAP, paramfle, "", paramflf.YQM);
+        this.vMr.setOnClickListener(new s.a..ExternalSyntheticLambda0(this));
+        break label449;
+        label586:
+        if (!Util.isNullOrNil(this.vIN.nUM))
+        {
+          this.vIK.setVisibility(0);
+          if (Util.isNullOrNil(this.vIN.nVd)) {}
+          for (paramfle = this.vIN.nUM;; paramfle = this.vIN.nVd)
+          {
+            long l = paramab.field_orderFlag;
+            paramflf = this.vIN;
+            localObject1 = this.vIK;
+            i = com.tencent.mm.plugin.brandservice.ui.timeline.b.vGe;
+            com.tencent.mm.plugin.brandservice.ui.timeline.preload.d.a(l, paramInt, paramflf, paramfle, (ImageView)localObject1, i, i, false, (m.a)new a(this, paramab, paramInt), paramab.vMB + 1, 2.0F);
+            break;
+          }
+        }
+        if ((this.vIN.type == 5) || (this.vIN.type == 6))
+        {
+          this.vIK.setVisibility(0);
+          paramfle = d.d.chatting_item_biz_play_icon_bg;
+          paramflf = this.vIK;
+          i = com.tencent.mm.plugin.brandservice.ui.timeline.b.vGe;
+          com.tencent.mm.plugin.brandservice.ui.timeline.preload.d.a(paramfle, paramflf, i, i, paramab.vMB + 1);
+          break label449;
+        }
+        this.vMp.setVisibility(8);
+        break label449;
+        paramflf = this.uoA;
+        kotlin.g.b.s.s(paramflf, "content");
+        paramfle.a(paramflf, Integer.valueOf(0), Integer.valueOf(com.tencent.mm.plugin.brandservice.ui.timeline.b.vGf), Integer.valueOf(0), Integer.valueOf(com.tencent.mm.plugin.brandservice.ui.timeline.b.vGi));
+        paramfle = this.plj;
+        kotlin.g.b.s.s(paramfle, "topLine");
+        paramab.invoke(paramfle, Integer.valueOf(com.tencent.mm.cd.a.fromDPToPix(this.context, 16.0F)));
+        AppMethodBeat.o(302808);
+        return;
+        paramflf = this.uoA;
+        kotlin.g.b.s.s(paramflf, "content");
+        paramfle.a(paramflf, Integer.valueOf(0), Integer.valueOf(com.tencent.mm.plugin.brandservice.ui.timeline.b.vGi), Integer.valueOf(0), Integer.valueOf(com.tencent.mm.plugin.brandservice.ui.timeline.b.vGf));
+        paramfle = this.plj;
+        kotlin.g.b.s.s(paramfle, "topLine");
+        paramab.invoke(paramfle, Integer.valueOf(com.tencent.mm.plugin.brandservice.ui.timeline.b.vGj));
+      }
+    }
+    
+    @Metadata(d1={""}, d2={"com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontent$BizRecCardCommonSlot$refreshUI$2", "Lcom/tencent/mm/pluginsdk/ui/applet/ChattingBizImageDownloadListener$LoadTitleBitmapCallback;", "onFinish", "", "onStart", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
+    public static final class a
+      implements m.a
+    {
+      a(s.a parama, ab paramab, int paramInt) {}
+      
+      public final void onFinish()
+      {
+        AppMethodBeat.i(302444);
+        this.vKa.a(this.vKa.vIN, true);
+        this.vKa.vMC.vFN.y(paramab.field_msgId, paramInt);
+        AppMethodBeat.o(302444);
+      }
+      
+      public final void onStart() {}
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/ViewGroup;", "invoke"})
-  static final class g
-    extends kotlin.g.b.q
-    implements a<ViewGroup>
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontent$BizRecCardCommonSlot;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontent;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements kotlin.g.a.a<s.a>
   {
-    g(s params)
+    b(s params, com.tencent.mm.plugin.brandservice.ui.timeline.b paramb, Context paramContext)
     {
       super();
     }
@@ -267,7 +372,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.item.s
  * JD-Core Version:    0.7.0.1
  */

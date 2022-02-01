@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true">
-        <shape>
-            <solid android:color="@color/acc" />
-        </shape>
+    <item>
+        <rotate android:drawable="@drawable/bad" android:fromDegrees="0.0" android:toDegrees="1080.0" android:pivotX="50.0%" android:pivotY="50.0%" />
     </item>
-    <item android:drawable="@color/ac_" />
 </selector>

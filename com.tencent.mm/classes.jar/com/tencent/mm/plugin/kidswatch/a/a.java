@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.kidswatch.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/kidswatch/api/IPluginKidsWatch;", "Lcom/tencent/mm/kernel/plugin/IAlias;", "Companion", "plugin-kidswatch_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/kidswatch/api/IPluginKidsWatch;", "Lcom/tencent/mm/kernel/plugin/IAlias;", "Companion", "plugin-kidswatch_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface a
   extends com.tencent.mm.kernel.b.a
 {
-  public static final a EbL = a.EbM;
+  public static final a JST = a.JSU;
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/kidswatch/api/IPluginKidsWatch$Companion;", "", "()V", "CLASS", "", "plugin-kidswatch_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/kidswatch/api/IPluginKidsWatch$Companion;", "", "()V", "CLASS", "", "plugin-kidswatch_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
     static
     {
-      AppMethodBeat.i(251568);
-      EbM = new a();
-      AppMethodBeat.o(251568);
+      AppMethodBeat.i(262080);
+      JSU = new a();
+      AppMethodBeat.o(262080);
     }
   }
 }

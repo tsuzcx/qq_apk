@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.game.commlib.a;
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract void a(String paramString, com.tencent.mm.cd.a parama);
+  public abstract void a(String paramString, com.tencent.mm.bx.a parama);
   
-  public abstract byte[] aIX(String paramString);
+  public abstract byte[] aFI(String paramString);
   
-  public abstract void aIY(String paramString);
+  public abstract void aFJ(String paramString);
   
-  public abstract void t(String paramString, byte[] paramArrayOfByte);
+  public abstract void x(String paramString, byte[] paramArrayOfByte);
 }
 
 

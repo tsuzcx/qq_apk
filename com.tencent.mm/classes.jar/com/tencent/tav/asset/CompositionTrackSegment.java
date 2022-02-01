@@ -17,9 +17,9 @@ public class CompositionTrackSegment
   public CompositionTrackSegment(CMTimeRange paramCMTimeRange)
   {
     super(paramCMTimeRange, paramCMTimeRange);
-    AppMethodBeat.i(188395);
+    AppMethodBeat.i(215873);
     this.empty = true;
-    AppMethodBeat.o(188395);
+    AppMethodBeat.o(215873);
   }
   
   public CompositionTrackSegment(String paramString, int paramInt1, CMTimeRange paramCMTimeRange1, CMTimeRange paramCMTimeRange2, int paramInt2)
@@ -53,19 +53,19 @@ public class CompositionTrackSegment
   
   public String toString()
   {
-    AppMethodBeat.i(188400);
+    AppMethodBeat.i(215903);
     String str = "CompositionTrackSegment{sourcePath='" + this.sourcePath + '\'' + ", sourceTrackID=" + this.sourceTrackID + ", timeMapping=" + this.timeMapping + '}';
-    AppMethodBeat.o(188400);
+    AppMethodBeat.o(215903);
     return str;
   }
   
   public void updateTargetTimeRange(CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(188397);
+    AppMethodBeat.i(215879);
     this.scaleDuration = paramCMTimeRange.getDuration().clone();
     this.timeRange = paramCMTimeRange.clone();
     this.timeMapping.setTarget(paramCMTimeRange);
-    AppMethodBeat.o(188397);
+    AppMethodBeat.o(215879);
   }
 }
 

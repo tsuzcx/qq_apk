@@ -8,66 +8,66 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.os.Build;
 import android.os.Build.VERSION;
-import com.tencent.e.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.t;
-import com.tencent.mm.f.a.qc;
+import com.tencent.mm.am.p;
+import com.tencent.mm.autogen.a.rp;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.model.z;
+import com.tencent.mm.modelavatar.AvatarStorage;
 import com.tencent.mm.plugin.backup.bakoldlogic.d.b.a;
 import com.tencent.mm.plugin.backup.g.b.d;
 import com.tencent.mm.plugin.backup.i.ab;
 import com.tencent.mm.plugin.backup.i.ac;
 import com.tencent.mm.plugin.backup.i.r;
-import com.tencent.mm.plugin.backup.i.s;
-import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ar;
+import com.tencent.mm.storage.at;
 import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
+import com.tencent.threadpool.i;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 
 public final class e
   implements b.d
 {
-  public c rTH;
-  public a rTI;
-  public e rTJ;
-  public d rTK;
-  public f rTL;
-  com.tencent.mm.plugin.backup.bakoldlogic.c.e rTM;
-  private com.tencent.mm.plugin.backup.bakoldlogic.bakoldmodel.a rTN;
-  public int rTO;
-  public String rTP;
-  public String rTQ;
-  public int rTR;
-  public int rTS;
-  private boolean rTT;
-  private d rTz;
+  private d veP;
+  public c veX;
+  public a veY;
+  public e veZ;
+  public d vfa;
+  public f vfb;
+  com.tencent.mm.plugin.backup.bakoldlogic.c.e vfc;
+  private com.tencent.mm.plugin.backup.bakoldlogic.bakoldmodel.a vfd;
+  public int vfe;
+  public String vff;
+  public String vfg;
+  public int vfh;
+  public int vfi;
+  private boolean vfj;
   
   public e()
   {
     AppMethodBeat.i(21900);
-    this.rTK = new d();
-    this.rTL = new f();
-    this.rTO = -1;
-    this.rTR = -1;
-    this.rTS = 1;
-    this.rTT = false;
+    this.vfa = new d();
+    this.vfb = new f();
+    this.vfe = -1;
+    this.vfh = -1;
+    this.vfi = 1;
+    this.vfj = false;
     AppMethodBeat.o(21900);
   }
   
-  public static void EW(int paramInt)
+  public static void Fx(int paramInt)
   {
     AppMethodBeat.i(21910);
     ab localab = new ab();
-    localab.rVj = paramInt;
+    localab.vgz = paramInt;
     try
     {
-      Log.i("MicroMsg.BakPcProcessMgr", "sendNormalReq cmd :%d (%s)", new Object[] { Integer.valueOf(paramInt), EX(paramInt) });
-      com.tencent.mm.plugin.backup.g.b.O(localab.toByteArray(), 3);
+      Log.i("MicroMsg.BakPcProcessMgr", "sendNormalReq cmd :%d (%s)", new Object[] { Integer.valueOf(paramInt), Fy(paramInt) });
+      com.tencent.mm.plugin.backup.g.b.N(localab.toByteArray(), 3);
       AppMethodBeat.o(21910);
       return;
     }
@@ -78,7 +78,7 @@ public final class e
     }
   }
   
-  private static String EX(int paramInt)
+  private static String Fy(int paramInt)
   {
     AppMethodBeat.i(21913);
     switch (paramInt)
@@ -145,17 +145,17 @@ public final class e
     return "COMMAND_NOT_SUPPORT";
   }
   
-  public static void a(int paramInt1, int paramInt2, s params)
+  public static void a(int paramInt1, int paramInt2, com.tencent.mm.plugin.backup.i.s params)
   {
     AppMethodBeat.i(21909);
     ac localac = new ac();
-    localac.rVj = paramInt1;
-    localac.rVU = paramInt2;
-    localac.rWP = params;
+    localac.vgz = paramInt1;
+    localac.vhk = paramInt2;
+    localac.vig = params;
     try
     {
-      Log.i("MicroMsg.BakPcProcessMgr", "send cmd resp, status:%d, cmd:%d (%s)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), EX(paramInt1) });
-      com.tencent.mm.plugin.backup.g.b.O(localac.toByteArray(), 4);
+      Log.i("MicroMsg.BakPcProcessMgr", "send cmd resp, status:%d, cmd:%d (%s)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), Fy(paramInt1) });
+      com.tencent.mm.plugin.backup.g.b.N(localac.toByteArray(), 4);
       AppMethodBeat.o(21909);
       return;
     }
@@ -166,41 +166,40 @@ public final class e
     }
   }
   
-  public static void cuu()
+  public static void cXe()
   {
     AppMethodBeat.i(21906);
     Object localObject = new Intent().setClassName(MMApplicationContext.getContext(), "com.tencent.mm.ui.LauncherUI");
     ((Intent)localObject).addFlags(335544320);
     ((Intent)localObject).putExtra("nofification_type", "back_to_pcmgr_error_notification");
     Context localContext = MMApplicationContext.getContext();
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-    com.tencent.mm.hellhoundlib.a.a.b(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/BakPcProcessMgr", "skipToBakErrorUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+    localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/BakPcProcessMgr", "skipToBakErrorUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
     com.tencent.mm.hellhoundlib.a.a.c(localContext, "com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/BakPcProcessMgr", "skipToBakErrorUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(21906);
   }
   
-  public static void cuw()
+  public static void cXg()
   {
     AppMethodBeat.i(21912);
-    qc localqc = new qc();
-    EventCenter.instance.publish(localqc);
+    new rp().publish();
     AppMethodBeat.o(21912);
   }
   
-  public final void EV(int paramInt)
+  public final void Fw(int paramInt)
   {
     AppMethodBeat.i(21908);
     if (paramInt == 0) {}
-    for (this.rTR = 1; paramInt == 1; this.rTR = -1)
+    for (this.vfh = 1; paramInt == 1; this.vfh = -1)
     {
       ac localac = new ac();
-      localac.rVj = 0;
-      localac.rVU = paramInt;
+      localac.vgz = 0;
+      localac.vhk = paramInt;
       try
       {
-        Log.i("MicroMsg.BakPcProcessMgr", "send auth cmd resp, status:%d", new Object[] { Integer.valueOf(localac.rVU) });
-        com.tencent.mm.plugin.backup.g.b.O(localac.toByteArray(), 4);
+        Log.i("MicroMsg.BakPcProcessMgr", "send auth cmd resp, status:%d", new Object[] { Integer.valueOf(localac.vhk) });
+        com.tencent.mm.plugin.backup.g.b.N(localac.toByteArray(), 4);
         AppMethodBeat.o(21908);
         return;
       }
@@ -212,41 +211,41 @@ public final class e
       }
     }
     com.tencent.mm.plugin.backup.i.q localq = new com.tencent.mm.plugin.backup.i.q();
-    localq.rWf = 0L;
-    localq.rWh = Build.MANUFACTURER;
-    localq.rVH = Build.MODEL;
-    localq.rWg = 0L;
+    localq.vhv = 0L;
+    localq.vhx = Build.MANUFACTURER;
+    localq.vgX = com.tencent.mm.compatible.deviceinfo.q.aPo();
+    localq.vhw = 0L;
     localq.Version = Build.VERSION.RELEASE;
-    Object localObject2 = ar.Vgb;
+    Object localObject2 = at.acHq;
     Object localObject1 = localObject2;
     Object localObject3;
-    if (new com.tencent.mm.vfs.q(com.tencent.mm.loader.j.b.aSF()).ifE())
+    if (new u(com.tencent.mm.loader.i.b.bmt()).jKS())
     {
       localObject1 = localObject2;
-      if (com.tencent.mm.compatible.util.e.avA())
+      if (com.tencent.mm.compatible.util.e.aPU())
       {
-        localObject3 = new com.tencent.mm.vfs.q(com.tencent.mm.loader.j.b.aSL());
-        if (!((com.tencent.mm.vfs.q)localObject3).ifE())
+        localObject3 = new u(com.tencent.mm.loader.i.b.bmz());
+        if (!((u)localObject3).jKS())
         {
           localObject1 = localObject2;
-          if (!((com.tencent.mm.vfs.q)localObject3).ifL()) {}
+          if (!((u)localObject3).jKY()) {}
         }
         else
         {
-          localObject1 = com.tencent.mm.loader.j.b.aSL();
+          localObject1 = com.tencent.mm.loader.i.b.bmz();
         }
       }
     }
-    localq.rWe = ((String)localObject1);
-    localq.rWd = z.bdb();
-    localq.rWc = z.bcZ();
-    localq.rWb = com.tencent.mm.protocal.d.RAD;
+    localq.vhu = ((String)localObject1);
+    localq.vht = z.bAO();
+    localq.vhs = z.bAM();
+    localq.vhr = com.tencent.mm.protocal.d.Yxh;
     try
     {
       localObject1 = MMApplicationContext.getContext().getPackageManager().getPackageInfo(MMApplicationContext.getContext().getPackageName(), 0);
-      localq.rWb = (((PackageInfo)localObject1).versionName + ";" + ((PackageInfo)localObject1).versionCode + ";" + com.tencent.mm.protocal.d.RAD);
-      com.tencent.mm.am.q.bhz();
-      localObject2 = com.tencent.mm.am.f.TI(localq.rWc);
+      localq.vhr = (((PackageInfo)localObject1).versionName + ";" + ((PackageInfo)localObject1).versionCode + ";" + com.tencent.mm.protocal.d.Yxh);
+      com.tencent.mm.modelavatar.q.bFp();
+      localObject2 = AvatarStorage.LI(localq.vhs);
       localObject1 = null;
       if (localObject2 != null)
       {
@@ -260,28 +259,28 @@ public final class e
       try
       {
         ((ByteArrayOutputStream)localObject3).close();
-        com.tencent.mm.am.q.bhz();
-        localObject2 = com.tencent.mm.am.f.O(localq.rWc, true);
+        com.tencent.mm.modelavatar.q.bFp();
+        localObject2 = AvatarStorage.R(localq.vhs, true);
         if (localObject1 == null)
         {
           i = 0;
           Log.i("MicroMsg.BakPcProcessMgr", ", bmHDPath:%s, bm.buf.len:%d", new Object[] { localObject2, Integer.valueOf(i) });
           if (!Util.isNullOrNil((byte[])localObject1)) {
-            localq.rWi = new com.tencent.mm.cd.b((byte[])localObject1);
+            localq.vhy = new com.tencent.mm.bx.b((byte[])localObject1);
           }
-          localObject1 = u.aY((String)localObject2, 0, -1);
+          localObject1 = y.bi((String)localObject2, 0, -1);
           if (!Util.isNullOrNil((byte[])localObject1)) {
-            localq.rWj = new com.tencent.mm.cd.b((byte[])localObject1);
+            localq.vhz = new com.tencent.mm.bx.b((byte[])localObject1);
           }
           localObject1 = new ac();
-          ((ac)localObject1).rVj = 0;
-          ((ac)localObject1).rVU = paramInt;
-          ((ac)localObject1).rWM = localq;
+          ((ac)localObject1).vgz = 0;
+          ((ac)localObject1).vhk = paramInt;
+          ((ac)localObject1).vic = localq;
         }
         try
         {
-          Log.i("MicroMsg.BakPcProcessMgr", "send auth cmd resp, status:%d", new Object[] { Integer.valueOf(((ac)localObject1).rVU) });
-          com.tencent.mm.plugin.backup.g.b.O(((ac)localObject1).toByteArray(), 4);
+          Log.i("MicroMsg.BakPcProcessMgr", "send auth cmd resp, status:%d", new Object[] { Integer.valueOf(((ac)localObject1).vhk) });
+          com.tencent.mm.plugin.backup.g.b.N(((ac)localObject1).toByteArray(), 4);
           AppMethodBeat.o(21908);
           return;
         }
@@ -316,37 +315,37 @@ public final class e
     //   8: aload_1
     //   9: ifnonnull +30 -> 39
     //   12: aload_0
-    //   13: getfield 469	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e:rTz	Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e$d;
-    //   16: instanceof 471
+    //   13: getfield 465	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e:veP	Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e$d;
+    //   16: instanceof 467
     //   19: ifeq +20 -> 39
     //   22: ldc 99
-    //   24: ldc_w 473
-    //   27: invokestatic 476	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   24: ldc_w 469
+    //   27: invokestatic 472	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   30: sipush 21901
     //   33: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   36: aload_0
     //   37: monitorexit
     //   38: return
     //   39: ldc 99
-    //   41: ldc_w 478
+    //   41: ldc_w 474
     //   44: iconst_1
     //   45: anewarray 4	java/lang/Object
     //   48: dup
     //   49: iconst_0
     //   50: aload_1
     //   51: aastore
-    //   52: invokestatic 480	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   52: invokestatic 476	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   55: aload_0
     //   56: aload_1
-    //   57: putfield 469	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e:rTz	Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e$d;
+    //   57: putfield 465	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e:veP	Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e$d;
     //   60: aload_0
-    //   61: getfield 71	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e:rTK	Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d;
+    //   61: getfield 71	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e:vfa	Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d;
     //   64: aload_1
-    //   65: putfield 481	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:rTz	Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e$d;
+    //   65: putfield 477	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:veP	Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e$d;
     //   68: aload_0
-    //   69: getfield 76	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e:rTL	Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f;
+    //   69: getfield 76	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e:vfb	Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f;
     //   72: aload_1
-    //   73: putfield 482	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:rTz	Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e$d;
+    //   73: putfield 478	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:veP	Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e$d;
     //   76: sipush 21901
     //   79: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   82: goto -46 -> 36
@@ -375,140 +374,140 @@ public final class e
     //   2: sipush 21911
     //   5: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 76	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e:rTL	Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f;
+    //   9: getfield 76	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e:vfb	Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f;
     //   12: ifnull +10 -> 22
     //   15: aload_0
-    //   16: getfield 76	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e:rTL	Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f;
-    //   19: invokevirtual 486	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:cancel	()V
+    //   16: getfield 76	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e:vfb	Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f;
+    //   19: invokevirtual 482	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:cancel	()V
     //   22: aload_0
     //   23: new 73	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f
     //   26: dup
     //   27: invokespecial 74	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:<init>	()V
-    //   30: putfield 76	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e:rTL	Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f;
+    //   30: putfield 76	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e:vfb	Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f;
     //   33: aload_0
-    //   34: getfield 76	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e:rTL	Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f;
+    //   34: getfield 76	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e:vfb	Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f;
     //   37: astore 4
     //   39: aload_1
-    //   40: getfield 492	com/tencent/mm/plugin/backup/i/r:rWk	Ljava/util/LinkedList;
+    //   40: getfield 488	com/tencent/mm/plugin/backup/i/r:vhA	Ljava/util/LinkedList;
     //   43: astore 5
     //   45: aload_1
-    //   46: getfield 495	com/tencent/mm/plugin/backup/i/r:rWl	Ljava/util/LinkedList;
+    //   46: getfield 491	com/tencent/mm/plugin/backup/i/r:vhB	Ljava/util/LinkedList;
     //   49: astore 6
     //   51: aload_1
-    //   52: getfield 498	com/tencent/mm/plugin/backup/i/r:rVT	J
+    //   52: getfield 494	com/tencent/mm/plugin/backup/i/r:vhj	J
     //   55: lstore_2
     //   56: aload 4
     //   58: aload 5
-    //   60: putfield 502	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:rTZ	Ljava/util/List;
+    //   60: putfield 498	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:vfp	Ljava/util/List;
     //   63: aload 4
     //   65: aload 6
-    //   67: putfield 505	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:rUa	Ljava/util/List;
+    //   67: putfield 501	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:nZr	Ljava/util/List;
     //   70: aload 4
     //   72: iconst_0
-    //   73: putfield 508	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:fEs	Z
+    //   73: putfield 504	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:hJi	Z
     //   76: aload 4
     //   78: iconst_0
-    //   79: putfield 511	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:kUn	Z
+    //   79: putfield 507	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:nzW	Z
     //   82: aload 4
-    //   84: getfield 515	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:rTy	Ljava/util/HashSet;
-    //   87: invokevirtual 520	java/util/HashSet:clear	()V
+    //   84: getfield 511	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:veO	Ljava/util/HashSet;
+    //   87: invokevirtual 516	java/util/HashSet:clear	()V
     //   90: aload 4
     //   92: iconst_0
-    //   93: putfield 523	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:rTB	Z
+    //   93: putfield 519	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:veR	Z
     //   96: aload 4
     //   98: iconst_0
-    //   99: putfield 526	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:rUc	Z
+    //   99: putfield 522	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:vfr	Z
     //   102: aload 4
     //   104: iconst_0
-    //   105: putfield 529	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:rMp	Z
+    //   105: putfield 525	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:uXC	Z
     //   108: aload 4
     //   110: iconst_0
-    //   111: putfield 532	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:rUb	I
+    //   111: putfield 528	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:vfq	I
     //   114: aload 4
     //   116: lconst_0
-    //   117: putfield 535	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:rUe	J
+    //   117: putfield 531	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:vft	J
     //   120: aload 4
     //   122: lload_2
-    //   123: putfield 538	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:rUd	J
+    //   123: putfield 534	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:vfs	J
     //   126: iconst_0
-    //   127: invokestatic 543	com/tencent/mm/plugin/backup/bakoldlogic/c/d:setProgress	(I)V
+    //   127: invokestatic 539	com/tencent/mm/plugin/backup/bakoldlogic/c/d:setProgress	(I)V
     //   130: aload_0
-    //   131: getfield 76	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e:rTL	Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f;
+    //   131: getfield 76	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e:vfb	Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f;
     //   134: aload_0
-    //   135: getfield 469	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e:rTz	Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e$d;
-    //   138: putfield 482	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:rTz	Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e$d;
+    //   135: getfield 465	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e:veP	Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e$d;
+    //   138: putfield 478	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:veP	Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e$d;
     //   141: ldc 99
-    //   143: ldc_w 545
+    //   143: ldc_w 541
     //   146: iconst_3
     //   147: anewarray 4	java/lang/Object
     //   150: dup
     //   151: iconst_0
     //   152: aload_1
-    //   153: getfield 492	com/tencent/mm/plugin/backup/i/r:rWk	Ljava/util/LinkedList;
-    //   156: invokevirtual 551	java/util/LinkedList:size	()I
+    //   153: getfield 488	com/tencent/mm/plugin/backup/i/r:vhA	Ljava/util/LinkedList;
+    //   156: invokevirtual 547	java/util/LinkedList:size	()I
     //   159: invokestatic 107	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   162: aastore
     //   163: dup
     //   164: iconst_1
     //   165: aload_1
-    //   166: getfield 495	com/tencent/mm/plugin/backup/i/r:rWl	Ljava/util/LinkedList;
-    //   169: invokevirtual 551	java/util/LinkedList:size	()I
+    //   166: getfield 491	com/tencent/mm/plugin/backup/i/r:vhB	Ljava/util/LinkedList;
+    //   169: invokevirtual 547	java/util/LinkedList:size	()I
     //   172: invokestatic 107	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   175: aastore
     //   176: dup
     //   177: iconst_2
     //   178: aload_1
-    //   179: getfield 498	com/tencent/mm/plugin/backup/i/r:rVT	J
-    //   182: invokestatic 556	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   179: getfield 494	com/tencent/mm/plugin/backup/i/r:vhj	J
+    //   182: invokestatic 552	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   185: aastore
     //   186: invokestatic 116	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   189: aload_0
-    //   190: getfield 76	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e:rTL	Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f;
+    //   190: getfield 76	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/e:vfb	Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f;
     //   193: astore 4
     //   195: aload 4
     //   197: iconst_0
-    //   198: putfield 559	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:rTF	I
+    //   198: putfield 555	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:veV	I
     //   201: aload 4
-    //   203: getfield 505	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:rUa	Ljava/util/List;
-    //   206: invokeinterface 562 1 0
+    //   203: getfield 501	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:nZr	Ljava/util/List;
+    //   206: invokeinterface 558 1 0
     //   211: aload_1
-    //   212: getfield 565	com/tencent/mm/plugin/backup/i/r:rVY	I
+    //   212: getfield 561	com/tencent/mm/plugin/backup/i/r:vho	I
     //   215: if_icmplt +20 -> 235
     //   218: aload 4
-    //   220: getfield 502	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:rTZ	Ljava/util/List;
-    //   223: invokeinterface 562 1 0
+    //   220: getfield 498	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f:vfp	Ljava/util/List;
+    //   223: invokeinterface 558 1 0
     //   228: aload_1
-    //   229: getfield 568	com/tencent/mm/plugin/backup/i/r:rVX	I
+    //   229: getfield 564	com/tencent/mm/plugin/backup/i/r:vhn	I
     //   232: if_icmpge +46 -> 278
     //   235: iconst_3
-    //   236: new 570	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f$2
+    //   236: new 566	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f$2
     //   239: dup
     //   240: aload 4
-    //   242: invokespecial 573	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f$2:<init>	(Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f;)V
-    //   245: invokestatic 576	com/tencent/mm/plugin/backup/g/b:a	(ILcom/tencent/mm/an/i;)V
-    //   248: ldc_w 578
-    //   251: ldc_w 580
-    //   254: invokestatic 582	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   257: new 584	com/tencent/mm/plugin/backup/bakoldlogic/c/b
+    //   242: invokespecial 569	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f$2:<init>	(Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f;)V
+    //   245: invokestatic 572	com/tencent/mm/plugin/backup/g/b:a	(ILcom/tencent/mm/am/h;)V
+    //   248: ldc_w 574
+    //   251: ldc_w 576
+    //   254: invokestatic 578	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   257: new 580	com/tencent/mm/plugin/backup/bakoldlogic/c/b
     //   260: dup
     //   261: iconst_2
-    //   262: invokespecial 586	com/tencent/mm/plugin/backup/bakoldlogic/c/b:<init>	(I)V
-    //   265: invokevirtual 589	com/tencent/mm/plugin/backup/bakoldlogic/c/b:ctM	()Z
+    //   262: invokespecial 582	com/tencent/mm/plugin/backup/bakoldlogic/c/b:<init>	(I)V
+    //   265: invokevirtual 585	com/tencent/mm/plugin/backup/bakoldlogic/c/b:cWw	()Z
     //   268: pop
     //   269: sipush 21911
     //   272: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   275: aload_0
     //   276: monitorexit
     //   277: return
-    //   278: ldc_w 578
-    //   281: ldc_w 591
-    //   284: invokestatic 582	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   287: getstatic 597	com/tencent/e/h:ZvG	Lcom/tencent/e/i;
-    //   290: new 599	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f$1
+    //   278: ldc_w 574
+    //   281: ldc_w 587
+    //   284: invokestatic 578	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   287: getstatic 593	com/tencent/threadpool/h:ahAA	Lcom/tencent/threadpool/i;
+    //   290: new 595	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f$1
     //   293: dup
     //   294: aload 4
-    //   296: invokespecial 600	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f$1:<init>	(Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f;)V
-    //   299: invokeinterface 606 2 0
+    //   296: invokespecial 596	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f$1:<init>	(Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/f;)V
+    //   299: invokeinterface 602 2 0
     //   304: pop
     //   305: sipush 21911
     //   308: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -538,17 +537,17 @@ public final class e
   {
     AppMethodBeat.i(21905);
     if ((paramBoolean) && (paramArrayOfByte != null)) {
-      aC(paramInt1, new String(paramArrayOfByte));
+      aP(paramInt1, new String(paramArrayOfByte));
     }
     if ((paramInt1 == 10001) || (paramInt1 == 10002))
     {
-      a.cuk().cum().rTr = 1;
-      new com.tencent.mm.plugin.backup.bakoldlogic.c.a(a.cuk().rKL, a.cuk().rKM, com.tencent.mm.plugin.backup.b.d.csd(), a.cuk().rKK).ctM();
+      a.cWU().cWW().veH = 1;
+      new com.tencent.mm.plugin.backup.bakoldlogic.c.a(a.cWU().uVZ, a.cWU().uWa, com.tencent.mm.plugin.backup.b.d.cUN(), a.cWU().uVY).cWw();
     }
     Object localObject;
     if (paramInt1 == 3)
     {
-      this.rTO = -1;
+      this.vfe = -1;
       localObject = new ab();
     }
     for (;;)
@@ -556,8 +555,8 @@ public final class e
       try
       {
         ((ab)localObject).parseFrom(paramArrayOfByte);
-        Log.i("MicroMsg.BakPcProcessMgr", "recv cmd:%d (%s)", new Object[] { Integer.valueOf(((ab)localObject).rVj), EX(((ab)localObject).rVj) });
-        paramInt1 = ((ab)localObject).rVj;
+        Log.i("MicroMsg.BakPcProcessMgr", "recv cmd:%d (%s)", new Object[] { Integer.valueOf(((ab)localObject).vgz), Fy(((ab)localObject).vgz) });
+        paramInt1 = ((ab)localObject).vgz;
         switch (paramInt1)
         {
         case 2: 
@@ -574,19 +573,19 @@ public final class e
       {
         Log.printErrStackTrace("MicroMsg.BakPcProcessMgr", paramArrayOfByte, "buf to PacketCommandReq error", new Object[0]);
       }
-      if (!bh.aHB())
+      if (!bh.baz())
       {
         Log.w("MicroMsg.BakPcProcessMgr", "acc is not ready, not support pcmgr's auth");
-        a(((ab)localObject).rVj, 1, null);
+        a(((ab)localObject).vgz, 1, null);
         AppMethodBeat.o(21905);
         return;
       }
-      this.rTO = ((ab)localObject).rVj;
-      if (this.rTI != null)
+      this.vfe = ((ab)localObject).vgz;
+      if (this.veY != null)
       {
-        this.rTI.cux();
-        this.rTR = 0;
-        this.rTS = 1;
+        this.veY.cXh();
+        this.vfh = 0;
+        this.vfi = 1;
         AppMethodBeat.o(21905);
         return;
         AppMethodBeat.o(21905);
@@ -598,83 +597,83 @@ public final class e
       ((Intent)localObject).putExtra("nofification_type", "back_to_pcmgr_notification");
       ((Intent)localObject).putExtra("newPCBackup", false);
       paramArrayOfByte = MMApplicationContext.getContext();
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-      com.tencent.mm.hellhoundlib.a.a.b(paramArrayOfByte, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/BakPcProcessMgr", "skipToBakToPcUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramArrayOfByte.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+      localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(paramArrayOfByte, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/BakPcProcessMgr", "skipToBakToPcUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramArrayOfByte.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
       com.tencent.mm.hellhoundlib.a.a.c(paramArrayOfByte, "com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/BakPcProcessMgr", "skipToBakToPcUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       continue;
-      a.cuk().cun().cuo();
-      a.cuk().cum().bfq();
-      aC(-1, null);
+      a.cWU().cWX().cWY();
+      a.cWU().cWW().bDh();
+      aP(-1, null);
       Log.e("MicroMsg.BakPcProcessMgr", "summerback new version not support old pc backup request toast upgrade pc");
       AppMethodBeat.o(21905);
       return;
-      this.rTS = 2;
-      this.rTR = 3;
-      cuw();
-      a(((ab)localObject).rVj, 0, null);
-      paramArrayOfByte = this.rTK;
-      h.ZvG.bh(new d.1(paramArrayOfByte));
+      this.vfi = 2;
+      this.vfh = 3;
+      cXg();
+      a(((ab)localObject).vgz, 0, null);
+      paramArrayOfByte = this.vfa;
+      com.tencent.threadpool.h.ahAA.bp(new d.1(paramArrayOfByte));
       AppMethodBeat.o(21905);
       return;
-      this.rTR = -1;
-      this.rTS = 1;
-      cuw();
-      a(((ab)localObject).rVj, 0, null);
-      if (this.rTM != null)
+      this.vfh = -1;
+      this.vfi = 1;
+      cXg();
+      a(((ab)localObject).vgz, 0, null);
+      if (this.vfc != null)
       {
-        this.rTM.cancel();
-        this.rTM = null;
+        this.vfc.cancel();
+        this.vfc = null;
       }
-      if (this.rTK != null) {
-        this.rTK.cancel();
+      if (this.vfa != null) {
+        this.vfa.cancel();
       }
-      if (this.rTN != null)
+      if (this.vfd != null)
       {
         Log.i("MicroMsg.BakCalculator", "calculator cancel.");
         Log.d("MicroMsg.BakCalculator", "calculator cancel. stack:%s", new Object[] { Util.getStack() });
         AppMethodBeat.o(21905);
         throw null;
       }
-      if (this.rTz != null)
+      if (this.veP != null)
       {
-        this.rTz.cuz();
+        this.veP.cXj();
         AppMethodBeat.o(21905);
         return;
-        this.rTR = 5;
-        this.rTS = 4;
-        cuw();
-        this.rTO = ((ab)localObject).rVj;
-        if (this.rTH != null) {
-          this.rTH.onEvent(((ab)localObject).rVj);
+        this.vfh = 5;
+        this.vfi = 4;
+        cXg();
+        this.vfe = ((ab)localObject).vgz;
+        if (this.veX != null) {
+          this.veX.onEvent(((ab)localObject).vgz);
         }
         for (;;)
         {
-          paramArrayOfByte = a.cuk().cum();
-          paramArrayOfByte.rTu += 1;
-          com.tencent.mm.plugin.backup.bakoldlogic.d.b.cuH().a(new b.a()
+          paramArrayOfByte = a.cWU().cWW();
+          paramArrayOfByte.veK += 1;
+          com.tencent.mm.plugin.backup.bakoldlogic.d.b.cXr().a(new b.a()
           {
             public final void run()
             {
               AppMethodBeat.i(21895);
-              s locals = new s();
-              if (this.rVc)
+              com.tencent.mm.plugin.backup.i.s locals = new com.tencent.mm.plugin.backup.i.s();
+              if (this.vgr)
               {
-                locals.rVQ = this.dbSize;
-                locals.rWn = (this.rVe - this.dbSize);
-                locals.rWm = this.rVd;
+                locals.vhg = this.dbSize;
+                locals.vhD = (this.vgt - this.dbSize);
+                locals.vhC = this.vgs;
                 e locale = e.this;
                 e.a(6, 0, locals);
                 com.tencent.mm.plugin.backup.g.b.a(3, new e.2(locale));
                 Log.i("MicroMsg.BakPcProcessMgr", "send restore info cmd");
-                new com.tencent.mm.plugin.backup.bakoldlogic.c.b(2).ctM();
+                new com.tencent.mm.plugin.backup.bakoldlogic.c.b(2).cWw();
                 AppMethodBeat.o(21895);
                 return;
               }
-              if ((this.dbSize > this.rVe) && (this.rVe > 0L))
+              if ((this.dbSize > this.vgt) && (this.vgt > 0L))
               {
-                locals.rVQ = this.dbSize;
-                locals.rWn = (this.rVe - this.dbSize);
+                locals.vhg = this.dbSize;
+                locals.vhD = (this.vgt - this.dbSize);
               }
               e.a(6, 14, locals);
               Log.e("MicroMsg.BakPcProcessMgr", "init TempDB error");
@@ -685,55 +684,55 @@ public final class e
           return;
           Log.i("MicroMsg.BakPcProcessMgr", "callback is null");
         }
-        this.rTR = -1;
-        this.rTS = 1;
-        cuw();
-        a(((ab)localObject).rVj, 0, null);
-        if (this.rTM != null)
+        this.vfh = -1;
+        this.vfi = 1;
+        cXg();
+        a(((ab)localObject).vgz, 0, null);
+        if (this.vfc != null)
         {
-          this.rTM.cancel();
-          this.rTM = null;
+          this.vfc.cancel();
+          this.vfc = null;
         }
-        if (this.rTL != null) {
-          this.rTL.cancel();
+        if (this.vfb != null) {
+          this.vfb.cancel();
         }
-        if (this.rTz != null)
+        if (this.veP != null)
         {
-          this.rTz.cuz();
+          this.veP.cXj();
           AppMethodBeat.o(21905);
           return;
-          a(((ab)localObject).rVj, 0, null);
-          if (this.rTK != null)
+          a(((ab)localObject).vgz, 0, null);
+          if (this.vfa != null)
           {
-            this.rTK.pause();
+            this.vfa.pause();
             AppMethodBeat.o(21905);
             return;
-            a(((ab)localObject).rVj, 0, null);
-            if (this.rTL != null)
+            a(((ab)localObject).vgz, 0, null);
+            if (this.vfb != null)
             {
-              this.rTL.pause();
+              this.vfb.pause();
               AppMethodBeat.o(21905);
               return;
-              a(((ab)localObject).rVj, 0, null);
-              if (this.rTK != null)
+              a(((ab)localObject).vgz, 0, null);
+              if (this.vfa != null)
               {
-                this.rTK.resume();
+                this.vfa.resume();
                 AppMethodBeat.o(21905);
                 return;
-                a(((ab)localObject).rVj, 0, null);
-                if (this.rTL != null)
+                a(((ab)localObject).vgz, 0, null);
+                if (this.vfb != null)
                 {
-                  this.rTL.resume();
+                  this.vfb.resume();
                   AppMethodBeat.o(21905);
                   return;
-                  a.cuk().cun().cuo();
-                  a.cuk().cum().bfq();
-                  aC(15, null);
+                  a.cWU().cWX().cWY();
+                  a.cWU().cWW().bDh();
+                  aP(15, null);
                   AppMethodBeat.o(21905);
                   return;
-                  a(((ab)localObject).rVj, 0, null);
-                  if (this.rTJ != null) {
-                    this.rTJ.cuA();
+                  a(((ab)localObject).vgz, 0, null);
+                  if (this.veZ != null) {
+                    this.veZ.cXk();
                   }
                 }
               }
@@ -744,7 +743,7 @@ public final class e
     }
   }
   
-  final void aC(int paramInt, String paramString)
+  final void aP(int paramInt, String paramString)
   {
     for (;;)
     {
@@ -756,61 +755,61 @@ public final class e
           break label391;
         }
         Log.e("MicroMsg.BakPcProcessMgr", "callbackErr socketClose");
-        this.rTR = -1;
-        this.rTS = 1;
-        cuw();
-        a.cuk().cum().rTr = 2;
-        a.cuk().cum().bfq();
-        if (this.rTH != null) {
-          this.rTH.kv(paramInt);
+        this.vfh = -1;
+        this.vfi = 1;
+        cXg();
+        a.cWU().cWW().veH = 2;
+        a.cWU().cWW().bDh();
+        if (this.veX != null) {
+          this.veX.oc(paramInt);
         }
-        if (this.rTI != null) {
-          this.rTI.kv(paramInt);
+        if (this.veY != null) {
+          this.veY.oc(paramInt);
         }
-        if (this.rTz != null) {
-          this.rTz.kv(paramInt);
+        if (this.veP != null) {
+          this.veP.oc(paramInt);
         }
-        if (this.rTJ == null) {
+        if (this.veZ == null) {
           break label391;
         }
-        this.rTJ.kv(paramInt);
+        this.veZ.oc(paramInt);
       }
       finally {}
       Log.e("MicroMsg.BakPcProcessMgr", "callbackErr ip not match or connect failed: %d", new Object[] { Integer.valueOf(paramInt) });
-      a.cuk().cum().rTr = 2;
-      a.cuk().cum().bfq();
-      cuu();
+      a.cWU().cWW().veH = 2;
+      a.cWU().cWW().bDh();
+      cXe();
       AppMethodBeat.o(21904);
       return;
-      Log.d("MicroMsg.BakPcProcessMgr", "summerbak errtype:%d, authcallback[%s], operatorcallback[%s], eventCallback[%s]", new Object[] { Integer.valueOf(paramInt), this.rTI, this.rTz, this.rTH });
+      Log.d("MicroMsg.BakPcProcessMgr", "summerbak errtype:%d, authcallback[%s], operatorcallback[%s], eventCallback[%s]", new Object[] { Integer.valueOf(paramInt), this.veY, this.veP, this.veX });
       if (paramInt == 15)
       {
-        if (this.rTI != null) {
-          this.rTI.kv(paramInt);
+        if (this.veY != null) {
+          this.veY.oc(paramInt);
         }
-        if (this.rTz != null) {
-          this.rTz.kv(paramInt);
+        if (this.veP != null) {
+          this.veP.oc(paramInt);
         }
-        if (this.rTH != null) {
-          this.rTH.EY(paramInt);
+        if (this.veX != null) {
+          this.veX.Fz(paramInt);
         }
       }
       if (paramInt == -1)
       {
-        if (this.rTI != null)
+        if (this.veY != null)
         {
-          this.rTI.kv(paramInt);
+          this.veY.oc(paramInt);
           AppMethodBeat.o(21904);
           continue;
         }
-        if (this.rTz != null)
+        if (this.veP != null)
         {
-          this.rTz.kv(paramInt);
+          this.veP.oc(paramInt);
           AppMethodBeat.o(21904);
           continue;
         }
-        if (this.rTH != null) {
-          this.rTH.EY(paramInt);
+        if (this.veX != null) {
+          this.veX.Fz(paramInt);
         }
       }
       AppMethodBeat.o(21904);
@@ -822,23 +821,23 @@ public final class e
     }
   }
   
-  public final void ctw()
+  public final void cWg()
   {
     AppMethodBeat.i(21902);
-    if (this.rTL.rUc)
+    if (this.vfb.vfr)
     {
-      f localf = this.rTL;
+      f localf = this.vfb;
       Log.i("MicroMsg.RecoverPCServer", "startMerge");
-      if (localf.rMp)
+      if (localf.uXC)
       {
         Log.i("MicroMsg.RecoverPCServer", "hasStartMerge , return");
         AppMethodBeat.o(21902);
         return;
       }
-      localf.rTF = 0;
-      a.cuk().cul().rTS = 6;
-      localf.rMp = true;
-      com.tencent.mm.plugin.backup.bakoldlogic.d.b.cuH().a(new f.4(localf));
+      localf.veV = 0;
+      a.cWU().cWV().vfi = 6;
+      localf.uXC = true;
+      com.tencent.mm.plugin.backup.bakoldlogic.d.b.cXr().a(new f.4(localf));
       AppMethodBeat.o(21902);
       return;
     }
@@ -846,11 +845,11 @@ public final class e
     AppMethodBeat.o(21902);
   }
   
-  public final boolean cus()
+  public final boolean cXc()
   {
     try
     {
-      boolean bool = this.rTT;
+      boolean bool = this.vfj;
       return bool;
     }
     finally
@@ -860,13 +859,13 @@ public final class e
     }
   }
   
-  public final void cut()
+  public final void cXd()
   {
     try
     {
-      this.rTz = null;
-      this.rTK.rTz = null;
-      this.rTL.rTz = null;
+      this.veP = null;
+      this.vfa.veP = null;
+      this.vfb.veP = null;
       return;
     }
     finally
@@ -876,26 +875,26 @@ public final class e
     }
   }
   
-  public final int cuv()
+  public final int cXf()
   {
     AppMethodBeat.i(21907);
-    Log.i("MicroMsg.BakPcProcessMgr", "getPCProgressPercent now progress:%d", new Object[] { Integer.valueOf(this.rTS) });
+    Log.i("MicroMsg.BakPcProcessMgr", "getPCProgressPercent now progress:%d", new Object[] { Integer.valueOf(this.vfi) });
     int i;
-    if ((this.rTS == 2) || (this.rTS == 3))
+    if ((this.vfi == 2) || (this.vfi == 3))
     {
-      i = this.rTK.rTE;
+      i = this.vfa.veU;
       AppMethodBeat.o(21907);
       return i;
     }
-    if ((this.rTS == 4) || (this.rTS == 5))
+    if ((this.vfi == 4) || (this.vfi == 5))
     {
-      i = this.rTL.rUf;
+      i = this.vfb.vfu;
       AppMethodBeat.o(21907);
       return i;
     }
-    if ((this.rTS == 6) || (this.rTS == 7))
+    if ((this.vfi == 6) || (this.vfi == 7))
     {
-      i = this.rTL.rUb;
+      i = this.vfb.vfq;
       AppMethodBeat.o(21907);
       return i;
     }
@@ -904,17 +903,17 @@ public final class e
     return 0;
   }
   
-  public final void ff(String paramString1, String paramString2)
+  public final void fw(String paramString1, String paramString2)
   {
-    this.rTP = paramString1;
-    this.rTQ = paramString2;
+    this.vff = paramString1;
+    this.vfg = paramString2;
   }
   
-  public final void kS(boolean paramBoolean)
+  public final void mf(boolean paramBoolean)
   {
     try
     {
-      this.rTT = paramBoolean;
+      this.vfj = paramBoolean;
       return;
     }
     finally
@@ -927,14 +926,14 @@ public final class e
   public final void pause()
   {
     AppMethodBeat.i(21903);
-    if (this.rTO == 1)
+    if (this.vfe == 1)
     {
-      this.rTK.pause();
+      this.vfa.pause();
       AppMethodBeat.o(21903);
       return;
     }
-    if (this.rTO == 6) {
-      this.rTL.pause();
+    if (this.vfe == 6) {
+      this.vfb.pause();
     }
     AppMethodBeat.o(21903);
   }
@@ -942,18 +941,18 @@ public final class e
   public static abstract interface a
     extends e.b
   {
-    public abstract void cux();
+    public abstract void cXh();
   }
   
   public static abstract interface b
   {
-    public abstract void kv(int paramInt);
+    public abstract void oc(int paramInt);
   }
   
   public static abstract interface c
     extends e.b
   {
-    public abstract void EY(int paramInt);
+    public abstract void Fz(int paramInt);
     
     public abstract void onEvent(int paramInt);
   }
@@ -961,26 +960,26 @@ public final class e
   public static abstract interface d
     extends e.b
   {
-    public abstract void EZ(int paramInt);
+    public abstract void FA(int paramInt);
     
-    public abstract void Fa(int paramInt);
+    public abstract void FB(int paramInt);
     
-    public abstract void crY();
+    public abstract void cUI();
     
-    public abstract void cuy();
+    public abstract void cXi();
     
-    public abstract void cuz();
+    public abstract void cXj();
   }
   
   public static abstract interface e
     extends e.b
   {
-    public abstract void cuA();
+    public abstract void cXk();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.e
  * JD-Core Version:    0.7.0.1
  */

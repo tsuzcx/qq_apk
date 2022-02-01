@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.facedetect.ui;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,17 +23,17 @@ import java.lang.ref.WeakReference;
 
 public final class FaceTutorial
 {
-  View nBk;
-  Animation wAd;
+  View qAv;
+  Animation zWo;
   
   public FaceTutorial()
   {
     AppMethodBeat.i(104045);
-    this.nBk = null;
-    this.wAd = null;
+    this.qAv = null;
+    this.zWo = null;
     Log.i("MicroMsg.FaceTutorial", "initFaceTutorial");
-    this.wAd = AnimationUtils.loadAnimation(MMApplicationContext.getContext(), a.a.alpha_out);
-    this.wAd.setDuration(500L);
+    this.zWo = AnimationUtils.loadAnimation(MMApplicationContext.getContext(), a.a.alpha_out);
+    this.zWo.setDuration(500L);
     AppMethodBeat.o(104045);
   }
   
@@ -42,40 +41,39 @@ public final class FaceTutorial
   {
     AppMethodBeat.i(104046);
     Log.i("MicroMsg.FaceTutorial", "dismiss()");
-    if (this.nBk.getVisibility() == 0) {
+    if (this.qAv.getVisibility() == 0) {
       MMHandlerThread.postToMainThread(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(104038);
-          FaceTutorial.this.wAd.setAnimationListener(new Animation.AnimationListener()
+          AppMethodBeat.i(271905);
+          FaceTutorial.this.zWo.setAnimationListener(new Animation.AnimationListener()
           {
             public final void onAnimationEnd(Animation paramAnonymous2Animation)
             {
-              AppMethodBeat.i(104037);
-              FaceTutorial.this.nBk.setVisibility(8);
-              AppMethodBeat.o(104037);
+              AppMethodBeat.i(271912);
+              FaceTutorial.this.qAv.setVisibility(8);
+              AppMethodBeat.o(271912);
             }
             
             public final void onAnimationRepeat(Animation paramAnonymous2Animation) {}
             
             public final void onAnimationStart(Animation paramAnonymous2Animation) {}
           });
-          FaceTutorial.this.nBk.startAnimation(FaceTutorial.this.wAd);
-          AppMethodBeat.o(104038);
+          FaceTutorial.this.qAv.startAnimation(FaceTutorial.this.zWo);
+          AppMethodBeat.o(271905);
         }
       });
     }
     AppMethodBeat.o(104046);
   }
   
-  @SuppressLint({"ValidFragment"})
   public static class TutorialOne
     extends Fragment
   {
-    private View nBk;
-    private Button wAg;
-    private WeakReference<FaceTutorial> wAh;
+    private View qAv;
+    private Button zWr;
+    private WeakReference<FaceTutorial> zWs;
     
     public void onCreate(Bundle paramBundle)
     {
@@ -89,16 +87,16 @@ public final class FaceTutorial
     {
       AppMethodBeat.i(104042);
       Log.i("MicroMsg.FaceTutorialUI.TutorialTwo", "carson: onCreateView()");
-      this.nBk = paramLayoutInflater.inflate(a.g.face_tutorial_fragment_2, paramViewGroup, false);
-      this.wAg = ((Button)this.nBk.findViewById(a.e.face_tt_confirm_btn));
-      this.wAg.setOnClickListener(new View.OnClickListener()
+      this.qAv = paramLayoutInflater.inflate(a.g.face_tutorial_fragment_2, paramViewGroup, false);
+      this.zWr = ((Button)this.qAv.findViewById(a.e.face_tt_confirm_btn));
+      this.zWr.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(104040);
           b localb = new b();
-          localb.bn(paramAnonymousView);
-          a.c("com/tencent/mm/plugin/facedetect/ui/FaceTutorial$TutorialOne$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          a.c("com/tencent/mm/plugin/facedetect/ui/FaceTutorial$TutorialOne$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           if (FaceTutorial.TutorialOne.a(FaceTutorial.TutorialOne.this).get() != null) {
             ((FaceTutorial)FaceTutorial.TutorialOne.a(FaceTutorial.TutorialOne.this).get()).dismiss();
           }
@@ -111,7 +109,7 @@ public final class FaceTutorial
           }
         }
       });
-      paramLayoutInflater = this.nBk;
+      paramLayoutInflater = this.qAv;
       AppMethodBeat.o(104042);
       return paramLayoutInflater;
     }
@@ -127,7 +125,7 @@ public final class FaceTutorial
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.ui.FaceTutorial
  * JD-Core Version:    0.7.0.1
  */

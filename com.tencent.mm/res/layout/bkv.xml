@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/o4" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:id="@id/iww" android:background="@color/al2" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/it2" android:layout_width="fill_parent" android:layout_marginLeft="@dimen/hs" android:layout_marginRight="@dimen/hs" style="@style/hx" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bf0" android:paddingTop="@dimen/k5" android:paddingBottom="@dimen/hs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginRight="@dimen/hs">
-        <TextView android:textSize="@dimen/is" android:textColor="@color/FG_0" android:ellipsize="end" android:gravity="center|left" android:id="@id/ipm" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/wz" android:text="@string/wx" android:maxLines="2" android:layout_weight="1.0" android:lineSpacingExtra="@dimen/k_" />
-        <RelativeLayout android:id="@id/bgx" android:layout_width="@dimen/wz" android:layout_height="@dimen/wz" android:layout_marginLeft="@dimen/hs">
-            <ImageView android:id="@id/bgv" android:background="@color/wt" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-        </RelativeLayout>
-    </LinearLayout>
+    <FrameLayout android:id="@id/e_w" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </LinearLayout>

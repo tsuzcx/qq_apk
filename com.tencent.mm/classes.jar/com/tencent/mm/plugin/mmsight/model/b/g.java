@@ -1,54 +1,54 @@
 package com.tencent.mm.plugin.mmsight.model.b;
 
 import android.os.Process;
-import com.tencent.e.i.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.segment.MP4MuxerJNI;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.threadpool.i.b;
 
 public final class g
 {
-  a FcA;
-  int Fcr;
-  int Fcs;
+  int KYa;
+  int KYb;
+  a KYj;
   int bitrate;
   int frameCount = 0;
   int frameRate;
   boolean isStart = false;
-  int lJm;
-  int lJn;
-  int nqW;
-  int nqX;
-  int targetHeight;
-  int targetWidth;
+  int nxO;
+  int nxP;
+  int oBO;
+  int oBP;
+  int qpD;
+  int qpE;
   
   public g(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9)
   {
-    this.nqW = paramInt1;
-    this.nqX = paramInt2;
-    this.targetWidth = paramInt3;
-    this.targetHeight = paramInt4;
+    this.qpD = paramInt1;
+    this.qpE = paramInt2;
+    this.nxO = paramInt3;
+    this.nxP = paramInt4;
     this.bitrate = paramInt5;
     this.frameRate = paramInt6;
-    this.lJm = 2;
-    this.lJn = paramInt7;
-    this.Fcr = paramInt8;
-    this.Fcs = paramInt9;
+    this.oBO = 2;
+    this.oBP = paramInt7;
+    this.KYa = paramInt8;
+    this.KYb = paramInt9;
   }
   
   final class a
     extends b
   {
-    volatile int kUo;
-    int lhU;
-    final Object lik;
-    boolean mjI;
+    int nMD;
+    final Object nMT;
+    volatile int nzX;
+    boolean pdf;
     
     private a()
     {
       AppMethodBeat.i(89638);
-      this.lik = new Object();
+      this.nMT = new Object();
       AppMethodBeat.o(89638);
     }
     
@@ -60,32 +60,32 @@ public final class g
     public final void run()
     {
       AppMethodBeat.i(89639);
-      if (this.lhU == -1)
+      if (this.nMD == -1)
       {
-        this.lhU = Process.myTid();
+        this.nMD = Process.myTid();
         Process.setThreadPriority(Process.myTid(), -2);
-        Log.i("MicroMsg.MMSightRemuxX264Encoder", "encodeTid: %s", new Object[] { Integer.valueOf(this.lhU) });
+        Log.i("MicroMsg.MMSightRemuxX264Encoder", "encodeTid: %s", new Object[] { Integer.valueOf(this.nMD) });
       }
-      this.kUo = 0;
+      this.nzX = 0;
       for (;;)
       {
         int i;
-        synchronized (this.lik)
+        synchronized (this.nMT)
         {
-          if (this.mjI) {
+          if (this.pdf) {
             break label193;
           }
           l = Util.currentTicks();
           Log.i("MicroMsg.MMSightRemuxX264Encoder", "try trigger encode");
-          i = MP4MuxerJNI.triggerEncodeForSegmentLock(Math.max(0, this.kUo), false);
-          Log.i("MicroMsg.MMSightRemuxX264Encoder", "ing: trigger encode use %dms, Encode index[%d, %d), threadId: %s", new Object[] { Long.valueOf(Util.ticksToNow(l)), Integer.valueOf(this.kUo), Integer.valueOf(i), Long.valueOf(Thread.currentThread().getId()) });
-          int j = this.kUo;
+          i = MP4MuxerJNI.triggerEncodeForSegmentLock(Math.max(0, this.nzX), false);
+          Log.i("MicroMsg.MMSightRemuxX264Encoder", "ing: trigger encode use %dms, Encode index[%d, %d), threadId: %s", new Object[] { Long.valueOf(Util.ticksToNow(l)), Integer.valueOf(this.nzX), Integer.valueOf(i), Long.valueOf(Thread.currentThread().getId()) });
+          int j = this.nzX;
           if (i != j) {}
         }
         try
         {
           Thread.sleep(10L);
-          this.kUo = i;
+          this.nzX = i;
           continue;
           localObject2 = finally;
           AppMethodBeat.o(89639);
@@ -101,8 +101,8 @@ public final class g
       }
       label193:
       long l = Util.currentTicks();
-      this.kUo = MP4MuxerJNI.triggerEncodeForSegmentLock(this.kUo, true);
-      Log.i("MicroMsg.MMSightRemuxX264Encoder", "end: trigger encode use %dms, curEncode index %d, threadId: %s", new Object[] { Long.valueOf(Util.ticksToNow(l)), Integer.valueOf(this.kUo), Long.valueOf(Thread.currentThread().getId()) });
+      this.nzX = MP4MuxerJNI.triggerEncodeForSegmentLock(this.nzX, true);
+      Log.i("MicroMsg.MMSightRemuxX264Encoder", "end: trigger encode use %dms, curEncode index %d, threadId: %s", new Object[] { Long.valueOf(Util.ticksToNow(l)), Integer.valueOf(this.nzX), Long.valueOf(Thread.currentThread().getId()) });
       AppMethodBeat.o(89639);
     }
   }

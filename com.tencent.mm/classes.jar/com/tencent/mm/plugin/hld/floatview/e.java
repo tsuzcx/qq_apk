@@ -6,43 +6,38 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.hld.a.f;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/floatview/ImeLongClickFloatViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "composition", "", "compositionTv", "Landroid/widget/TextView;", "rootView", "Landroid/widget/RelativeLayout;", "kotlin.jvm.PlatformType", "fillContent", "", "onSelect", "select", "", "IFloatViewListener", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/floatview/ImeLongClickFloatViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "composition", "", "compositionTv", "Landroid/widget/TextView;", "rootView", "Landroid/widget/RelativeLayout;", "kotlin.jvm.PlatformType", "fillContent", "", "onSelect", "select", "", "IFloatViewListener", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
   extends RecyclerView.v
 {
-  private final RelativeLayout DtO;
-  TextView Dxt;
-  String Dxu;
+  private final RelativeLayout Ikt;
+  TextView Jqy;
+  String Jqz;
   
   public e(View paramView)
   {
     super(paramView);
-    AppMethodBeat.i(216016);
-    this.DtO = ((RelativeLayout)paramView.findViewById(a.f.root));
+    AppMethodBeat.i(312781);
+    this.Ikt = ((RelativeLayout)paramView.findViewById(a.f.root));
     paramView = paramView.findViewById(a.f.float_composition_item_tv);
-    p.j(paramView, "itemView.findViewById(R.…loat_composition_item_tv)");
-    this.Dxt = ((TextView)paramView);
-    AppMethodBeat.o(216016);
+    s.s(paramView, "itemView.findViewById(R.…loat_composition_item_tv)");
+    this.Jqy = ((TextView)paramView);
+    AppMethodBeat.o(312781);
   }
   
-  public final void sF(boolean paramBoolean)
+  public final void wL(boolean paramBoolean)
   {
-    AppMethodBeat.i(216015);
-    RelativeLayout localRelativeLayout = this.DtO;
-    p.j(localRelativeLayout, "rootView");
-    if (localRelativeLayout.isSelected() != paramBoolean)
-    {
-      localRelativeLayout = this.DtO;
-      p.j(localRelativeLayout, "rootView");
-      localRelativeLayout.setSelected(paramBoolean);
+    AppMethodBeat.i(312793);
+    if (this.Ikt.isSelected() != paramBoolean) {
+      this.Ikt.setSelected(paramBoolean);
     }
-    AppMethodBeat.o(216015);
+    AppMethodBeat.o(312793);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/floatview/ImeLongClickFloatViewHolder$IFloatViewListener;", "", "notifyDataSetChanged", "", "plugin-hld_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/floatview/ImeLongClickFloatViewHolder$IFloatViewListener;", "", "notifyDataSetChanged", "", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface a
   {
     public abstract void notifyDataSetChanged();

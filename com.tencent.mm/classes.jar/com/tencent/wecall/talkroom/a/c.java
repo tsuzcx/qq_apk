@@ -1,6 +1,6 @@
 package com.tencent.wecall.talkroom.a;
 
-import com.google.b.a.e;
+import com.google.d.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.pb.common.b.a.a.a.aa;
 import com.tencent.pb.common.b.a.a.a.b;
@@ -17,10 +17,10 @@ public final class c
     a.b localb = new a.b();
     try
     {
-      localb.ZeQ = paramString;
-      localb.bnA = paramInt1;
-      aAc(3);
-      aAd(paramInt2);
+      localb.ahdt = paramString;
+      localb.reason = paramInt1;
+      aGP(3);
+      aGQ(paramInt2);
       c(183, localb);
       AppMethodBeat.o(62528);
       return;
@@ -34,7 +34,7 @@ public final class c
     }
   }
   
-  public final Object dn(byte[] paramArrayOfByte)
+  public final Object dp(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62529);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
@@ -62,14 +62,14 @@ public final class c
     return 208;
   }
   
-  public final String ikF()
+  public final String jQW()
   {
     return "CsCmd.Cmd_V_CSCancelCreateVoiceGroupReq";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -3,11 +3,10 @@ package com.tencent.mm.sdk.vendor;
 import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
 import kotlin.n.n;
-import kotlin.t;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/sdk/vendor/Honor;", "", "()V", "TAG", "", "isHONOR", "", "Ljava/lang/Boolean;", "ifHONOR", "wechat-commons-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/sdk/vendor/Honor;", "", "()V", "TAG", "", "isHONOR", "", "Ljava/lang/Boolean;", "ifHONOR", "wechat-commons-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class Honor
 {
   public static final Honor INSTANCE;
@@ -16,22 +15,22 @@ public final class Honor
   
   static
   {
-    AppMethodBeat.i(209979);
+    AppMethodBeat.i(243182);
     INSTANCE = new Honor();
-    AppMethodBeat.o(209979);
+    AppMethodBeat.o(243182);
   }
   
   public final boolean ifHONOR()
   {
     boolean bool = true;
-    AppMethodBeat.i(209978);
+    AppMethodBeat.i(243186);
     Object localObject;
     if (isHONOR == null)
     {
       localObject = Build.BRAND;
       String str = Build.MANUFACTURER;
-      Log.i("MicroMsg.Vendor.Honor", "Build.BRAND:" + (String)localObject + ", manufacture:" + str);
-      if ((!n.L("HONOR", (String)localObject, true)) || (!n.L("HONOR", str, true))) {
+      Log.i("MicroMsg.Vendor.Honor", "Build.BRAND:" + localObject + ", manufacture:" + str);
+      if ((!n.T("HONOR", (String)localObject, true)) || (!n.T("HONOR", str, true))) {
         break label103;
       }
     }
@@ -42,14 +41,14 @@ public final class Honor
       if (localObject != null) {
         break;
       }
-      localObject = new t("null cannot be cast to non-null type kotlin.Boolean");
-      AppMethodBeat.o(209978);
+      localObject = new NullPointerException("null cannot be cast to non-null type kotlin.Boolean");
+      AppMethodBeat.o(243186);
       throw ((Throwable)localObject);
       label103:
       bool = false;
     }
     bool = ((Boolean)localObject).booleanValue();
-    AppMethodBeat.o(209978);
+    AppMethodBeat.o(243186);
     return bool;
   }
 }

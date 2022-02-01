@@ -1,20 +1,19 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.aa;
-import com.tencent.mm.an.aa.a;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.q;
-import com.tencent.mm.modelgeo.b.a;
-import com.tencent.mm.plugin.appbrand.utils.h;
-import com.tencent.mm.protocal.protobuf.eyi;
-import com.tencent.mm.protocal.protobuf.eyj;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import com.tencent.mm.storagebase.h;
 
-public final class t$c {}
+final class t$c
+  extends MAutoStorage<t.a>
+{
+  t$c(h paramh)
+  {
+    super(paramh, t.a.nVV, "AppBrandStarApp", t.a.INDEX_CREATE);
+  }
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.t.c
  * JD-Core Version:    0.7.0.1
  */

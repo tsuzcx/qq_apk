@@ -1,34 +1,13 @@
 package com.tencent.mm.plugin.finder.webview;
 
-import com.tencent.mm.ui.widget.MMWebView;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/webview/IFinderWebViewHelper;", "", "addWebViewStateListener", "", "listener", "Lcom/tencent/mm/plugin/finder/webview/IFinderWebViewHelper$IWebViewStateListener;", "clearWebViewStateListener", "getWithInitWebView", "Lcom/tencent/mm/ui/widget/MMWebView;", "release", "reload", "removeWebViewStateListener", "IWebViewStateListener", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/webview/IDetectPosProvider;", "", "provideXPos", "", "provideYPos", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface k
 {
-  public abstract void a(a parama);
+  public abstract float fqe();
   
-  public abstract MMWebView elR();
-  
-  public abstract void release();
-  
-  public abstract void reload();
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/webview/IFinderWebViewHelper$IWebViewStateListener;", "", "onCreateBoxWebViewEnd", "", "enablePreloadWebView", "", "enablePreloadFromFindTab", "useCache", "onCreateBoxWebViewStart", "onError", "onExecuteActionCode", "actionCode", "", "data", "Landroid/os/Bundle;", "onInitWebViewEnd", "onInitWebViewStart", "onWebViewReady", "plugin-finder_release"})
-  public static abstract interface a
-  {
-    public abstract void elM();
-    
-    public abstract void elN();
-    
-    public abstract void elO();
-    
-    public abstract void elP();
-    
-    public abstract void elQ();
-    
-    public abstract void onError();
-  }
+  public abstract float fqf();
 }
 
 

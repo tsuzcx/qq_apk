@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:focusable="true" android:focusableInTouchMode="true" style="@style/a0y"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/ga8" wallet:titleText="@string/ioy" wallet:titleWidth="@dimen/aoz" style="@style/ha" />
-    <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/gaj" wallet:layoutRes="@layout/c_l" wallet:titleWidth="@dimen/aoz" style="@style/a0v" />
-</LinearLayout>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/flc" android:background="@drawable/axr" android:layout_width="fill_parent" android:layout_height="58.0dip" android:layout_marginTop="32.0dip">
+        <TextView android:textSize="@dimen/l" android:textColor="@color/a7b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="@string/k1u" android:layout_centerVertical="true" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="7.0dip" android:layout_height="13.0dip" android:layout_marginRight="19.0dip" android:src="@raw/icons_outlined_arrow" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:iconColor="@color/FG_2" />
+    </RelativeLayout>
+</RelativeLayout>

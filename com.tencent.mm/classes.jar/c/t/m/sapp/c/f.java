@@ -13,15 +13,15 @@ public class f
   
   public f(Context paramContext)
   {
-    AppMethodBeat.i(254650);
+    AppMethodBeat.i(186146);
     b = paramContext;
     n.a(paramContext).a();
-    AppMethodBeat.o(254650);
+    AppMethodBeat.o(186146);
   }
   
   public static f a(Context paramContext)
   {
-    AppMethodBeat.i(254651);
+    AppMethodBeat.i(186279);
     if (c == null) {}
     try
     {
@@ -29,12 +29,12 @@ public class f
         c = new f(paramContext);
       }
       paramContext = c;
-      AppMethodBeat.o(254651);
+      AppMethodBeat.o(186279);
       return paramContext;
     }
     finally
     {
-      AppMethodBeat.o(254651);
+      AppMethodBeat.o(186279);
     }
   }
   
@@ -44,24 +44,24 @@ public class f
     {
       try
       {
-        AppMethodBeat.i(254652);
+        AppMethodBeat.i(186284);
         Object localObject = a;
         if (localObject != null)
         {
-          AppMethodBeat.o(254652);
+          AppMethodBeat.o(186284);
           return localObject;
         }
         localObject = b;
         if (localObject == null)
         {
           localObject = null;
-          AppMethodBeat.o(254652);
+          AppMethodBeat.o(186284);
           continue;
         }
         d.a(localContext).b("load_sapp");
       }
       finally {}
-      q.e = System.currentTimeMillis();
+      r.e = System.currentTimeMillis();
       DexClassLoader localDexClassLoader = h.a(b).b();
       a = localDexClassLoader;
       if (localDexClassLoader != null) {
@@ -70,24 +70,23 @@ public class f
       b();
       d.a(b).c("load_sapp");
       localDexClassLoader = a;
-      AppMethodBeat.o(254652);
+      AppMethodBeat.o(186284);
     }
   }
   
   public void b()
   {
-    AppMethodBeat.i(254654);
+    AppMethodBeat.i(186288);
     try
     {
-      Object localObject = b;
-      localObject = q.e(q.a((Context)localObject, "__SP_Tencent_Loc_COMP_INFO__sapp_", ""));
-      new Thread(new i(b, (List)localObject, false)).start();
-      AppMethodBeat.o(254654);
+      Object localObject1 = b;
+      localObject1 = r.e(r.b((Context)localObject1, "__SP_Tencent_Loc_COMP_INFO__sapp_", ""));
+      new Thread(new i(b, (List)localObject1, false)).start();
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      AppMethodBeat.o(254654);
+      AppMethodBeat.o(186288);
     }
   }
   
@@ -99,7 +98,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     c.t.m.sapp.c.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,73 +1,104 @@
 package com.tencent.mm.aj.a;
 
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import androidx.compose.ui.d.l;
+import androidx.compose.ui.e.aa;
+import androidx.compose.ui.e.b.e;
+import androidx.compose.ui.e.u;
+import androidx.compose.ui.n.n;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.f;
-import com.tencent.mm.aj.k.b;
-import com.tencent.mm.i.d;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.h.a;
+import kotlin.p;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/message/piece/AppMsgContentFilePiece;", "Lcom/tencent/mm/message/AppContentPiece;", "()V", "fileuploadtoken", "", "getFileuploadtoken", "()Ljava/lang/String;", "setFileuploadtoken", "(Ljava/lang/String;)V", "overwriteNewMsgId", "", "getOverwriteNewMsgId", "()J", "setOverwriteNewMsgId", "(J)V", "cloneContent", "get", "values", "", "key", "makeContent", "", "sb", "Ljava/lang/StringBuilder;", "Lkotlin/text/StringBuilder;", "content", "Lcom/tencent/mm/message/AppMessage$Content;", "cdnAttachId", "cdnResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "thumbWidth", "", "thumbHeight", "parseContent", "", "reset", "Companion", "plugin-comm_release"})
-public final class b
-  extends f
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/mm_compose/painter/DrawablePainter;", "Landroidx/compose/ui/graphics/painter/Painter;", "drawable", "Landroid/graphics/drawable/Drawable;", "(Landroid/graphics/drawable/Drawable;)V", "intrinsicSize", "Landroidx/compose/ui/geometry/Size;", "getIntrinsicSize-NH-jbRc", "()J", "applyAlpha", "", "alpha", "", "applyColorFilter", "colorFilter", "Landroidx/compose/ui/graphics/ColorFilter;", "applyLayoutDirection", "layoutDirection", "Landroidx/compose/ui/unit/LayoutDirection;", "onDraw", "", "Landroidx/compose/ui/graphics/drawscope/DrawScope;", "compose-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+final class b
+  extends androidx.compose.ui.e.c.c
 {
-  public static final a lqD;
-  public long lqB;
-  public String lqC = "";
+  private final Drawable drawable;
   
-  static
+  public b(Drawable paramDrawable)
   {
-    AppMethodBeat.i(243560);
-    lqD = new a((byte)0);
-    AppMethodBeat.o(243560);
+    AppMethodBeat.i(238720);
+    this.drawable = paramDrawable;
+    this.drawable.setBounds(0, 0, this.drawable.getIntrinsicWidth(), this.drawable.getIntrinsicHeight());
+    AppMethodBeat.o(238720);
   }
   
-  public final void OX(String paramString)
+  public final boolean S(float paramFloat)
   {
-    AppMethodBeat.i(243552);
-    p.k(paramString, "<set-?>");
-    this.lqC = paramString;
-    AppMethodBeat.o(243552);
+    AppMethodBeat.i(238742);
+    this.drawable.setAlpha(kotlin.k.k.bQ(a.eH(255.0F * paramFloat), 0, 255));
+    AppMethodBeat.o(238742);
+    return true;
   }
   
-  public final void a(StringBuilder paramStringBuilder, k.b paramb, String paramString, d paramd, int paramInt1, int paramInt2) {}
-  
-  public final void a(Map<String, String> paramMap, k.b paramb)
+  public final void b(e parame)
   {
-    AppMethodBeat.i(243558);
-    p.k(paramMap, "values");
-    p.k(paramb, "content");
-    if (paramb.type == 6)
+    AppMethodBeat.i(238735);
+    s.u(parame, "<this>");
+    u localu = parame.uG().uH();
+    this.drawable.setBounds(0, 0, a.eH(androidx.compose.ui.d.k.Q(parame.sf())), a.eH(androidx.compose.ui.d.k.R(parame.sf())));
+    try
     {
-      this.lqB = Util.getLong((String)paramMap.get(".msg.appmsg.appattach.overwrite_newmsgid"), 0L);
-      paramMap = Util.nullAsNil((String)paramMap.get(".msg.appmsg.appattach.".concat(String.valueOf("fileuploadtoken"))));
-      p.j(paramMap, "Util.nullAsNil(values[\".….appmsg.appattach.$key\"])");
-      this.lqC = paramMap;
+      localu.sz();
+      this.drawable.draw(androidx.compose.ui.e.c.a(localu));
+      return;
     }
-    AppMethodBeat.o(243558);
+    finally
+    {
+      localu.restore();
+      AppMethodBeat.o(238735);
+    }
   }
   
-  public final f aPj()
+  public final boolean c(aa paramaa)
   {
-    AppMethodBeat.i(243554);
-    Object localObject = new b();
-    ((b)localObject).lqB = this.lqB;
-    ((b)localObject).lqC = this.lqC;
-    localObject = (f)localObject;
-    AppMethodBeat.o(243554);
-    return localObject;
+    AppMethodBeat.i(238750);
+    Drawable localDrawable = this.drawable;
+    if (paramaa == null) {}
+    for (paramaa = null;; paramaa = androidx.compose.ui.e.d.a(paramaa))
+    {
+      localDrawable.setColorFilter(paramaa);
+      AppMethodBeat.o(238750);
+      return true;
+    }
   }
   
-  public final void reset()
+  public final boolean c(n paramn)
   {
-    this.lqB = 0L;
-    this.lqC = "";
+    int i = 0;
+    AppMethodBeat.i(238759);
+    s.u(paramn, "layoutDirection");
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      Drawable localDrawable = this.drawable;
+      switch (a.$EnumSwitchMapping$0[paramn.ordinal()])
+      {
+      default: 
+        paramn = new p();
+        AppMethodBeat.o(238759);
+        throw paramn;
+      case 2: 
+        i = 1;
+      }
+      boolean bool = localDrawable.setLayoutDirection(i);
+      AppMethodBeat.o(238759);
+      return bool;
+    }
+    AppMethodBeat.o(238759);
+    return false;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/message/piece/AppMsgContentFilePiece$Companion;", "", "()V", "TAG", "", "plugin-comm_release"})
-  public static final class a {}
+  public final long uM()
+  {
+    AppMethodBeat.i(238726);
+    long l = l.z(this.drawable.getIntrinsicWidth(), this.drawable.getIntrinsicHeight());
+    AppMethodBeat.o(238726);
+    return l;
+  }
 }
 
 

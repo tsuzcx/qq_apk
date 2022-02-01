@@ -15,7 +15,7 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class MultiSummaryPreference
   extends Preference
 {
-  public String[] Hab;
+  public String[] MYg;
   private Context context;
   public String title;
   
@@ -42,15 +42,15 @@ public class MultiSummaryPreference
     AppMethodBeat.i(27268);
     super.onBindView(paramView);
     ((TextView)paramView.findViewById(R.h.title)).setText(this.title);
-    LinearLayout localLinearLayout1 = (LinearLayout)paramView.findViewById(R.h.dVP);
-    LinearLayout localLinearLayout2 = (LinearLayout)paramView.findViewById(R.h.dVQ);
+    LinearLayout localLinearLayout1 = (LinearLayout)paramView.findViewById(R.h.fYq);
+    LinearLayout localLinearLayout2 = (LinearLayout)paramView.findViewById(R.h.fYr);
     localLinearLayout1.setVisibility(8);
     localLinearLayout2.setVisibility(8);
-    if ((this.Hab != null) && (this.Hab.length > 0))
+    if ((this.MYg != null) && (this.MYg.length > 0))
     {
-      if (this.Hab.length == 1)
+      if (this.MYg.length == 1)
       {
-        ((TextView)localLinearLayout2.findViewById(R.h.dVS)).setText(this.Hab[0]);
+        ((TextView)localLinearLayout2.findViewById(R.h.fYt)).setText(this.MYg[0]);
         localLinearLayout2.setVisibility(0);
       }
       for (;;)
@@ -58,11 +58,11 @@ public class MultiSummaryPreference
         ((View)paramView.findViewById(R.h.right_arrow).getParent()).setVisibility(8);
         AppMethodBeat.o(27268);
         return;
-        if (this.Hab.length == 2)
+        if (this.MYg.length == 2)
         {
-          ((TextView)localLinearLayout1.findViewById(R.h.dVR)).setText(this.Hab[0]);
+          ((TextView)localLinearLayout1.findViewById(R.h.fYs)).setText(this.MYg[0]);
           localLinearLayout1.setVisibility(0);
-          ((TextView)localLinearLayout2.findViewById(R.h.dVS)).setText(this.Hab[1]);
+          ((TextView)localLinearLayout2.findViewById(R.h.fYt)).setText(this.MYg[1]);
           localLinearLayout2.setVisibility(0);
         }
       }
@@ -78,14 +78,14 @@ public class MultiSummaryPreference
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
     ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(R.i.ejl, localViewGroup);
+    localLayoutInflater.inflate(R.i.gmm, localViewGroup);
     AppMethodBeat.o(27267);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.MultiSummaryPreference
  * JD-Core Version:    0.7.0.1
  */

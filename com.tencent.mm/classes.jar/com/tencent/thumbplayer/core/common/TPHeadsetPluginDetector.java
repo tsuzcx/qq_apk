@@ -32,19 +32,19 @@ public class TPHeadsetPluginDetector
   
   static
   {
-    AppMethodBeat.i(222828);
+    AppMethodBeat.i(227860);
     isInitted = false;
     hasRegisterReceiver = false;
     mContextRef = null;
     mReceiver = null;
     listeners = new LinkedList();
     mCurOutputs = null;
-    AppMethodBeat.o(222828);
+    AppMethodBeat.o(227860);
   }
   
   public static void addHeadsetPluginListener(HeadsetPluginListener paramHeadsetPluginListener)
   {
-    AppMethodBeat.i(222805);
+    AppMethodBeat.i(227777);
     try
     {
       if ((listeners.add(paramHeadsetPluginListener)) && (!hasRegisterReceiver))
@@ -56,13 +56,13 @@ public class TPHeadsetPluginDetector
     }
     finally
     {
-      AppMethodBeat.o(222805);
+      AppMethodBeat.o(227777);
     }
   }
   
   public static void deinit()
   {
-    AppMethodBeat.i(222799);
+    AppMethodBeat.i(227748);
     try
     {
       if ((!isInitted) || (mContextRef == null)) {
@@ -75,45 +75,45 @@ public class TPHeadsetPluginDetector
     }
     finally
     {
-      AppMethodBeat.o(222799);
+      AppMethodBeat.o(227748);
     }
   }
   
   private static AudioManager getAudioManager()
   {
-    AppMethodBeat.i(222823);
+    AppMethodBeat.i(227827);
     if ((!isInitted) || (mContextRef == null))
     {
       TPNativeLog.printLog(4, "TPHeadsetPluginDetector", "getAudioManager failed, HeadsetPluginDetector is not init yet!");
-      AppMethodBeat.o(222823);
+      AppMethodBeat.o(227827);
       return null;
     }
     Object localObject = (Context)mContextRef.get();
     if (localObject == null)
     {
       TPNativeLog.printLog(4, "TPHeadsetPluginDetector", "getAudioManager failed, context is null, maybe is invalid!");
-      AppMethodBeat.o(222823);
+      AppMethodBeat.o(227827);
       return null;
     }
     localObject = (AudioManager)((Context)localObject).getApplicationContext().getSystemService("audio");
     if (localObject == null)
     {
       TPNativeLog.printLog(4, "TPHeadsetPluginDetector", "getAudioManager failed, audioMgr is null!");
-      AppMethodBeat.o(222823);
+      AppMethodBeat.o(227827);
       return null;
     }
-    AppMethodBeat.o(222823);
+    AppMethodBeat.o(227827);
     return localObject;
   }
   
   private static Set<Integer> getAudioOutputs()
   {
-    AppMethodBeat.i(222811);
+    AppMethodBeat.i(227800);
     HashSet localHashSet = new HashSet();
     Object localObject1 = getAudioManager();
     if (localObject1 == null)
     {
-      AppMethodBeat.o(222811);
+      AppMethodBeat.o(227800);
       return localHashSet;
     }
     if (Build.VERSION.SDK_INT >= 23)
@@ -152,11 +152,10 @@ public class TPHeadsetPluginDetector
         localHashSet.add(Integer.valueOf(2));
       }
     }
-    AppMethodBeat.o(222811);
+    AppMethodBeat.o(227800);
     return localHashSet;
   }
   
-  @TPMethodCalledByNative
   public static Set<Integer> getCurrentRoutes()
   {
     return mCurOutputs;
@@ -164,7 +163,7 @@ public class TPHeadsetPluginDetector
   
   public static void init(Context paramContext)
   {
-    AppMethodBeat.i(222796);
+    AppMethodBeat.i(227738);
     try
     {
       if (isInitted) {
@@ -178,64 +177,61 @@ public class TPHeadsetPluginDetector
     }
     finally
     {
-      AppMethodBeat.o(222796);
+      AppMethodBeat.o(227738);
     }
   }
   
   private static void initCurrentOutputs()
   {
-    AppMethodBeat.i(222808);
+    AppMethodBeat.i(227794);
     mCurOutputs = getAudioOutputs();
-    AppMethodBeat.o(222808);
+    AppMethodBeat.o(227794);
   }
   
-  @TPMethodCalledByNative
   public static boolean isAudioRouteTypeOn(int paramInt)
   {
-    AppMethodBeat.i(222804);
+    AppMethodBeat.i(227765);
     if (mCurOutputs == null)
     {
-      AppMethodBeat.o(222804);
+      AppMethodBeat.o(227765);
       return false;
     }
     boolean bool = mCurOutputs.contains(Integer.valueOf(paramInt));
-    AppMethodBeat.o(222804);
+    AppMethodBeat.o(227765);
     return bool;
   }
   
-  @TPMethodCalledByNative
   public static boolean isBluetoothPlugin()
   {
-    AppMethodBeat.i(222802);
+    AppMethodBeat.i(227757);
     AudioManager localAudioManager = getAudioManager();
     if (localAudioManager == null)
     {
-      AppMethodBeat.o(222802);
+      AppMethodBeat.o(227757);
       return false;
     }
     boolean bool = localAudioManager.isBluetoothA2dpOn();
-    AppMethodBeat.o(222802);
+    AppMethodBeat.o(227757);
     return bool;
   }
   
-  @TPMethodCalledByNative
   public static boolean isHeadsetPlugin()
   {
-    AppMethodBeat.i(222801);
+    AppMethodBeat.i(227753);
     AudioManager localAudioManager = getAudioManager();
     if (localAudioManager == null)
     {
-      AppMethodBeat.o(222801);
+      AppMethodBeat.o(227753);
       return false;
     }
     boolean bool = localAudioManager.isWiredHeadsetOn();
-    AppMethodBeat.o(222801);
+    AppMethodBeat.o(227753);
     return bool;
   }
   
   private static void notifyAudioOutputStateChange(Set<Integer> paramSet1, Set<Integer> paramSet2)
   {
-    AppMethodBeat.i(222821);
+    AppMethodBeat.i(227821);
     int j = 1;
     int i = j;
     if (paramSet1 != null)
@@ -255,7 +251,7 @@ public class TPHeadsetPluginDetector
     }
     if (i == 0)
     {
-      AppMethodBeat.o(222821);
+      AppMethodBeat.o(227821);
       return;
     }
     mCurOutputs = paramSet2;
@@ -268,48 +264,48 @@ public class TPHeadsetPluginDetector
     }
     finally
     {
-      AppMethodBeat.o(222821);
+      AppMethodBeat.o(227821);
     }
-    AppMethodBeat.o(222821);
+    AppMethodBeat.o(227821);
   }
   
   private static boolean registerDeviceCallback()
   {
-    AppMethodBeat.i(222812);
+    AppMethodBeat.i(227802);
     AudioManager localAudioManager = getAudioManager();
     if (localAudioManager == null)
     {
-      AppMethodBeat.o(222812);
+      AppMethodBeat.o(227802);
       return false;
     }
     localAudioManager.registerAudioDeviceCallback(new AudioDeviceCallback()
     {
       public final void onAudioDevicesAdded(AudioDeviceInfo[] paramAnonymousArrayOfAudioDeviceInfo)
       {
-        AppMethodBeat.i(222785);
+        AppMethodBeat.i(227667);
         TPNativeLog.printLog(2, "TPHeadsetPluginDetector", "onAudioDevicesAdded!");
         TPHeadsetPluginDetector.access$200(TPHeadsetPluginDetector.mCurOutputs, TPHeadsetPluginDetector.access$100());
-        AppMethodBeat.o(222785);
+        AppMethodBeat.o(227667);
       }
       
       public final void onAudioDevicesRemoved(AudioDeviceInfo[] paramAnonymousArrayOfAudioDeviceInfo)
       {
-        AppMethodBeat.i(222787);
+        AppMethodBeat.i(227680);
         TPNativeLog.printLog(2, "TPHeadsetPluginDetector", "onAudioDevicesRemoved!");
         TPHeadsetPluginDetector.access$200(TPHeadsetPluginDetector.mCurOutputs, TPHeadsetPluginDetector.access$100());
-        AppMethodBeat.o(222787);
+        AppMethodBeat.o(227680);
       }
     }, null);
-    AppMethodBeat.o(222812);
+    AppMethodBeat.o(227802);
     return true;
   }
   
   private static void registerReceiver()
   {
-    AppMethodBeat.i(222814);
+    AppMethodBeat.i(227806);
     if ((Build.VERSION.SDK_INT >= 23) && (registerDeviceCallback()))
     {
-      AppMethodBeat.o(222814);
+      AppMethodBeat.o(227806);
       return;
     }
     if (mReceiver == null) {
@@ -318,14 +314,14 @@ public class TPHeadsetPluginDetector
     if ((!isInitted) || (mContextRef == null))
     {
       TPNativeLog.printLog(4, "TPHeadsetPluginDetector", "registerReceiver failed, TPHeadsetPluginDetector is not init yet!");
-      AppMethodBeat.o(222814);
+      AppMethodBeat.o(227806);
       return;
     }
     Context localContext = (Context)mContextRef.get();
     if (localContext == null)
     {
       TPNativeLog.printLog(4, "TPHeadsetPluginDetector", "registerReceiver failed, context is null, maybe is invalid!");
-      AppMethodBeat.o(222814);
+      AppMethodBeat.o(227806);
       return;
     }
     IntentFilter localIntentFilter = new IntentFilter();
@@ -333,12 +329,12 @@ public class TPHeadsetPluginDetector
     localIntentFilter.addAction("android.media.AUDIO_BECOMING_NOISY");
     localIntentFilter.addAction("android.bluetooth.a2dp.profile.action.CONNECTION_STATE_CHANGED");
     localContext.registerReceiver(mReceiver, localIntentFilter);
-    AppMethodBeat.o(222814);
+    AppMethodBeat.o(227806);
   }
   
   public static void removeHeadsetPluginListener(HeadsetPluginListener paramHeadsetPluginListener)
   {
-    AppMethodBeat.i(222806);
+    AppMethodBeat.i(227785);
     try
     {
       listeners.remove(paramHeadsetPluginListener);
@@ -351,28 +347,28 @@ public class TPHeadsetPluginDetector
     }
     finally
     {
-      AppMethodBeat.o(222806);
+      AppMethodBeat.o(227785);
     }
   }
   
   private static void unregisterReceiver()
   {
-    AppMethodBeat.i(222816);
+    AppMethodBeat.i(227813);
     if ((!isInitted) || (mContextRef == null))
     {
       TPNativeLog.printLog(4, "TPHeadsetPluginDetector", "registerReceiver failed, HeadsetPluginDetector is not init yet!");
-      AppMethodBeat.o(222816);
+      AppMethodBeat.o(227813);
       return;
     }
     Context localContext = (Context)mContextRef.get();
     if (localContext == null)
     {
       TPNativeLog.printLog(4, "TPHeadsetPluginDetector", "registerReceiver failed, context is null, maybe is invalid!");
-      AppMethodBeat.o(222816);
+      AppMethodBeat.o(227813);
       return;
     }
     localContext.unregisterReceiver(mReceiver);
-    AppMethodBeat.o(222816);
+    AppMethodBeat.o(227813);
   }
   
   static abstract interface HeadsetPluginListener
@@ -386,7 +382,7 @@ public class TPHeadsetPluginDetector
     public void onReceive(Context paramContext, Intent paramIntent)
     {
       int i = 0;
-      AppMethodBeat.i(222793);
+      AppMethodBeat.i(227814);
       TPNativeLog.printLog(2, "TPHeadsetPluginDetector", "onReceive: " + paramIntent.getAction());
       paramContext = TPHeadsetPluginDetector.access$100();
       if ("android.intent.action.HEADSET_PLUG".equals(paramIntent.getAction()))
@@ -404,7 +400,7 @@ public class TPHeadsetPluginDetector
         for (;;)
         {
           TPHeadsetPluginDetector.access$200(TPHeadsetPluginDetector.mCurOutputs, paramContext);
-          AppMethodBeat.o(222793);
+          AppMethodBeat.o(227814);
           return;
           label97:
           if (i == 1) {
@@ -418,7 +414,7 @@ public class TPHeadsetPluginDetector
           paramContext.remove(Integer.valueOf(1));
         }
         TPHeadsetPluginDetector.access$200(TPHeadsetPluginDetector.mCurOutputs, paramContext);
-        AppMethodBeat.o(222793);
+        AppMethodBeat.o(227814);
         return;
       }
       if ("android.bluetooth.a2dp.profile.action.CONNECTION_STATE_CHANGED".equals(paramIntent.getAction()))
@@ -435,7 +431,7 @@ public class TPHeadsetPluginDetector
       for (;;)
       {
         TPHeadsetPluginDetector.access$200(TPHeadsetPluginDetector.mCurOutputs, paramContext);
-        AppMethodBeat.o(222793);
+        AppMethodBeat.o(227814);
         return;
         label209:
         if (i == 0) {

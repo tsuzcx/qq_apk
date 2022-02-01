@@ -4,70 +4,70 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public class c
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public long DgJ;
-  public long DgK;
-  public m DgL;
+  public long JaD;
+  public long JaE;
+  public m JaF;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(203937);
+    AppMethodBeat.i(267810);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bm(1, this.DgJ);
-      paramVarArgs.bm(2, this.DgK);
-      if (this.DgL != null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bv(1, this.JaD);
+      paramVarArgs.bv(2, this.JaE);
+      if (this.JaF != null)
       {
-        paramVarArgs.oE(3, this.DgL.computeSize());
-        this.DgL.writeFields(paramVarArgs);
+        paramVarArgs.qD(3, this.JaF.computeSize());
+        this.JaF.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(203937);
+      AppMethodBeat.o(267810);
       return 0;
     }
     int i;
     if (paramInt == 1)
     {
-      i = g.a.a.b.b.a.p(1, this.DgJ) + 0 + g.a.a.b.b.a.p(2, this.DgK);
+      i = i.a.a.b.b.a.q(1, this.JaD) + 0 + i.a.a.b.b.a.q(2, this.JaE);
       paramInt = i;
-      if (this.DgL != null) {
-        paramInt = i + g.a.a.a.oD(3, this.DgL.computeSize());
+      if (this.JaF != null) {
+        paramInt = i + i.a.a.a.qC(3, this.JaF.computeSize());
       }
-      AppMethodBeat.o(203937);
+      AppMethodBeat.o(267810);
       return paramInt;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(203937);
+      AppMethodBeat.o(267810);
       return 0;
     }
     if (paramInt == 3)
     {
-      Object localObject = (g.a.a.a.a)paramVarArgs[0];
+      Object localObject = (i.a.a.a.a)paramVarArgs[0];
       c localc = (c)paramVarArgs[1];
       paramInt = ((Integer)paramVarArgs[2]).intValue();
       switch (paramInt)
       {
       default: 
-        AppMethodBeat.o(203937);
+        AppMethodBeat.o(267810);
         return -1;
       case 1: 
-        localc.DgJ = ((g.a.a.a.a)localObject).abFh.AN();
-        AppMethodBeat.o(203937);
+        localc.JaD = ((i.a.a.a.a)localObject).ajGk.aaw();
+        AppMethodBeat.o(267810);
         return 0;
       case 2: 
-        localc.DgK = ((g.a.a.a.a)localObject).abFh.AN();
-        AppMethodBeat.o(203937);
+        localc.JaE = ((i.a.a.a.a)localObject).ajGk.aaw();
+        AppMethodBeat.o(267810);
         return 0;
       }
-      paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+      paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
       i = paramVarArgs.size();
       paramInt = 0;
       while (paramInt < i)
@@ -77,13 +77,13 @@ public class c
         if ((localObject != null) && (localObject.length > 0)) {
           localm.parseFrom((byte[])localObject);
         }
-        localc.DgL = localm;
+        localc.JaF = localm;
         paramInt += 1;
       }
-      AppMethodBeat.o(203937);
+      AppMethodBeat.o(267810);
       return 0;
     }
-    AppMethodBeat.o(203937);
+    AppMethodBeat.o(267810);
     return -1;
   }
 }

@@ -1,74 +1,59 @@
 package com.tencent.mm.plugin.gallery.a;
 
-import android.media.MediaMetadataRetriever;
-import android.text.TextUtils;
+import android.view.ViewGroup;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.plugin.sight.base.b;
-import com.tencent.mm.plugin.sight.base.f;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.l;
+import com.tencent.mm.plugin.gallery.b.e;
+import com.tencent.mm.plugin.gallery.ui.ImagePreviewUI;
+import java.lang.ref.WeakReference;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gallery/utils/MediaUtil;", "", "()V", "TAG", "", "getVideoInfo", "Lcom/tencent/mm/plugin/sight/base/MediaInfo;", "filePath", "plugin-gallery_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/gallery/mjtemplate/PreviewTemplateUI;", "", "uiHolder", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/plugin/gallery/ui/ImagePreviewUI;", "(Ljava/lang/ref/WeakReference;)V", "hintLayout", "Landroid/view/ViewGroup;", "hintText", "Landroid/widget/TextView;", "updateTemplateHint", "", "selectMediaList", "", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "plugin-gallery_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
 {
-  public static final d CeY;
-  private static final String TAG = "MicroMsg.MediaUtil";
+  final TextView FxM;
+  final ViewGroup HGn;
   
-  static
+  public d(WeakReference<ImagePreviewUI> paramWeakReference)
   {
-    AppMethodBeat.i(165053);
-    CeY = new d();
-    TAG = "MicroMsg.MediaUtil";
-    AppMethodBeat.o(165053);
-  }
-  
-  public static b aFG(String paramString)
-  {
-    AppMethodBeat.i(165052);
-    if (TextUtils.isEmpty((CharSequence)paramString))
+    AppMethodBeat.i(289256);
+    Object localObject1;
+    if (paramWeakReference == null)
     {
-      paramString = new b();
-      AppMethodBeat.o(165052);
-      return paramString;
-    }
-    Object localObject2 = f.aYg(paramString);
-    Object localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = new b();
-    }
-    if ((((b)localObject1).height <= 0) || (((b)localObject1).width <= 0)) {}
-    try
-    {
-      localObject2 = new MediaMetadataRetriever();
-      ((MediaMetadataRetriever)localObject2).setDataSource(paramString);
-      ((b)localObject1).width = Util.getInt(((MediaMetadataRetriever)localObject2).extractMetadata(18), 0);
-      ((b)localObject1).height = Util.getInt(((MediaMetadataRetriever)localObject2).extractMetadata(19), 0);
-      ((b)localObject1).videoBitrate = Util.getInt(((MediaMetadataRetriever)localObject2).extractMetadata(20), 0);
-      ((b)localObject1).videoDuration = Util.getInt(((MediaMetadataRetriever)localObject2).extractMetadata(9), 0);
-      ((MediaMetadataRetriever)localObject2).release();
-      label136:
-      int i = SightVideoJNI.getMp4RotateVFS(paramString);
-      Log.i(TAG, "width %d, height %d, rotate %d", new Object[] { Integer.valueOf(((b)localObject1).width), Integer.valueOf(((b)localObject1).height), Integer.valueOf(i) });
-      if ((i == 270) || (i == 90))
-      {
-        i = ((b)localObject1).height;
-        ((b)localObject1).height = ((b)localObject1).width;
-        ((b)localObject1).width = i;
+      localObject1 = null;
+      this.HGn = ((ViewGroup)localObject1);
+      if (paramWeakReference != null) {
+        break label74;
       }
-      AppMethodBeat.o(165052);
-      return localObject1;
+      paramWeakReference = localObject2;
     }
-    catch (Exception localException)
+    for (;;)
     {
-      break label136;
+      this.FxM = paramWeakReference;
+      AppMethodBeat.o(289256);
+      return;
+      localObject1 = c.HFY;
+      localObject1 = (ImagePreviewUI)c.h(paramWeakReference);
+      if (localObject1 == null)
+      {
+        localObject1 = null;
+        break;
+      }
+      localObject1 = (ViewGroup)((ImagePreviewUI)localObject1).findViewById(b.e.template_hint_ll);
+      break;
+      label74:
+      localObject1 = c.HFY;
+      localObject1 = (ImagePreviewUI)c.h(paramWeakReference);
+      paramWeakReference = localObject2;
+      if (localObject1 != null) {
+        paramWeakReference = (TextView)((ImagePreviewUI)localObject1).findViewById(b.e.template_hint_tv);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.a.d
  * JD-Core Version:    0.7.0.1
  */

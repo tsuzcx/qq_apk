@@ -5,12 +5,12 @@ public final class d
 {
   public d()
   {
-    this.abFM = 258;
+    this.ajGQ = 258;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     oicq.wlogin_sdk.a.d
  * JD-Core Version:    0.7.0.1
  */

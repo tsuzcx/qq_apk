@@ -5,14 +5,12 @@ import android.os.Bundle;
 import androidx.b.a;
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.util.Clock;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Map;
 
 public final class zzif
   extends zzhh
 {
-  @VisibleForTesting
   protected zzie zzaol;
   private volatile zzie zzaom;
   private zzie zzaon;
@@ -84,7 +82,6 @@ public final class zzif
     AppMethodBeat.o(1768);
   }
   
-  @VisibleForTesting
   private static String zzca(String paramString)
   {
     AppMethodBeat.i(1770);
@@ -284,7 +281,7 @@ public final class zzif
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzif
  * JD-Core Version:    0.7.0.1
  */

@@ -1,71 +1,91 @@
 package com.tencent.mm.plugin.textstatus.b.c;
 
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
 import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.textstatus.a.h.a;
-import com.tencent.mm.plugin.textstatus.b.f;
-import com.tencent.mm.plugin.textstatus.ui.h;
-import com.tencent.mm.view.recyclerview.e;
-import com.tencent.mm.view.recyclerview.i;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.textstatus.a.e;
+import com.tencent.mm.plugin.textstatus.a.f;
+import com.tencent.mm.plugin.textstatus.ui.TextStatusLikeListActivity;
+import com.tencent.mm.plugin.textstatus.ui.TextStatusLikeListActivity.a;
+import com.tencent.mm.plugin.textstatus.util.l;
+import com.tencent.mm.view.recyclerview.f;
+import com.tencent.mm.view.recyclerview.j;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/convert/planet/PlanetHeaderCardConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/textstatus/model/planet/PlanetHeaderItem;", "onItemClickListener", "Landroid/view/View$OnClickListener;", "eventListener", "Lcom/tencent/mm/plugin/textstatus/api/IStatusCardView$StatusEventListener;", "(Landroid/view/View$OnClickListener;Lcom/tencent/mm/plugin/textstatus/api/IStatusCardView$StatusEventListener;)V", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-textstatus_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/textstatus/convert/topic/NotifyInfoItemConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/textstatus/model/topic/NotifyInfoItem;", "callback", "Lkotlin/Function0;", "", "(Lkotlin/jvm/functions/Function0;)V", "getCallback", "()Lkotlin/jvm/functions/Function0;", "getLayoutId", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "Companion", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends e<com.tencent.mm.plugin.textstatus.g.c.a>
+  extends f<com.tencent.mm.plugin.textstatus.h.g.a>
 {
-  private final View.OnClickListener MAG;
-  private final h.a MAH;
+  public static final a.a Tkn;
+  private final kotlin.g.a.a<Integer> callback;
   
-  public a(View.OnClickListener paramOnClickListener, h.a parama)
+  static
   {
-    AppMethodBeat.i(237366);
-    this.MAG = paramOnClickListener;
-    this.MAH = parama;
-    AppMethodBeat.o(237366);
+    AppMethodBeat.i(290252);
+    Tkn = new a.a((byte)0);
+    AppMethodBeat.o(290252);
   }
   
-  public final void a(RecyclerView paramRecyclerView, i parami, int paramInt)
+  public a(kotlin.g.a.a<Integer> parama)
   {
-    AppMethodBeat.i(237363);
-    p.k(paramRecyclerView, "recyclerView");
-    p.k(parami, "holder");
-    paramRecyclerView = paramRecyclerView.getContext();
-    p.j(paramRecyclerView, "recyclerView.context");
-    paramRecyclerView = new h(paramRecyclerView);
-    parami.setTag(paramRecyclerView);
-    parami = parami.amk;
-    if (parami == null)
-    {
-      paramRecyclerView = new t("null cannot be cast to non-null type android.widget.RelativeLayout");
-      AppMethodBeat.o(237363);
-      throw paramRecyclerView;
+    this.callback = parama;
+  }
+  
+  private static final void a(j paramj, a parama, View paramView)
+  {
+    AppMethodBeat.i(290248);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramj);
+    localb.cH(parama);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/textstatus/convert/topic/NotifyInfoItemConvert", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramj, "$holder");
+    s.u(parama, "this$0");
+    paramView = TextStatusLikeListActivity.Tzn;
+    paramj = paramj.context;
+    s.s(paramj, "holder.context");
+    parama = parama.callback;
+    int i;
+    if (parama == null) {
+      i = 0;
     }
-    ((RelativeLayout)parami).addView(paramRecyclerView.wRV);
-    paramRecyclerView = paramRecyclerView.wRV.getLayoutParams();
-    if (paramRecyclerView == null)
+    for (;;)
     {
-      paramRecyclerView = new t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
-      AppMethodBeat.o(237363);
-      throw paramRecyclerView;
+      TextStatusLikeListActivity.a.ba(paramj, i);
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/textstatus/convert/topic/NotifyInfoItemConvert", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(290248);
+      return;
+      parama = (Integer)parama.invoke();
+      if (parama == null) {
+        i = 0;
+      } else {
+        i = parama.intValue();
+      }
     }
-    ((RelativeLayout.LayoutParams)paramRecyclerView).width = -1;
-    AppMethodBeat.o(237363);
+  }
+  
+  public final void a(RecyclerView paramRecyclerView, j paramj, int paramInt)
+  {
+    AppMethodBeat.i(290268);
+    s.u(paramRecyclerView, "recyclerView");
+    s.u(paramj, "holder");
+    paramj = paramj.UH(a.e.TcS);
+    l locall = l.TBz;
+    l.C(paramj, com.tencent.mm.cd.a.fromDPToPix(paramRecyclerView.getContext(), 4));
+    AppMethodBeat.o(290268);
   }
   
   public final int getLayoutId()
   {
-    return b.f.MxV;
+    return a.f.TfA;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.b.c.a
  * JD-Core Version:    0.7.0.1
  */

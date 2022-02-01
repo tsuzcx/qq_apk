@@ -3,30 +3,30 @@ package com.tencent.xweb.sys;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.a.a;
+import com.tencent.xweb.ab;
 import java.util.Map;
 
 public final class c$f
   implements com.tencent.xweb.WebResourceRequest
 {
-  private Map<String, String> RaC;
-  private boolean aafm;
-  private boolean aafn;
-  a aafo;
+  private Map<String, String> XWH;
+  private boolean aikA;
+  private boolean aikB;
+  ab aikC;
+  private Uri aikz;
   private String method;
-  private Uri url;
   
   public c$f(android.webkit.WebResourceRequest paramWebResourceRequest)
   {
     AppMethodBeat.i(153666);
     if ((Build.VERSION.SDK_INT >= 21) && (paramWebResourceRequest != null))
     {
-      this.url = paramWebResourceRequest.getUrl();
-      this.aafm = paramWebResourceRequest.isForMainFrame();
-      this.aafn = paramWebResourceRequest.hasGesture();
+      this.aikz = paramWebResourceRequest.getUrl();
+      this.aikA = paramWebResourceRequest.isForMainFrame();
+      this.aikB = paramWebResourceRequest.hasGesture();
       this.method = paramWebResourceRequest.getMethod();
-      this.RaC = paramWebResourceRequest.getRequestHeaders();
-      this.aafo = new a(this);
+      this.XWH = paramWebResourceRequest.getRequestHeaders();
+      this.aikC = new ab(this);
     }
     AppMethodBeat.o(153666);
   }
@@ -38,27 +38,27 @@ public final class c$f
   
   public final Map<String, String> getRequestHeaders()
   {
-    return this.RaC;
+    return this.XWH;
   }
   
   public final Uri getUrl()
   {
-    return this.url;
+    return this.aikz;
   }
   
   public final boolean hasGesture()
   {
-    return this.aafn;
+    return this.aikB;
   }
   
   public final boolean isForMainFrame()
   {
-    return this.aafm;
+    return this.aikA;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.sys.c.f
  * JD-Core Version:    0.7.0.1
  */

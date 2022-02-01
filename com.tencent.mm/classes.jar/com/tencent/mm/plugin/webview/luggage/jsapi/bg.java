@@ -1,116 +1,47 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import android.os.Bundle;
 import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.plugin.webview.luggage.m;
-import com.tencent.mm.pluginsdk.ui.tools.ab;
+import com.tencent.mm.plugin.webview.luggage.g.14;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
 
 public class bg
-  extends bs<g>
+  extends bw<g>
 {
-  public final void a(Context paramContext, String paramString, br.a parama) {}
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
   
   public final void b(b<g>.a paramb)
   {
-    AppMethodBeat.i(78625);
-    Log.i("MicroMsg.JsApiSetNavigationBarButtons", "invokeInOwn");
-    Object localObject1 = paramb.crh.cqn.optString("left");
-    Object localObject2 = paramb.crh.cqn.optString("right");
-    if ((Util.isNullOrNil((String)localObject1)) && (Util.isNullOrNil((String)localObject2)))
+    AppMethodBeat.i(78622);
+    Log.i("MicroMsg.JsApiSetBounceBackground", "invokeInOwn");
+    String str = paramb.eiZ.eif.optString("backgroundColor");
+    if (Util.isNullOrNil(str))
     {
-      paramb.a("fail", null);
-      AppMethodBeat.o(78625);
+      paramb.a("invalid_data", null);
+      AppMethodBeat.o(78622);
       return;
     }
-    Bundle localBundle = new Bundle();
-    try
-    {
-      localObject3 = new JSONObject((String)localObject1);
-      str1 = ab.bsf(((JSONObject)localObject3).optString("wxcolor", ""));
-      localObject1 = str1;
-      if (Util.isNullOrNil(str1)) {
-        localObject1 = ((JSONObject)localObject3).optString("color", "");
-      }
-      if (!Util.isNullOrNil((String)localObject1)) {
-        localBundle.putString("set_navigation_bar_buttons_left_text_color", (String)localObject1);
-      }
-    }
-    catch (Exception localException1)
-    {
-      for (;;)
-      {
-        Object localObject3;
-        String str1;
-        boolean bool1;
-        String str2;
-        boolean bool2;
-        label276:
-        Log.printErrStackTrace("MicroMsg.JsApiSetNavigationBarButtons", localException1, "setNavigationBarButtons opt left ", new Object[0]);
-        continue;
-        label315:
-        localBundle.putBoolean("set_navigation_bar_buttons_hide_right_button", true);
-      }
-    }
-    try
-    {
-      localObject2 = new JSONObject((String)localObject2);
-      bool1 = ((JSONObject)localObject2).optBoolean("hidden", false);
-      localObject3 = ((JSONObject)localObject2).optString("text", "");
-      str2 = Util.nullAsNil(ab.bsc(((JSONObject)localObject2).optString("iconData", "")));
-      str1 = ab.bsf(((JSONObject)localObject2).optString("wxcolor", ""));
-      localObject1 = str1;
-      if (Util.isNullOrNil(str1)) {
-        localObject1 = ((JSONObject)localObject2).optString("color", "");
-      }
-      bool2 = ((JSONObject)localObject2).optBoolean("needClickEvent", false);
-      if (bool1) {
-        break label315;
-      }
-      localBundle.putString("set_navigation_bar_buttons_text", (String)localObject3);
-      localBundle.putString("set_navigation_bar_buttons_icon_data", str2);
-      localBundle.putString("set_navigation_bar_buttons_text_color", (String)localObject1);
-      localBundle.putBoolean("set_navigation_bar_buttons_need_click_event", bool2);
-    }
-    catch (Exception localException2)
-    {
-      Log.printErrStackTrace("MicroMsg.JsApiSetNavigationBarButtons", localException2, "setNavigationBarButtons opt right ", new Object[0]);
-      break label276;
-      m localm = ((g)paramb.crg).gUx();
-      if (localm != null) {
-        break label374;
-      }
-      paramb.a("fail", null);
-      AppMethodBeat.o(78625);
-      return;
-      label374:
-      localm.setNavigationBarButtons(localBundle);
-      paramb.a("", null);
-      AppMethodBeat.o(78625);
-    }
-    if (localBundle.size() < 0)
-    {
-      paramb.a("fail", null);
-      AppMethodBeat.o(78625);
-      return;
-    }
+    g localg = (g)paramb.eiY;
+    localg.mHandler.post(new g.14(localg, str));
+    paramb.a("", null);
+    AppMethodBeat.o(78622);
   }
   
-  public final int cDj()
+  public final int dgI()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "setNavigationBarButtons";
+    return "setBounceBackground";
   }
 }
 

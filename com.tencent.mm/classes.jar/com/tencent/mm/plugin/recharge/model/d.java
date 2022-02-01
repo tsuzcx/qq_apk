@@ -1,17 +1,16 @@
 package com.tencent.mm.plugin.recharge.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.wallet_core.model.mall.c;
-import com.tencent.mm.protocal.protobuf.bwv;
-import com.tencent.mm.protocal.protobuf.bww;
+import com.tencent.mm.protocal.protobuf.cly;
+import com.tencent.mm.protocal.protobuf.clz;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.List;
@@ -19,51 +18,51 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class d
-  extends q
+  extends p
   implements m
 {
-  public String Hzd;
-  public MallRechargeProduct Hzl;
-  public List<MallRechargeProduct> Hzm;
-  public String Hzn;
-  private i callback;
-  public int lvh;
-  public String mZK;
-  public String nBK;
-  public com.tencent.mm.an.d rr;
+  public String NwI;
+  public MallRechargeProduct NwO;
+  public List<MallRechargeProduct> NwP;
+  public String NwQ;
+  private h callback;
+  public int omE;
+  public String pWt;
+  public String qBb;
+  public com.tencent.mm.am.c rr;
   
   public d(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     AppMethodBeat.i(67104);
-    this.Hzl = null;
-    this.Hzm = null;
-    this.Hzd = null;
-    this.nBK = paramString1;
-    this.lvh = paramInt;
-    this.mZK = paramString5;
-    this.Hzn = paramString2;
-    paramString5 = new d.a();
-    paramString5.lBU = new bwv();
-    paramString5.lBV = new bww();
+    this.NwO = null;
+    this.NwP = null;
+    this.NwI = null;
+    this.qBb = paramString1;
+    this.omE = paramInt;
+    this.pWt = paramString5;
+    this.NwQ = paramString2;
+    paramString5 = new c.a();
+    paramString5.otE = new cly();
+    paramString5.otF = new clz();
     paramString5.uri = "/cgi-bin/micromsg-bin/getlatestpayproductinfo";
     paramString5.funcId = 497;
-    paramString5.lBW = 229;
+    paramString5.otG = 229;
     paramString5.respCmdId = 1000000229;
-    this.rr = paramString5.bgN();
-    paramString5 = (bwv)d.b.b(this.rr.lBR);
-    paramString5.SWQ = paramString1;
-    paramString5.SWR = paramString3;
-    paramString5.TgA = paramString2;
-    paramString5.SWS = paramString4;
-    paramString5.HlB = c.gKL().bhd(paramString1);
+    this.rr = paramString5.bEF();
+    paramString5 = (cly)c.b.b(this.rr.otB);
+    paramString5.aaiH = paramString1;
+    paramString5.aaiI = paramString3;
+    paramString5.aatQ = paramString2;
+    paramString5.aaiJ = paramString4;
+    paramString5.Njp = com.tencent.mm.plugin.wallet_core.model.mall.c.ikd().bgN(paramString1);
     Log.d("MicroMsg.NetSceneGetLatestPayProductInfo", String.format("funcId:%s, appId:%s, productId:%s, remark:%s", new Object[] { paramString1, paramString3, paramString2, paramString4 }));
     AppMethodBeat.o(67104);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(67106);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(67106);
     return i;
@@ -78,10 +77,10 @@ public final class d
   {
     AppMethodBeat.i(67105);
     Log.d("MicroMsg.NetSceneGetLatestPayProductInfo", "errCode " + paramInt3 + ", errMsg " + paramString);
-    paramArrayOfByte = (bww)d.c.b(((com.tencent.mm.an.d)params).lBS);
-    Log.d("MicroMsg.NetSceneGetLatestPayProductInfo", "resp.OurterRemark " + paramArrayOfByte.SWV);
-    params = paramArrayOfByte.SWV;
-    this.Hzd = "";
+    paramArrayOfByte = (clz)c.c.b(((com.tencent.mm.am.c)params).otC);
+    Log.d("MicroMsg.NetSceneGetLatestPayProductInfo", "resp.OurterRemark " + paramArrayOfByte.aaiM);
+    params = paramArrayOfByte.aaiM;
+    this.NwI = "";
     if (!Util.isNullOrNil(params))
     {
       params = params.split("&");
@@ -96,31 +95,31 @@ public final class d
           if (arrayOfString.length == 2)
           {
             if (paramInt1 != 0) {
-              break label229;
+              break label226;
             }
-            this.Hzd += " ";
+            this.NwI += " ";
           }
           for (;;)
           {
-            this.Hzd += arrayOfString[1];
+            this.NwI += arrayOfString[1];
             j = paramInt1;
             i += 1;
             paramInt1 = j;
             break;
-            label229:
+            label226:
             paramInt1 = 0;
           }
         }
       }
     }
-    if (!Util.isNullOrNil(paramArrayOfByte.TgC)) {}
+    if (!Util.isNullOrNil(paramArrayOfByte.aatS)) {}
     try
     {
-      params = new JSONObject(paramArrayOfByte.TgC);
-      this.Hzm = b.a(this.nBK, params.optJSONArray("product_info"));
+      params = new JSONObject(paramArrayOfByte.aatS);
+      this.NwP = b.a(this.qBb, params.optJSONArray("product_info"));
       if ((paramInt2 == 0) && (paramInt3 == 0))
       {
-        params = paramArrayOfByte.TgB;
+        params = paramArrayOfByte.aatR;
         Log.d("MicroMsg.NetSceneGetLatestPayProductInfo", "resp.Product ".concat(String.valueOf(params)));
         if (Util.isNullOrNil(params)) {}
       }
@@ -129,14 +128,14 @@ public final class d
     {
       try
       {
-        this.Hzl = b.l(this.nBK, new JSONObject(params));
-        this.Hzl.Hzd = this.Hzd;
-        Log.d("MicroMsg.NetSceneGetLatestPayProductInfo", String.format("OutErrCode : %d ,OutErrMsg : %s , WxErrCode : %d , WxErrMsg : %s", new Object[] { Integer.valueOf(paramArrayOfByte.SWT), paramArrayOfByte.SWU, Integer.valueOf(paramArrayOfByte.SWW), paramArrayOfByte.SWX }));
+        this.NwO = b.p(this.qBb, new JSONObject(params));
+        this.NwO.NwI = this.NwI;
+        Log.d("MicroMsg.NetSceneGetLatestPayProductInfo", String.format("OutErrCode : %d ,OutErrMsg : %s , WxErrCode : %d , WxErrMsg : %s", new Object[] { Integer.valueOf(paramArrayOfByte.aaiK), paramArrayOfByte.aaiL, Integer.valueOf(paramArrayOfByte.aaiN), paramArrayOfByte.aaiO }));
         paramInt1 = paramInt3;
         if (paramInt3 == 0)
         {
-          if (paramArrayOfByte.SWW != 0) {
-            paramInt1 = paramArrayOfByte.SWW;
+          if (paramArrayOfByte.aaiN != 0) {
+            paramInt1 = paramArrayOfByte.aaiN;
           }
         }
         else
@@ -144,10 +143,10 @@ public final class d
           params = paramString;
           if (Util.isNullOrNil(paramString))
           {
-            if (Util.isNullOrNil(paramArrayOfByte.SWX)) {
-              break label513;
+            if (Util.isNullOrNil(paramArrayOfByte.aaiO)) {
+              break label510;
             }
-            params = paramArrayOfByte.SWX;
+            params = paramArrayOfByte.aaiO;
           }
           this.callback.onSceneEnd(paramInt2, paramInt1, params, this);
           AppMethodBeat.o(67105);
@@ -162,10 +161,10 @@ public final class d
         {
           Log.printErrStackTrace("MicroMsg.NetSceneGetLatestPayProductInfo", params, "", new Object[0]);
           continue;
-          paramInt1 = paramArrayOfByte.SWT;
+          paramInt1 = paramArrayOfByte.aaiK;
           continue;
-          label513:
-          params = paramArrayOfByte.SWU;
+          label510:
+          params = paramArrayOfByte.aaiL;
         }
       }
     }
@@ -173,7 +172,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.model.d
  * JD-Core Version:    0.7.0.1
  */

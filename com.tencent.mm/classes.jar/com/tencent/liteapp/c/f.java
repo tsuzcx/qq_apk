@@ -1,24 +1,24 @@
 package com.tencent.liteapp.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/liteapp/mgr/WxaLiteAppDefaultLauncher;", "Lcom/tencent/liteapp/mgr/IWxaLiteAppLauncher;", "()V", "startLiteApp", "Lcom/tencent/liteapp/mgr/LauncherStatus;", "app", "Lcom/tencent/liteapp/storage/WxaLiteAppInfo;", "pagePath", "", "query", "config", "startLiteAppAsync", "", "callback", "Lcom/tencent/liteapp/mgr/IWxaLiteAppLauncherCallback;", "updateLvCppDisplayParams", "Companion", "wxa_lite_app_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/liteapp/mgr/WxaLiteAppDefaultLauncher;", "Lcom/tencent/liteapp/mgr/IWxaLiteAppLauncher;", "()V", "startLiteApp", "Lcom/tencent/liteapp/mgr/LauncherStatus;", "app", "Lcom/tencent/liteapp/storage/WxaLiteAppInfo;", "pagePath", "", "query", "config", "startLiteAppAsync", "", "callback", "Lcom/tencent/liteapp/mgr/IWxaLiteAppLauncherCallback;", "updateLvCppDisplayParams", "Companion", "wxa_lite_app_release"}, k=1, mv={1, 1, 16})
 public final class f
   implements b
 {
   private static final String TAG = "WxaLiteApp.WxaLiteAppDefaultLauncher";
-  public static final a coU;
+  public static final a egg;
   
   static
   {
-    AppMethodBeat.i(259206);
-    coU = new a((byte)0);
+    AppMethodBeat.i(219043);
+    egg = new a((byte)0);
     TAG = "WxaLiteApp.WxaLiteAppDefaultLauncher";
-    AppMethodBeat.o(259206);
+    AppMethodBeat.o(219043);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/liteapp/mgr/WxaLiteAppDefaultLauncher$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "wxa_lite_app_release"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/liteapp/mgr/WxaLiteAppDefaultLauncher$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "wxa_lite_app_release"}, k=1, mv={1, 1, 16})
   public static final class a {}
 }
 

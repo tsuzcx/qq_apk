@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.webview.ui.tools.game;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class GameWebViewMpUI

@@ -17,21 +17,21 @@ final class s
   
   public final void a(HelperHeaderPreference paramHelperHeaderPreference)
   {
-    AppMethodBeat.i(27261);
-    if ((z.bdn() & 0x1000000) == 0) {}
+    AppMethodBeat.i(27231);
+    if ((z.bBf() & 0x8000) == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      paramHelperHeaderPreference.wb(bool);
-      AppMethodBeat.o(27261);
+      paramHelperHeaderPreference.Ay(bool);
+      AppMethodBeat.o(27231);
       return;
     }
   }
   
   public final CharSequence getHint()
   {
-    AppMethodBeat.i(27260);
-    String str = this.context.getString(R.l.contact_info_linkedin_tip);
-    AppMethodBeat.o(27260);
+    AppMethodBeat.i(27230);
+    String str = this.context.getString(R.l.contact_info_feedsapp_tip);
+    AppMethodBeat.o(27230);
     return str;
   }
 }

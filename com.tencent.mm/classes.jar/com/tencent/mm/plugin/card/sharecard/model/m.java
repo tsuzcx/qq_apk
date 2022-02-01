@@ -3,16 +3,16 @@ package com.tencent.mm.plugin.card.sharecard.model;
 public final class m
 {
   public String announcement;
-  public String fUL;
+  public String iaI;
   public int item_type;
-  public String tnX;
   public int top;
-  public long tsh;
-  public long tsi;
+  public long update_time;
+  public String wsy;
+  public long wwF;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.model.m
  * JD-Core Version:    0.7.0.1
  */

@@ -1,111 +1,144 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
-import android.os.Bundle;
+import android.database.Cursor;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.f;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.appbrand.ac.m;
-import com.tencent.mm.plugin.appbrand.ac.m.a;
-import com.tencent.mm.plugin.appbrand.config.aa.d;
-import com.tencent.mm.sdk.storage.MStorage;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class j
-  extends MStorage
+  extends MAutoStorage<b>
 {
-  private static volatile j nOH = null;
+  public static final String[] nVW;
+  public final ISQLiteDatabase qFJ;
   
-  public static j bJf()
+  static
   {
-    AppMethodBeat.i(44482);
-    if (nOH == null) {}
-    try
-    {
-      if (nOH == null) {
-        nOH = new j();
-      }
-      j localj = nOH;
-      AppMethodBeat.o(44482);
-      return localj;
-    }
-    finally
-    {
-      AppMethodBeat.o(44482);
-    }
+    AppMethodBeat.i(44488);
+    nVW = new String[] { MAutoStorage.getCreateSQLs(b.nVV, "AppBrandAppLaunchUsernameDuplicateRecord2") };
+    AppMethodBeat.o(44488);
   }
   
-  public static boolean bJh()
+  public j(ISQLiteDatabase paramISQLiteDatabase)
   {
-    AppMethodBeat.i(44485);
-    if (!h.aHB())
+    super(paramISQLiteDatabase, b.nVV, "AppBrandAppLaunchUsernameDuplicateRecord2", b.INDEX_CREATE);
+    this.qFJ = paramISQLiteDatabase;
+  }
+  
+  private b aiZ(String paramString)
+  {
+    AppMethodBeat.i(370009);
+    b localb = new b();
+    localb.field_usernameHash = paramString.hashCode();
+    if ((!get(localb, new String[] { "usernameHash" })) || (localb.field_username == null) || (!localb.field_username.equals(paramString)))
     {
-      AppMethodBeat.o(44485);
+      AppMethodBeat.o(370009);
+      return null;
+    }
+    AppMethodBeat.o(370009);
+    return localb;
+  }
+  
+  public final boolean U(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(44487);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(44487);
       return false;
     }
-    boolean bool = ((Boolean)h.aHG().aHp().get(ar.a.VlR, Boolean.FALSE)).booleanValue();
-    AppMethodBeat.o(44485);
+    b localb = new b();
+    localb.field_usernameHash = paramString.hashCode();
+    localb.field_username = paramString;
+    boolean bool = get(localb, new String[0]);
+    localb.field_updateTime = paramLong;
+    if (bool)
+    {
+      bool = update(localb, new String[0]);
+      AppMethodBeat.o(44487);
+      return bool;
+    }
+    bool = insert(localb);
+    AppMethodBeat.o(44487);
     return bool;
   }
   
-  public static void release()
+  public final boolean WI(String paramString)
   {
-    nOH = null;
-  }
-  
-  public final void a(long paramLong, boolean paramBoolean, Bundle paramBundle, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(44484);
-    a(paramLong, paramBoolean, paramBundle, paramInt1, paramInt2, -1, -1L, null);
-    AppMethodBeat.o(44484);
-  }
-  
-  public final void a(final long paramLong1, final boolean paramBoolean, Bundle paramBundle, final int paramInt1, final int paramInt2, final int paramInt3, final long paramLong2, final a parama)
-  {
-    AppMethodBeat.i(274436);
-    m.clV().postToWorker(new Runnable()
+    AppMethodBeat.i(319313);
+    if (TextUtils.isEmpty(paramString))
     {
-      public final void run()
+      AppMethodBeat.o(319313);
+      return false;
+    }
+    paramString = aiZ(paramString);
+    if ((paramString != null) && (paramString.field_updateTime > 0L))
+    {
+      AppMethodBeat.o(319313);
+      return true;
+    }
+    AppMethodBeat.o(319313);
+    return false;
+  }
+  
+  public final boolean WJ(String paramString)
+  {
+    AppMethodBeat.i(319317);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(319317);
+      return false;
+    }
+    b localb = new b();
+    localb.field_username = paramString;
+    localb.field_usernameHash = paramString.hashCode();
+    boolean bool = super.delete(localb, new String[] { "usernameHash" });
+    AppMethodBeat.o(319317);
+    return bool;
+  }
+  
+  public final List<String> ciM()
+  {
+    AppMethodBeat.i(319311);
+    Cursor localCursor = rawQuery(String.format("select attributes.appId from %s as duplicate inner join %s as attributes where duplicate.username = attributes.username", new Object[] { "AppBrandAppLaunchUsernameDuplicateRecord2", "WxaAttributesTable" }), new String[0]);
+    ArrayList localArrayList = new ArrayList();
+    if ((localCursor == null) || (localCursor.getColumnCount() <= 0))
+    {
+      AppMethodBeat.o(319311);
+      return localArrayList;
+    }
+    for (;;)
+    {
+      try
       {
-        AppMethodBeat.i(44480);
-        j localj = j.this;
-        int j = paramInt1;
-        int k = paramInt2;
-        if ((paramBoolean & v.bJA())) {}
-        for (int i = 2;; i = 0)
-        {
-          j.a(localj, j, k, i | 0x1, paramLong1, paramBoolean, paramInt3, paramLong2, parama, this.nOO);
-          AppMethodBeat.o(44480);
-          return;
+        if (!localCursor.moveToNext()) {
+          break;
+        }
+        String str = localCursor.getString(0);
+        if (Util.isNullOrNil(str)) {
+          Log.i("MicroMsg.AppBrandLaunchUsernameDuplicateStorage", "appId is null, continue");
+        } else {
+          localList.add(str);
         }
       }
-    });
-    AppMethodBeat.o(274436);
-  }
-  
-  public final void bJg()
-  {
-    AppMethodBeat.i(44483);
-    m.clV().postToWorker(new Runnable()
-    {
-      public final void run()
+      finally
       {
-        AppMethodBeat.i(44478);
-        j.a(j.this, 1, 0, 7, 0L, true, null, -1, -1L, null);
-        AppMethodBeat.o(44478);
+        localCursor.close();
+        AppMethodBeat.o(319311);
       }
-    });
-    AppMethodBeat.o(44483);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void r(boolean paramBoolean, String paramString);
+    }
+    localCursor.close();
+    AppMethodBeat.o(319311);
+    return localList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.j
  * JD-Core Version:    0.7.0.1
  */

@@ -15,13 +15,16 @@ import android.util.LongSparseArray;
 import android.view.View;
 import android.view.View.OnLayoutChangeListener;
 import android.widget.TextView;
-import com.tencent.e.i;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.q;
+import androidx.lifecycle.y;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.vending.g.c;
 import com.tencent.mm.vending.g.g;
+import com.tencent.threadpool.i;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -30,54 +33,49 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import kotlin.a.j;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.ah;
 import kotlin.g.a.b;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"checkUICost", "T", "tag", "", "thresholdMs", "", "isThrowException", "", "call", "Lkotlin/Function0;", "(Ljava/lang/String;JZLkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "codeConsume", "R", "block", "(Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "(Ljava/lang/String;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "commonShadow", "", "textView", "Landroid/widget/TextView;", "consumeList", "list", "", "createMMHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "name", "createMediaCodecThread", "Landroid/os/HandlerThread;", "isAfterAutoSafeQuit", "drawable2Bitmap", "Landroid/graphics/Bitmap;", "drawable", "Landroid/graphics/drawable/Drawable;", "getCaller", "idle", "long2UnsignedString", "seq", "marshall", "", "parcelable", "Landroid/os/Parcelable;", "multiLet", "T1", "", "T2", "p1", "p2", "Lkotlin/Function2;", "(Ljava/lang/Object;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "T3", "p3", "Lkotlin/Function3;", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/lang/Object;", "T4", "p4", "Lkotlin/Function4;", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Lkotlin/jvm/functions/Function4;)Ljava/lang/Object;", "T5", "p5", "Lkotlin/Function5;", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Lkotlin/jvm/functions/Function5;)Ljava/lang/Object;", "opAddFlag", "", "value", "flag", "opCheckFlag", "opCleanFlag", "removeUiRunnable", "task", "Ljava/lang/Runnable;", "reverseConsumeList", "rxPipeLine", "Lcom/tencent/mm/vending/pipeline/Pipeable;", "Ljava/lang/Void;", "threadPool", "taskName", "isPrintLog", "threadPoolTag", "threadPoolTagDelayed", "delay", "toBitmap8888", "source", "uiThread", "unmarshall", "Landroid/os/Parcel;", "bytes", "creator", "Landroid/os/Parcelable$Creator;", "([BLandroid/os/Parcelable$Creator;)Ljava/lang/Object;", "unsignedString2Long", "afterLayout", "Landroid/view/View;", "copyBooleanExtra", "Landroid/content/Intent;", "other", "key", "defaultValue", "bundle", "Landroid/os/Bundle;", "copyIntExtra", "copyStringArrayListExtra", "copyStringExtra", "filter", "Landroid/util/LongSparseArray;", "func", "Lkotlin/ParameterName;", "k", "v", "forEach", "getLocationInWindow", "", "getLocationOnScreen", "isNullOrEmpty", "safeBufferToByte", "Lcom/tencent/mm/protocal/protobuf/SKBuiltinBuffer_t;", "safeGetBoolean", "Lorg/json/JSONObject;", "safeGetInt", "default", "safeGetString", "safeParser", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "byteArray", "(Lcom/tencent/mm/protobuf/BaseProtoBuf;[B)Lcom/tencent/mm/protobuf/BaseProtoBuf;", "Lkotlin/Function1;", "Ljava/lang/Exception;", "Lkotlin/Exception;", "e", "(Lcom/tencent/mm/protobuf/BaseProtoBuf;[BLkotlin/jvm/functions/Function1;)Lcom/tencent/mm/protobuf/BaseProtoBuf;", "synchronizedFilter", "", "predicate", "", "K", "V", "", "synchronizedFilterIndexed", "index", "synchronizedFind", "(Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "synchronizedForEach", "action", "synchronizedForEachIndexed", "synchronizedIndexOfFirst", "synchronizedLastOrNull", "(Ljava/util/List;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "synchronizedRemoveAll", "", "synchronizedRemoveFirstOrNull", "Ljava/util/HashSet;", "t", "(Ljava/util/HashSet;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "thread", "toArrayList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "Lcom/tencent/mm/sdk/storage/IAutoDBItem;", "Landroid/database/Cursor;", "toLinkedList", "Ljava/util/LinkedList;", "ui", "whenLayout", "wxRemoveFirst", "wxRemoveIf", "wxSubString", "start", "end", "libktcomm_release"})
+@Metadata(d1={""}, d2={"checkUICost", "T", "tag", "", "thresholdMs", "", "isThrowException", "", "call", "Lkotlin/Function0;", "(Ljava/lang/String;JZLkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "codeConsume", "R", "block", "(Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "(Ljava/lang/String;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "commonShadow", "", "textView", "Landroid/widget/TextView;", "consumeList", "list", "", "createMMHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "name", "createMediaCodecThread", "Landroid/os/HandlerThread;", "isAfterAutoSafeQuit", "drawable2Bitmap", "Landroid/graphics/Bitmap;", "drawable", "Landroid/graphics/drawable/Drawable;", "getCaller", "idle", "long2UnsignedString", "seq", "marshall", "", "parcelable", "Landroid/os/Parcelable;", "multiLet", "T1", "", "T2", "p1", "p2", "Lkotlin/Function2;", "(Ljava/lang/Object;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "T3", "p3", "Lkotlin/Function3;", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/lang/Object;", "T4", "p4", "Lkotlin/Function4;", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Lkotlin/jvm/functions/Function4;)Ljava/lang/Object;", "T5", "p5", "Lkotlin/Function5;", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Lkotlin/jvm/functions/Function5;)Ljava/lang/Object;", "notUIThread", "opAddFlag", "", "value", "flag", "opCheckFlag", "opCleanFlag", "removeUiRunnable", "task", "Ljava/lang/Runnable;", "reverseConsumeList", "rxPipeLine", "Lcom/tencent/mm/vending/pipeline/Pipeable;", "Ljava/lang/Void;", "threadPool", "taskName", "isPrintLog", "threadPoolTag", "threadPoolTagDelayed", "delay", "toBitmap8888", "source", "uiThread", "unmarshall", "Landroid/os/Parcel;", "bytes", "creator", "Landroid/os/Parcelable$Creator;", "([BLandroid/os/Parcelable$Creator;)Ljava/lang/Object;", "unsignedString2Long", "afterDelayLayout", "Landroid/view/View;", "afterLayout", "copyBooleanExtra", "Landroid/content/Intent;", "other", "key", "defaultValue", "bundle", "Landroid/os/Bundle;", "copyIntExtra", "copyStringArrayListExtra", "copyStringExtra", "filter", "Landroid/util/LongSparseArray;", "func", "Lkotlin/ParameterName;", "k", "v", "forEach", "getLocationInWindow", "", "getLocationOnScreen", "ifNullOrEmpty", "isNullOrEmpty", "observeForeverWithNotify", "Landroidx/lifecycle/LiveData;", "observer", "Landroidx/lifecycle/Observer;", "observeWithNotify", "owner", "Landroidx/lifecycle/LifecycleOwner;", "safeBufferToByte", "Lcom/tencent/mm/protocal/protobuf/SKBuiltinBuffer_t;", "safeGetBoolean", "Lorg/json/JSONObject;", "safeGetInt", "default", "safeGetJSONArray", "Lorg/json/JSONArray;", "safeGetLong", "safeGetObj", "safeGetString", "safeParser", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "byteArray", "(Lcom/tencent/mm/protobuf/BaseProtoBuf;[B)Lcom/tencent/mm/protobuf/BaseProtoBuf;", "Lkotlin/Function1;", "Ljava/lang/Exception;", "Lkotlin/Exception;", "e", "(Lcom/tencent/mm/protobuf/BaseProtoBuf;[BLkotlin/jvm/functions/Function1;)Lcom/tencent/mm/protobuf/BaseProtoBuf;", "synchronized", "Lkotlin/ExtensionFunctionType;", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "synchronizedFilter", "", "predicate", "", "K", "V", "", "synchronizedFilterIndexed", "index", "synchronizedFind", "(Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "synchronizedForEach", "action", "synchronizedForEachIndexed", "synchronizedGetOrNull", "", "(Ljava/util/List;I)Ljava/lang/Object;", "synchronizedIndexOfFirst", "synchronizedLastOrNull", "(Ljava/util/List;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "synchronizedRemoveAll", "synchronizedRemoveFirstOrNull", "Ljava/util/HashSet;", "t", "(Ljava/util/HashSet;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "thread", "toArrayList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "Lcom/tencent/mm/sdk/storage/IAutoDBItem;", "Landroid/database/Cursor;", "toLinkedList", "Ljava/util/LinkedList;", "ui", "whenLayout", "wxRemoveFirst", "wxRemoveIf", "wxSubString", "start", "end", "libktcomm_release"}, k=2, mv={1, 5, 1}, xi=48)
 public final class d
 {
-  public static final void B(Runnable paramRunnable)
+  public static final void A(kotlin.g.a.a<ah> parama)
   {
-    AppMethodBeat.i(243451);
-    p.k(paramRunnable, "task");
-    Thread localThread = Thread.currentThread();
-    Looper localLooper = Looper.getMainLooper();
-    p.j(localLooper, "Looper.getMainLooper()");
-    if (p.h(localThread, localLooper.getThread()))
-    {
-      paramRunnable.run();
-      AppMethodBeat.o(243451);
-      return;
-    }
-    MMHandlerThread.postToMainThread(paramRunnable);
-    AppMethodBeat.o(243451);
+    AppMethodBeat.i(233500);
+    s.u(parama, "block");
+    MMHandlerThread.removeRunnable(new d..ExternalSyntheticLambda2(parama));
+    AppMethodBeat.o(233500);
   }
   
-  public static final void C(Runnable paramRunnable)
+  public static final void B(kotlin.g.a.a<ah> parama)
   {
-    AppMethodBeat.i(243455);
-    p.k(paramRunnable, "task");
-    MMHandlerThread.removeRunnable(paramRunnable);
-    AppMethodBeat.o(243455);
+    AppMethodBeat.i(233506);
+    s.u(parama, "block");
+    d(getCaller(), parama);
+    AppMethodBeat.o(233506);
   }
   
-  public static final String Fw(long paramLong)
+  private static final void C(kotlin.g.a.a parama)
   {
-    AppMethodBeat.i(168821);
-    String str = Long.toBinaryString(paramLong);
-    p.j(str, "java.lang.Long.toBinaryString(seq)");
-    str = new BigInteger(str, 2).toString();
-    p.j(str, "big.toString()");
-    AppMethodBeat.o(168821);
-    return str;
+    AppMethodBeat.i(233718);
+    s.u(parama, "$tmp0");
+    parama.invoke();
+    AppMethodBeat.o(233718);
   }
   
-  public static final long Nb(String paramString)
+  private static final void D(kotlin.g.a.a parama)
+  {
+    AppMethodBeat.i(233722);
+    s.u(parama, "$tmp0");
+    parama.invoke();
+    AppMethodBeat.o(233722);
+  }
+  
+  public static final long FK(String paramString)
   {
     AppMethodBeat.i(168822);
     if (paramString != null) {
@@ -97,7 +95,7 @@ public final class d
       AppMethodBeat.o(168822);
       return l;
     }
-    catch (Throwable paramString)
+    finally
     {
       for (;;)
       {
@@ -107,45 +105,59 @@ public final class d
     }
   }
   
-  public static final <R> HandlerThread a(String paramString, final boolean paramBoolean, final kotlin.g.a.a<? extends R> parama)
+  public static final void G(Runnable paramRunnable)
   {
-    AppMethodBeat.i(182804);
-    p.k(paramString, "name");
-    p.k(parama, "block");
-    paramString = com.tencent.e.c.d.il(paramString, 5);
-    paramString.start();
-    new MMHandler(paramString.getLooper()).post((Runnable)new c(paramString, parama, paramBoolean));
-    p.j(paramString, "SpecialThreadFactory.cre…        }\n        }\n    }");
-    AppMethodBeat.o(182804);
-    return paramString;
+    AppMethodBeat.i(233477);
+    s.u(paramRunnable, "task");
+    if (s.p(Thread.currentThread(), Looper.getMainLooper().getThread()))
+    {
+      paramRunnable.run();
+      AppMethodBeat.o(233477);
+      return;
+    }
+    MMHandlerThread.postToMainThread(paramRunnable);
+    AppMethodBeat.o(233477);
+  }
+  
+  public static final void H(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(233494);
+    s.u(paramRunnable, "task");
+    MMHandlerThread.removeRunnable(paramRunnable);
+    AppMethodBeat.o(233494);
   }
   
   public static final <T> LongSparseArray<T> a(LongSparseArray<T> paramLongSparseArray, m<? super Long, ? super T, Boolean> paramm)
   {
-    AppMethodBeat.i(243465);
-    p.k(paramLongSparseArray, "$this$filter");
-    p.k(paramm, "func");
+    AppMethodBeat.i(233625);
+    s.u(paramLongSparseArray, "<this>");
+    s.u(paramm, "func");
     LongSparseArray localLongSparseArray = new LongSparseArray();
-    int j = paramLongSparseArray.size();
     int i = 0;
-    while (i < j)
+    int k = paramLongSparseArray.size();
+    if (k > 0) {}
+    for (;;)
     {
+      int j = i + 1;
       long l = paramLongSparseArray.keyAt(i);
       Object localObject = paramLongSparseArray.valueAt(i);
       if (((Boolean)paramm.invoke(Long.valueOf(l), localObject)).booleanValue()) {
         localLongSparseArray.put(l, localObject);
       }
-      i += 1;
+      if (j >= k)
+      {
+        AppMethodBeat.o(233625);
+        return localLongSparseArray;
+      }
+      i = j;
     }
-    AppMethodBeat.o(243465);
-    return localLongSparseArray;
   }
   
-  public static final <T extends com.tencent.mm.cd.a> T a(T paramT, byte[] paramArrayOfByte, b<? super Exception, x> paramb)
+  public static final <T extends com.tencent.mm.bx.a> T a(T paramT, byte[] paramArrayOfByte, b<? super Exception, ah> paramb)
   {
     AppMethodBeat.i(153455);
-    p.k(paramT, "$this$safeParser");
-    p.k(paramb, "block");
+    s.u(paramT, "<this>");
+    s.u(paramb, "block");
     try
     {
       paramT.parseFrom(paramArrayOfByte);
@@ -164,19 +176,19 @@ public final class d
   public static final <R, T> c<R> a(c<T> paramc, b<? super T, ? extends R> paramb)
   {
     AppMethodBeat.i(168824);
-    p.k(paramc, "$this$thread");
-    p.k(paramb, "func");
-    paramc = paramc.b((com.tencent.mm.vending.h.d)h.khr).c((com.tencent.mm.vending.c.a)new d.d(paramb));
-    p.j(paramc, "`$`(ThreadScheduler).next {\n        func(it)\n    }");
+    s.u(paramc, "<this>");
+    s.u(paramb, "func");
+    paramc = paramc.b((com.tencent.mm.vending.h.d)h.mHQ).c(new d..ExternalSyntheticLambda0(paramb));
+    s.s(paramc, "`$`(ThreadScheduler).next {\n        func(it)\n    }");
     AppMethodBeat.o(168824);
     return paramc;
   }
   
   public static final <T> T a(HashSet<T> paramHashSet, b<? super T, Boolean> paramb)
   {
-    AppMethodBeat.i(243464);
-    p.k(paramHashSet, "$this$wxRemoveFirst");
-    p.k(paramb, "func");
+    AppMethodBeat.i(233620);
+    s.u(paramHashSet, "<this>");
+    s.u(paramb, "func");
     paramHashSet = paramHashSet.iterator();
     while (paramHashSet.hasNext())
     {
@@ -184,74 +196,122 @@ public final class d
       if (((Boolean)paramb.invoke(localObject)).booleanValue())
       {
         paramHashSet.remove();
-        AppMethodBeat.o(243464);
+        AppMethodBeat.o(233620);
         return localObject;
       }
     }
-    AppMethodBeat.o(243464);
+    AppMethodBeat.o(233620);
     return null;
+  }
+  
+  private static final Object a(b paramb, Object paramObject)
+  {
+    AppMethodBeat.i(233730);
+    s.u(paramb, "$func");
+    paramb = paramb.invoke(paramObject);
+    AppMethodBeat.o(233730);
+    return paramb;
   }
   
   public static final <T> T a(byte[] paramArrayOfByte, Parcelable.Creator<T> paramCreator)
   {
-    AppMethodBeat.i(243479);
-    p.k(paramArrayOfByte, "bytes");
-    p.k(paramCreator, "creator");
-    p.k(paramArrayOfByte, "bytes");
+    AppMethodBeat.i(233707);
+    s.u(paramArrayOfByte, "bytes");
+    s.u(paramCreator, "creator");
+    s.u(paramArrayOfByte, "bytes");
     Parcel localParcel = Parcel.obtain();
-    p.j(localParcel, "Parcel.obtain()");
+    s.s(localParcel, "obtain()");
     localParcel.unmarshall(paramArrayOfByte, 0, paramArrayOfByte.length);
     localParcel.setDataPosition(0);
     paramArrayOfByte = paramCreator.createFromParcel(localParcel);
     localParcel.recycle();
-    AppMethodBeat.o(243479);
+    AppMethodBeat.o(233707);
     return paramArrayOfByte;
   }
   
   public static final void a(long paramLong, Runnable paramRunnable)
   {
-    AppMethodBeat.i(243453);
-    p.k(paramRunnable, "task");
+    AppMethodBeat.i(233487);
+    s.u(paramRunnable, "task");
     MMHandlerThread.postToMainThreadDelayed(paramRunnable, paramLong);
-    AppMethodBeat.o(243453);
+    AppMethodBeat.o(233487);
   }
   
-  public static final void a(long paramLong, kotlin.g.a.a<x> parama)
+  public static final void a(long paramLong, kotlin.g.a.a<ah> parama)
   {
     AppMethodBeat.i(153451);
-    p.k(parama, "block");
-    MMHandlerThread.postToMainThreadDelayed((Runnable)new e(parama), paramLong);
+    s.u(parama, "block");
+    MMHandlerThread.postToMainThreadDelayed(new d..ExternalSyntheticLambda3(parama), paramLong);
     AppMethodBeat.o(153451);
   }
   
   public static final void a(Intent paramIntent, Bundle paramBundle, String paramString)
   {
-    AppMethodBeat.i(243466);
-    p.k(paramIntent, "$this$copyStringExtra");
-    p.k(paramString, "key");
-    if (paramBundle != null) {}
-    for (paramBundle = paramBundle.getString(paramString);; paramBundle = null)
+    AppMethodBeat.i(233629);
+    s.u(paramIntent, "<this>");
+    s.u(paramString, "key");
+    if (paramBundle == null) {}
+    for (paramBundle = null;; paramBundle = paramBundle.getString(paramString))
     {
       paramIntent.putExtra(paramString, paramBundle);
-      AppMethodBeat.o(243466);
+      AppMethodBeat.o(233629);
       return;
     }
   }
   
-  public static final void a(View paramView, final kotlin.g.a.a<x> parama)
+  public static final void a(View paramView, kotlin.g.a.a<ah> parama)
   {
-    AppMethodBeat.i(243477);
-    p.k(paramView, "$this$afterLayout");
-    p.k(parama, "call");
-    paramView.addOnLayoutChangeListener((View.OnLayoutChangeListener)new a(paramView, parama));
-    AppMethodBeat.o(243477);
+    AppMethodBeat.i(233691);
+    s.u(paramView, "<this>");
+    s.u(parama, "call");
+    paramView.addOnLayoutChangeListener((View.OnLayoutChangeListener)new d.c(paramView, parama));
+    AppMethodBeat.o(233691);
+  }
+  
+  public static final <T> void a(LiveData<T> paramLiveData, q paramq, y<T> paramy)
+  {
+    AppMethodBeat.i(233711);
+    s.u(paramLiveData, "<this>");
+    s.u(paramq, "owner");
+    s.u(paramy, "observer");
+    uiThread((kotlin.g.a.a)new d.f(paramLiveData, paramq, paramy));
+    AppMethodBeat.o(233711);
+  }
+  
+  public static final void a(String paramString, boolean paramBoolean, kotlin.g.a.a<ah> parama)
+  {
+    AppMethodBeat.i(233524);
+    s.u(paramString, "tag");
+    s.u(parama, "block");
+    com.tencent.threadpool.h.ahAA.g((Runnable)new d.h(paramString, parama, paramBoolean), paramString);
+    AppMethodBeat.o(233524);
+  }
+  
+  public static final void a(String paramString, boolean paramBoolean, kotlin.g.a.a<ah> parama, long paramLong)
+  {
+    AppMethodBeat.i(233529);
+    s.u(paramString, "tag");
+    s.u(parama, "block");
+    com.tencent.threadpool.h.ahAA.a((Runnable)new d.i(paramString, parama, paramBoolean), paramLong, paramString);
+    AppMethodBeat.o(233529);
+  }
+  
+  private static final void a(kotlin.g.a.a parama, boolean paramBoolean, HandlerThread paramHandlerThread)
+  {
+    AppMethodBeat.i(233724);
+    s.u(parama, "$block");
+    parama.invoke();
+    if (paramBoolean) {
+      paramHandlerThread.quitSafely();
+    }
+    AppMethodBeat.o(233724);
   }
   
   public static final <T> boolean a(ArrayList<T> paramArrayList, b<? super T, Boolean> paramb)
   {
-    AppMethodBeat.i(243463);
-    p.k(paramArrayList, "$this$wxRemoveIf");
-    p.k(paramb, "func");
+    AppMethodBeat.i(233609);
+    s.u(paramArrayList, "<this>");
+    s.u(paramb, "func");
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = ((Iterable)paramArrayList).iterator();
     while (localIterator.hasNext())
@@ -269,15 +329,15 @@ public final class d
         paramArrayList.remove(paramb.next());
       }
     }
-    AppMethodBeat.o(243463);
+    AppMethodBeat.o(233609);
     return bool;
   }
   
   public static final <T> boolean a(LinkedList<T> paramLinkedList, b<? super T, Boolean> paramb)
   {
     AppMethodBeat.i(168826);
-    p.k(paramLinkedList, "$this$wxRemoveIf");
-    p.k(paramb, "func");
+    s.u(paramLinkedList, "<this>");
+    s.u(paramb, "func");
     LinkedList localLinkedList = new LinkedList();
     Iterator localIterator = ((Iterable)paramLinkedList).iterator();
     while (localIterator.hasNext())
@@ -301,133 +361,148 @@ public final class d
   
   public static final <T> boolean a(List<T> paramList, b<? super T, Boolean> paramb)
   {
-    AppMethodBeat.i(243462);
-    p.k(paramList, "$this$synchronizedRemoveAll");
-    p.k(paramb, "predicate");
+    AppMethodBeat.i(233576);
+    s.u(paramList, "<this>");
+    s.u(paramb, "predicate");
     try
     {
-      boolean bool = j.c(paramList, paramb);
+      boolean bool = p.e(paramList, paramb);
       return bool;
     }
     finally
     {
-      AppMethodBeat.o(243462);
+      AppMethodBeat.o(233576);
     }
   }
   
-  public static final c<Void> aJa()
+  public static final String av(String paramString, int paramInt)
   {
-    AppMethodBeat.i(168823);
-    c localc = g.ieN();
-    p.j(localc, "QuickAccess.pipeline()");
-    AppMethodBeat.o(168823);
-    return localc;
-  }
-  
-  public static final String am(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(243475);
-    p.k(paramString, "$this$wxSubString");
+    AppMethodBeat.i(233686);
+    s.u(paramString, "<this>");
     if ((paramInt > paramString.length()) || (paramInt < 0))
     {
       paramString = paramString.toString();
-      AppMethodBeat.o(243475);
+      AppMethodBeat.o(233686);
       return paramString;
     }
     paramString = paramString.substring(0, paramInt);
-    p.j(paramString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-    AppMethodBeat.o(243475);
+    s.s(paramString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+    AppMethodBeat.o(233686);
+    return paramString;
+  }
+  
+  public static final <R> HandlerThread b(String paramString, boolean paramBoolean, kotlin.g.a.a<? extends R> parama)
+  {
+    AppMethodBeat.i(182804);
+    s.u(paramString, "name");
+    s.u(parama, "block");
+    paramString = com.tencent.threadpool.c.d.jx(paramString, 5);
+    paramString.start();
+    new MMHandler(paramString.getLooper()).post(new d..ExternalSyntheticLambda5(parama, paramBoolean, paramString));
+    s.s(paramString, "createMediaCodecThread(n…        }\n        }\n    }");
+    AppMethodBeat.o(182804);
     return paramString;
   }
   
   public static final <T, R> c<R> b(c<T> paramc, b<? super T, ? extends R> paramb)
   {
     AppMethodBeat.i(168825);
-    p.k(paramc, "$this$ui");
-    p.k(paramb, "func");
-    paramc = paramc.f((com.tencent.mm.vending.c.a)new h(paramb));
-    p.j(paramc, "`$ui` {\n        func(it)\n    }");
+    s.u(paramc, "<this>");
+    s.u(paramb, "func");
+    paramc = paramc.f(new d..ExternalSyntheticLambda1(paramb));
+    s.s(paramc, "`$ui` {\n        func(it)\n    }");
     AppMethodBeat.o(168825);
     return paramc;
   }
   
-  public static final void b(String paramString, kotlin.g.a.a<x> parama)
+  private static final Object b(b paramb, Object paramObject)
   {
-    AppMethodBeat.i(243457);
-    p.k(paramString, "taskName");
-    p.k(parama, "block");
-    com.tencent.e.h.ZvG.be((Runnable)new d.e(paramString, parama, true));
-    AppMethodBeat.o(243457);
+    AppMethodBeat.i(233734);
+    s.u(paramb, "$func");
+    paramb = paramb.invoke(paramObject);
+    AppMethodBeat.o(233734);
+    return paramb;
   }
   
-  public static final void c(String paramString, kotlin.g.a.a<x> parama)
+  public static final <T> void b(LiveData<T> paramLiveData, y<T> paramy)
   {
-    AppMethodBeat.i(243458);
-    p.k(paramString, "tag");
-    p.k(parama, "block");
-    p.k(paramString, "tag");
-    p.k(parama, "block");
-    com.tencent.e.h.ZvG.d((Runnable)new d.f(paramString, parama), paramString);
-    AppMethodBeat.o(243458);
+    AppMethodBeat.i(233714);
+    s.u(paramLiveData, "<this>");
+    s.u(paramy, "observer");
+    uiThread((kotlin.g.a.a)new d.e(paramLiveData, paramy));
+    AppMethodBeat.o(233714);
+  }
+  
+  public static final c<Void> bbX()
+  {
+    AppMethodBeat.i(168823);
+    c localc = g.jJU();
+    s.s(localc, "pipeline()");
+    AppMethodBeat.o(168823);
+    return localc;
   }
   
   public static final byte[] c(Parcelable paramParcelable)
   {
-    AppMethodBeat.i(243478);
-    p.k(paramParcelable, "parcelable");
+    AppMethodBeat.i(233698);
+    s.u(paramParcelable, "parcelable");
     Parcel localParcel = Parcel.obtain();
-    p.j(localParcel, "Parcel.obtain()");
+    s.s(localParcel, "obtain()");
     paramParcelable.writeToParcel(localParcel, 0);
     paramParcelable = localParcel.marshall();
     localParcel.recycle();
-    p.j(paramParcelable, "bytes");
-    AppMethodBeat.o(243478);
+    s.s(paramParcelable, "bytes");
+    AppMethodBeat.o(233698);
     return paramParcelable;
   }
   
-  public static final int[] cE(View paramView)
+  public static final int[] cZ(View paramView)
   {
-    AppMethodBeat.i(243472);
-    p.k(paramView, "$this$getLocationOnScreen");
+    AppMethodBeat.i(233662);
+    s.u(paramView, "<this>");
     int[] arrayOfInt = new int[2];
     paramView.getLocationOnScreen(arrayOfInt);
-    AppMethodBeat.o(243472);
-    return arrayOfInt;
-  }
-  
-  public static final int[] cF(View paramView)
-  {
-    AppMethodBeat.i(243473);
-    p.k(paramView, "$this$getLocationInWindow");
-    int[] arrayOfInt = new int[2];
-    paramView.getLocationInWindow(arrayOfInt);
-    AppMethodBeat.o(243473);
+    AppMethodBeat.o(233662);
     return arrayOfInt;
   }
   
   public static final void d(Intent paramIntent, Bundle paramBundle, String paramString)
   {
-    AppMethodBeat.i(243470);
-    p.k(paramIntent, "$this$copyStringArrayListExtra");
-    p.k(paramString, "key");
-    if (paramBundle != null) {}
-    for (paramBundle = paramBundle.getStringArrayList(paramString);; paramBundle = null)
+    AppMethodBeat.i(233656);
+    s.u(paramIntent, "<this>");
+    s.u(paramString, "key");
+    if (paramBundle == null) {}
+    for (paramBundle = null;; paramBundle = paramBundle.getStringArrayList(paramString))
     {
       paramIntent.putExtra(paramString, (Serializable)paramBundle);
-      AppMethodBeat.o(243470);
+      AppMethodBeat.o(233656);
       return;
     }
   }
   
-  public static final boolean dr(int paramInt1, int paramInt2)
+  public static final void d(String paramString, kotlin.g.a.a<ah> parama)
   {
-    return (paramInt1 & paramInt2) > 0;
+    AppMethodBeat.i(233514);
+    s.u(paramString, "taskName");
+    s.u(parama, "block");
+    com.tencent.threadpool.h.ahAA.bm((Runnable)new d.g(paramString, parama, true));
+    AppMethodBeat.o(233514);
+  }
+  
+  public static final int[] da(View paramView)
+  {
+    AppMethodBeat.i(233668);
+    s.u(paramView, "<this>");
+    int[] arrayOfInt = new int[2];
+    paramView.getLocationInWindow(arrayOfInt);
+    AppMethodBeat.o(233668);
+    return arrayOfInt;
   }
   
   public static final Bitmap drawable2Bitmap(Drawable paramDrawable)
   {
-    AppMethodBeat.i(243474);
-    p.k(paramDrawable, "drawable");
+    AppMethodBeat.i(233678);
+    s.u(paramDrawable, "drawable");
     int i = paramDrawable.getIntrinsicWidth();
     int j = paramDrawable.getIntrinsicHeight();
     if (paramDrawable.getOpacity() != -1) {}
@@ -437,150 +512,106 @@ public final class d
       Canvas localCanvas = new Canvas((Bitmap)localObject);
       paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight());
       paramDrawable.draw(localCanvas);
-      p.j(localObject, "bitmap");
-      AppMethodBeat.o(243474);
+      s.s(localObject, "bitmap");
+      AppMethodBeat.o(233678);
       return localObject;
     }
   }
   
-  public static final void g(TextView paramTextView)
+  public static final void e(String paramString, kotlin.g.a.a<ah> parama)
   {
-    AppMethodBeat.i(153457);
-    p.k(paramTextView, "textView");
-    paramTextView.setShadowLayer(com.tencent.mm.ci.a.fromDPToPix(paramTextView.getContext(), 3), 0.0F, com.tencent.mm.ci.a.fromDPToPix(paramTextView.getContext(), 1), -2147483648);
-    AppMethodBeat.o(153457);
+    AppMethodBeat.i(233520);
+    s.u(paramString, "tag");
+    s.u(parama, "block");
+    a(paramString, true, parama);
+    AppMethodBeat.o(233520);
+  }
+  
+  public static final boolean ee(int paramInt1, int paramInt2)
+  {
+    return (paramInt1 & paramInt2) > 0;
   }
   
   private static String getCaller()
   {
-    AppMethodBeat.i(243461);
+    AppMethodBeat.i(233540);
     try
     {
       Object localObject1 = new Throwable().getStackTrace();
-      if ((localObject1 == null) || (localObject1.length < 4))
-      {
-        AppMethodBeat.o(243461);
+      if ((localObject1 == null) || (localObject1.length < 4)) {
         return "";
       }
-      localObject3 = localObject1[3];
-      p.j(localObject3, "stackTrace[3]");
-      localObject3 = ((StackTraceElement)localObject3).getClassName();
-      p.j(localObject3, "stackTrace[3].className");
-      if (localObject3 == null)
-      {
-        localObject1 = new t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(243461);
-        throw ((Throwable)localObject1);
-      }
+      String str = localObject1[3].getClassName();
+      s.s(str, "stackTrace[3].className");
+      str = str.substring(15);
+      s.s(str, "(this as java.lang.String).substring(startIndex)");
+      str = str + ':' + localObject1[3].getMethodName();
+      localObject1 = str + '[' + localObject1[3].getLineNumber() + ']';
+      return localObject1;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      AppMethodBeat.o(243461);
-      return "";
+      AppMethodBeat.o(233540);
     }
-    Object localObject3 = ((String)localObject3).substring(15);
-    p.j(localObject3, "(this as java.lang.String).substring(startIndex)");
-    localObject3 = new StringBuilder().append((String)localObject3).append(":");
-    Object localObject4 = localThrowable[3];
-    p.j(localObject4, "stackTrace[3]");
-    localObject3 = localObject4.getMethodName();
-    localObject3 = new StringBuilder().append((String)localObject3).append("[");
-    Object localObject2 = localThrowable[3];
-    p.j(localObject2, "stackTrace[3]");
-    localObject2 = ((StackTraceElement)localObject2).getLineNumber() + "]";
-    AppMethodBeat.o(243461);
-    return localObject2;
+    return "";
   }
   
-  public static final void h(kotlin.g.a.a<x> parama)
+  public static final void h(TextView paramTextView)
   {
-    AppMethodBeat.i(243456);
-    p.k(parama, "block");
-    b(getCaller(), parama);
-    AppMethodBeat.o(243456);
+    AppMethodBeat.i(153457);
+    s.u(paramTextView, "textView");
+    paramTextView.setShadowLayer(com.tencent.mm.cd.a.fromDPToPix(paramTextView.getContext(), 3), 0.0F, com.tencent.mm.cd.a.fromDPToPix(paramTextView.getContext(), 1), -2147483648);
+    AppMethodBeat.o(153457);
   }
   
-  public static final void uiThread(kotlin.g.a.a<x> parama)
+  public static final String hF(long paramLong)
+  {
+    AppMethodBeat.i(168821);
+    String str = new BigInteger(Long.toBinaryString(paramLong), 2).toString();
+    s.s(str, "big.toString()");
+    AppMethodBeat.o(168821);
+    return str;
+  }
+  
+  public static final void uiThread(kotlin.g.a.a<ah> parama)
   {
     AppMethodBeat.i(153450);
-    p.k(parama, "block");
-    Thread localThread = Thread.currentThread();
-    Looper localLooper = Looper.getMainLooper();
-    p.j(localLooper, "Looper.getMainLooper()");
-    if (p.h(localThread, localLooper.getThread()))
+    s.u(parama, "block");
+    if (s.p(Thread.currentThread(), Looper.getMainLooper().getThread()))
     {
       parama.invoke();
       AppMethodBeat.o(153450);
       return;
     }
-    MMHandlerThread.postToMainThread((Runnable)new e(parama));
+    MMHandlerThread.postToMainThread(new d..ExternalSyntheticLambda4(parama));
     AppMethodBeat.o(153450);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/kt/CommonKt$afterLayout$1", "Landroid/view/View$OnLayoutChangeListener;", "onLayoutChange", "", "v", "Landroid/view/View;", "left", "", "top", "right", "bottom", "oldLeft", "oldTop", "oldRight", "oldBottom", "libktcomm_release"})
-  public static final class a
-    implements View.OnLayoutChangeListener
+  private static final void uiThread$lambda-0(kotlin.g.a.a parama)
   {
-    a(View paramView, kotlin.g.a.a parama) {}
-    
-    public final void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
-    {
-      AppMethodBeat.i(243406);
-      this.khe.post((Runnable)new a(this));
-      this.khe.removeOnLayoutChangeListener((View.OnLayoutChangeListener)this);
-      AppMethodBeat.o(243406);
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-    static final class a
-      implements Runnable
-    {
-      a(d.a parama) {}
-      
-      public final void run()
-      {
-        AppMethodBeat.i(243407);
-        this.khg.khf.invoke();
-        AppMethodBeat.o(243407);
-      }
-    }
+    AppMethodBeat.i(233716);
+    s.u(parama, "$tmp0");
+    parama.invoke();
+    AppMethodBeat.o(233716);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "R", "run", "com/tencent/mm/kt/CommonKt$createMediaCodecThread$1$1"})
-  static final class c
-    implements Runnable
+  public static final void z(kotlin.g.a.a<ah> parama)
   {
-    c(HandlerThread paramHandlerThread, kotlin.g.a.a parama, boolean paramBoolean) {}
-    
-    public final void run()
+    AppMethodBeat.i(233489);
+    s.u(parama, "block");
+    if (!s.p(Thread.currentThread(), Looper.getMainLooper().getThread()))
     {
-      AppMethodBeat.i(182801);
       parama.invoke();
-      if (paramBoolean) {
-        this.khj.quitSafely();
-      }
-      AppMethodBeat.o(182801);
+      AppMethodBeat.o(233489);
+      return;
     }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "R", "T", "it", "kotlin.jvm.PlatformType", "call", "(Ljava/lang/Object;)Ljava/lang/Object;"})
-  static final class h<_Ret, _Var>
-    implements com.tencent.mm.vending.c.a<_Ret, _Var>
-  {
-    h(b paramb) {}
-    
-    public final R call(T paramT)
-    {
-      AppMethodBeat.i(168820);
-      paramT = this.khm.invoke(paramT);
-      AppMethodBeat.o(168820);
-      return paramT;
-    }
+    B(parama);
+    AppMethodBeat.o(233489);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ae.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,57 +1,45 @@
 package com.tencent.mm.plugin.sns.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.MMHandler;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/sns/storage/FinderSnsLiveStatusSyncSaver;", "", "()V", "SAVE_WHAT", "", "TAG", "", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "getHandler", "()Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handler$delegate", "Lkotlin/Lazy;", "clearTask", "", "save", "snsinfo", "Lcom/tencent/mm/plugin/sns/storage/SnsInfo;", "plugin-sns_release"})
 public final class d
+  extends MAutoStorage<c>
 {
-  public static final int Kzo = 1;
-  public static final d Kzp;
-  private static final String TAG = "FinderSnsLiveStatusSyncSaver";
-  private static final f ocu;
+  public static final String[] SQL_CREATE;
   
   static
   {
-    AppMethodBeat.i(267295);
-    Kzp = new d();
-    TAG = "FinderSnsLiveStatusSyncSaver";
-    Kzo = 1;
-    ocu = g.ar((a)a.Kzq);
-    AppMethodBeat.o(267295);
+    AppMethodBeat.i(96282);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(c.info, "CanvasInfo") };
+    AppMethodBeat.o(96282);
   }
   
-  public static MMHandler btS()
+  public d(ISQLiteDatabase paramISQLiteDatabase)
   {
-    AppMethodBeat.i(267294);
-    MMHandler localMMHandler = (MMHandler)ocu.getValue();
-    AppMethodBeat.o(267294);
-    return localMMHandler;
+    this(paramISQLiteDatabase, c.info, "CanvasInfo");
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "invoke"})
-  static final class a
-    extends q
-    implements a<MMHandler>
+  private d(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString)
   {
-    public static final a Kzq;
-    
-    static
+    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, null);
+  }
+  
+  public final void a(c paramc)
+  {
+    AppMethodBeat.i(96281);
+    if (paramc == null)
     {
-      AppMethodBeat.i(193945);
-      Kzq = new a();
-      AppMethodBeat.o(193945);
+      AppMethodBeat.o(96281);
+      return;
     }
-    
-    a()
-    {
-      super();
+    paramc.field_createTime = System.currentTimeMillis();
+    if (!insert(paramc)) {
+      update(paramc, new String[0]);
     }
+    AppMethodBeat.o(96281);
   }
 }
 

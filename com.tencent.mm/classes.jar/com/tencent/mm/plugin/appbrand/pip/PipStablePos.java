@@ -6,30 +6,30 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/pip/PipStablePos;", "Landroid/os/Parcelable;", "appId", "", "point", "Landroid/graphics/Point;", "(Ljava/lang/String;Landroid/graphics/Point;)V", "getAppId", "()Ljava/lang/String;", "getPoint", "()Landroid/graphics/Point;", "component1", "component2", "copy", "describeContents", "", "equals", "", "other", "", "hashCode", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "CREATOR", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/pip/PipStablePos;", "Landroid/os/Parcelable;", "appId", "", "point", "Landroid/graphics/Point;", "(Ljava/lang/String;Landroid/graphics/Point;)V", "getAppId", "()Ljava/lang/String;", "getPoint", "()Landroid/graphics/Point;", "component1", "component2", "copy", "describeContents", "", "equals", "", "other", "", "hashCode", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "CREATOR", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 final class PipStablePos
   implements Parcelable
 {
   public static final a CREATOR;
   final String appId;
-  final Point qGg;
+  final Point tKS;
   
   static
   {
-    AppMethodBeat.i(269163);
+    AppMethodBeat.i(319585);
     CREATOR = new a((byte)0);
-    AppMethodBeat.o(269163);
+    AppMethodBeat.o(319585);
   }
   
   public PipStablePos(String paramString, Point paramPoint)
   {
-    AppMethodBeat.i(269162);
+    AppMethodBeat.i(319580);
     this.appId = paramString;
-    this.qGg = paramPoint;
-    AppMethodBeat.o(269162);
+    this.tKS = paramPoint;
+    AppMethodBeat.o(319580);
   }
   
   public final int describeContents()
@@ -39,75 +39,75 @@ final class PipStablePos
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(269166);
-    if (this != paramObject)
+    AppMethodBeat.i(319614);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof PipStablePos))
-      {
-        paramObject = (PipStablePos)paramObject;
-        if ((!p.h(this.appId, paramObject.appId)) || (!p.h(this.qGg, paramObject.qGg))) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(269166);
+      AppMethodBeat.o(319614);
       return true;
     }
-    AppMethodBeat.o(269166);
-    return false;
+    if (!(paramObject instanceof PipStablePos))
+    {
+      AppMethodBeat.o(319614);
+      return false;
+    }
+    paramObject = (PipStablePos)paramObject;
+    if (!s.p(this.appId, paramObject.appId))
+    {
+      AppMethodBeat.o(319614);
+      return false;
+    }
+    if (!s.p(this.tKS, paramObject.tKS))
+    {
+      AppMethodBeat.o(319614);
+      return false;
+    }
+    AppMethodBeat.o(319614);
+    return true;
   }
   
   public final int hashCode()
   {
-    int j = 0;
-    AppMethodBeat.i(269165);
-    Object localObject = this.appId;
-    if (localObject != null) {}
-    for (int i = localObject.hashCode();; i = 0)
-    {
-      localObject = this.qGg;
-      if (localObject != null) {
-        j = localObject.hashCode();
-      }
-      AppMethodBeat.o(269165);
-      return i * 31 + j;
-    }
+    AppMethodBeat.i(319606);
+    int i = this.appId.hashCode();
+    int j = this.tKS.hashCode();
+    AppMethodBeat.o(319606);
+    return i * 31 + j;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(269164);
-    String str = "PipStablePos(appId=" + this.appId + ", point=" + this.qGg + ")";
-    AppMethodBeat.o(269164);
+    AppMethodBeat.i(319600);
+    String str = "PipStablePos(appId=" + this.appId + ", point=" + this.tKS + ')';
+    AppMethodBeat.o(319600);
     return str;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(269161);
-    p.k(paramParcel, "parcel");
+    AppMethodBeat.i(319590);
+    s.u(paramParcel, "parcel");
     try
     {
       paramParcel.writeString(this.appId);
-      paramParcel.writeParcelable((Parcelable)this.qGg, paramInt);
-      AppMethodBeat.o(269161);
+      paramParcel.writeParcelable((Parcelable)this.tKS, paramInt);
+      AppMethodBeat.o(319590);
       return;
     }
     catch (Exception paramParcel)
     {
-      Log.w("MicroMsg.AppBrand.AppBrandPipStablePosLogicWC", "writeToParcel fail since ".concat(String.valueOf(paramParcel)));
-      AppMethodBeat.o(269161);
+      Log.w("MicroMsg.AppBrand.AppBrandPipStablePosLogicWC", s.X("writeToParcel fail since ", paramParcel));
+      AppMethodBeat.o(319590);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/pip/PipStablePos$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/pip/PipStablePos;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/pip/PipStablePos;", "plugin-appbrand-integration_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/pip/PipStablePos$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/pip/PipStablePos;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/pip/PipStablePos;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     implements Parcelable.Creator<PipStablePos>
   {
-    private static PipStablePos m(Parcel paramParcel)
+    private static PipStablePos q(Parcel paramParcel)
     {
-      AppMethodBeat.i(271558);
-      p.k(paramParcel, "parcel");
+      AppMethodBeat.i(319556);
+      s.u(paramParcel, "parcel");
       for (;;)
       {
         try
@@ -118,16 +118,16 @@ final class PipStablePos
             continue;
           }
           Log.w("MicroMsg.AppBrand.AppBrandPipStablePosLogicWC", "createFromParcel fail, appId: " + str + ", point: " + paramParcel);
-          paramParcel = m.cgN();
+          paramParcel = n.cHL();
         }
         catch (Exception paramParcel)
         {
           String str;
-          Log.w("MicroMsg.AppBrand.AppBrandPipStablePosLogicWC", "createFromParcel fail since ".concat(String.valueOf(paramParcel)));
-          paramParcel = m.cgN();
+          Log.w("MicroMsg.AppBrand.AppBrandPipStablePosLogicWC", s.X("createFromParcel fail since ", paramParcel));
+          paramParcel = n.cHL();
           continue;
         }
-        AppMethodBeat.o(271558);
+        AppMethodBeat.o(319556);
         return paramParcel;
         paramParcel = new PipStablePos(str, paramParcel);
       }
@@ -136,7 +136,7 @@ final class PipStablePos
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.pip.PipStablePos
  * JD-Core Version:    0.7.0.1
  */

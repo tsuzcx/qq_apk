@@ -1,40 +1,41 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
-import com.tencent.luggage.sdk.b.a.c.d;
+import com.tencent.luggage.sdk.b.a.d.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
-import com.tencent.mm.plugin.appbrand.jsapi.aa;
-import com.tencent.mm.plugin.appbrand.m.o;
+import com.tencent.mm.plugin.appbrand.jsapi.ab;
+import com.tencent.mm.plugin.appbrand.n.o;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.b;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/file/JsApiLoadLibFilesSync;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandSyncJsApi;", "Lcom/tencent/luggage/sdk/jsapi/component/service/AppBrandServiceLU;", "()V", "canHandleVarianceExecutable", "", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "executable", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJsRuntimeAddonExecutable;", "Companion", "luggage-wechat-full-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/file/JsApiLoadLibFilesSync;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandSyncJsApi;", "Lcom/tencent/luggage/sdk/jsapi/component/service/AppBrandServiceLU;", "()V", "canHandleVarianceExecutable", "", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "executable", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJsRuntimeAddonExecutable;", "Companion", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class x
-  extends aa<d>
+  extends ab<d>
 {
   public static final int CTRL_INDEX = -2;
   public static final String NAME = "loadLibFiles";
-  public static final x.a oSh;
+  public static final x.a rXD;
   
   static
   {
-    AppMethodBeat.i(251023);
-    oSh = new x.a((byte)0);
-    AppMethodBeat.o(251023);
+    AppMethodBeat.i(329057);
+    rXD = new x.a((byte)0);
+    AppMethodBeat.o(329057);
   }
   
-  public final boolean bPG()
+  public final boolean cpN()
   {
     return true;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "invoke", "com/tencent/mm/plugin/appbrand/jsapi/file/JsApiLoadLibFilesSync$invoke$1$1"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
-    implements b<Object, kotlin.x>
+    extends u
+    implements b<Object, ah>
   {
-    b(x paramx, ICommLibReader paramICommLibReader, o paramo)
+    b(ICommLibReader paramICommLibReader, o paramo)
     {
       super();
     }
@@ -42,7 +43,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.x
  * JD-Core Version:    0.7.0.1
  */

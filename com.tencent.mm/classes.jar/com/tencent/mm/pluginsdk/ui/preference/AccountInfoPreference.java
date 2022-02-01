@@ -7,6 +7,7 @@ import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLayoutChangeListener;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -22,46 +23,50 @@ import com.tencent.mm.R.l;
 import com.tencent.mm.aa.c;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.story.PluginStory;
+import com.tencent.mm.plugin.story.api.e;
 import com.tencent.mm.plugin.story.api.j;
 import com.tencent.mm.plugin.story.api.n;
-import com.tencent.mm.plugin.textstatus.a.d;
-import com.tencent.mm.plugin.textstatus.a.t;
+import com.tencent.mm.plugin.textstatus.a.ac;
+import com.tencent.mm.plugin.textstatus.a.f;
+import com.tencent.mm.plugin.textstatus.a.g;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.NoMeasuredTextView;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.tools.w;
+import com.tencent.mm.ui.tools.v;
 
 public class AccountInfoPreference
   extends Preference
 {
-  public View.OnClickListener FTO;
-  private boolean GXF;
-  private boolean GXG;
-  private boolean GXH;
-  public com.tencent.mm.plugin.textstatus.a.e HaE;
-  private View RpA;
-  public View RpB;
-  public View RpC;
-  private boolean RpD;
-  private int RpE;
-  private NoMeasuredTextView RpF;
-  public ImageView RpG;
-  private RelativeLayout RpH;
-  private FrameLayout RpI;
-  private LinearLayout RpJ;
-  public boolean RpK;
-  public boolean RpL;
-  public View.OnClickListener RpM;
-  private View.OnClickListener RpN;
-  private View.OnClickListener RpO;
-  public SpannableString Rpw;
-  public String Rpx;
-  private RelativeLayout Rpy;
-  private View Rpz;
+  public View.OnClickListener LOO;
+  private boolean MVC;
+  private boolean MVD;
+  private boolean MVE;
+  public g MYL;
+  private View.OnLayoutChangeListener MYo;
   private final String TAG;
+  public SpannableString YlM;
+  public String YlN;
+  private RelativeLayout YlO;
+  private View YlP;
+  private View YlQ;
+  public View YlR;
+  public View YlS;
+  private boolean YlT;
+  private int YlU;
+  private NoMeasuredTextView YlV;
+  public ImageView YlW;
+  private RelativeLayout YlX;
+  private FrameLayout YlY;
+  private LinearLayout YlZ;
+  public boolean Yma;
+  public boolean Ymb;
+  public View.OnClickListener Ymc;
+  private View.OnClickListener Ymd;
+  private View.OnClickListener Yme;
+  public View rootView;
   public String userName;
-  public boolean vkO;
+  public boolean yxr;
   
   public AccountInfoPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -73,165 +78,91 @@ public class AccountInfoPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(31806);
     this.TAG = "MicroMsg.AccountInfoPreference";
-    this.HaE = null;
-    this.GXH = false;
-    this.GXG = false;
-    this.GXF = false;
-    this.RpD = true;
-    this.RpF = null;
-    this.RpG = null;
-    this.RpH = null;
-    this.RpI = null;
-    this.RpJ = null;
-    this.RpK = false;
-    this.RpL = true;
-    this.vkO = false;
-    this.FTO = null;
-    this.RpM = null;
-    this.RpN = null;
-    this.RpO = new AccountInfoPreference.1(this);
+    this.MYL = null;
+    this.MVE = false;
+    this.MVD = false;
+    this.MVC = false;
+    this.YlT = true;
+    this.YlV = null;
+    this.YlW = null;
+    this.YlX = null;
+    this.YlY = null;
+    this.YlZ = null;
+    this.Yma = false;
+    this.Ymb = true;
+    this.yxr = false;
+    this.MYo = null;
+    this.LOO = null;
+    this.Ymc = null;
+    this.Ymd = null;
+    this.Yme = new AccountInfoPreference.1(this);
     AppMethodBeat.o(31806);
   }
   
-  public final void hmG()
+  public final void a(View.OnLayoutChangeListener paramOnLayoutChangeListener)
   {
-    AppMethodBeat.i(273379);
-    if (this.HaE != null)
-    {
-      this.HaE.gkI();
-      this.HaE = null;
+    AppMethodBeat.i(245133);
+    this.MYo = paramOnLayoutChangeListener;
+    if ((this.rootView != null) && (this.MYo != null)) {
+      this.rootView.addOnLayoutChangeListener(this.MYo);
     }
-    AppMethodBeat.o(273379);
+    AppMethodBeat.o(245133);
   }
   
-  public final void hmH()
+  public final void iNw()
   {
     AppMethodBeat.i(169793);
-    Log.i("MicroMsg.AccountInfoPreference", "forceStopBubbleTip this:%s, bindView:%s", new Object[] { this, Boolean.valueOf(this.vkO) });
-    if (!this.vkO)
+    Log.i("MicroMsg.AccountInfoPreference", "forceStopBubbleTip this:%s, bindView:%s", new Object[] { this, Boolean.valueOf(this.yxr) });
+    if (!this.yxr)
     {
       AppMethodBeat.o(169793);
       return;
     }
-    this.RpH.setVisibility(8);
-    if (((PluginStory)h.ag(PluginStory.class)).getStoryNewFeatureConfig().gbz())
+    this.YlX.setVisibility(8);
+    if (((PluginStory)h.az(PluginStory.class)).getStoryNewFeatureConfig().huS())
     {
-      this.RpJ.setVisibility(8);
+      this.YlZ.setVisibility(8);
       AppMethodBeat.o(169793);
       return;
     }
-    this.RpG.setVisibility(8);
-    this.RpI.setVisibility(8);
-    ((com.tencent.mm.plugin.story.api.e)h.ag(com.tencent.mm.plugin.story.api.e.class)).getStoryUIFactory().gY(this.RpG);
+    this.YlW.setVisibility(8);
+    this.YlY.setVisibility(8);
+    ((e)h.az(e.class)).getStoryUIFactory().ke(this.YlW);
     AppMethodBeat.o(169793);
   }
   
-  public final void hmI()
+  public final void iNx()
   {
     AppMethodBeat.i(169794);
-    Log.i("MicroMsg.AccountInfoPreference", "checkUnreadBubbleTip hasUnreadComment:%s, isListVisible:%s", new Object[] { Boolean.valueOf(this.RpK), Boolean.valueOf(this.RpL) });
-    if ((this.RpK) && (this.RpL))
+    Log.i("MicroMsg.AccountInfoPreference", "checkUnreadBubbleTip hasUnreadComment:%s, isListVisible:%s", new Object[] { Boolean.valueOf(this.Yma), Boolean.valueOf(this.Ymb) });
+    if ((this.Yma) && (this.Ymb))
     {
-      Log.i("MicroMsg.AccountInfoPreference", "activeBubbleTip this:%s, bindView:%s", new Object[] { this, Boolean.valueOf(this.vkO) });
-      if (this.vkO)
+      Log.i("MicroMsg.AccountInfoPreference", "activeBubbleTip this:%s, bindView:%s", new Object[] { this, Boolean.valueOf(this.yxr) });
+      if (this.yxr)
       {
-        this.RpH.setVisibility(0);
-        if (!((com.tencent.mm.plugin.story.api.e)h.ag(com.tencent.mm.plugin.story.api.e.class)).getStoryNewFeatureConfig().gbz()) {
+        this.YlX.setVisibility(0);
+        if (!((e)h.az(e.class)).getStoryNewFeatureConfig().huS()) {
           break label186;
         }
-        this.RpG.setVisibility(8);
-        this.RpI.setVisibility(4);
-        this.RpJ.setVisibility(0);
+        this.YlW.setVisibility(8);
+        this.YlY.setVisibility(4);
+        this.YlZ.setVisibility(0);
       }
     }
     for (;;)
     {
-      if (this.vkO) {
-        Log.i("MicroMsg.AccountInfoPreference", "checkUnreadBubbleTip mBubbleContentNewGroup.visible:%s, mStoryBubbleTipViews.visible:%s", new Object[] { Integer.valueOf(this.RpJ.getVisibility()), Integer.valueOf(this.RpG.getVisibility()) });
+      if (this.yxr) {
+        Log.i("MicroMsg.AccountInfoPreference", "checkUnreadBubbleTip mBubbleContentNewGroup.visible:%s, mStoryBubbleTipViews.visible:%s", new Object[] { Integer.valueOf(this.YlZ.getVisibility()), Integer.valueOf(this.YlW.getVisibility()) });
       }
       AppMethodBeat.o(169794);
       return;
       label186:
-      this.RpG.setVisibility(0);
-      this.RpI.setVisibility(0);
-      this.RpJ.setVisibility(8);
-      ((com.tencent.mm.plugin.story.api.e)h.ag(com.tencent.mm.plugin.story.api.e.class)).getStoryUIFactory().gX(this.RpG);
+      this.YlW.setVisibility(0);
+      this.YlY.setVisibility(0);
+      this.YlZ.setVisibility(8);
+      ((e)h.az(e.class)).getStoryUIFactory().kd(this.YlW);
       continue;
-      hmH();
-    }
-  }
-  
-  public final void n(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    AppMethodBeat.i(273380);
-    this.GXF = paramBoolean1;
-    this.RpD = paramBoolean2;
-    this.GXG = paramBoolean3;
-    this.GXH = t.gkZ();
-    if (this.RpF != null)
-    {
-      if (!this.GXH)
-      {
-        if (paramBoolean1) {
-          this.RpF.setTextColor(com.tencent.mm.ci.a.l(this.mContext, R.e.white_text_color));
-        }
-      }
-      else
-      {
-        LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.Rpy.getLayoutParams();
-        localLayoutParams.gravity = 8388693;
-        this.Rpy.setGravity(16);
-        this.Rpy.setLayoutParams(localLayoutParams);
-      }
-    }
-    else
-    {
-      if ((!this.GXH) || (!paramBoolean3)) {
-        break label282;
-      }
-      if (this.RpA != null) {
-        this.RpA.setVisibility(8);
-      }
-      label126:
-      if ((!this.GXH) || (paramBoolean3)) {
-        break label300;
-      }
-      if (this.Rpz != null) {
-        this.Rpz.setVisibility(0);
-      }
-      label152:
-      if ((this.GXH) && (this.RpB != null)) {
-        this.RpB.setOnClickListener(this.RpO);
-      }
-      if (this.RpB != null) {
-        if ((paramBoolean1) || (!paramBoolean2)) {
-          break label319;
-        }
-      }
-    }
-    label282:
-    label300:
-    label319:
-    for (int i = com.tencent.mm.ci.a.aZ(this.mContext, R.f.dlC);; i = com.tencent.mm.ci.a.aZ(this.mContext, R.f.dlB))
-    {
-      if (this.GXH) {
-        i = com.tencent.mm.ci.a.aZ(this.mContext, R.f.dlC);
-      }
-      this.RpB.setPadding(this.RpB.getPaddingLeft(), i, this.RpB.getPaddingRight(), this.RpB.getPaddingBottom());
-      AppMethodBeat.o(273380);
-      return;
-      this.RpF.setTextColor(this.mContext.getResources().getColor(R.e.FG_0));
-      break;
-      if (this.RpA == null) {
-        break label126;
-      }
-      this.RpA.setVisibility(0);
-      break label126;
-      if (this.Rpz == null) {
-        break label152;
-      }
-      this.Rpz.setVisibility(8);
-      break label152;
+      iNw();
     }
   }
   
@@ -239,92 +170,100 @@ public class AccountInfoPreference
   {
     AppMethodBeat.i(31807);
     super.onBindView(paramView);
+    this.rootView = paramView;
+    a(this.MYo);
     Object localObject1 = (ImageView)paramView.findViewById(R.h.avatar_iv);
-    if ((this.userName != null) && (localObject1 != null) && (h.aHB())) {
-      a.b.c((ImageView)localObject1, this.userName);
+    if ((this.userName != null) && (localObject1 != null) && (h.baz())) {
+      a.b.g((ImageView)localObject1, this.userName);
     }
-    ((ImageView)localObject1).setOnClickListener(this.RpO);
-    this.RpF = ((NoMeasuredTextView)paramView.findViewById(R.h.nick_name_tv));
+    ((ImageView)localObject1).setOnClickListener(this.Yme);
+    this.YlV = ((NoMeasuredTextView)paramView.findViewById(R.h.nick_name_tv));
     Object localObject2;
-    if ((this.userName != null) && (this.RpF != null))
+    if ((this.userName != null) && (this.YlV != null))
     {
-      this.RpF.setShouldEllipsize(true);
-      this.RpF.setTextSize(0, com.tencent.mm.ci.a.aY(this.mContext, R.f.HugeTextSize));
-      if (!this.GXH)
+      this.YlV.setShouldEllipsize(true);
+      this.YlV.setTextSize(0, com.tencent.mm.cd.a.br(this.mContext, R.f.HugeTextSize));
+      if (!this.MVE)
       {
-        if (!this.GXF) {
-          break label620;
+        if (!this.MVC) {
+          break label657;
         }
-        this.RpF.setTextColor(com.tencent.mm.ci.a.l(this.mContext, R.e.white_text_color));
+        this.YlV.setTextColor(com.tencent.mm.cd.a.l(this.mContext, R.e.white_text_color));
       }
-      localObject2 = this.RpF;
-      if (this.Rpw != null) {
-        break label643;
+      localObject2 = this.YlV;
+      if (this.YlM != null) {
+        break label680;
       }
       localObject1 = this.userName;
-      label159:
+      label172:
       ((NoMeasuredTextView)localObject2).setText((CharSequence)localObject1);
-      if (this.RpF.getPaint() != null) {
-        this.RpF.getPaint().setFakeBoldText(true);
+      if (this.YlV.getPaint() != null) {
+        this.YlV.getPaint().setFakeBoldText(true);
       }
     }
     localObject1 = (TextView)paramView.findViewById(R.h.user_name_tv);
-    label233:
+    label246:
     int i;
-    if ((this.Rpx != null) && (localObject1 != null))
+    if ((this.YlN != null) && (localObject1 != null))
     {
-      ((TextView)localObject1).setText(paramView.getResources().getString(R.l.app_account, new Object[] { this.Rpx }));
-      ((TextView)localObject1).setOnClickListener(this.RpO);
+      ((TextView)localObject1).setText(paramView.getResources().getString(R.l.app_account, new Object[] { this.YlN }));
+      ((TextView)localObject1).setOnClickListener(this.Yme);
       localObject1 = (TextView)paramView.findViewById(R.h.right_prospect);
       if (localObject1 != null)
       {
-        if (this.RpE <= 99) {
-          break label664;
+        if (this.YlU <= 99) {
+          break label701;
         }
         ((TextView)localObject1).setText(this.mContext.getString(R.l.tab_msg_tip_over));
-        ((TextView)localObject1).setBackgroundResource(w.lE(this.mContext));
+        ((TextView)localObject1).setBackgroundResource(v.nH(this.mContext));
         ((TextView)localObject1).setVisibility(0);
       }
-      label295:
-      this.Rpy = ((RelativeLayout)paramView.findViewById(R.h.qr_arrow_layout));
-      this.Rpy.setOnClickListener(this.RpO);
-      this.Rpz = paramView.findViewById(R.h.head_bg_for_status);
-      this.RpA = paramView.findViewById(R.h.head_corner_bg);
-      this.RpB = paramView.findViewById(R.h.head_root);
-      this.RpC = paramView.findViewById(R.h.v_intercept_head_root_click);
-      if (this.RpB != null)
+      label308:
+      this.YlO = ((RelativeLayout)paramView.findViewById(R.h.qr_arrow_layout));
+      this.YlO.setOnClickListener(this.Yme);
+      this.YlP = paramView.findViewById(R.h.head_bg_for_status);
+      this.YlQ = paramView.findViewById(R.h.head_corner_bg);
+      this.YlR = paramView.findViewById(R.h.head_root);
+      this.YlS = paramView.findViewById(R.h.v_intercept_head_root_click);
+      if (this.YlR != null)
       {
-        if ((this.GXF) || (!this.RpD)) {
-          break label724;
+        if ((this.MVC) || (!this.YlT)) {
+          break label761;
         }
-        i = com.tencent.mm.ci.a.aZ(this.mContext, R.f.dlC);
-        label396:
-        if (this.GXH) {
-          i = com.tencent.mm.ci.a.aZ(this.mContext, R.f.dlC);
+        i = com.tencent.mm.cd.a.bs(this.mContext, R.f.flU);
+        label409:
+        if (this.MVE) {
+          i = com.tencent.mm.cd.a.bs(this.mContext, R.f.flU);
         }
-        this.RpB.setPadding(this.RpB.getPaddingLeft(), i, this.RpB.getPaddingRight(), this.RpB.getPaddingBottom());
-        if (!this.GXH) {
-          break label738;
+        this.YlR.setPadding(this.YlR.getPaddingLeft(), i, this.YlR.getPaddingRight(), this.YlR.getPaddingBottom());
+        if (!this.MVE) {
+          break label775;
         }
-        this.RpB.setOnClickListener(this.RpO);
+        this.YlR.setOnClickListener(this.Yme);
       }
     }
     for (;;)
     {
-      localObject2 = this.RpB;
-      if ((this.HaE == null) && (t.gkZ()) && ((paramView instanceof RelativeLayout)))
+      localObject2 = this.YlR;
+      if (this.MYL != null)
+      {
+        if (this.MYL.v(paramView, (View)localObject2)) {
+          this.MYL.hFv();
+        }
+      }
+      else if ((ac.hFS()) && ((paramView instanceof RelativeLayout)))
       {
         localObject1 = (RelativeLayout)paramView;
-        localObject2 = ((d)h.ag(d.class)).getMoreTabCardView(this.mContext, (RelativeLayout)paramView, (LinearLayout)localObject2);
-        ((RelativeLayout)localObject1).addView(((com.tencent.mm.plugin.textstatus.a.e)localObject2).getView());
-        localObject1 = (RelativeLayout.LayoutParams)((com.tencent.mm.plugin.textstatus.a.e)localObject2).getView().getLayoutParams();
+        localObject2 = ((f)h.az(f.class)).getMoreTabCardView(this.mContext, (RelativeLayout)paramView, (LinearLayout)localObject2);
+        ((RelativeLayout)localObject1).addView(((g)localObject2).getView());
+        localObject1 = (RelativeLayout.LayoutParams)((g)localObject2).getView().getLayoutParams();
         ((RelativeLayout.LayoutParams)localObject1).width = -2;
         ((RelativeLayout.LayoutParams)localObject1).height = -2;
         ((RelativeLayout.LayoutParams)localObject1).addRule(3, R.h.head_root);
-        ((com.tencent.mm.plugin.textstatus.a.e)localObject2).KN(this.userName);
-        this.HaE = ((com.tencent.mm.plugin.textstatus.a.e)localObject2);
+        ((g)localObject2).Ds(this.userName);
+        this.MYL = ((g)localObject2);
       }
-      n(this.GXF, this.RpD, this.GXG);
+      p(this.MVC, this.YlT, this.MVD);
       paramView.post(new Runnable()
       {
         public final void run()
@@ -343,21 +282,21 @@ public class AccountInfoPreference
             }
           }
           label322:
-          for (int i = com.tencent.mm.ci.a.aZ(AccountInfoPreference.this.mContext, R.f.dlB) - com.tencent.mm.ci.a.aZ(AccountInfoPreference.this.mContext, R.f.dlC);; i = 0)
+          for (int i = com.tencent.mm.cd.a.bs(AccountInfoPreference.this.mContext, R.f.flT) - com.tencent.mm.cd.a.bs(AccountInfoPreference.this.mContext, R.f.flU);; i = 0)
           {
             Log.d("MicroMsg.AccountInfoPreference", "root.width:%s, root.height:%s, tip.width:%s, tip.height:%s, offsetY:%s", new Object[] { Integer.valueOf(AccountInfoPreference.d(AccountInfoPreference.this).getWidth()), Integer.valueOf(AccountInfoPreference.d(AccountInfoPreference.this).getHeight()), Integer.valueOf(AccountInfoPreference.e(AccountInfoPreference.this).getWidth()), Integer.valueOf(AccountInfoPreference.e(AccountInfoPreference.this).getHeight()), Integer.valueOf(i) });
-            ((com.tencent.mm.plugin.story.api.e)h.ag(com.tencent.mm.plugin.story.api.e.class)).getStoryUIFactory().c(AccountInfoPreference.d(AccountInfoPreference.this), AccountInfoPreference.e(AccountInfoPreference.this), i);
+            ((e)h.az(e.class)).getStoryUIFactory().c(AccountInfoPreference.d(AccountInfoPreference.this), AccountInfoPreference.e(AccountInfoPreference.this), i);
             AccountInfoPreference localAccountInfoPreference = AccountInfoPreference.this;
             boolean bool1 = bool2;
-            if (((com.tencent.mm.plugin.story.api.e)h.ag(com.tencent.mm.plugin.story.api.e.class)).isShowStoryCheck())
+            if (((e)h.az(e.class)).isShowStoryCheck())
             {
               bool1 = bool2;
-              if (c.aFn().dj(352279, 266241)) {
+              if (c.aYo().dV(352279, 266241)) {
                 bool1 = true;
               }
             }
-            localAccountInfoPreference.RpK = bool1;
-            AccountInfoPreference.this.hmI();
+            localAccountInfoPreference.Yma = bool1;
+            AccountInfoPreference.this.iNx();
             AppMethodBeat.o(169792);
             return;
           }
@@ -365,38 +304,112 @@ public class AccountInfoPreference
       });
       AppMethodBeat.o(31807);
       return;
-      label620:
-      this.RpF.setTextColor(this.mContext.getResources().getColor(R.e.FG_0));
+      label657:
+      this.YlV.setTextColor(this.mContext.getResources().getColor(R.e.FG_0));
       break;
-      label643:
-      localObject1 = this.Rpw;
-      break label159;
+      label680:
+      localObject1 = this.YlM;
+      break label172;
       if (localObject1 == null) {
-        break label233;
+        break label246;
       }
       ((TextView)localObject1).setVisibility(8);
-      break label233;
-      label664:
-      if (this.RpE > 0)
+      break label246;
+      label701:
+      if (this.YlU > 0)
       {
-        ((TextView)localObject1).setText(this.RpE);
-        ((TextView)localObject1).setBackgroundResource(w.bj(this.mContext, this.RpE));
+        ((TextView)localObject1).setText(this.YlU);
+        ((TextView)localObject1).setBackgroundResource(v.bC(this.mContext, this.YlU));
         ((TextView)localObject1).setVisibility(0);
-        break label295;
+        break label308;
       }
       ((TextView)localObject1).setVisibility(8);
-      break label295;
-      label724:
-      i = com.tencent.mm.ci.a.aZ(this.mContext, R.f.dlB);
-      break label396;
-      label738:
-      this.RpB.setOnClickListener(this.RpM);
+      break label308;
+      label761:
+      i = com.tencent.mm.cd.a.bs(this.mContext, R.f.flT);
+      break label409;
+      label775:
+      this.YlR.setOnClickListener(this.Ymc);
+    }
+  }
+  
+  public final void p(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    AppMethodBeat.i(245139);
+    this.MVC = paramBoolean1;
+    this.YlT = paramBoolean2;
+    this.MVD = paramBoolean3;
+    this.MVE = ac.hFS();
+    if (this.YlV != null)
+    {
+      if (!this.MVE)
+      {
+        if (paramBoolean1) {
+          this.YlV.setTextColor(com.tencent.mm.cd.a.l(this.mContext, R.e.white_text_color));
+        }
+      }
+      else
+      {
+        LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.YlO.getLayoutParams();
+        localLayoutParams.gravity = 8388693;
+        this.YlO.setGravity(16);
+        this.YlO.setLayoutParams(localLayoutParams);
+      }
+    }
+    else
+    {
+      if ((!this.MVE) || (!paramBoolean3)) {
+        break label285;
+      }
+      if (this.YlQ != null) {
+        this.YlQ.setVisibility(8);
+      }
+      label128:
+      if ((!this.MVE) || (paramBoolean3)) {
+        break label303;
+      }
+      if (this.YlP != null) {
+        this.YlP.setVisibility(0);
+      }
+      label154:
+      if ((this.MVE) && (this.YlR != null)) {
+        this.YlR.setOnClickListener(this.Yme);
+      }
+      if (this.YlR != null) {
+        if ((paramBoolean1) || (!paramBoolean2)) {
+          break label322;
+        }
+      }
+    }
+    label285:
+    label303:
+    label322:
+    for (int i = com.tencent.mm.cd.a.bs(this.mContext, R.f.flU);; i = com.tencent.mm.cd.a.bs(this.mContext, R.f.flT))
+    {
+      if (this.MVE) {
+        i = com.tencent.mm.cd.a.bs(this.mContext, R.f.flU);
+      }
+      this.YlR.setPadding(this.YlR.getPaddingLeft(), i, this.YlR.getPaddingRight(), this.YlR.getPaddingBottom());
+      AppMethodBeat.o(245139);
+      return;
+      this.YlV.setTextColor(this.mContext.getResources().getColor(R.e.FG_0));
+      break;
+      if (this.YlQ == null) {
+        break label128;
+      }
+      this.YlQ.setVisibility(0);
+      break label128;
+      if (this.YlP == null) {
+        break label154;
+      }
+      this.YlP.setVisibility(8);
+      break label154;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.preference.AccountInfoPreference
  * JD-Core Version:    0.7.0.1
  */

@@ -8,22 +8,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class f
   extends a
 {
-  private final ListView Qg;
+  private final ListView bwx;
   
   public f(ListView paramListView)
   {
     super(paramListView);
-    this.Qg = paramListView;
+    this.bwx = paramListView;
   }
   
-  public final void bH(int paramInt)
+  public final boolean Fd()
   {
-    AppMethodBeat.i(252572);
-    ListView localListView = this.Qg;
+    return false;
+  }
+  
+  public final void eC(int paramInt)
+  {
+    AppMethodBeat.i(195376);
+    ListView localListView = this.bwx;
     if (Build.VERSION.SDK_INT >= 19)
     {
       localListView.scrollListBy(paramInt);
-      AppMethodBeat.o(252572);
+      AppMethodBeat.o(195376);
       return;
     }
     int i = localListView.getFirstVisiblePosition();
@@ -34,17 +39,17 @@ public final class f
         localListView.setSelectionFromTop(i, localView.getTop() - paramInt);
       }
     }
-    AppMethodBeat.o(252572);
+    AppMethodBeat.o(195376);
   }
   
-  public final boolean bI(int paramInt)
+  public final boolean eD(int paramInt)
   {
-    AppMethodBeat.i(252574);
-    ListView localListView = this.Qg;
+    AppMethodBeat.i(195397);
+    ListView localListView = this.bwx;
     int i = localListView.getCount();
     if (i == 0)
     {
-      AppMethodBeat.o(252574);
+      AppMethodBeat.o(195397);
       return false;
     }
     int j = localListView.getChildCount();
@@ -53,7 +58,7 @@ public final class f
     {
       if ((k + j >= i) && (localListView.getChildAt(j - 1).getBottom() <= localListView.getHeight()))
       {
-        AppMethodBeat.o(252574);
+        AppMethodBeat.o(195397);
         return false;
       }
     }
@@ -61,22 +66,22 @@ public final class f
     {
       if ((k <= 0) && (localListView.getChildAt(0).getTop() >= 0))
       {
-        AppMethodBeat.o(252574);
+        AppMethodBeat.o(195397);
         return false;
       }
     }
     else
     {
-      AppMethodBeat.o(252574);
+      AppMethodBeat.o(195397);
       return false;
     }
-    AppMethodBeat.o(252574);
+    AppMethodBeat.o(195397);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     androidx.core.widget.f
  * JD-Core Version:    0.7.0.1
  */

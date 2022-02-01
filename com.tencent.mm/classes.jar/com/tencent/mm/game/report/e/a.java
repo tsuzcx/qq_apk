@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.plugin.appbrand.ac.b;
+import com.tencent.mm.plugin.appbrand.af.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -20,30 +20,7 @@ public final class a
 {
   private static String uuid = null;
   
-  public static String Fq(long paramLong)
-  {
-    AppMethodBeat.i(108278);
-    String str = new BigInteger("00FFFFFFFFFFFFFFFF", 16).and(BigInteger.valueOf(paramLong)).toString();
-    Log.d("MicroMsg.GameReportUtil", "reportReadMsg, unsignedlonglong = ".concat(String.valueOf(str)));
-    AppMethodBeat.o(108278);
-    return str;
-  }
-  
-  public static int G(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(108277);
-    paramContext = b.getPackageInfo(paramContext, paramString);
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(108277);
-      return 0;
-    }
-    int i = paramContext.versionCode;
-    AppMethodBeat.o(108277);
-    return i;
-  }
-  
-  public static String Md(String paramString)
+  public static String EM(String paramString)
   {
     AppMethodBeat.i(108275);
     if (Util.isNullOrNil(paramString))
@@ -67,12 +44,26 @@ public final class a
     }
   }
   
-  public static String aED()
+  public static int L(Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(108277);
+    paramContext = b.getPackageInfo(paramContext, paramString);
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(108277);
+      return 0;
+    }
+    int i = paramContext.versionCode;
+    AppMethodBeat.o(108277);
+    return i;
+  }
+  
+  public static String aXG()
   {
     AppMethodBeat.i(108276);
     if (uuid == null)
     {
-      str = q.auM();
+      str = q.aPg();
       StringBuilder localStringBuilder = new StringBuilder();
       int i = 0;
       while (i < str.length() - 1)
@@ -88,7 +79,7 @@ public final class a
     return str;
   }
   
-  public static int getNetworkType(Context paramContext)
+  public static int dt(Context paramContext)
   {
     AppMethodBeat.i(108274);
     if (NetStatusUtil.is3G(paramContext))
@@ -124,7 +115,16 @@ public final class a
     return 3;
   }
   
-  public static String m(Map<String, String> paramMap)
+  public static String hy(long paramLong)
+  {
+    AppMethodBeat.i(108278);
+    String str = new BigInteger("00FFFFFFFFFFFFFFFF", 16).and(BigInteger.valueOf(paramLong)).toString();
+    Log.d("MicroMsg.GameReportUtil", "reportReadMsg, unsignedlonglong = ".concat(String.valueOf(str)));
+    AppMethodBeat.o(108278);
+    return str;
+  }
+  
+  public static String t(Map<String, String> paramMap)
   {
     AppMethodBeat.i(108279);
     if ((paramMap == null) || (paramMap.size() == 0))

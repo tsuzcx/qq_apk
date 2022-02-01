@@ -1,6 +1,5 @@
 package com.tencent.mm.chatroom.ui;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -19,19 +18,19 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.b.az;
 import com.tencent.mm.contact.d;
-import com.tencent.mm.f.c.ax;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.aq;
+import com.tencent.mm.model.ar;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
-import com.tencent.mm.pluginsdk.ui.span.l;
-import com.tencent.mm.roomsdk.a.b.e;
+import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.roomsdk.model.b.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ah;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMClearEditText;
 import com.tencent.mm.ui.tools.b.c;
@@ -42,61 +41,35 @@ public class ModRemarkRoomNameUI
   extends MMActivity
   implements c.a
 {
-  private MMClearEditText jbH;
-  private TextView jbI;
-  private Button jbJ;
-  private TextView jbK;
-  private ScrollView jbL;
-  private InputPanelLinearLayout jbM;
-  private String jbN;
-  private String jbO;
+  private MMClearEditText lDH;
+  private TextView lDI;
+  private Button lDJ;
+  private TextView lDK;
+  private ScrollView lDL;
+  private InputPanelLinearLayout lDM;
+  private String lDN;
+  private String lDO;
   private String roomId;
   private int scene;
   private TextView titleView;
   
-  private void Kz(String paramString)
+  private void Df(String paramString)
   {
-    AppMethodBeat.i(192572);
+    AppMethodBeat.i(241633);
     if (Util.isNullOrNil(paramString))
     {
-      this.jbK.setVisibility(8);
-      AppMethodBeat.o(192572);
+      this.lDK.setVisibility(8);
+      AppMethodBeat.o(241633);
       return;
     }
-    this.jbK.setVisibility(0);
-    this.jbK.setText(paramString);
-    AppMethodBeat.o(192572);
+    this.lDK.setVisibility(0);
+    this.lDK.setText(paramString);
+    AppMethodBeat.o(241633);
   }
   
   public int getLayoutId()
   {
-    return a.f.jei;
-  }
-  
-  public final void h(boolean paramBoolean, int paramInt)
-  {
-    AppMethodBeat.i(192565);
-    Log.i("MicroMsg.RemarkRoomNameUI", "keyboard show %s, keyboardHeight %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
-    if (paramBoolean)
-    {
-      localLayoutParams = (LinearLayout.LayoutParams)this.jbJ.getLayoutParams();
-      localLayoutParams.bottomMargin = getResources().getDimensionPixelSize(a.c.Edge_2A);
-      localLayoutParams.topMargin = getResources().getDimensionPixelSize(a.c.Edge_2A);
-      this.jbJ.setLayoutParams(localLayoutParams);
-      this.jbM.setPadding(this.jbM.getPaddingLeft(), this.jbM.getPaddingTop(), this.jbM.getPaddingRight(), paramInt);
-      paramInt = this.jbL.getHeight();
-      this.jbM.requestLayout();
-      this.jbM.post(new ModRemarkRoomNameUI.5(this, paramInt));
-      AppMethodBeat.o(192565);
-      return;
-    }
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jbJ.getLayoutParams();
-    localLayoutParams.bottomMargin = getResources().getDimensionPixelSize(a.c.Edge_12A);
-    localLayoutParams.topMargin = 0;
-    this.jbJ.setLayoutParams(localLayoutParams);
-    this.jbM.setPadding(this.jbM.getPaddingLeft(), this.jbM.getPaddingTop(), this.jbM.getPaddingRight(), 0);
-    this.jbL.scrollBy(0, 0);
-    AppMethodBeat.o(192565);
+    return a.f.lGs;
   }
   
   public void initView()
@@ -105,28 +78,28 @@ public class ModRemarkRoomNameUI
     setMMTitle("");
     hideActionbarLine();
     setActionbarColor(getResources().getColor(a.b.white));
-    this.jbL = ((ScrollView)findViewById(a.e.scroll_view));
-    this.jbM = ((InputPanelLinearLayout)findViewById(a.e.input_container));
-    this.jbM.setExternalListener(this);
-    this.jbH = ((MMClearEditText)findViewById(a.e.jcX));
-    this.titleView = ((TextView)findViewById(a.e.jcZ));
-    this.jbI = ((TextView)findViewById(a.e.jcY));
-    this.jbJ = ((Button)findViewById(a.e.next_btn));
-    this.jbK = ((TextView)findViewById(a.e.error_tip));
-    Object localObject2 = (ImageView)findViewById(a.e.jcp);
-    Object localObject3 = findViewById(a.e.jcw);
+    this.lDL = ((ScrollView)findViewById(a.e.scroll_view));
+    this.lDM = ((InputPanelLinearLayout)findViewById(a.e.input_container));
+    this.lDM.setExternalListener(this);
+    this.lDH = ((MMClearEditText)findViewById(a.e.lFf));
+    this.titleView = ((TextView)findViewById(a.e.lFh));
+    this.lDI = ((TextView)findViewById(a.e.lFg));
+    this.lDJ = ((Button)findViewById(a.e.next_btn));
+    this.lDK = ((TextView)findViewById(a.e.error_tip));
+    Object localObject2 = (ImageView)findViewById(a.e.lEp);
+    Object localObject3 = findViewById(a.e.lEw);
     this.scene = getIntent().getIntExtra("Key_Scenen", 0);
     this.roomId = getIntent().getStringExtra("Key_Room_Id");
     Log.i("MicroMsg.RemarkRoomNameUI", "scene %d, roomId %s", new Object[] { Integer.valueOf(this.scene), this.roomId });
     if (Util.isNullOrNil(this.roomId)) {
       finish();
     }
-    Object localObject1 = ((n)h.ae(n.class)).bbL().RG(this.roomId);
-    if ((int)((d)localObject1).jxt > 0) {
-      com.tencent.mm.ui.h.a.a.c((ImageView)localObject2, ((ax)localObject1).field_username);
+    Object localObject1 = ((n)h.ax(n.class)).bzA().JE(this.roomId);
+    if ((int)((d)localObject1).maN > 0) {
+      com.tencent.mm.ui.i.a.a.g((ImageView)localObject2, ((az)localObject1).field_username);
     }
-    localObject2 = l.c(this, Util.nullAsNil(((ax)localObject1).field_nickname));
-    localObject1 = l.c(this, Util.nullAsNil(((ax)localObject1).field_conRemark));
+    localObject2 = p.b(this, Util.nullAsNil(((az)localObject1).field_nickname));
+    localObject1 = p.b(this, Util.nullAsNil(((az)localObject1).field_conRemark));
     Log.i("MicroMsg.RemarkRoomNameUI", "roomName %s, remarkName %s", new Object[] { localObject2, localObject1 });
     switch (this.scene)
     {
@@ -137,33 +110,33 @@ public class ModRemarkRoomNameUI
     case 3: 
       for (;;)
       {
-        this.jbH.setSelection(this.jbH.getText().length());
-        this.jbH.addTextChangedListener(new TextWatcher()
+        this.lDH.setSelection(this.lDH.getText().length());
+        this.lDH.addTextChangedListener(new TextWatcher()
         {
           public final void afterTextChanged(Editable paramAnonymousEditable)
           {
-            AppMethodBeat.i(190059);
+            AppMethodBeat.i(241647);
             ModRemarkRoomNameUI.c(ModRemarkRoomNameUI.this).setEnabled(ModRemarkRoomNameUI.b(ModRemarkRoomNameUI.this));
-            AppMethodBeat.o(190059);
+            AppMethodBeat.o(241647);
           }
           
           public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
           
           public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
           {
-            AppMethodBeat.i(190055);
+            AppMethodBeat.i(241639);
             if (paramAnonymousCharSequence.length() > 0)
             {
               ModRemarkRoomNameUI.a(ModRemarkRoomNameUI.this).setEllipsize(null);
-              AppMethodBeat.o(190055);
+              AppMethodBeat.o(241639);
               return;
             }
             ModRemarkRoomNameUI.a(ModRemarkRoomNameUI.this).setEllipsize(TextUtils.TruncateAt.END);
-            AppMethodBeat.o(190055);
+            AppMethodBeat.o(241639);
           }
         });
-        c.i(this.jbH).axx(32).Hh(false).a(null);
-        this.jbH.requestFocus();
+        c.i(this.lDH).aEg(32).Nc(false).a(null);
+        this.lDH.requestFocus();
         setBackBtn(new MenuItem.OnMenuItemClickListener()
         {
           public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -174,77 +147,77 @@ public class ModRemarkRoomNameUI
             return true;
           }
         });
-        this.jbJ.setOnClickListener(new View.OnClickListener()
+        this.lDJ.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
-            AppMethodBeat.i(190759);
+            AppMethodBeat.i(241653);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bn(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/chatroom/ui/ModRemarkRoomNameUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+            localb.cH(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/chatroom/ui/ModRemarkRoomNameUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
             ModRemarkRoomNameUI.d(ModRemarkRoomNameUI.this);
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/chatroom/ui/ModRemarkRoomNameUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(190759);
+            AppMethodBeat.o(241653);
           }
         });
         AppMethodBeat.o(12668);
         return;
-        this.titleView.setText(a.i.jfJ);
-        this.jbI.setText(a.i.jfx);
-        this.jbH.setText((CharSequence)localObject2);
+        this.titleView.setText(a.i.lHV);
+        this.lDI.setText(a.i.lHI);
+        this.lDH.setText((CharSequence)localObject2);
         if (Util.isNullOrNil((CharSequence)localObject2)) {
-          this.jbH.setHint(getString(a.i.eRg));
+          this.lDH.setHint(getString(a.i.gTM));
         }
-        this.jbO = getString(a.i.jfQ);
-        this.jbN = getString(a.i.eQM);
+        this.lDO = getString(a.i.lIc);
+        this.lDN = getString(a.i.gTs);
         continue;
-        this.titleView.setText(a.i.eRl);
-        this.jbI.setText(a.i.jfv);
-        localObject3 = this.jbH;
-        localObject2 = ((com.tencent.mm.plugin.chatroom.a.b)h.ae(com.tencent.mm.plugin.chatroom.a.b.class)).bbV().Rw(this.roomId);
+        this.titleView.setText(a.i.gTR);
+        this.lDI.setText(a.i.lHG);
+        localObject3 = this.lDH;
+        localObject2 = ((com.tencent.mm.plugin.chatroom.a.b)h.ax(com.tencent.mm.plugin.chatroom.a.b.class)).bzK().Ju(this.roomId);
         localObject1 = "";
         if (localObject2 != null) {
-          localObject1 = ((ah)localObject2).field_selfDisplayName;
+          localObject1 = ((aj)localObject2).field_selfDisplayName;
         }
         localObject2 = localObject1;
         if (Util.isNullOrNil((String)localObject1)) {
-          localObject2 = z.bdb();
+          localObject2 = z.bAO();
         }
-        ((MMClearEditText)localObject3).setText(l.c(this, l.c(this, (CharSequence)localObject2)));
-        this.jbO = getString(a.i.eQL);
-        this.jbN = getString(a.i.jfP);
+        ((MMClearEditText)localObject3).setText(p.b(this, p.b(this, (CharSequence)localObject2)));
+        this.lDO = getString(a.i.gTr);
+        this.lDN = getString(a.i.lIb);
       }
     }
-    this.titleView.setText(a.i.jgt);
-    this.jbI.setText(a.i.jfy);
-    this.jbH.setText((CharSequence)localObject1);
-    this.jbH.setHint(a.i.jgt);
+    this.titleView.setText(a.i.lIG);
+    this.lDI.setText(a.i.lHJ);
+    this.lDH.setText((CharSequence)localObject1);
+    this.lDH.setHint(a.i.lIG);
     if (Util.isNullOrNil((CharSequence)localObject2)) {}
-    for (localObject1 = getString(a.i.eRg);; localObject1 = localObject2)
+    for (localObject1 = getString(a.i.gTM);; localObject1 = localObject2)
     {
       ((View)localObject3).setVisibility(0);
-      ((TextView)findViewById(a.e.jcx)).setText(l.c(this, getString(a.i.jfw, new Object[] { localObject1 })));
-      localObject1 = (TextView)findViewById(a.e.jcy);
+      ((TextView)findViewById(a.e.lEx)).setText(p.b(this, getString(a.i.lHH, new Object[] { localObject1 })));
+      localObject1 = (TextView)findViewById(a.e.lEy);
       if (!Util.isNullOrNil((CharSequence)localObject2)) {
         ((TextView)localObject1).setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
-            AppMethodBeat.i(193949);
+            AppMethodBeat.i(241634);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bn(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/chatroom/ui/ModRemarkRoomNameUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-            ModRemarkRoomNameUI.a(ModRemarkRoomNameUI.this).setText(this.jbP);
+            localb.cH(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/chatroom/ui/ModRemarkRoomNameUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+            ModRemarkRoomNameUI.a(ModRemarkRoomNameUI.this).setText(this.lDP);
             ModRemarkRoomNameUI.a(ModRemarkRoomNameUI.this).setSelection(ModRemarkRoomNameUI.a(ModRemarkRoomNameUI.this).getText().length());
-            this.jbQ.setVisibility(8);
+            this.lDQ.setVisibility(8);
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/chatroom/ui/ModRemarkRoomNameUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(193949);
+            AppMethodBeat.o(241634);
           }
         });
       }
       for (;;)
       {
-        this.jbO = getString(a.i.settings_modify_remark_invalid_more);
+        this.lDO = getString(a.i.settings_modify_remark_invalid_more);
         break;
         ((TextView)localObject1).setVisibility(8);
       }
@@ -267,6 +240,43 @@ public class ModRemarkRoomNameUI
     AppMethodBeat.o(12670);
   }
   
+  public void onInputPanelChange(boolean paramBoolean, final int paramInt)
+  {
+    AppMethodBeat.i(241672);
+    Log.i("MicroMsg.RemarkRoomNameUI", "keyboard show %s, keyboardHeight %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
+    if (paramBoolean)
+    {
+      localLayoutParams = (LinearLayout.LayoutParams)this.lDJ.getLayoutParams();
+      localLayoutParams.bottomMargin = getResources().getDimensionPixelSize(a.c.Edge_2A);
+      localLayoutParams.topMargin = getResources().getDimensionPixelSize(a.c.Edge_2A);
+      this.lDJ.setLayoutParams(localLayoutParams);
+      this.lDM.setPadding(this.lDM.getPaddingLeft(), this.lDM.getPaddingTop(), this.lDM.getPaddingRight(), paramInt);
+      paramInt = this.lDL.getHeight();
+      this.lDM.requestLayout();
+      this.lDM.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(241645);
+          Log.i("MicroMsg.RemarkRoomNameUI", "inputContainer.height: %d, screenHeight: %d", new Object[] { Integer.valueOf(ModRemarkRoomNameUI.e(ModRemarkRoomNameUI.this).getHeight()), Integer.valueOf(paramInt) });
+          if (ModRemarkRoomNameUI.e(ModRemarkRoomNameUI.this).getHeight() > paramInt) {
+            ModRemarkRoomNameUI.f(ModRemarkRoomNameUI.this).scrollBy(0, ModRemarkRoomNameUI.e(ModRemarkRoomNameUI.this).getHeight() - paramInt);
+          }
+          AppMethodBeat.o(241645);
+        }
+      });
+      AppMethodBeat.o(241672);
+      return;
+    }
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.lDJ.getLayoutParams();
+    localLayoutParams.bottomMargin = getResources().getDimensionPixelSize(a.c.Edge_12A);
+    localLayoutParams.topMargin = 0;
+    this.lDJ.setLayoutParams(localLayoutParams);
+    this.lDM.setPadding(this.lDM.getPaddingLeft(), this.lDM.getPaddingTop(), this.lDM.getPaddingRight(), 0);
+    this.lDL.scrollBy(0, 0);
+    AppMethodBeat.o(241672);
+  }
+  
   public void onPause()
   {
     AppMethodBeat.i(12669);
@@ -282,7 +292,7 @@ public class ModRemarkRoomNameUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.ModRemarkRoomNameUI
  * JD-Core Version:    0.7.0.1
  */

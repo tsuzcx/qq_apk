@@ -1,47 +1,39 @@
 package com.tencent.mm.plugin.story.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/config/StoryConfigConstant;", "", "ElementName", "ModuleName", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/config/StoryConfigConstant;", "", "ElementName", "ModuleName", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface a
 {
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/config/StoryConfigConstant$ElementName;", "", "(Ljava/lang/String;I)V", "ELEMENT_CAMERA", "ELEMENT_ENCODER", "ELEMENT_PROCESS_TYPE", "ELEMENT_ENTRANCE", "ELEMENT_POST", "ELEMENT_BASIC", "ELEMENT_VISITOR", "plugin-story_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/config/StoryConfigConstant$ElementName;", "", "(Ljava/lang/String;I)V", "ELEMENT_CAMERA", "ELEMENT_ENCODER", "ELEMENT_PROCESS_TYPE", "ELEMENT_ENTRANCE", "ELEMENT_POST", "ELEMENT_BASIC", "ELEMENT_VISITOR", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static enum a
   {
     static
     {
       AppMethodBeat.i(118567);
-      a locala1 = new a("ELEMENT_CAMERA", 0);
-      LEO = locala1;
-      a locala2 = new a("ELEMENT_ENCODER", 1);
-      LEP = locala2;
-      a locala3 = new a("ELEMENT_PROCESS_TYPE", 2);
-      LEQ = locala3;
-      a locala4 = new a("ELEMENT_ENTRANCE", 3);
-      LER = locala4;
-      a locala5 = new a("ELEMENT_POST", 4);
-      LES = locala5;
-      a locala6 = new a("ELEMENT_BASIC", 5);
-      LET = locala6;
-      a locala7 = new a("ELEMENT_VISITOR", 6);
-      LEU = locala7;
-      LEV = new a[] { locala1, locala2, locala3, locala4, locala5, locala6, locala7 };
+      Siz = new a("ELEMENT_CAMERA", 0);
+      SiA = new a("ELEMENT_ENCODER", 1);
+      SiB = new a("ELEMENT_PROCESS_TYPE", 2);
+      SiC = new a("ELEMENT_ENTRANCE", 3);
+      SiD = new a("ELEMENT_POST", 4);
+      SiE = new a("ELEMENT_BASIC", 5);
+      SiF = new a("ELEMENT_VISITOR", 6);
+      SiG = new a[] { Siz, SiA, SiB, SiC, SiD, SiE, SiF };
       AppMethodBeat.o(118567);
     }
     
     private a() {}
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/config/StoryConfigConstant$ModuleName;", "", "(Ljava/lang/String;I)V", "MODEL_STORY", "plugin-story_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/config/StoryConfigConstant$ModuleName;", "", "(Ljava/lang/String;I)V", "MODEL_STORY", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static enum b
   {
     static
     {
       AppMethodBeat.i(118570);
-      b localb = new b("MODEL_STORY");
-      LEW = localb;
-      LEX = new b[] { localb };
+      SiH = new b("MODEL_STORY");
+      SiI = new b[] { SiH };
       AppMethodBeat.o(118570);
     }
     

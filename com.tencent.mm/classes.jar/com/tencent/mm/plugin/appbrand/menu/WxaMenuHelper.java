@@ -1,21 +1,20 @@
 package com.tencent.mm.plugin.appbrand.menu;
 
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
+import com.tencent.mm.model.ad.b;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.List;
 
 public final class WxaMenuHelper
 {
-  private final SparseArray<com.tencent.mm.plugin.appbrand.menu.a.a> qgn;
+  private final SparseArray<com.tencent.mm.plugin.appbrand.menu.a.a> tkY;
   
   private WxaMenuHelper()
   {
     AppMethodBeat.i(47672);
-    this.qgn = new SparseArray();
-    a(new u());
+    this.tkY = new SparseArray();
+    a(new v());
     a(new k());
     a(new o());
     a(new q());
@@ -24,6 +23,7 @@ public final class WxaMenuHelper
     a(new j());
     a(new p());
     a(new c());
+    a(new u());
     a(new l());
     a(new e());
     a(new d());
@@ -41,82 +41,61 @@ public final class WxaMenuHelper
   private void a(com.tencent.mm.plugin.appbrand.menu.a.a parama)
   {
     AppMethodBeat.i(47674);
-    this.qgn.put(parama.qgq, parama);
+    this.tkY.put(parama.tlb, parama);
     AppMethodBeat.o(47674);
   }
   
-  public static void a(List<v> paramList, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  public static void a(List<w> paramList, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(47673);
-    v localv = new v(paramInt, paramBoolean1, (com.tencent.mm.plugin.appbrand.menu.a.a)WxaMenuHelper.a.qgp.qgn.get(paramInt));
-    localv.qfB = paramBoolean2;
-    paramList.add(localv);
+    w localw = new w(paramInt, paramBoolean1, (com.tencent.mm.plugin.appbrand.menu.a.a)a.tla.tkY.get(paramInt));
+    localw.disable = paramBoolean2;
+    paramList.add(localw);
     AppMethodBeat.o(47673);
   }
   
-  public static class GetCopyPathMenuExpireTimeTask
-    extends MainProcessTask
+  public static boolean a(w paramw, String paramString)
   {
-    public static final Parcelable.Creator<GetCopyPathMenuExpireTimeTask> CREATOR;
-    private String mAppId;
-    private long qgo;
+    AppMethodBeat.i(323895);
+    if (paramw != null)
+    {
+      boolean bool = paramw.rDC.Jp(paramString);
+      AppMethodBeat.o(323895);
+      return bool;
+    }
+    Log.w("MicroMsg.AppBrand.WxaMenuHelper", "safeGetBoolean, menuInfo is null, key: ".concat(String.valueOf(paramString)));
+    AppMethodBeat.o(323895);
+    return false;
+  }
+  
+  public static void b(w paramw, String paramString)
+  {
+    AppMethodBeat.i(323898);
+    if (paramw != null)
+    {
+      paramw.rDC.N(paramString, true);
+      AppMethodBeat.o(323898);
+      return;
+    }
+    Log.w("MicroMsg.AppBrand.WxaMenuHelper", "safeSetBoolean, menuInfo is null, key: ".concat(String.valueOf(paramString)));
+    AppMethodBeat.o(323898);
+  }
+  
+  static final class a
+  {
+    static WxaMenuHelper tla;
     
     static
     {
-      AppMethodBeat.i(47670);
-      CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(47670);
-    }
-    
-    public GetCopyPathMenuExpireTimeTask(Parcel paramParcel)
-    {
-      AppMethodBeat.i(47666);
-      this.qgo = 0L;
-      f(paramParcel);
-      AppMethodBeat.o(47666);
-    }
-    
-    public GetCopyPathMenuExpireTimeTask(String paramString)
-    {
-      this.qgo = 0L;
-      this.mAppId = paramString;
-    }
-    
-    public final void RW()
-    {
-      AppMethodBeat.i(47667);
-      Object localObject = com.tencent.mm.plugin.appbrand.message.h.qhn;
-      localObject = com.tencent.mm.plugin.appbrand.message.h.eJ(this.mAppId, "copypath");
-      if (localObject == null)
-      {
-        this.qgo = 0L;
-        AppMethodBeat.o(47667);
-        return;
-      }
-      this.qgo = ((Long)localObject).longValue();
-      AppMethodBeat.o(47667);
-    }
-    
-    public final void f(Parcel paramParcel)
-    {
-      AppMethodBeat.i(47668);
-      this.qgo = paramParcel.readLong();
-      this.mAppId = paramParcel.readString();
-      AppMethodBeat.o(47668);
-    }
-    
-    public void writeToParcel(Parcel paramParcel, int paramInt)
-    {
-      AppMethodBeat.i(47669);
-      paramParcel.writeLong(this.qgo);
-      paramParcel.writeString(this.mAppId);
-      AppMethodBeat.o(47669);
+      AppMethodBeat.i(47671);
+      tla = new WxaMenuHelper((byte)0);
+      AppMethodBeat.o(47671);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.WxaMenuHelper
  * JD-Core Version:    0.7.0.1
  */

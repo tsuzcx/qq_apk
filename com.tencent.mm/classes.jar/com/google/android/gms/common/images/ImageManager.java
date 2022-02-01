@@ -1,7 +1,9 @@
 package com.google.android.gms.common.images;
 
+import android.content.ComponentCallbacks2;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -12,7 +14,6 @@ import android.os.ParcelFileDescriptor;
 import android.os.ResultReceiver;
 import android.os.SystemClock;
 import android.widget.ImageView;
-import com.google.android.gms.common.annotation.KeepName;
 import com.google.android.gms.common.images.internal.PostProcessedResourceCache;
 import com.google.android.gms.common.internal.Asserts;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -59,7 +60,7 @@ public final class ImageManager
     if (paramBoolean)
     {
       this.zzpa = new ImageManager.zza(this.mContext);
-      this.mContext.registerComponentCallbacks(new ImageManager.zzd(this.zzpa));
+      this.mContext.registerComponentCallbacks(new zzd(this.zzpa));
     }
     for (;;)
     {
@@ -161,7 +162,6 @@ public final class ImageManager
     AppMethodBeat.o(11716);
   }
   
-  @KeepName
   final class ImageReceiver
     extends ResultReceiver
   {
@@ -420,6 +420,41 @@ public final class ImageManager
     }
   }
   
+  static final class zzd
+    implements ComponentCallbacks2
+  {
+    private final ImageManager.zza zzpa;
+    
+    public zzd(ImageManager.zza paramzza)
+    {
+      this.zzpa = paramzza;
+    }
+    
+    public final void onConfigurationChanged(Configuration paramConfiguration) {}
+    
+    public final void onLowMemory()
+    {
+      AppMethodBeat.i(11705);
+      this.zzpa.evictAll();
+      AppMethodBeat.o(11705);
+    }
+    
+    public final void onTrimMemory(int paramInt)
+    {
+      AppMethodBeat.i(11706);
+      if (paramInt >= 60)
+      {
+        this.zzpa.evictAll();
+        AppMethodBeat.o(11706);
+        return;
+      }
+      if (paramInt >= 20) {
+        this.zzpa.trimToSize(this.zzpa.size() / 2);
+      }
+      AppMethodBeat.o(11706);
+    }
+  }
+  
   final class zze
     implements Runnable
   {
@@ -496,7 +531,7 @@ public final class ImageManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.images.ImageManager
  * JD-Core Version:    0.7.0.1
  */

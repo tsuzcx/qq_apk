@@ -7,15 +7,15 @@ import java.util.NoSuchElementException;
 class q
   extends d
 {
-  protected final byte[] UH;
-  private int bPh = 0;
+  protected final byte[] Op;
+  private int dIL = 0;
   
   q(byte[] paramArrayOfByte)
   {
-    this.UH = paramArrayOfByte;
+    this.Op = paramArrayOfByte;
   }
   
-  private static int b(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
+  private static int d(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
   {
     int i = paramInt2;
     while (i < paramInt2 + paramInt3)
@@ -26,73 +26,11 @@ class q
     return paramInt1;
   }
   
-  public final boolean Aq()
-  {
-    AppMethodBeat.i(59524);
-    int i = At();
-    boolean bool = z.s(this.UH, i, size() + i);
-    AppMethodBeat.o(59524);
-    return bool;
-  }
-  
-  protected final int As()
-  {
-    return this.bPh;
-  }
-  
-  protected int At()
-  {
-    return 0;
-  }
-  
-  final boolean a(q paramq, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(59527);
-    if (paramInt2 > paramq.size())
-    {
-      paramInt1 = size();
-      paramq = new IllegalArgumentException(40 + "Length too large: " + paramInt2 + paramInt1);
-      AppMethodBeat.o(59527);
-      throw paramq;
-    }
-    if (paramInt1 + paramInt2 > paramq.size())
-    {
-      i = paramq.size();
-      paramq = new IllegalArgumentException(59 + "Ran off end of other: " + paramInt1 + ", " + paramInt2 + ", " + i);
-      AppMethodBeat.o(59527);
-      throw paramq;
-    }
-    byte[] arrayOfByte1 = this.UH;
-    byte[] arrayOfByte2 = paramq.UH;
-    int j = At();
-    int i = At();
-    paramInt1 = paramq.At() + paramInt1;
-    while (i < j + paramInt2)
-    {
-      if (arrayOfByte1[i] != arrayOfByte2[paramInt1])
-      {
-        AppMethodBeat.o(59527);
-        return false;
-      }
-      i += 1;
-      paramInt1 += 1;
-    }
-    AppMethodBeat.o(59527);
-    return true;
-  }
-  
-  final void b(OutputStream paramOutputStream, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(59522);
-    paramOutputStream.write(this.UH, At() + paramInt1, paramInt2);
-    AppMethodBeat.o(59522);
-  }
-  
-  protected final int bn(int paramInt1, int paramInt2, int paramInt3)
+  protected final int Q(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(59525);
-    paramInt2 = At() + paramInt2;
-    byte[] arrayOfByte = this.UH;
+    paramInt2 = aaa() + paramInt2;
+    byte[] arrayOfByte = this.Op;
     int k = paramInt2 + paramInt3;
     int m;
     int i;
@@ -128,7 +66,7 @@ class q
           paramInt1 = arrayOfByte[paramInt2];
           if (paramInt3 >= k)
           {
-            paramInt1 = z.bR(m, paramInt1);
+            paramInt1 = z.cS(m, paramInt1);
             AppMethodBeat.o(59525);
             return paramInt1;
           }
@@ -152,7 +90,7 @@ class q
         if (j < k) {
           break label347;
         }
-        paramInt1 = z.bR(m, paramInt3);
+        paramInt1 = z.cS(m, paramInt3);
         AppMethodBeat.o(59525);
         return paramInt1;
       }
@@ -168,7 +106,7 @@ class q
         paramInt2 = i;
         if (i >= k)
         {
-          paramInt1 = z.B(m, paramInt3, j);
+          paramInt1 = z.T(m, paramInt3, j);
           AppMethodBeat.o(59525);
           return paramInt1;
         }
@@ -185,7 +123,7 @@ class q
         paramInt1 = paramInt2;
       }
       label331:
-      paramInt1 = z.Y(arrayOfByte, paramInt1, k);
+      paramInt1 = z.W(arrayOfByte, paramInt1, k);
       AppMethodBeat.o(59525);
       return paramInt1;
       label347:
@@ -194,12 +132,86 @@ class q
     }
   }
   
-  protected final int bo(int paramInt1, int paramInt2, int paramInt3)
+  protected final int R(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(59529);
-    paramInt1 = b(paramInt1, this.UH, At() + paramInt2, paramInt3);
+    paramInt1 = d(paramInt1, this.Op, aaa() + paramInt2, paramInt3);
     AppMethodBeat.o(59529);
     return paramInt1;
+  }
+  
+  public final boolean ZW()
+  {
+    AppMethodBeat.i(59524);
+    int i = aaa();
+    boolean bool = z.t(this.Op, i, size() + i);
+    AppMethodBeat.o(59524);
+    return bool;
+  }
+  
+  protected final int ZY()
+  {
+    return 0;
+  }
+  
+  protected final int ZZ()
+  {
+    return this.dIL;
+  }
+  
+  final boolean a(q paramq, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(59527);
+    if (paramInt2 > paramq.size())
+    {
+      paramInt1 = size();
+      paramq = new IllegalArgumentException(40 + "Length too large: " + paramInt2 + paramInt1);
+      AppMethodBeat.o(59527);
+      throw paramq;
+    }
+    if (paramInt1 + paramInt2 > paramq.size())
+    {
+      i = paramq.size();
+      paramq = new IllegalArgumentException(59 + "Ran off end of other: " + paramInt1 + ", " + paramInt2 + ", " + i);
+      AppMethodBeat.o(59527);
+      throw paramq;
+    }
+    byte[] arrayOfByte1 = this.Op;
+    byte[] arrayOfByte2 = paramq.Op;
+    int j = aaa();
+    int i = aaa();
+    paramInt1 = paramq.aaa() + paramInt1;
+    while (i < j + paramInt2)
+    {
+      if (arrayOfByte1[i] != arrayOfByte2[paramInt1])
+      {
+        AppMethodBeat.o(59527);
+        return false;
+      }
+      i += 1;
+      paramInt1 += 1;
+    }
+    AppMethodBeat.o(59527);
+    return true;
+  }
+  
+  protected int aaa()
+  {
+    return 0;
+  }
+  
+  final void b(OutputStream paramOutputStream, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(59522);
+    paramOutputStream.write(this.Op, aaa() + paramInt1, paramInt2);
+    AppMethodBeat.o(59522);
+  }
+  
+  protected void c(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(59521);
+    System.arraycopy(this.Op, paramInt1, paramArrayOfByte, paramInt2, paramInt3);
+    AppMethodBeat.o(59521);
   }
   
   public boolean equals(Object paramObject)
@@ -247,23 +259,23 @@ class q
   public int hashCode()
   {
     AppMethodBeat.i(59528);
-    int j = this.bPh;
+    int j = this.dIL;
     int i = j;
     if (j == 0)
     {
       i = size();
-      j = bo(i, 0, i);
+      j = R(i, 0, i);
       i = j;
       if (j == 0) {
         i = 1;
       }
-      this.bPh = i;
+      this.dIL = i;
     }
     AppMethodBeat.o(59528);
     return i;
   }
   
-  public d.a iNG()
+  public d.a kxZ()
   {
     AppMethodBeat.i(59531);
     a locala = new a((byte)0);
@@ -271,32 +283,20 @@ class q
     return locala;
   }
   
-  protected final int iNI()
-  {
-    return 0;
-  }
-  
-  protected final boolean iNJ()
+  protected final boolean kyb()
   {
     return true;
   }
   
-  protected void m(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(59521);
-    System.arraycopy(this.UH, paramInt1, paramArrayOfByte, paramInt2, paramInt3);
-    AppMethodBeat.o(59521);
-  }
-  
   public int size()
   {
-    return this.UH.length;
+    return this.Op.length;
   }
   
   public final String toString(String paramString)
   {
     AppMethodBeat.i(59523);
-    paramString = new String(this.UH, At(), size(), paramString);
+    paramString = new String(this.Op, aaa(), size(), paramString);
     AppMethodBeat.o(59523);
     return paramString;
   }
@@ -325,7 +325,7 @@ class q
       AppMethodBeat.i(59518);
       try
       {
-        byte[] arrayOfByte = q.this.UH;
+        byte[] arrayOfByte = q.this.Op;
         int i = this.position;
         this.position = (i + 1);
         byte b = arrayOfByte[i];
@@ -351,7 +351,7 @@ class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.h.q
  * JD-Core Version:    0.7.0.1
  */

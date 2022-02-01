@@ -1,15 +1,20 @@
 package com.tencent.mm.plugin.ball.c;
 
 import com.tencent.mm.plugin.ball.model.BallInfo;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/ball/api/OnFloatBallInfoEventListenerAdapter;", "Lcom/tencent/mm/plugin/ball/api/OnFloatBallInfoEventListener;", "()V", "onFloatBallInfoAdded", "", "ballInfo", "Lcom/tencent/mm/plugin/ball/model/BallInfo;", "onFloatBallInfoClicked", "onFloatBallInfoExposed", "onFloatBallInfoRemoved", "api-ball_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/ball/api/OnFloatBallInfoEventListenerAdapter;", "Lcom/tencent/mm/plugin/ball/api/OnFloatBallInfoEventListener;", "()V", "onAddMessageFloatBall", "", "ballInfo", "Lcom/tencent/mm/plugin/ball/model/BallInfo;", "onFloatBallInfoAdded", "", "onFloatBallInfoClicked", "onFloatBallInfoExposed", "onFloatBallInfoRemoved", "api-ball_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class f
   implements e
 {
   public void b(BallInfo paramBallInfo) {}
   
   public void c(BallInfo paramBallInfo) {}
+  
+  public boolean coy()
+  {
+    return false;
+  }
   
   public void d(BallInfo paramBallInfo) {}
   

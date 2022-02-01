@@ -2,39 +2,47 @@ package com.tencent.mm.plugin.vlog.ui.plugin.transition;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.vlog.model.local.a.a;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/transition/TransitionItem;", "", "effect", "Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$TransEffectInfo;", "selected", "", "(Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$TransEffectInfo;Z)V", "getEffect", "()Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$TransEffectInfo;", "setEffect", "(Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$TransEffectInfo;)V", "getSelected", "()Z", "setSelected", "(Z)V", "component1", "component2", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/plugin/transition/TransitionItem;", "", "effect", "Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$TransEffectInfo;", "selected", "", "(Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$TransEffectInfo;Z)V", "getEffect", "()Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$TransEffectInfo;", "setEffect", "(Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$TransEffectInfo;)V", "getSelected", "()Z", "setSelected", "(Z)V", "component1", "component2", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
 {
-  a.a NBH;
-  boolean xUg;
+  boolean Bvd;
+  a.a Uoo;
   
   public d(a.a parama)
   {
-    this.NBH = parama;
-    this.xUg = false;
+    this.Uoo = parama;
+    this.Bvd = false;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(230664);
-    if (this != paramObject)
+    AppMethodBeat.i(282885);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof d))
-      {
-        paramObject = (d)paramObject;
-        if ((!p.h(this.NBH, paramObject.NBH)) || (this.xUg != paramObject.xUg)) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(230664);
+      AppMethodBeat.o(282885);
       return true;
     }
-    AppMethodBeat.o(230664);
-    return false;
+    if (!(paramObject instanceof d))
+    {
+      AppMethodBeat.o(282885);
+      return false;
+    }
+    paramObject = (d)paramObject;
+    if (!s.p(this.Uoo, paramObject.Uoo))
+    {
+      AppMethodBeat.o(282885);
+      return false;
+    }
+    if (this.Bvd != paramObject.Bvd)
+    {
+      AppMethodBeat.o(282885);
+      return false;
+    }
+    AppMethodBeat.o(282885);
+    return true;
   }
   
   public final int hashCode()
@@ -44,15 +52,15 @@ public final class d
   
   public final String toString()
   {
-    AppMethodBeat.i(230658);
-    String str = "TransitionItem(effect=" + this.NBH + ", selected=" + this.xUg + ")";
-    AppMethodBeat.o(230658);
+    AppMethodBeat.i(282876);
+    String str = "TransitionItem(effect=" + this.Uoo + ", selected=" + this.Bvd + ')';
+    AppMethodBeat.o(282876);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.plugin.transition.d
  * JD-Core Version:    0.7.0.1
  */

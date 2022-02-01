@@ -1,6 +1,6 @@
 package com.tencent.mm.booter.notification.queue;
 
-import androidx.core.app.h;
+import androidx.core.app.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.booter.notification.NotificationItem;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -13,44 +13,44 @@ import java.util.Queue;
 public final class b
   implements Iterable<NotificationItem>
 {
-  public a iSA;
-  public int iSy;
-  public NotificationQueue iSz;
+  public int dUY;
+  public NotificationQueue luv;
+  public a luw;
   
   private b()
   {
     AppMethodBeat.i(20022);
-    this.iSy = -1;
-    this.iSz = new NotificationQueue();
-    this.iSA = new a();
+    this.dUY = -1;
+    this.luv = new NotificationQueue();
+    this.luw = new a();
     restore();
     AppMethodBeat.o(20022);
   }
   
-  public static final b arh()
+  public static final b aLd()
   {
     AppMethodBeat.i(20021);
-    b localb = a.arl();
+    b localb = a.aLh();
     AppMethodBeat.o(20021);
     return localb;
   }
   
-  private Queue<Integer> ark()
+  private Queue<Integer> aLg()
   {
     AppMethodBeat.i(20027);
     LinkedList localLinkedList1 = new LinkedList();
     LinkedList localLinkedList2 = new LinkedList();
-    Object localObject1 = this.iSz;
-    if (((NotificationQueue)localObject1).iSx == null) {
+    Object localObject1 = this.luv;
+    if (((NotificationQueue)localObject1).luu == null) {
       ((NotificationQueue)localObject1).restore();
     }
-    localLinkedList2.addAll(((NotificationQueue)localObject1).iSx);
+    localLinkedList2.addAll(((NotificationQueue)localObject1).luu);
     localObject1 = localLinkedList2.iterator();
     Object localObject2;
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (NotificationItem)((Iterator)localObject1).next();
-      if (((NotificationItem)localObject2).iSq)
+      if (((NotificationItem)localObject2).lun)
       {
         localLinkedList1.add(Integer.valueOf(((NotificationItem)localObject2).id));
         Log.d("MicroMsg.Notification.Queue", "remove allcustom: %d", new Object[] { Integer.valueOf(((NotificationItem)localObject2).id) });
@@ -58,16 +58,16 @@ public final class b
     }
     localLinkedList2.clear();
     localLinkedList2 = new LinkedList();
-    localObject1 = this.iSA;
-    if (((a)localObject1).iSv == null) {
+    localObject1 = this.luw;
+    if (((a)localObject1).lus == null) {
       ((a)localObject1).restore();
     }
-    localLinkedList2.addAll(((a)localObject1).iSv);
+    localLinkedList2.addAll(((a)localObject1).lus);
     localObject1 = localLinkedList2.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (a.a)((Iterator)localObject1).next();
-      if (((a.a)localObject2).iSq)
+      if (((a.a)localObject2).lun)
       {
         localLinkedList1.add(Integer.valueOf(((a.a)localObject2).notificationId));
         Log.d("MicroMsg.Notification.Queue", "remove allcustom: %d", new Object[] { Integer.valueOf(((a.a)localObject2).notificationId) });
@@ -78,7 +78,7 @@ public final class b
     return localLinkedList1;
   }
   
-  public final int JR(String paramString)
+  public final int Cy(String paramString)
   {
     AppMethodBeat.i(20031);
     int i = getId(paramString);
@@ -92,38 +92,38 @@ public final class b
     return i;
   }
   
-  public final void a(h paramh, int paramInt)
+  public final void a(i parami, int paramInt)
   {
-    AppMethodBeat.i(199068);
-    if (paramh == null)
+    AppMethodBeat.i(238934);
+    if (parami == null)
     {
       Log.e("MicroMsg.Notification.Queue", "manager is null???");
-      AppMethodBeat.o(199068);
+      AppMethodBeat.o(238934);
       return;
     }
-    paramh.cancel(paramInt);
+    parami.cancel(paramInt);
     qm(paramInt);
-    AppMethodBeat.o(199068);
+    AppMethodBeat.o(238934);
   }
   
-  public final NotificationItem ari()
+  public final NotificationItem aLe()
   {
     AppMethodBeat.i(20025);
     int i = 0;
     Object localObject;
-    if (i < this.iSz.size())
+    if (i < this.luv.size())
     {
-      localObject = this.iSz;
-      if (((NotificationQueue)localObject).iSx == null) {
+      localObject = this.luv;
+      if (((NotificationQueue)localObject).luu == null) {
         ((NotificationQueue)localObject).restore();
       }
-      localObject = (NotificationItem)((NotificationQueue)localObject).iSx.get(i);
-      if (((NotificationItem)localObject).iSq)
+      localObject = (NotificationItem)((NotificationQueue)localObject).luu.get(i);
+      if (((NotificationItem)localObject).lun)
       {
-        if (this.iSA.remove(((NotificationItem)localObject).id)) {
+        if (this.luw.remove(((NotificationItem)localObject).id)) {
           Log.d("MicroMsg.NotificationAppMsgQueue", "remove: [%s]", new Object[] { ((NotificationItem)localObject).toString() });
         }
-        this.iSz.d((NotificationItem)localObject);
+        this.luv.d((NotificationItem)localObject);
       }
     }
     for (;;)
@@ -136,7 +136,7 @@ public final class b
     }
   }
   
-  public final Queue<Integer> arj()
+  public final Queue<Integer> aLf()
   {
     AppMethodBeat.i(20026);
     LinkedList localLinkedList = new LinkedList();
@@ -146,7 +146,7 @@ public final class b
       localLinkedList.add(Integer.valueOf(i));
       i += 1;
     }
-    localLinkedList.addAll(ark());
+    localLinkedList.addAll(aLg());
     AppMethodBeat.o(20026);
     return localLinkedList;
   }
@@ -154,7 +154,7 @@ public final class b
   public final void cancel(int paramInt)
   {
     AppMethodBeat.i(20029);
-    a(h.M(MMApplicationContext.getContext()), paramInt);
+    a(i.X(MMApplicationContext.getContext()), paramInt);
     AppMethodBeat.o(20029);
   }
   
@@ -166,7 +166,7 @@ public final class b
       AppMethodBeat.o(20028);
       return -1;
     }
-    Iterator localIterator = this.iSA.iterator();
+    Iterator localIterator = this.luw.iterator();
     while (localIterator.hasNext())
     {
       a.a locala = (a.a)localIterator.next();
@@ -184,11 +184,11 @@ public final class b
   public final Iterator<NotificationItem> iterator()
   {
     AppMethodBeat.i(20033);
-    Object localObject = this.iSz;
-    if (((NotificationQueue)localObject).iSx == null) {
+    Object localObject = this.luv;
+    if (((NotificationQueue)localObject).luu == null) {
       ((NotificationQueue)localObject).restore();
     }
-    localObject = ((NotificationQueue)localObject).iSx.iterator();
+    localObject = ((NotificationQueue)localObject).luu.iterator();
     AppMethodBeat.o(20033);
     return localObject;
   }
@@ -196,8 +196,8 @@ public final class b
   public final void qm(int paramInt)
   {
     AppMethodBeat.i(20024);
-    this.iSA.remove(paramInt);
-    NotificationItem localNotificationItem = this.iSz.ql(paramInt);
+    this.luw.remove(paramInt);
+    NotificationItem localNotificationItem = this.luv.ql(paramInt);
     if (localNotificationItem != null) {
       localNotificationItem.clear();
     }
@@ -208,7 +208,7 @@ public final class b
   {
     AppMethodBeat.i(20032);
     long l = System.currentTimeMillis();
-    Iterator localIterator = this.iSA.iterator();
+    Iterator localIterator = this.luw.iterator();
     a.a locala;
     for (String str = ""; localIterator.hasNext(); str = str + locala.notificationId + ",") {
       locala = (a.a)localIterator.next();
@@ -246,26 +246,26 @@ public final class b
   public final void restore()
   {
     AppMethodBeat.i(20023);
-    this.iSz.restore();
-    this.iSA.restore();
+    this.luv.restore();
+    this.luw.restore();
     AppMethodBeat.o(20023);
   }
   
   static final class a
   {
-    private static final b iSB;
+    private static final b luy;
     
     static
     {
       AppMethodBeat.i(20020);
-      iSB = new b((byte)0);
+      luy = new b((byte)0);
       AppMethodBeat.o(20020);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.booter.notification.queue.b
  * JD-Core Version:    0.7.0.1
  */

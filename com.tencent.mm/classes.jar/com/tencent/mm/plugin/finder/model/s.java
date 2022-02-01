@@ -1,99 +1,177 @@
 package com.tencent.mm.plugin.finder.model;
 
-import android.text.SpannableString;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.b;
-import com.tencent.mm.plugin.finder.feed.model.internal.k;
-import com.tencent.mm.plugin.finder.storage.am;
-import com.tencent.mm.plugin.finder.utils.ak;
-import com.tencent.mm.protocal.protobuf.FinderCommentInfo;
-import com.tencent.mm.protocal.protobuf.apk;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.view.recyclerview.a;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.autogen.a.if;
+import com.tencent.mm.autogen.mmdata.rpt.db;
+import com.tencent.mm.plugin.finder.event.a.b;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.upload.action.c;
+import com.tencent.mm.plugin.findersdk.a.bn;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.bui;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.component.k;
+import com.tencent.mm.ui.component.k.b;
+import kotlin.Metadata;
+import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "commentObj", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "(Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;)V", "blink", "", "getBlink", "()Z", "setBlink", "(Z)V", "getCommentObj", "()Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "setCommentObj", "contentCollapse", "getContentCollapse", "setContentCollapse", "hasBlink", "getHasBlink", "setHasBlink", "isAutoExpand", "setAutoExpand", "isFriendComment", "setFriendComment", "remainLevel2Comment", "", "getRemainLevel2Comment", "()I", "setRemainLevel2Comment", "(I)V", "replyContentCollapse", "getReplyContentCollapse", "setReplyContentCollapse", "replyText", "Landroid/text/SpannableString;", "getReplyText", "()Landroid/text/SpannableString;", "setReplyText", "(Landroid/text/SpannableString;)V", "compare", "obj", "getItemId", "", "getItemType", "Companion", "plugin-finder-base_release"})
-public class s
-  implements k, a
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/model/FinderFavLogic;", "", "()V", "TAG", "", "favFeed", "", "context", "Landroidx/appcompat/app/AppCompatActivity;", "finderObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "isFav", "", "scene", "", "source", "favMegaVideo", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class s
 {
-  private static final int zAu = 1;
-  private static final int zAv = 2;
-  private static final int zAw = 3;
-  public static final a zAx;
-  public boolean zAl;
-  public SpannableString zAm;
-  public boolean zAn;
-  public boolean zAo;
-  public boolean zAp;
-  public boolean zAq;
-  public int zAr;
-  public boolean zAs;
-  public am zAt;
+  public static final s ECs;
+  private static final String TAG;
   
   static
   {
-    AppMethodBeat.i(178313);
-    zAx = new a((byte)0);
-    zAu = 1;
-    zAv = 2;
-    zAw = 3;
-    AppMethodBeat.o(178313);
+    AppMethodBeat.i(332257);
+    ECs = new s();
+    TAG = "Finder.FinderFavLogic";
+    AppMethodBeat.o(332257);
   }
   
-  public s(am paramam)
+  public static void a(AppCompatActivity paramAppCompatActivity, FinderItem paramFinderItem, boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(166383);
-    this.zAt = paramam;
-    if (!Util.isNullOrNil(this.zAt.getUsername()))
+    AppMethodBeat.i(332245);
+    kotlin.g.b.s.u(paramAppCompatActivity, "context");
+    kotlin.g.b.s.u(paramFinderItem, "finderObject");
+    Log.i(TAG, "favFeed, id:" + paramFinderItem.getId() + ", pf:" + paramFinderItem.getFeedObject().permissionFlag);
+    Object localObject = k.aeZF;
+    bui localbui = ((com.tencent.mm.plugin.finder.viewmodel.component.as)k.d(paramAppCompatActivity).q(com.tencent.mm.plugin.finder.viewmodel.component.as.class)).fou();
+    int i;
+    label154:
+    long l1;
+    if (paramBoolean)
     {
-      paramam = ak.AGL;
-      if ((!ak.aFJ(this.zAt.getUsername())) && (!((b)h.ae(b.class)).isFriend(this.zAt.getUsername()))) {}
+      localObject = k.aeZF;
+      paramAppCompatActivity = k.d(paramAppCompatActivity).q(com.tencent.mm.plugin.finder.viewmodel.component.as.class);
+      kotlin.g.b.s.s(paramAppCompatActivity, "UICProvider.of(context).…rReporterUIC::class.java)");
+      paramAppCompatActivity = ((bn)paramAppCompatActivity).foy();
+      if (paramAppCompatActivity != null)
+      {
+        paramAppCompatActivity = paramAppCompatActivity.dYj();
+        if (paramAppCompatActivity != null) {
+          paramAppCompatActivity.ne(paramFinderItem.getId());
+        }
+      }
+      paramAppCompatActivity = com.tencent.mm.plugin.finder.report.z.FrZ;
+      long l2 = paramFinderItem.getId();
+      if (!paramBoolean) {
+        break label610;
+      }
+      i = 2;
+      kotlin.g.b.s.u(localbui, "contextObj");
+      paramAppCompatActivity = com.tencent.mm.plugin.finder.report.z.jm(l2);
+      if (paramAppCompatActivity != null)
+      {
+        db localdb = new db();
+        localdb.mV(localbui.sessionId);
+        localdb.mW("");
+        localdb.mX(com.tencent.mm.plugin.finder.report.z.pL(l2));
+        localdb.mY(paramAppCompatActivity.getUserName());
+        localdb.iyq = 5L;
+        localdb.ioV = i;
+        localdb.iyu = 0L;
+        localdb.mZ("");
+        localdb.iyw = 2L;
+        localdb.iwa = paramAppCompatActivity.getLikeCount();
+        localdb.iwb = paramAppCompatActivity.getCommentCount();
+        localdb.iwc = paramAppCompatActivity.getFriendLikeCount();
+        localdb.iwe = paramAppCompatActivity.getMediaType();
+        localObject = com.tencent.mm.plugin.finder.utils.as.GiG;
+        localdb.na(n.bV(com.tencent.mm.plugin.finder.utils.as.F(paramAppCompatActivity), ",", ";"));
+        localdb.nb("");
+        localdb.iuA = localbui.AJo;
+        if (!kotlin.g.b.s.p(paramAppCompatActivity.getUserName(), com.tencent.mm.model.z.bAW())) {
+          break label616;
+        }
+        l1 = 1L;
+        label356:
+        localdb.iyE = l1;
+        localObject = localbui.zIO;
+        paramAppCompatActivity = (AppCompatActivity)localObject;
+        if (localObject == null) {
+          paramAppCompatActivity = "";
+        }
+        localdb.nc(paramAppCompatActivity);
+        localObject = localbui.zIB;
+        paramAppCompatActivity = (AppCompatActivity)localObject;
+        if (localObject == null) {
+          paramAppCompatActivity = "";
+        }
+        localdb.nd(paramAppCompatActivity);
+        localdb.ne(com.tencent.mm.plugin.finder.report.z.p(l2, localbui.AJo));
+        paramAppCompatActivity = localbui.extraInfo;
+        if (paramAppCompatActivity != null) {
+          break label622;
+        }
+        paramAppCompatActivity = "";
+        label442:
+        localdb.nf(paramAppCompatActivity);
+        paramAppCompatActivity = localbui.zIE;
+        if (paramAppCompatActivity != null) {
+          break label647;
+        }
+        paramAppCompatActivity = "";
+        label462:
+        localdb.ng(paramAppCompatActivity);
+        localdb.bMH();
+        com.tencent.mm.plugin.finder.report.z.a((com.tencent.mm.plugin.report.a)localdb);
+      }
+      paramAppCompatActivity = c.GcH;
+      c.a(c.fee(), paramFinderItem, paramBoolean, 2, localbui, paramInt);
+      paramAppCompatActivity = new if();
+      paramAppCompatActivity.hJB.id = paramFinderItem.getId();
+      paramFinderItem = paramAppCompatActivity.hJB;
+      if (!paramBoolean) {
+        break label672;
+      }
     }
-    for (boolean bool = true;; bool = false)
+    label647:
+    label672:
+    for (paramInt = 1;; paramInt = 2)
     {
-      this.zAl = bool;
-      this.zAn = true;
-      this.zAo = true;
-      this.zAr = this.zAt.dYY().expandCommentCount;
-      AppMethodBeat.o(166383);
+      paramFinderItem.hJC = paramInt;
+      paramAppCompatActivity.hJB.type = 5;
+      paramAppCompatActivity.publish();
+      AppMethodBeat.o(332245);
       return;
+      localObject = k.aeZF;
+      paramAppCompatActivity = k.d(paramAppCompatActivity).q(com.tencent.mm.plugin.finder.viewmodel.component.as.class);
+      kotlin.g.b.s.s(paramAppCompatActivity, "UICProvider.of(context).…rReporterUIC::class.java)");
+      paramAppCompatActivity = ((bn)paramAppCompatActivity).foy();
+      if (paramAppCompatActivity == null) {
+        break;
+      }
+      paramAppCompatActivity = paramAppCompatActivity.dYj();
+      if (paramAppCompatActivity == null) {
+        break;
+      }
+      paramAppCompatActivity.nf(paramFinderItem.getId());
+      break;
+      label610:
+      i = 1;
+      break label154;
+      label616:
+      l1 = 0L;
+      break label356;
+      label622:
+      localObject = n.bV(paramAppCompatActivity, ",", ";");
+      paramAppCompatActivity = (AppCompatActivity)localObject;
+      if (localObject != null) {
+        break label442;
+      }
+      paramAppCompatActivity = "";
+      break label442;
+      localObject = n.bV(paramAppCompatActivity, ",", ";");
+      paramAppCompatActivity = (AppCompatActivity)localObject;
+      if (localObject != null) {
+        break label462;
+      }
+      paramAppCompatActivity = "";
+      break label462;
     }
   }
-  
-  public int a(k paramk)
-  {
-    AppMethodBeat.i(166382);
-    p.k(paramk, "obj");
-    AppMethodBeat.o(166382);
-    return 0;
-  }
-  
-  public int bAQ()
-  {
-    AppMethodBeat.i(166381);
-    if (this.zAt.field_actionInfo.xbP == 0L)
-    {
-      i = zAu;
-      AppMethodBeat.o(166381);
-      return i;
-    }
-    int i = zAv;
-    AppMethodBeat.o(166381);
-    return i;
-  }
-  
-  public long mf()
-  {
-    AppMethodBeat.i(259305);
-    long l = this.zAt.dYY().commentId;
-    AppMethodBeat.o(259305);
-    return l;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderFeedComment$Companion;", "", "()V", "ITEM_TYPE_HEADER_CONTENT", "", "getITEM_TYPE_HEADER_CONTENT", "()I", "ITEM_TYPE_LEVEL1", "getITEM_TYPE_LEVEL1", "ITEM_TYPE_LEVEL2", "getITEM_TYPE_LEVEL2", "plugin-finder-base_release"})
-  public static final class a {}
 }
 
 

@@ -20,7 +20,7 @@ public final class AdReportCgiHelper
     AppMethodBeat.i(48080);
     if (MMApplicationContext.isMMProcess())
     {
-      aw(paramInt, paramString);
+      aI(paramInt, paramString);
       if (parama != null)
       {
         parama.onDone();
@@ -37,11 +37,11 @@ public final class AdReportCgiHelper
     AppMethodBeat.o(48080);
   }
   
-  static void aw(int paramInt, String paramString)
+  static void aI(int paramInt, String paramString)
   {
     AppMethodBeat.i(48081);
-    if (h.ae(com.tencent.mm.plugin.sns.b.a.class) != null) {
-      ((com.tencent.mm.plugin.sns.b.a)h.ae(com.tencent.mm.plugin.sns.b.a.class)).t(paramInt, paramString, (int)Util.nowSecond());
+    if (h.ax(com.tencent.mm.plugin.sns.c.a.class) != null) {
+      ((com.tencent.mm.plugin.sns.c.a)h.ax(com.tencent.mm.plugin.sns.c.a.class)).y(paramInt, paramString, (int)Util.nowSecond());
     }
     AppMethodBeat.o(48081);
   }
@@ -50,8 +50,8 @@ public final class AdReportCgiHelper
     implements Parcelable
   {
     public static final Parcelable.Creator<AdReportCgiParams> CREATOR;
-    private int jTq;
-    private String qKt;
+    private int mtI;
+    private String tOW;
     
     static
     {
@@ -65,8 +65,8 @@ public final class AdReportCgiHelper
     protected AdReportCgiParams(Parcel paramParcel)
     {
       AppMethodBeat.i(48076);
-      this.jTq = paramParcel.readInt();
-      this.qKt = paramParcel.readString();
+      this.mtI = paramParcel.readInt();
+      this.tOW = paramParcel.readString();
       AppMethodBeat.o(48076);
     }
     
@@ -78,8 +78,8 @@ public final class AdReportCgiHelper
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(48077);
-      paramParcel.writeInt(this.jTq);
-      paramParcel.writeString(this.qKt);
+      paramParcel.writeInt(this.mtI);
+      paramParcel.writeString(this.tOW);
       AppMethodBeat.o(48077);
     }
   }
@@ -96,7 +96,7 @@ public final class AdReportCgiHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.model.AdReportCgiHelper
  * JD-Core Version:    0.7.0.1
  */

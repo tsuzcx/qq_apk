@@ -10,17 +10,17 @@ import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
-import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.au;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class PowerSettingPreference
   extends Preference
 {
-  private View EQs;
-  private ImageView HaG;
-  private ImageView HaH;
-  private ImageView HaI;
-  private as uNk;
+  private View KKQ;
+  private ImageView MYN;
+  private ImageView MYO;
+  private ImageView MYP;
+  private au xVS;
   
   public PowerSettingPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -36,22 +36,22 @@ public class PowerSettingPreference
   {
     AppMethodBeat.i(31903);
     super.onBindView(paramView);
-    if (this.uNk == null)
+    if (this.xVS == null)
     {
       AppMethodBeat.o(31903);
       return;
     }
-    if (this.HaG == null) {
-      this.HaG = ((ImageView)paramView.findViewById(R.h.dBT));
+    if (this.MYN == null) {
+      this.MYN = ((ImageView)paramView.findViewById(R.h.contact_power_star));
     }
-    if (this.HaH == null) {
-      this.HaH = ((ImageView)paramView.findViewById(R.h.dBR));
+    if (this.MYO == null) {
+      this.MYO = ((ImageView)paramView.findViewById(R.h.contact_power_sns_feed));
     }
-    if (this.HaI == null) {
-      this.HaI = ((ImageView)paramView.findViewById(R.h.dBS));
+    if (this.MYP == null) {
+      this.MYP = ((ImageView)paramView.findViewById(R.h.contact_power_sns_out));
     }
-    paramView = this.HaG;
-    if (this.uNk.ayh()) {}
+    paramView = this.MYN;
+    if (this.xVS.aSK()) {}
     for (int i = 0;; i = 8)
     {
       paramView.setVisibility(i);
@@ -63,22 +63,22 @@ public class PowerSettingPreference
   public final View onCreateView(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(31902);
-    if (this.EQs == null)
+    if (this.KKQ == null)
     {
       paramViewGroup = super.onCreateView(paramViewGroup);
       ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
       localViewGroup.removeAllViews();
-      localViewGroup.addView(LayoutInflater.from(this.mContext).inflate(R.i.ekh, null), new AbsListView.LayoutParams(-1, -2));
-      this.EQs = paramViewGroup;
+      localViewGroup.addView(LayoutInflater.from(this.mContext).inflate(R.i.gnk, null), new AbsListView.LayoutParams(-1, -2));
+      this.KKQ = paramViewGroup;
     }
-    paramViewGroup = this.EQs;
+    paramViewGroup = this.KKQ;
     AppMethodBeat.o(31902);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.preference.PowerSettingPreference
  * JD-Core Version:    0.7.0.1
  */

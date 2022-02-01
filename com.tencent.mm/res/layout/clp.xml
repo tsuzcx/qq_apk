@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:paddingTop="@dimen/cb" android:paddingBottom="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/dkt" android:background="@color/BW_0_Alpha_0_8" android:paddingLeft="@dimen/d6" android:paddingRight="@dimen/d6" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageView android:id="@id/x1" android:layout_width="@dimen/cl" android:layout_height="@dimen/cl" android:src="@drawable/bca" />
-        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <TextView android:textSize="16.0dip" android:textColor="@color/ajr" android:ellipsize="end" android:id="@id/ir3" android:layout_width="0.0dip" android:layout_height="wrap_content" android:lines="1" android:layout_weight="1.0" android:layout_marginStart="@dimen/ct" />
-                <ImageView android:id="@id/w1" android:visibility="gone" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:scaleType="fitXY" android:layout_marginStart="@dimen/bt" />
-                <TextView android:textSize="16.0dip" android:textColor="@color/FG_0" android:id="@id/k3u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:lines="1" android:layout_marginStart="@dimen/ct" />
-            </LinearLayout>
-            <TextView android:textSize="14.0dip" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/kvr" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" android:maxEms="60" android:layout_marginStart="@dimen/ct" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/fq0" android:background="@drawable/z_" android:paddingTop="@dimen/d0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:gravity="center" android:id="@id/fq5" android:paddingLeft="@dimen/cp" android:paddingRight="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/ltk" android:includeFontPadding="false" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_5" android:ellipsize="end" android:id="@id/m3n" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:text="2月8日20:00 直播" android:singleLine="true" android:layout_centerHorizontal="true" />
+        <View android:background="@color/BW_100_Alpha_0_0_5" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="@dimen/d0" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/d_">
+            <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:gravity="center" android:id="@id/fq3" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="@dimen/bv" android:text="@string/dmv" android:layout_weight="1.0" />
+            <View android:background="@color/BW_100_Alpha_0_0_5" android:layout_width="1.0px" android:layout_height="fill_parent" />
+            <TextView android:textSize="17.0dip" android:textColor="#ff7d90a9" android:gravity="center" android:id="@id/fq1" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="@dimen/bv" android:text="@string/ltj" android:layout_weight="1.0" android:layout_centerHorizontal="true" />
         </LinearLayout>
     </LinearLayout>
-</FrameLayout>
+</RelativeLayout>

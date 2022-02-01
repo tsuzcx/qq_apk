@@ -18,19 +18,19 @@ public class APMidasRSATools
   
   private byte charToByte(char paramChar)
   {
-    AppMethodBeat.i(253555);
+    AppMethodBeat.i(217159);
     byte b = (byte)"0123456789ABCDEF".indexOf(paramChar);
-    AppMethodBeat.o(253555);
+    AppMethodBeat.o(217159);
     return b;
   }
   
   private byte[] decrypt(RSAPublicKey paramRSAPublicKey, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(253564);
+    AppMethodBeat.i(217182);
     if (paramRSAPublicKey == null)
     {
       paramRSAPublicKey = new Exception("解密私钥为空, 请设置");
-      AppMethodBeat.o(253564);
+      AppMethodBeat.o(217182);
       throw paramRSAPublicKey;
     }
     try
@@ -38,56 +38,56 @@ public class APMidasRSATools
       Cipher localCipher = Cipher.getInstance("RSA");
       localCipher.init(2, paramRSAPublicKey);
       paramRSAPublicKey = localCipher.doFinal(paramArrayOfByte);
-      AppMethodBeat.o(253564);
+      AppMethodBeat.o(217182);
       return paramRSAPublicKey;
     }
     catch (NoSuchAlgorithmException paramRSAPublicKey)
     {
       paramRSAPublicKey = new Exception("没有这样的解密算法");
-      AppMethodBeat.o(253564);
+      AppMethodBeat.o(217182);
       throw paramRSAPublicKey;
     }
     catch (InvalidKeyException paramRSAPublicKey)
     {
       paramRSAPublicKey = new Exception("密钥无效，请检查确认");
-      AppMethodBeat.o(253564);
+      AppMethodBeat.o(217182);
       throw paramRSAPublicKey;
     }
     catch (IllegalBlockSizeException paramRSAPublicKey)
     {
       paramRSAPublicKey = new Exception("密文长度无效或者过长");
-      AppMethodBeat.o(253564);
+      AppMethodBeat.o(217182);
       throw paramRSAPublicKey;
     }
     catch (BadPaddingException paramRSAPublicKey)
     {
       paramRSAPublicKey = new Exception("密文数据已损坏");
-      AppMethodBeat.o(253564);
+      AppMethodBeat.o(217182);
       throw paramRSAPublicKey;
     }
     catch (Exception paramRSAPublicKey)
     {
       APLog.i("APMidasRSATools exception", paramRSAPublicKey.toString());
       paramRSAPublicKey = new Exception("其他错误");
-      AppMethodBeat.o(253564);
+      AppMethodBeat.o(217182);
       throw paramRSAPublicKey;
     }
   }
   
   private byte[] getByte(String paramString)
   {
-    AppMethodBeat.i(253557);
+    AppMethodBeat.i(217166);
     paramString = hexStringToBytes(paramString);
-    AppMethodBeat.o(253557);
+    AppMethodBeat.o(217166);
     return paramString;
   }
   
   private byte[] hexStringToBytes(String paramString)
   {
-    AppMethodBeat.i(253554);
+    AppMethodBeat.i(217150);
     if ((paramString == null) || (paramString.equals("")))
     {
-      AppMethodBeat.o(253554);
+      AppMethodBeat.o(217150);
       return null;
     }
     paramString = paramString.toUpperCase();
@@ -102,29 +102,29 @@ public class APMidasRSATools
       arrayOfByte[i] = ((byte)(charToByte(paramString[(k + 1)]) | m << 4));
       i += 1;
     }
-    AppMethodBeat.o(253554);
+    AppMethodBeat.o(217150);
     return arrayOfByte;
   }
   
   private void loadPublicKey(String paramString)
   {
-    AppMethodBeat.i(253559);
+    AppMethodBeat.i(217175);
     try
     {
       paramString = Base64.decode(paramString, 0);
       this.publicKey = ((RSAPublicKey)KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(paramString)));
-      AppMethodBeat.o(253559);
+      AppMethodBeat.o(217175);
       return;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(253559);
+      AppMethodBeat.o(217175);
     }
   }
   
   public String deCodeKey(String paramString)
   {
-    AppMethodBeat.i(253561);
+    AppMethodBeat.i(217190);
     try
     {
       getClass();
@@ -132,19 +132,19 @@ public class APMidasRSATools
       paramString = getByte(paramString);
       paramString = decrypt(this.publicKey, paramString);
       paramString = new String(paramString);
-      AppMethodBeat.o(253561);
+      AppMethodBeat.o(217190);
       return paramString;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(253561);
+      AppMethodBeat.o(217190);
     }
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.midas.comm.APMidasRSATools
  * JD-Core Version:    0.7.0.1
  */

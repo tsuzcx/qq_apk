@@ -9,8 +9,8 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class k$f
 {
-  private static f vdu = null;
-  private long vdt;
+  private static f yph = null;
+  private long ypg;
   
   public k$f()
   {
@@ -21,24 +21,24 @@ public final class k$f
       l = localSharedPreferences.getLong("local_message_seq", 0L);
       Log.i("MicroMsg.exdevice.Util", "lasted seq id is %d", new Object[] { Long.valueOf(l) });
     }
-    this.vdt = l;
+    this.ypg = l;
     AppMethodBeat.o(23169);
   }
   
-  public static long cYY()
+  public static long dFp()
   {
     AppMethodBeat.i(23170);
-    if (vdu == null) {
-      vdu = new f();
+    if (yph == null) {
+      yph = new f();
     }
-    Object localObject = vdu;
-    if (9223372036854775807L == ((f)localObject).vdt)
+    Object localObject = yph;
+    if (9223372036854775807L == ((f)localObject).ypg)
     {
       Log.w("MicroMsg.MMSendDataToManufacturerLogic", "Sequence Data-overrun!!!");
-      ((f)localObject).vdt = 0L;
+      ((f)localObject).ypg = 0L;
     }
-    long l = ((f)localObject).vdt + 1L;
-    ((f)localObject).vdt = l;
+    long l = ((f)localObject).ypg + 1L;
+    ((f)localObject).ypg = l;
     localObject = MMApplicationContext.getContext().getSharedPreferences("exdevice_pref", 0);
     if (localObject != null)
     {

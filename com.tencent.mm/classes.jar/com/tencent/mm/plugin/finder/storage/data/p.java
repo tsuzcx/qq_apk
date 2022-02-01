@@ -1,96 +1,57 @@
 package com.tencent.mm.plugin.finder.storage.data;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.asx;
-import kotlin.l;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.protocal.protobuf.axb;
+import java.util.LinkedList;
+import kotlin.Metadata;
+import kotlin.g.a.b;
+import kotlin.g.b.ah.a;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/data/PageCacheList;", "", "array", "", "Lcom/tencent/mm/plugin/finder/storage/data/CachePage;", "([Lcom/tencent/mm/plugin/finder/storage/data/CachePage;)V", "[Lcom/tencent/mm/plugin/finder/storage/data/CachePage;", "get", "typeFlag", "", "reset", "", "set", "page", "size", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/data/MegaVideoOp;", "Lcom/tencent/mm/plugin/finder/storage/data/PageDataOp;", "Lcom/tencent/mm/plugin/finder/model/MegaVideoFeed;", "()V", "extract", "data", "Lcom/tencent/mm/protocal/protobuf/FinderFPItem;", "isTargetDataType", "", "dataType", "", "remove", "id", "", "list", "Ljava/util/LinkedList;", "targetDataType", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class p
 {
-  final a[] AnA;
+  public static final p FNp;
   
-  public p(a[] paramArrayOfa)
+  static
   {
-    AppMethodBeat.i(281623);
-    this.AnA = paramArrayOfa;
-    AppMethodBeat.o(281623);
+    AppMethodBeat.i(339325);
+    FNp = new p();
+    AppMethodBeat.o(339325);
   }
   
-  public final a Qq(int paramInt)
+  public static boolean a(long paramLong, LinkedList<axb> paramLinkedList)
   {
-    AppMethodBeat.i(281620);
-    Object localObject2 = this.AnA;
-    int k = localObject2.length;
-    int i = 0;
-    Object localObject1;
-    int j;
-    if (i < k)
-    {
-      localObject1 = localObject2[i];
-      if (localObject1.type == paramInt)
-      {
-        j = 1;
-        label41:
-        if (j == 0) {
-          break label89;
-        }
-      }
-    }
-    for (;;)
-    {
-      localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = new a(10000, "default_v3", new asx(), (byte)0);
-      }
-      AppMethodBeat.o(281620);
-      return localObject2;
-      j = 0;
-      break label41;
-      label89:
-      i += 1;
-      break;
-      localObject1 = null;
-    }
+    AppMethodBeat.i(339319);
+    s.u(paramLinkedList, "list");
+    ah.a locala = new ah.a();
+    d.a(paramLinkedList, (b)new a(paramLong, locala));
+    boolean bool = locala.aiwY;
+    AppMethodBeat.o(339319);
+    return bool;
   }
   
-  public final void a(int paramInt, a parama)
+  public static int fac()
   {
-    AppMethodBeat.i(281621);
-    kotlin.g.b.p.k(parama, "page");
-    a[] arrayOfa = this.AnA;
-    int k = arrayOfa.length;
-    int j = 0;
-    int i = 0;
-    while (j < k)
-    {
-      if (paramInt == arrayOfa[j].type) {
-        this.AnA[i] = parama;
-      }
-      j += 1;
-      i += 1;
-    }
-    AppMethodBeat.o(281621);
+    return 2;
   }
   
-  public final void reset()
+  @Metadata(d1={""}, d2={"<anonymous>", "", "item", "Lcom/tencent/mm/protocal/protobuf/FinderFPItem;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements b<axb, Boolean>
   {
-    AppMethodBeat.i(281622);
-    a[] arrayOfa = this.AnA;
-    int j = arrayOfa.length;
-    int i = 0;
-    while (i < j)
+    a(long paramLong, ah.a parama)
     {
-      a locala = arrayOfa[i];
-      locala.oJz = false;
-      locala.a(new asx());
-      i += 1;
+      super();
     }
-    AppMethodBeat.o(281622);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.data.p
  * JD-Core Version:    0.7.0.1
  */

@@ -66,42 +66,42 @@ import com.tencent.mm.sdk.platformtools.Log;
       AppMethodBeat.o(136306);
       return;
     }
-    if ((paramh.rAr != null) && (paramh.rAr.floatValue() != paramInput.getTextSize())) {
-      paramInput.setTextSize(paramh.rAr.floatValue());
+    if ((paramh.uLH != null) && (paramh.uLH.floatValue() != paramInput.getTextSize())) {
+      paramInput.setTextSize(paramh.uLH.floatValue());
     }
-    if (paramh.rAq != null) {
-      paramInput.setTextColor(paramh.rAq.intValue());
+    if (paramh.uLG != null) {
+      paramInput.setTextColor(paramh.uLG.intValue());
     }
     label155:
     Object localObject;
     af localaf;
-    if (paramh.rAp != null)
+    if (paramh.uLF != null)
     {
-      if ((paramInput.getBackground() == null) || (!(paramInput.getBackground() instanceof ColorDrawable)) || (((ColorDrawable)paramInput.getBackground()).getColor() != paramh.rAp.intValue())) {
-        paramInput.setBackground(new ColorDrawable(paramh.rAp.intValue()));
+      if ((paramInput.getBackground() == null) || (!(paramInput.getBackground() instanceof ColorDrawable)) || (((ColorDrawable)paramInput.getBackground()).getColor() != paramh.uLF.intValue())) {
+        paramInput.setBackground(new ColorDrawable(paramh.uLF.intValue()));
       }
-      if (paramh.rAt != null)
+      if (paramh.uLJ != null)
       {
-        if (!TextUtils.isEmpty(paramh.rAt)) {
+        if (!TextUtils.isEmpty(paramh.uLJ)) {
           break label288;
         }
         paramInput.setHint("");
       }
-      if (paramh.cOk != null)
+      if (paramh.eJF != null)
       {
-        localObject = Typeface.create("sans-serif", c.anE(paramh.cOk).style);
+        localObject = Typeface.create("sans-serif", c.ahc(paramh.eJF).style);
         if (localObject != null) {
           paramInput.setTypeface((Typeface)localObject);
         }
       }
-      localObject = g.anF(paramh.nUc);
+      localObject = g.ahd(paramh.qTN);
       localaf = (af)paramInput;
       if (localaf != null) {}
-      switch (com.tencent.mm.plugin.appbrand.widget.input.e.g.1.rAO[localObject.ordinal()])
+      switch (com.tencent.mm.plugin.appbrand.widget.input.e.g.1.uMe[localObject.ordinal()])
       {
       default: 
         label240:
-        if (!an.m(paramh.rAy)) {
+        if (!an.o(paramh.uLO)) {
           break;
         }
       }
@@ -109,35 +109,35 @@ import com.tencent.mm.sdk.platformtools.Log;
     for (int i = 8;; i = 0)
     {
       paramInput.setVisibility(i);
-      ((af)paramInput).setFixed(an.m(paramh.rAC));
+      ((af)paramInput).setFixed(an.o(paramh.uLS));
       AppMethodBeat.o(136306);
       return;
       paramInput.setBackground(null);
       break;
       label288:
-      localObject = new SpannableStringBuilder(paramh.rAt);
-      i = paramh.rAt.length();
-      ((SpannableStringBuilder)localObject).setSpan(new StyleSpan(c.anE(paramh.rAu).style), 0, i, 18);
-      if (paramh.rAw != null) {
-        ((SpannableStringBuilder)localObject).setSpan(new ForegroundColorSpan(paramh.rAw.intValue()), 0, i, 18);
+      localObject = new SpannableStringBuilder(paramh.uLJ);
+      i = paramh.uLJ.length();
+      ((SpannableStringBuilder)localObject).setSpan(new StyleSpan(c.ahc(paramh.uLK).style), 0, i, 18);
+      if (paramh.uLM != null) {
+        ((SpannableStringBuilder)localObject).setSpan(new ForegroundColorSpan(paramh.uLM.intValue()), 0, i, 18);
       }
-      if (paramh.rAv != null) {
-        ((SpannableStringBuilder)localObject).setSpan(new AbsoluteSizeSpan(paramh.rAv.intValue(), false), 0, i, 18);
+      if (paramh.uLL != null) {
+        ((SpannableStringBuilder)localObject).setSpan(new AbsoluteSizeSpan(paramh.uLL.intValue(), false), 0, i, 18);
       }
       paramInput.setHint((CharSequence)localObject);
       break label155;
-      localaf.cpb();
+      localaf.cRE();
       break label240;
-      localaf.cpc();
+      localaf.cRF();
       break label240;
-      localaf.cpd();
+      localaf.cRG();
       break label240;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.b
  * JD-Core Version:    0.7.0.1
  */

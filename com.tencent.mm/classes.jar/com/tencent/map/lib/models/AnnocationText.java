@@ -1,9 +1,7 @@
 package com.tencent.map.lib.models;
 
 import android.graphics.Bitmap;
-import androidx.annotation.Keep;
 
-@Keep
 public class AnnocationText
 {
   public int anchorGravity = 2;
@@ -16,7 +14,7 @@ public class AnnocationText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.map.lib.models.AnnocationText
  * JD-Core Version:    0.7.0.1
  */

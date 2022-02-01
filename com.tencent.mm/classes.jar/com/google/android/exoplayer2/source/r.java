@@ -5,22 +5,22 @@ import java.util.Arrays;
 
 public final class r
 {
-  public static final r bgJ;
-  private int aNf;
-  public final q[] bgK;
+  public static final r daD;
+  private int cHb;
+  public final q[] daE;
   public final int length;
   
   static
   {
     AppMethodBeat.i(92726);
-    bgJ = new r(new q[0]);
+    daD = new r(new q[0]);
     AppMethodBeat.o(92726);
   }
   
   public r(q... paramVarArgs)
   {
     AppMethodBeat.i(92723);
-    this.bgK = paramVarArgs;
+    this.daE = paramVarArgs;
     this.length = paramVarArgs.length;
     AppMethodBeat.o(92723);
   }
@@ -30,7 +30,7 @@ public final class r
     int i = 0;
     while (i < this.length)
     {
-      if (this.bgK[i] == paramq) {
+      if (this.daE[i] == paramq) {
         return i;
       }
       i += 1;
@@ -52,7 +52,7 @@ public final class r
       return false;
     }
     paramObject = (r)paramObject;
-    if ((this.length == paramObject.length) && (Arrays.equals(this.bgK, paramObject.bgK)))
+    if ((this.length == paramObject.length) && (Arrays.equals(this.daE, paramObject.daE)))
     {
       AppMethodBeat.o(92725);
       return true;
@@ -64,10 +64,10 @@ public final class r
   public final int hashCode()
   {
     AppMethodBeat.i(92724);
-    if (this.aNf == 0) {
-      this.aNf = Arrays.hashCode(this.bgK);
+    if (this.cHb == 0) {
+      this.cHb = Arrays.hashCode(this.daE);
     }
-    int i = this.aNf;
+    int i = this.cHb;
     AppMethodBeat.o(92724);
     return i;
   }

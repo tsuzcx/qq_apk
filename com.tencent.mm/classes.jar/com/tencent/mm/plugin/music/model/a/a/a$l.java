@@ -20,17 +20,17 @@ public final class a$l
     AppMethodBeat.i(63090);
     try
     {
-      Log.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc updateMusicFileCacheComplete Task, musicId:%s, complete:%d", new Object[] { paramIPCAudioParamRequest.fMd, Integer.valueOf(paramIPCAudioParamRequest.FPQ) });
-      String str = paramIPCAudioParamRequest.fMd;
-      int i = paramIPCAudioParamRequest.FPQ;
-      paramIPCAudioParamRequest = o.feX();
+      Log.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc updateMusicFileCacheComplete Task, musicId:%s, complete:%d", new Object[] { paramIPCAudioParamRequest.musicId, Integer.valueOf(paramIPCAudioParamRequest.LKM) });
+      String str = paramIPCAudioParamRequest.musicId;
+      int i = paramIPCAudioParamRequest.LKM;
+      paramIPCAudioParamRequest = o.goe();
       ContentValues localContentValues = new ContentValues();
       localContentValues.put("fileCacheComplete", Integer.valueOf(i));
       if (i == 1) {
         localContentValues.put("removeDirtyBit", Integer.valueOf(1));
       }
       Log.i("MicroMsg.Music.PieceMusicInfoStorage", "updateMusicFileCacheComplete raw=%d musicId=%s fileCacheComplete=%d", new Object[] { Integer.valueOf(paramIPCAudioParamRequest.db.update("PieceMusicInfo", localContentValues, "musicId=?", new String[] { str })), str, Integer.valueOf(i) });
-      paramIPCAudioParamRequest = (c)paramIPCAudioParamRequest.FSN.get(str);
+      paramIPCAudioParamRequest = (c)paramIPCAudioParamRequest.LNJ.get(str);
       if (paramIPCAudioParamRequest != null)
       {
         paramIPCAudioParamRequest.field_fileCacheComplete = i;
@@ -53,7 +53,7 @@ public final class a$l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.a.a.a.l
  * JD-Core Version:    0.7.0.1
  */

@@ -1,161 +1,92 @@
 package com.tencent.mm.plugin.finder.cgi;
 
-import com.tencent.mars.cdn.CdnLogic;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.f;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.modelcontrol.e;
-import com.tencent.mm.plugin.b;
-import com.tencent.mm.plugin.finder.storage.j;
-import com.tencent.mm.protocal.protobuf.aax;
-import com.tencent.mm.protocal.protobuf.aqe;
-import com.tencent.mm.protocal.protobuf.aqo;
-import com.tencent.mm.protocal.protobuf.bft;
-import com.tencent.mm.protocal.protobuf.bid;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.plugin.findersdk.b.c;
+import com.tencent.mm.protocal.protobuf.bup;
+import com.tencent.mm.protocal.protobuf.buq;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.kd;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.NetStatusUtil;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ar.a;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.o;
-import org.json.JSONObject;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/FinderBaseRequestFactory;", "", "()V", "TAG", "", "create", "Lcom/tencent/mm/protocal/protobuf/FinderBaseRequest;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "fillFinderObjectBaseInfo", "", "finderBaseRequest", "list", "", "Lkotlin/Pair;", "", "", "generateClientStatus", "Lcom/tencent/mm/protocal/protobuf/FinderClientStatus;", "plugin-finder-base_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderSearchEvent;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderSearchEventResponse;", "nickName", "", "eventName", "query", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "requestId", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/protobuf/ByteString;Ljava/lang/String;)V", "TAG", "getEventName", "()Ljava/lang/String;", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "getNickName", "pullType", "", "getPullType", "()I", "setPullType", "(I)V", "getQuery", "request", "Lcom/tencent/mm/protocal/protobuf/FinderSearchEventRequest;", "getRequestId", "onCgiEnd", "", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ao
+  extends c<buq>
 {
-  public static final ao xcj;
+  private bup AzY;
+  private final String TAG;
+  private final String eventName;
+  private final String hOG;
+  private final b lastBuffer;
+  private final String nickName;
+  public int pullType;
+  private final String query;
   
-  static
+  public ao(String paramString1, String paramString2, String paramString3, b paramb, String paramString4)
   {
-    AppMethodBeat.i(258152);
-    xcj = new ao();
-    AppMethodBeat.o(258152);
-  }
-  
-  public static aqe a(bid parambid)
-  {
-    AppMethodBeat.i(258149);
-    aqe localaqe = new aqe();
-    Object localObject = j.AkL;
-    j.a(localaqe);
-    localObject = h.aHG();
-    p.j(localObject, "MMKernel.storage()");
-    localaqe.SDr = ((f)localObject).aHp().getInt(ar.a.VAG, 0);
-    localObject = h.aHG();
-    p.j(localObject, "MMKernel.storage()");
-    localaqe.SDv = ((f)localObject).aHp().getInt(ar.a.VyS, 4);
-    localaqe.SDu = new aax();
-    if (parambid != null)
+    super(null);
+    AppMethodBeat.i(336219);
+    this.nickName = paramString1;
+    this.eventName = paramString2;
+    this.query = paramString3;
+    this.lastBuffer = paramb;
+    this.hOG = paramString4;
+    this.TAG = "Finder.CgiFinderSearchEventUtils";
+    this.AzY = new bup();
+    paramString1 = this.AzY;
+    paramString2 = bi.ABn;
+    paramString1.YIY = bi.a(this.Auc);
+    int i;
+    if (s.p(this.hOG, ""))
     {
-      localaqe.scene = parambid.xkX;
-      localObject = localaqe.SDu;
-      if (localObject != null) {
-        ((aax)localObject).wmL = parambid.wmL;
+      this.AzY.request_id = String.valueOf(cn.bDw());
+      paramString1 = (CharSequence)this.query;
+      if ((paramString1 != null) && (paramString1.length() != 0)) {
+        break label333;
       }
-      localObject = localaqe.SDu;
-      if (localObject != null) {
-        ((aax)localObject).wmz = parambid.wmz;
+      i = 1;
+      label148:
+      if (i != 0) {
+        break label339;
       }
-      localObject = new JSONObject();
+      this.AzY.query = this.query;
     }
-    try
+    for (;;)
     {
-      ((JSONObject)localObject).put("sessionId", parambid.sessionId);
-      if (!Util.isNullOrNil(parambid.extraInfo)) {
-        ((JSONObject)localObject).put("extraInfo", parambid.extraInfo);
+      if (this.lastBuffer != null) {
+        this.AzY.aacl = this.lastBuffer;
       }
-      if (!Util.isNullOrNil(parambid.wmC)) {
-        ((JSONObject)localObject).put("enterSourceInfo", parambid.wmC);
-      }
+      paramString1 = new c.a();
+      paramString1.otE = ((a)this.AzY);
+      paramString2 = new buq();
+      paramString2.BaseResponse = new kd();
+      paramString2.BaseResponse.akjO = new etl();
+      paramString1.otF = ((a)paramString2);
+      paramString1.uri = "/cgi-bin/micromsg-bin/findersearchevent";
+      paramString1.funcId = 6241;
+      c(paramString1.bEF());
+      Log.i(this.TAG, "nickName: " + this.nickName + ", eventName: " + this.eventName + ", query: " + this.query);
+      AppMethodBeat.o(336219);
+      return;
+      this.AzY.request_id = this.hOG;
+      break;
+      label333:
+      i = 0;
+      break label148;
+      label339:
+      this.AzY.aabM = this.nickName;
+      this.AzY.aaaG = this.eventName;
     }
-    catch (Exception parambid)
-    {
-      label189:
-      break label189;
-    }
-    parambid = localaqe.SDu;
-    if (parambid != null) {
-      parambid.Snk = ((JSONObject)localObject).toString();
-    }
-    localaqe.yjR = cm.bfD();
-    AppMethodBeat.o(258149);
-    return localaqe;
-  }
-  
-  public static void a(aqe paramaqe, List<o<Integer, Long>> paramList)
-  {
-    AppMethodBeat.i(258150);
-    p.k(paramList, "list");
-    paramList = ((Iterable)paramList).iterator();
-    while (paramList.hasNext())
-    {
-      Object localObject = (o)paramList.next();
-      com.tencent.mm.plugin.finder.report.ao localao = ((b)h.ae(b.class)).h(((Number)((o)localObject).My).longValue(), ((Number)((o)localObject).Mx).intValue());
-      if (localao != null)
-      {
-        if (paramaqe != null)
-        {
-          localObject = paramaqe.SDw;
-          if (localObject != null) {
-            ((LinkedList)localObject).add(localao.zZQ);
-          }
-        }
-        Log.i("Finder.BaseRequestFactory", "fillFinderObjectBaseInfo: feedId = " + com.tencent.mm.ae.d.Fw(localao.zZQ.id) + ", exposeCnt = " + localao.zZQ.SQy + ", exposeTime = " + localao.zZQ.SQx + ", receiveTime = " + localao.zZQ.SQw);
-      }
-      else
-      {
-        Log.e("Finder.BaseRequestFactory", "[fillFinderObjectBaseInfo] feed=" + com.tencent.mm.ae.d.Fw(((Number)((o)localObject).My).longValue()) + " commentScene=" + ((Number)((o)localObject).Mx).intValue() + ' ' + Util.getStack());
-      }
-    }
-    AppMethodBeat.o(258150);
-  }
-  
-  public static aqe dnO()
-  {
-    AppMethodBeat.i(258148);
-    aqe localaqe = new aqe();
-    Object localObject = j.AkL;
-    j.a(localaqe);
-    localObject = h.aHG();
-    p.j(localObject, "MMKernel.storage()");
-    localaqe.SDr = ((f)localObject).aHp().getInt(ar.a.VAG, 0);
-    localObject = h.aHG();
-    p.j(localObject, "MMKernel.storage()");
-    localaqe.SDv = ((f)localObject).aHp().getInt(ar.a.VyS, 4);
-    localaqe.yjR = cm.bfD();
-    AppMethodBeat.o(258148);
-    return localaqe;
-  }
-  
-  public static aqo dnP()
-  {
-    AppMethodBeat.i(258151);
-    aqo localaqo = new aqo();
-    localaqo.osName = com.tencent.mm.protocal.d.RAz;
-    localaqo.osVersion = com.tencent.mm.protocal.d.RAA;
-    localaqo.deviceBrand = com.tencent.mm.protocal.d.RAw;
-    localaqo.deviceModel = com.tencent.mm.protocal.d.RAx;
-    localaqo.SDN = NetStatusUtil.getNetTypeString(MMApplicationContext.getContext());
-    localaqo.netType = ((b)h.ae(b.class)).bvR();
-    localaqo.SDO = CdnLogic.getRecentAverageSpeed(2);
-    localaqo.SDP = ((b)h.ae(b.class)).bvN();
-    localaqo.SDQ.add("h264");
-    if (e.vW(4)) {
-      localaqo.SDQ.add("h265");
-    }
-    AppMethodBeat.o(258151);
-    return localaqo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.ao
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,15 @@
 package com.tencent.mm.plugin.appbrand.widget.b;
 
-import android.view.View;
-import com.tencent.mm.model.ad.b;
-import com.tencent.mm.plugin.appbrand.jsapi.base.f;
-import com.tencent.mm.plugin.appbrand.jsapi.v.b;
+import com.tencent.mm.protocal.protobuf.cwu;
 
 public abstract interface a
-  extends f, b, c, d
+  extends com.tencent.luggage.a.b
 {
-  public abstract ad.b getKeyValueSet();
-  
-  public abstract View getView();
-  
-  public abstract void setKeyValueSet(ad.b paramb);
+  public abstract com.tencent.mm.am.b<cwu> a(String paramString1, int paramInt1, String paramString2, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.b.a
  * JD-Core Version:    0.7.0.1
  */

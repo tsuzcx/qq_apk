@@ -8,33 +8,33 @@ import com.tencent.mm.sdk.platformtools.Util;
 public final class b
   extends OrientationEventListener
 {
-  private int EZf;
-  private long EZg;
-  private a Oak;
+  private int KUR;
+  private long KUS;
+  private a UOh;
   
   public b(a parama)
   {
     super(MMApplicationContext.getContext());
-    AppMethodBeat.i(239594);
-    this.EZf = -1;
-    this.EZg = 0L;
-    this.Oak = parama;
+    AppMethodBeat.i(292933);
+    this.KUR = -1;
+    this.KUS = 0L;
+    this.UOh = parama;
     enable();
-    AppMethodBeat.o(239594);
+    AppMethodBeat.o(292933);
   }
   
   public final void onOrientationChanged(int paramInt)
   {
-    AppMethodBeat.i(239598);
+    AppMethodBeat.i(292947);
     if ((paramInt < 0) || (paramInt > 360))
     {
-      AppMethodBeat.o(239598);
+      AppMethodBeat.o(292947);
       return;
     }
-    if ((Math.abs(this.EZf - paramInt) >= 30) || (Util.ticksToNow(this.EZg) >= 300L))
+    if ((Math.abs(this.KUR - paramInt) >= 30) || (Util.ticksToNow(this.KUS) >= 300L))
     {
-      this.EZf = paramInt;
-      this.EZg = Util.currentTicks();
+      this.KUR = paramInt;
+      this.KUS = Util.currentTicks();
       if ((paramInt > 60) && (paramInt < 300)) {
         break label118;
       }
@@ -45,10 +45,10 @@ public final class b
     }
     for (;;)
     {
-      if ((paramInt != -1) && (this.Oak != null)) {
-        this.Oak.IA(paramInt);
+      if ((paramInt != -1) && (this.UOh != null)) {
+        this.UOh.Jd(paramInt);
       }
-      AppMethodBeat.o(239598);
+      AppMethodBeat.o(292947);
       return;
       label118:
       if ((paramInt >= 30) && (paramInt <= 150))
@@ -75,20 +75,20 @@ public final class b
   
   public final void unInit()
   {
-    AppMethodBeat.i(239597);
+    AppMethodBeat.i(292938);
     disable();
-    this.Oak = null;
-    AppMethodBeat.o(239597);
+    this.UOh = null;
+    AppMethodBeat.o(292938);
   }
   
   public static abstract interface a
   {
-    public abstract void IA(int paramInt);
+    public abstract void Jd(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.camera.a.b
  * JD-Core Version:    0.7.0.1
  */

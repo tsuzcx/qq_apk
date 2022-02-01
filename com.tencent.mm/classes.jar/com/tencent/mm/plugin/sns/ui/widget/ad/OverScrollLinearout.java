@@ -8,70 +8,69 @@ import android.view.ViewConfiguration;
 import android.widget.LinearLayout;
 import android.widget.Scroller;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.wc;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.autogen.a.xt;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class OverScrollLinearout
   extends LinearLayout
 {
-  private int Kxr;
-  private a LuB;
-  private int LuC;
-  private int LuD;
+  private int QVZ;
+  private a RYc;
+  private int RYd;
+  private int RYe;
   private Scroller mScroller;
-  private boolean qaz;
-  private int qtD;
+  private boolean tfE;
+  private int tyi;
   
   public OverScrollLinearout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(198273);
+    AppMethodBeat.i(309275);
     init(paramContext);
-    AppMethodBeat.o(198273);
+    AppMethodBeat.o(309275);
   }
   
   public OverScrollLinearout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(198274);
+    AppMethodBeat.i(309277);
     init(paramContext);
-    AppMethodBeat.o(198274);
+    AppMethodBeat.o(309277);
   }
   
   private void init(Context paramContext)
   {
-    AppMethodBeat.i(198275);
+    AppMethodBeat.i(309283);
     this.mScroller = new Scroller(paramContext);
-    this.LuC = ViewConfiguration.get(paramContext).getScaledTouchSlop();
-    AppMethodBeat.o(198275);
+    this.RYd = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+    AppMethodBeat.o(309283);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(198282);
+    AppMethodBeat.i(309286);
     int i = paramMotionEvent.getAction();
     int j = (int)paramMotionEvent.getY();
     int k = (int)paramMotionEvent.getRawY();
     if (i == 0)
     {
-      this.qaz = false;
-      this.Kxr = j;
-      this.qtD = this.Kxr;
-      this.LuD = k;
-      if (this.LuB != null) {
-        this.LuB.fRE();
+      this.tfE = false;
+      this.QVZ = j;
+      this.tyi = this.QVZ;
+      this.RYe = k;
+      if (this.RYc != null) {
+        this.RYc.hjE();
       }
     }
     for (;;)
     {
       boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(198282);
+      AppMethodBeat.o(309286);
       return bool;
       if (i == 2)
       {
-        if ((this.LuB != null) && (this.LuB.fSf()) && (this.LuD - k >= this.LuC)) {
-          this.qaz = true;
+        if ((this.RYc != null) && (this.RYc.hkk()) && (this.RYe - k >= this.RYd)) {
+          this.tfE = true;
         }
       }
       else if ((i == 1) || (i == 3))
@@ -89,73 +88,73 @@ public class OverScrollLinearout
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(198291);
+    AppMethodBeat.i(309301);
     super.onDraw(paramCanvas);
     if (this.mScroller.computeScrollOffset())
     {
       scrollTo(0, this.mScroller.getCurrY());
       invalidate();
     }
-    AppMethodBeat.o(198291);
+    AppMethodBeat.o(309301);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    return this.qaz;
+    return this.tfE;
   }
   
   protected void onScrollChanged(final int paramInt1, final int paramInt2, final int paramInt3, final int paramInt4)
   {
-    AppMethodBeat.i(198293);
+    AppMethodBeat.i(309303);
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     postOnAnimation(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(266174);
+        AppMethodBeat.i(309271);
         Log.w("OverScrollLinearout", "the onScrollChanged: l is " + paramInt1 + ", t is " + paramInt2 + ", old l is " + paramInt3 + ", oldt is " + paramInt4);
-        wc localwc = new wc();
-        localwc.fVk.fVm = paramInt1;
-        localwc.fVk.fVl = paramInt2;
-        localwc.fVk.fVo = paramInt3;
-        localwc.fVk.fVn = paramInt4;
-        EventCenter.instance.publish(localwc);
-        AppMethodBeat.o(266174);
+        xt localxt = new xt();
+        localxt.ibh.ibj = paramInt1;
+        localxt.ibh.ibi = paramInt2;
+        localxt.ibh.ibl = paramInt3;
+        localxt.ibh.ibk = paramInt4;
+        localxt.publish();
+        AppMethodBeat.o(309271);
       }
     });
-    AppMethodBeat.o(198293);
+    AppMethodBeat.o(309303);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(198288);
+    AppMethodBeat.i(309294);
     int i = (int)paramMotionEvent.getY();
-    if (this.LuB != null) {
-      this.LuB.cd(this.qtD - i);
+    if (this.RYc != null) {
+      this.RYc.dm(this.tyi - i);
     }
-    this.qtD = i;
-    boolean bool = this.qaz;
-    AppMethodBeat.o(198288);
+    this.tyi = i;
+    boolean bool = this.tfE;
+    AppMethodBeat.o(309294);
     return bool;
   }
   
   public void setOnScrollActionListener(a parama)
   {
-    this.LuB = parama;
+    this.RYc = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void cd(float paramFloat);
+    public abstract void dm(float paramFloat);
     
-    public abstract void fRE();
+    public abstract void hjE();
     
-    public abstract boolean fSf();
+    public abstract boolean hkk();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.ad.OverScrollLinearout
  * JD-Core Version:    0.7.0.1
  */

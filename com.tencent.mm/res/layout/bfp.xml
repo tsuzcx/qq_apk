@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:background="@color/a2i" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:orientation="vertical" android:paddingLeft="43.0dip" android:paddingTop="33.0dip" android:paddingRight="43.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/l" android:textColor="@color/ag2" android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/b9e" android:drawableBottom="@drawable/bjd" android:drawablePadding="20.0dip" />
-            <TextView android:gravity="center" android:layout_gravity="center" android:text="@string/dzv" style="@style/a6b" />
-            <Button android:id="@id/i4h" android:layout_marginTop="86.0dip" android:text="@string/he9" style="@style/ou" />
-            <TextView android:text="@string/bm5" style="@style/a6e" />
-            <TextView android:id="@id/fuu" android:layout_marginBottom="20.0dip" android:text="@string/fp_" style="@style/a6c" />
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/m1"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/kpd" android:paddingTop="@dimen/j6" android:paddingBottom="@dimen/j6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/m1">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/k14" android:layout_centerVertical="true">
+            <LinearLayout android:gravity="center|left" android:paddingLeft="@dimen/iw" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:id="@android:id/title" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/m4" />
+                <LinearLayout android:gravity="center|right" android:orientation="vertical" android:id="@android:id/widget_frame" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+            </LinearLayout>
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:gravity="left" android:id="@android:id/summary" android:paddingRight="@dimen/m2" android:layout_marginTop="@dimen/m2" style="@style/lk" />
         </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/k14" android:focusable="false" android:visibility="invisible" android:clickable="false" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/icons_outlined_done" android:layout_centerVertical="true" android:layout_alignParentEnd="true" app:iconColor="@color/Brand" />
+    </RelativeLayout>
+</LinearLayout>

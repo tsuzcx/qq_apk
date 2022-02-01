@@ -11,23 +11,23 @@ import org.json.JSONObject;
 public final class a
   extends m
 {
-  private Map<String, String> ECl;
-  public boolean QNW;
-  public String fLC;
-  public boolean gam;
+  private Map<String, String> Kvm;
+  public boolean XHu;
+  public String hRk;
+  public boolean igv;
   public String token;
   
   public a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(72296);
-    this.gam = true;
-    this.QNW = false;
-    this.ECl = new HashMap();
-    this.ECl.put("session_key", paramString3);
-    this.ECl.put("bank_type", paramString4);
-    this.ECl.put("name", paramString1);
-    this.ECl.put("cre_id", paramString2);
-    setRequestData(this.ECl);
+    this.igv = true;
+    this.XHu = false;
+    this.Kvm = new HashMap();
+    this.Kvm.put("session_key", paramString3);
+    this.Kvm.put("bank_type", paramString4);
+    this.Kvm.put("name", paramString1);
+    this.Kvm.put("cre_id", paramString2);
+    setRequestData(this.Kvm);
     AppMethodBeat.o(72296);
   }
   
@@ -48,9 +48,9 @@ public final class a
     try
     {
       this.token = paramJSONObject.optString("session_key");
-      this.gam = "1".equals(paramJSONObject.getString("need_bind"));
-      this.QNW = "1".equals(paramJSONObject.getString("bank_user"));
-      this.fLC = paramJSONObject.optString("mobile_no");
+      this.igv = "1".equals(paramJSONObject.getString("need_bind"));
+      this.XHu = "1".equals(paramJSONObject.getString("bank_user"));
+      this.hRk = paramJSONObject.optString("mobile_no");
       AppMethodBeat.o(72298);
       return;
     }
@@ -65,15 +65,15 @@ public final class a
   {
     AppMethodBeat.i(72297);
     super.resend();
-    this.ECl.put("retry", "1");
-    setRequestData(this.ECl);
+    this.Kvm.put("retry", "1");
+    setRequestData(this.Kvm);
     AppMethodBeat.o(72297);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.a.a
  * JD-Core Version:    0.7.0.1
  */

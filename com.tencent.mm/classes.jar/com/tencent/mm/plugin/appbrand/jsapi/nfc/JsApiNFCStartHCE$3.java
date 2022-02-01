@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
 import com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
@@ -29,7 +29,7 @@ class JsApiNFCStartHCE$3
     }
     paramInt = paramBundle.getInt("errCode", -1);
     paramBundle = paramBundle.getString("errMsg");
-    g localg = this.pfo;
+    g localg = this.skH;
     Log.i("MicroMsg.JsApiNFCStartHCE", "alvinluo startHCEUI onResult errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramBundle });
     HashMap localHashMap = new HashMap();
     localHashMap.put("errCode", Integer.valueOf(paramInt));
@@ -39,14 +39,14 @@ class JsApiNFCStartHCE$3
       AppMethodBeat.o(136110);
       return;
     }
-    c.R(localg.nNw.getAppId(), paramInt, -1);
-    localg.aho(localg.m("fail: ".concat(String.valueOf(paramBundle)), localHashMap));
+    c.V(localg.qNp.getAppId(), paramInt, -1);
+    localg.aal(j.a(localg, paramInt, "fail: ".concat(String.valueOf(paramBundle)), localHashMap));
     AppMethodBeat.o(136110);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.nfc.JsApiNFCStartHCE.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,16 @@
 package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.p;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.report.service.h;
@@ -21,32 +19,46 @@ import com.tencent.mm.plugin.wxpay.a.c;
 import com.tencent.mm.plugin.wxpay.a.f;
 import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.protocal.protobuf.dvn;
+import com.tencent.mm.protocal.protobuf.eoj;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.w;
+import com.tencent.mm.ui.y;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
-import com.tencent.mm.wallet_core.ui.g;
+import com.tencent.mm.wallet_core.ui.i;
 import java.util.Arrays;
-import kotlin.g.b.af;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.am;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtSaveFetchFinishProgressNewUI;", "Lcom/tencent/mm/wallet_core/ui/WalletBaseUI;", "()V", "contentLayout", "Landroid/widget/LinearLayout;", "finishBtn", "Landroid/view/View;", "redeemFundRes", "Lcom/tencent/mm/protocal/protobuf/RedeemFundRes;", "title", "Landroid/widget/TextView;", "getLayoutId", "", "initView", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onSceneEnd", "", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "redeemToString", "Companion", "plugin-wxpay_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtSaveFetchFinishProgressNewUI;", "Lcom/tencent/mm/wallet_core/ui/WalletBaseUI;", "()V", "contentLayout", "Landroid/widget/LinearLayout;", "finishBtn", "Landroid/view/View;", "redeemFundRes", "Lcom/tencent/mm/protocal/protobuf/RedeemFundRes;", "title", "Landroid/widget/TextView;", "getLayoutId", "", "initView", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onSceneEnd", "", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "redeemToString", "Companion", "plugin-wxpay_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class WalletLqtSaveFetchFinishProgressNewUI
   extends WalletBaseUI
 {
-  public static final a Oso;
-  private dvn Osn;
-  private TextView jMg;
-  private LinearLayout rXW;
-  private View sYa;
+  public static final WalletLqtSaveFetchFinishProgressNewUI.a Vht;
+  private eoj Vhu;
+  private TextView mll;
+  private LinearLayout vjm;
+  private View wcv;
   
   static
   {
-    AppMethodBeat.i(212968);
-    Oso = new a((byte)0);
-    AppMethodBeat.o(212968);
+    AppMethodBeat.i(316460);
+    Vht = new WalletLqtSaveFetchFinishProgressNewUI.a((byte)0);
+    AppMethodBeat.o(316460);
+  }
+  
+  private static final void a(WalletLqtSaveFetchFinishProgressNewUI paramWalletLqtSaveFetchFinishProgressNewUI, View paramView)
+  {
+    AppMethodBeat.i(316452);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramWalletLqtSaveFetchFinishProgressNewUI);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtSaveFetchFinishProgressNewUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramWalletLqtSaveFetchFinishProgressNewUI, "this$0");
+    paramWalletLqtSaveFetchFinishProgressNewUI.finish();
+    a.a(new Object(), "com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtSaveFetchFinishProgressNewUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(316452);
   }
   
   public final int getLayoutId()
@@ -56,123 +68,164 @@ public final class WalletLqtSaveFetchFinishProgressNewUI
   
   public final void initView()
   {
-    AppMethodBeat.i(212960);
-    Object localObject1 = findViewById(a.f.lqt_fetch_result_finish_title);
-    p.j(localObject1, "findViewById(R.id.lqt_fetch_result_finish_title)");
-    this.jMg = ((TextView)localObject1);
-    localObject1 = this.Osn;
-    if (localObject1 == null) {
-      p.bGy("redeemFundRes");
-    }
-    Object localObject2;
-    if (!Util.isNullOrNil(((dvn)localObject1).UbC))
+    Object localObject3 = null;
+    AppMethodBeat.i(316479);
+    this.mll = ((TextView)findViewById(a.f.lqt_fetch_result_finish_title));
+    Object localObject2 = this.Vhu;
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      localObject1 = this.Osn;
-      if (localObject1 == null) {
-        p.bGy("redeemFundRes");
-      }
-      Log.i("MicroMsg.WalletLqtSaveFetchFinishProgressNewUI", "redeemFundRes.pre_arrival_time_headline: %s", new Object[] { ((dvn)localObject1).UbC });
-      localObject1 = this.jMg;
-      if (localObject1 == null) {
-        p.bGy("title");
-      }
-      localObject2 = this.Osn;
-      if (localObject2 == null) {
-        p.bGy("redeemFundRes");
-      }
-      ((TextView)localObject1).setText((CharSequence)((dvn)localObject2).UbC);
+      s.bIx("redeemFundRes");
+      localObject1 = null;
     }
+    if (!Util.isNullOrNil(((eoj)localObject1).absK))
+    {
+      localObject2 = this.Vhu;
+      localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        s.bIx("redeemFundRes");
+        localObject1 = null;
+      }
+      Log.i("MicroMsg.WalletLqtSaveFetchFinishProgressNewUI", "redeemFundRes.pre_arrival_time_headline: %s", new Object[] { ((eoj)localObject1).absK });
+      localObject1 = this.mll;
+      if (localObject1 == null)
+      {
+        s.bIx("title");
+        localObject1 = null;
+        Object localObject4 = this.Vhu;
+        localObject2 = localObject4;
+        if (localObject4 == null)
+        {
+          s.bIx("redeemFundRes");
+          localObject2 = null;
+        }
+        ((TextView)localObject1).setText((CharSequence)((eoj)localObject2).absK);
+        this.vjm = ((LinearLayout)findViewById(a.f.lqt_fetch_result_finish_content_layout));
+        localObject4 = new WalletBalanceFetchResultItemView((Context)this, true);
+        int i = a.i.wallet_lqt_result_total_fee_fetch;
+        localObject2 = this.Vhu;
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          s.bIx("redeemFundRes");
+          localObject1 = null;
+        }
+        ((WalletBalanceFetchResultItemView)localObject4).b(i, (CharSequence)i.X(((eoj)localObject1).ablD / 100.0F));
+        localObject1 = this.vjm;
+        if (localObject1 != null) {
+          break label503;
+        }
+        s.bIx("contentLayout");
+        localObject1 = null;
+        label221:
+        ((LinearLayout)localObject1).addView((View)localObject4);
+        localObject2 = this.Vhu;
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          s.bIx("redeemFundRes");
+          localObject1 = null;
+        }
+        if (!Util.isNullOrNil(((eoj)localObject1).JFk))
+        {
+          localObject2 = this.Vhu;
+          localObject1 = localObject2;
+          if (localObject2 == null)
+          {
+            s.bIx("redeemFundRes");
+            localObject1 = null;
+          }
+          localObject4 = ((eoj)localObject1).JFk;
+          localObject2 = this.Vhu;
+          localObject1 = localObject2;
+          if (localObject2 == null)
+          {
+            s.bIx("redeemFundRes");
+            localObject1 = null;
+          }
+          localObject2 = localObject4;
+          if (!Util.isNullOrNil(((eoj)localObject1).MEp))
+          {
+            localObject4 = new StringBuilder().append((String)localObject4).append(" (");
+            localObject2 = this.Vhu;
+            localObject1 = localObject2;
+            if (localObject2 == null)
+            {
+              s.bIx("redeemFundRes");
+              localObject1 = null;
+            }
+            localObject2 = ((eoj)localObject1).MEp + ')';
+          }
+          localObject4 = new WalletBalanceFetchResultItemView((Context)this);
+          ((WalletBalanceFetchResultItemView)localObject4).b(a.i.wallet_lqt_fetch_progress_account_new_tips, (CharSequence)localObject2);
+          localObject1 = this.vjm;
+          if (localObject1 != null) {
+            break label506;
+          }
+          s.bIx("contentLayout");
+          localObject1 = null;
+          label409:
+          ((LinearLayout)localObject1).addView((View)localObject4);
+        }
+        this.wcv = findViewById(a.f.lqt_fetch_result_finish_btn);
+        localObject1 = this.wcv;
+        if (localObject1 != null) {
+          break label509;
+        }
+        s.bIx("finishBtn");
+        localObject1 = localObject3;
+      }
+    }
+    label503:
+    label506:
+    label509:
     for (;;)
     {
-      localObject1 = findViewById(a.f.lqt_fetch_result_finish_content_layout);
-      p.j(localObject1, "findViewById(R.id.lqt_fe…lt_finish_content_layout)");
-      this.rXW = ((LinearLayout)localObject1);
-      localObject1 = new WalletBalanceFetchResultItemView((Context)this, true);
-      int i = a.i.wallet_lqt_result_total_fee_fetch;
-      localObject2 = this.Osn;
-      if (localObject2 == null) {
-        p.bGy("redeemFundRes");
-      }
-      ((WalletBalanceFetchResultItemView)localObject1).b(i, (CharSequence)g.F(((dvn)localObject2).TUS / 100.0F));
-      localObject2 = this.rXW;
-      if (localObject2 == null) {
-        p.bGy("contentLayout");
-      }
-      ((LinearLayout)localObject2).addView((View)localObject1);
-      localObject1 = this.Osn;
-      if (localObject1 == null) {
-        p.bGy("redeemFundRes");
-      }
-      if (!Util.isNullOrNil(((dvn)localObject1).DNV))
-      {
-        localObject1 = this.Osn;
-        if (localObject1 == null) {
-          p.bGy("redeemFundRes");
-        }
-        localObject2 = ((dvn)localObject1).DNV;
-        dvn localdvn = this.Osn;
-        if (localdvn == null) {
-          p.bGy("redeemFundRes");
-        }
-        localObject1 = localObject2;
-        if (!Util.isNullOrNil(localdvn.GHy))
-        {
-          localObject1 = new StringBuilder().append((String)localObject2).append(" (");
-          localObject2 = this.Osn;
-          if (localObject2 == null) {
-            p.bGy("redeemFundRes");
-          }
-          localObject1 = ((dvn)localObject2).GHy + ")";
-        }
-        localObject2 = new WalletBalanceFetchResultItemView((Context)this);
-        ((WalletBalanceFetchResultItemView)localObject2).b(a.i.wallet_lqt_fetch_progress_account_new_tips, (CharSequence)localObject1);
-        localObject1 = this.rXW;
-        if (localObject1 == null) {
-          p.bGy("contentLayout");
-        }
-        ((LinearLayout)localObject1).addView((View)localObject2);
-      }
-      localObject1 = findViewById(a.f.lqt_fetch_result_finish_btn);
-      p.j(localObject1, "findViewById(R.id.lqt_fetch_result_finish_btn)");
-      this.sYa = ((View)localObject1);
-      localObject1 = this.sYa;
-      if (localObject1 == null) {
-        p.bGy("finishBtn");
-      }
-      ((View)localObject1).setOnClickListener((View.OnClickListener)new b(this));
-      AppMethodBeat.o(212960);
+      ((View)localObject1).setOnClickListener(new WalletLqtSaveFetchFinishProgressNewUI..ExternalSyntheticLambda0(this));
+      AppMethodBeat.o(316479);
       return;
-      localObject1 = this.jMg;
-      if (localObject1 == null) {
-        p.bGy("title");
+      break;
+      localObject1 = this.mll;
+      if (localObject1 == null)
+      {
+        s.bIx("title");
+        localObject1 = null;
       }
-      ((TextView)localObject1).setText((CharSequence)getString(a.i.collect_main_fixed_cancel));
+      for (;;)
+      {
+        ((TextView)localObject1).setText((CharSequence)getString(a.i.collect_main_fixed_cancel));
+        break;
+      }
+      break label221;
+      break label409;
     }
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(212955);
+    AppMethodBeat.i(316470);
     super.onCreate(paramBundle);
     getWindow().setFlags(1024, 1024);
     paramBundle = getSupportActionBar();
-    if (paramBundle == null) {
-      p.iCn();
-    }
+    s.checkNotNull(paramBundle);
     paramBundle.hide();
     showHomeBtn(false);
     enableBackMenu(false);
     setBackBtnVisible(false);
     this.mController.setStatusBarColor(getResources().getColor(a.c.white));
-    paramBundle = getIntent().getByteArrayExtra("key_redeem_res");
-    this.Osn = new dvn();
+    byte[] arrayOfByte = getIntent().getByteArrayExtra("key_redeem_res");
+    this.Vhu = new eoj();
     try
     {
-      localObject = this.Osn;
-      if (localObject == null) {
-        p.bGy("redeemFundRes");
+      localObject = this.Vhu;
+      paramBundle = (Bundle)localObject;
+      if (localObject == null)
+      {
+        s.bIx("redeemFundRes");
+        paramBundle = null;
       }
-      ((dvn)localObject).parseFrom(paramBundle);
+      paramBundle.parseFrom(arrayOfByte);
     }
     catch (Exception paramBundle)
     {
@@ -185,24 +238,27 @@ public final class WalletLqtSaveFetchFinishProgressNewUI
         paramBundle = "";
       }
     }
-    paramBundle = this.Osn;
-    if (paramBundle == null) {
-      p.bGy("redeemFundRes");
+    localObject = this.Vhu;
+    paramBundle = (Bundle)localObject;
+    if (localObject == null)
+    {
+      s.bIx("redeemFundRes");
+      paramBundle = null;
     }
     if (paramBundle != null)
     {
-      localObject = af.aaBG;
-      paramBundle = String.format("status:%s, wording_for_status2:%s, pre_arrive_time_wording:%s, redeem_fee:%s, bank_name:%s, card_tail:%s, failure_wording:%s", Arrays.copyOf(new Object[] { Integer.valueOf(paramBundle.status), paramBundle.Ubz, paramBundle.UbA, Integer.valueOf(paramBundle.TUS), paramBundle.DNV, paramBundle.GHy, paramBundle.UbB }, 7));
-      p.j(paramBundle, "java.lang.String.format(format, *args)");
+      localObject = am.aixg;
+      paramBundle = String.format("status:%s, wording_for_status2:%s, pre_arrive_time_wording:%s, redeem_fee:%s, bank_name:%s, card_tail:%s, failure_wording:%s", Arrays.copyOf(new Object[] { Integer.valueOf(paramBundle.status), paramBundle.absH, paramBundle.absI, Integer.valueOf(paramBundle.ablD), paramBundle.JFk, paramBundle.MEp, paramBundle.absJ }, 7));
+      s.s(paramBundle, "java.lang.String.format(format, *args)");
       Log.i("MicroMsg.WalletLqtSaveFetchFinishProgressNewUI", "onCreate, redeemRes: %s", new Object[] { paramBundle });
       initView();
-      h.IzE.a(20287, new Object[] { Integer.valueOf(8) });
-      AppMethodBeat.o(212955);
+      h.OAn.b(20287, new Object[] { Integer.valueOf(8) });
+      AppMethodBeat.o(316470);
       return;
     }
   }
   
-  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     return false;
   }
@@ -212,31 +268,10 @@ public final class WalletLqtSaveFetchFinishProgressNewUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtSaveFetchFinishProgressNewUI$Companion;", "", "()V", "TAG", "", "plugin-wxpay_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class b
-    implements View.OnClickListener
-  {
-    b(WalletLqtSaveFetchFinishProgressNewUI paramWalletLqtSaveFetchFinishProgressNewUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(186596);
-      b localb = new b();
-      localb.bn(paramView);
-      a.c("com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtSaveFetchFinishProgressNewUI$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      this.Osp.finish();
-      a.a(this, "com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtSaveFetchFinishProgressNewUI$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(186596);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtSaveFetchFinishProgressNewUI
  * JD-Core Version:    0.7.0.1
  */

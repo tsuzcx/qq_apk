@@ -1,70 +1,38 @@
 package com.tencent.mm.plugin.webview.d;
 
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.webview.jsapi.p;
+import com.tencent.mm.plugin.webview.ui.tools.jsapi.j;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/jsapi/DefaultJsApiPool;", "", "()V", "jsApis", "", "", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "getJsApis", "()Ljava/util/Map;", "jsApis$delegate", "Lkotlin/Lazy;", "initJsApiPool", "", "toMap", "Ljava/util/HashMap;", "", "plugin-webview_release"})
 public final class a
 {
-  private static final f IIi;
-  public static final a PNm;
+  public static final String[] akjy = { "cache", "publicCache" };
   
-  static
+  public static boolean a(p paramp, j paramj)
   {
-    AppMethodBeat.i(219458);
-    PNm = new a();
-    IIi = g.ar((kotlin.g.a.a)a.PNn);
-    AppMethodBeat.o(219458);
-  }
-  
-  public static void gTJ()
-  {
-    AppMethodBeat.i(219453);
-    q localq = q.POB;
-    q.bS((Map)IIi.getValue());
-    AppMethodBeat.o(219453);
-  }
-  
-  public static HashMap<String, com.tencent.mm.plugin.webview.d.c.a> hf(List<? extends com.tencent.mm.plugin.webview.d.c.a> paramList)
-  {
-    AppMethodBeat.i(219450);
-    p.k(paramList, "$this$toMap");
-    HashMap localHashMap = new HashMap();
-    paramList = ((Iterable)paramList).iterator();
-    while (paramList.hasNext())
+    AppMethodBeat.i(294557);
+    if ((paramj == null) || (paramp == null) || (TextUtils.isEmpty(paramp.function)))
     {
-      com.tencent.mm.plugin.webview.d.c.a locala = (com.tencent.mm.plugin.webview.d.c.a)paramList.next();
-      ((Map)localHashMap).put(locala.fCm(), locala);
+      AppMethodBeat.o(294557);
+      return false;
     }
-    AppMethodBeat.o(219450);
-    return localHashMap;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "invoke"})
-  static final class a
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<HashMap<String, com.tencent.mm.plugin.webview.d.c.a>>
-  {
-    public static final a PNn;
-    
-    static
+    String[] arrayOfString = akjy;
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
     {
-      AppMethodBeat.i(215295);
-      PNn = new a();
-      AppMethodBeat.o(215295);
+      String str = arrayOfString[i];
+      if (str.equalsIgnoreCase(paramp.function))
+      {
+        paramj.callback(paramp, str + ":not in white list", null);
+        AppMethodBeat.o(294557);
+        return true;
+      }
+      i += 1;
     }
-    
-    a()
-    {
-      super();
-    }
+    AppMethodBeat.o(294557);
+    return false;
   }
 }
 

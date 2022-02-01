@@ -12,15 +12,43 @@ import java.util.List;
 
 public final class g
 {
-  List<a> callbacks;
+  List<a> bPE;
   Handler handler;
   
   public g()
   {
     AppMethodBeat.i(62692);
-    this.callbacks = new LinkedList();
+    this.bPE = new LinkedList();
     this.handler = new Handler(Looper.getMainLooper());
     AppMethodBeat.o(62692);
+  }
+  
+  public final void L(final int paramInt, final Object paramObject)
+  {
+    AppMethodBeat.i(62696);
+    paramObject = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(62601);
+        synchronized (g.this.bPE)
+        {
+          Iterator localIterator = g.this.bPE.iterator();
+          if (localIterator.hasNext()) {
+            ((g.a)localIterator.next()).L(paramInt, paramObject);
+          }
+        }
+        AppMethodBeat.o(62601);
+      }
+    };
+    if (Looper.myLooper() == Looper.getMainLooper())
+    {
+      paramObject.run();
+      AppMethodBeat.o(62696);
+      return;
+    }
+    this.handler.post(paramObject);
+    AppMethodBeat.o(62696);
   }
   
   public final void a(final int paramInt, final MultiTalkGroup paramMultiTalkGroup)
@@ -31,9 +59,9 @@ public final class g
       public final void run()
       {
         AppMethodBeat.i(183723);
-        synchronized (g.this.callbacks)
+        synchronized (g.this.bPE)
         {
-          Iterator localIterator = g.this.callbacks.iterator();
+          Iterator localIterator = g.this.bPE.iterator();
           if (localIterator.hasNext()) {
             ((g.a)localIterator.next()).a(paramInt, paramMultiTalkGroup);
           }
@@ -56,10 +84,10 @@ public final class g
     AppMethodBeat.i(62695);
     try
     {
-      if (this.callbacks.contains(parama)) {
+      if (this.bPE.contains(parama)) {
         return;
       }
-      this.callbacks.add(parama);
+      this.bPE.add(parama);
       return;
     }
     finally
@@ -68,7 +96,7 @@ public final class g
     }
   }
   
-  public final void dT(final String paramString, final boolean paramBoolean)
+  public final void eI(final String paramString, final boolean paramBoolean)
   {
     AppMethodBeat.i(62698);
     paramString = new Runnable()
@@ -76,12 +104,12 @@ public final class g
       public final void run()
       {
         AppMethodBeat.i(183712);
-        synchronized (g.this.callbacks)
+        synchronized (g.this.bPE)
         {
-          ArrayList localArrayList = new ArrayList(g.this.callbacks);
+          ArrayList localArrayList = new ArrayList(g.this.bPE);
           ??? = localArrayList.iterator();
           if (((Iterator)???).hasNext()) {
-            ((g.a)((Iterator)???).next()).dT(paramString, paramBoolean);
+            ((g.a)((Iterator)???).next()).eI(paramString, paramBoolean);
           }
         }
       }
@@ -104,9 +132,9 @@ public final class g
       public final void run()
       {
         AppMethodBeat.i(62589);
-        synchronized (g.this.callbacks)
+        synchronized (g.this.bPE)
         {
-          Iterator localIterator = g.this.callbacks.iterator();
+          Iterator localIterator = g.this.bPE.iterator();
           if (localIterator.hasNext()) {
             ((g.a)localIterator.next()).f(paramMultiTalkGroup);
           }
@@ -124,34 +152,6 @@ public final class g
     AppMethodBeat.o(62697);
   }
   
-  public final void lc(final List<MultiTalkGroup> paramList)
-  {
-    AppMethodBeat.i(62693);
-    paramList = new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(62792);
-        synchronized (g.this.callbacks)
-        {
-          Iterator localIterator = g.this.callbacks.iterator();
-          if (localIterator.hasNext()) {
-            ((g.a)localIterator.next()).lc(paramList);
-          }
-        }
-        AppMethodBeat.o(62792);
-      }
-    };
-    if (Looper.myLooper() == Looper.getMainLooper())
-    {
-      paramList.run();
-      AppMethodBeat.o(62693);
-      return;
-    }
-    this.handler.post(paramList);
-    AppMethodBeat.o(62693);
-  }
-  
   public final void onStateChanged(final int paramInt)
   {
     AppMethodBeat.i(62699);
@@ -160,9 +160,9 @@ public final class g
       public final void run()
       {
         AppMethodBeat.i(62553);
-        synchronized (g.this.callbacks)
+        synchronized (g.this.bPE)
         {
-          Iterator localIterator = g.this.callbacks.iterator();
+          Iterator localIterator = g.this.bPE.iterator();
           if (localIterator.hasNext()) {
             ((g.a)localIterator.next()).onStateChanged(paramInt);
           }
@@ -180,88 +180,88 @@ public final class g
     AppMethodBeat.o(62699);
   }
   
-  public final void r(final int paramInt, final Object paramObject)
+  public final void oz(final List<MultiTalkGroup> paramList)
   {
-    AppMethodBeat.i(62696);
-    paramObject = new Runnable()
+    AppMethodBeat.i(62693);
+    paramList = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(62601);
-        synchronized (g.this.callbacks)
+        AppMethodBeat.i(62792);
+        synchronized (g.this.bPE)
         {
-          Iterator localIterator = g.this.callbacks.iterator();
+          Iterator localIterator = g.this.bPE.iterator();
           if (localIterator.hasNext()) {
-            ((g.a)localIterator.next()).r(paramInt, paramObject);
+            ((g.a)localIterator.next()).oz(paramList);
           }
         }
-        AppMethodBeat.o(62601);
+        AppMethodBeat.o(62792);
       }
     };
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      paramObject.run();
-      AppMethodBeat.o(62696);
+      paramList.run();
+      AppMethodBeat.o(62693);
       return;
     }
-    this.handler.post(paramObject);
-    AppMethodBeat.o(62696);
+    this.handler.post(paramList);
+    AppMethodBeat.o(62693);
   }
   
   public static abstract interface a
   {
-    public abstract void K(String paramString, byte[] paramArrayOfByte);
+    public abstract void L(int paramInt, Object paramObject);
     
-    public abstract void Xr(int paramInt);
-    
-    public abstract void Xw(int paramInt);
+    public abstract void N(String paramString, byte[] paramArrayOfByte);
     
     public abstract void a(int paramInt, MultiTalkGroup paramMultiTalkGroup);
     
-    public abstract void aCu(int paramInt);
+    public abstract void aF(String paramString, int paramInt1, int paramInt2);
     
-    public abstract void aCv(int paramInt);
+    public abstract void aJh(int paramInt);
     
-    public abstract void ay(String paramString, int paramInt1, int paramInt2);
+    public abstract void aJi(int paramInt);
+    
+    public abstract void abC(int paramInt);
+    
+    public abstract void abH(int paramInt);
     
     public abstract void b(MultiTalkGroup paramMultiTalkGroup);
     
-    public abstract void bpP();
+    public abstract void bNv();
     
-    public abstract void dT(String paramString, boolean paramBoolean);
+    public abstract void c(MultiTalkGroup paramMultiTalkGroup, long paramLong);
     
-    public abstract void eXw();
+    public abstract void d(MultiTalkGroup paramMultiTalkGroup, long paramLong);
     
-    public abstract void eXx();
-    
-    public abstract void eXy();
+    public abstract void eI(String paramString, boolean paramBoolean);
     
     public abstract void f(MultiTalkGroup paramMultiTalkGroup);
     
-    public abstract void gb(List<a.ar> paramList);
+    public abstract void ggm();
     
-    public abstract void it(String paramString, int paramInt);
+    public abstract void ggn();
     
-    public abstract void iuM();
+    public abstract void ggo();
     
-    public abstract void iuN();
+    public abstract void iY(List<a.ar> paramList);
     
-    public abstract void lc(List<MultiTalkGroup> paramList);
+    public abstract void jF(String paramString, int paramInt);
     
-    public abstract void o(MultiTalkGroup paramMultiTalkGroup);
+    public abstract void keh();
+    
+    public abstract void kei();
     
     public abstract void onStateChanged(int paramInt);
     
-    public abstract void p(MultiTalkGroup paramMultiTalkGroup);
+    public abstract void oz(List<MultiTalkGroup> paramList);
     
-    public abstract void r(int paramInt, Object paramObject);
-    
-    public abstract void uy(boolean paramBoolean);
+    public abstract void yN(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.wecall.talkroom.model.g
  * JD-Core Version:    0.7.0.1
  */

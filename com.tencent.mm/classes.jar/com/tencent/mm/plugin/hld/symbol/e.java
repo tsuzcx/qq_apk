@@ -6,90 +6,90 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.plugin.hld.a.d;
 import com.tencent.mm.plugin.hld.a.f;
 import com.tencent.mm.plugin.hld.f.j;
+import com.tencent.mm.plugin.hld.view.f;
 import com.tencent.mm.plugin.hld.view.g;
-import com.tencent.mm.plugin.hld.view.h;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolGridViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "Lcom/tencent/mm/plugin/hld/view/ImeOnClickListener;", "itemView", "Landroid/view/View;", "listener", "Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolGridViewHolder$ISymbolGridViewListener;", "(Landroid/view/View;Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolGridViewHolder$ISymbolGridViewListener;)V", "mListener", "rootView", "Landroid/widget/RelativeLayout;", "symbolData", "Lcom/tencent/mm/plugin/hld/utils/WxImeSymbolData;", "symbolKeyTextView", "Landroid/widget/TextView;", "symbolKeyTypeView", "fillContent", "", "symbolStr", "symbolType", "", "onClick", "v", "pressTime", "", "(Landroid/view/View;Ljava/lang/Long;)V", "ISymbolGridViewListener", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolGridViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "Lcom/tencent/mm/plugin/hld/view/ImeOnClickListener;", "itemView", "Landroid/view/View;", "listener", "Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolGridViewHolder$ISymbolGridViewListener;", "(Landroid/view/View;Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolGridViewHolder$ISymbolGridViewListener;)V", "mListener", "rootView", "Landroid/widget/RelativeLayout;", "symbolData", "Lcom/tencent/mm/plugin/hld/utils/WxImeSymbolData;", "symbolKeyTextView", "Landroid/widget/TextView;", "symbolKeyTypeView", "fillContent", "", "symbolStr", "symbolType", "", "onClick", "v", "pressTime", "", "(Landroid/view/View;Ljava/lang/Long;)V", "ISymbolGridViewListener", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
   extends RecyclerView.v
-  implements h
+  implements g
 {
-  private final a DFm;
-  TextView DFr;
-  TextView DFs;
-  j DFt;
-  RelativeLayout DtO;
+  RelativeLayout Ikt;
+  private final a JwV;
+  TextView JwY;
+  TextView JwZ;
+  j Jxa;
   
   public e(View paramView, a parama)
   {
     super(paramView);
-    AppMethodBeat.i(209232);
+    AppMethodBeat.i(312128);
     View localView = paramView.findViewById(a.f.root);
-    p.j(localView, "itemView.findViewById(R.id.root)");
-    this.DtO = ((RelativeLayout)localView);
+    s.s(localView, "itemView.findViewById(R.id.root)");
+    this.Ikt = ((RelativeLayout)localView);
     localView = paramView.findViewById(a.f.s5_grid_key_text);
-    p.j(localView, "itemView.findViewById(R.id.s5_grid_key_text)");
-    this.DFr = ((TextView)localView);
+    s.s(localView, "itemView.findViewById(R.id.s5_grid_key_text)");
+    this.JwY = ((TextView)localView);
     localView = paramView.findViewById(a.f.s5_grid_key_type);
-    p.j(localView, "itemView.findViewById(R.id.s5_grid_key_type)");
-    this.DFs = ((TextView)localView);
-    this.DFm = parama;
-    this.DFr.setTextSize(0, a.aZ(paramView.getContext(), a.d.S5_keys_button_text_size));
-    this.DFs.setTextSize(0, a.aZ(paramView.getContext(), a.d.S5_keys_button_text_type_size));
-    paramView = g.DIP;
-    g.a((View)this.DtO, (View.OnClickListener)this);
-    AppMethodBeat.o(209232);
+    s.s(localView, "itemView.findViewById(R.id.s5_grid_key_type)");
+    this.JwZ = ((TextView)localView);
+    this.JwV = parama;
+    this.JwY.setTextSize(0, a.bs(paramView.getContext(), a.d.S5_keys_button_text_size));
+    this.JwZ.setTextSize(0, a.bs(paramView.getContext(), a.d.S5_keys_button_text_type_size));
+    f.JzR.a((View)this.Ikt, (View.OnClickListener)this);
+    AppMethodBeat.o(312128);
   }
   
-  public final void j(Long paramLong)
+  public final void k(Long paramLong)
   {
-    AppMethodBeat.i(209229);
-    a locala = this.DFm;
+    AppMethodBeat.i(312137);
+    a locala = this.JwV;
     Object localObject;
     if (locala != null)
     {
-      localObject = this.DFt;
-      if (localObject != null)
-      {
-        localObject = ((j)localObject).content;
-        if (localObject != null) {
-          break label79;
-        }
+      localObject = this.Jxa;
+      if (localObject != null) {
+        break label53;
       }
       localObject = "";
-    }
-    label79:
-    for (;;)
-    {
-      if (paramLong != null) {}
-      for (long l = paramLong.longValue();; l = 0L)
-      {
-        locala.aB((String)localObject, l);
-        AppMethodBeat.o(209229);
-        return;
+      if (paramLong != null) {
+        break label75;
       }
-      AppMethodBeat.o(209229);
+    }
+    label53:
+    label75:
+    for (long l = 0L;; l = paramLong.longValue())
+    {
+      locala.aL((String)localObject, l);
+      AppMethodBeat.o(312137);
       return;
+      localObject = ((j)localObject).content;
+      if (localObject == null)
+      {
+        localObject = "";
+        break;
+      }
+      break;
     }
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(209231);
-    j(Long.valueOf(0L));
-    AppMethodBeat.o(209231);
+    AppMethodBeat.i(312145);
+    k(Long.valueOf(0L));
+    AppMethodBeat.o(312145);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolGridViewHolder$ISymbolGridViewListener;", "", "onClick", "", "symbolStr", "", "pressTime", "", "plugin-hld_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolGridViewHolder$ISymbolGridViewListener;", "", "onClick", "", "symbolStr", "", "pressTime", "", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface a
   {
-    public abstract void aB(String paramString, long paramLong);
+    public abstract void aL(String paramString, long paramLong);
   }
 }
 

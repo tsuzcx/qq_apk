@@ -1,122 +1,197 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
 import android.app.Activity;
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Parcelable;
-import android.os.RemoteException;
-import android.widget.Toast;
+import android.content.MutableContextWrapper;
+import android.content.ServiceConnection;
+import android.view.ContextThemeWrapper;
+import android.view.LayoutInflater;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
-import com.tencent.mm.ipcinvoker.f;
-import com.tencent.mm.ipcinvoker.j;
-import com.tencent.mm.ipcinvoker.type.IPCBoolean;
-import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.plugin.appbrand.au.i;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.app.Application;
+import com.tencent.mm.plugin.appbrand.af.a;
+import com.tencent.mm.ui.af;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUIAccountReleaseHandler;", "", "()V", "TAG", "", "processForegroundImportance", "", "", "[Ljava/lang/Integer;", "getSerializedUin", "handleAccountRelease", "", "activity", "Landroid/app/Activity;", "plugin-appbrand-integration_release"})
 public final class o
+  extends MutableContextWrapper
 {
-  private static final Integer[] qYR;
-  public static final o qYS;
+  private boolean udS;
+  private ContextThemeWrapper udT;
+  private ab udU;
   
-  static
+  private o(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(51149);
-    qYS = new o();
-    qYR = new Integer[] { Integer.valueOf(100), Integer.valueOf(200) };
-    AppMethodBeat.o(51149);
+    super(paramContext);
+    AppMethodBeat.i(177763);
+    this.udS = false;
+    this.udT = new a(paramContext.getApplicationContext(), paramInt);
+    if (!(paramContext instanceof ContextThemeWrapper)) {
+      super.setBaseContext(this.udT);
+    }
+    for (;;)
+    {
+      this.udS = (paramContext instanceof AppBrandUI);
+      AppMethodBeat.o(177763);
+      return;
+      paramContext.setTheme(paramInt);
+    }
   }
   
-  public static void H(Activity paramActivity)
+  public static o fj(Context paramContext)
   {
-    AppMethodBeat.i(282874);
-    p.k(paramActivity, "activity");
-    com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AppBrandUIAccountReleaseHandler", "handleAccountRelease activity:" + paramActivity.getComponentName() + ", stack:" + android.util.Log.getStackTraceString(new Throwable()));
+    AppMethodBeat.i(48774);
+    paramContext = new o(paramContext, ac.cLF());
+    AppMethodBeat.o(48774);
+    return paramContext;
+  }
+  
+  public final ab cLq()
+  {
+    AppMethodBeat.i(322232);
+    if (this.udU == null) {
+      this.udU = new ab(this);
+    }
+    ab localab = this.udU;
+    AppMethodBeat.o(322232);
+    return localab;
+  }
+  
+  public final Object getSystemService(String paramString)
+  {
+    AppMethodBeat.i(48777);
+    if ("layout_inflater".equals(paramString))
+    {
+      paramString = this.udT.getSystemService(paramString);
+      AppMethodBeat.o(48777);
+      return paramString;
+    }
+    paramString = super.getSystemService(paramString);
+    AppMethodBeat.o(48777);
+    return paramString;
+  }
+  
+  public final void setBaseContext(final Context paramContext)
+  {
+    AppMethodBeat.i(48776);
+    if (paramContext == getBaseContext())
+    {
+      AppMethodBeat.o(48776);
+      return;
+    }
+    if (this.udS) {
+      com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AppBrandRuntimePersistentContextWrapper", "setBaseContext hash:%d, new:%s, old:%s, stack:%s", new Object[] { Integer.valueOf(hashCode()), paramContext, super.getBaseContext(), android.util.Log.getStackTraceString(new Throwable()) });
+    }
+    if ((paramContext instanceof Activity))
+    {
+      super.setBaseContext(paramContext);
+      this.udS = true;
+      ((Application)getApplicationContext()).registerActivityLifecycleCallbacks(new a()
+      {
+        public final void onActivityDestroyed(Activity paramAnonymousActivity)
+        {
+          AppMethodBeat.i(322128);
+          if (paramContext == paramAnonymousActivity)
+          {
+            ((Application)o.this.getApplicationContext()).unregisterActivityLifecycleCallbacks(this);
+            h.ahAA.o(new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(322135);
+                if (o.1.this.val$context == o.this.getBaseContext())
+                {
+                  com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AppBrandRuntimePersistentContextWrapper", "onActivityPostDestroyed auto release ref to %s", new Object[] { o.1.this.val$context });
+                  o.a(o.this, o.a(o.this));
+                }
+                AppMethodBeat.o(322135);
+              }
+            }, 0L);
+          }
+          AppMethodBeat.o(322128);
+        }
+      });
+    }
+    for (;;)
+    {
+      this.udU = null;
+      AppMethodBeat.o(48776);
+      return;
+      super.setBaseContext(this.udT);
+    }
+  }
+  
+  public final void unbindService(ServiceConnection paramServiceConnection)
+  {
+    AppMethodBeat.i(48778);
     try
     {
-      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = new ActivityManager.RunningAppProcessInfo();
-      ActivityManager.getMyMemoryState(localRunningAppProcessInfo);
-      locala = new a(paramActivity);
-      if ((localRunningAppProcessInfo == null) || (!org.apache.commons.b.a.contains(qYR, Integer.valueOf(localRunningAppProcessInfo.importance))) || (paramActivity.isFinishing()) || (paramActivity.isDestroyed()))
-      {
-        paramActivity = new StringBuilder("finish directly importance[");
-        if (localRunningAppProcessInfo != null)
-        {
-          i = localRunningAppProcessInfo.importance;
-          com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AppBrandUIAccountReleaseHandler", i + ']');
-          locala.invoke();
-          AppMethodBeat.o(282874);
-          return;
-        }
-      }
+      super.unbindService(paramServiceConnection);
+      AppMethodBeat.o(48778);
+      return;
     }
-    catch (RemoteException localRemoteException)
+    catch (IllegalArgumentException paramServiceConnection)
     {
-      final a locala;
-      for (;;)
-      {
-        Object localObject = null;
-        continue;
-        int i = -1;
-      }
-      j.a(MMApplicationContext.getMainProcessName(), (Parcelable)IPCVoid.jZu, ag.class, (f)new b(paramActivity, locala));
-      AppMethodBeat.o(282874);
+      com.tencent.mm.sdk.platformtools.Log.printErrStackTrace("MicroMsg.AppBrandRuntimePersistentContextWrapper", paramServiceConnection, "[CAPTURED CRASH]", new Object[0]);
+      AppMethodBeat.o(48778);
     }
   }
   
-  public static final int ckj()
+  public final void unregisterReceiver(BroadcastReceiver paramBroadcastReceiver)
   {
-    AppMethodBeat.i(175219);
-    SharedPreferences localSharedPreferences = MMApplicationContext.getContext().getSharedPreferences("system_config_prefs", 0);
-    if (localSharedPreferences != null)
+    AppMethodBeat.i(322264);
+    try
     {
-      int i = localSharedPreferences.getInt("default_uin", 0);
-      AppMethodBeat.o(175219);
-      return i;
+      super.unregisterReceiver(paramBroadcastReceiver);
+      AppMethodBeat.o(322264);
+      return;
     }
-    AppMethodBeat.o(175219);
-    return 0;
+    catch (IllegalArgumentException paramBroadcastReceiver)
+    {
+      com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.AppBrandRuntimePersistentContextWrapper", "unregisterReceiver IllegalArgumentException %s", new Object[] { paramBroadcastReceiver });
+      AppMethodBeat.o(322264);
+    }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"doFinish", "", "invoke"})
   static final class a
-    extends q
-    implements kotlin.g.a.a<x>
+    extends ContextThemeWrapper
   {
-    a(Activity paramActivity)
+    private volatile LayoutInflater mInflater;
+    
+    public a(Context paramContext, int paramInt)
     {
-      super();
+      super(paramInt);
     }
     
-    public final void invoke()
+    public final Object getSystemService(String paramString)
     {
-      AppMethodBeat.i(51146);
-      if ((!this.otc.isFinishing()) && (!this.otc.isDestroyed())) {
-        this.otc.finish();
+      AppMethodBeat.i(177762);
+      if ("layout_inflater".equals(paramString)) {
+        try
+        {
+          if (this.mInflater == null)
+          {
+            this.mInflater = ((LayoutInflater)getApplicationContext().getSystemService(paramString)).cloneInContext(this);
+            af.c(this.mInflater);
+          }
+          paramString = this.mInflater;
+          return paramString;
+        }
+        finally
+        {
+          AppMethodBeat.o(177762);
+        }
       }
-      AppMethodBeat.o(51146);
+      paramString = super.getSystemService(paramString);
+      AppMethodBeat.o(177762);
+      return paramString;
     }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "data", "Lcom/tencent/mm/ipcinvoker/type/IPCBoolean;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class b<T>
-    implements f<IPCBoolean>
-  {
-    b(Activity paramActivity, o.a parama) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.o
  * JD-Core Version:    0.7.0.1
  */

@@ -1,109 +1,131 @@
 package com.tencent.mm.plugin.eggspring;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.Metadata;
 import kotlin.ResultKt;
+import kotlin.ah;
+import kotlin.d.b.a.k;
 import kotlin.d.d;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
-import kotlinx.coroutines.ak;
-import kotlinx.coroutines.al;
-import kotlinx.coroutines.by;
-import kotlinx.coroutines.cy;
+import kotlin.g.b.s;
+import kotlinx.coroutines.aq;
+import kotlinx.coroutines.ar;
+import kotlinx.coroutines.cb;
 import kotlinx.coroutines.da;
+import kotlinx.coroutines.dc;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/eggspring/EggRedEnvelopeHelper;", "", "()V", "TAG", "", "callback", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "showEgg", "url", "", "getCallback", "()Lkotlin/jvm/functions/Function2;", "setCallback", "(Lkotlin/jvm/functions/Function2;)V", "interval", "", "lastCheckJob", "Lkotlinx/coroutines/Job;", "lastCheckTime", "", "scope", "Lkotlinx/coroutines/CoroutineScope;", "checkShowEgg", "dispose", "plugin-eggspring_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/eggspring/EggMiniAppHelper;", "", "()V", "TAG", "", "callback", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "showEgg", "data", "", "getCallback", "()Lkotlin/jvm/functions/Function2;", "setCallback", "(Lkotlin/jvm/functions/Function2;)V", "extraDataString", "getExtraDataString", "()Ljava/lang/String;", "setExtraDataString", "(Ljava/lang/String;)V", "interval", "", "lastCheckJob", "Lkotlinx/coroutines/Job;", "lastCheckTime", "", "scope", "Lkotlinx/coroutines/CoroutineScope;", "checkShowEgg", "sessionId", "(Ljava/lang/Long;)V", "dispose", "plugin-eggspring_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
 {
-  public final String TAG;
-  public int interval;
-  public m<? super Boolean, ? super String, x> jHk;
-  public long lastCheckTime;
-  public ak rcY;
-  public by uwI;
+  final String TAG;
+  int interval;
+  private long lastCheckTime;
+  public m<? super Boolean, ? super String, ah> mgM;
+  private aq scope;
+  private cb xDh;
+  public String xDi;
   
   public c()
   {
-    AppMethodBeat.i(249410);
-    this.TAG = "MicroMsg.EggRedEnvelopeHelper";
-    this.rcY = al.iRe();
-    AppMethodBeat.o(249410);
+    AppMethodBeat.i(266516);
+    this.TAG = "MicroMsg.EggMiniAppHelper";
+    this.scope = ar.kBZ();
+    this.xDi = "";
+    AppMethodBeat.o(266516);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
-  public static final class a
-    extends kotlin.d.b.a.j
-    implements m<ak, d<? super x>, Object>
+  public final void y(final Long paramLong)
   {
-    Object L$0;
+    AppMethodBeat.i(369737);
+    Log.i(this.TAG, s.X("checkShowEgg: ", paramLong));
+    long l = Util.currentTicks();
+    if (Util.ticksToNow(this.lastCheckTime) <= this.interval)
+    {
+      Log.w(this.TAG, "checkShowEgg: " + this.lastCheckTime + ", " + this.interval + ", " + l);
+      AppMethodBeat.o(369737);
+      return;
+    }
+    if (!((com.tencent.mm.plugin.eggspring.a.a)h.az(com.tencent.mm.plugin.eggspring.a.a.class)).enablePlayLuckyEffect())
+    {
+      AppMethodBeat.o(369737);
+      return;
+    }
+    this.lastCheckTime = l;
+    cb localcb = this.xDh;
+    if (localcb != null) {
+      localcb.a(null);
+    }
+    this.xDh = kotlinx.coroutines.j.a(this.scope, null, null, (m)new a(this, paramLong, null), 3);
+    AppMethodBeat.o(369737);
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends k
+    implements m<aq, d<? super ah>, Object>
+  {
     int label;
-    private ak p$;
     
-    public a(c paramc, d paramd)
+    a(c paramc, Long paramLong, d<? super a> paramd)
     {
       super(paramd);
     }
     
-    public final d<x> create(Object paramObject, d<?> paramd)
+    public final d<ah> create(Object paramObject, d<?> paramd)
     {
-      AppMethodBeat.i(249280);
-      p.k(paramd, "completion");
-      paramd = new a(this.uwJ, paramd);
-      paramd.p$ = ((ak)paramObject);
-      AppMethodBeat.o(249280);
-      return paramd;
-    }
-    
-    public final Object invoke(Object paramObject1, Object paramObject2)
-    {
-      AppMethodBeat.i(249281);
-      paramObject1 = ((a)create(paramObject1, (d)paramObject2)).invokeSuspend(x.aazN);
-      AppMethodBeat.o(249281);
-      return paramObject1;
+      AppMethodBeat.i(266526);
+      paramObject = (d)new a(this.xDj, paramLong, paramd);
+      AppMethodBeat.o(266526);
+      return paramObject;
     }
     
     public final Object invokeSuspend(Object paramObject)
     {
-      AppMethodBeat.i(249276);
-      Object localObject2 = kotlin.d.a.a.aaAA;
+      AppMethodBeat.i(266522);
+      Object localObject2 = kotlin.d.a.a.aiwj;
       switch (this.label)
       {
       default: 
         paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-        AppMethodBeat.o(249276);
+        AppMethodBeat.o(266522);
         throw paramObject;
       case 0: 
         ResultKt.throwOnFailure(paramObject);
-        paramObject = this.p$;
       }
       try
       {
-        Object localObject1 = (m)new a(null);
-        this.L$0 = paramObject;
+        paramObject = (m)new a(paramLong, null);
+        Object localObject1 = (d)this;
         this.label = 1;
-        paramObject = da.a(10000L, (m)localObject1, this);
+        paramObject = dc.a(10000L, paramObject, (d)localObject1);
         localObject1 = paramObject;
         if (paramObject == localObject2)
         {
-          AppMethodBeat.o(249276);
+          AppMethodBeat.o(266522);
           return localObject2;
           ResultKt.throwOnFailure(paramObject);
           localObject1 = paramObject;
         }
-        localObject2 = (com.tencent.mm.t.a.j)localObject1;
-        this.uwJ.interval = (((com.tencent.mm.t.a.j)localObject2).jDQ * 1000);
-        Log.i(this.uwJ.TAG, "checkShowEgg: " + ((com.tencent.mm.t.a.j)localObject2).show_entrance + ", " + ((com.tencent.mm.t.a.j)localObject2).jDP + ", " + ((com.tencent.mm.t.a.j)localObject2).jDQ);
-        if ((((com.tencent.mm.t.a.j)localObject2).show_entrance) && (((com.tencent.mm.t.a.j)localObject2).jDP != null))
+        paramObject = (com.tencent.mm.r.a.j)localObject1;
+        this.xDj.interval = (paramObject.mdL * 1000);
+        Log.i(this.xDj.TAG, "checkShowEgg: " + paramObject.show_entrance + ", " + paramObject.mdM + ", " + paramObject.mdL);
+        if ((paramObject.show_entrance) && (paramObject.mdM != null))
         {
-          paramObject = this.uwJ.jHk;
-          if (paramObject != null)
+          localObject1 = this.xDj;
+          localObject2 = paramObject.mdM;
+          s.s(localObject2, "resp.emoticon_prize");
+          s.u(localObject2, "<set-?>");
+          ((c)localObject1).xDi = ((String)localObject2);
+          localObject1 = this.xDj.mgM;
+          if (localObject1 != null)
           {
-            localObject1 = Boolean.TRUE;
-            localObject2 = ((com.tencent.mm.t.a.j)localObject2).jDP;
-            p.j(localObject2, "resp.entrance_url");
-            paramObject.invoke(localObject1, localObject2);
+            localObject2 = Boolean.TRUE;
+            paramObject = paramObject.mdM;
+            s.s(paramObject, "resp.emoticon_prize");
+            ((m)localObject1).invoke(localObject2, paramObject);
           }
         }
       }
@@ -111,81 +133,78 @@ public final class c
       {
         for (;;)
         {
-          Log.w(this.uwJ.TAG, "Cgi error: " + paramObject.getMessage());
+          Log.w(this.xDj.TAG, s.X("Cgi error: ", paramObject.getMessage()));
         }
       }
-      catch (cy paramObject)
+      catch (da paramObject)
       {
         for (;;)
         {
-          Log.w(this.uwJ.TAG, "Cgi Timeout: ");
+          Log.w(this.xDj.TAG, "Cgi Timeout: ");
         }
       }
-      paramObject = x.aazN;
-      AppMethodBeat.o(249276);
+      paramObject = ah.aiuX;
+      AppMethodBeat.o(266522);
       return paramObject;
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/eggspring/model/GetRedpacketCoverRecvEntranceResp;", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
+    @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/eggspring/model/GetRedpacketCoverRecvEntranceResp;", "Lkotlinx/coroutines/CoroutineScope;"}, k=3, mv={1, 5, 1}, xi=48)
     static final class a
-      extends kotlin.d.b.a.j
-      implements m<ak, d<? super com.tencent.mm.t.a.j>, Object>
+      extends k
+      implements m<aq, d<? super com.tencent.mm.r.a.j>, Object>
     {
-      Object L$0;
       int label;
-      private ak p$;
       
-      a(d paramd)
+      a(Long paramLong, d<? super a> paramd)
       {
         super(paramd);
       }
       
-      public final d<x> create(Object paramObject, d<?> paramd)
+      public final d<ah> create(Object paramObject, d<?> paramd)
       {
-        AppMethodBeat.i(249415);
-        p.k(paramd, "completion");
-        paramd = new a(paramd);
-        paramd.p$ = ((ak)paramObject);
-        AppMethodBeat.o(249415);
-        return paramd;
-      }
-      
-      public final Object invoke(Object paramObject1, Object paramObject2)
-      {
-        AppMethodBeat.i(249416);
-        paramObject1 = ((a)create(paramObject1, (d)paramObject2)).invokeSuspend(x.aazN);
-        AppMethodBeat.o(249416);
-        return paramObject1;
+        AppMethodBeat.i(266490);
+        paramObject = (d)new a(this.CrL, paramd);
+        AppMethodBeat.o(266490);
+        return paramObject;
       }
       
       public final Object invokeSuspend(Object paramObject)
       {
-        AppMethodBeat.i(249414);
-        kotlin.d.a.a locala = kotlin.d.a.a.aaAA;
+        AppMethodBeat.i(266487);
+        kotlin.d.a.a locala = kotlin.d.a.a.aiwj;
         switch (this.label)
         {
         default: 
           paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-          AppMethodBeat.o(249414);
+          AppMethodBeat.o(266487);
           throw paramObject;
         case 0: 
           ResultKt.throwOnFailure(paramObject);
-          paramObject = this.p$;
-          Object localObject = (com.tencent.mm.an.c)new com.tencent.mm.plugin.eggspring.b.b();
-          this.L$0 = paramObject;
-          this.label = 1;
-          localObject = b.a((com.tencent.mm.an.c)localObject, this);
-          paramObject = localObject;
-          if (localObject == locala)
-          {
-            AppMethodBeat.o(249414);
-            return locala;
+          paramObject = this.CrL;
+          if (paramObject == null) {
+            paramObject = "";
           }
-          break;
-        case 1: 
-          ResultKt.throwOnFailure(paramObject);
+          for (;;)
+          {
+            paramObject = (com.tencent.mm.am.b)new com.tencent.mm.plugin.eggspring.b.b(paramObject);
+            Object localObject = (d)this;
+            this.label = 1;
+            localObject = b.b(paramObject, (d)localObject);
+            paramObject = localObject;
+            if (localObject != locala) {
+              break;
+            }
+            AppMethodBeat.o(266487);
+            return locala;
+            localObject = paramObject.toString();
+            paramObject = localObject;
+            if (localObject == null) {
+              paramObject = "";
+            }
+          }
         }
-        AppMethodBeat.o(249414);
+        ResultKt.throwOnFailure(paramObject);
+        AppMethodBeat.o(266487);
         return paramObject;
       }
     }

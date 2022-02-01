@@ -2,13 +2,13 @@ package com.tencent.mm.pluginsdk.ui.pin;
 
 import androidx.recyclerview.widget.RecyclerView.a;
 import androidx.recyclerview.widget.RecyclerView.v;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/pluginsdk/ui/pin/PinnedHeaderAdapter;", "VH", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "()V", "isPinnedPosition", "", "position", "", "onBindPinnedViewHolder", "", "holder", "(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;I)V", "onCreatePinnedViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "app_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/ui/pin/PinnedHeaderAdapter;", "VH", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "()V", "isPinnedPosition", "", "position", "", "onBindPinnedViewHolder", "", "holder", "(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;I)V", "onCreatePinnedViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class b<VH extends RecyclerView.v>
   extends RecyclerView.a<VH>
 {
-  public abstract boolean aqL(int paramInt);
+  public abstract boolean awR(int paramInt);
 }
 
 

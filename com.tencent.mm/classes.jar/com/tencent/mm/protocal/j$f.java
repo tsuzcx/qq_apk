@@ -5,42 +5,43 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.network.b.a;
+import com.tencent.mm.platformtools.z;
 import com.tencent.mm.pointers.PByteArray;
-import com.tencent.mm.protocal.protobuf.aiq;
-import com.tencent.mm.protocal.protobuf.cva;
-import com.tencent.mm.protocal.protobuf.cvb;
-import com.tencent.mm.protocal.protobuf.cvc;
-import com.tencent.mm.protocal.protobuf.dpr;
-import com.tencent.mm.protocal.protobuf.eae;
-import com.tencent.mm.protocal.protobuf.fgr;
-import com.tencent.mm.protocal.protobuf.iz;
+import com.tencent.mm.protocal.protobuf.all;
+import com.tencent.mm.protocal.protobuf.dmg;
+import com.tencent.mm.protocal.protobuf.dmh;
+import com.tencent.mm.protocal.protobuf.dmi;
+import com.tencent.mm.protocal.protobuf.eil;
+import com.tencent.mm.protocal.protobuf.gdd;
+import com.tencent.mm.protocal.protobuf.gol;
+import com.tencent.mm.protocal.protobuf.jv;
 import com.tencent.mm.sdk.platformtools.ChannelUtil;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.cl;
+import com.tencent.mm.storage.ap;
+import com.tencent.mm.storage.co;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 public final class j$f
   extends j.h
 {
-  public cvb RBo;
-  public boolean RBp;
+  public dmh YxR;
+  public boolean YxS;
   
   public j$f()
   {
     AppMethodBeat.i(133094);
-    this.RBo = new cvb();
-    this.RBp = false;
+    this.YxR = new dmh();
+    this.YxS = false;
     AppMethodBeat.o(133094);
   }
   
   public final int getFuncId()
   {
-    if (f.RAO) {
+    if (f.Yxs) {
       return 252;
     }
     return 701;
@@ -48,7 +49,7 @@ public final class j$f
   
   public final String getUri()
   {
-    if (f.RAO) {
+    if (f.Yxs) {
       return "/cgi-bin/micromsg-bin/secmanualauth";
     }
     return "/cgi-bin/micromsg-bin/manualauth";
@@ -58,7 +59,7 @@ public final class j$f
   {
     int j = -1;
     AppMethodBeat.i(133095);
-    com.tencent.mm.kernel.b.ML("");
+    com.tencent.mm.kernel.b.Fu("");
     int k = getSceneStatus();
     int i;
     Object localObject1;
@@ -67,80 +68,80 @@ public final class j$f
     {
       i = 1;
       Log.d("MicroMsg.ManualReq", "summerstatus[%d] clientUpgrade[%d]", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
-      if ((10002 == com.tencent.mm.platformtools.ac.mFM) && (com.tencent.mm.platformtools.ac.mFN > 0))
+      if ((10002 == z.pCm) && (z.pCn > 0))
       {
-        com.tencent.mm.platformtools.ac.mFN = 0;
-        ac.aA("", "", 0);
+        z.pCn = 0;
+        ac.aM("", "", 0);
       }
-      setRsaInfo(ac.hph());
-      localObject1 = this.RBo.TCL;
-      ((cva)localObject1).setBaseRequest(l.a(this));
-      ((cva)localObject1).Dtb = q.dR(true);
-      ((cva)localObject1).RMH = com.tencent.mm.plugin.normsg.a.d.GxJ.aax(i);
-      ((cva)localObject1).RMI = 0;
-      ((cva)localObject1).RMJ = com.tencent.mm.kernel.b.aGR();
-      ((cva)localObject1).mVB = Util.getSourceeMd5(MMApplicationContext.getContext());
-      ((cva)localObject1).rVG = d.RAB;
-      ((cva)localObject1).RMK = cl.hAM();
-      ((cva)localObject1).vhq = LocaleUtil.getApplicationLanguage();
-      ((cva)localObject1).vhp = Util.getTimeZoneOffset();
-      ((cva)localObject1).RML = ChannelUtil.channelId;
-      if ((10012 == com.tencent.mm.platformtools.ac.mFM) && (com.tencent.mm.platformtools.ac.mFN > 0)) {
-        ((cva)localObject1).RML = com.tencent.mm.platformtools.ac.mFN;
+      setRsaInfo(ac.iQc());
+      localObject1 = this.YxR.aaSs;
+      ((dmg)localObject1).setBaseRequest(l.a(this));
+      ((dmg)localObject1).Jmq = q.eD(true);
+      ((dmg)localObject1).YJV = com.tencent.mm.plugin.normsg.a.d.MtP.aeQ(i);
+      ((dmg)localObject1).YJW = 0;
+      ((dmg)localObject1).YJX = com.tencent.mm.kernel.b.aZR();
+      ((dmg)localObject1).pSi = Util.getSourceeMd5(MMApplicationContext.getContext());
+      ((dmg)localObject1).vgW = d.Yxf;
+      ((dmg)localObject1).YJY = co.jcP();
+      ((dmg)localObject1).yts = LocaleUtil.getApplicationLanguage();
+      ((dmg)localObject1).ytr = Util.getTimeZoneOffset();
+      ((dmg)localObject1).YJZ = ChannelUtil.channelId;
+      if ((10012 == z.pCm) && (z.pCn > 0)) {
+        ((dmg)localObject1).YJZ = z.pCn;
       }
-      ((cva)localObject1).jUc = d.RAw;
-      ((cva)localObject1).jUb = d.RAx;
-      ((cva)localObject1).TCG = d.RAy;
-      ((cva)localObject1).StL = q.auI();
-      ((cva)localObject1).RGL = MMApplicationContext.getApplicationId();
-      h.aHH();
-      localObject2 = (String)h.aHG().kcw.get(18);
-      Log.d("MicroMsg.ManualReq", "summerauth ksid:%s authreq flag:%d", new Object[] { localObject2, Integer.valueOf(((cva)localObject1).RMG.ROU) });
-      ((cva)localObject1).RMG.ROS.RRy = new eae().dc(Util.decodeHexString((String)localObject2));
+      ((dmg)localObject1).muu = d.Yxa;
+      ((dmg)localObject1).mut = d.Yxb;
+      ((dmg)localObject1).aaSn = d.Yxc;
+      ((dmg)localObject1).Ztv = q.aPc();
+      ((dmg)localObject1).YDN = MMApplicationContext.getApplicationId();
+      h.baF();
+      localObject2 = (String)h.baE().mCE.get(18);
+      Log.d("MicroMsg.ManualReq", "summerauth ksid:%s authreq flag:%d", new Object[] { localObject2, Integer.valueOf(((dmg)localObject1).YJU.YMi) });
+      ((dmg)localObject1).YJU.YMg.YOQ = new gol().df(Util.decodeHexString((String)localObject2));
     }
     for (;;)
     {
       try
       {
-        localObject2 = com.tencent.mm.plugin.normsg.a.d.GxJ.fjn();
+        localObject2 = com.tencent.mm.plugin.normsg.a.d.MtP.gtE();
         if (localObject2 == null) {
           continue;
         }
         i = localObject2.length;
         Log.d("MicroMsg.ManualReq", "[debug] ccd set on manual auth, len: %s", new Object[] { Integer.valueOf(i) });
-        localObject3 = new fgr();
-        if ((2 == ((cva)localObject1).TCJ) || (1 == ((cva)localObject1).TCJ) || (((cva)localObject1).TCJ == 0))
+        localObject3 = new gdd();
+        if ((2 == ((dmg)localObject1).aaSq) || (1 == ((dmg)localObject1).aaSq) || (((dmg)localObject1).aaSq == 0))
         {
-          if (com.tencent.mm.plugin.normsg.a.d.GxJ.aTk("ie_login_id")) {
-            com.tencent.mm.plugin.normsg.a.d.GxJ.aTj("ie_login_id");
+          if (com.tencent.mm.plugin.normsg.a.d.MtP.aQk("ie_login_id")) {
+            com.tencent.mm.plugin.normsg.a.d.MtP.aQj("ie_login_id");
           }
-          ((fgr)localObject3).UGM = new eae().dc(com.tencent.mm.plugin.normsg.a.d.GxJ.aTl("ie_login_id"));
-          if (((fgr)localObject3).UGM == null) {
+          ((gdd)localObject3).acaV = new gol().df(com.tencent.mm.plugin.normsg.a.d.MtP.aQl("ie_login_id"));
+          if (((gdd)localObject3).acaV == null) {
             continue;
           }
-          i = ((fgr)localObject3).UGM.Ufv;
+          i = ((gdd)localObject3).acaV.abwJ;
           Log.d("MicroMsg.ManualReq", "[debug] wcstf set on manual auth, len: %s", new Object[] { Integer.valueOf(i) });
-          ((fgr)localObject3).UGN = new eae().dc(com.tencent.mm.plugin.normsg.a.d.GxJ.aTo("ce_login_id"));
-          if (((fgr)localObject3).UGN == null) {
+          ((gdd)localObject3).acaW = new gol().df(com.tencent.mm.plugin.normsg.a.d.MtP.aQo("ce_login_id"));
+          if (((gdd)localObject3).acaW == null) {
             continue;
           }
-          i = ((fgr)localObject3).UGN.Ufv;
+          i = ((gdd)localObject3).acaW.abwJ;
           Log.d("MicroMsg.ManualReq", "[debug] wcste set on manual auth, len: %s", new Object[] { Integer.valueOf(i) });
-          localObject4 = com.tencent.mm.plugin.normsg.a.d.GxJ.aTp("ce_login_id");
+          localObject4 = com.tencent.mm.plugin.normsg.a.d.MtP.aQp("ce_login_id");
           if (localObject4 != null) {
-            ((fgr)localObject3).UGT = new eae().dc(((String)localObject4).getBytes());
+            ((gdd)localObject3).acbc = new gol().df(((String)localObject4).getBytes());
           }
         }
-        ((fgr)localObject3).UGS = new eae().dc(com.tencent.mm.plugin.normsg.a.d.GxJ.fjq());
-        if (((fgr)localObject3).UGS == null) {
+        ((gdd)localObject3).acbb = new gol().df(com.tencent.mm.plugin.normsg.a.d.MtP.gtH());
+        if (((gdd)localObject3).acbb == null) {
           continue;
         }
-        i = ((fgr)localObject3).UGS.Ufv;
+        i = ((gdd)localObject3).acbb.abwJ;
         Log.d("MicroMsg.ManualReq", "[debug] devtok on manual auth, len: %s", new Object[] { Integer.valueOf(i) });
-        ((fgr)localObject3).UGO = new eae().dc((byte[])localObject2);
-        ((cva)localObject1).RMN = new eae().dc(((fgr)localObject3).toByteArray());
+        ((gdd)localObject3).acaX = new gol().df((byte[])localObject2);
+        ((dmg)localObject1).YKb = new gol().df(((gdd)localObject3).toByteArray());
       }
-      catch (Throwable localThrowable)
+      finally
       {
         Object localObject3;
         Object localObject4;
@@ -149,8 +150,8 @@ public final class j$f
         int m;
         Log.printErrStackTrace("MicroMsg.ManualReq", localThrowable, "cc throws exception.", new Object[0]);
         continue;
-        ((cva)localObject1).RMP.Stl = 0;
-        ((cva)localObject1).RMP.RMR = new eae().dc(new byte[0]);
+        ((dmg)localObject1).YKd.Zsz = 0;
+        ((dmg)localObject1).YKd.YKf = new gol().df(new byte[0]);
         Log.e("MicroMsg.ManualReq", "get sign key failed");
         continue;
         i = localObject4.length;
@@ -158,29 +159,29 @@ public final class j$f
         j = localObject5.length;
         continue;
       }
-      localObject2 = this.RBo.TCK;
-      ((cvc)localObject2).RQU = new eae().dc(Util.getUuidRandom());
-      localObject3 = new aiq();
-      ((aiq)localObject3).Stl = 713;
+      localObject2 = this.YxR.aaSr;
+      ((dmi)localObject2).YOj = new gol().df(Util.getUuidRandom());
+      localObject3 = new all();
+      ((all)localObject3).Zsz = 713;
       localObject4 = new PByteArray();
       localObject5 = new PByteArray();
-      k = MMProtocalJni.generateECKey(((aiq)localObject3).Stl, (PByteArray)localObject4, (PByteArray)localObject5);
+      k = MMProtocalJni.generateECKey(((all)localObject3).Zsz, (PByteArray)localObject4, (PByteArray)localObject5);
       localObject4 = ((PByteArray)localObject4).value;
       localObject5 = ((PByteArray)localObject5).value;
-      cX((byte[])localObject5);
-      ((cva)localObject1).RMP = new dpr();
-      localObject6 = com.tencent.mm.network.b.bsU().bsV();
+      da((byte[])localObject5);
+      ((dmg)localObject1).YKd = new eil();
+      localObject6 = com.tencent.mm.network.b.bQD().bQE();
       if (TextUtils.isEmpty((CharSequence)localObject6)) {
         continue;
       }
-      ((cva)localObject1).RMP.Stl = com.tencent.mm.network.b.bsU().mue.Stl;
-      ((cva)localObject1).RMP.RMR = new eae().dc(((String)localObject6).getBytes(StandardCharsets.ISO_8859_1));
+      ((dmg)localObject1).YKd.Zsz = com.tencent.mm.network.b.bQD().pny.Zsz;
+      ((dmg)localObject1).YKd.YKf = new gol().df(((String)localObject6).getBytes(StandardCharsets.ISO_8859_1));
       Log.i("MicroMsg.ManualReq", "manualauth add public key , length " + ((String)localObject6).length());
       localObject6 = new b.a();
-      ((b.a)localObject6).mug = com.tencent.mm.network.b.bsU().bsV();
-      ((b.a)localObject6).muf = com.tencent.mm.network.b.bsU().muf;
+      ((b.a)localObject6).pnA = com.tencent.mm.network.b.bQD().bQE();
+      ((b.a)localObject6).pnz = com.tencent.mm.network.b.bQD().pnz;
       setCGiVerifyKey((b.a)localObject6);
-      m = ((aiq)localObject3).Stl;
+      m = ((all)localObject3).Zsz;
       if (localObject4 != null) {
         continue;
       }
@@ -189,12 +190,12 @@ public final class j$f
         continue;
       }
       Log.d("MicroMsg.ManualReq", "summerecdh nid:%d ret:%d, pub len: %d, pri len:%d, pub:%s, pri:%s", new Object[] { Integer.valueOf(m), Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(j), Util.dumpHex((byte[])localObject4), Util.dumpHex((byte[])localObject5) });
-      ((aiq)localObject3).RMR = new eae().dc((byte[])localObject4);
-      ((cvc)localObject2).RMV = ((aiq)localObject3);
-      Log.i("MicroMsg.ManualReq", "summerauth manual IMEI:%s SoftType:%s ClientSeqID:%s Signature:%s DeviceName:%s DeviceType:%s Language:%s TimeZone:%s chan[%d,%d,%d] DeviceBrand:%s DeviceModel:%s OSType:%s RealCountry:%s AndroidPackageName:%s", new Object[] { ((cva)localObject1).Dtb, ((cva)localObject1).RMH, ((cva)localObject1).RMJ, ((cva)localObject1).mVB, ((cva)localObject1).rVG, ((cva)localObject1).RMK, ((cva)localObject1).vhq, ((cva)localObject1).vhp, Integer.valueOf(((cva)localObject1).RML), Integer.valueOf(ChannelUtil.channelId), Integer.valueOf(ChannelUtil.historyChannelId), ((cva)localObject1).jUc, ((cva)localObject1).jUb, ((cva)localObject1).TCG, ((cva)localObject1).StL, ((cva)localObject1).RGL });
+      ((all)localObject3).YKf = new gol().df((byte[])localObject4);
+      ((dmi)localObject2).YKj = ((all)localObject3);
+      Log.i("MicroMsg.ManualReq", "summerauth manual IMEI:%s SoftType:%s ClientSeqID:%s Signature:%s DeviceName:%s DeviceType:%s Language:%s TimeZone:%s chan[%d,%d,%d] DeviceBrand:%s DeviceModel:%s OSType:%s RealCountry:%s AndroidPackageName:%s", new Object[] { ((dmg)localObject1).Jmq, ((dmg)localObject1).YJV, ((dmg)localObject1).YJX, ((dmg)localObject1).pSi, ((dmg)localObject1).vgW, ((dmg)localObject1).YJY, ((dmg)localObject1).yts, ((dmg)localObject1).ytr, Integer.valueOf(((dmg)localObject1).YJZ), Integer.valueOf(ChannelUtil.channelId), Integer.valueOf(ChannelUtil.historyChannelId), ((dmg)localObject1).muu, ((dmg)localObject1).mut, ((dmg)localObject1).aaSn, ((dmg)localObject1).Ztv, ((dmg)localObject1).YDN });
       try
       {
-        localObject1 = this.RBo.toByteArray();
+        localObject1 = this.YxR.toByteArray();
         AppMethodBeat.o(133095);
         return localObject1;
       }
@@ -203,13 +204,13 @@ public final class j$f
         Log.e("MicroMsg.ManualReq", "summerauth toProtoBuf :%s", new Object[] { Util.stackTraceToString(localIOException) });
         AppMethodBeat.o(133095);
       }
-      if (this.RBp)
+      if (this.YxS)
       {
         i = 3;
         break;
       }
-      h.aHH();
-      i = h.aHG().kcw.asB(46);
+      h.baF();
+      i = h.baE().mCE.ayQ(46);
       break;
       i = -1;
       continue;
@@ -224,7 +225,7 @@ public final class j$f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.j.f
  * JD-Core Version:    0.7.0.1
  */

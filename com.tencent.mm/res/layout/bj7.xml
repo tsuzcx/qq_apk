@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheckBox android:textColor="@color/zo" android:ellipsize="end" android:gravity="center" android:id="@id/f9m" android:background="@drawable/ah_" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="36.0dip" android:maxHeight="36.0dip" android:minHeight="36.0dip" android:singleLine="true" style="@style/rd"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/hra" android:layout_width="fill_parent" android:layout_height="@dimen/cr"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/kkw" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <SeekBar android:gravity="center" android:layout_gravity="center" android:id="@id/j8v" android:paddingLeft="@dimen/df" android:paddingRight="@dimen/df" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxHeight="@dimen/m9" android:max="100" android:progressDrawable="@drawable/aj2" android:minHeight="@dimen/m9" android:thumb="@drawable/aj3" android:thumbOffset="0.0dip" android:layout_weight="1.0" android:layout_marginStart="@dimen/bv" android:layout_marginEnd="@dimen/bv" />
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/kkv" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</LinearLayout>

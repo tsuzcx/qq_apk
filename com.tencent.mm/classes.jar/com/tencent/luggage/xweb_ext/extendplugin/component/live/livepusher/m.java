@@ -1,94 +1,37 @@
 package com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.rtmp.TXLivePusher.VideoCustomProcessListener;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.Surface;
+import com.tencent.mm.plugin.appbrand.jsapi.live.b;
+import com.tencent.mm.plugin.appbrand.jsapi.live.k;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/ITXLivePusherJSAdapterSameLayerSupport;", "Lcom/tencent/mm/plugin/appbrand/jsapi/live/ITXLivePusherJSAdapter;", "getMaxZoom", "", "initLivePusher", "Lcom/tencent/mm/plugin/appbrand/jsapi/live/TXJSAdapterError;", "params", "Landroid/os/Bundle;", "sendHandupStop", "", "sendWeChatStop", "setFocusPosition", "x", "", "y", "setSurface", "surface", "Landroid/view/Surface;", "setSurfaceSize", "width", "height", "setThreadHandler", "handler", "Landroid/os/Handler;", "setZoom", "value", "luggage-xweb-ext_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface m
-  extends TXLivePusher.VideoCustomProcessListener
+  extends b
 {
-  public static final m cHf = new m()
-  {
-    public final void TG() {}
-    
-    public final void TH() {}
-    
-    public final void a(m.a paramAnonymousa, float paramAnonymousFloat) {}
-    
-    public final void a(m.b paramAnonymousb, String paramAnonymousString) {}
-    
-    public final void a(m.c paramAnonymousc, String paramAnonymousString) {}
-    
-    public final void b(String paramAnonymousString, float paramAnonymousFloat) {}
-    
-    public final void clearFilters() {}
-    
-    public final boolean isEnabled()
-    {
-      return false;
-    }
-    
-    public final void onDetectFacePoints(float[] paramAnonymousArrayOfFloat) {}
-    
-    public final int onTextureCustomProcess(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
-    {
-      return 0;
-    }
-    
-    public final void onTextureDestoryed() {}
-  };
+  public abstract k aa(float paramFloat1, float paramFloat2);
   
-  public abstract void TG();
+  public abstract void atU();
   
-  public abstract void TH();
+  public abstract void atV();
   
-  public abstract void a(a parama, float paramFloat);
+  public abstract k dc(int paramInt1, int paramInt2);
   
-  public abstract void a(b paramb, String paramString);
+  public abstract int getMaxZoom();
   
-  public abstract void a(m.c paramc, String paramString);
+  public abstract k h(Surface paramSurface);
   
-  public abstract void b(String paramString, float paramFloat);
+  public abstract k mF(int paramInt);
   
-  public abstract void clearFilters();
+  public abstract void setThreadHandler(Handler paramHandler);
   
-  public abstract boolean isEnabled();
-  
-  public static enum a
-  {
-    static
-    {
-      AppMethodBeat.i(224289);
-      cHg = new a("SKIN_BRIGHT", 0);
-      cHh = new a("SKIN_SMOOTH", 1);
-      cHi = new a("FACE_THIN", 2);
-      cHj = new a("EYE_BIGGER", 3);
-      cHk = new a[] { cHg, cHh, cHi, cHj };
-      AppMethodBeat.o(224289);
-    }
-    
-    private a() {}
-  }
-  
-  public static enum b
-  {
-    static
-    {
-      AppMethodBeat.i(224213);
-      cHl = new b("MAKEUP_LIP_STICK", 0);
-      cHm = new b("MAKEUP_EYE_SHADOW", 1);
-      cHn = new b("MAKEUP_BLUSHER_STICK", 2);
-      cHo = new b("MAKEUP_FACE_CONTOUR", 3);
-      cHp = new b("MAKEUP_EYE_BROW", 4);
-      cHq = new b[] { cHl, cHm, cHn, cHo, cHp };
-      AppMethodBeat.o(224213);
-    }
-    
-    private b() {}
-  }
+  public abstract k y(Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.m
  * JD-Core Version:    0.7.0.1
  */

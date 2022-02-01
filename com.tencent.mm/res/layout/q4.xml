@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/aua" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:background="@drawable/emoji_bubble" android:paddingTop="@dimen/cp" android:paddingBottom="@dimen/cp" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/cd" android:paddingEnd="@dimen/cd"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.chatting.ChattingImageBGView android:id="@id/aub" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:adjustViewBounds="true" />
-    <ImageView android:id="@id/a35" android:background="#99000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/ka2" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

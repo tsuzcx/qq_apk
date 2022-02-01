@@ -1,20 +1,20 @@
 package com.tencent.mm.cache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.h;
+import com.tencent.mm.api.i;
 import java.util.HashMap;
 import java.util.Stack;
 
 public final class c
 {
-  private static c iTJ;
-  private Stack<h> bPH;
-  HashMap<String, Stack<h>> map;
+  private static c lvP;
+  private Stack<i> dJz;
+  HashMap<String, Stack<i>> map;
   
   static
   {
     AppMethodBeat.i(9210);
-    iTJ = new c();
+    lvP = new c();
     AppMethodBeat.o(9210);
   }
   
@@ -22,52 +22,52 @@ public final class c
   {
     AppMethodBeat.i(9207);
     this.map = new HashMap();
-    this.bPH = new Stack();
+    this.dJz = new Stack();
     AppMethodBeat.o(9207);
   }
   
-  public static c arE()
+  public static c aLA()
   {
-    return iTJ;
+    return lvP;
   }
   
-  public final void Kg(String paramString)
+  public final void CM(String paramString)
   {
-    AppMethodBeat.i(259790);
+    AppMethodBeat.i(232031);
     if (this.map.containsKey(paramString))
     {
-      this.bPH = ((Stack)this.map.get(paramString));
-      AppMethodBeat.o(259790);
+      this.dJz = ((Stack)this.map.get(paramString));
+      AppMethodBeat.o(232031);
       return;
     }
     this.map.put(paramString, new Stack());
-    AppMethodBeat.o(259790);
+    AppMethodBeat.o(232031);
   }
   
-  public final h arF()
+  public final i aLB()
   {
     AppMethodBeat.i(9209);
-    if (this.bPH.empty())
+    if (this.dJz.empty())
     {
-      localh = h.fam;
+      locali = i.hdN;
       AppMethodBeat.o(9209);
-      return localh;
+      return locali;
     }
-    h localh = (h)this.bPH.pop();
+    i locali = (i)this.dJz.pop();
     AppMethodBeat.o(9209);
-    return localh;
+    return locali;
   }
   
-  public final void b(h paramh)
+  public final void b(i parami)
   {
     AppMethodBeat.i(9208);
-    this.bPH.push(paramh);
+    this.dJz.push(parami);
     AppMethodBeat.o(9208);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.cache.c
  * JD-Core Version:    0.7.0.1
  */

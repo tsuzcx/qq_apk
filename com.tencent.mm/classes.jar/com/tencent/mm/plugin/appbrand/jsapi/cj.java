@@ -1,48 +1,25 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.luggage.l.e.c;
+import com.tencent.luggage.sdk.h.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.f;
-import com.tencent.mm.plugin.appbrand.g;
-import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.pluginsdk.wallet.e;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiPredownloadMiniProgramPackage;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
 public final class cj
-  extends c<g>
+  extends c<k>
 {
-  public static final int CTRL_INDEX = 678;
-  public static final String NAME = "predownloadMiniProgramPackage";
-  @Deprecated
-  public static final a owJ;
+  public static final int CTRL_INDEX = 616;
+  public static final String NAME = "openWCPayLQTDetail";
+  final int rzK;
   
-  static
+  public cj()
   {
-    AppMethodBeat.i(50409);
-    owJ = new a((byte)0);
-    AppMethodBeat.o(50409);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiPredownloadMiniProgramPackage$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "plugin-appbrand-integration_release"})
-  static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class b
-    extends q
-    implements a<x>
-  {
-    b(cj paramcj, g paramg, int paramInt)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class c<T>
-    implements f<ResultType>
-  {
-    c(cj paramcj, g paramg, int paramInt) {}
+    AppMethodBeat.i(174765);
+    this.rzK = a.ce(this);
+    AppMethodBeat.o(174765);
   }
 }
 

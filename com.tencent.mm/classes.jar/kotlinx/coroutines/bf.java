@@ -1,39 +1,25 @@
 package kotlinx.coroutines;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import java.util.concurrent.Executor;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/DisposeOnCancel;", "Lkotlinx/coroutines/CancelHandler;", "handle", "Lkotlinx/coroutines/DisposableHandle;", "(Lkotlinx/coroutines/DisposableHandle;)V", "invoke", "", "cause", "", "toString", "", "kotlinx-coroutines-core"})
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/DispatcherExecutor;", "Ljava/util/concurrent/Executor;", "dispatcher", "Lkotlinx/coroutines/CoroutineDispatcher;", "(Lkotlinx/coroutines/CoroutineDispatcher;)V", "execute", "", "block", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "toString", "", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
 final class bf
-  extends k
+  implements Executor
 {
-  private final be abwb;
-  
-  public bf(be parambe)
+  public final void execute(Runnable paramRunnable)
   {
-    AppMethodBeat.i(118047);
-    this.abwb = parambe;
-    AppMethodBeat.o(118047);
+    throw null;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(118046);
-    String str = "DisposeOnCancel[" + this.abwb + ']';
-    AppMethodBeat.o(118046);
-    return str;
-  }
-  
-  public final void y(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(118044);
-    this.abwb.dispose();
-    AppMethodBeat.o(118044);
+    throw null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlinx.coroutines.bf
  * JD-Core Version:    0.7.0.1
  */

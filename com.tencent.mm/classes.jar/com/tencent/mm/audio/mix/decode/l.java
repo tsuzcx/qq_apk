@@ -5,19 +5,21 @@ import com.tencent.mm.audio.mix.a.d;
 
 public abstract interface l
 {
-  public abstract void adD();
+  public abstract void aFB();
   
-  public abstract void adE();
+  public abstract void aFC();
   
-  public abstract boolean adH();
+  public abstract boolean aFF();
   
-  public abstract boolean adI();
+  public abstract boolean aFG();
   
-  public abstract d adJ();
+  public abstract boolean aFH();
   
-  public abstract void adM();
+  public abstract d aFI();
   
-  public abstract b adT();
+  public abstract void aFL();
+  
+  public abstract b aFR();
   
   public abstract long getCurrentPosition();
   
@@ -32,6 +34,8 @@ public abstract interface l
   public abstract void resume();
   
   public abstract void seek(int paramInt);
+  
+  public abstract void setVolume(float paramFloat1, float paramFloat2);
   
   public abstract void stop();
 }

@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/bjk" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/icons_pop_arrow" android:layout_below="@id/gef" android:rotation="180.0" app:iconColor="@color/e" />
-    <LinearLayout android:orientation="vertical" android:id="@id/gef" android:background="@drawable/aog" android:paddingLeft="@dimen/bt" android:paddingRight="@dimen/bt" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <LinearLayout android:gravity="left" android:orientation="horizontal" android:id="@id/fdb" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <View android:id="@id/fd3" android:background="@color/ks" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/c5" android:layout_marginRight="@dimen/c5" />
-        <LinearLayout android:gravity="left" android:orientation="horizontal" android:id="@id/fdc" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </LinearLayout>
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/bjj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-1.0px" android:src="@raw/icons_pop_arrow" android:layout_below="@id/gef" android:layout_alignParentBottom="true" app:iconColor="@color/e" />
-</LinearLayout>
+<RelativeLayout android:background="@color/ux" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/hqu" android:background="@color/aav" android:layout_width="fill_parent" android:layout_height="14.0dip" />
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/m4" android:gravity="center" android:id="@id/f79" android:paddingLeft="@dimen/j6" android:paddingRight="@dimen/j6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="48.0dip" android:text="{info_tv}" android:layout_below="@id/hqu" android:layout_centerInParent="true" />
+</RelativeLayout>

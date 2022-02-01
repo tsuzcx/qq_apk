@@ -9,54 +9,51 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
 {
-  public com.tencent.mm.plugin.sns.ad.remote.a.a JGT;
-  public b JGU;
-  d JGV;
+  public com.tencent.mm.plugin.sns.ad.remote.a.a PXT;
+  public b PXU;
+  d PXV;
   
-  public final com.tencent.mm.plugin.sns.ad.remote.ipc.a fKZ()
+  public final com.tencent.mm.plugin.sns.ad.remote.ipc.a hbq()
   {
-    AppMethodBeat.i(253242);
+    AppMethodBeat.i(309654);
     try
     {
-      if (this.JGV == null)
+      if (this.PXV == null)
       {
-        this.JGV = AdLandingPagesProxy.getInstance().getRemoteServiceProxy();
-        if (this.JGV == null)
-        {
-          Log.w("SnsAd.IPCRequestBuilder", "the remote service proxy is null");
-          AppMethodBeat.o(253242);
+        this.PXV = AdLandingPagesProxy.getInstance().getRemoteServiceProxy();
+        if (this.PXV == null) {
           return null;
         }
       }
-      if ((this.JGT != null) && (this.JGU == null)) {
-        if ((this.JGT instanceof b)) {
-          this.JGU = ((b)this.JGT);
+      if ((this.PXT != null) && (this.PXU == null)) {
+        if ((this.PXT instanceof b)) {
+          this.PXU = ((b)this.PXT);
         }
       }
       for (;;)
       {
         com.tencent.mm.plugin.sns.ad.remote.ipc.impl.a locala = new com.tencent.mm.plugin.sns.ad.remote.ipc.impl.a();
-        locala.JGY = this.JGT;
-        locala.JGX = this.JGU;
-        locala.JGZ = new IPCRemoteProxy(this.JGV, locala);
-        AppMethodBeat.o(253242);
+        locala.PXY = this.PXT;
+        locala.PXX = this.PXU;
+        locala.PXZ = new IPCRemoteProxy(this.PXV, locala);
+        AppMethodBeat.o(309654);
         return locala;
-        if ((this.JGT == null) && (this.JGU != null) && ((this.JGU instanceof com.tencent.mm.plugin.sns.ad.remote.a.a))) {
-          this.JGT = ((com.tencent.mm.plugin.sns.ad.remote.a.a)this.JGU);
+        if ((this.PXT == null) && (this.PXU != null) && ((this.PXU instanceof com.tencent.mm.plugin.sns.ad.remote.a.a))) {
+          this.PXT = ((com.tencent.mm.plugin.sns.ad.remote.a.a)this.PXU);
         }
       }
       return null;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Log.e("SnsAd.IPCRequestBuilder", "there is something invalid in build!");
-      AppMethodBeat.o(253242);
+      AppMethodBeat.o(309654);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.remote.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.sport;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.be;
-import com.tencent.mm.plugin.sport.model.o;
+import com.tencent.mm.plugin.sport.model.q;
 import com.tencent.mm.plugin.sport.ui.a.b;
 import com.tencent.mm.pluginsdk.c.c;
 import com.tencent.mm.pluginsdk.n;
@@ -21,9 +21,9 @@ public class Plugin
   public be createSubCore()
   {
     AppMethodBeat.i(28810);
-    o localo = new o();
+    q localq = new q();
     AppMethodBeat.o(28810);
-    return localo;
+    return localq;
   }
   
   public c getContactWidgetFactory()

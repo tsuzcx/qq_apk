@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.appbrand.media.record.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.ah;
 import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
@@ -11,7 +12,7 @@ public final class g
   extends f
 {
   private int mSampleRate;
-  private int qeE;
+  private int tjs;
   
   public final void close()
   {
@@ -19,10 +20,10 @@ public final class g
     super.close();
     try
     {
-      RandomAccessFile localRandomAccessFile = u.dO(this.mFile.bOF(), true);
+      RandomAccessFile localRandomAccessFile = y.eA(ah.v(this.mFile.jKT()), true);
       localRandomAccessFile.seek(0L);
       int i = this.mSampleRate;
-      int j = this.qeE;
+      int j = this.tjs;
       long l1 = this.mFile.length();
       long l2 = 36L + l1;
       long l3 = i;
@@ -43,7 +44,7 @@ public final class g
   {
     AppMethodBeat.i(146354);
     this.mSampleRate = paramInt1;
-    this.qeE = paramInt2;
+    this.tjs = paramInt2;
     boolean bool = super.j(paramString, paramInt1, paramInt2, paramInt3);
     AppMethodBeat.o(146354);
     return bool;

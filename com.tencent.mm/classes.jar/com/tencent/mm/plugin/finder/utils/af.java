@@ -1,239 +1,183 @@
 package com.tencent.mm.plugin.finder.utils;
 
+import android.view.View;
+import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.plugin.finder.cgi.r;
-import com.tencent.mm.plugin.finder.storage.d;
-import com.tencent.mm.plugin.findersdk.a.ad;
-import com.tencent.mm.plugin.findersdk.a.ag.a;
-import com.tencent.mm.plugin.findersdk.a.ag.a<Ljava.lang.Boolean;>;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.view.FinderFeedLiveNoticeView;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.vending.c.a;
-import java.util.HashMap;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.view.recyclerview.j;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/utils/FinderSwitchApi;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderSwitchApi;", "()V", "TAG", "", "getFinderActivityShareBusinessType", "", "getUserInfoFinderSetting", "", "hasFinderSetting", "", "type", "setUserInfoFinderSetting", "", "finderSetting", "showFinderAtWxProfile", "showFinderEntryAtWxMe", "showFinderEntrySetting", "showFinderRecentLike", "succCallback", "Lcom/tencent/mm/plugin/findersdk/api/IFinderUtilApi$Callback;", "failedCallback", "showFriendFinderEntry", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/utils/FinderPriorityManager;", "", "()V", "PRIORITY_AD_HOT", "", "PRIORITY_CREATION_BY_SAME_TEMPLATE", "PRIORITY_HOT_SEARCH", "PRIORITY_JUMPER", "PRIORITY_LIVE_NOTICE", "PRIORITY_LIVE_OPEN", "PRIORITY_NONE", "PRIORITY_OLY", "TAG", "", "flagMap", "Ljava/util/concurrent/ConcurrentHashMap;", "isPriorityOk", "", "key", "priority", "onViewRecycled", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "setPriorityFlag", "visibility", "updatePriority", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class af
-  implements ad
 {
-  public static final af AFF;
-  private static final String TAG = "Finder.FinderSwitchApi";
+  public static final af Ghj;
+  private static final ConcurrentHashMap<Integer, Integer> Ghk;
   
   static
   {
-    AppMethodBeat.i(272988);
-    AFF = new af();
-    TAG = "Finder.FinderSwitchApi";
-    AppMethodBeat.o(272988);
+    AppMethodBeat.i(333567);
+    Ghj = new af();
+    Ghk = new ConcurrentHashMap();
+    AppMethodBeat.o(333567);
   }
   
-  public static boolean edP()
+  public static void a(j paramj, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(272983);
-    Object localObject = aj.AGc;
-    boolean bool2 = aj.edY();
-    localObject = d.AjH;
-    if (((Number)d.dUd().aSr()).intValue() == 1) {}
-    for (boolean bool1 = true;; bool1 = false)
+    AppMethodBeat.i(333541);
+    s.u(paramj, "holder");
+    if (paramInt1 == 0)
     {
-      Log.i(TAG, "showFinderEntrySetting hasFinderAccount" + bool2 + ", switch:" + bool1);
-      if ((!bool2) || (!bool1)) {
-        break;
+      int i = paramj.hashCode();
+      Object localObject2 = (Integer)Ghk.get(Integer.valueOf(i));
+      Object localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = Integer.valueOf(0);
       }
-      AppMethodBeat.o(272983);
-      return true;
+      int j = ((Number)localObject1).intValue();
+      Log.i("FinderPriorityManager", "[setPriorityFlag] visibility:" + paramInt1 + " priorityFlag:" + j + " priority:" + paramInt2 + " holder:" + paramj.hashCode());
+      ((Map)Ghk).put(Integer.valueOf(i), Integer.valueOf(paramInt2));
+      localObject2 = (Integer)Ghk.get(Integer.valueOf(paramj.hashCode()));
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = Integer.valueOf(0);
+      }
+      paramInt1 = ((Number)localObject1).intValue();
+      Log.i("FinderPriorityManager", "[updatePriority] priorityFlag:" + paramInt1 + " holder:" + paramj.hashCode());
+      localObject1 = paramj.UH(e.e.finder_feed_living_status);
+      localObject2 = (FinderFeedLiveNoticeView)paramj.UH(e.e.finder_feed_live_notice_view);
+      LinearLayout localLinearLayout = (LinearLayout)paramj.UH(e.e.finder_feed_ad_hotspot_layout);
+      View localView = paramj.UH(e.e.finder_feed_item_of_hot_search);
+      paramj = paramj.UH(e.e.finder_feed_creation_by_same_template);
+      if (1 == (paramInt1 & 0x1))
+      {
+        if (localObject1 != null) {
+          ((View)localObject1).setVisibility(8);
+        }
+        if (localObject2 != null) {
+          ((FinderFeedLiveNoticeView)localObject2).setVisibility(8);
+        }
+        if (localLinearLayout != null) {
+          localLinearLayout.setVisibility(0);
+        }
+        if (localView != null) {
+          localView.setVisibility(8);
+        }
+        if (paramj != null)
+        {
+          paramj.setVisibility(8);
+          AppMethodBeat.o(333541);
+        }
+      }
+      else if (2 == (paramInt1 & 0x2))
+      {
+        if (localObject1 != null) {
+          ((View)localObject1).setVisibility(8);
+        }
+        if (localObject2 != null) {
+          ((FinderFeedLiveNoticeView)localObject2).setVisibility(8);
+        }
+        if (localLinearLayout != null) {
+          localLinearLayout.setVisibility(0);
+        }
+        if (localView != null) {
+          localView.setVisibility(8);
+        }
+        if (paramj != null)
+        {
+          paramj.setVisibility(8);
+          AppMethodBeat.o(333541);
+        }
+      }
+      else if (4 == (paramInt1 & 0x4))
+      {
+        if (localObject1 != null) {
+          ((View)localObject1).setVisibility(0);
+        }
+        if (localObject2 != null) {
+          ((FinderFeedLiveNoticeView)localObject2).setVisibility(8);
+        }
+        if (localLinearLayout != null) {
+          localLinearLayout.setVisibility(8);
+        }
+        if (localView != null) {
+          localView.setVisibility(8);
+        }
+        if (paramj != null)
+        {
+          paramj.setVisibility(8);
+          AppMethodBeat.o(333541);
+        }
+      }
+      else if (8 == (paramInt1 & 0x8))
+      {
+        if (localObject1 != null) {
+          ((View)localObject1).setVisibility(8);
+        }
+        if (localObject2 != null) {
+          ((FinderFeedLiveNoticeView)localObject2).setVisibility(0);
+        }
+        if (localLinearLayout != null) {
+          localLinearLayout.setVisibility(8);
+        }
+        if (localView != null) {
+          localView.setVisibility(8);
+        }
+        if (paramj != null)
+        {
+          paramj.setVisibility(8);
+          AppMethodBeat.o(333541);
+        }
+      }
+      else if (16 == (paramInt1 & 0x10))
+      {
+        if (localView != null) {
+          localView.setVisibility(8);
+        }
+        if (paramj != null) {
+          paramj.setVisibility(8);
+        }
+      }
     }
-    AppMethodBeat.o(272983);
-    return false;
+    AppMethodBeat.o(333541);
   }
   
-  public final void Nd(long paramLong)
+  public static boolean iq(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(272979);
-    com.tencent.mm.kernel.f localf = h.aHG();
-    p.j(localf, "MMKernel.storage()");
-    localf.aHp().set(ar.a.VBV, Long.valueOf(paramLong));
-    AppMethodBeat.o(272979);
-  }
-  
-  public final boolean b(ag.a<Boolean> parama)
-  {
-    AppMethodBeat.i(272987);
-    Object localObject = ae.AFC;
-    ag.a locala = (ag.a)new a(parama);
-    localObject = (Integer)ae.AFB.get(Integer.valueOf(1));
-    parama = (ag.a<Boolean>)localObject;
-    if (localObject == null) {
-      parama = Integer.valueOf(0);
+    AppMethodBeat.i(333551);
+    Integer localInteger2 = (Integer)Ghk.get(Integer.valueOf(paramInt1));
+    Integer localInteger1 = localInteger2;
+    if (localInteger2 == null) {
+      localInteger1 = Integer.valueOf(0);
     }
-    p.j(parama, "requestTimeMap[exptId] ?: 0");
-    int i = parama.intValue();
-    if (cm.bfF() - i > ae.xUB) {
-      new r(j.listOf(Integer.valueOf(1))).bhW().g((a)new ae.a(locala));
-    }
-    parama = h.aHG();
-    p.j(parama, "MMKernel.storage()");
-    if (parama.aHp().getInt(ar.a.VBU, 0) == 1)
-    {
-      AppMethodBeat.o(272987);
-      return true;
-    }
-    AppMethodBeat.o(272987);
-    return false;
-  }
-  
-  public final long edM()
-  {
-    AppMethodBeat.i(272980);
-    com.tencent.mm.kernel.f localf = h.aHG();
-    p.j(localf, "MMKernel.storage()");
-    long l = localf.aHp().a(ar.a.VBV, 0L);
-    AppMethodBeat.o(272980);
-    return l;
-  }
-  
-  public final boolean edN()
-  {
-    AppMethodBeat.i(272981);
-    if ((edM() & 1L) != 0L)
-    {
-      AppMethodBeat.o(272981);
-      return true;
-    }
-    AppMethodBeat.o(272981);
-    return false;
-  }
-  
-  public final boolean edO()
-  {
-    AppMethodBeat.i(272982);
-    Object localObject = aj.AGc;
-    int i = aj.eei();
-    localObject = h.ae(com.tencent.mm.plugin.teenmode.a.b.class);
-    p.j(localObject, "MMKernel.service(ITeenModeService::class.java)");
-    boolean bool1 = ((com.tencent.mm.plugin.teenmode.a.b)localObject).ZM();
-    localObject = d.AjH;
-    switch (((Number)d.dUa().aSr()).intValue())
-    {
+    int i = ((Number)localInteger1).intValue();
+    boolean bool;
+    if (i == 0) {
+      bool = true;
     }
     for (;;)
     {
-      Log.i(TAG, "showFinderEntryAtWxMe teenMode:" + bool1 + ", state:" + i);
-      if (!bool1) {
-        break;
+      Log.i("FinderPriorityManager", "[isPriorityOk] isOk:" + bool + " priorityFlag:" + i + " priority:" + paramInt2 + " holder:" + paramInt1);
+      AppMethodBeat.o(333551);
+      return bool;
+      if (paramInt2 <= i) {
+        bool = true;
+      } else {
+        bool = false;
       }
-      AppMethodBeat.o(272982);
-      return false;
-      bool1 = true;
-      continue;
-      i = 1;
-      continue;
-      i = 4;
     }
-    boolean bool2;
-    switch (i)
-    {
-    case 2: 
-    case 3: 
-    default: 
-      localObject = d.AjH;
-      if (((Number)d.dUb().aSr()).intValue() == 1)
-      {
-        bool1 = true;
-        localObject = d.AjH;
-        if (((Number)d.dUc().aSr()).intValue() != 1) {
-          break label338;
-        }
-        bool2 = true;
-        label226:
-        localObject = d.AjH;
-        if (((Number)d.dUd().aSr()).intValue() != 1) {
-          break label343;
-        }
-      }
-      break;
-    }
-    boolean bool4;
-    label338:
-    label343:
-    for (boolean bool3 = true;; bool3 = false)
-    {
-      localObject = aj.AGc;
-      bool4 = aj.eed();
-      Log.i(TAG, "showFinderEntryAtWxMe switchA:" + bool1 + ", switchB:" + bool2 + ", switchC:" + bool3 + ", showFinderAtWxProfile:" + bool4);
-      if (!bool1) {
-        break label349;
-      }
-      AppMethodBeat.o(272982);
-      return true;
-      AppMethodBeat.o(272982);
-      return false;
-      bool1 = false;
-      break;
-      bool2 = false;
-      break label226;
-    }
-    label349:
-    if (!bool2)
-    {
-      AppMethodBeat.o(272982);
-      return false;
-    }
-    if (!bool3)
-    {
-      AppMethodBeat.o(272982);
-      return false;
-    }
-    if (bool4)
-    {
-      AppMethodBeat.o(272982);
-      return true;
-    }
-    AppMethodBeat.o(272982);
-    return false;
   }
   
-  public final boolean edQ()
+  public static void m(j paramj)
   {
-    AppMethodBeat.i(272984);
-    d locald = d.AjH;
-    if (((Number)d.dUd().aSr()).intValue() == 1)
-    {
-      AppMethodBeat.o(272984);
-      return true;
-    }
-    AppMethodBeat.o(272984);
-    return false;
-  }
-  
-  public final boolean edR()
-  {
-    AppMethodBeat.i(293283);
-    aj localaj = aj.AGc;
-    boolean bool = aj.eed();
-    AppMethodBeat.o(293283);
-    return bool;
-  }
-  
-  public final int edS()
-  {
-    AppMethodBeat.i(272986);
-    d locald = d.AjH;
-    int i = ((Number)d.dWQ().aSr()).intValue();
-    AppMethodBeat.o(272986);
-    return i;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/utils/FinderSwitchApi$showFinderRecentLike$1", "Lcom/tencent/mm/plugin/findersdk/api/IFinderUtilApi$Callback;", "", "onCallback", "", "ret", "(Ljava/lang/Integer;)V", "plugin-finder_release"})
-  public static final class a
-    implements ag.a<Integer>
-  {
-    a(ag.a parama) {}
+    AppMethodBeat.i(333561);
+    s.u(paramj, "holder");
+    ((Map)Ghk).put(Integer.valueOf(paramj.hashCode()), Integer.valueOf(0));
+    AppMethodBeat.o(333561);
   }
 }
 

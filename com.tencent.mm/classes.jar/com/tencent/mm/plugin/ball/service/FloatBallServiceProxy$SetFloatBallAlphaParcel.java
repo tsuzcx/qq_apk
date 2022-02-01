@@ -11,7 +11,7 @@ class FloatBallServiceProxy$SetFloatBallAlphaParcel
 {
   public static final Parcelable.Creator<SetFloatBallAlphaParcel> CREATOR;
   float alpha;
-  BallInfo rYE;
+  BallInfo vjV;
   
   static
   {
@@ -24,7 +24,7 @@ class FloatBallServiceProxy$SetFloatBallAlphaParcel
   {
     AppMethodBeat.i(106179);
     this.alpha = paramParcel.readFloat();
-    this.rYE = ((BallInfo)paramParcel.readParcelable(BallInfo.class.getClassLoader()));
+    this.vjV = ((BallInfo)paramParcel.readParcelable(BallInfo.class.getClassLoader()));
     AppMethodBeat.o(106179);
   }
   
@@ -37,7 +37,7 @@ class FloatBallServiceProxy$SetFloatBallAlphaParcel
   {
     AppMethodBeat.i(106180);
     paramParcel.writeFloat(this.alpha);
-    paramParcel.writeParcelable(this.rYE, paramInt);
+    paramParcel.writeParcelable(this.vjV, paramInt);
     AppMethodBeat.o(106180);
   }
 }

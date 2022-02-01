@@ -29,30 +29,30 @@ public class AudioExportTask
   
   public AudioExportTask(IAudioSource<? extends IDecoderTrack> paramIAudioSource, String paramString)
   {
-    AppMethodBeat.i(189467);
+    AppMethodBeat.i(215477);
     this.mSegmentCount = 0;
     this.mSessionId = new Random().nextLong();
     this.mEncoderList = new ArrayList();
     this.mProgressMap = new HashMap();
     this.mAsset = paramIAudioSource;
     this.mOutSavePath = paramString;
-    AppMethodBeat.o(189467);
+    AppMethodBeat.o(215477);
   }
   
   public AudioExportTask(String paramString)
   {
-    AppMethodBeat.i(189473);
+    AppMethodBeat.i(215490);
     this.mSegmentCount = 0;
     this.mSessionId = new Random().nextLong();
     this.mEncoderList = new ArrayList();
     this.mProgressMap = new HashMap();
     this.mOutSavePath = paramString;
-    AppMethodBeat.o(189473);
+    AppMethodBeat.o(215490);
   }
   
   private SegmentStatus createOrUpdateSegmentStatus(int paramInt1, int paramInt2, float paramFloat)
   {
-    AppMethodBeat.i(189513);
+    AppMethodBeat.i(215556);
     Logger.d("AudioEncoderTask", "createOrUpdateSegmentStatus index = " + paramInt1 + " mStatus = " + paramInt2 + " mProgress = " + paramFloat);
     SegmentStatus localSegmentStatus;
     if (this.mProgressMap.containsKey(Integer.valueOf(paramInt1)))
@@ -63,7 +63,7 @@ public class AudioExportTask
     }
     for (;;)
     {
-      AppMethodBeat.o(189513);
+      AppMethodBeat.o(215556);
       return localSegmentStatus;
       localSegmentStatus = new SegmentStatus(paramInt2, paramFloat);
       this.mProgressMap.put(Integer.valueOf(paramInt1), localSegmentStatus);
@@ -72,17 +72,17 @@ public class AudioExportTask
   
   private SegmentStatus createSegmentStatus(int paramInt, CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(189511);
+    AppMethodBeat.i(215543);
     SegmentStatus localSegmentStatus = new SegmentStatus(0, 0.0F);
     SegmentStatus.access$002(localSegmentStatus, paramCMTimeRange);
     this.mProgressMap.put(Integer.valueOf(paramInt), localSegmentStatus);
-    AppMethodBeat.o(189511);
+    AppMethodBeat.o(215543);
     return localSegmentStatus;
   }
   
   private void exportAudio(CMTimeRange paramCMTimeRange, final int paramInt)
   {
-    AppMethodBeat.i(189493);
+    AppMethodBeat.i(215508);
     Logger.d("AudioEncoderTask", "exportAudio timeRange = " + paramCMTimeRange + " index = " + paramInt);
     paramCMTimeRange = new AudioExportRunner(this.mAsset, paramCMTimeRange);
     paramCMTimeRange.setSavePath(EncoderUtils.getAudioOutSaveFilePath(this.mOutSavePath, paramInt, this.mSessionId));
@@ -90,12 +90,12 @@ public class AudioExportTask
     {
       public void onProgress(int paramAnonymousInt, float paramAnonymousFloat)
       {
-        AppMethodBeat.i(189447);
+        AppMethodBeat.i(215463);
         synchronized (AudioExportTask.this)
         {
           AudioExportTask.access$100(AudioExportTask.this, paramInt, paramAnonymousInt, paramAnonymousFloat);
           AudioExportTask.access$200(AudioExportTask.this);
-          AppMethodBeat.o(189447);
+          AppMethodBeat.o(215463);
           return;
         }
       }
@@ -105,21 +105,21 @@ public class AudioExportTask
       paramCMTimeRange.prepare();
       paramCMTimeRange.start();
       this.mEncoderList.add(paramCMTimeRange);
-      AppMethodBeat.o(189493);
+      AppMethodBeat.o(215508);
       return;
     }
     catch (IOException paramCMTimeRange)
     {
-      AppMethodBeat.o(189493);
+      AppMethodBeat.o(215508);
     }
   }
   
   private void notifyProgressAndStatusUpdate()
   {
-    AppMethodBeat.i(189505);
+    AppMethodBeat.i(215524);
     if (this.mProgressMap.size() == 0)
     {
-      AppMethodBeat.o(189505);
+      AppMethodBeat.o(215524);
       return;
     }
     float f2 = this.mSegmentCount;
@@ -139,7 +139,7 @@ public class AudioExportTask
       onProgress(255, f1);
       EncoderUtils.deleteAllTmpFiles(this.mOutSavePath, this.mSegmentCount, this.mSessionId);
       new File(this.mOutSavePath).delete();
-      AppMethodBeat.o(189505);
+      AppMethodBeat.o(215524);
       return;
     }
     if (i >= 4)
@@ -147,7 +147,7 @@ public class AudioExportTask
       onProgress(4, f1);
       EncoderUtils.deleteAllTmpFiles(this.mOutSavePath, this.mSegmentCount, this.mSessionId);
       new File(this.mOutSavePath).delete();
-      AppMethodBeat.o(189505);
+      AppMethodBeat.o(215524);
       return;
     }
     if (i == 2)
@@ -158,7 +158,7 @@ public class AudioExportTask
       for (;;)
       {
         EncoderUtils.deleteAllTmpFiles(this.mOutSavePath, this.mSegmentCount, this.mSessionId);
-        AppMethodBeat.o(189505);
+        AppMethodBeat.o(215524);
         return;
         onProgress(255, 1.0F);
       }
@@ -166,43 +166,43 @@ public class AudioExportTask
     if (i > 0)
     {
       onProgress(1, f1);
-      AppMethodBeat.o(189505);
+      AppMethodBeat.o(215524);
       return;
     }
     onProgress(0, f1);
-    AppMethodBeat.o(189505);
+    AppMethodBeat.o(215524);
   }
   
   private void onProgress(int paramInt, float paramFloat)
   {
-    AppMethodBeat.i(189507);
+    AppMethodBeat.i(215530);
     if (this.mCallback != null) {
       this.mCallback.onProgress(paramInt, paramFloat);
     }
-    AppMethodBeat.o(189507);
+    AppMethodBeat.o(215530);
   }
   
   public void cancel()
   {
-    AppMethodBeat.i(189515);
+    AppMethodBeat.i(215614);
     Iterator localIterator = this.mEncoderList.iterator();
     while (localIterator.hasNext()) {
       ((AudioExportRunner)localIterator.next()).cancel();
     }
-    AppMethodBeat.o(189515);
+    AppMethodBeat.o(215614);
   }
   
   protected CMTime getDuration()
   {
-    AppMethodBeat.i(189477);
+    AppMethodBeat.i(215592);
     if (this.mAsset != null)
     {
       localCMTime = this.mAsset.getDuration();
-      AppMethodBeat.o(189477);
+      AppMethodBeat.o(215592);
       return localCMTime;
     }
     CMTime localCMTime = CMTime.CMTimeZero;
-    AppMethodBeat.o(189477);
+    AppMethodBeat.o(215592);
     return localCMTime;
   }
   
@@ -214,7 +214,7 @@ public class AudioExportTask
   public void start()
   {
     int k = 1;
-    AppMethodBeat.i(189489);
+    AppMethodBeat.i(215607);
     this.mProgressMap.clear();
     this.mEncoderList.clear();
     long l4 = getDuration().getTimeUs();
@@ -243,7 +243,7 @@ public class AudioExportTask
       exportAudio(((SegmentStatus)((Map.Entry)localIterator.next()).getValue()).mTimeRange, i);
       i += 1;
     }
-    AppMethodBeat.o(189489);
+    AppMethodBeat.o(215607);
   }
   
   static class SegmentStatus

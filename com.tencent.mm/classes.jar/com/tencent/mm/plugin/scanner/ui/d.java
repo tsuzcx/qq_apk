@@ -19,33 +19,33 @@ import com.tencent.mm.ui.base.preference.Preference;
 public final class d
   extends Preference
 {
-  public boolean Bbh;
-  private TextView GZI;
-  private final int IPT;
-  private TextView IPU;
-  public boolean IPV;
-  private Boolean IPW;
-  private ViewTreeObserver.OnGlobalLayoutListener IPX;
-  a IPY;
-  private View.OnTouchListener aIw;
+  private ViewTreeObserver.OnGlobalLayoutListener FzV;
+  public boolean GDx;
+  private TextView MXN;
+  private final int OYQ;
+  private TextView OYR;
+  public boolean OYS;
+  private Boolean OYT;
+  a OYU;
   private Context context;
   String mTitle;
   private View mView;
+  private View.OnTouchListener onTouchListener;
   private TextView titleTv;
   
   public d(Activity paramActivity)
   {
     super(paramActivity);
     AppMethodBeat.i(51791);
-    this.IPT = 5;
-    this.IPV = false;
-    this.Bbh = false;
-    setLayoutResource(l.g.IEf);
+    this.OYQ = 5;
+    this.OYS = false;
+    this.GDx = false;
+    setLayoutResource(l.g.OKi);
     this.context = paramActivity;
     AppMethodBeat.o(51791);
   }
   
-  public final View c(View paramView, ViewGroup paramViewGroup)
+  public final View b(View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(51792);
     if (this.mView == null) {
@@ -64,15 +64,15 @@ public final class d
     if (this.titleTv == null) {
       this.titleTv = ((TextView)paramView.findViewById(16908310));
     }
-    if (this.GZI == null) {
-      this.GZI = ((TextView)paramView.findViewById(16908304));
+    if (this.MXN == null) {
+      this.MXN = ((TextView)paramView.findViewById(16908304));
     }
-    if (this.IPU == null) {
-      this.IPU = ((TextView)paramView.findViewById(l.f.srX));
+    if (this.OYR == null) {
+      this.OYR = ((TextView)paramView.findViewById(l.f.more));
     }
-    if (this.aIw == null)
+    if (this.onTouchListener == null)
     {
-      this.aIw = new View.OnTouchListener()
+      this.onTouchListener = new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
@@ -82,35 +82,35 @@ public final class d
             Log.d("MicroMsg.scanner.PlainTextPreference", "moreTv onTouch");
             d.a(d.this).setVisibility(4);
             d.b(d.this).setMaxLines(2000);
-            d.this.IPV = true;
+            d.this.OYS = true;
             if (d.c(d.this) != null)
             {
               d.c(d.this).c(d.this.mKey, Boolean.TRUE);
-              d.c(d.this).fDJ();
+              d.c(d.this).gSx();
             }
           }
           AppMethodBeat.o(51789);
           return false;
         }
       };
-      this.IPU.setOnTouchListener(this.aIw);
+      this.OYR.setOnTouchListener(this.onTouchListener);
     }
-    if (this.IPY != null)
+    if (this.OYU != null)
     {
-      this.IPW = this.IPY.aXo(this.mKey);
-      if (this.IPW != null) {
-        if (this.IPW.booleanValue())
+      this.OYT = this.OYU.aUW(this.mKey);
+      if (this.OYT != null) {
+        if (this.OYT.booleanValue())
         {
-          this.IPU.setVisibility(8);
-          this.GZI.setMaxLines(2000);
+          this.OYR.setVisibility(8);
+          this.MXN.setMaxLines(2000);
         }
       }
     }
     for (;;)
     {
-      if (this.IPX == null)
+      if (this.FzV == null)
       {
-        this.IPX = new ViewTreeObserver.OnGlobalLayoutListener()
+        this.FzV = new ViewTreeObserver.OnGlobalLayoutListener()
         {
           public final void onGlobalLayout()
           {
@@ -118,15 +118,15 @@ public final class d
             Log.d("MicroMsg.scanner.PlainTextPreference", "summaryTv.getHeight() = " + d.b(d.this).getHeight() + ", summaryTv.getLineHeight() = " + d.b(d.this).getLineHeight());
             if ((d.b(d.this).getText() != null) && (d.b(d.this).getHeight() > 0) && (d.b(d.this).getLineHeight() > 0) && (d.d(d.this) == null))
             {
-              if ((d.b(d.this).getHeight() / d.b(d.this).getLineHeight() > 5) && (!d.this.Bbh) && (!d.this.IPV))
+              if ((d.b(d.this).getHeight() / d.b(d.this).getLineHeight() > 5) && (!d.this.GDx) && (!d.this.OYS))
               {
                 d.a(d.this).setVisibility(0);
                 d.b(d.this).setMaxLines(5);
-                d.this.Bbh = true;
-                if ((d.c(d.this) != null) && (d.c(d.this).aXo(d.this.mKey) == null))
+                d.this.GDx = true;
+                if ((d.c(d.this) != null) && (d.c(d.this).aUW(d.this.mKey) == null))
                 {
                   d.c(d.this).c(d.this.mKey, Boolean.FALSE);
-                  d.c(d.this).fDJ();
+                  d.c(d.this).gSx();
                 }
               }
               Log.d("MicroMsg.scanner.PlainTextPreference", "summaryTv.getHeight() / summaryTv.getLineHeight() = " + d.b(d.this).getHeight() / d.b(d.this).getLineHeight());
@@ -135,7 +135,7 @@ public final class d
             AppMethodBeat.o(51790);
           }
         };
-        this.GZI.getViewTreeObserver().addOnGlobalLayoutListener(this.IPX);
+        this.MXN.getViewTreeObserver().addOnGlobalLayoutListener(this.FzV);
       }
       if (!Util.isNullOrNil(this.mTitle)) {
         break;
@@ -143,14 +143,14 @@ public final class d
       this.titleTv.setVisibility(8);
       AppMethodBeat.o(51793);
       return;
-      this.IPU.setVisibility(0);
-      this.GZI.setMaxLines(5);
+      this.OYR.setVisibility(0);
+      this.MXN.setMaxLines(5);
       continue;
-      this.IPU.setVisibility(8);
-      this.GZI.setMaxLines(6);
+      this.OYR.setVisibility(8);
+      this.MXN.setMaxLines(6);
       continue;
-      this.IPU.setVisibility(8);
-      this.GZI.setMaxLines(6);
+      this.OYR.setVisibility(8);
+      this.MXN.setMaxLines(6);
     }
     this.titleTv.setText(this.mTitle);
     this.titleTv.setVisibility(0);
@@ -159,16 +159,16 @@ public final class d
   
   public static abstract interface a
   {
-    public abstract Boolean aXo(String paramString);
+    public abstract Boolean aUW(String paramString);
     
     public abstract void c(String paramString, Boolean paramBoolean);
     
-    public abstract void fDJ();
+    public abstract void gSx();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.d
  * JD-Core Version:    0.7.0.1
  */

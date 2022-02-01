@@ -1,26 +1,74 @@
 package com.tencent.mm.an.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.b.b;
-import com.tencent.mm.an.b.d;
-import com.tencent.mm.an.q;
-import com.tencent.mm.protocal.protobuf.dyy;
-import kotlin.l;
+import com.tencent.mm.autogen.b.ah;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/modelbase/flow/FlowEvent;", "T", "Lcom/tencent/mm/protocal/protobuf/ResponseProtoBuf;", "Lcom/tencent/mm/modelbase/observer/NetSceneFlowEvent;", "Lcom/tencent/mm/modelbase/flow/NetSceneFlow;", "action", "Lcom/tencent/mm/modelbase/observer/NetSceneAction;", "netId", "", "errType", "errCode", "errMsg", "", "scene", "resp", "(Lcom/tencent/mm/modelbase/observer/NetSceneAction;IIILjava/lang/String;Lcom/tencent/mm/modelbase/flow/NetSceneFlow;Lcom/tencent/mm/protocal/protobuf/ResponseProtoBuf;)V", "mmkernel_release"})
-public final class a<T extends dyy>
-  extends d<T, c<T>>
+public final class a
+  extends ah
 {
-  public a(b paramb, int paramInt1, int paramInt2, int paramInt3, String paramString, c<T> paramc, T paramT)
+  protected static IAutoDBItem.MAutoDBInfo info;
+  public static final int oxo;
+  
+  static
   {
-    super(paramb, paramInt1, paramInt2, paramInt3, paramString, (q)paramc, paramT);
-    AppMethodBeat.i(214011);
-    AppMethodBeat.o(214011);
+    AppMethodBeat.i(124174);
+    oxo = j.oyk.oyn;
+    info = ah.aJm();
+    AppMethodBeat.o(124174);
+  }
+  
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  {
+    return info;
+  }
+  
+  public static enum a
+  {
+    private final int eQp;
+    
+    static
+    {
+      AppMethodBeat.i(239499);
+      oxp = new a("ALL", 0, 2);
+      oxq = new a("DEPARTMENT", 1, 32);
+      oxr = new a("EXTERNAL", 2, 128);
+      oxs = new a("NORMAL", 3, 0);
+      oxt = new a[] { oxp, oxq, oxr, oxs };
+      AppMethodBeat.o(239499);
+    }
+    
+    private a(int paramInt)
+    {
+      this.eQp = paramInt;
+    }
+    
+    public static a vT(int paramInt)
+    {
+      AppMethodBeat.i(239498);
+      Object localObject = values();
+      int k = localObject.length;
+      int i = 0;
+      while (i < k)
+      {
+        a locala = localObject[i];
+        if ((locala.eQp & paramInt) != 0) {}
+        for (int j = 1; j != 0; j = 0)
+        {
+          AppMethodBeat.o(239498);
+          return locala;
+        }
+        i += 1;
+      }
+      localObject = oxs;
+      AppMethodBeat.o(239498);
+      return localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.an.a.a
  * JD-Core Version:    0.7.0.1
  */

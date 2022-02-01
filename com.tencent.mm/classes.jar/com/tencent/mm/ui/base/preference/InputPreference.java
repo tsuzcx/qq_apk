@@ -17,13 +17,13 @@ import com.tencent.mm.hellhoundlib.b.b;
 public class InputPreference
   extends Preference
 {
-  private String MgQ;
-  private String WrD;
-  private EditText WrE;
-  private Button WrF;
-  private a WrG;
-  private View.OnClickListener WrH;
-  private TextView.OnEditorActionListener WrI;
+  private String SIn;
+  private String adYT;
+  private EditText adYU;
+  private Button adYV;
+  private a adYW;
+  private View.OnClickListener adYX;
+  private TextView.OnEditorActionListener adYY;
   
   public InputPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,14 +34,14 @@ public class InputPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142574);
-    this.WrH = new View.OnClickListener()
+    this.adYX = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(142572);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/ui/base/preference/InputPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/ui/base/preference/InputPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         if ((InputPreference.a(InputPreference.this) != null) && (InputPreference.b(InputPreference.this) != null))
         {
           if (InputPreference.b(InputPreference.this).getText() != null) {
@@ -60,7 +60,7 @@ public class InputPreference
         }
       }
     };
-    this.WrI = new TextView.OnEditorActionListener()
+    this.adYY = new TextView.OnEditorActionListener()
     {
       public final boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
@@ -89,12 +89,12 @@ public class InputPreference
   {
     AppMethodBeat.i(142575);
     super.onBindView(paramView);
-    this.WrE = ((EditText)paramView.findViewById(a.g.edittext));
-    this.WrE.setHint(this.MgQ);
-    this.WrE.setOnEditorActionListener(this.WrI);
-    this.WrF = ((Button)paramView.findViewById(a.g.button));
-    this.WrF.setText(this.WrD);
-    this.WrF.setOnClickListener(this.WrH);
+    this.adYU = ((EditText)paramView.findViewById(a.g.edittext));
+    this.adYU.setHint(this.SIn);
+    this.adYU.setOnEditorActionListener(this.adYY);
+    this.adYV = ((Button)paramView.findViewById(a.g.button));
+    this.adYV.setText(this.adYT);
+    this.adYV.setOnClickListener(this.adYX);
     AppMethodBeat.o(142575);
   }
   
@@ -102,7 +102,7 @@ public class InputPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.InputPreference
  * JD-Core Version:    0.7.0.1
  */

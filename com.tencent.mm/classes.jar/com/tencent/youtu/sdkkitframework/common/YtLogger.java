@@ -1,6 +1,5 @@
 package com.tencent.youtu.sdkkitframework.common;
 
-import android.annotation.SuppressLint;
 import android.os.Environment;
 import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -19,7 +18,6 @@ public final class YtLogger
   public static final int VERB_LEVEL = 5;
   public static final int WARN_LEVEL = 1;
   private static int currentLogLevel;
-  @SuppressLint({"SimpleDateFormat"})
   private static DateFormat dateFormat;
   private static File localFile;
   private static String localLogName;
@@ -29,7 +27,7 @@ public final class YtLogger
   
   static
   {
-    AppMethodBeat.i(256633);
+    AppMethodBeat.i(218415);
     loggerListener = null;
     needLogFile = false;
     dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss.SSS");
@@ -37,12 +35,12 @@ public final class YtLogger
     localFile = null;
     currentLogLevel = 0;
     mExecutorService = Executors.newSingleThreadExecutor();
-    AppMethodBeat.o(256633);
+    AppMethodBeat.o(218415);
   }
   
   private static String buildMessage(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    AppMethodBeat.i(256629);
+    AppMethodBeat.i(218399);
     if ((localLogName != null) && (!"".equals(localLogName)) && (needLogFile))
     {
       StringBuffer localStringBuffer1 = new StringBuffer();
@@ -61,35 +59,35 @@ public final class YtLogger
       }
       save2File(localStringBuffer2.toString());
     }
-    AppMethodBeat.o(256629);
+    AppMethodBeat.o(218399);
     return paramString2;
   }
   
   public static void d(String paramString, Object paramObject)
   {
-    AppMethodBeat.i(256626);
+    AppMethodBeat.i(218379);
     if (currentLogLevel >= 4) {
       showLog(paramString, "[YoutuLog]-[DEBUG]-".concat(String.valueOf(paramObject)));
     }
-    AppMethodBeat.o(256626);
+    AppMethodBeat.o(218379);
   }
   
   public static void e(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(256622);
+    AppMethodBeat.i(218354);
     if (currentLogLevel >= 0) {
       showLog(paramString1, "[YoutuLog]-[ERROR]-".concat(String.valueOf(paramString2)));
     }
-    AppMethodBeat.o(256622);
+    AppMethodBeat.o(218354);
   }
   
   private static File getLogFile(String paramString)
   {
-    AppMethodBeat.i(256631);
+    AppMethodBeat.i(218408);
     paramString = new File(Environment.getExternalStorageDirectory() + File.separator + "youtulog" + File.separator + paramString);
     if ((!paramString.exists()) && (!paramString.mkdirs()))
     {
-      AppMethodBeat.o(256631);
+      AppMethodBeat.o(218408);
       return null;
     }
     String str = dateFormat.format(new Date()) + ".log";
@@ -99,7 +97,7 @@ public final class YtLogger
     {
       paramString.createNewFile();
       label150:
-      AppMethodBeat.o(256631);
+      AppMethodBeat.o(218408);
       return paramString;
     }
     catch (Exception localException)
@@ -110,27 +108,27 @@ public final class YtLogger
   
   public static void i(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(256625);
+    AppMethodBeat.i(218371);
     if (currentLogLevel >= 2) {
       showLog(paramString1, "[YoutuLog]-[INFO]-".concat(String.valueOf(paramString2)));
     }
-    AppMethodBeat.o(256625);
+    AppMethodBeat.o(218371);
   }
   
   private static void save2File(String paramString)
   {
-    AppMethodBeat.i(256630);
+    AppMethodBeat.i(218403);
     if (localFile != null) {
       writeFile(localFile, paramString);
     }
-    AppMethodBeat.o(256630);
+    AppMethodBeat.o(218403);
   }
   
   public static void setLogLevel(int paramInt)
   {
-    AppMethodBeat.i(256618);
+    AppMethodBeat.i(218335);
     currentLogLevel = Math.min(paramInt, Math.max(paramInt, 0));
-    AppMethodBeat.o(256618);
+    AppMethodBeat.o(218335);
   }
   
   public static void setLoggerListener(IYtLoggerListener paramIYtLoggerListener)
@@ -140,47 +138,47 @@ public final class YtLogger
   
   public static void setNeedLogFile(boolean paramBoolean, String paramString)
   {
-    AppMethodBeat.i(256621);
+    AppMethodBeat.i(218346);
     needLogFile = paramBoolean;
     if (paramBoolean)
     {
       localLogName = paramString;
       localFile = getLogFile(paramString);
     }
-    AppMethodBeat.o(256621);
+    AppMethodBeat.o(218346);
   }
   
   private static void showLog(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(256628);
+    AppMethodBeat.i(218394);
     if (loggerListener != null) {
       loggerListener.log(paramString1, paramString2);
     }
     buildMessage(paramString1, paramString2, null);
-    AppMethodBeat.o(256628);
+    AppMethodBeat.o(218394);
   }
   
   public static void v(String paramString, Object paramObject)
   {
-    AppMethodBeat.i(256627);
+    AppMethodBeat.i(218386);
     if (currentLogLevel >= 5) {
       showLog(paramString, "[YoutuLog]-[VERB]-".concat(String.valueOf(paramObject)));
     }
-    AppMethodBeat.o(256627);
+    AppMethodBeat.o(218386);
   }
   
   public static void w(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(256623);
+    AppMethodBeat.i(218361);
     if (currentLogLevel > 0) {
       showLog(paramString1, "[YoutuLog]-[WARN]-".concat(String.valueOf(paramString2)));
     }
-    AppMethodBeat.o(256623);
+    AppMethodBeat.o(218361);
   }
   
   private static void writeFile(File paramFile, final String paramString)
   {
-    AppMethodBeat.i(256632);
+    AppMethodBeat.i(218411);
     mExecutorService.submit(new Runnable()
     {
       /* Error */
@@ -268,7 +266,7 @@ public final class YtLogger
         //   32	44	105	java/lang/Exception
       }
     });
-    AppMethodBeat.o(256632);
+    AppMethodBeat.o(218411);
   }
   
   public static abstract interface IYtLoggerListener
@@ -278,7 +276,7 @@ public final class YtLogger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.common.YtLogger
  * JD-Core Version:    0.7.0.1
  */

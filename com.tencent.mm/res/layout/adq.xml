@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/daq" android:background="@color/UN_BW_0_Alpha_0_5" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/arc" android:clickable="true" android:layout_width="320.0dip" android:layout_height="424.0dip" android:layout_centerInParent="true">
+        <include android:id="@id/fkw" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/ads" />
+        <include android:id="@id/fk6" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/adr" />
+        <include android:id="@id/flq" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/adt" />
+    </RelativeLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/be4" android:layout_width="@dimen/d6" android:layout_height="@dimen/d6" android:layout_marginTop="@dimen/d0" android:src="@raw/icons_outlined_close2" android:layout_below="@id/arc" android:layout_centerHorizontal="true" app:iconColor="@color/sg" />
+</RelativeLayout>

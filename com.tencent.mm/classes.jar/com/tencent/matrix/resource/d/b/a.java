@@ -9,40 +9,33 @@ import java.nio.charset.Charset;
 
 public final class a
 {
-  public static b a(InputStream paramInputStream, int paramInt)
-  {
-    byte[] arrayOfByte = new byte[paramInt];
-    a(paramInputStream, arrayOfByte, paramInt);
-    return new b(arrayOfByte);
-  }
-  
   public static Object a(InputStream paramInputStream, c paramc, int paramInt)
   {
-    switch (1.ddL[paramc.ordinal()])
+    switch (1.fcm[paramc.ordinal()])
     {
     default: 
       return null;
     case 1: 
-      return a(paramInputStream, paramInt);
+      return d(paramInputStream, paramInt);
     case 2: 
       if (paramInputStream.read() != 0) {}
       for (boolean bool = true;; bool = false) {
         return Boolean.valueOf(bool);
       }
     case 3: 
-      return Character.valueOf((char)l(paramInputStream));
+      return Character.valueOf((char)w(paramInputStream));
     case 4: 
-      return Float.valueOf(Float.intBitsToFloat(m(paramInputStream)));
+      return Float.valueOf(Float.intBitsToFloat(x(paramInputStream)));
     case 5: 
-      return Double.valueOf(Double.longBitsToDouble(n(paramInputStream)));
+      return Double.valueOf(Double.longBitsToDouble(y(paramInputStream)));
     case 6: 
       return Byte.valueOf((byte)paramInputStream.read());
     case 7: 
-      return Short.valueOf(l(paramInputStream));
+      return Short.valueOf(w(paramInputStream));
     case 8: 
-      return Integer.valueOf(m(paramInputStream));
+      return Integer.valueOf(x(paramInputStream));
     }
-    return Long.valueOf(n(paramInputStream));
+    return Long.valueOf(y(paramInputStream));
   }
   
   public static String a(InputStream paramInputStream, long paramLong)
@@ -65,20 +58,14 @@ public final class a
     }
   }
   
-  public static void a(OutputStream paramOutputStream, int paramInt)
-  {
-    paramOutputStream.write(paramInt >>> 8 & 0xFF);
-    paramOutputStream.write(paramInt & 0xFF);
-  }
-  
   public static void a(OutputStream paramOutputStream, b paramb)
   {
-    paramOutputStream.write(paramb.ddA);
+    paramOutputStream.write(paramb.fcb);
   }
   
   public static int b(InputStream paramInputStream, c paramc, int paramInt)
   {
-    paramInt = paramc.jG(paramInt);
+    paramInt = paramc.nv(paramInt);
     b(paramInputStream, paramInt);
     return paramInt;
   }
@@ -95,7 +82,25 @@ public final class a
     }
   }
   
-  public static void b(OutputStream paramOutputStream, int paramInt)
+  public static b d(InputStream paramInputStream, int paramInt)
+  {
+    byte[] arrayOfByte = new byte[paramInt];
+    a(paramInputStream, arrayOfByte, paramInt);
+    return new b(arrayOfByte);
+  }
+  
+  public static void d(OutputStream paramOutputStream, int paramInt)
+  {
+    paramOutputStream.write(paramInt >>> 8 & 0xFF);
+    paramOutputStream.write(paramInt & 0xFF);
+  }
+  
+  public static void d(OutputStream paramOutputStream, long paramLong)
+  {
+    paramOutputStream.write(new byte[] { (byte)(int)(paramLong >>> 56), (byte)(int)(paramLong >>> 48), (byte)(int)(paramLong >>> 40), (byte)(int)(paramLong >>> 32), (byte)(int)(paramLong >>> 24), (byte)(int)(paramLong >>> 16), (byte)(int)(paramLong >>> 8), (byte)(int)paramLong }, 0, 8);
+  }
+  
+  public static void e(OutputStream paramOutputStream, int paramInt)
   {
     paramOutputStream.write(paramInt >>> 24 & 0xFF);
     paramOutputStream.write(paramInt >>> 16 & 0xFF);
@@ -103,12 +108,7 @@ public final class a
     paramOutputStream.write(paramInt & 0xFF);
   }
   
-  public static void c(OutputStream paramOutputStream, long paramLong)
-  {
-    paramOutputStream.write(new byte[] { (byte)(int)(paramLong >>> 56), (byte)(int)(paramLong >>> 48), (byte)(int)(paramLong >>> 40), (byte)(int)(paramLong >>> 32), (byte)(int)(paramLong >>> 24), (byte)(int)(paramLong >>> 16), (byte)(int)(paramLong >>> 8), (byte)(int)paramLong }, 0, 8);
-  }
-  
-  public static void d(OutputStream paramOutputStream, long paramLong)
+  public static void e(OutputStream paramOutputStream, long paramLong)
   {
     byte[] arrayOfByte = new byte[4096];
     int i = 0;
@@ -120,7 +120,7 @@ public final class a
     paramOutputStream.write(arrayOfByte, 0, (int)(0xFFF & paramLong));
   }
   
-  public static short l(InputStream paramInputStream)
+  public static short w(InputStream paramInputStream)
   {
     int i = paramInputStream.read();
     int j = paramInputStream.read();
@@ -130,7 +130,7 @@ public final class a
     return (short)(i << 8 | j);
   }
   
-  public static int m(InputStream paramInputStream)
+  public static int x(InputStream paramInputStream)
   {
     int i = paramInputStream.read();
     int j = paramInputStream.read();
@@ -142,7 +142,7 @@ public final class a
     return (i << 24) + (j << 16) + (k << 8) + m;
   }
   
-  public static long n(InputStream paramInputStream)
+  public static long y(InputStream paramInputStream)
   {
     byte[] arrayOfByte = new byte[8];
     a(paramInputStream, arrayOfByte, 8L);
@@ -156,7 +156,7 @@ public final class a
     return (arrayOfByte[7] & 0xFF) + ((l1 << 56) + (l2 << 48) + (l3 << 40) + (l4 << 32) + (l5 << 24) + l6 + l7);
   }
   
-  public static String o(InputStream paramInputStream)
+  public static String z(InputStream paramInputStream)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     for (int i = paramInputStream.read(); i != 0; i = paramInputStream.read()) {
@@ -167,7 +167,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.matrix.resource.d.b.a
  * JD-Core Version:    0.7.0.1
  */

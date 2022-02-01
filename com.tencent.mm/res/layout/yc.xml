@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/m2" android:paddingRight="@dimen/m2" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="left" android:background="#55000000" android:padding="@dimen/k5" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ir">
-        <Button android:id="@id/b_t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="C" android:layout_weight="1.0" style="@style/ho" />
-        <Button android:id="@id/hmc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k5" android:text="S" android:layout_weight="1.0" style="@style/ho" />
-        <Button android:id="@id/ga3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k5" android:text="P" android:layout_weight="1.0" style="@style/ho" />
-    </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/bfh" android:background="#fff0eff4" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <View android:background="@color/ty" android:layout_width="fill_parent" android:layout_height="1.0px" />
-        <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <com.tencent.mm.plugin.appbrand.wxawidget.console.ConsolePanel android:id="@id/b_v" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-            <com.tencent.mm.plugin.appbrand.wxawidget.console.SettingsPanel android:id="@id/hn2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-            <com.tencent.mm.plugin.appbrand.wxawidget.console.PerformancePanel android:id="@id/ga4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        </FrameLayout>
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:id="@id/bqp" android:background="@drawable/b7r" android:paddingTop="@dimen/i6" android:paddingBottom="@dimen/m7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="A" />
+    <LinearLayout android:gravity="center_vertical" android:id="@id/bqs" android:background="@drawable/p5" android:layout_width="fill_parent" android:layout_height="@dimen/m1">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:id="@id/bqt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="111" android:singleLine="true" style="@style/ma" />
+        </LinearLayout>
+        <TextView android:id="@id/bqy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="30.0dip" android:text="signature" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/hw" />
     </LinearLayout>
 </LinearLayout>

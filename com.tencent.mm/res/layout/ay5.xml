@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="horizontal" android:id="@id/c88" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_centerHorizontal="true">
-        <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="@dimen/ci" android:textColor="@color/FG_0" android:id="@id/c89" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="¥" wallet:walletTypeFace="i48" />
-        <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="@dimen/ci" android:textColor="@color/FG_0" android:id="@id/c87" android:layout_width="wrap_content" android:layout_height="fill_parent" wallet:walletTypeFace="i48" />
-    </LinearLayout>
-    <RelativeLayout android:id="@id/jfz" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="24.0dip" android:layout_below="@id/c88">
-        <RelativeLayout android:orientation="vertical" android:id="@id/jg1" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <RelativeLayout android:orientation="vertical" android:background="#ffffffff" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <ImageView android:background="@drawable/crk" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            </RelativeLayout>
-            <TextView android:textSize="10.0dip" android:textColor="#33000000" android:gravity="center_horizontal" android:id="@id/jg4" android:layout_width="24.0dip" android:layout_height="14.0dip" android:layout_marginTop="8.0dip" android:text="[万]" />
-        </RelativeLayout>
-    </RelativeLayout>
-</RelativeLayout>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/bh4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="160.0dip" android:minHeight="160.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="17.0dip" android:textColor="@color/al6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fcw" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/xo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="@string/f_q" />
+    <ProgressBar android:layout_width="36.0dip" android:layout_height="8.0dip" android:layout_marginTop="20.0dip" android:max="100" android:progress="0" style="@style/kf" />
+</LinearLayout>

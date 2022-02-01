@@ -1,35 +1,17 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
 
 final class LoginUI$10
-  implements View.OnKeyListener
+  implements Runnable
 {
   LoginUI$10(LoginUI paramLoginUI) {}
   
-  public final boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public final void run()
   {
-    AppMethodBeat.i(128211);
-    b localb = new b();
-    localb.bn(paramView);
-    localb.sg(paramInt);
-    localb.bn(paramKeyEvent);
-    a.c("com/tencent/mm/plugin/account/ui/LoginUI$18", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.aFi());
-    if ((66 == paramInt) && (paramKeyEvent.getAction() == 0))
-    {
-      LoginUI.f(this.neS);
-      a.a(true, this, "com/tencent/mm/plugin/account/ui/LoginUI$18", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
-      AppMethodBeat.o(128211);
-      return true;
-    }
-    a.a(false, this, "com/tencent/mm/plugin/account/ui/LoginUI$18", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
-    AppMethodBeat.o(128211);
-    return false;
+    AppMethodBeat.i(305089);
+    LoginUI.e(this.qbD);
+    AppMethodBeat.o(305089);
   }
 }
 

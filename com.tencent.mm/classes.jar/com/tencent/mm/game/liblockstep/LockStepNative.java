@@ -1,10 +1,8 @@
 package com.tencent.mm.game.liblockstep;
 
-import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 
-@Keep
 public class LockStepNative
 {
   public static int INIT_ERROR = -1002;
@@ -20,14 +18,13 @@ public class LockStepNative
     REPEAT_INIT_ERROR = -1001;
   }
   
-  @Keep
   public LockStepNative(long paramLong1, long paramLong2, long paramLong3)
   {
-    AppMethodBeat.i(222567);
+    AppMethodBeat.i(240739);
     this.mNativeInst = 0L;
     this.initCallBackFlag = false;
     this.mNativeInst = initBindingLockStep(paramLong1, paramLong2, paramLong3);
-    AppMethodBeat.o(222567);
+    AppMethodBeat.o(240739);
   }
   
   private native void destoryBindingLockStep(long paramLong);
@@ -44,7 +41,6 @@ public class LockStepNative
   
   private native void updateNativeUdpInterface(long paramLong1, long paramLong2);
   
-  @Keep
   public void destoryLockStep()
   {
     AppMethodBeat.i(43432);
@@ -62,7 +58,6 @@ public class LockStepNative
     AppMethodBeat.o(43432);
   }
   
-  @Keep
   public void initConfig(HashMap<String, String> paramHashMap)
   {
     AppMethodBeat.i(43434);
@@ -75,7 +70,6 @@ public class LockStepNative
     AppMethodBeat.o(43434);
   }
   
-  @Keep
   public int setCallback(final ILockStepListener paramILockStepListener, final ILockStepReportListener paramILockStepReportListener)
   {
     AppMethodBeat.i(43433);
@@ -146,7 +140,6 @@ public class LockStepNative
     AppMethodBeat.o(43436);
   }
   
-  @Keep
   public void updateNativeInterface(long paramLong)
   {
     AppMethodBeat.i(43435);
@@ -160,29 +153,23 @@ public class LockStepNative
     AppMethodBeat.o(43435);
   }
   
-  @Keep
   public static abstract interface ILockStepListener
   {
-    @Keep
     public abstract void onCallBack(long paramLong, String paramString);
   }
   
-  @Keep
   public static abstract interface ILockStepReportListener
   {
-    @Keep
     public abstract int getNetworkType();
     
-    @Keep
     public abstract void onIdKeyStat(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3);
     
-    @Keep
     public abstract void onKvStat(int paramInt, String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.game.liblockstep.LockStepNative
  * JD-Core Version:    0.7.0.1
  */

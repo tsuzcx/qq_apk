@@ -1,51 +1,45 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.d.f;
-import kotlin.d.f.c;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.d.d;
+import kotlinx.coroutines.internal.y;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/Unconfined;", "Lkotlinx/coroutines/CoroutineDispatcher;", "()V", "dispatch", "", "context", "Lkotlin/coroutines/CoroutineContext;", "block", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "isDispatchNeeded", "", "toString", "", "kotlinx-coroutines-core"})
-public final class db
-  extends af
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/TimeoutCoroutine;", "U", "T", "Lkotlinx/coroutines/internal/ScopeCoroutine;", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "time", "", "uCont", "Lkotlin/coroutines/Continuation;", "(JLkotlin/coroutines/Continuation;)V", "nameString", "", "nameString$kotlinx_coroutines_core", "run", "", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+final class db<U, T extends U>
+  extends y<T>
+  implements Runnable
 {
-  public static final db abxR;
+  public final long time;
   
-  static
+  public db(long paramLong, d<? super U> paramd)
   {
-    AppMethodBeat.i(118172);
-    abxR = new db();
-    AppMethodBeat.o(118172);
+    super(paramd.getContext(), paramd);
+    AppMethodBeat.i(188993);
+    this.time = paramLong;
+    AppMethodBeat.o(188993);
   }
   
-  public final void a(f paramf, Runnable paramRunnable)
+  public final String kBu()
   {
-    AppMethodBeat.i(118171);
-    paramf = (dd)paramf.get((f.c)dd.abxT);
-    if (paramf != null)
-    {
-      paramf.abxS = true;
-      AppMethodBeat.o(118171);
-      return;
-    }
-    paramf = (Throwable)new UnsupportedOperationException("Dispatchers.Unconfined.dispatch function can only be used by the yield function. If you wrap Unconfined dispatcher in your code, make sure you properly delegate isDispatchNeeded and dispatch calls.");
-    AppMethodBeat.o(118171);
-    throw paramf;
+    AppMethodBeat.i(189008);
+    String str = super.kBu() + "(timeMillis=" + this.time + ')';
+    AppMethodBeat.o(189008);
+    return str;
   }
   
-  public final boolean iRd()
+  public final void run()
   {
-    return false;
-  }
-  
-  public final String toString()
-  {
-    return "Unconfined";
+    AppMethodBeat.i(188999);
+    long l = this.time;
+    cb localcb = (cb)this;
+    U((Throwable)new da("Timed out waiting for " + l + " ms", localcb));
+    AppMethodBeat.o(188999);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.db
  * JD-Core Version:    0.7.0.1
  */

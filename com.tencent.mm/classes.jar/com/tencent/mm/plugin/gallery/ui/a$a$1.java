@@ -4,7 +4,7 @@ import android.graphics.Rect;
 import android.view.TouchDelegate;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 
 final class a$a$1
   implements Runnable
@@ -15,12 +15,12 @@ final class a$a$1
   {
     AppMethodBeat.i(111390);
     Rect localRect = new Rect();
-    this.BZW.getHitRect(localRect);
-    localRect.left -= a.fromDPToPix(this.BZW.getContext(), 20);
-    localRect.top -= a.fromDPToPix(this.BZW.getContext(), 20);
-    localRect.right += a.fromDPToPix(this.BZW.getContext(), 20);
-    localRect.bottom += a.fromDPToPix(this.BZW.getContext(), 20);
-    this.val$parent.setTouchDelegate(new TouchDelegate(localRect, this.BZW));
+    this.HLV.getHitRect(localRect);
+    localRect.left -= a.fromDPToPix(this.HLV.getContext(), 20);
+    localRect.top -= a.fromDPToPix(this.HLV.getContext(), 20);
+    localRect.right += a.fromDPToPix(this.HLV.getContext(), 20);
+    localRect.bottom += a.fromDPToPix(this.HLV.getContext(), 20);
+    this.val$parent.setTouchDelegate(new TouchDelegate(localRect, this.HLV));
     AppMethodBeat.o(111390);
   }
 }

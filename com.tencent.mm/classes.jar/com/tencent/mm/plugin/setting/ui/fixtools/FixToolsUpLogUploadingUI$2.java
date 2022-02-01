@@ -12,14 +12,14 @@ final class FixToolsUpLogUploadingUI$2
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(73816);
-    FixToolsUpLogUploadingUI.b(this.Jeg);
+    FixToolsUpLogUploadingUI.b(this.PoG);
     AppMethodBeat.o(73816);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.fixtools.FixToolsUpLogUploadingUI.2
  * JD-Core Version:    0.7.0.1
  */

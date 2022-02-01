@@ -7,11 +7,12 @@ import com.tencent.kinda.framework.widget.tools.KindaContext;
 import com.tencent.kinda.gen.KindaOpenBiometricVerifyManager;
 import com.tencent.kinda.gen.SelectBioType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.abc;
-import com.tencent.mm.plugin.wallet.a.s;
+import com.tencent.mm.autogen.a.acz;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.fingerprint.mgr.e;
+import com.tencent.mm.plugin.wallet.model.p;
+import com.tencent.mm.plugin.wallet_core.model.ak;
 import com.tencent.mm.plugin.wallet_core.model.am;
-import com.tencent.mm.plugin.wallet_core.model.ao;
-import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 
@@ -56,13 +57,13 @@ public class KindaOpenBiometricVerifyManagerImpl
     }
     for (;;)
     {
-      s.gGL();
-      paramString = s.gGM().gJY();
-      if ((paramString == null) || (!paramString.gJG())) {
+      p.ifO();
+      paramString = p.ifP().ijp();
+      if ((paramString == null) || (!paramString.iiU())) {
         break label254;
       }
       Log.i("KindaOpenBiometricVerifyManagerImpl", "WalletSwitchConfig.isSupportTouchPay return that the user has opened fingerprint (biometric) payment in WeChat.");
-      ((com.tencent.mm.plugin.fingerprint.b.h)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.fingerprint.b.h.class)).j((MMActivity)localObject);
+      ((e)h.ax(e.class)).l((MMActivity)localObject);
       AppMethodBeat.o(18457);
       return;
       if (paramSelectBioType != SelectBioType.FACEID) {
@@ -75,26 +76,26 @@ public class KindaOpenBiometricVerifyManagerImpl
     }
     label254:
     Log.i("KindaOpenBiometricVerifyManagerImpl", "WalletSwitchConfig.isSupportTouchPay return that the user has not opened fingerprint (biometric) payment in WeChat. Send a message to call the bind query.");
-    paramString = new abc();
-    paramString.gah.scene = 1;
-    paramString.gah.gaj = true;
-    paramString.gah.gak = true;
-    paramString.gai.fZZ = new Runnable()
+    paramString = new acz();
+    paramString.igq.scene = 1;
+    paramString.igq.igs = true;
+    paramString.igq.igt = true;
+    paramString.igr.igh = new Runnable()
     {
       public void run()
       {
         AppMethodBeat.i(18456);
-        ((com.tencent.mm.plugin.fingerprint.b.h)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.fingerprint.b.h.class)).j(this.val$activity);
+        ((e)h.ax(e.class)).l(this.val$activity);
         AppMethodBeat.o(18456);
       }
     };
-    EventCenter.instance.asyncPublish(paramString, Looper.myLooper());
+    paramString.asyncPublish(Looper.myLooper());
     AppMethodBeat.o(18457);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.app.KindaOpenBiometricVerifyManagerImpl
  * JD-Core Version:    0.7.0.1
  */

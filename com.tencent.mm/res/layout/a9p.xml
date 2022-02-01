@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/h9h" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <FrameLayout android:layout_gravity="bottom" android:id="@id/d1r" android:layout_width="@dimen/cs" android:layout_height="@dimen/cs" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m">
-        <ImageView android:layout_gravity="center" android:id="@id/d1q" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" />
-    </FrameLayout>
-    <androidx.constraintlayout.widget.Guideline android:orientation="horizontal" android:id="@id/d1s" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_begin="@dimen/cj" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/d2p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/ct" app:layout_constraintBottom_toTopOf="@id/d1s" app:layout_constraintStart_toEndOf="@id/d1r">
-        <TextView android:textSize="@dimen/is" android:textColor="@color/BW_0_Alpha_0_9" android:ellipsize="end" android:id="@id/d2q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:includeFontPadding="false" />
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/d1o" android:visibility="gone" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:layout_marginStart="@dimen/bt" />
-    </LinearLayout>
-    <LinearLayout android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" android:minHeight="@dimen/cb" app:layout_constraintStart_toStartOf="@id/d2p" app:layout_constraintTop_toBottomOf="@id/d1s">
-        <TextView android:textSize="@dimen/kc" android:textColor="@color/FG_1" android:layout_gravity="center_vertical" android:id="@id/g6w" android:background="@drawable/a4e" android:paddingLeft="@dimen/bt" android:paddingRight="@dimen/bt" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d4n" android:layout_marginEnd="@dimen/c5" />
-        <TextView android:textSize="@dimen/k6" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/j1q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="广州" android:includeFontPadding="false" />
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/hn" android:textColor="@color/gg" android:id="@id/bga" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" android:maxLines="3" />
+    <TextView android:textSize="@dimen/hn" android:textColor="@drawable/xm" android:id="@id/bg_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d0k" android:includeFontPadding="true" android:layout_alignBottom="@id/bga" android:layout_alignParentRight="true" />
+</merge>

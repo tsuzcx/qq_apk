@@ -2,71 +2,74 @@ package com.tencent.liteapp;
 
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import io.flutter.embedding.engine.plugins.a.b;
-import io.flutter.plugin.a.j;
-import io.flutter.plugin.a.k;
-import io.flutter.plugin.a.k.c;
-import io.flutter.plugin.a.k.d;
-import kotlin.g.b.p;
-import kotlin.l;
+import io.flutter.embedding.engine.FlutterEngine;
+import io.flutter.embedding.engine.plugins.FlutterPlugin;
+import io.flutter.embedding.engine.plugins.FlutterPlugin.FlutterPluginBinding;
+import io.flutter.plugin.common.BinaryMessenger;
+import io.flutter.plugin.common.MethodCall;
+import io.flutter.plugin.common.MethodChannel;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodChannel.Result;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/liteapp/WxaLiteAppPlugin;", "Lio/flutter/embedding/engine/plugins/FlutterPlugin;", "Lio/flutter/plugin/common/MethodChannel$MethodCallHandler;", "()V", "channel", "Lio/flutter/plugin/common/MethodChannel;", "onAttachedToEngine", "", "flutterPluginBinding", "Lio/flutter/embedding/engine/plugins/FlutterPlugin$FlutterPluginBinding;", "onDetachedFromEngine", "binding", "onMethodCall", "call", "Lio/flutter/plugin/common/MethodCall;", "result", "Lio/flutter/plugin/common/MethodChannel$Result;", "Companion", "wxa_lite_app_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/liteapp/WxaLiteAppPlugin;", "Lio/flutter/embedding/engine/plugins/FlutterPlugin;", "Lio/flutter/plugin/common/MethodChannel$MethodCallHandler;", "()V", "channel", "Lio/flutter/plugin/common/MethodChannel;", "onAttachedToEngine", "", "flutterPluginBinding", "Lio/flutter/embedding/engine/plugins/FlutterPlugin$FlutterPluginBinding;", "onDetachedFromEngine", "binding", "onMethodCall", "call", "Lio/flutter/plugin/common/MethodCall;", "result", "Lio/flutter/plugin/common/MethodChannel$Result;", "Companion", "wxa_lite_app_release"}, k=1, mv={1, 1, 16})
 public final class c
-  implements io.flutter.embedding.engine.plugins.a, k.c
+  implements FlutterPlugin, MethodChannel.MethodCallHandler
 {
-  public static final c.a coF;
-  private k aKT;
+  public static final c.a efQ;
+  private MethodChannel channel;
   
   static
   {
-    AppMethodBeat.i(259166);
-    coF = new c.a((byte)0);
-    AppMethodBeat.o(259166);
+    AppMethodBeat.i(218997);
+    efQ = new c.a((byte)0);
+    AppMethodBeat.o(218997);
   }
   
-  public final void a(a.b paramb)
+  public final void onAttachedToEngine(FlutterPlugin.FlutterPluginBinding paramFlutterPluginBinding)
   {
-    AppMethodBeat.i(259161);
-    p.k(paramb, "flutterPluginBinding");
-    this.aKT = new k((io.flutter.plugin.a.c)paramb.iAZ().getDartExecutor(), "wxa_lite_app");
-    paramb = this.aKT;
-    if (paramb == null) {
-      p.bGy("channel");
+    AppMethodBeat.i(219005);
+    s.t(paramFlutterPluginBinding, "flutterPluginBinding");
+    this.channel = new MethodChannel((BinaryMessenger)paramFlutterPluginBinding.getFlutterEngine().getDartExecutor(), "wxa_lite_app");
+    paramFlutterPluginBinding = this.channel;
+    if (paramFlutterPluginBinding == null) {
+      s.bIx("channel");
     }
-    paramb.a((k.c)this);
-    AppMethodBeat.o(259161);
+    paramFlutterPluginBinding.setMethodCallHandler((MethodChannel.MethodCallHandler)this);
+    AppMethodBeat.o(219005);
   }
   
-  public final void a(j paramj, k.d paramd)
+  public final void onDetachedFromEngine(FlutterPlugin.FlutterPluginBinding paramFlutterPluginBinding)
   {
-    AppMethodBeat.i(259163);
-    p.k(paramj, "call");
-    p.k(paramd, "result");
-    if (p.h(paramj.method, "getPlatformVersion"))
+    AppMethodBeat.i(219017);
+    s.t(paramFlutterPluginBinding, "binding");
+    paramFlutterPluginBinding = this.channel;
+    if (paramFlutterPluginBinding == null) {
+      s.bIx("channel");
+    }
+    paramFlutterPluginBinding.setMethodCallHandler(null);
+    AppMethodBeat.o(219017);
+  }
+  
+  public final void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
+  {
+    AppMethodBeat.i(219012);
+    s.t(paramMethodCall, "call");
+    s.t(paramResult, "result");
+    if (s.p(paramMethodCall.method, "getPlatformVersion"))
     {
-      paramd.bb("Android " + Build.VERSION.RELEASE);
-      AppMethodBeat.o(259163);
+      paramResult.success("Android " + Build.VERSION.RELEASE);
+      AppMethodBeat.o(219012);
       return;
     }
-    paramd.epZ();
-    AppMethodBeat.o(259163);
-  }
-  
-  public final void b(a.b paramb)
-  {
-    AppMethodBeat.i(259164);
-    p.k(paramb, "binding");
-    paramb = this.aKT;
-    if (paramb == null) {
-      p.bGy("channel");
-    }
-    paramb.a(null);
-    AppMethodBeat.o(259164);
+    paramResult.notImplemented();
+    AppMethodBeat.o(219012);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.liteapp.c
  * JD-Core Version:    0.7.0.1
  */

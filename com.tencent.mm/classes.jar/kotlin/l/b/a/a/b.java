@@ -11,33 +11,31 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import kotlin.a.e;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.l.b.a.w;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.l.b.a.aa;
+import kotlin.l.c;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"createAnnotationInstance", "T", "", "annotationClass", "Ljava/lang/Class;", "values", "", "", "methods", "", "Ljava/lang/reflect/Method;", "(Ljava/lang/Class;Ljava/util/Map;Ljava/util/List;)Ljava/lang/Object;", "throwIllegalArgumentType", "", "index", "", "name", "expectedJvmType", "transformKotlinToJvm", "expectedType", "kotlin-reflection"})
+@Metadata(d1={""}, d2={"createAnnotationInstance", "T", "", "annotationClass", "Ljava/lang/Class;", "values", "", "", "methods", "", "Ljava/lang/reflect/Method;", "(Ljava/lang/Class;Ljava/util/Map;Ljava/util/List;)Ljava/lang/Object;", "throwIllegalArgumentType", "", "index", "", "name", "expectedJvmType", "transformKotlinToJvm", "expectedType", "kotlin-reflection"}, k=2, mv={1, 5, 1})
 public final class b
 {
   public static final <T> T a(Class<T> paramClass, final Map<String, ? extends Object> paramMap, final List<Method> paramList)
   {
     AppMethodBeat.i(56585);
-    p.k(paramClass, "annotationClass");
-    p.k(paramMap, "values");
-    p.k(paramList, "methods");
+    s.u(paramClass, "annotationClass");
+    s.u(paramMap, "values");
+    s.u(paramList, "methods");
     final a locala = new a(paramClass, paramList, paramMap);
-    final f localf1 = g.ar((kotlin.g.a.a)new b(paramMap));
-    final f localf2 = g.ar((kotlin.g.a.a)new b.d(paramClass, paramMap));
+    final j localj1 = kotlin.k.cm((kotlin.g.a.a)new b(paramMap));
+    final j localj2 = kotlin.k.cm((kotlin.g.a.a)new b.d(paramClass, paramMap));
     paramList = paramClass.getClassLoader();
-    paramMap = (InvocationHandler)new c(paramClass, localf2, localf1, locala, paramMap);
+    paramMap = (InvocationHandler)new c(paramClass, localj2, localj1, locala, paramMap);
     paramClass = Proxy.newProxyInstance(paramList, new Class[] { paramClass }, paramMap);
     if (paramClass == null)
     {
-      paramClass = new t("null cannot be cast to non-null type T");
+      paramClass = new NullPointerException("null cannot be cast to non-null type T");
       AppMethodBeat.o(56585);
       throw paramClass;
     }
@@ -45,53 +43,53 @@ public final class b
     return paramClass;
   }
   
-  static final Object d(Object paramObject, Class<?> paramClass)
+  static final Object e(Object paramObject, Class<?> paramClass)
   {
-    AppMethodBeat.i(247715);
+    AppMethodBeat.i(191371);
     if ((paramObject instanceof Class))
     {
-      AppMethodBeat.o(247715);
+      AppMethodBeat.o(191371);
       return null;
     }
     Object localObject;
-    if ((paramObject instanceof kotlin.l.b)) {
-      localObject = kotlin.g.a.a((kotlin.l.b)paramObject);
+    if ((paramObject instanceof c)) {
+      localObject = kotlin.g.a.b((c)paramObject);
     }
     while (paramClass.isInstance(localObject))
     {
-      AppMethodBeat.o(247715);
+      AppMethodBeat.o(191371);
       return localObject;
       localObject = paramObject;
       if ((paramObject instanceof Object[]))
       {
         if (((Object[])paramObject instanceof Class[]))
         {
-          AppMethodBeat.o(247715);
+          AppMethodBeat.o(191371);
           return null;
         }
-        if (((Object[])paramObject instanceof kotlin.l.b[]))
+        if (((Object[])paramObject instanceof c[]))
         {
           if (paramObject == null)
           {
-            paramObject = new t("null cannot be cast to non-null type kotlin.Array<kotlin.reflect.KClass<*>>");
-            AppMethodBeat.o(247715);
+            paramObject = new NullPointerException("null cannot be cast to non-null type kotlin.Array<kotlin.reflect.KClass<*>>");
+            AppMethodBeat.o(191371);
             throw paramObject;
           }
-          paramObject = (kotlin.l.b[])paramObject;
+          paramObject = (c[])paramObject;
           localObject = (Collection)new ArrayList(paramObject.length);
           int j = paramObject.length;
           int i = 0;
           while (i < j)
           {
-            ((Collection)localObject).add(kotlin.g.a.a(paramObject[i]));
+            ((Collection)localObject).add(kotlin.g.a.b(paramObject[i]));
             i += 1;
           }
           paramObject = ((Collection)localObject).toArray(new Class[0]);
           localObject = paramObject;
           if (paramObject == null)
           {
-            paramObject = new t("null cannot be cast to non-null type kotlin.Array<T>");
-            AppMethodBeat.o(247715);
+            paramObject = new NullPointerException("null cannot be cast to non-null type kotlin.Array<T>");
+            AppMethodBeat.o(191371);
             throw paramObject;
           }
         }
@@ -101,13 +99,13 @@ public final class b
         }
       }
     }
-    AppMethodBeat.o(247715);
+    AppMethodBeat.o(191371);
     return null;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"equals", "", "T", "", "other", "invoke"})
+  @Metadata(d1={""}, d2={"equals", "", "T", "", "other", "invoke"}, k=3, mv={1, 5, 1})
   static final class a
-    extends q
+    extends u
     implements kotlin.g.a.b<Object, Boolean>
   {
     a(Class paramClass, List paramList, Map paramMap)
@@ -115,7 +113,7 @@ public final class b
       super();
     }
     
-    public final boolean fq(Object paramObject)
+    public final boolean hQ(Object paramObject)
     {
       Object localObject2 = null;
       AppMethodBeat.i(56578);
@@ -129,10 +127,10 @@ public final class b
           localObject3 = kotlin.g.a.a((Annotation)localObject3);
           localObject1 = localObject2;
           if (localObject3 != null) {
-            localObject1 = kotlin.g.a.a((kotlin.l.b)localObject3);
+            localObject1 = kotlin.g.a.b((c)localObject3);
           }
         }
-        if (p.h(localObject1, this.aaET))
+        if (s.p(localObject1, this.aiAK))
         {
           localObject1 = (Iterable)paramList;
           boolean bool;
@@ -149,7 +147,7 @@ public final class b
                 localObject3 = (boolean[])localObject3;
                 if (localObject2 == null)
                 {
-                  paramObject = new t("null cannot be cast to non-null type kotlin.BooleanArray");
+                  paramObject = new NullPointerException("null cannot be cast to non-null type kotlin.BooleanArray");
                   AppMethodBeat.o(56578);
                   throw paramObject;
                 }
@@ -173,7 +171,7 @@ public final class b
               localObject3 = (char[])localObject3;
               if (localObject2 == null)
               {
-                paramObject = new t("null cannot be cast to non-null type kotlin.CharArray");
+                paramObject = new NullPointerException("null cannot be cast to non-null type kotlin.CharArray");
                 AppMethodBeat.o(56578);
                 throw paramObject;
               }
@@ -185,7 +183,7 @@ public final class b
               localObject3 = (byte[])localObject3;
               if (localObject2 == null)
               {
-                paramObject = new t("null cannot be cast to non-null type kotlin.ByteArray");
+                paramObject = new NullPointerException("null cannot be cast to non-null type kotlin.ByteArray");
                 AppMethodBeat.o(56578);
                 throw paramObject;
               }
@@ -197,7 +195,7 @@ public final class b
               localObject3 = (short[])localObject3;
               if (localObject2 == null)
               {
-                paramObject = new t("null cannot be cast to non-null type kotlin.ShortArray");
+                paramObject = new NullPointerException("null cannot be cast to non-null type kotlin.ShortArray");
                 AppMethodBeat.o(56578);
                 throw paramObject;
               }
@@ -209,7 +207,7 @@ public final class b
               localObject3 = (int[])localObject3;
               if (localObject2 == null)
               {
-                paramObject = new t("null cannot be cast to non-null type kotlin.IntArray");
+                paramObject = new NullPointerException("null cannot be cast to non-null type kotlin.IntArray");
                 AppMethodBeat.o(56578);
                 throw paramObject;
               }
@@ -221,7 +219,7 @@ public final class b
               localObject3 = (float[])localObject3;
               if (localObject2 == null)
               {
-                paramObject = new t("null cannot be cast to non-null type kotlin.FloatArray");
+                paramObject = new NullPointerException("null cannot be cast to non-null type kotlin.FloatArray");
                 AppMethodBeat.o(56578);
                 throw paramObject;
               }
@@ -233,7 +231,7 @@ public final class b
               localObject3 = (long[])localObject3;
               if (localObject2 == null)
               {
-                paramObject = new t("null cannot be cast to non-null type kotlin.LongArray");
+                paramObject = new NullPointerException("null cannot be cast to non-null type kotlin.LongArray");
                 AppMethodBeat.o(56578);
                 throw paramObject;
               }
@@ -245,7 +243,7 @@ public final class b
               localObject3 = (double[])localObject3;
               if (localObject2 == null)
               {
-                paramObject = new t("null cannot be cast to non-null type kotlin.DoubleArray");
+                paramObject = new NullPointerException("null cannot be cast to non-null type kotlin.DoubleArray");
                 AppMethodBeat.o(56578);
                 throw paramObject;
               }
@@ -257,14 +255,14 @@ public final class b
               localObject3 = (Object[])localObject3;
               if (localObject2 == null)
               {
-                paramObject = new t("null cannot be cast to non-null type kotlin.Array<*>");
+                paramObject = new NullPointerException("null cannot be cast to non-null type kotlin.Array<*>");
                 AppMethodBeat.o(56578);
                 throw paramObject;
               }
               bool = Arrays.equals((Object[])localObject3, (Object[])localObject2);
               break label206;
             }
-            bool = p.h(localObject3, localObject2);
+            bool = s.p(localObject3, localObject2);
             break label206;
             label640:
             break;
@@ -277,9 +275,9 @@ public final class b
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "T", "", "invoke"}, k=3, mv={1, 5, 1})
   static final class b
-    extends q
+    extends u
     implements kotlin.g.a.a<Integer>
   {
     b(Map paramMap)
@@ -288,21 +286,21 @@ public final class b
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "<anonymous parameter 0>", "kotlin.jvm.PlatformType", "method", "Ljava/lang/reflect/Method;", "args", "", "invoke", "(Ljava/lang/Object;Ljava/lang/reflect/Method;[Ljava/lang/Object;)Ljava/lang/Object;"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "kotlin.jvm.PlatformType", "T", "<anonymous parameter 0>", "method", "Ljava/lang/reflect/Method;", "args", "", "invoke", "(Ljava/lang/Object;Ljava/lang/reflect/Method;[Ljava/lang/Object;)Ljava/lang/Object;"}, k=3, mv={1, 5, 1})
   static final class c
     implements InvocationHandler
   {
-    c(Class paramClass, f paramf1, f paramf2, b.a parama, Map paramMap) {}
+    c(Class paramClass, j paramj1, j paramj2, b.a parama, Map paramMap) {}
     
     public final Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
     {
       AppMethodBeat.i(56580);
-      p.j(paramMethod, "method");
+      s.s(paramMethod, "method");
       paramObject = paramMethod.getName();
       if (paramObject == null) {}
-      while ((p.h(paramObject, "equals")) && (paramArrayOfObject != null) && (paramArrayOfObject.length == 1))
+      while ((s.p(paramObject, "equals")) && (paramArrayOfObject != null) && (paramArrayOfObject.length == 1))
       {
-        boolean bool = locala.fq(e.W(paramArrayOfObject));
+        boolean bool = locala.hQ(kotlin.a.k.aa(paramArrayOfObject));
         AppMethodBeat.o(56580);
         return Boolean.valueOf(bool);
         switch (paramObject.hashCode())
@@ -312,7 +310,7 @@ public final class b
         case -1776922004: 
           if (paramObject.equals("toString"))
           {
-            paramObject = localf2.getValue();
+            paramObject = localj2.getValue();
             AppMethodBeat.o(56580);
             return paramObject;
           }
@@ -320,7 +318,7 @@ public final class b
         case 147696667: 
           if (paramObject.equals("hashCode"))
           {
-            paramObject = localf1.getValue();
+            paramObject = localj1.getValue();
             AppMethodBeat.o(56580);
             return paramObject;
           }
@@ -328,7 +326,7 @@ public final class b
         case 1444986633: 
           if (paramObject.equals("annotationType"))
           {
-            paramObject = this.aaET;
+            paramObject = this.aiAK;
             AppMethodBeat.o(56580);
             return paramObject;
           }
@@ -346,7 +344,7 @@ public final class b
       if (paramArrayOfObject == null) {
         paramObject = new Object[0];
       }
-      paramObject = (Throwable)new w(e.aa(paramObject) + ')');
+      paramObject = (Throwable)new aa(kotlin.a.k.ae(paramObject) + ')');
       AppMethodBeat.o(56580);
       throw paramObject;
     }
@@ -354,7 +352,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlin.l.b.a.a.b
  * JD-Core Version:    0.7.0.1
  */

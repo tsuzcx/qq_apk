@@ -1,19 +1,28 @@
 package kotlinx.a.d;
 
-import kotlin.l;
-import kotlin.l.b;
-import kotlinx.a.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlinx.a.b.e;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/serialization/modules/SerialModuleCollector;", "", "contextual", "", "T", "kClass", "Lkotlin/reflect/KClass;", "serializer", "Lkotlinx/serialization/KSerializer;", "polymorphic", "Base", "Sub", "baseClass", "actualClass", "actualSerializer", "kotlinx-serialization-runtime"})
-public abstract interface d
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lkotlinx/serialization/internal/ArrayListClassDesc;", "Lkotlinx/serialization/internal/ListLikeDescriptor;", "elementDesc", "Lkotlinx/serialization/descriptors/SerialDescriptor;", "(Lkotlinx/serialization/descriptors/SerialDescriptor;)V", "serialName", "", "getSerialName", "()Ljava/lang/String;", "kotlinx-serialization-runtime"}, k=1, mv={1, 4, 0})
+public final class d
+  extends v
 {
-  public abstract <Base, Sub extends Base> void a(b<Base> paramb, b<Sub> paramb1, h<Sub> paramh);
+  public d(e parame)
+  {
+    super(parame, (byte)0);
+    AppMethodBeat.i(188700);
+    AppMethodBeat.o(188700);
+  }
   
-  public abstract <T> void a(b<T> paramb, h<T> paramh);
+  public final String kFa()
+  {
+    return "kotlin.collections.ArrayList";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlinx.a.d.d
  * JD-Core Version:    0.7.0.1
  */

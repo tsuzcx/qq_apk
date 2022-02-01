@@ -71,7 +71,7 @@ public final class w
     return paramStringBuilder;
   }
   
-  private static int[] bO(String paramString)
+  private static int[] jdMethod_do(String paramString)
   {
     AppMethodBeat.i(93215);
     int[] arrayOfInt = new int[4];
@@ -143,15 +143,15 @@ public final class w
     }
   }
   
-  public static Uri q(String paramString1, String paramString2)
+  public static Uri x(String paramString1, String paramString2)
   {
     AppMethodBeat.i(93212);
-    paramString1 = Uri.parse(r(paramString1, paramString2));
+    paramString1 = Uri.parse(y(paramString1, paramString2));
     AppMethodBeat.o(93212);
     return paramString1;
   }
   
-  private static String r(String paramString1, String paramString2)
+  private static String y(String paramString1, String paramString2)
   {
     AppMethodBeat.i(93213);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -163,7 +163,7 @@ public final class w
     if (paramString2 == null) {
       paramString1 = "";
     }
-    paramString2 = bO(paramString1);
+    paramString2 = jdMethod_do(paramString1);
     if (paramString2[0] != -1)
     {
       localStringBuilder.append(paramString1);
@@ -172,7 +172,7 @@ public final class w
       AppMethodBeat.o(93213);
       return paramString1;
     }
-    int[] arrayOfInt = bO(str);
+    int[] arrayOfInt = jdMethod_do(str);
     if (paramString2[3] == 0)
     {
       paramString1 = paramString1;

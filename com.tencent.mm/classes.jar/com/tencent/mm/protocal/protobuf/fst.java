@@ -1,0 +1,144 @@
+package com.tencent.mm.protocal.protobuf;
+
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
+
+public final class fst
+  extends erp
+{
+  public int Tqb;
+  public int YAN;
+  public int abRh;
+  public int abRi;
+  public int reason;
+  public int scene;
+  public String session_id;
+  public String username;
+  
+  public final int op(int paramInt, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(123664);
+    if (paramInt == 0)
+    {
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
+      }
+      paramVarArgs.bS(2, this.scene);
+      paramVarArgs.bS(3, this.abRh);
+      paramVarArgs.bS(4, this.Tqb);
+      paramVarArgs.bS(5, this.abRi);
+      paramVarArgs.bS(6, this.YAN);
+      if (this.username != null) {
+        paramVarArgs.g(7, this.username);
+      }
+      paramVarArgs.bS(8, this.reason);
+      if (this.session_id != null) {
+        paramVarArgs.g(9, this.session_id);
+      }
+      AppMethodBeat.o(123664);
+      return 0;
+    }
+    if (paramInt == 1) {
+      if (this.BaseRequest == null) {
+        break label668;
+      }
+    }
+    label668:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    {
+      int i = paramInt + i.a.a.b.b.a.cJ(2, this.scene) + i.a.a.b.b.a.cJ(3, this.abRh) + i.a.a.b.b.a.cJ(4, this.Tqb) + i.a.a.b.b.a.cJ(5, this.abRi) + i.a.a.b.b.a.cJ(6, this.YAN);
+      paramInt = i;
+      if (this.username != null) {
+        paramInt = i + i.a.a.b.b.a.h(7, this.username);
+      }
+      i = paramInt + i.a.a.b.b.a.cJ(8, this.reason);
+      paramInt = i;
+      if (this.session_id != null) {
+        paramInt = i + i.a.a.b.b.a.h(9, this.session_id);
+      }
+      AppMethodBeat.o(123664);
+      return paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(123664);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
+        fst localfst = (fst)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(123664);
+          return -1;
+        case 1: 
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kc localkc = new kc();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkc.parseFrom((byte[])localObject);
+            }
+            localfst.BaseRequest = localkc;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(123664);
+          return 0;
+        case 2: 
+          localfst.scene = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(123664);
+          return 0;
+        case 3: 
+          localfst.abRh = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(123664);
+          return 0;
+        case 4: 
+          localfst.Tqb = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(123664);
+          return 0;
+        case 5: 
+          localfst.abRi = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(123664);
+          return 0;
+        case 6: 
+          localfst.YAN = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(123664);
+          return 0;
+        case 7: 
+          localfst.username = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(123664);
+          return 0;
+        case 8: 
+          localfst.reason = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(123664);
+          return 0;
+        }
+        localfst.session_id = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(123664);
+        return 0;
+      }
+      AppMethodBeat.o(123664);
+      return -1;
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+ * Qualified Name:     com.tencent.mm.protocal.protobuf.fst
+ * JD-Core Version:    0.7.0.1
+ */

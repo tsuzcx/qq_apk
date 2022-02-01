@@ -5,26 +5,26 @@ import android.media.MediaFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.i.c;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 
 public final class a$a
 {
-  public String maQ;
-  public String maR;
-  public String maS;
-  public int maT = -1;
+  public String oTK;
+  public String oTL;
+  public String oTM;
+  public int oTN = -1;
   public int videoBitRate = -1;
   public int videoFrameRate = -1;
   public int videoHeight = -1;
   public int videoIFrameInterval = -1;
   public int videoWidth = -1;
   
-  public static a Xe(String paramString)
+  public static a Pg(String paramString)
   {
     AppMethodBeat.i(20650);
     c localc = new c();
     a locala = new a();
-    locala.maQ = paramString;
+    locala.oTK = paramString;
     for (;;)
     {
       int i;
@@ -33,8 +33,8 @@ public final class a$a
       Object localObject6;
       try
       {
-        localc.setDataSource(u.n(paramString, false));
-        int j = localc.jvU.getTrackCount();
+        localc.setDataSource(y.n(paramString, false));
+        int j = localc.lZm.getTrackCount();
         i = 0;
         localObject2 = null;
         str1 = null;
@@ -75,7 +75,7 @@ public final class a$a
             continue;
           }
           i = 0;
-          locala.maT = i;
+          locala.oTN = i;
           if (((MediaFormat)localObject4).containsKey("height")) {
             continue;
           }
@@ -90,7 +90,7 @@ public final class a$a
             continue;
           }
           str1 = "";
-          locala.maR = str1;
+          locala.oTL = str1;
           if (((MediaFormat)localObject4).containsKey("bitrate")) {
             continue;
           }
@@ -113,9 +113,9 @@ public final class a$a
             continue;
           }
           str1 = "";
-          locala.maS = str1;
+          locala.oTM = str1;
         }
-        localc.jvU.release();
+        localc.lZm.release();
       }
       catch (Exception localException)
       {
@@ -123,12 +123,12 @@ public final class a$a
         MediaFormat localMediaFormat;
         String str2;
         Log.i("MicroMsg.ShareSnsImpl", "Video extractor init failed. video path = [%s] e = [%s]", new Object[] { paramString, localException.getMessage() });
-        localc.jvU.release();
+        localc.lZm.release();
         continue;
       }
       finally
       {
-        localc.jvU.release();
+        localc.lZm.release();
         AppMethodBeat.o(20650);
       }
       AppMethodBeat.o(20650);
@@ -183,7 +183,7 @@ public final class a$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.modelsns.a.a
  * JD-Core Version:    0.7.0.1
  */

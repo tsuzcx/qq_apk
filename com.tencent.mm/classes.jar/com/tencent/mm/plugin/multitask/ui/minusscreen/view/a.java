@@ -13,118 +13,147 @@ import com.tencent.mm.plugin.multitask.ui.e.c;
 import com.tencent.mm.plugin.multitask.ui.e.d;
 import com.tencent.mm.plugin.multitask.ui.e.e;
 import com.tencent.mm.plugin.multitask.ui.e.f;
-import com.tencent.mm.protocal.protobuf.dar;
+import com.tencent.mm.protocal.protobuf.drz;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.widget.RoundCornerImageView;
 import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
-import com.tencent.mm.view.recyclerview.i;
+import com.tencent.mm.view.recyclerview.j;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import java.util.List<Ljava.lang.Object;>;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 import org.xwalk.core.Log;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/ui/minusscreen/view/AppBrandMinusScreenRoundCornerConvert;", "Lcom/tencent/mm/plugin/multitask/ui/minusscreen/view/MinusScreenRoundCornerConvert;", "listener", "Lcom/tencent/mm/plugin/multitask/ui/minusscreen/listener/MinusScreenViewItemListener;", "(Lcom/tencent/mm/plugin/multitask/ui/minusscreen/listener/MinusScreenViewItemListener;)V", "MAX_APPBRAND_NAME_COUNT", "", "getMAX_APPBRAND_NAME_COUNT", "()I", "TAG", "", "getTAG", "()Ljava/lang/String;", "getNickName", "context", "Landroid/content/Context;", "item", "Lcom/tencent/mm/plugin/multitask/ui/minusscreen/data/RVMultiTaskData;", "onAttachedToRecyclerView", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "adapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "onBindViewHolder", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "ui-multitask_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitask/ui/minusscreen/view/AppBrandMinusScreenRoundCornerConvert;", "Lcom/tencent/mm/plugin/multitask/ui/minusscreen/view/MinusScreenRoundCornerConvert;", "listener", "Lcom/tencent/mm/plugin/multitask/ui/minusscreen/listener/MinusScreenViewItemListener;", "(Lcom/tencent/mm/plugin/multitask/ui/minusscreen/listener/MinusScreenViewItemListener;)V", "MAX_APPBRAND_NAME_COUNT", "", "getMAX_APPBRAND_NAME_COUNT", "()I", "TAG", "", "getTAG", "()Ljava/lang/String;", "getNickName", "context", "Landroid/content/Context;", "item", "Lcom/tencent/mm/plugin/multitask/ui/minusscreen/data/RVMultiTaskData;", "onAttachedToRecyclerView", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "adapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "onBindViewHolder", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "ui-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   extends d
 {
-  private final int FKS = 4;
+  private final int LGd = 4;
   private final String TAG = "MicroMsg.AppBrandMinusScreenRoundCornerConvert";
   
   public a(com.tencent.mm.plugin.multitask.ui.minusscreen.d.a parama)
   {
-    super(e.d.FJa, parama);
+    super(e.d.LEl, parama);
   }
   
   public final String a(Context paramContext, com.tencent.mm.plugin.multitask.ui.minusscreen.b.a parama)
   {
-    AppMethodBeat.i(196506);
-    p.k(paramContext, "context");
-    p.k(parama, "item");
+    AppMethodBeat.i(304444);
+    s.u(paramContext, "context");
+    s.u(parama, "item");
     parama = super.a(paramContext, parama);
-    if (parama != null)
-    {
-      if (((CharSequence)parama).length() > 0) {}
-      for (int i = 1; i == 1; i = 0)
+    if (parama != null) {
+      if (((CharSequence)parama).length() > 0)
       {
-        AppMethodBeat.o(196506);
-        return parama;
+        i = 1;
+        if (i != 1) {
+          break label65;
+        }
       }
     }
-    paramContext = paramContext.getResources().getString(e.f.FJe);
-    AppMethodBeat.o(196506);
+    label65:
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0) {
+        break label70;
+      }
+      AppMethodBeat.o(304444);
+      return parama;
+      i = 0;
+      break;
+    }
+    label70:
+    paramContext = paramContext.getResources().getString(e.f.LEp);
+    AppMethodBeat.o(304444);
     return paramContext;
   }
   
   public final void a(RecyclerView paramRecyclerView, WxRecyclerAdapter<?> paramWxRecyclerAdapter)
   {
-    AppMethodBeat.i(196504);
-    p.k(paramRecyclerView, "recyclerView");
-    p.k(paramWxRecyclerAdapter, "adapter");
+    AppMethodBeat.i(304432);
+    s.u(paramRecyclerView, "recyclerView");
+    s.u(paramWxRecyclerAdapter, "adapter");
     super.a(paramRecyclerView, paramWxRecyclerAdapter);
-    AppMethodBeat.o(196504);
+    AppMethodBeat.o(304432);
   }
   
-  public final void a(RecyclerView paramRecyclerView, i parami, int paramInt)
+  public final void a(RecyclerView paramRecyclerView, j paramj, int paramInt)
   {
-    AppMethodBeat.i(196500);
-    p.k(paramRecyclerView, "recyclerView");
-    p.k(parami, "holder");
-    super.a(paramRecyclerView, parami, paramInt);
-    AppMethodBeat.o(196500);
+    AppMethodBeat.i(304405);
+    s.u(paramRecyclerView, "recyclerView");
+    s.u(paramj, "holder");
+    super.a(paramRecyclerView, paramj, paramInt);
+    AppMethodBeat.o(304405);
   }
   
-  public final void a(i parami, com.tencent.mm.plugin.multitask.ui.minusscreen.b.a parama, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
+  public final void a(j paramj, com.tencent.mm.plugin.multitask.ui.minusscreen.b.a parama, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
   {
-    AppMethodBeat.i(196502);
-    p.k(parami, "holder");
-    p.k(parama, "item");
+    AppMethodBeat.i(304424);
+    s.u(paramj, "holder");
+    s.u(parama, "item");
     Log.d(this.TAG, "onBindViewHolder");
-    super.a(parami, parama, paramInt1, paramInt2, paramBoolean, paramList);
-    ImageView localImageView = (ImageView)parami.amk.findViewById(e.c.FIG);
-    TextView localTextView = (TextView)parami.amk.findViewById(e.c.FIN);
-    paramList = parama.FKP.fbc();
-    if (!Util.isNullOrNil(parama.FKP.fbc().tag))
+    super.a(paramj, parama, paramInt1, paramInt2, paramBoolean, paramList);
+    ImageView localImageView = (ImageView)paramj.caK.findViewById(e.c.LDQ);
+    TextView localTextView = (TextView)paramj.caK.findViewById(e.c.LDX);
+    paramList = parama.LGa.gkh();
+    Object localObject;
+    if (!Util.isNullOrNil(parama.LGa.gkh().tag))
     {
-      p.j(localTextView, "nickname");
-      com.tencent.mm.plugin.multitask.ui.minusscreen.e.a locala = com.tencent.mm.plugin.multitask.ui.minusscreen.e.a.FKR;
-      if (paramList == null) {
-        break label205;
-      }
-      paramList = paramList.nickname;
-      if (paramList == null) {
-        break label205;
+      localObject = com.tencent.mm.plugin.multitask.ui.minusscreen.e.a.LGc;
+      s.s(localTextView, "nickname");
+      if (paramList == null)
+      {
+        paramList = "";
+        localTextView.setText(com.tencent.mm.plugin.multitask.ui.minusscreen.e.a.a(localTextView, (CharSequence)paramList, this.LGd));
       }
     }
-    label205:
-    for (paramList = (CharSequence)paramList;; paramList = (CharSequence)"")
+    else
     {
-      localTextView.setText(com.tencent.mm.plugin.multitask.ui.minusscreen.e.a.a(localTextView, paramList, this.FKS));
       localImageView.setImageDrawable(null);
-      parama = parama.FKP.fbc();
-      if (parama == null) {
-        break;
+      parama = parama.LGa.gkh();
+      if (parama != null) {
+        break label213;
       }
-      parama = parama.TIg;
-      if (parama == null) {
-        break;
-      }
-      parami = e.kMy;
-      parami = e.aRs();
-      p.j(localImageView, "avatarImgView");
-      parami.a(parama, localImageView, getThumbLoaderOption());
-      AppMethodBeat.o(196502);
-      return;
+      parama = null;
     }
-    parami = (RoundCornerImageView)parami.amk.findViewById(e.c.FIx);
-    p.j(parami, "defaultImage");
-    parami.setVisibility(0);
-    parami.setImageResource(e.e.spannable_app_brand_link_logo);
-    AppMethodBeat.o(196502);
+    for (;;)
+    {
+      if (parama == null)
+      {
+        paramj = (RoundCornerImageView)paramj.caK.findViewById(e.c.LDH);
+        paramj.setVisibility(0);
+        paramj.setImageResource(e.e.spannable_app_brand_link_logo);
+      }
+      AppMethodBeat.o(304424);
+      return;
+      localObject = paramList.nickname;
+      paramList = (List<Object>)localObject;
+      if (localObject != null) {
+        break;
+      }
+      paramList = "";
+      break;
+      label213:
+      parama = parama.aaXP;
+      if (parama == null)
+      {
+        parama = null;
+      }
+      else
+      {
+        paramList = e.noo;
+        paramList = e.blh();
+        s.s(localImageView, "avatarImgView");
+        paramList.a(parama, localImageView, getThumbLoaderOption());
+        parama = ah.aiuX;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.multitask.ui.minusscreen.view.a
  * JD-Core Version:    0.7.0.1
  */

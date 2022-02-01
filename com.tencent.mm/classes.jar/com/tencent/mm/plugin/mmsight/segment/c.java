@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.mmsight.segment;
 
 public abstract interface c
 {
-  public abstract void aPz(String paramString);
+  public abstract void aMx(String paramString);
   
-  public abstract float eTW();
+  public abstract float gcO();
   
-  public abstract float eTX();
+  public abstract float gcP();
   
   public abstract int getDurationMs();
   
@@ -18,7 +18,7 @@ public abstract interface c
   
   public abstract void setThumbBarSeekListener(c.b paramb);
   
-  public abstract void ul(boolean paramBoolean);
+  public abstract void yz(boolean paramBoolean);
 }
 
 

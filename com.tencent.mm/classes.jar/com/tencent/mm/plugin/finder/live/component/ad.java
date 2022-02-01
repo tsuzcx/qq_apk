@@ -1,145 +1,280 @@
 package com.tencent.mm.plugin.finder.live.component;
 
-import android.content.Intent;
-import android.os.Bundle;
-import androidx.fragment.app.Fragment;
+import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.live.viewmodel.component.f;
-import com.tencent.mm.plugin.finder.model.an;
-import com.tencent.mm.plugin.finder.model.bu;
-import com.tencent.mm.plugin.finder.presenter.contract.FinderLiveTagConstract.Presenter;
-import com.tencent.mm.plugin.finder.presenter.contract.FinderLiveTagConstract.ViewCallback;
-import com.tencent.mm.protocal.protobuf.bda;
-import com.tencent.mm.ui.MMActivity;
-import java.util.ArrayList;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.plugin.finder.live.model.context.a;
+import com.tencent.mm.plugin.finder.live.p.h;
+import com.tencent.mm.plugin.finder.live.viewmodel.data.business.e;
+import com.tencent.mm.plugin.findersdk.storage.config.base.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import java.util.LinkedList;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/component/FinderLiveTagUIC;", "Lcom/tencent/mm/plugin/finder/live/viewmodel/component/FinderLiveTagBaseUIC;", "fragment", "Landroidx/fragment/app/Fragment;", "(Landroidx/fragment/app/Fragment;)V", "presenter", "Lcom/tencent/mm/plugin/finder/presenter/contract/FinderLiveTagConstract$Presenter;", "getPresenter", "()Lcom/tencent/mm/plugin/finder/presenter/contract/FinderLiveTagConstract$Presenter;", "setPresenter", "(Lcom/tencent/mm/plugin/finder/presenter/contract/FinderLiveTagConstract$Presenter;)V", "convertTagData", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lkotlin/collections/ArrayList;", "tagInfo", "", "Lcom/tencent/mm/protocal/protobuf/FinderLiveTagInfo;", "getLayoutId", "", "onActivityResult", "", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/component/FinderLiveLotteryCreateConfig;", "", "()V", "disableList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/finder/live/component/LotteryCreateItem;", "getDisableList", "()Ljava/util/LinkedList;", "setDisableList", "(Ljava/util/LinkedList;)V", "enableComment", "", "getEnableComment", "()Z", "setEnableComment", "(Z)V", "enableLike", "getEnableLike", "setEnableLike", "enableList", "getEnableList", "setEnableList", "value", "enableRepeatLottery", "getEnableRepeatLottery", "setEnableRepeatLottery", "lastLotteryType", "", "getLastLotteryType", "()I", "setLastLotteryType", "(I)V", "lotteryList", "getLotteryList", "setLotteryList", "getLotteryTypeList", "", "getSettingFlag", "initLiveLotterySetting", "", "initLotteryTypeList", "resetLotteryTypeList", "lastType", "setLiveLotterySetting", "Companion", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ad
-  extends f
 {
-  public static final a ycI;
-  public FinderLiveTagConstract.Presenter ycH;
+  public static final ad.a Cza;
+  private static final int[] Czh;
+  private boolean Czb;
+  LinkedList<at> Czc;
+  LinkedList<at> Czd;
+  LinkedList<at> Cze;
+  int Czf;
+  boolean Czg;
+  private boolean ngI;
   
   static
   {
-    AppMethodBeat.i(285382);
-    ycI = new a((byte)0);
-    AppMethodBeat.o(285382);
+    AppMethodBeat.i(353037);
+    Cza = new ad.a((byte)0);
+    Czh = new int[] { 2, 1, 3, 4, 5 };
+    AppMethodBeat.o(353037);
   }
   
-  public ad(Fragment paramFragment)
+  public ad()
   {
-    super(paramFragment);
-    AppMethodBeat.i(285381);
-    AppMethodBeat.o(285381);
-  }
-  
-  private static ArrayList<bu> em(List<? extends bda> paramList)
-  {
-    AppMethodBeat.i(285377);
-    ArrayList localArrayList = new ArrayList();
-    paramList = ((Iterable)paramList).iterator();
-    while (paramList.hasNext()) {
-      localArrayList.add(new an((bda)paramList.next()));
-    }
-    AppMethodBeat.o(285377);
-    return localArrayList;
-  }
-  
-  public final int getLayoutId()
-  {
-    return b.g.finder_live_tag_ui;
-  }
-  
-  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    AppMethodBeat.i(285380);
-    paramIntent = this.ycH;
-    if (paramIntent == null) {
-      p.bGy("presenter");
-    }
-    if ((paramInt2 == -1) && (paramInt1 == 1))
+    AppMethodBeat.i(353021);
+    this.Czc = new LinkedList();
+    this.Czd = new LinkedList();
+    this.Cze = new LinkedList();
+    this.Czf = 1;
+    Object localObject = a.CMm;
+    localObject = a.emY();
+    boolean bool;
+    label76:
+    label98:
+    label109:
+    int j;
+    if (localObject == null)
     {
-      paramIntent = paramIntent.zNT;
-      if (paramIntent != null)
+      i = 0;
+      if (com.tencent.mm.ae.d.ee(i, 512)) {
+        break label297;
+      }
+      bool = true;
+      this.Czb = bool;
+      localObject = a.CMm;
+      localObject = a.emY();
+      if (localObject != null) {
+        break label302;
+      }
+      i = 0;
+      if (com.tencent.mm.ae.d.ee(i, 8)) {
+        break label333;
+      }
+      bool = true;
+      this.ngI = bool;
+      j = com.tencent.mm.kernel.h.baE().ban().getInt(at.a.adeM, 0);
+      if (j != 0) {
+        break label338;
+      }
+    }
+    label297:
+    label302:
+    label333:
+    label338:
+    for (int i = 1;; i = j)
+    {
+      this.Czf = i;
+      long l = com.tencent.mm.kernel.h.baE().ban().a(at.a.adeL, 0L);
+      qr(com.tencent.mm.ae.d.ee((int)l, 1));
+      Log.i("FinderLiveLotteryCreateConfig", "initLiveLotterySetting lotteryType:" + j + ", setting_flag:" + l);
+      eit();
+      Log.i("FinderLiveLotteryCreateConfig", "init enableLike:" + this.Czb + ",enableComment:" + this.ngI + ",enableRepeatLottery:" + this.Czg + ",currentLotteryType:" + this.Czf);
+      AppMethodBeat.o(353021);
+      return;
+      localObject = (e)((a)localObject).business(e.class);
+      if (localObject == null)
       {
-        paramIntent.asU();
-        AppMethodBeat.o(285380);
-        return;
+        i = 0;
+        break;
       }
-    }
-    AppMethodBeat.o(285380);
-  }
-  
-  public final void onCreate(Bundle paramBundle)
-  {
-    AppMethodBeat.i(285378);
-    super.onCreate(paramBundle);
-    dxg();
-    boolean bool = getIntent().getBooleanExtra("KEY_HAS_NEXT_ACTION", false);
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = getIntent().getSerializableExtra("KEY_TAG_INFO");
-    paramBundle = (Bundle)localObject;
-    if (!(localObject instanceof List)) {
-      paramBundle = null;
-    }
-    paramBundle = (List)paramBundle;
-    if (paramBundle != null)
-    {
-      paramBundle = ((Iterable)paramBundle).iterator();
-      while (paramBundle.hasNext())
+      i = ((e)localObject).Ecp;
+      break;
+      bool = false;
+      break label76;
+      localObject = (e)((a)localObject).business(e.class);
+      if (localObject == null)
       {
-        localObject = (byte[])paramBundle.next();
-        bda localbda = new bda();
-        localbda.parseFrom((byte[])localObject);
-        localArrayList.add(localbda);
+        i = 0;
+        break label98;
       }
+      i = ((e)localObject).Ecp;
+      break label98;
+      bool = false;
+      break label109;
     }
-    this.ycH = new FinderLiveTagConstract.Presenter(em((List)localArrayList), bool);
-    paramBundle = getActivity();
-    if (paramBundle == null)
-    {
-      paramBundle = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-      AppMethodBeat.o(285378);
-      throw paramBundle;
-    }
-    paramBundle = (MMActivity)paramBundle;
-    localObject = this.ycH;
-    if (localObject == null) {
-      p.bGy("presenter");
-    }
-    paramBundle = new FinderLiveTagConstract.ViewCallback(paramBundle, (FinderLiveTagConstract.Presenter)localObject);
-    localObject = this.ycH;
-    if (localObject == null) {
-      p.bGy("presenter");
-    }
-    ((FinderLiveTagConstract.Presenter)localObject).a(paramBundle);
-    AppMethodBeat.o(285378);
   }
   
-  public final void onDestroy()
+  private final void eis()
   {
-    AppMethodBeat.i(285379);
-    super.onDestroy();
-    if (((ad)this).ycH != null)
-    {
-      FinderLiveTagConstract.Presenter localPresenter = this.ycH;
-      if (localPresenter == null) {
-        p.bGy("presenter");
-      }
-      localPresenter.onDetach();
-    }
-    AppMethodBeat.o(285379);
+    AppMethodBeat.i(353029);
+    this.Cze.clear();
+    this.Czc.clear();
+    this.Czd.clear();
+    AppMethodBeat.o(353029);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/component/FinderLiveTagUIC$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
+  public final at eir()
+  {
+    AppMethodBeat.i(353050);
+    Object localObject = null;
+    if (this.Czc.isEmpty()) {
+      eit();
+    }
+    Iterator localIterator = ((Iterable)this.Czc).iterator();
+    if (localIterator.hasNext())
+    {
+      at localat = (at)localIterator.next();
+      if (localat.type != this.Czf) {
+        break label155;
+      }
+      localObject = localat;
+    }
+    label152:
+    label155:
+    for (;;)
+    {
+      break;
+      int i;
+      if (localObject == null) {
+        if (!((Collection)this.Czc).isEmpty())
+        {
+          i = 1;
+          if (i == 0) {
+            break label152;
+          }
+          localObject = this.Czc.get(0);
+          this.Czf = ((at)this.Czc.get(0)).type;
+        }
+      }
+      for (;;)
+      {
+        Log.i("FinderLiveLotteryCreateConfig", s.X("getLastLotteryType currentLotteryTypeItem:", localObject));
+        localObject = (at)localObject;
+        AppMethodBeat.o(353050);
+        return localObject;
+        i = 0;
+        break;
+      }
+    }
+  }
+  
+  final void eit()
+  {
+    AppMethodBeat.i(353069);
+    eis();
+    Resources localResources = MMApplicationContext.getResources();
+    int[] arrayOfInt = Czh;
+    int k = arrayOfInt.length;
+    int i = 0;
+    boolean bool1 = true;
+    if (i < k)
+    {
+      int m = arrayOfInt[i];
+      switch (m)
+      {
+      }
+      label512:
+      label515:
+      for (;;)
+      {
+        i += 1;
+        break;
+        Object localObject = localResources.getString(p.h.Cmw);
+        s.s(localObject, "res.getString(R.string.f…ottery_chooser_type_like)");
+        localObject = new at((String)localObject, m, this.Czb, 8);
+        if (this.Czb)
+        {
+          this.Czc.add(localObject);
+        }
+        else
+        {
+          this.Czd.add(localObject);
+          continue;
+          localObject = localResources.getString(p.h.Cms);
+          s.s(localObject, "res.getString(R.string.f…chooser_type_any_comment)");
+          localObject = new at((String)localObject, m, this.ngI, 8);
+          if (this.ngI)
+          {
+            this.Czc.add(localObject);
+            bool1 = true;
+          }
+          else
+          {
+            String str = localResources.getString(p.h.Cmt);
+            s.s(str, "res.getString(R.string.f…ser_type_disable_comment)");
+            ((at)localObject).setTitle(str);
+            this.Czd.add(localObject);
+            bool1 = false;
+            continue;
+            if (bool1)
+            {
+              localObject = this.Czc;
+              str = localResources.getString(p.h.Cmx);
+              s.s(str, "res.getString(R.string.f…ser_type_special_comment)");
+              ((LinkedList)localObject).add(new at(str, m, bool1, 8));
+              continue;
+              localObject = this.Czc;
+              str = localResources.getString(p.h.Cmv);
+              s.s(str, "res.getString(R.string.f…tery_chooser_type_follow)");
+              ((LinkedList)localObject).add(new at(str, m, true, 8));
+              continue;
+              localObject = com.tencent.mm.plugin.finder.storage.d.FAy;
+              boolean bool2;
+              if (((Number)com.tencent.mm.plugin.finder.storage.d.eXP().bmg()).intValue() == 1)
+              {
+                bool2 = true;
+                label378:
+                Log.i("FinderLiveLotteryCreateConfig", "initLotteryTypeList isFanLotteryEnable: " + bool2 + ' ');
+                localObject = a.CMm;
+                localObject = a.emY();
+                if (localObject == null) {
+                  break label512;
+                }
+                localObject = (com.tencent.mm.plugin.finder.live.viewmodel.data.business.h)((a)localObject).business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.h.class);
+                if ((localObject == null) || (((com.tencent.mm.plugin.finder.live.viewmodel.data.business.h)localObject).eyR() != true)) {
+                  break label512;
+                }
+              }
+              for (int j = 1;; j = 0)
+              {
+                if ((j == 0) || (!bool2)) {
+                  break label515;
+                }
+                localObject = this.Czc;
+                str = localResources.getString(p.h.Cmu);
+                s.s(str, "res.getString(R.string.f…_chooser_type_fan_member)");
+                ((LinkedList)localObject).add(new at(str, m, true, 8));
+                break;
+                bool2 = false;
+                break label378;
+              }
+            }
+          }
+        }
+      }
+    }
+    this.Cze.addAll((Collection)this.Czc);
+    this.Cze.addAll((Collection)this.Czd);
+    Log.i("FinderLiveLotteryCreateConfig", "generateLotteryTypeList lotteryList:" + this.Cze + ",enableList:" + this.Czc.size() + ",disableList:" + this.Czd.size());
+    AppMethodBeat.o(353069);
+  }
+  
+  public final void qr(boolean paramBoolean)
+  {
+    AppMethodBeat.i(353044);
+    Log.i("FinderLiveLotteryCreateConfig", s.X("setEnableRepeatLottery enableRepeatLottery:", Boolean.valueOf(paramBoolean)));
+    this.Czg = paramBoolean;
+    AppMethodBeat.o(353044);
+  }
 }
 
 

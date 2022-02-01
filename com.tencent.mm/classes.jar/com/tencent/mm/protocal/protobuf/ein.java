@@ -1,60 +1,100 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
-public class ein
-  extends com.tencent.mm.cd.a
+public final class ein
+  extends erp
 {
-  public String SessionId;
+  public String Vbl;
+  public int abnu;
+  public int abnv;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(224401);
+    AppMethodBeat.i(258602);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.SessionId != null) {
-        paramVarArgs.f(1, this.SessionId);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(224401);
+      paramVarArgs.bS(2, this.abnu);
+      paramVarArgs.bS(3, this.abnv);
+      if (this.Vbl != null) {
+        paramVarArgs.g(100, this.Vbl);
+      }
+      AppMethodBeat.o(258602);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.SessionId == null) {
-        break label213;
+      if (this.BaseRequest == null) {
+        break label444;
       }
     }
-    label213:
-    for (paramInt = g.a.a.b.b.a.g(1, this.SessionId) + 0;; paramInt = 0)
+    label444:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(224401);
+      int i = paramInt + i.a.a.b.b.a.cJ(2, this.abnu) + i.a.a.b.b.a.cJ(3, this.abnv);
+      paramInt = i;
+      if (this.Vbl != null) {
+        paramInt = i + i.a.a.b.b.a.h(100, this.Vbl);
+      }
+      AppMethodBeat.o(258602);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(224401);
+        AppMethodBeat.o(258602);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         ein localein = (ein)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(224401);
+          AppMethodBeat.o(258602);
           return -1;
+        case 1: 
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kc localkc = new kc();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkc.parseFrom((byte[])localObject);
+            }
+            localein.BaseRequest = localkc;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(258602);
+          return 0;
+        case 2: 
+          localein.abnu = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(258602);
+          return 0;
+        case 3: 
+          localein.abnv = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(258602);
+          return 0;
         }
-        localein.SessionId = locala.abFh.readString();
-        AppMethodBeat.o(224401);
+        localein.Vbl = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(258602);
         return 0;
       }
-      AppMethodBeat.o(224401);
+      AppMethodBeat.o(258602);
       return -1;
     }
   }

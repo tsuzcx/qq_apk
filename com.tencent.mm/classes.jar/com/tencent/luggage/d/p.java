@@ -25,81 +25,81 @@ import java.util.regex.Pattern;
 public class p
   extends n
 {
-  private o cqI;
-  private final MutableContextWrapper crM;
-  final Class<? extends com.tencent.luggage.webview.a> crN;
-  public q crO;
-  public com.tencent.luggage.webview.a crP;
-  boolean crQ;
-  public b crR;
-  private d crS;
-  private boolean crT;
-  private a.a crU;
+  private o eiB;
+  private final MutableContextWrapper ejG;
+  final Class<? extends com.tencent.luggage.webview.a> ejH;
+  public q ejI;
+  public com.tencent.luggage.webview.a ejJ;
+  boolean ejK;
+  public b ejL;
+  private d ejM;
+  private boolean ejN;
+  private a.a ejO;
   private Handler mHandler;
   public String mUrl;
   
   public p(Context paramContext, Class<? extends com.tencent.luggage.webview.a> paramClass)
   {
     AppMethodBeat.i(140424);
-    this.crQ = false;
-    this.crT = false;
-    this.crU = new a.a()
+    this.ejK = false;
+    this.ejN = false;
+    this.ejO = new a.a()
     {
-      private static boolean dA(String paramAnonymousString)
+      private void eK(String paramAnonymousString)
       {
-        AppMethodBeat.i(209276);
+        AppMethodBeat.i(219943);
+        if (!p.f(p.this))
+        {
+          if (eL(paramAnonymousString))
+          {
+            AppMethodBeat.o(219943);
+            return;
+          }
+          p.this.aoG();
+        }
+        AppMethodBeat.o(219943);
+      }
+      
+      private static boolean eL(String paramAnonymousString)
+      {
+        AppMethodBeat.i(219945);
         if ((paramAnonymousString == null) || (paramAnonymousString.length() == 0))
         {
-          AppMethodBeat.o(209276);
+          AppMethodBeat.o(219945);
           return false;
         }
         paramAnonymousString = Uri.parse(paramAnonymousString).getPath();
         if ((paramAnonymousString != null) && (paramAnonymousString.trim().endsWith("html")))
         {
-          AppMethodBeat.o(209276);
+          AppMethodBeat.o(219945);
           return true;
         }
-        AppMethodBeat.o(209276);
+        AppMethodBeat.o(219945);
         return false;
-      }
-      
-      private void dz(String paramAnonymousString)
-      {
-        AppMethodBeat.i(209273);
-        if (!p.f(p.this))
-        {
-          if (dA(paramAnonymousString))
-          {
-            AppMethodBeat.o(209273);
-            return;
-          }
-          p.this.Oy();
-        }
-        AppMethodBeat.o(209273);
       }
       
       public final WebResourceResponse a(WebResourceRequest paramAnonymousWebResourceRequest, Bundle paramAnonymousBundle)
       {
-        AppMethodBeat.i(209268);
-        dz(paramAnonymousWebResourceRequest.getUrl().toString());
+        AppMethodBeat.i(219953);
+        eK(paramAnonymousWebResourceRequest.getUrl().toString());
         if (p.d(p.this) != null)
         {
           paramAnonymousBundle = p.d(p.this).a(paramAnonymousWebResourceRequest, paramAnonymousBundle);
           if (paramAnonymousBundle != null)
           {
-            AppMethodBeat.o(209268);
+            AppMethodBeat.o(219953);
             return paramAnonymousBundle;
           }
         }
-        paramAnonymousWebResourceRequest = p.e(p.this).eq(paramAnonymousWebResourceRequest.getUrl().toString());
-        AppMethodBeat.o(209268);
+        paramAnonymousWebResourceRequest = p.e(p.this).fN(paramAnonymousWebResourceRequest.getUrl().toString());
+        AppMethodBeat.o(219953);
         return paramAnonymousWebResourceRequest;
       }
       
-      public final boolean du(String paramAnonymousString)
+      public final boolean eF(String paramAnonymousString)
       {
-        AppMethodBeat.i(209257);
-        Iterator localIterator = p.a(p.this).cEi.iterator();
+        AppMethodBeat.i(219947);
+        Iterator localIterator = p.a(p.this).exu.iterator();
         while (localIterator.hasNext())
         {
           Object localObject = (Pair)localIterator.next();
@@ -107,104 +107,110 @@ public class p
           localObject = (Pattern)((Pair)localObject).second;
           if ((localObject != null) && (((Pattern)localObject).matcher(paramAnonymousString).matches()))
           {
-            boolean bool = locale.SL();
-            AppMethodBeat.o(209257);
+            boolean bool = locale.atq();
+            AppMethodBeat.o(219947);
             return bool;
           }
         }
-        AppMethodBeat.o(209257);
+        AppMethodBeat.o(219947);
         return false;
       }
       
-      public final void dv(String paramAnonymousString)
+      public final void eG(String paramAnonymousString)
       {
-        AppMethodBeat.i(209261);
+        AppMethodBeat.i(219948);
         p.b(p.this);
         p.a(p.this, paramAnonymousString);
         p.c(p.this);
         if (p.d(p.this) != null) {
-          p.d(p.this).dv(paramAnonymousString);
+          p.d(p.this).eG(paramAnonymousString);
         }
-        AppMethodBeat.o(209261);
+        AppMethodBeat.o(219948);
       }
       
-      public final void dw(String paramAnonymousString)
+      public final void eH(String paramAnonymousString)
       {
-        AppMethodBeat.i(209263);
+        AppMethodBeat.i(219950);
         p.a(p.this, paramAnonymousString);
-        p.c(p.this).cqP.NR();
+        p.c(p.this).eiI.onReady();
         if (p.d(p.this) != null)
         {
-          p.c(p.this).dl(p.d(p.this).Oz());
-          p.d(p.this).dw(paramAnonymousString);
+          p.c(p.this).ey(p.d(p.this).aoH());
+          p.d(p.this).eH(paramAnonymousString);
         }
-        AppMethodBeat.o(209263);
+        AppMethodBeat.o(219950);
       }
       
-      public final WebResourceResponse dx(String paramAnonymousString)
+      public final WebResourceResponse eI(String paramAnonymousString)
       {
-        AppMethodBeat.i(209266);
-        dz(paramAnonymousString);
-        if (p.d(p.this) != null) {
-          p.d(p.this);
+        AppMethodBeat.i(219952);
+        eK(paramAnonymousString);
+        if (p.d(p.this) != null)
+        {
+          WebResourceResponse localWebResourceResponse = p.d(p.this).aoI();
+          if (localWebResourceResponse != null)
+          {
+            AppMethodBeat.o(219952);
+            return localWebResourceResponse;
+          }
         }
-        paramAnonymousString = p.e(p.this).eq(paramAnonymousString);
-        AppMethodBeat.o(209266);
+        paramAnonymousString = p.e(p.this).fN(paramAnonymousString);
+        AppMethodBeat.o(219952);
         return paramAnonymousString;
       }
       
-      public final String dy(String paramAnonymousString)
+      public final String eJ(String paramAnonymousString)
       {
-        AppMethodBeat.i(209270);
-        paramAnonymousString = p.c(p.this).cqP.dm(paramAnonymousString);
-        AppMethodBeat.o(209270);
+        AppMethodBeat.i(219954);
+        paramAnonymousString = p.c(p.this).eiI.ez(paramAnonymousString);
+        AppMethodBeat.o(219954);
         return paramAnonymousString;
       }
     };
-    this.crM = new MutableContextWrapper(paramContext);
+    this.ejG = new MutableContextWrapper(paramContext);
     paramContext = paramClass;
     if (paramClass == null) {
       paramContext = com.tencent.luggage.webview.default_impl.a.class;
     }
-    this.crN = paramContext;
+    this.ejH = paramContext;
     this.mHandler = new Handler(Looper.getMainLooper());
-    Ot();
-    this.crP = ((com.tencent.luggage.webview.a)org.a.a.ce(this.crN).ao(new Object[] { this.crM }).object);
-    this.crP.setWebCore(this);
-    this.crP.a(this.crU);
-    this.cqI = new o(this.crP);
+    aoB();
+    this.ejJ = ((com.tencent.luggage.webview.a)org.a.a.cQ(this.ejH).av(new Object[] { this.ejG }).object);
+    this.ejJ.setWebCore(this);
+    this.ejJ.a(this.ejO);
+    this.eiB = new o(this.ejJ);
     AppMethodBeat.o(140424);
   }
   
-  private void Ot()
+  private void aoB()
   {
     AppMethodBeat.i(140425);
-    this.crR = new b();
-    this.crS = new d();
-    Ou();
+    this.ejL = new b();
+    this.ejM = new d();
+    aoC();
     AppMethodBeat.o(140425);
   }
   
-  private void Ou()
+  private void aoC()
   {
     AppMethodBeat.i(140426);
-    this.crR.a(new com.tencent.luggage.webview.a.a(this.crM));
+    this.ejL.a(new com.tencent.luggage.webview.a.a(this.ejG));
     AppMethodBeat.o(140426);
   }
   
-  public final void Ov()
+  public final void aoD()
   {
     AppMethodBeat.i(140430);
-    if (this.crQ)
+    if (this.ejK)
     {
-      this.crQ = false;
-      Ot();
+      this.ejK = false;
+      aoB();
     }
     AppMethodBeat.o(140430);
   }
   
   @Deprecated
-  public final <T> T Ow()
+  public final <T> T aoE()
   {
     AppMethodBeat.i(140431);
     try
@@ -221,30 +227,30 @@ public class p
     return null;
   }
   
-  public final void Ox()
+  public final void aoF()
   {
-    AppMethodBeat.i(210244);
-    if (this.crP != null) {
-      this.crP.destroy();
+    AppMethodBeat.i(219944);
+    if (this.ejJ != null) {
+      this.ejJ.destroy();
     }
-    AppMethodBeat.o(210244);
+    AppMethodBeat.o(219944);
   }
   
-  public final void Oy()
+  public final void aoG()
   {
     try
     {
-      AppMethodBeat.i(210255);
-      if (!this.crT)
+      AppMethodBeat.i(219951);
+      if (!this.ejN)
       {
         Log.printInfoStack("Luggage.LuggageWebCore", "try inject jsbridge", new Object[0]);
-        this.cqI.NQ();
-        if (this.crO != null) {
-          this.cqI.dl(this.crO.Oz());
+        this.eiB.aob();
+        if (this.ejI != null) {
+          this.eiB.ey(this.ejI.aoH());
         }
-        this.crT = true;
+        this.ejN = true;
       }
-      AppMethodBeat.o(210255);
+      AppMethodBeat.o(219951);
       return;
     }
     finally {}
@@ -254,36 +260,36 @@ public class p
   {
     AppMethodBeat.i(140436);
     Log.i("Luggage.LuggageWebCore", "destroy");
-    if (!this.crQ) {
-      this.crP.destroy();
+    if (!this.ejK) {
+      this.ejJ.destroy();
     }
     AppMethodBeat.o(140436);
   }
   
-  public final void dt(String paramString)
+  public final void eE(String paramString)
   {
-    AppMethodBeat.i(210248);
-    this.crP.evaluateJavascript(paramString, null);
-    AppMethodBeat.o(210248);
+    AppMethodBeat.i(219946);
+    this.ejJ.evaluateJavascript(paramString, null);
+    AppMethodBeat.o(219946);
   }
   
   public final o getBridge()
   {
-    return this.cqI;
+    return this.eiB;
   }
   
   public final String getUserAgent()
   {
-    AppMethodBeat.i(210253);
-    String str = this.crP.getUserAgent();
-    AppMethodBeat.o(210253);
+    AppMethodBeat.i(219949);
+    String str = this.ejJ.getUserAgent();
+    AppMethodBeat.o(219949);
     return str;
   }
   
   public final View getView()
   {
     AppMethodBeat.i(140432);
-    View localView = this.crP.getView();
+    View localView = this.ejJ.getView();
     AppMethodBeat.o(140432);
     return localView;
   }
@@ -291,16 +297,16 @@ public class p
   public final void loadUrl(String paramString)
   {
     AppMethodBeat.i(140433);
-    this.crP.loadUrl(paramString);
+    this.ejJ.loadUrl(paramString);
     AppMethodBeat.o(140433);
   }
   
   public final void setContext(Context paramContext)
   {
     AppMethodBeat.i(140427);
-    this.crM.setBaseContext(paramContext);
-    if (this.crP != null) {
-      this.crP.setContext(paramContext);
+    this.ejG.setBaseContext(paramContext);
+    if (this.ejJ != null) {
+      this.ejJ.setContext(paramContext);
     }
     AppMethodBeat.o(140427);
   }
@@ -308,7 +314,7 @@ public class p
   public final void stopLoading()
   {
     AppMethodBeat.i(140434);
-    this.crP.stopLoading();
+    this.ejJ.stopLoading();
     AppMethodBeat.o(140434);
   }
 }

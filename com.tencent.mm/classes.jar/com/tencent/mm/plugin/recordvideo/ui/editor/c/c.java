@@ -11,165 +11,171 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import kotlin.a.ab;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.a.ah;
+import kotlin.a.p;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/TouchTracker;", "", "()V", "CalibrationDistance", "", "TAG", "", "boundArrayDst", "", "getBoundArrayDst", "()[F", "setBoundArrayDst", "([F)V", "boundArrayOut", "getBoundArrayOut", "setBoundArrayOut", "boundArraySrc", "getBoundArraySrc", "setBoundArraySrc", "clockwise", "", "hasInit", "height", "", "getHeight", "()I", "setHeight", "(I)V", "holdX", "getHoldX", "()F", "setHoldX", "(F)V", "holdY", "getHoldY", "setHoldY", "holdingThreshold", "getHoldingThreshold", "setHoldingThreshold", "lastDrag", "lastRotate", "lastStardAngle", "matrix", "Landroid/graphics/Matrix;", "getMatrix", "()Landroid/graphics/Matrix;", "setMatrix", "(Landroid/graphics/Matrix;)V", "maxScale", "getMaxScale", "setMaxScale", "minScale", "getMinScale", "setMinScale", "needVibrator", "pIds", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "pIndices", "pivotDst", "pivotType", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/TouchTracker$PivotType;", "pointDownRotate", "safeAreaRect", "Landroid/graphics/Rect;", "getSafeAreaRect", "()Landroid/graphics/Rect;", "setSafeAreaRect", "(Landroid/graphics/Rect;)V", "selfCalibration", "state", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/TouchTracker$TouchState;", "transStart", "transformBoundArray", "getTransformBoundArray", "setTransformBoundArray", "vibrator", "Landroid/os/Vibrator;", "width", "getWidth", "setWidth", "appendTouchEvent", "event", "Landroid/view/MotionEvent;", "findIndices", "", "findMaxBottom", "findMaxRight", "findMinLeft", "findMinTop", "getRotate", "inSafeArea", "newLeft", "newTop", "newRight", "newBottom", "resetHold", "updateMatrix", "m", "updateState", "isEqual", "input", "PivotType", "TouchState", "plugin-recordvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/TouchTracker;", "", "()V", "CalibrationDistance", "", "TAG", "", "boundArrayDst", "", "getBoundArrayDst", "()[F", "setBoundArrayDst", "([F)V", "boundArrayOut", "getBoundArrayOut", "setBoundArrayOut", "boundArraySrc", "getBoundArraySrc", "setBoundArraySrc", "clockwise", "", "hasInit", "height", "", "getHeight", "()I", "setHeight", "(I)V", "holdX", "getHoldX", "()F", "setHoldX", "(F)V", "holdY", "getHoldY", "setHoldY", "holdingThreshold", "getHoldingThreshold", "setHoldingThreshold", "lastDrag", "lastRotate", "lastStardAngle", "matrix", "Landroid/graphics/Matrix;", "getMatrix", "()Landroid/graphics/Matrix;", "setMatrix", "(Landroid/graphics/Matrix;)V", "maxScale", "getMaxScale", "setMaxScale", "minScale", "getMinScale", "setMinScale", "needVibrator", "pIds", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "pIndices", "pivotDst", "pivotType", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/TouchTracker$PivotType;", "pointDownRotate", "safeAreaRect", "Landroid/graphics/Rect;", "getSafeAreaRect", "()Landroid/graphics/Rect;", "setSafeAreaRect", "(Landroid/graphics/Rect;)V", "selfCalibration", "state", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/TouchTracker$TouchState;", "transStart", "transformBoundArray", "getTransformBoundArray", "setTransformBoundArray", "vibrator", "Landroid/os/Vibrator;", "width", "getWidth", "setWidth", "appendTouchEvent", "event", "Landroid/view/MotionEvent;", "findIndices", "", "findMaxBottom", "findMaxRight", "findMinLeft", "findMinTop", "getRotate", "inSafeArea", "newLeft", "newTop", "newRight", "newBottom", "resetHold", "updateMatrix", "m", "updateState", "isEqual", "input", "PivotType", "TouchState", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
 {
-  public Rect HGw;
-  private ArrayList<Integer> IdL;
-  private ArrayList<Integer> IdM;
-  private float[] IdN;
-  private float[] IdO;
-  private float[] IdP;
-  private b IdQ;
-  public int IdR;
-  private float IdS;
-  private float IdT;
-  private float[] IdU;
-  private float[] IdV;
-  public float[] IdW;
-  private float[] IdX;
-  private c.a IdY;
-  private boolean IdZ;
-  private float Iea;
-  private float Ieb;
-  private float Iec;
-  private boolean Ied;
-  private boolean Iee;
-  private int Ief;
+  public Rect NDV;
+  private ArrayList<Integer> Oab;
+  private ArrayList<Integer> Oac;
+  private float[] Oad;
+  private float[] Oae;
+  private float[] Oaf;
+  private b Oag;
+  public int Oah;
+  private float Oai;
+  private float Oaj;
+  private float[] Oak;
+  private float[] Oal;
+  public float[] Oam;
+  private float[] Oan;
+  private c.a Oao;
+  private boolean Oap;
+  private float Oaq;
+  private float Oar;
+  private float Oas;
+  private boolean Oat;
+  private boolean Oau;
+  private int Oav;
   private final String TAG;
-  public float aGN;
-  public float aGO;
-  public Matrix aHZ;
   private boolean hasInit;
   public int height;
-  private final Vibrator rqC;
+  public Matrix matrix;
+  public float maxScale;
+  public float minScale;
+  private final Vibrator uAL;
   public int width;
   
   public c()
   {
-    AppMethodBeat.i(222538);
+    AppMethodBeat.i(280173);
     this.TAG = "TouchTracker";
-    this.IdL = new ArrayList();
-    this.IdM = new ArrayList();
-    this.IdN = new float[2];
-    this.IdO = new float[4];
-    this.IdP = new float[2];
-    this.IdQ = b.Iej;
-    this.aHZ = new Matrix();
-    this.IdU = new float[8];
-    this.IdV = new float[8];
-    this.IdW = new float[4];
-    this.IdX = new float[4];
-    this.aGN = 10.0F;
-    this.aGO = 0.1F;
-    this.IdY = c.a.Ieg;
-    this.IdZ = true;
-    this.Iea = 15.0F;
+    this.Oab = new ArrayList();
+    this.Oac = new ArrayList();
+    this.Oad = new float[2];
+    this.Oae = new float[4];
+    this.Oaf = new float[2];
+    this.Oag = b.Oaz;
+    this.matrix = new Matrix();
+    this.Oak = new float[8];
+    this.Oal = new float[8];
+    this.Oam = new float[4];
+    this.Oan = new float[4];
+    this.maxScale = 10.0F;
+    this.minScale = 0.1F;
+    this.Oao = c.a.Oaw;
+    this.Oap = true;
+    this.Oaq = 15.0F;
     Object localObject = MMApplicationContext.getContext().getSystemService("vibrator");
     if (localObject == null)
     {
-      localObject = new t("null cannot be cast to non-null type android.os.Vibrator");
-      AppMethodBeat.o(222538);
+      localObject = new NullPointerException("null cannot be cast to non-null type android.os.Vibrator");
+      AppMethodBeat.o(280173);
       throw ((Throwable)localObject);
     }
-    this.rqC = ((Vibrator)localObject);
-    this.Iee = true;
-    this.aHZ.setScale(1.0F, 1.0F);
-    AppMethodBeat.o(222538);
+    this.uAL = ((Vibrator)localObject);
+    this.Oau = true;
+    this.matrix.setScale(1.0F, 1.0F);
+    AppMethodBeat.o(280173);
   }
   
-  private final void ai(MotionEvent paramMotionEvent)
+  private static boolean aN(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(222464);
-    Object localObject1;
-    Object localObject2;
-    if (this.IdL.size() == 1)
-    {
-      this.IdQ = b.Iek;
-      localObject1 = this.IdN;
-      localObject2 = this.IdM.get(0);
-      p.j(localObject2, "pIndices[0]");
-      localObject1[0] = paramMotionEvent.getX(((Number)localObject2).intValue());
-      localObject1 = this.IdN;
-      localObject2 = this.IdM.get(0);
-      p.j(localObject2, "pIndices[0]");
-      localObject1[1] = paramMotionEvent.getY(((Number)localObject2).intValue());
-      AppMethodBeat.o(222464);
-      return;
-    }
-    if (this.IdL.size() == 2)
-    {
-      this.IdQ = b.Iel;
-      if (this.IdY == c.a.Ieh) {
-        this.aHZ.mapPoints(this.IdP, new float[] { this.width / 2.0F, this.height / 2.0F });
-      }
-      localObject1 = new Matrix();
-      this.aHZ.invert((Matrix)localObject1);
-      aj(paramMotionEvent);
-      if ((p.compare(((Number)this.IdM.get(0)).intValue(), paramMotionEvent.getPointerCount()) < 0) && (p.compare(((Number)this.IdM.get(1)).intValue(), paramMotionEvent.getPointerCount()) < 0))
-      {
-        localObject2 = this.IdO;
-        Object localObject3 = this.IdM.get(0);
-        p.j(localObject3, "pIndices[0]");
-        float f1 = paramMotionEvent.getX(((Number)localObject3).intValue());
-        localObject3 = this.IdM.get(0);
-        p.j(localObject3, "pIndices[0]");
-        float f2 = paramMotionEvent.getY(((Number)localObject3).intValue());
-        localObject3 = this.IdM.get(1);
-        p.j(localObject3, "pIndices[1]");
-        float f3 = paramMotionEvent.getX(((Number)localObject3).intValue());
-        localObject3 = this.IdM.get(1);
-        p.j(localObject3, "pIndices[1]");
-        ((Matrix)localObject1).mapPoints((float[])localObject2, new float[] { f1, f2, f3, paramMotionEvent.getY(((Number)localObject3).intValue()) });
-      }
-    }
-    AppMethodBeat.o(222464);
-  }
-  
-  private static boolean ai(float paramFloat1, float paramFloat2)
-  {
-    AppMethodBeat.i(222523);
+    AppMethodBeat.i(280260);
     if (Math.abs(paramFloat1 - paramFloat2) < 0.2F)
     {
-      AppMethodBeat.o(222523);
+      AppMethodBeat.o(280260);
       return true;
     }
-    AppMethodBeat.o(222523);
+    AppMethodBeat.o(280260);
     return false;
   }
   
-  private final void aj(MotionEvent paramMotionEvent)
+  private final void al(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(222471);
-    Iterator localIterator = ((Iterable)j.p((Collection)this.IdL)).iterator();
+    AppMethodBeat.i(280197);
+    Object localObject1;
+    Object localObject2;
+    if (this.Oab.size() == 1)
+    {
+      this.Oag = b.OaA;
+      localObject1 = this.Oad;
+      localObject2 = this.Oac.get(0);
+      s.s(localObject2, "pIndices[0]");
+      localObject1[0] = paramMotionEvent.getX(((Number)localObject2).intValue());
+      localObject1 = this.Oad;
+      localObject2 = this.Oac.get(0);
+      s.s(localObject2, "pIndices[0]");
+      localObject1[1] = paramMotionEvent.getY(((Number)localObject2).intValue());
+      AppMethodBeat.o(280197);
+      return;
+    }
+    if (this.Oab.size() == 2)
+    {
+      this.Oag = b.OaB;
+      if (this.Oao == c.a.Oax) {
+        this.matrix.mapPoints(this.Oaf, new float[] { this.width / 2.0F, this.height / 2.0F });
+      }
+      localObject1 = new Matrix();
+      this.matrix.invert((Matrix)localObject1);
+      am(paramMotionEvent);
+      localObject2 = this.Oac.get(0);
+      s.s(localObject2, "pIndices[0]");
+      if (((Number)localObject2).intValue() < paramMotionEvent.getPointerCount())
+      {
+        localObject2 = this.Oac.get(1);
+        s.s(localObject2, "pIndices[1]");
+        if (((Number)localObject2).intValue() < paramMotionEvent.getPointerCount())
+        {
+          localObject2 = this.Oae;
+          Object localObject3 = this.Oac.get(0);
+          s.s(localObject3, "pIndices[0]");
+          float f1 = paramMotionEvent.getX(((Number)localObject3).intValue());
+          localObject3 = this.Oac.get(0);
+          s.s(localObject3, "pIndices[0]");
+          float f2 = paramMotionEvent.getY(((Number)localObject3).intValue());
+          localObject3 = this.Oac.get(1);
+          s.s(localObject3, "pIndices[1]");
+          float f3 = paramMotionEvent.getX(((Number)localObject3).intValue());
+          localObject3 = this.Oac.get(1);
+          s.s(localObject3, "pIndices[1]");
+          ((Matrix)localObject1).mapPoints((float[])localObject2, new float[] { f1, f2, f3, paramMotionEvent.getY(((Number)localObject3).intValue()) });
+        }
+      }
+    }
+    AppMethodBeat.o(280197);
+  }
+  
+  private final void am(MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(280211);
+    Iterator localIterator = ((Iterable)p.F((Collection)this.Oab)).iterator();
     while (localIterator.hasNext())
     {
-      int i = ((ab)localIterator).zD();
-      ArrayList localArrayList = this.IdM;
-      Object localObject = this.IdL.get(i);
-      p.j(localObject, "pIds[i]");
+      int i = ((ah)localIterator).Zo();
+      ArrayList localArrayList = this.Oac;
+      Object localObject = this.Oab.get(i);
+      s.s(localObject, "pIds[i]");
       localArrayList.set(i, Integer.valueOf(paramMotionEvent.findPointerIndex(((Number)localObject).intValue())));
     }
-    AppMethodBeat.o(222471);
+    AppMethodBeat.o(280211);
   }
   
-  private final void fzi()
+  private final void gKU()
   {
-    this.IdS = 0.0F;
-    this.IdT = 0.0F;
+    this.Oai = 0.0F;
+    this.Oaj = 0.0F;
   }
   
-  private final float fzj()
+  private final float gKV()
   {
-    AppMethodBeat.i(222496);
-    float f2 = this.IdV[0];
-    float[] arrayOfFloat = this.IdV;
+    AppMethodBeat.i(280242);
+    float f2 = this.Oal[0];
+    float[] arrayOfFloat = this.Oal;
     int k = arrayOfFloat.length;
     int j = 0;
     int i = 0;
@@ -195,15 +201,15 @@ public final class c
         f1 = Math.min(f2, f3);
       }
     }
-    AppMethodBeat.o(222496);
+    AppMethodBeat.o(280242);
     return f2;
   }
   
-  private final float fzk()
+  private final float gKW()
   {
-    AppMethodBeat.i(222506);
-    float f2 = this.IdV[1];
-    float[] arrayOfFloat = this.IdV;
+    AppMethodBeat.i(280248);
+    float f2 = this.Oal[1];
+    float[] arrayOfFloat = this.Oal;
     int k = arrayOfFloat.length;
     int j = 0;
     int i = 0;
@@ -229,15 +235,15 @@ public final class c
         f1 = Math.min(f2, f3);
       }
     }
-    AppMethodBeat.o(222506);
+    AppMethodBeat.o(280248);
     return f2;
   }
   
-  private final float fzl()
+  private final float gKX()
   {
-    AppMethodBeat.i(222512);
-    float f2 = this.IdV[0];
-    float[] arrayOfFloat = this.IdV;
+    AppMethodBeat.i(280253);
+    float f2 = this.Oal[0];
+    float[] arrayOfFloat = this.Oal;
     int k = arrayOfFloat.length;
     int j = 0;
     int i = 0;
@@ -263,15 +269,15 @@ public final class c
         f1 = Math.max(f2, f3);
       }
     }
-    AppMethodBeat.o(222512);
+    AppMethodBeat.o(280253);
     return f2;
   }
   
-  private final float fzm()
+  private final float gKY()
   {
-    AppMethodBeat.i(222520);
-    float f2 = this.IdV[1];
-    float[] arrayOfFloat = this.IdV;
+    AppMethodBeat.i(280256);
+    float f2 = this.Oal[1];
+    float[] arrayOfFloat = this.Oal;
     int k = arrayOfFloat.length;
     int j = 0;
     int i = 0;
@@ -297,26 +303,26 @@ public final class c
         f1 = Math.max(f2, f3);
       }
     }
-    AppMethodBeat.o(222520);
+    AppMethodBeat.o(280256);
     return f2;
   }
   
-  private final float h(Matrix paramMatrix)
+  private final float j(Matrix paramMatrix)
   {
-    AppMethodBeat.i(222452);
+    AppMethodBeat.i(280179);
     float[] arrayOfFloat = new float[9];
     paramMatrix.getValues(arrayOfFloat);
     float f2 = (float)(Math.atan2(arrayOfFloat[1], arrayOfFloat[0]) * 57.295779513082323D);
     float f1;
-    if ((this.Iec < -90.0F) && (f2 > 0.0F)) {
+    if ((this.Oas < -90.0F) && (f2 > 0.0F)) {
       f1 = f2 - 360.0F;
     }
     for (;;)
     {
-      AppMethodBeat.o(222452);
+      AppMethodBeat.o(280179);
       return f1;
       f1 = f2;
-      if (this.Iec > 90.0F)
+      if (this.Oas > 90.0F)
       {
         f1 = f2;
         if (f2 < 0.0F) {
@@ -326,58 +332,42 @@ public final class c
     }
   }
   
-  private final boolean s(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  private final boolean w(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    AppMethodBeat.i(222483);
-    Rect localRect = this.HGw;
-    if (localRect == null) {
-      p.iCn();
-    }
+    AppMethodBeat.i(280222);
+    Rect localRect = this.NDV;
+    s.checkNotNull(localRect);
     if (paramFloat1 > localRect.left)
     {
-      localRect = this.HGw;
-      if (localRect == null) {
-        p.iCn();
-      }
+      localRect = this.NDV;
+      s.checkNotNull(localRect);
       if (paramFloat1 < localRect.right)
       {
-        localRect = this.HGw;
-        if (localRect == null) {
-          p.iCn();
-        }
+        localRect = this.NDV;
+        s.checkNotNull(localRect);
         if (paramFloat2 > localRect.top)
         {
-          localRect = this.HGw;
-          if (localRect == null) {
-            p.iCn();
-          }
+          localRect = this.NDV;
+          s.checkNotNull(localRect);
           if (paramFloat2 < localRect.bottom)
           {
-            localRect = this.HGw;
-            if (localRect == null) {
-              p.iCn();
-            }
+            localRect = this.NDV;
+            s.checkNotNull(localRect);
             if (paramFloat3 > localRect.left)
             {
-              localRect = this.HGw;
-              if (localRect == null) {
-                p.iCn();
-              }
+              localRect = this.NDV;
+              s.checkNotNull(localRect);
               if (paramFloat3 < localRect.right)
               {
-                localRect = this.HGw;
-                if (localRect == null) {
-                  p.iCn();
-                }
+                localRect = this.NDV;
+                s.checkNotNull(localRect);
                 if (paramFloat4 > localRect.top)
                 {
-                  localRect = this.HGw;
-                  if (localRect == null) {
-                    p.iCn();
-                  }
+                  localRect = this.NDV;
+                  s.checkNotNull(localRect);
                   if (paramFloat4 < localRect.bottom)
                   {
-                    AppMethodBeat.o(222483);
+                    AppMethodBeat.o(280222);
                     return true;
                   }
                 }
@@ -387,336 +377,317 @@ public final class c
         }
       }
     }
-    AppMethodBeat.o(222483);
+    AppMethodBeat.o(280222);
     return false;
   }
   
-  public final boolean ah(MotionEvent paramMotionEvent)
+  public final boolean ak(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(222445);
-    p.k(paramMotionEvent, "event");
+    AppMethodBeat.i(280296);
+    s.u(paramMotionEvent, "event");
     switch (paramMotionEvent.getActionMasked())
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(222445);
+      AppMethodBeat.o(280296);
       return true;
       Object localObject1 = new float[2];
       Object localObject2 = new Matrix();
-      this.aHZ.invert((Matrix)localObject2);
+      this.matrix.invert((Matrix)localObject2);
       ((Matrix)localObject2).mapPoints((float[])localObject1, new float[] { paramMotionEvent.getX(), paramMotionEvent.getY() });
       if ((localObject1[0] < 0.0F) || (localObject1[0] > this.width) || (localObject1[1] < 0.0F) || (localObject1[1] > this.height))
       {
-        AppMethodBeat.o(222445);
+        AppMethodBeat.o(280296);
         return false;
       }
-      this.IdL.add(Integer.valueOf(paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex())));
-      this.IdM.add(Integer.valueOf(paramMotionEvent.getActionIndex()));
-      ai(paramMotionEvent);
+      this.Oab.add(Integer.valueOf(paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex())));
+      this.Oac.add(Integer.valueOf(paramMotionEvent.getActionIndex()));
+      al(paramMotionEvent);
       if (!this.hasInit)
       {
-        localObject1 = this.IdM.get(0);
-        p.j(localObject1, "pIndices[0]");
+        localObject1 = this.Oac.get(0);
+        s.s(localObject1, "pIndices[0]");
         float f1 = paramMotionEvent.getX(((Number)localObject1).intValue());
-        localObject1 = this.IdM.get(0);
-        p.j(localObject1, "pIndices[0]");
+        localObject1 = this.Oac.get(0);
+        s.s(localObject1, "pIndices[0]");
         float f2 = paramMotionEvent.getY(((Number)localObject1).intValue());
-        float f3 = this.IdN[0];
-        float f4 = this.IdN[1];
-        this.aHZ.postTranslate(f1 - f3, f2 - f4);
-        this.IdN[0] = f1;
-        this.IdN[1] = f2;
-        this.aHZ.mapPoints(this.IdV, this.IdU);
-        this.IdW[0] = fzj();
-        this.IdW[1] = fzk();
-        this.IdW[2] = fzl();
-        this.IdW[3] = fzm();
+        float f3 = this.Oad[0];
+        float f4 = this.Oad[1];
+        this.matrix.postTranslate(f1 - f3, f2 - f4);
+        this.Oad[0] = f1;
+        this.Oad[1] = f2;
+        this.matrix.mapPoints(this.Oal, this.Oak);
+        this.Oam[0] = gKV();
+        this.Oam[1] = gKW();
+        this.Oam[2] = gKX();
+        this.Oam[3] = gKY();
         this.hasInit = true;
         continue;
-        this.IdL.add(Integer.valueOf(paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex())));
-        this.IdM.add(Integer.valueOf(paramMotionEvent.getActionIndex()));
-        ai(paramMotionEvent);
+        this.Oab.add(Integer.valueOf(paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex())));
+        this.Oac.add(Integer.valueOf(paramMotionEvent.getActionIndex()));
+        al(paramMotionEvent);
         if (paramMotionEvent.getPointerCount() == 2)
         {
-          this.Iec = 0.0F;
-          this.Ieb = h(this.aHZ);
-          this.Iec = this.Ieb;
-          Log.i(this.TAG, "downRotate :" + this.Ieb);
+          this.Oas = 0.0F;
+          this.Oar = j(this.matrix);
+          this.Oas = this.Oar;
+          Log.i(this.TAG, s.X("downRotate :", Float.valueOf(this.Oar)));
           continue;
-          aj(paramMotionEvent);
+          am(paramMotionEvent);
           if (paramMotionEvent.getPointerCount() == 1) {
-            this.IdQ = b.Iek;
+            this.Oag = b.OaA;
           }
-          localObject1 = this.IdQ;
-          switch (d.$EnumSwitchMapping$0[localObject1.ordinal()])
+          localObject1 = this.Oag;
+          switch (c.$EnumSwitchMapping$0[localObject1.ordinal()])
           {
           default: 
             break;
           case 1: 
-            localObject1 = this.IdM.get(0);
-            p.j(localObject1, "pIndices[0]");
+            localObject1 = this.Oac.get(0);
+            s.s(localObject1, "pIndices[0]");
             f2 = paramMotionEvent.getX(((Number)localObject1).intValue());
-            localObject1 = this.IdM.get(0);
-            p.j(localObject1, "pIndices[0]");
+            localObject1 = this.Oac.get(0);
+            s.s(localObject1, "pIndices[0]");
             f3 = paramMotionEvent.getY(((Number)localObject1).intValue());
-            f4 = f2 - this.IdN[0];
-            f1 = f3 - this.IdN[1];
-            this.aHZ.postTranslate(f4, f1);
-            this.IdN[0] = f2;
-            this.IdN[1] = f3;
-            this.aHZ.mapPoints(this.IdV, this.IdU);
-            this.IdW[0] = fzj();
-            this.IdW[1] = fzk();
-            this.IdW[2] = fzl();
-            this.IdW[3] = fzm();
-            if ((this.HGw != null) && (!s(this.IdW[0] + f4, this.IdW[1] + f1, this.IdW[2] + f4, this.IdW[3] + f1)))
+            f4 = f2 - this.Oad[0];
+            f1 = f3 - this.Oad[1];
+            this.matrix.postTranslate(f4, f1);
+            this.Oad[0] = f2;
+            this.Oad[1] = f3;
+            this.matrix.mapPoints(this.Oal, this.Oak);
+            this.Oam[0] = gKV();
+            this.Oam[1] = gKW();
+            this.Oam[2] = gKX();
+            this.Oam[3] = gKY();
+            if ((this.NDV != null) && (!w(this.Oam[0] + f4, this.Oam[1] + f1, this.Oam[2] + f4, this.Oam[3] + f1)))
             {
               f2 = Math.abs(f4);
               f1 = Math.abs(f1);
-              paramMotionEvent = this.HGw;
-              if (paramMotionEvent == null) {
-                p.iCn();
-              }
-              if ((paramMotionEvent.left >= this.IdW[0]) && (this.IdS <= this.IdR))
+              paramMotionEvent = this.NDV;
+              s.checkNotNull(paramMotionEvent);
+              if ((paramMotionEvent.left >= this.Oam[0]) && (this.Oai <= this.Oah))
               {
-                paramMotionEvent = this.aHZ;
-                localObject1 = this.HGw;
-                if (localObject1 == null) {
-                  p.iCn();
-                }
-                paramMotionEvent.postTranslate(((Rect)localObject1).left - this.IdW[0], 0.0F);
-                this.IdS += f2;
+                paramMotionEvent = this.matrix;
+                localObject1 = this.NDV;
+                s.checkNotNull(localObject1);
+                paramMotionEvent.postTranslate(((Rect)localObject1).left - this.Oam[0], 0.0F);
+                this.Oai += f2;
               }
-              paramMotionEvent = this.HGw;
-              if (paramMotionEvent == null) {
-                p.iCn();
-              }
-              if ((paramMotionEvent.top >= this.IdW[1]) && (this.IdT <= this.IdR))
+              paramMotionEvent = this.NDV;
+              s.checkNotNull(paramMotionEvent);
+              if ((paramMotionEvent.top >= this.Oam[1]) && (this.Oaj <= this.Oah))
               {
-                paramMotionEvent = this.aHZ;
-                localObject1 = this.HGw;
-                if (localObject1 == null) {
-                  p.iCn();
-                }
-                paramMotionEvent.postTranslate(0.0F, ((Rect)localObject1).top - this.IdW[1]);
-                this.IdT += f1;
+                paramMotionEvent = this.matrix;
+                localObject1 = this.NDV;
+                s.checkNotNull(localObject1);
+                paramMotionEvent.postTranslate(0.0F, ((Rect)localObject1).top - this.Oam[1]);
+                this.Oaj += f1;
               }
-              paramMotionEvent = this.HGw;
-              if (paramMotionEvent == null) {
-                p.iCn();
-              }
-              if ((paramMotionEvent.right <= this.IdW[2]) && (this.IdS <= this.IdR))
+              paramMotionEvent = this.NDV;
+              s.checkNotNull(paramMotionEvent);
+              if ((paramMotionEvent.right <= this.Oam[2]) && (this.Oai <= this.Oah))
               {
-                paramMotionEvent = this.aHZ;
-                localObject1 = this.HGw;
-                if (localObject1 == null) {
-                  p.iCn();
-                }
-                paramMotionEvent.postTranslate(((Rect)localObject1).right - this.IdW[2], 0.0F);
-                this.IdS = (f2 + this.IdS);
+                paramMotionEvent = this.matrix;
+                localObject1 = this.NDV;
+                s.checkNotNull(localObject1);
+                paramMotionEvent.postTranslate(((Rect)localObject1).right - this.Oam[2], 0.0F);
+                this.Oai = (f2 + this.Oai);
               }
-              paramMotionEvent = this.HGw;
-              if (paramMotionEvent == null) {
-                p.iCn();
-              }
-              if ((paramMotionEvent.bottom <= this.IdW[3]) && (this.IdT <= this.IdR))
+              paramMotionEvent = this.NDV;
+              s.checkNotNull(paramMotionEvent);
+              if ((paramMotionEvent.bottom <= this.Oam[3]) && (this.Oaj <= this.Oah))
               {
-                paramMotionEvent = this.aHZ;
-                localObject1 = this.HGw;
-                if (localObject1 == null) {
-                  p.iCn();
-                }
-                paramMotionEvent.postTranslate(0.0F, ((Rect)localObject1).bottom - this.IdW[3]);
-                this.IdT += f1;
+                paramMotionEvent = this.matrix;
+                localObject1 = this.NDV;
+                s.checkNotNull(localObject1);
+                paramMotionEvent.postTranslate(0.0F, ((Rect)localObject1).bottom - this.Oam[3]);
+                this.Oaj += f1;
               }
             }
             else
             {
-              fzi();
+              gKU();
             }
             break;
           case 2: 
-            localObject1 = this.IdM.get(0);
-            p.j(localObject1, "pIndices[0]");
+            localObject1 = this.Oac.get(0);
+            s.s(localObject1, "pIndices[0]");
             f1 = paramMotionEvent.getX(((Number)localObject1).intValue());
-            localObject1 = this.IdM.get(0);
-            p.j(localObject1, "pIndices[0]");
+            localObject1 = this.Oac.get(0);
+            s.s(localObject1, "pIndices[0]");
             f2 = paramMotionEvent.getY(((Number)localObject1).intValue());
-            localObject1 = this.IdM.get(1);
-            p.j(localObject1, "pIndices[1]");
+            localObject1 = this.Oac.get(1);
+            s.s(localObject1, "pIndices[1]");
             f3 = paramMotionEvent.getX(((Number)localObject1).intValue());
-            localObject1 = this.IdM.get(1);
-            p.j(localObject1, "pIndices[1]");
+            localObject1 = this.Oac.get(1);
+            s.s(localObject1, "pIndices[1]");
             f4 = paramMotionEvent.getY(((Number)localObject1).intValue());
-            this.aHZ.setPolyToPoly(this.IdO, 0, new float[] { f1, f2, f3, f4 }, 0, 2);
+            this.matrix.setPolyToPoly(this.Oae, 0, new float[] { f1, f2, f3, f4 }, 0, 2);
             localObject1 = new float[2];
-            localObject2 = this.IdM.get(0);
-            p.j(localObject2, "pIndices[0]");
+            localObject2 = this.Oac.get(0);
+            s.s(localObject2, "pIndices[0]");
             f1 = paramMotionEvent.getX(((Number)localObject2).intValue());
-            localObject2 = this.IdM.get(1);
-            p.j(localObject2, "pIndices[1]");
+            localObject2 = this.Oac.get(1);
+            s.s(localObject2, "pIndices[1]");
             localObject1[0] = ((paramMotionEvent.getX(((Number)localObject2).intValue()) + f1) / 2.0F);
-            localObject2 = this.IdM.get(0);
-            p.j(localObject2, "pIndices[0]");
+            localObject2 = this.Oac.get(0);
+            s.s(localObject2, "pIndices[0]");
             f1 = paramMotionEvent.getY(((Number)localObject2).intValue());
-            localObject2 = this.IdM.get(1);
-            p.j(localObject2, "pIndices[1]");
+            localObject2 = this.Oac.get(1);
+            s.s(localObject2, "pIndices[1]");
             localObject1[1] = ((paramMotionEvent.getY(((Number)localObject2).intValue()) + f1) / 2.0F);
-            if (this.IdZ)
+            if (this.Oap)
             {
-              f1 = h(this.aHZ);
-              if (Math.abs(f1 - this.Ieb) > this.Iea) {
-                break label1729;
+              f1 = j(this.matrix);
+              if (Math.abs(f1 - this.Oar) > this.Oaq) {
+                break label1697;
               }
-              this.aHZ.postRotate(f1 - this.Ieb, localObject1[0], localObject1[1]);
-              if ((!ai(this.Iec, this.Ieb)) && ((int)this.Ieb % 90 == 0) && (this.Iee))
+              this.matrix.postRotate(f1 - this.Oar, localObject1[0], localObject1[1]);
+              if ((!aN(this.Oas, this.Oar)) && ((int)this.Oar % 90 == 0) && (this.Oau))
               {
-                paramMotionEvent = this.rqC;
+                paramMotionEvent = this.uAL;
                 if (paramMotionEvent != null) {
                   paramMotionEvent.vibrate(10L);
                 }
-                this.Iee = false;
-                this.Iec = this.Ieb;
+                this.Oau = false;
+                this.Oas = this.Oar;
               }
-              if (f1 >= this.Ieb) {
-                break label1723;
+              if (f1 >= this.Oar) {
+                break label1691;
               }
             }
-            label1723:
+            label1691:
             for (boolean bool = true;; bool = false)
             {
-              this.Ied = bool;
-              if (this.IdY == c.a.Ieh)
+              this.Oat = bool;
+              if (this.Oao == c.a.Oax)
               {
                 paramMotionEvent = new float[2];
-                this.aHZ.mapPoints(paramMotionEvent, new float[] { this.width / 2.0F, this.height / 2.0F });
-                this.aHZ.postTranslate(this.IdP[0] - paramMotionEvent[0], this.IdP[1] - paramMotionEvent[1]);
+                this.matrix.mapPoints(paramMotionEvent, new float[] { this.width / 2.0F, this.height / 2.0F });
+                this.matrix.postTranslate(this.Oaf[0] - paramMotionEvent[0], this.Oaf[1] - paramMotionEvent[1]);
               }
-              paramMotionEvent = b.IdK;
-              b.a.a(this.aHZ, (float[])localObject1, this.aGO, this.aGN);
-              this.aHZ.mapPoints(this.IdV, this.IdU);
-              this.IdW[0] = fzj();
-              this.IdW[1] = fzk();
-              this.IdW[2] = fzl();
-              this.IdW[3] = fzm();
+              paramMotionEvent = b.Oaa;
+              b.a.a(this.matrix, (float[])localObject1, this.minScale, this.maxScale);
+              this.matrix.mapPoints(this.Oal, this.Oak);
+              this.Oam[0] = gKV();
+              this.Oam[1] = gKW();
+              this.Oam[2] = gKX();
+              this.Oam[3] = gKY();
               break;
             }
-            label1729:
-            if (f1 - this.Ieb > 0.0F)
+            label1697:
+            if (f1 - this.Oar > 0.0F)
             {
-              f1 = this.Iea;
-              label1745:
-              this.aHZ.postRotate(f1, localObject1[0], localObject1[1]);
-              f1 = h(this.aHZ);
-              if (((!this.Ied) || (f1 > this.Iec + 0.5D)) && (f1 > this.Iec - 0.5D)) {
-                break label1958;
+              f1 = this.Oaq;
+              label1713:
+              this.matrix.postRotate(f1, localObject1[0], localObject1[1]);
+              f1 = j(this.matrix);
+              if (((!this.Oat) || (f1 > this.Oas + 0.5D)) && (f1 > this.Oas - 0.5D)) {
+                break label1926;
               }
               i = (int)((f1 - 90.0F) / 90.0F) * 90;
-              if ((Math.abs(f1 - i) <= this.Iea) && (f1 >= i))
+              if ((Math.abs(f1 - i) <= this.Oaq) && (f1 >= i))
               {
-                this.aHZ.postRotate(f1 - i, localObject1[0], localObject1[1]);
-                if ((!ai(this.Ieb, i)) || (this.Iee))
+                this.matrix.postRotate(f1 - i, localObject1[0], localObject1[1]);
+                if ((!aN(this.Oar, i)) || (this.Oau))
                 {
-                  this.Ieb = i;
-                  this.Iee = false;
-                  paramMotionEvent = this.rqC;
+                  this.Oar = i;
+                  this.Oau = false;
+                  paramMotionEvent = this.uAL;
                   if (paramMotionEvent != null) {
                     paramMotionEvent.vibrate(10L);
                   }
                 }
               }
-              if (this.Ief != i)
+              if (this.Oav != i)
               {
-                this.Ief = i;
-                this.Iee = true;
+                this.Oav = i;
+                this.Oau = true;
               }
             }
-            for (this.Ied = true;; this.Ied = false)
+            for (this.Oat = true;; this.Oat = false)
             {
-              this.Iec = f1;
+              this.Oas = f1;
               break;
-              f1 = -this.Iea;
-              break label1745;
-              label1958:
+              f1 = -this.Oaq;
+              break label1713;
+              label1926:
               i = (int)((90.0F + f1) / 90.0F) * 90;
-              if ((Math.abs(f1 - i) <= this.Iea) && (f1 <= i))
+              if ((Math.abs(f1 - i) <= this.Oaq) && (f1 <= i))
               {
-                this.aHZ.postRotate(f1 - i, localObject1[0], localObject1[1]);
-                if ((!ai(this.Ieb, i)) || (this.Iee))
+                this.matrix.postRotate(f1 - i, localObject1[0], localObject1[1]);
+                if ((!aN(this.Oar, i)) || (this.Oau))
                 {
-                  this.Ieb = i;
-                  this.Iee = false;
-                  paramMotionEvent = this.rqC;
+                  this.Oar = i;
+                  this.Oau = false;
+                  paramMotionEvent = this.uAL;
                   if (paramMotionEvent != null) {
                     paramMotionEvent.vibrate(10L);
                   }
                 }
               }
-              if (this.Ief != i)
+              if (this.Oav != i)
               {
-                this.Ief = i;
-                this.Iee = true;
+                this.Oav = i;
+                this.Oau = true;
               }
             }
-            aj(paramMotionEvent);
-            int i = this.IdM.indexOf(Integer.valueOf(paramMotionEvent.getActionIndex()));
-            this.IdM.remove(i);
-            this.IdL.remove(i);
-            ai(paramMotionEvent);
+            am(paramMotionEvent);
+            int i = this.Oac.indexOf(Integer.valueOf(paramMotionEvent.getActionIndex()));
+            this.Oac.remove(i);
+            this.Oab.remove(i);
+            al(paramMotionEvent);
             continue;
-            this.IdQ = b.Iej;
-            this.IdL.clear();
-            this.IdM.clear();
+            this.Oag = b.Oaz;
+            this.Oab.clear();
+            this.Oac.clear();
           }
         }
       }
     }
   }
   
-  public final void g(Matrix paramMatrix)
+  public final void i(Matrix paramMatrix)
   {
-    AppMethodBeat.i(222448);
-    p.k(paramMatrix, "m");
-    this.aHZ.set(paramMatrix);
-    this.aHZ.mapPoints(this.IdV, this.IdU);
-    this.IdW[0] = fzj();
-    this.IdW[1] = fzk();
-    this.IdW[2] = fzl();
-    this.IdW[3] = fzm();
-    AppMethodBeat.o(222448);
-  }
-  
-  public final void p(float[] paramArrayOfFloat)
-  {
-    AppMethodBeat.i(222397);
-    p.k(paramArrayOfFloat, "<set-?>");
-    this.IdU = paramArrayOfFloat;
-    AppMethodBeat.o(222397);
+    AppMethodBeat.i(280304);
+    s.u(paramMatrix, "m");
+    this.matrix.set(paramMatrix);
+    this.matrix.mapPoints(this.Oal, this.Oak);
+    this.Oam[0] = gKV();
+    this.Oam[1] = gKW();
+    this.Oam[2] = gKX();
+    this.Oam[3] = gKY();
+    AppMethodBeat.o(280304);
   }
   
   public final void setMatrix(Matrix paramMatrix)
   {
-    AppMethodBeat.i(222395);
-    p.k(paramMatrix, "<set-?>");
-    this.aHZ = paramMatrix;
-    AppMethodBeat.o(222395);
+    AppMethodBeat.i(280265);
+    s.u(paramMatrix, "<set-?>");
+    this.matrix = paramMatrix;
+    AppMethodBeat.o(280265);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/TouchTracker$TouchState;", "", "(Ljava/lang/String;I)V", "NONE", "DRAG", "SCALE", "plugin-recordvideo_release"})
+  public final void x(float[] paramArrayOfFloat)
+  {
+    AppMethodBeat.i(280271);
+    s.u(paramArrayOfFloat, "<set-?>");
+    this.Oak = paramArrayOfFloat;
+    AppMethodBeat.o(280271);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/TouchTracker$TouchState;", "", "(Ljava/lang/String;I)V", "NONE", "DRAG", "SCALE", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static enum b
   {
     static
     {
-      AppMethodBeat.i(216763);
-      b localb1 = new b("NONE", 0);
-      Iej = localb1;
-      b localb2 = new b("DRAG", 1);
-      Iek = localb2;
-      b localb3 = new b("SCALE", 2);
-      Iel = localb3;
-      Iem = new b[] { localb1, localb2, localb3 };
-      AppMethodBeat.o(216763);
+      AppMethodBeat.i(280187);
+      Oaz = new b("NONE", 0);
+      OaA = new b("DRAG", 1);
+      OaB = new b("SCALE", 2);
+      OaC = new b[] { Oaz, OaA, OaB };
+      AppMethodBeat.o(280187);
     }
     
     private b() {}
@@ -724,7 +695,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.c.c
  * JD-Core Version:    0.7.0.1
  */

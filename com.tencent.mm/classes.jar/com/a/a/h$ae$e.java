@@ -6,12 +6,12 @@ public enum h$ae$e
 {
   static
   {
-    AppMethodBeat.i(202015);
-    aAF = new e("auto", 0);
-    aAG = new e("optimizeQuality", 1);
-    aAH = new e("optimizeSpeed", 2);
-    aAI = new e[] { aAF, aAG, aAH };
-    AppMethodBeat.o(202015);
+    AppMethodBeat.i(207662);
+    cwv = new e("auto", 0);
+    cww = new e("optimizeQuality", 1);
+    cwx = new e("optimizeSpeed", 2);
+    cwy = new e[] { cwv, cww, cwx };
+    AppMethodBeat.o(207662);
   }
   
   private h$ae$e() {}

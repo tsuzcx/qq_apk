@@ -8,9 +8,9 @@ import java.util.Map.Entry;
 
 public final class a
 {
-  public static String cY(List<Map.Entry<String, Long>> paramList)
+  public static String eT(List<Map.Entry<String, Long>> paramList)
   {
-    AppMethodBeat.i(282264);
+    AppMethodBeat.i(271842);
     if (!paramList.isEmpty())
     {
       StringBuffer localStringBuffer = new StringBuffer();
@@ -21,10 +21,10 @@ public final class a
         localStringBuffer.append(Util.getSizeMB(((Long)localEntry.getValue()).longValue())).append(" -> ").append((String)localEntry.getKey()).append("\n");
       }
       paramList = localStringBuffer.toString();
-      AppMethodBeat.o(282264);
+      AppMethodBeat.o(271842);
       return paramList;
     }
-    AppMethodBeat.o(282264);
+    AppMethodBeat.o(271842);
     return "";
   }
 }

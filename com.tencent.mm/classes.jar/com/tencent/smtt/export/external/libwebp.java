@@ -18,35 +18,28 @@ public class libwebp
   private static boolean isMultiCore = false;
   private static libwebp mInstance = null;
   private static boolean mIsLoadLibSuccess = false;
+  private static String mModle = "";
   private int mBitmapType = 4;
   
   public static int checkIsHuaModel()
   {
-    int j = 1;
     AppMethodBeat.i(53237);
-    String str1 = Build.BRAND.trim().toLowerCase();
-    String str2 = Build.MODEL.trim().toLowerCase();
-    int k = 0;
-    int i = k;
-    if (str1 != null)
+    String str = Build.MANUFACTURER.trim().toLowerCase();
+    int j = 0;
+    int i = j;
+    if (str != null)
     {
-      i = k;
-      if (str1.length() > 0)
+      i = j;
+      if (str.length() > 0)
       {
-        i = k;
-        if (str1.contains("huawei")) {
+        i = j;
+        if (str.contains("huawei")) {
           i = 1;
         }
       }
     }
-    if ((str2 != null) && (str2.length() > 0) && (str2.contains("huawei"))) {
-      i = j;
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(53237);
-      return i;
-    }
+    AppMethodBeat.o(53237);
+    return i;
   }
   
   private String getCPUinfo()
@@ -205,7 +198,7 @@ public class libwebp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.export.external.libwebp
  * JD-Core Version:    0.7.0.1
  */

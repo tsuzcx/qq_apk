@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.m;
 public final class a$d
 {
   public static final int BG_3 = 2131099651;
-  public static final int FG_0 = 2131099749;
-  public static final int emoji_load_text_color = 2131100324;
-  public static final int icon_color = 2131100675;
-  public static final int red_text_color = 2131101071;
-  public static final int transparent = 2131101363;
+  public static final int FG_0 = 2131099791;
+  public static final int emoji_load_text_color = 2131100433;
+  public static final int icon_color = 2131100840;
+  public static final int red_text_color = 2131101251;
+  public static final int transparent = 2131101560;
 }
 
 

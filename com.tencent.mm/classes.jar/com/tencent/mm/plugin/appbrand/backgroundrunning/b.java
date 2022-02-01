@@ -7,9 +7,9 @@ public final class b
 {
   public static void a(String paramString1, int paramInt1, long paramLong, int paramInt2, String paramString2)
   {
-    AppMethodBeat.i(282146);
-    h.IzE.a(16742, new Object[] { paramString1, Integer.valueOf(paramInt1), Long.valueOf(paramLong), Integer.valueOf(paramInt2), paramString2, Integer.valueOf(0) });
-    AppMethodBeat.o(282146);
+    AppMethodBeat.i(318145);
+    h.OAn.b(16742, new Object[] { paramString1, Integer.valueOf(paramInt1), Long.valueOf(paramLong), Integer.valueOf(paramInt2), paramString2, Integer.valueOf(0) });
+    AppMethodBeat.o(318145);
   }
 }
 

@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.b;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader$FileEntry;", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader$FileEntry;"}, k=3, mv={1, 5, 1}, xi=48)
 final class bu$f
-  extends q
-  implements b<q.a, x>
+  extends u
+  implements b<s.a, ah>
 {
   bu$f(WxaPluginPkgInfo paramWxaPluginPkgInfo)
   {
@@ -17,7 +17,7 @@ final class bu$f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.bu.f
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ public class APBase64
   
   public static byte[] decode(String paramString)
   {
-    AppMethodBeat.i(253581);
+    AppMethodBeat.i(217205);
     paramString = paramString.getBytes();
     int k = paramString.length;
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(k);
@@ -41,7 +41,7 @@ public class APBase64
               if (j == 61)
               {
                 paramString = localByteArrayOutputStream.toByteArray();
-                AppMethodBeat.o(253581);
+                AppMethodBeat.o(217205);
                 return paramString;
               }
               n = base64DecodeChars[j];
@@ -57,7 +57,7 @@ public class APBase64
                   if (j == 61)
                   {
                     paramString = localByteArrayOutputStream.toByteArray();
-                    AppMethodBeat.o(253581);
+                    AppMethodBeat.o(217205);
                     return paramString;
                   }
                   j = base64DecodeChars[j];
@@ -69,7 +69,7 @@ public class APBase64
                       break;
                     }
                     paramString = localByteArrayOutputStream.toByteArray();
-                    AppMethodBeat.o(253581);
+                    AppMethodBeat.o(217205);
                     return paramString;
                   }
                 }
@@ -83,7 +83,7 @@ public class APBase64
   
   public static String encode(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(253580);
+    AppMethodBeat.i(217195);
     StringBuffer localStringBuffer = new StringBuffer();
     int j = paramArrayOfByte.length;
     int i = 0;
@@ -105,7 +105,7 @@ public class APBase64
       for (;;)
       {
         paramArrayOfByte = localStringBuffer.toString();
-        AppMethodBeat.o(253580);
+        AppMethodBeat.o(217195);
         return paramArrayOfByte;
         label92:
         m = n + 1;

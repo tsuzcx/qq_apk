@@ -10,12 +10,12 @@ import junit.framework.Assert;
 public final class k
   implements a
 {
-  private b kbt;
+  private b mBy;
   
   public k()
   {
     AppMethodBeat.i(158634);
-    this.kbt = new b();
+    this.mBy = new b();
     AppMethodBeat.o(158634);
   }
   
@@ -23,15 +23,15 @@ public final class k
   {
     AppMethodBeat.i(158636);
     Assert.assertNotNull(paramb);
-    this.kbt = paramb;
+    this.mBy = paramb;
     AppMethodBeat.o(158636);
   }
   
   public k(String paramString)
   {
     AppMethodBeat.i(158635);
-    this.kbt = com.eclipsesource.a.a.bb(paramString).pR();
-    if (this.kbt == null)
+    this.mBy = com.eclipsesource.a.a.co(paramString).Pc();
+    if (this.mBy == null)
     {
       paramString = new g(String.format("JSONArray string(%s) parse error.", new Object[] { paramString }));
       AppMethodBeat.o(158635);
@@ -42,17 +42,91 @@ public final class k
   
   public k(Collection paramCollection)
   {
-    AppMethodBeat.i(202056);
-    this.kbt = j.e(paramCollection);
-    AppMethodBeat.o(202056);
+    AppMethodBeat.i(230947);
+    this.mBy = j.t(paramCollection);
+    AppMethodBeat.o(230947);
   }
   
-  public final a E(int paramInt, boolean paramBoolean)
+  public final a A(double paramDouble)
+  {
+    AppMethodBeat.i(158639);
+    this.mBy.s(paramDouble);
+    AppMethodBeat.o(158639);
+    return this;
+  }
+  
+  public final a C(int paramInt, Object paramObject)
+  {
+    AppMethodBeat.i(158647);
+    for (;;)
+    {
+      b localb;
+      try
+      {
+        localb = this.mBy;
+        if ((paramObject instanceof c))
+        {
+          localb.a(paramInt, j.a((c)paramObject));
+          AppMethodBeat.o(158647);
+          return this;
+        }
+        if ((paramObject instanceof a))
+        {
+          localb.a(paramInt, j.a((a)paramObject));
+          continue;
+        }
+        if (!(paramObject instanceof Integer)) {
+          break label104;
+        }
+      }
+      catch (Exception paramObject)
+      {
+        paramObject = new g(paramObject);
+        AppMethodBeat.o(158647);
+        throw paramObject;
+      }
+      localb.bW(paramInt, ((Integer)paramObject).intValue());
+      continue;
+      label104:
+      if ((paramObject instanceof String))
+      {
+        paramObject = (String)paramObject;
+        localb.values.set(paramInt, com.eclipsesource.a.a.cn(paramObject));
+      }
+      else if ((paramObject instanceof Boolean))
+      {
+        localb.A(paramInt, ((Boolean)paramObject).booleanValue());
+      }
+      else if ((paramObject instanceof Long))
+      {
+        localb.f(paramInt, ((Long)paramObject).longValue());
+      }
+      else if ((paramObject instanceof Float))
+      {
+        float f = ((Float)paramObject).floatValue();
+        localb.values.set(paramInt, com.eclipsesource.a.a.aO(f));
+      }
+      else if ((paramObject instanceof Integer))
+      {
+        localb.bW(paramInt, ((Integer)paramObject).intValue());
+      }
+      else if ((paramObject instanceof Double))
+      {
+        localb.b(paramInt, ((Double)paramObject).doubleValue());
+      }
+      else if ((paramObject instanceof h))
+      {
+        localb.a(paramInt, (h)paramObject);
+      }
+    }
+  }
+  
+  public final a S(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(158643);
     try
     {
-      this.kbt.m(paramInt, paramBoolean);
+      this.mBy.A(paramInt, paramBoolean);
       AppMethodBeat.o(158643);
       return this;
     }
@@ -64,45 +138,20 @@ public final class k
     }
   }
   
-  public final a Ft(long paramLong)
-  {
-    AppMethodBeat.i(158641);
-    this.kbt.v(paramLong);
-    AppMethodBeat.o(158641);
-    return this;
-  }
-  
-  public final a bu(Object paramObject)
+  public final a cO(Object paramObject)
   {
     AppMethodBeat.i(158642);
-    j.a(this.kbt, paramObject);
+    j.a(this.mBy, paramObject);
     AppMethodBeat.o(158642);
     return this;
   }
   
-  public final a c(int paramInt, double paramDouble)
-  {
-    AppMethodBeat.i(158644);
-    try
-    {
-      this.kbt.a(paramInt, paramDouble);
-      AppMethodBeat.o(158644);
-      return this;
-    }
-    catch (Exception localException)
-    {
-      g localg = new g(localException);
-      AppMethodBeat.o(158644);
-      throw localg;
-    }
-  }
-  
-  public final a dn(int paramInt1, int paramInt2)
+  public final a dZ(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(158645);
     try
     {
-      this.kbt.bb(paramInt1, paramInt2);
+      this.mBy.bW(paramInt1, paramInt2);
       AppMethodBeat.o(158645);
       return this;
     }
@@ -114,10 +163,27 @@ public final class k
     }
   }
   
-  public final a eN(boolean paramBoolean)
+  public final a f(int paramInt, double paramDouble)
+  {
+    AppMethodBeat.i(158644);
+    try
+    {
+      this.mBy.b(paramInt, paramDouble);
+      AppMethodBeat.o(158644);
+      return this;
+    }
+    catch (Exception localException)
+    {
+      g localg = new g(localException);
+      AppMethodBeat.o(158644);
+      throw localg;
+    }
+  }
+  
+  public final a fx(boolean paramBoolean)
   {
     AppMethodBeat.i(158638);
-    this.kbt.aK(paramBoolean);
+    this.mBy.bt(paramBoolean);
     AppMethodBeat.o(158638);
     return this;
   }
@@ -132,7 +198,7 @@ public final class k
       AppMethodBeat.o(158649);
       throw ((Throwable)localObject);
     }
-    Object localObject = this.kbt.dQ(paramInt);
+    Object localObject = this.mBy.hg(paramInt);
     if (localObject == null)
     {
       AppMethodBeat.o(158649);
@@ -146,25 +212,25 @@ public final class k
     }
     if (((h)localObject).isBoolean())
     {
-      boolean bool = ((h)localObject).pS();
+      boolean bool = ((h)localObject).Pd();
       AppMethodBeat.o(158649);
       return Boolean.valueOf(bool);
     }
     if (((h)localObject).isArray())
     {
-      localObject = new k(((h)localObject).pR());
+      localObject = new k(((h)localObject).Pc());
       AppMethodBeat.o(158649);
       return localObject;
     }
     if (((h)localObject).isObject())
     {
-      localObject = new l(((h)localObject).pW());
+      localObject = new l(((h)localObject).Ph());
       AppMethodBeat.o(158649);
       return localObject;
     }
     if (((h)localObject).isString())
     {
-      localObject = ((h)localObject).qu();
+      localObject = ((h)localObject).PF();
       AppMethodBeat.o(158649);
       return localObject;
     }
@@ -182,7 +248,7 @@ public final class k
       AppMethodBeat.o(158652);
       throw ((Throwable)localObject);
     }
-    Object localObject = this.kbt.dQ(paramInt);
+    Object localObject = this.mBy.hg(paramInt);
     if (localObject == null)
     {
       localObject = new g(String.format("getBoolean(%d) return null.", new Object[] { Integer.valueOf(paramInt) }));
@@ -191,13 +257,13 @@ public final class k
     }
     if (((h)localObject).isBoolean())
     {
-      boolean bool = ((h)localObject).pS();
+      boolean bool = ((h)localObject).Pd();
       AppMethodBeat.o(158652);
       return bool;
     }
     if (((h)localObject).isString())
     {
-      String str = ((h)localObject).qu();
+      String str = ((h)localObject).PF();
       if ("true".equals(str))
       {
         AppMethodBeat.o(158652);
@@ -224,7 +290,7 @@ public final class k
       AppMethodBeat.o(158655);
       throw ((Throwable)localObject);
     }
-    Object localObject = this.kbt.dQ(paramInt);
+    Object localObject = this.mBy.hg(paramInt);
     if (localObject == null)
     {
       localObject = new g(String.format("getDouble(%d) return null.", new Object[] { Integer.valueOf(paramInt) }));
@@ -236,13 +302,13 @@ public final class k
       double d;
       if (((h)localObject).isNumber())
       {
-        d = ((h)localObject).pV();
+        d = ((h)localObject).Pg();
         AppMethodBeat.o(158655);
         return d;
       }
       if (((h)localObject).isString())
       {
-        d = Double.parseDouble(((h)localObject).qu());
+        d = Double.parseDouble(((h)localObject).PF());
         AppMethodBeat.o(158655);
         return d;
       }
@@ -265,7 +331,7 @@ public final class k
       AppMethodBeat.o(158658);
       throw ((Throwable)localObject);
     }
-    Object localObject = this.kbt.dQ(paramInt);
+    Object localObject = this.mBy.hg(paramInt);
     if (localObject == null)
     {
       localObject = new g(String.format("getInteger(%d) return null.", new Object[] { Integer.valueOf(paramInt) }));
@@ -279,13 +345,13 @@ public final class k
       if (bool) {
         try
         {
-          i = ((h)localObject).pT();
+          i = ((h)localObject).Pe();
           AppMethodBeat.o(158658);
           return i;
         }
         catch (Exception localException1)
         {
-          d = ((h)localObject).pV();
+          d = ((h)localObject).Pg();
           paramInt = (int)d;
           AppMethodBeat.o(158658);
           return paramInt;
@@ -293,7 +359,7 @@ public final class k
       }
       if (((h)localObject).isString())
       {
-        d = Double.parseDouble(((h)localObject).qu());
+        d = Double.parseDouble(((h)localObject).PF());
         paramInt = (int)d;
         AppMethodBeat.o(158658);
         return paramInt;
@@ -317,7 +383,7 @@ public final class k
       AppMethodBeat.o(158661);
       throw ((Throwable)localObject);
     }
-    Object localObject = this.kbt.dQ(paramInt);
+    Object localObject = this.mBy.hg(paramInt);
     if (localObject == null)
     {
       localObject = new g(String.format("getLong(%d) return null.", new Object[] { Integer.valueOf(paramInt) }));
@@ -332,13 +398,13 @@ public final class k
       if (bool) {
         try
         {
-          l = ((h)localObject).pU();
+          l = ((h)localObject).Pf();
           AppMethodBeat.o(158661);
           return l;
         }
         catch (Exception localException1)
         {
-          d = ((h)localObject).pV();
+          d = ((h)localObject).Pg();
           l = d;
           AppMethodBeat.o(158661);
           return l;
@@ -346,7 +412,7 @@ public final class k
       }
       if (((h)localObject).isString())
       {
-        d = Double.parseDouble(((h)localObject).qu());
+        d = Double.parseDouble(((h)localObject).PF());
         l = d;
         AppMethodBeat.o(158661);
         return l;
@@ -370,7 +436,7 @@ public final class k
       AppMethodBeat.o(158664);
       throw ((Throwable)localObject);
     }
-    Object localObject = this.kbt.dQ(paramInt);
+    Object localObject = this.mBy.hg(paramInt);
     if (localObject == null)
     {
       localObject = new g(String.format("getString(%d) return null.", new Object[] { Integer.valueOf(paramInt) }));
@@ -379,7 +445,7 @@ public final class k
     }
     if (((h)localObject).isString())
     {
-      localObject = ((h)localObject).qu();
+      localObject = ((h)localObject).PF();
       AppMethodBeat.o(158664);
       return localObject;
     }
@@ -388,10 +454,18 @@ public final class k
     return localObject;
   }
   
+  public final a hC(long paramLong)
+  {
+    AppMethodBeat.i(158641);
+    this.mBy.bI(paramLong);
+    AppMethodBeat.o(158641);
+    return this;
+  }
+  
   public final boolean isNull(int paramInt)
   {
     AppMethodBeat.i(158648);
-    if ((paramInt < 0) || (paramInt >= length()) || (this.kbt.dQ(paramInt) == null))
+    if ((paramInt < 0) || (paramInt >= length()) || (this.mBy.hg(paramInt) == null))
     {
       AppMethodBeat.o(158648);
       return true;
@@ -400,84 +474,10 @@ public final class k
     return false;
   }
   
-  public final a j(int paramInt, Object paramObject)
-  {
-    AppMethodBeat.i(158647);
-    for (;;)
-    {
-      b localb;
-      try
-      {
-        localb = this.kbt;
-        if ((paramObject instanceof c))
-        {
-          localb.a(paramInt, j.a((c)paramObject));
-          AppMethodBeat.o(158647);
-          return this;
-        }
-        if ((paramObject instanceof a))
-        {
-          localb.a(paramInt, j.a((a)paramObject));
-          continue;
-        }
-        if (!(paramObject instanceof Integer)) {
-          break label104;
-        }
-      }
-      catch (Exception paramObject)
-      {
-        paramObject = new g(paramObject);
-        AppMethodBeat.o(158647);
-        throw paramObject;
-      }
-      localb.bb(paramInt, ((Integer)paramObject).intValue());
-      continue;
-      label104:
-      if ((paramObject instanceof String))
-      {
-        paramObject = (String)paramObject;
-        localb.values.set(paramInt, com.eclipsesource.a.a.ba(paramObject));
-      }
-      else if ((paramObject instanceof Boolean))
-      {
-        localb.m(paramInt, ((Boolean)paramObject).booleanValue());
-      }
-      else if ((paramObject instanceof Long))
-      {
-        localb.f(paramInt, ((Long)paramObject).longValue());
-      }
-      else if ((paramObject instanceof Float))
-      {
-        float f = ((Float)paramObject).floatValue();
-        localb.values.set(paramInt, com.eclipsesource.a.a.N(f));
-      }
-      else if ((paramObject instanceof Integer))
-      {
-        localb.bb(paramInt, ((Integer)paramObject).intValue());
-      }
-      else if ((paramObject instanceof Double))
-      {
-        localb.a(paramInt, ((Double)paramObject).doubleValue());
-      }
-      else if ((paramObject instanceof h))
-      {
-        localb.a(paramInt, (h)paramObject);
-      }
-    }
-  }
-  
-  public final a k(double paramDouble)
-  {
-    AppMethodBeat.i(158639);
-    this.kbt.d(paramDouble);
-    AppMethodBeat.o(158639);
-    return this;
-  }
-  
   public final int length()
   {
     AppMethodBeat.i(158637);
-    int i = this.kbt.values.size();
+    int i = this.mBy.values.size();
     AppMethodBeat.o(158637);
     return i;
   }
@@ -491,7 +491,7 @@ public final class k
       AppMethodBeat.o(158650);
       return null;
     }
-    Object localObject = this.kbt.dQ(paramInt);
+    Object localObject = this.mBy.hg(paramInt);
     if (localObject == null)
     {
       AppMethodBeat.o(158650);
@@ -505,25 +505,25 @@ public final class k
     }
     if (((h)localObject).isBoolean())
     {
-      boolean bool = ((h)localObject).pS();
+      boolean bool = ((h)localObject).Pd();
       AppMethodBeat.o(158650);
       return Boolean.valueOf(bool);
     }
     if (((h)localObject).isArray())
     {
-      localObject = new k(((h)localObject).pR());
+      localObject = new k(((h)localObject).Pc());
       AppMethodBeat.o(158650);
       return localObject;
     }
     if (((h)localObject).isObject())
     {
-      localObject = new l(((h)localObject).pW());
+      localObject = new l(((h)localObject).Ph());
       AppMethodBeat.o(158650);
       return localObject;
     }
     if (((h)localObject).isString())
     {
-      localObject = ((h)localObject).qu();
+      localObject = ((h)localObject).PF();
       AppMethodBeat.o(158650);
       return localObject;
     }
@@ -548,7 +548,7 @@ public final class k
       AppMethodBeat.o(158654);
       return paramBoolean;
     }
-    Object localObject = this.kbt.dQ(paramInt);
+    Object localObject = this.mBy.hg(paramInt);
     if (localObject == null)
     {
       AppMethodBeat.o(158654);
@@ -556,13 +556,13 @@ public final class k
     }
     if (((h)localObject).isBoolean())
     {
-      paramBoolean = ((h)localObject).pS();
+      paramBoolean = ((h)localObject).Pd();
       AppMethodBeat.o(158654);
       return paramBoolean;
     }
     if (((h)localObject).isString())
     {
-      localObject = ((h)localObject).qu();
+      localObject = ((h)localObject).PF();
       if ("true".equals(localObject))
       {
         AppMethodBeat.o(158654);
@@ -595,7 +595,7 @@ public final class k
       AppMethodBeat.o(158657);
       return paramDouble;
     }
-    h localh = this.kbt.dQ(paramInt);
+    h localh = this.mBy.hg(paramInt);
     if (localh == null)
     {
       AppMethodBeat.o(158657);
@@ -606,13 +606,13 @@ public final class k
       double d;
       if (localh.isNumber())
       {
-        d = localh.pV();
+        d = localh.Pg();
         AppMethodBeat.o(158657);
         return d;
       }
       if (localh.isString())
       {
-        d = Double.parseDouble(localh.qu());
+        d = Double.parseDouble(localh.PF());
         AppMethodBeat.o(158657);
         return d;
       }
@@ -641,7 +641,7 @@ public final class k
       AppMethodBeat.o(158660);
       return paramInt2;
     }
-    h localh = this.kbt.dQ(paramInt1);
+    h localh = this.mBy.hg(paramInt1);
     if (localh == null)
     {
       AppMethodBeat.o(158660);
@@ -654,13 +654,13 @@ public final class k
       if (bool) {
         try
         {
-          paramInt1 = localh.pT();
+          paramInt1 = localh.Pe();
           AppMethodBeat.o(158660);
           return paramInt1;
         }
         catch (Exception localException2)
         {
-          d = localh.pV();
+          d = localh.Pg();
           paramInt1 = (int)d;
           AppMethodBeat.o(158660);
           return paramInt1;
@@ -668,7 +668,7 @@ public final class k
       }
       if (localh.isString())
       {
-        d = Double.parseDouble(localh.qu());
+        d = Double.parseDouble(localh.PF());
         paramInt1 = (int)d;
         AppMethodBeat.o(158660);
         return paramInt1;
@@ -698,7 +698,7 @@ public final class k
       AppMethodBeat.o(158663);
       return paramLong;
     }
-    h localh = this.kbt.dQ(paramInt);
+    h localh = this.mBy.hg(paramInt);
     if (localh == null)
     {
       AppMethodBeat.o(158663);
@@ -711,13 +711,13 @@ public final class k
       if (bool) {
         try
         {
-          long l = localh.pU();
+          long l = localh.Pf();
           AppMethodBeat.o(158663);
           return l;
         }
         catch (Exception localException2)
         {
-          d = localh.pV();
+          d = localh.Pg();
           paramLong = d;
           AppMethodBeat.o(158663);
           return paramLong;
@@ -725,7 +725,7 @@ public final class k
       }
       if (localh.isString())
       {
-        d = Double.parseDouble(localh.qu());
+        d = Double.parseDouble(localh.PF());
         paramLong = d;
         AppMethodBeat.o(158663);
         return paramLong;
@@ -755,7 +755,7 @@ public final class k
       AppMethodBeat.o(158666);
       return paramString;
     }
-    h localh = this.kbt.dQ(paramInt);
+    h localh = this.mBy.hg(paramInt);
     if (localh == null)
     {
       AppMethodBeat.o(158666);
@@ -763,7 +763,7 @@ public final class k
     }
     if (localh.isString())
     {
-      paramString = localh.qu();
+      paramString = localh.PF();
       AppMethodBeat.o(158666);
       return paramString;
     }
@@ -781,8 +781,13 @@ public final class k
       AppMethodBeat.o(158651);
       return null;
     }
-    Object localObject = this.kbt;
+    Object localObject = this.mBy;
     ((b)localObject).values.remove(paramInt);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(158651);
+      return null;
+    }
     if (((h)localObject).isNumber())
     {
       localObject = ((h)localObject).toString();
@@ -791,25 +796,25 @@ public final class k
     }
     if (((h)localObject).isBoolean())
     {
-      boolean bool = ((h)localObject).pS();
+      boolean bool = ((h)localObject).Pd();
       AppMethodBeat.o(158651);
       return Boolean.valueOf(bool);
     }
     if (((h)localObject).isArray())
     {
-      localObject = new k(((h)localObject).pR());
+      localObject = new k(((h)localObject).Pc());
       AppMethodBeat.o(158651);
       return localObject;
     }
     if (((h)localObject).isObject())
     {
-      localObject = new l(((h)localObject).pW());
+      localObject = new l(((h)localObject).Ph());
       AppMethodBeat.o(158651);
       return localObject;
     }
     if (((h)localObject).isString())
     {
-      localObject = ((h)localObject).qu();
+      localObject = ((h)localObject).PF();
       AppMethodBeat.o(158651);
       return localObject;
     }
@@ -817,15 +822,15 @@ public final class k
     return null;
   }
   
-  public final a sp(int paramInt)
+  public final a sl(int paramInt)
   {
     AppMethodBeat.i(158640);
-    this.kbt.dP(paramInt);
+    this.mBy.hf(paramInt);
     AppMethodBeat.o(158640);
     return this;
   }
   
-  public final a sq(int paramInt)
+  public final a sm(int paramInt)
   {
     AppMethodBeat.i(158667);
     int i = length();
@@ -835,19 +840,19 @@ public final class k
       AppMethodBeat.o(158667);
       throw ((Throwable)localObject);
     }
-    Object localObject = this.kbt.dQ(paramInt);
+    Object localObject = this.mBy.hg(paramInt);
     if (localObject == null)
     {
       localObject = new g(String.format("getJSONArray(%d) return null.", new Object[] { Integer.valueOf(paramInt) }));
       AppMethodBeat.o(158667);
       throw ((Throwable)localObject);
     }
-    localObject = new k(((h)localObject).pR());
+    localObject = new k(((h)localObject).Pc());
     AppMethodBeat.o(158667);
     return localObject;
   }
   
-  public final a sr(int paramInt)
+  public final a sn(int paramInt)
   {
     AppMethodBeat.i(158668);
     int i = length();
@@ -856,18 +861,18 @@ public final class k
       AppMethodBeat.o(158668);
       return null;
     }
-    Object localObject = this.kbt.dQ(paramInt);
+    Object localObject = this.mBy.hg(paramInt);
     if (localObject == null)
     {
       AppMethodBeat.o(158668);
       return null;
     }
-    localObject = new k(((h)localObject).pR());
+    localObject = new k(((h)localObject).Pc());
     AppMethodBeat.o(158668);
     return localObject;
   }
   
-  public final c ss(int paramInt)
+  public final c so(int paramInt)
   {
     AppMethodBeat.i(158669);
     int i = length();
@@ -877,19 +882,19 @@ public final class k
       AppMethodBeat.o(158669);
       throw ((Throwable)localObject);
     }
-    Object localObject = this.kbt.dQ(paramInt);
+    Object localObject = this.mBy.hg(paramInt);
     if (localObject == null)
     {
       localObject = new g(String.format("getJSONObject(%d) return null.", new Object[] { Integer.valueOf(paramInt) }));
       AppMethodBeat.o(158669);
       throw ((Throwable)localObject);
     }
-    localObject = new l(((h)localObject).pW());
+    localObject = new l(((h)localObject).Ph());
     AppMethodBeat.o(158669);
     return localObject;
   }
   
-  public final c st(int paramInt)
+  public final c sp(int paramInt)
   {
     AppMethodBeat.i(158670);
     int i = length();
@@ -898,13 +903,13 @@ public final class k
       AppMethodBeat.o(158670);
       return null;
     }
-    Object localObject = this.kbt.dQ(paramInt);
+    Object localObject = this.mBy.hg(paramInt);
     if (localObject == null)
     {
       AppMethodBeat.o(158670);
       return null;
     }
-    localObject = new l(((h)localObject).pW());
+    localObject = new l(((h)localObject).Ph());
     AppMethodBeat.o(158670);
     return localObject;
   }
@@ -912,7 +917,7 @@ public final class k
   public final String toString()
   {
     AppMethodBeat.i(158671);
-    String str = this.kbt.toString();
+    String str = this.mBy.toString();
     AppMethodBeat.o(158671);
     return str;
   }
@@ -920,26 +925,26 @@ public final class k
   public final String toString(int paramInt)
   {
     AppMethodBeat.i(158672);
+    g localg;
     try
     {
-      String str = this.kbt.a(com.eclipsesource.a.k.dR(paramInt));
+      String str = this.mBy.a(com.eclipsesource.a.k.hh(paramInt));
       AppMethodBeat.o(158672);
       return str;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      g localg = new g(localThrowable);
+      localg = new g(localThrowable);
       AppMethodBeat.o(158672);
-      throw localg;
     }
   }
   
-  public final a v(int paramInt, long paramLong)
+  public final a z(int paramInt, long paramLong)
   {
     AppMethodBeat.i(158646);
     try
     {
-      this.kbt.f(paramInt, paramLong);
+      this.mBy.f(paramInt, paramLong);
       AppMethodBeat.o(158646);
       return this;
     }
@@ -953,7 +958,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.ad.k
  * JD-Core Version:    0.7.0.1
  */

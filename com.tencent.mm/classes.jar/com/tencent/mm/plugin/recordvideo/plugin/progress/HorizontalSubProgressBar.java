@@ -12,170 +12,164 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/plugin/progress/HorizontalSubProgressBar;", "Landroid/view/View;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bodyColor", "bodyPaint", "Landroid/graphics/Paint;", "deleteColor", "deletePaint", "endColor", "endPaint", "prepareDelete", "", "subFinish", "subProgress", "Ljava/util/ArrayList;", "", "getDrawBodyRect", "Landroid/graphics/RectF;", "index", "getDrawEndRect", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "delete", "removeCurrentProgress", "verify", "(Ljava/lang/Integer;)V", "reset", "updateProgress", "Companion", "plugin-recordvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/plugin/progress/HorizontalSubProgressBar;", "Landroid/view/View;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bodyColor", "bodyPaint", "Landroid/graphics/Paint;", "deleteColor", "deletePaint", "endColor", "endPaint", "prepareDelete", "", "subFinish", "subProgress", "Ljava/util/ArrayList;", "", "getDrawBodyRect", "Landroid/graphics/RectF;", "index", "getDrawEndRect", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "delete", "removeCurrentProgress", "verify", "(Ljava/lang/Integer;)V", "reset", "updateProgress", "Companion", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class HorizontalSubProgressBar
   extends View
 {
-  public static final a HUd;
-  private final int FfN;
-  private Paint FfQ;
-  public ArrayList<Float> FfX;
-  public boolean Fgb;
-  private int HTZ;
-  private Paint HUa;
-  private Paint HUb;
-  public boolean HUc;
+  public static final HorizontalSubProgressBar.a NQK;
+  public boolean LbB;
+  private final int Lbn;
+  private Paint Lbq;
+  public ArrayList<Float> Lbx;
+  private int NQL;
+  private Paint NQM;
+  private Paint NQN;
+  public boolean NQO;
   private final int endColor;
   
   static
   {
-    AppMethodBeat.i(220187);
-    HUd = new a((byte)0);
-    AppMethodBeat.o(220187);
+    AppMethodBeat.i(280540);
+    NQK = new HorizontalSubProgressBar.a((byte)0);
+    AppMethodBeat.o(280540);
   }
   
   public HorizontalSubProgressBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(220177);
-    this.HTZ = Color.parseColor("#FA9D3B");
+    AppMethodBeat.i(280522);
+    this.NQL = Color.parseColor("#FA9D3B");
     this.endColor = Color.parseColor("#ffffff");
-    this.FfN = Color.parseColor("#FA5151");
-    this.HUa = new Paint();
-    this.HUb = new Paint();
-    this.FfQ = new Paint();
-    this.FfX = new ArrayList();
-    this.HUa.setStyle(Paint.Style.FILL);
-    this.HUa.setColor(this.HTZ);
-    this.HUa.setAntiAlias(true);
-    this.HUb.setStyle(Paint.Style.FILL);
-    this.HUb.setColor(this.endColor);
-    this.HUb.setAntiAlias(true);
-    this.FfQ.setStyle(Paint.Style.FILL);
-    this.FfQ.setColor(this.FfN);
-    this.FfQ.setAntiAlias(true);
-    AppMethodBeat.o(220177);
+    this.Lbn = Color.parseColor("#FA5151");
+    this.NQM = new Paint();
+    this.NQN = new Paint();
+    this.Lbq = new Paint();
+    this.Lbx = new ArrayList();
+    this.NQM.setStyle(Paint.Style.FILL);
+    this.NQM.setColor(this.NQL);
+    this.NQM.setAntiAlias(true);
+    this.NQN.setStyle(Paint.Style.FILL);
+    this.NQN.setColor(this.endColor);
+    this.NQN.setAntiAlias(true);
+    this.Lbq.setStyle(Paint.Style.FILL);
+    this.Lbq.setColor(this.Lbn);
+    this.Lbq.setAntiAlias(true);
+    AppMethodBeat.o(280522);
   }
   
   public HorizontalSubProgressBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(220184);
-    this.HTZ = Color.parseColor("#FA9D3B");
+    AppMethodBeat.i(280526);
+    this.NQL = Color.parseColor("#FA9D3B");
     this.endColor = Color.parseColor("#ffffff");
-    this.FfN = Color.parseColor("#FA5151");
-    this.HUa = new Paint();
-    this.HUb = new Paint();
-    this.FfQ = new Paint();
-    this.FfX = new ArrayList();
-    this.HUa.setStyle(Paint.Style.FILL);
-    this.HUa.setColor(this.HTZ);
-    this.HUa.setAntiAlias(true);
-    this.HUb.setStyle(Paint.Style.FILL);
-    this.HUb.setColor(this.endColor);
-    this.HUb.setAntiAlias(true);
-    this.FfQ.setStyle(Paint.Style.FILL);
-    this.FfQ.setColor(this.FfN);
-    this.FfQ.setAntiAlias(true);
-    AppMethodBeat.o(220184);
+    this.Lbn = Color.parseColor("#FA5151");
+    this.NQM = new Paint();
+    this.NQN = new Paint();
+    this.Lbq = new Paint();
+    this.Lbx = new ArrayList();
+    this.NQM.setStyle(Paint.Style.FILL);
+    this.NQM.setColor(this.NQL);
+    this.NQM.setAntiAlias(true);
+    this.NQN.setStyle(Paint.Style.FILL);
+    this.NQN.setColor(this.endColor);
+    this.NQN.setAntiAlias(true);
+    this.Lbq.setStyle(Paint.Style.FILL);
+    this.Lbq.setColor(this.Lbn);
+    this.Lbq.setAntiAlias(true);
+    AppMethodBeat.o(280526);
   }
   
-  private final RectF aco(int paramInt)
+  private final RectF agE(int paramInt)
   {
-    AppMethodBeat.i(220164);
-    Object localObject = this.FfX.get(paramInt);
-    p.j(localObject, "subProgress[index]");
+    AppMethodBeat.i(280533);
+    Object localObject = this.Lbx.get(paramInt);
+    s.s(localObject, "subProgress[index]");
     float f2 = ((Number)localObject).floatValue() * getWidth() / 100.0F;
     float f3 = getHeight();
     if (paramInt == 0) {}
-    for (float f1 = 0.0F;; f1 = ((Number)this.FfX.get(paramInt - 1)).floatValue() * getWidth() / 100.0F)
+    for (float f1 = 0.0F;; f1 = ((Number)this.Lbx.get(paramInt - 1)).floatValue() * getWidth() / 100.0F)
     {
       localObject = new RectF(f1, 0.0F, f2, f3);
-      AppMethodBeat.o(220164);
+      AppMethodBeat.o(280533);
       return localObject;
+    }
+  }
+  
+  public final void B(Integer paramInteger)
+  {
+    AppMethodBeat.i(280555);
+    this.LbB = false;
+    if (paramInteger != null)
+    {
+      i = this.Lbx.size();
+      if (paramInteger.intValue() == i)
+      {
+        AppMethodBeat.o(280555);
+        return;
+      }
+    }
+    if (!((Collection)this.Lbx).isEmpty()) {}
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        this.Lbx.remove(this.Lbx.size() - 1);
+      }
+      invalidate();
+      AppMethodBeat.o(280555);
+      return;
     }
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(220161);
-    Object localObject1 = (Iterable)this.FfX;
+    AppMethodBeat.i(280566);
+    Object localObject1 = (Iterable)this.Lbx;
     int i = 0;
     localObject1 = ((Iterable)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
+    if (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = ((Iterator)localObject1).next();
-      int j = i + 1;
       if (i < 0) {
-        j.iBO();
+        p.kkW();
       }
       ((Number)localObject2).floatValue();
-      if ((i == this.FfX.size() - 1) && (this.Fgb)) {
+      if ((i == this.Lbx.size() - 1) && (this.LbB)) {
         if (paramCanvas != null) {
-          paramCanvas.drawRect(aco(i), this.FfQ);
+          paramCanvas.drawRect(agE(i), this.Lbq);
         }
       }
       for (;;)
       {
-        if (((i == this.FfX.size() - 1) && (!this.HUc)) || (paramCanvas == null)) {
-          break label230;
+        if (((i != this.Lbx.size() - 1) || (this.NQO)) && (paramCanvas != null))
+        {
+          localObject2 = this.Lbx.get(i);
+          s.s(localObject2, "subProgress[index]");
+          float f1 = ((Number)localObject2).floatValue() * getWidth() / 100.0F;
+          float f2 = getHeight();
+          paramCanvas.drawRect(new RectF(f1 - getWidth() * 0.0053F, 0.0F, f1, f2), this.NQN);
         }
-        localObject2 = this.FfX.get(i);
-        p.j(localObject2, "subProgress[index]");
-        float f1 = ((Number)localObject2).floatValue() * getWidth() / 100.0F;
-        float f2 = getHeight();
-        paramCanvas.drawRect(new RectF(f1 - getWidth() * 0.0053F, 0.0F, f1, f2), this.HUb);
-        i = j;
+        i += 1;
         break;
         if (paramCanvas != null) {
-          paramCanvas.drawRect(aco(i), this.HUa);
+          paramCanvas.drawRect(agE(i), this.NQM);
         }
       }
-      label230:
-      i = j;
     }
-    AppMethodBeat.o(220161);
+    AppMethodBeat.o(280566);
   }
   
-  public final void u(Integer paramInteger)
+  public final void yC(boolean paramBoolean)
   {
-    AppMethodBeat.i(220150);
-    this.Fgb = false;
-    if (paramInteger != null)
-    {
-      i = this.FfX.size();
-      if (paramInteger.intValue() == i)
-      {
-        AppMethodBeat.o(220150);
-        return;
-      }
-    }
-    if (!((Collection)this.FfX).isEmpty()) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        this.FfX.remove(this.FfX.size() - 1);
-      }
-      invalidate();
-      AppMethodBeat.o(220150);
-      return;
-    }
-  }
-  
-  public final void up(boolean paramBoolean)
-  {
-    AppMethodBeat.i(220145);
-    this.Fgb = paramBoolean;
+    AppMethodBeat.i(280545);
+    this.LbB = paramBoolean;
     invalidate();
-    AppMethodBeat.o(220145);
+    AppMethodBeat.o(280545);
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/plugin/progress/HorizontalSubProgressBar$Companion;", "", "()V", "END_POINT", "", "TAG", "", "plugin-recordvideo_release"})
-  public static final class a {}
 }
 
 

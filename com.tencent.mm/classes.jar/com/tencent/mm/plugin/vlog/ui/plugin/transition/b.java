@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.graphics.Rect;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -15,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
 import androidx.recyclerview.widget.RecyclerView.h;
 import androidx.recyclerview.widget.RecyclerView.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -24,325 +24,319 @@ import com.tencent.mm.plugin.vlog.a.g;
 import com.tencent.mm.plugin.vlog.a.h;
 import com.tencent.mm.plugin.vlog.model.local.a.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.au;
+import com.tencent.mm.ui.bb;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/transition/EditorEditTransitionView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "autoInitTransitionInfo", "", "(Landroid/content/Context;Z)V", "applyAllTransitionGroup", "Landroid/widget/LinearLayout;", "kotlin.jvm.PlatformType", "getApplyAllTransitionGroup", "()Landroid/widget/LinearLayout;", "applyAllTransitionGroup$delegate", "Lkotlin/Lazy;", "applyAllTransitionIcon", "Landroid/widget/ImageView;", "getApplyAllTransitionIcon", "()Landroid/widget/ImageView;", "applyAllTransitionIcon$delegate", "closeIcon", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "getCloseIcon", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "closeIcon$delegate", "confirmIcon", "getConfirmIcon", "confirmIcon$delegate", "editTransitionIndex", "", "editTransitionListener", "Lcom/tencent/mm/plugin/vlog/ui/plugin/transition/EditorEditTransitionView$EditTransitionListener;", "emptyHolder", "Landroid/view/View;", "getEmptyHolder", "()Landroid/view/View;", "emptyHolder$delegate", "isApplyAll", "originTransEffectInfo", "Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$TransEffectInfo;", "selectedIndex", "selectedTransitionItem", "Lcom/tencent/mm/plugin/vlog/ui/plugin/transition/TransitionItem;", "transitionAdapter", "Lcom/tencent/mm/plugin/vlog/ui/plugin/transition/TransitionAdapter;", "transitionInfoList", "", "transitionRecycler", "Landroidx/recyclerview/widget/RecyclerView;", "getTransitionRecycler", "()Landroidx/recyclerview/widget/RecyclerView;", "transitionRecycler$delegate", "getItemOffsetLength", "initStatus", "", "transitionIndex", "order", "path", "", "initTransitionInfo", "setApplyAll", "enabled", "setEditTransitionListener", "listenerEdit", "Companion", "EditTransitionListener", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/plugin/transition/EditorEditTransitionView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "autoInitTransitionInfo", "", "(Landroid/content/Context;Z)V", "applyAllTransitionGroup", "Landroid/widget/LinearLayout;", "kotlin.jvm.PlatformType", "getApplyAllTransitionGroup", "()Landroid/widget/LinearLayout;", "applyAllTransitionGroup$delegate", "Lkotlin/Lazy;", "applyAllTransitionIcon", "Landroid/widget/ImageView;", "getApplyAllTransitionIcon", "()Landroid/widget/ImageView;", "applyAllTransitionIcon$delegate", "closeIcon", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "getCloseIcon", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "closeIcon$delegate", "confirmIcon", "getConfirmIcon", "confirmIcon$delegate", "editTransitionIndex", "", "editTransitionListener", "Lcom/tencent/mm/plugin/vlog/ui/plugin/transition/EditorEditTransitionView$EditTransitionListener;", "emptyHolder", "Landroid/view/View;", "getEmptyHolder", "()Landroid/view/View;", "emptyHolder$delegate", "isApplyAll", "originTransEffectInfo", "Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$TransEffectInfo;", "selectedIndex", "selectedTransitionItem", "Lcom/tencent/mm/plugin/vlog/ui/plugin/transition/TransitionItem;", "transitionAdapter", "Lcom/tencent/mm/plugin/vlog/ui/plugin/transition/TransitionAdapter;", "transitionInfoList", "", "transitionRecycler", "Landroidx/recyclerview/widget/RecyclerView;", "getTransitionRecycler", "()Landroidx/recyclerview/widget/RecyclerView;", "transitionRecycler$delegate", "getItemOffsetLength", "initStatus", "", "transitionIndex", "order", "path", "", "initTransitionInfo", "setApplyAll", "enabled", "setEditTransitionListener", "listenerEdit", "Companion", "EditTransitionListener", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
   extends RelativeLayout
 {
-  @Deprecated
-  public static final a NBv;
-  private final f NBj;
-  private final f NBk;
-  private final f NBl;
-  private final f NBm;
-  private final f NBn;
-  private final List<d> NBo;
-  private final c NBp;
-  private b NBq;
-  private a.a NBr;
-  private d NBs;
-  private int NBt;
-  private boolean NBu;
-  private int bhr;
-  private final f xRy;
+  private static final a UnU;
+  private final j BqY;
+  private final j UnV;
+  private final j UnW;
+  private final j UnX;
+  private final j UnY;
+  private final j UnZ;
+  private final List<d> Uoa;
+  private final c Uob;
+  private b Uoc;
+  private a.a Uod;
+  private d Uoe;
+  private int Uof;
+  private boolean Uog;
+  private int dbk;
   
   static
   {
-    AppMethodBeat.i(225631);
-    NBv = new a((byte)0);
-    AppMethodBeat.o(225631);
+    AppMethodBeat.i(283085);
+    UnU = new a((byte)0);
+    AppMethodBeat.o(283085);
   }
   
   public b(Context paramContext, boolean paramBoolean)
   {
     super(paramContext);
-    AppMethodBeat.i(225629);
-    this.NBj = g.ar((kotlin.g.a.a)new d(this));
-    this.NBk = g.ar((kotlin.g.a.a)new c(this));
-    this.NBl = g.ar((kotlin.g.a.a)new h(this));
-    this.xRy = g.ar((kotlin.g.a.a)new e(this));
-    this.NBm = g.ar((kotlin.g.a.a)new f(this));
-    this.NBn = g.ar((kotlin.g.a.a)new g(this));
-    this.NBo = ((List)new ArrayList());
-    this.NBs = new d();
+    AppMethodBeat.i(282901);
+    this.UnV = k.cm((kotlin.g.a.a)new d(this));
+    this.UnW = k.cm((kotlin.g.a.a)new c(this));
+    this.UnX = k.cm((kotlin.g.a.a)new h(this));
+    this.BqY = k.cm((kotlin.g.a.a)new e(this));
+    this.UnY = k.cm((kotlin.g.a.a)new f(this));
+    this.UnZ = k.cm((kotlin.g.a.a)new g(this));
+    this.Uoa = ((List)new ArrayList());
+    this.Uoe = new d();
     LayoutInflater.from(paramContext).inflate(a.g.editor_edit_transition_view, (ViewGroup)this, true);
-    this.NBp = new c(this.NBo);
-    setOnClickListener((View.OnClickListener)1.NBw);
+    this.Uob = new c(this.Uoa);
+    setOnClickListener(b..ExternalSyntheticLambda3.INSTANCE);
     if (paramBoolean) {
-      gwt();
+      hUl();
     }
-    setApplyAll(this.NBu);
-    Object localObject = this.NBp;
+    setApplyAll(this.Uog);
+    c localc = this.Uob;
     c.d locald = (c.d)new c.d()
     {
       public final void a(d paramAnonymousd, int paramAnonymousInt)
       {
-        AppMethodBeat.i(232597);
-        p.k(paramAnonymousd, "item");
-        if (!paramAnonymousd.xUg)
+        AppMethodBeat.i(282889);
+        s.u(paramAnonymousd, "item");
+        if (!paramAnonymousd.Bvd)
         {
-          b.a(this.NBx).xUg = false;
-          b.b(this.NBx).d(b.c(this.NBx), new Object());
-          paramAnonymousd.xUg = true;
-          b.b(this.NBx).d(paramAnonymousInt, new Object());
-          b.a(this.NBx, paramAnonymousInt);
-          b.a(this.NBx, paramAnonymousd);
-          paramAnonymousd = b.d(this.NBx);
-          if (paramAnonymousd != null)
-          {
-            paramAnonymousd.b(b.e(this.NBx), b.a(this.NBx).NBH);
-            AppMethodBeat.o(232597);
-            return;
+          b.a(this.Uoh).Bvd = false;
+          b.b(this.Uoh).t(b.c(this.Uoh), new Object());
+          paramAnonymousd.Bvd = true;
+          b.b(this.Uoh).t(paramAnonymousInt, new Object());
+          b.a(this.Uoh, paramAnonymousInt);
+          b.a(this.Uoh, paramAnonymousd);
+          paramAnonymousd = b.d(this.Uoh);
+          if (paramAnonymousd != null) {
+            paramAnonymousd.b(b.e(this.Uoh), b.a(this.Uoh).Uoo);
           }
         }
-        AppMethodBeat.o(232597);
+        AppMethodBeat.o(282889);
       }
     };
-    p.k(locald, "listener");
-    ((c)localObject).NBy = locald;
-    localObject = getTransitionRecycler();
-    p.j(localObject, "transitionRecycler");
-    ((RecyclerView)localObject).setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager(0, false));
-    localObject = getTransitionRecycler();
-    p.j(localObject, "transitionRecycler");
-    ((RecyclerView)localObject).setAdapter((RecyclerView.a)this.NBp);
-    localObject = getTransitionRecycler();
-    p.j(localObject, "transitionRecycler");
-    ((RecyclerView)localObject).setItemAnimator(null);
+    s.u(locald, "listener");
+    localc.Uok = locald;
+    getTransitionRecycler().setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager(0, false));
+    getTransitionRecycler().setAdapter((RecyclerView.a)this.Uob);
+    getTransitionRecycler().setItemAnimator(null);
     int i = getItemOffsetLength();
-    getTransitionRecycler().b((RecyclerView.h)new RecyclerView.h()
+    getTransitionRecycler().a((RecyclerView.h)new RecyclerView.h()
     {
       public final void a(Rect paramAnonymousRect, View paramAnonymousView, RecyclerView paramAnonymousRecyclerView, RecyclerView.s paramAnonymouss)
       {
-        AppMethodBeat.i(229086);
-        p.k(paramAnonymousRect, "outRect");
-        p.k(paramAnonymousView, "view");
-        p.k(paramAnonymousRecyclerView, "parent");
-        p.k(paramAnonymouss, "state");
+        AppMethodBeat.i(282892);
+        s.u(paramAnonymousRect, "outRect");
+        s.u(paramAnonymousView, "view");
+        s.u(paramAnonymousRecyclerView, "parent");
+        s.u(paramAnonymouss, "state");
         super.a(paramAnonymousRect, paramAnonymousView, paramAnonymousRecyclerView, paramAnonymouss);
-        paramAnonymousRect.left = this.jFk;
-        paramAnonymousRect.right = this.jFk;
-        AppMethodBeat.o(229086);
+        paramAnonymousRect.left = this.SDB;
+        paramAnonymousRect.right = this.SDB;
+        AppMethodBeat.o(282892);
       }
     });
-    getApplyAllTransitionGroup().setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    getApplyAllTransitionGroup().setOnClickListener(new b..ExternalSyntheticLambda1(this));
+    getCloseIcon().setOnClickListener(new b..ExternalSyntheticLambda2(this));
+    getConfirmIcon().setImageDrawable(bb.m(paramContext, a.h.icons_outlined_done, paramContext.getResources().getColor(a.c.Orange)));
+    getConfirmIcon().setOnClickListener(new b..ExternalSyntheticLambda0(this));
+    AppMethodBeat.o(282901);
+  }
+  
+  private static final void a(b paramb, View paramView)
+  {
+    AppMethodBeat.i(282995);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramb);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/transition/EditorEditTransitionView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramb, "this$0");
+    if (!paramb.Uog) {}
+    for (boolean bool = true;; bool = false)
     {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(231435);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/transition/EditorEditTransitionView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        paramAnonymousView = this.NBx;
-        if (!b.f(this.NBx)) {}
-        for (boolean bool = true;; bool = false)
-        {
-          b.a(paramAnonymousView, bool);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/transition/EditorEditTransitionView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(231435);
-          return;
-        }
-      }
-    });
-    getCloseIcon().setOnClickListener((View.OnClickListener)new View.OnClickListener()
+      paramb.setApplyAll(bool);
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/vlog/ui/plugin/transition/EditorEditTransitionView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(282995);
+      return;
+    }
+  }
+  
+  private static final void b(b paramb, View paramView)
+  {
+    AppMethodBeat.i(283009);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramb);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/transition/EditorEditTransitionView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramb, "this$0");
+    if (!s.p(paramb.Uod, paramb.Uoe.Uoo))
     {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(230151);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/transition/EditorEditTransitionView$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        if ((p.h(b.g(this.NBx), b.a(this.NBx).NBH) ^ true))
-        {
-          paramAnonymousView = b.d(this.NBx);
-          if (paramAnonymousView != null) {
-            paramAnonymousView.b(b.e(this.NBx), b.g(this.NBx));
-          }
-        }
-        paramAnonymousView = b.d(this.NBx);
-        if (paramAnonymousView != null) {
-          paramAnonymousView.onClose();
-        }
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/transition/EditorEditTransitionView$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(230151);
+      paramView = paramb.Uoc;
+      if (paramView != null) {
+        paramView.b(paramb.Uof, paramb.Uod);
       }
-    });
-    getConfirmIcon().setImageDrawable(au.o(paramContext, a.h.icons_outlined_done, paramContext.getResources().getColor(a.c.Orange)));
-    getConfirmIcon().setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    }
+    paramb = paramb.Uoc;
+    if (paramb != null) {
+      paramb.bfj();
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/vlog/ui/plugin/transition/EditorEditTransitionView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(283009);
+  }
+  
+  private static final void c(b paramb, View paramView)
+  {
+    AppMethodBeat.i(283018);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramb);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/transition/EditorEditTransitionView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramb, "this$0");
+    if (paramb.Uog)
     {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(231838);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/transition/EditorEditTransitionView$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        if (b.f(this.NBx))
-        {
-          paramAnonymousView = b.d(this.NBx);
-          if (paramAnonymousView != null) {
-            paramAnonymousView.a(b.e(this.NBx), b.a(this.NBx).NBH);
-          }
-        }
-        paramAnonymousView = b.d(this.NBx);
-        if (paramAnonymousView != null) {
-          paramAnonymousView.onClose();
-        }
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/transition/EditorEditTransitionView$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(231838);
+      paramView = paramb.Uoc;
+      if (paramView != null) {
+        paramView.a(paramb.Uof, paramb.Uoe.Uoo);
       }
-    });
-    AppMethodBeat.o(225629);
+    }
+    paramb = paramb.Uoc;
+    if (paramb != null) {
+      paramb.bfj();
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/vlog/ui/plugin/transition/EditorEditTransitionView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(283018);
+  }
+  
+  private static final void dg(View paramView)
+  {
+    AppMethodBeat.i(282982);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/transition/EditorEditTransitionView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/vlog/ui/plugin/transition/EditorEditTransitionView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(282982);
   }
   
   private final LinearLayout getApplyAllTransitionGroup()
   {
-    AppMethodBeat.i(225598);
-    LinearLayout localLinearLayout = (LinearLayout)this.NBk.getValue();
-    AppMethodBeat.o(225598);
+    AppMethodBeat.i(282918);
+    LinearLayout localLinearLayout = (LinearLayout)this.UnW.getValue();
+    AppMethodBeat.o(282918);
     return localLinearLayout;
   }
   
   private final ImageView getApplyAllTransitionIcon()
   {
-    AppMethodBeat.i(225596);
-    ImageView localImageView = (ImageView)this.NBj.getValue();
-    AppMethodBeat.o(225596);
+    AppMethodBeat.i(282909);
+    ImageView localImageView = (ImageView)this.UnV.getValue();
+    AppMethodBeat.o(282909);
     return localImageView;
   }
   
   private final WeImageView getCloseIcon()
   {
-    AppMethodBeat.i(225600);
-    WeImageView localWeImageView = (WeImageView)this.xRy.getValue();
-    AppMethodBeat.o(225600);
+    AppMethodBeat.i(282930);
+    WeImageView localWeImageView = (WeImageView)this.BqY.getValue();
+    AppMethodBeat.o(282930);
     return localWeImageView;
   }
   
   private final ImageView getConfirmIcon()
   {
-    AppMethodBeat.i(225601);
-    ImageView localImageView = (ImageView)this.NBm.getValue();
-    AppMethodBeat.o(225601);
+    AppMethodBeat.i(282940);
+    ImageView localImageView = (ImageView)this.UnY.getValue();
+    AppMethodBeat.o(282940);
     return localImageView;
   }
   
   private final View getEmptyHolder()
   {
-    AppMethodBeat.i(225602);
-    View localView = (View)this.NBn.getValue();
-    AppMethodBeat.o(225602);
+    AppMethodBeat.i(282951);
+    View localView = (View)this.UnZ.getValue();
+    AppMethodBeat.o(282951);
     return localView;
   }
   
   private final int getItemOffsetLength()
   {
-    AppMethodBeat.i(225606);
-    int i = com.tencent.mm.ci.a.kr(getContext()) - com.tencent.mm.ci.a.fromDPToPix(getContext(), 26.0F);
-    int j = com.tencent.mm.ci.a.aY(getContext(), a.d.Edge_8A);
+    AppMethodBeat.i(282963);
+    int i = com.tencent.mm.cd.a.ms(getContext()) - com.tencent.mm.cd.a.fromDPToPix(getContext(), 26.0F);
+    int j = com.tencent.mm.cd.a.br(getContext(), a.d.Edge_8A);
     int m = i * 10 / j;
     int k = m % 10;
     m /= 10;
     if (k > 7)
     {
       i = (i - (int)(j / 2 * (m + 1.5F))) / ((m + 1) * 2 + 1);
-      AppMethodBeat.o(225606);
+      AppMethodBeat.o(282963);
       return i;
     }
     if (k < 2)
     {
       i = (i - (int)(j / 2 * (m + 0.5F))) / (m * 2 + 1);
-      AppMethodBeat.o(225606);
+      AppMethodBeat.o(282963);
       return i;
     }
     i = j / 4;
-    AppMethodBeat.o(225606);
+    AppMethodBeat.o(282963);
     return i;
   }
   
   private final RecyclerView getTransitionRecycler()
   {
-    AppMethodBeat.i(225599);
-    RecyclerView localRecyclerView = (RecyclerView)this.NBl.getValue();
-    AppMethodBeat.o(225599);
+    AppMethodBeat.i(282921);
+    RecyclerView localRecyclerView = (RecyclerView)this.UnX.getValue();
+    AppMethodBeat.o(282921);
     return localRecyclerView;
   }
   
   private final void setApplyAll(boolean paramBoolean)
   {
-    AppMethodBeat.i(225619);
-    this.NBu = paramBoolean;
+    AppMethodBeat.i(282970);
+    this.Uog = paramBoolean;
     ImageView localImageView = getApplyAllTransitionIcon();
     Context localContext = getContext();
-    if (this.NBu) {}
+    if (this.Uog) {}
     for (int i = a.h.ui_rescoures_checkbox_selected;; i = a.h.ui_rescoures_checkbox_unselected)
     {
-      localImageView.setImageDrawable(au.o(localContext, i, Color.parseColor("#CCFFFFFF")));
-      AppMethodBeat.o(225619);
+      localImageView.setImageDrawable(bb.m(localContext, i, Color.parseColor("#CCFFFFFF")));
+      AppMethodBeat.o(282970);
       return;
     }
   }
   
-  public final void gwt()
+  public final void hUl()
   {
-    AppMethodBeat.i(225617);
-    this.NBo.clear();
-    this.NBo.add(new d());
-    Object localObject = com.tencent.mm.plugin.vlog.model.local.a.Nol;
-    localObject = ((Iterable)com.tencent.mm.plugin.vlog.model.local.a.gtJ()).iterator();
+    AppMethodBeat.i(283161);
+    this.Uoa.clear();
+    this.Uoa.add(new d());
+    Object localObject = com.tencent.mm.plugin.vlog.model.local.a.UbD;
+    localObject = ((Iterable)com.tencent.mm.plugin.vlog.model.local.a.hRr()).iterator();
     while (((Iterator)localObject).hasNext())
     {
       a.a locala = (a.a)((Iterator)localObject).next();
-      this.NBo.add(new d(locala));
+      this.Uoa.add(new d(locala));
     }
-    Log.i("MicroMsg.EditorEditTransitionView", "initTransitionInfo: size:" + this.NBo.size());
-    this.bhr = 0;
-    this.NBs = ((d)j.lo(this.NBo));
-    if (this.NBo.size() <= 1)
+    Log.i("MicroMsg.EditorEditTransitionView", s.X("initTransitionInfo: size:", Integer.valueOf(this.Uoa.size())));
+    this.dbk = 0;
+    this.Uoe = ((d)p.oK(this.Uoa));
+    if (this.Uoa.size() <= 1)
     {
-      localObject = getEmptyHolder();
-      p.j(localObject, "emptyHolder");
-      ((View)localObject).setVisibility(0);
-      localObject = getApplyAllTransitionGroup();
-      p.j(localObject, "applyAllTransitionGroup");
-      ((LinearLayout)localObject).setVisibility(4);
-      localObject = getTransitionRecycler();
-      p.j(localObject, "transitionRecycler");
-      ((RecyclerView)localObject).setVisibility(4);
-      localObject = com.tencent.mm.plugin.vlog.model.local.a.Nol;
-      com.tencent.mm.plugin.vlog.model.local.a.h(new WeakReference(this));
-      AppMethodBeat.o(225617);
+      getEmptyHolder().setVisibility(0);
+      getApplyAllTransitionGroup().setVisibility(4);
+      getTransitionRecycler().setVisibility(4);
+      localObject = com.tencent.mm.plugin.vlog.model.local.a.UbD;
+      com.tencent.mm.plugin.vlog.model.local.a.j(new WeakReference(this));
+      AppMethodBeat.o(283161);
       return;
     }
-    localObject = getEmptyHolder();
-    p.j(localObject, "emptyHolder");
-    ((View)localObject).setVisibility(4);
-    localObject = getApplyAllTransitionGroup();
-    p.j(localObject, "applyAllTransitionGroup");
-    ((LinearLayout)localObject).setVisibility(0);
-    localObject = getTransitionRecycler();
-    p.j(localObject, "transitionRecycler");
-    ((RecyclerView)localObject).setVisibility(0);
-    this.NBp.notifyDataSetChanged();
-    AppMethodBeat.o(225617);
+    getEmptyHolder().setVisibility(4);
+    getApplyAllTransitionGroup().setVisibility(0);
+    getTransitionRecycler().setVisibility(0);
+    this.Uob.bZE.notifyChanged();
+    AppMethodBeat.o(283161);
   }
   
-  public final void kL(int paramInt1, int paramInt2)
+  public final void mB(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(225614);
-    Object localObject1 = com.tencent.mm.plugin.vlog.model.local.a.Nol;
-    Object localObject2 = ((Iterable)com.tencent.mm.plugin.vlog.model.local.a.gtJ()).iterator();
+    AppMethodBeat.i(283146);
+    Object localObject1 = com.tencent.mm.plugin.vlog.model.local.a.UbD;
+    Object localObject2 = ((Iterable)com.tencent.mm.plugin.vlog.model.local.a.hRr()).iterator();
     int i;
     if (((Iterator)localObject2).hasNext())
     {
@@ -355,34 +349,34 @@ public final class b
           break label289;
         }
         label61:
-        this.NBr = ((a.a)localObject1);
-        this.NBt = paramInt1;
-        this.NBs.xUg = false;
-        this.NBp.cL(this.bhr);
-        localObject1 = this.NBo.iterator();
+        this.Uod = ((a.a)localObject1);
+        this.Uof = paramInt1;
+        this.Uoe.Bvd = false;
+        this.Uob.fV(this.dbk);
+        localObject1 = this.Uoa.iterator();
         paramInt1 = 0;
         label107:
         if (!((Iterator)localObject1).hasNext()) {
           break label304;
         }
-        if (!p.h(((d)((Iterator)localObject1).next()).NBH, this.NBr)) {
+        if (!s.p(((d)((Iterator)localObject1).next()).Uoo, this.Uod)) {
           break label297;
         }
       }
     }
     for (;;)
     {
-      this.bhr = paramInt1;
-      this.NBs = ((d)this.NBo.get(this.bhr));
+      this.dbk = paramInt1;
+      this.Uoe = ((d)this.Uoa.get(this.dbk));
       localObject1 = getTransitionRecycler();
-      localObject2 = com.tencent.mm.hellhoundlib.b.c.a(this.bhr, new com.tencent.mm.hellhoundlib.b.a());
-      com.tencent.mm.hellhoundlib.a.a.b(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aFh(), "com/tencent/mm/plugin/vlog/ui/plugin/transition/EditorEditTransitionView", "initStatus", "(II)V", "Undefined", "scrollToPosition", "(I)V");
-      ((RecyclerView)localObject1).scrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject2).sf(0)).intValue());
+      localObject2 = com.tencent.mm.hellhoundlib.b.c.a(this.dbk, new com.tencent.mm.hellhoundlib.b.a());
+      com.tencent.mm.hellhoundlib.a.a.b(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aYi(), "com/tencent/mm/plugin/vlog/ui/plugin/transition/EditorEditTransitionView", "initStatus", "(II)V", "Undefined", "scrollToPosition", "(I)V");
+      ((RecyclerView)localObject1).scrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject2).sb(0)).intValue());
       com.tencent.mm.hellhoundlib.a.a.c(localObject1, "com/tencent/mm/plugin/vlog/ui/plugin/transition/EditorEditTransitionView", "initStatus", "(II)V", "Undefined", "scrollToPosition", "(I)V");
-      this.NBs.xUg = true;
-      this.NBp.cL(this.bhr);
+      this.Uoe.Bvd = true;
+      this.Uob.fV(this.dbk);
       setApplyAll(false);
-      AppMethodBeat.o(225614);
+      AppMethodBeat.o(283146);
       return;
       i = 0;
       break label57;
@@ -400,28 +394,28 @@ public final class b
   
   public final void setEditTransitionListener(b paramb)
   {
-    AppMethodBeat.i(225622);
-    p.k(paramb, "listenerEdit");
-    this.NBq = paramb;
-    AppMethodBeat.o(225622);
+    AppMethodBeat.i(283170);
+    s.u(paramb, "listenerEdit");
+    this.Uoc = paramb;
+    AppMethodBeat.o(283170);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/transition/EditorEditTransitionView$Companion;", "", "()V", "TAG", "", "plugin-vlog_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/plugin/transition/EditorEditTransitionView$Companion;", "", "()V", "TAG", "", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
   static final class a {}
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/transition/EditorEditTransitionView$EditTransitionListener;", "", "onApplyTransitionToAll", "", "editTransitionIndex", "", "effect", "Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$TransEffectInfo;", "onClose", "onSetTransition", "plugin-vlog_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/plugin/transition/EditorEditTransitionView$EditTransitionListener;", "", "onApplyTransitionToAll", "", "editTransitionIndex", "", "effect", "Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$TransEffectInfo;", "onClose", "onSetTransition", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface b
   {
     public abstract void a(int paramInt, a.a parama);
     
     public abstract void b(int paramInt, a.a parama);
     
-    public abstract void onClose();
+    public abstract void bfj();
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/LinearLayout;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/LinearLayout;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends q
+    extends u
     implements kotlin.g.a.a<LinearLayout>
   {
     c(b paramb)
@@ -430,9 +424,9 @@ public final class b
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    extends q
+    extends u
     implements kotlin.g.a.a<ImageView>
   {
     d(b paramb)
@@ -441,9 +435,9 @@ public final class b
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class e
-    extends q
+    extends u
     implements kotlin.g.a.a<WeImageView>
   {
     e(b paramb)
@@ -452,9 +446,9 @@ public final class b
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class f
-    extends q
+    extends u
     implements kotlin.g.a.a<ImageView>
   {
     f(b paramb)
@@ -463,9 +457,9 @@ public final class b
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class g
-    extends q
+    extends u
     implements kotlin.g.a.a<View>
   {
     g(b paramb)
@@ -474,9 +468,9 @@ public final class b
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroidx/recyclerview/widget/RecyclerView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroidx/recyclerview/widget/RecyclerView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class h
-    extends q
+    extends u
     implements kotlin.g.a.a<RecyclerView>
   {
     h(b paramb)
@@ -487,7 +481,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.plugin.transition.b
  * JD-Core Version:    0.7.0.1
  */

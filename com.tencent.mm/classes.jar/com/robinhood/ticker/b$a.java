@@ -2,7 +2,7 @@ package com.robinhood.ticker;
 
 public final class b$a
 {
-  public static final int[] TickerView = { 16842804, 16842901, 16842903, 16842904, 16842927, 16843087, 16843105, 16843106, 16843107, 16843108, 2130969699, 2130969700, 2130969701, 2130969702 };
+  public static final int[] TickerView = { 16842804, 16842901, 16842903, 16842904, 16842927, 16843087, 16843105, 16843106, 16843107, 16843108, 2130969776, 2130969777, 2130969778, 2130969779 };
   public static final int TickerView_android_gravity = 4;
   public static final int TickerView_android_shadowColor = 6;
   public static final int TickerView_android_shadowDx = 7;
@@ -20,7 +20,7 @@ public final class b$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.robinhood.ticker.b.a
  * JD-Core Version:    0.7.0.1
  */

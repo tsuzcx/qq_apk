@@ -1,45 +1,45 @@
 package com.tencent.mm.plugin.address.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.ahe;
-import com.tencent.mm.protocal.protobuf.ahf;
+import com.tencent.mm.protocal.protobuf.ajt;
+import com.tencent.mm.protocal.protobuf.aju;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  private d rr;
+  private h callback;
+  private c rr;
   
   public a(int paramInt)
   {
     AppMethodBeat.i(20765);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new ahe();
-    ((d.a)localObject).lBV = new ahf();
-    ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/wxaapp/autofill/deleteinfo";
-    ((d.a)localObject).funcId = 1194;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (ahe)d.b.b(this.rr.lBR);
-    ((ahe)localObject).SrV = "invoice_info";
-    ((ahe)localObject).group_id = paramInt;
-    ((ahe)localObject).source = 2;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new ajt();
+    ((c.a)localObject).otF = new aju();
+    ((c.a)localObject).uri = "/cgi-bin/mmbiz-bin/wxaapp/autofill/deleteinfo";
+    ((c.a)localObject).funcId = 1194;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (ajt)c.b.b(this.rr.otB);
+    ((ajt)localObject).Zra = "invoice_info";
+    ((ajt)localObject).group_id = paramInt;
+    ((ajt)localObject).source = 2;
     AppMethodBeat.o(20765);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(20767);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(20767);
     return i;

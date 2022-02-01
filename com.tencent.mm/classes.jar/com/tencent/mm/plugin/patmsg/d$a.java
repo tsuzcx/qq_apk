@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.patmsg;
 
 public final class d$a
 {
-  public static final int anim_rotate_avatar_left = 2130771990;
-  public static final int anim_rotate_avatar_right = 2130771991;
-  public static final int anim_shake_avatar = 2130771994;
+  public static final int anim_rotate_avatar_left = 2130771996;
+  public static final int anim_rotate_avatar_right = 2130771997;
+  public static final int anim_shake_avatar = 2130772000;
 }
 
 

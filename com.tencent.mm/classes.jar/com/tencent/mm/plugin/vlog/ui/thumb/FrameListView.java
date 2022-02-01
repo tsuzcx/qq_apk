@@ -21,382 +21,375 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import kotlin.Metadata;
 import kotlin.ResultKt;
+import kotlin.a.p;
+import kotlin.ah;
+import kotlin.d.b.a.k;
 import kotlin.d.d;
 import kotlin.d.f;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
-import kotlinx.coroutines.ak;
-import kotlinx.coroutines.bc;
-import kotlinx.coroutines.br;
-import kotlinx.coroutines.i;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlinx.coroutines.aq;
+import kotlinx.coroutines.bg;
+import kotlinx.coroutines.bu;
+import kotlinx.coroutines.j;
+import kotlinx.coroutines.l;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "centerMatrix", "Landroid/graphics/Matrix;", "clipOffset", "", "clipPath", "Landroid/graphics/Path;", "clipRadius", "clipRect", "Landroid/graphics/RectF;", "firstThumb", "Landroid/graphics/Bitmap;", "noClipLeft", "", "noClipRight", "noRadiusLeft", "noRadiusRight", "paint", "Landroid/graphics/Paint;", "thumbDrawRect", "thumbFetcher", "Lcom/tencent/mm/videocomposition/ITrackThumbFetcher;", "thumbFetcherExtraData", "", "thumbFetcherFactory", "Lcom/tencent/mm/plugin/vlog/ui/thumb/ThumbFetcherFactory;", "thumbList", "Ljava/util/LinkedList;", "thumbRect", "Landroid/graphics/Rect;", "thumbScale", "trackInfo", "Lcom/tencent/mm/plugin/vlog/ui/thumb/BaseTrackThumbInfo;", "clearThumbs", "", "noClip", "left", "right", "noRadius", "onDraw", "canvas", "Landroid/graphics/Canvas;", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "release", "setThumbFetcherExtraData", "data", "setThumbFetcherFactory", "setToDefaultThumbFetcherFactory", "setTrackInfo", "info", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "centerMatrix", "Landroid/graphics/Matrix;", "clipOffset", "", "clipPath", "Landroid/graphics/Path;", "clipRadius", "clipRect", "Landroid/graphics/RectF;", "firstThumb", "Landroid/graphics/Bitmap;", "noClipLeft", "", "noClipRight", "noRadiusLeft", "noRadiusRight", "paint", "Landroid/graphics/Paint;", "thumbDrawRect", "thumbFetcher", "Lcom/tencent/mm/videocomposition/ITrackThumbFetcher;", "thumbFetcherExtraData", "", "thumbFetcherFactory", "Lcom/tencent/mm/plugin/vlog/ui/thumb/ThumbFetcherFactory;", "thumbList", "Ljava/util/LinkedList;", "thumbRect", "Landroid/graphics/Rect;", "thumbScale", "trackInfo", "Lcom/tencent/mm/plugin/vlog/ui/thumb/BaseTrackThumbInfo;", "clearThumbs", "", "noClip", "left", "right", "noRadius", "onDraw", "canvas", "Landroid/graphics/Canvas;", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "release", "setThumbFetcherExtraData", "data", "setThumbFetcherFactory", "setToDefaultThumbFetcherFactory", "setTrackInfo", "info", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FrameListView
   extends View
 {
-  private c Aub;
-  private final Matrix BZv;
-  private g GhV;
-  private a Gqd;
-  private final RectF GrG;
-  private final float GrH;
-  private final Rect IUo;
-  private LinkedList<Bitmap> NCE;
-  private Bitmap NCF;
-  private float NCG;
-  private final RectF NCH;
-  private boolean NCI;
-  private boolean NCJ;
-  private boolean NCK;
-  private boolean NCL;
-  private final float NCM;
-  private Object NCY;
+  private c FTn;
+  private final Matrix HLq;
+  private g Mdf;
+  private a Mkg;
+  private final RectF MlJ;
+  private final float MlK;
+  private final Rect Pdg;
   private final String TAG;
+  private Object UpC;
+  private LinkedList<Bitmap> Upm;
+  private Bitmap Upn;
+  private float Upo;
+  private final RectF Upp;
+  private boolean Upq;
+  private boolean Upr;
+  private boolean Ups;
+  private boolean Upt;
+  private final float Upu;
   private final Paint paint;
-  private final Path uWB;
+  private final Path yjb;
   
   public FrameListView(Context paramContext)
   {
     this(paramContext, null);
-    AppMethodBeat.i(246649);
-    AppMethodBeat.o(246649);
+    AppMethodBeat.i(281646);
+    AppMethodBeat.o(281646);
   }
   
   public FrameListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(246648);
-    AppMethodBeat.o(246648);
+    AppMethodBeat.i(281641);
+    AppMethodBeat.o(281641);
   }
   
   public FrameListView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(246647);
+    AppMethodBeat.i(281637);
     this.TAG = "MicroMsg.FrameListView";
     this.paint = new Paint();
-    this.NCE = new LinkedList();
-    this.NCG = 1.0F;
-    this.IUo = new Rect();
-    this.NCH = new RectF();
-    this.BZv = new Matrix();
-    this.uWB = new Path();
-    this.GrG = new RectF();
-    this.GrH = com.tencent.mm.ci.a.fromDPToPix(paramContext, 4);
-    this.NCM = com.tencent.mm.ci.a.fromDPToPix(paramContext, 4);
-    this.GhV = ((g)new b());
+    this.Upm = new LinkedList();
+    this.Upo = 1.0F;
+    this.Pdg = new Rect();
+    this.Upp = new RectF();
+    this.HLq = new Matrix();
+    this.yjb = new Path();
+    this.MlJ = new RectF();
+    this.MlK = com.tencent.mm.cd.a.fromDPToPix(paramContext, 4);
+    this.Upu = com.tencent.mm.cd.a.fromDPToPix(paramContext, 4);
+    this.Mdf = ((g)new b());
     this.paint.setColor(-65536);
     this.paint.setAntiAlias(true);
-    AppMethodBeat.o(246647);
+    AppMethodBeat.o(281637);
   }
   
-  private final void gwx()
+  private final void hUq()
   {
-    AppMethodBeat.i(246637);
+    AppMethodBeat.i(281653);
     Log.i(this.TAG, "clearThumb");
-    this.NCE.clear();
-    this.NCF = null;
+    this.Upm.clear();
+    this.Upn = null;
     postInvalidate();
-    AppMethodBeat.o(246637);
+    AppMethodBeat.o(281653);
   }
   
-  public final void aO(boolean paramBoolean1, boolean paramBoolean2)
+  public final void bl(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.NCI = paramBoolean1;
-    this.NCJ = paramBoolean2;
+    this.Upq = paramBoolean1;
+    this.Upr = paramBoolean2;
   }
   
-  public final void aP(boolean paramBoolean1, boolean paramBoolean2)
+  public final void bm(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.NCK = paramBoolean1;
-    this.NCL = paramBoolean2;
+    this.Ups = paramBoolean1;
+    this.Upt = paramBoolean2;
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(246645);
-    p.k(paramCanvas, "canvas");
+    int i = 1;
+    AppMethodBeat.i(281743);
+    s.u(paramCanvas, "canvas");
     super.onDraw(paramCanvas);
-    Log.i(this.TAG, "onDraw, trackInfo:" + this.Gqd + ", thumbList.size:" + this.NCE.size());
+    Log.i(this.TAG, "onDraw, trackInfo:" + this.Mkg + ", thumbList.size:" + this.Upm.size());
     paramCanvas.save();
-    paramCanvas.clipPath(this.uWB);
-    Object localObject = this.Gqd;
-    if ((localObject != null) && (((a)localObject).NCn == true))
+    paramCanvas.clipPath(this.yjb);
+    Object localObject = this.Mkg;
+    if ((localObject != null) && (((a)localObject).UoT == true)) {}
+    while (i != 0)
     {
-      localObject = (Bitmap)kotlin.a.j.M((List)this.NCE, 0);
+      localObject = (Bitmap)p.ae((List)this.Upm, 0);
       if (localObject != null)
       {
-        paramCanvas.concat(this.BZv);
+        paramCanvas.concat(this.HLq);
         paramCanvas.drawBitmap((Bitmap)localObject, 0.0F, 0.0F, this.paint);
       }
       paramCanvas.restore();
       localObject = getBackground();
       if (localObject != null)
       {
-        ((Drawable)localObject).setBounds((int)this.GrG.left, (int)this.GrG.top, (int)this.GrG.right, (int)this.GrG.bottom);
+        ((Drawable)localObject).setBounds((int)this.MlJ.left, (int)this.MlJ.top, (int)this.MlJ.right, (int)this.MlJ.bottom);
         ((Drawable)localObject).draw(paramCanvas);
-        AppMethodBeat.o(246645);
       }
+      AppMethodBeat.o(281743);
+      return;
+      i = 0;
     }
-    else
+    localObject = ((Iterable)this.Upm).iterator();
+    label212:
+    Bitmap localBitmap;
+    if (((Iterator)localObject).hasNext())
     {
-      localObject = ((Iterable)this.NCE).iterator();
-      label200:
-      Bitmap localBitmap;
-      if (((Iterator)localObject).hasNext())
-      {
-        localBitmap = (Bitmap)((Iterator)localObject).next();
-        if (localBitmap == null) {
-          break label255;
-        }
-        paramCanvas.drawBitmap(localBitmap, this.IUo, this.NCH, this.paint);
+      localBitmap = (Bitmap)((Iterator)localObject).next();
+      if (localBitmap == null) {
+        break label270;
       }
-      for (;;)
-      {
-        paramCanvas.translate(this.NCH.right, 0.0F);
-        break label200;
-        break;
-        label255:
-        localBitmap = this.NCF;
-        if (localBitmap != null) {
-          paramCanvas.drawBitmap(localBitmap, this.IUo, this.NCH, this.paint);
-        }
+      paramCanvas.drawBitmap(localBitmap, this.Pdg, this.Upp, this.paint);
+    }
+    for (;;)
+    {
+      paramCanvas.translate(this.Upp.right, 0.0F);
+      break label212;
+      break;
+      label270:
+      localBitmap = this.Upn;
+      if (localBitmap != null) {
+        paramCanvas.drawBitmap(localBitmap, this.Pdg, this.Upp, this.paint);
       }
     }
-    AppMethodBeat.o(246645);
   }
   
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
     float f2 = 0.0F;
-    AppMethodBeat.i(246643);
+    AppMethodBeat.i(281734);
     int i = View.getDefaultSize(getSuggestedMinimumHeight(), paramInt2);
-    this.NCH.bottom = i;
+    this.Upp.bottom = i;
     paramInt1 = View.getDefaultSize(getSuggestedMinimumWidth(), paramInt1);
-    Object localObject1 = this.Gqd;
+    Object localObject1 = this.Mkg;
     if (localObject1 != null)
     {
-      this.IUo.right = ((a)localObject1).width;
-      this.IUo.bottom = ((a)localObject1).height;
-      this.NCG = (i * 1.0F / ((a)localObject1).height);
-      this.NCH.right = (this.NCG * ((a)localObject1).width);
-      paramInt1 = (int)(this.NCH.right * ((a)localObject1).NCl);
+      this.Pdg.right = ((a)localObject1).width;
+      this.Pdg.bottom = ((a)localObject1).height;
+      this.Upo = (i * 1.0F / ((a)localObject1).height);
+      this.Upp.right = (this.Upo * ((a)localObject1).width);
+      paramInt1 = (int)(this.Upp.right * ((a)localObject1).UoR);
     }
-    localObject1 = this.Gqd;
-    paramInt2 = paramInt1;
+    localObject1 = this.Mkg;
     float f1;
-    if (localObject1 != null)
-    {
-      paramInt2 = paramInt1;
-      if (((a)localObject1).NCn == true)
-      {
-        localObject1 = this.BZv;
-        f1 = this.IUo.right;
-        float f3 = this.IUo.bottom;
-        float f4 = i;
-        p.k(localObject1, "$this$setRectToRectCenterCrop");
-        t.a((Matrix)localObject1, new RectF(0.0F, 0.0F, f1, f3), new RectF(0.0F, 0.0F, f4, f4));
-        paramInt2 = i;
-      }
-    }
-    label248:
+    label234:
+    label250:
     Object localObject2;
     Object localObject3;
-    if (this.NCI)
+    if ((localObject1 != null) && (((a)localObject1).UoT == true))
     {
-      this.GrG.left = 0.0F;
-      if (!this.NCJ) {
+      paramInt2 = 1;
+      if (paramInt2 != 0)
+      {
+        localObject1 = this.HLq;
+        f1 = this.Pdg.right;
+        float f3 = this.Pdg.bottom;
+        float f4 = i;
+        s.u(localObject1, "<this>");
+        t.a((Matrix)localObject1, new RectF(0.0F, 0.0F, f1, f3), new RectF(0.0F, 0.0F, f4, f4));
+        paramInt1 = i;
+      }
+      if (!this.Upq) {
+        break label491;
+      }
+      this.MlJ.left = 0.0F;
+      if (!this.Upr) {
         break label505;
       }
-      this.GrG.right = paramInt2;
+      this.MlJ.right = paramInt1;
       localObject2 = this.TAG;
-      localObject3 = new StringBuilder("onMeasure: ").append(this.NCI).append(' ').append(this.NCJ).append(", ").append(paramInt2).append(' ').append(i).append(", thumbScale:").append(this.NCG).append(", trackInfo.width:");
-      localObject1 = this.Gqd;
-      if (localObject1 == null) {
+      localObject3 = new StringBuilder("onMeasure: ").append(this.Upq).append(' ').append(this.Upr).append(", ").append(paramInt1).append(' ').append(i).append(", thumbScale:").append(this.Upo).append(", trackInfo.width:");
+      localObject1 = this.Mkg;
+      if (localObject1 != null) {
         break label522;
       }
-      localObject1 = Integer.valueOf(((a)localObject1).width);
-      label345:
-      Log.i((String)localObject2, localObject1 + ", thumbDrawRect.right:" + this.NCH.right);
-      this.GrG.bottom = i;
-      this.uWB.reset();
-      if (!this.NCK) {
-        break label528;
+      localObject1 = null;
+      label340:
+      Log.i((String)localObject2, localObject1 + ", thumbDrawRect.right:" + this.Upp.right);
+      this.MlJ.bottom = i;
+      this.yjb.reset();
+      if (!this.Ups) {
+        break label535;
       }
       f1 = 0.0F;
-      label402:
-      if (!this.NCL) {
-        break label536;
+      label397:
+      if (!this.Upt) {
+        break label543;
       }
     }
     for (;;)
     {
-      localObject1 = this.uWB;
-      localObject2 = this.GrG;
+      localObject1 = this.yjb;
+      localObject2 = this.MlJ;
       localObject3 = Path.Direction.CW;
       ((Path)localObject1).addRoundRect((RectF)localObject2, new float[] { f1, f1, f2, f2, f2, f2, f1, f1 }, (Path.Direction)localObject3);
-      setMeasuredDimension(paramInt2, i);
-      AppMethodBeat.o(246643);
+      setMeasuredDimension(paramInt1, i);
+      AppMethodBeat.o(281734);
       return;
-      this.GrG.left = this.NCM;
+      paramInt2 = 0;
       break;
+      label491:
+      this.MlJ.left = this.Upu;
+      break label234;
       label505:
-      this.GrG.right = (paramInt2 - this.NCM);
-      break label248;
+      this.MlJ.right = (paramInt1 - this.Upu);
+      break label250;
       label522:
-      localObject1 = null;
-      break label345;
-      label528:
-      f1 = this.GrH;
-      break label402;
-      label536:
-      f2 = this.GrH;
+      localObject1 = Integer.valueOf(((a)localObject1).width);
+      break label340;
+      label535:
+      f1 = this.MlK;
+      break label397;
+      label543:
+      f2 = this.MlK;
     }
   }
   
   public final void release()
   {
-    AppMethodBeat.i(246646);
-    c localc = this.Aub;
+    AppMethodBeat.i(281750);
+    c localc = this.FTn;
     if (localc != null) {
       localc.destroy();
     }
-    this.Aub = null;
-    this.Gqd = null;
-    gwx();
-    AppMethodBeat.o(246646);
+    this.FTn = null;
+    this.Mkg = null;
+    hUq();
+    AppMethodBeat.o(281750);
   }
   
   public final void setThumbFetcherExtraData(Object paramObject)
   {
-    this.NCY = paramObject;
+    this.UpC = paramObject;
   }
   
   public final void setThumbFetcherFactory(g paramg)
   {
-    AppMethodBeat.i(246633);
-    p.k(paramg, "thumbFetcherFactory");
-    this.GhV = paramg;
-    gwx();
-    AppMethodBeat.o(246633);
+    AppMethodBeat.i(281701);
+    s.u(paramg, "thumbFetcherFactory");
+    this.Mdf = paramg;
+    hUq();
+    AppMethodBeat.o(281701);
   }
   
   public final void setTrackInfo(a parama)
   {
-    AppMethodBeat.i(246636);
-    p.k(parama, "info");
-    this.Gqd = parama;
-    this.NCE.clear();
-    parama = this.Gqd;
+    AppMethodBeat.i(281711);
+    s.u(parama, "info");
+    this.Mkg = parama;
+    this.Upm.clear();
+    parama = this.Mkg;
     if (parama != null)
     {
-      parama = parama.NCm;
+      parama = parama.UoS;
       if (parama != null)
       {
         parama = ((Iterable)parama).iterator();
         while (parama.hasNext())
         {
           parama.next();
-          this.NCE.add(null);
+          this.Upm.add(null);
         }
       }
     }
-    kotlinx.coroutines.g.b((ak)br.abxo, (f)bc.iRs(), (m)new a(this, null), 2);
-    AppMethodBeat.o(246636);
+    j.a((aq)bu.ajwo, (f)bg.kCi(), null, (m)new a(this, null), 2);
+    AppMethodBeat.o(281711);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    extends kotlin.d.b.a.j
-    implements m<ak, d<? super x>, Object>
+    extends k
+    implements m<aq, d<? super ah>, Object>
   {
-    Object L$0;
     int label;
-    Object oDA;
-    private ak p$;
     
-    a(FrameListView paramFrameListView, d paramd)
+    a(FrameListView paramFrameListView, d<? super a> paramd)
     {
       super(paramd);
     }
     
-    public final d<x> create(Object paramObject, d<?> paramd)
+    public final d<ah> create(Object paramObject, d<?> paramd)
     {
-      AppMethodBeat.i(230652);
-      p.k(paramd, "completion");
-      paramd = new a(this.NCZ, paramd);
-      paramd.p$ = ((ak)paramObject);
-      AppMethodBeat.o(230652);
-      return paramd;
+      AppMethodBeat.i(281571);
+      paramd = new a(this.UpD, paramd);
+      paramd.L$0 = paramObject;
+      paramObject = (d)paramd;
+      AppMethodBeat.o(281571);
+      return paramObject;
     }
     
-    public final Object invoke(Object paramObject1, Object paramObject2)
+    public final Object invokeSuspend(Object paramObject)
     {
-      AppMethodBeat.i(230653);
-      paramObject1 = ((a)create(paramObject1, (d)paramObject2)).invokeSuspend(x.aazN);
-      AppMethodBeat.o(230653);
-      return paramObject1;
-    }
-    
-    public final Object invokeSuspend(final Object paramObject)
-    {
-      AppMethodBeat.i(230651);
-      kotlin.d.a.a locala = kotlin.d.a.a.aaAA;
+      AppMethodBeat.i(281566);
+      kotlin.d.a.a locala = kotlin.d.a.a.aiwj;
       switch (this.label)
       {
       default: 
         paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-        AppMethodBeat.o(230651);
+        AppMethodBeat.o(281566);
         throw paramObject;
       case 0: 
         ResultKt.throwOnFailure(paramObject);
-        paramObject = this.p$;
-        Log.i(FrameListView.a(this.NCZ), paramObject.hashCode() + " setTrackInfo launch");
-        a locala1 = FrameListView.b(this.NCZ);
+        Object localObject1 = (aq)this.L$0;
+        Log.i(FrameListView.a(this.UpD), localObject1.hashCode() + " setTrackInfo launch");
+        final a locala1 = FrameListView.b(this.UpD);
         if (locala1 != null)
         {
-          Log.i(FrameListView.a(this.NCZ), paramObject.hashCode() + " setTrackInfo init thumb fetcher");
-          Object localObject1 = FrameListView.c(this.NCZ);
-          if (localObject1 != null) {
-            ((c)localObject1).destroy();
+          paramObject = this.UpD;
+          Log.i(FrameListView.a(paramObject), localObject1.hashCode() + " setTrackInfo init thumb fetcher");
+          c localc = FrameListView.c(paramObject);
+          if (localc != null) {
+            localc.destroy();
           }
-          FrameListView.a(this.NCZ, FrameListView.d(this.NCZ).a(locala1, FrameListView.e(this.NCZ)));
-          localObject1 = FrameListView.c(this.NCZ);
-          if (localObject1 != null) {
-            ((c)localObject1).setSize(locala1.width, locala1.height);
+          FrameListView.a(paramObject, FrameListView.d(paramObject).a(locala1, FrameListView.e(paramObject)));
+          localc = FrameListView.c(paramObject);
+          if (localc != null) {
+            localc.setSize(locala1.width, locala1.height);
           }
-          Log.i(FrameListView.a(this.NCZ), paramObject.hashCode() + " setTrackInfo finish init thumb fetcher, frames.size:" + locala1.NCm.size());
-          localObject1 = FrameListView.c(this.NCZ);
-          if (localObject1 != null) {
-            ((c)localObject1).b(kotlin.a.j.listOf(kotlin.d.b.a.b.Xu(0L)), (m)new a(this, paramObject));
+          Log.i(FrameListView.a(paramObject), localObject1.hashCode() + " setTrackInfo finish init thumb fetcher, frames.size:" + locala1.UoS.size());
+          localc = FrameListView.c(paramObject);
+          if (localc != null) {
+            localc.b(p.listOf(kotlin.d.b.a.b.BF(0L)), (m)new a(paramObject));
           }
-          localObject1 = FrameListView.c(this.NCZ);
-          Object localObject2;
-          if (localObject1 != null)
+          localc = FrameListView.c(paramObject);
+          if (localc != null)
           {
-            Object localObject3 = (Iterable)locala1.NCm;
-            localObject2 = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject3, 10));
-            localObject3 = ((Iterable)localObject3).iterator();
-            while (((Iterator)localObject3).hasNext()) {
-              ((Collection)localObject2).add(kotlin.d.b.a.b.Xu(((e)((Iterator)localObject3).next()).GhA));
+            Object localObject2 = (Iterable)locala1.UoS;
+            Collection localCollection = (Collection)new ArrayList(p.a((Iterable)localObject2, 10));
+            localObject2 = ((Iterable)localObject2).iterator();
+            while (((Iterator)localObject2).hasNext()) {
+              localCollection.add(kotlin.d.b.a.b.BF(((e)((Iterator)localObject2).next()).GvM));
             }
-            ((c)localObject1).b((List)localObject2, (m)new b(locala1, this, paramObject));
+            localc.b((List)localCollection, (m)new b(paramObject, locala1));
           }
-          Log.i(FrameListView.a(this.NCZ), paramObject.hashCode() + " setTrackInfo request layout");
-          if ((!this.NCZ.isInLayout()) || (locala1.NCn))
+          Log.i(FrameListView.a(paramObject), localObject1.hashCode() + " setTrackInfo request layout");
+          if ((!paramObject.isInLayout()) || (locala1.UoT))
           {
-            localObject1 = (f)bc.iRr();
-            localObject2 = (m)new c(null, this, paramObject);
-            this.L$0 = paramObject;
-            this.oDA = locala1;
+            localObject1 = (f)bg.kCh();
+            paramObject = (m)new c(paramObject, null);
             this.label = 1;
-            if (i.a((f)localObject1, (m)localObject2, this) == locala)
+            if (l.a((f)localObject1, paramObject, this) == locala)
             {
-              AppMethodBeat.o(230651);
+              AppMethodBeat.o(281566);
               return locala;
             }
           }
@@ -405,79 +398,68 @@ public final class FrameListView
       case 1: 
         ResultKt.throwOnFailure(paramObject);
       }
-      paramObject = x.aazN;
-      AppMethodBeat.o(230651);
+      paramObject = ah.aiuX;
+      AppMethodBeat.o(281566);
       return paramObject;
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "timeMs", "", "bitmap", "Landroid/graphics/Bitmap;", "invoke", "com/tencent/mm/plugin/vlog/ui/thumb/FrameListView$setTrackInfo$2$1$1"})
+    @Metadata(d1={""}, d2={"<anonymous>", "", "timeMs", "", "bitmap", "Landroid/graphics/Bitmap;"}, k=3, mv={1, 5, 1}, xi=48)
     static final class a
-      extends q
-      implements m<Long, Bitmap, x>
+      extends u
+      implements m<Long, Bitmap, ah>
     {
-      a(FrameListView.a parama, ak paramak)
+      a(FrameListView paramFrameListView)
       {
         super();
       }
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "timeMs", "", "bitmap", "Landroid/graphics/Bitmap;", "invoke", "com/tencent/mm/plugin/vlog/ui/thumb/FrameListView$setTrackInfo$2$1$3"})
+    @Metadata(d1={""}, d2={"<anonymous>", "", "timeMs", "", "bitmap", "Landroid/graphics/Bitmap;"}, k=3, mv={1, 5, 1}, xi=48)
     static final class b
-      extends q
-      implements m<Long, Bitmap, x>
+      extends u
+      implements m<Long, Bitmap, ah>
     {
-      b(a parama, FrameListView.a parama1, ak paramak)
+      b(FrameListView paramFrameListView, a parama)
       {
         super();
       }
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "com/tencent/mm/plugin/vlog/ui/thumb/FrameListView$setTrackInfo$2$1$4"})
+    @Metadata(d1={""}, d2={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;"}, k=3, mv={1, 5, 1}, xi=48)
     static final class c
-      extends kotlin.d.b.a.j
-      implements m<ak, d<? super x>, Object>
+      extends k
+      implements m<aq, d<? super ah>, Object>
     {
       int label;
-      private ak p$;
       
-      c(d paramd, FrameListView.a parama, ak paramak)
+      c(FrameListView paramFrameListView, d<? super c> paramd)
       {
         super(paramd);
       }
       
-      public final d<x> create(Object paramObject, d<?> paramd)
+      public final d<ah> create(Object paramObject, d<?> paramd)
       {
-        AppMethodBeat.i(241188);
-        p.k(paramd, "completion");
-        paramd = new c(paramd, jdField_this, paramObject);
-        paramd.p$ = ((ak)paramObject);
-        AppMethodBeat.o(241188);
-        return paramd;
-      }
-      
-      public final Object invoke(Object paramObject1, Object paramObject2)
-      {
-        AppMethodBeat.i(241189);
-        paramObject1 = ((c)create(paramObject1, (d)paramObject2)).invokeSuspend(x.aazN);
-        AppMethodBeat.o(241189);
-        return paramObject1;
+        AppMethodBeat.i(281589);
+        paramObject = (d)new c(this.UpD, paramd);
+        AppMethodBeat.o(281589);
+        return paramObject;
       }
       
       public final Object invokeSuspend(Object paramObject)
       {
-        AppMethodBeat.i(241186);
-        kotlin.d.a.a locala = kotlin.d.a.a.aaAA;
+        AppMethodBeat.i(281583);
+        kotlin.d.a.a locala = kotlin.d.a.a.aiwj;
         switch (this.label)
         {
         default: 
           paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-          AppMethodBeat.o(241186);
+          AppMethodBeat.o(281583);
           throw paramObject;
         }
         ResultKt.throwOnFailure(paramObject);
-        jdField_this.NCZ.requestLayout();
-        paramObject = x.aazN;
-        AppMethodBeat.o(241186);
+        this.UpD.requestLayout();
+        paramObject = ah.aiuX;
+        AppMethodBeat.o(281583);
         return paramObject;
       }
     }
@@ -485,7 +467,7 @@ public final class FrameListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.thumb.FrameListView
  * JD-Core Version:    0.7.0.1
  */

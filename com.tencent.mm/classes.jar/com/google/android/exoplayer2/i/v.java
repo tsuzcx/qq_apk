@@ -5,22 +5,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class v
 {
-  public static void D(String paramString)
-  {
-    AppMethodBeat.i(93210);
-    if (x.SDK_INT >= 18) {
-      Trace.beginSection(paramString);
-    }
-    AppMethodBeat.o(93210);
-  }
-  
-  public static void gH()
+  public static void DS()
   {
     AppMethodBeat.i(93211);
     if (x.SDK_INT >= 18) {
       Trace.endSection();
     }
     AppMethodBeat.o(93211);
+  }
+  
+  public static void ax(String paramString)
+  {
+    AppMethodBeat.i(93210);
+    if (x.SDK_INT >= 18) {
+      Trace.beginSection(paramString);
+    }
+    AppMethodBeat.o(93210);
   }
 }
 

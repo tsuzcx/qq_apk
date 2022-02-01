@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/apm"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.live.core.view.TRTCVideoLayoutManager android:id="@id/h33" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mm.live.core.debug.LiveDebugView android:id="@id/egu" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="120.0dip" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/jyw" android:layout_centerVertical="true">
+        <ImageView android:layout_gravity="center|left" android:id="@id/i7u" android:background="@color/zz" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_marginLeft="15.909973dip" android:layout_marginRight="15.909973dip" />
+        <ImageView android:layout_gravity="center|left" android:id="@id/i7v" android:background="@color/a00" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_marginLeft="15.909973dip" android:layout_marginRight="15.909973dip" />
+        <ImageView android:id="@id/i89" android:background="@drawable/a_t" android:paddingLeft="@dimen/k" android:paddingRight="@dimen/k" android:layout_width="@dimen/apm" android:layout_height="@dimen/apm" />
+    </FrameLayout>
+    <TextView android:textSize="@dimen/l_" android:textColor="@color/ap" android:gravity="center|right" android:id="@id/jyw" android:layout_width="33.609985dip" android:layout_height="wrap_content" android:text="[0]" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
 </RelativeLayout>

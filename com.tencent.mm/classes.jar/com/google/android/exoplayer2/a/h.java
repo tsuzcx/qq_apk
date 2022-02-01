@@ -7,25 +7,25 @@ import java.nio.ByteBuffer;
 
 public final class h
 {
-  private static final int[] aPT = { 1, 2, 2, 2, 2, 3, 3, 4, 4, 5, 6, 6, 6, 7, 8, 8 };
-  private static final int[] aPU = { -1, 8000, 16000, 32000, -1, -1, 11025, 22050, 44100, -1, -1, 12000, 24000, 48000, -1, -1 };
-  private static final int[] aPV = { 64, 112, 128, 192, 224, 256, 384, 448, 512, 640, 768, 896, 1024, 1152, 1280, 1536, 1920, 2048, 2304, 2560, 2688, 2816, 2823, 2944, 3072, 3840, 4096, 6144, 7680 };
+  private static final int[] cJP = { 1, 2, 2, 2, 2, 3, 3, 4, 4, 5, 6, 6, 6, 7, 8, 8 };
+  private static final int[] cJQ = { -1, 8000, 16000, 32000, -1, -1, 11025, 22050, 44100, -1, -1, 12000, 24000, 48000, -1, -1 };
+  private static final int[] cJR = { 64, 112, 128, 192, 224, 256, 384, 448, 512, 640, 768, 896, 1024, 1152, 1280, 1536, 1920, 2048, 2304, 2560, 2688, 2816, 2823, 2944, 3072, 3840, 4096, 6144, 7680 };
   
   public static Format a(byte[] paramArrayOfByte, String paramString1, String paramString2)
   {
     AppMethodBeat.i(91805);
     paramArrayOfByte = new l(paramArrayOfByte);
-    paramArrayOfByte.eB(60);
-    int i = paramArrayOfByte.eA(6);
-    int k = aPT[i];
-    i = paramArrayOfByte.eA(4);
-    int m = aPU[i];
-    i = paramArrayOfByte.eA(5);
-    if (i >= aPV.length)
+    paramArrayOfByte.hR(60);
+    int i = paramArrayOfByte.hQ(6);
+    int k = cJP[i];
+    i = paramArrayOfByte.hQ(4);
+    int m = cJQ[i];
+    i = paramArrayOfByte.hQ(5);
+    if (i >= cJR.length)
     {
       i = -1;
-      paramArrayOfByte.eB(10);
-      if (paramArrayOfByte.eA(2) <= 0) {
+      paramArrayOfByte.hR(10);
+      if (paramArrayOfByte.hQ(2) <= 0) {
         break label121;
       }
     }
@@ -35,12 +35,12 @@ public final class h
       paramArrayOfByte = Format.a(paramString1, "audio/vnd.dts", i, -1, k + j, m, null, null, paramString2);
       AppMethodBeat.o(91805);
       return paramArrayOfByte;
-      i = aPV[i] * 1000 / 2;
+      i = cJR[i] * 1000 / 2;
       break;
     }
   }
   
-  public static int d(ByteBuffer paramByteBuffer)
+  public static int e(ByteBuffer paramByteBuffer)
   {
     AppMethodBeat.i(91806);
     int j = paramByteBuffer.position();
@@ -50,12 +50,12 @@ public final class h
     return (((j & 0xFC) >> 2 | (i & 0x1) << 6) + 1) * 32;
   }
   
-  public static int m(byte[] paramArrayOfByte)
+  public static int s(byte[] paramArrayOfByte)
   {
     return (((paramArrayOfByte[4] & 0x1) << 6 | (paramArrayOfByte[5] & 0xFC) >> 2) + 1) * 32;
   }
   
-  public static int n(byte[] paramArrayOfByte)
+  public static int t(byte[] paramArrayOfByte)
   {
     return ((paramArrayOfByte[5] & 0x2) << 12 | (paramArrayOfByte[6] & 0xFF) << 4 | (paramArrayOfByte[7] & 0xF0) >> 4) + 1;
   }

@@ -1,179 +1,135 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.i.e;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public final class y
+final class y
 {
-  i.e HKU = i.e.RcE;
-  public boolean pDp;
-  int pEj;
-  int pEk;
-  public int pEl;
-  public int pEm;
-  int videoHeight;
-  int videoWidth;
+  static Pattern sAddressPattern;
+  String mAuthInfo;
+  String mHost;
+  String mPath;
+  int mPort;
+  String mScheme;
   
-  private void aw(float paramFloat1, float paramFloat2)
+  static
   {
-    AppMethodBeat.i(134104);
-    if (!this.pDp)
-    {
-      if (this.pEj < this.pEk)
-      {
-        this.pEm = ((int)(this.pEj / paramFloat1));
-        this.pEl = this.pEj;
-        AppMethodBeat.o(134104);
-        return;
-      }
-      this.pEl = ((int)(this.pEk * paramFloat1));
-      this.pEm = this.pEk;
-      AppMethodBeat.o(134104);
-      return;
-    }
-    if (Math.abs(paramFloat1 - paramFloat2) > 0.05D)
-    {
-      if (this.pEj < this.pEk)
-      {
-        this.pEm = ((int)(this.pEj / paramFloat1));
-        this.pEl = this.pEj;
-        AppMethodBeat.o(134104);
-        return;
-      }
-      this.pEl = ((int)(this.pEk * paramFloat1));
-      this.pEm = this.pEk;
-      AppMethodBeat.o(134104);
-      return;
-    }
-    if (this.pEj > this.pEk)
-    {
-      this.pEm = ((int)(this.pEj / paramFloat1));
-      this.pEl = this.pEj;
-      AppMethodBeat.o(134104);
-      return;
-    }
-    this.pEl = ((int)(this.pEk * paramFloat1));
-    this.pEm = this.pEk;
-    AppMethodBeat.o(134104);
+    AppMethodBeat.i(103144);
+    sAddressPattern = Pattern.compile("(?:(http|https|file)\\:\\/\\/)?(?:([-A-Za-z0-9$_.+!*'(),;?&=]+(?:\\:[-A-Za-z0-9$_.+!*'(),;?&=]+)?)@)?([a-zA-Z0-9 -퟿豈-﷏ﷰ-￯%_-][a-zA-Z0-9 -퟿豈-﷏ﷰ-￯%_\\.-]*|\\[[0-9a-fA-F:\\.]+\\])?(?:\\:([0-9]*))?(\\/?[^#]*)?.*", 2);
+    AppMethodBeat.o(103144);
   }
   
-  private void ct(float paramFloat)
+  public y(String paramString)
   {
-    if (this.pEj < this.pEk)
+    AppMethodBeat.i(103142);
+    if (paramString == null)
     {
-      this.pEm = ((int)(this.pEj / paramFloat));
-      this.pEl = this.pEj;
-      if (this.pEm > this.pEk)
-      {
-        this.pEl = ((int)(this.pEk * paramFloat));
-        this.pEm = this.pEk;
-      }
+      paramString = new NullPointerException();
+      AppMethodBeat.o(103142);
+      throw paramString;
     }
-    do
+    this.mScheme = "";
+    this.mHost = "";
+    this.mPort = -1;
+    this.mPath = "/";
+    this.mAuthInfo = "";
+    paramString = sAddressPattern.matcher(paramString);
+    String str;
+    if (paramString.matches())
     {
-      return;
-      this.pEl = ((int)(this.pEk * paramFloat));
-      this.pEm = this.pEk;
-    } while (this.pEl <= this.pEj);
-    this.pEm = ((int)(this.pEj / paramFloat));
-    this.pEl = this.pEj;
-  }
-  
-  private void cu(float paramFloat)
-  {
-    if (this.pEj > this.pEk)
-    {
-      this.pEm = ((int)(this.pEj / paramFloat));
-      this.pEl = this.pEj;
-      if (this.pEm < this.pEk)
-      {
-        this.pEl = ((int)(this.pEk * paramFloat));
-        this.pEm = this.pEk;
+      str = paramString.group(1);
+      if (str != null) {
+        this.mScheme = str.toLowerCase();
       }
-    }
-    do
-    {
-      return;
-      this.pEl = ((int)(this.pEk * paramFloat));
-      this.pEm = this.pEk;
-    } while (this.pEl >= this.pEj);
-    this.pEm = ((int)(this.pEj / paramFloat));
-    this.pEl = this.pEj;
-  }
-  
-  private void hnQ()
-  {
-    this.pEm = this.pEk;
-    this.pEl = this.pEj;
-  }
-  
-  public final boolean A(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    AppMethodBeat.i(134103);
-    if ((this.pEj == paramInt1) && (this.pEk == paramInt2) && (this.videoWidth == paramInt3) && (this.videoHeight == paramInt4))
-    {
-      AppMethodBeat.o(134103);
-      return true;
-    }
-    this.pEj = paramInt1;
-    this.pEk = paramInt2;
-    this.videoWidth = paramInt3;
-    this.videoHeight = paramInt4;
-    float f1 = this.videoWidth * 1.0F / this.videoHeight;
-    float f2 = this.pEj * 1.0F / this.pEk;
-    if (this.HKU != i.e.RcE) {
-      if (this.HKU == i.e.RcG) {
-        ct(f1);
+      str = paramString.group(2);
+      if (str != null) {
+        this.mAuthInfo = str;
       }
+      str = paramString.group(3);
+      if (str != null) {
+        this.mHost = str;
+      }
+      str = paramString.group(4);
+      if ((str == null) || (str.length() <= 0)) {}
     }
     for (;;)
     {
-      Log.d("MicroMsg.ViewSizeCache", "screen[%d, %d], video[%d, %d], measure[%d, %d] scale[%f, %f]", new Object[] { Integer.valueOf(this.pEj), Integer.valueOf(this.pEk), Integer.valueOf(this.videoWidth), Integer.valueOf(this.videoHeight), Integer.valueOf(this.pEl), Integer.valueOf(this.pEm), Float.valueOf(f2), Float.valueOf(f1) });
-      AppMethodBeat.o(134103);
-      return false;
-      if (this.HKU == i.e.RcF) {
-        hnQ();
-      } else if (this.HKU == i.e.RcH) {
-        cu(f1);
-      } else {
-        aw(f1, f2);
+      try
+      {
+        this.mPort = Util.getInt(str, this.mPort);
+        paramString = paramString.group(5);
+        if ((paramString != null) && (paramString.length() > 0))
+        {
+          if (paramString.charAt(0) == '/') {
+            this.mPath = paramString;
+          }
+        }
+        else
+        {
+          if ((this.mPort != 443) || (!this.mScheme.equals(""))) {
+            break label284;
+          }
+          this.mScheme = "https";
+          if (this.mScheme.equals("")) {
+            this.mScheme = "http";
+          }
+          AppMethodBeat.o(103142);
+          return;
+        }
+      }
+      catch (NumberFormatException paramString)
+      {
+        paramString = new Exception("Bad port");
+        AppMethodBeat.o(103142);
+        throw paramString;
+      }
+      this.mPath = "/".concat(String.valueOf(paramString));
+      continue;
+      paramString = new Exception("Bad address");
+      AppMethodBeat.o(103142);
+      throw paramString;
+      label284:
+      if (this.mPort == -1) {
+        if (this.mScheme.equals("https")) {
+          this.mPort = 443;
+        } else {
+          this.mPort = 80;
+        }
       }
     }
   }
   
-  public final boolean a(i.e parame)
+  public final String toString()
   {
-    AppMethodBeat.i(169170);
-    if (this.HKU == parame) {}
-    for (int i = 1;; i = 0)
+    AppMethodBeat.i(103143);
+    String str2 = "";
+    if ((this.mPort == 443) || (!this.mScheme.equals("https")))
     {
-      Log.i("MicroMsg.ViewSizeCache", "set scale type old[%s] new[%s]", new Object[] { this.HKU, parame });
-      this.HKU = parame;
-      reset();
-      if (i != 0) {
-        break;
+      str1 = str2;
+      if (this.mPort != 80)
+      {
+        str1 = str2;
+        if (!this.mScheme.equals("http")) {}
       }
-      AppMethodBeat.o(169170);
-      return true;
     }
-    AppMethodBeat.o(169170);
-    return false;
-  }
-  
-  public final void reset()
-  {
-    this.pEk = 0;
-    this.pEj = 0;
-    this.videoHeight = 0;
-    this.videoWidth = 0;
-    this.pEm = 0;
-    this.pEl = 0;
+    else
+    {
+      str1 = ":" + Integer.toString(this.mPort);
+    }
+    str2 = "";
+    if (this.mAuthInfo.length() > 0) {
+      str2 = this.mAuthInfo + "@";
+    }
+    String str1 = this.mScheme + "://" + str2 + this.mHost + str1 + this.mPath;
+    AppMethodBeat.o(103143);
+    return str1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.y
  * JD-Core Version:    0.7.0.1
  */

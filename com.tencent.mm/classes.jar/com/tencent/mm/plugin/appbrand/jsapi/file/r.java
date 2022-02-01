@@ -2,10 +2,12 @@ package com.tencent.mm.plugin.appbrand.jsapi.file;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
+import com.tencent.mm.plugin.appbrand.appstorage.w;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.ah;
+import com.tencent.mm.vfs.u;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -18,7 +20,7 @@ public final class r
   private static final String NAME = "getFileInfo";
   
   /* Error */
-  static String w(q paramq)
+  static String x(u paramu)
   {
     // Byte code:
     //   0: ldc 27
@@ -27,7 +29,7 @@ public final class r
     //   7: invokestatic 41	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
     //   10: astore_3
     //   11: aload_0
-    //   12: invokestatic 47	com/tencent/mm/vfs/u:al	(Lcom/tencent/mm/vfs/q;)Ljava/io/InputStream;
+    //   12: invokestatic 47	com/tencent/mm/vfs/y:ao	(Lcom/tencent/mm/vfs/u;)Ljava/io/InputStream;
     //   15: astore_2
     //   16: sipush 8192
     //   19: newarray byte
@@ -175,7 +177,7 @@ public final class r
     //   261: goto -23 -> 238
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	264	0	paramq	q
+    //   0	264	0	paramu	u
     //   27	157	1	i	int
     //   15	100	2	localInputStream	java.io.InputStream
     //   195	40	2	localIOException1	java.io.IOException
@@ -205,35 +207,35 @@ public final class r
     //   234	238	245	java/io/IOException
   }
   
-  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.e parame, final JSONObject paramJSONObject, final int paramInt)
+  public final void a(final f paramf, final JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(128875);
     final String str = paramJSONObject.optString("filePath", "");
     if (!"sha1".equalsIgnoreCase(paramJSONObject.optString("digestAlgorithm", "md5"))) {}
     for (paramJSONObject = "md5"; Util.isNullOrNil(str); paramJSONObject = "sha1")
     {
-      parame.j(paramInt, h("fail:invalid data", null));
+      paramf.callback(paramInt, ZP("fail:invalid data"));
       AppMethodBeat.o(128875);
       return;
     }
-    e.oRI.execute(new Runnable()
+    e.rXi.execute(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(128874);
-        if (!parame.isRunning())
+        if (!paramf.isRunning())
         {
           AppMethodBeat.o(128874);
           return;
         }
-        Object localObject = parame.getFileSystem().adL(str);
+        Object localObject = paramf.getFileSystem().Wm(str);
         if (localObject == null)
         {
-          parame.j(paramInt, r.this.h("fail:file doesn't exist", null));
+          paramf.callback(paramInt, r.this.ZP("fail:file doesn't exist"));
           AppMethodBeat.o(128874);
           return;
         }
-        q localq = new q(((q)localObject).bOF());
+        u localu = new u(ah.v(((u)localObject).jKT()));
         localObject = paramJSONObject;
         int i = -1;
         switch (((String)localObject).hashCode())
@@ -249,9 +251,9 @@ public final class r
         for (;;)
         {
           HashMap localHashMap = new HashMap(2);
-          localHashMap.put("size", Long.valueOf(localq.length()));
+          localHashMap.put("size", Long.valueOf(localu.length()));
           localHashMap.put("digest", localObject);
-          parame.j(paramInt, r.this.m("ok", localHashMap));
+          paramf.callback(paramInt, r.this.m("ok", localHashMap));
           AppMethodBeat.o(128874);
           return;
           if (!((String)localObject).equals("md5")) {
@@ -264,23 +266,23 @@ public final class r
           }
           i = 1;
           break;
-          localObject = g.getMD5(localq.bOF());
+          localObject = g.getMD5(ah.v(localu.jKT()));
           continue;
-          localObject = r.w(new q(localq.bOF()));
+          localObject = r.x(new u(ah.v(localu.jKT())));
         }
       }
     });
     AppMethodBeat.o(128875);
   }
   
-  public final boolean bPy()
+  public final boolean cpE()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.r
  * JD-Core Version:    0.7.0.1
  */

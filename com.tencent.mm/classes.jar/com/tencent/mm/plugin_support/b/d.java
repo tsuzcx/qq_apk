@@ -8,15 +8,15 @@ public final class d
 {
   public final boolean isBusy()
   {
-    AppMethodBeat.i(246446);
+    AppMethodBeat.i(231236);
     boolean bool = XWebCoreContentProvider.isBusy();
-    AppMethodBeat.o(246446);
+    AppMethodBeat.o(231236);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin_support.b.d
  * JD-Core Version:    0.7.0.1
  */

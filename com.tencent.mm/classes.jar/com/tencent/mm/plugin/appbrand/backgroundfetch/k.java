@@ -7,9 +7,9 @@ public abstract interface k
 {
   public abstract boolean a(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, int paramInt2, long paramLong);
   
-  public abstract long bN(String paramString, int paramInt);
+  public abstract long cf(String paramString, int paramInt);
   
-  public abstract AppBrandBackgroundFetchDataParcel bO(String paramString, int paramInt);
+  public abstract AppBrandBackgroundFetchDataParcel cg(String paramString, int paramInt);
 }
 
 

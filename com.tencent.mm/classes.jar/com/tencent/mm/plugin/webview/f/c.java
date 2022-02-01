@@ -1,833 +1,429 @@
 package com.tencent.mm.plugin.webview.f;
 
-import android.text.TextUtils;
-import com.tencent.e.h;
-import com.tencent.e.i;
+import android.content.Context;
+import android.os.Looper;
+import android.os.Message;
+import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
-import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
-import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.b;
-import com.tencent.mm.modelsimple.l;
-import com.tencent.mm.modelsimple.l.a;
-import com.tencent.mm.protocal.GeneralControlWrapper;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.plugin.webview.jsapi.e;
+import com.tencent.mm.plugin.webview.jsapi.g;
+import com.tencent.mm.plugin.webview.jsapi.p;
+import com.tencent.mm.plugin.webview.jsapi.p.a;
+import com.tencent.mm.plugin.webview.jsapi.t;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
-import com.tencent.mm.protocal.c.g;
-import com.tencent.mm.protocal.protobuf.bos;
-import com.tencent.mm.protocal.protobuf.bot;
-import com.tencent.mm.protocal.protobuf.bov;
-import com.tencent.mm.protocal.protobuf.ckf;
-import com.tencent.mm.protocal.protobuf.eaf;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.widget.MMWebView;
+import com.tencent.threadpool.i;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/prefecher/WebPrefetcherJsApiHandler;", "Lcom/tencent/mm/plugin/webview/jsapi/IJsApiHandlerWrapper;", "jsApiPool", "Lcom/tencent/mm/plugin/webview/jsapi/IWebViewJsApiPool;", "jsPerm", "Lcom/tencent/mm/protocal/JsapiPermissionWrapper;", "wv", "Lcom/tencent/mm/ui/widget/MMWebView;", "(Lcom/tencent/mm/plugin/webview/jsapi/IWebViewJsApiPool;Lcom/tencent/mm/protocal/JsapiPermissionWrapper;Lcom/tencent/mm/ui/widget/MMWebView;)V", "canGetRandomStrNow", "", "getCanGetRandomStrNow", "()Z", "setCanGetRandomStrNow", "(Z)V", "canUpdateRandomStr", "destroyed", "enableDigestVerify", "isDgtVerify", "msgList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "msgQueueHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "randomStr", "", "resultValueList", "", "_getAllHosts", "", "allHostsStr", "_getDgtVerifyRandomStr", "_getHtmlContent", "contentStr", "_isDgtVerifyEnabled", "_ready", "ready", "_sendMessage", "msgContent", "dealAllMsg", "dealMsg", "msg", "dealMsgQueue", "dealNextMsg", "destroy", "doCallback", "callbackId", "ret", "retValue", "", "", "getBinderID", "", "getDgtVerifyRandomStr", "getJsApiPool", "getJsPerm", "hasPermission", "controlByte", "init", "initMsgQueueHandler", "isDgtVerifyEnabled", "setDigestVerify", "digestVerify", "updateRandomStr", "Companion", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
+  implements e
 {
-  private static final Pattern PYC;
-  private static final IPCRunCgi.b PYD;
-  private String EOD;
-  private byte[] EfT;
-  private int GIg;
-  public boolean PFQ;
-  private bov PYA;
-  private final HashMap<String, String> PYB;
-  private final HashSet<String> PYp;
-  private int PYq;
-  private boolean PYr;
-  private boolean PYs;
-  private int PYt;
-  private String PYu;
-  private bot PYv;
-  private String PYw;
-  private d PYx;
-  private String PYy;
-  private String PYz;
-  private String mAppId;
-  private int mScene;
-  private String pRV;
+  public static final a WPT;
+  String KQY;
+  private final LinkedList<p> PmC;
+  private final List<String> WDD;
+  private MMHandler WDE;
+  boolean WDI;
+  boolean WDJ;
+  final MMWebView WDz;
+  boolean WPU;
+  boolean WPV;
+  JsapiPermissionWrapper WlV;
+  private final g Wwh;
+  private boolean vXm;
   
   static
   {
-    AppMethodBeat.i(206169);
-    PYC = Pattern.compile(".*#.*wechat_redirect");
-    PYD = new IPCRunCgi.b()
-    {
-      public final com.tencent.mm.an.d a(com.tencent.mm.an.d paramAnonymousd)
-      {
-        AppMethodBeat.i(205715);
-        paramAnonymousd = l.a.g(paramAnonymousd);
-        AppMethodBeat.o(205715);
-        return paramAnonymousd;
-      }
-    };
-    AppMethodBeat.o(206169);
+    AppMethodBeat.i(294641);
+    WPT = new a((byte)0);
+    AppMethodBeat.o(294641);
   }
   
-  public c()
+  public c(g paramg, JsapiPermissionWrapper paramJsapiPermissionWrapper, MMWebView paramMMWebView)
   {
-    AppMethodBeat.i(206124);
-    this.PYp = new HashSet();
-    this.mScene = 0;
-    this.GIg = 0;
-    this.pRV = "";
-    this.mAppId = "";
-    this.EOD = "";
-    this.EfT = new byte[0];
-    this.PYr = true;
-    this.PYs = false;
-    this.PYt = 0;
-    this.PFQ = false;
-    this.PYu = null;
-    this.PYv = null;
-    this.PYw = null;
-    this.PYy = "";
-    this.PYz = "";
-    this.PYA = null;
-    this.PYB = new HashMap();
-    this.PYq = l.boo();
-    this.PYx = new d();
-    AppMethodBeat.o(206124);
-  }
-  
-  private static void a(String paramString, int paramInt, boolean paramBoolean, bot parambot, a<bot> parama)
-  {
-    AppMethodBeat.i(206163);
-    int i = parambot.SZN;
-    String str = parambot.lpy;
-    switch (i)
+    AppMethodBeat.i(294594);
+    this.Wwh = paramg;
+    this.WlV = paramJsapiPermissionWrapper;
+    this.WDz = paramMMWebView;
+    this.WDD = ((List)new ArrayList());
+    this.PmC = new LinkedList();
+    this.KQY = "";
+    this.WDE = ((MMHandler)new c(this, Looper.getMainLooper()));
+    this.WPU = b.iwv();
+    this.WPV = b.iww();
+    paramg = a.iwy();
+    if (paramg != null)
     {
+      Log.i("MicroMsg.WebPrefetcherJsApiHandler", "init hardcodeJsPermission valid and use");
+      this.WlV = paramg;
     }
-    for (;;)
-    {
-      AppMethodBeat.o(206163);
-      return;
-      if ((str == null) || (str.length() == 0))
-      {
-        Log.e("MicroMsg.LuggageGetA8Key", "getA8key-text fail, invalid content");
-        AppMethodBeat.o(206163);
-        return;
-      }
-      parama.F(paramInt, paramString, str);
-      AppMethodBeat.o(206163);
-      return;
-      parama.a(paramInt, paramBoolean, paramString, parambot.Tao, parambot);
-    }
+    AppMethodBeat.o(294594);
   }
   
-  /* Error */
-  private com.tencent.mm.an.d aL(String paramString, int paramInt)
+  private static final void a(c paramc)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc_w 282
-    //   5: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: aload_1
-    //   9: iload_2
-    //   10: invokestatic 286	com/tencent/mm/modelsimple/l$a:aL	(Ljava/lang/String;I)Lcom/tencent/mm/an/d;
-    //   13: astore 4
-    //   15: aload 4
-    //   17: getfield 292	com/tencent/mm/an/d:lBR	Lcom/tencent/mm/an/d$b;
-    //   20: invokestatic 297	com/tencent/mm/an/d$b:b	(Lcom/tencent/mm/an/d$b;)Lcom/tencent/mm/cd/a;
-    //   23: checkcast 299	com/tencent/mm/protocal/protobuf/bos
-    //   26: astore 5
-    //   28: aload 5
-    //   30: iconst_2
-    //   31: putfield 302	com/tencent/mm/protocal/protobuf/bos:RLe	I
-    //   34: aload 5
-    //   36: new 304	com/tencent/mm/protocal/protobuf/eaf
-    //   39: dup
-    //   40: invokespecial 305	com/tencent/mm/protocal/protobuf/eaf:<init>	()V
-    //   43: aload_1
-    //   44: invokevirtual 309	com/tencent/mm/protocal/protobuf/eaf:btQ	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/eaf;
-    //   47: putfield 313	com/tencent/mm/protocal/protobuf/bos:Tac	Lcom/tencent/mm/protocal/protobuf/eaf;
-    //   50: aload 5
-    //   52: aload_0
-    //   53: getfield 85	com/tencent/mm/plugin/webview/f/c:mScene	I
-    //   56: putfield 316	com/tencent/mm/protocal/protobuf/bos:CPw	I
-    //   59: aload 5
-    //   61: aload_0
-    //   62: getfield 91	com/tencent/mm/plugin/webview/f/c:pRV	Ljava/lang/String;
-    //   65: putfield 319	com/tencent/mm/protocal/protobuf/bos:UserName	Ljava/lang/String;
-    //   68: aload 5
-    //   70: aload_0
-    //   71: getfield 113	com/tencent/mm/plugin/webview/f/c:PYy	Ljava/lang/String;
-    //   74: putfield 322	com/tencent/mm/protocal/protobuf/bos:Tak	Ljava/lang/String;
-    //   77: aload 5
-    //   79: aload_0
-    //   80: getfield 115	com/tencent/mm/plugin/webview/f/c:PYz	Ljava/lang/String;
-    //   83: putfield 325	com/tencent/mm/protocal/protobuf/bos:Tal	Ljava/lang/String;
-    //   86: aload 5
-    //   88: iload_2
-    //   89: putfield 328	com/tencent/mm/protocal/protobuf/bos:RNa	I
-    //   92: aload 5
-    //   94: aload_0
-    //   95: getfield 87	com/tencent/mm/plugin/webview/f/c:GIg	I
-    //   98: putfield 331	com/tencent/mm/protocal/protobuf/bos:RIs	I
-    //   101: invokestatic 337	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
-    //   104: ldc_w 339
-    //   107: invokevirtual 345	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   110: checkcast 347	android/net/ConnectivityManager
-    //   113: astore_3
-    //   114: aload_3
-    //   115: ifnull +271 -> 386
-    //   118: aload_3
-    //   119: invokevirtual 351	android/net/ConnectivityManager:getActiveNetworkInfo	()Landroid/net/NetworkInfo;
-    //   122: astore_3
-    //   123: aload_3
-    //   124: ifnull +262 -> 386
-    //   127: aload_3
-    //   128: invokevirtual 356	android/net/NetworkInfo:getType	()I
-    //   131: iconst_1
-    //   132: if_icmpne +236 -> 368
-    //   135: ldc_w 358
-    //   138: astore_3
-    //   139: aload 5
-    //   141: aload_3
-    //   142: putfield 361	com/tencent/mm/protocal/protobuf/bos:sSU	Ljava/lang/String;
-    //   145: aload 5
-    //   147: aload_0
-    //   148: getfield 130	com/tencent/mm/plugin/webview/f/c:PYq	I
-    //   151: putfield 364	com/tencent/mm/protocal/protobuf/bos:Tag	I
-    //   154: aload 5
-    //   156: aload_0
-    //   157: getfield 95	com/tencent/mm/plugin/webview/f/c:EOD	Ljava/lang/String;
-    //   160: putfield 367	com/tencent/mm/protocal/protobuf/bos:Tah	Ljava/lang/String;
-    //   163: aload 5
-    //   165: aload_0
-    //   166: getfield 103	com/tencent/mm/plugin/webview/f/c:PYt	I
-    //   169: putfield 370	com/tencent/mm/protocal/protobuf/bos:Tai	I
-    //   172: aload 5
-    //   174: new 304	com/tencent/mm/protocal/protobuf/eaf
-    //   177: dup
-    //   178: invokespecial 305	com/tencent/mm/protocal/protobuf/eaf:<init>	()V
-    //   181: aload_0
-    //   182: getfield 93	com/tencent/mm/plugin/webview/f/c:mAppId	Ljava/lang/String;
-    //   185: invokevirtual 309	com/tencent/mm/protocal/protobuf/eaf:btQ	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/eaf;
-    //   188: putfield 373	com/tencent/mm/protocal/protobuf/bos:SZZ	Lcom/tencent/mm/protocal/protobuf/eaf;
-    //   191: aload 5
-    //   193: new 375	com/tencent/mm/protocal/protobuf/eae
-    //   196: dup
-    //   197: invokespecial 376	com/tencent/mm/protocal/protobuf/eae:<init>	()V
-    //   200: aload_0
-    //   201: getfield 97	com/tencent/mm/plugin/webview/f/c:EfT	[B
-    //   204: invokevirtual 380	com/tencent/mm/protocal/protobuf/eae:dc	([B)Lcom/tencent/mm/protocal/protobuf/eae;
-    //   207: putfield 381	com/tencent/mm/protocal/protobuf/bos:Taj	Lcom/tencent/mm/protocal/protobuf/eae;
-    //   210: aload 5
-    //   212: aload_0
-    //   213: getfield 117	com/tencent/mm/plugin/webview/f/c:PYA	Lcom/tencent/mm/protocal/protobuf/bov;
-    //   216: putfield 384	com/tencent/mm/protocal/protobuf/bos:Tan	Lcom/tencent/mm/protocal/protobuf/bov;
-    //   219: iconst_5
-    //   220: iload_2
-    //   221: if_icmpne +12 -> 233
-    //   224: aload 5
-    //   226: aload_0
-    //   227: getfield 111	com/tencent/mm/plugin/webview/f/c:PYw	Ljava/lang/String;
-    //   230: putfield 387	com/tencent/mm/protocal/protobuf/bos:SZI	Ljava/lang/String;
-    //   233: ldc 140
-    //   235: ldc_w 389
-    //   238: bipush 13
-    //   240: anewarray 4	java/lang/Object
-    //   243: dup
-    //   244: iconst_0
-    //   245: aload_1
-    //   246: aastore
-    //   247: dup
-    //   248: iconst_1
-    //   249: aload_0
-    //   250: getfield 91	com/tencent/mm/plugin/webview/f/c:pRV	Ljava/lang/String;
-    //   253: aastore
-    //   254: dup
-    //   255: iconst_2
-    //   256: aload_0
-    //   257: getfield 85	com/tencent/mm/plugin/webview/f/c:mScene	I
-    //   260: invokestatic 153	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   263: aastore
-    //   264: dup
-    //   265: iconst_3
-    //   266: iload_2
-    //   267: invokestatic 153	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   270: aastore
-    //   271: dup
-    //   272: iconst_4
-    //   273: aload_0
-    //   274: getfield 87	com/tencent/mm/plugin/webview/f/c:GIg	I
-    //   277: invokestatic 153	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   280: aastore
-    //   281: dup
-    //   282: iconst_5
-    //   283: aload 5
-    //   285: getfield 361	com/tencent/mm/protocal/protobuf/bos:sSU	Ljava/lang/String;
-    //   288: aastore
-    //   289: dup
-    //   290: bipush 6
-    //   292: aload_0
-    //   293: getfield 130	com/tencent/mm/plugin/webview/f/c:PYq	I
-    //   296: invokestatic 153	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   299: aastore
-    //   300: dup
-    //   301: bipush 7
-    //   303: aload_0
-    //   304: getfield 93	com/tencent/mm/plugin/webview/f/c:mAppId	Ljava/lang/String;
-    //   307: aastore
-    //   308: dup
-    //   309: bipush 8
-    //   311: aload_0
-    //   312: getfield 95	com/tencent/mm/plugin/webview/f/c:EOD	Ljava/lang/String;
-    //   315: aastore
-    //   316: dup
-    //   317: bipush 9
-    //   319: aload_0
-    //   320: getfield 103	com/tencent/mm/plugin/webview/f/c:PYt	I
-    //   323: invokestatic 153	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   326: aastore
-    //   327: dup
-    //   328: bipush 10
-    //   330: aload_0
-    //   331: getfield 97	com/tencent/mm/plugin/webview/f/c:EfT	[B
-    //   334: invokestatic 393	com/tencent/mm/sdk/platformtools/Util:encodeHexString	([B)Ljava/lang/String;
-    //   337: aastore
-    //   338: dup
-    //   339: bipush 11
-    //   341: aload_0
-    //   342: getfield 113	com/tencent/mm/plugin/webview/f/c:PYy	Ljava/lang/String;
-    //   345: aastore
-    //   346: dup
-    //   347: bipush 12
-    //   349: aload_0
-    //   350: getfield 115	com/tencent/mm/plugin/webview/f/c:PYz	Ljava/lang/String;
-    //   353: aastore
-    //   354: invokestatic 178	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   357: ldc_w 282
-    //   360: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   363: aload_0
-    //   364: monitorexit
-    //   365: aload 4
-    //   367: areturn
-    //   368: aload_3
-    //   369: invokevirtual 396	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
-    //   372: ifnull +14 -> 386
-    //   375: aload_3
-    //   376: invokevirtual 396	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
-    //   379: invokevirtual 399	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   382: astore_3
-    //   383: goto -244 -> 139
-    //   386: ldc_w 401
-    //   389: astore_3
-    //   390: goto -251 -> 139
-    //   393: astore_1
-    //   394: aload_0
-    //   395: monitorexit
-    //   396: aload_1
-    //   397: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	398	0	this	c
-    //   0	398	1	paramString	String
-    //   0	398	2	paramInt	int
-    //   113	277	3	localObject	Object
-    //   13	353	4	locald	com.tencent.mm.an.d
-    //   26	258	5	localbos	bos
-    // Exception table:
-    //   from	to	target	type
-    //   2	114	393	finally
-    //   118	123	393	finally
-    //   127	135	393	finally
-    //   139	219	393	finally
-    //   224	233	393	finally
-    //   233	363	393	finally
-    //   368	383	393	finally
+    AppMethodBeat.i(294611);
+    s.u(paramc, "this$0");
+    paramc.iwx();
+    AppMethodBeat.o(294611);
   }
   
-  private void b(final String paramString, final int paramInt, final a<bot> parama)
+  private static final void a(c paramc, String paramString)
   {
+    AppMethodBeat.i(294620);
+    s.u(paramc, "this$0");
     try
     {
-      AppMethodBeat.i(206160);
-      a(paramString, paramInt, new IPCRunCgi.a()
+      paramc.WDz.evaluateJavascript("javascript:WeixinPrefecherJSBridge._handleMessageFromWeixin(" + paramString + ')', (ValueCallback)new b());
+      AppMethodBeat.o(294620);
+      return;
+    }
+    catch (Exception paramc)
+    {
+      Log.printErrStackTrace("MicroMsg.WebPrefetcherJsApiHandler", (Throwable)paramc, "doCallback exception", new Object[0]);
+      AppMethodBeat.o(294620);
+    }
+  }
+  
+  private final void iwx()
+  {
+    AppMethodBeat.i(294606);
+    if (this.WDD.isEmpty())
+    {
+      Log.i("MicroMsg.WebPrefetcherJsApiHandler", "dealMsgQueue fail, resultValueList is empty");
+      AppMethodBeat.o(294606);
+      return;
+    }
+    Log.i("MicroMsg.WebPrefetcherJsApiHandler", s.X("dealMsgQueue, pre msgList = ", Integer.valueOf(this.PmC.size())));
+    boolean bool;
+    p localp;
+    try
+    {
+      Object localObject1 = p.a.n((String)this.WDD.remove(0), this.WDI, this.KQY);
+      if (!Util.isNullOrNil((List)localObject1))
       {
-        public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.an.d paramAnonymousd)
+        this.PmC.addAll((Collection)localObject1);
+        Log.i("MicroMsg.WebPrefetcherJsApiHandler", "dealMsgQueue now msg list size : %d", new Object[] { Integer.valueOf(this.PmC.size()) });
+      }
+      Log.i("MicroMsg.WebPrefetcherJsApiHandler", s.X("dealMsgQueue, post msgList = ", Integer.valueOf(this.PmC.size())));
+      while (this.PmC.isEmpty())
+      {
+        Log.i("MicroMsg.WebPrefetcherJsApiHandler", "dealNextMsg stop, msgList is empty");
+        bool = false;
+        if (!bool)
         {
-          AppMethodBeat.i(209603);
-          Log.i("MicroMsg.LuggageGetA8Key", "ipcGetA8Key errType:%d, errCode:%d, errMsg:%s, destroyCalled:%b", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, Boolean.valueOf(c.c(c.this)) });
-          c.d(c.this).remove(paramString);
-          if ((d.c.b(paramAnonymousd.lBS) instanceof bot))
+          if (this.WDE != null)
           {
-            paramAnonymousd = (bot)d.c.b(paramAnonymousd.lBS);
-            c.a(c.this, paramString, paramInt, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, paramAnonymousd, parama);
-            AppMethodBeat.o(209603);
-            return;
+            localObject1 = this.WDE;
+            s.checkNotNull(localObject1);
+            ((MMHandler)localObject1).post(new c..ExternalSyntheticLambda0(this));
           }
-          c.a(c.this, paramString, paramInt, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, null, parama);
-          Log.e("MicroMsg.LuggageGetA8Key", "ipcGetA8Key call back resp is null");
-          AppMethodBeat.o(209603);
+          AppMethodBeat.o(294606);
+          return;
         }
-      });
-      AppMethodBeat.o(206160);
-      return;
+      }
     }
-    finally
+    catch (Exception localException)
     {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  public static int blB(String paramString)
-  {
-    AppMethodBeat.i(206139);
-    paramString = com.tencent.mm.protocal.c.bst(paramString);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(206139);
-      return -1;
-    }
-    int i = paramString.hoG();
-    AppMethodBeat.o(206139);
-    return i;
-  }
-  
-  public static Map<String, String> iZ(List<ckf> paramList)
-  {
-    AppMethodBeat.i(206165);
-    HashMap localHashMap = new HashMap();
-    if (paramList == null)
-    {
-      AppMethodBeat.o(206165);
-      return localHashMap;
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      ckf localckf = (ckf)paramList.next();
-      localHashMap.put(localckf.CRg, localckf.Izj);
-    }
-    AppMethodBeat.o(206165);
-    return localHashMap;
-  }
-  
-  private static boolean ly(int paramInt1, int paramInt2)
-  {
-    return (paramInt1 == 4) && (paramInt2 == -2005);
-  }
-  
-  public final void Ht(int paramInt)
-  {
-    this.PYq = paramInt;
-  }
-  
-  public final a a(String paramString, int paramInt, a<bot> parama)
-  {
-    try
-    {
-      AppMethodBeat.i(206150);
-      paramString = a(paramString, false, paramInt, parama);
-      AppMethodBeat.o(206150);
-      return paramString;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  public final a a(String paramString, a<bot> parama)
-  {
-    try
-    {
-      AppMethodBeat.i(206149);
-      paramString = a(paramString, -1, parama);
-      AppMethodBeat.o(206149);
-      return paramString;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  public final a a(String paramString, boolean paramBoolean, int paramInt, final a<bot> parama)
-  {
-    for (;;)
-    {
-      try
+      for (;;)
       {
-        AppMethodBeat.i(206153);
-        if ((!paramBoolean) && (blD(paramString)))
-        {
-          paramString = a.PYJ;
-          AppMethodBeat.o(206153);
-          return paramString;
+        Log.printErrStackTrace("MicroMsg.WebPrefetcherJsApiHandler", (Throwable)localException, "dealMsgQueue exception", new Object[0]);
+        continue;
+        Log.i("MicroMsg.WebPrefetcherJsApiHandler", "dealNextMsg size: %s", new Object[] { Integer.valueOf(this.PmC.size()) });
+        localp = (p)this.PmC.remove(0);
+        if (localp != null) {
+          break;
         }
-        if ((!paramBoolean) && (this.PYx.has(paramString)))
-        {
-          paramString = a.PYI;
-          AppMethodBeat.o(206153);
-          continue;
-        }
-        if (paramInt != 5) {
-          break label100;
-        }
+        bool = false;
       }
-      finally {}
-      if (this.PYs)
+      localObject2 = this.WDz;
+      if (localObject2 != null) {}
+    }
+    for (Object localObject2 = null;; localObject2 = ((MMWebView)localObject2).getContext())
+    {
+      Object localObject3 = localObject2;
+      if (localObject2 == null) {
+        localObject3 = MMApplicationContext.getContext();
+      }
+      s.s(localObject3, "wv?.context ?: MMApplicationContext.getContext()");
+      JsapiPermissionWrapper localJsapiPermissionWrapper = this.WlV;
+      localObject2 = localJsapiPermissionWrapper;
+      if (localJsapiPermissionWrapper == null) {
+        localObject2 = localp.WlV;
+      }
+      localObject2 = new com.tencent.mm.plugin.webview.jsapi.h((Context)localObject3, (JsapiPermissionWrapper)localObject2, null, (e)this, this.WDz);
+      localObject3 = t.WEP;
+      bool = t.a((com.tencent.mm.plugin.webview.jsapi.h)localObject2, localp, this.Wwh);
+      break;
+    }
+  }
+  
+  public final void _getAllHosts(String paramString) {}
+  
+  @android.webkit.JavascriptInterface
+  @org.xwalk.core.JavascriptInterface
+  public final String _getDgtVerifyRandomStr()
+  {
+    AppMethodBeat.i(294673);
+    Log.i("MicroMsg.WebPrefetcherJsApiHandler", "_getDgtVerifyRandomStr canUpdateRandomStr: %s, canGet: %s, randomStr: %s", new Object[] { Boolean.valueOf(this.WPV), Boolean.valueOf(this.WDJ), this.KQY });
+    if ((this.WPV) && (!this.WDJ))
+    {
+      AppMethodBeat.o(294673);
+      return "";
+    }
+    this.WDJ = false;
+    String str = this.KQY;
+    AppMethodBeat.o(294673);
+    return str;
+  }
+  
+  public final void _getHtmlContent(String paramString) {}
+  
+  @android.webkit.JavascriptInterface
+  @org.xwalk.core.JavascriptInterface
+  public final boolean _isDgtVerifyEnabled()
+  {
+    return this.WDI;
+  }
+  
+  public final void _ready(boolean paramBoolean) {}
+  
+  @android.webkit.JavascriptInterface
+  @org.xwalk.core.JavascriptInterface
+  public final void _sendMessage(String paramString)
+  {
+    AppMethodBeat.i(294665);
+    Log.d("MicroMsg.WebPrefetcherJsApiHandler", "_sendMessage msgContent: %s", new Object[] { paramString });
+    if (this.WDE != null)
+    {
+      Message localMessage = Message.obtain();
+      localMessage.what = 1;
+      localMessage.obj = paramString;
+      paramString = this.WDE;
+      if (paramString != null)
       {
-        Log.w("MicroMsg.LuggageGetA8Key", "disable iframe request");
-        paramString = a.PYI;
-        AppMethodBeat.o(206153);
-      }
-      else
-      {
-        label100:
-        if ((!paramBoolean) && (this.PYp.contains(paramString)))
-        {
-          paramString = a.PYJ;
-          AppMethodBeat.o(206153);
-        }
-        else
-        {
-          this.PYp.add(paramString);
-          if (parama != null) {
-            parama.bv(paramInt, paramString);
-          }
-          final int i = paramInt;
-          if (paramInt == -1) {
-            i = dc(paramString, false);
-          }
-          boolean bool = this.PYr;
-          this.PYr = false;
-          Log.i("MicroMsg.LuggageGetA8Key", "WebView-Trace startGetA8Key, url: %s, force=%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
-          if ((bool) && (this.PYv != null) && (paramString.equals(this.PYv.Tao)))
-          {
-            Log.i("MicroMsg.LuggageGetA8Key", "WebView-Trace Use Outer GetA8key Result");
-            h.ZvG.be(new Runnable()
-            {
-              public final void run()
-              {
-                AppMethodBeat.i(206268);
-                Log.i("MicroMsg.LuggageGetA8Key", "WebView-Trace Use Outer GetA8key Result CallBack");
-                c.a(c.this, c.a(c.this), i, 0, 0, "", c.b(c.this), parama);
-                AppMethodBeat.o(206268);
-              }
-            });
-            paramString = a.PYJ;
-            AppMethodBeat.o(206153);
-          }
-          else
-          {
-            b(paramString, i, parama);
-            paramString = a.PYJ;
-            AppMethodBeat.o(206153);
-          }
-        }
+        paramString.sendMessage(localMessage);
+        AppMethodBeat.o(294665);
       }
     }
-  }
-  
-  public final void a(bov parambov)
-  {
-    this.PYA = parambov;
-  }
-  
-  public final void a(String paramString, int paramInt, IPCRunCgi.a parama)
-  {
-    try
+    else
     {
-      AppMethodBeat.i(206162);
-      IPCRunCgi.a(aL(paramString, paramInt), PYD, parama, null);
-      AppMethodBeat.o(206162);
-      return;
+      Log.e("MicroMsg.WebPrefetcherJsApiHandler", "_sendMessage msgQueueHandler err");
     }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  public final void aG(byte[] paramArrayOfByte)
-  {
-    this.EfT = paramArrayOfByte;
-  }
-  
-  public final void anT(int paramInt)
-  {
-    this.PYt = paramInt;
-  }
-  
-  public final GeneralControlWrapper blA(String paramString)
-  {
-    AppMethodBeat.i(206134);
-    paramString = this.PYx.blA(paramString);
-    AppMethodBeat.o(206134);
-    return paramString;
-  }
-  
-  public final int blC(String paramString)
-  {
-    AppMethodBeat.i(292842);
-    int i = dc(paramString, false);
-    AppMethodBeat.o(292842);
-    return i;
-  }
-  
-  public final boolean blD(String paramString)
-  {
-    AppMethodBeat.i(206145);
-    boolean bool = this.PYp.contains(paramString);
-    AppMethodBeat.o(206145);
-    return bool;
-  }
-  
-  public final String bld(String paramString)
-  {
-    AppMethodBeat.i(206137);
-    synchronized (this.PYB)
-    {
-      Log.i("MicroMsg.LuggageGetA8Key", "getShareUrl, fullUrl = %s", new Object[] { paramString });
-      localObject1 = this.PYB.keySet().iterator();
-      if (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (String)((Iterator)localObject1).next();
-        Log.i("MicroMsg.LuggageGetA8Key", "getShareUrl, Key = %s, value = %s", new Object[] { localObject2, this.PYB.get(localObject2) });
-      }
-    }
-    Object localObject2 = (String)this.PYB.get(paramString);
-    Object localObject1 = localObject2;
-    if (Util.isNullOrNil((String)localObject2))
-    {
-      localObject2 = this.PYB;
-      if (!Util.isNullOrNil(paramString)) {
-        break label175;
-      }
-      localObject1 = "";
-    }
-    for (;;)
-    {
-      localObject1 = (String)((HashMap)localObject2).get(localObject1);
-      paramString = Util.nullAs((String)localObject1, paramString);
-      AppMethodBeat.o(206137);
-      return paramString;
-      label175:
-      int i = paramString.indexOf("#");
-      if (i < 0) {
-        localObject1 = paramString;
-      } else {
-        localObject1 = paramString.substring(0, i);
-      }
-    }
-  }
-  
-  public final void blu(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.EOD = str;
-  }
-  
-  public final void blv(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.PYy = str;
-  }
-  
-  public final void blw(String paramString)
-  {
-    this.PYz = paramString;
-  }
-  
-  public final void blx(String paramString)
-  {
-    AppMethodBeat.i(206128);
-    Log.i("MicroMsg.LuggageGetA8Key", "setOuterUrlForIframe(%s)", new Object[] { paramString });
-    this.PYw = paramString;
-    AppMethodBeat.o(206128);
-  }
-  
-  public final JsapiPermissionWrapper bly(String paramString)
-  {
-    AppMethodBeat.i(206130);
-    paramString = this.PYx.blE(paramString);
-    AppMethodBeat.o(206130);
-    return paramString;
-  }
-  
-  public final boolean blz(String paramString)
-  {
-    AppMethodBeat.i(206132);
-    boolean bool = this.PYx.has(paramString);
-    AppMethodBeat.o(206132);
-    return bool;
-  }
-  
-  public final int dc(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(206143);
-    if (TextUtils.isEmpty(paramString))
-    {
-      Log.e("MicroMsg.LuggageGetA8Key", "getReason fail, url is null");
-      AppMethodBeat.o(206143);
-      return 0;
-    }
-    if (this.PYr)
-    {
-      AppMethodBeat.o(206143);
-      return 0;
-    }
-    if (PYC.matcher(paramString).find())
-    {
-      AppMethodBeat.o(206143);
-      return 2;
-    }
-    if ((!paramBoolean) && (b.blt(paramString)))
-    {
-      AppMethodBeat.o(206143);
-      return 8;
-    }
-    AppMethodBeat.o(206143);
-    return 1;
+    AppMethodBeat.o(294665);
   }
   
   public final void destroy()
   {
-    this.PFQ = true;
-  }
-  
-  public final boolean gUz()
-  {
-    AppMethodBeat.i(206146);
-    if (this.PYp.size() > 0)
+    AppMethodBeat.i(294656);
+    Object localObject = this.WDE;
+    if (localObject != null)
     {
-      AppMethodBeat.o(206146);
-      return true;
+      Message localMessage = Message.obtain();
+      localMessage.what = 3;
+      localMessage.obj = null;
+      ah localah = ah.aiuX;
+      ((MMHandler)localObject).sendMessage(localMessage);
     }
-    AppMethodBeat.o(206146);
-    return false;
-  }
-  
-  public final String gWG()
-  {
-    return this.PYy;
-  }
-  
-  public final String gWH()
-  {
-    return this.PYz;
-  }
-  
-  public final int getSessionId()
-  {
-    return this.PYq;
-  }
-  
-  public final String getUsername()
-  {
-    return this.pRV;
-  }
-  
-  public final boolean ha(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(206135);
-    if (bly(paramString).arj(paramInt) == 1)
-    {
-      AppMethodBeat.o(206135);
-      return true;
+    localObject = this.WDz;
+    if (localObject != null) {
+      ((MMWebView)localObject).removeJavascriptInterface("__wxPrefetcher");
     }
-    AppMethodBeat.o(206135);
-    return false;
+    AppMethodBeat.o(294656);
   }
   
-  public final void m(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  public final void doCallback(String paramString1, String paramString2, Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(206127);
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null))
+    AppMethodBeat.i(294701);
+    Object localObject = (CharSequence)paramString1;
+    if ((localObject == null) || (((CharSequence)localObject).length() == 0))
     {
-      AppMethodBeat.o(206127);
-      return;
-    }
-    if ((paramArrayOfByte1.length <= 0) || (paramArrayOfByte2.length <= 0))
-    {
-      AppMethodBeat.o(206127);
-      return;
-    }
-    bos localbos = new bos();
-    bot localbot = new bot();
-    try
-    {
-      localbos.parseFrom(paramArrayOfByte1);
-      localbot.parseFrom(paramArrayOfByte2);
-      this.PYu = localbos.Tac.Ufy;
-      label80:
-      if ((Util.isNullOrNil(this.PYu)) || (localbot.Tao == null))
+      i = 1;
+      if (i == 0)
       {
-        Log.e("MicroMsg.LuggageGetA8Key", "ReqUrl or FullUrl is null");
-        AppMethodBeat.o(206127);
-        return;
+        localObject = (CharSequence)paramString1;
+        if ((localObject != null) && (((CharSequence)localObject).length() != 0)) {
+          break label89;
+        }
       }
-      this.PYv = localbot;
-      AppMethodBeat.o(206127);
+    }
+    label89:
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0) {
+        break label95;
+      }
+      Log.e("MicroMsg.WebPrefetcherJsApiHandler", s.X("doCallback, invalid args, ret = ", paramString2));
+      AppMethodBeat.o(294701);
       return;
+      i = 0;
+      break;
     }
-    catch (Exception paramArrayOfByte1)
+    label95:
+    Map localMap = (Map)new HashMap();
+    if (paramString2 == null)
     {
-      break label80;
+      localObject = "";
+      localMap.put("errMsg", localObject);
+      if ((paramMap != null) && (!paramMap.isEmpty())) {
+        break label282;
+      }
     }
-  }
-  
-  public final void setAppId(String paramString)
-  {
-    this.mAppId = paramString;
-  }
-  
-  public final void setFlag(int paramInt)
-  {
-    this.GIg = paramInt;
-  }
-  
-  public final void setScene(int paramInt)
-  {
-    this.mScene = paramInt;
-  }
-  
-  public final void setUsername(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.pRV = str;
-  }
-  
-  public static enum a
-  {
-    static
+    label282:
+    for (i = 1;; i = 0)
     {
-      AppMethodBeat.i(216294);
-      PYH = new a("INTERCEPTED", 0);
-      PYI = new a("NO_NEED", 1);
-      PYJ = new a("WILL_GET", 2);
-      PYK = new a("FAILED", 3);
-      PYL = new a[] { PYH, PYI, PYJ, PYK };
-      AppMethodBeat.o(216294);
+      if (i == 0)
+      {
+        Log.i("MicroMsg.WebPrefetcherJsApiHandler", "doCallback, retValue size: " + paramMap.size() + ' ');
+        localMap.putAll(paramMap);
+      }
+      paramString1 = p.a.a(paramString1, localMap, this.WDI, this.KQY);
+      Log.i("MicroMsg.WebPrefetcherJsApiHandler", "doCallback, ret = " + paramString2 + ", cb = " + paramString1);
+      if ((paramString1 == null) || (this.WDz == null)) {
+        break label298;
+      }
+      paramString1 = new c..ExternalSyntheticLambda1(this, paramString1);
+      if (!MMHandlerThread.isMainThread()) {
+        break label288;
+      }
+      paramString1.run();
+      AppMethodBeat.o(294701);
+      return;
+      localObject = paramString2;
+      break;
+    }
+    label288:
+    com.tencent.threadpool.h.ahAA.bk(paramString1);
+    label298:
+    AppMethodBeat.o(294701);
+  }
+  
+  public final int getBinderID()
+  {
+    return 0;
+  }
+  
+  public final g itt()
+  {
+    return this.Wwh;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/prefecher/WebPrefetcherJsApiHandler$Companion;", "", "()V", "EVENT_ID", "", "TAG", "WHAT_DESTROY", "", "WHAT_FETCH_DONE", "WHAT_HANDLE_DONE", "WX_PREFETCHER_NAME", "getHardCodeJsPermission", "Lcom/tencent/mm/protocal/JsapiPermissionWrapper;", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+  {
+    public static JsapiPermissionWrapper iwy()
+    {
+      AppMethodBeat.i(294600);
+      Object localObject = (CharSequence)z.pCh;
+      if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
+      for (int i = 1; i != 0; i = 0)
+      {
+        Log.w("MicroMsg.WebPrefetcherJsApiHandler", "getHardCodeJsPermission, Test.jsapiPermission is null");
+        AppMethodBeat.o(294600);
+        return null;
+      }
+      try
+      {
+        i = Util.getInt(z.pCh, 0);
+        if (i < 0)
+        {
+          Log.w("MicroMsg.WebPrefetcherJsApiHandler", "getHardCodeJsPermission, Test.jsapiPermission wrong");
+          AppMethodBeat.o(294600);
+          return null;
+        }
+        Log.i("MicroMsg.WebPrefetcherJsApiHandler", "getHardCodeJsPermission %d", new Object[] { Integer.valueOf(i) });
+        localObject = new JsapiPermissionWrapper(i);
+        AppMethodBeat.o(294600);
+        return localObject;
+      }
+      catch (Exception localException)
+      {
+        Log.printErrStackTrace("MicroMsg.WebPrefetcherJsApiHandler", (Throwable)localException, "getHardCodeJsPermission exception", new Object[0]);
+        AppMethodBeat.o(294600);
+      }
+      return null;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/webview/prefecher/WebPrefetcherJsApiHandler$doCallback$r$1$1", "Landroid/webkit/ValueCallback;", "", "onReceiveValue", "", "value", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+    implements ValueCallback<String>
+  {}
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/webview/prefecher/WebPrefetcherJsApiHandler$initMsgQueueHandler$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
+    extends MMHandler
+  {
+    c(c paramc, Looper paramLooper)
+    {
+      super();
     }
     
-    private a() {}
+    public final void handleMessage(Message paramMessage)
+    {
+      AppMethodBeat.i(294596);
+      s.u(paramMessage, "msg");
+      if (c.b(this.WPW))
+      {
+        Log.w("MicroMsg.WebPrefetcherJsApiHandler", "handleMsg destroyed and ignore");
+        AppMethodBeat.o(294596);
+        return;
+      }
+      switch (paramMessage.what)
+      {
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(294596);
+        return;
+        paramMessage = paramMessage.obj;
+        if ((paramMessage instanceof String))
+        {
+          paramMessage = (String)paramMessage;
+          CharSequence localCharSequence = (CharSequence)paramMessage;
+          if ((localCharSequence != null) && (localCharSequence.length() != 0)) {
+            break label143;
+          }
+        }
+        label143:
+        for (int i = 1;; i = 0)
+        {
+          if (i == 0) {
+            c.c(this.WPW).add(paramMessage);
+          }
+          c.d(this.WPW);
+          AppMethodBeat.o(294596);
+          return;
+          paramMessage = null;
+          break;
+        }
+        Log.v("MicroMsg.WebPrefetcherJsApiHandler", "handle msg from wx done, msg: " + paramMessage.obj + ' ');
+        AppMethodBeat.o(294596);
+        return;
+        c.e(this.WPW);
+      }
+    }
   }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/webview/prefecher/WebPrefetcherJsApiHandler$updateRandomStr$1", "Landroid/webkit/ValueCallback;", "", "onReceiveValue", "", "value", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class d
+    implements ValueCallback<String>
+  {}
 }
 
 

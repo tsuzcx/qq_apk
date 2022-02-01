@@ -1,6 +1,5 @@
 package com.tencent.thumbplayer.utils;
 
-import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -20,54 +19,45 @@ import java.util.Locale;
 public class TPNetworkChangeMonitor
   extends BroadcastReceiver
 {
-  private static int ZHX = 0;
-  private static String ZHY = "unknown";
-  private static int ZHZ = 0;
-  private static int ZIa = ZHX;
-  private static String ZIb;
-  private HandlerThread ZIc;
+  private static int ahNa = 0;
+  private static String ahNb = "unknown";
+  private static int ahNc = 0;
+  private static int ahNd = ahNa;
+  private static String ahNe;
+  private HandlerThread ahNf;
   private ArrayList<b> mListeners;
   
   private TPNetworkChangeMonitor()
   {
-    AppMethodBeat.i(222254);
+    AppMethodBeat.i(227052);
     this.mListeners = null;
     if (this.mListeners == null) {
       this.mListeners = new ArrayList();
     }
-    AppMethodBeat.o(222254);
+    AppMethodBeat.o(227052);
   }
   
-  private void a(Context paramContext, Handler paramHandler)
+  private static boolean b(NetworkInfo paramNetworkInfo)
   {
-    try
-    {
-      AppMethodBeat.i(222260);
-      if (paramContext != null) {
-        paramContext.registerReceiver(this, new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"), null, paramHandler);
-      }
-      AppMethodBeat.o(222260);
-      return;
-    }
-    finally {}
-  }
-  
-  private static boolean a(NetworkInfo paramNetworkInfo)
-  {
-    AppMethodBeat.i(222279);
+    AppMethodBeat.i(227100);
     if ((paramNetworkInfo != null) && ((paramNetworkInfo.isConnected()) || (paramNetworkInfo.isConnectedOrConnecting())))
     {
-      AppMethodBeat.o(222279);
+      AppMethodBeat.o(227100);
       return true;
     }
-    AppMethodBeat.o(222279);
+    AppMethodBeat.o(227100);
     return false;
   }
   
-  private static int b(NetworkInfo paramNetworkInfo)
+  public static int bFQ()
+  {
+    return ahNa;
+  }
+  
+  private static int c(NetworkInfo paramNetworkInfo)
   {
     int j = 0;
-    AppMethodBeat.i(222286);
+    AppMethodBeat.i(227120);
     int i = j;
     if (paramNetworkInfo != null)
     {
@@ -80,7 +70,7 @@ public class TPNetworkChangeMonitor
     }
     for (;;)
     {
-      AppMethodBeat.o(222286);
+      AppMethodBeat.o(227120);
       return i;
       i = 2;
       continue;
@@ -90,15 +80,10 @@ public class TPNetworkChangeMonitor
     }
   }
   
-  public static int bih()
-  {
-    return ZHX;
-  }
-  
-  private static String c(NetworkInfo paramNetworkInfo)
+  private static String d(NetworkInfo paramNetworkInfo)
   {
     Object localObject = null;
-    AppMethodBeat.i(222288);
+    AppMethodBeat.i(227129);
     String str;
     if (paramNetworkInfo != null)
     {
@@ -127,7 +112,7 @@ public class TPNetworkChangeMonitor
     label288:
     for (;;)
     {
-      AppMethodBeat.o(222288);
+      AppMethodBeat.o(227129);
       return paramNetworkInfo;
       str = null;
       break;
@@ -188,51 +173,65 @@ public class TPNetworkChangeMonitor
     }
   }
   
-  public static TPNetworkChangeMonitor irQ()
+  private void d(Context paramContext, Handler paramHandler)
   {
-    AppMethodBeat.i(222255);
-    TPNetworkChangeMonitor localTPNetworkChangeMonitor = a.irT();
-    AppMethodBeat.o(222255);
+    try
+    {
+      AppMethodBeat.i(227070);
+      if (paramContext != null) {
+        paramContext.registerReceiver(this, new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"), null, paramHandler);
+      }
+      AppMethodBeat.o(227070);
+      return;
+    }
+    finally {}
+  }
+  
+  public static TPNetworkChangeMonitor kbq()
+  {
+    AppMethodBeat.i(227063);
+    TPNetworkChangeMonitor localTPNetworkChangeMonitor = a.kbt();
+    AppMethodBeat.o(227063);
     return localTPNetworkChangeMonitor;
   }
   
-  private void irR()
+  private void kbr()
   {
     for (;;)
     {
       boolean bool;
       try
       {
-        AppMethodBeat.i(222276);
-        if (ZHX != ZIa) {
+        AppMethodBeat.i(227092);
+        if (ahNa != ahNd) {
           break label183;
         }
-        if (TextUtils.equals(ZHY, ZIb)) {
+        if (TextUtils.equals(ahNb, ahNe)) {
           break label158;
         }
       }
       finally {}
       g.i("TPNetworkChangeMonitor", "notifyIfNetChanged, isNetChanged: " + bool + ",  mListeners:  " + this.mListeners);
-      g.i("TPNetworkChangeMonitor", "onNetworkStatusChanged oldNetStatus: " + ZIa + ", netStatus: " + ZHX + ", mobileNetSubType" + ZHZ);
+      g.i("TPNetworkChangeMonitor", "onNetworkStatusChanged oldNetStatus: " + ahNd + ", netStatus: " + ahNa + ", mobileNetSubType" + ahNc);
       if (bool)
       {
         Iterator localIterator = this.mListeners.iterator();
         if (localIterator.hasNext())
         {
-          ((b)localIterator.next()).nP(ZIa, ZHX);
+          ((b)localIterator.next()).pM(ahNd, ahNa);
           continue;
           label158:
           bool = false;
         }
         else
         {
-          ZIa = ZHX;
-          ZIb = ZHY;
+          ahNd = ahNa;
+          ahNe = ahNb;
         }
       }
       else
       {
-        AppMethodBeat.o(222276);
+        AppMethodBeat.o(227092);
         return;
         label183:
         bool = true;
@@ -240,17 +239,16 @@ public class TPNetworkChangeMonitor
     }
   }
   
-  private static void irS()
+  private static void kbs()
   {
-    AppMethodBeat.i(222282);
-    g.d("TPNetworkChangeMonitor", "-->updateNetStatus(), mNetStatus=" + ZHX + "[wifi: 2, mobile: 3], lastNetStatus=" + ZIa + ", mDetailNetworkType=" + ZHY + ", mobileNetSubType=" + ZHZ + "[2G:2 3G:3 4G:4], currentDetailNetType=" + ZHY + ", lastDetailNetType=" + ZIb);
-    AppMethodBeat.o(222282);
+    AppMethodBeat.i(227107);
+    g.d("TPNetworkChangeMonitor", "-->updateNetStatus(), mNetStatus=" + ahNa + "[wifi: 2, mobile: 3], lastNetStatus=" + ahNd + ", mDetailNetworkType=" + ahNb + ", mobileNetSubType=" + ahNc + "[2G:2 3G:3 4G:4], currentDetailNetType=" + ahNb + ", lastDetailNetType=" + ahNe);
+    AppMethodBeat.o(227107);
   }
   
-  @SuppressLint({"MissingPermission"})
-  private void mh(Context paramContext)
+  private void ou(Context paramContext)
   {
-    AppMethodBeat.i(222269);
+    AppMethodBeat.i(227083);
     if (paramContext != null) {}
     for (;;)
     {
@@ -267,59 +265,59 @@ public class TPNetworkChangeMonitor
           if (paramContext != null) {
             continue;
           }
-          if (!a(localNetworkInfo1)) {
+          if (!b(localNetworkInfo1)) {
             continue;
           }
-          ZHX = 3;
+          ahNa = 3;
           paramContext = localNetworkInfo1;
         }
-        switch (ZHX)
+        switch (ahNa)
         {
         case 1: 
-          ZHY = c(paramContext);
-          if (ZIa == 0)
+          ahNb = d(paramContext);
+          if (ahNd == 0)
           {
-            ZIa = ZHX;
-            ZIb = ZHY;
+            ahNd = ahNa;
+            ahNe = ahNb;
           }
-          irS();
-          irR();
-          AppMethodBeat.o(222269);
+          kbs();
+          kbr();
+          AppMethodBeat.o(227083);
           return;
           paramContext = null;
           continue;
-          if (a(localNetworkInfo2))
+          if (b(localNetworkInfo2))
           {
-            ZHX = 2;
+            ahNa = 2;
             paramContext = localNetworkInfo2;
             continue;
           }
-          ZHX = 1;
+          ahNa = 1;
           continue;
-          if (a(paramContext))
+          if (b(paramContext))
           {
-            if (!a(localNetworkInfo1)) {
+            if (!b(localNetworkInfo1)) {
               break label220;
             }
             i = 3;
-            ZHX = i;
+            ahNa = i;
             continue;
           }
-          ZHX = 1;
+          ahNa = 1;
           continue;
-          ZHZ = 0;
+          ahNc = 0;
           break;
         case 2: 
-          ZHZ = 1;
+          ahNc = 1;
         }
       }
       catch (Exception paramContext)
       {
-        AppMethodBeat.o(222269);
+        AppMethodBeat.o(227083);
         return;
       }
       continue;
-      ZHZ = b(paramContext);
+      ahNc = c(paramContext);
       continue;
       continue;
       label220:
@@ -331,13 +329,13 @@ public class TPNetworkChangeMonitor
   {
     try
     {
-      AppMethodBeat.i(222284);
+      AppMethodBeat.i(227175);
       if ((this.mListeners != null) && (!this.mListeners.contains(paramb)))
       {
         this.mListeners.add(paramb);
         g.d("TPNetworkChangeMonitor", "add onNetStatus change listener: " + paramb + ", mListeners: " + this.mListeners.size());
       }
-      AppMethodBeat.o(222284);
+      AppMethodBeat.o(227175);
       return;
     }
     finally {}
@@ -347,13 +345,13 @@ public class TPNetworkChangeMonitor
   {
     try
     {
-      AppMethodBeat.i(222285);
+      AppMethodBeat.i(227182);
       if (this.mListeners != null)
       {
         this.mListeners.remove(paramb);
         g.d("TPNetworkChangeMonitor", "remove netStatusChangeListener, listener: " + paramb + ", mListeners: " + this.mListeners.size());
       }
-      AppMethodBeat.o(222285);
+      AppMethodBeat.o(227182);
       return;
     }
     finally {}
@@ -363,16 +361,16 @@ public class TPNetworkChangeMonitor
   {
     try
     {
-      AppMethodBeat.i(222258);
-      b.h(paramContext, "context can not be null!");
-      if (this.ZIc == null)
+      AppMethodBeat.i(227158);
+      b.p(paramContext, "context can not be null!");
+      if (this.ahNf == null)
       {
-        this.ZIc = new HandlerThread("TP_NetInform");
-        this.ZIc.start();
+        this.ahNf = new HandlerThread("TP_NetInform");
+        this.ahNf.start();
       }
-      a(paramContext, new Handler(this.ZIc.getLooper()));
-      mh(paramContext);
-      AppMethodBeat.o(222258);
+      d(paramContext, new Handler(this.ahNf.getLooper()));
+      ou(paramContext);
+      AppMethodBeat.o(227158);
       return;
     }
     finally {}
@@ -380,7 +378,7 @@ public class TPNetworkChangeMonitor
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(222263);
+    AppMethodBeat.i(227168);
     StringBuilder localStringBuilder = new StringBuilder("onReceive broadcast action and update net status,onReceive broadcast in ");
     int i;
     if (Looper.getMainLooper() == Looper.myLooper())
@@ -394,8 +392,8 @@ public class TPNetworkChangeMonitor
     for (paramIntent = "main";; paramIntent = "work")
     {
       g.d("TPNetworkChangeMonitor", paramIntent + " thread.");
-      mh(paramContext);
-      AppMethodBeat.o(222263);
+      ou(paramContext);
+      AppMethodBeat.o(227168);
       return;
       i = 0;
       break;
@@ -404,24 +402,24 @@ public class TPNetworkChangeMonitor
   
   static final class a
   {
-    private static TPNetworkChangeMonitor ZId;
+    private static TPNetworkChangeMonitor ahNg;
     
     static
     {
-      AppMethodBeat.i(222248);
-      ZId = new TPNetworkChangeMonitor((byte)0);
-      AppMethodBeat.o(222248);
+      AppMethodBeat.i(227044);
+      ahNg = new TPNetworkChangeMonitor((byte)0);
+      AppMethodBeat.o(227044);
     }
   }
   
   public static abstract interface b
   {
-    public abstract void nP(int paramInt1, int paramInt2);
+    public abstract void pM(int paramInt1, int paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.thumbplayer.utils.TPNetworkChangeMonitor
  * JD-Core Version:    0.7.0.1
  */

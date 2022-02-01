@@ -2,7 +2,7 @@ package com.tencent.xweb.downloader;
 
 public abstract interface a
 {
-  public abstract int a(String paramString1, String paramString2, b paramb);
+  public abstract int a(String paramString1, String paramString2, int paramInt, b paramb);
 }
 
 

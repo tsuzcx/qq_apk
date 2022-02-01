@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/h0a" android:layout_width="fill_parent" android:layout_height="153.0dip" android:src="@drawable/cll" android:scaleType="fitCenter" />
-    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="17.0dip" android:textColor="@color/l4" android:gravity="center" android:id="@id/be9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/g4q" />
-</LinearLayout>
+    <View android:id="@id/hmz" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/hmx" android:background="@drawable/azp" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true">
+            <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/hn0" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <FrameLayout android:id="@id/hmy" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </LinearLayout>
+    </RelativeLayout>
+</merge>

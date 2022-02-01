@@ -1,141 +1,231 @@
 package com.tencent.mm.ui;
 
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Point;
-import android.os.Build;
+import android.app.Activity;
+import android.app.Application;
+import android.app.Application.ActivityLifecycleCallbacks;
 import android.os.Build.VERSION;
-import android.text.TextUtils;
-import android.view.Display;
-import android.view.WindowManager;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnApplyWindowInsetsListener;
+import android.view.Window;
+import android.view.WindowInsets;
+import androidx.a.a.c.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.lang.reflect.Method;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+import java.util.WeakHashMap;
 
 public final class ay
 {
-  private static Boolean Wfr = null;
+  private static final boolean adKS;
+  private static final WeakHashMap<Activity, ay> adKT;
+  private WindowInsets adKU;
+  private final Set<View.OnApplyWindowInsetsListener> eO;
   
-  public static int aB(Context paramContext)
+  static
   {
-    AppMethodBeat.i(168811);
-    if (av(paramContext))
-    {
-      int i = Resources.getSystem().getIdentifier("navigation_bar_height", "dimen", "android");
-      if (i > 0)
-      {
-        i = Resources.getSystem().getDimensionPixelSize(i);
-        AppMethodBeat.o(168811);
-        return i;
-      }
-    }
-    AppMethodBeat.o(168811);
-    return 0;
-  }
-  
-  public static Point au(Context paramContext)
-  {
-    AppMethodBeat.i(159145);
-    Point localPoint = new Point();
-    paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-    if (Build.VERSION.SDK_INT >= 17) {
-      paramContext.getRealSize(localPoint);
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(159145);
-      return localPoint;
-      if (Build.VERSION.SDK_INT >= 14) {
-        try
-        {
-          Method localMethod = Display.class.getMethod("getRawHeight", new Class[0]);
-          localPoint.x = ((Integer)Display.class.getMethod("getRawWidth", new Class[0]).invoke(paramContext, new Object[0])).intValue();
-          localPoint.y = ((Integer)localMethod.invoke(paramContext, new Object[0])).intValue();
-        }
-        catch (Exception localException) {}
-      } else {
-        paramContext.getSize(localPoint);
-      }
-    }
-  }
-  
-  @TargetApi(17)
-  public static boolean av(Context paramContext)
-  {
-    AppMethodBeat.i(159146);
-    Display localDisplay = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-    Point localPoint = new Point();
-    localDisplay.getSize(localPoint);
-    paramContext = au(paramContext);
-    int i = Math.max(localPoint.y, localPoint.x);
-    if (Math.max(paramContext.y, paramContext.x) > i)
-    {
-      AppMethodBeat.o(159146);
-      return true;
-    }
-    AppMethodBeat.o(159146);
-    return false;
-  }
-  
-  public static int df(String paramString)
-  {
-    AppMethodBeat.i(159147);
-    if (paramString != null) {}
-    try
-    {
-      if (paramString.length() <= 0)
-      {
-        AppMethodBeat.o(159147);
-        return 0;
-      }
-      int i = Integer.decode(paramString).intValue();
-      AppMethodBeat.o(159147);
-      return i;
-    }
-    catch (NumberFormatException paramString)
-    {
-      av.printErrStackTrace("WeUIUtil", paramString, "", new Object[0]);
-      AppMethodBeat.o(159147);
-    }
-    return 0;
-  }
-  
-  public static boolean hJb()
-  {
-    AppMethodBeat.i(249714);
-    String str = Build.MANUFACTURER;
-    if ((!TextUtils.isEmpty(str)) && (str.equalsIgnoreCase("blackshark")))
-    {
-      AppMethodBeat.o(249714);
-      return true;
-    }
-    AppMethodBeat.o(249714);
-    return false;
-  }
-  
-  public static boolean isMIUI()
-  {
-    AppMethodBeat.i(249713);
-    if (Wfr == null)
-    {
-      String str = Build.MANUFACTURER;
-      if ((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase("xiaomi"))) {
-        break label54;
-      }
-    }
-    label54:
+    AppMethodBeat.i(153549);
+    if (Build.VERSION.SDK_INT < 23) {}
     for (boolean bool = true;; bool = false)
     {
-      Wfr = Boolean.valueOf(bool);
-      bool = Wfr.booleanValue();
-      AppMethodBeat.o(249713);
-      return bool;
+      adKS = bool;
+      adKT = new WeakHashMap();
+      AppMethodBeat.o(153549);
+      return;
+    }
+  }
+  
+  private ay(final Activity paramActivity)
+  {
+    AppMethodBeat.i(153547);
+    this.eO = new HashSet();
+    paramActivity.runOnUiThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(153542);
+        paramActivity.getWindow().getDecorView().setOnApplyWindowInsetsListener(new View.OnApplyWindowInsetsListener()
+        {
+          public final WindowInsets onApplyWindowInsets(View paramAnonymous2View, WindowInsets paramAnonymous2WindowInsets)
+          {
+            AppMethodBeat.i(153541);
+            synchronized (ay.this)
+            {
+              ay.a(ay.this, new WindowInsets(paramAnonymous2WindowInsets));
+            }
+            synchronized (ay.a(ay.this))
+            {
+              LinkedList localLinkedList = new LinkedList(ay.a(ay.this));
+              ??? = localLinkedList.iterator();
+              while (((Iterator)???).hasNext())
+              {
+                ((View.OnApplyWindowInsetsListener)((Iterator)???).next()).onApplyWindowInsets(paramAnonymous2View, paramAnonymous2WindowInsets);
+                continue;
+                paramAnonymous2View = finally;
+                AppMethodBeat.o(153541);
+                throw paramAnonymous2View;
+              }
+            }
+            paramAnonymous2View = paramAnonymous2View.onApplyWindowInsets(paramAnonymous2WindowInsets);
+            AppMethodBeat.o(153541);
+            return paramAnonymous2View;
+          }
+        });
+        AppMethodBeat.o(153542);
+      }
+    });
+    AppMethodBeat.o(153547);
+  }
+  
+  public static ay bX(Activity paramActivity)
+  {
+    AppMethodBeat.i(153544);
+    paramActivity = i(paramActivity, true);
+    AppMethodBeat.o(153544);
+    return paramActivity;
+  }
+  
+  public static WindowInsets bY(Activity paramActivity)
+  {
+    AppMethodBeat.i(153545);
+    if (adKS)
+    {
+      paramActivity = i(paramActivity, false);
+      if (paramActivity == null)
+      {
+        AppMethodBeat.o(153545);
+        return null;
+      }
+      paramActivity = paramActivity.jlp();
+      AppMethodBeat.o(153545);
+      return paramActivity;
+    }
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      paramActivity = paramActivity.getWindow().getDecorView().getRootWindowInsets();
+      AppMethodBeat.o(153545);
+      return paramActivity;
+    }
+    AppMethodBeat.o(153545);
+    return null;
+  }
+  
+  private static ay i(Activity paramActivity, boolean paramBoolean)
+  {
+    AppMethodBeat.i(153546);
+    synchronized (adKT)
+    {
+      ay localay2 = (ay)adKT.get(paramActivity);
+      ay localay1 = localay2;
+      if (localay2 == null)
+      {
+        localay1 = localay2;
+        if (paramBoolean)
+        {
+          localay1 = new ay(paramActivity);
+          adKT.put(paramActivity, localay1);
+        }
+      }
+      AppMethodBeat.o(153546);
+      return localay1;
+    }
+  }
+  
+  private WindowInsets jlp()
+  {
+    try
+    {
+      WindowInsets localWindowInsets = this.adKU;
+      return localWindowInsets;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static void k(Application paramApplication)
+  {
+    AppMethodBeat.i(153543);
+    paramApplication.registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {}
+    {
+      public final void onActivityCreated(Activity paramAnonymousActivity, Bundle paramAnonymousBundle)
+      {
+        AppMethodBeat.i(153538);
+        ay.this.apply(paramAnonymousActivity);
+        AppMethodBeat.o(153538);
+      }
+      
+      public final void onActivityDestroyed(Activity paramAnonymousActivity)
+      {
+        AppMethodBeat.i(153540);
+        synchronized (ay.jlq())
+        {
+          paramAnonymousActivity = (ay)ay.jlq().remove(paramAnonymousActivity);
+          if (paramAnonymousActivity == null) {
+            break label72;
+          }
+        }
+        synchronized (ay.a(paramAnonymousActivity))
+        {
+          ay.a(paramAnonymousActivity).clear();
+          AppMethodBeat.o(153540);
+          return;
+          paramAnonymousActivity = finally;
+          AppMethodBeat.o(153540);
+          throw paramAnonymousActivity;
+        }
+        label72:
+        AppMethodBeat.o(153540);
+      }
+      
+      public final void onActivityPaused(Activity paramAnonymousActivity) {}
+      
+      public final void onActivityResumed(Activity paramAnonymousActivity) {}
+      
+      public final void onActivitySaveInstanceState(Activity paramAnonymousActivity, Bundle paramAnonymousBundle) {}
+      
+      public final void onActivityStarted(Activity paramAnonymousActivity)
+      {
+        AppMethodBeat.i(153539);
+        ay.this.apply(paramAnonymousActivity);
+        AppMethodBeat.o(153539);
+      }
+      
+      public final void onActivityStopped(Activity paramAnonymousActivity) {}
+    });
+    AppMethodBeat.o(153543);
+  }
+  
+  public final void a(View.OnApplyWindowInsetsListener paramOnApplyWindowInsetsListener)
+  {
+    AppMethodBeat.i(153548);
+    synchronized (this.eO)
+    {
+      this.eO.add(paramOnApplyWindowInsetsListener);
+      AppMethodBeat.o(153548);
+      return;
+    }
+  }
+  
+  public final void b(View.OnApplyWindowInsetsListener paramOnApplyWindowInsetsListener)
+  {
+    AppMethodBeat.i(175981);
+    synchronized (this.eO)
+    {
+      this.eO.remove(paramOnApplyWindowInsetsListener);
+      AppMethodBeat.o(175981);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.ay
  * JD-Core Version:    0.7.0.1
  */

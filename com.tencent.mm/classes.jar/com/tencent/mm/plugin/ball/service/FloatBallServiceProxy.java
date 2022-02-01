@@ -11,6 +11,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.e.c;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.f;
+import com.tencent.mm.ipcinvoker.m;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.ipcinvoker.type.IPCInteger;
 import com.tencent.mm.ipcinvoker.type.IPCLong;
@@ -29,31 +30,24 @@ import java.util.Set;
 public final class FloatBallServiceProxy
   implements b
 {
-  public final void Fd(int paramInt)
+  public final void FE(int paramInt)
   {
     AppMethodBeat.i(184599);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCInteger(paramInt), ag.class, new f() {});
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCInteger(paramInt), ah.class, new f() {});
     AppMethodBeat.o(184599);
   }
   
-  public final void Fe(int paramInt)
+  public final void FF(int paramInt)
   {
-    AppMethodBeat.i(187322);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCInteger(paramInt), ad.class, new f() {});
-    AppMethodBeat.o(187322);
-  }
-  
-  public final void HL(long paramLong)
-  {
-    AppMethodBeat.i(187303);
-    Log.w("MicroMsg.FloatBallServiceProxy", "markEnterChattingUI not implemented in non-MM process");
-    AppMethodBeat.o(187303);
+    AppMethodBeat.i(288506);
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCInteger(paramInt), ae.class, new f() {});
+    AppMethodBeat.o(288506);
   }
   
   public final void a(int paramInt1, int paramInt2, boolean paramBoolean, long paramLong)
   {
     AppMethodBeat.i(184594);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCKeyBoardChangedInfo(paramInt1, paramInt2, paramBoolean, paramLong), al.class, new f() {});
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCKeyBoardChangedInfo(paramInt1, paramInt2, paramBoolean, paramLong), am.class, new f() {});
     AppMethodBeat.o(184594);
   }
   
@@ -66,58 +60,51 @@ public final class FloatBallServiceProxy
   
   public final void a(long paramLong, final b.a parama)
   {
-    AppMethodBeat.i(187320);
+    AppMethodBeat.i(288502);
     XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCLong(paramLong), c.class, new f() {});
-    AppMethodBeat.o(187320);
-  }
-  
-  public final void a(ResultReceiver paramResultReceiver)
-  {
-    AppMethodBeat.i(187331);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, paramResultReceiver, FloatBallServiceProxy.ai.class, new f() {});
-    AppMethodBeat.o(187331);
+    AppMethodBeat.o(288502);
   }
   
   public final void a(com.tencent.mm.plugin.ball.c.d paramd)
   {
-    AppMethodBeat.i(187337);
+    AppMethodBeat.i(288549);
     Log.w("MicroMsg.FloatBallServiceProxy", "addFloatBallInfoChangedListener not implemented in non-MM process");
-    AppMethodBeat.o(187337);
+    AppMethodBeat.o(288549);
   }
   
   public final void a(g paramg)
   {
-    AppMethodBeat.i(187348);
+    AppMethodBeat.i(288559);
     Log.w("MicroMsg.FloatBallServiceProxy", "addFloatBallViewListener not implemented in non-MM process");
-    AppMethodBeat.o(187348);
+    AppMethodBeat.o(288559);
   }
   
   public final void a(final i parami)
   {
     AppMethodBeat.i(106203);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.jZu, k.class, new f() {});
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.mzv, l.class, new f() {});
     AppMethodBeat.o(106203);
   }
   
   public final void a(BallInfo paramBallInfo, ResultReceiver paramResultReceiver)
   {
     AppMethodBeat.i(106214);
-    paramResultReceiver = com.tencent.mm.plugin.ball.f.d.b(paramResultReceiver);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new FloatBallInfoEventReceiverParcel(paramBallInfo, paramResultReceiver), aa.class, new f() {});
+    paramResultReceiver = com.tencent.mm.plugin.ball.f.d.c(paramResultReceiver);
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new FloatBallInfoEventReceiverParcel(paramBallInfo, paramResultReceiver), ab.class, new f() {});
     AppMethodBeat.o(106214);
   }
   
   public final void a(BallInfo paramBallInfo, boolean paramBoolean)
   {
     AppMethodBeat.i(106219);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new UpdateBallVisibilityParcel(paramBoolean, paramBallInfo), ak.class, new f() {});
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new UpdateBallVisibilityParcel(paramBoolean, paramBallInfo), al.class, new f() {});
     AppMethodBeat.o(106219);
   }
   
-  public final void aGp()
+  public final void aZq()
   {
     AppMethodBeat.i(106195);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.jZu, FloatBallServiceProxy.x.class, new f() {});
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.mzv, y.class, new f() {});
     AppMethodBeat.o(106195);
   }
   
@@ -128,18 +115,25 @@ public final class FloatBallServiceProxy
     AppMethodBeat.o(106221);
   }
   
+  public final void b(ResultReceiver paramResultReceiver)
+  {
+    AppMethodBeat.i(288527);
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, paramResultReceiver, aj.class, new f() {});
+    AppMethodBeat.o(288527);
+  }
+  
   public final void b(com.tencent.mm.plugin.ball.c.d paramd)
   {
-    AppMethodBeat.i(187340);
+    AppMethodBeat.i(288554);
     Log.w("MicroMsg.FloatBallServiceProxy", "removeFloatBallInfoChangedListener not implemented in non-MM process");
-    AppMethodBeat.o(187340);
+    AppMethodBeat.o(288554);
   }
   
   public final void b(g paramg)
   {
-    AppMethodBeat.i(187349);
+    AppMethodBeat.i(288565);
     Log.w("MicroMsg.FloatBallServiceProxy", "removeFloatBallViewListener not implemented in non-MM process");
-    AppMethodBeat.o(187349);
+    AppMethodBeat.o(288565);
   }
   
   public final boolean c(AnimatorListenerAdapter paramAnimatorListenerAdapter)
@@ -150,10 +144,10 @@ public final class FloatBallServiceProxy
     return false;
   }
   
-  public final boolean cuW()
+  public final boolean cXG()
   {
     AppMethodBeat.i(106198);
-    IPCBoolean localIPCBoolean = (IPCBoolean)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.jZu, FloatBallServiceProxy.r.class);
+    IPCBoolean localIPCBoolean = (IPCBoolean)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.mzv, s.class);
     if ((localIPCBoolean != null) && (localIPCBoolean.value))
     {
       AppMethodBeat.o(106198);
@@ -163,23 +157,23 @@ public final class FloatBallServiceProxy
     return false;
   }
   
-  public final boolean cuX()
+  public final boolean cXH()
   {
-    AppMethodBeat.i(187300);
-    IPCBoolean localIPCBoolean = (IPCBoolean)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.jZu, FloatBallServiceProxy.w.class);
+    AppMethodBeat.i(288422);
+    IPCBoolean localIPCBoolean = (IPCBoolean)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.mzv, x.class);
     if ((localIPCBoolean != null) && (localIPCBoolean.value))
     {
-      AppMethodBeat.o(187300);
+      AppMethodBeat.o(288422);
       return true;
     }
-    AppMethodBeat.o(187300);
+    AppMethodBeat.o(288422);
     return false;
   }
   
-  public final boolean cuY()
+  public final boolean cXI()
   {
     AppMethodBeat.i(106199);
-    IPCBoolean localIPCBoolean = (IPCBoolean)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.jZu, FloatBallServiceProxy.s.class);
+    IPCBoolean localIPCBoolean = (IPCBoolean)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.mzv, t.class);
     if ((localIPCBoolean != null) && (localIPCBoolean.value))
     {
       AppMethodBeat.o(106199);
@@ -189,89 +183,96 @@ public final class FloatBallServiceProxy
     return false;
   }
   
-  public final long cuZ()
+  public final long cXJ()
   {
-    AppMethodBeat.i(187304);
+    AppMethodBeat.i(288433);
     Log.w("MicroMsg.FloatBallServiceProxy", "getEnterChattingUITimestamp not implemented in non-MM process");
-    AppMethodBeat.o(187304);
+    AppMethodBeat.o(288433);
     return 0L;
   }
   
-  public final void cva()
+  public final void cXK()
   {
     AppMethodBeat.i(106200);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.jZu, FloatBallServiceProxy.j.class, new f() {});
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.mzv, k.class, new f() {});
     AppMethodBeat.o(106200);
   }
   
-  public final void cvb()
+  public final void cXL()
   {
     AppMethodBeat.i(106202);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.jZu, FloatBallServiceProxy.z.class, new f() {});
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.mzv, aa.class, new f() {});
     AppMethodBeat.o(106202);
   }
   
-  public final List<BallInfo> cvc()
+  public final List<BallInfo> cXM()
   {
     return null;
   }
   
-  public final List<BallInfo> cvd()
+  public final List<BallInfo> cXN()
   {
     return null;
   }
   
-  public final Set<g> cve()
+  public final Set<g> cXO()
   {
-    AppMethodBeat.i(187351);
+    AppMethodBeat.i(288575);
     Log.w("MicroMsg.FloatBallServiceProxy", "getFloatBallViewListeners not implemented in non-MM process");
-    AppMethodBeat.o(187351);
+    AppMethodBeat.o(288575);
     return null;
   }
   
-  public final boolean cvf()
+  public final boolean cXP()
   {
-    AppMethodBeat.i(187352);
+    AppMethodBeat.i(288580);
     Log.w("MicroMsg.FloatBallServiceProxy", "isFloatBallViewDockLeft not implemented in non-MM process");
-    AppMethodBeat.o(187352);
+    AppMethodBeat.o(288580);
     return false;
   }
   
-  public final void cvg() {}
+  public final void cXQ() {}
   
-  public final boolean cvh()
+  public final boolean cXR()
   {
-    AppMethodBeat.i(187298);
-    IPCBoolean localIPCBoolean = (IPCBoolean)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.jZu, FloatBallServiceProxy.q.class);
+    AppMethodBeat.i(288419);
+    IPCBoolean localIPCBoolean = (IPCBoolean)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.mzv, r.class);
     if ((localIPCBoolean != null) && (localIPCBoolean.value))
     {
-      AppMethodBeat.o(187298);
+      AppMethodBeat.o(288419);
       return true;
     }
-    AppMethodBeat.o(187298);
+    AppMethodBeat.o(288419);
     return false;
   }
   
-  public final void cvi()
+  public final void cXS()
   {
     AppMethodBeat.i(184596);
     Log.w("MicroMsg.FloatBallServiceProxy", "addFloatBallViewLayoutParamsFlag not implemented in non-MM process");
     AppMethodBeat.o(184596);
   }
   
-  public final void cvj()
+  public final void cXT()
   {
     AppMethodBeat.i(184597);
     Log.w("MicroMsg.FloatBallServiceProxy", "removeFloatBallViewLayoutParamsFlag not implemented in non-MM process");
     AppMethodBeat.o(184597);
   }
   
-  public final void dK(View paramView) {}
+  public final void cXU()
+  {
+    AppMethodBeat.i(288495);
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.mzv, e.class, new f() {});
+    AppMethodBeat.o(288495);
+  }
+  
+  public final void ex(View paramView) {}
   
   public final Point getBallPosition()
   {
     AppMethodBeat.i(106216);
-    Point localPoint = (Point)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.jZu, FloatBallServiceProxy.m.class);
+    Point localPoint = (Point)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.mzv, n.class);
     AppMethodBeat.o(106216);
     return localPoint;
   }
@@ -281,7 +282,7 @@ public final class FloatBallServiceProxy
     AppMethodBeat.i(106204);
     try
     {
-      paramBallInfo = (BallInfo)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, paramBallInfo, FloatBallServiceProxy.l.class);
+      paramBallInfo = (BallInfo)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, paramBallInfo, m.class);
       AppMethodBeat.o(106204);
       return paramBallInfo;
     }
@@ -298,7 +299,7 @@ public final class FloatBallServiceProxy
     AppMethodBeat.i(106205);
     try
     {
-      paramBallInfo = (IPCBoolean)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, paramBallInfo, FloatBallServiceProxy.d.class);
+      paramBallInfo = (IPCBoolean)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, paramBallInfo, d.class);
       if ((paramBallInfo != null) && (paramBallInfo.value))
       {
         AppMethodBeat.o(106205);
@@ -318,174 +319,181 @@ public final class FloatBallServiceProxy
   public final void j(BallInfo paramBallInfo)
   {
     AppMethodBeat.i(106206);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, paramBallInfo, FloatBallServiceProxy.a.class, new f() {});
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, paramBallInfo, a.class, new f() {});
     AppMethodBeat.o(106206);
   }
   
   public final void k(BallInfo paramBallInfo)
   {
     AppMethodBeat.i(106207);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, paramBallInfo, FloatBallServiceProxy.aj.class, new f() {});
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, paramBallInfo, ak.class, new f() {});
     AppMethodBeat.o(106207);
   }
   
-  public final void kV(boolean paramBoolean)
+  public final void kc(long paramLong)
   {
-    AppMethodBeat.i(106191);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCBoolean(paramBoolean), n.class, new f() {});
-    AppMethodBeat.o(106191);
-  }
-  
-  public final void kW(boolean paramBoolean)
-  {
-    AppMethodBeat.i(106192);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCBoolean(paramBoolean), ae.class, new f() {});
-    AppMethodBeat.o(106192);
-  }
-  
-  public final void kX(boolean paramBoolean)
-  {
-    AppMethodBeat.i(106193);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCBoolean(paramBoolean), FloatBallServiceProxy.o.class, new f() {});
-    AppMethodBeat.o(106193);
-  }
-  
-  public final void kY(boolean paramBoolean)
-  {
-    AppMethodBeat.i(106194);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCBoolean(paramBoolean), FloatBallServiceProxy.af.class, new f() {});
-    AppMethodBeat.o(106194);
-  }
-  
-  public final void kZ(boolean paramBoolean)
-  {
-    AppMethodBeat.i(187276);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCBoolean(paramBoolean), FloatBallServiceProxy.p.class, new f() {});
-    AppMethodBeat.o(187276);
+    AppMethodBeat.i(288429);
+    Log.w("MicroMsg.FloatBallServiceProxy", "markEnterChattingUI not implemented in non-MM process");
+    AppMethodBeat.o(288429);
   }
   
   public final void l(BallInfo paramBallInfo)
   {
     AppMethodBeat.i(106208);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, paramBallInfo, FloatBallServiceProxy.ab.class, new f() {});
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, paramBallInfo, ac.class, new f() {});
     AppMethodBeat.o(106208);
   }
   
-  public final void la(boolean paramBoolean)
+  public final void m(BallInfo paramBallInfo)
+  {
+    AppMethodBeat.i(106209);
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, paramBallInfo, f.class, new f() {});
+    AppMethodBeat.o(106209);
+  }
+  
+  public final void mi(boolean paramBoolean)
+  {
+    AppMethodBeat.i(106191);
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCBoolean(paramBoolean), o.class, new f() {});
+    AppMethodBeat.o(106191);
+  }
+  
+  public final void mj(boolean paramBoolean)
+  {
+    AppMethodBeat.i(106192);
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCBoolean(paramBoolean), af.class, new f() {});
+    AppMethodBeat.o(106192);
+  }
+  
+  public final void mk(boolean paramBoolean)
+  {
+    AppMethodBeat.i(106193);
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCBoolean(paramBoolean), p.class, new f() {});
+    AppMethodBeat.o(106193);
+  }
+  
+  public final void ml(boolean paramBoolean)
+  {
+    AppMethodBeat.i(106194);
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCBoolean(paramBoolean), ag.class, new f() {});
+    AppMethodBeat.o(106194);
+  }
+  
+  public final void mm(boolean paramBoolean)
+  {
+    AppMethodBeat.i(288409);
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCBoolean(paramBoolean), q.class, new f() {});
+    AppMethodBeat.o(288409);
+  }
+  
+  public final void mn(boolean paramBoolean)
   {
     AppMethodBeat.i(176964);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCBoolean(paramBoolean), FloatBallServiceProxy.v.class, new f() {});
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCBoolean(paramBoolean), w.class, new f() {});
     AppMethodBeat.o(176964);
   }
   
-  public final void lb(boolean paramBoolean)
+  public final void mo(boolean paramBoolean)
   {
     AppMethodBeat.i(106197);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCBoolean(paramBoolean), FloatBallServiceProxy.u.class, new f() {});
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCBoolean(paramBoolean), v.class, new f() {});
     AppMethodBeat.o(106197);
   }
   
-  public final void lc(boolean paramBoolean)
+  public final void mp(boolean paramBoolean)
   {
     AppMethodBeat.i(184595);
     Log.w("MicroMsg.FloatBallServiceProxy", "markNeedProcessFloatViewLayoutParamsFlag not implemented in non-MM process");
     AppMethodBeat.o(184595);
   }
   
-  public final void ld(boolean paramBoolean)
+  public final void mq(boolean paramBoolean)
   {
-    AppMethodBeat.i(187354);
+    AppMethodBeat.i(288596);
     Log.w("MicroMsg.FloatBallServiceProxy", "markForceHideAllFloatBall not implemented in non-MM process");
-    AppMethodBeat.o(187354);
-  }
-  
-  public final void m(BallInfo paramBallInfo)
-  {
-    AppMethodBeat.i(106209);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, paramBallInfo, FloatBallServiceProxy.e.class, new f() {});
-    AppMethodBeat.o(106209);
+    AppMethodBeat.o(288596);
   }
   
   public final void n(BallInfo paramBallInfo)
   {
     AppMethodBeat.i(106210);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, paramBallInfo, FloatBallServiceProxy.i.class, new f() {});
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, paramBallInfo, j.class, new f() {});
     AppMethodBeat.o(106210);
   }
   
   public final void o(BallInfo paramBallInfo)
   {
     AppMethodBeat.i(106211);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, paramBallInfo, FloatBallServiceProxy.f.class, new f() {});
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, paramBallInfo, g.class, new f() {});
     AppMethodBeat.o(106211);
   }
   
   public final void onAccountRelease()
   {
     AppMethodBeat.i(106196);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.jZu, FloatBallServiceProxy.y.class, new f() {});
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.mzv, z.class, new f() {});
     AppMethodBeat.o(106196);
   }
   
   public final void p(BallInfo paramBallInfo)
   {
     AppMethodBeat.i(106212);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, paramBallInfo, FloatBallServiceProxy.g.class, new f() {});
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, paramBallInfo, h.class, new f() {});
     AppMethodBeat.o(106212);
   }
   
   public final void q(BallInfo paramBallInfo)
   {
     AppMethodBeat.i(106213);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, paramBallInfo, FloatBallServiceProxy.h.class, new f() {});
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, paramBallInfo, i.class, new f() {});
     AppMethodBeat.o(106213);
   }
   
   public final void r(BallInfo paramBallInfo)
   {
-    AppMethodBeat.i(187334);
+    AppMethodBeat.i(288532);
     if (paramBallInfo == null)
     {
-      AppMethodBeat.o(187334);
+      AppMethodBeat.o(288532);
       return;
     }
     XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, paramBallInfo, b.class, new f() {});
-    AppMethodBeat.o(187334);
+    AppMethodBeat.o(288532);
   }
   
   public final void s(BallInfo paramBallInfo)
   {
     AppMethodBeat.i(106215);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, paramBallInfo, FloatBallServiceProxy.ac.class, new f() {});
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, paramBallInfo, ad.class, new f() {});
     AppMethodBeat.o(106215);
   }
   
   public final void setEnableClick(boolean paramBoolean)
   {
-    AppMethodBeat.i(187358);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCBoolean(paramBoolean), FloatBallServiceProxy.ah.class, new f() {});
-    AppMethodBeat.o(187358);
+    AppMethodBeat.i(288607);
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCBoolean(paramBoolean), ai.class, new f() {});
+    AppMethodBeat.o(288607);
   }
   
   public final void t(BallInfo paramBallInfo)
   {
-    AppMethodBeat.i(187319);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, paramBallInfo, FloatBallServiceProxy.t.class, new f() {});
-    AppMethodBeat.o(187319);
+    AppMethodBeat.i(288485);
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, paramBallInfo, u.class, new f() {});
+    AppMethodBeat.o(288485);
   }
   
   public final void u(BallInfo paramBallInfo)
   {
-    AppMethodBeat.i(187363);
+    AppMethodBeat.i(288623);
     Log.w("MicroMsg.FloatBallServiceProxy", "switchVoipVoice not implemented in non-MM process");
-    AppMethodBeat.o(187363);
+    AppMethodBeat.o(288623);
   }
   
   static class BallInfoListParcel
     implements Parcelable
   {
     public static final Parcelable.Creator<BallInfoListParcel> CREATOR;
-    List<BallInfo> rXp;
+    List<BallInfo> viG;
     
     static
     {
@@ -497,13 +505,13 @@ public final class FloatBallServiceProxy
     protected BallInfoListParcel(Parcel paramParcel)
     {
       AppMethodBeat.i(106147);
-      this.rXp = paramParcel.createTypedArrayList(BallInfo.CREATOR);
+      this.viG = paramParcel.createTypedArrayList(BallInfo.CREATOR);
       AppMethodBeat.o(106147);
     }
     
     public BallInfoListParcel(List<BallInfo> paramList)
     {
-      this.rXp = paramList;
+      this.viG = paramList;
     }
     
     public int describeContents()
@@ -514,7 +522,7 @@ public final class FloatBallServiceProxy
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(106148);
-      paramParcel.writeTypedList(this.rXp);
+      paramParcel.writeTypedList(this.viG);
       AppMethodBeat.o(106148);
     }
   }
@@ -523,8 +531,8 @@ public final class FloatBallServiceProxy
     implements Parcelable
   {
     public static final Parcelable.Creator<FloatBallInfoEventReceiverParcel> CREATOR;
-    ResultReceiver cAX;
-    BallInfo rYE;
+    ResultReceiver ett;
+    BallInfo vjV;
     
     static
     {
@@ -536,15 +544,15 @@ public final class FloatBallServiceProxy
     protected FloatBallInfoEventReceiverParcel(Parcel paramParcel)
     {
       AppMethodBeat.i(106158);
-      this.rYE = ((BallInfo)paramParcel.readParcelable(BallInfo.class.getClassLoader()));
-      this.cAX = ((ResultReceiver)paramParcel.readParcelable(ResultReceiver.class.getClassLoader()));
+      this.vjV = ((BallInfo)paramParcel.readParcelable(BallInfo.class.getClassLoader()));
+      this.ett = ((ResultReceiver)paramParcel.readParcelable(ResultReceiver.class.getClassLoader()));
       AppMethodBeat.o(106158);
     }
     
     public FloatBallInfoEventReceiverParcel(BallInfo paramBallInfo, ResultReceiver paramResultReceiver)
     {
-      this.rYE = paramBallInfo;
-      this.cAX = paramResultReceiver;
+      this.vjV = paramBallInfo;
+      this.ett = paramResultReceiver;
     }
     
     public final int describeContents()
@@ -555,8 +563,8 @@ public final class FloatBallServiceProxy
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(106159);
-      paramParcel.writeParcelable(this.rYE, paramInt);
-      paramParcel.writeParcelable(this.cAX, paramInt);
+      paramParcel.writeParcelable(this.vjV, paramInt);
+      paramParcel.writeParcelable(this.ett, paramInt);
       AppMethodBeat.o(106159);
     }
   }
@@ -567,8 +575,8 @@ public final class FloatBallServiceProxy
     public static final Parcelable.Creator<IPCKeyBoardChangedInfo> CREATOR;
     long delay;
     int height;
-    boolean kiD;
-    int rZj;
+    boolean mJk;
+    int vkz;
     
     static
     {
@@ -580,8 +588,8 @@ public final class FloatBallServiceProxy
     IPCKeyBoardChangedInfo(int paramInt1, int paramInt2, boolean paramBoolean, long paramLong)
     {
       this.height = paramInt1;
-      this.rZj = paramInt2;
-      this.kiD = paramBoolean;
+      this.vkz = paramInt2;
+      this.mJk = paramBoolean;
       this.delay = paramLong;
     }
     
@@ -589,11 +597,11 @@ public final class FloatBallServiceProxy
     {
       AppMethodBeat.i(184585);
       this.height = paramParcel.readInt();
-      this.rZj = paramParcel.readInt();
+      this.vkz = paramParcel.readInt();
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.kiD = bool;
+        this.mJk = bool;
         this.delay = paramParcel.readLong();
         AppMethodBeat.o(184585);
         return;
@@ -609,8 +617,8 @@ public final class FloatBallServiceProxy
     {
       AppMethodBeat.i(184586);
       paramParcel.writeInt(this.height);
-      paramParcel.writeInt(this.rZj);
-      if (this.kiD) {}
+      paramParcel.writeInt(this.vkz);
+      if (this.mJk) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeByte((byte)paramInt);
@@ -625,8 +633,8 @@ public final class FloatBallServiceProxy
     implements Parcelable
   {
     public static final Parcelable.Creator<UpdateBallVisibilityParcel> CREATOR;
-    BallInfo rYE;
     boolean visible;
+    BallInfo vjV;
     
     static
     {
@@ -642,7 +650,7 @@ public final class FloatBallServiceProxy
       for (boolean bool = true;; bool = false)
       {
         this.visible = bool;
-        this.rYE = ((BallInfo)paramParcel.readParcelable(BallInfo.class.getClassLoader()));
+        this.vjV = ((BallInfo)paramParcel.readParcelable(BallInfo.class.getClassLoader()));
         AppMethodBeat.o(106186);
         return;
       }
@@ -651,7 +659,7 @@ public final class FloatBallServiceProxy
     public UpdateBallVisibilityParcel(boolean paramBoolean, BallInfo paramBallInfo)
     {
       this.visible = paramBoolean;
-      this.rYE = paramBallInfo;
+      this.vjV = paramBallInfo;
     }
     
     public int describeContents()
@@ -666,34 +674,66 @@ public final class FloatBallServiceProxy
       for (int i = 1;; i = 0)
       {
         paramParcel.writeByte((byte)i);
-        paramParcel.writeParcelable(this.rYE, paramInt);
+        paramParcel.writeParcelable(this.vjV, paramInt);
         AppMethodBeat.o(106187);
         return;
       }
     }
   }
   
+  static final class a
+    implements com.tencent.mm.ipcinvoker.d<BallInfo, IPCVoid>
+  {}
+  
   static final class aa
+    implements com.tencent.mm.ipcinvoker.d<IPCVoid, IPCVoid>
+  {}
+  
+  static final class ab
     implements com.tencent.mm.ipcinvoker.d<FloatBallServiceProxy.FloatBallInfoEventReceiverParcel, IPCVoid>
   {}
   
+  static final class ac
+    implements com.tencent.mm.ipcinvoker.d<BallInfo, IPCVoid>
+  {}
+  
   static final class ad
-    implements com.tencent.mm.ipcinvoker.d<IPCInteger, IPCVoid>
+    implements com.tencent.mm.ipcinvoker.d<BallInfo, IPCVoid>
   {}
   
   static final class ae
+    implements com.tencent.mm.ipcinvoker.d<IPCInteger, IPCVoid>
+  {}
+  
+  static final class af
     implements com.tencent.mm.ipcinvoker.d<IPCBoolean, IPCVoid>
   {}
   
   static final class ag
+    implements com.tencent.mm.ipcinvoker.d<IPCBoolean, IPCVoid>
+  {}
+  
+  static final class ah
     implements com.tencent.mm.ipcinvoker.d<IPCInteger, IPCVoid>
   {}
   
+  static final class ai
+    implements com.tencent.mm.ipcinvoker.d<IPCBoolean, IPCVoid>
+  {}
+  
+  static final class aj
+    implements com.tencent.mm.ipcinvoker.d<ResultReceiver, IPCVoid>
+  {}
+  
   static final class ak
-    implements com.tencent.mm.ipcinvoker.d<FloatBallServiceProxy.UpdateBallVisibilityParcel, IPCVoid>
+    implements com.tencent.mm.ipcinvoker.d<BallInfo, IPCVoid>
   {}
   
   static final class al
+    implements com.tencent.mm.ipcinvoker.d<FloatBallServiceProxy.UpdateBallVisibilityParcel, IPCVoid>
+  {}
+  
+  static final class am
     implements com.tencent.mm.ipcinvoker.d<FloatBallServiceProxy.IPCKeyBoardChangedInfo, IPCVoid>
   {}
   
@@ -705,17 +745,101 @@ public final class FloatBallServiceProxy
     implements com.tencent.mm.ipcinvoker.d<IPCLong, IPCInteger>
   {}
   
+  static final class d
+    implements m<BallInfo, IPCBoolean>
+  {}
+  
+  static final class e
+    implements com.tencent.mm.ipcinvoker.d<IPCVoid, IPCVoid>
+  {}
+  
+  static final class f
+    implements com.tencent.mm.ipcinvoker.d<BallInfo, IPCVoid>
+  {}
+  
+  static final class g
+    implements com.tencent.mm.ipcinvoker.d<BallInfo, IPCVoid>
+  {}
+  
+  static final class h
+    implements com.tencent.mm.ipcinvoker.d<BallInfo, IPCVoid>
+  {}
+  
+  static final class i
+    implements com.tencent.mm.ipcinvoker.d<BallInfo, IPCVoid>
+  {}
+  
+  static final class j
+    implements com.tencent.mm.ipcinvoker.d<BallInfo, IPCVoid>
+  {}
+  
   static final class k
+    implements com.tencent.mm.ipcinvoker.d<IPCVoid, IPCVoid>
+  {}
+  
+  static final class l
     implements com.tencent.mm.ipcinvoker.d<IPCVoid, FloatBallServiceProxy.BallInfoListParcel>
   {}
   
+  static final class m
+    implements m<BallInfo, BallInfo>
+  {}
+  
   static final class n
+    implements m<IPCVoid, Point>
+  {}
+  
+  static final class o
     implements com.tencent.mm.ipcinvoker.d<IPCBoolean, IPCVoid>
+  {}
+  
+  static final class p
+    implements com.tencent.mm.ipcinvoker.d<IPCBoolean, IPCVoid>
+  {}
+  
+  static final class q
+    implements com.tencent.mm.ipcinvoker.d<IPCBoolean, IPCVoid>
+  {}
+  
+  static final class r
+    implements m<IPCVoid, IPCBoolean>
+  {}
+  
+  static final class s
+    implements m<IPCVoid, IPCBoolean>
+  {}
+  
+  static final class t
+    implements m<IPCVoid, IPCBoolean>
+  {}
+  
+  static final class u
+    implements com.tencent.mm.ipcinvoker.d<BallInfo, IPCVoid>
+  {}
+  
+  static final class v
+    implements com.tencent.mm.ipcinvoker.d<IPCBoolean, IPCVoid>
+  {}
+  
+  static final class w
+    implements com.tencent.mm.ipcinvoker.d<IPCBoolean, IPCVoid>
+  {}
+  
+  static final class x
+    implements m<IPCVoid, IPCBoolean>
+  {}
+  
+  static final class y
+    implements com.tencent.mm.ipcinvoker.d<IPCVoid, IPCVoid>
+  {}
+  
+  static final class z
+    implements com.tencent.mm.ipcinvoker.d<IPCVoid, IPCVoid>
   {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.service.FloatBallServiceProxy
  * JD-Core Version:    0.7.0.1
  */

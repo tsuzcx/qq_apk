@@ -1,27 +1,24 @@
 package com.tencent.mm.plugin.emoji.ui.v2;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.am.s;
+import com.tencent.mm.kernel.c;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.az.b.a;
-import com.tencent.mm.plugin.messenger.foundation.a.n;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.bv;
 
 final class EmojiStoreV2DesignerUI$8
-  implements az.b.a
+  implements DialogInterface.OnCancelListener
 {
   EmojiStoreV2DesignerUI$8(EmojiStoreV2DesignerUI paramEmojiStoreV2DesignerUI) {}
   
-  public final void s(String paramString, boolean paramBoolean)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    AppMethodBeat.i(109149);
-    Log.i("MicroMsg.emoji.EmojiStoreV2DesignerUI", "getContactCallBack username:%s,succ:%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
-    if (paramBoolean)
-    {
-      EmojiStoreV2DesignerUI.a(this.uNO, ((n)h.ae(n.class)).bbL().RG(paramString));
-      EmojiStoreV2DesignerUI.a(this.uNO);
+    AppMethodBeat.i(270794);
+    if (EmojiStoreV2DesignerUI.p(this.xWy) != null) {
+      h.baD().mCm.a(EmojiStoreV2DesignerUI.p(this.xWy));
     }
-    AppMethodBeat.o(109149);
+    AppMethodBeat.o(270794);
   }
 }
 

@@ -39,14 +39,14 @@ public class m
   
   public void setPreConnect(String paramString, int paramInt)
   {
-    AppMethodBeat.i(197415);
+    AppMethodBeat.i(219788);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "preConnect", new Class[] { Context.class, String.class, Integer.TYPE }, new Object[] { null, paramString, Integer.valueOf(paramInt) });
-    AppMethodBeat.o(197415);
+    AppMethodBeat.o(219788);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.sdk.b.m
  * JD-Core Version:    0.7.0.1
  */

@@ -1,134 +1,204 @@
 package com.tencent.mm.plugin.webview.luggage;
 
-import android.content.Intent;
-import android.os.Bundle;
+import com.tencent.luggage.d.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.d;
-import com.tencent.mm.ipcinvoker.type.IPCString;
-import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.ball.c.e;
-import com.tencent.mm.plugin.ball.c.f;
+import com.tencent.mm.plugin.ball.a.f;
 import com.tencent.mm.plugin.ball.model.BallInfo;
-import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
-import com.tencent.mm.plugin.webview.luggage.d.b.b;
+import com.tencent.mm.plugin.ball.service.FloatBallHelper;
+import com.tencent.mm.plugin.ball.service.e;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import java.util.HashMap;
-import java.util.LinkedList;
+import java.util.HashSet;
+import java.util.Set;
 
 public final class r
+  extends e
 {
-  private static HashMap<String, Integer> PRf;
-  private static b.b PRg;
-  private static e PRh;
+  private static final Set<String> WHA;
+  private g WFG;
+  private String WHx;
+  private boolean WHy;
+  private String WHz;
   
   static
   {
-    AppMethodBeat.i(78434);
-    PRf = new HashMap();
-    PRg = new b.b()
-    {
-      public final void r(MultiTaskInfo paramAnonymousMultiTaskInfo)
-      {
-        AppMethodBeat.i(219081);
-        ToolsProcessIPCService.a(new IPCString(paramAnonymousMultiTaskInfo.field_id), r.a.class, null);
-        AppMethodBeat.o(219081);
-      }
-    };
-    PRh = new f()
-    {
-      public final void b(BallInfo paramAnonymousBallInfo)
-      {
-        AppMethodBeat.i(246570);
-        if ((paramAnonymousBallInfo != null) && (paramAnonymousBallInfo.mab != null))
-        {
-          Log.i("MicroMsg.LuggageWebViewFloatBallManager", "handleBallInfoClicked, openWebPage ballInfo:%s", new Object[] { paramAnonymousBallInfo });
-          String str1 = paramAnonymousBallInfo.key;
-          String str2 = paramAnonymousBallInfo.mab.getString("rawUrl");
-          int i = paramAnonymousBallInfo.mab.getInt("minimize_secene", 0);
-          Intent localIntent = new Intent();
-          localIntent.putExtras(paramAnonymousBallInfo.mab);
-          localIntent.putExtra("rawUrl", str2);
-          localIntent.putExtra("minimize_secene", i);
-          localIntent.putExtra("float_ball_key", str1);
-          localIntent.putExtra("title", paramAnonymousBallInfo.name);
-          com.tencent.mm.by.c.b(MMApplicationContext.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
-        }
-        AppMethodBeat.o(246570);
-      }
-      
-      public final void c(BallInfo paramAnonymousBallInfo) {}
-      
-      public final void d(BallInfo paramAnonymousBallInfo) {}
-    };
-    AppMethodBeat.o(78434);
+    AppMethodBeat.i(78425);
+    HashSet localHashSet = new HashSet();
+    WHA = localHashSet;
+    localHashSet.add("title");
+    WHA.add("webpageTitle");
+    WHA.add("srcUsername");
+    WHA.add("srcDisplayname");
+    WHA.add("mode");
+    WHA.add("KTemplateId");
+    WHA.add("KPublisherId");
+    AppMethodBeat.o(78425);
   }
   
-  public static void a(String paramString, com.tencent.luggage.d.p paramp, com.tencent.mm.plugin.webview.f.c paramc)
+  public r(f paramf, g paramg)
   {
-    AppMethodBeat.i(217076);
-    if (PRf.containsKey(paramString))
+    super(paramf);
+    this.WFG = paramg;
+  }
+  
+  public final void J(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(78417);
+    Log.i("MicroMsg.LuggageWebViewFloatBallHelper", "onCreate, type:%s, key:%s", new Object[] { Integer.valueOf(paramInt), paramString });
+    super.J(paramInt, paramString);
+    cYv().mUU = 8;
+    cYv().vjN = 32;
+    cYr();
+    if ((this.vkT.getIntent() != null) && (this.vjV.oSS != null))
     {
-      AppMethodBeat.o(217076);
+      com.tencent.mm.plugin.ball.f.a.b(this.vkT.getIntent(), this.vjV.oSS, WHA);
+      cYr();
+    }
+    this.WHx = paramString;
+    this.WHy = true;
+    if (!Util.isNullOrNil(this.WHz)) {
+      bjY(this.WHz);
+    }
+    AppMethodBeat.o(78417);
+  }
+  
+  public final void ahU(String paramString)
+  {
+    AppMethodBeat.i(78423);
+    if ((this.vjV != null) && (!Util.isNullOrNil(this.vjV.name)) && (!this.vjV.name.startsWith("http://")) && (!this.vjV.name.startsWith("https://")) && (!Util.isNullOrNil(paramString)) && ((paramString.startsWith("http://")) || (paramString.startsWith("https://"))))
+    {
+      AppMethodBeat.o(78423);
       return;
     }
-    int i = n.a(paramp, paramc);
-    Log.i("MicroMsg.LuggageWebViewFloatBallManager", "onMultiTaskItemClick, stash, ballKey = %s, ticket = %d", new Object[] { paramString, Integer.valueOf(i) });
-    PRf.put(paramString, Integer.valueOf(i));
-    AppMethodBeat.o(217076);
+    super.ahU(paramString);
+    AppMethodBeat.o(78423);
   }
   
-  public static int bkq(String paramString)
+  public final boolean bhU()
   {
-    AppMethodBeat.i(78430);
-    Log.i("MicroMsg.LuggageWebViewFloatBallManager", "onMultiTaskItemClick, size = %d", new Object[] { Integer.valueOf(PRf.size()) });
-    int i = Util.nullAs((Integer)PRf.remove(paramString), -1);
-    AppMethodBeat.o(78430);
-    return i;
-  }
-  
-  public static void bkr(String paramString)
-  {
-    AppMethodBeat.i(78431);
-    if (PRf.containsKey(paramString)) {
-      n.remove(Util.nullAsInt(PRf.remove(paramString), -1));
+    AppMethodBeat.i(78416);
+    if ((this.WFG.iul()) && (this.vkT.bhU()))
+    {
+      AppMethodBeat.o(78416);
+      return true;
     }
-    AppMethodBeat.o(78431);
+    AppMethodBeat.o(78416);
+    return false;
   }
   
-  public static void gUX()
+  public final void bhV()
   {
-    AppMethodBeat.i(78432);
-    Log.d("MicroMsg.LuggageWebViewFloatBallManager", "addFloatBallInfoEventListener");
-    Object localObject = com.tencent.mm.plugin.webview.luggage.d.b.PTA;
-    localObject = PRg;
-    kotlin.g.b.p.k(localObject, "listener");
-    com.tencent.mm.plugin.webview.luggage.d.b.gVn().add(localObject);
-    if (h.ae(com.tencent.mm.plugin.ball.c.b.class) != null) {
-      ((com.tencent.mm.plugin.ball.c.b)h.ae(com.tencent.mm.plugin.ball.c.b.class)).a(5, PRh);
-    }
-    AppMethodBeat.o(78432);
+    AppMethodBeat.i(78422);
+    Log.i("MicroMsg.LuggageWebViewFloatBallHelper", "onReceivedFinishWhenSwitchBallEvent:%s", new Object[] { Integer.valueOf(this.WFG.hashCode()) });
+    super.bhV();
+    this.vkT.iR(false);
+    AppMethodBeat.o(78422);
   }
   
-  public static void gUY()
+  public final void bhW()
   {
-    AppMethodBeat.i(78433);
-    Object localObject = com.tencent.mm.plugin.webview.luggage.d.b.PTA;
-    localObject = PRg;
-    kotlin.g.b.p.k(localObject, "listener");
-    com.tencent.mm.plugin.webview.luggage.d.b.gVn().remove(localObject);
-    if (h.ae(com.tencent.mm.plugin.ball.c.b.class) != null) {
-      ((com.tencent.mm.plugin.ball.c.b)h.ae(com.tencent.mm.plugin.ball.c.b.class)).b(5, PRh);
-    }
-    AppMethodBeat.o(78433);
+    AppMethodBeat.i(78421);
+    Log.i("MicroMsg.LuggageWebViewFloatBallHelper", "onExitPage :%s", new Object[] { Integer.valueOf(this.WFG.hashCode()) });
+    super.bhW();
+    AppMethodBeat.o(78421);
   }
   
-  static class a
-    implements d<IPCString, IPCVoid>
-  {}
+  public final void bjY(String paramString)
+  {
+    AppMethodBeat.i(78424);
+    this.WHz = paramString;
+    if (!this.WHy)
+    {
+      AppMethodBeat.o(78424);
+      return;
+    }
+    cYv().hOH = paramString;
+    cYr();
+    AppMethodBeat.o(78424);
+  }
+  
+  public final void coi()
+  {
+    AppMethodBeat.i(78420);
+    Log.i("MicroMsg.LuggageWebViewFloatBallHelper", "onEnterPage :%s", new Object[] { Integer.valueOf(this.WFG.hashCode()) });
+    super.coi();
+    AppMethodBeat.o(78420);
+  }
+  
+  public final boolean cop()
+  {
+    AppMethodBeat.i(78415);
+    boolean bool = this.WFG.iul();
+    AppMethodBeat.o(78415);
+    return bool;
+  }
+  
+  public final void onDestroy()
+  {
+    AppMethodBeat.i(78419);
+    Log.i("MicroMsg.LuggageWebViewFloatBallHelper", "onDestroy :%s", new Object[] { Integer.valueOf(this.WFG.hashCode()) });
+    super.onDestroy();
+    AppMethodBeat.o(78419);
+  }
+  
+  public final boolean zX(int paramInt)
+  {
+    AppMethodBeat.i(78418);
+    Log.i("MicroMsg.LuggageWebViewFloatBallHelper", "onClose :%s", new Object[] { Integer.valueOf(this.WFG.hashCode()) });
+    boolean bool = super.zX(paramInt);
+    AppMethodBeat.o(78418);
+    return bool;
+  }
+  
+  public static final class a
+    implements com.tencent.luggage.d.a.a
+  {
+    private g WFG;
+    private com.tencent.mm.plugin.webview.e.c WGg;
+    private Set<String> WHB;
+    
+    public a(g paramg, com.tencent.mm.plugin.webview.e.c paramc)
+    {
+      AppMethodBeat.i(295992);
+      this.WHB = new HashSet();
+      this.WFG = paramg;
+      this.WGg = paramc;
+      AppMethodBeat.o(295992);
+    }
+    
+    public final void a(com.tencent.luggage.d.a.c paramc)
+    {
+      AppMethodBeat.i(295997);
+      paramc.a(b.eka);
+      AppMethodBeat.o(295997);
+    }
+    
+    public final void a(String paramString, com.tencent.luggage.d.a.c paramc)
+    {
+      AppMethodBeat.i(295998);
+      if (this.WHB.contains(paramString))
+      {
+        this.WHB.remove(paramString);
+        paramc.a(b.eka);
+        AppMethodBeat.o(295998);
+        return;
+      }
+      if (this.WGg.ia(this.WFG.getUrl(), com.tencent.mm.plugin.webview.e.c.bld(paramString))) {}
+      for (paramString = b.eka;; paramString = b.ekb)
+      {
+        paramc.a(paramString);
+        AppMethodBeat.o(295998);
+        return;
+      }
+    }
+    
+    public final void bjZ(String paramString)
+    {
+      AppMethodBeat.i(295995);
+      this.WHB.add(paramString);
+      AppMethodBeat.o(295995);
+    }
+  }
 }
 
 

@@ -1,41 +1,32 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.DialogInterface.OnDismissListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.f;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.ui.widget.a.d;
-import com.tencent.mm.ui.widget.a.d.a;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/sns/ui/SnsVideoPlayConfig;", "", "()V", "TAG", "", "getSnsVideoShowSeekBarDurationMs", "", "plugin-sns_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class bq
 {
-  public static void g(Context paramContext, DialogInterface.OnClickListener paramOnClickListener)
+  public static final bq REM;
+  
+  static
   {
-    AppMethodBeat.i(99694);
-    d.a locala = new d.a(paramContext);
-    locala.ayc(i.j.sns_welcome_tip);
-    locala.bBd(paramContext.getString(i.j.sns_welcome_titlea) + "\n\n" + paramContext.getString(i.j.sns_welcome_titlec));
-    locala.ayj(i.j.welcome_i_know).c(paramOnClickListener);
-    locala.a(new DialogInterface.OnDismissListener()
-    {
-      public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
-      {
-        AppMethodBeat.i(99693);
-        h.aHH();
-        int i = Util.nullAs((Integer)h.aHG().aHp().b(68385, null), 0);
-        h.aHH();
-        h.aHG().aHp().i(68385, Integer.valueOf(i + 1));
-        AppMethodBeat.o(99693);
-      }
-    });
-    locala.icu().show();
-    AppMethodBeat.o(99694);
+    AppMethodBeat.i(308347);
+    REM = new bq();
+    AppMethodBeat.o(308347);
+  }
+  
+  public static int getSnsVideoShowSeekBarDurationMs()
+  {
+    AppMethodBeat.i(308344);
+    int i = ((c)h.ax(c.class)).a(c.a.zfs, 16000);
+    Log.i("MicroMsg.SnsVideoConfig", s.X("getSnsVideoShowSeekBarDurationMs: ", Integer.valueOf(i)));
+    AppMethodBeat.o(308344);
+    return i;
   }
 }
 

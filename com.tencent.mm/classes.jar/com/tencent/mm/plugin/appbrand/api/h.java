@@ -12,7 +12,7 @@ public final class h
   public float longitude;
   public String poiName;
   
-  public final String bFa()
+  public final String toJsonString()
   {
     AppMethodBeat.i(153193);
     try
@@ -35,7 +35,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.api.h
  * JD-Core Version:    0.7.0.1
  */

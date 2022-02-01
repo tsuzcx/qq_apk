@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.jsapi.appdownload;
 
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.mm.plugin.appbrand.y;
 
 public final class JsApiLaunchApplicationForNative
-  extends c<v>
+  extends c<y>
 {
   private static final int CTRL_INDEX = 665;
   private static final String NAME = "launchApplicationForNative";

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/cv" android:paddingRight="@dimen/cv" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/hn" android:textColor="@color/FG_0" android:gravity="center_vertical" android:id="@id/lv3" android:layout_width="fill_parent" android:layout_height="@dimen/db" android:text="@string/eu3" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/FG_0" android:id="@id/lv2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:text="@string/eu1" />
+    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d4" android:layout_marginBottom="@dimen/d0">
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/Brand" android:gravity="center" android:id="@id/lv4" android:background="@drawable/vf" android:layout_width="120.0dip" android:layout_height="@dimen/d4" android:text="@string/we" />
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/al2" android:gravity="center" android:id="@id/lv1" android:background="@drawable/v8" android:layout_width="120.0dip" android:layout_height="@dimen/d4" android:layout_marginLeft="@dimen/cp" android:text="@string/eu0" />
+    </LinearLayout>
+</LinearLayout>

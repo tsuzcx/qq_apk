@@ -1,23 +1,68 @@
 package kotlin.l;
 
-import java.util.List;
-import java.util.Map;
-import kotlin.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.lang.reflect.GenericArrayType;
+import java.lang.reflect.Type;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/reflect/KCallable;", "R", "Lkotlin/reflect/KAnnotatedElement;", "isAbstract", "", "isAbstract$annotations", "()V", "()Z", "isFinal", "isFinal$annotations", "isOpen", "isOpen$annotations", "isSuspend", "isSuspend$annotations", "name", "", "getName", "()Ljava/lang/String;", "parameters", "", "Lkotlin/reflect/KParameter;", "getParameters", "()Ljava/util/List;", "returnType", "Lkotlin/reflect/KType;", "getReturnType", "()Lkotlin/reflect/KType;", "typeParameters", "Lkotlin/reflect/KTypeParameter;", "typeParameters$annotations", "getTypeParameters", "visibility", "Lkotlin/reflect/KVisibility;", "visibility$annotations", "getVisibility", "()Lkotlin/reflect/KVisibility;", "call", "args", "", "", "([Ljava/lang/Object;)Ljava/lang/Object;", "callBy", "", "(Ljava/util/Map;)Ljava/lang/Object;", "kotlin-stdlib"})
-public abstract interface a<R>
+@Metadata(d1={""}, d2={"Lkotlin/reflect/GenericArrayTypeImpl;", "Ljava/lang/reflect/GenericArrayType;", "Lkotlin/reflect/TypeImpl;", "elementType", "Ljava/lang/reflect/Type;", "(Ljava/lang/reflect/Type;)V", "equals", "", "other", "", "getGenericComponentType", "getTypeName", "", "hashCode", "", "toString", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
+final class a
+  implements GenericArrayType, aa
 {
-  public abstract R ak(Object... paramVarArgs);
+  private final Type aixE;
   
-  public abstract R cE(Map<m, ? extends Object> paramMap);
+  public a(Type paramType)
+  {
+    AppMethodBeat.i(191309);
+    this.aixE = paramType;
+    AppMethodBeat.o(191309);
+  }
   
-  public abstract String getName();
+  public final boolean equals(Object paramObject)
+  {
+    AppMethodBeat.i(191328);
+    if (((paramObject instanceof GenericArrayType)) && (s.p(getGenericComponentType(), ((GenericArrayType)paramObject).getGenericComponentType())))
+    {
+      AppMethodBeat.o(191328);
+      return true;
+    }
+    AppMethodBeat.o(191328);
+    return false;
+  }
   
-  public abstract List<m> iCb();
+  public final Type getGenericComponentType()
+  {
+    return this.aixE;
+  }
+  
+  public final String getTypeName()
+  {
+    AppMethodBeat.i(191321);
+    String str = ac.i(this.aixE) + "[]";
+    AppMethodBeat.o(191321);
+    return str;
+  }
+  
+  public final int hashCode()
+  {
+    AppMethodBeat.i(191335);
+    int i = getGenericComponentType().hashCode();
+    AppMethodBeat.o(191335);
+    return i;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(191337);
+    String str = getTypeName();
+    AppMethodBeat.o(191337);
+    return str;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlin.l.a
  * JD-Core Version:    0.7.0.1
  */

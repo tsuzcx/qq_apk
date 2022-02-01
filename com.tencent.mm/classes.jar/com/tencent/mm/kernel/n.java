@@ -10,7 +10,7 @@ import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 
 public final class n
 {
-  public static boolean cG(Context paramContext)
+  public static boolean dv(Context paramContext)
   {
     AppMethodBeat.i(132153);
     if (paramContext == null)
@@ -24,7 +24,7 @@ public final class n
     return bool;
   }
   
-  public static boolean cH(Context paramContext)
+  public static boolean dw(Context paramContext)
   {
     AppMethodBeat.i(132155);
     if (paramContext == null)
@@ -33,12 +33,12 @@ public final class n
       AppMethodBeat.o(132155);
       return false;
     }
-    boolean bool = paramContext.getSharedPreferences("system_config_prefs_showdown", g.avK()).getBoolean("shut_down_weixin", false);
+    boolean bool = paramContext.getSharedPreferences("system_config_prefs_showdown", g.aQe()).getBoolean("shut_down_weixin", false);
     AppMethodBeat.o(132155);
     return bool;
   }
   
-  public static void v(Context paramContext, boolean paramBoolean)
+  public static void w(Context paramContext, boolean paramBoolean)
   {
     AppMethodBeat.i(132152);
     if (paramContext == null)
@@ -52,7 +52,7 @@ public final class n
     AppMethodBeat.o(132152);
   }
   
-  public static void w(Context paramContext, boolean paramBoolean)
+  public static void x(Context paramContext, boolean paramBoolean)
   {
     AppMethodBeat.i(132154);
     if (paramContext == null)
@@ -61,14 +61,14 @@ public final class n
       AppMethodBeat.o(132154);
       return;
     }
-    paramContext.getSharedPreferences("system_config_prefs_showdown", g.avK()).edit().putBoolean("shut_down_weixin", paramBoolean).commit();
+    paramContext.getSharedPreferences("system_config_prefs_showdown", g.aQe()).edit().putBoolean("shut_down_weixin", paramBoolean).commit();
     Log.i("MicroMsg.WeChatAppStatus", "editShutDownWxStatus to ".concat(String.valueOf(paramBoolean)));
     AppMethodBeat.o(132154);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.kernel.n
  * JD-Core Version:    0.7.0.1
  */

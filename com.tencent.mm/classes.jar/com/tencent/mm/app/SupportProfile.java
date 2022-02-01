@@ -6,11 +6,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.booter.q;
 import com.tencent.mm.booter.v;
 import com.tencent.mm.compatible.deviceinfo.m;
-import com.tencent.mm.compatible.util.j;
+import com.tencent.mm.compatible.util.k;
+import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.report.service.KVCommCrossProcessReceiver;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.pluginsdk.model.ab;
-import com.tencent.mm.sandbox.updater.l.a;
+import com.tencent.mm.pluginsdk.model.ad;
+import com.tencent.mm.sandbox.updater.k.a;
 import com.tencent.mm.sdk.CommLibFileName;
 import com.tencent.mm.sdk.crash.CrashReportFactory;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -24,56 +25,56 @@ import junit.framework.Assert;
 public class SupportProfile
   extends com.tencent.mm.compatible.loader.c
 {
-  protected static String cQP = "";
+  protected static String eMg = "";
   
   public final void onConfigurationChanged(Configuration paramConfiguration) {}
   
   public final void onCreate()
   {
     AppMethodBeat.i(19476);
-    cQP = MMApplicationContext.getProcessName();
+    eMg = MMApplicationContext.getProcessName();
     SupportProfile.class.getClassLoader();
-    t.addOnUncaughtExceptionListener(new MMUncaughtExceptionHandler.IOnUncaughtExceptionListener()
+    w.addOnUncaughtExceptionListener(new MMUncaughtExceptionHandler.IOnUncaughtExceptionListener()
     {
       public final void uncaughtException(MMUncaughtExceptionHandler paramAnonymousMMUncaughtExceptionHandler, String paramAnonymousString, Throwable paramAnonymousThrowable)
       {
-        AppMethodBeat.i(292231);
-        h.IzE.idkeyStat(637L, 0L, 1L, false);
-        KVCommCrossProcessReceiver.fBy();
-        AppMethodBeat.o(292231);
+        AppMethodBeat.i(239092);
+        h.OAn.idkeyStat(637L, 0L, 1L, false);
+        KVCommCrossProcessReceiver.gNR();
+        AppMethodBeat.o(239092);
       }
     });
-    Object localObject = new v(com.tencent.mm.booter.d.cc(this.app.getBaseContext()));
-    ((v)localObject).JC("SUPPORT");
-    com.tencent.mm.platformtools.ac.mEX = Util.nullAs(((v)localObject).JE(".com.tencent.mm.debug.test.display_errcode"), false);
-    com.tencent.mm.platformtools.ac.mEY = Util.nullAs(((v)localObject).JE(".com.tencent.mm.debug.test.display_msgstate"), false);
-    com.tencent.mm.platformtools.ac.mEZ = Util.nullAs(((v)localObject).JE(".com.tencent.mm.debug.test.network.simulate_fault"), false);
-    com.tencent.mm.platformtools.ac.mFa = Util.nullAs(((v)localObject).JE(".com.tencent.mm.debug.test.network.force_touch"), false);
-    com.tencent.mm.platformtools.ac.mFb = Util.nullAs(((v)localObject).JE(".com.tencent.mm.debug.test.outputToSdCardlog"), false);
-    com.tencent.mm.platformtools.ac.mFc = Util.nullAs(((v)localObject).JE(".com.tencent.mm.debug.test.crashIsExit"), false);
-    com.tencent.mm.platformtools.ac.mFh = Util.nullAs(((v)localObject).JE(".com.tencent.mm.debug.test.album_show_info"), false);
-    com.tencent.mm.platformtools.ac.mFi = Util.nullAs(((v)localObject).JE(".com.tencent.mm.debug.test.location_help"), false);
-    com.tencent.mm.platformtools.ac.mFl = Util.nullAs(((v)localObject).JE(".com.tencent.mm.debug.test.force_soso"), false);
-    com.tencent.mm.platformtools.ac.mFm = Util.nullAs(((v)localObject).JE(".com.tencent.mm.debug.test.simulatePostServerError"), false);
-    com.tencent.mm.platformtools.ac.mFn = Util.nullAs(((v)localObject).JE(".com.tencent.mm.debug.test.simulateUploadServerError"), false);
-    com.tencent.mm.platformtools.ac.mFo = Util.nullAs(((v)localObject).JE(".com.tencent.mm.debug.test.snsNotwirteThumb"), false);
-    com.tencent.mm.platformtools.ac.mFr = Util.nullAs(((v)localObject).JE(".com.tencent.mm.debug.test.filterfpnp"), false);
-    com.tencent.mm.platformtools.ac.mFs = Util.nullAs(((v)localObject).JE(".com.tencent.mm.debug.test.testForPull"), false);
-    int i = Util.nullAs(((v)localObject).JD(".com.tencent.mm.debug.test.cdnDownloadThread"), 0);
-    com.tencent.mm.platformtools.ac.mFp = i;
-    if ((i != 4) && (com.tencent.mm.platformtools.ac.mFp > 0))
+    Object localObject = new v(com.tencent.mm.booter.d.cO(this.app.getBaseContext()));
+    ((v)localObject).Ci("SUPPORT");
+    z.pBz = Util.nullAs(((v)localObject).Ck(".com.tencent.mm.debug.test.display_errcode"), false);
+    z.pBA = Util.nullAs(((v)localObject).Ck(".com.tencent.mm.debug.test.display_msgstate"), false);
+    z.pBB = Util.nullAs(((v)localObject).Ck(".com.tencent.mm.debug.test.network.simulate_fault"), false);
+    z.pBC = Util.nullAs(((v)localObject).Ck(".com.tencent.mm.debug.test.network.force_touch"), false);
+    z.pBD = Util.nullAs(((v)localObject).Ck(".com.tencent.mm.debug.test.outputToSdCardlog"), false);
+    z.pBE = Util.nullAs(((v)localObject).Ck(".com.tencent.mm.debug.test.crashIsExit"), false);
+    z.pBI = Util.nullAs(((v)localObject).Ck(".com.tencent.mm.debug.test.album_show_info"), false);
+    z.pBJ = Util.nullAs(((v)localObject).Ck(".com.tencent.mm.debug.test.location_help"), false);
+    z.pBM = Util.nullAs(((v)localObject).Ck(".com.tencent.mm.debug.test.force_soso"), false);
+    z.pBN = Util.nullAs(((v)localObject).Ck(".com.tencent.mm.debug.test.simulatePostServerError"), false);
+    z.pBO = Util.nullAs(((v)localObject).Ck(".com.tencent.mm.debug.test.simulateUploadServerError"), false);
+    z.pBP = Util.nullAs(((v)localObject).Ck(".com.tencent.mm.debug.test.snsNotwirteThumb"), false);
+    z.pBS = Util.nullAs(((v)localObject).Ck(".com.tencent.mm.debug.test.filterfpnp"), false);
+    z.pBT = Util.nullAs(((v)localObject).Ck(".com.tencent.mm.debug.test.testForPull"), false);
+    int i = Util.nullAs(((v)localObject).Cj(".com.tencent.mm.debug.test.cdnDownloadThread"), 0);
+    z.pBQ = i;
+    if ((i != 4) && (z.pBQ > 0))
     {
-      com.tencent.mm.storage.aq.VfZ = com.tencent.mm.platformtools.ac.mFp;
-      Log.e("SetupSupportDebugger", "cdn thread num " + com.tencent.mm.platformtools.ac.mFp);
+      com.tencent.mm.storage.as.acHo = z.pBQ;
+      Log.e("SetupSupportDebugger", "cdn thread num " + z.pBQ);
     }
-    com.tencent.mm.platformtools.ac.mFq = Util.nullAs(((v)localObject).JE(".com.tencent.mm.debug.test.logShowSnsItemXml"), false);
-    com.tencent.mm.platformtools.ac.mFK = Util.nullAs(((v)localObject).JE(".com.tencent.mm.debug.forcex5webview"), false);
-    com.tencent.mm.platformtools.ac.mFH = Util.nullAs(((v)localObject).getString(".com.tencent.mm.debug.jsapi.permission"), "");
-    Log.d("SetupSupportDebugger", "Test.jsapiPermission = " + com.tencent.mm.platformtools.ac.mFH);
+    z.pBR = Util.nullAs(((v)localObject).Ck(".com.tencent.mm.debug.test.logShowSnsItemXml"), false);
+    z.pCk = Util.nullAs(((v)localObject).Ck(".com.tencent.mm.debug.forcex5webview"), false);
+    z.pCh = Util.nullAs(((v)localObject).getString(".com.tencent.mm.debug.jsapi.permission"), "");
+    Log.d("SetupSupportDebugger", "Test.jsapiPermission = " + z.pCh);
     try
     {
       i = Integer.decode(((v)localObject).getString(".com.tencent.mm.debug.log.setversion")).intValue();
-      com.tencent.mm.protocal.d.arg(i);
+      com.tencent.mm.protocal.d.axo(i);
       new StringBuilder("set up test protocal version = ").append(Integer.toHexString(i));
     }
     catch (Exception localException5)
@@ -83,11 +84,11 @@ public class SupportProfile
         String str = ((v)localObject).getString(".com.tencent.mm.debug.log.setapilevel");
         if (!Util.isNullOrNil(str))
         {
-          com.tencent.mm.protocal.d.kQZ = "android-".concat(String.valueOf(str));
-          com.tencent.mm.protocal.d.RAy = "android-".concat(String.valueOf(str));
-          com.tencent.mm.protocal.d.RAA = String.valueOf(str);
+          com.tencent.mm.protocal.d.nsC = "android-".concat(String.valueOf(str));
+          com.tencent.mm.protocal.d.Yxc = "android-".concat(String.valueOf(str));
+          com.tencent.mm.protocal.d.Yxe = String.valueOf(str);
           CrashReportFactory.setDebugerApiLevel(str);
-          new StringBuilder("set up test protocal apilevel = ").append(com.tencent.mm.protocal.d.kQZ).append(" ").append(CrashReportFactory.getDebugerApiLevel());
+          new StringBuilder("set up test protocal apilevel = ").append(com.tencent.mm.protocal.d.nsC).append(" ").append(CrashReportFactory.getDebugerApiLevel());
         }
       }
       catch (Exception localException5)
@@ -95,15 +96,15 @@ public class SupportProfile
         try
         {
           i = Integer.decode(((v)localObject).getString(".com.tencent.mm.debug.log.setuin")).intValue();
-          new StringBuilder("set up test protocal uin old: ").append(com.tencent.mm.protocal.d.RAC).append(" new: ").append(i);
-          com.tencent.mm.protocal.d.RAC = i;
+          new StringBuilder("set up test protocal uin old: ").append(com.tencent.mm.protocal.d.Yxg).append(" new: ").append(i);
+          com.tencent.mm.protocal.d.Yxg = i;
         }
         catch (Exception localException5)
         {
           try
           {
             i = Integer.decode(((v)localObject).getString(".com.tencent.mm.debug.log.setchannel")).intValue();
-            ((q)localObject).iQW.iPy = i;
+            ((q)localObject).lsS.lrt = i;
           }
           catch (Exception localException5)
           {
@@ -111,38 +112,38 @@ public class SupportProfile
             {
               for (;;)
               {
-                boolean bool1 = Util.nullAs(((v)localObject).JE(".com.tencent.mm.debug.report.debugmodel"), false);
-                boolean bool2 = Util.nullAs(((v)localObject).JE(".com.tencent.mm.debug.report.kvstat"), false);
-                boolean bool3 = Util.nullAs(((v)localObject).JE(".com.tencent.mm.debug.report.clientpref"), false);
-                boolean bool4 = Util.nullAs(((v)localObject).JE(".com.tencent.mm.debug.report.useraction"), false);
-                com.tencent.mm.plugin.report.a.c.d(bool1, bool2, bool3, bool4);
+                boolean bool1 = Util.nullAs(((v)localObject).Ck(".com.tencent.mm.debug.report.debugmodel"), false);
+                boolean bool2 = Util.nullAs(((v)localObject).Ck(".com.tencent.mm.debug.report.kvstat"), false);
+                boolean bool3 = Util.nullAs(((v)localObject).Ck(".com.tencent.mm.debug.report.clientpref"), false);
+                boolean bool4 = Util.nullAs(((v)localObject).Ck(".com.tencent.mm.debug.report.useraction"), false);
+                com.tencent.mm.plugin.report.a.c.e(bool1, bool2, bool3, bool4);
                 new StringBuilder("try control report : debugModel[").append(bool1).append("],kv[").append(bool2).append("], clientPref[").append(bool3).append("], useraction[").append(bool4).append("]");
-                t.f(false, cQP);
-                a.aak();
-                j.KW("wcdb");
-                j.KW("commonimgdec");
-                j.KW("wechatcommon");
-                j.KW("wechatbase");
-                j.KW(CommLibFileName.quic);
-                j.KW("wechatmm");
-                j.KW("FFmpeg");
-                j.KW("wechatpack");
-                i = m.aus();
+                w.f(false, eMg);
+                a.aBO();
+                k.DA("wcdb");
+                k.DA("commonimgdec");
+                k.DA("wechatcommon");
+                k.DA("wechatbase");
+                k.DA(CommLibFileName.quic);
+                k.DA("wechatmm");
+                k.DA("FFmpeg");
+                k.DA("wechatpack");
+                i = m.aOK();
                 if ((i & 0x400) == 0) {
                   break label915;
                 }
                 Log.i("MicroMsg.SupportProfile", "load wechatsight_v7a, core number: %d", new Object[] { Integer.valueOf(i >> 12) });
-                j.KW("wechatsight_v7a");
+                k.DA("wechatsight_v7a");
                 if (i >> 12 < 4) {
                   break;
                 }
-                com.tencent.mm.plugin.sight.base.d.JrF = 3;
-                com.tencent.mm.plugin.sight.base.d.JrH = 3;
-                com.tencent.mm.plugin.sight.base.d.JrI = 544000;
-                ac.abg();
+                com.tencent.mm.plugin.sight.base.d.PFh = 3;
+                com.tencent.mm.plugin.sight.base.d.PFj = 3;
+                com.tencent.mm.plugin.sight.base.d.PFk = 544000;
+                af.aCS();
                 MMActivity.initLanguage(this.app.getBaseContext());
-                localObject = l.a.UTG;
-                ab.hhg();
+                localObject = k.a.acoQ;
+                ad.iIg();
                 AppMethodBeat.o(19476);
                 return;
                 localException2 = localException2;
@@ -164,17 +165,17 @@ public class SupportProfile
               {
                 Log.i("SetupSupportDebugger", "no debugger was got");
                 continue;
-                com.tencent.mm.plugin.sight.base.d.JrF = 1;
-                com.tencent.mm.plugin.sight.base.d.JrH = 1;
-                com.tencent.mm.plugin.sight.base.d.JrI = 640000;
+                com.tencent.mm.plugin.sight.base.d.PFh = 1;
+                com.tencent.mm.plugin.sight.base.d.PFj = 1;
+                com.tencent.mm.plugin.sight.base.d.PFk = 640000;
                 continue;
                 label915:
                 Log.i("MicroMsg.SupportProfile", "load wechatsight");
-                j.KW("wechatsight");
+                k.DA("wechatsight");
                 Assert.assertTrue("Can't remove libwechatsight.so yet.", false);
-                com.tencent.mm.plugin.sight.base.d.JrF = 1;
-                com.tencent.mm.plugin.sight.base.d.JrH = 1;
-                com.tencent.mm.plugin.sight.base.d.JrI = 640000;
+                com.tencent.mm.plugin.sight.base.d.PFh = 1;
+                com.tencent.mm.plugin.sight.base.d.PFj = 1;
+                com.tencent.mm.plugin.sight.base.d.PFk = 640000;
               }
             }
           }
@@ -193,7 +194,7 @@ public class SupportProfile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.app.SupportProfile
  * JD-Core Version:    0.7.0.1
  */

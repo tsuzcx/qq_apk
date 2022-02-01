@@ -1,12 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginLeft="@dimen/k5">
-        <ImageView android:id="@id/j48" android:layout_width="64.0dip" android:layout_height="64.0dip" android:scaleType="centerCrop" />
-        <ImageView android:layout_width="fill_parent" android:layout_height="38.0dip" android:src="@drawable/bzi" android:layout_alignParentBottom="true" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/g" android:layout_marginBottom="@dimen/k_" android:layout_alignParentRight="true" android:layout_alignParentBottom="true">
-            <ImageView android:id="@id/gcf" android:layout_width="10.0dip" android:layout_height="10.0dip" android:src="@raw/biz_video_play_icon" />
-            <TextView android:textSize="10.0dip" android:textColor="@color/am" android:id="@id/j4l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:includeFontPadding="false" />
-        </LinearLayout>
-    </RelativeLayout>
-</LinearLayout>
+<Space android:layout_width="fill_parent" android:layout_height="@dimen/d_"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

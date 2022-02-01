@@ -1,31 +1,25 @@
 package com.tencent.mm.aj.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.storage.ISQLiteDatabase;
-import com.tencent.mm.sdk.storage.MAutoStorage;
+import kotlin.Metadata;
 
-public final class e
-  extends MAutoStorage<d>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/mm_compose/weui/MMLoadingColor;", "", "(Ljava/lang/String;I)V", "Black", "White", "compose-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+public enum e
 {
-  public static final String[] lqL;
-  public static final String[] lqM;
-  
   static
   {
-    AppMethodBeat.i(2617);
-    lqL = new String[] { MAutoStorage.getCreateSQLs(d.lqK, "WxaUpdateableMsg") };
-    lqM = new String[0];
-    AppMethodBeat.o(2617);
+    AppMethodBeat.i(238692);
+    ogH = new e("Black", 0);
+    ogI = new e("White", 1);
+    ogJ = new e[] { ogH, ogI };
+    AppMethodBeat.o(238692);
   }
   
-  public e(ISQLiteDatabase paramISQLiteDatabase)
-  {
-    super(paramISQLiteDatabase, d.lqK, "WxaUpdateableMsg", lqM);
-  }
+  private e() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.aj.b.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,93 +1,179 @@
 package com.tencent.mm.plugin.finder.live.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.live.viewmodel.data.business.e;
+import com.tencent.mm.plugin.finder.live.viewmodel.data.business.f;
+import com.tencent.mm.plugin.findersdk.storage.config.base.b;
+import com.tencent.mm.protocal.protobuf.bip;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
+import com.tencent.threadpool.i.d;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/FinderLiveItalicImageSpanConfig;", "", "normalText", "", "italicText", "leftMargin", "", "rightMargin", "leftPading", "", "rightPading", "bgColor", "bgHeight", "textColor", "textSize", "radius", "(Ljava/lang/CharSequence;Ljava/lang/CharSequence;IIFFIIIII)V", "getBgColor", "()I", "setBgColor", "(I)V", "getBgHeight", "setBgHeight", "getItalicText", "()Ljava/lang/CharSequence;", "setItalicText", "(Ljava/lang/CharSequence;)V", "getLeftMargin", "setLeftMargin", "getLeftPading", "()F", "setLeftPading", "(F)V", "getNormalText", "setNormalText", "getRadius", "setRadius", "getRightMargin", "setRightMargin", "getRightPading", "setRightPading", "getTextColor", "setTextColor", "getTextSize", "setTextSize", "component1", "component10", "component11", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/model/FinderLiveGuard;", "", "()V", "HEART_BEAT_GUARD_INTERVAL", "", "KEEP_ALIVE_GUARD_ENABLE", "", "TAG", "", "heartbeatGuardFuture", "Lcom/tencent/threadpool/runnable/FutureEx;", "heartbeatGuardTask", "Ljava/lang/Runnable;", "keepAliveGuardFuture", "keepAliveGuardTask", "cancelHeartBeatGuard", "", "cancelKeepAliveGuard", "heartBeatGuard", "heartbeatGuardEnable", "keepAliveGuard", "delay", "keepAliveGuardEnable", "release", "setup", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class s
 {
-  public int Gp;
-  public int Gq;
-  public int bgColor;
-  public int mTB;
-  private int radius;
-  public int textColor;
-  public int textSize;
-  public CharSequence yfW;
-  public CharSequence yfX;
-  public float yfY;
-  public float yfZ;
+  public static final s CGa;
+  private static long CGb;
+  private static d<?> CGc;
+  private static Runnable CGd;
+  private static boolean CGe;
+  private static d<?> CGf;
+  private static Runnable CGg;
+  private static final String TAG;
   
-  private s(CharSequence paramCharSequence1, CharSequence paramCharSequence2, int paramInt1, float paramFloat1, float paramFloat2, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  static
   {
-    AppMethodBeat.i(290217);
-    this.yfW = paramCharSequence1;
-    this.yfX = paramCharSequence2;
-    this.Gp = 0;
-    this.Gq = paramInt1;
-    this.yfY = paramFloat1;
-    this.yfZ = paramFloat2;
-    this.bgColor = 0;
-    this.mTB = paramInt2;
-    this.textColor = paramInt3;
-    this.textSize = paramInt4;
-    this.radius = paramInt5;
-    AppMethodBeat.o(290217);
+    AppMethodBeat.i(359457);
+    CGa = new s();
+    TAG = "FinderLiveGuard";
+    CGb = 10000L;
+    CGe = true;
+    AppMethodBeat.o(359457);
   }
   
-  public final boolean equals(Object paramObject)
+  private static boolean ekR()
   {
-    AppMethodBeat.i(290221);
-    if (this != paramObject)
+    return CGb > 0L;
+  }
+  
+  public static void ekS()
+  {
+    AppMethodBeat.i(359422);
+    Object localObject1 = com.tencent.mm.plugin.finder.live.model.context.a.CMm;
+    localObject1 = com.tencent.mm.plugin.finder.live.model.context.a.emY();
+    if (localObject1 != null)
     {
-      if ((paramObject instanceof s))
+      Object localObject2 = (f)((com.tencent.mm.plugin.finder.live.model.context.a)localObject1).business(f.class);
+      if (localObject2 != null)
       {
-        paramObject = (s)paramObject;
-        if ((!p.h(this.yfW, paramObject.yfW)) || (!p.h(this.yfX, paramObject.yfX)) || (this.Gp != paramObject.Gp) || (this.Gq != paramObject.Gq) || (Float.compare(this.yfY, paramObject.yfY) != 0) || (Float.compare(this.yfZ, paramObject.yfZ) != 0) || (this.bgColor != paramObject.bgColor) || (this.mTB != paramObject.mTB) || (this.textColor != paramObject.textColor) || (this.textSize != paramObject.textSize) || (this.radius != paramObject.radius)) {}
+        String str = TAG;
+        StringBuilder localStringBuilder = new StringBuilder("heartBeatGuard it.isLiveStarted():").append(((e)((f)localObject2).business(e.class)).isLiveStarted()).append(" heartbeatGuardEnable:").append(ekR()).append(" liveId:");
+        localObject1 = ((f)localObject2).liveInfo;
+        if (localObject1 == null)
+        {
+          localObject1 = null;
+          Log.i(str, localObject1 + " HEART_BEAT_GUARD_INTERVAL:" + CGb);
+          if (!ekR()) {
+            break label237;
+          }
+          if (!((e)((f)localObject2).business(e.class)).isLiveStarted()) {
+            break label221;
+          }
+          localObject1 = ((f)localObject2).liveInfo;
+          if (localObject1 != null) {
+            break label213;
+          }
+        }
+        label213:
+        for (long l = 0L;; l = ((bip)localObject1).liveId)
+        {
+          localObject1 = new aj.c(l);
+          localObject2 = CGc;
+          if (localObject2 != null) {
+            ((d)localObject2).cancel(false);
+          }
+          CGc = h.ahAA.o((Runnable)localObject1, CGb);
+          CGd = (Runnable)localObject1;
+          AppMethodBeat.o(359422);
+          return;
+          localObject1 = Long.valueOf(((bip)localObject1).liveId);
+          break;
+        }
+        label221:
+        localObject1 = CGc;
+        if (localObject1 != null) {
+          ((d)localObject1).cancel(false);
+        }
       }
     }
-    else
-    {
-      AppMethodBeat.o(290221);
-      return true;
-    }
-    AppMethodBeat.o(290221);
-    return false;
+    label237:
+    AppMethodBeat.o(359422);
   }
   
-  public final int hashCode()
+  public static void ekT()
   {
-    int j = 0;
-    AppMethodBeat.i(290220);
-    CharSequence localCharSequence = this.yfW;
-    if (localCharSequence != null) {}
-    for (int i = localCharSequence.hashCode();; i = 0)
+    AppMethodBeat.i(359433);
+    d locald = CGc;
+    if (locald != null) {
+      locald.cancel(true);
+    }
+    AppMethodBeat.o(359433);
+  }
+  
+  public static void ekU()
+  {
+    AppMethodBeat.i(359450);
+    d locald = CGf;
+    if (locald != null) {
+      locald.cancel(true);
+    }
+    AppMethodBeat.o(359450);
+  }
+  
+  public static void ob(long paramLong)
+  {
+    AppMethodBeat.i(359441);
+    Object localObject1 = com.tencent.mm.plugin.finder.live.model.context.a.CMm;
+    localObject1 = com.tencent.mm.plugin.finder.live.model.context.a.emY();
+    if (localObject1 != null)
     {
-      localCharSequence = this.yfX;
-      if (localCharSequence != null) {
-        j = localCharSequence.hashCode();
+      Object localObject2 = (f)((com.tencent.mm.plugin.finder.live.model.context.a)localObject1).business(f.class);
+      if (localObject2 != null)
+      {
+        String str = TAG;
+        StringBuilder localStringBuilder = new StringBuilder("keepAliveGuard it.isLiveStarted():").append(((e)((f)localObject2).business(e.class)).isLiveStarted()).append(" heartbeatGuardEnable:").append(ekR()).append(" liveId:");
+        localObject1 = ((f)localObject2).liveInfo;
+        if (localObject1 == null) {}
+        for (localObject1 = null;; localObject1 = Long.valueOf(((bip)localObject1).liveId))
+        {
+          Log.i(str, localObject1 + " HEART_BEAT_GUARD_INTERVAL:" + CGb);
+          if (!CGe) {
+            break label226;
+          }
+          if (!((e)((f)localObject2).business(e.class)).isLiveStarted()) {
+            break;
+          }
+          localObject1 = new aj.d(((f)localObject2).liveInfo.liveId);
+          localObject2 = CGf;
+          if (localObject2 != null) {
+            ((d)localObject2).cancel(false);
+          }
+          CGf = h.ahAA.o((Runnable)localObject1, 60000L + paramLong);
+          CGg = (Runnable)localObject1;
+          AppMethodBeat.o(359441);
+          return;
+        }
+        localObject1 = CGf;
+        if (localObject1 != null) {
+          ((d)localObject1).cancel(false);
+        }
       }
-      int k = this.Gp;
-      int m = this.Gq;
-      int n = Float.floatToIntBits(this.yfY);
-      int i1 = Float.floatToIntBits(this.yfZ);
-      int i2 = this.bgColor;
-      int i3 = this.mTB;
-      int i4 = this.textColor;
-      int i5 = this.textSize;
-      int i6 = this.radius;
-      AppMethodBeat.o(290220);
-      return (((((((((i * 31 + j) * 31 + k) * 31 + m) * 31 + n) * 31 + i1) * 31 + i2) * 31 + i3) * 31 + i4) * 31 + i5) * 31 + i6;
     }
+    label226:
+    AppMethodBeat.o(359441);
   }
   
-  public final String toString()
+  public static void release()
   {
-    AppMethodBeat.i(290219);
-    String str = "FinderLiveItalicImageSpanConfig(normalText=" + this.yfW + ", italicText=" + this.yfX + ", leftMargin=" + this.Gp + ", rightMargin=" + this.Gq + ", leftPading=" + this.yfY + ", rightPading=" + this.yfZ + ", bgColor=" + this.bgColor + ", bgHeight=" + this.mTB + ", textColor=" + this.textColor + ", textSize=" + this.textSize + ", radius=" + this.radius + ")";
-    AppMethodBeat.o(290219);
-    return str;
+    CGc = null;
+    CGf = null;
+  }
+  
+  public static void setup()
+  {
+    AppMethodBeat.i(359405);
+    com.tencent.d.a.a.a.a.a locala = com.tencent.d.a.a.a.a.a.ahiX;
+    CGb = ((Number)com.tencent.d.a.a.a.a.a.jRN().bmg()).longValue();
+    locala = com.tencent.d.a.a.a.a.a.ahiX;
+    if (((Number)com.tencent.d.a.a.a.a.a.jRO().bmg()).intValue() == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      CGe = bool;
+      AppMethodBeat.o(359405);
+      return;
+    }
   }
 }
 

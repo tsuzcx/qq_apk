@@ -3,34 +3,31 @@ package com.tencent.mm.plugin.voip.widget;
 import android.content.Context;
 import android.graphics.Point;
 import android.graphics.PointF;
-import android.graphics.SurfaceTexture;
 import android.util.AttributeSet;
 import android.view.Display;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import com.tencent.e.h;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.media.g.d;
 import com.tencent.mm.plugin.voip.ui.c;
 import com.tencent.mm.plugin.voip.video.OpenGlRender;
 import com.tencent.mm.plugin.voip.video.camera.prev.CaptureView;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
 import java.lang.ref.WeakReference;
 
 public abstract class BaseSmallView
   extends FrameLayout
 {
-  public d MRb;
-  protected int NKw = -1;
-  protected long NKx;
-  protected WeakReference<c> NVe;
-  private Point OgA = new Point();
-  private Point OgB;
-  Runnable OgC = new Runnable()
+  protected WeakReference<c> UJb;
+  private Point UUM = new Point();
+  private Point UUN = new Point();
+  private Point UUO = new Point();
+  private Point UUP;
+  Runnable UUQ = new Runnable()
   {
     public final void run()
     {
@@ -40,58 +37,47 @@ public abstract class BaseSmallView
         public final void run()
         {
           AppMethodBeat.i(184093);
-          BaseSmallView.this.eYC();
+          BaseSmallView.this.ghx();
           AppMethodBeat.o(184093);
         }
       });
       AppMethodBeat.o(115757);
     }
   };
-  private Point Ogy = new Point();
-  private Point Ogz = new Point();
-  protected MMHandler cyl;
+  protected int Uxg = -1;
+  protected long Uxh;
+  protected MMHandler eqE;
   private WindowManager mWindowManager;
-  private PointF rmS = new PointF();
-  public SurfaceTexture surfaceTexture;
+  private PointF uwL = new PointF();
   @Deprecated
-  private CaptureView tRv;
+  private CaptureView wUL;
   
   public BaseSmallView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     this.mWindowManager = ((WindowManager)paramContext.getSystemService("window"));
-    this.cyl = new MMHandler();
-    this.OgB = new Point(this.mWindowManager.getDefaultDisplay().getWidth(), this.mWindowManager.getDefaultDisplay().getHeight());
+    this.eqE = new MMHandler();
+    this.UUP = new Point(this.mWindowManager.getDefaultDisplay().getWidth(), this.mWindowManager.getDefaultDisplay().getHeight());
   }
   
-  public void Be(boolean paramBoolean)
+  public void GH(boolean paramBoolean)
   {
-    h.ZvG.bDh("resumeIcon");
-    h.ZvG.a(this.OgC, 2000L, "resumeIcon");
+    h.ahAA.bFQ("resumeIcon");
+    h.ahAA.a(this.UUQ, 2000L, "resumeIcon");
   }
   
   @Deprecated
-  public void a(SurfaceTexture paramSurfaceTexture, d paramd) {}
-  
-  @Deprecated
-  public void a(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
-  
-  public void aQM(String paramString) {}
-  
-  public void aQN(String paramString) {}
-  
-  @Deprecated
-  protected final void c(CaptureView paramCaptureView)
+  protected final void a(CaptureView paramCaptureView)
   {
     Log.printDebugStack("MicroMsg.Voip.BaseSmallView", "addCaptureView", new Object[0]);
-    if (this.tRv != null)
+    if (this.wUL != null)
     {
-      removeView(this.tRv);
-      this.tRv = null;
+      removeView(this.wUL);
+      this.wUL = null;
     }
     if (paramCaptureView != null)
     {
-      this.tRv = paramCaptureView;
+      this.wUL = paramCaptureView;
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(1, 1);
       localLayoutParams.leftMargin = 20;
       localLayoutParams.topMargin = 20;
@@ -101,31 +87,15 @@ public abstract class BaseSmallView
     }
   }
   
-  public void eXH()
+  public void aNF(String paramString) {}
+  
+  public void fwi()
   {
-    h.ZvG.bDh("resumeIcon");
-    h.ZvG.a(this.OgC, 2000L, "resumeIcon");
+    h.ahAA.bFQ("resumeIcon");
+    h.ahAA.a(this.UUQ, 2000L, "resumeIcon");
   }
   
-  public boolean eYB()
-  {
-    h.ZvG.bDh("resumeIcon");
-    return true;
-  }
-  
-  public void eYC() {}
-  
-  public void eYD() {}
-  
-  @Deprecated
-  public void f(int paramInt1, int paramInt2, byte[] paramArrayOfByte) {}
-  
-  public void gBJ() {}
-  
-  @Deprecated
-  public void gBT() {}
-  
-  public void gEJ() {}
+  public void fwq() {}
   
   @Deprecated
   public OpenGlRender getBeautyData()
@@ -139,24 +109,27 @@ public abstract class BaseSmallView
     return null;
   }
   
-  @Deprecated
-  public void kN(int paramInt1, int paramInt2) {}
+  public boolean ghw()
+  {
+    h.ahAA.bFQ("resumeIcon");
+    return true;
+  }
+  
+  public void ghx() {}
+  
+  public void ghy() {}
+  
+  public void idK() {}
   
   @Deprecated
   protected void onAnimationEnd() {}
-  
-  @Deprecated
-  public void releaseSurfaceTexture() {}
-  
-  @Deprecated
-  public void requestRender() {}
   
   @Deprecated
   public void setCaptureView(CaptureView paramCaptureView) {}
   
   public void setConnectSec(long paramLong)
   {
-    this.NKx = paramLong;
+    this.Uxh = paramLong;
   }
   
   @Deprecated
@@ -169,8 +142,8 @@ public abstract class BaseSmallView
   
   public void setVoicePlayDevice(int paramInt)
   {
-    h.ZvG.bDh("resumeIcon");
-    h.ZvG.a(this.OgC, 2000L, "resumeIcon");
+    h.ahAA.bFQ("resumeIcon");
+    h.ahAA.a(this.UUQ, 2000L, "resumeIcon");
   }
   
   @Deprecated
@@ -179,17 +152,19 @@ public abstract class BaseSmallView
   public void setVoipUIListener(c paramc)
   {
     Log.i("MicroMsg.Voip.BaseSmallView", "hwViewSmall setVoipUIListener, before initHWView");
-    this.NVe = new WeakReference(paramc);
+    this.UJb = new WeakReference(paramc);
   }
   
   public void uninit()
   {
     this.mWindowManager = null;
   }
+  
+  public void updateText(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.widget.BaseSmallView
  * JD-Core Version:    0.7.0.1
  */

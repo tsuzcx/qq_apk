@@ -1,143 +1,117 @@
 package com.tencent.mm.plugin.finder.feed.ui;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.feed.ai.a;
-import com.tencent.mm.plugin.finder.feed.ai.b;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.feed.ap.a;
+import com.tencent.mm.plugin.finder.feed.ap.b;
 import com.tencent.mm.plugin.finder.feed.c.a;
 import com.tencent.mm.plugin.finder.feed.c.b;
 import com.tencent.mm.plugin.finder.feed.model.BaseFinderFeedLoader;
 import com.tencent.mm.plugin.finder.feed.model.FinderRelatedLoader;
 import com.tencent.mm.plugin.finder.feed.model.internal.BaseFeedLoader;
 import com.tencent.mm.plugin.finder.feed.model.internal.IResponse;
-import com.tencent.mm.plugin.finder.model.bu;
-import com.tencent.mm.protocal.protobuf.avr;
-import com.tencent.mm.protocal.protobuf.avs;
-import com.tencent.mm.protocal.protobuf.biv;
+import com.tencent.mm.plugin.finder.model.cc;
+import com.tencent.mm.plugin.finder.utils.av;
+import com.tencent.mm.plugin.finder.viewmodel.component.as;
+import com.tencent.mm.protocal.protobuf.bav;
+import com.tencent.mm.protocal.protobuf.baw;
+import com.tencent.mm.protocal.protobuf.bve;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.component.g;
-import com.tencent.mm.ui.component.g.a;
+import com.tencent.mm.ui.component.k;
+import com.tencent.mm.ui.component.k.b;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
-import java.util.HashMap;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.b;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderRelatedFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderBaseGridFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/FinderRelatedFeedUIContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderRelatedFeedUIContract$Presenter;", "()V", "feedLoader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "getFeedLoader", "()Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "setFeedLoader", "(Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;)V", "firstRsp", "Lcom/tencent/mm/protocal/protobuf/FinderGetRelatedListResp;", "presenter", "req", "Lcom/tencent/mm/protocal/protobuf/FinderGetRelatedListReq;", "scene", "", "title", "", "viewCallback", "getCommentScene", "getLayoutId", "getLoader", "getPresenter", "getReportType", "getViewCallback", "initAfterAttach", "", "initOnCreate", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderRelatedFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderBaseGridFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/FinderRelatedFeedUIContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderRelatedFeedUIContract$Presenter;", "()V", "feedLoader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "getFeedLoader", "()Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "setFeedLoader", "(Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;)V", "firstRsp", "Lcom/tencent/mm/protocal/protobuf/FinderGetRelatedListResp;", "presenter", "req", "Lcom/tencent/mm/protocal/protobuf/FinderGetRelatedListReq;", "scene", "", "title", "", "viewCallback", "getCommentScene", "getLayoutId", "getLoader", "getPresenter", "getReportType", "getViewCallback", "initAfterAttach", "", "initOnCreate", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderRelatedFeedUI
-  extends FinderBaseGridFeedUI<ai.b, ai.a>
+  extends FinderBaseGridFeedUI<ap.b, ap.a>
 {
-  public static final a xRV;
-  private HashMap _$_findViewCache;
+  public static final a Bro;
+  public BaseFinderFeedLoader ALH;
+  private bav AYw;
+  private ap.a Brp;
+  private ap.b Brq;
+  private baw Brr;
   private final int scene = 2;
   private String title = "";
-  private avr xAX;
-  private ai.a xRS;
-  private ai.b xRT;
-  private avs xRU;
-  public BaseFinderFeedLoader xnX;
   
   static
   {
-    AppMethodBeat.i(273786);
-    xRV = new a((byte)0);
-    AppMethodBeat.o(273786);
+    AppMethodBeat.i(365132);
+    Bro = new a((byte)0);
+    AppMethodBeat.o(365132);
   }
   
-  private ai.a dvV()
+  private ap.a efR()
   {
-    AppMethodBeat.i(273780);
-    ai.a locala = this.xRS;
-    if (locala == null) {
-      p.bGy("presenter");
+    AppMethodBeat.i(365117);
+    ap.a locala = this.Brp;
+    if (locala == null)
+    {
+      s.bIx("presenter");
+      AppMethodBeat.o(365117);
+      return null;
     }
-    AppMethodBeat.o(273780);
+    AppMethodBeat.o(365117);
     return locala;
   }
   
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(273789);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(273789);
-  }
+  public final void _$_clearFindViewByIdCache() {}
   
-  public final View _$_findCachedViewById(int paramInt)
+  public final int edC()
   {
-    AppMethodBeat.i(273788);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
+    AppMethodBeat.i(365167);
+    switch (getIntent().getIntExtra("KEY_MORE_ACTION_TYPE", 0))
     {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
+    default: 
+      AppMethodBeat.o(365167);
+      return 0;
     }
-    AppMethodBeat.o(273788);
-    return localView1;
-  }
-  
-  public final int duR()
-  {
-    AppMethodBeat.i(273784);
-    int i = getIntent().getIntExtra("KEY_MORE_ACTION_TYPE", 0);
-    if ((i == 2) || (i == 1))
-    {
-      AppMethodBeat.o(273784);
-      return 3;
-    }
-    AppMethodBeat.o(273784);
-    return 0;
+    AppMethodBeat.o(365167);
+    return 3;
   }
   
   public final int getCommentScene()
   {
-    AppMethodBeat.i(273783);
-    int i = getIntent().getIntExtra("KEY_MORE_ACTION_TYPE", 0);
-    if (i == 2)
+    AppMethodBeat.i(365159);
+    switch (getIntent().getIntExtra("KEY_MORE_ACTION_TYPE", 0))
     {
-      AppMethodBeat.o(273783);
+    default: 
+      AppMethodBeat.o(365159);
+      return 0;
+    case 2: 
+      AppMethodBeat.o(365159);
       return 28;
     }
-    if (i == 1)
-    {
-      AppMethodBeat.o(273783);
-      return 30;
-    }
-    AppMethodBeat.o(273783);
-    return 0;
+    AppMethodBeat.o(365159);
+    return 30;
   }
   
   public final int getLayoutId()
   {
-    return b.g.finder_related_list_layout;
+    return e.f.finder_related_list_layout;
   }
   
   public final void initOnCreate()
   {
     boolean bool2 = true;
-    AppMethodBeat.i(273779);
-    Object localObject1 = (a)new avr();
+    AppMethodBeat.i(365156);
+    Object localObject1 = (a)new bav();
     Object localObject4 = getIntent().getByteArrayExtra("SECTION_REQ");
     try
     {
       ((a)localObject1).parseFrom((byte[])localObject4);
-      this.xAX = ((avr)localObject1);
-      localObject1 = (a)new avs();
+      this.AYw = ((bav)localObject1);
+      localObject1 = (a)new baw();
       localObject4 = getIntent().getByteArrayExtra("SECTION_FIRST_RSP");
     }
     catch (Exception localException1)
@@ -145,21 +119,21 @@ public final class FinderRelatedFeedUI
       try
       {
         ((a)localObject1).parseFrom((byte[])localObject4);
-        this.xRU = ((avs)localObject1);
-        if ((this.xAX == null) || (this.xRU == null))
+        this.Brr = ((baw)localObject1);
+        if ((this.AYw == null) || (this.Brr == null))
         {
           localObject1 = new StringBuilder("req is null? ");
-          if (this.xAX == null)
+          if (this.AYw == null)
           {
             bool1 = true;
             localObject1 = ((StringBuilder)localObject1).append(bool1).append(", rsp is null? ");
-            if (this.xRU != null) {
-              break label612;
+            if (this.Brr != null) {
+              break label618;
             }
             bool1 = bool2;
             Log.i("Finder.FinderRelatedFeedUI", bool1 + ", finish");
             finish();
-            this.xAX = new avr();
+            this.AYw = new bav();
           }
         }
         else
@@ -171,63 +145,61 @@ public final class FinderRelatedFeedUI
           }
           this.title = ((String)localObject1);
           setMMTitle(this.title);
-          localObject1 = this.xAX;
-          if (localObject1 == null) {
-            p.iCn();
-          }
-          int i = ((avr)localObject1).fEH;
+          localObject1 = this.AYw;
+          s.checkNotNull(localObject1);
+          int i = ((bav)localObject1).hJx;
           int j = getCommentScene();
-          localObject1 = this.xAX;
-          if (localObject1 == null) {
-            p.iCn();
-          }
-          float f1 = ((avr)localObject1).longitude;
-          localObject1 = this.xAX;
-          if (localObject1 == null) {
-            p.iCn();
-          }
-          float f2 = ((avr)localObject1).latitude;
-          localObject1 = this.xAX;
-          if (localObject1 == null) {
-            p.iCn();
-          }
-          localObject4 = ((avr)localObject1).xcZ;
+          localObject1 = this.AYw;
+          s.checkNotNull(localObject1);
+          float f1 = ((bav)localObject1).longitude;
+          localObject1 = this.AYw;
+          s.checkNotNull(localObject1);
+          float f2 = ((bav)localObject1).latitude;
+          localObject1 = this.AYw;
+          s.checkNotNull(localObject1);
+          localObject4 = ((bav)localObject1).ACr;
           localObject1 = localObject4;
           if (localObject4 == null) {
-            localObject1 = new biv();
+            localObject1 = new bve();
           }
-          localObject4 = g.Xox;
-          localObject1 = new FinderRelatedLoader(i, j, f1, f2, (biv)localObject1, ((com.tencent.mm.plugin.finder.viewmodel.component.aj)g.b((AppCompatActivity)this).i(com.tencent.mm.plugin.finder.viewmodel.component.aj.class)).ekY());
+          localObject4 = k.aeZF;
+          localObject1 = new FinderRelatedLoader(i, j, f1, f2, (bve)localObject1, ((as)k.d((AppCompatActivity)this).q(as.class)).fou());
           localObject4 = getIntent();
-          p.j(localObject4, "intent");
+          s.s(localObject4, "intent");
           ((FinderRelatedLoader)localObject1).initFromCache((Intent)localObject4);
           ((FinderRelatedLoader)localObject1).fetchEndCallback = ((b)new b(this));
-          this.xnX = ((BaseFinderFeedLoader)localObject1);
-          localObject1 = (MMActivity)this;
-          getCommentScene();
-          localObject4 = this.xnX;
-          if (localObject4 == null) {
-            p.bGy("feedLoader");
+          localObject4 = ah.aiuX;
+          localObject1 = (BaseFinderFeedLoader)localObject1;
+          s.u(localObject1, "<set-?>");
+          this.ALH = ((BaseFinderFeedLoader)localObject1);
+          localObject4 = (MMActivity)this;
+          i = getCommentScene();
+          localObject1 = this.ALH;
+          if (localObject1 == null) {
+            break label624;
           }
-          this.xRS = new ai.a((MMActivity)localObject1, (BaseFinderFeedLoader)localObject4);
+          this.Brp = new ap.a((MMActivity)localObject4, i, (BaseFinderFeedLoader)localObject1);
           localObject1 = (MMActivity)this;
           i = this.scene;
           j = getCommentScene();
-          localObject4 = this.xAX;
-          if (localObject4 == null) {
-            p.iCn();
+          localObject4 = this.AYw;
+          s.checkNotNull(localObject4);
+          this.Brq = new ap.b((MMActivity)localObject1, i, j, (bav)localObject4, this.title);
+          localObject1 = this.Brq;
+          if (localObject1 != null) {
+            break label636;
           }
-          this.xRT = new ai.b((MMActivity)localObject1, i, j, (avr)localObject4, this.title);
-          localObject1 = this.xRT;
-          if (localObject1 == null) {
-            p.bGy("viewCallback");
+          s.bIx("viewCallback");
+          localObject1 = null;
+          ap.a locala = this.Brp;
+          localObject4 = locala;
+          if (locala == null)
+          {
+            s.bIx("presenter");
+            localObject4 = null;
           }
-          localObject4 = this.xRS;
-          if (localObject4 == null) {
-            p.bGy("presenter");
-          }
-          ((ai.b)localObject1).a((c.a)localObject4);
-          AppMethodBeat.o(273779);
+          ((ap.b)localObject1).a((c.a)localObject4);
+          AppMethodBeat.o(365156);
           return;
           localException1 = localException1;
           Log.printDebugStack("safeParser", "", new Object[] { localException1 });
@@ -236,6 +208,9 @@ public final class FinderRelatedFeedUI
       }
       catch (Exception localException2)
       {
+        label618:
+        label624:
+        label636:
         for (;;)
         {
           Log.printDebugStack("safeParser", "", new Object[] { localException2 });
@@ -243,8 +218,10 @@ public final class FinderRelatedFeedUI
           continue;
           boolean bool1 = false;
           continue;
-          label612:
           bool1 = false;
+          continue;
+          s.bIx("feedLoader");
+          localObject3 = null;
         }
       }
     }
@@ -252,27 +229,23 @@ public final class FinderRelatedFeedUI
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(273785);
+    AppMethodBeat.i(365173);
     if ((paramInt1 == 501) && (paramInt2 == -1) && (paramIntent != null))
     {
-      ai.a locala = dvV();
-      p.k(paramIntent, "data");
-      Object localObject = locala.xvU;
+      ap.a locala = efR();
+      s.u(paramIntent, "data");
+      Object localObject = locala.ATE;
       if (localObject != null)
       {
-        localObject = ((c.b)localObject).xvJ.getRecyclerView();
+        localObject = ((c.b)localObject).ATx.getRecyclerView();
         if (localObject != null)
         {
-          com.tencent.mm.plugin.finder.utils.aj localaj = com.tencent.mm.plugin.finder.utils.aj.AGc;
-          com.tencent.mm.plugin.finder.utils.aj.a(paramIntent, (RecyclerView)localObject, (BaseFeedLoader)locala.xnX);
-          AppMethodBeat.o(273785);
-          return;
+          av localav = av.GiL;
+          av.a(paramIntent, (RecyclerView)localObject, (BaseFeedLoader)locala.ALH);
         }
       }
-      AppMethodBeat.o(273785);
-      return;
     }
-    AppMethodBeat.o(273785);
+    AppMethodBeat.o(365173);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -281,13 +254,13 @@ public final class FinderRelatedFeedUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderRelatedFeedUI$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderRelatedFeedUI$Companion;", "", "()V", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "invoke", "com/tencent/mm/plugin/finder/feed/ui/FinderRelatedFeedUI$initOnCreate$1$1"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
-    implements b<IResponse<bu>, x>
+    extends u
+    implements b<IResponse<cc>, ah>
   {
     b(FinderRelatedFeedUI paramFinderRelatedFeedUI)
     {

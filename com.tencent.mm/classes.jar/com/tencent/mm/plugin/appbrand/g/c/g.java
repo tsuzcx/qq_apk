@@ -14,20 +14,20 @@ import java.util.List;
 public class g
 {
   private static final String TAG;
-  private static List<NetworkInterface> ofL;
+  private static List<NetworkInterface> rjp;
   
   static
   {
     AppMethodBeat.i(158991);
     TAG = g.class.getSimpleName();
-    ofL = new ArrayList();
+    rjp = new ArrayList();
     AppMethodBeat.o(158991);
   }
   
-  public static List<NetworkInterface> bMV()
+  public static List<NetworkInterface> cnk()
   {
     AppMethodBeat.i(158988);
-    ofL.clear();
+    rjp.clear();
     for (;;)
     {
       try
@@ -44,7 +44,7 @@ public class g
         Iterator localIterator;
         continue;
       }
-      localObject = ofL;
+      localObject = rjp;
       AppMethodBeat.o(158988);
       return localObject;
       localObject = Collections.list((Enumeration)localObject).iterator();
@@ -54,14 +54,14 @@ public class g
         localIterator = Collections.list(localNetworkInterface.getInetAddresses()).iterator();
         if (localIterator.hasNext()) {
           if (((InetAddress)localIterator.next()).getHostAddress().startsWith("192.168")) {
-            ofL.add(localNetworkInterface);
+            rjp.add(localNetworkInterface);
           }
         }
       }
     }
   }
   
-  public static String bMW()
+  public static String cnl()
   {
     AppMethodBeat.i(158989);
     Object localObject1 = null;
@@ -111,7 +111,7 @@ public class g
     }
   }
   
-  public static String v(String paramString1, int paramInt, String paramString2)
+  public static String y(String paramString1, int paramInt, String paramString2)
   {
     AppMethodBeat.i(158990);
     if (paramString2.startsWith("/"))
@@ -127,7 +127,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.c.g
  * JD-Core Version:    0.7.0.1
  */

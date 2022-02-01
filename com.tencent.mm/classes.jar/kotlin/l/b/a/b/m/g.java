@@ -2,177 +2,84 @@ package kotlin.l.b.a.b.m;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayDeque;
-import java.util.List;
 import java.util.Set;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.m.c.h;
-import kotlin.l.b.a.b.m.c.j;
-import kotlin.l.b.a.b.m.c.l;
-import kotlin.l.b.a.b.m.c.m;
-import kotlin.l.b.a.b.m.c.n;
-import kotlin.l.b.a.b.m.c.q;
-import kotlin.l.b.a.b.m.c.q.a;
-import kotlin.l.b.a.b.o.i;
-import kotlin.l.b.a.b.o.i.b;
-import kotlin.z;
+import kotlin.ak;
+import kotlin.g.b.ai;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.m.c.i;
+import kotlin.l.b.a.b.m.c.k;
+import kotlin.l.b.a.b.m.c.r;
+import kotlin.l.b.a.b.o.f;
+import kotlin.l.b.a.b.o.f.b;
 
 public abstract class g
-  implements q
 {
-  int abpP;
-  private boolean abpQ;
-  ArrayDeque<j> abpR;
-  Set<j> abpS;
+  int ajoU;
+  private boolean ajoV;
+  ArrayDeque<k> ajoW;
+  Set<k> ajoX;
   
-  public static Boolean a(h paramh1, h paramh2)
+  public static Boolean a(i parami1, i parami2)
   {
-    p.k(paramh1, "subType");
-    p.k(paramh2, "superType");
+    s.u(parami1, "subType");
+    s.u(parami2, "superType");
     return null;
-  }
-  
-  public int a(l paraml)
-  {
-    p.k(paraml, "$this$size");
-    return q.a.a(this, paraml);
-  }
-  
-  public List<j> a(j paramj, n paramn)
-  {
-    p.k(paramj, "$this$fastCorrespondingSupertypes");
-    p.k(paramn, "constructor");
-    return q.a.b(paramj, paramn);
-  }
-  
-  public h a(h paramh)
-  {
-    p.k(paramh, "type");
-    return paramh;
-  }
-  
-  public m a(j paramj, int paramInt)
-  {
-    p.k(paramj, "$this$getArgumentOrNull");
-    return q.a.a(this, paramj, paramInt);
-  }
-  
-  public m a(l paraml, int paramInt)
-  {
-    p.k(paraml, "$this$get");
-    return q.a.a(this, paraml, paramInt);
-  }
-  
-  public abstract b a(j paramj);
-  
-  public boolean a(j paramj1, j paramj2)
-  {
-    p.k(paramj1, "a");
-    p.k(paramj2, "b");
-    p.k(paramj1, "a");
-    p.k(paramj2, "b");
-    p.k(paramj1, "a");
-    p.k(paramj2, "b");
-    return false;
-  }
-  
-  public abstract boolean a(n paramn1, n paramn2);
-  
-  public h b(h paramh)
-  {
-    p.k(paramh, "type");
-    return paramh;
-  }
-  
-  public boolean b(j paramj)
-  {
-    p.k(paramj, "$this$isClassType");
-    return q.a.a(this, paramj);
-  }
-  
-  public abstract boolean c(h paramh);
-  
-  public boolean c(j paramj)
-  {
-    p.k(paramj, "$this$isIntegerLiteralType");
-    return q.a.b(this, paramj);
   }
   
   public final void clear()
   {
-    Object localObject = this.abpR;
-    if (localObject == null) {
-      p.iCn();
-    }
+    Object localObject = this.ajoW;
+    s.checkNotNull(localObject);
     ((ArrayDeque)localObject).clear();
-    localObject = this.abpS;
-    if (localObject == null) {
-      p.iCn();
-    }
+    localObject = this.ajoX;
+    s.checkNotNull(localObject);
     ((Set)localObject).clear();
-    this.abpQ = false;
+    this.ajoV = false;
   }
-  
-  public n d(h paramh)
-  {
-    p.k(paramh, "$this$typeConstructor");
-    return q.a.f(this, paramh);
-  }
-  
-  public j e(h paramh)
-  {
-    p.k(paramh, "$this$lowerBoundIfFlexible");
-    return q.a.a(this, paramh);
-  }
-  
-  public j f(h paramh)
-  {
-    p.k(paramh, "$this$upperBoundIfFlexible");
-    return q.a.b(this, paramh);
-  }
-  
-  public boolean g(h paramh)
-  {
-    p.k(paramh, "$this$isDynamic");
-    return q.a.c(this, paramh);
-  }
-  
-  public boolean h(h paramh)
-  {
-    p.k(paramh, "$this$isDefinitelyNotNullType");
-    return q.a.d(this, paramh);
-  }
-  
-  public boolean i(h paramh)
-  {
-    p.k(paramh, "$this$hasFlexibleNullability");
-    return q.a.e(this, paramh);
-  }
-  
-  public abstract boolean iPO();
-  
-  public abstract boolean iPP();
   
   public final void initialize()
   {
-    if (!this.abpQ) {}
-    for (int i = 1; (z.aazO) && (i == 0); i = 0) {
-      throw ((Throwable)new AssertionError("Assertion failed"));
+    if (!this.ajoV) {}
+    for (int i = 1; (ak.aiuY) && (i == 0); i = 0) {
+      throw ((Throwable)new AssertionError(s.X("Supertypes were locked for ", ai.cz(getClass()))));
     }
-    this.abpQ = true;
-    if (this.abpR == null) {
-      this.abpR = new ArrayDeque(4);
+    this.ajoV = true;
+    if (this.ajoW == null) {
+      this.ajoW = new ArrayDeque(4);
     }
-    if (this.abpS == null)
+    if (this.ajoX == null)
     {
-      i.b localb = i.abuE;
-      this.abpS = ((Set)i.b.iQq());
+      f.b localb = f.ajtJ;
+      this.ajoX = ((Set)f.b.kBe());
     }
   }
   
-  public boolean j(h paramh)
+  public abstract boolean kAA();
+  
+  public abstract boolean kAB();
+  
+  public abstract r kAz();
+  
+  public abstract b m(k paramk);
+  
+  public i t(i parami)
   {
-    p.k(paramh, "$this$isNothing");
-    return q.a.g(this, paramh);
+    s.u(parami, "type");
+    return parami;
+  }
+  
+  public i u(i parami)
+  {
+    s.u(parami, "type");
+    return parami;
+  }
+  
+  public abstract boolean v(i parami);
+  
+  public final boolean w(i parami)
+  {
+    s.u(parami, "type");
+    return v(parami);
   }
   
   public static enum a
@@ -180,13 +87,10 @@ public abstract class g
     static
     {
       AppMethodBeat.i(60590);
-      a locala1 = new a("CHECK_ONLY_LOWER", 0);
-      abpT = locala1;
-      a locala2 = new a("CHECK_SUBTYPE_AND_LOWER", 1);
-      abpU = locala2;
-      a locala3 = new a("SKIP_LOWER", 2);
-      abpV = locala3;
-      abpW = new a[] { locala1, locala2, locala3 };
+      ajoY = new a("CHECK_ONLY_LOWER", 0);
+      ajoZ = new a("CHECK_SUBTYPE_AND_LOWER", 1);
+      ajpa = new a("SKIP_LOWER", 2);
+      ajpb = new a[] { ajoY, ajoZ, ajpa };
       AppMethodBeat.o(60590);
     }
     
@@ -195,7 +99,7 @@ public abstract class g
   
   public static abstract class b
   {
-    public abstract j b(g paramg, h paramh);
+    public abstract k a(g paramg, i parami);
     
     public static abstract class a
       extends g.b
@@ -209,12 +113,12 @@ public abstract class g
     public static final class b
       extends g.b
     {
-      public static final b abpX;
+      public static final b ajpc;
       
       static
       {
         AppMethodBeat.i(60597);
-        abpX = new b();
+        ajpc = new b();
         AppMethodBeat.o(60597);
       }
       
@@ -223,12 +127,12 @@ public abstract class g
         super();
       }
       
-      public final j b(g paramg, h paramh)
+      public final k a(g paramg, i parami)
       {
         AppMethodBeat.i(60596);
-        p.k(paramg, "context");
-        p.k(paramh, "type");
-        paramg = paramg.e(paramh);
+        s.u(paramg, "context");
+        s.u(parami, "type");
+        paramg = paramg.kAz().n(parami);
         AppMethodBeat.o(60596);
         return paramg;
       }
@@ -237,12 +141,12 @@ public abstract class g
     public static final class c
       extends g.b
     {
-      public static final c abpY;
+      public static final c ajpd;
       
       static
       {
         AppMethodBeat.i(60599);
-        abpY = new c();
+        ajpd = new c();
         AppMethodBeat.o(60599);
       }
       
@@ -255,12 +159,12 @@ public abstract class g
     public static final class d
       extends g.b
     {
-      public static final d abpZ;
+      public static final d ajpe;
       
       static
       {
         AppMethodBeat.i(60601);
-        abpZ = new d();
+        ajpe = new d();
         AppMethodBeat.o(60601);
       }
       
@@ -269,12 +173,12 @@ public abstract class g
         super();
       }
       
-      public final j b(g paramg, h paramh)
+      public final k a(g paramg, i parami)
       {
         AppMethodBeat.i(60600);
-        p.k(paramg, "context");
-        p.k(paramh, "type");
-        paramg = paramg.f(paramh);
+        s.u(paramg, "context");
+        s.u(parami, "type");
+        paramg = paramg.kAz().r(parami);
         AppMethodBeat.o(60600);
         return paramg;
       }
@@ -283,7 +187,7 @@ public abstract class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.m.g
  * JD-Core Version:    0.7.0.1
  */

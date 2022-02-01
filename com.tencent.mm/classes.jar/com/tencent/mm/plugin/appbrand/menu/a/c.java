@@ -9,25 +9,25 @@ import java.util.List;
 
 public final class c<T extends ad>
 {
-  public final List<b> qgr;
+  public final List<b> tlc;
   
   public c()
   {
     AppMethodBeat.i(134919);
-    this.qgr = new ArrayList();
+    this.tlc = new ArrayList();
     AppMethodBeat.o(134919);
   }
   
   public final void a(b paramb)
   {
     AppMethodBeat.i(134920);
-    this.qgr.add(paramb);
+    this.tlc.add(paramb);
     AppMethodBeat.o(134920);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.a.c
  * JD-Core Version:    0.7.0.1
  */

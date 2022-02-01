@@ -4,9 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
-import com.tencent.mm.f.a.ah;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.autogen.a.ak;
+import com.tencent.mm.br.c;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class BakOldUSBReceiver
@@ -27,9 +26,9 @@ public class BakOldUSBReceiver
       }
       if ("MMBakchatServiceStop".equalsIgnoreCase(str))
       {
-        paramIntent = new ah();
-        paramIntent.fvL.fvM = paramContext;
-        EventCenter.instance.publish(paramIntent);
+        paramIntent = new ak();
+        paramIntent.hAg.hAh = paramContext;
+        paramIntent.publish();
         Log.d("MicroMsg.BakOldUSBReceiver", "STOP_ACTION onReceive stop end");
       }
       AppMethodBeat.o(21811);

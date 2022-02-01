@@ -11,58 +11,46 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/luggage/sdk/processes/LuggageMiniProgramProcess$Companion;", "", "()V", "TAG", "", "isProcessRunning", "", "context", "Landroid/content/Context;", "process", "processNameOfComponent", "clazz", "Ljava/lang/Class;", "luggage-wechat-full-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/luggage/sdk/processes/LuggageMiniProgramProcess$Companion;", "", "()V", "TAG", "", "isProcessRunning", "", "context", "Landroid/content/Context;", "process", "processNameOfComponent", "clazz", "Ljava/lang/Class;", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c$a
 {
-  public static String U(Class<?> paramClass)
+  public static String ad(Class<?> paramClass)
   {
-    AppMethodBeat.i(244493);
-    p.k(paramClass, "clazz");
-    for (;;)
+    AppMethodBeat.i(220405);
+    s.u(paramClass, "clazz");
+    try
     {
-      try
+      Object localObject = MMApplicationContext.getContext().getPackageManager();
+      ComponentName localComponentName = new ComponentName(MMApplicationContext.getContext(), paramClass);
+      if (localObject == null) {}
+      for (localObject = null; localObject == null; localObject = ((PackageManager)localObject).getActivityInfo(localComponentName, 128))
       {
-        Object localObject1 = MMApplicationContext.getContext();
-        p.j(localObject1, "MMApplicationContext.getContext()");
-        localObject1 = ((Context)localObject1).getPackageManager();
-        Object localObject2 = new ComponentName(MMApplicationContext.getContext(), paramClass);
-        if (localObject1 != null)
-        {
-          localObject1 = ((PackageManager)localObject1).getActivityInfo((ComponentName)localObject2, 128);
-          if (localObject1 != null)
-          {
-            localObject2 = ((ActivityInfo)localObject1).processName;
-            localObject1 = localObject2;
-            if (localObject2 != null)
-            {
-              AppMethodBeat.o(244493);
-              return localObject1;
-            }
-          }
-        }
-        else
-        {
-          localObject1 = null;
-          continue;
-        }
-        String str = "";
+        AppMethodBeat.o(220405);
+        return "";
       }
-      catch (PackageManager.NameNotFoundException localNameNotFoundException)
+      localObject = ((ActivityInfo)localObject).processName;
+      if (localObject == null)
       {
-        com.tencent.mm.sdk.platformtools.Log.e("Luggage.LuggageMiniProgramProcess", "processNameOfComponent: catch cmpClass[" + paramClass + "] " + localNameNotFoundException.getMessage());
-        AppMethodBeat.o(244493);
-        return null;
+        AppMethodBeat.o(220405);
+        return "";
       }
     }
+    catch (PackageManager.NameNotFoundException localNameNotFoundException)
+    {
+      com.tencent.mm.sdk.platformtools.Log.e("Luggage.LuggageMiniProgramProcess", "processNameOfComponent: catch cmpClass[" + paramClass + "] " + localNameNotFoundException.getMessage());
+      AppMethodBeat.o(220405);
+      return null;
+    }
+    AppMethodBeat.o(220405);
+    return localNameNotFoundException;
   }
   
   static boolean isProcessRunning(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(244492);
+    AppMethodBeat.i(220399);
     ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo;
     do
     {
@@ -73,22 +61,22 @@ public final class c$a
           paramContext = paramContext.getSystemService("activity");
           if (paramContext == null)
           {
-            paramContext = new t("null cannot be cast to non-null type android.app.ActivityManager");
-            AppMethodBeat.o(244492);
+            paramContext = new NullPointerException("null cannot be cast to non-null type android.app.ActivityManager");
+            AppMethodBeat.o(220399);
             throw paramContext;
           }
         }
         catch (Exception paramContext)
         {
           com.tencent.mm.sdk.platformtools.Log.w("Luggage.LuggageMiniProgramProcess", "isProcessRunning: ", new Object[] { android.util.Log.getStackTraceString((Throwable)paramContext) });
-          AppMethodBeat.o(244492);
+          AppMethodBeat.o(220399);
           return false;
         }
         paramContext = ((ActivityManager)paramContext).getRunningAppProcesses().iterator();
       }
       localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-    } while ((localRunningAppProcessInfo.processName == null) || (!p.h(localRunningAppProcessInfo.processName, paramString)));
-    AppMethodBeat.o(244492);
+    } while ((localRunningAppProcessInfo.processName == null) || (!s.p(localRunningAppProcessInfo.processName, paramString)));
+    AppMethodBeat.o(220399);
     return true;
   }
 }

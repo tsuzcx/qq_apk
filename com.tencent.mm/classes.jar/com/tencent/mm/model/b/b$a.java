@@ -2,7 +2,7 @@ package com.tencent.mm.model.b;
 
 public abstract interface b$a
 {
-  public abstract void bgn();
+  public abstract void bEe();
 }
 
 

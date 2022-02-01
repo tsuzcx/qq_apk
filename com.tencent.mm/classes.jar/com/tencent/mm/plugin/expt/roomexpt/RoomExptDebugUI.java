@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.expt.roomexpt;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
@@ -23,19 +22,19 @@ import com.tencent.mm.ui.MMActivity;
 public class RoomExptDebugUI
   extends MMActivity
 {
-  private ListView niO;
-  private ArrayAdapter wqR;
-  private TextView wqS;
-  private Button wqT;
-  private Button wqU;
-  private Button wqV;
-  private Button wqW;
-  private Button wqX;
+  private ListView qgc;
+  private ArrayAdapter zMT;
+  private TextView zMU;
+  private Button zMV;
+  private Button zMW;
+  private Button zMX;
+  private Button zMY;
+  private Button zMZ;
   
-  private void dgC()
+  private void dNn()
   {
     AppMethodBeat.i(122438);
-    this.wqS.setText(a.dgu().dgz());
+    this.zMU.setText(a.dNf().dNk());
     AppMethodBeat.o(122438);
   }
   
@@ -48,16 +47,16 @@ public class RoomExptDebugUI
   {
     AppMethodBeat.i(122437);
     super.onCreate(paramBundle);
-    this.wqT = ((Button)$(b.c.get_db_btn));
-    this.wqT.setOnClickListener(new View.OnClickListener()
+    this.zMV = ((Button)$(b.c.get_db_btn));
+    this.zMV.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(122428);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/expt/roomexpt/RoomExptDebugUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        h.aHJ().postToWorker(new Runnable()
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/expt/roomexpt/RoomExptDebugUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        h.baH().postToWorker(new Runnable()
         {
           public final void run()
           {
@@ -70,16 +69,16 @@ public class RoomExptDebugUI
         AppMethodBeat.o(122428);
       }
     });
-    this.wqU = ((Button)$(b.c.calc));
-    this.wqU.setOnClickListener(new View.OnClickListener()
+    this.zMW = ((Button)$(b.c.calc));
+    this.zMW.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(122430);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/expt/roomexpt/RoomExptDebugUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        h.aHJ().postToWorker(new Runnable()
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/expt/roomexpt/RoomExptDebugUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        h.baH().postToWorker(new Runnable()
         {
           public final void run()
           {
@@ -92,57 +91,57 @@ public class RoomExptDebugUI
         AppMethodBeat.o(122430);
       }
     });
-    this.wqW = ((Button)$(b.c.reset_btn));
-    this.wqW.setOnClickListener(new View.OnClickListener()
+    this.zMY = ((Button)$(b.c.reset_btn));
+    this.zMY.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(122431);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/expt/roomexpt/RoomExptDebugUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        a.dgu().dgy();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/expt/roomexpt/RoomExptDebugUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        a.dNf().dNj();
         RoomExptDebugUI.c(RoomExptDebugUI.this);
         Toast.makeText(RoomExptDebugUI.this, "reset finish", 0).show();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/expt/roomexpt/RoomExptDebugUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(122431);
       }
     });
-    this.wqV = ((Button)$(b.c.del_db));
-    this.wqV.setOnClickListener(new View.OnClickListener()
+    this.zMX = ((Button)$(b.c.del_db));
+    this.zMX.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(122432);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/expt/roomexpt/RoomExptDebugUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        a.dgu().dgx();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/expt/roomexpt/RoomExptDebugUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        a.dNf().dNi();
         RoomExptDebugUI.d(RoomExptDebugUI.this).clear();
         Toast.makeText(RoomExptDebugUI.this, "del db finish", 0).show();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/expt/roomexpt/RoomExptDebugUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(122432);
       }
     });
-    this.wqX = ((Button)$(b.c.show_btn));
-    this.wqX.setOnClickListener(new View.OnClickListener()
+    this.zMZ = ((Button)$(b.c.show_btn));
+    this.zMZ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(122433);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/expt/roomexpt/RoomExptDebugUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        a.dgu().wqI = 3;
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/expt/roomexpt/RoomExptDebugUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        a.dNf().zMK = 3;
         Toast.makeText(RoomExptDebugUI.this, "set show finish", 0).show();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/expt/roomexpt/RoomExptDebugUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(122433);
       }
     });
-    this.wqS = ((TextView)$(b.c.expt_info));
-    dgC();
-    this.niO = ((ListView)$(b.c.room_list));
-    this.wqR = new ArrayAdapter(this, b.d.room_expt_ui_item, b.c.room_expt_ui_tv)
+    this.zMU = ((TextView)$(b.c.expt_info));
+    dNn();
+    this.qgc = ((ListView)$(b.c.room_list));
+    this.zMT = new ArrayAdapter(this, b.d.room_expt_ui_item, b.c.room_expt_ui_tv)
     {
       public final View getView(int paramAnonymousInt, View paramAnonymousView, ViewGroup paramAnonymousViewGroup)
       {
@@ -160,17 +159,17 @@ public class RoomExptDebugUI
         }
       }
     };
-    this.niO.setAdapter(this.wqR);
+    this.qgc.setAdapter(this.zMT);
     AppMethodBeat.o(122437);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(122439);
-    if (this.wqR != null)
+    if (this.zMT != null)
     {
-      this.wqR.setNotifyOnChange(false);
-      this.wqR.clear();
+      this.zMT.setNotifyOnChange(false);
+      this.zMT.clear();
     }
     super.onDestroy();
     AppMethodBeat.o(122439);
@@ -184,7 +183,7 @@ public class RoomExptDebugUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.roomexpt.RoomExptDebugUI
  * JD-Core Version:    0.7.0.1
  */

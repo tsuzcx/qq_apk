@@ -1,9 +1,11 @@
 package com.tencent.mm.ui.base.preference;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ah.a.g;
 import com.tencent.mm.ah.a.h;
@@ -12,7 +14,9 @@ import com.tencent.mm.ui.widget.imageview.WeImageView;
 public class SelectPreference
   extends Preference
 {
-  private WeImageView Buo;
+  private WeImageView HaZ;
+  private String desc;
+  private TextView descTv;
   private boolean enable;
   public boolean isSelected;
   private View mView;
@@ -38,22 +42,38 @@ public class SelectPreference
     AppMethodBeat.o(142670);
   }
   
-  public final boolean getSelected()
+  public final void bAn(String paramString)
   {
-    return this.isSelected;
+    AppMethodBeat.i(251496);
+    this.desc = paramString;
+    if (this.descTv != null)
+    {
+      if (TextUtils.isEmpty(paramString))
+      {
+        this.descTv.setVisibility(8);
+        this.descTv.setText("");
+        AppMethodBeat.o(251496);
+        return;
+      }
+      this.descTv.setVisibility(0);
+      this.descTv.setText(paramString);
+    }
+    AppMethodBeat.o(251496);
   }
   
   protected final void onBindView(View paramView)
   {
     AppMethodBeat.i(142672);
     super.onBindView(paramView);
-    auO(8);
-    this.Buo = ((WeImageView)paramView.findViewById(a.g.state_icon));
-    paramView = this.Buo;
+    aBq(8);
+    this.HaZ = ((WeImageView)paramView.findViewById(a.g.state_icon));
+    WeImageView localWeImageView = this.HaZ;
     if (this.isSelected) {}
     for (int i = 0;; i = 8)
     {
-      paramView.setVisibility(i);
+      localWeImageView.setVisibility(i);
+      this.descTv = ((TextView)paramView.findViewById(a.g.desc));
+      bAn(this.desc);
       AppMethodBeat.o(142672);
       return;
     }
@@ -70,11 +90,6 @@ public class SelectPreference
     paramViewGroup = this.mView;
     AppMethodBeat.o(142671);
     return paramViewGroup;
-  }
-  
-  public final void setSelected(boolean paramBoolean)
-  {
-    this.isSelected = paramBoolean;
   }
 }
 

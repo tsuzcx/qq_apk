@@ -1,121 +1,234 @@
 package com.tencent.mm.plugin.finder.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import androidx.fragment.app.FragmentActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.live.viewmodel.k;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.e.h;
+import com.tencent.mm.plugin.findersdk.a.ay;
+import com.tencent.mm.plugin.findersdk.a.az;
 import com.tencent.mm.ui.component.UIComponent;
-import java.util.HashMap;
+import com.tencent.mm.ui.component.l;
 import java.util.Set;
-import kotlin.a.ak;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.ar;
+import kotlin.g.b.ai;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderManagementUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "finderTitle", "Landroid/view/View;", "getFinderTitle", "()Landroid/view/View;", "setFinderTitle", "(Landroid/view/View;)V", "fromSettingPrivacy", "", "getFromSettingPrivacy", "()Z", "setFromSettingPrivacy", "(Z)V", "liveRoleGroup", "getLiveRoleGroup", "setLiveRoleGroup", "notSeeAccount", "getNotSeeAccount", "setNotSeeAccount", "notSeeHim", "getNotSeeHim", "setNotSeeHim", "notSeeMine", "getNotSeeMine", "setNotSeeMine", "getLayoutId", "", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/ui/FinderManagementUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "finderTitle", "Landroid/view/View;", "getFinderTitle", "()Landroid/view/View;", "setFinderTitle", "(Landroid/view/View;)V", "fromSettingPrivacy", "", "getFromSettingPrivacy", "()Z", "setFromSettingPrivacy", "(Z)V", "interactiveInfo", "getInteractiveInfo", "setInteractiveInfo", "liveRoleGroup", "getLiveRoleGroup", "setLiveRoleGroup", "notSeeAccount", "getNotSeeAccount", "setNotSeeAccount", "notSeeHim", "getNotSeeHim", "setNotSeeHim", "notSeeMine", "getNotSeeMine", "setNotSeeMine", "personalizeSetting", "getPersonalizeSetting", "setPersonalizeSetting", "getLayoutId", "", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderManagementUI
   extends MMFinderUI
 {
-  private View ArJ;
-  private View ArK;
-  private View ArL;
-  private View ArM;
-  boolean ArN;
-  private View ArO;
-  private HashMap _$_findViewCache;
+  private View FRj;
+  private View FRk;
+  private View FRl;
+  private View FRm;
+  private View FRn;
+  private View FRo;
+  private boolean FRp;
+  private View FRq;
   
-  public final void _$_clearFindViewByIdCache()
+  private static final void a(FinderManagementUI paramFinderManagementUI, View paramView)
   {
-    AppMethodBeat.i(290342);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(290342);
-  }
-  
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(290341);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
+    AppMethodBeat.i(346601);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramFinderManagementUI);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/ui/FinderManagementUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFinderManagementUI, "this$0");
+    if (paramFinderManagementUI.FRp)
     {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
+      paramView = com.tencent.mm.plugin.finder.utils.a.GfO;
+      paramFinderManagementUI = paramFinderManagementUI.getContext();
+      s.s(paramFinderManagementUI, "context");
+      com.tencent.mm.plugin.finder.utils.a.az((Context)paramFinderManagementUI, 1);
     }
-    AppMethodBeat.o(290341);
-    return localView1;
+    for (;;)
+    {
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/ui/FinderManagementUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(346601);
+      return;
+      paramView = com.tencent.mm.plugin.finder.utils.a.GfO;
+      paramFinderManagementUI = paramFinderManagementUI.getContext();
+      s.s(paramFinderManagementUI, "context");
+      com.tencent.mm.plugin.finder.utils.a.ay((Context)paramFinderManagementUI, 1);
+    }
   }
+  
+  private static final boolean a(FinderManagementUI paramFinderManagementUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(346592);
+    s.u(paramFinderManagementUI, "this$0");
+    paramFinderManagementUI.onBackPressed();
+    AppMethodBeat.o(346592);
+    return true;
+  }
+  
+  private static final void b(FinderManagementUI paramFinderManagementUI, View paramView)
+  {
+    AppMethodBeat.i(346610);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramFinderManagementUI);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/ui/FinderManagementUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFinderManagementUI, "this$0");
+    paramView = com.tencent.mm.plugin.finder.utils.a.GfO;
+    paramFinderManagementUI = paramFinderManagementUI.getContext();
+    s.s(paramFinderManagementUI, "context");
+    com.tencent.mm.plugin.finder.utils.a.ay((Context)paramFinderManagementUI, 3);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/ui/FinderManagementUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(346610);
+  }
+  
+  private static final void c(FinderManagementUI paramFinderManagementUI, View paramView)
+  {
+    AppMethodBeat.i(346618);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramFinderManagementUI);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/ui/FinderManagementUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFinderManagementUI, "this$0");
+    if (paramFinderManagementUI.FRp)
+    {
+      paramView = com.tencent.mm.plugin.finder.utils.a.GfO;
+      paramFinderManagementUI = paramFinderManagementUI.getContext();
+      s.s(paramFinderManagementUI, "context");
+      com.tencent.mm.plugin.finder.utils.a.az((Context)paramFinderManagementUI, 2);
+    }
+    for (;;)
+    {
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/ui/FinderManagementUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(346618);
+      return;
+      paramView = com.tencent.mm.plugin.finder.utils.a.GfO;
+      paramFinderManagementUI = paramFinderManagementUI.getContext();
+      s.s(paramFinderManagementUI, "context");
+      com.tencent.mm.plugin.finder.utils.a.ay((Context)paramFinderManagementUI, 2);
+    }
+  }
+  
+  private static final void d(FinderManagementUI paramFinderManagementUI, View paramView)
+  {
+    AppMethodBeat.i(346626);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramFinderManagementUI);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/ui/FinderManagementUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFinderManagementUI, "this$0");
+    paramView = new Intent();
+    paramView.setClass((Context)paramFinderManagementUI, FinderSettingPersonalizedUI.class);
+    paramFinderManagementUI = paramFinderManagementUI.getContext();
+    paramView = new com.tencent.mm.hellhoundlib.b.a().cG(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b(paramFinderManagementUI, paramView.aYi(), "com/tencent/mm/plugin/finder/ui/FinderManagementUI", "onCreate$lambda-4", "(Lcom/tencent/mm/plugin/finder/ui/FinderManagementUI;Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramFinderManagementUI.startActivity((Intent)paramView.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(paramFinderManagementUI, "com/tencent/mm/plugin/finder/ui/FinderManagementUI", "onCreate$lambda-4", "(Lcom/tencent/mm/plugin/finder/ui/FinderManagementUI;Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/ui/FinderManagementUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(346626);
+  }
+  
+  private static final void e(FinderManagementUI paramFinderManagementUI, View paramView)
+  {
+    AppMethodBeat.i(346634);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramFinderManagementUI);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/ui/FinderManagementUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFinderManagementUI, "this$0");
+    paramView = new Intent();
+    paramView.setClass((Context)paramFinderManagementUI, FinderSettingInteractiveInfoUI.class);
+    paramFinderManagementUI = paramFinderManagementUI.getContext();
+    paramView = new com.tencent.mm.hellhoundlib.b.a().cG(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b(paramFinderManagementUI, paramView.aYi(), "com/tencent/mm/plugin/finder/ui/FinderManagementUI", "onCreate$lambda-5", "(Lcom/tencent/mm/plugin/finder/ui/FinderManagementUI;Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramFinderManagementUI.startActivity((Intent)paramView.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(paramFinderManagementUI, "com/tencent/mm/plugin/finder/ui/FinderManagementUI", "onCreate$lambda-5", "(Lcom/tencent/mm/plugin/finder/ui/FinderManagementUI;Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/ui/FinderManagementUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(346634);
+  }
+  
+  public final void _$_clearFindViewByIdCache() {}
   
   public final int getLayoutId()
   {
-    return b.g.finder_self_management;
+    return e.f.finder_self_management;
   }
   
   public final Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(290338);
-    Set localSet = ak.setOf(k.class);
-    AppMethodBeat.o(290338);
+    AppMethodBeat.i(346723);
+    Set localSet = ar.setOf(new Class[] { l.a(ai.cz(az.class)), l.a(ai.cz(ay.class)) });
+    AppMethodBeat.o(346723);
     return localSet;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(290337);
+    AppMethodBeat.i(346717);
     super.onCreate(paramBundle);
-    setMMTitle(b.j.finder_jump_new_privacy);
-    setBackBtn((MenuItem.OnMenuItemClickListener)new a(this));
-    this.ArN = getIntent().getBooleanExtra("intent_status_from_privacy_to_video_setting", false);
-    this.ArJ = findViewById(b.f.not_see_him_group);
-    paramBundle = this.ArJ;
+    setMMTitle(e.h.finder_jump_new_privacy);
+    setBackBtn(new FinderManagementUI..ExternalSyntheticLambda0(this));
+    this.FRp = getIntent().getBooleanExtra("intent_status_from_privacy_to_video_setting", false);
+    this.FRj = findViewById(e.e.not_see_him_group);
+    paramBundle = this.FRj;
     if (paramBundle != null) {
-      paramBundle.setOnClickListener((View.OnClickListener)new b(this));
+      paramBundle.setOnClickListener(new FinderManagementUI..ExternalSyntheticLambda5(this));
     }
-    this.ArK = findViewById(b.f.no_see_account_group);
-    paramBundle = this.ArK;
+    this.FRk = findViewById(e.e.no_see_account_group);
+    paramBundle = this.FRk;
     if (paramBundle != null) {
-      paramBundle.setOnClickListener((View.OnClickListener)new c(this));
+      paramBundle.setOnClickListener(new FinderManagementUI..ExternalSyntheticLambda3(this));
     }
-    this.ArL = findViewById(b.f.no_see_mine_account_group);
-    paramBundle = this.ArL;
+    this.FRl = findViewById(e.e.no_see_mine_account_group);
+    paramBundle = this.FRl;
     if (paramBundle != null) {
-      paramBundle.setOnClickListener((View.OnClickListener)new d(this));
+      paramBundle.setOnClickListener(new FinderManagementUI..ExternalSyntheticLambda1(this));
     }
-    this.ArM = findViewById(b.f.live_role_group);
-    this.ArO = findViewById(b.f.finder_title);
-    if (this.ArN)
+    this.FRm = findViewById(e.e.personalized_setting_group);
+    paramBundle = this.FRm;
+    if (paramBundle != null) {
+      paramBundle.setOnClickListener(new FinderManagementUI..ExternalSyntheticLambda2(this));
+    }
+    this.FRn = findViewById(e.e.interactive_info_group);
+    paramBundle = this.FRn;
+    if (paramBundle != null) {
+      paramBundle.setOnClickListener(new FinderManagementUI..ExternalSyntheticLambda4(this));
+    }
+    this.FRo = findViewById(e.e.live_role_group);
+    this.FRq = findViewById(e.e.finder_title);
+    if (this.FRp)
     {
-      paramBundle = this.ArK;
+      paramBundle = this.FRk;
       if (paramBundle != null) {
         paramBundle.setVisibility(8);
       }
-      paramBundle = this.ArM;
+      paramBundle = this.FRo;
       if (paramBundle != null) {
         paramBundle.setVisibility(8);
       }
-      paramBundle = this.ArO;
-      if (paramBundle != null)
-      {
+      paramBundle = this.FRq;
+      if (paramBundle != null) {
         paramBundle.setVisibility(8);
-        AppMethodBeat.o(290337);
-        return;
+      }
+      paramBundle = this.FRm;
+      if (paramBundle != null) {
+        paramBundle.setVisibility(8);
+      }
+      paramBundle = this.FRn;
+      if (paramBundle != null) {
+        paramBundle.setVisibility(8);
       }
     }
-    AppMethodBeat.o(290337);
+    AppMethodBeat.o(346717);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -126,127 +239,37 @@ public final class FinderManagementUI
   
   public final void setFinderTitle(View paramView)
   {
-    this.ArO = paramView;
+    this.FRq = paramView;
+  }
+  
+  public final void setInteractiveInfo(View paramView)
+  {
+    this.FRn = paramView;
   }
   
   public final void setLiveRoleGroup(View paramView)
   {
-    this.ArM = paramView;
+    this.FRo = paramView;
   }
   
   public final void setNotSeeAccount(View paramView)
   {
-    this.ArK = paramView;
+    this.FRk = paramView;
   }
   
   public final void setNotSeeHim(View paramView)
   {
-    this.ArJ = paramView;
+    this.FRj = paramView;
   }
   
   public final void setNotSeeMine(View paramView)
   {
-    this.ArL = paramView;
+    this.FRl = paramView;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class a
-    implements MenuItem.OnMenuItemClickListener
+  public final void setPersonalizeSetting(View paramView)
   {
-    a(FinderManagementUI paramFinderManagementUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(269106);
-      this.ArP.onBackPressed();
-      AppMethodBeat.o(269106);
-      return true;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class b
-    implements View.OnClickListener
-  {
-    b(FinderManagementUI paramFinderManagementUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(291801);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/ui/FinderManagementUI$onCreate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      if (this.ArP.ArN)
-      {
-        paramView = com.tencent.mm.plugin.finder.utils.a.ACH;
-        paramView = this.ArP.getContext();
-        p.j(paramView, "context");
-        com.tencent.mm.plugin.finder.utils.a.ap((Context)paramView, 1);
-      }
-      for (;;)
-      {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderManagementUI$onCreate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(291801);
-        return;
-        paramView = com.tencent.mm.plugin.finder.utils.a.ACH;
-        paramView = this.ArP.getContext();
-        p.j(paramView, "context");
-        com.tencent.mm.plugin.finder.utils.a.an((Context)paramView, 1);
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class c
-    implements View.OnClickListener
-  {
-    c(FinderManagementUI paramFinderManagementUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(285505);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/ui/FinderManagementUI$onCreate$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = com.tencent.mm.plugin.finder.utils.a.ACH;
-      paramView = this.ArP.getContext();
-      p.j(paramView, "context");
-      com.tencent.mm.plugin.finder.utils.a.an((Context)paramView, 3);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderManagementUI$onCreate$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(285505);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class d
-    implements View.OnClickListener
-  {
-    d(FinderManagementUI paramFinderManagementUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(278392);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/ui/FinderManagementUI$onCreate$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      if (this.ArP.ArN)
-      {
-        paramView = com.tencent.mm.plugin.finder.utils.a.ACH;
-        paramView = this.ArP.getContext();
-        p.j(paramView, "context");
-        com.tencent.mm.plugin.finder.utils.a.ap((Context)paramView, 2);
-      }
-      for (;;)
-      {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderManagementUI$onCreate$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(278392);
-        return;
-        paramView = com.tencent.mm.plugin.finder.utils.a.ACH;
-        paramView = this.ArP.getContext();
-        p.j(paramView, "context");
-        com.tencent.mm.plugin.finder.utils.a.an((Context)paramView, 2);
-      }
-    }
+    this.FRm = paramView;
   }
 }
 

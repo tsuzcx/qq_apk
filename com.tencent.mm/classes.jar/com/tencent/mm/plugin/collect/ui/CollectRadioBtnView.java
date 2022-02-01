@@ -10,13 +10,13 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wxpay.a.f;
 import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.ui.ad;
+import com.tencent.mm.ui.af;
 
 public class CollectRadioBtnView
   extends LinearLayout
 {
-  private TextView pPT;
-  private ImageView ubg;
+  private TextView sUt;
+  private ImageView xey;
   
   public CollectRadioBtnView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,23 +37,23 @@ public class CollectRadioBtnView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(64194);
-    paramContext = ad.kS(paramContext).inflate(a.g.collect_bill_radio_btn, this);
-    this.ubg = ((ImageView)paramContext.findViewById(a.f.radio_iv));
-    this.pPT = ((TextView)paramContext.findViewById(a.f.title_tv));
+    paramContext = af.mU(paramContext).inflate(a.g.collect_bill_radio_btn, this);
+    this.xey = ((ImageView)paramContext.findViewById(a.f.radio_iv));
+    this.sUt = ((TextView)paramContext.findViewById(a.f.title_tv));
     AppMethodBeat.o(64194);
   }
   
   public void setRadioSrc(int paramInt)
   {
     AppMethodBeat.i(64196);
-    this.ubg.setImageResource(paramInt);
+    this.xey.setImageResource(paramInt);
     AppMethodBeat.o(64196);
   }
   
   public void setTitleText(String paramString)
   {
     AppMethodBeat.i(64195);
-    this.pPT.setText(paramString);
+    this.sUt.setText(paramString);
     AppMethodBeat.o(64195);
   }
 }

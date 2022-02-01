@@ -23,16 +23,23 @@ import com.tencent.kinda.framework.widget.tools.KindaContext;
 import com.tencent.kinda.framework.widget.tools.ResourcesUtils;
 import com.tencent.kinda.gen.DynamicColor;
 import com.tencent.kinda.gen.IUIPagePlatformFuncDelegate;
+import com.tencent.kinda.gen.ReportEvent;
+import com.tencent.kinda.gen.ViewReportStruct;
 import com.tencent.kinda.gen.VoidBoolI32Callback;
 import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.service.r;
+import com.tencent.mm.plugin.appbrand.service.t;
+import com.tencent.mm.plugin.wxpayreport.a.b.a;
+import com.tencent.mm.plugin.wxpayreport.j.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMFragment;
+import com.tencent.mm.ui.MMFragmentActivity;
 import com.tencent.mm.ui.c;
 import com.tencent.mm.wallet_core.keyboard.WcPayKeyboard;
+import com.tencent.mm.wallet_core.ui.l;
+import com.tencent.threadpool.i;
 import java.lang.ref.WeakReference;
 
 public class UIPagePlatformFuncDelegateImpl
@@ -52,12 +59,12 @@ public class UIPagePlatformFuncDelegateImpl
   
   public UIPagePlatformFuncDelegateImpl(MMFragment paramMMFragment)
   {
-    AppMethodBeat.i(262968);
+    AppMethodBeat.i(226391);
     this.topRightBtnResId = -1;
     this.mmTitle = "";
     this.mTipDialog = null;
     this.weakFragment = new WeakReference(paramMMFragment);
-    AppMethodBeat.o(262968);
+    AppMethodBeat.o(226391);
   }
   
   private void recreateTopRightBtn()
@@ -112,6 +119,39 @@ public class UIPagePlatformFuncDelegateImpl
     AppMethodBeat.o(18603);
   }
   
+  public void addReportInfo(ViewReportStruct paramViewReportStruct)
+  {
+    AppMethodBeat.i(226464);
+    BaseFragment localBaseFragment = (BaseFragment)this.weakFragment.get();
+    if (localBaseFragment != null)
+    {
+      b.a locala = new b.a();
+      locala.viewId = paramViewReportStruct.mViewId;
+      locala.XJw = paramViewReportStruct.mCheckViewExposure;
+      locala.XJx = paramViewReportStruct.mCheckBtnNoResponse;
+      locala.XJy = paramViewReportStruct.mCheckColor;
+      locala.bgColor = paramViewReportStruct.mBgColor;
+      locala.XJz = R.id.kinda_main_container;
+      locala.EzS = ((MMFragmentActivity)localBaseFragment.getActivity());
+      if (paramViewReportStruct.mEvent == ReportEvent.CUSTOM)
+      {
+        localBaseFragment.addCustomReportEvent(paramViewReportStruct.mCustomKey, locala.iFG());
+        AppMethodBeat.o(226464);
+        return;
+      }
+      if (paramViewReportStruct.mEvent == ReportEvent.CREATE)
+      {
+        localBaseFragment.addLifecycleReportEvent(j.b.XJa, locala.iFG());
+        AppMethodBeat.o(226464);
+        return;
+      }
+      if (paramViewReportStruct.mEvent == ReportEvent.RESUME) {
+        localBaseFragment.addLifecycleReportEvent(j.b.XJc, locala.iFG());
+      }
+    }
+    AppMethodBeat.o(226464);
+  }
+  
   public void beginIgnoringInteractionEvents()
   {
     AppMethodBeat.i(18598);
@@ -128,23 +168,23 @@ public class UIPagePlatformFuncDelegateImpl
   
   public void closeUI(boolean paramBoolean)
   {
-    AppMethodBeat.i(262972);
+    AppMethodBeat.i(226416);
     Object localObject = (MMFragment)this.weakFragment.get();
     if (localObject == null)
     {
       Log.i("UIPagePlatformFuncDelegateImpl", "activity == null.");
-      AppMethodBeat.o(262972);
+      AppMethodBeat.o(226416);
       return;
     }
     if ((localObject instanceof BaseFragment))
     {
       localObject = (BaseFragment)localObject;
       if ((((BaseFragment)localObject).isTinyApp) && (((BaseFragment)localObject).tinyAppUserName != null)) {
-        ((r)com.tencent.mm.kernel.h.ae(r.class)).ex(((BaseFragment)localObject).tinyAppUserName, "");
+        ((t)com.tencent.mm.kernel.h.ax(t.class)).M(((BaseFragment)localObject).tinyAppUserName, "", -1);
       }
       ((BaseFragment)localObject).popFragment();
     }
-    AppMethodBeat.o(262972);
+    AppMethodBeat.o(226416);
   }
   
   public void endEditing()
@@ -200,16 +240,16 @@ public class UIPagePlatformFuncDelegateImpl
   
   protected View getKBLayout()
   {
-    AppMethodBeat.i(262985);
+    AppMethodBeat.i(226438);
     Object localObject = (MMFragment)this.weakFragment.get();
     if (localObject == null)
     {
       Log.i("UIPagePlatformFuncDelegateImpl", "activity == null.");
-      AppMethodBeat.o(262985);
+      AppMethodBeat.o(226438);
       return null;
     }
     localObject = ((MMFragment)localObject).findViewById(R.id.tenpay_keyboard_layout);
-    AppMethodBeat.o(262985);
+    AppMethodBeat.o(226438);
     return localObject;
   }
   
@@ -230,34 +270,34 @@ public class UIPagePlatformFuncDelegateImpl
   
   protected WcPayKeyboard getWcPayKeyboard()
   {
-    AppMethodBeat.i(262987);
+    AppMethodBeat.i(226443);
     Object localObject = (MMFragment)this.weakFragment.get();
     if (localObject == null)
     {
       Log.i("UIPagePlatformFuncDelegateImpl", "activity == null.");
-      AppMethodBeat.o(262987);
+      AppMethodBeat.o(226443);
       return null;
     }
     localObject = (WcPayKeyboard)((MMFragment)localObject).findViewById(R.id.wc_pay_keyboard);
-    AppMethodBeat.o(262987);
+    AppMethodBeat.o(226443);
     return localObject;
   }
   
   public void onKeyboardShow(final boolean paramBoolean, final int paramInt)
   {
-    AppMethodBeat.i(262990);
+    AppMethodBeat.i(226451);
     if (this.onKeyboardShowCallback != null) {
-      com.tencent.e.h.ZvG.n(new Runnable()
+      com.tencent.threadpool.h.ahAA.o(new Runnable()
       {
         public void run()
         {
-          AppMethodBeat.i(264046);
+          AppMethodBeat.i(226428);
           UIPagePlatformFuncDelegateImpl.this.onKeyboardShowCallback.call(paramBoolean, paramInt);
-          AppMethodBeat.o(264046);
+          AppMethodBeat.o(226428);
         }
       }, 100L);
     }
-    AppMethodBeat.o(262990);
+    AppMethodBeat.o(226451);
   }
   
   public void refreshNavigationBar() {}
@@ -371,12 +411,12 @@ public class UIPagePlatformFuncDelegateImpl
   
   public void setWindowAdjustUnspecified(boolean paramBoolean)
   {
-    AppMethodBeat.i(262996);
+    AppMethodBeat.i(226460);
     Object localObject = (MMFragment)this.weakFragment.get();
     if (localObject == null)
     {
       Log.i("UIPagePlatformFuncDelegateImpl", "activity == null.");
-      AppMethodBeat.o(262996);
+      AppMethodBeat.o(226460);
       return;
     }
     if (((MMFragment)localObject).getActivity().getWindow() != null)
@@ -384,20 +424,20 @@ public class UIPagePlatformFuncDelegateImpl
       if (paramBoolean)
       {
         ((MMFragment)localObject).getActivity().getWindow().setSoftInputMode(19);
-        this.mAndroidBug5497Workaround = c.bh(((MMFragment)localObject).getActivity());
-        AppMethodBeat.o(262996);
+        this.mAndroidBug5497Workaround = c.bM(((MMFragment)localObject).getActivity());
+        AppMethodBeat.o(226460);
         return;
       }
       ((MMFragment)localObject).getActivity().getWindow().setSoftInputMode(35);
       if (this.mAndroidBug5497Workaround != null)
       {
         localObject = this.mAndroidBug5497Workaround;
-        ((c)localObject).VQp.getViewTreeObserver().removeOnGlobalLayoutListener(((c)localObject).qc);
-        ((c)localObject).VQr.height = -1;
-        ((c)localObject).VQp.requestLayout();
+        ((c)localObject).adux.getViewTreeObserver().removeOnGlobalLayoutListener(((c)localObject).qZ);
+        ((c)localObject).aduz.height = -1;
+        ((c)localObject).adux.requestLayout();
       }
     }
-    AppMethodBeat.o(262996);
+    AppMethodBeat.o(226460);
   }
   
   public void startLoading(String paramString, boolean paramBoolean)
@@ -416,15 +456,15 @@ public class UIPagePlatformFuncDelegateImpl
       AppMethodBeat.o(18607);
       return;
     }
-    this.mTipDialog = com.tencent.mm.wallet_core.ui.i.c(paramString, paramString.getString(R.string.wallet_pay_loading), true, new DialogInterface.OnCancelListener()
+    this.mTipDialog = l.c(paramString, paramString.getString(R.string.wallet_pay_loading), true, new DialogInterface.OnCancelListener()
     {
       public void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
-        AppMethodBeat.i(265237);
+        AppMethodBeat.i(226426);
         if ((UIPagePlatformFuncDelegateImpl.this.mTipDialog != null) && (UIPagePlatformFuncDelegateImpl.this.mTipDialog.isShowing())) {
           UIPagePlatformFuncDelegateImpl.this.mTipDialog.dismiss();
         }
-        AppMethodBeat.o(265237);
+        AppMethodBeat.o(226426);
       }
     });
     this.mTipDialog.setCancelable(false);
@@ -439,10 +479,35 @@ public class UIPagePlatformFuncDelegateImpl
     }
     AppMethodBeat.o(18608);
   }
+  
+  public void triggerReport(ReportEvent paramReportEvent, String paramString)
+  {
+    AppMethodBeat.i(226468);
+    BaseFragment localBaseFragment = (BaseFragment)this.weakFragment.get();
+    if (localBaseFragment != null)
+    {
+      if (paramReportEvent == ReportEvent.CUSTOM)
+      {
+        localBaseFragment.triggerReport(j.b.XJg, paramString);
+        AppMethodBeat.o(226468);
+        return;
+      }
+      if (paramReportEvent == ReportEvent.CREATE)
+      {
+        localBaseFragment.triggerReport(j.b.XJa, "");
+        AppMethodBeat.o(226468);
+        return;
+      }
+      if (paramReportEvent == ReportEvent.RESUME) {
+        localBaseFragment.triggerReport(j.b.XJc, "");
+      }
+    }
+    AppMethodBeat.o(226468);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.kinda.framework.app.UIPagePlatformFuncDelegateImpl
  * JD-Core Version:    0.7.0.1
  */

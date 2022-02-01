@@ -9,7 +9,6 @@ import com.google.android.gms.common.GoogleApiAvailabilityLight;
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.stats.ConnectionTracker;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -17,7 +16,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
-@VisibleForTesting
 public final class zzii
   extends zzhh
 {
@@ -184,7 +182,6 @@ public final class zzii
     AppMethodBeat.o(1809);
   }
   
-  @VisibleForTesting
   protected final void zza(zzey paramzzey)
   {
     AppMethodBeat.i(1815);
@@ -196,7 +193,6 @@ public final class zzii
     AppMethodBeat.o(1815);
   }
   
-  @VisibleForTesting
   final void zza(zzey paramzzey, AbstractSafeParcelable paramAbstractSafeParcelable, zzdz paramzzdz)
   {
     AppMethodBeat.i(1802);
@@ -502,7 +498,7 @@ public final class zzii
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzii
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.base.c;
 import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
-import com.tencent.mm.plugin.appbrand.jsapi.g;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
@@ -14,7 +14,7 @@ public final class p
   private static final int CTRL_INDEX = 330;
   public static final String NAME = "removeCamera";
   
-  public final int K(JSONObject paramJSONObject)
+  public final int V(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(137481);
     int i = paramJSONObject.optInt("cameraId", 0);
@@ -22,10 +22,10 @@ public final class p
     return i;
   }
   
-  public final boolean b(g paramg, int paramInt, View paramView, JSONObject paramJSONObject)
+  public final boolean b(h paramh, int paramInt, View paramView, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(137482);
-    super.b(paramg, paramInt, paramView, paramJSONObject);
+    super.b(paramh, paramInt, paramView, paramJSONObject);
     Log.i("MicroMsg.JsApiRemoveCamera", "onRemoveView cameraId=%d", new Object[] { Integer.valueOf(paramInt) });
     if (!(paramView instanceof CoverViewContainer))
     {
@@ -33,7 +33,7 @@ public final class p
       AppMethodBeat.o(137482);
       return false;
     }
-    paramView = (View)((CoverViewContainer)paramView).aA(View.class);
+    paramView = (View)((CoverViewContainer)paramView).aT(View.class);
     if ((paramView == null) || (!(paramView instanceof f)))
     {
       Log.w("MicroMsg.JsApiRemoveCamera", "the camera view(%s) is null", new Object[] { Integer.valueOf(paramInt) });
@@ -41,10 +41,10 @@ public final class p
       return false;
     }
     paramView = (f)paramView;
-    paramg.b(paramView);
-    paramg.b(paramView);
-    paramg.b(paramView);
-    a.a.bRr().O(paramView.getCameraId(), true);
+    paramh.b(paramView);
+    paramh.b(paramView);
+    paramh.b(paramView);
+    a.a.cry().ad(paramView.getCameraId(), true);
     paramView.release();
     AppMethodBeat.o(137482);
     return true;
@@ -52,7 +52,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.camera.p
  * JD-Core Version:    0.7.0.1
  */

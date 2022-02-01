@@ -12,11 +12,9 @@ import com.google.android.gms.common.util.DeviceProperties;
 import com.google.android.gms.common.wrappers.PackageManagerWrapper;
 import com.google.android.gms.common.wrappers.Wrappers;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import javax.annotation.concurrent.GuardedBy;
 
 public final class ConnectionErrorMessages
 {
-  @GuardedBy("sCache")
   private static final g<String, String> zzse;
   
   static
@@ -315,7 +313,7 @@ public final class ConnectionErrorMessages
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.ConnectionErrorMessages
  * JD-Core Version:    0.7.0.1
  */

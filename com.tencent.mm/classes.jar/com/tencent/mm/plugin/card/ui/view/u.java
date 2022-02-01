@@ -12,23 +12,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.a.b;
 import com.tencent.mm.plugin.card.a.d;
 import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.plugin.card.d.l;
+import com.tencent.mm.plugin.card.c.l;
 import com.tencent.mm.plugin.card.ui.n;
-import com.tencent.mm.protocal.protobuf.acg;
-import com.tencent.mm.protocal.protobuf.ua;
-import com.tencent.mm.protocal.protobuf.vb;
+import com.tencent.mm.protocal.protobuf.aek;
+import com.tencent.mm.protocal.protobuf.vr;
+import com.tencent.mm.protocal.protobuf.ws;
 import com.tencent.mm.ui.MMActivity;
 
 public final class u
   extends i
 {
-  private View tGo;
+  private View wJN;
   
-  public final void cKY()
+  public final void doE()
   {
     AppMethodBeat.i(113708);
-    if (this.tGo != null) {
-      this.tGo.setVisibility(8);
+    if (this.wJN != null) {
+      this.wJN.setVisibility(8);
     }
     AppMethodBeat.o(113708);
   }
@@ -38,35 +38,35 @@ public final class u
   public final void update()
   {
     AppMethodBeat.i(113707);
-    if (this.tGo == null) {
-      this.tGo = ((ViewStub)findViewById(a.d.tcZ)).inflate();
+    if (this.wJN == null) {
+      this.wJN = ((ViewStub)findViewById(a.d.whn)).inflate();
     }
-    b localb = this.tFT.cIS();
-    MMActivity localMMActivity = this.tFT.cIV();
-    Object localObject = localb.cGt().SdM;
+    b localb = this.wJs.dmk();
+    MMActivity localMMActivity = this.wJs.dmn();
+    Object localObject = localb.djL().ZbG;
     TextView localTextView1;
     TextView localTextView2;
     LinearLayout localLinearLayout;
     LinearLayout.LayoutParams localLayoutParams1;
     LinearLayout.LayoutParams localLayoutParams2;
-    if (this.tGo != null)
+    if (this.wJN != null)
     {
-      localTextView1 = (TextView)this.tGo.findViewById(a.d.tda);
-      localTextView1.setText(((acg)localObject).title);
-      localTextView1.setTextColor(l.arR(localb.cGs().lmL));
-      localTextView2 = (TextView)this.tGo.findViewById(a.d.tcY);
-      localLinearLayout = (LinearLayout)this.tGo.findViewById(a.d.tdJ);
+      localTextView1 = (TextView)this.wJN.findViewById(a.d.who);
+      localTextView1.setText(((aek)localObject).title);
+      localTextView1.setTextColor(l.alv(localb.djK().nRQ));
+      localTextView2 = (TextView)this.wJN.findViewById(a.d.whm);
+      localLinearLayout = (LinearLayout)this.wJN.findViewById(a.d.whX);
       localLayoutParams1 = (LinearLayout.LayoutParams)localLinearLayout.getLayoutParams();
-      if (!localb.cFY()) {
-        break label428;
+      if (!localb.djq()) {
+        break label422;
       }
       localLayoutParams2 = (LinearLayout.LayoutParams)localTextView1.getLayoutParams();
-      if (TextUtils.isEmpty(((acg)localObject).tnZ)) {
-        break label403;
+      if (TextUtils.isEmpty(((aek)localObject).wsA)) {
+        break label397;
       }
-      localTextView2.setText(((acg)localObject).tnZ);
+      localTextView2.setText(((aek)localObject).wsA);
       localTextView2.setVisibility(0);
-      localLayoutParams1.height = localMMActivity.getResources().getDimensionPixelOffset(a.b.sZO);
+      localLayoutParams1.height = localMMActivity.getResources().getDimensionPixelOffset(a.b.wdV);
       localLayoutParams2.bottomMargin = localMMActivity.getResources().getDimensionPixelSize(a.b.BasicPaddingSize);
       localObject = (LinearLayout.LayoutParams)localTextView2.getLayoutParams();
       ((LinearLayout.LayoutParams)localObject).topMargin = localMMActivity.getResources().getDimensionPixelSize(a.b.BasicPaddingSize);
@@ -75,35 +75,35 @@ public final class u
     }
     for (;;)
     {
-      localLayoutParams2.height = localMMActivity.getResources().getDimensionPixelSize(a.b.sZQ);
+      localLayoutParams2.height = localMMActivity.getResources().getDimensionPixelSize(a.b.wdX);
       localTextView1.setLayoutParams(localLayoutParams2);
       localTextView1.invalidate();
-      int i = localMMActivity.getResources().getDimensionPixelSize(a.b.sZS);
-      localTextView1.setBackgroundDrawable(l.g(localMMActivity, localb.cGs().lmL, i));
-      localTextView1.setTextColor(l.ap(localMMActivity, localb.cGs().lmL));
+      int i = localMMActivity.getResources().getDimensionPixelSize(a.b.wdZ);
+      localTextView1.setBackgroundDrawable(l.g(localMMActivity, localb.djK().nRQ, i));
+      localTextView1.setTextColor(l.aq(localMMActivity, localb.djK().nRQ));
       localLinearLayout.setBackgroundDrawable(null);
-      localTextView1.setOnClickListener(this.tFT.cIW());
+      localTextView1.setOnClickListener(this.wJs.dmo());
       localLinearLayout.setLayoutParams(localLayoutParams1);
       localLinearLayout.invalidate();
-      this.tGo.invalidate();
-      if (localb.cFY()) {
+      this.wJN.invalidate();
+      if (localb.djq()) {
         localLinearLayout.getLayoutParams();
       }
       AppMethodBeat.o(113707);
       return;
-      label403:
+      label397:
       localTextView2.setVisibility(8);
-      localLayoutParams1.height = localMMActivity.getResources().getDimensionPixelOffset(a.b.sZP);
+      localLayoutParams1.height = localMMActivity.getResources().getDimensionPixelOffset(a.b.wdW);
     }
-    label428:
-    if (!TextUtils.isEmpty(((acg)localObject).tnZ))
+    label422:
+    if (!TextUtils.isEmpty(((aek)localObject).wsA))
     {
-      localTextView2.setText(((acg)localObject).tnZ);
+      localTextView2.setText(((aek)localObject).wsA);
       localTextView2.setVisibility(0);
     }
-    for (localLayoutParams1.height = localMMActivity.getResources().getDimensionPixelOffset(a.b.sZX);; localLayoutParams1.height = localMMActivity.getResources().getDimensionPixelOffset(a.b.sZY))
+    for (localLayoutParams1.height = localMMActivity.getResources().getDimensionPixelOffset(a.b.wee);; localLayoutParams1.height = localMMActivity.getResources().getDimensionPixelOffset(a.b.wef))
     {
-      localLinearLayout.setOnClickListener(this.tFT.cIW());
+      localLinearLayout.setOnClickListener(this.wJs.dmo());
       break;
       localTextView2.setVisibility(8);
     }
@@ -111,7 +111,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.view.u
  * JD-Core Version:    0.7.0.1
  */

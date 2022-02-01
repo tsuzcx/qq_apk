@@ -5,16 +5,24 @@ import java.util.Arrays;
 
 public final class g
 {
-  private int aNf;
-  public final f[] bof;
+  private int cHb;
+  public final f[] dhY;
   public final int length;
   
   public g(f... paramVarArgs)
   {
     AppMethodBeat.i(92949);
-    this.bof = paramVarArgs;
+    this.dhY = paramVarArgs;
     this.length = paramVarArgs.length;
     AppMethodBeat.o(92949);
+  }
+  
+  public final f[] Uf()
+  {
+    AppMethodBeat.i(92950);
+    f[] arrayOff = (f[])this.dhY.clone();
+    AppMethodBeat.o(92950);
+    return arrayOff;
   }
   
   public final boolean equals(Object paramObject)
@@ -31,7 +39,7 @@ public final class g
       return false;
     }
     paramObject = (g)paramObject;
-    boolean bool = Arrays.equals(this.bof, paramObject.bof);
+    boolean bool = Arrays.equals(this.dhY, paramObject.dhY);
     AppMethodBeat.o(92952);
     return bool;
   }
@@ -39,20 +47,12 @@ public final class g
   public final int hashCode()
   {
     AppMethodBeat.i(92951);
-    if (this.aNf == 0) {
-      this.aNf = (Arrays.hashCode(this.bof) + 527);
+    if (this.cHb == 0) {
+      this.cHb = (Arrays.hashCode(this.dhY) + 527);
     }
-    int i = this.aNf;
+    int i = this.cHb;
     AppMethodBeat.o(92951);
     return i;
-  }
-  
-  public final f[] uC()
-  {
-    AppMethodBeat.i(92950);
-    f[] arrayOff = (f[])this.bof.clone();
-    AppMethodBeat.o(92950);
-    return arrayOff;
   }
 }
 

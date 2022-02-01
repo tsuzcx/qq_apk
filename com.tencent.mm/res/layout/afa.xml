@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dg2" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_marginTop="28.0dip" android:layout_marginRight="20.0dip" android:src="@raw/icons_filled_refresh" android:layout_alignParentRight="true" app:iconColor="@color/BW_100_Alpha_0_5" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/dg4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="84.0dip" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cw" android:layout_below="@id/dg4">
+        <TextView android:textSize="14.0dip" android:textColor="@color/sz" android:id="@id/dg7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/df" android:layout_alignParentTop="true" android:layout_marginStart="@dimen/d0" />
+        <com.tencent.mm.ui.widget.seekbar.BothSidesSeekBar android:id="@id/dg5" android:background="@null" android:focusable="true" android:layout_width="fill_parent" android:layout_height="64.0dip" android:maxHeight="@dimen/bv" android:max="200" android:thumb="@drawable/y4" android:layout_centerHorizontal="true" android:importantForAccessibility="yes" android:paddingStart="@dimen/df" android:paddingEnd="@dimen/df" android:layout_marginStart="@dimen/d4" android:layout_marginEnd="@dimen/d4" android:splitTrack="false" />
+        <ImageView android:id="@id/dg6" android:layout_width="@dimen/df" android:layout_height="64.0dip" android:src="@drawable/y4" android:layout_alignLeft="@id/dg5" />
+    </RelativeLayout>
+</RelativeLayout>

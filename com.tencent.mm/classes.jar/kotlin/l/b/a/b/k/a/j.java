@@ -1,98 +1,89 @@
 package kotlin.l.b.a.b.k.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Set;
-import kotlin.a.ak;
-import kotlin.g.a.b;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l.b.a.b.a.g;
-import kotlin.l.b.a.b.a.g.a;
-import kotlin.l.b.a.b.b.e;
-import kotlin.l.b.a.b.f.a;
-import kotlin.l.b.a.b.f.c;
+import java.util.List;
+import kotlin.a.ab;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.b.ae;
+import kotlin.l.b.a.b.b.ag;
+import kotlin.l.b.a.b.b.ah;
+import kotlin.l.b.a.b.b.ai;
+import kotlin.l.b.a.b.l.m;
 
 public final class j
 {
-  private static final Set<a> abnh;
-  public static final b abni;
-  private final l aaYm;
-  private final b<a, e> abng;
+  public final ag aiBS;
+  public final m aiBu;
+  public final ae aiFr;
+  public final q aiRO;
+  private final kotlin.l.b.a.b.j.f.a aiRR;
+  public final kotlin.l.b.a.b.c.a.c aiRV;
+  public final kotlin.l.b.a.b.m.a.l aiSb;
+  public final k ajlX;
+  final g ajlY;
+  public final c<kotlin.l.b.a.b.b.a.c, kotlin.l.b.a.b.j.b.g<?>> ajlZ;
+  final ai ajma;
+  final u ajmb;
+  final r ajmc;
+  public final Iterable<kotlin.l.b.a.b.b.b.b> ajmd;
+  final i ajme;
+  public final kotlin.l.b.a.b.b.b.a ajmf;
+  public final kotlin.l.b.a.b.b.b.c ajmg;
+  public final kotlin.l.b.a.b.h.g ajmh;
+  final kotlin.l.b.a.b.b.b.e ajmi;
+  public final h ajmj;
   
-  static
+  private j(m paramm, ae paramae, k paramk, g paramg, c<? extends kotlin.l.b.a.b.b.a.c, ? extends kotlin.l.b.a.b.j.b.g<?>> paramc, ai paramai, u paramu, q paramq, kotlin.l.b.a.b.c.a.c paramc1, r paramr, Iterable<? extends kotlin.l.b.a.b.b.b.b> paramIterable, ag paramag, i parami, kotlin.l.b.a.b.b.b.a parama, kotlin.l.b.a.b.b.b.c paramc2, kotlin.l.b.a.b.h.g paramg1, kotlin.l.b.a.b.m.a.l paraml, kotlin.l.b.a.b.j.f.a parama1, kotlin.l.b.a.b.b.b.e parame)
   {
-    AppMethodBeat.i(60299);
-    abni = new b((byte)0);
-    abnh = ak.setOf(a.p(g.aaFI.aaFO.iND()));
-    AppMethodBeat.o(60299);
+    AppMethodBeat.i(192293);
+    this.aiBu = paramm;
+    this.aiFr = paramae;
+    this.ajlX = paramk;
+    this.ajlY = paramg;
+    this.ajlZ = paramc;
+    this.ajma = paramai;
+    this.ajmb = paramu;
+    this.aiRO = paramq;
+    this.aiRV = paramc1;
+    this.ajmc = paramr;
+    this.ajmd = paramIterable;
+    this.aiBS = paramag;
+    this.ajme = parami;
+    this.ajmf = parama;
+    this.ajmg = paramc2;
+    this.ajmh = paramg1;
+    this.aiSb = paraml;
+    this.aiRR = parama1;
+    this.ajmi = parame;
+    this.ajmj = new h(this);
+    AppMethodBeat.o(192293);
   }
   
-  public j(l paraml)
+  public final l a(ah paramah, kotlin.l.b.a.b.e.b.c paramc, kotlin.l.b.a.b.e.b.g paramg, kotlin.l.b.a.b.e.b.i parami, kotlin.l.b.a.b.e.b.a parama, kotlin.l.b.a.b.k.a.b.g paramg1)
   {
-    AppMethodBeat.i(60298);
-    this.aaYm = paraml;
-    this.abng = ((b)this.aaYm.aaFH.al((b)new c(this)));
-    AppMethodBeat.o(60298);
+    AppMethodBeat.i(60304);
+    s.u(paramah, "descriptor");
+    s.u(paramc, "nameResolver");
+    s.u(paramg, "typeTable");
+    s.u(parami, "versionRequirementTable");
+    s.u(parama, "metadataVersion");
+    paramah = new l(this, paramc, (kotlin.l.b.a.b.b.l)paramah, paramg, parami, parama, paramg1, null, (List)ab.aivy);
+    AppMethodBeat.o(60304);
+    return paramah;
   }
   
-  public final e a(a parama, h paramh)
+  public final kotlin.l.b.a.b.b.e i(kotlin.l.b.a.b.f.b paramb)
   {
-    AppMethodBeat.i(60296);
-    p.k(parama, "classId");
-    parama = (e)this.abng.invoke(new a(parama, paramh));
-    AppMethodBeat.o(60296);
-    return parama;
-  }
-  
-  static final class a
-  {
-    final a aaId;
-    final h abnj;
-    
-    public a(a parama, h paramh)
-    {
-      AppMethodBeat.i(60294);
-      this.aaId = parama;
-      this.abnj = paramh;
-      AppMethodBeat.o(60294);
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      AppMethodBeat.i(60292);
-      if (((paramObject instanceof a)) && (p.h(this.aaId, ((a)paramObject).aaId)))
-      {
-        AppMethodBeat.o(60292);
-        return true;
-      }
-      AppMethodBeat.o(60292);
-      return false;
-    }
-    
-    public final int hashCode()
-    {
-      AppMethodBeat.i(60293);
-      int i = this.aaId.hashCode();
-      AppMethodBeat.o(60293);
-      return i;
-    }
-  }
-  
-  public static final class b {}
-  
-  static final class c
-    extends q
-    implements b<j.a, e>
-  {
-    c(j paramj)
-    {
-      super();
-    }
+    AppMethodBeat.i(60303);
+    s.u(paramb, "classId");
+    paramb = h.a(this.ajmj, paramb);
+    AppMethodBeat.o(60303);
+    return paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.k.a.j
  * JD-Core Version:    0.7.0.1
  */

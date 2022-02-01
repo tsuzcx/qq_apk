@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.provider.Settings;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
+import com.tencent.mm.br.c;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.plugin.comm.c.h;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -22,12 +22,12 @@ final class RequestFloatWindowPermissionDialog$2
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(151878);
-    if (d.qV(23)) {
+    if (d.rb(23)) {
       try
       {
         if (!Util.isNullOrNil((String)Settings.class.getField("ACTION_MANAGE_OVERLAY_PERMISSION").get(Settings.class)))
         {
-          this.QYD.startActivityForResult(new Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION", Uri.parse("package:" + MMApplicationContext.getPackageName())), RequestFloatWindowPermissionDialog.BEd);
+          this.XUD.startActivityForResult(new Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION", Uri.parse("package:" + MMApplicationContext.getPackageName())), RequestFloatWindowPermissionDialog.HoH);
           AppMethodBeat.o(151878);
           return;
         }
@@ -37,13 +37,13 @@ final class RequestFloatWindowPermissionDialog$2
         Log.e("MicroMsg.RequestFloatWindowPermissionDialog", "getField:ACTION_MANAGE_OVERLAY_PERMISSION! Error:%s, etype:%s", new Object[] { paramDialogInterface.getMessage(), paramDialogInterface.getClass().getCanonicalName() });
       }
     }
-    paramDialogInterface = this.QYD.getString(c.h.floating_window_permission_url);
+    paramDialogInterface = this.XUD.getString(c.h.floating_window_permission_url);
     Intent localIntent = new Intent();
     localIntent.putExtra("rawUrl", paramDialogInterface);
     localIntent.putExtra("useJs", true);
     localIntent.putExtra("vertical_scroll", true);
-    c.b(this.QYD, "webview", ".ui.tools.WebViewUI", localIntent);
-    this.QYD.finish();
+    c.b(this.XUD, "webview", ".ui.tools.WebViewUI", localIntent);
+    this.XUD.finish();
     AppMethodBeat.o(151878);
   }
 }

@@ -6,25 +6,15 @@ import android.os.Parcelable.Creator;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SafeParcelable.Class(creator="ResolveAccountRequestCreator")
 public class ResolveAccountRequest
   extends AbstractSafeParcelable
 {
   public static final Parcelable.Creator<ResolveAccountRequest> CREATOR;
-  @SafeParcelable.VersionField(id=1)
   private final int zzal;
-  @SafeParcelable.Field(getter="getAccount", id=2)
   private final Account zzs;
-  @SafeParcelable.Field(getter="getSessionId", id=3)
   private final int zzut;
-  @SafeParcelable.Field(getter="getSignInAccountHint", id=4)
   private final GoogleSignInAccount zzuu;
   
   static
@@ -34,8 +24,7 @@ public class ResolveAccountRequest
     AppMethodBeat.o(11852);
   }
   
-  @SafeParcelable.Constructor
-  ResolveAccountRequest(@SafeParcelable.Param(id=1) int paramInt1, @SafeParcelable.Param(id=2) Account paramAccount, @SafeParcelable.Param(id=3) int paramInt2, @SafeParcelable.Param(id=4) GoogleSignInAccount paramGoogleSignInAccount)
+  ResolveAccountRequest(int paramInt1, Account paramAccount, int paramInt2, GoogleSignInAccount paramGoogleSignInAccount)
   {
     this.zzal = paramInt1;
     this.zzs = paramAccount;
@@ -77,7 +66,7 @@ public class ResolveAccountRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.ResolveAccountRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.google.android.gms.common.util;
 
 import android.os.Build.VERSION;
+import androidx.core.c.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@VisibleForTesting
 public final class PlatformVersion
 {
   public static boolean isAtLeastFroyo()
@@ -126,12 +126,15 @@ public final class PlatformVersion
   
   public static boolean isAtLeastP()
   {
-    return Build.VERSION.SDK_INT >= 28;
+    AppMethodBeat.i(210376);
+    boolean bool = a.isAtLeastP();
+    AppMethodBeat.o(210376);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.util.PlatformVersion
  * JD-Core Version:    0.7.0.1
  */

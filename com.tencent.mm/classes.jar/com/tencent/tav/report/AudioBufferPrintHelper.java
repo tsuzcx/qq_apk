@@ -1,6 +1,5 @@
 package com.tencent.tav.report;
 
-import android.annotation.SuppressLint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.io.IOException;
@@ -27,49 +26,49 @@ public class AudioBufferPrintHelper
   
   public AudioBufferPrintHelper()
   {
-    AppMethodBeat.i(193302);
+    AppMethodBeat.i(214861);
     this.startTimeMs = 0L;
     this.startName = "";
     this.enable = false;
     this.maxPrintCount = 0;
     this.startIndex = 0L;
     this.list = new ArrayList();
-    AppMethodBeat.o(193302);
+    AppMethodBeat.o(214861);
   }
   
   public static void clearFiles() {}
   
   public static ByteBuffer clone(ByteBuffer paramByteBuffer)
   {
-    AppMethodBeat.i(193309);
+    AppMethodBeat.i(214896);
     ByteBuffer localByteBuffer = ByteBuffer.allocate(paramByteBuffer.capacity());
     paramByteBuffer.rewind();
     localByteBuffer.put(paramByteBuffer);
     paramByteBuffer.rewind();
     localByteBuffer.flip();
-    AppMethodBeat.o(193309);
+    AppMethodBeat.o(214896);
     return localByteBuffer;
   }
   
   public static ShortBuffer clone(ShortBuffer paramShortBuffer)
   {
-    AppMethodBeat.i(193312);
+    AppMethodBeat.i(214900);
     ShortBuffer localShortBuffer = ShortBuffer.allocate(paramShortBuffer.capacity());
     paramShortBuffer.rewind();
     localShortBuffer.put(paramShortBuffer);
     paramShortBuffer.rewind();
     localShortBuffer.flip();
-    AppMethodBeat.o(193312);
+    AppMethodBeat.o(214900);
     return localShortBuffer;
   }
   
   public static File createNewFile(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(193337);
+    AppMethodBeat.i(214945);
     paramString1 = new File(paramString1);
     if ((!paramString1.exists()) && (!paramString1.mkdirs()))
     {
-      AppMethodBeat.o(193337);
+      AppMethodBeat.o(214945);
       return null;
     }
     paramString1 = new File(paramString1, paramString2);
@@ -79,26 +78,26 @@ public class AudioBufferPrintHelper
       if (!paramString1.createNewFile())
       {
         new StringBuilder("export: 创建输出文件失败:").append(paramString1.getAbsolutePath());
-        AppMethodBeat.o(193337);
+        AppMethodBeat.o(214945);
         return null;
       }
     }
     catch (IOException paramString1)
     {
-      AppMethodBeat.o(193337);
+      AppMethodBeat.o(214945);
       return null;
     }
-    AppMethodBeat.o(193337);
+    AppMethodBeat.o(214945);
     return paramString1;
   }
   
   private static void deleteAllFiles(File paramFile)
   {
-    AppMethodBeat.i(193314);
+    AppMethodBeat.i(214921);
     paramFile = paramFile.listFiles();
     if (paramFile == null)
     {
-      AppMethodBeat.o(193314);
+      AppMethodBeat.o(214921);
       return;
     }
     int j = paramFile.length;
@@ -122,21 +121,20 @@ public class AudioBufferPrintHelper
         }
       }
     }
-    AppMethodBeat.o(193314);
+    AppMethodBeat.o(214921);
   }
   
   public static AudioBufferPrintHelper getInstance()
   {
-    AppMethodBeat.i(193305);
+    AppMethodBeat.i(214871);
     AudioBufferPrintHelper localAudioBufferPrintHelper = Instance.INSTANCE;
-    AppMethodBeat.o(193305);
+    AppMethodBeat.o(214871);
     return localAudioBufferPrintHelper;
   }
   
-  @SuppressLint({"SimpleDateFormat"})
   private void initFlag(int paramInt)
   {
-    AppMethodBeat.i(193331);
+    AppMethodBeat.i(214932);
     if (this.startTimeMs == 0L)
     {
       this.startTimeMs = System.currentTimeMillis();
@@ -145,14 +143,14 @@ public class AudioBufferPrintHelper
     if (this.maxPrintCount == 0) {
       this.maxPrintCount = paramInt;
     }
-    AppMethodBeat.o(193331);
+    AppMethodBeat.o(214932);
   }
   
   public static void reset()
   {
-    AppMethodBeat.i(193307);
+    AppMethodBeat.i(214883);
     Instance.access$002(new AudioBufferPrintHelper());
-    AppMethodBeat.o(193307);
+    AppMethodBeat.o(214883);
   }
   
   public void printByteBuffer(String paramString, ByteBuffer paramByteBuffer) {}
@@ -163,14 +161,14 @@ public class AudioBufferPrintHelper
   
   public void startDelay(long paramLong)
   {
-    AppMethodBeat.i(193321);
+    AppMethodBeat.i(214980);
     startDelay(paramLong, 100);
-    AppMethodBeat.o(193321);
+    AppMethodBeat.o(214980);
   }
   
   public void startDelay(long paramLong, int paramInt)
   {
-    AppMethodBeat.i(193326);
+    AppMethodBeat.i(214987);
     initFlag(paramInt);
     if (System.currentTimeMillis() >= this.startTimeMs + paramLong) {}
     for (boolean bool = true;; bool = false)
@@ -184,21 +182,21 @@ public class AudioBufferPrintHelper
           this.enable = false;
         }
       }
-      AppMethodBeat.o(193326);
+      AppMethodBeat.o(214987);
       return;
     }
   }
   
   public void startIgnoreBegin(int paramInt)
   {
-    AppMethodBeat.i(193316);
+    AppMethodBeat.i(214956);
     startIgnoreBegin(paramInt, 100);
-    AppMethodBeat.o(193316);
+    AppMethodBeat.o(214956);
   }
   
   public void startIgnoreBegin(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(193319);
+    AppMethodBeat.i(214967);
     initFlag(paramInt2);
     long l = this.startIndex;
     this.startIndex = (1L + l);
@@ -213,7 +211,7 @@ public class AudioBufferPrintHelper
         this.enable = false;
       }
     }
-    AppMethodBeat.o(193319);
+    AppMethodBeat.o(214967);
   }
   
   static class Instance
@@ -222,15 +220,15 @@ public class AudioBufferPrintHelper
     
     static
     {
-      AppMethodBeat.i(193297);
+      AppMethodBeat.i(214963);
       INSTANCE = new AudioBufferPrintHelper();
-      AppMethodBeat.o(193297);
+      AppMethodBeat.o(214963);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tav.report.AudioBufferPrintHelper
  * JD-Core Version:    0.7.0.1
  */

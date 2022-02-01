@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/ek6" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/l0z" android:background="@color/zx" android:focusable="true" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/adl"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.live.core.view.LivePreviewView android:id="@id/ek7" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</RelativeLayout>
+    <ProgressBar android:id="@id/j6z" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" style="@style/a85" />
+    <TextView android:textSize="@dimen/aec" android:textColor="@color/zs" android:id="@id/c70" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cv" android:text="@string/fpj" />
+</LinearLayout>

@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:background="@color/a6w" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.brandservice.ui.widget.MPExoVideoTextureView android:id="@id/fly" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-    <ImageView android:id="@id/flr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
-    <ImageView android:id="@id/flx" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
-    <TextView android:textSize="15.0dip" android:textColor="@color/ag2" android:ellipsize="end" android:gravity="center" android:id="@id/ifh" android:background="@drawable/aja" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/adi" android:maxLines="1" />
-    <ProgressBar android:layout_gravity="center" android:id="@id/j59" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a62" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/j4y" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+    <HorizontalScrollView android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true">
+        <com.tencent.mm.ui.matrix.recyclerview.JsonRecyclerView android:id="@id/fep" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </HorizontalScrollView>
+</LinearLayout>

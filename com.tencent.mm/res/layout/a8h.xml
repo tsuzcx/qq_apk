@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/afj" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<androidx.constraintlayout.widget.ConstraintLayout android:background="@color/al4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/b9"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="15.0dip" android:textColor="@android:color/white" android:id="@id/iwu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
-    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/ebn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="2.5dip">
-        <View android:background="@color/BW_100_Alpha_0_3" android:layout_width="0.5dip" android:layout_height="14.0dip" />
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ebf" android:layout_width="14.0dip" android:layout_height="14.0dip" android:src="@raw/icons_filled_like" android:layout_marginStart="2.0dip" android:layout_marginEnd="2.0dip" app:iconColor="@android:color/white" />
-        <TextView android:textSize="@dimen/eo" android:textColor="@android:color/white" android:id="@id/eba" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </LinearLayout>
-</LinearLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/f1c" android:layout_width="@dimen/d_" android:layout_height="@dimen/d_" android:layout_marginTop="@dimen/d6" android:src="@raw/icons_filled_info" app:iconColor="@color/Blue" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <TextView android:textSize="@dimen/hn" android:textStyle="bold" android:textColor="@color/gb" android:id="@id/khu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:text="@string/cxw" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toBottomOf="@id/f1c" />
+    <TextView android:gravity="center" android:id="@id/d5n" android:layout_width="@dimen/cj" android:layout_height="@dimen/d4" android:layout_marginBottom="@dimen/c2" android:text="@string/cxv" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" style="@style/op" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,11 +4,11 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnPreDrawListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.plugin.comm.c.c;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ax;
 import com.tencent.mm.ui.base.preference.Preference;
+import com.tencent.mm.ui.bf;
 
 final class HelperHeaderPreference$1
   implements ViewTreeObserver.OnPreDrawListener
@@ -22,16 +22,16 @@ final class HelperHeaderPreference$1
     int[] arrayOfInt = new int[2];
     this.val$rootView.getLocationOnScreen(arrayOfInt);
     int k = arrayOfInt[1];
-    int j = a.fromDPToPix(this.Rqk.mContext, 60);
-    int m = ax.getStatusBarHeight(this.Rqk.mContext);
-    int n = ax.ew(this.Rqk.mContext);
+    int j = a.fromDPToPix(this.YmB.mContext, 60);
+    int m = bf.getStatusBarHeight(this.YmB.mContext);
+    int n = bf.fs(this.YmB.mContext);
     Log.i("MicroMsg.HelperHeaderPreference", "actionBarHeight=%s ,statusBarHeight=%s , rootTop:%s", new Object[] { Integer.valueOf(n), Integer.valueOf(m), Integer.valueOf(k) });
     int i = j;
     if (m > 0)
     {
       i = j;
       if (n > 0) {
-        i = a.aZ(this.Rqk.mContext, c.c.Edge_2A) + n;
+        i = a.bs(this.YmB.mContext, c.c.Edge_2A) + n;
       }
     }
     j = i;

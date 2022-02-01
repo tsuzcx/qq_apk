@@ -4,9 +4,9 @@ public final class a
 {
   public static final class d
   {
-    public static final int finder_contact_auth = 2131759797;
-    public static final int finder_friend_follow = 2131759988;
-    public static final int wUs = 2131759539;
+    public static final int Arb = 2131759914;
+    public static final int finder_contact_auth = 2131760281;
+    public static final int finder_friend_follow = 2131760537;
   }
 }
 

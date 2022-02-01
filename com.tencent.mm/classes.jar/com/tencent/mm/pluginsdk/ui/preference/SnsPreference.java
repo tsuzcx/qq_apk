@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.e;
 import com.tencent.mm.R.f;
@@ -17,26 +16,26 @@ import com.tencent.mm.R.g;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
 import com.tencent.mm.R.l;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.autogen.a.tl;
+import com.tencent.mm.autogen.a.tl.b;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.compatible.util.e;
 import com.tencent.mm.contact.d;
-import com.tencent.mm.f.a.rw;
-import com.tencent.mm.f.a.rw.b;
-import com.tencent.mm.f.c.ax;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.sns.b.p;
-import com.tencent.mm.protocal.protobuf.cvt;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.plugin.sns.c.q;
+import com.tencent.mm.protocal.protobuf.dmz;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bp;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.br;
+import com.tencent.mm.storage.bx;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.g;
 import com.tencent.mm.ui.widget.QDisFadeImageView;
+import com.tencent.threadpool.h;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -44,27 +43,27 @@ public final class SnsPreference
   extends Preference
   implements g
 {
-  private View EQs;
-  private bp JRq;
-  private QDisFadeImageView RqW;
-  private QDisFadeImageView RqX;
-  private QDisFadeImageView RqY;
-  private QDisFadeImageView RqZ;
-  private ImageView Rra;
-  private ImageView Rrb;
-  private ImageView Rrc;
-  private ImageView Rrd;
-  private a Rre;
-  private MMActivity iXq;
-  private List<cvt> list;
+  private View KKQ;
+  private br Qob;
+  private QDisFadeImageView Ynn;
+  private QDisFadeImageView Yno;
+  private QDisFadeImageView Ynp;
+  private QDisFadeImageView Ynq;
+  private ImageView Ynr;
+  private ImageView Yns;
+  private ImageView Ynt;
+  private ImageView Ynu;
+  private a Ynv;
+  private List<dmz> list;
+  private MMActivity lzt;
   private String mTitle;
-  private int wzX;
+  private int zWi;
   
   public SnsPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
     AppMethodBeat.i(31906);
-    this.iXq = ((MMActivity)paramContext);
+    this.lzt = ((MMActivity)paramContext);
     AppMethodBeat.o(31906);
   }
   
@@ -73,24 +72,24 @@ public final class SnsPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(31907);
     this.mTitle = "";
-    this.RqW = null;
-    this.RqX = null;
-    this.RqY = null;
-    this.RqZ = null;
-    this.Rra = null;
-    this.Rrb = null;
-    this.Rrc = null;
-    this.Rrd = null;
-    this.wzX = 255;
+    this.Ynn = null;
+    this.Yno = null;
+    this.Ynp = null;
+    this.Ynq = null;
+    this.Ynr = null;
+    this.Yns = null;
+    this.Ynt = null;
+    this.Ynu = null;
+    this.zWi = 255;
     this.list = new LinkedList();
-    this.Rre = new a();
-    this.iXq = ((MMActivity)paramContext);
+    this.Ynv = new a();
+    this.lzt = ((MMActivity)paramContext);
     this.mTitle = paramContext.getString(R.l.contact_info_sns_title);
     setLayoutResource(R.i.mm_preference);
     AppMethodBeat.o(31907);
   }
   
-  public final void brA(final String paramString)
+  public final void bro(final String paramString)
   {
     AppMethodBeat.i(31911);
     if (paramString == null)
@@ -98,59 +97,59 @@ public final class SnsPreference
       AppMethodBeat.o(31911);
       return;
     }
-    bh.beI();
-    as localas = c.bbL().RG(paramString);
-    if ((localas != null) && ((int)localas.jxt > 0) && (d.rk(localas.field_type))) {
-      this.JRq = bp.VGl;
+    bh.bCz();
+    au localau = c.bzA().JE(paramString);
+    if ((localau != null) && ((int)localau.maN > 0) && (d.rs(localau.field_type))) {
+      this.Qob = br.adjZ;
     }
     for (;;)
     {
-      com.tencent.e.h.ZvG.be(new Runnable()
+      h.ahAA.bm(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(267830);
-          rw localrw = new rw();
-          localrw.fRa.username = paramString;
-          EventCenter.instance.publish(localrw);
+          AppMethodBeat.i(245126);
+          tl localtl = new tl();
+          localtl.hWX.username = paramString;
+          localtl.publish();
           final LinkedList localLinkedList = new LinkedList();
-          if (localrw.fRb.fRc != null) {
-            localLinkedList.add(localrw.fRb.fRc);
+          if (localtl.hWY.hWZ != null) {
+            localLinkedList.add(localtl.hWY.hWZ);
           }
-          if (localrw.fRb.fRd != null) {
-            localLinkedList.add(localrw.fRb.fRd);
+          if (localtl.hWY.hXa != null) {
+            localLinkedList.add(localtl.hWY.hXa);
           }
-          if (localrw.fRb.fRe != null) {
-            localLinkedList.add(localrw.fRb.fRe);
+          if (localtl.hWY.hXb != null) {
+            localLinkedList.add(localtl.hWY.hXb);
           }
-          if (localrw.fRb.fRf != null) {
-            localLinkedList.add(localrw.fRb.fRf);
+          if (localtl.hWY.hXc != null) {
+            localLinkedList.add(localtl.hWY.hXc);
           }
           SnsPreference.b(SnsPreference.this).runOnUiThread(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(278737);
+              AppMethodBeat.i(245109);
               SnsPreference.a(SnsPreference.this).clear();
               SnsPreference.a(SnsPreference.this).addAll(localLinkedList);
-              SnsPreference.this.jm(SnsPreference.a(SnsPreference.this));
-              AppMethodBeat.o(278737);
+              SnsPreference.this.mx(SnsPreference.a(SnsPreference.this));
+              AppMethodBeat.o(245109);
             }
           });
-          AppMethodBeat.o(267830);
+          AppMethodBeat.o(245126);
         }
       });
       AppMethodBeat.o(31911);
       return;
-      if (paramString.equals(z.bcZ())) {
-        this.JRq = bp.VGl;
+      if (paramString.equals(z.bAM())) {
+        this.Qob = br.adjZ;
       } else {
-        this.JRq = bp.VGm;
+        this.Qob = br.adka;
       }
     }
   }
   
-  public final int hmS()
+  public final int iNI()
   {
     AppMethodBeat.i(31912);
     int i = 0;
@@ -161,39 +160,39 @@ public final class SnsPreference
     return i;
   }
   
-  public final void jm(List<cvt> paramList)
+  public final void mx(List<dmz> paramList)
   {
     int j = 0;
-    AppMethodBeat.i(287536);
-    if (this.RqW != null)
+    AppMethodBeat.i(245123);
+    if (this.Ynn != null)
     {
-      this.RqW.setImageResource(R.e.white);
-      this.RqW.setVisibility(4);
+      this.Ynn.setImageResource(R.e.white);
+      this.Ynn.setVisibility(4);
     }
-    if (this.RqX != null)
+    if (this.Yno != null)
     {
-      this.RqX.setImageResource(R.e.white);
-      this.RqX.setVisibility(4);
+      this.Yno.setImageResource(R.e.white);
+      this.Yno.setVisibility(4);
     }
-    if (this.RqY != null)
+    if (this.Ynp != null)
     {
-      this.RqY.setImageResource(R.e.white);
-      this.RqY.setVisibility(4);
+      this.Ynp.setImageResource(R.e.white);
+      this.Ynp.setVisibility(4);
     }
-    if (this.RqZ != null)
+    if (this.Ynq != null)
     {
-      this.RqZ.setImageResource(R.e.white);
-      this.RqZ.setVisibility(4);
+      this.Ynq.setImageResource(R.e.white);
+      this.Ynq.setVisibility(4);
     }
     ImageView localImageView;
-    if ((this.RqW != null) && (paramList.size() > 0))
+    if ((this.Ynn != null) && (paramList.size() > 0))
     {
-      this.RqW.setVisibility(0);
-      if (e.avA()) {
+      this.Ynn.setVisibility(0);
+      if (e.aPU()) {
         break label291;
       }
-      this.RqW.setImageResource(R.g.dok);
-      localImageView = this.Rra;
+      this.Ynn.setImageResource(R.g.foI);
+      localImageView = this.Ynr;
     }
     label291:
     label427:
@@ -204,62 +203,62 @@ public final class SnsPreference
       for (int i = 8;; i = 0)
       {
         localImageView.setVisibility(i);
-        if ((this.RqX != null) && (paramList.size() >= 2))
+        if ((this.Yno != null) && (paramList.size() >= 2))
         {
-          this.RqX.setVisibility(0);
-          if (e.avA()) {
+          this.Yno.setVisibility(0);
+          if (e.aPU()) {
             break;
           }
-          this.RqX.setImageResource(R.g.dok);
+          this.Yno.setImageResource(R.g.foI);
         }
-        if ((this.RqY != null) && (paramList.size() >= 3))
+        if ((this.Ynp != null) && (paramList.size() >= 3))
         {
-          this.RqY.setVisibility(0);
-          if (e.avA()) {
+          this.Ynp.setVisibility(0);
+          if (e.aPU()) {
             break label427;
           }
-          this.RqY.setImageResource(R.g.dok);
+          this.Ynp.setImageResource(R.g.foI);
         }
-        if ((this.RqZ == null) || (paramList.size() < 4)) {
+        if ((this.Ynq == null) || (paramList.size() < 4)) {
           break label566;
         }
-        this.RqZ.setVisibility(0);
-        if (e.avA()) {
+        this.Ynq.setVisibility(0);
+        if (e.aPU()) {
           break label501;
         }
-        this.RqZ.setImageResource(R.g.dok);
-        AppMethodBeat.o(287536);
+        this.Ynq.setImageResource(R.g.foI);
+        AppMethodBeat.o(245123);
         return;
-        p.JPc.b((cvt)paramList.get(0), this.RqW, this.iXq.hashCode(), this.JRq);
-        localImageView = this.Rra;
-        if (((cvt)paramList.get(0)).rWu != 6) {
+        q.Qkh.b((dmz)paramList.get(0), this.Ynn, this.lzt.hashCode(), this.Qob);
+        localImageView = this.Ynr;
+        if (((dmz)paramList.get(0)).vhJ != 6) {
           break label578;
         }
       }
-      p.JPc.b((cvt)paramList.get(1), this.RqX, this.iXq.hashCode(), this.JRq);
-      localImageView = this.Rrb;
-      if (((cvt)paramList.get(1)).rWu == 6) {}
+      q.Qkh.b((dmz)paramList.get(1), this.Yno, this.lzt.hashCode(), this.Qob);
+      localImageView = this.Yns;
+      if (((dmz)paramList.get(1)).vhJ == 6) {}
       for (i = 0;; i = 8)
       {
         localImageView.setVisibility(i);
         break;
       }
-      p.JPc.b((cvt)paramList.get(2), this.RqY, this.iXq.hashCode(), this.JRq);
-      localImageView = this.Rrc;
-      if (((cvt)paramList.get(2)).rWu == 6) {}
+      q.Qkh.b((dmz)paramList.get(2), this.Ynp, this.lzt.hashCode(), this.Qob);
+      localImageView = this.Ynt;
+      if (((dmz)paramList.get(2)).vhJ == 6) {}
       for (i = 0;; i = 8)
       {
         localImageView.setVisibility(i);
         break;
       }
       label501:
-      p.JPc.b((cvt)paramList.get(3), this.RqZ, this.iXq.hashCode(), this.JRq);
-      localImageView = this.Rrd;
-      if (((cvt)paramList.get(3)).rWu == 6) {}
+      q.Qkh.b((dmz)paramList.get(3), this.Ynq, this.lzt.hashCode(), this.Qob);
+      localImageView = this.Ynu;
+      if (((dmz)paramList.get(3)).vhJ == 6) {}
       for (i = j;; i = 8)
       {
         localImageView.setVisibility(i);
-        AppMethodBeat.o(287536);
+        AppMethodBeat.o(245123);
         return;
       }
     }
@@ -269,57 +268,64 @@ public final class SnsPreference
   {
     AppMethodBeat.i(31910);
     super.onBindView(paramView);
-    this.RqW = ((QDisFadeImageView)paramView.findViewById(R.h.image_iv1));
-    this.RqW.setAlpha(this.wzX);
-    this.RqW.setImageDrawable(this.Rre);
-    this.RqX = ((QDisFadeImageView)paramView.findViewById(R.h.image_iv2));
-    this.RqX.setAlpha(this.wzX);
-    this.RqX.setImageDrawable(this.Rre);
-    this.RqY = ((QDisFadeImageView)paramView.findViewById(R.h.image_iv3));
-    this.RqY.setAlpha(this.wzX);
-    this.RqY.setImageDrawable(this.Rre);
-    this.RqZ = ((QDisFadeImageView)paramView.findViewById(R.h.image_iv4));
-    this.RqZ.setAlpha(this.wzX);
-    this.RqZ.setImageDrawable(this.Rre);
-    TextView localTextView = (TextView)paramView.findViewById(R.h.album_title);
+    this.Ynn = ((QDisFadeImageView)paramView.findViewById(R.h.image_iv1));
+    this.Ynn.setAlpha(this.zWi);
+    this.Ynn.setImageDrawable(this.Ynv);
+    this.Yno = ((QDisFadeImageView)paramView.findViewById(R.h.image_iv2));
+    this.Yno.setAlpha(this.zWi);
+    this.Yno.setImageDrawable(this.Ynv);
+    this.Ynp = ((QDisFadeImageView)paramView.findViewById(R.h.image_iv3));
+    this.Ynp.setAlpha(this.zWi);
+    this.Ynp.setImageDrawable(this.Ynv);
+    this.Ynq = ((QDisFadeImageView)paramView.findViewById(R.h.image_iv4));
+    this.Ynq.setAlpha(this.zWi);
+    this.Ynq.setImageDrawable(this.Ynv);
+    Object localObject = (TextView)paramView.findViewById(R.h.album_title);
     if (!Util.isNullOrNil(this.mTitle))
     {
-      localTextView.setText(this.mTitle);
-      ViewGroup.LayoutParams localLayoutParams = localTextView.getLayoutParams();
-      localLayoutParams.width = a.aY(this.mContext, R.f.FixedTitleWidth);
-      localTextView.setLayoutParams(localLayoutParams);
+      ((TextView)localObject).setText(this.mTitle);
+      ViewGroup.LayoutParams localLayoutParams = ((TextView)localObject).getLayoutParams();
+      localLayoutParams.width = a.br(this.mContext, R.f.FixedTitleWidth);
+      ((TextView)localObject).setLayoutParams(localLayoutParams);
     }
-    this.Rra = ((ImageView)paramView.findViewById(R.h.dVw));
-    this.Rrb = ((ImageView)paramView.findViewById(R.h.dVx));
-    this.Rrc = ((ImageView)paramView.findViewById(R.h.dVy));
-    this.Rrd = ((ImageView)paramView.findViewById(R.h.dVz));
-    this.Rra.setVisibility(8);
-    this.Rrb.setVisibility(8);
-    this.Rrc.setVisibility(8);
-    this.Rrd.setVisibility(8);
-    jm(this.list);
+    this.Ynr = ((ImageView)paramView.findViewById(R.h.fXS));
+    this.Yns = ((ImageView)paramView.findViewById(R.h.fXT));
+    this.Ynt = ((ImageView)paramView.findViewById(R.h.fXU));
+    this.Ynu = ((ImageView)paramView.findViewById(R.h.fXV));
+    this.Ynr.setVisibility(8);
+    this.Yns.setVisibility(8);
+    this.Ynt.setVisibility(8);
+    this.Ynu.setVisibility(8);
+    mx(this.list);
     if ((paramView == null) || (this.list == null))
     {
       AppMethodBeat.o(31910);
       return;
     }
-    paramView.setContentDescription(this.mContext.getString(R.l.profile_photo_desc, new Object[] { Integer.valueOf(this.list.size()) }));
+    localObject = this.mContext.getString(R.l.profile_photo_desc, new Object[] { Integer.valueOf(this.list.size()) });
+    if (this.mTitle != null)
+    {
+      paramView.setContentDescription(this.mTitle + (String)localObject);
+      AppMethodBeat.o(31910);
+      return;
+    }
+    paramView.setContentDescription((CharSequence)localObject);
     AppMethodBeat.o(31910);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(31909);
-    if (this.EQs == null)
+    if (this.KKQ == null)
     {
       paramViewGroup = super.onCreateView(paramViewGroup);
       LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
       ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
       localViewGroup.removeAllViews();
-      localLayoutInflater.inflate(R.i.eiO, localViewGroup);
-      this.EQs = paramViewGroup;
+      localLayoutInflater.inflate(R.i.glN, localViewGroup);
+      this.KKQ = paramViewGroup;
     }
-    paramViewGroup = this.EQs;
+    paramViewGroup = this.KKQ;
     AppMethodBeat.o(31909);
     return paramViewGroup;
   }
@@ -335,7 +341,7 @@ public final class SnsPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.preference.SnsPreference
  * JD-Core Version:    0.7.0.1
  */

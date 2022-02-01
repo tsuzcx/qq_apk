@@ -1,13 +1,13 @@
 package com.tencent.mm.chatroom.plugin;
 
-import com.tencent.mm.storage.ca;
+import com.tencent.mm.storage.cc;
 
 public abstract interface a
   extends com.tencent.mm.kernel.b.a
 {
-  public abstract void handleGroupTodoByReceiverAppMsg(ca paramca);
+  public abstract void handleGroupTodoByReceiverAppMsg(cc paramcc);
   
-  public abstract void handleGroupToolByReceiverAppMsg(ca paramca);
+  public abstract void handleGroupToolByReceiverAppMsg(cc paramcc);
 }
 
 

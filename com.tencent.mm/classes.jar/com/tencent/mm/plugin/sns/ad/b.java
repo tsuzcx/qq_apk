@@ -1,39 +1,57 @@
 package com.tencent.mm.plugin.sns.ad;
 
-import android.content.Intent;
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
-import com.tencent.mm.plugin.sns.b.e;
-import com.tencent.mm.plugin.sns.data.m;
+import com.tencent.mm.plugin.sns.ad.e.a;
+import com.tencent.mm.plugin.sns.c.d;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class b
-  implements e
+  implements d
 {
-  public final void a(long paramLong, String paramString1, String paramString2, int paramInt)
+  private Map<Integer, a> PKU;
+  
+  public b()
   {
-    AppMethodBeat.i(268097);
-    Log.i("SnsAdService", "openAdCanvasById, canvasId=" + paramLong + ", source=" + paramInt + ", adInfoXml=" + paramString1 + ", extra=" + paramString2);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("sns_landing_pages_pageid", paramLong);
-    localIntent.putExtra("sns_landing_pages_need_enter_and_exit_animation", false);
-    localIntent.putExtra("sns_landig_pages_from_source", paramInt);
-    localIntent.putExtra("sns_landing_pages_ad_info", paramString1);
-    if (!TextUtils.isEmpty(paramString2)) {
-      localIntent.putExtra("sns_landing_pages_extra_param", paramString2);
-    }
-    c.b(MMApplicationContext.getContext(), "sns", ".ui.SnsAdNativeLandingPagesPreviewUI", localIntent);
-    AppMethodBeat.o(268097);
+    AppMethodBeat.i(94962);
+    this.PKU = new HashMap();
+    AppMethodBeat.o(94962);
   }
   
-  public final String aYm(String paramString)
+  public final void a(a parama)
   {
-    AppMethodBeat.i(268099);
-    paramString = m.aYm(paramString);
-    AppMethodBeat.o(268099);
-    return paramString;
+    AppMethodBeat.i(94963);
+    this.PKU.put(Integer.valueOf(parama.getKey()), parama);
+    AppMethodBeat.o(94963);
+  }
+  
+  public final void b(int paramInt1, int paramInt2, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(94964);
+    a locala = (a)this.PKU.get(Integer.valueOf(paramInt1));
+    if (locala == null)
+    {
+      Log.w("SnsAdReportService", "can not find %s implementation for kv %d", new Object[] { a.class, Integer.valueOf(paramInt1) });
+      AppMethodBeat.o(94964);
+      return;
+    }
+    locala.b(paramInt2, paramVarArgs);
+    AppMethodBeat.o(94964);
+  }
+  
+  public final void b(int paramInt, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(94965);
+    a locala = (a)this.PKU.get(Integer.valueOf(paramInt));
+    if (locala == null)
+    {
+      Log.w("SnsAdReportService", "can not find %s implementation for kv %d", new Object[] { a.class, Integer.valueOf(paramInt) });
+      AppMethodBeat.o(94965);
+      return;
+    }
+    locala.x(paramVarArgs);
+    AppMethodBeat.o(94965);
   }
 }
 

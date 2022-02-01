@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/e9q" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:gravity="center_vertical" android:id="@id/dfs" android:background="#ff333333" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentBottom="true">
-        <TextView android:textSize="16.0dip" android:textColor="@color/ag2" android:gravity="center_vertical" android:id="@id/dhd" android:layout_width="wrap_content" android:layout_height="32.0dip" android:text="@string/dql" android:layout_alignParentLeft="true" />
-        <Button android:enabled="false" android:textSize="14.0dip" android:textColor="@drawable/a6j" android:id="@id/dhb" android:background="@drawable/a6i" android:layout_width="68.0dip" android:layout_height="32.0dip" android:text="@string/dqj" android:layout_alignParentRight="true" />
-    </RelativeLayout>
-    <androidx.recyclerview.widget.RecyclerView android:id="@id/dh_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/dfs" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/hi" android:layout_gravity="left" android:id="@id/e9p" android:background="@drawable/axm" android:padding="16.0dip" android:text="@string/k4" style="@style/od" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/hi" android:id="@id/e9r" android:background="@drawable/axm" android:padding="16.0dip" android:text="@string/kw0" android:layout_alignParentRight="true" style="@style/od" />
+    <View android:id="@id/kuh" android:background="@color/ahb" android:layout_width="1.0dip" android:layout_height="1.0dip" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/e9o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/r" android:src="@drawable/bwj" android:layout_above="@id/kuh" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:gravity="center" android:id="@id/e9u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k" android:layout_marginTop="18.0dip" android:layout_marginRight="@dimen/k" android:text="@string/kvj" android:layout_below="@id/kuh" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/m8" android:textColor="@color/a1c" android:id="@id/hse" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:text="@string/kw0" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
 </RelativeLayout>

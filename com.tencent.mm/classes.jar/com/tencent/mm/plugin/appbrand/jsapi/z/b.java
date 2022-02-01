@@ -1,147 +1,38 @@
 package com.tencent.mm.plugin.appbrand.jsapi.z;
 
-import com.tencent.mm.plugin.appbrand.appstorage.ab;
-import com.tencent.mm.plugin.appbrand.jsapi.file.av;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
-import com.tencent.mm.vfs.u;
-import java.io.IOException;
-import org.json.JSONObject;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import kotlin.Metadata;
 
-public abstract class b
-  extends com.tencent.mm.plugin.appbrand.jsapi.c<com.tencent.mm.plugin.appbrand.service.c>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/rendering_cache/JsApiSaveInitialRenderingCache;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "()V", "dispatchInJsThread", "", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class b
+  extends c<ad>
 {
-  private static String agA(String paramString)
+  @Deprecated
+  public static final int CTRL_INDEX = -2;
+  @Deprecated
+  public static final String NAME = "saveInitialRenderingCache";
+  private static final a srS;
+  
+  static
   {
-    return "wxfile://clientdata/".concat(String.valueOf(paramString));
+    AppMethodBeat.i(147960);
+    srS = new a((byte)0);
+    AppMethodBeat.o(147960);
   }
   
-  private static void agB(String paramString)
+  public final boolean cpE()
   {
-    paramString = new q(paramString + ".nomedia");
-    if (!paramString.ifE()) {
-      Log.i("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: no nomedia file. trigger new");
-    }
-    try
-    {
-      paramString.ifM();
-      return;
-    }
-    catch (IOException paramString)
-    {
-      Log.printErrStackTrace("MicroMsg.GameRecord.JsApiScreenRecorderBase", paramString, "hy: create no media file failed!", new Object[0]);
-    }
+    return false;
   }
   
-  private static String b(com.tencent.mm.plugin.appbrand.service.c paramc, String paramString)
-  {
-    if ((paramc == null) || (Util.isNullOrNil(paramString)))
-    {
-      if (paramc == null) {}
-      for (boolean bool = true;; bool = false)
-      {
-        Log.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: param error %b, %s", new Object[] { Boolean.valueOf(bool), paramString });
-        return null;
-      }
-    }
-    paramc = (av)paramc.getFileSystem();
-    if (paramc == null)
-    {
-      Log.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: fs is null");
-      return null;
-    }
-    String str = ((ab)paramc.adY("wxfile://clientdata")).nMO;
-    paramc = str;
-    if (!str.endsWith("/")) {
-      paramc = str + "/";
-    }
-    agB(paramc);
-    return paramc + paramString;
-  }
-  
-  protected static com.tencent.mm.plugin.appbrand.game.g.b e(com.tencent.mm.plugin.appbrand.service.c paramc)
-  {
-    return com.tencent.mm.plugin.appbrand.game.g.b.a("1234", null, paramc.getContext());
-  }
-  
-  protected final a a(com.tencent.mm.plugin.appbrand.service.c paramc, String paramString1, String paramString2)
-  {
-    Log.i("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: request saveFileToClientData: %s, %b, %b", new Object[] { paramString1, Boolean.TRUE, Boolean.TRUE });
-    if (!u.agG(paramString1))
-    {
-      Log.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: src file not exists!");
-      return null;
-    }
-    paramc = b(paramc, paramString2);
-    if (paramc == null)
-    {
-      Log.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: can not generate dest file!");
-      return null;
-    }
-    if (u.agG(paramc))
-    {
-      Log.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: file already exists, auto delete: %b", new Object[] { Boolean.TRUE });
-      u.deleteFile(paramc);
-    }
-    q localq = new q(paramc);
-    if (!u.or(new q(paramString1).getPath(), localq.getPath()))
-    {
-      Log.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: rename failed!");
-      return null;
-    }
-    return new a(paramc, agA(paramString2), (byte)0);
-  }
-  
-  abstract void a(com.tencent.mm.plugin.appbrand.service.c paramc, JSONObject paramJSONObject, int paramInt);
-  
-  protected final a d(com.tencent.mm.plugin.appbrand.service.c paramc, String paramString)
-  {
-    paramc = b(paramc, paramString);
-    if (paramc == null)
-    {
-      Log.e("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: can not generate!");
-      return null;
-    }
-    Log.i("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: creating file: %s", new Object[] { paramc });
-    if (u.agG(paramc))
-    {
-      Log.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: file already exists, auto delete: %b", new Object[] { Boolean.TRUE });
-      u.deleteFile(paramc);
-    }
-    q localq = new q(paramc);
-    u.bBD(u.bBT(paramc));
-    try
-    {
-      if (!localq.ifM())
-      {
-        Log.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: create file failed!");
-        return null;
-      }
-    }
-    catch (IOException paramc)
-    {
-      Log.printErrStackTrace("MicroMsg.GameRecord.JsApiScreenRecorderBase", paramc, "hy: create file failed!", new Object[0]);
-      return null;
-    }
-    return new a(localq.bOF(), agA(paramString), (byte)0);
-  }
-  
-  protected final class a
-  {
-    String ony;
-    String onz;
-    
-    private a(String paramString1, String paramString2)
-    {
-      this.ony = paramString1;
-      this.onz = paramString2;
-    }
-  }
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/rendering_cache/JsApiSaveInitialRenderingCache$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+  static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.z.b
  * JD-Core Version:    0.7.0.1
  */

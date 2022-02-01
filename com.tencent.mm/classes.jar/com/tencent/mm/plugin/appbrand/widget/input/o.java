@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
+import android.os.Looper;
 import androidx.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.m;
 import com.tencent.mm.plugin.appbrand.page.ad;
 import com.tencent.mm.plugin.appbrand.platform.window.c;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -14,14 +14,14 @@ import java.util.Set;
 
 public enum o
 {
-  public static final Map<String, Integer> rvv;
-  public static final Set<String> rvw;
-  private static final a<ad, af> rvx;
+  public static final Map<String, Integer> uGA;
+  public static final Set<String> uGB;
+  private static final a<ad, af> uGC;
   
   static
   {
     AppMethodBeat.i(136427);
-    rvy = new o[0];
+    uGD = new o[0];
     Object localObject = new HashSet();
     ((Set)localObject).add("text");
     ((Set)localObject).add("emoji");
@@ -29,17 +29,17 @@ public enum o
     ((Set)localObject).add("digit");
     ((Set)localObject).add("idcard");
     ((Set)localObject).add("safe-password");
-    rvw = Collections.unmodifiableSet((Set)localObject);
+    uGB = Collections.unmodifiableSet((Set)localObject);
     localObject = new HashMap(3);
     ((Map)localObject).put("digit", Integer.valueOf(2));
     ((Map)localObject).put("number", Integer.valueOf(0));
     ((Map)localObject).put("idcard", Integer.valueOf(1));
-    rvv = Collections.unmodifiableMap((Map)localObject);
-    rvx = new a();
+    uGA = Collections.unmodifiableMap((Map)localObject);
+    uGC = new a();
     AppMethodBeat.o(136427);
   }
   
-  public static boolean D(ad paramad)
+  public static boolean E(ad paramad)
   {
     AppMethodBeat.i(136420);
     boolean bool = a(paramad, null);
@@ -47,7 +47,7 @@ public enum o
     return bool;
   }
   
-  static void E(ad paramad)
+  static void F(ad paramad)
   {
     AppMethodBeat.i(136425);
     if (paramad == null)
@@ -55,19 +55,19 @@ public enum o
       AppMethodBeat.o(136425);
       return;
     }
-    m.runOnUiThread(new Runnable()
+    com.tencent.mm.plugin.appbrand.af.o.runOnUiThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(136414);
-        o.coF().remove(this.pjc);
+        o.cRh().remove(o.this);
         AppMethodBeat.o(136414);
       }
     });
     AppMethodBeat.o(136425);
   }
   
-  public static ae F(ad paramad)
+  public static ae<?> G(ad paramad)
   {
     AppMethodBeat.i(136426);
     if (paramad == null)
@@ -75,7 +75,7 @@ public enum o
       AppMethodBeat.o(136426);
       return null;
     }
-    af localaf = (af)rvx.get(paramad);
+    af localaf = (af)uGC.get(paramad);
     if (localaf == null)
     {
       AppMethodBeat.o(136426);
@@ -86,15 +86,15 @@ public enum o
     return paramad;
   }
   
-  public static ae a(ad paramad, int paramInt)
+  public static ae<?> a(ad paramad, int paramInt)
   {
     AppMethodBeat.i(136418);
     paramad = e.a(paramad, new e.a()
     {
-      public final boolean a(ae paramAnonymousae)
+      public final boolean a(ae<?> paramAnonymousae)
       {
         AppMethodBeat.i(136411);
-        if ((paramAnonymousae.coc() != null) && (((af)paramAnonymousae.coc()).getInputId() == this.oUo))
+        if ((paramAnonymousae.cQE() != null) && (((af)paramAnonymousae.cQE()).getInputId() == this.rZD))
         {
           AppMethodBeat.o(136411);
           return true;
@@ -115,12 +115,12 @@ public enum o
       AppMethodBeat.o(136424);
       return;
     }
-    m.runOnUiThread(new Runnable()
+    com.tencent.mm.plugin.appbrand.af.o.runOnUiThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(136413);
-        o.coF().put(this.pjc, paramaf);
+        o.cRh().put(o.this, paramaf);
         AppMethodBeat.o(136413);
       }
     });
@@ -135,15 +135,15 @@ public enum o
       AppMethodBeat.o(136419);
       return;
     }
-    m.runOnUiThread(new Runnable()
+    com.tencent.mm.plugin.appbrand.af.o.runOnUiThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(136412);
-        Object localObject = (af)o.coF().get(this.oEt);
+        Object localObject = (af)o.cRh().get(o.this);
         if (localObject != null)
         {
-          localObject = o.a(this.oEt, ((af)localObject).getInputId());
+          localObject = o.a(o.this, ((af)localObject).getInputId());
           if (localObject != null) {
             ((ae)localObject).a(paramString, paramInteger);
           }
@@ -158,7 +158,7 @@ public enum o
   {
     AppMethodBeat.i(136422);
     ae localae = a(paramad, paramInt1);
-    if ((localae != null) && (localae.A(paramad)) && (localae.r(paramInt2, paramInt3, paramad.nxr.Sc())))
+    if ((localae != null) && (localae.B(paramad)) && (localae.r(paramInt2, paramInt3, paramad.qwF.ast())))
     {
       AppMethodBeat.o(136422);
       return true;
@@ -174,7 +174,7 @@ public enum o
     if (paramInteger == null) {}
     try
     {
-      paramInteger = (af)rvx.get(paramad);
+      paramInteger = (af)uGC.get(paramad);
       if (paramInteger == null)
       {
         AppMethodBeat.o(136421);
@@ -182,13 +182,13 @@ public enum o
       }
       localInteger = Integer.valueOf(paramInteger.getInputId());
       paramad = a(paramad, localInteger.intValue());
-      if ((paramad != null) && (paramad.col()))
+      if ((paramad != null) && (paramad.cQN()))
       {
         AppMethodBeat.o(136421);
         return true;
       }
     }
-    catch (Throwable paramad)
+    finally
     {
       Log.printErrStackTrace("MicroMsg.AppBrandInputService", paramad, "[NOT CRASH]", new Object[0]);
       AppMethodBeat.o(136421);
@@ -198,18 +198,46 @@ public enum o
     return false;
   }
   
-  static void b(ad paramad, ae paramae)
+  static void b(ad paramad, ae<?> paramae)
   {
     AppMethodBeat.i(136417);
     e.a(paramad, paramae);
     AppMethodBeat.o(136417);
   }
   
+  static void b(ad paramad, final af paramaf)
+  {
+    AppMethodBeat.i(324535);
+    if ((paramad == null) || (paramaf == null))
+    {
+      AppMethodBeat.o(324535);
+      return;
+    }
+    if (Looper.getMainLooper() != Looper.myLooper())
+    {
+      com.tencent.mm.plugin.appbrand.af.o.runOnUiThread(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(324646);
+          o.b(o.this, paramaf);
+          AppMethodBeat.o(324646);
+        }
+      });
+      AppMethodBeat.o(324535);
+      return;
+    }
+    if (uGC.get(paramad) == paramaf) {
+      uGC.remove(paramad);
+    }
+    AppMethodBeat.o(324535);
+  }
+  
   public static boolean b(ad paramad, int paramInt)
   {
     AppMethodBeat.i(136423);
     paramad = a(paramad, paramInt);
-    if ((paramad != null) && (paramad.cob()))
+    if ((paramad != null) && (paramad.cQD()))
     {
       AppMethodBeat.o(136423);
       return true;
@@ -220,7 +248,7 @@ public enum o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.o
  * JD-Core Version:    0.7.0.1
  */

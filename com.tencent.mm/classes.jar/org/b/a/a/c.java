@@ -14,12 +14,12 @@ public class c
     return parami;
   }
   
-  public String iVh()
+  public String kJF()
   {
     return "http://api.twitter.com/oauth/request_token";
   }
   
-  public String iVi()
+  public String kJG()
   {
     return "http://api.twitter.com/oauth/access_token";
   }
@@ -27,12 +27,12 @@ public class c
   public static class a
     extends c
   {
-    public final String iVh()
+    public final String kJF()
     {
       return "https://api.twitter.com/oauth/request_token";
     }
     
-    public final String iVi()
+    public final String kJG()
     {
       return "https://api.twitter.com/oauth/access_token";
     }
@@ -40,7 +40,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.b.a.a.c
  * JD-Core Version:    0.7.0.1
  */

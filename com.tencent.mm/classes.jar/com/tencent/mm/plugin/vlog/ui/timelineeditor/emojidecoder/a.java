@@ -5,22 +5,22 @@ import android.graphics.Bitmap.Config;
 import android.util.Size;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.xeffect.effect.IStickerDecoder;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/timelineeditor/emojidecoder/DefaultDecoder;", "Lcom/tencent/mm/xeffect/effect/IStickerDecoder;", "()V", "textBitmap", "Landroid/graphics/Bitmap;", "destroy", "", "duration", "", "getFrame", "seekTo", "time", "size", "Landroid/util/Size;", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/timelineeditor/emojidecoder/DefaultDecoder;", "Lcom/tencent/mm/xeffect/effect/IStickerDecoder;", "()V", "textBitmap", "Landroid/graphics/Bitmap;", "destroy", "", "duration", "", "getFrame", "seekTo", "time", "size", "Landroid/util/Size;", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   implements IStickerDecoder
 {
-  private Bitmap NEw;
+  private Bitmap UqH;
   
   public a()
   {
-    AppMethodBeat.i(229941);
+    AppMethodBeat.i(282131);
     Bitmap localBitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ALPHA_8);
-    p.j(localBitmap, "Bitmap.createBitmap(1, 1, Bitmap.Config.ALPHA_8)");
-    this.NEw = localBitmap;
-    AppMethodBeat.o(229941);
+    s.s(localBitmap, "createBitmap(1, 1, Bitmap.Config.ALPHA_8)");
+    this.UqH = localBitmap;
+    AppMethodBeat.o(282131);
   }
   
   public final void destroy() {}
@@ -32,22 +32,22 @@ public final class a
   
   public final Bitmap getFrame()
   {
-    return this.NEw;
+    return this.UqH;
   }
   
   public final void seekTo(long paramLong) {}
   
   public final Size size()
   {
-    AppMethodBeat.i(229937);
+    AppMethodBeat.i(282164);
     Size localSize = new Size(0, 0);
-    AppMethodBeat.o(229937);
+    AppMethodBeat.o(282164);
     return localSize;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.timelineeditor.emojidecoder.a
  * JD-Core Version:    0.7.0.1
  */

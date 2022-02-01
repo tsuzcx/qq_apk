@@ -1,27 +1,22 @@
 package com.tencent.mm.plugin.gallery.model;
 
-import android.content.Context;
 import android.database.Cursor;
-import android.util.SparseArray;
 import com.tencent.mm.modelgeo.a;
-import com.tencent.mm.plugin.gallery.b.i;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public abstract class b
-  implements i
+  implements l
 {
-  public static String BTX = "date_modified";
-  public static String BTY = "datetaken";
-  protected int BTV = 100;
-  protected String[] BTW = { "camera", "screenshots", "download" };
-  private boolean BTZ = false;
-  volatile boolean kUn = false;
+  public static String HGs = "date_modified";
+  public static String HGt = "datetaken";
+  protected int HGq = 100;
+  protected String[] HGr = { "camera", "screenshots", "download" };
+  private boolean HGu = false;
+  volatile boolean nzW = false;
   
   /* Error */
   private static long a(String paramString, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
@@ -57,7 +52,7 @@ public abstract class b
     //   55: ifle +30 -> 85
     //   58: iload 4
     //   60: ifeq +133 -> 193
-    //   63: getstatic 78	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
+    //   63: getstatic 78	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   66: astore_0
     //   67: iload_3
     //   68: ifeq +118 -> 186
@@ -75,7 +70,7 @@ public abstract class b
     //   91: ifle +141 -> 232
     //   94: iload 4
     //   96: ifeq +25 -> 121
-    //   99: getstatic 78	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
+    //   99: getstatic 78	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   102: astore_0
     //   103: iload_3
     //   104: ifeq +121 -> 225
@@ -93,7 +88,7 @@ public abstract class b
     //   127: lconst_0
     //   128: lcmp
     //   129: ifgt +30 -> 159
-    //   132: getstatic 78	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
+    //   132: getstatic 78	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   135: astore_0
     //   136: iload 4
     //   138: ifeq +131 -> 269
@@ -122,7 +117,7 @@ public abstract class b
     //   186: ldc2_w 94
     //   189: lstore_1
     //   190: goto -115 -> 75
-    //   193: getstatic 78	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
+    //   193: getstatic 78	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   196: astore_0
     //   197: iload_3
     //   198: ifeq +20 -> 218
@@ -143,7 +138,7 @@ public abstract class b
     //   229: goto -118 -> 111
     //   232: iload 4
     //   234: ifne -113 -> 121
-    //   237: getstatic 78	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
+    //   237: getstatic 78	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   240: astore_0
     //   241: iload_3
     //   242: ifeq +20 -> 262
@@ -179,7 +174,7 @@ public abstract class b
     //   299: ifle +30 -> 329
     //   302: iload 4
     //   304: ifeq +104 -> 408
-    //   307: getstatic 78	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
+    //   307: getstatic 78	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   310: astore_0
     //   311: iload_3
     //   312: ifeq +89 -> 401
@@ -197,7 +192,7 @@ public abstract class b
     //   335: ifle +112 -> 447
     //   338: iload 4
     //   340: ifeq +25 -> 365
-    //   343: getstatic 78	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
+    //   343: getstatic 78	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   346: astore_0
     //   347: iload_3
     //   348: ifeq +92 -> 440
@@ -215,7 +210,7 @@ public abstract class b
     //   371: lconst_0
     //   372: lcmp
     //   373: ifgt -214 -> 159
-    //   376: getstatic 78	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
+    //   376: getstatic 78	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   379: astore_0
     //   380: iload 4
     //   382: ifeq +102 -> 484
@@ -232,7 +227,7 @@ public abstract class b
     //   401: ldc2_w 94
     //   404: lstore_1
     //   405: goto -86 -> 319
-    //   408: getstatic 78	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
+    //   408: getstatic 78	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   411: astore_0
     //   412: iload_3
     //   413: ifeq +20 -> 433
@@ -253,7 +248,7 @@ public abstract class b
     //   444: goto -89 -> 355
     //   447: iload 4
     //   449: ifne -84 -> 365
-    //   452: getstatic 78	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
+    //   452: getstatic 78	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   455: astore_0
     //   456: iload_3
     //   457: ifeq +20 -> 477
@@ -281,7 +276,7 @@ public abstract class b
     //   498: ifle +32 -> 530
     //   501: iload 4
     //   503: ifeq +106 -> 609
-    //   506: getstatic 78	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
+    //   506: getstatic 78	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   509: astore 13
     //   511: iload_3
     //   512: ifeq +90 -> 602
@@ -299,7 +294,7 @@ public abstract class b
     //   536: ifle +114 -> 650
     //   539: iload 4
     //   541: ifeq +27 -> 568
-    //   544: getstatic 78	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
+    //   544: getstatic 78	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   547: astore 13
     //   549: iload_3
     //   550: ifeq +93 -> 643
@@ -315,7 +310,7 @@ public abstract class b
     //   570: lconst_0
     //   571: lcmp
     //   572: ifgt +28 -> 600
-    //   575: getstatic 78	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
+    //   575: getstatic 78	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   578: astore 13
     //   580: iload 4
     //   582: ifeq +107 -> 689
@@ -332,7 +327,7 @@ public abstract class b
     //   602: ldc2_w 94
     //   605: lstore_1
     //   606: goto -87 -> 519
-    //   609: getstatic 78	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
+    //   609: getstatic 78	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   612: astore 13
     //   614: iload_3
     //   615: ifeq +21 -> 636
@@ -353,7 +348,7 @@ public abstract class b
     //   647: goto -90 -> 557
     //   650: iload 4
     //   652: ifne -84 -> 568
-    //   655: getstatic 78	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
+    //   655: getstatic 78	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   658: astore 13
     //   660: iload_3
     //   661: ifeq +21 -> 682
@@ -408,15 +403,14 @@ public abstract class b
         long l = Util.safeParseLong(paramCursor.getString(paramCursor.getColumnIndexOrThrow("_id")));
         localObject = paramCursor.getString(paramCursor.getColumnIndexOrThrow("_data"));
         String str1 = paramCursor.getString(paramCursor.getColumnIndexOrThrow(paramString));
-        String str2 = paramCursor.getString(paramCursor.getColumnIndexOrThrow(BTX));
-        String str3 = paramCursor.getString(paramCursor.getColumnIndexOrThrow(BTY));
+        String str2 = paramCursor.getString(paramCursor.getColumnIndexOrThrow(HGs));
+        String str3 = paramCursor.getString(paramCursor.getColumnIndexOrThrow(HGt));
         if (Util.isNullOrNil(str1))
         {
           Log.e("MicroMsg.BaseMediaQuery", "null or nil album name, ignore this folder");
           return null;
         }
-        int i;
-        if (com.tencent.mm.plugin.gallery.a.e.evd())
+        if (com.tencent.mm.plugin.gallery.b.h.fBW())
         {
           i = 0;
           Log.d("MicroMsg.BaseMediaQuery", "%s(%s) path:%s", new Object[] { str1, Integer.valueOf(i), localObject });
@@ -427,68 +421,31 @@ public abstract class b
           paramString = GalleryItem.MediaItem.a(paramInt, l, paramString, null, paramCursor.getString(paramCursor.getColumnIndexOrThrow("mime_type")));
           a(str2, str3, paramInt, paramString);
           localObject = new GalleryItem.AlbumItem(str1, i);
-          ((GalleryItem.AlbumItem)localObject).BVd = paramString;
-          ((GalleryItem.AlbumItem)localObject).MtW = paramCursor.getString(paramCursor.getColumnIndexOrThrow("bucket_id"));
-          if (!Util.isNullOrNil(((GalleryItem.AlbumItem)localObject).MtW))
+          ((GalleryItem.AlbumItem)localObject).HHB = paramString;
+          ((GalleryItem.AlbumItem)localObject).akit = paramCursor.getString(paramCursor.getColumnIndexOrThrow("bucket_id"));
+          if (!Util.isNullOrNil(((GalleryItem.AlbumItem)localObject).akit))
           {
-            paramInt = Util.safeParseInt(((GalleryItem.AlbumItem)localObject).MtW);
-            if (com.tencent.mm.plugin.gallery.a.e.Cfb != paramInt) {
-              continue;
-            }
-            ((GalleryItem.AlbumItem)localObject).nickName = MMApplicationContext.getContext().getString(b.i.gallery_album_weixin);
-            paramCursor = (GalleryItem.a)e.eti().get(paramInt);
-            if (paramCursor != null)
-            {
-              if (!paramCursor.key.toLowerCase().equals("WeChatWork")) {
-                break label505;
-              }
-              ((GalleryItem.AlbumItem)localObject).nickName = MMApplicationContext.getContext().getString(b.i.gallery_album_wechat_work);
+            paramCursor = h.HHz;
+            paramCursor = h.ID(((GalleryItem.AlbumItem)localObject).akit);
+            if (!Util.isNullOrNil(paramCursor)) {
+              ((GalleryItem.AlbumItem)localObject).nickName = paramCursor;
             }
           }
-          ((GalleryItem.AlbumItem)localObject).xzT = 0;
-          ((GalleryItem.AlbumItem)localObject).NSX = com.tencent.mm.plugin.gallery.a.e.evd();
+          ((GalleryItem.AlbumItem)localObject).AXs = 0;
+          ((GalleryItem.AlbumItem)localObject).akiw = com.tencent.mm.plugin.gallery.b.h.fBW();
           return localObject;
         }
-        else
-        {
-          int j = paramCursor.getInt(3);
-          if (j != 0)
-          {
-            i = j;
-            if (!Util.isNullOrNil((String)localObject)) {
-              continue;
-            }
-          }
-          Log.e("MicroMsg.BaseMediaQuery", "query album failed, " + j + ", " + (String)localObject);
-          return null;
-        }
-        if (com.tencent.mm.plugin.gallery.a.e.Cfc == paramInt)
-        {
-          ((GalleryItem.AlbumItem)localObject).nickName = MMApplicationContext.getContext().getString(b.i.gallery_album_camera);
-          continue;
-        }
-        if (com.tencent.mm.plugin.gallery.a.e.Cfd != paramInt) {
-          break label445;
-        }
       }
-      catch (Throwable paramCursor)
+      finally
       {
         Log.printErrStackTrace("MicroMsg.BaseMediaQuery", paramCursor, "#albumConvertFrom failed", new Object[0]);
         return null;
       }
-      ((GalleryItem.AlbumItem)localObject).nickName = MMApplicationContext.getContext().getString(b.i.gallery_album_download);
-      continue;
-      label445:
-      if (com.tencent.mm.plugin.gallery.a.e.Cfe.contains(Integer.valueOf(paramInt)))
+      int i = paramCursor.getInt(3);
+      if ((i == 0) || (Util.isNullOrNil((String)localObject)))
       {
-        ((GalleryItem.AlbumItem)localObject).nickName = MMApplicationContext.getContext().getString(b.i.gallery_album_screenshots);
-      }
-      else if (com.tencent.mm.plugin.gallery.a.e.Cff.contains(Integer.valueOf(paramInt)))
-      {
-        ((GalleryItem.AlbumItem)localObject).nickName = MMApplicationContext.getContext().getString(b.i.gallery_album_screenshots_video);
-        continue;
-        label505:
-        ((GalleryItem.AlbumItem)localObject).nickName = paramCursor.BVh;
+        Log.e("MicroMsg.BaseMediaQuery", "query album failed, " + i + ", " + (String)localObject);
+        return null;
       }
     }
   }
@@ -515,8 +472,8 @@ public abstract class b
     }
     for (;;)
     {
-      paramMediaItem.BVm = l1;
-      paramMediaItem.BVo = l2;
+      paramMediaItem.HHK = l1;
+      paramMediaItem.HHM = l2;
       return;
       bool1 = false;
       break;
@@ -528,7 +485,41 @@ public abstract class b
     }
   }
   
-  protected static GalleryItem.MediaItem b(Cursor paramCursor, int paramInt)
+  static void bl(LinkedList<GalleryItem.AlbumItem> paramLinkedList)
+  {
+    GalleryItem.MediaItem localMediaItem = null;
+    Object localObject = paramLinkedList.iterator();
+    int i = 0;
+    int j;
+    if (((Iterator)localObject).hasNext())
+    {
+      GalleryItem.AlbumItem localAlbumItem = (GalleryItem.AlbumItem)((Iterator)localObject).next();
+      j = i;
+      if (!localAlbumItem.akiw) {
+        j = i + localAlbumItem.hGP;
+      }
+      if (localMediaItem != null) {
+        break label116;
+      }
+      localMediaItem = localAlbumItem.HHB;
+    }
+    label116:
+    for (;;)
+    {
+      i = j;
+      break;
+      localObject = new GalleryItem.AlbumItem("", i);
+      ((GalleryItem.AlbumItem)localObject).akiu = true;
+      if (localMediaItem != null) {}
+      for (((GalleryItem.AlbumItem)localObject).HHB = localMediaItem;; ((GalleryItem.AlbumItem)localObject).HHB = new GalleryItem.ImageMediaItem())
+      {
+        paramLinkedList.add(0, localObject);
+        return;
+      }
+    }
+  }
+  
+  protected static GalleryItem.MediaItem c(Cursor paramCursor, int paramInt)
   {
     Object localObject;
     if ((paramCursor == null) || (paramCursor.isAfterLast()) || (paramCursor.isClosed())) {
@@ -552,15 +543,15 @@ public abstract class b
             {
               long l = Util.safeParseLong(paramCursor.getString(paramCursor.getColumnIndexOrThrow("_id")));
               localObject = paramCursor.getString(paramCursor.getColumnIndexOrThrow("_data"));
-              str1 = paramCursor.getString(paramCursor.getColumnIndexOrThrow(BTX));
-              String str2 = paramCursor.getString(paramCursor.getColumnIndexOrThrow(BTY));
-              localMediaItem = GalleryItem.MediaItem.aw(paramInt, l);
-              localMediaItem.AAz = ((String)localObject);
+              str1 = paramCursor.getString(paramCursor.getColumnIndexOrThrow(HGs));
+              String str2 = paramCursor.getString(paramCursor.getColumnIndexOrThrow(HGt));
+              localMediaItem = GalleryItem.MediaItem.aD(paramInt, l);
+              localMediaItem.Gcc = ((String)localObject);
               a(str1, str2, paramInt, localMediaItem);
-              if (d.RAE)
+              if (d.Yxi)
               {
-                Log.v("MicroMsg.BaseMediaQuery", "[mediaConvertFrom] [" + l + " " + str1 + " " + str2 + "] | " + localMediaItem.BVm + " " + paramInt);
-                if ((!Util.isNullOrNil(localMediaItem.AAz)) || (!Util.isNullOrNil(localMediaItem.wAy))) {
+                Log.v("MicroMsg.BaseMediaQuery", "[mediaConvertFrom] [" + l + " " + str1 + " " + str2 + "] | " + localMediaItem.HHK + " " + paramInt);
+                if ((!Util.isNullOrNil(localMediaItem.Gcc)) || (!Util.isNullOrNil(localMediaItem.zWJ))) {
                   break;
                 }
                 Log.w("MicroMsg.BaseMediaQuery", "thumb file and original file both not exist");
@@ -568,11 +559,11 @@ public abstract class b
               }
               else
               {
-                Log.d("MicroMsg.BaseMediaQuery", "[mediaConvertFrom] [" + l + " " + str1 + " " + str2 + "] | " + localMediaItem.BVm + " " + paramInt);
+                Log.d("MicroMsg.BaseMediaQuery", "[mediaConvertFrom] [" + l + " " + str1 + " " + str2 + "] | " + localMediaItem.HHK + " " + paramInt);
               }
             }
           }
-          catch (Throwable paramCursor)
+          finally
           {
             Log.printErrStackTrace("MicroMsg.BaseMediaQuery", paramCursor, "", new Object[0]);
             return null;
@@ -588,8 +579,8 @@ public abstract class b
         if (paramCursor.getType(paramInt) != 0)
         {
           d = paramCursor.getDouble(paramInt);
-          if (a.n(d)) {
-            localMediaItem.BVq = d;
+          if (a.D(d)) {
+            localMediaItem.HHO = d;
           }
         }
         paramInt = paramCursor.getColumnIndexOrThrow("longitude");
@@ -597,72 +588,28 @@ public abstract class b
       } while (paramCursor.getType(paramInt) == 0);
       d = paramCursor.getDouble(paramInt);
       localObject = localMediaItem;
-    } while (!a.m(d));
-    localMediaItem.BVp = d;
+    } while (!a.C(d));
+    localMediaItem.HHN = d;
     return localMediaItem;
     label476:
     return null;
   }
   
-  static void bd(LinkedList<GalleryItem.AlbumItem> paramLinkedList)
+  final boolean a(l.c paramc, LinkedList<GalleryItem.MediaItem> paramLinkedList, long paramLong, boolean paramBoolean)
   {
-    GalleryItem.MediaItem localMediaItem = null;
-    Object localObject = paramLinkedList.iterator();
-    int i = 0;
-    int j;
-    if (((Iterator)localObject).hasNext())
-    {
-      GalleryItem.AlbumItem localAlbumItem = (GalleryItem.AlbumItem)((Iterator)localObject).next();
-      j = i;
-      if (!localAlbumItem.NSX) {
-        j = i + localAlbumItem.fCa;
-      }
-      if (localMediaItem != null) {
-        break label116;
-      }
-      localMediaItem = localAlbumItem.BVd;
-    }
-    label116:
-    for (;;)
-    {
-      i = j;
-      break;
-      localObject = new GalleryItem.AlbumItem("", i);
-      ((GalleryItem.AlbumItem)localObject).MtX = true;
-      if (localMediaItem != null) {}
-      for (((GalleryItem.AlbumItem)localObject).BVd = localMediaItem;; ((GalleryItem.AlbumItem)localObject).BVd = new GalleryItem.ImageMediaItem())
-      {
-        paramLinkedList.add(0, localObject);
-        return;
-      }
-    }
-  }
-  
-  final boolean a(i.c paramc, LinkedList<GalleryItem.MediaItem> paramLinkedList, long paramLong, boolean paramBoolean)
-  {
-    if (!this.BTZ) {
+    if (!this.HGu) {
       if (!paramBoolean) {
         break label69;
       }
     }
     label69:
-    for (this.BTV = 200; (paramc != null) && (paramLinkedList.size() % this.BTV == 0); this.BTV = 5000)
+    for (this.HGq = 200; (paramc != null) && (paramLinkedList.size() % this.HGq == 0); this.HGq = 5000)
     {
-      Log.d("MicroMsg.BaseMediaQuery", "page notify, notifyCount: %d.", new Object[] { Integer.valueOf(this.BTV) });
+      Log.d("MicroMsg.BaseMediaQuery", "page notify, notifyCount: %d.", new Object[] { Integer.valueOf(this.HGq) });
       paramc.b(paramLinkedList, paramLong, paramBoolean);
       return true;
     }
     return false;
-  }
-  
-  public int aIp(String paramString)
-  {
-    return 0;
-  }
-  
-  public int aIq(String paramString)
-  {
-    return 0;
   }
   
   public String b(String[] paramArrayOfString, boolean paramBoolean)
@@ -670,55 +617,55 @@ public abstract class b
     return null;
   }
   
-  public String bK(String paramString, boolean paramBoolean)
+  public String ce(String paramString, boolean paramBoolean)
   {
     return null;
   }
   
-  public String[] esT()
+  public final void fAa()
+  {
+    this.nzW = true;
+  }
+  
+  public String[] fzV()
   {
     return new String[0];
   }
   
-  public String[] esU()
+  public String[] fzW()
   {
     return new String[0];
   }
   
-  public String esV()
+  public String fzX()
   {
     return null;
   }
   
-  public String esW()
+  public String fzY()
   {
     return null;
   }
   
-  public final void esX()
+  public final void fzZ()
   {
-    this.BTZ = true;
-    this.BTV = 1000;
-  }
-  
-  public final void esY()
-  {
-    this.kUn = true;
+    this.HGu = true;
+    this.HGq = 1000;
   }
   
   public final boolean isCancelled()
   {
-    return this.kUn;
+    return this.nzW;
   }
   
-  public String rR(boolean paramBoolean)
+  public String vQ(boolean paramBoolean)
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.b
  * JD-Core Version:    0.7.0.1
  */

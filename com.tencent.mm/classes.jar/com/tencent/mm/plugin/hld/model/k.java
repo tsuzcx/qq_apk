@@ -2,100 +2,117 @@ package com.tencent.mm.plugin.hld.model;
 
 import android.content.Context;
 import android.view.View;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.f.b.a.gb;
-import com.tencent.mm.f.b.a.gc;
-import com.tencent.mm.f.b.a.gd;
-import com.tencent.mm.f.b.a.ge;
-import com.tencent.mm.f.b.a.gf;
-import com.tencent.mm.f.b.a.gg;
-import com.tencent.mm.f.b.a.gh;
-import com.tencent.mm.f.b.a.gi;
-import com.tencent.mm.f.b.a.gk;
-import com.tencent.mm.f.b.a.gn;
-import com.tencent.mm.f.b.a.gr;
+import com.tencent.mm.autogen.mmdata.rpt.hw;
+import com.tencent.mm.autogen.mmdata.rpt.hx;
+import com.tencent.mm.autogen.mmdata.rpt.hy;
+import com.tencent.mm.autogen.mmdata.rpt.hz;
+import com.tencent.mm.autogen.mmdata.rpt.ia;
+import com.tencent.mm.autogen.mmdata.rpt.ib;
+import com.tencent.mm.autogen.mmdata.rpt.ic;
+import com.tencent.mm.autogen.mmdata.rpt.id;
+import com.tencent.mm.autogen.mmdata.rpt.ie;
+import com.tencent.mm.autogen.mmdata.rpt.if;
+import com.tencent.mm.autogen.mmdata.rpt.ig;
+import com.tencent.mm.autogen.mmdata.rpt.ih;
+import com.tencent.mm.autogen.mmdata.rpt.ii;
+import com.tencent.mm.autogen.mmdata.rpt.im;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.kernel.b.g.a;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.plugin.hld.a.f;
 import com.tencent.mm.plugin.hld.a.d;
+import com.tencent.mm.plugin.hld.f.l;
 import com.tencent.mm.plugin.hld.keyboard.c;
-import com.tencent.mm.protocal.protobuf.clh;
-import com.tencent.mm.protocal.protobuf.clk;
-import com.tencent.mm.protocal.protobuf.cln;
-import com.tencent.mm.protocal.protobuf.clp;
-import com.tencent.mm.protocal.protobuf.clr;
-import com.tencent.mm.protocal.protobuf.cls;
+import com.tencent.mm.protocal.protobuf.dbp;
+import com.tencent.mm.protocal.protobuf.dbs;
+import com.tencent.mm.protocal.protobuf.dbv;
+import com.tencent.mm.protocal.protobuf.dbx;
+import com.tencent.mm.protocal.protobuf.dbz;
+import com.tencent.mm.protocal.protobuf.dca;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/model/ImeReporter;", "", "()V", "TAG", "", "chooseCandidateRecord", "Lcom/tencent/mm/plugin/hld/model/ImeReporter$PressOperationRecord;", "getChooseCandidateRecord", "()Lcom/tencent/mm/plugin/hld/model/ImeReporter$PressOperationRecord;", "setChooseCandidateRecord", "(Lcom/tencent/mm/plugin/hld/model/ImeReporter$PressOperationRecord;)V", "clickKeyRecord", "ifCreatePerformanceObject", "", "addChineseQwertyOperation", "", "v", "Landroid/view/View;", "operationType", "", "btn", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/ImeButton;", "addClickOperation", "keyArea", "addEnglishQwertyOperation", "addFloatViewOperation", "addInputToScreenOperation", "length", "addNumberOperation", "addOperation", "addT9Operation", "appendPermissionList", "stringBuilder", "Ljava/lang/StringBuilder;", "Lkotlin/text/StringBuilder;", "permissions", "", "code", "(Ljava/lang/StringBuilder;[Ljava/lang/String;I)V", "createPerformanceRecord", "onWindowHide", "onWindowShown", "context", "Landroid/content/Context;", "reportChooseCandidate", "candidateType", "order", "reportChooseFirstCandidate", "reportClientEnvironment", "reportDictDownloadStatus", "downloadStatus", "Lcom/tencent/mm/plugin/hld/model/ImeResDownloadStatus;", "localDict", "Lcom/tencent/mm/protocal/protobuf/ImeLocalCloudDict;", "errorCode", "reportEmojiOperation", "actionType", "subType", "emojiType", "reportFilter", "reportInputToScreenOperation", "reportOpenClose", "open", "reportProcessChooseCandidateRecord", "engineProcessTimestamp", "", "notifyToUIThreadTime", "pressTime", "engineProcessTime", "reportProcessClickKeyRecord", "getCandidateTime", "reportProcessOneKeyRecord", "uIUpdateTime", "keyType", "reportServiceEnable", "enable", "scene", "extendInt", "extendStr", "reportSetting", "pageType", "reportStartRecord", "performance", "Lcom/tencent/mm/protocal/protobuf/ImeLocalPerformance;", "reportStartRecordNew", "localPerformance", "reportUserActionInGuide", "enterScene", "isJoinCollectData", "reportUserOperation", "reportUserPermission", "permissionList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "reportUserStatusInGuide", "status", "ifGuide", "setChooseCandidate", "setClickKey", "updateImeProcessServiceTimestamp", "startTimestamp", "updateImeServiceByCreateSession", "createSessionTime", "sessionType", "updateImeServiceByEngine", "engineInitializeTime", "engineConfigTime", "engineAddCellTime", "engineNetworkTime", "updateImeServiceByLoadContact", "loadContactTime", "updateImeServiceByOnCreate", "createStartTimestamp", "createEndTimestamp", "updateImeServiceByStartInput", "startInputTimestamp", "startInputEndTimestamp", "updateImeServiceByStartInputView", "startInputViewTimestamp", "updateImeServiceByWindowShow", "windowShowTimestamp", "windowShowEndTimestamp", "keyboard", "updatePrivacySettingUITimestamp", "updateSettingUITimestamp", "PressOperationRecord", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/model/ImeReporter;", "", "()V", "TAG", "", "chooseCandidateRecord", "Lcom/tencent/mm/plugin/hld/model/ImeReporter$PressOperationRecord;", "getChooseCandidateRecord", "()Lcom/tencent/mm/plugin/hld/model/ImeReporter$PressOperationRecord;", "setChooseCandidateRecord", "(Lcom/tencent/mm/plugin/hld/model/ImeReporter$PressOperationRecord;)V", "clickKeyRecord", "ifCreatePerformanceObject", "", "addChineseQwertyOperation", "", "v", "Landroid/view/View;", "operationType", "", "btn", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/ImeButton;", "addClickOperation", "keyArea", "addEnglishQwertyOperation", "addFloatViewOperation", "addInputToScreenOperation", "length", "addNumberOperation", "addOperation", "addT9Operation", "appendPermissionList", "stringBuilder", "Ljava/lang/StringBuilder;", "Lkotlin/text/StringBuilder;", "permissions", "", "code", "(Ljava/lang/StringBuilder;[Ljava/lang/String;I)V", "createPerformanceRecord", "onWindowHide", "onWindowShown", "context", "Landroid/content/Context;", "reportChooseCandidate", "candidateType", "order", "reportChooseFirstCandidate", "reportClientEnvironment", "reportDictDownloadStatus", "downloadStatus", "Lcom/tencent/mm/plugin/hld/model/ImeResDownloadStatus;", "localDict", "Lcom/tencent/mm/protocal/protobuf/ImeLocalCloudDict;", "errorCode", "reportEmojiOperation", "actionType", "subType", "emojiType", "reportFilter", "reportInputToScreenOperation", "reportOpenClose", "open", "reportProcessChooseCandidateRecord", "engineProcessTimestamp", "", "notifyToUIThreadTime", "pressTime", "engineProcessTime", "reportProcessClickKeyRecord", "getCandidateTime", "reportProcessOneKeyRecord", "uIUpdateTime", "keyType", "reportServiceEnable", "enable", "scene", "extendInt", "extendStr", "reportSetting", "pageType", "reportStartRecord", "performance", "Lcom/tencent/mm/protocal/protobuf/ImeLocalPerformance;", "reportStartRecordNew", "localPerformance", "reportUserActionInGuide", "enterScene", "isJoinCollectData", "reportUserOperation", "reportUserPermission", "permissionList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "reportUserStatusInGuide", "status", "ifGuide", "setChooseCandidate", "setClickKey", "updateImeProcessServiceTimestamp", "startTimestamp", "updateImeServiceByCreateSession", "createSessionTime", "sessionType", "updateImeServiceByEngine", "engineInitializeTime", "engineConfigTime", "engineAddCellTime", "engineNetworkTime", "updateImeServiceByLoadContact", "loadContactTime", "updateImeServiceByOnCreate", "createStartTimestamp", "createEndTimestamp", "updateImeServiceByStartInput", "startInputTimestamp", "startInputEndTimestamp", "updateImeServiceByStartInputView", "startInputViewTimestamp", "updateImeServiceByWindowShow", "windowShowTimestamp", "windowShowEndTimestamp", "keyboard", "updatePrivacySettingUITimestamp", "updateSettingUITimestamp", "PressOperationRecord", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class k
 {
-  private static boolean DCY;
-  private static a DCZ;
-  private static a DDa;
-  public static final k DDb;
+  public static final k JvH;
+  private static boolean JvI;
+  private static a JvJ;
+  private static a JvK;
   
   static
   {
-    AppMethodBeat.i(209396);
-    DDb = new k();
-    AppMethodBeat.o(209396);
+    AppMethodBeat.i(312509);
+    JvH = new k();
+    AppMethodBeat.o(312509);
   }
   
-  public static void NV(long paramLong)
+  public static void YA(int paramInt)
   {
-    AppMethodBeat.i(209357);
-    DDa = new a(paramLong, 0, System.currentTimeMillis());
-    AppMethodBeat.o(209357);
+    AppMethodBeat.i(312181);
+    js(paramInt, 1);
+    AppMethodBeat.o(312181);
   }
   
-  public static void NW(long paramLong)
+  public static void YB(int paramInt)
   {
-    AppMethodBeat.i(209361);
-    if (eEz())
+    AppMethodBeat.i(312299);
+    if (fMC())
     {
-      AppMethodBeat.o(209361);
+      AppMethodBeat.o(312299);
       return;
     }
-    com.tencent.e.h.ZvG.d((Runnable)new r(paramLong), "WxIme.ImeReporter");
-    AppMethodBeat.o(209361);
+    com.tencent.threadpool.h.ahAA.g(new k..ExternalSyntheticLambda0(paramInt), "WxIme.ImeReporter");
+    AppMethodBeat.o(312299);
   }
   
-  public static void NX(long paramLong)
+  private static final void YC(int paramInt)
   {
-    AppMethodBeat.i(209363);
-    com.tencent.e.h.ZvG.d((Runnable)new l(paramLong), "WxIme.ImeReporter");
-    AppMethodBeat.o(209363);
-  }
-  
-  public static void UC(int paramInt)
-  {
-    AppMethodBeat.i(209347);
-    if (eEz())
+    AppMethodBeat.i(312492);
+    Object localObject = (dbv)((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.secdata.g.class)).getOnlyMemory(10, "id_context");
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ah.aiuX)
     {
-      AppMethodBeat.o(209347);
+      if (localObject == null) {
+        Log.e("WxIme.ImeReporter", "getOnlyMemory(addInputToScreenOperation) 10 id_context is null");
+      }
+      AppMethodBeat.o(312492);
+      return;
+      ((dbv)localObject).aaHp.addLast(Integer.valueOf(paramInt));
+      Log.d("WxIme.ImeReporter", s.X("addInputToScreenOperation ", Integer.valueOf(paramInt)));
+    }
+  }
+  
+  public static void Yz(int paramInt)
+  {
+    AppMethodBeat.i(311993);
+    if (fMC())
+    {
+      AppMethodBeat.o(311993);
       return;
     }
-    Object localObject1 = com.tencent.mm.plugin.hld.f.g.DHh;
-    localObject1 = com.tencent.mm.plugin.hld.f.g.eGz();
-    Object localObject2 = com.tencent.mm.plugin.hld.f.g.DHh;
-    localObject2 = com.tencent.mm.plugin.hld.f.g.aLG((String)localObject1);
+    Object localObject1 = com.tencent.mm.plugin.hld.f.g.Jyo;
+    localObject1 = com.tencent.mm.plugin.hld.f.g.fOn();
+    Object localObject2 = com.tencent.mm.plugin.hld.f.g.Jyo;
+    localObject2 = com.tencent.mm.plugin.hld.f.g.aIz((String)localObject1);
     int i;
     if (Util.isEqual((String)localObject1, "emoji")) {
       i = 1;
     }
     for (;;)
     {
-      n(paramInt, (String)localObject2, i);
-      AppMethodBeat.o(209347);
+      r(paramInt, (String)localObject2, i);
+      AppMethodBeat.o(311993);
       return;
       if (Util.isEqual((String)localObject1, "kaoemoji")) {
         i = 2;
@@ -105,478 +122,1419 @@ public final class k
     }
   }
   
-  public static void UD(int paramInt)
+  private static void a(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, int paramInt)
   {
-    AppMethodBeat.i(209385);
-    if (eEz())
+    AppMethodBeat.i(312075);
+    if (fMC())
     {
-      AppMethodBeat.o(209385);
-      return;
-    }
-    com.tencent.e.h.ZvG.d((Runnable)new k.b(paramInt), "WxIme.ImeReporter");
-    AppMethodBeat.o(209385);
-  }
-  
-  public static void X(long paramLong, int paramInt)
-  {
-    AppMethodBeat.i(209354);
-    DCZ = new a(paramLong, paramInt, System.currentTimeMillis());
-    AppMethodBeat.o(209354);
-  }
-  
-  public static void Y(long paramLong, int paramInt)
-  {
-    AppMethodBeat.i(209362);
-    com.tencent.e.h.ZvG.d((Runnable)new j(paramLong, paramInt), "WxIme.ImeReporter");
-    AppMethodBeat.o(209362);
-  }
-  
-  static void a(long paramLong1, long paramLong2, final long paramLong3, long paramLong4, long paramLong5, final int paramInt)
-  {
-    AppMethodBeat.i(209359);
-    if (eEz())
-    {
-      AppMethodBeat.o(209359);
+      AppMethodBeat.o(312075);
       return;
     }
     if (System.currentTimeMillis() % 100L != 1L)
     {
-      AppMethodBeat.o(209359);
+      AppMethodBeat.o(312075);
       return;
     }
-    n localn = n.DEn;
-    final int i = n.eEW();
-    com.tencent.e.h.ZvG.be((Runnable)new g(paramLong1, paramLong2, paramLong3, paramLong4, i, paramLong5, paramInt));
-    AppMethodBeat.o(209359);
+    n localn = n.JvW;
+    int i = n.fMZ();
+    com.tencent.threadpool.h.ahAA.bm(new k..ExternalSyntheticLambda12(paramLong1, paramLong2, paramLong3, paramLong4, 0L, i, paramLong5, paramInt));
+    AppMethodBeat.o(312075);
+  }
+  
+  private static final void a(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, int paramInt1, long paramLong6, int paramInt2)
+  {
+    AppMethodBeat.i(312382);
+    id localid = new id();
+    localid.iPw = paramLong1;
+    localid.iPx = paramLong2;
+    localid.iPy = paramLong3;
+    localid.iPz = paramLong4;
+    localid.iPA = paramLong5;
+    localid.iPB = paramInt1;
+    localid.iPC = paramLong6;
+    localid.iPD = paramInt2;
+    localid.bMH();
+    AppMethodBeat.o(312382);
   }
   
   public static void a(com.tencent.mm.plugin.hld.keyboard.selfdraw.b paramb, int paramInt)
   {
-    AppMethodBeat.i(209381);
-    kotlin.g.b.p.k(paramb, "btn");
-    if (eEz())
+    AppMethodBeat.i(312275);
+    s.u(paramb, "btn");
+    if (fMC())
     {
-      AppMethodBeat.o(209381);
+      AppMethodBeat.o(312275);
       return;
     }
     paramb = paramb.id;
-    int i;
     switch (paramb.hashCode())
     {
-    default: 
-    case 109637894: 
-    case -1423372151: 
-    case -1423372152: 
-    case -1423372149: 
-    case -1423372150: 
-    case -1423372147: 
-    case -1423372148: 
-    case -1423372145: 
-    case -1423372146: 
-    case -1423372159: 
-    case -1423372157: 
-    case -1423372158: 
-    case -1423372155: 
-    case -1423372156: 
-    case -1423372153: 
-    case -1423372154: 
-    case -1423372135: 
-    case -1423372136: 
-    case -1423372134: 
-    case -1423372143: 
-    case -1423372144: 
-    case -1423372141: 
-    case -1423372142: 
-    case -1423372139: 
-    case -1423372140: 
-    case -1423372137: 
-    case -1423372138: 
-    case -535868465: 
-      label542:
-      do
-      {
-        do
-        {
-          for (i = -1;; i = 104)
-          {
-            hO(i, paramInt);
-            AppMethodBeat.o(209381);
-            return;
-            if (!paramb.equals("space")) {
-              break;
-            }
-          }
-        } while (!paramb.equals("S2_key_i"));
-        for (;;)
-        {
-          i = 200;
-          break label542;
-          if (!paramb.equals("S2_key_h")) {
-            break;
-          }
-          continue;
-          if (!paramb.equals("S2_key_k")) {
-            break;
-          }
-          continue;
-          if (!paramb.equals("S2_key_j")) {
-            break;
-          }
-          continue;
-          if (!paramb.equals("S2_key_m")) {
-            break;
-          }
-          continue;
-          if (!paramb.equals("S2_key_l")) {
-            break;
-          }
-          continue;
-          if (!paramb.equals("S2_key_o")) {
-            break;
-          }
-          continue;
-          if (!paramb.equals("S2_key_n")) {
-            break;
-          }
-          continue;
-          if (!paramb.equals("S2_key_a")) {
-            break;
-          }
-          continue;
-          if (!paramb.equals("S2_key_c")) {
-            break;
-          }
-          continue;
-          if (!paramb.equals("S2_key_b")) {
-            break;
-          }
-          continue;
-          if (!paramb.equals("S2_key_e")) {
-            break;
-          }
-          continue;
-          if (!paramb.equals("S2_key_d")) {
-            break;
-          }
-          continue;
-          if (!paramb.equals("S2_key_g")) {
-            break;
-          }
-          continue;
-          if (!paramb.equals("S2_key_f")) {
-            break;
-          }
-          continue;
-          if (!paramb.equals("S2_key_y")) {
-            break;
-          }
-          continue;
-          if (!paramb.equals("S2_key_x")) {
-            break;
-          }
-          continue;
-          if (!paramb.equals("S2_key_z")) {
-            break;
-          }
-          continue;
-          if (!paramb.equals("S2_key_q")) {
-            break;
-          }
-          continue;
-          if (!paramb.equals("S2_key_p")) {
-            break;
-          }
-          continue;
-          if (!paramb.equals("S2_key_s")) {
-            break;
-          }
-          continue;
-          if (!paramb.equals("S2_key_r")) {
-            break;
-          }
-          continue;
-          if (!paramb.equals("S2_key_u")) {
-            break;
-          }
-          continue;
-          if (!paramb.equals("S2_key_t")) {
-            break;
-          }
-          continue;
-          if (!paramb.equals("S2_key_w")) {
-            break;
-          }
-          continue;
-          if (!paramb.equals("S2_key_v")) {
-            break;
-          }
-        }
-      } while (!paramb.equals("S3_key_n"));
     }
     for (;;)
     {
-      label922:
-      i = 300;
-      break label542;
-      if (!paramb.equals("S3_key_m")) {
-        break;
-      }
-      continue;
-      if (!paramb.equals("S3_key_l")) {
-        break;
-      }
-      continue;
-      if (!paramb.equals("S3_key_k")) {
-        break;
-      }
-      continue;
-      if (!paramb.equals("S3_key_j")) {
-        break;
-      }
-      continue;
-      if (!paramb.equals("S3_key_i")) {
-        break;
-      }
-      continue;
-      if (!paramb.equals("S3_key_h")) {
-        break;
-      }
-      continue;
-      if (!paramb.equals("S3_key_g")) {
-        break;
-      }
-      continue;
-      if (!paramb.equals("S3_key_f")) {
-        break;
-      }
-      continue;
-      if (!paramb.equals("S3_key_e")) {
-        break;
-      }
-      continue;
-      if (!paramb.equals("S3_key_d")) {
-        break;
-      }
-      continue;
-      if (!paramb.equals("S3_key_c")) {
-        break;
-      }
-      continue;
-      if (!paramb.equals("S3_key_b")) {
-        break;
-      }
-      continue;
-      if (!paramb.equals("S3_key_a")) {
-        break;
-      }
-      continue;
-      if (!paramb.equals("S1_key_3")) {
-        break;
-      }
-      for (;;)
+      for (int i = -1;; i = 104)
       {
-        i = 100;
-        break label542;
-        if (!paramb.equals("S1_key_4")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("S1_key_1")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("S1_key_2")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("S1_key_7")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("S3_key_z")) {
-          break;
-        }
-        break label922;
-        if (!paramb.equals("S1_key_8")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("S3_key_y")) {
-          break;
-        }
-        break label922;
-        if (!paramb.equals("S1_key_5")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("S3_key_x")) {
-          break;
-        }
-        break label922;
-        if (!paramb.equals("S1_key_6")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("S3_key_w")) {
-          break;
-        }
-        break label922;
-        if (!paramb.equals("S3_key_v")) {
-          break;
-        }
-        break label922;
-        if (!paramb.equals("S3_key_u")) {
-          break;
-        }
-        break label922;
-        if (!paramb.equals("S1_key_9")) {
+        js(i, paramInt);
+        AppMethodBeat.o(312275);
+        return;
+        if (!paramb.equals("space")) {
           break;
         }
       }
-      if (!paramb.equals("S3_key_t")) {
-        break;
-      }
-      continue;
-      if (!paramb.equals("S3_key_s")) {
-        break;
-      }
-      continue;
-      if (!paramb.equals("S3_key_r")) {
-        break;
-      }
-      continue;
-      if (!paramb.equals("S3_key_q")) {
-        break;
-      }
-      continue;
-      if (!paramb.equals("S3_key_p")) {
-        break;
-      }
-      continue;
-      if (!paramb.equals("S3_key_o")) {
-        break;
+      if (paramb.equals("S2_key_i"))
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        do
+                        {
+                          do
+                          {
+                            do
+                            {
+                              do
+                              {
+                                do
+                                {
+                                  do
+                                  {
+                                    do
+                                    {
+                                      do
+                                      {
+                                        do
+                                        {
+                                          do
+                                          {
+                                            do
+                                            {
+                                              do
+                                              {
+                                                do
+                                                {
+                                                  do
+                                                  {
+                                                    do
+                                                    {
+                                                      do
+                                                      {
+                                                        do
+                                                        {
+                                                          i = 200;
+                                                          break;
+                                                        } while (paramb.equals("S2_key_h"));
+                                                        break;
+                                                      } while (paramb.equals("S2_key_k"));
+                                                      break;
+                                                    } while (paramb.equals("S2_key_j"));
+                                                    break;
+                                                  } while (paramb.equals("S2_key_m"));
+                                                  break;
+                                                } while (paramb.equals("S2_key_l"));
+                                                break;
+                                              } while (paramb.equals("S2_key_o"));
+                                              break;
+                                            } while (paramb.equals("S2_key_n"));
+                                            break;
+                                          } while (paramb.equals("S2_key_a"));
+                                          break;
+                                        } while (paramb.equals("S2_key_c"));
+                                        break;
+                                      } while (paramb.equals("S2_key_b"));
+                                      break;
+                                    } while (paramb.equals("S2_key_e"));
+                                    break;
+                                  } while (paramb.equals("S2_key_d"));
+                                  break;
+                                } while (paramb.equals("S2_key_g"));
+                                break;
+                              } while (paramb.equals("S2_key_f"));
+                              break;
+                            } while (paramb.equals("S2_key_y"));
+                            break;
+                          } while (paramb.equals("S2_key_x"));
+                          break;
+                        } while (paramb.equals("S2_key_z"));
+                        break;
+                      } while (paramb.equals("S2_key_q"));
+                      break;
+                    } while (paramb.equals("S2_key_p"));
+                    break;
+                  } while (paramb.equals("S2_key_s"));
+                  break;
+                } while (paramb.equals("S2_key_r"));
+                break;
+              } while (paramb.equals("S2_key_u"));
+              break;
+            } while (paramb.equals("S2_key_t"));
+            break;
+          } while (paramb.equals("S2_key_w"));
+          break;
+        } while (paramb.equals("S2_key_v"));
+        if ((goto 540) && (paramb.equals("S3_key_n"))) {
+          label922:
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        do
+                        {
+                          do
+                          {
+                            do
+                            {
+                              do
+                              {
+                                do
+                                {
+                                  do
+                                  {
+                                    do
+                                    {
+                                      do
+                                      {
+                                        do
+                                        {
+                                          do
+                                          {
+                                            do
+                                            {
+                                              do
+                                              {
+                                                i = 300;
+                                                break;
+                                              } while (paramb.equals("S3_key_m"));
+                                              break;
+                                            } while (paramb.equals("S3_key_l"));
+                                            break;
+                                          } while (paramb.equals("S3_key_k"));
+                                          break;
+                                        } while (paramb.equals("S3_key_j"));
+                                        break;
+                                      } while (paramb.equals("S3_key_i"));
+                                      break;
+                                    } while (paramb.equals("S3_key_h"));
+                                    break;
+                                  } while (paramb.equals("S3_key_g"));
+                                  break;
+                                } while (paramb.equals("S3_key_f"));
+                                break;
+                              } while (paramb.equals("S3_key_e"));
+                              break;
+                            } while (paramb.equals("S3_key_d"));
+                            break;
+                          } while (paramb.equals("S3_key_c"));
+                          break;
+                        } while (paramb.equals("S3_key_b"));
+                        break;
+                      } while (paramb.equals("S3_key_a"));
+                      if ((goto 540) || (!paramb.equals("S1_key_3"))) {
+                        break;
+                      }
+                      do
+                      {
+                        do
+                        {
+                          do
+                          {
+                            do
+                            {
+                              do
+                              {
+                                do
+                                {
+                                  do
+                                  {
+                                    do
+                                    {
+                                      i = 100;
+                                      break;
+                                    } while (paramb.equals("S1_key_4"));
+                                    break;
+                                  } while (paramb.equals("S1_key_1"));
+                                  break;
+                                } while (paramb.equals("S1_key_2"));
+                                break;
+                              } while (paramb.equals("S1_key_7"));
+                              break;
+                              if (paramb.equals("S3_key_z")) {
+                                break label922;
+                              }
+                              break;
+                            } while (paramb.equals("S1_key_8"));
+                            break;
+                            if (paramb.equals("S3_key_y")) {
+                              break label922;
+                            }
+                            break;
+                          } while (paramb.equals("S1_key_5"));
+                          break;
+                          if (paramb.equals("S3_key_x")) {
+                            break label922;
+                          }
+                          break;
+                        } while (paramb.equals("S1_key_6"));
+                        break;
+                        if (paramb.equals("S3_key_w")) {
+                          break label922;
+                        }
+                        break;
+                        if (paramb.equals("S3_key_v")) {
+                          break label922;
+                        }
+                        break;
+                        if (paramb.equals("S3_key_u")) {
+                          break label922;
+                        }
+                        break;
+                      } while (paramb.equals("S1_key_9"));
+                      break;
+                    } while (paramb.equals("S3_key_t"));
+                    break;
+                  } while (paramb.equals("S3_key_s"));
+                  break;
+                } while (paramb.equals("S3_key_r"));
+                break;
+              } while (paramb.equals("S3_key_q"));
+              break;
+            } while (paramb.equals("S3_key_p"));
+            break;
+          } while (paramb.equals("S3_key_o"));
+        }
       }
     }
   }
   
-  public static void a(m paramm, final clh paramclh, final int paramInt)
+  public static void a(m paramm, dbp paramdbp, int paramInt)
   {
-    AppMethodBeat.i(209351);
-    kotlin.g.b.p.k(paramm, "downloadStatus");
-    if (paramclh != null)
+    AppMethodBeat.i(312023);
+    s.u(paramm, "downloadStatus");
+    if (paramdbp == null) {}
+    for (paramm = null;; paramm = com.tencent.threadpool.h.ahAA.bm(new k..ExternalSyntheticLambda13(paramm, paramdbp, paramInt)))
     {
-      if (eEz())
+      if (paramm == null) {
+        Log.e("WxIme.ImeReporter", "reportDictDownloadStatus localDict is null");
+      }
+      AppMethodBeat.o(312023);
+      return;
+      if (fMC())
       {
-        AppMethodBeat.o(209351);
+        AppMethodBeat.o(312023);
         return;
       }
-      if (com.tencent.e.h.ZvG.be((Runnable)new f(paramm, paramclh, paramInt)) != null) {}
     }
-    else
-    {
-      Log.e("WxIme.ImeReporter", "reportDictDownloadStatus localDict is null");
-      paramm = x.aazN;
-    }
-    AppMethodBeat.o(209351);
   }
   
-  public static void ag(long paramLong1, long paramLong2)
+  private static void a(StringBuilder paramStringBuilder, String[] paramArrayOfString, int paramInt)
   {
-    AppMethodBeat.i(209358);
-    a locala = DDa;
+    AppMethodBeat.i(312084);
+    if (((CharSequence)paramStringBuilder).length() > 0) {}
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        paramStringBuilder.append(";");
+      }
+      l locall = l.JyV;
+      if (l.L(paramArrayOfString)) {
+        paramStringBuilder.append(paramInt);
+      }
+      AppMethodBeat.o(312084);
+      return;
+    }
+  }
+  
+  public static void aB(View paramView, int paramInt)
+  {
+    int j = 1;
+    AppMethodBeat.i(312292);
+    if (fMC())
+    {
+      AppMethodBeat.o(312292);
+      return;
+    }
+    if (paramView == null)
+    {
+      paramView = null;
+      if (paramView == null) {
+        Log.e("WxIme.ImeReporter", s.X("addFloatViewOperation v is null.", Util.getStack()));
+      }
+      AppMethodBeat.o(312292);
+      return;
+    }
+    int k = paramView.getId();
+    int i;
+    if (k == a.f.t9_key1)
+    {
+      i = 1;
+      label69:
+      if (i == 0) {
+        break label148;
+      }
+      i = 1;
+      label75:
+      if (i == 0) {
+        break label166;
+      }
+      i = 1;
+      label81:
+      if (i == 0) {
+        break label184;
+      }
+      i = 1;
+      label87:
+      if (i == 0) {
+        break label202;
+      }
+      i = 1;
+      label93:
+      if (i == 0) {
+        break label220;
+      }
+      i = 1;
+      label99:
+      if (i == 0) {
+        break label238;
+      }
+      i = 1;
+      label105:
+      if (i == 0) {
+        break label256;
+      }
+      i = 1;
+      label111:
+      if (i == 0) {
+        break label274;
+      }
+      i = 100;
+    }
+    label256:
+    label388:
+    label394:
+    label400:
+    label913:
+    for (;;)
+    {
+      js(i, paramInt);
+      paramView = ah.aiuX;
+      break;
+      if (k == a.f.t9_key2)
+      {
+        i = 1;
+        break label69;
+      }
+      i = 0;
+      break label69;
+      label148:
+      if (k == a.f.t9_key3)
+      {
+        i = 1;
+        break label75;
+      }
+      i = 0;
+      break label75;
+      label166:
+      if (k == a.f.t9_key4)
+      {
+        i = 1;
+        break label81;
+      }
+      i = 0;
+      break label81;
+      label184:
+      if (k == a.f.t9_key5)
+      {
+        i = 1;
+        break label87;
+      }
+      i = 0;
+      break label87;
+      label202:
+      if (k == a.f.t9_key6)
+      {
+        i = 1;
+        break label93;
+      }
+      i = 0;
+      break label93;
+      label220:
+      if (k == a.f.t9_key7)
+      {
+        i = 1;
+        break label99;
+      }
+      i = 0;
+      break label99;
+      label238:
+      if (k == a.f.t9_key8)
+      {
+        i = 1;
+        break label105;
+      }
+      i = 0;
+      break label105;
+      if (k == a.f.t9_key9)
+      {
+        i = 1;
+        break label111;
+      }
+      i = 0;
+      break label111;
+      label274:
+      if (k == a.f.t9_key_space)
+      {
+        i = 104;
+      }
+      else
+      {
+        if (k == a.f.s2_key_q)
+        {
+          i = 1;
+          label298:
+          if (i == 0) {
+            break label471;
+          }
+          i = 1;
+          label304:
+          if (i == 0) {
+            break label489;
+          }
+          i = 1;
+          label310:
+          if (i == 0) {
+            break label507;
+          }
+          i = 1;
+          label316:
+          if (i == 0) {
+            break label525;
+          }
+          i = 1;
+          label322:
+          if (i == 0) {
+            break label543;
+          }
+          i = 1;
+          label328:
+          if (i == 0) {
+            break label561;
+          }
+          i = 1;
+          label334:
+          if (i == 0) {
+            break label579;
+          }
+          i = 1;
+          label340:
+          if (i == 0) {
+            break label597;
+          }
+          i = 1;
+          label346:
+          if (i == 0) {
+            break label615;
+          }
+          i = 1;
+          label352:
+          if (i == 0) {
+            break label633;
+          }
+          i = 1;
+          label358:
+          if (i == 0) {
+            break label651;
+          }
+          i = 1;
+          label364:
+          if (i == 0) {
+            break label669;
+          }
+          i = 1;
+          label370:
+          if (i == 0) {
+            break label687;
+          }
+          i = 1;
+          label376:
+          if (i == 0) {
+            break label705;
+          }
+          i = 1;
+          label382:
+          if (i == 0) {
+            break label723;
+          }
+          i = 1;
+          if (i == 0) {
+            break label741;
+          }
+          i = 1;
+          if (i == 0) {
+            break label759;
+          }
+          i = 1;
+          if (i == 0) {
+            break label777;
+          }
+          i = 1;
+          label406:
+          if (i == 0) {
+            break label795;
+          }
+          i = 1;
+          label412:
+          if (i == 0) {
+            break label813;
+          }
+          i = 1;
+          label418:
+          if (i == 0) {
+            break label831;
+          }
+          i = 1;
+          label424:
+          if (i == 0) {
+            break label849;
+          }
+          i = 1;
+          label430:
+          if (i == 0) {
+            break label867;
+          }
+          i = 1;
+          label436:
+          if (i == 0) {
+            break label885;
+          }
+          i = 1;
+        }
+        for (;;)
+        {
+          if (i == 0) {
+            break label903;
+          }
+          i = 200;
+          break;
+          if (k == a.f.s2_key_w)
+          {
+            i = 1;
+            break label298;
+          }
+          i = 0;
+          break label298;
+          label471:
+          if (k == a.f.s2_key_e)
+          {
+            i = 1;
+            break label304;
+          }
+          i = 0;
+          break label304;
+          label489:
+          if (k == a.f.s2_key_r)
+          {
+            i = 1;
+            break label310;
+          }
+          i = 0;
+          break label310;
+          label507:
+          if (k == a.f.s2_key_t)
+          {
+            i = 1;
+            break label316;
+          }
+          i = 0;
+          break label316;
+          if (k == a.f.s2_key_y)
+          {
+            i = 1;
+            break label322;
+          }
+          i = 0;
+          break label322;
+          label543:
+          if (k == a.f.s2_key_u)
+          {
+            i = 1;
+            break label328;
+          }
+          i = 0;
+          break label328;
+          label561:
+          if (k == a.f.s2_key_i)
+          {
+            i = 1;
+            break label334;
+          }
+          i = 0;
+          break label334;
+          label579:
+          if (k == a.f.s2_key_o)
+          {
+            i = 1;
+            break label340;
+          }
+          i = 0;
+          break label340;
+          label597:
+          if (k == a.f.s2_key_p)
+          {
+            i = 1;
+            break label346;
+          }
+          i = 0;
+          break label346;
+          label615:
+          if (k == a.f.s2_key_a)
+          {
+            i = 1;
+            break label352;
+          }
+          i = 0;
+          break label352;
+          label633:
+          if (k == a.f.s2_key_s)
+          {
+            i = 1;
+            break label358;
+          }
+          i = 0;
+          break label358;
+          if (k == a.f.s2_key_d)
+          {
+            i = 1;
+            break label364;
+          }
+          i = 0;
+          break label364;
+          label669:
+          if (k == a.f.s2_key_f)
+          {
+            i = 1;
+            break label370;
+          }
+          i = 0;
+          break label370;
+          label687:
+          if (k == a.f.s2_key_g)
+          {
+            i = 1;
+            break label376;
+          }
+          i = 0;
+          break label376;
+          label705:
+          if (k == a.f.s2_key_h)
+          {
+            i = 1;
+            break label382;
+          }
+          i = 0;
+          break label382;
+          label723:
+          if (k == a.f.s2_key_j)
+          {
+            i = 1;
+            break label388;
+          }
+          i = 0;
+          break label388;
+          label741:
+          if (k == a.f.s2_key_k)
+          {
+            i = 1;
+            break label394;
+          }
+          i = 0;
+          break label394;
+          label759:
+          if (k == a.f.s2_key_l)
+          {
+            i = 1;
+            break label400;
+          }
+          i = 0;
+          break label400;
+          if (k == a.f.s2_key_z)
+          {
+            i = 1;
+            break label406;
+          }
+          i = 0;
+          break label406;
+          label795:
+          if (k == a.f.s2_key_x)
+          {
+            i = 1;
+            break label412;
+          }
+          i = 0;
+          break label412;
+          label813:
+          if (k == a.f.s2_key_c)
+          {
+            i = 1;
+            break label418;
+          }
+          i = 0;
+          break label418;
+          label831:
+          if (k == a.f.s2_key_v)
+          {
+            i = 1;
+            break label424;
+          }
+          i = 0;
+          break label424;
+          label849:
+          if (k == a.f.s2_key_b)
+          {
+            i = 1;
+            break label430;
+          }
+          i = 0;
+          break label430;
+          label867:
+          if (k == a.f.s2_key_n)
+          {
+            i = 1;
+            break label436;
+          }
+          i = 0;
+          break label436;
+          label885:
+          if (k == a.f.s2_key_m) {
+            i = 1;
+          } else {
+            i = 0;
+          }
+        }
+        if (k == a.f.s3_key_q)
+        {
+          i = 1;
+          if (i == 0) {
+            break label1086;
+          }
+          i = 1;
+          label919:
+          if (i == 0) {
+            break label1104;
+          }
+          i = 1;
+          label925:
+          if (i == 0) {
+            break label1122;
+          }
+          i = 1;
+          label931:
+          if (i == 0) {
+            break label1140;
+          }
+          i = 1;
+          label937:
+          if (i == 0) {
+            break label1158;
+          }
+          i = 1;
+          label943:
+          if (i == 0) {
+            break label1176;
+          }
+          i = 1;
+          label949:
+          if (i == 0) {
+            break label1194;
+          }
+          i = 1;
+          label955:
+          if (i == 0) {
+            break label1212;
+          }
+          i = 1;
+          label961:
+          if (i == 0) {
+            break label1230;
+          }
+          i = 1;
+          label967:
+          if (i == 0) {
+            break label1248;
+          }
+          i = 1;
+          label973:
+          if (i == 0) {
+            break label1266;
+          }
+          i = 1;
+          label979:
+          if (i == 0) {
+            break label1284;
+          }
+          i = 1;
+          label985:
+          if (i == 0) {
+            break label1302;
+          }
+          i = 1;
+          label991:
+          if (i == 0) {
+            break label1320;
+          }
+          i = 1;
+          label997:
+          if (i == 0) {
+            break label1338;
+          }
+          i = 1;
+          label1003:
+          if (i == 0) {
+            break label1356;
+          }
+          i = 1;
+          label1009:
+          if (i == 0) {
+            break label1374;
+          }
+          i = 1;
+          label1015:
+          if (i == 0) {
+            break label1392;
+          }
+          i = 1;
+          label1021:
+          if (i == 0) {
+            break label1410;
+          }
+          i = 1;
+          if (i == 0) {
+            break label1428;
+          }
+          i = 1;
+          if (i == 0) {
+            break label1446;
+          }
+          i = 1;
+          if (i == 0) {
+            break label1464;
+          }
+          i = 1;
+          label1045:
+          if (i == 0) {
+            break label1482;
+          }
+          i = 1;
+          label1051:
+          if (i == 0) {
+            break label1500;
+          }
+          i = j;
+        }
+        for (;;)
+        {
+          if (i == 0) {
+            break label1515;
+          }
+          i = 300;
+          break;
+          if (k == a.f.s3_key_w)
+          {
+            i = 1;
+            break label913;
+          }
+          i = 0;
+          break label913;
+          label1086:
+          if (k == a.f.s3_key_e)
+          {
+            i = 1;
+            break label919;
+          }
+          i = 0;
+          break label919;
+          label1104:
+          if (k == a.f.s3_key_r)
+          {
+            i = 1;
+            break label925;
+          }
+          i = 0;
+          break label925;
+          label1122:
+          if (k == a.f.s3_key_t)
+          {
+            i = 1;
+            break label931;
+          }
+          i = 0;
+          break label931;
+          label1140:
+          if (k == a.f.s3_key_y)
+          {
+            i = 1;
+            break label937;
+          }
+          i = 0;
+          break label937;
+          if (k == a.f.s3_key_u)
+          {
+            i = 1;
+            break label943;
+          }
+          i = 0;
+          break label943;
+          label1176:
+          if (k == a.f.s3_key_i)
+          {
+            i = 1;
+            break label949;
+          }
+          i = 0;
+          break label949;
+          label1194:
+          if (k == a.f.s3_key_o)
+          {
+            i = 1;
+            break label955;
+          }
+          i = 0;
+          break label955;
+          label1212:
+          if (k == a.f.s3_key_p)
+          {
+            i = 1;
+            break label961;
+          }
+          i = 0;
+          break label961;
+          label1230:
+          if (k == a.f.s3_key_a)
+          {
+            i = 1;
+            break label967;
+          }
+          i = 0;
+          break label967;
+          label1248:
+          if (k == a.f.s3_key_s)
+          {
+            i = 1;
+            break label973;
+          }
+          i = 0;
+          break label973;
+          label1266:
+          if (k == a.f.s3_key_d)
+          {
+            i = 1;
+            break label979;
+          }
+          i = 0;
+          break label979;
+          if (k == a.f.s3_key_f)
+          {
+            i = 1;
+            break label985;
+          }
+          i = 0;
+          break label985;
+          label1302:
+          if (k == a.f.s3_key_g)
+          {
+            i = 1;
+            break label991;
+          }
+          i = 0;
+          break label991;
+          label1320:
+          if (k == a.f.s3_key_h)
+          {
+            i = 1;
+            break label997;
+          }
+          i = 0;
+          break label997;
+          label1338:
+          if (k == a.f.s3_key_j)
+          {
+            i = 1;
+            break label1003;
+          }
+          i = 0;
+          break label1003;
+          label1356:
+          if (k == a.f.s3_key_k)
+          {
+            i = 1;
+            break label1009;
+          }
+          i = 0;
+          break label1009;
+          label1374:
+          if (k == a.f.s3_key_l)
+          {
+            i = 1;
+            break label1015;
+          }
+          i = 0;
+          break label1015;
+          label1392:
+          if (k == a.f.s3_key_z)
+          {
+            i = 1;
+            break label1021;
+          }
+          i = 0;
+          break label1021;
+          if (k == a.f.s3_key_x)
+          {
+            i = 1;
+            break label1027;
+          }
+          i = 0;
+          break label1027;
+          label1428:
+          if (k == a.f.s3_key_c)
+          {
+            i = 1;
+            break label1033;
+          }
+          i = 0;
+          break label1033;
+          label1446:
+          if (k == a.f.s3_key_v)
+          {
+            i = 1;
+            break label1039;
+          }
+          i = 0;
+          break label1039;
+          label1464:
+          if (k == a.f.s3_key_b)
+          {
+            i = 1;
+            break label1045;
+          }
+          i = 0;
+          break label1045;
+          label1482:
+          if (k == a.f.s3_key_n)
+          {
+            i = 1;
+            break label1051;
+          }
+          i = 0;
+          break label1051;
+          label1500:
+          i = j;
+          if (k != a.f.s3_key_m) {
+            i = 0;
+          }
+        }
+        label1515:
+        i = -1;
+      }
+    }
+  }
+  
+  public static void aK(int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(311925);
+    if (fMC())
+    {
+      AppMethodBeat.o(311925);
+      return;
+    }
+    hz localhz = new hz();
+    localhz.ipH = paramInt1;
+    localhz.iHU = paramInt2;
+    localhz.iPp = paramInt3;
+    localhz.bMH();
+    AppMethodBeat.o(311925);
+  }
+  
+  public static void aK(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(312058);
+    a(paramLong1, 0L, paramLong2, 0L, 2L, 0);
+    AppMethodBeat.o(312058);
+  }
+  
+  public static void aL(int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(311987);
+    if (fMC())
+    {
+      AppMethodBeat.o(311987);
+      return;
+    }
+    if localif = new if();
+    localif.ipH = paramInt1;
+    localif.iPf = paramInt2;
+    localif.iPH = paramInt3;
+    localif.bMH();
+    AppMethodBeat.o(311987);
+  }
+  
+  public static void aL(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(312064);
+    a locala = JvK;
     if (locala != null)
     {
-      a(locala.Dui, paramLong1 - locala.DDc, paramLong2, 0L, 2L, 0);
-      DDa = null;
-      AppMethodBeat.o(209358);
-      return;
+      a(locala.JnG, paramLong1 - locala.JvL, paramLong2, 0L, 2L, 0);
+      JvK = null;
     }
-    AppMethodBeat.o(209358);
+    AppMethodBeat.o(312064);
   }
   
-  public static void am(View paramView, int paramInt)
+  private static final void aM(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(209384);
-    if (eEz())
+    AppMethodBeat.i(312483);
+    Object localObject = (dbv)((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.secdata.g.class)).getOnlyMemory(10, "id_context");
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ah.aiuX)
     {
-      AppMethodBeat.o(209384);
+      if (localObject == null) {
+        Log.e("WxIme.ImeReporter", "getOnlyMemory(addOperation) 10 id_context is null");
+      }
+      AppMethodBeat.o(312483);
+      return;
+      dbx localdbx = new dbx();
+      localdbx.aaHq = paramInt1;
+      localdbx.aaHr = paramInt2;
+      localdbx.aaHs = paramInt3;
+      ((dbv)localObject).aaHo.addLast(localdbx);
+      Log.d("WxIme.ImeReporter", "addOperation " + localdbx.aaHq + ' ' + localdbx.aaHr + ' ' + localdbx.aaHs);
+    }
+  }
+  
+  public static void aM(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(312112);
+    if (fMC())
+    {
+      AppMethodBeat.o(312112);
       return;
     }
-    if (paramView != null)
+    com.tencent.threadpool.h.ahAA.g(new k..ExternalSyntheticLambda8(paramLong1, paramLong2), "WxIme.ImeReporter");
+    AppMethodBeat.o(312112);
+  }
+  
+  public static void aN(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(312116);
+    if (fMC())
     {
-      int i = paramView.getId();
-      if ((i == a.f.t9_key1) || (i == a.f.t9_key2) || (i == a.f.t9_key3) || (i == a.f.t9_key4) || (i == a.f.t9_key5) || (i == a.f.t9_key6) || (i == a.f.t9_key7) || (i == a.f.t9_key8) || (i == a.f.t9_key9)) {
-        i = 100;
-      }
-      for (;;)
+      AppMethodBeat.o(312116);
+      return;
+    }
+    com.tencent.threadpool.h.ahAA.g(new k..ExternalSyntheticLambda9(paramLong1, paramLong2), "WxIme.ImeReporter");
+    AppMethodBeat.o(312116);
+  }
+  
+  private static final void aO(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(312414);
+    fMz();
+    dbs localdbs = (dbs)((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.secdata.g.class)).getOnlyMemory(10, "id_performance");
+    if (localdbs != null)
+    {
+      localdbs.aaHe.aaHt = paramLong1;
+      localdbs.aaHe.aaHu = paramLong2;
+      localdbs.aaHe.aaHv = (paramLong2 - paramLong1);
+      localdbs.aaHe.aaHw = true;
+    }
+    AppMethodBeat.o(312414);
+  }
+  
+  private static final void aP(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(312421);
+    dbs localdbs = (dbs)((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.secdata.g.class)).getOnlyMemory(10, "id_performance");
+    if (localdbs != null)
+    {
+      localdbs.aaHe.aaHx = paramLong1;
+      localdbs.aaHe.aaHy = paramLong2;
+      localdbs.aaHe.aaHz = (paramLong2 - paramLong1);
+      localdbs.aaHe.aaHA = true;
+    }
+    AppMethodBeat.o(312421);
+  }
+  
+  public static void an(long paramLong, int paramInt)
+  {
+    AppMethodBeat.i(312043);
+    JvJ = new a(paramLong, paramInt, System.currentTimeMillis());
+    AppMethodBeat.o(312043);
+  }
+  
+  public static void ao(long paramLong, int paramInt)
+  {
+    AppMethodBeat.i(312155);
+    com.tencent.threadpool.h.ahAA.g(new k..ExternalSyntheticLambda7(paramLong, paramInt), "WxIme.ImeReporter");
+    AppMethodBeat.o(312155);
+  }
+  
+  private static final void ap(long paramLong, int paramInt)
+  {
+    AppMethodBeat.i(312447);
+    dbs localdbs = (dbs)((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.secdata.g.class)).getOnlyMemory(10, "id_performance");
+    if ((localdbs != null) && (!localdbs.aaHj.aaHN))
+    {
+      localdbs.aaHj.aaHK = paramLong;
+      localdbs.aaHj.sessionType = paramInt;
+    }
+    AppMethodBeat.o(312447);
+  }
+  
+  private static final void b(m paramm, dbp paramdbp, int paramInt)
+  {
+    AppMethodBeat.i(312372);
+    s.u(paramm, "$downloadStatus");
+    im localim = new im();
+    localim.iyK = paramm.value;
+    localim.iQg = localim.F("DictName", paramdbp.name, true);
+    localim.iQh = paramdbp.version;
+    localim.iQi = paramdbp.aaGX;
+    localim.ivL = paramdbp.KPQ;
+    localim.iQj = paramdbp.dataType;
+    localim.iQk = paramdbp.oGu;
+    localim.iQl = localim.F("CompressedMd5", paramdbp.Znz, true);
+    localim.iQm = paramdbp.typeId;
+    localim.iQn = localim.F("CdnUrl", paramdbp.mOI, true);
+    localim.iQo = localim.F("OriMd5", paramdbp.md5, true);
+    localim.iQp = paramdbp.aaGZ;
+    localim.inj = paramInt;
+    localim.bMH();
+    AppMethodBeat.o(312372);
+  }
+  
+  private static final void c(int paramInt1, int paramInt2, int paramInt3, String paramString)
+  {
+    AppMethodBeat.i(312360);
+    s.u(paramString, "$extendStr");
+    ie localie = new ie();
+    localie.iPE = paramInt1;
+    localie.imW = paramInt2;
+    localie.iPF = paramInt3;
+    localie.iPG = localie.F("ExtendStr", paramString, true);
+    localie.bMH();
+    AppMethodBeat.o(312360);
+  }
+  
+  public static void c(long paramLong1, long paramLong2, long paramLong3, long paramLong4)
+  {
+    AppMethodBeat.i(312127);
+    if (fMC())
+    {
+      AppMethodBeat.o(312127);
+      return;
+    }
+    long l = System.currentTimeMillis();
+    com.tencent.threadpool.h.ahAA.g(new k..ExternalSyntheticLambda11(paramLong1, paramLong2, paramLong3, paramLong4, l), "WxIme.ImeReporter");
+    AppMethodBeat.o(312127);
+  }
+  
+  private static final void c(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5)
+  {
+    AppMethodBeat.i(312439);
+    dbs localdbs = (dbs)((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.secdata.g.class)).getOnlyMemory(10, "id_performance");
+    if ((localdbs != null) && (!localdbs.aaHj.aaHN))
+    {
+      localdbs.aaHj.aaHG = paramLong1;
+      localdbs.aaHj.aaHH = paramLong2;
+      localdbs.aaHj.aaHI = paramLong3;
+      localdbs.aaHj.aaHJ = paramLong4;
+      localdbs.aaHj.aaHO = paramLong5;
+      if (!localdbs.aaHj.aaHN)
       {
-        hO(i, paramInt);
-        AppMethodBeat.o(209384);
-        return;
-        if (i == a.f.t9_key_space) {
-          i = 104;
-        } else if ((i == a.f.s2_key_q) || (i == a.f.s2_key_w) || (i == a.f.s2_key_e) || (i == a.f.s2_key_r) || (i == a.f.s2_key_t) || (i == a.f.s2_key_y) || (i == a.f.s2_key_u) || (i == a.f.s2_key_i) || (i == a.f.s2_key_o) || (i == a.f.s2_key_p) || (i == a.f.s2_key_a) || (i == a.f.s2_key_s) || (i == a.f.s2_key_d) || (i == a.f.s2_key_f) || (i == a.f.s2_key_g) || (i == a.f.s2_key_h) || (i == a.f.s2_key_j) || (i == a.f.s2_key_k) || (i == a.f.s2_key_l) || (i == a.f.s2_key_z) || (i == a.f.s2_key_x) || (i == a.f.s2_key_c) || (i == a.f.s2_key_v) || (i == a.f.s2_key_b) || (i == a.f.s2_key_n) || (i == a.f.s2_key_m)) {
-          i = 200;
-        } else if ((i == a.f.s3_key_q) || (i == a.f.s3_key_w) || (i == a.f.s3_key_e) || (i == a.f.s3_key_r) || (i == a.f.s3_key_t) || (i == a.f.s3_key_y) || (i == a.f.s3_key_u) || (i == a.f.s3_key_i) || (i == a.f.s3_key_o) || (i == a.f.s3_key_p) || (i == a.f.s3_key_a) || (i == a.f.s3_key_s) || (i == a.f.s3_key_d) || (i == a.f.s3_key_f) || (i == a.f.s3_key_g) || (i == a.f.s3_key_h) || (i == a.f.s3_key_j) || (i == a.f.s3_key_k) || (i == a.f.s3_key_l) || (i == a.f.s3_key_z) || (i == a.f.s3_key_x) || (i == a.f.s3_key_c) || (i == a.f.s3_key_v) || (i == a.f.s3_key_b) || (i == a.f.s3_key_n) || (i == a.f.s3_key_m)) {
-          i = 300;
-        } else {
-          i = -1;
+        int i = 0;
+        Object localObject;
+        if ((localdbs.aaHj.aaHL == 0L) || (localdbs.aaHj.aaHO == 0L))
+        {
+          localObject = l.JyV;
+          if (l.bGa())
+          {
+            localObject = com.tencent.mm.plugin.hld.f.i.JyA;
+            if (!com.tencent.mm.plugin.hld.f.i.fOo()) {
+              break label159;
+            }
+          }
+        }
+        i = 1;
+        label159:
+        if (i != 0)
+        {
+          localdbs.aaHj.aaHN = true;
+          localObject = new ig();
+          ((ig)localObject).iPI = localdbs.aaHj.aaHG;
+          ((ig)localObject).iPJ = localdbs.aaHj.aaHK;
+          ((ig)localObject).iPK = localdbs.aaHj.sessionType;
+          ((ig)localObject).iPL = localdbs.aaHj.aaHH;
+          ((ig)localObject).iPM = localdbs.aaHj.aaHI;
+          ((ig)localObject).iPN = localdbs.aaHj.aaHJ;
+          ((ig)localObject).iPO = localdbs.aaHj.aaHL;
+          ((ig)localObject).iPP = (localdbs.aaHj.aaHO - localdbs.aaHe.aaHt);
+          ((ig)localObject).bMH();
+          Log.d("WxIme.ImeReporter", s.X("reportStartRecordNew ", ((ig)localObject).aIF()));
         }
       }
     }
-    Log.e("WxIme.ImeReporter", "addFloatViewOperation v is null." + Util.getStack());
-    AppMethodBeat.o(209384);
+    AppMethodBeat.o(312439);
   }
   
-  public static void ao(int paramInt1, int paramInt2, int paramInt3)
+  public static void fMA()
   {
-    AppMethodBeat.i(209339);
-    if (eEz())
+    AppMethodBeat.i(312325);
+    if (fMC())
     {
-      AppMethodBeat.o(209339);
+      AppMethodBeat.o(312325);
       return;
     }
-    ge localge = new ge();
-    localge.mE(paramInt1);
-    localge.mF(paramInt2);
-    localge.mG(paramInt3);
-    localge.bpa();
-    AppMethodBeat.o(209339);
-  }
-  
-  public static void ap(int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(209346);
-    if (eEz())
+    wX(false);
+    dbv localdbv;
+    if (!fMC())
     {
-      AppMethodBeat.o(209346);
-      return;
-    }
-    gk localgk = new gk();
-    localgk.mQ(paramInt1);
-    localgk.mR(paramInt2);
-    localgk.mS(paramInt3);
-    localgk.bpa();
-    AppMethodBeat.o(209346);
-  }
-  
-  public static void eEx()
-  {
-    AppMethodBeat.i(209389);
-    if (eEz())
-    {
-      AppMethodBeat.o(209389);
-      return;
-    }
-    sR(false);
-    if (!eEz())
-    {
-      cln localcln = (cln)((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.secdata.g.class)).getOnlyMemory(10, "id_context");
-      if (localcln == null) {
-        break label466;
+      localdbv = (dbv)((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.secdata.g.class)).getOnlyMemory(10, "id_context");
+      if (localdbv != null) {
+        break label102;
       }
-      Object localObject1 = localcln.Ttd;
-      kotlin.g.b.p.j(localObject1, "it.operationList");
+    }
+    for (Object localObject1 = null;; localObject1 = ah.aiuX)
+    {
+      if (localObject1 == null) {
+        Log.e("WxIme.ImeReporter", "getOnlyMemory(reportUserOperation) 10 id_context is null");
+      }
+      fMB();
+      ((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.secdata.g.class)).removeFromMemory(10, "id_context");
+      AppMethodBeat.o(312325);
+      return;
+      label102:
+      localObject1 = localdbv.aaHo;
+      s.s(localObject1, "it.operationList");
       int i;
       if (!((Collection)localObject1).isEmpty()) {
         i = 1;
@@ -585,35 +1543,35 @@ public final class k
       {
         long l = System.currentTimeMillis();
         localObject1 = new JSONArray();
-        Iterator localIterator = localcln.Ttd.iterator();
+        Iterator localIterator = localdbv.aaHo.iterator();
         Object localObject2;
         for (;;)
         {
           if (localIterator.hasNext())
           {
-            clp localclp = (clp)localIterator.next();
+            dbx localdbx = (dbx)localIterator.next();
             localObject2 = localObject1;
             if (((JSONArray)localObject1).length() > 100)
             {
               localObject2 = localObject1;
-              if (localclp.Tth == 0)
+              if (localdbx.aaHs == 0)
               {
                 localObject2 = new JSONObject();
                 ((JSONObject)localObject2).put("num", ((JSONArray)localObject1).length());
                 ((JSONObject)localObject2).put("operationList", localObject1);
-                localObject1 = new gn();
-                ((gn)localObject1).vz(localcln.sessionId);
+                localObject1 = new ii();
+                ((ii)localObject1).rL(localdbv.sessionId);
                 localObject2 = ((JSONObject)localObject2).toString();
-                kotlin.g.b.p.j(localObject2, "result.toString()");
-                ((gn)localObject1).vA(kotlin.n.n.l((String)localObject2, ",", ";", false));
-                ((gn)localObject1).bpa();
+                s.s(localObject2, "result.toString()");
+                ((ii)localObject1).rM(kotlin.n.n.bV((String)localObject2, ",", ";"));
+                ((ii)localObject1).bMH();
                 localObject2 = new JSONArray();
               }
             }
             localObject1 = new JSONObject();
-            ((JSONObject)localObject1).put("area", localclp.Ttf);
-            ((JSONObject)localObject1).put("type", localclp.Ttg);
-            ((JSONObject)localObject1).put("status", localclp.Tth);
+            ((JSONObject)localObject1).put("area", localdbx.aaHq);
+            ((JSONObject)localObject1).put("type", localdbx.aaHr);
+            ((JSONObject)localObject1).put("status", localdbx.aaHs);
             ((JSONArray)localObject2).put(localObject1);
             localObject1 = localObject2;
             continue;
@@ -626,40 +1584,37 @@ public final class k
           localObject2 = new JSONObject();
           ((JSONObject)localObject2).put("num", ((JSONArray)localObject1).length());
           ((JSONObject)localObject2).put("operationList", localObject1);
-          localObject1 = new gn();
-          ((gn)localObject1).vz(localcln.sessionId);
+          localObject1 = new ii();
+          ((ii)localObject1).rL(localdbv.sessionId);
           localObject2 = ((JSONObject)localObject2).toString();
-          kotlin.g.b.p.j(localObject2, "result.toString()");
-          ((gn)localObject1).vA(kotlin.n.n.l((String)localObject2, ",", ";", false));
-          ((gn)localObject1).bpa();
+          s.s(localObject2, "result.toString()");
+          ((ii)localObject1).rM(kotlin.n.n.bV((String)localObject2, ",", ";"));
+          ((ii)localObject1).bMH();
         }
-        Log.i("WxIme.ImeReporter", "reportUserOperation time:" + (System.currentTimeMillis() - l));
+        Log.i("WxIme.ImeReporter", s.X("reportUserOperation time:", Long.valueOf(System.currentTimeMillis() - l)));
       }
-    }
-    for (;;)
-    {
-      eEy();
-      ((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.secdata.g.class)).removeFromMemory(10, "id_context");
-      AppMethodBeat.o(209389);
-      return;
-      label466:
-      Log.e("WxIme.ImeReporter", "getOnlyMemory(reportUserOperation) 10 id_context is null");
     }
   }
   
-  private static void eEy()
+  private static void fMB()
   {
-    AppMethodBeat.i(209392);
-    if (eEz())
+    AppMethodBeat.i(312334);
+    if (fMC())
     {
-      AppMethodBeat.o(209392);
+      AppMethodBeat.o(312334);
       return;
     }
-    cln localcln = (cln)((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.secdata.g.class)).getOnlyMemory(10, "id_context");
-    if (localcln != null)
+    dbv localdbv = (dbv)((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.secdata.g.class)).getOnlyMemory(10, "id_context");
+    if (localdbv == null) {}
+    for (Object localObject1 = null;; localObject1 = ah.aiuX)
     {
-      Object localObject1 = localcln.Tte;
-      kotlin.g.b.p.j(localObject1, "it.inputToScreenOperationList");
+      if (localObject1 == null) {
+        Log.e("WxIme.ImeReporter", "getOnlyMemory(reportInputToScreenOperation) 10 id_context is null");
+      }
+      AppMethodBeat.o(312334);
+      return;
+      localObject1 = localdbv.aaHp;
+      s.s(localObject1, "it.inputToScreenOperationList");
       int i;
       if (!((Collection)localObject1).isEmpty()) {
         i = 1;
@@ -668,7 +1623,7 @@ public final class k
       {
         System.currentTimeMillis();
         localObject1 = new JSONArray();
-        Iterator localIterator = localcln.Tte.iterator();
+        Iterator localIterator = localdbv.aaHp.iterator();
         Object localObject2;
         for (;;)
         {
@@ -681,16 +1636,16 @@ public final class k
               localObject2 = new JSONObject();
               ((JSONObject)localObject2).put("num", ((JSONArray)localObject1).length());
               ((JSONObject)localObject2).put("operationList", localObject1);
-              localObject1 = new gg();
-              ((gg)localObject1).vt(localcln.sessionId);
+              localObject1 = new ib();
+              ((ib)localObject1).rJ(localdbv.sessionId);
               localObject2 = ((JSONObject)localObject2).toString();
-              kotlin.g.b.p.j(localObject2, "result.toString()");
-              ((gg)localObject1).vu(kotlin.n.n.l((String)localObject2, ",", ";", false));
-              ((gg)localObject1).bpa();
+              s.s(localObject2, "result.toString()");
+              ((ib)localObject1).rK(kotlin.n.n.bV((String)localObject2, ",", ";"));
+              ((ib)localObject1).bMH();
               localObject2 = new JSONArray();
             }
             localObject1 = new JSONObject();
-            kotlin.g.b.p.j(localInteger, "operation");
+            s.s(localInteger, "operation");
             ((JSONObject)localObject1).put("num", localInteger.intValue());
             ((JSONArray)localObject2).put(localObject1);
             localObject1 = localObject2;
@@ -704,362 +1659,1522 @@ public final class k
           localObject2 = new JSONObject();
           ((JSONObject)localObject2).put("num", ((JSONArray)localObject1).length());
           ((JSONObject)localObject2).put("operationList", localObject1);
-          localObject1 = new gg();
-          ((gg)localObject1).vt(localcln.sessionId);
+          localObject1 = new ib();
+          ((ib)localObject1).rJ(localdbv.sessionId);
           localObject2 = ((JSONObject)localObject2).toString();
-          kotlin.g.b.p.j(localObject2, "result.toString()");
-          ((gg)localObject1).vu(kotlin.n.n.l((String)localObject2, ",", ";", false));
-          ((gg)localObject1).bpa();
+          s.s(localObject2, "result.toString()");
+          ((ib)localObject1).rK(kotlin.n.n.bV((String)localObject2, ",", ";"));
+          ((ib)localObject1).bMH();
         }
       }
-      AppMethodBeat.o(209392);
-      return;
     }
-    Log.e("WxIme.ImeReporter", "getOnlyMemory(reportInputToScreenOperation) 10 id_context is null");
-    AppMethodBeat.o(209392);
   }
   
-  public static boolean eEz()
+  public static boolean fMC()
   {
-    AppMethodBeat.i(209394);
-    p localp = p.DEH;
-    if (p.eFn())
+    AppMethodBeat.i(312343);
+    o localo = o.Jwm;
+    if (o.fNe())
     {
-      AppMethodBeat.o(209394);
+      AppMethodBeat.o(312343);
       return true;
     }
-    AppMethodBeat.o(209394);
+    AppMethodBeat.o(312343);
     return false;
   }
   
-  public static void ff(View paramView)
+  private static final void fMD()
   {
-    AppMethodBeat.i(209365);
-    if (eEz())
+    AppMethodBeat.i(312353);
+    Object localObject1 = new hx();
+    try
     {
-      AppMethodBeat.o(209365);
+      Object localObject2 = l.JyV;
+      ((hx)localObject1).iPh = ((hx)localObject1).F("AppName", l.fPc(), true);
+      localObject2 = new StringBuilder();
+      a((StringBuilder)localObject2, new String[] { "android.permission.READ_CONTACTS" }, 1);
+      a((StringBuilder)localObject2, new String[] { "android.permission.ACCESS_COARSE_LOCATION", "android.permission.ACCESS_FINE_LOCATION" }, 3);
+      a((StringBuilder)localObject2, new String[] { "android.permission.RECORD_AUDIO" }, 4);
+      a((StringBuilder)localObject2, new String[] { "android.permission.CAMERA" }, 5);
+      a((StringBuilder)localObject2, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" }, 6);
+      a((StringBuilder)localObject2, new String[] { "android.permission.READ_EXTERNAL_STORAGE" }, 7);
+      a((StringBuilder)localObject2, new String[] { "android.permission.READ_PHONE_STATE" }, 8);
+      a((StringBuilder)localObject2, new String[] { "android.permission.USE_FINGERPRINT" }, 9);
+      ((hx)localObject1).iPi = ((hx)localObject1).F("PermissionList", ((StringBuilder)localObject2).toString(), true);
+      localObject2 = l.JyV;
+      ((hx)localObject1).iPj = l.fPd();
+      localObject2 = l.JyV;
+      ((hx)localObject1).iPk = l.fPg();
+      localObject2 = l.JyV;
+      ((hx)localObject1).iPl = l.fPh();
+      localObject2 = l.JyV;
+      ((hx)localObject1).iPm = ((hx)localObject1).F("CpuInfo", l.fPi(), true);
+      ((hx)localObject1).bMH();
+      localObject1 = l.JyV;
+      localObject1 = l.getKV();
+      if (localObject1 != null) {
+        ((MultiProcessMMKV)localObject1).putBoolean("ime_if_report_client_environment", true);
+      }
+      AppMethodBeat.o(312353);
       return;
     }
-    if (paramView != null)
+    catch (Exception localException)
     {
-      int i = paramView.getId();
-      if ((i == a.f.t9_key1) || (i == a.f.t9_key2) || (i == a.f.t9_key3) || (i == a.f.t9_key4) || (i == a.f.t9_key5) || (i == a.f.t9_key6) || (i == a.f.t9_key7) || (i == a.f.t9_key8) || (i == a.f.t9_key9)) {
-        i = 100;
-      }
       for (;;)
       {
-        hO(i, 1);
-        AppMethodBeat.o(209365);
-        return;
-        if (i == a.f.t9_key_number)
-        {
-          i = 103;
+        Log.i("WxIme.ImeReporter", s.X("getCurIme ", localException.getMessage()));
+      }
+    }
+  }
+  
+  private static final void fME()
+  {
+    AppMethodBeat.i(312504);
+    com.tencent.mm.plugin.secdata.g localg = (com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.secdata.g.class);
+    dbv localdbv = new dbv();
+    localdbv.sessionId = String.valueOf(System.currentTimeMillis());
+    Object localObject = (d)com.tencent.mm.kernel.h.ax(d.class);
+    int i;
+    if (localObject != null)
+    {
+      localObject = ((d)localObject).fKG();
+      if ((localObject != null) && (((com.tencent.mm.plugin.hld.a.b)localObject).fKx() == true))
+      {
+        i = 1;
+        if (i == 0) {
+          break label157;
         }
-        else if (i == a.f.t9_key_space)
-        {
-          i = 104;
+        localObject = (d)com.tencent.mm.kernel.h.ax(d.class);
+        if (localObject != null) {
+          break label131;
         }
-        else if (i == a.f.t9_key_exchange)
+        i = 5;
+      }
+    }
+    for (;;)
+    {
+      localdbv.scene = i;
+      localObject = ah.aiuX;
+      localg.updateOnlyMemory(10, "id_context", (a)localdbv);
+      wX(true);
+      AppMethodBeat.o(312504);
+      return;
+      i = 0;
+      break;
+      label131:
+      localObject = ((d)localObject).fKG();
+      if (localObject == null)
+      {
+        i = 5;
+      }
+      else
+      {
+        i = ((com.tencent.mm.plugin.hld.a.b)localObject).fKz();
+        continue;
+        label157:
+        i = 0;
+      }
+    }
+  }
+  
+  public static void fMy()
+  {
+    int i = 1;
+    AppMethodBeat.i(312008);
+    if (fMC())
+    {
+      AppMethodBeat.o(312008);
+      return;
+    }
+    Object localObject = l.JyV;
+    localObject = l.getKV();
+    if ((localObject != null) && (((MultiProcessMMKV)localObject).getBoolean("ime_if_report_client_environment", false) == true)) {}
+    while (i != 0)
+    {
+      AppMethodBeat.o(312008);
+      return;
+      i = 0;
+    }
+    com.tencent.threadpool.h.ahAA.bm(k..ExternalSyntheticLambda14.INSTANCE);
+    AppMethodBeat.o(312008);
+  }
+  
+  private static void fMz()
+  {
+    AppMethodBeat.i(312173);
+    if (fMC())
+    {
+      AppMethodBeat.o(312173);
+      return;
+    }
+    if (JvI)
+    {
+      AppMethodBeat.o(312173);
+      return;
+    }
+    JvI = true;
+    com.tencent.mm.plugin.secdata.g localg = (com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.secdata.g.class);
+    dbs localdbs = new dbs();
+    Object localObject = new dbz();
+    ((dbz)localObject).aaHt = 0L;
+    ((dbz)localObject).aaHu = 0L;
+    ((dbz)localObject).aaHv = 0L;
+    ((dbz)localObject).aaHw = false;
+    ((dbz)localObject).aaHx = 0L;
+    ((dbz)localObject).aaHy = 0L;
+    ((dbz)localObject).aaHz = 0L;
+    ((dbz)localObject).aaHA = false;
+    ((dbz)localObject).aaHB = 0L;
+    ((dbz)localObject).aaHC = 0L;
+    ((dbz)localObject).aaHD = 0L;
+    ((dbz)localObject).aaHE = 0L;
+    ah localah = ah.aiuX;
+    localdbs.aaHe = ((dbz)localObject);
+    localObject = new dca();
+    ((dca)localObject).aaHG = 0L;
+    ((dca)localObject).aaHH = 0L;
+    ((dca)localObject).aaHI = 0L;
+    ((dca)localObject).aaHJ = 0L;
+    ((dca)localObject).aaHK = 0L;
+    ((dca)localObject).sessionType = 0;
+    ((dca)localObject).aaHL = 0L;
+    ((dca)localObject).hqS = 0L;
+    ((dca)localObject).aaHM = 0L;
+    localah = ah.aiuX;
+    localdbs.aaHj = ((dca)localObject);
+    localdbs.aaHf = 0L;
+    localdbs.aaHg = 0L;
+    localdbs.aaHh = 0L;
+    localdbs.aaHi = 1;
+    localObject = ah.aiuX;
+    localg.updateOnlyMemory(10, "id_performance", (a)localdbs);
+    AppMethodBeat.o(312173);
+  }
+  
+  public static void hR(View paramView)
+  {
+    AppMethodBeat.i(312197);
+    if (fMC())
+    {
+      AppMethodBeat.o(312197);
+      return;
+    }
+    if (paramView == null)
+    {
+      paramView = null;
+      if (paramView == null) {
+        Log.e("WxIme.ImeReporter", s.X("addT9Operation v is null.", Util.getStack()));
+      }
+      AppMethodBeat.o(312197);
+      return;
+    }
+    int j = paramView.getId();
+    int i;
+    if (j == a.f.t9_key1)
+    {
+      i = 1;
+      label65:
+      if (i == 0) {
+        break label143;
+      }
+      i = 1;
+      label71:
+      if (i == 0) {
+        break label160;
+      }
+      i = 1;
+      label77:
+      if (i == 0) {
+        break label177;
+      }
+      i = 1;
+      label83:
+      if (i == 0) {
+        break label194;
+      }
+      i = 1;
+      label89:
+      if (i == 0) {
+        break label211;
+      }
+      i = 1;
+      label95:
+      if (i == 0) {
+        break label228;
+      }
+      i = 1;
+      label101:
+      if (i == 0) {
+        break label245;
+      }
+      i = 1;
+      label107:
+      if (i == 0) {
+        break label262;
+      }
+      i = 100;
+    }
+    label386:
+    for (;;)
+    {
+      js(i, 1);
+      paramView = ah.aiuX;
+      break;
+      if (j == a.f.t9_key2)
+      {
+        i = 1;
+        break label65;
+      }
+      i = 0;
+      break label65;
+      label143:
+      if (j == a.f.t9_key3)
+      {
+        i = 1;
+        break label71;
+      }
+      i = 0;
+      break label71;
+      label160:
+      if (j == a.f.t9_key4)
+      {
+        i = 1;
+        break label77;
+      }
+      i = 0;
+      break label77;
+      label177:
+      if (j == a.f.t9_key5)
+      {
+        i = 1;
+        break label83;
+      }
+      i = 0;
+      break label83;
+      label194:
+      if (j == a.f.t9_key6)
+      {
+        i = 1;
+        break label89;
+      }
+      i = 0;
+      break label89;
+      label211:
+      if (j == a.f.t9_key7)
+      {
+        i = 1;
+        break label95;
+      }
+      i = 0;
+      break label95;
+      label228:
+      if (j == a.f.t9_key8)
+      {
+        i = 1;
+        break label101;
+      }
+      i = 0;
+      break label101;
+      label245:
+      if (j == a.f.t9_key9)
+      {
+        i = 1;
+        break label107;
+      }
+      i = 0;
+      break label107;
+      label262:
+      if (j == a.f.t9_key_number)
+      {
+        i = 103;
+      }
+      else if (j == a.f.t9_key_space)
+      {
+        i = 104;
+      }
+      else if (j == a.f.t9_key_exchange)
+      {
+        i = 105;
+      }
+      else if (j == a.f.t9_key_new_line)
+      {
+        i = 108;
+      }
+      else if (j == a.f.t9_key_clear)
+      {
+        i = 107;
+      }
+      else if (j == a.f.t9_key_action)
+      {
+        paramView = (d)com.tencent.mm.kernel.h.ax(d.class);
+        if (paramView != null)
         {
-          i = 105;
+          paramView = paramView.fKG();
+          if ((paramView == null) || (paramView.fKr() != true)) {}
         }
-        else if (i == a.f.t9_key_new_line)
+        for (i = 1;; i = 0)
         {
+          if (i == 0) {
+            break label386;
+          }
           i = 108;
+          break;
         }
-        else if (i == a.f.t9_key_clear)
-        {
-          i = 107;
-        }
-        else if (i == a.f.t9_key_action)
-        {
-          paramView = (d)com.tencent.mm.kernel.h.ae(d.class);
-          if (paramView != null)
-          {
-            paramView = paramView.eCD();
-            if ((paramView != null) && (paramView.eCn() == true))
-            {
-              i = 108;
-              continue;
-            }
-          }
-          i = 109;
-        }
-        else
-        {
-          i = -1;
-        }
+        i = 109;
       }
-    }
-    Log.e("WxIme.ImeReporter", "addT9Operation v is null." + Util.getStack());
-    AppMethodBeat.o(209365);
-  }
-  
-  public static void fg(View paramView)
-  {
-    AppMethodBeat.i(209370);
-    if (eEz())
-    {
-      AppMethodBeat.o(209370);
-      return;
-    }
-    if (paramView != null)
-    {
-      int i = paramView.getId();
-      if ((i == a.f.s2_key_q) || (i == a.f.s2_key_w) || (i == a.f.s2_key_e) || (i == a.f.s2_key_r) || (i == a.f.s2_key_t) || (i == a.f.s2_key_y) || (i == a.f.s2_key_u) || (i == a.f.s2_key_i) || (i == a.f.s2_key_o) || (i == a.f.s2_key_p) || (i == a.f.s2_key_a) || (i == a.f.s2_key_s) || (i == a.f.s2_key_d) || (i == a.f.s2_key_f) || (i == a.f.s2_key_g) || (i == a.f.s2_key_h) || (i == a.f.s2_key_j) || (i == a.f.s2_key_k) || (i == a.f.s2_key_l) || (i == a.f.s2_key_z) || (i == a.f.s2_key_x) || (i == a.f.s2_key_c) || (i == a.f.s2_key_v) || (i == a.f.s2_key_b) || (i == a.f.s2_key_n) || (i == a.f.s2_key_m)) {
-        i = 200;
-      }
-      for (;;)
+      else
       {
-        hO(i, 1);
-        AppMethodBeat.o(209370);
-        return;
-        if (i == a.f.s2_key_symbol)
-        {
-          i = 204;
-        }
-        else if (i == a.f.s2_key_number)
-        {
-          i = 205;
-        }
-        else if (i == a.f.s2_key_comma)
-        {
-          i = 202;
-        }
-        else if (i == a.f.s2_key_space)
-        {
-          i = 206;
-        }
-        else if (i == a.f.s2_key_at)
-        {
-          i = 203;
-        }
-        else if (i == a.f.s2_key_exchange)
-        {
-          i = 207;
-        }
-        else if (i == a.f.s2_key_action)
-        {
-          paramView = (d)com.tencent.mm.kernel.h.ae(d.class);
-          if (paramView != null)
-          {
-            paramView = paramView.eCD();
-            if ((paramView != null) && (paramView.eCn() == true))
-            {
-              i = 209;
-              continue;
-            }
-          }
-          i = 210;
-        }
-        else
-        {
-          i = -1;
-        }
+        i = -1;
       }
     }
-    Log.e("WxIme.ImeReporter", "addChineseQwertyOperation v is null." + Util.getStack());
-    AppMethodBeat.o(209370);
   }
   
-  public static void fh(View paramView)
+  public static void hS(View paramView)
   {
-    AppMethodBeat.i(209377);
-    if (eEz())
+    AppMethodBeat.i(312220);
+    if (fMC())
     {
-      AppMethodBeat.o(209377);
+      AppMethodBeat.o(312220);
       return;
     }
-    if (paramView != null)
+    if (paramView == null)
     {
-      int i = paramView.getId();
-      if ((i == a.f.s3_key_q) || (i == a.f.s3_key_w) || (i == a.f.s3_key_e) || (i == a.f.s3_key_r) || (i == a.f.s3_key_t) || (i == a.f.s3_key_y) || (i == a.f.s3_key_u) || (i == a.f.s3_key_i) || (i == a.f.s3_key_o) || (i == a.f.s3_key_p) || (i == a.f.s3_key_a) || (i == a.f.s3_key_s) || (i == a.f.s3_key_d) || (i == a.f.s3_key_f) || (i == a.f.s3_key_g) || (i == a.f.s3_key_h) || (i == a.f.s3_key_j) || (i == a.f.s3_key_k) || (i == a.f.s3_key_l) || (i == a.f.s3_key_z) || (i == a.f.s3_key_x) || (i == a.f.s3_key_c) || (i == a.f.s3_key_v) || (i == a.f.s3_key_b) || (i == a.f.s3_key_n) || (i == a.f.s3_key_m)) {
-        i = 300;
+      paramView = null;
+      if (paramView == null) {
+        Log.e("WxIme.ImeReporter", s.X("addChineseQwertyOperation v is null.", Util.getStack()));
       }
-      for (;;)
+      AppMethodBeat.o(312220);
+      return;
+    }
+    int j = paramView.getId();
+    int i;
+    if (j == a.f.s2_key_q)
+    {
+      i = 1;
+      label65:
+      if (i == 0) {
+        break label246;
+      }
+      i = 1;
+      label71:
+      if (i == 0) {
+        break label263;
+      }
+      i = 1;
+      label77:
+      if (i == 0) {
+        break label280;
+      }
+      i = 1;
+      label83:
+      if (i == 0) {
+        break label297;
+      }
+      i = 1;
+      label89:
+      if (i == 0) {
+        break label314;
+      }
+      i = 1;
+      label95:
+      if (i == 0) {
+        break label331;
+      }
+      i = 1;
+      label101:
+      if (i == 0) {
+        break label348;
+      }
+      i = 1;
+      label107:
+      if (i == 0) {
+        break label365;
+      }
+      i = 1;
+      label113:
+      if (i == 0) {
+        break label382;
+      }
+      i = 1;
+      label119:
+      if (i == 0) {
+        break label399;
+      }
+      i = 1;
+      label125:
+      if (i == 0) {
+        break label416;
+      }
+      i = 1;
+      label131:
+      if (i == 0) {
+        break label433;
+      }
+      i = 1;
+      label137:
+      if (i == 0) {
+        break label450;
+      }
+      i = 1;
+      label143:
+      if (i == 0) {
+        break label467;
+      }
+      i = 1;
+      label149:
+      if (i == 0) {
+        break label484;
+      }
+      i = 1;
+      label155:
+      if (i == 0) {
+        break label501;
+      }
+      i = 1;
+      label161:
+      if (i == 0) {
+        break label518;
+      }
+      i = 1;
+      label167:
+      if (i == 0) {
+        break label535;
+      }
+      i = 1;
+      label173:
+      if (i == 0) {
+        break label552;
+      }
+      i = 1;
+      label179:
+      if (i == 0) {
+        break label569;
+      }
+      i = 1;
+      label185:
+      if (i == 0) {
+        break label586;
+      }
+      i = 1;
+      label191:
+      if (i == 0) {
+        break label603;
+      }
+      i = 1;
+      label197:
+      if (i == 0) {
+        break label620;
+      }
+      i = 1;
+      label203:
+      if (i == 0) {
+        break label637;
+      }
+      i = 1;
+      label209:
+      if (i == 0) {
+        break label654;
+      }
+      i = 200;
+    }
+    for (;;)
+    {
+      js(i, 1);
+      paramView = ah.aiuX;
+      break;
+      if (j == a.f.s2_key_w)
       {
-        hO(i, 1);
-        AppMethodBeat.o(209377);
-        return;
-        if (i == a.f.s3_key_symbol)
-        {
-          i = 304;
-        }
-        else if (i == a.f.s3_key_number)
-        {
-          i = 305;
-        }
-        else if (i == a.f.s3_key_comma)
-        {
-          i = 302;
-        }
-        else if (i == a.f.s3_key_space)
-        {
-          i = 306;
-        }
-        else if (i == a.f.s3_key_at)
-        {
-          i = 303;
-        }
-        else if (i == a.f.s3_key_exchange)
-        {
-          i = 307;
-        }
-        else if (i == a.f.s3_key_action)
-        {
-          paramView = (d)com.tencent.mm.kernel.h.ae(d.class);
-          if (paramView != null)
-          {
-            paramView = paramView.eCD();
-            if ((paramView != null) && (paramView.eCn() == true))
-            {
-              i = 309;
-              continue;
-            }
-          }
-          i = 310;
-        }
-        else
-        {
-          i = -1;
-        }
+        i = 1;
+        break label65;
       }
-    }
-    Log.e("WxIme.ImeReporter", "addEnglishQwertyOperation v is null." + Util.getStack());
-    AppMethodBeat.o(209377);
-  }
-  
-  public static void fi(View paramView)
-  {
-    AppMethodBeat.i(209379);
-    if (eEz())
-    {
-      AppMethodBeat.o(209379);
-      return;
-    }
-    if (paramView != null)
-    {
-      int i = paramView.getId();
-      if ((i == a.f.s4_key_1) || (i == a.f.s4_key_2) || (i == a.f.s4_key_3) || (i == a.f.s4_key_4) || (i == a.f.s4_key_5) || (i == a.f.s4_key_6) || (i == a.f.s4_key_7) || (i == a.f.s4_key_8) || (i == a.f.s4_key_9) || (i == a.f.s4_key_0)) {
-        i = 400;
-      }
-      for (;;)
+      i = 0;
+      break label65;
+      label246:
+      if (j == a.f.s2_key_e)
       {
-        hO(i, 1);
-        AppMethodBeat.o(209379);
-        return;
-        if (i == a.f.s4_key_space)
+        i = 1;
+        break label71;
+      }
+      i = 0;
+      break label71;
+      label263:
+      if (j == a.f.s2_key_r)
+      {
+        i = 1;
+        break label77;
+      }
+      i = 0;
+      break label77;
+      label280:
+      if (j == a.f.s2_key_t)
+      {
+        i = 1;
+        break label83;
+      }
+      i = 0;
+      break label83;
+      label297:
+      if (j == a.f.s2_key_y)
+      {
+        i = 1;
+        break label89;
+      }
+      i = 0;
+      break label89;
+      label314:
+      if (j == a.f.s2_key_u)
+      {
+        i = 1;
+        break label95;
+      }
+      i = 0;
+      break label95;
+      label331:
+      if (j == a.f.s2_key_i)
+      {
+        i = 1;
+        break label101;
+      }
+      i = 0;
+      break label101;
+      label348:
+      if (j == a.f.s2_key_o)
+      {
+        i = 1;
+        break label107;
+      }
+      i = 0;
+      break label107;
+      label365:
+      if (j == a.f.s2_key_p)
+      {
+        i = 1;
+        break label113;
+      }
+      i = 0;
+      break label113;
+      label382:
+      if (j == a.f.s2_key_a)
+      {
+        i = 1;
+        break label119;
+      }
+      i = 0;
+      break label119;
+      label399:
+      if (j == a.f.s2_key_s)
+      {
+        i = 1;
+        break label125;
+      }
+      i = 0;
+      break label125;
+      label416:
+      if (j == a.f.s2_key_d)
+      {
+        i = 1;
+        break label131;
+      }
+      i = 0;
+      break label131;
+      label433:
+      if (j == a.f.s2_key_f)
+      {
+        i = 1;
+        break label137;
+      }
+      i = 0;
+      break label137;
+      label450:
+      if (j == a.f.s2_key_g)
+      {
+        i = 1;
+        break label143;
+      }
+      i = 0;
+      break label143;
+      label467:
+      if (j == a.f.s2_key_h)
+      {
+        i = 1;
+        break label149;
+      }
+      i = 0;
+      break label149;
+      label484:
+      if (j == a.f.s2_key_j)
+      {
+        i = 1;
+        break label155;
+      }
+      i = 0;
+      break label155;
+      label501:
+      if (j == a.f.s2_key_k)
+      {
+        i = 1;
+        break label161;
+      }
+      i = 0;
+      break label161;
+      label518:
+      if (j == a.f.s2_key_l)
+      {
+        i = 1;
+        break label167;
+      }
+      i = 0;
+      break label167;
+      label535:
+      if (j == a.f.s2_key_z)
+      {
+        i = 1;
+        break label173;
+      }
+      i = 0;
+      break label173;
+      label552:
+      if (j == a.f.s2_key_x)
+      {
+        i = 1;
+        break label179;
+      }
+      i = 0;
+      break label179;
+      label569:
+      if (j == a.f.s2_key_c)
+      {
+        i = 1;
+        break label185;
+      }
+      i = 0;
+      break label185;
+      label586:
+      if (j == a.f.s2_key_v)
+      {
+        i = 1;
+        break label191;
+      }
+      i = 0;
+      break label191;
+      label603:
+      if (j == a.f.s2_key_b)
+      {
+        i = 1;
+        break label197;
+      }
+      i = 0;
+      break label197;
+      label620:
+      if (j == a.f.s2_key_n)
+      {
+        i = 1;
+        break label203;
+      }
+      i = 0;
+      break label203;
+      label637:
+      if (j == a.f.s2_key_m)
+      {
+        i = 1;
+        break label209;
+      }
+      i = 0;
+      break label209;
+      label654:
+      if (j == a.f.s2_key_symbol)
+      {
+        i = 204;
+      }
+      else if (j == a.f.s2_key_number)
+      {
+        i = 205;
+      }
+      else if (j == a.f.s2_key_comma)
+      {
+        i = 202;
+      }
+      else if (j == a.f.s2_key_space)
+      {
+        i = 206;
+      }
+      else if (j == a.f.s2_key_at)
+      {
+        i = 203;
+      }
+      else if (j == a.f.s2_key_exchange)
+      {
+        i = 207;
+      }
+      else if (j == a.f.s2_key_action)
+      {
+        paramView = (d)com.tencent.mm.kernel.h.ax(d.class);
+        if (paramView != null)
         {
-          i = 405;
+          paramView = paramView.fKG();
+          if ((paramView == null) || (paramView.fKr() != true)) {}
         }
-        else if (i == a.f.s4_key_back)
+        for (i = 1;; i = 0)
         {
-          i = 403;
-        }
-        else if (i == a.f.s4_key_at)
-        {
-          i = 406;
-        }
-        else if (i == a.f.s4_key_dot)
-        {
-          i = 408;
-        }
-        else if (i == a.f.s4_key_action)
-        {
-          paramView = (d)com.tencent.mm.kernel.h.ae(d.class);
-          if (paramView != null)
-          {
-            paramView = paramView.eCD();
-            if ((paramView != null) && (paramView.eCn() == true))
-            {
-              i = 407;
-              continue;
-            }
+          if (i == 0) {
+            break label798;
           }
-          i = 409;
+          i = 209;
+          break;
         }
-        else
-        {
-          i = -1;
-        }
+        label798:
+        i = 210;
+      }
+      else
+      {
+        i = -1;
       }
     }
-    Log.e("WxIme.ImeReporter", "addNumberOperation v is null." + Util.getStack());
-    AppMethodBeat.o(209379);
   }
   
-  public static void gQ(Context paramContext)
+  public static void hT(View paramView)
   {
-    AppMethodBeat.i(209388);
-    kotlin.g.b.p.k(paramContext, "context");
-    if (eEz())
+    AppMethodBeat.i(312244);
+    if (fMC())
     {
-      AppMethodBeat.o(209388);
+      AppMethodBeat.o(312244);
       return;
     }
-    com.tencent.e.h.ZvG.d((Runnable)d.DDh, "WxIme.ImeReporter");
-    AppMethodBeat.o(209388);
+    if (paramView == null)
+    {
+      paramView = null;
+      if (paramView == null) {
+        Log.e("WxIme.ImeReporter", s.X("addEnglishQwertyOperation v is null.", Util.getStack()));
+      }
+      AppMethodBeat.o(312244);
+      return;
+    }
+    int j = paramView.getId();
+    int i;
+    if (j == a.f.s3_key_q)
+    {
+      i = 1;
+      label65:
+      if (i == 0) {
+        break label246;
+      }
+      i = 1;
+      label71:
+      if (i == 0) {
+        break label263;
+      }
+      i = 1;
+      label77:
+      if (i == 0) {
+        break label280;
+      }
+      i = 1;
+      label83:
+      if (i == 0) {
+        break label297;
+      }
+      i = 1;
+      label89:
+      if (i == 0) {
+        break label314;
+      }
+      i = 1;
+      label95:
+      if (i == 0) {
+        break label331;
+      }
+      i = 1;
+      label101:
+      if (i == 0) {
+        break label348;
+      }
+      i = 1;
+      label107:
+      if (i == 0) {
+        break label365;
+      }
+      i = 1;
+      label113:
+      if (i == 0) {
+        break label382;
+      }
+      i = 1;
+      label119:
+      if (i == 0) {
+        break label399;
+      }
+      i = 1;
+      label125:
+      if (i == 0) {
+        break label416;
+      }
+      i = 1;
+      label131:
+      if (i == 0) {
+        break label433;
+      }
+      i = 1;
+      label137:
+      if (i == 0) {
+        break label450;
+      }
+      i = 1;
+      label143:
+      if (i == 0) {
+        break label467;
+      }
+      i = 1;
+      label149:
+      if (i == 0) {
+        break label484;
+      }
+      i = 1;
+      label155:
+      if (i == 0) {
+        break label501;
+      }
+      i = 1;
+      label161:
+      if (i == 0) {
+        break label518;
+      }
+      i = 1;
+      label167:
+      if (i == 0) {
+        break label535;
+      }
+      i = 1;
+      label173:
+      if (i == 0) {
+        break label552;
+      }
+      i = 1;
+      label179:
+      if (i == 0) {
+        break label569;
+      }
+      i = 1;
+      label185:
+      if (i == 0) {
+        break label586;
+      }
+      i = 1;
+      label191:
+      if (i == 0) {
+        break label603;
+      }
+      i = 1;
+      label197:
+      if (i == 0) {
+        break label620;
+      }
+      i = 1;
+      label203:
+      if (i == 0) {
+        break label637;
+      }
+      i = 1;
+      label209:
+      if (i == 0) {
+        break label654;
+      }
+      i = 300;
+    }
+    for (;;)
+    {
+      js(i, 1);
+      paramView = ah.aiuX;
+      break;
+      if (j == a.f.s3_key_w)
+      {
+        i = 1;
+        break label65;
+      }
+      i = 0;
+      break label65;
+      label246:
+      if (j == a.f.s3_key_e)
+      {
+        i = 1;
+        break label71;
+      }
+      i = 0;
+      break label71;
+      label263:
+      if (j == a.f.s3_key_r)
+      {
+        i = 1;
+        break label77;
+      }
+      i = 0;
+      break label77;
+      label280:
+      if (j == a.f.s3_key_t)
+      {
+        i = 1;
+        break label83;
+      }
+      i = 0;
+      break label83;
+      label297:
+      if (j == a.f.s3_key_y)
+      {
+        i = 1;
+        break label89;
+      }
+      i = 0;
+      break label89;
+      label314:
+      if (j == a.f.s3_key_u)
+      {
+        i = 1;
+        break label95;
+      }
+      i = 0;
+      break label95;
+      label331:
+      if (j == a.f.s3_key_i)
+      {
+        i = 1;
+        break label101;
+      }
+      i = 0;
+      break label101;
+      label348:
+      if (j == a.f.s3_key_o)
+      {
+        i = 1;
+        break label107;
+      }
+      i = 0;
+      break label107;
+      label365:
+      if (j == a.f.s3_key_p)
+      {
+        i = 1;
+        break label113;
+      }
+      i = 0;
+      break label113;
+      label382:
+      if (j == a.f.s3_key_a)
+      {
+        i = 1;
+        break label119;
+      }
+      i = 0;
+      break label119;
+      label399:
+      if (j == a.f.s3_key_s)
+      {
+        i = 1;
+        break label125;
+      }
+      i = 0;
+      break label125;
+      label416:
+      if (j == a.f.s3_key_d)
+      {
+        i = 1;
+        break label131;
+      }
+      i = 0;
+      break label131;
+      label433:
+      if (j == a.f.s3_key_f)
+      {
+        i = 1;
+        break label137;
+      }
+      i = 0;
+      break label137;
+      label450:
+      if (j == a.f.s3_key_g)
+      {
+        i = 1;
+        break label143;
+      }
+      i = 0;
+      break label143;
+      label467:
+      if (j == a.f.s3_key_h)
+      {
+        i = 1;
+        break label149;
+      }
+      i = 0;
+      break label149;
+      label484:
+      if (j == a.f.s3_key_j)
+      {
+        i = 1;
+        break label155;
+      }
+      i = 0;
+      break label155;
+      label501:
+      if (j == a.f.s3_key_k)
+      {
+        i = 1;
+        break label161;
+      }
+      i = 0;
+      break label161;
+      label518:
+      if (j == a.f.s3_key_l)
+      {
+        i = 1;
+        break label167;
+      }
+      i = 0;
+      break label167;
+      label535:
+      if (j == a.f.s3_key_z)
+      {
+        i = 1;
+        break label173;
+      }
+      i = 0;
+      break label173;
+      label552:
+      if (j == a.f.s3_key_x)
+      {
+        i = 1;
+        break label179;
+      }
+      i = 0;
+      break label179;
+      label569:
+      if (j == a.f.s3_key_c)
+      {
+        i = 1;
+        break label185;
+      }
+      i = 0;
+      break label185;
+      label586:
+      if (j == a.f.s3_key_v)
+      {
+        i = 1;
+        break label191;
+      }
+      i = 0;
+      break label191;
+      label603:
+      if (j == a.f.s3_key_b)
+      {
+        i = 1;
+        break label197;
+      }
+      i = 0;
+      break label197;
+      label620:
+      if (j == a.f.s3_key_n)
+      {
+        i = 1;
+        break label203;
+      }
+      i = 0;
+      break label203;
+      label637:
+      if (j == a.f.s3_key_m)
+      {
+        i = 1;
+        break label209;
+      }
+      i = 0;
+      break label209;
+      label654:
+      if (j == a.f.s3_key_symbol)
+      {
+        i = 304;
+      }
+      else if (j == a.f.s3_key_number)
+      {
+        i = 305;
+      }
+      else if (j == a.f.s3_key_comma)
+      {
+        i = 302;
+      }
+      else if (j == a.f.s3_key_space)
+      {
+        i = 306;
+      }
+      else if (j == a.f.s3_key_at)
+      {
+        i = 303;
+      }
+      else if (j == a.f.s3_key_exchange)
+      {
+        i = 307;
+      }
+      else if (j == a.f.s3_key_action)
+      {
+        paramView = (d)com.tencent.mm.kernel.h.ax(d.class);
+        if (paramView != null)
+        {
+          paramView = paramView.fKG();
+          if ((paramView == null) || (paramView.fKr() != true)) {}
+        }
+        for (i = 1;; i = 0)
+        {
+          if (i == 0) {
+            break label798;
+          }
+          i = 309;
+          break;
+        }
+        label798:
+        i = 310;
+      }
+      else
+      {
+        i = -1;
+      }
+    }
   }
   
-  public static void hM(int paramInt1, int paramInt2)
+  public static void hU(View paramView)
   {
-    AppMethodBeat.i(209341);
-    if (eEz())
+    AppMethodBeat.i(312261);
+    if (fMC())
     {
-      AppMethodBeat.o(209341);
+      AppMethodBeat.o(312261);
       return;
     }
-    gf localgf = new gf();
-    localgf.mH(paramInt1);
-    localgf.mI(paramInt2);
-    localgf.bpa();
-    AppMethodBeat.o(209341);
+    if (paramView == null)
+    {
+      paramView = null;
+      if (paramView == null) {
+        Log.e("WxIme.ImeReporter", s.X("addNumberOperation v is null.", Util.getStack()));
+      }
+      AppMethodBeat.o(312261);
+      return;
+    }
+    int j = paramView.getId();
+    int i;
+    if (j == a.f.s4_key_1)
+    {
+      i = 1;
+      label65:
+      if (i == 0) {
+        break label150;
+      }
+      i = 1;
+      label71:
+      if (i == 0) {
+        break label167;
+      }
+      i = 1;
+      label77:
+      if (i == 0) {
+        break label184;
+      }
+      i = 1;
+      label83:
+      if (i == 0) {
+        break label201;
+      }
+      i = 1;
+      label89:
+      if (i == 0) {
+        break label218;
+      }
+      i = 1;
+      label95:
+      if (i == 0) {
+        break label235;
+      }
+      i = 1;
+      label101:
+      if (i == 0) {
+        break label252;
+      }
+      i = 1;
+      label107:
+      if (i == 0) {
+        break label269;
+      }
+      i = 1;
+      label113:
+      if (i == 0) {
+        break label286;
+      }
+      i = 400;
+    }
+    label269:
+    label402:
+    for (;;)
+    {
+      js(i, 1);
+      paramView = ah.aiuX;
+      break;
+      if (j == a.f.s4_key_2)
+      {
+        i = 1;
+        break label65;
+      }
+      i = 0;
+      break label65;
+      label150:
+      if (j == a.f.s4_key_3)
+      {
+        i = 1;
+        break label71;
+      }
+      i = 0;
+      break label71;
+      label167:
+      if (j == a.f.s4_key_4)
+      {
+        i = 1;
+        break label77;
+      }
+      i = 0;
+      break label77;
+      label184:
+      if (j == a.f.s4_key_5)
+      {
+        i = 1;
+        break label83;
+      }
+      i = 0;
+      break label83;
+      label201:
+      if (j == a.f.s4_key_6)
+      {
+        i = 1;
+        break label89;
+      }
+      i = 0;
+      break label89;
+      label218:
+      if (j == a.f.s4_key_7)
+      {
+        i = 1;
+        break label95;
+      }
+      i = 0;
+      break label95;
+      label235:
+      if (j == a.f.s4_key_8)
+      {
+        i = 1;
+        break label101;
+      }
+      i = 0;
+      break label101;
+      label252:
+      if (j == a.f.s4_key_9)
+      {
+        i = 1;
+        break label107;
+      }
+      i = 0;
+      break label107;
+      if (j == a.f.s4_key_0)
+      {
+        i = 1;
+        break label113;
+      }
+      i = 0;
+      break label113;
+      label286:
+      if (j == a.f.s4_key_space)
+      {
+        i = 405;
+      }
+      else if (j == a.f.s4_key_back)
+      {
+        i = 403;
+      }
+      else if (j == a.f.s4_key_at)
+      {
+        i = 406;
+      }
+      else if (j == a.f.s4_key_dot)
+      {
+        i = 408;
+      }
+      else if (j == a.f.s4_key_action)
+      {
+        paramView = (d)com.tencent.mm.kernel.h.ax(d.class);
+        if (paramView != null)
+        {
+          paramView = paramView.fKG();
+          if ((paramView == null) || (paramView.fKr() != true)) {}
+        }
+        for (i = 1;; i = 0)
+        {
+          if (i == 0) {
+            break label402;
+          }
+          i = 407;
+          break;
+        }
+        i = 409;
+      }
+      else
+      {
+        i = -1;
+      }
+    }
   }
   
-  public static void hN(int paramInt1, int paramInt2)
+  public static void il(Context paramContext)
   {
-    AppMethodBeat.i(209345);
-    if (eEz())
+    AppMethodBeat.i(312308);
+    s.u(paramContext, "context");
+    if (fMC())
     {
-      AppMethodBeat.o(209345);
+      AppMethodBeat.o(312308);
       return;
     }
-    gb localgb = new gb();
-    cln localcln = (cln)((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.secdata.g.class)).getOnlyMemory(10, "id_context");
-    if (localcln != null) {
-      localgb.vo(localcln.sessionId);
-    }
-    localgb.mA(paramInt1);
-    localgb.mB(paramInt2);
-    localgb.bpa();
-    AppMethodBeat.o(209345);
+    com.tencent.threadpool.h.ahAA.g(k..ExternalSyntheticLambda15.INSTANCE, "WxIme.ImeReporter");
+    AppMethodBeat.o(312308);
   }
   
-  public static void hO(int paramInt1, int paramInt2)
+  public static void jq(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(209364);
-    if (eEz())
+    AppMethodBeat.i(311943);
+    if (fMC())
     {
-      AppMethodBeat.o(209364);
+      AppMethodBeat.o(311943);
       return;
     }
-    n localn = n.DEn;
-    if (n.eEE()) {}
+    ia localia = new ia();
+    localia.iPq = paramInt1;
+    localia.iPr = paramInt2;
+    localia.bMH();
+    AppMethodBeat.o(311943);
+  }
+  
+  public static void jr(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(311978);
+    if (fMC())
+    {
+      AppMethodBeat.o(311978);
+      return;
+    }
+    hw localhw = new hw();
+    dbv localdbv = (dbv)((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.secdata.g.class)).getOnlyMemory(10, "id_context");
+    if (localdbv != null) {
+      localhw.ijk = localhw.F("SessionId", localdbv.sessionId, true);
+    }
+    localhw.iPf = paramInt1;
+    localhw.iPg = paramInt2;
+    localhw.bMH();
+    AppMethodBeat.o(311978);
+  }
+  
+  public static void js(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(312186);
+    if (fMC())
+    {
+      AppMethodBeat.o(312186);
+      return;
+    }
+    n localn = n.JvW;
+    if (n.fMH()) {}
     for (int i = 0;; i = 1)
     {
-      com.tencent.e.h.ZvG.d((Runnable)new k.c(paramInt1, paramInt2, i), "WxIme.ImeReporter");
-      AppMethodBeat.o(209364);
+      com.tencent.threadpool.h.ahAA.g(new k..ExternalSyntheticLambda1(paramInt1, paramInt2, i), "WxIme.ImeReporter");
+      AppMethodBeat.o(312186);
       return;
+    }
+  }
+  
+  public static void k(long paramLong1, long paramLong2, int paramInt)
+  {
+    AppMethodBeat.i(312161);
+    if (fMC())
+    {
+      AppMethodBeat.o(312161);
+      return;
+    }
+    com.tencent.threadpool.h.ahAA.g(new k..ExternalSyntheticLambda10(paramLong1, paramLong2, paramInt), "WxIme.ImeReporter");
+    AppMethodBeat.o(312161);
+  }
+  
+  private static final void l(long paramLong1, long paramLong2, int paramInt)
+  {
+    AppMethodBeat.i(312475);
+    dbs localdbs = (dbs)((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.secdata.g.class)).getOnlyMemory(10, "id_performance");
+    ih localih;
+    dbz localdbz;
+    if (localdbs != null)
+    {
+      localdbs.aaHe.aaHC = paramLong1;
+      localdbs.aaHe.aaHD = paramLong2;
+      localdbs.aaHe.aaHE = (paramLong2 - paramLong1);
+      localdbs.aaHe.aaHF = paramInt;
+      localih = new ih();
+      localih.iPV = localdbs.aaHi;
+      Object localObject1 = new JSONObject();
+      ((JSONObject)localObject1).put("imeProcessServiceTimestamp", localdbs.aaHf);
+      ((JSONObject)localObject1).put("imeSettingUITimestamp", localdbs.aaHg);
+      ((JSONObject)localObject1).put("imePrivacySettingUITimestamp", localdbs.aaHh);
+      localdbz = localdbs.aaHe;
+      ((JSONObject)localObject1).put("imeServiceCreateStartTimestamp", localdbz.aaHt);
+      ((JSONObject)localObject1).put("windowShowKeyboard", localdbz.aaHF);
+      if ((localdbz.aaHw) && (localdbz.aaHA))
+      {
+        localih.iPR = 0;
+        Object localObject2 = com.tencent.mm.kernel.i.baI().baB().bad().mFH;
+        localih.iPS = (((g.a)localObject2).mFR - ((g.a)localObject2).mFI);
+        localih.iPT = (localdbz.aaHv + localdbz.aaHz + localdbz.aaHD - localdbz.aaHB);
+        localih.iPU = (localih.iPS + localih.iPT);
+        Log.i("WxIme.ImeReporter", "PerformanceRecorder preInitTimestamp:" + ((g.a)localObject2).mFI + " initTimestamp:" + ((g.a)localObject2).mFJ + " helloTimestamp:" + ((g.a)localObject2).mFK + " installTimestamp:" + ((g.a)localObject2).mFL + " dependencyTimestamp:" + ((g.a)localObject2).mFM + " configurationTimestamp:" + ((g.a)localObject2).mFN + " executionTimestamp:" + ((g.a)localObject2).mFO + " extensionsTimestamp:" + ((g.a)localObject2).mFP + " terminateTimestamp:" + ((g.a)localObject2).mFQ + " initFinishTimestamp:" + ((g.a)localObject2).mFR + ' ');
+        Log.i("WxIme.ImeReporter", "reportStartRecord onCreate:" + localdbz.aaHv + " startInput:" + localdbz.aaHz);
+        localObject2 = new JSONObject();
+        ((JSONObject)localObject2).put("createStartTimestamp", localdbz.aaHt);
+        ((JSONObject)localObject2).put("createEndTimestamp", localdbz.aaHu);
+        ((JSONObject)localObject2).put("createDiffTime", localdbz.aaHv);
+        ((JSONObject)localObject2).put("isFirstEdit", localdbz.aaHw);
+        ((JSONObject)localObject2).put("startInputTimestamp", localdbz.aaHx);
+        ((JSONObject)localObject2).put("startInputEndTimestamp", localdbz.aaHy);
+        ((JSONObject)localObject2).put("startInputDiffTimestamp", localdbz.aaHz);
+        ((JSONObject)localObject2).put("isEditFirstShow", localdbz.aaHA);
+        ((JSONObject)localObject2).put("startInputViewTimestamp", localdbz.aaHB);
+        ((JSONObject)localObject2).put("windowShowTimestamp", localdbz.aaHC);
+        ((JSONObject)localObject2).put("windowShowEndTimestamp", localdbz.aaHD);
+        ((JSONObject)localObject2).put("windowShowDiffTimestamp", localdbz.aaHE);
+        ((JSONObject)localObject1).put("ImeServicePerformanceRecord", localObject2);
+        Log.i("WxIme.ImeReporter", "reportStartRecord startReason:" + localdbs.aaHi + " startType:" + localih.iPR + " processTime:" + localih.iPS + " businessTime:" + localih.iPT + " allTime:" + localih.iPU + " windowShowTime:" + localdbz.aaHE + " isEditFirstShow:" + localdbz.aaHA + " (" + localdbz.aaHz + ", " + localdbz.aaHC + '-' + localdbz.aaHD + ')');
+        localObject1 = ((JSONObject)localObject1).toString();
+        s.s(localObject1, "extendStrJs.toString()");
+        localih.iPG = localih.F("ExtendStr", kotlin.n.n.bV((String)localObject1, ",", ";"), true);
+        localih.bMH();
+        Log.d("WxIme.ImeReporter", s.X("reportStartRecord ", localih.aIF()));
+        localdbs.aaHe.aaHw = false;
+        localdbs.aaHe.aaHA = false;
+      }
+    }
+    else
+    {
+      AppMethodBeat.o(312475);
+      return;
+    }
+    localih.iPR = 1;
+    localih.iPS = 0L;
+    if (localdbz.aaHA) {}
+    for (localih.iPT = (localdbz.aaHD - localdbz.aaHB + localdbz.aaHz);; localih.iPT = (localdbz.aaHD - localdbz.aaHB))
+    {
+      localih.iPU = localih.iPT;
+      break;
     }
   }
   
   public static void l(com.tencent.mm.plugin.hld.keyboard.selfdraw.b paramb)
   {
-    AppMethodBeat.i(209368);
-    kotlin.g.b.p.k(paramb, "btn");
-    if (eEz())
+    AppMethodBeat.i(312204);
+    s.u(paramb, "btn");
+    if (fMC())
     {
-      AppMethodBeat.o(209368);
+      AppMethodBeat.o(312204);
       return;
     }
     paramb = paramb.id;
@@ -1072,8 +3187,8 @@ public final class k
     for (;;)
     {
       label310:
-      hO(i, 1);
-      AppMethodBeat.o(209368);
+      js(i, 1);
+      AppMethodBeat.o(312204);
       return;
       if (!paramb.equals("symbol")) {
         break;
@@ -1098,144 +3213,146 @@ public final class k
       if (!paramb.equals("enter")) {
         break;
       }
-      paramb = (d)com.tencent.mm.kernel.h.ae(d.class);
+      paramb = (d)com.tencent.mm.kernel.h.ax(d.class);
       if (paramb != null)
       {
-        paramb = paramb.eCD();
-        if ((paramb != null) && (paramb.eCn() == true))
+        paramb = paramb.fKG();
+        if ((paramb == null) || (paramb.fKr() != true)) {}
+      }
+      for (i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label829;
+        }
+        i = 209;
+        break label310;
+        if (!paramb.equals("cnSwitch")) {
+          break;
+        }
+        i = 207;
+        break label310;
+        if (!paramb.equals("S2_key_i")) {
+          break;
+        }
+        for (;;)
         {
-          i = 209;
-          continue;
-          if (!paramb.equals("cnSwitch")) {
-            break;
-          }
-          i = 207;
-          continue;
-          if (!paramb.equals("S2_key_i")) {
-            break;
-          }
-          for (;;)
+          i = 200;
+          break label310;
+          if (!paramb.equals("S2_key_h"))
           {
-            i = 200;
-            break label310;
-            if (!paramb.equals("S2_key_h")) {
+            break;
+            if (!paramb.equals("S2_key_k"))
+            {
               break;
-            }
-            continue;
-            if (!paramb.equals("S2_key_k")) {
-              break;
-            }
-            continue;
-            if (!paramb.equals("S2_key_j")) {
-              break;
-            }
-            continue;
-            if (!paramb.equals("S2_key_m")) {
-              break;
-            }
-            continue;
-            if (!paramb.equals("S2_key_l")) {
-              break;
-            }
-            continue;
-            if (!paramb.equals("S2_key_o")) {
-              break;
-            }
-            continue;
-            if (!paramb.equals("S2_key_n")) {
-              break;
-            }
-            continue;
-            if (!paramb.equals("S2_key_a")) {
-              break;
-            }
-            continue;
-            if (!paramb.equals("S2_key_c")) {
-              break;
-            }
-            continue;
-            if (!paramb.equals("S2_key_b")) {
-              break;
-            }
-            continue;
-            if (!paramb.equals("S2_key_e")) {
-              break;
-            }
-            continue;
-            if (!paramb.equals("S2_key_d")) {
-              break;
-            }
-            continue;
-            if (!paramb.equals("S2_key_g")) {
-              break;
-            }
-            continue;
-            if (!paramb.equals("S2_key_f")) {
-              break;
-            }
-            continue;
-            if (!paramb.equals("S2_key_y")) {
-              break;
-            }
-            continue;
-            if (!paramb.equals("S2_key_x")) {
-              break;
-            }
-            continue;
-            if (!paramb.equals("S2_key_z")) {
-              break;
-            }
-            continue;
-            if (!paramb.equals("at")) {
-              break;
-            }
-            i = 203;
-            break label310;
-            if (!paramb.equals("S2_key_q")) {
-              break;
-            }
-            continue;
-            if (!paramb.equals("S2_key_p")) {
-              break;
-            }
-            continue;
-            if (!paramb.equals("S2_key_s")) {
-              break;
-            }
-            continue;
-            if (!paramb.equals("S2_key_r")) {
-              break;
-            }
-            continue;
-            if (!paramb.equals("S2_key_u")) {
-              break;
-            }
-            continue;
-            if (!paramb.equals("S2_key_t")) {
-              break;
-            }
-            continue;
-            if (!paramb.equals("S2_key_w")) {
-              break;
-            }
-            continue;
-            if (!paramb.equals("S2_key_v")) {
-              break;
+              if (!paramb.equals("S2_key_j"))
+              {
+                break;
+                if (!paramb.equals("S2_key_m"))
+                {
+                  break;
+                  if (!paramb.equals("S2_key_l"))
+                  {
+                    break;
+                    if (!paramb.equals("S2_key_o"))
+                    {
+                      break;
+                      if (!paramb.equals("S2_key_n"))
+                      {
+                        break;
+                        if (!paramb.equals("S2_key_a"))
+                        {
+                          break;
+                          if (!paramb.equals("S2_key_c"))
+                          {
+                            break;
+                            if (!paramb.equals("S2_key_b"))
+                            {
+                              break;
+                              if (!paramb.equals("S2_key_e"))
+                              {
+                                break;
+                                if (!paramb.equals("S2_key_d"))
+                                {
+                                  break;
+                                  if (!paramb.equals("S2_key_g"))
+                                  {
+                                    break;
+                                    if (!paramb.equals("S2_key_f"))
+                                    {
+                                      break;
+                                      if (!paramb.equals("S2_key_y"))
+                                      {
+                                        break;
+                                        if (!paramb.equals("S2_key_x"))
+                                        {
+                                          break;
+                                          if (!paramb.equals("S2_key_z"))
+                                          {
+                                            if ((goto 308) || (!paramb.equals("at"))) {
+                                              break;
+                                            }
+                                            i = 203;
+                                            break label310;
+                                            if (!paramb.equals("S2_key_q"))
+                                            {
+                                              break;
+                                              if (!paramb.equals("S2_key_p"))
+                                              {
+                                                break;
+                                                if (!paramb.equals("S2_key_s"))
+                                                {
+                                                  break;
+                                                  if (!paramb.equals("S2_key_r"))
+                                                  {
+                                                    break;
+                                                    if (!paramb.equals("S2_key_u"))
+                                                    {
+                                                      break;
+                                                      if (!paramb.equals("S2_key_t"))
+                                                      {
+                                                        break;
+                                                        if (!paramb.equals("S2_key_w")) {
+                                                          if ((goto 308) || (!paramb.equals("S2_key_v"))) {
+                                                            break;
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }
       }
+      label829:
       i = 210;
     }
   }
   
   public static void m(com.tencent.mm.plugin.hld.keyboard.selfdraw.b paramb)
   {
-    AppMethodBeat.i(209375);
-    kotlin.g.b.p.k(paramb, "btn");
-    if (eEz())
+    AppMethodBeat.i(312231);
+    s.u(paramb, "btn");
+    if (fMC())
     {
-      AppMethodBeat.o(209375);
+      AppMethodBeat.o(312231);
       return;
     }
     paramb = paramb.id;
@@ -1248,202 +3365,179 @@ public final class k
     for (;;)
     {
       label310:
-      hO(i, 1);
-      AppMethodBeat.o(209375);
+      js(i, 1);
+      AppMethodBeat.o(312231);
       return;
       if (!paramb.equals("S3_key_n")) {
         break;
       }
-      for (;;)
+      label332:
+      do
       {
-        i = 300;
-        break label310;
-        if (!paramb.equals("S3_key_m")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("symbol")) {
-          break;
-        }
-        i = 304;
-        break label310;
-        if (!paramb.equals("S3_key_l")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("S3_key_k")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("S3_key_j")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("S3_key_i")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("S3_key_h")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("S3_key_g")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("num")) {
-          break;
-        }
-        i = 305;
-        break label310;
-        if (!paramb.equals("S3_key_f")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("dot")) {
-          break;
-        }
-        i = 302;
-        break label310;
-        if (!paramb.equals("S3_key_e")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("S3_key_d")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("S3_key_c")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("S3_key_b")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("S3_key_a")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("space")) {
-          break;
-        }
-        i = 306;
-        break label310;
-        if (!paramb.equals("S3_key_z")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("S3_key_y")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("S3_key_x")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("S3_key_w")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("S3_key_v")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("S3_key_u")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("enSwitch")) {
-          break;
-        }
-        i = 307;
-        break label310;
-        if (!paramb.equals("S3_key_t")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("S3_key_s")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("enter")) {
-          break;
-        }
-        paramb = (d)com.tencent.mm.kernel.h.ae(d.class);
-        if (paramb == null) {
-          break label818;
-        }
-        paramb = paramb.eCD();
-        if ((paramb == null) || (paramb.eCn() != true)) {
-          break label818;
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        do
+                        {
+                          do
+                          {
+                            do
+                            {
+                              do
+                              {
+                                do
+                                {
+                                  do
+                                  {
+                                    do
+                                    {
+                                      do
+                                      {
+                                        do
+                                        {
+                                          do
+                                          {
+                                            do
+                                            {
+                                              do
+                                              {
+                                                i = 300;
+                                                break;
+                                              } while (paramb.equals("S3_key_m"));
+                                              if ((goto 308) || (!paramb.equals("symbol"))) {
+                                                break;
+                                              }
+                                              i = 304;
+                                              break label310;
+                                            } while (paramb.equals("S3_key_l"));
+                                            break;
+                                          } while (paramb.equals("S3_key_k"));
+                                          break;
+                                        } while (paramb.equals("S3_key_j"));
+                                        break;
+                                      } while (paramb.equals("S3_key_i"));
+                                      break;
+                                    } while (paramb.equals("S3_key_h"));
+                                    break;
+                                  } while (paramb.equals("S3_key_g"));
+                                  if ((goto 308) || (!paramb.equals("num"))) {
+                                    break;
+                                  }
+                                  i = 305;
+                                  break label310;
+                                } while (paramb.equals("S3_key_f"));
+                                if ((goto 308) || (!paramb.equals("dot"))) {
+                                  break;
+                                }
+                                i = 302;
+                                break label310;
+                              } while (paramb.equals("S3_key_e"));
+                              break;
+                            } while (paramb.equals("S3_key_d"));
+                            break;
+                          } while (paramb.equals("S3_key_c"));
+                          break;
+                        } while (paramb.equals("S3_key_b"));
+                        break;
+                      } while (paramb.equals("S3_key_a"));
+                      if ((goto 308) || (!paramb.equals("space"))) {
+                        break;
+                      }
+                      i = 306;
+                      break label310;
+                    } while (paramb.equals("S3_key_z"));
+                    break;
+                  } while (paramb.equals("S3_key_y"));
+                  break;
+                } while (paramb.equals("S3_key_x"));
+                break;
+              } while (paramb.equals("S3_key_w"));
+              break;
+            } while (paramb.equals("S3_key_v"));
+            break;
+          } while (paramb.equals("S3_key_u"));
+          if ((goto 308) || (!paramb.equals("enSwitch"))) {
+            break;
+          }
+          i = 307;
+          break label310;
+        } while (paramb.equals("S3_key_t"));
+        break;
+      } while (paramb.equals("S3_key_s"));
+      if ((goto 308) || (!paramb.equals("enter"))) {
+        break;
+      }
+      paramb = (d)com.tencent.mm.kernel.h.ax(d.class);
+      if (paramb != null)
+      {
+        paramb = paramb.fKG();
+        if ((paramb == null) || (paramb.fKr() != true)) {}
+      }
+      for (i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label829;
         }
         i = 309;
         break label310;
-        if (!paramb.equals("S3_key_r")) {
-          break;
+        if (paramb.equals("S3_key_r")) {
+          break label332;
         }
-        continue;
-        if (!paramb.equals("S3_key_q")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("S3_key_p")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("S3_key_o")) {
-          break;
-        }
-      }
-      if (!paramb.equals("at")) {
         break;
+        if (paramb.equals("S3_key_q")) {
+          break label332;
+        }
+        break;
+        if (paramb.equals("S3_key_p")) {
+          break label332;
+        }
+        break;
+        if (paramb.equals("S3_key_o")) {
+          break label332;
+        }
+        if ((goto 308) || (!paramb.equals("at"))) {
+          break;
+        }
+        i = 303;
+        break label310;
       }
-      i = 303;
-      continue;
-      label818:
+      label829:
       i = 310;
     }
   }
   
-  public static void n(int paramInt1, String paramString, int paramInt2)
-  {
-    AppMethodBeat.i(209348);
-    kotlin.g.b.p.k(paramString, "subType");
-    if (eEz())
-    {
-      AppMethodBeat.o(209348);
-      return;
-    }
-    gd localgd = new gd();
-    localgd.mC(paramInt1);
-    localgd.vs(paramString);
-    localgd.mD(paramInt2);
-    localgd.bpa();
-    AppMethodBeat.o(209348);
-  }
-  
   public static void n(long paramLong1, long paramLong2, long paramLong3)
   {
-    AppMethodBeat.i(209355);
-    a locala = DCZ;
+    AppMethodBeat.i(312049);
+    a locala = JvJ;
     if (locala != null)
     {
-      a(locala.Dui, paramLong1 - locala.DDc, paramLong2, paramLong3, 1L, locala.keyType);
-      DCZ = null;
-      AppMethodBeat.o(209355);
-      return;
+      a(locala.JnG, paramLong1 - locala.JvL, paramLong2, paramLong3, 1L, locala.keyType);
+      JvJ = null;
     }
-    AppMethodBeat.o(209355);
+    AppMethodBeat.o(312049);
   }
   
   public static void n(com.tencent.mm.plugin.hld.keyboard.selfdraw.b paramb)
   {
-    AppMethodBeat.i(209378);
-    kotlin.g.b.p.k(paramb, "btn");
-    if (eEz())
+    AppMethodBeat.i(312250);
+    s.u(paramb, "btn");
+    if (fMC())
     {
-      AppMethodBeat.o(209378);
+      AppMethodBeat.o(312250);
       return;
     }
     paramb = paramb.id;
@@ -1456,68 +3550,63 @@ public final class k
     for (;;)
     {
       label166:
-      hO(i, 1);
-      AppMethodBeat.o(209378);
+      js(i, 1);
+      AppMethodBeat.o(312250);
       return;
       if (!paramb.equals("S4_key_3")) {
         break;
       }
-      for (;;)
+      do
       {
-        i = 400;
-        break label166;
-        if (!paramb.equals("S4_key_2")) {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        i = 400;
+                        break;
+                      } while (paramb.equals("S4_key_2"));
+                      break;
+                    } while (paramb.equals("S4_key_5"));
+                    break;
+                  } while (paramb.equals("S4_key_4"));
+                  break;
+                } while (paramb.equals("S4_key_1"));
+                break;
+              } while (paramb.equals("S4_key_0"));
+              if ((goto 164) || (!paramb.equals("dot"))) {
+                break;
+              }
+              i = 408;
+              break label166;
+              if (!paramb.equals("back")) {
+                break;
+              }
+              i = 403;
+              break label166;
+            } while (paramb.equals("S4_key_7"));
+            break;
+          } while (paramb.equals("S4_key_6"));
           break;
-        }
-        continue;
-        if (!paramb.equals("S4_key_5")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("S4_key_4")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("S4_key_1")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("S4_key_0")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("dot")) {
-          break;
-        }
-        i = 408;
-        break label166;
-        if (!paramb.equals("back")) {
-          break;
-        }
-        i = 403;
-        break label166;
-        if (!paramb.equals("S4_key_7")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("S4_key_6")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("S4_key_9")) {
-          break;
-        }
-        continue;
-        if (!paramb.equals("space")) {
+        } while (paramb.equals("S4_key_9"));
+        if ((goto 164) || (!paramb.equals("space"))) {
           break;
         }
         i = 405;
         break label166;
-        if (!paramb.equals("S4_key_8")) {
-          break;
-        }
-      }
-      if (!paramb.equals("at")) {
+      } while (paramb.equals("S4_key_8"));
+      if ((goto 164) || (!paramb.equals("at"))) {
         break;
       }
       i = 406;
@@ -1525,548 +3614,267 @@ public final class k
       if (!paramb.equals("enter")) {
         break;
       }
-      paramb = (d)com.tencent.mm.kernel.h.ae(d.class);
+      paramb = (d)com.tencent.mm.kernel.h.ax(d.class);
       if (paramb != null)
       {
-        paramb = paramb.eCD();
-        if ((paramb != null) && (paramb.eCn() == true))
-        {
-          i = 407;
-          continue;
-        }
+        paramb = paramb.fKG();
+        if ((paramb == null) || (paramb.fKr() != true)) {}
       }
+      for (i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label443;
+        }
+        i = 407;
+        break;
+      }
+      label443:
       i = 409;
     }
   }
   
-  public static void sR(boolean paramBoolean)
+  public static void r(int paramInt1, String paramString, int paramInt2)
   {
-    int j = 1;
-    AppMethodBeat.i(209343);
-    if (eEz())
+    AppMethodBeat.i(312001);
+    s.u(paramString, "subType");
+    if (fMC())
     {
-      AppMethodBeat.o(209343);
+      AppMethodBeat.o(312001);
       return;
     }
-    gh localgh = new gh();
-    Object localObject = (cln)((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.secdata.g.class)).getOnlyMemory(10, "id_context");
-    if (localObject != null)
+    hy localhy = new hy();
+    localhy.ipH = paramInt1;
+    localhy.rI(paramString);
+    localhy.iPo = paramInt2;
+    localhy.bMH();
+    AppMethodBeat.o(312001);
+  }
+  
+  public static void rM(long paramLong)
+  {
+    AppMethodBeat.i(312053);
+    JvK = new a(paramLong, 0, System.currentTimeMillis());
+    AppMethodBeat.o(312053);
+  }
+  
+  public static void rN(long paramLong)
+  {
+    AppMethodBeat.i(312090);
+    if (fMC())
     {
-      localgh.vw(((cln)localObject).sessionId);
-      localgh.mJ(((cln)localObject).scene);
-      if (!paramBoolean) {
-        break label192;
+      AppMethodBeat.o(312090);
+      return;
+    }
+    com.tencent.threadpool.h.ahAA.g(new k..ExternalSyntheticLambda3(paramLong), "WxIme.ImeReporter");
+    AppMethodBeat.o(312090);
+  }
+  
+  public static void rO(long paramLong)
+  {
+    AppMethodBeat.i(312098);
+    if (fMC())
+    {
+      AppMethodBeat.o(312098);
+      return;
+    }
+    com.tencent.threadpool.h.ahAA.g(new k..ExternalSyntheticLambda4(paramLong), "WxIme.ImeReporter");
+    AppMethodBeat.o(312098);
+  }
+  
+  public static void rP(long paramLong)
+  {
+    AppMethodBeat.i(312106);
+    if (fMC())
+    {
+      AppMethodBeat.o(312106);
+      return;
+    }
+    com.tencent.threadpool.h.ahAA.g(new k..ExternalSyntheticLambda5(paramLong), "WxIme.ImeReporter");
+    AppMethodBeat.o(312106);
+  }
+  
+  public static void rQ(long paramLong)
+  {
+    AppMethodBeat.i(312121);
+    if (fMC())
+    {
+      AppMethodBeat.o(312121);
+      return;
+    }
+    com.tencent.threadpool.h.ahAA.g(new k..ExternalSyntheticLambda6(paramLong), "WxIme.ImeReporter");
+    AppMethodBeat.o(312121);
+  }
+  
+  private static final void rR(long paramLong)
+  {
+    AppMethodBeat.i(312389);
+    fMz();
+    dbs localdbs = (dbs)((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.secdata.g.class)).getOnlyMemory(10, "id_performance");
+    if (localdbs != null)
+    {
+      localdbs.aaHf = paramLong;
+      if ((localdbs.aaHg == 0L) && (localdbs.aaHh == 0L) && (localdbs.aaHe.aaHt == 0L)) {
+        localdbs.aaHi = 2;
       }
-      i = 1;
-      label84:
-      localgh.mK(i);
-      localObject = g.DCm;
-      i = g.eEm();
-      if (i != c.Dyl.ordinal()) {
-        break label197;
+    }
+    AppMethodBeat.o(312389);
+  }
+  
+  private static final void rS(long paramLong)
+  {
+    AppMethodBeat.i(312395);
+    fMz();
+    dbs localdbs = (dbs)((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.secdata.g.class)).getOnlyMemory(10, "id_performance");
+    if (localdbs != null)
+    {
+      localdbs.aaHg = paramLong;
+      if ((localdbs.aaHf == 0L) && (localdbs.aaHh == 0L) && (localdbs.aaHe.aaHt == 0L)) {
+        localdbs.aaHi = 3;
       }
-      i = 1;
-      label111:
-      localgh.mL(i);
-      localObject = (d)com.tencent.mm.kernel.h.ae(d.class);
+    }
+    AppMethodBeat.o(312395);
+  }
+  
+  private static final void rT(long paramLong)
+  {
+    AppMethodBeat.i(312403);
+    fMz();
+    dbs localdbs = (dbs)((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.secdata.g.class)).getOnlyMemory(10, "id_performance");
+    if (localdbs != null)
+    {
+      localdbs.aaHh = paramLong;
+      if ((localdbs.aaHf == 0L) && (localdbs.aaHg == 0L) && (localdbs.aaHe.aaHt == 0L)) {
+        localdbs.aaHi = 4;
+      }
+    }
+    AppMethodBeat.o(312403);
+  }
+  
+  private static final void rU(long paramLong)
+  {
+    AppMethodBeat.i(312428);
+    dbs localdbs = (dbs)((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.secdata.g.class)).getOnlyMemory(10, "id_performance");
+    if (localdbs != null) {
+      localdbs.aaHe.aaHB = paramLong;
+    }
+    AppMethodBeat.o(312428);
+  }
+  
+  private static void wX(boolean paramBoolean)
+  {
+    int j = 2;
+    AppMethodBeat.i(311969);
+    if (fMC())
+    {
+      AppMethodBeat.o(311969);
+      return;
+    }
+    ic localic = new ic();
+    Object localObject = (dbv)((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.secdata.g.class)).getOnlyMemory(10, "id_context");
+    if (localObject == null)
+    {
+      localObject = null;
       if (localObject == null) {
-        break label326;
+        Log.e("WxIme.ImeReporter", "getOnlyMemory(reportOpenClose) 10 id_context is null");
       }
-      localObject = ((d)localObject).eCD();
-      if ((localObject == null) || (((com.tencent.mm.plugin.hld.a.b)localObject).eCu() != true)) {
-        break label326;
+      if (!paramBoolean) {
+        break label218;
+      }
+      i = 1;
+      label78:
+      localic.ipH = i;
+      localObject = g.JuL;
+      i = g.fMo();
+      if (i != c.Jrp.ordinal()) {
+        break label223;
+      }
+      i = 1;
+      label104:
+      localic.iPu = i;
+      localObject = (d)com.tencent.mm.kernel.h.ax(d.class);
+      if (localObject == null) {
+        break label352;
+      }
+      localObject = ((d)localObject).fKG();
+      if ((localObject == null) || (((com.tencent.mm.plugin.hld.a.b)localObject).fKx() != true)) {
+        break label352;
       }
     }
-    label192:
-    label197:
-    label326:
-    for (int i = j;; i = 2)
+    label218:
+    label223:
+    label352:
+    for (int i = 1;; i = 0)
     {
-      localgh.vv(String.valueOf(i));
-      localgh.bpa();
-      AppMethodBeat.o(209343);
+      if (i != 0) {
+        j = 1;
+      }
+      localic.iPt = localic.F("PackageName", String.valueOf(j), true);
+      localic.bMH();
+      AppMethodBeat.o(311969);
       return;
-      Log.e("WxIme.ImeReporter", "getOnlyMemory(reportOpenClose) 10 id_context is null");
+      localic.ijk = localic.F("SessionId", ((dbv)localObject).sessionId, true);
+      localic.imW = ((dbv)localObject).scene;
+      localObject = ah.aiuX;
       break;
       i = 2;
-      break label84;
-      if (i == c.Dym.ordinal())
+      break label78;
+      if (i == c.Jrq.ordinal())
       {
         i = 2;
-        break label111;
+        break label104;
       }
-      if (i == c.Dyn.ordinal())
+      if (i == c.Jrr.ordinal())
       {
         i = 3;
-        break label111;
+        break label104;
       }
-      if (i == c.Dyo.ordinal())
+      if (i == c.Jrs.ordinal())
       {
         i = 4;
-        break label111;
+        break label104;
       }
-      if (i == c.Dyp.ordinal())
+      if (i == c.Jrt.ordinal())
       {
         i = 5;
-        break label111;
+        break label104;
       }
-      if (i == c.Dyq.ordinal())
+      if (i == c.Jru.ordinal())
       {
         i = 6;
-        break label111;
+        break label104;
       }
-      if (i == c.Dyr.ordinal())
+      if (i == c.Jrv.ordinal())
       {
         i = 7;
-        break label111;
+        break label104;
       }
-      if (i == c.Dys.ordinal())
+      if (i == c.Jrw.ordinal())
       {
         i = 8;
-        break label111;
+        break label104;
       }
-      if (i == c.Dyt.ordinal())
+      if (i == c.Jrx.ordinal())
       {
         i = 9;
-        break label111;
+        break label104;
       }
       i = -1;
-      break label111;
+      break label104;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/model/ImeReporter$PressOperationRecord;", "", "pressTime", "", "keyType", "", "processTimeStamp", "(JIJ)V", "getKeyType", "()I", "getPressTime", "()J", "getProcessTimeStamp", "plugin-hld_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/model/ImeReporter$PressOperationRecord;", "", "pressTime", "", "keyType", "", "processTimeStamp", "(JIJ)V", "getKeyType", "()I", "getPressTime", "()J", "getProcessTimeStamp", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
-    final long DDc;
-    final long Dui;
+    final long JnG;
+    final long JvL;
     final int keyType;
     
     public a(long paramLong1, int paramInt, long paramLong2)
     {
-      this.Dui = paramLong1;
+      this.JnG = paramLong1;
       this.keyType = paramInt;
-      this.DDc = paramLong2;
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class d
-    implements Runnable
-  {
-    public static final d DDh;
-    
-    static
-    {
-      AppMethodBeat.i(216988);
-      DDh = new d();
-      AppMethodBeat.o(216988);
-    }
-    
-    public final void run()
-    {
-      AppMethodBeat.i(216987);
-      Object localObject1 = (com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.secdata.g.class);
-      cln localcln = new cln();
-      localcln.sessionId = String.valueOf(System.currentTimeMillis());
-      Object localObject2 = (d)com.tencent.mm.kernel.h.ae(d.class);
-      int i;
-      if (localObject2 != null)
-      {
-        localObject2 = ((d)localObject2).eCD();
-        if ((localObject2 != null) && (((com.tencent.mm.plugin.hld.a.b)localObject2).eCu() == true))
-        {
-          localObject2 = (d)com.tencent.mm.kernel.h.ae(d.class);
-          if (localObject2 != null)
-          {
-            localObject2 = ((d)localObject2).eCD();
-            if (localObject2 != null) {
-              i = ((com.tencent.mm.plugin.hld.a.b)localObject2).eCw();
-            }
-          }
-        }
-      }
-      for (;;)
-      {
-        localcln.scene = i;
-        ((com.tencent.mm.plugin.secdata.g)localObject1).updateOnlyMemory(10, "id_context", (a)localcln);
-        localObject1 = k.DDb;
-        k.sR(true);
-        AppMethodBeat.o(216987);
-        return;
-        i = 5;
-        continue;
-        i = 0;
-      }
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  public static final class e
-    implements Runnable
-  {
-    public static final e DDi;
-    
-    static
-    {
-      AppMethodBeat.i(216423);
-      DDi = new e();
-      AppMethodBeat.o(216423);
-    }
-    
-    public final void run()
-    {
-      AppMethodBeat.i(216418);
-      Object localObject1 = new gc();
-      try
-      {
-        Object localObject2 = com.tencent.mm.plugin.hld.f.l.DHK;
-        ((gc)localObject1).vp(com.tencent.mm.plugin.hld.f.l.eHt());
-        localObject2 = new StringBuilder();
-        k localk = k.DDb;
-        k.a((StringBuilder)localObject2, new String[] { "android.permission.READ_CONTACTS" }, 1);
-        localk = k.DDb;
-        k.a((StringBuilder)localObject2, new String[] { "android.permission.WRITE_CONTACTS" }, 2);
-        localk = k.DDb;
-        k.a((StringBuilder)localObject2, new String[] { "android.permission.ACCESS_COARSE_LOCATION", "android.permission.ACCESS_FINE_LOCATION" }, 3);
-        localk = k.DDb;
-        k.a((StringBuilder)localObject2, new String[] { "android.permission.RECORD_AUDIO" }, 4);
-        localk = k.DDb;
-        k.a((StringBuilder)localObject2, new String[] { "android.permission.CAMERA" }, 5);
-        localk = k.DDb;
-        k.a((StringBuilder)localObject2, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" }, 6);
-        localk = k.DDb;
-        k.a((StringBuilder)localObject2, new String[] { "android.permission.READ_EXTERNAL_STORAGE" }, 7);
-        localk = k.DDb;
-        k.a((StringBuilder)localObject2, new String[] { "android.permission.READ_PHONE_STATE" }, 8);
-        localk = k.DDb;
-        k.a((StringBuilder)localObject2, new String[] { "android.permission.USE_FINGERPRINT" }, 9);
-        ((gc)localObject1).vq(((StringBuilder)localObject2).toString());
-        localObject2 = com.tencent.mm.plugin.hld.f.l.DHK;
-        ((gc)localObject1).oP(com.tencent.mm.plugin.hld.f.l.eHu());
-        localObject2 = com.tencent.mm.plugin.hld.f.l.DHK;
-        ((gc)localObject1).oQ(com.tencent.mm.plugin.hld.f.l.eHx());
-        localObject2 = com.tencent.mm.plugin.hld.f.l.DHK;
-        ((gc)localObject1).oR(com.tencent.mm.plugin.hld.f.l.eHy());
-        localObject2 = com.tencent.mm.plugin.hld.f.l.DHK;
-        ((gc)localObject1).vr(com.tencent.mm.plugin.hld.f.l.eHz());
-        ((gc)localObject1).bpa();
-        localObject1 = com.tencent.mm.plugin.hld.f.l.DHK;
-        localObject1 = com.tencent.mm.plugin.hld.f.l.getKV();
-        if (localObject1 != null)
-        {
-          ((MultiProcessMMKV)localObject1).putBoolean("ime_if_report_client_environment", true);
-          AppMethodBeat.o(216418);
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          Log.i("WxIme.ImeReporter", "getCurIme " + localException.getMessage());
-        }
-        AppMethodBeat.o(216418);
-      }
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/hld/model/ImeReporter$reportDictDownloadStatus$1$1"})
-  static final class f
-    implements Runnable
-  {
-    f(m paramm, clh paramclh, int paramInt) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(211877);
-      gr localgr = new gr();
-      localgr.pk(this.DDj.value);
-      localgr.vE(paramclh.name);
-      localgr.mV(paramclh.version);
-      localgr.mW(paramclh.TsM);
-      localgr.mX(paramclh.lZN);
-      localgr.mY(paramclh.dataType);
-      localgr.mZ(paramclh.lNK);
-      localgr.vF(paramclh.SoN);
-      localgr.na(paramclh.ddx);
-      localgr.vG(paramclh.smT);
-      localgr.vH(paramclh.md5);
-      localgr.nb(paramclh.TsO);
-      localgr.nc(paramInt);
-      localgr.bpa();
-      AppMethodBeat.o(211877);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class g
-    implements Runnable
-  {
-    g(long paramLong1, long paramLong2, long paramLong3, long paramLong4, int paramInt1, long paramLong5, int paramInt2) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(216429);
-      gi localgi = new gi();
-      localgi.oS(this.DDm);
-      localgi.oT(paramLong3);
-      localgi.oU(i);
-      localgi.oV(paramInt);
-      localgi.oW(this.DDq);
-      localgi.oX(this.DDr);
-      localgi.oY(this.DDs);
-      localgi.mM(this.DDt);
-      localgi.bpa();
-      AppMethodBeat.o(216429);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class i
-    implements Runnable
-  {
-    i(long paramLong) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(213881);
-      Object localObject = k.DDb;
-      k.eEA();
-      localObject = (clk)((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.secdata.g.class)).getOnlyMemory(10, "id_performance");
-      if (localObject != null)
-      {
-        ((clk)localObject).TsU = this.DDx;
-        if ((((clk)localObject).TsV == 0L) && (((clk)localObject).TsW == 0L) && (((clk)localObject).TsT.Tti == 0L)) {
-          ((clk)localObject).TsX = 2;
-        }
-        AppMethodBeat.o(213881);
-        return;
-      }
-      AppMethodBeat.o(213881);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class j
-    implements Runnable
-  {
-    j(long paramLong, int paramInt) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(210190);
-      clk localclk = (clk)((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.secdata.g.class)).getOnlyMemory(10, "id_performance");
-      if (localclk != null)
-      {
-        if (!localclk.TsY.TtC)
-        {
-          localclk.TsY.Ttz = this.DDy;
-          localclk.TsY.sessionType = this.DDz;
-        }
-        AppMethodBeat.o(210190);
-        return;
-      }
-      AppMethodBeat.o(210190);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class k
-    implements Runnable
-  {
-    k(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(213884);
-      clk localclk = (clk)((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.secdata.g.class)).getOnlyMemory(10, "id_performance");
-      if (localclk != null)
-      {
-        if (!localclk.TsY.TtC)
-        {
-          localclk.TsY.Ttv = this.DDA;
-          localclk.TsY.Ttw = this.DDB;
-          localclk.TsY.Ttx = this.DDC;
-          localclk.TsY.Tty = this.DDD;
-          localclk.TsY.TtD = this.DDE;
-          k localk = k.DDb;
-          k.a(localclk);
-        }
-        AppMethodBeat.o(213884);
-        return;
-      }
-      AppMethodBeat.o(213884);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class l
-    implements Runnable
-  {
-    l(long paramLong) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(214790);
-      clk localclk = (clk)((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.secdata.g.class)).getOnlyMemory(10, "id_performance");
-      if (localclk != null)
-      {
-        if (!localclk.TsY.TtC)
-        {
-          localclk.TsY.TtA = this.DDF;
-          k localk = k.DDb;
-          k.a(localclk);
-        }
-        AppMethodBeat.o(214790);
-        return;
-      }
-      AppMethodBeat.o(214790);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  public static final class m
-    implements Runnable
-  {
-    public m(long paramLong1, long paramLong2) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(217312);
-      Object localObject = k.DDb;
-      k.eEA();
-      localObject = (clk)((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.secdata.g.class)).getOnlyMemory(10, "id_performance");
-      if (localObject != null)
-      {
-        ((clk)localObject).TsT.Tti = this.DDG;
-        ((clk)localObject).TsT.Ttj = this.DDH;
-        ((clk)localObject).TsT.Ttk = (this.DDH - this.DDG);
-        ((clk)localObject).TsT.Ttl = true;
-        AppMethodBeat.o(217312);
-        return;
-      }
-      AppMethodBeat.o(217312);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  public static final class n
-    implements Runnable
-  {
-    public n(long paramLong1, long paramLong2) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(209302);
-      clk localclk = (clk)((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.secdata.g.class)).getOnlyMemory(10, "id_performance");
-      if (localclk != null)
-      {
-        localclk.TsT.Ttm = this.DDI;
-        localclk.TsT.Ttn = this.DDJ;
-        localclk.TsT.Tto = (this.DDJ - this.DDI);
-        localclk.TsT.Ttp = true;
-        AppMethodBeat.o(209302);
-        return;
-      }
-      AppMethodBeat.o(209302);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  public static final class o
-    implements Runnable
-  {
-    public o(long paramLong) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(212223);
-      clk localclk = (clk)((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.secdata.g.class)).getOnlyMemory(10, "id_performance");
-      if (localclk != null)
-      {
-        localclk.TsT.Ttq = this.DDK;
-        AppMethodBeat.o(212223);
-        return;
-      }
-      AppMethodBeat.o(212223);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  public static final class p
-    implements Runnable
-  {
-    public p(long paramLong1, long paramLong2, int paramInt) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(213873);
-      clk localclk = (clk)((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.secdata.g.class)).getOnlyMemory(10, "id_performance");
-      if (localclk != null)
-      {
-        localclk.TsT.Ttr = this.DDL;
-        localclk.TsT.Tts = this.DDM;
-        localclk.TsT.Ttt = (this.DDM - this.DDL);
-        localclk.TsT.Ttu = this.DDN;
-        k localk = k.DDb;
-        k.b(localclk);
-        localclk.TsT.Ttl = false;
-        localclk.TsT.Ttp = false;
-        AppMethodBeat.o(213873);
-        return;
-      }
-      AppMethodBeat.o(213873);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  public static final class q
-    implements Runnable
-  {
-    public q(long paramLong) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(213896);
-      Object localObject = k.DDb;
-      k.eEA();
-      localObject = (clk)((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.secdata.g.class)).getOnlyMemory(10, "id_performance");
-      if (localObject != null)
-      {
-        ((clk)localObject).TsW = this.DDx;
-        if ((((clk)localObject).TsU == 0L) && (((clk)localObject).TsV == 0L) && (((clk)localObject).TsT.Tti == 0L)) {
-          ((clk)localObject).TsX = 4;
-        }
-        AppMethodBeat.o(213896);
-        return;
-      }
-      AppMethodBeat.o(213896);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class r
-    implements Runnable
-  {
-    r(long paramLong) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(211456);
-      Object localObject = k.DDb;
-      k.eEA();
-      localObject = (clk)((com.tencent.mm.plugin.secdata.g)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.secdata.g.class)).getOnlyMemory(10, "id_performance");
-      if (localObject != null)
-      {
-        ((clk)localObject).TsV = this.DDx;
-        if ((((clk)localObject).TsU == 0L) && (((clk)localObject).TsW == 0L) && (((clk)localObject).TsT.Tti == 0L)) {
-          ((clk)localObject).TsX = 3;
-        }
-        AppMethodBeat.o(211456);
-        return;
-      }
-      AppMethodBeat.o(211456);
+      this.JvL = paramLong2;
     }
   }
 }

@@ -5,22 +5,22 @@ import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.util.DisplayMetrics;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.jsapi.n;
 
 public abstract interface c
-  extends m, g, Comparable<c>
+  extends n, g, Comparable<c>
 {
-  public abstract boolean RZ();
-  
   public abstract d a(d.b paramb);
   
   public abstract void a(int paramInt, AppBrandRuntime paramAppBrandRuntime);
   
   public abstract void a(WxaWindowLayoutParams paramWxaWindowLayoutParams, AppBrandRuntime paramAppBrandRuntime);
   
-  public abstract boolean bCS();
+  public abstract boolean asq();
   
-  public abstract boolean bCZ();
+  public abstract boolean ccf();
+  
+  public abstract boolean ccm();
   
   public abstract Context getContext();
   
@@ -39,8 +39,8 @@ public abstract interface c
   {
     public final int colorPrimary;
     public final String label;
-    public final Bitmap qGu;
-    public final int qpN;
+    public final Bitmap tLg;
+    public final int tus;
     
     public a(String paramString)
     {
@@ -50,8 +50,8 @@ public abstract interface c
     public a(String paramString, Bitmap paramBitmap, int paramInt)
     {
       this.label = paramString;
-      this.qGu = paramBitmap;
-      this.qpN = -1;
+      this.tLg = paramBitmap;
+      this.tus = -1;
       this.colorPrimary = paramInt;
     }
   }
@@ -60,7 +60,7 @@ public abstract interface c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.platform.window.c
  * JD-Core Version:    0.7.0.1
  */

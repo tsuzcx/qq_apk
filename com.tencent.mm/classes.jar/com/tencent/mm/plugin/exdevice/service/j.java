@@ -20,7 +20,7 @@ public abstract interface j
       attachInterface(this, "com.tencent.mm.plugin.exdevice.service.IBTOnScanCallback_AIDL");
     }
     
-    public static j B(IBinder paramIBinder)
+    public static j G(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -32,9 +32,9 @@ public abstract interface j
       return new a(paramIBinder);
     }
     
-    public static j cZT()
+    public static j dGm()
     {
-      return a.vjt;
+      return a.yvr;
     }
     
     public IBinder asBinder()
@@ -61,7 +61,7 @@ public abstract interface j
     static final class a
       implements j
     {
-      public static j vjt;
+      public static j yvr;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -84,9 +84,9 @@ public abstract interface j
           localParcel1.writeString(paramString3);
           localParcel1.writeInt(paramInt3);
           localParcel1.writeByteArray(paramArrayOfByte);
-          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (j.a.cZT() != null))
+          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (j.a.dGm() != null))
           {
-            j.a.cZT().a(paramInt1, paramInt2, paramString1, paramString2, paramString3, paramInt3, paramArrayOfByte);
+            j.a.dGm().a(paramInt1, paramInt2, paramString1, paramString2, paramString3, paramInt3, paramArrayOfByte);
             return;
           }
           localParcel2.readException();
@@ -109,7 +109,7 @@ public abstract interface j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.j
  * JD-Core Version:    0.7.0.1
  */

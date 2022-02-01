@@ -1,96 +1,96 @@
 package com.tencent.mm.plugin.recordvideo.res;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/res/VideoResIDKeyReport;", "Lcom/tencent/mm/plugin/recordvideo/res/IVideoResReport;", "startKey", "", "(I)V", "checkRes", "", "editExist", "editNotExist", "finishDownload", "initExist", "initNotExist", "report", "key", "unzipFail", "unzipSuccess", "Companion", "plugin-recordvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/res/VideoResIDKeyReport;", "Lcom/tencent/mm/plugin/recordvideo/res/IVideoResReport;", "startKey", "", "(I)V", "checkRes", "", "editExist", "editNotExist", "finishDownload", "initExist", "initNotExist", "report", "key", "unzipFail", "unzipSuccess", "Companion", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class h
   implements b
 {
-  public static final a HVe;
-  private final int HUW;
+  public static final a NRU;
+  private final int NRN;
   
   static
   {
-    AppMethodBeat.i(227888);
-    HVe = new a((byte)0);
-    AppMethodBeat.o(227888);
+    AppMethodBeat.i(279652);
+    NRU = new a((byte)0);
+    AppMethodBeat.o(279652);
   }
   
   public h(int paramInt)
   {
-    this.HUW = paramInt;
+    this.NRN = paramInt;
   }
   
-  private static void rE(int paramInt)
+  private static void rG(int paramInt)
   {
-    AppMethodBeat.i(227885);
-    com.tencent.mm.plugin.report.service.h.IzE.el(1388, paramInt);
-    AppMethodBeat.o(227885);
+    AppMethodBeat.i(279649);
+    com.tencent.mm.plugin.report.service.h.OAn.kJ(1388, paramInt);
+    AppMethodBeat.o(279649);
   }
   
-  public final void bkQ()
+  public final void bIJ()
   {
-    AppMethodBeat.i(227878);
-    rE(this.HUW + 4);
-    AppMethodBeat.o(227878);
+    AppMethodBeat.i(279671);
+    rG(this.NRN + 4);
+    AppMethodBeat.o(279671);
   }
   
-  public final void fxI()
+  public final void gJA()
   {
-    AppMethodBeat.i(227866);
-    rE(this.HUW);
-    AppMethodBeat.o(227866);
+    AppMethodBeat.i(279666);
+    rG(this.NRN + 3);
+    AppMethodBeat.o(279666);
   }
   
-  public final void fxJ()
+  public final void gJB()
   {
-    AppMethodBeat.i(227868);
-    rE(this.HUW + 1);
-    AppMethodBeat.o(227868);
+    AppMethodBeat.i(279677);
+    rG(this.NRN + 5);
+    AppMethodBeat.o(279677);
   }
   
-  public final void fxK()
+  public final void gJC()
   {
-    AppMethodBeat.i(227872);
-    rE(this.HUW + 2);
-    AppMethodBeat.o(227872);
+    AppMethodBeat.i(279682);
+    rG(this.NRN + 6);
+    AppMethodBeat.o(279682);
   }
   
-  public final void fxL()
+  public final void gJD()
   {
-    AppMethodBeat.i(227876);
-    rE(this.HUW + 3);
-    AppMethodBeat.o(227876);
+    AppMethodBeat.i(279686);
+    rG(this.NRN + 7);
+    AppMethodBeat.o(279686);
   }
   
-  public final void fxM()
+  public final void gJx()
   {
-    AppMethodBeat.i(227879);
-    rE(this.HUW + 5);
-    AppMethodBeat.o(227879);
+    AppMethodBeat.i(279653);
+    rG(this.NRN);
+    AppMethodBeat.o(279653);
   }
   
-  public final void fxN()
+  public final void gJy()
   {
-    AppMethodBeat.i(227880);
-    rE(this.HUW + 6);
-    AppMethodBeat.o(227880);
+    AppMethodBeat.i(279655);
+    rG(this.NRN + 1);
+    AppMethodBeat.o(279655);
   }
   
-  public final void fxO()
+  public final void gJz()
   {
-    AppMethodBeat.i(227881);
-    rE(this.HUW + 7);
-    AppMethodBeat.o(227881);
+    AppMethodBeat.i(279663);
+    rG(this.NRN + 2);
+    AppMethodBeat.o(279663);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/res/VideoResIDKeyReport$Companion;", "", "()V", "ID", "", "plugin-recordvideo_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/res/VideoResIDKeyReport$Companion;", "", "()V", "ID", "", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.res.h
  * JD-Core Version:    0.7.0.1
  */

@@ -2,50 +2,46 @@ package kotlin.l.b.a.b.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
-import kotlin.a.v;
+import kotlin.a.ab;
+import kotlin.a.p;
+import kotlin.l.b.a.b.b.x;
+import kotlin.l.b.a.b.l.m;
 
 public final class d
-  extends kotlin.l.b.a.b.j.f.e
+  extends kotlin.l.b.a.b.j.g.e
 {
-  public d(kotlin.l.b.a.b.l.j paramj, b paramb)
+  public d(m paramm, b paramb)
   {
-    super(paramj, (kotlin.l.b.a.b.b.e)paramb);
+    super(paramm, (kotlin.l.b.a.b.b.e)paramb);
     AppMethodBeat.i(56736);
     AppMethodBeat.o(56736);
   }
   
-  public final List<kotlin.l.b.a.b.b.t> iEj()
+  public final List<x> knB()
   {
     AppMethodBeat.i(56735);
-    Object localObject = this.abmu;
-    if (localObject == null)
-    {
-      localObject = new kotlin.t("null cannot be cast to non-null type org.jetbrains.kotlin.builtins.functions.FunctionClassDescriptor");
-      AppMethodBeat.o(56735);
-      throw ((Throwable)localObject);
-    }
-    localObject = ((b)localObject).aaIp;
-    switch (e.$EnumSwitchMapping$0[localObject.ordinal()])
+    Object localObject = ((b)this.ajlc).aiEA;
+    switch (a.$EnumSwitchMapping$0[localObject.ordinal()])
     {
     default: 
-      localObject = (List)v.aaAd;
+      localObject = (List)ab.aivy;
       AppMethodBeat.o(56735);
       return localObject;
     case 1: 
-      localObject = f.aaIC;
-      localObject = kotlin.a.j.listOf(f.a.a((b)this.abmu, false));
+      localObject = e.aiES;
+      localObject = p.listOf(e.a.a((b)this.ajlc, false));
       AppMethodBeat.o(56735);
       return localObject;
     }
-    localObject = f.aaIC;
-    localObject = kotlin.a.j.listOf(f.a.a((b)this.abmu, true));
+    localObject = e.aiES;
+    localObject = p.listOf(e.a.a((b)this.ajlc, true));
     AppMethodBeat.o(56735);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.a.a.d
  * JD-Core Version:    0.7.0.1
  */

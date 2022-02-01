@@ -1,99 +1,69 @@
 package com.tencent.mm.plugin.websearch.api;
 
+import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.audio.mix.h.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.fln;
-import com.tencent.mm.protocal.protobuf.flo;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.protocal.protobuf.crx;
+import com.tencent.mm.protocal.protobuf.cry;
 
 public final class r
-  extends q
+  extends p
   implements m
 {
-  private v PxJ;
-  private fln PxP;
-  private flo PxQ;
-  private i callback;
-  private d lKU;
+  public crx WnU;
+  public cry WnV;
+  public int WnW;
+  public Bitmap WnX;
+  private h callback;
+  private c oDw;
   
-  public r(v paramv)
+  public r(crx paramcrx, int paramInt)
   {
-    AppMethodBeat.i(212076);
-    this.PxJ = paramv;
-    paramv = new d.a();
-    paramv.funcId = 719;
-    paramv.uri = "/cgi-bin/micromsg-bin/mmwebsearch";
-    paramv.lBU = new fln();
-    paramv.lBV = new flo();
-    this.lKU = paramv.bgN();
-    this.PxP = ((fln)d.b.b(this.lKU.lBR));
-    this.PxP.SYn = this.PxJ.fwe;
-    this.PxP.Udh = this.PxJ.PxU;
-    this.PxP.Sap = this.PxJ.businessType;
-    this.PxP.TwK = ai.czn();
-    this.PxP.Sat = this.PxJ.offset;
-    this.PxP.UKl = ai.anh(0);
-    this.PxP.UgB = this.PxJ.PxV;
-    this.PxP.CPw = this.PxJ.scene;
-    this.PxP.Sas = this.PxJ.uMC;
-    this.PxP.Udl = this.PxJ.fPw;
-    this.PxP.UKm = this.PxJ.PxW;
-    this.PxP.UKo = this.PxJ.PxY;
-    this.PxP.UKn = this.PxJ.PxX;
-    this.PxP.UKp = this.PxJ.PxZ;
-    this.PxP.UIj = this.PxJ.Pye;
-    this.PxP.Pyd = this.PxJ.Pyd;
-    this.PxP.UKq = this.PxJ.Pyf;
-    this.PxP.vhq = this.PxJ.language;
-    this.PxP.UJX = this.PxJ.sessionId;
-    paramv = this.PxP;
-    if (ar.isDarkMode()) {}
-    for (int i = 1;; i = 0)
-    {
-      paramv.TQc = i;
-      this.PxP.TwL = ai.gQO();
-      AppMethodBeat.o(212076);
-      return;
-    }
+    AppMethodBeat.i(315361);
+    this.WnW = -1;
+    this.WnX = null;
+    this.WnU = paramcrx;
+    this.WnW = paramInt;
+    c.a locala = new c.a();
+    locala.funcId = 4614;
+    locala.uri = "/cgi-bin/mmsearch-bin/searchshare";
+    locala.otE = paramcrx;
+    locala.otF = new cry();
+    this.oDw = locala.bEF();
+    AppMethodBeat.o(315361);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(212082);
-    this.callback = parami;
-    int i = dispatch(paramg, this.lKU, this);
-    AppMethodBeat.o(212082);
+    AppMethodBeat.i(315370);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.oDw, this);
+    AppMethodBeat.o(315370);
     return i;
-  }
-  
-  public final flo gQx()
-  {
-    return this.PxQ;
   }
   
   public final int getType()
   {
-    return 719;
+    return 4614;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(212085);
-    b.i("MicroMsg.WebSearch.NetSceneMMWebSearch", "onGYNetEnd errType:%s errCode:%s errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.PxQ = ((flo)d.c.b(this.lKU.lBS));
+    AppMethodBeat.i(315376);
+    b.i("MicroMsg.WebSearch.NetSceneGetSearchShare", "onGYNetEnd errType:%s errCode:%s errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.WnV = ((cry)c.c.b(this.oDw.otC));
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(212085);
+    AppMethodBeat.o(315376);
   }
 }
 

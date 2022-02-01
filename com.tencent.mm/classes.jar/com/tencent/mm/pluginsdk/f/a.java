@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 public final class a
 {
-  public static Bundle bpj(String paramString)
+  public static Bundle bpd(String paramString)
   {
     AppMethodBeat.i(30935);
     Bundle localBundle = new Bundle();

@@ -9,15 +9,14 @@ import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/view/RoundEmojiView;", "Lcom/tencent/mm/emoji/view/BaseEmojiView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "path", "Landroid/graphics/Path;", "getPath", "()Landroid/graphics/Path;", "rect", "Landroid/graphics/RectF;", "getRect", "()Landroid/graphics/RectF;", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/view/RoundEmojiView;", "Lcom/tencent/mm/emoji/view/BaseEmojiView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "path", "Landroid/graphics/Path;", "getPath", "()Landroid/graphics/Path;", "rect", "Landroid/graphics/RectF;", "getRect", "()Landroid/graphics/RectF;", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class RoundEmojiView
   extends BaseEmojiView
 {
-  private final Path aBZ;
-  private final RectF ctb;
+  private final RectF ekW;
+  private final Path path;
   
   public RoundEmojiView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -28,19 +27,19 @@ public final class RoundEmojiView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(105816);
-    this.aBZ = new Path();
-    this.ctb = new RectF();
+    this.path = new Path();
+    this.ekW = new RectF();
     AppMethodBeat.o(105816);
   }
   
   public final Path getPath()
   {
-    return this.aBZ;
+    return this.path;
   }
   
   public final RectF getRect()
   {
-    return this.ctb;
+    return this.ekW;
   }
   
   protected final void onDraw(Canvas paramCanvas)
@@ -52,107 +51,32 @@ public final class RoundEmojiView
       AppMethodBeat.o(105815);
       return;
     }
-    int i = getMeasuredWidth();
-    Object localObject = getDrawable();
-    p.j(localObject, "drawable");
-    Drawable localDrawable;
-    float f1;
-    float f2;
-    float f3;
-    if (i >= ((Drawable)localObject).getBounds().right)
-    {
-      i = getMeasuredHeight();
-      localObject = getDrawable();
-      p.j(localObject, "drawable");
-      if (i >= ((Drawable)localObject).getBounds().bottom)
-      {
-        localObject = this.ctb;
-        i = getMeasuredWidth();
-        localDrawable = getDrawable();
-        p.j(localDrawable, "drawable");
-        f1 = (i - localDrawable.getBounds().right) / 2.0F;
-        i = getMeasuredHeight();
-        localDrawable = getDrawable();
-        p.j(localDrawable, "drawable");
-        f2 = (i - localDrawable.getBounds().bottom) / 2.0F;
-        i = getMeasuredWidth();
-        localDrawable = getDrawable();
-        p.j(localDrawable, "drawable");
-        f3 = (i - localDrawable.getBounds().right) / 2.0F;
-        localDrawable = getDrawable();
-        p.j(localDrawable, "drawable");
-        float f4 = localDrawable.getBounds().right;
-        i = getMeasuredHeight();
-        localDrawable = getDrawable();
-        p.j(localDrawable, "drawable");
-        float f5 = (i - localDrawable.getBounds().bottom) / 2.0F;
-        localDrawable = getDrawable();
-        p.j(localDrawable, "drawable");
-        ((RectF)localObject).set(f1, f2, f3 + f4, f5 + localDrawable.getBounds().bottom);
-      }
+    if ((getMeasuredWidth() >= getDrawable().getBounds().right) && (getMeasuredHeight() >= getDrawable().getBounds().bottom)) {
+      this.ekW.set((getMeasuredWidth() - getDrawable().getBounds().right) / 2.0F, (getMeasuredHeight() - getDrawable().getBounds().bottom) / 2.0F, (getMeasuredWidth() - getDrawable().getBounds().right) / 2.0F + getDrawable().getBounds().right, (getMeasuredHeight() - getDrawable().getBounds().bottom) / 2.0F + getDrawable().getBounds().bottom);
     }
     for (;;)
     {
-      this.aBZ.addRoundRect(this.ctb, getMeasuredWidth() / 10.0F, getMeasuredHeight() / 10.0F, Path.Direction.CW);
+      this.path.addRoundRect(this.ekW, getMeasuredWidth() / 10.0F, getMeasuredHeight() / 10.0F, Path.Direction.CW);
       if (paramCanvas != null) {
         paramCanvas.save();
       }
       if (paramCanvas != null) {
-        paramCanvas.clipPath(this.aBZ);
+        paramCanvas.clipPath(this.path);
       }
       super.onDraw(paramCanvas);
-      if (paramCanvas == null) {
-        break;
+      if (paramCanvas != null) {
+        paramCanvas.restore();
       }
-      paramCanvas.restore();
       AppMethodBeat.o(105815);
       return;
-      i = getMeasuredWidth();
-      localObject = getDrawable();
-      p.j(localObject, "drawable");
-      if (i >= ((Drawable)localObject).getBounds().right)
-      {
-        localObject = this.ctb;
-        i = getMeasuredWidth();
-        localDrawable = getDrawable();
-        p.j(localDrawable, "drawable");
-        f1 = (i - localDrawable.getBounds().right) / 2.0F;
-        i = getMeasuredWidth();
-        localDrawable = getDrawable();
-        p.j(localDrawable, "drawable");
-        f2 = (i - localDrawable.getBounds().right) / 2.0F;
-        localDrawable = getDrawable();
-        p.j(localDrawable, "drawable");
-        ((RectF)localObject).set(f1, 0.0F, f2 + localDrawable.getBounds().right, getMeasuredHeight());
-      }
-      else
-      {
-        i = getMeasuredHeight();
-        localObject = getDrawable();
-        p.j(localObject, "drawable");
-        if (i >= ((Drawable)localObject).getBounds().bottom)
-        {
-          localObject = this.ctb;
-          i = getMeasuredHeight();
-          localDrawable = getDrawable();
-          p.j(localDrawable, "drawable");
-          f1 = (i - localDrawable.getBounds().bottom) / 2.0F;
-          f2 = getMeasuredWidth();
-          i = getMeasuredHeight();
-          localDrawable = getDrawable();
-          p.j(localDrawable, "drawable");
-          f3 = (i - localDrawable.getBounds().bottom) / 2.0F;
-          localDrawable = getDrawable();
-          p.j(localDrawable, "drawable");
-          ((RectF)localObject).set(0.0F, f1, f2, f3 + localDrawable.getBounds().bottom);
-        }
-        else
-        {
-          this.ctb.set(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight());
-        }
+      if (getMeasuredWidth() >= getDrawable().getBounds().right) {
+        this.ekW.set((getMeasuredWidth() - getDrawable().getBounds().right) / 2.0F, 0.0F, (getMeasuredWidth() - getDrawable().getBounds().right) / 2.0F + getDrawable().getBounds().right, getMeasuredHeight());
+      } else if (getMeasuredHeight() >= getDrawable().getBounds().bottom) {
+        this.ekW.set(0.0F, (getMeasuredHeight() - getDrawable().getBounds().bottom) / 2.0F, getMeasuredWidth(), (getMeasuredHeight() - getDrawable().getBounds().bottom) / 2.0F + getDrawable().getBounds().bottom);
+      } else {
+        this.ekW.set(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight());
       }
     }
-    AppMethodBeat.o(105815);
   }
 }
 

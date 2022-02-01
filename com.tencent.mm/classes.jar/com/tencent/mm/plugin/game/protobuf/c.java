@@ -1,69 +1,69 @@
 package com.tencent.mm.plugin.game.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
+import i.a.a.b;
 import java.util.LinkedList;
 
 public final class c
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public g CME;
-  public String CMF;
-  public String CMG;
+  public g IGJ;
+  public String IGK;
+  public String IGL;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(41708);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.CMF == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.IGK == null)
       {
         paramVarArgs = new b("Not all required fields were included: AdURL");
         AppMethodBeat.o(41708);
         throw paramVarArgs;
       }
-      if (this.CME != null)
+      if (this.IGJ != null)
       {
-        paramVarArgs.oE(1, this.CME.computeSize());
-        this.CME.writeFields(paramVarArgs);
+        paramVarArgs.qD(1, this.IGJ.computeSize());
+        this.IGJ.writeFields(paramVarArgs);
       }
-      if (this.CMF != null) {
-        paramVarArgs.f(2, this.CMF);
+      if (this.IGK != null) {
+        paramVarArgs.g(2, this.IGK);
       }
-      if (this.CMG != null) {
-        paramVarArgs.f(3, this.CMG);
+      if (this.IGL != null) {
+        paramVarArgs.g(3, this.IGL);
       }
       AppMethodBeat.o(41708);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.CME == null) {
-        break label456;
+      if (this.IGJ == null) {
+        break label452;
       }
     }
-    label456:
-    for (int i = g.a.a.a.oD(1, this.CME.computeSize()) + 0;; i = 0)
+    label452:
+    for (int i = i.a.a.a.qC(1, this.IGJ.computeSize()) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.CMF != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.CMF);
+      if (this.IGK != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.IGK);
       }
       i = paramInt;
-      if (this.CMG != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.CMG);
+      if (this.IGL != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.IGL);
       }
       AppMethodBeat.o(41708);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.CMF == null)
+        if (this.IGK == null)
         {
           paramVarArgs = new b("Not all required fields were included: AdURL");
           AppMethodBeat.o(41708);
@@ -74,7 +74,7 @@ public final class c
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         c localc = (c)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
@@ -83,7 +83,7 @@ public final class c
           AppMethodBeat.o(41708);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -93,17 +93,17 @@ public final class c
             if ((localObject != null) && (localObject.length > 0)) {
               localg.parseFrom((byte[])localObject);
             }
-            localc.CME = localg;
+            localc.IGJ = localg;
             paramInt += 1;
           }
           AppMethodBeat.o(41708);
           return 0;
         case 2: 
-          localc.CMF = ((g.a.a.a.a)localObject).abFh.readString();
+          localc.IGK = ((i.a.a.a.a)localObject).ajGk.readString();
           AppMethodBeat.o(41708);
           return 0;
         }
-        localc.CMG = ((g.a.a.a.a)localObject).abFh.readString();
+        localc.IGL = ((i.a.a.a.a)localObject).ajGk.readString();
         AppMethodBeat.o(41708);
         return 0;
       }
@@ -114,7 +114,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.protobuf.c
  * JD-Core Version:    0.7.0.1
  */

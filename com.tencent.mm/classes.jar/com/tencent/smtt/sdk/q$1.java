@@ -7,8 +7,8 @@ final class q$1
 {
   public final Integer a()
   {
-    AppMethodBeat.i(191282);
-    AppMethodBeat.o(191282);
+    AppMethodBeat.i(219666);
+    AppMethodBeat.o(219666);
     return Integer.valueOf(0);
   }
 }

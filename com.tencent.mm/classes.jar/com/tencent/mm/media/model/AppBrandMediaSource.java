@@ -9,8 +9,8 @@ public class AppBrandMediaSource
   implements Parcelable
 {
   public static final Parcelable.Creator<AppBrandMediaSource> CREATOR;
-  public String kVJ;
-  public String kVK;
+  public String nBd;
+  public String nBe;
   public String url;
   
   static
@@ -23,19 +23,19 @@ public class AppBrandMediaSource
   public AppBrandMediaSource()
   {
     this.url = "";
-    this.kVJ = "";
-    this.kVK = "";
+    this.nBd = "";
+    this.nBe = "";
   }
   
   public AppBrandMediaSource(Parcel paramParcel)
   {
     AppMethodBeat.i(184248);
     this.url = "";
-    this.kVJ = "";
-    this.kVK = "";
+    this.nBd = "";
+    this.nBe = "";
     this.url = paramParcel.readString();
-    this.kVJ = paramParcel.readString();
-    this.kVK = paramParcel.readString();
+    this.nBd = paramParcel.readString();
+    this.nBe = paramParcel.readString();
     AppMethodBeat.o(184248);
   }
   
@@ -48,14 +48,14 @@ public class AppBrandMediaSource
   {
     AppMethodBeat.i(184249);
     paramParcel.writeString(this.url);
-    paramParcel.writeString(this.kVJ);
-    paramParcel.writeString(this.kVK);
+    paramParcel.writeString(this.nBd);
+    paramParcel.writeString(this.nBe);
     AppMethodBeat.o(184249);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.media.model.AppBrandMediaSource
  * JD-Core Version:    0.7.0.1
  */

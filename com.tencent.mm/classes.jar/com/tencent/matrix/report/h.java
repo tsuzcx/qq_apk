@@ -1,89 +1,49 @@
 package com.tencent.matrix.report;
 
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.n.n;
+import java.util.HashSet;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/matrix/report/MatrixFinderReporter;", "", "()V", "ID_KEY", "", "KV_ID", "getDeviceLevelIndex", "level", "", "getDeviceLevelSnsIndex", "isAddressScene", "", "scene", "isCareScene", "isChattingScene", "isFinderScene", "isFinderTlScene", "isSnsTlScene", "onAnr", "", "onFPS", "content", "Lorg/json/JSONObject;", "plugin-report_release"})
-public final class h
+public class h
 {
-  public static final h dad = new h();
+  private final a eYB;
+  private final HashSet<String> eYC = new HashSet();
   
-  public static boolean fA(String paramString)
+  public h(a parama)
   {
-    p.k(paramString, "scene");
-    return (n.pu(paramString, "ChattingUIFragment")) || (n.pu(paramString, "ChattingUI"));
+    this.eYB = parama;
   }
   
-  public static boolean fB(String paramString)
+  protected final void b(g paramg)
   {
-    p.k(paramString, "scene");
-    return n.pu(paramString, "AddressUIFragment");
-  }
-  
-  static int fC(String paramString)
-  {
-    switch (paramString.hashCode())
-    {
-    default: 
-    case 2217378: 
-      do
-      {
-        return 20;
-      } while (!paramString.equals("HIGH"));
+    if (this.eYB == null) {
+      throw new RuntimeException("publish issue, but issue listener is null");
     }
-    for (;;)
-    {
-      return 10;
-      if (!paramString.equals("BEST")) {
-        break;
-      }
-      return 0;
-      if (!paramString.equals("MIDDLE")) {
-        break;
-      }
-    }
+    this.eYB.onDetectIssue(paramg);
   }
   
-  static int fD(String paramString)
+  protected void gX(String paramString)
   {
-    switch (paramString.hashCode())
-    {
-    default: 
-    case 2217378: 
-      do
-      {
-        return 6;
-      } while (!paramString.equals("HIGH"));
+    if (paramString == null) {
+      return;
     }
-    for (;;)
-    {
-      return 3;
-      if (!paramString.equals("BEST")) {
-        break;
-      }
-      return 0;
-      if (!paramString.equals("MIDDLE")) {
-        break;
-      }
-    }
+    this.eYC.add(paramString);
   }
   
-  public static boolean fy(String paramString)
+  protected boolean gY(String paramString)
   {
-    p.k(paramString, "scene");
-    return n.pu(paramString, "SnsTimeLineUI");
+    if (paramString == null) {
+      return false;
+    }
+    return this.eYC.contains(paramString);
   }
   
-  public static boolean fz(String paramString)
+  public static abstract interface a
   {
-    p.k(paramString, "scene");
-    return n.a((CharSequence)paramString, (CharSequence)"Finder", false);
+    public abstract void onDetectIssue(g paramg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.report.h
  * JD-Core Version:    0.7.0.1
  */

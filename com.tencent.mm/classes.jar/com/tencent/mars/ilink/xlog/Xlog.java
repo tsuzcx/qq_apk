@@ -13,6 +13,7 @@ public class Xlog
   public static final int LEVEL_NONE = 6;
   public static final int LEVEL_VERBOSE = 0;
   public static final int LEVEL_WARNING = 3;
+  private byte _hellAccFlag_;
   
   public static native void appenderOpen(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, int paramInt3, String paramString4);
   
@@ -21,7 +22,7 @@ public class Xlog
     return paramString;
   }
   
-  public static native void logWrite(XLoggerInfo paramXLoggerInfo, String paramString);
+  public static native void logWrite(Xlog.XLoggerInfo paramXLoggerInfo, String paramString);
   
   public static native void logWrite2(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, int paramInt3, long paramLong1, long paramLong2, String paramString4);
   
@@ -29,8 +30,16 @@ public class Xlog
   {
     if (paramBoolean)
     {
-      System.loadLibrary("c++_shared");
-      System.loadLibrary("ilink_xlog");
+      com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG("c++_shared");
+      Object localObject = new Object();
+      com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/mars/ilink/xlog/Xlog", "open", "(ZIILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+      System.loadLibrary((String)locala.sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mars/ilink/xlog/Xlog", "open", "(ZIILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+      locala = new com.tencent.mm.hellhoundlib.b.a().cG("ilink_xlog");
+      localObject = new Object();
+      com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/mars/ilink/xlog/Xlog", "open", "(ZIILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+      System.loadLibrary((String)locala.sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mars/ilink/xlog/Xlog", "open", "(ZIILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
     }
     appenderOpen(paramInt1, paramInt2, paramString1, paramString2, paramString3, 0, paramString4);
   }
@@ -82,22 +91,10 @@ public class Xlog
   {
     logWrite2(3, decryptTag(paramString1), paramString2, paramString3, paramInt1, paramInt2, paramLong1, paramLong2, paramString4);
   }
-  
-  static class XLoggerInfo
-  {
-    public String filename;
-    public String funcname;
-    public int level;
-    public int line;
-    public long maintid;
-    public long pid;
-    public String tag;
-    public long tid;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mars.ilink.xlog.Xlog
  * JD-Core Version:    0.7.0.1
  */

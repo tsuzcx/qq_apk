@@ -7,25 +7,25 @@ import java.util.TreeSet;
 public final class k
   implements f, Comparator<g>
 {
-  private final long bqg;
-  private final TreeSet<g> bqh;
-  private long bqi;
+  private final long djK;
+  private final TreeSet<g> djL;
+  private long djM;
   
   public k(long paramLong)
   {
-    AppMethodBeat.i(199231);
-    this.bqg = paramLong;
-    this.bqh = new TreeSet(this);
-    AppMethodBeat.o(199231);
+    AppMethodBeat.i(210321);
+    this.djK = paramLong;
+    this.djL = new TreeSet(this);
+    AppMethodBeat.o(210321);
   }
   
   private void b(a parama, long paramLong)
   {
     AppMethodBeat.i(93003);
-    while ((this.bqi + paramLong > this.bqg) && (!this.bqh.isEmpty())) {
+    while ((this.djM + paramLong > this.djK) && (!this.djL.isEmpty())) {
       try
       {
-        parama.b((g)this.bqh.first());
+        parama.b((g)this.djL.first());
       }
       catch (a.a locala) {}
     }
@@ -42,8 +42,8 @@ public final class k
   public final void a(a parama, g paramg)
   {
     AppMethodBeat.i(93000);
-    this.bqh.add(paramg);
-    this.bqi += paramg.aFL;
+    this.djL.add(paramg);
+    this.djM += paramg.length;
     b(parama, 0L);
     AppMethodBeat.o(93000);
   }
@@ -58,15 +58,15 @@ public final class k
   
   public final void b(a parama, g paramg)
   {
-    AppMethodBeat.i(199234);
-    this.bqh.remove(paramg);
-    this.bqi -= paramg.aFL;
-    AppMethodBeat.o(199234);
+    AppMethodBeat.i(210324);
+    this.djL.remove(paramg);
+    this.djM -= paramg.length;
+    AppMethodBeat.o(210324);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.h.a.k
  * JD-Core Version:    0.7.0.1
  */

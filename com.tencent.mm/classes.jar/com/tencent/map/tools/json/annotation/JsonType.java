@@ -1,6 +1,5 @@
 package com.tencent.map.tools.json.annotation;
 
-import androidx.annotation.Keep;
 import com.tencent.map.tools.json.FieldNameStyle;
 import com.tencent.map.tools.json.JsonParser.Deserializer;
 import java.lang.annotation.Annotation;
@@ -10,7 +9,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target({java.lang.annotation.ElementType.TYPE})
-@Keep
 public @interface JsonType
 {
   boolean allowEmpty() default true;
@@ -23,7 +21,7 @@ public @interface JsonType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.map.tools.json.annotation.JsonType
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class GmsClientSupervisor
@@ -46,7 +45,6 @@ public abstract class GmsClientSupervisor
     return bindService(paramString1, paramString2, 129, paramServiceConnection, paramString3);
   }
   
-  @VisibleForTesting
   public abstract void resetForTesting();
   
   public void unbindService(ComponentName paramComponentName, ServiceConnection paramServiceConnection, String paramString)
@@ -187,7 +185,7 @@ public abstract class GmsClientSupervisor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.GmsClientSupervisor
  * JD-Core Version:    0.7.0.1
  */

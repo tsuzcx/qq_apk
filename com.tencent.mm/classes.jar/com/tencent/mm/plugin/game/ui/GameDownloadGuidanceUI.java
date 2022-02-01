@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.game.ui;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -9,25 +8,23 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
 import com.tencent.mm.game.report.g;
-import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.game.api.f;
 import com.tencent.mm.plugin.game.d.a.a;
-import com.tencent.mm.plugin.game.d.c;
-import com.tencent.mm.plugin.game.g.e;
-import com.tencent.mm.plugin.game.g.f;
-import com.tencent.mm.plugin.game.g.h;
-import com.tencent.mm.plugin.game.g.i;
+import com.tencent.mm.plugin.game.h.e;
+import com.tencent.mm.plugin.game.h.f;
+import com.tencent.mm.plugin.game.h.h;
+import com.tencent.mm.plugin.game.h.i;
 import com.tencent.mm.plugin.game.model.ab;
 import com.tencent.mm.plugin.game.model.ao;
 import com.tencent.mm.plugin.game.model.b;
-import com.tencent.mm.plugin.game.protobuf.bg;
-import com.tencent.mm.plugin.game.protobuf.bt;
+import com.tencent.mm.plugin.game.model.w;
+import com.tencent.mm.plugin.game.protobuf.bh;
+import com.tencent.mm.plugin.game.protobuf.bu;
+import com.tencent.mm.plugin.game.protobuf.x;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -37,16 +34,16 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public class GameDownloadGuidanceUI
   extends GameCenterBaseUI
-  implements i
+  implements com.tencent.mm.am.h
 {
-  private bt CLi;
-  private TextView CVP;
-  private TextView CVQ;
-  private TextView CVR;
-  private boolean CVS;
-  private String CVT = "";
-  private Dialog vgC;
-  private LinearLayout wSF;
+  private LinearLayout Api;
+  private bu IFp;
+  private TextView IQh;
+  private TextView IQi;
+  private TextView IQj;
+  private boolean IQk;
+  private String IQl = "";
+  private Dialog ysC;
   
   public final void a(ab paramab, int paramInt)
   {
@@ -57,92 +54,92 @@ public class GameDownloadGuidanceUI
       AppMethodBeat.o(42060);
       return;
     }
-    if ((paramab == null) || (paramab.eyV() == null))
+    if ((paramab == null) || (paramab.fGR() == null))
     {
       Log.e("MicroMsg.GameDownloadGuidanceUI", "Null data");
       AppMethodBeat.o(42060);
       return;
     }
-    if ((paramab != null) && (paramab.eyW() != null))
+    if ((paramab != null) && (paramab.fGS() != null))
     {
-      this.CVT = paramab.eyW().CMD;
-      if (Util.isNullOrNil(this.CVT)) {
+      this.IQl = paramab.fGS().IGI;
+      if (Util.isNullOrNil(this.IQl)) {
         break label244;
       }
-      if (!this.CVS)
+      if (!this.IQk)
       {
-        addIconOptionMenu(0, g.h.actionbar_setting_icon, new MenuItem.OnMenuItemClickListener()
+        addIconOptionMenu(0, h.h.actionbar_setting_icon, new MenuItem.OnMenuItemClickListener()
         {
           public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
           {
             AppMethodBeat.i(42054);
-            int i = c.aY(GameDownloadGuidanceUI.this.getContext(), GameDownloadGuidanceUI.c(GameDownloadGuidanceUI.this));
-            g.a(GameDownloadGuidanceUI.this.getContext(), 10, 1008, 1, i, GameDownloadGuidanceUI.this.CKU, null);
+            int i = com.tencent.mm.plugin.game.d.c.ba(GameDownloadGuidanceUI.this.getContext(), GameDownloadGuidanceUI.c(GameDownloadGuidanceUI.this));
+            g.a(GameDownloadGuidanceUI.this.getContext(), 10, 1008, 1, i, GameDownloadGuidanceUI.this.IFc, null);
             AppMethodBeat.o(42054);
             return true;
           }
         });
-        this.CVS = true;
+        this.IQk = true;
       }
       label109:
-      this.wSF.setVisibility(0);
-      paramab = paramab.eyV();
-      if (Util.isNullOrNil(paramab.CNQ)) {
+      this.Api.setVisibility(0);
+      paramab = paramab.fGR();
+      if (Util.isNullOrNil(paramab.IIa)) {
         break label265;
       }
-      this.CVP.setText(paramab.CNQ);
-      this.CVP.setVisibility(0);
+      this.IQh.setText(paramab.IIa);
+      this.IQh.setVisibility(0);
       label151:
-      if (Util.isNullOrNil(paramab.CNR)) {
+      if (Util.isNullOrNil(paramab.IIb)) {
         break label277;
       }
-      this.CVQ.setText(paramab.CNR);
-      this.CVQ.setVisibility(0);
+      this.IQi.setText(paramab.IIb);
+      this.IQi.setVisibility(0);
       label180:
-      if (Util.isNullOrNil(paramab.CNS)) {
+      if (Util.isNullOrNil(paramab.IIc)) {
         break label289;
       }
-      this.CVR.setText(paramab.CNS);
-      this.CVR.setVisibility(0);
+      this.IQj.setText(paramab.IIc);
+      this.IQj.setVisibility(0);
     }
     for (;;)
     {
       if (paramInt == 2) {
-        c.cMC().postToWorker(new Runnable()
+        com.tencent.mm.plugin.game.d.c.dqg().postToWorker(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(42053);
-            ((f)h.ae(f.class)).evp().b("pb_over_sea", GameDownloadGuidanceUI.b(GameDownloadGuidanceUI.this));
+            ((f)com.tencent.mm.kernel.h.ax(f.class)).fCi().b("pb_over_sea", GameDownloadGuidanceUI.b(GameDownloadGuidanceUI.this));
             AppMethodBeat.o(42053);
           }
         });
       }
       AppMethodBeat.o(42060);
       return;
-      this.CVT = "";
+      this.IQl = "";
       break;
       label244:
-      if (!this.CVS) {
+      if (!this.IQk) {
         break label109;
       }
       removeOptionMenu(0);
-      this.CVS = false;
+      this.IQk = false;
       break label109;
       label265:
-      this.CVP.setVisibility(8);
+      this.IQh.setVisibility(8);
       break label151;
       label277:
-      this.CVQ.setVisibility(8);
+      this.IQi.setVisibility(8);
       break label180;
       label289:
-      this.CVR.setVisibility(8);
+      this.IQj.setVisibility(8);
     }
   }
   
   public int getLayoutId()
   {
-    return g.f.Cns;
+    return h.f.HZA;
   }
   
   public void initView()
@@ -158,11 +155,11 @@ public class GameDownloadGuidanceUI
         return true;
       }
     });
-    setMMTitle(g.i.Cqg);
-    this.wSF = ((LinearLayout)findViewById(g.e.container));
-    this.CVP = ((TextView)findViewById(g.e.main_content));
-    this.CVQ = ((TextView)findViewById(g.e.ClA));
-    this.CVR = ((TextView)findViewById(g.e.Clz));
+    setMMTitle(h.i.Icp);
+    this.Api = ((LinearLayout)findViewById(h.e.container));
+    this.IQh = ((TextView)findViewById(h.e.main_content));
+    this.IQi = ((TextView)findViewById(h.e.HXI));
+    this.IQj = ((TextView)findViewById(h.e.HXH));
     AppMethodBeat.o(42059);
   }
   
@@ -170,14 +167,14 @@ public class GameDownloadGuidanceUI
   {
     AppMethodBeat.i(42057);
     super.onCreate(paramBundle);
-    h.aGY().a(2586, this);
+    com.tencent.mm.kernel.h.aZW().a(2586, this);
     initView();
-    c.cMC().postToWorker(new Runnable()
+    com.tencent.mm.plugin.game.d.c.dqg().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(42052);
-        Object localObject = ((f)h.ae(f.class)).evp().aIX("pb_download_guidance");
+        Object localObject = ((f)com.tencent.mm.kernel.h.ax(f.class)).fCi().aFI("pb_download_guidance");
         if (localObject == null) {
           MMHandlerThread.postToMainThread(new Runnable()
           {
@@ -189,7 +186,7 @@ public class GameDownloadGuidanceUI
                 AppMethodBeat.o(42050);
                 return;
               }
-              GameDownloadGuidanceUI.a(GameDownloadGuidanceUI.this, c.gF(GameDownloadGuidanceUI.this));
+              GameDownloadGuidanceUI.a(GameDownloadGuidanceUI.this, com.tencent.mm.plugin.game.d.c.hY(GameDownloadGuidanceUI.this));
               GameDownloadGuidanceUI.a(GameDownloadGuidanceUI.this).show();
               AppMethodBeat.o(42050);
             }
@@ -197,10 +194,10 @@ public class GameDownloadGuidanceUI
         }
         for (;;)
         {
-          localObject = new ao(LocaleUtil.getApplicationLanguage(), com.tencent.mm.plugin.game.model.e.exY(), GameDownloadGuidanceUI.this.CTB, GameDownloadGuidanceUI.this.CTC, GameDownloadGuidanceUI.this.CTD, GameDownloadGuidanceUI.this.CTA);
-          h.aGY().a((q)localObject, 0);
-          com.tencent.mm.plugin.game.model.e.eyd();
-          a.a.ezW().ezU();
+          localObject = new ao(LocaleUtil.getApplicationLanguage(), com.tencent.mm.plugin.game.model.e.fFU(), GameDownloadGuidanceUI.this.INR, GameDownloadGuidanceUI.this.INS, GameDownloadGuidanceUI.this.INU, GameDownloadGuidanceUI.this.INQ);
+          com.tencent.mm.kernel.h.aZW().a((p)localObject, 0);
+          com.tencent.mm.plugin.game.model.e.fFZ();
+          a.a.fHX().fHV();
           AppMethodBeat.o(42052);
           return;
           MMHandlerThread.postToMainThread(new Runnable()
@@ -210,7 +207,7 @@ public class GameDownloadGuidanceUI
               AppMethodBeat.i(42051);
               try
               {
-                GameDownloadGuidanceUI.this.a(this.CVX, 1);
+                GameDownloadGuidanceUI.this.a(this.IQo, 1);
                 AppMethodBeat.o(42051);
                 return;
               }
@@ -233,19 +230,19 @@ public class GameDownloadGuidanceUI
     AppMethodBeat.i(42058);
     Log.i("MicroMsg.GameDownloadGuidanceUI", "onDestroy");
     super.onDestroy();
-    a.a.ezW().clearCache();
-    h.aGY().b(2586, this);
-    ((com.tencent.mm.plugin.game.api.e)h.ae(com.tencent.mm.plugin.game.api.e.class)).evm().clearCache();
+    a.a.fHX().clearCache();
+    com.tencent.mm.kernel.h.aZW().b(2586, this);
+    ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.game.api.e.class)).fCf().clearCache();
     AppMethodBeat.o(42058);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, final String paramString, q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, final String paramString, p paramp)
   {
     AppMethodBeat.i(42061);
-    Log.i("MicroMsg.GameDownloadGuidanceUI", "errType: %d errCode: %d, scene: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramq.hashCode()) });
+    Log.i("MicroMsg.GameDownloadGuidanceUI", "errType: %d errCode: %d, scene: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramp.hashCode()) });
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      switch (paramq.getType())
+      switch (paramp.getType())
       {
       }
       for (;;)
@@ -253,14 +250,14 @@ public class GameDownloadGuidanceUI
         AppMethodBeat.o(42061);
         return;
         final long l = System.currentTimeMillis();
-        paramString = d.c.b(((ao)paramq).jTk.lBS);
-        c.cMC().postToWorker(new Runnable()
+        paramString = c.c.b(((ao)paramp).mtC.otC);
+        com.tencent.mm.plugin.game.d.c.dqg().postToWorker(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(42056);
             if (paramString == null) {
-              GameDownloadGuidanceUI.a(GameDownloadGuidanceUI.this, new bt());
+              GameDownloadGuidanceUI.a(GameDownloadGuidanceUI.this, new bu());
             }
             for (;;)
             {
@@ -271,11 +268,11 @@ public class GameDownloadGuidanceUI
                   AppMethodBeat.i(42055);
                   try
                   {
-                    GameDownloadGuidanceUI.this.a(this.CVX, 2);
+                    GameDownloadGuidanceUI.this.a(this.IQo, 2);
                     if (GameDownloadGuidanceUI.a(GameDownloadGuidanceUI.this) != null) {
                       GameDownloadGuidanceUI.a(GameDownloadGuidanceUI.this).dismiss();
                     }
-                    Log.i("MicroMsg.GameDownloadGuidanceUI", "Server data parsing time: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - GameDownloadGuidanceUI.5.this.cAj) });
+                    Log.i("MicroMsg.GameDownloadGuidanceUI", "Server data parsing time: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - GameDownloadGuidanceUI.5.this.esF) });
                     AppMethodBeat.o(42055);
                     return;
                   }
@@ -291,17 +288,17 @@ public class GameDownloadGuidanceUI
               });
               AppMethodBeat.o(42056);
               return;
-              GameDownloadGuidanceUI.a(GameDownloadGuidanceUI.this, (bt)paramString);
+              GameDownloadGuidanceUI.a(GameDownloadGuidanceUI.this, (bu)paramString);
             }
           }
         });
       }
     }
-    if (!com.tencent.mm.plugin.game.a.a.mIH.a(this, paramInt1, paramInt2, paramString)) {
-      Toast.makeText(this, getString(g.i.Cpf, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+    if (!com.tencent.mm.plugin.game.a.a.pFo.a(this, paramInt1, paramInt2, paramString)) {
+      Toast.makeText(this, getString(h.i.Ibn, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
     }
-    if (this.vgC != null) {
-      this.vgC.cancel();
+    if (this.ysC != null) {
+      this.ysC.cancel();
     }
     AppMethodBeat.o(42061);
   }
@@ -314,7 +311,7 @@ public class GameDownloadGuidanceUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameDownloadGuidanceUI
  * JD-Core Version:    0.7.0.1
  */

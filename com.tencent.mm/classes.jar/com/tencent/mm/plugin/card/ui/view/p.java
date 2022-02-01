@@ -17,24 +17,24 @@ public final class p
   
   public final void b(ViewGroup paramViewGroup, b paramb) {}
   
-  public final boolean cKZ()
+  public final boolean doF()
   {
     return true;
   }
   
-  public final boolean cLa()
+  public final boolean doG()
   {
     return true;
   }
   
   public final int getLayoutId()
   {
-    return a.e.thO;
+    return a.e.wmn;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.view.p
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.bizchat;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
@@ -9,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -17,24 +17,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
 import com.tencent.mm.R.l;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.ao.a.c;
-import com.tencent.mm.ao.a.e;
-import com.tencent.mm.ao.a.k;
-import com.tencent.mm.ao.a.l;
-import com.tencent.mm.ao.af;
+import com.tencent.mm.an.a.c;
+import com.tencent.mm.an.a.h;
+import com.tencent.mm.an.a.l;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.model.aa;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.pluginsdk.ui.applet.y.a;
-import com.tencent.mm.protocal.protobuf.aej;
-import com.tencent.mm.protocal.protobuf.bms;
-import com.tencent.mm.protocal.protobuf.nj;
+import com.tencent.mm.protocal.protobuf.agv;
+import com.tencent.mm.protocal.protobuf.cam;
+import com.tencent.mm.protocal.protobuf.op;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ad;
+import com.tencent.mm.ui.base.w;
 import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
 import com.tencent.mm.ui.contact.r;
 import java.util.HashMap;
@@ -42,20 +38,46 @@ import java.util.HashMap;
 @com.tencent.mm.ui.base.a(19)
 public class BizChatSelectConversationUI
   extends MMBaseSelectContactUI
-  implements com.tencent.mm.ao.p
+  implements com.tencent.mm.an.p
 {
-  k WtZ;
-  private TextView Wvh;
+  com.tencent.mm.an.a.k aebr;
+  private TextView aecz;
   private int scene = 0;
-  private String syN = null;
-  private com.tencent.mm.ui.base.s tipDialog = null;
+  private w tipDialog = null;
+  private String vEu = null;
   
-  private com.tencent.mm.ui.widget.a.d a(String paramString1, String paramString2, String paramString3, final String paramString4, final long paramLong)
+  private void a(String paramString, long paramLong, CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(34040);
+    Log.i("MicroMsg.BizChatSelectConversationUI", "doClickUser=%s", new Object[] { paramString });
+    if (this.scene == 2)
+    {
+      if (getIntent().getBooleanExtra("enterprise_extra_params", true))
+      {
+        v(paramString, String.valueOf(paramCharSequence), paramLong);
+        AppMethodBeat.o(34040);
+        return;
+      }
+      w(paramString, String.valueOf(paramCharSequence), paramLong);
+      AppMethodBeat.o(34040);
+      return;
+    }
+    if (this.scene == 1)
+    {
+      paramCharSequence = (HashMap)getIntent().getSerializableExtra("enterprise_extra_params");
+      String str1 = (String)paramCharSequence.get("img_url");
+      String str2 = (String)paramCharSequence.get("desc");
+      b((String)paramCharSequence.get("title"), str2, str1, paramString, paramLong);
+    }
+    AppMethodBeat.o(34040);
+  }
+  
+  private com.tencent.mm.ui.widget.a.e b(String paramString1, String paramString2, String paramString3, final String paramString4, final long paramLong)
   {
     AppMethodBeat.i(34043);
     paramString1 = com.tencent.mm.pluginsdk.ui.applet.o.a(getController(), paramString1, paramString3, paramString2, true, getResources().getString(R.l.app_send), new y.a()
     {
-      public final void a(boolean paramAnonymousBoolean, String paramAnonymousString, int paramAnonymousInt)
+      public final void onDialogClick(boolean paramAnonymousBoolean, String paramAnonymousString, int paramAnonymousInt)
       {
         AppMethodBeat.i(34029);
         if (paramAnonymousBoolean)
@@ -77,39 +99,13 @@ public class BizChatSelectConversationUI
     return paramString1;
   }
   
-  private void a(String paramString, long paramLong, CharSequence paramCharSequence)
-  {
-    AppMethodBeat.i(34040);
-    Log.i("MicroMsg.BizChatSelectConversationUI", "doClickUser=%s", new Object[] { paramString });
-    if (this.scene == 2)
-    {
-      if (getIntent().getBooleanExtra("enterprise_extra_params", true))
-      {
-        t(paramString, String.valueOf(paramCharSequence), paramLong);
-        AppMethodBeat.o(34040);
-        return;
-      }
-      u(paramString, String.valueOf(paramCharSequence), paramLong);
-      AppMethodBeat.o(34040);
-      return;
-    }
-    if (this.scene == 1)
-    {
-      paramCharSequence = (HashMap)getIntent().getSerializableExtra("enterprise_extra_params");
-      String str1 = (String)paramCharSequence.get("img_url");
-      String str2 = (String)paramCharSequence.get("desc");
-      a((String)paramCharSequence.get("title"), str2, str1, paramString, paramLong);
-    }
-    AppMethodBeat.o(34040);
-  }
-  
-  private void hLp()
+  private void jnR()
   {
     AppMethodBeat.i(34034);
-    if (Util.isNullOrNil(this.syN))
+    if (Util.isNullOrNil(this.vEu))
     {
-      this.syN = getIntent().getStringExtra("enterprise_biz_name");
-      if (Util.isNullOrNil(this.syN))
+      this.vEu = getIntent().getStringExtra("enterprise_biz_name");
+      if (Util.isNullOrNil(this.vEu))
       {
         Log.e("MicroMsg.BizChatSelectConversationUI", "brandUserName is null");
         finish();
@@ -118,12 +114,12 @@ public class BizChatSelectConversationUI
     AppMethodBeat.o(34034);
   }
   
-  private void t(final String paramString1, String paramString2, final long paramLong)
+  private void v(final String paramString1, String paramString2, final long paramLong)
   {
     AppMethodBeat.i(34041);
     com.tencent.mm.pluginsdk.ui.applet.o.a(this.mController, paramLong, getString(R.l.retransmit_to_conv_comfirm2), paramString2, getString(R.l.app_send), new y.a()
     {
-      public final void a(boolean paramAnonymousBoolean, String paramAnonymousString, int paramAnonymousInt)
+      public final void onDialogClick(boolean paramAnonymousBoolean, String paramAnonymousString, int paramAnonymousInt)
       {
         AppMethodBeat.i(34027);
         if (paramAnonymousBoolean)
@@ -141,12 +137,12 @@ public class BizChatSelectConversationUI
     AppMethodBeat.o(34041);
   }
   
-  private void u(final String paramString1, String paramString2, final long paramLong)
+  private void w(final String paramString1, String paramString2, final long paramLong)
   {
     AppMethodBeat.i(34042);
     com.tencent.mm.pluginsdk.ui.applet.o.a(this.mController, paramLong, getString(R.l.retransmit_to_conv_comfirm2), paramString2, getString(R.l.app_send), new y.a()
     {
-      public final void a(boolean paramAnonymousBoolean, String paramAnonymousString, int paramAnonymousInt)
+      public final void onDialogClick(boolean paramAnonymousBoolean, String paramAnonymousString, int paramAnonymousInt)
       {
         AppMethodBeat.i(34028);
         if (paramAnonymousBoolean)
@@ -164,40 +160,7 @@ public class BizChatSelectConversationUI
     AppMethodBeat.o(34042);
   }
   
-  public final void N(View paramView, int paramInt)
-  {
-    AppMethodBeat.i(284565);
-    if (paramInt < getContentLV().getHeaderViewsCount())
-    {
-      Log.i("MicroMsg.BizChatSelectConversationUI", "Click HeaderView position=%d", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(284565);
-      return;
-    }
-    if (!(getContentLV().getAdapter().getItem(paramInt) instanceof a))
-    {
-      Log.w("MicroMsg.BizChatSelectConversationUI", "Click HeaderView not BizChatConvDataItem");
-      AppMethodBeat.o(284565);
-      return;
-    }
-    paramView = (a)getContentLV().getAdapter().getItem(paramInt);
-    if (paramView == null)
-    {
-      AppMethodBeat.o(284565);
-      return;
-    }
-    String str = paramView.username;
-    long l = paramView.syu;
-    if ((str == null) || (l == -1L))
-    {
-      Log.i("MicroMsg.BizChatSelectConversationUI", "onclick err userName:%s,bizChatId:%s", new Object[] { str, Long.valueOf(l) });
-      AppMethodBeat.o(284565);
-      return;
-    }
-    a(str, l, paramView.mMY);
-    AppMethodBeat.o(284565);
-  }
-  
-  public final void a(int paramInt, q paramq)
+  public final void a(int paramInt, com.tencent.mm.am.p paramp)
   {
     AppMethodBeat.i(34046);
     if ((this.tipDialog != null) && (this.tipDialog.isShowing()))
@@ -205,26 +168,59 @@ public class BizChatSelectConversationUI
       this.tipDialog.dismiss();
       this.tipDialog = null;
     }
-    if (paramq.getType() == 1355)
+    if (paramp.getType() == 1355)
     {
-      paramq = ((com.tencent.mm.ao.a.o)paramq).bjS();
-      paramq = af.bjx().Va(paramq.SqS.SXD.RUi);
-      if (paramq == null)
+      paramp = ((com.tencent.mm.an.a.o)paramp).bHE();
+      paramp = com.tencent.mm.an.af.bHh().MZ(paramp.ZpT.aajx.YRJ);
+      if (paramp == null)
       {
-        Toast.makeText(MMApplicationContext.getContext(), getString(R.l.eQJ), 0).show();
+        Toast.makeText(MMApplicationContext.getContext(), getString(R.l.gTp), 0).show();
         AppMethodBeat.o(34046);
         return;
       }
-      a(this.syN, paramq.field_bizChatLocalId, paramq.field_chatName);
+      a(this.vEu, paramp.field_bizChatLocalId, paramp.field_chatName);
     }
     AppMethodBeat.o(34046);
+  }
+  
+  public final void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(250762);
+    if (paramInt < getContentLV().getHeaderViewsCount())
+    {
+      Log.i("MicroMsg.BizChatSelectConversationUI", "Click HeaderView position=%d", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(250762);
+      return;
+    }
+    if (!(getContentLV().getAdapter().getItem(paramInt) instanceof a))
+    {
+      Log.w("MicroMsg.BizChatSelectConversationUI", "Click HeaderView not BizChatConvDataItem");
+      AppMethodBeat.o(250762);
+      return;
+    }
+    paramAdapterView = (a)getContentLV().getAdapter().getItem(paramInt);
+    if (paramAdapterView == null)
+    {
+      AppMethodBeat.o(250762);
+      return;
+    }
+    paramView = paramAdapterView.username;
+    paramLong = paramAdapterView.vEb;
+    if ((paramView == null) || (paramLong == -1L))
+    {
+      Log.i("MicroMsg.BizChatSelectConversationUI", "onclick err userName:%s,bizChatId:%s", new Object[] { paramView, Long.valueOf(paramLong) });
+      AppMethodBeat.o(250762);
+      return;
+    }
+    a(paramView, paramLong, paramAdapterView.pJG);
+    AppMethodBeat.o(250762);
   }
   
   public final void a(ListView paramListView, int paramInt)
   {
     AppMethodBeat.i(34037);
     super.a(paramListView, paramInt);
-    if (this.Wvh == null)
+    if (this.aecz == null)
     {
       Object localObject = new View.OnClickListener()
       {
@@ -232,65 +228,65 @@ public class BizChatSelectConversationUI
         {
           AppMethodBeat.i(34026);
           b localb = new b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/bizchat/BizChatSelectConversationUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/bizchat/BizChatSelectConversationUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           BizChatSelectConversationUI.a(BizChatSelectConversationUI.this);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/bizchat/BizChatSelectConversationUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(34026);
         }
       };
-      String str = getString(R.l.eRV);
-      View localView = ad.kS(this).inflate(R.i.ehv, null);
+      String str = getString(R.l.gUD);
+      View localView = com.tencent.mm.ui.af.mU(this).inflate(R.i.gkq, null);
       localView.setOnClickListener((View.OnClickListener)localObject);
       localObject = (TextView)localView.findViewById(R.h.content_tv);
       ((TextView)localObject).setText(str);
       paramListView.addHeaderView(localView);
-      this.Wvh = ((TextView)localObject);
+      this.aecz = ((TextView)localObject);
     }
-    this.Wvh.setVisibility(paramInt);
+    this.aecz.setVisibility(paramInt);
     AppMethodBeat.o(34037);
   }
   
-  public final boolean bwH()
-  {
-    return false;
-  }
-  
-  public final boolean bwI()
-  {
-    return false;
-  }
-  
-  public final String bwJ()
-  {
-    AppMethodBeat.i(34044);
-    String str = aa.PJ(this.syN);
-    AppMethodBeat.o(34044);
-    return str;
-  }
-  
-  public final r bwK()
+  public final r bVA()
   {
     AppMethodBeat.i(34035);
-    hLp();
-    d locald = new d(this, this.syN);
+    jnR();
+    d locald = new d(this, this.vEu);
     AppMethodBeat.o(34035);
     return locald;
   }
   
-  public final com.tencent.mm.ui.contact.p bwL()
+  public final com.tencent.mm.ui.contact.p bVB()
   {
     AppMethodBeat.i(34036);
-    hLp();
-    com.tencent.mm.ui.contact.s locals = new com.tencent.mm.ui.contact.s(this, this.syN);
+    jnR();
+    com.tencent.mm.ui.contact.s locals = new com.tencent.mm.ui.contact.s(this, this.vEu);
     AppMethodBeat.o(34036);
     return locals;
   }
   
-  public final void eQp()
+  public final boolean bVx()
+  {
+    return false;
+  }
+  
+  public final boolean bVy()
+  {
+    return false;
+  }
+  
+  public final String bVz()
+  {
+    AppMethodBeat.i(34044);
+    String str = aa.getDisplayName(this.vEu);
+    AppMethodBeat.o(34044);
+    return str;
+  }
+  
+  public final void fYZ()
   {
     AppMethodBeat.i(34038);
-    super.eQp();
+    super.fYZ();
     AppMethodBeat.o(34038);
   }
   
@@ -310,25 +306,25 @@ public class BizChatSelectConversationUI
       return;
     }
     paramIntent = paramIntent.getBundleExtra("result_data");
-    bms localbms;
+    cam localcam;
     if (paramIntent != null)
     {
       Log.i("MicroMsg.BizChatSelectConversationUI", "bundle != null");
       String str = paramIntent.getString("enterprise_members");
-      localbms = new bms();
+      localcam = new cam();
       c localc = new c();
-      if (this.WtZ != null)
+      if (this.aebr != null)
       {
-        paramIntent = this.WtZ.field_addMemberUrl;
+        paramIntent = this.aebr.field_addMemberUrl;
         localc.field_addMemberUrl = paramIntent;
-        localc.field_brandUserName = this.syN;
-        if (!e.a(localc, str, null, localbms)) {
+        localc.field_brandUserName = this.vEu;
+        if (!com.tencent.mm.an.a.e.a(localc, str, null, localcam)) {
           break label257;
         }
         if (localc.field_bizChatLocalId == -1L) {
           break label204;
         }
-        a(this.syN, localc.field_bizChatLocalId, localc.field_chatName);
+        a(this.vEu, localc.field_bizChatLocalId, localc.field_chatName);
         paramInt1 = 1;
       }
     }
@@ -336,21 +332,21 @@ public class BizChatSelectConversationUI
     {
       if (paramInt1 == 0)
       {
-        Toast.makeText(this, getString(R.l.eQJ), 0).show();
+        Toast.makeText(this, getString(R.l.gTp), 0).show();
         AppMethodBeat.o(34045);
         return;
         paramIntent = null;
         break;
         label204:
-        af.bjE();
-        paramIntent = com.tencent.mm.ao.a.h.a(this.syN, localbms, this);
+        com.tencent.mm.an.af.bHp();
+        paramIntent = h.a(this.vEu, localcam, this);
         getString(R.l.app_tip);
-        this.tipDialog = com.tencent.mm.ui.base.h.a(this, getString(R.l.emP), true, new DialogInterface.OnCancelListener()
+        this.tipDialog = com.tencent.mm.ui.base.k.a(this, getString(R.l.gpQ), true, new DialogInterface.OnCancelListener()
         {
           public final void onCancel(DialogInterface paramAnonymousDialogInterface)
           {
             AppMethodBeat.i(34030);
-            bh.aGY().a(paramIntent);
+            bh.aZW().a(paramIntent);
             AppMethodBeat.o(34030);
           }
         });
@@ -372,21 +368,21 @@ public class BizChatSelectConversationUI
     AppMethodBeat.i(34032);
     super.onCreate(paramBundle);
     this.scene = getIntent().getIntExtra("biz_chat_scene", 1);
-    hLp();
-    paramBundle = af.bjz().gn(this.syN);
-    this.WtZ = af.bjz().gm(paramBundle);
-    String str = this.syN;
-    if (this.WtZ == null) {
+    jnR();
+    paramBundle = com.tencent.mm.an.af.bHj().hN(this.vEu);
+    this.aebr = com.tencent.mm.an.af.bHj().hM(paramBundle);
+    String str = this.vEu;
+    if (this.aebr == null) {
       bool = true;
     }
     Log.i("MicroMsg.BizChatSelectConversationUI", "updateBizChatMyUserInfo: %s:%s,myBizChatUserInfo is null:%s", new Object[] { str, paramBundle, Boolean.valueOf(bool) });
-    if ((Util.isNullOrNil(paramBundle)) || (this.WtZ == null) || (this.WtZ.bjN()) || (Util.isNullOrNil(this.WtZ.field_addMemberUrl)))
+    if ((Util.isNullOrNil(paramBundle)) || (this.aebr == null) || (this.aebr.bHy()) || (Util.isNullOrNil(this.aebr.field_addMemberUrl)))
     {
-      af.bjE();
-      com.tencent.mm.ao.a.h.a(this.syN, this);
+      com.tencent.mm.an.af.bHp();
+      h.a(this.vEu, this);
       paramBundle = getActivity();
       getString(R.l.app_tip);
-      this.tipDialog = com.tencent.mm.ui.base.h.a(paramBundle, getString(R.l.app_waiting), true, new DialogInterface.OnCancelListener()
+      this.tipDialog = com.tencent.mm.ui.base.k.a(paramBundle, getString(R.l.app_waiting), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {

@@ -12,7 +12,7 @@ import com.tencent.pb.common.c.b;
 public class ConnectReceiver
   extends BroadcastReceiver
 {
-  private static g Ziu = null;
+  private static g ahgV = null;
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
@@ -26,12 +26,12 @@ public class ConnectReceiver
         if (!"android.net.conn.CONNECTIVITY_CHANGE".equals(paramIntent.getAction())) {
           return;
         }
-        if (Ziu == null) {
-          Ziu = new g();
+        if (ahgV == null) {
+          ahgV = new g();
         }
         boolean bool1 = h.isNetworkConnected();
-        boolean bool2 = Ziu.aqy();
-        paramContext = (a)f.bDV("EventCenter");
+        boolean bool2 = ahgV.aKw();
+        paramContext = (a)f.bGu("EventCenter");
         if ((!bool2) || (paramContext == null)) {
           return;
         }
@@ -41,7 +41,7 @@ public class ConnectReceiver
           return;
         }
       }
-      catch (Throwable paramContext)
+      finally
       {
         b.w("ConnectReceiver", new Object[] { "onReceive", paramContext });
         return;
@@ -52,7 +52,7 @@ public class ConnectReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.pb.common.system.ConnectReceiver
  * JD-Core Version:    0.7.0.1
  */

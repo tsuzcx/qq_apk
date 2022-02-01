@@ -1,724 +1,635 @@
 package androidx.recyclerview.widget;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.TimeInterpolator;
-import android.animation.ValueAnimator;
-import android.view.View;
-import android.view.ViewPropertyAnimator;
-import androidx.core.g.w;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-public class g
-  extends y
+public final class g
 {
-  private static TimeInterpolator afY;
-  private ArrayList<RecyclerView.v> afZ;
-  private ArrayList<RecyclerView.v> aga;
-  private ArrayList<b> agb;
-  private ArrayList<a> agc;
-  ArrayList<ArrayList<RecyclerView.v>> agd;
-  ArrayList<ArrayList<b>> age;
-  ArrayList<ArrayList<a>> agf;
-  ArrayList<RecyclerView.v> agg;
-  ArrayList<RecyclerView.v> agh;
-  ArrayList<RecyclerView.v> agi;
-  ArrayList<RecyclerView.v> agj;
+  private static final Comparator<f> bVj;
   
-  public g()
+  static
   {
-    AppMethodBeat.i(260953);
-    this.afZ = new ArrayList();
-    this.aga = new ArrayList();
-    this.agb = new ArrayList();
-    this.agc = new ArrayList();
-    this.agd = new ArrayList();
-    this.age = new ArrayList();
-    this.agf = new ArrayList();
-    this.agg = new ArrayList();
-    this.agh = new ArrayList();
-    this.agi = new ArrayList();
-    this.agj = new ArrayList();
-    AppMethodBeat.o(260953);
+    AppMethodBeat.i(194820);
+    bVj = new Comparator() {};
+    AppMethodBeat.o(194820);
   }
   
-  private void a(a parama)
+  public static b a(a parama)
   {
-    AppMethodBeat.i(260978);
-    if (parama.agw != null) {
-      a(parama, parama.agw);
-    }
-    if (parama.agx != null) {
-      a(parama, parama.agx);
-    }
-    AppMethodBeat.o(260978);
+    AppMethodBeat.i(194778);
+    parama = a(parama, true);
+    AppMethodBeat.o(194778);
+    return parama;
   }
   
-  private void a(List<a> paramList, RecyclerView.v paramv)
+  public static b a(a parama, boolean paramBoolean)
   {
-    AppMethodBeat.i(260975);
-    int i = paramList.size() - 1;
-    while (i >= 0)
+    AppMethodBeat.i(194795);
+    int i = parama.If();
+    int j = parama.Ig();
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    localArrayList2.add(new e(i, j));
+    i = i + j + Math.abs(i - j);
+    int[] arrayOfInt1 = new int[i * 2];
+    int[] arrayOfInt2 = new int[i * 2];
+    ArrayList localArrayList3 = new ArrayList();
+    while (!localArrayList2.isEmpty())
     {
-      a locala = (a)paramList.get(i);
-      if ((a(locala, paramv)) && (locala.agw == null) && (locala.agx == null)) {
-        paramList.remove(locala);
+      e locale2 = (e)localArrayList2.remove(localArrayList2.size() - 1);
+      f localf = a(parama, locale2.bVu, locale2.bVv, locale2.bVw, locale2.bVx, arrayOfInt1, arrayOfInt2, i);
+      if (localf != null)
+      {
+        if (localf.size > 0) {
+          localArrayList1.add(localf);
+        }
+        localf.x += locale2.bVu;
+        localf.y += locale2.bVw;
+        e locale1;
+        if (localArrayList3.isEmpty())
+        {
+          locale1 = new e();
+          label220:
+          locale1.bVu = locale2.bVu;
+          locale1.bVw = locale2.bVw;
+          if (!localf.reverse) {
+            break label365;
+          }
+          locale1.bVv = localf.x;
+          locale1.bVx = localf.y;
+          label268:
+          localArrayList2.add(locale1);
+          if (!localf.reverse) {
+            break label460;
+          }
+          if (!localf.bVt) {
+            break label423;
+          }
+          locale2.bVu = (localf.x + localf.size + 1);
+          locale2.bVw = (localf.y + localf.size);
+        }
+        for (;;)
+        {
+          localArrayList2.add(locale2);
+          break;
+          locale1 = (e)localArrayList3.remove(localArrayList3.size() - 1);
+          break label220;
+          label365:
+          if (localf.bVt)
+          {
+            locale1.bVv = (localf.x - 1);
+            locale1.bVx = localf.y;
+            break label268;
+          }
+          locale1.bVv = localf.x;
+          locale1.bVx = (localf.y - 1);
+          break label268;
+          label423:
+          locale2.bVu = (localf.x + localf.size);
+          locale2.bVw = (localf.y + localf.size + 1);
+          continue;
+          label460:
+          locale2.bVu = (localf.x + localf.size);
+          locale2.bVw = (localf.y + localf.size);
+        }
       }
-      i -= 1;
+      localArrayList3.add(locale2);
     }
-    AppMethodBeat.o(260975);
+    Collections.sort(localArrayList1, bVj);
+    parama = new b(parama, localArrayList1, arrayOfInt1, arrayOfInt2, paramBoolean);
+    AppMethodBeat.o(194795);
+    return parama;
   }
   
-  private boolean a(a parama, RecyclerView.v paramv)
+  private static f a(a parama, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt5)
   {
-    AppMethodBeat.i(260981);
-    if (parama.agx == paramv) {
-      parama.agx = null;
+    AppMethodBeat.i(194813);
+    int n = paramInt2 - paramInt1;
+    int i1 = paramInt4 - paramInt3;
+    if ((paramInt2 - paramInt1 <= 0) || (paramInt4 - paramInt3 <= 0))
+    {
+      AppMethodBeat.o(194813);
+      return null;
+    }
+    int i2 = n - i1;
+    int i3 = (n + i1 + 1) / 2;
+    Arrays.fill(paramArrayOfInt1, paramInt5 - i3 - 1, paramInt5 + i3 + 1, 0);
+    Arrays.fill(paramArrayOfInt2, paramInt5 - i3 - 1 + i2, paramInt5 + i3 + 1 + i2, n);
+    int i;
+    if (i2 % 2 != 0)
+    {
+      paramInt4 = 1;
+      i = 0;
     }
     for (;;)
     {
-      paramv.amk.setAlpha(1.0F);
-      paramv.amk.setTranslationX(0.0F);
-      paramv.amk.setTranslationY(0.0F);
-      q(paramv);
-      AppMethodBeat.o(260981);
-      return true;
-      if (parama.agw != paramv) {
-        break;
+      if (i > i3) {
+        break label690;
       }
-      parama.agw = null;
-    }
-    AppMethodBeat.o(260981);
-    return false;
-  }
-  
-  private void d(RecyclerView.v paramv)
-  {
-    AppMethodBeat.i(260989);
-    if (afY == null) {
-      afY = new ValueAnimator().getInterpolator();
-    }
-    paramv.amk.animate().setInterpolator(afY);
-    c(paramv);
-    AppMethodBeat.o(260989);
-  }
-  
-  private static void l(List<RecyclerView.v> paramList)
-  {
-    AppMethodBeat.i(261001);
-    int i = paramList.size() - 1;
-    while (i >= 0)
-    {
-      ((RecyclerView.v)paramList.get(i)).amk.animate().cancel();
-      i -= 1;
-    }
-    AppMethodBeat.o(261001);
-  }
-  
-  public boolean a(RecyclerView.v paramv)
-  {
-    AppMethodBeat.i(260962);
-    d(paramv);
-    this.afZ.add(paramv);
-    AppMethodBeat.o(260962);
-    return true;
-  }
-  
-  public boolean a(RecyclerView.v paramv, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    AppMethodBeat.i(260968);
-    View localView = paramv.amk;
-    paramInt1 += (int)paramv.amk.getTranslationX();
-    paramInt2 += (int)paramv.amk.getTranslationY();
-    d(paramv);
-    int i = paramInt3 - paramInt1;
-    int j = paramInt4 - paramInt2;
-    if ((i == 0) && (j == 0))
-    {
-      A(paramv);
-      AppMethodBeat.o(260968);
-      return false;
-    }
-    if (i != 0) {
-      localView.setTranslationX(-i);
-    }
-    if (j != 0) {
-      localView.setTranslationY(-j);
-    }
-    this.agb.add(new b(paramv, paramInt1, paramInt2, paramInt3, paramInt4));
-    AppMethodBeat.o(260968);
-    return true;
-  }
-  
-  public boolean a(RecyclerView.v paramv1, RecyclerView.v paramv2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    AppMethodBeat.i(260971);
-    if (paramv1 == paramv2)
-    {
-      boolean bool = a(paramv1, paramInt1, paramInt2, paramInt3, paramInt4);
-      AppMethodBeat.o(260971);
-      return bool;
-    }
-    float f1 = paramv1.amk.getTranslationX();
-    float f2 = paramv1.amk.getTranslationY();
-    float f3 = paramv1.amk.getAlpha();
-    d(paramv1);
-    int i = (int)(paramInt3 - paramInt1 - f1);
-    int j = (int)(paramInt4 - paramInt2 - f2);
-    paramv1.amk.setTranslationX(f1);
-    paramv1.amk.setTranslationY(f2);
-    paramv1.amk.setAlpha(f3);
-    if (paramv2 != null)
-    {
-      d(paramv2);
-      paramv2.amk.setTranslationX(-i);
-      paramv2.amk.setTranslationY(-j);
-      paramv2.amk.setAlpha(0.0F);
-    }
-    this.agc.add(new a(paramv1, paramv2, paramInt1, paramInt2, paramInt3, paramInt4));
-    AppMethodBeat.o(260971);
-    return true;
-  }
-  
-  public boolean a(RecyclerView.v paramv, List<Object> paramList)
-  {
-    AppMethodBeat.i(261002);
-    if ((!paramList.isEmpty()) || (super.a(paramv, paramList)))
-    {
-      AppMethodBeat.o(261002);
-      return true;
-    }
-    AppMethodBeat.o(261002);
-    return false;
-  }
-  
-  public boolean b(RecyclerView.v paramv)
-  {
-    AppMethodBeat.i(260965);
-    d(paramv);
-    paramv.amk.setAlpha(0.0F);
-    this.aga.add(paramv);
-    AppMethodBeat.o(260965);
-    return true;
-  }
-  
-  public void c(RecyclerView.v paramv)
-  {
-    AppMethodBeat.i(260987);
-    View localView = paramv.amk;
-    localView.animate().cancel();
-    int i = this.agb.size() - 1;
-    while (i >= 0)
-    {
-      if (((b)this.agb.get(i)).agC == paramv)
-      {
-        localView.setTranslationY(0.0F);
-        localView.setTranslationX(0.0F);
-        A(paramv);
-        this.agb.remove(i);
-      }
-      i -= 1;
-    }
-    a(this.agc, paramv);
-    if (this.afZ.remove(paramv))
-    {
-      localView.setAlpha(1.0F);
-      z(paramv);
-    }
-    if (this.aga.remove(paramv))
-    {
-      localView.setAlpha(1.0F);
-      q(paramv);
-    }
-    i = this.agf.size() - 1;
-    ArrayList localArrayList;
-    while (i >= 0)
-    {
-      localArrayList = (ArrayList)this.agf.get(i);
-      a(localArrayList, paramv);
-      if (localArrayList.isEmpty()) {
-        this.agf.remove(i);
-      }
-      i -= 1;
-    }
-    i = this.age.size() - 1;
-    if (i >= 0)
-    {
-      localArrayList = (ArrayList)this.age.get(i);
-      int j = localArrayList.size() - 1;
+      int j = -i;
+      boolean bool;
+      int m;
+      int k;
       for (;;)
       {
-        if (j >= 0)
+        if (j > i) {
+          break label399;
+        }
+        if ((j == -i) || ((j != i) && (paramArrayOfInt1[(paramInt5 + j - 1)] < paramArrayOfInt1[(paramInt5 + j + 1)]))) {
+          paramInt2 = paramArrayOfInt1[(paramInt5 + j + 1)];
+        }
+        for (bool = false;; bool = true)
         {
-          if (((b)localArrayList.get(j)).agC != paramv) {
-            break label298;
+          m = paramInt2 - j;
+          k = paramInt2;
+          paramInt2 = m;
+          while ((k < n) && (paramInt2 < i1) && (parama.aU(paramInt1 + k, paramInt3 + paramInt2)))
+          {
+            k += 1;
+            paramInt2 += 1;
           }
-          localView.setTranslationY(0.0F);
-          localView.setTranslationX(0.0F);
-          A(paramv);
-          localArrayList.remove(j);
-          if (localArrayList.isEmpty()) {
-            this.age.remove(i);
+          paramInt4 = 0;
+          break;
+          paramInt2 = paramArrayOfInt1[(paramInt5 + j - 1)] + 1;
+        }
+        paramArrayOfInt1[(paramInt5 + j)] = k;
+        if ((paramInt4 != 0) && (j >= i2 - i + 1) && (j <= i2 + i - 1) && (paramArrayOfInt1[(paramInt5 + j)] >= paramArrayOfInt2[(paramInt5 + j)]))
+        {
+          parama = new f();
+          parama.x = paramArrayOfInt2[(paramInt5 + j)];
+          parama.y = (parama.x - j);
+          parama.size = (paramArrayOfInt1[(paramInt5 + j)] - paramArrayOfInt2[(paramInt5 + j)]);
+          parama.bVt = bool;
+          parama.reverse = false;
+          AppMethodBeat.o(194813);
+          return parama;
+        }
+        j += 2;
+      }
+      label399:
+      j = -i;
+      while (j <= i)
+      {
+        int i4 = j + i2;
+        if ((i4 == i + i2) || ((i4 != -i + i2) && (paramArrayOfInt2[(paramInt5 + i4 - 1)] < paramArrayOfInt2[(paramInt5 + i4 + 1)]))) {
+          paramInt2 = paramArrayOfInt2[(paramInt5 + i4 - 1)];
+        }
+        for (bool = false;; bool = true)
+        {
+          m = paramInt2 - i4;
+          k = paramInt2;
+          paramInt2 = m;
+          while ((k > 0) && (paramInt2 > 0) && (parama.aU(paramInt1 + k - 1, paramInt3 + paramInt2 - 1)))
+          {
+            k -= 1;
+            paramInt2 -= 1;
           }
+          paramInt2 = paramArrayOfInt2[(paramInt5 + i4 + 1)] - 1;
+        }
+        paramArrayOfInt2[(paramInt5 + i4)] = k;
+        if ((paramInt4 == 0) && (j + i2 >= -i) && (j + i2 <= i) && (paramArrayOfInt1[(paramInt5 + i4)] >= paramArrayOfInt2[(paramInt5 + i4)]))
+        {
+          parama = new f();
+          parama.x = paramArrayOfInt2[(paramInt5 + i4)];
+          parama.y = (parama.x - i4);
+          parama.size = (paramArrayOfInt1[(paramInt5 + i4)] - paramArrayOfInt2[(paramInt5 + i4)]);
+          parama.bVt = bool;
+          parama.reverse = true;
+          AppMethodBeat.o(194813);
+          return parama;
+        }
+        j += 2;
+      }
+      i += 1;
+    }
+    label690:
+    parama = new IllegalStateException("DiffUtil hit an unexpected case while trying to calculate the optimal path. Please make sure your data is not changing during the diff calculation.");
+    AppMethodBeat.o(194813);
+    throw parama;
+  }
+  
+  public static abstract class a
+  {
+    public abstract int If();
+    
+    public abstract int Ig();
+    
+    public Object aT(int paramInt1, int paramInt2)
+    {
+      return null;
+    }
+    
+    public abstract boolean aU(int paramInt1, int paramInt2);
+    
+    public abstract boolean aV(int paramInt1, int paramInt2);
+  }
+  
+  public static final class b
+  {
+    private final List<g.f> bVk;
+    public final int[] bVl;
+    private final int[] bVm;
+    private final g.a bVn;
+    private final int bVo;
+    private final int bVp;
+    private final boolean bVq;
+    
+    b(g.a parama, List<g.f> paramList, int[] paramArrayOfInt1, int[] paramArrayOfInt2, boolean paramBoolean)
+    {
+      AppMethodBeat.i(194914);
+      this.bVk = paramList;
+      this.bVl = paramArrayOfInt1;
+      this.bVm = paramArrayOfInt2;
+      Arrays.fill(this.bVl, 0);
+      Arrays.fill(this.bVm, 0);
+      this.bVn = parama;
+      this.bVo = parama.If();
+      this.bVp = parama.Ig();
+      this.bVq = paramBoolean;
+      if (this.bVk.isEmpty()) {}
+      for (parama = null;; parama = (g.f)this.bVk.get(0))
+      {
+        if ((parama == null) || (parama.x != 0) || (parama.y != 0))
+        {
+          parama = new g.f();
+          parama.x = 0;
+          parama.y = 0;
+          parama.bVt = false;
+          parama.size = 0;
+          parama.reverse = false;
+          this.bVk.add(0, parama);
+        }
+        IZ();
+        AppMethodBeat.o(194914);
+        return;
+      }
+    }
+    
+    private void IZ()
+    {
+      AppMethodBeat.i(194932);
+      int j = this.bVo;
+      int i = this.bVp;
+      int k = this.bVk.size() - 1;
+      while (k >= 0)
+      {
+        g.f localf = (g.f)this.bVk.get(k);
+        int i2 = localf.x;
+        int i3 = localf.size;
+        int n = localf.y;
+        int i1 = localf.size;
+        int m;
+        if (this.bVq)
+        {
+          for (;;)
+          {
+            m = i;
+            if (j <= i2 + i3) {
+              break;
+            }
+            if (this.bVl[(j - 1)] == 0) {
+              a(j, i, k, false);
+            }
+            j -= 1;
+          }
+          while (m > n + i1)
+          {
+            if (this.bVm[(m - 1)] == 0) {
+              a(j, m, k, true);
+            }
+            m -= 1;
+          }
+        }
+        i = 0;
+        if (i < localf.size)
+        {
+          m = localf.x + i;
+          n = localf.y + i;
+          if (this.bVn.aV(m, n)) {}
+          for (j = 1;; j = 2)
+          {
+            this.bVl[m] = (n << 5 | j);
+            this.bVm[n] = (j | m << 5);
+            i += 1;
+            break;
+          }
+        }
+        j = localf.x;
+        i = localf.y;
+        k -= 1;
+      }
+      AppMethodBeat.o(194932);
+    }
+    
+    private void a(List<g.d> paramList, q paramq, int paramInt1, int paramInt2, int paramInt3)
+    {
+      AppMethodBeat.i(194987);
+      if (!this.bVq)
+      {
+        paramq.aR(paramInt1, paramInt2);
+        AppMethodBeat.o(194987);
+        return;
+      }
+      paramInt2 -= 1;
+      if (paramInt2 >= 0)
+      {
+        int i = this.bVm[(paramInt3 + paramInt2)] & 0x1F;
+        Iterator localIterator;
+        switch (i)
+        {
+        default: 
+          paramList = new IllegalStateException("unknown flag for pos " + (paramInt2 + paramInt3) + " " + Long.toBinaryString(i));
+          AppMethodBeat.o(194987);
+          throw paramList;
+        case 0: 
+          paramq.aR(paramInt1, 1);
+          localIterator = paramList.iterator();
+        case 4: 
+        case 8: 
+          while (localIterator.hasNext())
+          {
+            g.d locald = (g.d)localIterator.next();
+            locald.bVs += 1;
+            continue;
+            int j = this.bVm[(paramInt3 + paramInt2)] >> 5;
+            paramq.aW(b(paramList, j, true).bVs, paramInt1);
+            if (i == 4) {
+              paramq.c(paramInt1, 1, this.bVn.aT(j, paramInt3 + paramInt2));
+            }
+          }
+        }
+        for (;;)
+        {
+          paramInt2 -= 1;
+          break;
+          paramList.add(new g.d(paramInt3 + paramInt2, paramInt1, false));
+        }
+      }
+      AppMethodBeat.o(194987);
+    }
+    
+    private boolean a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+    {
+      int k = 8;
+      AppMethodBeat.i(194947);
+      int j;
+      int i;
+      int m;
+      if (paramBoolean)
+      {
+        j = paramInt2 - 1;
+        i = paramInt1;
+        m = paramInt2 - 1;
+        paramInt2 = j;
+        j = m;
+      }
+      while (paramInt3 >= 0)
+      {
+        g.f localf = (g.f)this.bVk.get(paramInt3);
+        m = localf.x;
+        int n = localf.size;
+        int i1 = localf.y;
+        int i2 = localf.size;
+        if (paramBoolean)
+        {
+          paramInt2 = i - 1;
+          for (;;)
+          {
+            if (paramInt2 < m + n) {
+              break label274;
+            }
+            if (this.bVn.aU(paramInt2, j))
+            {
+              if (this.bVn.aV(paramInt2, j)) {}
+              for (paramInt1 = 8;; paramInt1 = 4)
+              {
+                this.bVm[j] = (paramInt2 << 5 | 0x10);
+                this.bVl[paramInt2] = (paramInt1 | j << 5);
+                AppMethodBeat.o(194947);
+                return true;
+                j = paramInt1 - 1;
+                i = paramInt1 - 1;
+                break;
+              }
+            }
+            paramInt2 -= 1;
+          }
+        }
+        paramInt2 -= 1;
+        while (paramInt2 >= i1 + i2)
+        {
+          if (this.bVn.aU(j, paramInt2))
+          {
+            if (this.bVn.aV(j, paramInt2)) {}
+            for (paramInt3 = k;; paramInt3 = 4)
+            {
+              this.bVl[(paramInt1 - 1)] = (paramInt2 << 5 | 0x10);
+              this.bVm[paramInt2] = (paramInt3 | paramInt1 - 1 << 5);
+              AppMethodBeat.o(194947);
+              return true;
+            }
+          }
+          paramInt2 -= 1;
+        }
+        label274:
+        i = localf.x;
+        paramInt2 = localf.y;
+        paramInt3 -= 1;
+      }
+      AppMethodBeat.o(194947);
+      return false;
+    }
+    
+    private static g.d b(List<g.d> paramList, int paramInt, boolean paramBoolean)
+    {
+      AppMethodBeat.i(194961);
+      int i = paramList.size() - 1;
+      while (i >= 0)
+      {
+        g.d locald1 = (g.d)paramList.get(i);
+        if ((locald1.bVr == paramInt) && (locald1.bVt == paramBoolean))
+        {
+          paramList.remove(i);
+          paramInt = i;
+          if (paramInt < paramList.size())
+          {
+            g.d locald2 = (g.d)paramList.get(paramInt);
+            int j = locald2.bVs;
+            if (paramBoolean) {}
+            for (i = 1;; i = -1)
+            {
+              locald2.bVs = (i + j);
+              paramInt += 1;
+              break;
+            }
+          }
+          AppMethodBeat.o(194961);
+          return locald1;
         }
         i -= 1;
-        break;
-        label298:
-        j -= 1;
       }
+      AppMethodBeat.o(194961);
+      return null;
     }
-    i = this.agd.size() - 1;
-    while (i >= 0)
+    
+    private void b(List<g.d> paramList, q paramq, int paramInt1, int paramInt2, int paramInt3)
     {
-      localArrayList = (ArrayList)this.agd.get(i);
-      if (localArrayList.remove(paramv))
+      AppMethodBeat.i(195002);
+      if (!this.bVq)
       {
-        localView.setAlpha(1.0F);
-        q(paramv);
-        if (localArrayList.isEmpty()) {
-          this.agd.remove(i);
-        }
+        paramq.aS(paramInt1, paramInt2);
+        AppMethodBeat.o(195002);
+        return;
       }
-      i -= 1;
-    }
-    this.agi.remove(paramv);
-    this.agg.remove(paramv);
-    this.agj.remove(paramv);
-    this.agh.remove(paramv);
-    km();
-    AppMethodBeat.o(260987);
-  }
-  
-  public boolean isRunning()
-  {
-    AppMethodBeat.i(260992);
-    if ((!this.aga.isEmpty()) || (!this.agc.isEmpty()) || (!this.agb.isEmpty()) || (!this.afZ.isEmpty()) || (!this.agh.isEmpty()) || (!this.agi.isEmpty()) || (!this.agg.isEmpty()) || (!this.agj.isEmpty()) || (!this.age.isEmpty()) || (!this.agd.isEmpty()) || (!this.agf.isEmpty()))
-    {
-      AppMethodBeat.o(260992);
-      return true;
-    }
-    AppMethodBeat.o(260992);
-    return false;
-  }
-  
-  public void kl()
-  {
-    AppMethodBeat.i(260958);
-    int i;
-    int j;
-    label29:
-    int k;
-    if (!this.afZ.isEmpty())
-    {
-      i = 1;
-      if (this.agb.isEmpty()) {
-        break label82;
-      }
-      j = 1;
-      if (this.agc.isEmpty()) {
-        break label87;
-      }
-      k = 1;
-      label41:
-      if (this.aga.isEmpty()) {
-        break label92;
-      }
-    }
-    label82:
-    label87:
-    label92:
-    for (int m = 1;; m = 0)
-    {
-      if ((i != 0) || (j != 0) || (m != 0) || (k != 0)) {
-        break label98;
-      }
-      AppMethodBeat.o(260958);
-      return;
-      i = 0;
-      break;
-      j = 0;
-      break label29;
-      k = 0;
-      break label41;
-    }
-    label98:
-    Object localObject1 = this.afZ.iterator();
-    Object localObject2;
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (RecyclerView.v)((Iterator)localObject1).next();
-      final View localView = ((RecyclerView.v)localObject2).amk;
-      final ViewPropertyAnimator localViewPropertyAnimator = localView.animate();
-      this.agi.add(localObject2);
-      localViewPropertyAnimator.setDuration(lK()).alpha(0.0F).setListener(new AnimatorListenerAdapter()
+      paramInt2 -= 1;
+      if (paramInt2 >= 0)
       {
-        public final void onAnimationEnd(Animator paramAnonymousAnimator)
+        int i = this.bVl[(paramInt3 + paramInt2)] & 0x1F;
+        Object localObject;
+        switch (i)
         {
-          AppMethodBeat.i(260899);
-          localViewPropertyAnimator.setListener(null);
-          localView.setAlpha(1.0F);
-          g.this.z(this.ago);
-          g.this.agi.remove(this.ago);
-          g.this.km();
-          AppMethodBeat.o(260899);
-        }
-        
-        public final void onAnimationStart(Animator paramAnonymousAnimator)
-        {
-          AppMethodBeat.i(260897);
-          g.this.F(this.ago);
-          AppMethodBeat.o(260897);
-        }
-      }).start();
-    }
-    this.afZ.clear();
-    label356:
-    long l1;
-    label431:
-    long l2;
-    if (j != 0)
-    {
-      localObject1 = new ArrayList();
-      ((ArrayList)localObject1).addAll(this.agb);
-      this.age.add(localObject1);
-      this.agb.clear();
-      localObject2 = new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(260866);
-          Iterator localIterator = this.agk.iterator();
-          while (localIterator.hasNext())
+        default: 
+          paramList = new IllegalStateException("unknown flag for pos " + (paramInt2 + paramInt3) + " " + Long.toBinaryString(i));
+          AppMethodBeat.o(195002);
+          throw paramList;
+        case 0: 
+          paramq.aS(paramInt1 + paramInt2, 1);
+          localObject = paramList.iterator();
+        case 4: 
+        case 8: 
+          while (((Iterator)localObject).hasNext())
           {
-            Object localObject = (g.b)localIterator.next();
-            g localg = g.this;
-            RecyclerView.v localv = ((g.b)localObject).agC;
-            int k = ((g.b)localObject).agy;
-            int i = ((g.b)localObject).agz;
-            int m = ((g.b)localObject).agA;
-            int j = ((g.b)localObject).agB;
-            localObject = localv.amk;
-            k = m - k;
-            i = j - i;
-            if (k != 0) {
-              ((View)localObject).animate().translationX(0.0F);
+            g.d locald = (g.d)((Iterator)localObject).next();
+            locald.bVs -= 1;
+            continue;
+            int j = this.bVl[(paramInt3 + paramInt2)] >> 5;
+            localObject = b(paramList, j, false);
+            paramq.aW(paramInt1 + paramInt2, ((g.d)localObject).bVs - 1);
+            if (i == 4) {
+              paramq.c(((g.d)localObject).bVs - 1, 1, this.bVn.aT(paramInt3 + paramInt2, j));
             }
-            if (i != 0) {
-              ((View)localObject).animate().translationY(0.0F);
-            }
-            ViewPropertyAnimator localViewPropertyAnimator = ((View)localObject).animate();
-            localg.agh.add(localv);
-            localViewPropertyAnimator.setDuration(localg.ali).setListener(new g.6(localg, localv, k, (View)localObject, i, localViewPropertyAnimator)).start();
           }
-          this.agk.clear();
-          g.this.age.remove(this.agk);
-          AppMethodBeat.o(260866);
         }
-      };
-      if (i != 0) {
-        w.a(((b)((ArrayList)localObject1).get(0)).agC.amk, (Runnable)localObject2, lK());
-      }
-    }
-    else
-    {
-      if (k != 0)
-      {
-        localObject1 = new ArrayList();
-        ((ArrayList)localObject1).addAll(this.agc);
-        this.agf.add(localObject1);
-        this.agc.clear();
-        localObject2 = new Runnable()
+        for (;;)
         {
-          public final void run()
-          {
-            AppMethodBeat.i(260878);
-            Iterator localIterator = this.agm.iterator();
-            if (localIterator.hasNext())
-            {
-              g.a locala = (g.a)localIterator.next();
-              g localg = g.this;
-              Object localObject1 = locala.agw;
-              if (localObject1 == null)
-              {
-                localObject1 = null;
-                label51:
-                localObject2 = locala.agx;
-                if (localObject2 == null) {
-                  break label234;
-                }
-              }
-              label234:
-              for (Object localObject2 = ((RecyclerView.v)localObject2).amk;; localObject2 = null)
-              {
-                if (localObject1 != null)
-                {
-                  ViewPropertyAnimator localViewPropertyAnimator = ((View)localObject1).animate().setDuration(localg.alj);
-                  localg.agj.add(locala.agw);
-                  localViewPropertyAnimator.translationX(locala.agA - locala.agy);
-                  localViewPropertyAnimator.translationY(locala.agB - locala.agz);
-                  localViewPropertyAnimator.alpha(0.0F).setListener(new g.7(localg, locala, localViewPropertyAnimator, (View)localObject1)).start();
-                }
-                if (localObject2 == null) {
-                  break;
-                }
-                localObject1 = ((View)localObject2).animate();
-                localg.agj.add(locala.agx);
-                ((ViewPropertyAnimator)localObject1).translationX(0.0F).translationY(0.0F).setDuration(localg.alj).alpha(1.0F).setListener(new g.8(localg, locala, (ViewPropertyAnimator)localObject1, (View)localObject2)).start();
-                break;
-                localObject1 = ((RecyclerView.v)localObject1).amk;
-                break label51;
-              }
-            }
-            this.agm.clear();
-            g.this.agf.remove(this.agm);
-            AppMethodBeat.o(260878);
-          }
-        };
-        if (i == 0) {
-          break label498;
+          paramInt2 -= 1;
+          break;
+          paramList.add(new g.d(paramInt3 + paramInt2, paramInt1 + paramInt2, true));
         }
-        w.a(((a)((ArrayList)localObject1).get(0)).agw.amk, (Runnable)localObject2, lK());
       }
-      if (m == 0) {
-        break label533;
-      }
-      localObject1 = new ArrayList();
-      ((ArrayList)localObject1).addAll(this.aga);
-      this.agd.add(localObject1);
-      this.aga.clear();
-      localObject2 = new Runnable()
+      AppMethodBeat.o(195002);
+    }
+    
+    public final void a(RecyclerView.a parama)
+    {
+      AppMethodBeat.i(195013);
+      a(new b(parama));
+      AppMethodBeat.o(195013);
+    }
+    
+    public final void a(q paramq)
+    {
+      AppMethodBeat.i(195025);
+      ArrayList localArrayList;
+      int j;
+      int k;
+      int i;
+      if ((paramq instanceof d))
       {
-        public final void run()
+        paramq = (d)paramq;
+        localArrayList = new ArrayList();
+        j = this.bVo;
+        k = this.bVp;
+        i = this.bVk.size() - 1;
+      }
+      for (;;)
+      {
+        if (i < 0) {
+          break label239;
+        }
+        g.f localf = (g.f)this.bVk.get(i);
+        int m = localf.size;
+        int n = localf.x + m;
+        int i1 = localf.y + m;
+        if (n < j) {
+          b(localArrayList, paramq, n, j - n, n);
+        }
+        if (i1 < k) {
+          a(localArrayList, paramq, n, k - i1, i1);
+        }
+        j = m - 1;
+        for (;;)
         {
-          AppMethodBeat.i(260889);
-          Iterator localIterator = this.agn.iterator();
-          while (localIterator.hasNext())
+          if (j >= 0)
           {
-            RecyclerView.v localv = (RecyclerView.v)localIterator.next();
-            g localg = g.this;
-            View localView = localv.amk;
-            ViewPropertyAnimator localViewPropertyAnimator = localView.animate();
-            localg.agg.add(localv);
-            localViewPropertyAnimator.alpha(1.0F).setDuration(localg.lJ()).setListener(new g.5(localg, localv, localView, localViewPropertyAnimator)).start();
+            if ((this.bVl[(localf.x + j)] & 0x1F) == 2) {
+              paramq.c(localf.x + j, 1, this.bVn.aT(localf.x + j, localf.y + j));
+            }
+            j -= 1;
+            continue;
+            paramq = new d(paramq);
+            break;
           }
-          this.agn.clear();
-          g.this.agd.remove(this.agn);
-          AppMethodBeat.o(260889);
         }
-      };
-      if ((i == 0) && (j == 0) && (k == 0)) {
-        break label526;
+        j = localf.x;
+        k = localf.y;
+        i -= 1;
       }
-      if (i == 0) {
-        break label508;
-      }
-      l1 = lK();
-      if (j == 0) {
-        break label514;
-      }
-      l2 = this.ali;
-      label441:
-      if (k == 0) {
-        break label520;
-      }
-    }
-    label514:
-    label520:
-    for (long l3 = this.alj;; l3 = 0L)
-    {
-      l2 = Math.max(l2, l3);
-      w.a(((RecyclerView.v)((ArrayList)localObject1).get(0)).amk, (Runnable)localObject2, l1 + l2);
-      AppMethodBeat.o(260958);
-      return;
-      ((Runnable)localObject2).run();
-      break;
-      label498:
-      ((Runnable)localObject2).run();
-      break label356;
-      label508:
-      l1 = 0L;
-      break label431;
-      l2 = 0L;
-      break label441;
-    }
-    label526:
-    ((Runnable)localObject2).run();
-    label533:
-    AppMethodBeat.o(260958);
-  }
-  
-  final void km()
-  {
-    AppMethodBeat.i(260994);
-    if (!isRunning()) {
-      lM();
-    }
-    AppMethodBeat.o(260994);
-  }
-  
-  public final void kn()
-  {
-    AppMethodBeat.i(261000);
-    int i = this.agb.size() - 1;
-    Object localObject1;
-    Object localObject2;
-    while (i >= 0)
-    {
-      localObject1 = (b)this.agb.get(i);
-      localObject2 = ((b)localObject1).agC.amk;
-      ((View)localObject2).setTranslationY(0.0F);
-      ((View)localObject2).setTranslationX(0.0F);
-      A(((b)localObject1).agC);
-      this.agb.remove(i);
-      i -= 1;
-    }
-    i = this.afZ.size() - 1;
-    while (i >= 0)
-    {
-      z((RecyclerView.v)this.afZ.get(i));
-      this.afZ.remove(i);
-      i -= 1;
-    }
-    i = this.aga.size() - 1;
-    while (i >= 0)
-    {
-      localObject1 = (RecyclerView.v)this.aga.get(i);
-      ((RecyclerView.v)localObject1).amk.setAlpha(1.0F);
-      q((RecyclerView.v)localObject1);
-      this.aga.remove(i);
-      i -= 1;
-    }
-    i = this.agc.size() - 1;
-    while (i >= 0)
-    {
-      a((a)this.agc.get(i));
-      i -= 1;
-    }
-    this.agc.clear();
-    if (!isRunning())
-    {
-      AppMethodBeat.o(261000);
-      return;
-    }
-    i = this.age.size() - 1;
-    int j;
-    while (i >= 0)
-    {
-      localObject1 = (ArrayList)this.age.get(i);
-      j = ((ArrayList)localObject1).size() - 1;
-      while (j >= 0)
-      {
-        localObject2 = (b)((ArrayList)localObject1).get(j);
-        View localView = ((b)localObject2).agC.amk;
-        localView.setTranslationY(0.0F);
-        localView.setTranslationX(0.0F);
-        A(((b)localObject2).agC);
-        ((ArrayList)localObject1).remove(j);
-        if (((ArrayList)localObject1).isEmpty()) {
-          this.age.remove(localObject1);
-        }
-        j -= 1;
-      }
-      i -= 1;
-    }
-    i = this.agd.size() - 1;
-    while (i >= 0)
-    {
-      localObject1 = (ArrayList)this.agd.get(i);
-      j = ((ArrayList)localObject1).size() - 1;
-      while (j >= 0)
-      {
-        localObject2 = (RecyclerView.v)((ArrayList)localObject1).get(j);
-        ((RecyclerView.v)localObject2).amk.setAlpha(1.0F);
-        q((RecyclerView.v)localObject2);
-        ((ArrayList)localObject1).remove(j);
-        if (((ArrayList)localObject1).isEmpty()) {
-          this.agd.remove(localObject1);
-        }
-        j -= 1;
-      }
-      i -= 1;
-    }
-    i = this.agf.size() - 1;
-    while (i >= 0)
-    {
-      localObject1 = (ArrayList)this.agf.get(i);
-      j = ((ArrayList)localObject1).size() - 1;
-      while (j >= 0)
-      {
-        a((a)((ArrayList)localObject1).get(j));
-        if (((ArrayList)localObject1).isEmpty()) {
-          this.agf.remove(localObject1);
-        }
-        j -= 1;
-      }
-      i -= 1;
-    }
-    l(this.agi);
-    l(this.agh);
-    l(this.agg);
-    l(this.agj);
-    lM();
-    AppMethodBeat.o(261000);
-  }
-  
-  static final class a
-  {
-    public int agA;
-    public int agB;
-    public RecyclerView.v agw;
-    public RecyclerView.v agx;
-    public int agy;
-    public int agz;
-    
-    private a(RecyclerView.v paramv1, RecyclerView.v paramv2)
-    {
-      this.agw = paramv1;
-      this.agx = paramv2;
-    }
-    
-    a(RecyclerView.v paramv1, RecyclerView.v paramv2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-    {
-      this(paramv1, paramv2);
-      this.agy = paramInt1;
-      this.agz = paramInt2;
-      this.agA = paramInt3;
-      this.agB = paramInt4;
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(260936);
-      String str = "ChangeInfo{oldHolder=" + this.agw + ", newHolder=" + this.agx + ", fromX=" + this.agy + ", fromY=" + this.agz + ", toX=" + this.agA + ", toY=" + this.agB + '}';
-      AppMethodBeat.o(260936);
-      return str;
+      label239:
+      paramq.IT();
+      AppMethodBeat.o(195025);
     }
   }
   
-  static final class b
+  static final class d
   {
-    public int agA;
-    public int agB;
-    public RecyclerView.v agC;
-    public int agy;
-    public int agz;
+    int bVr;
+    int bVs;
+    boolean bVt;
     
-    b(RecyclerView.v paramv, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+    public d(int paramInt1, int paramInt2, boolean paramBoolean)
     {
-      this.agC = paramv;
-      this.agy = paramInt1;
-      this.agz = paramInt2;
-      this.agA = paramInt3;
-      this.agB = paramInt4;
+      this.bVr = paramInt1;
+      this.bVs = paramInt2;
+      this.bVt = paramBoolean;
     }
+  }
+  
+  static final class e
+  {
+    int bVu;
+    int bVv;
+    int bVw;
+    int bVx;
+    
+    public e() {}
+    
+    public e(int paramInt1, int paramInt2)
+    {
+      this.bVu = 0;
+      this.bVv = paramInt1;
+      this.bVw = 0;
+      this.bVx = paramInt2;
+    }
+  }
+  
+  static final class f
+  {
+    boolean bVt;
+    boolean reverse;
+    int size;
+    int x;
+    int y;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     androidx.recyclerview.widget.g
  * JD-Core Version:    0.7.0.1
  */

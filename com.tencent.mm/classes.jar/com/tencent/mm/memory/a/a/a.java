@@ -15,29 +15,29 @@ public class a
   implements c<String>
 {
   public String key;
-  String ljd;
-  WeakReference<f.b> lje;
-  WeakReference<f.c> ljf;
-  public int ljg;
-  long ljh;
-  String lji;
+  String nNO;
+  WeakReference<f.b> nNP;
+  WeakReference<f.c> nNQ;
+  public int nNR;
+  long nNS;
+  String nNT;
   Object object;
   
   public a(String paramString1, String paramString2, Object paramObject, int paramInt, f.b paramb, f.c paramc)
   {
     AppMethodBeat.i(156490);
-    this.ljg = 0;
-    this.ljh = 0L;
+    this.nNR = 0;
+    this.nNS = 0L;
     this.key = paramString1;
-    this.ljd = paramString2;
+    this.nNO = paramString2;
     this.object = paramObject;
-    this.ljg = paramInt;
-    this.lje = new WeakReference(paramb);
-    this.ljf = new WeakReference(paramc);
-    this.ljh = System.currentTimeMillis();
-    this.lji = new SimpleDateFormat("HH:mm:ss").format(new Date(this.ljh));
-    if (com.tencent.mm.memory.a.a.a.a.ljs) {
-      Log.i("MicroMsg.BusinessBitmap", "BusinessBitmap build key %s sizes: %s cacheTime %s object %s stack [%s]", new Object[] { paramString1, Util.getSizeKB(paramInt), this.lji, paramObject, Util.getStack().toString() });
+    this.nNR = paramInt;
+    this.nNP = new WeakReference(paramb);
+    this.nNQ = new WeakReference(paramc);
+    this.nNS = System.currentTimeMillis();
+    this.nNT = new SimpleDateFormat("HH:mm:ss").format(new Date(this.nNS));
+    if (com.tencent.mm.memory.a.a.a.a.nOd) {
+      Log.i("MicroMsg.BusinessBitmap", "BusinessBitmap build key %s sizes: %s cacheTime %s object %s stack [%s]", new Object[] { paramString1, Util.getSizeKB(paramInt), this.nNT, paramObject, Util.getStack().toString() });
     }
     AppMethodBeat.o(156490);
   }
@@ -73,14 +73,14 @@ public class a
   public String toString()
   {
     AppMethodBeat.i(156493);
-    String str = String.format("StructBitmap %s key:%s size %s realObj %s cacheTime %s now %s", new Object[] { Integer.valueOf(hashCode()), this.key, Util.getSizeKB(this.ljg), this.object, this.lji, new SimpleDateFormat("HH:mm:ss").format(new Date(System.currentTimeMillis())) });
+    String str = String.format("StructBitmap %s key:%s size %s realObj %s cacheTime %s now %s", new Object[] { Integer.valueOf(hashCode()), this.key, Util.getSizeKB(this.nNR), this.object, this.nNT, new SimpleDateFormat("HH:mm:ss").format(new Date(System.currentTimeMillis())) });
     AppMethodBeat.o(156493);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.memory.a.a.a
  * JD-Core Version:    0.7.0.1
  */

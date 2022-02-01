@@ -1,111 +1,134 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
-public final class dzk
-  extends com.tencent.mm.cd.a
+public class dzk
+  extends com.tencent.mm.bx.a
 {
-  public dlc UeU;
-  public fbg UeV;
-  public int type;
+  public String abeA;
+  public String abeB;
+  public String abeC;
+  public String abeD;
+  public String abex;
+  public String abey;
+  public String abez;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(50111);
+    AppMethodBeat.i(257538);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.type);
-      if (this.UeU != null)
-      {
-        paramVarArgs.oE(2, this.UeU.computeSize());
-        this.UeU.writeFields(paramVarArgs);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.abex != null) {
+        paramVarArgs.g(1, this.abex);
       }
-      if (this.UeV != null)
-      {
-        paramVarArgs.oE(3, this.UeV.computeSize());
-        this.UeV.writeFields(paramVarArgs);
+      if (this.abey != null) {
+        paramVarArgs.g(2, this.abey);
       }
-      AppMethodBeat.o(50111);
+      if (this.abez != null) {
+        paramVarArgs.g(3, this.abez);
+      }
+      if (this.abeA != null) {
+        paramVarArgs.g(4, this.abeA);
+      }
+      if (this.abeB != null) {
+        paramVarArgs.g(5, this.abeB);
+      }
+      if (this.abeC != null) {
+        paramVarArgs.g(6, this.abeC);
+      }
+      if (this.abeD != null) {
+        paramVarArgs.g(7, this.abeD);
+      }
+      AppMethodBeat.o(257538);
       return 0;
     }
-    int i;
-    if (paramInt == 1)
+    if (paramInt == 1) {
+      if (this.abex == null) {
+        break label574;
+      }
+    }
+    label574:
+    for (int i = i.a.a.b.b.a.h(1, this.abex) + 0;; i = 0)
     {
-      i = g.a.a.b.b.a.bM(1, this.type) + 0;
       paramInt = i;
-      if (this.UeU != null) {
-        paramInt = i + g.a.a.a.oD(2, this.UeU.computeSize());
+      if (this.abey != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.abey);
       }
       i = paramInt;
-      if (this.UeV != null) {
-        i = paramInt + g.a.a.a.oD(3, this.UeV.computeSize());
+      if (this.abez != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.abez);
       }
-      AppMethodBeat.o(50111);
+      paramInt = i;
+      if (this.abeA != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.abeA);
+      }
+      i = paramInt;
+      if (this.abeB != null) {
+        i = paramInt + i.a.a.b.b.a.h(5, this.abeB);
+      }
+      paramInt = i;
+      if (this.abeC != null) {
+        paramInt = i + i.a.a.b.b.a.h(6, this.abeC);
+      }
+      i = paramInt;
+      if (this.abeD != null) {
+        i = paramInt + i.a.a.b.b.a.h(7, this.abeD);
+      }
+      AppMethodBeat.o(257538);
       return i;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
-      }
-      AppMethodBeat.o(50111);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
-      dzk localdzk = (dzk)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      Object localObject2;
-      switch (paramInt)
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(50111);
-        return -1;
-      case 1: 
-        localdzk.type = ((g.a.a.a.a)localObject1).abFh.AK();
-        AppMethodBeat.o(50111);
-        return 0;
-      case 2: 
-        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject1 = (byte[])paramVarArgs.get(paramInt);
-          localObject2 = new dlc();
-          if ((localObject1 != null) && (localObject1.length > 0)) {
-            ((dlc)localObject2).parseFrom((byte[])localObject1);
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
           }
-          localdzk.UeU = ((dlc)localObject2);
-          paramInt += 1;
         }
-        AppMethodBeat.o(50111);
+        AppMethodBeat.o(257538);
         return 0;
       }
-      paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-      i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
+      if (paramInt == 3)
       {
-        localObject1 = (byte[])paramVarArgs.get(paramInt);
-        localObject2 = new fbg();
-        if ((localObject1 != null) && (localObject1.length > 0)) {
-          ((fbg)localObject2).parseFrom((byte[])localObject1);
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+        dzk localdzk = (dzk)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(257538);
+          return -1;
+        case 1: 
+          localdzk.abex = locala.ajGk.readString();
+          AppMethodBeat.o(257538);
+          return 0;
+        case 2: 
+          localdzk.abey = locala.ajGk.readString();
+          AppMethodBeat.o(257538);
+          return 0;
+        case 3: 
+          localdzk.abez = locala.ajGk.readString();
+          AppMethodBeat.o(257538);
+          return 0;
+        case 4: 
+          localdzk.abeA = locala.ajGk.readString();
+          AppMethodBeat.o(257538);
+          return 0;
+        case 5: 
+          localdzk.abeB = locala.ajGk.readString();
+          AppMethodBeat.o(257538);
+          return 0;
+        case 6: 
+          localdzk.abeC = locala.ajGk.readString();
+          AppMethodBeat.o(257538);
+          return 0;
         }
-        localdzk.UeV = ((fbg)localObject2);
-        paramInt += 1;
+        localdzk.abeD = locala.ajGk.readString();
+        AppMethodBeat.o(257538);
+        return 0;
       }
-      AppMethodBeat.o(50111);
-      return 0;
+      AppMethodBeat.o(257538);
+      return -1;
     }
-    AppMethodBeat.o(50111);
-    return -1;
   }
 }
 

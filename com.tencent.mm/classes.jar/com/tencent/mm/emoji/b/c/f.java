@@ -1,254 +1,183 @@
 package com.tencent.mm.emoji.b.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.b.k;
-import com.tencent.mm.f.b.a.mg;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.emoji.PluginEmoji;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.protocal.protobuf.aji;
-import com.tencent.mm.protocal.protobuf.csd;
-import com.tencent.mm.protocal.protobuf.dui;
-import com.tencent.mm.protocal.protobuf.dus;
-import com.tencent.mm.protocal.protobuf.dut;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.protocal.protobuf.amn;
+import com.tencent.mm.protocal.protobuf.kn;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.emotion.EmojiGroupInfo;
+import com.tencent.mm.storage.bl;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
-import kotlin.a.v;
-import kotlin.g.b.p;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.a;
+import kotlin.g.a.m;
+import kotlin.g.b.u;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/model/search/EmojiSuggestRemote;", "Lcom/tencent/mm/emoji/model/search/IEmojiSuggest;", "lifeCycleKeeper", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "(Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;)V", "TAG", "", "getLifeCycleKeeper", "()Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "remoteShuffle", "", "getRemoteShuffle", "()Z", "setRemoteShuffle", "(Z)V", "sessionId", "username", "checkMatch", "desc", "checkPrefetch", "", "rsp", "Lcom/tencent/mm/protocal/protobuf/RecommendPanelEmojiResponse;", "checkUpdate", "searchSuggest", "callback", "Lcom/tencent/mm/emoji/model/search/IEmojiSuggest$SuggestCallback;", "setRequestInfo", "chatId", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcherConfigRetriever;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "callback", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "success", "Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcherConfig;", "config", "", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Lkotlin/jvm/functions/Function2;)V", "TAG", "", "getCallback", "()Lkotlin/jvm/functions/Function2;", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "scene", "Lcom/tencent/mm/plugin/emoji/net/NetSceneBatchEmojiDownLoad;", "createFetcherConfig", "onSceneEnd", "errType", "", "errCode", "errMsg", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
-  implements j
+  implements com.tencent.mm.am.h
 {
   private final String TAG;
-  boolean jKC;
-  private final com.tencent.mm.vending.e.b<com.tencent.mm.vending.e.a> jKn;
-  public String sessionId;
-  public String username;
+  private final EmojiInfo mgK;
+  final m<Boolean, e, ah> mgM;
+  private final com.tencent.mm.plugin.emoji.e.e mgN;
   
-  public f(com.tencent.mm.vending.e.b<com.tencent.mm.vending.e.a> paramb)
+  public f(EmojiInfo paramEmojiInfo, m<? super Boolean, ? super e, ah> paramm)
   {
-    this.jKn = paramb;
-    this.TAG = "MicroMsg.EmojiSuggestMatchWord";
-  }
-  
-  public static boolean LM(String paramString)
-  {
-    AppMethodBeat.i(231957);
-    p.k(paramString, "desc");
-    g localg = g.jKI;
-    boolean bool = g.LO(paramString);
-    AppMethodBeat.o(231957);
-    return bool;
-  }
-  
-  private void LN(final String paramString)
-  {
-    AppMethodBeat.i(231962);
-    p.k(paramString, "desc");
-    Object localObject1 = bj.hyV();
-    p.j(localObject1, "EmojiStorageMgr.getInstance()");
-    Object localObject2 = ((bj)localObject1).hzb().bxP(paramString);
-    Object localObject3 = this.TAG;
-    StringBuilder localStringBuilder = new StringBuilder("checkUpdate: ").append(paramString).append(", ");
-    if (localObject2 != null)
+    AppMethodBeat.i(105438);
+    this.mgK = paramEmojiInfo;
+    this.mgM = paramm;
+    this.TAG = "MicroMsg.EmojiFetcherConfigRetriever";
+    paramEmojiInfo = new LinkedList();
+    paramEmojiInfo.add(this.mgK.getMd5());
+    this.mgN = new com.tencent.mm.plugin.emoji.e.e(paramEmojiInfo);
+    paramEmojiInfo = f(this.mgK);
+    if (((CharSequence)paramEmojiInfo.url).length() > 0) {}
+    for (int i = 1; i != 0; i = 0)
     {
-      localObject1 = Integer.valueOf(((c)localObject2).field_updateTime);
-      Log.i((String)localObject3, localObject1);
-      if (localObject2 == null) {
-        break label171;
-      }
-      i = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vDf, 24);
-      Log.i(c.TAG, "needUpdate: config ".concat(String.valueOf(i)));
-      if (Util.secondsToNow(((c)localObject2).field_updateTime) <= 3600L * i) {
-        break label166;
+      this.mgM.invoke(Boolean.TRUE, paramEmojiInfo);
+      AppMethodBeat.o(105438);
+      return;
+    }
+    Log.i(this.TAG, "config retriever: db url is empty");
+    com.tencent.mm.plugin.emoji.d.lo(9L);
+    com.tencent.mm.kernel.h.baD().mCm.a(697, (com.tencent.mm.am.h)this);
+    com.tencent.mm.kernel.h.baD().mCm.a((com.tencent.mm.am.p)this.mgN, 0);
+    AppMethodBeat.o(105438);
+  }
+  
+  private final e f(EmojiInfo paramEmojiInfo)
+  {
+    int i = 0;
+    AppMethodBeat.i(105436);
+    String str3 = kotlin.g.b.s.X(paramEmojiInfo.kMn(), "_temp");
+    String str1;
+    if (h.h(paramEmojiInfo))
+    {
+      Log.i(this.TAG, "createFetcherConfig: " + paramEmojiInfo.getMd5() + " use wxam");
+      str1 = paramEmojiInfo.field_externUrl;
+      kotlin.g.b.s.s(str1, "emojiInfo.field_externUrl");
+      i = 2;
+      if (paramEmojiInfo.field_tpauthkey != null) {
+        break label278;
       }
     }
-    label166:
-    for (int i = 1;; i = 0)
+    label278:
+    for (String str2 = "";; str2 = paramEmojiInfo.field_tpauthkey)
     {
-      if (i != 0) {
-        break label171;
+      kotlin.g.b.s.s(str2, "if (null == emojiInfo.fi…emojiInfo.field_tpauthkey");
+      paramEmojiInfo = new e(paramEmojiInfo, str1, str3, str2, i);
+      AppMethodBeat.o(105436);
+      return paramEmojiInfo;
+      if (h.i(paramEmojiInfo))
+      {
+        Log.i(this.TAG, "createFetcherConfig: " + paramEmojiInfo.getMd5() + " use encrypt");
+        str1 = paramEmojiInfo.field_encrypturl;
+        kotlin.g.b.s.s(str1, "emojiInfo.field_encrypturl");
+        i = 1;
+        break;
       }
-      AppMethodBeat.o(231962);
-      return;
-      localObject1 = null;
+      if (!Util.isNullOrNil(paramEmojiInfo.field_cdnUrl))
+      {
+        Log.i(this.TAG, "createFetcherConfig: " + paramEmojiInfo.getMd5() + " use cdn url");
+        str1 = paramEmojiInfo.field_cdnUrl;
+        kotlin.g.b.s.s(str1, "emojiInfo.field_cdnUrl");
+        break;
+      }
+      if (h.g(paramEmojiInfo))
+      {
+        Log.i(this.TAG, "createFetcherConfig: " + paramEmojiInfo.getMd5() + " use tp url");
+        str1 = paramEmojiInfo.field_tpurl;
+        kotlin.g.b.s.s(str1, "emojiInfo.field_tpurl");
+        i = 3;
+        break;
+      }
+      str1 = "";
       break;
     }
-    label171:
-    localObject1 = new csd();
-    if (this.jKC)
-    {
-      localObject2 = h.ag(PluginEmoji.class);
-      p.j(localObject2, "MMKernel.plugin(PluginEmoji::class.java)");
-      localObject2 = ((PluginEmoji)localObject2).getEmojiMgr().auj(paramString);
-      i = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vDi, 20);
-      Log.i(this.TAG, "checkUpdate: shuffle " + i + ", local " + ((ArrayList)localObject2).size());
-      int j = Math.min(i, ((ArrayList)localObject2).size());
-      i = 0;
-      while (i < j)
-      {
-        ((csd)localObject1).TzO.add(((ArrayList)localObject2).get(i));
-        i += 1;
-      }
-    }
-    localObject2 = new dus();
-    ((dus)localObject2).RYJ = paramString;
-    ((dus)localObject2).UaY = this.username;
-    ((dus)localObject2).SessionId = this.sessionId;
-    ((dus)localObject2).CPw = 4;
-    ((dus)localObject2).UaZ = new com.tencent.mm.cd.b(((csd)localObject1).toByteArray());
-    localObject1 = new mg();
-    ((mg)localObject1).CJ(this.sessionId);
-    ((mg)localObject1).xa(Util.nowMilliSecond());
-    localObject3 = d.jKB;
-    d.rE(40);
-    new com.tencent.mm.emoji.b.b((dus)localObject2).bhW().g((com.tencent.mm.vending.c.a)new a(this, (mg)localObject1, paramString));
-    AppMethodBeat.o(231962);
   }
   
-  public final void a(String paramString, j.b paramb)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, final com.tencent.mm.am.p paramp)
   {
-    AppMethodBeat.i(231959);
-    p.k(paramString, "desc");
-    boolean bool = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vDd, false);
-    Log.i(this.TAG, "searchSuggest: remoteEnable ".concat(String.valueOf(bool)));
-    Object localObject1 = g.jKI;
-    long l = g.aCG();
-    localObject1 = g.jKI;
-    int i = g.aCF();
-    localObject1 = g.jKI;
-    m localm = new m(l, i, g.aCI().size(), null, 8);
-    if (!bool)
+    AppMethodBeat.i(105437);
+    kotlin.g.b.s.u(paramp, "scene");
+    int i = paramp.getType();
+    Log.i(this.TAG, "onSceneEnd: " + paramInt1 + ", " + paramInt2 + ", " + i);
+    if ((i == 697) && (kotlin.g.b.s.p(paramp, this.mgN)))
     {
-      if (paramb != null)
+      com.tencent.mm.kernel.h.baD().mCm.b(697, (com.tencent.mm.am.h)this);
+      paramp = this.mgN.dAy();
+      if (paramp == null)
       {
-        paramb.a((List)v.aaAd, localm);
-        AppMethodBeat.o(231959);
-        return;
-      }
-      AppMethodBeat.o(231959);
-      return;
-    }
-    localObject1 = bj.hyV();
-    p.j(localObject1, "EmojiStorageMgr.getInstance()");
-    localObject1 = ((bj)localObject1).hzb().bxP(paramString);
-    Object localObject2;
-    Object localObject3;
-    if (localObject1 != null)
-    {
-      Log.i(this.TAG, "searchSuggest: has cache " + ((c)localObject1).field_updateTime);
-      localObject2 = d.jKB;
-      d.rE(32);
-      localObject3 = new dut();
-      localObject2 = (com.tencent.mm.cd.a)localObject3;
-      localObject1 = ((c)localObject1).field_content;
-    }
-    label696:
-    for (;;)
-    {
-      try
-      {
-        ((com.tencent.mm.cd.a)localObject2).parseFrom((byte[])localObject1);
-        localObject2 = ((dut)localObject3).SessionId;
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = "";
+        paramString = null;
+        paramString = (Collection)paramString;
+        if ((paramString != null) && (!paramString.isEmpty())) {
+          break label294;
         }
-        p.k(localObject1, "<set-?>");
-        localm.jKR = ((String)localObject1);
-        if (paramb != null)
+      }
+      label294:
+      for (i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label300;
+        }
+        if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          localObject1 = ((dut)localObject3).TdL;
-          p.j(localObject1, "rsp.Emoji");
-          localObject1 = (Iterable)localObject1;
-          localObject2 = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject1, 10));
-          localObject3 = ((Iterable)localObject1).iterator();
-          i = 0;
-          if (((Iterator)localObject3).hasNext())
+          Log.i(this.TAG, "onSceneEnd: response list is empty");
+          com.tencent.mm.plugin.report.service.h.OAn.p(164L, 11L, 1L);
+          if (((((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yRu, 0) & 0x4) > 0) && (com.tencent.mm.plugin.emoji.g.d.y(this.mgK)))
           {
-            localObject1 = ((Iterator)localObject3).next();
-            if (i < 0) {
-              kotlin.a.j.iBO();
-            }
-            dui localdui = (dui)localObject1;
-            localObject1 = bj.hyV();
-            p.j(localObject1, "EmojiStorageMgr.getInstance()");
-            localObject1 = ((bj)localObject1).ctY().bxK(localdui.UaH.Md5);
-            if (localObject1 != null) {
-              break label696;
-            }
-            localObject1 = new EmojiInfo();
-            com.tencent.mm.plugin.emoji.i.b.a(localdui.UaH, (EmojiInfo)localObject1);
-            ((EmojiInfo)localObject1).field_catalog = EmojiInfo.YCx;
-            Object localObject4 = k.aBH();
-            p.j(localObject4, "EmojiStorageCache.getInstance()");
-            localObject4 = ((k)localObject4).aBL();
-            p.j(localObject4, "EmojiStorageCache.getInstance().emojiGroupInfoList");
-            localObject4 = (Iterable)localObject4;
-            if ((!(localObject4 instanceof Collection)) || (!((Collection)localObject4).isEmpty()))
-            {
-              localObject4 = ((Iterable)localObject4).iterator();
-              if (((Iterator)localObject4).hasNext())
-              {
-                EmojiGroupInfo localEmojiGroupInfo = (EmojiGroupInfo)((Iterator)localObject4).next();
-                p.j(localEmojiGroupInfo, "it");
-                if (!p.h(localEmojiGroupInfo.hBl(), ((EmojiInfo)localObject1).field_groupId)) {
-                  continue;
-                }
-                j = 1;
-                if (localdui.emoji_from != 1) {
-                  continue;
-                }
-                if (j == 0) {
-                  continue;
-                }
-                j = 0;
-                ((Collection)localObject2).add(new l((EmojiInfo)localObject1, j, i + 1));
-                i += 1;
-                continue;
-              }
-            }
+            paramString = new com.tencent.mm.plugin.emoji.e.c(0, 2, kotlin.a.p.listOf(this.mgK.getMd5()));
+            com.tencent.mm.kernel.h.baD().mCm.a((com.tencent.mm.am.p)paramString, 0);
+            bl.jba().adju.ab(kotlin.a.p.listOf(this.mgK.getMd5()), 0);
           }
         }
-      }
-      catch (Exception localException)
-      {
-        Log.printDebugStack("safeParser", "", new Object[] { localException });
-        continue;
-        int j = 0;
-        continue;
-        Log.i(this.TAG, "searchSuggest: delete local emoji " + localException.getMd5());
-        j = 1;
-        continue;
-        paramb.a((List)localObject2, localm);
-      }
-      for (;;)
-      {
-        LN(paramString);
-        AppMethodBeat.o(231959);
+        this.mgM.invoke(Boolean.FALSE, null);
+        AppMethodBeat.o(105437);
         return;
-        Log.i(this.TAG, "searchSuggest: no cache");
-        if (paramb != null) {
-          paramb.a((List)v.aaAd, localm);
-        }
+        paramString = paramp.YMz;
+        break;
       }
+      label300:
+      paramString = bl.jba().adju.bza(this.mgK.getMd5());
+      if (paramString != null) {
+        break label469;
+      }
+      paramString = this.mgK;
+    }
+    label469:
+    for (;;)
+    {
+      com.tencent.mm.plugin.emoji.g.d.a((amn)paramp.YMz.get(0), paramString);
+      com.tencent.mm.plugin.emoji.g.d.a((amn)paramp.YMz.get(0), this.mgK);
+      kotlin.g.b.s.s(paramString, "dbEmojiInfo");
+      paramp = f(paramString);
+      if (((CharSequence)paramp.url).length() > 0) {}
+      for (paramInt1 = 1; paramInt1 != 0; paramInt1 = 0)
+      {
+        ((com.tencent.mm.plugin.emoji.c.d)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.emoji.c.d.class)).getProvider().updateEmojiInfo(paramString);
+        com.tencent.mm.ae.d.d("EmojiFetcherConfigRetriever_onSceneEnd", (a)new a(this, paramp));
+        AppMethodBeat.o(105437);
+        return;
+      }
+      this.mgM.invoke(Boolean.FALSE, null);
+      AppMethodBeat.o(105437);
+      return;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/RecommendPanelEmojiResponse;", "kotlin.jvm.PlatformType", "call"})
-  static final class a<_Ret, _Var>
-    implements com.tencent.mm.vending.c.a<_Ret, _Var>
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements a<ah>
   {
-    a(f paramf, mg parammg, String paramString) {}
+    a(f paramf, e parame)
+    {
+      super();
+    }
   }
 }
 

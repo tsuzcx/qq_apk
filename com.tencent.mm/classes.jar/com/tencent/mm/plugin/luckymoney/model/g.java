@@ -1,86 +1,26 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.protocal.protobuf.crd;
+import com.tencent.mm.protocal.protobuf.cre;
+import com.tencent.mm.wallet_core.model.z;
 
 public final class g
-  extends com.tencent.mm.cd.a
+  extends z<cre>
 {
-  public String Eyy;
-  public String desc;
-  public String title;
-  
-  public final int op(int paramInt, Object... paramVarArgs)
+  public g(String paramString)
   {
-    AppMethodBeat.i(256905);
-    if (paramInt == 0)
-    {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.title != null) {
-        paramVarArgs.f(1, this.title);
-      }
-      if (this.desc != null) {
-        paramVarArgs.f(2, this.desc);
-      }
-      if (this.Eyy != null) {
-        paramVarArgs.f(3, this.Eyy);
-      }
-      AppMethodBeat.o(256905);
-      return 0;
-    }
-    if (paramInt == 1) {
-      if (this.title == null) {
-        break label334;
-      }
-    }
-    label334:
-    for (int i = g.a.a.b.b.a.g(1, this.title) + 0;; i = 0)
-    {
-      paramInt = i;
-      if (this.desc != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.desc);
-      }
-      i = paramInt;
-      if (this.Eyy != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.Eyy);
-      }
-      AppMethodBeat.o(256905);
-      return i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
-          }
-        }
-        AppMethodBeat.o(256905);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-        g localg = (g)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(256905);
-          return -1;
-        case 1: 
-          localg.title = locala.abFh.readString();
-          AppMethodBeat.o(256905);
-          return 0;
-        case 2: 
-          localg.desc = locala.abFh.readString();
-          AppMethodBeat.o(256905);
-          return 0;
-        }
-        localg.Eyy = locala.abFh.readString();
-        AppMethodBeat.o(256905);
-        return 0;
-      }
-      AppMethodBeat.o(256905);
-      return -1;
-    }
+    AppMethodBeat.i(163540);
+    crd localcrd = new crd();
+    c.a locala = new c.a();
+    locala.otE = localcrd;
+    locala.otF = new cre();
+    locala.funcId = 3858;
+    locala.uri = "/cgi-bin/micromsg-bin/getredpacketpreview";
+    localcrd.url = paramString;
+    c(locala.bEF());
+    AppMethodBeat.o(163540);
   }
 }
 

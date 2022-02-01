@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a" android:padding="@dimen/cb" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="#fff0eff4" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <Button android:layout_gravity="center_horizontal" android:id="@id/jv8" android:layout_width="wrap_content" android:layout_height="48.0dip" android:layout_marginTop="@dimen/cb" android:text="查看当前日志文件" style="@style/ou" />
-            <Button android:layout_gravity="center_horizontal" android:id="@id/jv9" android:layout_width="wrap_content" android:layout_height="48.0dip" android:layout_marginTop="@dimen/cb" android:text="清空当前Xlog" style="@style/ou" />
-            <Button android:layout_gravity="center_horizontal" android:id="@id/kg5" android:layout_width="wrap_content" android:layout_height="48.0dip" android:layout_marginTop="@dimen/cb" android:text="从Cache里转移Xlog" style="@style/ou" />
-            <Button android:layout_gravity="center_horizontal" android:id="@id/kie" android:layout_width="wrap_content" android:layout_height="48.0dip" android:layout_marginTop="@dimen/cb" android:text="发送MM进程日志" style="@style/ou" />
-            <Button android:layout_gravity="center_horizontal" android:id="@id/kif" android:layout_width="wrap_content" android:layout_height="48.0dip" android:layout_marginTop="@dimen/cb" android:text="发送Push进程日志" style="@style/ou" />
-            <Button android:layout_gravity="center_horizontal" android:id="@id/kig" android:layout_width="wrap_content" android:layout_height="48.0dip" android:layout_marginTop="@dimen/cb" android:text="发送Tool进程日志" style="@style/ou" />
-            <Button android:layout_gravity="center_horizontal" android:id="@id/kih" android:layout_width="wrap_content" android:layout_height="48.0dip" android:layout_marginTop="@dimen/cb" android:text="发送ToolMp进程日志" style="@style/ou" />
-            <TextView android:id="@id/k7l" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" />
-        </LinearLayout>
-    </ScrollView>
+    <com.tencent.mm.plugin.appbrand.wxawidget.console.ConsolePanel android:id="@id/bm2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </LinearLayout>

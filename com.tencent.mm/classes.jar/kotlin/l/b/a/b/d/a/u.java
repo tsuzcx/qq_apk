@@ -1,161 +1,104 @@
 package kotlin.l.b.a.b.d.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.a.g;
-import kotlin.l.b.a.b.b.e;
-import kotlin.l.b.a.b.c.a.c;
-import kotlin.l.b.a.b.m.ab;
-import kotlin.l.b.a.b.m.at;
-import kotlin.n.n;
+import java.util.Map;
+import kotlin.g.a.a;
+import kotlin.g.b.s;
+import kotlin.j;
+import kotlin.k;
+import kotlin.l.b.a.b.f.c;
 
 public final class u
 {
-  public static final l a(ab paramab, String paramString)
+  final ab aiPk;
+  final ab aiPl;
+  final Map<c, ab> aiPm;
+  private final j aiPn;
+  final boolean aiPo;
+  
+  private u(ab paramab1, ab paramab2, Map<c, ? extends ab> paramMap)
   {
-    AppMethodBeat.i(57642);
-    p.k(paramab, "$this$lexicalCastFrom");
-    p.k(paramString, "value");
-    Object localObject = paramab.iOU().iEf();
-    if (((localObject instanceof e)) && (((e)localObject).iDN() == kotlin.l.b.a.b.b.f.aaKa))
+    AppMethodBeat.i(192004);
+    this.aiPk = paramab1;
+    this.aiPl = paramab2;
+    this.aiPm = paramMap;
+    this.aiPn = k.cm((a)new a(this));
+    if ((this.aiPk == ab.aiQh) && (this.aiPl == ab.aiQh) && (this.aiPm.isEmpty())) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramab = ((e)localObject).iFa();
-      paramString = kotlin.l.b.a.b.f.f.bHb(paramString);
-      p.j(paramString, "Name.identifier(value)");
-      paramab = paramab.c(paramString, (kotlin.l.b.a.b.c.a.a)c.aaQx);
-      if (((paramab instanceof e)) && (((e)paramab).iDN() == kotlin.l.b.a.b.b.f.aaKb))
-      {
-        paramab = (l)new h((e)paramab);
-        AppMethodBeat.o(57642);
-        return paramab;
-      }
-      AppMethodBeat.o(57642);
-      return null;
+      this.aiPo = bool;
+      AppMethodBeat.o(192004);
+      return;
     }
-    localObject = kotlin.l.b.a.b.m.d.a.aD(paramab);
-    p.k(paramString, "value");
-    String str;
-    int i;
-    if ((n.M(paramString, "0x", false)) || (n.M(paramString, "0X", false)))
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    AppMethodBeat.i(192029);
+    if (this == paramObject)
     {
-      paramab = paramString.substring(2);
-      p.j(paramab, "(this as java.lang.String).substring(startIndex)");
-      paramab = new kotlin.l.b.a.b.o.f(paramab, 16);
-      str = paramab.PlL;
-      i = paramab.abus;
+      AppMethodBeat.o(192029);
+      return true;
     }
-    for (;;)
+    if (!(paramObject instanceof u))
     {
-      try
-      {
-        if (!g.p((ab)localObject)) {
-          continue;
-        }
-        bool = Boolean.parseBoolean(paramString);
-        paramString = Boolean.valueOf(bool);
-      }
-      catch (IllegalArgumentException paramab)
-      {
-        boolean bool;
-        paramString = null;
-        continue;
-        AppMethodBeat.o(57642);
-        return null;
-      }
-      if (paramString != null)
-      {
-        paramab = (l)new f(paramString);
-        AppMethodBeat.o(57642);
-        return paramab;
-        if ((n.M(paramString, "0b", false)) || (n.M(paramString, "0B", false)))
-        {
-          paramab = paramString.substring(2);
-          p.j(paramab, "(this as java.lang.String).substring(startIndex)");
-          paramab = new kotlin.l.b.a.b.o.f(paramab, 2);
-          break;
-        }
-        paramab = new kotlin.l.b.a.b.o.f(paramString, 10);
-        break;
-        if (g.q((ab)localObject))
-        {
-          paramab = (CharSequence)paramString;
-          p.k(paramab, "$this$singleOrNull");
-          if (paramab.length() != 1) {
-            break label556;
-          }
-          paramString = Character.valueOf(paramab.charAt(0));
-          continue;
-        }
-        if (g.s((ab)localObject))
-        {
-          p.k(str, "$this$toByteOrNull");
-          paramab = n.iC(str, i);
-          if (paramab != null)
-          {
-            i = paramab.intValue();
-            if ((i < -128) || (i > 127)) {
-              break label561;
-            }
-            paramString = Byte.valueOf((byte)i);
-          }
-        }
-        else if (g.u((ab)localObject))
-        {
-          p.k(str, "$this$toShortOrNull");
-          paramab = n.iC(str, i);
-          if (paramab != null)
-          {
-            i = paramab.intValue();
-            if ((i < -32768) || (i > 32767)) {
-              break label566;
-            }
-            paramString = Short.valueOf((short)i);
-          }
-        }
-        else
-        {
-          if (g.r((ab)localObject))
-          {
-            paramString = n.iC(str, i);
-            continue;
-          }
-          if (g.t((ab)localObject))
-          {
-            paramString = n.iD(str, i);
-            continue;
-          }
-          if (g.v((ab)localObject))
-          {
-            paramString = n.bHA(paramString);
-            continue;
-          }
-          if (g.w((ab)localObject))
-          {
-            paramString = n.bHB(paramString);
-            continue;
-          }
-          bool = g.D((ab)localObject);
-          if (bool) {
-            continue;
-          }
-        }
-        paramString = null;
-        continue;
-      }
-      label556:
-      paramString = null;
-      continue;
-      label561:
-      paramString = null;
-      continue;
-      label566:
-      paramString = null;
+      AppMethodBeat.o(192029);
+      return false;
+    }
+    paramObject = (u)paramObject;
+    if (this.aiPk != paramObject.aiPk)
+    {
+      AppMethodBeat.o(192029);
+      return false;
+    }
+    if (this.aiPl != paramObject.aiPl)
+    {
+      AppMethodBeat.o(192029);
+      return false;
+    }
+    if (!s.p(this.aiPm, paramObject.aiPm))
+    {
+      AppMethodBeat.o(192029);
+      return false;
+    }
+    AppMethodBeat.o(192029);
+    return true;
+  }
+  
+  public final int hashCode()
+  {
+    AppMethodBeat.i(192024);
+    int j = this.aiPk.hashCode();
+    if (this.aiPl == null) {}
+    for (int i = 0;; i = this.aiPl.hashCode())
+    {
+      int k = this.aiPm.hashCode();
+      AppMethodBeat.o(192024);
+      return (i + j * 31) * 31 + k;
+    }
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(192016);
+    String str = "Jsr305Settings(globalLevel=" + this.aiPk + ", migrationLevel=" + this.aiPl + ", userDefinedLevelForSpecificAnnotation=" + this.aiPm + ')';
+    AppMethodBeat.o(192016);
+    return str;
+  }
+  
+  static final class a
+    extends kotlin.g.b.u
+    implements a<String[]>
+  {
+    a(u paramu)
+    {
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.u
  * JD-Core Version:    0.7.0.1
  */

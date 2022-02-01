@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.readerapp.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +18,7 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
@@ -26,62 +26,63 @@ import com.tencent.mm.plugin.readerapp.a.e;
 import com.tencent.mm.plugin.readerapp.a.f;
 import com.tencent.mm.plugin.readerapp.a.h;
 import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.protocal.protobuf.cyz;
+import com.tencent.mm.protocal.protobuf.dqf;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.SmoothScrollFactory;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.aq;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.k;
 
 public class ReaderAppSubscribeUI
   extends MMActivity
 {
-  private ListView Hyn;
-  private a Hyo;
+  private ListView NvS;
+  private a NvT;
   
-  private void abU(int paramInt)
+  private void agi(int paramInt)
   {
     AppMethodBeat.i(102714);
-    com.tencent.mm.kernel.h.aHG().aHp().i(868518889, Integer.valueOf(paramInt));
-    Object localObject = new cyz();
-    ((cyz)localObject).TGU = paramInt;
-    ((n)com.tencent.mm.kernel.h.ae(n.class)).bbK().d(new k.a(43, (com.tencent.mm.cd.a)localObject));
+    h.baE().ban().B(868518889, Integer.valueOf(paramInt));
+    Object localObject = new dqf();
+    ((dqf)localObject).aaWB = paramInt;
+    ((n)h.ax(n.class)).bzz().d(new k.a(43, (com.tencent.mm.bx.a)localObject));
     localObject = new Intent();
     ((Intent)localObject).putExtra("Contact_User", "newsapp");
     ((Intent)localObject).addFlags(67108864);
-    com.tencent.mm.plugin.readerapp.b.a.mIG.c((Intent)localObject, this);
+    com.tencent.mm.plugin.readerapp.b.a.pFn.c((Intent)localObject, this);
     finish();
     AppMethodBeat.o(102714);
   }
   
   public int getLayoutId()
   {
-    return a.f.HxS;
+    return a.f.Nvx;
   }
   
   public void initView()
   {
     AppMethodBeat.i(102712);
-    this.Hyo = new a(this, Util.nullAsNil((Integer)com.tencent.mm.kernel.h.aHG().aHp().b(868518889, null)));
-    this.Hyn = ((ListView)findViewById(a.e.HxG));
-    this.Hyn.setAdapter(this.Hyo);
-    this.Hyn.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.NvT = new a(this, Util.nullAsNil((Integer)h.baE().ban().d(868518889, null)));
+    this.NvS = ((ListView)findViewById(a.e.Nvl));
+    this.NvS.setAdapter(this.NvT);
+    this.NvS.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(102706);
         b localb = new b();
-        localb.bn(paramAnonymousAdapterView);
-        localb.bn(paramAnonymousView);
-        localb.sg(paramAnonymousInt);
-        localb.Fs(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/readerapp/ui/ReaderAppSubscribeUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
+        localb.cH(paramAnonymousAdapterView);
+        localb.cH(paramAnonymousView);
+        localb.sc(paramAnonymousInt);
+        localb.hB(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/readerapp/ui/ReaderAppSubscribeUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aYj());
         paramAnonymousAdapterView = ReaderAppSubscribeUI.a(ReaderAppSubscribeUI.this);
-        if ((paramAnonymousAdapterView.Hyr & paramAnonymousAdapterView.Hyq[paramAnonymousInt]) != 0)
+        if ((paramAnonymousAdapterView.NvW & paramAnonymousAdapterView.NvV[paramAnonymousInt]) != 0)
         {
-          paramAnonymousAdapterView.Hyr &= (paramAnonymousAdapterView.Hyq[paramAnonymousInt] ^ 0xFFFFFFFF);
-          paramAnonymousAdapterView.Hyt -= 1;
-          if (paramAnonymousAdapterView.Hyt < 0) {
-            paramAnonymousAdapterView.Hyt = 0;
+          paramAnonymousAdapterView.NvW &= (paramAnonymousAdapterView.NvV[paramAnonymousInt] ^ 0xFFFFFFFF);
+          paramAnonymousAdapterView.NvY -= 1;
+          if (paramAnonymousAdapterView.NvY < 0) {
+            paramAnonymousAdapterView.NvY = 0;
           }
           paramAnonymousAdapterView.notifyDataSetChanged();
           paramAnonymousInt = 1;
@@ -89,17 +90,17 @@ public class ReaderAppSubscribeUI
         for (;;)
         {
           if (paramAnonymousInt == 0) {
-            com.tencent.mm.ui.base.h.p(ReaderAppSubscribeUI.this, a.h.HxU, a.h.app_tip);
+            k.s(ReaderAppSubscribeUI.this, a.h.Nvz, a.h.app_tip);
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/readerapp/ui/ReaderAppSubscribeUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(102706);
           return;
-          if (paramAnonymousAdapterView.Hyt < 3)
+          if (paramAnonymousAdapterView.NvY < 3)
           {
-            paramAnonymousAdapterView.Hyr |= paramAnonymousAdapterView.Hyq[paramAnonymousInt];
-            paramAnonymousAdapterView.Hyt += 1;
-            if (paramAnonymousAdapterView.Hyt > paramAnonymousAdapterView.Hyq.length) {
-              paramAnonymousAdapterView.Hyt = paramAnonymousAdapterView.Hyq.length;
+            paramAnonymousAdapterView.NvW |= paramAnonymousAdapterView.NvV[paramAnonymousInt];
+            paramAnonymousAdapterView.NvY += 1;
+            if (paramAnonymousAdapterView.NvY > paramAnonymousAdapterView.NvV.length) {
+              paramAnonymousAdapterView.NvY = paramAnonymousAdapterView.NvV.length;
             }
             paramAnonymousAdapterView.notifyDataSetChanged();
             paramAnonymousInt = 1;
@@ -111,13 +112,13 @@ public class ReaderAppSubscribeUI
         }
       }
     });
-    this.Hyo.notifyDataSetChanged();
+    this.NvT.notifyDataSetChanged();
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(102707);
-        ReaderAppSubscribeUI.a(ReaderAppSubscribeUI.this, ReaderAppSubscribeUI.a(ReaderAppSubscribeUI.this).Hyr);
+        ReaderAppSubscribeUI.a(ReaderAppSubscribeUI.this, ReaderAppSubscribeUI.a(ReaderAppSubscribeUI.this).NvW);
         AppMethodBeat.o(102707);
         return true;
       }
@@ -128,13 +129,13 @@ public class ReaderAppSubscribeUI
       {
         AppMethodBeat.i(102708);
         Object localObject = new b();
-        ((b)localObject).bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/readerapp/ui/ReaderAppSubscribeUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+        ((b)localObject).cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/readerapp/ui/ReaderAppSubscribeUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
         paramAnonymousView = ReaderAppSubscribeUI.b(ReaderAppSubscribeUI.this);
-        paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bm(paramAnonymousView);
+        paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().cG(paramAnonymousView);
         localObject = new Object();
-        com.tencent.mm.hellhoundlib.a.a.b(localObject, paramAnonymousView.aFh(), "com/tencent/mm/plugin/readerapp/ui/ReaderAppSubscribeUI$3", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
-        BackwardSupportUtil.SmoothScrollFactory.scrollToTop((ListView)paramAnonymousView.sf(0));
+        com.tencent.mm.hellhoundlib.a.a.b(localObject, paramAnonymousView.aYi(), "com/tencent/mm/plugin/readerapp/ui/ReaderAppSubscribeUI$3", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+        BackwardSupportUtil.SmoothScrollFactory.scrollToTop((ListView)paramAnonymousView.sb(0));
         com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/readerapp/ui/ReaderAppSubscribeUI$3", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/readerapp/ui/ReaderAppSubscribeUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(102708);
@@ -147,8 +148,8 @@ public class ReaderAppSubscribeUI
   {
     AppMethodBeat.i(102711);
     super.onCreate(paramBundle);
-    com.tencent.mm.kernel.h.aHG().aHp().i(868518890, "in");
-    setMMTitle(a.h.HxT);
+    h.baE().ban().B(868518890, "in");
+    setMMTitle(a.h.Nvy);
     initView();
     AppMethodBeat.o(102711);
   }
@@ -158,8 +159,8 @@ public class ReaderAppSubscribeUI
     AppMethodBeat.i(102713);
     if (paramInt == 4)
     {
-      if (this.Hyo != null) {
-        abU(this.Hyo.Hyr);
+      if (this.NvT != null) {
+        agi(this.NvT.NvW);
       }
       AppMethodBeat.o(102713);
       return true;
@@ -173,7 +174,7 @@ public class ReaderAppSubscribeUI
   {
     AppMethodBeat.i(102715);
     super.onResume();
-    this.Hyo.notifyDataSetChanged();
+    this.NvT.notifyDataSetChanged();
     AppMethodBeat.o(102715);
   }
   
@@ -186,32 +187,32 @@ public class ReaderAppSubscribeUI
   static final class a
     extends BaseAdapter
   {
-    final int[] Hyq;
-    int Hyr;
-    private String[] Hys;
-    int Hyt;
+    final int[] NvV;
+    int NvW;
+    private String[] NvX;
+    int NvY;
     private final Context context;
     
     public a(Context paramContext, int paramInt)
     {
       AppMethodBeat.i(102709);
-      this.Hyq = new int[] { 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192 };
-      this.Hys = null;
-      this.Hyt = 0;
+      this.NvV = new int[] { 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192 };
+      this.NvX = null;
+      this.NvY = 0;
       this.context = paramContext;
-      this.Hyr = paramInt;
-      this.Hys = paramContext.getString(a.h.HxY).split(";");
-      this.Hyt = abV(paramInt);
+      this.NvW = paramInt;
+      this.NvX = paramContext.getString(a.h.NvD).split(";");
+      this.NvY = agj(paramInt);
       AppMethodBeat.o(102709);
     }
     
-    private int abV(int paramInt)
+    private int agj(int paramInt)
     {
       int j = 0;
       int i = 0;
-      if (j < this.Hyq.length)
+      if (j < this.NvV.length)
       {
-        if ((this.Hyq[j] & paramInt) == 0) {
+        if ((this.NvV[j] & paramInt) == 0) {
           break label37;
         }
         i += 1;
@@ -227,7 +228,7 @@ public class ReaderAppSubscribeUI
     
     public final int getCount()
     {
-      return this.Hys.length;
+      return this.NvX.length;
     }
     
     public final long getItemId(int paramInt)
@@ -241,13 +242,13 @@ public class ReaderAppSubscribeUI
       if (paramView == null)
       {
         paramViewGroup = new a();
-        paramView = View.inflate(this.context, a.f.HxR, null);
-        paramViewGroup.mNb = ((TextView)paramView.findViewById(a.e.HxF));
-        paramViewGroup.mNd = ((CheckBox)paramView.findViewById(a.e.HxE));
+        paramView = View.inflate(this.context, a.f.Nvw, null);
+        paramViewGroup.pJJ = ((TextView)paramView.findViewById(a.e.Nvk));
+        paramViewGroup.pJL = ((CheckBox)paramView.findViewById(a.e.Nvj));
         paramView.setTag(paramViewGroup);
-        paramViewGroup.mNb.setText(this.Hys[paramInt]);
-        paramViewGroup = paramViewGroup.mNd;
-        if ((this.Hyr & this.Hyq[paramInt]) == 0) {
+        paramViewGroup.pJJ.setText(this.NvX[paramInt]);
+        paramViewGroup = paramViewGroup.pJL;
+        if ((this.NvW & this.NvV[paramInt]) == 0) {
           break label121;
         }
       }
@@ -264,14 +265,14 @@ public class ReaderAppSubscribeUI
     
     static final class a
     {
-      TextView mNb;
-      CheckBox mNd;
+      TextView pJJ;
+      CheckBox pJL;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.readerapp.ui.ReaderAppSubscribeUI
  * JD-Core Version:    0.7.0.1
  */

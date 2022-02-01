@@ -13,60 +13,60 @@ public class CachedByteArrayStream
   
   public CachedByteArrayStream()
   {
-    AppMethodBeat.i(254089);
+    AppMethodBeat.i(217284);
     this.BUFFER_SIZE = 512;
     this._bytes = new byte[512];
     this.buf = this._bytes;
-    AppMethodBeat.o(254089);
+    AppMethodBeat.o(217284);
   }
   
   public CachedByteArrayStream(int paramInt)
   {
-    AppMethodBeat.i(254090);
+    AppMethodBeat.i(217293);
     this.BUFFER_SIZE = 512;
     this._bytes = new byte[512];
     if (paramInt >= 0)
     {
       this.buf = new byte[paramInt];
-      AppMethodBeat.o(254090);
+      AppMethodBeat.o(217293);
       return;
     }
     IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("size < 0");
-    AppMethodBeat.o(254090);
+    AppMethodBeat.o(217293);
     throw localIllegalArgumentException;
   }
   
   private static void checkOffsetAndCount(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(254099);
+    AppMethodBeat.i(217309);
     if (((paramInt2 | paramInt3) < 0) || (paramInt2 > paramInt1) || (paramInt1 - paramInt2 < paramInt3))
     {
       ArrayIndexOutOfBoundsException localArrayIndexOutOfBoundsException = new ArrayIndexOutOfBoundsException("arrayLength: " + paramInt1 + ", offset: " + paramInt2 + ", count: " + paramInt3);
-      AppMethodBeat.o(254099);
+      AppMethodBeat.o(217309);
       throw localArrayIndexOutOfBoundsException;
     }
-    AppMethodBeat.o(254099);
+    AppMethodBeat.o(217309);
   }
   
   private void expand(int paramInt)
   {
-    AppMethodBeat.i(254092);
+    AppMethodBeat.i(217302);
     if (this.count + paramInt <= this.buf.length)
     {
-      AppMethodBeat.o(254092);
+      AppMethodBeat.o(217302);
       return;
     }
     byte[] arrayOfByte = new byte[(this.count + paramInt) * 2];
     System.arraycopy(this.buf, 0, arrayOfByte, 0, this.count);
     this.buf = arrayOfByte;
-    AppMethodBeat.o(254092);
+    AppMethodBeat.o(217302);
   }
   
   public void close()
   {
-    AppMethodBeat.i(254091);
+    AppMethodBeat.i(217317);
     super.close();
-    AppMethodBeat.o(254091);
+    AppMethodBeat.o(217317);
   }
   
   public void reset()
@@ -93,10 +93,10 @@ public class CachedByteArrayStream
   {
     try
     {
-      AppMethodBeat.i(254094);
+      AppMethodBeat.i(217333);
       byte[] arrayOfByte = new byte[this.count];
       System.arraycopy(this.buf, 0, arrayOfByte, 0, this.count);
-      AppMethodBeat.o(254094);
+      AppMethodBeat.o(217333);
       return arrayOfByte;
     }
     finally
@@ -108,16 +108,16 @@ public class CachedByteArrayStream
   
   public String toString()
   {
-    AppMethodBeat.i(254095);
+    AppMethodBeat.i(217342);
     String str = new String(this.buf, 0, this.count);
-    AppMethodBeat.o(254095);
+    AppMethodBeat.o(217342);
     return str;
   }
   
   @Deprecated
   public String toString(int paramInt)
   {
-    AppMethodBeat.i(254096);
+    AppMethodBeat.i(217353);
     Object localObject = new char[size()];
     int i = 0;
     while (i < localObject.length)
@@ -126,15 +126,15 @@ public class CachedByteArrayStream
       i += 1;
     }
     localObject = new String((char[])localObject);
-    AppMethodBeat.o(254096);
+    AppMethodBeat.o(217353);
     return localObject;
   }
   
   public String toString(String paramString)
   {
-    AppMethodBeat.i(254097);
+    AppMethodBeat.i(217357);
     paramString = new String(this.buf, 0, this.count, paramString);
-    AppMethodBeat.o(254097);
+    AppMethodBeat.o(217357);
     return paramString;
   }
   
@@ -142,7 +142,7 @@ public class CachedByteArrayStream
   {
     try
     {
-      AppMethodBeat.i(254100);
+      AppMethodBeat.i(217372);
       if (this.count == this.buf.length) {
         expand(1);
       }
@@ -150,7 +150,7 @@ public class CachedByteArrayStream
       int i = this.count;
       this.count = (i + 1);
       arrayOfByte[i] = ((byte)paramInt);
-      AppMethodBeat.o(254100);
+      AppMethodBeat.o(217372);
       return;
     }
     finally {}
@@ -218,9 +218,9 @@ public class CachedByteArrayStream
   {
     try
     {
-      AppMethodBeat.i(254101);
+      AppMethodBeat.i(217379);
       paramOutputStream.write(this.buf, 0, this.count);
-      AppMethodBeat.o(254101);
+      AppMethodBeat.o(217379);
       return;
     }
     finally
@@ -232,7 +232,7 @@ public class CachedByteArrayStream
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.midas.comm.log.util.compressor.CachedByteArrayStream
  * JD-Core Version:    0.7.0.1
  */

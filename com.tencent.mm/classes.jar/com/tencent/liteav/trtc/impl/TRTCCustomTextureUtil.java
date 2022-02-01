@@ -2,13 +2,13 @@ package com.tencent.liteav.trtc.impl;
 
 import android.opengl.EGLContext;
 import android.opengl.GLES20;
-import android.os.Build.VERSION;
 import android.os.HandlerThread;
 import android.os.SystemClock;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.opengl.b;
 import com.tencent.liteav.basic.opengl.i;
 import com.tencent.liteav.basic.opengl.j;
+import com.tencent.liteav.basic.util.TXCBuild;
 import com.tencent.liteav.beauty.b.k;
 import com.tencent.liteav.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -36,7 +36,7 @@ public class TRTCCustomTextureUtil
   
   public TRTCCustomTextureUtil(d paramd, int paramInt)
   {
-    AppMethodBeat.i(222501);
+    AppMethodBeat.i(230879);
     this.mGLThreadHandler = null;
     this.mEGLThread = null;
     this.mEGLContext = null;
@@ -50,7 +50,7 @@ public class TRTCCustomTextureUtil
     this.mFpsMeter = new com.tencent.liteav.basic.util.c("send-custom-texture", (int)TimeUnit.SECONDS.toMillis(5L));
     this.mGLSyncMode = paramInt;
     apiLog("TRTCCustomTextureUtil: glMode:".concat(String.valueOf(paramInt)));
-    AppMethodBeat.o(222501);
+    AppMethodBeat.o(230879);
   }
   
   private void apiLog(String paramString)
@@ -213,24 +213,31 @@ public class TRTCCustomTextureUtil
               if (paramTRTCVideoFrame.texture != null)
               {
                 paramTRTCVideoFrame.texture.textureId = TRTCCustomTextureUtil.access$000(TRTCCustomTextureUtil.this, paramTRTCVideoFrame.texture.textureId, paramTRTCVideoFrame);
-                if (locali.e != null)
+                if (TRTCCustomTextureUtil.this.mGLSyncMode == 0)
                 {
-                  TRTCCustomTextureUtil.this.mCaptureAndEnc.a(paramTRTCVideoFrame.texture.textureId, paramTRTCVideoFrame.width, paramTRTCVideoFrame.height, locali.e.f(), paramTRTCVideoFrame.timestamp, paramTRTCVideoFrame.rotation);
+                  TRTCCustomTextureUtil.this.mCaptureAndEnc.b(paramTRTCVideoFrame.texture.textureId, paramTRTCVideoFrame.width, paramTRTCVideoFrame.height, locali.e.f(), paramTRTCVideoFrame.timestamp);
                   AppMethodBeat.o(15662);
+                  return;
                 }
-              }
-            }
-            else if (paramTRTCVideoFrame.texture != null)
-            {
-              paramTRTCVideoFrame.texture.textureId = TRTCCustomTextureUtil.access$000(TRTCCustomTextureUtil.this, paramTRTCVideoFrame.texture.textureId, paramTRTCVideoFrame);
-              if (locali.g != null)
-              {
-                TRTCCustomTextureUtil.this.mCaptureAndEnc.a(paramTRTCVideoFrame.texture.textureId, paramTRTCVideoFrame.width, paramTRTCVideoFrame.height, locali.g.d(), paramTRTCVideoFrame.timestamp, paramTRTCVideoFrame.rotation);
+                TRTCCustomTextureUtil.this.mCaptureAndEnc.a(paramTRTCVideoFrame.texture.textureId, paramTRTCVideoFrame.width, paramTRTCVideoFrame.height, locali.e.f(), paramTRTCVideoFrame.timestamp);
                 AppMethodBeat.o(15662);
               }
             }
             else
             {
+              if (paramTRTCVideoFrame.texture != null)
+              {
+                paramTRTCVideoFrame.texture.textureId = TRTCCustomTextureUtil.access$000(TRTCCustomTextureUtil.this, paramTRTCVideoFrame.texture.textureId, paramTRTCVideoFrame);
+                if (TRTCCustomTextureUtil.this.mGLSyncMode == 0)
+                {
+                  TRTCCustomTextureUtil.this.mCaptureAndEnc.b(paramTRTCVideoFrame.texture.textureId, paramTRTCVideoFrame.width, paramTRTCVideoFrame.height, locali.g.d(), paramTRTCVideoFrame.timestamp);
+                  AppMethodBeat.o(15662);
+                  return;
+                }
+                TRTCCustomTextureUtil.this.mCaptureAndEnc.a(paramTRTCVideoFrame.texture.textureId, paramTRTCVideoFrame.width, paramTRTCVideoFrame.height, locali.g.d(), paramTRTCVideoFrame.timestamp);
+                AppMethodBeat.o(15662);
+                return;
+              }
               int i;
               if (paramTRTCVideoFrame.pixelFormat == 1) {
                 i = 1;
@@ -245,19 +252,23 @@ public class TRTCCustomTextureUtil
                     TXCLog.e("TRTCCustomTextureUtil", "mI4202RGBAFilter init failed!!, break init");
                   }
                   localk.a(paramTRTCVideoFrame.width, paramTRTCVideoFrame.height);
-                  TRTCCustomTextureUtil.access$202(TRTCCustomTextureUtil.this, localk);
+                  TRTCCustomTextureUtil.access$302(TRTCCustomTextureUtil.this, localk);
                 }
                 k localk = TRTCCustomTextureUtil.this.mI4202RGBAFilter;
                 if (localk == null) {
-                  break;
+                  break label632;
                 }
                 GLES20.glViewport(0, 0, paramTRTCVideoFrame.width, paramTRTCVideoFrame.height);
                 localk.a(paramTRTCVideoFrame.data);
                 i = localk.r();
                 i = TRTCCustomTextureUtil.access$000(TRTCCustomTextureUtil.this, i, paramTRTCVideoFrame);
-                if (locali.g != null) {
-                  TRTCCustomTextureUtil.this.mCaptureAndEnc.a(i, paramTRTCVideoFrame.width, paramTRTCVideoFrame.height, locali.g.d(), paramTRTCVideoFrame.timestamp, paramTRTCVideoFrame.rotation);
+                if (locali.g == null) {
+                  break label632;
                 }
+                if (TRTCCustomTextureUtil.this.mGLSyncMode != 0) {
+                  break;
+                }
+                TRTCCustomTextureUtil.this.mCaptureAndEnc.b(i, paramTRTCVideoFrame.width, paramTRTCVideoFrame.height, locali.g.d(), paramTRTCVideoFrame.timestamp);
                 AppMethodBeat.o(15662);
                 return;
                 i = j;
@@ -265,10 +276,9 @@ public class TRTCCustomTextureUtil
                   i = j;
                 }
               }
-              if (locali.g != null) {
-                TRTCCustomTextureUtil.this.mCaptureAndEnc.a(paramTRTCVideoFrame.data, i, paramTRTCVideoFrame.width, paramTRTCVideoFrame.height, locali.g.d(), paramTRTCVideoFrame.timestamp, paramTRTCVideoFrame.rotation);
-              }
+              TRTCCustomTextureUtil.this.mCaptureAndEnc.a(i, paramTRTCVideoFrame.width, paramTRTCVideoFrame.height, locali.g.d(), paramTRTCVideoFrame.timestamp);
             }
+            label632:
             AppMethodBeat.o(15662);
           }
         });
@@ -344,7 +354,7 @@ public class TRTCCustomTextureUtil
         this.mGLThreadHandler.b = 720;
         this.mGLThreadHandler.sendEmptyMessage(100);
       }
-      else if ((paramTRTCVideoFrame.texture.eglContext14 != null) && (Build.VERSION.SDK_INT >= 17))
+      else if ((paramTRTCVideoFrame.texture.eglContext14 != null) && (TXCBuild.VersionInt() >= 17))
       {
         apiLog("CustomCapture texture start egl14 thread");
         this.mGLThreadHandler.d = true;
@@ -373,7 +383,7 @@ public class TRTCCustomTextureUtil
         {
           public void run()
           {
-            AppMethodBeat.i(226527);
+            AppMethodBeat.i(230708);
             if (localj != null) {
               localj.d();
             }
@@ -382,10 +392,10 @@ public class TRTCCustomTextureUtil
             }
             if (TRTCCustomTextureUtil.this.mCaptureAndEnc != null)
             {
-              TRTCCustomTextureUtil.access$300(TRTCCustomTextureUtil.this, "CustomCapture release");
+              TRTCCustomTextureUtil.access$400(TRTCCustomTextureUtil.this, "CustomCapture release");
               TRTCCustomTextureUtil.this.mCaptureAndEnc.s();
             }
-            AppMethodBeat.o(226527);
+            AppMethodBeat.o(230708);
           }
         });
         i.a(this.mGLThreadHandler, this.mEGLThread);
@@ -401,7 +411,7 @@ public class TRTCCustomTextureUtil
   
   public double getCurrentFPS()
   {
-    AppMethodBeat.i(222511);
+    AppMethodBeat.i(230907);
     long l1 = SystemClock.elapsedRealtime();
     long l2 = l1 - this.mLastCaptureCalculateTS;
     if (l2 >= 1000L)
@@ -411,7 +421,7 @@ public class TRTCCustomTextureUtil
       this.mLastCaptureCalculateTS = l1;
     }
     double d = this.mCurrentFps;
-    AppMethodBeat.o(222511);
+    AppMethodBeat.o(230907);
     return d;
   }
   
@@ -442,7 +452,7 @@ public class TRTCCustomTextureUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCCustomTextureUtil
  * JD-Core Version:    0.7.0.1
  */

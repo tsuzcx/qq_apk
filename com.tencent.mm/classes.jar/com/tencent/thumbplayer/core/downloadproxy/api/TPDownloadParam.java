@@ -26,10 +26,10 @@ public class TPDownloadParam
   
   private String getExtraFormatNodesJsonInfo(ArrayList<Map<String, Object>> paramArrayList)
   {
-    AppMethodBeat.i(255559);
+    AppMethodBeat.i(228085);
     if (paramArrayList == null)
     {
-      AppMethodBeat.o(255559);
+      AppMethodBeat.o(228085);
       return "[]";
     }
     for (;;)
@@ -50,15 +50,15 @@ public class TPDownloadParam
           }
         }
       }
-      catch (Throwable paramArrayList)
+      finally
       {
         TPDLProxyLog.e("TPDownloadParam", 0, "tpdlnative", "getExtraJsonInfo failed, error:" + paramArrayList.toString());
-        AppMethodBeat.o(255559);
+        AppMethodBeat.o(228085);
         return "[]";
       }
       localStringBuffer.append("]");
       paramArrayList = localStringBuffer.toString();
-      AppMethodBeat.o(255559);
+      AppMethodBeat.o(228085);
       return paramArrayList;
       i += 1;
     }
@@ -66,10 +66,10 @@ public class TPDownloadParam
   
   private String getUrlHostNodesJsonInfo(ArrayList<String> paramArrayList)
   {
-    AppMethodBeat.i(255562);
+    AppMethodBeat.i(228093);
     if (paramArrayList == null)
     {
-      AppMethodBeat.o(255562);
+      AppMethodBeat.o(228093);
       return "[]";
     }
     for (;;)
@@ -90,15 +90,15 @@ public class TPDownloadParam
           }
         }
       }
-      catch (Throwable paramArrayList)
+      finally
       {
         TPDLProxyLog.e("TPDownloadParam", 0, "tpdlnative", "getArrayListStr failed, error:" + paramArrayList.toString());
-        AppMethodBeat.o(255562);
+        AppMethodBeat.o(228093);
         return "[]";
       }
       localStringBuffer.append("]");
       paramArrayList = localStringBuffer.toString();
-      AppMethodBeat.o(255562);
+      AppMethodBeat.o(228093);
       return paramArrayList;
       i += 1;
     }
@@ -107,10 +107,10 @@ public class TPDownloadParam
   public String getCdnUrls()
   {
     int i = 0;
-    AppMethodBeat.i(255525);
+    AppMethodBeat.i(228126);
     if (this.urlList == null)
     {
-      AppMethodBeat.o(255525);
+      AppMethodBeat.o(228126);
       return "";
     }
     Object localObject = new StringBuffer();
@@ -143,7 +143,7 @@ public class TPDownloadParam
         ((StringBuffer)localObject).deleteCharAt(((StringBuffer)localObject).length() - 1);
       }
       localObject = ((StringBuffer)localObject).toString();
-      AppMethodBeat.o(255525);
+      AppMethodBeat.o(228126);
       return localObject;
       bool = false;
     }
@@ -152,32 +152,32 @@ public class TPDownloadParam
   public int getClipCount()
   {
     int i = 1;
-    AppMethodBeat.i(255546);
+    AppMethodBeat.i(228184);
     if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty()))
     {
-      AppMethodBeat.o(255546);
+      AppMethodBeat.o(228184);
       return 1;
     }
     if (this.extInfoMap.containsKey("dl_param_play_clip_count")) {
       i = ((Integer)this.extInfoMap.get("dl_param_play_clip_count")).intValue();
     }
-    AppMethodBeat.o(255546);
+    AppMethodBeat.o(228184);
     return i;
   }
   
   public int getClipNo()
   {
     int i = 1;
-    AppMethodBeat.i(255548);
+    AppMethodBeat.i(228190);
     if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty()))
     {
-      AppMethodBeat.o(255548);
+      AppMethodBeat.o(228190);
       return 1;
     }
     if (this.extInfoMap.containsKey("dl_param_play_clip_no")) {
       i = ((Integer)this.extInfoMap.get("dl_param_play_clip_no")).intValue();
     }
-    AppMethodBeat.o(255548);
+    AppMethodBeat.o(228190);
     return i;
   }
   
@@ -188,14 +188,14 @@ public class TPDownloadParam
   
   public Object getExtInfo(String paramString)
   {
-    AppMethodBeat.i(255554);
+    AppMethodBeat.i(228206);
     if (this.extInfoMap == null)
     {
-      AppMethodBeat.o(255554);
+      AppMethodBeat.o(228206);
       return null;
     }
     paramString = this.extInfoMap.get(paramString);
-    AppMethodBeat.o(255554);
+    AppMethodBeat.o(228206);
     return paramString;
   }
   
@@ -206,10 +206,10 @@ public class TPDownloadParam
   
   public String getExtraJsonInfo()
   {
-    AppMethodBeat.i(255557);
+    AppMethodBeat.i(228213);
     if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty()))
     {
-      AppMethodBeat.o(255557);
+      AppMethodBeat.o(228213);
       return "";
     }
     try
@@ -223,114 +223,114 @@ public class TPDownloadParam
           localHashMap.put(localEntry.getKey(), localEntry.getValue());
         }
       }
-      str = new JSONObject(localThrowable).toString();
+      str = new JSONObject(localMap).toString();
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPDLProxyLog.e("TPDownloadParam", 0, "tpdlnative", "getExtraJsonInfo failed, error:" + localThrowable.toString());
-      AppMethodBeat.o(255557);
+      TPDLProxyLog.e("TPDownloadParam", 0, "tpdlnative", "getExtraJsonInfo failed, error:" + localMap.toString());
+      AppMethodBeat.o(228213);
       return "";
     }
     String str;
-    AppMethodBeat.o(255557);
+    AppMethodBeat.o(228213);
     return str;
   }
   
   public String getFormat()
   {
-    AppMethodBeat.i(255540);
+    AppMethodBeat.i(228169);
     if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty()))
     {
-      AppMethodBeat.o(255540);
+      AppMethodBeat.o(228169);
       return "";
     }
     String str = "";
     if (this.extInfoMap.containsKey("dl_param_current_format")) {
       str = (String)this.extInfoMap.get("dl_param_current_format");
     }
-    AppMethodBeat.o(255540);
+    AppMethodBeat.o(228169);
     return str;
   }
   
   public String getKeyid()
   {
-    AppMethodBeat.i(255544);
+    AppMethodBeat.i(228176);
     if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty()))
     {
-      AppMethodBeat.o(255544);
+      AppMethodBeat.o(228176);
       return "";
     }
     String str = "";
     if (this.extInfoMap.containsKey("dl_param_play_keyid")) {
       str = (String)this.extInfoMap.get("dl_param_play_keyid");
     }
-    AppMethodBeat.o(255544);
+    AppMethodBeat.o(228176);
     return str;
   }
   
   public Map<String, String> getOfflinePlayExtraInfo()
   {
-    AppMethodBeat.i(255533);
+    AppMethodBeat.i(228156);
     if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty()))
     {
-      AppMethodBeat.o(255533);
+      AppMethodBeat.o(228156);
       return null;
     }
     if (this.extInfoMap.containsKey("dl_param_play_extra_info"))
     {
       Map localMap = (Map)this.extInfoMap.get("dl_param_play_extra_info");
-      AppMethodBeat.o(255533);
+      AppMethodBeat.o(228156);
       return localMap;
     }
-    AppMethodBeat.o(255533);
+    AppMethodBeat.o(228156);
     return null;
   }
   
   public String getPlayDefinition()
   {
-    AppMethodBeat.i(255536);
+    AppMethodBeat.i(228161);
     if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty()))
     {
-      AppMethodBeat.o(255536);
+      AppMethodBeat.o(228161);
       return "";
     }
     String str = "";
     if (this.extInfoMap.containsKey("dl_param_play_definition")) {
       str = (String)this.extInfoMap.get("dl_param_play_definition");
     }
-    AppMethodBeat.o(255536);
+    AppMethodBeat.o(228161);
     return str;
   }
   
   public String getSavaPath()
   {
-    AppMethodBeat.i(255552);
+    AppMethodBeat.i(228201);
     if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty()))
     {
-      AppMethodBeat.o(255552);
+      AppMethodBeat.o(228201);
       return "";
     }
     String str = "";
     if (this.extInfoMap.containsKey("dl_param_save_path")) {
       str = (String)this.extInfoMap.get("dl_param_save_path");
     }
-    AppMethodBeat.o(255552);
+    AppMethodBeat.o(228201);
     return str;
   }
   
   public long getTotalDurationMS()
   {
     long l = 0L;
-    AppMethodBeat.i(255550);
+    AppMethodBeat.i(228196);
     if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty()))
     {
-      AppMethodBeat.o(255550);
+      AppMethodBeat.o(228196);
       return 0L;
     }
     if (this.extInfoMap.containsKey("dl_param_file_duration")) {
       l = ((Long)this.extInfoMap.get("dl_param_file_duration")).longValue();
     }
-    AppMethodBeat.o(255550);
+    AppMethodBeat.o(228196);
     return l;
   }
   
@@ -341,32 +341,32 @@ public class TPDownloadParam
   
   public String getVid()
   {
-    AppMethodBeat.i(255528);
+    AppMethodBeat.i(228139);
     if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty()))
     {
-      AppMethodBeat.o(255528);
+      AppMethodBeat.o(228139);
       return "";
     }
     String str = "";
     if (this.extInfoMap.containsKey("dl_param_vid")) {
       str = (String)this.extInfoMap.get("dl_param_vid");
     }
-    AppMethodBeat.o(255528);
+    AppMethodBeat.o(228139);
     return str;
   }
   
   public boolean isAdaptive()
   {
-    AppMethodBeat.i(255531);
+    AppMethodBeat.i(228149);
     if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty()))
     {
-      AppMethodBeat.o(255531);
+      AppMethodBeat.o(228149);
       return false;
     }
     if ((this.extInfoMap.containsKey("dl_param_adaptive_type")) && (((Integer)this.extInfoMap.get("dl_param_adaptive_type")).intValue() > 0)) {}
     for (boolean bool = true;; bool = false)
     {
-      AppMethodBeat.o(255531);
+      AppMethodBeat.o(228149);
       return bool;
     }
   }
@@ -374,16 +374,16 @@ public class TPDownloadParam
   public boolean isOffline()
   {
     boolean bool = false;
-    AppMethodBeat.i(255529);
+    AppMethodBeat.i(228143);
     if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty()))
     {
-      AppMethodBeat.o(255529);
+      AppMethodBeat.o(228143);
       return false;
     }
     if (this.extInfoMap.containsKey("dl_param_is_offline")) {
       bool = ((Boolean)this.extInfoMap.get("dl_param_is_offline")).booleanValue();
     }
-    AppMethodBeat.o(255529);
+    AppMethodBeat.o(228143);
     return bool;
   }
   
@@ -404,7 +404,7 @@ public class TPDownloadParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.api.TPDownloadParam
  * JD-Core Version:    0.7.0.1
  */

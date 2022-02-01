@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.finder.feed.model.internal;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "", "compare", "", "obj", "plugin-finder-base_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "", "compare", "", "obj", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface k
 {
   public abstract int a(k paramk);

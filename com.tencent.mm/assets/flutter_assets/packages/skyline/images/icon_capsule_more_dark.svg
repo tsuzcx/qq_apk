@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="73px" height="54px" viewBox="0 0 73 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>切片</title>
+    <g id="管控" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="➤右侧区域备份" transform="translate(-1.000000, 0.000000)">
+            <g id="➤右侧区域" transform="translate(0.760000, 0.120130)">
+                <g id="Wechatsystem-default-@3x-Copy-9">
+                    <rect id="Rectangle-2" stroke-opacity="0.2" stroke="#979797" stroke-width="0.84" fill-opacity="0.1" fill="#FFFFFF" x="0.42" y="0.42" width="145.32" height="52.92" rx="26.46"></rect>
+                    <rect id="Rectangle-3" fill-opacity="0.2" fill="#000000" x="73.08" y="10.92" width="1" height="31.08"></rect>
+                    <g id="more" transform="translate(21.000000, 10.080000)" fill="#FFFFFF">
+                        <rect id="Icon-Background" fill-opacity="0" x="0" y="0" width="33.6" height="33.6"></rect>
+                        <path d="M16.8,11.34 C19.8154747,11.34 22.26,13.7845253 22.26,16.8 C22.26,19.8154747 19.8154747,22.26 16.8,22.26 C13.7845253,22.26 11.34,19.8154747 11.34,16.8 C11.34,13.7845253 13.7845253,11.34 16.8,11.34 Z M4.62,13.86 C6.475392,13.86 7.98,15.363936 7.98,17.22 C7.98,19.075392 6.475392,20.58 4.62,20.58 C2.764608,20.58 1.26,19.075392 1.26,17.22 C1.26,15.363936 2.764608,13.86 4.62,13.86 Z M28.98,13.86 C30.835392,13.86 32.34,15.363936 32.34,17.22 C32.34,19.075392 30.835392,20.58 28.98,20.58 C27.124608,20.58 25.62,19.075392 25.62,17.22 C25.62,15.363936 27.124608,13.86 28.98,13.86 Z" id="Menu" fill-opacity="1"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

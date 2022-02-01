@@ -1,12 +1,11 @@
 package com.tencent.mm.plugin.card.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.a.e;
-import com.tencent.mm.plugin.card.d.k;
+import com.tencent.mm.plugin.card.c.k;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
@@ -18,7 +17,7 @@ public class CardViewEntranceUI
 {
   public int getLayoutId()
   {
-    return a.e.thJ;
+    return a.e.wmi;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -47,7 +46,7 @@ public class CardViewEntranceUI
       AppMethodBeat.o(113591);
       return;
     }
-    LinkedList localLinkedList = k.H((String)localObject, i, str);
+    LinkedList localLinkedList = k.J((String)localObject, i, str);
     if ((localLinkedList == null) || (localLinkedList.size() == 0))
     {
       Log.e("MicroMsg.CardViewEntranceUI", "CardViewEntranceUI oncreate tempList size is empty");
@@ -68,9 +67,9 @@ public class CardViewEntranceUI
       }
       localIntent.putExtra("key_from_appbrand_type", paramBundle.getIntExtra("key_from_appbrand_type", 0));
       localIntent.setClass(this, CardDetailUI.class);
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/card/ui/CardViewEntranceUI", "doRediect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+      localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/card/ui/CardViewEntranceUI", "doRediect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
       com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/card/ui/CardViewEntranceUI", "doRediect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
     for (;;)
@@ -89,9 +88,9 @@ public class CardViewEntranceUI
       localIntent.putExtra("key_app_id", str);
       localIntent.putExtra("key_from_appbrand_type", paramBundle.getIntExtra("key_from_appbrand_type", 0));
       localIntent.setClass(this, CardViewUI.class);
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/card/ui/CardViewEntranceUI", "doRediect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+      localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/card/ui/CardViewEntranceUI", "doRediect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
       com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/card/ui/CardViewEntranceUI", "doRediect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
   }

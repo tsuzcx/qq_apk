@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip"
+<RelativeLayout android:layout_gravity="end|bottom|center" android:orientation="horizontal" android:background="@color/a4" android:layout_width="@dimen/d5" android:layout_height="wrap_content" android:layout_alignParentEnd="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <ImageView android:id="@id/dup" android:padding="2.0dip" android:layout_width="63.0dip" android:layout_height="63.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="8.0dip" android:src="@drawable/aut" android:scaleType="centerCrop" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center|left|top" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <ImageView android:id="@id/e27" android:background="@drawable/ei" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        </LinearLayout>
-    </FrameLayout>
-</LinearLayout>
+    <GridView android:orientation="vertical" android:id="@id/bio" android:layout_width="@dimen/d0" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/cv" android:listSelector="@android:color/transparent" android:numColumns="1" android:layout_below="@id/iff" android:layout_marginEnd="@dimen/bv" android:layout_alignParentEnd="true" />
+    <ImageView android:id="@id/iff" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginTop="@dimen/cv" android:layout_marginBottom="@dimen/cv" android:layout_marginEnd="@dimen/bv" android:layout_alignParentEnd="true" />
+</RelativeLayout>

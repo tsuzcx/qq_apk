@@ -77,19 +77,19 @@ public class JNIExceptionHandlerImpl
       if ((paramInt + 1) * 512 < ((String)localObject1).length()) {}
       for (paramString = ((String)localObject1).substring(paramInt * 512, (paramInt + 1) * 512);; paramString = ((String)localObject1).substring(paramInt * 512))
       {
-        h.IzE.a(17910, true, true, new Object[] { com.tencent.mm.loader.j.a.CLIENT_VERSION, BuildInfo.CLIENT_VERSION, this.reportExecutionTag, Integer.valueOf(0), paramString, Integer.valueOf(1), Integer.valueOf(paramInt + 1), Integer.valueOf(i), Long.valueOf(l) });
+        h.OAn.a(17910, true, true, new Object[] { com.tencent.mm.loader.i.a.CLIENT_VERSION, BuildInfo.CLIENT_VERSION, this.reportExecutionTag, Integer.valueOf(0), paramString, Integer.valueOf(1), Integer.valueOf(paramInt + 1), Integer.valueOf(i), Long.valueOf(l) });
         paramInt += 1;
         break;
       }
     }
     if ((this.context instanceof RubbishBinService))
     {
-      ((RubbishBinService)this.context).qkF.interrupt();
+      ((RubbishBinService)this.context).tpF.interrupt();
       ((RubbishBinService)this.context).stopSelf();
     }
     try
     {
-      paramInt = ((RubbishBinService)this.context).DSE;
+      paramInt = ((RubbishBinService)this.context).JJO;
       if (paramInt > 0) {
         Thread.sleep(paramInt);
       }
@@ -103,8 +103,8 @@ public class JNIExceptionHandlerImpl
     {
       paramString = c.a(0, new com.tencent.mm.hellhoundlib.b.a());
       localObject1 = new Object();
-      com.tencent.mm.hellhoundlib.a.a.b(localObject1, paramString.aFh(), "com/tencent/mm/plugin/rubbishbin/JNIExceptionHandlerImpl", "onException", "(ILjava/lang/String;)V", "java/lang/System_EXEC_", "exit", "(I)V");
-      System.exit(((Integer)paramString.sf(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.b(localObject1, paramString.aYi(), "com/tencent/mm/plugin/rubbishbin/JNIExceptionHandlerImpl", "onException", "(ILjava/lang/String;)V", "java/lang/System_EXEC_", "exit", "(I)V");
+      System.exit(((Integer)paramString.sb(0)).intValue());
       com.tencent.mm.hellhoundlib.a.a.c(localObject1, "com/tencent/mm/plugin/rubbishbin/JNIExceptionHandlerImpl", "onException", "(ILjava/lang/String;)V", "java/lang/System_EXEC_", "exit", "(I)V");
     }
     AppMethodBeat.o(146667);
@@ -117,7 +117,7 @@ public class JNIExceptionHandlerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.rubbishbin.JNIExceptionHandlerImpl
  * JD-Core Version:    0.7.0.1
  */

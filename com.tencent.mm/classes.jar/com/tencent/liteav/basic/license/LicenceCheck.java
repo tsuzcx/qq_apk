@@ -43,20 +43,20 @@ public class LicenceCheck
   
   private LicenceCheck()
   {
-    AppMethodBeat.i(241667);
+    AppMethodBeat.i(230003);
     this.b = "YTFaceSDK.licence";
     this.c = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAq4teqkW/TUruU89ElNVd\nKrpSL+HCITruyb6BS9mW6M4mqmxDhazDmQgMKNfsA0d2kxFucCsXTyesFNajaisk\nrAzVJpNGO75bQFap4jYzJYskIuas6fgIS7zSmGXgRcp6i0ZBH3pkVCXcgfLfsVCO\n+sN01jFhFgOC0LY2f1pJ+3jqktAlMIxy8Q9t7XwwL5/n8/Sledp7TwuRdnl2OPl3\nycCTRkXtOIoRNB9vgd9XooTKiEdCXC7W9ryvtwCiAB82vEfHWXXgzhsPC13URuFy\n1JqbWJtTCCcfsCVxuBplhVJAQ7JsF5SMntdJDkp7rJLhprgsaim2CRjcVseNmw97\nbwIDAQAB";
     this.e = new a("TXUgcSDK.licence");
     this.f = new a("TXLiveSDK.licence");
-    AppMethodBeat.o(241667);
+    AppMethodBeat.o(230003);
   }
   
   private int a(a parama, Context paramContext)
   {
-    AppMethodBeat.i(241687);
+    AppMethodBeat.i(230035);
     if (parama.g)
     {
-      AppMethodBeat.o(241687);
+      AppMethodBeat.o(230035);
       return 0;
     }
     if (this.a == null) {
@@ -65,23 +65,23 @@ public class LicenceCheck
     if (d(parama) == 0)
     {
       parama.g = true;
-      AppMethodBeat.o(241687);
+      AppMethodBeat.o(230035);
       return 0;
     }
     int i = c(parama);
     if (i == 0)
     {
       parama.g = true;
-      AppMethodBeat.o(241687);
+      AppMethodBeat.o(230035);
       return 0;
     }
-    AppMethodBeat.o(241687);
+    AppMethodBeat.o(230035);
     return i;
   }
   
   private int a(a parama, f paramf, Context paramContext)
   {
-    AppMethodBeat.i(241685);
+    AppMethodBeat.i(230030);
     int i = a(parama, paramContext);
     if (i != 0) {
       a(parama);
@@ -89,13 +89,13 @@ public class LicenceCheck
     if (paramf != null) {
       paramf.a = parama.i;
     }
-    AppMethodBeat.o(241685);
+    AppMethodBeat.o(230030);
     return i;
   }
   
   private int a(a parama, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(241701);
+    AppMethodBeat.i(230097);
     Object localObject;
     boolean bool1;
     try
@@ -106,7 +106,7 @@ public class LicenceCheck
       {
         a(-2);
         TXCLog.e("LicenceCheck", "verifyLicence, signature not pass!");
-        AppMethodBeat.o(241701);
+        AppMethodBeat.o(230097);
         return -2;
       }
     }
@@ -122,7 +122,7 @@ public class LicenceCheck
       {
         a(-3);
         TXCLog.e("LicenceCheck", "verifyLicence, decodeValue is empty!");
-        AppMethodBeat.o(241701);
+        AppMethodBeat.o(230097);
         return -3;
       }
       parama.i = paramString1;
@@ -139,7 +139,7 @@ public class LicenceCheck
         {
           TXCLog.e("LicenceCheck", "verifyLicence, appDataArray is null!");
           a(-1);
-          AppMethodBeat.o(241701);
+          AppMethodBeat.o(230097);
           return -1;
         }
         int j = 0;
@@ -181,19 +181,19 @@ public class LicenceCheck
           if (m == 0)
           {
             a(-4);
-            AppMethodBeat.o(241701);
+            AppMethodBeat.o(230097);
             return -4;
           }
           if (n == 0)
           {
             a(-5);
-            AppMethodBeat.o(241701);
+            AppMethodBeat.o(230097);
             return -5;
           }
           if (!bool2)
           {
             a(-11);
-            AppMethodBeat.o(241701);
+            AppMethodBeat.o(230097);
             return -11;
           }
           bool1 = TextUtils.isEmpty(paramString1);
@@ -204,7 +204,7 @@ public class LicenceCheck
             paramString1 = this.a.getExternalFilesDir(null);
             if (paramString1 == null)
             {
-              AppMethodBeat.o(241701);
+              AppMethodBeat.o(230097);
               return -10;
             }
             paramString1 = paramString1.getAbsolutePath();
@@ -218,7 +218,7 @@ public class LicenceCheck
             continue;
           }
           TXCDRApi.txReportDAU(this.a, a.aJ);
-          AppMethodBeat.o(241701);
+          AppMethodBeat.o(230097);
           return 0;
         }
       }
@@ -226,7 +226,7 @@ public class LicenceCheck
       {
         TXCLog.e("LicenceCheck", "verifyLicence, json format error ! exception = ".concat(String.valueOf(parama)));
         a(-1);
-        AppMethodBeat.o(241701);
+        AppMethodBeat.o(230097);
         return -1;
       }
       k += 1;
@@ -235,18 +235,18 @@ public class LicenceCheck
   
   public static LicenceCheck a()
   {
-    AppMethodBeat.i(241664);
+    AppMethodBeat.i(229999);
     if (d == null) {
       d = new LicenceCheck();
     }
     LicenceCheck localLicenceCheck = d;
-    AppMethodBeat.o(241664);
+    AppMethodBeat.o(229999);
     return localLicenceCheck;
   }
   
   private static String a(Context paramContext)
   {
-    AppMethodBeat.i(241709);
+    AppMethodBeat.i(230124);
     int i = Process.myPid();
     paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
     while (paramContext.hasNext())
@@ -255,24 +255,24 @@ public class LicenceCheck
       if (localRunningAppProcessInfo.pid == i)
       {
         paramContext = localRunningAppProcessInfo.processName;
-        AppMethodBeat.o(241709);
+        AppMethodBeat.o(230124);
         return paramContext;
       }
     }
-    AppMethodBeat.o(241709);
+    AppMethodBeat.o(230124);
     return "";
   }
   
   private void a(int paramInt)
   {
-    AppMethodBeat.i(241704);
+    AppMethodBeat.i(230109);
     TXCDRApi.txReportDAU(this.a, a.aK, paramInt, "");
-    AppMethodBeat.o(241704);
+    AppMethodBeat.o(230109);
   }
   
   private void a(a parama, Context paramContext, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(241674);
+    AppMethodBeat.i(230012);
     if (paramContext != null)
     {
       this.a = paramContext.getApplicationContext();
@@ -293,14 +293,14 @@ public class LicenceCheck
       }
       a(parama);
     }
-    AppMethodBeat.o(241674);
+    AppMethodBeat.o(230012);
   }
   
   private boolean a(a parama, JSONObject paramJSONObject, String paramString)
   {
     boolean bool2 = true;
     boolean bool1 = true;
-    AppMethodBeat.i(241702);
+    AppMethodBeat.i(230103);
     int i = paramJSONObject.optInt("feature");
     if (parama == this.f)
     {
@@ -315,7 +315,7 @@ public class LicenceCheck
       TXCLog.i("LicenceCheck", "live parseVersionType, mLicenceVersionType = " + parama.h);
       for (;;)
       {
-        AppMethodBeat.o(241702);
+        AppMethodBeat.o(230103);
         return bool1;
         if (parama == this.e)
         {
@@ -354,70 +354,70 @@ public class LicenceCheck
   
   public static boolean a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, PublicKey paramPublicKey)
   {
-    AppMethodBeat.i(241712);
+    AppMethodBeat.i(230139);
     Signature localSignature = Signature.getInstance("SHA256WithRSA");
     localSignature.initVerify(paramPublicKey);
     localSignature.update(paramArrayOfByte1);
     boolean bool = localSignature.verify(paramArrayOfByte2);
-    AppMethodBeat.o(241712);
+    AppMethodBeat.o(230139);
     return bool;
   }
   
   private String b(a parama)
   {
-    AppMethodBeat.i(241682);
+    AppMethodBeat.i(230017);
     if (this.a == null)
     {
-      AppMethodBeat.o(241682);
+      AppMethodBeat.o(230017);
       return null;
     }
     parama = this.a.getSharedPreferences("LicenceCheck.lastModified", 0).getString(parama.a + ".lastModified", null);
-    AppMethodBeat.o(241682);
+    AppMethodBeat.o(230017);
     return parama;
   }
   
   private void b(a parama, String paramString)
   {
-    AppMethodBeat.i(241684);
+    AppMethodBeat.i(230024);
     if (this.a == null)
     {
-      AppMethodBeat.o(241684);
+      AppMethodBeat.o(230024);
       return;
     }
     SharedPreferences.Editor localEditor = this.a.getSharedPreferences("LicenceCheck.lastModified", 0).edit();
     localEditor.putString(parama.a + ".lastModified", paramString);
     localEditor.commit();
-    AppMethodBeat.o(241684);
+    AppMethodBeat.o(230024);
   }
   
   private boolean b(String paramString)
   {
-    AppMethodBeat.i(241693);
+    AppMethodBeat.i(230059);
     boolean bool = d.a(paramString);
-    AppMethodBeat.o(241693);
+    AppMethodBeat.o(230059);
     return bool;
   }
   
   private int c(a parama)
   {
-    AppMethodBeat.i(241688);
+    AppMethodBeat.i(230041);
     if (!Environment.getExternalStorageState().equals("mounted"))
     {
       TXCLog.e("LicenceCheck", "checkSdcardLicence, sdcard not mounted yet!");
-      AppMethodBeat.o(241688);
+      AppMethodBeat.o(230041);
       return -10;
     }
     localObject = this.a.getExternalFilesDir(null);
     if (localObject == null)
     {
       TXCLog.e("LicenceCheck", "checkSdcardLicence, mContext.getExternalFilesDir is null!");
-      AppMethodBeat.o(241688);
+      AppMethodBeat.o(230041);
       return -10;
     }
     String str = ((File)localObject).getAbsolutePath() + File.separator + parama.a;
     if (!b(str))
     {
-      AppMethodBeat.o(241688);
+      AppMethodBeat.o(230041);
       return -7;
     }
     localObject = "";
@@ -433,41 +433,41 @@ public class LicenceCheck
         TXCLog.e("LicenceCheck", "read licence file error: ", localException);
       }
       int i = a(parama, (String)localObject);
-      AppMethodBeat.o(241688);
+      AppMethodBeat.o(230041);
       return i;
     }
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
       TXCLog.e("LicenceCheck", "checkSdcardLicence, licenceSdcardStr is empty");
-      AppMethodBeat.o(241688);
+      AppMethodBeat.o(230041);
       return -8;
     }
   }
   
   private static long c(String paramString)
   {
-    AppMethodBeat.i(241696);
+    AppMethodBeat.i(230067);
     try
     {
       long l = new SimpleDateFormat("yyyy-MM-dd").parse(paramString).getTime();
-      AppMethodBeat.o(241696);
+      AppMethodBeat.o(230067);
       return l;
     }
     catch (Exception paramString)
     {
       TXCLog.e("LicenceCheck", "time str to millsecond failed.", paramString);
-      AppMethodBeat.o(241696);
+      AppMethodBeat.o(230067);
     }
     return -1L;
   }
   
   private String c(a parama, String paramString)
   {
-    AppMethodBeat.i(241699);
+    AppMethodBeat.i(230073);
     if (TextUtils.isEmpty(parama.d))
     {
       TXCLog.e("LicenceCheck", "decodeLicence, mKey is empty!!!");
-      AppMethodBeat.o(241699);
+      AppMethodBeat.o(230073);
       return "";
     }
     Object localObject = parama.d.getBytes();
@@ -480,7 +480,7 @@ public class LicenceCheck
       localCipher.init(2, parama, (AlgorithmParameterSpec)localObject);
       parama = new String(localCipher.doFinal(paramString), "UTF-8");
       TXCLog.i("LicenceCheck", "decodeLicence : ".concat(String.valueOf(parama)));
-      AppMethodBeat.o(241699);
+      AppMethodBeat.o(230073);
       return parama;
     }
     catch (Exception parama)
@@ -494,46 +494,46 @@ public class LicenceCheck
   
   private boolean c()
   {
-    AppMethodBeat.i(241691);
+    AppMethodBeat.i(230049);
     if (!Environment.getExternalStorageState().equals("mounted"))
     {
       TXCLog.e("LicenceCheck", "checkSdcardLicence, sdcard not mounted yet!");
-      AppMethodBeat.o(241691);
+      AppMethodBeat.o(230049);
       return false;
     }
     if (this.a.getExternalFilesDir(null) == null)
     {
       TXCLog.e("LicenceCheck", "checkSdcardLicence, mContext.getExternalFilesDir is null!");
-      AppMethodBeat.o(241691);
+      AppMethodBeat.o(230049);
       return false;
     }
-    AppMethodBeat.o(241691);
+    AppMethodBeat.o(230049);
     return true;
   }
   
   private int d(a parama)
   {
-    AppMethodBeat.i(241689);
+    AppMethodBeat.i(230047);
     if (!e(parama))
     {
-      AppMethodBeat.o(241689);
+      AppMethodBeat.o(230047);
       return -6;
     }
     String str = d.b(this.a, parama.a);
     if (TextUtils.isEmpty(str))
     {
       TXCLog.e("LicenceCheck", "checkAssetLicence, licenceSdcardStr is empty");
-      AppMethodBeat.o(241689);
+      AppMethodBeat.o(230047);
       return -8;
     }
     int i = a(parama, str);
-    AppMethodBeat.o(241689);
+    AppMethodBeat.o(230047);
     return i;
   }
   
   private int d(a parama, String paramString)
   {
-    AppMethodBeat.i(241700);
+    AppMethodBeat.i(230087);
     try
     {
       Object localObject = new JSONObject(paramString);
@@ -544,45 +544,45 @@ public class LicenceCheck
       TXCLog.i("LicenceCheck", "encryptedLicense:".concat(String.valueOf(paramString)));
       TXCLog.i("LicenceCheck", "signature:".concat(String.valueOf(localObject)));
       i = a(parama, paramString, (String)localObject);
-      AppMethodBeat.o(241700);
+      AppMethodBeat.o(230087);
       return i;
     }
     catch (JSONException parama)
     {
       a(-1);
-      AppMethodBeat.o(241700);
+      AppMethodBeat.o(230087);
     }
     return -1;
   }
   
   private boolean d(String paramString)
   {
-    AppMethodBeat.i(241706);
+    AppMethodBeat.i(230113);
     long l = c(paramString);
     if (l < 0L)
     {
       TXCLog.e("LicenceCheck", "checkEndDate, end date millis < 0!");
-      AppMethodBeat.o(241706);
+      AppMethodBeat.o(230113);
       return true;
     }
     if (l < System.currentTimeMillis())
     {
       TXCLog.e("LicenceCheck", "checkEndDate, end date expire!");
-      AppMethodBeat.o(241706);
+      AppMethodBeat.o(230113);
       return true;
     }
-    AppMethodBeat.o(241706);
+    AppMethodBeat.o(230113);
     return false;
   }
   
   private int e(a parama, String paramString)
   {
-    AppMethodBeat.i(241707);
+    AppMethodBeat.i(230118);
     paramString = e(paramString);
     if (TextUtils.isEmpty(paramString))
     {
       TXCLog.e("LicenceCheck", "verifyOldLicence, decryptStr is empty");
-      AppMethodBeat.o(241707);
+      AppMethodBeat.o(230118);
       return -3;
     }
     parama.i = paramString;
@@ -593,13 +593,13 @@ public class LicenceCheck
       {
         TXCLog.e("LicenceCheck", "packagename not match!");
         a(-4);
-        AppMethodBeat.o(241707);
+        AppMethodBeat.o(230118);
         return -4;
       }
       boolean bool = d(paramString.getString("enddate"));
       if (bool)
       {
-        AppMethodBeat.o(241707);
+        AppMethodBeat.o(230118);
         return -5;
       }
     }
@@ -607,23 +607,23 @@ public class LicenceCheck
     {
       TXCLog.e("LicenceCheck", "verifyOldLicence, json format error !");
       a(-1);
-      AppMethodBeat.o(241707);
+      AppMethodBeat.o(230118);
       return -1;
     }
     parama.h = 5;
     TXCDRApi.txReportDAU(this.a, a.aJ);
-    AppMethodBeat.o(241707);
+    AppMethodBeat.o(230118);
     return 0;
   }
   
   private String e(String paramString)
   {
-    AppMethodBeat.i(241710);
+    AppMethodBeat.i(230129);
     try
     {
       byte[] arrayOfByte = Base64.decode(nativeRSAKey(), 0);
       paramString = new String(h.b(Base64.decode(paramString, 0), arrayOfByte));
-      AppMethodBeat.o(241710);
+      AppMethodBeat.o(230129);
       return paramString;
     }
     catch (Exception paramString)
@@ -638,20 +638,20 @@ public class LicenceCheck
   
   private boolean e(a parama)
   {
-    AppMethodBeat.i(241692);
+    AppMethodBeat.i(230052);
     boolean bool = d.a(this.a, parama.a);
-    AppMethodBeat.o(241692);
+    AppMethodBeat.o(230052);
     return bool;
   }
   
   private void f(a parama)
   {
-    AppMethodBeat.i(241694);
+    AppMethodBeat.i(230064);
     File localFile1 = this.a.getExternalFilesDir(null);
     if (localFile1 == null)
     {
       TXCLog.i("LicenceCheck", "saveTempLocal sdcardDir is null");
-      AppMethodBeat.o(241694);
+      AppMethodBeat.o(230064);
       return;
     }
     localFile1 = new File(localFile1.getAbsolutePath() + File.separator + parama.a);
@@ -663,7 +663,7 @@ public class LicenceCheck
       TXCLog.i("LicenceCheck", "rename file:".concat(String.valueOf(localFile2.renameTo(localFile1))));
     }
     parama.g = true;
-    AppMethodBeat.o(241694);
+    AppMethodBeat.o(230064);
   }
   
   private int g(a parama)
@@ -673,9 +673,9 @@ public class LicenceCheck
   
   private String h(a parama)
   {
-    AppMethodBeat.i(241711);
+    AppMethodBeat.i(230135);
     parama = d.b(new File(parama.c + File.separator + parama.b).getAbsolutePath());
-    AppMethodBeat.o(241711);
+    AppMethodBeat.o(230135);
     return parama;
   }
   
@@ -685,98 +685,98 @@ public class LicenceCheck
   
   public int a(a parama, String paramString)
   {
-    AppMethodBeat.i(241690);
+    AppMethodBeat.i(230178);
     int i;
     try
     {
       new JSONObject(paramString);
       i = d(parama, paramString);
-      AppMethodBeat.o(241690);
+      AppMethodBeat.o(230178);
       return i;
     }
     catch (JSONException localJSONException)
     {
       if (parama == this.f)
       {
-        AppMethodBeat.o(241690);
+        AppMethodBeat.o(230178);
         return -1;
       }
       i = e(parama, paramString);
-      AppMethodBeat.o(241690);
+      AppMethodBeat.o(230178);
     }
     return i;
   }
   
   public int a(f paramf, Context paramContext)
   {
-    AppMethodBeat.i(241680);
+    AppMethodBeat.i(230175);
     int i = a(this.f, paramf, paramContext);
-    AppMethodBeat.o(241680);
+    AppMethodBeat.o(230175);
     return i;
   }
   
   public PublicKey a(String paramString)
   {
-    AppMethodBeat.i(241697);
+    AppMethodBeat.i(230184);
     paramString = new X509EncodedKeySpec(Base64.decode(paramString, 0));
     paramString = KeyFactory.getInstance("RSA").generatePublic(paramString);
-    AppMethodBeat.o(241697);
+    AppMethodBeat.o(230184);
     return paramString;
   }
   
   public void a(Context paramContext, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(241669);
+    AppMethodBeat.i(230165);
     a(this.f, paramContext, paramString1, paramString2);
-    AppMethodBeat.o(241669);
+    AppMethodBeat.o(230165);
   }
   
   public void a(final a parama)
   {
-    AppMethodBeat.i(241677);
+    AppMethodBeat.i(230169);
     if (TextUtils.isEmpty(parama.e))
     {
       TXCLog.e("LicenceCheck", "downloadLicense, mUrl is empty, ignore!");
-      AppMethodBeat.o(241677);
+      AppMethodBeat.o(230169);
       return;
     }
     if (parama.f)
     {
       TXCLog.i("LicenceCheck", "downloadLicense, in downloading, ignore");
-      AppMethodBeat.o(241677);
+      AppMethodBeat.o(230169);
       return;
     }
     b local1 = new b()
     {
       public void a()
       {
-        AppMethodBeat.i(241560);
+        AppMethodBeat.i(230040);
         TXCLog.i("LicenceCheck", "downloadLicense, onProcessEnd");
         parama.f = false;
-        AppMethodBeat.o(241560);
+        AppMethodBeat.o(230040);
       }
       
       public void a(int paramAnonymousInt)
       {
-        AppMethodBeat.i(241559);
+        AppMethodBeat.i(230036);
         TXCLog.i("LicenceCheck", "downloadLicense, onProgressUpdate");
-        AppMethodBeat.o(241559);
+        AppMethodBeat.o(230036);
       }
       
       public void a(File paramAnonymousFile, Exception paramAnonymousException)
       {
-        AppMethodBeat.i(241558);
+        AppMethodBeat.i(230031);
         TXCLog.i("LicenceCheck", "downloadLicense, onSaveFailed");
-        AppMethodBeat.o(241558);
+        AppMethodBeat.o(230031);
       }
       
       public void a(File paramAnonymousFile, String paramAnonymousString)
       {
-        AppMethodBeat.i(241557);
+        AppMethodBeat.i(230026);
         if (paramAnonymousFile == null)
         {
           TXCLog.i("LicenceCheck", "downloadLicense, license not modified");
-          AppMethodBeat.o(241557);
+          AppMethodBeat.o(230026);
           return;
         }
         LicenceCheck.a(LicenceCheck.this, parama, paramAnonymousString);
@@ -786,40 +786,40 @@ public class LicenceCheck
         {
           TXCLog.e("LicenceCheck", "downloadLicense, readDownloadTempLicence is empty!");
           parama.f = false;
-          AppMethodBeat.o(241557);
+          AppMethodBeat.o(230026);
           return;
         }
         if (LicenceCheck.b(LicenceCheck.this, parama, paramAnonymousFile) == 0) {
           LicenceCheck.b(LicenceCheck.this, parama);
         }
-        AppMethodBeat.o(241557);
+        AppMethodBeat.o(230026);
       }
     };
     if (this.a == null)
     {
       TXCLog.e("LicenceCheck", "context is NULL !!! Please set context in method:setLicense(Context context, String url, String key)");
-      AppMethodBeat.o(241677);
+      AppMethodBeat.o(230169);
       return;
     }
     File localFile = this.a.getExternalFilesDir(null);
     if (localFile == null)
     {
       TXCLog.e("LicenceCheck", "Please check permission WRITE_EXTERNAL_STORAGE permission has been set !!!");
-      AppMethodBeat.o(241677);
+      AppMethodBeat.o(230169);
       return;
     }
     String str = b(parama);
     parama.c = localFile.getAbsolutePath();
     new Thread(new c(this.a, parama.e, parama.c, parama.b, local1, false, str)).start();
     parama.f = true;
-    AppMethodBeat.o(241677);
+    AppMethodBeat.o(230169);
   }
   
   public int b()
   {
-    AppMethodBeat.i(241703);
+    AppMethodBeat.i(230188);
     int i = g(this.f);
-    AppMethodBeat.o(241703);
+    AppMethodBeat.o(230188);
     return i;
   }
   
@@ -837,7 +837,7 @@ public class LicenceCheck
     
     public a(String paramString)
     {
-      AppMethodBeat.i(241638);
+      AppMethodBeat.i(229989);
       this.a = paramString;
       this.b = (paramString + ".tmp");
       this.c = "";
@@ -847,13 +847,13 @@ public class LicenceCheck
       this.g = false;
       this.h = -1;
       this.i = "";
-      AppMethodBeat.o(241638);
+      AppMethodBeat.o(229989);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.basic.license.LicenceCheck
  * JD-Core Version:    0.7.0.1
  */

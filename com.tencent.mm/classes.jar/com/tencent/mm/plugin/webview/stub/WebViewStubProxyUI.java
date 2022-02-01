@@ -1,7 +1,5 @@
 package com.tencent.mm.plugin.webview.stub;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
@@ -17,13 +15,12 @@ import android.view.Window;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.t;
-import com.tencent.mm.f.a.aac;
-import com.tencent.mm.f.a.aac.a;
-import com.tencent.mm.f.a.aac.b;
-import com.tencent.mm.f.a.vy;
-import com.tencent.mm.model.z;
-import com.tencent.mm.modelsimple.y;
+import com.tencent.mm.am.s;
+import com.tencent.mm.autogen.a.aby;
+import com.tencent.mm.autogen.a.aby.a;
+import com.tencent.mm.autogen.a.aby.b;
+import com.tencent.mm.autogen.a.xp;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.account.ui.SimpleLoginUI;
 import com.tencent.mm.plugin.messenger.foundation.a.a.l;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
@@ -31,22 +28,20 @@ import com.tencent.mm.plugin.webview.c.i;
 import com.tencent.mm.plugin.webview.model.e;
 import com.tencent.mm.plugin.webview.model.e.a;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewStubCallbackWrapper;
-import com.tencent.mm.plugin.webview.ui.tools.jsapi.i;
-import com.tencent.mm.pluginsdk.j.c;
-import com.tencent.mm.pluginsdk.j.c.a;
+import com.tencent.mm.plugin.webview.ui.tools.jsapi.j;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.p;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.pluginsdk.platformtools.c;
+import com.tencent.mm.pluginsdk.platformtools.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.cj;
+import com.tencent.mm.storage.cm;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMWizardActivity;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.w;
 import com.tencent.mm.ui.e.b;
 
 @com.tencent.mm.ui.base.a(7)
@@ -54,46 +49,46 @@ import com.tencent.mm.ui.e.b;
 public class WebViewStubProxyUI
   extends MMActivity
 {
-  private int PNz;
-  private f POP;
-  public boolean Qac;
-  private boolean Qad;
-  private final f Qae;
-  private MTimerHandler Qaf;
-  private DialogInterface.OnDismissListener fVb;
-  private boolean lCY;
-  private String qnk;
+  private int Aqu;
+  private int WDK;
+  private f WFb;
+  public boolean WRn;
+  private boolean WRo;
+  private final f WRp;
+  private MTimerHandler WRq;
+  private DialogInterface.OnDismissListener iaY;
+  private boolean ouJ;
   private MTimerHandler timer;
-  private int wTR;
+  private String trR;
   
   public WebViewStubProxyUI()
   {
     AppMethodBeat.i(79287);
-    this.Qac = false;
-    this.POP = null;
-    this.Qad = false;
-    this.qnk = "";
-    this.lCY = false;
-    this.Qae = new f()
+    this.WRn = false;
+    this.WFb = null;
+    this.WRo = false;
+    this.trR = "";
+    this.ouJ = false;
+    this.WRp = new f()
     {
-      public final void CG(boolean paramAnonymousBoolean)
+      public final void Il(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(79271);
-        WebViewStubProxyUI.a(WebViewStubProxyUI.this).CG(paramAnonymousBoolean);
+        WebViewStubProxyUI.a(WebViewStubProxyUI.this).Il(paramAnonymousBoolean);
         AppMethodBeat.o(79271);
       }
       
-      public final void CH(boolean paramAnonymousBoolean)
+      public final void Im(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(79272);
-        WebViewStubProxyUI.a(WebViewStubProxyUI.this).CH(paramAnonymousBoolean);
+        WebViewStubProxyUI.a(WebViewStubProxyUI.this).Im(paramAnonymousBoolean);
         AppMethodBeat.o(79272);
       }
       
-      public final void CI(boolean paramAnonymousBoolean)
+      public final void In(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(79281);
-        WebViewStubProxyUI.a(WebViewStubProxyUI.this).CI(paramAnonymousBoolean);
+        WebViewStubProxyUI.a(WebViewStubProxyUI.this).In(paramAnonymousBoolean);
         AppMethodBeat.o(79281);
       }
       
@@ -110,13 +105,13 @@ public class WebViewStubProxyUI
         AppMethodBeat.i(79266);
         Log.i("MicroMsg.callbackerWrapper", "onHandleEnd in callbackerWrapper");
         WebViewStubProxyUI.b(WebViewStubProxyUI.this);
-        WebViewStubProxyUI.this.Qac = WebViewStubProxyUI.blJ(paramAnonymousString2);
+        WebViewStubProxyUI.this.WRn = WebViewStubProxyUI.blk(paramAnonymousString2);
         WebViewStubProxyUI.this.runOnUiThread(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(79262);
-            i.aoU(WebViewStubProxyUI.c(WebViewStubProxyUI.this)).a(null, null, null);
+            com.tencent.mm.plugin.webview.ui.tools.jsapi.k.auP(WebViewStubProxyUI.c(WebViewStubProxyUI.this)).a(null, null, null);
             WebViewStubProxyUI.this.finish();
             try
             {
@@ -135,26 +130,11 @@ public class WebViewStubProxyUI
         return false;
       }
       
-      public final void aH(Bundle paramAnonymousBundle)
-      {
-        AppMethodBeat.i(79280);
-        WebViewStubProxyUI.a(WebViewStubProxyUI.this).aH(paramAnonymousBundle);
-        AppMethodBeat.o(79280);
-      }
-      
-      public final void aI(Bundle paramAnonymousBundle)
+      public final void aF(Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(79275);
-        WebViewStubProxyUI.a(WebViewStubProxyUI.this).aI(paramAnonymousBundle);
+        WebViewStubProxyUI.a(WebViewStubProxyUI.this).aF(paramAnonymousBundle);
         AppMethodBeat.o(79275);
-      }
-      
-      public final boolean amZ(int paramAnonymousInt)
-      {
-        AppMethodBeat.i(79263);
-        WebViewStubProxyUI.a(WebViewStubProxyUI.this).amZ(paramAnonymousInt);
-        AppMethodBeat.o(79263);
-        return false;
       }
       
       public final IBinder asBinder()
@@ -162,65 +142,37 @@ public class WebViewStubProxyUI
         return null;
       }
       
-      public final String bXN()
+      public final boolean asR(int paramAnonymousInt)
       {
-        AppMethodBeat.i(234672);
-        String str = WebViewStubProxyUI.a(WebViewStubProxyUI.this).bXN();
-        AppMethodBeat.o(234672);
-        return str;
+        AppMethodBeat.i(79263);
+        WebViewStubProxyUI.a(WebViewStubProxyUI.this).asR(paramAnonymousInt);
+        AppMethodBeat.o(79263);
+        return false;
       }
       
-      public final void bix(String paramAnonymousString)
+      public final void bif(String paramAnonymousString)
       {
         AppMethodBeat.i(79276);
-        WebViewStubProxyUI.a(WebViewStubProxyUI.this).bix(paramAnonymousString);
+        WebViewStubProxyUI.a(WebViewStubProxyUI.this).bif(paramAnonymousString);
         AppMethodBeat.o(79276);
       }
       
-      public final void e(String paramAnonymousString1, String paramAnonymousString2, int paramAnonymousInt1, int paramAnonymousInt2) {}
-      
-      public final void gPF()
+      public final void bk(Bundle paramAnonymousBundle)
       {
-        AppMethodBeat.i(79274);
-        WebViewStubProxyUI.a(WebViewStubProxyUI.this).gPF();
-        AppMethodBeat.o(79274);
+        AppMethodBeat.i(79280);
+        WebViewStubProxyUI.a(WebViewStubProxyUI.this).bk(paramAnonymousBundle);
+        AppMethodBeat.o(79280);
       }
       
-      public final String gPG()
+      public final String cxY()
       {
-        AppMethodBeat.i(79267);
-        String str = WebViewStubProxyUI.a(WebViewStubProxyUI.this).gPG();
-        AppMethodBeat.o(79267);
+        AppMethodBeat.i(298469);
+        String str = WebViewStubProxyUI.a(WebViewStubProxyUI.this).cxY();
+        AppMethodBeat.o(298469);
         return str;
       }
       
-      public final String gPH()
-      {
-        AppMethodBeat.i(79269);
-        String str = WebViewStubProxyUI.a(WebViewStubProxyUI.this).gPH();
-        AppMethodBeat.o(79269);
-        return str;
-      }
-      
-      public final int gPI()
-      {
-        AppMethodBeat.i(79270);
-        int i = WebViewStubProxyUI.a(WebViewStubProxyUI.this).gPI();
-        AppMethodBeat.o(79270);
-        return i;
-      }
-      
-      public final void gPJ()
-      {
-        AppMethodBeat.i(79277);
-        if (WebViewStubProxyUI.a(WebViewStubProxyUI.this) == null)
-        {
-          AppMethodBeat.o(79277);
-          return;
-        }
-        WebViewStubProxyUI.a(WebViewStubProxyUI.this).gPJ();
-        AppMethodBeat.o(79277);
-      }
+      public final void f(String paramAnonymousString1, String paramAnonymousString2, int paramAnonymousInt1, int paramAnonymousInt2) {}
       
       public final String getCurrentUrl()
       {
@@ -230,15 +182,58 @@ public class WebViewStubProxyUI
         return str;
       }
       
-      public final boolean h(int paramAnonymousInt, Bundle paramAnonymousBundle)
+      public final boolean i(int paramAnonymousInt, Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(79264);
-        WebViewStubProxyUI.a(WebViewStubProxyUI.this).h(paramAnonymousInt, paramAnonymousBundle);
+        WebViewStubProxyUI.a(WebViewStubProxyUI.this).i(paramAnonymousInt, paramAnonymousBundle);
         AppMethodBeat.o(79264);
         return false;
       }
       
-      public final Bundle l(int paramAnonymousInt, Bundle paramAnonymousBundle)
+      public final void ioZ()
+      {
+        AppMethodBeat.i(79274);
+        WebViewStubProxyUI.a(WebViewStubProxyUI.this).ioZ();
+        AppMethodBeat.o(79274);
+      }
+      
+      public final String ipa()
+      {
+        AppMethodBeat.i(79267);
+        String str = WebViewStubProxyUI.a(WebViewStubProxyUI.this).ipa();
+        AppMethodBeat.o(79267);
+        return str;
+      }
+      
+      public final String ipb()
+      {
+        AppMethodBeat.i(79269);
+        String str = WebViewStubProxyUI.a(WebViewStubProxyUI.this).ipb();
+        AppMethodBeat.o(79269);
+        return str;
+      }
+      
+      public final int ipc()
+      {
+        AppMethodBeat.i(79270);
+        int i = WebViewStubProxyUI.a(WebViewStubProxyUI.this).ipc();
+        AppMethodBeat.o(79270);
+        return i;
+      }
+      
+      public final void ipd()
+      {
+        AppMethodBeat.i(79277);
+        if (WebViewStubProxyUI.a(WebViewStubProxyUI.this) == null)
+        {
+          AppMethodBeat.o(79277);
+          return;
+        }
+        WebViewStubProxyUI.a(WebViewStubProxyUI.this).ipd();
+        AppMethodBeat.o(79277);
+      }
+      
+      public final Bundle m(int paramAnonymousInt, Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(79279);
         if (WebViewStubProxyUI.a(WebViewStubProxyUI.this) == null)
@@ -248,41 +243,41 @@ public class WebViewStubProxyUI
           AppMethodBeat.o(79279);
           return paramAnonymousBundle;
         }
-        paramAnonymousBundle = WebViewStubProxyUI.a(WebViewStubProxyUI.this).l(paramAnonymousInt, paramAnonymousBundle);
+        paramAnonymousBundle = WebViewStubProxyUI.a(WebViewStubProxyUI.this).m(paramAnonymousInt, paramAnonymousBundle);
         AppMethodBeat.o(79279);
         return paramAnonymousBundle;
       }
       
-      public final Bundle lY(String paramAnonymousString1, String paramAnonymousString2)
+      public final Bundle nK(String paramAnonymousString1, String paramAnonymousString2)
       {
         AppMethodBeat.i(79283);
-        paramAnonymousString1 = WebViewStubProxyUI.a(WebViewStubProxyUI.this).lY(paramAnonymousString1, paramAnonymousString2);
+        paramAnonymousString1 = WebViewStubProxyUI.a(WebViewStubProxyUI.this).nK(paramAnonymousString1, paramAnonymousString2);
         AppMethodBeat.o(79283);
         return paramAnonymousString1;
       }
       
-      public final void lZ(String paramAnonymousString1, String paramAnonymousString2)
+      public final void nL(String paramAnonymousString1, String paramAnonymousString2)
       {
         AppMethodBeat.i(79278);
-        WebViewStubProxyUI.a(WebViewStubProxyUI.this).lZ(paramAnonymousString1, paramAnonymousString2);
+        WebViewStubProxyUI.a(WebViewStubProxyUI.this).nL(paramAnonymousString1, paramAnonymousString2);
         AppMethodBeat.o(79278);
       }
       
-      public final void ma(String paramAnonymousString1, String paramAnonymousString2)
+      public final void nM(String paramAnonymousString1, String paramAnonymousString2)
       {
         AppMethodBeat.i(79282);
-        WebViewStubProxyUI.a(WebViewStubProxyUI.this).ma(paramAnonymousString1, paramAnonymousString2);
+        WebViewStubProxyUI.a(WebViewStubProxyUI.this).nM(paramAnonymousString1, paramAnonymousString2);
         AppMethodBeat.o(79282);
       }
       
-      public final void v(int paramAnonymousInt, Bundle paramAnonymousBundle)
+      public final void y(int paramAnonymousInt, Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(79273);
-        WebViewStubProxyUI.a(WebViewStubProxyUI.this).v(paramAnonymousInt, paramAnonymousBundle);
+        WebViewStubProxyUI.a(WebViewStubProxyUI.this).y(paramAnonymousInt, paramAnonymousBundle);
         AppMethodBeat.o(79273);
       }
     };
-    this.fVb = new DialogInterface.OnDismissListener()
+    this.iaY = new DialogInterface.OnDismissListener()
     {
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
@@ -293,7 +288,7 @@ public class WebViewStubProxyUI
         AppMethodBeat.o(79284);
       }
     };
-    this.wTR = 0;
+    this.Aqu = 0;
     this.timer = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
@@ -318,7 +313,7 @@ public class WebViewStubProxyUI
         return false;
       }
     }, true);
-    this.Qaf = new MTimerHandler(new MTimerHandler.CallBack()
+    this.WRq = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -346,25 +341,24 @@ public class WebViewStubProxyUI
     return -1;
   }
   
-  @TargetApi(21)
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(79288);
     super.onCreate(paramBundle);
-    if (com.tencent.mm.compatible.util.d.qV(21)) {
+    if (com.tencent.mm.compatible.util.d.rb(21)) {
       getWindow().setStatusBarColor(0);
     }
     paramBundle = (WebViewStubCallbackWrapper)getIntent().getParcelableExtra("webview_stub_callbacker_key");
     if (paramBundle != null) {
-      this.POP = paramBundle.QeN;
+      this.WFb = paramBundle.WWL;
     }
     paramBundle = getIntent();
     int i = paramBundle.getIntExtra("proxyui_action_code_key", 0);
-    this.PNz = paramBundle.getIntExtra("webview_binder_id", 0);
-    this.qnk = paramBundle.getStringExtra("proxyui_function_key");
-    Log.i("MicroMsg.WebViewStubProxyUI", "onCreate, actionCode = %d, binderID = %d, functionName=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(this.PNz), this.qnk });
-    if ("startMonitoringBeacons".equals(this.qnk)) {
-      this.Qac = true;
+    this.WDK = paramBundle.getIntExtra("webview_binder_id", 0);
+    this.trR = paramBundle.getStringExtra("proxyui_function_key");
+    Log.i("MicroMsg.WebViewStubProxyUI", "onCreate, actionCode = %d, binderID = %d, functionName=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(this.WDK), this.trR });
+    if ("startMonitoringBeacons".equals(this.trR)) {
+      this.WRn = true;
     }
     switch (i)
     {
@@ -373,21 +367,21 @@ public class WebViewStubProxyUI
     {
       AppMethodBeat.o(79288);
       return;
-      if (!this.Qad) {
+      if (!this.WRo) {
         this.timer.startTimer(100L);
       }
-      if (this.Qac)
+      if (this.WRn)
       {
-        this.Qaf.startTimer(5000L);
+        this.WRq.startTimer(5000L);
         AppMethodBeat.o(79288);
         return;
-        Object localObject1 = new aac();
-        ((aac)localObject1).callback = new Runnable()
+        Object localObject1 = new aby();
+        ((aby)localObject1).callback = new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(79257);
-            if (!this.Qag.fZr.fZs)
+            if (!this.WRr.ifw.ifx)
             {
               WebViewStubProxyUI.this.finish();
               AppMethodBeat.o(79257);
@@ -396,11 +390,11 @@ public class WebViewStubProxyUI
             if (WebViewStubProxyUI.a(WebViewStubProxyUI.this) != null) {}
             try
             {
-              WebViewStubProxyUI.a(WebViewStubProxyUI.this).h(1001, null);
+              WebViewStubProxyUI.a(WebViewStubProxyUI.this).i(1001, null);
               WebViewStubProxyUI.this.finish();
-              c.a locala = c.QYP;
+              c.a locala = c.XUP;
               if (locala != null) {
-                locala.bT(WebViewStubProxyUI.this);
+                locala.cF(WebViewStubProxyUI.this);
               }
               AppMethodBeat.o(79257);
               return;
@@ -414,26 +408,26 @@ public class WebViewStubProxyUI
             }
           }
         };
-        ((aac)localObject1).fZq.context = this;
-        ((aac)localObject1).fZq.type = paramBundle.getIntExtra("update_type_key", 0);
-        if (((aac)localObject1).fZq.type <= 0)
+        ((aby)localObject1).ifv.context = this;
+        ((aby)localObject1).ifv.type = paramBundle.getIntExtra("update_type_key", 0);
+        if (((aby)localObject1).ifv.type <= 0)
         {
-          Log.e("MicroMsg.WebViewStubProxyUI", "doUpdate fail, invalid type = " + ((aac)localObject1).fZq.type);
+          Log.e("MicroMsg.WebViewStubProxyUI", "doUpdate fail, invalid type = " + ((aby)localObject1).ifv.type);
           finish();
           AppMethodBeat.o(79288);
           return;
         }
-        EventCenter.instance.asyncPublish((IEvent)localObject1, Looper.myLooper());
+        ((aby)localObject1).asyncPublish(Looper.myLooper());
         AppMethodBeat.o(79288);
         return;
-        paramBundle = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbU().aPi("@t.qq.com");
-        if (!z.bdO()) {
-          paramBundle = com.tencent.mm.ui.base.h.a(this, c.i.contact_info_medianote_sync_to_qqmail_alert_tip, c.i.app_tip, new DialogInterface.OnClickListener()
+        paramBundle = ((n)h.ax(n.class)).bzJ().aMh("@t.qq.com");
+        if (!com.tencent.mm.model.z.bBG()) {
+          paramBundle = com.tencent.mm.ui.base.k.a(this, c.i.contact_info_medianote_sync_to_qqmail_alert_tip, c.i.app_tip, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
               AppMethodBeat.i(79258);
-              com.tencent.mm.plugin.webview.a.a.mIG.g(new Intent(), WebViewStubProxyUI.this);
+              com.tencent.mm.plugin.webview.a.a.pFn.g(new Intent(), WebViewStubProxyUI.this);
               AppMethodBeat.o(79258);
             }
           }, null);
@@ -445,16 +439,16 @@ public class WebViewStubProxyUI
           return;
           if ((paramBundle == null) || (Util.isNullOrNil(paramBundle.name)))
           {
-            paramBundle = com.tencent.mm.ui.base.h.p(this, c.i.settings_tweibo_notfind, c.i.app_tip);
+            paramBundle = com.tencent.mm.ui.base.k.s(this, c.i.settings_tweibo_notfind, c.i.app_tip);
           }
           else
           {
             paramBundle = Util.nullAsNil(getIntent().getStringExtra("shortUrl"));
-            paramBundle = new y(getIntent().getIntExtra("type", 0), paramBundle);
-            com.tencent.mm.kernel.h.aGY().a(paramBundle, 0);
+            paramBundle = new com.tencent.mm.modelsimple.z(getIntent().getIntExtra("type", 0), paramBundle);
+            h.aZW().a(paramBundle, 0);
             try
             {
-              this.POP.amZ(0);
+              this.WFb.asR(0);
               paramBundle = null;
             }
             catch (Exception paramBundle)
@@ -464,13 +458,13 @@ public class WebViewStubProxyUI
             }
           }
         }
-        paramBundle.setOnDismissListener(this.fVb);
+        paramBundle.setOnDismissListener(this.iaY);
         AppMethodBeat.o(79288);
         return;
         this.timer.startTimer(100L);
         AppMethodBeat.o(79288);
         return;
-        ((p)com.tencent.mm.kernel.h.ae(p.class)).a(this, paramBundle.getStringExtra("proxyui_handle_event_url"), this.fVb);
+        ((p)h.ax(p.class)).a(this, paramBundle.getStringExtra("proxyui_handle_event_url"), this.iaY);
         AppMethodBeat.o(79288);
         return;
         i = getIntent().getIntExtra("proxyui_expired_errtype", 0);
@@ -490,12 +484,12 @@ public class WebViewStubProxyUI
           }
           localObject1 = new Bundle();
           ((Bundle)localObject1).putInt("fromScene", 3);
-          Object localObject2 = new vy();
-          ((vy)localObject2).fUZ.context = this;
-          ((vy)localObject2).fUZ.fVa = paramBundle;
-          ((vy)localObject2).fUZ.fVb = this.fVb;
-          ((vy)localObject2).fUZ.fVc = ((Bundle)localObject1);
-          EventCenter.instance.publish((IEvent)localObject2);
+          Object localObject2 = new xp();
+          ((xp)localObject2).iaW.context = this;
+          ((xp)localObject2).iaW.iaX = paramBundle;
+          ((xp)localObject2).iaW.iaY = this.iaY;
+          ((xp)localObject2).iaW.iaZ = ((Bundle)localObject1);
+          ((xp)localObject2).publish();
           AppMethodBeat.o(79288);
           return;
           paramBundle = (Intent)getIntent().getExtras().getParcelable("proxyui_next_intent_key");
@@ -511,7 +505,7 @@ public class WebViewStubProxyUI
           if ((!Util.isNullOrNil(paramBundle)) && (!Util.isNullOrNil((String)localObject1)))
           {
             getString(c.i.app_tip);
-            localObject2 = com.tencent.mm.ui.base.h.a(this, getString(c.i.app_waiting), true, new DialogInterface.OnCancelListener()
+            localObject2 = com.tencent.mm.ui.base.k.a(this, getString(c.i.app_waiting), true, new DialogInterface.OnCancelListener()
             {
               public final void onCancel(DialogInterface paramAnonymousDialogInterface)
               {
@@ -521,14 +515,14 @@ public class WebViewStubProxyUI
                 AppMethodBeat.o(79259);
               }
             });
-            ((s)localObject2).show();
+            ((w)localObject2).show();
             e.a(MMApplicationContext.getContext(), (String)localObject1, paramBundle, new e.a()
             {
-              public final void sf(boolean paramAnonymousBoolean)
+              public final void wk(boolean paramAnonymousBoolean)
               {
                 AppMethodBeat.i(79261);
-                if (this.vnz != null) {
-                  this.vnz.dismiss();
+                if (this.yAa != null) {
+                  this.yAa.dismiss();
                 }
                 if (paramAnonymousBoolean)
                 {
@@ -540,8 +534,8 @@ public class WebViewStubProxyUI
                   }
                   try
                   {
-                    WebViewStubProxyUI.a(WebViewStubProxyUI.this).l(54, localBundle1);
-                    com.tencent.mm.ui.base.h.a(WebViewStubProxyUI.this, c.i.wv_add_shortcut_success, c.i.app_tip, false, new DialogInterface.OnClickListener()
+                    WebViewStubProxyUI.a(WebViewStubProxyUI.this).m(54, localBundle1);
+                    com.tencent.mm.ui.base.k.a(WebViewStubProxyUI.this, c.i.wv_add_shortcut_success, c.i.app_tip, false, new DialogInterface.OnClickListener()
                     {
                       public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                       {
@@ -570,7 +564,7 @@ public class WebViewStubProxyUI
                 }
                 try
                 {
-                  WebViewStubProxyUI.a(WebViewStubProxyUI.this).l(54, localBundle2);
+                  WebViewStubProxyUI.a(WebViewStubProxyUI.this).m(54, localBundle2);
                   WebViewStubProxyUI.this.finish();
                   AppMethodBeat.o(79261);
                   return;
@@ -594,17 +588,18 @@ public class WebViewStubProxyUI
   {
     AppMethodBeat.i(79290);
     super.onDestroy();
-    if (!this.Qac) {
-      this.POP = null;
+    if (!this.ouJ) {
+      com.tencent.mm.plugin.webview.ui.tools.jsapi.k.auP(this.WDK).a(MMApplicationContext.getContext(), this.WFb, this.WFb);
     }
-    i.aoU(this.PNz).daq();
-    if ((!this.lCY) && (Util.isEqual(i.aoU(this.PNz).Qqn, this.qnk)))
+    com.tencent.mm.plugin.webview.ui.tools.jsapi.k.auP(this.WDK).iBl();
+    if (!this.WRn) {
+      this.WFb = null;
+    }
+    com.tencent.mm.plugin.webview.ui.tools.jsapi.k.auP(this.WDK).dGL();
+    if ((!this.ouJ) && (Util.isEqual(com.tencent.mm.plugin.webview.ui.tools.jsapi.k.auP(this.WDK).XiD, this.trR)))
     {
-      i.aoU(this.PNz).Q(false, this.qnk);
+      com.tencent.mm.plugin.webview.ui.tools.jsapi.k.auP(this.WDK).aM(false, this.trR);
       Log.w("MicroMsg.WebViewStubProxyUI", "onDestroy setIsBusy false");
-    }
-    if (!this.lCY) {
-      i.aoU(this.PNz).a(MMApplicationContext.getContext(), this.POP, this.POP);
     }
     Log.i("MicroMsg.WebViewStubProxyUI", "onDestroy proxyui");
     AppMethodBeat.o(79290);
@@ -620,13 +615,13 @@ public class WebViewStubProxyUI
     {
       AppMethodBeat.o(79291);
       return;
-      if (paramArrayOfInt[0] == 0)
+      if ((paramArrayOfInt.length > 0) && (paramArrayOfInt[0] == 0))
       {
-        i.aoU(this.PNz).d(paramInt, -1, null);
+        com.tencent.mm.plugin.webview.ui.tools.jsapi.k.auP(this.WDK).mmOnActivityResult(paramInt, -1, null);
         AppMethodBeat.o(79291);
         return;
       }
-      i.aoU(this.PNz).d(paramInt, 0, null);
+      com.tencent.mm.plugin.webview.ui.tools.jsapi.k.auP(this.WDK).mmOnActivityResult(paramInt, 0, null);
     }
   }
   

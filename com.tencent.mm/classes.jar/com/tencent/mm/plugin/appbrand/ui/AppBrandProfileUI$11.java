@@ -1,20 +1,17 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.widget.AppBrandNearbyShowcaseView;
 
 final class AppBrandProfileUI$11
-  implements Runnable
+  implements an
 {
-  AppBrandProfileUI$11(AppBrandProfileUI paramAppBrandProfileUI, boolean paramBoolean) {}
+  AppBrandProfileUI$11(AppBrandProfileUI paramAppBrandProfileUI) {}
   
-  public final void run()
+  public final void onClick()
   {
-    AppMethodBeat.i(276440);
-    if ((this.qXI) && (AppBrandProfileUI.o(this.qXA) != null)) {
-      AppBrandProfileUI.o(this.qXA).cmR();
-    }
-    AppMethodBeat.o(276440);
+    AppMethodBeat.i(322574);
+    AppBrandProfileUI.a(this.udA, 28, 1);
+    AppMethodBeat.o(322574);
   }
 }
 

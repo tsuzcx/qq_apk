@@ -21,218 +21,216 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import kotlin.Metadata;
 import kotlin.ResultKt;
+import kotlin.a.p;
+import kotlin.ah;
 import kotlin.d.b.a.b;
+import kotlin.d.b.a.k;
 import kotlin.d.d;
 import kotlin.d.f;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
-import kotlinx.coroutines.ak;
-import kotlinx.coroutines.bc;
-import kotlinx.coroutines.br;
-import kotlinx.coroutines.g;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlinx.coroutines.aq;
+import kotlinx.coroutines.bg;
+import kotlinx.coroutines.bu;
+import kotlinx.coroutines.j;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/thumb/EditFrameListView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "clipOffset", "", "clipPath", "Landroid/graphics/Path;", "clipRadius", "clipRect", "Landroid/graphics/RectF;", "firstThumb", "Landroid/graphics/Bitmap;", "frameWidth", "getFrameWidth", "()I", "setFrameWidth", "(I)V", "leftExtend", "minDuration", "", "minWidth", "getMinWidth", "setMinWidth", "noClipLeft", "", "noClipRight", "noRadiusLeft", "noRadiusRight", "paint", "Landroid/graphics/Paint;", "rightExtend", "showWidth", "getShowWidth", "setShowWidth", "thumbDrawRect", "thumbFetcher", "Lcom/tencent/mm/videocomposition/ITrackThumbFetcher;", "thumbList", "Ljava/util/LinkedList;", "thumbRect", "Landroid/graphics/Rect;", "thumbScale", "totalFrameWidth", "getTotalFrameWidth", "setTotalFrameWidth", "totalWidth", "getTotalWidth", "setTotalWidth", "trackInfo", "Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackThumbInfo;", "validWidth", "getValidWidth", "noClip", "", "left", "right", "noRadius", "onDraw", "canvas", "Landroid/graphics/Canvas;", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "release", "setTrackInfo", "info", "parentHeight", "Companion", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/thumb/EditFrameListView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "clipOffset", "", "clipPath", "Landroid/graphics/Path;", "clipRadius", "clipRect", "Landroid/graphics/RectF;", "firstThumb", "Landroid/graphics/Bitmap;", "frameWidth", "getFrameWidth", "()I", "setFrameWidth", "(I)V", "leftExtend", "minDuration", "", "minWidth", "getMinWidth", "setMinWidth", "noClipLeft", "", "noClipRight", "noRadiusLeft", "noRadiusRight", "paint", "Landroid/graphics/Paint;", "rightExtend", "showWidth", "getShowWidth", "setShowWidth", "thumbDrawRect", "thumbFetcher", "Lcom/tencent/mm/videocomposition/ITrackThumbFetcher;", "thumbList", "Ljava/util/LinkedList;", "thumbRect", "Landroid/graphics/Rect;", "thumbScale", "totalFrameWidth", "getTotalFrameWidth", "setTotalFrameWidth", "totalWidth", "getTotalWidth", "setTotalWidth", "trackInfo", "Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackThumbInfo;", "validWidth", "getValidWidth", "noClip", "", "left", "right", "noRadius", "onDraw", "canvas", "Landroid/graphics/Canvas;", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "release", "setTrackInfo", "info", "parentHeight", "Companion", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class EditFrameListView
   extends View
 {
-  public static final EditFrameListView.a NCR;
-  c Aub;
-  private final RectF GrG;
-  private final float GrH;
-  private int Gry;
-  private final Rect IUo;
-  private h NCD;
-  private LinkedList<Bitmap> NCE;
-  private Bitmap NCF;
-  private float NCG;
-  private final RectF NCH;
-  boolean NCI;
-  boolean NCJ;
-  boolean NCK;
-  boolean NCL;
-  private final float NCM;
-  private int NCN;
-  private int NCO;
-  private int NCP;
-  private int NCQ;
-  private int NzM;
-  private int nqW;
+  public static final EditFrameListView.a Upk;
+  private int Bdl;
+  private final long Bjj;
+  private int DWv;
+  c FTn;
+  private final RectF MlJ;
+  private final float MlK;
+  private final Rect Pdg;
+  private h Upl;
+  private LinkedList<Bitmap> Upm;
+  private Bitmap Upn;
+  private float Upo;
+  private final RectF Upp;
+  boolean Upq;
+  boolean Upr;
+  boolean Ups;
+  boolean Upt;
+  private final float Upu;
+  private int Upv;
+  private int Upw;
+  private int Upx;
+  private int Upy;
   private final Paint paint;
-  private final Path uWB;
-  private final long xJy;
+  private int qpD;
+  private final Path yjb;
   
   static
   {
-    AppMethodBeat.i(243960);
-    NCR = new EditFrameListView.a((byte)0);
-    AppMethodBeat.o(243960);
+    AppMethodBeat.i(281748);
+    Upk = new EditFrameListView.a((byte)0);
+    AppMethodBeat.o(281748);
   }
   
   public EditFrameListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(243959);
-    AppMethodBeat.o(243959);
+    AppMethodBeat.i(281718);
+    AppMethodBeat.o(281718);
   }
   
   public EditFrameListView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(243957);
+    AppMethodBeat.i(281710);
     this.paint = new Paint();
-    this.NCE = new LinkedList();
-    this.NCG = 1.0F;
-    this.IUo = new Rect();
-    this.NCH = new RectF();
-    this.uWB = new Path();
-    this.GrG = new RectF();
-    this.GrH = com.tencent.mm.ci.a.fromDPToPix(paramContext, 4);
-    this.NCM = com.tencent.mm.ci.a.fromDPToPix(paramContext, 4);
-    this.xJy = 3000L;
+    this.Upm = new LinkedList();
+    this.Upo = 1.0F;
+    this.Pdg = new Rect();
+    this.Upp = new RectF();
+    this.yjb = new Path();
+    this.MlJ = new RectF();
+    this.MlK = com.tencent.mm.cd.a.fromDPToPix(paramContext, 4);
+    this.Upu = com.tencent.mm.cd.a.fromDPToPix(paramContext, 4);
+    this.Bjj = 3000L;
     this.paint.setColor(-65536);
     this.paint.setAntiAlias(true);
-    AppMethodBeat.o(243957);
+    AppMethodBeat.o(281710);
   }
   
   public final void a(h paramh, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(243954);
-    p.k(paramh, "info");
-    this.NCD = paramh;
-    this.NCE.clear();
-    Object localObject = this.NCD;
+    AppMethodBeat.i(281816);
+    s.u(paramh, "info");
+    this.Upl = paramh;
+    this.Upm.clear();
+    Object localObject = this.Upl;
     if (localObject != null)
     {
-      localObject = ((a)localObject).NCm;
+      localObject = ((a)localObject).UoS;
       if (localObject != null)
       {
         localObject = ((Iterable)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
           ((Iterator)localObject).next();
-          this.NCE.add(null);
+          this.Upm.add(null);
         }
       }
     }
-    this.IUo.right = paramh.width;
-    this.IUo.bottom = paramh.height;
-    this.NCG = (paramInt * 1.0F / paramh.height);
-    this.NCH.bottom = paramInt;
-    this.NCH.right = (this.NCG * paramh.width);
-    this.NCQ = ((int)(this.NCH.right * paramh.NCl));
-    this.Gry = ((int)((float)this.xJy / (float)paramh.getTotalDuration() * this.NCQ));
-    if (paramh.NCq)
+    this.Pdg.right = paramh.width;
+    this.Pdg.bottom = paramh.height;
+    this.Upo = (paramInt * 1.0F / paramh.height);
+    this.Upp.bottom = paramInt;
+    this.Upp.right = (this.Upo * paramh.width);
+    this.Upy = ((int)(this.Upp.right * paramh.UoR));
+    this.DWv = ((int)((float)this.Bjj / (float)paramh.getTotalDuration() * this.Upy));
+    if (paramh.UoW)
     {
-      paramInt = (int)(this.NCQ * (float)paramh.NCk / (float)paramh.getTotalDuration());
-      this.nqW = paramInt;
+      paramInt = (int)(this.Upy * (float)paramh.UoQ / (float)paramh.getTotalDuration());
+      this.qpD = paramInt;
       if (!paramBoolean1) {
-        break label386;
+        break label387;
       }
-      paramInt = com.tencent.mm.ci.a.fromDPToPix(getContext(), 8);
+      paramInt = com.tencent.mm.cd.a.fromDPToPix(getContext(), 8);
       label234:
-      this.NCN = paramInt;
+      this.Upv = paramInt;
       if (!paramBoolean2) {
-        break label398;
+        break label399;
       }
     }
-    label386:
-    label398:
-    for (paramInt = com.tencent.mm.ci.a.fromDPToPix(getContext(), 8);; paramInt = com.tencent.mm.ci.a.fromDPToPix(getContext(), 4))
+    label387:
+    label399:
+    for (paramInt = com.tencent.mm.cd.a.fromDPToPix(getContext(), 8);; paramInt = com.tencent.mm.cd.a.fromDPToPix(getContext(), 4))
     {
-      this.NCO = paramInt;
-      this.NCP = (this.nqW + this.NCN + this.NCO);
-      this.NzM = (this.NCQ + this.NCN + this.NCO);
-      g.b((ak)br.abxo, (f)bc.iRs(), (m)new b(this, null), 2);
-      AppMethodBeat.o(243954);
+      this.Upw = paramInt;
+      this.Upx = (this.qpD + this.Upv + this.Upw);
+      this.Bdl = (this.Upy + this.Upv + this.Upw);
+      j.a((aq)bu.ajwo, (f)bg.kCi(), null, (m)new b(this, null), 2);
+      AppMethodBeat.o(281816);
       return;
-      if (paramh.NCp)
+      if (paramh.UoV)
       {
-        paramInt = (int)(this.NCQ * (float)(paramh.getTotalDuration() - paramh.NCj) / (float)paramh.getTotalDuration());
+        paramInt = (int)(this.Upy * (float)(paramh.getTotalDuration() - paramh.UoP) / (float)paramh.getTotalDuration());
         break;
       }
-      paramInt = (int)(this.NCQ * (float)paramh.gwv() / (float)paramh.getTotalDuration());
+      paramInt = (int)(this.Upy * (float)paramh.hUo() / (float)paramh.getTotalDuration());
       break;
-      paramInt = com.tencent.mm.ci.a.fromDPToPix(getContext(), 4);
+      paramInt = com.tencent.mm.cd.a.fromDPToPix(getContext(), 4);
       break label234;
     }
   }
   
   public final int getFrameWidth()
   {
-    return this.nqW;
+    return this.qpD;
   }
   
   public final int getMinWidth()
   {
-    return this.Gry;
+    return this.DWv;
   }
   
   public final int getShowWidth()
   {
-    return this.NCP;
+    return this.Upx;
   }
   
   public final int getTotalFrameWidth()
   {
-    return this.NCQ;
+    return this.Upy;
   }
   
   public final int getTotalWidth()
   {
-    return this.NzM;
+    return this.Bdl;
   }
   
   public final int getValidWidth()
   {
-    AppMethodBeat.i(243953);
-    float f1 = this.NCQ;
-    h localh = this.NCD;
-    if (localh == null) {
-      p.iCn();
-    }
-    float f2 = (float)localh.gwv();
-    localh = this.NCD;
-    if (localh == null) {
-      p.iCn();
-    }
+    AppMethodBeat.i(281788);
+    float f1 = this.Upy;
+    h localh = this.Upl;
+    s.checkNotNull(localh);
+    float f2 = (float)localh.hUo();
+    localh = this.Upl;
+    s.checkNotNull(localh);
     int i = (int)(f1 * f2 / (float)localh.getTotalDuration());
-    int j = this.NCN;
-    int k = this.NCO;
-    AppMethodBeat.o(243953);
+    int j = this.Upv;
+    int k = this.Upw;
+    AppMethodBeat.o(281788);
     return i + j + k;
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(243956);
-    p.k(paramCanvas, "canvas");
+    AppMethodBeat.i(281844);
+    s.u(paramCanvas, "canvas");
     super.onDraw(paramCanvas);
-    Log.i("MicroMsg.EditFrameListView", "onDraw: " + this + ", width:" + getWidth() + ", showWidth:" + this.NCP + ", track:" + this.NCD);
-    paramCanvas.translate(this.NCN, 0.0F);
+    Log.i("MicroMsg.EditFrameListView", "onDraw: " + this + ", width:" + getWidth() + ", showWidth:" + this.Upx + ", track:" + this.Upl);
+    paramCanvas.translate(this.Upv, 0.0F);
     paramCanvas.save();
-    paramCanvas.clipPath(this.uWB);
-    Object localObject = this.NCD;
-    if ((localObject != null) && (!((a)localObject).NCq)) {
-      paramCanvas.translate(-(float)((a)localObject).NCj / (float)((h)localObject).getTotalDuration() * this.NCQ, 0.0F);
+    paramCanvas.clipPath(this.yjb);
+    Object localObject = this.Upl;
+    if ((localObject != null) && (!((a)localObject).UoW)) {
+      paramCanvas.translate(-(float)((a)localObject).UoP / (float)((h)localObject).getTotalDuration() * getTotalFrameWidth(), 0.0F);
     }
-    localObject = ((Iterable)this.NCE).iterator();
+    localObject = ((Iterable)this.Upm).iterator();
     if (((Iterator)localObject).hasNext())
     {
       Bitmap localBitmap = (Bitmap)((Iterator)localObject).next();
       if (localBitmap != null) {
-        paramCanvas.drawBitmap(localBitmap, this.IUo, this.NCH, this.paint);
+        paramCanvas.drawBitmap(localBitmap, this.Pdg, this.Upp, this.paint);
       }
       for (;;)
       {
-        paramCanvas.translate(this.NCH.right, 0.0F);
+        paramCanvas.translate(this.Upp.right, 0.0F);
         break;
-        localBitmap = this.NCF;
+        localBitmap = this.Upn;
         if (localBitmap != null) {
-          paramCanvas.drawBitmap(localBitmap, this.IUo, this.NCH, this.paint);
+          paramCanvas.drawBitmap(localBitmap, this.Pdg, this.Upp, this.paint);
         }
       }
     }
@@ -240,198 +238,187 @@ public final class EditFrameListView
     localObject = getBackground();
     if (localObject != null)
     {
-      ((Drawable)localObject).setBounds((int)this.GrG.left, (int)this.GrG.top, (int)this.GrG.right, (int)this.GrG.bottom);
+      ((Drawable)localObject).setBounds((int)this.MlJ.left, (int)this.MlJ.top, (int)this.MlJ.right, (int)this.MlJ.bottom);
       ((Drawable)localObject).draw(paramCanvas);
-      AppMethodBeat.o(243956);
-      return;
     }
-    AppMethodBeat.o(243956);
+    AppMethodBeat.o(281844);
   }
   
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
     float f2 = 0.0F;
-    AppMethodBeat.i(243955);
+    AppMethodBeat.i(281832);
     int i = View.getDefaultSize(getSuggestedMinimumHeight(), paramInt2);
     label53:
     Object localObject2;
     Object localObject1;
-    label147:
+    label140:
     float f1;
-    if (this.NCI)
+    if (this.Upq)
     {
-      this.GrG.left = 0.0F;
-      if (!this.NCJ) {
-        break label307;
+      this.MlJ.left = 0.0F;
+      if (!this.Upr) {
+        break label300;
       }
-      this.GrG.right = this.nqW;
-      localObject2 = new StringBuilder("onMeasure: ").append(this.NCI).append(' ').append(this.NCJ).append(", ").append(getWidth()).append(' ').append(i).append(", thumbScale:").append(this.NCG).append(", trackInfo.width:");
-      localObject1 = this.NCD;
-      if (localObject1 == null) {
-        break label327;
+      this.MlJ.right = this.qpD;
+      localObject2 = new StringBuilder("onMeasure: ").append(this.Upq).append(' ').append(this.Upr).append(", ").append(getWidth()).append(' ').append(i).append(", thumbScale:").append(this.Upo).append(", trackInfo.width:");
+      localObject1 = this.Upl;
+      if (localObject1 != null) {
+        break label320;
       }
-      localObject1 = Integer.valueOf(((a)localObject1).width);
-      Log.i("MicroMsg.EditFrameListView", localObject1 + ", thumbDrawRect.right:" + this.NCH.right);
-      this.GrG.bottom = i;
-      this.uWB.reset();
-      if (!this.NCK) {
+      localObject1 = null;
+      Log.i("MicroMsg.EditFrameListView", localObject1 + ", thumbDrawRect.right:" + this.Upp.right);
+      this.MlJ.bottom = i;
+      this.yjb.reset();
+      if (!this.Ups) {
         break label333;
       }
       f1 = 0.0F;
-      label205:
-      if (!this.NCL) {
+      label198:
+      if (!this.Upt) {
         break label341;
       }
     }
     for (;;)
     {
-      localObject1 = this.uWB;
-      localObject2 = this.GrG;
+      localObject1 = this.yjb;
+      localObject2 = this.MlJ;
       Path.Direction localDirection = Path.Direction.CW;
       ((Path)localObject1).addRoundRect((RectF)localObject2, new float[] { f1, f1, f2, f2, f2, f2, f1, f1 }, localDirection);
       super.onMeasure(paramInt1, paramInt2);
-      AppMethodBeat.o(243955);
+      AppMethodBeat.o(281832);
       return;
-      this.GrG.left = this.NCM;
+      this.MlJ.left = this.Upu;
       break;
-      label307:
-      this.GrG.right = (this.nqW - this.NCM);
+      label300:
+      this.MlJ.right = (this.qpD - this.Upu);
       break label53;
-      label327:
-      localObject1 = null;
-      break label147;
+      label320:
+      localObject1 = Integer.valueOf(((a)localObject1).width);
+      break label140;
       label333:
-      f1 = this.GrH;
-      break label205;
+      f1 = this.MlK;
+      break label198;
       label341:
-      f2 = this.GrH;
+      f2 = this.MlK;
     }
   }
   
   public final void setFrameWidth(int paramInt)
   {
-    this.nqW = paramInt;
+    this.qpD = paramInt;
   }
   
   public final void setMinWidth(int paramInt)
   {
-    this.Gry = paramInt;
+    this.DWv = paramInt;
   }
   
   public final void setShowWidth(int paramInt)
   {
-    this.NCP = paramInt;
+    this.Upx = paramInt;
   }
   
   public final void setTotalFrameWidth(int paramInt)
   {
-    this.NCQ = paramInt;
+    this.Upy = paramInt;
   }
   
   public final void setTotalWidth(int paramInt)
   {
-    this.NzM = paramInt;
+    this.Bdl = paramInt;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends kotlin.d.b.a.j
-    implements m<ak, d<? super x>, Object>
+    extends k
+    implements m<aq, d<? super ah>, Object>
   {
     int label;
-    private ak p$;
     
-    b(EditFrameListView paramEditFrameListView, d paramd)
+    b(EditFrameListView paramEditFrameListView, d<? super b> paramd)
     {
       super(paramd);
     }
     
-    public final d<x> create(Object paramObject, d<?> paramd)
+    public final d<ah> create(Object paramObject, d<?> paramd)
     {
-      AppMethodBeat.i(244159);
-      p.k(paramd, "completion");
-      paramd = new b(this.NCS, paramd);
-      paramd.p$ = ((ak)paramObject);
-      AppMethodBeat.o(244159);
-      return paramd;
-    }
-    
-    public final Object invoke(Object paramObject1, Object paramObject2)
-    {
-      AppMethodBeat.i(244160);
-      paramObject1 = ((b)create(paramObject1, (d)paramObject2)).invokeSuspend(x.aazN);
-      AppMethodBeat.o(244160);
-      return paramObject1;
+      AppMethodBeat.i(281700);
+      paramd = new b(this.Upz, paramd);
+      paramd.L$0 = paramObject;
+      paramObject = (d)paramd;
+      AppMethodBeat.o(281700);
+      return paramObject;
     }
     
     public final Object invokeSuspend(final Object paramObject)
     {
-      AppMethodBeat.i(244158);
-      Object localObject1 = kotlin.d.a.a.aaAA;
+      AppMethodBeat.i(281694);
+      Object localObject1 = kotlin.d.a.a.aiwj;
       switch (this.label)
       {
       default: 
         paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-        AppMethodBeat.o(244158);
+        AppMethodBeat.o(281694);
         throw paramObject;
       }
       ResultKt.throwOnFailure(paramObject);
-      paramObject = this.p$;
-      Log.i("MicroMsg.EditFrameListView", paramObject.hashCode() + " setTrackInfo launch");
-      localObject1 = EditFrameListView.a(this.NCS);
-      if (localObject1 != null)
+      Object localObject2 = (aq)this.L$0;
+      Log.i("MicroMsg.EditFrameListView", localObject2.hashCode() + " setTrackInfo launch");
+      paramObject = EditFrameListView.a(this.Upz);
+      if (paramObject != null)
       {
-        Log.i("MicroMsg.EditFrameListView", paramObject.hashCode() + " setTrackInfo init thumb fetcher");
-        Object localObject2 = EditFrameListView.b(this.NCS);
-        if (localObject2 != null) {
-          ((c)localObject2).destroy();
+        localObject1 = this.Upz;
+        Log.i("MicroMsg.EditFrameListView", localObject2.hashCode() + " setTrackInfo init thumb fetcher");
+        Object localObject3 = EditFrameListView.b((EditFrameListView)localObject1);
+        if (localObject3 != null) {
+          ((c)localObject3).destroy();
         }
-        localObject2 = this.NCS;
-        Object localObject3 = com.tencent.mm.videocomposition.a.YHM;
-        EditFrameListView.a((EditFrameListView)localObject2, (c)a.a.d(((h)localObject1).NDI.Nng));
-        localObject2 = EditFrameListView.b(this.NCS);
-        if (localObject2 != null) {
-          ((c)localObject2).setSize(((a)localObject1).width, ((a)localObject1).height);
+        localObject3 = com.tencent.mm.videocomposition.a.agDr;
+        EditFrameListView.a((EditFrameListView)localObject1, (c)a.a.d(paramObject.Uqg.UaI));
+        localObject3 = EditFrameListView.b((EditFrameListView)localObject1);
+        if (localObject3 != null) {
+          ((c)localObject3).setSize(paramObject.width, paramObject.height);
         }
-        Log.i("MicroMsg.EditFrameListView", paramObject.hashCode() + " setTrackInfo finish init thumb fetcher, frames.size:" + ((a)localObject1).NCm.size());
-        localObject2 = EditFrameListView.b(this.NCS);
+        Log.i("MicroMsg.EditFrameListView", localObject2.hashCode() + " setTrackInfo finish init thumb fetcher, frames.size:" + paramObject.UoS.size());
+        localObject2 = EditFrameListView.b((EditFrameListView)localObject1);
         if (localObject2 != null) {
-          ((c)localObject2).b(kotlin.a.j.listOf(b.Xu(0L)), (m)new a(this, paramObject));
+          ((c)localObject2).b(p.listOf(b.BF(0L)), (m)new a((EditFrameListView)localObject1));
         }
-        localObject2 = EditFrameListView.b(this.NCS);
+        localObject2 = EditFrameListView.b((EditFrameListView)localObject1);
         if (localObject2 != null)
         {
-          Object localObject4 = (Iterable)((a)localObject1).NCm;
-          localObject3 = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject4, 10));
+          Object localObject4 = (Iterable)paramObject.UoS;
+          localObject3 = (Collection)new ArrayList(p.a((Iterable)localObject4, 10));
           localObject4 = ((Iterable)localObject4).iterator();
           while (((Iterator)localObject4).hasNext()) {
-            ((Collection)localObject3).add(b.Xu(((e)((Iterator)localObject4).next()).GhA));
+            ((Collection)localObject3).add(b.BF(((e)((Iterator)localObject4).next()).GvM));
           }
-          ((c)localObject2).b((List)localObject3, (m)new b((h)localObject1, this, paramObject));
+          ((c)localObject2).b((List)localObject3, (m)new b((EditFrameListView)localObject1, paramObject));
         }
       }
-      paramObject = x.aazN;
-      AppMethodBeat.o(244158);
+      paramObject = ah.aiuX;
+      AppMethodBeat.o(281694);
       return paramObject;
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "<anonymous parameter 0>", "", "bitmap", "Landroid/graphics/Bitmap;", "invoke", "com/tencent/mm/plugin/vlog/ui/thumb/EditFrameListView$setTrackInfo$2$1$1"})
+    @Metadata(d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "", "bitmap", "Landroid/graphics/Bitmap;"}, k=3, mv={1, 5, 1}, xi=48)
     static final class a
-      extends q
-      implements m<Long, Bitmap, x>
+      extends u
+      implements m<Long, Bitmap, ah>
     {
-      a(EditFrameListView.b paramb, ak paramak)
+      a(EditFrameListView paramEditFrameListView)
       {
         super();
       }
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "timeMs", "", "bitmap", "Landroid/graphics/Bitmap;", "invoke", "com/tencent/mm/plugin/vlog/ui/thumb/EditFrameListView$setTrackInfo$2$1$3"})
+    @Metadata(d1={""}, d2={"<anonymous>", "", "timeMs", "", "bitmap", "Landroid/graphics/Bitmap;"}, k=3, mv={1, 5, 1}, xi=48)
     static final class b
-      extends q
-      implements m<Long, Bitmap, x>
+      extends u
+      implements m<Long, Bitmap, ah>
     {
-      b(h paramh, EditFrameListView.b paramb, ak paramak)
+      b(EditFrameListView paramEditFrameListView, h paramh)
       {
         super();
       }
@@ -440,7 +427,7 @@ public final class EditFrameListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.thumb.EditFrameListView
  * JD-Core Version:    0.7.0.1
  */

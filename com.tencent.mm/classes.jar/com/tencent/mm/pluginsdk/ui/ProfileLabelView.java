@@ -10,23 +10,23 @@ import com.tencent.mm.R.f;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
 import com.tencent.mm.R.l;
+import com.tencent.mm.autogen.b.az;
 import com.tencent.mm.contact.d;
-import com.tencent.mm.f.c.ax;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.label.a.b;
 import com.tencent.mm.plugin.messenger.foundation.a.a.n;
-import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.pluginsdk.ui.span.p;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.co;
+import com.tencent.mm.storage.cr;
 import java.util.ArrayList;
 
 public class ProfileLabelView
   extends ProfileItemView
 {
-  public TextView GYE;
-  public TextView Rdy;
+  public TextView MWH;
+  public TextView XZE;
   
   public ProfileLabelView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -38,29 +38,29 @@ public class ProfileLabelView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final boolean fqK()
+  public final boolean gCe()
   {
     AppMethodBeat.i(31233);
-    if (this.Rdy != null)
+    if (this.XZE != null)
     {
-      localObject = this.Rdy.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject).width = com.tencent.mm.ci.a.aY(getContext(), R.f.FixedTitleWidth);
-      this.Rdy.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      localObject = this.XZE.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject).width = com.tencent.mm.cd.a.br(getContext(), R.f.FixedTitleWidth);
+      this.XZE.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
     ArrayList localArrayList;
-    if (d.rk(this.uNk.field_type))
+    if (d.rs(this.xVS.field_type))
     {
-      if (z.PD(this.uNk.field_username))
+      if (z.Iy(this.xVS.field_username))
       {
         setVisibility(8);
         AppMethodBeat.o(31233);
         return false;
       }
-      localObject = this.uNk.field_contactLabelIds;
-      localArrayList = (ArrayList)com.tencent.mm.plugin.label.a.a.eLe().aMQ((String)localObject);
+      localObject = this.xVS.field_contactLabelIds;
+      localArrayList = (ArrayList)com.tencent.mm.plugin.label.a.a.fTb().aJJ((String)localObject);
       if ((!Util.isNullOrNil((String)localObject)) && (localArrayList != null) && (localArrayList.size() > 0))
       {
-        this.GYE.setText(l.c(getContext(), Util.listToString(localArrayList, getContext().getResources().getString(R.l.exJ))));
+        this.MWH.setText(p.b(getContext(), Util.listToString(localArrayList, getContext().getResources().getString(R.l.gAt))));
         AppMethodBeat.o(31233);
         return true;
       }
@@ -68,21 +68,21 @@ public class ProfileLabelView
       AppMethodBeat.o(31233);
       return false;
     }
-    Object localObject = this.uNk.field_encryptUsername;
+    Object localObject = this.xVS.field_encryptUsername;
     if (!Util.isNullOrNil((String)localObject)) {
-      bh.beI();
+      bh.bCz();
     }
-    for (localObject = c.bbM().aPj((String)localObject); localObject != null; localObject = c.bbM().aPj(this.uNk.field_username))
+    for (localObject = c.bzB().aMi((String)localObject); localObject != null; localObject = c.bzB().aMi(this.xVS.field_username))
     {
-      localObject = ((co)localObject).field_contactLabels;
-      localArrayList = (ArrayList)com.tencent.mm.plugin.label.a.a.eLe().aMP((String)localObject);
+      localObject = ((cr)localObject).field_contactLabels;
+      localArrayList = (ArrayList)com.tencent.mm.plugin.label.a.a.fTb().aJI((String)localObject);
       if ((Util.isNullOrNil((String)localObject)) || (localArrayList == null) || (localArrayList.size() <= 0)) {
         break;
       }
-      this.GYE.setText(l.c(getContext(), Util.listToString(localArrayList, getContext().getResources().getString(R.l.exJ))));
+      this.MWH.setText(p.b(getContext(), Util.listToString(localArrayList, getContext().getResources().getString(R.l.gAt))));
       AppMethodBeat.o(31233);
       return true;
-      bh.beI();
+      bh.bCz();
     }
     setVisibility(8);
     AppMethodBeat.o(31233);
@@ -91,21 +91,21 @@ public class ProfileLabelView
   
   public int getLayout()
   {
-    return R.i.ekc;
+    return R.i.gnf;
   }
   
   public final void init()
   {
     AppMethodBeat.i(31232);
-    this.GYE = ((TextView)findViewById(R.h.dBc));
-    this.Rdy = ((TextView)findViewById(R.h.dBd));
+    this.MWH = ((TextView)findViewById(R.h.fCq));
+    this.XZE = ((TextView)findViewById(R.h.fCr));
     setClickable(true);
     AppMethodBeat.o(31232);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.ProfileLabelView
  * JD-Core Version:    0.7.0.1
  */

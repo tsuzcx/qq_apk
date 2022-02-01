@@ -14,7 +14,23 @@ import java.util.ArrayList;
 public class RecoveryTinkerResultService
   extends AbstractResultService
 {
-  public final void a(a parama)
+  public void onCreate()
+  {
+    AppMethodBeat.i(20589);
+    super.onCreate();
+    RecoveryLog.i("Recovery.RecoveryTinkerResultService", "onCreate", new Object[0]);
+    AppMethodBeat.o(20589);
+  }
+  
+  public void onDestroy()
+  {
+    AppMethodBeat.i(20590);
+    RecoveryLog.i("Recovery.RecoveryTinkerResultService", "onDestroy", new Object[0]);
+    super.onDestroy();
+    AppMethodBeat.o(20590);
+  }
+  
+  public final void onPatchResult(a parama)
   {
     AppMethodBeat.i(20591);
     RecoveryLog.i("Recovery.RecoveryTinkerResultService", "RecoveryTinkerResultService receive result: %s", new Object[] { parama });
@@ -49,26 +65,10 @@ public class RecoveryTinkerResultService
       }
     }
   }
-  
-  public void onCreate()
-  {
-    AppMethodBeat.i(20589);
-    super.onCreate();
-    RecoveryLog.i("Recovery.RecoveryTinkerResultService", "onCreate", new Object[0]);
-    AppMethodBeat.o(20589);
-  }
-  
-  public void onDestroy()
-  {
-    AppMethodBeat.i(20590);
-    RecoveryLog.i("Recovery.RecoveryTinkerResultService", "onDestroy", new Object[0]);
-    super.onDestroy();
-    AppMethodBeat.o(20590);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.modelrecovery.RecoveryTinkerResultService
  * JD-Core Version:    0.7.0.1
  */

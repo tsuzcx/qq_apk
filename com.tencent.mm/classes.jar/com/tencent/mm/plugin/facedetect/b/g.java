@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.facedetect.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.o;
+import com.tencent.mm.am.n;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.l.e;
 
 final class g
-  extends o
+  extends n
 {
-  k.a wvv;
-  k.b wvw;
+  k.a zRA;
+  k.b zRB;
   
   g()
   {
     AppMethodBeat.i(103588);
-    this.wvv = new k.a();
-    this.wvw = new k.b();
+    this.zRA = new k.a();
+    this.zRB = new k.b();
     AppMethodBeat.o(103588);
   }
   
@@ -26,12 +26,12 @@ final class g
   
   public final l.d getReqObjImp()
   {
-    return this.wvv;
+    return this.zRA;
   }
   
   public final l.e getRespObj()
   {
-    return this.wvw;
+    return this.zRB;
   }
   
   public final int getType()
@@ -46,7 +46,7 @@ final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.b.g
  * JD-Core Version:    0.7.0.1
  */

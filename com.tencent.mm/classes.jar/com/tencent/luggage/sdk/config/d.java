@@ -1,26 +1,27 @@
 package com.tencent.luggage.sdk.config;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.b.p;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public abstract interface d
 {
-  public static final d cxU = new d()
+  public static final d eqn = new d()
   {
-    public final String QE()
+    public final String aqP()
     {
-      AppMethodBeat.i(242814);
-      String str = "SessionId@" + hashCode() + "#" + Util.nowMilliSecond();
-      AppMethodBeat.o(242814);
+      AppMethodBeat.i(220225);
+      String str = p.getString(hashCode()) + "_" + Util.nowMilliSecond();
+      AppMethodBeat.o(220225);
       return str;
     }
   };
   
-  public abstract String QE();
+  public abstract String aqP();
   
   public static final class a
   {
-    public static d cxV;
+    public static d eqo;
   }
 }
 

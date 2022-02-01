@@ -11,7 +11,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
@@ -21,10 +21,10 @@ import java.util.List;
 public class SnsDrawGestureView
   extends ImageView
 {
-  private Paint FLE;
-  private a LtZ;
-  private int Lua;
-  private Paint Lub;
+  private Paint LGK;
+  private a RXs;
+  private int RXt;
+  private Paint RXu;
   private List<PointF> points;
   
   public SnsDrawGestureView(Context paramContext, AttributeSet paramAttributeSet)
@@ -37,24 +37,24 @@ public class SnsDrawGestureView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(100540);
     this.points = new ArrayList();
-    this.Lua = -1;
-    this.FLE = new Paint();
-    this.Lub = new Paint();
-    this.FLE.setColor(this.Lua);
-    this.FLE.setStyle(Paint.Style.STROKE);
-    this.FLE.setStrokeWidth(a.fromDPToPix(getContext(), 8));
-    this.FLE.setPathEffect(new CornerPathEffect(a.fromDPToPix(getContext(), 4)));
-    this.FLE.setAntiAlias(true);
-    this.Lub.setColor(this.Lua);
-    this.Lub.setStyle(Paint.Style.FILL);
-    this.Lub.setAntiAlias(true);
-    if (d.qW(21)) {
+    this.RXt = -1;
+    this.LGK = new Paint();
+    this.RXu = new Paint();
+    this.LGK.setColor(this.RXt);
+    this.LGK.setStyle(Paint.Style.STROKE);
+    this.LGK.setStrokeWidth(a.fromDPToPix(getContext(), 8));
+    this.LGK.setPathEffect(new CornerPathEffect(a.fromDPToPix(getContext(), 4)));
+    this.LGK.setAntiAlias(true);
+    this.RXu.setColor(this.RXt);
+    this.RXu.setStyle(Paint.Style.FILL);
+    this.RXu.setAntiAlias(true);
+    if (d.rc(21)) {
       setLayerType(1, null);
     }
     AppMethodBeat.o(100540);
   }
   
-  private List<PointF> fZE()
+  private List<PointF> hsV()
   {
     AppMethodBeat.i(100543);
     ArrayList localArrayList = new ArrayList();
@@ -68,17 +68,17 @@ public class SnsDrawGestureView
     return localArrayList;
   }
   
-  public final void fZF()
+  public a getOnGestureListener()
+  {
+    return this.RXs;
+  }
+  
+  public final void hsW()
   {
     AppMethodBeat.i(100545);
     this.points.clear();
     postInvalidate();
     AppMethodBeat.o(100545);
-  }
-  
-  public a getOnGestureListener()
-  {
-    return this.LtZ;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -89,15 +89,15 @@ public class SnsDrawGestureView
     {
       Path localPath = new Path();
       localPath.moveTo(((PointF)this.points.get(0)).x, ((PointF)this.points.get(0)).y);
-      paramCanvas.drawCircle(((PointF)this.points.get(0)).x, ((PointF)this.points.get(0)).y, a.fromDPToPix(getContext(), 8) / 2.0F, this.Lub);
+      paramCanvas.drawCircle(((PointF)this.points.get(0)).x, ((PointF)this.points.get(0)).y, a.fromDPToPix(getContext(), 8) / 2.0F, this.RXu);
       int i = 1;
       while (i < this.points.size())
       {
         localPath.lineTo(((PointF)this.points.get(i)).x, ((PointF)this.points.get(i)).y);
         i += 1;
       }
-      paramCanvas.drawPath(localPath, this.FLE);
-      paramCanvas.drawCircle(((PointF)this.points.get(this.points.size() - 1)).x, ((PointF)this.points.get(this.points.size() - 1)).y, a.fromDPToPix(getContext(), 8) / 2.0F, this.Lub);
+      paramCanvas.drawPath(localPath, this.LGK);
+      paramCanvas.drawCircle(((PointF)this.points.get(this.points.size() - 1)).x, ((PointF)this.points.get(this.points.size() - 1)).y, a.fromDPToPix(getContext(), 8) / 2.0F, this.RXu);
     }
     AppMethodBeat.o(100542);
   }
@@ -107,8 +107,8 @@ public class SnsDrawGestureView
     AppMethodBeat.i(100541);
     if (paramMotionEvent.getActionMasked() == 0)
     {
-      if (this.LtZ != null) {
-        this.LtZ.fYw();
+      if (this.RXs != null) {
+        this.RXs.hrc();
       }
       this.points.clear();
       paramMotionEvent = new PointF(paramMotionEvent.getX(), paramMotionEvent.getY());
@@ -130,48 +130,48 @@ public class SnsDrawGestureView
         if (this.points.size() < 6)
         {
           this.points.clear();
-          if (this.LtZ != null) {
-            this.LtZ.onClick();
+          if (this.RXs != null) {
+            this.RXs.onClick();
           }
         }
-        else if (this.LtZ != null)
+        else if (this.RXs != null)
         {
-          this.LtZ.hR(fZE());
+          this.RXs.kS(hsV());
         }
       }
-      else if (this.LtZ != null)
+      else if (this.RXs != null)
       {
-        this.LtZ.hR(fZE());
+        this.RXs.kS(hsV());
       }
     }
   }
   
   public void setOnGestureListener(a parama)
   {
-    this.LtZ = parama;
+    this.RXs = parama;
   }
   
   public void setPaintColor(int paramInt)
   {
     AppMethodBeat.i(100544);
-    this.Lua = paramInt;
-    this.FLE.setColor(this.Lua);
-    this.Lub.setColor(this.Lua);
+    this.RXt = paramInt;
+    this.LGK.setColor(this.RXt);
+    this.RXu.setColor(this.RXt);
     AppMethodBeat.o(100544);
   }
   
   public static abstract interface a
   {
-    public abstract void fYw();
+    public abstract void hrc();
     
-    public abstract void hR(List<PointF> paramList);
+    public abstract void kS(List<PointF> paramList);
     
     public abstract void onClick();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.SnsDrawGestureView
  * JD-Core Version:    0.7.0.1
  */

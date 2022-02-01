@@ -1,23 +1,11 @@
 package com.tencent.mm.plugin.hld.view;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/view/ImeDividerType;", "", "(Ljava/lang/String;I)V", "NORMAL", "Gradient", "plugin-hld_release"})
-public enum d
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/view/ImeEditTextCursorListener;", "", "onCursorLocation", "", "x", "", "y", "cursorIndex", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface d
 {
-  static
-  {
-    AppMethodBeat.i(214072);
-    d locald1 = new d("NORMAL", 0);
-    DHY = locald1;
-    d locald2 = new d("Gradient", 1);
-    DHZ = locald2;
-    DIa = new d[] { locald1, locald2 };
-    AppMethodBeat.o(214072);
-  }
-  
-  private d() {}
+  public abstract void jm(int paramInt1, int paramInt2);
 }
 
 

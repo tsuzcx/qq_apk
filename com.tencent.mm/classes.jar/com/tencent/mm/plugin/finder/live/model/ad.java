@@ -1,45 +1,44 @@
 package com.tencent.mm.plugin.finder.live.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.b;
-import com.tencent.mm.protocal.protobuf.axe;
-import com.tencent.mm.protocal.protobuf.ayb;
-import kotlin.l;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/FinderLiveRewardRankingMsg;", "Lcom/tencent/mm/plugin/finder/live/model/FinderLiveBaseMsg;", "msg", "Lcom/tencent/mm/protocal/protobuf/FinderLiveAppMsg;", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveAppMsg;)V", "getPayLoadContent", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/model/FinderLiveOlympicCloseShowReserveGuideLogic;", "", "()V", "TAG", "", "shouldShowReserveGuide", "", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ad
-  extends g
 {
-  public ad(axe paramaxe)
+  public static final ad CGB;
+  
+  static
   {
-    super(paramaxe);
-    AppMethodBeat.i(287225);
-    AppMethodBeat.o(287225);
+    AppMethodBeat.i(359226);
+    CGB = new ad();
+    AppMethodBeat.o(359226);
   }
   
-  public final Object dyn()
+  public static boolean ekZ()
   {
-    byte[] arrayOfByte = null;
-    AppMethodBeat.i(287224);
-    switch (getType())
+    AppMethodBeat.i(359213);
+    int i = h.baE().ban().getInt(at.a.adeV, 0);
+    Log.i("Finder.FinderLiveOlympicCloseShowReserveGuideLogic", s.X("shouldShowReserveGuide guideCnt:", Integer.valueOf(i)));
+    if (i > 0)
     {
-    default: 
-      AppMethodBeat.o(287224);
-      return null;
+      AppMethodBeat.o(359213);
+      return false;
     }
-    ayb localayb = new ayb();
-    b localb = dyj().SJE;
-    if (localb != null) {
-      arrayOfByte = localb.toByteArray();
-    }
-    localayb.parseFrom(arrayOfByte);
-    AppMethodBeat.o(287224);
-    return localayb;
+    h.baE().ban().set(at.a.adeV, Integer.valueOf(i + 1));
+    AppMethodBeat.o(359213);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.model.ad
  * JD-Core Version:    0.7.0.1
  */

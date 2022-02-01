@@ -18,9 +18,9 @@ public class CreateChatroom
     
     public Req()
     {
-      AppMethodBeat.i(254293);
+      AppMethodBeat.i(243042);
       this.groupId = "";
-      AppMethodBeat.o(254293);
+      AppMethodBeat.o(243042);
     }
     
     public boolean checkArgs()

@@ -5,92 +5,90 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.TextPaint;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.f.a.au;
+import com.tencent.mm.am.s;
+import com.tencent.mm.autogen.a.az;
 import com.tencent.mm.model.z;
-import com.tencent.mm.platformtools.u;
-import com.tencent.mm.platformtools.u.a;
-import com.tencent.mm.plugin.remittance.model.o;
+import com.tencent.mm.platformtools.r;
+import com.tencent.mm.platformtools.r.a;
+import com.tencent.mm.plugin.collect.model.b;
 import com.tencent.mm.plugin.wxpay.a.f;
 import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.pluginsdk.wallet.f;
-import com.tencent.mm.protocal.protobuf.vt;
+import com.tencent.mm.protocal.protobuf.xl;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.f.f.a;
-import com.tencent.mm.ui.widget.a.d;
-import com.tencent.mm.ui.widget.a.f.a;
-import com.tencent.mm.ui.widget.a.f.c;
-import com.tencent.mm.ui.widget.a.g;
+import com.tencent.mm.ui.f.g.a;
+import com.tencent.mm.ui.widget.a.e;
 import com.tencent.mm.ui.widget.a.g.a;
+import com.tencent.mm.ui.widget.a.g.c;
+import com.tencent.mm.ui.widget.a.j;
+import com.tencent.mm.ui.widget.a.j.a;
+import com.tencent.mm.wallet_core.ui.k;
 
 @com.tencent.mm.ui.base.a(3)
 public class F2FAppBrandRemittanceUI
   extends MMActivity
-  implements i
+  implements com.tencent.mm.am.h
 {
-  private Bitmap GEe;
-  private String InI;
-  private ImageView InJ;
-  private IListener<au> InK;
+  private Bitmap MAx;
+  private String Olb;
+  private ImageView Olc;
   private String app_id;
-  private d mpz;
-  private g tZx;
-  private u.a uaH;
+  private e pjp;
+  private IListener<az> vrs;
+  private j xcO;
+  private r.a xdZ;
   
   public F2FAppBrandRemittanceUI()
   {
-    AppMethodBeat.i(195816);
+    AppMethodBeat.i(289022);
     this.app_id = "";
-    this.InI = "";
-    this.InK = new IListener() {};
-    this.uaH = new u.a()
+    this.Olb = "";
+    this.vrs = new IListener(com.tencent.mm.app.f.hfK) {};
+    this.xdZ = new r.a()
     {
       public final void k(String paramAnonymousString, Bitmap paramAnonymousBitmap) {}
     };
-    AppMethodBeat.o(195816);
+    AppMethodBeat.o(289022);
   }
   
   private void a(Enum paramEnum, String paramString)
   {
-    AppMethodBeat.i(195845);
+    AppMethodBeat.i(289033);
     Log.i("MicroMsg.F2FAppBrandRemittanceUI", "setActivityResultData result :%s , errmsg : %s", new Object[] { paramEnum, paramString });
     Intent localIntent = new Intent();
     localIntent.putExtra("key_result_pay_result", paramEnum);
     localIntent.putExtra("key_result_error_msg", paramString);
     setResult(-1, localIntent);
     finish();
-    AppMethodBeat.o(195845);
+    AppMethodBeat.o(289033);
   }
   
-  private void auQ(String paramString)
+  private void aoP(String paramString)
   {
-    AppMethodBeat.i(195841);
+    AppMethodBeat.i(289029);
     Log.i("MicroMsg.F2FAppBrandRemittanceUI", "showErrorDialog,errMsg:%s", new Object[] { paramString });
-    f.a locala = new f.a(getContext());
-    locala.aR("");
-    paramString = locala.bBl(paramString).HL(true);
-    paramString.Qlf = true;
-    paramString.ayp(a.i.welcome_i_know).b(new f.c()
+    g.a locala = new g.a(getContext());
+    locala.bf("");
+    paramString = locala.bDE(paramString).NF(true);
+    paramString.Xdm = true;
+    paramString.aEX(a.i.welcome_i_know).b(new g.c()
     {
-      public final void g(boolean paramAnonymousBoolean, String paramAnonymousString) {}
+      public final void onDialogClick(boolean paramAnonymousBoolean, String paramAnonymousString) {}
     }).show();
-    if (locala.mUO != null) {
-      this.mpz = locala.mUO;
+    if (locala.pRv != null) {
+      this.pjp = locala.pRv;
     }
-    AppMethodBeat.o(195841);
+    AppMethodBeat.o(289029);
   }
   
   public int getLayoutId()
@@ -100,15 +98,15 @@ public class F2FAppBrandRemittanceUI
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(195843);
-    a(f.f.a.VSc, "");
+    AppMethodBeat.i(289061);
+    a(f.g.a.adwk, "");
     super.onBackPressed();
-    AppMethodBeat.o(195843);
+    AppMethodBeat.o(289061);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(195826);
+    AppMethodBeat.i(289047);
     Log.i("MicroMsg.F2FAppBrandRemittanceUI", "onCreate（）");
     super.onCreate(paramBundle);
     overridePendingTransition(0, 0);
@@ -117,182 +115,178 @@ public class F2FAppBrandRemittanceUI
       getSupportActionBar().hide();
     }
     this.app_id = getIntent().getStringExtra("key_app_id");
-    this.InI = getIntent().getStringExtra("key_confirm_id");
-    if (Util.isNullOrNil(this.InI)) {
-      a(f.f.a.VSb, "confirm_id is empty");
+    this.Olb = getIntent().getStringExtra("key_confirm_id");
+    if (Util.isNullOrNil(this.Olb)) {
+      a(f.g.a.adwj, "confirm_id is empty");
     }
-    com.tencent.mm.kernel.h.aGY().a(2850, this);
-    paramBundle = new o(this.InI, this.app_id);
-    com.tencent.mm.kernel.h.aGY().a(paramBundle, 0);
-    AppMethodBeat.o(195826);
+    com.tencent.mm.kernel.h.aZW().a(2850, this);
+    paramBundle = new com.tencent.mm.plugin.remittance.model.p(this.Olb, this.app_id);
+    com.tencent.mm.kernel.h.aZW().a(paramBundle, 0);
+    AppMethodBeat.o(289047);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(195832);
+    AppMethodBeat.i(289050);
     Log.i("MicroMsg.F2FAppBrandRemittanceUI", "onDestroy()");
     super.onDestroy();
-    if (this.InJ != null) {
-      this.InJ.setImageBitmap(null);
+    if (this.Olc != null) {
+      this.Olc.setImageBitmap(null);
     }
-    Bitmap localBitmap = this.GEe;
+    Bitmap localBitmap = this.MAx;
     if ((localBitmap != null) && (!localBitmap.isRecycled()))
     {
       Log.i("MicroMsg.F2FAppBrandRemittanceUI", "bitmap recycle %s", new Object[] { localBitmap });
       localBitmap.recycle();
     }
-    u.c(this.uaH);
-    this.InK.dead();
-    com.tencent.mm.kernel.h.aGY().b(2850, this);
-    AppMethodBeat.o(195832);
+    r.c(this.xdZ);
+    this.vrs.dead();
+    com.tencent.mm.kernel.h.aZW().b(2850, this);
+    AppMethodBeat.o(289050);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(195853);
+    AppMethodBeat.i(289070);
     super.onPause();
     Log.i("MicroMsg.F2FAppBrandRemittanceUI", "onPause()");
-    AppMethodBeat.o(195853);
+    AppMethodBeat.o(289070);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(195850);
+    AppMethodBeat.i(289066);
     super.onResume();
     Log.i("MicroMsg.F2FAppBrandRemittanceUI", "onResume()");
-    AppMethodBeat.o(195850);
+    AppMethodBeat.o(289066);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, final String paramString, q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, final String paramString, com.tencent.mm.am.p paramp)
   {
-    AppMethodBeat.i(195837);
+    AppMethodBeat.i(289059);
     Log.i("MicroMsg.F2FAppBrandRemittanceUI", "on Scene End：errType %s , errCode：%s，errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if ((paramq instanceof o))
+    if ((paramp instanceof com.tencent.mm.plugin.remittance.model.p))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = (o)paramq;
-        if (paramString.IlK == null) {}
-        for (paramString = new vt();; paramString = paramString.IlK)
+        paramString = (com.tencent.mm.plugin.remittance.model.p)paramp;
+        if (paramString.Ojb == null) {}
+        for (paramString = new xl();; paramString = paramString.Ojb)
         {
-          Log.i("MicroMsg.F2FAppBrandRemittanceUI", "NetSceneF2FMinniProgramConfirm on SceneEnd ok，retcode:%s, retMsg：%s", new Object[] { Integer.valueOf(paramString.fwx), paramString.tVo });
-          if (paramString.fwx != 0) {
+          Log.i("MicroMsg.F2FAppBrandRemittanceUI", "NetSceneF2FMinniProgramConfirm on SceneEnd ok，retcode:%s, retMsg：%s", new Object[] { Integer.valueOf(paramString.hAV), paramString.wYI });
+          if (paramString.hAV != 0) {
             break label560;
           }
           Log.i("MicroMsg.F2FAppBrandRemittanceUI", "showHalfDialog");
-          if ((paramString != null) && (!Util.isNullOrNil(paramString.fMS))) {
+          if ((paramString != null) && (!Util.isNullOrNil(paramString.hSC))) {
             break;
           }
           Log.i("MicroMsg.F2FAppBrandRemittanceUI", "res == null || Util.isNullOrNil(res.qrcode)");
-          a(f.f.a.VSb, "get qrcode fail");
-          AppMethodBeat.o(195837);
+          a(f.g.a.adwj, "get qrcode fail");
+          AppMethodBeat.o(289059);
           return;
         }
-        com.tencent.mm.plugin.report.service.h.IzE.a(19821, new Object[] { Integer.valueOf(1), this.app_id, Integer.valueOf(0) });
-        this.tZx = new g(getContext(), 2, 3);
-        paramq = View.inflate(getContext(), a.g.f2f_app_brand_remittance_head, null);
-        ((ImageView)paramq.findViewById(a.f.back_cion)).setOnClickListener(new View.OnClickListener()
+        com.tencent.mm.plugin.report.service.h.OAn.b(19821, new Object[] { Integer.valueOf(1), this.app_id, Integer.valueOf(0) });
+        this.xcO = new j(getContext(), 2, 3);
+        paramp = View.inflate(getContext(), a.g.f2f_app_brand_remittance_head, null);
+        ((ImageView)paramp.findViewById(a.f.back_cion)).setOnClickListener(new k()
         {
-          public final void onClick(View paramAnonymousView)
+          public final void dr(View paramAnonymousView)
           {
-            AppMethodBeat.i(274809);
-            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bn(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/remittance/ui/F2FAppBrandRemittanceUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-            F2FAppBrandRemittanceUI.b(F2FAppBrandRemittanceUI.this).bYF();
+            AppMethodBeat.i(289125);
+            F2FAppBrandRemittanceUI.b(F2FAppBrandRemittanceUI.this).cyW();
             F2FAppBrandRemittanceUI.c(F2FAppBrandRemittanceUI.this);
-            F2FAppBrandRemittanceUI.a(F2FAppBrandRemittanceUI.this, f.f.a.VSc, "");
-            com.tencent.mm.plugin.report.service.h.IzE.a(19821, new Object[] { Integer.valueOf(3), F2FAppBrandRemittanceUI.a(F2FAppBrandRemittanceUI.this), Integer.valueOf(0) });
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/remittance/ui/F2FAppBrandRemittanceUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(274809);
+            F2FAppBrandRemittanceUI.a(F2FAppBrandRemittanceUI.this, f.g.a.adwk, "");
+            com.tencent.mm.plugin.report.service.h.OAn.b(19821, new Object[] { Integer.valueOf(3), F2FAppBrandRemittanceUI.a(F2FAppBrandRemittanceUI.this), Integer.valueOf(0) });
+            AppMethodBeat.o(289125);
           }
         });
-        Object localObject = (TextView)paramq.findViewById(a.f.f2f_app_brand_title);
+        Object localObject = (TextView)paramp.findViewById(a.f.f2f_app_brand_title);
         ((TextView)localObject).setText(paramString.title);
         ((TextView)localObject).getPaint().setFakeBoldText(true);
-        this.tZx.setHeaderView(paramq);
-        paramq = View.inflate(getContext(), a.g.f2f_app_brand_remittance_content, null);
-        this.InJ = ((ImageView)paramq.findViewById(a.f.f2f_app_brand_qrcode));
-        this.InJ.setImageBitmap(null);
-        if (Util.isNullOrNil(paramString.ShU))
+        this.xcO.setHeaderView(paramp);
+        paramp = View.inflate(getContext(), a.g.f2f_app_brand_remittance_content, null);
+        this.Olc = ((ImageView)paramp.findViewById(a.f.f2f_app_brand_qrcode));
+        this.Olc.setImageBitmap(null);
+        if (Util.isNullOrNil(paramString.Zga))
         {
           Log.i("MicroMsg.F2FAppBrandRemittanceUI", "qrcode： res.head_img null");
-          if ((this.GEe == null) || (this.GEe.isRecycled())) {
+          if ((this.MAx == null) || (this.MAx.isRecycled())) {
             break label549;
           }
-          this.InJ.setImageBitmap(this.GEe);
+          this.Olc.setImageBitmap(this.MAx);
         }
         for (;;)
         {
-          ((TextView)paramq.findViewById(a.f.f2f_app_brand_tips)).setText(paramString.ShV);
-          localObject = (TextView)paramq.findViewById(a.f.f2f_app_brand_username);
-          ((TextView)localObject).setText(paramString.ShW);
+          ((TextView)paramp.findViewById(a.f.f2f_app_brand_tips)).setText(paramString.Zgb);
+          localObject = (TextView)paramp.findViewById(a.f.f2f_app_brand_username);
+          ((TextView)localObject).setText(paramString.Zgc);
           ((TextView)localObject).getPaint().setFakeBoldText(true);
-          this.tZx.setCustomView(paramq);
-          this.tZx.ah(paramString.ShX);
-          this.tZx.ayu(0);
-          this.tZx.YnF = new g.a()
+          this.xcO.setCustomView(paramp);
+          this.xcO.au(paramString.Zgd);
+          this.xcO.aFe(0);
+          this.xcO.agfR = new j.a()
           {
             public final void onClick()
             {
-              AppMethodBeat.i(246603);
+              AppMethodBeat.i(289135);
               Log.i("MicroMsg.F2FAppBrandRemittanceUI", "go to remittaneUI");
               F2FAppBrandRemittanceUI.d(F2FAppBrandRemittanceUI.this).alive();
               com.tencent.mm.plugin.wallet.a locala = new com.tencent.mm.plugin.wallet.a();
-              locala.Oky = F2FAppBrandRemittanceUI.a(F2FAppBrandRemittanceUI.this);
-              f.a(F2FAppBrandRemittanceUI.this.getContext(), 1, paramString.fMS, 56, locala);
-              com.tencent.mm.plugin.report.service.h.IzE.a(19821, new Object[] { Integer.valueOf(2), F2FAppBrandRemittanceUI.a(F2FAppBrandRemittanceUI.this), Integer.valueOf(0) });
-              AppMethodBeat.o(246603);
+              locala.UYV = F2FAppBrandRemittanceUI.a(F2FAppBrandRemittanceUI.this);
+              com.tencent.mm.pluginsdk.wallet.f.a(F2FAppBrandRemittanceUI.this.getContext(), 1, paramString.hSC, 56, locala);
+              com.tencent.mm.plugin.report.service.h.OAn.b(19821, new Object[] { Integer.valueOf(2), F2FAppBrandRemittanceUI.a(F2FAppBrandRemittanceUI.this), Integer.valueOf(0) });
+              AppMethodBeat.o(289135);
             }
           };
-          this.tZx.eik();
-          AppMethodBeat.o(195837);
+          this.xcO.dDn();
+          AppMethodBeat.o(289059);
           return;
-          localObject = paramString.fMS;
-          String str = paramString.ShU;
+          localObject = paramString.hSC;
+          String str = paramString.Zga;
           Log.i("MicroMsg.F2FAppBrandRemittanceUI", "contentUrl： %s ， headUrl：%s", new Object[] { localObject, str });
           paramInt1 = BackwardSupportUtil.BitmapFactory.fromDPToPix(this, 197.0F);
-          this.GEe = com.tencent.mm.plugin.collect.model.b.a(this, (String)localObject, z.bcZ(), 1, str, paramInt1, this.uaH, false, 1, 2.0F, false);
+          this.MAx = b.a(this, (String)localObject, z.bAM(), 1, str, paramInt1, this.xdZ, false, 1, 2.0F, false);
           break;
           label549:
           Log.i("MicroMsg.F2FAppBrandRemittanceUI", "qrcode： bmp null ");
         }
         label560:
-        auQ(paramString.tVo);
-        AppMethodBeat.o(195837);
+        aoP(paramString.wYI);
+        AppMethodBeat.o(289059);
         return;
       }
       Log.i("MicroMsg.F2FAppBrandRemittanceUI", "NetSceneF2FMinniProgramConfirm on SceneEnd faile show error dialog ");
-      auQ(paramString);
+      aoP(paramString);
     }
-    AppMethodBeat.o(195837);
+    AppMethodBeat.o(289059);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
-    AppMethodBeat.i(195849);
+    AppMethodBeat.i(289064);
     AppMethodBeat.at(this, paramBoolean);
     Log.i("MicroMsg.F2FAppBrandRemittanceUI", "onWindowFocusChanged");
-    if ((this.tZx != null) && (!this.tZx.isShowing()))
+    if ((this.xcO != null) && (!this.xcO.isShowing()))
     {
-      Log.i("MicroMsg.F2FAppBrandRemittanceUI", "onWindowFocusChanged：mHalfBottomDialog isShowHalfDialog %s, finish Activity", new Object[] { Boolean.valueOf(this.tZx.isShowing()) });
-      this.tZx = null;
-      a(f.f.a.VSc, "");
-      com.tencent.mm.plugin.report.service.h.IzE.a(19821, new Object[] { Integer.valueOf(3), this.app_id, Integer.valueOf(0) });
+      Log.i("MicroMsg.F2FAppBrandRemittanceUI", "onWindowFocusChanged：mHalfBottomDialog isShowHalfDialog %s, finish Activity", new Object[] { Boolean.valueOf(this.xcO.isShowing()) });
+      this.xcO = null;
+      a(f.g.a.adwk, "");
+      com.tencent.mm.plugin.report.service.h.OAn.b(19821, new Object[] { Integer.valueOf(3), this.app_id, Integer.valueOf(0) });
     }
-    if ((this.mpz != null) && (!this.mpz.isShowing()))
+    if ((this.pjp != null) && (!this.pjp.isShowing()))
     {
-      Log.i("MicroMsg.F2FAppBrandRemittanceUI", "onWindowFocusChanged isShowing:%s,finish Activity", new Object[] { Boolean.valueOf(this.mpz.isShowing()) });
-      this.mpz = null;
-      a(f.f.a.VSb, "get qrcode fail");
+      Log.i("MicroMsg.F2FAppBrandRemittanceUI", "onWindowFocusChanged isShowing:%s,finish Activity", new Object[] { Boolean.valueOf(this.pjp.isShowing()) });
+      this.pjp = null;
+      a(f.g.a.adwj, "get qrcode fail");
     }
     super.onWindowFocusChanged(paramBoolean);
-    AppMethodBeat.o(195849);
+    AppMethodBeat.o(289064);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.F2FAppBrandRemittanceUI
  * JD-Core Version:    0.7.0.1
  */

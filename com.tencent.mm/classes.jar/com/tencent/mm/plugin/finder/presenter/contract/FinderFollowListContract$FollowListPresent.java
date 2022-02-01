@@ -4,266 +4,334 @@ import android.os.SystemClock;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.kernel.f;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.finder.cgi.an;
-import com.tencent.mm.plugin.finder.cgi.bm;
-import com.tencent.mm.plugin.finder.model.ah;
-import com.tencent.mm.plugin.finder.utils.aj;
-import com.tencent.mm.plugin.finder.viewmodel.component.w;
-import com.tencent.mm.plugin.finder.viewmodel.component.w.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.plugin.finder.cgi.bh;
+import com.tencent.mm.plugin.finder.cgi.cj;
+import com.tencent.mm.plugin.finder.model.aj;
+import com.tencent.mm.plugin.finder.storage.data.g;
+import com.tencent.mm.plugin.finder.utils.av;
+import com.tencent.mm.plugin.finder.viewmodel.component.aa;
+import com.tencent.mm.plugin.finder.viewmodel.component.aa.a;
 import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.atb;
+import com.tencent.mm.protocal.protobuf.axp;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.aa.a;
-import kotlin.g.b.aa.f;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.ah.a;
+import kotlin.g.b.ah.f;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/presenter/contract/FinderFollowListContract$FollowListPresent;", "Lcom/tencent/mm/plugin/finder/presenter/base/IPresenter;", "Lcom/tencent/mm/plugin/finder/presenter/contract/FinderFollowListContract$FollowListViewCallback;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "TAG", "", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/FinderFollowData;", "Lkotlin/collections/ArrayList;", "firstPageData", "Lcom/tencent/mm/plugin/finder/storage/data/FinderContactPage;", "hasMore", "", "getHasMore", "()Z", "setHasMore", "(Z)V", "isDown", "lastBuf", "Lcom/tencent/mm/protobuf/ByteString;", "startLoadingTime", "", "viewCallback", "clearLastBuff", "", "doGetFollowScene", "getData", "loadStart", "onAttach", "callback", "onDetach", "onSceneEnd", "errType", "", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "printDebugFinderContactList", "firstPage", "", "Lcom/tencent/mm/protocal/protobuf/FinderContact;", "refresh", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/presenter/contract/FinderFollowListContract$FollowListPresent;", "Lcom/tencent/mm/plugin/finder/presenter/base/IPresenter;", "Lcom/tencent/mm/plugin/finder/presenter/contract/FinderFollowListContract$FollowListViewCallback;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "TAG", "", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/FinderFollowData;", "Lkotlin/collections/ArrayList;", "firstPageData", "Lcom/tencent/mm/plugin/finder/storage/data/FinderContactPage;", "hasMore", "", "getHasMore", "()Z", "setHasMore", "(Z)V", "isDown", "lastBuf", "Lcom/tencent/mm/protobuf/ByteString;", "startLoadingTime", "", "viewCallback", "clearLastBuff", "", "doGetFollowScene", "getData", "loadStart", "onAttach", "callback", "onDetach", "onSceneEnd", "errType", "", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "printDebugFinderContactList", "firstPage", "", "Lcom/tencent/mm/protocal/protobuf/FinderContact;", "refresh", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderFollowListContract$FollowListPresent
-  implements i, com.tencent.mm.plugin.finder.presenter.base.a<FinderFollowListContract.FollowListViewCallback>
+  implements com.tencent.mm.am.h, com.tencent.mm.plugin.finder.presenter.base.a<FinderFollowListContract.FollowListViewCallback>
 {
+  private long AXD;
+  private boolean AYD;
+  com.tencent.mm.bx.b AyB;
+  private FinderFollowListContract.FollowListViewCallback EXE;
+  private final g EXF;
   private final String TAG;
   boolean hasMore;
-  public final ArrayList<ah> mXB;
-  private boolean xBb;
-  private long xBe;
-  com.tencent.mm.cd.b xaw;
-  private FinderFollowListContract.FollowListViewCallback zMQ;
-  private final com.tencent.mm.plugin.finder.storage.data.g zMR;
+  final ArrayList<aj> pUj;
   
   public FinderFollowListContract$FollowListPresent()
   {
-    AppMethodBeat.i(290208);
-    this.TAG = ("Finder.FinderFollowListContract.FollowListPresent." + hashCode());
-    this.mXB = new ArrayList();
-    w.a locala = w.Bkt;
-    this.zMR = new com.tencent.mm.plugin.finder.storage.data.g(w.ekC());
+    AppMethodBeat.i(343756);
+    this.TAG = kotlin.g.b.s.X("Finder.FinderFollowListContract.FollowListPresent.", Integer.valueOf(hashCode()));
+    this.pUj = new ArrayList();
+    aa.a locala = aa.GQm;
+    this.EXF = new g(aa.fnH());
     this.hasMore = true;
-    this.xBe = SystemClock.uptimeMillis();
-    AppMethodBeat.o(290208);
+    this.AXD = SystemClock.uptimeMillis();
+    AppMethodBeat.o(343756);
   }
   
-  private void c(boolean paramBoolean, List<? extends FinderContact> paramList)
+  private static final void a(FollowListPresent paramFollowListPresent, ah.a parama, com.tencent.mm.am.p paramp)
   {
-    AppMethodBeat.i(290207);
-    p.k(paramList, "dataList");
-    Object localObject = aj.AGc;
-    if (!aj.eej())
+    AppMethodBeat.i(343769);
+    kotlin.g.b.s.u(paramFollowListPresent, "this$0");
+    kotlin.g.b.s.u(parama, "$firstPage");
+    boolean bool1 = parama.aiwY;
+    List localList = (List)((cj)paramp).dVR();
+    boolean bool2 = paramFollowListPresent.AYD;
+    Log.i(paramFollowListPresent.TAG, "firstPage " + bool1 + ", get follow contact " + localList.size());
+    int j = paramFollowListPresent.pUj.size();
+    int i = localList.size();
+    if (bool1)
     {
-      AppMethodBeat.o(290207);
+      paramFollowListPresent.pUj.clear();
+      i = -1;
+      j = -1;
+    }
+    for (;;)
+    {
+      parama = paramFollowListPresent.pUj;
+      Object localObject = (Iterable)localList;
+      paramp = (Collection)new ArrayList(kotlin.a.p.a((Iterable)localObject, 10));
+      localObject = ((Iterable)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        paramp.add(new aj(com.tencent.mm.plugin.finder.api.c.a((FinderContact)((Iterator)localObject).next())));
+      }
+      parama.addAll((Collection)paramp);
+      paramp = paramFollowListPresent.EXE;
+      parama = paramp;
+      if (paramp == null)
+      {
+        kotlin.g.b.s.bIx("viewCallback");
+        parama = null;
+      }
+      parama.i(bool2, j, i);
+      paramFollowListPresent.e(bool1, localList);
+      AppMethodBeat.o(343769);
+      return;
+    }
+  }
+  
+  private void e(boolean paramBoolean, List<? extends FinderContact> paramList)
+  {
+    AppMethodBeat.i(343762);
+    kotlin.g.b.s.u(paramList, "dataList");
+    Object localObject = av.GiL;
+    if (!av.bgV())
+    {
+      AppMethodBeat.o(343762);
       return;
     }
     localObject = new StringBuilder("firstPage:" + paramBoolean + ';');
-    int j = paramList.size();
+    int k = paramList.size();
     int i = 0;
-    while (i < j)
+    if (k > 0) {}
+    for (;;)
     {
-      ((StringBuilder)localObject).append("[" + i + "]:").append(com.tencent.mm.ae.g.bN(paramList.get(i))).append(";");
-      i += 1;
+      int j = i + 1;
+      ((StringBuilder)localObject).append("[" + i + "]:").append(com.tencent.mm.ae.f.dg(paramList.get(i))).append(";");
+      if (j >= k)
+      {
+        Log.i(this.TAG, kotlin.g.b.s.X("printFinderContactList :", localObject));
+        AppMethodBeat.o(343762);
+        return;
+      }
+      i = j;
     }
-    Log.i(this.TAG, "printFinderContactList :".concat(String.valueOf(localObject)));
-    AppMethodBeat.o(290207);
   }
   
   public final void a(FinderFollowListContract.FollowListViewCallback paramFollowListViewCallback)
   {
-    AppMethodBeat.i(290201);
-    p.k(paramFollowListViewCallback, "callback");
-    this.zMQ = paramFollowListViewCallback;
-    h.aGY().a(713, (i)this);
-    h.aGY().a(3867, (i)this);
-    AppMethodBeat.o(290201);
+    AppMethodBeat.i(343794);
+    kotlin.g.b.s.u(paramFollowListViewCallback, "callback");
+    this.EXE = paramFollowListViewCallback;
+    com.tencent.mm.kernel.h.aZW().a(713, (com.tencent.mm.am.h)this);
+    com.tencent.mm.kernel.h.aZW().a(3867, (com.tencent.mm.am.h)this);
+    AppMethodBeat.o(343794);
   }
   
   public final void onDetach()
   {
-    AppMethodBeat.i(290203);
-    h.aGY().b(713, (i)this);
-    h.aGY().b(3867, (i)this);
-    FinderFollowListContract.FollowListViewCallback localFollowListViewCallback = this.zMQ;
-    if (localFollowListViewCallback == null) {
-      p.bGy("viewCallback");
+    Object localObject2 = null;
+    AppMethodBeat.i(343799);
+    com.tencent.mm.kernel.h.aZW().b(713, (com.tencent.mm.am.h)this);
+    com.tencent.mm.kernel.h.aZW().b(3867, (com.tencent.mm.am.h)this);
+    Object localObject3 = this.EXE;
+    Object localObject1 = localObject3;
+    if (localObject3 == null)
+    {
+      kotlin.g.b.s.bIx("viewCallback");
+      localObject1 = null;
     }
-    RecyclerView localRecyclerView = localFollowListViewCallback.jLl;
-    if (localRecyclerView == null) {
-      p.bGy("recyclerView");
+    localObject3 = localObject1.mkw;
+    if (localObject3 == null) {
+      kotlin.g.b.s.bIx("recyclerView");
     }
-    localRecyclerView.b((RecyclerView.l)localFollowListViewCallback.zMY);
-    AppMethodBeat.o(290203);
+    for (;;)
+    {
+      localObject2.b((RecyclerView.l)localObject1.EXK);
+      AppMethodBeat.o(343799);
+      return;
+      localObject2 = localObject3;
+    }
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, final com.tencent.mm.an.q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, final com.tencent.mm.am.p paramp)
   {
-    AppMethodBeat.i(290205);
-    Object localObject1 = this.TAG;
-    Object localObject2 = new StringBuilder("errType ").append(paramInt1).append(", errCode ").append(paramInt2).append(", errMsg ").append(paramString).append(" scene type ");
-    if (paramq != null)
+    ah.f localf = null;
+    Object localObject1 = null;
+    AppMethodBeat.i(343814);
+    Object localObject2 = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder("errType ").append(paramInt1).append(", errCode ").append(paramInt2).append(", errMsg ").append(paramString).append(" scene type ");
+    if (paramp == null)
     {
-      paramString = Integer.valueOf(paramq.getType());
-      Log.i((String)localObject1, paramString);
-      if (paramq == null) {
-        break label116;
+      paramString = null;
+      Log.i((String)localObject2, paramString);
+      if (paramp != null) {
+        break label115;
       }
-      paramString = Integer.valueOf(paramq.getType());
-      label96:
+      paramString = null;
+      label88:
       if (paramString != null) {
-        break label121;
+        break label127;
       }
     }
     for (;;)
     {
-      label397:
+      label389:
       if (paramString == null)
       {
-        AppMethodBeat.o(290205);
+        AppMethodBeat.o(343814);
         return;
-        paramString = null;
+        paramString = Integer.valueOf(paramp.getType());
         break;
-        label116:
-        paramString = null;
-        break label96;
-        label121:
+        label115:
+        paramString = Integer.valueOf(paramp.getType());
+        break label88;
+        label127:
         if (paramString.intValue() == 713)
         {
-          paramString = new aa.f();
-          paramString.aaBC = null;
+          localf = new ah.f();
           if ((paramInt1 == 0) && (paramInt2 == 0))
           {
-            localObject1 = new aa.a();
-            ((aa.a)localObject1).aaBx = false;
-            if (paramq == null)
+            localObject2 = new ah.a();
+            if (paramp == null)
             {
-              paramString = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneFinderGetFollowList");
-              AppMethodBeat.o(290205);
+              paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneFinderGetFollowList");
+              AppMethodBeat.o(343814);
               throw paramString;
             }
-            localObject2 = ((bm)paramq).dob();
-            if ((p.h(this.xaw, localObject2) ^ true))
+            paramString = ((cj)paramp).dVL();
+            if (!kotlin.g.b.s.p(this.AyB, paramString))
             {
               Log.i(this.TAG, "not my buf, ignore!");
-              AppMethodBeat.o(290205);
+              AppMethodBeat.o(343814);
               return;
             }
-            if (this.xaw == null)
+            if (this.AyB == null)
             {
-              localObject2 = this.zMQ;
-              if (localObject2 == null) {
-                p.bGy("viewCallback");
-              }
-              ((FinderFollowListContract.FollowListViewCallback)localObject2).dMV();
-              ((aa.a)localObject1).aaBx = true;
-              com.tencent.mm.ae.d.a(com.tencent.mm.ae.d.aJa(), (kotlin.g.a.b)new kotlin.g.b.q((aa.a)localObject1) {});
-            }
-            this.hasMore = ((bm)paramq).dod();
-            this.xaw = ((bm)paramq).doa();
-            paramString.aaBC = ((Runnable)new Runnable()
-            {
-              public final void run()
+              paramString = this.EXE;
+              if (paramString == null)
               {
-                AppMethodBeat.i(271740);
-                FinderFollowListContract.FollowListPresent.a(this.zMS, this.zMV.aaBx, (List)((bm)paramq).doh(), FinderFollowListContract.FollowListPresent.b(this.zMS));
-                AppMethodBeat.o(271740);
+                kotlin.g.b.s.bIx("viewCallback");
+                paramString = localObject1;
+                paramString.eHZ();
+                ((ah.a)localObject2).aiwY = true;
+                com.tencent.mm.ae.d.a(com.tencent.mm.ae.d.bbX(), (kotlin.g.a.b)new u(paramp) {});
               }
-            });
-          }
-          long l = SystemClock.uptimeMillis() - this.xBe;
-          if (!this.xBb)
-          {
-            paramq = com.tencent.mm.plugin.finder.storage.d.AjH;
-            if (l < ((Number)com.tencent.mm.plugin.finder.storage.d.dUI().aSr()).longValue()) {
-              break label397;
+            }
+            else
+            {
+              this.hasMore = ((cj)paramp).dVN();
+              this.AyB = ((cj)paramp).dVJ();
+              localf.aqH = new FinderFollowListContract.FollowListPresent..ExternalSyntheticLambda0(this, (ah.a)localObject2, paramp);
             }
           }
-          for (l = 0L;; l = ((Number)com.tencent.mm.plugin.finder.storage.d.dUI().aSr()).longValue() - l)
+          else
           {
-            com.tencent.mm.ae.d.a(l, (kotlin.g.a.a)new kotlin.g.b.q(paramString) {});
-            AppMethodBeat.o(290205);
+            l = SystemClock.uptimeMillis() - this.AXD;
+            if (!this.AYD)
+            {
+              paramString = com.tencent.mm.plugin.finder.storage.d.FAy;
+              if (l < ((Number)com.tencent.mm.plugin.finder.storage.d.eTh().bmg()).longValue()) {
+                break label389;
+              }
+            }
+          }
+          for (long l = 0L;; l = ((Number)com.tencent.mm.plugin.finder.storage.d.eTh().bmg()).longValue() - l)
+          {
+            com.tencent.mm.ae.d.a(l, (kotlin.g.a.a)new u(localf) {});
+            AppMethodBeat.o(343814);
             return;
-            paramq = com.tencent.mm.plugin.finder.storage.d.AjH;
+            break;
+            paramString = com.tencent.mm.plugin.finder.storage.d.FAy;
           }
         }
       }
     }
     if ((paramString.intValue() == 3867) && (paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramq = paramq.getReqResp();
-      paramString = paramq;
-      if (!(paramq instanceof com.tencent.mm.an.d)) {
-        paramString = null;
+      paramString = paramp.getReqResp();
+      if (!(paramString instanceof com.tencent.mm.am.c)) {
+        break label634;
       }
-      paramString = (com.tencent.mm.an.d)paramString;
+      paramString = (com.tencent.mm.am.c)paramString;
+      if (paramString != null) {
+        break label639;
+      }
+      paramString = null;
+      label455:
+      if (!(paramString instanceof axp)) {
+        break label650;
+      }
+      paramString = (axp)paramString;
+      label467:
       if (paramString == null) {
-        break label666;
-      }
-      paramString = paramString.bhX();
-      paramq = paramString;
-      if (!(paramString instanceof atb)) {
-        paramq = null;
-      }
-      paramString = (atb)paramq;
-      if (paramString == null) {
-        break label671;
+        break label655;
       }
       paramInt1 = paramString.opType;
-      paramq = an.xci;
-      if (paramInt1 != an.dnM()) {
-        break label671;
+      paramp = bh.ABm;
+      if (paramInt1 != bh.dVs()) {
+        break label655;
       }
-    }
-    label666:
-    label671:
-    for (paramString = paramString.SFp;; paramString = "")
-    {
+      paramString = paramString.ZHf;
+      label493:
       if (!Util.isNullOrNil(paramString))
       {
-        j.c((List)this.mXB, (kotlin.g.a.b)new kotlin.g.b.q(paramString) {});
-        paramString = this.zMQ;
-        if (paramString == null) {
-          p.bGy("viewCallback");
+        kotlin.a.p.e((List)this.pUj, (kotlin.g.a.b)new u(paramString) {});
+        paramp = this.EXE;
+        paramString = paramp;
+        if (paramp == null)
+        {
+          kotlin.g.b.s.bIx("viewCallback");
+          paramString = null;
         }
         FinderFollowListContract.FollowListViewCallback.b(paramString);
-        paramString = h.aHG();
-        p.j(paramString, "MMKernel.storage()");
-        paramInt1 = paramString.aHp().getInt(ar.a.VAv, 0);
+        paramInt1 = com.tencent.mm.kernel.h.baE().ban().getInt(at.a.adcN, 0);
         Log.i(this.TAG, "oldFollowCnt %d", new Object[] { Integer.valueOf(paramInt1) });
-        if (paramInt1 > 0)
-        {
-          paramString = h.aHG();
-          p.j(paramString, "MMKernel.storage()");
-          paramString.aHp().set(ar.a.VAv, Integer.valueOf(paramInt1 - 1));
+        if (paramInt1 > 0) {
+          com.tencent.mm.kernel.h.baE().ban().set(at.a.adcN, Integer.valueOf(paramInt1 - 1));
         }
-        paramString = this.zMQ;
-        if (paramString == null) {
-          p.bGy("viewCallback");
+        paramString = this.EXE;
+        if (paramString != null) {
+          break label662;
         }
-        paramString.dMV();
+        kotlin.g.b.s.bIx("viewCallback");
+        paramString = localf;
       }
-      AppMethodBeat.o(290205);
+    }
+    label650:
+    label655:
+    label662:
+    for (;;)
+    {
+      paramString.eHZ();
+      AppMethodBeat.o(343814);
       return;
+      label634:
       paramString = null;
       break;
+      label639:
+      paramString = c.b.b(paramString.otB);
+      break label455;
+      paramString = null;
+      break label467;
+      paramString = "";
+      break label493;
     }
   }
   
-  public final void pY(boolean paramBoolean)
+  public final void tc(boolean paramBoolean)
   {
-    AppMethodBeat.i(290206);
-    this.xBe = SystemClock.uptimeMillis();
-    this.xBb = paramBoolean;
-    bm localbm = new bm(this.xaw);
-    h.aGY().b((com.tencent.mm.an.q)localbm);
-    AppMethodBeat.o(290206);
+    AppMethodBeat.i(343823);
+    this.AXD = SystemClock.uptimeMillis();
+    this.AYD = paramBoolean;
+    cj localcj = new cj(this.AyB);
+    com.tencent.mm.kernel.h.aZW().a((com.tencent.mm.am.p)localcj, 0);
+    AppMethodBeat.o(343823);
   }
 }
 

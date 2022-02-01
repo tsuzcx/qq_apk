@@ -2,7 +2,7 @@ package com.tencent.mm.model;
 
 public abstract interface az$d
 {
-  public abstract void y(String paramString, long paramLong);
+  public abstract void C(String paramString, long paramLong);
 }
 
 

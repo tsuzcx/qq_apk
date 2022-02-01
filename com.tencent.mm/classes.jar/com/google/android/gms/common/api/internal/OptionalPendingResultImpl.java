@@ -1,6 +1,5 @@
 package com.google.android.gms.common.api.internal;
 
-import com.google.android.gms.common.annotation.KeepForSdk;
 import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.PendingResult.StatusListener;
@@ -11,7 +10,6 @@ import com.google.android.gms.common.api.TransformedResult;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.concurrent.TimeUnit;
 
-@KeepForSdk
 public final class OptionalPendingResultImpl<R extends Result>
   extends OptionalPendingResult<R>
 {
@@ -116,7 +114,7 @@ public final class OptionalPendingResultImpl<R extends Result>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.OptionalPendingResultImpl
  * JD-Core Version:    0.7.0.1
  */

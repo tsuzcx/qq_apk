@@ -11,44 +11,45 @@ import androidx.recyclerview.widget.RecyclerView.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.f;
-import kotlin.g;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.j;
+import kotlin.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "Landroidx/recyclerview/widget/RecyclerView;", "Lcom/tencent/mm/view/recyclerview/ISupportStrongConfig;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "flingSpeedFactor", "getFlingSpeedFactor", "()I", "setFlingSpeedFactor", "(I)V", "logObserver", "com/tencent/mm/view/recyclerview/WxRecyclerView$logObserver$1", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView$logObserver$1;", "canScrollHorizontally", "", "direction", "canScrollVertically", "fling", "velocityX", "velocityY", "isSupportAvoidCrashWithNotifyWhenScrollOrLayout", "isSupportNotifyItemViewChangeWithoutAnyAttachAndDetachAction", "onAttachedToWindow", "", "onLayout", "changed", "l", "t", "r", "b", "onViewAdded", "child", "Landroid/view/View;", "onViewRemoved", "openRecyclerViewDebug", "requestLayout", "scrollBy", "x", "y", "scrollTo", "scrollToPosition", "position", "setAdapter", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "setLayoutFrozen", "frozen", "smoothScrollBy", "dx", "dy", "interpolator", "Landroid/view/animation/Interpolator;", "smoothScrollToPosition", "stopScroll", "Companion", "libmmui_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "Landroidx/recyclerview/widget/RecyclerView;", "Lcom/tencent/mm/view/recyclerview/ISupportStrongConfig;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "flingSpeedFactor", "getFlingSpeedFactor", "()I", "setFlingSpeedFactor", "(I)V", "logObserver", "com/tencent/mm/view/recyclerview/WxRecyclerView$logObserver$1", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView$logObserver$1;", "canScrollHorizontally", "", "direction", "canScrollVertically", "fling", "velocityX", "velocityY", "isSupportAvoidCrashWithNotifyWhenScrollOrLayout", "onAttachedToWindow", "", "onLayout", "changed", "l", "t", "r", "b", "onViewAdded", "child", "Landroid/view/View;", "onViewRemoved", "openRecyclerViewDebug", "requestLayout", "scrollBy", "x", "y", "scrollTo", "scrollToPosition", "position", "setAdapter", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "setLayoutFrozen", "frozen", "smoothScrollBy", "dx", "dy", "interpolator", "Landroid/view/animation/Interpolator;", "smoothScrollToPosition", "stopScroll", "Companion", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class WxRecyclerView
   extends RecyclerView
 {
-  private static final f YTq;
-  private static final f YTr;
-  public static final a YTs;
-  private int YTo;
-  private final d YTp;
+  public static final a agOX;
+  private static final j<Boolean> agPa;
+  private static final j<Boolean> agPb;
+  private int agOY;
+  private final d agOZ;
   
   static
   {
     AppMethodBeat.i(164764);
-    YTs = new a((byte)0);
-    YTq = g.ar((kotlin.g.a.a)WxRecyclerView.c.YTu);
-    YTr = g.ar((kotlin.g.a.a)WxRecyclerView.b.YTt);
+    agOX = new a((byte)0);
+    agPa = k.cm((kotlin.g.a.a)WxRecyclerView.c.agPd);
+    agPb = k.cm((kotlin.g.a.a)WxRecyclerView.b.agPc);
     AppMethodBeat.o(164764);
   }
   
   public WxRecyclerView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(207408);
-    this.YTo = 100;
-    this.YTp = new d();
-    AppMethodBeat.o(207408);
+    AppMethodBeat.i(234955);
+    this.agOY = 100;
+    this.agOZ = new d();
+    AppMethodBeat.o(234955);
   }
   
   public WxRecyclerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(164762);
-    this.YTo = 100;
-    this.YTp = new d();
+    this.agOY = 100;
+    this.agOZ = new d();
     AppMethodBeat.o(164762);
   }
   
@@ -56,20 +57,38 @@ public class WxRecyclerView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(164763);
-    this.YTo = 100;
-    this.YTp = new d();
+    this.agOY = 100;
+    this.agOZ = new d();
     AppMethodBeat.o(164763);
   }
   
-  public final void a(int paramInt1, int paramInt2, Interpolator paramInterpolator)
+  public final void JO()
+  {
+    AppMethodBeat.i(164756);
+    super.JO();
+    if (a.jNs()) {
+      if (!a.jNt()) {
+        break label42;
+      }
+    }
+    label42:
+    for (Object localObject = Util.getStack();; localObject = "")
+    {
+      Log.d("MicroMsg.WxRecyclerView", s.X("[stopScroll] ", localObject));
+      AppMethodBeat.o(164756);
+      return;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, Interpolator paramInterpolator)
   {
     AppMethodBeat.i(164758);
     super.a(paramInt1, paramInt2, paramInterpolator);
     StringBuilder localStringBuilder;
-    if (a.iic())
+    if (a.jNs())
     {
       localStringBuilder = new StringBuilder("[smoothScrollBy] dx=").append(paramInt1).append(" dy=").append(paramInt2).append(" interpolator=").append(paramInterpolator).append(' ');
-      if (!a.iid()) {
+      if (!a.jNt()) {
         break label86;
       }
     }
@@ -82,74 +101,56 @@ public class WxRecyclerView
     }
   }
   
-  public final boolean ay(int paramInt1, int paramInt2)
+  public final boolean bs(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(207391);
+    int j = 1;
+    AppMethodBeat.i(234991);
     RecyclerView.LayoutManager localLayoutManager = getLayoutManager();
-    if ((localLayoutManager != null) && (localLayoutManager.canScrollHorizontally() == true))
+    if ((localLayoutManager != null) && (localLayoutManager.canScrollHorizontally() == true)) {}
+    for (int i = 1; i != 0; i = 0)
     {
-      bool = super.ay(kotlin.h.a.dm(this.YTo * paramInt1 / 100.0F), paramInt2);
-      AppMethodBeat.o(207391);
+      bool = super.bs(kotlin.h.a.eH(this.agOY * paramInt1 / 100.0F), paramInt2);
+      AppMethodBeat.o(234991);
       return bool;
     }
     localLayoutManager = getLayoutManager();
-    if ((localLayoutManager != null) && (localLayoutManager.canScrollVertically() == true))
+    if ((localLayoutManager != null) && (localLayoutManager.canScrollVertically() == true)) {}
+    for (i = j; i != 0; i = 0)
     {
-      bool = super.ay(paramInt1, kotlin.h.a.dm(this.YTo * paramInt2 / 100.0F));
-      AppMethodBeat.o(207391);
+      bool = super.bs(paramInt1, kotlin.h.a.eH(this.agOY * paramInt2 / 100.0F));
+      AppMethodBeat.o(234991);
       return bool;
     }
-    boolean bool = super.ay(paramInt1, paramInt2);
-    AppMethodBeat.o(207391);
+    boolean bool = super.bs(paramInt1, paramInt2);
+    AppMethodBeat.o(234991);
     return bool;
   }
   
   public boolean canScrollHorizontally(int paramInt)
   {
-    AppMethodBeat.i(207404);
+    AppMethodBeat.i(235021);
     boolean bool = super.canScrollHorizontally(paramInt);
-    if (a.iic()) {
+    if (a.jNs()) {
       Log.i("MicroMsg.WxRecyclerView", "[canScrollHorizontally] direction=" + paramInt + " result=" + bool);
     }
-    AppMethodBeat.o(207404);
+    AppMethodBeat.o(235021);
     return bool;
   }
   
   public boolean canScrollVertically(int paramInt)
   {
-    AppMethodBeat.i(207406);
+    AppMethodBeat.i(235024);
     boolean bool = super.canScrollVertically(paramInt);
-    if (a.iic()) {
+    if (a.jNs()) {
       Log.i("MicroMsg.WxRecyclerView", "[canScrollVertically] direction=" + paramInt + " result=" + bool);
     }
-    AppMethodBeat.o(207406);
+    AppMethodBeat.o(235024);
     return bool;
   }
   
   public final int getFlingSpeedFactor()
   {
-    return this.YTo;
-  }
-  
-  public final void ld()
-  {
-    AppMethodBeat.i(164756);
-    super.ld();
-    StringBuilder localStringBuilder;
-    if (a.iic())
-    {
-      localStringBuilder = new StringBuilder("[stopScroll] ");
-      if (!a.iid()) {
-        break label54;
-      }
-    }
-    label54:
-    for (Object localObject = Util.getStack();; localObject = "")
-    {
-      Log.d("MicroMsg.WxRecyclerView", localObject);
-      AppMethodBeat.o(164756);
-      return;
-    }
+    return this.agOY;
   }
   
   public void onAttachedToWindow()
@@ -164,10 +165,10 @@ public class WxRecyclerView
     AppMethodBeat.i(164751);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     StringBuilder localStringBuilder;
-    if (a.iic())
+    if (a.jNs())
     {
       localStringBuilder = new StringBuilder("[onLayout] changed=").append(paramBoolean).append(" [").append(paramInt1).append(':').append(paramInt2).append(':').append(paramInt3).append(':').append(paramInt4).append("] ");
-      if (!a.iid()) {
+      if (!a.jNt()) {
         break label117;
       }
     }
@@ -185,10 +186,10 @@ public class WxRecyclerView
     AppMethodBeat.i(164760);
     super.onViewAdded(paramView);
     StringBuilder localStringBuilder;
-    if (a.iic())
+    if (a.jNs())
     {
       localStringBuilder = new StringBuilder("[onViewAdded] child=").append(paramView).append(' ');
-      if (!a.iid()) {
+      if (!a.jNt()) {
         break label67;
       }
     }
@@ -206,10 +207,10 @@ public class WxRecyclerView
     AppMethodBeat.i(164761);
     super.onViewRemoved(paramView);
     StringBuilder localStringBuilder;
-    if (a.iic())
+    if (a.jNs())
     {
       localStringBuilder = new StringBuilder("[onViewRemoved] child=").append(paramView).append(' ');
-      if (!a.iid()) {
+      if (!a.jNt()) {
         break label67;
       }
     }
@@ -226,18 +227,15 @@ public class WxRecyclerView
   {
     AppMethodBeat.i(164752);
     super.requestLayout();
-    StringBuilder localStringBuilder;
-    if (a.iic())
-    {
-      localStringBuilder = new StringBuilder("[requestLayout] ");
-      if (!a.iid()) {
-        break label57;
+    if (a.jNs()) {
+      if (!a.jNt()) {
+        break label45;
       }
     }
-    label57:
+    label45:
     for (Object localObject = Util.getStack();; localObject = "")
     {
-      Log.d("MicroMsg.WxRecyclerView", localObject);
+      Log.d("MicroMsg.WxRecyclerView", s.X("[requestLayout] ", localObject));
       AppMethodBeat.o(164752);
       return;
     }
@@ -247,7 +245,7 @@ public class WxRecyclerView
   {
     AppMethodBeat.i(164753);
     super.scrollBy(paramInt1, paramInt2);
-    if (a.iic()) {
+    if (a.jNs()) {
       Log.d("MicroMsg.WxRecyclerView", "[scrollBy] x=" + paramInt1 + " y=" + paramInt1);
     }
     AppMethodBeat.o(164753);
@@ -257,41 +255,38 @@ public class WxRecyclerView
   {
     AppMethodBeat.i(164754);
     super.scrollTo(paramInt1, paramInt2);
-    if (a.iic()) {
+    if (a.jNs()) {
       Log.d("MicroMsg.WxRecyclerView", "[scrollTo] x=" + paramInt1 + " y=" + paramInt1);
     }
     AppMethodBeat.o(164754);
   }
   
-  public final void scrollToPosition(int paramInt)
+  public void scrollToPosition(int paramInt)
   {
     AppMethodBeat.i(164755);
     super.scrollToPosition(paramInt);
-    if (a.iic()) {
-      Log.d("MicroMsg.WxRecyclerView", "[scrollToPosition] position=".concat(String.valueOf(paramInt)));
+    if (a.jNs()) {
+      Log.d("MicroMsg.WxRecyclerView", s.X("[scrollToPosition] position=", Integer.valueOf(paramInt)));
     }
     AppMethodBeat.o(164755);
   }
   
   public void setAdapter(RecyclerView.a<?> parama)
   {
-    AppMethodBeat.i(207393);
+    AppMethodBeat.i(234994);
     super.setAdapter(parama);
-    if ((parama instanceof h)) {
-      ((h)parama).YSg = true;
+    if ((parama instanceof i)) {
+      ((i)parama).agNX = true;
     }
-    if (parama != null)
-    {
-      parama.a((RecyclerView.c)this.YTp);
-      AppMethodBeat.o(207393);
-      return;
+    if (parama != null) {
+      parama.a((RecyclerView.c)this.agOZ);
     }
-    AppMethodBeat.o(207393);
+    AppMethodBeat.o(234994);
   }
   
   public final void setFlingSpeedFactor(int paramInt)
   {
-    this.YTo = paramInt;
+    this.agOY = paramInt;
   }
   
   public void setLayoutFrozen(boolean paramBoolean)
@@ -299,10 +294,10 @@ public class WxRecyclerView
     AppMethodBeat.i(164759);
     super.setLayoutFrozen(paramBoolean);
     StringBuilder localStringBuilder;
-    if (a.iic())
+    if (a.jNs())
     {
       localStringBuilder = new StringBuilder("[setLayoutFrozen] frozen=").append(paramBoolean).append(' ');
-      if (!a.iid()) {
+      if (!a.jNt()) {
         break label67;
       }
     }
@@ -315,15 +310,15 @@ public class WxRecyclerView
     }
   }
   
-  public final void smoothScrollToPosition(int paramInt)
+  public void smoothScrollToPosition(int paramInt)
   {
     AppMethodBeat.i(164757);
     super.smoothScrollToPosition(paramInt);
     StringBuilder localStringBuilder;
-    if (a.iic())
+    if (a.jNs())
     {
       localStringBuilder = new StringBuilder("[smoothScrollToPosition] position=").append(paramInt).append(' ');
-      if (!a.iid()) {
+      if (!a.jNt()) {
         break label67;
       }
     }
@@ -336,31 +331,27 @@ public class WxRecyclerView
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/recyclerview/WxRecyclerView$Companion;", "", "()V", "TAG", "", "isEnableDumpStack", "", "()Z", "isEnableDumpStack$delegate", "Lkotlin/Lazy;", "isOpenRecyclerViewDebug", "isOpenRecyclerViewDebug$delegate", "isOpenRecyclerViewSystemDebug", "libmmui_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/view/recyclerview/WxRecyclerView$Companion;", "", "()V", "TAG", "", "isEnableDumpStack", "", "()Z", "isEnableDumpStack$delegate", "Lkotlin/Lazy;", "isOpenRecyclerViewDebug", "isOpenRecyclerViewDebug$delegate", "isOpenRecyclerViewSystemDebug", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
-    public static boolean iic()
+    public static boolean jNs()
     {
       AppMethodBeat.i(164741);
-      f localf = WxRecyclerView.iia();
-      a locala = WxRecyclerView.YTs;
-      boolean bool = ((Boolean)localf.getValue()).booleanValue();
+      boolean bool = ((Boolean)WxRecyclerView.jNq().getValue()).booleanValue();
       AppMethodBeat.o(164741);
       return bool;
     }
     
-    public static boolean iid()
+    public static boolean jNt()
     {
       AppMethodBeat.i(164742);
-      f localf = WxRecyclerView.iib();
-      a locala = WxRecyclerView.YTs;
-      boolean bool = ((Boolean)localf.getValue()).booleanValue();
+      boolean bool = ((Boolean)WxRecyclerView.jNr().getValue()).booleanValue();
       AppMethodBeat.o(164742);
       return bool;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/view/recyclerview/WxRecyclerView$logObserver$1", "Landroidx/recyclerview/widget/RecyclerView$AdapterDataObserver;", "onChanged", "", "onItemRangeChanged", "positionStart", "", "itemCount", "payload", "", "onItemRangeInserted", "onItemRangeMoved", "fromPosition", "toPosition", "onItemRangeRemoved", "libmmui_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/view/recyclerview/WxRecyclerView$logObserver$1", "Landroidx/recyclerview/widget/RecyclerView$AdapterDataObserver;", "onChanged", "", "onItemRangeChanged", "positionStart", "", "itemCount", "payload", "", "onItemRangeInserted", "onItemRangeMoved", "fromPosition", "toPosition", "onItemRangeRemoved", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class d
     extends RecyclerView.c
   {
@@ -368,20 +359,18 @@ public class WxRecyclerView
     {
       AppMethodBeat.i(164743);
       super.onChanged();
-      Object localObject = WxRecyclerView.YTs;
-      StringBuilder localStringBuilder;
-      if (WxRecyclerView.a.iic())
+      Object localObject = WxRecyclerView.agOX;
+      if (WxRecyclerView.a.jNs())
       {
-        localStringBuilder = new StringBuilder("[notify onChanged] ");
-        localObject = WxRecyclerView.YTs;
-        if (!WxRecyclerView.a.iid()) {
-          break label62;
+        localObject = WxRecyclerView.agOX;
+        if (!WxRecyclerView.a.jNt()) {
+          break label50;
         }
       }
-      label62:
+      label50:
       for (localObject = Util.getStack();; localObject = "")
       {
-        Log.d("MicroMsg.WxRecyclerView", localObject);
+        Log.d("MicroMsg.WxRecyclerView", s.X("[notify onChanged] ", localObject));
         AppMethodBeat.o(164743);
         return;
       }
@@ -391,13 +380,13 @@ public class WxRecyclerView
     {
       AppMethodBeat.i(164744);
       super.onItemRangeChanged(paramInt1, paramInt2);
-      Object localObject = WxRecyclerView.YTs;
+      Object localObject = WxRecyclerView.agOX;
       StringBuilder localStringBuilder;
-      if (WxRecyclerView.a.iic())
+      if (WxRecyclerView.a.jNs())
       {
         localStringBuilder = new StringBuilder("[notify onItemRangeChanged] positionStart=").append(paramInt1).append(" itemCount=").append(paramInt2).append(' ');
-        localObject = WxRecyclerView.YTs;
-        if (!WxRecyclerView.a.iid()) {
+        localObject = WxRecyclerView.agOX;
+        if (!WxRecyclerView.a.jNt()) {
           break label84;
         }
       }
@@ -414,12 +403,12 @@ public class WxRecyclerView
     {
       AppMethodBeat.i(164745);
       super.onItemRangeChanged(paramInt1, paramInt2, paramObject);
-      Object localObject = WxRecyclerView.YTs;
-      if (WxRecyclerView.a.iic())
+      Object localObject = WxRecyclerView.agOX;
+      if (WxRecyclerView.a.jNs())
       {
         localObject = new StringBuilder("[notify onItemRangeChanged] positionStart=").append(paramInt1).append(" itemCount=").append(paramInt2).append(" payload=").append(paramObject).append(' ');
-        paramObject = WxRecyclerView.YTs;
-        if (!WxRecyclerView.a.iid()) {
+        paramObject = WxRecyclerView.agOX;
+        if (!WxRecyclerView.a.jNt()) {
           break label95;
         }
       }
@@ -436,13 +425,13 @@ public class WxRecyclerView
     {
       AppMethodBeat.i(164746);
       super.onItemRangeInserted(paramInt1, paramInt2);
-      Object localObject = WxRecyclerView.YTs;
+      Object localObject = WxRecyclerView.agOX;
       StringBuilder localStringBuilder;
-      if (WxRecyclerView.a.iic())
+      if (WxRecyclerView.a.jNs())
       {
         localStringBuilder = new StringBuilder("[notify onItemRangeInserted] positionStart=").append(paramInt1).append(" itemCount=").append(paramInt2).append(' ');
-        localObject = WxRecyclerView.YTs;
-        if (!WxRecyclerView.a.iid()) {
+        localObject = WxRecyclerView.agOX;
+        if (!WxRecyclerView.a.jNt()) {
           break label84;
         }
       }
@@ -459,13 +448,13 @@ public class WxRecyclerView
     {
       AppMethodBeat.i(164747);
       super.onItemRangeMoved(paramInt1, paramInt2, paramInt3);
-      Object localObject = WxRecyclerView.YTs;
+      Object localObject = WxRecyclerView.agOX;
       StringBuilder localStringBuilder;
-      if (WxRecyclerView.a.iic())
+      if (WxRecyclerView.a.jNs())
       {
         localStringBuilder = new StringBuilder("[notify onItemRangeMoved] fromPosition=").append(paramInt1).append(" toPosition=").append(paramInt2).append(" itemCount=").append(paramInt3).append(' ');
-        localObject = WxRecyclerView.YTs;
-        if (!WxRecyclerView.a.iid()) {
+        localObject = WxRecyclerView.agOX;
+        if (!WxRecyclerView.a.jNt()) {
           break label98;
         }
       }
@@ -482,13 +471,13 @@ public class WxRecyclerView
     {
       AppMethodBeat.i(164748);
       super.onItemRangeRemoved(paramInt1, paramInt2);
-      Object localObject = WxRecyclerView.YTs;
+      Object localObject = WxRecyclerView.agOX;
       StringBuilder localStringBuilder;
-      if (WxRecyclerView.a.iic())
+      if (WxRecyclerView.a.jNs())
       {
         localStringBuilder = new StringBuilder("[notify onItemRangeRemoved] positionStart=").append(paramInt1).append(" itemCount=").append(paramInt2).append(' ');
-        localObject = WxRecyclerView.YTs;
-        if (!WxRecyclerView.a.iid()) {
+        localObject = WxRecyclerView.agOX;
+        if (!WxRecyclerView.a.jNt()) {
           break label84;
         }
       }

@@ -5,10 +5,10 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BitmapEditorItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "bitmap", "Landroid/graphics/Bitmap;", "matrix", "Landroid/graphics/Matrix;", "(Landroid/graphics/Bitmap;Landroid/graphics/Matrix;)V", "destroy", "", "draw", "canvas", "Landroid/graphics/Canvas;", "paint", "Landroid/graphics/Paint;", "init", "prepareNext", "", "plugin-recordvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BitmapEditorItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "bitmap", "Landroid/graphics/Bitmap;", "matrix", "Landroid/graphics/Matrix;", "(Landroid/graphics/Bitmap;Landroid/graphics/Matrix;)V", "destroy", "", "draw", "canvas", "Landroid/graphics/Canvas;", "paint", "Landroid/graphics/Paint;", "init", "prepareNext", "", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
   extends a
 {
@@ -17,33 +17,31 @@ public final class c
   public c(Bitmap paramBitmap, Matrix paramMatrix)
   {
     super(paramMatrix);
-    AppMethodBeat.i(218555);
+    AppMethodBeat.i(280381);
     this.bitmap = paramBitmap;
-    AppMethodBeat.o(218555);
+    AppMethodBeat.o(280381);
   }
   
   public final void destroy() {}
   
   public final void draw(Canvas paramCanvas, Paint paramPaint)
   {
-    AppMethodBeat.i(218551);
-    p.k(paramCanvas, "canvas");
-    p.k(paramPaint, "paint");
-    if (fyU())
+    AppMethodBeat.i(280394);
+    s.u(paramCanvas, "canvas");
+    s.u(paramPaint, "paint");
+    if (gKH())
     {
       paramCanvas.save();
-      paramCanvas.concat(fyW());
+      paramCanvas.concat(getMatrix());
       Bitmap localBitmap = this.bitmap;
-      if (localBitmap == null) {
-        p.iCn();
-      }
+      s.checkNotNull(localBitmap);
       paramCanvas.drawBitmap(localBitmap, 0.0F, 0.0F, paramPaint);
       paramCanvas.restore();
     }
-    AppMethodBeat.o(218551);
+    AppMethodBeat.o(280394);
   }
   
-  public final long fyV()
+  public final long gKI()
   {
     return 9223372036854775807L;
   }

@@ -1,111 +1,135 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.Iterator;
+import org.json.JSONObject;
 
 public final class dbh
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public dbk TIF;
-  public dbi TIG;
-  public int type;
+  public int aaGP;
+  public int id;
+  
+  private JSONObject toJSON()
+  {
+    AppMethodBeat.i(259539);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      com.tencent.mm.bk.a.a(localJSONObject, "id", Integer.valueOf(this.id), true);
+      com.tencent.mm.bk.a.a(localJSONObject, "positionFlag", Integer.valueOf(this.aaGP), true);
+      label41:
+      AppMethodBeat.o(259539);
+      return localJSONObject;
+    }
+    catch (Exception localException)
+    {
+      break label41;
+    }
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(234576);
+    AppMethodBeat.i(259543);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.type);
-      if (this.TIF != null)
-      {
-        paramVarArgs.oE(2, this.TIF.computeSize());
-        this.TIF.writeFields(paramVarArgs);
-      }
-      if (this.TIG != null)
-      {
-        paramVarArgs.oE(101, this.TIG.computeSize());
-        this.TIG.writeFields(paramVarArgs);
-      }
-      AppMethodBeat.o(234576);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.id);
+      paramVarArgs.bS(2, this.aaGP);
+      AppMethodBeat.o(259543);
       return 0;
     }
-    int i;
     if (paramInt == 1)
     {
-      i = g.a.a.b.b.a.bM(1, this.type) + 0;
-      paramInt = i;
-      if (this.TIF != null) {
-        paramInt = i + g.a.a.a.oD(2, this.TIF.computeSize());
-      }
-      i = paramInt;
-      if (this.TIG != null) {
-        i = paramInt + g.a.a.a.oD(101, this.TIG.computeSize());
-      }
-      AppMethodBeat.o(234576);
-      return i;
+      paramInt = i.a.a.b.b.a.cJ(1, this.id);
+      int i = i.a.a.b.b.a.cJ(2, this.aaGP);
+      AppMethodBeat.o(259543);
+      return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(234576);
+      AppMethodBeat.o(259543);
       return 0;
     }
     if (paramInt == 3)
     {
-      Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       dbh localdbh = (dbh)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      Object localObject2;
-      switch (paramInt)
+      switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(234576);
+        AppMethodBeat.o(259543);
         return -1;
       case 1: 
-        localdbh.type = ((g.a.a.a.a)localObject1).abFh.AK();
-        AppMethodBeat.o(234576);
-        return 0;
-      case 2: 
-        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject1 = (byte[])paramVarArgs.get(paramInt);
-          localObject2 = new dbk();
-          if ((localObject1 != null) && (localObject1.length > 0)) {
-            ((dbk)localObject2).parseFrom((byte[])localObject1);
-          }
-          localdbh.TIF = ((dbk)localObject2);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(234576);
+        localdbh.id = locala.ajGk.aar();
+        AppMethodBeat.o(259543);
         return 0;
       }
-      paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-      i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        localObject1 = (byte[])paramVarArgs.get(paramInt);
-        localObject2 = new dbi();
-        if ((localObject1 != null) && (localObject1.length > 0)) {
-          ((dbi)localObject2).parseFrom((byte[])localObject1);
-        }
-        localdbh.TIG = ((dbi)localObject2);
-        paramInt += 1;
-      }
-      AppMethodBeat.o(234576);
+      localdbh.aaGP = locala.ajGk.aar();
+      AppMethodBeat.o(259543);
       return 0;
     }
-    AppMethodBeat.o(234576);
+    AppMethodBeat.o(259543);
     return -1;
+  }
+  
+  public final com.tencent.mm.bx.a toPb(String paramString)
+  {
+    AppMethodBeat.i(259544);
+    if ((paramString == null) || ("" == paramString))
+    {
+      AppMethodBeat.o(259544);
+      return this;
+    }
+    for (;;)
+    {
+      String str;
+      try
+      {
+        paramString = new JSONObject(paramString);
+        Iterator localIterator = paramString.keys();
+        if (localIterator.hasNext())
+        {
+          str = (String)localIterator.next();
+          i = -1;
+        }
+        switch (str.hashCode())
+        {
+        case 3355: 
+          this.id = ((Integer)paramString.opt(str)).intValue();
+          continue;
+          if (!str.equals("id")) {
+            break label176;
+          }
+        }
+      }
+      catch (Exception paramString)
+      {
+        Log.printErrStackTrace("IconConfig", paramString, "", new Object[0]);
+        AppMethodBeat.o(259544);
+        return this;
+      }
+      int i = 0;
+      break label176;
+      if (str.equals("positionFlag"))
+      {
+        i = 1;
+        break label176;
+        this.aaGP = ((Integer)paramString.opt(str)).intValue();
+        continue;
+      }
+      label176:
+      switch (i)
+      {
+      }
+    }
   }
 }
 

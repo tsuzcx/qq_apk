@@ -1,91 +1,55 @@
 package kotlin.l.b.a.b.m;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
+import java.util.Collection;
+import java.util.Iterator;
+import kotlin.a.p;
+import kotlin.g.b.s;
 import kotlin.l.b.a.b.b.a.g;
-import kotlin.l.b.a.b.m.a.i;
-import kotlin.t;
+import kotlin.l.b.a.b.m.c.k;
+import kotlin.l.b.a.b.m.c.m;
+import kotlin.n.n;
 
-public final class al
-  extends n
-  implements bd
+public abstract class al
+  extends bk
+  implements k, m
 {
-  private final aj aaWM;
-  private final ab abqA;
-  
-  public al(aj paramaj, ab paramab)
+  public al()
   {
-    AppMethodBeat.i(60801);
-    this.aaWM = paramaj;
-    this.abqA = paramab;
-    AppMethodBeat.o(60801);
+    super((byte)0);
   }
   
-  private al l(i parami)
+  public abstract al Pq(boolean paramBoolean);
+  
+  public abstract al d(g paramg);
+  
+  public String toString()
   {
-    AppMethodBeat.i(60797);
-    p.k(parami, "kotlinTypeRefiner");
-    ab localab = parami.aK((ab)this.aaWM);
-    if (localab == null)
+    Object localObject = new StringBuilder();
+    Iterator localIterator = knl().iterator();
+    while (localIterator.hasNext())
     {
-      parami = new t("null cannot be cast to non-null type org.jetbrains.kotlin.types.SimpleType");
-      AppMethodBeat.o(60797);
-      throw parami;
+      kotlin.l.b.a.b.b.a.c localc = (kotlin.l.b.a.b.b.a.c)localIterator.next();
+      n.a((StringBuilder)localObject, new String[] { "[", kotlin.l.b.a.b.i.c.a(kotlin.l.b.a.b.i.c.ajgB, localc), "] " });
     }
-    parami = new al((aj)localab, parami.aK(this.abqA));
-    AppMethodBeat.o(60797);
-    return parami;
-  }
-  
-  public final aj Jn(boolean paramBoolean)
-  {
-    AppMethodBeat.i(60794);
-    Object localObject = be.b(((bg)this.aaWM).Jm(paramBoolean), (ab)this.abqA.iPX().Jm(paramBoolean));
-    if (localObject == null)
+    ((StringBuilder)localObject).append(kzm());
+    if (!((Collection)klR()).isEmpty()) {}
+    for (int i = 1;; i = 0)
     {
-      localObject = new t("null cannot be cast to non-null type org.jetbrains.kotlin.types.SimpleType");
-      AppMethodBeat.o(60794);
-      throw ((Throwable)localObject);
+      if (i != 0) {
+        p.a((Iterable)klR(), (Appendable)localObject, (CharSequence)", ", (CharSequence)"<", (CharSequence)">", 0, null, null, 112);
+      }
+      if (ksB()) {
+        ((StringBuilder)localObject).append("?");
+      }
+      localObject = ((StringBuilder)localObject).toString();
+      s.s(localObject, "StringBuilder().apply(builderAction).toString()");
+      return localObject;
     }
-    localObject = (aj)localObject;
-    AppMethodBeat.o(60794);
-    return localObject;
-  }
-  
-  public final aj d(g paramg)
-  {
-    AppMethodBeat.i(60792);
-    p.k(paramg, "newAnnotations");
-    paramg = be.b(((bg)this.aaWM).b(paramg), this.abqA);
-    if (paramg == null)
-    {
-      paramg = new t("null cannot be cast to non-null type org.jetbrains.kotlin.types.SimpleType");
-      AppMethodBeat.o(60792);
-      throw paramg;
-    }
-    paramg = (aj)paramg;
-    AppMethodBeat.o(60792);
-    return paramg;
-  }
-  
-  protected final aj iIq()
-  {
-    return this.aaWM;
-  }
-  
-  public final bg iPU()
-  {
-    return (bg)this.aaWM;
-  }
-  
-  public final ab iPV()
-  {
-    return this.abqA;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.m.al
  * JD-Core Version:    0.7.0.1
  */

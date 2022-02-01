@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="2.0dip" />
-    <solid android:color="#fffafafa" />
-</shape>
+    <item android:state_enabled="false" android:drawable="@drawable/pl" />
+    <item android:state_focused="true" android:drawable="@drawable/pn" />
+    <item android:drawable="@drawable/po" />
+</selector>

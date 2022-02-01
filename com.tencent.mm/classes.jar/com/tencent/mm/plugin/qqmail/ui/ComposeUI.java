@@ -1,7 +1,5 @@
 package com.tencent.mm.plugin.qqmail.ui;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
@@ -11,11 +9,15 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Html;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
+import android.view.View.OnTouchListener;
 import android.webkit.ConsoleMessage;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
@@ -25,38 +27,38 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.t;
-import com.tencent.mm.f.c.et;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.autogen.b.fi;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
-import com.tencent.mm.plugin.qqmail.d.aj;
-import com.tencent.mm.plugin.qqmail.d.j;
-import com.tencent.mm.plugin.qqmail.d.k;
-import com.tencent.mm.plugin.qqmail.d.l;
-import com.tencent.mm.plugin.qqmail.d.m;
-import com.tencent.mm.plugin.qqmail.d.m.a;
-import com.tencent.mm.plugin.qqmail.d.v;
 import com.tencent.mm.plugin.qqmail.e.a;
 import com.tencent.mm.plugin.qqmail.e.e;
 import com.tencent.mm.plugin.qqmail.e.f;
 import com.tencent.mm.plugin.qqmail.e.i;
+import com.tencent.mm.plugin.qqmail.model.ai;
+import com.tencent.mm.plugin.qqmail.model.g;
+import com.tencent.mm.plugin.qqmail.model.j;
+import com.tencent.mm.plugin.qqmail.model.l;
+import com.tencent.mm.plugin.qqmail.model.l.a;
 import com.tencent.mm.pluginsdk.ui.tools.FileExplorerUI;
-import com.tencent.mm.pluginsdk.ui.tools.u;
+import com.tencent.mm.pluginsdk.ui.tools.t;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.AnimationHelper;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sensitive.d.c;
+import com.tencent.mm.sensitive.d.f;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h.d;
-import com.tencent.mm.ui.base.r;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.k.d;
+import com.tencent.mm.ui.base.v;
 import com.tencent.mm.ui.base.w;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.mm.ui.widget.MMWebView.a;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.aa;
 import com.tencent.xweb.ad;
-import com.tencent.xweb.x;
+import com.tencent.xweb.ag;
+import com.tencent.xweb.z;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -68,89 +70,88 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 @com.tencent.mm.ui.widget.pulldown.c(0)
-@SuppressLint({"SetJavaScriptEnabled"})
 public class ComposeUI
   extends MMActivity
-  implements com.tencent.mm.an.i
+  implements com.tencent.mm.am.h
 {
-  private static List<l> Hom;
-  private int HlJ;
-  private com.tencent.mm.plugin.qqmail.d.ab Hlo;
-  private Map<String, String> HmE;
-  private ImageView HoA;
-  private LinearLayout HoB;
-  private MMWebView HoC;
-  private m HoD;
-  private b HoE;
-  public c HoF;
-  private String HoG;
-  private r HoH;
-  public boolean HoI;
-  public boolean HoJ;
-  public boolean HoK;
-  private String HoL;
-  private String HoM;
-  private String HoN;
-  private String HoO;
-  private String HoP;
-  private String HoQ;
-  private List<Bundle> HoR;
-  private List<String> HoS;
-  private String HoT;
-  private String HoU;
-  private String HoV;
-  private boolean HoW;
-  private boolean HoX;
-  private MTimerHandler HoY;
-  private MTimerHandler HoZ;
-  private ScrollView Hon;
-  protected MailAddrsViewControl Hoo;
-  private ImageView Hop;
-  private LinearLayout Hoq;
-  private LinearLayout Hor;
-  private MailAddrsViewControl Hos;
-  private ImageView Hot;
-  private LinearLayout Hou;
-  private MailAddrsViewControl Hov;
-  private ImageView How;
-  private EditText Hox;
-  private LinearLayout Hoy;
-  private TextView Hoz;
-  m.a Hpa;
-  private View.OnClickListener Hpb;
-  private View.OnClickListener Hpc;
-  private MenuItem.OnMenuItemClickListener Hpd;
-  private View.OnClickListener Hpe;
-  private String fIY;
+  private static List<com.tencent.mm.plugin.qqmail.model.k> NlZ;
+  private com.tencent.mm.plugin.qqmail.model.aa Njb;
+  private int Njx;
+  private Map<String, String> Nks;
+  private String NmA;
+  private String NmB;
+  private String NmC;
+  private String NmD;
+  private List<Bundle> NmE;
+  private List<String> NmF;
+  private String NmG;
+  private String NmH;
+  private String NmI;
+  private boolean NmJ;
+  private boolean NmK;
+  private MTimerHandler NmL;
+  private MTimerHandler NmM;
+  l.a NmN;
+  private View.OnClickListener NmO;
+  private View.OnClickListener NmP;
+  private MenuItem.OnMenuItemClickListener NmQ;
+  private View.OnClickListener NmR;
+  private ScrollView Nma;
+  protected MailAddrsViewControl Nmb;
+  private ImageView Nmc;
+  private LinearLayout Nmd;
+  private LinearLayout Nme;
+  private MailAddrsViewControl Nmf;
+  private ImageView Nmg;
+  private LinearLayout Nmh;
+  private MailAddrsViewControl Nmi;
+  private ImageView Nmj;
+  private EditText Nmk;
+  private LinearLayout Nml;
+  private TextView Nmm;
+  private ImageView Nmn;
+  private LinearLayout Nmo;
+  private MMWebView Nmp;
+  private l Nmq;
+  private b Nmr;
+  public c Nms;
+  private String Nmt;
+  private v Nmu;
+  public boolean Nmv;
+  public boolean Nmw;
+  public boolean Nmx;
+  private String Nmy;
+  private String Nmz;
+  private String hOG;
   private int mode;
-  private s ncM;
-  private EditText qDO;
+  private w qbW;
+  private EditText tID;
   
   public ComposeUI()
   {
     AppMethodBeat.i(122938);
-    this.HoF = new c(this);
-    this.HlJ = 1;
-    this.HoI = true;
-    this.HoJ = true;
-    this.HoK = false;
-    this.HoL = ("(function() { \nvar imgList = document.getElementsByTagName('img');var result = ''; \nfor (var i = 0; i < imgList.length; i++) {var img = imgList[i];var info = img.id + '@@' + img.src;result += info + '&&'}return result;" + "})()".trim());
-    this.HoM = "document.getElementById('history').innerHTML";
-    this.HoN = "<div id=\"htmlContent\" contenteditable=\"true\" >";
-    this.HoO = "</div>";
-    this.HoP = null;
+    this.Nms = new c(this);
+    this.Njx = 1;
+    this.Nmv = true;
+    this.Nmw = true;
+    this.Nmx = false;
+    this.Nmy = ("(function() { \nvar imgList = document.getElementsByTagName('img');var result = ''; \nfor (var i = 0; i < imgList.length; i++) {var img = imgList[i];var info = img.id + '@@' + img.src;result += info + '&&'}return result;" + "})()".trim());
+    this.Nmz = "document.getElementById('history').innerHTML";
+    this.NmA = "<div id=\"htmlContent\" contenteditable=\"true\" >";
+    this.NmB = "</div>";
+    this.NmC = null;
     this.mode = 20;
-    this.HmE = new HashMap();
-    this.Hlo = ((k)com.tencent.mm.kernel.h.ag(k.class)).getShareModeMailAppService();
-    this.HoQ = null;
-    this.HoR = null;
-    this.HoS = null;
-    this.HoT = "weixin://get_img_info/";
-    this.HoU = "weixin://get_mail_content/";
-    this.HoV = "weixin://img_onclick/";
-    this.HoW = false;
-    this.HoX = false;
-    this.HoY = new MTimerHandler(new MTimerHandler.CallBack()
+    this.Nks = new HashMap();
+    this.Njb = ((j)com.tencent.mm.kernel.h.az(j.class)).getShareModeMailAppService();
+    this.NmD = null;
+    this.NmE = null;
+    this.NmF = null;
+    this.NmG = "weixin://get_img_info/";
+    this.NmH = "weixin://get_mail_content/";
+    this.NmI = "weixin://img_onclick/";
+    this.NmJ = false;
+    this.NmK = false;
+    this.NmL = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -160,44 +161,44 @@ public class ComposeUI
         return true;
       }
     }, true);
-    this.HoZ = new MTimerHandler(new MTimerHandler.CallBack()
+    this.NmM = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(122909);
-        if ((ComposeUI.this.HoI) && (ComposeUI.a(ComposeUI.this, false)) && (ComposeUI.a(ComposeUI.this) == 20))
+        if ((ComposeUI.this.Nmv) && (ComposeUI.a(ComposeUI.this, false)) && (ComposeUI.a(ComposeUI.this) == 20))
         {
           ComposeUI.b(ComposeUI.this);
           if (ComposeUI.c(ComposeUI.this) != null) {
             ComposeUI.c(ComposeUI.this).dismiss();
           }
-          ComposeUI.a(ComposeUI.this, w.a(ComposeUI.this, ComposeUI.this.getString(e.i.plugin_qqmail_composeui_auto_save), 2000L));
+          ComposeUI.a(ComposeUI.this, com.tencent.mm.ui.base.aa.a(ComposeUI.this, ComposeUI.this.getString(e.i.plugin_qqmail_composeui_auto_save), 2000L));
         }
         AppMethodBeat.o(122909);
         return true;
       }
     }, true);
-    this.Hpa = new m.a()
+    this.NmN = new l.a()
     {
       public final void onComplete()
       {
         AppMethodBeat.i(122920);
         Log.i("MicroMsg.Mail.ComposeUI", "sync addr complete");
-        MailAddrsViewControl.b localb = new MailAddrsViewControl.b(ComposeUI.this, ComposeUI.d(ComposeUI.this).aVe(null));
-        ComposeUI.this.Hoo.setAddrsAdapter(localb);
+        MailAddrsViewControl.b localb = new MailAddrsViewControl.b(ComposeUI.this, ComposeUI.d(ComposeUI.this).aSm(null));
+        ComposeUI.this.Nmb.setAddrsAdapter(localb);
         ComposeUI.e(ComposeUI.this).setAddrsAdapter(localb);
         ComposeUI.f(ComposeUI.this).setAddrsAdapter(localb);
         AppMethodBeat.o(122920);
       }
     };
-    this.Hpb = new View.OnClickListener()
+    this.NmO = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(251111);
+        AppMethodBeat.i(266927);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/ComposeUI$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/ComposeUI$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         ComposeUI.y(ComposeUI.this).setVisibility(8);
         ComposeUI.z(ComposeUI.this).setVisibility(0);
         ComposeUI.A(ComposeUI.this).setVisibility(0);
@@ -205,105 +206,120 @@ public class ComposeUI
         {
           public final void run()
           {
-            AppMethodBeat.i(249768);
+            AppMethodBeat.i(266937);
             ComposeUI.z(ComposeUI.this).requestFocus();
-            ComposeUI.e(ComposeUI.this).ftb();
-            ComposeUI.f(ComposeUI.this).ftb();
-            AppMethodBeat.o(249768);
+            ComposeUI.e(ComposeUI.this).gEK();
+            ComposeUI.f(ComposeUI.this).gEK();
+            AppMethodBeat.o(266937);
           }
         });
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/ComposeUI$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(251111);
+        AppMethodBeat.o(266927);
       }
     };
-    this.Hpc = new View.OnClickListener()
+    this.NmP = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(122899);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/ComposeUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/ComposeUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
         paramAnonymousView = ComposeUI.this;
         localObject = ComposeUI.this.getString(e.i.plugin_qqmail_composeui_attach_take_phote);
         String str1 = ComposeUI.this.getString(e.i.plugin_qqmail_composeui_attach_choose_album);
         String str2 = ComposeUI.this.getString(e.i.plugin_qqmail_composeui_attach_choose_file);
-        h.d local1 = new h.d()
+        k.d local1 = new k.d()
         {
-          public final void qy(int paramAnonymous2Int)
+          public final void qz(int paramAnonymous2Int)
           {
-            AppMethodBeat.i(250006);
+            AppMethodBeat.i(266998);
             switch (paramAnonymous2Int)
             {
             }
             for (;;)
             {
-              AppMethodBeat.o(250006);
+              AppMethodBeat.o(266998);
               return;
-              boolean bool = com.tencent.mm.pluginsdk.permission.b.a(ComposeUI.this.getContext(), "android.permission.CAMERA", 16, "", "");
+              boolean bool = com.tencent.mm.pluginsdk.permission.b.a(ComposeUI.this.getContext(), "android.permission.CAMERA", 16, "");
               Log.i("MicroMsg.Mail.ComposeUI", "summerper checkPermission checkCamera[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), Util.getStack(), ComposeUI.this.getContext() });
               if (!bool)
               {
-                AppMethodBeat.o(250006);
+                AppMethodBeat.o(266998);
                 return;
               }
               ComposeUI.B(ComposeUI.this);
-              AppMethodBeat.o(250006);
+              AppMethodBeat.o(266998);
               return;
-              u.d(ComposeUI.this, 4, null);
-              AppMethodBeat.o(250006);
+              t.d(ComposeUI.this, 4, null);
+              AppMethodBeat.o(266998);
               return;
-              Intent localIntent = new Intent(ComposeUI.this, FileExplorerUI.class);
+              final Intent localIntent = new Intent(ComposeUI.this, FileExplorerUI.class);
+              if (((com.tencent.mm.sensitive.d)com.tencent.mm.kernel.h.az(com.tencent.mm.sensitive.d.class)).checkAndShowPermissionDialog(d.c.actw, new d.f()
+              {
+                public final void onOp(Boolean paramAnonymous3Boolean)
+                {
+                  AppMethodBeat.i(266992);
+                  if (paramAnonymous3Boolean.booleanValue()) {
+                    ComposeUI.this.startActivityForResult(localIntent, 5);
+                  }
+                  AppMethodBeat.o(266992);
+                }
+              }))
+              {
+                AppMethodBeat.o(266998);
+                return;
+              }
               ComposeUI.this.startActivityForResult(localIntent, 5);
             }
           }
         };
-        com.tencent.mm.ui.base.h.a(paramAnonymousView, null, new String[] { localObject, str1, str2 }, null, local1);
+        com.tencent.mm.ui.base.k.a(paramAnonymousView, null, new String[] { localObject, str1, str2 }, null, local1);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/ComposeUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(122899);
       }
     };
-    this.Hpd = new MenuItem.OnMenuItemClickListener()
+    this.NmQ = new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(250536);
+        AppMethodBeat.i(266938);
         if (((ComposeUI.a(ComposeUI.this, false)) && (ComposeUI.a(ComposeUI.this) == 20)) || (ComposeUI.a(ComposeUI.this) == 21)) {
-          com.tencent.mm.ui.base.h.c(ComposeUI.this.getContext(), ComposeUI.this.getString(e.i.plugin_qqmail_composeui_leave_alert), "", ComposeUI.this.getString(e.i.plugin_qqmail_composeui_quit_delete), ComposeUI.this.getString(e.i.app_cancel), new DialogInterface.OnClickListener()
+          com.tencent.mm.ui.base.k.b(ComposeUI.this.getContext(), ComposeUI.this.getString(e.i.plugin_qqmail_composeui_leave_alert), "", ComposeUI.this.getString(e.i.plugin_qqmail_composeui_quit_delete), ComposeUI.this.getString(e.i.app_cancel), new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
-              AppMethodBeat.i(249709);
+              AppMethodBeat.i(266993);
               ComposeUI.this.setResult(0);
               ComposeUI.this.finish();
-              AppMethodBeat.o(249709);
+              AppMethodBeat.o(266993);
             }
           }, null);
         }
         for (;;)
         {
-          AppMethodBeat.o(250536);
+          AppMethodBeat.o(266938);
           return true;
           ComposeUI.this.setResult(0);
           ComposeUI.this.finish();
         }
       }
     };
-    this.Hpe = new View.OnClickListener()
+    this.NmR = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(249711);
+        AppMethodBeat.i(266947);
         Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject1).bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/ComposeUI$18", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).aFi());
+        ((com.tencent.mm.hellhoundlib.b.b)localObject1).cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/ComposeUI$18", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).aYj());
         ComposeUI.this.hideVKB();
         ComposeUI.j(ComposeUI.this).getText();
         ComposeUI.C(ComposeUI.this);
-        if (!ComposeUI.this.fsI())
+        if (!ComposeUI.this.gEr())
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/ComposeUI$18", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(249711);
+          AppMethodBeat.o(266947);
           return;
         }
         paramAnonymousView = ComposeUI.p(ComposeUI.this).entrySet().iterator();
@@ -313,19 +329,19 @@ public class ComposeUI
           localObject1 = ComposeUI.D(ComposeUI.this);
           localObject2 = (String)((Map.Entry)localObject2).getValue();
           Log.i("MicroMsg.Mail.FileUploadHelper", "uploadContentImage path=%s", new Object[] { localObject2 });
-          if ((localObject2 != null) && (((String)localObject2).length() != 0) && (!((b)localObject1).HpU.containsKey(localObject2)))
+          if ((localObject2 != null) && (((String)localObject2).length() != 0) && (!((b)localObject1).NnI.containsKey(localObject2)))
           {
-            com.tencent.mm.vfs.q localq = new com.tencent.mm.vfs.q((String)localObject2);
-            if ((localq.ifE()) && (localq.ifH()))
+            com.tencent.mm.vfs.u localu = new com.tencent.mm.vfs.u((String)localObject2);
+            if ((localu.jKS()) && (localu.jKV()))
             {
-              aj localaj = new aj();
-              localaj.path = ((String)localObject2);
-              localaj.name = localq.getName();
-              localaj.size = localq.length();
-              localaj.state = 0;
-              ((b)localObject1).HpU.put(localObject2, localaj);
-              if (localaj.state == 0) {
-                localaj.yjR = ((b)localObject1).aVk(localaj.path);
+              ai localai = new ai();
+              localai.path = ((String)localObject2);
+              localai.name = localu.getName();
+              localai.size = localu.length();
+              localai.state = 0;
+              ((b)localObject1).NnI.put(localObject2, localai);
+              if (localai.state == 0) {
+                localai.Bjl = ((b)localObject1).aSs(localai.path);
               }
             }
           }
@@ -333,40 +349,40 @@ public class ComposeUI
         paramAnonymousView = ComposeUI.this;
         localObject1 = ComposeUI.this;
         ComposeUI.this.getString(e.i.app_tip);
-        ComposeUI.a(paramAnonymousView, com.tencent.mm.ui.base.h.a((Context)localObject1, ComposeUI.this.getString(e.i.plugin_qqmail_compose_send_ing), true, new DialogInterface.OnCancelListener()
+        ComposeUI.a(paramAnonymousView, com.tencent.mm.ui.base.k.a((Context)localObject1, ComposeUI.this.getString(e.i.plugin_qqmail_compose_send_ing), true, new DialogInterface.OnCancelListener()
         {
           public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
           {
-            AppMethodBeat.i(250144);
-            ComposeUI.D(ComposeUI.this).fsT();
-            ComposeUI.D(ComposeUI.this).HpX = null;
-            AppMethodBeat.o(250144);
+            AppMethodBeat.i(267013);
+            ComposeUI.D(ComposeUI.this).gEC();
+            ComposeUI.D(ComposeUI.this).NnL = null;
+            AppMethodBeat.o(267013);
           }
         }));
-        if (!ComposeUI.D(ComposeUI.this).fsU())
+        if (!ComposeUI.D(ComposeUI.this).gED())
         {
           ComposeUI.E(ComposeUI.this).setMessage(ComposeUI.this.getString(e.i.plugin_qqmail_attach_uploading));
-          ComposeUI.D(ComposeUI.this).HpX = new b.b()
+          ComposeUI.D(ComposeUI.this).NnL = new b.b()
           {
-            public final void fsJ()
+            public final void gEs()
             {
-              AppMethodBeat.i(249977);
+              AppMethodBeat.i(267015);
               ComposeUI.E(ComposeUI.this).setMessage(ComposeUI.this.getString(e.i.plugin_qqmail_attach_uploading));
-              AppMethodBeat.o(249977);
+              AppMethodBeat.o(267015);
             }
             
             public final void onComplete()
             {
-              AppMethodBeat.i(249978);
+              AppMethodBeat.i(267017);
               ComposeUI.b(ComposeUI.this, ComposeUI.q(ComposeUI.this));
-              AppMethodBeat.o(249978);
+              AppMethodBeat.o(267017);
             }
           };
         }
         for (;;)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/ComposeUI$18", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(249711);
+          AppMethodBeat.o(266947);
           return;
           ComposeUI.b(ComposeUI.this, ComposeUI.q(ComposeUI.this));
         }
@@ -375,9 +391,9 @@ public class ComposeUI
     AppMethodBeat.o(122938);
   }
   
-  private static List<l> N(String[] paramArrayOfString)
+  private static List<com.tencent.mm.plugin.qqmail.model.k> O(String[] paramArrayOfString)
   {
-    AppMethodBeat.i(249827);
+    AppMethodBeat.i(267027);
     ArrayList localArrayList = new ArrayList();
     if (paramArrayOfString != null)
     {
@@ -385,66 +401,66 @@ public class ComposeUI
       int i = 0;
       while (i < j)
       {
-        l locall = m.aVf(paramArrayOfString[i]);
-        if (locall != null) {
-          localArrayList.add(locall);
+        com.tencent.mm.plugin.qqmail.model.k localk = l.aSn(paramArrayOfString[i]);
+        if (localk != null) {
+          localArrayList.add(localk);
         }
         i += 1;
       }
     }
-    AppMethodBeat.o(249827);
+    AppMethodBeat.o(267027);
     return localArrayList;
   }
   
   private static void a(MailAddrsViewControl paramMailAddrsViewControl)
   {
     AppMethodBeat.i(122952);
-    if (Hom == null)
+    if (NlZ == null)
     {
       AppMethodBeat.o(122952);
       return;
     }
-    paramMailAddrsViewControl.setMailAdds(Hom);
+    paramMailAddrsViewControl.setMailAdds(NlZ);
     AppMethodBeat.o(122952);
   }
   
-  private void aVh(final String paramString)
+  private void aSp(final String paramString)
   {
     AppMethodBeat.i(122954);
-    final com.tencent.mm.vfs.q localq = new com.tencent.mm.vfs.q(paramString);
-    if (!localq.ifE())
+    final com.tencent.mm.vfs.u localu = new com.tencent.mm.vfs.u(paramString);
+    if (!localu.jKS())
     {
       AppMethodBeat.o(122954);
       return;
     }
-    if (this.HoE.aaL(paramString))
+    if (this.Nmr.Te(paramString))
     {
-      com.tencent.mm.ui.base.h.p(getContext(), e.i.plugin_qqmail_upload_attach_exist, e.i.app_tip);
+      com.tencent.mm.ui.base.k.s(getContext(), e.i.plugin_qqmail_upload_attach_exist, e.i.app_tip);
       AppMethodBeat.o(122954);
       return;
     }
-    final int i = (int)localq.length();
+    final int i = (int)localu.length();
     if (i > 20971520)
     {
-      com.tencent.mm.ui.base.h.a(this, e.i.plugin_qqmail_upload_attach_single_file_size_exceed, e.i.app_tip, null);
+      com.tencent.mm.ui.base.k.a(this, e.i.plugin_qqmail_upload_attach_single_file_size_exceed, e.i.app_tip, null);
       AppMethodBeat.o(122954);
       return;
     }
-    com.tencent.mm.ui.base.h.a(this, getString(e.i.plugin_qqmail_upload_attach_size_tip, new Object[] { Util.getSizeKB(i) }), getString(e.i.app_tip), new DialogInterface.OnClickListener()
+    com.tencent.mm.ui.base.k.a(this, getString(e.i.plugin_qqmail_upload_attach_size_tip, new Object[] { Util.getSizeKB(i) }), getString(e.i.app_tip), new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
-        AppMethodBeat.i(249670);
+        AppMethodBeat.i(266946);
         if (ComposeUI.D(ComposeUI.this).getTotalSize() + i > 52428800)
         {
-          com.tencent.mm.ui.base.h.a(ComposeUI.this, e.i.plugin_qqmail_upload_attach_size_exceed, e.i.app_tip, null);
-          AppMethodBeat.o(249670);
+          com.tencent.mm.ui.base.k.a(ComposeUI.this, e.i.plugin_qqmail_upload_attach_size_exceed, e.i.app_tip, null);
+          AppMethodBeat.o(266946);
           return;
         }
         Object localObject;
         if (ComposeUI.j(ComposeUI.this).getText().toString().trim().length() == 0)
         {
-          paramAnonymousDialogInterface = localq.getName().trim();
+          paramAnonymousDialogInterface = localu.getName().trim();
           paramAnonymousInt = paramAnonymousDialogInterface.lastIndexOf(".");
           localObject = ComposeUI.j(ComposeUI.this);
           if (paramAnonymousInt <= 0) {
@@ -457,78 +473,95 @@ public class ComposeUI
           Log.i("MicroMsg.Mail.ComposeUI", "in upload file mode = %d", new Object[] { Integer.valueOf(ComposeUI.a(ComposeUI.this)) });
           paramAnonymousDialogInterface = ComposeUI.D(ComposeUI.this);
           localObject = paramString;
-          if ((localObject != null) && (((String)localObject).length() != 0) && (!paramAnonymousDialogInterface.HpU.containsKey(localObject))) {
+          if ((localObject != null) && (((String)localObject).length() != 0) && (!paramAnonymousDialogInterface.NnI.containsKey(localObject))) {
             break;
           }
-          AppMethodBeat.o(249670);
+          AppMethodBeat.o(266946);
           return;
           label175:
           paramAnonymousInt = paramAnonymousDialogInterface.length();
         }
-        com.tencent.mm.vfs.q localq = new com.tencent.mm.vfs.q((String)localObject);
-        if ((!localq.ifE()) || (!localq.ifH()))
+        com.tencent.mm.vfs.u localu = new com.tencent.mm.vfs.u((String)localObject);
+        if ((!localu.jKS()) || (!localu.jKV()))
         {
-          AppMethodBeat.o(249670);
+          AppMethodBeat.o(266946);
           return;
         }
-        aj localaj = new aj();
-        localaj.path = ((String)localObject);
-        localaj.name = localq.getName();
-        localaj.size = localq.length();
-        localaj.state = 0;
-        paramAnonymousDialogInterface.HpU.put(localObject, localaj);
-        paramAnonymousDialogInterface.a(localaj);
-        AppMethodBeat.o(249670);
+        ai localai = new ai();
+        localai.path = ((String)localObject);
+        localai.name = localu.getName();
+        localai.size = localu.length();
+        localai.state = 0;
+        paramAnonymousDialogInterface.NnI.put(localObject, localai);
+        paramAnonymousDialogInterface.a(localai);
+        AppMethodBeat.o(266946);
       }
     }, null);
     AppMethodBeat.o(122954);
   }
   
-  private void euy()
+  private void fBt()
   {
     AppMethodBeat.i(122947);
-    if (!u.d(this, com.tencent.mm.loader.j.b.aSX(), "microMsg." + System.currentTimeMillis() + ".jpg", 3)) {
+    if (!t.d(this, com.tencent.mm.loader.i.b.bmL(), "microMsg." + System.currentTimeMillis() + ".jpg", 3)) {
       Toast.makeText(this, getString(e.i.selectcameraapp_none), 1).show();
     }
     AppMethodBeat.o(122947);
   }
   
-  private void fsF()
+  private void gEo()
   {
     AppMethodBeat.i(122943);
-    this.Hoo.clearFocus();
-    this.Hos.clearFocus();
-    this.Hov.clearFocus();
+    this.Nmb.clearFocus();
+    this.Nmf.clearFocus();
+    this.Nmi.clearFocus();
     AppMethodBeat.o(122943);
   }
   
-  private void fsG()
+  private void gEp()
   {
     AppMethodBeat.i(122945);
-    if (this.HoC != null)
+    if (this.Nmp != null)
     {
-      this.HoC.clearFocus();
-      this.HoC.getSettings().setJavaScriptEnabled(true);
-      this.HoC.setWebViewClient(new b((byte)0));
-      this.HoC.setWebChromeClient(new a((byte)0));
-      this.HoC.setOnTouchListener(new ComposeUI.5(this));
+      this.Nmp.clearFocus();
+      this.Nmp.getSettings().setJavaScriptEnabled(true);
+      this.Nmp.setWebViewClient(new b((byte)0));
+      this.Nmp.setWebChromeClient(new a((byte)0));
+      this.Nmp.setOnTouchListener(new View.OnTouchListener()
+      {
+        public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+        {
+          AppMethodBeat.i(266924);
+          switch (paramAnonymousMotionEvent.getAction())
+          {
+          }
+          for (;;)
+          {
+            AppMethodBeat.o(266924);
+            return false;
+            if (!paramAnonymousView.hasFocus()) {
+              paramAnonymousView.requestFocus();
+            }
+          }
+        }
+      });
     }
     AppMethodBeat.o(122945);
   }
   
-  private String fsH()
+  private String gEq()
   {
     AppMethodBeat.i(122949);
-    Object localObject = new StringBuilder(this.qDO.getText().toString());
-    com.tencent.mm.pluginsdk.ui.tools.ab.b(this.HoC, this.HoU, this.HoM);
-    if (!Util.isNullOrNil(this.HoQ))
+    Object localObject = new StringBuilder(this.tID.getText().toString());
+    com.tencent.mm.pluginsdk.ui.tools.aa.b(this.Nmp, this.NmH, this.Nmz);
+    if (!Util.isNullOrNil(this.NmD))
     {
-      int i = this.HoQ.indexOf(this.HoN);
-      int j = this.HoQ.lastIndexOf(this.HoO);
+      int i = this.NmD.indexOf(this.NmA);
+      int j = this.NmD.lastIndexOf(this.NmB);
       if ((i == -1) || (j == -1)) {
         break label136;
       }
-      String str = this.HoQ.substring(i + this.HoN.length(), j + this.HoO.length());
+      String str = this.NmD.substring(i + this.NmA.length(), j + this.NmB.length());
       ((StringBuilder)localObject).append("\n").append(str);
     }
     for (;;)
@@ -537,54 +570,54 @@ public class ComposeUI
       AppMethodBeat.o(122949);
       return localObject;
       label136:
-      ((StringBuilder)localObject).append("\n").append(this.HoQ);
+      ((StringBuilder)localObject).append("\n").append(this.NmD);
     }
   }
   
-  static void gA(List<l> paramList)
+  static void jA(List<com.tencent.mm.plugin.qqmail.model.k> paramList)
   {
-    Hom = paramList;
+    NlZ = paramList;
   }
   
-  private static ArrayList<Bundle> gz(List<l> paramList)
+  private static ArrayList<Bundle> jz(List<com.tencent.mm.plugin.qqmail.model.k> paramList)
   {
-    AppMethodBeat.i(249829);
+    AppMethodBeat.i(267042);
     ArrayList localArrayList = new ArrayList();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      l locall = (l)paramList.next();
+      com.tencent.mm.plugin.qqmail.model.k localk = (com.tencent.mm.plugin.qqmail.model.k)paramList.next();
       Bundle localBundle = new Bundle();
-      localBundle.putString("item_addr", locall.Ejj);
-      localBundle.putString("item_name", locall.name);
+      localBundle.putString("item_addr", localk.KbS);
+      localBundle.putString("item_name", localk.name);
       localArrayList.add(localBundle);
     }
-    AppMethodBeat.o(249829);
+    AppMethodBeat.o(267042);
     return localArrayList;
   }
   
-  protected final boolean fsI()
+  protected final boolean gEr()
   {
     AppMethodBeat.i(122951);
-    if (!this.Hoo.fta())
+    if (!this.Nmb.gEJ())
     {
       Toast.makeText(this, e.i.plugin_qqmail_composeui_toaddr_invalid, 1).show();
       AppMethodBeat.o(122951);
       return false;
     }
-    if (!this.Hos.fta())
+    if (!this.Nmf.gEJ())
     {
       Toast.makeText(this, e.i.plugin_qqmail_composeui_ccaddr_invalid, 1).show();
       AppMethodBeat.o(122951);
       return false;
     }
-    if (!this.Hov.fta())
+    if (!this.Nmi.gEJ())
     {
       Toast.makeText(this, e.i.plugin_qqmail_composeui_bccaddr_invalid, 1).show();
       AppMethodBeat.o(122951);
       return false;
     }
-    if (this.Hoo.getMailAddrs().size() + this.Hos.getMailAddrs().size() + this.Hov.getMailAddrs().size() > 20)
+    if (this.Nmb.getMailAddrs().size() + this.Nmf.getMailAddrs().size() + this.Nmi.getMailAddrs().size() > 20)
     {
       Toast.makeText(this, e.i.plugin_qqmail_svr_error_desc_101, 1).show();
       AppMethodBeat.o(122951);
@@ -602,56 +635,56 @@ public class ComposeUI
   public void initView()
   {
     AppMethodBeat.i(122944);
-    this.Hon = ((ScrollView)findViewById(e.e.qqmail_compose_container_sv));
-    this.Hoo = ((MailAddrsViewControl)findViewById(e.e.qqmail_compose_addr_to_control));
-    this.Hop = ((ImageView)findViewById(e.e.qqmail_compose_add_to_iv));
-    this.Hoq = ((LinearLayout)findViewById(e.e.qqmail_compose_ccbacc_ll));
-    this.Hor = ((LinearLayout)findViewById(e.e.qqmail_compose_addr_cc_fl));
-    this.Hos = ((MailAddrsViewControl)findViewById(e.e.qqmail_compose_addr_cc_control));
-    this.Hot = ((ImageView)findViewById(e.e.qqmail_compose_add_cc_iv));
-    this.Hou = ((LinearLayout)findViewById(e.e.qqmail_compose_addr_bcc_fl));
-    this.Hov = ((MailAddrsViewControl)findViewById(e.e.qqmail_compose_addr_bcc_control));
-    this.How = ((ImageView)findViewById(e.e.qqmail_compose_add_bcc_iv));
-    this.Hox = ((EditText)findViewById(e.e.qqmail_compose_subject_et));
-    this.Hoy = ((LinearLayout)findViewById(e.e.qqmail_compose_add_attach_ll));
-    this.qDO = ((EditText)findViewById(e.e.qqmail_compose_content_et));
-    this.HoC = MMWebView.a.s(this, e.e.qqmail_compose_content_web);
-    this.Hoz = ((TextView)findViewById(e.e.qqmail_compose_attach_summary_iv));
-    this.HoA = ((ImageView)findViewById(e.e.qqmail_compose_attach_summary_icon));
-    this.HoB = ((LinearLayout)findViewById(e.e.plugin_qqmail_compose_attachment_container));
-    this.Hoo.setEditable(true);
-    this.Hos.setEditable(true);
-    this.Hov.setEditable(true);
+    this.Nma = ((ScrollView)findViewById(e.e.qqmail_compose_container_sv));
+    this.Nmb = ((MailAddrsViewControl)findViewById(e.e.qqmail_compose_addr_to_control));
+    this.Nmc = ((ImageView)findViewById(e.e.qqmail_compose_add_to_iv));
+    this.Nmd = ((LinearLayout)findViewById(e.e.qqmail_compose_ccbacc_ll));
+    this.Nme = ((LinearLayout)findViewById(e.e.qqmail_compose_addr_cc_fl));
+    this.Nmf = ((MailAddrsViewControl)findViewById(e.e.qqmail_compose_addr_cc_control));
+    this.Nmg = ((ImageView)findViewById(e.e.qqmail_compose_add_cc_iv));
+    this.Nmh = ((LinearLayout)findViewById(e.e.qqmail_compose_addr_bcc_fl));
+    this.Nmi = ((MailAddrsViewControl)findViewById(e.e.qqmail_compose_addr_bcc_control));
+    this.Nmj = ((ImageView)findViewById(e.e.qqmail_compose_add_bcc_iv));
+    this.Nmk = ((EditText)findViewById(e.e.qqmail_compose_subject_et));
+    this.Nml = ((LinearLayout)findViewById(e.e.qqmail_compose_add_attach_ll));
+    this.tID = ((EditText)findViewById(e.e.qqmail_compose_content_et));
+    this.Nmp = MMWebView.a.u(this, e.e.qqmail_compose_content_web);
+    this.Nmm = ((TextView)findViewById(e.e.qqmail_compose_attach_summary_iv));
+    this.Nmn = ((ImageView)findViewById(e.e.qqmail_compose_attach_summary_icon));
+    this.Nmo = ((LinearLayout)findViewById(e.e.plugin_qqmail_compose_attachment_container));
+    this.Nmb.setEditable(true);
+    this.Nmf.setEditable(true);
+    this.Nmi.setEditable(true);
     Object localObject2 = getIntent().getStringExtra("mail_content");
-    this.HoR = getIntent().getParcelableArrayListExtra("mail_attach");
-    this.HoS = getIntent().getStringArrayListExtra("mail_attach_file");
-    Object localObject1 = ((k)com.tencent.mm.kernel.h.ag(k.class)).getNormalMailAppService().Hmo.fG(this.HoG, this.HlJ);
-    this.HoE = new b(this, this.Hoz, this.HoA, this.HoB, (byte)0);
+    this.NmE = getIntent().getParcelableArrayListExtra("mail_attach");
+    this.NmF = getIntent().getStringArrayListExtra("mail_attach_file");
+    Object localObject1 = ((j)com.tencent.mm.kernel.h.az(j.class)).getNormalMailAppService().Nkc.gy(this.Nmt, this.Njx);
+    this.Nmr = new b(this, this.Nmm, this.Nmn, this.Nmo, (byte)0);
     Object localObject3;
     Object localObject4;
     if (!Util.isNullOrNil((String)localObject2)) {
       if (this.mode == 21)
       {
-        fsG();
-        this.Hoo.requestFocus();
-        this.HoQ = String.format(this.HoP, new Object[] { localObject2 });
-        this.HoC.loadDataWithBaseURL("", this.HoQ, "text/html", "utf-8", "");
-        this.HoC.setVisibility(0);
-        if (this.HlJ == 1) {
+        gEp();
+        this.Nmb.requestFocus();
+        this.NmD = String.format(this.NmC, new Object[] { localObject2 });
+        this.Nmp.loadDataWithBaseURL("", this.NmD, "text/html", "utf-8", "");
+        this.Nmp.setVisibility(0);
+        if (this.Njx == 1) {
           break label1512;
         }
         localObject1 = getIntent().getStringArrayExtra("toList");
         localObject3 = getIntent().getStringArrayExtra("ccList");
         localObject4 = getIntent().getStringArrayExtra("bccList");
         localObject2 = getIntent().getStringExtra("subject");
-        this.Hoo.k(N((String[])localObject1), false);
-        this.Hos.k(N((String[])localObject3), false);
-        this.Hov.k(N((String[])localObject4), false);
+        this.Nmb.y(O((String[])localObject1), false);
+        this.Nmf.y(O((String[])localObject3), false);
+        this.Nmi.y(O((String[])localObject4), false);
         if (!Util.isNullOrNil((String)localObject2))
         {
-          localObject3 = this.Hox;
+          localObject3 = this.Nmk;
           localObject4 = new StringBuilder();
-          if (this.HlJ != 2) {
+          if (this.Njx != 2) {
             break label1084;
           }
         }
@@ -661,96 +694,96 @@ public class ComposeUI
     for (localObject1 = "Re:";; localObject1 = "Fwd:")
     {
       ((EditText)localObject3).setText((String)localObject1 + (String)localObject2);
-      if (this.HoR == null) {
+      if (this.NmE == null) {
         break label1108;
       }
       localObject1 = new ArrayList();
-      localObject2 = this.HoR.iterator();
+      localObject2 = this.NmE.iterator();
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (Bundle)((Iterator)localObject2).next();
-        localObject4 = new aj();
-        ((aj)localObject4).name = ((Bundle)localObject3).getString("attach_name");
+        localObject4 = new ai();
+        ((ai)localObject4).name = ((Bundle)localObject3).getString("attach_name");
         StringBuilder localStringBuilder = new StringBuilder();
-        ((k)com.tencent.mm.kernel.h.ag(k.class)).getNormalMailAppService();
-        ((aj)localObject4).path = (v.fst() + ((aj)localObject4).name);
-        ((aj)localObject4).state = 2;
-        ((aj)localObject4).size = ((Bundle)localObject3).getInt("attach_size");
-        ((aj)localObject4).svrId = ((Bundle)localObject3).getString("attach_fileId");
+        ((j)com.tencent.mm.kernel.h.az(j.class)).getNormalMailAppService();
+        ((ai)localObject4).path = (com.tencent.mm.plugin.qqmail.model.u.gEb() + ((ai)localObject4).name);
+        ((ai)localObject4).state = 2;
+        ((ai)localObject4).size = ((Bundle)localObject3).getInt("attach_size");
+        ((ai)localObject4).svrId = ((Bundle)localObject3).getString("attach_fileId");
         ((List)localObject1).add(localObject4);
       }
       if (this.mode != 20) {
         break;
       }
-      this.qDO.setVisibility(0);
-      this.HoC.setVisibility(8);
+      this.tID.setVisibility(0);
+      this.Nmp.setVisibility(8);
       if (((String)localObject2).indexOf("<div>") != -1)
       {
         Log.i("MicroMsg.Mail.ComposeUI", "set content in html format");
-        this.qDO.setText(Html.fromHtml((String)localObject2));
+        this.tID.setText(Html.fromHtml((String)localObject2));
         break;
       }
-      this.qDO.setText((CharSequence)localObject2);
+      this.tID.setText((CharSequence)localObject2);
       break;
       if ((localObject1 != null) && (this.mode == 21))
       {
         Log.i("MicroMsg.Mail.ComposeUI", "read mail from draftMail");
-        this.Hoo.k(((com.tencent.mm.plugin.qqmail.d.i)localObject1).HlK, false);
-        this.Hos.k(((com.tencent.mm.plugin.qqmail.d.i)localObject1).HlL, false);
-        this.Hov.k(((com.tencent.mm.plugin.qqmail.d.i)localObject1).HlM, false);
-        this.Hox.setText(((com.tencent.mm.plugin.qqmail.d.i)localObject1).BDX);
-        localObject2 = ((com.tencent.mm.plugin.qqmail.d.i)localObject1).content;
+        this.Nmb.y(((com.tencent.mm.plugin.qqmail.model.h)localObject1).Njy, false);
+        this.Nmf.y(((com.tencent.mm.plugin.qqmail.model.h)localObject1).Njz, false);
+        this.Nmi.y(((com.tencent.mm.plugin.qqmail.model.h)localObject1).NjA, false);
+        this.Nmk.setText(((com.tencent.mm.plugin.qqmail.model.h)localObject1).Hox);
+        localObject2 = ((com.tencent.mm.plugin.qqmail.model.h)localObject1).content;
         this.mode = 20;
         if (((String)localObject2).indexOf("<div>") != -1)
         {
           Log.i("MicroMsg.Mail.ComposeUI", "set content in html format");
-          this.qDO.setText(Html.fromHtml((String)localObject2));
+          this.tID.setText(Html.fromHtml((String)localObject2));
         }
         for (;;)
         {
-          this.HoE.gB(((com.tencent.mm.plugin.qqmail.d.i)localObject1).HlN);
-          this.HoE.fsV();
-          this.HoC.setVisibility(8);
-          this.qDO.setVisibility(0);
+          this.Nmr.jB(((com.tencent.mm.plugin.qqmail.model.h)localObject1).NjB);
+          this.Nmr.gEE();
+          this.Nmp.setVisibility(8);
+          this.tID.setVisibility(0);
           break;
-          this.qDO.setText((CharSequence)localObject2);
+          this.tID.setText((CharSequence)localObject2);
         }
       }
       Log.i("MicroMsg.Mail.ComposeUI", "no extra or draf mail content");
       if (this.mode == 21)
       {
-        fsG();
-        this.Hoo.requestFocus();
-        this.HoQ = String.format(this.HoP, new Object[] { "" });
-        this.HoC.loadDataWithBaseURL("", this.HoQ, "text/html", "utf-8", "");
-        this.qDO.setVisibility(8);
-        this.HoC.setVisibility(0);
+        gEp();
+        this.Nmb.requestFocus();
+        this.NmD = String.format(this.NmC, new Object[] { "" });
+        this.Nmp.loadDataWithBaseURL("", this.NmD, "text/html", "utf-8", "");
+        this.tID.setVisibility(8);
+        this.Nmp.setVisibility(0);
         break;
       }
       if (this.mode != 20) {
         break;
       }
-      this.HoC.setVisibility(8);
-      this.qDO.setVisibility(0);
+      this.Nmp.setVisibility(8);
+      this.tID.setVisibility(0);
       break;
     }
     if (!((List)localObject1).isEmpty()) {
-      this.HoE.gB((List)localObject1);
+      this.Nmr.jB((List)localObject1);
     }
     for (;;)
     {
       label1108:
-      if ((this.Hos.getMailAddrs().size() > 0) || (this.Hov.getMailAddrs().size() > 0))
+      if ((this.Nmf.getMailAddrs().size() > 0) || (this.Nmi.getMailAddrs().size() > 0))
       {
-        this.Hoq.setVisibility(8);
-        this.Hor.setVisibility(0);
-        this.Hou.setVisibility(0);
+        this.Nmd.setVisibility(8);
+        this.Nme.setVisibility(0);
+        this.Nmh.setVisibility(0);
       }
-      if ((this.HlJ == 2) && (this.mode != 21) && (this.mode == 20))
+      if ((this.Njx == 2) && (this.mode != 21) && (this.mode == 20))
       {
-        this.qDO.requestFocus();
-        this.qDO.setSelection(0);
-        this.Hon.postDelayed(new Runnable()
+        this.tID.requestFocus();
+        this.tID.setSelection(0);
+        this.Nma.postDelayed(new Runnable()
         {
           public final void run()
           {
@@ -760,27 +793,27 @@ public class ComposeUI
           }
         }, 1000L);
       }
-      this.Hoo.setOnActionListener(new c(this.Hop, 0));
-      this.Hos.setOnActionListener(new c(this.Hot, 1));
-      this.Hov.setOnActionListener(new c(this.How, 2));
+      this.Nmb.setOnActionListener(new c(this.Nmc, 0));
+      this.Nmf.setOnActionListener(new c(this.Nmg, 1));
+      this.Nmi.setOnActionListener(new c(this.Nmj, 2));
       localObject1 = new MailAddrsViewControl.a()
       {
         public final void b(final MailAddrsViewControl paramAnonymousMailAddrsViewControl)
         {
           AppMethodBeat.i(122926);
-          com.tencent.mm.ui.base.h.a(ComposeUI.this.getContext(), ComposeUI.this.getString(e.i.plugin_qqmail_mail_addr_format_invalid), "", new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          com.tencent.mm.ui.base.k.a(ComposeUI.this.getContext(), ComposeUI.this.getString(e.i.plugin_qqmail_mail_addr_format_invalid), "", new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
           {
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
               AppMethodBeat.i(122923);
-              paramAnonymousMailAddrsViewControl.Hqw.setText("");
+              paramAnonymousMailAddrsViewControl.Nok.setText("");
               ComposeUI.i(ComposeUI.this).postDelayed(new Runnable()
               {
                 public final void run()
                 {
                   AppMethodBeat.i(122922);
                   ComposeUI.h(ComposeUI.this);
-                  ComposeUI.15.1.this.Hpm.requestFocus();
+                  ComposeUI.15.1.this.Nna.requestFocus();
                   ComposeUI.this.showVKB();
                   AppMethodBeat.o(122922);
                 }
@@ -798,7 +831,7 @@ public class ComposeUI
                 {
                   AppMethodBeat.i(122924);
                   ComposeUI.h(ComposeUI.this);
-                  ComposeUI.15.2.this.Hpm.requestFocus();
+                  ComposeUI.15.2.this.Nna.requestFocus();
                   ComposeUI.this.showVKB();
                   AppMethodBeat.o(122924);
                 }
@@ -809,26 +842,26 @@ public class ComposeUI
           AppMethodBeat.o(122926);
         }
         
-        public final void fsK()
+        public final void gEt()
         {
           AppMethodBeat.i(122927);
-          w.a(ComposeUI.this, ComposeUI.this.getString(e.i.plugin_qqmail_mail_addr_format_invalid), 1500L);
+          com.tencent.mm.ui.base.aa.a(ComposeUI.this, ComposeUI.this.getString(e.i.plugin_qqmail_mail_addr_format_invalid), 1500L);
           AppMethodBeat.o(122927);
         }
       };
-      this.Hoo.setInvalidMailAddrListener((MailAddrsViewControl.a)localObject1);
-      this.Hos.setInvalidMailAddrListener((MailAddrsViewControl.a)localObject1);
-      this.Hov.setInvalidMailAddrListener((MailAddrsViewControl.a)localObject1);
-      this.Hop.setOnClickListener(new View.OnClickListener()
+      this.Nmb.setInvalidMailAddrListener((MailAddrsViewControl.a)localObject1);
+      this.Nmf.setInvalidMailAddrListener((MailAddrsViewControl.a)localObject1);
+      this.Nmi.setInvalidMailAddrListener((MailAddrsViewControl.a)localObject1);
+      this.Nmc.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(122928);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/ComposeUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/ComposeUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           paramAnonymousView = new Intent(ComposeUI.this, MailAddrListUI.class);
-          paramAnonymousView.putExtra("INIT_SELECTED_ADDRS_INTENT_EXTRA", ComposeUI.this.Hoo.getMailAddrStringArray());
+          paramAnonymousView.putExtra("INIT_SELECTED_ADDRS_INTENT_EXTRA", ComposeUI.this.Nmb.getMailAddrStringArray());
           paramAnonymousView.putExtra("MMActivity.OverrideExitAnimation", e.a.push_down_out);
           paramAnonymousView.putExtra("MMActivity.OverrideEnterAnimation", e.a.fast_faded_in);
           ComposeUI.this.startActivityForResult(paramAnonymousView, 0);
@@ -837,14 +870,14 @@ public class ComposeUI
           AppMethodBeat.o(122928);
         }
       });
-      this.Hot.setOnClickListener(new View.OnClickListener()
+      this.Nmg.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(122929);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/ComposeUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/ComposeUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           paramAnonymousView = new Intent(ComposeUI.this, MailAddrListUI.class);
           paramAnonymousView.putExtra("INIT_SELECTED_ADDRS_INTENT_EXTRA", ComposeUI.e(ComposeUI.this).getMailAddrStringArray());
           paramAnonymousView.putExtra("MMActivity.OverrideExitAnimation", e.a.push_down_out);
@@ -855,14 +888,14 @@ public class ComposeUI
           AppMethodBeat.o(122929);
         }
       });
-      this.How.setOnClickListener(new View.OnClickListener()
+      this.Nmj.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(122930);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/ComposeUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/ComposeUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           paramAnonymousView = new Intent(ComposeUI.this, MailAddrListUI.class);
           paramAnonymousView.putExtra("INIT_SELECTED_ADDRS_INTENT_EXTRA", ComposeUI.f(ComposeUI.this).getMailAddrStringArray());
           paramAnonymousView.putExtra("MMActivity.OverrideExitAnimation", e.a.push_down_out);
@@ -873,32 +906,87 @@ public class ComposeUI
           AppMethodBeat.o(122930);
         }
       });
-      this.Hoq.setOnClickListener(this.Hpb);
+      this.Nmd.setOnClickListener(this.NmO);
       localObject1 = (ImageView)findViewById(e.e.qqmail_compose_subject_clear_iv);
-      if ((this.HoJ) && (this.Hox.getText().length() > 0)) {
+      if ((this.Nmw) && (this.Nmk.getText().length() > 0)) {
         ((ImageView)localObject1).setVisibility(0);
       }
-      this.Hox.setOnFocusChangeListener(new ComposeUI.19(this));
-      this.Hox.addTextChangedListener(new ComposeUI.2(this, (ImageView)localObject1));
-      ((ImageView)localObject1).setOnClickListener(new ComposeUI.3(this));
-      this.Hoy.setOnClickListener(this.Hpc);
+      this.Nmk.setOnFocusChangeListener(new View.OnFocusChangeListener()
+      {
+        public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
+        {
+          AppMethodBeat.i(122931);
+          if (paramAnonymousBoolean) {
+            ComposeUI.j(ComposeUI.this).setSelection(ComposeUI.j(ComposeUI.this).getText().length());
+          }
+          AppMethodBeat.o(122931);
+        }
+      });
+      this.Nmk.addTextChangedListener(new TextWatcher()
+      {
+        public final void afterTextChanged(Editable paramAnonymousEditable) {}
+        
+        public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
+        
+        public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
+        {
+          paramAnonymousInt1 = 4;
+          AppMethodBeat.i(122893);
+          if (ComposeUI.this.Nmw)
+          {
+            paramAnonymousCharSequence = this.NmT;
+            if (ComposeUI.j(ComposeUI.this).getText().length() > 0) {
+              paramAnonymousInt1 = 0;
+            }
+            paramAnonymousCharSequence.setVisibility(paramAnonymousInt1);
+            AppMethodBeat.o(122893);
+            return;
+          }
+          this.NmT.setVisibility(4);
+          AppMethodBeat.o(122893);
+        }
+      });
+      ((ImageView)localObject1).setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(122894);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/ComposeUI$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          ComposeUI.j(ComposeUI.this).getText().clear();
+          ComposeUI.j(ComposeUI.this).requestFocus();
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/ComposeUI$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(122894);
+        }
+      });
+      this.Nml.setOnClickListener(this.NmP);
       setMMTitle(e.i.plugin_qqmail_composeui_title);
-      setBackBtn(this.Hpd);
-      addTextOptionMenu(0, getString(e.i.app_send), new ComposeUI.4(this));
+      setBackBtn(this.NmQ);
+      addTextOptionMenu(0, getString(e.i.app_send), new MenuItem.OnMenuItemClickListener()
+      {
+        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+        {
+          AppMethodBeat.i(122895);
+          ComposeUI.k(ComposeUI.this).onClick(null);
+          AppMethodBeat.o(122895);
+          return false;
+        }
+      });
       enableOptionMenu(false);
-      fsF();
+      gEo();
       AppMethodBeat.o(122944);
       return;
       label1512:
       localObject1 = getIntent().getStringExtra("subject");
       if (!Util.isNullOrNil((String)localObject1)) {
-        this.Hox.setText((CharSequence)localObject1);
+        this.Nmk.setText((CharSequence)localObject1);
       }
-      if (this.HoS != null)
+      if (this.NmF != null)
       {
-        localObject1 = this.HoS.iterator();
+        localObject1 = this.NmF.iterator();
         while (((Iterator)localObject1).hasNext()) {
-          aVh((String)((Iterator)localObject1).next());
+          aSp((String)((Iterator)localObject1).next());
         }
       }
     }
@@ -919,38 +1007,38 @@ public class ComposeUI
     {
       AppMethodBeat.o(122953);
       return;
-      a(this.Hoo);
+      a(this.Nmb);
       showVKB();
       AppMethodBeat.o(122953);
       return;
-      a(this.Hos);
+      a(this.Nmf);
       showVKB();
       AppMethodBeat.o(122953);
       return;
-      a(this.Hov);
+      a(this.Nmi);
       showVKB();
       AppMethodBeat.o(122953);
       return;
-      paramIntent = u.g(this, paramIntent, com.tencent.mm.plugin.image.d.bbW());
+      paramIntent = t.g(this, paramIntent, com.tencent.mm.plugin.image.d.bzL());
       if (paramIntent != null)
       {
-        aVh(paramIntent);
-        fsF();
+        aSp(paramIntent);
+        gEo();
         AppMethodBeat.o(122953);
         return;
         if (paramIntent != null)
         {
-          paramIntent = com.tencent.mm.ui.tools.b.h(this, paramIntent, com.tencent.mm.plugin.image.d.bbW());
+          paramIntent = com.tencent.mm.ui.tools.b.i(this, paramIntent, com.tencent.mm.plugin.image.d.bzL());
           if ((paramIntent != null) && (paramIntent.length() > 0))
           {
-            aVh(paramIntent);
-            fsF();
+            aSp(paramIntent);
+            gEo();
             AppMethodBeat.o(122953);
             return;
             if (paramIntent != null)
             {
-              aVh(paramIntent.getStringExtra("choosed_file_path"));
-              fsF();
+              aSp(paramIntent.getStringExtra("choosed_file_path"));
+              gEo();
             }
           }
         }
@@ -962,22 +1050,22 @@ public class ComposeUI
   {
     AppMethodBeat.i(122939);
     super.onCreate(paramBundle);
-    this.HoP = (this.HoN + "%s" + this.HoO);
-    this.HoW = false;
-    this.HoX = false;
-    this.HlJ = getIntent().getIntExtra("composeType", 1);
-    this.HoG = getIntent().getStringExtra("mailid");
-    if (this.HoG == null) {
-      this.HoG = "";
+    this.NmC = (this.NmA + "%s" + this.NmB);
+    this.NmJ = false;
+    this.NmK = false;
+    this.Njx = getIntent().getIntExtra("composeType", 1);
+    this.Nmt = getIntent().getStringExtra("mailid");
+    if (this.Nmt == null) {
+      this.Nmt = "";
     }
     this.mode = getIntent().getIntExtra("mail_mode", 20);
     Log.d("MicroMsg.Mail.ComposeUI", "onCreate, mode = %d", new Object[] { Integer.valueOf(this.mode) });
     initView();
-    this.HoD = ((k)com.tencent.mm.kernel.h.ag(k.class)).getNormalMailAppService().Hmn;
-    this.HoD.a(this.Hpa);
-    this.HoD.fso();
-    this.HoZ.startTimer(180000L);
-    com.tencent.mm.kernel.h.aGY().a(11166, this);
+    this.Nmq = ((j)com.tencent.mm.kernel.h.az(j.class)).getNormalMailAppService().Nkb;
+    this.Nmq.a(this.NmN);
+    this.Nmq.gDW();
+    this.NmM.startTimer(180000L);
+    com.tencent.mm.kernel.h.aZW().a(11166, this);
     AppMethodBeat.o(122939);
   }
   
@@ -985,16 +1073,16 @@ public class ComposeUI
   {
     AppMethodBeat.i(122942);
     super.onDestroy();
-    if (Hom != null) {
-      Hom = null;
+    if (NlZ != null) {
+      NlZ = null;
     }
-    this.HoE.fsT();
-    b localb = this.HoE;
-    com.tencent.mm.kernel.h.aHF().kcd.b(11665, localb);
-    this.HoD.b(this.Hpa);
-    this.HoF.release();
-    com.tencent.mm.kernel.h.aGY().b(11166, this);
-    this.HoZ.stopTimer();
+    this.Nmr.gEC();
+    b localb = this.Nmr;
+    com.tencent.mm.kernel.h.baD().mCm.b(11665, localb);
+    this.Nmq.b(this.NmN);
+    this.Nms.release();
+    com.tencent.mm.kernel.h.aZW().b(11166, this);
+    this.NmM.stopTimer();
     AppMethodBeat.o(122942);
   }
   
@@ -1003,7 +1091,7 @@ public class ComposeUI
     AppMethodBeat.i(122946);
     if (paramInt == 4)
     {
-      this.Hpd.onMenuItemClick(null);
+      this.NmQ.onMenuItemClick(null);
       AppMethodBeat.o(122946);
       return true;
     }
@@ -1017,9 +1105,9 @@ public class ComposeUI
     AppMethodBeat.i(122941);
     super.onPause();
     hideVKB();
-    this.HoY.stopTimer();
-    if (this.HoH != null) {
-      this.HoH.dismiss();
+    this.NmL.stopTimer();
+    if (this.Nmu != null) {
+      this.Nmu.dismiss();
     }
     AppMethodBeat.o(122941);
   }
@@ -1043,11 +1131,19 @@ public class ComposeUI
       return;
       if (paramArrayOfInt[0] == 0)
       {
-        euy();
+        fBt();
         AppMethodBeat.o(122948);
         return;
       }
-      com.tencent.mm.ui.base.h.a(this, getString(e.i.permission_camera_request_again_msg), getString(e.i.permission_tips_title), getString(e.i.jump_to_settings), getString(e.i.app_cancel), false, new ComposeUI.8(this), null);
+      com.tencent.mm.ui.base.k.a(this, getString(e.i.permission_camera_request_again_msg), getString(e.i.permission_tips_title), getString(e.i.jump_to_settings), getString(e.i.app_cancel), false, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(266941);
+          com.tencent.mm.pluginsdk.permission.b.lx(ComposeUI.this.getContext());
+          AppMethodBeat.o(266941);
+        }
+      }, null);
     }
   }
   
@@ -1055,47 +1151,47 @@ public class ComposeUI
   {
     AppMethodBeat.i(122940);
     super.onResume();
-    this.HoY.startTimer(1500L);
+    this.NmL.startTimer(1500L);
     AppMethodBeat.o(122940);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(249833);
+    AppMethodBeat.i(267109);
     Log.i("MicroMsg.Mail.ComposeUI", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if (!((com.tencent.mm.plugin.qqmail.e.d)paramq).fIY.equals(this.fIY))
+    if (!((com.tencent.mm.plugin.qqmail.d.d)paramp).hOG.equals(this.hOG))
     {
       Log.w("MicroMsg.Mail.ComposeUI", "not current request, ignore");
-      AppMethodBeat.o(249833);
+      AppMethodBeat.o(267109);
       return;
     }
-    if (this.ncM != null) {
-      this.ncM.dismiss();
+    if (this.qbW != null) {
+      this.qbW.dismiss();
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       Toast.makeText(this, e.i.plugin_qqmail_compose_send_success, 1).show();
-      paramString = ((k)com.tencent.mm.kernel.h.ag(k.class)).getNormalMailAppService().Hmo;
-      paramq = this.HoG;
-      paramInt1 = this.HlJ;
-      paramString = new com.tencent.mm.vfs.q(paramString.HlI.HlQ + com.tencent.mm.plugin.qqmail.d.h.fH(paramq, paramInt1));
-      if (paramString.ifE()) {
-        paramString.cFq();
+      paramString = ((j)com.tencent.mm.kernel.h.az(j.class)).getNormalMailAppService().Nkc;
+      paramp = this.Nmt;
+      paramInt1 = this.Njx;
+      paramString = new com.tencent.mm.vfs.u(paramString.Njw.NjE + g.gz(paramp, paramInt1));
+      if (paramString.jKS()) {
+        paramString.diJ();
       }
-      this.HoD.gy(this.Hoo.getMailAddrs());
-      this.HoD.gy(this.Hos.getMailAddrs());
-      this.HoD.gy(this.Hov.getMailAddrs());
+      this.Nmq.jy(this.Nmb.getMailAddrs());
+      this.Nmq.jy(this.Nmf.getMailAddrs());
+      this.Nmq.jy(this.Nmi.getMailAddrs());
       setResult(-1);
       finish();
-      AppMethodBeat.o(249833);
+      AppMethodBeat.o(267109);
       return;
     }
-    paramq = paramString;
+    paramp = paramString;
     if (Util.isNullOrNil(paramString)) {
-      paramq = getString(e.i.plugin_qqmail_compose_send_error);
+      paramp = getString(e.i.plugin_qqmail_compose_send_error);
     }
-    Toast.makeText(this, paramq, 1).show();
-    AppMethodBeat.o(249833);
+    Toast.makeText(this, paramp, 1).show();
+    AppMethodBeat.o(267109);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -1107,7 +1203,7 @@ public class ComposeUI
   public void setRequestedOrientation(int paramInt) {}
   
   final class a
-    extends x
+    extends z
   {
     private a() {}
     
@@ -1121,7 +1217,7 @@ public class ComposeUI
       Object localObject3;
       for (Object localObject1 = paramConsoleMessage.message();; localObject1 = null)
       {
-        localObject1 = com.tencent.mm.pluginsdk.ui.tools.ab.bsd((String)localObject1);
+        localObject1 = com.tencent.mm.pluginsdk.ui.tools.aa.brU((String)localObject1);
         if (!((String)localObject1).startsWith(ComposeUI.l(ComposeUI.this))) {
           break label349;
         }
@@ -1133,16 +1229,16 @@ public class ComposeUI
           localObject3 = localObject4[0];
           localObject4 = localObject4[1];
           Log.i("MicroMsg.Mail.ComposeUI", "img onclick, src: %s, msgLocalId: %s, msgSvrId: %s", new Object[] { localObject1[1], localObject3, localObject4 });
-          localObject3 = ((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().Oq(Integer.valueOf((String)localObject3).intValue());
+          localObject3 = ((n)com.tencent.mm.kernel.h.ax(n.class)).gaZ().sl(Integer.valueOf((String)localObject3).intValue());
           localObject1 = new Intent(ComposeUI.this, MailImageDownloadUI.class);
-          ((Intent)localObject1).putExtra("img_msg_id", ((et)localObject3).field_msgId);
-          ((Intent)localObject1).putExtra("img_server_id", ((et)localObject3).field_msgSvrId);
+          ((Intent)localObject1).putExtra("img_msg_id", ((fi)localObject3).field_msgId);
+          ((Intent)localObject1).putExtra("img_server_id", ((fi)localObject3).field_msgSvrId);
           ((Intent)localObject1).putExtra("img_download_compress_type", 0);
-          ((Intent)localObject1).putExtra("img_download_username", ((et)localObject3).field_talker);
+          ((Intent)localObject1).putExtra("img_download_username", ((fi)localObject3).field_talker);
           localObject3 = ComposeUI.this;
-          localObject1 = new com.tencent.mm.hellhoundlib.b.a().bm(localObject1);
-          com.tencent.mm.hellhoundlib.a.a.b(localObject3, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aFh(), "com/tencent/mm/plugin/qqmail/ui/ComposeUI$ContentChromeClient", "onConsoleMessage", "(Landroid/webkit/ConsoleMessage;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          ((ComposeUI)localObject3).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).sf(0));
+          localObject1 = new com.tencent.mm.hellhoundlib.b.a().cG(localObject1);
+          com.tencent.mm.hellhoundlib.a.a.b(localObject3, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aYi(), "com/tencent/mm/plugin/qqmail/ui/ComposeUI$ContentChromeClient", "onConsoleMessage", "(Landroid/webkit/ConsoleMessage;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          ((ComposeUI)localObject3).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).sb(0));
           com.tencent.mm.hellhoundlib.a.a.c(localObject3, "com/tencent/mm/plugin/qqmail/ui/ComposeUI$ContentChromeClient", "onConsoleMessage", "(Landroid/webkit/ConsoleMessage;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(122932);
           return true;
@@ -1178,7 +1274,7 @@ public class ComposeUI
             {
               Log.w("MicroMsg.Mail.ComposeUI", "consoleMessage GET_MAIL_CONTENT, ex = %s", new Object[] { paramConsoleMessage.getMessage() });
             }
-            com.tencent.mm.pluginsdk.ui.tools.ab.b(ComposeUI.r(ComposeUI.this), ComposeUI.s(ComposeUI.this), ComposeUI.t(ComposeUI.this));
+            com.tencent.mm.pluginsdk.ui.tools.aa.b(ComposeUI.r(ComposeUI.this), ComposeUI.s(ComposeUI.this), ComposeUI.t(ComposeUI.this));
             AppMethodBeat.o(122932);
             return true;
           }
@@ -1224,9 +1320,9 @@ public class ComposeUI
   }
   
   final class b
-    extends ad
+    extends ag
   {
-    private boolean Hpq = false;
+    private boolean Nne = false;
     
     private b() {}
     
@@ -1245,16 +1341,16 @@ public class ComposeUI
           paramString = localObject1[0];
           localObject1 = localObject1[1];
           Log.i("MicroMsg.Mail.ComposeUI", "img onclick, src: %s, msgLocalId: %s, msgSvrId: %s", new Object[] { paramWebView[1], paramString, localObject1 });
-          paramString = ((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().Oq(Integer.valueOf(paramString).intValue());
+          paramString = ((n)com.tencent.mm.kernel.h.ax(n.class)).gaZ().sl(Integer.valueOf(paramString).intValue());
           paramWebView = new Intent(ComposeUI.this, MailImageDownloadUI.class);
           paramWebView.putExtra("img_msg_id", paramString.field_msgId);
           paramWebView.putExtra("img_server_id", paramString.field_msgSvrId);
           paramWebView.putExtra("img_download_compress_type", 0);
           paramWebView.putExtra("img_download_username", paramString.field_talker);
           paramString = ComposeUI.this;
-          paramWebView = new com.tencent.mm.hellhoundlib.b.a().bm(paramWebView);
-          com.tencent.mm.hellhoundlib.a.a.b(paramString, paramWebView.aFh(), "com/tencent/mm/plugin/qqmail/ui/ComposeUI$ContentClient", "shouldOverrideUrlLoading", "(Lcom/tencent/xweb/WebView;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramString.startActivity((Intent)paramWebView.sf(0));
+          paramWebView = new com.tencent.mm.hellhoundlib.b.a().cG(paramWebView);
+          com.tencent.mm.hellhoundlib.a.a.b(paramString, paramWebView.aYi(), "com/tencent/mm/plugin/qqmail/ui/ComposeUI$ContentClient", "shouldOverrideUrlLoading", "(Lcom/tencent/xweb/WebView;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramString.startActivity((Intent)paramWebView.sb(0));
           com.tencent.mm.hellhoundlib.a.a.c(paramString, "com/tencent/mm/plugin/qqmail/ui/ComposeUI$ContentClient", "shouldOverrideUrlLoading", "(Lcom/tencent/xweb/WebView;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(122933);
           return true;
@@ -1288,7 +1384,7 @@ public class ComposeUI
             {
               Log.w("MicroMsg.Mail.ComposeUI", "shouldOverrideUrlLoading GET_MAIL_CONTENT, ex = %s", new Object[] { paramWebView.getMessage() });
             }
-            com.tencent.mm.pluginsdk.ui.tools.ab.b(ComposeUI.r(ComposeUI.this), ComposeUI.s(ComposeUI.this), ComposeUI.t(ComposeUI.this));
+            com.tencent.mm.pluginsdk.ui.tools.aa.b(ComposeUI.r(ComposeUI.this), ComposeUI.s(ComposeUI.this), ComposeUI.t(ComposeUI.this));
             AppMethodBeat.o(122933);
             return true;
           }
@@ -1335,13 +1431,13 @@ public class ComposeUI
     public final void b(WebView paramWebView, String paramString)
     {
       AppMethodBeat.i(122935);
-      Log.d("MicroMsg.Mail.ComposeUI", "onPageFinished, url = %s, firstTimeLoaded = %b", new Object[] { paramString, Boolean.valueOf(this.Hpq) });
-      if (!this.Hpq)
+      Log.d("MicroMsg.Mail.ComposeUI", "onPageFinished, url = %s, firstTimeLoaded = %b", new Object[] { paramString, Boolean.valueOf(this.Nne) });
+      if (!this.Nne)
       {
-        this.Hpq = true;
-        com.tencent.mm.pluginsdk.ui.tools.ab.b(ComposeUI.r(ComposeUI.this), ComposeUI.m(ComposeUI.this), ComposeUI.w(ComposeUI.this));
+        this.Nne = true;
+        com.tencent.mm.pluginsdk.ui.tools.aa.b(ComposeUI.r(ComposeUI.this), ComposeUI.m(ComposeUI.this), ComposeUI.w(ComposeUI.this));
         if (ComposeUI.this.getIntent().getBooleanExtra("mail_edit_mode", false)) {
-          com.tencent.mm.pluginsdk.ui.tools.ab.b(ComposeUI.r(ComposeUI.this), ComposeUI.s(ComposeUI.this), ComposeUI.t(ComposeUI.this));
+          com.tencent.mm.pluginsdk.ui.tools.aa.b(ComposeUI.r(ComposeUI.this), ComposeUI.s(ComposeUI.this), ComposeUI.t(ComposeUI.this));
         }
       }
       super.b(paramWebView, paramString);
@@ -1354,7 +1450,7 @@ public class ComposeUI
       super.b(paramWebView, paramString, paramBitmap);
       if (!ComposeUI.u(ComposeUI.this))
       {
-        com.tencent.mm.pluginsdk.ui.tools.ab.d(ComposeUI.r(ComposeUI.this));
+        com.tencent.mm.pluginsdk.ui.tools.aa.e(ComposeUI.r(ComposeUI.this));
         ComposeUI.v(ComposeUI.this);
       }
       AppMethodBeat.o(122934);
@@ -1364,23 +1460,23 @@ public class ComposeUI
   final class c
     extends MailAddrsViewControl.c
   {
-    private ImageView Hpr;
+    private ImageView Nnf;
     private int tag;
     
     public c(ImageView paramImageView, int paramInt)
     {
-      this.Hpr = paramImageView;
+      this.Nnf = paramImageView;
       this.tag = paramInt;
     }
     
-    public final void wm(boolean paramBoolean)
+    public final void AM(boolean paramBoolean)
     {
       int i = 0;
       AppMethodBeat.i(122937);
       ComposeUI.x(ComposeUI.this);
       Object localObject;
-      if (ComposeUI.this.HoK) {
-        localObject = this.Hpr;
+      if (ComposeUI.this.Nmx) {
+        localObject = this.Nnf;
       }
       for (;;)
       {
@@ -1391,7 +1487,7 @@ public class ComposeUI
             public final void run()
             {
               AppMethodBeat.i(122936);
-              if ((!ComposeUI.e(ComposeUI.this).Hqw.isFocused()) && (!ComposeUI.f(ComposeUI.this).Hqw.isFocused()) && (ComposeUI.e(ComposeUI.this).getMailAddrs().size() == 0) && (ComposeUI.f(ComposeUI.this).getMailAddrs().size() == 0) && (ComposeUI.e(ComposeUI.this).fsX()) && (ComposeUI.f(ComposeUI.this).fsX()))
+              if ((!ComposeUI.e(ComposeUI.this).Nok.isFocused()) && (!ComposeUI.f(ComposeUI.this).Nok.isFocused()) && (ComposeUI.e(ComposeUI.this).getMailAddrs().size() == 0) && (ComposeUI.f(ComposeUI.this).getMailAddrs().size() == 0) && (ComposeUI.e(ComposeUI.this).gEG()) && (ComposeUI.f(ComposeUI.this).gEG()))
               {
                 ComposeUI.y(ComposeUI.this).setVisibility(0);
                 ComposeUI.z(ComposeUI.this).setVisibility(8);
@@ -1403,7 +1499,7 @@ public class ComposeUI
         }
         AppMethodBeat.o(122937);
         return;
-        ImageView localImageView = this.Hpr;
+        ImageView localImageView = this.Nnf;
         localObject = localImageView;
         if (!paramBoolean)
         {
@@ -1416,7 +1512,7 @@ public class ComposeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.ComposeUI
  * JD-Core Version:    0.7.0.1
  */

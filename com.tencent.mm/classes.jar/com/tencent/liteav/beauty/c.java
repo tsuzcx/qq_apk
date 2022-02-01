@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.opengl.GLES20;
 import android.opengl.GLES30;
-import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
@@ -12,6 +11,7 @@ import android.os.Message;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.opengl.TXCOpenGlUtils;
 import com.tencent.liteav.basic.opengl.TXCOpenGlUtils.a;
+import com.tencent.liteav.basic.util.TXCBuild;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
 import com.tencent.liteav.beauty.b.i;
@@ -245,16 +245,16 @@ class c
   
   private int B(int paramInt)
   {
-    AppMethodBeat.i(231610);
+    AppMethodBeat.i(229813);
     GLES20.glViewport(0, 0, this.H, this.I);
     paramInt = a(this.Y.r(), paramInt, 0L);
-    AppMethodBeat.o(231610);
+    AppMethodBeat.o(229813);
     return paramInt;
   }
   
   private int a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(231604);
+    AppMethodBeat.i(229799);
     if (true == this.au) {
       if (this.aW != null)
       {
@@ -264,7 +264,7 @@ class c
     }
     for (;;)
     {
-      AppMethodBeat.o(231604);
+      AppMethodBeat.o(229799);
       return 0;
       if (this.aR != null)
       {
@@ -284,25 +284,25 @@ class c
             this.aK = TXCTimeUtil.getTimeTick();
           }
           GLES30.glPixelStorei(3333, 1);
-          if (Build.VERSION.SDK_INT >= 18) {
+          if (TXCBuild.VersionInt() >= 18) {
             GLES30.glReadBuffer(1029);
           }
           GLES30.glBindBuffer(35051, this.aP[0]);
           NativeLoad.nativeGlReadPixs(paramInt1, paramInt2, null);
           Object localObject = null;
-          if (Build.VERSION.SDK_INT >= 18)
+          if (TXCBuild.VersionInt() >= 18)
           {
             ByteBuffer localByteBuffer = (ByteBuffer)GLES30.glMapBufferRange(35051, 0, paramInt1 * paramInt2 * 4, 1);
             localObject = localByteBuffer;
             if (localByteBuffer == null)
             {
               TXCLog.e("TXCFilterDrawer", "glMapBufferRange is null");
-              AppMethodBeat.o(231604);
+              AppMethodBeat.o(229799);
               return -1;
             }
           }
           NativeLoad.nativeGlMapBufferToQueue(paramInt1, paramInt2, localObject);
-          if (Build.VERSION.SDK_INT >= 18) {
+          if (TXCBuild.VersionInt() >= 18) {
             GLES30.glUnmapBuffer(35051);
           }
           GLES30.glBindBuffer(35051, 0);
@@ -317,7 +317,7 @@ class c
   
   private int a(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(231603);
+    AppMethodBeat.i(229789);
     if (this.V == 0) {
       if (this.aW != null)
       {
@@ -331,7 +331,7 @@ class c
     for (;;)
     {
       this.aW.a(paramInt, this.O, this.P, paramLong);
-      AppMethodBeat.o(231603);
+      AppMethodBeat.o(229789);
       return paramInt;
       if ((1 == this.V) || (3 == this.V) || (2 == this.V))
       {
@@ -339,7 +339,7 @@ class c
         if (this.Z == null)
         {
           TXCLog.e("TXCFilterDrawer", "mRGBA2I420Filter is null!");
-          AppMethodBeat.o(231603);
+          AppMethodBeat.o(229789);
           return paramInt;
         }
         GLES20.glBindFramebuffer(36160, this.b[0]);
@@ -350,20 +350,20 @@ class c
         for (;;)
         {
           GLES20.glBindFramebuffer(36160, 0);
-          AppMethodBeat.o(231603);
+          AppMethodBeat.o(229789);
           return paramInt;
           a(this.O, this.P * 3 / 8);
         }
       }
       TXCLog.e("TXCFilterDrawer", "Don't support format!");
-      AppMethodBeat.o(231603);
+      AppMethodBeat.o(229789);
       return -1;
     }
   }
   
   private void a(int paramInt1, int paramInt2, float paramFloat1, Bitmap paramBitmap1, float paramFloat2, Bitmap paramBitmap2, float paramFloat3)
   {
-    AppMethodBeat.i(231643);
+    AppMethodBeat.i(229843);
     if (this.ak == null)
     {
       TXCLog.i("TXCFilterDrawer", "createComLooKupFilter");
@@ -372,17 +372,17 @@ class c
       {
         this.ak.a(true);
         this.ak.a(paramInt1, paramInt2);
-        AppMethodBeat.o(231643);
+        AppMethodBeat.o(229843);
         return;
       }
       TXCLog.e("TXCFilterDrawer", "mLookupFilterGroup init failed!");
     }
-    AppMethodBeat.o(231643);
+    AppMethodBeat.o(229843);
   }
   
   private void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(231638);
+    AppMethodBeat.i(229838);
     TXCLog.i("TXCFilterDrawer", "create Beauty Filter!");
     if (paramInt3 == 0)
     {
@@ -394,7 +394,7 @@ class c
     while (this.aa == null)
     {
       TXCLog.e("TXCFilterDrawer", "mBeautyFilter set error!");
-      AppMethodBeat.o(231638);
+      AppMethodBeat.o(229838);
       return;
       if (1 == paramInt3)
       {
@@ -433,14 +433,14 @@ class c
       if (this.aD > 0)
       {
         this.aa.f(this.aD);
-        AppMethodBeat.o(231638);
+        AppMethodBeat.o(229838);
       }
     }
     else
     {
       TXCLog.e("TXCFilterDrawer", "mBeautyFilter init failed!");
     }
-    AppMethodBeat.o(231638);
+    AppMethodBeat.o(229838);
   }
   
   /* Error */
@@ -550,7 +550,7 @@ class c
   
   private void a(com.tencent.liteav.basic.opengl.a parama, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, int paramInt5, int paramInt6)
   {
-    AppMethodBeat.i(231595);
+    AppMethodBeat.i(229774);
     if (this.aq == null)
     {
       TXCLog.i("TXCFilterDrawer", "Create CropFilter");
@@ -581,7 +581,7 @@ class c
         paramInt4 = paramInt3;
       }
       this.aq.a(paramInt1, paramInt2, paramInt6, parama, paramInt5 / paramInt4, paramBoolean, false);
-      AppMethodBeat.o(231595);
+      AppMethodBeat.o(229774);
       return;
       this.aq = new l();
       break;
@@ -592,18 +592,18 @@ class c
   
   private void a(Runnable paramRunnable)
   {
-    AppMethodBeat.i(231647);
+    AppMethodBeat.i(229851);
     synchronized (this.at)
     {
       this.at.add(paramRunnable);
-      AppMethodBeat.o(231647);
+      AppMethodBeat.o(229851);
       return;
     }
   }
   
   private void a(Queue<Runnable> paramQueue)
   {
-    AppMethodBeat.i(231649);
+    AppMethodBeat.i(229854);
     for (;;)
     {
       Runnable localRunnable = null;
@@ -618,25 +618,25 @@ class c
       }
       finally
       {
-        AppMethodBeat.o(231649);
+        AppMethodBeat.o(229854);
       }
     }
-    AppMethodBeat.o(231649);
+    AppMethodBeat.o(229854);
   }
   
   private void a(byte[] paramArrayOfByte, boolean paramBoolean)
   {
-    AppMethodBeat.i(231609);
+    AppMethodBeat.i(229807);
     if (!paramBoolean)
     {
       if (this.aW != null)
       {
         this.aW.a(paramArrayOfByte, this.O, this.P, this.V, TXCTimeUtil.generatePtsMS());
-        AppMethodBeat.o(231609);
+        AppMethodBeat.o(229807);
         return;
       }
       TXCLog.i("TXCFilterDrawer", "First Frame, don't process!");
-      AppMethodBeat.o(231609);
+      AppMethodBeat.o(229807);
       return;
     }
     int i1 = this.P * 3 / 8;
@@ -648,29 +648,29 @@ class c
       if (true == NativeLoad.nativeGlReadPixsFromQueue(this.O, i1, this.aO))
       {
         this.aW.a(this.aO, this.O, this.P, this.V, TXCTimeUtil.generatePtsMS());
-        AppMethodBeat.o(231609);
+        AppMethodBeat.o(229807);
         return;
       }
       TXCLog.d("TXCFilterDrawer", "nativeGlReadPixsFromQueue Failed");
       this.aW.a(paramArrayOfByte, this.O, this.P, this.V, TXCTimeUtil.generatePtsMS());
-      AppMethodBeat.o(231609);
+      AppMethodBeat.o(229807);
       return;
     }
     if (!NativeLoad.nativeGlReadPixsFromQueue(this.O, i1, this.aR)) {
       TXCLog.d("TXCFilterDrawer", "nativeGlReadPixsFromQueue Failed");
     }
-    AppMethodBeat.o(231609);
+    AppMethodBeat.o(229807);
   }
   
   private void a(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(231620);
+    AppMethodBeat.i(229831);
     GLES20.glGenFramebuffers(1, paramArrayOfInt1, 0);
     paramArrayOfInt2[0] = TXCOpenGlUtils.a(paramInt1, paramInt2, 6408, 6408, paramArrayOfInt2);
     GLES20.glBindFramebuffer(36160, paramArrayOfInt1[0]);
     GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramArrayOfInt2[0], 0);
     GLES20.glBindFramebuffer(36160, 0);
-    AppMethodBeat.o(231620);
+    AppMethodBeat.o(229831);
   }
   
   private void b()
@@ -755,7 +755,7 @@ class c
   
   private void b(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(231646);
+    AppMethodBeat.i(229846);
     if (this.as == null)
     {
       TXCLog.i("TXCFilterDrawer", "createRecoverScaleFilter");
@@ -770,7 +770,7 @@ class c
       if (this.as != null) {
         this.as.a(paramInt1, paramInt2);
       }
-      AppMethodBeat.o(231646);
+      AppMethodBeat.o(229846);
       return;
       label74:
       TXCLog.e("TXCFilterDrawer", "mRecoverScaleFilter init failed!");
@@ -779,15 +779,15 @@ class c
   
   private void b(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(231611);
+    AppMethodBeat.i(229818);
     if (this.Y == null)
     {
       TXCLog.e("TXCFilterDrawer", "mI4202RGBAFilter is null!");
-      AppMethodBeat.o(231611);
+      AppMethodBeat.o(229818);
       return;
     }
     this.Y.a(paramArrayOfByte);
-    AppMethodBeat.o(231611);
+    AppMethodBeat.o(229818);
   }
   
   private void c()
@@ -819,7 +819,7 @@ class c
   
   private boolean c(d.b paramb)
   {
-    AppMethodBeat.i(231617);
+    AppMethodBeat.i(229828);
     TXCLog.i("TXCFilterDrawer", "come into initInternal");
     b();
     this.au = paramb.j;
@@ -894,7 +894,7 @@ class c
       TXCLog.i("TXCFilterDrawer", "opengl es 3.0, use PBO");
       TXCOpenGlUtils.a(i2, i3, this.aP);
       TXCLog.i("TXCFilterDrawer", "come out initInternal");
-      AppMethodBeat.o(231617);
+      AppMethodBeat.o(229828);
       return true;
       label593:
       i1 = this.K;
@@ -912,7 +912,7 @@ class c
   
   private boolean d(d.b paramb)
   {
-    AppMethodBeat.i(231622);
+    AppMethodBeat.i(229834);
     if (((1 == paramb.k) || (3 == paramb.k) || (2 == paramb.k)) && (this.Y == null))
     {
       this.Y = new com.tencent.liteav.beauty.b.k(paramb.k);
@@ -920,7 +920,7 @@ class c
       if (!this.Y.a())
       {
         TXCLog.e("TXCFilterDrawer", "mI4202RGBAFilter init failed!!, break init");
-        AppMethodBeat.o(231622);
+        AppMethodBeat.o(229834);
         return false;
       }
       this.Y.a(paramb.d, paramb.e);
@@ -931,12 +931,12 @@ class c
       if (!this.Z.a())
       {
         TXCLog.e("TXCFilterDrawer", "mRGBA2I420Filter init failed!!, break init");
-        AppMethodBeat.o(231622);
+        AppMethodBeat.o(229834);
         return false;
       }
       this.Z.a(paramb.b, paramb.c);
     }
-    AppMethodBeat.o(231622);
+    AppMethodBeat.o(229834);
     return true;
   }
   
@@ -944,7 +944,7 @@ class c
   
   public int a(int paramInt1, int paramInt2, long paramLong)
   {
-    AppMethodBeat.i(231586);
+    AppMethodBeat.i(230000);
     this.aZ.a();
     a(this.at);
     int i1;
@@ -1030,7 +1030,7 @@ class c
           paramInt1 = this.ap.b(paramInt2);
         }
         a(paramInt1, paramLong);
-        AppMethodBeat.o(231586);
+        AppMethodBeat.o(230000);
         return paramInt1;
         i1 = 0;
         break;
@@ -1045,7 +1045,7 @@ class c
   
   public int a(byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(231589);
+    AppMethodBeat.i(230007);
     a(paramArrayOfByte);
     if (!this.au)
     {
@@ -1062,7 +1062,7 @@ class c
     }
     for (paramInt = -1;; paramInt = B(paramInt))
     {
-      AppMethodBeat.o(231589);
+      AppMethodBeat.o(230007);
       return paramInt;
       b(paramArrayOfByte);
     }
@@ -1070,7 +1070,7 @@ class c
   
   public void a()
   {
-    AppMethodBeat.i(231613);
+    AppMethodBeat.i(230053);
     if (!this.au)
     {
       if (this.ay == null) {
@@ -1080,18 +1080,18 @@ class c
       try
       {
         this.aY.b();
-        AppMethodBeat.o(231613);
+        AppMethodBeat.o(230053);
         return;
       }
       catch (InterruptedException localInterruptedException)
       {
-        AppMethodBeat.o(231613);
+        AppMethodBeat.o(230053);
         return;
       }
     }
     b();
     label57:
-    AppMethodBeat.o(231613);
+    AppMethodBeat.o(230053);
   }
   
   public void a(final float paramFloat)
@@ -1102,11 +1102,11 @@ class c
     {
       public void run()
       {
-        AppMethodBeat.i(234646);
+        AppMethodBeat.i(229736);
         if (c.a(c.this) != null) {
           c.a(c.this).a(paramFloat);
         }
-        AppMethodBeat.o(234646);
+        AppMethodBeat.o(229736);
       }
     });
     AppMethodBeat.o(15255);
@@ -1114,7 +1114,7 @@ class c
   
   public void a(final float paramFloat1, final Bitmap paramBitmap1, final float paramFloat2, final Bitmap paramBitmap2, final float paramFloat3)
   {
-    AppMethodBeat.i(231625);
+    AppMethodBeat.i(230095);
     if ((this.af != paramBitmap1) || (this.ag != paramBitmap2))
     {
       this.af = paramBitmap1;
@@ -1126,7 +1126,7 @@ class c
       {
         public void run()
         {
-          AppMethodBeat.i(231421);
+          AppMethodBeat.i(229732);
           if (c.a(c.this) != null) {
             a.a().e();
           }
@@ -1136,7 +1136,7 @@ class c
             {
               c.a(c.this).d();
               c.a(c.this, null);
-              AppMethodBeat.o(231421);
+              AppMethodBeat.o(229732);
             }
           }
           else
@@ -1144,15 +1144,15 @@ class c
             if (c.a(c.this) == null)
             {
               c.a(c.this, c.f(c.this), c.g(c.this), c.j(c.this), c.h(c.this), c.k(c.this), c.i(c.this), c.l(c.this));
-              AppMethodBeat.o(231421);
+              AppMethodBeat.o(229732);
               return;
             }
             c.a(c.this).a(paramFloat1, paramBitmap1, paramFloat2, paramBitmap2, paramFloat3);
           }
-          AppMethodBeat.o(231421);
+          AppMethodBeat.o(229732);
         }
       });
-      AppMethodBeat.o(231625);
+      AppMethodBeat.o(230095);
       return;
     }
     if ((this.ak != null) && ((this.ah != paramFloat1) || (this.ai != paramFloat2) || (this.aj != paramFloat3)))
@@ -1164,13 +1164,13 @@ class c
       {
         public void run()
         {
-          AppMethodBeat.i(234053);
+          AppMethodBeat.i(229744);
           c.a(c.this).a(paramFloat1, paramFloat2, paramFloat3);
-          AppMethodBeat.o(234053);
+          AppMethodBeat.o(229744);
         }
       });
     }
-    AppMethodBeat.o(231625);
+    AppMethodBeat.o(230095);
   }
   
   public void a(int paramInt) {}
@@ -1201,7 +1201,7 @@ class c
     {
       public void run()
       {
-        AppMethodBeat.i(231361);
+        AppMethodBeat.i(229747);
         if (paramBitmap != null) {
           a.a().g();
         }
@@ -1212,7 +1212,7 @@ class c
             c.b(c.this).d();
             c.a(c.this, null);
           }
-          AppMethodBeat.o(231361);
+          AppMethodBeat.o(229747);
           return;
         }
         if (c.b(c.this) == null)
@@ -1220,7 +1220,7 @@ class c
           if ((c.c(c.this) <= 0) || (c.d(c.this) <= 0))
           {
             TXCLog.e("TXCFilterDrawer", "output Width and Height is error!");
-            AppMethodBeat.o(231361);
+            AppMethodBeat.o(229747);
             return;
           }
           c.a(c.this, new x());
@@ -1230,14 +1230,14 @@ class c
             TXCLog.e("TXCFilterDrawer", "mWatermarkFilter.init failed!");
             c.b(c.this).d();
             c.a(c.this, null);
-            AppMethodBeat.o(231361);
+            AppMethodBeat.o(229747);
             return;
           }
           c.b(c.this).a(c.c(c.this), c.d(c.this));
         }
         c.b(c.this).c(true);
         c.b(c.this).a(paramBitmap, paramFloat1, paramFloat2, paramFloat3);
-        AppMethodBeat.o(231361);
+        AppMethodBeat.o(229747);
       }
     });
     AppMethodBeat.o(15221);
@@ -1245,13 +1245,13 @@ class c
   
   void a(com.tencent.liteav.basic.c.b paramb)
   {
-    AppMethodBeat.i(231602);
+    AppMethodBeat.i(230042);
     TXCLog.i("TXCFilterDrawer", "set notify");
     this.aX = new WeakReference(paramb);
     if (this.an != null) {
       this.an.a((com.tencent.liteav.basic.c.b)this.aX.get());
     }
-    AppMethodBeat.o(231602);
+    AppMethodBeat.o(230042);
   }
   
   void a(e parame)
@@ -1277,9 +1277,9 @@ class c
     {
       public void run()
       {
-        AppMethodBeat.i(231291);
+        AppMethodBeat.i(229740);
         c.a(c.this, paramBoolean);
-        AppMethodBeat.o(231291);
+        AppMethodBeat.o(229740);
       }
     });
     AppMethodBeat.o(15217);
@@ -1297,9 +1297,9 @@ class c
     {
       public void run()
       {
-        AppMethodBeat.i(234692);
+        AppMethodBeat.i(229741);
         c.a(c.this, paramArrayOfFloat);
-        AppMethodBeat.o(234692);
+        AppMethodBeat.o(229741);
       }
     });
     AppMethodBeat.o(15216);
@@ -1379,9 +1379,9 @@ class c
     {
       public void run()
       {
-        AppMethodBeat.i(231500);
+        AppMethodBeat.i(229742);
         c.a(c.this, paramInt);
-        AppMethodBeat.o(231500);
+        AppMethodBeat.o(229742);
       }
     });
     AppMethodBeat.o(15226);
@@ -1391,20 +1391,20 @@ class c
   
   public boolean b(d.b paramb)
   {
-    AppMethodBeat.i(231619);
+    AppMethodBeat.i(230060);
     if (!this.au)
     {
       if (this.ay == null)
       {
         TXCLog.e("TXCFilterDrawer", "mThreadHandler is null!");
-        AppMethodBeat.o(231619);
+        AppMethodBeat.o(230060);
         return false;
       }
       this.ay.obtainMessage(5, 0, 0, paramb).sendToTarget();
     }
     for (;;)
     {
-      AppMethodBeat.o(231619);
+      AppMethodBeat.o(230060);
       return true;
       d(paramb);
     }
@@ -1418,14 +1418,14 @@ class c
     {
       public void run()
       {
-        AppMethodBeat.i(234324);
+        AppMethodBeat.i(229743);
         if (paramInt > 0) {
           a.a().b();
         }
         if ((c.e(c.this) != null) && (paramInt >= 0)) {
           c.e(c.this).c(paramInt);
         }
-        AppMethodBeat.o(234324);
+        AppMethodBeat.o(229743);
       }
     });
     AppMethodBeat.o(15228);
@@ -1444,9 +1444,9 @@ class c
     {
       public void run()
       {
-        AppMethodBeat.i(231220);
+        AppMethodBeat.i(229739);
         c.a(c.this, c.f(c.this), c.g(c.this), paramInt);
-        AppMethodBeat.o(231220);
+        AppMethodBeat.o(229739);
       }
     });
     AppMethodBeat.o(15229);
@@ -1460,14 +1460,14 @@ class c
     {
       public void run()
       {
-        AppMethodBeat.i(231470);
+        AppMethodBeat.i(229733);
         if (paramInt > 0) {
           a.a().c();
         }
         if ((c.e(c.this) != null) && (paramInt >= 0)) {
           c.e(c.this).d(paramInt);
         }
-        AppMethodBeat.o(231470);
+        AppMethodBeat.o(229733);
       }
     });
     AppMethodBeat.o(15230);
@@ -1481,14 +1481,14 @@ class c
     {
       public void run()
       {
-        AppMethodBeat.i(231707);
+        AppMethodBeat.i(229731);
         if (paramInt > 0) {
           a.a().f();
         }
         if ((c.e(c.this) != null) && (paramInt >= 0)) {
           c.e(c.this).f(paramInt);
         }
-        AppMethodBeat.o(231707);
+        AppMethodBeat.o(229731);
       }
     });
     AppMethodBeat.o(15231);
@@ -1502,14 +1502,14 @@ class c
     {
       public void run()
       {
-        AppMethodBeat.i(234192);
+        AppMethodBeat.i(229729);
         if (paramInt > 0) {
           a.a().d();
         }
         if ((c.e(c.this) != null) && (paramInt >= 0)) {
           c.e(c.this).e(paramInt);
         }
-        AppMethodBeat.o(234192);
+        AppMethodBeat.o(229729);
       }
     });
     AppMethodBeat.o(15232);
@@ -1641,7 +1641,7 @@ class c
     
     private void a(Object paramObject)
     {
-      AppMethodBeat.i(231389);
+      AppMethodBeat.i(229728);
       TXCLog.i(this.b, "come into InitEGL");
       paramObject = (d.b)paramObject;
       a();
@@ -1651,16 +1651,16 @@ class c
       if (!c.a(c.this, paramObject))
       {
         TXCLog.e(this.b, "initInternal failed!");
-        AppMethodBeat.o(231389);
+        AppMethodBeat.o(229728);
         return;
       }
       TXCLog.i(this.b, "come out InitEGL");
-      AppMethodBeat.o(231389);
+      AppMethodBeat.o(229728);
     }
     
     public void a()
     {
-      AppMethodBeat.i(231390);
+      AppMethodBeat.i(229730);
       TXCLog.i(this.b, "come into releaseEGL");
       c.o(c.this);
       if (c.n(c.this) != null)
@@ -1676,7 +1676,7 @@ class c
       c.b(c.this, false);
       NativeLoad.nativeDeleteYuv2Yuv();
       TXCLog.i(this.b, "come out releaseEGL");
-      AppMethodBeat.o(231390);
+      AppMethodBeat.o(229730);
     }
     
     /* Error */
@@ -1717,7 +1717,7 @@ class c
     
     public void handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(231393);
+      AppMethodBeat.i(229735);
       super.handleMessage(paramMessage);
       switch (paramMessage.what)
       {
@@ -1735,7 +1735,7 @@ class c
           }
           finally
           {
-            AppMethodBeat.o(231393);
+            AppMethodBeat.o(229735);
           }
           a(paramMessage.obj);
           c.b(c.this, true);
@@ -1766,7 +1766,7 @@ class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.beauty.c
  * JD-Core Version:    0.7.0.1
  */

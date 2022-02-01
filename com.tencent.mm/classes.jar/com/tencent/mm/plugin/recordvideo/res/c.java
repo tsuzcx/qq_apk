@@ -18,30 +18,30 @@ public class c
   
   public void onAccountPostReset(boolean paramBoolean)
   {
-    AppMethodBeat.i(218359);
-    e.HVb.init();
-    f.HVc.init();
-    d locald = d.HUX;
+    AppMethodBeat.i(279659);
+    e.NRR.init();
+    f.NRS.init();
+    d locald = d.NRK;
     d.init();
-    g.HVd.init();
-    AppMethodBeat.o(218359);
+    g.NRT.init();
+    AppMethodBeat.o(279659);
   }
   
   public void onAccountRelease()
   {
-    AppMethodBeat.i(218366);
-    e.HVb.lKQ.dead();
-    f.HVc.lKQ.dead();
-    d locald = d.HUX;
-    g.HVd.lKQ.dead();
-    AppMethodBeat.o(218366);
+    AppMethodBeat.i(279670);
+    e.NRR.oDs.dead();
+    f.NRS.oDs.dead();
+    d locald = d.NRK;
+    g.NRT.oDs.dead();
+    AppMethodBeat.o(279670);
   }
   
   public void onSdcardMount(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.res.c
  * JD-Core Version:    0.7.0.1
  */

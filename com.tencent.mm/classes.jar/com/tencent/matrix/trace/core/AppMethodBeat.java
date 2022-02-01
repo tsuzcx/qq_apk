@@ -5,7 +5,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.SystemClock;
-import com.tencent.matrix.e.c;
+import com.tencent.matrix.e.b;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -27,6 +27,7 @@ public class AppMethodBeat
   private static volatile boolean isPauseUpdateTime;
   private static final HashSet<com.tencent.matrix.trace.e.a> listeners;
   private static a.a looperMonitorListener;
+  private static Runnable realReleaseRunnable;
   private static long[] sBuffer;
   private static volatile long sCurrentDiffTime;
   private static volatile long sDiffTime;
@@ -54,7 +55,7 @@ public class AppMethodBeat
     sCurrentDiffTime = l;
     sDiffTime = l;
     sMainThreadId = Looper.getMainLooper().getThread().getId();
-    sTimerUpdateThread = com.tencent.matrix.e.b.L("matrix_time_update_thread", 3);
+    sTimerUpdateThread = b.T("matrix_time_update_thread", 3);
     sHandler = new Handler(sTimerUpdateThread.getLooper());
     sFocusActivitySet = new HashSet();
     listeners = new HashSet();
@@ -80,10 +81,11 @@ public class AppMethodBeat
         return AppMethodBeat.status > 0;
       }
     };
-    sHandler.postDelayed(new Runnable()
+    realReleaseRunnable = new Runnable()
     {
       public final void run() {}
-    }, 15000L);
+    };
+    b.aAp().postDelayed(realReleaseRunnable, 10000L);
     sUpdateDiffTimeRunnable = new Runnable()
     {
       public final void run()
@@ -106,7 +108,7 @@ public class AppMethodBeat
         }
         catch (Exception localException)
         {
-          c.e("Matrix.AppMethodBeat", localException.toString(), new Object[0]);
+          com.tencent.matrix.e.c.e("Matrix.AppMethodBeat", localException.toString(), new Object[0]);
           return;
         }
       }
@@ -123,10 +125,10 @@ public class AppMethodBeat
         {
           localIterator = listeners.iterator();
           if (localIterator.hasNext()) {
-            ((com.tencent.matrix.trace.e.a)localIterator.next()).m(paramActivity);
+            ((com.tencent.matrix.trace.e.a)localIterator.next()).n(paramActivity);
           }
         }
-        c.i("Matrix.AppMethodBeat", "[at] visibleScene[%s] has %s focus!", new Object[] { getVisibleScene(), "attach" });
+        com.tencent.matrix.e.c.i("Matrix.AppMethodBeat", "[at] visibleScene[%s] has %s focus!", new Object[] { getVisibleScene(), "attach" });
       }
     }
     while (!sFocusActivitySet.remove(???))
@@ -134,7 +136,7 @@ public class AppMethodBeat
       Iterator localIterator;
       return;
     }
-    c.i("Matrix.AppMethodBeat", "[at] visibleScene[%s] has %s focus!", new Object[] { getVisibleScene(), "detach" });
+    com.tencent.matrix.e.c.i("Matrix.AppMethodBeat", "[at] visibleScene[%s] has %s focus!", new Object[] { getVisibleScene(), "detach" });
   }
   
   private static void checkPileup(int paramInt)
@@ -142,8 +144,8 @@ public class AppMethodBeat
     a locala = sIndexRecordHead;
     while ((locala != null) && ((locala.index == paramInt) || ((locala.index == -1) && (sLastIndex == 999999))))
     {
-      locala.cSY = false;
-      c.w("Matrix.AppMethodBeat", "[checkPileup] %s", new Object[] { locala.toString() });
+      locala.clZ = false;
+      com.tencent.matrix.e.c.w("Matrix.AppMethodBeat", "[checkPileup] %s", new Object[] { locala.toString() });
       locala = a.a(locala);
       sIndexRecordHead = locala;
     }
@@ -153,300 +155,270 @@ public class AppMethodBeat
   private long[] copyData(a parama1, a parama2)
   {
     // Byte code:
-    //   0: invokestatic 287	java/lang/System:currentTimeMillis	()J
+    //   0: invokestatic 292	java/lang/System:currentTimeMillis	()J
     //   3: lstore 5
     //   5: iconst_0
     //   6: newarray long
-    //   8: astore 9
-    //   10: aload 9
-    //   12: astore 8
-    //   14: aload 9
-    //   16: astore 7
-    //   18: aload_1
-    //   19: getfield 268	com/tencent/matrix/trace/core/AppMethodBeat$a:cSY	Z
-    //   22: ifeq +336 -> 358
-    //   25: aload 9
-    //   27: astore 8
-    //   29: aload 9
-    //   31: astore 7
-    //   33: aload_2
-    //   34: getfield 268	com/tencent/matrix/trace/core/AppMethodBeat$a:cSY	Z
-    //   37: ifeq +321 -> 358
-    //   40: aload 9
-    //   42: astore 8
-    //   44: aload 9
-    //   46: astore 7
-    //   48: iconst_0
-    //   49: aload_1
-    //   50: getfield 264	com/tencent/matrix/trace/core/AppMethodBeat$a:index	I
-    //   53: invokestatic 293	java/lang/Math:max	(II)I
-    //   56: istore_3
-    //   57: aload 9
-    //   59: astore 8
-    //   61: aload 9
-    //   63: astore 7
-    //   65: iconst_0
-    //   66: aload_2
-    //   67: getfield 264	com/tencent/matrix/trace/core/AppMethodBeat$a:index	I
-    //   70: invokestatic 293	java/lang/Math:max	(II)I
-    //   73: istore 4
-    //   75: iload 4
-    //   77: iload_3
-    //   78: if_icmple +109 -> 187
-    //   81: iload 4
-    //   83: iload_3
-    //   84: isub
-    //   85: iconst_1
-    //   86: iadd
-    //   87: istore 4
-    //   89: aload 9
-    //   91: astore 8
-    //   93: aload 9
-    //   95: astore 7
-    //   97: iload 4
-    //   99: newarray long
-    //   101: astore 9
-    //   103: aload 9
-    //   105: astore 8
-    //   107: aload 9
-    //   109: astore 7
-    //   111: getstatic 93	com/tencent/matrix/trace/core/AppMethodBeat:sBuffer	[J
-    //   114: iload_3
-    //   115: aload 9
-    //   117: iconst_0
-    //   118: iload 4
-    //   120: invokestatic 297	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   123: aload 9
-    //   125: astore 7
-    //   127: ldc 39
-    //   129: ldc_w 299
-    //   132: iconst_4
-    //   133: anewarray 4	java/lang/Object
+    //   8: astore 8
+    //   10: aload 8
+    //   12: astore 7
+    //   14: aload_1
+    //   15: getfield 275	com/tencent/matrix/trace/core/AppMethodBeat$a:clZ	Z
+    //   18: ifeq +300 -> 318
+    //   21: aload 8
+    //   23: astore 7
+    //   25: aload_2
+    //   26: getfield 275	com/tencent/matrix/trace/core/AppMethodBeat$a:clZ	Z
+    //   29: ifeq +289 -> 318
+    //   32: aload 8
+    //   34: astore 7
+    //   36: iconst_0
+    //   37: aload_1
+    //   38: getfield 271	com/tencent/matrix/trace/core/AppMethodBeat$a:index	I
+    //   41: invokestatic 298	java/lang/Math:max	(II)I
+    //   44: istore_3
+    //   45: aload 8
+    //   47: astore 7
+    //   49: iconst_0
+    //   50: aload_2
+    //   51: getfield 271	com/tencent/matrix/trace/core/AppMethodBeat$a:index	I
+    //   54: invokestatic 298	java/lang/Math:max	(II)I
+    //   57: istore 4
+    //   59: iload 4
+    //   61: iload_3
+    //   62: if_icmple +101 -> 163
+    //   65: iload 4
+    //   67: iload_3
+    //   68: isub
+    //   69: iconst_1
+    //   70: iadd
+    //   71: istore 4
+    //   73: aload 8
+    //   75: astore 7
+    //   77: iload 4
+    //   79: newarray long
+    //   81: astore 8
+    //   83: aload 8
+    //   85: astore 7
+    //   87: getstatic 94	com/tencent/matrix/trace/core/AppMethodBeat:sBuffer	[J
+    //   90: iload_3
+    //   91: aload 8
+    //   93: iconst_0
+    //   94: iload 4
+    //   96: invokestatic 302	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   99: aload 8
+    //   101: astore 7
+    //   103: ldc 39
+    //   105: ldc_w 304
+    //   108: iconst_4
+    //   109: anewarray 4	java/lang/Object
+    //   112: dup
+    //   113: iconst_0
+    //   114: iconst_0
+    //   115: aload_1
+    //   116: getfield 271	com/tencent/matrix/trace/core/AppMethodBeat$a:index	I
+    //   119: invokestatic 298	java/lang/Math:max	(II)I
+    //   122: invokestatic 310	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   125: aastore
+    //   126: dup
+    //   127: iconst_1
+    //   128: aload_2
+    //   129: getfield 271	com/tencent/matrix/trace/core/AppMethodBeat$a:index	I
+    //   132: invokestatic 310	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   135: aastore
     //   136: dup
-    //   137: iconst_0
-    //   138: iconst_0
-    //   139: aload_1
-    //   140: getfield 264	com/tencent/matrix/trace/core/AppMethodBeat$a:index	I
-    //   143: invokestatic 293	java/lang/Math:max	(II)I
-    //   146: invokestatic 305	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   149: aastore
-    //   150: dup
-    //   151: iconst_1
-    //   152: aload_2
-    //   153: getfield 264	com/tencent/matrix/trace/core/AppMethodBeat$a:index	I
-    //   156: invokestatic 305	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   159: aastore
-    //   160: dup
-    //   161: iconst_2
-    //   162: aload 7
-    //   164: arraylength
-    //   165: invokestatic 305	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   168: aastore
-    //   169: dup
-    //   170: iconst_3
-    //   171: invokestatic 287	java/lang/System:currentTimeMillis	()J
-    //   174: lload 5
-    //   176: lsub
-    //   177: invokestatic 310	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   180: aastore
-    //   181: invokestatic 254	com/tencent/matrix/e/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   184: aload 7
-    //   186: areturn
-    //   187: aload 9
-    //   189: astore 7
-    //   191: iload 4
-    //   193: iload_3
-    //   194: if_icmpge -67 -> 127
-    //   197: aload 9
-    //   199: astore 8
-    //   201: aload 9
-    //   203: astore 7
-    //   205: iload 4
-    //   207: iconst_1
-    //   208: iadd
-    //   209: getstatic 93	com/tencent/matrix/trace/core/AppMethodBeat:sBuffer	[J
-    //   212: arraylength
-    //   213: iload_3
-    //   214: isub
-    //   215: iadd
-    //   216: newarray long
-    //   218: astore 9
-    //   220: aload 9
-    //   222: astore 8
-    //   224: aload 9
-    //   226: astore 7
-    //   228: getstatic 93	com/tencent/matrix/trace/core/AppMethodBeat:sBuffer	[J
-    //   231: iload_3
-    //   232: aload 9
-    //   234: iconst_0
-    //   235: getstatic 93	com/tencent/matrix/trace/core/AppMethodBeat:sBuffer	[J
-    //   238: arraylength
-    //   239: iload_3
-    //   240: isub
-    //   241: invokestatic 297	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   244: aload 9
-    //   246: astore 8
-    //   248: aload 9
-    //   250: astore 7
-    //   252: getstatic 93	com/tencent/matrix/trace/core/AppMethodBeat:sBuffer	[J
-    //   255: iconst_0
-    //   256: aload 9
-    //   258: getstatic 93	com/tencent/matrix/trace/core/AppMethodBeat:sBuffer	[J
-    //   261: arraylength
-    //   262: iload_3
-    //   263: isub
-    //   264: iload 4
-    //   266: iconst_1
-    //   267: iadd
-    //   268: invokestatic 297	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   271: aload 9
-    //   273: astore 7
-    //   275: goto -148 -> 127
-    //   278: astore 9
-    //   280: aload 8
-    //   282: astore 7
-    //   284: ldc 39
-    //   286: aload 9
-    //   288: invokevirtual 311	java/lang/OutOfMemoryError:toString	()Ljava/lang/String;
-    //   291: iconst_0
-    //   292: anewarray 4	java/lang/Object
-    //   295: invokestatic 314	com/tencent/matrix/e/c:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   298: ldc 39
-    //   300: ldc_w 299
-    //   303: iconst_4
-    //   304: anewarray 4	java/lang/Object
-    //   307: dup
-    //   308: iconst_0
-    //   309: iconst_0
-    //   310: aload_1
-    //   311: getfield 264	com/tencent/matrix/trace/core/AppMethodBeat$a:index	I
-    //   314: invokestatic 293	java/lang/Math:max	(II)I
-    //   317: invokestatic 305	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   320: aastore
-    //   321: dup
-    //   322: iconst_1
-    //   323: aload_2
-    //   324: getfield 264	com/tencent/matrix/trace/core/AppMethodBeat$a:index	I
-    //   327: invokestatic 305	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   330: aastore
-    //   331: dup
-    //   332: iconst_2
-    //   333: aload 8
-    //   335: arraylength
-    //   336: invokestatic 305	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   339: aastore
-    //   340: dup
-    //   341: iconst_3
-    //   342: invokestatic 287	java/lang/System:currentTimeMillis	()J
-    //   345: lload 5
-    //   347: lsub
-    //   348: invokestatic 310	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   351: aastore
-    //   352: invokestatic 254	com/tencent/matrix/e/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   355: aload 8
-    //   357: areturn
-    //   358: ldc 39
-    //   360: ldc_w 299
-    //   363: iconst_4
-    //   364: anewarray 4	java/lang/Object
-    //   367: dup
-    //   368: iconst_0
-    //   369: iconst_0
-    //   370: aload_1
-    //   371: getfield 264	com/tencent/matrix/trace/core/AppMethodBeat$a:index	I
-    //   374: invokestatic 293	java/lang/Math:max	(II)I
-    //   377: invokestatic 305	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   380: aastore
-    //   381: dup
-    //   382: iconst_1
-    //   383: aload_2
-    //   384: getfield 264	com/tencent/matrix/trace/core/AppMethodBeat$a:index	I
-    //   387: invokestatic 305	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   390: aastore
-    //   391: dup
-    //   392: iconst_2
-    //   393: iconst_0
-    //   394: invokestatic 305	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   397: aastore
-    //   398: dup
-    //   399: iconst_3
-    //   400: invokestatic 287	java/lang/System:currentTimeMillis	()J
-    //   403: lload 5
-    //   405: lsub
-    //   406: invokestatic 310	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   409: aastore
-    //   410: invokestatic 254	com/tencent/matrix/e/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   413: aload 9
-    //   415: areturn
-    //   416: astore 8
-    //   418: ldc 39
-    //   420: ldc_w 299
-    //   423: iconst_4
-    //   424: anewarray 4	java/lang/Object
-    //   427: dup
-    //   428: iconst_0
-    //   429: iconst_0
-    //   430: aload_1
-    //   431: getfield 264	com/tencent/matrix/trace/core/AppMethodBeat$a:index	I
-    //   434: invokestatic 293	java/lang/Math:max	(II)I
-    //   437: invokestatic 305	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   440: aastore
-    //   441: dup
-    //   442: iconst_1
-    //   443: aload_2
-    //   444: getfield 264	com/tencent/matrix/trace/core/AppMethodBeat$a:index	I
-    //   447: invokestatic 305	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   450: aastore
-    //   451: dup
-    //   452: iconst_2
-    //   453: aload 7
-    //   455: arraylength
-    //   456: invokestatic 305	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   459: aastore
-    //   460: dup
-    //   461: iconst_3
-    //   462: invokestatic 287	java/lang/System:currentTimeMillis	()J
-    //   465: lload 5
-    //   467: lsub
-    //   468: invokestatic 310	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   471: aastore
-    //   472: invokestatic 254	com/tencent/matrix/e/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   475: aload 8
-    //   477: athrow
+    //   137: iconst_2
+    //   138: aload 7
+    //   140: arraylength
+    //   141: invokestatic 310	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   144: aastore
+    //   145: dup
+    //   146: iconst_3
+    //   147: invokestatic 292	java/lang/System:currentTimeMillis	()J
+    //   150: lload 5
+    //   152: lsub
+    //   153: invokestatic 315	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   156: aastore
+    //   157: invokestatic 261	com/tencent/matrix/e/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   160: aload 7
+    //   162: areturn
+    //   163: aload 8
+    //   165: astore 7
+    //   167: iload 4
+    //   169: iload_3
+    //   170: if_icmpge -67 -> 103
+    //   173: aload 8
+    //   175: astore 7
+    //   177: iload 4
+    //   179: iconst_1
+    //   180: iadd
+    //   181: getstatic 94	com/tencent/matrix/trace/core/AppMethodBeat:sBuffer	[J
+    //   184: arraylength
+    //   185: iload_3
+    //   186: isub
+    //   187: iadd
+    //   188: newarray long
+    //   190: astore 8
+    //   192: aload 8
+    //   194: astore 7
+    //   196: getstatic 94	com/tencent/matrix/trace/core/AppMethodBeat:sBuffer	[J
+    //   199: iload_3
+    //   200: aload 8
+    //   202: iconst_0
+    //   203: getstatic 94	com/tencent/matrix/trace/core/AppMethodBeat:sBuffer	[J
+    //   206: arraylength
+    //   207: iload_3
+    //   208: isub
+    //   209: invokestatic 302	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   212: aload 8
+    //   214: astore 7
+    //   216: getstatic 94	com/tencent/matrix/trace/core/AppMethodBeat:sBuffer	[J
+    //   219: iconst_0
+    //   220: aload 8
+    //   222: getstatic 94	com/tencent/matrix/trace/core/AppMethodBeat:sBuffer	[J
+    //   225: arraylength
+    //   226: iload_3
+    //   227: isub
+    //   228: iload 4
+    //   230: iconst_1
+    //   231: iadd
+    //   232: invokestatic 302	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   235: aload 8
+    //   237: astore 7
+    //   239: goto -136 -> 103
+    //   242: astore 8
+    //   244: ldc 39
+    //   246: aload 8
+    //   248: invokevirtual 318	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   251: iconst_0
+    //   252: anewarray 4	java/lang/Object
+    //   255: invokestatic 321	com/tencent/matrix/e/c:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   258: ldc 39
+    //   260: ldc_w 304
+    //   263: iconst_4
+    //   264: anewarray 4	java/lang/Object
+    //   267: dup
+    //   268: iconst_0
+    //   269: iconst_0
+    //   270: aload_1
+    //   271: getfield 271	com/tencent/matrix/trace/core/AppMethodBeat$a:index	I
+    //   274: invokestatic 298	java/lang/Math:max	(II)I
+    //   277: invokestatic 310	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   280: aastore
+    //   281: dup
+    //   282: iconst_1
+    //   283: aload_2
+    //   284: getfield 271	com/tencent/matrix/trace/core/AppMethodBeat$a:index	I
+    //   287: invokestatic 310	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   290: aastore
+    //   291: dup
+    //   292: iconst_2
+    //   293: aload 7
+    //   295: arraylength
+    //   296: invokestatic 310	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   299: aastore
+    //   300: dup
+    //   301: iconst_3
+    //   302: invokestatic 292	java/lang/System:currentTimeMillis	()J
+    //   305: lload 5
+    //   307: lsub
+    //   308: invokestatic 315	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   311: aastore
+    //   312: invokestatic 261	com/tencent/matrix/e/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   315: aload 7
+    //   317: areturn
+    //   318: ldc 39
+    //   320: ldc_w 304
+    //   323: iconst_4
+    //   324: anewarray 4	java/lang/Object
+    //   327: dup
+    //   328: iconst_0
+    //   329: iconst_0
+    //   330: aload_1
+    //   331: getfield 271	com/tencent/matrix/trace/core/AppMethodBeat$a:index	I
+    //   334: invokestatic 298	java/lang/Math:max	(II)I
+    //   337: invokestatic 310	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   340: aastore
+    //   341: dup
+    //   342: iconst_1
+    //   343: aload_2
+    //   344: getfield 271	com/tencent/matrix/trace/core/AppMethodBeat$a:index	I
+    //   347: invokestatic 310	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   350: aastore
+    //   351: dup
+    //   352: iconst_2
+    //   353: iconst_0
+    //   354: invokestatic 310	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   357: aastore
+    //   358: dup
+    //   359: iconst_3
+    //   360: invokestatic 292	java/lang/System:currentTimeMillis	()J
+    //   363: lload 5
+    //   365: lsub
+    //   366: invokestatic 315	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   369: aastore
+    //   370: invokestatic 261	com/tencent/matrix/e/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   373: aload 8
+    //   375: areturn
+    //   376: astore 8
+    //   378: ldc 39
+    //   380: ldc_w 304
+    //   383: iconst_4
+    //   384: anewarray 4	java/lang/Object
+    //   387: dup
+    //   388: iconst_0
+    //   389: iconst_0
+    //   390: aload_1
+    //   391: getfield 271	com/tencent/matrix/trace/core/AppMethodBeat$a:index	I
+    //   394: invokestatic 298	java/lang/Math:max	(II)I
+    //   397: invokestatic 310	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   400: aastore
+    //   401: dup
+    //   402: iconst_1
+    //   403: aload_2
+    //   404: getfield 271	com/tencent/matrix/trace/core/AppMethodBeat$a:index	I
+    //   407: invokestatic 310	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   410: aastore
+    //   411: dup
+    //   412: iconst_2
+    //   413: aload 7
+    //   415: arraylength
+    //   416: invokestatic 310	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   419: aastore
+    //   420: dup
+    //   421: iconst_3
+    //   422: invokestatic 292	java/lang/System:currentTimeMillis	()J
+    //   425: lload 5
+    //   427: lsub
+    //   428: invokestatic 315	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   431: aastore
+    //   432: invokestatic 261	com/tencent/matrix/e/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   435: aload 8
+    //   437: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	478	0	this	AppMethodBeat
-    //   0	478	1	parama1	a
-    //   0	478	2	parama2	a
-    //   56	208	3	i	int
-    //   73	195	4	j	int
-    //   3	463	5	l	long
-    //   16	438	7	arrayOfLong1	long[]
-    //   12	344	8	arrayOfLong2	long[]
-    //   416	60	8	localObject	Object
-    //   8	264	9	arrayOfLong3	long[]
-    //   278	136	9	localOutOfMemoryError	java.lang.OutOfMemoryError
+    //   0	438	0	this	AppMethodBeat
+    //   0	438	1	parama1	a
+    //   0	438	2	parama2	a
+    //   44	184	3	i	int
+    //   57	175	4	j	int
+    //   3	423	5	l	long
+    //   12	402	7	arrayOfLong1	long[]
+    //   8	228	8	arrayOfLong2	long[]
+    //   242	132	8	arrayOfLong3	long[]
+    //   376	60	8	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   18	25	278	java/lang/OutOfMemoryError
-    //   33	40	278	java/lang/OutOfMemoryError
-    //   48	57	278	java/lang/OutOfMemoryError
-    //   65	75	278	java/lang/OutOfMemoryError
-    //   97	103	278	java/lang/OutOfMemoryError
-    //   111	123	278	java/lang/OutOfMemoryError
-    //   205	220	278	java/lang/OutOfMemoryError
-    //   228	244	278	java/lang/OutOfMemoryError
-    //   252	271	278	java/lang/OutOfMemoryError
-    //   18	25	416	finally
-    //   33	40	416	finally
-    //   48	57	416	finally
-    //   65	75	416	finally
-    //   97	103	416	finally
-    //   111	123	416	finally
-    //   205	220	416	finally
-    //   228	244	416	finally
-    //   252	271	416	finally
-    //   284	298	416	finally
+    //   14	21	242	finally
+    //   25	32	242	finally
+    //   36	45	242	finally
+    //   49	59	242	finally
+    //   77	83	242	finally
+    //   87	99	242	finally
+    //   177	192	242	finally
+    //   196	212	242	finally
+    //   216	235	242	finally
+    //   244	258	376	finally
   }
   
   private static void dispatchBegin()
@@ -477,7 +449,7 @@ public class AppMethodBeat
   
   public static String getVisibleScene()
   {
-    return com.tencent.matrix.a.cQs.cQu;
+    return com.tencent.matrix.a.eLw.eLy;
   }
   
   public static void i(int paramInt)
@@ -528,10 +500,18 @@ public class AppMethodBeat
       l1 = -9223372036854775808L;
     }
     long l2 = paramInt1;
-    long l3 = sCurrentDiffTime;
-    sBuffer[paramInt2] = (l1 | l2 << 43 | l3 & 0xFFFFFFFF);
-    checkPileup(paramInt2);
-    sLastIndex = paramInt2;
+    try
+    {
+      long l3 = sCurrentDiffTime;
+      sBuffer[paramInt2] = (l1 | l2 << 43 | l3 & 0xFFFFFFFF);
+      checkPileup(paramInt2);
+      sLastIndex = paramInt2;
+      return;
+    }
+    finally
+    {
+      com.tencent.matrix.e.c.e("Matrix.AppMethodBeat", localObject.getMessage(), new Object[0]);
+    }
   }
   
   public static void o(int paramInt)
@@ -554,7 +534,7 @@ public class AppMethodBeat
   
   private static void realExecute()
   {
-    c.i("Matrix.AppMethodBeat", "[realExecute] timestamp:%s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
+    com.tencent.matrix.e.c.i("Matrix.AppMethodBeat", "[realExecute] timestamp:%s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
     sCurrentDiffTime = SystemClock.uptimeMillis() - sDiffTime;
     sHandler.removeCallbacksAndMessages(null);
     sHandler.postDelayed(sUpdateDiffTimeRunnable, 5L);
@@ -565,7 +545,7 @@ public class AppMethodBeat
       {
         synchronized (AppMethodBeat.statusLock)
         {
-          c.i("Matrix.AppMethodBeat", "[startExpired] timestamp:%s status:%s", new Object[] { Long.valueOf(System.currentTimeMillis()), Integer.valueOf(AppMethodBeat.status) });
+          com.tencent.matrix.e.c.i("Matrix.AppMethodBeat", "[startExpired] timestamp:%s status:%s", new Object[] { Long.valueOf(System.currentTimeMillis()), Integer.valueOf(AppMethodBeat.status) });
           if ((AppMethodBeat.status == 2147483647) || (AppMethodBeat.status == 1)) {
             AppMethodBeat.access$002(-2);
           }
@@ -574,8 +554,8 @@ public class AppMethodBeat
       }
     };
     checkStartExpiredRunnable = local4;
-    localHandler.postDelayed(local4, 15000L);
-    com.tencent.matrix.trace.c.a.Yb();
+    localHandler.postDelayed(local4, 10000L);
+    com.tencent.matrix.trace.c.a.azM();
     a.a(looperMonitorListener);
   }
   
@@ -583,9 +563,9 @@ public class AppMethodBeat
   {
     synchronized (statusLock)
     {
-      if (status == 2147483647)
+      if ((status == 2147483647) || (status <= 1))
       {
-        c.i("Matrix.AppMethodBeat", "[realRelease] timestamp:%s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
+        com.tencent.matrix.e.c.i("Matrix.AppMethodBeat", "[realRelease] timestamp:%s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
         sHandler.removeCallbacksAndMessages(null);
         a.b(looperMonitorListener);
         sTimerUpdateThread.quit();
@@ -666,20 +646,21 @@ public class AppMethodBeat
     synchronized (statusLock)
     {
       if ((status >= 2) || (status < -2)) {
-        break label86;
+        break label95;
       }
       sHandler.removeCallbacks(checkStartExpiredRunnable);
+      b.aAp().removeCallbacks(realReleaseRunnable);
       if (sBuffer == null) {
         throw new RuntimeException("Matrix.AppMethodBeat sBuffer == null");
       }
     }
-    c.i("Matrix.AppMethodBeat", "[onStart] preStatus:%s", new Object[] { Integer.valueOf(status), com.tencent.matrix.trace.g.b.getStack() });
+    com.tencent.matrix.e.c.i("Matrix.AppMethodBeat", "[onStart] preStatus:%s", new Object[] { Integer.valueOf(status), com.tencent.matrix.trace.f.c.getStack() });
     status = 2;
     for (;;)
     {
       return;
-      label86:
-      c.w("Matrix.AppMethodBeat", "[onStart] current status:%s", new Object[] { Integer.valueOf(status) });
+      label95:
+      com.tencent.matrix.e.c.w("Matrix.AppMethodBeat", "[onStart] current status:%s", new Object[] { Integer.valueOf(status) });
     }
   }
   
@@ -689,11 +670,11 @@ public class AppMethodBeat
     {
       if (status == 2)
       {
-        c.i("Matrix.AppMethodBeat", "[onStop] %s", new Object[] { com.tencent.matrix.trace.g.b.getStack() });
+        com.tencent.matrix.e.c.i("Matrix.AppMethodBeat", "[onStop] %s", new Object[] { com.tencent.matrix.trace.f.c.getStack() });
         status = -1;
         return;
       }
-      c.w("Matrix.AppMethodBeat", "[onStop] current status:%s", new Object[] { Integer.valueOf(status) });
+      com.tencent.matrix.e.c.w("Matrix.AppMethodBeat", "[onStop] current status:%s", new Object[] { Integer.valueOf(status) });
     }
   }
   
@@ -703,7 +684,7 @@ public class AppMethodBeat
     for (a locala = sIndexRecordHead; locala != null; locala = a.a(locala)) {
       localStringBuilder.append(locala).append("\n");
     }
-    c.i("Matrix.AppMethodBeat", "[printIndexRecord] %s", new Object[] { localStringBuilder.toString() });
+    com.tencent.matrix.e.c.i("Matrix.AppMethodBeat", "[printIndexRecord] %s", new Object[] { localStringBuilder.toString() });
   }
   
   public void removeListener(com.tencent.matrix.trace.e.a parama)
@@ -717,14 +698,14 @@ public class AppMethodBeat
   
   public static final class a
   {
-    public boolean cSY = true;
-    private a dfb;
+    public boolean clZ = true;
+    private a feh;
     public int index;
     public String source;
     
     public a()
     {
-      this.cSY = false;
+      this.clZ = false;
     }
     
     public a(int paramInt)
@@ -734,7 +715,7 @@ public class AppMethodBeat
     
     public final void release()
     {
-      this.cSY = false;
+      this.clZ = false;
       Object localObject1 = AppMethodBeat.sIndexRecordHead;
       Object localObject2 = null;
       for (;;)
@@ -747,17 +728,17 @@ public class AppMethodBeat
           if (localObject2 == null) {
             break label38;
           }
-          localObject2.dfb = ((a)localObject1).dfb;
+          localObject2.feh = ((a)localObject1).feh;
         }
         for (;;)
         {
-          ((a)localObject1).dfb = null;
+          ((a)localObject1).feh = null;
           return;
           label38:
-          AppMethodBeat.access$1002(((a)localObject1).dfb);
+          AppMethodBeat.access$1002(((a)localObject1).feh);
         }
         label49:
-        a locala = ((a)localObject1).dfb;
+        a locala = ((a)localObject1).feh;
         localObject2 = localObject1;
         localObject1 = locala;
       }
@@ -765,7 +746,7 @@ public class AppMethodBeat
     
     public final String toString()
     {
-      return "index:" + this.index + ",\tisValid:" + this.cSY + " source:" + this.source;
+      return "index:" + this.index + ",\tisValid:" + this.clZ + " source:" + this.source;
     }
   }
   
@@ -773,7 +754,7 @@ public class AppMethodBeat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.trace.core.AppMethodBeat
  * JD-Core Version:    0.7.0.1
  */

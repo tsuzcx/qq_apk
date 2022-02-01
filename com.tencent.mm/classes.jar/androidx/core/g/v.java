@@ -1,32 +1,36 @@
 package androidx.core.g;
 
-import android.view.VelocityTracker;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.view.PointerIcon;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@Deprecated
 public final class v
 {
-  @Deprecated
-  public static float a(VelocityTracker paramVelocityTracker, int paramInt)
+  Object btx;
+  
+  private v(Object paramObject)
   {
-    AppMethodBeat.i(251574);
-    float f = paramVelocityTracker.getXVelocity(paramInt);
-    AppMethodBeat.o(251574);
-    return f;
+    this.btx = paramObject;
   }
   
-  @Deprecated
-  public static float b(VelocityTracker paramVelocityTracker, int paramInt)
+  public static v aj(Context paramContext)
   {
-    AppMethodBeat.i(251575);
-    float f = paramVelocityTracker.getYVelocity(paramInt);
-    AppMethodBeat.o(251575);
-    return f;
+    AppMethodBeat.i(195678);
+    if (Build.VERSION.SDK_INT >= 24)
+    {
+      paramContext = new v(PointerIcon.getSystemIcon(paramContext, 1002));
+      AppMethodBeat.o(195678);
+      return paramContext;
+    }
+    paramContext = new v(null);
+    AppMethodBeat.o(195678);
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.core.g.v
  * JD-Core Version:    0.7.0.1
  */

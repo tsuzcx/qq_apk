@@ -13,6 +13,9 @@ import com.google.android.gms.common.internal.SignInButtonCreator;
 import com.google.android.gms.common.internal.SignInButtonImpl;
 import com.google.android.gms.dynamic.RemoteCreator.RemoteCreatorException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 public final class SignInButton
   extends FrameLayout
@@ -148,10 +151,16 @@ public final class SignInButton
     setStyle(paramInt1, paramInt2);
     AppMethodBeat.o(10960);
   }
+  
+  @Retention(RetentionPolicy.SOURCE)
+  public static @interface ButtonSize {}
+  
+  @Retention(RetentionPolicy.SOURCE)
+  public static @interface ColorScheme {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.SignInButton
  * JD-Core Version:    0.7.0.1
  */

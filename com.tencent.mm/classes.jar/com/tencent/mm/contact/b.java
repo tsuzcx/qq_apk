@@ -1,106 +1,105 @@
 package com.tencent.mm.contact;
 
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.df;
-import com.tencent.mm.f.c.ax;
-import com.tencent.mm.kernel.f;
+import com.tencent.mm.autogen.a.dp;
+import com.tencent.mm.autogen.b.az;
 import com.tencent.mm.model.ab;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.MStorageEx;
 import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
+import com.tencent.threadpool.i;
 import java.util.Iterator;
 import java.util.List;
 
 public final class b
   implements MStorageEx.IOnStorageChange
 {
-  public static b jxn;
-  private volatile boolean jxo;
-  private volatile boolean jxp;
-  public boolean jxq;
-  private IListener<df> jxr;
+  public static b maH;
+  private volatile boolean maI;
+  private volatile boolean maJ;
+  public boolean maK;
+  private IListener<dp> maL;
   
   static
   {
-    AppMethodBeat.i(240350);
-    jxn = new b();
-    AppMethodBeat.o(240350);
+    AppMethodBeat.i(233777);
+    maH = new b();
+    AppMethodBeat.o(233777);
   }
   
   private b()
   {
-    AppMethodBeat.i(240344);
-    this.jxq = true;
-    this.jxr = new IListener() {};
-    this.jxp = com.tencent.mm.kernel.h.aHG().aHp().getBoolean(ar.a.VEf, false);
-    this.jxr.alive();
-    AppMethodBeat.o(240344);
+    AppMethodBeat.i(233768);
+    this.maK = true;
+    this.maL = new ContactUpgradeHelper.1(this, com.tencent.mm.app.f.hfK);
+    this.maJ = com.tencent.mm.kernel.h.baE().ban().getBoolean(at.a.adhq, false);
+    this.maL.alive();
+    AppMethodBeat.o(233768);
   }
   
-  public final boolean axg()
+  public final boolean aRG()
   {
-    return (this.jxp) && (this.jxq);
+    return (this.maJ) && (this.maK);
   }
   
   public final void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
   {
-    AppMethodBeat.i(240345);
+    AppMethodBeat.i(233785);
     if (!(paramObject instanceof String))
     {
       Log.d("MicroMsg.ContactUpgradeHelper", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramMStorageEx, paramObject });
-      AppMethodBeat.o(240345);
+      AppMethodBeat.o(233785);
       return;
     }
     Log.i("MicroMsg.ContactUpgradeHelper", "onNotifyChange %s", new Object[] { (String)paramObject });
-    if ((paramMStorageEx instanceof bv))
+    if ((paramMStorageEx instanceof bx))
     {
-      if (this.jxo)
+      if (this.maI)
       {
-        AppMethodBeat.o(240345);
+        AppMethodBeat.o(233785);
         return;
       }
-      if (this.jxo)
+      if (this.maI)
       {
         Log.i("MicroMsg.ContactUpgradeHelper", "refreshUserName, init done!");
-        AppMethodBeat.o(240345);
+        AppMethodBeat.o(233785);
         return;
       }
-      if (this.jxp)
+      if (this.maJ)
       {
         Log.i("MicroMsg.ContactUpgradeHelper", "refreshUserName, updateUserNameFlag is already done!");
-        AppMethodBeat.o(240345);
+        AppMethodBeat.o(233785);
         return;
       }
-      this.jxo = true;
-      com.tencent.e.h.ZvG.bf(new Runnable()
+      this.maI = true;
+      com.tencent.threadpool.h.ahAA.bn(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(240134);
-          Iterator localIterator = ab.beb().iterator();
+          AppMethodBeat.i(233769);
+          Iterator localIterator = ab.bBS().iterator();
           while (localIterator.hasNext())
           {
-            as localas = (as)localIterator.next();
-            localas.Fa(ar.bvF(localas.field_username));
-            com.tencent.mm.kernel.h.aHH();
-            ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().c(localas.field_username, localas);
+            au localau = (au)localIterator.next();
+            localau.hs(at.bvQ(localau.field_username));
+            com.tencent.mm.kernel.h.baF();
+            ((n)com.tencent.mm.kernel.h.ax(n.class)).bzA().d(localau.field_username, localau);
           }
-          com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VEf, Boolean.TRUE);
+          com.tencent.mm.kernel.h.baE().ban().set(at.a.adhq, Boolean.TRUE);
           b.a(b.this);
           Log.i("MicroMsg.ContactUpgradeHelper", "refreshUserName, updateUserNameFlag done!");
-          AppMethodBeat.o(240134);
+          AppMethodBeat.o(233769);
         }
       });
     }
-    AppMethodBeat.o(240345);
+    AppMethodBeat.o(233785);
   }
 }
 

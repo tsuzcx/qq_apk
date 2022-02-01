@@ -2,34 +2,45 @@ package com.tencent.mm.ipcinvoker;
 
 import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.b;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"ipcInvoke", "", "InputType", "Landroid/os/Parcelable;", "ResultType", "targetProcessName", "", "request", "process", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "callback", "Lkotlin/Function1;", "(Ljava/lang/String;Landroid/os/Parcelable;Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;Lkotlin/jvm/functions/Function1;)V", "ipcinvoker_release"})
+@Metadata(d1={""}, d2={"ipcInvoke", "", "InputType", "Landroid/os/Parcelable;", "ResultType", "targetProcessName", "", "request", "process", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "callback", "Lkotlin/Function1;", "(Ljava/lang/String;Landroid/os/Parcelable;Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;Lkotlin/jvm/functions/Function1;)V", "ipcInvokeSync", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "(Ljava/lang/String;Landroid/os/Parcelable;Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;)Landroid/os/Parcelable;", "ipcinvoker_release"}, k=2, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public static final <InputType extends Parcelable, ResultType extends Parcelable> void a(String paramString, InputType paramInputType, d<InputType, ResultType> paramd, b<? super ResultType, x> paramb)
+  public static final <InputType extends Parcelable, ResultType extends Parcelable> ResultType a(String paramString, InputType paramInputType, m<InputType, ResultType> paramm)
   {
-    AppMethodBeat.i(214375);
-    p.k(paramString, "targetProcessName");
-    p.k(paramd, "process");
+    AppMethodBeat.i(235675);
+    s.u(paramString, "targetProcessName");
+    s.u(paramm, "process");
+    paramString = j.a(paramString, paramInputType, paramm.getClass());
+    AppMethodBeat.o(235675);
+    return paramString;
+  }
+  
+  public static final <InputType extends Parcelable, ResultType extends Parcelable> void a(String paramString, InputType paramInputType, d<InputType, ResultType> paramd, b<? super ResultType, ah> paramb)
+  {
+    AppMethodBeat.i(235670);
+    s.u(paramString, "targetProcessName");
+    s.u(paramd, "process");
     Class localClass = paramd.getClass();
     if (paramb == null) {}
-    for (paramd = null;; paramd = (f)new a(paramb))
+    for (paramd = null;; paramd = new a..ExternalSyntheticLambda0(paramb))
     {
       j.a(paramString, paramInputType, localClass, paramd);
-      AppMethodBeat.o(214375);
+      AppMethodBeat.o(235670);
       return;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "InputType", "Landroid/os/Parcelable;", "ResultType", "data", "kotlin.jvm.PlatformType", "onCallback", "(Landroid/os/Parcelable;)V"})
-  static final class a<T>
-    implements f<ResultType>
+  private static final void a(b paramb, Parcelable paramParcelable)
   {
-    a(b paramb) {}
+    AppMethodBeat.i(235678);
+    s.s(paramParcelable, "data");
+    paramb.invoke(paramParcelable);
+    AppMethodBeat.o(235678);
   }
 }
 

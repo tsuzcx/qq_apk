@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public abstract class XWalkExternalExtensionManager
 {
+  private static final String TAG = "XWalkExternalExtensionManager";
   private Object bridge;
   private ArrayList<Object> constructorParams;
   private ArrayList<Object> constructorTypes = new ArrayList();
@@ -197,13 +198,12 @@ public abstract class XWalkExternalExtensionManager
   
   void reflectionInit()
   {
-    XWalkCoreWrapper.initEmbeddedMode();
-    this.coreWrapper = XWalkCoreWrapper.getInstance();
-    if (this.coreWrapper == null)
+    if (XWalkCoreWrapper.getInstance() == null)
     {
-      XWalkCoreWrapper.reserveReflectObject(this);
+      XWalkReflectionInitHandler.reserveReflectObject(this);
       return;
     }
+    this.coreWrapper = XWalkCoreWrapper.getInstance();
     int j = this.constructorTypes.size();
     Object localObject1 = new Class[j + 1];
     int i = 0;
@@ -215,7 +215,7 @@ public abstract class XWalkExternalExtensionManager
         localObject1[i] = this.coreWrapper.getBridgeClass((String)localObject2);
         this.constructorParams.set(i, this.coreWrapper.getBridgeObject(this.constructorParams.get(i)));
       }
-      label127:
+      label123:
       do
       {
         for (;;)
@@ -223,7 +223,7 @@ public abstract class XWalkExternalExtensionManager
           i += 1;
           break;
           if (!(localObject2 instanceof Class)) {
-            break label127;
+            break label123;
           }
           localObject1[i] = ((Class)localObject2);
         }
@@ -250,12 +250,15 @@ public abstract class XWalkExternalExtensionManager
       this.onActivityResultintintIntentMethod.init(this.bridge, null, "onActivityResultSuper", new Class[] { Integer.TYPE, Integer.TYPE, Intent.class });
       return;
     }
-    catch (UnsupportedOperationException localUnsupportedOperationException) {}
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      Log.e("XWalkExternalExtensionManager", "reflectionInit, error:".concat(String.valueOf(localUnsupportedOperationException)));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.XWalkExternalExtensionManager
  * JD-Core Version:    0.7.0.1
  */

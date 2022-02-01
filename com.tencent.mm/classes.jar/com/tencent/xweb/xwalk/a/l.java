@@ -1,344 +1,233 @@
 package com.tencent.xweb.xwalk.a;
 
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.os.AsyncTask;
+import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.ak;
-import com.tencent.xweb.internal.a.b;
-import com.tencent.xweb.xwalk.b.a.c;
-import com.tencent.xweb.xwalk.b.a.d;
-import com.tencent.xweb.xwalk.b.a.e;
-import com.tencent.xweb.xwalk.b.c;
-import com.tencent.xweb.xwalk.b.d;
-import com.tencent.xweb.xwalk.p;
-import java.io.File;
+import com.tencent.xweb.y.a;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 import org.xwalk.core.Log;
-import org.xwalk.core.NetworkUtil;
 import org.xwalk.core.XWalkEnvironment;
-import org.xwalk.core.XWalkInitializer;
-import org.xwalk.core.XWalkLibraryLoader.DownloadInfo;
-import org.xwalk.core.XWalkLibraryLoader.DownloadListener;
-import org.xwalk.core.XWalkLibraryLoader.HttpDownloadTask;
-import org.xwalk.core.XWalkLibraryLoader.WXFileDownloaderTask;
+import org.xwalk.core.XWalkInitializeLog;
+import org.xwalk.core.XWalkSharedPreferenceUtil;
+import org.xwalk.core.XWalkUpdateConfigUtil;
 
 public final class l
-  extends AsyncTask<String, Integer, Integer>
+  implements y.a
 {
-  String aajP;
-  j aajQ;
-  private final Object aajS;
-  a aajT;
-  private Map<String, b> aajU;
-  private int aajV;
-  private int aajW;
-  private int aajX;
-  private int aajY;
-  private int aajZ;
-  boolean aaka;
+  private String aipU = "";
+  private k aipV = null;
+  private m aipW = null;
   
-  public l()
+  public static void Bz(long paramLong)
   {
-    AppMethodBeat.i(154522);
-    this.aajS = new Object();
-    this.aajT = new a();
-    this.aajU = new HashMap();
-    this.aajV = 0;
-    this.aajW = 0;
-    this.aajX = 0;
-    this.aajY = 0;
-    this.aajZ = 0;
-    this.aaka = false;
-    this.aajP = "";
-    this.aajQ = null;
-    AppMethodBeat.o(154522);
-  }
-  
-  private void bj(int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(154526);
-    if (paramInt2 <= paramInt1)
+    AppMethodBeat.i(154509);
+    Object localObject = XWalkSharedPreferenceUtil.getSharedPreferencesForPluginUpdateInfo();
+    if (localObject == null)
     {
-      Log.i("XWalkPluginUp", "status not changed, return");
-      AppMethodBeat.o(154526);
+      XWalkInitializeLog.addXWalkInitializeLog("XWalkPluginUpdater", "set time sp is null");
+      AppMethodBeat.o(154509);
       return;
     }
-    Log.i("XWalkPluginUp", "change status from " + paramInt1 + " to " + paramInt2 + " errcode: " + paramInt3);
-    if (izp())
-    {
-      if ((paramInt1 != 0) || (paramInt2 != 1)) {
-        break label192;
-      }
-      this.aajQ.iwb();
-    }
-    for (;;)
-    {
-      if (paramInt2 == 5)
-      {
-        com.tencent.xweb.util.h.dA(15718, this.aajT.errCode + "," + this.aajV + "," + this.aajW + "," + this.aajX + "," + this.aajY + "," + this.aajZ);
-        k.izo();
-        this.aaka = true;
-      }
-      AppMethodBeat.o(154526);
-      return;
-      label192:
-      if ((paramInt1 != 0) && (paramInt2 == 5)) {
-        this.aajQ.aCI(paramInt3);
-      }
-    }
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putLong("nLastFetchPluginConfigTime", paramLong);
+    ((SharedPreferences.Editor)localObject).commit();
+    AppMethodBeat.o(154509);
   }
   
-  public final void a(HashMap<String, String> paramHashMap, String paramString, j paramj)
+  private static long kjF()
   {
-    AppMethodBeat.i(205777);
-    if (paramHashMap != null)
+    AppMethodBeat.i(213077);
+    SharedPreferences localSharedPreferences = XWalkSharedPreferenceUtil.getSharedPreferencesForPluginUpdateInfo();
+    if (localSharedPreferences == null)
     {
-      paramHashMap = (String)paramHashMap.get("UpdaterCheckType");
-      if ((paramHashMap != null) && (paramHashMap.equals("1"))) {
-        k.Xo(0L);
-      }
+      XWalkInitializeLog.addXWalkInitializeLog("XWalkPluginUpdater", "get time sp is null");
+      AppMethodBeat.o(213077);
+      return 0L;
     }
-    this.aajP = paramString;
-    this.aajQ = paramj;
-    AppMethodBeat.o(205777);
+    long l = localSharedPreferences.getLong("nLastFetchPluginConfigTime", 0L);
+    AppMethodBeat.o(213077);
+    return l;
   }
   
-  final boolean b(int paramInt1, int paramInt2, Map<String, b> paramMap)
+  public static boolean kjG()
   {
-    AppMethodBeat.i(154525);
-    for (;;)
+    AppMethodBeat.i(213082);
+    if (kjH())
     {
-      Object localObject2;
-      synchronized (this.aajS)
-      {
-        int i = this.aajT.aakc;
-        if (paramInt1 > i)
-        {
-          this.aajT.aakc = paramInt1;
-          if (paramInt2 != 1) {
-            this.aajT.errCode = paramInt2;
-          }
-          if (this.aajT.aakc != 4) {
-            break label201;
-          }
-          if (this.aajU.size() == 0)
-          {
-            this.aajT.aakc = 5;
-            continue;
-          }
-        }
-        else
-        {
-          paramInt1 = this.aajT.aakc;
-          paramInt2 = this.aajT.errCode;
-          bj(i, paramInt1, paramInt2);
-          if (paramInt1 <= i) {
-            break;
-          }
-          AppMethodBeat.o(154525);
-          return true;
-        }
-        paramMap = this.aajU.entrySet().iterator();
-        if (!paramMap.hasNext()) {
-          continue;
-        }
-        localObject2 = (b)((Map.Entry)paramMap.next()).getValue();
-        if ((localObject2 == null) || (((b)localObject2).HYw)) {
-          continue;
-        }
-        ((b)localObject2).mfr.cancel(true);
-      }
-      label201:
-      if ((this.aajT.aakc == 3) && (paramMap != null))
-      {
-        paramMap = paramMap.entrySet().iterator();
-        while (paramMap.hasNext())
-        {
-          Object localObject3 = (Map.Entry)paramMap.next();
-          localObject2 = (String)((Map.Entry)localObject3).getKey();
-          localObject3 = (b)((Map.Entry)localObject3).getValue();
-          this.aajU.put(localObject2, localObject3);
-          if (((b)localObject3).type == 1) {
-            ((XWalkLibraryLoader.HttpDownloadTask)((b)localObject3).mfr).execute(new Void[0]);
-          } else if (((b)localObject3).type == 2) {
-            ((XWalkLibraryLoader.WXFileDownloaderTask)((b)localObject3).mfr).execute(new Void[0]);
-          } else {
-            this.aajU.remove(localObject2);
-          }
-        }
-        this.aajV = this.aajU.size();
-      }
-    }
-    AppMethodBeat.o(154525);
-    return false;
-  }
-  
-  public final void iA(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(154524);
-    XWalkEnvironment.addXWalkInitializeLog("XWalkPluginUp", "onNotifyResult: " + paramString + " install retCode: " + paramInt);
-    for (;;)
-    {
-      synchronized (this.aajS)
-      {
-        if (this.aajT.aakc == 5)
-        {
-          AppMethodBeat.o(154524);
-          return;
-        }
-        switch (paramInt)
-        {
-        default: 
-          ((b)this.aajU.get(paramString)).HYw = true;
-          paramString = this.aajU.entrySet().iterator();
-          if (!paramString.hasNext()) {
-            break;
-          }
-          b localb = (b)((Map.Entry)paramString.next()).getValue();
-          if ((localb == null) || (localb.HYw)) {
-            continue;
-          }
-          paramInt = 0;
-          int i = this.aajT.aakc;
-          if (paramInt != 0)
-          {
-            this.aajU.clear();
-            this.aajT.aakc = 5;
-            if ((this.aajX > 0) || (this.aajY > 0)) {
-              this.aajT.errCode = -9;
-            }
-          }
-          paramInt = this.aajT.aakc;
-          int j = this.aajT.errCode;
-          bj(i, paramInt, j);
-          AppMethodBeat.o(154524);
-          return;
-        case -3: 
-          this.aajW += 1;
-        }
-      }
-      this.aajX += 1;
-      continue;
-      this.aajY += 1;
-      continue;
-      this.aajZ += 1;
-      continue;
-      paramInt = 1;
-    }
-  }
-  
-  final boolean izp()
-  {
-    AppMethodBeat.i(154527);
-    if ((this.aajP != null) && (!this.aajP.isEmpty()) && (this.aajQ != null))
-    {
-      AppMethodBeat.o(154527);
+      XWalkInitializeLog.addXWalkInitializeLog("XWalkPluginUpdater", "has plugin need update, fetch plugin config first");
+      AppMethodBeat.o(213082);
       return true;
     }
-    AppMethodBeat.o(154527);
+    long l1 = System.currentTimeMillis();
+    long l2 = kjF();
+    if ((l1 - l2 >= XWalkUpdateConfigUtil.getPluginUpdatePeriod()) || (l1 < l2))
+    {
+      AppMethodBeat.o(213082);
+      return true;
+    }
+    AppMethodBeat.o(213082);
     return false;
   }
   
-  protected final void onPreExecute()
+  private static boolean kjH()
   {
-    AppMethodBeat.i(154528);
-    b(1, 1, null);
-    super.onPreExecute();
-    AppMethodBeat.o(154528);
-  }
-  
-  public static final class a
-  {
-    public int aakc = 0;
-    public int errCode = 0;
-  }
-  
-  public static final class b
-  {
-    public boolean HYw = false;
-    public AsyncTask mfr = null;
-    public int type = 1;
-  }
-  
-  public static final class c
-    implements XWalkLibraryLoader.DownloadListener
-  {
-    private l aajR;
-    private g aakd;
-    private d aake;
-    private boolean aakf;
-    
-    c(l paraml, g paramg, d paramd)
+    AppMethodBeat.i(213086);
+    Iterator localIterator = i.kjC().iterator();
+    while (localIterator.hasNext())
     {
-      AppMethodBeat.i(205887);
-      this.aajR = paraml;
-      this.aakd = paramg;
-      this.aake = paramd;
-      if (paramd != null)
+      g localg = (g)localIterator.next();
+      if ((localg != null) && (a.bIp(localg.kjs()).Pe(false)))
       {
-        this.aakf = paramd.aakU;
-        AppMethodBeat.o(205887);
-        return;
+        AppMethodBeat.o(213086);
+        return true;
       }
-      this.aakf = false;
-      AppMethodBeat.o(205887);
     }
-    
-    public final void onDownloadCancelled()
+    AppMethodBeat.o(213086);
+    return false;
+  }
+  
+  public static boolean kjI()
+  {
+    AppMethodBeat.i(154510);
+    Object localObject1 = XWalkSharedPreferenceUtil.getSharedPreferencesForPluginUpdateInfo();
+    if (localObject1 == null)
     {
-      AppMethodBeat.i(154519);
-      this.aajR.iA(this.aakd.getPluginName(), -3);
-      com.tencent.xweb.util.h.dX(this.aakd.getPluginName(), this.aakf);
-      a.bFR(this.aakd.getPluginName()).e(null);
-      AppMethodBeat.o(154519);
+      AppMethodBeat.o(154510);
+      return false;
     }
-    
-    public final void onDownloadCompleted(XWalkLibraryLoader.DownloadInfo paramDownloadInfo)
+    int i = ((SharedPreferences)localObject1).getInt("nUpdatingProcessId", -1);
+    if (i < 0)
     {
-      AppMethodBeat.i(154520);
-      com.tencent.xweb.util.h.dW(this.aakd.getPluginName(), this.aakf);
-      a.bFR(this.aakd.getPluginName()).e(null);
-      new AsyncTask() {}.execute(new Void[0]);
-      AppMethodBeat.o(154520);
+      AppMethodBeat.o(154510);
+      return false;
     }
-    
-    public final void onDownloadFailed(XWalkLibraryLoader.DownloadInfo paramDownloadInfo)
+    int j = Process.myPid();
+    int k = Process.myUid();
+    if (i == j)
     {
-      AppMethodBeat.i(154521);
-      this.aajR.iA(this.aakd.getPluginName(), -1);
-      com.tencent.xweb.util.h.dX(this.aakd.getPluginName(), this.aakf);
-      a.bFR(this.aakd.getPluginName()).e(null);
-      AppMethodBeat.o(154521);
+      XWalkInitializeLog.addXWalkInitializeLog("XWalkPluginUpdater", "current process is updating plugin");
+      AppMethodBeat.o(154510);
+      return true;
     }
-    
-    public final void onDownloadStarted(int paramInt)
+    localObject1 = (ActivityManager)XWalkEnvironment.getApplicationContext().getSystemService("activity");
+    try
     {
-      AppMethodBeat.i(154517);
-      com.tencent.xweb.util.h.dV(this.aakd.getPluginName(), this.aakf);
-      AppMethodBeat.o(154517);
-    }
-    
-    public final void onDownloadUpdated(int paramInt)
-    {
-      AppMethodBeat.i(154518);
-      l locall = this.aajR;
-      String str = this.aakd.getPluginName();
-      if ((locall.aajT.aakc == 3) && (locall.izp()) && (locall.aajP.equals(str))) {
-        locall.aajQ.aCH(paramInt);
+      localObject1 = ((ActivityManager)localObject1).getRunningAppProcesses();
+      if (localObject1 != null)
+      {
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject1).next();
+          if (localRunningAppProcessInfo.pid == i) {
+            if (localRunningAppProcessInfo.uid == k)
+            {
+              XWalkInitializeLog.addXWalkInitializeLog("XWalkPluginUpdater", "other process is in updating plugin progress");
+              AppMethodBeat.o(154510);
+              return true;
+            }
+          }
+        }
       }
-      AppMethodBeat.o(154518);
     }
+    finally
+    {
+      for (;;)
+      {
+        Log.e("XWalkPluginUpdater", localObject2.getMessage());
+        Object localObject3 = null;
+      }
+      XWalkInitializeLog.addXWalkInitializeLog("XWalkPluginUpdater", "plugin update process pid invalid, clear");
+      kjJ();
+      AppMethodBeat.o(154510);
+    }
+    return false;
+  }
+  
+  public static void kjJ()
+  {
+    AppMethodBeat.i(154511);
+    Object localObject = XWalkSharedPreferenceUtil.getSharedPreferencesForPluginUpdateInfo();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(154511);
+      return;
+    }
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).remove("nUpdatingProcessId");
+    ((SharedPreferences.Editor)localObject).commit();
+    XWalkInitializeLog.addXWalkInitializeLog("XWalkPluginUpdater", "plugin update progress finish");
+    AppMethodBeat.o(154511);
+  }
+  
+  public final void a(String paramString, k paramk)
+  {
+    this.aipU = paramString;
+    this.aipV = paramk;
+  }
+  
+  public final void b(Context paramContext, HashMap<String, String> paramHashMap)
+  {
+    AppMethodBeat.i(154508);
+    try
+    {
+      this.aipW = new m();
+      this.aipW.a(paramHashMap, this.aipU, this.aipV);
+      this.aipW.execute(new String[0]);
+      this.aipU = "";
+      this.aipV = null;
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(154508);
+    }
+  }
+  
+  public final boolean isBusy()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.aipW != null)
+    {
+      bool1 = bool2;
+      if (!this.aipW.aiqf) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public final void kfB()
+  {
+    AppMethodBeat.i(213110);
+    if (this.aipW != null) {
+      this.aipW.b(4, -1, null);
+    }
+    AppMethodBeat.o(213110);
+  }
+  
+  public final boolean kfC()
+  {
+    AppMethodBeat.i(213104);
+    if (kjG())
+    {
+      AppMethodBeat.o(213104);
+      return true;
+    }
+    AppMethodBeat.o(213104);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.xwalk.a.l
  * JD-Core Version:    0.7.0.1
  */

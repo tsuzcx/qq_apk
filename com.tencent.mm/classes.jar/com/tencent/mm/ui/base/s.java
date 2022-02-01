@@ -1,181 +1,516 @@
 package com.tencent.mm.ui.base;
 
+import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface.OnCancelListener;
-import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.view.ContextMenu;
+import android.view.KeyEvent;
+import android.view.MenuItem;
+import android.view.SubMenu;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.Window;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.a.g;
-import com.tencent.mm.ah.a.h;
-import com.tencent.mm.ah.a.l;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ad;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class s
-  extends t
+  implements ContextMenu
 {
-  private TextView UWd;
-  private View mContentView;
-  public ProgressBar ros;
-  private int style;
+  public List<MenuItem> adRW;
+  public Context mContext;
+  public CharSequence nH;
   
-  protected s(Context paramContext, int paramInt1, int paramInt2)
+  public s(Context paramContext)
   {
-    super(paramContext, paramInt1);
-    AppMethodBeat.i(142066);
-    this.style = paramInt2;
-    switch (this.style)
-    {
-    default: 
-      paramInt1 = a.h.mm_progress_dialog;
-    }
-    for (;;)
-    {
-      this.mContentView = ad.kS(getContext()).inflate(paramInt1, null);
-      this.UWd = ((TextView)this.mContentView.findViewById(a.g.mm_progress_dialog_msg));
-      this.UWd.getViewTreeObserver().addOnGlobalLayoutListener(new s.1(this));
-      this.ros = ((ProgressBar)this.mContentView.findViewById(a.g.mm_progress_dialog_icon));
-      setCanceledOnTouchOutside(true);
-      AppMethodBeat.o(142066);
-      return;
-      paramInt1 = a.h.mm_progress_dialog;
-      continue;
-      paramInt1 = a.h.mm_progress_dialog_with_bg;
-      continue;
-      paramInt1 = a.h.mm_progress_dialog;
-      continue;
-      paramInt1 = a.h.mm_progress_dialog;
-    }
+    AppMethodBeat.i(159211);
+    this.mContext = paramContext;
+    this.adRW = new ArrayList();
+    AppMethodBeat.o(159211);
   }
   
-  public static s a(Context paramContext, CharSequence paramCharSequence, boolean paramBoolean)
+  public final MenuItem a(int paramInt1, int paramInt2, CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(142070);
-    paramContext = a(paramContext, paramCharSequence, paramBoolean, 0, -1, null);
-    AppMethodBeat.o(142070);
-    return paramContext;
+    AppMethodBeat.i(159229);
+    t localt = new t(this.mContext, paramInt1, 0);
+    paramCharSequence = new SpannableString(paramCharSequence);
+    paramCharSequence.setSpan(new ForegroundColorSpan(paramInt2), 0, paramCharSequence.length(), 0);
+    localt.setTitle(paramCharSequence);
+    this.adRW.add(localt);
+    AppMethodBeat.o(159229);
+    return localt;
   }
   
-  private static s a(Context paramContext, CharSequence paramCharSequence, boolean paramBoolean, int paramInt1, int paramInt2, DialogInterface.OnCancelListener paramOnCancelListener)
+  public final MenuItem a(int paramInt1, int paramInt2, CharSequence paramCharSequence, int paramInt3)
   {
-    AppMethodBeat.i(142071);
-    int i = paramInt2;
-    if (paramInt2 <= 0) {
-      switch (paramInt1)
+    AppMethodBeat.i(251344);
+    t localt = new t(this.mContext, paramInt2, paramInt1);
+    localt.setTitle(paramCharSequence);
+    localt.setIcon(paramInt3);
+    this.adRW.add(localt);
+    AppMethodBeat.o(251344);
+    return localt;
+  }
+  
+  public final MenuItem a(int paramInt1, int paramInt2, CharSequence paramCharSequence, int paramInt3, boolean paramBoolean)
+  {
+    AppMethodBeat.i(251391);
+    t localt = new t(this.mContext, paramInt1, 0);
+    localt.setTitle(paramCharSequence);
+    localt.oi(paramInt3, 0);
+    localt.disable = paramBoolean;
+    this.adRW.add(paramInt2, localt);
+    AppMethodBeat.o(251391);
+    return localt;
+  }
+  
+  public final MenuItem a(int paramInt1, CharSequence paramCharSequence, int paramInt2)
+  {
+    AppMethodBeat.i(159226);
+    t localt = new t(this.mContext, paramInt1, 0);
+    localt.setTitle(paramCharSequence);
+    localt.setIcon(paramInt2);
+    this.adRW.add(localt);
+    AppMethodBeat.o(159226);
+    return localt;
+  }
+  
+  public final MenuItem a(int paramInt1, CharSequence paramCharSequence, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(159227);
+    t localt = new t(this.mContext, paramInt1, 0);
+    localt.setTitle(paramCharSequence);
+    localt.oi(paramInt2, paramInt3);
+    this.adRW.add(localt);
+    AppMethodBeat.o(159227);
+    return localt;
+  }
+  
+  public final MenuItem a(int paramInt1, CharSequence paramCharSequence, int paramInt2, int paramInt3, int paramInt4)
+  {
+    AppMethodBeat.i(369636);
+    t localt = new t(this.mContext, paramInt1, 0);
+    localt.r(paramCharSequence, paramInt2);
+    localt.oi(paramInt3, paramInt4);
+    this.adRW.add(localt);
+    AppMethodBeat.o(369636);
+    return localt;
+  }
+  
+  public final MenuItem a(int paramInt1, CharSequence paramCharSequence, int paramInt2, int paramInt3, boolean paramBoolean)
+  {
+    AppMethodBeat.i(159228);
+    t localt = new t(this.mContext, paramInt1, 0);
+    localt.setTitle(paramCharSequence);
+    localt.oi(paramInt2, paramInt3);
+    localt.disable = paramBoolean;
+    this.adRW.add(localt);
+    AppMethodBeat.o(159228);
+    return localt;
+  }
+  
+  public final MenuItem a(int paramInt1, CharSequence paramCharSequence, int paramInt2, boolean paramBoolean)
+  {
+    AppMethodBeat.i(159221);
+    t localt = new t(this.mContext, paramInt1, 0);
+    localt.setTitle(paramCharSequence);
+    localt.setIcon(paramInt2);
+    localt.disable = paramBoolean;
+    this.adRW.add(localt);
+    AppMethodBeat.o(159221);
+    return localt;
+  }
+  
+  public final MenuItem a(int paramInt, CharSequence paramCharSequence, Drawable paramDrawable)
+  {
+    AppMethodBeat.i(159218);
+    t localt = new t(this.mContext, paramInt, 0);
+    localt.setTitle(paramCharSequence);
+    localt.setIcon(paramDrawable);
+    this.adRW.add(localt);
+    AppMethodBeat.o(159218);
+    return localt;
+  }
+  
+  public final MenuItem a(int paramInt1, CharSequence paramCharSequence, Drawable paramDrawable, int paramInt2)
+  {
+    AppMethodBeat.i(251357);
+    t localt = new t(this.mContext, paramInt1, 0);
+    localt.setTitle(paramCharSequence);
+    localt.setIcon(paramDrawable);
+    localt.f(paramDrawable, paramInt2);
+    this.adRW.add(localt);
+    AppMethodBeat.o(251357);
+    return localt;
+  }
+  
+  public final MenuItem a(int paramInt1, CharSequence paramCharSequence1, CharSequence paramCharSequence2, int paramInt2)
+  {
+    AppMethodBeat.i(159222);
+    t localt = new t(this.mContext, paramInt1, 0);
+    localt.setTitle(paramCharSequence1);
+    localt.BdX = paramCharSequence2;
+    localt.setIcon(paramInt2);
+    this.adRW.add(localt);
+    AppMethodBeat.o(159222);
+    return localt;
+  }
+  
+  public final MenuItem a(int paramInt1, CharSequence paramCharSequence1, CharSequence paramCharSequence2, Drawable paramDrawable, int paramInt2, boolean paramBoolean)
+  {
+    AppMethodBeat.i(251366);
+    t localt = new t(this.mContext, paramInt1, 0);
+    localt.setTitle(paramCharSequence1);
+    localt.BdX = paramCharSequence2;
+    localt.f(paramDrawable, paramInt2);
+    localt.disable = paramBoolean;
+    this.adRW.add(localt);
+    AppMethodBeat.o(251366);
+    return localt;
+  }
+  
+  public final MenuItem a(int paramInt, CharSequence paramCharSequence1, CharSequence paramCharSequence2, Drawable paramDrawable, boolean paramBoolean)
+  {
+    AppMethodBeat.i(159219);
+    t localt = new t(this.mContext, paramInt, 0);
+    localt.setTitle(paramCharSequence1);
+    localt.BdX = paramCharSequence2;
+    localt.setIcon(paramDrawable);
+    localt.disable = paramBoolean;
+    this.adRW.add(localt);
+    AppMethodBeat.o(159219);
+    return localt;
+  }
+  
+  public final MenuItem a(int paramInt, CharSequence paramCharSequence, String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(251394);
+    t localt = new t(this.mContext, paramInt, 0);
+    localt.nickName = paramCharSequence;
+    localt.rDm = paramString;
+    localt.disable = paramBoolean;
+    this.adRW.add(localt);
+    AppMethodBeat.o(251394);
+    return localt;
+  }
+  
+  public final MenuItem a(int paramInt, CharSequence paramCharSequence, boolean paramBoolean)
+  {
+    AppMethodBeat.i(179496);
+    t localt = new t(this.mContext, paramInt, 0);
+    localt.adRX = paramBoolean;
+    localt.iaS = false;
+    localt.setTitle(paramCharSequence);
+    this.adRW.add(localt);
+    AppMethodBeat.o(179496);
+    return localt;
+  }
+  
+  public final MenuItem aAV(int paramInt)
+  {
+    AppMethodBeat.i(251385);
+    t localt = new t(this.mContext, paramInt, 0);
+    localt.NfE = true;
+    this.adRW.add(localt);
+    AppMethodBeat.o(251385);
+    return localt;
+  }
+  
+  public final int aAW(int paramInt)
+  {
+    AppMethodBeat.i(251419);
+    Iterator localIterator = this.adRW.iterator();
+    int i = -1;
+    while (localIterator.hasNext())
+    {
+      MenuItem localMenuItem = (MenuItem)localIterator.next();
+      int j = i + 1;
+      i = j;
+      if (localMenuItem.getItemId() == paramInt)
       {
-      default: 
-        i = a.l.mmtipsdialog;
+        AppMethodBeat.o(251419);
+        return j;
       }
     }
-    for (;;)
+    AppMethodBeat.o(251419);
+    return -1;
+  }
+  
+  public MenuItem add(int paramInt)
+  {
+    AppMethodBeat.i(159215);
+    t localt = new t(this.mContext, 0, 0);
+    localt.setTitle(paramInt);
+    this.adRW.add(localt);
+    AppMethodBeat.o(159215);
+    return localt;
+  }
+  
+  public MenuItem add(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    AppMethodBeat.i(159213);
+    t localt = new t(this.mContext, paramInt2, paramInt1);
+    localt.setTitle(paramInt4);
+    this.adRW.add(localt);
+    AppMethodBeat.o(159213);
+    return localt;
+  }
+  
+  public MenuItem add(int paramInt1, int paramInt2, int paramInt3, CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(159214);
+    t localt = new t(this.mContext, paramInt2, paramInt1);
+    localt.setTitle(paramCharSequence);
+    this.adRW.add(localt);
+    AppMethodBeat.o(159214);
+    return localt;
+  }
+  
+  public MenuItem add(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(159216);
+    t localt = new t(this.mContext, 0, 0);
+    localt.setTitle(paramCharSequence);
+    this.adRW.add(localt);
+    AppMethodBeat.o(159216);
+    return localt;
+  }
+  
+  public int addIntentOptions(int paramInt1, int paramInt2, int paramInt3, ComponentName paramComponentName, Intent[] paramArrayOfIntent, Intent paramIntent, int paramInt4, MenuItem[] paramArrayOfMenuItem)
+  {
+    return 0;
+  }
+  
+  public SubMenu addSubMenu(int paramInt)
+  {
+    return null;
+  }
+  
+  public SubMenu addSubMenu(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    return null;
+  }
+  
+  public SubMenu addSubMenu(int paramInt1, int paramInt2, int paramInt3, CharSequence paramCharSequence)
+  {
+    return null;
+  }
+  
+  public SubMenu addSubMenu(CharSequence paramCharSequence)
+  {
+    return null;
+  }
+  
+  public final MenuItem b(int paramInt1, CharSequence paramCharSequence1, CharSequence paramCharSequence2, int paramInt2)
+  {
+    AppMethodBeat.i(251387);
+    t localt = new t(this.mContext, paramInt1, 0);
+    localt.setTitle(paramCharSequence1);
+    localt.BdX = paramCharSequence2;
+    localt.oi(0, paramInt2);
+    this.adRW.add(localt);
+    AppMethodBeat.o(251387);
+    return localt;
+  }
+  
+  public final MenuItem bx(int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(159217);
+    t localt = new t(this.mContext, paramInt1, 0);
+    localt.setTitle(paramInt2);
+    localt.setIcon(paramInt3);
+    this.adRW.add(localt);
+    AppMethodBeat.o(159217);
+    return localt;
+  }
+  
+  public final MenuItem c(int paramInt, CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(159224);
+    t localt = new t(this.mContext, paramInt, 0);
+    localt.setTitle(paramCharSequence);
+    this.adRW.add(localt);
+    AppMethodBeat.o(159224);
+    return localt;
+  }
+  
+  public void clear()
+  {
+    AppMethodBeat.i(159232);
+    Iterator localIterator = this.adRW.iterator();
+    while (localIterator.hasNext())
     {
-      paramContext = new s(paramContext, i, paramInt1);
-      paramContext.setMessage(paramCharSequence);
-      paramContext.setCancelable(paramBoolean);
-      paramContext.setOnCancelListener(paramOnCancelListener);
-      paramContext.setCanceledOnTouchOutside(false);
-      AppMethodBeat.o(142071);
-      return paramContext;
-      i = a.l.mmalertdialog;
-      continue;
-      i = a.l.mmalertdialog;
-      continue;
-      i = a.l.mmalertdialog;
-      continue;
-      i = a.l.mmtipsdialog;
+      MenuItem localMenuItem = (MenuItem)localIterator.next();
+      ((t)localMenuItem).adSb = null;
+      ((t)localMenuItem).setOnMenuItemClickListener(null);
     }
+    this.adRW.clear();
+    this.nH = null;
+    AppMethodBeat.o(159232);
   }
   
-  public static s a(Context paramContext, CharSequence paramCharSequence, boolean paramBoolean, int paramInt, DialogInterface.OnCancelListener paramOnCancelListener)
-  {
-    AppMethodBeat.i(142072);
-    paramContext = b(paramContext, paramCharSequence, paramBoolean, paramInt, -1, paramOnCancelListener);
-    AppMethodBeat.o(142072);
-    return paramContext;
-  }
+  public void clearHeader() {}
   
-  public static s b(Context paramContext, CharSequence paramCharSequence, boolean paramBoolean, int paramInt1, int paramInt2, DialogInterface.OnCancelListener paramOnCancelListener)
-  {
-    AppMethodBeat.i(142073);
-    paramContext = a(paramContext, paramCharSequence, paramBoolean, paramInt1, paramInt2, paramOnCancelListener);
-    paramContext.show();
-    AppMethodBeat.o(142073);
-    return paramContext;
-  }
+  public void close() {}
   
-  public void dismiss()
+  public MenuItem findItem(int paramInt)
   {
-    AppMethodBeat.i(142075);
-    try
+    AppMethodBeat.i(159233);
+    Iterator localIterator = this.adRW.iterator();
+    while (localIterator.hasNext())
     {
-      super.dismiss();
-      AppMethodBeat.o(142075);
-      return;
+      MenuItem localMenuItem = (MenuItem)localIterator.next();
+      if (localMenuItem.getItemId() == paramInt)
+      {
+        AppMethodBeat.o(159233);
+        return localMenuItem;
+      }
     }
-    catch (Exception localException)
-    {
-      Log.e("MicroMsg.MMProgressDialog", "dismiss exception, e = " + localException.getMessage());
-      AppMethodBeat.o(142075);
-    }
+    AppMethodBeat.o(159233);
+    return null;
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public MenuItem getItem(int paramInt)
   {
-    AppMethodBeat.i(142067);
-    super.onCreate(paramBundle);
-    setContentView(this.mContentView, new LinearLayout.LayoutParams(-1, -1));
-    paramBundle = getWindow().getAttributes();
-    paramBundle.width = -2;
-    paramBundle.height = -2;
-    if (this.style == 2)
-    {
-      getWindow().addFlags(2);
-      paramBundle.dimAmount = 0.65F;
-    }
-    onWindowAttributesChanged(paramBundle);
-    AppMethodBeat.o(142067);
+    AppMethodBeat.i(159235);
+    MenuItem localMenuItem = (MenuItem)this.adRW.get(paramInt);
+    AppMethodBeat.o(159235);
+    return localMenuItem;
   }
   
-  public void setCancelable(boolean paramBoolean)
+  public boolean hasVisibleItems()
   {
-    AppMethodBeat.i(142068);
-    super.setCancelable(paramBoolean);
-    setCanceledOnTouchOutside(paramBoolean);
-    AppMethodBeat.o(142068);
+    return false;
   }
   
-  public void setMessage(CharSequence paramCharSequence)
+  public boolean isShortcutKey(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(142069);
-    this.UWd.setText(paramCharSequence);
-    AppMethodBeat.o(142069);
+    return false;
   }
   
-  public void show()
+  public final MenuItem j(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(142074);
-    try
-    {
-      super.show();
-      AppMethodBeat.o(142074);
-      return;
+    AppMethodBeat.i(159230);
+    if (paramMenuItem != null) {
+      this.adRW.add(paramMenuItem);
     }
-    catch (Exception localException)
+    AppMethodBeat.o(159230);
+    return null;
+  }
+  
+  public final boolean jmw()
+  {
+    AppMethodBeat.i(159212);
+    if (this.adRW.size() == 0)
     {
-      Log.printErrStackTrace("MicroMsg.MMProgressDialog", localException, "", new Object[0]);
-      AppMethodBeat.o(142074);
+      AppMethodBeat.o(159212);
+      return true;
     }
+    AppMethodBeat.o(159212);
+    return false;
+  }
+  
+  public final MenuItem oh(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(159223);
+    t localt = new t(this.mContext, paramInt1, 0);
+    localt.setTitle(paramInt2);
+    this.adRW.add(localt);
+    AppMethodBeat.o(159223);
+    return localt;
+  }
+  
+  public boolean performIdentifierAction(int paramInt1, int paramInt2)
+  {
+    return false;
+  }
+  
+  public boolean performShortcut(int paramInt1, KeyEvent paramKeyEvent, int paramInt2)
+  {
+    return false;
+  }
+  
+  public void removeGroup(int paramInt) {}
+  
+  public void removeItem(int paramInt)
+  {
+    AppMethodBeat.i(159231);
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.adRW.iterator();
+    while (localIterator.hasNext())
+    {
+      MenuItem localMenuItem = (MenuItem)localIterator.next();
+      if (localMenuItem.getItemId() == paramInt) {
+        localArrayList.add(localMenuItem);
+      }
+    }
+    this.adRW.removeAll(localArrayList);
+    AppMethodBeat.o(159231);
+  }
+  
+  public void setGroupCheckable(int paramInt, boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public void setGroupEnabled(int paramInt, boolean paramBoolean) {}
+  
+  public void setGroupVisible(int paramInt, boolean paramBoolean) {}
+  
+  public ContextMenu setHeaderIcon(int paramInt)
+  {
+    return this;
+  }
+  
+  public ContextMenu setHeaderIcon(Drawable paramDrawable)
+  {
+    return this;
+  }
+  
+  public ContextMenu setHeaderTitle(int paramInt)
+  {
+    AppMethodBeat.i(159236);
+    if (paramInt > 0)
+    {
+      ContextMenu localContextMenu = setHeaderTitle(this.mContext.getString(paramInt));
+      AppMethodBeat.o(159236);
+      return localContextMenu;
+    }
+    AppMethodBeat.o(159236);
+    return this;
+  }
+  
+  public ContextMenu setHeaderTitle(CharSequence paramCharSequence)
+  {
+    if (paramCharSequence == null) {
+      return this;
+    }
+    this.nH = paramCharSequence;
+    return this;
+  }
+  
+  public ContextMenu setHeaderView(View paramView)
+  {
+    return this;
+  }
+  
+  public void setQwertyMode(boolean paramBoolean) {}
+  
+  public int size()
+  {
+    AppMethodBeat.i(159234);
+    if (this.adRW == null)
+    {
+      AppMethodBeat.o(159234);
+      return 0;
+    }
+    int i = this.adRW.size();
+    AppMethodBeat.o(159234);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.base.s
  * JD-Core Version:    0.7.0.1
  */

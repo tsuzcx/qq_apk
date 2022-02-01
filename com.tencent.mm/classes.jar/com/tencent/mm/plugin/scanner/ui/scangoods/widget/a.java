@@ -4,127 +4,111 @@ import android.content.Context;
 import android.graphics.Canvas;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.scanner.model.ScanPoint;
-import com.tencent.mm.plugin.scanner.model.ac;
+import com.tencent.mm.plugin.scanner.model.aj;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
-import kotlin.g.b.ag;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.an;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/BaseScanDotsAnimationController;", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanDotsAnimationController;", "context", "Landroid/content/Context;", "scanAnimationDotsView", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;)V", "dotsAnimationListener", "com/tencent/mm/plugin/scanner/ui/scangoods/widget/BaseScanDotsAnimationController$dotsAnimationListener$1", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/BaseScanDotsAnimationController$dotsAnimationListener$1;", "dotsGroupSet", "Ljava/util/HashSet;", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsGroupView;", "Lkotlin/collections/HashSet;", "getDotsGroupSet", "()Ljava/util/HashSet;", "setDotsGroupSet", "(Ljava/util/HashSet;)V", "duration", "", "isStoping", "", "()Z", "setStoping", "(Z)V", "viewHeight", "", "getViewHeight", "()I", "setViewHeight", "(I)V", "viewWidth", "getViewWidth", "setViewWidth", "addAnimationDots", "", "pointsResult", "Lcom/tencent/mm/plugin/scanner/model/ScanPointsInfo;", "addAnimationDotsGroup", "points", "draw", "canvas", "Landroid/graphics/Canvas;", "refreshView", "release", "setDuration", "show", "visible", "startAnimation", "stopAnimation", "updateViewSize", "width", "height", "Companion", "plugin-scan_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/BaseScanDotsAnimationController;", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanDotsAnimationController;", "context", "Landroid/content/Context;", "scanAnimationDotsView", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;)V", "dotsAnimationListener", "com/tencent/mm/plugin/scanner/ui/scangoods/widget/BaseScanDotsAnimationController$dotsAnimationListener$1", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/BaseScanDotsAnimationController$dotsAnimationListener$1;", "dotsGroupSet", "Ljava/util/HashSet;", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsGroupView;", "Lkotlin/collections/HashSet;", "getDotsGroupSet", "()Ljava/util/HashSet;", "setDotsGroupSet", "(Ljava/util/HashSet;)V", "duration", "", "isStoping", "", "()Z", "setStoping", "(Z)V", "viewHeight", "", "getViewHeight", "()I", "setViewHeight", "(I)V", "viewWidth", "getViewWidth", "setViewWidth", "addAnimationDots", "", "pointsResult", "Lcom/tencent/mm/plugin/scanner/model/ScanPointsInfo;", "addAnimationDotsGroup", "points", "draw", "canvas", "Landroid/graphics/Canvas;", "refreshView", "release", "setDuration", "show", "visible", "startAnimation", "stopAnimation", "updateViewSize", "width", "height", "Companion", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class a
   implements e
 {
-  private static final ArrayList<c> IUR = new ArrayList();
-  public static final a.a IUS = new a.a((byte)0);
-  HashSet<c> IUN;
-  boolean IUO;
-  private b IUP;
-  private final d IUQ;
+  public static final a.a PdE = new a.a((byte)0);
+  private static final ArrayList<c> PdJ = new ArrayList();
+  private final d PdF;
+  HashSet<c> PdG;
+  boolean PdH;
+  private b PdI;
   private final Context context;
   private long duration;
-  private int jBZ;
-  private int jCa;
+  private int mbM;
+  private int mbN;
   
   public a(Context paramContext, d paramd)
   {
     this.context = paramContext;
-    this.IUQ = paramd;
+    this.PdF = paramd;
     this.duration = 700L;
-    this.IUN = new HashSet();
-    this.IUP = new b(this);
+    this.PdG = new HashSet();
+    this.PdI = new b(this);
   }
   
-  public final void b(ac paramac)
+  public final void b(aj paramaj)
   {
-    Object localObject3 = null;
-    p.k(paramac, "pointsResult");
-    Log.v("MicroMsg.BaseScanDotsAnimationController", "alvinluo addAnimationDots size: %d", new Object[] { Integer.valueOf(paramac.pointCount) });
+    Object localObject2 = null;
+    s.u(paramaj, "pointsResult");
+    Log.v("MicroMsg.BaseScanDotsAnimationController", "alvinluo addAnimationDots size: %d", new Object[] { Integer.valueOf(paramaj.pointCount) });
     Context localContext = this.context;
     long l = this.duration;
-    d locald = this.IUQ;
-    p.k(localContext, "context");
-    p.k(locald, "scanAnimationDotsView");
-    Log.v("MicroMsg.BaseScanDotsAnimationController", "alvinluo obtain recycledViewList: %d", new Object[] { Integer.valueOf(IUR.size()) });
-    Object localObject1 = ((Iterable)IUR).iterator();
-    Object localObject2;
+    d locald = this.PdF;
+    s.u(localContext, "context");
+    s.u(locald, "scanAnimationDotsView");
+    Log.v("MicroMsg.BaseScanDotsAnimationController", "alvinluo obtain recycledViewList: %d", new Object[] { Integer.valueOf(PdJ.size()) });
+    Object localObject1 = ((Iterable)PdJ).iterator();
+    c localc;
     do
     {
       if (!((Iterator)localObject1).hasNext()) {
         break;
       }
-      localObject2 = (c)((Iterator)localObject1).next();
-    } while (((c)localObject2).fEq());
+      localc = (c)((Iterator)localObject1).next();
+    } while (localc.gTd());
     for (;;)
     {
-      localObject1 = localObject2;
-      if (localObject2 == null)
+      localObject1 = localc;
+      if (localc == null)
       {
-        if (IUR.size() < 10)
+        if (PdJ.size() < 10)
         {
-          localObject1 = (c)new g(localContext, locald);
-          IUR.add(localObject1);
+          localObject1 = new g(localContext, locald);
+          PdJ.add(localObject1);
         }
       }
       else
       {
-        if (localObject1 == null) {
-          p.iCn();
-        }
         ((c)localObject1).setDuration(l);
         Log.v("MicroMsg.BaseScanDotsAnimationController", "alvinluo obtain return new view");
-        localObject2 = localObject1;
-        if (localObject1 == null)
-        {
-          p.iCn();
-          localObject2 = localObject1;
+      }
+      for (localc = (c)localObject1; localc == null; localc = null)
+      {
+        paramaj = null;
+        if (paramaj == null) {
+          break label352;
         }
-        if (localObject2 == null) {
-          break label363;
-        }
-        localObject1 = localObject3;
-        if (paramac != null) {
-          localObject1 = paramac.points;
-        }
+        Log.v("MicroMsg.BaseScanDotsAnimationController", "alvinluo addAnimationDotsGroup dotsGroupSet size: %d", new Object[] { Integer.valueOf(this.PdG.size()) });
+        this.PdG.add(paramaj);
+        return;
+        Log.e("MicroMsg.BaseScanDotsAnimationController", "alvinluo recycledViewList exceed max size: %d", new Object[] { Integer.valueOf(PdJ.size()) });
+      }
+      if (paramaj == null) {}
+      for (localObject1 = localObject2;; localObject1 = paramaj.points)
+      {
         if (localObject1 != null)
         {
-          localObject1 = paramac.points;
-          if (localObject1 == null) {
-            p.iCn();
-          }
-          ((c)localObject2).a((ScanPoint[])localObject1, paramac.pointCount);
+          localObject1 = paramaj.points;
+          s.checkNotNull(localObject1);
+          localc.a((ScanPoint[])localObject1, paramaj.pointCount);
         }
-        ((c)localObject2).F(this.jBZ, this.jCa, true);
-        ((c)localObject2).a((c.a)this.IUP);
-      }
-      for (;;)
-      {
-        if (localObject2 == null) {
-          break label369;
-        }
-        Log.v("MicroMsg.BaseScanDotsAnimationController", "alvinluo addAnimationDotsGroup dotsGroupSet size: %d", new Object[] { Integer.valueOf(this.IUN.size()) });
-        this.IUN.add(localObject2);
-        return;
-        Log.e("MicroMsg.BaseScanDotsAnimationController", "alvinluo recycledViewList exceed max size: %d", new Object[] { Integer.valueOf(IUR.size()) });
-        localObject2 = null;
+        localc.L(this.mbM, this.mbN, true);
+        localc.a((c.a)this.PdI);
+        paramaj = localc;
         break;
-        label363:
-        localObject2 = null;
       }
-      label369:
+      label352:
       Log.e("MicroMsg.BaseScanDotsAnimationController", "alvinluo addAnimationDotsGroup group obtain failed and ignore");
       return;
-      localObject2 = null;
+      localc = null;
     }
   }
   
   public final void draw(Canvas paramCanvas)
   {
-    Iterator localIterator = ((Iterable)this.IUN).iterator();
+    Iterator localIterator = ((Iterable)this.PdG).iterator();
     while (localIterator.hasNext()) {
       ((c)localIterator.next()).draw(paramCanvas);
     }
@@ -132,21 +116,21 @@ public abstract class a
   
   protected final int getViewHeight()
   {
-    return this.jCa;
+    return this.mbN;
   }
   
   protected final int getViewWidth()
   {
-    return this.jBZ;
+    return this.mbM;
   }
   
-  public final void jm(int paramInt1, int paramInt2)
+  public final void kT(int paramInt1, int paramInt2)
   {
-    this.jBZ = paramInt1;
-    this.jCa = paramInt2;
-    Iterator localIterator = ((Iterable)this.IUN).iterator();
+    this.mbM = paramInt1;
+    this.mbN = paramInt2;
+    Iterator localIterator = ((Iterable)this.PdG).iterator();
     while (localIterator.hasNext()) {
-      ((c)localIterator.next()).F(paramInt1, paramInt2, false);
+      ((c)localIterator.next()).L(paramInt1, paramInt2, false);
     }
   }
   
@@ -155,17 +139,17 @@ public abstract class a
   public final void release()
   {
     stopAnimation();
-    Iterator localIterator = ((Iterable)IUR).iterator();
+    Iterator localIterator = ((Iterable)PdJ).iterator();
     while (localIterator.hasNext()) {
       ((c)localIterator.next()).release();
     }
-    IUR.clear();
+    PdJ.clear();
   }
   
   public void setDuration(long paramLong)
   {
     this.duration = paramLong;
-    Iterator localIterator = ((Iterable)this.IUN).iterator();
+    Iterator localIterator = ((Iterable)this.PdG).iterator();
     while (localIterator.hasNext()) {
       ((c)localIterator.next()).setDuration(paramLong);
     }
@@ -175,33 +159,35 @@ public abstract class a
   
   public void stopAnimation()
   {
-    this.IUO = true;
-    Iterator localIterator = ((Iterable)this.IUN).iterator();
+    this.PdH = true;
+    Iterator localIterator = ((Iterable)this.PdG).iterator();
     while (localIterator.hasNext()) {
       ((c)localIterator.next()).stopAnimation();
     }
-    this.IUN.clear();
-    this.IUO = false;
+    this.PdG.clear();
+    this.PdH = false;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/scanner/ui/scangoods/widget/BaseScanDotsAnimationController$dotsAnimationListener$1", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsGroupView$AnimationListener;", "onAnimationEnd", "", "dotsGroupView", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsGroupView;", "onAnimationStart", "plugin-scan_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/scanner/ui/scangoods/widget/BaseScanDotsAnimationController$dotsAnimationListener$1", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsGroupView$AnimationListener;", "onAnimationEnd", "", "dotsGroupView", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsGroupView;", "onAnimationStart", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
     implements c.a
   {
+    b(a parama) {}
+    
     public final void a(c paramc)
     {
       AppMethodBeat.i(52250);
-      Log.v("MicroMsg.BaseScanDotsAnimationController", "alvinluo dotsGroupSet remove isStoping: %b", new Object[] { Boolean.valueOf(this.IUT.IUO) });
-      if (!this.IUT.IUO)
+      Log.v("MicroMsg.BaseScanDotsAnimationController", "alvinluo dotsGroupSet remove isStoping: %b", new Object[] { Boolean.valueOf(this.PdK.PdH) });
+      if (!this.PdK.PdH)
       {
-        Collection localCollection = (Collection)this.IUT.IUN;
+        Collection localCollection = (Collection)this.PdK.PdG;
         if (localCollection == null)
         {
-          paramc = new t("null cannot be cast to non-null type kotlin.collections.MutableCollection<T>");
+          paramc = new NullPointerException("null cannot be cast to non-null type kotlin.collections.MutableCollection<T>");
           AppMethodBeat.o(52250);
           throw paramc;
         }
-        ag.fc(localCollection).remove(paramc);
+        an.hA(localCollection).remove(paramc);
       }
       AppMethodBeat.o(52250);
     }
@@ -209,7 +195,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.scangoods.widget.a
  * JD-Core Version:    0.7.0.1
  */

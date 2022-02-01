@@ -3,8 +3,9 @@ package com.tencent.mm.plugin.location.ui.impl;
 import android.content.Context;
 import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.bd;
 
 final class PickPoi$1
   implements Runnable
@@ -15,14 +16,14 @@ final class PickPoi$1
   {
     AppMethodBeat.i(56080);
     FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.val$view.getLayoutParams();
-    localLayoutParams.bottomMargin = ((int)(PickPoi.a(this.EqD).getHeight() / 2.0D + 0.5D) + aw.fromDPToPix(this.val$context, 20));
+    localLayoutParams.bottomMargin = ((int)(PickPoi.a(this.Kjk).getHeight() / 2.0D + 0.5D) + bd.fromDPToPix(this.val$context, 20));
     this.val$view.setLayoutParams(localLayoutParams);
     AppMethodBeat.o(56080);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.impl.PickPoi.1
  * JD-Core Version:    0.7.0.1
  */

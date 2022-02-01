@@ -3,18 +3,18 @@ package kotlinx.coroutines.android;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
-import kotlin.l;
+import kotlin.Metadata;
 import kotlinx.coroutines.internal.MainDispatcherFactory;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/android/AndroidDispatcherFactory;", "Lkotlinx/coroutines/internal/MainDispatcherFactory;", "()V", "loadPriority", "", "getLoadPriority", "()I", "createDispatcher", "Lkotlinx/coroutines/android/HandlerContext;", "allFactories", "", "hintOnError", "", "kotlinx-coroutines-android"})
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/android/AndroidDispatcherFactory;", "Lkotlinx/coroutines/internal/MainDispatcherFactory;", "()V", "loadPriority", "", "getLoadPriority", "()I", "createDispatcher", "Lkotlinx/coroutines/android/HandlerContext;", "allFactories", "", "hintOnError", "", "kotlinx-coroutines-android"}, k=1, mv={1, 5, 1}, xi=48)
 public final class AndroidDispatcherFactory
   implements MainDispatcherFactory
 {
   public final a createDispatcher(List<? extends MainDispatcherFactory> paramList)
   {
-    AppMethodBeat.i(243899);
-    paramList = new a(c.m(Looper.getMainLooper()), "Main");
-    AppMethodBeat.o(243899);
+    AppMethodBeat.i(188919);
+    paramList = new a(c.n(Looper.getMainLooper()));
+    AppMethodBeat.o(188919);
     return paramList;
   }
   

@@ -6,29 +6,17 @@ import com.google.android.gms.common.internal.Objects;
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SafeParcelable.Class(creator="AccountChangeEventCreator")
 public class AccountChangeEvent
   extends AbstractSafeParcelable
 {
   public static final Parcelable.Creator<AccountChangeEvent> CREATOR;
-  @SafeParcelable.VersionField(id=1)
   private final int zzh;
-  @SafeParcelable.Field(id=2)
   private final long zzi;
-  @SafeParcelable.Field(id=3)
   private final String zzj;
-  @SafeParcelable.Field(id=4)
   private final int zzk;
-  @SafeParcelable.Field(id=5)
   private final int zzl;
-  @SafeParcelable.Field(id=6)
   private final String zzm;
   
   static
@@ -38,8 +26,7 @@ public class AccountChangeEvent
     AppMethodBeat.o(10586);
   }
   
-  @SafeParcelable.Constructor
-  AccountChangeEvent(@SafeParcelable.Param(id=1) int paramInt1, @SafeParcelable.Param(id=2) long paramLong, @SafeParcelable.Param(id=3) String paramString1, @SafeParcelable.Param(id=4) int paramInt2, @SafeParcelable.Param(id=5) int paramInt3, @SafeParcelable.Param(id=6) String paramString2)
+  AccountChangeEvent(int paramInt1, long paramLong, String paramString1, int paramInt2, int paramInt3, String paramString2)
   {
     AppMethodBeat.i(10580);
     this.zzh = paramInt1;
@@ -155,7 +142,7 @@ public class AccountChangeEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.AccountChangeEvent
  * JD-Core Version:    0.7.0.1
  */

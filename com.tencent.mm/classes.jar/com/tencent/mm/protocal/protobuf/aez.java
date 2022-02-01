@@ -3,94 +3,89 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class aez
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int mVM;
-  public String mVN;
-  public String mVO;
-  public String mVP;
+  public String link;
+  public String title;
+  public String wording;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(43088);
+    AppMethodBeat.i(260064);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.mVM);
-      if (this.mVN != null) {
-        paramVarArgs.f(2, this.mVN);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.wording != null) {
+        paramVarArgs.g(1, this.wording);
       }
-      if (this.mVO != null) {
-        paramVarArgs.f(3, this.mVO);
+      if (this.title != null) {
+        paramVarArgs.g(2, this.title);
       }
-      if (this.mVP != null) {
-        paramVarArgs.f(4, this.mVP);
+      if (this.link != null) {
+        paramVarArgs.g(3, this.link);
       }
-      AppMethodBeat.o(43088);
+      AppMethodBeat.o(260064);
       return 0;
     }
-    if (paramInt == 1)
+    if (paramInt == 1) {
+      if (this.wording == null) {
+        break label330;
+      }
+    }
+    label330:
+    for (int i = i.a.a.b.b.a.h(1, this.wording) + 0;; i = 0)
     {
-      int i = g.a.a.b.b.a.bM(1, this.mVM) + 0;
       paramInt = i;
-      if (this.mVN != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.mVN);
+      if (this.title != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.title);
       }
       i = paramInt;
-      if (this.mVO != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.mVO);
+      if (this.link != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.link);
       }
-      paramInt = i;
-      if (this.mVP != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.mVP);
-      }
-      AppMethodBeat.o(43088);
-      return paramInt;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
-      }
-      AppMethodBeat.o(43088);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      aez localaez = (aez)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      AppMethodBeat.o(260064);
+      return i;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(43088);
-        return -1;
-      case 1: 
-        localaez.mVM = locala.abFh.AK();
-        AppMethodBeat.o(43088);
-        return 0;
-      case 2: 
-        localaez.mVN = locala.abFh.readString();
-        AppMethodBeat.o(43088);
-        return 0;
-      case 3: 
-        localaez.mVO = locala.abFh.readString();
-        AppMethodBeat.o(43088);
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(260064);
         return 0;
       }
-      localaez.mVP = locala.abFh.readString();
-      AppMethodBeat.o(43088);
-      return 0;
+      if (paramInt == 3)
+      {
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+        aez localaez = (aez)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(260064);
+          return -1;
+        case 1: 
+          localaez.wording = locala.ajGk.readString();
+          AppMethodBeat.o(260064);
+          return 0;
+        case 2: 
+          localaez.title = locala.ajGk.readString();
+          AppMethodBeat.o(260064);
+          return 0;
+        }
+        localaez.link = locala.ajGk.readString();
+        AppMethodBeat.o(260064);
+        return 0;
+      }
+      AppMethodBeat.o(260064);
+      return -1;
     }
-    AppMethodBeat.o(43088);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.aez
  * JD-Core Version:    0.7.0.1
  */

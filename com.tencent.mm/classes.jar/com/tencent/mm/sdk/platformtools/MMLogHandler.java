@@ -21,51 +21,51 @@ public class MMLogHandler
   public MMLogHandler(Looper paramLooper, MMHandler.Callback paramCallback, MessageTaskListener paramMessageTaskListener)
   {
     super(paramLooper, paramCallback);
-    AppMethodBeat.i(193974);
+    AppMethodBeat.i(244144);
     this.toStringResult = null;
     this.looper = getLooper();
     this.callback = paramCallback;
     this.listener = paramMessageTaskListener;
-    AppMethodBeat.o(193974);
+    AppMethodBeat.o(244144);
   }
   
   public MMLogHandler(Looper paramLooper, MessageTaskListener paramMessageTaskListener)
   {
     super(paramLooper);
-    AppMethodBeat.i(193972);
+    AppMethodBeat.i(244140);
     this.toStringResult = null;
     this.looper = getLooper();
     this.listener = paramMessageTaskListener;
-    AppMethodBeat.o(193972);
+    AppMethodBeat.o(244140);
   }
   
   public MMLogHandler(MMHandler.Callback paramCallback, MessageTaskListener paramMessageTaskListener)
   {
     super(paramCallback);
-    AppMethodBeat.i(193973);
+    AppMethodBeat.i(244142);
     this.toStringResult = null;
     this.looper = getLooper();
     this.callback = paramCallback;
     this.listener = paramMessageTaskListener;
-    AppMethodBeat.o(193973);
+    AppMethodBeat.o(244142);
   }
   
   public MMLogHandler(MessageTaskListener paramMessageTaskListener)
   {
-    AppMethodBeat.i(193970);
+    AppMethodBeat.i(244136);
     this.toStringResult = null;
     this.looper = getLooper();
     this.listener = paramMessageTaskListener;
-    AppMethodBeat.o(193970);
+    AppMethodBeat.o(244136);
   }
   
   public void dispatchMessage(Message paramMessage)
   {
-    AppMethodBeat.i(193978);
+    AppMethodBeat.i(244154);
     if ((paramMessage.getCallback() != null) || (this.callback != null))
     {
       super.dispatchMessage(paramMessage);
-      AppMethodBeat.o(193978);
+      AppMethodBeat.o(244154);
       return;
     }
     long l1 = System.currentTimeMillis();
@@ -74,39 +74,39 @@ public class MMLogHandler
     if (this.listener != null) {
       this.listener.onLog(paramMessage, null, this.looper.getThread(), System.currentTimeMillis() - l1, Debug.threadCpuTimeNanos() - l2, -1.0F);
     }
-    AppMethodBeat.o(193978);
+    AppMethodBeat.o(244154);
   }
   
   public void handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(193979);
+    AppMethodBeat.i(244157);
     if (this.listener != null) {
       this.listener.handleMessage(paramMessage);
     }
-    AppMethodBeat.o(193979);
+    AppMethodBeat.o(244157);
   }
   
   public void onLog(Message paramMessage, Runnable paramRunnable, Thread paramThread, long paramLong1, long paramLong2, float paramFloat)
   {
-    AppMethodBeat.i(193985);
+    AppMethodBeat.i(244169);
     if (this.listener != null) {
       this.listener.onLog(paramMessage, paramRunnable, paramThread, paramLong1, paramLong2, paramFloat);
     }
-    AppMethodBeat.o(193985);
+    AppMethodBeat.o(244169);
   }
   
   public void onRunEnd(Runnable paramRunnable, MessageTask paramMessageTask)
   {
-    AppMethodBeat.i(193983);
+    AppMethodBeat.i(244165);
     if (this.listener != null) {
       this.listener.onTaskRunEnd(paramRunnable, paramMessageTask);
     }
-    AppMethodBeat.o(193983);
+    AppMethodBeat.o(244165);
   }
   
   public boolean sendMessageAtTime(Message paramMessage, long paramLong)
   {
-    AppMethodBeat.i(193977);
+    AppMethodBeat.i(244151);
     if (paramMessage != null) {}
     Runnable localRunnable;
     long l;
@@ -119,7 +119,7 @@ public class MMLogHandler
         break;
       }
       bool = super.sendMessageAtTime(paramMessage, paramLong);
-      AppMethodBeat.o(193977);
+      AppMethodBeat.o(244151);
       return bool;
     }
     if (paramMessage.getTarget() == null) {}
@@ -142,7 +142,7 @@ public class MMLogHandler
         break;
       }
       Log.w("MicroMsg.MMLogHandler", "sendMessageAtTime but thread[%d, %s] is dead so return false!", new Object[] { Long.valueOf(getLooper().getThread().getId()), getLooper().getThread().getName() });
-      AppMethodBeat.o(193977);
+      AppMethodBeat.o(244151);
       return false;
     }
     if (this.listener != null) {
@@ -152,18 +152,18 @@ public class MMLogHandler
     if ((!bool) && (this.listener != null)) {
       this.listener.onTaskRunEnd(localRunnable, (MessageTask)localObject);
     }
-    AppMethodBeat.o(193977);
+    AppMethodBeat.o(244151);
     return bool;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(193980);
+    AppMethodBeat.i(244162);
     if (this.toStringResult == null) {
       this.toStringResult = ("MMLogHandler{listener = " + this.listener + "}");
     }
     String str = this.toStringResult;
-    AppMethodBeat.o(193980);
+    AppMethodBeat.o(244162);
     return str;
   }
   
@@ -180,7 +180,7 @@ public class MMLogHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.MMLogHandler
  * JD-Core Version:    0.7.0.1
  */

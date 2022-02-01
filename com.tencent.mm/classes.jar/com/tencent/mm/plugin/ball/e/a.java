@@ -10,44 +10,44 @@ import java.util.List;
 
 public final class a
 {
-  public long lER = -1L;
-  public List<BallInfo> rYD;
+  public long owx = -1L;
+  public List<BallInfo> vjU;
   
-  public final void Fg(int paramInt)
+  public final void FH(int paramInt)
   {
     AppMethodBeat.i(106060);
-    if ((this.rYD != null) && (!this.rYD.isEmpty())) {}
+    if ((this.vjU != null) && (!this.vjU.isEmpty())) {}
     long l;
     StringBuilder localStringBuilder;
     int k;
     int i;
-    for (String str = ((BallInfo)this.rYD.get(0)).rYs.rYB;; str = null)
+    for (String str = ((BallInfo)this.vjU.get(0)).vjI.vjR;; str = null)
     {
       l = Util.nowMilliSecond();
       localStringBuilder = new StringBuilder();
-      if (this.rYD == null) {
+      if (this.vjU == null) {
         break label264;
       }
-      k = this.rYD.size();
+      k = this.vjU.size();
       j = 0;
       i = 0;
       while (j < k)
       {
-        i |= ((BallInfo)this.rYD.get(j)).cvs();
+        i |= ((BallInfo)this.vjU.get(j)).cYd();
         if (j != 0) {
           localStringBuilder.append(";");
         }
-        localStringBuilder.append(((BallInfo)this.rYD.get(j)).rYs.rYA);
+        localStringBuilder.append(((BallInfo)this.vjU.get(j)).vjI.vjQ);
         j += 1;
       }
     }
     int j = k;
     for (;;)
     {
-      str = String.format("%s,%d,%d,%d,%d,%d,%s", new Object[] { str, Long.valueOf(this.lER), Long.valueOf(l), Integer.valueOf(paramInt), Integer.valueOf(j), Integer.valueOf(i), localStringBuilder.toString() });
+      str = String.format("%s,%d,%d,%d,%d,%d,%s", new Object[] { str, Long.valueOf(this.owx), Long.valueOf(l), Integer.valueOf(paramInt), Integer.valueOf(j), Integer.valueOf(i), localStringBuilder.toString() });
       Log.v("MicroMsg.FloatMenuReportHelper", "whenHideMenu reportStr:%s", new Object[] { str });
-      h.IzE.kvStat(17603, str);
-      this.lER = -1L;
+      h.OAn.kvStat(17603, str);
+      this.owx = -1L;
       AppMethodBeat.o(106060);
       return;
       label264:
@@ -58,7 +58,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.e.a
  * JD-Core Version:    0.7.0.1
  */

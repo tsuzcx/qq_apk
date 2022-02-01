@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|top" android:orientation="vertical" android:background="@drawable/bpv" android:layout_width="160.0dip" android:layout_height="wrap_content" android:minWidth="160.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:id="@id/fgc" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a61" />
-    <TextView android:textSize="15.0dip" android:textColor="@color/ag2" android:gravity="center" android:id="@id/fgd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="30.0dip" />
-</LinearLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:gravity="center" android:orientation="vertical" android:background="@color/ahb" android:layout_width="wrap_content" android:layout_height="@dimen/d4"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/hn" android:textStyle="bold" android:textColor="@color/m4" android:ellipsize="end" android:gravity="center" android:id="@id/kvj" android:paddingLeft="5.0dip" android:paddingTop="2.0dip" android:paddingRight="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:includeFontPadding="false" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <TextView android:textSize="@dimen/fa" android:textStyle="bold" android:textColor="#fffa5151" android:ellipsize="end" android:gravity="center" android:id="@id/kvg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:includeFontPadding="false" android:layout_marginStart="1.5dip" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toRightOf="@id/kvj" app:layout_constraintTop_toTopOf="hr_" />
+    <View android:id="@id/l32" android:background="@drawable/acn" android:visibility="gone" android:layout_width="10.0dip" android:layout_height="10.0dip" app:layout_constraintRight_toRightOf="@id/kvj" app:layout_constraintTop_toTopOf="@id/kvj" />
+</androidx.constraintlayout.widget.ConstraintLayout>

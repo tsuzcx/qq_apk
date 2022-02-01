@@ -4,18 +4,19 @@ import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Looper;
+import android.view.Choreographer;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+import kotlin.Metadata;
 import kotlin.Result;
 import kotlin.ResultKt;
-import kotlin.l;
-import kotlin.t;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"MAX_DELAY", "", "Main", "Lkotlinx/coroutines/android/HandlerDispatcher;", "Main$annotations", "()V", "choreographer", "Landroid/view/Choreographer;", "awaitFrame", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "postFrameCallback", "", "cont", "Lkotlinx/coroutines/CancellableContinuation;", "updateChoreographerAndPostFrameCallback", "asCoroutineDispatcher", "Landroid/os/Handler;", "name", "", "from", "asHandler", "Landroid/os/Looper;", "async", "", "kotlinx-coroutines-android"})
+@Metadata(d1={""}, d2={"MAX_DELAY", "", "Main", "Lkotlinx/coroutines/android/HandlerDispatcher;", "getMain$annotations", "()V", "choreographer", "Landroid/view/Choreographer;", "awaitFrame", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "postFrameCallback", "", "cont", "Lkotlinx/coroutines/CancellableContinuation;", "updateChoreographerAndPostFrameCallback", "asCoroutineDispatcher", "Landroid/os/Handler;", "name", "", "from", "asHandler", "Landroid/os/Looper;", "async", "", "kotlinx-coroutines-android"}, k=2, mv={1, 5, 1}, xi=48)
 public final class c
 {
-  public static final b abxZ;
+  public static final b ajxc;
+  private static volatile Choreographer choreographer;
   
   static
   {
@@ -23,16 +24,16 @@ public final class c
     try
     {
       Object localObject1 = Result.Companion;
-      localObject1 = Result.constructor-impl(new a(m(Looper.getMainLooper()), "Main"));
+      localObject1 = Result.constructor-impl(new a(n(Looper.getMainLooper())));
       localObject3 = localObject1;
       if (Result.isFailure-impl(localObject1)) {
         localObject3 = null;
       }
-      abxZ = (b)localObject3;
+      ajxc = (b)localObject3;
       AppMethodBeat.o(107780);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
@@ -42,7 +43,15 @@ public final class c
     }
   }
   
-  public static final Handler m(Looper paramLooper)
+  public static final b a(Handler paramHandler, String paramString)
+  {
+    AppMethodBeat.i(188911);
+    paramHandler = (b)new a(paramHandler, paramString);
+    AppMethodBeat.o(188911);
+    return paramHandler;
+  }
+  
+  public static final Handler n(Looper paramLooper)
   {
     AppMethodBeat.i(107779);
     if (Build.VERSION.SDK_INT < 16)
@@ -56,7 +65,7 @@ public final class c
       paramLooper = Handler.class.getDeclaredMethod("createAsync", new Class[] { Looper.class }).invoke(null, new Object[] { paramLooper });
       if (paramLooper == null)
       {
-        paramLooper = new t("null cannot be cast to non-null type android.os.Handler");
+        paramLooper = new NullPointerException("null cannot be cast to non-null type android.os.Handler");
         AppMethodBeat.o(107779);
         throw paramLooper;
       }

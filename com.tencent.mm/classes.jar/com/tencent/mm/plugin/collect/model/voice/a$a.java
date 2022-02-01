@@ -1,27 +1,27 @@
 package com.tencent.mm.plugin.collect.model.voice;
 
-import com.tencent.mm.f.a.cm;
-import com.tencent.mm.f.a.cm.a;
+import com.tencent.mm.autogen.a.cv;
+import com.tencent.mm.autogen.a.cv.a;
 
 public final class a$a
 {
   public long delay;
   public int fee;
-  public String fyc;
-  public String fyd;
-  public String fye;
-  public String fyf;
+  public String hCH;
+  public String hCI;
+  public String hCJ;
+  public String hCK;
   public int source;
   
-  public a$a(a parama, cm paramcm)
+  public a$a(a parama, cv paramcv)
   {
-    this.fee = paramcm.fyb.fee;
-    this.fyc = paramcm.fyb.fyc;
-    this.fyd = paramcm.fyb.fyd;
-    this.fye = paramcm.fyb.fye;
-    this.delay = paramcm.fyb.delay;
-    this.source = paramcm.fyb.source;
-    this.fyf = paramcm.fyb.fyf;
+    this.fee = paramcv.hCG.fee;
+    this.hCH = paramcv.hCG.hCH;
+    this.hCI = paramcv.hCG.hCI;
+    this.hCJ = paramcv.hCG.hCJ;
+    this.delay = paramcv.hCG.delay;
+    this.source = paramcv.hCG.source;
+    this.hCK = paramcv.hCG.hCK;
   }
 }
 

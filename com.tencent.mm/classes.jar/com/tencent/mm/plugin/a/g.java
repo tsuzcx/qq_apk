@@ -7,20 +7,20 @@ import java.io.RandomAccessFile;
 public final class g
   extends a
 {
-  public static final int mHA;
-  public static final int mHB;
-  public static final int mHz;
+  public static final int pDZ;
+  public static final int pEa;
+  public static final int pEb;
   public long duration = 0L;
-  public long mHC = 0L;
-  public long mHD = 0L;
-  long mHE = 0L;
+  public long pEc = 0L;
+  public long pEd = 0L;
+  long pEe = 0L;
   
   static
   {
     AppMethodBeat.i(133867);
-    mHz = c.bU("vide");
-    mHA = c.bU("soun");
-    mHB = c.bU("hint");
+    pDZ = c.du("vide");
+    pEa = c.du("soun");
+    pEb = c.du("hint");
     AppMethodBeat.o(133867);
   }
   
@@ -41,7 +41,7 @@ public final class g
       i1 = c.readInt(paramArrayOfByte, 0);
       int i = c.readInt(paramArrayOfByte, 4);
       long l;
-      if (i == a.aVc)
+      if (i == a.cOY)
       {
         byte[] arrayOfByte = new byte[4];
         i = paramRandomAccessFile.read(arrayOfByte);
@@ -70,8 +70,8 @@ public final class g
               else
               {
                 i = i + 8 + m;
-                this.mHC = c.C(paramArrayOfByte, 0);
-                this.duration = c.C(paramArrayOfByte, 4);
+                this.pEc = c.B(paramArrayOfByte, 0);
+                this.duration = c.B(paramArrayOfByte, 4);
               }
             }
           }
@@ -88,7 +88,7 @@ public final class g
             }
             else
             {
-              this.mHC = c.C(arrayOfByte, 0);
+              this.pEc = c.B(arrayOfByte, 0);
               int i2 = paramRandomAccessFile.read(paramArrayOfByte);
               if (i2 < 8)
               {
@@ -122,7 +122,7 @@ public final class g
         }
         AppMethodBeat.o(133866);
         return false;
-        if (i == a.aVd)
+        if (i == a.cOZ)
         {
           if (!c.a(paramRandomAccessFile, 8L)) {
             i = -1;
@@ -139,7 +139,7 @@ public final class g
             }
             else
             {
-              this.mHD = c.readInt(paramArrayOfByte, 0);
+              this.pEd = c.readInt(paramArrayOfByte, 0);
               i += 8;
             }
           }
@@ -147,9 +147,9 @@ public final class g
           l = i1 - n - i;
           i = j;
         }
-        else if (i == a.aUQ)
+        else if (i == a.cOM)
         {
-          this.mHE = (paramRandomAccessFile.getFilePointer() - n);
+          this.pEe = (paramRandomAccessFile.getFilePointer() - n);
           l = i1 - n;
           i = 1;
         }
@@ -177,7 +177,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.plugin.a.g
  * JD-Core Version:    0.7.0.1
  */

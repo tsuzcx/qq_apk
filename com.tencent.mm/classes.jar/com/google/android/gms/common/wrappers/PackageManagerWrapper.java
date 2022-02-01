@@ -1,6 +1,5 @@
 package com.google.android.gms.common.wrappers;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AppOpsManager;
 import android.content.ComponentName;
@@ -11,8 +10,8 @@ import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Binder;
 import android.os.Process;
-import androidx.core.content.b;
-import androidx.core.f.e;
+import androidx.core.content.c;
+import androidx.core.f.d;
 import com.google.android.gms.common.util.PlatformVersion;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
@@ -53,7 +52,7 @@ public class PackageManagerWrapper
   public int checkCallingOrSelfPermissionAndAppOps(String paramString)
   {
     AppMethodBeat.i(5339);
-    int i = b.f(this.zzjp, paramString);
+    int i = c.h(this.zzjp, paramString);
     AppMethodBeat.o(5339);
     return i;
   }
@@ -78,13 +77,7 @@ public class PackageManagerWrapper
   public int checkCallingPermissionAndAppOps(String paramString1, String paramString2)
   {
     AppMethodBeat.i(5337);
-    Context localContext = this.zzjp;
-    if (Binder.getCallingPid() == Process.myPid())
-    {
-      AppMethodBeat.o(5337);
-      return -1;
-    }
-    int i = b.a(localContext, paramString1, Binder.getCallingPid(), Binder.getCallingUid(), paramString2);
+    int i = c.d(this.zzjp, paramString1, paramString2);
     AppMethodBeat.o(5337);
     return i;
   }
@@ -129,7 +122,7 @@ public class PackageManagerWrapper
   public int checkPermissionAndAppOps(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
     AppMethodBeat.i(5335);
-    paramInt1 = b.a(this.zzjp, paramString1, paramInt1, paramInt2, paramString2);
+    paramInt1 = c.a(this.zzjp, paramString1, paramInt1, paramInt2, paramString2);
     AppMethodBeat.o(5335);
     return paramInt1;
   }
@@ -150,12 +143,12 @@ public class PackageManagerWrapper
     return paramString;
   }
   
-  public e<CharSequence, Drawable> getApplicationLabelAndIcon(String paramString)
+  public d<CharSequence, Drawable> getApplicationLabelAndIcon(String paramString)
   {
-    AppMethodBeat.i(258303);
+    AppMethodBeat.i(210375);
     paramString = this.zzjp.getPackageManager().getApplicationInfo(paramString, 0);
-    paramString = e.d(this.zzjp.getPackageManager().getApplicationLabel(paramString), this.zzjp.getPackageManager().getApplicationIcon(paramString));
-    AppMethodBeat.o(258303);
+    paramString = d.l(this.zzjp.getPackageManager().getApplicationLabel(paramString), this.zzjp.getPackageManager().getApplicationIcon(paramString));
+    AppMethodBeat.o(210375);
     return paramString;
   }
   
@@ -238,7 +231,6 @@ public class PackageManagerWrapper
     return false;
   }
   
-  @TargetApi(19)
   public boolean uidHasPackageName(int paramInt, String paramString)
   {
     AppMethodBeat.i(5332);
@@ -275,7 +267,7 @@ public class PackageManagerWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.wrappers.PackageManagerWrapper
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,12 @@ public class GalleryItem$TimeMediaItem
   
   static
   {
-    AppMethodBeat.i(242617);
+    AppMethodBeat.i(289609);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(242617);
+    AppMethodBeat.o(289609);
   }
   
-  public final String aZe()
+  public final String bud()
   {
     return null;
   }
@@ -33,23 +33,23 @@ public class GalleryItem$TimeMediaItem
   
   public String toString()
   {
-    AppMethodBeat.i(242616);
-    String str = "TimeMediaItem{base=" + super.toString() + ", generateDate='" + this.BVm + '\'' + ", dateTag='" + this.BVn + '\'' + '}';
-    AppMethodBeat.o(242616);
+    AppMethodBeat.i(289616);
+    String str = "TimeMediaItem{base=" + super.toString() + ", generateDate='" + this.HHK + '\'' + ", dateTag='" + this.HHL + '\'' + '}';
+    AppMethodBeat.o(289616);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(242615);
-    paramParcel.writeLong(this.BVm);
-    paramParcel.writeString(this.BVn);
-    AppMethodBeat.o(242615);
+    AppMethodBeat.i(289615);
+    paramParcel.writeLong(this.HHK);
+    paramParcel.writeString(this.HHL);
+    AppMethodBeat.o(289615);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.GalleryItem.TimeMediaItem
  * JD-Core Version:    0.7.0.1
  */

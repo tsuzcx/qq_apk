@@ -1,3 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/hvs" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout style="@style/r8"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:scrollbars="none" style="@style/o8">
+        <LinearLayout style="@style/lj">
+            <TextView android:text="@string/h62" style="@style/n_" />
+            <com.tencent.mm.ui.widget.MMEditText android:id="@id/j16" android:maxLength="10" android:imeOptions="actionSend" style="@style/n9" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

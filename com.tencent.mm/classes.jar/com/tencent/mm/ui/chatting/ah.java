@@ -1,26 +1,68 @@
 package com.tencent.mm.ui.chatting;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import android.content.Context;
+import android.content.DialogInterface.OnCancelListener;
+import android.view.View;
+import android.widget.ListView;
+import com.tencent.mm.ui.chatting.f.d.a;
 
-public final class ah
+public abstract interface ah
 {
-  private static ah WDD;
-  Object WDC;
+  public abstract void a(d.a parama);
   
-  public static ah hNt()
-  {
-    try
-    {
-      AppMethodBeat.i(34839);
-      if (WDD == null) {
-        WDD = new ah();
-      }
-      ah localah = WDD;
-      AppMethodBeat.o(34839);
-      return localah;
-    }
-    finally {}
-  }
+  public abstract void aBQ(int paramInt);
+  
+  public abstract void aDM();
+  
+  public abstract void b(int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2);
+  
+  public abstract void b(Context paramContext, String paramString1, String paramString2, DialogInterface.OnCancelListener paramOnCancelListener);
+  
+  public abstract int cST();
+  
+  public abstract void dcZ();
+  
+  public abstract void ev(View paramView);
+  
+  public abstract boolean gPQ();
+  
+  public abstract View getChildAt(int paramInt);
+  
+  public abstract int getFirstVisiblePosition();
+  
+  public abstract int getLastVisiblePosition();
+  
+  public abstract ListView getListView();
+  
+  public abstract void h(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract boolean hideVKB();
+  
+  public abstract int joT();
+  
+  public abstract void jpJ();
+  
+  public abstract void jpK();
+  
+  public abstract void jpL();
+  
+  public abstract void jpQ();
+  
+  public abstract void jpS();
+  
+  public abstract void r(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3);
+  
+  public abstract boolean removeOptionMenu(int paramInt);
+  
+  public abstract void scrollToPosition(int paramInt);
+  
+  public abstract void setKeepScreenOn(boolean paramBoolean);
+  
+  public abstract void showOptionMenu(int paramInt, boolean paramBoolean);
+  
+  public abstract void showOptionMenu(boolean paramBoolean);
+  
+  public abstract void updateOptionMenuIcon(int paramInt1, int paramInt2);
 }
 
 

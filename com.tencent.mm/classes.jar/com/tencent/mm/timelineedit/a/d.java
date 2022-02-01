@@ -1,38 +1,38 @@
 package com.tencent.mm.timelineedit.a;
 
-import com.google.b.bw;
-import com.google.b.bw.a;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.google.d.ce;
+import com.google.d.ce.a;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/timelineedit/model/ProtoModel;", "Message", "Lcom/google/protobuf/MessageLite;", "Builder", "Lcom/google/protobuf/MessageLite$Builder;", "Lcom/tencent/mm/timelineedit/model/Protoable;", "()V", "innerBuilder", "getInnerBuilder", "()Lcom/google/protobuf/MessageLite$Builder;", "setInnerBuilder", "(Lcom/google/protobuf/MessageLite$Builder;)V", "Lcom/google/protobuf/MessageLite$Builder;", "toProto", "", "timelinelib_release"})
-public abstract class d<Message extends bw, Builder extends bw.a>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mm/timelineedit/model/ProtoModel;", "Message", "Lcom/google/protobuf/MessageLite;", "Builder", "Lcom/google/protobuf/MessageLite$Builder;", "Lcom/tencent/mm/timelineedit/model/Protoable;", "()V", "innerBuilder", "getInnerBuilder", "()Lcom/google/protobuf/MessageLite$Builder;", "setInnerBuilder", "(Lcom/google/protobuf/MessageLite$Builder;)V", "Lcom/google/protobuf/MessageLite$Builder;", "toProto", "", "timelinelib_release"}, k=1, mv={1, 1, 15})
+public abstract class d<Message extends ce, Builder extends ce.a>
 {
-  protected Builder VLy;
+  protected Builder adpD;
   
   protected final void a(Builder paramBuilder)
   {
-    p.k(paramBuilder, "<set-?>");
-    this.VLy = paramBuilder;
+    s.t(paramBuilder, "<set-?>");
+    this.adpD = paramBuilder;
   }
   
-  protected final Builder hCw()
+  protected final Builder jeC()
   {
-    bw.a locala = this.VLy;
+    ce.a locala = this.adpD;
     if (locala == null) {
-      p.bGy("innerBuilder");
+      s.bIx("innerBuilder");
     }
     return locala;
   }
   
-  public final byte[] hCx()
+  public final byte[] jeD()
   {
-    Object localObject = this.VLy;
+    Object localObject = this.adpD;
     if (localObject == null) {
-      p.bGy("innerBuilder");
+      s.bIx("innerBuilder");
     }
-    localObject = ((bw.a)localObject).CS().toByteArray();
-    p.j(localObject, "innerBuilder.build().toByteArray()");
+    localObject = ((ce.a)localObject).build().toByteArray();
+    s.r(localObject, "innerBuilder.build().toByteArray()");
     return localObject;
   }
 }

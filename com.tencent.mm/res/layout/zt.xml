@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.downloader_app.ui.ExpandView android:layout_width="fill_parent" android:layout_height="@dimen/d6">
+        <TextView android:textSize="14.0dip" android:textColor="@color/FG_2" android:id="@id/cmz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/c1p" android:layout_centerInParent="true" />
+        <ImageView android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:layout_marginLeft="@dimen/df" android:src="@drawable/s7" android:layout_toRightOf="@id/cmz" android:layout_centerVertical="true" />
+    </com.tencent.mm.plugin.downloader_app.ui.ExpandView>
+</LinearLayout>

@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -9,7 +8,6 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.location.LocationManager;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -35,58 +33,54 @@ import com.tencent.mm.R.g;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
 import com.tencent.mm.R.l;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.t;
-import com.tencent.mm.ay.a.a.c.a;
-import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.f.a.fk;
-import com.tencent.mm.f.a.yg;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.autogen.a.fv;
+import com.tencent.mm.autogen.a.zz;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.exdevice.model.ae;
-import com.tencent.mm.plugin.exdevice.model.e;
-import com.tencent.mm.plugin.exdevice.model.e.b;
-import com.tencent.mm.plugin.exdevice.model.f;
-import com.tencent.mm.plugin.exdevice.model.l;
-import com.tencent.mm.plugin.exdevice.model.u;
-import com.tencent.mm.protocal.protobuf.ciu;
-import com.tencent.mm.protocal.protobuf.civ;
-import com.tencent.mm.protocal.protobuf.cyb;
-import com.tencent.mm.protocal.protobuf.ebi;
-import com.tencent.mm.protocal.protobuf.ls;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.modelimage.loader.a.c.a;
+import com.tencent.mm.modelimage.r;
+import com.tencent.mm.plugin.exdevice.model.ah;
+import com.tencent.mm.plugin.exdevice.model.g;
+import com.tencent.mm.plugin.exdevice.model.g.b;
+import com.tencent.mm.plugin.exdevice.model.j;
+import com.tencent.mm.plugin.exdevice.model.n;
+import com.tencent.mm.protocal.protobuf.cyx;
+import com.tencent.mm.protocal.protobuf.cyy;
+import com.tencent.mm.protocal.protobuf.dph;
+import com.tencent.mm.protocal.protobuf.euz;
+import com.tencent.mm.protocal.protobuf.mt;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatHosts;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.k;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public class ExdeviceAddDataSourceUI
   extends MMActivity
-  implements i, e.b
+  implements com.tencent.mm.am.h, g.b
 {
-  private s jhZ;
+  private com.tencent.mm.ui.base.w lKp;
   private ListView mListView;
   private final BroadcastReceiver mReceiver;
-  private View uIP;
-  private a vkP;
-  private List<b> vkQ;
-  private TextView vkR;
-  private TextView vkS;
-  private TextView vkT;
-  private RelativeLayout vkU;
-  private LocationManager vkV;
-  private boolean vkW;
-  private l vkX;
+  private View xRF;
+  private a yxs;
+  private List<b> yxt;
+  private TextView yxu;
+  private TextView yxv;
+  private TextView yxw;
+  private RelativeLayout yxx;
+  private boolean yxy;
+  private n yxz;
   
   public ExdeviceAddDataSourceUI()
   {
     AppMethodBeat.i(23866);
-    this.vkW = false;
+    this.yxy = false;
     this.mReceiver = new BroadcastReceiver()
     {
       public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
@@ -102,16 +96,16 @@ public class ExdeviceAddDataSourceUI
         if ("android.bluetooth.adapter.action.STATE_CHANGED".equals(paramAnonymousContext))
         {
           if (paramAnonymousIntent.getIntExtra("android.bluetooth.adapter.extra.STATE", -2147483648) != 12) {
-            break label175;
+            break label157;
           }
-          if (com.tencent.mm.plugin.f.a.e.a.cyk())
+          if (com.tencent.mm.plugin.g.a.e.a.dbb())
           {
             ExdeviceAddDataSourceUI.this.runOnUiThread(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(23841);
-                if ((ExdeviceAddDataSourceUI.a(ExdeviceAddDataSourceUI.this)) && (!ExdeviceAddDataSourceUI.b(ExdeviceAddDataSourceUI.this).isProviderEnabled("gps")))
+                if ((ExdeviceAddDataSourceUI.a(ExdeviceAddDataSourceUI.this)) && (!com.tencent.mm.modelgeo.d.bJm()))
                 {
                   ExdeviceAddDataSourceUI.a(ExdeviceAddDataSourceUI.this, 4);
                   AppMethodBeat.o(23841);
@@ -122,22 +116,22 @@ public class ExdeviceAddDataSourceUI
                 AppMethodBeat.o(23841);
               }
             });
-            if ((!ExdeviceAddDataSourceUI.a(ExdeviceAddDataSourceUI.this)) || (ExdeviceAddDataSourceUI.b(ExdeviceAddDataSourceUI.this).isProviderEnabled("gps")))
+            if ((!ExdeviceAddDataSourceUI.a(ExdeviceAddDataSourceUI.this)) || (com.tencent.mm.modelgeo.d.bJm()))
             {
-              ae.cZJ();
-              e.cZj();
+              ah.dGc();
+              g.dFA();
             }
           }
         }
         while ((ExdeviceAddDataSourceUI.a(ExdeviceAddDataSourceUI.this)) && ("android.location.MODE_CHANGED".equals(paramAnonymousContext))) {
-          if (ExdeviceAddDataSourceUI.b(ExdeviceAddDataSourceUI.this).isProviderEnabled("gps"))
+          if (com.tencent.mm.modelgeo.d.bJm())
           {
             ExdeviceAddDataSourceUI.this.runOnUiThread(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(23843);
-                if (com.tencent.mm.plugin.f.a.e.a.cyk())
+                if (com.tencent.mm.plugin.g.a.e.a.dbb())
                 {
                   ExdeviceAddDataSourceUI.a(ExdeviceAddDataSourceUI.this, 3);
                   Log.i("MicroMsg.ExdeviceAddDataSourceUI", "Start scan...");
@@ -148,14 +142,14 @@ public class ExdeviceAddDataSourceUI
                 AppMethodBeat.o(23843);
               }
             });
-            if (com.tencent.mm.plugin.f.a.e.a.cyk())
+            if (com.tencent.mm.plugin.g.a.e.a.dbb())
             {
-              ae.cZJ();
-              e.cZj();
+              ah.dGc();
+              g.dFA();
               AppMethodBeat.o(23845);
               return;
-              label175:
-              if ((paramAnonymousIntent.getIntExtra("android.bluetooth.adapter.extra.STATE", -2147483648) == 10) && (!com.tencent.mm.plugin.f.a.e.a.cyk()))
+              label157:
+              if ((paramAnonymousIntent.getIntExtra("android.bluetooth.adapter.extra.STATE", -2147483648) == 10) && (!com.tencent.mm.plugin.g.a.e.a.dbb()))
               {
                 ExdeviceAddDataSourceUI.this.runOnUiThread(new Runnable()
                 {
@@ -167,7 +161,7 @@ public class ExdeviceAddDataSourceUI
                     AppMethodBeat.o(23842);
                   }
                 });
-                ae.cZK().cxT();
+                ah.dGd().daL();
               }
             }
           }
@@ -183,7 +177,7 @@ public class ExdeviceAddDataSourceUI
                 AppMethodBeat.o(23844);
               }
             });
-            ae.cZK().cxT();
+            ah.dGd().daL();
           }
         }
         AppMethodBeat.o(23845);
@@ -192,7 +186,7 @@ public class ExdeviceAddDataSourceUI
     AppMethodBeat.o(23866);
   }
   
-  private void Ki(int paramInt)
+  private void Lh(int paramInt)
   {
     AppMethodBeat.i(23868);
     switch (paramInt)
@@ -202,33 +196,33 @@ public class ExdeviceAddDataSourceUI
     {
       AppMethodBeat.o(23868);
       return;
-      this.vkU.setVisibility(8);
-      this.vkS.setText(R.l.eCV);
-      this.vkT.setText("");
+      this.yxx.setVisibility(8);
+      this.yxv.setText(R.l.gFJ);
+      this.yxw.setText("");
       AppMethodBeat.o(23868);
       return;
-      this.vkU.setVisibility(8);
-      this.vkS.setText(R.l.eCX);
-      this.vkT.setText(R.l.eCM);
+      this.yxx.setVisibility(8);
+      this.yxv.setText(R.l.gFL);
+      this.yxw.setText(R.l.gFA);
       AppMethodBeat.o(23868);
       return;
-      this.vkU.setVisibility(8);
-      this.vkS.setText(R.l.eCX);
-      this.vkT.setText(R.l.eDy);
+      this.yxx.setVisibility(8);
+      this.yxv.setText(R.l.gFL);
+      this.yxw.setText(R.l.gGm);
       AppMethodBeat.o(23868);
       return;
-      this.vkU.setVisibility(0);
-      this.uIP.setVisibility(0);
+      this.yxx.setVisibility(0);
+      this.xRF.setVisibility(0);
     }
   }
   
-  private static boolean aZ(String paramString, boolean paramBoolean)
+  private static boolean bl(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(23874);
-    fk localfk = new fk();
-    localfk.fBq.mac = paramString;
-    localfk.fBq.fzN = paramBoolean;
-    if (!EventCenter.instance.publish(localfk))
+    fv localfv = new fv();
+    localfv.hGf.mac = paramString;
+    localfv.hGf.hEz = paramBoolean;
+    if (!localfv.publish())
     {
       Log.i("MicroMsg.ExdeviceAddDataSourceUI", "connect failed, mac(%s).", new Object[] { paramString });
       AppMethodBeat.o(23874);
@@ -238,7 +232,7 @@ public class ExdeviceAddDataSourceUI
     return true;
   }
   
-  private void daq()
+  private void dGL()
   {
     AppMethodBeat.i(23875);
     runOnUiThread(new Runnable()
@@ -246,8 +240,8 @@ public class ExdeviceAddDataSourceUI
       public final void run()
       {
         AppMethodBeat.i(23838);
-        if ((ExdeviceAddDataSourceUI.f(ExdeviceAddDataSourceUI.this) != null) && (ExdeviceAddDataSourceUI.f(ExdeviceAddDataSourceUI.this).isShowing())) {
-          ExdeviceAddDataSourceUI.f(ExdeviceAddDataSourceUI.this).dismiss();
+        if ((ExdeviceAddDataSourceUI.e(ExdeviceAddDataSourceUI.this) != null) && (ExdeviceAddDataSourceUI.e(ExdeviceAddDataSourceUI.this).isShowing())) {
+          ExdeviceAddDataSourceUI.e(ExdeviceAddDataSourceUI.this).dismiss();
         }
         AppMethodBeat.o(23838);
       }
@@ -266,30 +260,30 @@ public class ExdeviceAddDataSourceUI
       AppMethodBeat.o(23873);
       return;
     }
-    final b localb = this.vkP.avN(paramString);
+    final b localb = this.yxs.apN(paramString);
     if (localb == null)
     {
       Log.w("MicroMsg.ExdeviceAddDataSourceUI", "onConnectStateChanged, info is null.(%s)", new Object[] { paramString });
       AppMethodBeat.o(23873);
       return;
     }
-    if ((localb.vlf == c.vlh) && (paramInt == 4))
+    if ((localb.yxH == c.yxJ) && (paramInt == 4))
     {
-      localb.vlf = c.vlg;
-      daq();
+      localb.yxH = c.yxI;
+      dGL();
       runOnUiThread(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(23854);
-          com.tencent.mm.ui.base.h.a(ExdeviceAddDataSourceUI.this, R.l.eDf, R.l.eDd, R.l.eDe, R.l.eDg, false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          k.a(ExdeviceAddDataSourceUI.this, R.l.gFT, R.l.gFR, R.l.gFS, R.l.gFU, false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
           {
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
               AppMethodBeat.i(23852);
-              ExdeviceAddDataSourceUI.d(ExdeviceAddDataSourceUI.this).remove(ExdeviceAddDataSourceUI.10.this.vlc);
-              ExdeviceAddDataSourceUI.c(ExdeviceAddDataSourceUI.this).aa(ExdeviceAddDataSourceUI.d(ExdeviceAddDataSourceUI.this));
-              ExdeviceAddDataSourceUI.c(ExdeviceAddDataSourceUI.this).notifyDataSetChanged();
+              ExdeviceAddDataSourceUI.c(ExdeviceAddDataSourceUI.this).remove(ExdeviceAddDataSourceUI.10.this.yxE);
+              ExdeviceAddDataSourceUI.b(ExdeviceAddDataSourceUI.this).bz(ExdeviceAddDataSourceUI.c(ExdeviceAddDataSourceUI.this));
+              ExdeviceAddDataSourceUI.b(ExdeviceAddDataSourceUI.this).notifyDataSetChanged();
               AppMethodBeat.o(23852);
             }
           }, new DialogInterface.OnClickListener()
@@ -297,7 +291,7 @@ public class ExdeviceAddDataSourceUI
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
               AppMethodBeat.i(23853);
-              f.ay(ExdeviceAddDataSourceUI.this.getContext(), "https://" + WeChatHosts.domainString(R.l.host_hw_weixin_qq_com) + "/steprank/step/connect-help.html");
+              com.tencent.mm.plugin.exdevice.model.h.az(ExdeviceAddDataSourceUI.this.getContext(), "https://" + WeChatHosts.domainString(R.l.host_hw_weixin_qq_com) + "/steprank/step/connect-help.html");
               AppMethodBeat.o(23853);
             }
           }).show();
@@ -312,7 +306,7 @@ public class ExdeviceAddDataSourceUI
         public final void run()
         {
           AppMethodBeat.i(23855);
-          ExdeviceAddDataSourceUI.c(ExdeviceAddDataSourceUI.this).notifyDataSetChanged();
+          ExdeviceAddDataSourceUI.b(ExdeviceAddDataSourceUI.this).notifyDataSetChanged();
           AppMethodBeat.o(23855);
         }
       });
@@ -320,20 +314,20 @@ public class ExdeviceAddDataSourceUI
       return;
       if (paramInt == 2)
       {
-        if (localb.vlf == c.vlh)
+        if (localb.yxH == c.yxJ)
         {
-          localb.vlf = c.vli;
+          localb.yxH = c.yxK;
           Log.i("MicroMsg.ExdeviceAddDataSourceUI", "Bind Hard device, mac(%s), name(%s)", new Object[] { localb.mac, localb.name });
-          if (localb.fAo != null)
+          if (localb.hFb != null)
           {
-            this.vkX = new l(localb.fAo, 0);
-            bh.aGY().a(this.vkX, 0);
+            this.yxz = new n(localb.hFb, 0);
+            bh.aZW().a(this.yxz, 0);
           }
         }
         else
         {
           Log.i("MicroMsg.ExdeviceAddDataSourceUI", "try to disconnect, mac : %s.", new Object[] { paramString });
-          aZ(paramString, false);
+          bl(paramString, false);
         }
       }
       else
@@ -341,7 +335,7 @@ public class ExdeviceAddDataSourceUI
         if ((paramInt == 1) || (paramInt == 2)) {
           break;
         }
-        localb.vlf = c.vlg;
+        localb.yxH = c.yxI;
       }
     }
     AppMethodBeat.o(23873);
@@ -349,21 +343,21 @@ public class ExdeviceAddDataSourceUI
   
   public int getLayoutId()
   {
-    return R.i.egf;
+    return R.i.giZ;
   }
   
   public void initView()
   {
     AppMethodBeat.i(23869);
     this.mListView = ((ListView)findViewById(R.h.listview));
-    View localView = View.inflate(this, R.i.egh, null);
-    this.vkU = ((RelativeLayout)findViewById(R.h.dTh));
-    this.uIP = View.inflate(this, R.i.egg, null);
-    this.vkR = ((TextView)findViewById(R.h.dTf));
-    this.vkS = ((TextView)findViewById(R.h.dFG));
-    this.vkT = ((TextView)findViewById(R.h.dFH));
-    String str1 = getString(R.l.eEa);
-    String str2 = getString(R.l.eDc);
+    View localView = View.inflate(this, R.i.gjb, null);
+    this.yxx = ((RelativeLayout)findViewById(R.h.fVp));
+    this.xRF = View.inflate(this, R.i.gja, null);
+    this.yxu = ((TextView)findViewById(R.h.fVn));
+    this.yxv = ((TextView)findViewById(R.h.fGM));
+    this.yxw = ((TextView)findViewById(R.h.fGN));
+    String str1 = getString(R.l.gGO);
+    String str2 = getString(R.l.gFQ);
     SpannableString localSpannableString = new SpannableString(str1 + str2);
     localSpannableString.setSpan(new ForegroundColorSpan(R.e.link_color), str1.length(), str1.length() + str2.length(), 33);
     localSpannableString.setSpan(new ClickableSpan()
@@ -371,7 +365,7 @@ public class ExdeviceAddDataSourceUI
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(23846);
-        f.ay(ExdeviceAddDataSourceUI.this.getContext(), "https://" + WeChatHosts.domainString(R.l.host_hw_weixin_qq_com) + "/steprank/step/connect-help.html");
+        com.tencent.mm.plugin.exdevice.model.h.az(ExdeviceAddDataSourceUI.this.getContext(), "https://" + WeChatHosts.domainString(R.l.host_hw_weixin_qq_com) + "/steprank/step/connect-help.html");
         AppMethodBeat.o(23846);
       }
       
@@ -383,32 +377,32 @@ public class ExdeviceAddDataSourceUI
         AppMethodBeat.o(23847);
       }
     }, str1.length(), str1.length() + str2.length(), 33);
-    this.vkR.setMovementMethod(LinkMovementMethod.getInstance());
-    this.vkR.setText(localSpannableString);
+    this.yxu.setMovementMethod(LinkMovementMethod.getInstance());
+    this.yxu.setText(localSpannableString);
     this.mListView.addHeaderView(localView, null, false);
-    this.mListView.addFooterView(this.uIP, null, false);
-    this.vkP = new a();
-    this.mListView.setAdapter(this.vkP);
+    this.mListView.addFooterView(this.xRF, null, false);
+    this.yxs = new a();
+    this.mListView.setAdapter(this.yxs);
     this.mListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(23848);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousAdapterView);
-        localb.bn(paramAnonymousView);
-        localb.sg(paramAnonymousInt);
-        localb.Fs(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/exdevice/ui/ExdeviceAddDataSourceUI$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
+        localb.cH(paramAnonymousAdapterView);
+        localb.cH(paramAnonymousView);
+        localb.sc(paramAnonymousInt);
+        localb.hB(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/exdevice/ui/ExdeviceAddDataSourceUI$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aYj());
         int i = ((ListView)paramAnonymousAdapterView).getHeaderViewsCount();
-        paramAnonymousAdapterView = ExdeviceAddDataSourceUI.c(ExdeviceAddDataSourceUI.this).Kj(paramAnonymousInt - i);
-        if (paramAnonymousAdapterView.vlf != ExdeviceAddDataSourceUI.c.vlg)
+        paramAnonymousAdapterView = ExdeviceAddDataSourceUI.b(ExdeviceAddDataSourceUI.this).Li(paramAnonymousInt - i);
+        if (paramAnonymousAdapterView.yxH != ExdeviceAddDataSourceUI.c.yxI)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/exdevice/ui/ExdeviceAddDataSourceUI$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(23848);
           return;
         }
-        if (!ExdeviceAddDataSourceUI.avM(paramAnonymousAdapterView.mac))
+        if (!ExdeviceAddDataSourceUI.apM(paramAnonymousAdapterView.mac))
         {
           Log.i("MicroMsg.ExdeviceAddDataSourceUI", "try connect device failed.");
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/exdevice/ui/ExdeviceAddDataSourceUI$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
@@ -416,8 +410,8 @@ public class ExdeviceAddDataSourceUI
           return;
         }
         ExdeviceAddDataSourceUI.a(ExdeviceAddDataSourceUI.this, paramAnonymousAdapterView.mac);
-        paramAnonymousAdapterView.vlf = ExdeviceAddDataSourceUI.c.vlh;
-        ExdeviceAddDataSourceUI.c(ExdeviceAddDataSourceUI.this).notifyDataSetChanged();
+        paramAnonymousAdapterView.yxH = ExdeviceAddDataSourceUI.c.yxJ;
+        ExdeviceAddDataSourceUI.b(ExdeviceAddDataSourceUI.this).notifyDataSetChanged();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/exdevice/ui/ExdeviceAddDataSourceUI$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
         AppMethodBeat.o(23848);
       }
@@ -439,45 +433,44 @@ public class ExdeviceAddDataSourceUI
         return true;
       }
     });
-    setMMTitle(R.l.eCH);
-    if ((d.qV(23)) && (!Build.VERSION.RELEASE.equalsIgnoreCase("6.0")) && (!Build.VERSION.RELEASE.equalsIgnoreCase("6.0.0"))) {
-      this.vkW = true;
+    setMMTitle(R.l.gFv);
+    if ((com.tencent.mm.compatible.util.d.rb(23)) && (!Build.VERSION.RELEASE.equalsIgnoreCase("6.0")) && (!Build.VERSION.RELEASE.equalsIgnoreCase("6.0.0"))) {
+      this.yxy = true;
     }
-    this.vkQ = new LinkedList();
-    this.vkV = ((LocationManager)getContext().getSystemService("location"));
+    this.yxt = new LinkedList();
     initView();
     paramBundle = new IntentFilter();
     paramBundle.addAction("android.bluetooth.adapter.action.STATE_CHANGED");
     paramBundle.addAction("android.location.MODE_CHANGED");
     getContext().registerReceiver(this.mReceiver, paramBundle);
-    bh.aGY().a(536, this);
-    bh.aGY().a(1706, this);
-    ae.cZJ().a(this);
-    if (!com.tencent.mm.plugin.f.a.e.a.eP(getContext()))
+    bh.aZW().a(536, this);
+    bh.aZW().a(1706, this);
+    ah.dGc().a(this);
+    if (!com.tencent.mm.plugin.g.a.e.a.fL(getContext()))
     {
       Log.i("MicroMsg.ExdeviceAddDataSourceUI", "now sdk version not support ble device : %d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
-      Ki(2);
+      Lh(2);
       AppMethodBeat.o(23867);
       return;
     }
-    if (!com.tencent.mm.plugin.f.a.e.a.cyk())
+    if (!com.tencent.mm.plugin.g.a.e.a.dbb())
     {
       Log.i("MicroMsg.ExdeviceAddDataSourceUI", "Bluetooth is not open, Just leave");
-      Ki(1);
+      Lh(1);
       AppMethodBeat.o(23867);
       return;
     }
-    if ((this.vkV != null) && (this.vkW) && (!this.vkV.isProviderEnabled("gps")))
+    if ((this.yxy) && (!com.tencent.mm.modelgeo.d.bJm()))
     {
       Log.i("MicroMsg.ExdeviceAddDataSourceUI", "Android 6.0.1, gps not open");
-      Ki(4);
+      Lh(4);
       AppMethodBeat.o(23867);
       return;
     }
     try
     {
-      ae.cZJ();
-      e.cZj();
+      ah.dGc();
+      g.dFA();
       AppMethodBeat.o(23867);
       return;
     }
@@ -491,101 +484,100 @@ public class ExdeviceAddDataSourceUI
   {
     AppMethodBeat.i(23870);
     super.onDestroy();
-    bh.aHJ().postToWorker(new Runnable()
+    bh.baH().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(23849);
         Log.d("MicroMsg.ExdeviceAddDataSourceUI", "stopAllChannelEvent! ");
-        yg localyg = new yg();
-        EventCenter.instance.publish(localyg);
+        new zz().publish();
         AppMethodBeat.o(23849);
       }
     });
-    bh.aGY().b(536, this);
-    bh.aGY().b(1706, this);
+    bh.aZW().b(536, this);
+    bh.aZW().b(1706, this);
     getContext().unregisterReceiver(this.mReceiver);
-    ae.cZJ().b(this);
-    ae.cZK().cxT();
+    ah.dGc().b(this);
+    ah.dGd().daL();
     AppMethodBeat.o(23870);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(23871);
     Log.i("MicroMsg.ExdeviceAddDataSourceUI", "errType(%d), errCode(%d), errMsg(%s).", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if (paramq == null)
+    if (paramp == null)
     {
       Log.e("MicroMsg.ExdeviceAddDataSourceUI", "netscene is null.");
       AppMethodBeat.o(23871);
       return;
     }
-    if (paramq.getType() == 536)
+    if (paramp.getType() == 536)
     {
-      daq();
-      this.vkX = null;
-      paramString = ((l)paramq).cZq();
+      dGL();
+      this.yxz = null;
+      paramString = ((n)paramp).dFH();
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        paramString = this.vkP.avN(com.tencent.mm.plugin.exdevice.k.b.avX(paramString.RQC.RPQ));
+        paramString = this.yxs.apN(com.tencent.mm.plugin.exdevice.k.b.apY(paramString.YNS.YNe));
         if (paramString != null)
         {
-          paramString.vlf = c.vlg;
-          aZ(paramString.mac, false);
+          paramString.yxH = c.yxI;
+          bl(paramString.mac, false);
         }
         Log.e("MicroMsg.ExdeviceAddDataSourceUI", "doScene failed.");
         AppMethodBeat.o(23871);
         return;
       }
-      paramq = new Intent();
-      paramq.putExtra("device_mac", com.tencent.mm.plugin.exdevice.k.b.avW(com.tencent.mm.plugin.exdevice.k.b.avX(paramString.RQC.RPQ)));
-      aZ(com.tencent.mm.plugin.exdevice.k.b.avX(paramString.RQC.RPQ), false);
-      setResult(-1, paramq);
+      paramp = new Intent();
+      paramp.putExtra("device_mac", com.tencent.mm.plugin.exdevice.k.b.apW(com.tencent.mm.plugin.exdevice.k.b.apY(paramString.YNS.YNe)));
+      bl(com.tencent.mm.plugin.exdevice.k.b.apY(paramString.YNS.YNe), false);
+      setResult(-1, paramp);
       finish();
       AppMethodBeat.o(23871);
       return;
     }
     b localb;
-    if (paramq.getType() == 1706)
+    if (paramp.getType() == 1706)
     {
-      paramq = ((u)paramq).cZt();
+      paramp = ((com.tencent.mm.plugin.exdevice.model.w)paramp).dFK();
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
         Log.e("MicroMsg.ExdeviceAddDataSourceUI", "NetSceneSearchBLEHardDevice onSceneEnd, errType(%d) errCode(%d) errMsg(%s).", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
         AppMethodBeat.o(23871);
         return;
       }
-      Log.i("MicroMsg.ExdeviceAddDataSourceUI", "HardDeviceAttr_bleSimpleProtol(%d)", new Object[] { Long.valueOf(paramq.RQC.idY) });
-      if (0L != (paramq.RQC.idY & 1L))
+      Log.i("MicroMsg.ExdeviceAddDataSourceUI", "HardDeviceAttr_bleSimpleProtol(%d)", new Object[] { Long.valueOf(paramp.YNS.kDi) });
+      if (0L != (paramp.YNS.kDi & 1L))
       {
-        if (ae.cZx().gq(paramq.RQB.rVF, paramq.RQB.RMK) != null)
+        if (ah.dFO().gU(paramp.YNR.vgV, paramp.YNR.YJY) != null)
         {
-          Log.i("MicroMsg.ExdeviceAddDataSourceUI", "(%s)has been bound.", new Object[] { paramq.RQC.RPQ });
+          Log.i("MicroMsg.ExdeviceAddDataSourceUI", "(%s)has been bound.", new Object[] { paramp.YNS.YNe });
           AppMethodBeat.o(23871);
           return;
         }
         localb = new b((byte)0);
-        if (paramq.RPW.TtX != null) {
+        if (paramp.YNk.aaIz != null) {
           break label500;
         }
       }
     }
     label500:
-    for (paramString = "";; paramString = z.a(paramq.RPW.TtX))
+    for (paramString = "";; paramString = com.tencent.mm.platformtools.w.a(paramp.YNk.aaIz))
     {
       localb.name = paramString;
-      localb.mac = com.tencent.mm.plugin.exdevice.k.b.avX(paramq.RQC.RPQ);
-      localb.fAo = paramq.RPV;
-      localb.iconUrl = paramq.RQC.CNj;
-      this.vkQ.add(localb);
+      localb.mac = com.tencent.mm.plugin.exdevice.k.b.apY(paramp.YNS.YNe);
+      localb.hFb = paramp.YNj;
+      localb.iconUrl = paramp.YNS.IHo;
+      this.yxt.add(localb);
       Log.i("MicroMsg.ExdeviceAddDataSourceUI", "Add device, mac(%s), name(%s)", new Object[] { localb.mac, localb.name });
       runOnUiThread(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(23850);
-          ExdeviceAddDataSourceUI.c(ExdeviceAddDataSourceUI.this).aa(ExdeviceAddDataSourceUI.d(ExdeviceAddDataSourceUI.this));
-          ExdeviceAddDataSourceUI.c(ExdeviceAddDataSourceUI.this).notifyDataSetChanged();
+          ExdeviceAddDataSourceUI.b(ExdeviceAddDataSourceUI.this).bz(ExdeviceAddDataSourceUI.c(ExdeviceAddDataSourceUI.this));
+          ExdeviceAddDataSourceUI.b(ExdeviceAddDataSourceUI.this).notifyDataSetChanged();
           AppMethodBeat.o(23850);
         }
       });
@@ -600,7 +592,7 @@ public class ExdeviceAddDataSourceUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void q(String paramString1, String paramString2, boolean paramBoolean)
+  public final void t(String paramString1, String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(23872);
     Log.d("MicroMsg.ExdeviceAddDataSourceUI", "onScanResult, broadcastName(%s), mac(%s), isCompleted(%b).", new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean) });
@@ -610,8 +602,8 @@ public class ExdeviceAddDataSourceUI
         public final void run()
         {
           AppMethodBeat.i(23851);
-          ExdeviceAddDataSourceUI.e(ExdeviceAddDataSourceUI.this).setVisibility(8);
-          ExdeviceAddDataSourceUI.c(ExdeviceAddDataSourceUI.this).notifyDataSetChanged();
+          ExdeviceAddDataSourceUI.d(ExdeviceAddDataSourceUI.this).setVisibility(8);
+          ExdeviceAddDataSourceUI.b(ExdeviceAddDataSourceUI.this).notifyDataSetChanged();
           AppMethodBeat.o(23851);
         }
       });
@@ -623,12 +615,12 @@ public class ExdeviceAddDataSourceUI
       return;
     }
     int i = 0;
-    if (i < this.vkQ.size())
+    if (i < this.yxt.size())
     {
-      paramString1 = (b)this.vkQ.get(i);
+      paramString1 = (b)this.yxt.get(i);
       if ((paramString1 == null) || (Util.isNullOrNil(paramString1.mac)))
       {
-        paramString1 = this.vkQ;
+        paramString1 = this.yxt;
         int j = i - 1;
         paramString1.remove(i);
         i = j;
@@ -643,7 +635,7 @@ public class ExdeviceAddDataSourceUI
         Log.i("MicroMsg.ExdeviceAddDataSourceUI", "the device(%s) has added into the list before.", new Object[] { paramString2 });
         AppMethodBeat.o(23872);
         return;
-        Log.i("MicroMsg.ExdeviceAddDataSourceUI", "SearchBLEHardDevice doScene result(%s), mac(%s)", new Object[] { Boolean.valueOf(bh.aGY().a(new u(paramString2.replaceAll(":", ""), null, null), 0)), paramString2 });
+        Log.i("MicroMsg.ExdeviceAddDataSourceUI", "SearchBLEHardDevice doScene result(%s), mac(%s)", new Object[] { Boolean.valueOf(bh.aZW().a(new com.tencent.mm.plugin.exdevice.model.w(paramString2.replaceAll(":", ""), null, null), 0)), paramString2 });
         AppMethodBeat.o(23872);
         return;
       }
@@ -653,46 +645,33 @@ public class ExdeviceAddDataSourceUI
   static final class a
     extends BaseAdapter
   {
-    private List<ExdeviceAddDataSourceUI.b> vkQ;
-    private com.tencent.mm.ay.a.a.c vle;
+    private com.tencent.mm.modelimage.loader.a.c yxG;
+    private List<ExdeviceAddDataSourceUI.b> yxt;
     
     public a()
     {
       AppMethodBeat.i(23856);
-      this.vkQ = new LinkedList();
+      this.yxt = new LinkedList();
       c.a locala = new c.a();
-      locala.lRP = R.g.dnu;
-      this.vle = locala.bmL();
+      locala.oKB = R.g.fnI;
+      this.yxG = locala.bKx();
       AppMethodBeat.o(23856);
     }
     
-    public final ExdeviceAddDataSourceUI.b Kj(int paramInt)
+    public final ExdeviceAddDataSourceUI.b Li(int paramInt)
     {
       AppMethodBeat.i(23860);
-      ExdeviceAddDataSourceUI.b localb = (ExdeviceAddDataSourceUI.b)this.vkQ.get(paramInt);
+      ExdeviceAddDataSourceUI.b localb = (ExdeviceAddDataSourceUI.b)this.yxt.get(paramInt);
       AppMethodBeat.o(23860);
       return localb;
     }
     
-    public final void aa(List<ExdeviceAddDataSourceUI.b> paramList)
-    {
-      AppMethodBeat.i(23857);
-      this.vkQ.clear();
-      if ((paramList == null) || (paramList.size() == 0))
-      {
-        AppMethodBeat.o(23857);
-        return;
-      }
-      this.vkQ.addAll(paramList);
-      AppMethodBeat.o(23857);
-    }
-    
-    public final ExdeviceAddDataSourceUI.b avN(String paramString)
+    public final ExdeviceAddDataSourceUI.b apN(String paramString)
     {
       AppMethodBeat.i(23858);
       if (!Util.isNullOrNil(paramString))
       {
-        Iterator localIterator = this.vkQ.iterator();
+        Iterator localIterator = this.yxt.iterator();
         while (localIterator.hasNext())
         {
           ExdeviceAddDataSourceUI.b localb = (ExdeviceAddDataSourceUI.b)localIterator.next();
@@ -707,10 +686,23 @@ public class ExdeviceAddDataSourceUI
       return null;
     }
     
+    public final void bz(List<ExdeviceAddDataSourceUI.b> paramList)
+    {
+      AppMethodBeat.i(23857);
+      this.yxt.clear();
+      if ((paramList == null) || (paramList.size() == 0))
+      {
+        AppMethodBeat.o(23857);
+        return;
+      }
+      this.yxt.addAll(paramList);
+      AppMethodBeat.o(23857);
+    }
+    
     public final int getCount()
     {
       AppMethodBeat.i(23859);
-      int i = this.vkQ.size();
+      int i = this.yxt.size();
       AppMethodBeat.o(23859);
       return i;
     }
@@ -723,22 +715,22 @@ public class ExdeviceAddDataSourceUI
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(23861);
-      ExdeviceAddDataSourceUI.b localb = Kj(paramInt);
+      ExdeviceAddDataSourceUI.b localb = Li(paramInt);
       View localView;
       if (paramView == null)
       {
         paramView = new a((byte)0);
-        localView = View.inflate(paramViewGroup.getContext(), R.i.ege, null);
-        paramView.qps = ((ImageView)localView.findViewById(R.h.dIy));
-        paramView.mYd = ((TextView)localView.findViewById(R.h.dNd));
+        localView = View.inflate(paramViewGroup.getContext(), R.i.giY, null);
+        paramView.ttT = ((ImageView)localView.findViewById(R.h.iconIV));
+        paramView.pUL = ((TextView)localView.findViewById(R.h.fOX));
         localView.setTag(paramView);
         paramViewGroup = paramView;
       }
       for (;;)
       {
         Log.d("MicroMsg.ExdeviceAddDataSourceUI", "position(%s), name(%s), mac(%s).", new Object[] { Integer.valueOf(paramInt), localb.name, localb.mac });
-        paramViewGroup.mYd.setText(localb.name);
-        com.tencent.mm.ay.q.bml().a(localb.iconUrl, paramViewGroup.qps, this.vle);
+        paramViewGroup.pUL.setText(localb.name);
+        r.bKe().a(localb.iconUrl, paramViewGroup.ttT, this.yxG);
         AppMethodBeat.o(23861);
         return localView;
         paramViewGroup = (a)paramView.getTag();
@@ -748,18 +740,18 @@ public class ExdeviceAddDataSourceUI
     
     static final class a
     {
-      TextView mYd;
-      ImageView qps;
+      TextView pUL;
+      ImageView ttT;
     }
   }
   
   static final class b
   {
-    String fAo;
+    String hFb;
     public String iconUrl;
     String mac;
     String name;
-    ExdeviceAddDataSourceUI.c vlf = ExdeviceAddDataSourceUI.c.vlg;
+    ExdeviceAddDataSourceUI.c yxH = ExdeviceAddDataSourceUI.c.yxI;
   }
   
   static enum c
@@ -767,10 +759,10 @@ public class ExdeviceAddDataSourceUI
     static
     {
       AppMethodBeat.i(23865);
-      vlg = new c("NORMAL", 0);
-      vlh = new c("ADDING", 1);
-      vli = new c("ADDED", 2);
-      vlj = new c[] { vlg, vlh, vli };
+      yxI = new c("NORMAL", 0);
+      yxJ = new c("ADDING", 1);
+      yxK = new c("ADDED", 2);
+      yxL = new c[] { yxI, yxJ, yxK };
       AppMethodBeat.o(23865);
     }
     
@@ -779,7 +771,7 @@ public class ExdeviceAddDataSourceUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceAddDataSourceUI
  * JD-Core Version:    0.7.0.1
  */

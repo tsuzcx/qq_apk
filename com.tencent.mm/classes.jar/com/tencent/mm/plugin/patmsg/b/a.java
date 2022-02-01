@@ -1,74 +1,70 @@
 package com.tencent.mm.plugin.patmsg.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.f.b.a.jq;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.p;
+import com.tencent.mm.autogen.mmdata.rpt.mc;
 import com.tencent.mm.kernel.f;
-import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.patmsg.a.b;
-import com.tencent.mm.protocal.protobuf.dzg;
-import com.tencent.mm.protocal.protobuf.dzh;
+import com.tencent.mm.protocal.protobuf.esl;
+import com.tencent.mm.protocal.protobuf.esm;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.util.c;
+import com.tencent.mm.storage.aq;
 
 public final class a
-  extends q
+  extends p
   implements m
 {
-  public jq GKy;
-  private i callback;
-  private long fTl;
-  private d lKU;
+  public mc MHs;
+  private com.tencent.mm.am.h callback;
+  private long hZj;
   private long msgId;
+  private com.tencent.mm.am.c oDw;
   
   public a(String paramString1, long paramLong1, long paramLong2, long paramLong3, String paramString2)
   {
-    AppMethodBeat.i(186613);
-    Object localObject = h.aHG().aHp().b(290818, Integer.valueOf(0));
+    AppMethodBeat.i(266364);
+    Object localObject = com.tencent.mm.kernel.h.baE().ban().d(290818, Integer.valueOf(0));
     if (localObject != null) {}
     for (int i = Util.getInt(localObject.toString(), 0);; i = 0)
     {
-      localObject = new d.a();
-      ((d.a)localObject).lBU = new dzg();
-      ((d.a)localObject).lBV = new dzh();
-      ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/revokemsg";
-      ((d.a)localObject).funcId = 594;
-      ((d.a)localObject).lBW = 0;
-      ((d.a)localObject).respCmdId = 0;
+      localObject = new c.a();
+      ((c.a)localObject).otE = new esl();
+      ((c.a)localObject).otF = new esm();
+      ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/revokemsg";
+      ((c.a)localObject).funcId = 594;
+      ((c.a)localObject).otG = 0;
+      ((c.a)localObject).respCmdId = 0;
       this.msgId = paramLong1;
-      this.fTl = paramLong2;
-      this.lKU = ((d.a)localObject).bgN();
-      localObject = (dzg)d.b.b(this.lKU.lBR);
-      ((dzg)localObject).RJQ = paramString1;
-      ((dzg)localObject).UeO = 0;
-      ((dzg)localObject).UeP = 0;
-      ((dzg)localObject).UeR = paramLong2;
-      ((dzg)localObject).CreateTime = ((int)(paramLong3 / 1000L));
-      ((dzg)localObject).CRR = z.bcZ();
-      ((dzg)localObject).CRQ = paramString2;
-      ((dzg)localObject).UeQ = i;
-      Log.i("MicroMsg.NetSceneRevokePatMsg", "clientMsgId:%s,newClientMsgId:%d,svrMsgId:%d,createTime:%d,fromUserName:%s,toUserName:%s,indexOfRequest:%d", new Object[] { ((dzg)localObject).RJQ, Integer.valueOf(((dzg)localObject).UeO), Integer.valueOf(((dzg)localObject).UeP), Integer.valueOf(((dzg)localObject).CreateTime), ((dzg)localObject).CRR, ((dzg)localObject).CRQ, Integer.valueOf(((dzg)localObject).UeQ) });
-      AppMethodBeat.o(186613);
+      this.hZj = paramLong2;
+      this.oDw = ((c.a)localObject).bEF();
+      localObject = (esl)c.b.b(this.oDw.otB);
+      ((esl)localObject).YHk = paramString1;
+      ((esl)localObject).abwb = 0;
+      ((esl)localObject).abwc = 0;
+      ((esl)localObject).abwe = paramLong2;
+      ((esl)localObject).CreateTime = ((int)(paramLong3 / 1000L));
+      ((esl)localObject).IMh = z.bAM();
+      ((esl)localObject).IMg = paramString2;
+      ((esl)localObject).abwd = i;
+      Log.i("MicroMsg.NetSceneRevokePatMsg", "clientMsgId:%s,newClientMsgId:%d,svrMsgId:%d,createTime:%d,fromUserName:%s,toUserName:%s,indexOfRequest:%d", new Object[] { ((esl)localObject).YHk, Integer.valueOf(((esl)localObject).abwb), Integer.valueOf(((esl)localObject).abwc), Integer.valueOf(((esl)localObject).CreateTime), ((esl)localObject).IMh, ((esl)localObject).IMg, Integer.valueOf(((esl)localObject).abwd) });
+      AppMethodBeat.o(266364);
       return;
     }
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
-    AppMethodBeat.i(186614);
-    this.callback = parami;
-    int i = dispatch(paramg, this.lKU, this);
-    AppMethodBeat.o(186614);
+    AppMethodBeat.i(266377);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.oDw, this);
+    AppMethodBeat.o(266377);
     return i;
   }
   
@@ -79,12 +75,12 @@ public final class a
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(186615);
+    AppMethodBeat.i(266385);
     Log.i("MicroMsg.NetSceneRevokePatMsg", "onGYNetEnd errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      ((b)h.ae(b.class)).am(this.msgId, this.fTl);
-      params = h.aHG().aHp().b(290818, Integer.valueOf(0));
+      ((b)com.tencent.mm.kernel.h.ax(b.class)).aW(this.msgId, this.hZj);
+      params = com.tencent.mm.kernel.h.baE().ban().d(290818, Integer.valueOf(0));
       if (params == null) {
         break label207;
       }
@@ -92,25 +88,25 @@ public final class a
     label207:
     for (paramInt1 = Util.getInt(params.toString(), 0);; paramInt1 = 0)
     {
-      h.aHG().aHp().i(290818, Integer.valueOf(paramInt1 + 1));
-      if (this.GKy != null)
+      com.tencent.mm.kernel.h.baE().ban().B(290818, Integer.valueOf(paramInt1 + 1));
+      if (this.MHs != null)
       {
-        this.GKy.gLL = 2;
-        this.GKy.bpa();
-        params = c.Yyz;
-        c.a(this.GKy);
+        this.MHs.iUn = 2;
+        this.MHs.bMH();
+        params = com.tencent.mm.util.c.agsX;
+        com.tencent.mm.util.c.a(this.MHs);
       }
       for (;;)
       {
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-        AppMethodBeat.o(186615);
+        AppMethodBeat.o(266385);
         return;
-        if (this.GKy != null)
+        if (this.MHs != null)
         {
-          this.GKy.gLL = 1;
-          this.GKy.bpa();
-          params = c.Yyz;
-          c.a(this.GKy);
+          this.MHs.iUn = 1;
+          this.MHs.bMH();
+          params = com.tencent.mm.util.c.agsX;
+          com.tencent.mm.util.c.a(this.MHs);
         }
       }
     }

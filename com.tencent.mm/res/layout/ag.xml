@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<androidx.appcompat.widget.AlertDialogLayout android:gravity="start|center|top" android:orientation="vertical" android:id="@id/hrb" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:id="@id/au" android:background="@color/ac_" android:paddingTop="@dimen/la" android:paddingBottom="@dimen/le" android:layout_width="fill_parent" android:layout_height="0.0dip">
-        <TextView android:textSize="@dimen/ky" android:textColor="@color/uj" android:id="@id/av" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ech" />
-    </LinearLayout>
-</FrameLayout>
+    <include layout="@layout/ah" />
+    <FrameLayout android:id="@id/bra" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="48.0dip">
+        <View android:layout_gravity="top" android:id="@id/j42" android:background="?g7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        <androidx.core.widget.NestedScrollView android:id="@id/j43" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <android.widget.Space android:id="@id/khy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/os" />
+                <TextView android:id="@android:id/message" android:paddingLeft="?je" android:paddingRight="?je" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/vm" />
+                <android.widget.Space android:id="@id/khx" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/os" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+        <View android:layout_gravity="bottom" android:id="@id/j41" android:background="?g7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/bxw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="48.0dip">
+        <FrameLayout android:id="@id/bxu" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </FrameLayout>
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/af" />
+</androidx.appcompat.widget.AlertDialogLayout>

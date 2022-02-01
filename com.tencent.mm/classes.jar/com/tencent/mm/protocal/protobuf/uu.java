@@ -1,194 +1,257 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import i.a.a.b;
+import java.util.LinkedList;
 
 public final class uu
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public float KjR;
-  public String SfB;
-  public String SfC;
-  public String city;
-  public String country;
-  public String descriptor;
-  public String jump_url;
-  public String lLg;
-  public float latitude;
-  public float longitude;
-  public String name;
-  public String province;
-  public String tol;
+  public int Zam;
+  public int Zan;
+  public int Zao;
+  public int Zap;
+  public LinkedList<etl> Zaq;
+  public String Zar;
+  public gol Zas;
+  public int Zat;
+  public int Zau;
+  public LinkedList<etl> Zav;
+  public LinkedList<uv> Zaw;
+  public LinkedList<uv> Zax;
+  public int Zay;
+  public int Zaz;
+  public int yth;
+  
+  public uu()
+  {
+    AppMethodBeat.i(133162);
+    this.Zaq = new LinkedList();
+    this.Zav = new LinkedList();
+    this.Zaw = new LinkedList();
+    this.Zax = new LinkedList();
+    AppMethodBeat.o(133162);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(113969);
+    AppMethodBeat.i(133163);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.name != null) {
-        paramVarArgs.f(1, this.name);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.Zas == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: AuthKey");
+        AppMethodBeat.o(133163);
+        throw paramVarArgs;
       }
-      if (this.descriptor != null) {
-        paramVarArgs.f(2, this.descriptor);
+      paramVarArgs.bS(1, this.Zam);
+      paramVarArgs.bS(2, this.yth);
+      paramVarArgs.bS(3, this.Zan);
+      paramVarArgs.bS(4, this.Zao);
+      paramVarArgs.bS(5, this.Zap);
+      paramVarArgs.e(6, 8, this.Zaq);
+      if (this.Zar != null) {
+        paramVarArgs.g(7, this.Zar);
       }
-      if (this.tol != null) {
-        paramVarArgs.f(3, this.tol);
+      if (this.Zas != null)
+      {
+        paramVarArgs.qD(8, this.Zas.computeSize());
+        this.Zas.writeFields(paramVarArgs);
       }
-      if (this.country != null) {
-        paramVarArgs.f(4, this.country);
-      }
-      if (this.province != null) {
-        paramVarArgs.f(5, this.province);
-      }
-      if (this.city != null) {
-        paramVarArgs.f(6, this.city);
-      }
-      if (this.lLg != null) {
-        paramVarArgs.f(7, this.lLg);
-      }
-      paramVarArgs.i(8, this.KjR);
-      paramVarArgs.i(9, this.longitude);
-      paramVarArgs.i(10, this.latitude);
-      if (this.jump_url != null) {
-        paramVarArgs.f(11, this.jump_url);
-      }
-      if (this.SfB != null) {
-        paramVarArgs.f(12, this.SfB);
-      }
-      if (this.SfC != null) {
-        paramVarArgs.f(13, this.SfC);
-      }
-      AppMethodBeat.o(113969);
+      paramVarArgs.bS(9, this.Zat);
+      paramVarArgs.bS(10, this.Zau);
+      paramVarArgs.e(11, 8, this.Zav);
+      paramVarArgs.e(12, 8, this.Zaw);
+      paramVarArgs.e(13, 8, this.Zax);
+      paramVarArgs.bS(14, this.Zay);
+      paramVarArgs.bS(15, this.Zaz);
+      AppMethodBeat.o(133163);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.name == null) {
-        break label903;
-      }
-    }
-    label903:
-    for (int i = g.a.a.b.b.a.g(1, this.name) + 0;; i = 0)
+    int i;
+    if (paramInt == 1)
     {
+      i = i.a.a.b.b.a.cJ(1, this.Zam) + 0 + i.a.a.b.b.a.cJ(2, this.yth) + i.a.a.b.b.a.cJ(3, this.Zan) + i.a.a.b.b.a.cJ(4, this.Zao) + i.a.a.b.b.a.cJ(5, this.Zap) + i.a.a.a.c(6, 8, this.Zaq);
       paramInt = i;
-      if (this.descriptor != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.descriptor);
+      if (this.Zar != null) {
+        paramInt = i + i.a.a.b.b.a.h(7, this.Zar);
       }
       i = paramInt;
-      if (this.tol != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.tol);
+      if (this.Zas != null) {
+        i = paramInt + i.a.a.a.qC(8, this.Zas.computeSize());
       }
-      paramInt = i;
-      if (this.country != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.country);
-      }
-      i = paramInt;
-      if (this.province != null) {
-        i = paramInt + g.a.a.b.b.a.g(5, this.province);
-      }
-      paramInt = i;
-      if (this.city != null) {
-        paramInt = i + g.a.a.b.b.a.g(6, this.city);
-      }
-      i = paramInt;
-      if (this.lLg != null) {
-        i = paramInt + g.a.a.b.b.a.g(7, this.lLg);
-      }
-      i = i + (g.a.a.b.b.a.gL(8) + 4) + (g.a.a.b.b.a.gL(9) + 4) + (g.a.a.b.b.a.gL(10) + 4);
-      paramInt = i;
-      if (this.jump_url != null) {
-        paramInt = i + g.a.a.b.b.a.g(11, this.jump_url);
-      }
-      i = paramInt;
-      if (this.SfB != null) {
-        i = paramInt + g.a.a.b.b.a.g(12, this.SfB);
-      }
-      paramInt = i;
-      if (this.SfC != null) {
-        paramInt = i + g.a.a.b.b.a.g(13, this.SfC);
-      }
-      AppMethodBeat.o(113969);
-      return paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
-          }
-        }
-        AppMethodBeat.o(113969);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-        uu localuu = (uu)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(113969);
-          return -1;
-        case 1: 
-          localuu.name = locala.abFh.readString();
-          AppMethodBeat.o(113969);
-          return 0;
-        case 2: 
-          localuu.descriptor = locala.abFh.readString();
-          AppMethodBeat.o(113969);
-          return 0;
-        case 3: 
-          localuu.tol = locala.abFh.readString();
-          AppMethodBeat.o(113969);
-          return 0;
-        case 4: 
-          localuu.country = locala.abFh.readString();
-          AppMethodBeat.o(113969);
-          return 0;
-        case 5: 
-          localuu.province = locala.abFh.readString();
-          AppMethodBeat.o(113969);
-          return 0;
-        case 6: 
-          localuu.city = locala.abFh.readString();
-          AppMethodBeat.o(113969);
-          return 0;
-        case 7: 
-          localuu.lLg = locala.abFh.readString();
-          AppMethodBeat.o(113969);
-          return 0;
-        case 8: 
-          localuu.KjR = Float.intBitsToFloat(locala.abFh.AO());
-          AppMethodBeat.o(113969);
-          return 0;
-        case 9: 
-          localuu.longitude = Float.intBitsToFloat(locala.abFh.AO());
-          AppMethodBeat.o(113969);
-          return 0;
-        case 10: 
-          localuu.latitude = Float.intBitsToFloat(locala.abFh.AO());
-          AppMethodBeat.o(113969);
-          return 0;
-        case 11: 
-          localuu.jump_url = locala.abFh.readString();
-          AppMethodBeat.o(113969);
-          return 0;
-        case 12: 
-          localuu.SfB = locala.abFh.readString();
-          AppMethodBeat.o(113969);
-          return 0;
-        }
-        localuu.SfC = locala.abFh.readString();
-        AppMethodBeat.o(113969);
-        return 0;
-      }
-      AppMethodBeat.o(113969);
-      return -1;
+      paramInt = i.a.a.b.b.a.cJ(9, this.Zat);
+      int j = i.a.a.b.b.a.cJ(10, this.Zau);
+      int k = i.a.a.a.c(11, 8, this.Zav);
+      int m = i.a.a.a.c(12, 8, this.Zaw);
+      int n = i.a.a.a.c(13, 8, this.Zax);
+      int i1 = i.a.a.b.b.a.cJ(14, this.Zay);
+      int i2 = i.a.a.b.b.a.cJ(15, this.Zaz);
+      AppMethodBeat.o(133163);
+      return i + paramInt + j + k + m + n + i1 + i2;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.Zaq.clear();
+      this.Zav.clear();
+      this.Zaw.clear();
+      this.Zax.clear();
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      if (this.Zas == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: AuthKey");
+        AppMethodBeat.o(133163);
+        throw paramVarArgs;
+      }
+      AppMethodBeat.o(133163);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
+      uu localuu = (uu)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      Object localObject2;
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(133163);
+        return -1;
+      case 1: 
+        localuu.Zam = ((i.a.a.a.a)localObject1).ajGk.aar();
+        AppMethodBeat.o(133163);
+        return 0;
+      case 2: 
+        localuu.yth = ((i.a.a.a.a)localObject1).ajGk.aar();
+        AppMethodBeat.o(133163);
+        return 0;
+      case 3: 
+        localuu.Zan = ((i.a.a.a.a)localObject1).ajGk.aar();
+        AppMethodBeat.o(133163);
+        return 0;
+      case 4: 
+        localuu.Zao = ((i.a.a.a.a)localObject1).ajGk.aar();
+        AppMethodBeat.o(133163);
+        return 0;
+      case 5: 
+        localuu.Zap = ((i.a.a.a.a)localObject1).ajGk.aar();
+        AppMethodBeat.o(133163);
+        return 0;
+      case 6: 
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new etl();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((etl)localObject2).dh((byte[])localObject1);
+          }
+          localuu.Zaq.add(localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(133163);
+        return 0;
+      case 7: 
+        localuu.Zar = ((i.a.a.a.a)localObject1).ajGk.readString();
+        AppMethodBeat.o(133163);
+        return 0;
+      case 8: 
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new gol();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((gol)localObject2).dg((byte[])localObject1);
+          }
+          localuu.Zas = ((gol)localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(133163);
+        return 0;
+      case 9: 
+        localuu.Zat = ((i.a.a.a.a)localObject1).ajGk.aar();
+        AppMethodBeat.o(133163);
+        return 0;
+      case 10: 
+        localuu.Zau = ((i.a.a.a.a)localObject1).ajGk.aar();
+        AppMethodBeat.o(133163);
+        return 0;
+      case 11: 
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new etl();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((etl)localObject2).dh((byte[])localObject1);
+          }
+          localuu.Zav.add(localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(133163);
+        return 0;
+      case 12: 
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new uv();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((uv)localObject2).parseFrom((byte[])localObject1);
+          }
+          localuu.Zaw.add(localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(133163);
+        return 0;
+      case 13: 
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new uv();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((uv)localObject2).parseFrom((byte[])localObject1);
+          }
+          localuu.Zax.add(localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(133163);
+        return 0;
+      case 14: 
+        localuu.Zay = ((i.a.a.a.a)localObject1).ajGk.aar();
+        AppMethodBeat.o(133163);
+        return 0;
+      }
+      localuu.Zaz = ((i.a.a.a.a)localObject1).ajGk.aar();
+      AppMethodBeat.o(133163);
+      return 0;
+    }
+    AppMethodBeat.o(133163);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.uu
  * JD-Core Version:    0.7.0.1
  */

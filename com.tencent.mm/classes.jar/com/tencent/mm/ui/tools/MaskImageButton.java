@@ -17,15 +17,15 @@ import com.tencent.mm.sdk.platformtools.MMHandler;
 public class MaskImageButton
   extends ImageView
 {
-  private MMHandler KBt;
-  private Runnable KBu;
-  private RectF XTm;
-  private int XTn;
-  private int XTo;
+  private MMHandler Rba;
+  private Runnable Rbb;
   private int a;
+  private RectF afJB;
+  private int afJC;
+  private int afJD;
   private int b;
   private int g;
-  public Object kQV;
+  public Object nsy;
   private Paint paint;
   private int r;
   
@@ -33,27 +33,18 @@ public class MaskImageButton
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(143201);
-    this.XTm = new RectF();
+    this.afJB = new RectF();
     this.paint = null;
     this.a = 90;
     this.r = 0;
     this.g = 0;
     this.b = 0;
-    this.XTn = 0;
-    this.XTo = 0;
+    this.afJC = 0;
+    this.afJD = 0;
     this.paint = new Paint();
     this.paint.setColor(Color.argb(this.a, this.r, this.g, this.b));
-    this.KBt = new MMHandler(Looper.getMainLooper());
-    this.KBu = new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(143199);
-        MaskImageButton.this.setPressed(false);
-        MaskImageButton.this.invalidate();
-        AppMethodBeat.o(143199);
-      }
-    };
+    this.Rba = new MMHandler(Looper.getMainLooper());
+    this.Rbb = new MaskImageButton.1(this);
     super.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
@@ -85,8 +76,8 @@ public class MaskImageButton
     super.onDraw(paramCanvas);
     if (isPressed())
     {
-      this.XTm.set(getPaddingLeft() + 0, getPaddingTop() + 0, this.XTn - getPaddingRight(), this.XTo - getPaddingBottom());
-      paramCanvas.drawRoundRect(this.XTm, getMeasuredHeight() / 10, getMeasuredHeight() / 10, this.paint);
+      this.afJB.set(getPaddingLeft() + 0, getPaddingTop() + 0, this.afJC - getPaddingRight(), this.afJD - getPaddingBottom());
+      paramCanvas.drawRoundRect(this.afJB, getMeasuredHeight() / 10, getMeasuredHeight() / 10, this.paint);
     }
     AppMethodBeat.o(143202);
   }
@@ -95,14 +86,14 @@ public class MaskImageButton
   {
     AppMethodBeat.i(143203);
     super.onMeasure(paramInt1, paramInt2);
-    this.XTn = getMeasuredWidth();
-    this.XTo = getMeasuredHeight();
+    this.afJC = getMeasuredWidth();
+    this.afJD = getMeasuredHeight();
     AppMethodBeat.o(143203);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.tools.MaskImageButton
  * JD-Core Version:    0.7.0.1
  */

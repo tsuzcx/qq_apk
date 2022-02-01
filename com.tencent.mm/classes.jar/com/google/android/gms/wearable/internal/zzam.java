@@ -5,7 +5,6 @@ import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.wearable.Channel;
 import com.google.android.gms.wearable.ChannelApi.OpenChannelResult;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import javax.annotation.Nullable;
 
 final class zzam
   implements ChannelApi.OpenChannelResult
@@ -13,7 +12,7 @@ final class zzam
   private final Channel zzcd;
   private final Status zzp;
   
-  zzam(Status paramStatus, @Nullable Channel paramChannel)
+  zzam(Status paramStatus, Channel paramChannel)
   {
     AppMethodBeat.i(100986);
     this.zzp = ((Status)Preconditions.checkNotNull(paramStatus));
@@ -21,7 +20,6 @@ final class zzam
     AppMethodBeat.o(100986);
   }
   
-  @Nullable
   public final Channel getChannel()
   {
     return this.zzcd;
@@ -34,7 +32,7 @@ final class zzam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzam
  * JD-Core Version:    0.7.0.1
  */

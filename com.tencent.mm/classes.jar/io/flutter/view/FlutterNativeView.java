@@ -1,76 +1,88 @@
 package io.flutter.view;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import io.flutter.Log;
+import io.flutter.app.FlutterPluginRegistry;
+import io.flutter.embedding.engine.FlutterEngine.EngineLifecycleListener;
 import io.flutter.embedding.engine.FlutterJNI;
-import io.flutter.embedding.engine.a.a;
 import io.flutter.embedding.engine.dart.DartExecutor;
-import io.flutter.plugin.a.c.a;
-import io.flutter.plugin.a.c.b;
-import io.flutter.plugin.platform.PlatformViewsController;
+import io.flutter.embedding.engine.renderer.FlutterUiDisplayListener;
+import io.flutter.plugin.common.BinaryMessenger;
+import io.flutter.plugin.common.BinaryMessenger.BinaryMessageHandler;
+import io.flutter.plugin.common.BinaryMessenger.BinaryReply;
 import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 @Deprecated
 public class FlutterNativeView
-  implements io.flutter.plugin.a.c
+  implements BinaryMessenger
 {
-  public final io.flutter.embedding.engine.renderer.b aaoE;
-  public FlutterView aaod;
-  public final DartExecutor aapU;
-  public final io.flutter.app.c aayQ;
-  public final FlutterJNI aayR;
-  public boolean aayS;
+  private static final String TAG = "FlutterNativeView";
+  private boolean applicationIsRunning;
+  private final DartExecutor dartExecutor;
+  private final FlutterUiDisplayListener flutterUiDisplayListener;
   private final Context mContext;
+  private final FlutterJNI mFlutterJNI;
+  private FlutterView mFlutterView;
+  private final FlutterPluginRegistry mPluginRegistry;
   
   public FlutterNativeView(Context paramContext)
   {
-    this(paramContext, (byte)0);
+    this(paramContext, false);
   }
   
-  private FlutterNativeView(Context paramContext, byte paramByte)
+  public FlutterNativeView(Context paramContext, boolean paramBoolean)
   {
-    AppMethodBeat.i(9670);
-    this.aaoE = new io.flutter.embedding.engine.renderer.b()
+    AppMethodBeat.i(190563);
+    this.flutterUiDisplayListener = new FlutterUiDisplayListener()
     {
-      public final void epX()
+      public void onFlutterUiDisplayed()
       {
-        AppMethodBeat.i(255073);
-        if (FlutterNativeView.b(FlutterNativeView.this) == null)
+        AppMethodBeat.i(190561);
+        if (FlutterNativeView.this.mFlutterView == null)
         {
-          AppMethodBeat.o(255073);
+          AppMethodBeat.o(190561);
           return;
         }
-        Object localObject = FlutterNativeView.b(FlutterNativeView.this);
-        ((FlutterView)localObject).aazg = true;
-        localObject = new ArrayList(((FlutterView)localObject).aaze).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          ((FlutterView.a)((Iterator)localObject).next()).onFirstFrame();
-        }
-        AppMethodBeat.o(255073);
+        FlutterNativeView.this.mFlutterView.onFirstFrame();
+        AppMethodBeat.o(190561);
       }
       
-      public final void epY() {}
+      public void onFlutterUiNoLongerDisplayed() {}
     };
     this.mContext = paramContext;
-    this.aayQ = new io.flutter.app.c(this, paramContext);
-    this.aayR = new FlutterJNI();
-    this.aayR.addIsDisplayingFlutterUiListener(this.aaoE);
-    this.aapU = new DartExecutor(this.aayR, paramContext.getAssets());
-    this.aayR.addEngineLifecycleListener(new a((byte)0));
-    this.aayR.attachToNative(false);
-    this.aapU.onAttachedToJNI();
-    iBE();
-    AppMethodBeat.o(9670);
+    this.mPluginRegistry = new FlutterPluginRegistry(this, paramContext);
+    this.mFlutterJNI = new FlutterJNI();
+    this.mFlutterJNI.addIsDisplayingFlutterUiListener(this.flutterUiDisplayListener);
+    this.dartExecutor = new DartExecutor(this.mFlutterJNI, paramContext.getAssets());
+    this.mFlutterJNI.addEngineLifecycleListener(new EngineLifecycleListenerImpl(null));
+    attach(this, paramBoolean);
+    assertAttached();
+    AppMethodBeat.o(190563);
   }
   
-  private void iBE()
+  private void attach(FlutterNativeView paramFlutterNativeView, boolean paramBoolean)
+  {
+    AppMethodBeat.i(190585);
+    this.mFlutterJNI.attachToNative(paramBoolean);
+    this.dartExecutor.onAttachedToJNI();
+    AppMethodBeat.o(190585);
+  }
+  
+  public static String getObservatoryUri()
+  {
+    AppMethodBeat.i(190572);
+    String str = FlutterJNI.getObservatoryUri();
+    AppMethodBeat.o(190572);
+    return str;
+  }
+  
+  public void assertAttached()
   {
     AppMethodBeat.i(9672);
-    if (!this.aayR.isAttached())
+    if (!isAttached())
     {
       AssertionError localAssertionError = new AssertionError("Platform view is not attached");
       AppMethodBeat.o(9672);
@@ -79,83 +91,136 @@ public class FlutterNativeView
     AppMethodBeat.o(9672);
   }
   
-  public final void a(b paramb)
+  public void attachViewAndActivity(FlutterView paramFlutterView, Activity paramActivity)
   {
-    AppMethodBeat.i(9673);
-    if (paramb.aayV == null)
-    {
-      paramb = new AssertionError("An entrypoint must be specified");
-      AppMethodBeat.o(9673);
-      throw paramb;
-    }
-    iBE();
-    if (this.aayS)
-    {
-      paramb = new AssertionError("This Flutter engine instance is already running an application");
-      AppMethodBeat.o(9673);
-      throw paramb;
-    }
-    this.aayR.runBundleAndSnapshotFromLibrary(paramb.aayU, paramb.aayV, paramb.aayW, this.mContext.getResources().getAssets());
-    this.aayS = true;
-    AppMethodBeat.o(9673);
+    AppMethodBeat.i(190633);
+    this.mFlutterView = paramFlutterView;
+    this.mPluginRegistry.attach(paramFlutterView, paramActivity);
+    AppMethodBeat.o(190633);
   }
   
-  public final void a(String paramString, c.a parama)
+  public void destroy()
   {
-    AppMethodBeat.i(9676);
-    this.aapU.aaqF.a(paramString, parama);
-    AppMethodBeat.o(9676);
+    AppMethodBeat.i(9671);
+    this.mPluginRegistry.destroy();
+    this.dartExecutor.onDetachedFromJNI();
+    this.mFlutterView = null;
+    this.mFlutterJNI.removeIsDisplayingFlutterUiListener(this.flutterUiDisplayListener);
+    this.mFlutterJNI.detachFromNativeAndReleaseResources();
+    this.applicationIsRunning = false;
+    AppMethodBeat.o(9671);
   }
   
-  public final void a(String paramString, ByteBuffer paramByteBuffer)
+  public void detachFromFlutterView()
   {
-    AppMethodBeat.i(9674);
-    this.aapU.aaqF.a(paramString, paramByteBuffer);
-    AppMethodBeat.o(9674);
+    AppMethodBeat.i(190608);
+    this.mPluginRegistry.detach();
+    this.mFlutterView = null;
+    AppMethodBeat.o(190608);
   }
   
-  public final void a(String paramString, ByteBuffer paramByteBuffer, c.b paramb)
+  public DartExecutor getDartExecutor()
   {
-    AppMethodBeat.i(9675);
-    if (!this.aayR.isAttached())
-    {
-      io.flutter.b.iAe();
-      AppMethodBeat.o(9675);
-      return;
-    }
-    this.aapU.aaqF.a(paramString, paramByteBuffer, paramb);
-    AppMethodBeat.o(9675);
+    return this.dartExecutor;
   }
   
   FlutterJNI getFlutterJNI()
   {
-    return this.aayR;
+    return this.mFlutterJNI;
   }
   
-  final class a
-    implements a.a
+  public FlutterPluginRegistry getPluginRegistry()
   {
-    private a() {}
+    return this.mPluginRegistry;
+  }
+  
+  public boolean isApplicationRunning()
+  {
+    return this.applicationIsRunning;
+  }
+  
+  public boolean isAttached()
+  {
+    AppMethodBeat.i(190639);
+    boolean bool = this.mFlutterJNI.isAttached();
+    AppMethodBeat.o(190639);
+    return bool;
+  }
+  
+  public void runFromBundle(FlutterRunArguments paramFlutterRunArguments)
+  {
+    AppMethodBeat.i(9673);
+    if (paramFlutterRunArguments.entrypoint == null)
+    {
+      paramFlutterRunArguments = new AssertionError("An entrypoint must be specified");
+      AppMethodBeat.o(9673);
+      throw paramFlutterRunArguments;
+    }
+    assertAttached();
+    if (this.applicationIsRunning)
+    {
+      paramFlutterRunArguments = new AssertionError("This Flutter engine instance is already running an application");
+      AppMethodBeat.o(9673);
+      throw paramFlutterRunArguments;
+    }
+    this.mFlutterJNI.runBundleAndSnapshotFromLibrary(paramFlutterRunArguments.bundlePath, paramFlutterRunArguments.entrypoint, paramFlutterRunArguments.libraryPath, this.mContext.getResources().getAssets());
+    this.applicationIsRunning = true;
+    AppMethodBeat.o(9673);
+  }
+  
+  public void send(String paramString, ByteBuffer paramByteBuffer)
+  {
+    AppMethodBeat.i(9674);
+    this.dartExecutor.getBinaryMessenger().send(paramString, paramByteBuffer);
+    AppMethodBeat.o(9674);
+  }
+  
+  public void send(String paramString, ByteBuffer paramByteBuffer, BinaryMessenger.BinaryReply paramBinaryReply)
+  {
+    AppMethodBeat.i(9675);
+    if (!isAttached())
+    {
+      Log.d("FlutterNativeView", "FlutterView.send called on a detached view, channel=".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(9675);
+      return;
+    }
+    this.dartExecutor.getBinaryMessenger().send(paramString, paramByteBuffer, paramBinaryReply);
+    AppMethodBeat.o(9675);
+  }
+  
+  public void setMessageHandler(String paramString, BinaryMessenger.BinaryMessageHandler paramBinaryMessageHandler)
+  {
+    AppMethodBeat.i(9676);
+    this.dartExecutor.getBinaryMessenger().setMessageHandler(paramString, paramBinaryMessageHandler);
+    AppMethodBeat.o(9676);
+  }
+  
+  final class EngineLifecycleListenerImpl
+    implements FlutterEngine.EngineLifecycleListener
+  {
+    private EngineLifecycleListenerImpl() {}
+    
+    public final void onEngineWillDestroy() {}
     
     public final void onPreEngineRestart()
     {
       AppMethodBeat.i(9775);
-      if (FlutterNativeView.b(FlutterNativeView.this) != null) {
-        FlutterNativeView.b(FlutterNativeView.this).iBH();
+      if (FlutterNativeView.this.mFlutterView != null) {
+        FlutterNativeView.this.mFlutterView.resetAccessibilityTree();
       }
-      if (FlutterNativeView.c(FlutterNativeView.this) == null)
+      if (FlutterNativeView.this.mPluginRegistry == null)
       {
         AppMethodBeat.o(9775);
         return;
       }
-      FlutterNativeView.c(FlutterNativeView.this).aaoe.iBw();
+      FlutterNativeView.this.mPluginRegistry.onPreEngineRestart();
       AppMethodBeat.o(9775);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     io.flutter.view.FlutterNativeView
  * JD-Core Version:    0.7.0.1
  */

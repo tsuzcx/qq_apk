@@ -1,191 +1,164 @@
 package com.tencent.mm.plugin.finder.feed.ui;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.feed.aj.a;
-import com.tencent.mm.plugin.finder.feed.aj.b;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.feed.aq.a;
+import com.tencent.mm.plugin.finder.feed.aq.b;
 import com.tencent.mm.plugin.finder.feed.b.b;
 import com.tencent.mm.plugin.finder.feed.model.BaseFinderFeedLoader;
 import com.tencent.mm.plugin.finder.feed.model.FinderRelatedLoader;
 import com.tencent.mm.plugin.finder.feed.model.internal.IResponse;
 import com.tencent.mm.plugin.finder.feed.model.internal.j;
-import com.tencent.mm.plugin.finder.model.bu;
+import com.tencent.mm.plugin.finder.model.cc;
+import com.tencent.mm.plugin.finder.utils.av;
 import com.tencent.mm.plugin.finder.view.manager.FinderLinearLayoutManager;
-import com.tencent.mm.protocal.protobuf.avr;
-import com.tencent.mm.protocal.protobuf.biv;
+import com.tencent.mm.plugin.finder.viewmodel.component.as;
+import com.tencent.mm.protocal.protobuf.bav;
+import com.tencent.mm.protocal.protobuf.bve;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.component.g;
-import com.tencent.mm.ui.component.g.a;
+import com.tencent.mm.ui.component.k;
+import com.tencent.mm.ui.component.k.b;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
-import java.util.HashMap;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.b;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderRelatedTimelineUI;", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderLoaderFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/model/FinderRelatedLoader;", "Lcom/tencent/mm/plugin/finder/feed/FinderRelatedTimelineContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderRelatedTimelineContract$Presenter;", "()V", "TAG", "", "feedLoader", "presenter", "req", "Lcom/tencent/mm/protocal/protobuf/FinderGetRelatedListReq;", "scene", "", "title", "viewCallback", "finish", "", "getCommentScene", "getLayoutId", "getModel", "getPresenter", "getReportType", "getViewCallback", "initOnCreate", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderRelatedTimelineUI;", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderLoaderFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/model/FinderRelatedLoader;", "Lcom/tencent/mm/plugin/finder/feed/FinderRelatedTimelineContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderRelatedTimelineContract$Presenter;", "()V", "TAG", "", "feedLoader", "presenter", "req", "Lcom/tencent/mm/protocal/protobuf/FinderGetRelatedListReq;", "scene", "", "title", "viewCallback", "finish", "", "getCommentScene", "getLayoutId", "getModel", "getPresenter", "getReportType", "getViewCallback", "initOnCreate", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderRelatedTimelineUI
-  extends FinderLoaderFeedUI<FinderRelatedLoader, aj.b, aj.a>
+  extends FinderLoaderFeedUI<FinderRelatedLoader, aq.b, aq.a>
 {
+  private bav AYw;
+  private aq.a Brt;
+  private aq.b Bru;
+  private FinderRelatedLoader Brv;
   private final String TAG = "Finder.FinderRelatedTimelineUI";
-  private HashMap _$_findViewCache;
   private final int scene = 2;
   private String title = "";
-  private avr xAX;
-  private aj.a xRX;
-  private aj.b xRY;
-  private FinderRelatedLoader xRZ;
   
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(285762);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(285762);
-  }
+  public final void _$_clearFindViewByIdCache() {}
   
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(285761);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(285761);
-    return localView1;
-  }
-  
-  public final int duR()
+  public final int edC()
   {
     return 2;
   }
   
   public final void finish()
   {
-    AppMethodBeat.i(285759);
-    Object localObject1 = this.xRY;
-    if (localObject1 == null) {
-      p.bGy("viewCallback");
-    }
-    localObject1 = ((b.b)localObject1).xvJ.getRecyclerView().getLayoutManager();
-    if ((localObject1 instanceof LinearLayoutManager))
+    AppMethodBeat.i(365220);
+    Object localObject2 = this.Bru;
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      Object localObject2 = com.tencent.mm.plugin.finder.utils.aj.AGc;
-      localObject2 = this.xRZ;
-      if (localObject2 == null) {
-        p.bGy("feedLoader");
+      s.bIx("viewCallback");
+      localObject1 = null;
+    }
+    RecyclerView.LayoutManager localLayoutManager = ((b.b)localObject1).ATx.getRecyclerView().getLayoutManager();
+    if ((localLayoutManager instanceof LinearLayoutManager))
+    {
+      localObject1 = av.GiL;
+      localObject2 = this.Brv;
+      localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        s.bIx("feedLoader");
+        localObject1 = null;
       }
-      setResult(-1, com.tencent.mm.plugin.finder.utils.aj.a((BaseFinderFeedLoader)localObject2, (LinearLayoutManager)localObject1));
+      setResult(-1, av.a((BaseFinderFeedLoader)localObject1, (LinearLayoutManager)localLayoutManager));
     }
     super.finish();
-    AppMethodBeat.o(285759);
+    AppMethodBeat.o(365220);
   }
   
   public final int getCommentScene()
   {
-    AppMethodBeat.i(285758);
-    int i = getIntent().getIntExtra("KEY_MORE_ACTION_TYPE", 0);
-    if (i == 2)
+    AppMethodBeat.i(365206);
+    switch (getIntent().getIntExtra("KEY_MORE_ACTION_TYPE", 0))
     {
-      AppMethodBeat.o(285758);
+    default: 
+      AppMethodBeat.o(365206);
+      return 0;
+    case 2: 
+      AppMethodBeat.o(365206);
       return 29;
     }
-    if (i == 1)
-    {
-      AppMethodBeat.o(285758);
-      return 31;
-    }
-    AppMethodBeat.o(285758);
-    return 0;
+    AppMethodBeat.o(365206);
+    return 31;
   }
   
   public final int getLayoutId()
   {
-    return b.g.finder_related_timeline_ui;
+    return e.f.finder_related_timeline_ui;
   }
   
   public final void initOnCreate()
   {
-    AppMethodBeat.i(285754);
-    Object localObject3 = getIntent().getStringExtra("KEY_TITLE");
-    Object localObject1 = localObject3;
-    if (localObject3 == null) {
+    Object localObject3 = null;
+    AppMethodBeat.i(365193);
+    Object localObject4 = getIntent().getStringExtra("KEY_TITLE");
+    Object localObject1 = localObject4;
+    if (localObject4 == null) {
       localObject1 = "";
     }
     this.title = ((String)localObject1);
     setMMTitle(this.title);
-    localObject1 = (a)new avr();
-    localObject3 = getIntent().getByteArrayExtra("KEY_REQUEST_PB");
+    localObject1 = (a)new bav();
+    localObject4 = getIntent().getByteArrayExtra("KEY_REQUEST_PB");
     try
     {
-      ((a)localObject1).parseFrom((byte[])localObject3);
-      this.xAX = ((avr)localObject1);
-      if (this.xAX == null)
+      ((a)localObject1).parseFrom((byte[])localObject4);
+      this.AYw = ((bav)localObject1);
+      if (this.AYw == null)
       {
         Log.i(this.TAG, "req is null, finish");
         finish();
-        this.xAX = new avr();
+        this.AYw = new bav();
       }
-      this.xRX = new aj.a((MMActivity)this, this.scene);
-      localObject1 = (MMActivity)this;
-      localObject3 = this.xRX;
-      if (localObject3 == null) {
-        p.bGy("presenter");
+      this.Brt = new aq.a((MMActivity)this, this.scene);
+      localObject4 = (MMActivity)this;
+      localObject1 = this.Brt;
+      if (localObject1 == null)
+      {
+        s.bIx("presenter");
+        localObject1 = localObject3;
+        this.Bru = new aq.b((MMActivity)localObject4, (aq.a)localObject1, this.scene, getCommentScene());
+        localObject1 = this.AYw;
+        s.checkNotNull(localObject1);
+        int i = ((bav)localObject1).hJx;
+        int j = getCommentScene();
+        localObject1 = this.AYw;
+        s.checkNotNull(localObject1);
+        float f1 = ((bav)localObject1).longitude;
+        localObject1 = this.AYw;
+        s.checkNotNull(localObject1);
+        float f2 = ((bav)localObject1).latitude;
+        localObject1 = this.AYw;
+        s.checkNotNull(localObject1);
+        localObject3 = ((bav)localObject1).ACr;
+        localObject1 = localObject3;
+        if (localObject3 == null) {
+          localObject1 = new bve();
+        }
+        localObject3 = k.aeZF;
+        localObject1 = new FinderRelatedLoader(i, j, f1, f2, (bve)localObject1, ((as)k.d((AppCompatActivity)this).q(as.class)).fou());
+        localObject3 = getIntent();
+        s.s(localObject3, "intent");
+        ((FinderRelatedLoader)localObject1).initFromCache((Intent)localObject3);
+        ((FinderRelatedLoader)localObject1).setInitDone((j)new a(this, (FinderRelatedLoader)localObject1));
+        ((FinderRelatedLoader)localObject1).fetchEndCallback = ((b)new b(this));
+        localObject3 = ah.aiuX;
+        this.Brv = ((FinderRelatedLoader)localObject1);
+        AppMethodBeat.o(365193);
+        return;
       }
-      this.xRY = new aj.b((MMActivity)localObject1, (aj.a)localObject3, this.scene, getCommentScene());
-      localObject1 = this.xAX;
-      if (localObject1 == null) {
-        p.iCn();
-      }
-      int i = ((avr)localObject1).fEH;
-      int j = getCommentScene();
-      localObject1 = this.xAX;
-      if (localObject1 == null) {
-        p.iCn();
-      }
-      float f1 = ((avr)localObject1).longitude;
-      localObject1 = this.xAX;
-      if (localObject1 == null) {
-        p.iCn();
-      }
-      float f2 = ((avr)localObject1).latitude;
-      localObject1 = this.xAX;
-      if (localObject1 == null) {
-        p.iCn();
-      }
-      localObject3 = ((avr)localObject1).xcZ;
-      localObject1 = localObject3;
-      if (localObject3 == null) {
-        localObject1 = new biv();
-      }
-      localObject3 = g.Xox;
-      localObject1 = new FinderRelatedLoader(i, j, f1, f2, (biv)localObject1, ((com.tencent.mm.plugin.finder.viewmodel.component.aj)g.b((AppCompatActivity)this).i(com.tencent.mm.plugin.finder.viewmodel.component.aj.class)).ekY());
-      localObject3 = getIntent();
-      p.j(localObject3, "intent");
-      ((FinderRelatedLoader)localObject1).initFromCache((Intent)localObject3);
-      ((FinderRelatedLoader)localObject1).setInitDone((j)new a((FinderRelatedLoader)localObject1, this));
-      ((FinderRelatedLoader)localObject1).fetchEndCallback = ((b)new b(this));
-      this.xRZ = ((FinderRelatedLoader)localObject1);
-      AppMethodBeat.o(285754);
-      return;
     }
     catch (Exception localException)
     {
@@ -203,36 +176,36 @@ public final class FinderRelatedTimelineUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/feed/ui/FinderRelatedTimelineUI$initOnCreate$1$1", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IInitDone;", "call", "", "incrementCount", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/feed/ui/FinderRelatedTimelineUI$initOnCreate$1$1", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IInitDone;", "call", "", "incrementCount", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     implements j
   {
-    a(FinderRelatedLoader paramFinderRelatedLoader, FinderRelatedTimelineUI paramFinderRelatedTimelineUI) {}
+    a(FinderRelatedTimelineUI paramFinderRelatedTimelineUI, FinderRelatedLoader paramFinderRelatedLoader) {}
     
     public final void call(int paramInt)
     {
-      AppMethodBeat.i(289168);
-      Object localObject = FinderRelatedTimelineUI.a(jdField_this).xvJ.getRecyclerView().getLayoutManager();
-      if (localObject != null)
+      AppMethodBeat.i(364835);
+      Object localObject2 = FinderRelatedTimelineUI.a(this.Brw);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
-        if (localObject == null)
-        {
-          localObject = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.view.manager.FinderLinearLayoutManager");
-          AppMethodBeat.o(289168);
-          throw ((Throwable)localObject);
-        }
-        ((FinderLinearLayoutManager)localObject).au(this.xSa.getInitPos(), 0);
-        AppMethodBeat.o(289168);
-        return;
+        s.bIx("viewCallback");
+        localObject1 = null;
       }
-      AppMethodBeat.o(289168);
+      localObject1 = ((b.b)localObject1).ATx.getRecyclerView().getLayoutManager();
+      if (localObject1 != null)
+      {
+        localObject2 = this.Brx;
+        ((FinderLinearLayoutManager)localObject1).bo(((FinderRelatedLoader)localObject2).getInitPos(), 0);
+      }
+      AppMethodBeat.o(364835);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "invoke", "com/tencent/mm/plugin/finder/feed/ui/FinderRelatedTimelineUI$initOnCreate$1$2"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
-    implements b<IResponse<bu>, x>
+    extends u
+    implements b<IResponse<cc>, ah>
   {
     b(FinderRelatedTimelineUI paramFinderRelatedTimelineUI)
     {

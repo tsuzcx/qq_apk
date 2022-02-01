@@ -4,649 +4,422 @@ import android.graphics.Rect;
 import android.util.Size;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelcontrol.VideoTransPara;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.mmsight.d;
-import com.tencent.mm.plugin.recordvideo.ui.editor.b.c;
-import com.tencent.mm.protocal.protobuf.act;
-import com.tencent.mm.protocal.protobuf.acu;
-import com.tencent.mm.protocal.protobuf.acv;
-import com.tencent.mm.protocal.protobuf.dhd;
-import com.tencent.mm.protocal.protobuf.duz;
-import com.tencent.mm.protocal.protobuf.eth;
+import com.tencent.mm.platformtools.w;
+import com.tencent.mm.plugin.recordvideo.ui.editor.item.d;
+import com.tencent.mm.plugin.recordvideo.util.MultiMediaVideoChecker;
+import com.tencent.mm.plugin.recordvideo.util.MultiMediaVideoChecker.a;
+import com.tencent.mm.plugin.sight.base.ABAPrams;
+import com.tencent.mm.plugin.vlog.model.local.a.c;
+import com.tencent.mm.protocal.protobuf.afa;
+import com.tencent.mm.protocal.protobuf.afb;
+import com.tencent.mm.protocal.protobuf.afc;
+import com.tencent.mm.protocal.protobuf.dmc;
+import com.tencent.mm.protocal.protobuf.enx;
+import com.tencent.mm.protocal.protobuf.fxt;
+import com.tencent.mm.protocal.protobuf.jy;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.u;
-import com.tencent.mm.videocomposition.j.b;
-import com.tencent.mm.xeffect.effect.EffectManager;
-import com.tencent.tav.decoder.AssetWriterVideoEncoder;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import kotlin.g.a.m;
-import kotlin.g.b.aa.a;
-import kotlin.g.b.aa.c;
-import kotlin.g.b.aa.f;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.x;
+import java.util.NoSuchElementException;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/model/CompositionExporter;", "", "()V", "background", "", "getBackground", "()Z", "setBackground", "(Z)V", "calculateAba", "progressCallback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "progress", "", "reportScene", "", "getReportScene", "()I", "setReportScene", "(I)V", "retryCount", "getRetryCount", "setRetryCount", "videoTransPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "checkFallbackSize", "compositionInfo", "Lcom/tencent/mm/protocal/protobuf/CompositionInfo;", "checkTargetSize", "export", "callback", "Lcom/tencent/mm/plugin/vlog/model/ExportResult;", "getMediaInfoJson", "", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "performanceReporter", "Lcom/tencent/mm/autogen/mmdata/rpt/VideoCompositionPerformanceStruct;", "key", "reportStartExport", "outputPath", "softEncode", "resize2Even", "value", "setCalculateAdaptiveBitrate", "enable", "setProgressCallback", "setupOutputConfig", "config", "Lcom/tencent/mm/protocal/protobuf/CompositionOutputConfig;", "getReportKey", "Companion", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/model/CompositionInfoConverter;", "", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "(Lcom/tencent/mm/plugin/vlog/model/VLogComposition;)V", "getComposition", "()Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "editData", "Lcom/tencent/mm/protocal/protobuf/CompositionEditInfo;", "getEditData", "()Lcom/tencent/mm/protocal/protobuf/CompositionEditInfo;", "magicProtoList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/MagicInfoProto;", "getMagicProtoList", "()Ljava/util/LinkedList;", "outputConfig", "Lcom/tencent/mm/protocal/protobuf/CompositionOutputConfig;", "getOutputConfig", "()Lcom/tencent/mm/protocal/protobuf/CompositionOutputConfig;", "templateInfo", "Lcom/tencent/mm/protocal/protobuf/VideoTemplateInfoProto;", "getTemplateInfo", "()Lcom/tencent/mm/protocal/protobuf/VideoTemplateInfoProto;", "setTemplateInfo", "(Lcom/tencent/mm/protocal/protobuf/VideoTemplateInfoProto;)V", "addEditInfo", "", "drawingRect", "Landroid/graphics/Rect;", "validRect", "", "editItems", "", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "addMagicInfo", "magicList", "Lcom/tencent/mm/plugin/vlog/model/effect/MagicAddEffectItem;", "addTemplateInfo", "template", "Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$VideoTemplateInfo;", "chooseExportConfig", "path", "", "videoTransPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "previewSize", "Landroid/util/Size;", "cropRect", "enableAdaptiveBitrate", "", "enableFullscreen", "getCompositionInfo", "Lcom/tencent/mm/protocal/protobuf/CompositionInfo;", "Companion", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
 {
-  public static final a NkO;
-  private VideoTransPara EZB;
-  public boolean NkL = true;
-  private boolean NkM;
-  private kotlin.g.a.b<? super Float, x> NkN;
-  public int retryCount = 1;
-  public int wwk;
+  private static final String TAG;
+  public static final a TYz;
+  private final ac TYA;
+  private final afc TYB;
+  private final afa TYC;
+  private final LinkedList<dmc> TYD;
+  private fxt TYE;
   
   static
   {
-    AppMethodBeat.i(229059);
-    NkO = new a((byte)0);
-    AppMethodBeat.o(229059);
+    AppMethodBeat.i(283404);
+    TYz = new a((byte)0);
+    TAG = "MicroMsg.CompositionInfoConverter";
+    AppMethodBeat.o(283404);
   }
   
-  private static int QC(int paramInt)
+  public f(ac paramac)
   {
-    int i = paramInt;
-    if (paramInt % 2 != 0) {
-      i = paramInt - 1;
-    }
-    return i;
+    AppMethodBeat.i(283382);
+    this.TYA = paramac;
+    this.TYB = new afc();
+    this.TYC = new afa();
+    this.TYD = new LinkedList();
+    AppMethodBeat.o(283382);
   }
   
-  public static String a(acu paramacu)
+  public final afc a(String paramString, VideoTransPara paramVideoTransPara, Size paramSize, Rect paramRect, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(229057);
-    p.k(paramacu, "$this$getReportKey");
-    String str2 = paramacu.editId;
-    String str1 = str2;
-    if (str2 == null)
+    AppMethodBeat.i(283434);
+    s.u(paramString, "path");
+    s.u(paramVideoTransPara, "videoTransPara");
+    s.u(paramSize, "previewSize");
+    s.u(paramRect, "cropRect");
+    Object localObject1 = new VideoTransPara(paramVideoTransPara);
+    int j = ((VideoTransPara)localObject1).width;
+    int k = (int)(j * (paramSize.getHeight() / paramSize.getWidth()));
+    ((VideoTransPara)localObject1).width = j;
+    ((VideoTransPara)localObject1).height = k;
+    this.TYB.outputPath = paramString;
+    this.TYB.HJN = a.TM(paramSize.getWidth());
+    this.TYB.HJO = a.TM(paramSize.getHeight());
+    this.TYB.Znq = 1.0F;
+    paramString = this.TYB;
+    Object localObject2 = new enx();
+    h.a(paramRect, (enx)localObject2);
+    Object localObject3 = ah.aiuX;
+    paramString.Znp = ((enx)localObject2);
+    if (paramBoolean2)
     {
-      str1 = paramacu.NkX.uVk;
-      p.j(str1, "outputConfig.outputPath");
+      this.TYB.nxO = a.TM(j);
+      this.TYB.nxP = a.TM(k);
+      a.a(paramVideoTransPara, this.TYB);
+      localObject2 = (Iterable)this.TYA.TDz;
+      paramString = (Collection)new ArrayList();
+      localObject2 = ((Iterable)localObject2).iterator();
     }
-    AppMethodBeat.o(229057);
-    return str1;
-  }
-  
-  private static void a(ac paramac, String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(229055);
-    paramac = (List)paramac.MQY;
-    Object localObject2 = (Iterable)paramac;
-    Object localObject1 = (Collection)new ArrayList();
-    localObject2 = ((Iterable)localObject2).iterator();
-    label93:
-    while (((Iterator)localObject2).hasNext())
+    label227:
+    int i;
+    label327:
+    for (;;)
     {
-      Object localObject3 = ((Iterator)localObject2).next();
+      if (!((Iterator)localObject2).hasNext()) {
+        break label329;
+      }
+      localObject3 = ((Iterator)localObject2).next();
       if (((ad)localObject3).type == 2) {}
       for (i = 1;; i = 0)
       {
         if (i == 0) {
-          break label93;
+          break label327;
         }
-        ((Collection)localObject1).add(localObject3);
+        paramString.add(localObject3);
+        break label227;
+        this.TYB.nxO = a.TM(((VideoTransPara)localObject1).width);
+        this.TYB.nxP = a.TM(((VideoTransPara)localObject1).width * paramRect.height() / paramRect.width());
         break;
       }
     }
-    localObject2 = (Iterable)localObject1;
-    localObject1 = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject2, 10));
-    localObject2 = ((Iterable)localObject2).iterator();
-    while (((Iterator)localObject2).hasNext()) {
-      ((Collection)localObject1).add(((ad)((Iterator)localObject2).next()).path);
-    }
-    localObject1 = (List)localObject1;
-    localObject2 = com.tencent.mm.plugin.vlog.model.report.a.NoJ;
-    int i = paramac.size();
-    if (((List)localObject1).size() < paramac.size()) {}
-    for (boolean bool = true;; bool = false)
+    label329:
+    if (((List)paramString).size() == 1)
     {
-      com.tencent.mm.plugin.vlog.model.report.a.bq(i, bool);
-      paramac = com.tencent.mm.plugin.vlog.model.report.a.NoJ;
-      com.tencent.mm.plugin.vlog.model.report.a.c((List)localObject1, paramString, paramBoolean);
-      AppMethodBeat.o(229055);
-      return;
-    }
-  }
-  
-  public final void Z(kotlin.g.a.b<? super Float, x> paramb)
-  {
-    AppMethodBeat.i(228970);
-    p.k(paramb, "callback");
-    this.NkN = paramb;
-    AppMethodBeat.o(228970);
-  }
-  
-  public final float a(final acu paramacu, final kotlin.g.a.b<? super l, x> paramb)
-  {
-    AppMethodBeat.i(229048);
-    p.k(paramacu, "compositionInfo");
-    p.k(paramb, "callback");
-    Log.i("MicroMsg.VLogCompositionBlendExporter", "start export, retryCount:" + this.retryCount);
-    final l locall = new l((byte)0);
-    final acv localacv = paramacu.NkX;
-    p.j(localacv, "outputConfig");
-    if (localacv.SoJ != null)
-    {
-      localacv.targetWidth = localacv.SoJ.targetWidth;
-      localacv.targetHeight = localacv.SoJ.targetHeight;
-    }
-    final EffectManager localEffectManager;
-    final ac localac;
-    for (;;)
-    {
-      localEffectManager = new EffectManager();
-      localac = i.d(paramacu, localEffectManager);
-      Log.i("MicroMsg.VLogCompositionBlendExporter", "outputScale: " + localacv.SoE + ", enableExport1080WidescreenVideo: " + w.gtu());
-      if ((localacv.SoE <= 1.0F) || (!w.gtu())) {
-        break label633;
-      }
-      Log.i("MicroMsg.VLogCompositionBlendExporter", "ready to enlarge resolution");
-      localacv.targetWidth = QC((int)(localacv.targetWidth * localacv.SoE));
-      localacv.targetHeight = QC((int)(localacv.targetHeight * localacv.SoE));
-      localObject1 = ((Iterable)localac.MQY).iterator();
-      while (((Iterator)localObject1).hasNext()) {
-        com.tencent.mm.videocomposition.h.b(((ad)((Iterator)localObject1).next()).Nng.kXj, localacv.SoE);
-      }
-      if (localacv.SoK != null)
+      paramString = ((Iterable)this.TYA.TDz).iterator();
+      if (paramString.hasNext())
       {
-        localacv.targetWidth = localacv.SoK.targetWidth;
-        localacv.targetHeight = localacv.SoK.targetHeight;
-      }
-    }
-    Object localObject1 = localac.NmT.igI();
-    localac.kH((int)(((Size)localObject1).getWidth() * localacv.SoE), (int)(((Size)localObject1).getHeight() * localacv.SoE));
-    localObject1 = localacv.SoK;
-    Object localObject2;
-    int k;
-    if (localObject1 != null)
-    {
-      localObject1 = ((dhd)localObject1).Sro;
-      if (localObject1 != null)
-      {
-        localObject2 = ((duz)localObject1).TDA.get(0);
-        p.j(localObject2, "cropRectProto.values[0]");
-        i = ((Number)localObject2).intValue();
-        localObject2 = ((duz)localObject1).TDA.get(1);
-        p.j(localObject2, "cropRectProto.values[1]");
-        j = ((Number)localObject2).intValue();
-        localObject2 = ((duz)localObject1).TDA.get(2);
-        p.j(localObject2, "cropRectProto.values[2]");
-        k = ((Number)localObject2).intValue();
-        localObject1 = ((duz)localObject1).TDA.get(3);
-        p.j(localObject1, "cropRectProto.values[3]");
-        localObject1 = new Rect(i, j, k, ((Number)localObject1).intValue());
-        com.tencent.mm.videocomposition.h.b((Rect)localObject1, localacv.SoE);
-        localac.x((Rect)localObject1);
-        Log.i("MicroMsg.VLogCompositionBlendExporter", "enlarge cropRect:".concat(String.valueOf(localObject1)));
-        localObject1 = x.aazN;
-      }
-    }
-    localacv.SoE = 1.0F;
-    Log.i("MicroMsg.VLogCompositionBlendExporter", "enlarge done, targetWidth:" + localacv.targetWidth + ", targetHeight:" + localacv.targetHeight + ", renderSize:" + localac.NmT.igI() + ", outputSize:" + localac.NmT.igJ());
-    label633:
-    boolean bool2;
-    label695:
-    label834:
-    final aa.c localc;
-    label812:
-    label821:
-    Object localObject3;
-    label915:
-    label922:
-    label1086:
-    label1272:
-    Object localObject4;
-    if (!Util.isNullOrNil(paramacu.kXi))
-    {
-      i = 1;
-      localObject2 = new aa.a();
-      ((aa.a)localObject2).aaBx = false;
-      if (this.retryCount >= 2)
-      {
-        localObject1 = n.NlN;
-        if (!n.gsU()) {
-          break label1815;
-        }
-        localObject1 = n.NlN;
-        if (n.gsY() != 1) {
-          break label1809;
-        }
-        bool1 = true;
-        Log.i("MicroMsg.VLogCompositionBlendExporter", "retryCount:" + this.retryCount + ", enable try use softEncode: " + bool1);
-        ((aa.a)localObject2).aaBx = bool1;
-      }
-      if ((this.wwk != 1) && (this.wwk != 2)) {
-        break label1918;
-      }
-      l1 = localac.NmT.getDurationMs();
-      localObject1 = com.tencent.mm.modelcontrol.e.bkp();
-      p.j(localObject1, "SubCoreVideoControl.getCore()");
-      j = ((com.tencent.mm.modelcontrol.e)localObject1).bkv().duration * 1000;
-      if (!localacv.mfh) {
-        break label1900;
-      }
-      if (l1 <= j) {
-        break label1894;
-      }
-      bool1 = true;
-      bool1 = w.p(bool1, l1);
-      if (!localacv.mfh) {
-        break label1906;
-      }
-      bool2 = w.gtq();
-      Log.i("MicroMsg.VLogCompositionBlendExporter", "enableHevcSoft:" + bool1 + ", enableHevcHard:" + bool2 + ", durationMs:" + l1 + ", longVideoDurationLimit:" + j);
-      if ((!((aa.a)localObject2).aaBx) && ((!localacv.mfh) || (!bool1))) {
-        break label1912;
-      }
-      bool1 = true;
-      ((aa.a)localObject2).aaBx = bool1;
-      localObject1 = localacv.uVk;
-      p.j(localObject1, "outputConfig.outputPath");
-      a(localac, (String)localObject1, ((aa.a)localObject2).aaBx);
-      localc = new aa.c();
-      localc.aaBz = 0.0F;
-      if ((this.NkM) && (this.EZB != null))
-      {
-        if ((((aa.a)localObject2).aaBx) && (localacv.mfh == true))
+        localObject2 = paramString.next();
+        if (((ad)localObject2).type == 2)
         {
-          Log.i("MicroMsg.VLogCompositionBlendExporter", "start calculate aba set hevc encode");
-          localObject1 = this.EZB;
-          if (localObject1 != null) {
-            ((VideoTransPara)localObject1).lJF = 1;
+          i = 1;
+          if (i == 0) {
+            break label1104;
           }
-        }
-        localObject1 = g.Nlc;
-        localObject1 = this.EZB;
-        if (localObject1 == null) {
-          p.iCn();
-        }
-        j = localacv.targetWidth;
-        k = localacv.targetHeight;
-        localObject3 = paramacu.NkY.Sor;
-        p.j(localObject3, "compositionInfo.editData.baseItemData");
-        if (((Collection)localObject3).isEmpty()) {
-          break label1994;
-        }
-        bool1 = true;
-        localObject1 = g.a.a(localac, (VideoTransPara)localObject1, j, k, bool1);
-        localObject3 = g.Nlc;
-        g.a.a((a)localObject1, localacv);
-        if ((((a)localObject1).Azu != null) && (((a)localObject1).Azu.length >= 28))
-        {
-          localc.aaBz = localObject1.Azu[27];
-          Log.i("MicroMsg.VLogCompositionBlendExporter", "export videoQuality: " + localc.aaBz);
-        }
-      }
-      localObject1 = k.Nlr;
-      j = k.gsT();
-      Log.i("MicroMsg.VLogCompositionBlendExporter", "checkTargetSize: origin " + paramacu.NkX.targetWidth + ", " + paramacu.NkX.targetHeight + ", type " + j);
-      paramacu.NkX.SoH = j;
-      switch (j)
-      {
-      default: 
-        Log.i("MicroMsg.VLogCompositionBlendExporter", "export: size " + localacv.targetWidth + ' ' + localacv.targetHeight);
-        localObject3 = new aa.f();
-        ((aa.f)localObject3).aaBC = null;
-        localObject1 = paramacu.NkY;
-        if (localObject1 != null)
-        {
-          localObject1 = ((act)localObject1).Soq;
-          label1345:
-          if (localObject1 != null)
+          paramString = (ad)localObject2;
+          paramString = MultiMediaVideoChecker.ObB.aTG(paramString.path);
+          if ((paramString != null) && (paramString.width > 0) && (paramString.height > 0) && (paramString.eGw > 0.0F))
           {
-            localObject1 = paramacu.NkY;
-            if (localObject1 == null) {
-              break label2191;
+            if ((paramString.hYK != 0) && (paramString.hYK != 180)) {
+              break label1127;
             }
-            localObject1 = ((act)localObject1).Sot;
-            label1368:
-            if (localObject1 != null)
+            i = paramString.width;
+            label465:
+            if (this.TYB.nxO > i)
             {
-              ((aa.f)localObject3).aaBC = i.c(paramacu);
-              localac.aa((kotlin.g.a.b)((aa.f)localObject3).aaBC);
-              ((c)((aa.f)localObject3).aaBC).start();
+              Log.i(TAG, "outputConfig.targetWidth(" + this.TYB.nxO + ") > widthLimit(" + i + ')');
+              if (paramBoolean2) {
+                break label1136;
+              }
+              this.TYB.nxO = a.TM(i);
+              this.TYB.nxP = a.TM((int)(1.0D * paramRect.height() / paramRect.width() * this.TYB.nxO));
+              Log.i(TAG, "update targetSize:[" + this.TYB.nxO + ", " + this.TYB.nxP + ']');
             }
-          }
-          localObject1 = paramacu.Sou;
-          p.j(localObject1, "compositionInfo.tracks");
-          localObject4 = ((Iterable)localObject1).iterator();
-          for (;;)
-          {
-            if (((Iterator)localObject4).hasNext())
+            if ((paramString.hYK != 0) && (paramString.hYK != 180)) {
+              break label1180;
+            }
+            j = paramString.height;
+            Log.i(TAG, "previewSize:" + paramSize + ", videoParam.width:" + ((VideoTransPara)localObject1).width + ", heightLimit:" + j);
+            if ((paramBoolean2) && (i > j))
             {
-              localObject1 = ((Iterator)localObject4).next();
-              if (((eth)localObject1).type == 3)
-              {
-                j = 1;
-                label1471:
-                if (j == 0) {
-                  continue;
-                }
-                label1476:
-                if (localObject1 == null) {
-                  break label2209;
-                }
-                j = 1;
-                label1484:
-                if ((i != 0) || (j != 0))
-                {
-                  Log.i("MicroMsg.VLogCompositionBlendExporter", "export: has music, audio info " + localacv.audioBitrate + ", " + localacv.audioSampleRate + ", " + localacv.audioChannelCount);
-                  if (localacv.audioBitrate == 0) {
-                    localacv.audioBitrate = 128000;
-                  }
-                  if (localacv.audioSampleRate == 0) {
-                    localacv.audioSampleRate = 44100;
-                  }
-                  if (localacv.audioChannelCount == 0) {
-                    localacv.audioChannelCount = 1;
-                  }
-                }
-                if (((aa.a)localObject2).aaBx)
-                {
-                  localObject1 = h.Nlm;
-                  localObject1 = h.a.a(new Size(localacv.targetWidth, localacv.targetHeight));
-                  localacv.targetWidth = ((Size)localObject1).getWidth();
-                  localacv.targetHeight = ((Size)localObject1).getHeight();
-                }
-                if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vXp, 1) != 1) {
-                  break label2215;
-                }
+              k = Math.min(j, ((VideoTransPara)localObject1).width);
+              if (paramSize.getHeight() >= k) {
+                break label1189;
+              }
+              this.TYB.Znq = (k / this.TYB.nxP);
+              Log.i(TAG, s.X("[widescreen] update outputScale:", Float.valueOf(this.TYB.Znq)));
+            }
+            if (!this.TYA.CWm)
+            {
+              if (this.TYB.audioBitrate > paramString.audioBitrate) {
+                this.TYB.audioBitrate = paramString.audioBitrate;
+              }
+              if ((this.TYB.audioSampleRate > paramString.audioSampleRate) && (paramString.audioSampleRate > 1000)) {
+                this.TYB.audioSampleRate = paramString.audioSampleRate;
               }
             }
+            this.TYB.fps = Math.min(this.TYB.fps, (int)paramString.eGw);
+            this.TYB.audioChannelCount = Math.min(paramString.audioChannelCount, 2);
           }
         }
-        break;
       }
     }
-    final String str2;
-    label1809:
-    label1815:
-    label2209:
-    label2215:
-    for (boolean bool1 = true;; bool1 = false)
+    for (;;)
     {
-      localObject4 = new j.b(new Size(localacv.targetWidth, localacv.targetHeight), localacv.videoBitrate, localacv.fps, localacv.kXt, localacv.audioBitrate, localacv.audioSampleRate, localacv.audioChannelCount, bool1, localacv.mfh);
-      str2 = localacv.uVk;
-      localObject1 = u.bBT(str2);
-      if (!u.agG((String)localObject1)) {
-        u.bBD((String)localObject1);
+      label393:
+      label574:
+      this.TYB.audioChannelCount = Math.min(this.TYB.audioChannelCount, 2);
+      label647:
+      if (paramBoolean1) {
+        a.a(a.a(this.TYA, paramVideoTransPara, this.TYB.nxO, this.TYB.nxP, this.TYC.Znd.isEmpty()), this.TYB);
       }
-      if (u.bBV(str2)) {
-        break label2221;
-      }
-      locall.success = false;
-      locall.uTW = false;
-      paramb.invoke(locall);
-      AppMethodBeat.o(229048);
-      return 0.0F;
+      label769:
+      Log.i(TAG, "getExportConfig: origin: " + this.TYB.HJN + ", " + this.TYB.HJO + ", " + this.TYB.Znp + " target: " + this.TYB.nxO + ", " + this.TYB.nxP + ", audio:" + this.TYB.audioChannelCount + ',' + this.TYB.audioBitrate + ',' + this.TYB.audioSampleRate + ", cropRect:" + paramRect);
+      paramString = this.TYB;
+      AppMethodBeat.o(283434);
+      return paramString;
       i = 0;
+      break label393;
+      label1104:
       break;
-      bool1 = false;
-      break label695;
-      if (MultiProcessMMKV.getMMKV("FINDER_CONFIG_USER_KEY").getInt("USERINFO_FINDER_ENABLE_SOFT_ENCODE_FALLBACK_INT_SYNC", 0) == 1)
+      paramString = (Throwable)new NoSuchElementException("Collection contains no element matching the predicate.");
+      AppMethodBeat.o(283434);
+      throw paramString;
+      label1127:
+      i = paramString.height;
+      break label465;
+      label1136:
+      this.TYB.nxO = a.TM(i);
+      this.TYB.nxP = a.TM((int)(1.0D * k / j * this.TYB.nxO));
+      break label574;
+      label1180:
+      j = paramString.width;
+      break label647;
+      label1189:
+      this.TYB.nxP = a.TM(k);
+      paramSize = this.TYB;
+      float f = k;
+      paramSize.nxO = a.TM((int)(i * f / j));
+      Log.i(TAG, "[widescreen] update targetSize:[" + this.TYB.nxO + ", " + this.TYB.nxP + ']');
+      break label769;
+      paramSize = (Iterable)this.TYA.TDz;
+      paramString = (Collection)new ArrayList();
+      paramSize = paramSize.iterator();
+      label1367:
+      while (paramSize.hasNext())
       {
-        j = 1;
-        label1835:
-        if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.wav, 0) != 1) {
-          break label1882;
+        localObject1 = paramSize.next();
+        if (((ad)localObject1).type == 2) {}
+        for (i = 1;; i = 0)
+        {
+          if (i == 0) {
+            break label1367;
+          }
+          paramString.add(localObject1);
+          break;
         }
       }
-      label1882:
-      for (k = 1;; k = 0)
+      paramString = (Iterable)paramString;
+      label1441:
+      if (!((Collection)paramString).isEmpty())
       {
-        if ((j == 0) && (k == 0)) {
-          break label1888;
+        paramString = paramString.iterator();
+        label1396:
+        if (paramString.hasNext())
+        {
+          paramSize = (ad)paramString.next();
+          paramSize = MultiMediaVideoChecker.ObB.aTG(paramSize.path);
+          if ((paramSize != null) && (paramSize.audioChannelCount == 1))
+          {
+            i = 1;
+            if (i == 0) {
+              break label1469;
+            }
+          }
         }
-        bool1 = true;
-        break;
-        j = 0;
-        break label1835;
       }
-      label1888:
-      bool1 = false;
-      break label695;
-      label1894:
-      bool1 = false;
-      break label812;
-      label1900:
-      bool1 = false;
-      break label821;
-      label1906:
-      bool2 = false;
-      break label834;
-      label1912:
-      bool1 = false;
-      break label915;
-      label1918:
-      if ((!localacv.mfh) || (this.wwk != 4)) {
-        break label922;
-      }
-      localObject1 = com.tencent.mm.plugin.recordvideo.b.e.HJM;
-      bool2 = com.tencent.mm.plugin.recordvideo.b.e.wv(true);
-      if ((((aa.a)localObject2).aaBx) || (bool2)) {}
-      for (bool1 = true;; bool1 = false)
-      {
-        ((aa.a)localObject2).aaBx = bool1;
-        Log.i("MicroMsg.VLogCompositionBlendExporter", "enableHevcSoft:".concat(String.valueOf(bool2)));
-        break;
-      }
-      label1994:
-      bool1 = false;
-      break label1086;
-      j = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vKB, 1920);
-      if (paramacu.NkX.targetHeight <= j) {
-        break label1272;
-      }
-      k = d.WV((int)(j * 1.0F / paramacu.NkX.targetHeight * paramacu.NkX.targetWidth));
-      paramacu.NkX.targetWidth = k;
-      paramacu.NkX.targetHeight = j;
-      break label1272;
-      j = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vKA, 720);
-      Log.i("MicroMsg.VLogCompositionBlendExporter", "checkTargetSize: config ".concat(String.valueOf(j)));
-      if (paramacu.NkX.targetWidth <= j) {
-        break label1272;
-      }
-      k = d.WV((int)(j * 1.0F / paramacu.NkX.targetWidth * paramacu.NkX.targetHeight));
-      paramacu.NkX.targetWidth = j;
-      paramacu.NkX.targetHeight = k;
-      break label1272;
-      localObject1 = null;
-      break label1345;
-      localObject1 = null;
-      break label1368;
-      j = 0;
-      break label1471;
-      localObject1 = null;
-      break label1476;
-      j = 0;
-      break label1484;
-    }
-    label2191:
-    label2221:
-    final String str1 = u.n(str2, true);
-    if (str1 == null) {
-      p.iCn();
-    }
-    p.j(str1, "VFSFileOp.exportExternalPath(path, true)!!");
-    final long l1 = Util.currentTicks();
-    int i = ((j.b)localObject4).audioSampleRate;
-    int j = ((j.b)localObject4).audioChannelCount;
-    localac.audioSampleRate = i;
-    localac.audioChannelCount = j;
-    if (localac.NmV)
-    {
-      Log.i("MicroMsg.VLogCompositionBlendExporter", "enable video enhancement");
-      localObject1 = com.tencent.mm.plugin.vlog.model.local.a.Nol;
-      com.tencent.mm.plugin.vlog.model.local.a.gtW();
-    }
-    com.tencent.mm.videocomposition.j localj = localac.getComposition();
-    long l2 = Util.ticksToNow(l1);
-    Object localObject5 = (Iterable)localj.MQY;
-    localObject1 = (Collection)new ArrayList();
-    localObject5 = ((Iterable)localObject5).iterator();
-    label2407:
-    while (((Iterator)localObject5).hasNext())
-    {
-      Object localObject6 = ((Iterator)localObject5).next();
-      if (((com.tencent.mm.videocomposition.b)localObject6).type == 2) {}
       for (i = 1;; i = 0)
       {
         if (i == 0) {
-          break label2407;
+          break label1477;
         }
-        ((Collection)localObject1).add(localObject6);
+        this.TYB.audioChannelCount = 1;
         break;
+        i = 0;
+        break label1441;
+        label1469:
+        break label1396;
       }
+      label1477:
+      this.TYB.audioChannelCount = 2;
     }
-    label2570:
-    label2575:
-    if (((List)localObject1).size() == 1)
+  }
+  
+  public final void a(Rect paramRect, float[] paramArrayOfFloat, List<? extends com.tencent.mm.plugin.recordvideo.ui.editor.item.a> paramList)
+  {
+    AppMethodBeat.i(283445);
+    s.u(paramRect, "drawingRect");
+    s.u(paramArrayOfFloat, "validRect");
+    s.u(paramList, "editItems");
+    this.TYC.Znc = new enx();
+    Object localObject = this.TYC.Znc;
+    s.s(localObject, "editData.drawingRect");
+    h.a(paramRect, (enx)localObject);
+    this.TYC.Znf = new enx();
+    paramRect = new Rect((int)paramArrayOfFloat[0], (int)paramArrayOfFloat[1], (int)paramArrayOfFloat[2], (int)paramArrayOfFloat[3]);
+    paramArrayOfFloat = this.TYC.Znf;
+    s.s(paramArrayOfFloat, "editData.validRect");
+    h.a(paramRect, paramArrayOfFloat);
+    paramRect = this.TYC.Znd;
+    paramList = (Iterable)paramList;
+    paramArrayOfFloat = (Collection)new ArrayList(p.a(paramList, 10));
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      localObject1 = (Iterable)localj.MQY;
-      if (((localObject1 instanceof Collection)) && (((Collection)localObject1).isEmpty())) {
-        break label2786;
-      }
-      localObject1 = ((Iterable)localObject1).iterator();
-      if (!((Iterator)localObject1).hasNext()) {
-        break label2786;
-      }
-      if (((com.tencent.mm.videocomposition.b)((Iterator)localObject1).next()).type != 1) {
-        break label2780;
-      }
-      i = 1;
-      label2496:
-      if (i == 0) {
-        break label2784;
-      }
-      i = 0;
-      label2504:
-      if (i != 0)
-      {
-        Log.i("MicroMsg.VLogCompositionBlendExporter", "export only one video, check colorSpace");
-        localObject5 = ((Iterable)localj.MQY).iterator();
-        label2536:
-        if (!((Iterator)localObject5).hasNext()) {
-          break label2798;
-        }
-        localObject1 = ((Iterator)localObject5).next();
-        if (((com.tencent.mm.videocomposition.b)localObject1).type != 2) {
-          break label2792;
-        }
-        i = 1;
-        if (i == 0) {
-          break label2796;
-        }
-        localObject1 = (com.tencent.mm.videocomposition.b)localObject1;
-        if (localObject1 != null)
-        {
-          localObject5 = com.tencent.mm.plugin.vlog.remux.f.NqU;
-          com.tencent.mm.plugin.vlog.remux.f.a(((com.tencent.mm.videocomposition.b)localObject1).path, (j.b)localObject4);
-          localObject1 = x.aazN;
-        }
-      }
+      localObject = (com.tencent.mm.plugin.recordvideo.ui.editor.item.a)paramList.next();
+      jy localjy = new jy();
+      localjy.dataType = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject).NXP.value;
+      localjy.YMl = w.aN(((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject).gKs().toByteArray());
+      paramArrayOfFloat.add(localjy);
     }
-    paramb = (m)new b(this, paramacu, l1, l2, localac, (j.b)localObject4, localEffectManager, localacv, (aa.a)localObject2, str1, localc, (aa.f)localObject3, str2, locall, paramb);
-    paramacu = paramacu.Sou;
-    p.j(paramacu, "compositionInfo.tracks");
-    paramacu = (Iterable)paramacu;
-    if ((!(paramacu instanceof Collection)) || (!((Collection)paramacu).isEmpty()))
+    paramRect.addAll((Collection)paramArrayOfFloat);
+    AppMethodBeat.o(283445);
+  }
+  
+  public final void a(a.c paramc)
+  {
+    AppMethodBeat.i(283459);
+    s.u(paramc, "template");
+    this.TYE = h.b(paramc);
+    AppMethodBeat.o(283459);
+  }
+  
+  public final afb hQn()
+  {
+    AppMethodBeat.i(283468);
+    afb localafb = h.a(this.TYA, this.TYB);
+    localafb.TYC = this.TYC;
+    localafb.Znk.addAll((Collection)this.TYD);
+    localafb.Znl = this.TYE;
+    if (this.TYE != null) {
+      localafb.Uax = false;
+    }
+    AppMethodBeat.o(283468);
+    return localafb;
+  }
+  
+  public final void lH(List<com.tencent.mm.plugin.vlog.model.effect.b> paramList)
+  {
+    AppMethodBeat.i(283452);
+    s.u(paramList, "magicList");
+    paramList = ((Iterable)paramList).iterator();
+    while (paramList.hasNext())
     {
-      paramacu = paramacu.iterator();
-      label2688:
-      if (paramacu.hasNext())
+      Object localObject = (com.tencent.mm.plugin.vlog.model.effect.b)paramList.next();
+      LinkedList localLinkedList = this.TYD;
+      dmc localdmc = new dmc();
+      localdmc.path = ((com.tencent.mm.plugin.vlog.model.effect.b)localObject).Ubx.LWN;
+      localdmc.start = ((com.tencent.mm.plugin.vlog.model.effect.b)localObject).start;
+      localdmc.axI = ((com.tencent.mm.plugin.vlog.model.effect.b)localObject).axI;
+      localObject = ah.aiuX;
+      localLinkedList.add(localdmc);
+    }
+    AppMethodBeat.o(283452);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/model/CompositionInfoConverter$Companion;", "", "()V", "MONO_CHANNEL_COUNT", "", "STEREO_CHANNEL_COUNT", "TAG", "", "abaResultToOutputConfig", "", "abaResult", "Lcom/tencent/mm/plugin/vlog/model/ABAResult;", "outputConfig", "Lcom/tencent/mm/protocal/protobuf/CompositionOutputConfig;", "getABAResult", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "videoParams", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "targetWidth", "targetHeight", "addStickers", "", "Lcom/tencent/mm/videocomposition/VideoComposition;", "resize2Even", "value", "videoParamsToOutputConfig", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+  {
+    public static int TM(int paramInt)
+    {
+      int i = paramInt;
+      if (paramInt % 2 != 0) {
+        i = paramInt - 1;
+      }
+      return i;
+    }
+    
+    public static a a(ac paramac, VideoTransPara paramVideoTransPara, int paramInt1, int paramInt2, boolean paramBoolean)
+    {
+      AppMethodBeat.i(283528);
+      s.u(paramac, "composition");
+      s.u(paramVideoTransPara, "videoParams");
+      paramac = (Iterable)paramac.TDz;
+      Object localObject = (Collection)new ArrayList();
+      Iterator localIterator = paramac.iterator();
+      label122:
+      while (localIterator.hasNext())
       {
-        localObject1 = (eth)paramacu.next();
-        if (u.agG(((eth)localObject1).path))
+        paramac = (ad)localIterator.next();
+        if (paramac.type == 2) {}
+        for (paramac = new b(paramac.path, paramac.UaI.TDw, paramac.UaI.TDx);; paramac = null)
         {
-          i = 1;
-          label2722:
-          if (i != 0) {
-            break label2835;
+          if (paramac == null) {
+            break label122;
+          }
+          ((Collection)localObject).add(paramac);
+          break;
+        }
+      }
+      paramac = (List)localObject;
+      localObject = c.TXW;
+      paramac = c.a(paramac, paramVideoTransPara, paramInt1, paramInt2, paramBoolean);
+      AppMethodBeat.o(283528);
+      return paramac;
+    }
+    
+    public static void a(VideoTransPara paramVideoTransPara, afc paramafc)
+    {
+      AppMethodBeat.i(283549);
+      s.u(paramVideoTransPara, "videoParams");
+      s.u(paramafc, "outputConfig");
+      paramafc.videoBitrate = paramVideoTransPara.videoBitrate;
+      paramafc.fps = paramVideoTransPara.fps;
+      paramafc.nCd = paramVideoTransPara.nCd;
+      paramafc.audioBitrate = paramVideoTransPara.audioBitrate;
+      paramafc.audioSampleRate = paramVideoTransPara.audioSampleRate;
+      paramafc.audioChannelCount = paramVideoTransPara.audioChannelCount;
+      paramafc.oCb = paramVideoTransPara.oCb;
+      AppMethodBeat.o(283549);
+    }
+    
+    public static void a(a parama, afc paramafc)
+    {
+      AppMethodBeat.i(283540);
+      s.u(parama, "abaResult");
+      s.u(paramafc, "outputConfig");
+      if (parama.errCode == 0)
+      {
+        if ((parama.width > 0) && (parama.height > 0) && (parama.bitrate > 0))
+        {
+          paramafc.nxO = parama.width;
+          paramafc.nxP = parama.height;
+          paramafc.videoBitrate = parama.bitrate;
+          Log.i(f.access$getTAG$cp(), "video abaResult, width:" + paramafc.nxO + ", height:" + paramafc.nxP + ", " + paramafc.videoBitrate);
+        }
+        parama = parama.Gbz;
+        if (parama != null)
+        {
+          parama = parama.transToList();
+          if (parama != null) {
+            paramafc.Znr.addAll((Collection)parama);
           }
         }
       }
-    }
-    float f;
-    for (i = 0;; i = 1)
-    {
-      if (i != 0) {
-        break label2843;
-      }
-      Log.w("MicroMsg.VLogCompositionBlendExporter", "failed due to file deleted");
-      locall.uTW = false;
-      paramb.invoke(Boolean.FALSE, Integer.valueOf(10001));
-      f = localc.aaBz;
-      AppMethodBeat.o(229048);
-      return f;
-      label2780:
-      i = 0;
-      break label2496;
-      label2784:
-      break;
-      label2786:
-      i = 1;
-      break label2504;
-      label2792:
-      i = 0;
-      break label2570;
-      label2796:
-      break label2536;
-      label2798:
-      localObject1 = null;
-      break label2575;
-      Log.i("MicroMsg.VLogCompositionBlendExporter", "file deleted " + ((eth)localObject1).path);
-      i = 0;
-      break label2722;
-      label2835:
-      break label2688;
-    }
-    label2843:
-    if (((aa.a)localObject2).aaBx) {
-      localj.b(str1, (j.b)localObject4, (AssetWriterVideoEncoder)new h(), paramb, this.NkN);
-    }
-    for (;;)
-    {
-      f = localc.aaBz;
-      AppMethodBeat.o(229048);
-      return f;
-      localj.a(str1, (j.b)localObject4, paramb, this.NkN);
-    }
-  }
-  
-  public final void a(boolean paramBoolean, VideoTransPara paramVideoTransPara)
-  {
-    AppMethodBeat.i(228968);
-    p.k(paramVideoTransPara, "videoTransPara");
-    this.NkM = paramBoolean;
-    this.EZB = paramVideoTransPara;
-    AppMethodBeat.o(228968);
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/model/CompositionExporter$Companion;", "", "()V", "ErrCodeInputFileInvalid", "", "TAG", "", "plugin-vlog_release"})
-  public static final class a {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "success", "", "errCode", "", "invoke"})
-  static final class b
-    extends q
-    implements m<Boolean, Integer, x>
-  {
-    b(f paramf, acu paramacu, long paramLong1, long paramLong2, ac paramac, j.b paramb, EffectManager paramEffectManager, acv paramacv, aa.a parama, String paramString1, aa.c paramc, aa.f paramf1, String paramString2, l paraml, kotlin.g.a.b paramb1)
-    {
-      super();
+      AppMethodBeat.o(283540);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.f
  * JD-Core Version:    0.7.0.1
  */

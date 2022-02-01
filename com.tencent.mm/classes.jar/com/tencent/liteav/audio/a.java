@@ -14,22 +14,22 @@ public class a
   
   private a()
   {
-    AppMethodBeat.i(247702);
+    AppMethodBeat.i(230396);
     this.a = new HashMap();
-    AppMethodBeat.o(247702);
+    AppMethodBeat.o(230396);
   }
   
   public static a a()
   {
-    AppMethodBeat.i(247700);
+    AppMethodBeat.i(230392);
     a locala = a.a();
-    AppMethodBeat.o(247700);
+    AppMethodBeat.o(230392);
     return locala;
   }
   
   public void a(int paramInt)
   {
-    AppMethodBeat.i(247705);
+    AppMethodBeat.i(230435);
     Object localObject1 = new HashSet();
     Object localObject2 = this.a.entrySet().iterator();
     while (((Iterator)localObject2).hasNext())
@@ -51,7 +51,7 @@ public class a
       localObject2 = (String)((Iterator)localObject1).next();
       this.a.remove(localObject2);
     }
-    AppMethodBeat.o(247705);
+    AppMethodBeat.o(230435);
   }
   
   public void a(String paramString, int paramInt)
@@ -78,7 +78,7 @@ public class a
   
   public void a(String paramString, boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(247704);
+    AppMethodBeat.i(230414);
     HashSet localHashSet2 = (HashSet)this.a.get(paramString);
     HashSet localHashSet1 = localHashSet2;
     if (localHashSet2 == null)
@@ -89,7 +89,7 @@ public class a
     localHashSet1.add(Integer.valueOf(paramInt));
     TXCAudioEngine.getInstance().startRemoteAudio(paramString, paramBoolean);
     TXCLog.i("AudioPlayManager", "startRemoteAudio tinyId:" + paramString + ", sessionId:" + paramInt);
-    AppMethodBeat.o(247704);
+    AppMethodBeat.o(230414);
   }
   
   static class a
@@ -98,15 +98,15 @@ public class a
     
     static
     {
-      AppMethodBeat.i(247470);
+      AppMethodBeat.i(230354);
       a = new a(null);
-      AppMethodBeat.o(247470);
+      AppMethodBeat.o(230354);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.audio.a
  * JD-Core Version:    0.7.0.1
  */

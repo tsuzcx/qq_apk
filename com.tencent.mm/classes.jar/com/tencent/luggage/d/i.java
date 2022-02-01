@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
-import com.tencent.luggage.k.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
@@ -18,62 +17,62 @@ import java.util.LinkedList;
 public class i
   implements k
 {
-  private Class<? extends com.tencent.luggage.webview.a> crq;
-  public FrameLayout crr;
-  public a<h> crs;
-  protected e crt;
-  public f cru;
-  public m crv;
-  Integer crw;
-  private Class<? extends com.tencent.luggage.webview.a> crx;
-  public j cry;
+  private Class<? extends com.tencent.luggage.webview.a> eji;
+  public FrameLayout ejj;
+  public a<h> ejk;
+  protected e ejl;
+  public com.tencent.luggage.l.e ejm;
+  public m ejn;
+  Integer ejo;
+  private Class<? extends com.tencent.luggage.webview.a> ejp;
+  public j ejq;
   protected Context mContext;
   
   public i(Activity paramActivity)
   {
     AppMethodBeat.i(140390);
-    this.crs = new a((byte)0);
-    this.crw = null;
-    this.crx = null;
-    this.cry = new j()
+    this.ejk = new a((byte)0);
+    this.ejo = null;
+    this.ejp = null;
+    this.ejq = new j()
     {
-      public final p Og()
+      public final p aoo()
       {
         AppMethodBeat.i(174614);
-        p localp = i.this.Og();
+        p localp = i.this.aoo();
         AppMethodBeat.o(174614);
         return localp;
       }
       
-      final Class<? extends com.tencent.luggage.webview.a> Oh()
+      final Class<? extends com.tencent.luggage.webview.a> aop()
       {
         AppMethodBeat.i(174612);
-        Class localClass = i.this.Oh();
+        Class localClass = i.this.aop();
         AppMethodBeat.o(174612);
         return localClass;
       }
       
-      public final LinkedList<h> On()
+      public final LinkedList<h> aov()
       {
-        return i.this.crs;
+        return i.this.ejk;
       }
       
-      public final k Oo()
+      public final k aow()
       {
         return i.this;
       }
       
-      public final LinkedList<Class<? extends b>> Op()
+      public final LinkedList<Class<? extends b>> aox()
       {
         AppMethodBeat.i(174613);
-        LinkedList localLinkedList = (LinkedList)i.this.crt.crj.clone();
+        LinkedList localLinkedList = (LinkedList)i.this.ejl.ejb.clone();
         AppMethodBeat.o(174613);
         return localLinkedList;
       }
       
-      public final f Oq()
+      public final com.tencent.luggage.l.e aoy()
       {
-        return i.this.cru;
+        return i.this.ejm;
       }
       
       final Context getContext()
@@ -85,22 +84,22 @@ public class i
     FrameLayout localFrameLayout = new FrameLayout(this.mContext);
     localFrameLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
     localFrameLayout.setBackgroundColor(-1);
-    this.crr = localFrameLayout;
-    this.crt = new e();
+    this.ejj = localFrameLayout;
+    this.ejl = new e();
     a(null);
-    this.cru = f.aI(paramActivity);
+    this.ejm = com.tencent.luggage.l.e.bt(paramActivity);
     AppMethodBeat.o(140390);
   }
   
   private void a(final h paramh)
   {
     AppMethodBeat.i(140400);
-    this.crr.post(new Runnable()
+    this.ejj.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(140380);
-        i.this.crr.removeView(paramh.getContentView());
+        i.this.ejj.removeView(paramh.getContentView());
         AppMethodBeat.o(140380);
       }
     });
@@ -108,107 +107,16 @@ public class i
     AppMethodBeat.o(140400);
   }
   
-  private void c(Runnable paramRunnable, long paramLong)
+  private void d(Runnable paramRunnable, long paramLong)
   {
     AppMethodBeat.i(140403);
-    this.crr.postDelayed(paramRunnable, paramLong);
+    this.ejj.postDelayed(paramRunnable, paramLong);
     AppMethodBeat.o(140403);
   }
   
-  public final void O(Class<? extends com.tencent.luggage.webview.a> paramClass)
+  public final void X(Class<? extends com.tencent.luggage.webview.a> paramClass)
   {
-    this.crq = paramClass;
-  }
-  
-  public final j Oc()
-  {
-    return this.cry;
-  }
-  
-  public final h Od()
-  {
-    AppMethodBeat.i(140391);
-    if (this.crs.size() > 0)
-    {
-      h localh = (h)this.crs.peek();
-      AppMethodBeat.o(140391);
-      return localh;
-    }
-    AppMethodBeat.o(140391);
-    return null;
-  }
-  
-  public final boolean Oe()
-  {
-    AppMethodBeat.i(140396);
-    boolean bool = cb(true);
-    AppMethodBeat.o(140396);
-    return bool;
-  }
-  
-  public final void Of()
-  {
-    AppMethodBeat.i(140401);
-    if (this.crw != null)
-    {
-      AppMethodBeat.o(140401);
-      return;
-    }
-    c(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(174610);
-        if (!((Activity)i.this.mContext).isFinishing()) {
-          i.this.crw = r.b(i.this.mContext.getApplicationContext(), i.this.Oh());
-        }
-        AppMethodBeat.o(174610);
-      }
-    }, 200L);
-    AppMethodBeat.o(140401);
-  }
-  
-  final p Og()
-  {
-    AppMethodBeat.i(140402);
-    Object localObject = this.crw;
-    this.crw = null;
-    localObject = r.a(this.mContext, (Integer)localObject);
-    if ((localObject != null) && (((p)localObject).crN.equals(Oh())))
-    {
-      AppMethodBeat.o(140402);
-      return localObject;
-    }
-    AppMethodBeat.o(140402);
-    return null;
-  }
-  
-  final Class<? extends com.tencent.luggage.webview.a> Oh()
-  {
-    if (this.crx == null) {
-      if (this.crq != null) {
-        break label27;
-      }
-    }
-    label27:
-    for (Object localObject = com.tencent.luggage.webview.default_impl.a.class;; localObject = this.crq)
-    {
-      this.crx = ((Class)localObject);
-      return this.crx;
-    }
-  }
-  
-  protected void Oi() {}
-  
-  protected void Oj() {}
-  
-  protected void Ok() {}
-  
-  protected void Ol() {}
-  
-  protected boolean Om()
-  {
-    return true;
+    this.eji = paramClass;
   }
   
   public final void a(m paramm)
@@ -221,33 +129,33 @@ public class i
         public final h p(String paramAnonymousString, Bundle paramAnonymousBundle)
         {
           AppMethodBeat.i(174611);
-          paramAnonymousString = new s(i.this.cry, paramAnonymousBundle);
+          paramAnonymousString = new s(i.this.ejq, paramAnonymousBundle);
           AppMethodBeat.o(174611);
           return paramAnonymousString;
         }
       };
     }
-    this.crv = ((m)localObject);
+    this.ejn = ((m)localObject);
     AppMethodBeat.o(140404);
   }
   
   public final boolean a(String paramString, Bundle paramBundle, final boolean paramBoolean)
   {
     AppMethodBeat.i(140395);
-    final h localh = this.crv.p(paramString, paramBundle);
+    final h localh = this.ejn.p(paramString, paramBundle);
     if (localh == null)
     {
       Log.e("LuggagePageContainer", "No page specified for url %s", new Object[] { paramString });
       AppMethodBeat.o(140395);
       return false;
     }
-    if (!Om())
+    if (!aou())
     {
       Log.i("LuggagePageContainer", "Pushing page is banned");
       AppMethodBeat.o(140395);
       return false;
     }
-    this.crr.addView(localh.getContentView(), 0);
+    this.ejj.addView(localh.getContentView(), 0);
     localh.getContentView().setVisibility(4);
     final Runnable local1 = new Runnable()
     {
@@ -256,7 +164,7 @@ public class i
       public final void run()
       {
         AppMethodBeat.i(140375);
-        i.this.Ol();
+        i.this.aot();
         if (this.done)
         {
           AppMethodBeat.o(140375);
@@ -266,9 +174,9 @@ public class i
         Object localObject2;
         ObjectAnimator localObjectAnimator;
         Object localObject3;
-        if ((i.this.crs.peek() != null) && (paramBoolean))
+        if ((i.this.ejk.peek() != null) && (paramBoolean))
         {
-          localObject1 = (h)i.this.crs.peek();
+          localObject1 = (h)i.this.ejk.peek();
           localObject2 = ObjectAnimator.ofFloat(((h)localObject1).getContentView(), "translationX", new float[] { 0.0F, -(((h)localObject1).getContentView().getWidth() * 0.25F) });
           ((ObjectAnimator)localObject2).setDuration(250L);
           localObjectAnimator = ObjectAnimator.ofFloat(((h)localObject1).getContentView(), "translationX", new float[] { 0.0F });
@@ -276,18 +184,18 @@ public class i
           localObject3 = new AnimatorSet();
           ((AnimatorSet)localObject3).playSequentially(new Animator[] { localObject2, localObjectAnimator });
           ((h)localObject1).a((Animator)localObject3, null);
-          ((h)i.this.crs.peek()).NZ();
+          ((h)i.this.ejk.peek()).aoi();
         }
         localh.getContentView().bringToFront();
         localh.getContentView().setVisibility(0);
-        localh.NY();
+        localh.aoh();
         Object localObject1 = new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(140374);
-            i.this.crs.push(i.1.this.crA);
-            i.this.Of();
+            i.this.ejk.push(i.1.this.ejs);
+            i.this.aon();
             AppMethodBeat.o(140374);
           }
         };
@@ -308,18 +216,18 @@ public class i
         AppMethodBeat.o(140375);
       }
     };
-    localh.crl.a(new l.e()
+    localh.ejd.a(new l.e()
     {
-      public final void NR()
+      public final void onReady()
       {
         AppMethodBeat.i(140376);
         local1.run();
         AppMethodBeat.o(140376);
       }
     });
-    Ok();
+    aos();
     localh.l(paramString, paramBundle);
-    c(local1, 300L);
+    d(local1, 300L);
     if (!paramBoolean) {
       local1.run();
     }
@@ -327,18 +235,104 @@ public class i
     return true;
   }
   
-  public final boolean cb(boolean paramBoolean)
+  public final h aol()
+  {
+    AppMethodBeat.i(140391);
+    if (this.ejk.size() > 0)
+    {
+      h localh = (h)this.ejk.peek();
+      AppMethodBeat.o(140391);
+      return localh;
+    }
+    AppMethodBeat.o(140391);
+    return null;
+  }
+  
+  public final boolean aom()
+  {
+    AppMethodBeat.i(140396);
+    boolean bool = cH(true);
+    AppMethodBeat.o(140396);
+    return bool;
+  }
+  
+  public final void aon()
+  {
+    AppMethodBeat.i(140401);
+    if (this.ejo != null)
+    {
+      AppMethodBeat.o(140401);
+      return;
+    }
+    d(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(174610);
+        if (!((Activity)i.this.mContext).isFinishing()) {
+          i.this.ejo = r.c(i.this.mContext.getApplicationContext(), i.this.aop());
+        }
+        AppMethodBeat.o(174610);
+      }
+    }, 200L);
+    AppMethodBeat.o(140401);
+  }
+  
+  final p aoo()
+  {
+    AppMethodBeat.i(140402);
+    Object localObject = this.ejo;
+    this.ejo = null;
+    localObject = r.a(this.mContext, (Integer)localObject);
+    if ((localObject != null) && (((p)localObject).ejH.equals(aop())))
+    {
+      AppMethodBeat.o(140402);
+      return localObject;
+    }
+    AppMethodBeat.o(140402);
+    return null;
+  }
+  
+  final Class<? extends com.tencent.luggage.webview.a> aop()
+  {
+    if (this.ejp == null) {
+      if (this.eji != null) {
+        break label28;
+      }
+    }
+    label28:
+    for (Object localObject = com.tencent.luggage.webview.default_impl.a.class;; localObject = this.eji)
+    {
+      this.ejp = ((Class)localObject);
+      return this.ejp;
+    }
+  }
+  
+  protected void aoq() {}
+  
+  protected void aor() {}
+  
+  protected void aos() {}
+  
+  protected void aot() {}
+  
+  protected boolean aou()
+  {
+    return true;
+  }
+  
+  public final boolean cH(boolean paramBoolean)
   {
     AppMethodBeat.i(140397);
-    if (this.crs.size() <= 1)
+    if (this.ejk.size() <= 1)
     {
       AppMethodBeat.o(140397);
       return false;
     }
-    final h localh = (h)this.crs.pop();
+    final h localh = (h)this.ejk.pop();
     if (paramBoolean)
     {
-      localh.h(new Runnable()
+      localh.j(new Runnable()
       {
         public final void run()
         {
@@ -350,12 +344,12 @@ public class i
       if (!paramBoolean) {
         break label94;
       }
-      ((h)this.crs.peek()).g(new Runnable()
+      ((h)this.ejk.peek()).i(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(140378);
-          ((h)i.this.crs.peek()).NY();
+          ((h)i.this.ejk.peek()).aoh();
           AppMethodBeat.o(140378);
         }
       });
@@ -367,26 +361,26 @@ public class i
       a(localh);
       break;
       label94:
-      ((h)this.crs.peek()).NY();
+      ((h)this.ejk.peek()).aoh();
     }
   }
   
   public final void destroy()
   {
     AppMethodBeat.i(140392);
-    Object localObject = this.crs.iterator();
+    Object localObject = this.ejk.iterator();
     while (((Iterator)localObject).hasNext()) {
       ((h)((Iterator)localObject).next()).destroy();
     }
-    localObject = Og();
+    localObject = aoo();
     if (localObject != null) {
       ((p)localObject).destroy();
     }
-    f.aJ(this.mContext);
+    com.tencent.luggage.l.e.bu(this.mContext);
     AppMethodBeat.o(140392);
   }
   
-  public final boolean ds(String paramString)
+  public final boolean eD(String paramString)
   {
     AppMethodBeat.i(140393);
     boolean bool = m(paramString, null);
@@ -394,15 +388,10 @@ public class i
     return bool;
   }
   
-  public final View getContentView()
-  {
-    return this.crr;
-  }
-  
   public final boolean m(String paramString, Bundle paramBundle)
   {
     AppMethodBeat.i(140394);
-    if (!this.crs.isEmpty()) {}
+    if (!this.ejk.isEmpty()) {}
     for (boolean bool = true;; bool = false)
     {
       bool = a(paramString, paramBundle, bool);
@@ -414,8 +403,8 @@ public class i
   public final boolean n(String paramString, Bundle paramBundle)
   {
     AppMethodBeat.i(140399);
-    if (this.crs.size() == 0) {}
-    for (h localh = null;; localh = (h)this.crs.pop())
+    if (this.ejk.size() == 0) {}
+    for (h localh = null;; localh = (h)this.ejk.pop())
     {
       if (localh != null) {
         a(localh);
@@ -429,7 +418,7 @@ public class i
   public final boolean o(String paramString, Bundle paramBundle)
   {
     AppMethodBeat.i(174615);
-    final h localh = this.crv.p(paramString, paramBundle);
+    final h localh = this.ejn.p(paramString, paramBundle);
     if (localh == null)
     {
       Log.e("LuggagePageContainer", "No page specified for url %s", new Object[] { paramString });
@@ -437,7 +426,7 @@ public class i
       return false;
     }
     localh.l(paramString, paramBundle);
-    c(new Runnable()
+    d(new Runnable()
     {
       public final void run()
       {
@@ -447,15 +436,15 @@ public class i
           AppMethodBeat.o(140379);
           return;
         }
-        if (i.this.crs.size() == 0) {}
-        for (h localh = null;; localh = (h)i.this.crs.pop())
+        if (i.this.ejk.size() == 0) {}
+        for (h localh = null;; localh = (h)i.this.ejk.pop())
         {
           if (localh != null) {
             i.a(i.this, localh);
           }
-          i.this.crs.push(localh);
-          i.this.crr.addView(localh.getContentView());
-          localh.NY();
+          i.this.ejk.push(localh);
+          i.this.ejj.addView(localh.getContentView());
+          localh.aoh();
           AppMethodBeat.o(140379);
           return;
         }
@@ -468,13 +457,13 @@ public class i
   public void onResume()
   {
     AppMethodBeat.i(140405);
-    h localh = Od();
+    h localh = aol();
     if (localh == null)
     {
       AppMethodBeat.o(140405);
       return;
     }
-    localh.NY();
+    localh.aoh();
     AppMethodBeat.o(140405);
   }
   
@@ -486,18 +475,18 @@ public class i
       AppMethodBeat.o(140398);
       return true;
     }
-    if ((this.crs.size() <= 1) || (this.crs.size() <= paramInt))
+    if ((this.ejk.size() <= 1) || (this.ejk.size() <= paramInt))
     {
       AppMethodBeat.o(140398);
       return false;
     }
     if (paramInt == 0)
     {
-      boolean bool = cb(false);
+      boolean bool = cH(false);
       AppMethodBeat.o(140398);
       return bool;
     }
-    a((h)this.crs.remove(paramInt));
+    a((h)this.ejk.remove(paramInt));
     AppMethodBeat.o(140398);
     return true;
   }
@@ -511,7 +500,7 @@ public class i
     {
       AppMethodBeat.i(140389);
       super.add(paramInt, paramE);
-      i.this.Oi();
+      i.this.aoq();
       AppMethodBeat.o(140389);
     }
     
@@ -520,7 +509,7 @@ public class i
       AppMethodBeat.i(140388);
       boolean bool = super.add(paramE);
       if (bool) {
-        i.this.Oi();
+        i.this.aoq();
       }
       AppMethodBeat.o(140388);
       return bool;
@@ -530,7 +519,7 @@ public class i
     {
       AppMethodBeat.i(140386);
       Object localObject = super.pop();
-      i.this.Oj();
+      i.this.aor();
       AppMethodBeat.o(140386);
       return localObject;
     }
@@ -539,7 +528,7 @@ public class i
     {
       AppMethodBeat.i(140387);
       super.push(paramE);
-      i.this.Oi();
+      i.this.aoq();
       AppMethodBeat.o(140387);
     }
     
@@ -547,7 +536,7 @@ public class i
     {
       AppMethodBeat.i(140385);
       Object localObject = super.remove(paramInt);
-      i.this.Oj();
+      i.this.aor();
       AppMethodBeat.o(140385);
       return localObject;
     }

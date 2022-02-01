@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:layout_gravity="center" android:background="@drawable/a57" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:duplicateParentState="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="13.0dip">
-        <ImageView android:id="@id/h_p" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="3.0dip" android:scaleType="fitCenter" />
-        <TextView android:textSize="@dimen/hc" android:textColor="@color/ag2" android:id="@id/h_r" android:paddingLeft="15.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{saysay}" />
-        <Chronometer android:textSize="13.0dip" android:textStyle="bold" android:textColor="@color/Brand" android:id="@id/b2u" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </LinearLayout>
-</LinearLayout>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.sns.cover.preview.SnsCoverFadeImageView android:id="@id/e8v" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.sns.cover.preview.SnsCoverNoFadeImageView android:id="@id/e8u" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/jt1" android:layout_width="fill_parent" android:layout_height="256.0dip" />
+    <View android:id="@id/jt0" android:layout_width="fill_parent" android:layout_height="128.0dip" android:layout_alignParentBottom="true" />
+    <RelativeLayout android:id="@id/d8_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cv" android:layout_marginTop="@dimen/d_" android:layout_marginRight="@dimen/cv">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/a0s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cp">
+            <LinearLayout android:orientation="horizontal" android:id="@id/az_" android:padding="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <ImageView android:id="@id/a0r" android:layout_width="20.0dip" android:layout_height="20.0dip" android:scaleType="centerCrop" />
+                <TextView android:textSize="@dimen/bd" android:textColor="@color/az" android:ellipsize="end" android:id="@id/a0u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:maxLines="1" />
+            </LinearLayout>
+            <View android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
+            <FrameLayout android:id="@id/ff2" android:padding="8.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ff1" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@raw/icons_filled_max_window" app:iconColor="@color/az" />
+            </FrameLayout>
+        </LinearLayout>
+        <TextView android:textSize="14.0dip" android:textColor="@color/az" android:ellipsize="end" android:id="@id/jti" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" android:layout_below="@id/a0s" />
+    </RelativeLayout>
+</RelativeLayout>

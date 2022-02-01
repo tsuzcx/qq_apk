@@ -10,12 +10,7 @@ public abstract class SingletonSchemeResolver
     return 0;
   }
   
-  public final SchemeResolver.a ifv()
-  {
-    return this;
-  }
-  
-  public final SchemeResolver ifw()
+  public final SchemeResolver jKK()
   {
     return this;
   }
@@ -24,7 +19,7 @@ public abstract class SingletonSchemeResolver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.vfs.SingletonSchemeResolver
  * JD-Core Version:    0.7.0.1
  */

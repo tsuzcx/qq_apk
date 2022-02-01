@@ -4,20 +4,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b<K, V>
 {
-  private static final b<Object, Object> abuK;
-  private final d<a<e<K, V>>> abuL;
+  private static final b<Object, Object> ajtP;
+  private final d<a<e<K, V>>> ajtQ;
   private final int size;
   
   static
   {
     AppMethodBeat.i(61428);
-    abuK = new b(d.iQt(), 0);
+    ajtP = new b(d.kBh(), 0);
     AppMethodBeat.o(61428);
   }
   
   private b(d<a<e<K, V>>> paramd, int paramInt)
   {
-    this.abuL = paramd;
+    this.ajtQ = paramd;
     this.size = paramInt;
   }
   
@@ -27,22 +27,22 @@ public final class b<K, V>
     int i = 0;
     while ((parama != null) && (parama.size > 0))
     {
-      if (((e)parama.Mx).key.equals(paramObject))
+      if (((e)parama.bsC).key.equals(paramObject))
       {
         AppMethodBeat.o(61427);
         return i;
       }
-      parama = parama.abuI;
+      parama = parama.ajtN;
       i += 1;
     }
     AppMethodBeat.o(61427);
     return -1;
   }
   
-  public static <K, V> b<K, V> iQs()
+  public static <K, V> b<K, V> kBg()
   {
     AppMethodBeat.i(61424);
-    Object localObject = abuK;
+    Object localObject = ajtP;
     if (localObject == null)
     {
       localObject = new IllegalStateException(String.format("@NotNull method %s.%s must not return null", new Object[] { "kotlin/reflect/jvm/internal/pcollections/HashPMap", "empty" }));
@@ -53,41 +53,41 @@ public final class b<K, V>
     return localObject;
   }
   
-  public final b<K, V> P(K paramK, V paramV)
-  {
-    AppMethodBeat.i(61425);
-    a locala2 = aFK(paramK.hashCode());
-    int i = locala2.size;
-    int j = a(locala2, paramK);
-    a locala1 = locala2;
-    if (j != -1) {
-      locala1 = locala2.aFI(j);
-    }
-    paramV = locala1.fQ(new e(paramK, paramV));
-    paramK = this.abuL.B(paramK.hashCode(), paramV);
-    j = this.size;
-    paramK = new b(paramK, paramV.size + (j - i));
-    AppMethodBeat.o(61425);
-    return paramK;
-  }
-  
-  public final a<e<K, V>> aFK(int paramInt)
+  public final a<e<K, V>> aMx(int paramInt)
   {
     AppMethodBeat.i(61426);
-    a locala = (a)this.abuL.get(paramInt);
+    a locala = (a)this.ajtQ.get(paramInt);
     if (locala == null)
     {
-      locala = a.iQr();
+      locala = a.kBf();
       AppMethodBeat.o(61426);
       return locala;
     }
     AppMethodBeat.o(61426);
     return locala;
   }
+  
+  public final b<K, V> ab(K paramK, V paramV)
+  {
+    AppMethodBeat.i(61425);
+    a locala2 = aMx(paramK.hashCode());
+    int i = locala2.size;
+    int j = a(locala2, paramK);
+    a locala1 = locala2;
+    if (j != -1) {
+      locala1 = locala2.aMv(j);
+    }
+    paramV = locala1.is(new e(paramK, paramV));
+    paramK = this.ajtQ.W(paramK.hashCode(), paramV);
+    j = this.size;
+    paramK = new b(paramK, paramV.size + (j - i));
+    AppMethodBeat.o(61425);
+    return paramK;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.c.b
  * JD-Core Version:    0.7.0.1
  */

@@ -6,20 +6,20 @@ import com.tencent.mm.model.bh;
 
 public final class i
 {
-  private static final f<Integer, com.tencent.mm.protocal.b.a.c> jla;
+  private static final f<Integer, com.tencent.mm.protocal.b.a.c> lNS;
   
   static
   {
     AppMethodBeat.i(30341);
-    jla = new com.tencent.mm.memory.a.c(32);
+    lNS = new com.tencent.mm.memory.a.c(32);
     AppMethodBeat.o(30341);
   }
   
-  public static String bci()
+  public static String bzX()
   {
     AppMethodBeat.i(30340);
-    bh.beI();
-    String str = com.tencent.mm.model.c.bci();
+    bh.bCz();
+    String str = com.tencent.mm.model.c.bzX();
     AppMethodBeat.o(30340);
     return str;
   }

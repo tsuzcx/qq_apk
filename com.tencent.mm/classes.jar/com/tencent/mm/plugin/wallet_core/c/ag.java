@@ -10,14 +10,14 @@ import org.json.JSONObject;
 public final class ag
   extends m
 {
-  public String OIw;
-  public JSONObject osF;
+  public String Vyi;
+  public JSONObject rwB;
   
   public ag(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, long paramLong)
   {
     AppMethodBeat.i(69957);
-    this.OIw = "";
-    this.OIw = paramString1;
+    this.Vyi = "";
+    this.Vyi = paramString1;
     HashMap localHashMap = new HashMap();
     localHashMap.put("activity_id", paramString1);
     localHashMap.put("award_id", paramString2);
@@ -54,13 +54,13 @@ public final class ag
   {
     AppMethodBeat.i(69958);
     Log.i("MicroMsg.NetSceneTenpayQueryPayaward", "errcode %s errmsg %s json %s", new Object[] { Integer.valueOf(paramInt), paramString, paramJSONObject });
-    this.osF = paramJSONObject;
+    this.rwB = paramJSONObject;
     AppMethodBeat.o(69958);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.c.ag
  * JD-Core Version:    0.7.0.1
  */

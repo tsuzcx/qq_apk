@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:clipChildren="false"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_gravity="bottom" android:id="@id/a0a" android:clipChildren="false" android:layout_width="56.0dip" android:layout_height="56.0dip" android:contentDescription="@string/f57" android:animateLayoutChanges="true">
-        <FrameLayout android:layout_gravity="center" android:id="@id/g77" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <com.tencent.mm.ui.MMImageView android:layout_gravity="center_vertical" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@raw/icons_outlined_multitask" android:scaleType="centerCrop" />
-        </FrameLayout>
-    </FrameLayout>
-</merge>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/g36" android:padding="@dimen/i9" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ProgressBar android:layout_width="@dimen/ba" android:layout_height="@dimen/ba" android:indeterminateDrawable="@drawable/a7z" />
+        <TextView android:textSize="@dimen/hn" android:textColor="@color/FG_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m2" android:text="@string/fd6" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/g3g" android:padding="@dimen/i9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/ba" android:layout_height="@dimen/ba" android:src="@raw/icons_outlined_refresh" app:iconColor="@color/FG_1" />
+        <TextView android:textSize="@dimen/hn" android:textColor="@color/FG_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m2" android:text="@string/fd5" />
+    </LinearLayout>
+</FrameLayout>

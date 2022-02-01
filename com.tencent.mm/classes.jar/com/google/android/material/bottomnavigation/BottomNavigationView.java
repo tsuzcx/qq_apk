@@ -22,7 +22,7 @@ import androidx.appcompat.view.g;
 import androidx.appcompat.view.menu.h;
 import androidx.appcompat.view.menu.h.a;
 import androidx.appcompat.widget.ac;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import androidx.customview.view.AbsSavedState;
 import com.google.android.material.a.b;
 import com.google.android.material.a.c;
@@ -35,12 +35,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class BottomNavigationView
   extends FrameLayout
 {
-  private final BottomNavigationPresenter bxh;
-  private final BottomNavigationMenuView bxj;
-  private MenuInflater bxl;
-  private b bxm;
-  private a bxn;
-  private final h gU;
+  private final BottomNavigationPresenter dqk;
+  private final BottomNavigationMenuView dqm;
+  private MenuInflater dqo;
+  private b dqp;
+  private a dqq;
+  private final h hP;
   
   public BottomNavigationView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -50,51 +50,51 @@ public class BottomNavigationView
   public BottomNavigationView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(235247);
-    this.bxh = new BottomNavigationPresenter();
-    this.gU = new a(paramContext);
-    this.bxj = new BottomNavigationMenuView(paramContext);
+    AppMethodBeat.i(209635);
+    this.dqk = new BottomNavigationPresenter();
+    this.hP = new a(paramContext);
+    this.dqm = new BottomNavigationMenuView(paramContext);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 17;
-    this.bxj.setLayoutParams(localLayoutParams);
-    this.bxh.bxj = this.bxj;
-    this.bxh.id = 1;
-    this.bxj.setPresenter(this.bxh);
-    this.gU.a(this.bxh);
-    this.bxh.a(getContext(), this.gU);
+    this.dqm.setLayoutParams(localLayoutParams);
+    this.dqk.dqm = this.dqm;
+    this.dqk.id = 1;
+    this.dqm.setPresenter(this.dqk);
+    this.hP.a(this.dqk);
+    this.dqk.a(getContext(), this.hP);
     paramAttributeSet = k.b(paramContext, paramAttributeSet, a.k.BottomNavigationView, paramInt, a.j.Widget_Design_BottomNavigationView, new int[] { a.k.BottomNavigationView_itemTextAppearanceInactive, a.k.BottomNavigationView_itemTextAppearanceActive });
-    if (paramAttributeSet.aC(a.k.BottomNavigationView_itemIconTint)) {
-      this.bxj.setIconTintList(paramAttributeSet.getColorStateList(a.k.BottomNavigationView_itemIconTint));
+    if (paramAttributeSet.az(a.k.BottomNavigationView_itemIconTint)) {
+      this.dqm.setIconTintList(paramAttributeSet.getColorStateList(a.k.BottomNavigationView_itemIconTint));
     }
     for (;;)
     {
-      setItemIconSize(paramAttributeSet.p(a.k.BottomNavigationView_itemIconSize, getResources().getDimensionPixelSize(a.d.design_bottom_navigation_icon_size)));
-      if (paramAttributeSet.aC(a.k.BottomNavigationView_itemTextAppearanceInactive)) {
-        setItemTextAppearanceInactive(paramAttributeSet.r(a.k.BottomNavigationView_itemTextAppearanceInactive, 0));
+      setItemIconSize(paramAttributeSet.u(a.k.BottomNavigationView_itemIconSize, getResources().getDimensionPixelSize(a.d.design_bottom_navigation_icon_size)));
+      if (paramAttributeSet.az(a.k.BottomNavigationView_itemTextAppearanceInactive)) {
+        setItemTextAppearanceInactive(paramAttributeSet.w(a.k.BottomNavigationView_itemTextAppearanceInactive, 0));
       }
-      if (paramAttributeSet.aC(a.k.BottomNavigationView_itemTextAppearanceActive)) {
-        setItemTextAppearanceActive(paramAttributeSet.r(a.k.BottomNavigationView_itemTextAppearanceActive, 0));
+      if (paramAttributeSet.az(a.k.BottomNavigationView_itemTextAppearanceActive)) {
+        setItemTextAppearanceActive(paramAttributeSet.w(a.k.BottomNavigationView_itemTextAppearanceActive, 0));
       }
-      if (paramAttributeSet.aC(a.k.BottomNavigationView_itemTextColor)) {
+      if (paramAttributeSet.az(a.k.BottomNavigationView_itemTextColor)) {
         setItemTextColor(paramAttributeSet.getColorStateList(a.k.BottomNavigationView_itemTextColor));
       }
-      if (paramAttributeSet.aC(a.k.BottomNavigationView_elevation)) {
-        w.j(this, paramAttributeSet.p(a.k.BottomNavigationView_elevation, 0));
+      if (paramAttributeSet.az(a.k.BottomNavigationView_elevation)) {
+        z.k(this, paramAttributeSet.u(a.k.BottomNavigationView_elevation, 0));
       }
-      setLabelVisibilityMode(paramAttributeSet.n(a.k.BottomNavigationView_labelVisibilityMode, -1));
-      setItemHorizontalTranslationEnabled(paramAttributeSet.c(a.k.BottomNavigationView_itemHorizontalTranslationEnabled, true));
-      paramInt = paramAttributeSet.r(a.k.BottomNavigationView_itemBackground, 0);
-      this.bxj.setItemBackgroundRes(paramInt);
-      if (paramAttributeSet.aC(a.k.BottomNavigationView_menu))
+      setLabelVisibilityMode(paramAttributeSet.s(a.k.BottomNavigationView_labelVisibilityMode, -1));
+      setItemHorizontalTranslationEnabled(paramAttributeSet.m(a.k.BottomNavigationView_itemHorizontalTranslationEnabled, true));
+      paramInt = paramAttributeSet.w(a.k.BottomNavigationView_itemBackground, 0);
+      this.dqm.setItemBackgroundRes(paramInt);
+      if (paramAttributeSet.az(a.k.BottomNavigationView_menu))
       {
-        paramInt = paramAttributeSet.r(a.k.BottomNavigationView_menu, 0);
-        this.bxh.bxk = true;
-        getMenuInflater().inflate(paramInt, this.gU);
-        this.bxh.bxk = false;
-        this.bxh.F(true);
+        paramInt = paramAttributeSet.w(a.k.BottomNavigationView_menu, 0);
+        this.dqk.dqn = true;
+        getMenuInflater().inflate(paramInt, this.hP);
+        this.dqk.dqn = false;
+        this.dqk.J(true);
       }
-      paramAttributeSet.wA.recycle();
-      addView(this.bxj, localLayoutParams);
+      paramAttributeSet.xv.recycle();
+      addView(this.dqm, localLayoutParams);
       if (Build.VERSION.SDK_INT < 21)
       {
         paramAttributeSet = new View(paramContext);
@@ -102,107 +102,107 @@ public class BottomNavigationView
         paramAttributeSet.setLayoutParams(new FrameLayout.LayoutParams(-1, getResources().getDimensionPixelSize(a.d.design_bottom_navigation_shadow_height)));
         addView(paramAttributeSet);
       }
-      this.gU.a(new h.a()
+      this.hP.a(new h.a()
       {
         public final void a(h paramAnonymoush) {}
         
         public final boolean a(h paramAnonymoush, MenuItem paramAnonymousMenuItem)
         {
-          AppMethodBeat.i(235218);
+          AppMethodBeat.i(209660);
           if ((BottomNavigationView.a(BottomNavigationView.this) != null) && (paramAnonymousMenuItem.getItemId() == BottomNavigationView.this.getSelectedItemId()))
           {
             BottomNavigationView.a(BottomNavigationView.this);
-            AppMethodBeat.o(235218);
+            AppMethodBeat.o(209660);
             return true;
           }
-          if ((BottomNavigationView.b(BottomNavigationView.this) != null) && (!BottomNavigationView.b(BottomNavigationView.this).wm()))
+          if ((BottomNavigationView.b(BottomNavigationView.this) != null) && (!BottomNavigationView.b(BottomNavigationView.this).VL()))
           {
-            AppMethodBeat.o(235218);
+            AppMethodBeat.o(209660);
             return true;
           }
-          AppMethodBeat.o(235218);
+          AppMethodBeat.o(209660);
           return false;
         }
       });
-      AppMethodBeat.o(235247);
+      AppMethodBeat.o(209635);
       return;
-      this.bxj.setIconTintList(this.bxj.wk());
+      this.dqm.setIconTintList(this.dqm.VJ());
     }
   }
   
   private MenuInflater getMenuInflater()
   {
-    AppMethodBeat.i(235289);
-    if (this.bxl == null) {
-      this.bxl = new g(getContext());
+    AppMethodBeat.i(209646);
+    if (this.dqo == null) {
+      this.dqo = new g(getContext());
     }
-    MenuInflater localMenuInflater = this.bxl;
-    AppMethodBeat.o(235289);
+    MenuInflater localMenuInflater = this.dqo;
+    AppMethodBeat.o(209646);
     return localMenuInflater;
   }
   
   public Drawable getItemBackground()
   {
-    AppMethodBeat.i(235269);
-    Drawable localDrawable = this.bxj.getItemBackground();
-    AppMethodBeat.o(235269);
+    AppMethodBeat.i(209761);
+    Drawable localDrawable = this.dqm.getItemBackground();
+    AppMethodBeat.o(209761);
     return localDrawable;
   }
   
   @Deprecated
   public int getItemBackgroundResource()
   {
-    AppMethodBeat.i(235266);
-    int i = this.bxj.getItemBackgroundRes();
-    AppMethodBeat.o(235266);
+    AppMethodBeat.i(209742);
+    int i = this.dqm.getItemBackgroundRes();
+    AppMethodBeat.o(209742);
     return i;
   }
   
   public int getItemIconSize()
   {
-    AppMethodBeat.i(235263);
-    int i = this.bxj.getItemIconSize();
-    AppMethodBeat.o(235263);
+    AppMethodBeat.i(209721);
+    int i = this.dqm.getItemIconSize();
+    AppMethodBeat.o(209721);
     return i;
   }
   
   public ColorStateList getItemIconTintList()
   {
-    AppMethodBeat.i(235256);
-    ColorStateList localColorStateList = this.bxj.getIconTintList();
-    AppMethodBeat.o(235256);
+    AppMethodBeat.i(209691);
+    ColorStateList localColorStateList = this.dqm.getIconTintList();
+    AppMethodBeat.o(209691);
     return localColorStateList;
   }
   
   public int getItemTextAppearanceActive()
   {
-    AppMethodBeat.i(235285);
-    int i = this.bxj.getItemTextAppearanceActive();
-    AppMethodBeat.o(235285);
+    AppMethodBeat.i(209831);
+    int i = this.dqm.getItemTextAppearanceActive();
+    AppMethodBeat.o(209831);
     return i;
   }
   
   public int getItemTextAppearanceInactive()
   {
-    AppMethodBeat.i(235281);
-    int i = this.bxj.getItemTextAppearanceInactive();
-    AppMethodBeat.o(235281);
+    AppMethodBeat.i(209819);
+    int i = this.dqm.getItemTextAppearanceInactive();
+    AppMethodBeat.o(209819);
     return i;
   }
   
   public ColorStateList getItemTextColor()
   {
-    AppMethodBeat.i(235264);
-    ColorStateList localColorStateList = this.bxj.getItemTextColor();
-    AppMethodBeat.o(235264);
+    AppMethodBeat.i(209727);
+    ColorStateList localColorStateList = this.dqm.getItemTextColor();
+    AppMethodBeat.o(209727);
     return localColorStateList;
   }
   
   public int getLabelVisibilityMode()
   {
-    AppMethodBeat.i(235278);
-    int i = this.bxj.getLabelVisibilityMode();
-    AppMethodBeat.o(235278);
+    AppMethodBeat.i(209804);
+    int i = this.dqm.getLabelVisibilityMode();
+    AppMethodBeat.o(209804);
     return i;
   }
   
@@ -213,159 +213,159 @@ public class BottomNavigationView
   
   public Menu getMenu()
   {
-    return this.gU;
+    return this.hP;
   }
   
   public int getSelectedItemId()
   {
-    AppMethodBeat.i(235273);
-    int i = this.bxj.getSelectedItemId();
-    AppMethodBeat.o(235273);
+    AppMethodBeat.i(209774);
+    int i = this.dqm.getSelectedItemId();
+    AppMethodBeat.o(209774);
     return i;
   }
   
   protected void onRestoreInstanceState(Parcelable paramParcelable)
   {
-    AppMethodBeat.i(235291);
+    AppMethodBeat.i(209853);
     if (!(paramParcelable instanceof SavedState))
     {
       super.onRestoreInstanceState(paramParcelable);
-      AppMethodBeat.o(235291);
+      AppMethodBeat.o(209853);
       return;
     }
     paramParcelable = (SavedState)paramParcelable;
-    super.onRestoreInstanceState(paramParcelable.Rb);
-    this.gU.f(paramParcelable.bxp);
-    AppMethodBeat.o(235291);
+    super.onRestoreInstanceState(paramParcelable.bxs);
+    this.hP.g(paramParcelable.dqs);
+    AppMethodBeat.o(209853);
   }
   
   protected Parcelable onSaveInstanceState()
   {
-    AppMethodBeat.i(235290);
+    AppMethodBeat.i(209846);
     SavedState localSavedState = new SavedState(super.onSaveInstanceState());
-    localSavedState.bxp = new Bundle();
-    this.gU.e(localSavedState.bxp);
-    AppMethodBeat.o(235290);
+    localSavedState.dqs = new Bundle();
+    this.hP.f(localSavedState.dqs);
+    AppMethodBeat.o(209846);
     return localSavedState;
   }
   
   public void setItemBackground(Drawable paramDrawable)
   {
-    AppMethodBeat.i(235271);
-    this.bxj.setItemBackground(paramDrawable);
-    AppMethodBeat.o(235271);
+    AppMethodBeat.i(209769);
+    this.dqm.setItemBackground(paramDrawable);
+    AppMethodBeat.o(209769);
   }
   
   public void setItemBackgroundResource(int paramInt)
   {
-    AppMethodBeat.i(235267);
-    this.bxj.setItemBackgroundRes(paramInt);
-    AppMethodBeat.o(235267);
+    AppMethodBeat.i(209753);
+    this.dqm.setItemBackgroundRes(paramInt);
+    AppMethodBeat.o(209753);
   }
   
   public void setItemHorizontalTranslationEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(235287);
-    if (this.bxj.bwX != paramBoolean)
+    AppMethodBeat.i(209838);
+    if (this.dqm.dqa != paramBoolean)
     {
-      this.bxj.setItemHorizontalTranslationEnabled(paramBoolean);
-      this.bxh.F(false);
+      this.dqm.setItemHorizontalTranslationEnabled(paramBoolean);
+      this.dqk.J(false);
     }
-    AppMethodBeat.o(235287);
+    AppMethodBeat.o(209838);
   }
   
   public void setItemIconSize(int paramInt)
   {
-    AppMethodBeat.i(235260);
-    this.bxj.setItemIconSize(paramInt);
-    AppMethodBeat.o(235260);
+    AppMethodBeat.i(209707);
+    this.dqm.setItemIconSize(paramInt);
+    AppMethodBeat.o(209707);
   }
   
   public void setItemIconSizeRes(int paramInt)
   {
-    AppMethodBeat.i(235261);
+    AppMethodBeat.i(209714);
     setItemIconSize(getResources().getDimensionPixelSize(paramInt));
-    AppMethodBeat.o(235261);
+    AppMethodBeat.o(209714);
   }
   
   public void setItemIconTintList(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(235259);
-    this.bxj.setIconTintList(paramColorStateList);
-    AppMethodBeat.o(235259);
+    AppMethodBeat.i(209699);
+    this.dqm.setIconTintList(paramColorStateList);
+    AppMethodBeat.o(209699);
   }
   
   public void setItemTextAppearanceActive(int paramInt)
   {
-    AppMethodBeat.i(235283);
-    this.bxj.setItemTextAppearanceActive(paramInt);
-    AppMethodBeat.o(235283);
+    AppMethodBeat.i(209825);
+    this.dqm.setItemTextAppearanceActive(paramInt);
+    AppMethodBeat.o(209825);
   }
   
   public void setItemTextAppearanceInactive(int paramInt)
   {
-    AppMethodBeat.i(235280);
-    this.bxj.setItemTextAppearanceInactive(paramInt);
-    AppMethodBeat.o(235280);
+    AppMethodBeat.i(209812);
+    this.dqm.setItemTextAppearanceInactive(paramInt);
+    AppMethodBeat.o(209812);
   }
   
   public void setItemTextColor(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(235265);
-    this.bxj.setItemTextColor(paramColorStateList);
-    AppMethodBeat.o(235265);
+    AppMethodBeat.i(209730);
+    this.dqm.setItemTextColor(paramColorStateList);
+    AppMethodBeat.o(209730);
   }
   
   public void setLabelVisibilityMode(int paramInt)
   {
-    AppMethodBeat.i(235277);
-    if (this.bxj.getLabelVisibilityMode() != paramInt)
+    AppMethodBeat.i(209792);
+    if (this.dqm.getLabelVisibilityMode() != paramInt)
     {
-      this.bxj.setLabelVisibilityMode(paramInt);
-      this.bxh.F(false);
+      this.dqm.setLabelVisibilityMode(paramInt);
+      this.dqk.J(false);
     }
-    AppMethodBeat.o(235277);
+    AppMethodBeat.o(209792);
   }
   
   public void setOnNavigationItemReselectedListener(a parama)
   {
-    this.bxn = parama;
+    this.dqq = parama;
   }
   
   public void setOnNavigationItemSelectedListener(b paramb)
   {
-    this.bxm = paramb;
+    this.dqp = paramb;
   }
   
   public void setSelectedItemId(int paramInt)
   {
-    AppMethodBeat.i(235275);
-    MenuItem localMenuItem = this.gU.findItem(paramInt);
-    if ((localMenuItem != null) && (!this.gU.a(localMenuItem, this.bxh, 0))) {
+    AppMethodBeat.i(209784);
+    MenuItem localMenuItem = this.hP.findItem(paramInt);
+    if ((localMenuItem != null) && (!this.hP.a(localMenuItem, this.dqk, 0))) {
       localMenuItem.setChecked(true);
     }
-    AppMethodBeat.o(235275);
+    AppMethodBeat.o(209784);
   }
   
   static class SavedState
     extends AbsSavedState
   {
     public static final Parcelable.Creator<SavedState> CREATOR;
-    Bundle bxp;
+    Bundle dqs;
     
     static
     {
-      AppMethodBeat.i(235234);
+      AppMethodBeat.i(209657);
       CREATOR = new Parcelable.ClassLoaderCreator() {};
-      AppMethodBeat.o(235234);
+      AppMethodBeat.o(209657);
     }
     
     public SavedState(Parcel paramParcel, ClassLoader paramClassLoader)
     {
       super(paramClassLoader);
-      AppMethodBeat.i(235231);
-      this.bxp = paramParcel.readBundle(paramClassLoader);
-      AppMethodBeat.o(235231);
+      AppMethodBeat.i(209653);
+      this.dqs = paramParcel.readBundle(paramClassLoader);
+      AppMethodBeat.o(209653);
     }
     
     public SavedState(Parcelable paramParcelable)
@@ -375,10 +375,10 @@ public class BottomNavigationView
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(235233);
+      AppMethodBeat.i(209663);
       super.writeToParcel(paramParcel, paramInt);
-      paramParcel.writeBundle(this.bxp);
-      AppMethodBeat.o(235233);
+      paramParcel.writeBundle(this.dqs);
+      AppMethodBeat.o(209663);
     }
   }
   
@@ -386,12 +386,12 @@ public class BottomNavigationView
   
   public static abstract interface b
   {
-    public abstract boolean wm();
+    public abstract boolean VL();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.bottomnavigation.BottomNavigationView
  * JD-Core Version:    0.7.0.1
  */

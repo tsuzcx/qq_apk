@@ -1,38 +1,27 @@
 package kotlinx.coroutines;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.d.a.b;
+import java.util.concurrent.CancellationException;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.d.d;
 import kotlin.d.f;
-import kotlin.g.a.m;
-import kotlin.l;
-import kotlin.x;
-import kotlinx.coroutines.c.a;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/LazyDeferredCoroutine;", "T", "Lkotlinx/coroutines/DeferredCoroutine;", "parentContext", "Lkotlin/coroutines/CoroutineContext;", "block", "Lkotlin/Function2;", "Lkotlinx/coroutines/CoroutineScope;", "Lkotlin/coroutines/Continuation;", "", "Lkotlin/ExtensionFunctionType;", "(Lkotlin/coroutines/CoroutineContext;Lkotlin/jvm/functions/Function2;)V", "continuation", "", "onStart", "kotlinx-coroutines-core"})
-final class cg<T>
-  extends au<T>
+@Metadata(d1={""}, d2={"isActive", "", "Lkotlin/coroutines/CoroutineContext;", "(Lkotlin/coroutines/CoroutineContext;)Z", "job", "Lkotlinx/coroutines/Job;", "getJob", "(Lkotlin/coroutines/CoroutineContext;)Lkotlinx/coroutines/Job;", "DisposableHandle", "Lkotlinx/coroutines/DisposableHandle;", "block", "Lkotlin/Function0;", "", "Job", "Lkotlinx/coroutines/CompletableJob;", "parent", "Job0", "cancel", "cause", "", "Ljava/util/concurrent/CancellationException;", "Lkotlinx/coroutines/CancellationException;", "message", "", "cancelAndJoin", "(Lkotlinx/coroutines/Job;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "cancelChildren", "disposeOnCompletion", "handle", "ensureActive", "orCancellation", "orCancellation$JobKt__JobKt", "kotlinx-coroutines-core"}, k=5, mv={1, 5, 1}, xi=48, xs="kotlinx/coroutines/JobKt")
+public final class cg
 {
-  private final d<x> abwQ;
+  public static final void a(f arg0, CancellationException arg1) {}
   
-  public cg(f paramf, m<? super ak, ? super d<? super T>, ? extends Object> paramm)
-  {
-    super(paramf, false);
-    AppMethodBeat.i(118208);
-    this.abwQ = b.a(paramm, this, (d)this);
-    AppMethodBeat.o(118208);
-  }
+  public static final Object b(cb arg0, d<? super ah> arg1) {}
   
-  protected final void onStart()
-  {
-    AppMethodBeat.i(118207);
-    a.a(this.abwQ, (d)this);
-    AppMethodBeat.o(118207);
-  }
+  public static final ac e(cb arg0) {}
+  
+  public static final boolean f(f arg0) {}
+  
+  public static final void g(f arg0) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.cg
  * JD-Core Version:    0.7.0.1
  */

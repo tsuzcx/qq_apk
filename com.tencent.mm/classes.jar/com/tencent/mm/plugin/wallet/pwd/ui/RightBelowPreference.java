@@ -15,7 +15,7 @@ import com.tencent.mm.ui.base.preference.SummaryBelowPreference;
 public class RightBelowPreference
   extends SummaryBelowPreference
 {
-  private CharSequence OAA;
+  private CharSequence VpN;
   
   public RightBelowPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,10 +27,10 @@ public class RightBelowPreference
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void ag(CharSequence paramCharSequence)
+  public final void at(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(69585);
-    this.OAA = paramCharSequence;
+    this.VpN = paramCharSequence;
     notifyChanged();
     AppMethodBeat.o(69585);
   }
@@ -39,8 +39,8 @@ public class RightBelowPreference
   {
     AppMethodBeat.i(69584);
     super.onBindView(paramView);
-    if (!Util.isNullOrNil(this.OAA)) {
-      ((TextView)paramView.findViewById(a.f.right_desc_tv)).setText(this.OAA);
+    if (!Util.isNullOrNil(this.VpN)) {
+      ((TextView)paramView.findViewById(a.f.right_desc_tv)).setText(this.VpN);
     }
     paramView.findViewById(a.f.right_arrow).setVisibility(8);
     AppMethodBeat.o(69584);
@@ -57,7 +57,7 @@ public class RightBelowPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.RightBelowPreference
  * JD-Core Version:    0.7.0.1
  */

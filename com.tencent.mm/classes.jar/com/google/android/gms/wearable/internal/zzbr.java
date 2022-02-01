@@ -2,18 +2,12 @@ package com.google.android.gms.wearable.internal;
 
 import com.google.android.gms.common.internal.Preconditions;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import javax.annotation.Nullable;
-import javax.annotation.concurrent.GuardedBy;
 
 public final class zzbr
   extends zzej
 {
   private final Object lock;
-  @Nullable
-  @GuardedBy("lock")
   private zzav zzcw;
-  @Nullable
-  @GuardedBy("lock")
   private zzbs zzda;
   
   public zzbr()
@@ -56,7 +50,7 @@ public final class zzbr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzbr
  * JD-Core Version:    0.7.0.1
  */

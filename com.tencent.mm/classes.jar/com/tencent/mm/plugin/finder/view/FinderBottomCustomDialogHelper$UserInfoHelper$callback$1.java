@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.finder.view;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.b;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "<anonymous parameter 0>", "", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class FinderBottomCustomDialogHelper$UserInfoHelper$callback$1
-  extends q
-  implements b<Boolean, x>
+  extends u
+  implements b<Boolean, ah>
 {
   public static final 1 INSTANCE;
   
   static
   {
-    AppMethodBeat.i(272895);
+    AppMethodBeat.i(344090);
     INSTANCE = new 1();
-    AppMethodBeat.o(272895);
+    AppMethodBeat.o(344090);
   }
   
   FinderBottomCustomDialogHelper$UserInfoHelper$callback$1()

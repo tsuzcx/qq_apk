@@ -1,7 +1,6 @@
 package com.tencent.h.a.c;
 
 import android.os.Handler;
-import android.os.HandlerThread;
 import android.os.Message;
 import com.tencent.g.c.i;
 import com.tencent.h.a.b.a.a;
@@ -19,63 +18,38 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public final class c
   extends com.tencent.h.a.b.a
 {
-  private com.tencent.h.a.c.d.c ZTc;
-  private AtomicBoolean ZTd;
-  private AtomicBoolean ZTe;
+  private com.tencent.h.a.c.d.c ahXC;
+  private AtomicBoolean ahXD;
+  private AtomicBoolean ahXE;
   
   public c(String paramString, com.tencent.h.a.a.c paramc)
   {
     super(paramString, paramc, new com.tencent.h.a.b.b()
     {
-      public final void itS()
+      public final void kdo()
       {
-        AppMethodBeat.i(207516);
+        AppMethodBeat.i(212218);
         Object localObject = new com.tencent.h.a.b.c.a(c.this);
-        this.ZSH.a((d)localObject);
+        this.ahXh.a((d)localObject);
         localObject = new com.tencent.h.a.b.c.b(c.this);
-        this.ZSH.a((d)localObject);
-        AppMethodBeat.o(207516);
+        this.ahXh.a((d)localObject);
+        AppMethodBeat.o(212218);
       }
     });
-    AppMethodBeat.i(208714);
-    this.ZTd = new AtomicBoolean(false);
-    this.ZTe = new AtomicBoolean(true);
-    this.ZTc = new com.tencent.h.a.c.d.c(paramc);
-    this.ZTc.ZUM = this;
-    AppMethodBeat.o(208714);
+    AppMethodBeat.i(212148);
+    this.ahXD = new AtomicBoolean(false);
+    this.ahXE = new AtomicBoolean(true);
+    this.ahXC = new com.tencent.h.a.c.d.c(paramc);
+    this.ahXC.ahZl = this;
+    AppMethodBeat.o(212148);
   }
   
-  private void aCq(int paramInt)
+  private static void A(HashMap<Integer, d> paramHashMap)
   {
-    AppMethodBeat.i(208737);
-    this.ZQg.removeMessages(paramInt);
-    AppMethodBeat.o(208737);
-  }
-  
-  private void iue()
-  {
-    AppMethodBeat.i(208734);
-    aCq(3);
-    aCq(7);
-    AppMethodBeat.o(208734);
-  }
-  
-  private void iuf()
-  {
-    AppMethodBeat.i(208739);
-    itQ();
-    y(this.ZSD.ZSH.BCY);
-    iue();
-    this.ZTc.esN();
-    AppMethodBeat.o(208739);
-  }
-  
-  private static void x(HashMap<Integer, d> paramHashMap)
-  {
-    AppMethodBeat.i(208730);
+    AppMethodBeat.i(212158);
     if ((paramHashMap == null) || (paramHashMap.isEmpty()))
     {
-      AppMethodBeat.o(208730);
+      AppMethodBeat.o(212158);
       return;
     }
     paramHashMap = paramHashMap.entrySet().iterator();
@@ -83,18 +57,18 @@ public final class c
     {
       d locald = (d)((Map.Entry)paramHashMap.next()).getValue();
       if ((locald != null) && (locald != null)) {
-        locald.itZ();
+        locald.kdv();
       }
     }
-    AppMethodBeat.o(208730);
+    AppMethodBeat.o(212158);
   }
   
-  private static void y(HashMap<Integer, d> paramHashMap)
+  private static void B(HashMap<Integer, d> paramHashMap)
   {
-    AppMethodBeat.i(208732);
+    AppMethodBeat.i(212166);
     if ((paramHashMap == null) || (paramHashMap.isEmpty()))
     {
-      AppMethodBeat.o(208732);
+      AppMethodBeat.o(212166);
       return;
     }
     paramHashMap = paramHashMap.entrySet().iterator();
@@ -103,120 +77,149 @@ public final class c
       d locald = (d)((Map.Entry)paramHashMap.next()).getValue();
       if ((locald != null) && (locald != null))
       {
-        locald.TV();
-        locald.IG(false);
+        if (!locald.stop()) {}
+        for (boolean bool = true;; bool = false)
+        {
+          locald.OI(bool);
+          break;
+        }
       }
     }
-    AppMethodBeat.o(208732);
+    AppMethodBeat.o(212166);
+  }
+  
+  private void aJd(int paramInt)
+  {
+    AppMethodBeat.i(212175);
+    this.ahWL.removeMessages(paramInt);
+    AppMethodBeat.o(212175);
+  }
+  
+  private void kdA()
+  {
+    AppMethodBeat.i(212171);
+    aJd(3);
+    aJd(7);
+    AppMethodBeat.o(212171);
+  }
+  
+  private void kdB()
+  {
+    AppMethodBeat.i(212181);
+    kdm();
+    B(this.ahXd.ahXh.HlG);
+    kdA();
+    this.ahXC.fzH();
+    AppMethodBeat.o(212181);
   }
   
   public final boolean a(h.a parama, com.tencent.h.a.b.c paramc)
   {
-    AppMethodBeat.i(208717);
+    AppMethodBeat.i(212202);
     super.a(parama, paramc);
-    y(1, parama);
-    AppMethodBeat.o(208717);
+    S(1, parama);
+    AppMethodBeat.o(212202);
     return true;
   }
   
   public final boolean a(i.a parama, long paramLong)
   {
-    AppMethodBeat.i(208720);
+    AppMethodBeat.i(212219);
     super.a(parama, paramLong);
     parama = new a.a(this, new Object[] { parama });
-    if (this.ZQg != null)
+    if (this.ahWL != null)
     {
-      Message localMessage = this.ZQg.obtainMessage();
+      Message localMessage = this.ahWL.obtainMessage();
       localMessage.what = 4;
       localMessage.arg1 = 6;
       localMessage.obj = parama;
-      this.ZQg.sendMessageDelayed(localMessage, paramLong);
+      this.ahWL.sendMessageDelayed(localMessage, paramLong);
     }
-    AppMethodBeat.o(208720);
+    AppMethodBeat.o(212219);
     return true;
   }
   
-  public final boolean adH()
+  public final boolean aFF()
   {
-    AppMethodBeat.i(208727);
-    boolean bool = this.ZTe.get();
-    AppMethodBeat.o(208727);
+    AppMethodBeat.i(212232);
+    boolean bool = this.ahXE.get();
+    AppMethodBeat.o(212232);
     return bool;
   }
   
-  public final boolean adI()
+  public final boolean aFG()
   {
-    AppMethodBeat.i(208729);
-    if (!this.ZTd.get())
+    AppMethodBeat.i(212238);
+    if (!this.ahXD.get())
     {
-      AppMethodBeat.o(208729);
+      AppMethodBeat.o(212238);
       return true;
     }
-    AppMethodBeat.o(208729);
+    AppMethodBeat.o(212238);
     return false;
   }
   
   public final void destroy()
   {
-    AppMethodBeat.i(208724);
+    AppMethodBeat.i(212227);
     super.destroy();
-    aCp(8);
-    AppMethodBeat.o(208724);
+    aJc(8);
+    AppMethodBeat.o(212227);
   }
   
-  public final boolean itL()
+  public final boolean kdh()
   {
-    AppMethodBeat.i(208718);
-    itI();
-    AppMethodBeat.o(208718);
+    AppMethodBeat.i(212209);
+    kde();
+    AppMethodBeat.o(212209);
     return true;
   }
   
-  public final boolean itM()
+  public final boolean kdi()
   {
-    AppMethodBeat.i(208719);
-    k(4, 5, null);
-    AppMethodBeat.o(208719);
+    AppMethodBeat.i(212214);
+    l(4, 5, null);
+    AppMethodBeat.o(212214);
     return true;
   }
   
-  public final boolean itN()
+  public final boolean kdj()
   {
-    AppMethodBeat.i(208721);
-    k(4, 7, null);
-    AppMethodBeat.o(208721);
+    AppMethodBeat.i(212225);
+    l(4, 7, null);
+    AppMethodBeat.o(212225);
     return true;
   }
   
-  public final void q(Message paramMessage)
+  public final void y(Message paramMessage)
   {
-    AppMethodBeat.i(208715);
+    AppMethodBeat.i(212195);
     Object localObject;
     switch (paramMessage.what)
     {
     default: 
-      AppMethodBeat.o(208715);
+      AppMethodBeat.o(212195);
       return;
     case 1: 
-      if (this.ZTd.get())
+      if (this.ahXD.get())
       {
         i.i("sensor_MasterEngine", "[method: consumeMessage ] MSG_START_TASK started");
-        AppMethodBeat.o(208715);
+        AppMethodBeat.o(212195);
         return;
       }
-      this.ZSC = ((h.a)paramMessage.obj);
-      itR();
-      itP();
+      this.ahXc = ((h.a)paramMessage.obj);
+      kdn();
+      kdl();
       i.d("sensor_MasterEngine", "[method: consumeMessage ] MSG_START_TASK");
-      this.ZTd.set(true);
-      aCq(1);
-      aCq(3);
-      aCq(7);
-      this.ZTc.a(this);
-      paramMessage = this.ZSD.ZSH.BCY;
+      this.ahXD.set(true);
+      aJd(1);
+      aJd(3);
+      aJd(7);
+      this.ahXC.a(this);
+      paramMessage = this.ahXd.ahXh.HlG;
       if ((paramMessage == null) || (paramMessage.isEmpty()))
       {
-        AppMethodBeat.o(208715);
+        AppMethodBeat.o(212195);
         return;
       }
       paramMessage = paramMessage.entrySet().iterator();
@@ -228,105 +231,98 @@ public final class c
         {
           locald.a(this);
           ((Integer)((Map.Entry)localObject).getKey()).intValue();
-          if ((locald != null) && (!locald.iua())) {
-            locald.IG(locald.itY());
+          if ((locald != null) && (!locald.kdw())) {
+            locald.OI(locald.kdu());
           }
         }
       }
-      AppMethodBeat.o(208715);
+      AppMethodBeat.o(212195);
       return;
     case 2: 
-      i.i("sensor_MasterEngine", "[method: consumeMessage ] MSG_RESUME_TASK : " + this.ZTe.get());
-      if (!this.ZTe.get())
+      i.i("sensor_MasterEngine", "[method: consumeMessage ] MSG_RESUME_TASK : " + this.ahXE.get());
+      if (!this.ahXE.get())
       {
         i.i("sensor_MasterEngine", "[method: consumeMessage ] resumed");
-        AppMethodBeat.o(208715);
+        AppMethodBeat.o(212195);
         return;
       }
-      this.ZTc.iur();
-      this.ZTe.set(false);
-      AppMethodBeat.o(208715);
+      this.ahXC.kdN();
+      this.ahXE.set(false);
+      AppMethodBeat.o(212195);
       return;
     case 3: 
-      if ((!this.ZTd.get()) || (this.ZTe.get()))
+      if ((!this.ahXD.get()) || (this.ahXE.get()))
       {
-        this.ZTc.z(paramMessage.arg1, paramMessage.obj);
-        AppMethodBeat.o(208715);
+        this.ahXC.T(paramMessage.arg1, paramMessage.obj);
+        AppMethodBeat.o(212195);
         return;
       }
-      this.ZTc.A(paramMessage.arg1, paramMessage.obj);
-      AppMethodBeat.o(208715);
+      this.ahXC.U(paramMessage.arg1, paramMessage.obj);
+      AppMethodBeat.o(212195);
       return;
     case 5: 
-      i.i("sensor_MasterEngine", "[method: consumeMessage ] MSG_PAUSE_TASK : " + this.ZTe.get());
-      if (this.ZTe.get())
+      i.i("sensor_MasterEngine", "[method: consumeMessage ] MSG_PAUSE_TASK : " + this.ahXE.get());
+      if (this.ahXE.get())
       {
-        AppMethodBeat.o(208715);
+        AppMethodBeat.o(212195);
         return;
       }
-      this.ZTe.set(true);
-      this.ZTc.IH(true);
-      AppMethodBeat.o(208715);
+      this.ahXE.set(true);
+      this.ahXC.OJ(true);
+      AppMethodBeat.o(212195);
       return;
     case 4: 
-      x(this.ZSD.ZSH.BCY);
+      A(this.ahXd.ahXh.HlG);
       i.i("sensor_MasterEngine", "[method: consumeMessage ] MSG_NOTIFY_TASK_STOP msg.arg1 : " + paramMessage.arg1);
       if ((paramMessage.arg1 == 5) || (paramMessage.arg1 == 7))
       {
-        aCp(paramMessage.arg1);
-        AppMethodBeat.o(208715);
+        aJc(paramMessage.arg1);
+        AppMethodBeat.o(212195);
         return;
       }
-      y(paramMessage.arg1, paramMessage.obj);
-      AppMethodBeat.o(208715);
+      S(paramMessage.arg1, paramMessage.obj);
+      AppMethodBeat.o(212195);
       return;
     case 6: 
-      if (!this.ZTd.get())
+      if (!this.ahXD.get())
       {
-        AppMethodBeat.o(208715);
+        AppMethodBeat.o(212195);
         return;
       }
-      this.ZTd.set(false);
-      this.ZTe.set(true);
-      itQ();
+      this.ahXD.set(false);
+      this.ahXE.set(true);
+      kdm();
       i.i("sensor_MasterEngine", "[method: consumeMessage ] MSG_STOP_TASK_DELAY : ");
       paramMessage = (a.a)paramMessage.obj;
-      itJ();
-      if (paramMessage.ZSG.length <= 0) {
+      kdf();
+      if (paramMessage.ahXg.length <= 0) {
         break;
       }
     }
-    for (paramMessage = (i.a)paramMessage.ZSG[0];; paramMessage = null)
+    for (paramMessage = (i.a)paramMessage.ahXg[0];; paramMessage = null)
     {
-      localObject = this.ZTc;
+      localObject = this.ahXC;
       if (paramMessage != null) {}
-      for (boolean bool = paramMessage.ZSa;; bool = true)
+      for (boolean bool = paramMessage.ahWx;; bool = true)
       {
-        ((com.tencent.h.a.c.d.c)localObject).IH(bool);
-        AppMethodBeat.o(208715);
+        ((com.tencent.h.a.c.d.c)localObject).OJ(bool);
+        AppMethodBeat.o(212195);
         return;
       }
       i.i("sensor_MasterEngine", "[method: consumeMessage ] MSG_STOP_TASK_IMMEDIATELY");
-      iuf();
-      AppMethodBeat.o(208715);
+      kdB();
+      AppMethodBeat.o(212195);
       return;
       i.i("sensor_MasterEngine", "[method: consumeMessage ] MSG_DESTROY");
-      iuf();
-      if (this.ZQg != null) {
-        this.ZQg.removeCallbacksAndMessages(null);
-      }
-      if (this.mHandlerThread == null) {
-        break;
-      }
-      i.i("sensor_AsyncWorker", "[method: quitHandlerThread ] ");
-      this.mHandlerThread.quit();
+      kdB();
+      kdd();
       break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.h.a.c.c
  * JD-Core Version:    0.7.0.1
  */

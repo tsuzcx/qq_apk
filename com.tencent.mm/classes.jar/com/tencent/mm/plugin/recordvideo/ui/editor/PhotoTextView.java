@@ -11,37 +11,37 @@ import android.text.Layout;
 import android.util.AttributeSet;
 import androidx.appcompat.widget.AppCompatTextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.cd.a;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/PhotoTextView;", "Landroidx/appcompat/widget/AppCompatTextView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "mBgColor", "", "paint", "Landroid/graphics/Paint;", "path", "Landroid/graphics/Path;", "radius", "", "rectF", "Landroid/graphics/RectF;", "drawBg", "", "canvas", "Landroid/graphics/Canvas;", "onDraw", "setTextBackground", "color", "plugin-recordvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/PhotoTextView;", "Landroidx/appcompat/widget/AppCompatTextView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "mBgColor", "", "paint", "Landroid/graphics/Paint;", "path", "Landroid/graphics/Path;", "radius", "", "rectF", "Landroid/graphics/RectF;", "drawBg", "", "canvas", "Landroid/graphics/Canvas;", "onDraw", "setTextBackground", "color", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class PhotoTextView
   extends AppCompatTextView
 {
-  private final Path aBZ;
-  private final RectF byj;
+  private final RectF avO;
   private int mBgColor;
   private final Paint paint;
+  private final Path path;
   private final float radius;
   
   public PhotoTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(216172);
-    this.aBZ = new Path();
+    AppMethodBeat.i(279904);
+    this.path = new Path();
     this.paint = new Paint();
-    this.byj = new RectF();
+    this.avO = new RectF();
     this.radius = a.fromDPToPix(paramContext, 12);
     this.paint.setStyle(Paint.Style.FILL);
     this.paint.setAntiAlias(true);
-    AppMethodBeat.o(216172);
+    AppMethodBeat.o(279904);
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(216170);
-    p.k(paramCanvas, "canvas");
+    AppMethodBeat.i(279923);
+    s.u(paramCanvas, "canvas");
     int i;
     float f2;
     float f1;
@@ -58,7 +58,7 @@ public final class PhotoTextView
       {
         this.paint.setColor(this.mBgColor);
         f2 = this.radius * 2.0F;
-        this.aBZ.reset();
+        this.path.reset();
         if (getLineCount() != 0)
         {
           f1 = getLayout().getLineBottom(getLineCount() - 1) + getPaddingTop() + getPaddingBottom();
@@ -68,17 +68,17 @@ public final class PhotoTextView
           f2 = getLayout().getLineWidth(0);
           f3 = getPaddingLeft();
           f4 = getPaddingRight();
-          this.byj.set(0.0F, 0.0F, f2 + f3 + f4, f1);
-          this.aBZ.addRoundRect(this.byj, this.radius, this.radius, Path.Direction.CW);
+          this.avO.set(0.0F, 0.0F, f2 + f3 + f4, f1);
+          this.path.addRoundRect(this.avO, this.radius, this.radius, Path.Direction.CW);
         }
       }
     }
     for (;;)
     {
-      this.aBZ.close();
-      paramCanvas.drawPath(this.aBZ, this.paint);
+      this.path.close();
+      paramCanvas.drawPath(this.path, this.paint);
       super.onDraw(paramCanvas);
-      AppMethodBeat.o(216170);
+      AppMethodBeat.o(279923);
       return;
       label206:
       i = 0;
@@ -88,42 +88,42 @@ public final class PhotoTextView
       float f5 = getLayout().getLineWidth(getLineCount() - 1);
       if (f5 >= f3 - f2 - getPaddingLeft() - getPaddingRight())
       {
-        this.byj.set(0.0F, 0.0F, f3, f1);
-        this.aBZ.addRoundRect(this.byj, this.radius, this.radius, Path.Direction.CW);
+        this.avO.set(0.0F, 0.0F, f3, f1);
+        this.path.addRoundRect(this.avO, this.radius, this.radius, Path.Direction.CW);
       }
       else
       {
         f4 = getLayout().getLineTop(getLineCount() - 1) + getPaddingTop() + getPaddingBottom();
         f5 = f5 + getPaddingRight() + getPaddingLeft();
-        this.aBZ.moveTo(0.0F, this.radius);
-        this.byj.set(0.0F, 0.0F, f2, f2);
-        this.aBZ.arcTo(this.byj, 180.0F, 90.0F);
-        this.aBZ.lineTo(f3 - f2, 0.0F);
-        this.byj.set(f3 - f2, 0.0F, f3, f2);
-        this.aBZ.arcTo(this.byj, 270.0F, 90.0F);
-        this.aBZ.lineTo(f3, f4 - this.radius);
-        this.byj.set(f3 - f2, f4 - f2, f3, f4);
-        this.aBZ.arcTo(this.byj, 0.0F, 90.0F);
-        this.aBZ.lineTo(this.radius + f5, f4);
-        this.byj.set(f5, f4, f5 + f2, f4 + f2);
-        this.aBZ.arcTo(this.byj, 270.0F, -90.0F);
-        this.aBZ.lineTo(f5, f1 - this.radius);
-        this.byj.set(f5 - f2, f1 - f2, f5, f1);
-        this.aBZ.arcTo(this.byj, 0.0F, 90.0F);
-        this.aBZ.lineTo(this.radius, f1);
-        this.byj.set(0.0F, f1 - f2, f2, f1);
-        this.aBZ.arcTo(this.byj, 90.0F, 90.0F);
-        this.aBZ.lineTo(0.0F, this.radius);
+        this.path.moveTo(0.0F, this.radius);
+        this.avO.set(0.0F, 0.0F, f2, f2);
+        this.path.arcTo(this.avO, 180.0F, 90.0F);
+        this.path.lineTo(f3 - f2, 0.0F);
+        this.avO.set(f3 - f2, 0.0F, f3, f2);
+        this.path.arcTo(this.avO, 270.0F, 90.0F);
+        this.path.lineTo(f3, f4 - this.radius);
+        this.avO.set(f3 - f2, f4 - f2, f3, f4);
+        this.path.arcTo(this.avO, 0.0F, 90.0F);
+        this.path.lineTo(this.radius + f5, f4);
+        this.avO.set(f5, f4, f5 + f2, f4 + f2);
+        this.path.arcTo(this.avO, 270.0F, -90.0F);
+        this.path.lineTo(f5, f1 - this.radius);
+        this.avO.set(f5 - f2, f1 - f2, f5, f1);
+        this.path.arcTo(this.avO, 0.0F, 90.0F);
+        this.path.lineTo(this.radius, f1);
+        this.avO.set(0.0F, f1 - f2, f2, f1);
+        this.path.arcTo(this.avO, 90.0F, 90.0F);
+        this.path.lineTo(0.0F, this.radius);
       }
     }
   }
   
   public final void setTextBackground(int paramInt)
   {
-    AppMethodBeat.i(216167);
+    AppMethodBeat.i(279910);
     this.mBgColor = paramInt;
     invalidate();
-    AppMethodBeat.o(216167);
+    AppMethodBeat.o(279910);
   }
 }
 

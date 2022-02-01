@@ -11,19 +11,21 @@ public final class d
     super(paramContext, null);
   }
   
-  public final void DS(boolean paramBoolean) {}
+  public final void JA(boolean paramBoolean) {}
   
-  public final void hjm() {}
+  public final void Jy(boolean paramBoolean) {}
   
-  public final void hjn() {}
+  public final void Jz(boolean paramBoolean) {}
   
-  public final void hjo() {}
+  public final void bDL() {}
   
-  public final void hjp() {}
+  public final void iKg() {}
   
-  public final void hjq() {}
+  public final void iKh() {}
   
-  public final void hjr() {}
+  public final void iKi() {}
+  
+  public final void iKj() {}
   
   public final void onPause() {}
   
@@ -39,6 +41,8 @@ public final class d
   
   public final void setShowClose(boolean paramBoolean) {}
   
+  public final void setShowSearch(boolean paramBoolean) {}
+  
   public final void setShowSend(boolean paramBoolean) {}
   
   public final void setShowSmiley(boolean paramBoolean) {}
@@ -51,7 +55,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.d
  * JD-Core Version:    0.7.0.1
  */

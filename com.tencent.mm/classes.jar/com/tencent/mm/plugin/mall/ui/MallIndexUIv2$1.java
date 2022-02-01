@@ -1,17 +1,19 @@
 package com.tencent.mm.plugin.mall.ui;
 
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.ps;
+import com.tencent.mm.autogen.a.rf;
 import com.tencent.mm.sdk.event.IListener;
 
-final class MallIndexUIv2$1
-  extends IListener<ps>
+class MallIndexUIv2$1
+  extends IListener<rf>
 {
-  MallIndexUIv2$1(MallIndexUIv2 paramMallIndexUIv2)
+  MallIndexUIv2$1(MallIndexUIv2 paramMallIndexUIv2, q paramq)
   {
-    AppMethodBeat.i(275495);
-    this.__eventId = ps.class.getName().hashCode();
-    AppMethodBeat.o(275495);
+    super(paramq);
+    AppMethodBeat.i(262415);
+    this.__eventId = rf.class.getName().hashCode();
+    AppMethodBeat.o(262415);
   }
 }
 

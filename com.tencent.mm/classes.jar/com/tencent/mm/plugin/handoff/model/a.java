@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.handoff.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"cdata", "", "", "api-handoff_release"})
+@Metadata(d1={""}, d2={"cdata", "", "", "api-handoff_release"}, k=2, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public static final String dy(Object paramObject)
+  public static final String fP(Object paramObject)
   {
     AppMethodBeat.i(121712);
-    p.k(paramObject, "$this$cdata");
+    s.u(paramObject, "<this>");
     paramObject = "<![CDATA[" + paramObject + "]]>";
     AppMethodBeat.o(121712);
     return paramObject;

@@ -5,24 +5,24 @@ import android.os.Looper;
 import com.tencent.kinda.gen.KCgi;
 import com.tencent.kinda.gen.KNetworkMockManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.ad.a.a;
-import com.tencent.mm.plugin.ad.a.c;
+import com.tencent.mm.plugin.ae.a.a;
+import com.tencent.mm.plugin.ae.a.c;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class WXPNetSceneBase
-  extends q
+  extends p
   implements m
 {
   private static final String TAG = "MicroMsg.KindaLibWXPNetSceneBase";
   private KCgi cgi;
   private int cgiId;
   private String cgiUri;
-  private i onSceneEndCallback;
+  private h onSceneEndCallback;
   private int respCmdId;
   private WXPCommReqResp wxpCommReqResp;
   
@@ -70,11 +70,11 @@ public class WXPNetSceneBase
     return i;
   }
   
-  public int doScene(g paramg, i parami)
+  public int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(18702);
-    this.onSceneEndCallback = parami;
-    c.fnc().vR(true);
+    this.onSceneEndCallback = paramh;
+    c.gxP().An(true);
     int i = dispatch(paramg, this.wxpCommReqResp, this);
     AppMethodBeat.o(18702);
     return i;
@@ -82,9 +82,9 @@ public class WXPNetSceneBase
   
   protected void finalize()
   {
-    AppMethodBeat.i(264275);
+    AppMethodBeat.i(226682);
     super.finalize();
-    AppMethodBeat.o(264275);
+    AppMethodBeat.o(226682);
   }
   
   public int getType()
@@ -134,7 +134,7 @@ public class WXPNetSceneBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.module.impl.WXPNetSceneBase
  * JD-Core Version:    0.7.0.1
  */

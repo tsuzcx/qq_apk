@@ -11,9 +11,9 @@ public class MainProcessIPCService
   
   static
   {
-    AppMethodBeat.i(205231);
+    AppMethodBeat.i(235712);
     PROCESS_NAME = MMApplicationContext.getPackageName();
-    AppMethodBeat.o(205231);
+    AppMethodBeat.o(235712);
   }
   
   public final String getProcessName()

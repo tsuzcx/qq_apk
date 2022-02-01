@@ -2,23 +2,23 @@ package com.tencent.h.a.b.c.a;
 
 public abstract interface d
 {
-  public abstract void IG(boolean paramBoolean);
-  
-  public abstract boolean TV();
+  public abstract void OI(boolean paramBoolean);
   
   public abstract void a(e parame);
   
   public abstract int getTaskId();
   
-  public abstract boolean itY();
+  public abstract boolean kdu();
   
-  public abstract boolean itZ();
+  public abstract boolean kdv();
   
-  public abstract boolean iua();
+  public abstract boolean kdw();
+  
+  public abstract boolean stop();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.h.a.b.c.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,51 @@
 package com.tencent.mm.plugin.appbrand;
 
+import androidx.core.f.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.utils.r;
-import com.tencent.mm.vending.e.a;
-import java.util.Set;
-import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.concurrent.ConcurrentSkipListSet;
 
-public final class bc
-  implements r
+final class bc
+  implements au
 {
-  final Set<a> nzA;
+  final ConcurrentSkipListSet<au> qyf;
   
-  public bc()
+  bc()
   {
-    AppMethodBeat.i(176540);
-    this.nzA = new CopyOnWriteArraySet();
-    AppMethodBeat.o(176540);
+    AppMethodBeat.i(316589);
+    this.qyf = new ConcurrentSkipListSet(new Comparator() {});
+    AppMethodBeat.o(316589);
   }
   
-  public final void a(a parama)
+  private void b(a<au> parama)
   {
-    AppMethodBeat.i(176542);
-    if (parama != null) {
-      this.nzA.remove(parama);
+    AppMethodBeat.i(316596);
+    Iterator localIterator = new LinkedList(this.qyf).iterator();
+    while (localIterator.hasNext()) {
+      parama.accept((au)localIterator.next());
     }
-    AppMethodBeat.o(176542);
+    AppMethodBeat.o(316596);
   }
   
-  public final void keep(a parama)
+  public final void b(final ap paramap)
   {
-    AppMethodBeat.i(176541);
-    if (parama != null) {
-      this.nzA.add(parama);
-    }
-    AppMethodBeat.o(176541);
+    AppMethodBeat.i(316600);
+    b(new a() {});
+    AppMethodBeat.o(316600);
+  }
+  
+  public final void cdx()
+  {
+    AppMethodBeat.i(316607);
+    b(new a() {});
+    AppMethodBeat.o(316607);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.bc
  * JD-Core Version:    0.7.0.1
  */

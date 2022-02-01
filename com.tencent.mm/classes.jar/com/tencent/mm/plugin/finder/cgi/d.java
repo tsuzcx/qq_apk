@@ -1,95 +1,99 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.upload.action.b;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.plugin.finder.report.z;
 import com.tencent.mm.plugin.findersdk.b.c;
-import com.tencent.mm.protocal.protobuf.bid;
-import com.tencent.mm.protocal.protobuf.cwh;
-import com.tencent.mm.protocal.protobuf.cwi;
-import com.tencent.mm.protocal.protobuf.eaf;
-import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.protocal.protobuf.atz;
+import com.tencent.mm.protocal.protobuf.avd;
+import com.tencent.mm.protocal.protobuf.ave;
+import com.tencent.mm.protocal.protobuf.bui;
+import com.tencent.mm.protocal.protobuf.kd;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.r;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/CgiFavMegaVideo;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/MegaVideoFavResp;", "action", "Lcom/tencent/mm/plugin/finder/upload/action/FavAction;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/plugin/finder/upload/action/FavAction;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "getAction", "()Lcom/tencent/mm/plugin/finder/upload/action/FavAction;", "favId", "", "request", "Lcom/tencent/mm/protocal/protobuf/MegaVideoFavReq;", "initCommReqResp", "", "onCgiEnd", "errType", "", "errCode", "errMsg", "", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/cgi/CgiDeleteFinderComment;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderCommentResponse;", "commentId", "", "feedId", "objectNonceId", "", "scene", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(JJLjava/lang/String;ILcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "onCgiEnd", "", "errType", "errCode", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
-  extends c<cwi>
+  extends c<ave>
 {
-  private static long xar;
-  public static final a xas;
-  private long wGo;
-  private cwh xap;
-  private final b xaq;
+  public static final a Ays;
+  private long commentId;
+  private long feedId;
   
   static
   {
-    AppMethodBeat.i(287695);
-    xas = new a((byte)0);
-    AppMethodBeat.o(287695);
+    AppMethodBeat.i(165160);
+    Ays = new a((byte)0);
+    AppMethodBeat.o(165160);
   }
   
-  public d(b paramb, bid parambid)
+  public d(long paramLong1, long paramLong2, String paramString, int paramInt, bui parambui)
   {
-    super(parambid);
-    AppMethodBeat.i(287694);
-    this.xaq = paramb;
-    this.wGo = cm.bfD();
-    if (this.wGo < xar)
+    super(parambui);
+    AppMethodBeat.i(336283);
+    Object localObject2 = new avd();
+    Object localObject1 = new c.a();
+    ((c.a)localObject1).otE = ((a)localObject2);
+    localObject2 = new ave();
+    ((ave)localObject2).setBaseResponse(new kd());
+    ((c.a)localObject1).otF = ((a)localObject2);
+    ((c.a)localObject1).timeout = 2000;
+    ((c.a)localObject1).uri = "/cgi-bin/micromsg-bin/findercomment";
+    ((c.a)localObject1).funcId = 3906;
+    c(((c.a)localObject1).bEF());
+    Log.i("MicroMsg.Finder.CgiDeleteFinderComment", "CgiReplyFinderComment init");
+    this.commentId = paramLong1;
+    this.feedId = paramLong2;
+    Log.i("MicroMsg.Finder.CgiDeleteFinderComment", "[CgiDeleteFinderComment] commentId=" + paramLong1 + ')');
+    localObject1 = new avd();
+    ((avd)localObject1).commentId = paramLong1;
+    ((avd)localObject1).opType = 1;
+    ((avd)localObject1).hKN = paramLong2;
+    ((avd)localObject1).objectNonceId = paramString;
+    ((avd)localObject1).scene = paramInt;
+    paramString = bi.ABn;
+    ((avd)localObject1).CJv = bi.a(parambui);
+    paramString = z.FrZ;
+    if (parambui == null)
     {
-      l = xar;
-      xar = 1L + l;
-      this.wGo = l;
-    }
-    xar = this.wGo;
-    this.xap = new cwh();
-    paramb = this.xap;
-    as localas = as.xco;
-    paramb.TFa = as.b(parambid);
-    paramb = this.xap;
-    int i;
-    if (this.xaq.ABw)
-    {
-      i = 1;
-      paramb.fSo = i;
-      this.xap.wGo = this.wGo;
-      paramb = this.xap;
-      parambid = com.tencent.mm.plugin.finder.storage.d.AjH;
-      if (!com.tencent.mm.plugin.finder.storage.d.dSu()) {
-        break label425;
+      paramInt = 0;
+      ((avd)localObject1).sessionBuffer = z.p(paramLong2, paramInt);
+      paramString = new c.a();
+      paramString.otE = ((a)localObject1);
+      localObject2 = new ave();
+      ((ave)localObject2).setBaseResponse(new kd());
+      paramString.otF = ((a)localObject2);
+      paramString.timeout = 2000;
+      localObject2 = bi.ABn;
+      localObject1 = ((avd)localObject1).CJv;
+      if (parambui != null) {
+        break label387;
       }
     }
-    label425:
-    for (long l = 0L;; l = this.xaq.feedId)
+    label387:
+    for (paramInt = i;; paramInt = parambui.hLK)
     {
-      paramb.HLs = l;
-      this.xap.SWw = this.xaq.objectNonceId;
-      Log.i("CgiFavMegaVideo", "favId:" + this.wGo + " opType:" + this.xap.fSo + " likeId:" + this.xap.wGo + " action:" + this.xaq.ABw);
-      paramb = new com.tencent.mm.an.d.a();
-      paramb.c((a)this.xap);
-      parambid = new cwi();
-      parambid.setBaseResponse(new jh());
-      parambid.getBaseResponse().Tef = new eaf();
-      paramb.d((a)parambid);
-      paramb.TW("/cgi-bin/micromsg-bin/megavideofav");
-      paramb.vD(6655);
-      c(paramb.bgN());
-      Log.i("CgiFavMegaVideo", "favId:" + this.wGo + " CgiFavMegaVideo init " + this.xap.HLs + " and userName " + this.xaq.ABv.getUserName() + " nickname " + this.xaq.ABv.getNickName() + " totalCount:" + this.xaq.ABv.getFavCount());
-      AppMethodBeat.o(287694);
+      bi.a((atz)localObject1, p.listOf(new r(Integer.valueOf(paramInt), Long.valueOf(paramLong2))));
+      paramString.uri = "/cgi-bin/micromsg-bin/findercomment";
+      paramString.funcId = 3906;
+      c(paramString.bEF());
+      Log.i("MicroMsg.Finder.CgiDeleteFinderComment", "CgiReplyFinderComment init");
+      AppMethodBeat.o(336283);
       return;
-      i = 2;
+      paramInt = parambui.AJo;
       break;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/CgiFavMegaVideo$Companion;", "", "()V", "GlobalFavFeedId", "", "getGlobalFavFeedId", "()J", "setGlobalFavFeedId", "(J)V", "TAG", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/cgi/CgiDeleteFinderComment$Companion;", "", "()V", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.d
  * JD-Core Version:    0.7.0.1
  */

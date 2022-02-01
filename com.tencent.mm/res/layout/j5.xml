@@ -1,19 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/rj"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:scrollbars="none" style="@style/om">
-        <LinearLayout style="@style/lz">
-            <TextView android:gravity="center_horizontal" android:id="@id/a4c" android:layout_marginBottom="@dimen/ir" android:text="@string/af1" style="@style/m0" />
-            <TextView android:gravity="center_horizontal" android:id="@id/a4d" android:visibility="gone" android:layout_marginBottom="@dimen/ir" style="@style/no" />
-            <LinearLayout android:gravity="bottom" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <EditText android:id="@id/a4e" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="@dimen/k5" android:layout_weight="1.0" android:inputType="phone" style="@style/nn" />
-                <Button android:id="@id/a4b" android:layout_width="80.0dip" android:text="@string/aea" style="@style/ow" />
-            </LinearLayout>
-            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip">
-                <Button android:id="@id/a4g" android:visibility="gone" android:layout_marginTop="10.0dip" android:text="@string/afc" style="@style/p5" />
-                <Button android:layout_gravity="center" android:id="@id/b43" android:visibility="gone" android:text="@string/gac" style="@style/t1" />
-            </LinearLayout>
-            <TextView android:gravity="center_horizontal" android:id="@id/a49" android:visibility="gone" style="@style/m0" />
-        </LinearLayout>
-    </ScrollView>
+    <com.tencent.mm.plugin.brandservice.ui.BizSearchResultItemContainer android:id="@id/j4y" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </LinearLayout>

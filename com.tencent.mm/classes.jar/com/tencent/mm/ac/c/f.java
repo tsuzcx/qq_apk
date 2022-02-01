@@ -10,9 +10,9 @@ import org.json.JSONObject;
 
 public final class f
 {
-  a kaZ;
-  d kbi;
-  g kbl;
+  a mBe;
+  d mBn;
+  g mBq;
   
   public f(d paramd, g paramg, a parama)
   {
@@ -20,13 +20,13 @@ public final class f
     Assert.assertNotNull(paramd);
     Assert.assertNotNull(paramg);
     Assert.assertNotNull(parama);
-    this.kbi = paramd;
-    this.kbl = paramg;
-    this.kaZ = parama;
+    this.mBn = paramd;
+    this.mBq = paramg;
+    this.mBe = parama;
     AppMethodBeat.o(144818);
   }
   
-  static String aGk()
+  static String aZl()
   {
     AppMethodBeat.i(144819);
     Object localObject = new HashMap();
@@ -38,7 +38,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ac.c.f
  * JD-Core Version:    0.7.0.1
  */

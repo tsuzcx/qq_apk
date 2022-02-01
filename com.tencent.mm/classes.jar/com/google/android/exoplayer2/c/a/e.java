@@ -8,18 +8,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class e
   extends d
 {
-  private boolean aRO;
-  private final com.google.android.exoplayer2.i.m aSf;
-  private final com.google.android.exoplayer2.i.m aSg;
-  private int aSh;
+  private boolean cLK;
+  private final com.google.android.exoplayer2.i.m cMb;
+  private final com.google.android.exoplayer2.i.m cMc;
+  private int cMd;
   private int frameType;
   
   public e(com.google.android.exoplayer2.c.m paramm)
   {
     super(paramm);
     AppMethodBeat.i(91993);
-    this.aSf = new com.google.android.exoplayer2.i.m(k.bqC);
-    this.aSg = new com.google.android.exoplayer2.i.m(4);
+    this.cMb = new com.google.android.exoplayer2.i.m(k.dkg);
+    this.cMc = new com.google.android.exoplayer2.i.m(4);
     AppMethodBeat.o(91993);
   }
   
@@ -27,38 +27,38 @@ final class e
   {
     AppMethodBeat.i(91995);
     int i = paramm.readUnsignedByte();
-    long l = paramm.vj();
+    long l = paramm.UI();
     Object localObject;
-    if ((i == 0) && (!this.aRO))
+    if ((i == 0) && (!this.cLK))
     {
-      localObject = new com.google.android.exoplayer2.i.m(new byte[paramm.vg()]);
-      paramm.readBytes(((com.google.android.exoplayer2.i.m)localObject).data, 0, paramm.vg());
+      localObject = new com.google.android.exoplayer2.i.m(new byte[paramm.UF()]);
+      paramm.readBytes(((com.google.android.exoplayer2.i.m)localObject).data, 0, paramm.UF());
       paramm = a.K((com.google.android.exoplayer2.i.m)localObject);
-      this.aSh = paramm.aSh;
-      paramm = Format.a(null, "video/avc", paramm.width, paramm.height, paramm.aMS, paramm.bqU);
-      this.aSe.f(paramm);
-      this.aRO = true;
+      this.cMd = paramm.cMd;
+      paramm = Format.a(null, "video/avc", paramm.width, paramm.height, paramm.cGP, paramm.dky);
+      this.cMa.f(paramm);
+      this.cLK = true;
       AppMethodBeat.o(91995);
       return;
     }
-    if ((i == 1) && (this.aRO))
+    if ((i == 1) && (this.cLK))
     {
-      localObject = this.aSg.data;
+      localObject = this.cMc.data;
       localObject[0] = 0;
       localObject[1] = 0;
       localObject[2] = 0;
-      j = this.aSh;
+      j = this.cMd;
       int k;
-      for (i = 0; paramm.vg() > 0; i = i + 4 + k)
+      for (i = 0; paramm.UF() > 0; i = i + 4 + k)
       {
-        paramm.readBytes(this.aSg.data, 4 - j, this.aSh);
-        this.aSg.setPosition(0);
-        k = this.aSg.vo();
-        this.aSf.setPosition(0);
-        this.aSe.a(this.aSf, 4);
-        this.aSe.a(paramm, k);
+        paramm.readBytes(this.cMc.data, 4 - j, this.cMd);
+        this.cMc.setPosition(0);
+        k = this.cMc.UN();
+        this.cMb.setPosition(0);
+        this.cMa.a(this.cMb, 4);
+        this.cMa.a(paramm, k);
       }
-      paramm = this.aSe;
+      paramm = this.cMa;
       if (this.frameType != 1) {
         break label294;
       }
@@ -96,7 +96,7 @@ final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.c.a.e
  * JD-Core Version:    0.7.0.1
  */

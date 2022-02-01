@@ -1,94 +1,96 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
+import i.a.a.b;
 import java.util.LinkedList;
 
 public final class dpl
-  extends dyy
+  extends com.tencent.mm.bx.a
 {
+  public akq aaWm;
+  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32387);
+    AppMethodBeat.i(43108);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.aaWm == null)
       {
-        paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(32387);
+        paramVarArgs = new b("Not all required fields were included: DisturbSetting");
+        AppMethodBeat.o(43108);
         throw paramVarArgs;
       }
-      if (this.BaseResponse != null)
+      if (this.aaWm != null)
       {
-        paramVarArgs.oE(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+        paramVarArgs.qD(1, this.aaWm.computeSize());
+        this.aaWm.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(32387);
+      AppMethodBeat.o(43108);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label347;
+      if (this.aaWm == null) {
+        break label332;
       }
     }
-    label347:
-    for (paramInt = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label332:
+    for (paramInt = i.a.a.a.qC(1, this.aaWm.computeSize()) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(32387);
+      AppMethodBeat.o(43108);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.BaseResponse == null)
+        if (this.aaWm == null)
         {
-          paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(32387);
+          paramVarArgs = new b("Not all required fields were included: DisturbSetting");
+          AppMethodBeat.o(43108);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(32387);
+        AppMethodBeat.o(43108);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         dpl localdpl = (dpl)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(32387);
+          AppMethodBeat.o(43108);
           return -1;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
         int i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject = (byte[])paramVarArgs.get(paramInt);
-          jh localjh = new jh();
+          akq localakq = new akq();
           if ((localObject != null) && (localObject.length > 0)) {
-            localjh.parseFrom((byte[])localObject);
+            localakq.parseFrom((byte[])localObject);
           }
-          localdpl.BaseResponse = localjh;
+          localdpl.aaWm = localakq;
           paramInt += 1;
         }
-        AppMethodBeat.o(32387);
+        AppMethodBeat.o(43108);
         return 0;
       }
-      AppMethodBeat.o(32387);
+      AppMethodBeat.o(43108);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dpl
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ public class PluginDownloaderApp
   public void execute(g paramg)
   {
     AppMethodBeat.i(8782);
-    if (paramg.aIE())
+    if (paramg.bbA())
     {
       h.b(com.tencent.mm.plugin.downloader_app.api.d.class, new d());
       h.b(com.tencent.mm.plugin.downloader_app.api.b.class, new a());
@@ -26,24 +26,24 @@ public class PluginDownloaderApp
   public void onAccountInitialized(f.c paramc)
   {
     AppMethodBeat.i(8783);
-    com.tencent.mm.plugin.downloader_app.a.d.cPR();
-    j.cQJ();
-    paramc = e.cQB();
-    ((com.tencent.mm.plugin.ball.c.b)h.ae(com.tencent.mm.plugin.ball.c.b.class)).a(16, paramc.old);
-    ((com.tencent.mm.plugin.teenmode.a.b)h.ae(com.tencent.mm.plugin.teenmode.a.b.class)).a(paramc.nCC);
-    com.tencent.mm.plugin.downloader.b.a.a(paramc.umf);
+    com.tencent.mm.plugin.downloader_app.a.d.duo();
+    j.dvc();
+    paramc = e.duU();
+    ((com.tencent.mm.plugin.ball.c.b)h.ax(com.tencent.mm.plugin.ball.c.b.class)).a(16, paramc.roL);
+    ((com.tencent.mm.plugin.teenmode.a.d)h.ax(com.tencent.mm.plugin.teenmode.a.d.class)).a(paramc.qCv);
+    com.tencent.mm.plugin.downloader.event.a.a(paramc.xsr);
     AppMethodBeat.o(8783);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(8784);
-    com.tencent.mm.plugin.downloader_app.a.d.cPS();
+    com.tencent.mm.plugin.downloader_app.a.d.cuD();
     j.stop();
-    e locale = e.cQB();
-    ((com.tencent.mm.plugin.ball.c.b)h.ae(com.tencent.mm.plugin.ball.c.b.class)).b(16, locale.old);
-    ((com.tencent.mm.plugin.teenmode.a.b)h.ae(com.tencent.mm.plugin.teenmode.a.b.class)).b(locale.nCC);
-    com.tencent.mm.plugin.downloader.b.a.b(locale.umf);
+    e locale = e.duU();
+    ((com.tencent.mm.plugin.ball.c.b)h.ax(com.tencent.mm.plugin.ball.c.b.class)).b(16, locale.roL);
+    ((com.tencent.mm.plugin.teenmode.a.d)h.ax(com.tencent.mm.plugin.teenmode.a.d.class)).b(locale.qCv);
+    com.tencent.mm.plugin.downloader.event.a.b(locale.xsr);
     AppMethodBeat.o(8784);
   }
 }

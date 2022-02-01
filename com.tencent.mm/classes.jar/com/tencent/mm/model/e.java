@@ -1,96 +1,99 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.h.a;
-import com.tencent.mm.an.h.b;
-import com.tencent.mm.an.h.c;
-import com.tencent.mm.f.c.ax;
-import com.tencent.mm.f.c.et;
+import com.tencent.mm.am.g;
+import com.tencent.mm.am.g.a;
+import com.tencent.mm.am.g.b;
+import com.tencent.mm.am.g.c;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.cp.a;
+import com.tencent.mm.cp.a.a;
 import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.c;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
-import com.tencent.mm.plugin.messenger.foundation.a.w;
-import com.tencent.mm.protocal.protobuf.db;
+import com.tencent.mm.protocal.protobuf.dl;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.az;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.bw;
-import com.tencent.mm.storage.ca;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bb;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.by;
+import com.tencent.mm.storage.cc;
 
 public class e
-  implements com.tencent.mm.an.h
+  implements g
 {
-  private static final e.a lri;
+  private static final a oiJ;
   
   static
   {
     AppMethodBeat.i(42771);
-    lri = new e.a();
+    oiJ = new a();
     AppMethodBeat.o(42771);
   }
   
   public static void a(c paramc)
   {
     AppMethodBeat.i(42768);
-    lri.add(paramc);
+    oiJ.add(paramc);
     AppMethodBeat.o(42768);
   }
   
-  protected ca a(h.a parama, String paramString1, String paramString2, String paramString3)
+  protected cc a(g.a parama, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(240579);
-    db localdb = parama.jQG;
+    AppMethodBeat.i(241933);
+    dl localdl = parama.mpN;
     if (paramString3.equals(paramString1)) {}
     for (parama = paramString2;; parama = paramString1)
     {
-      paramString3 = ((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().aL(parama, localdb.HlH);
-      Log.i("MicroMsg.BaseMsgExtension", "summerbadcr dkmsgid prepareMsgInfo svrid:%d localid:%d  from:%s to:%s talker:%s", new Object[] { Long.valueOf(localdb.HlH), Long.valueOf(paramString3.field_msgId), paramString1, paramString2, parama });
-      if ((paramString3.field_msgId != 0L) && (paramString3.field_createTime + 604800000L < bq.z(parama, localdb.CreateTime)))
+      paramString3 = ((n)h.ax(n.class)).gaZ().aU(parama, localdl.Njv);
+      Log.i("MicroMsg.BaseMsgExtension", "summerbadcr dkmsgid prepareMsgInfo svrid:%d localid:%d  from:%s to:%s talker:%s", new Object[] { Long.valueOf(localdl.Njv), Long.valueOf(paramString3.field_msgId), paramString1, paramString2, parama });
+      if ((paramString3.field_msgId != 0L) && (paramString3.getCreateTime() + 604800000L < br.D(parama, localdl.CreateTime)))
       {
-        Log.w("MicroMsg.BaseMsgExtension", "dkmsgid prepareMsgInfo msg Too Old Remove it. svrid:%d localid:%d", new Object[] { Long.valueOf(localdb.HlH), Long.valueOf(paramString3.field_msgId) });
-        bq.Gk(paramString3.field_msgId);
+        Log.w("MicroMsg.BaseMsgExtension", "dkmsgid prepareMsgInfo msg Too Old Remove it. svrid:%d localid:%d", new Object[] { Long.valueOf(localdl.Njv), Long.valueOf(paramString3.field_msgId) });
+        br.iu(paramString3.field_msgId);
         paramString3.setMsgId(0L);
       }
       paramString1 = paramString3;
       if (paramString3.field_msgId == 0L)
       {
-        paramString1 = new ca();
-        paramString1.Jm(parama);
-        paramString1.EG(localdb.HlH);
-        paramString1.setCreateTime(bq.z(parama, localdb.CreateTime));
-        paramString1.setType(localdb.COi);
-        paramString1.setContent(Util.escapeStringForUCC(Util.nullAsNil(com.tencent.mm.platformtools.z.a(localdb.RIF))));
+        paramString1 = new cc();
+        paramString1.BS(parama);
+        paramString1.gX(localdl.Njv);
+        paramString1.setCreateTime(br.D(parama, localdl.CreateTime));
+        paramString1.setType(localdl.IIs);
+        paramString1.setContent(Util.escapeStringForUCC(Util.nullAsNil(com.tencent.mm.platformtools.w.a(localdl.YFG))));
       }
-      AppMethodBeat.o(240579);
+      AppMethodBeat.o(241933);
       return paramString1;
     }
   }
   
-  public h.b b(h.a parama)
+  public g.b b(g.a parama)
   {
     AppMethodBeat.i(42769);
-    Object localObject1 = parama.jQG;
-    Object localObject2 = (String)com.tencent.mm.kernel.h.aHG().aHp().b(2, "");
+    Object localObject1 = parama.mpN;
+    Object localObject2 = (String)h.baE().ban().d(2, "");
     if (((String)localObject2).length() <= 0)
     {
       AppMethodBeat.o(42769);
       return null;
     }
-    String str1 = com.tencent.mm.platformtools.z.a(((db)localObject1).RID);
-    String str3 = com.tencent.mm.platformtools.z.a(((db)localObject1).RIE);
+    String str1 = com.tencent.mm.platformtools.w.a(((dl)localObject1).YFE);
+    String str3 = com.tencent.mm.platformtools.w.a(((dl)localObject1).YFF);
     if ((Util.nullAsNil(str1).length() <= 0) || (Util.nullAsNil(str3).length() <= 0))
     {
       Log.e("MicroMsg.BaseMsgExtension", "neither from-user nor to-user can be empty");
       AppMethodBeat.o(42769);
       return null;
     }
-    ca localca = a(parama, str1, str3, (String)localObject2);
-    if (localca == null)
+    cc localcc = a(parama, str1, str3, (String)localObject2);
+    if (localcc == null)
     {
       AppMethodBeat.o(42769);
       return null;
@@ -99,63 +102,63 @@ public class e
     label190:
     boolean bool;
     label224:
-    h.b localb;
+    g.b localb;
     label367:
     String str2;
-    if (!localca.gX)
+    if (!localcc.hS)
     {
-      if ((((n)com.tencent.mm.kernel.h.ae(n.class)).bbU().has(str1)) || (((String)localObject2).equals(str1)))
+      if ((((n)h.ax(n.class)).bzJ().has(str1)) || (((String)localObject2).equals(str1)))
       {
         i = 1;
         if (i == 0) {
           break label669;
         }
-        localca.pJ(1);
-        localca.Jm(str3);
-        i = ((db)localObject1).rVU;
-        localca.setStatus(i);
+        localcc.pI(1);
+        localcc.BS(str3);
+        i = ((dl)localObject1).vhk;
+        localcc.setStatus(i);
       }
     }
     else
     {
-      if (((db)localObject1).COi == 10000) {
-        localca.setStatus(4);
+      if (((dl)localObject1).IIs == 10000) {
+        localcc.setStatus(4);
       }
-      if (localca.field_isSend != 1) {
+      if (localcc.field_isSend != 1) {
         break label705;
       }
       bool = true;
-      localca.Ip(((db)localObject1).RII);
-      if (localca.bwY(z.bcZ()))
+      localcc.AU(((dl)localObject1).YFJ);
+      if (localcc.byr(z.bAM()))
       {
-        localObject2 = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbR().bwx(localca.field_talker);
+        localObject2 = ((n)h.ax(n.class)).bzG().bxM(localcc.field_talker);
         if (localObject2 != null)
         {
-          ((az)localObject2).ro(16777216);
-          ((n)com.tencent.mm.kernel.h.ae(n.class)).bbR().a((az)localObject2, localca.field_talker);
+          ((bb)localObject2).rw(16777216);
+          ((n)h.ax(n.class)).bzG().c((bb)localObject2, localcc.field_talker);
         }
       }
-      lri.a(parama, localca, str1, str3, bool);
-      if (localca.field_msgId != 0L) {
+      oiJ.a(parama, localcc, str1, str3, bool);
+      if (localcc.field_msgId != 0L) {
         break label710;
       }
-      localca.setFlag(2);
-      bq.a(localca, parama);
-      localca.setMsgId(bq.z(localca));
-      localb = new h.b(localca, true);
-      if (!Util.isNullOrNil(localca.field_content))
+      localcc.setFlag(2);
+      br.a(localcc, parama);
+      localcc.setMsgId(br.B(localcc));
+      localb = new g.b(localcc, true);
+      if (!Util.isNullOrNil(localcc.field_content))
       {
         if (!bool) {
           break label750;
         }
         str2 = str3;
         label386:
-        if ((!parama.lCc) && (((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aKT(str2)))
+        if ((!parama.otM) && (((com.tencent.mm.plugin.messenger.foundation.a.l)h.ax(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aHK(str2)))
         {
           if (!bool) {
             break label757;
           }
-          localObject2 = localca.field_content;
+          localObject2 = localcc.field_content;
           localObject1 = str1;
         }
       }
@@ -165,30 +168,30 @@ public class e
       if (BuildInfo.DEBUG) {
         Log.d("MicroMsg.BaseMsgExtension", "onPreAddMessage() isSender:%s fromUser:%s creator:%s content:%s", new Object[] { Boolean.valueOf(bool), str1, localObject1, Util.nullAs((String)localObject2, "null") });
       }
-      ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.l.class)).a(str2, (String)localObject1, (String)localObject2, localca.field_msgId, localca.field_createTime / 1000L);
-      if ((localca.hAl()) && (ab.PP(localca.field_talker)) && (((w)com.tencent.mm.kernel.h.ae(w.class)).asb()))
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)h.ax(com.tencent.mm.plugin.messenger.foundation.a.l.class)).b(str2, (String)localObject1, (String)localObject2, localcc.field_msgId, localcc.getCreateTime() / 1000L);
+      if ((localcc.jcs()) && (au.bwG(localcc.field_talker)) && (((com.tencent.mm.plugin.messenger.foundation.a.w)h.ax(com.tencent.mm.plugin.messenger.foundation.a.w.class)).aLX()))
       {
-        com.tencent.mm.kernel.h.aHH();
-        localObject1 = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().RG(localca.field_talker);
-        long l = ((ax)localObject1).hDD;
-        ((as)localObject1).EA(localca.field_msgId);
-        com.tencent.mm.kernel.h.aHH();
-        ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().au((as)localObject1);
+        h.baF();
+        localObject1 = ((n)h.ax(n.class)).bzA().JE(localcc.field_talker);
+        long l = ((az)localObject1).kay;
+        ((au)localObject1).gQ(localcc.field_msgId);
+        h.baF();
+        ((n)h.ax(n.class)).bzA().aA((au)localObject1);
         if (l != 0L) {
-          ((w)com.tencent.mm.kernel.h.ae(w.class)).o(localca.field_talker, l);
+          ((com.tencent.mm.plugin.messenger.foundation.a.w)h.ax(com.tencent.mm.plugin.messenger.foundation.a.w.class)).p(localcc.field_talker, l);
         }
       }
-      lri.b(parama, localca, str1, str3, bool);
+      oiJ.b(parama, localcc, str1, str3, bool);
       AppMethodBeat.o(42769);
       return localb;
       i = 0;
       break;
       label669:
-      localca.pJ(0);
-      localca.Jm(str1);
-      if (((db)localObject1).rVU > 3)
+      localcc.pI(0);
+      localcc.BS(str1);
+      if (((dl)localObject1).vhk > 3)
       {
-        i = ((db)localObject1).rVU;
+        i = ((dl)localObject1).vhk;
         break label190;
       }
       i = 3;
@@ -197,15 +200,15 @@ public class e
       bool = false;
       break label224;
       label710:
-      ((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().b(((db)localObject1).HlH, localca);
-      localb = new h.b(localca, false);
+      ((n)h.ax(n.class)).gaZ().b(((dl)localObject1).Njv, localcc);
+      localb = new g.b(localcc, false);
       break label367;
       label750:
       str2 = str1;
       break label386;
       label757:
-      localObject2 = localca.field_content;
-      i = bq.RI(localca.field_content);
+      localObject2 = localcc.field_content;
+      i = br.JG(localcc.field_content);
       if (i != -1)
       {
         localObject1 = ((String)localObject2).substring(0, i).trim();
@@ -221,7 +224,26 @@ public class e
     }
   }
   
-  public void b(h.c paramc) {}
+  public void b(g.c paramc) {}
+  
+  public static final class a
+    extends a<c>
+    implements c
+  {
+    public final void a(final g.a parama, final cc paramcc, final String paramString1, final String paramString2, final boolean paramBoolean)
+    {
+      AppMethodBeat.i(42766);
+      a(new a.a() {});
+      AppMethodBeat.o(42766);
+    }
+    
+    public final void b(final g.a parama, final cc paramcc, final String paramString1, final String paramString2, final boolean paramBoolean)
+    {
+      AppMethodBeat.i(42767);
+      a(new a.a() {});
+      AppMethodBeat.o(42767);
+    }
+  }
 }
 
 

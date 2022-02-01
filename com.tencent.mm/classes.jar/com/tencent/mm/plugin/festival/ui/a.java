@@ -2,20 +2,20 @@ package com.tencent.mm.plugin.festival.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Calendar;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/festival/ui/FestivalBlurSnapshotAlternativeDrawable;", "", "()V", "calender", "Ljava/util/Calendar;", "kotlin.jvm.PlatformType", "isDay", "", "()Z", "getDrawable", "Landroid/graphics/drawable/Drawable;", "context", "Landroid/content/Context;", "plugin-festival_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/festival/ui/FestivalBlurSnapshotAlternativeDrawable;", "", "()V", "calender", "Ljava/util/Calendar;", "kotlin.jvm.PlatformType", "isDay", "", "()Z", "getDrawable", "Landroid/graphics/drawable/Drawable;", "context", "Landroid/content/Context;", "plugin-festival_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public static final Calendar wUB;
-  public static final a wUC;
+  public static final a Arh;
+  public static final Calendar Ari;
   
   static
   {
-    AppMethodBeat.i(258626);
-    wUC = new a();
-    wUB = Calendar.getInstance();
-    AppMethodBeat.o(258626);
+    AppMethodBeat.i(260893);
+    Arh = new a();
+    Ari = Calendar.getInstance();
+    AppMethodBeat.o(260893);
   }
 }
 

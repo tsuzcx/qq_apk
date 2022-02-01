@@ -1,31 +1,41 @@
 package com.tencent.mm.plugin.appbrand.report.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import com.tencent.mm.plugin.report.f;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/report/model/kv_21804;", "", "()V", "appId", "", "appType", "", "Ljava/lang/Long;", "sessionId", "startupT", "onDestroyReport", "", "onFinishReport", "onLoadStart", "instanceId", "Companion", "plugin-appbrand-integration_release"})
 public final class r
 {
-  @Deprecated
-  public static final a qMx;
-  public String appId;
-  public Long qMv;
-  public Long qMw;
-  public String sessionId;
-  
-  static
+  public static void a(a parama, String paramString)
   {
-    AppMethodBeat.i(275041);
-    qMx = new a((byte)0);
-    AppMethodBeat.o(275041);
+    AppMethodBeat.i(48172);
+    f.Ozc.b(14750, new Object[] { Integer.valueOf(parama.value), paramString });
+    AppMethodBeat.o(48172);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/report/model/kv_21804$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
-  static final class a {}
+  public static enum a
+  {
+    final int value;
+    
+    static
+    {
+      AppMethodBeat.i(48171);
+      tQR = new a("GUIDE_EXPOSE", 0, 1);
+      tQS = new a("GUIDE_CLOSE", 1, 2);
+      tQT = new a("TO_APP_LAUNCHER", 2, 3);
+      tQU = new a("GUIDE_CLOSE_BY_BACK", 3, 4);
+      tQV = new a[] { tQR, tQS, tQT, tQU };
+      AppMethodBeat.o(48171);
+    }
+    
+    private a(int paramInt)
+    {
+      this.value = paramInt;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.model.r
  * JD-Core Version:    0.7.0.1
  */

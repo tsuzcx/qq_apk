@@ -1,87 +1,87 @@
 package com.tencent.mm.plugin.topstory.a.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.eso;
-import com.tencent.mm.protocal.protobuf.esp;
-import com.tencent.mm.protocal.protobuf.esy;
+import com.tencent.mm.protocal.protobuf.fnx;
+import com.tencent.mm.protocal.protobuf.fny;
+import com.tencent.mm.protocal.protobuf.foh;
 import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
 public final class j
-  extends q
+  extends p
   implements m
 {
-  public esy MWs;
-  private i callback;
-  private long fhq;
-  public d rr;
+  public foh TIW;
+  private h callback;
+  private long hlB;
+  public c rr;
   
-  public j(esy paramesy, String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, int paramInt3, String paramString4, String paramString5)
+  public j(foh paramfoh, String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, int paramInt3, String paramString4, String paramString5)
   {
     AppMethodBeat.i(88489);
-    this.fhq = System.currentTimeMillis();
-    this.MWs = paramesy;
-    paramesy = new d.a();
-    paramesy.funcId = getType();
-    paramesy.uri = "/cgi-bin/mmsearch-bin/topstorypluginsetcomment";
-    paramesy.lBU = new eso();
-    paramesy.lBV = new esp();
-    this.rr = paramesy.bgN();
-    paramesy = (eso)d.b.b(this.rr.lBR);
-    paramesy.TPZ = paramString1;
-    paramesy.Uun = "";
-    paramesy.jUk = paramInt1;
-    paramesy.Tkx = paramString2;
-    paramesy.lpy = "";
-    paramesy.CPw = paramInt2;
-    paramesy.Tky = paramString3;
-    paramesy.RKI = paramInt3;
-    paramesy.sSY = paramString4;
-    paramesy.Udz = paramString5;
-    paramesy.Cqs = 1;
-    Log.i("MicroMsg.TopStory.NetSceneTopStorySetComment", "TopStoryPluginSetCommentRequest %s, %s, %s, %s, %s, %s, %s, %s, %s, %s", new Object[] { paramesy.TPZ, paramesy.Uun, Integer.valueOf(paramesy.jUk), paramesy.Tkx, paramesy.lpy, Integer.valueOf(paramesy.CPw), paramesy.Tky, Integer.valueOf(paramesy.RKI), paramesy.sSY, paramesy.Udz });
+    this.hlB = System.currentTimeMillis();
+    this.TIW = paramfoh;
+    paramfoh = new c.a();
+    paramfoh.funcId = getType();
+    paramfoh.uri = "/cgi-bin/mmsearch-bin/topstorypluginsetcomment";
+    paramfoh.otE = new fnx();
+    paramfoh.otF = new fny();
+    this.rr = paramfoh.bEF();
+    paramfoh = (fnx)c.b.b(this.rr.otB);
+    paramfoh.abgw = paramString1;
+    paramfoh.abNQ = "";
+    paramfoh.muC = paramInt1;
+    paramfoh.aaye = paramString2;
+    paramfoh.nUB = "";
+    paramfoh.IJG = paramInt2;
+    paramfoh.aayf = paramString3;
+    paramfoh.YIc = paramInt3;
+    paramfoh.vYo = paramString4;
+    paramfoh.abuT = paramString5;
+    paramfoh.IcB = 1;
+    Log.i("MicroMsg.TopStory.NetSceneTopStorySetComment", "TopStoryPluginSetCommentRequest %s, %s, %s, %s, %s, %s, %s, %s, %s, %s", new Object[] { paramfoh.abgw, paramfoh.abNQ, Integer.valueOf(paramfoh.muC), paramfoh.aaye, paramfoh.nUB, Integer.valueOf(paramfoh.IJG), paramfoh.aayf, Integer.valueOf(paramfoh.YIc), paramfoh.vYo, paramfoh.abuT });
     AppMethodBeat.o(88489);
   }
   
   public j(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(88488);
-    this.fhq = System.currentTimeMillis();
-    Object localObject = new d.a();
-    ((d.a)localObject).funcId = getType();
-    ((d.a)localObject).uri = "/cgi-bin/mmsearch-bin/topstorypluginsetcomment";
-    ((d.a)localObject).lBU = new eso();
-    ((d.a)localObject).lBV = new esp();
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (eso)d.b.b(this.rr.lBR);
-    ((eso)localObject).TPZ = paramJSONObject.optString("docId", "");
-    ((eso)localObject).Uun = paramJSONObject.optString("commentId", "");
-    ((eso)localObject).jUk = paramJSONObject.optInt("opType", 0);
-    ((eso)localObject).Tkx = paramJSONObject.optString("requestId", "");
-    ((eso)localObject).lpy = paramJSONObject.optString("content", "");
-    ((eso)localObject).CPw = paramJSONObject.optInt("scene", 0);
-    ((eso)localObject).Tky = paramJSONObject.optString("searchId", "");
-    ((eso)localObject).RKI = paramJSONObject.optInt("subScene", 0);
-    ((eso)localObject).sSY = paramJSONObject.optString("vid", "");
-    ((eso)localObject).Udz = paramJSONObject.optString("byPass", "");
-    ((eso)localObject).Cqs = 0;
-    Log.i("MicroMsg.TopStory.NetSceneTopStorySetComment", "TopStoryPluginSetCommentRequest %s, %s, %s, %s, %s, %s, %s, %s, %s, %s", new Object[] { ((eso)localObject).TPZ, ((eso)localObject).Uun, Integer.valueOf(((eso)localObject).jUk), ((eso)localObject).Tkx, ((eso)localObject).lpy, Integer.valueOf(((eso)localObject).CPw), ((eso)localObject).Tky, Integer.valueOf(((eso)localObject).RKI), ((eso)localObject).sSY, ((eso)localObject).Udz });
+    this.hlB = System.currentTimeMillis();
+    Object localObject = new c.a();
+    ((c.a)localObject).funcId = getType();
+    ((c.a)localObject).uri = "/cgi-bin/mmsearch-bin/topstorypluginsetcomment";
+    ((c.a)localObject).otE = new fnx();
+    ((c.a)localObject).otF = new fny();
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (fnx)c.b.b(this.rr.otB);
+    ((fnx)localObject).abgw = paramJSONObject.optString("docId", "");
+    ((fnx)localObject).abNQ = paramJSONObject.optString("commentId", "");
+    ((fnx)localObject).muC = paramJSONObject.optInt("opType", 0);
+    ((fnx)localObject).aaye = paramJSONObject.optString("requestId", "");
+    ((fnx)localObject).nUB = paramJSONObject.optString("content", "");
+    ((fnx)localObject).IJG = paramJSONObject.optInt("scene", 0);
+    ((fnx)localObject).aayf = paramJSONObject.optString("searchId", "");
+    ((fnx)localObject).YIc = paramJSONObject.optInt("subScene", 0);
+    ((fnx)localObject).vYo = paramJSONObject.optString("vid", "");
+    ((fnx)localObject).abuT = paramJSONObject.optString("byPass", "");
+    ((fnx)localObject).IcB = 0;
+    Log.i("MicroMsg.TopStory.NetSceneTopStorySetComment", "TopStoryPluginSetCommentRequest %s, %s, %s, %s, %s, %s, %s, %s, %s, %s", new Object[] { ((fnx)localObject).abgw, ((fnx)localObject).abNQ, Integer.valueOf(((fnx)localObject).muC), ((fnx)localObject).aaye, ((fnx)localObject).nUB, Integer.valueOf(((fnx)localObject).IJG), ((fnx)localObject).aayf, Integer.valueOf(((fnx)localObject).YIc), ((fnx)localObject).vYo, ((fnx)localObject).abuT });
     AppMethodBeat.o(88488);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(88490);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(88490);
     return i;
@@ -92,25 +92,25 @@ public final class j
     return 2802;
   }
   
-  public final esp gqa()
+  public final fny hMW()
   {
-    AppMethodBeat.i(261971);
-    esp localesp = (esp)d.c.b(this.rr.lBS);
-    AppMethodBeat.o(261971);
-    return localesp;
+    AppMethodBeat.i(271661);
+    fny localfny = (fny)c.c.b(this.rr.otC);
+    AppMethodBeat.o(271661);
+    return localfny;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(88491);
-    Log.i("MicroMsg.TopStory.NetSceneTopStorySetComment", "netId %d | errType %d | errCode %d | errMsg %s useTime %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Long.valueOf(System.currentTimeMillis() - this.fhq) });
+    Log.i("MicroMsg.TopStory.NetSceneTopStorySetComment", "netId %d | errType %d | errCode %d | errMsg %s useTime %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Long.valueOf(System.currentTimeMillis() - this.hlB) });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(88491);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.a.c.j
  * JD-Core Version:    0.7.0.1
  */

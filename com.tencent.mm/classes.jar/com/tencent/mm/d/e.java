@@ -3,19 +3,14 @@ package com.tencent.mm.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.InputStream;
 
-public final class e
+final class e
 {
   public static final boolean a(InputStream paramInputStream, byte[] paramArrayOfByte, int paramInt)
   {
     AppMethodBeat.i(943);
     int i = 0;
-    for (;;)
+    while (i < paramInt)
     {
-      if (i >= paramInt)
-      {
-        AppMethodBeat.o(943);
-        return true;
-      }
       int j = paramInputStream.read(paramArrayOfByte, i + 0, paramInt - i);
       if (j < 0)
       {
@@ -24,11 +19,13 @@ public final class e
       }
       i += j;
     }
+    AppMethodBeat.o(943);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.d.e
  * JD-Core Version:    0.7.0.1
  */

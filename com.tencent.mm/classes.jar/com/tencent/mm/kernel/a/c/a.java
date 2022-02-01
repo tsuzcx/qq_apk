@@ -9,18 +9,18 @@ public abstract class a
 {
   public <T extends a> T after(com.tencent.mm.kernel.b.a parama)
   {
-    i.aHL().aHD().aHf().kct.kdG.a(b.class, this, parama);
+    i.baI().baB().bad().mCB.mDQ.a(b.class, this, parama);
     return this;
   }
   
   public void alone()
   {
-    i.aHL().aHD().aHf().kct.kdG.a(b.class, this, this);
+    i.baI().baB().bad().mCB.mDQ.a(b.class, this, this);
   }
   
   public <T extends a> T before(com.tencent.mm.kernel.b.a parama)
   {
-    i.aHL().aHD().aHf().kct.kdG.a(b.class, parama, this);
+    i.baI().baB().bad().mCB.mDQ.a(b.class, parama, this);
     return this;
   }
   
@@ -41,7 +41,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.kernel.a.c.a
  * JD-Core Version:    0.7.0.1
  */

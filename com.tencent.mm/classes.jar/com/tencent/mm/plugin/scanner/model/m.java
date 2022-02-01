@@ -1,99 +1,94 @@
 package com.tencent.mm.plugin.scanner.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.bx.a;
 import com.tencent.mm.network.g;
-import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cty;
-import com.tencent.mm.protocal.protobuf.ctz;
+import com.tencent.mm.protocal.protobuf.nt;
+import com.tencent.mm.protocal.protobuf.nu;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/model/NetSceneScanConfigSync;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "type", "", "(I)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "configType", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getResp", "Lcom/tencent/mm/protocal/protobuf/MMBizScanConfSyncResp;", "getScanConfigType", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-scan_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/model/NetSceneBizAiScanImageRetrieval;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "requestId", "", "requestJson", "type", "", "(Ljava/lang/String;Ljava/lang/String;I)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "commReqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getRequestId", "getResp", "Lcom/tencent/mm/protocal/protobuf/BizAiScanImageRetrievalResponse;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class m
-  extends q
+  extends p
   implements com.tencent.mm.network.m
 {
-  public static final a IKU;
-  int IKT;
-  private i callback;
-  final d rr;
+  public static final a ORG;
+  private h callback;
+  public String hOG;
+  public final c oDw;
   
   static
   {
-    AppMethodBeat.i(52169);
-    IKU = new a((byte)0);
-    AppMethodBeat.o(52169);
+    AppMethodBeat.i(52165);
+    ORG = new a((byte)0);
+    AppMethodBeat.o(52165);
   }
   
-  public m(int paramInt)
+  public m(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(52168);
-    this.IKT = paramInt;
-    Object localObject = new d.a();
-    ((d.a)localObject).c((a)new cty());
-    ((d.a)localObject).d((a)new ctz());
-    ((d.a)localObject).TW("/cgi-bin/mmbiz-bin/usrmsg/mmbizscan_confsync");
-    ((d.a)localObject).vD(1812);
-    ((d.a)localObject).vF(0);
-    ((d.a)localObject).vG(0);
-    localObject = ((d.a)localObject).bgN();
-    p.j(localObject, "builder.buildInstance()");
-    this.rr = ((d)localObject);
-    localObject = this.rr.bhX();
-    if (localObject == null)
+    AppMethodBeat.i(52164);
+    this.hOG = paramString1;
+    paramString1 = new c.a();
+    paramString1.otE = ((a)new nt());
+    paramString1.otF = ((a)new nu());
+    paramString1.uri = "/cgi-bin/mmbiz-bin/usrmsg/aiscan_image_retrieval";
+    paramString1.funcId = 1532;
+    paramString1.otG = 0;
+    paramString1.respCmdId = 0;
+    paramString1 = paramString1.bEF();
+    kotlin.g.b.s.s(paramString1, "builder.buildInstance()");
+    this.oDw = paramString1;
+    paramString1 = c.b.b(this.oDw.otB);
+    if (paramString1 == null)
     {
-      localObject = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.MMBizScanConfSyncReq");
-      AppMethodBeat.o(52168);
-      throw ((Throwable)localObject);
+      paramString1 = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.BizAiScanImageRetrievalRequest");
+      AppMethodBeat.o(52164);
+      throw paramString1;
     }
-    ((cty)localObject).type = paramInt;
-    Log.i("MicroMsg.NetSceneScanConfigSync", "alvinluo scanConfigSync type: %d", new Object[] { Integer.valueOf(paramInt) });
-    AppMethodBeat.o(52168);
+    paramString1 = (nt)paramString1;
+    paramString1.YQb = paramString2;
+    paramString1.type = 1;
+    Log.d("MicroMsg.NetSceneBizAiScanImageRetrieval", "alvinluo AiScanImageRetrieval requestJson: %s, type: %d", new Object[] { paramString2, Integer.valueOf(1) });
+    AppMethodBeat.o(52164);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(52167);
-    p.k(paramg, "dispatcher");
-    p.k(parami, "callback");
-    this.callback = parami;
-    int i = dispatch(paramg, (s)this.rr, (com.tencent.mm.network.m)this);
-    AppMethodBeat.o(52167);
+    AppMethodBeat.i(52162);
+    this.callback = paramh;
+    int i = dispatch(paramg, (com.tencent.mm.network.s)this.oDw, (com.tencent.mm.network.m)this);
+    AppMethodBeat.o(52162);
     return i;
   }
   
   public final int getType()
   {
-    return 1812;
+    return 1532;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(52166);
-    Log.i("MicroMsg.NetSceneScanConfigSync", "alvinluo onGYNetEnd errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(52163);
+    Log.i("MicroMsg.NetSceneBizAiScanImageRetrieval", "alvinluo onGYNetEnd errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     params = this.callback;
-    if (params != null)
-    {
-      params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
-      AppMethodBeat.o(52166);
-      return;
+    if (params != null) {
+      params.onSceneEnd(paramInt2, paramInt3, paramString, (p)this);
     }
-    AppMethodBeat.o(52166);
+    AppMethodBeat.o(52163);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/model/NetSceneScanConfigSync$Companion;", "", "()V", "CONFIG_SYNC_TYPE_FOCUS_ENGINE", "", "CONFIG_SYNC_TYPE_GUIDE", "CONFIG_SYNC_TYPE_PHASH", "TAG", "", "plugin-scan_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/model/NetSceneBizAiScanImageRetrieval$Companion;", "", "()V", "AI_SCAN_IMAGE_TYPE_RETRIEVAL_BY_KEY", "", "AI_SCAN_IMAGE_TYPE_UNKNOWN", "TAG", "", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.m
  * JD-Core Version:    0.7.0.1
  */

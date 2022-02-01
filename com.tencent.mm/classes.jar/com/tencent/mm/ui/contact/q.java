@@ -13,10 +13,10 @@ import junit.framework.Assert;
 public abstract class q
   extends BaseAdapter
 {
-  private SparseArray<a> Vcx;
-  public o XsW;
-  public boolean XsX;
-  private boolean XsY;
+  private SparseArray<a> acDH;
+  public o afex;
+  public boolean afey;
+  private boolean afez;
   private int scene;
   
   public q(o paramo, boolean paramBoolean, int paramInt)
@@ -26,31 +26,31 @@ public abstract class q
   
   public q(o paramo, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
-    this.XsW = paramo;
-    this.XsX = paramBoolean1;
-    this.Vcx = new SparseArray();
+    this.afex = paramo;
+    this.afey = paramBoolean1;
+    this.acDH = new SparseArray();
     this.scene = paramInt;
-    this.XsY = paramBoolean2;
+    this.afez = paramBoolean2;
   }
   
-  public final void GL(boolean paramBoolean)
+  public void Mz(boolean paramBoolean)
   {
-    this.XsX = paramBoolean;
+    this.afey = paramBoolean;
     notifyDataSetChanged();
   }
   
-  public final a awM(int paramInt)
+  public final a aDt(int paramInt)
   {
-    if (this.Vcx.indexOfKey(paramInt) >= 0) {
-      return (a)this.Vcx.get(paramInt);
+    if (this.acDH.indexOfKey(paramInt) >= 0) {
+      return (a)this.acDH.get(paramInt);
     }
     if ((paramInt >= 0) && (paramInt < getCount()))
     {
-      a locala = ye(paramInt);
+      a locala = yk(paramInt);
       if (locala != null)
       {
-        locala.sxA = c(locala);
-        this.Vcx.put(paramInt, locala);
+        locala.vDh = d(locala);
+        this.acDH.put(paramInt, locala);
         Log.d("MicroMsg.MMSelectContactAdapter", "put item to cache viewType=%d|position=%d", new Object[] { Integer.valueOf(locala.viewType), Integer.valueOf(paramInt) });
         return locala;
       }
@@ -61,31 +61,31 @@ public abstract class q
     return null;
   }
   
-  public boolean awN(int paramInt)
-  {
-    return false;
-  }
-  
-  protected boolean c(a parama)
+  public boolean aDu(int paramInt)
   {
     return false;
   }
   
   public final void clearCache()
   {
-    if (this.Vcx != null) {
-      this.Vcx.clear();
+    if (this.acDH != null) {
+      this.acDH.clear();
     }
   }
   
-  public boolean fJk()
+  protected boolean d(a parama)
   {
-    return this.XsX;
+    return false;
   }
   
   public void finish()
   {
     clearCache();
+  }
+  
+  public boolean gZe()
+  {
+    return this.afey;
   }
   
   public long getItemId(int paramInt)
@@ -95,8 +95,8 @@ public abstract class q
   
   public int getItemViewType(int paramInt)
   {
-    if (awM(paramInt) != null) {
-      return awM(paramInt).viewType;
+    if (aDt(paramInt) != null) {
+      return aDt(paramInt).viewType;
     }
     Log.e("MicroMsg.MMSelectContactAdapter", "getItemViewType: get data item fail, return unkown Type, totalCount=%d | position = %s", new Object[] { Integer.valueOf(getCount()), Integer.valueOf(paramInt) });
     return -1;
@@ -109,53 +109,44 @@ public abstract class q
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    a locala = awM(paramInt);
+    a locala = aDt(paramInt);
     View localView = paramView;
     if (paramView == null) {
-      localView = locala.bwF().a(this.XsW.getActivity(), paramViewGroup);
+      localView = locala.bVv().a(this.afex.getActivity(), paramViewGroup);
     }
     paramView = (a.a)localView.getTag();
     Assert.assertNotNull(paramView);
-    if (!locala.Xxr)
+    if (!locala.afjz)
     {
-      locala.a(this.XsW.getActivity(), paramView);
-      locala.Xxr = true;
+      locala.a(this.afex.getActivity(), paramView);
+      locala.afjz = true;
     }
-    locala.XsX = fJk();
-    locala.bwF().a(this.XsW.getActivity(), paramView, locala, this.XsW.b(locala), this.XsW.a(locala));
+    locala.afey = gZe();
+    locala.desc = this.afex.c(locala);
+    locala.bVv().a(this.afex.getActivity(), paramView, locala, this.afex.b(locala), this.afex.a(locala));
     return localView;
   }
   
   public int getViewTypeCount()
   {
-    return 9;
+    return 10;
   }
   
-  public final o hUM()
+  public final boolean jyD()
   {
-    return this.XsW;
+    return this.afez;
   }
   
-  public final void hUN()
-  {
-    this.XsX = true;
-  }
-  
-  public final boolean hUO()
-  {
-    return this.XsY;
-  }
-  
-  public int hUm()
+  public int jyc()
   {
     return 0;
   }
   
-  protected abstract a ye(int paramInt);
+  protected abstract a yk(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.contact.q
  * JD-Core Version:    0.7.0.1
  */

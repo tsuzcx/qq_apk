@@ -3,9 +3,9 @@ package com.tencent.mm.util;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/util/FullScreenIntentService$FullScreenOperationReceiver;", "Landroid/content/BroadcastReceiver;", "()V", "onReceive", "", "p0", "Landroid/content/Context;", "p1", "Landroid/content/Intent;", "plugin-comm_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/util/FullScreenIntentService$FullScreenOperationReceiver;", "Landroid/content/BroadcastReceiver;", "()V", "onReceive", "", "p0", "Landroid/content/Context;", "p1", "Landroid/content/Intent;", "plugin-comm_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FullScreenIntentService$FullScreenOperationReceiver
   extends BroadcastReceiver
 {

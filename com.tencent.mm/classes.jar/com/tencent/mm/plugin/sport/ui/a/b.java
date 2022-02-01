@@ -7,7 +7,7 @@ import com.tencent.mm.pluginsdk.c.c;
 public final class b
   implements c
 {
-  public final com.tencent.mm.pluginsdk.c.a ak(Context paramContext, String paramString)
+  public final com.tencent.mm.pluginsdk.c.a al(Context paramContext, String paramString)
   {
     AppMethodBeat.i(28827);
     paramContext = new a(paramContext);

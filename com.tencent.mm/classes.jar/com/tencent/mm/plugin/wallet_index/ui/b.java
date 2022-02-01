@@ -14,13 +14,13 @@ public abstract interface b
   
   public abstract void c(MMActivity paramMMActivity, boolean paramBoolean);
   
-  public abstract int gMX();
+  public abstract int imm();
   
-  public abstract void q(MMActivity paramMMActivity);
+  public abstract void v(MMActivity paramMMActivity);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_index.ui.b
  * JD-Core Version:    0.7.0.1
  */

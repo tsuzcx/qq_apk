@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.card.base;
 
 public abstract interface d
 {
-  public abstract void cGD();
+  public abstract void djU();
 }
 
 

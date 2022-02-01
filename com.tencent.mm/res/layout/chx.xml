@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a" android:padding="@dimen/cb" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/f" android:paddingLeft="32.0dip" android:paddingRight="32.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.MMEditText android:gravity="top" android:id="@id/k5g" android:layout_width="fill_parent" android:layout_height="@dimen/bu" android:hint="路径" />
-    <com.tencent.mm.ui.widget.MMEditText android:gravity="top" android:id="@id/k6y" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:text="2" android:hint="layer" android:inputType="numberDecimal" />
-    <Button android:layout_gravity="center_horizontal" android:id="@id/g3k" android:layout_width="120.0dip" android:layout_height="48.0dip" android:layout_marginTop="@dimen/cb" android:text="扫描" style="@style/ou" />
-    <ScrollView android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/cb" android:fadeScrollbars="true">
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:id="@id/k7l" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        </LinearLayout>
-    </ScrollView>
+    <ImageView android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginTop="48.0dip" android:src="@raw/card" />
+    <TextView android:textSize="@dimen/hr" android:textStyle="bold" android:textColor="@color/gf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:text="@string/kuw" />
+    <TextView android:textSize="@dimen/t" android:textColor="@color/gf" android:gravity="center_horizontal" android:id="@id/ltx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/ld5" />
+    <Space android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <Button android:textStyle="bold" android:id="@id/lt4" android:text="@string/ld4" style="@style/oh" />
+    <Button android:textStyle="bold" android:id="@id/lt5" android:layout_marginTop="16.0dip" android:layout_marginBottom="96.0dip" android:text="@string/ldp" style="@style/op" />
 </LinearLayout>

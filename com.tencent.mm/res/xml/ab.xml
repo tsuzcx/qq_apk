@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/bi_" />
+    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/bnr" />
     <PreferenceSmallCategory />
-    <Preference android:key="contact_info_qqmailhelper_account" android:layout="@layout/b8j" android:title="@string/bdz" />
-    <Preference android:key="contact_info_qqmailhelper_view" android:layout="@layout/b8j" android:title="@string/be9" />
-    <Preference android:key="contact_info_qqmailhelper_compose" android:layout="@layout/b8j" android:title="@string/be0" />
-    <CheckBoxPreference android:key="contact_info_qqmailhelper_recv_remind" android:layout="@layout/b8j" android:persistent="false" android:title="@string/be5" />
-    <Preference android:key="contact_info_qqmailhelper_set_files_view" android:layout="@layout/b8j" android:title="@string/be7" />
-    <Preference android:key="contact_info_qqmailhelper_download_mgr_view" android:layout="@layout/b8j" android:title="@string/be1" />
-    <Preference android:key="contact_info_qqmailhelper_clear_data" android:layout="@layout/b8j" android:title="@string/ba3" />
+    <Preference android:key="contact_info_wxpay_collection_go_to" android:layout="@layout/bdi" android:title="@string/btr" />
     <PreferenceSmallCategory />
-    <Preference android:key="contact_info_qqmailhelper_install" android:layout="@layout/aw2" android:title="@string/gsq" />
-    <Preference android:key="contact_info_qqmailhelper_uninstall" android:layout="@layout/b2o" android:title="@string/gsv" />
+    <CheckBoxPreference android:key="contact_info_wxpay_collection_top" android:layout="@layout/bdi" android:persistent="false" android:title="@string/btv" />
+    <CheckBoxPreference android:key="contact_info_wxpay_collection_not_disturb" android:layout="@layout/bdi" android:persistent="false" android:title="@string/btt" />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_info_wxpay_collection_help" android:layout="@layout/bdi" android:title="@string/bts" />
+    <Preference android:key="contact_info_wxpay_collection_clear_data" android:layout="@layout/bdi" android:title="@string/blg" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/iww" android:key="contact_info_wxpay_collection_install" android:title_color="@color/wv" />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/ix1" android:key="contact_info_wxpay_collection_uninstall" android:layout="@layout/b93" android:title_color="@color/a9z" />
     <PreferenceCategory />
 </PreferenceScreen>

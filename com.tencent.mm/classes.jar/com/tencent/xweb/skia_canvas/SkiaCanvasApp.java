@@ -9,75 +9,86 @@ public class SkiaCanvasApp
   
   static
   {
-    AppMethodBeat.i(196699);
+    AppMethodBeat.i(213922);
     SkiaCanvasLogic.init();
-    AppMethodBeat.o(196699);
+    AppMethodBeat.o(213922);
   }
   
   public SkiaCanvasApp(long paramLong1, long paramLong2, IXWebWorkingHandler paramIXWebWorkingHandler)
   {
-    AppMethodBeat.i(196690);
+    AppMethodBeat.i(213852);
     this.mWorkingHandler = paramIXWebWorkingHandler;
     if (!this.mWorkingHandler.isRunOnWorkingThread())
     {
       paramIXWebWorkingHandler = new IllegalStateException("SkiaCanvasApp must be created and used on working thread.");
-      AppMethodBeat.o(196690);
+      AppMethodBeat.o(213852);
       throw paramIXWebWorkingHandler;
     }
     this.mNativePeer = init(paramLong1, paramLong2);
     VSyncRenderer.initRenderer(this.mWorkingHandler);
-    AppMethodBeat.o(196690);
+    AppMethodBeat.o(213852);
   }
   
   private long init(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(196692);
+    AppMethodBeat.i(213865);
     paramLong1 = nativeInit(paramLong1, paramLong2);
-    AppMethodBeat.o(196692);
+    AppMethodBeat.o(213865);
     return paramLong1;
+  }
+  
+  public static void initConfig(SkiaCanvasApp.ConfigOptions paramConfigOptions)
+  {
+    AppMethodBeat.i(213876);
+    if (paramConfigOptions != null) {
+      setV8LockerEnable(paramConfigOptions.isV8LockerEnable());
+    }
+    AppMethodBeat.o(213876);
   }
   
   private native long nativeInit(long paramLong1, long paramLong2);
   
   private native void nativeOnJSContextDestroying(long paramLong);
   
+  private static native void setV8LockerEnable(boolean paramBoolean);
+  
   void checkAndPostOnWorkingThread(Runnable paramRunnable)
   {
-    AppMethodBeat.i(196696);
+    AppMethodBeat.i(213950);
     if (this.mWorkingHandler.isRunOnWorkingThread())
     {
       paramRunnable.run();
-      AppMethodBeat.o(196696);
+      AppMethodBeat.o(213950);
       return;
     }
     this.mWorkingHandler.post(paramRunnable);
-    AppMethodBeat.o(196696);
+    AppMethodBeat.o(213950);
   }
   
   boolean isRunOnWorkingThread()
   {
-    AppMethodBeat.i(196697);
+    AppMethodBeat.i(213961);
     boolean bool = this.mWorkingHandler.isRunOnWorkingThread();
-    AppMethodBeat.o(196697);
+    AppMethodBeat.o(213961);
     return bool;
   }
   
   public void onJSContextDestroying()
   {
-    AppMethodBeat.i(196695);
+    AppMethodBeat.i(213937);
     if (!this.mWorkingHandler.isRunOnWorkingThread())
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("Thread during destroy is not matched with init.");
-      AppMethodBeat.o(196695);
+      AppMethodBeat.o(213937);
       throw localIllegalStateException;
     }
     nativeOnJSContextDestroying(this.mNativePeer);
-    AppMethodBeat.o(196695);
+    AppMethodBeat.o(213937);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.xweb.skia_canvas.SkiaCanvasApp
  * JD-Core Version:    0.7.0.1
  */

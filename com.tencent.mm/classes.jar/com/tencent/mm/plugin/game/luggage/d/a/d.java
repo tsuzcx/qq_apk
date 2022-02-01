@@ -4,8 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.downloader_app.api.DownloadWidgetTaskInfo;
 import com.tencent.mm.plugin.downloader_app.api.c;
-import com.tencent.mm.plugin.lite.jsapi.b;
-import com.tencent.mm.plugin.lite.jsapi.b.a;
+import com.tencent.mm.plugin.lite.api.e;
+import com.tencent.mm.plugin.lite.api.e.a;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -15,16 +15,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class d
-  extends b
+  extends e
 {
   public final void a(String paramString, JSONObject paramJSONObject, boolean paramBoolean)
   {
-    AppMethodBeat.i(232064);
-    Object localObject = ((c)h.ae(c.class)).cQv();
+    AppMethodBeat.i(277085);
+    Object localObject = ((c)h.ax(c.class)).duO();
     if (Util.isNullOrNil((List)localObject))
     {
-      this.Ega.eLC();
-      AppMethodBeat.o(232064);
+      this.JZj.fTW();
+      AppMethodBeat.o(277085);
       return;
     }
     paramString = new JSONObject();
@@ -42,11 +42,11 @@ public class d
       try
       {
         localJSONObject.put("appid", localDownloadWidgetTaskInfo.appId);
-        localJSONObject.put("status", localDownloadWidgetTaskInfo.sSq);
-        localJSONObject.put("download_id", localDownloadWidgetTaskInfo.fuD);
+        localJSONObject.put("status", localDownloadWidgetTaskInfo.vXL);
+        localJSONObject.put("download_id", localDownloadWidgetTaskInfo.hyV);
         localJSONObject.put("progress", localDownloadWidgetTaskInfo.progress);
-        localJSONObject.put("progress_float", localDownloadWidgetTaskInfo.oyv);
-        if (localDownloadWidgetTaskInfo.uik) {
+        localJSONObject.put("progress_float", localDownloadWidgetTaskInfo.rCn);
+        if (localDownloadWidgetTaskInfo.xop) {
           localJSONObject.put("reserve_for_wifi", 1);
         }
         label178:
@@ -56,8 +56,8 @@ public class d
         {
           paramString.put("result", paramJSONObject.toString());
           label199:
-          this.Ega.bd(paramString);
-          AppMethodBeat.o(232064);
+          this.JZj.bq(paramString);
+          AppMethodBeat.o(277085);
           return;
         }
         catch (JSONException paramJSONObject)
@@ -72,7 +72,7 @@ public class d
     }
   }
   
-  public final int ewF()
+  public final int fEx()
   {
     return 1;
   }

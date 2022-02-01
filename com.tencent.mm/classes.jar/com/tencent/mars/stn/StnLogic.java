@@ -237,13 +237,17 @@ public class StnLogic
   
   public static native void stopTask(int paramInt);
   
+  public static native void touchTasks();
+  
   private static void trafficData(int paramInt1, int paramInt2) {}
   
   public static class CgiProfile
   {
+    public int channelType = 0;
     public long connectSuccessfulTime = 0L;
     public long handshakeSuccessfulTime = 0L;
     public long readPacketFinishedTime = 0L;
+    public long rtt = 0L;
     public long startConnectTime = 0L;
     public long startHandshakeTime = 0L;
     public long startReadPacketTime = 0L;
@@ -356,7 +360,7 @@ public class StnLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mars.stn.StnLogic
  * JD-Core Version:    0.7.0.1
  */

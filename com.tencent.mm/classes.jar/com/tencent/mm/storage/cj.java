@@ -1,150 +1,124 @@
 package com.tencent.mm.storage;
 
-import android.content.ContentValues;
-import android.database.Cursor;
+import androidx.compose.a.q.a..ExternalSyntheticBackport0;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/storage/RecMsgReportInfo;", "", "mid", "", "idx", "", "style", "recInfo", "", "extData", "bizUsername", "(JIILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getBizUsername", "()Ljava/lang/String;", "getExtData", "getIdx", "()I", "getMid", "()J", "getRecInfo", "getStyle", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "", "other", "hashCode", "toString", "plugin-biz_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class cj
 {
-  public a VHx;
-  int VHy;
-  int cUP;
-  public String name;
-  int status;
+  final String adln;
+  final String extData;
+  final String hUQ;
+  final int idx;
+  final long nVr;
+  final int style;
   
-  public cj()
+  public cj(long paramLong, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
   {
-    this.cUP = 135;
-    this.name = "";
-    this.VHx = null;
-    this.VHx = null;
-    this.name = "";
-    this.status = 0;
-    this.VHy = 0;
+    this.nVr = paramLong;
+    this.idx = paramInt1;
+    this.style = paramInt2;
+    this.adln = paramString1;
+    this.extData = paramString2;
+    this.hUQ = paramString3;
   }
   
-  public cj(String paramString, boolean paramBoolean, int paramInt)
+  public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(43298);
-    this.cUP = 135;
-    this.name = "";
-    this.VHx = null;
-    this.VHx = new a(paramString);
-    this.name = paramString;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    AppMethodBeat.i(248440);
+    if (this == paramObject)
     {
-      this.status = (i | 0x2);
-      this.VHy = paramInt;
-      AppMethodBeat.o(43298);
-      return;
+      AppMethodBeat.o(248440);
+      return true;
     }
+    if (!(paramObject instanceof cj))
+    {
+      AppMethodBeat.o(248440);
+      return false;
+    }
+    paramObject = (cj)paramObject;
+    if (this.nVr != paramObject.nVr)
+    {
+      AppMethodBeat.o(248440);
+      return false;
+    }
+    if (this.idx != paramObject.idx)
+    {
+      AppMethodBeat.o(248440);
+      return false;
+    }
+    if (this.style != paramObject.style)
+    {
+      AppMethodBeat.o(248440);
+      return false;
+    }
+    if (!s.p(this.adln, paramObject.adln))
+    {
+      AppMethodBeat.o(248440);
+      return false;
+    }
+    if (!s.p(this.extData, paramObject.extData))
+    {
+      AppMethodBeat.o(248440);
+      return false;
+    }
+    if (!s.p(this.hUQ, paramObject.hUQ))
+    {
+      AppMethodBeat.o(248440);
+      return false;
+    }
+    AppMethodBeat.o(248440);
+    return true;
   }
   
-  public final void convertFrom(Cursor paramCursor)
+  public final int hashCode()
   {
-    AppMethodBeat.i(43299);
-    if ((this.cUP & 0x2) != 0)
+    int k = 0;
+    AppMethodBeat.i(248438);
+    int m = q.a..ExternalSyntheticBackport0.m(this.nVr);
+    int n = this.idx;
+    int i1 = this.style;
+    int i;
+    int j;
+    if (this.adln == null)
     {
-      this.name = paramCursor.getString(1);
-      if (this.VHx == null) {
-        this.VHx = new a(this.name);
+      i = 0;
+      if (this.extData != null) {
+        break label99;
+      }
+      j = 0;
+      label46:
+      if (this.hUQ != null) {
+        break label110;
       }
     }
-    if ((this.cUP & 0x4) != 0) {
-      this.status = paramCursor.getInt(2);
-    }
-    if ((this.cUP & 0x80) != 0) {
-      this.VHy = paramCursor.getInt(7);
-    }
-    AppMethodBeat.o(43299);
-  }
-  
-  public final ContentValues convertTo()
-  {
-    AppMethodBeat.i(43300);
-    ContentValues localContentValues = new ContentValues();
-    if ((this.cUP & 0x2) != 0) {
-      localContentValues.put("name", this.name);
-    }
-    if ((this.cUP & 0x4) != 0) {
-      localContentValues.put("status", Integer.valueOf(this.status));
-    }
-    if ((this.cUP & 0x80) != 0) {
-      localContentValues.put("int_reserved1", Integer.valueOf(this.VHy));
-    }
-    AppMethodBeat.o(43300);
-    return localContentValues;
-  }
-  
-  public final String getName()
-  {
-    return this.name;
-  }
-  
-  public final boolean hAF()
-  {
-    return (this.status & 0x2) != 0;
-  }
-  
-  public final boolean hAG()
-  {
-    return this.VHy == 1;
-  }
-  
-  public final boolean isEnable()
-  {
-    return (this.status & 0x1) != 0;
-  }
-  
-  public final void setEnable(boolean paramBoolean)
-  {
-    if (paramBoolean)
+    for (;;)
     {
-      int j = this.status;
-      if (paramBoolean) {}
-      for (int i = 1;; i = 0)
-      {
-        this.status = (i | j);
-        return;
-      }
+      AppMethodBeat.o(248438);
+      return (j + (i + ((m * 31 + n) * 31 + i1) * 31) * 31) * 31 + k;
+      i = this.adln.hashCode();
+      break;
+      label99:
+      j = this.extData.hashCode();
+      break label46;
+      label110:
+      k = this.hUQ.hashCode();
     }
-    this.status &= 0xFFFFFFFE;
   }
   
-  public static final class a
+  public final String toString()
   {
-    private String domain;
-    private String fPV;
-    
-    public a(String paramString)
-    {
-      AppMethodBeat.i(43297);
-      int i = paramString.indexOf("@");
-      if (i >= 0)
-      {
-        this.fPV = paramString.substring(0, i);
-        this.domain = paramString.substring(i);
-        AppMethodBeat.o(43297);
-        return;
-      }
-      this.fPV = paramString;
-      this.domain = "";
-      AppMethodBeat.o(43297);
-    }
-    
-    public final String bxr(String paramString)
-    {
-      if (this.domain != null) {
-        paramString = this.domain;
-      }
-      return paramString;
-    }
+    AppMethodBeat.i(248436);
+    String str = "RecMsgReportInfo(mid=" + this.nVr + ", idx=" + this.idx + ", style=" + this.style + ", recInfo=" + this.adln + ", extData=" + this.extData + ", bizUsername=" + this.hUQ + ')';
+    AppMethodBeat.o(248436);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.storage.cj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,70 +1,24 @@
 package com.tencent.mm.plugin.appbrand.service;
 
-import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.d;
-import com.tencent.mm.plugin.appbrand.m.g;
-import com.tencent.mm.plugin.appbrand.t;
-import com.tencent.mm.sdk.platformtools.BuildInfo;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.stubs.logger.Log;
-import java.net.URL;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/service/WXNativeInjector;", "", "()V", "TAG", "", "WX_NATIVE_JS", "getWXNativeJSScript", "injectWxNativeForContext", "", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "context", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJSContext;", "isWxNativeEnabled", "", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/service/MonkeyTestAppService;", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "wxAutoTestJs", "", "(Ljava/lang/String;)V", "getWxAutoTestJs", "()Ljava/lang/String;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class aa
+  extends c
 {
-  public static final aa qPr;
+  final String tTA;
   
-  static
+  public aa(String paramString)
   {
-    AppMethodBeat.i(51061);
-    qPr = new aa();
-    AppMethodBeat.o(51061);
-  }
-  
-  public static final void a(c paramc, final g paramg)
-  {
-    AppMethodBeat.i(283069);
-    p.k(paramc, "$this$injectWxNativeForContext");
-    p.k(paramg, "context");
-    if (!g(paramc))
-    {
-      AppMethodBeat.o(283069);
-      return;
-    }
-    Log.i("MicroMsg.AppBrand.WXNativeInjector", "evaluate wxNative.js start. appId:" + paramc.getAppId() + ", contextId:" + paramg.bYT());
-    final long l = Util.currentTicks();
-    paramg.a(new URL(paramc.Rs() + "wxNative.js"), d.anc("wxNative.js") + "\n;(function() { return injectNativateRet; })()", (ValueCallback)new a(paramc, paramg, l));
-    AppMethodBeat.o(283069);
-  }
-  
-  public static final boolean g(c paramc)
-  {
-    AppMethodBeat.i(283070);
-    p.k(paramc, "$this$isWxNativeEnabled");
-    paramc = paramc.getRuntime();
-    p.j(paramc, "runtime");
-    if ((paramc.bDl()) || (BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED))
-    {
-      AppMethodBeat.o(283070);
-      return true;
-    }
-    AppMethodBeat.o(283070);
-    return false;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "value", "", "onReceiveValue"})
-  static final class a<T>
-    implements ValueCallback<String>
-  {
-    a(c paramc, g paramg, long paramLong) {}
+    AppMethodBeat.i(321543);
+    this.tTA = paramString;
+    AppMethodBeat.o(321543);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.service.aa
  * JD-Core Version:    0.7.0.1
  */

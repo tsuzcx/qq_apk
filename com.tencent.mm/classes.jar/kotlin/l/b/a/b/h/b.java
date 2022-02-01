@@ -6,7 +6,7 @@ import java.io.InputStream;
 public abstract class b<MessageType extends r>
   implements t<MessageType>
 {
-  private static final g abfZ = ;
+  private static final g ajeS = ;
   
   private static MessageType a(MessageType paramMessageType)
   {
@@ -16,7 +16,7 @@ public abstract class b<MessageType extends r>
       for (Object localObject = new x();; localObject = new x())
       {
         localObject = new l(((x)localObject).getMessage());
-        ((l)localObject).abgy = paramMessageType;
+        ((l)localObject).ajfp = paramMessageType;
         throw ((Throwable)localObject);
       }
     }
@@ -29,12 +29,12 @@ public abstract class b<MessageType extends r>
     paramg = (r)a(paramInputStream, paramg);
     try
     {
-      paramInputStream.gy(0);
+      paramInputStream.jM(0);
       return paramg;
     }
     catch (l paramInputStream)
     {
-      paramInputStream.abgy = paramg;
+      paramInputStream.ajfp = paramg;
       throw paramInputStream;
     }
   }
@@ -62,7 +62,7 @@ public abstract class b<MessageType extends r>
         }
         m = paramInputStream.read();
         if (m == -1) {
-          throw l.iNV();
+          throw l.kyn();
         }
       }
       catch (IOException paramInputStream)
@@ -84,12 +84,12 @@ public abstract class b<MessageType extends r>
           {
             j = paramInputStream.read();
             if (j == -1) {
-              throw l.iNV();
+              throw l.kyn();
             }
           }
           else
           {
-            throw l.iNX();
+            throw l.kyp();
           }
         } while ((j & 0x80) != 0);
       }
@@ -98,7 +98,7 @@ public abstract class b<MessageType extends r>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.h.b
  * JD-Core Version:    0.7.0.1
  */

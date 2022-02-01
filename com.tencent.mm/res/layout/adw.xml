@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/das" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/fri" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/pr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/db" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp">
+            <ImageView android:id="@id/a36" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_alignParentTop="true" android:layout_alignParentStart="true" />
+            <TextView android:textSize="@dimen/t" android:textColor="@color/az" android:id="@id/fz7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e9_" android:layout_alignParentTop="true" android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/pq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c6">
+            <TextView android:textSize="22.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:id="@id/fqx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/g66" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/xe" android:id="@id/fqb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_below="@id/fqx" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/pf" android:background="@drawable/us" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cv" android:layout_below="@id/pq" android:paddingStart="@dimen/cv" android:layout_marginStart="@dimen/cv" android:layout_marginEnd="@dimen/cv">
+            <LinearLayout android:orientation="vertical" android:id="@id/pn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cp">
+                <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:id="@id/pm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a78" android:layout_marginBottom="@dimen/a78" android:text="@string/dfb" />
+                <View android:background="@color/BW_100_Alpha_0_2" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView android:id="@id/pl" android:paddingBottom="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/po" android:background="@drawable/us" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_below="@id/pf" android:paddingStart="@dimen/cv" android:layout_marginStart="@dimen/cv" android:layout_marginEnd="@dimen/cv">
+            <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:id="@id/pp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cv" android:text="@string/dev" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/xe" android:id="@id/fqj" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:layout_marginRight="@dimen/cp" android:layout_marginBottom="@dimen/cv" android:text="@string/deu" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintLeft_toLeftOf="@id/pp" app:layout_constraintRight_toLeftOf="@id/fqk" app:layout_constraintTop_toBottomOf="@id/pp" />
+            <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/fqk" android:layout_width="@dimen/d4" android:layout_height="@dimen/d0" android:layout_marginRight="@dimen/cp" android:layout_alignParentRight="true" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" app:on_color="@color/Brand" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
+</RelativeLayout>

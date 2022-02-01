@@ -2,15 +2,13 @@ package com.eclipsesource.mmv8;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 
 class LibraryLoader
 {
   static final String DELIMITER;
   static final String SEPARATOR;
   static final String SWT_LIB_DIR = ".j2v8";
+  private byte _hellAccFlag_;
   
   static
   {
@@ -31,10 +29,9 @@ class LibraryLoader
     try
     {
       Runtime.getRuntime().exec(new String[] { "chmod", paramString1, paramString2 }).waitFor();
-      AppMethodBeat.o(61575);
       return;
     }
-    catch (Throwable paramString1)
+    finally
     {
       AppMethodBeat.o(61575);
     }
@@ -58,84 +55,132 @@ class LibraryLoader
     return str1;
   }
   
+  /* Error */
   static boolean extract(String paramString1, String paramString2, StringBuffer paramStringBuffer)
   {
-    i = 1;
-    AppMethodBeat.i(61574);
-    File localFile = new File(paramString1);
-    for (;;)
-    {
-      try
-      {
-        if (localFile.exists()) {
-          localFile.delete();
-        }
-        paramString2 = LibraryLoader.class.getResourceAsStream("/".concat(String.valueOf(paramString2)));
-        if (paramString2 == null) {}
-      }
-      catch (Throwable paramString1)
-      {
-        byte[] arrayOfByte;
-        FileOutputStream localFileOutputStream;
-        boolean bool;
-        i = 0;
-        paramString2 = null;
-        paramString1 = null;
-        continue;
-      }
-      try
-      {
-        arrayOfByte = new byte[4096];
-        localFileOutputStream = new FileOutputStream(paramString1);
-        try
-        {
-          int j = paramString2.read(arrayOfByte);
-          if (j != -1)
-          {
-            localFileOutputStream.write(arrayOfByte, 0, j);
-            continue;
-            if (paramString1 == null) {}
-          }
-        }
-        catch (Throwable paramString1)
-        {
-          paramString1 = localFileOutputStream;
-        }
-      }
-      catch (Throwable paramString1)
-      {
-        paramString1 = null;
-        continue;
-      }
-      try
-      {
-        paramString1.close();
-        if (paramString2 == null) {}
-      }
-      catch (IOException paramString1)
-      {
-        try
-        {
-          paramString2.close();
-          if ((i != 0) && (localFile.exists())) {
-            localFile.delete();
-          }
-          AppMethodBeat.o(61574);
-          return false;
-          localFileOutputStream.close();
-          paramString2.close();
-          chmod("755", paramString1);
-          bool = load(paramString1, paramStringBuffer);
-          if (!bool) {
-            continue;
-          }
-          AppMethodBeat.o(61574);
-          return true;
-          paramString1 = paramString1;
-        }
-        catch (IOException paramString1) {}
-      }
-    }
+    // Byte code:
+    //   0: iconst_1
+    //   1: istore_3
+    //   2: ldc 110
+    //   4: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: new 112	java/io/File
+    //   10: dup
+    //   11: aload_0
+    //   12: invokespecial 113	java/io/File:<init>	(Ljava/lang/String;)V
+    //   15: astore 7
+    //   17: aload 7
+    //   19: invokevirtual 116	java/io/File:exists	()Z
+    //   22: ifeq +9 -> 31
+    //   25: aload 7
+    //   27: invokevirtual 119	java/io/File:delete	()Z
+    //   30: pop
+    //   31: ldc 2
+    //   33: ldc 121
+    //   35: aload_1
+    //   36: invokestatic 125	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   39: invokevirtual 128	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   42: invokevirtual 134	java/lang/Class:getResourceAsStream	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   45: astore_1
+    //   46: aload_1
+    //   47: ifnull +85 -> 132
+    //   50: sipush 4096
+    //   53: newarray byte
+    //   55: astore 8
+    //   57: new 136	java/io/FileOutputStream
+    //   60: dup
+    //   61: aload_0
+    //   62: invokespecial 137	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   65: astore 6
+    //   67: aload_1
+    //   68: aload 8
+    //   70: invokevirtual 143	java/io/InputStream:read	([B)I
+    //   73: istore 4
+    //   75: iload 4
+    //   77: iconst_m1
+    //   78: if_icmpeq +61 -> 139
+    //   81: aload 6
+    //   83: aload 8
+    //   85: iconst_0
+    //   86: iload 4
+    //   88: invokevirtual 147	java/io/FileOutputStream:write	([BII)V
+    //   91: goto -24 -> 67
+    //   94: astore_0
+    //   95: aload 6
+    //   97: astore_0
+    //   98: aload_0
+    //   99: ifnull +7 -> 106
+    //   102: aload_0
+    //   103: invokevirtual 150	java/io/FileOutputStream:close	()V
+    //   106: aload_1
+    //   107: ifnull +7 -> 114
+    //   110: aload_1
+    //   111: invokevirtual 151	java/io/InputStream:close	()V
+    //   114: iload_3
+    //   115: ifeq +17 -> 132
+    //   118: aload 7
+    //   120: invokevirtual 116	java/io/File:exists	()Z
+    //   123: ifeq +9 -> 132
+    //   126: aload 7
+    //   128: invokevirtual 119	java/io/File:delete	()Z
+    //   131: pop
+    //   132: ldc 110
+    //   134: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   137: iconst_0
+    //   138: ireturn
+    //   139: aload 6
+    //   141: invokevirtual 150	java/io/FileOutputStream:close	()V
+    //   144: aload_1
+    //   145: invokevirtual 151	java/io/InputStream:close	()V
+    //   148: ldc 153
+    //   150: aload_0
+    //   151: invokestatic 155	com/eclipsesource/mmv8/LibraryLoader:chmod	(Ljava/lang/String;Ljava/lang/String;)V
+    //   154: aload_0
+    //   155: aload_2
+    //   156: invokestatic 159	com/eclipsesource/mmv8/LibraryLoader:load	(Ljava/lang/String;Ljava/lang/StringBuffer;)Z
+    //   159: istore 5
+    //   161: iload 5
+    //   163: ifeq -31 -> 132
+    //   166: ldc 110
+    //   168: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   171: iconst_1
+    //   172: ireturn
+    //   173: astore_0
+    //   174: goto -68 -> 106
+    //   177: astore_0
+    //   178: goto -64 -> 114
+    //   181: astore_0
+    //   182: iconst_0
+    //   183: istore_3
+    //   184: aconst_null
+    //   185: astore_1
+    //   186: aconst_null
+    //   187: astore_0
+    //   188: goto -90 -> 98
+    //   191: astore_0
+    //   192: aconst_null
+    //   193: astore_0
+    //   194: goto -96 -> 98
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	197	0	paramString1	String
+    //   0	197	1	paramString2	String
+    //   0	197	2	paramStringBuffer	StringBuffer
+    //   1	183	3	i	int
+    //   73	14	4	j	int
+    //   159	3	5	bool	boolean
+    //   65	75	6	localFileOutputStream	java.io.FileOutputStream
+    //   15	112	7	localFile	File
+    //   55	29	8	arrayOfByte	byte[]
+    // Exception table:
+    //   from	to	target	type
+    //   67	75	94	finally
+    //   81	91	94	finally
+    //   139	161	94	finally
+    //   102	106	173	java/io/IOException
+    //   110	114	177	java/io/IOException
+    //   17	31	181	finally
+    //   31	46	181	finally
+    //   50	67	191	finally
   }
   
   static String getArchSuffix()
@@ -282,7 +327,11 @@ class LibraryLoader
       {
         AppMethodBeat.o(61573);
         return true;
-        System.loadLibrary(paramString);
+        paramString = new com.tencent.mm.hellhoundlib.b.a().cG(paramString);
+        Object localObject = new Object();
+        com.tencent.mm.hellhoundlib.a.a.b(localObject, paramString.aYi(), "com/eclipsesource/mmv8/LibraryLoader", "load", "(Ljava/lang/String;Ljava/lang/StringBuffer;)Z", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+        System.loadLibrary((String)paramString.sb(0));
+        com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/eclipsesource/mmv8/LibraryLoader", "load", "(Ljava/lang/String;Ljava/lang/StringBuffer;)Z", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
       }
       return false;
     }
@@ -303,34 +352,38 @@ class LibraryLoader
     AppMethodBeat.i(61572);
     if (isAndroid())
     {
-      System.loadLibrary("mmj2v8");
+      paramString = new com.tencent.mm.hellhoundlib.b.a().cG("mmj2v8");
+      localObject = new Object();
+      com.tencent.mm.hellhoundlib.a.a.b(localObject, paramString.aYi(), "com/eclipsesource/mmv8/LibraryLoader", "loadLibrary", "(Ljava/lang/String;)V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+      System.loadLibrary((String)paramString.sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/eclipsesource/mmv8/LibraryLoader", "loadLibrary", "(Ljava/lang/String;)V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
       AppMethodBeat.o(61572);
       return;
     }
     StringBuffer localStringBuffer = new StringBuffer();
-    String str1 = computeLibraryShortName();
-    String str2 = computeLibraryFullName();
-    String str3 = System.getProperty("user.dir") + SEPARATOR + "jni" + SEPARATOR + computeLibraryFullName();
-    if (load(str2, localStringBuffer))
-    {
-      AppMethodBeat.o(61572);
-      return;
-    }
+    Object localObject = computeLibraryShortName();
+    String str1 = computeLibraryFullName();
+    String str2 = System.getProperty("user.dir") + SEPARATOR + "jni" + SEPARATOR + computeLibraryFullName();
     if (load(str1, localStringBuffer))
     {
       AppMethodBeat.o(61572);
       return;
     }
-    if ((new File(str3).exists()) && (load(str3, localStringBuffer)))
+    if (load((String)localObject, localStringBuffer))
     {
       AppMethodBeat.o(61572);
       return;
     }
-    str1 = paramString;
-    if (paramString == null) {
-      str1 = System.getProperty("java.io.tmpdir");
+    if ((new File(str2).exists()) && (load(str2, localStringBuffer)))
+    {
+      AppMethodBeat.o(61572);
+      return;
     }
-    if (extract(str1 + SEPARATOR + str2, str2, localStringBuffer))
+    localObject = paramString;
+    if (paramString == null) {
+      localObject = System.getProperty("java.io.tmpdir");
+    }
+    if (extract((String)localObject + SEPARATOR + str1, str1, localStringBuffer))
     {
       AppMethodBeat.o(61572);
       return;
@@ -342,7 +395,7 @@ class LibraryLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.eclipsesource.mmv8.LibraryLoader
  * JD-Core Version:    0.7.0.1
  */

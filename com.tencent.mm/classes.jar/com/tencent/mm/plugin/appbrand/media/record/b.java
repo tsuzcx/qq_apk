@@ -4,24 +4,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum b
 {
-  public int pEW;
+  public int sKh;
   
   static
   {
     AppMethodBeat.i(146318);
-    qdv = new b("AUTO", 0, 0);
-    qdw = new b("MIC", 1, 1);
-    qdx = new b("CAMCORDER", 2, 5);
-    qdy = new b("VOICE_RECOGNITION", 3, 6);
-    qdz = new b("VOICE_COMMUNICATION", 4, 7);
-    qdA = new b("UNPROCESSED", 5, 9);
-    qdB = new b[] { qdv, qdw, qdx, qdy, qdz, qdA };
+    tik = new b("AUTO", 0, 0);
+    til = new b("MIC", 1, 1);
+    tim = new b("CAMCORDER", 2, 5);
+    tin = new b("VOICE_RECOGNITION", 3, 6);
+    tio = new b("VOICE_COMMUNICATION", 4, 7);
+    tiq = new b("UNPROCESSED", 5, 9);
+    tir = new b[] { tik, til, tim, tin, tio, tiq };
     AppMethodBeat.o(146318);
   }
   
   private b(int paramInt)
   {
-    this.pEW = paramInt;
+    this.sKh = paramInt;
   }
   
   public static b a(String paramString, b paramb)

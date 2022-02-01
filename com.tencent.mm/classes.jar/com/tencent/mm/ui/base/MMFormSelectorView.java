@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.base;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
@@ -18,8 +17,8 @@ public class MMFormSelectorView
   private String hint;
   private int layout;
   private Context mContext;
-  private TextView mNb;
-  private EditText qDO;
+  private TextView pJJ;
+  private EditText tID;
   private String title;
   
   public MMFormSelectorView(Context paramContext, AttributeSet paramAttributeSet)
@@ -27,7 +26,6 @@ public class MMFormSelectorView
     this(paramContext, paramAttributeSet, -1);
   }
   
-  @TargetApi(11)
   public MMFormSelectorView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet);
@@ -53,9 +51,9 @@ public class MMFormSelectorView
   public String getText()
   {
     AppMethodBeat.i(141933);
-    if (this.qDO != null)
+    if (this.tID != null)
     {
-      String str = this.qDO.getText().toString();
+      String str = this.tID.getText().toString();
       AppMethodBeat.o(141933);
       return str;
     }
@@ -67,19 +65,19 @@ public class MMFormSelectorView
   public void onFinishInflate()
   {
     AppMethodBeat.i(141927);
-    this.mNb = ((TextView)findViewById(a.g.title));
-    this.qDO = ((EditText)findViewById(a.g.edittext));
-    if ((this.mNb == null) || (this.qDO == null))
+    this.pJJ = ((TextView)findViewById(a.g.title));
+    this.tID = ((EditText)findViewById(a.g.edittext));
+    if ((this.pJJ == null) || (this.tID == null))
     {
-      Log.w("MicroMsg.MMFormSelectorView", "titleTV : %s, contentET : %s", new Object[] { this.mNb, this.qDO });
+      Log.w("MicroMsg.MMFormSelectorView", "titleTV : %s, contentET : %s", new Object[] { this.pJJ, this.tID });
       AppMethodBeat.o(141927);
       return;
     }
     if (this.title != null) {
-      this.mNb.setText(this.title);
+      this.pJJ.setText(this.title);
     }
     if (this.hint != null) {
-      this.qDO.setHint(this.hint);
+      this.tID.setHint(this.hint);
     }
     AppMethodBeat.o(141927);
   }
@@ -87,9 +85,9 @@ public class MMFormSelectorView
   public void setHint(int paramInt)
   {
     AppMethodBeat.i(141931);
-    if (this.qDO != null)
+    if (this.tID != null)
     {
-      this.qDO.setHint(paramInt);
+      this.tID.setHint(paramInt);
       AppMethodBeat.o(141931);
       return;
     }
@@ -100,9 +98,9 @@ public class MMFormSelectorView
   public void setHint(String paramString)
   {
     AppMethodBeat.i(141929);
-    if (this.qDO != null)
+    if (this.tID != null)
     {
-      this.qDO.setHint(paramString);
+      this.tID.setHint(paramString);
       AppMethodBeat.o(141929);
       return;
     }
@@ -113,9 +111,9 @@ public class MMFormSelectorView
   public void setText(String paramString)
   {
     AppMethodBeat.i(141932);
-    if (this.qDO != null)
+    if (this.tID != null)
     {
-      this.qDO.setText(paramString);
+      this.tID.setText(paramString);
       AppMethodBeat.o(141932);
       return;
     }
@@ -126,9 +124,9 @@ public class MMFormSelectorView
   public void setTitle(int paramInt)
   {
     AppMethodBeat.i(141930);
-    if (this.mNb != null)
+    if (this.pJJ != null)
     {
-      this.mNb.setText(paramInt);
+      this.pJJ.setText(paramInt);
       AppMethodBeat.o(141930);
       return;
     }
@@ -139,9 +137,9 @@ public class MMFormSelectorView
   public void setTitle(String paramString)
   {
     AppMethodBeat.i(141928);
-    if (this.mNb != null)
+    if (this.pJJ != null)
     {
-      this.mNb.setText(paramString);
+      this.pJJ.setText(paramString);
       AppMethodBeat.o(141928);
       return;
     }
@@ -151,7 +149,7 @@ public class MMFormSelectorView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMFormSelectorView
  * JD-Core Version:    0.7.0.1
  */

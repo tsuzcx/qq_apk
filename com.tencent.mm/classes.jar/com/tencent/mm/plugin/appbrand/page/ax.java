@@ -2,178 +2,150 @@ package com.tencent.mm.plugin.appbrand.page;
 
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.i.f;
 import com.tencent.mm.plugin.appbrand.jsapi.webview.g.c;
-import com.tencent.mm.plugin.appbrand.jsapi.webview.g.c.a;
 import com.tencent.mm.plugin.appbrand.page.a.e;
-import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/page/CustomPauseRenderingExtensionWrapper;", "Lcom/tencent/mm/plugin/appbrand/page/extensions/AppBrandPageViewPauseRenderingExtension;", "originExtension", "(Lcom/tencent/mm/plugin/appbrand/page/extensions/AppBrandPageViewPauseRenderingExtension;)V", "value", "Lcom/tencent/mm/plugin/appbrand/jsapi/webview/HTMLWebViewContract$IView;", "htmlView", "getHtmlView", "()Lcom/tencent/mm/plugin/appbrand/jsapi/webview/HTMLWebViewContract$IView;", "setHtmlView", "(Lcom/tencent/mm/plugin/appbrand/jsapi/webview/HTMLWebViewContract$IView;)V", "paused", "", "pauseRendering", "", "resetRenderingState", "restoreRendering", "Companion", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/page/CustomPauseRenderingExtensionWrapper;", "Lcom/tencent/mm/plugin/appbrand/page/extensions/AppBrandPageViewPauseRenderingExtension;", "originExtension", "(Lcom/tencent/mm/plugin/appbrand/page/extensions/AppBrandPageViewPauseRenderingExtension;)V", "value", "Lcom/tencent/mm/plugin/appbrand/jsapi/webview/HTMLWebViewContract$IView;", "htmlView", "getHtmlView", "()Lcom/tencent/mm/plugin/appbrand/jsapi/webview/HTMLWebViewContract$IView;", "setHtmlView", "(Lcom/tencent/mm/plugin/appbrand/jsapi/webview/HTMLWebViewContract$IView;)V", "paused", "", "pauseRendering", "", "resetRenderingState", "restoreRendering", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ax
   implements e
 {
-  public static final ax.a quR;
-  private boolean lzZ;
-  private g.c quP;
-  private final e quQ;
+  public static final ax.a tzG;
+  private boolean orA;
+  private final e tzH;
+  private g.c tzI;
   
   static
   {
     AppMethodBeat.i(50936);
-    quR = new ax.a((byte)0);
+    tzG = new ax.a((byte)0);
     AppMethodBeat.o(50936);
   }
   
   public ax(e parame)
   {
     AppMethodBeat.i(50935);
-    this.quQ = parame;
+    this.tzH = parame;
     AppMethodBeat.o(50935);
   }
   
-  public static final void a(final ah paramah, g.c paramc)
+  public static final void a(ah paramah, final g.c paramc)
   {
-    AppMethodBeat.i(284464);
-    p.k(paramah, "page");
-    Object localObject = (d)paramah;
-    if (MMHandlerThread.isMainThread())
-    {
-      localObject = paramah.R(e.class);
-      paramah = (ah)localObject;
-      if (!(localObject instanceof ax)) {
-        paramah = null;
-      }
-      paramah = (ax)paramah;
-      if (paramah != null)
-      {
-        paramah.d(paramc);
-        AppMethodBeat.o(284464);
-        return;
-      }
-      AppMethodBeat.o(284464);
-      return;
-    }
-    localObject = ((d)localObject).getContentView();
-    if (localObject != null)
-    {
-      ((View)localObject).post((Runnable)new a.a(paramc, paramah));
-      AppMethodBeat.o(284464);
-      return;
-    }
-    AppMethodBeat.o(284464);
+    AppMethodBeat.i(325191);
+    s.u(paramah, "page");
+    paramah.a((i.f)new a.a(paramah, paramc));
+    AppMethodBeat.o(325191);
   }
   
-  private final void ceY()
+  private static final void a(ax paramax, int paramInt)
+  {
+    AppMethodBeat.i(325188);
+    s.u(paramax, "this$0");
+    paramax.cFN();
+    AppMethodBeat.o(325188);
+  }
+  
+  private final void cFN()
   {
     AppMethodBeat.i(50934);
-    if (this.lzZ)
+    if (this.orA)
     {
-      bXr();
+      cxD();
       AppMethodBeat.o(50934);
       return;
     }
-    bXq();
-    if (this.quP != null) {
-      this.quQ.bXr();
+    cxC();
+    if (this.tzI != null) {
+      this.tzH.cxD();
     }
     AppMethodBeat.o(50934);
   }
   
-  public final void bXq()
+  public final void cxC()
   {
+    int j = 0;
     AppMethodBeat.i(50932);
-    this.lzZ = false;
-    Object localObject = this.quP;
+    this.orA = false;
+    Object localObject = this.tzI;
+    int i = j;
     if (localObject != null)
     {
       localObject = ((g.c)localObject).getAndroidView();
-      if ((localObject != null) && (((View)localObject).getVisibility() == 0))
+      i = j;
+      if (localObject != null)
       {
-        localObject = this.quP;
-        if (localObject == null) {
-          p.iCn();
+        i = j;
+        if (((View)localObject).getVisibility() == 0) {
+          i = 1;
         }
-        ((g.c)localObject).bXq();
-        AppMethodBeat.o(50932);
-        return;
       }
     }
-    this.quQ.bXq();
+    if (i != 0)
+    {
+      localObject = this.tzI;
+      s.checkNotNull(localObject);
+      ((g.c)localObject).cxC();
+      AppMethodBeat.o(50932);
+      return;
+    }
+    this.tzH.cxC();
     AppMethodBeat.o(50932);
   }
   
-  public final void bXr()
+  public final void cxD()
   {
     AppMethodBeat.i(50933);
-    this.lzZ = true;
-    g.c localc = this.quP;
+    this.orA = true;
+    g.c localc = this.tzI;
     if (localc != null) {
-      localc.bXr();
+      localc.cxD();
     }
-    this.quQ.bXr();
+    this.tzH.cxD();
     AppMethodBeat.o(50933);
   }
   
   public final void d(g.c paramc)
   {
-    AppMethodBeat.i(284463);
-    if ((p.h(this.quP, paramc) ^ true))
+    AppMethodBeat.i(325195);
+    if (!s.p(this.tzI, paramc))
     {
-      this.quP = paramc;
-      ceY();
-      if (paramc != null)
-      {
-        paramc.a((g.c.a)new b(this));
-        AppMethodBeat.o(284463);
-        return;
+      this.tzI = paramc;
+      cFN();
+      if (paramc != null) {
+        paramc.a(new ax..ExternalSyntheticLambda0(this));
       }
     }
-    AppMethodBeat.o(284463);
+    AppMethodBeat.o(325195);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/AppBrandComponentViewWxa$runOnUiThread$1"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/page/CustomPauseRenderingExtensionWrapper$Companion$notifyHtmlViewChanged$1", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentViewLifecycleStore$OnReadyListener;", "onReady", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a$a
-    implements Runnable
+    implements i.f
   {
-    public a$a(g.c paramc, ah paramah) {}
+    a$a(ah paramah, g.c paramc) {}
     
-    public final void run()
+    public final void onReady()
     {
-      AppMethodBeat.i(50929);
-      Object localObject2 = paramah.R(e.class);
-      Object localObject1 = localObject2;
-      if (!(localObject2 instanceof ax)) {
-        localObject1 = null;
-      }
-      localObject1 = (ax)localObject1;
-      if (localObject1 != null)
+      AppMethodBeat.i(324883);
+      Object localObject = this.ryq.aa(e.class);
+      if ((localObject instanceof ax)) {}
+      for (localObject = (ax)localObject;; localObject = null)
       {
-        ((ax)localObject1).d(this.quS);
-        AppMethodBeat.o(50929);
+        if (localObject != null) {
+          ((ax)localObject).d(paramc);
+        }
+        this.ryq.b((i.f)this);
+        AppMethodBeat.o(324883);
         return;
       }
-      AppMethodBeat.o(50929);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "onVisibilityChanged"})
-  static final class b
-    implements g.c.a
-  {
-    b(ax paramax) {}
-    
-    public final void bXz()
-    {
-      AppMethodBeat.i(50930);
-      ax.a(this.quU);
-      AppMethodBeat.o(50930);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.ax
  * JD-Core Version:    0.7.0.1
  */

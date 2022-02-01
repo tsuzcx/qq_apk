@@ -10,53 +10,53 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public abstract class b
 {
-  private static float cQj = 3.4028235E+38F;
-  private static float usY = 3.4028235E+38F;
-  private static int usZ = -1;
-  public static float uta = 48.0F;
+  private static float eLo = 3.4028235E+38F;
+  private static float xzv = 3.4028235E+38F;
+  private static int xzw = -1;
+  public static float xzx = 48.0F;
   
-  public static int Jg(int paramInt)
+  public static int JO(int paramInt)
   {
-    return Math.round(paramInt * cSi());
+    return Math.round(paramInt * dwA());
   }
   
-  public static int Jh(int paramInt)
+  public static int JP(int paramInt)
   {
-    return Math.round(paramInt / cSi());
+    return Math.round(paramInt / dwA());
   }
   
-  private static float cSh()
+  private static float dwA()
   {
     try
     {
-      if (cQj == 3.4028235E+38F) {
-        cQj = getDisplayMetrics().density;
+      if (xzv == 3.4028235E+38F) {
+        xzv = getDisplayMetrics().density * MMApplicationContext.getContext().getResources().getConfiguration().fontScale;
       }
-      float f = cQj;
+      float f = xzv;
       return f;
     }
     finally {}
   }
   
-  private static float cSi()
+  public static int dwB()
+  {
+    if (xzw == -1) {
+      xzw = Math.round(getDisplayDensity() * 30.0F);
+    }
+    return xzw;
+  }
+  
+  private static float getDisplayDensity()
   {
     try
     {
-      if (usY == 3.4028235E+38F) {
-        usY = getDisplayMetrics().density * MMApplicationContext.getContext().getResources().getConfiguration().fontScale;
+      if (eLo == 3.4028235E+38F) {
+        eLo = getDisplayMetrics().density;
       }
-      float f = usY;
+      float f = eLo;
       return f;
     }
     finally {}
-  }
-  
-  public static int cSj()
-  {
-    if (usZ == -1) {
-      usZ = Math.round(cSh() * 30.0F);
-    }
-    return usZ;
   }
   
   private static DisplayMetrics getDisplayMetrics()
@@ -69,17 +69,17 @@ public abstract class b
   
   public static float getTextSize()
   {
-    return uta;
+    return xzx;
   }
   
   public static void setTextSize(float paramFloat)
   {
-    uta = paramFloat;
+    xzx = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.manager.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,95 +2,98 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.model.be;
+import com.tencent.mm.plugin.sns.model.bg;
 import com.tencent.mm.ui.MMActivity;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.b;
-import kotlin.g.b.p;
 import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.l.e;
+import kotlin.g.b.s;
+import kotlin.l.f;
 import kotlin.n.n;
-import kotlin.x;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/sns/ui/Festival2021Widget;", "Lcom/tencent/mm/plugin/sns/ui/FinderLiveWidget;", "context", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "snsType", "", "getSnsType", "()I", "onPrepareCommitPack", "", "packHelper", "Lcom/tencent/mm/plugin/sns/model/UploadPackHelper;", "safeGet", "", "Landroid/content/Intent;", "key", "block", "Lkotlin/Function1;", "Lkotlin/reflect/KFunction1;", "plugin-sns_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/sns/ui/Festival2021Widget;", "Lcom/tencent/mm/plugin/sns/ui/FinderLiveWidget;", "context", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "snsType", "", "getSnsType", "()I", "onPrepareCommitPack", "", "packHelper", "Lcom/tencent/mm/plugin/sns/model/UploadPackHelper;", "safeGet", "", "Landroid/content/Intent;", "key", "block", "Lkotlin/Function1;", "Lkotlin/reflect/KFunction1;", "plugin-sns_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class t
   extends u
 {
-  private final int KCZ;
+  private final int RcH;
   
   public t(MMActivity paramMMActivity)
   {
     super(paramMMActivity);
-    AppMethodBeat.i(198013);
-    this.KCZ = 43;
-    AppMethodBeat.o(198013);
+    AppMethodBeat.i(308031);
+    this.RcH = 43;
+    AppMethodBeat.o(308031);
   }
   
-  private static String a(Intent paramIntent, String paramString, b<? super String, x> paramb)
+  private static String a(Intent paramIntent, String paramString, b<? super String, ah> paramb)
   {
-    AppMethodBeat.i(198004);
+    AppMethodBeat.i(308036);
     paramIntent = paramIntent.getStringExtra(paramString);
-    if (paramIntent != null)
+    if (paramIntent == null)
     {
-      int i;
-      if (!n.ba((CharSequence)paramIntent))
-      {
-        i = 1;
-        if (i == 0) {
-          break label55;
-        }
-      }
-      for (;;)
-      {
-        if (paramIntent == null) {
-          break label60;
-        }
-        paramb.invoke(paramIntent);
-        AppMethodBeat.o(198004);
-        return paramIntent;
-        i = 0;
-        break;
-        label55:
-        paramIntent = null;
+      AppMethodBeat.o(308036);
+      return null;
+    }
+    int i;
+    if (!n.bp((CharSequence)paramIntent))
+    {
+      i = 1;
+      if (i == 0) {
+        break label54;
       }
     }
-    label60:
-    AppMethodBeat.o(198004);
-    return null;
-  }
-  
-  private static String a(Intent paramIntent, String paramString, e<? extends be> parame)
-  {
-    AppMethodBeat.i(198005);
-    paramIntent = a(paramIntent, paramString, (b)new t.d(parame));
-    AppMethodBeat.o(198005);
+    for (;;)
+    {
+      if (paramIntent != null) {
+        break label59;
+      }
+      AppMethodBeat.o(308036);
+      return null;
+      i = 0;
+      break;
+      label54:
+      paramIntent = null;
+    }
+    label59:
+    paramb.invoke(paramIntent);
+    AppMethodBeat.o(308036);
     return paramIntent;
   }
   
-  protected final void a(MMActivity paramMMActivity, final be parambe)
+  private static String a(Intent paramIntent, String paramString, f<? extends bg> paramf)
   {
-    AppMethodBeat.i(198009);
-    p.k(paramMMActivity, "context");
-    p.k(parambe, "packHelper");
+    AppMethodBeat.i(308040);
+    paramIntent = a(paramIntent, paramString, (b)new t.d(paramf));
+    AppMethodBeat.o(308040);
+    return paramIntent;
+  }
+  
+  protected final void a(MMActivity paramMMActivity, bg parambg)
+  {
+    AppMethodBeat.i(308046);
+    s.u(paramMMActivity, "context");
+    s.u(parambg, "packHelper");
     Intent localIntent = paramMMActivity.getIntent();
-    a(localIntent, "Ksnsupload_title", new t.b(parambe));
-    a(localIntent, "Ksnsupload_link", new t.c(parambe));
-    a(localIntent, "Ksnsupload_imgurl", (b)new a(this, parambe));
-    super.a(paramMMActivity, parambe);
-    AppMethodBeat.o(198009);
+    s.s(localIntent, "");
+    a(localIntent, "Ksnsupload_title", (f)new a(parambg));
+    a(localIntent, "Ksnsupload_link", (f)new b(parambg));
+    a(localIntent, "Ksnsupload_imgurl", (b)new c(parambg));
+    super.a(paramMMActivity, parambg);
+    AppMethodBeat.o(308046);
   }
   
-  protected final int fTB()
+  protected final int hlU()
   {
-    return this.KCZ;
+    return this.RcH;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "imgUrl", "", "invoke", "com/tencent/mm/plugin/sns/ui/Festival2021Widget$onPrepareCommitPack$1$3"})
-  static final class a
-    extends q
-    implements b<String, x>
+  @Metadata(d1={""}, d2={"<anonymous>", "", "imgUrl", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends kotlin.g.b.u
+    implements b<String, ah>
   {
-    a(t paramt, be parambe)
+    c(bg parambg)
     {
       super();
     }
@@ -98,7 +101,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.t
  * JD-Core Version:    0.7.0.1
  */

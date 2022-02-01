@@ -2,13 +2,15 @@ package com.tencent.mm.plugin.location;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.be;
+import com.tencent.mm.plugin.location.model.SubCoreLocation;
 import com.tencent.mm.pluginsdk.c.c;
 import com.tencent.mm.pluginsdk.c.d;
+import com.tencent.mm.pluginsdk.n;
 
 public class Plugin
   implements d
 {
-  public com.tencent.mm.pluginsdk.n createApplication()
+  public n createApplication()
   {
     AppMethodBeat.i(55666);
     a locala = new a();
@@ -19,9 +21,9 @@ public class Plugin
   public be createSubCore()
   {
     AppMethodBeat.i(55667);
-    com.tencent.mm.plugin.location.model.n localn = new com.tencent.mm.plugin.location.model.n();
+    SubCoreLocation localSubCoreLocation = new SubCoreLocation();
     AppMethodBeat.o(55667);
-    return localn;
+    return localSubCoreLocation;
   }
   
   public c getContactWidgetFactory()

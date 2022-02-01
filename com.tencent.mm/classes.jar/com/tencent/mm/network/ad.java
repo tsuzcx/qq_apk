@@ -1,120 +1,40 @@
 package com.tencent.mm.network;
 
+import com.tencent.mars.smc.SmcLogic;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 
 public final class ad
+  extends q.a
 {
-  private static final byte[] mwb;
-  public o mwc;
-  
-  static
+  public final void a(final long paramLong, String paramString, final boolean paramBoolean1, final boolean paramBoolean2)
   {
-    AppMethodBeat.i(132892);
-    mwb = com.tencent.mm.b.o.jO(7);
-    AppMethodBeat.o(132892);
-  }
-  
-  public final void k(int paramInt, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(132891);
-    StringBuilder localStringBuilder = new StringBuilder("onNotify, datalen=");
-    int i;
-    if (paramArrayOfByte == null)
+    AppMethodBeat.i(143768);
+    h.baH().postToWorker(new Runnable()
     {
-      i = 0;
-      Log.i("MicroMsg.MMNativeNetNotifyAdapter", i + " cmd= " + paramInt);
-      switch (paramInt)
+      public final void run()
       {
-      }
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(132891);
-      return;
-      i = paramArrayOfByte.length;
-      break;
-      Log.i("MicroMsg.MMNativeNetNotifyAdapter", "old notify");
-      this.mwc.f(138, mwb);
-      AppMethodBeat.o(132891);
-      return;
-      Log.i("MicroMsg.MMNativeNetNotifyAdapter", "dkpush new notify [%s]", new Object[] { Util.dumpHex(paramArrayOfByte) });
-      this.mwc.f(138, paramArrayOfByte);
-      AppMethodBeat.o(132891);
-      return;
-      Log.i("MicroMsg.MMNativeNetNotifyAdapter", "dkpush do synccheck");
-      this.mwc.f(39, null);
-      AppMethodBeat.o(132891);
-      return;
-      AppMethodBeat.o(132891);
-      return;
-      this.mwc.f(174, paramArrayOfByte);
-      AppMethodBeat.o(132891);
-      return;
-      if (paramArrayOfByte.length > 0)
-      {
-        this.mwc.f(10, paramArrayOfByte);
-        AppMethodBeat.o(132891);
-        return;
-        AppMethodBeat.o(132891);
-        return;
-        Log.i("MicroMsg.MMNativeNetNotifyAdapter", "MM_PKT_VOIP_REQ");
-        if (paramArrayOfByte.length > 0)
+        AppMethodBeat.i(143766);
+        if (paramBoolean1)
         {
-          this.mwc.f(120, paramArrayOfByte);
-          AppMethodBeat.o(132891);
+          SmcLogic.writeImportKvData(paramLong, paramBoolean2, this.ppy, false);
+          AppMethodBeat.o(143766);
           return;
-          Log.i("MicroMsg.MMNativeNetNotifyAdapter", "dkpush MM_PKT_PUSH_DATA_REQ");
-          if (paramArrayOfByte.length > 0)
-          {
-            this.mwc.f(268369921, paramArrayOfByte);
-            AppMethodBeat.o(132891);
-            return;
-            this.mwc.f(1000000205, paramArrayOfByte);
-            AppMethodBeat.o(132891);
-            return;
-            this.mwc.f(192, paramArrayOfByte);
-            AppMethodBeat.o(132891);
-            return;
-            Log.i("MicroMsg.MMNativeNetNotifyAdapter", "dkpush do oob do notify");
-            this.mwc.f(268369923, paramArrayOfByte);
-            AppMethodBeat.o(132891);
-            return;
-            Log.i("MicroMsg.MMNativeNetNotifyAdapter", "jacks do voice notify PUSH");
-            this.mwc.f(241, paramArrayOfByte);
-            AppMethodBeat.o(132891);
-            return;
-            Log.i("MicroMsg.MMNativeNetNotifyAdapter", "pandy do gamesync notify");
-            this.mwc.f(244, paramArrayOfByte);
-            AppMethodBeat.o(132891);
-            return;
-            Log.i("MicroMsg.MMNativeNetNotifyAdapter", "on notify F2F data");
-            this.mwc.f(311, paramArrayOfByte);
-            AppMethodBeat.o(132891);
-            return;
-            Log.i("MicroMsg.MMNativeNetNotifyAdapter", "summerbadcr on silence notify");
-            this.mwc.f(318, paramArrayOfByte);
-            AppMethodBeat.o(132891);
-            return;
-            Log.i("MicroMsg.MMNativeNetNotifyAdapter", "summerbadcr on byp notify");
-            this.mwc.f(319, paramArrayOfByte);
-            AppMethodBeat.o(132891);
-            return;
-            this.mwc.f(271, paramArrayOfByte);
-            AppMethodBeat.o(132891);
-            return;
-            this.mwc.f(3941, paramArrayOfByte);
-            AppMethodBeat.o(132891);
-            return;
-            this.mwc.f(10098, paramArrayOfByte);
-            AppMethodBeat.o(132891);
-            return;
-            this.mwc.f(6238, paramArrayOfByte);
-          }
         }
+        SmcLogic.writeKvData(paramLong, paramBoolean2, this.ppy, false);
+        AppMethodBeat.o(143766);
       }
-    }
+      
+      public final String toString()
+      {
+        AppMethodBeat.i(143767);
+        String str = super.toString() + "|reportKV";
+        AppMethodBeat.o(143767);
+        return str;
+      }
+    });
+    AppMethodBeat.o(143768);
   }
 }
 

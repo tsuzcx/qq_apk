@@ -1,93 +1,239 @@
 package com.tencent.mm.plugin.finder.report;
 
+import android.content.Context;
+import android.text.SpannableString;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.event.base.b;
-import com.tencent.mm.plugin.finder.event.base.c;
-import com.tencent.mm.plugin.finder.event.base.e;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.utils.av;
+import com.tencent.mm.plugin.finder.view.q;
+import com.tencent.mm.plugin.finder.viewmodel.component.as;
+import com.tencent.mm.plugin.finder.viewmodel.component.as.a;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.FinderObjectDesc;
+import com.tencent.mm.protocal.protobuf.boi;
+import com.tencent.mm.protocal.protobuf.brg;
+import com.tencent.mm.view.e.b;
+import com.tencent.mm.view.f;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/report/PlayFocusSubscriber;", "Lcom/tencent/mm/plugin/finder/event/base/EventSubscriber;", "Lcom/tencent/mm/plugin/finder/report/PlayFocusSubscriber$PlayFocusBehavior;", "dispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "(Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;)V", "getBehavior", "PlayEvent", "PlayFocusBehavior", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/report/FinderTextReporter;", "", "()V", "EID_LINK_ACTIVITY_TAG", "", "EID_LINK_AT_PROFILE_TAG", "EID_LINK_POI_TAG", "reportActivity21875", "", "context", "Landroid/content/Context;", "eventCode", "", "activityId", "", "(Landroid/content/Context;ILjava/lang/Long;)V", "reportAtProfile21875", "nickName", "reportPoi21875", "poiName", "setTextExposed", "contentTv", "Landroid/view/View;", "spannableString", "Landroid/text/SpannableString;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ak
-  extends e<b>
 {
-  public ak(c paramc)
+  public static final ak FtG;
+  
+  static
   {
-    super(paramc);
-    AppMethodBeat.i(166719);
-    AppMethodBeat.o(166719);
+    AppMethodBeat.i(331298);
+    FtG = new ak();
+    AppMethodBeat.o(331298);
   }
   
-  public final b dQz()
+  public static void a(Context paramContext, int paramInt, Long paramLong)
   {
-    AppMethodBeat.i(166718);
-    b localb = (b)new c(this);
-    AppMethodBeat.o(166718);
-    return localb;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/report/PlayFocusSubscriber$PlayEvent;", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "initPos", "", "(I)V", "getInitPos", "()I", "component1", "copy", "equals", "", "other", "", "hashCode", "toString", "", "plugin-finder_release"})
-  public static final class a
-    extends b
-  {
-    private final int zZD;
-    
-    public a(int paramInt)
+    AppMethodBeat.i(331281);
+    s.u(paramContext, "context");
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      this.zZD = paramInt;
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      if (this != paramObject)
+      localJSONObject.put("activityid", paramLong);
+      label27:
+      paramLong = bb.FuK;
+      paramLong = as.GSQ;
+      paramContext = as.a.hu(paramContext);
+      if (paramContext == null) {}
+      for (paramContext = null;; paramContext = paramContext.fou())
       {
-        if ((paramObject instanceof a))
+        bb.a(paramContext, "link_activity", paramInt, localJSONObject);
+        AppMethodBeat.o(331281);
+        return;
+      }
+    }
+    catch (JSONException paramLong)
+    {
+      break label27;
+    }
+  }
+  
+  public static void a(final View paramView, SpannableString paramSpannableString, final BaseFinderFeed paramBaseFinderFeed)
+  {
+    AppMethodBeat.i(331292);
+    s.u(paramView, "contentTv");
+    s.u(paramSpannableString, "spannableString");
+    s.u(paramBaseFinderFeed, "item");
+    f.a(paramView, (e.b)new a(paramSpannableString, paramBaseFinderFeed, paramView));
+    AppMethodBeat.o(331292);
+  }
+  
+  public static void f(Context paramContext, int paramInt, String paramString)
+  {
+    AppMethodBeat.i(331266);
+    s.u(paramContext, "context");
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("poi_name", paramString);
+      label27:
+      paramString = bb.FuK;
+      paramString = as.GSQ;
+      paramContext = as.a.hu(paramContext);
+      if (paramContext == null) {}
+      for (paramContext = null;; paramContext = paramContext.fou())
+      {
+        bb.a(paramContext, "link_poi", paramInt, localJSONObject);
+        AppMethodBeat.o(331266);
+        return;
+      }
+    }
+    catch (JSONException paramString)
+    {
+      break label27;
+    }
+  }
+  
+  public static void g(Context paramContext, int paramInt, String paramString)
+  {
+    AppMethodBeat.i(331274);
+    s.u(paramContext, "context");
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("nickname", paramString);
+      label27:
+      paramString = bb.FuK;
+      paramString = as.GSQ;
+      paramContext = as.a.hu(paramContext);
+      if (paramContext == null) {}
+      for (paramContext = null;; paramContext = paramContext.fou())
+      {
+        bb.a(paramContext, "link_at_profile", paramInt, localJSONObject);
+        AppMethodBeat.o(331274);
+        return;
+      }
+    }
+    catch (JSONException paramString)
+    {
+      break label27;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/report/FinderTextReporter$setTextExposed$1", "Lcom/tencent/mm/view/ExposeElves$OnViewExposedListener;", "onViewExposed", "", "view", "Landroid/view/View;", "oldExposedId", "", "newExposedId", "isExposed", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+    extends e.b
+  {
+    a(SpannableString paramSpannableString, BaseFinderFeed paramBaseFinderFeed, View paramView) {}
+    
+    public final void a(View paramView, long paramLong1, long paramLong2, boolean paramBoolean)
+    {
+      AppMethodBeat.i(331544);
+      s.u(paramView, "view");
+      q[] arrayOfq;
+      int i;
+      int k;
+      if (paramBoolean)
+      {
+        paramView = this.FtH.getSpans(0, this.FtH.length(), q.class);
+        s.s(paramView, "spannableString.getSpans…extClickSpan::class.java)");
+        arrayOfq = (q[])paramView;
+        i = 0;
+        k = arrayOfq.length;
+      }
+      label131:
+      label171:
+      label314:
+      label317:
+      label323:
+      label351:
+      for (;;)
+      {
+        if (i < k)
         {
-          paramObject = (a)paramObject;
-          if (this.zZD != paramObject.zZD) {}
+          q localq = arrayOfq[i];
+          i += 1;
+          int j;
+          if (localq.zID)
+          {
+            paramView = av.GiL;
+            paramView = paramBaseFinderFeed.feedObject.getLocation().city;
+            Object localObject = (CharSequence)paramView;
+            if ((localObject == null) || (((CharSequence)localObject).length() == 0))
+            {
+              j = 1;
+              label124:
+              if (j == 0) {
+                break label314;
+              }
+              paramView = null;
+              localObject = paramBaseFinderFeed.feedObject.getLocation().poiName;
+              CharSequence localCharSequence = (CharSequence)localObject;
+              if ((localCharSequence != null) && (localCharSequence.length() != 0)) {
+                break label317;
+              }
+              j = 1;
+              if (j != 0) {
+                localObject = null;
+              }
+              paramView = av.cn(paramView, (String)localObject);
+              localObject = ak.FtG;
+              localObject = paramView.getContext();
+              s.s(localObject, "contentTv.context");
+              ak.f((Context)localObject, 0, paramView);
+            }
+          }
+          else
+          {
+            if (localq.GDh)
+            {
+              paramView = ak.FtG;
+              paramView = paramView.getContext();
+              s.s(paramView, "contentTv.context");
+              ak.g(paramView, 0, localq.text);
+            }
+            if (!localq.GDi) {
+              break label351;
+            }
+            paramView = paramBaseFinderFeed.feedObject.getFeedObject().objectDesc;
+            if (paramView != null) {
+              break label323;
+            }
+            paramLong1 = 0L;
+          }
+          for (;;)
+          {
+            paramView = ak.FtG;
+            paramView = paramView.getContext();
+            s.s(paramView, "contentTv.context");
+            ak.a(paramView, 0, Long.valueOf(paramLong1));
+            break;
+            j = 0;
+            break label124;
+            break label131;
+            j = 0;
+            break label171;
+            paramView = paramView.event;
+            if (paramView == null) {
+              paramLong1 = 0L;
+            } else {
+              paramLong1 = paramView.ocD;
+            }
+          }
+        }
+        else
+        {
+          AppMethodBeat.o(331544);
+          return;
         }
       }
-      else {
-        return true;
-      }
-      return false;
-    }
-    
-    public final int hashCode()
-    {
-      return this.zZD;
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(166716);
-      String str = "PlayEvent(initPos=" + this.zZD + ")";
-      AppMethodBeat.o(166716);
-      return str;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/report/PlayFocusSubscriber$PlayFocusBehavior;", "", "onPlay", "", "initPos", "", "plugin-finder_release"})
-  public static abstract interface b
-  {
-    public abstract void PO(int paramInt);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/report/PlayFocusSubscriber$getBehavior$1", "Lcom/tencent/mm/plugin/finder/report/PlayFocusSubscriber$PlayFocusBehavior;", "onPlay", "", "initPos", "", "plugin-finder_release"})
-  public static final class c
-    implements ak.b
-  {
-    public final void PO(int paramInt)
-    {
-      AppMethodBeat.i(166717);
-      ak.a locala = new ak.a(paramInt);
-      this.zZE.c((b)locala);
-      AppMethodBeat.o(166717);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.report.ak
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,7 @@ package com.tencent.mm.plugin.repairer.ui;
 
 public final class b$e
 {
-  public static final int BottomToTopSlowAnimation = 2131820793;
-  public static final int IwW = 2131821288;
+  public static final int actionbar_icon_light_search = 2131689503;
 }
 
 

@@ -4,42 +4,42 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.h;
-import com.tencent.mm.bv.a.g;
-import com.tencent.mm.ca.b;
+import com.tencent.mm.api.i;
+import com.tencent.mm.bo.a.g;
+import com.tencent.mm.bt.b;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 
 public final class d
   extends a
 {
-  private Bitmap YQP;
-  private Bitmap YQQ;
+  private Bitmap agMv;
+  private Bitmap agMw;
   
   public d(Context paramContext, b paramb)
   {
     super(paramContext, paramb);
   }
   
-  protected final Bitmap a(h paramh, boolean paramBoolean)
+  protected final Bitmap a(i parami, boolean paramBoolean)
   {
     Bitmap localBitmap = null;
-    if (paramh == h.fas)
+    if (parami == i.hdT)
     {
       if (paramBoolean) {
-        localBitmap = this.YQQ;
+        localBitmap = this.agMw;
       }
     }
     else {
       return localBitmap;
     }
-    return this.YQP;
+    return this.agMv;
   }
   
-  protected final boolean azw(int paramInt)
+  protected final boolean aGa(int paramInt)
   {
     AppMethodBeat.i(9426);
-    boolean bool = super.azw(paramInt);
-    switch (1.RAi[azv(paramInt).ordinal()])
+    boolean bool = super.aGa(paramInt);
+    switch (1.YwI[aFZ(paramInt).ordinal()])
     {
     }
     for (;;)
@@ -50,18 +50,18 @@ public final class d
     }
   }
   
-  protected final void ihI()
+  protected final void jMV()
   {
     AppMethodBeat.i(9425);
-    super.ihI();
-    this.YQP = BitmapUtil.transformDrawableToBitmap(getResources().getDrawable(a.g.crop_video_unselected));
-    this.YQQ = BitmapUtil.transformDrawableToBitmap(getResources().getDrawable(a.g.crop_video_selected));
+    super.jMV();
+    this.agMv = BitmapUtil.transformDrawableToBitmap(getResources().getDrawable(a.g.crop_video_unselected));
+    this.agMw = BitmapUtil.transformDrawableToBitmap(getResources().getDrawable(a.g.crop_video_selected));
     AppMethodBeat.o(9425);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.view.footer.d
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.hld.f;
 import android.content.Context;
 import android.content.res.AssetManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.hld.model.p.a;
+import com.tencent.mm.plugin.hld.model.o.a;
 import com.tencent.mm.plugin.hld.symbol.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -15,77 +15,80 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import kotlin.g.b.p;
+import kotlin.Metadata;
+import kotlin.g.b.c;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/utils/ImeSymbolUtil;", "", "()V", "TAG", "", "englishSymbolList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/hld/utils/WxImeSymbolData;", "Lkotlin/collections/ArrayList;", "pairSymbolList", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "symbolClassMap", "Lcom/tencent/mm/plugin/hld/symbol/SymbolType;", "getAllSymbolByType", "context", "Landroid/content/Context;", "typeName", "getDefaultSymbolGridType", "getDefaultSymbolType", "getPairSymbol", "symbol", "getSymbolType", "content", "fromLongClick", "", "isEnglishLetterSymbol", "isEnglishSymbol", "symbolData", "", "isNumberSymbol", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/utils/ImeSymbolUtil;", "", "()V", "TAG", "", "englishSymbolList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/hld/utils/WxImeSymbolData;", "Lkotlin/collections/ArrayList;", "pairSymbolList", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "symbolClassMap", "Lcom/tencent/mm/plugin/hld/symbol/SymbolType;", "getAllSymbolByType", "context", "Landroid/content/Context;", "typeName", "getDefaultSymbolGridType", "getDefaultSymbolType", "getPairSymbol", "symbol", "getSymbolType", "content", "fromLongClick", "", "isEnglishLetterSymbol", "isEnglishSymbol", "symbolData", "", "isNumberSymbol", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  private static final ArrayList<j> DGI;
-  private static final HashMap<String, String> DGJ;
-  private static final HashMap<String, i> DGK;
-  public static final b DGL;
+  public static final b Jyf;
+  private static final ArrayList<j> Jyg;
+  private static final HashMap<String, String> Jyh;
+  private static final HashMap<String, i> Jyi;
   
   static
   {
-    AppMethodBeat.i(217868);
-    DGL = new b();
-    DGI = new ArrayList();
-    DGJ = new HashMap();
-    DGK = new HashMap();
-    AppMethodBeat.o(217868);
+    AppMethodBeat.i(311608);
+    Jyf = new b();
+    Jyg = new ArrayList();
+    Jyh = new HashMap();
+    Jyi = new HashMap();
+    AppMethodBeat.o(311608);
   }
   
   public static boolean a(j paramj)
   {
-    AppMethodBeat.i(217850);
-    p.k(paramj, "symbolData");
-    boolean bool = DGI.contains(paramj);
-    AppMethodBeat.o(217850);
+    AppMethodBeat.i(311558);
+    s.u(paramj, "symbolData");
+    boolean bool = Jyg.contains(paramj);
+    AppMethodBeat.o(311558);
     return bool;
   }
   
-  public static boolean aLE(String paramString)
+  public static boolean aIw(String paramString)
   {
-    AppMethodBeat.i(217853);
-    p.k(paramString, "content");
-    p.a locala = p.a.DEN;
-    boolean bool = p.a.eFr().matcher((CharSequence)paramString).find();
-    AppMethodBeat.o(217853);
+    AppMethodBeat.i(311565);
+    s.u(paramString, "content");
+    o.a locala = o.a.Jwr;
+    boolean bool = o.a.fNi().matcher((CharSequence)paramString).find();
+    AppMethodBeat.o(311565);
     return bool;
   }
   
-  public static boolean aLF(String paramString)
+  public static boolean aIx(String paramString)
   {
-    AppMethodBeat.i(217855);
-    p.k(paramString, "content");
-    p.a locala = p.a.DEN;
-    boolean bool = p.a.eFq().matcher((CharSequence)paramString).find();
-    AppMethodBeat.o(217855);
+    AppMethodBeat.i(311573);
+    s.u(paramString, "content");
+    o.a locala = o.a.Jwr;
+    boolean bool = o.a.fNh().matcher((CharSequence)paramString).find();
+    AppMethodBeat.o(311573);
     return bool;
   }
   
-  public static boolean ab(CharSequence paramCharSequence)
+  public static boolean ak(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(217847);
-    p.k(paramCharSequence, "symbol");
+    AppMethodBeat.i(311551);
+    s.u(paramCharSequence, "symbol");
     boolean bool = a(new j(paramCharSequence.toString()));
-    AppMethodBeat.o(217847);
+    AppMethodBeat.o(311551);
     return bool;
   }
   
-  public static String bd(Context paramContext, String paramString)
+  public static String bf(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(217859);
-    p.k(paramContext, "context");
-    p.k(paramString, "symbol");
-    if (DGJ.isEmpty())
+    AppMethodBeat.i(311586);
+    s.u(paramContext, "context");
+    s.u(paramString, "symbol");
+    if (Jyh.isEmpty())
     {
       paramContext = paramContext.getAssets().open("symbol/pair.txt");
-      p.j(paramContext, "context.assets.open(WxIm…SSETS_SYMBOL_FILE_SUFFIX)");
+      s.s(paramContext, "context.assets.open(WxIm…SSETS_SYMBOL_FILE_SUFFIX)");
       paramContext = new BufferedReader((Reader)new InputStreamReader(paramContext));
     }
     try
@@ -100,11 +103,11 @@ public final class b
           try
           {
             localObject = kotlin.n.n.b((CharSequence)localObject, new String[] { " " });
-            ((Map)DGJ).put(((List)localObject).get(0), ((List)localObject).get(1));
+            ((Map)Jyh).put(((List)localObject).get(0), ((List)localObject).get(1));
           }
           catch (Exception localException)
           {
-            Log.e("WxIme.ImeSymbolUtil", "getPairSymbol " + localException.getMessage());
+            Log.e("WxIme.ImeSymbolUtil", s.X("getPairSymbol ", localException.getMessage()));
           }
         }
       }
@@ -112,14 +115,14 @@ public final class b
     }
     catch (IOException localIOException)
     {
-      Log.e("WxIme.ImeSymbolUtil", "getPairSymbol " + localIOException.getMessage());
+      Log.e("WxIme.ImeSymbolUtil", s.X("getPairSymbol ", localIOException.getMessage()));
       try
       {
         paramContext.close();
-        while (DGJ.containsKey(paramString))
+        while (Jyh.containsKey(paramString))
         {
-          paramContext = (String)DGJ.get(paramString);
-          AppMethodBeat.o(217859);
+          paramContext = (String)Jyh.get(paramString);
+          AppMethodBeat.o(311586);
           return paramContext;
           try
           {
@@ -127,7 +130,7 @@ public final class b
           }
           catch (IOException paramContext)
           {
-            Log.e("WxIme.ImeSymbolUtil", "getPairSymbol " + paramContext.getMessage());
+            Log.e("WxIme.ImeSymbolUtil", s.X("getPairSymbol ", paramContext.getMessage()));
           }
         }
       }
@@ -135,7 +138,7 @@ public final class b
       {
         for (;;)
         {
-          Log.e("WxIme.ImeSymbolUtil", "getPairSymbol " + paramContext.getMessage());
+          Log.e("WxIme.ImeSymbolUtil", s.X("getPairSymbol ", paramContext.getMessage()));
         }
       }
     }
@@ -144,94 +147,90 @@ public final class b
       try
       {
         paramContext.close();
-        AppMethodBeat.o(217859);
+        AppMethodBeat.o(311586);
         throw paramString;
       }
       catch (IOException paramContext)
       {
         for (;;)
         {
-          Log.e("WxIme.ImeSymbolUtil", "getPairSymbol " + paramContext.getMessage());
+          Log.e("WxIme.ImeSymbolUtil", s.X("getPairSymbol ", paramContext.getMessage()));
         }
       }
-      AppMethodBeat.o(217859);
+      AppMethodBeat.o(311586);
     }
   }
   
-  public static String eFU()
+  public static String fNN()
   {
-    AppMethodBeat.i(217861);
-    l locall = l.DHK;
-    if (l.eCE())
+    AppMethodBeat.i(311594);
+    l locall = l.JyV;
+    if (l.fKH())
     {
-      AppMethodBeat.o(217861);
+      AppMethodBeat.o(311594);
       return "emoji";
     }
-    AppMethodBeat.o(217861);
+    AppMethodBeat.o(311594);
     return "common";
   }
   
-  public static String eFV()
+  public static String fNO()
   {
-    AppMethodBeat.i(217864);
-    l locall = l.DHK;
-    if (l.eCE())
+    AppMethodBeat.i(311601);
+    l locall = l.JyV;
+    if (l.fKH())
     {
-      AppMethodBeat.o(217864);
+      AppMethodBeat.o(311601);
       return "chinese";
     }
-    AppMethodBeat.o(217864);
+    AppMethodBeat.o(311601);
     return "common";
   }
   
-  public final ArrayList<j> bc(Context paramContext, String paramString)
+  public final ArrayList<j> be(Context paramContext, String paramString)
   {
-    int j = 0;
-    AppMethodBeat.i(217841);
-    p.k(paramContext, "context");
-    int i;
-    if (p.h(paramString, "english"))
+    AppMethodBeat.i(311623);
+    s.u(paramContext, "context");
+    if (s.p(paramString, "english"))
     {
-      if (!((Collection)DGI).isEmpty()) {}
-      for (i = 1; i != 0; i = 0)
+      if (!((Collection)Jyg).isEmpty()) {}
+      for (int i = 1; i != 0; i = 0)
       {
-        paramContext = DGI;
-        AppMethodBeat.o(217841);
+        paramContext = Jyg;
+        AppMethodBeat.o(311623);
         return paramContext;
       }
     }
-    if (p.h(paramString, "common"))
+    if (s.p(paramString, "common"))
     {
-      if (DGI.isEmpty()) {
-        DGI.addAll((Collection)bc(paramContext, "english"));
+      if (Jyg.isEmpty()) {
+        Jyg.addAll((Collection)be(paramContext, "english"));
       }
-      paramContext = com.tencent.mm.plugin.hld.model.n.DEn;
+      paramContext = com.tencent.mm.plugin.hld.model.n.JvW;
       Log.d("WxIme.WxEngineMgr", "getCommonSymbols");
-      if (com.tencent.mm.plugin.hld.model.n.eEX()) {}
+      if (com.tencent.mm.plugin.hld.model.n.fNa()) {}
       for (paramContext = null;; paramContext = WxhldApi.get_most_commonly_used_punctuations(50))
       {
         paramString = new ArrayList();
         if (paramContext == null) {
           break;
         }
-        int k = paramContext.length;
-        i = j;
-        while (i < k)
+        paramContext = c.ao(paramContext);
+        while (paramContext.hasNext())
         {
-          localObject = paramContext[i];
+          localObject = (String)paramContext.next();
           if (!Util.isNullOrNil((String)localObject)) {
             paramString.add(new j((String)localObject));
           }
-          i += 1;
         }
       }
       paramString.add(new j(""));
-      Log.d("WxIme.ImeSymbolUtil", "getAllSymbolByType common symbol num: " + paramString.size());
-      AppMethodBeat.o(217841);
+      Log.d("WxIme.ImeSymbolUtil", s.X("getAllSymbolByType common symbol num: ", Integer.valueOf(paramString.size())));
+      AppMethodBeat.o(311623);
       return paramString;
     }
     paramContext = paramContext.getAssets().open("symbol/" + paramString + ".txt");
-    p.j(paramContext, "context.assets.open(WxIm…SSETS_SYMBOL_FILE_SUFFIX)");
+    s.s(paramContext, "context.assets.open(WxIm…SSETS_SYMBOL_FILE_SUFFIX)");
     Object localObject = new BufferedReader((Reader)new InputStreamReader(paramContext));
     paramContext = new ArrayList();
     try
@@ -249,7 +248,7 @@ public final class b
       try
       {
         localIOException2.close();
-        AppMethodBeat.o(217841);
+        AppMethodBeat.o(311623);
         throw paramContext;
       }
       catch (IOException localIOException3)
@@ -270,7 +269,7 @@ public final class b
         for (;;)
         {
           paramContext.add(new j(""));
-          AppMethodBeat.o(217841);
+          AppMethodBeat.o(311623);
           return paramContext;
           try
           {

@@ -5,17 +5,15 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bj.e;
-import com.tencent.mm.f.a.ji;
-import com.tencent.mm.f.a.sy;
-import com.tencent.mm.f.a.yd;
-import com.tencent.mm.f.c.ax;
+import com.tencent.mm.autogen.a.kj;
+import com.tencent.mm.autogen.a.un;
+import com.tencent.mm.autogen.a.zw;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.bc.e;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.pluginsdk.model.app.q;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.pluginsdk.model.app.u;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.bx;
 
 public final class l
   implements View.OnClickListener
@@ -31,8 +29,8 @@ public final class l
   {
     AppMethodBeat.i(31760);
     Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-    ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/pluginsdk/ui/chat/SourceClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+    ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/pluginsdk/ui/chat/SourceClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
     localObject = paramView.getTag();
     int i;
     if ((localObject instanceof b))
@@ -45,11 +43,11 @@ public final class l
         label69:
         if (i == 0)
         {
-          paramView = q.e(this.context, ((b)localObject).appId, ((b)localObject).from);
-          localObject = new yd();
-          ((yd)localObject).fXt.fXu = paramView;
-          ((yd)localObject).fXt.context = this.context;
-          EventCenter.instance.publish((IEvent)localObject);
+          paramView = u.i(this.context, ((b)localObject).appId, ((b)localObject).from);
+          localObject = new zw();
+          ((zw)localObject).idt.idu = paramView;
+          ((zw)localObject).idt.context = this.context;
+          ((zw)localObject).publish();
         }
       }
     }
@@ -60,14 +58,14 @@ public final class l
       return;
       if ("wx7fa037cc7dfabad5".equals(((b)localObject).appId))
       {
-        com.tencent.mm.plugin.sport.a.d.rE(33);
-        bh.beI();
-        if (com.tencent.mm.contact.d.rk(com.tencent.mm.model.c.bbL().RG("gh_43f2581f6fd6").field_type))
+        com.tencent.mm.plugin.sport.a.d.rG(33);
+        bh.bCz();
+        if (com.tencent.mm.contact.d.rs(com.tencent.mm.model.c.bzA().JE("gh_43f2581f6fd6").field_type))
         {
           paramView = new Intent();
           paramView.putExtra("Chat_User", "gh_43f2581f6fd6");
           paramView.putExtra("finish_direct", true);
-          com.tencent.mm.by.c.f(this.context, ".ui.chatting.ChattingUI", paramView);
+          com.tencent.mm.br.c.g(this.context, ".ui.chatting.ChattingUI", paramView);
         }
         for (;;)
         {
@@ -75,28 +73,29 @@ public final class l
           break;
           paramView = new Intent();
           paramView.putExtra("Contact_User", "gh_43f2581f6fd6");
-          com.tencent.mm.by.c.b(this.context, "profile", ".ui.ContactInfoUI", paramView);
+          com.tencent.mm.br.c.b(this.context, "profile", ".ui.ContactInfoUI", paramView);
         }
       }
       if ("wx485a97c844086dc9".equals(((b)localObject).appId))
       {
         paramView = new Intent();
         paramView.putExtra("shake_music", true);
-        com.tencent.mm.by.c.b(this.context, "shake", ".ui.ShakeReportUI", paramView);
+        paramView.putExtra("enter_from_scene", 3);
+        com.tencent.mm.br.c.b(this.context, "shake", ".ui.ShakeReportUI", paramView);
         i = 1;
         break label69;
       }
       if ("wxfbc915ff7c30e335".equals(((b)localObject).appId))
       {
-        if (com.tencent.mm.az.b.bna())
+        if (com.tencent.mm.au.b.bKM())
         {
           i = 1;
           break label69;
         }
         paramView = new Intent();
         paramView.putExtra("BaseScanUI_select_scan_mode", 1);
-        if ((!com.tencent.mm.q.a.p(this.context, true)) && (!e.bpU()) && (!com.tencent.mm.q.a.t(this.context, true))) {
-          com.tencent.mm.by.c.b(this.context, "scanner", ".ui.BaseScanUI", paramView);
+        if ((!com.tencent.mm.n.a.p(this.context, true)) && (!e.bNA()) && (!com.tencent.mm.n.a.u(this.context, true))) {
+          com.tencent.mm.br.c.b(this.context, "scanner", ".ui.BaseScanUI", paramView);
         }
         i = 1;
         break label69;
@@ -106,45 +105,46 @@ public final class l
       }
       paramView = new Intent();
       paramView.putExtra("shake_tv", true);
-      com.tencent.mm.by.c.b(this.context, "shake", ".ui.ShakeReportUI", paramView);
+      paramView.putExtra("enter_from_scene", 3);
+      com.tencent.mm.br.c.b(this.context, "shake", ".ui.ShakeReportUI", paramView);
       i = 1;
       break label69;
       if ((localObject instanceof a))
       {
         paramView = (a)localObject;
-        localObject = new ji();
-        ((ji)localObject).fGD.actionCode = 2;
-        ((ji)localObject).fGD.scene = paramView.scene;
-        ((ji)localObject).fGD.extMsg = ("chatting_src=" + paramView.scene);
-        ((ji)localObject).fGD.appId = paramView.appId;
-        ((ji)localObject).fGD.context = this.context;
-        EventCenter.instance.publish((IEvent)localObject);
-        localObject = new sy();
-        ((sy)localObject).fSn.context = this.context;
-        ((sy)localObject).fSn.scene = paramView.scene;
-        ((sy)localObject).fSn.appid = paramView.appId;
-        ((sy)localObject).fSn.packageName = paramView.pkgName;
-        ((sy)localObject).fSn.msgType = paramView.Roa;
-        ((sy)localObject).fSn.fLi = paramView.fSj;
-        ((sy)localObject).fSn.fSo = 5;
-        ((sy)localObject).fSn.mediaTagName = paramView.Rob;
-        ((sy)localObject).fSn.fNu = paramView.fNu;
-        ((sy)localObject).fSn.fSp = "";
-        ((sy)localObject).fSn.fvd = paramView.Roc;
-        EventCenter.instance.publish((IEvent)localObject);
+        localObject = new kj();
+        ((kj)localObject).hLZ.actionCode = 2;
+        ((kj)localObject).hLZ.scene = paramView.scene;
+        ((kj)localObject).hLZ.extMsg = ("chatting_src=" + paramView.scene);
+        ((kj)localObject).hLZ.appId = paramView.appId;
+        ((kj)localObject).hLZ.context = this.context;
+        ((kj)localObject).publish();
+        localObject = new un();
+        ((un)localObject).hYk.context = this.context;
+        ((un)localObject).hYk.scene = paramView.scene;
+        ((un)localObject).hYk.appid = paramView.appId;
+        ((un)localObject).hYk.packageName = paramView.pkgName;
+        ((un)localObject).hYk.msgType = paramView.Ykr;
+        ((un)localObject).hYk.hQQ = paramView.hYg;
+        ((un)localObject).hYk.hYl = 5;
+        ((un)localObject).hYk.mediaTagName = paramView.Yks;
+        ((un)localObject).hYk.hTh = paramView.hTh;
+        ((un)localObject).hYk.hYm = "";
+        ((un)localObject).hYk.hzx = paramView.Ykt;
+        ((un)localObject).publish();
       }
     }
   }
   
   public static final class a
   {
-    public int Roa;
-    public String Rob;
-    public String Roc;
+    public int Ykr;
+    public String Yks;
+    public String Ykt;
     public String appId;
-    public long fNu;
-    public String fSj;
     public String from;
+    public long hTh;
+    public String hYg;
     public String pkgName;
     public int scene;
   }

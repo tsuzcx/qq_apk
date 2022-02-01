@@ -15,27 +15,27 @@ import junit.framework.Assert;
 public final class w
   extends MStorage
 {
-  public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS voiceinfo ( FileName TEXT PRIMARY KEY, User TEXT, MsgId INT, NetOffset INT, FileNowSize INT, TotalLen INT, Status INT, CreateTime INT, LastModifyTime INT, ClientId TEXT, VoiceLength INT, MsgLocalId INT, Human TEXT, reserved1 INT, reserved2 TEXT, MsgSource TEXT, MsgFlag INT, MsgSeq INT, MasterBufId INT, checksum INT DEFAULT 0, VoiceFlag INT DEFAULT 0 )", "CREATE INDEX IF NOT EXISTS voiceinfomsgidindex ON voiceinfo ( MsgId ) ", "CREATE UNIQUE INDEX IF NOT EXISTS voiceinfouniqueindex ON voiceinfo ( FileName )", "CREATE INDEX IF NOT EXISTS voice_unfinish_info_index ON voiceinfo ( Status,User,CreateTime )" };
-  public h lvy;
-  Map<String, a> mln;
-  Map<String, n> mlo;
-  Map<String, j> mlp;
+  public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS voiceinfo ( FileName TEXT PRIMARY KEY, User TEXT, MsgId INT, NetOffset INT, FileNowSize INT, TotalLen INT, Status INT, CreateTime INT, LastModifyTime INT, ClientId TEXT, VoiceLength INT, MsgLocalId INT, Human TEXT, reserved1 INT, reserved2 TEXT, MsgSource TEXT, MsgFlag INT, MsgSeq INT, MasterBufId INT, checksum INT DEFAULT 0, VoiceFlag INT DEFAULT 0, VoiceInfoExt BLOB )", "CREATE INDEX IF NOT EXISTS voiceinfomsgidindex ON voiceinfo ( MsgId ) ", "CREATE UNIQUE INDEX IF NOT EXISTS voiceinfouniqueindex ON voiceinfo ( FileName )", "CREATE INDEX IF NOT EXISTS voice_unfinish_info_index ON voiceinfo ( Status,User,CreateTime )" };
+  public h omV;
+  Map<String, a> peZ;
+  Map<String, n> pfa;
+  Map<String, j> pfb;
   
   public w(h paramh)
   {
     AppMethodBeat.i(148504);
-    this.mln = new HashMap();
-    this.mlo = new HashMap();
-    this.mlp = new HashMap();
+    this.peZ = new HashMap();
+    this.pfa = new HashMap();
+    this.pfb = new HashMap();
     a(paramh);
-    this.lvy = paramh;
+    this.omV = paramh;
     AppMethodBeat.o(148504);
   }
   
-  public static String YN(String paramString)
+  public static String QS(String paramString)
   {
     AppMethodBeat.i(148506);
-    paramString = x.u(paramString, Util.nowMilliSecond());
+    paramString = x.z(paramString, Util.nowMilliSecond());
     AppMethodBeat.o(148506);
     return paramString;
   }
@@ -50,18 +50,19 @@ public final class w
       AppMethodBeat.o(148505);
       return;
     }
-    int i2 = localCursor.getColumnIndex("name");
+    int i3 = localCursor.getColumnIndex("name");
     int j = 0;
     int i = 0;
     int n = 0;
+    int i2 = 0;
     int i1 = 0;
     int m = 0;
     int k = 0;
     String str;
     while (localCursor.moveToNext()) {
-      if (i2 >= 0)
+      if (i3 >= 0)
       {
-        str = localCursor.getString(i2);
+        str = localCursor.getString(i3);
         if ("MsgSource".equals(str)) {
           k = 1;
         }
@@ -72,18 +73,21 @@ public final class w
           i1 = 1;
         }
         if ("MasterBufId".equals(str)) {
+          i2 = 1;
+        }
+        if ("checksum".equals(str)) {
           n = 1;
         }
-        if (!"checksum".equals(str)) {
-          break label256;
+        if (!"VoiceFlag".equals(str)) {
+          break label286;
         }
         i = 1;
       }
     }
-    label256:
+    label286:
     for (;;)
     {
-      if ("VoiceFlag".equals(str)) {
+      if ("VoiceInfoExt".equals(str)) {
         j = 1;
       }
       break;
@@ -97,42 +101,29 @@ public final class w
       if (i1 == 0) {
         paramh.execSQL("voiceinfo", "Alter table voiceinfo add MsgSeq INT");
       }
-      if (n == 0) {
+      if (i2 == 0) {
         paramh.execSQL("voiceinfo", "Alter table voiceinfo add MasterBufId INT");
       }
-      if (i == 0) {
+      if (n == 0) {
         paramh.execSQL("voiceinfo", "Alter table voiceinfo add checksum INT DEFAULT 0");
       }
-      if (j == 0) {
+      if (i == 0) {
         paramh.execSQL("voiceinfo", "Alter table voiceinfo add VoiceFlag INT DEFAULT 0");
+      }
+      if (j == 0) {
+        paramh.execSQL("voiceinfo", "Alter table voiceinfo add VoiceInfoExt BLOB");
       }
       AppMethodBeat.o(148505);
       return;
     }
   }
   
-  public final r GX(long paramLong)
-  {
-    r localr = null;
-    AppMethodBeat.i(148510);
-    Object localObject = "SELECT FileName, User, MsgId, NetOffset, FileNowSize, TotalLen, Status, CreateTime, LastModifyTime, ClientId, VoiceLength, MsgLocalId, Human, reserved1, reserved2, MsgSource, MsgFlag, MsgSeq, MasterBufId, checksum, VoiceFlag" + " FROM voiceinfo WHERE MsgId=" + paramLong;
-    localObject = this.lvy.rawQuery((String)localObject, null, 2);
-    if (((Cursor)localObject).moveToFirst())
-    {
-      localr = new r();
-      localr.convertFrom((Cursor)localObject);
-    }
-    ((Cursor)localObject).close();
-    AppMethodBeat.o(148510);
-    return localr;
-  }
-  
-  public final r YO(String paramString)
+  public final r QT(String paramString)
   {
     AppMethodBeat.i(148512);
     Object localObject1 = null;
-    Object localObject2 = "SELECT FileName, User, MsgId, NetOffset, FileNowSize, TotalLen, Status, CreateTime, LastModifyTime, ClientId, VoiceLength, MsgLocalId, Human, reserved1, reserved2, MsgSource, MsgFlag, MsgSeq, MasterBufId, checksum, VoiceFlag" + " FROM voiceinfo WHERE FileName= ?";
-    localObject2 = this.lvy.rawQuery((String)localObject2, new String[] { paramString }, 2);
+    Object localObject2 = "SELECT FileName, User, MsgId, NetOffset, FileNowSize, TotalLen, Status, CreateTime, LastModifyTime, ClientId, VoiceLength, MsgLocalId, Human, reserved1, reserved2, MsgSource, MsgFlag, MsgSeq, MasterBufId, checksum, VoiceFlag, VoiceInfoExt" + " FROM voiceinfo WHERE FileName= ?";
+    localObject2 = this.omV.rawQuery((String)localObject2, new String[] { paramString }, 2);
     paramString = localObject1;
     if (((Cursor)localObject2).moveToFirst())
     {
@@ -166,7 +157,7 @@ public final class w
     }
     label59:
     label64:
-    while (this.lvy.update("voiceinfo", paramr, "FileName= ?", new String[] { paramString }) <= 0)
+    while (this.omV.update("voiceinfo", paramr, "FileName= ?", new String[] { paramString }) <= 0)
     {
       AppMethodBeat.o(148509);
       return false;
@@ -195,7 +186,7 @@ public final class w
       Log.e("MicroMsg.VoiceStorage", "insert falied, no values set");
     }
     label46:
-    while (this.lvy.insert("voiceinfo", "FileName", paramr) == -1L)
+    while (this.omV.insert("voiceinfo", "FileName", paramr) == -1L)
     {
       AppMethodBeat.o(148507);
       return false;
@@ -207,14 +198,14 @@ public final class w
     return true;
   }
   
-  public final boolean ho(String paramString)
+  public final boolean iP(String paramString)
   {
     AppMethodBeat.i(148508);
     if (paramString.length() > 0) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      if (this.lvy.delete("voiceinfo", "FileName= ?", new String[] { paramString }) <= 0) {
+      if (this.omV.delete("voiceinfo", "FileName= ?", new String[] { paramString }) <= 0) {
         Log.w("MicroMsg.VoiceStorage", "delete failed, no such file:".concat(String.valueOf(paramString)));
       }
       AppMethodBeat.o(148508);
@@ -222,12 +213,28 @@ public final class w
     }
   }
   
+  public final r ji(long paramLong)
+  {
+    r localr = null;
+    AppMethodBeat.i(148510);
+    Object localObject = "SELECT FileName, User, MsgId, NetOffset, FileNowSize, TotalLen, Status, CreateTime, LastModifyTime, ClientId, VoiceLength, MsgLocalId, Human, reserved1, reserved2, MsgSource, MsgFlag, MsgSeq, MasterBufId, checksum, VoiceFlag, VoiceInfoExt" + " FROM voiceinfo WHERE MsgId=" + paramLong;
+    localObject = this.omV.rawQuery((String)localObject, null, 2);
+    if (((Cursor)localObject).moveToFirst())
+    {
+      localr = new r();
+      localr.convertFrom((Cursor)localObject);
+    }
+    ((Cursor)localObject).close();
+    AppMethodBeat.o(148510);
+    return localr;
+  }
+  
   public final r xk(int paramInt)
   {
     r localr = null;
     AppMethodBeat.i(148511);
-    Object localObject = "SELECT FileName, User, MsgId, NetOffset, FileNowSize, TotalLen, Status, CreateTime, LastModifyTime, ClientId, VoiceLength, MsgLocalId, Human, reserved1, reserved2, MsgSource, MsgFlag, MsgSeq, MasterBufId, checksum, VoiceFlag" + " FROM voiceinfo WHERE MsgLocalId=" + paramInt;
-    localObject = this.lvy.rawQuery((String)localObject, null, 2);
+    Object localObject = "SELECT FileName, User, MsgId, NetOffset, FileNowSize, TotalLen, Status, CreateTime, LastModifyTime, ClientId, VoiceLength, MsgLocalId, Human, reserved1, reserved2, MsgSource, MsgFlag, MsgSeq, MasterBufId, checksum, VoiceFlag, VoiceInfoExt" + " FROM voiceinfo WHERE MsgLocalId=" + paramInt;
+    localObject = this.omV.rawQuery((String)localObject, null, 2);
     if (((Cursor)localObject).moveToFirst())
     {
       localr = new r();

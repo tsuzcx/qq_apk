@@ -8,14 +8,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a
 {
-  private static a bEJ;
-  a bEK;
+  private static a dxJ;
+  a dxK;
   private final Handler handler;
   final Object lock;
   
   private a()
   {
-    AppMethodBeat.i(239461);
+    AppMethodBeat.i(209808);
     this.lock = new Object();
     this.handler = new Handler(Looper.getMainLooper(), new Handler.Callback()
     {
@@ -32,23 +32,23 @@ final class a
         return true;
       }
     });
-    AppMethodBeat.o(239461);
+    AppMethodBeat.o(209808);
   }
   
-  static a xx()
+  static a WU()
   {
-    AppMethodBeat.i(239459);
-    if (bEJ == null) {
-      bEJ = new a();
+    AppMethodBeat.i(209802);
+    if (dxJ == null) {
+      dxJ = new a();
     }
-    a locala = bEJ;
-    AppMethodBeat.o(239459);
+    a locala = dxJ;
+    AppMethodBeat.o(209802);
     return locala;
   }
   
-  final boolean xy()
+  final boolean WV()
   {
-    if (this.bEK != null) {
+    if (this.dxK != null) {
       throw null;
     }
     return false;
@@ -58,7 +58,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.snackbar.a
  * JD-Core Version:    0.7.0.1
  */

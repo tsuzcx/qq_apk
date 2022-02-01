@@ -12,7 +12,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -21,15 +21,15 @@ import java.util.Set;
 
 public final class d
 {
-  private static volatile MMHandler Czq;
-  private static final Object rim;
-  private static final Set<Object> riv;
+  private static volatile MMHandler Itf;
+  private static final Set<Object> uqG;
+  private static final Object uqi;
   
   static
   {
     AppMethodBeat.i(110824);
-    rim = new Object();
-    riv = new HashSet();
+    uqi = new Object();
+    uqG = new HashSet();
     AppMethodBeat.o(110824);
   }
   
@@ -38,18 +38,18 @@ public final class d
     AppMethodBeat.i(110815);
     long l = System.currentTimeMillis();
     final WepkgCrossProcessTask localWepkgCrossProcessTask = new WepkgCrossProcessTask();
-    localWepkgCrossProcessTask.Vh = 1001;
-    localWepkgCrossProcessTask.QMF = paramString;
+    localWepkgCrossProcessTask.bUl = 1001;
+    localWepkgCrossProcessTask.XGd = paramString;
     if (MMApplicationContext.isMMProcess())
     {
-      cMC().postToWorker(new Runnable()
+      dqg().postToWorker(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(110808);
-          this.QMM.RW();
+          d.this.asn();
           if (parama != null) {
-            parama.a(this.QMM);
+            parama.a(d.this);
           }
           AppMethodBeat.o(110808);
         }
@@ -57,24 +57,24 @@ public final class d
       AppMethodBeat.o(110815);
       return;
     }
-    localWepkgCrossProcessTask.otv = new Runnable()
+    localWepkgCrossProcessTask.rxj = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(110809);
-        Log.i("MicroMsg.Wepkg.WepkgUtil", "bind service time:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - this.QNJ) });
+        Log.i("MicroMsg.Wepkg.WepkgUtil", "bind service time:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - this.XHh) });
         if (localWepkgCrossProcessTask != null) {
-          localWepkgCrossProcessTask.a(this.QMM);
+          localWepkgCrossProcessTask.a(this.XGk);
         }
-        this.QMM.bPk();
+        this.XGk.cpx();
         AppMethodBeat.o(110809);
       }
     };
-    localWepkgCrossProcessTask.bsM();
+    localWepkgCrossProcessTask.bQt();
     AppMethodBeat.o(110815);
   }
   
-  public static String boN(String paramString)
+  public static String boB(String paramString)
   {
     AppMethodBeat.i(110816);
     if (Util.isNullOrNil(paramString))
@@ -96,7 +96,7 @@ public final class d
     return "";
   }
   
-  public static String boO(String paramString)
+  public static String boC(String paramString)
   {
     AppMethodBeat.i(110817);
     if (Util.isNullOrNil(paramString))
@@ -110,7 +110,7 @@ public final class d
   }
   
   /* Error */
-  public static String boP(String paramString)
+  public static String boD(String paramString)
   {
     // Byte code:
     //   0: ldc 135
@@ -175,23 +175,23 @@ public final class d
     //   63	84	95	java/lang/Exception
   }
   
-  public static boolean boQ(String paramString)
+  public static boolean boE(String paramString)
   {
     AppMethodBeat.i(110819);
-    if (!Util.isNullOrNil(boN(paramString)))
+    if (!Util.isNullOrNil(boB(paramString)))
     {
       SharedPreferences localSharedPreferences = MMApplicationContext.getContext().getSharedPreferences("we_pkg_sp", 4);
       if ((localSharedPreferences != null) && (localSharedPreferences.getBoolean("disable_we_pkg", false)))
       {
         Log.i("MicroMsg.Wepkg.WepkgUtil", "disable wepkg");
-        a.b("EnterWeb", paramString, boN(paramString), null, 0L, 0L, a.apj(11));
+        a.b("EnterWeb", paramString, boB(paramString), null, 0L, 0L, a.avh(11));
         AppMethodBeat.o(110819);
         return false;
       }
-      if (com.tencent.mm.plugin.game.commlib.a.ewd())
+      if (com.tencent.mm.plugin.game.commlib.a.fDT())
       {
         Log.i("MicroMsg.Wepkg.WepkgUtil", "config wepkg disable");
-        a.b("EnterWeb", paramString, boN(paramString), null, 0L, 0L, a.apj(12));
+        a.b("EnterWeb", paramString, boB(paramString), null, 0L, 0L, a.avh(12));
         AppMethodBeat.o(110819);
         return false;
       }
@@ -202,34 +202,31 @@ public final class d
     return false;
   }
   
-  public static void bs(Object paramObject)
+  public static void cM(Object paramObject)
   {
     AppMethodBeat.i(110812);
-    riv.remove(paramObject);
+    uqG.remove(paramObject);
     AppMethodBeat.o(110812);
   }
   
-  public static MMHandler cMC()
+  public static void cNl()
   {
-    AppMethodBeat.i(184500);
-    if (Czq == null) {}
-    synchronized (rim)
+    AppMethodBeat.i(110813);
+    if (Itf == null)
     {
-      if (Czq == null) {
-        Czq = new MMHandler("WebviewCache#WorkerThread");
-      }
-      ??? = Czq;
-      AppMethodBeat.o(184500);
-      return ???;
+      AppMethodBeat.o(110813);
+      return;
     }
-  }
-  
-  public static <T> T cQ(T paramT)
-  {
-    AppMethodBeat.i(110811);
-    riv.add(paramT);
-    AppMethodBeat.o(110811);
-    return paramT;
+    synchronized (uqi)
+    {
+      if (Itf != null)
+      {
+        Itf.quit();
+        Itf = null;
+      }
+      AppMethodBeat.o(110813);
+      return;
+    }
   }
   
   public static boolean checkMkdir(String paramString)
@@ -237,9 +234,9 @@ public final class d
     AppMethodBeat.i(110821);
     try
     {
-      paramString = new q(paramString);
-      if ((!paramString.ifE()) || (!paramString.isDirectory())) {
-        paramString.ifL();
+      paramString = new u(paramString);
+      if ((!paramString.jKS()) || (!paramString.isDirectory())) {
+        paramString.jKY();
       }
       AppMethodBeat.o(110821);
       return true;
@@ -251,26 +248,6 @@ public final class d
     return false;
   }
   
-  public static void clU()
-  {
-    AppMethodBeat.i(110813);
-    if (Czq == null)
-    {
-      AppMethodBeat.o(110813);
-      return;
-    }
-    synchronized (rim)
-    {
-      if (Czq != null)
-      {
-        Czq.quit();
-        Czq = null;
-      }
-      AppMethodBeat.o(110813);
-      return;
-    }
-  }
-  
   public static long currentTime()
   {
     AppMethodBeat.i(110810);
@@ -279,7 +256,30 @@ public final class d
     return l;
   }
   
-  public static boolean heS()
+  public static MMHandler dqg()
+  {
+    AppMethodBeat.i(184500);
+    if (Itf == null) {}
+    synchronized (uqi)
+    {
+      if (Itf == null) {
+        Itf = new MMHandler("WebviewCache#WorkerThread");
+      }
+      ??? = Itf;
+      AppMethodBeat.o(184500);
+      return ???;
+    }
+  }
+  
+  public static <T> T em(T paramT)
+  {
+    AppMethodBeat.i(110811);
+    uqG.add(paramT);
+    AppMethodBeat.o(110811);
+    return paramT;
+  }
+  
+  public static boolean iFA()
   {
     AppMethodBeat.i(110822);
     GregorianCalendar localGregorianCalendar = new GregorianCalendar();
@@ -330,7 +330,7 @@ public final class d
     return false;
   }
   
-  public static String mY(String paramString1, String paramString2)
+  public static String oO(String paramString1, String paramString2)
   {
     AppMethodBeat.i(110820);
     paramString1 = g.getMessageDigest((paramString1 + "_" + paramString2).getBytes());

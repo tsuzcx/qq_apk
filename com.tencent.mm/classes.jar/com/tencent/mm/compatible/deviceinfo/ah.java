@@ -4,8 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ah
 {
-  public boolean juW;
-  public boolean juX;
+  public boolean lYn;
+  public boolean lYo;
   
   public ah()
   {
@@ -16,13 +16,13 @@ public final class ah
   
   public final void reset()
   {
-    this.juW = false;
-    this.juX = false;
+    this.lYn = false;
+    this.lYo = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.compatible.deviceinfo.ah
  * JD-Core Version:    0.7.0.1
  */

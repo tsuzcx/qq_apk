@@ -4,24 +4,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/task/AppBrandForcePreloadConfig;", "", "()V", "FORCE_PRELOAD_TAG", "", "TAG", "sShouldForcePreload", "", "disableForcePreload", "", "enableForcePreload", "shouldForcePreload", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/task/AppBrandForcePreloadConfig;", "", "()V", "FORCE_PRELOAD_TAG", "", "TAG", "sShouldForcePreload", "", "disableForcePreload", "", "enableForcePreload", "shouldForcePreload", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  private static boolean qQL;
-  public static final b qQM;
+  public static final b tVB;
+  private static boolean tVC;
   
   static
   {
     AppMethodBeat.i(51065);
-    qQM = new b();
+    tVB = new b();
     long l = Util.currentTicks();
     int i = MultiProcessMMKV.getMMKV("appbrand_process_force_preload").decodeInt("appbrand_process_force_preload", 0);
     if (i == 1)
     {
       Log.i("MicroMsg.AppBrandForcePreloadConfig", "[ForcePreload] storage config = [%d] == 1, accepted (mmkv cost [%d]ms)", new Object[] { Integer.valueOf(i), Long.valueOf(Util.ticksToNow(l)) });
-      qQL = true;
+      tVC = true;
       AppMethodBeat.o(51065);
       return;
     }
@@ -29,31 +29,31 @@ public final class b
     AppMethodBeat.o(51065);
   }
   
-  public static final boolean ciL()
+  public static final boolean cJE()
   {
     AppMethodBeat.i(51062);
-    Log.i("MicroMsg.AppBrandForcePreloadConfig", "[ForcePreload] forcePreload = [%b]", new Object[] { Boolean.valueOf(qQL) });
-    boolean bool = qQL;
+    Log.i("MicroMsg.AppBrandForcePreloadConfig", "[ForcePreload] forcePreload = [%b]", new Object[] { Boolean.valueOf(tVC) });
+    boolean bool = tVC;
     AppMethodBeat.o(51062);
     return bool;
   }
   
-  public static final void ciM()
+  public static final void cJF()
   {
     AppMethodBeat.i(51063);
     Log.i("MicroMsg.AppBrandForcePreloadConfig", "[ForcePreload] enableForcePreload");
-    qQL = true;
+    tVC = true;
     MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("appbrand_process_force_preload");
     localMultiProcessMMKV.encode("appbrand_process_force_preload", 1);
     localMultiProcessMMKV.apply();
     AppMethodBeat.o(51063);
   }
   
-  public static final void ciN()
+  public static final void cJG()
   {
     AppMethodBeat.i(51064);
     Log.i("MicroMsg.AppBrandForcePreloadConfig", "[ForcePreload] disableForcePreload");
-    qQL = false;
+    tVC = false;
     MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("appbrand_process_force_preload");
     localMultiProcessMMKV.encode("appbrand_process_force_preload", -1);
     localMultiProcessMMKV.apply();
@@ -62,7 +62,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.task.b
  * JD-Core Version:    0.7.0.1
  */

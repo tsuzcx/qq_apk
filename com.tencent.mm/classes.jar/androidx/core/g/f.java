@@ -16,32 +16,32 @@ import java.lang.reflect.Method;
 
 public final class f
 {
-  private static boolean Ng = false;
-  private static Method Nh = null;
-  private static boolean Ni = false;
-  private static Field Nj = null;
+  private static boolean bti = false;
+  private static Method btj = null;
+  private static boolean btk = false;
+  private static Field btl = null;
   
   private static DialogInterface.OnKeyListener a(Dialog paramDialog)
   {
-    AppMethodBeat.i(251447);
-    if (!Ni) {}
+    AppMethodBeat.i(195765);
+    if (!btk) {}
     try
     {
       Field localField = Dialog.class.getDeclaredField("mOnKeyListener");
-      Nj = localField;
+      btl = localField;
       localField.setAccessible(true);
       label28:
-      Ni = true;
-      if (Nj != null) {
+      btk = true;
+      if (btl != null) {
         try
         {
-          paramDialog = (DialogInterface.OnKeyListener)Nj.get(paramDialog);
-          AppMethodBeat.o(251447);
+          paramDialog = (DialogInterface.OnKeyListener)btl.get(paramDialog);
+          AppMethodBeat.o(195765);
           return paramDialog;
         }
         catch (IllegalAccessException paramDialog) {}
       }
-      AppMethodBeat.o(251447);
+      AppMethodBeat.o(195765);
       return null;
     }
     catch (NoSuchFieldException localNoSuchFieldException)
@@ -52,23 +52,23 @@ public final class f
   
   private static boolean a(ActionBar paramActionBar, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(251446);
-    if (!Ng) {}
+    AppMethodBeat.i(195747);
+    if (!bti) {}
     try
     {
-      Nh = paramActionBar.getClass().getMethod("onMenuKeyEvent", new Class[] { KeyEvent.class });
+      btj = paramActionBar.getClass().getMethod("onMenuKeyEvent", new Class[] { KeyEvent.class });
       label32:
-      Ng = true;
-      if (Nh != null) {}
+      bti = true;
+      if (btj != null) {}
       try
       {
-        boolean bool = ((Boolean)Nh.invoke(paramActionBar, new Object[] { paramKeyEvent })).booleanValue();
-        AppMethodBeat.o(251446);
+        boolean bool = ((Boolean)btj.invoke(paramActionBar, new Object[] { paramKeyEvent })).booleanValue();
+        AppMethodBeat.o(195747);
         return bool;
       }
       catch (InvocationTargetException paramActionBar)
       {
-        AppMethodBeat.o(251446);
+        AppMethodBeat.o(195747);
         return false;
       }
       catch (IllegalAccessException paramActionBar)
@@ -85,9 +85,9 @@ public final class f
   
   public static boolean a(View paramView, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(251444);
-    boolean bool = w.b(paramView, paramKeyEvent);
-    AppMethodBeat.o(251444);
+    AppMethodBeat.i(195724);
+    boolean bool = z.b(paramView, paramKeyEvent);
+    AppMethodBeat.o(195724);
     return bool;
   }
   
@@ -95,17 +95,17 @@ public final class f
   {
     Object localObject2 = null;
     Object localObject1 = null;
-    AppMethodBeat.i(251445);
+    AppMethodBeat.i(195736);
     if (parama == null)
     {
-      AppMethodBeat.o(251445);
+      AppMethodBeat.o(195736);
       return false;
     }
     boolean bool;
     if (Build.VERSION.SDK_INT >= 28)
     {
       bool = parama.superDispatchKeyEvent(paramKeyEvent);
-      AppMethodBeat.o(251445);
+      AppMethodBeat.o(195736);
       return bool;
     }
     if ((paramCallback instanceof Activity))
@@ -118,19 +118,19 @@ public final class f
         paramCallback = paramView.getActionBar();
         if ((paramKeyEvent.getKeyCode() == 82) && (paramCallback != null) && (a(paramCallback, paramKeyEvent)))
         {
-          AppMethodBeat.o(251445);
+          AppMethodBeat.o(195736);
           return true;
         }
       }
       if (parama.superDispatchKeyEvent(paramKeyEvent))
       {
-        AppMethodBeat.o(251445);
+        AppMethodBeat.o(195736);
         return true;
       }
       paramCallback = parama.getDecorView();
-      if (w.c(paramCallback, paramKeyEvent))
+      if (z.c(paramCallback, paramKeyEvent))
       {
-        AppMethodBeat.o(251445);
+        AppMethodBeat.o(195736);
         return true;
       }
       parama = localObject1;
@@ -138,7 +138,7 @@ public final class f
         parama = paramCallback.getKeyDispatcherState();
       }
       bool = paramKeyEvent.dispatch(paramView, parama, paramView);
-      AppMethodBeat.o(251445);
+      AppMethodBeat.o(195736);
       return bool;
     }
     if ((paramCallback instanceof Dialog))
@@ -147,19 +147,19 @@ public final class f
       parama = a(paramView);
       if ((parama != null) && (parama.onKey(paramView, paramKeyEvent.getKeyCode(), paramKeyEvent)))
       {
-        AppMethodBeat.o(251445);
+        AppMethodBeat.o(195736);
         return true;
       }
       parama = paramView.getWindow();
       if (parama.superDispatchKeyEvent(paramKeyEvent))
       {
-        AppMethodBeat.o(251445);
+        AppMethodBeat.o(195736);
         return true;
       }
       paramCallback = parama.getDecorView();
-      if (w.c(paramCallback, paramKeyEvent))
+      if (z.c(paramCallback, paramKeyEvent))
       {
-        AppMethodBeat.o(251445);
+        AppMethodBeat.o(195736);
         return true;
       }
       parama = localObject2;
@@ -167,15 +167,15 @@ public final class f
         parama = paramCallback.getKeyDispatcherState();
       }
       bool = paramKeyEvent.dispatch(paramView, parama, paramView);
-      AppMethodBeat.o(251445);
+      AppMethodBeat.o(195736);
       return bool;
     }
-    if (((paramView != null) && (w.c(paramView, paramKeyEvent))) || (parama.superDispatchKeyEvent(paramKeyEvent)))
+    if (((paramView != null) && (z.c(paramView, paramKeyEvent))) || (parama.superDispatchKeyEvent(paramKeyEvent)))
     {
-      AppMethodBeat.o(251445);
+      AppMethodBeat.o(195736);
       return true;
     }
-    AppMethodBeat.o(251445);
+    AppMethodBeat.o(195736);
     return false;
   }
   
@@ -186,7 +186,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.core.g.f
  * JD-Core Version:    0.7.0.1
  */

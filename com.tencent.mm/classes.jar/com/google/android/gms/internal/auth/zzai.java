@@ -5,23 +5,14 @@ import android.os.Parcelable.Creator;
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SafeParcelable.Class(creator="SendDataRequestCreator")
 public final class zzai
   extends AbstractSafeParcelable
 {
   public static final Parcelable.Creator<zzai> CREATOR;
-  @SafeParcelable.Field(id=2)
   private final String accountType;
-  @SafeParcelable.Field(id=3)
   private final byte[] zzbz;
-  @SafeParcelable.VersionField(id=1)
   private final int zzy;
   
   static
@@ -31,8 +22,7 @@ public final class zzai
     AppMethodBeat.o(10754);
   }
   
-  @SafeParcelable.Constructor
-  zzai(@SafeParcelable.Param(id=1) int paramInt, @SafeParcelable.Param(id=2) String paramString, @SafeParcelable.Param(id=3) byte[] paramArrayOfByte)
+  zzai(int paramInt, String paramString, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(10752);
     this.zzy = 1;
@@ -59,7 +49,7 @@ public final class zzai
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.auth.zzai
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.mv.ui.widget;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -25,261 +24,257 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mv.b.g;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
 import kotlin.ResultKt;
-import kotlin.d.b.a.j;
+import kotlin.ah;
 import kotlin.d.d;
 import kotlin.d.f;
 import kotlin.g.a.m;
-import kotlin.g.b.aa.d;
-import kotlin.g.b.p;
-import kotlin.k.i;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
-import kotlinx.coroutines.ak;
-import kotlinx.coroutines.aw;
-import kotlinx.coroutines.bc;
-import kotlinx.coroutines.br;
-import kotlinx.coroutines.by;
-import kotlinx.coroutines.g;
+import kotlin.g.b.ah.d;
+import kotlin.g.b.s;
+import kotlinx.coroutines.aq;
+import kotlinx.coroutines.bb;
+import kotlinx.coroutines.bg;
+import kotlinx.coroutines.bu;
+import kotlinx.coroutines.cb;
+import kotlinx.coroutines.j;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/widget/RangeSliderView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "borderPaint", "Landroid/graphics/Paint;", "borders", "Landroid/graphics/Rect;", "callback", "Lcom/tencent/mm/plugin/mv/ui/widget/RangeSliderView$Callback;", "getCallback", "()Lcom/tencent/mm/plugin/mv/ui/widget/RangeSliderView$Callback;", "setCallback", "(Lcom/tencent/mm/plugin/mv/ui/widget/RangeSliderView$Callback;)V", "clipPath", "Landroid/graphics/Path;", "clipRadius", "", "clipRect", "Landroid/graphics/RectF;", "downEnd", "downStart", "downX", "dragRange", "Landroid/util/Range;", "kotlin.jvm.PlatformType", "edge", "Lcom/tencent/mm/plugin/mv/ui/widget/RangeSliderView$Edge;", "value", "end", "getEnd", "()I", "setEnd", "(I)V", "hasNoticed", "", "isActive", "()Z", "setActive", "(Z)V", "keepSizeOnStartChanged", "getKeepSizeOnStartChanged", "setKeepSizeOnStartChanged", "lastX", "leftThumb", "Landroid/graphics/drawable/Drawable;", "location", "", "maxEnd", "getMaxEnd", "setMaxEnd", "minWidth", "getMinWidth", "setMinWidth", "outOfRangeOffset", "progress", "getProgress", "setProgress", "progressPaint", "progressWidth", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "repeatJob", "Lkotlinx/coroutines/Job;", "rightThumb", "start", "getStart", "setStart", "dp", "getDp", "(F)F", "(I)I", "clearRepeat", "", "dispatchDraw", "canvas", "Landroid/graphics/Canvas;", "findRecyclerView", "getSvg", "resId", "handleDrag", "offsetX", "outOfRange", "log", "message", "Lkotlin/Function0;", "", "onAttachedToWindow", "onDetachedFromWindow", "onLayout", "changed", "left", "top", "right", "bottom", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "onSizeChanged", "w", "h", "oldw", "oldh", "onTouchEvent", "event", "Landroid/view/MotionEvent;", "repeatDrag", "scrollOutOfRange", "dx", "shouldKeepSize", "Callback", "Companion", "Edge", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/widget/RangeSliderView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "borderPaint", "Landroid/graphics/Paint;", "borders", "Landroid/graphics/Rect;", "callback", "Lcom/tencent/mm/plugin/mv/ui/widget/RangeSliderView$Callback;", "getCallback", "()Lcom/tencent/mm/plugin/mv/ui/widget/RangeSliderView$Callback;", "setCallback", "(Lcom/tencent/mm/plugin/mv/ui/widget/RangeSliderView$Callback;)V", "clipPath", "Landroid/graphics/Path;", "clipRadius", "", "clipRect", "Landroid/graphics/RectF;", "downEnd", "downStart", "downX", "dragRange", "Landroid/util/Range;", "kotlin.jvm.PlatformType", "edge", "Lcom/tencent/mm/plugin/mv/ui/widget/RangeSliderView$Edge;", "value", "end", "getEnd", "()I", "setEnd", "(I)V", "hasNoticed", "", "isActive", "()Z", "setActive", "(Z)V", "keepSizeOnStartChanged", "getKeepSizeOnStartChanged", "setKeepSizeOnStartChanged", "lastX", "leftThumb", "Landroid/graphics/drawable/Drawable;", "location", "", "maxEnd", "getMaxEnd", "setMaxEnd", "minWidth", "getMinWidth", "setMinWidth", "outOfRangeOffset", "progress", "getProgress", "setProgress", "progressPaint", "progressWidth", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "repeatJob", "Lkotlinx/coroutines/Job;", "rightThumb", "start", "getStart", "setStart", "dp", "getDp", "(F)F", "(I)I", "clearRepeat", "", "dispatchDraw", "canvas", "Landroid/graphics/Canvas;", "findRecyclerView", "getSvg", "resId", "handleDrag", "offsetX", "outOfRange", "log", "message", "Lkotlin/Function0;", "", "onAttachedToWindow", "onDetachedFromWindow", "onLayout", "changed", "left", "top", "right", "bottom", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "onSizeChanged", "w", "h", "oldw", "oldh", "onTouchEvent", "event", "Landroid/view/MotionEvent;", "repeatDrag", "scrollOutOfRange", "dx", "shouldKeepSize", "Callback", "Companion", "Edge", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class RangeSliderView
   extends FrameLayout
 {
-  public static final RangeSliderView.b GrN;
-  private final int[] BdE;
-  private int GqN;
-  private final Drawable GrA;
-  private final Drawable GrB;
-  private final Rect GrC;
-  private int GrD;
-  private RangeSliderView.c GrE;
-  private boolean GrF;
-  private final RectF GrG;
-  private final float GrH;
-  private Range<Float> GrI;
-  private int GrJ;
-  private boolean GrK;
-  private a GrL;
-  private by GrM;
-  private int Gry;
-  private int Grz;
-  private float aCa;
-  private final Paint borderPaint;
-  private float dit;
+  public static final RangeSliderView.b MlB;
+  private int DWv;
+  private int MkP;
+  private int MlC;
+  private final Drawable MlD;
+  private final Drawable MlE;
+  private final Rect MlF;
+  private int MlG;
+  private RangeSliderView.c MlH;
+  private boolean MlI;
+  private final RectF MlJ;
+  private final float MlK;
+  private Range<Float> MlL;
+  private int MlM;
+  private boolean MlN;
+  private a MlO;
+  private cb MlP;
+  private final int[] bfh;
+  private float cxM;
   private int end;
+  private float fif;
   private boolean isActive;
-  private RecyclerView jLl;
-  private final Paint opm;
+  private RecyclerView mkw;
   private int progress;
   private final int progressWidth;
+  private final Paint rsU;
   private int start;
-  private final Path uWB;
+  private final Paint uMn;
+  private final Path yjb;
   
   static
   {
-    AppMethodBeat.i(230454);
-    GrN = new RangeSliderView.b((byte)0);
-    AppMethodBeat.o(230454);
+    AppMethodBeat.i(286763);
+    MlB = new RangeSliderView.b((byte)0);
+    AppMethodBeat.o(286763);
   }
   
   public RangeSliderView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, (byte)0);
+    AppMethodBeat.i(286740);
+    AppMethodBeat.o(286740);
   }
   
   public RangeSliderView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(230447);
-    this.GrA = aab(b.g.music_mv_slider_left_bar);
-    this.GrB = aab(b.g.music_mv_slider_right_bar);
+    AppMethodBeat.i(286677);
+    this.MlD = aeu(b.g.music_mv_slider_left_bar);
+    this.MlE = aeu(b.g.music_mv_slider_right_bar);
     paramContext = new Paint(1);
     paramContext.setColor(-1);
     paramContext.setStyle(Paint.Style.FILL);
-    this.borderPaint = paramContext;
+    paramAttributeSet = ah.aiuX;
+    this.uMn = paramContext;
     paramContext = new Paint(1);
     paramContext.setColor(-1761607681);
     paramContext.setStyle(Paint.Style.FILL);
-    this.opm = paramContext;
-    this.progressWidth = fim();
-    this.GrC = new Rect(fim(), fim(), fim(), fim());
-    this.dit = -1.0F;
-    this.GrE = RangeSliderView.c.GrO;
-    this.uWB = new Path();
-    this.GrG = new RectF();
-    this.GrH = bK(4.0F);
-    this.GrI = new Range((Comparable)Float.valueOf(0.0F), (Comparable)Float.valueOf(0.0F));
-    this.BdE = new int[2];
+    paramAttributeSet = ah.aiuX;
+    this.rsU = paramContext;
+    this.progressWidth = gsp();
+    this.MlF = new Rect(gsp(), gsp(), gsp(), gsp());
+    this.fif = -1.0F;
+    this.MlH = RangeSliderView.c.MlQ;
+    this.yjb = new Path();
+    this.MlJ = new RectF();
+    this.MlK = cO(4.0F);
+    this.MlL = new Range((Comparable)Float.valueOf(0.0F), (Comparable)Float.valueOf(0.0F));
+    this.bfh = new int[2];
     setClipToPadding(false);
     setClipChildren(false);
-    AppMethodBeat.o(230447);
+    AppMethodBeat.o(286677);
   }
   
-  private final boolean aQ(int paramInt, boolean paramBoolean)
+  private final Drawable aeu(int paramInt)
   {
-    AppMethodBeat.i(230424);
+    AppMethodBeat.i(286688);
+    Drawable localDrawable = (Drawable)new BitmapDrawable(getResources(), BitmapUtil.getBitmapNative(paramInt, getResources().getDisplayMetrics().density));
+    AppMethodBeat.o(286688);
+    return localDrawable;
+  }
+  
+  private final void aev(int paramInt)
+  {
+    AppMethodBeat.i(286714);
+    RecyclerView localRecyclerView = this.mkw;
+    if (localRecyclerView != null)
+    {
+      if (paramInt >= 0) {
+        break label100;
+      }
+      if (this.MlH != RangeSliderView.c.MlR) {
+        break label75;
+      }
+      localRecyclerView.setTranslationX(localRecyclerView.getTranslationX() + -paramInt);
+      Log.d("MicroMsg.RangeSliderView", s.X("1 translateX ", Integer.valueOf(-paramInt)));
+    }
+    for (;;)
+    {
+      this.MlM += paramInt;
+      AppMethodBeat.o(286714);
+      return;
+      label75:
+      localRecyclerView.scrollBy(paramInt, 0);
+      Log.d("MicroMsg.RangeSliderView", s.X("2 scrollBy ", Integer.valueOf(paramInt)));
+      continue;
+      label100:
+      if (localRecyclerView.getTranslationX() > 0.0F)
+      {
+        localRecyclerView.setTranslationX(localRecyclerView.getTranslationX() + -paramInt);
+        Log.d("MicroMsg.RangeSliderView", s.X("3 translateX ", Integer.valueOf(-paramInt)));
+      }
+      else
+      {
+        localRecyclerView.scrollBy(paramInt, 0);
+        Log.d("MicroMsg.RangeSliderView", s.X("4 translateX ", Integer.valueOf(-paramInt)));
+      }
+    }
+  }
+  
+  private final boolean br(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(286706);
     Log.d("MicroMsg.RangeSliderView", "handle drag: offsetX=" + paramInt + ", outOfRange=" + paramBoolean);
     int i;
     Object localObject;
-    if (this.GrE == RangeSliderView.c.GrP)
+    if (this.MlH == RangeSliderView.c.MlR)
     {
-      paramInt = i.bm(this.GqN + paramInt, 0, this.end - this.Gry);
+      paramInt = kotlin.k.k.bQ(this.MkP + paramInt, 0, this.end - this.DWv);
       if (paramInt != this.start)
       {
         i = this.start;
         setStart(paramInt);
-        localObject = this.GrL;
+        localObject = this.MlO;
         if (localObject != null) {
-          ((a)localObject).ZY(paramInt);
+          ((a)localObject).aer(paramInt);
         }
-        this.GrF = false;
+        this.MlI = false;
         if (paramBoolean) {
-          aac(paramInt - i);
+          aev(paramInt - i);
         }
         for (;;)
         {
-          AppMethodBeat.o(230424);
+          AppMethodBeat.o(286706);
           return true;
-          if (!this.GrK)
+          if (!this.MlN)
           {
-            localObject = this.jLl;
+            localObject = this.mkw;
             if (localObject != null) {
               ((RecyclerView)localObject).scrollBy(-(paramInt - i), 0);
             }
-            Log.d("MicroMsg.RangeSliderView", "scrollBy not outOfRange: " + -(paramInt - i));
+            Log.d("MicroMsg.RangeSliderView", s.X("scrollBy not outOfRange: ", Integer.valueOf(-(paramInt - i))));
           }
         }
       }
-      if ((!this.GrF) && ((this.start == 0) || (this.end - this.start <= this.Gry)))
+      if ((!this.MlI) && ((this.start == 0) || (this.end - this.start <= this.DWv)))
       {
         performHapticFeedback(0, 2);
-        this.GrF = true;
+        this.MlI = true;
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(230424);
+      AppMethodBeat.o(286706);
       return false;
-      if (this.GrE == RangeSliderView.c.GrQ)
+      if (this.MlH == RangeSliderView.c.MlS)
       {
-        paramInt = i.bm(this.GrD + paramInt, this.start + this.Gry, this.Grz);
+        paramInt = kotlin.k.k.bQ(this.MlG + paramInt, this.start + this.DWv, this.MlC);
         if (paramInt != this.end)
         {
           i = this.end;
           setEnd(paramInt);
-          localObject = this.GrL;
+          localObject = this.MlO;
           if (localObject != null) {
-            ((a)localObject).ZZ(paramInt);
+            ((a)localObject).aes(paramInt);
           }
-          this.GrF = false;
+          this.MlI = false;
           if (paramBoolean) {
-            aac(paramInt - i);
+            aev(paramInt - i);
           }
-          AppMethodBeat.o(230424);
+          AppMethodBeat.o(286706);
           return true;
         }
-        if ((!this.GrF) && ((this.end >= this.Grz) || (this.end - this.start <= this.Gry)))
+        if ((!this.MlI) && ((this.end >= this.MlC) || (this.end - this.start <= this.DWv)))
         {
           performHapticFeedback(0, 2);
-          this.GrF = true;
+          this.MlI = true;
         }
       }
     }
   }
   
-  private final Drawable aab(int paramInt)
+  private final float cO(float paramFloat)
   {
-    AppMethodBeat.i(230412);
-    Object localObject = getResources();
-    Resources localResources = getResources();
-    p.j(localResources, "resources");
-    localObject = (Drawable)new BitmapDrawable((Resources)localObject, BitmapUtil.getBitmapNative(paramInt, localResources.getDisplayMetrics().density));
-    AppMethodBeat.o(230412);
-    return localObject;
-  }
-  
-  private final void aac(int paramInt)
-  {
-    AppMethodBeat.i(230426);
-    RecyclerView localRecyclerView = this.jLl;
-    if (localRecyclerView != null)
-    {
-      if (paramInt < 0) {
-        if (this.GrE == RangeSliderView.c.GrP)
-        {
-          localRecyclerView.setTranslationX(localRecyclerView.getTranslationX() + -paramInt);
-          Log.d("MicroMsg.RangeSliderView", "1 translateX " + -paramInt);
-        }
-      }
-      for (;;)
-      {
-        this.GrJ += paramInt;
-        AppMethodBeat.o(230426);
-        return;
-        localRecyclerView.scrollBy(paramInt, 0);
-        Log.d("MicroMsg.RangeSliderView", "2 scrollBy ".concat(String.valueOf(paramInt)));
-        continue;
-        if (localRecyclerView.getTranslationX() > 0.0F)
-        {
-          localRecyclerView.setTranslationX(localRecyclerView.getTranslationX() + -paramInt);
-          Log.d("MicroMsg.RangeSliderView", "3 translateX " + -paramInt);
-        }
-        else
-        {
-          localRecyclerView.scrollBy(paramInt, 0);
-          Log.d("MicroMsg.RangeSliderView", "4 translateX " + -paramInt);
-        }
-      }
-    }
-    AppMethodBeat.o(230426);
-  }
-  
-  private final float bK(float paramFloat)
-  {
-    AppMethodBeat.i(230444);
-    Resources localResources = getResources();
-    p.j(localResources, "resources");
-    float f = localResources.getDisplayMetrics().density;
-    AppMethodBeat.o(230444);
+    AppMethodBeat.i(286736);
+    float f = getResources().getDisplayMetrics().density;
+    AppMethodBeat.o(286736);
     return f * paramFloat;
   }
   
-  private final int fim()
+  private final int gsp()
   {
-    AppMethodBeat.i(230442);
-    Resources localResources = getResources();
-    p.j(localResources, "resources");
-    int i = (int)(localResources.getDisplayMetrics().density * 2.0F);
-    AppMethodBeat.o(230442);
+    AppMethodBeat.i(286729);
+    int i = (int)(getResources().getDisplayMetrics().density * 2.0F);
+    AppMethodBeat.o(286729);
     return i;
   }
   
-  private final void fin()
+  private final void gsq()
   {
-    AppMethodBeat.i(230417);
-    by localby = this.GrM;
-    if (localby != null) {
-      localby.a(null);
+    AppMethodBeat.i(286695);
+    cb localcb = this.MlP;
+    if (localcb != null) {
+      localcb.a(null);
     }
-    this.GrM = null;
-    AppMethodBeat.o(230417);
+    this.MlP = null;
+    AppMethodBeat.o(286695);
   }
   
-  private final boolean fio()
+  private final boolean gsr()
   {
-    return (this.GrE == RangeSliderView.c.GrP) && (this.GrK);
+    return (this.MlH == RangeSliderView.c.MlR) && (this.MlN);
   }
   
   protected final void dispatchDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(230441);
-    p.k(paramCanvas, "canvas");
+    AppMethodBeat.i(286891);
+    s.u(paramCanvas, "canvas");
     paramCanvas.save();
-    paramCanvas.clipPath(this.uWB);
-    if (fio()) {
-      paramCanvas.translate(-this.GqN, 0.0F);
+    paramCanvas.clipPath(this.yjb);
+    if (gsr()) {
+      paramCanvas.translate(-this.MkP, 0.0F);
     }
     for (;;)
     {
@@ -287,19 +282,19 @@ public final class RangeSliderView
       paramCanvas.restore();
       if (this.isActive)
       {
-        if (this.GrE == RangeSliderView.c.GrO) {
-          paramCanvas.drawRect(this.progress - this.start, 0.0F, this.progress - this.start + this.progressWidth, paramCanvas.getHeight(), this.opm);
+        if (this.MlH == RangeSliderView.c.MlQ) {
+          paramCanvas.drawRect(this.progress - this.start, 0.0F, this.progress - this.start + this.progressWidth, paramCanvas.getHeight(), this.rsU);
         }
-        paramCanvas.drawRect(this.GrA.getBounds().right, -this.GrC.top, this.GrB.getBounds().left, 0.0F, this.borderPaint);
-        float f1 = this.GrA.getBounds().right;
+        paramCanvas.drawRect(this.MlD.getBounds().right, -this.MlF.top, this.MlE.getBounds().left, 0.0F, this.uMn);
+        float f1 = this.MlD.getBounds().right;
         float f2 = paramCanvas.getHeight();
-        float f3 = this.GrB.getBounds().left;
+        float f3 = this.MlE.getBounds().left;
         float f4 = paramCanvas.getHeight();
-        paramCanvas.drawRect(f1, f2, f3, this.GrC.bottom + f4, this.borderPaint);
-        this.GrA.draw(paramCanvas);
-        this.GrB.draw(paramCanvas);
+        paramCanvas.drawRect(f1, f2, f3, this.MlF.bottom + f4, this.uMn);
+        this.MlD.draw(paramCanvas);
+        this.MlE.draw(paramCanvas);
       }
-      AppMethodBeat.o(230441);
+      AppMethodBeat.o(286891);
       return;
       paramCanvas.translate(-this.start, 0.0F);
     }
@@ -307,7 +302,7 @@ public final class RangeSliderView
   
   public final a getCallback()
   {
-    return this.GrL;
+    return this.MlO;
   }
   
   public final int getEnd()
@@ -317,17 +312,17 @@ public final class RangeSliderView
   
   public final boolean getKeepSizeOnStartChanged()
   {
-    return this.GrK;
+    return this.MlN;
   }
   
   public final int getMaxEnd()
   {
-    return this.Grz;
+    return this.MlC;
   }
   
   public final int getMinWidth()
   {
-    return this.Gry;
+    return this.DWv;
   }
   
   public final int getProgress()
@@ -342,76 +337,79 @@ public final class RangeSliderView
   
   protected final void onAttachedToWindow()
   {
-    AppMethodBeat.i(230432);
+    AppMethodBeat.i(286868);
     super.onAttachedToWindow();
-    ViewParent localViewParent = getParent();
-    Object localObject = localViewParent;
-    if (!(localViewParent instanceof ViewGroup)) {
-      localObject = null;
+    Object localObject = getParent();
+    if ((localObject instanceof ViewGroup)) {
+      localObject = (ViewGroup)localObject;
     }
-    for (localObject = (ViewGroup)localObject; localObject != null; localObject = (ViewGroup)localObject)
-    {
+    while (localObject != null) {
       if ((localObject instanceof RecyclerView))
       {
-        this.jLl = ((RecyclerView)localObject);
-        AppMethodBeat.o(230432);
+        this.mkw = ((RecyclerView)localObject);
+        AppMethodBeat.o(286868);
         return;
-      }
-      localViewParent = ((ViewGroup)localObject).getParent();
-      localObject = localViewParent;
-      if (!(localViewParent instanceof ViewGroup)) {
         localObject = null;
       }
+      else
+      {
+        localObject = ((ViewGroup)localObject).getParent();
+        if ((localObject instanceof ViewGroup)) {
+          localObject = (ViewGroup)localObject;
+        } else {
+          localObject = null;
+        }
+      }
     }
-    localObject = (Throwable)new IllegalStateException("RangeSliderView should be used inside a RecyclerView");
-    AppMethodBeat.o(230432);
+    localObject = new IllegalStateException("RangeSliderView should be used inside a RecyclerView");
+    AppMethodBeat.o(286868);
     throw ((Throwable)localObject);
   }
   
   protected final void onDetachedFromWindow()
   {
-    AppMethodBeat.i(230420);
+    AppMethodBeat.i(286851);
     super.onDetachedFromWindow();
-    fin();
-    AppMethodBeat.o(230420);
+    gsq();
+    AppMethodBeat.o(286851);
   }
   
   protected final void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(230438);
+    AppMethodBeat.i(286887);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     paramInt1 = paramInt4 - paramInt2;
-    if (fio())
+    if (gsr())
     {
-      this.GrG.left = (this.start - this.GqN);
-      this.GrG.right = (this.end - this.GqN);
-      this.GrG.top = 0.0F;
-      this.GrG.bottom = paramInt1;
-      this.uWB.reset();
-      localObject = this.uWB;
-      RectF localRectF = this.GrG;
-      float f1 = this.GrH;
-      float f2 = this.GrH;
-      float f3 = this.GrH;
-      float f4 = this.GrH;
-      float f5 = this.GrH;
-      float f6 = this.GrH;
-      float f7 = this.GrH;
-      float f8 = this.GrH;
+      this.MlJ.left = (this.start - this.MkP);
+      this.MlJ.right = (this.end - this.MkP);
+      this.MlJ.top = 0.0F;
+      this.MlJ.bottom = paramInt1;
+      this.yjb.reset();
+      localObject = this.yjb;
+      RectF localRectF = this.MlJ;
+      float f1 = this.MlK;
+      float f2 = this.MlK;
+      float f3 = this.MlK;
+      float f4 = this.MlK;
+      float f5 = this.MlK;
+      float f6 = this.MlK;
+      float f7 = this.MlK;
+      float f8 = this.MlK;
       Path.Direction localDirection = Path.Direction.CW;
       ((Path)localObject).addRoundRect(localRectF, new float[] { f1, f2, f3, f4, f5, f6, f7, f8 }, localDirection);
-      paramInt2 = this.GrC.top + paramInt1 + this.GrC.bottom;
-      paramInt3 = (int)(paramInt2 / this.GrA.getIntrinsicHeight() * this.GrA.getIntrinsicWidth());
-      if (!fio()) {
+      paramInt2 = this.MlF.top + paramInt1 + this.MlF.bottom;
+      paramInt3 = (int)(paramInt2 / this.MlD.getIntrinsicHeight() * this.MlD.getIntrinsicWidth());
+      if (!gsr()) {
         break label450;
       }
-      this.GrA.setBounds(this.start - this.GqN - this.GrC.left, -this.GrC.top, paramInt3 + (this.start - this.GqN), this.GrC.bottom + paramInt1);
+      this.MlD.setBounds(this.start - this.MkP - this.MlF.left, -this.MlF.top, paramInt3 + (this.start - this.MkP), this.MlF.bottom + paramInt1);
       label308:
-      paramInt2 = (int)(paramInt2 / this.GrB.getIntrinsicHeight() * this.GrB.getIntrinsicWidth());
-      if (!fio()) {
+      paramInt2 = (int)(paramInt2 / this.MlE.getIntrinsicHeight() * this.MlE.getIntrinsicWidth());
+      if (!gsr()) {
         break label487;
       }
-      this.GrB.setBounds(this.end - this.GqN - paramInt2, -this.GrC.top, this.end - this.GqN + this.GrC.right, paramInt1 + this.GrC.bottom);
+      this.MlE.setBounds(this.end - this.MkP - paramInt2, -this.MlF.top, this.end - this.MkP + this.MlF.right, paramInt1 + this.MlF.bottom);
     }
     for (;;)
     {
@@ -419,64 +417,61 @@ public final class RangeSliderView
       if (localObject != null) {
         break label542;
       }
-      localObject = new t("null cannot be cast to non-null type com.tencent.mm.plugin.mv.ui.widget.MvFrameListView");
-      AppMethodBeat.o(230438);
+      localObject = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.mv.ui.widget.MvFrameListView");
+      AppMethodBeat.o(286887);
       throw ((Throwable)localObject);
-      this.GrG.left = 0.0F;
-      this.GrG.right = (this.end - this.start);
+      this.MlJ.left = 0.0F;
+      this.MlJ.right = (this.end - this.start);
       break;
       label450:
-      this.GrA.setBounds(-this.GrC.left, -this.GrC.top, paramInt3, this.GrC.bottom + paramInt1);
+      this.MlD.setBounds(-this.MlF.left, -this.MlF.top, paramInt3, this.MlF.bottom + paramInt1);
       break label308;
       label487:
-      this.GrB.setBounds(this.end - this.start - paramInt2, -this.GrC.top, this.end - this.start + this.GrC.right, paramInt1 + this.GrC.bottom);
+      this.MlE.setBounds(this.end - this.start - paramInt2, -this.MlF.top, this.end - this.start + this.MlF.right, paramInt1 + this.MlF.bottom);
     }
     label542:
     Object localObject = (MvFrameListView)localObject;
     ((MvFrameListView)localObject).setDrawStart(this.start);
     ((MvFrameListView)localObject).setDrawEnd(this.end);
-    AppMethodBeat.o(230438);
+    AppMethodBeat.o(286887);
   }
   
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(230430);
-    if (fio())
+    AppMethodBeat.i(286859);
+    if (gsr())
     {
-      super.onMeasure(View.MeasureSpec.makeMeasureSpec(this.end - this.GqN, 1073741824), paramInt2);
-      AppMethodBeat.o(230430);
+      super.onMeasure(View.MeasureSpec.makeMeasureSpec(this.end - this.MkP, 1073741824), paramInt2);
+      AppMethodBeat.o(286859);
       return;
     }
     super.onMeasure(View.MeasureSpec.makeMeasureSpec(this.end - this.start, 1073741824), paramInt2);
-    AppMethodBeat.o(230430);
+    AppMethodBeat.o(286859);
   }
   
   protected final void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(230435);
+    AppMethodBeat.i(286876);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    RecyclerView localRecyclerView = this.jLl;
+    RecyclerView localRecyclerView = this.mkw;
     if (localRecyclerView != null)
     {
-      localRecyclerView.getLocationOnScreen(this.BdE);
-      Comparable localComparable = (Comparable)Float.valueOf(this.BdE[0] + bK(40.0F));
-      paramInt1 = this.BdE[0];
-      this.GrI = new Range(localComparable, (Comparable)Float.valueOf(localRecyclerView.getWidth() + paramInt1 - bK(40.0F)));
-      AppMethodBeat.o(230435);
-      return;
+      localRecyclerView.getLocationOnScreen(this.bfh);
+      Comparable localComparable = (Comparable)Float.valueOf(this.bfh[0] + cO(40.0F));
+      paramInt1 = this.bfh[0];
+      this.MlL = new Range(localComparable, (Comparable)Float.valueOf(localRecyclerView.getWidth() + paramInt1 - cO(40.0F)));
     }
-    AppMethodBeat.o(230435);
+    AppMethodBeat.o(286876);
   }
   
-  @SuppressLint({"ClickableViewAccessibility"})
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(230414);
-    p.k(paramMotionEvent, "event");
+    AppMethodBeat.i(286844);
+    s.u(paramMotionEvent, "event");
     if (!this.isActive)
     {
       boolean bool = super.onTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(230414);
+      AppMethodBeat.o(286844);
       return bool;
     }
     int i;
@@ -486,98 +481,105 @@ public final class RangeSliderView
     {
     default: 
       i = 0;
-      this.aCa = paramMotionEvent.getRawX();
+      this.cxM = paramMotionEvent.getRawX();
       if ((i != 0) || (super.onTouchEvent(paramMotionEvent)))
       {
-        AppMethodBeat.o(230414);
+        AppMethodBeat.o(286844);
         return true;
       }
       break;
     case 0: 
-      this.dit = paramMotionEvent.getRawX();
-      this.GqN = this.start;
-      this.GrD = this.end;
-      if (paramMotionEvent.getX() <= this.GrA.getBounds().right)
+      this.fif = paramMotionEvent.getRawX();
+      this.MkP = this.start;
+      this.MlG = this.end;
+      if (paramMotionEvent.getX() <= this.MlD.getBounds().right)
       {
-        this.GrE = RangeSliderView.c.GrP;
+        this.MlH = RangeSliderView.c.MlR;
         getParent().requestDisallowInterceptTouchEvent(true);
-        localObject = this.GrL;
-        if (localObject != null)
-        {
-          ((a)localObject).a(this.GrE, this.start, this.end);
-          i = 1;
+        localObject = this.MlO;
+        if (localObject == null) {
+          break label264;
         }
+        ((a)localObject).a(this.MlH, this.start, this.end);
+        i = 1;
       }
       break;
     }
     for (;;)
     {
-      this.GrF = false;
+      this.MlI = false;
       break label70;
-      i = 1;
-      continue;
-      if (paramMotionEvent.getX() >= this.GrB.getBounds().left)
+      if (paramMotionEvent.getX() >= this.MlE.getBounds().left)
       {
-        this.GrE = RangeSliderView.c.GrQ;
+        this.MlH = RangeSliderView.c.MlS;
         getParent().requestDisallowInterceptTouchEvent(true);
-        localObject = this.GrL;
-        if (localObject != null)
-        {
-          ((a)localObject).a(this.GrE, this.start, this.end);
-          i = 1;
-          continue;
+        localObject = this.MlO;
+        if (localObject != null) {
+          ((a)localObject).a(this.MlH, this.start, this.end);
         }
+        label264:
         i = 1;
         continue;
-        if (this.GrE == RangeSliderView.c.GrO) {
+        if (this.MlH == RangeSliderView.c.MlQ) {
           break;
         }
-        if (!this.GrI.contains((Comparable)Float.valueOf(paramMotionEvent.getRawX())))
+        if (!this.MlL.contains((Comparable)Float.valueOf(paramMotionEvent.getRawX())))
         {
-          localObject = this.GrM;
-          if ((localObject == null) || (((by)localObject).isActive() != true))
+          localObject = this.MlP;
+          if ((localObject != null) && (((cb)localObject).isActive() == true))
           {
-            localObject = this.GrM;
+            i = 1;
+            label323:
+            if (i != 0) {
+              break label562;
+            }
+            localObject = this.MlP;
             if (localObject != null) {
-              ((by)localObject).a(null);
+              ((cb)localObject).a(null);
             }
-            localObject = new aa.d();
-            if (this.GrE == RangeSliderView.c.GrP) {}
-            for (i = this.start - this.GqN;; i = this.end - this.GrD)
-            {
-              ((aa.d)localObject).aaBA = i;
-              this.GrM = g.b((ak)br.abxo, (f)bc.iRr(), (m)new d(this, (aa.d)localObject, null), 2);
-              i = 1;
-              break;
+            localObject = new ah.d();
+            if (this.MlH != RangeSliderView.c.MlR) {
+              break label426;
             }
+          }
+          label426:
+          for (i = this.start - this.MkP;; i = this.end - this.MlG)
+          {
+            ((ah.d)localObject).aixb = i;
+            this.MlP = j.a((aq)bu.ajwo, (f)bg.kCh(), null, (m)new d(this, (ah.d)localObject, null), 2);
+            i = 1;
+            break;
+            i = 0;
+            break label323;
           }
         }
         else
         {
-          if (aQ(kotlin.h.a.dm(paramMotionEvent.getRawX() - this.dit) + this.GrJ, false)) {}
+          if (br(kotlin.h.a.eH(paramMotionEvent.getRawX() - this.fif) + this.MlM, false)) {}
           for (i = 1;; i = 0)
           {
-            fin();
+            gsq();
             break label70;
-            if (this.GrE != RangeSliderView.c.GrO)
+            if (this.MlH != RangeSliderView.c.MlQ)
             {
-              localObject = this.GrL;
+              localObject = this.MlO;
               if (localObject != null) {
-                ((a)localObject).b(this.GrE, this.start, this.end);
+                ((a)localObject).b(this.MlH, this.start, this.end);
               }
-              this.GrE = RangeSliderView.c.GrO;
-              localObject = this.jLl;
+              this.MlH = RangeSliderView.c.MlQ;
+              localObject = this.mkw;
               if (localObject != null) {
                 ((RecyclerView)localObject).setTranslationX(0.0F);
               }
-              this.GrJ = 0;
+              this.MlM = 0;
             }
-            fin();
+            gsq();
             break;
-            AppMethodBeat.o(230414);
+            AppMethodBeat.o(286844);
             return false;
           }
         }
+        label562:
         i = 1;
         break label70;
       }
@@ -587,162 +589,143 @@ public final class RangeSliderView
   
   public final void setActive(boolean paramBoolean)
   {
-    AppMethodBeat.i(230408);
+    AppMethodBeat.i(286811);
     this.isActive = paramBoolean;
     invalidate();
-    AppMethodBeat.o(230408);
+    AppMethodBeat.o(286811);
   }
   
   public final void setCallback(a parama)
   {
-    this.GrL = parama;
+    this.MlO = parama;
   }
   
   public final void setEnd(int paramInt)
   {
-    AppMethodBeat.i(230402);
+    AppMethodBeat.i(286783);
     if (paramInt < 0) {}
     for (this.end = 0;; this.end = paramInt)
     {
       requestLayout();
-      AppMethodBeat.o(230402);
+      AppMethodBeat.o(286783);
       return;
     }
   }
   
   public final void setKeepSizeOnStartChanged(boolean paramBoolean)
   {
-    this.GrK = paramBoolean;
+    this.MlN = paramBoolean;
   }
   
   public final void setMaxEnd(int paramInt)
   {
-    this.Grz = paramInt;
+    this.MlC = paramInt;
   }
   
   public final void setMinWidth(int paramInt)
   {
-    this.Gry = paramInt;
+    this.DWv = paramInt;
   }
   
   public final void setProgress(int paramInt)
   {
-    AppMethodBeat.i(230404);
-    this.progress = i.bm(paramInt, this.start, this.end);
+    AppMethodBeat.i(286792);
+    this.progress = kotlin.k.k.bQ(paramInt, this.start, this.end);
     postInvalidate();
-    AppMethodBeat.o(230404);
+    AppMethodBeat.o(286792);
   }
   
   public final void setStart(int paramInt)
   {
-    AppMethodBeat.i(230401);
+    AppMethodBeat.i(286772);
     if (paramInt < 0) {}
     for (this.start = 0;; this.start = paramInt)
     {
       requestLayout();
-      AppMethodBeat.o(230401);
+      AppMethodBeat.o(286772);
       return;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/widget/RangeSliderView$Callback;", "", "onRangeEndChanged", "", "oldValue", "", "newValue", "onRangeStartChanged", "onSlidingStarted", "edge", "Lcom/tencent/mm/plugin/mv/ui/widget/RangeSliderView$Edge;", "start", "end", "onSlidingStopped", "plugin-mv_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/widget/RangeSliderView$Callback;", "", "onRangeEndChanged", "", "oldValue", "", "newValue", "onRangeStartChanged", "onSlidingStarted", "edge", "Lcom/tencent/mm/plugin/mv/ui/widget/RangeSliderView$Edge;", "start", "end", "onSlidingStopped", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface a
   {
-    public abstract void ZY(int paramInt);
-    
-    public abstract void ZZ(int paramInt);
-    
     public abstract void a(RangeSliderView.c paramc, int paramInt1, int paramInt2);
+    
+    public abstract void aer(int paramInt);
+    
+    public abstract void aes(int paramInt);
     
     public abstract void b(RangeSliderView.c paramc, int paramInt1, int paramInt2);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    extends j
-    implements m<ak, d<? super x>, Object>
+    extends kotlin.d.b.a.k
+    implements m<aq, d<? super ah>, Object>
   {
-    Object L$0;
     int label;
-    private ak p$;
-    int rdc;
     
-    d(RangeSliderView paramRangeSliderView, aa.d paramd, d paramd1)
+    d(RangeSliderView paramRangeSliderView, ah.d paramd, d<? super d> paramd1)
     {
       super(paramd1);
     }
     
-    public final d<x> create(Object paramObject, d<?> paramd)
+    public final d<ah> create(Object paramObject, d<?> paramd)
     {
-      AppMethodBeat.i(228142);
-      p.k(paramd, "completion");
-      paramd = new d(this.GrS, this.GrT, paramd);
-      paramd.p$ = ((ak)paramObject);
-      AppMethodBeat.o(228142);
-      return paramd;
-    }
-    
-    public final Object invoke(Object paramObject1, Object paramObject2)
-    {
-      AppMethodBeat.i(228143);
-      paramObject1 = ((d)create(paramObject1, (d)paramObject2)).invokeSuspend(x.aazN);
-      AppMethodBeat.o(228143);
-      return paramObject1;
+      AppMethodBeat.i(286727);
+      paramObject = (d)new d(this.MlU, this.MlV, paramd);
+      AppMethodBeat.o(286727);
+      return paramObject;
     }
     
     public final Object invokeSuspend(Object paramObject)
     {
-      AppMethodBeat.i(228140);
-      kotlin.d.a.a locala = kotlin.d.a.a.aaAA;
+      AppMethodBeat.i(286712);
+      kotlin.d.a.a locala = kotlin.d.a.a.aiwj;
       switch (this.label)
       {
       default: 
         paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-        AppMethodBeat.o(228140);
+        AppMethodBeat.o(286712);
         throw paramObject;
       case 0: 
         ResultKt.throwOnFailure(paramObject);
-        paramObject = this.p$;
-        float f = RangeSliderView.a(this.GrS);
-        localObject = RangeSliderView.b(this.GrS).getUpper();
-        p.j(localObject, "dragRange.upper");
-        if (f > ((Number)localObject).floatValue())
-        {
-          f = RangeSliderView.a(this.GrS);
-          localObject = RangeSliderView.b(this.GrS).getUpper();
-          p.j(localObject, "dragRange.upper");
-        }
-        for (int i = kotlin.h.a.dm(f - ((Number)localObject).floatValue());; i = kotlin.h.a.dm(f - ((Number)localObject).floatValue()))
-        {
-          RangeSliderView.a(this.GrS, this.GrT.aaBA + i);
-          localObject = this.GrT;
-          ((aa.d)localObject).aaBA += i;
-          this.L$0 = paramObject;
-          this.rdc = i;
-          this.label = 1;
-          if (aw.a(100L, this) != locala) {
-            break;
-          }
-          AppMethodBeat.o(228140);
-          return locala;
-          f = RangeSliderView.a(this.GrS);
-          localObject = RangeSliderView.b(this.GrS).getLower();
-          p.j(localObject, "dragRange.lower");
-        }
       }
-      Object localObject = (ak)this.L$0;
-      ResultKt.throwOnFailure(paramObject);
-      paramObject = localObject;
       for (;;)
       {
-        break;
+        float f = RangeSliderView.a(this.MlU);
+        paramObject = RangeSliderView.b(this.MlU).getUpper();
+        s.s(paramObject, "dragRange.upper");
+        if (f > ((Number)paramObject).floatValue())
+        {
+          f = RangeSliderView.a(this.MlU);
+          paramObject = RangeSliderView.b(this.MlU).getUpper();
+          s.s(paramObject, "dragRange.upper");
+        }
+        for (int i = kotlin.h.a.eH(f - ((Number)paramObject).floatValue());; i = kotlin.h.a.eH(f - ((Number)paramObject).floatValue()))
+        {
+          RangeSliderView.a(this.MlU, this.MlV.aixb + i);
+          this.MlV.aixb = (i + this.MlV.aixb);
+          paramObject = (d)this;
+          this.label = 1;
+          if (bb.e(100L, paramObject) != locala) {
+            break;
+          }
+          AppMethodBeat.o(286712);
+          return locala;
+          f = RangeSliderView.a(this.MlU);
+          paramObject = RangeSliderView.b(this.MlU).getLower();
+          s.s(paramObject, "dragRange.lower");
+        }
+        ResultKt.throwOnFailure(paramObject);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mv.ui.widget.RangeSliderView
  * JD-Core Version:    0.7.0.1
  */

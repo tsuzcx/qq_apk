@@ -2,14 +2,12 @@ package com.tencent.mm.plugin.music.model;
 
 import android.content.ClipboardManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.al;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.be;
 import com.tencent.mm.model.y;
-import com.tencent.mm.plugin.music.e.e;
-import com.tencent.mm.plugin.music.e.k;
-import com.tencent.mm.plugin.music.e.m;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.plugin.music.logic.MusicActionListener;
+import com.tencent.mm.plugin.music.logic.j;
+import com.tencent.mm.plugin.music.logic.l;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
@@ -17,48 +15,48 @@ import java.util.HashMap;
 public class o
   implements be
 {
-  private IListener FNC;
-  private com.tencent.mm.plugin.music.model.e.b FRR;
-  private ClipboardManager FRS;
-  private com.tencent.mm.plugin.music.model.e.d FRT;
-  private IListener<com.tencent.mm.f.a.d> FRU;
-  private IListener rXj;
+  private IListener LIy;
+  private com.tencent.mm.plugin.music.model.e.b LMJ;
+  private com.tencent.mm.plugin.music.model.e.d LMK;
+  private IListener<com.tencent.mm.autogen.a.e> LML;
+  private ClipboardManager aQR;
+  private IListener viA;
   
   public o()
   {
     AppMethodBeat.i(63029);
-    this.FNC = new com.tencent.mm.plugin.music.e.f();
-    this.rXj = new IListener() {};
-    this.FRU = new o.4(this);
+    this.LIy = new MusicActionListener();
+    this.viA = new SubCoreMusic.3(this, com.tencent.mm.app.f.hfK);
+    this.LML = new SubCoreMusic.4(this, com.tencent.mm.app.f.hfK);
     AppMethodBeat.o(63029);
   }
   
-  private static o feV()
+  private static o goc()
   {
     AppMethodBeat.i(63030);
-    o localo = (o)y.as(o.class);
+    o localo = (o)y.aL(o.class);
     AppMethodBeat.o(63030);
     return localo;
   }
   
-  public static com.tencent.mm.plugin.music.model.e.b feW()
+  public static com.tencent.mm.plugin.music.model.e.b god()
   {
     AppMethodBeat.i(63032);
-    if (feV().FRR == null) {
-      feV().FRR = new com.tencent.mm.plugin.music.model.e.b(h.aHG().kcF);
+    if (goc().LMJ == null) {
+      goc().LMJ = new com.tencent.mm.plugin.music.model.e.b(h.baE().mCN);
     }
-    com.tencent.mm.plugin.music.model.e.b localb = feV().FRR;
+    com.tencent.mm.plugin.music.model.e.b localb = goc().LMJ;
     AppMethodBeat.o(63032);
     return localb;
   }
   
-  public static com.tencent.mm.plugin.music.model.e.d feX()
+  public static com.tencent.mm.plugin.music.model.e.d goe()
   {
     AppMethodBeat.i(63034);
-    if (feV().FRT == null) {
-      feV().FRT = new com.tencent.mm.plugin.music.model.e.d(h.aHG().kcF);
+    if (goc().LMK == null) {
+      goc().LMK = new com.tencent.mm.plugin.music.model.e.d(h.baE().mCN);
     }
-    com.tencent.mm.plugin.music.model.e.d locald = feV().FRT;
+    com.tencent.mm.plugin.music.model.e.d locald = goc().LMK;
     AppMethodBeat.o(63034);
     return locald;
   }
@@ -78,30 +76,30 @@ public class o
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(63035);
-    this.FRU.alive();
-    this.FNC.alive();
+    this.LML.alive();
+    this.LIy.alive();
     b.create();
-    this.rXj.alive();
-    m localm = new m();
-    k.a(localm);
-    com.tencent.mm.plugin.music.f.c.b.a(e.class, localm);
-    com.tencent.mm.plugin.music.f.c.b.a(com.tencent.mm.plugin.music.e.d.class, new com.tencent.mm.plugin.music.model.d.f());
+    this.viA.alive();
+    l locall = new l();
+    j.a(locall);
+    com.tencent.mm.plugin.music.e.c.b.a(com.tencent.mm.plugin.music.logic.e.class, locall);
+    com.tencent.mm.plugin.music.e.c.b.a(com.tencent.mm.plugin.music.logic.d.class, new com.tencent.mm.plugin.music.model.d.f());
     AppMethodBeat.o(63035);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(63036);
-    k.feu();
-    com.tencent.mm.plugin.music.f.c.b.af(e.class);
-    this.FRR = null;
-    this.FRS = null;
-    this.FRT = null;
+    j.gnx();
+    com.tencent.mm.plugin.music.e.c.b.ay(com.tencent.mm.plugin.music.logic.e.class);
+    this.LMJ = null;
+    this.aQR = null;
+    this.LMK = null;
     b.destroy();
-    EventCenter.instance.removeListener(this.FNC);
-    this.FNC.dead();
-    this.rXj.dead();
-    this.FRU.dead();
+    this.LIy.dead();
+    this.LIy.dead();
+    this.viA.dead();
+    this.LML.dead();
     AppMethodBeat.o(63036);
   }
   
@@ -109,7 +107,7 @@ public class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.o
  * JD-Core Version:    0.7.0.1
  */

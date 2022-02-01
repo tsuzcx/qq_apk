@@ -8,44 +8,44 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class i
   extends JceStruct
 {
-  static int ZUd = 0;
-  public int ZTY = 0;
-  public long ZTZ = 0L;
-  public float ZUa = 0.0F;
-  public float ZUb = 0.0F;
-  public int ZUc = 0;
-  public float jLa = 0.0F;
-  public float jLb = 0.0F;
+  static int ahYD = 0;
+  public float ahYA = 0.0F;
+  public float ahYB = 0.0F;
+  public int ahYC = 0;
+  public int ahYy = 0;
+  public long ahYz = 0L;
+  public float mkm = 0.0F;
+  public float mkn = 0.0F;
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(207523);
-    this.ZTY = paramJceInputStream.read(this.ZTY, 0, true);
-    this.jLa = paramJceInputStream.read(this.jLa, 1, true);
-    this.jLb = paramJceInputStream.read(this.jLb, 2, true);
-    this.ZTZ = paramJceInputStream.read(this.ZTZ, 3, true);
-    this.ZUa = paramJceInputStream.read(this.ZUa, 4, false);
-    this.ZUb = paramJceInputStream.read(this.ZUb, 5, false);
-    this.ZUc = paramJceInputStream.read(this.ZUc, 6, false);
-    AppMethodBeat.o(207523);
+    AppMethodBeat.i(212180);
+    this.ahYy = paramJceInputStream.read(this.ahYy, 0, true);
+    this.mkm = paramJceInputStream.read(this.mkm, 1, true);
+    this.mkn = paramJceInputStream.read(this.mkn, 2, true);
+    this.ahYz = paramJceInputStream.read(this.ahYz, 3, true);
+    this.ahYA = paramJceInputStream.read(this.ahYA, 4, false);
+    this.ahYB = paramJceInputStream.read(this.ahYB, 5, false);
+    this.ahYC = paramJceInputStream.read(this.ahYC, 6, false);
+    AppMethodBeat.o(212180);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(207520);
-    paramJceOutputStream.write(this.ZTY, 0);
-    paramJceOutputStream.write(this.jLa, 1);
-    paramJceOutputStream.write(this.jLb, 2);
-    paramJceOutputStream.write(this.ZTZ, 3);
-    paramJceOutputStream.write(this.ZUa, 4);
-    paramJceOutputStream.write(this.ZUb, 5);
-    paramJceOutputStream.write(this.ZUc, 6);
-    AppMethodBeat.o(207520);
+    AppMethodBeat.i(212174);
+    paramJceOutputStream.write(this.ahYy, 0);
+    paramJceOutputStream.write(this.mkm, 1);
+    paramJceOutputStream.write(this.mkn, 2);
+    paramJceOutputStream.write(this.ahYz, 3);
+    paramJceOutputStream.write(this.ahYA, 4);
+    paramJceOutputStream.write(this.ahYB, 5);
+    paramJceOutputStream.write(this.ahYC, 6);
+    AppMethodBeat.o(212174);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.h.a.c.b.i
  * JD-Core Version:    0.7.0.1
  */

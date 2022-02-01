@@ -5,17 +5,19 @@ import java.util.List;
 
 abstract interface a
 {
-  public abstract void a(int paramInt, View paramView);
+  public abstract int I(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract int J(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract boolean Ve();
   
   public abstract void a(View paramView, int paramInt1, int paramInt2, b paramb);
   
   public abstract void a(b paramb);
   
-  public abstract int bR(View paramView);
+  public abstract void b(int paramInt, View paramView);
   
-  public abstract View fC(int paramInt);
-  
-  public abstract View fD(int paramInt);
+  public abstract int cn(View paramView);
   
   public abstract int getAlignContent();
   
@@ -47,19 +49,17 @@ abstract interface a
   
   public abstract int getSumOfCrossSize();
   
+  public abstract View iR(int paramInt);
+  
+  public abstract View iS(int paramInt);
+  
   public abstract int k(View paramView, int paramInt1, int paramInt2);
   
-  public abstract int s(int paramInt1, int paramInt2, int paramInt3);
-  
   public abstract void setFlexLines(List<b> paramList);
-  
-  public abstract int t(int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract boolean vF();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.flexbox.a
  * JD-Core Version:    0.7.0.1
  */

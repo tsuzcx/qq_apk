@@ -11,25 +11,25 @@ public final class a
 {
   private static int a(f paramf)
   {
-    AppMethodBeat.i(229217);
+    AppMethodBeat.i(194183);
     int i = -1;
-    if (paramf.fM() == f.a.Dq) {
-      if (paramf.CC == 0)
+    if (paramf.CV() == f.a.bjy) {
+      if (paramf.biK == 0)
       {
-        i = (int)(paramf.getHeight() * paramf.CB);
+        i = (int)(paramf.getHeight() * paramf.biJ);
         paramf.setWidth(i);
       }
     }
-    while (paramf.fN() != f.a.Dq) {
+    while (paramf.CW() != f.a.bjy) {
       for (;;)
       {
-        AppMethodBeat.o(229217);
+        AppMethodBeat.o(194183);
         return i;
-        i = (int)(paramf.getHeight() / paramf.CB);
+        i = (int)(paramf.getHeight() / paramf.biJ);
       }
     }
-    if (paramf.CC == 1) {}
-    for (i = (int)(paramf.getWidth() * paramf.CB);; i = (int)(paramf.getWidth() / paramf.CB))
+    if (paramf.biK == 1) {}
+    for (i = (int)(paramf.getWidth() * paramf.biJ);; i = (int)(paramf.getWidth() / paramf.biJ))
     {
       paramf.setHeight(i);
       break;
@@ -38,32 +38,32 @@ public final class a
   
   private static int a(f paramf, int paramInt)
   {
-    AppMethodBeat.i(229213);
+    AppMethodBeat.i(194178);
     int i = paramInt * 2;
-    e locale1 = paramf.Cx[i];
-    e locale2 = paramf.Cx[(i + 1)];
-    if ((locale1.Bv != null) && (locale1.Bv.Bt == paramf.CA) && (locale2.Bv != null) && (locale2.Bv.Bt == paramf.CA))
+    e locale1 = paramf.biF[i];
+    e locale2 = paramf.biF[(i + 1)];
+    if ((locale1.bhD != null) && (locale1.bhD.bhB == paramf.biI) && (locale2.bhD != null) && (locale2.bhD.bhB == paramf.biI))
     {
-      i = paramf.CA.aV(paramInt);
+      i = paramf.biI.dL(paramInt);
       if (paramInt == 0) {}
-      for (float f = paramf.CT;; f = paramf.CU)
+      for (float f = paramf.bja;; f = paramf.bjb)
       {
-        paramInt = paramf.aV(paramInt);
-        paramInt = (int)(f * (i - locale1.fv() - locale2.fv() - paramInt));
-        AppMethodBeat.o(229213);
+        paramInt = paramf.dL(paramInt);
+        paramInt = (int)(f * (i - locale1.CE() - locale2.CE() - paramInt));
+        AppMethodBeat.o(194178);
         return paramInt;
       }
     }
-    AppMethodBeat.o(229213);
+    AppMethodBeat.o(194178);
     return 0;
   }
   
   private static int a(f paramf, int paramInt1, boolean paramBoolean, int paramInt2)
   {
-    AppMethodBeat.i(229181);
-    if (!paramf.Db)
+    AppMethodBeat.i(194148);
+    if (!paramf.bjj)
     {
-      AppMethodBeat.o(229181);
+      AppMethodBeat.o(194148);
       return 0;
     }
     int k;
@@ -77,17 +77,17 @@ public final class a
     int i3;
     int i6;
     int i8;
-    if ((paramf.Ct.Bv != null) && (paramInt1 == 1))
+    if ((paramf.biB.bhD != null) && (paramInt1 == 1))
     {
       k = 1;
       if (!paramBoolean) {
         break label229;
       }
-      i1 = paramf.CN;
-      n = paramf.getHeight() - paramf.CN;
+      i1 = paramf.biV;
+      n = paramf.getHeight() - paramf.biV;
       j = paramInt1 * 2;
       i = j + 1;
-      if ((paramf.Cx[i].Bv == null) || (paramf.Cx[j].Bv != null)) {
+      if ((paramf.biF[i].bhD == null) || (paramf.biF[j].bhD != null)) {
         break label260;
       }
       i2 = -1;
@@ -96,7 +96,7 @@ public final class a
       if (k != 0) {
         i3 = paramInt2 - i1;
       }
-      i6 = paramf.Cx[m].fv() * i2 + a(paramf, paramInt1);
+      i6 = paramf.biF[m].CE() * i2 + a(paramf, paramInt1);
       i8 = i6 + i3;
       if (paramInt1 != 0) {
         break label274;
@@ -108,13 +108,13 @@ public final class a
     for (paramInt2 = paramf.getWidth();; paramInt2 = paramf.getHeight())
     {
       i7 = paramInt2 * i2;
-      localObject = paramf.Cx[m].Bs.Es.iterator();
-      for (paramInt2 = 0; ((Iterator)localObject).hasNext(); paramInt2 = Math.max(paramInt2, a(((m)((Iterator)localObject).next()).Ei.Bt, paramInt1, paramBoolean, i8))) {}
+      localObject = paramf.biF[m].bhA.bkA.iterator();
+      for (paramInt2 = 0; ((Iterator)localObject).hasNext(); paramInt2 = Math.max(paramInt2, a(((m)((Iterator)localObject).next()).bkq.bhB, paramInt1, paramBoolean, i8))) {}
       k = 0;
       break;
       label229:
-      i1 = paramf.getHeight() - paramf.CN;
-      n = paramf.CN;
+      i1 = paramf.getHeight() - paramf.biV;
+      n = paramf.biV;
       i = paramInt1 * 2;
       j = i + 1;
       break label69;
@@ -123,8 +123,8 @@ public final class a
       j = i;
       break label102;
     }
-    Object localObject = paramf.Cx[j].Bs.Es.iterator();
-    for (int i = 0; ((Iterator)localObject).hasNext(); i = Math.max(i, a(((m)((Iterator)localObject).next()).Ei.Bt, paramInt1, paramBoolean, i7 + i8))) {}
+    Object localObject = paramf.biF[j].bhA.bkA.iterator();
+    for (int i = 0; ((Iterator)localObject).hasNext(); i = Math.max(i, a(((m)((Iterator)localObject).next()).bkq.bhB, paramInt1, paramBoolean, i7 + i8))) {}
     int i4;
     int i5;
     if (k != 0)
@@ -133,7 +133,7 @@ public final class a
       i5 = paramInt2 - i1;
       if (paramInt1 == 1)
       {
-        localObject = paramf.Ct.Bs.Es.iterator();
+        localObject = paramf.biB.bhA.bkA.iterator();
         paramInt2 = 0;
       }
     }
@@ -147,7 +147,7 @@ public final class a
         m localm = (m)((Iterator)localObject).next();
         if (i2 == 1)
         {
-          paramInt2 = Math.max(paramInt2, a(localm.Ei.Bt, paramInt1, paramBoolean, i1 + i8));
+          paramInt2 = Math.max(paramInt2, a(localm.bkq.bhB, paramInt1, paramBoolean, i1 + i8));
           continue;
           if (paramInt1 == 0) {}
           for (i4 = paramf.getWidth();; i4 = paramf.getHeight())
@@ -159,12 +159,12 @@ public final class a
         }
         else
         {
-          paramInt2 = Math.max(paramInt2, a(localm.Ei.Bt, paramInt1, paramBoolean, n * i2 + i8));
+          paramInt2 = Math.max(paramInt2, a(localm.bkq.bhB, paramInt1, paramBoolean, n * i2 + i8));
         }
       }
       label513:
       i = paramInt2;
-      if (paramf.Ct.Bs.Es.size() > 0)
+      if (paramf.biB.bhA.bkA.size() > 0)
       {
         i = paramInt2;
         if (k == 0)
@@ -187,27 +187,27 @@ public final class a
         if (paramBoolean)
         {
           k.a(paramf, paramInt1, i);
-          paramf.c(i, paramInt2, paramInt1);
+          paramf.q(i, paramInt2, paramInt1);
         }
         for (;;)
         {
-          if ((paramf.aW(paramInt1) == f.a.Dq) && (paramf.CB != 0.0F)) {
-            paramf.Cm.c(paramf, paramInt1);
+          if ((paramf.dM(paramInt1) == f.a.bjy) && (paramf.biJ != 0.0F)) {
+            paramf.bit.c(paramf, paramInt1);
           }
-          if ((paramf.Cx[m].Bv != null) && (paramf.Cx[j].Bv != null))
+          if ((paramf.biF[m].bhD != null) && (paramf.biF[j].bhD != null))
           {
-            localObject = paramf.CA;
-            if ((paramf.Cx[m].Bv.Bt == localObject) && (paramf.Cx[j].Bv.Bt == localObject)) {
-              paramf.Cm.c(paramf, paramInt1);
+            localObject = paramf.biI;
+            if ((paramf.biF[m].bhD.bhB == localObject) && (paramf.biF[j].bhD.bhB == localObject)) {
+              paramf.bit.c(paramf, paramInt1);
             }
           }
-          AppMethodBeat.o(229181);
+          AppMethodBeat.o(194148);
           return n + i6;
           label720:
           i = paramInt2 - n;
           break;
-          paramf.Cm.c(paramf, paramInt1);
-          paramf.y(i, paramInt1);
+          paramf.bit.c(paramf, paramInt1);
+          paramf.as(i, paramInt1);
         }
         k = paramInt2;
         paramInt2 = i;
@@ -219,7 +219,7 @@ public final class a
   
   private static int a(h paramh, int paramInt)
   {
-    AppMethodBeat.i(229152);
+    AppMethodBeat.i(194134);
     int k = paramInt * 2;
     List localList;
     int i;
@@ -228,7 +228,7 @@ public final class a
     f localf;
     if (paramInt == 0)
     {
-      localList = paramh.DS;
+      localList = paramh.bka;
       int m = localList.size();
       i = 0;
       j = 0;
@@ -236,7 +236,7 @@ public final class a
         break label148;
       }
       localf = (f)localList.get(i);
-      if ((localf.Cx[(k + 1)].Bv != null) && ((localf.Cx[k].Bv == null) || (localf.Cx[(k + 1)].Bv == null))) {
+      if ((localf.biF[(k + 1)].bhD != null) && ((localf.biF[k].bhD == null) || (localf.biF[(k + 1)].bhD == null))) {
         break label142;
       }
     }
@@ -248,39 +248,39 @@ public final class a
       break label33;
       if (paramInt == 1)
       {
-        localList = paramh.DT;
+        localList = paramh.bkb;
         break;
       }
       localList = null;
       break;
     }
     label148:
-    paramh.DR[paramInt] = j;
-    AppMethodBeat.o(229152);
+    paramh.bjZ[paramInt] = j;
+    AppMethodBeat.o(194134);
     return j;
   }
   
   public static void a(g paramg)
   {
-    AppMethodBeat.i(229124);
-    if ((paramg.DJ & 0x20) != 32)
+    AppMethodBeat.i(194095);
+    if ((paramg.bjR & 0x20) != 32)
     {
       b(paramg);
-      AppMethodBeat.o(229124);
+      AppMethodBeat.o(194095);
       return;
     }
-    paramg.DK = true;
-    paramg.DE = false;
-    paramg.DF = false;
-    paramg.DG = false;
-    Object localObject1 = paramg.Ew;
-    List localList = paramg.DD;
+    paramg.bjS = true;
+    paramg.bjM = false;
+    paramg.bjN = false;
+    paramg.bjO = false;
+    Object localObject1 = paramg.bkE;
+    List localList = paramg.bjL;
     int i;
     int j;
-    if (paramg.fM() == f.a.Dp)
+    if (paramg.CV() == f.a.bjx)
     {
       i = 1;
-      if (paramg.fN() != f.a.Dp) {
+      if (paramg.CW() != f.a.bjx) {
         break label157;
       }
       j = 1;
@@ -300,9 +300,9 @@ public final class a
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (f)((Iterator)localObject2).next();
-        ((f)localObject3).Cm = null;
-        ((f)localObject3).Dd = false;
-        ((f)localObject3).fr();
+        ((f)localObject3).bit = null;
+        ((f)localObject3).bjl = false;
+        ((f)localObject3).CA();
       }
       i = 0;
       break;
@@ -313,15 +313,15 @@ public final class a
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (f)((Iterator)localObject1).next();
-      if (((f)localObject2).Cm == null)
+      if (((f)localObject2).bit == null)
       {
         localObject3 = new h(new ArrayList(), (byte)0);
         localList.add(localObject3);
         if (!a((f)localObject2, (h)localObject3, localList, bool))
         {
           b(paramg);
-          paramg.DK = false;
-          AppMethodBeat.o(229124);
+          paramg.bjS = false;
+          AppMethodBeat.o(194095);
           return;
         }
       }
@@ -337,170 +337,93 @@ public final class a
     }
     if (i != 0)
     {
-      paramg.a(f.a.Do);
+      paramg.a(f.a.bjw);
       paramg.setWidth(m);
-      paramg.DE = true;
-      paramg.DF = true;
-      paramg.DH = m;
+      paramg.bjM = true;
+      paramg.bjN = true;
+      paramg.bjP = m;
     }
     if (j != 0)
     {
-      paramg.b(f.a.Do);
+      paramg.b(f.a.bjw);
       paramg.setHeight(k);
-      paramg.DE = true;
-      paramg.DG = true;
-      paramg.DI = k;
+      paramg.bjM = true;
+      paramg.bjO = true;
+      paramg.bjQ = k;
     }
-    a(localList, 0, paramg.getWidth());
-    a(localList, 1, paramg.getHeight());
-    AppMethodBeat.o(229124);
+    g(localList, 0, paramg.getWidth());
+    g(localList, 1, paramg.getHeight());
+    AppMethodBeat.o(194095);
   }
   
   private static void a(g paramg, f paramf, h paramh)
   {
-    paramh.DK = false;
-    paramg.DK = false;
-    paramf.Db = false;
-  }
-  
-  public static void a(List<h> paramList, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(229200);
-    int k = paramList.size();
-    int j = 0;
-    while (j < k)
-    {
-      Object localObject = (h)paramList.get(j);
-      if (paramInt1 == 0)
-      {
-        localObject = ((h)localObject).DU;
-        localObject = ((Set)localObject).iterator();
-      }
-      label183:
-      for (;;)
-      {
-        label57:
-        if (((Iterator)localObject).hasNext())
-        {
-          f localf = (f)((Iterator)localObject).next();
-          if (localf.Db)
-          {
-            int m = paramInt1 * 2;
-            e locale1 = localf.Cx[m];
-            e locale2 = localf.Cx[(m + 1)];
-            if ((locale1.Bv != null) && (locale2.Bv != null)) {}
-            for (int i = 1;; i = 0)
-            {
-              if (i == 0) {
-                break label183;
-              }
-              k.a(localf, paramInt1, a(localf, paramInt1) + locale1.fv());
-              break label57;
-              if (paramInt1 == 1)
-              {
-                localObject = ((h)localObject).DV;
-                break;
-              }
-              localObject = null;
-              break;
-            }
-            if ((localf.CB != 0.0F) && (localf.aW(paramInt1) == f.a.Dq))
-            {
-              i = a(localf);
-              m = (int)localf.Cx[m].Bs.El;
-              locale2.Bs.Ek = locale1.Bs;
-              locale2.Bs.El = i;
-              locale2.Bs.state = 1;
-              localf.c(m, m + i, paramInt1);
-            }
-            else
-            {
-              if (paramInt1 == 0) {
-                i = localf.CF;
-              }
-              for (;;)
-              {
-                i = paramInt2 - i;
-                m = i - localf.aV(paramInt1);
-                localf.c(m, i, paramInt1);
-                k.a(localf, paramInt1, m);
-                break;
-                if (paramInt1 == 1) {
-                  i = localf.CG;
-                } else {
-                  i = 0;
-                }
-              }
-            }
-          }
-        }
-      }
-      j += 1;
-    }
-    AppMethodBeat.o(229200);
+    paramh.bjS = false;
+    paramg.bjS = false;
+    paramf.bjj = false;
   }
   
   private static boolean a(f paramf, h paramh, List<h> paramList, boolean paramBoolean)
   {
-    AppMethodBeat.i(229147);
+    AppMethodBeat.i(194121);
     if (paramf == null)
     {
-      AppMethodBeat.o(229147);
+      AppMethodBeat.o(194121);
       return true;
     }
-    paramf.Dc = false;
-    g localg = (g)paramf.CA;
-    if (paramf.Cm == null)
+    paramf.bjk = false;
+    g localg = (g)paramf.biI;
+    if (paramf.bit == null)
     {
-      paramf.Db = true;
-      paramh.DO.add(paramf);
-      paramf.Cm = paramh;
-      if ((paramf.Cp.Bv == null) && (paramf.Cr.Bv == null) && (paramf.Cq.Bv == null) && (paramf.Cs.Bv == null) && (paramf.Ct.Bv == null) && (paramf.Cw.Bv == null))
+      paramf.bjj = true;
+      paramh.bjW.add(paramf);
+      paramf.bit = paramh;
+      if ((paramf.biw.bhD == null) && (paramf.biy.bhD == null) && (paramf.bix.bhD == null) && (paramf.biA.bhD == null) && (paramf.biB.bhD == null) && (paramf.biE.bhD == null))
       {
         a(localg, paramf, paramh);
         if (paramBoolean)
         {
-          AppMethodBeat.o(229147);
+          AppMethodBeat.o(194121);
           return false;
         }
       }
-      if ((paramf.Cq.Bv != null) && (paramf.Cs.Bv != null))
+      if ((paramf.bix.bhD != null) && (paramf.biA.bhD != null))
       {
-        localg.fN();
-        localObject = f.a.Dp;
+        localg.CW();
+        localObject = f.a.bjx;
         if (paramBoolean)
         {
           a(localg, paramf, paramh);
-          AppMethodBeat.o(229147);
+          AppMethodBeat.o(194121);
           return false;
         }
-        if ((paramf.Cq.Bv.Bt != paramf.CA) || (paramf.Cs.Bv.Bt != paramf.CA)) {
+        if ((paramf.bix.bhD.bhB != paramf.biI) || (paramf.biA.bhD.bhB != paramf.biI)) {
           a(localg, paramf, paramh);
         }
       }
-      if ((paramf.Cp.Bv != null) && (paramf.Cr.Bv != null))
+      if ((paramf.biw.bhD != null) && (paramf.biy.bhD != null))
       {
-        localg.fM();
-        localObject = f.a.Dp;
+        localg.CV();
+        localObject = f.a.bjx;
         if (paramBoolean)
         {
           a(localg, paramf, paramh);
-          AppMethodBeat.o(229147);
+          AppMethodBeat.o(194121);
           return false;
         }
-        if ((paramf.Cp.Bv.Bt != paramf.CA) || (paramf.Cr.Bv.Bt != paramf.CA)) {
+        if ((paramf.biw.bhD.bhB != paramf.biI) || (paramf.biy.bhD.bhB != paramf.biI)) {
           a(localg, paramf, paramh);
         }
       }
-      if (paramf.fM() == f.a.Dq)
+      if (paramf.CV() == f.a.bjy)
       {
         i = 1;
-        if (paramf.fN() != f.a.Dq) {
+        if (paramf.CW() != f.a.bjy) {
           break label777;
         }
         j = 1;
         label347:
-        if (((i ^ j) == 0) || (paramf.CB == 0.0F)) {
+        if (((i ^ j) == 0) || (paramf.biJ == 0.0F)) {
           break label783;
         }
         a(paramf);
@@ -511,11 +434,11 @@ public final class a
       {
         do
         {
-          if (((paramf.Cp.Bv == null) && (paramf.Cr.Bv == null)) || ((paramf.Cp.Bv != null) && (paramf.Cp.Bv.Bt == paramf.CA) && (paramf.Cr.Bv == null)) || ((paramf.Cr.Bv != null) && (paramf.Cr.Bv.Bt == paramf.CA) && (paramf.Cp.Bv == null)) || ((paramf.Cp.Bv != null) && (paramf.Cp.Bv.Bt == paramf.CA) && (paramf.Cr.Bv != null) && (paramf.Cr.Bv.Bt == paramf.CA) && (paramf.Cw.Bv == null) && (!(paramf instanceof i)) && (!(paramf instanceof j)))) {
-            paramh.DS.add(paramf);
+          if (((paramf.biw.bhD == null) && (paramf.biy.bhD == null)) || ((paramf.biw.bhD != null) && (paramf.biw.bhD.bhB == paramf.biI) && (paramf.biy.bhD == null)) || ((paramf.biy.bhD != null) && (paramf.biy.bhD.bhB == paramf.biI) && (paramf.biw.bhD == null)) || ((paramf.biw.bhD != null) && (paramf.biw.bhD.bhB == paramf.biI) && (paramf.biy.bhD != null) && (paramf.biy.bhD.bhB == paramf.biI) && (paramf.biE.bhD == null) && (!(paramf instanceof i)) && (!(paramf instanceof j)))) {
+            paramh.bka.add(paramf);
           }
-          if (((paramf.Cq.Bv == null) && (paramf.Cs.Bv == null)) || ((paramf.Cq.Bv != null) && (paramf.Cq.Bv.Bt == paramf.CA) && (paramf.Cs.Bv == null)) || ((paramf.Cs.Bv != null) && (paramf.Cs.Bv.Bt == paramf.CA) && (paramf.Cq.Bv == null)) || ((paramf.Cq.Bv != null) && (paramf.Cq.Bv.Bt == paramf.CA) && (paramf.Cs.Bv != null) && (paramf.Cs.Bv.Bt == paramf.CA) && (paramf.Cw.Bv == null) && (paramf.Ct.Bv == null) && (!(paramf instanceof i)) && (!(paramf instanceof j)))) {
-            paramh.DT.add(paramf);
+          if (((paramf.bix.bhD == null) && (paramf.biA.bhD == null)) || ((paramf.bix.bhD != null) && (paramf.bix.bhD.bhB == paramf.biI) && (paramf.biA.bhD == null)) || ((paramf.biA.bhD != null) && (paramf.biA.bhD.bhB == paramf.biI) && (paramf.bix.bhD == null)) || ((paramf.bix.bhD != null) && (paramf.bix.bhD.bhB == paramf.biI) && (paramf.biA.bhD != null) && (paramf.biA.bhD.bhB == paramf.biI) && (paramf.biE.bhD == null) && (paramf.biB.bhD == null) && (!(paramf instanceof i)) && (!(paramf instanceof j)))) {
+            paramh.bkb.add(paramf);
           }
           if (!(paramf instanceof j)) {
             break label1006;
@@ -524,93 +447,170 @@ public final class a
           if (!paramBoolean) {
             break label953;
           }
-          AppMethodBeat.o(229147);
+          AppMethodBeat.o(194121);
           return false;
           i = 0;
           break;
           j = 0;
           break label347;
-        } while ((paramf.fM() != f.a.Dq) && (paramf.fN() != f.a.Dq));
+        } while ((paramf.CV() != f.a.bjy) && (paramf.CW() != f.a.bjy));
         a(localg, paramf, paramh);
       } while (!paramBoolean);
-      AppMethodBeat.o(229147);
+      AppMethodBeat.o(194121);
       return false;
     }
-    if (paramf.Cm != paramh)
+    if (paramf.bit != paramh)
     {
-      paramh.DO.addAll(paramf.Cm.DO);
-      paramh.DS.addAll(paramf.Cm.DS);
-      paramh.DT.addAll(paramf.Cm.DT);
-      if (!paramf.Cm.DK) {
-        paramh.DK = false;
+      paramh.bjW.addAll(paramf.bit.bjW);
+      paramh.bka.addAll(paramf.bit.bka);
+      paramh.bkb.addAll(paramf.bit.bkb);
+      if (!paramf.bit.bjS) {
+        paramh.bjS = false;
       }
-      paramList.remove(paramf.Cm);
-      paramf = paramf.Cm.DO.iterator();
+      paramList.remove(paramf.bit);
+      paramf = paramf.bit.bjW.iterator();
       while (paramf.hasNext()) {
-        ((f)paramf.next()).Cm = paramh;
+        ((f)paramf.next()).bit = paramh;
       }
     }
-    AppMethodBeat.o(229147);
+    AppMethodBeat.o(194121);
     return true;
     label953:
     Object localObject = (j)paramf;
     int i = 0;
-    while (i < ((j)localObject).Bl)
+    while (i < ((j)localObject).bht)
     {
-      if (!a(localObject.Eg[i], paramh, paramList, paramBoolean))
+      if (!a(localObject.bko[i], paramh, paramList, paramBoolean))
       {
-        AppMethodBeat.o(229147);
+        AppMethodBeat.o(194121);
         return false;
       }
       i += 1;
     }
     label1006:
-    int j = paramf.Cx.length;
+    int j = paramf.biF.length;
     i = 0;
     while (i < j)
     {
-      localObject = paramf.Cx[i];
-      if ((((e)localObject).Bv != null) && (((e)localObject).Bv.Bt != paramf.CA))
+      localObject = paramf.biF[i];
+      if ((((e)localObject).bhD != null) && (((e)localObject).bhD.bhB != paramf.biI))
       {
-        if (((e)localObject).Bu == e.c.BR)
+        if (((e)localObject).bhC == e.c.bhY)
         {
           a(localg, paramf, paramh);
           if (paramBoolean)
           {
-            AppMethodBeat.o(229147);
+            AppMethodBeat.o(194121);
             return false;
           }
         }
         else
         {
-          m localm = ((e)localObject).Bs;
-          if ((((e)localObject).Bv != null) && (((e)localObject).Bv.Bv != localObject)) {
-            ((e)localObject).Bv.Bs.a(localm);
+          m localm = ((e)localObject).bhA;
+          if ((((e)localObject).bhD != null) && (((e)localObject).bhD.bhD != localObject)) {
+            ((e)localObject).bhD.bhA.a(localm);
           }
         }
-        if (!a(((e)localObject).Bv.Bt, paramh, paramList, paramBoolean))
+        if (!a(((e)localObject).bhD.bhB, paramh, paramList, paramBoolean))
         {
-          AppMethodBeat.o(229147);
+          AppMethodBeat.o(194121);
           return false;
         }
       }
       i += 1;
     }
-    AppMethodBeat.o(229147);
+    AppMethodBeat.o(194121);
     return true;
   }
   
   private static void b(g paramg)
   {
-    AppMethodBeat.i(229186);
-    paramg.DD.clear();
-    paramg.DD.add(0, new h(paramg.Ew));
-    AppMethodBeat.o(229186);
+    AppMethodBeat.i(194156);
+    paramg.bjL.clear();
+    paramg.bjL.add(0, new h(paramg.bkE));
+    AppMethodBeat.o(194156);
+  }
+  
+  public static void g(List<h> paramList, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(194167);
+    int k = paramList.size();
+    int j = 0;
+    while (j < k)
+    {
+      Object localObject = (h)paramList.get(j);
+      if (paramInt1 == 0)
+      {
+        localObject = ((h)localObject).bkc;
+        localObject = ((Set)localObject).iterator();
+      }
+      label183:
+      for (;;)
+      {
+        label57:
+        if (((Iterator)localObject).hasNext())
+        {
+          f localf = (f)((Iterator)localObject).next();
+          if (localf.bjj)
+          {
+            int m = paramInt1 * 2;
+            e locale1 = localf.biF[m];
+            e locale2 = localf.biF[(m + 1)];
+            if ((locale1.bhD != null) && (locale2.bhD != null)) {}
+            for (int i = 1;; i = 0)
+            {
+              if (i == 0) {
+                break label183;
+              }
+              k.a(localf, paramInt1, a(localf, paramInt1) + locale1.CE());
+              break label57;
+              if (paramInt1 == 1)
+              {
+                localObject = ((h)localObject).bkd;
+                break;
+              }
+              localObject = null;
+              break;
+            }
+            if ((localf.biJ != 0.0F) && (localf.dM(paramInt1) == f.a.bjy))
+            {
+              i = a(localf);
+              m = (int)localf.biF[m].bhA.bkt;
+              locale2.bhA.bks = locale1.bhA;
+              locale2.bhA.bkt = i;
+              locale2.bhA.state = 1;
+              localf.q(m, m + i, paramInt1);
+            }
+            else
+            {
+              if (paramInt1 == 0) {
+                i = localf.biN;
+              }
+              for (;;)
+              {
+                i = paramInt2 - i;
+                m = i - localf.dL(paramInt1);
+                localf.q(m, i, paramInt1);
+                k.a(localf, paramInt1, m);
+                break;
+                if (paramInt1 == 1) {
+                  i = localf.biO;
+                } else {
+                  i = 0;
+                }
+              }
+            }
+          }
+        }
+      }
+      j += 1;
+    }
+    AppMethodBeat.o(194167);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     androidx.constraintlayout.a.a.a
  * JD-Core Version:    0.7.0.1
  */

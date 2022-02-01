@@ -13,18 +13,18 @@ final class JsApiAddToFavorites$IPCFavResult
   
   static
   {
-    AppMethodBeat.i(264796);
+    AppMethodBeat.i(325606);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(264796);
+    AppMethodBeat.o(325606);
   }
   
   protected JsApiAddToFavorites$IPCFavResult() {}
   
   protected JsApiAddToFavorites$IPCFavResult(Parcel paramParcel)
   {
-    AppMethodBeat.i(264793);
-    k(paramParcel);
-    AppMethodBeat.o(264793);
+    AppMethodBeat.i(325601);
+    readParcel(paramParcel);
+    AppMethodBeat.o(325601);
   }
   
   public final int describeContents()
@@ -32,23 +32,23 @@ final class JsApiAddToFavorites$IPCFavResult
     return 0;
   }
   
-  public final void k(Parcel paramParcel)
+  public final void readParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(264794);
+    AppMethodBeat.i(325612);
     this.ret = paramParcel.readInt();
-    AppMethodBeat.o(264794);
+    AppMethodBeat.o(325612);
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(264795);
+    AppMethodBeat.i(325620);
     paramParcel.writeInt(this.ret);
-    AppMethodBeat.o(264795);
+    AppMethodBeat.o(325620);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.JsApiAddToFavorites.IPCFavResult
  * JD-Core Version:    0.7.0.1
  */

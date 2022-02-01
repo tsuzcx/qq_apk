@@ -11,10 +11,10 @@ public class SnsCmdList
   implements Parcelable
 {
   public static final Parcelable.Creator<SnsCmdList> CREATOR;
-  private int JRe;
-  private int JRf;
-  public List<Integer> JRg;
-  public List<Integer> JRh;
+  private int QnQ;
+  private int QnR;
+  public List<Integer> QnS;
+  public List<Integer> alK;
   
   static
   {
@@ -26,24 +26,24 @@ public class SnsCmdList
   public SnsCmdList()
   {
     AppMethodBeat.i(95077);
-    this.JRe = 0;
-    this.JRf = 0;
-    this.JRg = new LinkedList();
-    this.JRh = new LinkedList();
+    this.QnQ = 0;
+    this.QnR = 0;
+    this.QnS = new LinkedList();
+    this.alK = new LinkedList();
     AppMethodBeat.o(95077);
   }
   
-  public final void afA(int paramInt)
+  public final void akp(int paramInt)
   {
     AppMethodBeat.i(95078);
-    this.JRg.add(Integer.valueOf(paramInt));
+    this.QnS.add(Integer.valueOf(paramInt));
     AppMethodBeat.o(95078);
   }
   
-  public final void afB(int paramInt)
+  public final void akq(int paramInt)
   {
     AppMethodBeat.i(95079);
-    this.JRh.add(Integer.valueOf(paramInt));
+    this.alK.add(Integer.valueOf(paramInt));
     AppMethodBeat.o(95079);
   }
   
@@ -56,20 +56,20 @@ public class SnsCmdList
   {
     int i = 0;
     AppMethodBeat.i(95080);
-    this.JRe = this.JRg.size();
-    paramParcel.writeInt(this.JRe);
+    this.QnQ = this.QnS.size();
+    paramParcel.writeInt(this.QnQ);
     paramInt = 0;
-    while (paramInt < this.JRe)
+    while (paramInt < this.QnQ)
     {
-      paramParcel.writeInt(((Integer)this.JRg.get(paramInt)).intValue());
+      paramParcel.writeInt(((Integer)this.QnS.get(paramInt)).intValue());
       paramInt += 1;
     }
-    this.JRf = this.JRh.size();
-    paramParcel.writeInt(this.JRf);
+    this.QnR = this.alK.size();
+    paramParcel.writeInt(this.QnR);
     paramInt = i;
-    while (paramInt < this.JRf)
+    while (paramInt < this.QnR)
     {
-      paramParcel.writeInt(((Integer)this.JRh.get(paramInt)).intValue());
+      paramParcel.writeInt(((Integer)this.alK.get(paramInt)).intValue());
       paramInt += 1;
     }
     AppMethodBeat.o(95080);
@@ -77,7 +77,7 @@ public class SnsCmdList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.data.SnsCmdList
  * JD-Core Version:    0.7.0.1
  */

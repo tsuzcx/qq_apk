@@ -1,530 +1,743 @@
 package com.tencent.mm.plugin.finder.extension.reddot;
 
+import androidx.lifecycle.x;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.d;
-import com.tencent.mm.f.c.cu;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.protocal.protobuf.FinderTipsShowEntranceExtInfo;
-import com.tencent.mm.protocal.protobuf.bhw;
-import com.tencent.mm.protocal.protobuf.bhx;
-import com.tencent.mm.protocal.protobuf.bkn;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.finder.PluginFinder;
+import com.tencent.mm.plugin.findersdk.a.bw;
+import com.tencent.mm.plugin.findersdk.a.cn;
+import com.tencent.mm.protocal.protobuf.btw;
+import com.tencent.mm.protocal.protobuf.bxq;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import kotlin.a.j;
-import kotlin.g.a.a;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "Lcom/tencent/mm/autogen/table/BaseFinderRedDotInfo;", "()V", "finderRedDotExtInfo", "Lcom/tencent/mm/protocal/protobuf/FinderRedDotExtInfo;", "getFinderRedDotExtInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderRedDotExtInfo;", "setFinderRedDotExtInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderRedDotExtInfo;)V", "showInfoMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "getShowInfoMap", "()Ljava/util/concurrent/ConcurrentHashMap;", "showRelationMap", "", "build", "proto", "Lcom/tencent/mm/protocal/protobuf/FinderRedDotCtrlInfo;", "cloneInstance", "containsPath", "", "path", "delete", "storage", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotCtrInfoStorage;", "isAsync", "findShowInfoByPath", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "kotlin.jvm.PlatformType", "getExtInfo", "Lcom/tencent/mm/protobuf/ByteString;", "getTipsShowEntranceExtInfo", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowEntranceExtInfo;", "getType", "", "isShowInfoEmpty", "isValid", "parseEntranceExtInfo", "", "parseRedDotExtInfo", "removeDependentRelation", "parent", "childPath", "removeShowInfoWithPath", "Ljava/util/LinkedList;", "store", "toString", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier;", "", "()V", "TAG", "", "discoveryTab", "Landroidx/lifecycle/MutableLiveData;", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "getDiscoveryTab", "()Landroidx/lifecycle/MutableLiveData;", "finderAuthorProfileFans", "getFinderAuthorProfileFans", "finderAuthorProfileNotify", "getFinderAuthorProfileNotify", "finderCreateFinderEntrance", "getFinderCreateFinderEntrance", "finderCreatorEntrance", "getFinderCreatorEntrance", "finderEntrance", "getFinderEntrance", "finderFirstFav", "getFinderFirstFav", "finderLiveEntrance", "getFinderLiveEntrance", "finderLiveForFindPageEntrance", "getFinderLiveForFindPageEntrance", "finderLiveInComeEntrance", "getFinderLiveInComeEntrance", "finderMessage", "getFinderMessage", "finderOriginalEntrance", "getFinderOriginalEntrance", "finderPosterEntrace", "getFinderPosterEntrace", "finderProfileEntrance", "getFinderProfileEntrance", "finderProfileSetting", "getFinderProfileSetting", "finderProfileTop", "getFinderProfileTop", "finderSettingLiveTask", "getFinderSettingLiveTask", "finderTlCamera", "getFinderTlCamera", "finderTlPersonalCenter", "getFinderTlPersonalCenter", "finderTlPostCamera", "getFinderTlPostCamera", "finderTlTabFollow", "getFinderTlTabFollow", "finderTlTabFriend", "getFinderTlTabFriend", "finderTlTabLbs", "getFinderTlTabLbs", "finderTlTabMachine", "getFinderTlTabMachine", "finderTlWxBubble", "getFinderTlWxBubble", "finderTlWxMessageBubble", "getFinderTlWxMessageBubble", "finderWxMessage", "getFinderWxMessage", "nearbyEntrance", "getNearbyEntrance", "nearbyTabFeed", "getNearbyTabFeed", "nearbyTabLive", "getNearbyTabLive", "nearbyTabPeople", "getNearbyTabPeople", "checkPathAndNotify", "", "path", "notify", "isShow", "", "tipsInfo", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "ctrInfo", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "Result", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class l
-  extends cu
 {
-  private static final IAutoDBItem.MAutoDBInfo info;
-  public static final a xuN;
-  final ConcurrentHashMap<String, bkn> xuK;
-  private final ConcurrentHashMap<String, List<String>> xuL;
-  public bhx xuM;
+  public static final l ARA;
+  private static final x<a> ARB;
+  private static final x<a> ARC;
+  private static final x<a> ARD;
+  private static final x<a> ARE;
+  private static final x<a> ARF;
+  private static final x<a> ARG;
+  private static final x<a> ARH;
+  private static final x<a> ARI;
+  private static final x<a> ARJ;
+  private static final x<a> ARK;
+  private static final x<a> ARL;
+  private static final x<a> ARM;
+  private static final x<a> ARN;
+  private static final x<a> ARO;
+  private static final x<a> ARP;
+  private static final x<a> ARQ;
+  private static final x<a> ARR;
+  private static final x<a> ARS;
+  private static final x<a> ART;
+  private static final x<a> ARU;
+  private static final x<a> ARV;
+  private static final x<a> ARW;
+  private static final x<a> ARX;
+  private static final x<a> ARY;
+  private static final x<a> ARZ;
+  private static final x<a> ASa;
+  private static final x<a> ASb;
+  private static final x<a> ASc;
+  private static final x<a> ASd;
+  private static final x<a> ASe;
+  private static final x<a> ASf;
   
   static
   {
-    AppMethodBeat.i(178205);
-    xuN = new a((byte)0);
-    info = cu.aoY();
-    AppMethodBeat.o(178205);
+    AppMethodBeat.i(178190);
+    ARA = new l();
+    ARB = new x();
+    ARC = new x();
+    ARD = new x();
+    ARE = new x();
+    ARF = new x();
+    ARG = new x();
+    ARH = new x();
+    ARI = new x();
+    ARJ = new x();
+    ARK = new x();
+    ARL = new x();
+    ARM = new x();
+    ARN = new x();
+    ARO = new x();
+    ARP = new x();
+    ARQ = new x();
+    ARR = new x();
+    ARS = new x();
+    ART = new x();
+    ARU = new x();
+    ARV = new x();
+    ARW = new x();
+    ARX = new x();
+    ARY = new x();
+    ARZ = new x();
+    ASa = new x();
+    ASb = new x();
+    ASc = new x();
+    ASd = new x();
+    ASe = new x();
+    ASf = new x();
+    AppMethodBeat.o(178190);
   }
   
-  public l()
+  public static void a(boolean paramBoolean, String paramString, bxq parambxq, p paramp)
   {
-    AppMethodBeat.i(178204);
-    this.xuK = new ConcurrentHashMap();
-    this.xuL = new ConcurrentHashMap();
-    this.xuM = new bhx();
-    AppMethodBeat.o(178204);
-  }
-  
-  private boolean a(final c paramc, boolean paramBoolean)
-  {
-    AppMethodBeat.i(291226);
-    p.k(paramc, "storage");
-    Object localObject = (CharSequence)this.field_ctrInfo.SQm;
-    if ((localObject == null) || (((CharSequence)localObject).length() == 0))
+    Object localObject2 = null;
+    AppMethodBeat.i(178189);
+    s.u(paramString, "path");
+    StringBuilder localStringBuilder = new StringBuilder("[notify] tipsId=");
+    if (paramp == null)
     {
-      i = 1;
-      if (i != 0) {
-        break label89;
+      localObject1 = null;
+      localStringBuilder = localStringBuilder.append(localObject1).append(" isShow=").append(paramBoolean).append(" path=").append(paramString).append(" show_type=");
+      if (parambxq != null) {
+        break label255;
+      }
+      localObject1 = null;
+      label71:
+      localStringBuilder = localStringBuilder.append(localObject1).append(" count=");
+      if (parambxq != null) {
+        break label267;
+      }
+      localObject1 = null;
+      label92:
+      localStringBuilder = localStringBuilder.append(localObject1).append(" title=");
+      if (parambxq != null) {
+        break label279;
+      }
+      localObject1 = null;
+      label113:
+      localStringBuilder = localStringBuilder.append(localObject1).append(" clear_type=");
+      if (parambxq != null) {
+        break label288;
+      }
+      localObject1 = null;
+      label134:
+      localStringBuilder = localStringBuilder.append(localObject1).append(" parent=");
+      if (parambxq != null) {
+        break label300;
+      }
+      localObject1 = null;
+      label155:
+      localStringBuilder = localStringBuilder.append(localObject1).append(" icon=");
+      if (parambxq != null) {
+        break label309;
       }
     }
-    label89:
-    for (int i = 1;; i = 0)
+    label267:
+    label279:
+    label288:
+    label300:
+    label309:
+    for (Object localObject1 = null;; localObject1 = parambxq.icon_url)
     {
-      if (i != 0) {
-        break label94;
+      Log.i("Finder.RedDotNotifier", localObject1);
+      if (((cn)h.az(cn.class)).getRedDotManager() != null) {
+        break label318;
       }
-      Log.e("Finder.RedDotCtrInfo", this.field_tipsId + " is inValid");
-      AppMethodBeat.o(291226);
-      return false;
-      i = 0;
-      break;
-    }
-    label94:
-    localObject = new l();
-    bhw localbhw = new bhw();
-    localbhw.priority = this.field_ctrInfo.priority;
-    localbhw.type = this.field_ctrInfo.type;
-    localbhw.SSl = this.field_ctrInfo.SSl;
-    localbhw.MFx.addAll((Collection)this.field_ctrInfo.MFx);
-    localbhw.SQm = this.field_ctrInfo.SQm;
-    localbhw.tnN = this.field_ctrInfo.tnN;
-    localbhw.feedId = this.field_ctrInfo.feedId;
-    localbhw.SSo = this.field_ctrInfo.SSo;
-    localbhw.SRZ = this.field_ctrInfo.SRZ;
-    ((l)localObject).field_ctrInfo = localbhw;
-    ((l)localObject).field_tipsId = this.field_tipsId;
-    ((l)localObject).field_time = this.field_time;
-    ((l)localObject).field_revokeId = this.field_revokeId;
-    ((l)localObject).field_ctrType = this.field_ctrType;
-    ((l)localObject).field_expiredTime = this.field_expiredTime;
-    ((l)localObject).field_tipsShowEntranceExtInfo = this.field_tipsShowEntranceExtInfo;
-    paramc = (a)new f(this, paramc, (l)localObject);
-    if (paramBoolean) {
-      d.c("Finder.RedDotCtrInfo", (a)new e(paramc));
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(291226);
-      return true;
-      paramc.invoke();
-    }
-  }
-  
-  private final void drH()
-  {
-    AppMethodBeat.i(291224);
-    for (;;)
-    {
-      try
+      paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.finder.extension.reddot.FinderRedDotManager");
+      AppMethodBeat.o(178189);
+      throw paramString;
+      localObject1 = paramp.field_ctrInfo;
+      if (localObject1 == null)
       {
-        Object localObject = this.field_ctrInfo.SSl;
-        if (localObject != null) {
-          this.xuM.parseFrom(((com.tencent.mm.cd.b)localObject).UH);
-        }
-        if (this.xuM.tab_type == 0)
+        localObject1 = null;
+        break;
+      }
+      localObject1 = ((btw)localObject1).ZYN;
+      break;
+      label255:
+      localObject1 = Integer.valueOf(parambxq.show_type);
+      break label71;
+      localObject1 = Integer.valueOf(parambxq.count);
+      break label92;
+      localObject1 = parambxq.title;
+      break label113;
+      localObject1 = Integer.valueOf(parambxq.aagq);
+      break label134;
+      localObject1 = parambxq.Nnp;
+      break label155;
+    }
+    label318:
+    if ((paramBoolean) && (((bw)h.ax(bw.class)).eZE()))
+    {
+      if (paramp == null) {}
+      for (localObject1 = localObject2; !i.p((Integer)localObject1); localObject1 = Integer.valueOf(paramp.field_ctrInfo.type))
+      {
+        Log.i("Finder.RedDotManager", "[notify] 青少年模式且只看关注的模式下只notify关注的红点展示");
+        AppMethodBeat.o(178189);
+        return;
+      }
+    }
+    parambxq = new a(paramBoolean, parambxq, paramp);
+    switch (paramString.hashCode())
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(178189);
+      return;
+      if (!paramString.equals("OriginalEntrance"))
+      {
+        AppMethodBeat.o(178189);
+        return;
+        if (!paramString.equals("finder_wx_private_msg_entrance"))
         {
-          localObject = this.field_tipsShowEntranceExtInfo;
-          this.xuM.tabTipsByPassInfo = ((FinderTipsShowEntranceExtInfo)localObject).tabTipsByPassInfo;
-          this.xuM.username = ((FinderTipsShowEntranceExtInfo)localObject).username;
-          this.xuM.tab_type = ((FinderTipsShowEntranceExtInfo)localObject).tab_type;
-          this.xuM.object_id = ((FinderTipsShowEntranceExtInfo)localObject).object_id;
-          this.xuM.object_nonce_id = ((FinderTipsShowEntranceExtInfo)localObject).object_nonce_id;
-          StringBuilder localStringBuilder = new StringBuilder("[parseRedDotExtInfo] use old logic for FinderRedDotExtInfo. tabTipsByPassInfo=");
-          if (((FinderTipsShowEntranceExtInfo)localObject).tabTipsByPassInfo != null)
+          AppMethodBeat.o(178189);
+          return;
+          if (paramString.equals("FinderProfileBanner")) {
+            break label1461;
+          }
+          AppMethodBeat.o(178189);
+          return;
+          if (paramString.equals("NearbyPeopleTab")) {
+            break label1500;
+          }
+          AppMethodBeat.o(178189);
+          return;
+          if (paramString.equals("TLRecommendTab")) {
+            break label1383;
+          }
+          AppMethodBeat.o(178189);
+          return;
+          if (!paramString.equals("TLWxPrivateMsgBubble"))
           {
-            bool = true;
-            Log.i("Finder.RedDotManager", bool + " tipsId=" + this.field_tipsId);
-            AppMethodBeat.o(291224);
+            AppMethodBeat.o(178189);
+            return;
+            if (paramString.equals("NearbyEntrance")) {
+              break label1513;
+            }
+            AppMethodBeat.o(178189);
+            return;
+            if (!paramString.equals("FinderEntrance"))
+            {
+              AppMethodBeat.o(178189);
+              return;
+              if (paramString.equals("NearbyLiveTab")) {
+                break label1487;
+              }
+              AppMethodBeat.o(178189);
+              return;
+              if (paramString.equals("TLPostCamera")) {
+                break label1214;
+              }
+              AppMethodBeat.o(178189);
+              return;
+              if (paramString.equals("finder_tl_hot_tab")) {
+                break label1396;
+              }
+              AppMethodBeat.o(178189);
+              return;
+              if (paramString.equals("FinderLiveEntrance")) {
+                break label1526;
+              }
+              AppMethodBeat.o(178189);
+              return;
+              if (paramString.equals("FinderLiveIncomeEntrance")) {
+                break label1539;
+              }
+              AppMethodBeat.o(178189);
+              return;
+              if (paramString.equals("finder_private_msg_entrance")) {
+                break label1227;
+              }
+              AppMethodBeat.o(178189);
+              return;
+              if (paramString.equals("ProfileEntrance")) {
+                break label1279;
+              }
+              AppMethodBeat.o(178189);
+              return;
+              if (!paramString.equals("TLCamera"))
+              {
+                AppMethodBeat.o(178189);
+                return;
+                if (!paramString.equals("Discovery"))
+                {
+                  AppMethodBeat.o(178189);
+                  return;
+                  if (paramString.equals("AuthorProfileFans")) {
+                    break label1305;
+                  }
+                  AppMethodBeat.o(178189);
+                  return;
+                  if (paramString.equals("FinderSetting")) {
+                    break label1344;
+                  }
+                  AppMethodBeat.o(178189);
+                  return;
+                  if (paramString.equals("Personal_Center_FavList_Entrance")) {
+                    break label1422;
+                  }
+                  AppMethodBeat.o(178189);
+                  return;
+                  if (paramString.equals("CreateFinderEntrance")) {
+                    break label1448;
+                  }
+                  AppMethodBeat.o(178189);
+                  return;
+                  if (paramString.equals("TLPersonalCenter")) {
+                    break label1266;
+                  }
+                  AppMethodBeat.o(178189);
+                  return;
+                  if (paramString.equals("NearbyFeedTab")) {
+                    break label1474;
+                  }
+                  AppMethodBeat.o(178189);
+                  return;
+                  if (paramString.equals("CreatorCenter")) {
+                    break label1435;
+                  }
+                  AppMethodBeat.o(178189);
+                  return;
+                  if (paramString.equals("FinderSelfLiveEntrance")) {
+                    break label1331;
+                  }
+                  AppMethodBeat.o(178189);
+                  return;
+                  if (paramString.equals("TLFollow")) {
+                    break label1370;
+                  }
+                  AppMethodBeat.o(178189);
+                  return;
+                  if (paramString.equals("AuthorProfileNotify")) {
+                    break label1292;
+                  }
+                  AppMethodBeat.o(178189);
+                  return;
+                  if (paramString.equals("FinderPosterEntrance")) {
+                    break label1357;
+                  }
+                  AppMethodBeat.o(178189);
+                  return;
+                  if (paramString.equals("FinderSettingLiveTask")) {
+                    break label1552;
+                  }
+                  AppMethodBeat.o(178189);
+                  return;
+                  if (paramString.equals("finder_tl_nearby_tab")) {
+                    break label1409;
+                  }
+                  AppMethodBeat.o(178189);
+                  return;
+                  if (!paramString.equals("TLWxBubble")) {
+                    AppMethodBeat.o(178189);
+                  }
+                }
+                else
+                {
+                  ARB.t(parambxq);
+                  AppMethodBeat.o(178189);
+                  return;
+                }
+                ARF.t(parambxq);
+                AppMethodBeat.o(178189);
+              }
+            }
+            else
+            {
+              ARC.t(parambxq);
+              AppMethodBeat.o(178189);
+              return;
+            }
+            ARD.t(parambxq);
+            AppMethodBeat.o(178189);
+            return;
+            label1214:
+            ARE.t(parambxq);
+            AppMethodBeat.o(178189);
+            return;
+            label1227:
+            ARR.t(parambxq);
+            AppMethodBeat.o(178189);
           }
         }
         else
         {
-          localObject = new StringBuilder("[parseRedDotExtInfo] tabTipsByPassInfo=");
-          if (this.xuM.tabTipsByPassInfo != null)
-          {
-            bool = true;
-            Log.i("Finder.RedDotManager", bool + " tipsId=" + this.field_tipsId);
-            AppMethodBeat.o(291224);
-            return;
-          }
-          bool = false;
-          continue;
+          ARS.t(parambxq);
+          AppMethodBeat.o(178189);
+          return;
         }
-        boolean bool = false;
+        ART.t(parambxq);
+        AppMethodBeat.o(178189);
+        return;
+        label1266:
+        ARJ.t(parambxq);
+        AppMethodBeat.o(178189);
+        return;
+        label1279:
+        ARG.t(parambxq);
+        AppMethodBeat.o(178189);
+        return;
+        label1292:
+        ARI.t(parambxq);
+        AppMethodBeat.o(178189);
+        return;
+        label1305:
+        ARH.t(parambxq);
+        AppMethodBeat.o(178189);
       }
-      catch (Exception localException)
+      else
       {
-        Log.printDebugStack("Finder.RedDotCtrInfo", "", new Object[] { localException });
-        AppMethodBeat.o(291224);
+        ARK.t(parambxq);
+        AppMethodBeat.o(178189);
         return;
       }
+      label1331:
+      ARU.t(parambxq);
+      AppMethodBeat.o(178189);
+      return;
+      label1344:
+      ARL.t(parambxq);
+      AppMethodBeat.o(178189);
+      return;
+      label1357:
+      ASf.t(parambxq);
+      AppMethodBeat.o(178189);
+      return;
+      label1370:
+      ARM.t(parambxq);
+      AppMethodBeat.o(178189);
+      return;
+      label1383:
+      ARN.t(parambxq);
+      AppMethodBeat.o(178189);
+      return;
+      label1396:
+      ARP.t(parambxq);
+      AppMethodBeat.o(178189);
+      return;
+      label1409:
+      ARQ.t(parambxq);
+      AppMethodBeat.o(178189);
+      return;
+      label1422:
+      ARO.t(parambxq);
+      AppMethodBeat.o(178189);
+      return;
+      label1435:
+      ARV.t(parambxq);
+      AppMethodBeat.o(178189);
+      return;
+      label1448:
+      ARW.t(parambxq);
+      AppMethodBeat.o(178189);
+      return;
+      label1461:
+      ARX.t(parambxq);
+      AppMethodBeat.o(178189);
+      return;
+      label1474:
+      ARY.t(parambxq);
+      AppMethodBeat.o(178189);
+      return;
+      label1487:
+      ARZ.t(parambxq);
+      AppMethodBeat.o(178189);
+      return;
+      label1500:
+      ASa.t(parambxq);
+      AppMethodBeat.o(178189);
+      return;
+      label1513:
+      ASc.t(parambxq);
+      AppMethodBeat.o(178189);
+      return;
+      label1526:
+      ASb.t(parambxq);
+      AppMethodBeat.o(178189);
+      return;
+      label1539:
+      ASd.t(parambxq);
+      AppMethodBeat.o(178189);
+      return;
+      label1552:
+      ASe.t(parambxq);
     }
   }
   
-  private final void f(bhw parambhw)
+  public static void avu(String paramString)
   {
-    AppMethodBeat.i(291225);
-    FinderTipsShowEntranceExtInfo localFinderTipsShowEntranceExtInfo = new FinderTipsShowEntranceExtInfo();
-    parambhw = parambhw.MFx;
-    p.j(parambhw, "proto.show_infos");
-    Iterator localIterator = ((Iterable)parambhw).iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(366919);
+    s.u(paramString, "path");
+    p localp = ((PluginFinder)h.az(PluginFinder.class)).getRedDotManager().Su(paramString);
+    if (localp != null)
     {
-      parambhw = (bkn)localIterator.next();
-      if (parambhw.SVt == 1)
+      bxq localbxq = localp.avK(paramString);
+      if (localbxq != null)
       {
-        parambhw = parambhw.SVu;
-        if (parambhw != null) {}
-        for (parambhw = parambhw.UH;; parambhw = null)
-        {
-          localFinderTipsShowEntranceExtInfo.parseFrom(parambhw);
-          break;
-        }
+        a(true, paramString, localbxq, localp);
+        AppMethodBeat.o(366919);
+        return;
       }
-    }
-    this.field_tipsShowEntranceExtInfo = localFinderTipsShowEntranceExtInfo;
-    AppMethodBeat.o(291225);
-  }
-  
-  private final void gX(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(178203);
-    bkn localbkn = (bkn)this.xuK.get(paramString1);
-    if ((localbkn == null) || (localbkn.SVs != 2))
-    {
-      AppMethodBeat.o(178203);
+      a(false, paramString, null, localp);
+      AppMethodBeat.o(366919);
       return;
     }
-    paramString1 = (List)this.xuL.get(paramString1);
-    if (paramString1 != null)
+    a(false, paramString, null, null);
+    AppMethodBeat.o(366919);
+  }
+  
+  public static x<a> dZB()
+  {
+    return ARB;
+  }
+  
+  public static x<a> dZC()
+  {
+    return ARC;
+  }
+  
+  public static x<a> dZD()
+  {
+    return ARD;
+  }
+  
+  public static x<a> dZE()
+  {
+    return ARG;
+  }
+  
+  public static x<a> dZF()
+  {
+    return ARJ;
+  }
+  
+  public static x<a> dZG()
+  {
+    return ARK;
+  }
+  
+  public static x<a> dZH()
+  {
+    return ARL;
+  }
+  
+  public static x<a> dZI()
+  {
+    return ARM;
+  }
+  
+  public static x<a> dZJ()
+  {
+    return ARN;
+  }
+  
+  public static x<a> dZK()
+  {
+    return ARO;
+  }
+  
+  public static x<a> dZL()
+  {
+    return ARP;
+  }
+  
+  public static x<a> dZM()
+  {
+    return ARQ;
+  }
+  
+  public static x<a> dZN()
+  {
+    return ARR;
+  }
+  
+  public static x<a> dZO()
+  {
+    return ARS;
+  }
+  
+  public static x<a> dZP()
+  {
+    return ART;
+  }
+  
+  public static x<a> dZQ()
+  {
+    return ARU;
+  }
+  
+  public static x<a> dZR()
+  {
+    return ARV;
+  }
+  
+  public static x<a> dZS()
+  {
+    return ARW;
+  }
+  
+  public static x<a> dZT()
+  {
+    return ARX;
+  }
+  
+  public static x<a> dZU()
+  {
+    return ARY;
+  }
+  
+  public static x<a> dZV()
+  {
+    return ARZ;
+  }
+  
+  public static x<a> dZW()
+  {
+    return ASa;
+  }
+  
+  public static x<a> dZX()
+  {
+    return ASb;
+  }
+  
+  public static x<a> dZY()
+  {
+    return ASc;
+  }
+  
+  public static x<a> dZZ()
+  {
+    return ASd;
+  }
+  
+  public static x<a> eaa()
+  {
+    return ASe;
+  }
+  
+  public static x<a> eab()
+  {
+    return ASf;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "", "isShow", "", "info", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "ctrInfo", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "(ZLcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;)V", "getCtrInfo", "()Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "getInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "setInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;)V", "()Z", "component1", "component2", "component3", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+  {
+    public bxq ASg;
+    public final p ASh;
+    public final boolean hBY;
+    
+    public a(boolean paramBoolean, bxq parambxq, p paramp)
     {
-      p.j(paramString1, "list");
-      d.a(paramString1, (kotlin.g.a.b)new b(paramString2));
-      AppMethodBeat.o(178203);
-      return;
+      this.hBY = paramBoolean;
+      this.ASg = parambxq;
+      this.ASh = paramp;
     }
-    AppMethodBeat.o(178203);
-  }
-  
-  public final bkn aBy(String paramString)
-  {
-    AppMethodBeat.i(178201);
-    p.k(paramString, "path");
-    paramString = (bkn)this.xuK.get(paramString);
-    AppMethodBeat.o(178201);
-    return paramString;
-  }
-  
-  public final LinkedList<String> aBz(final String paramString)
-  {
-    int i = 0;
-    int j = 1;
-    AppMethodBeat.i(178202);
-    p.k(paramString, "path");
-    final LinkedList localLinkedList = new LinkedList();
-    ??? = (bkn)this.xuK.get(paramString);
-    bkn localbkn;
-    Object localObject2;
-    String str;
-    if ((??? != null) && (((bkn)???).SVs == 1))
+    
+    public final boolean equals(Object paramObject)
     {
-      localbkn = (bkn)this.xuK.remove(paramString);
-      if (localbkn != null)
+      AppMethodBeat.i(178187);
+      if (this == paramObject)
       {
-        localLinkedList.add(paramString);
-        ??? = (CharSequence)localbkn.HpB;
-        if ((??? == null) || (((CharSequence)???).length() == 0)) {
-          i = 1;
-        }
-        if (i == 0)
-        {
-          localObject2 = localbkn.HpB;
-          ??? = localObject2;
-          if (localObject2 == null) {
-            ??? = "";
-          }
-          str = localbkn.path;
-          localObject2 = str;
-          if (str == null) {
-            localObject2 = "";
-          }
-          gX((String)???, (String)localObject2);
-          localObject2 = localbkn.HpB;
-          ??? = localObject2;
-          if (localObject2 == null) {
-            ??? = "";
-          }
-          localLinkedList.addAll((Collection)aBz((String)???));
-        }
-        ??? = this.field_ctrInfo.MFx;
-        p.j(???, "field_ctrInfo.show_infos");
-        j.c((List)???, (kotlin.g.a.b)new c(this, localLinkedList, paramString));
+        AppMethodBeat.o(178187);
+        return true;
       }
-      AppMethodBeat.o(178202);
-      return localLinkedList;
-    }
-    if ((??? != null) && (((bkn)???).SVs == 2))
-    {
-      ??? = (List)this.xuL.get(paramString);
-      if (??? == null) {
-        break label553;
-      }
-    }
-    label553:
-    label558:
-    label563:
-    for (;;)
-    {
-      synchronized ((Iterable)???)
+      if (!(paramObject instanceof a))
       {
-        localObject2 = ((Iterable)???).iterator();
-        i = 0;
-        if (((Iterator)localObject2).hasNext())
-        {
-          str = (String)((Iterator)localObject2).next();
-          if (!this.xuK.containsKey(str)) {
-            break label563;
-          }
-          i = 1;
-          break label563;
-        }
-        localObject2 = x.aazN;
-        if (i == 0)
-        {
-          localbkn = (bkn)this.xuK.remove(paramString);
-          if (localbkn != null)
-          {
-            localLinkedList.add(paramString);
-            ??? = (CharSequence)localbkn.HpB;
-            i = j;
-            if (??? != null)
-            {
-              if (((CharSequence)???).length() != 0) {
-                break label558;
-              }
-              i = j;
-            }
-            if (i == 0)
-            {
-              localObject2 = localbkn.HpB;
-              ??? = localObject2;
-              if (localObject2 == null) {
-                ??? = "";
-              }
-              str = localbkn.path;
-              localObject2 = str;
-              if (str == null) {
-                localObject2 = "";
-              }
-              gX((String)???, (String)localObject2);
-              localObject2 = localbkn.HpB;
-              ??? = localObject2;
-              if (localObject2 == null) {
-                ??? = "";
-              }
-              localLinkedList.addAll((Collection)aBz((String)???));
-            }
-            ??? = this.field_ctrInfo.MFx;
-            p.j(???, "field_ctrInfo.show_infos");
-            j.c((List)???, (kotlin.g.a.b)new d(this, localLinkedList, paramString));
-          }
-        }
-        AppMethodBeat.o(178202);
-        return localLinkedList;
+        AppMethodBeat.o(178187);
+        return false;
       }
-      i = 0;
-      continue;
-      i = 0;
-    }
-  }
-  
-  public final boolean b(c paramc, boolean paramBoolean)
-  {
-    AppMethodBeat.i(291229);
-    p.k(paramc, "storage");
-    this.field_ctrInfo.MFx.clear();
-    this.xuK.clear();
-    this.xuL.clear();
-    paramBoolean = a(paramc, paramBoolean);
-    AppMethodBeat.o(291229);
-    return paramBoolean;
-  }
-  
-  public final FinderTipsShowEntranceExtInfo drG()
-  {
-    AppMethodBeat.i(291223);
-    FinderTipsShowEntranceExtInfo localFinderTipsShowEntranceExtInfo2 = this.field_tipsShowEntranceExtInfo;
-    FinderTipsShowEntranceExtInfo localFinderTipsShowEntranceExtInfo1 = localFinderTipsShowEntranceExtInfo2;
-    if (localFinderTipsShowEntranceExtInfo2 == null) {
-      localFinderTipsShowEntranceExtInfo1 = new FinderTipsShowEntranceExtInfo();
-    }
-    AppMethodBeat.o(291223);
-    return localFinderTipsShowEntranceExtInfo1;
-  }
-  
-  public final boolean drI()
-  {
-    AppMethodBeat.i(178200);
-    Collection localCollection = (Collection)this.field_ctrInfo.MFx;
-    if ((localCollection == null) || (localCollection.isEmpty()))
-    {
-      AppMethodBeat.o(178200);
+      paramObject = (a)paramObject;
+      if (this.hBY != paramObject.hBY)
+      {
+        AppMethodBeat.o(178187);
+        return false;
+      }
+      if (!s.p(this.ASg, paramObject.ASg))
+      {
+        AppMethodBeat.o(178187);
+        return false;
+      }
+      if (!s.p(this.ASh, paramObject.ASh))
+      {
+        AppMethodBeat.o(178187);
+        return false;
+      }
+      AppMethodBeat.o(178187);
       return true;
     }
-    AppMethodBeat.o(178200);
-    return false;
-  }
-  
-  public final l e(bhw parambhw)
-  {
-    AppMethodBeat.i(178197);
-    p.k(parambhw, "proto");
-    this.field_ctrInfo = parambhw;
-    this.field_ctrType = parambhw.type;
-    this.field_expiredTime = parambhw.tnN;
-    this.field_tipsId = parambhw.SQm;
-    if (this.field_time <= 0L) {
-      this.field_time = cm.bfE();
-    }
-    f(parambhw);
-    drH();
-    this.field_revokeId = this.xuM.SSp;
-    parambhw.feedId = this.xuM.object_id;
-    Object localObject2 = new LinkedList();
-    parambhw = this.field_ctrInfo.MFx;
-    p.j(parambhw, "field_ctrInfo.show_infos");
-    Object localObject3 = ((Iterable)parambhw).iterator();
-    Object localObject4;
-    Object localObject5;
-    Object localObject1;
-    while (((Iterator)localObject3).hasNext())
+    
+    public final int hashCode()
     {
-      localObject4 = (bkn)((Iterator)localObject3).next();
-      localObject5 = (Map)this.xuK;
-      localObject1 = ((bkn)localObject4).path;
-      parambhw = (bhw)localObject1;
-      if (localObject1 == null) {
-        parambhw = "";
-      }
-      p.j(localObject4, "it");
-      ((Map)localObject5).put(parambhw, localObject4);
-      if (((bkn)localObject4).SVs == 2)
+      throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+    }
+    
+    public final String toString()
+    {
+      Object localObject2 = null;
+      AppMethodBeat.i(178185);
+      StringBuilder localStringBuilder = new StringBuilder("tipId=");
+      Object localObject1 = this.ASh;
+      if (localObject1 == null)
       {
-        localObject1 = (Map)this.xuL;
-        parambhw = ((bkn)localObject4).path;
-        if (parambhw != null) {
-          break label418;
+        localObject1 = null;
+        localStringBuilder = localStringBuilder.append(localObject1).append(" type=");
+        localObject1 = this.ASh;
+        if (localObject1 != null) {
+          break label152;
         }
-        parambhw = "";
+        localObject1 = null;
+        label50:
+        localStringBuilder = localStringBuilder.append(localObject1).append(" isShow=").append(this.hBY).append(" path=");
+        localObject1 = this.ASg;
+        if (localObject1 != null) {
+          break label177;
+        }
+        localObject1 = null;
+        label84:
+        localStringBuilder = localStringBuilder.append(localObject1).append(" showType=");
+        localObject1 = this.ASg;
+        if (localObject1 != null) {
+          break label185;
+        }
+        localObject1 = null;
+        label106:
+        localStringBuilder = localStringBuilder.append(localObject1).append(" title=");
+        localObject1 = this.ASg;
+        if (localObject1 != null) {
+          break label196;
+        }
       }
-    }
-    label418:
-    for (;;)
-    {
-      localObject5 = Collections.synchronizedList((List)new LinkedList());
-      p.j(localObject5, "Collections.synchronizedList(LinkedList<String>())");
-      ((Map)localObject1).put(parambhw, localObject5);
-      ((LinkedList)localObject2).add(localObject4);
-      break;
-      localObject2 = ((Iterable)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
+      label152:
+      label177:
+      label185:
+      label196:
+      for (localObject1 = localObject2;; localObject1 = ((bxq)localObject1).title)
       {
-        localObject3 = (bkn)((Iterator)localObject2).next();
-        parambhw = this.field_ctrInfo.MFx;
-        p.j(parambhw, "field_ctrInfo.show_infos");
-        localObject4 = ((Iterable)parambhw).iterator();
-        while (((Iterator)localObject4).hasNext())
+        localObject1 = localObject1;
+        AppMethodBeat.o(178185);
+        return localObject1;
+        localObject1 = ((p)localObject1).field_tipsId;
+        break;
+        localObject1 = ((p)localObject1).field_ctrInfo;
+        if (localObject1 == null)
         {
-          parambhw = (bkn)((Iterator)localObject4).next();
-          if (p.h(parambhw.HpB, ((bkn)localObject3).path))
-          {
-            localObject5 = (List)((Map)this.xuL).get(((bkn)localObject3).path);
-            if (localObject5 != null)
-            {
-              localObject1 = parambhw.path;
-              parambhw = (bhw)localObject1;
-              if (localObject1 == null) {
-                parambhw = "";
-              }
-              ((List)localObject5).add(parambhw);
-            }
-          }
+          localObject1 = null;
+          break label50;
         }
+        localObject1 = Integer.valueOf(((btw)localObject1).type);
+        break label50;
+        localObject1 = ((bxq)localObject1).path;
+        break label84;
+        localObject1 = Integer.valueOf(((bxq)localObject1).show_type);
+        break label106;
       }
-      AppMethodBeat.o(178197);
-      return this;
-    }
-  }
-  
-  public final IAutoDBItem.MAutoDBInfo getDBInfo()
-  {
-    return info;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(291228);
-    String str = this.field_tipsId + ' ' + this.field_ctrInfo.type + ' ' + this.field_time + ' ' + this.field_ctrInfo.priority + ' ' + this.field_revokeId + ' ' + this.field_ctrInfo.MFx.size();
-    AppMethodBeat.o(291228);
-    return str;
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo$Companion;", "", "()V", "TAG", "", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "kotlin.jvm.PlatformType", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-finder_release"})
-  public static final class a {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "invoke", "com/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo$removeDependentRelation$1$1"})
-  static final class b
-    extends q
-    implements kotlin.g.a.b<String, Boolean>
-  {
-    b(String paramString)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "kotlin.jvm.PlatformType", "invoke", "com/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo$removeShowInfoWithPath$1$1"})
-  static final class c
-    extends q
-    implements kotlin.g.a.b<bkn, Boolean>
-  {
-    c(l paraml, LinkedList paramLinkedList, String paramString)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "kotlin.jvm.PlatformType", "invoke", "com/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo$removeShowInfoWithPath$3$1"})
-  static final class d
-    extends q
-    implements kotlin.g.a.b<bkn, Boolean>
-  {
-    d(l paraml, LinkedList paramLinkedList, String paramString)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class e
-    extends q
-    implements a<x>
-  {
-    e(a parama)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class f
-    extends q
-    implements a<x>
-  {
-    f(l paraml1, c paramc, l paraml2)
-    {
-      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.extension.reddot.l
  * JD-Core Version:    0.7.0.1
  */

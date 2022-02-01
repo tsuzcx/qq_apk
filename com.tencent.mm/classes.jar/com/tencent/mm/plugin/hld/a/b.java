@@ -2,41 +2,41 @@ package com.tencent.mm.plugin.hld.a;
 
 public abstract interface b
 {
-  public abstract void Um(int paramInt);
+  public abstract void Yi(int paramInt);
   
-  public abstract void Un(int paramInt);
+  public abstract void Yj(int paramInt);
   
-  public abstract e Uo(int paramInt);
+  public abstract e Yk(int paramInt);
   
   public abstract void a(CharSequence paramCharSequence1, CharSequence paramCharSequence2);
   
-  public abstract void aa(CharSequence paramCharSequence);
+  public abstract void aj(CharSequence paramCharSequence);
   
   public abstract void b(CharSequence paramCharSequence1, CharSequence paramCharSequence2);
   
   public abstract void c(CharSequence paramCharSequence, boolean paramBoolean);
   
-  public abstract void eCm();
+  public abstract c fKC();
   
-  public abstract boolean eCn();
+  public abstract void fKq();
   
-  public abstract void eCo();
+  public abstract boolean fKr();
   
-  public abstract int eCp();
+  public abstract void fKs();
   
-  public abstract boolean eCq();
+  public abstract int fKt();
   
-  public abstract c eCr();
+  public abstract boolean fKu();
   
-  public abstract h eCs();
+  public abstract h fKv();
   
-  public abstract void eCt();
+  public abstract void fKw();
   
-  public abstract boolean eCu();
+  public abstract boolean fKx();
   
-  public abstract boolean eCv();
+  public abstract boolean fKy();
   
-  public abstract int eCw();
+  public abstract int fKz();
   
   public abstract void requestHideSelf(int paramInt);
   

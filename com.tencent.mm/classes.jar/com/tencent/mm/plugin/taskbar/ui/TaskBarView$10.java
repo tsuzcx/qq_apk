@@ -10,14 +10,14 @@ final class TaskBarView$10
   
   public final void run()
   {
-    AppMethodBeat.i(214991);
-    TaskBarView localTaskBarView = this.MpH;
+    AppMethodBeat.i(264151);
+    TaskBarView localTaskBarView = this.STb;
     com.tencent.mm.hellhoundlib.b.a locala = c.a(0, new com.tencent.mm.hellhoundlib.b.a());
-    com.tencent.mm.hellhoundlib.a.a.b(localTaskBarView, locala.aFh(), "com/tencent/mm/plugin/taskbar/ui/TaskBarView$8", "run", "()V", "Undefined", "scrollToPosition", "(I)V");
-    localTaskBarView.scrollToPosition(((Integer)locala.sf(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.b(localTaskBarView, locala.aYi(), "com/tencent/mm/plugin/taskbar/ui/TaskBarView$8", "run", "()V", "Undefined", "scrollToPosition", "(I)V");
+    localTaskBarView.scrollToPosition(((Integer)locala.sb(0)).intValue());
     com.tencent.mm.hellhoundlib.a.a.c(localTaskBarView, "com/tencent/mm/plugin/taskbar/ui/TaskBarView$8", "run", "()V", "Undefined", "scrollToPosition", "(I)V");
-    this.MpH.setTranslationY(0.0F);
-    AppMethodBeat.o(214991);
+    this.STb.setTranslationY(0.0F);
+    AppMethodBeat.o(264151);
   }
 }
 

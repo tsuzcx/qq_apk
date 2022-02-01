@@ -1,7 +1,6 @@
 package com.github.henryye.nativeiv.api;
 
 import android.graphics.Bitmap;
-import androidx.annotation.Keep;
 import com.github.henryye.nativeiv.ImageDecodeConfig;
 import com.github.henryye.nativeiv.a.c.a;
 import com.github.henryye.nativeiv.a.c.b;
@@ -12,70 +11,48 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract interface IImageDecodeService
 {
-  @Keep
-  public abstract void addDecodeEventListener(IImageDecodeService.b paramb);
+  public abstract void addDecodeEventListener(b paramb);
   
-  @Keep
   public abstract void addImageStreamFetcher(b paramb, boolean paramBoolean);
   
-  @Keep
   public abstract String encodeToBase64(Bitmap paramBitmap, int paramInt, float paramFloat);
   
-  @Keep
   public abstract byte[] encodeToBuffer(Bitmap paramBitmap, int paramInt, float paramFloat);
   
-  @Keep
   public abstract void forceSetUseType(BitmapType paramBitmapType);
   
-  @Keep
   public abstract Bitmap getBitmap(int paramInt1, int paramInt2);
   
-  @Keep
   public abstract void init();
   
-  @Keep
   public abstract void loadBitmapAsync(Object paramObject, ImageDecodeConfig paramImageDecodeConfig);
   
-  @Keep
   public abstract void loadBitmapAsync(String paramString);
   
-  @Keep
   public abstract void loadBitmapAsync(String paramString, ImageDecodeConfig paramImageDecodeConfig);
   
-  @Keep
   public abstract IBitmap loadBitmapSync(Object paramObject, ImageDecodeConfig paramImageDecodeConfig);
   
-  @Keep
   public abstract IBitmap loadBitmapSync(String paramString);
   
-  @Keep
   public abstract IBitmap loadBitmapSync(String paramString, ImageDecodeConfig paramImageDecodeConfig);
   
-  @Keep
   public abstract void release();
   
-  @Keep
   public abstract void releaseBitmap(Bitmap paramBitmap);
   
-  @Keep
-  public abstract void removeDecodeEventListener(IImageDecodeService.b paramb);
+  public abstract void removeDecodeEventListener(b paramb);
   
-  @Keep
   public abstract void removeImageStreamFetcher(b paramb, boolean paramBoolean);
   
-  @Keep
   public abstract void setBitmapDecodeSlave(a parama);
   
-  @Keep
   public abstract void setIdKeyReportDelegate(c.a parama);
   
-  @Keep
   public abstract void setKvReportDelegate(c.b paramb);
   
-  @Keep
   public abstract void setMaxDecodeDimension(int paramInt1, int paramInt2);
   
-  @Keep
   public abstract void setNetworkTimeout(int paramInt1, int paramInt2);
   
   public static abstract interface a
@@ -84,7 +61,7 @@ public abstract interface IImageDecodeService
     
     public abstract void a(IImageDecodeService.b paramb);
     
-    public abstract void bc(int paramInt1, int paramInt2);
+    public abstract void bX(int paramInt1, int paramInt2);
     
     public abstract void destroy();
     
@@ -93,33 +70,45 @@ public abstract interface IImageDecodeService
     public abstract boolean isDestroyed();
   }
   
-  public static enum b$a
+  public static abstract interface b
   {
-    static
-    {
-      AppMethodBeat.i(127358);
-      aKo = new a("OK", 0);
-      aKp = new a("NOT_EXIST", 1);
-      aKq = new a("PRE_DECODE_ERROR", 2);
-      aKr = new a("DECODE_ERROR", 3);
-      aKs = new a("UNSUPPORTED_IMG_FORMAT", 4);
-      aKt = new a("HUGE_SIZE", 5);
-      aKu = new a("IO_ERROR", 6);
-      aKv = new a("OUT_OF_MEMORY", 7);
-      aKw = new a("LEGACY_MODE", 8);
-      aKx = new a("TIME_COST_HUGE", 9);
-      aKy = new a("NATIVE_DECODE_ERROR", 10);
-      aKz = new a("THROW_EXCEPTION", 11);
-      aKA = new a[] { aKo, aKp, aKq, aKr, aKs, aKt, aKu, aKv, aKw, aKx, aKy, aKz };
-      AppMethodBeat.o(127358);
-    }
+    public abstract void a(String paramString, a parama, a parama1);
     
-    private b$a() {}
+    public abstract void a(String paramString, Object paramObject, IImageDecodeService.c paramc, ImageDecodeConfig paramImageDecodeConfig);
+    
+    public static enum a
+    {
+      static
+      {
+        AppMethodBeat.i(127358);
+        cEk = new a("OK", 0);
+        cEl = new a("NOT_EXIST", 1);
+        cEm = new a("PRE_DECODE_ERROR", 2);
+        cEn = new a("DECODE_ERROR", 3);
+        cEo = new a("UNSUPPORTED_IMG_FORMAT", 4);
+        cEp = new a("HUGE_SIZE", 5);
+        cEq = new a("IO_ERROR", 6);
+        cEr = new a("OUT_OF_MEMORY", 7);
+        cEs = new a("LEGACY_MODE", 8);
+        cEt = new a("TIME_COST_HUGE", 9);
+        cEu = new a("NATIVE_DECODE_ERROR", 10);
+        cEv = new a("THROW_EXCEPTION", 11);
+        cEw = new a[] { cEk, cEl, cEm, cEn, cEo, cEp, cEq, cEr, cEs, cEt, cEu, cEv };
+        AppMethodBeat.o(127358);
+      }
+      
+      private a() {}
+    }
+  }
+  
+  public static abstract interface c
+  {
+    public abstract void bd(Object paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.github.henryye.nativeiv.api.IImageDecodeService
  * JD-Core Version:    0.7.0.1
  */

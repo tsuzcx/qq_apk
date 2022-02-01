@@ -1,10 +1,9 @@
 package com.tencent.mm.chatroom.storage;
 
 import android.database.Cursor;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.chatroom.plugin.PluginChatroomUI;
-import com.tencent.mm.model.cm;
+import com.tencent.mm.model.cn;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
@@ -12,7 +11,8 @@ import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
 import com.tencent.mm.sdk.storage.MStorageEx;
 import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
-import com.tencent.mm.storage.bw;
+import com.tencent.mm.storage.by;
+import com.tencent.threadpool.i;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,13 +22,13 @@ public class d
 {
   public static final String[] INDEX_CREATE;
   public static final String[] SQL_CREATE;
-  public static final Long iXF;
+  public static final Long lzB;
   private ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(182146);
-    iXF = Long.valueOf(604800000L);
+    lzB = Long.valueOf(604800000L);
     SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(c.info, "GroupTodo") };
     INDEX_CREATE = new String[] { "CREATE INDEX IF NOT EXISTS todoIdIndex ON GroupTodo ( todoid )", "CREATE INDEX IF NOT EXISTS todoIdRoomNameIndex ON GroupTodo ( todoid,roomname )", "CREATE INDEX IF NOT EXISTS roomNameIndex ON GroupTodo ( roomname )" };
     AppMethodBeat.o(182146);
@@ -40,18 +40,18 @@ public class d
     this.db = paramISQLiteDatabase;
   }
   
-  public final c Ks(String paramString)
+  public final c CY(String paramString)
   {
-    AppMethodBeat.i(187935);
+    AppMethodBeat.i(241400);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(187935);
+      AppMethodBeat.o(241400);
       return null;
     }
     paramString = this.db.query("GroupTodo", c.info.columns, "roomname=? and username=? and state!=?", new String[] { paramString, "roomannouncement@app.origin", "2" }, null, null, null);
     if (paramString == null)
     {
-      AppMethodBeat.o(187935);
+      AppMethodBeat.o(241400);
       return null;
     }
     try
@@ -68,22 +68,22 @@ public class d
     finally
     {
       paramString.close();
-      AppMethodBeat.o(187935);
+      AppMethodBeat.o(241400);
     }
     int i;
     if (i == 0)
     {
       paramString.close();
-      AppMethodBeat.o(187935);
+      AppMethodBeat.o(241400);
       return null;
     }
     c localc1 = (c)localObject.get(0);
     paramString.close();
-    AppMethodBeat.o(187935);
+    AppMethodBeat.o(241400);
     return localc1;
   }
   
-  public final List<c> Kt(String paramString)
+  public final List<c> CZ(String paramString)
   {
     AppMethodBeat.i(182143);
     ArrayList localArrayList = new ArrayList();
@@ -92,8 +92,8 @@ public class d
       AppMethodBeat.o(182143);
       return localArrayList;
     }
-    long l = cm.bfF();
-    paramString = this.db.query("GroupTodo", c.info.columns, "roomname=? and createtime>=? AND state IN (0,1)", new String[] { paramString, l - iXF.longValue() }, null, null, "updatetime DESC limit 20");
+    long l = cn.getSyncServerTimeSecond();
+    paramString = this.db.query("GroupTodo", c.info.columns, "roomname=? and createtime>=? AND state IN (0,1)", new String[] { paramString, l - lzB.longValue() }, null, null, "updatetime DESC limit 20");
     if (paramString == null)
     {
       AppMethodBeat.o(182143);
@@ -116,15 +116,15 @@ public class d
     }
   }
   
-  public final boolean Ku(String paramString)
+  public final boolean Da(String paramString)
   {
-    AppMethodBeat.i(187942);
+    AppMethodBeat.i(241412);
     try
     {
-      i = this.db.delete("GroupTodo", "createtime<? and username=?", new String[] { cm.bfD() - iXF.longValue(), paramString });
+      i = this.db.delete("GroupTodo", "createtime<? and username=?", new String[] { cn.bDv() - lzB.longValue(), paramString });
       if (i > 0)
       {
-        AppMethodBeat.o(187942);
+        AppMethodBeat.o(241412);
         return true;
       }
     }
@@ -135,12 +135,12 @@ public class d
         Log.e("MicroMsg.roomTodo.GroupTodoStorage", "deleteExpireData Exception：[%s %s]", new Object[] { paramString.getClass().getSimpleName(), paramString.getMessage() });
         int i = 0;
       }
-      AppMethodBeat.o(187942);
+      AppMethodBeat.o(241412);
     }
     return false;
   }
   
-  public final c am(String paramString1, String paramString2)
+  public final c ar(String paramString1, String paramString2)
   {
     AppMethodBeat.i(182140);
     if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
@@ -219,7 +219,7 @@ public class d
     }
     if (paramc.systemRowid == -1L)
     {
-      c localc = am(paramc.field_roomname, paramc.field_todoid);
+      c localc = ar(paramc.field_roomname, paramc.field_todoid);
       if (localc == null)
       {
         AppMethodBeat.o(182142);
@@ -234,28 +234,28 @@ public class d
   
   public void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, final Object paramObject)
   {
-    AppMethodBeat.i(187945);
+    AppMethodBeat.i(241415);
     if ((paramObject == null) || (!(paramObject instanceof String)))
     {
       Log.d("MicroMsg.roomTodo.GroupTodoStorage", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramMStorageEx, paramObject });
-      AppMethodBeat.o(187945);
+      AppMethodBeat.o(241415);
       return;
     }
     paramObject = (String)paramObject;
-    if ((paramInt == 5) && ((paramMStorageEx instanceof bw)))
+    if ((paramInt == 5) && ((paramMStorageEx instanceof by)))
     {
       Log.i("MicroMsg.roomTodo.GroupTodoStorage", "delete, username %s", new Object[] { Integer.valueOf(paramInt), paramObject });
-      com.tencent.e.h.ZvG.be(new Runnable()
+      com.tencent.threadpool.h.ahAA.bm(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(193639);
-          Log.i("MicroMsg.roomTodo.GroupTodoStorage", "onNotifyChange delete expire data : %s", new Object[] { Boolean.valueOf(((PluginChatroomUI)com.tencent.mm.kernel.h.ag(PluginChatroomUI.class)).getGroupTodoStorage().Ku(paramObject)) });
-          AppMethodBeat.o(193639);
+          AppMethodBeat.i(241408);
+          Log.i("MicroMsg.roomTodo.GroupTodoStorage", "onNotifyChange delete expire data : %s", new Object[] { Boolean.valueOf(((PluginChatroomUI)com.tencent.mm.kernel.h.az(PluginChatroomUI.class)).getGroupTodoStorage().Da(paramObject)) });
+          AppMethodBeat.o(241408);
         }
       });
     }
-    AppMethodBeat.o(187945);
+    AppMethodBeat.o(241415);
   }
 }
 

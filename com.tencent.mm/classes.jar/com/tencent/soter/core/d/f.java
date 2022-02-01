@@ -6,21 +6,21 @@ import java.util.concurrent.CountDownLatch;
 
 public final class f
 {
-  private static Handler ZsL = null;
-  CountDownLatch QSv = null;
+  private static Handler ahxy = null;
+  CountDownLatch XOm = null;
   
-  public final void Sz()
+  public final void asP()
   {
     AppMethodBeat.i(88726);
-    if (this.QSv != null) {
-      this.QSv.countDown();
+    if (this.XOm != null) {
+      this.XOm.countDown();
     }
     AppMethodBeat.o(88726);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.soter.core.d.f
  * JD-Core Version:    0.7.0.1
  */

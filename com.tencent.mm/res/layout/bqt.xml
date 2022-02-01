@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/b1b" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/fiw" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cc" android:layout_marginBottom="@dimen/cb" android:src="@drawable/b3" />
-    <TextView android:ellipsize="end" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/grp" android:singleLine="true" style="@style/zi" />
-    <TextView android:textStyle="bold" android:ellipsize="end" android:layout_gravity="center_horizontal" android:id="@id/hm6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:singleLine="true" style="@style/l4" />
-    <TextView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ce" android:text="@string/gql" style="@style/zi" />
-    <com.tencent.mm.view.CheckBoxLicenseView android:layout_gravity="center_horizontal" android:id="@id/fiv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bu" />
-    <Button android:enabled="false" android:layout_gravity="center_horizontal" android:id="@id/fz0" android:layout_marginTop="@dimen/ce" android:layout_marginBottom="@dimen/ce" android:text="@string/x_" style="@style/ov" />
-</LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/eeg" android:background="@color/al2" android:padding="@dimen/jd" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mm.plugin.recharge.ui.form.InstantAutoCompleteTextView android:textSize="28.0dip" android:textColor="@color/a7b" android:id="@id/glp" android:padding="0.0dip" android:layout_margin="0.0dip" android:dropDownSelector="@color/ahb" android:popupBackground="@null" android:dropDownWidth="fill_parent" android:dropDownAnchor="@id/eeg" android:dropDownHeight="200.0dip" style="@style/qy" />
+            <com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView android:layout_gravity="center_vertical" android:id="@id/gm1" android:layout_width="25.0dip" android:layout_height="25.0dip" android:src="@drawable/aom" android:scaleType="fitXY" style="@style/qp" />
+        </LinearLayout>
+        <TextView android:textSize="13.0dip" android:textColor="@color/a7b" android:id="@id/go5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:minHeight="16.0dip" />
+    </LinearLayout>
+</merge>

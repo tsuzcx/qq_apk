@@ -4,17 +4,17 @@ public final class R
 {
   public static final class id
   {
-    public static final int amu_text = 2131296764;
+    public static final int amu_text = 2131296849;
   }
   
   public static final class layout
   {
-    public static final int amu_text_bubble = 2131492993;
+    public static final int amu_text_bubble = 2131493004;
   }
   
   public static final class string
   {
-    public static final int app_name = 2131755971;
+    public static final int app_name = 2131756033;
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.downloader_app.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.downloader.c.a.a.f;
-import com.tencent.mm.plugin.downloader.c.b.c;
+import com.tencent.mm.plugin.downloader.b.a.a.f;
+import com.tencent.mm.plugin.downloader.b.b.c;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public class i
@@ -13,17 +13,17 @@ public class i
   public String iconUrl;
   public boolean isSelected = false;
   public String jumpUrl;
-  public boolean oYn = true;
   public String packageName;
   public int position;
-  public boolean toj = false;
+  public boolean sdN = true;
   public int type;
-  public boolean umr;
-  public String ums;
-  public int umt = 0;
-  public c umu;
-  public f umv;
-  public com.tencent.mm.plugin.downloader.c.b.b umw;
+  public boolean wsK = false;
+  public boolean xsD;
+  public String xsE;
+  public int xsF = 0;
+  public c xsG;
+  public f xsH;
+  public com.tencent.mm.plugin.downloader.b.b.b xsI;
   
   public i() {}
   
@@ -35,17 +35,17 @@ public class i
   public final int a(com.tencent.mm.plugin.game.commlib.c.b paramb)
   {
     AppMethodBeat.i(8906);
-    int i = Integer.compare(this.type, ((Integer)paramb.cQI()).intValue());
+    int i = Integer.compare(this.type, ((Integer)paramb.dvb()).intValue());
     AppMethodBeat.o(8906);
     return i;
   }
   
-  public final boolean cQH()
+  public final boolean dva()
   {
     return (this.type == 2) || (this.type == 4) || (this.type == 6);
   }
   
-  public final Object cQI()
+  public final Object dvb()
   {
     AppMethodBeat.i(8905);
     int i = this.type;

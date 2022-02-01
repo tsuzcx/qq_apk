@@ -1,332 +1,203 @@
 package kotlin.l.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.l.b.a.a.d;
-import kotlin.l.b.a.b.b.ak;
-import kotlin.l.b.a.b.b.av;
-import kotlin.l.b.a.b.b.b;
-import kotlin.l.m;
-import kotlin.l.m.a;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import kotlin.Metadata;
+import kotlin.l.b.a.b.b.ap;
+import kotlin.l.b.a.b.b.e.b.b;
+import kotlin.l.b.a.b.d.a.v;
+import kotlin.l.b.a.b.d.b.i;
+import kotlin.l.b.a.b.e.a.m;
+import kotlin.l.b.a.b.e.b.c;
+import kotlin.l.b.a.b.e.c.a;
+import kotlin.l.b.a.b.e.c.a.b;
+import kotlin.l.b.a.b.e.c.a.c;
+import kotlin.l.b.a.b.e.c.a.d.a;
+import kotlin.l.b.a.b.f.f;
+import kotlin.l.b.a.b.h.i.c;
+import kotlin.l.b.a.b.k.a.b.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/reflect/jvm/internal/KCallableImpl;", "R", "Lkotlin/reflect/KCallable;", "()V", "_annotations", "Lkotlin/reflect/jvm/internal/ReflectProperties$LazySoftVal;", "", "", "kotlin.jvm.PlatformType", "_parameters", "Ljava/util/ArrayList;", "Lkotlin/reflect/KParameter;", "_returnType", "Lkotlin/reflect/jvm/internal/KTypeImpl;", "_typeParameters", "Lkotlin/reflect/jvm/internal/KTypeParameterImpl;", "annotations", "getAnnotations", "()Ljava/util/List;", "caller", "Lkotlin/reflect/jvm/internal/calls/Caller;", "getCaller", "()Lkotlin/reflect/jvm/internal/calls/Caller;", "container", "Lkotlin/reflect/jvm/internal/KDeclarationContainerImpl;", "getContainer", "()Lkotlin/reflect/jvm/internal/KDeclarationContainerImpl;", "defaultCaller", "getDefaultCaller", "descriptor", "Lkotlin/reflect/jvm/internal/impl/descriptors/CallableMemberDescriptor;", "getDescriptor", "()Lorg/jetbrains/kotlin/descriptors/CallableMemberDescriptor;", "isAbstract", "", "()Z", "isAnnotationConstructor", "isBound", "isFinal", "isOpen", "parameters", "getParameters", "returnType", "Lkotlin/reflect/KType;", "getReturnType", "()Lkotlin/reflect/KType;", "typeParameters", "Lkotlin/reflect/KTypeParameter;", "getTypeParameters", "visibility", "Lkotlin/reflect/KVisibility;", "getVisibility", "()Lkotlin/reflect/KVisibility;", "call", "args", "", "", "([Ljava/lang/Object;)Ljava/lang/Object;", "callAnnotationConstructor", "", "(Ljava/util/Map;)Ljava/lang/Object;", "callBy", "callDefaultMethod", "continuationArgument", "Lkotlin/coroutines/Continuation;", "callDefaultMethod$kotlin_reflection", "(Ljava/util/Map;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "defaultPrimitiveValue", "type", "Ljava/lang/reflect/Type;", "extractContinuationArgument", "kotlin-reflection"})
-public abstract class e<R>
-  implements kotlin.l.a<R>
+@Metadata(d1={""}, d2={"Lkotlin/reflect/jvm/internal/JvmPropertySignature;", "", "()V", "asString", "", "JavaField", "JavaMethodProperty", "KotlinProperty", "MappedKotlinProperty", "Lkotlin/reflect/jvm/internal/JvmPropertySignature$KotlinProperty;", "Lkotlin/reflect/jvm/internal/JvmPropertySignature$JavaMethodProperty;", "Lkotlin/reflect/jvm/internal/JvmPropertySignature$JavaField;", "Lkotlin/reflect/jvm/internal/JvmPropertySignature$MappedKotlinProperty;", "kotlin-reflection"}, k=1, mv={1, 5, 1})
+public abstract class e
 {
-  private final y.a<List<Annotation>> aaCF;
-  private final y.a<ArrayList<m>> aaCG;
-  private final y.a<t> aaCH;
-  private final y.a<List<v>> aaCI;
+  public abstract String PF();
   
-  public e()
+  @Metadata(d1={""}, d2={"Lkotlin/reflect/jvm/internal/JvmPropertySignature$JavaField;", "Lkotlin/reflect/jvm/internal/JvmPropertySignature;", "field", "Ljava/lang/reflect/Field;", "(Ljava/lang/reflect/Field;)V", "getField", "()Ljava/lang/reflect/Field;", "asString", "", "kotlin-reflection"}, k=1, mv={1, 5, 1})
+  public static final class a
+    extends e
   {
-    y.a locala = y.au((kotlin.g.a.a)new a(this));
-    p.j(locala, "ReflectProperties.lazySo…or.computeAnnotations() }");
-    this.aaCF = locala;
-    locala = y.au((kotlin.g.a.a)new b(this));
-    p.j(locala, "ReflectProperties.lazySo…ze()\n        result\n    }");
-    this.aaCG = locala;
-    locala = y.au((kotlin.g.a.a)new c(this));
-    p.j(locala, "ReflectProperties.lazySo…eturnType\n        }\n    }");
-    this.aaCH = locala;
-    locala = y.au((kotlin.g.a.a)new d(this));
-    p.j(locala, "ReflectProperties.lazySo…KTypeParameterImpl)\n    }");
-    this.aaCI = locala;
-  }
-  
-  private R cF(Map<m, ? extends Object> paramMap)
-  {
-    p.k(paramMap, "args");
-    Object localObject = iCb();
-    ArrayList localArrayList1 = new ArrayList(((List)localObject).size());
-    ArrayList localArrayList2 = new ArrayList(1);
-    Iterator localIterator = ((List)localObject).iterator();
-    int j = 0;
-    int i = 0;
-    int k = 0;
-    m localm;
-    label101:
-    int m;
-    if (localIterator.hasNext())
-    {
-      localm = (m)localIterator.next();
-      if ((i == 0) || (i % 32 != 0)) {
-        break label646;
-      }
-      localArrayList2.add(Integer.valueOf(k));
-      k = 0;
-      if (paramMap.containsKey(localm))
-      {
-        localArrayList1.add(paramMap.get(localm));
-        m = j;
-        j = k;
-        k = m;
-        if (localm.iCx() != m.a.aaCe) {
-          break label649;
-        }
-        i += 1;
-      }
-    }
-    label646:
-    label649:
-    for (;;)
-    {
-      m = k;
-      k = j;
-      j = m;
-      break;
-      if (localm.Ho())
-      {
-        localObject = localm.iCw();
-        p.k(localObject, "$this$javaType");
-        localObject = ((t)localObject).iDe();
-        if (((localObject instanceof Class)) && (((Class)localObject).isPrimitive())) {
-          if (p.h(localObject, Boolean.TYPE)) {
-            localObject = Boolean.FALSE;
-          }
-        }
-        for (;;)
-        {
-          localArrayList1.add(localObject);
-          j = k | 1 << i % 32;
-          k = 1;
-          break;
-          if (p.h(localObject, Character.TYPE))
-          {
-            localObject = Character.valueOf('\000');
-          }
-          else if (p.h(localObject, Byte.TYPE))
-          {
-            localObject = Byte.valueOf((byte)0);
-          }
-          else if (p.h(localObject, Short.TYPE))
-          {
-            localObject = Short.valueOf((short)0);
-          }
-          else if (p.h(localObject, Integer.TYPE))
-          {
-            localObject = Integer.valueOf(0);
-          }
-          else if (p.h(localObject, Float.TYPE))
-          {
-            localObject = Float.valueOf(0.0F);
-          }
-          else if (p.h(localObject, Long.TYPE))
-          {
-            localObject = Long.valueOf(0L);
-          }
-          else if (p.h(localObject, Double.TYPE))
-          {
-            localObject = Double.valueOf(0.0D);
-          }
-          else
-          {
-            if (p.h(localObject, Void.TYPE)) {
-              throw ((Throwable)new IllegalStateException("Parameter with void type is illegal"));
-            }
-            throw ((Throwable)new UnsupportedOperationException("Unknown primitive: ".concat(String.valueOf(localObject))));
-            localObject = null;
-          }
-        }
-      }
-      throw ((Throwable)new IllegalArgumentException("No argument provided for a required parameter: ".concat(String.valueOf(localm))));
-      if (j == 0)
-      {
-        paramMap = ((Collection)localArrayList1).toArray(new Object[0]);
-        if (paramMap == null) {
-          throw new kotlin.t("null cannot be cast to non-null type kotlin.Array<T>");
-        }
-        return ak(Arrays.copyOf(paramMap, paramMap.length));
-      }
-      localArrayList2.add(Integer.valueOf(k));
-      paramMap = iCF();
-      if (paramMap == null) {
-        throw ((Throwable)new w("This callable does not support a default call: " + iCD()));
-      }
-      localArrayList1.addAll((Collection)localArrayList2);
-      localArrayList1.add(null);
-      try
-      {
-        localObject = ((Collection)localArrayList1).toArray(new Object[0]);
-        if (localObject == null) {
-          throw new kotlin.t("null cannot be cast to non-null type kotlin.Array<T>");
-        }
-      }
-      catch (IllegalAccessException paramMap)
-      {
-        throw ((Throwable)new kotlin.l.a.a(paramMap));
-      }
-      paramMap = paramMap.ak((Object[])localObject);
-      return paramMap;
-      break label101;
-    }
-  }
-  
-  private final R cG(Map<m, ? extends Object> paramMap)
-  {
-    Object localObject = (Iterable)iCb();
-    Collection localCollection = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
-    Iterator localIterator = ((Iterable)localObject).iterator();
-    m localm;
-    if (localIterator.hasNext())
-    {
-      localm = (m)localIterator.next();
-      if (paramMap.containsKey(localm))
-      {
-        localObject = paramMap.get(localm);
-        if (localObject != null) {
-          break label255;
-        }
-        throw ((Throwable)new IllegalArgumentException("Annotation argument value cannot be null (" + localm + ')'));
-      }
-      if (localm.Ho()) {
-        localObject = null;
-      }
-    }
-    label255:
-    for (;;)
-    {
-      localCollection.add(localObject);
-      break;
-      throw ((Throwable)new IllegalArgumentException("No argument provided for a required parameter: ".concat(String.valueOf(localm))));
-      localObject = (List)localCollection;
-      paramMap = iCF();
-      if (paramMap == null) {
-        throw ((Throwable)new w("This callable does not support a default call: " + iCD()));
-      }
-      try
-      {
-        localObject = ((Collection)localObject).toArray(new Object[0]);
-        if (localObject == null) {
-          throw new kotlin.t("null cannot be cast to non-null type kotlin.Array<T>");
-        }
-      }
-      catch (IllegalAccessException paramMap)
-      {
-        throw ((Throwable)new kotlin.l.a.a(paramMap));
-      }
-      paramMap = paramMap.ak((Object[])localObject);
-      return paramMap;
-    }
-  }
-  
-  public final R ak(Object... paramVarArgs)
-  {
-    p.k(paramVarArgs, "args");
-    try
-    {
-      paramVarArgs = iCE().ak(paramVarArgs);
-      return paramVarArgs;
-    }
-    catch (IllegalAccessException paramVarArgs)
-    {
-      throw ((Throwable)new kotlin.l.a.a(paramVarArgs));
-    }
-  }
-  
-  public final R cE(Map<m, ? extends Object> paramMap)
-  {
-    p.k(paramMap, "args");
-    if (iCH()) {
-      return cG(paramMap);
-    }
-    return cF(paramMap);
-  }
-  
-  public abstract b iCD();
-  
-  public abstract d<?> iCE();
-  
-  public abstract d<?> iCF();
-  
-  public abstract i iCG();
-  
-  protected final boolean iCH()
-  {
-    return (p.h(getName(), "<init>")) && (iCG().iCd().isAnnotation());
-  }
-  
-  public final List<m> iCb()
-  {
-    Object localObject = this.aaCG.invoke();
-    p.j(localObject, "_parameters()");
-    return (List)localObject;
-  }
-  
-  public abstract boolean isBound();
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "", "R", "invoke"})
-  static final class a
-    extends q
-    implements kotlin.g.a.a<List<? extends Annotation>>
-  {
-    a(e parame)
+    final Field dEn;
+    
+    public a(Field paramField)
     {
       super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Ljava/util/ArrayList;", "Lkotlin/reflect/KParameter;", "R", "invoke"})
-  static final class b
-    extends q
-    implements kotlin.g.a.a<ArrayList<m>>
-  {
-    b(e parame)
-    {
-      super();
+      AppMethodBeat.i(56292);
+      this.dEn = paramField;
+      AppMethodBeat.o(56292);
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareBy$2"})
-    public static final class a<T>
-      implements Comparator<T>
+    public final String PF()
     {
-      public final int compare(T paramT1, T paramT2)
+      AppMethodBeat.i(56291);
+      Object localObject1 = new StringBuilder();
+      Object localObject2 = this.dEn.getName();
+      kotlin.g.b.s.s(localObject2, "field.name");
+      localObject1 = ((StringBuilder)localObject1).append(v.bIO((String)localObject2)).append("()");
+      localObject2 = this.dEn.getType();
+      kotlin.g.b.s.s(localObject2, "field.type");
+      localObject1 = b.cN((Class)localObject2);
+      AppMethodBeat.o(56291);
+      return localObject1;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"Lkotlin/reflect/jvm/internal/JvmPropertySignature$JavaMethodProperty;", "Lkotlin/reflect/jvm/internal/JvmPropertySignature;", "getterMethod", "Ljava/lang/reflect/Method;", "setterMethod", "(Ljava/lang/reflect/Method;Ljava/lang/reflect/Method;)V", "getGetterMethod", "()Ljava/lang/reflect/Method;", "getSetterMethod", "asString", "", "kotlin-reflection"}, k=1, mv={1, 5, 1})
+  public static final class b
+    extends e
+  {
+    final Method aiyf;
+    final Method aiyg;
+    
+    public b(Method paramMethod1, Method paramMethod2)
+    {
+      super();
+      AppMethodBeat.i(56294);
+      this.aiyf = paramMethod1;
+      this.aiyg = paramMethod2;
+      AppMethodBeat.o(56294);
+    }
+    
+    public final String PF()
+    {
+      AppMethodBeat.i(56293);
+      String str = ah.g(this.aiyf);
+      AppMethodBeat.o(56293);
+      return str;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"Lkotlin/reflect/jvm/internal/JvmPropertySignature$KotlinProperty;", "Lkotlin/reflect/jvm/internal/JvmPropertySignature;", "descriptor", "Lkotlin/reflect/jvm/internal/impl/descriptors/PropertyDescriptor;", "proto", "Lkotlin/reflect/jvm/internal/impl/metadata/ProtoBuf$Property;", "signature", "Lkotlin/reflect/jvm/internal/impl/metadata/jvm/JvmProtoBuf$JvmPropertySignature;", "nameResolver", "Lkotlin/reflect/jvm/internal/impl/metadata/deserialization/NameResolver;", "typeTable", "Lkotlin/reflect/jvm/internal/impl/metadata/deserialization/TypeTable;", "(Lorg/jetbrains/kotlin/descriptors/PropertyDescriptor;Lorg/jetbrains/kotlin/metadata/ProtoBuf$Property;Lorg/jetbrains/kotlin/metadata/jvm/JvmProtoBuf$JvmPropertySignature;Lorg/jetbrains/kotlin/metadata/deserialization/NameResolver;Lorg/jetbrains/kotlin/metadata/deserialization/TypeTable;)V", "getDescriptor", "()Lorg/jetbrains/kotlin/descriptors/PropertyDescriptor;", "getNameResolver", "()Lorg/jetbrains/kotlin/metadata/deserialization/NameResolver;", "getProto", "()Lorg/jetbrains/kotlin/metadata/ProtoBuf$Property;", "getSignature", "()Lorg/jetbrains/kotlin/metadata/jvm/JvmProtoBuf$JvmPropertySignature;", "string", "", "getTypeTable", "()Lorg/jetbrains/kotlin/metadata/deserialization/TypeTable;", "asString", "getManglingSuffix", "kotlin-reflection"}, k=1, mv={1, 5, 1})
+  public static final class c
+    extends e
+  {
+    final ap aiyh;
+    final a.m aiyi;
+    final a.c aiyj;
+    final c aiyk;
+    final kotlin.l.b.a.b.e.b.g aiyl;
+    private final String cBR;
+    
+    public c(ap paramap, a.m paramm, a.c paramc, c paramc1, kotlin.l.b.a.b.e.b.g paramg)
+    {
+      super();
+      AppMethodBeat.i(56295);
+      this.aiyh = paramap;
+      this.aiyi = paramm;
+      this.aiyj = paramc;
+      this.aiyk = paramc1;
+      this.aiyl = paramg;
+      if (this.aiyj.kxn())
       {
-        AppMethodBeat.i(56298);
-        int i = kotlin.b.a.a((Comparable)((m)paramT1).getName(), (Comparable)((m)paramT2).getName());
-        AppMethodBeat.o(56298);
-        return i;
+        paramap = new StringBuilder();
+        paramm = this.aiyk;
+        paramc = this.aiyj.ajdD;
+        kotlin.g.b.s.s(paramc, "signature.getter");
+        paramap = paramap.append(paramm.getString(paramc.aiZC));
+        paramm = this.aiyk;
+        paramc = this.aiyj.ajdD;
+        kotlin.g.b.s.s(paramc, "signature.getter");
+        paramap = paramm.getString(paramc.ajdy);
+        this.cBR = paramap;
+        AppMethodBeat.o(56295);
+        return;
+      }
+      paramap = kotlin.l.b.a.b.e.c.a.g.ajem;
+      paramm = kotlin.l.b.a.b.e.c.a.g.a(this.aiyi, this.aiyk, this.aiyl);
+      if (paramm == null)
+      {
+        paramap = (Throwable)new aa("No field signature for property: " + this.aiyh);
+        AppMethodBeat.o(56295);
+        throw paramap;
+      }
+      paramap = paramm.name;
+      paramc = paramm.desc;
+      paramc1 = new StringBuilder().append(v.bIO(paramap));
+      paramap = this.aiyh.knp();
+      kotlin.g.b.s.s(paramap, "descriptor.containingDeclaration");
+      if ((kotlin.g.b.s.p(this.aiyh.knc(), kotlin.l.b.a.b.b.s.aiGF)) && ((paramap instanceof kotlin.l.b.a.b.k.a.b.e)))
+      {
+        paramap = (i.c)((kotlin.l.b.a.b.k.a.b.e)paramap).ajlM;
+        paramm = a.ajdr;
+        kotlin.g.b.s.s(paramm, "JvmProtoBuf.classModuleName");
+        paramap = (Integer)kotlin.l.b.a.b.e.b.e.a(paramap, paramm);
+        if (paramap != null)
+        {
+          paramm = this.aiyk.getString(((Number)paramap).intValue());
+          paramap = paramm;
+          if (paramm != null) {}
+        }
+        else
+        {
+          paramap = "main";
+        }
+        paramap = "$" + kotlin.l.b.a.b.f.g.bJi(paramap);
+      }
+      for (;;)
+      {
+        paramap = paramap + "()" + paramc;
+        break;
+        if ((kotlin.g.b.s.p(this.aiyh.knc(), kotlin.l.b.a.b.b.s.aiGC)) && ((paramap instanceof kotlin.l.b.a.b.b.ah)))
+        {
+          paramap = this.aiyh;
+          if (paramap == null)
+          {
+            paramap = new NullPointerException("null cannot be cast to non-null type org.jetbrains.kotlin.serialization.deserialization.descriptors.DeserializedPropertyDescriptor");
+            AppMethodBeat.o(56295);
+            throw paramap;
+          }
+          paramap = ((k)paramap).ajmm;
+          if (((paramap instanceof i)) && (((i)paramap).aiWH != null))
+          {
+            paramap = "$" + ((i)paramap).ksN().PF();
+            continue;
+          }
+        }
+        paramap = "";
       }
     }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lkotlin/reflect/jvm/internal/KTypeImpl;", "R", "invoke"})
-  static final class c
-    extends q
-    implements kotlin.g.a.a<t>
-  {
-    c(e parame)
+    
+    public final String PF()
     {
-      super();
+      return this.cBR;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lkotlin/reflect/jvm/internal/KTypeParameterImpl;", "R", "invoke"})
-  static final class d
-    extends q
-    implements kotlin.g.a.a<List<? extends v>>
+  @Metadata(d1={""}, d2={"Lkotlin/reflect/jvm/internal/JvmPropertySignature$MappedKotlinProperty;", "Lkotlin/reflect/jvm/internal/JvmPropertySignature;", "getterSignature", "Lkotlin/reflect/jvm/internal/JvmFunctionSignature$KotlinFunction;", "setterSignature", "(Lkotlin/reflect/jvm/internal/JvmFunctionSignature$KotlinFunction;Lkotlin/reflect/jvm/internal/JvmFunctionSignature$KotlinFunction;)V", "getGetterSignature", "()Lkotlin/reflect/jvm/internal/JvmFunctionSignature$KotlinFunction;", "getSetterSignature", "asString", "", "kotlin-reflection"}, k=1, mv={1, 5, 1})
+  public static final class d
+    extends e
   {
-    d(e parame)
+    final d.e aiym;
+    final d.e aiyn;
+    
+    public d(d.e parame1, d.e parame2)
     {
       super();
+      AppMethodBeat.i(56296);
+      this.aiym = parame1;
+      this.aiyn = parame2;
+      AppMethodBeat.o(56296);
+    }
+    
+    public final String PF()
+    {
+      return this.aiym.aiyd;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.e
  * JD-Core Version:    0.7.0.1
  */

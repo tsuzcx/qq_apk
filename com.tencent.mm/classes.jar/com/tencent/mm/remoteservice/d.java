@@ -17,21 +17,21 @@ import java.util.List;
 
 public final class d
 {
-  private List<Runnable> UQd;
-  private c UQe;
+  private List<Runnable> acla;
+  private c aclb;
   private Context context;
-  private ServiceConnection tLt;
+  private ServiceConnection wOI;
   
   public d(Context paramContext)
   {
     AppMethodBeat.i(152748);
-    this.UQd = new LinkedList();
-    this.tLt = new ServiceConnection()
+    this.acla = new LinkedList();
+    this.wOI = new ServiceConnection()
     {
       public final void onServiceConnected(ComponentName paramAnonymousComponentName, IBinder paramAnonymousIBinder)
       {
         AppMethodBeat.i(152747);
-        d.a(d.this, c.a.P(paramAnonymousIBinder));
+        d.a(d.this, c.a.U(paramAnonymousIBinder));
         paramAnonymousComponentName = (Runnable[])d.a(d.this).toArray(new Runnable[d.a(d.this).size()]);
         int j = paramAnonymousComponentName.length;
         int i = 0;
@@ -49,9 +49,9 @@ public final class d
       
       public final void onServiceDisconnected(ComponentName paramAnonymousComponentName)
       {
-        AppMethodBeat.i(224901);
+        AppMethodBeat.i(235613);
         d.a(d.this, null);
-        AppMethodBeat.o(224901);
+        AppMethodBeat.o(235613);
       }
     };
     Context localContext = paramContext;
@@ -68,7 +68,7 @@ public final class d
     if (isConnected()) {
       try
       {
-        this.UQe.a(paramb.getClass().getName(), paramString, paramBundle, paramb);
+        this.aclb.a(paramb.getClass().getName(), paramString, paramBundle, paramb);
         AppMethodBeat.o(152752);
         return;
       }
@@ -95,16 +95,16 @@ public final class d
       AppMethodBeat.o(152749);
       return;
     }
-    this.UQd.add(paramRunnable);
+    this.acla.add(paramRunnable);
     paramRunnable = new Intent(this.context, RemoteService.class);
-    this.context.bindService(paramRunnable, this.tLt, 1);
+    this.context.bindService(paramRunnable, this.wOI, 1);
     AppMethodBeat.o(152749);
   }
   
   public final boolean isConnected()
   {
     AppMethodBeat.i(152750);
-    if ((this.UQe != null) && (this.UQe.asBinder().isBinderAlive()))
+    if ((this.aclb != null) && (this.aclb.asBinder().isBinderAlive()))
     {
       AppMethodBeat.o(152750);
       return true;
@@ -116,10 +116,10 @@ public final class d
   public final void release()
   {
     AppMethodBeat.i(152751);
-    if ((this.UQe != null) && (this.tLt != null))
+    if ((this.aclb != null) && (this.wOI != null))
     {
-      this.context.unbindService(this.tLt);
-      this.UQe = null;
+      this.context.unbindService(this.wOI);
+      this.aclb = null;
     }
     this.context = null;
     AppMethodBeat.o(152751);

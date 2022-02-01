@@ -1,149 +1,143 @@
 package com.tencent.mm.plugin.appbrand.app;
 
-import android.text.TextUtils;
-import com.tencent.luggage.sdk.processes.LuggageServiceType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.cw.f;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.appbrand.appcache.at;
-import com.tencent.mm.plugin.appbrand.appcache.au;
-import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
-import com.tencent.mm.plugin.appbrand.config.aa;
-import com.tencent.mm.plugin.appbrand.config.o.a;
-import com.tencent.mm.plugin.appbrand.jsapi.h5_interact.SendDataToMiniProgramFromH5Event;
-import com.tencent.mm.plugin.appbrand.jsapi.op_report.AppBrandOpReportLogic.AppBrandOnOpReportStartEvent;
-import com.tencent.mm.plugin.appbrand.service.j;
-import com.tencent.mm.plugin.appbrand.service.z;
-import com.tencent.mm.vending.c.a;
-import com.tencent.mm.vending.g.d.b;
-import java.util.List;
+import com.tencent.mm.plugin.h.f;
 
-class k
-  implements j
+public final class k
 {
-  public void a(int paramInt, String paramString, Object paramObject) {}
+  private static boolean qCp = false;
   
-  public com.tencent.mm.vending.g.e<Integer> acu(final String paramString)
+  /* Error */
+  public static com.tencent.mm.kernel.b.f UT(java.lang.String paramString)
   {
-    AppMethodBeat.i(44171);
-    paramString = com.tencent.mm.cw.g.ijP().b(new a()
-    {
-      private Integer bFy()
-      {
-        AppMethodBeat.i(44166);
-        if (!h.aHE().aGM())
-        {
-          com.tencent.mm.vending.g.g.ieE().eo(new com.tencent.mm.model.b());
-          AppMethodBeat.o(44166);
-          return null;
-        }
-        AppBrandOpReportLogic.AppBrandOnOpReportStartEvent.air(paramString);
-        final com.tencent.mm.vending.g.b localb = com.tencent.mm.vending.g.g.ieO();
-        h.aHF().kcd.a(1345, new com.tencent.mm.an.i()
-        {
-          public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, q paramAnonymous2q)
-          {
-            AppMethodBeat.i(44165);
-            if (com.tencent.mm.plugin.appbrand.jsapi.op_report.c.b(paramAnonymous2q, k.1.this.val$appId))
-            {
-              h.aHF().kcd.b(1345, this);
-              try
-              {
-                localb.G(new Object[] { Integer.valueOf(com.tencent.mm.plugin.appbrand.jsapi.op_report.c.e(paramAnonymous2q)) });
-                AppMethodBeat.o(44165);
-                return;
-              }
-              catch (Exception paramAnonymous2String)
-              {
-                localb.eo(paramAnonymous2String);
-              }
-            }
-            AppMethodBeat.o(44165);
-          }
-        });
-        AppMethodBeat.o(44166);
-        return null;
-      }
-    });
-    AppMethodBeat.o(44171);
-    return paramString;
+    // Byte code:
+    //   0: ldc 18
+    //   2: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: invokestatic 30	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   9: ifeq +10 -> 19
+    //   12: ldc 18
+    //   14: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   17: aconst_null
+    //   18: areturn
+    //   19: aload_0
+    //   20: invokestatic 39	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   23: astore_3
+    //   24: ldc 41
+    //   26: aload_3
+    //   27: invokevirtual 45	java/lang/Class:isAssignableFrom	(Ljava/lang/Class;)Z
+    //   30: ifeq +93 -> 123
+    //   33: aload_3
+    //   34: monitorenter
+    //   35: invokestatic 51	com/tencent/mm/kernel/h:baA	()Lcom/tencent/mm/kernel/d;
+    //   38: aload_3
+    //   39: invokevirtual 57	com/tencent/mm/kernel/d:az	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/a;
+    //   42: checkcast 41	com/tencent/mm/kernel/b/f
+    //   45: astore_2
+    //   46: aload_2
+    //   47: ifnull +12 -> 59
+    //   50: aload_2
+    //   51: astore_1
+    //   52: aload_2
+    //   53: invokestatic 63	com/tencent/mm/kernel/g:cR	(Ljava/lang/Object;)Z
+    //   56: ifeq +21 -> 77
+    //   59: invokestatic 51	com/tencent/mm/kernel/h:baA	()Lcom/tencent/mm/kernel/d;
+    //   62: aload_3
+    //   63: invokevirtual 67	com/tencent/mm/kernel/d:av	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/f;
+    //   66: astore_1
+    //   67: aload_1
+    //   68: invokestatic 71	com/tencent/mm/kernel/h:baB	()Lcom/tencent/mm/kernel/e;
+    //   71: invokevirtual 77	com/tencent/mm/kernel/e:bad	()Lcom/tencent/mm/kernel/b/g;
+    //   74: invokevirtual 81	com/tencent/mm/kernel/b/f:execute	(Lcom/tencent/mm/kernel/b/g;)V
+    //   77: aload_3
+    //   78: monitorexit
+    //   79: ldc 18
+    //   81: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   84: aload_1
+    //   85: areturn
+    //   86: astore_1
+    //   87: aload_3
+    //   88: monitorexit
+    //   89: ldc 18
+    //   91: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   94: aload_1
+    //   95: athrow
+    //   96: astore_1
+    //   97: ldc 83
+    //   99: ldc 85
+    //   101: iconst_2
+    //   102: anewarray 4	java/lang/Object
+    //   105: dup
+    //   106: iconst_0
+    //   107: aload_0
+    //   108: aastore
+    //   109: dup
+    //   110: iconst_1
+    //   111: aload_1
+    //   112: aastore
+    //   113: invokestatic 91	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   116: ldc 18
+    //   118: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   121: aconst_null
+    //   122: areturn
+    //   123: ldc 83
+    //   125: ldc 93
+    //   127: iconst_1
+    //   128: anewarray 4	java/lang/Object
+    //   131: dup
+    //   132: iconst_0
+    //   133: aload_0
+    //   134: aastore
+    //   135: invokestatic 91	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   138: goto -22 -> 116
+    //   141: astore_1
+    //   142: goto -45 -> 97
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	145	0	paramString	java.lang.String
+    //   51	34	1	localf1	com.tencent.mm.kernel.b.f
+    //   86	9	1	localObject	Object
+    //   96	16	1	localClassNotFoundException	java.lang.ClassNotFoundException
+    //   141	1	1	localClassCastException	java.lang.ClassCastException
+    //   45	8	2	localf2	com.tencent.mm.kernel.b.f
+    //   23	65	3	localClass	java.lang.Class
+    // Exception table:
+    //   from	to	target	type
+    //   35	46	86	finally
+    //   52	59	86	finally
+    //   59	77	86	finally
+    //   77	79	86	finally
+    //   19	35	96	java/lang/ClassNotFoundException
+    //   87	96	96	java/lang/ClassNotFoundException
+    //   123	138	96	java/lang/ClassNotFoundException
+    //   19	35	141	java/lang/ClassCastException
+    //   87	96	141	java/lang/ClassCastException
+    //   123	138	141	java/lang/ClassCastException
   }
   
-  public void acv(String paramString)
+  public static void ceQ()
   {
-    AppMethodBeat.i(44172);
-    com.tencent.mm.plugin.appbrand.task.i.cjb().a(LuggageServiceType.cBP, z.qOX);
-    AppMethodBeat.o(44172);
-  }
-  
-  public final int bFx()
-  {
-    AppMethodBeat.i(44175);
-    if ((!h.aHE().kbT) || (h.ae(com.tencent.mm.plugin.appbrand.api.e.class) == null))
-    {
-      com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.AppBrand.ServiceForWebView", "getWxaCommLibVersion, invalid account status, stack:%s", new Object[] { android.util.Log.getStackTraceString(new Throwable()) });
-      AppMethodBeat.o(44175);
-      return -1;
-    }
-    ICommLibReader localICommLibReader2 = au.bHb();
-    ICommLibReader localICommLibReader1 = localICommLibReader2;
-    if (localICommLibReader2 == null) {}
+    AppMethodBeat.i(44133);
     try
     {
-      at.bHa();
-      localICommLibReader1 = au.bHb();
-      if (localICommLibReader1 == null)
+      if (!qCp)
       {
-        AppMethodBeat.o(44175);
-        return -1;
+        new f().execute(h.baB().bad());
+        qCp = true;
       }
-    }
-    catch (com.tencent.mm.model.b localb)
-    {
-      AppMethodBeat.o(44175);
-      return -1;
-    }
-    int i = localb.bGi();
-    AppMethodBeat.o(44175);
-    return i;
-  }
-  
-  public void ba(List<String> paramList)
-  {
-    AppMethodBeat.i(44174);
-    aa.a(paramList, o.a.nZk, null).a(new d.b() {});
-    AppMethodBeat.o(44174);
-  }
-  
-  public void cw(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(44176);
-    if (TextUtils.isEmpty(paramString1))
-    {
-      com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.AppBrand.ServiceForWebView", "privateOpenWeappFunctionalPage invalid uuid");
-      AppMethodBeat.o(44176);
       return;
     }
-    com.tencent.mm.cw.g.ijP().h(new k.3(this, paramString1, paramString2)).ieF();
-    AppMethodBeat.o(44176);
-  }
-  
-  public void r(String paramString1, String paramString2, int paramInt)
-  {
-    AppMethodBeat.i(44173);
-    SendDataToMiniProgramFromH5Event localSendDataToMiniProgramFromH5Event = new SendDataToMiniProgramFromH5Event();
-    localSendDataToMiniProgramFromH5Event.oTP = paramString1;
-    localSendDataToMiniProgramFromH5Event.data = paramString2;
-    localSendDataToMiniProgramFromH5Event.oTQ = paramInt;
-    com.tencent.mm.plugin.appbrand.ipc.e.b(paramString1, localSendDataToMiniProgramFromH5Event);
-    AppMethodBeat.o(44173);
+    finally
+    {
+      AppMethodBeat.o(44133);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.app.k
  * JD-Core Version:    0.7.0.1
  */

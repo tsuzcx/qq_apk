@@ -3,7 +3,6 @@ package com.google.android.gms.wearable;
 import android.net.Uri;
 import android.util.Base64;
 import com.google.android.gms.common.internal.Asserts;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.internal.wearable.zze;
 import com.google.android.gms.internal.wearable.zzf;
 import com.google.android.gms.internal.wearable.zzg;
@@ -13,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@VisibleForTesting
 public class DataMapItem
 {
   private final Uri uri;
@@ -107,7 +105,7 @@ public class DataMapItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.DataMapItem
  * JD-Core Version:    0.7.0.1
  */

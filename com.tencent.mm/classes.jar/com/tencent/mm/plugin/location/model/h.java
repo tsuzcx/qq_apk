@@ -1,52 +1,51 @@
 package com.tencent.mm.plugin.location.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.cd.b;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bxp;
-import com.tencent.mm.protocal.protobuf.bxq;
-import com.tencent.mm.protocal.protobuf.eae;
+import com.tencent.mm.protocal.protobuf.cms;
+import com.tencent.mm.protocal.protobuf.cmt;
+import com.tencent.mm.protocal.protobuf.gol;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 
 public final class h
-  extends q
+  extends p
   implements m
 {
-  private byte[] Ejy;
-  String Ejz;
-  private i callback;
-  public final d rr;
+  private byte[] Kch;
+  String Kci;
+  private com.tencent.mm.am.h callback;
+  public final c rr;
   
   public h(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2)
   {
     AppMethodBeat.i(55691);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new bxp();
-    ((d.a)localObject).lBV = new bxq();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/getlocimg";
-    ((d.a)localObject).funcId = 648;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (bxp)d.b.b(this.rr.lBR);
-    ((bxp)localObject).vhq = paramString2;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new cms();
+    ((c.a)localObject).otF = new cmt();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/getlocimg";
+    ((c.a)localObject).funcId = 648;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (cms)c.b.b(this.rr.otB);
+    ((cms)localObject).yts = paramString2;
     if (Util.isOverseasUser(MMApplicationContext.getContext())) {}
-    for (((bxp)localObject).The = 1;; ((bxp)localObject).The = 0)
+    for (((cms)localObject).aauu = 1;; ((cms)localObject).aauu = 0)
     {
-      ((bxp)localObject).ScP = paramFloat1;
-      ((bxp)localObject).ScO = paramFloat2;
-      ((bxp)localObject).Thf = paramInt1;
+      ((cms)localObject).ZaH = paramFloat1;
+      ((cms)localObject).ZaG = paramFloat2;
+      ((cms)localObject).aauv = paramInt1;
       Log.i("MicroMsg.NetSceneGetLocImg", "src w %d h %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
       while (paramInt2 * paramInt3 > 270000)
       {
@@ -54,17 +53,17 @@ public final class h
         paramInt3 = (int)(paramInt3 / 1.2D);
       }
     }
-    Log.i("MicroMsg.NetSceneGetLocImg", "NetSceneGetLocImg %f %f %d w = %d h = %d lan=%s", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), ((bxp)localObject).vhq });
-    ((bxp)localObject).Height = paramInt3;
-    ((bxp)localObject).Width = paramInt2;
-    this.Ejz = paramString1;
+    Log.i("MicroMsg.NetSceneGetLocImg", "NetSceneGetLocImg %f %f %d w = %d h = %d lan=%s", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), ((cms)localObject).yts });
+    ((cms)localObject).Height = paramInt3;
+    ((cms)localObject).Width = paramInt2;
+    this.Kci = paramString1;
     AppMethodBeat.o(55691);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
     AppMethodBeat.i(55692);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(55692);
     return i;
@@ -79,11 +78,11 @@ public final class h
   {
     AppMethodBeat.i(55693);
     Log.d("MicroMsg.NetSceneGetLocImg", "onGYNetEnd errType %d errCode%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    params = (bxq)d.c.b(((d)params).lBS);
+    params = (cmt)c.c.b(((c)params).otC);
     try
     {
-      this.Ejy = params.RIH.Tkb.UH;
-      u.f(this.Ejz, this.Ejy, this.Ejy.length);
+      this.Kch = params.YFI.aaxD.Op;
+      y.f(this.Kci, this.Kch, this.Kch.length);
       if (this.callback != null) {
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       }
@@ -101,7 +100,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.location.model.h
  * JD-Core Version:    0.7.0.1
  */

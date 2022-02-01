@@ -5,47 +5,51 @@ import java.util.List;
 
 public abstract interface a
 {
-  public abstract String H(Context paramContext, String paramString);
+  public abstract void E(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  public abstract void R(int paramInt1, int paramInt2, int paramInt3);
+  public abstract String M(Context paramContext, String paramString);
   
-  public abstract void T(int paramInt, String paramString);
+  public abstract byte[] RA(String paramString);
   
-  public abstract byte[] Zy(String paramString);
+  public abstract void RB(String paramString);
   
-  public abstract void Zz(String paramString);
+  public abstract void W(int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract String auQ();
+  public abstract void Y(int paramInt, String paramString);
   
-  public abstract String bue();
+  public abstract String aPk();
   
-  public abstract long buf();
+  public abstract String bRH();
   
-  public abstract String bug();
+  public abstract long bRI();
   
-  public abstract boolean buh();
+  public abstract String bRJ();
   
-  public abstract String bui();
+  public abstract boolean bRK();
   
-  public abstract boolean buj();
+  public abstract String bRL();
   
-  public abstract List<String> buk();
+  public abstract String bRM();
   
-  public abstract boolean dk(Context paramContext);
+  public abstract boolean bRN();
   
-  public abstract String getDeviceId();
+  public abstract List<String> bRO();
+  
+  public abstract boolean ec(Context paramContext);
+  
+  public abstract String getAndroidId();
+  
+  public abstract long getGSMSignalStrength();
   
   public abstract String getWiFiBssid();
   
   public abstract String getWiFiSsid();
   
-  public abstract boolean k(String paramString, byte[] paramArrayOfByte);
-  
-  public abstract void y(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public abstract boolean m(String paramString, byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.normsg.a
  * JD-Core Version:    0.7.0.1
  */

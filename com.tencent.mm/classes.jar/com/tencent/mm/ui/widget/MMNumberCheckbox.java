@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class MMNumberCheckbox
   extends AppCompatCheckBox
 {
-  private int Iu;
+  private int bow;
   
   public MMNumberCheckbox(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -22,19 +22,19 @@ public class MMNumberCheckbox
   
   public int getNumber()
   {
-    return this.Iu;
+    return this.bow;
   }
   
   public void setChecked(boolean paramBoolean)
   {
     AppMethodBeat.i(143377);
     super.setChecked(paramBoolean);
-    if ((paramBoolean) && (this.Iu > 0) && (!String.valueOf(this.Iu).contentEquals(getText()))) {
-      setText(String.valueOf(this.Iu));
+    if ((paramBoolean) && (this.bow > 0) && (!String.valueOf(this.bow).contentEquals(getText()))) {
+      setText(String.valueOf(this.bow));
     }
     if (!paramBoolean)
     {
-      this.Iu = 0;
+      this.bow = 0;
       setText("");
     }
     AppMethodBeat.o(143377);
@@ -43,9 +43,9 @@ public class MMNumberCheckbox
   public void setCheckedNumber(int paramInt)
   {
     AppMethodBeat.i(143378);
-    if ((paramInt > 0) && (paramInt != this.Iu))
+    if ((paramInt > 0) && (paramInt != this.bow))
     {
-      this.Iu = paramInt;
+      this.bow = paramInt;
       setText(String.valueOf(paramInt));
       setChecked(true);
     }
@@ -54,14 +54,14 @@ public class MMNumberCheckbox
   
   public void setNumber(int paramInt)
   {
-    if (this.Iu > 0) {
-      this.Iu = paramInt;
+    if (this.bow > 0) {
+      this.bow = paramInt;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.ui.widget.MMNumberCheckbox
  * JD-Core Version:    0.7.0.1
  */

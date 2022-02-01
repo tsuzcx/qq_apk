@@ -1,56 +1,58 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.cd.b;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bsy;
-import com.tencent.mm.protocal.protobuf.bsz;
-import com.tencent.mm.protocal.protobuf.eae;
+import com.tencent.mm.plugin.backup.b.d;
+import com.tencent.mm.protocal.protobuf.chr;
+import com.tencent.mm.protocal.protobuf.chs;
+import com.tencent.mm.protocal.protobuf.gol;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class f
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  private final com.tencent.mm.an.d rr;
+  private h callback;
+  private final c rr;
   
   public f(String paramString)
   {
     AppMethodBeat.i(21952);
     Log.i("MicroMsg.NetSceneGetConnectInfo", "summerbak NetSceneGetConnectInfo init, url[%s], stack[%s]", new Object[] { paramString, Util.getStack() });
-    d.a locala = new d.a();
-    locala.lBU = new bsy();
-    locala.lBV = new bsz();
+    c.a locala = new c.a();
+    locala.otE = new chr();
+    locala.otF = new chs();
     locala.uri = "/cgi-bin/micromsg-bin/getconnectinfo";
-    locala.lBW = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
     locala.funcId = 595;
-    this.rr = locala.bgN();
-    ((bsy)d.b.b(this.rr.lBR)).URL = paramString;
+    this.rr = locala.bEF();
+    ((chr)c.b.b(this.rr.otB)).URL = paramString;
     AppMethodBeat.o(21952);
   }
   
-  public final bsz cuD()
+  public final chs cXn()
   {
-    AppMethodBeat.i(287564);
-    bsz localbsz = (bsz)d.c.b(this.rr.lBS);
-    AppMethodBeat.o(287564);
-    return localbsz;
+    AppMethodBeat.i(300722);
+    chs localchs = (chs)c.c.b(this.rr.otC);
+    AppMethodBeat.o(300722);
+    return localchs;
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(21953);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(21953);
     return i;
@@ -67,10 +69,10 @@ public final class f
     Log.i("MicroMsg.NetSceneGetConnectInfo", "errType %d,  errCode %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      params = (bsz)d.c.b(this.rr.lBS);
-      com.tencent.mm.plugin.backup.b.d.bf(params.RMR.Tkb.UH);
-      Log.i("MicroMsg.NetSceneGetConnectInfo", "id:%s  hello:%s, ok:%s, PCName:%s, PCAcctName:%s, scene:%d", new Object[] { params.ID, params.RNF, params.RNG, params.RNy, params.RNz, Integer.valueOf(params.CPw) });
-      Log.i("MicroMsg.NetSceneGetConnectInfo", "resource:%s", new Object[] { params.Tdb });
+      params = (chs)c.c.b(this.rr.otC);
+      d.bf(params.YKf.aaxD.Op);
+      Log.i("MicroMsg.NetSceneGetConnectInfo", "id:%s  hello:%s, ok:%s, PCName:%s, PCAcctName:%s, scene:%d", new Object[] { params.vgy, params.YKT, params.YKU, params.YKM, params.YKN, Integer.valueOf(params.IJG) });
+      Log.i("MicroMsg.NetSceneGetConnectInfo", "resource:%s", new Object[] { params.aaqq });
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(21954);
@@ -78,7 +80,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.c.f
  * JD-Core Version:    0.7.0.1
  */

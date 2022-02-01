@@ -19,6 +19,8 @@ public abstract class c
     this.index = paramInt;
   }
   
+  public abstract JSONObject aZh();
+  
   public final int getIndex()
   {
     return this.index;
@@ -28,12 +30,10 @@ public abstract class c
   {
     return this.name;
   }
-  
-  public abstract JSONObject toJSONObject();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ac.b.c
  * JD-Core Version:    0.7.0.1
  */

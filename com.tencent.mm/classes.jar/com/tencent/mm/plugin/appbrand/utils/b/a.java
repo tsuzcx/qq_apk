@@ -17,22 +17,22 @@ public abstract interface a
   {
     public double altitude;
     public String buildingId;
+    public Object extra;
     public String floorName;
-    public double fqE;
-    public Object lCh;
+    public double huN;
     public double latitude;
     public double longitude;
     public String provider;
-    public double rjO;
-    public int rjP;
-    public float rjQ;
-    public double rjR = 0.0D;
     public String type;
+    public double usi;
+    public int usj;
+    public float usk;
+    public double usl = 0.0D;
     
     public final String toString()
     {
       AppMethodBeat.i(143729);
-      String str = "Location{latitude=" + this.latitude + ", longitude=" + this.longitude + ", provider='" + this.provider + '\'' + ", speed=" + this.fqE + ", accuracy=" + this.rjO + ", altitude=" + this.altitude + ", buildingId='" + this.buildingId + '\'' + ", floorName='" + this.floorName + '\'' + ", extra=" + this.lCh + ", indoorLocationType=" + this.rjP + ", direction=" + this.rjQ + '}';
+      String str = "Location{latitude=" + this.latitude + ", longitude=" + this.longitude + ", provider='" + this.provider + '\'' + ", speed=" + this.huN + ", accuracy=" + this.usi + ", altitude=" + this.altitude + ", buildingId='" + this.buildingId + '\'' + ", floorName='" + this.floorName + '\'' + ", extra=" + this.extra + ", indoorLocationType=" + this.usj + ", direction=" + this.usk + '}';
       AppMethodBeat.o(143729);
       return str;
     }
@@ -45,7 +45,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.b.a
  * JD-Core Version:    0.7.0.1
  */

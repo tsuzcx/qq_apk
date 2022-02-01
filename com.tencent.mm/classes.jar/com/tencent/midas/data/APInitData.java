@@ -25,9 +25,9 @@ public class APInitData
   
   public static void init()
   {
-    AppMethodBeat.i(253290);
+    AppMethodBeat.i(217000);
     gInstance = new APInitData();
-    AppMethodBeat.o(253290);
+    AppMethodBeat.o(217000);
   }
   
   public static void setInitdataCount(int paramInt)
@@ -37,12 +37,12 @@ public class APInitData
   
   public static APInitData singleton()
   {
-    AppMethodBeat.i(253288);
+    AppMethodBeat.i(216992);
     if (gInstance == null) {
       gInstance = new APInitData();
     }
     APInitData localAPInitData = gInstance;
-    AppMethodBeat.o(253288);
+    AppMethodBeat.o(216992);
     return localAPInitData;
   }
   
@@ -68,7 +68,7 @@ public class APInitData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.midas.data.APInitData
  * JD-Core Version:    0.7.0.1
  */

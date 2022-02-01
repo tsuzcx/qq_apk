@@ -1,19 +1,42 @@
 package com.tencent.mm.emoji.panel.a;
 
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.b.b.m;
-import kotlin.l;
+import com.tencent.mm.emoji.c.b.ae;
+import com.tencent.mm.emoji.c.b.h;
+import com.tencent.mm.plugin.m.a.g;
+import java.util.Iterator;
+import kotlin.Metadata;
+import kotlin.a.ah;
+import kotlin.g.b.s;
+import kotlin.k.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/panel/adapter/SearchEmojiBottomViewHolder;", "Lcom/tencent/mm/emoji/panel/adapter/PanelViewHolder;", "Lcom/tencent/mm/emoji/model/panel/EntranceItem;", "itemView", "Landroid/view/View;", "onClick", "Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "(Landroid/view/View;Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;)V", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/panel/adapter/SearchEmojiLoadingViewHolder;", "Lcom/tencent/mm/emoji/panel/adapter/PanelViewHolder;", "Lcom/tencent/mm/emoji/model/panel/EmojiItem;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "onBind", "", "item", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class t
-  extends s<m>
+  extends q<h>
 {
-  public t(View paramView, p paramp)
+  public t(View paramView)
   {
-    super(paramView, paramp);
-    AppMethodBeat.i(229710);
-    AppMethodBeat.o(229710);
+    super(paramView, null);
+    AppMethodBeat.i(242399);
+    AppMethodBeat.o(242399);
+  }
+  
+  public final void a(ae paramae)
+  {
+    AppMethodBeat.i(242406);
+    s.u(paramae, "item");
+    super.a(paramae);
+    paramae = ((Iterable)k.qt(0, ((ViewGroup)this.caK).getChildCount())).iterator();
+    while (paramae.hasNext())
+    {
+      int i = ((ah)paramae).Zo();
+      ((ViewGroup)this.caK).getChildAt(i).setVisibility(8);
+    }
+    ((ProgressBar)this.caK.findViewById(a.g.load_progress)).setVisibility(0);
+    AppMethodBeat.o(242406);
   }
 }
 

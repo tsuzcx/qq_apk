@@ -2,7 +2,9 @@ package com.tencent.mm.plugin.teenmode;
 
 public final class a$c
 {
-  public static final int MrY = 2131234942;
+  public static final int SVd = 2131234185;
+  public static final int SVe = 2131234559;
+  public static final int we_app_icon = 2131234970;
 }
 
 

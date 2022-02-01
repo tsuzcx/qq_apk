@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class ProductScrollView
   extends ScrollView
 {
-  private a IQC;
+  private a OZy;
   
   public ProductScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,25 +24,25 @@ public class ProductScrollView
   {
     AppMethodBeat.i(51848);
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.IQC != null) {
-      this.IQC.daG();
+    if (this.OZy != null) {
+      this.OZy.dHa();
     }
     AppMethodBeat.o(51848);
   }
   
   public void setOnScrollListener(a parama)
   {
-    this.IQC = parama;
+    this.OZy = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void daG();
+    public abstract void dHa();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.ProductScrollView
  * JD-Core Version:    0.7.0.1
  */

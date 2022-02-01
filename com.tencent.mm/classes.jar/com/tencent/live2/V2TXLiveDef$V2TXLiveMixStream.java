@@ -49,15 +49,15 @@ public class V2TXLiveDef$V2TXLiveMixStream
   
   public String toString()
   {
-    AppMethodBeat.i(215777);
+    AppMethodBeat.i(211316);
     String str = "[userId='" + this.userId + '\'' + "][streamId='" + this.streamId + '\'' + "][x=" + this.x + "][y=" + this.y + "][width=" + this.width + "][height=" + this.height + "][zOrder=" + this.zOrder + "][inputType=" + this.inputType + ']';
-    AppMethodBeat.o(215777);
+    AppMethodBeat.o(211316);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.live2.V2TXLiveDef.V2TXLiveMixStream
  * JD-Core Version:    0.7.0.1
  */

@@ -2,24 +2,25 @@ package androidx.transition;
 
 import android.graphics.Rect;
 import android.view.ViewGroup;
+import androidx.core.g.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class p
   extends an
 {
-  int aqZ = 80;
-  private float aqs = 3.0F;
+  int cfI = 80;
+  private float cfa = 3.0F;
   
   public final long a(ViewGroup paramViewGroup, Transition paramTransition, w paramw1, w paramw2)
   {
-    AppMethodBeat.i(192478);
+    AppMethodBeat.i(201610);
     if ((paramw1 == null) && (paramw2 == null))
     {
-      AppMethodBeat.o(192478);
+      AppMethodBeat.o(201610);
       return 0L;
     }
     int j = 1;
-    Rect localRect = paramTransition.nu();
+    Rect localRect = paramTransition.LX();
     if ((paramw2 == null) || (e(paramw1) == 0))
     {
       j = -1;
@@ -43,10 +44,10 @@ public final class p
     {
       k = localRect.centerX();
       m = localRect.centerY();
-      if (this.aqZ != 8388611) {
+      if (this.cfI != 8388611) {
         break label362;
       }
-      if (androidx.core.g.w.I(paramViewGroup) != 1) {
+      if (z.U(paramViewGroup) != 1) {
         break label350;
       }
       i = 1;
@@ -59,7 +60,7 @@ public final class p
       default: 
         i = 0;
         f = i;
-        switch (this.aqZ)
+        switch (this.cfI)
         {
         }
         break;
@@ -73,8 +74,8 @@ public final class p
       if (l2 < 0L) {
         l1 = 300L;
       }
-      l1 = Math.round((float)(l1 * j) / this.aqs * f);
-      AppMethodBeat.o(192478);
+      l1 = Math.round((float)(l1 * j) / this.cfa * f);
+      AppMethodBeat.o(201610);
       return l1;
       k = (i2 + i4) / 2;
       m = (i3 + i5) / 2;
@@ -86,9 +87,9 @@ public final class p
       i = 3;
       break label162;
       label362:
-      if (this.aqZ == 8388613)
+      if (this.cfI == 8388613)
       {
-        if (androidx.core.g.w.I(paramViewGroup) == 1)
+        if (z.U(paramViewGroup) == 1)
         {
           i = 1;
           label382:
@@ -104,7 +105,7 @@ public final class p
         }
       }
       label399:
-      i = this.aqZ;
+      i = this.cfI;
       break label162;
       i = i4 - n + Math.abs(m - i1);
       break label211;
@@ -119,7 +120,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.transition.p
  * JD-Core Version:    0.7.0.1
  */

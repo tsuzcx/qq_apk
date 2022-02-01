@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.address.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -33,26 +32,23 @@ import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
 import com.tencent.mm.R.k;
 import com.tencent.mm.R.l;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.b.p;
-import com.tencent.mm.be.o;
-import com.tencent.mm.f.a.nt;
-import com.tencent.mm.f.a.nt.b;
+import com.tencent.mm.am.s;
+import com.tencent.mm.autogen.a.pb;
+import com.tencent.mm.autogen.a.pb.b;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
-import com.tencent.mm.plugin.address.model.e;
 import com.tencent.mm.plugin.address.model.f;
 import com.tencent.mm.plugin.address.model.g;
-import com.tencent.mm.plugin.address.model.l;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.plugin.address.model.j;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h.d;
-import com.tencent.mm.wallet_core.c.aa;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.k.d;
+import com.tencent.mm.wallet_core.model.ab;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -61,59 +57,42 @@ public class WalletSelectAddrUI
   extends MMActivity
   implements com.tencent.mm.plugin.address.c.a
 {
-  private ListView kJh;
   private Object lockObj;
-  private boolean nlt;
-  private boolean nnA;
-  private boolean nnk;
-  private List<com.tencent.mm.plugin.address.d.b> nnp;
-  private com.tencent.mm.plugin.address.d.b nnq;
-  private a nnr;
-  private TextView nns;
-  private com.tencent.mm.plugin.address.c.b nnt;
-  private View nnu;
-  private TextView nnv;
-  private p nnw;
-  private boolean nnx;
-  private boolean nny;
-  private com.tencent.mm.ui.widget.a.d nnz;
+  private ListView nlI;
+  private boolean qiC;
+  private com.tencent.mm.plugin.address.c.b qkA;
+  private View qkB;
+  private TextView qkC;
+  private com.tencent.mm.b.p qkD;
+  private boolean qkE;
+  private boolean qkF;
+  private com.tencent.mm.ui.widget.a.e qkG;
+  private boolean qkH;
+  private boolean qkq;
+  private List<com.tencent.mm.plugin.address.d.b> qkx;
+  private com.tencent.mm.plugin.address.d.b qky;
+  private a qkz;
   
   public WalletSelectAddrUI()
   {
     AppMethodBeat.i(21037);
-    this.nnp = new LinkedList();
-    this.nnt = null;
-    this.nnv = null;
+    this.qkx = new LinkedList();
+    this.qkA = null;
+    this.qkC = null;
     this.lockObj = new Object();
-    this.nlt = false;
-    this.nnx = false;
-    this.nny = false;
-    this.nnz = null;
+    this.qiC = false;
+    this.qkE = false;
+    this.qkF = false;
+    this.qkG = null;
     AppMethodBeat.o(21037);
   }
   
-  private void bAB()
-  {
-    AppMethodBeat.i(21041);
-    synchronized (this.lockObj)
-    {
-      com.tencent.mm.plugin.address.a.a.bAn();
-      this.nnp = com.tencent.mm.plugin.address.a.a.bAp().nkJ.nkS;
-      this.nnr.lxh = this.nnp;
-      this.nnp.size();
-      this.nnu.setVisibility(8);
-      this.nnr.notifyDataSetChanged();
-      AppMethodBeat.o(21041);
-      return;
-    }
-  }
-  
-  private void bAW()
+  private void bZH()
   {
     AppMethodBeat.i(21045);
-    final nt localnt = new nt();
-    localnt.fMj.fDf = this;
-    localnt.fMj.fMl = new Runnable()
+    final pb localpb = new pb();
+    localpb.hRT.hHU = this;
+    localpb.hRT.hRV = new Runnable()
     {
       public final void run()
       {
@@ -123,12 +102,12 @@ public class WalletSelectAddrUI
           public final void run()
           {
             AppMethodBeat.i(21029);
-            if (WalletSelectAddrUI.9.this.nnE.fMk.fyl)
+            if (WalletSelectAddrUI.9.this.qkL.hRU.hCQ)
             {
-              bh.beI();
-              String str1 = Util.nullAsNil((String)c.aHp().b(46, null));
-              bh.beI();
-              String str2 = Util.nullAsNil((String)c.aHp().b(72, null));
+              bh.bCz();
+              String str1 = Util.nullAsNil((String)c.ban().d(46, null));
+              bh.bCz();
+              String str2 = Util.nullAsNil((String)c.ban().d(72, null));
               WalletSelectAddrUI.a(WalletSelectAddrUI.this, str1, str2);
             }
             AppMethodBeat.o(21029);
@@ -137,50 +116,61 @@ public class WalletSelectAddrUI
         AppMethodBeat.o(21030);
       }
     };
-    EventCenter.instance.asyncPublish(localnt, Looper.myLooper());
+    localpb.asyncPublish(Looper.myLooper());
     AppMethodBeat.o(21045);
   }
   
-  private void ck(String paramString1, String paramString2)
+  private void bZr()
+  {
+    AppMethodBeat.i(21041);
+    synchronized (this.lockObj)
+    {
+      com.tencent.mm.plugin.address.a.a.bZe();
+      this.qkx = com.tencent.mm.plugin.address.a.a.bZg().qhS.qib;
+      this.qkz.bMQ = this.qkx;
+      this.qkx.size();
+      this.qkB.setVisibility(8);
+      this.qkz.notifyDataSetChanged();
+      AppMethodBeat.o(21041);
+      return;
+    }
+  }
+  
+  private void cy(String paramString1, String paramString2)
   {
     AppMethodBeat.i(21044);
-    paramString1 = new com.tencent.mm.plugin.address.model.d(paramString1, paramString2, this.nnw);
-    this.nnt.doSceneProgress(paramString1, true);
+    paramString1 = new com.tencent.mm.plugin.address.model.d(paramString1, paramString2, this.qkD);
+    this.qkA.doSceneProgress(paramString1, true);
     AppMethodBeat.o(21044);
   }
   
-  private void yz(int paramInt)
+  private void yH(int paramInt)
   {
     AppMethodBeat.i(21046);
     Object localObject = new Intent();
     ((Intent)localObject).setClass(this, WalletAddAddressUI.class);
     ((Intent)localObject).putExtra("address_id", paramInt);
-    ((Intent)localObject).putExtra("force_light_mode", this.nnk);
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-    com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/address/ui/WalletSelectAddrUI", "editAddressUI", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+    ((Intent)localObject).putExtra("force_light_mode", this.qkq);
+    localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/address/ui/WalletSelectAddrUI", "editAddressUI", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
     com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/address/ui/WalletSelectAddrUI", "editAddressUI", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(21046);
   }
   
-  public boolean convertActivityFromTranslucent()
-  {
-    return !this.nnA;
-  }
-  
-  public final void d(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void b(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
   {
     AppMethodBeat.i(21043);
-    this.nnt.onSceneEnd(paramInt1, paramInt2, paramString, paramq);
+    this.qkA.onSceneEnd(paramInt1, paramInt2, paramString, paramp);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if (paramq.getType() == 417)
+      if (paramp.getType() == 417)
       {
-        if (((e)paramq).nkx)
+        if (((com.tencent.mm.plugin.address.model.e)paramp).qhG)
         {
-          bAB();
-          getContentView().findViewById(R.h.dqo).setVisibility(0);
-          if ((this.nlt) && (this.nnp.size() == 0))
+          bZr();
+          getContentView().findViewById(R.h.fqC).setVisibility(0);
+          if ((this.qiC) && (this.qkx.size() == 0))
           {
             paramString = new Intent();
             paramString.setClass(this, WalletAddAddressUI.class);
@@ -190,33 +180,33 @@ public class WalletSelectAddrUI
         AppMethodBeat.o(21043);
         return;
       }
-      if (paramq.getType() == 416)
+      if (paramp.getType() == 416)
       {
-        paramString = (f)paramq;
-        com.tencent.mm.plugin.address.a.a.bAn();
-        paramString = com.tencent.mm.plugin.address.a.a.bAp().yt(paramString.nky);
+        paramString = (f)paramp;
+        com.tencent.mm.plugin.address.a.a.bZe();
+        paramString = com.tencent.mm.plugin.address.a.a.bZg().yz(paramString.qhH);
         if (paramString != null)
         {
-          com.tencent.mm.plugin.address.a.a.bAn();
-          Log.d("MicroMsg.WalletSelectAddrUI", "delte addr ".concat(String.valueOf(com.tencent.mm.plugin.address.a.a.bAp().a(paramString))));
+          com.tencent.mm.plugin.address.a.a.bZe();
+          Log.d("MicroMsg.WalletSelectAddrUI", "delte addr ".concat(String.valueOf(com.tencent.mm.plugin.address.a.a.bZg().a(paramString))));
         }
-        bAB();
+        bZr();
         AppMethodBeat.o(21043);
         return;
       }
-      if (paramq.getType() == 419)
+      if (paramp.getType() == 419)
       {
-        if (this.nnq != null)
+        if (this.qky != null)
         {
-          setResult(-1, com.tencent.mm.plugin.address.e.a.b(this.nnq));
+          setResult(-1, com.tencent.mm.plugin.address.e.a.b(this.qky));
           finish();
           AppMethodBeat.o(21043);
         }
       }
-      else if (paramq.getType() == 582)
+      else if (paramp.getType() == 582)
       {
-        paramString = getString(R.l.enY);
-        switch (((com.tencent.mm.plugin.address.model.d)paramq).status)
+        paramString = getString(R.l.gqY);
+        switch (((com.tencent.mm.plugin.address.model.d)paramp).status)
         {
         default: 
         case 1: 
@@ -224,32 +214,32 @@ public class WalletSelectAddrUI
         case 0: 
           for (;;)
           {
-            if (this.nnz != null) {
-              this.nnz.dismiss();
+            if (this.qkG != null) {
+              this.qkG.dismiss();
             }
-            this.nnz = com.tencent.mm.ui.base.h.a(this, paramString, null, true, null);
+            this.qkG = k.a(this, paramString, null, true, null);
             AppMethodBeat.o(21043);
             return;
-            bh.beI();
-            c.aHp().i(196657, Boolean.TRUE);
-            this.nnv.setVisibility(8);
-            paramString = getString(R.l.enZ);
+            bh.bCz();
+            c.ban().B(196657, Boolean.TRUE);
+            this.qkC.setVisibility(8);
+            paramString = getString(R.l.gqZ);
             continue;
-            bh.beI();
-            c.aHp().i(196657, Boolean.TRUE);
-            this.nnv.setVisibility(8);
-            bAB();
+            bh.bCz();
+            c.ban().B(196657, Boolean.TRUE);
+            this.qkC.setVisibility(8);
+            bZr();
             getContentView().setVisibility(0);
-            paramString = getString(R.l.eoa);
+            paramString = getString(R.l.gra);
           }
         }
-        bAW();
+        bZH();
         AppMethodBeat.o(21043);
       }
     }
-    else if ((paramq.getType() == 419) && (paramInt2 == -3103))
+    else if ((paramp.getType() == 419) && (paramInt2 == -3103))
     {
-      com.tencent.mm.ui.base.h.a(this, true, paramString, "", getString(R.l.emX), getString(R.l.app_cancel), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      k.a(this, true, paramString, "", getString(R.l.gpY), getString(R.l.app_cancel), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -271,25 +261,30 @@ public class WalletSelectAddrUI
     AppMethodBeat.o(21043);
   }
   
+  public boolean convertActivityFromTranslucent()
+  {
+    return !this.qkH;
+  }
+  
   public int getLayoutId()
   {
-    return R.i.ema;
+    return R.i.gpe;
   }
   
   public void initView()
   {
     AppMethodBeat.i(21042);
-    this.nnv = ((TextView)findViewById(R.h.dJd));
-    this.nnv.setVisibility(8);
-    this.nnv.setOnClickListener(new View.OnClickListener()
+    this.qkC = ((TextView)findViewById(R.h.fKy));
+    this.qkC.setVisibility(8);
+    this.qkC.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(21022);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/address/ui/WalletSelectAddrUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        com.tencent.mm.ui.base.h.a(WalletSelectAddrUI.this, true, WalletSelectAddrUI.this.getString(R.l.enW, new Object[] { WalletSelectAddrUI.a(WalletSelectAddrUI.this).toString() }), "", WalletSelectAddrUI.this.getString(R.l.enX), WalletSelectAddrUI.this.getString(R.l.app_cancel), new DialogInterface.OnClickListener()
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/address/ui/WalletSelectAddrUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        k.a(WalletSelectAddrUI.this, true, WalletSelectAddrUI.this.getString(R.l.gqW, new Object[] { WalletSelectAddrUI.a(WalletSelectAddrUI.this).toString() }), "", WalletSelectAddrUI.this.getString(R.l.gqX), WalletSelectAddrUI.this.getString(R.l.app_cancel), new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
           {
@@ -302,146 +297,135 @@ public class WalletSelectAddrUI
         AppMethodBeat.o(21022);
       }
     });
-    this.nns = ((TextView)findViewById(R.h.input_tip));
-    if (this.nny)
+    this.nlI = ((ListView)findViewById(R.h.settings_lv_address));
+    this.qkz = new a(this);
+    this.qkB = findViewById(R.h.fqq);
+    this.qkB.findViewById(R.h.fqE).setVisibility(8);
+    ((TextView)this.qkB.findViewById(R.h.fqL)).setText(R.l.gpS);
+    this.nlI.setAdapter(this.qkz);
+    this.nlI.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
-      this.nns.setText(R.l.eoc);
-      this.nns.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.kJh = ((ListView)findViewById(R.h.settings_lv_address));
-      this.nnr = new a(this);
-      this.nnu = findViewById(R.h.dqc);
-      this.nnu.findViewById(R.h.dqq).setVisibility(8);
-      ((TextView)this.nnu.findViewById(R.h.dqx)).setText(R.l.emR);
-      this.kJh.setAdapter(this.nnr);
-      this.kJh.setOnItemClickListener(new AdapterView.OnItemClickListener()
+      public final void onItemClick(AdapterView<?> arg1, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
-        public final void onItemClick(AdapterView<?> arg1, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+        AppMethodBeat.i(21023);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.cH(???);
+        localb.cH(paramAnonymousView);
+        localb.sc(paramAnonymousInt);
+        localb.hB(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/address/ui/WalletSelectAddrUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aYj());
+        Log.d("MicroMsg.WalletSelectAddrUI", "select pos ".concat(String.valueOf(paramAnonymousInt)));
+        synchronized (WalletSelectAddrUI.c(WalletSelectAddrUI.this))
         {
-          AppMethodBeat.i(21023);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(???);
-          localb.bn(paramAnonymousView);
-          localb.sg(paramAnonymousInt);
-          localb.Fs(paramAnonymousLong);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/address/ui/WalletSelectAddrUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
-          Log.d("MicroMsg.WalletSelectAddrUI", "select pos ".concat(String.valueOf(paramAnonymousInt)));
-          synchronized (WalletSelectAddrUI.c(WalletSelectAddrUI.this))
+          if (paramAnonymousInt < WalletSelectAddrUI.d(WalletSelectAddrUI.this).size())
           {
-            if (paramAnonymousInt < WalletSelectAddrUI.d(WalletSelectAddrUI.this).size())
-            {
-              WalletSelectAddrUI.a(WalletSelectAddrUI.this, (com.tencent.mm.plugin.address.d.b)WalletSelectAddrUI.d(WalletSelectAddrUI.this).get(paramAnonymousInt));
-              if ((WalletSelectAddrUI.e(WalletSelectAddrUI.this)) || (WalletSelectAddrUI.f(WalletSelectAddrUI.this)) || (WalletSelectAddrUI.g(WalletSelectAddrUI.this) == null)) {
-                break label199;
-              }
-              WalletSelectAddrUI.a(WalletSelectAddrUI.this, WalletSelectAddrUI.g(WalletSelectAddrUI.this).id);
+            WalletSelectAddrUI.a(WalletSelectAddrUI.this, (com.tencent.mm.plugin.address.d.b)WalletSelectAddrUI.d(WalletSelectAddrUI.this).get(paramAnonymousInt));
+            if ((WalletSelectAddrUI.e(WalletSelectAddrUI.this)) || (WalletSelectAddrUI.f(WalletSelectAddrUI.this)) || (WalletSelectAddrUI.g(WalletSelectAddrUI.this) == null)) {
+              break label199;
             }
-            label199:
-            while ((WalletSelectAddrUI.g(WalletSelectAddrUI.this) == null) || (WalletSelectAddrUI.g(WalletSelectAddrUI.this).id == 0))
-            {
-              WalletSelectAddrUI.i(WalletSelectAddrUI.this).notifyDataSetChanged();
-              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/address/ui/WalletSelectAddrUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-              AppMethodBeat.o(21023);
-              return;
-            }
-            paramAnonymousView = new g(WalletSelectAddrUI.g(WalletSelectAddrUI.this).id);
-            WalletSelectAddrUI.h(WalletSelectAddrUI.this).doSceneProgress(paramAnonymousView, true);
+            WalletSelectAddrUI.a(WalletSelectAddrUI.this, WalletSelectAddrUI.g(WalletSelectAddrUI.this).id);
           }
-        }
-      });
-      this.kJh.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
-      {
-        public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, final int paramAnonymousInt, long paramAnonymousLong)
-        {
-          AppMethodBeat.i(21025);
-          paramAnonymousAdapterView = WalletSelectAddrUI.this.getResources().getStringArray(R.c.djV);
-          com.tencent.mm.ui.base.h.a(WalletSelectAddrUI.this.getContext(), null, paramAnonymousAdapterView, null, new h.d()
+          label199:
+          while ((WalletSelectAddrUI.g(WalletSelectAddrUI.this) == null) || (WalletSelectAddrUI.g(WalletSelectAddrUI.this).id == 0))
           {
-            public final void qy(int paramAnonymous2Int)
+            WalletSelectAddrUI.i(WalletSelectAddrUI.this).notifyDataSetChanged();
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/address/ui/WalletSelectAddrUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+            AppMethodBeat.o(21023);
+            return;
+          }
+          paramAnonymousView = new g(WalletSelectAddrUI.g(WalletSelectAddrUI.this).id);
+          WalletSelectAddrUI.h(WalletSelectAddrUI.this).doSceneProgress(paramAnonymousView, true);
+        }
+      }
+    });
+    this.nlI.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+    {
+      public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, final int paramAnonymousInt, long paramAnonymousLong)
+      {
+        AppMethodBeat.i(21025);
+        paramAnonymousAdapterView = WalletSelectAddrUI.this.getResources().getStringArray(R.c.fjW);
+        k.a(WalletSelectAddrUI.this.getContext(), null, paramAnonymousAdapterView, null, new k.d()
+        {
+          public final void qz(int paramAnonymous2Int)
+          {
+            AppMethodBeat.i(21024);
+            for (;;)
             {
-              AppMethodBeat.i(21024);
+              synchronized (WalletSelectAddrUI.c(WalletSelectAddrUI.this))
+              {
+                if (paramAnonymousInt >= WalletSelectAddrUI.d(WalletSelectAddrUI.this).size()) {
+                  break label204;
+                }
+                com.tencent.mm.plugin.address.d.b localb = (com.tencent.mm.plugin.address.d.b)WalletSelectAddrUI.d(WalletSelectAddrUI.this).get(paramAnonymousInt);
+                if (localb == null)
+                {
+                  AppMethodBeat.o(21024);
+                  return;
+                }
+              }
+              switch (paramAnonymous2Int)
+              {
+              }
               for (;;)
               {
-                synchronized (WalletSelectAddrUI.c(WalletSelectAddrUI.this))
-                {
-                  if (paramAnonymousInt >= WalletSelectAddrUI.d(WalletSelectAddrUI.this).size()) {
-                    break label204;
-                  }
-                  com.tencent.mm.plugin.address.d.b localb = (com.tencent.mm.plugin.address.d.b)WalletSelectAddrUI.d(WalletSelectAddrUI.this).get(paramAnonymousInt);
-                  if (localb == null)
-                  {
-                    AppMethodBeat.o(21024);
-                    return;
-                  }
-                }
-                switch (paramAnonymous2Int)
-                {
-                }
-                for (;;)
-                {
-                  AppMethodBeat.o(21024);
-                  return;
-                  WalletSelectAddrUI.a(WalletSelectAddrUI.this, localObject1.id);
-                  AppMethodBeat.o(21024);
-                  return;
-                  localf = new f(localObject1.id);
-                  WalletSelectAddrUI.a(WalletSelectAddrUI.this, null);
-                  WalletSelectAddrUI.h(WalletSelectAddrUI.this).doSceneProgress(localf, true);
-                  AppMethodBeat.o(21024);
-                  return;
-                  WalletSelectAddrUI.b(WalletSelectAddrUI.this, localf);
-                }
-                label204:
-                f localf = null;
+                AppMethodBeat.o(21024);
+                return;
+                WalletSelectAddrUI.a(WalletSelectAddrUI.this, localObject1.id);
+                AppMethodBeat.o(21024);
+                return;
+                localf = new f(localObject1.id);
+                WalletSelectAddrUI.a(WalletSelectAddrUI.this, null);
+                WalletSelectAddrUI.h(WalletSelectAddrUI.this).doSceneProgress(localf, true);
+                AppMethodBeat.o(21024);
+                return;
+                WalletSelectAddrUI.b(WalletSelectAddrUI.this, localf);
               }
+              label204:
+              f localf = null;
             }
-          });
-          AppMethodBeat.o(21025);
-          return true;
-        }
-      });
-      bAB();
-      this.nnu.setOnClickListener(new View.OnClickListener()
+          }
+        });
+        AppMethodBeat.o(21025);
+        return true;
+      }
+    });
+    bZr();
+    this.qkB.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
       {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(21026);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/address/ui/WalletSelectAddrUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-          WalletSelectAddrUI.j(WalletSelectAddrUI.this);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/address/ui/WalletSelectAddrUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(21026);
-        }
-      });
-      this.nnr.notifyDataSetChanged();
-      setBackBtn(new MenuItem.OnMenuItemClickListener()
+        AppMethodBeat.i(21026);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/address/ui/WalletSelectAddrUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        WalletSelectAddrUI.j(WalletSelectAddrUI.this);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/address/ui/WalletSelectAddrUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(21026);
+      }
+    });
+    this.qkz.notifyDataSetChanged();
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-        {
-          AppMethodBeat.i(21027);
-          WalletSelectAddrUI.this.setResult(0);
-          WalletSelectAddrUI.this.finish();
-          AppMethodBeat.o(21027);
-          return true;
-        }
-      });
-      addIconOptionMenu(0, R.l.emT, R.k.actionbar_icon_dark_add, new MenuItem.OnMenuItemClickListener()
+        AppMethodBeat.i(21027);
+        WalletSelectAddrUI.this.setResult(0);
+        WalletSelectAddrUI.this.finish();
+        AppMethodBeat.o(21027);
+        return true;
+      }
+    });
+    addIconOptionMenu(0, R.l.gpU, R.k.actionbar_icon_dark_add, new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-        {
-          AppMethodBeat.i(21028);
-          WalletSelectAddrUI.j(WalletSelectAddrUI.this);
-          AppMethodBeat.o(21028);
-          return true;
-        }
-      });
-      AppMethodBeat.o(21042);
-      return;
-      this.nns.setVisibility(8);
-    }
+        AppMethodBeat.i(21028);
+        WalletSelectAddrUI.j(WalletSelectAddrUI.this);
+        AppMethodBeat.o(21028);
+        return true;
+      }
+    });
+    AppMethodBeat.o(21042);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -466,15 +450,15 @@ public class WalletSelectAddrUI
       return;
       label51:
       com.tencent.mm.plugin.address.d.b localb = new com.tencent.mm.plugin.address.d.b();
-      localb.nlb = paramIntent.getStringExtra("nationalCode");
-      localb.nkZ = paramIntent.getStringExtra("userName");
-      localb.nla = paramIntent.getStringExtra("telNumber");
-      localb.nkX = paramIntent.getStringExtra("addressPostalCode");
-      localb.nkU = paramIntent.getStringExtra("proviceFirstStageName");
-      localb.nkV = paramIntent.getStringExtra("addressCitySecondStageName");
-      localb.nkW = paramIntent.getStringExtra("addressCountiesThirdStageName");
-      localb.nlc = paramIntent.getStringExtra("addressCountiesFourStageName");
-      localb.nkY = paramIntent.getStringExtra("addressDetailInfo");
+      localb.qik = paramIntent.getStringExtra("nationalCode");
+      localb.qii = paramIntent.getStringExtra("userName");
+      localb.qij = paramIntent.getStringExtra("telNumber");
+      localb.qig = paramIntent.getStringExtra("addressPostalCode");
+      localb.qid = paramIntent.getStringExtra("proviceFirstStageName");
+      localb.qie = paramIntent.getStringExtra("addressCitySecondStageName");
+      localb.qif = paramIntent.getStringExtra("addressCountiesThirdStageName");
+      localb.qil = paramIntent.getStringExtra("addressCountiesFourStageName");
+      localb.qih = paramIntent.getStringExtra("addressDetailInfo");
       paramIntent = localb;
       break;
       label174:
@@ -487,24 +471,24 @@ public class WalletSelectAddrUI
     AppMethodBeat.i(21038);
     super.onCreate(paramBundle);
     paramBundle = getIntent();
-    this.nnx = paramBundle.getBooleanExtra("launch_from_appbrand", false);
-    this.nny = paramBundle.getBooleanExtra("launch_from_remittance", false);
+    this.qkE = paramBundle.getBooleanExtra("launch_from_appbrand", false);
+    this.qkF = paramBundle.getBooleanExtra("launch_from_remittance", false);
     boolean bool = paramBundle.getBooleanExtra("launch_from_webview", false);
-    if ((bool) || (this.nnx))
+    if ((bool) || (this.qkE))
     {
-      this.nlt = true;
-      getContentView().findViewById(R.h.dqo).setVisibility(8);
-      if ((this.nnx) && (!this.nnA)) {
+      this.qiC = true;
+      getContentView().findViewById(R.h.fqC).setVisibility(8);
+      if ((this.qkE) && (!this.qkH)) {
         getWindow().setBackgroundDrawableResource(R.e.navpage);
       }
       if (bool)
       {
         Log.i("MicroMsg.WalletSelectAddrUI", "showDisclaimerDailog()");
-        bh.beI();
-        if (((Boolean)c.aHp().get(ar.a.VmB, Boolean.TRUE)).booleanValue())
+        bh.bCz();
+        if (((Boolean)c.ban().get(at.a.acNW, Boolean.TRUE)).booleanValue())
         {
           Log.i("MicroMsg.WalletSelectAddrUI", "isShowDisclaimerDialog");
-          com.tencent.mm.ui.base.h.a(this, getString(R.l.enR), getString(R.l.enS), getString(R.l.emp), new DialogInterface.OnClickListener()
+          k.a(this, getString(R.l.gqR), getString(R.l.gqS), getString(R.l.gps), new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
@@ -513,44 +497,45 @@ public class WalletSelectAddrUI
               AppMethodBeat.o(21019);
             }
           });
-          bh.beI();
-          c.aHp().set(ar.a.VmB, Boolean.FALSE);
+          bh.bCz();
+          c.ban().set(at.a.acNW, Boolean.FALSE);
         }
       }
     }
-    this.nnt = new com.tencent.mm.plugin.address.c.b(this, this);
-    setMMTitle(R.l.enQ);
-    this.nnt.addSceneEndListener(417);
-    this.nnt.addSceneEndListener(416);
-    this.nnt.addSceneEndListener(419);
-    this.nnt.addSceneEndListener(582);
-    Object localObject1 = new e(paramBundle.getStringExtra("req_url"), paramBundle.getStringExtra("req_app_id"), 2);
-    this.nnt.doSceneProgress((q)localObject1, false);
-    bh.beI();
-    this.nnw = new p(Util.nullAs((Integer)c.aHp().b(9, null), 0));
-    localObject1 = com.tencent.mm.plugin.address.a.a.bAp();
+    this.qkA = new com.tencent.mm.plugin.address.c.b(this, this);
+    setMMTitle(R.l.gqQ);
+    this.qkA.addSceneEndListener(417);
+    this.qkA.addSceneEndListener(416);
+    this.qkA.addSceneEndListener(419);
+    this.qkA.addSceneEndListener(582);
+    Object localObject1 = new com.tencent.mm.plugin.address.model.e(paramBundle.getStringExtra("req_url"), paramBundle.getStringExtra("req_app_id"), 2);
+    this.qkA.doSceneProgress((com.tencent.mm.am.p)localObject1, false);
+    bh.bCz();
+    this.qkD = new com.tencent.mm.b.p(Util.nullAs((Integer)c.ban().d(9, null), 0));
+    localObject1 = com.tencent.mm.plugin.address.a.a.bZg();
     try
     {
-      Object localObject2 = (String)((com.tencent.mm.plugin.wxpay.a.a)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.wxpay.a.a.class)).getWalletCacheStg().get(ar.a.VtU, null);
+      Object localObject2 = (String)((com.tencent.mm.plugin.wxpay.a.a)h.az(com.tencent.mm.plugin.wxpay.a.a.class)).getWalletCacheStg().get(at.a.acVz, null);
       if (!Util.isNullOrNil((String)localObject2))
       {
         localObject2 = ((String)localObject2).getBytes(kotlin.n.d.ISO_8859_1);
-        ((l)localObject1).nkJ = ((com.tencent.mm.plugin.address.d.a)new com.tencent.mm.plugin.address.d.a().parseFrom((byte[])localObject2));
+        ((j)localObject1).qhS = ((com.tencent.mm.plugin.address.d.a)new com.tencent.mm.plugin.address.d.a().parseFrom((byte[])localObject2));
+        j.a(((j)localObject1).qhS);
       }
       initView();
-      this.nnk = paramBundle.getBooleanExtra("force_light_mode", false);
-      if (this.nnk)
+      this.qkq = paramBundle.getBooleanExtra("force_light_mode", false);
+      if (this.qkq)
       {
         getContentView().findViewById(R.h.content).setBackgroundColor(getContext().getResources().getColor(R.e.BW_BG_100));
-        getContentView().findViewById(R.h.dqo).setBackgroundColor(getContext().getResources().getColor(R.e.BW_BG_100));
+        getContentView().findViewById(R.h.fqC).setBackgroundColor(getContext().getResources().getColor(R.e.BW_BG_100));
         setActionbarColor(getContext().getResources().getColor(R.e.UN_BW_93));
         setNavigationbarColor(getContext().getResources().getColor(R.e.UN_BW_93));
       }
-      bh.beI();
+      bh.bCz();
       if (c.isSDCardAvailable())
       {
-        paramBundle = new o(12);
-        bh.aGY().a(paramBundle, 0);
+        paramBundle = new com.tencent.mm.modelpackage.p(12);
+        bh.aZW().a(paramBundle, 0);
       }
       AppMethodBeat.o(21038);
       return;
@@ -566,14 +551,14 @@ public class WalletSelectAddrUI
   
   public void onCreateBeforeSetContentView()
   {
-    AppMethodBeat.i(227239);
+    AppMethodBeat.i(267178);
     super.onCreateBeforeSetContentView();
     Intent localIntent = getIntent();
     int i = localIntent.getIntExtra("content_view_height", -1);
     if (i != -1) {}
     for (boolean bool = true;; bool = false)
     {
-      this.nnA = bool;
+      this.qkH = bool;
       if (bool)
       {
         WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
@@ -585,8 +570,8 @@ public class WalletSelectAddrUI
         getWindow().setBackgroundDrawable(new ColorDrawable(0));
         com.tencent.mm.ui.base.b.a(this, null);
       }
-      Log.i("MicroMsg.WalletSelectAddrUI", "forceTransparent = " + this.nnA);
-      AppMethodBeat.o(227239);
+      Log.i("MicroMsg.WalletSelectAddrUI", "forceTransparent = " + this.qkH);
+      AppMethodBeat.o(267178);
       return;
     }
   }
@@ -595,10 +580,10 @@ public class WalletSelectAddrUI
   {
     AppMethodBeat.i(21039);
     super.onDestroy();
-    this.nnt.removeSceneEndListener(417);
-    this.nnt.removeSceneEndListener(416);
-    this.nnt.removeSceneEndListener(419);
-    this.nnt.removeSceneEndListener(582);
+    this.qkA.removeSceneEndListener(417);
+    this.qkA.removeSceneEndListener(416);
+    this.qkA.removeSceneEndListener(419);
+    this.qkA.removeSceneEndListener(582);
     AppMethodBeat.o(21039);
   }
   
@@ -606,7 +591,7 @@ public class WalletSelectAddrUI
   {
     AppMethodBeat.i(21040);
     super.onResume();
-    bAB();
+    bZr();
     AppMethodBeat.o(21040);
   }
   
@@ -619,21 +604,21 @@ public class WalletSelectAddrUI
   public final class a
     extends BaseAdapter
   {
+    List<com.tencent.mm.plugin.address.d.b> bMQ;
     private final Context context;
-    List<com.tencent.mm.plugin.address.d.b> lxh;
     
     public a(Context paramContext)
     {
       AppMethodBeat.i(21032);
-      this.lxh = new ArrayList();
+      this.bMQ = new ArrayList();
       this.context = paramContext;
       AppMethodBeat.o(21032);
     }
     
-    private com.tencent.mm.plugin.address.d.b yA(int paramInt)
+    private com.tencent.mm.plugin.address.d.b yI(int paramInt)
     {
       AppMethodBeat.i(21035);
-      com.tencent.mm.plugin.address.d.b localb = (com.tencent.mm.plugin.address.d.b)this.lxh.get(paramInt);
+      com.tencent.mm.plugin.address.d.b localb = (com.tencent.mm.plugin.address.d.b)this.bMQ.get(paramInt);
       AppMethodBeat.o(21035);
       return localb;
     }
@@ -641,7 +626,7 @@ public class WalletSelectAddrUI
     public final int getCount()
     {
       AppMethodBeat.i(21034);
-      int i = this.lxh.size();
+      int i = this.bMQ.size();
       AppMethodBeat.o(21034);
       return i;
     }
@@ -657,48 +642,48 @@ public class WalletSelectAddrUI
       paramViewGroup = new a();
       if (paramView == null)
       {
-        paramView = View.inflate(this.context, R.i.elZ, null);
-        paramViewGroup.nmd = ((ImageView)paramView.findViewById(R.h.dAp));
-        paramViewGroup.kMh = ((TextView)paramView.findViewById(R.h.dqq));
-        paramViewGroup.jbF = ((TextView)paramView.findViewById(R.h.dqx));
+        paramView = View.inflate(this.context, R.i.gpd, null);
+        paramViewGroup.qjm = ((ImageView)paramView.findViewById(R.h.fBk));
+        paramViewGroup.noc = ((TextView)paramView.findViewById(R.h.fqE));
+        paramViewGroup.lDF = ((TextView)paramView.findViewById(R.h.fqL));
         if (WalletSelectAddrUI.k(WalletSelectAddrUI.this))
         {
-          paramView.setBackgroundResource(R.g.dnn);
-          paramViewGroup.jbF.setTextColor(WalletSelectAddrUI.this.getContext().getResources().getColor(R.e.UN_BW_0_Alpha_0_9));
-          paramViewGroup.kMh.setTextColor(WalletSelectAddrUI.this.getContext().getResources().getColor(R.e.UN_BW_0_Alpha_0_3));
+          paramView.setBackgroundResource(R.g.fnz);
+          paramViewGroup.lDF.setTextColor(WalletSelectAddrUI.this.getContext().getResources().getColor(R.e.UN_BW_0_Alpha_0_9));
+          paramViewGroup.noc.setTextColor(WalletSelectAddrUI.this.getContext().getResources().getColor(R.e.UN_BW_0_Alpha_0_3));
         }
         paramView.setTag(paramViewGroup);
-        com.tencent.mm.plugin.address.d.b localb = yA(paramInt);
+        com.tencent.mm.plugin.address.d.b localb = yI(paramInt);
         StringBuilder localStringBuilder = new StringBuilder();
-        if (!TextUtils.isEmpty(localb.nkU)) {
-          localStringBuilder.append(localb.nkU);
+        if (!TextUtils.isEmpty(localb.qid)) {
+          localStringBuilder.append(localb.qid);
         }
-        if (!TextUtils.isEmpty(localb.nkV))
+        if (!TextUtils.isEmpty(localb.qie))
         {
           localStringBuilder.append(" ");
-          localStringBuilder.append(localb.nkV);
+          localStringBuilder.append(localb.qie);
         }
-        if (!TextUtils.isEmpty(localb.nkW))
+        if (!TextUtils.isEmpty(localb.qif))
         {
           localStringBuilder.append(" ");
-          localStringBuilder.append(localb.nkW);
+          localStringBuilder.append(localb.qif);
         }
-        if (!TextUtils.isEmpty(localb.nlc))
+        if (!TextUtils.isEmpty(localb.qil))
         {
           localStringBuilder.append(" ");
-          localStringBuilder.append(localb.nlc);
+          localStringBuilder.append(localb.qil);
         }
-        if (!TextUtils.isEmpty(localb.nkY))
+        if (!TextUtils.isEmpty(localb.qih))
         {
           localStringBuilder.append(" ");
-          localStringBuilder.append(localb.nkY);
+          localStringBuilder.append(localb.qih);
         }
-        paramViewGroup.kMh.setText(localStringBuilder.toString());
-        paramViewGroup.jbF.setText(localb.nkZ + "，" + localb.nla);
+        paramViewGroup.noc.setText(localStringBuilder.toString());
+        paramViewGroup.lDF.setText(localb.qii + "，" + localb.qij);
         if ((!WalletSelectAddrUI.e(WalletSelectAddrUI.this)) || (WalletSelectAddrUI.g(WalletSelectAddrUI.this) == null) || (WalletSelectAddrUI.g(WalletSelectAddrUI.this).id != localb.id)) {
           break label416;
         }
-        paramViewGroup.nmd.setImageResource(R.k.radio_on);
+        paramViewGroup.qjm.setImageResource(R.k.radio_on);
       }
       for (;;)
       {
@@ -707,15 +692,15 @@ public class WalletSelectAddrUI
         paramViewGroup = (a)paramView.getTag();
         break;
         label416:
-        paramViewGroup.nmd.setImageBitmap(null);
+        paramViewGroup.qjm.setImageBitmap(null);
       }
     }
     
     final class a
     {
-      TextView jbF;
-      TextView kMh;
-      ImageView nmd;
+      TextView lDF;
+      TextView noc;
+      ImageView qjm;
       
       a() {}
     }
@@ -723,7 +708,7 @@ public class WalletSelectAddrUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.address.ui.WalletSelectAddrUI
  * JD-Core Version:    0.7.0.1
  */

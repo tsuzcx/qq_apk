@@ -1,77 +1,188 @@
 package com.tencent.mm.plugin.finder.model;
 
-import android.text.SpannableString;
+import android.content.Context;
+import com.tencent.d.a.a.a.b;
+import com.tencent.d.a.a.a.b.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.feed.model.internal.k;
-import com.tencent.mm.protocal.protobuf.bjr;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.a.a;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
+import com.tencent.mm.autogen.a.if;
+import com.tencent.mm.plugin.finder.api.m;
+import com.tencent.mm.plugin.finder.cgi.bh;
+import com.tencent.mm.plugin.finder.cgi.p;
+import com.tencent.mm.plugin.finder.report.z;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.report.f;
+import com.tencent.mm.pluginsdk.ui.applet.w;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.bma;
+import com.tencent.mm.protocal.protobuf.bui;
+import com.tencent.mm.protocal.protobuf.pu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderHistoryDivider;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "divider", "Lcom/tencent/mm/protocal/protobuf/FinderStreamDivider;", "(Lcom/tencent/mm/protocal/protobuf/FinderStreamDivider;)V", "getDivider", "()Lcom/tencent/mm/protocal/protobuf/FinderStreamDivider;", "id", "", "getId", "()J", "id$delegate", "Lkotlin/Lazy;", "tip", "Landroid/text/SpannableString;", "kotlin.jvm.PlatformType", "getTip", "()Landroid/text/SpannableString;", "tipStyle", "", "getTipStyle", "()I", "compare", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "getItemType", "toString", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/model/FinderFollowLogic;", "", "()V", "follow", "", "context", "Landroid/content/Context;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "opType", "", "isFromTimeline", "", "isFromShareUI", "enterType", "finderUser", "", "feedId", "", "liveReportObj", "Lcom/tencent/mm/protocal/protobuf/FinderLiveReportBaseInfo;", "followAsync", "isPrivate", "participantFinderUsername", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ak
-  implements bu
 {
-  final bjr xzB;
-  private final f xzz;
-  public final SpannableString zAK;
-  public final int zAL;
+  public static final ak ECS;
   
-  public ak(bjr parambjr)
+  static
   {
-    AppMethodBeat.i(289383);
-    this.xzB = parambjr;
-    this.xzz = g.ar((a)new a(this));
-    this.zAK = com.tencent.mm.pluginsdk.ui.span.l.c(MMApplicationContext.getContext(), (CharSequence)this.xzB.wording);
-    this.zAL = this.xzB.STx;
-    AppMethodBeat.o(289383);
+    AppMethodBeat.i(166392);
+    ECS = new ak();
+    AppMethodBeat.o(166392);
   }
   
-  public final int a(k paramk)
+  public static void a(Context paramContext, bui parambui, BaseFinderFeed paramBaseFinderFeed, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
   {
-    AppMethodBeat.i(289380);
-    p.k(paramk, "obj");
-    if (((paramk instanceof ak)) && (((ak)paramk).xzB.zAO == this.xzB.zAO) && (((ak)paramk).xzB.STx == this.xzB.STx) && (p.h(((ak)paramk).xzB.wording, this.xzB.wording)))
+    AppMethodBeat.i(332140);
+    s.u(paramContext, "context");
+    s.u(parambui, "contextObj");
+    s.u(paramBaseFinderFeed, "feed");
+    pu localpu = paramBaseFinderFeed.feedObject.getBizInfo();
+    if (localpu == null)
     {
-      AppMethodBeat.o(289380);
-      return 0;
+      paramContext = null;
+      if (paramContext == null)
+      {
+        paramContext = paramBaseFinderFeed.contact;
+        if (paramContext != null) {
+          break label234;
+        }
+        paramContext = "";
+      }
     }
-    AppMethodBeat.o(289380);
-    return -1;
-  }
-  
-  public final int bAQ()
-  {
-    return 2011;
-  }
-  
-  public final long mf()
-  {
-    AppMethodBeat.i(289376);
-    long l = ((Number)this.xzz.getValue()).longValue();
-    AppMethodBeat.o(289376);
-    return l;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(289382);
-    String str = "ItemId=" + mf() + ",ItemType=2011 tipStyle=" + this.zAL + " tip=" + this.zAK;
-    AppMethodBeat.o(289382);
-    return str;
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class a
-    extends q
-    implements a<Long>
-  {
-    a(ak paramak)
+    for (;;)
     {
-      super();
+      a(parambui, paramContext, paramInt1, paramBaseFinderFeed.bZA(), paramBoolean1, paramBoolean2, paramInt2, 128);
+      AppMethodBeat.o(332140);
+      return;
+      Object localObject1 = z.FrZ;
+      long l = parambui.ADF;
+      localObject1 = paramBaseFinderFeed.contact;
+      label106:
+      Object localObject2;
+      if (localObject1 == null)
+      {
+        localObject1 = "";
+        localObject2 = bh.ABm;
+        if (paramInt1 != bh.dVs()) {
+          break label228;
+        }
+      }
+      label228:
+      for (int i = 1;; i = 2)
+      {
+        z.a(parambui, l, (String)localObject1, i);
+        localObject1 = new com.tencent.mm.pluginsdk.a();
+        ((com.tencent.mm.pluginsdk.a)localObject1).XNl = false;
+        ((com.tencent.mm.pluginsdk.a)localObject1).hzx = paramBaseFinderFeed.feedObject.getFeedObject().sessionBuffer;
+        ((com.tencent.mm.pluginsdk.i)com.tencent.mm.kernel.h.ax(com.tencent.mm.pluginsdk.i.class)).a(paramContext, localpu.ADE, 212, new ak..ExternalSyntheticLambda0(paramBaseFinderFeed), (com.tencent.mm.pluginsdk.a)localObject1).show();
+        paramContext = ah.aiuX;
+        break;
+        localObject2 = ((m)localObject1).getUsername();
+        localObject1 = localObject2;
+        if (localObject2 != null) {
+          break label106;
+        }
+        localObject1 = "";
+        break label106;
+      }
+      label234:
+      localObject1 = paramContext.getUsername();
+      paramContext = (Context)localObject1;
+      if (localObject1 == null) {
+        paramContext = "";
+      }
+    }
+  }
+  
+  public static void a(bui parambui, String paramString1, int paramInt, long paramLong, boolean paramBoolean, String paramString2, bma parambma)
+  {
+    AppMethodBeat.i(332176);
+    s.u(parambui, "contextObj");
+    s.u(paramString1, "finderUser");
+    s.u(paramString2, "participantFinderUsername");
+    Log.i("Finder.FinderFollowLogic", "follow event commentScene:" + parambui.hLK + " user:" + paramString1 + " opType: " + paramInt + " participantFinderUsername:" + paramString2 + " form " + Util.getStack());
+    Object localObject = f.Ozc;
+    bh localbh = bh.ABm;
+    long l;
+    if (paramInt == bh.dVs())
+    {
+      l = 5L;
+      ((f)localObject).idkeyStat(1278L, l, 1L, false);
+      localObject = z.FrZ;
+      l = parambui.ADF;
+      localObject = bh.ABm;
+      if (paramInt != bh.dVs()) {
+        break label225;
+      }
+    }
+    label225:
+    for (int i = 1;; i = 2)
+    {
+      z.a(parambui, l, paramString1, i);
+      localObject = com.tencent.mm.plugin.finder.upload.action.i.Gde;
+      com.tencent.mm.plugin.finder.upload.action.i.a(com.tencent.mm.plugin.finder.upload.action.i.fej(), paramString1, paramInt, paramLong, parambui, paramBoolean, paramString2, parambma, 32);
+      parambui = bh.ABm;
+      if (paramInt == bh.dVs()) {
+        ((b)com.tencent.mm.kernel.h.az(b.class)).getFinderLiveActionRecordStorage().a(paramString1, a.a.ahmE);
+      }
+      AppMethodBeat.o(332176);
+      return;
+      l = 4L;
+      break;
+    }
+  }
+  
+  private static void a(bui parambui, String paramString, int paramInt1, long paramLong, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
+  {
+    AppMethodBeat.i(332158);
+    s.u(parambui, "contextObj");
+    s.u(paramString, "finderUser");
+    Log.i("Finder.FinderFollowLogic", "follow event commentScene:" + parambui.hLK + " user:" + paramString + " opType: " + paramInt1 + " form " + Util.getStack());
+    Object localObject = f.Ozc;
+    bh localbh = bh.ABm;
+    long l;
+    if (paramInt1 == bh.dVs())
+    {
+      l = 5L;
+      ((f)localObject).idkeyStat(1278L, l, 1L, false);
+      localObject = z.FrZ;
+      l = parambui.ADF;
+      localObject = bh.ABm;
+      if (paramInt1 != bh.dVs()) {
+        break label184;
+      }
+    }
+    label184:
+    for (int i = 1;; i = 2)
+    {
+      z.a(parambui, l, paramString, i);
+      new p(new com.tencent.mm.plugin.finder.upload.action.h(paramString, paramInt1, paramLong, parambui, paramInt2, null), paramBoolean1, paramBoolean2).bFJ();
+      AppMethodBeat.o(332158);
+      return;
+      l = 4L;
+      break;
+    }
+  }
+  
+  private static final void b(BaseFinderFeed paramBaseFinderFeed, int paramInt)
+  {
+    AppMethodBeat.i(332189);
+    s.u(paramBaseFinderFeed, "$feed");
+    Log.i("Finder.FinderFollowLogic", s.X("follow biz result = ", Integer.valueOf(paramInt)));
+    if localif = new if();
+    localif.hJB.id = paramBaseFinderFeed.bZA();
+    paramBaseFinderFeed = localif.hJB;
+    if (paramInt == -1) {}
+    for (paramInt = 1;; paramInt = 22)
+    {
+      paramBaseFinderFeed.type = paramInt;
+      localif.publish();
+      AppMethodBeat.o(332189);
+      return;
     }
   }
 }

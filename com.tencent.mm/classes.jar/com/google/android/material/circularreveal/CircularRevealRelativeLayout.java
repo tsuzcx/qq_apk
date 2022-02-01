@@ -12,117 +12,117 @@ public class CircularRevealRelativeLayout
   extends RelativeLayout
   implements c
 {
-  private final b bzV;
+  private final b dsW;
   
   public CircularRevealRelativeLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(236776);
-    this.bzV = new b(this);
-    AppMethodBeat.o(236776);
+    AppMethodBeat.i(209072);
+    this.dsW = new b(this);
+    AppMethodBeat.o(209072);
   }
   
-  public final void b(Canvas paramCanvas)
+  public final void Wl()
   {
-    AppMethodBeat.i(236790);
-    super.draw(paramCanvas);
-    AppMethodBeat.o(236790);
+    AppMethodBeat.i(209078);
+    this.dsW.Wl();
+    AppMethodBeat.o(209078);
+  }
+  
+  public final void Wm()
+  {
+    AppMethodBeat.i(209084);
+    this.dsW.Wm();
+    AppMethodBeat.o(209084);
+  }
+  
+  public final boolean Wn()
+  {
+    AppMethodBeat.i(209171);
+    boolean bool = super.isOpaque();
+    AppMethodBeat.o(209171);
+    return bool;
   }
   
   public void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(236789);
-    if (this.bzV != null)
+    AppMethodBeat.i(209144);
+    if (this.dsW != null)
     {
-      this.bzV.draw(paramCanvas);
-      AppMethodBeat.o(236789);
+      this.dsW.draw(paramCanvas);
+      AppMethodBeat.o(209144);
       return;
     }
     super.draw(paramCanvas);
-    AppMethodBeat.o(236789);
+    AppMethodBeat.o(209144);
+  }
+  
+  public final void e(Canvas paramCanvas)
+  {
+    AppMethodBeat.i(209154);
+    super.draw(paramCanvas);
+    AppMethodBeat.o(209154);
   }
   
   public Drawable getCircularRevealOverlayDrawable()
   {
-    return this.bzV.bAc;
+    return this.dsW.dtd;
   }
   
   public int getCircularRevealScrimColor()
   {
-    AppMethodBeat.i(236783);
-    int i = this.bzV.bAa.getColor();
-    AppMethodBeat.o(236783);
+    AppMethodBeat.i(209107);
+    int i = this.dsW.dtb.getColor();
+    AppMethodBeat.o(209107);
     return i;
   }
   
   public c.d getRevealInfo()
   {
-    AppMethodBeat.i(236780);
-    c.d locald = this.bzV.getRevealInfo();
-    AppMethodBeat.o(236780);
+    AppMethodBeat.i(209089);
+    c.d locald = this.dsW.getRevealInfo();
+    AppMethodBeat.o(209089);
     return locald;
   }
   
   public boolean isOpaque()
   {
-    AppMethodBeat.i(236792);
-    if (this.bzV != null)
+    AppMethodBeat.i(209163);
+    if (this.dsW != null)
     {
-      bool = this.bzV.isOpaque();
-      AppMethodBeat.o(236792);
+      bool = this.dsW.isOpaque();
+      AppMethodBeat.o(209163);
       return bool;
     }
     boolean bool = super.isOpaque();
-    AppMethodBeat.o(236792);
+    AppMethodBeat.o(209163);
     return bool;
   }
   
   public void setCircularRevealOverlayDrawable(Drawable paramDrawable)
   {
-    AppMethodBeat.i(236787);
-    this.bzV.setCircularRevealOverlayDrawable(paramDrawable);
-    AppMethodBeat.o(236787);
+    AppMethodBeat.i(209137);
+    this.dsW.setCircularRevealOverlayDrawable(paramDrawable);
+    AppMethodBeat.o(209137);
   }
   
   public void setCircularRevealScrimColor(int paramInt)
   {
-    AppMethodBeat.i(236785);
-    this.bzV.setCircularRevealScrimColor(paramInt);
-    AppMethodBeat.o(236785);
+    AppMethodBeat.i(209120);
+    this.dsW.setCircularRevealScrimColor(paramInt);
+    AppMethodBeat.o(209120);
   }
   
   public void setRevealInfo(c.d paramd)
   {
-    AppMethodBeat.i(236781);
-    this.bzV.setRevealInfo(paramd);
-    AppMethodBeat.o(236781);
-  }
-  
-  public final void wM()
-  {
-    AppMethodBeat.i(236777);
-    this.bzV.wM();
-    AppMethodBeat.o(236777);
-  }
-  
-  public final void wN()
-  {
-    AppMethodBeat.i(236778);
-    this.bzV.wN();
-    AppMethodBeat.o(236778);
-  }
-  
-  public final boolean wO()
-  {
-    AppMethodBeat.i(236795);
-    boolean bool = super.isOpaque();
-    AppMethodBeat.o(236795);
-    return bool;
+    AppMethodBeat.i(209098);
+    this.dsW.setRevealInfo(paramd);
+    AppMethodBeat.o(209098);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.circularreveal.CircularRevealRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

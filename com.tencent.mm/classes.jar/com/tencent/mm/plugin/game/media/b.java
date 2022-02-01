@@ -8,25 +8,25 @@ import org.json.JSONObject;
 
 public final class b
 {
-  public int CEm;
-  public JSONArray CEn;
-  public String CEo;
-  public int CEp;
+  public int Iyq;
+  public JSONArray Iyr;
+  public int Iys;
   public long createTime;
   public String taskId;
+  public String vBh;
   
   public b(String paramString1, int paramInt1, String paramString2, String paramString3, long paramLong, int paramInt2)
   {
     AppMethodBeat.i(40943);
     this.taskId = paramString1;
-    this.CEm = paramInt1;
+    this.Iyq = paramInt1;
     try
     {
-      this.CEn = c.aKy(paramString2);
+      this.Iyr = c.aHp(paramString2);
       label27:
-      this.CEo = paramString3;
+      this.vBh = paramString3;
       this.createTime = paramLong;
-      this.CEp = paramInt2;
+      this.Iys = paramInt2;
       AppMethodBeat.o(40943);
       return;
     }
@@ -43,11 +43,11 @@ public final class b
     try
     {
       localJSONObject.put("postId", this.taskId);
-      localJSONObject.put("state", this.CEm);
-      localJSONObject.put("localIds", this.CEn);
-      localJSONObject.put("extra", this.CEo);
+      localJSONObject.put("state", this.Iyq);
+      localJSONObject.put("localIds", this.Iyr);
+      localJSONObject.put("extra", this.vBh);
       localJSONObject.put("createTime", this.createTime);
-      localJSONObject.put("mixState", this.CEp);
+      localJSONObject.put("mixState", this.Iys);
       label79:
       AppMethodBeat.o(40944);
       return localJSONObject;
@@ -60,7 +60,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.b
  * JD-Core Version:    0.7.0.1
  */

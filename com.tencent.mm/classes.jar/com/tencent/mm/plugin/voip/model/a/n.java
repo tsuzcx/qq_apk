@@ -1,69 +1,65 @@
 package com.tencent.mm.plugin.voip.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.kernel.h;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
-import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.voip.model.l;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 
 public abstract class n<REQ, RESP>
-  extends q
+  extends p
   implements com.tencent.mm.network.m
 {
-  protected l NMN = com.tencent.mm.plugin.voip.model.m.gza();
-  private i NQy;
-  private i callback;
-  protected d rr;
+  private com.tencent.mm.am.h UDk;
+  protected l UzB = com.tencent.mm.plugin.voip.model.m.hWU();
+  private com.tencent.mm.am.h callback;
+  protected c rr;
   
-  public int doScene(g paramg, i parami)
+  public int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
-    int i = gAV();
+    int i = hYU();
     if (i != 0) {
       return i;
     }
-    this.NQy = parami;
-    this.callback = gAU();
+    this.UDk = paramh;
+    this.callback = hYT();
     return dispatch(paramg, this.rr, this);
   }
   
-  public abstract i gAU();
+  public abstract com.tencent.mm.am.h hYT();
   
-  public int gAV()
+  public int hYU()
   {
     return 0;
   }
   
-  public final void gAX()
+  public final void hYW()
   {
     Log.i("MicroMsg.VoipNetSceneBase", "netscene " + getClass().getSimpleName() + '@' + Integer.toHexString(hashCode()) + " is started.");
-    h.aGY().a(this, 0);
+    com.tencent.mm.kernel.h.aZW().a(this, 0);
   }
   
-  public final <RESP> RESP gAY()
+  public final <RESP> RESP hYX()
   {
-    return d.c.b(this.rr.lBS);
+    return c.c.b(this.rr.otC);
   }
   
-  public final <REQ> REQ gAZ()
+  public final <REQ> REQ hYY()
   {
-    return d.b.b(this.rr.lBR);
+    return c.b.b(this.rr.otB);
   }
   
-  public void kQ(int paramInt1, int paramInt2) {}
+  public void mD(int paramInt1, int paramInt2) {}
   
-  public void onGYNetEnd(int paramInt1, final int paramInt2, final int paramInt3, final String paramString, s params, byte[] paramArrayOfByte)
+  public void onGYNetEnd(int paramInt1, final int paramInt2, final int paramInt3, final String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
   {
-    kQ(paramInt2, paramInt3);
-    if (this.NQy != null) {
-      this.NQy.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    mD(paramInt2, paramInt3);
+    if (this.UDk != null) {
+      this.UDk.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
     if (this.callback != null) {
       MMHandlerThread.postToMainThread(new Runnable()

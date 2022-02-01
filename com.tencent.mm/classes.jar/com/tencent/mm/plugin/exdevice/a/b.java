@@ -9,12 +9,12 @@ public abstract interface b
   
   public static abstract interface a
   {
-    public abstract void z(boolean paramBoolean1, boolean paramBoolean2);
+    public abstract void D(boolean paramBoolean1, boolean paramBoolean2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.a.b
  * JD-Core Version:    0.7.0.1
  */

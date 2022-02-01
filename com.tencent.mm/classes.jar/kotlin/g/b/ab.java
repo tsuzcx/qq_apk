@@ -1,153 +1,59 @@
 package kotlin.g.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l.b;
-import kotlin.l.e;
-import kotlin.l.h;
-import kotlin.l.j;
-import kotlin.l.p;
-import kotlin.l.r;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lkotlin/jvm/internal/PackageReference;", "Lkotlin/jvm/internal/ClassBasedDeclarationContainer;", "jClass", "Ljava/lang/Class;", "moduleName", "", "(Ljava/lang/Class;Ljava/lang/String;)V", "getJClass", "()Ljava/lang/Class;", "members", "", "Lkotlin/reflect/KCallable;", "getMembers", "()Ljava/util/Collection;", "equals", "", "other", "", "hashCode", "", "toString", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
 public final class ab
+  implements h
 {
-  private static final ac aaBD;
-  private static final b[] aaBE;
+  private final Class<?> aiwN;
+  private final String esT;
   
-  static
+  public ab(Class<?> paramClass, String paramString)
   {
-    AppMethodBeat.i(128951);
-    try
+    AppMethodBeat.i(129334);
+    this.aiwN = paramClass;
+    this.esT = paramString;
+    AppMethodBeat.o(129334);
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    AppMethodBeat.i(129331);
+    if (((paramObject instanceof ab)) && (s.p(this.aiwN, ((ab)paramObject).aiwN)))
     {
-      ac localac1 = (ac)Class.forName("kotlin.l.b.a.z").newInstance();
-      if (localac1 != null)
-      {
-        aaBD = localac1;
-        aaBE = new b[0];
-        AppMethodBeat.o(128951);
-        return;
-      }
+      AppMethodBeat.o(129331);
+      return true;
     }
-    catch (ClassCastException localClassCastException)
-    {
-      for (;;)
-      {
-        Object localObject1 = null;
-      }
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      for (;;)
-      {
-        Object localObject2 = null;
-      }
-    }
-    catch (InstantiationException localInstantiationException)
-    {
-      for (;;)
-      {
-        Object localObject3 = null;
-      }
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      for (;;)
-      {
-        ac localac2 = null;
-        continue;
-        localac2 = new ac();
-      }
-    }
+    AppMethodBeat.o(129331);
+    return false;
   }
   
-  public static String a(m paramm)
+  public final int hashCode()
   {
-    AppMethodBeat.i(128946);
-    paramm = aaBD.a(paramm);
-    AppMethodBeat.o(128946);
-    return paramm;
+    AppMethodBeat.i(129332);
+    int i = this.aiwN.hashCode();
+    AppMethodBeat.o(129332);
+    return i;
   }
   
-  public static String a(q paramq)
+  public final Class<?> kls()
   {
-    AppMethodBeat.i(128945);
-    paramq = aaBD.a(paramq);
-    AppMethodBeat.o(128945);
-    return paramq;
+    return this.aiwN;
   }
   
-  public static e a(n paramn)
+  public final String toString()
   {
-    AppMethodBeat.i(128947);
-    paramn = aaBD.a(paramn);
-    AppMethodBeat.o(128947);
-    return paramn;
-  }
-  
-  public static h a(t paramt)
-  {
-    AppMethodBeat.i(216878);
-    paramt = aaBD.a(paramt);
-    AppMethodBeat.o(216878);
-    return paramt;
-  }
-  
-  public static j a(u paramu)
-  {
-    AppMethodBeat.i(128950);
-    paramu = aaBD.a(paramu);
-    AppMethodBeat.o(128950);
-    return paramu;
-  }
-  
-  public static p a(x paramx)
-  {
-    AppMethodBeat.i(128948);
-    paramx = aaBD.a(paramx);
-    AppMethodBeat.o(128948);
-    return paramx;
-  }
-  
-  public static r a(y paramy)
-  {
-    AppMethodBeat.i(128949);
-    paramy = aaBD.a(paramy);
-    AppMethodBeat.o(128949);
-    return paramy;
-  }
-  
-  public static b bO(Class paramClass)
-  {
-    AppMethodBeat.i(128944);
-    paramClass = aaBD.bO(paramClass);
-    AppMethodBeat.o(128944);
-    return paramClass;
-  }
-  
-  public static b[] d(Class[] paramArrayOfClass)
-  {
-    AppMethodBeat.i(216867);
-    int j = paramArrayOfClass.length;
-    if (j == 0)
-    {
-      paramArrayOfClass = aaBE;
-      AppMethodBeat.o(216867);
-      return paramArrayOfClass;
-    }
-    b[] arrayOfb = new b[j];
-    int i = 0;
-    while (i < j)
-    {
-      Class localClass = paramArrayOfClass[i];
-      arrayOfb[i] = aaBD.bO(localClass);
-      i += 1;
-    }
-    AppMethodBeat.o(216867);
-    return arrayOfb;
+    AppMethodBeat.i(129333);
+    String str = this.aiwN.toString() + " (Kotlin reflection is not available)";
+    AppMethodBeat.o(129333);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.g.b.ab
  * JD-Core Version:    0.7.0.1
  */

@@ -2,66 +2,70 @@ package kotlin.l.b.a.b.e.b;
 
 import java.util.ArrayList;
 import java.util.List;
-import kotlin.a.e;
-import kotlin.a.j;
-import kotlin.a.v;
-import kotlin.g.b.p;
+import kotlin.a.ab;
+import kotlin.a.k;
+import kotlin.a.p;
+import kotlin.g.b.s;
 
 public abstract class a
 {
-  public static final a abdH = new a((byte)0);
-  public final int TsL;
-  private final List<Integer> abdF;
-  private final int[] abdG;
-  public final int oey;
-  public final int oez;
+  public static final a.a ajcg = new a.a((byte)0);
+  public final int aaGW;
+  private final int[] ajch;
+  private final List<Integer> ajci;
+  public final int rid;
+  public final int rie;
   
   public a(int... paramVarArgs)
   {
-    this.abdG = paramVarArgs;
-    paramVarArgs = e.m(this.abdG, 0);
+    this.ajch = paramVarArgs;
+    paramVarArgs = k.A(this.ajch, 0);
     int i;
-    if (paramVarArgs != null)
+    if (paramVarArgs == null)
     {
-      i = paramVarArgs.intValue();
-      this.oey = i;
-      paramVarArgs = e.m(this.abdG, 1);
-      if (paramVarArgs == null) {
+      i = -1;
+      this.rid = i;
+      paramVarArgs = k.A(this.ajch, 1);
+      if (paramVarArgs != null) {
+        break label125;
+      }
+      i = -1;
+      label52:
+      this.rie = i;
+      paramVarArgs = k.A(this.ajch, 2);
+      if (paramVarArgs != null) {
         break label133;
       }
-      i = paramVarArgs.intValue();
-      label58:
-      this.oez = i;
-      paramVarArgs = e.m(this.abdG, 2);
       i = j;
-      if (paramVarArgs != null) {
-        i = paramVarArgs.intValue();
-      }
-      this.TsL = i;
-      if (this.abdG.length <= 3) {
-        break label138;
+      label72:
+      this.aaGW = i;
+      if (this.ajch.length <= 3) {
+        break label141;
       }
     }
     label133:
-    label138:
-    for (paramVarArgs = j.p((Iterable)e.V(this.abdG).subList(3, this.abdG.length));; paramVarArgs = (List)v.aaAd)
+    label141:
+    for (paramVarArgs = p.p((Iterable)k.Y(this.ajch).subList(3, this.ajch.length));; paramVarArgs = (List)ab.aivy)
     {
-      this.abdF = paramVarArgs;
+      this.ajci = paramVarArgs;
       return;
-      i = -1;
+      i = paramVarArgs.intValue();
       break;
-      i = -1;
-      break label58;
+      label125:
+      i = paramVarArgs.intValue();
+      break label52;
+      i = paramVarArgs.intValue();
+      break label72;
     }
   }
   
   protected final boolean a(a parama)
   {
-    p.k(parama, "ourVersion");
-    if (this.oey == 0) {
-      if ((parama.oey != 0) || (this.oez != parama.oez)) {}
+    s.u(parama, "ourVersion");
+    if (this.rid == 0) {
+      if ((parama.rid != 0) || (this.rie != parama.rie)) {}
     }
-    while ((this.oey == parama.oey) && (this.oez <= parama.oez))
+    while ((this.rid == parama.rid) && (this.rie <= parama.rie))
     {
       return true;
       return false;
@@ -69,22 +73,41 @@ public abstract class a
     return false;
   }
   
+  public final boolean bR(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.rid > paramInt1) {}
+    do
+    {
+      do
+      {
+        return true;
+        if (this.rid < paramInt1) {
+          return false;
+        }
+      } while (this.rie > paramInt2);
+      if (this.rie < paramInt2) {
+        return false;
+      }
+    } while (this.aaGW >= paramInt3);
+    return false;
+  }
+  
   public boolean equals(Object paramObject)
   {
-    return (paramObject != null) && (p.h(getClass(), paramObject.getClass())) && (this.oey == ((a)paramObject).oey) && (this.oez == ((a)paramObject).oez) && (this.TsL == ((a)paramObject).TsL) && (p.h(this.abdF, ((a)paramObject).abdF));
+    return (paramObject != null) && (s.p(getClass(), paramObject.getClass())) && (this.rid == ((a)paramObject).rid) && (this.rie == ((a)paramObject).rie) && (this.aaGW == ((a)paramObject).aaGW) && (s.p(this.ajci, ((a)paramObject).ajci));
   }
   
   public int hashCode()
   {
-    int i = this.oey;
-    i += i * 31 + this.oez;
-    i += i * 31 + this.TsL;
-    return i + (i * 31 + this.abdF.hashCode());
+    int i = this.rid;
+    i += i * 31 + this.rie;
+    i += i * 31 + this.aaGW;
+    return i + (i * 31 + this.ajci.hashCode());
   }
   
   public String toString()
   {
-    Object localObject = this.abdG;
+    Object localObject = this.ajch;
     ArrayList localArrayList = new ArrayList();
     int k = localObject.length;
     int i = 0;
@@ -107,14 +130,12 @@ public abstract class a
     if (((List)localObject).isEmpty()) {
       return "unknown";
     }
-    return j.a((Iterable)localObject, (CharSequence)".", null, null, 0, null, null, 62);
+    return p.a((Iterable)localObject, (CharSequence)".", null, null, 0, null, null, 62);
   }
-  
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     kotlin.l.b.a.b.e.b.a
  * JD-Core Version:    0.7.0.1
  */

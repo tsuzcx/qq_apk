@@ -1,119 +1,151 @@
 package com.tencent.mm.plugin.finder.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.event.base.b;
-import com.tencent.mm.plugin.finder.event.base.c;
-import com.tencent.mm.plugin.finder.event.base.e;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.plugin.finder.feed.au;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.protocal.protobuf.csg;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.protocal.protobuf.bui;
+import com.tencent.mm.protocal.protobuf.bwa;
+import java.util.Iterator;
 import java.util.LinkedList;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.s;
+import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/report/PageChangeSubscriber;", "Lcom/tencent/mm/plugin/finder/event/base/EventSubscriber;", "Lcom/tencent/mm/plugin/finder/report/PageChangeSubscriber$PageChangeBehavior;", "dispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "(Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;)V", "getBehavior", "PageChangeBehavior", "PageChangeEvent", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/report/FinderStreamCardAlbumReporter;", "", "()V", "report21086", "", "title", "", "cardFeed", "Lcom/tencent/mm/plugin/finder/feed/FinderStreamCardFeed;", "position", "", "exposedTime", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "report21087", "cardId", "action", "feedId", "report21089", "index", "report21090", "txtCard", "Lcom/tencent/mm/protocal/protobuf/FinderStreamTxtCard;", "clickWording", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class aj
-  extends e<a>
 {
-  public aj(c paramc)
+  public static final aj FtF;
+  
+  static
   {
-    super(paramc);
-    AppMethodBeat.i(166715);
-    AppMethodBeat.o(166715);
+    AppMethodBeat.i(331310);
+    FtF = new aj();
+    AppMethodBeat.o(331310);
   }
   
-  public final a dQy()
+  public static void a(String paramString, long paramLong1, int paramInt1, long paramLong2, bui parambui, int paramInt2)
   {
-    AppMethodBeat.i(166714);
-    a locala = (a)new c(this);
-    AppMethodBeat.o(166714);
-    return locala;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/report/PageChangeSubscriber$PageChangeBehavior;", "", "onPageChange", "", "feedId", "", "media", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "objectNonceId", "", "index", "", "mediaList", "Ljava/util/LinkedList;", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "isAuto", "", "plugin-finder_release"})
-  public static abstract interface a
-  {
-    public abstract void a(long paramLong, csg paramcsg, String paramString, int paramInt, LinkedList<csg> paramLinkedList, BaseFinderFeed paramBaseFinderFeed, boolean paramBoolean);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/report/PageChangeSubscriber$PageChangeEvent;", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "feedId", "", "media", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "objectNonceId", "", "index", "", "mediaList", "Ljava/util/LinkedList;", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "isAuto", "", "(JLcom/tencent/mm/protocal/protobuf/LocalFinderMedia;Ljava/lang/String;ILjava/util/LinkedList;Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;Z)V", "getFeed", "()Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getFeedId", "()J", "getIndex", "()I", "()Z", "getMedia", "()Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "getMediaList", "()Ljava/util/LinkedList;", "getObjectNonceId", "()Ljava/lang/String;", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "copy", "equals", "other", "", "hashCode", "toString", "plugin-finder_release"})
-  public static final class b
-    extends b
-  {
-    final long feedId;
-    final int index;
-    private final LinkedList<csg> mediaList;
-    private final String objectNonceId;
-    final csg xqw;
-    private final BaseFinderFeed xxO;
-    final boolean zZB;
-    
-    public b(long paramLong, csg paramcsg, String paramString, int paramInt, LinkedList<csg> paramLinkedList, BaseFinderFeed paramBaseFinderFeed, boolean paramBoolean)
+    Object localObject = null;
+    AppMethodBeat.i(331280);
+    s.u(paramString, "title");
+    h localh = h.OAn;
+    Integer localInteger;
+    String str3;
+    String str4;
+    String str1;
+    label48:
+    String str2;
+    if (parambui == null)
     {
-      AppMethodBeat.i(274704);
-      this.feedId = paramLong;
-      this.xqw = paramcsg;
-      this.objectNonceId = paramString;
-      this.index = paramInt;
-      this.mediaList = paramLinkedList;
-      this.xxO = paramBaseFinderFeed;
-      this.zZB = paramBoolean;
-      AppMethodBeat.o(274704);
+      localInteger = null;
+      str3 = d.hF(paramLong1);
+      str4 = d.hF(paramLong2);
+      if (parambui != null) {
+        break label149;
+      }
+      str1 = null;
+      if (parambui != null) {
+        break label159;
+      }
+      str2 = null;
+      label56:
+      if (parambui != null) {
+        break label169;
+      }
     }
-    
-    public final boolean equals(Object paramObject)
+    label149:
+    label159:
+    label169:
+    for (parambui = localObject;; parambui = parambui.zIB)
     {
-      AppMethodBeat.i(166712);
-      if (this != paramObject)
+      localh.b(21087, new Object[] { localInteger, str3, paramString, Integer.valueOf(paramInt1), str4, str1, str2, parambui, Integer.valueOf(paramInt2) });
+      AppMethodBeat.o(331280);
+      return;
+      localInteger = Integer.valueOf(parambui.AJo);
+      break;
+      str1 = parambui.sessionId;
+      break label48;
+      str2 = parambui.zIO;
+      break label56;
+    }
+  }
+  
+  public static void a(String paramString, au paramau, int paramInt, long paramLong, bui parambui)
+  {
+    AppMethodBeat.i(331302);
+    s.u(paramau, "cardFeed");
+    Object localObject3 = paramau.AYW;
+    Object localObject1 = (Iterable)paramau.rvFeedList;
+    int i = 0;
+    Object localObject2 = ((Iterable)localObject1).iterator();
+    localObject1 = "";
+    String str1;
+    while (((Iterator)localObject2).hasNext())
+    {
+      localObject4 = ((Iterator)localObject2).next();
+      int j = i + 1;
+      if (i < 0) {
+        p.kkW();
+      }
+      localObject4 = (BaseFinderFeed)localObject4;
+      str1 = d.hF(((BaseFinderFeed)localObject4).bZA());
+      if ((((BaseFinderFeed)localObject4).bZB() == 4) && (i == 0))
       {
-        if ((paramObject instanceof b))
-        {
-          paramObject = (b)paramObject;
-          if ((this.feedId != paramObject.feedId) || (!p.h(this.xqw, paramObject.xqw)) || (!p.h(this.objectNonceId, paramObject.objectNonceId)) || (this.index != paramObject.index) || (!p.h(this.mediaList, paramObject.mediaList)) || (!p.h(this.xxO, paramObject.xxO)) || (this.zZB != paramObject.zZB)) {}
-        }
+        localObject1 = (String)localObject1 + str1 + ';' + i + ";1|";
+        i = j;
       }
       else
       {
-        AppMethodBeat.o(166712);
-        return true;
+        localObject1 = (String)localObject1 + str1 + ';' + i + ";0|";
+        i = j;
       }
-      AppMethodBeat.o(166712);
-      return false;
     }
-    
-    public final int hashCode()
+    n.d((String)localObject1, (CharSequence)"|");
+    Object localObject4 = h.OAn;
+    String str2;
+    if (parambui == null)
     {
-      throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+      localObject2 = null;
+      str1 = d.hF(paramau.AYW.id);
+      str2 = ((bwa)localObject3).aadS;
+      i = paramau.rvFeedList.size();
+      if (parambui != null) {
+        break label366;
+      }
+      paramau = null;
+      label253:
+      if (parambui != null) {
+        break label375;
+      }
+      localObject3 = null;
+      label261:
+      if (parambui != null) {
+        break label385;
+      }
     }
-    
-    public final String toString()
+    label385:
+    for (parambui = null;; parambui = parambui.zIB)
     {
-      AppMethodBeat.i(166710);
-      String str = "PageChangeEvent(feedId=" + this.feedId + ", media=" + this.xqw + ", objectNonceId=" + this.objectNonceId + ", index=" + this.index + ", mediaList=" + this.mediaList + ", feed=" + this.xxO + ", isAuto=" + this.zZB + ")";
-      AppMethodBeat.o(166710);
-      return str;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/report/PageChangeSubscriber$getBehavior$1", "Lcom/tencent/mm/plugin/finder/report/PageChangeSubscriber$PageChangeBehavior;", "onPageChange", "", "feedId", "", "media", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "objectNonceId", "", "index", "", "mediaList", "Ljava/util/LinkedList;", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "isAuto", "", "plugin-finder_release"})
-  public static final class c
-    implements aj.a
-  {
-    public final void a(long paramLong, csg paramcsg, String paramString, int paramInt, LinkedList<csg> paramLinkedList, BaseFinderFeed paramBaseFinderFeed, boolean paramBoolean)
-    {
-      AppMethodBeat.i(284712);
-      p.k(paramcsg, "media");
-      p.k(paramString, "objectNonceId");
-      p.k(paramLinkedList, "mediaList");
-      p.k(paramBaseFinderFeed, "feed");
-      paramcsg = new aj.b(paramLong, paramcsg, paramString, paramInt, paramLinkedList, paramBaseFinderFeed, paramBoolean);
-      this.zZC.c((b)paramcsg);
-      AppMethodBeat.o(284712);
+      ((h)localObject4).b(21086, new Object[] { localObject2, str1, paramString, localObject1, str2, Integer.valueOf(i), paramau, localObject3, parambui, Long.valueOf(paramLong), Integer.valueOf(paramInt) });
+      AppMethodBeat.o(331302);
+      return;
+      localObject2 = Integer.valueOf(parambui.AJo);
+      break;
+      label366:
+      paramau = parambui.sessionId;
+      break label253;
+      label375:
+      localObject3 = parambui.zIO;
+      break label261;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.report.aj
  * JD-Core Version:    0.7.0.1
  */

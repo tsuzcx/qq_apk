@@ -1,150 +1,200 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
+import android.view.View;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.b.p;
-import com.tencent.mm.kernel.f;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.qqmail.e.i;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.platformtools.WeChatHosts;
-import com.tencent.mm.sdk.platformtools.XmlParser;
-import com.tencent.mm.sdk.thread.ThreadPool;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Map;
 
 public final class q
 {
-  private static final String RxH;
-  
-  static
+  public static void a(ListView paramListView, int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(250267);
-    RxH = "https://" + WeChatHosts.domainString(e.i.host_qqmail_weixin_qq_com) + "/cgi-bin/getunreadmailcount?f=xml&appname=qqmail_weixin&charset=utf-8&clientip=0";
-    AppMethodBeat.o(250267);
-  }
-  
-  public static void a(a parama)
-  {
-    AppMethodBeat.i(123216);
-    ThreadPool.post(new Runnable()
+    AppMethodBeat.i(245497);
+    if (paramListView == null)
     {
-      public final void run()
-      {
-        AppMethodBeat.i(123211);
-        try
-        {
-          q.b(this.RxI);
-          AppMethodBeat.o(123211);
-          return;
-        }
-        catch (Exception localException)
-        {
-          Log.printErrStackTrace("MicroMsg.QQMailUnreadHelper", localException, "", new Object[0]);
-          Log.e("MicroMsg.QQMailUnreadHelper", "getUnreadCountAsync exception");
-          AppMethodBeat.o(123211);
-        }
-      }
-    }, "QQMailUnreadHelper");
-    AppMethodBeat.o(123216);
-  }
-  
-  public static void b(a parama)
-  {
-    AppMethodBeat.i(123217);
-    Log.i("MicroMsg.QQMailUnreadHelper", "dz[getUnreadCount]");
-    String str = (String)h.aHG().aHp().b(-1535680990, "");
-    long l = new p(Util.nullAsNil((Integer)h.aHG().aHp().b(9, null))).longValue();
-    if ((Util.isNullOrNil(str)) || (l == 0L))
-    {
-      h.aHG().aHp().set(ar.a.VhG, Integer.valueOf(-1));
-      Log.w("MicroMsg.QQMailUnreadHelper", "dz[getUnreadEmailCountAndSet: authkey or uin is null]");
-      MMHandlerThread.postToMainThread(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(123212);
-          this.RxI.XN();
-          AppMethodBeat.o(123212);
-        }
-      });
-      AppMethodBeat.o(123217);
+      AppMethodBeat.o(245497);
       return;
     }
-    Object localObject = (HttpURLConnection)new URL(RxH).openConnection();
-    ((HttpURLConnection)localObject).setConnectTimeout(15000);
-    ((HttpURLConnection)localObject).setReadTimeout(20000);
-    ((HttpURLConnection)localObject).setRequestProperty("Cookie", String.format("skey=%s;uin=o%d;", new Object[] { str, Long.valueOf(l) }));
-    if (((HttpURLConnection)localObject).getResponseCode() >= 300) {
-      try
+    if ((d(paramListView, paramInt1)) && (paramBoolean2))
+    {
+      if (Log.getLogLevel() <= 1) {
+        Log.d("MicroMsg.ChattingUI.ScrollController", "setSelectionFromTop itemvisible, not scroll");
+      }
+      AppMethodBeat.o(245497);
+      return;
+    }
+    Log.i("MicroMsg.ChattingUI.ScrollController", "setSelectionFromTop position %s smooth %s", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean1) });
+    paramListView.setItemChecked(paramInt1, true);
+    if ((paramBoolean1) && (d.rb(24)) && (!c(paramListView, paramInt1)))
+    {
+      int i = b(paramListView, paramInt1);
+      if (Log.getLogLevel() <= 1) {
+        Log.d("MicroMsg.ChattingUI.ScrollController", "[smoothScrollToPositionFromTop] position:%s, y:%s, calcDuring:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i) });
+      }
+      paramListView.smoothScrollToPositionFromTop(paramInt1, paramInt2, i);
+      AppMethodBeat.o(245497);
+      return;
+    }
+    if (Log.getLogLevel() <= 1) {
+      Log.d("MicroMsg.ChattingUI.ScrollController", "[setSelectionFromTop] position:%s, y:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    }
+    paramListView.setSelectionFromTop(paramInt1, paramInt2);
+    AppMethodBeat.o(245497);
+  }
+  
+  private static int b(ListView paramListView, int paramInt)
+  {
+    AppMethodBeat.i(245501);
+    int n = paramListView.getLastVisiblePosition();
+    int i1 = paramListView.getFirstVisiblePosition();
+    int k = d(paramListView);
+    if (paramInt < i1)
+    {
+      paramInt = k / (i1 - paramInt);
+      AppMethodBeat.o(245501);
+      return paramInt;
+    }
+    if (paramInt > n)
+    {
+      paramInt = k / ((paramInt - n + 1) * 2);
+      AppMethodBeat.o(245501);
+      return paramInt;
+    }
+    int i = k;
+    int m;
+    if (paramInt == paramListView.getAdapter().getCount() - 1)
+    {
+      m = a.K(paramListView.getContext(), e(paramListView));
+      if (!(paramListView instanceof ScrollControlListView)) {
+        break label313;
+      }
+      i = ((ScrollControlListView)paramListView).getExtraScrollDistance();
+      i = a.K(paramListView.getContext(), i);
+      if (i == 0) {
+        break label310;
+      }
+      Log.d("MicroMsg.ChattingUI.ScrollController", "calcDuring extraScrollDistanceDp: ".concat(String.valueOf(i)));
+      m -= i;
+    }
+    for (;;)
+    {
+      int j = k;
+      if (m >= 52.0F) {
+        j = (int)(52.0F / m * k);
+      }
+      k = j;
+      if ((paramListView instanceof ScrollControlListView))
       {
-        ((HttpURLConnection)localObject).getInputStream().close();
-        ((HttpURLConnection)localObject).disconnect();
-        Log.w("MicroMsg.QQMailUnreadHelper", "dz[getUnreadCount http 300]");
-        MMHandlerThread.postToMainThread(new Runnable()
+        k = j;
+        if (i < 15)
         {
-          public final void run()
+          long l = ((ScrollControlListView)paramListView).axj(paramListView.getChildCount() - 1);
+          k = j;
+          if (l > 0L)
           {
-            AppMethodBeat.i(123213);
-            this.RxI.XN();
-            AppMethodBeat.o(123213);
+            k = (int)(j + l);
+            Log.d("MicroMsg.ChattingUI.ScrollController", "calcDuring extraScrollTime: ".concat(String.valueOf(l)));
           }
-        });
-        AppMethodBeat.o(123217);
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          Log.e("MicroMsg.QQMailUnreadHelper", localException.getMessage());
         }
       }
-    }
-    localObject = XmlParser.parseXml(Util.convertStreamToString(((HttpURLConnection)localObject).getInputStream()), "Response", null);
-    if ((localObject != null) && (Util.getInt((String)((Map)localObject).get(".Response.error.code"), -1) == 0)) {}
-    for (final int i = Util.getInt((String)((Map)localObject).get(".Response.result.UnreadCount"), -1); i < 0; i = -1)
-    {
-      MMHandlerThread.postToMainThread(new Runnable()
+      i = k;
+      if (Log.getLogLevel() <= 1)
       {
-        public final void run()
-        {
-          AppMethodBeat.i(123214);
-          this.RxI.XN();
-          AppMethodBeat.o(123214);
-        }
-      });
-      AppMethodBeat.o(123217);
-      return;
-    }
-    h.aHG().aHp().set(ar.a.VhG, Integer.valueOf(i));
-    MMHandlerThread.postToMainThread(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(123215);
-        this.RxI.onSuccess(i);
-        AppMethodBeat.o(123215);
+        Log.d("MicroMsg.ChattingUI.ScrollController", "calcDuring maxDuring %s position %s firstVisible:%s lastVisible:%s lastBottomGap:".concat(String.valueOf(m)), new Object[] { Integer.valueOf(k), Integer.valueOf(paramInt), Integer.valueOf(i1), Integer.valueOf(n) });
+        i = k;
       }
-    });
-    AppMethodBeat.o(123217);
+      AppMethodBeat.o(245501);
+      return i;
+      label310:
+      continue;
+      label313:
+      i = 0;
+    }
   }
   
-  public static abstract interface a
+  public static boolean c(ListView paramListView, int paramInt)
   {
-    public abstract void XN();
-    
-    public abstract void onSuccess(int paramInt);
+    AppMethodBeat.i(245506);
+    int i = paramListView.getLastVisiblePosition();
+    int j = paramListView.getFirstVisiblePosition();
+    if ((paramInt < j) && (j - paramInt >= 20))
+    {
+      if (Log.getLogLevel() <= 1) {
+        Log.d("MicroMsg.ChattingUI.ScrollController", "tooFarAway return true 1111 position:%s firstVisible:%s lastVisible:%s ", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(j), Integer.valueOf(i) });
+      }
+      AppMethodBeat.o(245506);
+      return true;
+    }
+    if ((paramInt > i) && (paramInt - i >= 20))
+    {
+      if (Log.getLogLevel() <= 1) {
+        Log.d("MicroMsg.ChattingUI.ScrollController", "tooFarAway return true 2222 position:%s firstVisible:%s lastVisible:%s ", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(j), Integer.valueOf(i) });
+      }
+      AppMethodBeat.o(245506);
+      return true;
+    }
+    if (Log.getLogLevel() <= 1) {
+      Log.d("MicroMsg.ChattingUI.ScrollController", "tooFarAway return false position:%s firstVisible:%s lastVisible:%s ", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(j), Integer.valueOf(i) });
+    }
+    AppMethodBeat.o(245506);
+    return false;
+  }
+  
+  private static int d(ListView paramListView)
+  {
+    AppMethodBeat.i(245499);
+    int i = paramListView.getHeight();
+    if (i > 0)
+    {
+      i = (int)(a.K(paramListView.getContext(), i) / 712.0F * 1800.0F);
+      AppMethodBeat.o(245499);
+      return i;
+    }
+    AppMethodBeat.o(245499);
+    return 1800;
+  }
+  
+  public static boolean d(ListView paramListView, int paramInt)
+  {
+    AppMethodBeat.i(245512);
+    int i = paramListView.getLastVisiblePosition();
+    if ((paramListView.getFirstVisiblePosition() < paramInt) && (paramInt < i))
+    {
+      AppMethodBeat.o(245512);
+      return true;
+    }
+    AppMethodBeat.o(245512);
+    return false;
+  }
+  
+  public static int e(ListView paramListView)
+  {
+    int i = 0;
+    AppMethodBeat.i(245504);
+    if (paramListView == null)
+    {
+      AppMethodBeat.o(245504);
+      return 0;
+    }
+    int m = paramListView.getChildCount();
+    int j = paramListView.getHeight();
+    int k = paramListView.getPaddingBottom();
+    paramListView = paramListView.getChildAt(m - 1);
+    if (paramListView == null) {}
+    for (;;)
+    {
+      AppMethodBeat.o(245504);
+      return i - (j - k);
+      i = paramListView.getBottom();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.q
  * JD-Core Version:    0.7.0.1
  */

@@ -5,20 +5,20 @@ import com.tencent.mm.protocal.ac;
 import com.tencent.mm.protocal.l;
 import com.tencent.mm.protocal.l.b;
 import com.tencent.mm.protocal.l.d;
-import com.tencent.mm.protocal.protobuf.cor;
-import com.tencent.mm.protocal.protobuf.eae;
+import com.tencent.mm.protocal.protobuf.dfl;
+import com.tencent.mm.protocal.protobuf.gol;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class b$a
   extends l.d
   implements l.b
 {
-  public cor IyN;
+  public dfl Ozt;
   
   public b$a()
   {
     AppMethodBeat.i(143785);
-    this.IyN = new cor();
+    this.Ozt = new dfl();
     AppMethodBeat.o(143785);
   }
   
@@ -35,17 +35,17 @@ public final class b$a
   public final byte[] toProtoBuf()
   {
     AppMethodBeat.i(143786);
-    setRsaInfo(ac.hpi());
-    this.IyN.RQU = new eae().dc(Util.getUuidRandom());
-    this.IyN.setBaseRequest(l.a(this));
-    byte[] arrayOfByte = this.IyN.toByteArray();
+    setRsaInfo(ac.iQd());
+    this.Ozt.YOj = new gol().df(Util.getUuidRandom());
+    this.Ozt.setBaseRequest(l.a(this));
+    byte[] arrayOfByte = this.Ozt.toByteArray();
     AppMethodBeat.o(143786);
     return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.report.b.b.a
  * JD-Core Version:    0.7.0.1
  */

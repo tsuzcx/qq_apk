@@ -6,21 +6,21 @@ import java.util.List;
 public final class a
   extends b
 {
-  public final boolean daT;
-  public final boolean daU;
-  public final h daV;
-  public final Throwable daW;
-  public final long daX;
+  public final boolean eZt;
+  public final boolean eZu;
+  public final h eZv;
+  public final Throwable eZw;
+  public final long eZx;
   public final String mClassName;
   
   private a(boolean paramBoolean, String paramString, h paramh, Throwable paramThrowable, long paramLong)
   {
-    this.daT = paramBoolean;
-    this.daU = false;
+    this.eZt = paramBoolean;
+    this.eZu = false;
     this.mClassName = paramString;
-    this.daV = paramh;
-    this.daW = paramThrowable;
-    this.daX = paramLong;
+    this.eZv = paramh;
+    this.eZw = paramThrowable;
+    this.eZx = paramLong;
   }
   
   public static a a(String paramString, h paramh, long paramLong)
@@ -33,7 +33,7 @@ public final class a
     return new a(false, null, null, paramThrowable, paramLong);
   }
   
-  public static a br(long paramLong)
+  public static a dM(long paramLong)
   {
     return new a(false, null, null, null, paramLong);
   }
@@ -41,9 +41,9 @@ public final class a
   public final String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("Leak Reference:");
-    if (this.daV != null)
+    if (this.eZv != null)
     {
-      Iterator localIterator = this.daV.elements.iterator();
+      Iterator localIterator = this.eZv.elements.iterator();
       while (localIterator.hasNext()) {
         localStringBuilder.append(((j)localIterator.next()).toString()).append(";");
       }
@@ -53,7 +53,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.resource.analyzer.model.a
  * JD-Core Version:    0.7.0.1
  */

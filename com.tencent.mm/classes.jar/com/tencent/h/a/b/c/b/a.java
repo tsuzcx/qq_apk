@@ -11,31 +11,31 @@ import java.util.List;
 
 public final class a
 {
-  public Sensor GxY;
-  public boolean HQh;
-  private long PQ;
-  public int ZSX;
-  private long ZSY;
-  public b ZSZ;
-  public List<g> ZTa;
-  public long ZTb;
+  public Sensor Mug;
+  public boolean NMQ;
+  public List<g> ahXA;
+  public long ahXB;
+  public int ahXx;
+  private long ahXy;
+  public b ahXz;
+  private long bwi;
   
   public a(Sensor paramSensor, int paramInt)
   {
-    AppMethodBeat.i(208644);
-    this.ZSY = 0L;
-    this.PQ = this.ZSY;
-    this.ZSZ = null;
-    this.ZTa = new ArrayList();
-    this.HQh = false;
-    this.GxY = paramSensor;
+    AppMethodBeat.i(212137);
+    this.ahXy = 0L;
+    this.bwi = this.ahXy;
+    this.ahXz = null;
+    this.ahXA = new ArrayList();
+    this.NMQ = false;
+    this.Mug = paramSensor;
     int i = paramInt;
     if (paramInt > 0) {
       i = 1000 / paramInt;
     }
-    this.ZSX = i;
-    i.i("sensor_EventController", "[method: SCMode ] mFrequencyInterval : " + this.ZSX);
-    AppMethodBeat.o(208644);
+    this.ahXx = i;
+    i.i("sensor_EventController", "[method: SCMode ] mFrequencyInterval : " + this.ahXx);
+    AppMethodBeat.o(212137);
   }
   
   public static b a(SensorEvent paramSensorEvent, b paramb)
@@ -44,13 +44,13 @@ public final class a
       return null;
     }
     if ((paramSensorEvent.values != null) && (paramSensorEvent.values.length > 0)) {
-      paramb.fkN[0] = paramSensorEvent.values[0];
+      paramb.hpa[0] = paramSensorEvent.values[0];
     }
     if ((paramSensorEvent.values != null) && (paramSensorEvent.values.length > 1)) {
-      paramb.fkN[1] = paramSensorEvent.values[1];
+      paramb.hpa[1] = paramSensorEvent.values[1];
     }
     if ((paramSensorEvent.values != null) && (paramSensorEvent.values.length > 2)) {
-      paramb.fkN[2] = paramSensorEvent.values[2];
+      paramb.hpa[2] = paramSensorEvent.values[2];
     }
     paramb.timestamp = paramSensorEvent.timestamp;
     return paramb;
@@ -58,64 +58,64 @@ public final class a
   
   private void clearBuffer()
   {
-    AppMethodBeat.i(208650);
-    this.ZTa.clear();
-    AppMethodBeat.o(208650);
+    AppMethodBeat.i(212146);
+    this.ahXA.clear();
+    AppMethodBeat.o(212146);
   }
   
-  public final long WZ(long paramLong)
+  public final long Bm(long paramLong)
   {
-    AppMethodBeat.i(208645);
+    AppMethodBeat.i(212153);
     long l1 = paramLong / 1000000L;
     long l2 = SystemClock.uptimeMillis();
-    long l3 = l1 - l2 - this.PQ;
-    if ((this.PQ == this.ZSY) || (l3 >= 1000L))
+    long l3 = l1 - l2 - this.bwi;
+    if ((this.bwi == this.ahXy) || (l3 >= 1000L))
     {
-      this.PQ = (l1 - l2);
-      i.i("sensor_EventController", "[method: calculateTimestamp ] timestamp : " + paramLong + ", mDeltaTime : " + this.PQ + "curt : " + l2 + ", deltaInterval : " + l3);
+      this.bwi = (l1 - l2);
+      i.i("sensor_EventController", "[method: calculateTimestamp ] timestamp : " + paramLong + ", mDeltaTime : " + this.bwi + "curt : " + l2 + ", deltaInterval : " + l3);
     }
-    paramLong = this.PQ;
-    AppMethodBeat.o(208645);
+    paramLong = this.bwi;
+    AppMethodBeat.o(212153);
     return l1 - paramLong;
   }
   
-  public final b iub()
+  public final b kdx()
   {
-    AppMethodBeat.i(208646);
-    if (this.ZSZ == null) {
-      this.ZSZ = new b();
+    AppMethodBeat.i(212159);
+    if (this.ahXz == null) {
+      this.ahXz = new b();
     }
-    b localb = this.ZSZ;
-    AppMethodBeat.o(208646);
+    b localb = this.ahXz;
+    AppMethodBeat.o(212159);
     return localb;
   }
   
-  public final List<g> iuc()
+  public final List<g> kdy()
   {
-    AppMethodBeat.i(208647);
-    if ((this.ZTa == null) || (this.ZTa.size() <= 0))
+    AppMethodBeat.i(212167);
+    if ((this.ahXA == null) || (this.ahXA.size() <= 0))
     {
       localArrayList = new ArrayList();
-      AppMethodBeat.o(208647);
+      AppMethodBeat.o(212167);
       return localArrayList;
     }
-    ArrayList localArrayList = new ArrayList(this.ZTa);
+    ArrayList localArrayList = new ArrayList(this.ahXA);
     clearBuffer();
-    AppMethodBeat.o(208647);
+    AppMethodBeat.o(212167);
     return localArrayList;
   }
   
-  public final int iud()
+  public final int kdz()
   {
-    AppMethodBeat.i(208649);
-    int i = this.ZTa.size();
-    AppMethodBeat.o(208649);
+    AppMethodBeat.i(212170);
+    int i = this.ahXA.size();
+    AppMethodBeat.o(212170);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.h.a.b.c.b.a
  * JD-Core Version:    0.7.0.1
  */

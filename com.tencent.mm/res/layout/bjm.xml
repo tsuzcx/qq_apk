@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="@dimen/is" android:textColor="@color/x0" android:gravity="center_vertical" android:background="@drawable/qd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/bb" android:maxLength="40"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.mv.ui.widget.RangeSliderView android:id="@id/jn_" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.mv.ui.widget.MvFrameListView android:id="@id/ef1" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </com.tencent.mm.plugin.mv.ui.widget.RangeSliderView>
+    <TextView android:textSize="12.0sp" android:textColor="@android:color/holo_red_light" android:id="@id/bzc" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_alignLeft="@id/jn_" android:layout_alignTop="@id/jn_" android:layout_alignRight="@id/jn_" android:layout_alignBottom="@id/jn_" android:layout_alignParentBottom="true" />
+    <View android:id="@id/ag0" android:background="@drawable/akh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignLeft="@id/jn_" android:layout_alignTop="@id/jn_" android:layout_alignRight="@id/jn_" android:layout_alignBottom="@id/jn_" />
+</RelativeLayout>

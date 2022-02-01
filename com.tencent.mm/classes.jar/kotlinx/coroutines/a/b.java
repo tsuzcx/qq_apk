@@ -1,32 +1,34 @@
 package kotlinx.coroutines.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
-import kotlinx.coroutines.internal.v;
+import kotlin.Metadata;
+import kotlinx.coroutines.internal.ac;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"ENQUEUE_FAILED", "", "ENQUEUE_FAILED$annotations", "()V", "HANDLER_INVOKED", "HANDLER_INVOKED$annotations", "OFFER_FAILED", "OFFER_FAILED$annotations", "OFFER_SUCCESS", "OFFER_SUCCESS$annotations", "POLL_FAILED", "POLL_FAILED$annotations", "RECEIVE_NULL_ON_CLOSE", "", "RECEIVE_RESULT", "RECEIVE_THROWS_ON_CLOSE", "toResult", "Lkotlinx/coroutines/channels/ValueOrClosed;", "E", "(Ljava/lang/Object;)Ljava/lang/Object;", "Lkotlinx/coroutines/channels/Closed;", "(Lkotlinx/coroutines/channels/Closed;)Ljava/lang/Object;", "Handler", "Lkotlin/Function1;", "", "", "kotlinx-coroutines-core"})
+@Metadata(d1={""}, d2={"EMPTY", "Lkotlinx/coroutines/internal/Symbol;", "getEMPTY$annotations", "()V", "ENQUEUE_FAILED", "getENQUEUE_FAILED$annotations", "HANDLER_INVOKED", "getHANDLER_INVOKED$annotations", "OFFER_FAILED", "getOFFER_FAILED$annotations", "OFFER_SUCCESS", "getOFFER_SUCCESS$annotations", "POLL_FAILED", "getPOLL_FAILED$annotations", "RECEIVE_RESULT", "", "RECEIVE_THROWS_ON_CLOSE", "toResult", "Lkotlinx/coroutines/channels/ChannelResult;", "E", "", "(Ljava/lang/Object;)Ljava/lang/Object;", "Lkotlinx/coroutines/channels/Closed;", "(Lkotlinx/coroutines/channels/Closed;)Ljava/lang/Object;", "Handler", "Lkotlin/Function1;", "", "", "kotlinx-coroutines-core"}, k=2, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  public static final Object abyd;
-  public static final Object abye;
-  public static final Object abyf;
-  public static final Object abyg;
-  public static final Object abyh;
+  public static final ac ajxj;
+  public static final ac ajxk;
+  public static final ac ajxl;
+  public static final ac ajxm;
+  public static final ac ajxn;
+  public static final ac ajxo;
   
   static
   {
-    AppMethodBeat.i(204472);
-    abyd = new v("OFFER_SUCCESS");
-    abye = new v("OFFER_FAILED");
-    abyf = new v("POLL_FAILED");
-    abyg = new v("ENQUEUE_FAILED");
-    abyh = new v("ON_CLOSE_HANDLER_INVOKED");
-    AppMethodBeat.o(204472);
+    AppMethodBeat.i(189297);
+    ajxj = new ac("EMPTY");
+    ajxk = new ac("OFFER_SUCCESS");
+    ajxl = new ac("OFFER_FAILED");
+    ajxm = new ac("POLL_FAILED");
+    ajxn = new ac("ENQUEUE_FAILED");
+    ajxo = new ac("ON_CLOSE_HANDLER_INVOKED");
+    AppMethodBeat.o(189297);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.a.b
  * JD-Core Version:    0.7.0.1
  */

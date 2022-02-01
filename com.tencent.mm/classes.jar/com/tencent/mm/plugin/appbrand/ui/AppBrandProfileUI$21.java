@@ -13,18 +13,18 @@ final class AppBrandProfileUI$21
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(283767);
+    AppMethodBeat.i(48727);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/appbrand/ui/AppBrandProfileUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    AppBrandProfileUI.a(this.qXA, paramView);
-    a.a(this, "com/tencent/mm/plugin/appbrand/ui/AppBrandProfileUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(283767);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/appbrand/ui/AppBrandProfileUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    AppBrandProfileUI.c(this.udA);
+    a.a(this, "com/tencent/mm/plugin/appbrand/ui/AppBrandProfileUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(48727);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandProfileUI.21
  * JD-Core Version:    0.7.0.1
  */

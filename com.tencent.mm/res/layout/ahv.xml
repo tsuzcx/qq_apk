@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/dq0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/bv" android:layout_marginEnd="@dimen/df">
+        <TextView android:textSize="14.0dip" android:textColor="@color/al6" android:id="@id/dqg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/drj" />
+        <View android:id="@id/dqf" android:background="@drawable/azm" android:visibility="gone" android:layout_width="@dimen/bv" android:layout_height="@dimen/bv" android:layout_marginStart="@dimen/bt" android:layout_toEndOf="@id/dqg" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/dq1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/df" android:layout_marginEnd="@dimen/bv" android:layout_toEndOf="@id/dq0">
+        <TextView android:textSize="14.0dip" android:textColor="@color/al6" android:id="@id/dqi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ds0" />
+        <View android:id="@id/dqh" android:background="@drawable/azm" android:visibility="gone" android:layout_width="@dimen/bv" android:layout_height="@dimen/bv" android:layout_marginStart="@dimen/bt" android:layout_toEndOf="@id/dqi" />
+    </RelativeLayout>
+    <View android:id="@id/dpz" android:background="@drawable/a20" android:layout_width="0.0dip" android:layout_height="@dimen/bt" android:layout_marginTop="@dimen/cp" android:layout_below="@id/dq0" />
+</RelativeLayout>

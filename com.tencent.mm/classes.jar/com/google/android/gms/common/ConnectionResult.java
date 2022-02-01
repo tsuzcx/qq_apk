@@ -8,14 +8,8 @@ import com.google.android.gms.common.internal.Objects;
 import com.google.android.gms.common.internal.Objects.ToStringHelper;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SafeParcelable.Class(creator="ConnectionResultCreator")
 public final class ConnectionResult
   extends AbstractSafeParcelable
 {
@@ -46,13 +40,9 @@ public final class ConnectionResult
   public static final int TIMEOUT = 14;
   public static final int UNFINISHED = 99;
   public static final int UNKNOWN = -1;
-  @SafeParcelable.VersionField(id=1)
   private final int zzal;
-  @SafeParcelable.Field(getter="getErrorCode", id=2)
   private final int zzam;
-  @SafeParcelable.Field(getter="getResolution", id=3)
   private final PendingIntent zzan;
-  @SafeParcelable.Field(getter="getErrorMessage", id=4)
   private final String zzao;
   
   static
@@ -68,8 +58,7 @@ public final class ConnectionResult
     this(paramInt, null, null);
   }
   
-  @SafeParcelable.Constructor
-  ConnectionResult(@SafeParcelable.Param(id=1) int paramInt1, @SafeParcelable.Param(id=2) int paramInt2, @SafeParcelable.Param(id=3) PendingIntent paramPendingIntent, @SafeParcelable.Param(id=4) String paramString)
+  ConnectionResult(int paramInt1, int paramInt2, PendingIntent paramPendingIntent, String paramString)
   {
     this.zzal = paramInt1;
     this.zzam = paramInt2;
@@ -260,7 +249,7 @@ public final class ConnectionResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.ConnectionResult
  * JD-Core Version:    0.7.0.1
  */

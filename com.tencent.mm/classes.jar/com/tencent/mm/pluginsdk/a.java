@@ -2,10 +2,11 @@ package com.tencent.mm.pluginsdk;
 
 public final class a
 {
-  public String QRo = "";
-  public int QRp;
-  public boolean QRq = true;
-  public String fvd = "";
+  public int AcJ = 0;
+  public String XNj = "";
+  public int XNk;
+  public boolean XNl = true;
+  public String hzx = "";
 }
 
 

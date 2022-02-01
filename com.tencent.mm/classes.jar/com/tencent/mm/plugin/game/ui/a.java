@@ -19,12 +19,12 @@ import java.util.LinkedList;
 public abstract class a<T>
   extends BaseAdapter
 {
-  private static int CSn = 500;
-  protected LinkedList<T> CLy;
-  private a CSk;
-  protected boolean CSl = false;
-  private f<String, Bitmap> CSm;
-  private MTimerHandler CSo = new MTimerHandler(new MTimerHandler.CallBack()
+  private static int IMD = 500;
+  protected LinkedList<T> IFF;
+  private a IMA;
+  protected boolean IMB = false;
+  private f<String, Bitmap> IMC;
+  private MTimerHandler IME = new MTimerHandler(new MTimerHandler.CallBack()
   {
     public final boolean onTimerExpired()
     {
@@ -34,13 +34,13 @@ public abstract class a<T>
       return false;
     }
   }, false);
-  private final MStorage.IOnStorageChange CSp = new MStorage.IOnStorageChange()
+  private final MStorage.IOnStorageChange IMF = new MStorage.IOnStorageChange()
   {
     public final void onNotifyChange(String paramAnonymousString, MStorageEventData paramAnonymousMStorageEventData)
     {
       AppMethodBeat.i(41857);
       a.a(a.this).stopTimer();
-      a.a(a.this).startTimer(a.CSn);
+      a.a(a.this).startTimer(a.IMD);
       AppMethodBeat.o(41857);
     }
   };
@@ -49,12 +49,12 @@ public abstract class a<T>
   public a(Context paramContext)
   {
     this.mContext = paramContext;
-    this.CLy = new LinkedList();
-    this.CSm = new b(20, getClass());
-    com.tencent.mm.plugin.ab.a.fmz().add(this.CSp);
+    this.IFF = new LinkedList();
+    this.IMC = new b(20, getClass());
+    com.tencent.mm.plugin.openapi.a.gxn().add(this.IMF);
   }
   
-  protected final Bitmap aKl(String paramString)
+  protected final Bitmap aHb(String paramString)
   {
     Object localObject;
     if (Util.isNullOrNil(paramString)) {
@@ -68,76 +68,76 @@ public abstract class a<T>
         do
         {
           return localObject;
-          if (!this.CSm.check(paramString)) {
+          if (!this.IMC.check(paramString)) {
             break;
           }
-          localBitmap = (Bitmap)this.CSm.get(paramString);
+          localBitmap = (Bitmap)this.IMC.get(paramString);
           if (localBitmap == null) {
             break;
           }
           localObject = localBitmap;
         } while (!localBitmap.isRecycled());
-        localBitmap = h.c(paramString, 1, com.tencent.mm.ci.a.getDensity(this.mContext));
+        localBitmap = h.c(paramString, 1, com.tencent.mm.cd.a.getDensity(this.mContext));
         localObject = localBitmap;
       } while (localBitmap == null);
       localObject = localBitmap;
     } while (localBitmap.isRecycled());
-    this.CSm.q(paramString, localBitmap);
+    this.IMC.B(paramString, localBitmap);
     return localBitmap;
   }
   
-  public void bn(LinkedList<T> paramLinkedList)
+  public void bu(LinkedList<T> paramLinkedList)
   {
     if (paramLinkedList == null)
     {
-      if (this.CSk != null) {
-        this.CLy.size();
+      if (this.IMA != null) {
+        this.IFF.size();
       }
       return;
     }
-    this.CLy.addAll(paramLinkedList);
-    if (this.CSk != null) {
-      this.CLy.size();
+    this.IFF.addAll(paramLinkedList);
+    if (this.IMA != null) {
+      this.IFF.size();
     }
     super.notifyDataSetChanged();
   }
   
-  public void bo(LinkedList<T> paramLinkedList)
+  public void bv(LinkedList<T> paramLinkedList)
   {
     if (paramLinkedList == null)
     {
-      if (this.CSk != null) {
-        this.CLy.size();
+      if (this.IMA != null) {
+        this.IFF.size();
       }
       return;
     }
-    this.CLy = paramLinkedList;
-    if (this.CSk != null) {
-      this.CLy.size();
+    this.IFF = paramLinkedList;
+    if (this.IMA != null) {
+      this.IFF.size();
     }
     super.notifyDataSetChanged();
   }
   
   public void clear()
   {
-    if (this.CLy != null) {
-      this.CLy.clear();
+    if (this.IFF != null) {
+      this.IFF.clear();
     }
-    if (this.CSm != null) {
-      this.CSm.a(new f.a() {});
+    if (this.IMC != null) {
+      this.IMC.a(new f.a() {});
     }
-    this.CSm = null;
-    com.tencent.mm.plugin.ab.a.fmz().remove(this.CSp);
+    this.IMC = null;
+    com.tencent.mm.plugin.openapi.a.gxn().remove(this.IMF);
   }
   
   public int getCount()
   {
-    return this.CLy.size();
+    return this.IFF.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.CLy.get(paramInt);
+    return this.IFF.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -149,7 +149,7 @@ public abstract class a<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.a
  * JD-Core Version:    0.7.0.1
  */

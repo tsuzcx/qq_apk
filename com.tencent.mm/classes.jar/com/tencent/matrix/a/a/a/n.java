@@ -1,120 +1,152 @@
 package com.tencent.matrix.a.a.a;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.content.res.Resources;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.matrix.a.a.d;
 import com.tencent.matrix.a.b.b;
-import com.tencent.matrix.a.b.l;
-import com.tencent.matrix.a.b.l.a;
+import com.tencent.matrix.a.b.h;
+import com.tencent.matrix.a.b.h.a;
 
 public final class n
   extends a
 {
-  public final b cXf = new b();
-  l.a cXg;
+  h.a eSC;
+  String eSD;
+  long eSE = -1L;
   
-  public final void VZ()
+  final void Q(final String paramString1, final String paramString2)
   {
-    super.VZ();
-    if (this.cSI.cUb.cTQ)
+    final long l = 0L;
+    if (this.eSE > 0L) {
+      l = SystemClock.uptimeMillis() - this.eSE;
+    }
+    if (this.eNY.ePD.ePu) {}
+    for (final String str = b.stackTraceToString(new Throwable().getStackTrace());; str = "")
     {
-      this.cXg = new l.a()
+      this.eNY.mHandler.post(new Runnable()
       {
-        public final void Wo()
+        public final void run()
         {
-          if (n.this.Wb()) {}
-          for (String str = b.stackTraceToString(new Throwable().getStackTrace());; str = "")
-          {
-            com.tencent.matrix.e.c.i("Matrix.battery.WifiMonitorFeature", "#onStartScan, stack = ".concat(String.valueOf(str)), new Object[0]);
-            n.this.cXf.eU(str);
-            n.this.cXf.Wo();
-            return;
-          }
+          n.a locala = new n.a();
+          locala.title = paramString1;
+          locala.content = paramString2;
+          locala.stack = str;
+          locala.eSJ = l;
+          n.this.eNY.a(locala);
         }
-        
-        public final void Wy()
-        {
-          if (n.this.Wb()) {}
-          for (String str = b.stackTraceToString(new Throwable().getStackTrace());; str = "")
-          {
-            com.tencent.matrix.e.c.i("Matrix.battery.WifiMonitorFeature", "#onGetScanResults, stack = ".concat(String.valueOf(str)), new Object[0]);
-            n.this.cXf.eU(str);
-            n.this.cXf.Wy();
-            return;
-          }
-        }
-      };
-      l.a(this.cXg);
+      });
+      return;
     }
   }
   
-  public final void Wa()
+  public final void awI()
   {
-    super.Wa();
-    l.b(this.cXg);
-    b localb = this.cXf;
-    localb.cVu = 0;
-    localb.cXk = 0;
+    super.awI();
+    Object localObject = Resources.getSystem();
+    int i;
+    if (localObject != null)
+    {
+      i = ((Resources)localObject).getIdentifier("app_running_notification_text", "string", "android");
+      if (i <= 0) {}
+    }
+    for (localObject = ((Resources)localObject).getString(i);; localObject = null)
+    {
+      this.eSD = ((String)localObject);
+      if (!TextUtils.isEmpty(this.eSD)) {
+        break;
+      }
+      com.tencent.matrix.e.c.w("Matrix.battery.NotificationMonitorFeature", "can not get app_running_notification_text, abort notification monitor", new Object[0]);
+      return;
+    }
+    com.tencent.matrix.e.c.i("Matrix.battery.NotificationMonitorFeature", "get app_running_notification_text: " + this.eSD, new Object[0]);
+    this.eSC = new h.a()
+    {
+      public final void a(int paramAnonymousInt, Notification paramAnonymousNotification)
+      {
+        String str;
+        if (paramAnonymousNotification != null)
+        {
+          str = paramAnonymousNotification.extras.getString("android.title", null);
+          paramAnonymousNotification = paramAnonymousNotification.extras.getString("android.text", null);
+          com.tencent.matrix.e.c.i("Matrix.battery.NotificationMonitorFeature", "#onCreateNotification, id = " + paramAnonymousInt + ", title = " + str + ", text = " + paramAnonymousNotification, new Object[0]);
+          if (!TextUtils.isEmpty(paramAnonymousNotification)) {
+            break label98;
+          }
+          com.tencent.matrix.e.c.w("Matrix.battery.NotificationMonitorFeature", "notify with empty text!", new Object[0]);
+          n.this.Q(str, "");
+        }
+        label98:
+        while (!paramAnonymousNotification.equals(n.this.eSD)) {
+          return;
+        }
+        com.tencent.matrix.e.c.w("Matrix.battery.NotificationMonitorFeature", "notify with appRunningText: ".concat(String.valueOf(paramAnonymousNotification)), new Object[0]);
+        n.this.Q(str, paramAnonymousNotification);
+      }
+      
+      public final void cj(Object paramAnonymousObject)
+      {
+        if ((Build.VERSION.SDK_INT >= 26) && ((paramAnonymousObject instanceof NotificationChannel))) {
+          com.tencent.matrix.e.c.i("Matrix.battery.NotificationMonitorFeature", "#onCreateNotificationChannel, id = " + ((NotificationChannel)paramAnonymousObject).getId() + ", name = " + ((NotificationChannel)paramAnonymousObject).getName(), new Object[0]);
+        }
+      }
+    };
+    h.a(this.eSC);
   }
   
-  public final int Wh()
+  public final void awJ()
+  {
+    super.awJ();
+    h.b(this.eSC);
+  }
+  
+  public final int awQ()
   {
     return -2147483648;
   }
   
-  public final b Wx()
-  {
-    return this.cXf;
-  }
-  
   protected final String getTag()
   {
-    return "Matrix.battery.WifiMonitorFeature";
+    return "Matrix.battery.NotificationMonitorFeature";
+  }
+  
+  public final void onForeground(boolean paramBoolean)
+  {
+    super.onForeground(paramBoolean);
+    if (paramBoolean) {}
+    for (long l = -1L;; l = SystemClock.uptimeMillis())
+    {
+      this.eSE = l;
+      return;
+    }
   }
   
   public static final class a
-    extends j.a<a>
   {
-    public j.a.c.b<Integer> cVq;
-    public j.a.c.b<Integer> cXi;
+    public String content;
+    public long eSJ;
     public String stack;
+    public String title;
+    
+    public final String toString()
+    {
+      return "BadNotification{title='" + this.title + '\'' + ", content='" + this.content + '\'' + ", stack='" + this.stack + '\'' + ", bgMillis=" + this.eSJ + '}';
+    }
   }
   
-  public static final class b
+  public static abstract interface b
   {
-    int cVu;
-    private String cVv = "";
-    int cXk;
-    
-    public final void Wo()
-    {
-      this.cVu += 1;
-    }
-    
-    public final void Wy()
-    {
-      this.cXk += 1;
-    }
-    
-    public final n.a Wz()
-    {
-      n.a locala = new n.a();
-      locala.cVq = j.a.c.b.c(Integer.valueOf(this.cVu));
-      locala.cXi = j.a.c.b.c(Integer.valueOf(this.cXk));
-      locala.stack = this.cVv;
-      return locala;
-    }
-    
-    public final void eU(String paramString)
-    {
-      if (!TextUtils.isEmpty(paramString)) {
-        this.cVv = paramString;
-      }
-    }
+    public abstract void a(n.a parama);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.a.a.a.n
  * JD-Core Version:    0.7.0.1
  */

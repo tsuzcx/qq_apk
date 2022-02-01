@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/bdr" android:background="@color/ac_" android:paddingLeft="@dimen/ir" android:paddingRight="@dimen/e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="A" style="@style/nq" />
-    <LinearLayout android:paddingLeft="@dimen/ir" android:paddingRight="@dimen/e" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mz">
-        <RelativeLayout android:id="@id/bdv" android:background="@drawable/b9w" android:layout_width="fill_parent" android:layout_height="@dimen/az">
-            <com.tencent.mm.ui.base.MaskLayout android:id="@id/bdo" android:layout_width="@dimen/ax" android:layout_height="@dimen/ax" android:layout_centerVertical="true">
-                <ImageView android:id="@id/be9" android:layout_width="@dimen/aw" android:layout_height="@dimen/aw" android:layout_centerVertical="true" />
-            </com.tencent.mm.ui.base.MaskLayout>
-            <RelativeLayout android:id="@id/bdx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/hv" android:layout_alignParentRight="true" android:layout_centerVertical="true">
-                <TextView android:id="@id/bdz" android:visibility="gone" android:text="@string/et" style="@style/mo" />
-                <CheckBox android:id="@id/bdy" android:focusable="false" android:focusableInTouchMode="false" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            </RelativeLayout>
-            <RelativeLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/k_" android:layout_toLeftOf="@id/bdx" android:layout_toRightOf="@id/bdo" android:layout_centerHorizontal="true">
-                <com.tencent.mm.ui.tools.MMTruncTextView android:id="@id/bdw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{nick}" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerHorizontal="true" style="@style/mp" />
-                <TextView android:id="@id/bdm" android:layout_width="wrap_content" android:layout_height="20.0dip" android:text="{account}" android:singleLine="true" android:layout_below="@id/bdw" android:layout_alignParentLeft="true" style="@style/mo" />
-            </RelativeLayout>
-        </RelativeLayout>
-    </LinearLayout>
-</LinearLayout>
+<RelativeLayout android:paddingTop="8.0dip" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginBottom="8.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.RoundCornerImageView android:id="@id/mh" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_alignParentStart="true" app:roundHeight="1.0dip" app:roundWidth="1.0dip" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/lk" android:layout_width="7.0dip" android:layout_height="14.0dip" android:src="@raw/arrow_right" android:layout_centerVertical="true" android:layout_marginEnd="16.0dip" android:layout_alignParentEnd="true" app:iconColor="@color/az" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_3" android:ellipsize="end" android:id="@id/lu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="666" android:singleLine="true" android:layout_centerVertical="true" android:layout_marginEnd="8.0dip" android:layout_toStartOf="@id/lk" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/al6" android:ellipsize="middle" android:id="@id/n_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="大山大河" android:singleLine="true" android:layout_centerVertical="true" android:layout_marginStart="12.0dip" android:layout_marginEnd="12.0dip" android:layout_toStartOf="@id/lu" android:layout_toEndOf="@id/mh" />
+    <View android:background="@color/BW_100_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_alignParentBottom="true" android:layout_alignStart="@id/n_" />
+</RelativeLayout>

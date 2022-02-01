@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/rj"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView style="@style/om">
-        <LinearLayout style="@style/lz">
-            <TextView android:gravity="left" android:visibility="gone" android:layout_marginTop="5.0dip" android:text="@string/ga8" style="@style/m0" />
-            <EditText android:id="@id/fip" android:hint="@string/gab" style="@style/nn" />
-        </LinearLayout>
-    </ScrollView>
+    <ListView android:id="@id/hos" android:background="@color/a6w" android:paddingLeft="@dimen/i6" android:paddingRight="@dimen/i6" android:focusable="true" android:transcriptMode="disabled" style="@style/na" />
 </LinearLayout>

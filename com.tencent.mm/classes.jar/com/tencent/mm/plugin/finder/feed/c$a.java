@@ -5,265 +5,210 @@ import com.tencent.mm.plugin.finder.feed.model.BaseFinderFeedLoader;
 import com.tencent.mm.plugin.finder.view.FinderLikeDrawer;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.vending.e.b;
-import com.tencent.mm.view.RefreshLoadMoreLayout.c;
-import com.tencent.mm.view.j;
-import com.tencent.mm.view.recyclerview.f;
-import com.tencent.mm.view.recyclerview.h;
+import com.tencent.mm.view.RefreshLoadMoreLayout.d;
+import com.tencent.mm.view.k;
+import com.tencent.mm.view.recyclerview.g;
+import com.tencent.mm.view.recyclerview.i;
 import java.util.ArrayList;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/presenter/base/IPresenter;", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$ViewCallback;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "context", "Lcom/tencent/mm/ui/MMActivity;", "scene", "", "commentScene", "feedLoader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "(Lcom/tencent/mm/ui/MMActivity;IILcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;)V", "getContext", "()Lcom/tencent/mm/ui/MMActivity;", "getFeedLoader", "()Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "proxyRLayout", "Lcom/tencent/mm/view/IViewActionCallback;", "getProxyRLayout", "()Lcom/tencent/mm/view/IViewActionCallback;", "setProxyRLayout", "(Lcom/tencent/mm/view/IViewActionCallback;)V", "viewCallback", "getViewCallback", "()Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$ViewCallback;", "setViewCallback", "(Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$ViewCallback;)V", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getIViewActionCallback", "initViewCallback", "", "keep", "p0", "loadInitData", "loadMoreData", "onAttach", "callback", "onBackPressed", "", "onDetach", "onUIPause", "onUIResume", "requestRefresh", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/presenter/base/IPresenter;", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$ViewCallback;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "context", "Lcom/tencent/mm/ui/MMActivity;", "scene", "", "commentScene", "feedLoader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "(Lcom/tencent/mm/ui/MMActivity;IILcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;)V", "getCommentScene", "()I", "getContext", "()Lcom/tencent/mm/ui/MMActivity;", "getFeedLoader", "()Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "proxyRLayout", "Lcom/tencent/mm/view/IViewActionCallback;", "getProxyRLayout", "()Lcom/tencent/mm/view/IViewActionCallback;", "setProxyRLayout", "(Lcom/tencent/mm/view/IViewActionCallback;)V", "viewCallback", "getViewCallback", "()Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$ViewCallback;", "setViewCallback", "(Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$ViewCallback;)V", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getIViewActionCallback", "initViewCallback", "", "keep", "p0", "loadInitData", "loadMoreData", "onAttach", "callback", "onBackPressed", "", "onDetach", "onUIPause", "onUIResume", "requestRefresh", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class c$a
   implements com.tencent.mm.plugin.finder.presenter.base.a<c.b>, b<com.tencent.mm.vending.e.a>
 {
-  final MMActivity iXq;
-  public final BaseFinderFeedLoader xnX;
-  public c.b xvU;
-  private j xvV;
+  final int AJo;
+  public final BaseFinderFeedLoader ALH;
+  public c.b ATE;
+  private k ATF;
+  final MMActivity lzt;
   
-  public c$a(MMActivity paramMMActivity, BaseFinderFeedLoader paramBaseFinderFeedLoader)
+  public c$a(MMActivity paramMMActivity, int paramInt, BaseFinderFeedLoader paramBaseFinderFeedLoader)
   {
-    this.iXq = paramMMActivity;
-    this.xnX = paramBaseFinderFeedLoader;
-    this.xvV = ((j)new j()
+    this.lzt = paramMMActivity;
+    this.AJo = paramInt;
+    this.ALH = paramBaseFinderFeedLoader;
+    this.ATF = ((k)new k()
     {
       public final void onChanged()
       {
-        AppMethodBeat.i(283012);
-        Object localObject = this.xvW.xvU;
-        if (localObject != null)
-        {
-          localObject = (j)((c.b)localObject).xvJ;
-          if (localObject != null)
-          {
-            ((j)localObject).onChanged();
-            AppMethodBeat.o(283012);
-            return;
-          }
+        AppMethodBeat.i(363500);
+        c.b localb = this.ATG.ATE;
+        if (localb != null) {
+          ((k)localb.ATx).onChanged();
         }
-        AppMethodBeat.o(283012);
+        AppMethodBeat.o(363500);
       }
       
       public final void onItemRangeChanged(int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(283013);
-        Object localObject1 = this.xvW.xvU;
-        if (localObject1 != null)
+        AppMethodBeat.i(363505);
+        Object localObject = this.ATG.ATE;
+        c.b localb;
+        if (localObject != null)
         {
-          localObject1 = (j)((c.b)localObject1).xvJ;
-          if (localObject1 != null)
-          {
-            Object localObject2 = this.xvW.xvU;
-            if (localObject2 != null)
-            {
-              localObject2 = ((c.b)localObject2).getAdapter();
-              if (localObject2 == null) {}
-            }
-            for (int i = ((h)localObject2).YSk.size();; i = 0)
-            {
-              ((j)localObject1).onItemRangeChanged(i + paramAnonymousInt1, paramAnonymousInt2);
-              AppMethodBeat.o(283013);
-              return;
-            }
+          localObject = (k)((c.b)localObject).ATx;
+          localb = this.ATG.ATE;
+          if (localb != null) {
+            break label62;
           }
         }
-        AppMethodBeat.o(283013);
+        label62:
+        for (int i = 0;; i = localb.getAdapter().agOb.size())
+        {
+          ((k)localObject).onItemRangeChanged(i + paramAnonymousInt1, paramAnonymousInt2);
+          AppMethodBeat.o(363505);
+          return;
+        }
       }
       
       public final void onItemRangeChanged(int paramAnonymousInt1, int paramAnonymousInt2, Object paramAnonymousObject)
       {
-        AppMethodBeat.i(283014);
-        Object localObject1 = this.xvW.xvU;
-        if (localObject1 != null)
+        AppMethodBeat.i(363510);
+        Object localObject = this.ATG.ATE;
+        c.b localb;
+        if (localObject != null)
         {
-          localObject1 = (j)((c.b)localObject1).xvJ;
-          if (localObject1 != null)
-          {
-            Object localObject2 = this.xvW.xvU;
-            if (localObject2 != null)
-            {
-              localObject2 = ((c.b)localObject2).getAdapter();
-              if (localObject2 == null) {}
-            }
-            for (int i = ((h)localObject2).YSk.size();; i = 0)
-            {
-              ((j)localObject1).onItemRangeChanged(i + paramAnonymousInt1, paramAnonymousInt2, paramAnonymousObject);
-              AppMethodBeat.o(283014);
-              return;
-            }
+          localObject = (k)((c.b)localObject).ATx;
+          localb = this.ATG.ATE;
+          if (localb != null) {
+            break label65;
           }
         }
-        AppMethodBeat.o(283014);
+        label65:
+        for (int i = 0;; i = localb.getAdapter().agOb.size())
+        {
+          ((k)localObject).onItemRangeChanged(i + paramAnonymousInt1, paramAnonymousInt2, paramAnonymousObject);
+          AppMethodBeat.o(363510);
+          return;
+        }
       }
       
       public final void onItemRangeInserted(int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(283015);
-        Object localObject1 = this.xvW.xvU;
-        if (localObject1 != null)
+        AppMethodBeat.i(363516);
+        Object localObject = this.ATG.ATE;
+        c.b localb;
+        if (localObject != null)
         {
-          localObject1 = (j)((c.b)localObject1).xvJ;
-          if (localObject1 != null)
-          {
-            Object localObject2 = this.xvW.xvU;
-            if (localObject2 != null)
-            {
-              localObject2 = ((c.b)localObject2).getAdapter();
-              if (localObject2 == null) {}
-            }
-            for (int i = ((h)localObject2).YSk.size();; i = 0)
-            {
-              ((j)localObject1).onItemRangeInserted(i + paramAnonymousInt1, paramAnonymousInt2);
-              AppMethodBeat.o(283015);
-              return;
-            }
+          localObject = (k)((c.b)localObject).ATx;
+          localb = this.ATG.ATE;
+          if (localb != null) {
+            break label62;
           }
         }
-        AppMethodBeat.o(283015);
+        label62:
+        for (int i = 0;; i = localb.getAdapter().agOb.size())
+        {
+          ((k)localObject).onItemRangeInserted(i + paramAnonymousInt1, paramAnonymousInt2);
+          AppMethodBeat.o(363516);
+          return;
+        }
       }
       
       public final void onItemRangeRemoved(int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(283016);
-        Object localObject1 = this.xvW.xvU;
-        Object localObject2;
-        if (localObject1 != null)
+        AppMethodBeat.i(363520);
+        Object localObject = this.ATG.ATE;
+        c.b localb;
+        if (localObject != null)
         {
-          localObject1 = (j)((c.b)localObject1).xvJ;
-          if (localObject1 != null)
-          {
-            localObject2 = this.xvW.xvU;
-            if (localObject2 == null) {
-              break label105;
-            }
-            localObject2 = ((c.b)localObject2).getAdapter();
-            if (localObject2 == null) {
-              break label105;
-            }
+          localObject = (k)((c.b)localObject).ATx;
+          localb = this.ATG.ATE;
+          if (localb != null) {
+            break label81;
           }
         }
-        label105:
-        for (int i = ((h)localObject2).YSk.size();; i = 0)
+        label81:
+        for (int i = 0;; i = localb.getAdapter().agOb.size())
         {
-          ((j)localObject1).onItemRangeRemoved(i + paramAnonymousInt1, paramAnonymousInt2);
-          localObject1 = this.xvW.xvU;
-          if (localObject1 == null) {
-            break;
+          ((k)localObject).onItemRangeRemoved(i + paramAnonymousInt1, paramAnonymousInt2);
+          localObject = this.ATG.ATE;
+          if (localObject != null) {
+            ((c.b)localObject).dUO();
           }
-          ((c.b)localObject1).dsL();
-          AppMethodBeat.o(283016);
+          AppMethodBeat.o(363520);
           return;
         }
-        AppMethodBeat.o(283016);
       }
       
-      public final void onPreFinishLoadMore(RefreshLoadMoreLayout.c<Object> paramAnonymousc)
+      public final void onPreFinishLoadMore(RefreshLoadMoreLayout.d<Object> paramAnonymousd)
       {
-        AppMethodBeat.i(283010);
-        p.k(paramAnonymousc, "reason");
-        Object localObject = this.xvW.xvU;
-        if (localObject != null)
-        {
-          localObject = (j)((c.b)localObject).xvJ;
-          if (localObject != null)
-          {
-            ((j)localObject).onPreFinishLoadMore(paramAnonymousc);
-            AppMethodBeat.o(283010);
-            return;
-          }
+        AppMethodBeat.i(363491);
+        s.u(paramAnonymousd, "reason");
+        c.b localb = this.ATG.ATE;
+        if (localb != null) {
+          ((k)localb.ATx).onPreFinishLoadMore(paramAnonymousd);
         }
-        AppMethodBeat.o(283010);
+        AppMethodBeat.o(363491);
       }
       
-      public final void onPreFinishLoadMoreSmooth(RefreshLoadMoreLayout.c<Object> paramAnonymousc)
+      public final void onPreFinishLoadMoreSmooth(RefreshLoadMoreLayout.d<Object> paramAnonymousd)
       {
-        AppMethodBeat.i(283011);
-        p.k(paramAnonymousc, "reason");
-        Object localObject = this.xvW.xvU;
-        if (localObject != null)
-        {
-          localObject = (j)((c.b)localObject).xvJ;
-          if (localObject != null)
-          {
-            ((j)localObject).onPreFinishLoadMoreSmooth(paramAnonymousc);
-            AppMethodBeat.o(283011);
-            return;
-          }
+        AppMethodBeat.i(363496);
+        s.u(paramAnonymousd, "reason");
+        c.b localb = this.ATG.ATE;
+        if (localb != null) {
+          ((k)localb.ATx).onPreFinishLoadMoreSmooth(paramAnonymousd);
         }
-        AppMethodBeat.o(283011);
+        AppMethodBeat.o(363496);
       }
       
-      public final void onPreFinishRefresh(RefreshLoadMoreLayout.c<Object> paramAnonymousc)
+      public final void onPreFinishRefresh(RefreshLoadMoreLayout.d<Object> paramAnonymousd)
       {
-        AppMethodBeat.i(283009);
-        p.k(paramAnonymousc, "reason");
-        Object localObject = this.xvW.xvU;
-        if (localObject != null)
-        {
-          localObject = (j)((c.b)localObject).xvJ;
-          if (localObject != null)
-          {
-            ((j)localObject).onPreFinishRefresh(paramAnonymousc);
-            AppMethodBeat.o(283009);
-            return;
-          }
+        AppMethodBeat.i(363487);
+        s.u(paramAnonymousd, "reason");
+        c.b localb = this.ATG.ATE;
+        if (localb != null) {
+          ((k)localb.ATx).onPreFinishRefresh(paramAnonymousd);
         }
-        AppMethodBeat.o(283009);
+        AppMethodBeat.o(363487);
       }
     });
   }
   
   public void a(c.b paramb)
   {
-    p.k(paramb, "callback");
-    this.xvU = paramb;
-    BaseFinderFeedLoader localBaseFinderFeedLoader = this.xnX;
-    j localj = dsE();
-    paramb = localj;
-    if (localj == null) {
-      paramb = this.xvV;
+    s.u(paramb, "callback");
+    this.ATE = paramb;
+    BaseFinderFeedLoader localBaseFinderFeedLoader = this.ALH;
+    k localk = ebJ();
+    paramb = localk;
+    if (localk == null) {
+      paramb = this.ATF;
     }
     localBaseFinderFeedLoader.register(paramb);
-    dsr();
+    dUM();
   }
   
-  public abstract void byN();
+  public abstract void bXB();
   
-  public j dsE()
+  public abstract g dUK();
+  
+  public void dUL() {}
+  
+  public abstract void dUM();
+  
+  public k ebJ()
   {
     return null;
   }
-  
-  public void dsF() {}
-  
-  public abstract void dsr();
-  
-  public abstract f dsu();
   
   public void keep(com.tencent.mm.vending.e.a parama) {}
   
   public final boolean onBackPressed()
   {
-    Object localObject = this.xvU;
-    if (localObject == null) {
-      p.iCn();
-    }
-    localObject = ((c.b)localObject).dsz();
-    if (localObject == null) {
-      p.iCn();
-    }
-    if (((FinderLikeDrawer)localObject).eis())
+    Object localObject = this.ATE;
+    s.checkNotNull(localObject);
+    localObject = ((c.b)localObject).ebF();
+    s.checkNotNull(localObject);
+    if (((FinderLikeDrawer)localObject).fkp())
     {
-      localObject = this.xvU;
-      if (localObject == null) {
-        p.iCn();
-      }
-      localObject = ((c.b)localObject).dsz();
-      if (localObject == null) {
-        p.iCn();
-      }
-      ((FinderLikeDrawer)localObject).eir();
+      localObject = this.ATE;
+      s.checkNotNull(localObject);
+      localObject = ((c.b)localObject).ebF();
+      s.checkNotNull(localObject);
+      ((FinderLikeDrawer)localObject).fdh();
       return true;
     }
     return false;
@@ -271,14 +216,16 @@ public abstract class c$a
   
   public void onDetach()
   {
-    BaseFinderFeedLoader localBaseFinderFeedLoader = this.xnX;
-    j localj2 = dsE();
-    j localj1 = localj2;
-    if (localj2 == null) {
-      localj1 = this.xvV;
+    BaseFinderFeedLoader localBaseFinderFeedLoader = this.ALH;
+    k localk2 = ebJ();
+    k localk1 = localk2;
+    if (localk2 == null) {
+      localk1 = this.ATF;
     }
-    localBaseFinderFeedLoader.unregister(localj1);
+    localBaseFinderFeedLoader.unregister(localk1);
   }
+  
+  public void onUIPause() {}
   
   public void onUIResume() {}
   

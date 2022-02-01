@@ -1,42 +1,47 @@
 package com.tencent.mm.plugin.appbrand.luggage.export.functionalpage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalAPIInvokeManager;", "", "runtime", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;", "(Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;)V", "invokeProcess", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/IFunctionalAPIInvokeProcess;", "getRuntime", "()Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;", "onCallback", "", "component", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/IFunctionalComponent;", "callbackId", "", "data", "", "onPayAheadCallback", "callbackStr", "performInvoke", "invokeData", "isFromNewSdk", "", "Companion", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalAPIInvokeManager;", "", "runtime", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;", "(Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;)V", "invokeProcess", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/IFunctionalAPIInvokeProcess;", "getRuntime", "()Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;", "onCallback", "", "component", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/IFunctionalComponent;", "callbackId", "", "data", "", "onPayAheadCallback", "callbackStr", "performInvoke", "invokeData", "isFromNewSdk", "", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
 {
-  public static final a qaI;
-  public o qaG;
-  final l qaH;
+  public static final a tfM;
+  final l tfN;
+  public o tfO;
   
   static
   {
-    AppMethodBeat.i(274948);
-    qaI = new a((byte)0);
-    AppMethodBeat.o(274948);
+    AppMethodBeat.i(320011);
+    tfM = new a((byte)0);
+    AppMethodBeat.o(320011);
   }
   
   public c(l paraml)
   {
     AppMethodBeat.i(50863);
-    this.qaH = paraml;
+    this.tfN = paraml;
     AppMethodBeat.o(50863);
   }
   
   public final void a(p paramp, int paramInt, String paramString)
   {
     AppMethodBeat.i(50861);
-    kotlin.g.b.p.k(paramp, "component");
-    kotlin.g.b.p.k(paramString, "data");
-    o localo = this.qaG;
-    if (localo == null) {
-      kotlin.g.b.p.bGy("invokeProcess");
+    s.u(paramp, "component");
+    s.u(paramString, "data");
+    o localo2 = this.tfO;
+    o localo1 = localo2;
+    if (localo2 == null)
+    {
+      s.bIx("invokeProcess");
+      localo1 = null;
     }
-    localo.a(paramp, paramInt, paramString);
+    localo1.a(paramp, paramInt, paramString);
     AppMethodBeat.o(50861);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalAPIInvokeManager$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalAPIInvokeManager$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

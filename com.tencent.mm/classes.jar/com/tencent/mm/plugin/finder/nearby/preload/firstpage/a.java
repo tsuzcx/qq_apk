@@ -2,228 +2,225 @@ package com.tencent.mm.plugin.finder.nearby.preload.firstpage;
 
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.findersdk.b.h;
+import com.tencent.mm.plugin.findersdk.b.i;
 import com.tencent.mm.plugin.findersdk.f.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/preload/firstpage/FirstPagePreload;", "T", "Lcom/tencent/mm/plugin/finder/nearby/preload/IPreload;", "()V", "PRELOAD_RESPONSE_EXPIRED_MS", "", "getPRELOAD_RESPONSE_EXPIRED_MS", "()I", "setPRELOAD_RESPONSE_EXPIRED_MS", "(I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "setTAG", "(Ljava/lang/String;)V", "WAITING_PRELOAD_TIMEOUT_MS", "getWAITING_PRELOAD_TIMEOUT_MS", "setWAITING_PRELOAD_TIMEOUT_MS", "cgiTimeTrace", "Lcom/tencent/mm/plugin/findersdk/trace/TimeConsumingTrace;", "getCgiTimeTrace", "()Lcom/tencent/mm/plugin/findersdk/trace/TimeConsumingTrace;", "condition", "Ljava/util/concurrent/locks/Condition;", "kotlin.jvm.PlatformType", "getCondition", "()Ljava/util/concurrent/locks/Condition;", "loadingState", "Lcom/tencent/mm/plugin/finder/nearby/preload/firstpage/FirstPagePreload$LoadingState;", "lock", "Ljava/util/concurrent/locks/ReentrantLock;", "getLock", "()Ljava/util/concurrent/locks/ReentrantLock;", "response", "Lcom/tencent/mm/plugin/findersdk/cgi/PreloadResponse;", "getResponse", "()Lcom/tencent/mm/plugin/findersdk/cgi/PreloadResponse;", "setResponse", "(Lcom/tencent/mm/plugin/findersdk/cgi/PreloadResponse;)V", "fetchInternal", "", "getLoadingState", "handleFetchDoneInternal", "callback", "Lkotlin/Function0;", "isExpiredResponse", "", "isLoading", "requestCache", "requestCacheAsync", "Lkotlin/Function1;", "setLoadingState", "state", "startPreload", "stopPreload", "LoadingState", "plugin-finder-nearby_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/preload/firstpage/FirstPagePreload;", "T", "Lcom/tencent/mm/plugin/finder/nearby/preload/IPreload;", "()V", "PRELOAD_RESPONSE_EXPIRED_MS", "", "getPRELOAD_RESPONSE_EXPIRED_MS", "()I", "setPRELOAD_RESPONSE_EXPIRED_MS", "(I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "setTAG", "(Ljava/lang/String;)V", "WAITING_PRELOAD_TIMEOUT_MS", "getWAITING_PRELOAD_TIMEOUT_MS", "setWAITING_PRELOAD_TIMEOUT_MS", "cgiTimeTrace", "Lcom/tencent/mm/plugin/findersdk/trace/TimeConsumingTrace;", "getCgiTimeTrace", "()Lcom/tencent/mm/plugin/findersdk/trace/TimeConsumingTrace;", "condition", "Ljava/util/concurrent/locks/Condition;", "kotlin.jvm.PlatformType", "getCondition", "()Ljava/util/concurrent/locks/Condition;", "loadingState", "Lcom/tencent/mm/plugin/finder/nearby/preload/firstpage/FirstPagePreload$LoadingState;", "lock", "Ljava/util/concurrent/locks/ReentrantLock;", "getLock", "()Ljava/util/concurrent/locks/ReentrantLock;", "response", "Lcom/tencent/mm/plugin/findersdk/cgi/PreloadResponse;", "getResponse", "()Lcom/tencent/mm/plugin/findersdk/cgi/PreloadResponse;", "setResponse", "(Lcom/tencent/mm/plugin/findersdk/cgi/PreloadResponse;)V", "fetchInternal", "", "getLoadingState", "handleFetchDoneInternal", "callback", "Lkotlin/Function0;", "isExpiredResponse", "", "isLoading", "isResponseValid", "requestCache", "requestCacheAsync", "Lkotlin/Function1;", "setLoadingState", "state", "startPreload", "stopPreload", "LoadingState", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class a<T>
 {
+  private int EPQ;
+  private int EPR;
+  private i<T> EPS;
+  private final c EPT;
+  public volatile a EPU;
   private String TAG = "Finder.Nearby.Preload." + getClass().getSimpleName() + "_@" + hashCode();
-  private final ReentrantLock eYl;
-  private final Condition eYm;
-  private h<T> zIA;
-  private final c zIB;
-  public volatile a zIC;
-  private int zIy;
-  private int zIz;
+  private final ReentrantLock bKF;
+  private final Condition hbM;
   
   public a()
   {
-    com.tencent.mm.plugin.finder.storage.d locald = com.tencent.mm.plugin.finder.storage.d.AjH;
-    this.zIy = ((Number)com.tencent.mm.plugin.finder.storage.d.dTp().aSr()).intValue();
-    locald = com.tencent.mm.plugin.finder.storage.d.AjH;
-    this.zIz = ((Number)com.tencent.mm.plugin.finder.storage.d.dTo().aSr()).intValue();
-    this.eYl = new ReentrantLock();
-    this.eYm = this.eYl.newCondition();
-    this.zIB = new c(this.TAG);
-    this.zIC = a.zID;
-    Log.i(this.TAG, "init WAITING_PRELOAD_TIMEOUT_MS:" + this.zIy + ' ' + "PRELOAD_RESPONSE_EXPIRED_MS:" + this.zIz + ' ');
+    com.tencent.mm.plugin.finder.storage.d locald = com.tencent.mm.plugin.finder.storage.d.FAy;
+    this.EPQ = ((Number)com.tencent.mm.plugin.finder.storage.d.eRE().bmg()).intValue();
+    locald = com.tencent.mm.plugin.finder.storage.d.FAy;
+    this.EPR = ((Number)com.tencent.mm.plugin.finder.storage.d.eRD().bmg()).intValue();
+    this.bKF = new ReentrantLock();
+    this.hbM = this.bKF.newCondition();
+    this.EPT = new c(this.TAG);
+    this.EPU = a.EPV;
+    Log.i(this.TAG, "init WAITING_PRELOAD_TIMEOUT_MS:" + this.EPQ + " PRELOAD_RESPONSE_EXPIRED_MS:" + this.EPR + ' ');
   }
   
   private final void a(a parama)
   {
-    Log.i(this.TAG, "setLoadingState from " + this.zIC + " to " + parama);
-    this.zIC = parama;
+    Log.i(this.TAG, "setLoadingState from " + this.EPU + " to " + parama);
+    this.EPU = parama;
   }
   
-  public final void N(final kotlin.g.a.b<? super h<T>, x> paramb)
+  public static boolean b(i<T> parami)
   {
-    p.k(paramb, "callback");
-    Log.i(this.TAG, "requestCacheAsync state:" + this.zIC);
-    com.tencent.mm.ae.d.h((kotlin.g.a.a)new b(this, paramb));
+    return (parami != null) && (parami.errType == 0) && (parami.errCode == 0);
   }
   
-  protected final void a(h<T> paramh)
+  protected final void a(i<T> parami)
   {
-    this.zIA = paramh;
+    this.EPS = parami;
   }
   
   /* Error */
-  public final void a(h<T> paramh, kotlin.g.a.a<x> parama)
+  public final void a(i<T> parami, kotlin.g.a.a<ah> parama)
   {
     // Byte code:
     //   0: aload_2
-    //   1: ldc 193
-    //   3: invokestatic 199	kotlin/g/b/p:k	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   1: ldc 212
+    //   3: invokestatic 218	kotlin/g/b/s:u	(Ljava/lang/Object;Ljava/lang/String;)V
     //   6: aload_0
-    //   7: getfield 163	com/tencent/mm/plugin/finder/nearby/preload/firstpage/a:zIB	Lcom/tencent/mm/plugin/findersdk/f/c;
-    //   10: ldc 221
-    //   12: invokevirtual 224	com/tencent/mm/plugin/findersdk/f/c:aGV	(Ljava/lang/String;)V
+    //   7: getfield 170	com/tencent/mm/plugin/finder/nearby/preload/firstpage/a:EPT	Lcom/tencent/mm/plugin/findersdk/f/c;
+    //   10: ldc 220
+    //   12: invokevirtual 223	com/tencent/mm/plugin/findersdk/f/c:aDn	(Ljava/lang/String;)V
     //   15: aload_0
-    //   16: getfield 153	com/tencent/mm/plugin/finder/nearby/preload/firstpage/a:eYl	Ljava/util/concurrent/locks/ReentrantLock;
-    //   19: invokevirtual 226	java/util/concurrent/locks/ReentrantLock:lock	()V
+    //   16: getfield 160	com/tencent/mm/plugin/finder/nearby/preload/firstpage/a:bKF	Ljava/util/concurrent/locks/ReentrantLock;
+    //   19: invokevirtual 225	java/util/concurrent/locks/ReentrantLock:lock	()V
     //   22: aload_2
-    //   23: invokeinterface 229 1 0
+    //   23: invokeinterface 230 1 0
     //   28: pop
     //   29: aload_1
-    //   30: ifnull +50 -> 80
-    //   33: aload_1
-    //   34: getfield 234	com/tencent/mm/plugin/findersdk/b/h:errType	I
-    //   37: ifne +43 -> 80
-    //   40: aload_1
-    //   41: getfield 237	com/tencent/mm/plugin/findersdk/b/h:errCode	I
-    //   44: ifne +36 -> 80
-    //   47: aload_0
-    //   48: getstatic 240	com/tencent/mm/plugin/finder/nearby/preload/firstpage/a$a:zII	Lcom/tencent/mm/plugin/finder/nearby/preload/firstpage/a$a;
-    //   51: invokespecial 242	com/tencent/mm/plugin/finder/nearby/preload/firstpage/a:a	(Lcom/tencent/mm/plugin/finder/nearby/preload/firstpage/a$a;)V
-    //   54: aload_0
-    //   55: getfield 158	com/tencent/mm/plugin/finder/nearby/preload/firstpage/a:eYm	Ljava/util/concurrent/locks/Condition;
-    //   58: invokeinterface 247 1 0
-    //   63: aload_0
-    //   64: getfield 153	com/tencent/mm/plugin/finder/nearby/preload/firstpage/a:eYl	Ljava/util/concurrent/locks/ReentrantLock;
-    //   67: invokevirtual 250	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   70: aload_0
-    //   71: getfield 163	com/tencent/mm/plugin/finder/nearby/preload/firstpage/a:zIB	Lcom/tencent/mm/plugin/findersdk/f/c;
-    //   74: ldc 252
-    //   76: invokevirtual 255	com/tencent/mm/plugin/findersdk/f/c:fp	(Ljava/lang/String;)V
-    //   79: return
+    //   30: invokestatic 232	com/tencent/mm/plugin/finder/nearby/preload/firstpage/a:b	(Lcom/tencent/mm/plugin/findersdk/b/i;)Z
+    //   33: ifeq +36 -> 69
+    //   36: aload_0
+    //   37: getstatic 235	com/tencent/mm/plugin/finder/nearby/preload/firstpage/a$a:EQa	Lcom/tencent/mm/plugin/finder/nearby/preload/firstpage/a$a;
+    //   40: invokespecial 237	com/tencent/mm/plugin/finder/nearby/preload/firstpage/a:a	(Lcom/tencent/mm/plugin/finder/nearby/preload/firstpage/a$a;)V
+    //   43: aload_0
+    //   44: getfield 165	com/tencent/mm/plugin/finder/nearby/preload/firstpage/a:hbM	Ljava/util/concurrent/locks/Condition;
+    //   47: invokeinterface 242 1 0
+    //   52: aload_0
+    //   53: getfield 160	com/tencent/mm/plugin/finder/nearby/preload/firstpage/a:bKF	Ljava/util/concurrent/locks/ReentrantLock;
+    //   56: invokevirtual 245	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   59: aload_0
+    //   60: getfield 170	com/tencent/mm/plugin/finder/nearby/preload/firstpage/a:EPT	Lcom/tencent/mm/plugin/findersdk/f/c;
+    //   63: ldc 247
+    //   65: invokevirtual 250	com/tencent/mm/plugin/findersdk/f/c:gG	(Ljava/lang/String;)V
+    //   68: return
+    //   69: aload_0
+    //   70: getstatic 253	com/tencent/mm/plugin/finder/nearby/preload/firstpage/a$a:EPZ	Lcom/tencent/mm/plugin/finder/nearby/preload/firstpage/a$a;
+    //   73: invokespecial 237	com/tencent/mm/plugin/finder/nearby/preload/firstpage/a:a	(Lcom/tencent/mm/plugin/finder/nearby/preload/firstpage/a$a;)V
+    //   76: goto -33 -> 43
+    //   79: astore_1
     //   80: aload_0
-    //   81: getstatic 258	com/tencent/mm/plugin/finder/nearby/preload/firstpage/a$a:zIH	Lcom/tencent/mm/plugin/finder/nearby/preload/firstpage/a$a;
-    //   84: invokespecial 242	com/tencent/mm/plugin/finder/nearby/preload/firstpage/a:a	(Lcom/tencent/mm/plugin/finder/nearby/preload/firstpage/a$a;)V
-    //   87: goto -33 -> 54
-    //   90: astore_1
-    //   91: aload_0
-    //   92: getfield 153	com/tencent/mm/plugin/finder/nearby/preload/firstpage/a:eYl	Ljava/util/concurrent/locks/ReentrantLock;
-    //   95: invokevirtual 250	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   98: aload_1
-    //   99: athrow
+    //   81: getfield 160	com/tencent/mm/plugin/finder/nearby/preload/firstpage/a:bKF	Ljava/util/concurrent/locks/ReentrantLock;
+    //   84: invokevirtual 245	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   87: aload_1
+    //   88: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	100	0	this	a
-    //   0	100	1	paramh	h<T>
-    //   0	100	2	parama	kotlin.g.a.a<x>
+    //   0	89	0	this	a
+    //   0	89	1	parami	i<T>
+    //   0	89	2	parama	kotlin.g.a.a<ah>
     // Exception table:
     //   from	to	target	type
-    //   22	29	90	finally
-    //   33	54	90	finally
-    //   54	63	90	finally
-    //   80	87	90	finally
+    //   22	43	79	finally
+    //   43	52	79	finally
+    //   69	76	79	finally
   }
   
-  protected final boolean b(h<T> paramh)
+  public final void at(kotlin.g.a.b<? super i<T>, ah> paramb)
   {
-    p.k(paramh, "response");
-    long l = SystemClock.elapsedRealtime() - paramh.wmE;
-    if (l > this.zIz)
+    s.u(paramb, "callback");
+    Log.i(this.TAG, s.X("requestCacheAsync state:", this.EPU));
+    com.tencent.mm.ae.d.B((kotlin.g.a.a)new b(paramb, this));
+  }
+  
+  protected final boolean c(i<T> parami)
+  {
+    s.u(parami, "response");
+    long l = SystemClock.elapsedRealtime() - parami.zIH;
+    if (l > this.EPR)
     {
-      Log.i(this.TAG, "isExpiredResponse expiredMs:".concat(String.valueOf(l)));
+      Log.i(this.TAG, s.X("isExpiredResponse expiredMs:", Long.valueOf(l)));
       return true;
     }
     return false;
   }
   
-  protected final h<T> dMq()
-  {
-    return this.zIA;
-  }
+  public abstract void eGA();
   
-  protected final c dMr()
+  public void eGB()
   {
-    return this.zIB;
-  }
-  
-  public void dMs()
-  {
-    if (this.zIC != a.zID)
-    {
-      Log.i(this.TAG, "startPreload return for state:" + this.zIC);
-      return;
-    }
-    Log.i(this.TAG, "startPreload");
-    this.zIB.fo("startPreload begin");
-    this.eYl.lock();
+    Log.i(this.TAG, s.X("stopPreload state:", this.EPU));
+    this.bKF.lock();
     try
     {
-      a(a.zIE);
-      dMu();
-      this.eYl.unlock();
-      this.zIB.aGV("startPreload end");
+      this.hbM.signalAll();
+      this.bKF.unlock();
+      this.EPS = null;
+      a(a.EPV);
       return;
     }
     finally
     {
-      this.eYl.unlock();
+      this.bKF.unlock();
     }
   }
   
-  public h<T> dMt()
+  protected final i<T> eGw()
   {
-    Log.i(this.TAG, "requestCache state:" + this.zIC);
-    this.eYl.lock();
-    this.zIB.aGV("requestCache");
+    return this.EPS;
+  }
+  
+  protected final c eGx()
+  {
+    return this.EPT;
+  }
+  
+  public void eGy()
+  {
+    if (this.EPU != a.EPV)
+    {
+      Log.i(this.TAG, s.X("startPreload return for state:", this.EPU));
+      return;
+    }
+    Log.i(this.TAG, "startPreload");
+    this.EPT.gF("startPreload begin");
+    this.bKF.lock();
+    try
+    {
+      a(a.EPW);
+      eGA();
+      this.bKF.unlock();
+      this.EPT.aDn("startPreload end");
+      return;
+    }
+    finally
+    {
+      this.bKF.unlock();
+    }
+  }
+  
+  public i<T> eGz()
+  {
+    Log.i(this.TAG, s.X("requestCache state:", this.EPU));
+    this.bKF.lock();
+    this.EPT.aDn("requestCache");
     long l = SystemClock.elapsedRealtime();
-    h localh;
+    i locali;
     do
     {
       try
       {
-        if (this.zIC == a.zIE) {}
+        if (this.EPU == a.EPW) {}
         for (int i = 1;; i = 0)
         {
           if (i != 0)
           {
             Log.i(this.TAG, "requestCache waiting.");
-            this.eYm.await(this.zIy, TimeUnit.MILLISECONDS);
+            this.hbM.await(this.EPQ, TimeUnit.MILLISECONDS);
           }
-          this.eYl.unlock();
+          this.bKF.unlock();
           l = SystemClock.elapsedRealtime() - l;
-          if (this.zIA != null) {
+          if (this.EPS != null) {
             break;
           }
-          Log.i(this.TAG, "requestCache hit null, state:" + this.zIC + " time:" + l);
-          return this.zIA;
+          Log.i(this.TAG, "requestCache hit null, state:" + this.EPU + " time:" + l);
+          return this.EPS;
         }
-        Log.i(this.TAG, "requestCache hit cache state:" + this.zIC + " response:" + this.zIA + " time:" + l);
+        Log.i(this.TAG, "requestCache hit cache state:" + this.EPU + " response:" + this.EPS + " time:" + l);
       }
       finally
       {
-        this.eYl.unlock();
+        this.bKF.unlock();
       }
-      localh = this.zIA;
-      if (localh == null) {
-        p.iCn();
-      }
-    } while (!b(localh));
-    a(a.zIG);
+      locali = this.EPS;
+      s.checkNotNull(locali);
+    } while (!c(locali));
+    a(a.EPY);
     return null;
-  }
-  
-  public abstract void dMu();
-  
-  public void dMv()
-  {
-    Log.i(this.TAG, "stopPreload state:" + this.zIC);
-    this.eYl.lock();
-    try
-    {
-      this.eYm.signalAll();
-      this.eYl.unlock();
-      this.zIA = null;
-      a(a.zID);
-      return;
-    }
-    finally
-    {
-      this.eYl.unlock();
-    }
   }
   
   public final String getTAG()
@@ -233,41 +230,35 @@ public abstract class a<T>
   
   public final void setTAG(String paramString)
   {
-    p.k(paramString, "<set-?>");
+    s.u(paramString, "<set-?>");
     this.TAG = paramString;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/preload/firstpage/FirstPagePreload$LoadingState;", "", "(Ljava/lang/String;I)V", "IDLE", "LOADING", "DISABLE", "EXPIRED", "FAILED", "OK", "plugin-finder-nearby_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/preload/firstpage/FirstPagePreload$LoadingState;", "", "(Ljava/lang/String;I)V", "IDLE", "LOADING", "DISABLE", "EXPIRED", "FAILED", "OK", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static enum a
   {
     static
     {
-      AppMethodBeat.i(200013);
-      a locala1 = new a("IDLE", 0);
-      zID = locala1;
-      a locala2 = new a("LOADING", 1);
-      zIE = locala2;
-      a locala3 = new a("DISABLE", 2);
-      zIF = locala3;
-      a locala4 = new a("EXPIRED", 3);
-      zIG = locala4;
-      a locala5 = new a("FAILED", 4);
-      zIH = locala5;
-      a locala6 = new a("OK", 5);
-      zII = locala6;
-      zIJ = new a[] { locala1, locala2, locala3, locala4, locala5, locala6 };
-      AppMethodBeat.o(200013);
+      AppMethodBeat.i(340009);
+      EPV = new a("IDLE", 0);
+      EPW = new a("LOADING", 1);
+      EPX = new a("DISABLE", 2);
+      EPY = new a("EXPIRED", 3);
+      EPZ = new a("FAILED", 4);
+      EQa = new a("OK", 5);
+      EQb = new a[] { EPV, EPW, EPX, EPY, EPZ, EQa };
+      AppMethodBeat.o(340009);
     }
     
     private a() {}
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "T"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    b(a parama, kotlin.g.a.b paramb)
+    b(kotlin.g.a.b<? super i<T>, ah> paramb, a<T> parama)
     {
       super();
     }
@@ -275,7 +266,7 @@ public abstract class a<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.nearby.preload.firstpage.a
  * JD-Core Version:    0.7.0.1
  */

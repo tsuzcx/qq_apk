@@ -52,7 +52,7 @@ public class TinkerResourceLoader
       TinkerResourcePatcher.isResourceCanPatch(paramContext);
       return true;
     }
-    catch (Throwable paramContext)
+    finally
     {
       ShareTinkerLog.e("Tinker.ResourceLoader", "resource hook check failed.", new Object[] { paramContext });
       paramIntent.putExtra("intent_patch_exception", paramContext);
@@ -85,7 +85,7 @@ public class TinkerResourceLoader
       ShareTinkerLog.i("Tinker.ResourceLoader", "monkeyPatchExistingResources resource file:" + paramString + ", use time: " + (System.currentTimeMillis() - l), new Object[0]);
       return true;
     }
-    catch (Throwable paramString)
+    finally
     {
       ShareTinkerLog.e("Tinker.ResourceLoader", "install resources failed", new Object[0]);
     }
@@ -96,7 +96,7 @@ public class TinkerResourceLoader
       ShareIntentUtil.setIntentReturnCode(paramIntent, -23);
       return false;
     }
-    catch (Throwable paramTinkerApplication)
+    finally
     {
       for (;;)
       {
@@ -107,7 +107,7 @@ public class TinkerResourceLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.loader.TinkerResourceLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -12,52 +12,52 @@ public final class zzk
   static
   {
     AppMethodBeat.i(5516);
-    for (localObject2 = null;; localObject2 = localObject3)
+    for (localObject3 = null;; localObject3 = localObject4)
     {
       try
       {
-        localObject3 = zzdw();
-        if (localObject3 == null) {
+        localObject4 = zzdw();
+        if (localObject4 == null) {
           break label60;
         }
-        localObject2 = localObject3;
-        if (((Integer)localObject3).intValue() < 19) {
+        localObject3 = localObject4;
+        if (((Integer)localObject4).intValue() < 19) {
           break label60;
         }
-        localObject2 = localObject3;
+        localObject3 = localObject4;
         localObject1 = new zzp();
-        localObject2 = localObject3;
+        localObject3 = localObject4;
       }
-      catch (Throwable localThrowable)
+      finally
       {
         for (;;)
         {
           Object localObject1;
           label60:
-          Object localObject3 = System.err;
+          Object localObject4 = System.err;
           String str = zza.class.getName();
-          ((PrintStream)localObject3).println(String.valueOf(str).length() + 132 + "An error has occured when initializing the try-with-resources desuguring strategy. The default strategy " + str + "will be used. The error is: ");
-          localThrowable.printStackTrace(System.err);
+          ((PrintStream)localObject4).println(String.valueOf(str).length() + 132 + "An error has occured when initializing the try-with-resources desuguring strategy. The default strategy " + str + "will be used. The error is: ");
+          localObject2.printStackTrace(System.err);
           zza localzza = new zza();
           continue;
           int i = 0;
           continue;
-          localObject2 = localObject3;
+          localObject3 = localObject4;
           localzza = new zza();
-          localObject2 = localObject3;
+          localObject3 = localObject4;
           continue;
-          i = localObject2.intValue();
+          i = localObject3.intValue();
         }
       }
       zzahg = (zzl)localObject1;
-      if (localObject2 != null) {
+      if (localObject3 != null) {
         break label182;
       }
       i = 1;
       zzahh = i;
       AppMethodBeat.o(5516);
       return;
-      localObject2 = localObject3;
+      localObject3 = localObject4;
       if (Boolean.getBoolean("com.google.devtools.build.android.desugar.runtime.twr_disable_mimic")) {
         break;
       }
@@ -65,7 +65,7 @@ public final class zzk
       if (i == 0) {
         break label167;
       }
-      localObject2 = localObject3;
+      localObject3 = localObject4;
       localObject1 = new zzo();
     }
   }
@@ -103,7 +103,7 @@ public final class zzk
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.stable.zzk
  * JD-Core Version:    0.7.0.1
  */

@@ -7,6 +7,7 @@ import android.graphics.RectF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.fontdecode.PathExtractor;
 import com.tencent.mm.fontdecode.PathExtractor.Metrics;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -14,175 +15,176 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/PathTextDrawer;", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/TextDrawer;", "fontPaths", "", "", "textSize", "", "([Ljava/lang/String;I)V", "currFont", "dataMap", "", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/PathTextDrawer$TextPathData;", "defaultDrawer", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/DefaultTextDrawer;", "text", "", "drawLine", "", "canvas", "Landroid/graphics/Canvas;", "lineStart", "lineEnd", "x", "", "y", "paint", "Landroid/graphics/Paint;", "withEllipsis", "", "refresh", "setText", "switchFont", "fontPath", "TextPathData", "plugin-emojicapture_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/PathTextDrawer;", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/TextDrawer;", "fontPaths", "", "", "textSize", "", "([Ljava/lang/String;I)V", "currFont", "dataMap", "", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/PathTextDrawer$TextPathData;", "defaultDrawer", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/DefaultTextDrawer;", "text", "", "drawLine", "", "canvas", "Landroid/graphics/Canvas;", "lineStart", "lineEnd", "x", "", "y", "paint", "Landroid/graphics/Paint;", "withEllipsis", "", "refresh", "setText", "switchFont", "fontPath", "TextPathData", "plugin-emojicapture_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
   implements c
 {
-  private CharSequence LV;
-  private String vbl;
-  private Map<String, a> vbm;
-  private final a vbn;
+  private CharSequence bba;
+  private String yng;
+  private Map<String, a> ynh;
+  private final a yni;
   
   public b(String[] paramArrayOfString, int paramInt)
   {
     AppMethodBeat.i(826);
-    this.vbl = "";
-    this.vbm = ((Map)new HashMap());
-    this.vbn = new a();
-    int j = paramArrayOfString.length;
+    this.yng = "";
+    this.ynh = ((Map)new HashMap());
+    this.yni = new a();
+    int k = paramArrayOfString.length;
     int i = 0;
-    while (i < j)
+    label131:
+    for (;;)
     {
-      String str = paramArrayOfString[i];
-      a locala = new a(str, paramInt);
-      if (locala.vbo.isValid()) {
-        this.vbm.put(str, locala);
+      if (i < k)
+      {
+        String str = paramArrayOfString[i];
+        i += 1;
+        a locala = new a(str, paramInt);
+        if (locala.ynj.msD != 0L) {}
+        for (int j = 1;; j = 0)
+        {
+          if (j == 0) {
+            break label131;
+          }
+          this.ynh.put(str, locala);
+          break;
+        }
       }
-      i += 1;
+      AppMethodBeat.o(826);
+      return;
     }
-    AppMethodBeat.o(826);
   }
   
   public final void a(Canvas paramCanvas, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, Paint paramPaint, boolean paramBoolean)
   {
     AppMethodBeat.i(825);
-    p.k(paramCanvas, "canvas");
-    p.k(paramPaint, "paint");
-    if (Util.isNullOrNil(this.LV))
+    s.u(paramCanvas, "canvas");
+    s.u(paramPaint, "paint");
+    if (Util.isNullOrNil(this.bba))
     {
       AppMethodBeat.o(825);
       return;
     }
-    a locala = (a)this.vbm.get(this.vbl);
+    a locala = (a)this.ynh.get(this.yng);
     if (locala == null)
     {
-      this.vbn.a(paramCanvas, paramInt1, paramInt2, paramFloat1, paramFloat2, paramPaint, paramBoolean);
+      this.yni.a(paramCanvas, paramInt1, paramInt2, paramFloat1, paramFloat2, paramPaint, paramBoolean);
       AppMethodBeat.o(825);
       return;
     }
     paramCanvas.save();
     paramCanvas.translate(paramFloat1, paramFloat2);
-    int i = -1;
-    if (paramInt1 < paramInt2)
+    int j = -1;
+    int i;
+    if (paramInt1 < paramInt2) {
+      i = paramInt1;
+    }
+    for (paramInt1 = j;; paramInt1 = j)
     {
+      int k = i + 1;
       Object localObject;
-      if (locala.vbp.get(paramInt1) != null)
+      if (locala.ynk.get(i) != null)
       {
-        localObject = locala.vbp.get(paramInt1);
-        if (localObject == null) {
-          p.iCn();
-        }
+        localObject = locala.ynk.get(i);
+        s.checkNotNull(localObject);
         paramCanvas.drawPath((Path)localObject, paramPaint);
-        paramFloat1 = paramPaint.measureText(this.LV, paramInt1, paramInt1 + 1);
+        paramFloat1 = paramPaint.measureText(this.bba, i, i + 1);
       }
       for (;;)
       {
         paramCanvas.translate(paramFloat1, 0.0F);
-        int j = i;
-        label228:
+        j = paramInt1;
         do
         {
           for (;;)
           {
-            paramInt1 += 1;
-            i = j;
+            if (k < paramInt2) {
+              break label424;
+            }
+            if (paramBoolean) {
+              paramCanvas.drawText(c.a.dET(), 0.0F, 0.0F, paramPaint);
+            }
+            paramCanvas.restore();
+            AppMethodBeat.o(825);
+            return;
+            localObject = this.bba;
+            s.checkNotNull(localObject);
+            if ((!kotlin.n.a.J(((CharSequence)localObject).charAt(i))) || (paramInt1 != -1)) {
+              break;
+            }
+            j = i;
+          }
+          if (paramInt1 == -1) {
+            break label377;
+          }
+          localObject = this.bba;
+          s.checkNotNull(localObject);
+          if (i >= ((CharSequence)localObject).length() - 1) {
             break;
-            localObject = this.LV;
-            if (localObject == null) {
-              p.iCn();
-            }
-            if ((!kotlin.n.a.P(((CharSequence)localObject).charAt(paramInt1))) || (i != -1)) {
-              break label228;
-            }
-            j = paramInt1;
           }
-          if (i == -1) {
-            break label355;
-          }
-          localObject = this.LV;
-          if (localObject == null) {
-            p.iCn();
-          }
-          if (paramInt1 >= ((CharSequence)localObject).length() - 1) {
-            break label295;
-          }
-          localObject = this.LV;
-          if (localObject == null) {
-            p.iCn();
-          }
-          j = i;
-        } while (kotlin.n.a.P(((CharSequence)localObject).charAt(paramInt1 + 1)));
-        label295:
+          localObject = this.bba;
+          s.checkNotNull(localObject);
+          j = paramInt1;
+        } while (kotlin.n.a.J(((CharSequence)localObject).charAt(i + 1)));
         paramCanvas.save();
-        localObject = this.LV;
-        if (localObject == null) {
-          p.iCn();
-        }
-        paramCanvas.drawText((CharSequence)localObject, i, paramInt1 + 1, 0.0F, 0.0F, paramPaint);
+        localObject = this.bba;
+        s.checkNotNull(localObject);
+        paramCanvas.drawText((CharSequence)localObject, paramInt1, i + 1, 0.0F, 0.0F, paramPaint);
         paramCanvas.restore();
-        paramFloat1 = paramPaint.measureText(this.LV, i, paramInt1 + 1);
-        i = -1;
+        paramFloat1 = paramPaint.measureText(this.bba, paramInt1, i + 1);
+        paramInt1 = -1;
         continue;
-        label355:
-        localObject = this.LV;
-        if (localObject == null) {
-          p.iCn();
-        }
-        paramCanvas.drawText((CharSequence)localObject, paramInt1, paramInt1 + 1, 0.0F, 0.0F, paramPaint);
-        paramFloat1 = paramPaint.measureText(this.LV, paramInt1, paramInt1 + 1);
+        label377:
+        localObject = this.bba;
+        s.checkNotNull(localObject);
+        paramCanvas.drawText((CharSequence)localObject, i, i + 1, 0.0F, 0.0F, paramPaint);
+        paramFloat1 = paramPaint.measureText(this.bba, i, i + 1);
       }
+      label424:
+      i = k;
     }
-    if (paramBoolean) {
-      paramCanvas.drawText(c.a.cYC(), 0.0F, 0.0F, paramPaint);
-    }
-    paramCanvas.restore();
-    AppMethodBeat.o(825);
   }
   
-  public final void avq(String paramString)
+  public final void apq(String paramString)
   {
     AppMethodBeat.i(824);
-    p.k(paramString, "fontPath");
-    this.vbl = paramString;
+    s.u(paramString, "fontPath");
+    this.yng = paramString;
     AppMethodBeat.o(824);
   }
   
-  public final void bfU()
+  public final void bDL()
   {
     AppMethodBeat.i(823);
-    Iterator localIterator = this.vbm.values().iterator();
+    Iterator localIterator = this.ynh.values().iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
-      CharSequence localCharSequence = this.LV;
-      locala.vbp.clear();
-      locala.vbq.clear();
+      CharSequence localCharSequence = this.bba;
+      locala.ynk.clear();
+      locala.ynl.clear();
       if (localCharSequence != null)
       {
         int i = 0;
-        label74:
-        if (i < localCharSequence.length())
+        while (i < localCharSequence.length())
         {
           char c = localCharSequence.charAt(i);
+          i += 1;
           Path localPath = new Path();
           RectF localRectF = new RectF();
-          if (!locala.vbo.a(c, localPath, localRectF)) {
-            break label161;
+          if (locala.ynj.a(c, localPath, localRectF))
+          {
+            locala.ynk.add(localPath);
+            locala.ynl.add(localRectF);
           }
-          locala.vbp.add(localPath);
-          locala.vbq.add(localRectF);
-        }
-        for (;;)
-        {
-          i += 1;
-          break label74;
-          break;
-          label161:
-          locala.vbp.add(null);
-          locala.vbq.add(null);
+          else
+          {
+            locala.ynk.add(null);
+            locala.ynl.add(null);
+          }
         }
       }
     }
@@ -192,29 +194,42 @@ public final class b
   public final void setText(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(822);
-    p.k(paramCharSequence, "text");
-    this.LV = paramCharSequence;
-    this.vbn.setText(paramCharSequence);
+    s.u(paramCharSequence, "text");
+    this.bba = paramCharSequence;
+    this.yni.setText(paramCharSequence);
     AppMethodBeat.o(822);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/PathTextDrawer$TextPathData;", "", "fontPath", "", "textSize", "", "(Ljava/lang/String;I)V", "boxList", "", "Landroid/graphics/RectF;", "getBoxList", "()Ljava/util/List;", "metrics", "Lcom/tencent/mm/fontdecode/PathExtractor$Metrics;", "getMetrics", "()Lcom/tencent/mm/fontdecode/PathExtractor$Metrics;", "pathExtractor", "Lcom/tencent/mm/fontdecode/PathExtractor;", "pathList", "Landroid/graphics/Path;", "getPathList", "isValid", "", "refresh", "", "text", "", "plugin-emojicapture_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/PathTextDrawer$TextPathData;", "", "fontPath", "", "textSize", "", "(Ljava/lang/String;I)V", "boxList", "", "Landroid/graphics/RectF;", "getBoxList", "()Ljava/util/List;", "metrics", "Lcom/tencent/mm/fontdecode/PathExtractor$Metrics;", "getMetrics", "()Lcom/tencent/mm/fontdecode/PathExtractor$Metrics;", "pathExtractor", "Lcom/tencent/mm/fontdecode/PathExtractor;", "pathList", "Landroid/graphics/Path;", "getPathList", "isValid", "", "refresh", "", "text", "", "plugin-emojicapture_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
-    final PathExtractor vbo;
-    final List<Path> vbp;
-    final List<RectF> vbq;
-    private final PathExtractor.Metrics vbr;
+    final PathExtractor ynj;
+    final List<Path> ynk;
+    final List<RectF> ynl;
+    private final PathExtractor.Metrics ynm;
     
     public a(String paramString, int paramInt)
     {
       AppMethodBeat.i(821);
-      this.vbo = new PathExtractor(paramString);
-      this.vbr = new PathExtractor.Metrics();
-      this.vbo.setTextSize(paramInt);
-      this.vbp = ((List)new ArrayList());
-      this.vbq = ((List)new ArrayList());
-      this.vbo.a(this.vbr);
+      this.ynj = new PathExtractor(paramString);
+      this.ynm = new PathExtractor.Metrics();
+      paramString = this.ynj;
+      Log.i("MicroMsg.PathExtractor", "set text size %d, %d", new Object[] { Long.valueOf(paramString.msD), Integer.valueOf(paramInt) });
+      PathExtractor.nSetTextSize(paramString.msD, paramInt);
+      this.ynk = ((List)new ArrayList());
+      this.ynl = ((List)new ArrayList());
+      paramString = this.ynj;
+      PathExtractor.Metrics localMetrics = this.ynm;
+      if (localMetrics == null)
+      {
+        Log.w("MicroMsg.PathExtractor", "metrics is null");
+        AppMethodBeat.o(821);
+        return;
+      }
+      PathExtractor.nGetMetrics(paramString.msD, localMetrics);
+      localMetrics.height *= 0.015625F;
+      localMetrics.ascender *= 0.015625F;
+      localMetrics.descender *= 0.015625F;
       AppMethodBeat.o(821);
     }
   }

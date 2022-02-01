@@ -5,12 +5,12 @@ import rx.internal.c.b;
 
 public class g
 {
-  private static final g abRy;
+  private static final g akeq;
   
   static
   {
     AppMethodBeat.i(90499);
-    abRy = new g();
+    akeq = new g();
     AppMethodBeat.o(90499);
   }
   
@@ -20,7 +20,7 @@ public class g
     return parama;
   }
   
-  public static rx.g iWm()
+  public static rx.g kKK()
   {
     AppMethodBeat.i(90496);
     b localb = new b(new rx.internal.util.g("RxComputationScheduler-"));
@@ -28,7 +28,7 @@ public class g
     return localb;
   }
   
-  public static rx.g iWn()
+  public static rx.g kKL()
   {
     AppMethodBeat.i(90497);
     rx.internal.c.a locala = new rx.internal.c.a(new rx.internal.util.g("RxIoScheduler-"));
@@ -36,7 +36,7 @@ public class g
     return locala;
   }
   
-  public static rx.g iWo()
+  public static rx.g kKM()
   {
     AppMethodBeat.i(90498);
     rx.internal.c.g localg = new rx.internal.c.g(new rx.internal.util.g("RxNewThreadScheduler-"));
@@ -44,14 +44,29 @@ public class g
     return localg;
   }
   
-  public static g iWp()
+  public static rx.g kKN()
   {
-    return abRy;
+    return null;
+  }
+  
+  public static rx.g kKO()
+  {
+    return null;
+  }
+  
+  public static rx.g kKP()
+  {
+    return null;
+  }
+  
+  public static g kKQ()
+  {
+    return akeq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     rx.d.g
  * JD-Core Version:    0.7.0.1
  */

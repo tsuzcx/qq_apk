@@ -8,134 +8,95 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.viewpager.widget.ViewPager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.f;
-import java.util.HashMap;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderViewPager;", "Landroidx/viewpager/widget/ViewPager;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "historicalX", "", "isEnableViewPagerScroll", "", "()Z", "setEnableViewPagerScroll", "(Z)V", "viewRect", "Landroid/graphics/Rect;", "checkChildScrollHorizontally", "direction", "", "parent", "Landroid/view/ViewGroup;", "x", "y", "enableScrollHorizontall", "Landroid/view/View;", "onInterceptTouchEvent", "ev", "Landroid/view/MotionEvent;", "onTouchEvent", "CheckScrollHorizontally", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/FinderViewPager;", "Landroidx/viewpager/widget/ViewPager;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "historicalX", "", "isEnableViewPagerScroll", "", "()Z", "setEnableViewPagerScroll", "(Z)V", "isNeedInterceptFitWindow", "setNeedInterceptFitWindow", "viewRect", "Landroid/graphics/Rect;", "checkChildScrollHorizontally", "direction", "", "parent", "Landroid/view/ViewGroup;", "x", "y", "onInterceptTouchEvent", "ev", "Landroid/view/MotionEvent;", "onTouchEvent", "requestFitSystemWindows", "", "CheckScrollHorizontally", "Companion", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderViewPager
   extends ViewPager
 {
   public static final b Companion;
   public static final String TAG = "Finder.ViewPager";
-  private HashMap _$_findViewCache;
   private float historicalX;
   private boolean isEnableViewPagerScroll;
+  private boolean isNeedInterceptFitWindow;
   private final Rect viewRect;
   
   static
   {
-    AppMethodBeat.i(290388);
+    AppMethodBeat.i(345130);
     Companion = new b((byte)0);
-    AppMethodBeat.o(290388);
+    AppMethodBeat.o(345130);
   }
   
   public FinderViewPager(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(290386);
+    AppMethodBeat.i(345112);
     this.viewRect = new Rect();
-    AppMethodBeat.o(290386);
+    AppMethodBeat.o(345112);
   }
   
   public FinderViewPager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(290387);
+    AppMethodBeat.i(345118);
     this.viewRect = new Rect();
-    AppMethodBeat.o(290387);
+    AppMethodBeat.o(345118);
   }
   
   private final boolean checkChildScrollHorizontally(int paramInt, ViewGroup paramViewGroup, float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(290382);
-    int j = paramViewGroup.getChildCount();
-    int i = 0;
-    while (i < j)
+    AppMethodBeat.i(345125);
+    int k = paramViewGroup.getChildCount();
+    if (k > 0) {}
+    int j;
+    for (int i = 0;; i = j)
     {
+      j = i + 1;
       View localView = paramViewGroup.getChildAt(i);
-      p.j(localView, "view");
-      if (enableScrollHorizontall(localView, paramFloat1, paramFloat2))
-      {
-        AppMethodBeat.o(290382);
-        return true;
-      }
-      if (((localView instanceof a)) && (((a)localView).a(paramInt, paramViewGroup)))
+      if (((localView instanceof FinderViewPager.a)) && (((FinderViewPager.a)localView).a(paramInt, paramViewGroup, paramFloat1, paramFloat2)))
       {
         localView.getGlobalVisibleRect(this.viewRect);
         if (this.viewRect.contains((int)paramFloat1, (int)paramFloat2))
         {
-          AppMethodBeat.o(290382);
+          AppMethodBeat.o(345125);
           return true;
         }
       }
       else if (((localView instanceof ViewGroup)) && (checkChildScrollHorizontally(paramInt, (ViewGroup)localView, paramFloat1, paramFloat2)))
       {
-        AppMethodBeat.o(290382);
+        AppMethodBeat.o(345125);
         return true;
       }
-      i += 1;
-    }
-    AppMethodBeat.o(290382);
-    return false;
-  }
-  
-  private final boolean enableScrollHorizontall(View paramView, float paramFloat1, float paramFloat2)
-  {
-    AppMethodBeat.i(290383);
-    paramView = paramView.findViewById(b.f.live_list_layout);
-    if (paramView != null)
-    {
-      paramView.getGlobalVisibleRect(this.viewRect);
-      if (this.viewRect.contains((int)paramFloat1, (int)paramFloat2))
+      if (j >= k)
       {
-        AppMethodBeat.o(290383);
-        return true;
+        AppMethodBeat.o(345125);
+        return false;
       }
     }
-    AppMethodBeat.o(290383);
-    return false;
   }
   
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(290390);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(290390);
-  }
-  
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(290389);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(290389);
-    return localView1;
-  }
+  public final void _$_clearFindViewByIdCache() {}
   
   public final boolean isEnableViewPagerScroll()
   {
     return this.isEnableViewPagerScroll;
   }
   
+  public final boolean isNeedInterceptFitWindow()
+  {
+    return this.isNeedInterceptFitWindow;
+  }
+  
   public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(290384);
-    p.k(paramMotionEvent, "ev");
+    AppMethodBeat.i(345161);
+    s.u(paramMotionEvent, "ev");
     if (!this.isEnableViewPagerScroll)
     {
-      AppMethodBeat.o(290384);
+      AppMethodBeat.o(345161);
       return false;
     }
     if (paramMotionEvent.getAction() == 0) {
@@ -144,24 +105,37 @@ public final class FinderViewPager
     while (!checkChildScrollHorizontally((int)(this.historicalX - paramMotionEvent.getX(0)), (ViewGroup)this, paramMotionEvent.getX(), paramMotionEvent.getY()))
     {
       boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(290384);
+      AppMethodBeat.o(345161);
       return bool;
     }
-    AppMethodBeat.o(290384);
+    AppMethodBeat.o(345161);
     return false;
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(290385);
+    AppMethodBeat.i(345170);
     if (!this.isEnableViewPagerScroll)
     {
-      AppMethodBeat.o(290385);
+      AppMethodBeat.o(345170);
       return false;
     }
     boolean bool = super.onTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(290385);
+    AppMethodBeat.o(345170);
     return bool;
+  }
+  
+  public final void requestFitSystemWindows()
+  {
+    AppMethodBeat.i(345177);
+    if (this.isNeedInterceptFitWindow)
+    {
+      AppMethodBeat.o(345177);
+      return;
+    }
+    Log.i("Finder.ViewPager", "requestFitSystemWindows");
+    super.requestFitSystemWindows();
+    AppMethodBeat.o(345177);
   }
   
   public final void setEnableViewPagerScroll(boolean paramBoolean)
@@ -169,18 +143,17 @@ public final class FinderViewPager
     this.isEnableViewPagerScroll = paramBoolean;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderViewPager$CheckScrollHorizontally;", "", "canScrollHorizontally", "", "direction", "", "parent", "Landroid/view/ViewGroup;", "x", "", "y", "plugin-finder_release"})
-  public static abstract interface a
+  public final void setNeedInterceptFitWindow(boolean paramBoolean)
   {
-    public abstract boolean a(int paramInt, ViewGroup paramViewGroup);
+    this.isNeedInterceptFitWindow = paramBoolean;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderViewPager$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/FinderViewPager$Companion;", "", "()V", "TAG", "", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.FinderViewPager
  * JD-Core Version:    0.7.0.1
  */

@@ -10,32 +10,31 @@ import java.util.List;
 public class RubbishBinServiceImpl
   extends RubbishBinService
 {
-  private List<b> IAy;
+  private List<b> DNv;
   
   public RubbishBinServiceImpl()
   {
-    AppMethodBeat.i(205387);
-    this.IAy = new ArrayList();
-    AppMethodBeat.o(205387);
+    AppMethodBeat.i(262076);
+    this.DNv = new ArrayList();
+    AppMethodBeat.o(262076);
   }
   
-  public final void aXa(String paramString)
+  public final void aUB(String paramString)
   {
-    AppMethodBeat.i(205389);
+    AppMethodBeat.i(262085);
     Log.e("MicroMsg.RubbishBinServiceImpl", "RubbishBinServiceImpl.main() execute start = ".concat(String.valueOf(paramString)));
     int i = 0;
-    if (i < this.IAy.size())
+    if (i < this.DNv.size())
     {
-      b localb = (b)this.IAy.get(i);
-      localb.fBG();
-      if (paramString == null)
+      b localb = (b)this.DNv.get(i);
+      if ((localb.gPj() == null) || (paramString == null))
       {
-        Log.e("MicroMsg.RubbishBinServiceImpl", "RubbishBinServiceImpl main() return, task.getExecuteTag() = " + localb.fBG() + ", executeTag = " + paramString);
-        AppMethodBeat.o(205389);
+        Log.e("MicroMsg.RubbishBinServiceImpl", "RubbishBinServiceImpl main() return, task.getExecuteTag() = " + localb.gPj() + ", executeTag = " + paramString);
+        AppMethodBeat.o(262085);
         return;
       }
-      if (!localb.fBG().equals(paramString)) {
-        Log.e("MicroMsg.RubbishBinServiceImpl", "task.getExecuteTag() =  " + localb.fBG() + ", executeTag = " + paramString + ", does not equals");
+      if (!localb.gPj().equals(paramString)) {
+        Log.e("MicroMsg.RubbishBinServiceImpl", "task.getExecuteTag() =  " + localb.gPj() + ", executeTag = " + paramString + ", does not equals");
       }
       for (;;)
       {
@@ -45,20 +44,20 @@ public class RubbishBinServiceImpl
       }
     }
     Log.e("MicroMsg.RubbishBinServiceImpl", "RubbishBinServiceImpl.main() execute end = ".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(205389);
+    AppMethodBeat.o(262085);
   }
   
   public void onCreate()
   {
-    AppMethodBeat.i(205388);
+    AppMethodBeat.i(262079);
     super.onCreate();
-    this.IAy.add(new a());
-    AppMethodBeat.o(205388);
+    this.DNv.add(new a());
+    AppMethodBeat.o(262079);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.rubbishbin.RubbishBinServiceImpl
  * JD-Core Version:    0.7.0.1
  */

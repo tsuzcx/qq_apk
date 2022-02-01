@@ -10,12 +10,12 @@ import org.json.JSONObject;
 public final class g
   extends m
 {
-  public String fOX;
+  public String hUQ;
   
   public g(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     AppMethodBeat.i(72308);
-    this.fOX = null;
+    this.hUQ = null;
     HashMap localHashMap = new HashMap();
     localHashMap.put("verify_code", paramString1);
     localHashMap.put("session_key", paramString2);
@@ -43,7 +43,7 @@ public final class g
       AppMethodBeat.o(72309);
       return;
     }
-    this.fOX = paramJSONObject.optString("app_username");
+    this.hUQ = paramJSONObject.optString("app_username");
     AppMethodBeat.o(72309);
   }
 }

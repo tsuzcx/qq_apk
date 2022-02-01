@@ -9,7 +9,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class f
 {
-  private static volatile int OcO = 0;
+  private static volatile int UQO = 0;
   
   public static int createProgram(String paramString1, String paramString2)
   {
@@ -50,19 +50,19 @@ public final class f
     }
   }
   
-  public static d gDZ()
+  public static d icO()
   {
     AppMethodBeat.i(115742);
-    d locald = c.a(true, 14L);
+    d locald = c.d(true, 14L);
     AppMethodBeat.o(115742);
     return locald;
   }
   
-  static a gEa()
+  static a icP()
   {
     AppMethodBeat.i(115743);
-    Object localObject = c.kVi;
-    localObject = c.FP(14L);
+    Object localObject = c.nAB;
+    localObject = c.hX(14L);
     AppMethodBeat.o(115743);
     return localObject;
   }
@@ -90,7 +90,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.b.f
  * JD-Core Version:    0.7.0.1
  */

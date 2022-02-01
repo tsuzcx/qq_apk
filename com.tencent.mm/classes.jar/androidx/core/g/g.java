@@ -9,20 +9,20 @@ import java.lang.reflect.Field;
 
 public final class g
 {
-  private static Field Nk;
-  private static boolean Nl;
+  private static Field btm;
+  private static boolean bto;
   
   private static void a(LayoutInflater paramLayoutInflater, LayoutInflater.Factory2 paramFactory2)
   {
-    AppMethodBeat.i(251452);
-    if (!Nl) {}
+    AppMethodBeat.i(195720);
+    if (!bto) {}
     try
     {
       Field localField = LayoutInflater.class.getDeclaredField("mFactory2");
-      Nk = localField;
+      btm = localField;
       localField.setAccessible(true);
-      Nl = true;
-      if (Nk == null) {}
+      bto = true;
+      if (btm == null) {}
     }
     catch (NoSuchFieldException localNoSuchFieldException)
     {
@@ -30,8 +30,8 @@ public final class g
       {
         try
         {
-          Nk.set(paramLayoutInflater, paramFactory2);
-          AppMethodBeat.o(251452);
+          btm.set(paramLayoutInflater, paramFactory2);
+          AppMethodBeat.o(195720);
           return;
         }
         catch (IllegalAccessException paramFactory2)
@@ -41,13 +41,13 @@ public final class g
         localNoSuchFieldException = localNoSuchFieldException;
         new StringBuilder("forceSetFactory2 Could not find field 'mFactory2' on class ").append(LayoutInflater.class.getName()).append("; inflation may have unexpected results.");
       }
-      AppMethodBeat.o(251452);
+      AppMethodBeat.o(195720);
     }
   }
   
   public static void b(LayoutInflater paramLayoutInflater, LayoutInflater.Factory2 paramFactory2)
   {
-    AppMethodBeat.i(251455);
+    AppMethodBeat.i(195727);
     paramLayoutInflater.setFactory2(paramFactory2);
     if (Build.VERSION.SDK_INT < 21)
     {
@@ -55,17 +55,17 @@ public final class g
       if ((localFactory instanceof LayoutInflater.Factory2))
       {
         a(paramLayoutInflater, (LayoutInflater.Factory2)localFactory);
-        AppMethodBeat.o(251455);
+        AppMethodBeat.o(195727);
         return;
       }
       a(paramLayoutInflater, paramFactory2);
     }
-    AppMethodBeat.o(251455);
+    AppMethodBeat.o(195727);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     androidx.core.g.g
  * JD-Core Version:    0.7.0.1
  */

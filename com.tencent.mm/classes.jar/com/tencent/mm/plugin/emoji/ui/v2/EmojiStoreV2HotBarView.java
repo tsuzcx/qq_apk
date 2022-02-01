@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.emoji.ui.v2;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -11,35 +10,35 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.kernel.f;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.emoji.i.c;
-import com.tencent.mm.plugin.emoji.i.e;
-import com.tencent.mm.plugin.emoji.i.f;
-import com.tencent.mm.plugin.emoji.i.h;
+import com.tencent.mm.plugin.emoji.h.c;
+import com.tencent.mm.plugin.emoji.h.e;
+import com.tencent.mm.plugin.emoji.h.f;
+import com.tencent.mm.plugin.emoji.h.h;
 import com.tencent.mm.plugin.emoji.model.j;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.ui.ad;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.ui.af;
 
 public class EmojiStoreV2HotBarView
   extends LinearLayout
 {
-  private View mrI;
-  private TextView uNQ;
-  private View uNR;
-  private TextView uNS;
-  private View uNT;
-  private TextView uNU;
-  private View.OnClickListener uNV;
+  private View plc;
+  private TextView xWA;
+  private View xWB;
+  private TextView xWC;
+  private View xWD;
+  private TextView xWE;
+  private View.OnClickListener xWF;
   
   public EmojiStoreV2HotBarView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(109193);
-    this.uNV = new EmojiStoreV2HotBarView.1(this);
+    this.xWF = new EmojiStoreV2HotBarView.1(this);
     init();
     AppMethodBeat.o(109193);
   }
@@ -48,17 +47,16 @@ public class EmojiStoreV2HotBarView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(109194);
-    this.uNV = new EmojiStoreV2HotBarView.1(this);
+    this.xWF = new EmojiStoreV2HotBarView.1(this);
     init();
     AppMethodBeat.o(109194);
   }
   
-  @TargetApi(11)
   public EmojiStoreV2HotBarView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(109197);
-    this.uNV = new EmojiStoreV2HotBarView.1(this);
+    this.xWF = new EmojiStoreV2HotBarView.1(this);
     init();
     AppMethodBeat.o(109197);
   }
@@ -66,28 +64,41 @@ public class EmojiStoreV2HotBarView
   private void init()
   {
     AppMethodBeat.i(109198);
-    this.mrI = ((ViewGroup)ad.kS(getContext()).inflate(i.f.emoji_store_v2_hot_bar_view, this)).findViewById(i.e.root);
-    this.uNQ = ((TextView)this.mrI.findViewById(i.e.emoji_hot));
-    this.uNR = this.mrI.findViewById(i.e.emoji_designer_catalog);
-    this.uNS = ((TextView)this.mrI.findViewById(i.e.emoji_more));
-    this.uNS.setText(getResources().getText(i.h.emoji_store_new_suggest) + " ");
-    this.uNT = this.mrI.findViewById(i.e.designer_product);
-    this.uNT.setOnClickListener(new EmojiStoreV2HotBarView.2(this));
-    this.uNU = ((TextView)this.mrI.findViewById(i.e.new_tips));
-    cWJ();
-    setMoreOnClickListener(this.uNV);
-    updateTitle();
+    this.plc = ((ViewGroup)af.mU(getContext()).inflate(h.f.emoji_store_v2_hot_bar_view, this)).findViewById(h.e.root);
+    this.xWA = ((TextView)this.plc.findViewById(h.e.emoji_hot));
+    this.xWB = this.plc.findViewById(h.e.emoji_designer_catalog);
+    this.xWC = ((TextView)this.plc.findViewById(h.e.emoji_more));
+    this.xWC.setText(getResources().getText(h.h.emoji_store_new_suggest) + " ");
+    this.xWD = this.plc.findViewById(h.e.designer_product);
+    this.xWD.setOnClickListener(new EmojiStoreV2HotBarView.2(this));
+    this.xWE = ((TextView)this.plc.findViewById(h.e.new_tips));
+    dCp();
+    setMoreOnClickListener(this.xWF);
+    aMl();
     AppMethodBeat.o(109198);
   }
   
-  public final void cWJ()
+  public final void aMl()
+  {
+    AppMethodBeat.i(109200);
+    if (j.dzN().xMH)
+    {
+      this.xWA.setText(h.h.emoji_hot_title_paid);
+      AppMethodBeat.o(109200);
+      return;
+    }
+    this.xWA.setText(h.h.emoji_hot_title);
+    AppMethodBeat.o(109200);
+  }
+  
+  public final void dCp()
   {
     AppMethodBeat.i(109199);
-    boolean bool = ((Boolean)h.aHG().aHp().get(ar.a.VgQ, Boolean.FALSE)).booleanValue();
+    boolean bool = ((Boolean)h.baE().ban().get(at.a.acIh, Boolean.FALSE)).booleanValue();
     TextView localTextView;
-    if (this.uNU != null)
+    if (this.xWE != null)
     {
-      localTextView = this.uNU;
+      localTextView = this.xWE;
       if (!bool) {
         break label56;
       }
@@ -103,7 +114,7 @@ public class EmojiStoreV2HotBarView
   
   public View getRootView()
   {
-    return this.mrI;
+    return this.plc;
   }
   
   protected void onAttachedToWindow()
@@ -125,12 +136,12 @@ public class EmojiStoreV2HotBarView
   public void setDesignerCatalogViewPadding(boolean paramBoolean)
   {
     AppMethodBeat.i(109203);
-    if ((this.uNR != null) && (!paramBoolean))
+    if ((this.xWB != null) && (!paramBoolean))
     {
-      int i = a.aY(getContext(), i.c.ListPadding);
-      int j = a.aY(getContext(), i.c.MiddlePadding);
-      int k = a.aY(getContext(), i.c.NormalPadding);
-      this.uNR.setPadding(k, i, k, j);
+      int i = a.br(getContext(), h.c.ListPadding);
+      int j = a.br(getContext(), h.c.MiddlePadding);
+      int k = a.br(getContext(), h.c.NormalPadding);
+      this.xWB.setPadding(k, i, k, j);
     }
     AppMethodBeat.o(109203);
   }
@@ -138,8 +149,8 @@ public class EmojiStoreV2HotBarView
   public void setDesignerEmojiViewVisibility(int paramInt)
   {
     AppMethodBeat.i(109202);
-    if (this.uNT != null) {
-      this.uNT.setVisibility(paramInt);
+    if (this.xWD != null) {
+      this.xWD.setVisibility(paramInt);
     }
     AppMethodBeat.o(109202);
   }
@@ -147,8 +158,8 @@ public class EmojiStoreV2HotBarView
   public void setMoreOnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(109201);
-    if (this.uNS != null) {
-      this.uNS.setOnClickListener(paramOnClickListener);
+    if (this.xWC != null) {
+      this.xWC.setOnClickListener(paramOnClickListener);
     }
     AppMethodBeat.o(109201);
   }
@@ -156,27 +167,14 @@ public class EmojiStoreV2HotBarView
   public void setVisibility(int paramInt)
   {
     AppMethodBeat.i(109204);
-    if (this.mrI != null)
+    if (this.plc != null)
     {
-      this.mrI.setVisibility(paramInt);
+      this.plc.setVisibility(paramInt);
       AppMethodBeat.o(109204);
       return;
     }
     super.setVisibility(paramInt);
     AppMethodBeat.o(109204);
-  }
-  
-  public final void updateTitle()
-  {
-    AppMethodBeat.i(109200);
-    if (j.cUG().uEq)
-    {
-      this.uNQ.setText(i.h.emoji_hot_title_paid);
-      AppMethodBeat.o(109200);
-      return;
-    }
-    this.uNQ.setText(i.h.emoji_hot_title);
-    AppMethodBeat.o(109200);
   }
 }
 

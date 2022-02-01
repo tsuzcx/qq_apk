@@ -8,7 +8,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class f
 {
-  public static boolean dJ(View paramView)
+  public static boolean ew(View paramView)
   {
     AppMethodBeat.i(121658);
     if (paramView == null)

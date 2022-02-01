@@ -7,15 +7,16 @@ import android.net.NetworkInfo.State;
 import android.net.Proxy;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class g
 {
-  public static byte mr(Context paramContext)
+  public static byte oH(Context paramContext)
   {
-    AppMethodBeat.i(208102);
+    AppMethodBeat.i(212029);
     try
     {
-      NetworkInfo localNetworkInfo = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+      NetworkInfo localNetworkInfo = ((ConnectivityManager)MMApplicationContext.getContext().getSystemService("connectivity")).getActiveNetworkInfo();
       if (localNetworkInfo != null)
       {
         if (localNetworkInfo.getState() != NetworkInfo.State.CONNECTING)
@@ -27,13 +28,13 @@ public final class g
       }
       else
       {
-        AppMethodBeat.o(208102);
+        AppMethodBeat.o(212029);
         return -1;
       }
       int i = localNetworkInfo.getType();
       if (i == 1)
       {
-        AppMethodBeat.o(208102);
+        AppMethodBeat.o(212029);
         return 0;
       }
       if (localNetworkInfo.getType() == 0)
@@ -45,10 +46,10 @@ public final class g
         }
         else
         {
-          AppMethodBeat.o(208102);
+          AppMethodBeat.o(212029);
           return 2;
         }
-        AppMethodBeat.o(208102);
+        AppMethodBeat.o(212029);
         return 1;
       }
       if (Build.VERSION.SDK_INT >= 13)
@@ -56,22 +57,22 @@ public final class g
         i = localNetworkInfo.getType();
         if (i == 9)
         {
-          AppMethodBeat.o(208102);
+          AppMethodBeat.o(212029);
           return 0;
         }
       }
     }
-    catch (Throwable paramContext)
+    finally
     {
       i.e("sensor_NetworkUtil", paramContext);
-      AppMethodBeat.o(208102);
+      AppMethodBeat.o(212029);
     }
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.g.c.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.game.ui.GameBannerView android:id="@id/dh0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="120.0dip" />
-</LinearLayout>
+<RelativeLayout android:orientation="vertical" android:id="@id/fkn" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.RoundCornerRelativeLayout android:orientation="horizontal" android:id="@id/gs2" android:background="#ff757575" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/cp" android:paddingEnd="@dimen/cp" app:cornerRadius="4.0dip">
+        <LinearLayout android:orientation="horizontal" android:id="@id/m8h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_alignParentStart="true" />
+        <TextView android:textSize="15.0dip" android:textColor="@color/az" android:id="@id/kyv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:alpha="0.9" android:layout_alignEnd="@id/m8h" />
+    </com.tencent.mm.ui.widget.RoundCornerRelativeLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/l33" android:layout_width="14.0dip" android:layout_height="6.0dip" android:src="@raw/icons_pop_arrow" android:layout_below="@id/gs2" app:iconColor="#ff757575" />
+</RelativeLayout>

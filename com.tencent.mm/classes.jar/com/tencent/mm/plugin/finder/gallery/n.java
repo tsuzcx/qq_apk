@@ -1,217 +1,214 @@
 package com.tencent.mm.plugin.finder.gallery;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.text.TextUtils.TruncateAt;
+import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
-import androidx.recyclerview.widget.RecyclerView.LayoutManager;
-import androidx.recyclerview.widget.RecyclerView.a;
-import androidx.recyclerview.widget.RecyclerView.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.d;
-import com.tencent.mm.f.b.a.dx;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.plugin.finder.b.c;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.feed.c.a;
-import com.tencent.mm.plugin.finder.feed.c.b;
-import com.tencent.mm.plugin.finder.feed.model.BaseFinderFeedLoader;
-import com.tencent.mm.plugin.finder.feed.model.internal.DataBuffer;
-import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.model.bu;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.upload.g;
-import com.tencent.mm.plugin.report.a;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.MMFragmentActivity;
-import com.tencent.mm.ui.base.w;
-import com.tencent.mm.view.RefreshLoadMoreLayout.c;
-import com.tencent.mm.view.recyclerview.h;
-import java.util.ArrayList;
-import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import com.tencent.mm.plugin.finder.e.b;
+import com.tencent.mm.plugin.finder.e.c;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.video.FinderFullSeekBarLayout;
+import com.tencent.mm.plugin.finder.view.FinderMediaBanner;
+import com.tencent.mm.plugin.finder.view.FlowTextMixView;
+import com.tencent.mm.plugin.finder.view.SimpleTouchableLayout;
+import com.tencent.mm.plugin.sns.ui.view.ImageIndicatorView;
+import com.tencent.mm.ui.widget.imageview.WeImageView;
+import com.tencent.mm.view.recyclerview.j;
+import com.tencent.neattextview.textview.view.NeatTextView;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$ViewCallback;", "context", "Lcom/tencent/mm/ui/MMActivity;", "galleryConfig", "Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryConfig;", "tabType", "", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryConfig;I)V", "getGalleryConfig", "()Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryConfig;", "getTabType", "()I", "getActivity", "Lcom/tencent/mm/ui/MMFragmentActivity;", "getDescStringID", "", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "", "getEmptyView", "Landroid/view/View;", "getHeaderView", "getItemDecoration", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getLayoutManager", "Landroidx/recyclerview/widget/RecyclerView$LayoutManager;", "Landroid/content/Context;", "getTitleStringId", "initView", "", "data", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lkotlin/collections/ArrayList;", "onGridItemClick", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "view", "position", "onItemDelete", "refreshWhenEnter", "", "plugin-finder_release"})
-public class n
-  extends c.b
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryUILogic;", "", "()V", "bindDarkModeImageUI", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "bindDarkModeVideoUI", "bindGalleryTimelineUI", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class n
 {
-  private final int fEH;
-  private final b xNB;
+  public static final n Bvk;
   
-  public n(MMActivity paramMMActivity, b paramb, int paramInt)
+  static
   {
-    super(paramMMActivity, 0, 0, false);
-    AppMethodBeat.i(278919);
-    this.xNB = paramb;
-    this.fEH = paramInt;
-    AppMethodBeat.o(278919);
+    AppMethodBeat.i(334315);
+    Bvk = new n();
+    AppMethodBeat.o(334315);
   }
   
-  public final void a(RecyclerView.a<?> parama, View paramView, int paramInt)
+  public static void x(j paramj)
   {
-    int i = 0;
-    AppMethodBeat.i(278907);
-    p.k(parama, "adapter");
-    p.k(paramView, "view");
-    paramInt -= ((h)parama).YSk.size();
-    long l;
-    if ((paramInt >= 0) && (paramInt < dsG().xnX.getSize()))
+    AppMethodBeat.i(334286);
+    s.u(paramj, "holder");
+    Object localObject1 = (FlowTextMixView)paramj.caK.findViewById(e.e.flow_text_mix_view);
+    Object localObject2 = paramj.context;
+    if (localObject2 == null)
     {
-      parama = (bu)dsG().xnX.getDataListJustForAdapter().get(paramInt);
-      if (!(parama instanceof BaseFinderFeed))
+      paramj = new NullPointerException("null cannot be cast to non-null type android.app.Activity");
+      AppMethodBeat.o(334286);
+      throw paramj;
+    }
+    ((FlowTextMixView)localObject1).setMaxWidth(((Activity)localObject2).getBaseContext().getResources().getDisplayMetrics().widthPixels);
+    int i = paramj.context.getResources().getColor(e.b.BW_100_Alpha_0_5);
+    localObject1 = (ViewGroup)paramj.UH(e.e.finder_seek_bar_footer_layout);
+    localObject2 = paramj.UH(e.e.footer_op_layout);
+    if (localObject2 != null)
+    {
+      ((View)localObject2).findViewById(e.e.share_icon_container).setVisibility(8);
+      ((View)localObject2).findViewById(e.e.comment_icon_container).setVisibility(8);
+      View localView = ((View)localObject2).findViewById(e.e.star_icon_container);
+      if (localView != null) {
+        localView.setVisibility(8);
+      }
+      localView = ((View)localObject2).findViewById(e.e.star_icon_container_first);
+      if (localView != null) {
+        localView.setVisibility(8);
+      }
+      localView = ((View)localObject2).findViewById(e.e.awesome_icon_container);
+      localView.setEnabled(false);
+      Object localObject3 = localView.getLayoutParams();
+      if (localObject3 == null)
       {
-        AppMethodBeat.o(278907);
-        return;
+        paramj = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
+        AppMethodBeat.o(334286);
+        throw paramj;
       }
-      paramView = FinderGalleryFragment.xTS;
-      Log.i(FinderGalleryFragment.access$getTAG$cp(), "onClick " + paramInt + " id:" + ((BaseFinderFeed)parama).feedObject.getId() + ", pos:" + paramInt + ", field_localFlag:" + ((BaseFinderFeed)parama).feedObject.field_localFlag);
-      if (!((BaseFinderFeed)parama).feedObject.isPostFinish())
-      {
-        if ((((BaseFinderFeed)parama).feedObject.isPostFailed()) && (((BaseFinderFeed)parama).feedObject.isPostFailedCanRetry()))
-        {
-          paramView = g.AAk;
-          g.ecj().v(((BaseFinderFeed)parama).feedObject);
-          AppMethodBeat.o(278907);
-          return;
-        }
-        if (!((BaseFinderFeed)parama).feedObject.isPostFailed()) {
-          w.cS((Context)this.iXq, this.iXq.getString(b.j.finder_posting_select_tips));
-        }
-        AppMethodBeat.o(278907);
-        return;
-      }
-      paramView = this.xNB;
-      Object localObject = (MMFragmentActivity)this.iXq;
-      if (localObject == null)
-      {
-        parama = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-        AppMethodBeat.o(278907);
-        throw parama;
-      }
-      localObject = (MMActivity)localObject;
-      paramInt = this.fEH;
-      BaseFinderFeed localBaseFinderFeed = (BaseFinderFeed)parama;
-      List localList = dsG().xnX.getListOfType(BaseFinderFeed.class);
-      dsG().xnX.getLastBuffer();
-      paramView.a((MMActivity)localObject, paramInt, localBaseFinderFeed, localList, false);
-      paramView = f.xUa;
-      l = parama.mf();
-      paramInt = i;
-      if (((BaseFinderFeed)parama).feedObject.getMediaType() == 2) {
-        paramInt = 1;
-      }
-      paramView = new dx();
-      paramView.qZ(f.sessionId);
-      paramView.kd(f.xTY);
-      paramView.ke(2L);
-      if (paramInt == 0) {
-        break label491;
+      localObject3 = (ViewGroup.MarginLayoutParams)localObject3;
+      ((ViewGroup.MarginLayoutParams)localObject3).bottomMargin = ((int)paramj.context.getResources().getDimension(e.c.Edge_10_5_A));
+      ((ViewGroup.MarginLayoutParams)localObject3).setMarginEnd(0);
+      ((ViewGroup.MarginLayoutParams)localObject3).rightMargin = 0;
+      localView.setLayoutParams((ViewGroup.LayoutParams)localObject3);
+      ((TextView)((View)localObject2).findViewById(e.e.like_count_tv)).setTextColor(i);
+      ((WeImageView)((View)localObject2).findViewById(e.e.icon_feed_like)).setIconColor(i);
+      localObject2 = paramj.UH(e.e.avatar_iv);
+      ((View)localObject2).setEnabled(false);
+      ((View)localObject2).setClickable(false);
+      localObject2 = (TextView)paramj.UH(e.e.nickname);
+      ((TextView)localObject2).setEnabled(false);
+      ((TextView)localObject2).setClickable(false);
+      ((TextView)localObject2).setTextColor(i);
+      if (localObject1 != null) {
+        break label593;
       }
     }
-    label491:
-    for (parama = "pic_feed";; parama = "vid_feed")
+    label593:
+    for (localObject1 = null;; localObject1 = ((ViewGroup)localObject1).findViewById(e.e.awesome_ground_layout))
     {
-      paramView.ra(parama);
-      paramView.kf(f.xTZ);
-      paramView.rb("{\"feedid\":\"" + d.Fw(l) + "\"}");
-      paramView.rc(String.valueOf(cm.bfE()));
-      paramView.bpa();
-      f.a((a)paramView);
-      AppMethodBeat.o(278907);
+      if (localObject1 != null) {
+        ((View)localObject1).setVisibility(4);
+      }
+      localObject1 = paramj.UH(e.e.full_seek_bar_layout);
+      if ((localObject1 != null) && ((localObject1 instanceof FinderFullSeekBarLayout))) {
+        ((FinderFullSeekBarLayout)localObject1).setHidePrivateLike(true);
+      }
+      localObject1 = (TextView)paramj.UH(e.e.little_follow_tv);
+      if (localObject1 != null) {
+        ((TextView)localObject1).setVisibility(8);
+      }
+      localObject1 = (TextView)paramj.UH(e.e.full_friend_follow_count);
+      if (localObject1 != null) {
+        ((TextView)localObject1).setVisibility(8);
+      }
+      localObject1 = paramj.UH(e.e.follow_btn);
+      if (localObject1 != null) {
+        ((View)localObject1).setVisibility(8);
+      }
+      localObject1 = paramj.UH(e.e.real_name_recommend_layout);
+      if (localObject1 != null) {
+        ((View)localObject1).setVisibility(8);
+      }
+      localObject1 = paramj.caK.findViewById(e.e.follow_btn);
+      if (localObject1 != null) {
+        ((View)localObject1).setVisibility(8);
+      }
+      localObject1 = (NeatTextView)paramj.UH(e.e.text_content);
+      ((NeatTextView)localObject1).setMaxLines(1);
+      ((NeatTextView)localObject1).setEllipsize(TextUtils.TruncateAt.END);
+      ((NeatTextView)localObject1).setTextColor(i);
+      float f = paramj.context.getResources().getDimension(e.c.Edge_A);
+      ((NeatTextView)localObject1).setPadding(((NeatTextView)localObject1).getPaddingLeft(), (int)f, ((NeatTextView)localObject1).getPaddingRight(), (int)f);
+      localObject1 = paramj.UH(e.e.feed_header_content);
+      localObject2 = ((View)localObject1).getLayoutParams();
+      if (localObject2 != null) {
+        break;
+      }
+      paramj = new NullPointerException("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
+      AppMethodBeat.o(334286);
+      throw paramj;
+    }
+    localObject2 = (FrameLayout.LayoutParams)localObject2;
+    ((FrameLayout.LayoutParams)localObject2).bottomMargin = ((int)paramj.context.getResources().getDimension(e.c.Edge_10_5_A));
+    ((FrameLayout.LayoutParams)localObject2).rightMargin = ((int)paramj.context.getResources().getDimension(e.c.Edge_5A));
+    ((FrameLayout.LayoutParams)localObject2).setMarginEnd((int)paramj.context.getResources().getDimension(e.c.Edge_5A));
+    ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+    localObject1 = paramj.caK;
+    if ((localObject1 instanceof SimpleTouchableLayout)) {}
+    for (localObject1 = (SimpleTouchableLayout)localObject1;; localObject1 = null)
+    {
+      if (localObject1 != null)
+      {
+        ((SimpleTouchableLayout)localObject1).setOnDoubleClickListener(null);
+        ((SimpleTouchableLayout)localObject1).setOnLongClickListener(null);
+      }
+      paramj = (FinderMediaBanner)paramj.UH(e.e.media_banner);
+      if (paramj != null)
+      {
+        paramj.setOnDoubleClickListener(null);
+        paramj.setOnLongClickListener(null);
+      }
+      AppMethodBeat.o(334286);
       return;
     }
   }
   
-  public final void ab(ArrayList<bu> paramArrayList)
+  public static void y(j paramj)
   {
-    AppMethodBeat.i(278905);
-    p.k(paramArrayList, "data");
-    super.ab(paramArrayList);
-    if (this.xNB.dwb())
-    {
-      paramArrayList = (TextView)findViewById(b.f.empty_tip);
-      if (paramArrayList != null) {
-        paramArrayList.setTextColor(this.iXq.getResources().getColor(b.c.BW_100_Alpha_0_3));
-      }
-      paramArrayList = (TextView)findViewById(b.f.retry_tip);
-      if (paramArrayList != null) {
-        paramArrayList.setTextColor(this.iXq.getResources().getColor(b.c.BW_100_Alpha_0_3));
-      }
-      paramArrayList = (TextView)findViewById(b.f.load_more_footer_tip_tv);
-      if (paramArrayList != null)
-      {
-        paramArrayList.setTextColor(this.iXq.getResources().getColor(b.c.BW_100_Alpha_0_3));
-        AppMethodBeat.o(278905);
-        return;
-      }
+    AppMethodBeat.i(334296);
+    s.u(paramj, "holder");
+    int i = paramj.context.getResources().getColor(e.b.Dark_2);
+    int j = paramj.context.getResources().getColor(e.b.BW_100_Alpha_0_8);
+    int k = paramj.context.getResources().getColor(e.b.White);
+    Object localObject = paramj.UH(e.e.finder_media_bottom);
+    if (localObject != null) {
+      ((View)localObject).setBackgroundColor(i);
     }
-    AppMethodBeat.o(278905);
-  }
-  
-  public final MMFragmentActivity dsB()
-  {
-    return (MMFragmentActivity)this.iXq;
-  }
-  
-  public final boolean dsJ()
-  {
-    return this.fEH == 5;
-  }
-  
-  public final void dsL() {}
-  
-  public final RecyclerView.LayoutManager eW(Context paramContext)
-  {
-    AppMethodBeat.i(278908);
-    p.k(paramContext, "context");
-    paramContext = this.xNB.ft(paramContext);
-    AppMethodBeat.o(278908);
-    return paramContext;
-  }
-  
-  public final String f(RefreshLoadMoreLayout.c<Object> paramc)
-  {
-    AppMethodBeat.i(278914);
-    p.k(paramc, "reason");
-    AppMethodBeat.o(278914);
-    return null;
-  }
-  
-  public final String g(RefreshLoadMoreLayout.c<Object> paramc)
-  {
-    AppMethodBeat.i(278916);
-    p.k(paramc, "reason");
-    AppMethodBeat.o(278916);
-    return null;
-  }
-  
-  public final View getEmptyView()
-  {
-    AppMethodBeat.i(278911);
-    View localView2 = findViewById(b.f.empty_view);
-    View localView1 = localView2;
-    if (!(localView2 instanceof View)) {
-      localView1 = null;
+    localObject = (TextView)paramj.UH(e.e.finder_nickname);
+    if (localObject != null) {
+      ((TextView)localObject).setTextColor(j);
     }
-    AppMethodBeat.o(278911);
-    return localView1;
+    paramj = (TextView)paramj.UH(e.e.finder_desc);
+    if (paramj != null) {
+      paramj.setTextColor(k);
+    }
+    AppMethodBeat.o(334296);
   }
   
-  public final View getHeaderView()
+  public static void z(j paramj)
   {
-    return null;
-  }
-  
-  public final RecyclerView.h getItemDecoration()
-  {
-    AppMethodBeat.i(278909);
-    RecyclerView.h localh = this.xNB.dwc();
-    AppMethodBeat.o(278909);
-    return localh;
+    AppMethodBeat.i(334306);
+    s.u(paramj, "holder");
+    int i = paramj.context.getResources().getColor(e.b.Dark_2);
+    int j = paramj.context.getResources().getColor(e.b.BW_100_Alpha_0_8);
+    int k = paramj.context.getResources().getColor(e.b.White);
+    Object localObject = paramj.UH(e.e.finder_media_bottom);
+    if (localObject != null) {
+      ((View)localObject).setBackgroundColor(i);
+    }
+    localObject = (TextView)paramj.UH(e.e.finder_nickname);
+    if (localObject != null) {
+      ((TextView)localObject).setTextColor(j);
+    }
+    localObject = (TextView)paramj.UH(e.e.finder_desc);
+    if (localObject != null) {
+      ((TextView)localObject).setTextColor(k);
+    }
+    localObject = (ImageIndicatorView)paramj.UH(e.e.image_indicator);
+    if (localObject != null) {
+      ((ImageIndicatorView)localObject).setBackgroundColor(paramj.context.getResources().getColor(e.b.Dark_2));
+    }
+    AppMethodBeat.o(334306);
   }
 }
 

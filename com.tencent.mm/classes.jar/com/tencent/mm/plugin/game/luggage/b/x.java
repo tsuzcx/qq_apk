@@ -2,77 +2,93 @@ package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
 import android.content.Intent;
+import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
-import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
-import com.tencent.mm.plugin.game.luggage.g.i;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
+import com.tencent.mm.plugin.game.luggage.page.GameWebPage;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv.a;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bw;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
-import java.util.HashMap;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class x
-  extends br<i>
+  extends bw<GameWebPage>
 {
-  public final void a(Context paramContext, String paramString, br.a parama) {}
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
   
-  public final void b(final b<i>.a paramb)
+  public final void b(final b<GameWebPage>.a paramb)
   {
-    AppMethodBeat.i(83081);
-    Log.i("MicroMsg.JsApiOpenGameRegion", "invoke");
-    final MMActivity localMMActivity = (MMActivity)((i)paramb.crg).mContext;
-    localMMActivity.mmSetOnActivityResultCallback(new MMActivity.a()
+    AppMethodBeat.i(83078);
+    String str1 = paramb.eiZ.eif.optString("videoUrl");
+    String str2 = paramb.eiZ.eif.optString("thumbUrl");
+    String str3 = paramb.eiZ.eif.optString("appId");
+    int i = paramb.eiZ.eif.optInt("sourceSceneId");
+    if (Util.isNullOrNil(str1))
     {
-      public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
+      paramb.a("invalid_videoUrl", null);
+      AppMethodBeat.o(83078);
+      return;
+    }
+    ((com.tencent.mm.plugin.game.api.h)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.game.api.h.class)).a(((GameWebPage)paramb.eiY).mContext, str1, str2, str3, 510, i);
+    ((MMActivity)((GameWebPage)paramb.eiY).mContext).mmSetOnActivityResultCallback(new MMActivity.a()
+    {
+      public final void mmOnActivityResult(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
-        AppMethodBeat.i(83080);
-        if (paramAnonymousInt1 == (x.this.hashCode() & 0xFFFF))
+        AppMethodBeat.i(83077);
+        if (paramAnonymousInt1 == 510)
         {
           if (paramAnonymousInt2 != -1) {
-            break label96;
+            break label176;
           }
-          if (paramAnonymousIntent == null) {
-            break label83;
+          switch (paramAnonymousIntent.getIntExtra("webview_callback_err", 0))
+          {
           }
-          paramAnonymousIntent = Util.nullAs(paramAnonymousIntent.getStringExtra("gameRegionName"), "");
-          HashMap localHashMap = new HashMap();
-          localHashMap.put("gameRegionName", paramAnonymousIntent);
-          paramb.d("", localHashMap);
         }
         for (;;)
         {
-          localMMActivity.mmSetOnActivityResultCallback(null);
-          AppMethodBeat.o(83080);
+          ((MMActivity)((GameWebPage)paramb.eiY).mContext).mmSetOnActivityResultCallback(null);
+          AppMethodBeat.o(83077);
           return;
-          label83:
-          paramb.a("fail", null);
-          continue;
-          label96:
-          if (paramAnonymousInt2 == 1) {
-            paramb.a("fail", null);
-          } else {
-            paramb.a("cancel", null);
+          JSONObject localJSONObject = new JSONObject();
+          paramAnonymousIntent = paramAnonymousIntent.getStringExtra("key_video_info");
+          try
+          {
+            localJSONObject.put("videoInfo", new JSONArray(paramAnonymousIntent).getJSONObject(0));
+            paramb.a("", localJSONObject);
           }
+          catch (JSONException paramAnonymousIntent)
+          {
+            for (;;)
+            {
+              Log.e("MicroMsg.JsApiLaunchGameVideoEditor", "json_err:%s", new Object[] { paramAnonymousIntent.getMessage() });
+            }
+          }
+          paramb.a("cancel", null);
+          continue;
+          paramb.a("download_err", null);
+          continue;
+          label176:
+          paramb.a("cancel", null);
         }
       }
     });
-    c.a(localMMActivity, "game", ".ui.GameRegionSelectUI", null, hashCode() & 0xFFFF, false);
-    AppMethodBeat.o(83081);
+    AppMethodBeat.o(83078);
   }
   
-  public final int cDj()
+  public final int dgI()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "openGameRegion";
+    return "launchGameVideoEditor";
   }
 }
 

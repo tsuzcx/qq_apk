@@ -1,61 +1,88 @@
 package com.tencent.mm.plugin.messenger.f;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.h.a;
-import com.tencent.mm.f.c.et;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.messenger.e.e;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.n;
-import com.tencent.mm.plugin.messenger.foundation.a.y;
-import com.tencent.mm.protocal.protobuf.db;
+import com.tencent.mm.plugin.messenger.a.e;
+import com.tencent.mm.plugin.messenger.a.e.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ca;
+import com.tencent.neattextview.textview.view.NeatTextView;
+import java.lang.ref.WeakReference;
+import java.util.LinkedList;
 import java.util.Map;
+import junit.framework.Assert;
 
-public final class b
-  extends e
+public abstract class b
 {
-  public final void b(Map<String, String> paramMap, h.a parama)
+  public WeakReference<b> KRZ = null;
+  
+  public b(b paramb)
   {
-    AppMethodBeat.i(213507);
-    Object localObject = parama.jQG;
-    parama = z.a(((db)localObject).RID);
-    localObject = ((n)h.ae(n.class)).eSe().aL(parama, ((db)localObject).HlH);
-    String str = n(paramMap, "link_history");
-    if (Util.isNullOrNil(str))
+    Assert.assertNotNull(paramb);
+    this.KRZ = new WeakReference(paramb);
+    ((e)h.ax(e.class)).a(gbt(), new e.c()
     {
-      Log.e("MicroMsg.SysMsgTemp.HandlerProfileWithRevokeReceived", "onReceivedImp head(LINK_TYPE_HISTORY) is null.(%s %s)", new Object[] { parama, Long.valueOf(((et)localObject).field_msgSvrId) });
-      AppMethodBeat.o(213507);
-      return;
-    }
-    ((y)h.ae(y.class)).a(((et)localObject).field_msgId, paramMap, str);
-    paramMap = Util.nullAs((String)paramMap.get(str + ".historyid"), "");
-    ((ca)localObject).Jt(paramMap);
-    ((n)h.ae(n.class)).eSe().a(((et)localObject).field_msgId, (ca)localObject);
-    ((y)h.ae(y.class)).aC(paramMap, ((et)localObject).field_msgId);
-    Log.i("MicroMsg.SysMsgTemp.HandlerProfileWithRevokeReceived", "onReceivedImp msgId:%s historyId:%s", new Object[] { Long.valueOf(((et)localObject).field_msgId), paramMap });
-    AppMethodBeat.o(213507);
+      public final CharSequence a(Map<String, String> paramAnonymousMap, String paramAnonymousString, Bundle paramAnonymousBundle, WeakReference<Context> paramAnonymousWeakReference, WeakReference<NeatTextView> paramAnonymousWeakReference1)
+      {
+        AppMethodBeat.i(288608);
+        String str = paramAnonymousBundle.getString("conv_talker_username", "");
+        if (paramAnonymousMap == null)
+        {
+          Log.w("MicroMsg.SysMsgTemp.SysMsgTemplateLinkHandlerBase", "hy: non map!!");
+          AppMethodBeat.o(288608);
+          return null;
+        }
+        if (Util.isNullOrNil(paramAnonymousString))
+        {
+          Log.w("MicroMsg.SysMsgTemp.SysMsgTemplateLinkHandlerBase", "hy: non header!!");
+          AppMethodBeat.o(288608);
+          return null;
+        }
+        if (Util.isNullOrNil(str))
+        {
+          Log.w("MicroMsg.SysMsgTemp.SysMsgTemplateLinkHandlerBase", "hy: not resolved talker!!");
+          AppMethodBeat.o(288608);
+          return null;
+        }
+        paramAnonymousMap = b.this.b(paramAnonymousMap, paramAnonymousString, paramAnonymousBundle, paramAnonymousWeakReference, paramAnonymousWeakReference1);
+        AppMethodBeat.o(288608);
+        return paramAnonymousMap;
+      }
+    });
   }
   
-  public final void c(String paramString, Map<String, String> paramMap, Bundle paramBundle)
+  public final void a(long paramLong, LinkedList<String> paramLinkedList, int paramInt)
   {
-    AppMethodBeat.i(213508);
-    if (Util.isNullOrNil(n(paramMap, "link_history")))
-    {
-      Log.e("MicroMsg.SysMsgTemp.HandlerProfileWithRevokeReceived", "onClickLinkImp head is null.");
-      AppMethodBeat.o(213508);
-      return;
+    if ((this.KRZ != null) && (this.KRZ.get() != null)) {
+      ((b)this.KRZ.get()).a(paramLong, paramLinkedList, paramInt);
     }
-    AppMethodBeat.o(213508);
   }
   
-  public final String eSA()
+  protected abstract CharSequence b(Map<String, String> paramMap, String paramString, Bundle paramBundle, WeakReference<Context> paramWeakReference, WeakReference<NeatTextView> paramWeakReference1);
+  
+  protected abstract String gbt();
+  
+  public void release()
   {
-    return "tmpl_type_profile";
+    ((e)h.ax(e.class)).aLc(gbt());
+  }
+  
+  public final class a
+  {
+    public String link;
+    public String username;
+    
+    public a() {}
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void a(long paramLong, LinkedList<String> paramLinkedList, int paramInt);
+    
+    public abstract void a(View paramView, b.a parama);
   }
 }
 

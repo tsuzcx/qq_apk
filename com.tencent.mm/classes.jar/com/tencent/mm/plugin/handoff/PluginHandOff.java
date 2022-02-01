@@ -2,45 +2,93 @@ package com.tencent.mm.plugin.handoff;
 
 import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.app.o.a;
+import com.tencent.mm.app.q.a;
 import com.tencent.mm.kernel.api.c;
 import com.tencent.mm.kernel.f.c;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.bd;
 import com.tencent.mm.plugin.appbrand.config.GetOnLineInfoInfoResult;
-import com.tencent.mm.plugin.appbrand.service.o;
+import com.tencent.mm.plugin.appbrand.service.q;
 import com.tencent.mm.plugin.handoff.c.e;
-import com.tencent.mm.plugin.handoff.c.e.j;
-import com.tencent.mm.plugin.handoff.c.e.k;
+import com.tencent.mm.plugin.handoff.c.e.h;
+import com.tencent.mm.plugin.handoff.c.e.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import kotlin.g.b.p;
-import kotlin.l;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/handoff/PluginHandOff;", "Lcom/tencent/mm/kernel/plugin/Plugin;", "Lcom/tencent/mm/plugin/handoff/api/IPluginHandOff;", "Lcom/tencent/mm/kernel/api/ICoreAccountCallback;", "()V", "TAG", "", "appForegroundListener", "com/tencent/mm/plugin/handoff/PluginHandOff$appForegroundListener$1", "Lcom/tencent/mm/plugin/handoff/PluginHandOff$appForegroundListener$1;", "userStatusChangeListener", "Lcom/tencent/mm/model/IOnUserStatusChange;", "dependency", "", "execute", "profile", "Lcom/tencent/mm/kernel/plugin/ProcessProfile;", "installed", "name", "onAccountInitialized", "upgrade", "Lcom/tencent/mm/kernel/CoreStorage$UpgradeInfo;", "onAccountRelease", "uninstalled", "plugin-handoff_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/handoff/PluginHandOff;", "Lcom/tencent/mm/kernel/plugin/Plugin;", "Lcom/tencent/mm/plugin/handoff/api/IPluginHandOff;", "Lcom/tencent/mm/kernel/api/ICoreAccountCallback;", "()V", "TAG", "", "appForegroundListener", "com/tencent/mm/plugin/handoff/PluginHandOff$appForegroundListener$1", "Lcom/tencent/mm/plugin/handoff/PluginHandOff$appForegroundListener$1;", "userStatusChangeListener", "Lcom/tencent/mm/model/IOnUserStatusChange;", "dependency", "", "execute", "profile", "Lcom/tencent/mm/kernel/plugin/ProcessProfile;", "installed", "name", "onAccountInitialized", "upgrade", "Lcom/tencent/mm/kernel/CoreStorage$UpgradeInfo;", "onAccountRelease", "uninstalled", "plugin-handoff_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class PluginHandOff
   extends com.tencent.mm.kernel.b.f
   implements c, com.tencent.mm.plugin.handoff.a.b
 {
-  private final a DrE;
-  private final bd DrF;
+  private final a Jlm;
+  private final bd Jln;
   private final String TAG;
   
   public PluginHandOff()
   {
     AppMethodBeat.i(10338);
     this.TAG = "PluginHandOff";
-    this.DrE = new a();
-    this.DrF = ((bd)new b(this));
+    this.Jlm = new a();
+    this.Jln = new PluginHandOff..ExternalSyntheticLambda0(this);
     AppMethodBeat.o(10338);
+  }
+  
+  private static final void userStatusChangeListener$lambda-0(PluginHandOff paramPluginHandOff)
+  {
+    AppMethodBeat.i(266008);
+    s.u(paramPluginHandOff, "this$0");
+    Log.i(paramPluginHandOff.TAG, s.X("webwx online status: ", Boolean.valueOf(com.tencent.mm.kernel.b.sy(h.baC().mBT))));
+    q localq = (q)h.ax(q.class);
+    GetOnLineInfoInfoResult localGetOnLineInfoInfoResult;
+    List localList;
+    if (localq != null)
+    {
+      localGetOnLineInfoInfoResult = new GetOnLineInfoInfoResult();
+      localGetOnLineInfoInfoResult.qvq = localq.bLQ();
+      localList = localq.bLO();
+      if (!localList.contains(Integer.valueOf(1))) {
+        break label182;
+      }
+      localGetOnLineInfoInfoResult.qvo = 1;
+      localGetOnLineInfoInfoResult.qvp = localq.bLP();
+      if ((localGetOnLineInfoInfoResult.qvo == -1) || (localGetOnLineInfoInfoResult.qvp == 0)) {
+        break label211;
+      }
+      ((com.tencent.mm.plugin.appbrand.service.g)h.ax(com.tencent.mm.plugin.appbrand.service.g.class)).a("Common_IPC_appid", (Parcelable)localGetOnLineInfoInfoResult);
+      ((com.tencent.mm.plugin.handoff.a.a)h.ax(com.tencent.mm.plugin.handoff.a.a.class)).a(localGetOnLineInfoInfoResult);
+    }
+    for (;;)
+    {
+      if (com.tencent.mm.kernel.b.sy(h.baC().mBT))
+      {
+        Log.i(paramPluginHandOff.TAG, "webwx is online, send alllist");
+        e.JlJ.fJK();
+      }
+      AppMethodBeat.o(266008);
+      return;
+      label182:
+      if (localList.contains(Integer.valueOf(2)))
+      {
+        localGetOnLineInfoInfoResult.qvo = 2;
+        break;
+      }
+      localGetOnLineInfoInfoResult.qvo = -1;
+      break;
+      label211:
+      Log.i(paramPluginHandOff.TAG, s.X("invalid login: ", localGetOnLineInfoInfoResult));
+    }
   }
   
   public final void dependency()
   {
     AppMethodBeat.i(10332);
     Log.i(this.TAG, "dependency");
+    dependsOn(com.tencent.mm.ipcinvoker.wx_extension.b.class);
     if (MMApplicationContext.isMainProcess()) {
-      dependsOn(com.tencent.mm.plugin.comm.a.a.class);
+      dependsOn(com.tencent.mm.plugin.comm.a.b.class);
     }
     AppMethodBeat.o(10332);
   }
@@ -48,15 +96,15 @@ public final class PluginHandOff
   public final void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(10335);
-    p.k(paramg, "profile");
+    s.u(paramg, "profile");
     Log.i(this.TAG, "execute");
-    if (paramg.aIE())
+    if (paramg.bbA())
     {
-      h.b(com.tencent.mm.plugin.handoff.a.a.class, (com.tencent.mm.kernel.c.a)e.Dso);
+      h.b(com.tencent.mm.plugin.handoff.a.a.class, (com.tencent.mm.kernel.c.a)e.JlJ);
       AppMethodBeat.o(10335);
       return;
     }
-    h.b(com.tencent.mm.plugin.handoff.a.a.class, (com.tencent.mm.kernel.c.a)new com.tencent.mm.plugin.handoff.c.g());
+    h.b(com.tencent.mm.plugin.handoff.a.a.class, (com.tencent.mm.kernel.c.a)new com.tencent.mm.plugin.handoff.c.f());
     AppMethodBeat.o(10335);
   }
   
@@ -77,8 +125,8 @@ public final class PluginHandOff
   {
     AppMethodBeat.i(10336);
     Log.i(this.TAG, "onAccountInitialized");
-    this.DrE.alive();
-    h.aHE().a(this.DrF);
+    this.Jlm.alive();
+    h.baC().a(this.Jln);
     AppMethodBeat.o(10336);
   }
   
@@ -86,8 +134,8 @@ public final class PluginHandOff
   {
     AppMethodBeat.i(10337);
     Log.i(this.TAG, "onAccountRelease");
-    this.DrE.dead();
-    h.aHE().b(this.DrF);
+    this.Jlm.dead();
+    h.baC().b(this.Jln);
     AppMethodBeat.o(10337);
   }
   
@@ -99,65 +147,30 @@ public final class PluginHandOff
     AppMethodBeat.o(10334);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/handoff/PluginHandOff$appForegroundListener$1", "Lcom/tencent/mm/app/IAppForegroundListener$Impl;", "onAppBackground", "", "activity", "", "onAppForeground", "plugin-handoff_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/handoff/PluginHandOff$appForegroundListener$1", "Lcom/tencent/mm/app/IAppForegroundListener$Impl;", "onAppBackground", "", "activity", "", "onAppForeground", "plugin-handoff_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
-    extends o.a
+    extends q.a
   {
     public final void onAppBackground(String paramString)
     {
       AppMethodBeat.i(10330);
-      paramString = e.Dso;
-      e.W((kotlin.g.a.a)e.j.Dst);
+      paramString = e.JlJ;
+      e.bE((kotlin.g.a.a)e.h.JlX);
       AppMethodBeat.o(10330);
     }
     
     public final void onAppForeground(String paramString)
     {
       AppMethodBeat.i(10329);
-      paramString = e.Dso;
-      e.W((kotlin.g.a.a)e.k.Dsu);
+      paramString = e.JlJ;
+      e.bE((kotlin.g.a.a)e.i.JlY);
       AppMethodBeat.o(10329);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onNotifyUserStatusChange"})
-  static final class b
-    implements bd
-  {
-    b(PluginHandOff paramPluginHandOff) {}
-    
-    public final void bez()
-    {
-      AppMethodBeat.i(10331);
-      Object localObject1 = PluginHandOff.access$getTAG$p(this.DrG);
-      Object localObject2 = new StringBuilder("webwx online status: ");
-      com.tencent.mm.kernel.b localb = h.aHE();
-      p.j(localb, "MMKernel.account()");
-      Log.i((String)localObject1, localb.aGK());
-      localObject1 = (o)h.ae(o.class);
-      if (localObject1 != null)
-      {
-        localObject2 = new GetOnLineInfoInfoResult();
-        ((GetOnLineInfoInfoResult)localObject2).nwq = ((o)localObject1).boc();
-        ((GetOnLineInfoInfoResult)localObject2).lZJ = ((o)localObject1).boa();
-        ((GetOnLineInfoInfoResult)localObject2).lZO = ((o)localObject1).bob();
-        ((com.tencent.mm.plugin.appbrand.service.f)h.ae(com.tencent.mm.plugin.appbrand.service.f.class)).a("Common_IPC_appid", (Parcelable)localObject2);
-        ((com.tencent.mm.plugin.handoff.a.a)h.ae(com.tencent.mm.plugin.handoff.a.a.class)).a((GetOnLineInfoInfoResult)localObject2);
-      }
-      localObject1 = h.aHE();
-      p.j(localObject1, "MMKernel.account()");
-      if (((com.tencent.mm.kernel.b)localObject1).aGK())
-      {
-        Log.i(PluginHandOff.access$getTAG$p(this.DrG), "webwx is online, send alllist");
-        e.Dso.eBI();
-      }
-      AppMethodBeat.o(10331);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.handoff.PluginHandOff
  * JD-Core Version:    0.7.0.1
  */

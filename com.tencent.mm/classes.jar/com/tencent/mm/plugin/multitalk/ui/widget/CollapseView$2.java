@@ -15,11 +15,11 @@ final class CollapseView$2
     AppMethodBeat.i(178906);
     Rect localRect = new Rect();
     this.val$view.getHitRect(localRect);
-    localRect.top -= this.jwF;
-    localRect.bottom += this.jwF;
-    localRect.left -= this.jwF;
-    localRect.right += this.jwF;
-    this.Fxi.setTouchDelegate(new TouchDelegate(localRect, this.val$view));
+    localRect.top -= this.lZX;
+    localRect.bottom += this.lZX;
+    localRect.left -= this.lZX;
+    localRect.right += this.lZX;
+    this.Lts.setTouchDelegate(new TouchDelegate(localRect, this.val$view));
     AppMethodBeat.o(178906);
   }
 }

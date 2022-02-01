@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.appbrand.media.a;
 
-import com.tencent.luggage.k.a;
+import com.tencent.luggage.l.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.al.e;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkg;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.InputStream;
 
 public final class d
@@ -15,19 +15,19 @@ public final class d
   private long currentPosition;
   private String filePath;
   private String pkgPath;
-  public a qde;
+  public a thS;
   
   public d(String paramString1, String paramString2)
   {
     AppMethodBeat.i(145785);
-    this.qde = null;
+    this.thS = null;
     this.filePath = paramString1;
     this.pkgPath = paramString2;
-    this.qde = eE(paramString1, paramString2);
+    this.thS = eV(paramString1, paramString2);
     AppMethodBeat.o(145785);
   }
   
-  private static a eE(String paramString1, String paramString2)
+  private static a eV(String paramString1, String paramString2)
   {
     AppMethodBeat.i(145787);
     long l = System.nanoTime();
@@ -37,22 +37,22 @@ public final class d
       AppMethodBeat.o(145787);
       return null;
     }
-    paramString2 = new WxaPkg(new q(paramString2));
-    if (!paramString2.nEb)
+    paramString2 = new WxaPkg(new u(paramString2));
+    if (!paramString2.qDW)
     {
       paramString2.close();
       Log.e("MicroMsg.WxaAudioDataSource", "pkg invalid");
       AppMethodBeat.o(145787);
       return null;
     }
-    if (!paramString2.bGl())
+    if (!paramString2.cfK())
     {
       paramString2.close();
       Log.e("MicroMsg.WxaAudioDataSource", "pkg readInfo failed");
       AppMethodBeat.o(145787);
       return null;
     }
-    InputStream localInputStream = paramString2.acB(paramString1);
+    InputStream localInputStream = paramString2.Va(paramString1);
     if (localInputStream == null)
     {
       paramString2.close();
@@ -67,13 +67,13 @@ public final class d
     return paramString1;
   }
   
-  public final int bhy()
+  public final int bFo()
   {
     AppMethodBeat.i(145790);
-    if (this.qde == null) {
-      this.qde = eE(this.filePath, this.pkgPath);
+    if (this.thS == null) {
+      this.thS = eV(this.filePath, this.pkgPath);
     }
-    if (this.qde == null)
+    if (this.thS == null)
     {
       Log.e("MicroMsg.WxaAudioDataSource", "[getAudioType] inputStream is null");
       AppMethodBeat.o(145790);
@@ -100,10 +100,10 @@ public final class d
     try
     {
       localObject1 = new byte[64];
-      this.qde.seek(0);
-      this.qde.read((byte[])localObject1);
+      this.thS.seek(0);
+      this.thS.read((byte[])localObject1);
       localObject1 = new String((byte[])localObject1);
-      this.qde.seek(0);
+      this.thS.seek(0);
     }
     catch (Exception localException)
     {
@@ -111,13 +111,13 @@ public final class d
       {
         Object localObject1;
         Log.e("MicroMsg.WxaAudioDataSource", "getAudioType", new Object[] { localException });
-        this.qde.seek(0);
+        this.thS.seek(0);
         Object localObject2 = null;
       }
     }
     finally
     {
-      this.qde.seek(0);
+      this.thS.seek(0);
       AppMethodBeat.o(145790);
     }
     if ((localObject1 != null) && (((String)localObject1).contains("ftyp")))
@@ -133,12 +133,12 @@ public final class d
   public final void close()
   {
     AppMethodBeat.i(145791);
-    a locala = this.qde;
+    a locala = this.thS;
     if (locala != null)
     {
       Log.i("MicroMsg.WxaAudioDataSource", "close");
       locala.close();
-      this.qde = null;
+      this.thS = null;
     }
     AppMethodBeat.o(145791);
   }
@@ -146,32 +146,32 @@ public final class d
   public final long getSize()
   {
     AppMethodBeat.i(145789);
-    if (this.qde == null)
+    if (this.thS == null)
     {
       Log.e("MicroMsg.WxaAudioDataSource", "[getSize] inputStream is null");
       AppMethodBeat.o(145789);
       return 0L;
     }
-    long l = this.qde.sr();
+    long l = this.thS.RU();
     AppMethodBeat.o(145789);
     return l;
   }
   
   public final boolean isOpen()
   {
-    return this.qde != null;
+    return this.thS != null;
   }
   
   public final void open()
   {
     AppMethodBeat.i(145786);
     Log.i("MicroMsg.WxaAudioDataSource", "open");
-    if (this.qde == null) {
-      this.qde = eE(this.filePath, this.pkgPath);
+    if (this.thS == null) {
+      this.thS = eV(this.filePath, this.pkgPath);
     }
     this.currentPosition = 0L;
-    if (this.qde != null) {
-      this.qde.seek(0);
+    if (this.thS != null) {
+      this.thS.seek(0);
     }
     AppMethodBeat.o(145786);
   }
@@ -179,7 +179,7 @@ public final class d
   public final int readAt(long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(145788);
-    if (this.qde == null)
+    if (this.thS == null)
     {
       Log.e("MicroMsg.WxaAudioDataSource", "[readAt]inputstream is null");
       AppMethodBeat.o(145788);
@@ -208,10 +208,10 @@ public final class d
     }
     if (this.currentPosition != paramLong)
     {
-      this.qde.seek((int)paramLong);
+      this.thS.seek((int)paramLong);
       this.currentPosition = paramLong;
     }
-    paramInt1 = this.qde.read(paramArrayOfByte, paramInt1, paramInt2);
+    paramInt1 = this.thS.read(paramArrayOfByte, paramInt1, paramInt2);
     if (paramInt1 >= 0) {
       this.currentPosition += paramInt1;
     }
@@ -221,7 +221,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.a.d
  * JD-Core Version:    0.7.0.1
  */

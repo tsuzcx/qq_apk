@@ -5,17 +5,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class d<E>
   implements Cloneable
 {
-  public static final Object zI;
-  public int mSize;
-  public boolean zJ;
-  public long[] zK;
-  public Object[] zL;
+  private static final Object RV;
+  private boolean RW;
+  private long[] RX;
+  private Object[] RY;
+  private int mSize;
   
   static
   {
-    AppMethodBeat.i(210247);
-    zI = new Object();
-    AppMethodBeat.o(210247);
+    AppMethodBeat.i(194534);
+    RV = new Object();
+    AppMethodBeat.o(194534);
   }
   
   public d()
@@ -25,27 +25,26 @@ public final class d<E>
   
   private d(byte paramByte)
   {
-    AppMethodBeat.i(210218);
-    this.zJ = false;
-    paramByte = c.aI(10);
-    this.zK = new long[paramByte];
-    this.zL = new Object[paramByte];
-    this.mSize = 0;
-    AppMethodBeat.o(210218);
+    AppMethodBeat.i(194521);
+    this.RW = false;
+    paramByte = c.bh(10);
+    this.RX = new long[paramByte];
+    this.RY = new Object[paramByte];
+    AppMethodBeat.o(194521);
   }
   
-  private void ff()
+  private void lm()
   {
     int m = this.mSize;
-    long[] arrayOfLong = this.zK;
-    Object[] arrayOfObject = this.zL;
+    long[] arrayOfLong = this.RX;
+    Object[] arrayOfObject = this.RY;
     int i = 0;
     int k;
     for (int j = 0; i < m; j = k)
     {
       Object localObject = arrayOfObject[i];
       k = j;
-      if (localObject != zI)
+      if (localObject != RV)
       {
         if (i != j)
         {
@@ -57,126 +56,126 @@ public final class d<E>
       }
       i += 1;
     }
-    this.zJ = false;
+    this.RW = false;
     this.mSize = j;
   }
   
   public final void a(long paramLong, E paramE)
   {
-    AppMethodBeat.i(210223);
-    int i = c.a(this.zK, this.mSize, paramLong);
+    AppMethodBeat.i(194581);
+    int i = c.a(this.RX, this.mSize, paramLong);
     if (i >= 0)
     {
-      this.zL[i] = paramE;
-      AppMethodBeat.o(210223);
+      this.RY[i] = paramE;
+      AppMethodBeat.o(194581);
       return;
     }
     int j = i ^ 0xFFFFFFFF;
-    if ((j < this.mSize) && (this.zL[j] == zI))
+    if ((j < this.mSize) && (this.RY[j] == RV))
     {
-      this.zK[j] = paramLong;
-      this.zL[j] = paramE;
-      AppMethodBeat.o(210223);
+      this.RX[j] = paramLong;
+      this.RY[j] = paramE;
+      AppMethodBeat.o(194581);
       return;
     }
     i = j;
-    if (this.zJ)
+    if (this.RW)
     {
       i = j;
-      if (this.mSize >= this.zK.length)
+      if (this.mSize >= this.RX.length)
       {
-        ff();
-        i = c.a(this.zK, this.mSize, paramLong) ^ 0xFFFFFFFF;
+        lm();
+        i = c.a(this.RX, this.mSize, paramLong) ^ 0xFFFFFFFF;
       }
     }
     Object localObject;
-    if (this.mSize >= this.zK.length)
+    if (this.mSize >= this.RX.length)
     {
-      j = c.aI(this.mSize + 1);
+      j = c.bh(this.mSize + 1);
       localObject = new long[j];
       Object[] arrayOfObject = new Object[j];
-      System.arraycopy(this.zK, 0, localObject, 0, this.zK.length);
-      System.arraycopy(this.zL, 0, arrayOfObject, 0, this.zL.length);
-      this.zK = ((long[])localObject);
-      this.zL = arrayOfObject;
+      System.arraycopy(this.RX, 0, localObject, 0, this.RX.length);
+      System.arraycopy(this.RY, 0, arrayOfObject, 0, this.RY.length);
+      this.RX = ((long[])localObject);
+      this.RY = arrayOfObject;
     }
     if (this.mSize - i != 0)
     {
-      localObject = this.zK;
+      localObject = this.RX;
       System.arraycopy(localObject, i, localObject, i + 1, this.mSize - i);
-      localObject = this.zL;
+      localObject = this.RY;
       System.arraycopy(localObject, i, localObject, i + 1, this.mSize - i);
     }
-    this.zK[i] = paramLong;
-    this.zL[i] = paramE;
+    this.RX[i] = paramLong;
+    this.RY[i] = paramE;
     this.mSize += 1;
-    AppMethodBeat.o(210223);
-  }
-  
-  public final void aK(int paramInt)
-  {
-    if (this.zL[paramInt] != zI)
-    {
-      this.zL[paramInt] = zI;
-      this.zJ = true;
-    }
-  }
-  
-  public final long aL(int paramInt)
-  {
-    AppMethodBeat.i(210227);
-    if (this.zJ) {
-      ff();
-    }
-    long l = this.zK[paramInt];
-    AppMethodBeat.o(210227);
-    return l;
-  }
-  
-  public final E aM(int paramInt)
-  {
-    AppMethodBeat.i(210230);
-    if (this.zJ) {
-      ff();
-    }
-    Object localObject = this.zL[paramInt];
-    AppMethodBeat.o(210230);
-    return localObject;
+    AppMethodBeat.o(194581);
   }
   
   public final void b(long paramLong, E paramE)
   {
-    AppMethodBeat.i(210237);
-    if ((this.mSize != 0) && (paramLong <= this.zK[(this.mSize - 1)]))
+    AppMethodBeat.i(194634);
+    if ((this.mSize != 0) && (paramLong <= this.RX[(this.mSize - 1)]))
     {
       a(paramLong, paramE);
-      AppMethodBeat.o(210237);
+      AppMethodBeat.o(194634);
       return;
     }
-    if ((this.zJ) && (this.mSize >= this.zK.length)) {
-      ff();
+    if ((this.RW) && (this.mSize >= this.RX.length)) {
+      lm();
     }
     int i = this.mSize;
-    if (i >= this.zK.length)
+    if (i >= this.RX.length)
     {
-      int j = c.aI(i + 1);
+      int j = c.bh(i + 1);
       long[] arrayOfLong = new long[j];
       Object[] arrayOfObject = new Object[j];
-      System.arraycopy(this.zK, 0, arrayOfLong, 0, this.zK.length);
-      System.arraycopy(this.zL, 0, arrayOfObject, 0, this.zL.length);
-      this.zK = arrayOfLong;
-      this.zL = arrayOfObject;
+      System.arraycopy(this.RX, 0, arrayOfLong, 0, this.RX.length);
+      System.arraycopy(this.RY, 0, arrayOfObject, 0, this.RY.length);
+      this.RX = arrayOfLong;
+      this.RY = arrayOfObject;
     }
-    this.zK[i] = paramLong;
-    this.zL[i] = paramE;
+    this.RX[i] = paramLong;
+    this.RY[i] = paramE;
     this.mSize = (i + 1);
-    AppMethodBeat.o(210237);
+    AppMethodBeat.o(194634);
+  }
+  
+  public final void bj(int paramInt)
+  {
+    if (this.RY[paramInt] != RV)
+    {
+      this.RY[paramInt] = RV;
+      this.RW = true;
+    }
+  }
+  
+  public final long bk(int paramInt)
+  {
+    AppMethodBeat.i(194598);
+    if (this.RW) {
+      lm();
+    }
+    long l = this.RX[paramInt];
+    AppMethodBeat.o(194598);
+    return l;
+  }
+  
+  public final E bl(int paramInt)
+  {
+    AppMethodBeat.i(194606);
+    if (this.RW) {
+      lm();
+    }
+    Object localObject = this.RY[paramInt];
+    AppMethodBeat.o(194606);
+    return localObject;
   }
   
   public final void clear()
   {
     int j = this.mSize;
-    Object[] arrayOfObject = this.zL;
+    Object[] arrayOfObject = this.RY;
     int i = 0;
     while (i < j)
     {
@@ -184,70 +183,82 @@ public final class d<E>
       i += 1;
     }
     this.mSize = 0;
-    this.zJ = false;
+    this.RW = false;
   }
   
-  public final int d(long paramLong)
+  public final E get(long paramLong, E paramE)
   {
-    AppMethodBeat.i(210232);
-    if (this.zJ) {
-      ff();
+    AppMethodBeat.i(194551);
+    int i = c.a(this.RX, this.mSize, paramLong);
+    if ((i < 0) || (this.RY[i] == RV))
+    {
+      AppMethodBeat.o(194551);
+      return paramE;
     }
-    int i = c.a(this.zK, this.mSize, paramLong);
-    AppMethodBeat.o(210232);
+    paramE = this.RY[i];
+    AppMethodBeat.o(194551);
+    return paramE;
+  }
+  
+  public final int j(long paramLong)
+  {
+    AppMethodBeat.i(194616);
+    if (this.RW) {
+      lm();
+    }
+    int i = c.a(this.RX, this.mSize, paramLong);
+    AppMethodBeat.o(194616);
     return i;
   }
   
-  public final d<E> fe()
+  public final d<E> ll()
   {
-    AppMethodBeat.i(210219);
+    AppMethodBeat.i(194541);
     try
     {
       d locald = (d)super.clone();
-      locald.zK = ((long[])this.zK.clone());
-      locald.zL = ((Object[])this.zL.clone());
-      AppMethodBeat.o(210219);
+      locald.RX = ((long[])this.RX.clone());
+      locald.RY = ((Object[])this.RY.clone());
+      AppMethodBeat.o(194541);
       return locald;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
       AssertionError localAssertionError = new AssertionError(localCloneNotSupportedException);
-      AppMethodBeat.o(210219);
+      AppMethodBeat.o(194541);
       throw localAssertionError;
     }
   }
   
-  public final E get(long paramLong, E paramE)
+  public final void remove(long paramLong)
   {
-    AppMethodBeat.i(210220);
-    int i = c.a(this.zK, this.mSize, paramLong);
-    if ((i < 0) || (this.zL[i] == zI))
+    AppMethodBeat.i(194559);
+    int i = c.a(this.RX, this.mSize, paramLong);
+    if ((i >= 0) && (this.RY[i] != RV))
     {
-      AppMethodBeat.o(210220);
-      return paramE;
+      this.RY[i] = RV;
+      this.RW = true;
     }
-    paramE = this.zL[i];
-    AppMethodBeat.o(210220);
-    return paramE;
+    AppMethodBeat.o(194559);
   }
   
   public final int size()
   {
-    AppMethodBeat.i(210225);
-    if (this.zJ) {
-      ff();
+    AppMethodBeat.i(194591);
+    if (this.RW) {
+      lm();
     }
     int i = this.mSize;
-    AppMethodBeat.o(210225);
+    AppMethodBeat.o(194591);
     return i;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(210240);
+    AppMethodBeat.i(194644);
     if (size() <= 0)
     {
-      AppMethodBeat.o(210240);
+      AppMethodBeat.o(194644);
       return "{}";
     }
     Object localObject1 = new StringBuilder(this.mSize * 28);
@@ -258,9 +269,9 @@ public final class d<E>
       if (i > 0) {
         ((StringBuilder)localObject1).append(", ");
       }
-      ((StringBuilder)localObject1).append(aL(i));
+      ((StringBuilder)localObject1).append(bk(i));
       ((StringBuilder)localObject1).append('=');
-      Object localObject2 = aM(i);
+      Object localObject2 = bl(i);
       if (localObject2 != this) {
         ((StringBuilder)localObject1).append(localObject2);
       }
@@ -273,13 +284,13 @@ public final class d<E>
     }
     ((StringBuilder)localObject1).append('}');
     localObject1 = ((StringBuilder)localObject1).toString();
-    AppMethodBeat.o(210240);
+    AppMethodBeat.o(194644);
     return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.b.d
  * JD-Core Version:    0.7.0.1
  */

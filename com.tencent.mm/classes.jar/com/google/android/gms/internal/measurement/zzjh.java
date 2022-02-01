@@ -4,14 +4,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import com.google.android.gms.common.util.Clock;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class zzjh
   extends zzhh
 {
   private Handler handler;
-  @VisibleForTesting
   private long zzapu;
   private final zzem zzapv;
   private final zzem zzapw;
@@ -132,7 +130,7 @@ public final class zzjh
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzjh
  * JD-Core Version:    0.7.0.1
  */

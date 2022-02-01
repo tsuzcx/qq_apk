@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.d.g;
-import com.tencent.mm.plugin.wallet_core.model.ae;
+import com.tencent.mm.plugin.wallet_core.model.ac;
 import com.tencent.mm.plugin.wallet_core.model.u;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
@@ -42,7 +42,7 @@ public final class r
     Log.i("MicroMsg.NetSceneQueryUserWallet", "errCode is : ".concat(String.valueOf(paramInt)));
     if (paramInt == 0)
     {
-      u.gJr().db.execSQL("WalletKindInfo", "delete from WalletKindInfo");
+      u.iiF().db.execSQL("WalletKindInfo", "delete from WalletKindInfo");
       if (paramJSONObject != null)
       {
         Log.i("MicroMsg.NetSceneQueryUserWallet", "resp json " + paramJSONObject.toString());
@@ -53,9 +53,9 @@ public final class r
           paramInt = 0;
           while (paramInt < i)
           {
-            paramJSONObject = ae.bZ(paramString.optJSONObject(paramInt));
+            paramJSONObject = ac.cv(paramString.optJSONObject(paramInt));
             if (paramJSONObject != null) {
-              u.gJr().insert(paramJSONObject);
+              u.iiF().insert(paramJSONObject);
             }
             paramInt += 1;
           }
@@ -73,7 +73,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.c.r
  * JD-Core Version:    0.7.0.1
  */

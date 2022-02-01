@@ -3,23 +3,22 @@ package kotlin.m;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import kotlin.Metadata;
 import kotlin.g.a.b;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/sequences/GeneratorSequence;", "T", "", "Lkotlin/sequences/Sequence;", "getInitialValue", "Lkotlin/Function0;", "getNextValue", "Lkotlin/Function1;", "(Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function1;)V", "iterator", "", "kotlin-stdlib"})
-final class g<T>
+@Metadata(d1={""}, d2={"Lkotlin/sequences/GeneratorSequence;", "T", "", "Lkotlin/sequences/Sequence;", "getInitialValue", "Lkotlin/Function0;", "getNextValue", "Lkotlin/Function1;", "(Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function1;)V", "iterator", "", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
+public final class g<T>
   implements h<T>
 {
-  final kotlin.g.a.a<T> abve;
-  final b<T, T> abvf;
+  private final kotlin.g.a.a<T> ajuj;
+  private final b<T, T> ajuk;
   
   public g(kotlin.g.a.a<? extends T> parama, b<? super T, ? extends T> paramb)
   {
     AppMethodBeat.i(129487);
-    this.abve = parama;
-    this.abvf = paramb;
+    this.ajuj = parama;
+    this.ajuk = paramb;
     AppMethodBeat.o(129487);
   }
   
@@ -31,36 +30,34 @@ final class g<T>
     return localIterator;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"kotlin/sequences/GeneratorSequence$iterator$1", "", "nextItem", "getNextItem", "()Ljava/lang/Object;", "setNextItem", "(Ljava/lang/Object;)V", "Ljava/lang/Object;", "nextState", "", "getNextState", "()I", "setNextState", "(I)V", "calcNext", "", "hasNext", "", "next", "kotlin-stdlib"})
+  @Metadata(d1={""}, d2={"kotlin/sequences/GeneratorSequence$iterator$1", "", "nextItem", "getNextItem", "()Ljava/lang/Object;", "setNextItem", "(Ljava/lang/Object;)V", "Ljava/lang/Object;", "nextState", "", "getNextState", "()I", "setNextState", "(I)V", "calcNext", "", "hasNext", "", "next", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
   public static final class a
     implements Iterator<T>, kotlin.g.b.a.a
   {
-    private int abuX = -2;
-    private T abuY;
+    private int ajuc = -2;
+    private T ajud;
     
-    private final void iQw()
+    private final void kBk()
     {
       AppMethodBeat.i(129501);
       Object localObject1;
-      if (this.abuX == -2)
+      if (this.ajuc == -2)
       {
-        localObject1 = this.abvg.abve.invoke();
-        this.abuY = localObject1;
-        if (this.abuY != null) {
-          break label83;
+        localObject1 = g.a(this.ajul).invoke();
+        this.ajud = localObject1;
+        if (this.ajud != null) {
+          break label80;
         }
       }
-      label83:
+      label80:
       for (int i = 0;; i = 1)
       {
-        this.abuX = i;
+        this.ajuc = i;
         AppMethodBeat.o(129501);
         return;
-        localObject1 = this.abvg.abvf;
-        Object localObject2 = this.abuY;
-        if (localObject2 == null) {
-          p.iCn();
-        }
+        localObject1 = g.b(this.ajul);
+        Object localObject2 = this.ajud;
+        s.checkNotNull(localObject2);
         localObject1 = ((b)localObject1).invoke(localObject2);
         break;
       }
@@ -69,10 +66,10 @@ final class g<T>
     public final boolean hasNext()
     {
       AppMethodBeat.i(129503);
-      if (this.abuX < 0) {
-        iQw();
+      if (this.ajuc < 0) {
+        kBk();
       }
-      if (this.abuX == 1)
+      if (this.ajuc == 1)
       {
         AppMethodBeat.o(129503);
         return true;
@@ -84,23 +81,23 @@ final class g<T>
     public final T next()
     {
       AppMethodBeat.i(129502);
-      if (this.abuX < 0) {
-        iQw();
+      if (this.ajuc < 0) {
+        kBk();
       }
-      if (this.abuX == 0)
+      if (this.ajuc == 0)
       {
         localObject = (Throwable)new NoSuchElementException();
         AppMethodBeat.o(129502);
         throw ((Throwable)localObject);
       }
-      Object localObject = this.abuY;
+      Object localObject = this.ajud;
       if (localObject == null)
       {
-        localObject = new t("null cannot be cast to non-null type T");
+        localObject = new NullPointerException("null cannot be cast to non-null type T");
         AppMethodBeat.o(129502);
         throw ((Throwable)localObject);
       }
-      this.abuX = -1;
+      this.ajuc = -1;
       AppMethodBeat.o(129502);
       return localObject;
     }
@@ -116,7 +113,7 @@ final class g<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlin.m.g
  * JD-Core Version:    0.7.0.1
  */

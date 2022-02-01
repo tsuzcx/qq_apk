@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"REMOVE_FUTURE_ON_CANCEL", "Ljava/lang/reflect/Method;", "identitySet", "", "E", "expectedSize", "", "removeFutureOnCancel", "", "executor", "Ljava/util/concurrent/Executor;", "subscriberList", "", "Lkotlinx/coroutines/internal/SubscribersList;", "withLock", "T", "Ljava/util/concurrent/locks/ReentrantLock;", "Lkotlinx/coroutines/internal/ReentrantLock;", "action", "Lkotlin/Function0;", "(Ljava/util/concurrent/locks/ReentrantLock;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "ReentrantLock", "kotlinx-coroutines-core"})
+@Metadata(d1={""}, d2={"REMOVE_FUTURE_ON_CANCEL", "Ljava/lang/reflect/Method;", "identitySet", "", "E", "expectedSize", "", "removeFutureOnCancel", "", "executor", "Ljava/util/concurrent/Executor;", "subscriberList", "", "Lkotlinx/coroutines/internal/SubscribersList;", "withLock", "T", "Ljava/util/concurrent/locks/ReentrantLock;", "Lkotlinx/coroutines/internal/ReentrantLock;", "action", "Lkotlin/Function0;", "(Ljava/util/concurrent/locks/ReentrantLock;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "ReentrantLock", "kotlinx-coroutines-core"}, k=2, mv={1, 5, 1}, xi=48)
 public final class d
 {
-  private static final Method abyT;
+  private static final Method ajAi;
   
   static
   {
@@ -19,65 +19,63 @@ public final class d
     try
     {
       Method localMethod = ScheduledThreadPoolExecutor.class.getMethod("setRemoveOnCancelPolicy", new Class[] { Boolean.TYPE });
-      abyT = localMethod;
+      ajAi = localMethod;
       AppMethodBeat.o(118114);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
-        Object localObject = null;
+        Object localObject2 = null;
       }
     }
   }
   
-  public static final boolean b(Executor paramExecutor)
+  public static final boolean h(Executor paramExecutor)
   {
-    AppMethodBeat.i(205101);
+    AppMethodBeat.i(189404);
     for (;;)
     {
+      Method localMethod;
       try
       {
-        if (!(paramExecutor instanceof ScheduledThreadPoolExecutor))
-        {
-          paramExecutor = null;
-          paramExecutor = (ScheduledThreadPoolExecutor)paramExecutor;
-          if (paramExecutor == null)
-          {
-            AppMethodBeat.o(205101);
-            return false;
-          }
-          Method localMethod = abyT;
-          if (localMethod == null)
-          {
-            AppMethodBeat.o(205101);
-            return false;
-          }
-          localMethod.invoke(paramExecutor, new Object[] { Boolean.TRUE });
-          AppMethodBeat.o(205101);
-          return true;
+        if (!(paramExecutor instanceof ScheduledThreadPoolExecutor)) {
+          break label74;
         }
+        paramExecutor = (ScheduledThreadPoolExecutor)paramExecutor;
+        if (paramExecutor == null)
+        {
+          AppMethodBeat.o(189404);
+          return false;
+        }
+        localMethod = ajAi;
+        if (localMethod != null) {}
       }
-      catch (Throwable paramExecutor)
+      finally
       {
-        AppMethodBeat.o(205101);
+        AppMethodBeat.o(189404);
         return false;
       }
+      localMethod.invoke(paramExecutor, new Object[] { Boolean.TRUE });
+      AppMethodBeat.o(189404);
+      return true;
+      label74:
+      paramExecutor = null;
     }
   }
   
-  public static final <E> List<E> iSG()
+  public static final <E> List<E> kDO()
   {
-    AppMethodBeat.i(205100);
+    AppMethodBeat.i(189395);
     List localList = (List)new CopyOnWriteArrayList();
-    AppMethodBeat.o(205100);
+    AppMethodBeat.o(189395);
     return localList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlinx.coroutines.internal.d
  * JD-Core Version:    0.7.0.1
  */

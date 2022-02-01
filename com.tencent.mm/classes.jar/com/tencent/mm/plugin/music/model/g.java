@@ -4,113 +4,109 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.f;
 import com.tencent.mm.kernel.h;
 import java.nio.charset.Charset;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import kotlin.n.d;
-import kotlin.t;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/music/model/MusicFileNameUtil;", "", "()V", "AVATAR_FILE", "", "BULLET_CACHE_FILE", "CACHE", "COVER_APP_ICON", "COVER_AVATAR", "COVER_DEFAULT_VIDEO", "COVER_IMG", "COVER_TRANSITION", "COVER_VIDEO", "LIKE_CACHE_FILE", "PIC_FILE", "STORAGE_COVER", "STORAGE_MUSIC", "TAG", "TMP_FILE", "UP_FILE", "VIDEO_FILE", "selfName", "getSelfName", "()Ljava/lang/String;", "setSelfName", "(Ljava/lang/String;)V", "autoPath", "user", "avatarEnsurePath", "parentPath", "coverId", "avatarPath", "checkSelfName", "checkToCreateDir", "", "newVideoPath", "noMedia", "", "coverAppIconPath", "coverAvatarPath", "coverDefaultVideoPath", "coverImgPath", "coverTransitionPath", "coverVideoPath", "defaultVideoPath", "name", "isSelf", "userName", "musicBulletCachePath", "musicCachePath", "musicLikeCachePath", "musicPath", "primaryPathVideoPath", "username", "reset", "thumbEnsurePath", "mediaId", "thumbPath", "musicId", "uploadEnsurePath", "uploadThumbPath", "uploadVideoPath", "videoEnsurePath", "videoPath", "url", "plugin-music_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/music/model/MusicFileNameUtil;", "", "()V", "AVATAR_FILE", "", "BULLET_CACHE_FILE", "CACHE", "COVER_APP_ICON", "COVER_AVATAR", "COVER_DEFAULT_VIDEO", "COVER_IMG", "COVER_TRANSITION", "COVER_VIDEO", "LIKE_CACHE_FILE", "PIC_FILE", "STORAGE_COVER", "STORAGE_MUSIC", "TAG", "TMP_FILE", "UP_FILE", "VIDEO_FILE", "selfName", "getSelfName", "()Ljava/lang/String;", "setSelfName", "(Ljava/lang/String;)V", "autoPath", "user", "avatarEnsurePath", "parentPath", "coverId", "avatarPath", "checkSelfName", "checkToCreateDir", "", "newVideoPath", "noMedia", "", "coverAppIconPath", "coverAvatarPath", "coverDefaultVideoPath", "coverImgPath", "coverTransitionPath", "coverVideoPath", "defaultVideoPath", "name", "isSelf", "userName", "musicBulletCachePath", "musicCachePath", "musicLikeCachePath", "musicPath", "primaryPathVideoPath", "username", "reset", "thumbEnsurePath", "mediaId", "thumbPath", "musicId", "uploadEnsurePath", "uploadThumbPath", "uploadVideoPath", "videoEnsurePath", "videoPath", "url", "plugin-music_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class g
 {
-  public static final g FRy;
-  private static String iRj;
+  public static final g LMs;
+  private static String ltf;
   
   static
   {
-    AppMethodBeat.i(259701);
-    FRy = new g();
-    iRj = "";
-    AppMethodBeat.o(259701);
+    AppMethodBeat.i(271163);
+    LMs = new g();
+    ltf = "";
+    AppMethodBeat.o(271163);
   }
   
-  public static String aSf(String paramString)
+  public static String aOX(String paramString)
   {
-    AppMethodBeat.i(259699);
+    AppMethodBeat.i(271149);
     if (paramString == null)
     {
-      AppMethodBeat.o(259699);
+      AppMethodBeat.o(271149);
       return "";
     }
-    String str = feS() + "img/";
+    String str = s.X(gnZ(), "img/");
     if (paramString == null)
     {
-      AppMethodBeat.o(259699);
+      AppMethodBeat.o(271149);
       return "";
     }
     paramString = str + paramString + ".p";
-    AppMethodBeat.o(259699);
+    AppMethodBeat.o(271149);
     return paramString;
   }
   
-  public static String aSg(String paramString)
+  public static String aOY(String paramString)
   {
-    AppMethodBeat.i(259700);
+    AppMethodBeat.i(271157);
     Object localObject = (CharSequence)paramString;
     if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(259700);
+      AppMethodBeat.o(271157);
       return "";
     }
-    localObject = feS() + "video/";
+    localObject = s.X(gnZ(), "video/");
     Charset localCharset = d.UTF_8;
     if (paramString == null)
     {
-      paramString = new t("null cannot be cast to non-null type java.lang.String");
-      AppMethodBeat.o(259700);
+      paramString = new NullPointerException("null cannot be cast to non-null type java.lang.String");
+      AppMethodBeat.o(271157);
       throw paramString;
     }
     paramString = paramString.getBytes(localCharset);
-    p.j(paramString, "(this as java.lang.String).getBytes(charset)");
+    s.s(paramString, "(this as java.lang.String).getBytes(charset)");
     paramString = com.tencent.mm.b.g.getMessageDigest(paramString);
     if (paramString == null)
     {
-      AppMethodBeat.o(259700);
+      AppMethodBeat.o(271157);
       return "";
     }
     paramString = (String)localObject + paramString + ".v";
-    AppMethodBeat.o(259700);
+    AppMethodBeat.o(271157);
     return paramString;
   }
   
-  public static String feP()
+  public static String gnW()
   {
-    AppMethodBeat.i(259695);
-    String str = feS() + "mv_default_video/";
-    AppMethodBeat.o(259695);
+    AppMethodBeat.i(271122);
+    String str = s.X(gnZ(), "mv_default_video/");
+    AppMethodBeat.o(271122);
     return str;
   }
   
-  public static String feQ()
+  public static String gnX()
   {
-    AppMethodBeat.i(259696);
-    String str = feS() + "mv_transition/";
-    AppMethodBeat.o(259696);
+    AppMethodBeat.i(271128);
+    String str = s.X(gnZ(), "mv_transition/");
+    AppMethodBeat.o(271128);
     return str;
   }
   
-  public static String feR()
+  public static String gnY()
   {
-    AppMethodBeat.i(259697);
-    String str = feS() + "mv_app_icon/";
-    AppMethodBeat.o(259697);
+    AppMethodBeat.i(271133);
+    String str = s.X(gnZ(), "mv_app_icon/");
+    AppMethodBeat.o(271133);
     return str;
   }
   
-  public static String feS()
+  public static String gnZ()
   {
-    AppMethodBeat.i(259698);
-    Object localObject = new StringBuilder();
-    f localf = h.aHG();
-    p.j(localf, "MMKernel.storage()");
-    localObject = localf.getAccPath() + "music/cover/";
-    AppMethodBeat.o(259698);
-    return localObject;
+    AppMethodBeat.i(271141);
+    String str = s.X(h.baE().mCJ, "music/cover/");
+    AppMethodBeat.o(271141);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.g
  * JD-Core Version:    0.7.0.1
  */

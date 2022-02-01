@@ -1,260 +1,169 @@
 package kotlinx.a.c;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.function.UnaryOperator;
-import kotlin.a.j;
-import kotlin.g.b.a.a;
-import kotlin.g.b.i;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.ai;
+import kotlin.g.b.s;
+import kotlinx.a.b.e;
+import kotlinx.a.f.c;
+import kotlinx.a.g;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/serialization/json/JsonArray;", "Lkotlinx/serialization/json/JsonElement;", "", "content", "(Ljava/util/List;)V", "getContent", "()Ljava/util/List;", "jsonArray", "getJsonArray", "()Lkotlinx/serialization/json/JsonArray;", "size", "", "getSize", "()I", "component1", "contains", "", "element", "containsAll", "elements", "", "copy", "equals", "other", "", "get", "index", "getArray", "getArrayOrNull", "getAs", "J", "(I)Lkotlinx/serialization/json/JsonElement;", "getAsOrNull", "getObject", "Lkotlinx/serialization/json/JsonObject;", "getObjectOrNull", "getPrimitive", "Lkotlinx/serialization/json/JsonPrimitive;", "getPrimitiveOrNull", "hashCode", "indexOf", "isEmpty", "iterator", "", "lastIndexOf", "listIterator", "", "subList", "fromIndex", "toIndex", "toString", "", "Companion", "kotlinx-serialization-runtime"})
-public final class b
-  extends f
-  implements List<f>, a
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lkotlinx/serialization/encoding/AbstractEncoder;", "Lkotlinx/serialization/encoding/Encoder;", "Lkotlinx/serialization/encoding/CompositeEncoder;", "()V", "serializersModule", "Lkotlinx/serialization/modules/SerializersModule;", "getSerializersModule", "()Lkotlinx/serialization/modules/SerializersModule;", "beginStructure", "descriptor", "Lkotlinx/serialization/descriptors/SerialDescriptor;", "typeSerializers", "", "Lkotlinx/serialization/KSerializer;", "(Lkotlinx/serialization/descriptors/SerialDescriptor;[Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/encoding/CompositeEncoder;", "encodeBoolean", "", "value", "", "encodeBooleanElement", "index", "", "encodeByte", "", "encodeByteElement", "encodeChar", "", "encodeCharElement", "encodeDouble", "", "encodeDoubleElement", "encodeElement", "encodeEnum", "enumDescriptor", "encodeFloat", "", "encodeFloatElement", "encodeInt", "encodeIntElement", "encodeLong", "", "encodeLongElement", "encodeNull", "encodeNullableSerializableElement", "T", "", "serializer", "Lkotlinx/serialization/SerializationStrategy;", "(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/SerializationStrategy;Ljava/lang/Object;)V", "encodeSerializableElement", "encodeShort", "", "encodeShortElement", "encodeString", "", "encodeStringElement", "encodeValue", "kotlinx-serialization-runtime"}, k=1, mv={1, 4, 0})
+public abstract class b
+  implements d, f
 {
-  public static final a abCE;
-  private final b abCC;
-  public final List<f> abCD;
-  
-  static
+  private void jq(Object paramObject)
   {
-    AppMethodBeat.i(256805);
-    abCE = new a((byte)0);
-    AppMethodBeat.o(256805);
+    s.u(paramObject, "value");
+    throw ((Throwable)new kotlinx.a.f("Non-serializable " + ai.cz(paramObject.getClass()) + " is not supported by " + ai.cz(getClass()) + " encoder"));
   }
   
-  public b(List<? extends f> paramList)
+  public void BS(long paramLong)
   {
-    super((byte)0);
-    AppMethodBeat.i(256803);
-    this.abCD = paramList;
-    this.abCC = ((b)this);
-    AppMethodBeat.o(256803);
+    jq(Long.valueOf(paramLong));
   }
   
-  public final f aFZ(int paramInt)
+  public void K(char paramChar)
   {
-    AppMethodBeat.i(256810);
-    Object localObject = this.abCD.get(paramInt);
-    p.j(localObject, "get(...)");
-    localObject = (f)localObject;
-    AppMethodBeat.o(256810);
-    return localObject;
+    jq(Character.valueOf(paramChar));
   }
   
-  public final boolean addAll(int paramInt, Collection<? extends f> paramCollection)
+  public void PO(boolean paramBoolean)
   {
-    AppMethodBeat.i(256829);
-    paramCollection = new UnsupportedOperationException("Operation is not supported for read-only collection");
-    AppMethodBeat.o(256829);
-    throw paramCollection;
+    jq(Boolean.valueOf(paramBoolean));
   }
   
-  public final boolean addAll(Collection<? extends f> paramCollection)
+  public final void a(e parame, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(256830);
-    paramCollection = new UnsupportedOperationException("Operation is not supported for read-only collection");
-    AppMethodBeat.o(256830);
-    throw paramCollection;
-  }
-  
-  public final void clear()
-  {
-    AppMethodBeat.i(256832);
-    UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException("Operation is not supported for read-only collection");
-    AppMethodBeat.o(256832);
-    throw localUnsupportedOperationException;
-  }
-  
-  public final boolean contains(Object paramObject)
-  {
-    AppMethodBeat.i(256808);
-    if (!(paramObject instanceof f))
-    {
-      AppMethodBeat.o(256808);
-      return false;
+    s.u(parame, "descriptor");
+    if (c(parame, paramInt1)) {
+      aML(paramInt2);
     }
-    paramObject = (f)paramObject;
-    p.k(paramObject, "element");
-    boolean bool = this.abCD.contains(paramObject);
-    AppMethodBeat.o(256808);
-    return bool;
   }
   
-  public final boolean containsAll(Collection<? extends Object> paramCollection)
+  public final <T> void a(e parame, int paramInt, g<? super T> paramg, T paramT)
   {
-    AppMethodBeat.i(256809);
-    p.k(paramCollection, "elements");
-    boolean bool = this.abCD.containsAll(paramCollection);
-    AppMethodBeat.o(256809);
-    return bool;
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    AppMethodBeat.i(256800);
-    boolean bool = p.h(this.abCD, paramObject);
-    AppMethodBeat.o(256800);
-    return bool;
-  }
-  
-  public final int hashCode()
-  {
-    AppMethodBeat.i(256801);
-    int i = this.abCD.hashCode();
-    AppMethodBeat.o(256801);
-    return i;
-  }
-  
-  public final int indexOf(Object paramObject)
-  {
-    AppMethodBeat.i(256814);
-    if (!(paramObject instanceof f))
-    {
-      AppMethodBeat.o(256814);
-      return -1;
+    s.u(parame, "descriptor");
+    s.u(paramg, "serializer");
+    if (c(parame, paramInt)) {
+      a(paramg, paramT);
     }
-    paramObject = (f)paramObject;
-    p.k(paramObject, "element");
-    int i = this.abCD.indexOf(paramObject);
-    AppMethodBeat.o(256814);
-    return i;
   }
   
-  public final boolean isEmpty()
+  public final void a(e parame, String paramString)
   {
-    AppMethodBeat.i(256817);
-    boolean bool = this.abCD.isEmpty();
-    AppMethodBeat.o(256817);
-    return bool;
-  }
-  
-  public final Iterator<f> iterator()
-  {
-    AppMethodBeat.i(256819);
-    Iterator localIterator = this.abCD.iterator();
-    AppMethodBeat.o(256819);
-    return localIterator;
-  }
-  
-  public final int lastIndexOf(Object paramObject)
-  {
-    AppMethodBeat.i(256821);
-    if (!(paramObject instanceof f))
-    {
-      AppMethodBeat.o(256821);
-      return -1;
+    s.u(parame, "descriptor");
+    s.u(paramString, "value");
+    if (c(parame, 0)) {
+      bJO(paramString);
     }
-    paramObject = (f)paramObject;
-    p.k(paramObject, "element");
-    int i = this.abCD.lastIndexOf(paramObject);
-    AppMethodBeat.o(256821);
-    return i;
   }
   
-  public final ListIterator<f> listIterator()
+  public final <T> void a(e parame, g<? super T> paramg, T paramT)
   {
-    AppMethodBeat.i(256822);
-    ListIterator localListIterator = this.abCD.listIterator();
-    AppMethodBeat.o(256822);
-    return localListIterator;
+    s.u(parame, "descriptor");
+    s.u(paramg, "serializer");
+    if (c(parame, 5)) {
+      b(paramg, paramT);
+    }
   }
   
-  public final ListIterator<f> listIterator(int paramInt)
+  public <T> void a(g<? super T> paramg, T paramT)
   {
-    AppMethodBeat.i(256826);
-    ListIterator localListIterator = this.abCD.listIterator(paramInt);
-    AppMethodBeat.o(256826);
-    return localListIterator;
+    s.u(paramg, "serializer");
+    s.u(paramg, "serializer");
+    paramg.a(this, paramT);
   }
   
-  public final boolean remove(Object paramObject)
+  public void aML(int paramInt)
   {
-    AppMethodBeat.i(256833);
-    paramObject = new UnsupportedOperationException("Operation is not supported for read-only collection");
-    AppMethodBeat.o(256833);
-    throw paramObject;
+    jq(Integer.valueOf(paramInt));
   }
   
-  public final boolean removeAll(Collection<? extends Object> paramCollection)
+  public void al(double paramDouble)
   {
-    AppMethodBeat.i(256834);
-    paramCollection = new UnsupportedOperationException("Operation is not supported for read-only collection");
-    AppMethodBeat.o(256834);
-    throw paramCollection;
+    jq(Double.valueOf(paramDouble));
   }
   
-  public final void replaceAll(UnaryOperator<f> paramUnaryOperator)
+  public final d b(e parame, kotlinx.a.b<?>... paramVarArgs)
   {
-    AppMethodBeat.i(256835);
-    paramUnaryOperator = new UnsupportedOperationException("Operation is not supported for read-only collection");
-    AppMethodBeat.o(256835);
-    throw paramUnaryOperator;
+    s.u(parame, "descriptor");
+    s.u(paramVarArgs, "typeSerializers");
+    return (d)this;
   }
   
-  public final boolean retainAll(Collection<? extends Object> paramCollection)
+  public <T> void b(g<? super T> paramg, T paramT)
   {
-    AppMethodBeat.i(256838);
-    paramCollection = new UnsupportedOperationException("Operation is not supported for read-only collection");
-    AppMethodBeat.o(256838);
-    throw paramCollection;
+    s.u(paramg, "serializer");
+    f.a.a(this, paramg, paramT);
   }
   
-  public final void sort(Comparator<? super f> paramComparator)
+  public void bJO(String paramString)
   {
-    AppMethodBeat.i(256839);
-    paramComparator = new UnsupportedOperationException("Operation is not supported for read-only collection");
-    AppMethodBeat.o(256839);
-    throw paramComparator;
+    s.u(paramString, "value");
+    jq(paramString);
   }
   
-  public final List<f> subList(int paramInt1, int paramInt2)
+  public d c(e parame, kotlinx.a.b<?>... paramVarArgs)
   {
-    AppMethodBeat.i(256828);
-    List localList = this.abCD.subList(paramInt1, paramInt2);
-    AppMethodBeat.o(256828);
-    return localList;
+    s.u(parame, "descriptor");
+    s.u(paramVarArgs, "typeSerializers");
+    return f.a.a(this, parame, paramVarArgs);
   }
   
-  public final Object[] toArray()
+  public boolean c(e parame, int paramInt)
   {
-    AppMethodBeat.i(256846);
-    Object[] arrayOfObject = i.u(this);
-    AppMethodBeat.o(256846);
-    return arrayOfObject;
+    s.u(parame, "descriptor");
+    return true;
   }
   
-  public final <T> T[] toArray(T[] paramArrayOfT)
+  public d d(e parame, int paramInt)
   {
-    AppMethodBeat.i(256847);
-    paramArrayOfT = i.b(this, paramArrayOfT);
-    AppMethodBeat.o(256847);
-    return paramArrayOfT;
+    s.u(parame, "descriptor");
+    return f.a.a(this, parame, paramInt);
   }
   
-  public final String toString()
+  public d e(e parame)
   {
-    AppMethodBeat.i(256799);
-    Object localObject = (Iterable)this.abCD;
-    CharSequence localCharSequence1 = (CharSequence)"[";
-    CharSequence localCharSequence2 = (CharSequence)"]";
-    localObject = j.a((Iterable)localObject, (CharSequence)",", localCharSequence1, localCharSequence2, 0, null, null, 56);
-    AppMethodBeat.o(256799);
-    return localObject;
+    s.u(parame, "descriptor");
+    s.u(parame, "descriptor");
+    return b(parame, new kotlinx.a.b[0]);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/serialization/json/JsonArray$Companion;", "", "()V", "serializer", "Lkotlinx/serialization/KSerializer;", "Lkotlinx/serialization/json/JsonArray;", "kotlinx-serialization-runtime"})
-  public static final class a {}
+  public void eJ(float paramFloat)
+  {
+    jq(Float.valueOf(paramFloat));
+  }
+  
+  public boolean f(e parame)
+  {
+    s.u(parame, "descriptor");
+    s.u(parame, "descriptor");
+    return true;
+  }
+  
+  public void i(short paramShort)
+  {
+    jq(Short.valueOf(paramShort));
+  }
+  
+  public kotlinx.a.f.b kFe()
+  {
+    return c.kFP();
+  }
+  
+  public void kFs()
+  {
+    throw ((Throwable)new kotlinx.a.f("'null' is not supported by default"));
+  }
+  
+  public void q(byte paramByte)
+  {
+    jq(Byte.valueOf(paramByte));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlinx.a.c.b
  * JD-Core Version:    0.7.0.1
  */

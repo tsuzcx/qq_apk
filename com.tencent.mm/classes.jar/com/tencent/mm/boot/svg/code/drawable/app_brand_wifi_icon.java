@@ -64,8 +64,8 @@ public class app_brand_wifi_icon
       ((Path)localObject).lineTo(60.783001F, 22.011F);
       ((Path)localObject).cubicTo(52.577999F, 11.811F, 39.939999F, 5.274F, 25.763F, 5.274F);
       ((Path)localObject).cubicTo(22.662001F, 5.274F, 19.635F, 5.586F, 16.712F, 6.182F);
-      ((Path)localObject).cubicTo(23.271F, 2.291F, 31.311001F, 0.0F, 39.999001F, 0.0F);
-      ((Path)localObject).cubicTo(62.085999F, 0.0F, 79.991997F, 14.804F, 79.991997F, 33.064999F);
+      ((Path)localObject).cubicTo(23.271F, 2.291F, 31.311001F, -0.0F, 39.999001F, -0.0F);
+      ((Path)localObject).cubicTo(62.085999F, -0.0F, 79.991997F, 14.804F, 79.991997F, 33.064999F);
       ((Path)localObject).cubicTo(79.991997F, 51.325001F, 62.085999F, 66.128998F, 39.999001F, 66.128998F);
       ((Path)localObject).close();
       ((Path)localObject).moveTo(25.763F, 54.693001F);
@@ -91,7 +91,7 @@ public class app_brand_wifi_icon
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.app_brand_wifi_icon
  * JD-Core Version:    0.7.0.1
  */

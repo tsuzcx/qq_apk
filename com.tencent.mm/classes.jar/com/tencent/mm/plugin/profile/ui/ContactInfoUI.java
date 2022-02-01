@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.profile.ui;
 
-import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -13,6 +14,7 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLayoutChangeListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
@@ -20,6 +22,7 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.d;
 import com.tencent.mm.R.e;
@@ -27,26 +30,25 @@ import com.tencent.mm.R.f;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.l;
 import com.tencent.mm.R.o;
-import com.tencent.mm.ao.af;
+import com.tencent.mm.am.s;
+import com.tencent.mm.an.af;
 import com.tencent.mm.api.c.b;
-import com.tencent.mm.f.b.a.qe;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.autogen.mmdata.rpt.tx;
 import com.tencent.mm.model.ab;
 import com.tencent.mm.model.az.a;
 import com.tencent.mm.model.az.b;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.model.ca;
+import com.tencent.mm.model.cb;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.service.r;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.appbrand.service.t;
 import com.tencent.mm.plugin.messenger.foundation.a.a.f.a;
 import com.tencent.mm.plugin.profile.ui.tab.ContactWidgetTabBizInfo;
-import com.tencent.mm.plugin.sns.b.p;
 import com.tencent.mm.plugin.story.api.AbsStoryGallery;
 import com.tencent.mm.plugin.story.api.AbsStoryMuteView;
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.pluginsdk.ui.applet.u;
-import com.tencent.mm.protocal.protobuf.aez;
+import com.tencent.mm.plugin.textstatus.a.ac;
+import com.tencent.mm.protocal.protobuf.ahl;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
@@ -60,137 +62,147 @@ import com.tencent.mm.sdk.storage.MStorageEventData;
 import com.tencent.mm.sdk.storage.MStorageEx;
 import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
 import com.tencent.mm.storage.RegionCodeDecoder;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.co;
-import com.tencent.mm.ui.ak;
-import com.tencent.mm.ui.aw;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bs;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.cr;
+import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.base.aa;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.base.w;
-import com.tencent.mm.ui.f.d;
-import com.tencent.mm.ui.statusbar.c.a;
+import com.tencent.mm.ui.bd;
+import com.tencent.mm.ui.bf;
+import com.tencent.mm.ui.component.UIComponent;
+import com.tencent.mm.ui.f.e;
 import com.tencent.mm.ui.widget.listview.PullDownListView;
 import com.tencent.mm.ui.widget.listview.PullDownListView.IPullDownCallback;
 import com.tencent.mm.ui.widget.listview.PullDownListView.a;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
+import java.util.HashSet;
+import java.util.Set;
 
 @com.tencent.mm.kernel.k
 public class ContactInfoUI
   extends MMPreference
-  implements com.tencent.mm.an.i, f.a, com.tencent.mm.plugin.messenger.foundation.a.a.n.a, com.tencent.mm.plugin.story.api.g, com.tencent.mm.plugin.textstatus.a.g, MStorage.IOnStorageChange, MStorageEx.IOnStorageChange
+  implements com.tencent.mm.am.h, f.a, com.tencent.mm.plugin.messenger.foundation.a.a.n.a, com.tencent.mm.plugin.story.api.g, com.tencent.mm.plugin.textstatus.a.i, MStorage.IOnStorageChange, MStorageEx.IOnStorageChange
 {
-  private String BLy;
-  private View Cwk;
-  private c.a Cwl;
-  String GXA;
-  private String GXB;
-  private PullDownListView GXC;
-  private boolean GXD;
-  private AbsStoryMuteView GXE;
-  private boolean GXF;
-  private boolean GXG;
-  private boolean GXH;
-  private boolean GXI;
-  private int GXJ;
-  private com.tencent.mm.plugin.textstatus.a.b GXK;
-  private View.OnClickListener GXL;
-  private PullDownListView.IPullDownCallback GXM;
-  private PullDownListView.IPullDownCallback GXN;
-  private View GXO;
-  private boolean GXP;
-  private ContactWidgetTabBizInfo GXQ;
-  private com.tencent.mm.pluginsdk.c.a GXu;
-  private NormalProfileHeaderPreference GXv;
-  private boolean GXw;
-  private boolean GXx;
-  private byte[] GXy;
-  private boolean GXz;
-  private as contact;
-  private boolean lft;
-  private int mXL;
+  private long AxK;
+  private View Inv;
+  private com.tencent.mm.ui.statusbar.c.a Inw;
+  private boolean MVA;
+  private AbsStoryMuteView MVB;
+  private boolean MVC;
+  private boolean MVD;
+  private boolean MVE;
+  private boolean MVF;
+  private int MVG;
+  private com.tencent.mm.plugin.textstatus.a.b MVH;
+  private View.OnClickListener MVI;
+  private PullDownListView.IPullDownCallback MVJ;
+  private PullDownListView.IPullDownCallback MVK;
+  private View MVL;
+  private boolean MVM;
+  private ContactWidgetTabBizInfo MVN;
+  private String MVO;
+  private long MVP;
+  private View MVQ;
+  private View.OnLayoutChangeListener MVR;
+  Runnable MVS;
+  private com.tencent.mm.pluginsdk.c.a MVr;
+  private NormalProfileHeaderPreference MVs;
+  private boolean MVt;
+  private boolean MVu;
+  private byte[] MVv;
+  private boolean MVw;
+  String MVx;
+  private String MVy;
+  private PullDownListView MVz;
+  private String MoA;
+  private au contact;
+  private boolean nKe;
+  private String pPi;
+  private int pUt;
   private String roomId;
-  private com.tencent.mm.pluginsdk.ui.span.i sCG;
   private com.tencent.mm.ui.base.preference.f screen;
   private AbsStoryGallery storyGallery;
-  private long zUF;
+  private com.tencent.mm.pluginsdk.ui.span.m vIA;
   
   public ContactInfoUI()
   {
     AppMethodBeat.i(26982);
-    this.GXz = false;
-    this.GXA = null;
-    this.GXB = "";
+    this.MVw = false;
+    this.MVx = null;
+    this.MVy = "";
     this.roomId = "";
-    this.GXC = null;
-    this.GXD = false;
+    this.MoA = "";
+    this.MVz = null;
+    this.MVA = false;
     this.storyGallery = null;
-    this.GXE = null;
-    this.GXF = false;
-    this.GXG = false;
-    this.GXH = false;
-    this.GXI = false;
-    this.lft = false;
-    this.GXJ = 0;
-    this.zUF = 0L;
-    this.GXK = null;
-    this.GXL = null;
-    this.GXM = new PullDownListView.IPullDownCallback()
+    this.MVB = null;
+    this.MVC = false;
+    this.MVD = false;
+    this.MVE = false;
+    this.MVF = false;
+    this.nKe = false;
+    this.MVG = 0;
+    this.AxK = 0L;
+    this.MVH = null;
+    this.MVI = null;
+    this.MVJ = new PullDownListView.IPullDownCallback()
     {
-      public final void abo(int paramAnonymousInt)
+      public final void afI(int paramAnonymousInt)
       {
         AppMethodBeat.i(26966);
         if (ContactInfoUI.a(ContactInfoUI.this) != null) {
-          ContactInfoUI.a(ContactInfoUI.this).ahW(paramAnonymousInt);
+          ContactInfoUI.a(ContactInfoUI.this).amX(paramAnonymousInt);
         }
         AppMethodBeat.o(26966);
       }
       
-      public final void abp(int paramAnonymousInt)
+      public final void afJ(int paramAnonymousInt)
       {
         AppMethodBeat.i(26967);
         if (ContactInfoUI.a(ContactInfoUI.this) != null) {
-          ContactInfoUI.a(ContactInfoUI.this).ahX(paramAnonymousInt);
+          ContactInfoUI.a(ContactInfoUI.this).amY(paramAnonymousInt);
         }
         AppMethodBeat.o(26967);
       }
       
-      public final void abq(int paramAnonymousInt) {}
+      public final void afK(int paramAnonymousInt) {}
       
-      public final void dDB()
+      public final void etL()
       {
         AppMethodBeat.i(26962);
         if (ContactInfoUI.a(ContactInfoUI.this) != null) {
-          ContactInfoUI.a(ContactInfoUI.this).gbh();
+          ContactInfoUI.a(ContactInfoUI.this).huA();
         }
         AppMethodBeat.o(26962);
       }
       
-      public final void dDC()
+      public final void etM()
       {
         AppMethodBeat.i(26963);
         if (ContactInfoUI.a(ContactInfoUI.this) != null) {
-          ContactInfoUI.a(ContactInfoUI.this).gbi();
+          ContactInfoUI.a(ContactInfoUI.this).huB();
         }
         AppMethodBeat.o(26963);
       }
       
-      public final void fqe()
+      public final void gBu()
       {
         AppMethodBeat.i(26964);
         Log.i("MicroMsg.ContactInfoUI", "story_cat onMuteIn");
-        ContactInfoUI.d(ContactInfoUI.this).gbo();
+        ContactInfoUI.d(ContactInfoUI.this).huH();
         AppMethodBeat.o(26964);
       }
       
-      public final void fqf()
+      public final void gBv()
       {
         AppMethodBeat.i(26965);
-        ContactInfoUI.d(ContactInfoUI.this).gbp();
+        ContactInfoUI.d(ContactInfoUI.this).huI();
         AppMethodBeat.o(26965);
       }
       
@@ -200,7 +212,7 @@ public class ContactInfoUI
         if (ContactInfoUI.a(ContactInfoUI.this) != null)
         {
           Log.i("MicroMsg.ContactInfoUI", "story_cat onPostClose");
-          ContactInfoUI.a(ContactInfoUI.this).zm(true);
+          ContactInfoUI.a(ContactInfoUI.this).ED(true);
           ContactInfoUI.this.showTitleView();
           ContactInfoUI.c(ContactInfoUI.this);
         }
@@ -213,211 +225,321 @@ public class ContactInfoUI
         if (ContactInfoUI.a(ContactInfoUI.this) != null)
         {
           Log.i("MicroMsg.ContactInfoUI", "story_cat onPostOpen");
-          ContactInfoUI.a(ContactInfoUI.this).aD(paramAnonymousBoolean, true);
+          ContactInfoUI.a(ContactInfoUI.this).ba(paramAnonymousBoolean, true);
           ContactInfoUI.this.hideTitleView();
           ContactInfoUI.b(ContactInfoUI.this);
         }
         AppMethodBeat.o(26960);
       }
     };
-    this.GXN = new PullDownListView.IPullDownCallback()
+    this.MVK = new PullDownListView.IPullDownCallback()
     {
-      public final void abo(int paramAnonymousInt) {}
+      public final void afI(int paramAnonymousInt) {}
       
-      public final void abp(int paramAnonymousInt) {}
+      public final void afJ(int paramAnonymousInt) {}
       
-      public final void abq(int paramAnonymousInt) {}
+      public final void afK(int paramAnonymousInt) {}
       
-      public final void dDB()
+      public final void etL()
       {
-        AppMethodBeat.i(282381);
+        AppMethodBeat.i(305616);
         if (ContactInfoUI.e(ContactInfoUI.this) != null)
         {
-          ContactInfoUI.e(ContactInfoUI.this).dDB();
-          if (ContactInfoUI.g(ContactInfoUI.this) != null)
+          ContactInfoUI.e(ContactInfoUI.this).etL();
+          if (ContactInfoUI.h(ContactInfoUI.this) != null)
           {
-            Object localObject = (NormalProfileHeaderPreference)ContactInfoUI.g(ContactInfoUI.this).byG("contact_profile_header_normal");
+            Object localObject = (NormalProfileHeaderPreference)ContactInfoUI.h(ContactInfoUI.this).bAi("contact_profile_header_normal");
             if (localObject != null)
             {
-              localObject = ((NormalProfileHeaderPreference)localObject).fpU();
+              localObject = ((NormalProfileHeaderPreference)localObject).gBi();
               if (localObject != null) {
-                ((com.tencent.mm.plugin.textstatus.a.e)localObject).dDB();
+                ((com.tencent.mm.plugin.textstatus.a.g)localObject).etL();
               }
             }
           }
         }
-        AppMethodBeat.o(282381);
+        AppMethodBeat.o(305616);
       }
       
-      public final void dDC()
+      public final void etM()
       {
-        AppMethodBeat.i(282383);
+        AppMethodBeat.i(305619);
         if (ContactInfoUI.e(ContactInfoUI.this) != null)
         {
-          ContactInfoUI.e(ContactInfoUI.this).dDC();
-          if (ContactInfoUI.g(ContactInfoUI.this) != null)
+          ContactInfoUI.e(ContactInfoUI.this).etM();
+          if (ContactInfoUI.h(ContactInfoUI.this) != null)
           {
-            Object localObject = (NormalProfileHeaderPreference)ContactInfoUI.g(ContactInfoUI.this).byG("contact_profile_header_normal");
+            Object localObject = (NormalProfileHeaderPreference)ContactInfoUI.h(ContactInfoUI.this).bAi("contact_profile_header_normal");
             if (localObject != null)
             {
-              localObject = ((NormalProfileHeaderPreference)localObject).fpU();
+              localObject = ((NormalProfileHeaderPreference)localObject).gBi();
               if (localObject != null) {
-                ((com.tencent.mm.plugin.textstatus.a.e)localObject).dDC();
+                ((com.tencent.mm.plugin.textstatus.a.g)localObject).etM();
               }
             }
           }
         }
-        AppMethodBeat.o(282383);
+        AppMethodBeat.o(305619);
       }
       
-      public final void fqe()
+      public final void gBu()
       {
-        AppMethodBeat.i(282384);
+        AppMethodBeat.i(305621);
         Log.i("MicroMsg.ContactInfoUI", "story_cat onMuteIn");
         if (ContactInfoUI.d(ContactInfoUI.this) != null) {
-          ContactInfoUI.d(ContactInfoUI.this).gbo();
+          ContactInfoUI.d(ContactInfoUI.this).huH();
         }
-        AppMethodBeat.o(282384);
+        AppMethodBeat.o(305621);
       }
       
-      public final void fqf()
+      public final void gBv()
       {
-        AppMethodBeat.i(282385);
+        AppMethodBeat.i(305623);
         if (ContactInfoUI.d(ContactInfoUI.this) != null) {
-          ContactInfoUI.d(ContactInfoUI.this).gbp();
+          ContactInfoUI.d(ContactInfoUI.this).huI();
         }
-        AppMethodBeat.o(282385);
+        AppMethodBeat.o(305623);
       }
       
       public final void onPostClose()
       {
-        AppMethodBeat.i(282378);
+        AppMethodBeat.i(305615);
         if (ContactInfoUI.e(ContactInfoUI.this) != null) {
           ContactInfoUI.e(ContactInfoUI.this).onPostClose();
         }
-        if (ContactInfoUI.g(ContactInfoUI.this) != null)
+        if (ContactInfoUI.h(ContactInfoUI.this) != null)
         {
-          Object localObject = (NormalProfileHeaderPreference)ContactInfoUI.g(ContactInfoUI.this).byG("contact_profile_header_normal");
+          Object localObject = (NormalProfileHeaderPreference)ContactInfoUI.h(ContactInfoUI.this).bAi("contact_profile_header_normal");
           if (localObject != null)
           {
-            localObject = ((NormalProfileHeaderPreference)localObject).fpU();
+            localObject = ((NormalProfileHeaderPreference)localObject).gBi();
             if (localObject != null) {
-              ((com.tencent.mm.plugin.textstatus.a.e)localObject).onPostClose();
+              ((com.tencent.mm.plugin.textstatus.a.g)localObject).onPostClose();
             }
           }
         }
         ContactInfoUI.this.showTitleView();
-        AppMethodBeat.o(282378);
+        ContactInfoUI.i(ContactInfoUI.this);
+        AppMethodBeat.o(305615);
       }
       
       public final void onPostOpen(boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(282377);
+        AppMethodBeat.i(305611);
         if (ContactInfoUI.e(ContactInfoUI.this) != null) {
           ContactInfoUI.e(ContactInfoUI.this).onPostOpen(paramAnonymousBoolean);
         }
-        com.tencent.mm.plugin.textstatus.a.e locale = ContactInfoUI.f(ContactInfoUI.this);
-        if (locale != null) {
-          locale.onPostOpen(paramAnonymousBoolean);
+        com.tencent.mm.plugin.textstatus.a.g localg = ContactInfoUI.f(ContactInfoUI.this);
+        if (localg != null) {
+          localg.onPostOpen(paramAnonymousBoolean);
         }
         ContactInfoUI.this.hideTitleView();
-        AppMethodBeat.o(282377);
+        ContactInfoUI.g(ContactInfoUI.this);
+        AppMethodBeat.o(305611);
       }
     };
-    this.sCG = new com.tencent.mm.pluginsdk.ui.span.i()
+    this.vIA = new com.tencent.mm.pluginsdk.ui.span.m()
     {
-      public final Object a(u paramAnonymousu)
+      public final Object a(com.tencent.mm.pluginsdk.ui.applet.u paramAnonymousu)
       {
-        AppMethodBeat.i(282654);
+        AppMethodBeat.i(305482);
         switch (paramAnonymousu.type)
         {
         default: 
-          AppMethodBeat.o(282654);
+          AppMethodBeat.o(305482);
           return null;
         }
-        if (ContactInfoUI.h(ContactInfoUI.this) != null)
+        if (ContactInfoUI.j(ContactInfoUI.this) != null)
         {
-          paramAnonymousu = ContactInfoUI.h(ContactInfoUI.this).field_username;
-          AppMethodBeat.o(282654);
+          paramAnonymousu = ContactInfoUI.j(ContactInfoUI.this).field_username;
+          AppMethodBeat.o(305482);
           return paramAnonymousu;
         }
-        AppMethodBeat.o(282654);
+        AppMethodBeat.o(305482);
         return null;
       }
       
-      public final Object b(u paramAnonymousu)
+      public final Object b(com.tencent.mm.pluginsdk.ui.applet.u paramAnonymousu)
       {
-        AppMethodBeat.i(282656);
+        AppMethodBeat.i(305490);
+        String str2;
+        String str1;
+        Object localObject1;
         if (paramAnonymousu.type == 45)
         {
-          String str = new String(Base64.decode(paramAnonymousu.url, 0));
-          paramAnonymousu = new String(Base64.decode(Util.nullAs((String)paramAnonymousu.bv(String.class), ""), 0));
-          Log.d("MicroMsg.ContactInfoUI", "appId:%s,path:%s", new Object[] { str, paramAnonymousu });
-          AppBrandStatObject localAppBrandStatObject = new AppBrandStatObject();
-          localAppBrandStatObject.scene = 1082;
-          if (ContactInfoUI.h(ContactInfoUI.this) != null) {
-            localAppBrandStatObject.fvd = (ContactInfoUI.h(ContactInfoUI.this).field_username + "|2");
-          }
-          ((r)com.tencent.mm.kernel.h.ae(r.class)).a(ContactInfoUI.this.getContext(), null, str, 0, 0, paramAnonymousu, localAppBrandStatObject);
+          str2 = new String(Base64.decode(paramAnonymousu.url, 0));
+          str1 = (String)paramAnonymousu.cf(String.class);
+          paramAnonymousu = "";
+          localObject1 = paramAnonymousu;
         }
-        AppMethodBeat.o(282656);
-        return null;
+        label266:
+        for (;;)
+        {
+          try
+          {
+            Object localObject2 = new com.tencent.mm.ad.i(str1);
+            localObject1 = paramAnonymousu;
+            paramAnonymousu = ((com.tencent.mm.ad.i)localObject2).optString("fullText");
+            localObject1 = paramAnonymousu;
+            str1 = ((com.tencent.mm.ad.i)localObject2).optString("linkText");
+            localObject1 = str1;
+            str1 = "";
+          }
+          catch (com.tencent.mm.ad.g paramAnonymousu)
+          {
+            try
+            {
+              str1 = new String(Base64.decode(Util.nullAs(((com.tencent.mm.ad.i)localObject2).optString("path"), ""), 0));
+              Log.d("MicroMsg.ContactInfoUI", "appId:%s,path:%s", new Object[] { str2, str1 });
+              localObject2 = new AppBrandStatObject();
+              ((AppBrandStatObject)localObject2).scene = 1082;
+              if (ContactInfoUI.j(ContactInfoUI.this) != null)
+              {
+                ((AppBrandStatObject)localObject2).hzx = (ContactInfoUI.j(ContactInfoUI.this).field_username + ":2:" + paramAnonymousu + ":" + (String)localObject1 + ":" + str1);
+                Log.d("MicroMsg.ContactInfoUI", "sceneNote = %s", new Object[] { ((AppBrandStatObject)localObject2).hzx });
+              }
+              ((t)com.tencent.mm.kernel.h.ax(t.class)).a(ContactInfoUI.this.getContext(), null, str2, 0, 0, str1, (AppBrandStatObject)localObject2);
+              AppMethodBeat.o(305490);
+              return null;
+            }
+            catch (com.tencent.mm.ad.g localg)
+            {
+              break label266;
+            }
+            paramAnonymousu = paramAnonymousu;
+            str1 = "";
+            paramAnonymousu = (com.tencent.mm.pluginsdk.ui.applet.u)localObject1;
+            localObject1 = str1;
+          }
+        }
       }
     };
-    this.GXP = false;
-    this.GXQ = null;
+    this.MVM = false;
+    this.MVN = null;
+    this.MVO = "";
+    this.MVP = 0L;
+    this.MVR = new ContactInfoUI.3(this);
+    this.MVS = null;
     AppMethodBeat.o(26982);
   }
   
-  private com.tencent.mm.plugin.textstatus.a.e fpU()
+  private View a(View paramView, a<View> parama)
   {
-    AppMethodBeat.i(272835);
-    if (this.screen != null)
+    AppMethodBeat.i(305524);
+    if (parama.apply(paramView).booleanValue())
     {
-      Object localObject = (NormalProfileHeaderPreference)this.screen.byG("contact_profile_header_normal");
-      if (localObject != null)
+      AppMethodBeat.o(305524);
+      return paramView;
+    }
+    if ((paramView instanceof ViewGroup))
+    {
+      paramView = (ViewGroup)paramView;
+      int j = paramView.getChildCount();
+      int i = 0;
+      while (i < j)
       {
-        localObject = ((NormalProfileHeaderPreference)localObject).fpU();
-        AppMethodBeat.o(272835);
-        return localObject;
+        View localView = a(paramView.getChildAt(i), parama);
+        if (localView != null)
+        {
+          AppMethodBeat.o(305524);
+          return localView;
+        }
+        i += 1;
       }
     }
-    AppMethodBeat.o(272835);
+    AppMethodBeat.o(305524);
     return null;
   }
   
-  private void fqa()
+  private void afH(int paramInt)
+  {
+    AppMethodBeat.i(305525);
+    try
+    {
+      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.MVQ.getLayoutParams();
+      if (localLayoutParams.topMargin != paramInt)
+      {
+        localLayoutParams.topMargin = paramInt;
+        this.MVQ.setLayoutParams(localLayoutParams);
+      }
+      AppMethodBeat.o(305525);
+      return;
+    }
+    finally
+    {
+      Log.printErrStackTrace("MicroMsg.ContactInfoUI", localThrowable, "adjustStatusBgPosition", new Object[0]);
+      AppMethodBeat.o(305525);
+    }
+  }
+  
+  private com.tencent.mm.plugin.textstatus.a.g gBi()
+  {
+    AppMethodBeat.i(305520);
+    if (this.screen != null)
+    {
+      Object localObject = (NormalProfileHeaderPreference)this.screen.bAi("contact_profile_header_normal");
+      if (localObject != null)
+      {
+        localObject = ((NormalProfileHeaderPreference)localObject).gBi();
+        AppMethodBeat.o(305520);
+        return localObject;
+      }
+    }
+    AppMethodBeat.o(305520);
+    return null;
+  }
+  
+  private View gBj()
+  {
+    AppMethodBeat.i(305523);
+    Object localObject = (NormalProfileHeaderPreference)this.screen.bAi("contact_profile_header_normal");
+    if (localObject != null)
+    {
+      if (((NormalProfileHeaderPreference)localObject).KKQ != null)
+      {
+        localObject = ((NormalProfileHeaderPreference.a)((NormalProfileHeaderPreference)localObject).KKQ.getTag()).pKl;
+        AppMethodBeat.o(305523);
+        return localObject;
+      }
+      AppMethodBeat.o(305523);
+      return null;
+    }
+    AppMethodBeat.o(305523);
+    return null;
+  }
+  
+  private void gBp()
   {
     AppMethodBeat.i(26987);
-    if ((this.Cwk == null) || (!com.tencent.mm.ui.statusbar.c.XMC))
+    if ((this.Inv == null) || (!com.tencent.mm.ui.statusbar.c.afCQ))
     {
       AppMethodBeat.o(26987);
       return;
     }
-    com.tencent.mm.ui.statusbar.c localc = com.tencent.mm.ui.statusbar.c.bA(this);
-    localc.b(this.Cwl);
-    c.a local9 = new c.a()
+    com.tencent.mm.ui.statusbar.c localc = com.tencent.mm.ui.statusbar.c.ch(this);
+    localc.b(this.Inw);
+    com.tencent.mm.ui.statusbar.c.a local11 = new com.tencent.mm.ui.statusbar.c.a()
     {
-      public final void BF(int paramAnonymousInt)
+      public final void onStatusBarHeightChange(int paramAnonymousInt)
       {
-        AppMethodBeat.i(272953);
-        if ((ContactInfoUI.i(ContactInfoUI.this)) || (ContactInfoUI.j(ContactInfoUI.this))) {
-          ContactInfoUI.k(ContactInfoUI.this).setPadding(0, paramAnonymousInt, 0, 0);
+        AppMethodBeat.i(305478);
+        if ((ContactInfoUI.k(ContactInfoUI.this)) || (ContactInfoUI.l(ContactInfoUI.this))) {
+          ContactInfoUI.m(ContactInfoUI.this).setPadding(0, paramAnonymousInt, 0, 0);
         }
-        AppMethodBeat.o(272953);
+        AppMethodBeat.o(305478);
       }
     };
-    this.Cwl = local9;
-    localc.a(local9);
+    this.Inw = local11;
+    localc.a(local11);
     getWindow().getDecorView().requestApplyInsets();
-    com.tencent.mm.ui.statusbar.d.e(getWindow());
+    com.tencent.mm.ui.statusbar.d.g(getWindow());
     AppMethodBeat.o(26987);
   }
   
-  private void fqb()
+  private void gBq()
   {
     AppMethodBeat.i(27003);
-    if (com.tencent.mm.compatible.util.d.qV(19))
+    if (com.tencent.mm.compatible.util.d.rb(19))
     {
       getWindow().clearFlags(201327616);
       AppMethodBeat.o(27003);
@@ -427,63 +549,230 @@ public class ContactInfoUI
     AppMethodBeat.o(27003);
   }
   
-  private void fqc()
+  private void gBr()
+  {
+    AppMethodBeat.i(305529);
+    if (this.MVA)
+    {
+      AppMethodBeat.o(305529);
+      return;
+    }
+    if ((this.MVr instanceof ContactWidgetTabBizInfo))
+    {
+      AppMethodBeat.o(305529);
+      return;
+    }
+    if ((this.contact != null) && (au.bwQ(this.contact.field_username)))
+    {
+      AppMethodBeat.o(305529);
+      return;
+    }
+    Object localObject1 = (RelativeLayout)findViewById(R.h.mm_preference_list_content_root);
+    if (localObject1 == null)
+    {
+      AppMethodBeat.o(305529);
+      return;
+    }
+    Log.i("MicroMsg.ContactInfoUI", "setupStory %s stack %s", new Object[] { this, Util.getStack().toString() });
+    this.MVA = true;
+    this.MVz = ((PullDownListView)getListView());
+    this.MVz.setBackground(bd.by(getContext(), R.d.me_alpha_bg));
+    if (this.MVE)
+    {
+      this.MVz.setBackground(null);
+      this.MVz.agiI = this.MVK;
+      localObject2 = new View(this);
+      this.MVQ = ((View)localObject2);
+      ((RelativeLayout)localObject1).addView((View)localObject2, 0);
+      Object localObject3 = (RelativeLayout.LayoutParams)((View)localObject2).getLayoutParams();
+      ((RelativeLayout.LayoutParams)localObject3).width = -1;
+      ((RelativeLayout.LayoutParams)localObject3).height = -1;
+      ((RelativeLayout.LayoutParams)localObject3).topMargin = bf.bf(getContext()).x;
+      ((View)localObject2).setBackgroundColor(getResources().getColor(R.e.BG_0));
+      ao.mX(getContext());
+      final float f = com.tencent.mm.plugin.textstatus.a.a.ki(getContext());
+      this.MVz.setTranslationListener(new PullDownListView.a()
+      {
+        public final void cS(float paramAnonymousFloat)
+        {
+          AppMethodBeat.i(305576);
+          this.val$v.setTranslationY(paramAnonymousFloat);
+          float f1 = paramAnonymousFloat / f;
+          if (paramAnonymousFloat < 0.0F) {
+            f1 = 0.0F;
+          }
+          if (paramAnonymousFloat > f) {
+            f1 = 1.0F;
+          }
+          for (;;)
+          {
+            if (ContactInfoUI.e(ContactInfoUI.this) != null) {
+              ContactInfoUI.e(ContactInfoUI.this).w(f1, paramAnonymousFloat, f);
+            }
+            if (ContactInfoUI.u(ContactInfoUI.this) == null) {
+              ContactInfoUI.a(ContactInfoUI.this, (NormalProfileHeaderPreference)ContactInfoUI.h(ContactInfoUI.this).bAi("contact_profile_header_normal"));
+            }
+            Object localObject;
+            if (ContactInfoUI.u(ContactInfoUI.this) != null)
+            {
+              localObject = ContactInfoUI.u(ContactInfoUI.this);
+              if (((NormalProfileHeaderPreference)localObject).KKQ == null) {
+                break label248;
+              }
+              localObject = ((NormalProfileHeaderPreference.a)((NormalProfileHeaderPreference)localObject).KKQ.getTag()).MYK;
+              if (localObject != null)
+              {
+                float f2 = 1.0F * (1.0F - f1);
+                ((View)localObject).setAlpha(f2);
+                localObject = ContactInfoUI.u(ContactInfoUI.this);
+                if (((NormalProfileHeaderPreference)localObject).KKQ == null) {
+                  break label254;
+                }
+                localObject = ((NormalProfileHeaderPreference.a)((NormalProfileHeaderPreference)localObject).KKQ.getTag()).MYM;
+                label195:
+                if (localObject != null)
+                {
+                  if (f2 > 0.0F) {
+                    break label260;
+                  }
+                  ((View)localObject).setVisibility(0);
+                }
+              }
+            }
+            for (;;)
+            {
+              localObject = ContactInfoUI.u(ContactInfoUI.this).gBi();
+              if (localObject != null) {
+                ((com.tencent.mm.plugin.textstatus.a.g)localObject).w(f1, paramAnonymousFloat, f);
+              }
+              AppMethodBeat.o(305576);
+              return;
+              label248:
+              localObject = null;
+              break;
+              label254:
+              localObject = null;
+              break label195;
+              label260:
+              ((View)localObject).setVisibility(8);
+            }
+          }
+        }
+      });
+      localObject2 = ((com.tencent.mm.plugin.textstatus.a.f)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.textstatus.a.f.class)).getBackPreview(this, new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(305597);
+          if ((ContactInfoUI.v(ContactInfoUI.this) != null) && (!ContactInfoUI.v(ContactInfoUI.this).isVisible)) {
+            ContactInfoUI.v(ContactInfoUI.this).jIs();
+          }
+          AppMethodBeat.o(305597);
+        }
+      }, true);
+      this.MVH = ((com.tencent.mm.plugin.textstatus.a.b)localObject2);
+      localObject3 = getIntent().getStringExtra("Contact_User");
+      if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (localObject2 != null) && (((com.tencent.mm.plugin.textstatus.a.b)localObject2).getView() != null))
+      {
+        ((RelativeLayout)localObject1).addView(((com.tencent.mm.plugin.textstatus.a.b)localObject2).getView(), 0);
+        ((com.tencent.mm.plugin.textstatus.a.b)localObject2).hFo();
+        ((com.tencent.mm.plugin.textstatus.a.b)localObject2).a(this);
+        ((com.tencent.mm.plugin.textstatus.a.b)localObject2).Ds((String)localObject3);
+      }
+      this.MVz.setNavigationBarHeight(bf.bk(getContext()));
+      this.MVI = new ContactInfoUI.6(this);
+      localObject1 = com.tencent.mm.plugin.story.g.h.SqZ;
+      com.tencent.mm.plugin.story.g.h.hxW().jjn = 3L;
+      AppMethodBeat.o(305529);
+      return;
+    }
+    if (!((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.story.api.e.class)).isShowStoryCheck())
+    {
+      AppMethodBeat.o(305529);
+      return;
+    }
+    this.MVz.agiI = this.MVJ;
+    int i = -bf.bf(getContext()).y / 10;
+    Object localObject2 = new RelativeLayout.LayoutParams(-1, bf.bf(getContext()).y);
+    ((RelativeLayout.LayoutParams)localObject2).topMargin = i;
+    ((RelativeLayout.LayoutParams)localObject2).bottomMargin = (-bf.bk(getContext()));
+    if (this.contact.field_username.equals(z.bAM())) {}
+    for (this.storyGallery = ((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.story.api.e.class)).getStoryUIFactory().a(this, com.tencent.mm.plugin.story.api.n.a.Sil, this.roomId);; this.storyGallery = ((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.story.api.e.class)).getStoryUIFactory().a(this, com.tencent.mm.plugin.story.api.n.a.Sim, this.roomId))
+    {
+      this.storyGallery.huE();
+      this.MVz.G(this.storyGallery, com.tencent.mm.cd.a.bs(getContext(), R.f.flT), i);
+      this.storyGallery.setStoryBrowseUIListener(this);
+      this.storyGallery.setDataSeed(this.contact.field_username);
+      this.storyGallery.a(this.MVz);
+      ((RelativeLayout)localObject1).addView(this.storyGallery, 0, (ViewGroup.LayoutParams)localObject2);
+      com.tencent.mm.kernel.h.baF();
+      this.MVB = ((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.story.api.e.class)).getStoryUIFactory().jY(this);
+      localObject2 = new RelativeLayout.LayoutParams(com.tencent.mm.cd.a.bs(getContext(), R.f.flS), com.tencent.mm.cd.a.bs(getContext(), R.f.flS));
+      ((RelativeLayout.LayoutParams)localObject2).addRule(9);
+      ((RelativeLayout.LayoutParams)localObject2).addRule(12);
+      ((RelativeLayout)localObject1).addView(this.MVB, 0, (ViewGroup.LayoutParams)localObject2);
+      this.MVz.setMuteView(this.MVB);
+      break;
+    }
+  }
+  
+  private void gBs()
   {
     AppMethodBeat.i(27006);
-    if (this.lft)
+    if (this.nKe)
     {
-      w.makeText(MMApplicationContext.getContext(), getResources().getString(R.l.eTH), 0).show();
+      aa.makeText(MMApplicationContext.getContext(), getResources().getString(R.l.gWz), 0).show();
       AppMethodBeat.o(27006);
       return;
     }
-    if ((this.GXF) && (this.GXC != null)) {
-      this.GXC.idh();
+    if ((this.MVC) && (this.MVz != null)) {
+      this.MVz.jIt();
     }
     AppMethodBeat.o(27006);
   }
   
-  private void fqd()
+  private void gBt()
   {
     boolean bool2 = true;
     AppMethodBeat.i(27007);
-    Log.i("MicroMsg.ContactInfoUI", "updateUIByStory: %s %s %s %s", new Object[] { Boolean.valueOf(this.GXD), Boolean.valueOf(this.GXF), Boolean.valueOf(this.GXH), Boolean.valueOf(this.GXG) });
+    Log.i("MicroMsg.ContactInfoUI", "updateUIByStory: %s %s %s %s", new Object[] { Boolean.valueOf(this.MVA), Boolean.valueOf(this.MVC), Boolean.valueOf(this.MVE), Boolean.valueOf(this.MVD) });
     label180:
     NormalProfileHeaderPreference localNormalProfileHeaderPreference;
     boolean bool1;
-    label224:
+    label225:
     int i;
-    if ((this.GXF) && (!this.lft))
+    if ((this.MVC) && (!this.nKe))
     {
-      fqa();
+      gBp();
       setActionbarColor(getContext().getResources().getColor(R.e.transparent));
       setMMTitle("");
-      if (this.GXC != null)
+      if (this.MVz != null)
       {
-        this.GXC.setBackground(aw.bf(getContext(), R.d.me_alpha_bg));
-        this.GXC.setSupportOverscroll(true);
+        this.MVz.setBackground(bd.by(getContext(), R.d.me_alpha_bg));
+        this.MVz.setSupportOverscroll(true);
       }
-      if (this.GXO != null) {
-        this.GXO.setOnClickListener(new ContactInfoUI.5(this));
+      if (this.MVL != null) {
+        this.MVL.setOnClickListener(new ContactInfoUI.7(this));
       }
-      if (this.GXC != null)
+      if (this.MVz != null)
       {
-        if (!this.GXG) {
-          break label497;
+        if (!this.MVD) {
+          break label521;
         }
-        this.GXC.setSelector(R.e.BG_0);
+        this.MVz.setSelector(R.e.BG_0);
       }
       if (this.screen != null)
       {
-        localNormalProfileHeaderPreference = (NormalProfileHeaderPreference)this.screen.byG("contact_profile_header_normal");
+        localNormalProfileHeaderPreference = (NormalProfileHeaderPreference)this.screen.bAi("contact_profile_header_normal");
         if (localNormalProfileHeaderPreference != null)
         {
-          if ((!this.GXF) || (this.lft)) {
-            break label510;
+          if ((!this.MVC) || (this.nKe)) {
+            break label534;
           }
           bool1 = true;
-          i = this.GXO.getHeight();
-          if ((!this.GXG) || (this.lft)) {
-            break label515;
+          i = this.MVL.getHeight();
+          if ((!this.MVD) || (this.nKe)) {
+            break label539;
           }
         }
       }
@@ -491,42 +780,28 @@ public class ContactInfoUI
     for (;;)
     {
       localNormalProfileHeaderPreference.b(bool1, i, bool2);
+      setNavigationbarColor(getContext().getResources().getColor(R.e.BG_0));
       AppMethodBeat.o(27007);
       return;
-      if ((this.GXG) && (!this.lft))
+      if ((this.MVD) && (!this.nKe))
       {
-        fqa();
+        gBp();
         setActionbarColor(getContext().getResources().getColor(R.e.transparent));
         setMMTitle("");
-        if (this.GXC != null)
+        if (this.MVz != null)
         {
-          this.GXC.setBackground(null);
-          if ((this.GXK == null) || (!this.GXK.gkG())) {
-            break label399;
+          this.MVz.setBackground(null);
+          if ((this.MVH == null) || (!this.MVH.hFr())) {
+            break label423;
           }
         }
-        label399:
+        label423:
         for (bool1 = true;; bool1 = false)
         {
-          this.GXC.setSupportOverscroll(bool1);
-          this.GXC.ayC(com.tencent.mm.plugin.textstatus.a.a.is(this));
-          if (this.GXO != null) {
-            this.GXO.setOnClickListener(new View.OnClickListener()
-            {
-              public final void onClick(View paramAnonymousView)
-              {
-                AppMethodBeat.i(292352);
-                com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-                localb.bn(paramAnonymousView);
-                com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/ContactInfoUI$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-                Log.i("MicroMsg.ContactInfoUI", "onClick: actionBarClick action_bar_root2");
-                if (TextUtils.equals(ContactInfoUI.this.getIntent().getStringExtra("Contact_User"), com.tencent.mm.plugin.auth.a.a.crN())) {
-                  ((com.tencent.mm.plugin.textstatus.a.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.textstatus.a.d.class)).goUnReadMsgPage(ContactInfoUI.this);
-                }
-                com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/ContactInfoUI$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-                AppMethodBeat.o(292352);
-              }
-            });
+          this.MVz.setSupportOverscroll(bool1);
+          this.MVz.oS(com.tencent.mm.plugin.textstatus.a.a.ki(this), com.tencent.mm.plugin.textstatus.a.a.kk(this)[1]);
+          if (this.MVL != null) {
+            this.MVL.setOnClickListener(new ContactInfoUI.8(this));
           }
           if (getBounceView() == null) {
             break;
@@ -537,158 +812,172 @@ public class ContactInfoUI
       }
       setActionbarColor(getContext().getResources().getColor(R.e.BG_2));
       setMMTitle("");
-      if (this.GXC != null)
+      if (this.MVz != null)
       {
-        this.GXC.setBackground(aw.bf(getContext(), R.d.me_normal_bg));
-        this.GXC.setSupportOverscroll(false);
+        this.MVz.setBackground(bd.by(getContext(), R.d.me_normal_bg));
+        this.MVz.setSupportOverscroll(false);
       }
-      if (this.Cwk != null) {
-        this.Cwk.setPadding(0, 0, 0, 0);
+      if (this.Inv != null) {
+        this.Inv.setPadding(0, 0, 0, 0);
       }
       if (getBounceView() == null) {
         break;
       }
       getBounceView().setBounceEnabled(true);
       break;
-      label497:
-      this.GXC.setSelector(R.e.transparent);
+      label521:
+      this.MVz.setSelector(R.e.transparent);
       break label180;
-      label510:
+      label534:
       bool1 = false;
-      break label224;
-      label515:
+      break label225;
+      label539:
       bool2 = false;
     }
   }
   
-  public final void a(bq parambq)
+  public final void a(bs parambs)
   {
-    AppMethodBeat.i(272849);
-    MMHandlerThread.postToMainThread(new b(this, parambq));
-    AppMethodBeat.o(272849);
+    AppMethodBeat.i(305670);
+    MMHandlerThread.postToMainThread(new c(this, parambs));
+    AppMethodBeat.o(305670);
   }
   
-  public final void a(co paramco)
+  public final void a(cr paramcr)
   {
     AppMethodBeat.i(27001);
-    MMHandlerThread.postToMainThread(new c(this, paramco));
+    MMHandlerThread.postToMainThread(new d(this, paramcr));
     AppMethodBeat.o(27001);
   }
   
   public void finish()
   {
     AppMethodBeat.i(27008);
-    com.tencent.mm.plugin.story.h.h localh = com.tencent.mm.plugin.story.h.h.LOJ;
-    com.tencent.mm.plugin.story.h.h.geE().gQR = 0L;
+    if (this.MVS != null)
+    {
+      this.MVS.run();
+      AppMethodBeat.o(27008);
+      return;
+    }
+    com.tencent.mm.plugin.story.g.h localh = com.tencent.mm.plugin.story.g.h.SqZ;
+    com.tencent.mm.plugin.story.g.h.hxW().jjn = 0L;
     super.finish();
     AppMethodBeat.o(27008);
   }
   
-  public final void fpV()
+  public final void gBk()
   {
     AppMethodBeat.i(26983);
     Log.i("MicroMsg.ContactInfoUI", "story_cat storyUINoStory");
-    this.GXF = false;
-    if ((this.GXC != null) && (!this.GXC.isVisible))
+    this.MVC = false;
+    if ((this.MVz != null) && (!this.MVz.isVisible))
     {
       showTitleView();
-      fqb();
-      this.GXC.idf();
+      gBq();
+      this.MVz.jIr();
     }
-    fqd();
+    gBt();
     AppMethodBeat.o(26983);
   }
   
-  public final void fpW()
+  public final void gBl()
   {
     AppMethodBeat.i(26984);
     Log.i("MicroMsg.ContactInfoUI", "story_cat storyUIHasStory");
-    this.GXF = true;
-    if ((this.GXC != null) && (this.GXC.isVisible)) {
-      fqd();
+    this.MVC = true;
+    if ((this.MVz != null) && (this.MVz.isVisible)) {
+      gBt();
     }
     AppMethodBeat.o(26984);
   }
   
-  public final void fpX()
+  public final void gBm()
   {
     AppMethodBeat.i(26985);
     Log.i("MicroMsg.ContactInfoUI", "story_cat storyUIBackPressed");
-    this.GXC.idf();
+    this.MVz.jIr();
     AppMethodBeat.o(26985);
   }
   
-  public final void fpY()
+  public final void gBn()
   {
-    AppMethodBeat.i(272836);
+    AppMethodBeat.i(305604);
     Log.i("MicroMsg.ContactInfoUI", "statusUINoStatus");
-    this.GXG = false;
-    if ((this.GXC != null) && (!this.GXC.isVisible))
+    this.MVD = false;
+    if ((this.MVz != null) && (!this.MVz.isVisible))
     {
       showTitleView();
-      fqb();
-      this.GXC.idf();
+      gBq();
+      this.MVz.jIr();
     }
-    fqd();
-    AppMethodBeat.o(272836);
+    gBt();
+    AppMethodBeat.o(305604);
   }
   
-  public final void fpZ()
+  public final void gBo()
   {
-    AppMethodBeat.i(272838);
+    AppMethodBeat.i(305608);
     Log.i("MicroMsg.ContactInfoUI", "statusUIHasStatus");
-    this.GXG = true;
-    if ((this.GXC != null) && (this.GXC.isVisible)) {
-      fqd();
+    this.MVD = true;
+    if ((this.MVz != null) && (this.MVz.isVisible)) {
+      gBt();
     }
-    AppMethodBeat.o(272838);
+    AppMethodBeat.o(305608);
+  }
+  
+  public View getBottomView()
+  {
+    AppMethodBeat.i(305640);
+    View localView = super.getBottomView();
+    AppMethodBeat.o(305640);
+    return localView;
   }
   
   public String getIdentString()
   {
     AppMethodBeat.i(26995);
-    if ((this.contact == null) || ((int)this.contact.jxt == 0) || (Util.isNullOrNil(this.contact.field_username)))
+    if ((this.contact == null) || ((int)this.contact.maN == 0) || (Util.isNullOrNil(this.contact.field_username)))
     {
       AppMethodBeat.o(26995);
       return "";
     }
     Log.i("MicroMsg.ContactInfoUI", "getIdentityString %s", new Object[] { this.contact.field_username });
-    if (com.tencent.mm.ao.g.KI(this.contact.field_username))
+    if (com.tencent.mm.an.g.Dn(this.contact.field_username))
     {
       AppMethodBeat.o(26995);
       return "_EnterpriseChat";
     }
-    if (com.tencent.mm.ao.g.UC(this.contact.field_username))
+    if (com.tencent.mm.an.g.MB(this.contact.field_username))
     {
       AppMethodBeat.o(26995);
       return "_EnterpriseFatherBiz";
     }
-    if (com.tencent.mm.ao.g.UB(this.contact.field_username))
+    if (com.tencent.mm.an.g.MA(this.contact.field_username))
     {
       AppMethodBeat.o(26995);
       return "_EnterpriseChildBiz";
     }
-    if (this.contact.hxX())
+    if (this.contact.iZC())
     {
       AppMethodBeat.o(26995);
       return "_bizContact";
     }
-    if (ab.Lj(this.contact.field_username))
+    if (au.bwE(this.contact.field_username))
     {
       AppMethodBeat.o(26995);
       return "_chatroom";
     }
-    if (ab.PY(this.contact.field_username))
+    if (au.bwS(this.contact.field_username))
     {
       AppMethodBeat.o(26995);
       return "_bottle";
     }
-    if (ab.PZ(this.contact.field_username))
+    if (au.bwN(this.contact.field_username))
     {
       AppMethodBeat.o(26995);
       return "_QQ";
     }
-    if (ab.QX(this.contact.field_username))
+    if (ab.IV(this.contact.field_username))
     {
       String str = "_" + this.contact.field_username;
       AppMethodBeat.o(26995);
@@ -700,7 +989,16 @@ public class ContactInfoUI
   
   public int getResourceId()
   {
-    return R.o.eXy;
+    return R.o.haZ;
+  }
+  
+  public Set<Class<? extends UIComponent>> importUIComponents()
+  {
+    AppMethodBeat.i(305593);
+    HashSet localHashSet = new HashSet(super.importUIComponents());
+    localHashSet.add(a.class);
+    AppMethodBeat.o(305593);
+    return localHashSet;
   }
   
   public void initView()
@@ -708,839 +1006,732 @@ public class ContactInfoUI
     AppMethodBeat.i(26996);
     this.screen = getPreferenceScreen();
     this.screen.removeAll();
-    this.BLy = getIntent().getStringExtra("Verify_ticket");
-    this.GXw = getIntent().getBooleanExtra("Chat_Readonly", false);
-    this.GXx = getIntent().getBooleanExtra("User_Verify", false);
+    this.pPi = getIntent().getStringExtra("Verify_ticket");
+    this.MVt = getIntent().getBooleanExtra("Chat_Readonly", false);
+    this.MVu = getIntent().getBooleanExtra("User_Verify", false);
     this.roomId = getIntent().getStringExtra("Contact_ChatRoomId");
+    this.MoA = getIntent().getStringExtra("Contact_RoomNickname");
     String str1 = Util.nullAsNil(getIntent().getStringExtra("Contact_User"));
-    Object localObject5 = Util.nullAsNil(getIntent().getStringExtra("Contact_Alias"));
+    Object localObject4 = Util.nullAsNil(getIntent().getStringExtra("Contact_Alias"));
     Object localObject1 = Util.nullAsNil(getIntent().getStringExtra("Contact_Encryptusername"));
     if (str1.endsWith("@stranger")) {
       localObject1 = str1;
     }
-    bh.beI();
-    this.contact = com.tencent.mm.model.c.bbL().RG(str1);
-    this.mXL = getIntent().getIntExtra("Contact_Scene", 9);
-    if (this.contact != null) {
-      this.contact.VEr = str1;
-    }
-    com.tencent.mm.plugin.profile.b.mIH.a(this.contact);
-    Object localObject6 = getIntent().getStringExtra("Contact_Nick");
-    int j = getIntent().getIntExtra("Contact_Sex", 0);
-    String str4 = getIntent().getStringExtra("Contact_Province");
-    Object localObject7 = getIntent().getStringExtra("Contact_City");
-    String str5 = getIntent().getStringExtra("Contact_Signature");
-    int m = getIntent().getIntExtra("Contact_VUser_Info_Flag", 0);
-    String str6 = getIntent().getStringExtra("Contact_VUser_Info");
-    String str2 = getIntent().getStringExtra("Contact_Distance");
-    int n = getIntent().getIntExtra("Contact_KWeibo_flag", 0);
-    String str7 = getIntent().getStringExtra("Contact_KWeibo");
-    String str8 = getIntent().getStringExtra("Contact_KWeiboNick");
-    String str3 = getIntent().getStringExtra("Contact_KFacebookName");
-    long l = getIntent().getLongExtra("Contact_KFacebookId", 0L);
-    this.GXB = getIntent().getStringExtra("Contact_BrandIconURL");
-    String str9 = getIntent().getStringExtra("Contact_RegionCode");
-    this.GXy = getIntent().getByteArrayExtra("Contact_customInfo");
-    int i1 = getIntent().getIntExtra("Contact_Ext_Flag", 0);
-    boolean bool2 = getIntent().getBooleanExtra("force_get_contact", false);
-    Log.i("MicroMsg.ContactInfoUI", "dkverify forceGetContact:%s  user:%s  roomid:%s, addContactScene: %d", new Object[] { Boolean.valueOf(bool2), str1, this.roomId, Integer.valueOf(this.mXL) });
-    Object localObject2;
-    Object localObject8;
-    label772:
-    label792:
-    int k;
-    int i;
-    label1304:
-    label1361:
-    boolean bool1;
-    if (bool2)
-    {
-      Log.d("MicroMsg.ContactInfoUI", "initView, forceGetContact, user = ".concat(String.valueOf(str1)));
-      if ((this.contact != null) && (com.tencent.mm.contact.d.rk(this.contact.field_type))) {
-        az.a.ltq.aP(str1, this.roomId);
-      }
-    }
-    else
-    {
-      if (((this.contact == null) || ((int)this.contact.jxt == 0)) && (as.bvK(str1)) && (this.mXL != 15))
-      {
-        localObject4 = Util.nullAsNil(getIntent().getStringExtra(f.d.VRW));
-        localObject2 = localObject4;
-        if (Util.isNullOrNil((String)localObject4)) {
-          localObject2 = this.BLy;
-        }
-        com.tencent.mm.kernel.h.aHF().kcd.a(new com.tencent.mm.openim.b.h(str1, Util.nullAsNil(this.roomId), (String)localObject2), 0);
-      }
-      if ((this.contact != null) && ((int)this.contact.jxt > 0) && ((!ab.QY(this.contact.field_username)) || ((as.bvJ(this.contact.field_username)) && (!ab.Qk(this.contact.field_username)))))
-      {
-        if ((!this.contact.hyb()) || (!as.bvK(this.contact.field_username))) {
-          break label2031;
-        }
-        localObject4 = Util.nullAsNil(getIntent().getStringExtra(f.d.VRW));
-        localObject2 = localObject4;
-        if (Util.isNullOrNil((String)localObject4)) {
-          localObject2 = this.BLy;
-        }
-        localObject8 = com.tencent.mm.kernel.h.aHF().kcd;
-        String str10 = this.contact.field_username;
-        if (!com.tencent.mm.contact.d.rk(this.contact.field_type)) {
-          break label2019;
-        }
-        localObject4 = "";
-        ((com.tencent.mm.an.t)localObject8).a(new com.tencent.mm.openim.b.h(str10, (String)localObject4, (String)localObject2), 0);
-      }
-      getIntent().getIntExtra("Contact_verify_Scene", 9);
-      getIntent().getIntExtra("key_add_contact_match_type", 0);
-      localObject2 = getIntent().getStringExtra("key_add_contact_openim_appid");
-      k = getIntent().getIntExtra("key_add_contact_custom_detail_visible", 0);
-      localObject4 = getIntent().getStringExtra("key_add_contact_custom_detail");
-      getIntent().getStringExtra("key_add_contact_desc_wording_id");
-      getIntent().getStringExtra("key_add_contact_desc_icon");
-      if ((this.contact != null) && ((int)this.contact.jxt != 0) && (Util.nullAsNil(this.contact.field_username).length() > 0)) {
-        break label2272;
-      }
-      this.contact = new as();
-      this.contact.setUsername(str1);
-      this.contact.Iq((String)localObject5);
-      this.contact.setNickname((String)localObject6);
-      this.contact.It(getIntent().getStringExtra("Contact_PyInitial"));
-      this.contact.Iu(getIntent().getStringExtra("Contact_QuanPin"));
-      this.contact.pw(j);
-      this.contact.IK(str4);
-      this.contact.IL((String)localObject7);
-      this.contact.IJ(str5);
-      this.contact.ps(m);
-      this.contact.IO(str6);
-      this.contact.IM(str2);
-      this.contact.IN(str7);
-      this.contact.pr(n);
-      this.contact.Iv(str8);
-      this.contact.Ey(l);
-      this.contact.IE(str3);
-      this.contact.IP(str9);
-      this.contact.pE(i1);
-      if ((!Util.isNullOrNil(this.GXA)) && (this.mXL == 15))
-      {
-        bh.beI();
-        localObject5 = com.tencent.mm.model.c.bbM().aPj(str1);
-        localObject6 = new co(str1);
-        ((co)localObject6).field_conRemark = ((co)localObject5).field_conRemark;
-        ((co)localObject6).field_conDescription = ((co)localObject5).field_conDescription;
-        ((co)localObject6).field_contactLabels = ((co)localObject5).field_contactLabels;
-        ((co)localObject6).field_conPhone = this.GXA;
-        bh.beI();
-        com.tencent.mm.model.c.bbM().replace((IAutoDBItem)localObject6);
-        this.GXA = null;
-      }
-      this.contact.IY((String)localObject4);
-      this.contact.pF(k);
-      this.contact.IB((String)localObject2);
-      if ((as.bvK(this.contact.field_username)) && ((this.mXL == 30) || (this.mXL == 45) || (this.mXL == 17)))
-      {
-        localObject2 = com.tencent.mm.plugin.report.service.h.IzE;
-        localObject4 = this.contact.field_openImAppid;
-        if (this.mXL != 17) {
-          break label2893;
-        }
-        i = 2;
-        ((com.tencent.mm.plugin.report.service.h)localObject2).a(15320, new Object[] { localObject4, Integer.valueOf(i) });
-      }
-      if (!Util.isNullOrNil((String)localObject1)) {
-        this.contact.Iy((String)localObject1);
-      }
-      if (this.contact != null) {
-        break label2898;
-      }
-      Log.e("MicroMsg.ContactInfoUI", "contact = null");
-      getIntent().putExtra("Contact_User", this.contact.field_username);
-      if ((!bool2) && ((int)this.contact.jxt <= 0) && (this.contact.hxX()) && ((this.mXL == 17) || (this.mXL == 41)))
-      {
-        Log.d("MicroMsg.ContactInfoUI", "come from card, getContact %s", new Object[] { this.contact.field_username });
-        az.a.ltq.aP(this.contact.field_username, "");
-        com.tencent.mm.am.d.TA(this.contact.field_username);
-      }
-      if (this.contact.hDq != null) {
-        break label3008;
-      }
-      bool1 = true;
-      label1486:
-      if (this.contact.hDq != null) {
-        break label3014;
-      }
-      i = 0;
-      label1498:
-      if (this.contact.hDq != null) {
-        break label3028;
-      }
-    }
-    label2061:
-    label2893:
-    label2898:
-    label3028:
-    for (localObject1 = "";; localObject1 = Util.secPrint(this.contact.hDq))
-    {
-      Log.i("MicroMsg.ContactInfoUI", "contact.getRemarkDesc() (%s, %s, %s)", new Object[] { Boolean.valueOf(bool1), Integer.valueOf(i), localObject1 });
-      if ((!bool2) && ((int)this.contact.jxt <= 0) && (this.mXL == 96))
-      {
-        Log.i("MicroMsg.ContactInfoUI", "come from chatroom accessverify, getContact %s", new Object[] { this.contact.field_username });
-        az.a.ltq.h(this.contact.field_username, 1, getIntent().getStringExtra("key_add_contact_verify_ticket"));
-        com.tencent.mm.am.d.aH(this.contact.field_username, 3);
-      }
-      if (this.contact.field_username.equals(z.bcZ()))
-      {
-        bh.beI();
-        l = Util.getLong((String)com.tencent.mm.model.c.aHp().b(65825, null), 0L);
-        if (l > 0L)
-        {
-          this.contact.Ey(l);
-          localObject1 = this.contact;
-          bh.beI();
-          ((as)localObject1).IE((String)com.tencent.mm.model.c.aHp().b(65826, null));
-        }
-        localObject1 = this.contact;
-        bh.beI();
-        ((as)localObject1).IS((String)com.tencent.mm.model.c.aHp().b(286721, null));
-        localObject1 = this.contact;
-        bh.beI();
-        ((as)localObject1).IT((String)com.tencent.mm.model.c.aHp().b(286722, null));
-        localObject1 = this.contact;
-        bh.beI();
-        ((as)localObject1).IU((String)com.tencent.mm.model.c.aHp().b(286723, null));
-      }
-      if ((this.contact.field_username != null) && (this.contact.field_username.equals(as.bvW(z.bcZ()))))
-      {
-        localObject1 = ca.bfn();
-        localObject2 = Util.nullAsNil(((ca)localObject1).getProvince());
-        localObject4 = Util.nullAsNil(((ca)localObject1).getCity());
-        if (!Util.isNullOrNil((String)localObject2)) {
-          this.contact.IK((String)localObject2);
-        }
-        if (!Util.isNullOrNil((String)localObject4)) {
-          this.contact.IL((String)localObject4);
-        }
-        if (!Util.isNullOrNil(((ca)localObject1).countryCode)) {
-          this.contact.IP(RegionCodeDecoder.bl(((ca)localObject1).countryCode, ((ca)localObject1).provinceCode, ((ca)localObject1).cityCode));
-        }
-        i = Util.nullAs(Integer.valueOf(((ca)localObject1).sex), 0);
-        localObject1 = Util.nullAsNil(((ca)localObject1).signature);
-        this.contact.pw(i);
-        this.contact.IJ((String)localObject1);
-      }
-      if (!Util.isNullOrNil(this.contact.field_username)) {
-        break label3043;
-      }
-      Log.e("MicroMsg.ContactInfoUI", "username is null %s", new Object[] { str1 });
-      finish();
-      AppMethodBeat.o(26996);
-      return;
-      az.a.ltq.aP(str1, "");
-      break;
-      label2019:
-      localObject4 = Util.nullAsNil(this.roomId);
-      break label772;
-      label2031:
-      localObject2 = com.tencent.mm.ao.g.gu(this.contact.field_username);
-      if ((this.contact.hxX()) && (com.tencent.mm.ao.a.biP()))
-      {
-        i = 1;
-        if ((localObject2 != null) && ((!((com.tencent.mm.api.c)localObject2).YR()) || (i != 0))) {
-          break label2168;
-        }
-        Log.d("MicroMsg.ContactInfoUI", "update contact, verifyFlag %d.", new Object[] { Integer.valueOf(m) });
-        localObject4 = az.a.ltq;
-        localObject8 = this.contact.field_username;
-        if (!com.tencent.mm.contact.d.rk(this.contact.field_type)) {
-          break label2159;
-        }
-      }
-      label2159:
-      for (localObject2 = "";; localObject2 = this.roomId)
-      {
-        ((az.b)localObject4).aP((String)localObject8, (String)localObject2);
-        com.tencent.mm.am.d.TA(this.contact.field_username);
-        break;
-        i = 0;
-        break label2061;
-      }
-      label2168:
-      if ((!this.contact.hyb()) || (i != 0)) {
-        break label792;
-      }
-      Log.d("MicroMsg.ContactInfoUI", "update contact, last check time=%d", new Object[] { Integer.valueOf(this.contact.hDo) });
-      localObject4 = az.a.ltq;
-      localObject8 = this.contact.field_username;
-      if (com.tencent.mm.contact.d.rk(this.contact.field_type)) {}
-      for (localObject2 = "";; localObject2 = this.roomId)
-      {
-        ((az.b)localObject4).aP((String)localObject8, (String)localObject2);
-        com.tencent.mm.am.d.TA(this.contact.field_username);
-        break;
-      }
-      label2272:
-      if (this.contact.sex == 0) {
-        this.contact.pw(j);
-      }
-      if ((str4 != null) && (!str4.equals(""))) {
-        this.contact.IK(str4);
-      }
-      if ((localObject7 != null) && (!((String)localObject7).equals(""))) {
-        this.contact.IL((String)localObject7);
-      }
-      if ((str9 != null) && (!str9.equals(""))) {
-        this.contact.IP(str9);
-      }
-      if ((Util.isNullOrNil(this.contact.signature)) && (str5 != null) && (!str5.equals(""))) {
-        this.contact.IJ(str5);
-      }
-      if (m != 0) {
-        this.contact.ps(m);
-      }
-      if ((Util.isNullOrNil(this.contact.verifyInfo)) && (str6 != null) && (!str6.equals(""))) {
-        this.contact.IO(str6);
-      }
-      if ((Util.isNullOrNil(this.contact.field_nickname)) && (localObject6 != null) && (!((String)localObject6).equals(""))) {
-        this.contact.setNickname((String)localObject6);
-      }
-      Log.i("MicroMsg.ContactInfoUI", "searchMobilePhone:%s", new Object[] { Util.nullAsNil(this.GXA) });
-      if ((!Util.isNullOrNil(this.GXA)) && (this.mXL == 15))
-      {
-        j = 1;
-        str4 = this.contact.hDw;
-        i = j;
-        if (str4 != null)
-        {
-          localObject7 = com.tencent.mm.contact.a.e(this.contact);
-          i = j;
-          if (localObject7 != null)
-          {
-            m = localObject7.length;
-            j = 0;
-          }
-        }
-      }
-      for (;;)
-      {
-        i = 1;
-        if (j < m)
-        {
-          if (localObject7[j].equals(this.GXA)) {
-            i = 0;
-          }
-        }
-        else
-        {
-          if (i != 0)
-          {
-            this.contact.IW(str4 + this.GXA + com.tencent.mm.contact.a.d(this.contact));
-            this.GXA = null;
-          }
-          Log.i("MicroMsg.ContactInfoUI", "contact PhoneList:%s", new Object[] { Util.nullAsNil(this.contact.hDw) });
-          this.contact.setSource(15);
-          this.contact.IM(str2);
-          this.contact.Ey(l);
-          this.contact.IE(str3);
-          if (!com.tencent.mm.contact.d.rk(this.contact.field_type))
-          {
-            if (!Util.isNullOrNil((String)localObject5)) {
-              this.contact.Iq((String)localObject5);
-            }
-            if (!Util.isNullOrNil((String)localObject6)) {
-              this.contact.setNickname((String)localObject6);
-            }
-            localObject5 = getIntent().getStringExtra("Contact_PyInitial");
-            if (!Util.isNullOrNil((String)localObject5)) {
-              this.contact.It((String)localObject5);
-            }
-            localObject5 = getIntent().getStringExtra("Contact_QuanPin");
-            if (!Util.isNullOrNil((String)localObject5)) {
-              this.contact.Iu((String)localObject5);
-            }
-          }
-          if ((!com.tencent.mm.contact.d.rk(this.contact.field_type)) && (!Util.isNullOrNil((String)localObject4))) {
-            this.contact.IY((String)localObject4);
-          }
-          if ((!com.tencent.mm.contact.d.rk(this.contact.field_type)) && (k != 0)) {
-            this.contact.pF(k);
-          }
-          if (Util.isNullOrNil((String)localObject2)) {
-            break;
-          }
-          this.contact.IB((String)localObject2);
-          break;
-        }
-        j += 1;
-      }
-      i = 1;
-      break label1304;
-      if (!Util.isNullOrNil((String)localObject1))
-      {
-        bh.beI();
-        localObject1 = com.tencent.mm.model.c.bbM().aPj((String)localObject1);
-        if ((localObject1 != null) && (!Util.isNullOrNil(((co)localObject1).field_encryptUsername)))
-        {
-          this.contact.Ir(((co)localObject1).field_conRemark);
-          break label1361;
-        }
-      }
-      if (Util.isNullOrNil(str1)) {
-        break label1361;
-      }
-      bh.beI();
-      localObject1 = com.tencent.mm.model.c.bbM().aPj(str1);
-      if ((localObject1 == null) || (Util.isNullOrNil(((co)localObject1).field_encryptUsername))) {
-        break label1361;
-      }
-      this.contact.Ir(((co)localObject1).field_conRemark);
-      break label1361;
-      bool1 = false;
-      break label1486;
-      i = this.contact.hDq.length();
-      break label1498;
-    }
-    label3008:
-    label3014:
-    label3043:
-    setMMTitle("");
-    Object localObject4 = this.GXB;
-    if (ab.Qc(this.contact.field_username))
-    {
-      this.GXu = ((com.tencent.mm.plugin.wxpaysdk.api.c)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.wxpaysdk.api.c.class)).iO(this);
-      localObject1 = new qe();
-      ((qe)localObject1).hal = 2L;
-      ((qe)localObject1).bpa();
-      if (this.GXu != null)
-      {
-        this.GXu.a(this.screen, this.contact, this.GXw, this.mXL);
-        localObject2 = com.tencent.mm.plugin.account.b.getAddrUploadStg().aax(this.contact.field_username);
-        localObject1 = "";
-        if (localObject2 != null) {
-          localObject1 = Util.nullAsNil(((com.tencent.mm.plugin.account.friend.a.a)localObject2).bxY()).replace(" ", "");
-        }
-        if ((!this.GXP) && (com.tencent.mm.contact.d.rk(this.contact.field_type)) && ((this.GXu instanceof l)))
-        {
-          j = com.tencent.mm.contact.a.f(this.contact);
-          if (!Util.isNullOrNil((String)localObject1)) {
-            break label5455;
-          }
-          i = 0;
-          label3233:
-          j = i + j;
-          localObject2 = com.tencent.mm.plugin.report.service.h.IzE;
-          localObject4 = this.contact.field_username;
-          if (!Util.isNullOrNil((String)localObject1)) {
-            break label5460;
-          }
-          i = 0;
-          label3261:
-          if (j < 5) {
-            break label5465;
-          }
-          j = 5;
-        }
-      }
-    }
-    label4419:
-    label5455:
-    label5460:
-    label5465:
     for (;;)
     {
-      ((com.tencent.mm.plugin.report.service.h)localObject2).a(12040, new Object[] { localObject4, Integer.valueOf(1), Integer.valueOf(i), Integer.valueOf(j) });
-      this.GXP = true;
-      if ((!(this.GXu instanceof l)) && (!(this.GXu instanceof c)) && (!(this.GXu instanceof ContactWidgetTabBizInfo)))
+      bh.bCz();
+      this.contact = com.tencent.mm.model.c.bzA().JE(str1);
+      this.pUt = getIntent().getIntExtra("Contact_Scene", 9);
+      if (this.contact != null) {
+        this.contact.adie = str1;
+      }
+      com.tencent.mm.plugin.profile.b.pFo.a(this.contact);
+      Object localObject5 = getIntent().getStringExtra("Contact_Nick");
+      int j = getIntent().getIntExtra("Contact_Sex", 0);
+      String str4 = getIntent().getStringExtra("Contact_Province");
+      Object localObject6 = getIntent().getStringExtra("Contact_City");
+      String str5 = getIntent().getStringExtra("Contact_Signature");
+      int m = getIntent().getIntExtra("Contact_VUser_Info_Flag", 0);
+      String str6 = getIntent().getStringExtra("Contact_VUser_Info");
+      String str2 = getIntent().getStringExtra("Contact_Distance");
+      int n = getIntent().getIntExtra("Contact_KWeibo_flag", 0);
+      String str7 = getIntent().getStringExtra("Contact_KWeibo");
+      String str8 = getIntent().getStringExtra("Contact_KWeiboNick");
+      String str3 = getIntent().getStringExtra("Contact_KFacebookName");
+      long l = getIntent().getLongExtra("Contact_KFacebookId", 0L);
+      this.MVy = getIntent().getStringExtra("Contact_BrandIconURL");
+      String str9 = getIntent().getStringExtra("Contact_RegionCode");
+      this.MVv = getIntent().getByteArrayExtra("Contact_customInfo");
+      int i1 = getIntent().getIntExtra("Contact_Ext_Flag", 0);
+      boolean bool2 = getIntent().getBooleanExtra("force_get_contact", false);
+      Log.i("MicroMsg.ContactInfoUI", "dkverify forceGetContact:%s  user:%s  roomid:%s, addContactScene: %d", new Object[] { Boolean.valueOf(bool2), str1, this.roomId, Integer.valueOf(this.pUt) });
+      Object localObject2;
+      Object localObject7;
+      label786:
+      label806:
+      int k;
+      int i;
+      label1316:
+      label1373:
+      boolean bool1;
+      if (bool2)
       {
-        bh.beI();
-        localObject1 = (String)com.tencent.mm.model.c.aHp().get(ar.a.Vqe, "");
-        if (((String)localObject1).contains(this.contact.field_username))
-        {
-          localObject1 = ((String)localObject1).replaceAll(this.contact.field_username + ",*", "");
-          bh.beI();
-          com.tencent.mm.model.c.aHp().set(ar.a.Vqe, localObject1);
-          Log.i("MicroMsg.ContactInfoUI", "mark plugin read, userName:%s, newVal:%s", new Object[] { this.contact.field_username, localObject1 });
-          if (Util.isNullOrNil((String)localObject1)) {
-            com.tencent.mm.aa.c.aFn().D(262158, false);
-          }
+        Log.d("MicroMsg.ContactInfoUI", "initView, forceGetContact, user = ".concat(String.valueOf(str1)));
+        if ((this.contact != null) && (com.tencent.mm.contact.d.rs(this.contact.field_type))) {
+          az.a.okP.aZ(str1, this.roomId);
         }
       }
-      if (this.screen != null)
+      else
       {
-        this.GXv = ((NormalProfileHeaderPreference)this.screen.byG("contact_profile_header_normal"));
-        if (this.GXv != null) {
-          this.GXv.b(this.GXF, this.GXO.getHeight(), this.GXG);
+        if (((this.contact == null) || ((int)this.contact.maN == 0)) && (au.bwO(str1)) && (this.pUt != 15))
+        {
+          localObject3 = Util.nullAsNil(getIntent().getStringExtra(f.e.adwe));
+          localObject2 = localObject3;
+          if (Util.isNullOrNil((String)localObject3)) {
+            localObject2 = this.pPi;
+          }
+          com.tencent.mm.kernel.h.baD().mCm.a(new com.tencent.mm.openim.model.j(str1, Util.nullAsNil(this.roomId), (String)localObject2), 0);
+        }
+        if ((this.contact != null) && ((int)this.contact.maN > 0) && ((!ab.IW(this.contact.field_username)) || ((au.bwN(this.contact.field_username)) && (!au.bxa(this.contact.field_username)))))
+        {
+          if ((!this.contact.iZI()) || (!au.bwO(this.contact.field_username))) {
+            break label2043;
+          }
+          localObject3 = Util.nullAsNil(getIntent().getStringExtra(f.e.adwe));
+          localObject2 = localObject3;
+          if (Util.isNullOrNil((String)localObject3)) {
+            localObject2 = this.pPi;
+          }
+          localObject7 = com.tencent.mm.kernel.h.baD().mCm;
+          String str10 = this.contact.field_username;
+          if (!com.tencent.mm.contact.d.rs(this.contact.field_type)) {
+            break label2031;
+          }
+          localObject3 = "";
+          ((s)localObject7).a(new com.tencent.mm.openim.model.j(str10, (String)localObject3, (String)localObject2), 0);
+        }
+        getIntent().getIntExtra("Contact_verify_Scene", 9);
+        getIntent().getIntExtra("key_add_contact_match_type", 0);
+        localObject2 = getIntent().getStringExtra("key_add_contact_openim_appid");
+        k = getIntent().getIntExtra("key_add_contact_custom_detail_visible", 0);
+        localObject3 = getIntent().getStringExtra("key_add_contact_custom_detail");
+        getIntent().getStringExtra("key_add_contact_desc_wording_id");
+        getIntent().getStringExtra("key_add_contact_desc_icon");
+        if ((this.contact != null) && ((int)this.contact.maN != 0) && (Util.nullAsNil(this.contact.field_username).length() > 0)) {
+          break label2392;
+        }
+        this.contact = new au();
+        this.contact.setUsername(str1);
+        this.contact.AV((String)localObject4);
+        this.contact.setNickname((String)localObject5);
+        this.contact.AY(getIntent().getStringExtra("Contact_PyInitial"));
+        this.contact.AZ(getIntent().getStringExtra("Contact_QuanPin"));
+        this.contact.pv(j);
+        this.contact.Bp(str4);
+        this.contact.Bq((String)localObject6);
+        this.contact.Bo(str5);
+        this.contact.pr(m);
+        this.contact.Bt(str6);
+        this.contact.Br(str2);
+        this.contact.Bs(str7);
+        this.contact.pq(n);
+        this.contact.Ba(str8);
+        this.contact.gO(l);
+        this.contact.Bj(str3);
+        this.contact.Bu(str9);
+        this.contact.pD(i1);
+        if ((!Util.isNullOrNil(this.MVx)) && (this.pUt == 15))
+        {
+          bh.bCz();
+          localObject4 = com.tencent.mm.model.c.bzB().aMi(str1);
+          localObject5 = new cr(str1);
+          ((cr)localObject5).field_conRemark = ((cr)localObject4).field_conRemark;
+          ((cr)localObject5).field_conDescription = ((cr)localObject4).field_conDescription;
+          ((cr)localObject5).field_contactLabels = ((cr)localObject4).field_contactLabels;
+          ((cr)localObject5).field_conPhone = this.MVx;
+          bh.bCz();
+          com.tencent.mm.model.c.bzB().replace((IAutoDBItem)localObject5);
+          this.MVx = null;
+        }
+        this.contact.BD((String)localObject3);
+        this.contact.pE(k);
+        this.contact.Bg((String)localObject2);
+        if ((au.bwO(this.contact.field_username)) && ((this.pUt == 30) || (this.pUt == 45) || (this.pUt == 17)))
+        {
+          localObject2 = com.tencent.mm.plugin.report.service.h.OAn;
+          localObject3 = this.contact.field_openImAppid;
+          if (this.pUt != 17) {
+            break label3011;
+          }
+          i = 2;
+          ((com.tencent.mm.plugin.report.service.h)localObject2).b(15320, new Object[] { localObject3, Integer.valueOf(i) });
+        }
+        if (!Util.isNullOrNil((String)localObject1)) {
+          this.contact.Bd((String)localObject1);
+        }
+        if (this.contact != null) {
+          break label3016;
+        }
+        Log.e("MicroMsg.ContactInfoUI", "contact = null");
+        getIntent().putExtra("Contact_User", this.contact.field_username);
+        if ((!bool2) && ((int)this.contact.maN <= 0) && (this.contact.iZC()) && ((this.pUt == 17) || (this.pUt == 41)))
+        {
+          Log.d("MicroMsg.ContactInfoUI", "come from card, getContact %s", new Object[] { this.contact.field_username });
+          az.a.okP.aZ(this.contact.field_username, "");
+          com.tencent.mm.modelavatar.d.LA(this.contact.field_username);
+        }
+        if (this.contact.kal != null) {
+          break label3126;
+        }
+        bool1 = true;
+        label1498:
+        if (this.contact.kal != null) {
+          break label3132;
+        }
+        i = 0;
+        label1510:
+        if (this.contact.kal != null) {
+          break label3146;
         }
       }
-      setBackBtn(new MenuItem.OnMenuItemClickListener()
+      label2181:
+      label3011:
+      label3016:
+      label3146:
+      for (localObject1 = "";; localObject1 = Util.secPrint(this.contact.kal))
       {
-        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+        Log.i("MicroMsg.ContactInfoUI", "contact.getRemarkDesc() (%s, %s, %s)", new Object[] { Boolean.valueOf(bool1), Integer.valueOf(i), localObject1 });
+        if ((!bool2) && ((int)this.contact.maN <= 0) && (this.pUt == 96))
         {
-          AppMethodBeat.i(224789);
-          if (((ab.QB(ContactInfoUI.h(ContactInfoUI.this).field_username)) && (!z.bdz())) || ((ab.Qt(ContactInfoUI.h(ContactInfoUI.this).field_username)) && (!z.bdv())) || ((ab.Qv(ContactInfoUI.h(ContactInfoUI.this).field_username)) && (!z.bdF())) || ((ab.Qp(ContactInfoUI.h(ContactInfoUI.this).field_username)) && (!z.bdJ())))
-          {
-            paramAnonymousMenuItem = new Intent();
-            paramAnonymousMenuItem.addFlags(67108864);
-            com.tencent.mm.plugin.profile.b.mIG.n(paramAnonymousMenuItem, ContactInfoUI.this);
-          }
-          ContactInfoUI.this.finish();
-          com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.c(ContactInfoUI.h(ContactInfoUI.this).field_username, 1501, ContactInfoUI.l(ContactInfoUI.this), ContactInfoUI.m(ContactInfoUI.this));
-          AppMethodBeat.o(224789);
-          return true;
+          Log.i("MicroMsg.ContactInfoUI", "come from chatroom accessverify, getContact %s", new Object[] { this.contact.field_username });
+          az.a.okP.j(this.contact.field_username, 1, getIntent().getStringExtra("key_add_contact_verify_ticket"));
+          com.tencent.mm.modelavatar.d.aS(this.contact.field_username, 3);
         }
-      });
-      com.tencent.mm.am.q.bhR().Rv(this.contact.field_username);
-      if (((!ab.QB(this.contact.field_username)) || (!z.bdz())) && ((!ab.Qt(this.contact.field_username)) || (!z.bdv())) && ((!ab.Qv(this.contact.field_username)) || (!z.bdF())) && ((!ab.Qp(this.contact.field_username)) || (!z.bdJ()))) {
-        break label5468;
-      }
-      this.GXz = true;
-      AppMethodBeat.o(26996);
-      return;
-      if (ab.Qd(this.contact.field_username))
-      {
-        this.GXu = ((com.tencent.mm.plugin.wxpaysdk.api.c)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.wxpaysdk.api.c.class)).iQ(this);
-        break;
-      }
-      if (ab.Qe(this.contact.field_username))
-      {
-        this.GXu = ((com.tencent.mm.plugin.wxpaysdk.api.c)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.wxpaysdk.api.c.class)).iP(this);
-        break;
-      }
-      if ((1 == ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.waa, 0)) && (ab.Qf(this.contact.field_username)))
-      {
-        this.GXu = new k(this);
-        break;
-      }
-      if (ab.Qb(this.contact.field_username))
-      {
-        this.GXu = com.tencent.mm.by.c.ak(this, "sport");
-        break;
-      }
-      if (ab.Qp(this.contact.field_username))
-      {
-        this.GXu = com.tencent.mm.by.c.ak(this, "qqmail");
-        break;
-      }
-      if (ab.Qq(this.contact.field_username))
-      {
-        this.GXu = new e(this);
-        break;
-      }
-      if (ab.Qr(this.contact.field_username))
-      {
-        this.GXu = com.tencent.mm.by.c.ak(this, "tmessage");
-        break;
-      }
-      if (ab.QD(this.contact.field_username))
-      {
-        this.GXu = new com.tencent.mm.plugin.topstory.ui.widget.a(this);
-        break;
-      }
-      if (ab.Qj(this.contact.field_username))
-      {
-        this.GXu = new h(this);
-        break;
-      }
-      if (ab.Qx(this.contact.field_username))
-      {
-        this.GXu = new n(this);
-        break;
-      }
-      if (as.PY(this.contact.field_username))
-      {
-        this.GXu = new d(this);
-        break;
-      }
-      if (ab.Qz(this.contact.field_username))
-      {
-        this.GXu = com.tencent.mm.by.c.ak(this, "nearby");
-        break;
-      }
-      if (ab.QA(this.contact.field_username))
-      {
-        this.GXu = com.tencent.mm.by.c.ak(this, "shake");
-        break;
-      }
-      if (ab.QB(this.contact.field_username))
-      {
-        this.GXu = new j(this);
-        break;
-      }
-      if (ab.QC(this.contact.field_username))
-      {
-        this.GXu = com.tencent.mm.by.c.ae(this, "readerapp", "widget_type_news");
-        break;
-      }
-      if (ab.QK(this.contact.field_username))
-      {
-        this.GXu = com.tencent.mm.by.c.ae(this, "readerapp", "widget_type_weibo");
-        break;
-      }
-      if (ab.Qu(this.contact.field_username))
-      {
-        this.GXu = new f(this);
-        break;
-      }
-      if (ab.Qv(this.contact.field_username))
-      {
-        this.GXu = com.tencent.mm.by.c.ak(this, "masssend");
-        break;
-      }
-      if (ab.Qw(this.contact.field_username))
-      {
-        this.GXu = new g(this);
-        break;
-      }
-      if ((this.contact.hxX()) || (getIntent().getBooleanExtra("key_use_new_contact_profile", false)))
-      {
-        for (localObject1 = null;; localObject1 = localObject2)
+        if (this.contact.field_username.equals(z.bAM()))
         {
-          try
+          bh.bCz();
+          l = Util.getLong((String)com.tencent.mm.model.c.ban().d(65825, null), 0L);
+          if (l > 0L)
           {
-            localObject2 = this.GXy;
-            if (localObject2 != null) {
-              break label4419;
-            }
-            localObject1 = null;
+            this.contact.gO(l);
+            localObject1 = this.contact;
+            bh.bCz();
+            ((au)localObject1).Bj((String)com.tencent.mm.model.c.ban().d(65826, null));
           }
-          catch (IOException localIOException)
-          {
-            for (;;)
-            {
-              Log.printErrStackTrace("MicroMsg.ContactInfoUI", localIOException, "", new Object[0]);
-              continue;
-              if (com.tencent.mm.ao.g.Uz(localIOException))
-              {
-                bool1 = true;
-              }
-              else
-              {
-                if (localObject1 != null)
-                {
-                  localObject3 = new com.tencent.mm.api.c();
-                  ((com.tencent.mm.api.c)localObject3).field_extInfo = ((aez)localObject1).mVN;
-                  ((com.tencent.mm.api.c)localObject3).field_type = ((com.tencent.mm.api.c)localObject3).dc(false).getServiceType();
-                  if (((com.tencent.mm.api.c)localObject3).YV())
-                  {
-                    bool1 = true;
-                    continue;
-                  }
-                  if (((com.tencent.mm.api.c)localObject3).YU())
-                  {
-                    bool1 = true;
-                    continue;
-                  }
-                }
-                if (getIntent().getBooleanExtra("key_use_new_contact_profile", false)) {
-                  bool1 = true;
-                } else if ((!com.tencent.mm.ao.g.UC(this.contact.field_username)) && (!com.tencent.mm.ao.g.UB(this.contact.field_username)) && (this.contact.hxX())) {
-                  bool1 = true;
-                } else {
-                  bool1 = false;
-                }
-              }
-            }
-            localObject1 = new c(this, (String)localObject4, (aez)localObject1);
-            if (Util.isNullOrNil(this.BLy)) {
-              break label4645;
-            }
-            ((c)localObject1).BLy = this.BLy;
-            this.GXu = ((com.tencent.mm.pluginsdk.c.a)localObject1);
+          localObject1 = this.contact;
+          bh.bCz();
+          ((au)localObject1).Bx((String)com.tencent.mm.model.c.ban().d(286721, null));
+          localObject1 = this.contact;
+          bh.bCz();
+          ((au)localObject1).By((String)com.tencent.mm.model.c.ban().d(286722, null));
+          localObject1 = this.contact;
+          bh.bCz();
+          ((au)localObject1).Bz((String)com.tencent.mm.model.c.ban().d(286723, null));
+        }
+        if ((this.contact.field_username != null) && (this.contact.field_username.equals(au.bxd(z.bAM()))))
+        {
+          localObject1 = cb.bDe();
+          localObject2 = Util.nullAsNil(((cb)localObject1).getProvince());
+          localObject3 = Util.nullAsNil(((cb)localObject1).getCity());
+          if (!Util.isNullOrNil((String)localObject2)) {
+            this.contact.Bp((String)localObject2);
           }
-          localObject2 = this.contact.field_username;
-          if ((!MMApplicationContext.getDefaultPreference().getBoolean("use_new_profile", true)) || (ab.Rf((String)localObject2)) || (ab.Qy((String)localObject2)) || (ab.QJ((String)localObject2))) {
-            break label4606;
+          if (!Util.isNullOrNil((String)localObject3)) {
+            this.contact.Bq((String)localObject3);
           }
-          if (!com.tencent.mm.ao.g.Ux((String)localObject2)) {
-            break label4464;
+          if (!Util.isNullOrNil(((cb)localObject1).countryCode)) {
+            this.contact.Bu(RegionCodeDecoder.bI(((cb)localObject1).countryCode, ((cb)localObject1).provinceCode, ((cb)localObject1).cityCode));
           }
-          bool1 = true;
-          Log.i("MicroMsg.ContactInfoUI", "username:%s, isUseNewProfileUI:%b", new Object[] { this.contact.field_username, Boolean.valueOf(bool1) });
-          if (!bool1) {
-            break label4612;
+          i = Util.nullAs(Integer.valueOf(((cb)localObject1).sex), 0);
+          localObject1 = Util.nullAsNil(((cb)localObject1).signature);
+          this.contact.pv(i);
+          this.contact.Bo((String)localObject1);
+        }
+        if (!Util.isNullOrNil(this.contact.field_username)) {
+          break label3161;
+        }
+        Log.e("MicroMsg.ContactInfoUI", "username is null %s", new Object[] { str1 });
+        finish();
+        AppMethodBeat.o(26996);
+        return;
+        az.a.okP.aZ(str1, "");
+        break;
+        label2031:
+        localObject3 = Util.nullAsNil(this.roomId);
+        break label786;
+        label2043:
+        if (au.bwQ(this.contact.field_username))
+        {
+          if (!((com.tencent.mm.openim.api.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.openim.api.c.class)).V(this.contact)) {
+            break label806;
           }
-          if (this.GXQ == null) {
-            this.GXQ = new ContactWidgetTabBizInfo(this, (String)localObject4, (aez)localObject1, this.zUF);
+          Log.d("MicroMsg.ContactInfoUI", "alvinluo updateOpenImKefuContact username: %s", new Object[] { this.contact.field_username });
+          localObject2 = new com.tencent.mm.openim.api.i(7, this.contact.field_username, null);
+          ((com.tencent.mm.openim.api.i)localObject2).prl = false;
+          ((com.tencent.mm.openim.api.i)localObject2).prn = false;
+          ((com.tencent.mm.openim.api.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.openim.api.c.class)).b((com.tencent.mm.openim.api.i)localObject2, null);
+          break label806;
+        }
+        localObject2 = com.tencent.mm.an.g.hU(this.contact.field_username);
+        if ((this.contact.iZC()) && (com.tencent.mm.an.a.bGz()))
+        {
+          i = 1;
+          if ((localObject2 != null) && ((!((com.tencent.mm.api.c)localObject2).aAJ()) || (i != 0))) {
+            break label2288;
           }
-          this.GXQ.GXB = ((String)localObject4);
-          this.GXQ.GYV = ((aez)localObject1);
-          this.GXQ.enterTime = this.zUF;
-          this.GXQ.BLy = this.BLy;
-          this.GXu = this.GXQ;
+          Log.d("MicroMsg.ContactInfoUI", "update contact, verifyFlag %d.", new Object[] { Integer.valueOf(m) });
+          localObject3 = az.a.okP;
+          localObject7 = this.contact.field_username;
+          if (!com.tencent.mm.contact.d.rs(this.contact.field_type)) {
+            break label2279;
+          }
+        }
+        label2279:
+        for (localObject2 = "";; localObject2 = this.roomId)
+        {
+          ((az.b)localObject3).aZ((String)localObject7, (String)localObject2);
+          com.tencent.mm.modelavatar.d.LA(this.contact.field_username);
           break;
-          localObject2 = (aez)new aez().parseFrom(this.GXy);
+          i = 0;
+          break label2181;
         }
-        label4464:
-        label4606:
-        break;
-      }
-      if (ab.QG(this.contact.field_username))
-      {
-        this.GXu = new o(this);
-        break;
-      }
-      if (ab.QH(this.contact.field_username))
-      {
-        this.GXu = new i(this);
-        break;
-      }
-      if (ab.Qi(this.contact.field_username))
-      {
-        this.GXu = new com.tencent.mm.plugin.downloader_app.d.a(this);
-        break;
-      }
-      this.GXu = new com.tencent.mm.plugin.profile.a(this);
-      if ((this.GXD) || ((this.GXu instanceof ContactWidgetTabBizInfo))) {
-        break;
-      }
-      localObject1 = (RelativeLayout)findViewById(R.h.mm_preference_list_content_root);
-      if (localObject1 == null) {
-        break;
-      }
-      Log.i("MicroMsg.ContactInfoUI", "setupStory %s stack %s", new Object[] { this, Util.getStack().toString() });
-      this.GXD = true;
-      this.GXC = ((PullDownListView)getListView());
-      this.GXC.setBackground(aw.bf(getContext(), R.d.me_alpha_bg));
-      if (this.GXH)
-      {
-        this.GXC.setBackground(null);
-        this.GXC.Yqv = this.GXN;
-        localObject3 = new View(this);
-        ((RelativeLayout)localObject1).addView((View)localObject3, 0);
-        localObject4 = (RelativeLayout.LayoutParams)((View)localObject3).getLayoutParams();
-        ((RelativeLayout.LayoutParams)localObject4).width = -1;
-        ((RelativeLayout.LayoutParams)localObject4).height = -1;
-        ((RelativeLayout.LayoutParams)localObject4).topMargin = com.tencent.mm.ui.ax.au(getContext()).x;
-        ((View)localObject3).setBackgroundColor(getResources().getColor(R.e.BG_0));
-        ak.kU(getContext());
-        final float f = com.tencent.mm.plugin.textstatus.a.a.is(getContext());
-        this.GXC.setTranslationListener(new PullDownListView.a()
+        label2288:
+        if ((!this.contact.iZI()) || (i != 0)) {
+          break label806;
+        }
+        Log.d("MicroMsg.ContactInfoUI", "update contact, last check time=%d", new Object[] { Integer.valueOf(this.contact.kak) });
+        localObject3 = az.a.okP;
+        localObject7 = this.contact.field_username;
+        if (com.tencent.mm.contact.d.rs(this.contact.field_type)) {}
+        for (localObject2 = "";; localObject2 = this.roomId)
         {
-          public final void bO(float paramAnonymousFloat)
+          ((az.b)localObject3).aZ((String)localObject7, (String)localObject2);
+          com.tencent.mm.modelavatar.d.LA(this.contact.field_username);
+          break;
+        }
+        label2392:
+        if (this.contact.sex == 0) {
+          this.contact.pv(j);
+        }
+        if ((str4 != null) && (!str4.equals(""))) {
+          this.contact.Bp(str4);
+        }
+        if ((localObject6 != null) && (!((String)localObject6).equals(""))) {
+          this.contact.Bq((String)localObject6);
+        }
+        if ((str9 != null) && (!str9.equals(""))) {
+          this.contact.Bu(str9);
+        }
+        if ((Util.isNullOrNil(this.contact.signature)) && (str5 != null) && (!str5.equals(""))) {
+          this.contact.Bo(str5);
+        }
+        if (m != 0) {
+          this.contact.pr(m);
+        }
+        if ((Util.isNullOrNil(this.contact.verifyInfo)) && (str6 != null) && (!str6.equals(""))) {
+          this.contact.Bt(str6);
+        }
+        if ((Util.isNullOrNil(this.contact.field_nickname)) && (localObject5 != null) && (!((String)localObject5).equals(""))) {
+          this.contact.setNickname((String)localObject5);
+        }
+        Log.i("MicroMsg.ContactInfoUI", "searchMobilePhone:%s", new Object[] { Util.nullAsNil(this.MVx) });
+        if ((!Util.isNullOrNil(this.MVx)) && (this.pUt == 15))
+        {
+          j = 1;
+          str4 = this.contact.kar;
+          i = j;
+          if (str4 != null)
           {
-            AppMethodBeat.i(292032);
-            this.val$v.setTranslationY(paramAnonymousFloat);
-            float f1 = paramAnonymousFloat / f;
-            if (paramAnonymousFloat < 0.0F) {
-              f1 = 0.0F;
-            }
-            if (paramAnonymousFloat > f) {
-              f1 = 1.0F;
-            }
-            for (;;)
+            localObject6 = com.tencent.mm.contact.a.f(this.contact);
+            i = j;
+            if (localObject6 != null)
             {
-              if (ContactInfoUI.e(ContactInfoUI.this) != null) {
-                ContactInfoUI.e(ContactInfoUI.this).r(f1, paramAnonymousFloat, f);
+              m = localObject6.length;
+              j = 0;
+            }
+          }
+        }
+        for (;;)
+        {
+          i = 1;
+          if (j < m)
+          {
+            if (localObject6[j].equals(this.MVx)) {
+              i = 0;
+            }
+          }
+          else
+          {
+            if (i != 0)
+            {
+              this.contact.BB(str4 + this.MVx + com.tencent.mm.contact.a.e(this.contact));
+              this.MVx = null;
+            }
+            Log.i("MicroMsg.ContactInfoUI", "contact PhoneList:%s", new Object[] { Util.nullAsNil(this.contact.kar) });
+            this.contact.setSource(15);
+            this.contact.Br(str2);
+            this.contact.gO(l);
+            this.contact.Bj(str3);
+            if (!com.tencent.mm.contact.d.rs(this.contact.field_type))
+            {
+              if (!Util.isNullOrNil((String)localObject4)) {
+                this.contact.AV((String)localObject4);
               }
-              if (ContactInfoUI.p(ContactInfoUI.this) == null) {
-                ContactInfoUI.a(ContactInfoUI.this, (NormalProfileHeaderPreference)ContactInfoUI.g(ContactInfoUI.this).byG("contact_profile_header_normal"));
+              if (!Util.isNullOrNil((String)localObject5)) {
+                this.contact.setNickname((String)localObject5);
               }
-              Object localObject;
-              if (ContactInfoUI.p(ContactInfoUI.this) != null)
-              {
-                localObject = ContactInfoUI.p(ContactInfoUI.this);
-                if (((NormalProfileHeaderPreference)localObject).EQs == null) {
-                  break label248;
-                }
-                localObject = ((NormalProfileHeaderPreference.a)((NormalProfileHeaderPreference)localObject).EQs.getTag()).HaD;
-                if (localObject != null)
-                {
-                  float f2 = 1.0F * (1.0F - f1);
-                  ((View)localObject).setAlpha(f2);
-                  localObject = ContactInfoUI.p(ContactInfoUI.this);
-                  if (((NormalProfileHeaderPreference)localObject).EQs == null) {
-                    break label254;
-                  }
-                  localObject = ((NormalProfileHeaderPreference.a)((NormalProfileHeaderPreference)localObject).EQs.getTag()).HaF;
-                  label195:
-                  if (localObject != null)
-                  {
-                    if (f2 > 0.0F) {
-                      break label260;
-                    }
-                    ((View)localObject).setVisibility(0);
-                  }
-                }
+              localObject4 = getIntent().getStringExtra("Contact_PyInitial");
+              if (!Util.isNullOrNil((String)localObject4)) {
+                this.contact.AY((String)localObject4);
               }
-              for (;;)
-              {
-                localObject = ContactInfoUI.p(ContactInfoUI.this).fpU();
-                if (localObject != null) {
-                  ((com.tencent.mm.plugin.textstatus.a.e)localObject).r(f1, paramAnonymousFloat, f);
-                }
-                AppMethodBeat.o(292032);
-                return;
-                label248:
-                localObject = null;
-                break;
-                label254:
-                localObject = null;
-                break label195;
-                label260:
-                ((View)localObject).setVisibility(8);
+              localObject4 = getIntent().getStringExtra("Contact_QuanPin");
+              if (!Util.isNullOrNil((String)localObject4)) {
+                this.contact.AZ((String)localObject4);
               }
             }
+            if ((!com.tencent.mm.contact.d.rs(this.contact.field_type)) && (!Util.isNullOrNil((String)localObject3))) {
+              this.contact.BD((String)localObject3);
+            }
+            if ((!com.tencent.mm.contact.d.rs(this.contact.field_type)) && (k != 0)) {
+              this.contact.pE(k);
+            }
+            if (Util.isNullOrNil((String)localObject2)) {
+              break;
+            }
+            this.contact.Bg((String)localObject2);
+            break;
+          }
+          j += 1;
+        }
+        i = 1;
+        break label1316;
+        if (!Util.isNullOrNil((String)localObject1))
+        {
+          bh.bCz();
+          localObject1 = com.tencent.mm.model.c.bzB().aMi((String)localObject1);
+          if ((localObject1 != null) && (!Util.isNullOrNil(((cr)localObject1).field_encryptUsername)))
+          {
+            this.contact.AW(((cr)localObject1).field_conRemark);
+            break label1373;
+          }
+        }
+        if (Util.isNullOrNil(str1)) {
+          break label1373;
+        }
+        bh.bCz();
+        localObject1 = com.tencent.mm.model.c.bzB().aMi(str1);
+        if ((localObject1 == null) || (Util.isNullOrNil(((cr)localObject1).field_encryptUsername))) {
+          break label1373;
+        }
+        this.contact.AW(((cr)localObject1).field_conRemark);
+        break label1373;
+        bool1 = false;
+        break label1498;
+        i = this.contact.kal.length();
+        break label1510;
+      }
+      label3126:
+      label3132:
+      label3161:
+      setMMTitle("");
+      com.tencent.mm.plugin.profile.d.al(this.contact);
+      com.tencent.mm.plugin.profile.d.b(getIntent(), 1, 1, this.contact.field_username);
+      Object localObject3 = this.MVy;
+      if (au.bxf(this.contact.field_username))
+      {
+        this.MVr = ((com.tencent.mm.plugin.wxpaysdk.api.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.wxpaysdk.api.c.class)).kF(this);
+        localObject1 = new tx();
+        ((tx)localObject1).jvV = 2L;
+        ((tx)localObject1).bMH();
+        if (this.MVr != null)
+        {
+          this.MVr.a(this.screen, this.contact, this.MVt, this.pUt);
+          localObject2 = com.tencent.mm.plugin.account.b.getAddrUploadStg().SR(this.contact.field_username);
+          localObject1 = "";
+          if (localObject2 != null) {
+            localObject1 = Util.nullAsNil(((com.tencent.mm.plugin.account.friend.model.a)localObject2).bWN()).replace(" ", "");
+          }
+          if ((!this.MVM) && (com.tencent.mm.contact.d.rs(this.contact.field_type)) && ((this.MVr instanceof m)))
+          {
+            j = com.tencent.mm.contact.a.g(this.contact);
+            if (!Util.isNullOrNil((String)localObject1)) {
+              break label5010;
+            }
+            i = 0;
+            label3374:
+            j = i + j;
+            localObject2 = com.tencent.mm.plugin.report.service.h.OAn;
+            localObject3 = this.contact.field_username;
+            if (!Util.isNullOrNil((String)localObject1)) {
+              break label5015;
+            }
+            i = 0;
+            label3402:
+            if (j < 5) {
+              break label5020;
+            }
+            j = 5;
+          }
+        }
+      }
+      label4865:
+      label5010:
+      label5015:
+      label5020:
+      for (;;)
+      {
+        ((com.tencent.mm.plugin.report.service.h)localObject2).b(12040, new Object[] { localObject3, Integer.valueOf(1), Integer.valueOf(i), Integer.valueOf(j) });
+        this.MVM = true;
+        if ((!(this.MVr instanceof m)) && (!(this.MVr instanceof d)) && (!(this.MVr instanceof ContactWidgetTabBizInfo)))
+        {
+          bh.bCz();
+          localObject1 = (String)com.tencent.mm.model.c.ban().get(at.a.acRG, "");
+          if (((String)localObject1).contains(this.contact.field_username))
+          {
+            localObject1 = ((String)localObject1).replaceAll(this.contact.field_username + ",*", "");
+            bh.bCz();
+            com.tencent.mm.model.c.ban().set(at.a.acRG, localObject1);
+            Log.i("MicroMsg.ContactInfoUI", "mark plugin read, userName:%s, newVal:%s", new Object[] { this.contact.field_username, localObject1 });
+            if (Util.isNullOrNil((String)localObject1)) {
+              com.tencent.mm.aa.c.aYo().R(262158, false);
+            }
+          }
+        }
+        if (this.screen != null)
+        {
+          this.MVs = ((NormalProfileHeaderPreference)this.screen.bAi("contact_profile_header_normal"));
+          if (this.MVs != null)
+          {
+            this.MVs.b(this.MVC, this.MVL.getHeight(), this.MVD);
+            localObject1 = this.MVs.getRootView();
+            if ((localObject1 != null) && (((View)localObject1).getMeasuredHeight() != 0)) {
+              afH(((View)localObject1).getMeasuredHeight());
+            }
+            localObject1 = this.MVs;
+            ((NormalProfileHeaderPreference)localObject1).MYo = this.MVR;
+            localObject2 = ((NormalProfileHeaderPreference)localObject1).getRootView();
+            if ((localObject2 != null) && (((NormalProfileHeaderPreference)localObject1).MYo != null)) {
+              ((View)localObject2).addOnLayoutChangeListener(((NormalProfileHeaderPreference)localObject1).MYo);
+            }
+          }
+        }
+        setBackBtn(new MenuItem.OnMenuItemClickListener()
+        {
+          public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+          {
+            AppMethodBeat.i(305486);
+            if (((au.bwf(ContactInfoUI.j(ContactInfoUI.this).field_username)) && (!z.bBr())) || ((au.bvX(ContactInfoUI.j(ContactInfoUI.this).field_username)) && (!z.bBn())) || ((au.bvZ(ContactInfoUI.j(ContactInfoUI.this).field_username)) && (!z.bBx())) || ((au.bvS(ContactInfoUI.j(ContactInfoUI.this).field_username)) && (!z.bBB())))
+            {
+              paramAnonymousMenuItem = new Intent();
+              paramAnonymousMenuItem.addFlags(67108864);
+              com.tencent.mm.plugin.profile.b.pFn.n(paramAnonymousMenuItem, ContactInfoUI.this);
+            }
+            ContactInfoUI.this.finish();
+            com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.a(ContactInfoUI.j(ContactInfoUI.this).field_username, 1501, ContactInfoUI.n(ContactInfoUI.this), ContactInfoUI.o(ContactInfoUI.this), ContactInfoUI.this.getIntent());
+            AppMethodBeat.o(305486);
+            return true;
           }
         });
-        localObject3 = ((com.tencent.mm.plugin.textstatus.a.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.textstatus.a.d.class)).getBackPreview(this, new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(264112);
-            if ((ContactInfoUI.q(ContactInfoUI.this) != null) && (!ContactInfoUI.q(ContactInfoUI.this).isVisible)) {
-              ContactInfoUI.q(ContactInfoUI.this).idg();
-            }
-            AppMethodBeat.o(264112);
-          }
-        }, true);
-        this.GXK = ((com.tencent.mm.plugin.textstatus.a.b)localObject3);
-        localObject4 = getIntent().getStringExtra("Contact_User");
-        if ((!TextUtils.isEmpty((CharSequence)localObject4)) && (localObject3 != null) && (((com.tencent.mm.plugin.textstatus.a.b)localObject3).getView() != null))
-        {
-          ((RelativeLayout)localObject1).addView(((com.tencent.mm.plugin.textstatus.a.b)localObject3).getView(), 0);
-          ((com.tencent.mm.plugin.textstatus.a.b)localObject3).gkD();
-          ((com.tencent.mm.plugin.textstatus.a.b)localObject3).a(this);
-          ((com.tencent.mm.plugin.textstatus.a.b)localObject3).KN((String)localObject4);
+        com.tencent.mm.modelavatar.q.bFG().LC(this.contact.field_username);
+        if (((!au.bwf(this.contact.field_username)) || (!z.bBr())) && ((!au.bvX(this.contact.field_username)) || (!z.bBn())) && ((!au.bvZ(this.contact.field_username)) || (!z.bBx())) && ((!au.bvS(this.contact.field_username)) || (!z.bBB()))) {
+          break label5023;
         }
-        this.GXC.setNavigationBarHeight(com.tencent.mm.ui.ax.aB(getContext()));
-        this.GXL = new ContactInfoUI.4(this);
-        localObject1 = com.tencent.mm.plugin.story.h.h.LOJ;
-        com.tencent.mm.plugin.story.h.h.geE().gQR = 3L;
+        this.MVw = true;
+        AppMethodBeat.o(26996);
+        return;
+        if (au.bxg(this.contact.field_username))
+        {
+          this.MVr = ((com.tencent.mm.plugin.wxpaysdk.api.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.wxpaysdk.api.c.class)).kI(this);
+          break;
+        }
+        if (au.bxh(this.contact.field_username))
+        {
+          this.MVr = ((com.tencent.mm.plugin.wxpaysdk.api.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.wxpaysdk.api.c.class)).kG(this);
+          break;
+        }
+        if (au.bxi(this.contact.field_username))
+        {
+          this.MVr = ((com.tencent.mm.plugin.wxpaysdk.api.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.wxpaysdk.api.c.class)).kH(this);
+          break;
+        }
+        if ((1 == ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(com.tencent.mm.plugin.expt.b.c.a.ztC, 1)) && (ab.IM(this.contact.field_username)))
+        {
+          this.MVr = new l(this);
+          break;
+        }
+        if (au.bxe(this.contact.field_username))
+        {
+          this.MVr = com.tencent.mm.br.c.al(this, "sport");
+          break;
+        }
+        if (au.bvS(this.contact.field_username))
+        {
+          this.MVr = com.tencent.mm.br.c.al(this, "qqmail");
+          break;
+        }
+        if (au.bvT(this.contact.field_username))
+        {
+          this.MVr = new f(this);
+          break;
+        }
+        if (au.bvV(this.contact.field_username))
+        {
+          this.MVr = com.tencent.mm.br.c.al(this, "tmessage");
+          break;
+        }
+        if (au.bwh(this.contact.field_username))
+        {
+          this.MVr = new com.tencent.mm.plugin.topstory.ui.widget.a(this);
+          break;
+        }
+        if (ab.IQ(this.contact.field_username))
+        {
+          this.MVr = new i(this);
+          break;
+        }
+        if (au.bwb(this.contact.field_username))
+        {
+          this.MVr = new o(this);
+          break;
+        }
+        if (au.bwS(this.contact.field_username))
+        {
+          this.MVr = new e(this);
+          break;
+        }
+        if (au.bwd(this.contact.field_username))
+        {
+          this.MVr = com.tencent.mm.br.c.al(this, "nearby");
+          break;
+        }
+        if (au.bwe(this.contact.field_username))
+        {
+          this.MVr = com.tencent.mm.br.c.al(this, "shake");
+          break;
+        }
+        if (au.bwf(this.contact.field_username))
+        {
+          this.MVr = new k(this);
+          break;
+        }
+        if (au.bwg(this.contact.field_username))
+        {
+          this.MVr = com.tencent.mm.br.c.aj(this, "readerapp", "widget_type_news");
+          break;
+        }
+        if (au.bwo(this.contact.field_username))
+        {
+          this.MVr = com.tencent.mm.br.c.aj(this, "readerapp", "widget_type_weibo");
+          break;
+        }
+        if (au.bvY(this.contact.field_username))
+        {
+          this.MVr = new g(this);
+          break;
+        }
+        if (au.bvZ(this.contact.field_username))
+        {
+          this.MVr = com.tencent.mm.br.c.al(this, "masssend");
+          break;
+        }
+        if (au.bwa(this.contact.field_username))
+        {
+          this.MVr = new h(this);
+          break;
+        }
+        label4898:
+        if ((this.contact.iZC()) || (getIntent().getBooleanExtra("key_use_new_contact_profile", false)))
+        {
+          for (localObject1 = null;; localObject1 = localObject2)
+          {
+            try
+            {
+              localObject2 = this.MVv;
+              if (localObject2 != null) {
+                break label4672;
+              }
+              localObject1 = null;
+            }
+            catch (IOException localIOException)
+            {
+              for (;;)
+              {
+                label4672:
+                Log.printErrStackTrace("MicroMsg.ContactInfoUI", localIOException, "", new Object[0]);
+                continue;
+                if (com.tencent.mm.an.g.My(localIOException))
+                {
+                  bool1 = true;
+                }
+                else
+                {
+                  if (localObject1 != null)
+                  {
+                    com.tencent.mm.api.c localc = new com.tencent.mm.api.c();
+                    localc.field_extInfo = ((ahl)localObject1).pSu;
+                    localc.field_type = localc.dO(false).getServiceType();
+                    if (localc.aAN())
+                    {
+                      bool1 = true;
+                      continue;
+                    }
+                    if (localc.aAM())
+                    {
+                      bool1 = true;
+                      continue;
+                    }
+                  }
+                  if (getIntent().getBooleanExtra("key_use_new_contact_profile", false)) {
+                    bool1 = true;
+                  } else if ((!com.tencent.mm.an.g.MB(this.contact.field_username)) && (!com.tencent.mm.an.g.MA(this.contact.field_username)) && (this.contact.iZC())) {
+                    bool1 = true;
+                  } else {
+                    bool1 = false;
+                  }
+                }
+              }
+              localObject1 = new d(this, (String)localObject3, (ahl)localObject1);
+              if (Util.isNullOrNil(this.pPi)) {
+                break label4898;
+              }
+              ((d)localObject1).pPi = this.pPi;
+              this.MVr = ((com.tencent.mm.pluginsdk.c.a)localObject1);
+            }
+            localObject2 = this.contact.field_username;
+            if ((!MMApplicationContext.getDefaultPreference().getBoolean("use_new_profile", true)) || (ab.Jd((String)localObject2)) || (au.bwc((String)localObject2)) || (au.bwn((String)localObject2))) {
+              break label4859;
+            }
+            if (!com.tencent.mm.an.g.Mw((String)localObject2)) {
+              break label4717;
+            }
+            bool1 = true;
+            Log.i("MicroMsg.ContactInfoUI", "username:%s, isUseNewProfileUI:%b", new Object[] { this.contact.field_username, Boolean.valueOf(bool1) });
+            if (!bool1) {
+              break label4865;
+            }
+            if (this.MVN == null) {
+              this.MVN = new ContactWidgetTabBizInfo(this, (String)localObject3, (ahl)localObject1, this.AxK);
+            }
+            this.MVN.MVy = ((String)localObject3);
+            this.MVN.MWY = ((ahl)localObject1);
+            this.MVN.enterTime = this.AxK;
+            this.MVN.pPi = this.pPi;
+            this.MVr = this.MVN;
+            break;
+            localObject2 = (ahl)new ahl().parseFrom(this.MVv);
+          }
+          label4717:
+          label4859:
+          break;
+        }
+        if (au.bwk(this.contact.field_username))
+        {
+          this.MVr = new p(this);
+          break;
+        }
+        if (au.bwl(this.contact.field_username))
+        {
+          this.MVr = new j(this);
+          break;
+        }
+        if (ab.IP(this.contact.field_username))
+        {
+          this.MVr = new com.tencent.mm.plugin.downloader_app.d.a(this);
+          break;
+        }
+        this.MVr = new com.tencent.mm.plugin.profile.a(this);
+        gBr();
         break;
+        i = 1;
+        break label3374;
+        i = 1;
+        break label3402;
       }
-      if (!((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.story.api.e.class)).isShowStoryCheck()) {
-        break;
-      }
-      this.GXC.Yqv = this.GXM;
-      i = -com.tencent.mm.ui.ax.au(getContext()).y / 10;
-      Object localObject3 = new RelativeLayout.LayoutParams(-1, com.tencent.mm.ui.ax.au(getContext()).y);
-      ((RelativeLayout.LayoutParams)localObject3).topMargin = i;
-      ((RelativeLayout.LayoutParams)localObject3).bottomMargin = (-com.tencent.mm.ui.ax.aB(getContext()));
-      if (this.contact.field_username.equals(z.bcZ())) {}
-      for (this.storyGallery = ((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.story.api.e.class)).getStoryUIFactory().a(this, com.tencent.mm.plugin.story.api.n.a.LEA, this.roomId);; this.storyGallery = ((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.story.api.e.class)).getStoryUIFactory().a(this, com.tencent.mm.plugin.story.api.n.a.LEB, this.roomId))
-      {
-        this.storyGallery.gbl();
-        this.GXC.A(this.storyGallery, com.tencent.mm.ci.a.aZ(getContext(), R.f.dlB), i);
-        this.storyGallery.setStoryBrowseUIListener(this);
-        this.storyGallery.setDataSeed(this.contact.field_username);
-        this.storyGallery.a(this.GXC);
-        ((RelativeLayout)localObject1).addView(this.storyGallery, 0, (ViewGroup.LayoutParams)localObject3);
-        com.tencent.mm.kernel.h.aHH();
-        this.GXE = ((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.story.api.e.class)).getStoryUIFactory().ii(this);
-        localObject3 = new RelativeLayout.LayoutParams(com.tencent.mm.ci.a.aZ(getContext(), R.f.dlA), com.tencent.mm.ci.a.aZ(getContext(), R.f.dlA));
-        ((RelativeLayout.LayoutParams)localObject3).addRule(9);
-        ((RelativeLayout.LayoutParams)localObject3).addRule(12);
-        ((RelativeLayout)localObject1).addView(this.GXE, 0, (ViewGroup.LayoutParams)localObject3);
-        this.GXC.setMuteView(this.GXE);
-        break;
-      }
-      i = 1;
-      break label3233;
-      i = 1;
-      break label3261;
+      label5023:
+      this.MVw = false;
+      AppMethodBeat.o(26996);
+      return;
     }
-    label4612:
-    label4645:
-    label5468:
-    this.GXz = false;
-    AppMethodBeat.o(26996);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -1557,8 +1748,8 @@ public class ContactInfoUI
       AppMethodBeat.o(26997);
       return;
     }
-    if (this.GXu != null) {
-      this.GXu.onActivityResult(paramInt1, paramInt2, paramIntent);
+    if (this.MVr != null) {
+      this.MVr.onActivityResult(paramInt1, paramInt2, paramIntent);
     }
     AppMethodBeat.o(26997);
   }
@@ -1569,7 +1760,7 @@ public class ContactInfoUI
     if (((this.storyGallery == null) || (!this.storyGallery.onBackPressed())) && (!getSupportFragmentManager().isDestroyed())) {
       super.onBackPressed();
     }
-    com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.c(this.contact.field_username, 1501, this.mXL, this.zUF);
+    com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.a(this.contact.field_username, 1501, this.pUt, this.AxK, getIntent());
     AppMethodBeat.o(27005);
   }
   
@@ -1577,100 +1768,111 @@ public class ContactInfoUI
   {
     AppMethodBeat.i(26988);
     super.onConfigurationChanged(paramConfiguration);
-    if (paramConfiguration.orientation == 1) {
-      this.lft = false;
-    }
-    for (;;)
+    if (!com.tencent.mm.plugin.textstatus.a.a.kj(this)) {}
+    for (boolean bool = true;; bool = false)
     {
-      if ((this.GXC != null) && (!this.GXC.isVisible)) {
-        this.GXC.idf();
+      this.nKe = bool;
+      if ((this.MVz != null) && (!this.MVz.isVisible)) {
+        this.MVz.jIr();
       }
-      fqd();
-      paramConfiguration = fpU();
+      if ((!(this.MVr instanceof ContactWidgetTabBizInfo)) && ((this.contact == null) || (!au.bwQ(this.contact.field_username))) && (this.MVD))
+      {
+        paramConfiguration = (RelativeLayout)findViewById(R.h.mm_preference_list_content_root);
+        if (paramConfiguration != null)
+        {
+          if (this.MVH != null)
+          {
+            paramConfiguration.removeView(this.MVQ);
+            paramConfiguration.removeView(this.MVH.getView());
+            this.MVH.hFv();
+            this.MVH = null;
+          }
+          this.MVA = false;
+          gBr();
+        }
+      }
+      gBt();
+      paramConfiguration = gBi();
       if (paramConfiguration != null) {
-        paramConfiguration.KN(getIntent().getStringExtra("Contact_User"));
+        paramConfiguration.Ds(getIntent().getStringExtra("Contact_User"));
       }
       AppMethodBeat.o(26988);
       return;
-      if (paramConfiguration.orientation == 2) {
-        this.lft = true;
-      }
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(26986);
-    this.GXH = com.tencent.mm.plugin.textstatus.a.t.gkZ();
-    if ((this.GXH) && (((com.tencent.mm.plugin.textstatus.a.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.textstatus.a.d.class)).hasStatus(getIntent().getStringExtra("Contact_User"))))
+    this.MVE = ac.hFS();
+    if ((this.MVE) && (((com.tencent.mm.plugin.textstatus.a.f)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.textstatus.a.f.class)).hasStatus(getIntent().getStringExtra("Contact_User"))))
     {
       bool = true;
-      this.GXG = bool;
-      bh.beI();
-      as localas = com.tencent.mm.model.c.bbL().RG(Util.nullAsNil(getIntent().getStringExtra("Contact_User")));
-      if (localas == null) {
-        break label306;
+      this.MVD = bool;
+      bh.bCz();
+      au localau = com.tencent.mm.model.c.bzA().JE(Util.nullAsNil(getIntent().getStringExtra("Contact_User")));
+      if (localau == null) {
+        break label299;
       }
-      com.tencent.mm.kernel.h.aHH();
-      if (!((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.story.api.e.class)).isStoryExist(localas.field_username)) {
-        break label306;
+      com.tencent.mm.kernel.h.baF();
+      if (!((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.story.api.e.class)).isStoryExist(localau.field_username)) {
+        break label299;
       }
-      this.GXF = true;
+      this.MVC = true;
       label114:
-      if (this.GXH) {
-        this.GXF = false;
+      if (this.MVE) {
+        this.MVC = false;
       }
-      if ((this.GXF) || (this.GXG)) {
+      if ((this.MVC) || (this.MVD)) {
         customfixStatusbar(true);
       }
       super.onCreate(paramBundle);
       MultiProcessMMKV.getMMKV("SnsMMKV").encode("SnsMMKVSnsUI", true);
-      if (getResources().getConfiguration().orientation != 2) {
-        break label314;
+      if (com.tencent.mm.plugin.textstatus.a.a.kj(this)) {
+        break label307;
       }
     }
-    label306:
-    label314:
+    label299:
+    label307:
     for (boolean bool = true;; bool = false)
     {
-      this.lft = bool;
-      this.zUF = System.currentTimeMillis();
-      this.Cwk = findViewById(R.h.action_bar_container);
-      this.GXO = this.Cwk.findViewById(R.h.action_bar_root);
-      fqd();
+      this.nKe = bool;
+      this.AxK = System.currentTimeMillis();
+      this.Inv = findViewById(R.h.action_bar_container);
+      this.MVL = this.Inv.findViewById(R.h.action_bar_root);
+      gBt();
       paramBundle = getWindow().getDecorView();
       paramBundle.setSystemUiVisibility(paramBundle.getSystemUiVisibility() | 0x400 | 0x100);
-      Log.i("MicroMsg.ContactInfoUI", "onCreate MMCore.accHasReady[%b]", new Object[] { Boolean.valueOf(bh.aHB()) });
-      this.GXA = getIntent().getStringExtra("Contact_Search_Mobile");
-      if (com.tencent.mm.kernel.h.aHE().aGM()) {
-        break label319;
+      Log.i("MicroMsg.ContactInfoUI", "onCreate MMCore.accHasReady[%b]", new Object[] { Boolean.valueOf(bh.baz()) });
+      this.MVx = getIntent().getStringExtra("Contact_Search_Mobile");
+      if (com.tencent.mm.kernel.h.baC().aZN()) {
+        break label312;
       }
       finish();
       AppMethodBeat.o(26986);
       return;
       bool = false;
       break;
-      this.GXF = false;
+      this.MVC = false;
       break label114;
     }
-    label319:
-    ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbL().add(this);
-    bh.beI();
-    com.tencent.mm.model.c.bbM().a(this);
-    bh.beI();
-    com.tencent.mm.model.c.bbN().a(this);
+    label312:
+    ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzA().add(this);
+    bh.bCz();
+    com.tencent.mm.model.c.bzB().a(this);
+    bh.bCz();
+    com.tencent.mm.model.c.bzC().a(this);
     initView();
     hideActionbarLine();
-    if ((this.GXu instanceof com.tencent.mm.pluginsdk.c.b)) {
-      ((com.tencent.mm.pluginsdk.c.b)this.GXu).onCreate();
+    if ((this.MVr instanceof com.tencent.mm.pluginsdk.c.b)) {
+      ((com.tencent.mm.pluginsdk.c.b)this.MVr).onCreate();
     }
-    com.tencent.mm.plugin.profile.d.a(getIntent(), 1, 1, this.contact.field_username);
-    paramBundle = com.tencent.mm.plugin.story.h.h.LOJ;
-    com.tencent.mm.plugin.story.h.h.geE().gSg = com.tencent.mm.plugin.profile.d.aO(getIntent());
-    com.tencent.mm.kernel.h.aHH();
-    com.tencent.mm.kernel.h.aHF().kcd.a(273, this);
-    com.tencent.mm.kernel.h.aHH();
-    com.tencent.mm.kernel.h.aHF().kcd.a(291, this);
+    paramBundle = com.tencent.mm.plugin.story.g.h.SqZ;
+    com.tencent.mm.plugin.story.g.h.hxW().jkC = com.tencent.mm.plugin.profile.d.bo(getIntent());
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.a(273, this);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.a(291, this);
     AppMethodBeat.o(26986);
   }
   
@@ -1678,41 +1880,41 @@ public class ContactInfoUI
   {
     AppMethodBeat.i(26989);
     MultiProcessMMKV.getMMKV("SnsMMKV").encode("SnsMMKVSnsUI", false);
-    com.tencent.mm.plugin.story.h.h localh = com.tencent.mm.plugin.story.h.h.LOJ;
-    com.tencent.mm.plugin.story.h.h.geE().gSg = 0L;
-    if (com.tencent.mm.kernel.h.aHE().aGM())
+    com.tencent.mm.plugin.story.g.h localh = com.tencent.mm.plugin.story.g.h.SqZ;
+    com.tencent.mm.plugin.story.g.h.hxW().jkC = 0L;
+    if (com.tencent.mm.kernel.h.baC().aZN())
     {
-      ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbL().remove(this);
-      bh.beI();
-      com.tencent.mm.model.c.bbM().b(this);
-      bh.beI();
-      com.tencent.mm.model.c.bbN().b(this);
+      ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzA().remove(this);
+      bh.bCz();
+      com.tencent.mm.model.c.bzB().b(this);
+      bh.bCz();
+      com.tencent.mm.model.c.bzC().b(this);
     }
-    if (this.GXu == null) {}
+    if (this.MVr == null) {}
     for (boolean bool = true;; bool = false)
     {
       Log.i("MicroMsg.ContactInfoUI", "onDestroy bodyWidget is null?%s", new Object[] { Boolean.valueOf(bool) });
-      if (this.GXu != null) {
-        this.GXu.cQX();
+      if (this.MVr != null) {
+        this.MVr.dvq();
       }
-      if ((this.GXu instanceof com.tencent.mm.pluginsdk.c.b)) {
-        ((com.tencent.mm.pluginsdk.c.b)this.GXu).aEt();
+      if ((this.MVr instanceof com.tencent.mm.pluginsdk.c.b)) {
+        ((com.tencent.mm.pluginsdk.c.b)this.MVr).aXx();
       }
-      if (p.JPc != null) {
-        p.JPc.aO(this);
+      if (com.tencent.mm.plugin.sns.c.q.Qkh != null) {
+        com.tencent.mm.plugin.sns.c.q.Qkh.bq(this);
       }
       super.onDestroy();
-      com.tencent.mm.kernel.h.aHH();
-      com.tencent.mm.kernel.h.aHF().kcd.b(273, this);
-      com.tencent.mm.kernel.h.aHH();
-      com.tencent.mm.kernel.h.aHF().kcd.b(291, this);
+      com.tencent.mm.kernel.h.baF();
+      com.tencent.mm.kernel.h.baD().mCm.b(273, this);
+      com.tencent.mm.kernel.h.baF();
+      com.tencent.mm.kernel.h.baD().mCm.b(291, this);
       if (this.storyGallery != null) {
         this.storyGallery.onDestroy();
       }
-      com.tencent.mm.plugin.profile.d.a(getIntent(), 18, 1, this.contact.field_username);
-      com.tencent.mm.plugin.report.service.h.IzE.a(17283, new Object[] { Integer.valueOf(com.tencent.mm.plugin.profile.d.aO(getIntent())), this.contact.field_username, Boolean.valueOf(this.GXF), Boolean.valueOf(this.GXI), Integer.valueOf(this.contact.uin), Integer.valueOf(this.GXJ) });
-      if (this.GXK != null) {
-        this.GXK.gkI();
+      com.tencent.mm.plugin.profile.d.b(getIntent(), 18, 1, this.contact.field_username);
+      com.tencent.mm.plugin.report.service.h.OAn.b(17283, new Object[] { Integer.valueOf(com.tencent.mm.plugin.profile.d.bo(getIntent())), this.contact.field_username, Boolean.valueOf(this.MVC), Boolean.valueOf(this.MVF), Integer.valueOf(this.contact.uin), Integer.valueOf(this.MVG) });
+      if (this.MVH != null) {
+        this.MVH.hFv();
       }
       AppMethodBeat.o(26989);
       return;
@@ -1735,7 +1937,7 @@ public class ContactInfoUI
   public void onNotifyChange(String paramString, MStorageEventData paramMStorageEventData)
   {
     AppMethodBeat.i(27000);
-    new MMHandler().post(new a(this, paramString));
+    new MMHandler().post(new b(this, paramString));
     AppMethodBeat.o(27000);
   }
   
@@ -1743,48 +1945,48 @@ public class ContactInfoUI
   {
     AppMethodBeat.i(26993);
     com.tencent.mm.modelstat.d.d(4, "ContactInfoUI" + getIdentString(), hashCode());
-    af.bjv().remove(this);
+    af.bHf().remove(this);
     super.onPause();
-    bh.aHJ().postAtFrontOfQueueToWorker(new Runnable()
+    bh.baH().postAtFrontOfQueueToWorker(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(271712);
-        bh.beI();
-        com.tencent.mm.model.c.aHp().hxT();
-        AppMethodBeat.o(271712);
+        AppMethodBeat.i(305491);
+        bh.bCz();
+        com.tencent.mm.model.c.ban().iZy();
+        AppMethodBeat.o(305491);
       }
     });
     if (getIntent().getBooleanExtra("key_from_wesport_right_newtips", false))
     {
-      com.tencent.mm.plugin.newtips.a.fiO();
-      com.tencent.mm.plugin.newtips.a.i.aI(com.tencent.mm.plugin.newtips.a.d.Gwh, getActivityBrowseTimeMs());
+      com.tencent.mm.plugin.newtips.a.gtf();
+      com.tencent.mm.plugin.newtips.a.i.aP(com.tencent.mm.plugin.newtips.a.d.Msg, getActivityBrowseTimeMs());
     }
     for (;;)
     {
-      fqb();
-      if (this.GXC != null) {
-        this.GXC.idf();
+      gBq();
+      if (this.MVz != null) {
+        this.MVz.jIr();
       }
       if (this.storyGallery != null) {
         this.storyGallery.onPause();
       }
-      if (((this.GXu instanceof c)) || ((this.GXu instanceof ContactWidgetTabBizInfo))) {
-        this.GXu.cQX();
+      if (((this.MVr instanceof d)) || ((this.MVr instanceof ContactWidgetTabBizInfo))) {
+        this.MVr.dvq();
       }
-      if ((this.GXu instanceof com.tencent.mm.pluginsdk.c.b)) {
-        ((com.tencent.mm.pluginsdk.c.b)this.GXu).onPause();
+      if ((this.MVr instanceof com.tencent.mm.pluginsdk.c.b)) {
+        ((com.tencent.mm.pluginsdk.c.b)this.MVr).onPause();
       }
-      com.tencent.mm.pluginsdk.ui.span.l.b(this.sCG);
-      if (this.GXK != null) {
-        this.GXK.gkK();
+      com.tencent.mm.pluginsdk.ui.span.p.b(this.vIA);
+      if (this.MVH != null) {
+        this.MVH.hFx();
       }
       AppMethodBeat.o(26993);
       return;
       if (getIntent().getBooleanExtra("key_from_wesport_plugin_newtips", false))
       {
-        com.tencent.mm.plugin.newtips.a.fiO();
-        com.tencent.mm.plugin.newtips.a.i.aI(com.tencent.mm.plugin.newtips.a.d.Gwf, getActivityBrowseTimeMs());
+        com.tencent.mm.plugin.newtips.a.gtf();
+        com.tencent.mm.plugin.newtips.a.i.aP(com.tencent.mm.plugin.newtips.a.d.Mse, getActivityBrowseTimeMs());
       }
     }
   }
@@ -1794,26 +1996,26 @@ public class ContactInfoUI
     AppMethodBeat.i(26998);
     paramf = paramPreference.mKey;
     Log.i("MicroMsg.ContactInfoUI", paramf + " item has been clicked!");
-    if (this.GXu != null) {
-      this.GXu.atw(paramf);
+    if (this.MVr != null) {
+      this.MVr.anl(paramf);
     }
     if (paramPreference != null)
     {
       if (!paramPreference.mKey.equals("contact_info_sns")) {
         break label107;
       }
-      com.tencent.mm.plugin.profile.d.a(getIntent(), 3, 1, this.contact.field_username);
+      com.tencent.mm.plugin.profile.d.b(getIntent(), 3, 1, this.contact.field_username);
     }
     for (;;)
     {
       if ((paramPreference instanceof NormalProfileHeaderPreference)) {
-        fqc();
+        gBs();
       }
       AppMethodBeat.o(26998);
       return false;
       label107:
       if (paramPreference.mKey.equals("contact_info_more")) {
-        com.tencent.mm.plugin.profile.d.a(getIntent(), 6, 1, this.contact.field_username);
+        com.tencent.mm.plugin.profile.d.b(getIntent(), 6, 1, this.contact.field_username);
       }
     }
   }
@@ -1837,9 +2039,9 @@ public class ContactInfoUI
       return;
       if (paramArrayOfInt[0] == 0)
       {
-        paramArrayOfString = (NormalUserFooterPreference)this.screen.byG("contact_info_footer_normal");
+        paramArrayOfString = (NormalUserFooterPreference)this.screen.bAi("contact_info_footer_normal");
         if (paramArrayOfString != null) {
-          paramArrayOfString.fqz();
+          paramArrayOfString.gBU();
         }
         AppMethodBeat.o(27002);
         return;
@@ -1848,21 +2050,46 @@ public class ContactInfoUI
       for (paramInt = R.l.permission_camera_request_again_msg;; paramInt = R.l.permission_microphone_request_again_msg)
       {
         if (paramArrayOfInt[0] != 0) {
-          com.tencent.mm.ui.base.h.a(this, getString(paramInt), getString(R.l.permission_tips_title), getString(R.l.jump_to_settings), getString(R.l.cancel), false, new ContactInfoUI.12(this), new ContactInfoUI.13(this));
+          com.tencent.mm.ui.base.k.a(this, getString(paramInt), getString(R.l.permission_tips_title), getString(R.l.jump_to_settings), getString(R.l.cancel), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          {
+            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+            {
+              AppMethodBeat.i(26976);
+              paramAnonymousDialogInterface.dismiss();
+              com.tencent.mm.pluginsdk.permission.b.lx(ContactInfoUI.this.getContext());
+              AppMethodBeat.o(26976);
+            }
+          }, new DialogInterface.OnClickListener()
+          {
+            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+            {
+              AppMethodBeat.i(305471);
+              paramAnonymousDialogInterface.dismiss();
+              AppMethodBeat.o(305471);
+            }
+          });
         }
         AppMethodBeat.o(27002);
         return;
       }
       if (paramArrayOfInt[0] == 0)
       {
-        paramArrayOfString = (NormalUserFooterPreference)this.screen.byG("contact_info_footer_normal");
+        paramArrayOfString = (NormalUserFooterPreference)this.screen.bAi("contact_info_footer_normal");
         if (paramArrayOfString != null) {
-          paramArrayOfString.fqy();
+          paramArrayOfString.gBT();
         }
         AppMethodBeat.o(27002);
         return;
       }
-      com.tencent.mm.ui.base.h.a(this, getString(R.l.permission_microphone_request_again_msg), getString(R.l.permission_tips_title), getString(R.l.jump_to_settings), getString(R.l.cancel), false, new ContactInfoUI.14(this), null);
+      com.tencent.mm.ui.base.k.a(this, getString(R.l.permission_microphone_request_again_msg), getString(R.l.permission_tips_title), getString(R.l.jump_to_settings), getString(R.l.cancel), false, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(305583);
+          com.tencent.mm.pluginsdk.permission.b.lx(ContactInfoUI.this.getContext());
+          AppMethodBeat.o(305583);
+        }
+      }, null);
     }
   }
   
@@ -1870,7 +2097,7 @@ public class ContactInfoUI
   {
     AppMethodBeat.i(26992);
     super.onRestart();
-    this.GXP = false;
+    this.MVM = false;
     AppMethodBeat.o(26992);
   }
   
@@ -1878,7 +2105,7 @@ public class ContactInfoUI
   {
     AppMethodBeat.i(26990);
     com.tencent.mm.modelstat.d.d(3, "ContactInfoUI" + getIdentString(), hashCode());
-    af.bjv().add(this);
+    af.bHf().add(this);
     super.onResume();
     View localView = ((ViewGroup)getContentView()).getFocusedChild();
     if (localView != null)
@@ -1886,39 +2113,39 @@ public class ContactInfoUI
       localView.clearFocus();
       Log.i("MicroMsg.ContactInfoUI", "try to clear focus. id:%s", new Object[] { Integer.valueOf(localView.getId()) });
     }
-    this.GXC = ((PullDownListView)getListView());
+    this.MVz = ((PullDownListView)getListView());
     if (this.storyGallery != null) {
       this.storyGallery.onResume();
     }
     if (this.screen != null)
     {
-      this.GXv = ((NormalProfileHeaderPreference)this.screen.byG("contact_profile_header_normal"));
-      if (this.GXv != null) {
-        this.GXv.b(this.GXF, this.GXO.getHeight(), this.GXG);
+      this.MVs = ((NormalProfileHeaderPreference)this.screen.bAi("contact_profile_header_normal"));
+      if (this.MVs != null) {
+        this.MVs.b(this.MVC, this.MVL.getHeight(), this.MVD);
       }
     }
-    if (((this.GXu instanceof c)) || ((this.GXu instanceof ContactWidgetTabBizInfo))) {
-      this.GXu.a(this.screen, this.contact, this.GXw, this.mXL);
+    if (((this.MVr instanceof d)) || ((this.MVr instanceof ContactWidgetTabBizInfo))) {
+      this.MVr.a(this.screen, this.contact, this.MVt, this.pUt);
     }
-    if ((this.GXu instanceof com.tencent.mm.pluginsdk.c.b)) {
-      ((com.tencent.mm.pluginsdk.c.b)this.GXu).onResume();
+    if ((this.MVr instanceof com.tencent.mm.pluginsdk.c.b)) {
+      ((com.tencent.mm.pluginsdk.c.b)this.MVr).onResume();
     }
-    com.tencent.mm.pluginsdk.ui.span.l.a(this.sCG);
-    if (this.GXK != null) {
-      this.GXK.gkJ();
+    com.tencent.mm.pluginsdk.ui.span.p.a(this.vIA);
+    if (this.MVH != null) {
+      this.MVH.hFw();
     }
     AppMethodBeat.o(26990);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
   {
     AppMethodBeat.i(27004);
-    Log.d("MicroMsg.ContactInfoUI", "onSceneEnd errType[%s] errCode[%s] errMsg[%s] sceneType[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramq.getType()) });
-    if ((273 == paramq.getType()) && (this.contact != null) && ((this.GXu instanceof com.tencent.mm.plugin.profile.a)) && (Util.isEqual(this.contact.field_username, ((com.tencent.mm.plugin.story.f.a.i)paramq).userName)))
+    Log.d("MicroMsg.ContactInfoUI", "onSceneEnd errType[%s] errCode[%s] errMsg[%s] sceneType[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramp.getType()) });
+    if ((273 == paramp.getType()) && (this.contact != null) && ((this.MVr instanceof com.tencent.mm.plugin.profile.a)) && (Util.isEqual(this.contact.field_username, ((com.tencent.mm.plugin.story.model.a.i)paramp).userName)))
     {
-      int i = ((com.tencent.mm.plugin.story.f.a.i)paramq).source;
-      paramString = com.tencent.mm.plugin.story.i.a.LPG;
-      if (i == com.tencent.mm.plugin.story.i.a.gfF())
+      int i = ((com.tencent.mm.plugin.story.model.a.i)paramp).source;
+      paramString = com.tencent.mm.plugin.story.h.a.Sry;
+      if (i == com.tencent.mm.plugin.story.h.a.hyX())
       {
         i = 1;
         if (i != 0) {
@@ -1930,16 +2157,16 @@ public class ContactInfoUI
       label177:
       for (boolean bool = true;; bool = false)
       {
-        this.GXI = bool;
-        this.GXJ = ((com.tencent.mm.plugin.story.f.a.i)paramq).BAV;
+        this.MVF = bool;
+        this.MVG = ((com.tencent.mm.plugin.story.model.a.i)paramp).Hit;
         AppMethodBeat.o(27004);
         return;
         i = 0;
         break;
       }
     }
-    if ((291 == paramq.getType()) && (this.contact != null)) {
-      new MMHandler().post(new a(this, this.contact.field_username));
+    if ((291 == paramp.getType()) && (this.contact != null)) {
+      new MMHandler().post(new b(this, this.contact.field_username));
     }
     AppMethodBeat.o(27004);
   }
@@ -1970,131 +2197,147 @@ public class ContactInfoUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  static final class a
+  public void superImportUIComponents(HashSet<Class<? extends UIComponent>> paramHashSet)
+  {
+    AppMethodBeat.i(305681);
+    super.superImportUIComponents(paramHashSet);
+    paramHashSet.add(((com.tencent.mm.plugin.textstatus.a.u)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.textstatus.a.u.class)).hFF());
+    paramHashSet.add(((com.tencent.mm.plugin.textstatus.a.u)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.textstatus.a.u.class)).hFG());
+    AppMethodBeat.o(305681);
+  }
+  
+  static abstract interface a<T>
+  {
+    public abstract Boolean apply(T paramT);
+  }
+  
+  static final class b
     implements Runnable
   {
-    private WeakReference<ContactInfoUI> cNB;
-    private String iSn;
+    private WeakReference<ContactInfoUI> eIW;
+    private String luk;
     
-    a(ContactInfoUI paramContactInfoUI, String paramString)
+    b(ContactInfoUI paramContactInfoUI, String paramString)
     {
       AppMethodBeat.i(26978);
-      this.cNB = new WeakReference(paramContactInfoUI);
-      this.iSn = paramString;
+      this.eIW = new WeakReference(paramContactInfoUI);
+      this.luk = paramString;
       AppMethodBeat.o(26978);
     }
     
     public final void run()
     {
       AppMethodBeat.i(26979);
-      ContactInfoUI localContactInfoUI = (ContactInfoUI)this.cNB.get();
-      Log.i("MicroMsg.ContactInfoUI", "onNotifyChange contact %s", new Object[] { this.iSn });
+      ContactInfoUI localContactInfoUI = (ContactInfoUI)this.eIW.get();
+      Log.i("MicroMsg.ContactInfoUI", "onNotifyChange contact %s", new Object[] { this.luk });
       if ((localContactInfoUI == null) || (localContactInfoUI.isFinishing()) || (localContactInfoUI.isDestroyed()))
       {
         AppMethodBeat.o(26979);
         return;
       }
-      Log.i("MicroMsg.ContactInfoUI", "onNotifyChange verify:%b, contact.user:%s, notify.user:%s", new Object[] { Boolean.valueOf(ContactInfoUI.n(localContactInfoUI)), ContactInfoUI.h(localContactInfoUI).field_username, this.iSn });
-      if ((ContactInfoUI.h(localContactInfoUI) != null) && (!Util.isNullOrNil(ContactInfoUI.h(localContactInfoUI).field_username)) && ((ContactInfoUI.h(localContactInfoUI).field_username.equals(this.iSn)) || (ContactInfoUI.h(localContactInfoUI).field_username.equals(as.bvW(this.iSn)))))
+      Log.i("MicroMsg.ContactInfoUI", "onNotifyChange verify:%b, contact.user:%s, notify.user:%s", new Object[] { Boolean.valueOf(ContactInfoUI.p(localContactInfoUI)), ContactInfoUI.j(localContactInfoUI).field_username, this.luk });
+      if ((ContactInfoUI.j(localContactInfoUI) != null) && (!Util.isNullOrNil(ContactInfoUI.j(localContactInfoUI).field_username)) && ((ContactInfoUI.j(localContactInfoUI).field_username.equals(this.luk)) || (ContactInfoUI.j(localContactInfoUI).field_username.equals(au.bxd(this.luk)))))
       {
-        ContactInfoUI.a(localContactInfoUI, ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbL().RG(this.iSn));
-        if (ContactInfoUI.o(localContactInfoUI) != null)
+        ContactInfoUI.a(localContactInfoUI, ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzA().JE(this.luk));
+        if (ContactInfoUI.q(localContactInfoUI) != null)
         {
-          ContactInfoUI.o(localContactInfoUI).cQX();
-          ContactInfoUI.g(localContactInfoUI).removeAll();
+          ContactInfoUI.q(localContactInfoUI).dvq();
+          ContactInfoUI.r(localContactInfoUI);
+          ContactInfoUI.h(localContactInfoUI).removeAll();
         }
         localContactInfoUI.initView();
+        ContactInfoUI.s(localContactInfoUI);
       }
       AppMethodBeat.o(26979);
-    }
-  }
-  
-  static final class b
-    implements Runnable
-  {
-    private bq GXT;
-    private WeakReference<ContactInfoUI> cNB;
-    
-    b(ContactInfoUI paramContactInfoUI, bq parambq)
-    {
-      AppMethodBeat.i(291449);
-      this.cNB = new WeakReference(paramContactInfoUI);
-      this.GXT = parambq;
-      AppMethodBeat.o(291449);
-    }
-    
-    public final void run()
-    {
-      AppMethodBeat.i(291450);
-      ContactInfoUI localContactInfoUI = (ContactInfoUI)this.cNB.get();
-      Log.i("MicroMsg.ContactInfoUI", "onNotifyFriendUserChange user: %s", new Object[] { this.GXT });
-      if ((localContactInfoUI == null) || (localContactInfoUI.isFinishing()) || (localContactInfoUI.isDestroyed()))
-      {
-        AppMethodBeat.o(291450);
-        return;
-      }
-      String str2 = ContactInfoUI.h(localContactInfoUI).field_username;
-      if (this.GXT != null) {}
-      for (String str1 = this.GXT.field_encryptUsername;; str1 = "")
-      {
-        Log.i("MicroMsg.ContactInfoUI", "onNotifyFriendUserChange contact.user:%s, notify.user:%s, friendUser:%s", new Object[] { str2, str1, this.GXT.field_username });
-        if ((ContactInfoUI.h(localContactInfoUI) != null) && (this.GXT != null) && (!Util.isNullOrNil(ContactInfoUI.h(localContactInfoUI).field_username)) && (ContactInfoUI.h(localContactInfoUI).field_username.equals(this.GXT.field_encryptUsername)) && (!ab.QY(ContactInfoUI.h(localContactInfoUI).field_username)))
-        {
-          str1 = this.GXT.field_username;
-          if ((!Util.isNullOrNil(str1)) && (!str1.equals(ContactInfoUI.h(localContactInfoUI).field_username))) {
-            com.tencent.mm.plugin.report.service.h.IzE.el(1430, 4);
-          }
-          if (!Util.isNullOrNil(str1)) {
-            ContactInfoUI.a(localContactInfoUI, ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbL().RG(str1));
-          }
-          localContactInfoUI.getIntent().putExtra("Contact_User", ContactInfoUI.h(localContactInfoUI).field_username);
-          Log.i("MicroMsg.ContactInfoUI", "new contact user:%s", new Object[] { ContactInfoUI.h(localContactInfoUI).field_username });
-          if (ContactInfoUI.o(localContactInfoUI) != null)
-          {
-            ContactInfoUI.o(localContactInfoUI).cQX();
-            ContactInfoUI.g(localContactInfoUI).removeAll();
-          }
-          localContactInfoUI.initView();
-        }
-        AppMethodBeat.o(291450);
-        return;
-      }
     }
   }
   
   static final class c
     implements Runnable
   {
-    private co GXU;
-    private WeakReference<ContactInfoUI> cNB;
+    private bs MVW;
+    private WeakReference<ContactInfoUI> eIW;
     
-    c(ContactInfoUI paramContactInfoUI, co paramco)
+    c(ContactInfoUI paramContactInfoUI, bs parambs)
+    {
+      AppMethodBeat.i(305543);
+      this.eIW = new WeakReference(paramContactInfoUI);
+      this.MVW = parambs;
+      AppMethodBeat.o(305543);
+    }
+    
+    public final void run()
+    {
+      AppMethodBeat.i(305552);
+      ContactInfoUI localContactInfoUI = (ContactInfoUI)this.eIW.get();
+      Log.i("MicroMsg.ContactInfoUI", "onNotifyFriendUserChange user: %s", new Object[] { this.MVW });
+      if ((localContactInfoUI == null) || (localContactInfoUI.isFinishing()) || (localContactInfoUI.isDestroyed()))
+      {
+        AppMethodBeat.o(305552);
+        return;
+      }
+      String str2 = ContactInfoUI.j(localContactInfoUI).field_username;
+      if (this.MVW != null) {}
+      for (String str1 = this.MVW.field_encryptUsername;; str1 = "")
+      {
+        Log.i("MicroMsg.ContactInfoUI", "onNotifyFriendUserChange contact.user:%s, notify.user:%s, friendUser:%s", new Object[] { str2, str1, this.MVW.field_username });
+        if ((ContactInfoUI.j(localContactInfoUI) != null) && (this.MVW != null) && (!Util.isNullOrNil(ContactInfoUI.j(localContactInfoUI).field_username)) && (ContactInfoUI.j(localContactInfoUI).field_username.equals(this.MVW.field_encryptUsername)) && (!ab.IW(ContactInfoUI.j(localContactInfoUI).field_username)))
+        {
+          str1 = this.MVW.field_username;
+          if ((!Util.isNullOrNil(str1)) && (!str1.equals(ContactInfoUI.j(localContactInfoUI).field_username))) {
+            com.tencent.mm.plugin.report.service.h.OAn.kJ(1430, 4);
+          }
+          if (!Util.isNullOrNil(str1)) {
+            ContactInfoUI.a(localContactInfoUI, ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzA().JE(str1));
+          }
+          localContactInfoUI.getIntent().putExtra("Contact_User", ContactInfoUI.j(localContactInfoUI).field_username);
+          Log.i("MicroMsg.ContactInfoUI", "new contact user:%s", new Object[] { ContactInfoUI.j(localContactInfoUI).field_username });
+          if (ContactInfoUI.q(localContactInfoUI) != null)
+          {
+            ContactInfoUI.q(localContactInfoUI).dvq();
+            ContactInfoUI.h(localContactInfoUI).removeAll();
+          }
+          localContactInfoUI.initView();
+        }
+        AppMethodBeat.o(305552);
+        return;
+      }
+    }
+  }
+  
+  static final class d
+    implements Runnable
+  {
+    private cr MVX;
+    private WeakReference<ContactInfoUI> eIW;
+    
+    d(ContactInfoUI paramContactInfoUI, cr paramcr)
     {
       AppMethodBeat.i(26980);
-      this.cNB = new WeakReference(paramContactInfoUI);
-      this.GXU = paramco;
+      this.eIW = new WeakReference(paramContactInfoUI);
+      this.MVX = paramcr;
       AppMethodBeat.o(26980);
     }
     
     public final void run()
     {
       AppMethodBeat.i(26981);
-      ContactInfoUI localContactInfoUI = (ContactInfoUI)this.cNB.get();
-      Log.i("MicroMsg.ContactInfoUI", "onNotifyChange stranger %s", new Object[] { this.GXU });
+      ContactInfoUI localContactInfoUI = (ContactInfoUI)this.eIW.get();
+      Log.i("MicroMsg.ContactInfoUI", "onNotifyChange stranger %s", new Object[] { this.MVX });
       if ((localContactInfoUI == null) || (localContactInfoUI.isFinishing()) || (localContactInfoUI.isDestroyed()))
       {
         AppMethodBeat.o(26981);
         return;
       }
-      Log.i("MicroMsg.ContactInfoUI", "onNotifyChange verify:%b, contact.user:%s, notify.user:%s", new Object[] { Boolean.valueOf(ContactInfoUI.n(localContactInfoUI)), ContactInfoUI.h(localContactInfoUI).field_username, this.GXU });
-      if ((ContactInfoUI.h(localContactInfoUI) != null) && (this.GXU != null) && (!Util.isNullOrNil(ContactInfoUI.h(localContactInfoUI).field_username)) && (ContactInfoUI.h(localContactInfoUI).field_username.equals(this.GXU.field_encryptUsername)) && (!ab.QY(ContactInfoUI.h(localContactInfoUI).field_username)))
+      Log.i("MicroMsg.ContactInfoUI", "onNotifyChange verify:%b, contact.user:%s, notify.user:%s", new Object[] { Boolean.valueOf(ContactInfoUI.p(localContactInfoUI)), ContactInfoUI.j(localContactInfoUI).field_username, this.MVX });
+      if ((ContactInfoUI.j(localContactInfoUI) != null) && (this.MVX != null) && (!Util.isNullOrNil(ContactInfoUI.j(localContactInfoUI).field_username)) && (ContactInfoUI.j(localContactInfoUI).field_username.equals(this.MVX.field_encryptUsername)) && (!ab.IW(ContactInfoUI.j(localContactInfoUI).field_username)))
       {
-        ContactInfoUI.h(localContactInfoUI).Ir(this.GXU.field_conRemark);
-        localContactInfoUI.getIntent().putExtra("Contact_User", ContactInfoUI.h(localContactInfoUI).field_username);
-        if (ContactInfoUI.o(localContactInfoUI) != null)
+        ContactInfoUI.j(localContactInfoUI).AW(this.MVX.field_conRemark);
+        localContactInfoUI.getIntent().putExtra("Contact_User", ContactInfoUI.j(localContactInfoUI).field_username);
+        if (ContactInfoUI.q(localContactInfoUI) != null)
         {
-          ContactInfoUI.o(localContactInfoUI).cQX();
-          ContactInfoUI.g(localContactInfoUI).removeAll();
+          ContactInfoUI.q(localContactInfoUI).dvq();
+          ContactInfoUI.h(localContactInfoUI).removeAll();
         }
         localContactInfoUI.initView();
       }

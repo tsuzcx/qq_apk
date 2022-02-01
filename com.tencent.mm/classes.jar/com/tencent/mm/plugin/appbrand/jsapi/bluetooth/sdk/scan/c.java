@@ -1,7 +1,5 @@
 package com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan;
 
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothAdapter.LeScanCallback;
 import android.bluetooth.BluetoothDevice;
@@ -23,38 +21,37 @@ import java.util.List;
 import java.util.List<Lcom.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.ScanFilterCompat;>;
 import java.util.Map;
 
-@TargetApi(18)
 public final class c
 {
-  static final e oKo;
+  static final e rOh;
   
   static
   {
     AppMethodBeat.i(144618);
     int i = Build.VERSION.SDK_INT;
-    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.oIE)
+    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.rMn)
     {
       Log.i("MicroMsg.ble.BleScannerCompat", "use 18");
-      oKo = new a();
+      rOh = new a();
       AppMethodBeat.o(144618);
       return;
     }
     if (i >= 21)
     {
       Log.i("MicroMsg.ble.BleScannerCompat", "use 21");
-      oKo = new c();
+      rOh = new c();
       AppMethodBeat.o(144618);
       return;
     }
     Log.i("MicroMsg.ble.BleScannerCompat", "use 18");
-    oKo = new a();
+    rOh = new a();
     AppMethodBeat.o(144618);
   }
   
   public static boolean a(BluetoothAdapter paramBluetoothAdapter, h paramh)
   {
     AppMethodBeat.i(144617);
-    boolean bool = oKo.a(paramBluetoothAdapter, paramh);
+    boolean bool = rOh.a(paramBluetoothAdapter, paramh);
     AppMethodBeat.o(144617);
     return bool;
   }
@@ -62,29 +59,29 @@ public final class c
   public static boolean a(BluetoothAdapter paramBluetoothAdapter, List<ScanFilterCompat> paramList, ScanSettingsCompat paramScanSettingsCompat, h paramh)
   {
     AppMethodBeat.i(144616);
-    Log.i("MicroMsg.ble.BleScannerCompat", "scanMode: " + paramScanSettingsCompat.oLk);
-    boolean bool = oKo.a(paramBluetoothAdapter, paramList, paramScanSettingsCompat, paramh);
+    Log.i("MicroMsg.ble.BleScannerCompat", "scanMode: " + paramScanSettingsCompat.rPd);
+    boolean bool = rOh.a(paramBluetoothAdapter, paramList, paramScanSettingsCompat, paramh);
     AppMethodBeat.o(144616);
     return bool;
   }
   
-  @TargetApi(18)
+  @Deprecated
   static final class a
     implements c.e
   {
-    static final g<h, c.b> oKp;
+    static final g<h, c.b> rOi;
     
     static
     {
       AppMethodBeat.i(144606);
-      oKp = new g();
+      rOi = new g();
       AppMethodBeat.o(144606);
     }
     
     public final boolean a(BluetoothAdapter paramBluetoothAdapter, h paramh)
     {
       AppMethodBeat.i(144605);
-      paramh = (c.b)oKp.remove(paramh);
+      paramh = (c.b)rOi.remove(paramh);
       if (paramh == null)
       {
         AppMethodBeat.o(144605);
@@ -100,57 +97,58 @@ public final class c
       AppMethodBeat.i(144604);
       Log.i("MicroMsg.ble.BleScannerCompat", "[BluetoothTrace] start scan");
       Log.printErrStackTrace("MicroMsg.ble.BleScannerCompat", new Throwable(), "[BluetoothTrace] ble scan stacktrace", new Object[0]);
-      paramScanSettingsCompat = (c.b)oKp.get(paramh);
+      paramScanSettingsCompat = (c.b)rOi.get(paramh);
       if (paramScanSettingsCompat != null) {
         paramList = paramScanSettingsCompat;
       }
       for (;;)
       {
-        boolean bool = ((Boolean)com.tencent.mm.hellhoundlib.a.a.a(paramBluetoothAdapter, new com.tencent.mm.hellhoundlib.b.a().bm(paramList).aFh(), "com/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/scan/BleScanerCompat$API18BluetoothLeScannerCompatImpl", "startScan", "(Landroid/bluetooth/BluetoothAdapter;Ljava/util/List;Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/scan/ScanSettingsCompat;Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/scan/ScanCallbackCompat;)Z", "android/bluetooth/BluetoothAdapter", "startLeScan", "(Landroid/bluetooth/BluetoothAdapter$LeScanCallback;)Z")).booleanValue();
+        boolean bool = ((Boolean)com.tencent.mm.hellhoundlib.a.a.a(paramBluetoothAdapter, new com.tencent.mm.hellhoundlib.b.a().cG(paramList).aYi(), "com/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/scan/BleScanerCompat$API18BluetoothLeScannerCompatImpl", "startScan", "(Landroid/bluetooth/BluetoothAdapter;Ljava/util/List;Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/scan/ScanSettingsCompat;Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/scan/ScanCallbackCompat;)Z", "android/bluetooth/BluetoothAdapter", "startLeScan", "(Landroid/bluetooth/BluetoothAdapter$LeScanCallback;)Z")).booleanValue();
         AppMethodBeat.o(144604);
         return bool;
         paramList = new c.b(paramList, paramh);
-        oKp.put(paramh, paramList);
+        rOi.put(paramh, paramList);
       }
     }
   }
   
+  @Deprecated
   static final class b
     implements BluetoothAdapter.LeScanCallback
   {
-    private final List<ScanFilterCompat> oKq;
-    private final WeakReference<h> oKr;
+    private final List<ScanFilterCompat> rOj;
+    private final WeakReference<h> rOk;
     
     b(List<ScanFilterCompat> paramList, h paramh)
     {
       AppMethodBeat.i(144607);
-      this.oKq = paramList;
-      this.oKr = new WeakReference(paramh);
+      this.rOj = paramList;
+      this.rOk = new WeakReference(paramh);
       AppMethodBeat.o(144607);
     }
     
     public final void onLeScan(BluetoothDevice paramBluetoothDevice, int paramInt, byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(144608);
-      h localh = (h)this.oKr.get();
+      h localh = (h)this.rOk.get();
       if (localh == null)
       {
         AppMethodBeat.o(144608);
         return;
       }
       paramArrayOfByte = new ScanResultCompat(paramBluetoothDevice, i.aV(paramArrayOfByte), paramInt, System.currentTimeMillis());
-      if (this.oKq == null)
+      if (this.rOj == null)
       {
         localh.a(1, paramArrayOfByte);
         AppMethodBeat.o(144608);
         return;
       }
-      Iterator localIterator1 = this.oKq.iterator();
+      Iterator localIterator1 = this.rOj.iterator();
       while (localIterator1.hasNext())
       {
         ScanFilterCompat localScanFilterCompat = (ScanFilterCompat)localIterator1.next();
-        paramBluetoothDevice = paramArrayOfByte.bRf();
-        if ((localScanFilterCompat.oKO != null) && ((paramBluetoothDevice == null) || (!localScanFilterCompat.oKO.equals(paramBluetoothDevice.getAddress())))) {
+        paramBluetoothDevice = paramArrayOfByte.crn();
+        if ((localScanFilterCompat.rOH != null) && ((paramBluetoothDevice == null) || (!localScanFilterCompat.rOH.equals(paramBluetoothDevice.getAddress())))) {
           paramInt = 0;
         }
         while (paramInt != 0)
@@ -158,8 +156,8 @@ public final class c
           localh.a(1, paramArrayOfByte);
           AppMethodBeat.o(144608);
           return;
-          i locali = paramArrayOfByte.oLh;
-          if ((locali == null) && ((localScanFilterCompat.mDeviceName != null) || (localScanFilterCompat.oKP != null) || (localScanFilterCompat.oKV != null) || (localScanFilterCompat.oKS != null) || (localScanFilterCompat.oKR != null) || (localScanFilterCompat.oKU >= 0)))
+          i locali = paramArrayOfByte.rPa;
+          if ((locali == null) && ((localScanFilterCompat.mDeviceName != null) || (localScanFilterCompat.rOI != null) || (localScanFilterCompat.rOO != null) || (localScanFilterCompat.rOL != null) || (localScanFilterCompat.rOK != null) || (localScanFilterCompat.rON >= 0)))
           {
             paramInt = 0;
           }
@@ -171,11 +169,11 @@ public final class c
           {
             Object localObject1;
             Object localObject2;
-            if (localScanFilterCompat.oKP != null)
+            if (localScanFilterCompat.rOI != null)
             {
-              localObject1 = localScanFilterCompat.oKP;
-              localObject2 = localScanFilterCompat.oKQ;
-              paramBluetoothDevice = locali.oLa;
+              localObject1 = localScanFilterCompat.rOI;
+              localObject2 = localScanFilterCompat.rOJ;
+              paramBluetoothDevice = locali.rOT;
               if (localObject1 == null) {
                 paramInt = 1;
               }
@@ -212,13 +210,13 @@ public final class c
               }
             }
             label363:
-            if (localScanFilterCompat.oKR != null)
+            if (localScanFilterCompat.rOK != null)
             {
-              localObject1 = localScanFilterCompat.oKS;
-              localObject2 = localScanFilterCompat.oKT;
-              paramBluetoothDevice = localScanFilterCompat.oKR;
+              localObject1 = localScanFilterCompat.rOL;
+              localObject2 = localScanFilterCompat.rOM;
+              paramBluetoothDevice = localScanFilterCompat.rOK;
               if (paramBluetoothDevice == null) {}
-              for (paramBluetoothDevice = null;; paramBluetoothDevice = (byte[])locali.oLc.get(paramBluetoothDevice))
+              for (paramBluetoothDevice = null;; paramBluetoothDevice = (byte[])locali.rOV.get(paramBluetoothDevice))
               {
                 if (ScanFilterCompat.a((byte[])localObject1, (byte[])localObject2, paramBluetoothDevice)) {
                   break label431;
@@ -228,19 +226,19 @@ public final class c
               }
             }
             label431:
-            if ((localScanFilterCompat.oKU >= 0) && (locali != null))
+            if ((localScanFilterCompat.rON >= 0) && (locali != null))
             {
-              if (com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.bQQ().oIF) {
-                paramInt = localScanFilterCompat.oKU;
+              if (com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.cqY().rMo) {
+                paramInt = localScanFilterCompat.rON;
               }
-              for (paramBluetoothDevice = (byte[])locali.oLf.get(paramInt);; paramBluetoothDevice = (byte[])locali.oLb.get(paramInt))
+              for (paramBluetoothDevice = (byte[])locali.rOY.get(paramInt);; paramBluetoothDevice = (byte[])locali.rOU.get(paramInt))
               {
-                if (ScanFilterCompat.a(localScanFilterCompat.oKV, localScanFilterCompat.oKW, paramBluetoothDevice)) {
+                if (ScanFilterCompat.a(localScanFilterCompat.rOO, localScanFilterCompat.rOP, paramBluetoothDevice)) {
                   break label516;
                 }
                 paramInt = 0;
                 break;
-                paramInt = localScanFilterCompat.oKU;
+                paramInt = localScanFilterCompat.rON;
               }
             }
             label516:
@@ -252,24 +250,22 @@ public final class c
     }
   }
   
-  @SuppressLint({"MissingPermission"})
-  @TargetApi(21)
   static final class c
     implements c.e
   {
-    static final g<h, c.d> oKp;
+    static final g<h, c.d> rOi;
     
     static
     {
       AppMethodBeat.i(144611);
-      oKp = new g();
+      rOi = new g();
       AppMethodBeat.o(144611);
     }
     
     public final boolean a(BluetoothAdapter paramBluetoothAdapter, h paramh)
     {
       AppMethodBeat.i(144610);
-      paramh = (c.d)oKp.remove(paramh);
+      paramh = (c.d)rOi.remove(paramh);
       if (paramh == null)
       {
         AppMethodBeat.o(144610);
@@ -304,17 +300,17 @@ public final class c
           if (paramList.mDeviceName != null) {
             localBuilder.setDeviceName(paramList.mDeviceName);
           }
-          if (paramList.oKP != null) {
-            localBuilder.setServiceUuid(paramList.oKP, paramList.oKQ);
+          if (paramList.rOI != null) {
+            localBuilder.setServiceUuid(paramList.rOI, paramList.rOJ);
           }
-          if (paramList.oKO != null) {
-            localBuilder.setDeviceAddress(paramList.oKO);
+          if (paramList.rOH != null) {
+            localBuilder.setDeviceAddress(paramList.rOH);
           }
-          if (paramList.oKR != null) {
-            localBuilder.setServiceData(paramList.oKR, paramList.oKS, paramList.oKT);
+          if (paramList.rOK != null) {
+            localBuilder.setServiceData(paramList.rOK, paramList.rOL, paramList.rOM);
           }
-          if (paramList.oKU < 0) {
-            localBuilder.setManufacturerData(paramList.oKU, paramList.oKV, paramList.oKW);
+          if (paramList.rON < 0) {
+            localBuilder.setManufacturerData(paramList.rON, paramList.rOO, paramList.rOP);
           }
           ((List)localObject).add(localBuilder.build());
         }
@@ -326,7 +322,7 @@ public final class c
         AppMethodBeat.o(144609);
         throw paramBluetoothAdapter;
       }
-      paramScanSettingsCompat = new ScanSettings.Builder().setReportDelay(paramScanSettingsCompat.oLm).setScanMode(paramScanSettingsCompat.oLk).build();
+      paramScanSettingsCompat = new ScanSettings.Builder().setReportDelay(paramScanSettingsCompat.rPf).setScanMode(paramScanSettingsCompat.rPd).build();
       if (paramBluetoothAdapter.getBluetoothLeScanner() == null)
       {
         Log.e("MicroMsg.ble.BleScannerCompat", "bluetoothscanner is null, return");
@@ -336,36 +332,35 @@ public final class c
       Log.i("MicroMsg.ble.BleScannerCompat", "[BluetoothTrace] start scan");
       Log.printErrStackTrace("MicroMsg.ble.BleScannerCompat", new Throwable(), "[BluetoothTrace] ble scan stacktrace", new Object[0]);
       Object localObject = paramBluetoothAdapter.getBluetoothLeScanner();
-      paramBluetoothAdapter = (c.d)oKp.get(paramh);
+      paramBluetoothAdapter = (c.d)rOi.get(paramh);
       if (paramBluetoothAdapter != null) {}
       for (;;)
       {
-        com.tencent.mm.hellhoundlib.a.a.a(localObject, new com.tencent.mm.hellhoundlib.b.a().bm(paramBluetoothAdapter).bm(paramScanSettingsCompat).bm(paramList).aFh(), "com/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/scan/BleScanerCompat$API21BluetoothLeScannerCompatImpl", "startScan", "(Landroid/bluetooth/BluetoothAdapter;Ljava/util/List;Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/scan/ScanSettingsCompat;Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/scan/ScanCallbackCompat;)Z", "android/bluetooth/le/BluetoothLeScanner", "startScan", "(Ljava/util/List;Landroid/bluetooth/le/ScanSettings;Landroid/bluetooth/le/ScanCallback;)V");
+        com.tencent.mm.hellhoundlib.a.a.a(localObject, new com.tencent.mm.hellhoundlib.b.a().cG(paramBluetoothAdapter).cG(paramScanSettingsCompat).cG(paramList).aYi(), "com/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/scan/BleScanerCompat$API21BluetoothLeScannerCompatImpl", "startScan", "(Landroid/bluetooth/BluetoothAdapter;Ljava/util/List;Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/scan/ScanSettingsCompat;Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/scan/ScanCallbackCompat;)Z", "android/bluetooth/le/BluetoothLeScanner", "startScan", "(Ljava/util/List;Landroid/bluetooth/le/ScanSettings;Landroid/bluetooth/le/ScanCallback;)V");
         AppMethodBeat.o(144609);
         return true;
         paramBluetoothAdapter = new c.d(paramh);
-        oKp.put(paramh, paramBluetoothAdapter);
+        rOi.put(paramh, paramBluetoothAdapter);
       }
     }
   }
   
-  @TargetApi(21)
   static final class d
     extends ScanCallback
   {
-    private final WeakReference<h> oKr;
+    private final WeakReference<h> rOk;
     
     d(h paramh)
     {
       AppMethodBeat.i(144612);
-      this.oKr = new WeakReference(paramh);
+      this.rOk = new WeakReference(paramh);
       AppMethodBeat.o(144612);
     }
     
     public final void onBatchScanResults(List<ScanResult> paramList)
     {
       AppMethodBeat.i(144614);
-      if ((h)this.oKr.get() == null)
+      if ((h)this.rOk.get() == null)
       {
         AppMethodBeat.o(144614);
         return;
@@ -381,7 +376,7 @@ public final class c
     public final void onScanFailed(int paramInt)
     {
       AppMethodBeat.i(144615);
-      h localh = (h)this.oKr.get();
+      h localh = (h)this.rOk.get();
       if (localh != null) {
         localh.onScanFailed(paramInt);
       }
@@ -391,7 +386,7 @@ public final class c
     public final void onScanResult(int paramInt, ScanResult paramScanResult)
     {
       AppMethodBeat.i(144613);
-      h localh = (h)this.oKr.get();
+      h localh = (h)this.rOk.get();
       if (localh != null) {
         localh.a(paramInt, new ScanResultCompat(paramScanResult));
       }
@@ -408,7 +403,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.c
  * JD-Core Version:    0.7.0.1
  */

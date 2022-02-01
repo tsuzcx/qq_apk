@@ -1,34 +1,14 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.content.Context;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
-import com.tencent.mm.plugin.appbrand.platform.window.c;
+import com.tencent.mm.ui.bb;
 
 public abstract interface ak
 {
-  public abstract void C(AppBrandRuntime paramAppBrandRuntime);
-  
-  public abstract void a(AppBrandRuntime paramAppBrandRuntime, AppBrandInitConfig paramAppBrandInitConfig);
-  
-  public abstract void a(AppBrandRuntime paramAppBrandRuntime, Object paramObject);
-  
-  public abstract AppBrandRuntime getActiveRuntime();
-  
-  public abstract Context getContext();
-  
-  public abstract int getStackSize();
-  
-  public abstract c getWindowAndroid();
-  
-  public abstract AppBrandRuntime w(AppBrandRuntime paramAppBrandRuntime);
-  
-  public abstract boolean x(AppBrandRuntime paramAppBrandRuntime);
-  
-  public abstract void y(AppBrandRuntime paramAppBrandRuntime);
+  public static final int qxA = bb.av(855638016, -855310);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ak
  * JD-Core Version:    0.7.0.1
  */

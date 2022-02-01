@@ -17,49 +17,49 @@ import com.tencent.mm.sdk.platformtools.MMHandler;
 public final class e
   extends b
 {
-  private volatile boolean DnD;
-  private int DnE;
-  private int DnF;
-  private int[] DnG;
-  private Bitmap DnH;
-  private boolean DnI;
-  boolean DnJ;
-  private String DnK;
-  int DnL;
-  private j DnM;
-  private float Dnb;
-  private float Dnc;
-  private boolean Dnd;
-  private long Dno;
-  private final Runnable Dnw;
-  private final Runnable Dnx;
-  private final Rect KV;
-  private MMHandler cyl;
-  boolean jxX;
+  private float JgL;
+  private float JgM;
+  private boolean JgN;
+  private long JgY;
+  private final Runnable Jhg;
+  private final Runnable Jhh;
+  private volatile boolean Jhn;
+  private int Jho;
+  private int Jhp;
+  private int[] Jhq;
+  private Bitmap Jhr;
+  private boolean Jhs;
+  boolean Jht;
+  private String Jhu;
+  private j Jhv;
+  private final Rect bre;
+  int crG;
+  private MMHandler eqE;
   private Context mContext;
   private int mHeight;
   private final Paint mPaint;
   private Resources mResources;
   private int mWidth;
-  int uPV;
+  boolean qRV;
+  int xYG;
   
   public e(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, int paramInt, int[] paramArrayOfInt, String paramString)
   {
     AppMethodBeat.i(104644);
-    this.DnD = false;
-    this.uPV = 0;
-    this.DnH = null;
-    this.DnI = false;
-    this.jxX = true;
-    this.DnJ = true;
-    this.DnL = 0;
-    this.Dnb = 1.0F;
-    this.Dnc = 1.0F;
-    this.KV = new Rect();
+    this.Jhn = false;
+    this.xYG = 0;
+    this.Jhr = null;
+    this.Jhs = false;
+    this.qRV = true;
+    this.Jht = true;
+    this.crG = 0;
+    this.JgL = 1.0F;
+    this.JgM = 1.0F;
+    this.bre = new Rect();
     this.mPaint = new Paint(6);
-    this.cyl = new MMHandler(Looper.getMainLooper());
-    this.Dno = 0L;
-    this.Dnx = new Runnable()
+    this.eqE = new MMHandler(Looper.getMainLooper());
+    this.JgY = 0L;
+    this.Jhh = new Runnable()
     {
       public final void run()
       {
@@ -70,7 +70,7 @@ public final class e
         AppMethodBeat.o(104642);
       }
     };
-    this.Dnw = new Runnable()
+    this.Jhg = new Runnable()
     {
       public final void run()
       {
@@ -83,33 +83,33 @@ public final class e
     };
     this.mContext = paramContext;
     this.mResources = this.mContext.getResources();
-    this.DnI = false;
-    this.jxX = paramBoolean1;
-    this.DnJ = paramBoolean2;
-    this.DnK = paramString;
-    this.DnF = paramInt;
-    this.DnG = paramArrayOfInt;
+    this.Jhs = false;
+    this.qRV = paramBoolean1;
+    this.Jht = paramBoolean2;
+    this.Jhu = paramString;
+    this.Jhp = paramInt;
+    this.Jhq = paramArrayOfInt;
     if (!paramBoolean1)
     {
-      this.DnH = Ug(aKS(paramString));
-      if (this.DnH == null) {
+      this.Jhr = Yd(aHJ(paramString));
+      if (this.Jhr == null) {
         break label261;
       }
-      this.mWidth = this.DnH.getWidth();
-      this.mHeight = this.DnH.getHeight();
+      this.mWidth = this.Jhr.getWidth();
+      this.mHeight = this.Jhr.getHeight();
       label217:
-      if (this.DnG.length != 3) {
+      if (this.Jhq.length != 3) {
         break label274;
       }
     }
     label261:
     label274:
-    for (this.DnE = 300;; this.DnE = 100)
+    for (this.Jho = 300;; this.Jho = 100)
     {
-      this.DnL = 0;
+      this.crG = 0;
       AppMethodBeat.o(104644);
       return;
-      this.DnH = Ug(this.DnG[0]);
+      this.Jhr = Yd(this.Jhq[0]);
       break;
       this.mWidth = 1;
       this.mHeight = 1;
@@ -117,7 +117,7 @@ public final class e
     }
   }
   
-  private Bitmap Ug(int paramInt)
+  private Bitmap Yd(int paramInt)
   {
     AppMethodBeat.i(104651);
     Bitmap localBitmap = BitmapFactory.decodeResource(this.mResources, paramInt);
@@ -125,7 +125,7 @@ public final class e
     return localBitmap;
   }
   
-  private int aKS(String paramString)
+  private int aHJ(String paramString)
   {
     AppMethodBeat.i(104652);
     String str = paramString.split("\\.")[0];
@@ -135,12 +135,12 @@ public final class e
     return i;
   }
   
-  private void k(Runnable paramRunnable, long paramLong)
+  private void l(Runnable paramRunnable, long paramLong)
   {
     AppMethodBeat.i(104646);
-    this.Dno = (SystemClock.uptimeMillis() + paramLong);
-    if (this.cyl != null) {
-      this.cyl.postDelayed(paramRunnable, paramLong);
+    this.JgY = (SystemClock.uptimeMillis() + paramLong);
+    if (this.eqE != null) {
+      this.eqE.postDelayed(paramRunnable, paramLong);
     }
     AppMethodBeat.o(104646);
   }
@@ -148,68 +148,68 @@ public final class e
   public final void draw(Canvas paramCanvas)
   {
     AppMethodBeat.i(104645);
-    if (this.Dnd)
+    if (this.JgN)
     {
-      this.KV.set(getBounds());
-      this.Dnb = (this.KV.width() / this.mWidth);
-      this.Dnc = (this.KV.height() / this.mHeight);
-      this.Dnd = false;
+      this.bre.set(getBounds());
+      this.JgL = (this.bre.width() / this.mWidth);
+      this.JgM = (this.bre.height() / this.mHeight);
+      this.JgN = false;
     }
     if (this.mPaint.getShader() == null)
     {
-      paramCanvas.scale(this.Dnb, this.Dnc);
-      if (this.DnI)
+      paramCanvas.scale(this.JgL, this.JgM);
+      if (this.Jhs)
       {
-        this.DnH = Ug(this.DnF);
-        if ((this.DnH != null) && (!this.DnH.isRecycled()))
+        this.Jhr = Yd(this.Jhp);
+        if ((this.Jhr != null) && (!this.Jhr.isRecycled()))
         {
-          paramCanvas.drawBitmap(this.DnH, 0.0F, 0.0F, this.mPaint);
+          paramCanvas.drawBitmap(this.Jhr, 0.0F, 0.0F, this.mPaint);
           AppMethodBeat.o(104645);
         }
       }
-      else if (!this.jxX)
+      else if (!this.qRV)
       {
-        this.DnH = Ug(aKS(this.DnK));
-        if ((this.DnH != null) && (!this.DnH.isRecycled()))
+        this.Jhr = Yd(aHJ(this.Jhu));
+        if ((this.Jhr != null) && (!this.Jhr.isRecycled()))
         {
-          paramCanvas.drawBitmap(this.DnH, 0.0F, 0.0F, this.mPaint);
+          paramCanvas.drawBitmap(this.Jhr, 0.0F, 0.0F, this.mPaint);
           AppMethodBeat.o(104645);
         }
       }
       else
       {
-        this.DnH = Ug(this.DnG[this.uPV]);
-        if ((this.DnH != null) && (!this.DnH.isRecycled())) {
-          paramCanvas.drawBitmap(this.DnH, 0.0F, 0.0F, this.mPaint);
+        this.Jhr = Yd(this.Jhq[this.xYG]);
+        if ((this.Jhr != null) && (!this.Jhr.isRecycled())) {
+          paramCanvas.drawBitmap(this.Jhr, 0.0F, 0.0F, this.mPaint);
         }
-        this.uPV += 1;
-        if (this.DnL < 3)
+        this.xYG += 1;
+        if (this.crG < 3)
         {
-          if (this.uPV >= this.DnG.length)
+          if (this.xYG >= this.Jhq.length)
           {
-            this.uPV = 0;
-            if (this.DnJ) {
+            this.xYG = 0;
+            if (this.Jht) {
               break label316;
             }
           }
           label316:
-          for (this.DnL = 0;; this.DnL += 1)
+          for (this.crG = 0;; this.crG += 1)
           {
-            k(this.Dnx, this.DnE);
+            l(this.Jhh, this.Jho);
             AppMethodBeat.o(104645);
             return;
           }
         }
-        this.jxX = false;
-        k(this.Dnx, this.DnE);
-        k(this.Dnw, 0L);
+        this.qRV = false;
+        l(this.Jhh, this.Jho);
+        l(this.Jhg, 0L);
         AppMethodBeat.o(104645);
       }
     }
     else
     {
       Log.i("MicroMsg.GIF.MMGIFGameDrawable", "shader is not null.");
-      paramCanvas.drawRect(this.KV, this.mPaint);
+      paramCanvas.drawRect(this.bre, this.mPaint);
     }
     AppMethodBeat.o(104645);
   }
@@ -217,7 +217,7 @@ public final class e
   protected final void finalize()
   {
     AppMethodBeat.i(104653);
-    this.DnM = null;
+    this.Jhv = null;
     super.finalize();
     AppMethodBeat.o(104653);
   }
@@ -239,14 +239,14 @@ public final class e
   
   public final boolean isRunning()
   {
-    return this.DnD;
+    return this.Jhn;
   }
   
   protected final void onBoundsChange(Rect paramRect)
   {
     AppMethodBeat.i(104649);
     super.onBoundsChange(paramRect);
-    this.Dnd = true;
+    this.JgN = true;
     AppMethodBeat.o(104649);
   }
   
@@ -275,14 +275,14 @@ public final class e
   public final void start()
   {
     AppMethodBeat.i(104650);
-    this.DnD = true;
-    this.cyl.post(this.Dnx);
+    this.Jhn = true;
+    this.eqE.post(this.Jhh);
     AppMethodBeat.o(104650);
   }
   
   public final void stop()
   {
-    this.DnD = false;
+    this.Jhn = false;
   }
 }
 

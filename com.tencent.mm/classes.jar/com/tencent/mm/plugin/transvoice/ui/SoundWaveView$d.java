@@ -7,9 +7,9 @@ public enum SoundWaveView$d
   static
   {
     AppMethodBeat.i(185287);
-    NiI = new d("NORMAL", 0);
-    NiJ = new d("MINI", 1);
-    NiK = new d[] { NiI, NiJ };
+    TVG = new d("NORMAL", 0);
+    TVH = new d("MINI", 1);
+    TVI = new d[] { TVG, TVH };
     AppMethodBeat.o(185287);
   }
   
@@ -17,7 +17,7 @@ public enum SoundWaveView$d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.transvoice.ui.SoundWaveView.d
  * JD-Core Version:    0.7.0.1
  */

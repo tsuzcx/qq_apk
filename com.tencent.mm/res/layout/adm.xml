@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:id="@id/cb0" android:paddingTop="@dimen/ct" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mz">
-        <ImageView android:id="@id/x1" android:layout_width="@dimen/aw" android:layout_height="@dimen/aw" android:src="@drawable/bca" />
-        <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/e23" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:layout_toRightOf="@id/x1" android:layout_centerVertical="true">
-            <TextView android:ellipsize="end" android:id="@id/fzg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toTopOf="g8m" style="@style/xn" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-        <ImageView android:background="@drawable/a75" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cq" android:layout_alignParentBottom="true" />
-    </RelativeLayout>
-</LinearLayout>
+<com.tencent.mm.view.TouchableLayout android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/daf" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:layout_gravity="center_horizontal" android:id="@id/cj6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/db" android:text="@string/gaq" style="@style/i4" />
+    <com.tencent.mm.ui.widget.MMProcessBar android:layout_gravity="center_horizontal" android:id="@id/g3_" android:background="@drawable/ad5" android:visibility="gone" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:layout_marginTop="@dimen/db" />
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/a7b" android:gravity="center_horizontal" android:id="@id/isj" android:paddingTop="@dimen/db" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/etr" />
+</com.tencent.mm.view.TouchableLayout>

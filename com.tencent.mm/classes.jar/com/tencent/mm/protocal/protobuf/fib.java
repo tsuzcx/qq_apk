@@ -1,91 +1,128 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class fib
-  extends com.tencent.mm.cd.a
+  extends erp
 {
-  public String InB;
-  public int type;
-  public String url;
-  public String username;
+  public String UserName;
+  public String YFk;
+  public gol abIR;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(250454);
+    AppMethodBeat.i(118435);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.type);
-      if (this.url != null) {
-        paramVarArgs.f(2, this.url);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.username != null) {
-        paramVarArgs.f(3, this.username);
+      if (this.UserName != null) {
+        paramVarArgs.g(2, this.UserName);
       }
-      if (this.InB != null) {
-        paramVarArgs.f(4, this.InB);
+      if (this.YFk != null) {
+        paramVarArgs.g(3, this.YFk);
       }
-      AppMethodBeat.o(250454);
+      if (this.abIR != null)
+      {
+        paramVarArgs.qD(4, this.abIR.computeSize());
+        this.abIR.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(118435);
       return 0;
     }
-    if (paramInt == 1)
+    if (paramInt == 1) {
+      if (this.BaseRequest == null) {
+        break label538;
+      }
+    }
+    label538:
+    for (int i = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
-      int i = g.a.a.b.b.a.bM(1, this.type) + 0;
       paramInt = i;
-      if (this.url != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.url);
+      if (this.UserName != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.UserName);
       }
       i = paramInt;
-      if (this.username != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.username);
+      if (this.YFk != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.YFk);
       }
       paramInt = i;
-      if (this.InB != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.InB);
+      if (this.abIR != null) {
+        paramInt = i + i.a.a.a.qC(4, this.abIR.computeSize());
       }
-      AppMethodBeat.o(250454);
+      AppMethodBeat.o(118435);
       return paramInt;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
-      }
-      AppMethodBeat.o(250454);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      fib localfib = (fib)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(250454);
-        return -1;
-      case 1: 
-        localfib.type = locala.abFh.AK();
-        AppMethodBeat.o(250454);
-        return 0;
-      case 2: 
-        localfib.url = locala.abFh.readString();
-        AppMethodBeat.o(250454);
-        return 0;
-      case 3: 
-        localfib.username = locala.abFh.readString();
-        AppMethodBeat.o(250454);
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(118435);
         return 0;
       }
-      localfib.InB = locala.abFh.readString();
-      AppMethodBeat.o(250454);
-      return 0;
+      if (paramInt == 3)
+      {
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
+        fib localfib = (fib)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(118435);
+          return -1;
+        case 1: 
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new kc();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((kc)localObject2).parseFrom((byte[])localObject1);
+            }
+            localfib.BaseRequest = ((kc)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(118435);
+          return 0;
+        case 2: 
+          localfib.UserName = ((i.a.a.a.a)localObject1).ajGk.readString();
+          AppMethodBeat.o(118435);
+          return 0;
+        case 3: 
+          localfib.YFk = ((i.a.a.a.a)localObject1).ajGk.readString();
+          AppMethodBeat.o(118435);
+          return 0;
+        }
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new gol();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((gol)localObject2).dg((byte[])localObject1);
+          }
+          localfib.abIR = ((gol)localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(118435);
+        return 0;
+      }
+      AppMethodBeat.o(118435);
+      return -1;
     }
-    AppMethodBeat.o(250454);
-    return -1;
   }
 }
 

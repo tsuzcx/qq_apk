@@ -17,7 +17,7 @@ public final class k
   
   public final int b(k paramk)
   {
-    return c.r(this.data, paramk.data);
+    return c.s(this.data, paramk.data);
   }
   
   public final boolean equals(Object paramObject)
@@ -36,7 +36,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.tinker.a.a.k
  * JD-Core Version:    0.7.0.1
  */

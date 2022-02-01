@@ -4,19 +4,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public float[] fkN;
+  public float[] hpa;
   public long timestamp;
   
   public b()
   {
-    AppMethodBeat.i(207648);
-    this.fkN = new float[3];
-    AppMethodBeat.o(207648);
+    AppMethodBeat.i(212138);
+    this.hpa = new float[3];
+    AppMethodBeat.o(212138);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.h.a.b.c.b.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,15 +2,9 @@
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true">
-        <shape android:shape="rectangle">
-            <solid android:color="@color/q9" />
-            <corners android:radius="4.0dip" />
-        </shape>
+        <color android:color="@color/UN_BW_0_Alpha_0_2" />
     </item>
     <item>
-        <shape android:shape="rectangle">
-            <solid android:color="@color/q5" />
-            <corners android:radius="4.0dip" />
-        </shape>
+        <color android:color="@color/ahb" />
     </item>
 </selector>

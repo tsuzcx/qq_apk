@@ -33,7 +33,7 @@ public class TAVAudioConfiguration
   
   public TAVAudioConfiguration(float paramFloat, List<TAVAudioProcessorNode> paramList, List<VolumeEdge> paramList1)
   {
-    AppMethodBeat.i(212392);
+    AppMethodBeat.i(218921);
     this.volume = paramFloat;
     this.nodes = new ArrayList();
     if (paramList != null) {
@@ -43,7 +43,7 @@ public class TAVAudioConfiguration
     if (paramList1 != null) {
       this.volumeEdges.addAll(paramList1);
     }
-    AppMethodBeat.o(212392);
+    AppMethodBeat.o(218921);
   }
   
   public TAVAudioConfiguration(List<VolumeEdge> paramList)
@@ -53,31 +53,31 @@ public class TAVAudioConfiguration
   
   public void addAudioProcessorNode(TAVAudioProcessorNode paramTAVAudioProcessorNode)
   {
-    AppMethodBeat.i(212403);
+    AppMethodBeat.i(218962);
     this.nodes.add(paramTAVAudioProcessorNode);
-    AppMethodBeat.o(212403);
+    AppMethodBeat.o(218962);
   }
   
   public void addVolumeEdge(VolumeEdge paramVolumeEdge)
   {
-    AppMethodBeat.i(212395);
+    AppMethodBeat.i(218929);
     if (paramVolumeEdge == null)
     {
-      AppMethodBeat.o(212395);
+      AppMethodBeat.o(218929);
       return;
     }
     if (this.volumeEdges == null) {
       this.volumeEdges = new ArrayList();
     }
     this.volumeEdges.add(0, paramVolumeEdge);
-    AppMethodBeat.o(212395);
+    AppMethodBeat.o(218929);
   }
   
   public TAVAudioConfiguration clone()
   {
-    AppMethodBeat.i(212405);
+    AppMethodBeat.i(218978);
     TAVAudioConfiguration localTAVAudioConfiguration = new TAVAudioConfiguration(this.volume, this.nodes);
-    AppMethodBeat.o(212405);
+    AppMethodBeat.o(218978);
     return localTAVAudioConfiguration;
   }
   
@@ -103,17 +103,17 @@ public class TAVAudioConfiguration
   
   public float getVolume(CMTime paramCMTime)
   {
-    AppMethodBeat.i(212399);
+    AppMethodBeat.i(218950);
     if ((this.startVolumeEdge != null) && (this.startVolumeEdge.getTimeRange() != null) && (this.startVolumeEdge.getTimeRange().containsTime(paramCMTime)))
     {
       f = this.startVolumeEdge.getVolume(paramCMTime.sub(this.startVolumeEdge.getTimeRange().getStart()));
-      AppMethodBeat.o(212399);
+      AppMethodBeat.o(218950);
       return f;
     }
     if ((this.endVolumeEdge != null) && (this.endVolumeEdge.getTimeRange() != null) && (this.endVolumeEdge.getTimeRange().containsTime(paramCMTime)))
     {
       f = this.endVolumeEdge.getVolume(paramCMTime.sub(this.endVolumeEdge.getTimeRange().getStart()));
-      AppMethodBeat.o(212399);
+      AppMethodBeat.o(218950);
       return f;
     }
     if ((this.volumeEdges != null) && (!this.volumeEdges.isEmpty()))
@@ -125,24 +125,24 @@ public class TAVAudioConfiguration
         if ((localVolumeEdge != null) && (localVolumeEdge.getTimeRange() != null) && (localVolumeEdge.getTimeRange().containsTime(paramCMTime)))
         {
           f = localVolumeEdge.getVolume(paramCMTime.sub(localVolumeEdge.getTimeRange().getStart()));
-          AppMethodBeat.o(212399);
+          AppMethodBeat.o(218950);
           return f;
         }
       }
     }
     float f = this.volume;
-    AppMethodBeat.o(212399);
+    AppMethodBeat.o(218950);
     return f;
   }
   
   public void setAudioProcessorNodes(List<TAVAudioProcessorNode> paramList)
   {
-    AppMethodBeat.i(212404);
+    AppMethodBeat.i(218969);
     this.nodes.clear();
     if (paramList != null) {
       this.nodes.addAll(paramList);
     }
-    AppMethodBeat.o(212404);
+    AppMethodBeat.o(218969);
   }
   
   public void setEndVolumeEdge(VolumeEdge paramVolumeEdge)
@@ -162,9 +162,9 @@ public class TAVAudioConfiguration
   
   public String toString()
   {
-    AppMethodBeat.i(212412);
+    AppMethodBeat.i(219004);
     String str = "TAVAudioConfiguration{volume=" + this.volume + ", startVolumeEdge=" + this.startVolumeEdge + ", endVolumeEdge=" + this.endVolumeEdge + ", nodes=" + this.nodes + '}';
-    AppMethodBeat.o(212412);
+    AppMethodBeat.o(219004);
     return str;
   }
   
@@ -178,11 +178,11 @@ public class TAVAudioConfiguration
     
     public VolumeEdge(CMTime paramCMTime, float paramFloat1, float paramFloat2)
     {
-      AppMethodBeat.i(212350);
+      AppMethodBeat.i(218904);
       this.timeRange = new CMTimeRange(CMTime.CMTimeZero, paramCMTime);
       this.startVolume = paramFloat1;
       this.endVolume = paramFloat2;
-      AppMethodBeat.o(212350);
+      AppMethodBeat.o(218904);
     }
     
     public VolumeEdge(CMTimeRange paramCMTimeRange, float paramFloat1, float paramFloat2)
@@ -194,15 +194,15 @@ public class TAVAudioConfiguration
     
     public CMTime getDuration()
     {
-      AppMethodBeat.i(212362);
+      AppMethodBeat.i(218932);
       if (this.timeRange != null)
       {
         localCMTime = this.timeRange.getDuration();
-        AppMethodBeat.o(212362);
+        AppMethodBeat.o(218932);
         return localCMTime;
       }
       CMTime localCMTime = CMTime.CMTimeZero;
-      AppMethodBeat.o(212362);
+      AppMethodBeat.o(218932);
       return localCMTime;
     }
     
@@ -223,21 +223,21 @@ public class TAVAudioConfiguration
     
     public float getVolume(CMTime paramCMTime)
     {
-      AppMethodBeat.i(212374);
+      AppMethodBeat.i(218971);
       long l = paramCMTime.getTimeUs();
       float f1 = this.startVolume;
       float f2 = this.endVolume;
       float f3 = this.startVolume;
       float f4 = (float)l * 1.0F / (float)getDuration().getTimeUs();
-      AppMethodBeat.o(212374);
+      AppMethodBeat.o(218971);
       return f4 * (f2 - f3) + f1;
     }
     
     public void setDuration(CMTime paramCMTime)
     {
-      AppMethodBeat.i(212367);
+      AppMethodBeat.i(218951);
       this.timeRange = new CMTimeRange(CMTime.CMTimeZero, paramCMTime);
-      AppMethodBeat.o(212367);
+      AppMethodBeat.o(218951);
     }
     
     public void setEndVolume(float paramFloat)

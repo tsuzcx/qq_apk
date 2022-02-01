@@ -15,12 +15,12 @@ public abstract class l$a
     attachInterface(this, "com.tencent.mm.network.IOnAutoAuth_AIDL");
   }
   
-  public static l btk()
+  public static l bQT()
   {
-    return a.muy;
+    return a.pnS;
   }
   
-  public static l r(IBinder paramIBinder)
+  public static l t(IBinder paramIBinder)
   {
     if (paramIBinder == null) {
       return null;
@@ -48,7 +48,7 @@ public abstract class l$a
       return true;
     }
     paramParcel1.enforceInterface("com.tencent.mm.network.IOnAutoAuth_AIDL");
-    a(t.a.s(paramParcel1.readStrongBinder()), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readString());
+    a(t.a.u(paramParcel1.readStrongBinder()), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readString());
     paramParcel2.writeNoException();
     return true;
   }
@@ -56,7 +56,7 @@ public abstract class l$a
   static final class a
     implements l
   {
-    public static l muy;
+    public static l pnS;
     private IBinder mRemote;
     
     a(IBinder paramIBinder)
@@ -79,10 +79,10 @@ public abstract class l$a
           localParcel1.writeInt(paramInt1);
           localParcel1.writeInt(paramInt2);
           localParcel1.writeString(paramString);
-          if ((this.mRemote.transact(1, localParcel1, localParcel2, 0)) || (l.a.btk() == null)) {
+          if ((this.mRemote.transact(1, localParcel1, localParcel2, 0)) || (l.a.bQT() == null)) {
             break;
           }
-          l.a.btk().a(paramt, paramInt1, paramInt2, paramString);
+          l.a.bQT().a(paramt, paramInt1, paramInt2, paramString);
           return;
         }
         localParcel2.readException();
@@ -104,7 +104,7 @@ public abstract class l$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.network.l.a
  * JD-Core Version:    0.7.0.1
  */

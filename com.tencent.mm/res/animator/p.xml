@@ -1,15 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<set
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <objectAnimator android:duration="150" android:startOffset="0" android:propertyName="elevation" />
-    <objectAnimator android:duration="345" android:startOffset="0" android:propertyName="translationXLinear" />
-    <objectAnimator android:duration="150" android:startOffset="0" android:propertyName="translationXCurveUpwards" />
-    <objectAnimator android:duration="345" android:startOffset="0" android:propertyName="translationXCurveDownwards" />
-    <objectAnimator android:duration="345" android:startOffset="0" android:propertyName="translationYLinear" />
-    <objectAnimator android:duration="345" android:startOffset="0" android:propertyName="translationYCurveUpwards" />
-    <objectAnimator android:duration="150" android:startOffset="0" android:propertyName="translationYCurveDownwards" />
-    <objectAnimator android:duration="120" android:startOffset="0" android:propertyName="iconFade" />
-    <objectAnimator android:duration="255" android:startOffset="45" android:propertyName="expansion" />
-    <objectAnimator android:duration="75" android:startOffset="75" android:propertyName="color" />
-    <objectAnimator android:duration="150" android:startOffset="150" android:propertyName="contentFade" />
-</set>
+    <item android:state_enabled="true" android:state_pressed="true">
+        <set>
+            <objectAnimator android:duration="@integer/ap" android:valueTo="@dimen/al4" android:valueType="floatType" android:propertyName="translationZ" />
+            <objectAnimator android:duration="0" android:valueTo="@dimen/akt" android:valueType="floatType" android:propertyName="elevation" />
+        </set>
+    </item>
+    <item android:state_enabled="true" android:state_hovered="true">
+        <set>
+            <objectAnimator android:duration="@integer/ap" android:valueTo="@dimen/akv" android:valueType="floatType" android:propertyName="translationZ" />
+            <objectAnimator android:duration="0" android:valueTo="@dimen/akt" android:valueType="floatType" android:propertyName="elevation" />
+        </set>
+    </item>
+    <item android:state_focused="true" android:state_enabled="true">
+        <set>
+            <objectAnimator android:duration="@integer/ap" android:valueTo="@dimen/aku" android:valueType="floatType" android:propertyName="translationZ" />
+            <objectAnimator android:duration="0" android:valueTo="@dimen/akt" android:valueType="floatType" android:propertyName="elevation" />
+        </set>
+    </item>
+    <item android:state_enabled="true">
+        <set>
+            <objectAnimator android:duration="@integer/ap" android:valueTo="@dimen/al_" android:valueType="floatType" android:propertyName="translationZ" android:startDelay="@integer/ao" />
+            <objectAnimator android:duration="0" android:valueTo="@dimen/akt" android:valueType="floatType" android:propertyName="elevation" />
+        </set>
+    </item>
+    <item>
+        <set>
+            <objectAnimator android:duration="0" android:valueTo="@dimen/aks" android:valueType="floatType" android:propertyName="translationZ" />
+            <objectAnimator android:duration="0" android:valueTo="@dimen/akr" android:valueType="floatType" android:propertyName="elevation" />
+        </set>
+    </item>
+</selector>

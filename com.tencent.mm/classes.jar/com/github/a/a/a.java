@@ -6,45 +6,45 @@ import android.view.OrientationEventListener;
 import android.view.View;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import io.flutter.plugin.a.d;
-import io.flutter.plugin.a.d.a;
-import io.flutter.plugin.a.d.c;
-import io.flutter.plugin.a.j;
-import io.flutter.plugin.a.k;
-import io.flutter.plugin.a.k.c;
-import io.flutter.plugin.a.k.d;
+import io.flutter.plugin.common.EventChannel;
+import io.flutter.plugin.common.EventChannel.EventSink;
+import io.flutter.plugin.common.EventChannel.StreamHandler;
+import io.flutter.plugin.common.MethodCall;
+import io.flutter.plugin.common.MethodChannel;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodChannel.Result;
 import java.util.List;
 
 public final class a
-  implements k.c
+  implements MethodChannel.MethodCallHandler
 {
-  k aKT;
-  d aKU;
-  OrientationEventListener aKV;
-  int aKW = -1;
   Activity activity;
+  private OrientationEventListener cEP;
+  private int cEQ = -1;
+  MethodChannel channel;
+  EventChannel eventChannel;
   
-  public final void a(j paramj, k.d paramd)
+  public final void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
   {
     int j = 0;
-    AppMethodBeat.i(215355);
+    AppMethodBeat.i(208230);
     if (this.activity == null)
     {
-      paramd.b("NO_ACTIVITY", "OrientationPlugin requires a foreground activity.", null);
-      AppMethodBeat.o(215355);
+      paramResult.error("NO_ACTIVITY", "OrientationPlugin requires a foreground activity.", null);
+      AppMethodBeat.o(208230);
       return;
     }
-    String str = paramj.method;
-    paramj = paramj.ZZe;
+    String str = paramMethodCall.method;
+    paramMethodCall = paramMethodCall.arguments;
     int k;
     int i;
     if (str.equals("SystemChrome.setEnabledSystemUIOverlays"))
     {
-      paramj = (List)paramj;
+      paramMethodCall = (List)paramMethodCall;
       k = 7942;
-      if (j < paramj.size())
+      if (j < paramMethodCall.size())
       {
-        if (paramj.get(j).equals("SystemUiOverlay.top")) {
+        if (paramMethodCall.get(j).equals("SystemUiOverlay.top")) {
           i = k & 0xFFFFFFFB;
         }
         for (;;)
@@ -53,24 +53,24 @@ public final class a
           k = i;
           break;
           i = k;
-          if (paramj.get(j).equals("SystemUiOverlay.bottom")) {
+          if (paramMethodCall.get(j).equals("SystemUiOverlay.bottom")) {
             i = k & 0xFFFFFFFD;
           }
         }
       }
       this.activity.getWindow().getDecorView().setSystemUiVisibility(k);
-      paramd.bb(null);
-      AppMethodBeat.o(215355);
+      paramResult.success(null);
+      AppMethodBeat.o(208230);
       return;
     }
     if (str.equals("SystemChrome.setPreferredOrientations"))
     {
-      paramj = (List)paramj;
+      paramMethodCall = (List)paramMethodCall;
       j = 0;
       k = 0;
-      if (j < paramj.size())
+      if (j < paramMethodCall.size())
       {
-        if (paramj.get(j).equals("DeviceOrientation.portraitUp")) {
+        if (paramMethodCall.get(j).equals("DeviceOrientation.portraitUp")) {
           i = k | 0x1;
         }
         for (;;)
@@ -78,18 +78,18 @@ public final class a
           j += 1;
           k = i;
           break;
-          if (paramj.get(j).equals("DeviceOrientation.landscapeLeft"))
+          if (paramMethodCall.get(j).equals("DeviceOrientation.landscapeLeft"))
           {
             i = k | 0x2;
           }
-          else if (paramj.get(j).equals("DeviceOrientation.portraitDown"))
+          else if (paramMethodCall.get(j).equals("DeviceOrientation.portraitDown"))
           {
             i = k | 0x4;
           }
           else
           {
             i = k;
-            if (paramj.get(j).equals("DeviceOrientation.landscapeRight")) {
+            if (paramMethodCall.get(j).equals("DeviceOrientation.landscapeRight")) {
               i = k | 0x8;
             }
           }
@@ -100,8 +100,8 @@ public final class a
       }
       for (;;)
       {
-        paramd.bb(null);
-        AppMethodBeat.o(215355);
+        paramResult.success(null);
+        AppMethodBeat.o(208230);
         return;
         this.activity.setRequestedOrientation(-1);
         continue;
@@ -126,33 +126,33 @@ public final class a
     }
     if (str.equals("SystemChrome.forceOrientation"))
     {
-      paramj = (String)paramj;
-      if (paramj.equals("DeviceOrientation.portraitUp")) {
+      paramMethodCall = (String)paramMethodCall;
+      if (paramMethodCall.equals("DeviceOrientation.portraitUp")) {
         this.activity.setRequestedOrientation(1);
       }
       for (;;)
       {
-        paramd.bb(null);
-        AppMethodBeat.o(215355);
+        paramResult.success(null);
+        AppMethodBeat.o(208230);
         return;
-        if (paramj.equals("DeviceOrientation.portraitDown")) {
+        if (paramMethodCall.equals("DeviceOrientation.portraitDown")) {
           this.activity.setRequestedOrientation(9);
-        } else if (paramj.equals("DeviceOrientation.landscapeLeft")) {
+        } else if (paramMethodCall.equals("DeviceOrientation.landscapeLeft")) {
           this.activity.setRequestedOrientation(8);
-        } else if (paramj.equals("DeviceOrientation.landscapeRight")) {
+        } else if (paramMethodCall.equals("DeviceOrientation.landscapeRight")) {
           this.activity.setRequestedOrientation(0);
         } else {
           this.activity.setRequestedOrientation(-1);
         }
       }
     }
-    paramd.epZ();
-    AppMethodBeat.o(215355);
+    paramResult.notImplemented();
+    AppMethodBeat.o(208230);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.github.a.a.a
  * JD-Core Version:    0.7.0.1
  */

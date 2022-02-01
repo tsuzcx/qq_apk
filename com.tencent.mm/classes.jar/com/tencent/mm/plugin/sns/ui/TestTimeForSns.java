@@ -34,11 +34,11 @@ public class TestTimeForSns
     {
       this.hasDrawed = true;
       if (this.listener != null) {
-        this.listener.euB();
+        this.listener.fBx();
       }
     }
-    g.adb(10);
-    g.adb(22);
+    g.ahx(10);
+    g.ahx(22);
     AppMethodBeat.o(99702);
   }
   
@@ -54,12 +54,12 @@ public class TestTimeForSns
   
   public static abstract interface a
   {
-    public abstract void euB();
+    public abstract void fBx();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.TestTimeForSns
  * JD-Core Version:    0.7.0.1
  */

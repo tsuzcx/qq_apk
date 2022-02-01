@@ -4,9 +4,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.feed.model.internal.k;
 import com.tencent.mm.protocal.protobuf.FinderContact;
 import com.tencent.mm.view.recyclerview.a;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderContactConvertData;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "contact", "Lcom/tencent/mm/protocal/protobuf/FinderContact;", "(Lcom/tencent/mm/protocal/protobuf/FinderContact;)V", "getContact", "()Lcom/tencent/mm/protocal/protobuf/FinderContact;", "setContact", "compare", "", "obj", "getItemId", "", "getItemType", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/model/FinderContactConvertData;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "contact", "Lcom/tencent/mm/protocal/protobuf/FinderContact;", "(Lcom/tencent/mm/protocal/protobuf/FinderContact;)V", "getContact", "()Lcom/tencent/mm/protocal/protobuf/FinderContact;", "setContact", "compare", "", "obj", "getItemId", "", "getItemType", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class p
   implements k, a
 {
@@ -14,38 +15,38 @@ public final class p
   
   public p(FinderContact paramFinderContact)
   {
-    AppMethodBeat.i(276025);
+    AppMethodBeat.i(332224);
     this.contact = paramFinderContact;
-    AppMethodBeat.o(276025);
+    AppMethodBeat.o(332224);
   }
   
   public final int a(k paramk)
   {
-    AppMethodBeat.i(276024);
-    kotlin.g.b.p.k(paramk, "obj");
-    AppMethodBeat.o(276024);
+    AppMethodBeat.i(332252);
+    s.u(paramk, "obj");
+    AppMethodBeat.o(332252);
     return 0;
   }
   
-  public final int bAQ()
+  public final long bZA()
   {
-    AppMethodBeat.i(276023);
-    int i = p.class.getName().hashCode();
-    AppMethodBeat.o(276023);
-    return i;
-  }
-  
-  public final long mf()
-  {
-    AppMethodBeat.i(276022);
+    AppMethodBeat.i(332235);
     String str = this.contact.username;
     if (str != null) {}
     for (int i = str.hashCode();; i = 0)
     {
       long l = i;
-      AppMethodBeat.o(276022);
+      AppMethodBeat.o(332235);
       return l;
     }
+  }
+  
+  public final int bZB()
+  {
+    AppMethodBeat.i(332244);
+    int i = p.class.getName().hashCode();
+    AppMethodBeat.o(332244);
+    return i;
   }
 }
 

@@ -34,10 +34,10 @@ public class WWMediaText
   
   public final void fromBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(233436);
+    AppMethodBeat.i(210626);
     this.text = paramBundle.getString("_wwtextobject_text");
     super.fromBundle(paramBundle);
-    AppMethodBeat.o(233436);
+    AppMethodBeat.o(210626);
   }
   
   public final void toBundle(Bundle paramBundle)

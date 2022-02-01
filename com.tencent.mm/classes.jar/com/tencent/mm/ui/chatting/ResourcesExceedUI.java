@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.chatting;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -20,7 +19,7 @@ import com.tencent.mm.ui.MMActivity;
 public class ResourcesExceedUI
   extends MMActivity
 {
-  private TextView WDO;
+  private TextView aelo;
   private int type = 0;
   
   public void finish()
@@ -33,7 +32,7 @@ public class ResourcesExceedUI
   
   public int getLayoutId()
   {
-    return R.i.eky;
+    return R.i.gnD;
   }
   
   public void initView()
@@ -41,7 +40,7 @@ public class ResourcesExceedUI
     AppMethodBeat.i(34870);
     hideTitleView();
     fullScreenNoTitleBar(true);
-    if (d.qV(19))
+    if (d.rb(19))
     {
       getWindow().setFlags(201327616, 201327616);
       setBackBtn(new MenuItem.OnMenuItemClickListener()
@@ -54,7 +53,7 @@ public class ResourcesExceedUI
           return true;
         }
       });
-      this.WDO = ((TextView)findViewById(R.h.dFd));
+      this.aelo = ((TextView)findViewById(R.h.fGh));
       switch (this.type)
       {
       }
@@ -75,11 +74,11 @@ public class ResourcesExceedUI
       return;
       getWindow().setFlags(1024, 1024);
       break;
-      this.WDO.setText(R.l.eUF);
+      this.aelo.setText(R.l.gXE);
       continue;
-      this.WDO.setText(R.l.eEK);
+      this.aelo.setText(R.l.gHD);
       continue;
-      this.WDO.setText(R.l.eHX);
+      this.aelo.setText(R.l.gJE);
     }
   }
   
@@ -111,7 +110,7 @@ public class ResourcesExceedUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.ResourcesExceedUI
  * JD-Core Version:    0.7.0.1
  */

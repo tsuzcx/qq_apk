@@ -1,39 +1,39 @@
 package com.tencent.mm.live.core.core;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$MicSettingSwitchFlag;", "", "()V", "DisableBuyProductAudienceSetting", "", "getDisableBuyProductAudienceSetting", "()I", "DisableFollowedAnchorAudienceSetting", "getDisableFollowedAnchorAudienceSetting", "DisableRewardedAnchorAudienceSetting", "getDisableRewardedAnchorAudienceSetting", "plugin-core_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$LocalAudioState;", "", "()V", "STATE_BREAK", "", "getSTATE_BREAK", "()I", "STATE_NORMAL", "getSTATE_NORMAL", "STATE_OVERFLOW", "getSTATE_OVERFLOW", "STATE_SILENT", "getSTATE_SILENT", "plugin-core_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e$i
 {
-  private static final int kkr = 1;
-  private static final int kks = 2;
-  private static final int kkt = 4;
-  public static final i kku;
+  public static final i mLb;
+  private static final int mLc;
+  private static final int mLd;
+  private static final int mLe;
   
   static
   {
-    AppMethodBeat.i(198523);
-    kku = new i();
-    kkr = 1;
-    kks = 2;
-    kkt = 4;
-    AppMethodBeat.o(198523);
+    AppMethodBeat.i(248128);
+    mLb = new i();
+    mLc = 1;
+    mLd = 2;
+    mLe = 3;
+    AppMethodBeat.o(248128);
   }
   
-  public static int aKx()
+  public static int bdk()
   {
-    return kkr;
+    return mLc;
   }
   
-  public static int aKy()
+  public static int bdl()
   {
-    return kks;
+    return mLd;
   }
   
-  public static int aKz()
+  public static int bdm()
   {
-    return kkt;
+    return mLe;
   }
 }
 

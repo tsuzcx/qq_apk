@@ -1,95 +1,88 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class fbi
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public cla Sni;
-  public long UBm;
-  public double UBn;
+  public String iaI;
+  public long seq;
+  public int update_time;
+  public int wwq;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(110916);
+    AppMethodBeat.i(114074);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bm(1, this.UBm);
-      paramVarArgs.e(2, this.UBn);
-      if (this.Sni != null)
-      {
-        paramVarArgs.oE(3, this.Sni.computeSize());
-        this.Sni.writeFields(paramVarArgs);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.iaI != null) {
+        paramVarArgs.g(1, this.iaI);
       }
-      AppMethodBeat.o(110916);
+      paramVarArgs.bS(2, this.wwq);
+      paramVarArgs.bS(3, this.update_time);
+      paramVarArgs.bv(4, this.seq);
+      AppMethodBeat.o(114074);
       return 0;
     }
-    int i;
-    if (paramInt == 1)
-    {
-      i = g.a.a.b.b.a.p(1, this.UBm) + 0 + (g.a.a.b.b.a.gL(2) + 8);
-      paramInt = i;
-      if (this.Sni != null) {
-        paramInt = i + g.a.a.a.oD(3, this.Sni.computeSize());
+    if (paramInt == 1) {
+      if (this.iaI == null) {
+        break label346;
       }
-      AppMethodBeat.o(110916);
-      return paramInt;
     }
-    if (paramInt == 2)
+    label346:
+    for (paramInt = i.a.a.b.b.a.h(1, this.iaI) + 0;; paramInt = 0)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+      int i = i.a.a.b.b.a.cJ(2, this.wwq);
+      int j = i.a.a.b.b.a.cJ(3, this.update_time);
+      int k = i.a.a.b.b.a.q(4, this.seq);
+      AppMethodBeat.o(114074);
+      return paramInt + i + j + k;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
         }
-      }
-      AppMethodBeat.o(110916);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject = (g.a.a.a.a)paramVarArgs[0];
-      fbi localfbi = (fbi)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
-      {
-      default: 
-        AppMethodBeat.o(110916);
-        return -1;
-      case 1: 
-        localfbi.UBm = ((g.a.a.a.a)localObject).abFh.AN();
-        AppMethodBeat.o(110916);
-        return 0;
-      case 2: 
-        localfbi.UBn = Double.longBitsToDouble(((g.a.a.a.a)localObject).abFh.AP());
-        AppMethodBeat.o(110916);
+        AppMethodBeat.o(114074);
         return 0;
       }
-      paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-      i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
+      if (paramInt == 3)
       {
-        localObject = (byte[])paramVarArgs.get(paramInt);
-        cla localcla = new cla();
-        if ((localObject != null) && (localObject.length > 0)) {
-          localcla.parseFrom((byte[])localObject);
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+        fbi localfbi = (fbi)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(114074);
+          return -1;
+        case 1: 
+          localfbi.iaI = locala.ajGk.readString();
+          AppMethodBeat.o(114074);
+          return 0;
+        case 2: 
+          localfbi.wwq = locala.ajGk.aar();
+          AppMethodBeat.o(114074);
+          return 0;
+        case 3: 
+          localfbi.update_time = locala.ajGk.aar();
+          AppMethodBeat.o(114074);
+          return 0;
         }
-        localfbi.Sni = localcla;
-        paramInt += 1;
+        localfbi.seq = locala.ajGk.aaw();
+        AppMethodBeat.o(114074);
+        return 0;
       }
-      AppMethodBeat.o(110916);
-      return 0;
+      AppMethodBeat.o(114074);
+      return -1;
     }
-    AppMethodBeat.o(110916);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.fbi
  * JD-Core Version:    0.7.0.1
  */

@@ -17,9 +17,9 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class ZonePreference
   extends Preference
 {
-  private CharSequence XVA;
-  private TextView XVB;
-  RegionCodeDecoder.Region XVz;
+  RegionCodeDecoder.Region afLO;
+  private CharSequence afLP;
+  private TextView afLQ;
   
   public ZonePreference(Context paramContext)
   {
@@ -39,23 +39,23 @@ public class ZonePreference
     AppMethodBeat.o(39205);
   }
   
-  private void hYK()
+  private void jDt()
   {
     AppMethodBeat.i(39208);
-    if (this.XVB == null)
+    if (this.afLQ == null)
     {
       AppMethodBeat.o(39208);
       return;
     }
-    if ((this.XVA != null) && (!Util.isNullOrNil(this.XVA.toString()))) {
-      this.XVB.setVisibility(0);
+    if ((this.afLP != null) && (!Util.isNullOrNil(this.afLP.toString()))) {
+      this.afLQ.setVisibility(0);
     }
     for (;;)
     {
-      this.XVB.setText(this.XVA);
+      this.afLQ.setText(this.afLP);
       AppMethodBeat.o(39208);
       return;
-      this.XVB.setVisibility(8);
+      this.afLQ.setVisibility(8);
     }
   }
   
@@ -69,15 +69,15 @@ public class ZonePreference
       return;
     }
     setKey(paramRegion.getCode() + paramRegion.isCity());
-    this.XVz = paramRegion;
+    this.afLO = paramRegion;
     AppMethodBeat.o(39206);
   }
   
-  public final void aF(CharSequence paramCharSequence)
+  public final void aS(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(39207);
-    this.XVA = paramCharSequence;
-    hYK();
+    this.afLP = paramCharSequence;
+    jDt();
     AppMethodBeat.o(39207);
   }
   
@@ -85,14 +85,14 @@ public class ZonePreference
   {
     AppMethodBeat.i(39210);
     super.onBindView(paramView);
-    if (this.XVz == null)
+    if (this.afLO == null)
     {
       AppMethodBeat.o(39210);
       return;
     }
-    ((TextView)paramView.findViewById(R.h.zonename)).setText(this.XVz.getName());
-    this.XVB = ((TextView)paramView.findViewById(R.h.dVT));
-    hYK();
+    ((TextView)paramView.findViewById(R.h.gdT)).setText(this.afLO.getName());
+    this.afLQ = ((TextView)paramView.findViewById(R.h.fYu));
+    jDt();
     AppMethodBeat.o(39210);
   }
   
@@ -103,14 +103,14 @@ public class ZonePreference
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
     ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(R.i.eja, localViewGroup);
+    localLayoutInflater.inflate(R.i.gma, localViewGroup);
     AppMethodBeat.o(39209);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.tools.ZonePreference
  * JD-Core Version:    0.7.0.1
  */

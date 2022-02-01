@@ -11,14 +11,14 @@ public final class b
   extends MAutoStorage<a>
 {
   public static final String[] SQL_CREATE;
-  private static final String[] mKU;
+  private static final String[] pHB;
   private ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(63422);
     SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(a.info, "AAPayRecord") };
-    mKU = new String[] { "*", "rowid" };
+    pHB = new String[] { "*", "rowid" };
     AppMethodBeat.o(63422);
   }
   
@@ -28,7 +28,7 @@ public final class b
     this.db = paramISQLiteDatabase;
   }
   
-  public final a aai(String paramString)
+  public final a SC(String paramString)
   {
     AppMethodBeat.i(63421);
     if (Util.isNullOrNil(paramString))
@@ -36,7 +36,7 @@ public final class b
       AppMethodBeat.o(63421);
       return null;
     }
-    paramString = this.db.query("AAPayRecord", mKU, "payMsgId=?", new String[] { paramString }, null, null, null, 2);
+    paramString = this.db.query("AAPayRecord", pHB, "payMsgId=?", new String[] { paramString }, null, null, null, 2);
     try
     {
       if (paramString.moveToFirst())
@@ -73,7 +73,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.a.b
  * JD-Core Version:    0.7.0.1
  */

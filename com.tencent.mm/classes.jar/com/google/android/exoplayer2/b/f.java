@@ -3,7 +3,7 @@ package com.google.android.exoplayer2.b;
 public abstract class f
   extends a
 {
-  public int aQQ;
+  public int cKM;
   public long timeUs;
 }
 

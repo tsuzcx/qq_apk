@@ -43,16 +43,16 @@ public class APX5WebPage
   
   public APX5WebPage()
   {
-    AppMethodBeat.i(253110);
+    AppMethodBeat.i(217017);
     this.webView = null;
     this.webviewCallback = new IAPX5WebViewCallback()
     {
       public boolean WebChromeClientJsAlert(WebView paramAnonymousWebView, String paramAnonymousString1, String paramAnonymousString2, JsResult paramAnonymousJsResult)
       {
-        AppMethodBeat.i(253180);
+        AppMethodBeat.i(217089);
         APLog.d("APX5WebPage", "WebChromeClientJsAlert message=".concat(String.valueOf(paramAnonymousString2)));
         APWebProtocol.AnalyzeWebEntry(APX5WebPage.this.activity, APX5WebPage.this.webView.getWebView(), APX5WebPage.this, paramAnonymousString2);
-        AppMethodBeat.o(253180);
+        AppMethodBeat.o(217089);
         return true;
       }
       
@@ -63,44 +63,44 @@ public class APX5WebPage
       
       public void WebViewClientPageFinished(WebView paramAnonymousWebView, String paramAnonymousString)
       {
-        AppMethodBeat.i(253181);
+        AppMethodBeat.i(217102);
         if ((!APX5WebPage.this.activity.isFinishing()) && (APX5WebPage.this.waitDialog != null) && (APX5WebPage.this.waitDialog.isShowing())) {
           APX5WebPage.this.waitDialog.dismiss();
         }
-        AppMethodBeat.o(253181);
+        AppMethodBeat.o(217102);
       }
       
       public void WebViewClientPageStarted(WebView paramAnonymousWebView, String paramAnonymousString, Bitmap paramAnonymousBitmap)
       {
-        AppMethodBeat.i(253182);
+        AppMethodBeat.i(217110);
         APX5WebPage.this.waitDialog.show();
-        AppMethodBeat.o(253182);
+        AppMethodBeat.o(217110);
       }
       
       public void WebViewClientReceivedError(WebView paramAnonymousWebView, int paramAnonymousInt, String paramAnonymousString1, String paramAnonymousString2)
       {
-        AppMethodBeat.i(253183);
+        AppMethodBeat.i(217115);
         if ((!APX5WebPage.this.activity.isFinishing()) && (APX5WebPage.this.waitDialog != null) && (APX5WebPage.this.waitDialog.isShowing())) {
           APX5WebPage.this.waitDialog.dismiss();
         }
-        AppMethodBeat.o(253183);
+        AppMethodBeat.o(217115);
       }
     };
-    AppMethodBeat.o(253110);
+    AppMethodBeat.o(217017);
   }
   
   protected APProgressDialog createDialog()
   {
-    AppMethodBeat.i(253118);
+    AppMethodBeat.i(217081);
     APProgressDialog localAPProgressDialog = new APProgressDialog(this.activity);
     localAPProgressDialog.setMessage("请稍候...");
-    AppMethodBeat.o(253118);
+    AppMethodBeat.o(217081);
     return localAPProgressDialog;
   }
   
   public void initHead(final Activity paramActivity, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(253116);
+    AppMethodBeat.i(217061);
     for (;;)
     {
       try
@@ -115,11 +115,8 @@ public class APX5WebPage
             paramString1 = APMidasTools.urlDecode(paramString2, 1);
           }
           paramString2 = (LinearLayout)paramActivity.findViewById(APMidasCommMethod.getId(paramActivity, "midas_header_layout"));
-          if ((i <= 0) && (TextUtils.isEmpty(paramString1)))
-          {
+          if ((i <= 0) && (TextUtils.isEmpty(paramString1))) {
             paramString2.setVisibility(8);
-            AppMethodBeat.o(253116);
-            return;
           }
         }
         catch (Exception paramString1)
@@ -143,7 +140,7 @@ public class APX5WebPage
         {
           public void onClick(View paramAnonymousView)
           {
-            AppMethodBeat.i(253188);
+            AppMethodBeat.i(217105);
             APLog.d("APX5WebPage", "backBtn() clicked");
             if ((APX5WebPage.this.webView != null) && (APX5WebPage.this.webView.getWebView() != null)) {}
             for (boolean bool = true;; bool = false)
@@ -152,7 +149,7 @@ public class APX5WebPage
               if ((bool) && (APX5WebPage.this.webView.getWebView().canGoBack())) {
                 APX5WebPage.this.webView.getWebView().goBack();
               }
-              AppMethodBeat.o(253188);
+              AppMethodBeat.o(217105);
               return;
             }
           }
@@ -166,7 +163,7 @@ public class APX5WebPage
         {
           public void onClick(View paramAnonymousView)
           {
-            AppMethodBeat.i(253060);
+            AppMethodBeat.i(217111);
             APLog.d("APX5WebPage", "closeBtn() clicked");
             APPluginReportManager.getInstance().insertData(APPluginDataInterface.singleton().getLaunchInterface(), "sdk.plugin.webpage.x5.close", "", "");
             paramAnonymousView = new APMidasResponse();
@@ -174,7 +171,7 @@ public class APX5WebPage
             paramAnonymousView.resultMsg = "关闭";
             APMidasPayHelper.midasCallBack(paramAnonymousView);
             paramActivity.finish();
-            AppMethodBeat.o(253060);
+            AppMethodBeat.o(217111);
           }
         });
         paramActivity = (ImageButton)paramActivity.findViewById(APMidasCommMethod.getId(paramActivity, "midas_header_refresh"));
@@ -186,21 +183,19 @@ public class APX5WebPage
         {
           public void onClick(View paramAnonymousView)
           {
-            AppMethodBeat.i(253064);
+            AppMethodBeat.i(217129);
             APLog.d("APX5WebPage", "refreshBtn() clicked");
             APPluginReportManager.getInstance().insertData(APPluginDataInterface.singleton().getLaunchInterface(), "sdk.plugin.webpage.x5.refresh", "", "");
             if ((APX5WebPage.this.webView != null) && (APX5WebPage.this.webView.getWebView() != null)) {
               APX5WebPage.this.webView.getWebView().reload();
             }
-            AppMethodBeat.o(253064);
+            AppMethodBeat.o(217129);
           }
         });
-        AppMethodBeat.o(253116);
-        return;
       }
-      catch (Throwable paramActivity)
+      finally
       {
-        AppMethodBeat.o(253116);
+        AppMethodBeat.o(217061);
         return;
       }
       label282:
@@ -213,12 +208,12 @@ public class APX5WebPage
       paramString1.setVisibility(8);
     }
     paramActivity.setVisibility(8);
-    AppMethodBeat.o(253116);
+    AppMethodBeat.o(217061);
   }
   
   public void initUI(Activity paramActivity)
   {
-    AppMethodBeat.i(253114);
+    AppMethodBeat.i(217045);
     this.activity = paramActivity;
     paramActivity.setContentView(APMidasCommMethod.getLayoutId(paramActivity, "unipay_layout_activity_web_x5"));
     this.webView = new APX5WebView(paramActivity, (WebView)paramActivity.findViewById(APMidasCommMethod.getId(paramActivity, "unipay_id_WebView")), this.webviewCallback);
@@ -227,19 +222,19 @@ public class APX5WebPage
     {
       public void onCancel(DialogInterface paramAnonymousDialogInterface) {}
     });
-    AppMethodBeat.o(253114);
+    AppMethodBeat.o(217045);
   }
   
   public void loadUrl(String paramString)
   {
-    AppMethodBeat.i(253112);
+    AppMethodBeat.i(217037);
     this.webView.loadUrl(paramString);
-    AppMethodBeat.o(253112);
+    AppMethodBeat.o(217037);
   }
   
   public void toPureH5Pay(Activity paramActivity, APMidasBaseRequest paramAPMidasBaseRequest)
   {
-    AppMethodBeat.i(253111);
+    AppMethodBeat.i(217028);
     this.activity = paramActivity;
     paramActivity.setContentView(APMidasCommMethod.getLayoutId(paramActivity, "unipay_layout_activity_web_x5"));
     paramAPMidasBaseRequest = (WebView)paramActivity.findViewById(APMidasCommMethod.getId(paramActivity, "unipay_id_WebView"));
@@ -255,13 +250,13 @@ public class APX5WebPage
     {
       public void onCancel(DialogInterface paramAnonymousDialogInterface) {}
     });
-    AppMethodBeat.o(253111);
+    AppMethodBeat.o(217028);
   }
   
   public void updateWebViewSize(String paramString)
   {
     int j = 0;
-    AppMethodBeat.i(253117);
+    AppMethodBeat.i(217072);
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.webView.getWebView().getLayoutParams();
     APLog.i("webviewclient == ", "updateWebViewSize ");
     String str = APMidasTools.getUrlParamsValue(paramString, "mpwidth");
@@ -278,14 +273,14 @@ public class APX5WebPage
         localLayoutParams.height = APMidasCommMethod.dip2px(this.activity, j);
         this.webView.getWebView().setLayoutParams(localLayoutParams);
       }
-      AppMethodBeat.o(253117);
+      AppMethodBeat.o(217072);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.midas.jsbridge.APX5WebPage
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class j
   implements Comparable<j>, Runnable
 {
-  private static int foz = 1000;
+  private static int hsJ = 1000;
   protected long addTime;
   protected String name;
   protected final int priority;
@@ -30,7 +30,7 @@ public class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.audio.mix.decode.j
  * JD-Core Version:    0.7.0.1
  */

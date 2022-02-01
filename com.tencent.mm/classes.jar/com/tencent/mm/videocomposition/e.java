@@ -19,62 +19,62 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/videocomposition/TrackCache;", "", "()V", "bitmapCache", "Ljava/util/HashMap;", "", "Landroid/graphics/Bitmap;", "Lkotlin/collections/HashMap;", "bitmapSizeLimit", "", "getBitmapSizeLimit", "()I", "setBitmapSizeLimit", "(I)V", "cache", "Lcom/tencent/tavkit/composition/resource/TAVResource;", "imageDuration", "", "getImageDuration", "()J", "setImageDuration", "(J)V", "videoInfoCache", "Lcom/tencent/mm/videocomposition/VideoClipInfo;", "clear", "", "createRescaleBitmap", "path", "getBitmap", "track", "Lcom/tencent/mm/videocomposition/CompositionTrack;", "getResource", "getVideoInfo", "remove", "resizeBitmap", "bitmap", "video_composition_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mm/videocomposition/TrackCache;", "", "()V", "bitmapCache", "Ljava/util/HashMap;", "", "Landroid/graphics/Bitmap;", "Lkotlin/collections/HashMap;", "bitmapSizeLimit", "", "getBitmapSizeLimit", "()I", "setBitmapSizeLimit", "(I)V", "cache", "Lcom/tencent/tavkit/composition/resource/TAVResource;", "imageDuration", "", "getImageDuration", "()J", "setImageDuration", "(J)V", "videoInfoCache", "Lcom/tencent/mm/videocomposition/VideoClipInfo;", "clear", "", "createRescaleBitmap", "path", "getBitmap", "track", "Lcom/tencent/mm/videocomposition/CompositionTrack;", "getResource", "getVideoInfo", "remove", "resizeBitmap", "bitmap", "video_composition_release"}, k=1, mv={1, 1, 15})
 public final class e
 {
-  private static final HashMap<String, i> Nmz;
-  private static final HashMap<String, Bitmap> QbK;
-  private static int YIa;
-  private static long YIb;
-  public static final e YIc;
+  private static final HashMap<String, Bitmap> Etw;
+  private static final HashMap<String, i> ObC;
+  private static int agDH;
+  private static long agDI;
+  public static final e agDJ;
   private static final HashMap<String, TAVResource> cache;
   
   static
   {
-    AppMethodBeat.i(247956);
-    YIc = new e();
-    YIa = 1080;
-    YIb = 10000L;
-    QbK = new HashMap();
+    AppMethodBeat.i(233492);
+    agDJ = new e();
+    agDH = 1080;
+    agDI = 10000L;
+    Etw = new HashMap();
     cache = new HashMap();
-    Nmz = new HashMap();
-    AppMethodBeat.o(247956);
+    ObC = new HashMap();
+    AppMethodBeat.o(233492);
   }
   
-  public static void azk(int paramInt)
+  public static void aFO(int paramInt)
   {
-    YIa = paramInt;
+    agDH = paramInt;
   }
   
-  public static int igE()
+  public static int jLS()
   {
-    return YIa;
+    return agDH;
   }
   
-  public static void igF()
+  public static void jLT()
   {
-    YIb = 4000L;
+    agDI = 4000L;
   }
   
   /* Error */
-  public final i bCf(String paramString)
+  public final i bEy(String paramString)
   {
     // Byte code:
-    //   0: ldc 97
-    //   2: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc 101
+    //   2: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
-    //   6: ldc 98
-    //   8: invokestatic 104	kotlin/g/b/p:k	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   6: ldc 102
+    //   8: invokestatic 108	kotlin/g/b/s:t	(Ljava/lang/Object;Ljava/lang/String;)V
     //   11: aload_0
     //   12: monitorenter
-    //   13: getstatic 82	com/tencent/mm/videocomposition/e:Nmz	Ljava/util/HashMap;
+    //   13: getstatic 86	com/tencent/mm/videocomposition/e:ObC	Ljava/util/HashMap;
     //   16: aload_1
-    //   17: invokevirtual 108	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   20: checkcast 110	com/tencent/mm/videocomposition/i
+    //   17: invokevirtual 112	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   20: checkcast 114	com/tencent/mm/videocomposition/i
     //   23: astore 7
     //   25: aload 7
     //   27: astore 6
@@ -82,70 +82,70 @@ public final class e
     //   31: ifnonnull +141 -> 172
     //   34: aconst_null
     //   35: astore 7
-    //   37: new 112	android/media/MediaMetadataRetriever
+    //   37: new 116	android/media/MediaMetadataRetriever
     //   40: dup
-    //   41: invokespecial 113	android/media/MediaMetadataRetriever:<init>	()V
+    //   41: invokespecial 117	android/media/MediaMetadataRetriever:<init>	()V
     //   44: astore 8
     //   46: aload 8
     //   48: aload_1
-    //   49: invokevirtual 117	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
+    //   49: invokevirtual 121	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
     //   52: aload 8
     //   54: bipush 18
-    //   56: invokevirtual 121	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+    //   56: invokevirtual 125	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   59: astore 6
     //   61: aload 6
     //   63: ifnull +119 -> 182
     //   66: aload 6
-    //   68: invokestatic 127	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   68: invokestatic 131	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   71: istore_2
     //   72: aload 8
     //   74: bipush 19
-    //   76: invokevirtual 121	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+    //   76: invokevirtual 125	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   79: astore 6
     //   81: aload 6
     //   83: ifnull +104 -> 187
     //   86: aload 6
-    //   88: invokestatic 127	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   88: invokestatic 131	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   91: istore_3
     //   92: aload 8
     //   94: bipush 24
-    //   96: invokevirtual 121	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+    //   96: invokevirtual 125	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   99: astore 6
     //   101: aload 6
     //   103: ifnull +89 -> 192
     //   106: aload 6
-    //   108: invokestatic 127	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   108: invokestatic 131	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   111: istore 4
     //   113: goto +142 -> 255
     //   116: aload 8
     //   118: bipush 9
-    //   120: invokevirtual 121	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+    //   120: invokevirtual 125	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   123: astore 6
     //   125: aload 6
     //   127: ifnull +71 -> 198
     //   130: aload 6
-    //   132: invokestatic 127	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   132: invokestatic 131	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   135: istore 5
-    //   137: new 110	com/tencent/mm/videocomposition/i
+    //   137: new 114	com/tencent/mm/videocomposition/i
     //   140: dup
     //   141: iload_3
     //   142: iload_2
     //   143: iload 4
     //   145: iload 5
-    //   147: invokespecial 130	com/tencent/mm/videocomposition/i:<init>	(IIII)V
+    //   147: invokespecial 134	com/tencent/mm/videocomposition/i:<init>	(IIII)V
     //   150: astore 6
-    //   152: getstatic 82	com/tencent/mm/videocomposition/e:Nmz	Ljava/util/HashMap;
-    //   155: checkcast 132	java/util/Map
+    //   152: getstatic 86	com/tencent/mm/videocomposition/e:ObC	Ljava/util/HashMap;
+    //   155: checkcast 136	java/util/Map
     //   158: aload_1
     //   159: aload 6
-    //   161: invokeinterface 136 3 0
+    //   161: invokeinterface 140 3 0
     //   166: pop
     //   167: aload 8
-    //   169: invokevirtual 139	android/media/MediaMetadataRetriever:release	()V
+    //   169: invokevirtual 143	android/media/MediaMetadataRetriever:release	()V
     //   172: aload_0
     //   173: monitorexit
-    //   174: ldc 97
-    //   176: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   174: ldc 101
+    //   176: invokestatic 89	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   179: aload 6
     //   181: areturn
     //   182: iconst_0
@@ -164,20 +164,20 @@ public final class e
     //   205: aload 7
     //   207: astore 6
     //   209: aload 8
-    //   211: invokevirtual 139	android/media/MediaMetadataRetriever:release	()V
+    //   211: invokevirtual 143	android/media/MediaMetadataRetriever:release	()V
     //   214: goto -42 -> 172
     //   217: astore_1
     //   218: aload_0
     //   219: monitorexit
-    //   220: ldc 97
-    //   222: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   220: ldc 101
+    //   222: invokestatic 89	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   225: aload_1
     //   226: athrow
     //   227: astore_1
     //   228: aload 8
-    //   230: invokevirtual 139	android/media/MediaMetadataRetriever:release	()V
-    //   233: ldc 97
-    //   235: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   230: invokevirtual 143	android/media/MediaMetadataRetriever:release	()V
+    //   233: ldc 101
+    //   235: invokestatic 89	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   238: aload_1
     //   239: athrow
     //   240: astore_1
@@ -238,25 +238,25 @@ public final class e
   
   public final void clear()
   {
-    AppMethodBeat.i(247954);
+    AppMethodBeat.i(233523);
     try
     {
       cache.clear();
-      QbK.clear();
-      Nmz.clear();
-      x localx = x.aazN;
+      Etw.clear();
+      ObC.clear();
+      ah localah = ah.aiuX;
       return;
     }
     finally
     {
-      AppMethodBeat.o(247954);
+      AppMethodBeat.o(233523);
     }
   }
   
   public final TAVResource e(b paramb)
   {
-    AppMethodBeat.i(247951);
-    p.k(paramb, "track");
+    AppMethodBeat.i(233513);
+    s.t(paramb, "track");
     try
     {
       localObject2 = (TAVResource)cache.get(paramb.path);
@@ -269,7 +269,7 @@ public final class e
         label83:
         cache.put(paramb.path, localObject1);
         paramb = ((TAVResource)localObject1).clone();
-        p.j(paramb, "resource.clone()");
+        s.r(paramb, "resource.clone()");
         return paramb;
       }
     }
@@ -281,19 +281,19 @@ public final class e
       int j;
       int k;
       Canvas localCanvas;
-      AppMethodBeat.o(247951);
+      AppMethodBeat.o(233513);
     }
     localObject3 = paramb.path;
     l = SystemClock.elapsedRealtime();
-    com.tencent.mm.videocomposition.c.b.i("CompositionTrack", "createRescaleBitmap:".concat(String.valueOf(localObject3)), new Object[0]);
+    com.tencent.mm.videocomposition.d.b.i("CompositionTrack", "createRescaleBitmap:".concat(String.valueOf(localObject3)), new Object[0]);
     Object localObject1 = new BitmapFactory.Options();
     ((BitmapFactory.Options)localObject1).inJustDecodeBounds = true;
     BitmapFactory.decodeFile((String)localObject3, (BitmapFactory.Options)localObject1);
     j = ((BitmapFactory.Options)localObject1).outWidth;
     k = ((BitmapFactory.Options)localObject1).outHeight;
-    localObject2 = com.tencent.mm.videocomposition.c.a.YJN;
-    int i = YIa;
-    ((BitmapFactory.Options)localObject1).inSampleSize = com.tencent.mm.videocomposition.c.a.calculateInSampleSize(j, k, i, i);
+    localObject2 = com.tencent.mm.videocomposition.d.a.agFF;
+    int i = agDH;
+    ((BitmapFactory.Options)localObject1).inSampleSize = com.tencent.mm.videocomposition.d.a.calculateInSampleSize(j, k, i, i);
     ((BitmapFactory.Options)localObject1).inJustDecodeBounds = false;
     localObject1 = BitmapFactory.decodeFile((String)localObject3, (BitmapFactory.Options)localObject1);
     if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled())) {
@@ -301,7 +301,7 @@ public final class e
       {
         localObject2 = Bitmap.createBitmap(((Bitmap)localObject1).getWidth() + 1, ((Bitmap)localObject1).getHeight(), Bitmap.Config.ARGB_8888);
         if (localObject2 == null) {
-          p.iCn();
+          s.klw();
         }
         localCanvas = new Canvas((Bitmap)localObject2);
         localCanvas.drawARGB(0, 0, 0, 0);
@@ -312,9 +312,9 @@ public final class e
     for (;;)
     {
       if (localObject1 == null) {
-        p.iCn();
+        s.klw();
       }
-      switch (new androidx.e.a.a((InputStream)new FileInputStream((String)localObject3)).i("Orientation", 1))
+      switch (new androidx.f.a.a((InputStream)new FileInputStream((String)localObject3)).k("Orientation", 1))
       {
       case 6: 
       case 3: 
@@ -324,24 +324,24 @@ public final class e
           localObject2 = localObject1;
           if (i > 0)
           {
-            localObject2 = com.tencent.mm.videocomposition.c.a.YJN;
-            localObject3 = com.tencent.mm.videocomposition.c.a.rotate((Bitmap)localObject1, i);
+            localObject2 = com.tencent.mm.videocomposition.d.a.agFF;
+            localObject3 = com.tencent.mm.videocomposition.d.a.rotate((Bitmap)localObject1, i);
             localObject2 = localObject1;
             if (localObject3 != null) {
               localObject2 = localObject3;
             }
           }
-          com.tencent.mm.videocomposition.c.b.i("CompositionTrack", "final rescale bitmap size:[" + ((Bitmap)localObject2).getWidth() + ", " + ((Bitmap)localObject2).getHeight() + "], origin size:[" + j + ", " + k + "], cost:" + (SystemClock.elapsedRealtime() - l), new Object[0]);
-          ((Map)QbK).put(paramb.path, localObject2);
-          localObject1 = (TAVResource)new TAVImageResource(new CIImage((Bitmap)localObject2), new CMTime(YIb, 1000), true);
+          com.tencent.mm.videocomposition.d.b.i("CompositionTrack", "final rescale bitmap size:[" + ((Bitmap)localObject2).getWidth() + ", " + ((Bitmap)localObject2).getHeight() + "], origin size:[" + j + ", " + k + "], cost:" + (SystemClock.elapsedRealtime() - l), new Object[0]);
+          ((Map)Etw).put(paramb.path, localObject2);
+          localObject1 = (TAVResource)new TAVImageResource(new CIImage((Bitmap)localObject2), new CMTime(agDI, 1000), true);
           break;
-          com.tencent.mm.videocomposition.c.b.i("CompositionTrack", "image rotate 90", new Object[0]);
+          com.tencent.mm.videocomposition.d.b.i("CompositionTrack", "image rotate 90", new Object[0]);
           i = 90;
           continue;
-          com.tencent.mm.videocomposition.c.b.i("CompositionTrack", "image rotate 180", new Object[0]);
+          com.tencent.mm.videocomposition.d.b.i("CompositionTrack", "image rotate 180", new Object[0]);
           i = 180;
           continue;
-          com.tencent.mm.videocomposition.c.b.i("CompositionTrack", "image rotate 270", new Object[0]);
+          com.tencent.mm.videocomposition.d.b.i("CompositionTrack", "image rotate 270", new Object[0]);
           i = 270;
         }
         localObject1 = (TAVResource)new TAVAssetTrackResource((Asset)new URLAsset(paramb.path));
@@ -365,22 +365,22 @@ public final class e
   
   public final Bitmap f(b paramb)
   {
-    AppMethodBeat.i(247953);
-    p.k(paramb, "track");
+    AppMethodBeat.i(233518);
+    s.t(paramb, "track");
     try
     {
-      paramb = (Bitmap)QbK.get(paramb.path);
+      paramb = (Bitmap)Etw.get(paramb.path);
       return paramb;
     }
     finally
     {
-      AppMethodBeat.o(247953);
+      AppMethodBeat.o(233518);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.videocomposition.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,73 +1,61 @@
 package com.tencent.mm.plugin.finder.live.model.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.cgi.ao;
-import com.tencent.mm.protocal.protobuf.bfp;
-import com.tencent.mm.protocal.protobuf.bia;
-import com.tencent.mm.protocal.protobuf.bib;
-import com.tencent.mm.protocal.protobuf.eaf;
-import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.plugin.finder.cgi.bi;
+import com.tencent.mm.protocal.protobuf.bhy;
+import com.tencent.mm.protocal.protobuf.bhz;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.kd;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.Iterator;
-import java.util.LinkedList;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveRefreshNotify;", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLive;", "Lcom/tencent/mm/protocal/protobuf/FinderRefreshTipsResponse;", "tipsEntryList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderNotifyTipsEntry;", "callBack", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveRefreshNotify$CallBack;", "(Ljava/util/LinkedList;Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveRefreshNotify$CallBack;)V", "TAG", "", "getCallBack", "()Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveRefreshNotify$CallBack;", "entryStr", "Ljava/lang/StringBuilder;", "request", "Lcom/tencent/mm/protocal/protobuf/FinderRefreshTipsRequest;", "getTipsEntryList", "()Ljava/util/LinkedList;", "initReqResp", "", "onCgiEnd", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "CallBack", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveLotteryHistory;", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLive;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveGetLotteryHistoryResponse;", "scene", "", "liveId", "", "objectId", "objectNonceId", "", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "(IJJLjava/lang/String;Lcom/tencent/mm/protobuf/ByteString;)V", "onCgiEnd", "", "errType", "errCode", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ah
-  extends n<bib>
+  extends o<bhz>
 {
-  private final String TAG;
-  private bia yjX;
-  private StringBuilder yjY;
-  private final LinkedList<bfp> yjZ;
-  private final a yka;
+  public static final a CKa;
   
-  public ah(LinkedList<bfp> paramLinkedList, a parama)
+  static
   {
-    AppMethodBeat.i(277379);
-    this.yjZ = paramLinkedList;
-    this.yka = parama;
-    this.TAG = "Finder.CgiFinderLiveRefreshNotify";
-    this.yjX = new bia();
-    this.yjY = new StringBuilder("");
-    this.yjX.username = z.bcZ();
-    paramLinkedList = this.yjX;
-    parama = ao.xcj;
-    paramLinkedList.RLM = ao.dnO();
-    this.yjX.SSC = this.yjZ;
-    paramLinkedList = new d.a();
-    paramLinkedList.c((a)this.yjX);
-    parama = new bib();
-    parama.setBaseResponse(new jh());
-    parama.getBaseResponse().Tef = new eaf();
-    paramLinkedList.d((a)parama);
-    paramLinkedList.TW("/cgi-bin/micromsg-bin/finderrefreshtips");
-    paramLinkedList.vD(5273);
-    paramLinkedList = paramLinkedList.bgN();
-    Log.i(this.TAG, "entryStr:" + this.yjY.toString());
-    c(paramLinkedList);
-    paramLinkedList = ((Iterable)this.yjZ).iterator();
-    while (paramLinkedList.hasNext())
-    {
-      parama = (bfp)paramLinkedList.next();
-      this.yjY.append(parama.SQm).append('|');
-    }
-    Log.i(this.TAG, "init req ,list = " + this.yjY.toString());
-    AppMethodBeat.o(277379);
+    AppMethodBeat.i(360288);
+    CKa = new a((byte)0);
+    AppMethodBeat.o(360288);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveRefreshNotify$CallBack;", "", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderRefreshTipsResponse;", "plugin-finder_release"})
-  public static abstract interface a
+  private ah(String paramString)
   {
-    public abstract void a(int paramInt1, int paramInt2, String paramString, bib parambib);
+    AppMethodBeat.i(360280);
+    bhy localbhy = new bhy();
+    localbhy.scene = 1;
+    Object localObject = bi.ABn;
+    localbhy.ZEc = bi.dVu();
+    localbhy.finderUsername = z.bAW();
+    localbhy.liveId = 0L;
+    localbhy.hKN = 0L;
+    localbhy.lastBuffer = null;
+    localbhy.objectNonceId = paramString;
+    localObject = new c.a();
+    ((c.a)localObject).otE = ((a)localbhy);
+    bhz localbhz = new bhz();
+    localbhz.setBaseResponse(new kd());
+    localbhz.getBaseResponse().akjO = new etl();
+    ((c.a)localObject).otF = ((a)localbhz);
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/finderlivegetlotteryhistory";
+    ((c.a)localObject).funcId = 6484;
+    c(((c.a)localObject).bEF());
+    Log.i("Finder.CgiFinderLiveLotteryHistory", "CgiFinderLiveLotteryHistory init, finderUsername = " + localbhy.finderUsername + ", liveId = 0, objectId = 0" + ", objectNonceId = " + paramString + ", scene = 1,  lastBuffer = " + null);
+    AppMethodBeat.o(360280);
   }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveLotteryHistory$Companion;", "", "()V", "TAG", "", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.model.cgi.ah
  * JD-Core Version:    0.7.0.1
  */

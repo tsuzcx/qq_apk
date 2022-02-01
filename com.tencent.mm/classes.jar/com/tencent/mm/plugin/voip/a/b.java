@@ -1,96 +1,40 @@
 package com.tencent.mm.plugin.voip.a;
 
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.ball.a.f;
-import com.tencent.mm.plugin.ball.model.BallInfo;
-import com.tencent.mm.plugin.ball.service.FloatBallHelper;
-import com.tencent.mm.plugin.ball.service.e;
-import com.tencent.mm.plugin.voip.c;
-import com.tencent.mm.plugin.voip.model.l;
-import com.tencent.mm.plugin.voip.model.u;
-import com.tencent.mm.plugin.voip.model.v;
-import com.tencent.mm.plugin.voip.model.v2protocal;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig.ConfigHelper;
+import com.tencent.mm.accessibility.base.ViewSetter;
+import com.tencent.mm.plugin.voip.b.d;
+import com.tencent.mm.plugin.voip.b.e;
+import com.tencent.mm.plugin.voip.b.g;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/voip/agingOptimize/VoIPCallerVoiceAccessibility;", "Lcom/tencent/mm/accessibility/base/MMBaseAccessibilityConfig;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "initConfig", "", "plugin-voip_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends e
+  extends MMBaseAccessibilityConfig
 {
-  public b(f paramf)
+  public b(AppCompatActivity paramAppCompatActivity)
   {
-    super(paramf);
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(292211);
+    AppMethodBeat.o(292211);
   }
   
-  public final void I(int paramInt, String paramString)
+  public final void initConfig()
   {
-    AppMethodBeat.i(184045);
-    super.I(paramInt, paramString);
-    cvL().kqZ = 10;
-    if (c.gxs() != null) {
-      cvL().fIZ = String.valueOf(c.gxs().NPf.NJk.NMi.DPJ);
-    }
-    cvG();
-    AppMethodBeat.o(184045);
-  }
-  
-  public final void aOf()
-  {
-    AppMethodBeat.i(242937);
-    ((com.tencent.mm.plugin.ball.c.b)h.ae(com.tencent.mm.plugin.ball.c.b.class)).ld(true);
-    super.aOf();
-    AppMethodBeat.o(242937);
-  }
-  
-  public final boolean aOg()
-  {
-    return false;
-  }
-  
-  public final boolean aOh()
-  {
-    return false;
-  }
-  
-  public final void aOi()
-  {
-    AppMethodBeat.i(184047);
-    super.aOi();
-    this.rZC.hS(false);
-    AppMethodBeat.o(184047);
-  }
-  
-  public final void aOj()
-  {
-    AppMethodBeat.i(184048);
-    ((com.tencent.mm.plugin.ball.c.b)h.ae(com.tencent.mm.plugin.ball.c.b.class)).ld(false);
-    this.rYE.rYs.opType = 4;
-    if (this.rYG != null) {
-      this.rYG.q(this.rYE);
-    }
-    AppMethodBeat.o(184048);
-  }
-  
-  public final void gxy()
-  {
-    AppMethodBeat.i(242942);
-    ((com.tencent.mm.plugin.ball.c.b)h.ae(com.tencent.mm.plugin.ball.c.b.class)).ld(true);
-    this.rYE.rYs.opType = 4;
-    if (this.rYG != null) {
-      this.rYG.q(this.rYE);
-    }
-    AppMethodBeat.o(242942);
-  }
-  
-  public final boolean zH(int paramInt)
-  {
-    AppMethodBeat.i(184046);
-    boolean bool = super.zH(paramInt);
-    AppMethodBeat.o(184046);
-    return bool;
+    AppMethodBeat.i(292213);
+    MMBaseAccessibilityConfig.ConfigHelper localConfigHelper = root(b.e.layout_voip_caller_voice);
+    localConfigHelper.view(b.d.voip_remote_talker_avatar).disable();
+    localConfigHelper.view(b.d.voip_invite_tips_dot).disable();
+    localConfigHelper.view(b.d.voip_remote_talker_container).descFormat(b.g.voip_invite).valueByView(b.d.voip_remote_talker_name).valueByView(b.d.voip_invite_tips);
+    focusFirst(b.d.voip_remote_talker_container);
+    AppMethodBeat.o(292213);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.a.b
  * JD-Core Version:    0.7.0.1
  */

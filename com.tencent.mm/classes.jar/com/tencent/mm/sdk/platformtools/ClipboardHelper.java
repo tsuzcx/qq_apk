@@ -15,101 +15,101 @@ public class ClipboardHelper
   
   public static Intent getIntent(Context paramContext)
   {
-    AppMethodBeat.i(263036);
+    AppMethodBeat.i(243828);
     if (Build.VERSION.SDK_INT >= 11)
     {
       paramContext = new ClipbroadHelperImpl30().getIntent(paramContext);
-      AppMethodBeat.o(263036);
+      AppMethodBeat.o(243828);
       return paramContext;
     }
     paramContext = new ClipbroadHelperImplBelow30().getIntent(paramContext);
-    AppMethodBeat.o(263036);
+    AppMethodBeat.o(243828);
     return paramContext;
   }
   
   public static CharSequence getText()
   {
-    AppMethodBeat.i(263033);
+    AppMethodBeat.i(243814);
     CharSequence localCharSequence = getText(MMApplicationContext.getContext());
-    AppMethodBeat.o(263033);
+    AppMethodBeat.o(243814);
     return localCharSequence;
   }
   
   public static CharSequence getText(Context paramContext)
   {
-    AppMethodBeat.i(263034);
+    AppMethodBeat.i(243819);
     if (Build.VERSION.SDK_INT >= 11) {}
     for (paramContext = new ClipbroadHelperImpl30().getText(paramContext); paramContext == null; paramContext = new ClipbroadHelperImplBelow30().getText(paramContext))
     {
       Log.i("ClipboardHelper", "getText null");
-      AppMethodBeat.o(263034);
+      AppMethodBeat.o(243819);
       return "";
     }
-    AppMethodBeat.o(263034);
+    AppMethodBeat.o(243819);
     return paramContext;
   }
   
   public static Uri getUri(Context paramContext)
   {
-    AppMethodBeat.i(263038);
+    AppMethodBeat.i(243837);
     if (Build.VERSION.SDK_INT >= 11)
     {
       paramContext = new ClipbroadHelperImpl30().getUri(paramContext);
-      AppMethodBeat.o(263038);
+      AppMethodBeat.o(243837);
       return paramContext;
     }
     paramContext = new ClipbroadHelperImplBelow30().getUri(paramContext);
-    AppMethodBeat.o(263038);
+    AppMethodBeat.o(243837);
     return paramContext;
   }
   
   public static boolean isCopyFromWX(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(263031);
+    AppMethodBeat.i(243809);
     if ((Util.isNullOrNil(paramCharSequence)) || (lastCopyTxtHash == 0))
     {
-      AppMethodBeat.o(263031);
+      AppMethodBeat.o(243809);
       return false;
     }
     if (paramCharSequence.toString().hashCode() == lastCopyTxtHash)
     {
-      AppMethodBeat.o(263031);
+      AppMethodBeat.o(243809);
       return true;
     }
-    AppMethodBeat.o(263031);
+    AppMethodBeat.o(243809);
     return false;
   }
   
   public static void setIntent(Context paramContext, CharSequence paramCharSequence, Intent paramIntent)
   {
-    AppMethodBeat.i(263035);
+    AppMethodBeat.i(243824);
     if (Build.VERSION.SDK_INT >= 11)
     {
       new ClipbroadHelperImpl30().setIntent(paramContext, paramCharSequence, paramIntent);
-      AppMethodBeat.o(263035);
+      AppMethodBeat.o(243824);
       return;
     }
     new ClipbroadHelperImplBelow30().setIntent(paramContext, paramCharSequence, paramIntent);
-    AppMethodBeat.o(263035);
+    AppMethodBeat.o(243824);
   }
   
   public static void setText(Context paramContext, CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(263026);
+    AppMethodBeat.i(243799);
     setText(paramContext, null, paramCharSequence);
-    AppMethodBeat.o(263026);
+    AppMethodBeat.o(243799);
   }
   
   public static void setText(Context paramContext, CharSequence paramCharSequence1, CharSequence paramCharSequence2)
   {
-    AppMethodBeat.i(263027);
+    AppMethodBeat.i(243804);
     setText(paramContext, paramCharSequence1, paramCharSequence2, null);
-    AppMethodBeat.o(263027);
+    AppMethodBeat.o(243804);
   }
   
   public static void setText(Context paramContext, CharSequence paramCharSequence1, CharSequence paramCharSequence2, String paramString)
   {
-    AppMethodBeat.i(263029);
+    AppMethodBeat.i(243806);
     if (Build.VERSION.SDK_INT >= 11) {
       new ClipbroadHelperImpl30().setText(paramContext, paramCharSequence1, paramCharSequence2, paramString);
     }
@@ -118,7 +118,7 @@ public class ClipboardHelper
       if (paramCharSequence2 != null) {
         lastCopyTxtHash = paramCharSequence2.toString().hashCode();
       }
-      AppMethodBeat.o(263029);
+      AppMethodBeat.o(243806);
       return;
       new ClipbroadHelperImplBelow30().setText(paramContext, paramCharSequence1, paramCharSequence2);
     }
@@ -126,39 +126,39 @@ public class ClipboardHelper
   
   public static void setText(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(263022);
+    AppMethodBeat.i(243785);
     setText(MMApplicationContext.getContext(), null, paramCharSequence);
-    AppMethodBeat.o(263022);
+    AppMethodBeat.o(243785);
   }
   
   public static boolean setTextSwallowException(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(263024);
+    AppMethodBeat.i(243791);
     try
     {
       setText(MMApplicationContext.getContext(), null, paramCharSequence);
-      AppMethodBeat.o(263024);
+      AppMethodBeat.o(243791);
       return true;
     }
-    catch (Throwable paramCharSequence)
+    finally
     {
       Log.printErrStackTrace("MicroMsg.ClipboardHelper", paramCharSequence, "", new Object[0]);
-      AppMethodBeat.o(263024);
+      AppMethodBeat.o(243791);
     }
     return false;
   }
   
   public static void setUri(Context paramContext, CharSequence paramCharSequence, Uri paramUri)
   {
-    AppMethodBeat.i(263037);
+    AppMethodBeat.i(243833);
     if (Build.VERSION.SDK_INT >= 11)
     {
       new ClipbroadHelperImpl30().setUri(paramContext, paramCharSequence, paramUri);
-      AppMethodBeat.o(263037);
+      AppMethodBeat.o(243833);
       return;
     }
     new ClipbroadHelperImplBelow30().setUri(paramContext, paramCharSequence, paramUri);
-    AppMethodBeat.o(263037);
+    AppMethodBeat.o(243833);
   }
   
   static abstract interface IClipboard
@@ -180,7 +180,7 @@ public class ClipboardHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.ClipboardHelper
  * JD-Core Version:    0.7.0.1
  */

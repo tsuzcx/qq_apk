@@ -22,7 +22,7 @@ public abstract class WelcomeView
     super(paramContext, paramAttributeSet);
   }
   
-  public final void cL(View paramView)
+  public final void ds(View paramView)
   {
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
     localAlphaAnimation.setInterpolator(new LinearInterpolator());
@@ -40,7 +40,7 @@ public abstract class WelcomeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.WelcomeView
  * JD-Core Version:    0.7.0.1
  */

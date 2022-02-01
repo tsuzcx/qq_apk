@@ -9,7 +9,7 @@ import com.tencent.mm.pointers.PInt;
 public abstract interface b
   extends com.tencent.luggage.a.b
 {
-  public abstract b.a BS(int paramInt);
+  public abstract b.a Ch(int paramInt);
   
   public abstract Spannable a(Spannable paramSpannable, int paramInt, PInt paramPInt, Spannable.Factory paramFactory);
   
@@ -17,7 +17,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.a.b
  * JD-Core Version:    0.7.0.1
  */

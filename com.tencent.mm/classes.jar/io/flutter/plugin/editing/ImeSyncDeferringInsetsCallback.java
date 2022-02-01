@@ -1,7 +1,5 @@
 package io.flutter.plugin.editing;
 
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.graphics.Insets;
 import android.view.View;
 import android.view.View.OnApplyWindowInsetsListener;
@@ -9,20 +7,16 @@ import android.view.WindowInsets;
 import android.view.WindowInsets.Builder;
 import android.view.WindowInsetsAnimation;
 import android.view.WindowInsetsAnimation.Callback;
-import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 import java.util.List;
 
-@SuppressLint({"NewApi", "Override"})
-@TargetApi(30)
-@Keep
 class ImeSyncDeferringInsetsCallback
 {
   private boolean animating;
   private AnimationCallback animationCallback;
   private int deferredInsetTypes;
-  private a insetsListener;
+  private InsetsListener insetsListener;
   private WindowInsets lastWindowInsets;
   private boolean needsSave;
   private int overlayInsetTypes;
@@ -30,15 +24,15 @@ class ImeSyncDeferringInsetsCallback
   
   ImeSyncDeferringInsetsCallback(View paramView, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(255267);
+    AppMethodBeat.i(189757);
     this.animating = false;
     this.needsSave = false;
     this.overlayInsetTypes = paramInt1;
     this.deferredInsetTypes = paramInt2;
     this.view = paramView;
     this.animationCallback = new AnimationCallback();
-    this.insetsListener = new a((byte)0);
-    AppMethodBeat.o(255267);
+    this.insetsListener = new InsetsListener(null);
+    AppMethodBeat.o(189757);
   }
   
   WindowInsetsAnimation.Callback getAnimationCallback()
@@ -53,21 +47,20 @@ class ImeSyncDeferringInsetsCallback
   
   void install()
   {
-    AppMethodBeat.i(255269);
+    AppMethodBeat.i(189831);
     this.view.setWindowInsetsAnimationCallback(this.animationCallback);
     this.view.setOnApplyWindowInsetsListener(this.insetsListener);
-    AppMethodBeat.o(255269);
+    AppMethodBeat.o(189831);
   }
   
   void remove()
   {
-    AppMethodBeat.i(255271);
+    AppMethodBeat.i(189839);
     this.view.setWindowInsetsAnimationCallback(null);
     this.view.setOnApplyWindowInsetsListener(null);
-    AppMethodBeat.o(255271);
+    AppMethodBeat.o(189839);
   }
   
-  @Keep
   class AnimationCallback
     extends WindowInsetsAnimation.Callback
   {
@@ -78,7 +71,7 @@ class ImeSyncDeferringInsetsCallback
     
     public void onEnd(WindowInsetsAnimation paramWindowInsetsAnimation)
     {
-      AppMethodBeat.i(254220);
+      AppMethodBeat.i(189782);
       if ((ImeSyncDeferringInsetsCallback.this.animating) && ((paramWindowInsetsAnimation.getTypeMask() & ImeSyncDeferringInsetsCallback.this.deferredInsetTypes) != 0))
       {
         ImeSyncDeferringInsetsCallback.access$202(ImeSyncDeferringInsetsCallback.this, false);
@@ -86,26 +79,26 @@ class ImeSyncDeferringInsetsCallback
           ImeSyncDeferringInsetsCallback.this.view.dispatchApplyWindowInsets(ImeSyncDeferringInsetsCallback.this.lastWindowInsets);
         }
       }
-      AppMethodBeat.o(254220);
+      AppMethodBeat.o(189782);
     }
     
     public void onPrepare(WindowInsetsAnimation paramWindowInsetsAnimation)
     {
-      AppMethodBeat.i(254210);
+      AppMethodBeat.i(189762);
       if ((paramWindowInsetsAnimation.getTypeMask() & ImeSyncDeferringInsetsCallback.this.deferredInsetTypes) != 0)
       {
         ImeSyncDeferringInsetsCallback.access$202(ImeSyncDeferringInsetsCallback.this, true);
         ImeSyncDeferringInsetsCallback.access$302(ImeSyncDeferringInsetsCallback.this, true);
       }
-      AppMethodBeat.o(254210);
+      AppMethodBeat.o(189762);
     }
     
     public WindowInsets onProgress(WindowInsets paramWindowInsets, List<WindowInsetsAnimation> paramList)
     {
-      AppMethodBeat.i(254217);
+      AppMethodBeat.i(189772);
       if ((!ImeSyncDeferringInsetsCallback.this.animating) || (ImeSyncDeferringInsetsCallback.this.needsSave))
       {
-        AppMethodBeat.o(254217);
+        AppMethodBeat.o(189772);
         return paramWindowInsets;
       }
       paramList = paramList.iterator();
@@ -117,26 +110,26 @@ class ImeSyncDeferringInsetsCallback
       }
       if (i == 0)
       {
-        AppMethodBeat.o(254217);
+        AppMethodBeat.o(189772);
         return paramWindowInsets;
       }
       paramList = new WindowInsets.Builder(ImeSyncDeferringInsetsCallback.this.lastWindowInsets);
       Insets localInsets = Insets.of(0, 0, 0, Math.max(paramWindowInsets.getInsets(ImeSyncDeferringInsetsCallback.this.deferredInsetTypes).bottom - paramWindowInsets.getInsets(ImeSyncDeferringInsetsCallback.this.overlayInsetTypes).bottom, 0));
       paramList.setInsets(ImeSyncDeferringInsetsCallback.this.deferredInsetTypes, localInsets);
       ImeSyncDeferringInsetsCallback.this.view.onApplyWindowInsets(paramList.build());
-      AppMethodBeat.o(254217);
+      AppMethodBeat.o(189772);
       return paramWindowInsets;
     }
   }
   
-  class a
+  class InsetsListener
     implements View.OnApplyWindowInsetsListener
   {
-    private a() {}
+    private InsetsListener() {}
     
     public WindowInsets onApplyWindowInsets(View paramView, WindowInsets paramWindowInsets)
     {
-      AppMethodBeat.i(255659);
+      AppMethodBeat.i(189775);
       ImeSyncDeferringInsetsCallback.access$602(ImeSyncDeferringInsetsCallback.this, paramView);
       if (ImeSyncDeferringInsetsCallback.this.needsSave)
       {
@@ -146,18 +139,18 @@ class ImeSyncDeferringInsetsCallback
       if (ImeSyncDeferringInsetsCallback.this.animating)
       {
         paramView = WindowInsets.CONSUMED;
-        AppMethodBeat.o(255659);
+        AppMethodBeat.o(189775);
         return paramView;
       }
       paramView = paramView.onApplyWindowInsets(paramWindowInsets);
-      AppMethodBeat.o(255659);
+      AppMethodBeat.o(189775);
       return paramView;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     io.flutter.plugin.editing.ImeSyncDeferringInsetsCallback
  * JD-Core Version:    0.7.0.1
  */

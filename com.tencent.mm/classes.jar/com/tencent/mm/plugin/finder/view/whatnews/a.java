@@ -1,42 +1,46 @@
 package com.tencent.mm.plugin.finder.view.whatnews;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.f;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import kotlin.g;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import kotlin.Metadata;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/whatnews/FinderWhatsNewController;", "", "()V", "ID_KEY", "", "TAG", "", "isAvailableBoot", "", "()Z", "isAvailableBootLazy", "isAvailableBootLazy$delegate", "Lkotlin/Lazy;", "isAvailableEnter", "style", "", "getStyle", "()I", "clearShowFlag", "", "hasShown", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/whatnews/FinderWhatsNewController;", "", "()V", "ID_KEY", "", "TAG", "", "isAvailableBoot", "", "()Z", "isAvailableBootLazy", "isAvailableBootLazy$delegate", "Lkotlin/Lazy;", "isAvailableEnter", "style", "", "getStyle", "()I", "clearShowFlag", "", "hasShown", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  private static final kotlin.f BfW;
-  public static final a BfX;
+  public static final a GJL;
+  private static final j GJM;
   
   static
   {
     AppMethodBeat.i(168552);
-    BfX = new a();
-    com.tencent.mm.kernel.f localf = h.aHG();
-    p.j(localf, "MMKernel.storage()");
-    localf.aHp().getBoolean(ar.a.VAp, false);
-    BfW = g.ar((kotlin.g.a.a)a.BfY);
+    GJL = new a();
+    h.baE().ban().getBoolean(at.a.adcG, false);
+    GJM = k.cm((kotlin.g.a.a)a.GJN);
     AppMethodBeat.o(168552);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  public static int TY()
+  {
+    return 0;
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    extends q
+    extends u
     implements kotlin.g.a.a<Boolean>
   {
-    public static final a BfY;
+    public static final a GJN;
     
     static
     {
       AppMethodBeat.i(168551);
-      BfY = new a();
+      GJN = new a();
       AppMethodBeat.o(168551);
     }
     

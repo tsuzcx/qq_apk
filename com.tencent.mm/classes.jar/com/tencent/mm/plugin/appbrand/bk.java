@@ -1,151 +1,147 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build.VERSION;
-import android.text.TextUtils;
-import android.widget.Toast;
-import com.tencent.mm.aj.m;
-import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.f.a.xw;
-import com.tencent.mm.f.a.xw.b;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.am.a;
-import com.tencent.mm.plugin.base.model.c;
-import com.tencent.mm.plugin.report.f;
-import com.tencent.mm.sdk.crash.CrashReportFactory;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.platformtools.IntentUtil;
+import com.eclipsesource.mmv8.ScriptPartObject;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
+import com.tencent.mm.plugin.appbrand.appcache.bl;
+import com.tencent.mm.plugin.appbrand.appcache.k.a;
+import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
+import com.tencent.mm.plugin.appbrand.config.n;
+import com.tencent.mm.plugin.appbrand.n.i;
+import com.tencent.mm.plugin.appbrand.utils.z;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Locale;
 
-public abstract class bk
-  extends a
+public final class bk
 {
-  protected abstract int A(Intent paramIntent);
-  
-  protected void a(Context paramContext, Intent paramIntent, boolean paramBoolean) {}
-  
-  protected void b(Context paramContext, Intent paramIntent, boolean paramBoolean)
+  public static String a(AppBrandRuntime paramAppBrandRuntime, String paramString1, String paramString2)
   {
-    String str2;
-    String str1;
-    int i;
-    if (paramBoolean)
+    AppMethodBeat.i(146928);
+    Log.i("MicroMsg.SourceMapUtil", "hy: getting sourcemap %s, %s", new Object[] { paramString1, paramString2 });
+    if ((paramAppBrandRuntime == null) || (paramString1 == null) || (paramString1.length() == 0))
     {
-      str2 = c.fl(IntentUtil.getStringExtra(paramIntent, "id"), q.getAndroidId());
-      str1 = c.fl(IntentUtil.getStringExtra(paramIntent, "ext_info"), q.getAndroidId());
-      i = IntentUtil.getIntExtra(paramIntent, "ext_info_1", 0);
-      xw localxw = new xw();
-      localxw.fWN.appId = str1;
-      localxw.fWN.userName = str2;
-      localxw.fWN.fWQ = i;
-      localxw.fWN.scene = A(paramIntent);
-      localxw.fWN.fWU = true;
-      localxw.fWN.context = paramContext;
-      localxw.fWN.fWV = false;
-      EventCenter.instance.publish(localxw);
-      if (!localxw.fWO.fXi) {
-        break label182;
-      }
-      Log.i("MiroMsg.WxaShortcutEntry", "open wxa with id : %s", new Object[] { str2 });
+      Log.w("MicroMsg.SourceMapUtil", "runtime or jsRuntime or filePath is null.");
+      AppMethodBeat.o(146928);
+      return "";
     }
-    label182:
-    do
+    if (k.a.zn(paramAppBrandRuntime.asG().qYY.qHO))
     {
-      return;
-      str2 = c.aoH(IntentUtil.getStringExtra(paramIntent, "id"));
-      str1 = c.aoH(IntentUtil.getStringExtra(paramIntent, "ext_info"));
-      break;
-      if (i == 1)
-      {
-        Toast.makeText(paramContext, au.i.app_brand_debug_app_from_share_card_can_not_open, 0).show();
-        return;
-      }
-    } while (i != 2);
-    Toast.makeText(paramContext, au.i.app_brand_not_beta_pkg, 0).show();
+      Log.i("MicroMsg.SourceMapUtil", "current running type is ReleaseType do not need to inject sourceMap.");
+      AppMethodBeat.o(146928);
+      return "";
+    }
+    paramAppBrandRuntime = bl.d(paramAppBrandRuntime, paramString1 + ".map");
+    if ((paramAppBrandRuntime == null) || (paramAppBrandRuntime.length() == 0))
+    {
+      Log.i("MicroMsg.SourceMapUtil", "sourceMap of the script(%s) is null or nil.", new Object[] { paramString1 });
+      AppMethodBeat.o(146928);
+      return "";
+    }
+    paramAppBrandRuntime = String.format("typeof __wxSourceMap !== 'undefined' && (__wxSourceMap['%s'] = %s)", new Object[] { paramString2 + paramString1, paramAppBrandRuntime });
+    AppMethodBeat.o(146928);
+    return paramAppBrandRuntime;
   }
   
-  protected boolean b(Intent paramIntent, boolean paramBoolean)
+  public static void a(g paramg, i parami)
   {
-    Object localObject;
-    if (paramBoolean) {
-      localObject = c.fl(IntentUtil.getStringExtra(paramIntent, "id"), q.getAndroidId());
-    }
-    String str2;
-    int i;
-    for (String str1 = c.fl(IntentUtil.getStringExtra(paramIntent, "ext_info"), q.getAndroidId());; str1 = c.aoH(IntentUtil.getStringExtra(paramIntent, "ext_info")))
-    {
-      str2 = IntentUtil.getStringExtra(paramIntent, "token");
-      i = IntentUtil.getIntExtra(paramIntent, "ext_info_1", 0);
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2))) {
-        break;
-      }
-      Log.e("MiroMsg.WxaShortcutEntry", "jump to Wxa failed, username or appId or token is null or nil.");
-      return false;
-      localObject = c.aoH(IntentUtil.getStringExtra(paramIntent, "id"));
-    }
-    if (!m.OS((String)localObject))
-    {
-      Log.e("MiroMsg.WxaShortcutEntry", "jump to Wxa failed, username %s invalid ", new Object[] { localObject });
-      f.Iyx.idkeyStat(647L, 1L, 1L, false);
-      return false;
-    }
-    paramIntent = new StringBuilder();
-    h.aHE();
-    if (!str2.equals(c.fm(str1, b.getUin())))
-    {
-      paramIntent = MMApplicationContext.getContext().getSharedPreferences("app_brand_global_sp", 0);
-      if (paramIntent == null)
-      {
-        Log.w("MiroMsg.WxaShortcutEntry", "jump to Wxa failed, sp is null.");
-        return false;
-      }
-      localObject = paramIntent.getStringSet("uin_set", new HashSet());
-      if ((localObject == null) || (((Set)localObject).isEmpty()))
-      {
-        Log.w("MiroMsg.WxaShortcutEntry", "jump to Wxa failed, uin set is null or nil.");
-        return false;
-      }
-      paramIntent = new HashSet();
-      localObject = ((Set)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        paramIntent.add(c.fm(str1, (String)((Iterator)localObject).next()));
-      }
-      if (!paramIntent.contains(str2))
-      {
-        Log.e("MiroMsg.WxaShortcutEntry", "jump to Wxa failed, illegal token(%s).", new Object[] { str2 });
-        return false;
-      }
-    }
-    if ((!CrashReportFactory.hasDebuger()) && (i == 1))
-    {
-      Log.i("MiroMsg.WxaShortcutEntry", "can not open testing WeApp in released WeChat.");
-      return false;
-    }
-    return true;
+    AppMethodBeat.i(169480);
+    z.a(parami, b(paramg), new bk.1());
+    parami.evaluateJavascript(getSysInfo(), null);
+    AppMethodBeat.o(169480);
   }
   
-  public void k(Context paramContext, Intent paramIntent)
+  public static String b(g paramg)
   {
-    if (Build.VERSION.SDK_INT >= 26) {}
-    for (boolean bool = true; !b(paramIntent, bool); bool = false)
+    AppMethodBeat.i(169481);
+    Log.i("MicroMsg.SourceMapUtil", "hy: injecting sourcemap.js");
+    if (paramg == null)
     {
-      a(paramContext, paramIntent, false);
-      return;
+      Log.w("MicroMsg.SourceMapUtil", "hy: not valid runtime");
+      AppMethodBeat.o(169481);
+      return "";
     }
-    a(paramContext, paramIntent, true);
-    b(paramContext, paramIntent, bool);
+    if (paramg.getRuntime() == null)
+    {
+      Log.w("MicroMsg.SourceMapUtil", "hy: runtime not prepared. do not try to inject sourcemap.js. maybe preloading");
+      AppMethodBeat.o(169481);
+      return "";
+    }
+    if (k.a.zn(paramg.getRuntime().qsh.eul))
+    {
+      Log.i("MicroMsg.SourceMapUtil", "current running type is ReleaseType do not need to inject sourceMap.");
+      AppMethodBeat.o(169481);
+      return "";
+    }
+    paramg = (ICommLibReader)paramg.T(ICommLibReader.class);
+    if (paramg == null)
+    {
+      Log.e("MicroMsg.SourceMapUtil", "execSourceMapScript NULL reader");
+      AppMethodBeat.o(169481);
+      return "";
+    }
+    paramg = paramg.UW("WASourceMap.js");
+    AppMethodBeat.o(169481);
+    return paramg;
+  }
+  
+  public static boolean c(AppBrandRuntime paramAppBrandRuntime, String paramString)
+  {
+    AppMethodBeat.i(169483);
+    Log.i("MicroMsg.SourceMapUtil", "is sourcemap exist: %s", new Object[] { paramString });
+    if ((paramAppBrandRuntime == null) || (paramString == null) || (paramString.length() == 0))
+    {
+      Log.w("MicroMsg.SourceMapUtil", "runtime or jsRuntime or filePath is null.");
+      AppMethodBeat.o(169483);
+      return false;
+    }
+    if (k.a.zn(paramAppBrandRuntime.asG().qYY.qHO))
+    {
+      Log.i("MicroMsg.SourceMapUtil", "current running type is ReleaseType do not need to inject sourceMap.");
+      AppMethodBeat.o(169483);
+      return false;
+    }
+    boolean bool = bl.g(paramAppBrandRuntime, paramString + ".map");
+    AppMethodBeat.o(169483);
+    return bool;
+  }
+  
+  public static String getSysInfo()
+  {
+    AppMethodBeat.i(146929);
+    String str = String.format("typeof __wxSourceMap !== 'undefined' && (__wxSourceMap.__system = 'Android %s')", new Object[] { Build.VERSION.RELEASE });
+    AppMethodBeat.o(146929);
+    return str;
+  }
+  
+  public static ArrayList<ScriptPartObject> h(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    AppMethodBeat.i(169482);
+    Log.i("MicroMsg.SourceMapUtil", "buildSourceMapAppendList wxapkgPath: %s, filePath: %s", new Object[] { paramString1, paramString2 });
+    ArrayList localArrayList = new ArrayList();
+    ScriptPartObject localScriptPartObject = new ScriptPartObject();
+    localScriptPartObject.type = 1;
+    localScriptPartObject.content = String.format(Locale.US, "typeof __wxSourceMap !== 'undefined' && (__wxSourceMap['%s'] = ", new Object[] { paramString4 });
+    localArrayList.add(localScriptPartObject);
+    paramString4 = new ScriptPartObject();
+    paramString4.type = 2;
+    paramString4.wxaPkgPath = paramString1;
+    paramString4.wxaFileName = paramString2;
+    paramString4.wxaPkgKeyFilePath = paramString3;
+    localArrayList.add(paramString4);
+    paramString1 = new ScriptPartObject();
+    paramString1.type = 1;
+    paramString1.content = ")";
+    localArrayList.add(paramString1);
+    AppMethodBeat.o(169482);
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.bk
  * JD-Core Version:    0.7.0.1
  */

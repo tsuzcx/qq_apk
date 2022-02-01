@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector android:constantSize="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@android:id/background" android:drawable="@drawable/b7j" />
-    <item android:id="@android:id/secondaryProgress" android:drawable="@drawable/b7m" />
-    <item android:id="@android:id/progress">
-        <bitmap android:src="@drawable/b7j" android:tileModeX="repeat" />
+    <item android:state_enabled="false" android:state_pressed="true">
+        <bitmap android:gravity="center" android:src="@drawable/b65" />
     </item>
-</layer-list>
+    <item android:state_enabled="false">
+        <bitmap android:gravity="center" android:src="@drawable/b65" />
+    </item>
+    <item android:state_pressed="true">
+        <bitmap android:gravity="center" android:src="@drawable/b67" />
+    </item>
+    <item>
+        <bitmap android:gravity="center" android:src="@drawable/b66" />
+    </item>
+</selector>

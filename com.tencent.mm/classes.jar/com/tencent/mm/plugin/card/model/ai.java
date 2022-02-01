@@ -1,52 +1,52 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.cd.b;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dxi;
-import com.tencent.mm.protocal.protobuf.dxj;
+import com.tencent.mm.protocal.protobuf.eqm;
+import com.tencent.mm.protocal.protobuf.eqn;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class ai
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  private final d rr;
+  private h callback;
+  private final c rr;
   
   public ai(String paramString, byte[] paramArrayOfByte, float paramFloat1, float paramFloat2, float paramFloat3, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(112861);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new dxi();
-    ((d.a)localObject).lBV = new dxj();
-    ((d.a)localObject).uri = "/cgi-bin/card/reportlotionorbluetoothinfo";
-    ((d.a)localObject).funcId = 2574;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (dxi)d.b.b(this.rr.lBR);
-    ((dxi)localObject).fUL = paramString;
-    ((dxi)localObject).UcR = b.cU(paramArrayOfByte);
-    ((dxi)localObject).longitude = paramFloat1;
-    ((dxi)localObject).latitude = paramFloat2;
-    ((dxi)localObject).UcQ = paramFloat3;
-    ((dxi)localObject).UcS = paramBoolean1;
-    ((dxi)localObject).UcT = paramBoolean2;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new eqm();
+    ((c.a)localObject).otF = new eqn();
+    ((c.a)localObject).uri = "/cgi-bin/card/reportlotionorbluetoothinfo";
+    ((c.a)localObject).funcId = 2574;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (eqm)c.b.b(this.rr.otB);
+    ((eqm)localObject).iaI = paramString;
+    ((eqm)localObject).abul = b.cX(paramArrayOfByte);
+    ((eqm)localObject).longitude = paramFloat1;
+    ((eqm)localObject).latitude = paramFloat2;
+    ((eqm)localObject).abuk = paramFloat3;
+    ((eqm)localObject).abum = paramBoolean1;
+    ((eqm)localObject).abun = paramBoolean2;
     AppMethodBeat.o(112861);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(112862);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(112862);
     return i;

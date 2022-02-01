@@ -1,30 +1,39 @@
 package com.tencent.mm.plugin.finder.loader;
 
-import com.tencent.mm.loader.h.a.c;
-import com.tencent.mm.plugin.finder.storage.u;
-import kotlin.l;
+import com.tencent.mm.loader.b.e;
+import com.tencent.mm.loader.d;
+import com.tencent.mm.ui.component.c;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "getDecodeKey", "", "getMediaType", "Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;", "getPath", "getThumbUrl", "getThumbUrlToken", "getUrl", "getUrlToken", "getUsername", "isLegal", "", "isLocal", "plugin-finder-base_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/loader/IFinderLoader;", "Lcom/tencent/mm/ui/component/ApiUIC;", "avatar", "Lcom/tencent/mm/loader/Loader;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "bgBlurInstance", "blurInstance", "effectInstance", "getOption", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "type", "Lcom/tencent/mm/plugin/finder/loader/FinderLoader$LoaderType;", "halfRectInstance", "instance", "notWxUrlInstance", "previewAvatar", "rectAvatar", "ringtoneInstance", "wxAvatar", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface w
   extends c
 {
-  public abstract String aJi();
+  public abstract e a(p.a parama);
   
-  public abstract u dIX();
+  public abstract d<r> eCA();
   
-  public abstract String dIY();
+  public abstract d<r> eCB();
   
-  public abstract String dIZ();
+  public abstract d<r> eCC();
   
-  public abstract String dJa();
+  public abstract d<r> eCD();
   
-  public abstract String getPath();
+  public abstract d<r> eCE();
   
-  public abstract String getUrl();
+  public abstract d<r> eCv();
+  
+  public abstract d<r> eCw();
+  
+  public abstract d<r> eCx();
+  
+  public abstract d<r> eCy();
+  
+  public abstract d<r> eCz();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.loader.w
  * JD-Core Version:    0.7.0.1
  */

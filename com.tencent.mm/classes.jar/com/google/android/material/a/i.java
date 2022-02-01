@@ -10,10 +10,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class i
 {
-  private int aLK = 1;
-  private int buA = 0;
-  private TimeInterpolator buz = null;
+  private int cFH = 1;
+  private int crd = 0;
   public long delay = 0L;
+  private TimeInterpolator dnD = null;
   public long duration = 300L;
   
   public i(long paramLong)
@@ -26,121 +26,121 @@ public final class i
   {
     this.delay = paramLong1;
     this.duration = paramLong2;
-    this.buz = paramTimeInterpolator;
+    this.dnD = paramTimeInterpolator;
   }
   
   static i a(ValueAnimator paramValueAnimator)
   {
-    AppMethodBeat.i(234253);
+    AppMethodBeat.i(209168);
     i locali = new i(paramValueAnimator.getStartDelay(), paramValueAnimator.getDuration(), b(paramValueAnimator));
-    locali.buA = paramValueAnimator.getRepeatCount();
-    locali.aLK = paramValueAnimator.getRepeatMode();
-    AppMethodBeat.o(234253);
+    locali.crd = paramValueAnimator.getRepeatCount();
+    locali.cFH = paramValueAnimator.getRepeatMode();
+    AppMethodBeat.o(209168);
     return locali;
   }
   
   private static TimeInterpolator b(ValueAnimator paramValueAnimator)
   {
-    AppMethodBeat.i(234256);
+    AppMethodBeat.i(209172);
     paramValueAnimator = paramValueAnimator.getInterpolator();
     if (((paramValueAnimator instanceof AccelerateDecelerateInterpolator)) || (paramValueAnimator == null))
     {
-      paramValueAnimator = a.bun;
-      AppMethodBeat.o(234256);
+      paramValueAnimator = a.dnr;
+      AppMethodBeat.o(209172);
       return paramValueAnimator;
     }
     if ((paramValueAnimator instanceof AccelerateInterpolator))
     {
-      paramValueAnimator = a.buo;
-      AppMethodBeat.o(234256);
+      paramValueAnimator = a.dns;
+      AppMethodBeat.o(209172);
       return paramValueAnimator;
     }
     if ((paramValueAnimator instanceof DecelerateInterpolator))
     {
-      paramValueAnimator = a.bup;
-      AppMethodBeat.o(234256);
+      paramValueAnimator = a.dnt;
+      AppMethodBeat.o(209172);
       return paramValueAnimator;
     }
-    AppMethodBeat.o(234256);
+    AppMethodBeat.o(209172);
     return paramValueAnimator;
+  }
+  
+  public final TimeInterpolator LS()
+  {
+    if (this.dnD != null) {
+      return this.dnD;
+    }
+    return a.dnr;
   }
   
   public final void b(Animator paramAnimator)
   {
-    AppMethodBeat.i(234252);
+    AppMethodBeat.i(209188);
     paramAnimator.setStartDelay(this.delay);
     paramAnimator.setDuration(this.duration);
-    paramAnimator.setInterpolator(np());
+    paramAnimator.setInterpolator(LS());
     if ((paramAnimator instanceof ValueAnimator))
     {
-      ((ValueAnimator)paramAnimator).setRepeatCount(this.buA);
-      ((ValueAnimator)paramAnimator).setRepeatMode(this.aLK);
+      ((ValueAnimator)paramAnimator).setRepeatCount(this.crd);
+      ((ValueAnimator)paramAnimator).setRepeatMode(this.cFH);
     }
-    AppMethodBeat.o(234252);
+    AppMethodBeat.o(209188);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(234258);
+    AppMethodBeat.i(209202);
     if (this == paramObject)
     {
-      AppMethodBeat.o(234258);
+      AppMethodBeat.o(209202);
       return true;
     }
     if ((paramObject == null) || (getClass() != paramObject.getClass()))
     {
-      AppMethodBeat.o(234258);
+      AppMethodBeat.o(209202);
       return false;
     }
     paramObject = (i)paramObject;
     if (this.delay != paramObject.delay)
     {
-      AppMethodBeat.o(234258);
+      AppMethodBeat.o(209202);
       return false;
     }
     if (this.duration != paramObject.duration)
     {
-      AppMethodBeat.o(234258);
+      AppMethodBeat.o(209202);
       return false;
     }
-    if (this.buA != paramObject.buA)
+    if (this.crd != paramObject.crd)
     {
-      AppMethodBeat.o(234258);
+      AppMethodBeat.o(209202);
       return false;
     }
-    if (this.aLK != paramObject.aLK)
+    if (this.cFH != paramObject.cFH)
     {
-      AppMethodBeat.o(234258);
+      AppMethodBeat.o(209202);
       return false;
     }
-    boolean bool = np().getClass().equals(paramObject.np().getClass());
-    AppMethodBeat.o(234258);
+    boolean bool = LS().getClass().equals(paramObject.LS().getClass());
+    AppMethodBeat.o(209202);
     return bool;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(234259);
+    AppMethodBeat.i(209215);
     int i = (int)(this.delay ^ this.delay >>> 32);
     int j = (int)(this.duration ^ this.duration >>> 32);
-    int k = np().getClass().hashCode();
-    int m = this.buA;
-    int n = this.aLK;
-    AppMethodBeat.o(234259);
+    int k = LS().getClass().hashCode();
+    int m = this.crd;
+    int n = this.cFH;
+    AppMethodBeat.o(209215);
     return (((i * 31 + j) * 31 + k) * 31 + m) * 31 + n;
-  }
-  
-  public final TimeInterpolator np()
-  {
-    if (this.buz != null) {
-      return this.buz;
-    }
-    return a.bun;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(234260);
+    AppMethodBeat.i(209222);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append('\n');
     ((StringBuilder)localObject).append(getClass().getName());
@@ -151,20 +151,20 @@ public final class i
     ((StringBuilder)localObject).append(" duration: ");
     ((StringBuilder)localObject).append(this.duration);
     ((StringBuilder)localObject).append(" interpolator: ");
-    ((StringBuilder)localObject).append(np().getClass());
+    ((StringBuilder)localObject).append(LS().getClass());
     ((StringBuilder)localObject).append(" repeatCount: ");
-    ((StringBuilder)localObject).append(this.buA);
+    ((StringBuilder)localObject).append(this.crd);
     ((StringBuilder)localObject).append(" repeatMode: ");
-    ((StringBuilder)localObject).append(this.aLK);
+    ((StringBuilder)localObject).append(this.cFH);
     ((StringBuilder)localObject).append("}\n");
     localObject = ((StringBuilder)localObject).toString();
-    AppMethodBeat.o(234260);
+    AppMethodBeat.o(209222);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.a.i
  * JD-Core Version:    0.7.0.1
  */

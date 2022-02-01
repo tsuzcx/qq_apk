@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.patmsg.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.f;
-import com.tencent.mm.aj.k.b;
-import com.tencent.mm.i.d;
-import com.tencent.mm.protocal.protobuf.dit;
-import com.tencent.mm.protocal.protobuf.diu;
+import com.tencent.mm.g.d;
+import com.tencent.mm.message.f;
+import com.tencent.mm.message.k.b;
+import com.tencent.mm.protocal.protobuf.ebd;
+import com.tencent.mm.protocal.protobuf.ebe;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.XmlParser;
 import com.tencent.mm.util.g;
@@ -17,60 +17,61 @@ import java.util.Map;
 public class a
   extends f
 {
-  public dit GKw;
+  public ebd MHl;
   
   public a()
   {
-    AppMethodBeat.i(186669);
-    this.GKw = new dit();
-    AppMethodBeat.o(186669);
+    AppMethodBeat.i(266355);
+    this.MHl = new ebd();
+    AppMethodBeat.o(266355);
   }
   
   public final void a(StringBuilder paramStringBuilder, k.b paramb, String paramString, d paramd, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(186677);
-    paramString = this.GKw;
+    AppMethodBeat.i(266366);
+    paramString = this.MHl;
     paramb = new StringBuilder();
     paramb.append("<patMsg>");
-    paramb.append("<chatUser>").append(Util.nullAs(paramString.iRq, "")).append("</chatUser>");
+    paramb.append("<chatUser>").append(Util.nullAs(paramString.ltm, "")).append("</chatUser>");
     paramb.append("<records>");
-    paramb.append("<recordNum>").append(paramString.Ezu.size()).append("</recordNum>");
-    paramString = paramString.Ezu.iterator();
+    paramb.append("<recordNum>").append(paramString.Ksg.size()).append("</recordNum>");
+    paramString = paramString.Ksg.iterator();
     while (paramString.hasNext())
     {
-      paramd = (diu)paramString.next();
+      paramd = (ebe)paramString.next();
       paramb.append("<record>");
-      paramb.append("<fromUser>").append(Util.nullAs(paramd.fLi, "")).append("</fromUser>");
-      paramb.append("<pattedUser>").append(Util.nullAs(paramd.TQk, "")).append("</pattedUser>");
-      paramb.append("<template>").append(XmlParser.getCDataWrapper(paramd.lqH)).append("</template>");
+      paramb.append("<fromUser>").append(Util.nullAs(paramd.hQQ, "")).append("</fromUser>");
+      paramb.append("<pattedUser>").append(Util.nullAs(paramd.abgI, "")).append("</pattedUser>");
+      paramb.append("<template>").append(XmlParser.getCDataWrapper(paramd.nVS)).append("</template>");
       if ((paramd instanceof g.a)) {
-        paramb.append("<templete>").append(XmlParser.getCDataWrapper(((g.a)paramd).YyU)).append("</templete>");
+        paramb.append("<templete>").append(XmlParser.getCDataWrapper(((g.a)paramd).agts)).append("</templete>");
       }
       paramb.append("<createTime>").append(paramd.createTime).append("</createTime>");
-      paramb.append("<readStatus>").append(paramd.TQl).append("</readStatus>");
-      paramb.append("<svrId>").append(paramd.rPF).append("</svrId>");
-      paramb.append("<showModifyTip>").append(paramd.TQm).append("</showModifyTip>");
+      paramb.append("<readStatus>").append(paramd.abgJ).append("</readStatus>");
+      paramb.append("<svrId>").append(paramd.vaU).append("</svrId>");
+      paramb.append("<showModifyTip>").append(paramd.abgK).append("</showModifyTip>");
+      paramb.append("<isNewPatMsg>").append(paramd.abgL).append("</isNewPatMsg>");
       paramb.append("</record>");
     }
     paramb.append("</records>");
     paramb.append("</patMsg>");
     paramStringBuilder.append(paramb.toString());
-    AppMethodBeat.o(186677);
+    AppMethodBeat.o(266366);
   }
   
   public final void a(Map<String, String> paramMap, k.b paramb)
   {
-    AppMethodBeat.i(186680);
-    this.GKw = g.ab(".msg.appmsg", paramMap);
-    AppMethodBeat.o(186680);
+    AppMethodBeat.i(266371);
+    this.MHl = g.ak(".msg.appmsg", paramMap);
+    AppMethodBeat.o(266371);
   }
   
-  public final f aPj()
+  public final f biW()
   {
-    AppMethodBeat.i(186675);
+    AppMethodBeat.i(266357);
     a locala = new a();
-    locala.GKw = this.GKw;
-    AppMethodBeat.o(186675);
+    locala.MHl = this.MHl;
+    AppMethodBeat.o(266357);
     return locala;
   }
 }

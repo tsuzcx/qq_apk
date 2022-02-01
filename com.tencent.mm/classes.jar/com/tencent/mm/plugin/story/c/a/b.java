@@ -13,85 +13,80 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryCameraElementConfig;", "Lcom/tencent/mm/plugin/story/config/StoryElementConfig;", "Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryCameraElementConfig$CameraPreviewConfig;", "()V", "CPU_CROP_AVAILABLE", "", "CPU_CROP_MMKV_KEY", "", "CPU_CROP_NOT_AVAILABLE", "RECORDER_CAPTURE_RESOLUTION_1080P", "RECORDER_CAPTURE_RESOLUTION_540P", "RECORDER_CAPTURE_RESOLUTION_720P", "RESOLUTION", "StoryCameraUseApi1", "StoryCameraUseApi2", "StoryCropSizeWithCPU", "StoryCropSizeWithGPU", "TAG", "USECPUCROP", "USE_HIGHEST_RESOLUTION_MEMORYCLASS_LIMIT_MB", "USE_HIGHEST_RESOLUTION_MEMORY_LIMIT_MB", "USE_HIGHEST_RESOLUTION_MEMORY_LIMIT_MB_BUFFER", "", "getElementName", "Lcom/tencent/mm/plugin/story/config/StoryConfigConstant$ElementName;", "initDefaultConfig", "loadCameraApiConfig", "", "loadConfig", "loadCropTypeConfig", "loadDeviceResolutionConfig", "", "loadResolutionConfig", "markCpuCropNotAvailable", "setServerUseCpuCrop", "tryUse1080Preview", "use720Preview", "CameraPreviewConfig", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryCameraElementConfig;", "Lcom/tencent/mm/plugin/story/config/StoryElementConfig;", "Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryCameraElementConfig$CameraPreviewConfig;", "()V", "CPU_CROP_AVAILABLE", "", "CPU_CROP_MMKV_KEY", "", "CPU_CROP_NOT_AVAILABLE", "RECORDER_CAPTURE_RESOLUTION_1080P", "RECORDER_CAPTURE_RESOLUTION_540P", "RECORDER_CAPTURE_RESOLUTION_720P", "RESOLUTION", "StoryCameraUseApi1", "StoryCameraUseApi2", "StoryCropSizeWithCPU", "StoryCropSizeWithGPU", "TAG", "USECPUCROP", "USE_HIGHEST_RESOLUTION_MEMORYCLASS_LIMIT_MB", "USE_HIGHEST_RESOLUTION_MEMORY_LIMIT_MB", "USE_HIGHEST_RESOLUTION_MEMORY_LIMIT_MB_BUFFER", "", "getElementName", "Lcom/tencent/mm/plugin/story/config/StoryConfigConstant$ElementName;", "initDefaultConfig", "loadCameraApiConfig", "", "loadConfig", "loadCropTypeConfig", "loadDeviceResolutionConfig", "", "loadResolutionConfig", "markCpuCropNotAvailable", "setServerUseCpuCrop", "tryUse1080Preview", "use720Preview", "CameraPreviewConfig", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends com.tencent.mm.plugin.story.c.b<a>
+  extends com.tencent.mm.plugin.story.c.b<b.a>
 {
-  public static final b LFa;
+  public static final b SiM;
   
   static
   {
     AppMethodBeat.i(118584);
-    LFa = new b();
+    SiM = new b();
     AppMethodBeat.o(118584);
   }
   
-  public final void aTZ()
+  public final void boD()
   {
     int j = 1;
     AppMethodBeat.i(118583);
-    Object localObject1 = (a)aTX();
-    Object localObject2 = h.aHG();
-    p.j(localObject2, "MMKernel.storage()");
+    Object localObject1 = (b.a)boB();
     boolean bool;
-    label99:
+    label81:
     int k;
-    if (((f)localObject2).aHp().getInt(ar.a.VxO, 2) == 2)
+    if (h.baE().ban().getInt(at.a.acZB, 2) == 2)
     {
       bool = true;
-      ((a)localObject1).uTJ = bool;
-      Log.i("MicroMsg.StoryCameraElementConfig", "cameraPreviewConfig.useCameraApi2 debug : " + ((a)aTX()).uTJ);
-      if (at("VideoRecordUseCpuCrop", 0) != 1) {
-        break label541;
+      ((b.a)localObject1).ygy = bool;
+      Log.i("MicroMsg.StoryCameraElementConfig", s.X("cameraPreviewConfig.useCameraApi2 debug : ", Boolean.valueOf(((b.a)boB()).ygy)));
+      if (aC("VideoRecordUseCpuCrop", 0) != 1) {
+        break label502;
       }
       bool = true;
-      i = af.juP.jts;
-      k = MultiProcessMMKV.getMMKV(a.b.LEW.name()).getInt("use_cpu_crop", 0);
+      i = af.lYg.lWJ;
+      k = MultiProcessMMKV.getMMKV(a.b.SiH.name()).getInt("use_cpu_crop", 0);
       Log.i("MicroMsg.StoryCameraElementConfig", "setServerUseCpuCrop, serverConfigUseCpuCrop:" + bool + ", deviceConfigUseCpuCrop:" + i + ", localCpuCropConfig:" + k);
       if (bool) {
-        ((a)aTX()).laO = true;
+        ((b.a)boB()).nFT = true;
       }
       if (i != -1)
       {
-        localObject1 = (a)aTX();
+        localObject1 = (b.a)boB();
         if (i != 1) {
-          break label547;
+          break label508;
         }
         bool = true;
-        label202:
-        ((a)localObject1).laO = bool;
+        label184:
+        ((b.a)localObject1).nFT = bool;
       }
-      Log.i("MicroMsg.StoryCameraElementConfig", "final set useCpuCrop:" + ((a)aTX()).laO);
+      Log.i("MicroMsg.StoryCameraElementConfig", s.X("final set useCpuCrop:", Boolean.valueOf(((b.a)boB()).nFT)));
       if (WeChatEnvironment.hasDebugger())
       {
-        localObject1 = (a)aTX();
-        localObject2 = h.aHG();
-        p.j(localObject2, "MMKernel.storage()");
-        if (((f)localObject2).aHp().getInt(ar.a.Vuo, 2) != 1) {
-          break label553;
+        localObject1 = (b.a)boB();
+        if (h.baE().ban().getInt(at.a.acVX, 2) != 1) {
+          break label514;
         }
         bool = true;
-        label285:
-        ((a)localObject1).laO = bool;
-        Log.i("MicroMsg.StoryCameraElementConfig", "cameraPreviewConfig.useCpuCrop debug : " + ((a)aTX()).laO);
+        label249:
+        ((b.a)localObject1).nFT = bool;
+        Log.i("MicroMsg.StoryCameraElementConfig", s.X("cameraPreviewConfig.useCpuCrop debug : ", Boolean.valueOf(((b.a)boB()).nFT)));
       }
-      if (af.juP.jto == -1) {
-        break label593;
+      if (af.lYg.lWF == -1) {
+        break label554;
       }
-      localObject1 = (a)aTX();
-      switch (af.juP.jto)
+      localObject1 = (b.a)boB();
+      switch (af.lYg.lWF)
       {
       default: 
         i = 1080;
-        label384:
-        ((a)localObject1).kmg = i;
-        Log.i("MicroMsg.StoryCameraElementConfig", "loadDeviceResolutionConfig " + ((a)aTX()).kmg + "  value " + af.juP.jto);
+        label344:
+        ((b.a)localObject1).mNl = i;
+        Log.i("MicroMsg.StoryCameraElementConfig", "loadDeviceResolutionConfig " + ((b.a)boB()).mNl + "  value " + af.lYg.lWF);
         i = 1;
       }
     }
@@ -99,99 +94,62 @@ public final class b
     {
       if (i == 0)
       {
-        localObject1 = com.tencent.mm.plugin.mmsight.d.eSY();
-        i = at("Sight1080pRecordMinApiLevel", 19);
+        localObject1 = com.tencent.mm.plugin.mmsight.d.gbR();
+        i = aC("Sight1080pRecordMinApiLevel", 19);
         Log.i("MicroMsg.StoryCameraElementConfig", "record1080pApiLevel: " + i + "  screenSize x " + ((Point)localObject1).x + " y " + ((Point)localObject1).y);
-        localObject2 = MMApplicationContext.getContext().getSystemService("activity");
+        Object localObject2 = MMApplicationContext.getContext().getSystemService("activity");
         if (localObject2 == null)
         {
-          localObject1 = new t("null cannot be cast to non-null type android.app.ActivityManager");
+          localObject1 = new NullPointerException("null cannot be cast to non-null type android.app.ActivityManager");
           AppMethodBeat.o(118583);
           throw ((Throwable)localObject1);
           bool = false;
           break;
-          label541:
+          label502:
           bool = false;
-          break label99;
-          label547:
+          break label81;
+          label508:
           bool = false;
-          break label202;
-          label553:
+          break label184;
+          label514:
           bool = false;
-          break label285;
-          if (((a)aTX()).laO)
+          break label249;
+          if (((b.a)boB()).nFT)
           {
             i = 540;
-            break label384;
+            break label344;
           }
           i = 720;
-          break label384;
+          break label344;
           i = 720;
-          break label384;
-          label593:
+          break label344;
+          label554:
           i = 0;
           continue;
         }
         k = ((ActivityManager)localObject2).getLargeMemoryClass();
-        double d = com.tencent.mm.plugin.mmsight.d.hw(MMApplicationContext.getContext());
-        if (((af.juP.jtn != -1) && ((af.juP.jtn & 0x1) == 0)) || (!com.tencent.mm.compatible.util.d.qV(i)) || (k < 512) || (d < 1725.0D) || (Math.min(((Point)localObject1).x, ((Point)localObject1).y) < 1080)) {
-          break label718;
+        double d = com.tencent.mm.plugin.mmsight.d.iR(MMApplicationContext.getContext());
+        if (((af.lYg.lWE != -1) && ((af.lYg.lWE & 0x1) == 0)) || (!com.tencent.mm.compatible.util.d.rb(i)) || (k < 512) || (d < 1725.0D) || (Math.min(((Point)localObject1).x, ((Point)localObject1).y) < 1080)) {
+          break label679;
         }
-        ((a)aTX()).kmg = 1080;
+        ((b.a)boB()).mNl = 1080;
       }
     }
     for (int i = j;; i = 0)
     {
       if (i == 0) {
-        ((a)aTX()).kmg = 720;
+        ((b.a)boB()).mNl = 720;
       }
       AppMethodBeat.o(118583);
       return;
-      label718:
-      Log.i("MicroMsg.StoryCameraElementConfig", "currentRecorderCaptureResolution is :" + (a)aTX() + ".resolution");
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryCameraElementConfig$CameraPreviewConfig;", "", "resolution", "", "useCpuCrop", "", "useCameraApi2", "(IZZ)V", "getResolution", "()I", "setResolution", "(I)V", "getUseCameraApi2", "()Z", "setUseCameraApi2", "(Z)V", "getUseCpuCrop", "setUseCpuCrop", "component1", "component2", "component3", "copy", "equals", "other", "hashCode", "toString", "", "plugin-story_release"})
-  public static final class a
-  {
-    int kmg = 720;
-    boolean laO = false;
-    boolean uTJ = false;
-    
-    public final boolean equals(Object paramObject)
-    {
-      if (this != paramObject)
-      {
-        if ((paramObject instanceof a))
-        {
-          paramObject = (a)paramObject;
-          if ((this.kmg != paramObject.kmg) || (this.laO != paramObject.laO) || (this.uTJ != paramObject.uTJ)) {}
-        }
-      }
-      else {
-        return true;
-      }
-      return false;
-    }
-    
-    public final int hashCode()
-    {
-      throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(118581);
-      String str = "CameraPreviewConfig(resolution=" + this.kmg + ", useCpuCrop=" + this.laO + ", useCameraApi2=" + this.uTJ + ")";
-      AppMethodBeat.o(118581);
-      return str;
+      label679:
+      Log.i("MicroMsg.StoryCameraElementConfig", "currentRecorderCaptureResolution is :" + boB() + ".resolution");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.story.c.a.b
  * JD-Core Version:    0.7.0.1
  */

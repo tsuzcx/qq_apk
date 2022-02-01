@@ -1,8 +1,11 @@
 const { addEventListener, removeEventListener, postMessage, dispatchEvent, callbackWrapper, registerMethod, invokeMethod } = (function() {
   var eventMap = {};
   var methodMap = {};
-  var messenger = wxMessage;
-  delete wxMessage;
+  var messenger = { postMessage: function() {} };
+  if (typeof wxMessage !== 'undefined') {
+    messenger = wxMessage;
+    delete wxMessage;
+  }
   return {
     addEventListener : function (eventType, listener) {
       if (eventMap.hasOwnProperty(eventType)) {

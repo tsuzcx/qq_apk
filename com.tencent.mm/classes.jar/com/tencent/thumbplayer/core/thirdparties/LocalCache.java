@@ -36,138 +36,170 @@ public class LocalCache
   
   static
   {
-    AppMethodBeat.i(224087);
+    AppMethodBeat.i(227507);
     mInstanceMap = new HashMap();
-    AppMethodBeat.o(224087);
+    AppMethodBeat.o(227507);
   }
   
   private LocalCache(File paramFile, long paramLong, int paramInt)
   {
-    AppMethodBeat.i(224014);
+    AppMethodBeat.i(227499);
     if ((!paramFile.exists()) && (!paramFile.mkdirs()))
     {
       this.mCache = null;
-      AppMethodBeat.o(224014);
+      AppMethodBeat.o(227499);
       return;
     }
     this.mCache = new ACacheManager(paramFile, paramLong, paramInt, null);
-    AppMethodBeat.o(224014);
+    AppMethodBeat.o(227499);
   }
   
   public static LocalCache get(Context paramContext)
   {
-    AppMethodBeat.i(224003);
+    AppMethodBeat.i(227453);
     paramContext = get(paramContext, "LocalCache");
-    AppMethodBeat.o(224003);
+    AppMethodBeat.o(227453);
     return paramContext;
   }
   
   public static LocalCache get(Context paramContext, long paramLong, int paramInt)
   {
-    AppMethodBeat.i(224007);
+    AppMethodBeat.i(227474);
     paramContext = get(new File(paramContext.getCacheDir(), "LocalCache"), paramLong, paramInt);
-    AppMethodBeat.o(224007);
+    AppMethodBeat.o(227474);
     return paramContext;
   }
   
   public static LocalCache get(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(224004);
+    AppMethodBeat.i(227460);
     paramContext = get(new File(paramContext.getCacheDir(), paramString), 50000000L, 2147483647);
-    AppMethodBeat.o(224004);
+    AppMethodBeat.o(227460);
     return paramContext;
   }
   
   public static LocalCache get(File paramFile)
   {
-    AppMethodBeat.i(224006);
+    AppMethodBeat.i(227465);
     paramFile = get(paramFile, 50000000L, 2147483647);
-    AppMethodBeat.o(224006);
+    AppMethodBeat.o(227465);
     return paramFile;
   }
   
+  /* Error */
   public static LocalCache get(File paramFile, long paramLong, int paramInt)
   {
-    AppMethodBeat.i(224011);
-    localObject = null;
-    try
-    {
-      localLocalCache = (LocalCache)mInstanceMap.get(paramFile.getAbsoluteFile() + myPid());
-      localObject = localLocalCache;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        LocalCache localLocalCache;
-        label102:
-        continue;
-        paramFile = localObject;
-      }
-    }
-    if (localObject == null)
-    {
-      try
-      {
-        localLocalCache = new LocalCache(paramFile, paramLong, paramInt);
-      }
-      catch (Throwable paramFile)
-      {
-        for (;;)
-        {
-          paramFile = localObject;
-        }
-      }
-      try
-      {
-        mInstanceMap.put(paramFile.getAbsolutePath() + myPid(), localLocalCache);
-        paramFile = localLocalCache;
-      }
-      catch (Throwable paramFile)
-      {
-        paramFile = localLocalCache;
-        break label102;
-      }
-      AppMethodBeat.o(224011);
-      return paramFile;
-    }
+    // Byte code:
+    //   0: ldc 95
+    //   2: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aconst_null
+    //   6: astore 4
+    //   8: getstatic 44	com/tencent/thumbplayer/core/thirdparties/LocalCache:mInstanceMap	Ljava/util/Map;
+    //   11: new 97	java/lang/StringBuilder
+    //   14: dup
+    //   15: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   18: aload_0
+    //   19: invokevirtual 101	java/io/File:getAbsoluteFile	()Ljava/io/File;
+    //   22: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   25: invokestatic 109	com/tencent/thumbplayer/core/thirdparties/LocalCache:myPid	()Ljava/lang/String;
+    //   28: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   31: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   34: invokeinterface 120 2 0
+    //   39: checkcast 2	com/tencent/thumbplayer/core/thirdparties/LocalCache
+    //   42: astore 5
+    //   44: aload 5
+    //   46: astore 4
+    //   48: aload 4
+    //   50: ifnonnull +78 -> 128
+    //   53: new 2	com/tencent/thumbplayer/core/thirdparties/LocalCache
+    //   56: dup
+    //   57: aload_0
+    //   58: lload_1
+    //   59: iload_3
+    //   60: invokespecial 122	com/tencent/thumbplayer/core/thirdparties/LocalCache:<init>	(Ljava/io/File;JI)V
+    //   63: astore 5
+    //   65: getstatic 44	com/tencent/thumbplayer/core/thirdparties/LocalCache:mInstanceMap	Ljava/util/Map;
+    //   68: new 97	java/lang/StringBuilder
+    //   71: dup
+    //   72: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   75: aload_0
+    //   76: invokevirtual 125	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   79: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   82: invokestatic 109	com/tencent/thumbplayer/core/thirdparties/LocalCache:myPid	()Ljava/lang/String;
+    //   85: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   88: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   91: aload 5
+    //   93: invokeinterface 129 3 0
+    //   98: pop
+    //   99: aload 5
+    //   101: astore_0
+    //   102: ldc 95
+    //   104: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   107: aload_0
+    //   108: areturn
+    //   109: astore_0
+    //   110: aload 4
+    //   112: astore_0
+    //   113: goto -11 -> 102
+    //   116: astore_0
+    //   117: aload 5
+    //   119: astore_0
+    //   120: goto -18 -> 102
+    //   123: astore 5
+    //   125: goto -77 -> 48
+    //   128: aload 4
+    //   130: astore_0
+    //   131: goto -29 -> 102
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	134	0	paramFile	File
+    //   0	134	1	paramLong	long
+    //   0	134	3	paramInt	int
+    //   6	123	4	localObject	Object
+    //   42	76	5	localLocalCache	LocalCache
+    //   123	1	5	localException	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   53	65	109	finally
+    //   65	99	116	finally
+    //   8	44	123	java/lang/Exception
   }
   
   private static String myPid()
   {
-    AppMethodBeat.i(224012);
+    AppMethodBeat.i(227490);
     String str = "_" + Process.myPid();
-    AppMethodBeat.o(224012);
+    AppMethodBeat.o(227490);
     return str;
   }
   
   public void clear()
   {
-    AppMethodBeat.i(224086);
+    AppMethodBeat.i(228748);
     if (this.mCache == null)
     {
-      AppMethodBeat.o(224086);
+      AppMethodBeat.o(228748);
       return;
     }
     ACacheManager.access$1500(this.mCache);
-    AppMethodBeat.o(224086);
+    AppMethodBeat.o(228748);
   }
   
   public File file(String paramString)
   {
-    AppMethodBeat.i(224080);
+    AppMethodBeat.i(228746);
     if (this.mCache == null)
     {
-      AppMethodBeat.o(224080);
+      AppMethodBeat.o(228746);
       return null;
     }
     paramString = ACacheManager.access$100(this.mCache, paramString);
     if (paramString.exists())
     {
-      AppMethodBeat.o(224080);
+      AppMethodBeat.o(228746);
       return paramString;
     }
-    AppMethodBeat.o(224080);
+    AppMethodBeat.o(228746);
     return null;
   }
   
@@ -175,69 +207,69 @@ public class LocalCache
   public byte[] getAsBinary(String paramString)
   {
     // Byte code:
-    //   0: ldc 163
+    //   0: ldc 161
     //   2: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
     //   6: getfield 62	com/tencent/thumbplayer/core/thirdparties/LocalCache:mCache	Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;
     //   9: ifnonnull +10 -> 19
-    //   12: ldc 163
+    //   12: ldc 161
     //   14: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   17: aconst_null
     //   18: areturn
     //   19: aload_0
     //   20: getfield 62	com/tencent/thumbplayer/core/thirdparties/LocalCache:mCache	Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;
     //   23: aload_1
-    //   24: invokestatic 166	com/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager:access$400	(Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;Ljava/lang/String;)Ljava/io/File;
+    //   24: invokestatic 164	com/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager:access$400	(Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;Ljava/lang/String;)Ljava/io/File;
     //   27: astore_3
     //   28: aload_3
     //   29: invokevirtual 57	java/io/File:exists	()Z
     //   32: istore_2
     //   33: iload_2
     //   34: ifne +10 -> 44
-    //   37: ldc 163
+    //   37: ldc 161
     //   39: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   42: aconst_null
     //   43: areturn
-    //   44: new 168	java/io/RandomAccessFile
+    //   44: new 166	java/io/RandomAccessFile
     //   47: dup
     //   48: aload_3
-    //   49: ldc 170
-    //   51: invokespecial 171	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   49: ldc 168
+    //   51: invokespecial 169	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   54: astore_3
     //   55: aload_3
-    //   56: invokevirtual 175	java/io/RandomAccessFile:length	()J
+    //   56: invokevirtual 173	java/io/RandomAccessFile:length	()J
     //   59: l2i
     //   60: newarray byte
     //   62: astore 4
     //   64: aload_3
     //   65: aload 4
-    //   67: invokevirtual 179	java/io/RandomAccessFile:read	([B)I
+    //   67: invokevirtual 177	java/io/RandomAccessFile:read	([B)I
     //   70: ifle +45 -> 115
     //   73: aload 4
-    //   75: invokestatic 183	com/tencent/thumbplayer/core/thirdparties/LocalCache$Utils:access$800	([B)Z
+    //   75: invokestatic 181	com/tencent/thumbplayer/core/thirdparties/LocalCache$Utils:access$800	([B)Z
     //   78: ifne +20 -> 98
     //   81: aload 4
-    //   83: invokestatic 187	com/tencent/thumbplayer/core/thirdparties/LocalCache$Utils:access$900	([B)[B
+    //   83: invokestatic 185	com/tencent/thumbplayer/core/thirdparties/LocalCache$Utils:access$900	([B)[B
     //   86: astore_1
     //   87: aload_3
-    //   88: invokevirtual 190	java/io/RandomAccessFile:close	()V
-    //   91: ldc 163
+    //   88: invokevirtual 188	java/io/RandomAccessFile:close	()V
+    //   91: ldc 161
     //   93: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   96: aload_1
     //   97: areturn
     //   98: aload_3
-    //   99: invokevirtual 190	java/io/RandomAccessFile:close	()V
+    //   99: invokevirtual 188	java/io/RandomAccessFile:close	()V
     //   102: aload_0
     //   103: aload_1
-    //   104: invokevirtual 194	com/tencent/thumbplayer/core/thirdparties/LocalCache:remove	(Ljava/lang/String;)Z
+    //   104: invokevirtual 192	com/tencent/thumbplayer/core/thirdparties/LocalCache:remove	(Ljava/lang/String;)Z
     //   107: pop
-    //   108: ldc 163
+    //   108: ldc 161
     //   110: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   113: aconst_null
     //   114: areturn
     //   115: aload_3
-    //   116: invokevirtual 190	java/io/RandomAccessFile:close	()V
-    //   119: ldc 163
+    //   116: invokevirtual 188	java/io/RandomAccessFile:close	()V
+    //   119: ldc 161
     //   121: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   124: aconst_null
     //   125: areturn
@@ -247,8 +279,8 @@ public class LocalCache
     //   129: aload_3
     //   130: ifnull +7 -> 137
     //   133: aload_3
-    //   134: invokevirtual 190	java/io/RandomAccessFile:close	()V
-    //   137: ldc 163
+    //   134: invokevirtual 188	java/io/RandomAccessFile:close	()V
+    //   137: ldc 161
     //   139: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   142: aconst_null
     //   143: areturn
@@ -258,8 +290,8 @@ public class LocalCache
     //   147: aload_3
     //   148: ifnull +7 -> 155
     //   151: aload_3
-    //   152: invokevirtual 190	java/io/RandomAccessFile:close	()V
-    //   155: ldc 163
+    //   152: invokevirtual 188	java/io/RandomAccessFile:close	()V
+    //   155: ldc 161
     //   157: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   160: aload_1
     //   161: athrow
@@ -304,60 +336,60 @@ public class LocalCache
   
   public Bitmap getAsBitmap(String paramString)
   {
-    AppMethodBeat.i(224069);
+    AppMethodBeat.i(228742);
     if (getAsBinary(paramString) == null)
     {
-      AppMethodBeat.o(224069);
+      AppMethodBeat.o(228742);
       return null;
     }
     paramString = Utils.access$1100(getAsBinary(paramString));
-    AppMethodBeat.o(224069);
+    AppMethodBeat.o(228742);
     return paramString;
   }
   
   public Drawable getAsDrawable(String paramString)
   {
-    AppMethodBeat.i(224075);
+    AppMethodBeat.i(228745);
     if (getAsBinary(paramString) == null)
     {
-      AppMethodBeat.o(224075);
+      AppMethodBeat.o(228745);
       return null;
     }
     paramString = Utils.access$1300(Utils.access$1100(getAsBinary(paramString)));
-    AppMethodBeat.o(224075);
+    AppMethodBeat.o(228745);
     return paramString;
   }
   
   public JSONArray getAsJSONArray(String paramString)
   {
-    AppMethodBeat.i(224038);
+    AppMethodBeat.i(227573);
     paramString = getAsString(paramString);
     try
     {
       paramString = new JSONArray(paramString);
-      AppMethodBeat.o(224038);
+      AppMethodBeat.o(227573);
       return paramString;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(224038);
+      AppMethodBeat.o(227573);
     }
     return null;
   }
   
   public JSONObject getAsJSONObject(String paramString)
   {
-    AppMethodBeat.i(224034);
+    AppMethodBeat.i(227550);
     paramString = getAsString(paramString);
     try
     {
       paramString = new JSONObject(paramString);
-      AppMethodBeat.o(224034);
+      AppMethodBeat.o(227550);
       return paramString;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(224034);
+      AppMethodBeat.o(227550);
     }
     return null;
   }
@@ -366,32 +398,32 @@ public class LocalCache
   public Object getAsObject(String paramString)
   {
     // Byte code:
-    //   0: ldc 229
+    //   0: ldc 227
     //   2: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
     //   6: aload_1
-    //   7: invokevirtual 199	com/tencent/thumbplayer/core/thirdparties/LocalCache:getAsBinary	(Ljava/lang/String;)[B
+    //   7: invokevirtual 197	com/tencent/thumbplayer/core/thirdparties/LocalCache:getAsBinary	(Ljava/lang/String;)[B
     //   10: astore_1
     //   11: aload_1
     //   12: ifnull +97 -> 109
-    //   15: new 231	java/io/ByteArrayInputStream
+    //   15: new 229	java/io/ByteArrayInputStream
     //   18: dup
     //   19: aload_1
-    //   20: invokespecial 234	java/io/ByteArrayInputStream:<init>	([B)V
+    //   20: invokespecial 232	java/io/ByteArrayInputStream:<init>	([B)V
     //   23: astore_2
-    //   24: new 236	java/io/ObjectInputStream
+    //   24: new 234	java/io/ObjectInputStream
     //   27: dup
     //   28: aload_2
-    //   29: invokespecial 239	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   29: invokespecial 237	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   32: astore_1
     //   33: aload_1
-    //   34: invokevirtual 243	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   34: invokevirtual 241	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
     //   37: astore_3
     //   38: aload_2
-    //   39: invokevirtual 244	java/io/ByteArrayInputStream:close	()V
+    //   39: invokevirtual 242	java/io/ByteArrayInputStream:close	()V
     //   42: aload_1
-    //   43: invokevirtual 245	java/io/ObjectInputStream:close	()V
-    //   46: ldc 229
+    //   43: invokevirtual 243	java/io/ObjectInputStream:close	()V
+    //   46: ldc 227
     //   48: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   51: aload_3
     //   52: areturn
@@ -403,12 +435,12 @@ public class LocalCache
     //   58: aload_2
     //   59: ifnull +7 -> 66
     //   62: aload_2
-    //   63: invokevirtual 244	java/io/ByteArrayInputStream:close	()V
+    //   63: invokevirtual 242	java/io/ByteArrayInputStream:close	()V
     //   66: aload_1
     //   67: ifnull +7 -> 74
     //   70: aload_1
-    //   71: invokevirtual 245	java/io/ObjectInputStream:close	()V
-    //   74: ldc 229
+    //   71: invokevirtual 243	java/io/ObjectInputStream:close	()V
+    //   74: ldc 227
     //   76: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   79: aconst_null
     //   80: areturn
@@ -420,16 +452,16 @@ public class LocalCache
     //   86: aload_3
     //   87: ifnull +7 -> 94
     //   90: aload_3
-    //   91: invokevirtual 244	java/io/ByteArrayInputStream:close	()V
+    //   91: invokevirtual 242	java/io/ByteArrayInputStream:close	()V
     //   94: aload_2
     //   95: ifnull +7 -> 102
     //   98: aload_2
-    //   99: invokevirtual 245	java/io/ObjectInputStream:close	()V
-    //   102: ldc 229
+    //   99: invokevirtual 243	java/io/ObjectInputStream:close	()V
+    //   102: ldc 227
     //   104: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   107: aload_1
     //   108: athrow
-    //   109: ldc 229
+    //   109: ldc 227
     //   111: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   114: aconst_null
     //   115: areturn
@@ -505,71 +537,71 @@ public class LocalCache
   public String getAsString(String paramString)
   {
     // Byte code:
-    //   0: ldc 246
+    //   0: ldc 244
     //   2: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
     //   6: getfield 62	com/tencent/thumbplayer/core/thirdparties/LocalCache:mCache	Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;
     //   9: ifnonnull +10 -> 19
-    //   12: ldc 246
+    //   12: ldc 244
     //   14: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   17: aconst_null
     //   18: areturn
     //   19: aload_0
     //   20: getfield 62	com/tencent/thumbplayer/core/thirdparties/LocalCache:mCache	Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;
     //   23: aload_1
-    //   24: invokestatic 166	com/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager:access$400	(Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;Ljava/lang/String;)Ljava/io/File;
+    //   24: invokestatic 164	com/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager:access$400	(Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;Ljava/lang/String;)Ljava/io/File;
     //   27: astore_2
     //   28: aload_2
     //   29: invokevirtual 57	java/io/File:exists	()Z
     //   32: ifne +10 -> 42
-    //   35: ldc 246
+    //   35: ldc 244
     //   37: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   40: aconst_null
     //   41: areturn
-    //   42: new 248	java/io/BufferedReader
+    //   42: new 246	java/io/BufferedReader
     //   45: dup
-    //   46: new 250	java/io/FileReader
+    //   46: new 248	java/io/FileReader
     //   49: dup
     //   50: aload_2
-    //   51: invokespecial 253	java/io/FileReader:<init>	(Ljava/io/File;)V
-    //   54: invokespecial 256	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   51: invokespecial 251	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   54: invokespecial 254	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   57: astore_2
-    //   58: ldc_w 258
+    //   58: ldc_w 256
     //   61: astore_3
     //   62: aload_2
-    //   63: invokevirtual 261	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   63: invokevirtual 259	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   66: astore 4
     //   68: aload 4
     //   70: ifnull +26 -> 96
-    //   73: new 99	java/lang/StringBuilder
+    //   73: new 97	java/lang/StringBuilder
     //   76: dup
-    //   77: invokespecial 100	java/lang/StringBuilder:<init>	()V
+    //   77: invokespecial 98	java/lang/StringBuilder:<init>	()V
     //   80: aload_3
-    //   81: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   81: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   84: aload 4
-    //   86: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   89: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   86: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   89: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   92: astore_3
     //   93: goto -31 -> 62
     //   96: aload_3
-    //   97: invokestatic 264	com/tencent/thumbplayer/core/thirdparties/LocalCache$Utils:access$500	(Ljava/lang/String;)Z
+    //   97: invokestatic 262	com/tencent/thumbplayer/core/thirdparties/LocalCache$Utils:access$500	(Ljava/lang/String;)Z
     //   100: ifne +19 -> 119
     //   103: aload_3
-    //   104: invokestatic 267	com/tencent/thumbplayer/core/thirdparties/LocalCache$Utils:access$600	(Ljava/lang/String;)Ljava/lang/String;
+    //   104: invokestatic 265	com/tencent/thumbplayer/core/thirdparties/LocalCache$Utils:access$600	(Ljava/lang/String;)Ljava/lang/String;
     //   107: astore_1
     //   108: aload_2
-    //   109: invokevirtual 268	java/io/BufferedReader:close	()V
-    //   112: ldc 246
+    //   109: invokevirtual 266	java/io/BufferedReader:close	()V
+    //   112: ldc 244
     //   114: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   117: aload_1
     //   118: areturn
     //   119: aload_2
-    //   120: invokevirtual 268	java/io/BufferedReader:close	()V
+    //   120: invokevirtual 266	java/io/BufferedReader:close	()V
     //   123: aload_0
     //   124: aload_1
-    //   125: invokevirtual 194	com/tencent/thumbplayer/core/thirdparties/LocalCache:remove	(Ljava/lang/String;)Z
+    //   125: invokevirtual 192	com/tencent/thumbplayer/core/thirdparties/LocalCache:remove	(Ljava/lang/String;)Z
     //   128: pop
-    //   129: ldc 246
+    //   129: ldc 244
     //   131: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   134: aconst_null
     //   135: areturn
@@ -579,8 +611,8 @@ public class LocalCache
     //   139: aload_2
     //   140: ifnull +7 -> 147
     //   143: aload_2
-    //   144: invokevirtual 268	java/io/BufferedReader:close	()V
-    //   147: ldc 246
+    //   144: invokevirtual 266	java/io/BufferedReader:close	()V
+    //   147: ldc 244
     //   149: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   152: aconst_null
     //   153: areturn
@@ -590,8 +622,8 @@ public class LocalCache
     //   157: aload_2
     //   158: ifnull +7 -> 165
     //   161: aload_2
-    //   162: invokevirtual 268	java/io/BufferedReader:close	()V
-    //   165: ldc 246
+    //   162: invokevirtual 266	java/io/BufferedReader:close	()V
+    //   165: ldc 244
     //   167: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   170: aload_1
     //   171: athrow
@@ -635,59 +667,59 @@ public class LocalCache
   
   public void put(String paramString, Bitmap paramBitmap)
   {
-    AppMethodBeat.i(224067);
+    AppMethodBeat.i(228441);
     put(paramString, Utils.access$1000(paramBitmap));
-    AppMethodBeat.o(224067);
+    AppMethodBeat.o(228441);
   }
   
   public void put(String paramString, Bitmap paramBitmap, int paramInt)
   {
-    AppMethodBeat.i(224068);
+    AppMethodBeat.i(228444);
     put(paramString, Utils.access$1000(paramBitmap), paramInt);
-    AppMethodBeat.o(224068);
+    AppMethodBeat.o(228444);
   }
   
   public void put(String paramString, Drawable paramDrawable)
   {
-    AppMethodBeat.i(224070);
+    AppMethodBeat.i(228743);
     put(paramString, Utils.access$1200(paramDrawable));
-    AppMethodBeat.o(224070);
+    AppMethodBeat.o(228743);
   }
   
   public void put(String paramString, Drawable paramDrawable, int paramInt)
   {
-    AppMethodBeat.i(224072);
+    AppMethodBeat.i(228744);
     put(paramString, Utils.access$1200(paramDrawable), paramInt);
-    AppMethodBeat.o(224072);
+    AppMethodBeat.o(228744);
   }
   
   public void put(String paramString, Serializable paramSerializable)
   {
-    AppMethodBeat.i(224055);
+    AppMethodBeat.i(227606);
     put(paramString, paramSerializable, -1);
-    AppMethodBeat.o(224055);
+    AppMethodBeat.o(227606);
   }
   
   /* Error */
   public void put(String paramString, Serializable paramSerializable, int paramInt)
   {
     // Byte code:
-    //   0: ldc_w 300
+    //   0: ldc_w 298
     //   3: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 302	java/io/ByteArrayOutputStream
+    //   6: new 300	java/io/ByteArrayOutputStream
     //   9: dup
-    //   10: invokespecial 303	java/io/ByteArrayOutputStream:<init>	()V
+    //   10: invokespecial 301	java/io/ByteArrayOutputStream:<init>	()V
     //   13: astore 5
-    //   15: new 305	java/io/ObjectOutputStream
+    //   15: new 303	java/io/ObjectOutputStream
     //   18: dup
     //   19: aload 5
-    //   21: invokespecial 308	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   21: invokespecial 306	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   24: astore 4
     //   26: aload 4
     //   28: aload_2
-    //   29: invokevirtual 312	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   29: invokevirtual 310	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
     //   32: aload 5
-    //   34: invokevirtual 316	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   34: invokevirtual 314	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   37: astore_2
     //   38: iload_3
     //   39: iconst_m1
@@ -696,31 +728,31 @@ public class LocalCache
     //   44: aload_1
     //   45: aload_2
     //   46: iload_3
-    //   47: invokevirtual 282	com/tencent/thumbplayer/core/thirdparties/LocalCache:put	(Ljava/lang/String;[BI)V
+    //   47: invokevirtual 280	com/tencent/thumbplayer/core/thirdparties/LocalCache:put	(Ljava/lang/String;[BI)V
     //   50: aload 4
-    //   52: invokevirtual 317	java/io/ObjectOutputStream:close	()V
-    //   55: ldc_w 300
+    //   52: invokevirtual 315	java/io/ObjectOutputStream:close	()V
+    //   55: ldc_w 298
     //   58: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   61: return
     //   62: aload_0
     //   63: aload_1
     //   64: aload_2
-    //   65: invokevirtual 277	com/tencent/thumbplayer/core/thirdparties/LocalCache:put	(Ljava/lang/String;[B)V
+    //   65: invokevirtual 275	com/tencent/thumbplayer/core/thirdparties/LocalCache:put	(Ljava/lang/String;[B)V
     //   68: goto -18 -> 50
     //   71: astore_1
     //   72: aload 4
     //   74: ifnull +8 -> 82
     //   77: aload 4
-    //   79: invokevirtual 317	java/io/ObjectOutputStream:close	()V
-    //   82: ldc_w 300
+    //   79: invokevirtual 315	java/io/ObjectOutputStream:close	()V
+    //   82: ldc_w 298
     //   85: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   88: return
     //   89: astore_1
-    //   90: ldc_w 300
+    //   90: ldc_w 298
     //   93: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   96: return
     //   97: astore_1
-    //   98: ldc_w 300
+    //   98: ldc_w 298
     //   101: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   104: return
     //   105: astore_1
@@ -729,103 +761,81 @@ public class LocalCache
     //   109: aload 4
     //   111: ifnull +8 -> 119
     //   114: aload 4
-    //   116: invokevirtual 317	java/io/ObjectOutputStream:close	()V
-    //   119: ldc_w 300
+    //   116: invokevirtual 315	java/io/ObjectOutputStream:close	()V
+    //   119: ldc_w 298
     //   122: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   125: return
     //   126: astore_1
-    //   127: ldc_w 300
+    //   127: ldc_w 298
     //   130: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   133: return
     //   134: astore_1
-    //   135: aconst_null
-    //   136: astore_2
-    //   137: aload_2
-    //   138: ifnull +7 -> 145
-    //   141: aload_2
-    //   142: invokevirtual 317	java/io/ObjectOutputStream:close	()V
-    //   145: ldc_w 300
-    //   148: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   151: aload_1
-    //   152: athrow
-    //   153: astore_2
-    //   154: goto -9 -> 145
-    //   157: astore_1
-    //   158: aload 4
-    //   160: astore_2
-    //   161: goto -24 -> 137
-    //   164: astore_1
-    //   165: goto -56 -> 109
-    //   168: astore_1
-    //   169: aconst_null
-    //   170: astore 4
-    //   172: goto -100 -> 72
+    //   135: goto -26 -> 109
+    //   138: astore_1
+    //   139: aconst_null
+    //   140: astore 4
+    //   142: goto -70 -> 72
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	175	0	this	LocalCache
-    //   0	175	1	paramString	String
-    //   0	175	2	paramSerializable	Serializable
-    //   0	175	3	paramInt	int
-    //   24	147	4	localObjectOutputStream	java.io.ObjectOutputStream
+    //   0	145	0	this	LocalCache
+    //   0	145	1	paramString	String
+    //   0	145	2	paramSerializable	Serializable
+    //   0	145	3	paramInt	int
+    //   24	117	4	localObjectOutputStream	java.io.ObjectOutputStream
     //   13	20	5	localByteArrayOutputStream	ByteArrayOutputStream
     // Exception table:
     //   from	to	target	type
     //   26	38	71	java/lang/Exception
     //   43	50	71	java/lang/Exception
     //   62	68	71	java/lang/Exception
-    //   50	55	89	java/lang/Throwable
-    //   77	82	97	java/lang/Throwable
-    //   6	26	105	java/lang/Throwable
-    //   114	119	126	java/lang/Throwable
-    //   6	26	134	finally
-    //   141	145	153	java/lang/Throwable
-    //   26	38	157	finally
-    //   43	50	157	finally
-    //   62	68	157	finally
-    //   26	38	164	java/lang/Throwable
-    //   43	50	164	java/lang/Throwable
-    //   62	68	164	java/lang/Throwable
-    //   6	26	168	java/lang/Exception
+    //   50	55	89	finally
+    //   77	82	97	finally
+    //   6	26	105	finally
+    //   114	119	126	finally
+    //   26	38	134	finally
+    //   43	50	134	finally
+    //   62	68	134	finally
+    //   6	26	138	java/lang/Exception
   }
   
   /* Error */
   public void put(String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: ldc_w 319
+    //   0: ldc_w 317
     //   3: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: getfield 62	com/tencent/thumbplayer/core/thirdparties/LocalCache:mCache	Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;
     //   10: ifnonnull +10 -> 20
-    //   13: ldc_w 319
+    //   13: ldc_w 317
     //   16: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   19: return
     //   20: aload_0
     //   21: getfield 62	com/tencent/thumbplayer/core/thirdparties/LocalCache:mCache	Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;
     //   24: aload_1
-    //   25: invokestatic 158	com/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager:access$100	(Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;Ljava/lang/String;)Ljava/io/File;
+    //   25: invokestatic 156	com/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager:access$100	(Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;Ljava/lang/String;)Ljava/io/File;
     //   28: astore 4
-    //   30: new 321	java/io/BufferedWriter
+    //   30: new 319	java/io/BufferedWriter
     //   33: dup
-    //   34: new 323	java/io/FileWriter
+    //   34: new 321	java/io/FileWriter
     //   37: dup
     //   38: aload 4
-    //   40: invokespecial 324	java/io/FileWriter:<init>	(Ljava/io/File;)V
+    //   40: invokespecial 322	java/io/FileWriter:<init>	(Ljava/io/File;)V
     //   43: sipush 1024
-    //   46: invokespecial 327	java/io/BufferedWriter:<init>	(Ljava/io/Writer;I)V
+    //   46: invokespecial 325	java/io/BufferedWriter:<init>	(Ljava/io/Writer;I)V
     //   49: astore_1
     //   50: aload_1
     //   51: aload_2
-    //   52: invokevirtual 330	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   52: invokevirtual 328	java/io/BufferedWriter:write	(Ljava/lang/String;)V
     //   55: aload_1
-    //   56: invokevirtual 333	java/io/BufferedWriter:flush	()V
+    //   56: invokevirtual 331	java/io/BufferedWriter:flush	()V
     //   59: aload_1
-    //   60: invokevirtual 334	java/io/BufferedWriter:close	()V
+    //   60: invokevirtual 332	java/io/BufferedWriter:close	()V
     //   63: aload_0
     //   64: getfield 62	com/tencent/thumbplayer/core/thirdparties/LocalCache:mCache	Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;
     //   67: aload 4
-    //   69: invokestatic 338	com/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager:access$200	(Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;Ljava/io/File;)V
-    //   72: ldc_w 319
+    //   69: invokestatic 336	com/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager:access$200	(Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;Ljava/io/File;)V
+    //   72: ldc_w 317
     //   75: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   78: return
     //   79: astore_1
@@ -834,14 +844,14 @@ public class LocalCache
     //   82: aload_1
     //   83: ifnull +11 -> 94
     //   86: aload_1
-    //   87: invokevirtual 333	java/io/BufferedWriter:flush	()V
+    //   87: invokevirtual 331	java/io/BufferedWriter:flush	()V
     //   90: aload_1
-    //   91: invokevirtual 334	java/io/BufferedWriter:close	()V
+    //   91: invokevirtual 332	java/io/BufferedWriter:close	()V
     //   94: aload_0
     //   95: getfield 62	com/tencent/thumbplayer/core/thirdparties/LocalCache:mCache	Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;
     //   98: aload 4
-    //   100: invokestatic 338	com/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager:access$200	(Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;Ljava/io/File;)V
-    //   103: ldc_w 319
+    //   100: invokestatic 336	com/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager:access$200	(Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;Ljava/io/File;)V
+    //   103: ldc_w 317
     //   106: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   109: return
     //   110: astore_1
@@ -850,14 +860,14 @@ public class LocalCache
     //   113: aload_2
     //   114: ifnull +11 -> 125
     //   117: aload_2
-    //   118: invokevirtual 333	java/io/BufferedWriter:flush	()V
+    //   118: invokevirtual 331	java/io/BufferedWriter:flush	()V
     //   121: aload_2
-    //   122: invokevirtual 334	java/io/BufferedWriter:close	()V
+    //   122: invokevirtual 332	java/io/BufferedWriter:close	()V
     //   125: aload_0
     //   126: getfield 62	com/tencent/thumbplayer/core/thirdparties/LocalCache:mCache	Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;
     //   129: aload 4
-    //   131: invokestatic 338	com/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager:access$200	(Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;Ljava/io/File;)V
-    //   134: ldc_w 319
+    //   131: invokestatic 336	com/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager:access$200	(Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;Ljava/io/File;)V
+    //   134: ldc_w 317
     //   137: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   140: aload_1
     //   141: athrow
@@ -907,73 +917,73 @@ public class LocalCache
   
   public void put(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(224023);
+    AppMethodBeat.i(227524);
     put(paramString1, Utils.access$300(paramInt, paramString2));
-    AppMethodBeat.o(224023);
+    AppMethodBeat.o(227524);
   }
   
   public void put(String paramString, JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(224035);
+    AppMethodBeat.i(227560);
     put(paramString, paramJSONArray.toString());
-    AppMethodBeat.o(224035);
+    AppMethodBeat.o(227560);
   }
   
   public void put(String paramString, JSONArray paramJSONArray, int paramInt)
   {
-    AppMethodBeat.i(224037);
+    AppMethodBeat.i(227566);
     put(paramString, paramJSONArray.toString(), paramInt);
-    AppMethodBeat.o(224037);
+    AppMethodBeat.o(227566);
   }
   
   public void put(String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(224029);
+    AppMethodBeat.i(227537);
     put(paramString, paramJSONObject.toString());
-    AppMethodBeat.o(224029);
+    AppMethodBeat.o(227537);
   }
   
   public void put(String paramString, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(224030);
+    AppMethodBeat.i(227544);
     put(paramString, paramJSONObject.toString(), paramInt);
-    AppMethodBeat.o(224030);
+    AppMethodBeat.o(227544);
   }
   
   /* Error */
   public void put(String paramString, byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: ldc_w 359
+    //   0: ldc_w 357
     //   3: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: getfield 62	com/tencent/thumbplayer/core/thirdparties/LocalCache:mCache	Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;
     //   10: ifnonnull +10 -> 20
-    //   13: ldc_w 359
+    //   13: ldc_w 357
     //   16: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   19: return
     //   20: aload_0
     //   21: getfield 62	com/tencent/thumbplayer/core/thirdparties/LocalCache:mCache	Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;
     //   24: aload_1
-    //   25: invokestatic 158	com/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager:access$100	(Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;Ljava/lang/String;)Ljava/io/File;
+    //   25: invokestatic 156	com/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager:access$100	(Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;Ljava/lang/String;)Ljava/io/File;
     //   28: astore 4
-    //   30: new 361	java/io/FileOutputStream
+    //   30: new 359	java/io/FileOutputStream
     //   33: dup
     //   34: aload 4
-    //   36: invokespecial 362	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   36: invokespecial 360	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   39: astore_1
     //   40: aload_1
     //   41: aload_2
-    //   42: invokevirtual 364	java/io/FileOutputStream:write	([B)V
+    //   42: invokevirtual 362	java/io/FileOutputStream:write	([B)V
     //   45: aload_1
-    //   46: invokevirtual 365	java/io/FileOutputStream:flush	()V
+    //   46: invokevirtual 363	java/io/FileOutputStream:flush	()V
     //   49: aload_1
-    //   50: invokevirtual 366	java/io/FileOutputStream:close	()V
+    //   50: invokevirtual 364	java/io/FileOutputStream:close	()V
     //   53: aload_0
     //   54: getfield 62	com/tencent/thumbplayer/core/thirdparties/LocalCache:mCache	Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;
     //   57: aload 4
-    //   59: invokestatic 338	com/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager:access$200	(Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;Ljava/io/File;)V
-    //   62: ldc_w 359
+    //   59: invokestatic 336	com/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager:access$200	(Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;Ljava/io/File;)V
+    //   62: ldc_w 357
     //   65: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   68: return
     //   69: astore_1
@@ -982,14 +992,14 @@ public class LocalCache
     //   72: aload_1
     //   73: ifnull +11 -> 84
     //   76: aload_1
-    //   77: invokevirtual 365	java/io/FileOutputStream:flush	()V
+    //   77: invokevirtual 363	java/io/FileOutputStream:flush	()V
     //   80: aload_1
-    //   81: invokevirtual 366	java/io/FileOutputStream:close	()V
+    //   81: invokevirtual 364	java/io/FileOutputStream:close	()V
     //   84: aload_0
     //   85: getfield 62	com/tencent/thumbplayer/core/thirdparties/LocalCache:mCache	Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;
     //   88: aload 4
-    //   90: invokestatic 338	com/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager:access$200	(Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;Ljava/io/File;)V
-    //   93: ldc_w 359
+    //   90: invokestatic 336	com/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager:access$200	(Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;Ljava/io/File;)V
+    //   93: ldc_w 357
     //   96: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   99: return
     //   100: astore_1
@@ -998,14 +1008,14 @@ public class LocalCache
     //   103: aload_2
     //   104: ifnull +11 -> 115
     //   107: aload_2
-    //   108: invokevirtual 365	java/io/FileOutputStream:flush	()V
+    //   108: invokevirtual 363	java/io/FileOutputStream:flush	()V
     //   111: aload_2
-    //   112: invokevirtual 366	java/io/FileOutputStream:close	()V
+    //   112: invokevirtual 364	java/io/FileOutputStream:close	()V
     //   115: aload_0
     //   116: getfield 62	com/tencent/thumbplayer/core/thirdparties/LocalCache:mCache	Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;
     //   119: aload 4
-    //   121: invokestatic 338	com/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager:access$200	(Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;Ljava/io/File;)V
-    //   124: ldc_w 359
+    //   121: invokestatic 336	com/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager:access$200	(Lcom/tencent/thumbplayer/core/thirdparties/LocalCache$ACacheManager;Ljava/io/File;)V
+    //   124: ldc_w 357
     //   127: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   130: aload_1
     //   131: athrow
@@ -1045,21 +1055,21 @@ public class LocalCache
   
   public void put(String paramString, byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(224048);
+    AppMethodBeat.i(227588);
     put(paramString, Utils.access$700(paramInt, paramArrayOfByte));
-    AppMethodBeat.o(224048);
+    AppMethodBeat.o(227588);
   }
   
   public boolean remove(String paramString)
   {
-    AppMethodBeat.i(224084);
+    AppMethodBeat.i(228747);
     if (this.mCache == null)
     {
-      AppMethodBeat.o(224084);
+      AppMethodBeat.o(228747);
       return false;
     }
     boolean bool = ACacheManager.access$1400(this.mCache, paramString);
-    AppMethodBeat.o(224084);
+    AppMethodBeat.o(228747);
     return bool;
   }
   
@@ -1074,7 +1084,7 @@ public class LocalCache
     
     private ACacheManager(File paramFile, long paramLong, int paramInt)
     {
-      AppMethodBeat.i(223915);
+      AppMethodBeat.i(227428);
       this.lastUsageDates = Collections.synchronizedMap(new HashMap());
       this.cacheDir = paramFile;
       this.sizeLimit = paramLong;
@@ -1082,17 +1092,17 @@ public class LocalCache
       this.cacheSize = new AtomicLong();
       this.cacheCount = new AtomicInteger();
       calculateCacheSizeAndCacheCount();
-      AppMethodBeat.o(223915);
+      AppMethodBeat.o(227428);
     }
     
     private void calculateCacheSizeAndCacheCount()
     {
-      AppMethodBeat.i(223917);
+      AppMethodBeat.i(227438);
       TPThreadUtil.THREAD_POOL_EXECUTOR.execute(new Runnable()
       {
         public void run()
         {
-          AppMethodBeat.i(223910);
+          AppMethodBeat.i(227401);
           File[] arrayOfFile = LocalCache.ACacheManager.this.cacheDir.listFiles();
           if (arrayOfFile != null)
           {
@@ -1111,28 +1121,28 @@ public class LocalCache
             LocalCache.ACacheManager.this.cacheSize.set(k);
             LocalCache.ACacheManager.this.cacheCount.set(i);
           }
-          AppMethodBeat.o(223910);
+          AppMethodBeat.o(227401);
         }
       });
-      AppMethodBeat.o(223917);
+      AppMethodBeat.o(227438);
     }
     
     private long calculateSize(File paramFile)
     {
-      AppMethodBeat.i(223934);
+      AppMethodBeat.i(227497);
       if (paramFile == null)
       {
-        AppMethodBeat.o(223934);
+        AppMethodBeat.o(227497);
         return 0L;
       }
       long l = paramFile.length();
-      AppMethodBeat.o(223934);
+      AppMethodBeat.o(227497);
       return l;
     }
     
     private void clear()
     {
-      AppMethodBeat.i(223929);
+      AppMethodBeat.i(227481);
       this.lastUsageDates.clear();
       this.cacheSize.set(0L);
       File[] arrayOfFile = this.cacheDir.listFiles();
@@ -1146,31 +1156,31 @@ public class LocalCache
           i += 1;
         }
       }
-      AppMethodBeat.o(223929);
+      AppMethodBeat.o(227481);
     }
     
     private File get(String paramString)
     {
-      AppMethodBeat.i(223924);
+      AppMethodBeat.i(227457);
       paramString = newFile(paramString);
       Long localLong = Long.valueOf(System.currentTimeMillis());
       paramString.setLastModified(localLong.longValue());
       this.lastUsageDates.put(paramString, localLong);
-      AppMethodBeat.o(223924);
+      AppMethodBeat.o(227457);
       return paramString;
     }
     
     private File newFile(String paramString)
     {
-      AppMethodBeat.i(223926);
+      AppMethodBeat.i(227463);
       paramString = new File(this.cacheDir, paramString.hashCode());
-      AppMethodBeat.o(223926);
+      AppMethodBeat.o(227463);
       return paramString;
     }
     
     private void put(File paramFile)
     {
-      AppMethodBeat.i(223922);
+      AppMethodBeat.i(227449);
       for (int i = this.cacheCount.get(); i + 1 > this.countLimit; i = this.cacheCount.addAndGet(-1))
       {
         l1 = removeNext();
@@ -1185,23 +1195,23 @@ public class LocalCache
       Long localLong = Long.valueOf(System.currentTimeMillis());
       paramFile.setLastModified(localLong.longValue());
       this.lastUsageDates.put(paramFile, localLong);
-      AppMethodBeat.o(223922);
+      AppMethodBeat.o(227449);
     }
     
     private boolean remove(String paramString)
     {
-      AppMethodBeat.i(223927);
+      AppMethodBeat.i(227473);
       boolean bool = get(paramString).delete();
-      AppMethodBeat.o(223927);
+      AppMethodBeat.o(227473);
       return bool;
     }
     
     private long removeNext()
     {
-      AppMethodBeat.i(223933);
+      AppMethodBeat.i(227491);
       if (this.lastUsageDates.isEmpty())
       {
-        AppMethodBeat.o(223933);
+        AppMethodBeat.o(227491);
         return 0L;
       }
       Object localObject1 = this.lastUsageDates.entrySet();
@@ -1231,7 +1241,7 @@ public class LocalCache
           }
           if (localObject1 == null)
           {
-            AppMethodBeat.o(223933);
+            AppMethodBeat.o(227491);
             return 0L;
           }
         }
@@ -1239,7 +1249,7 @@ public class LocalCache
         if ((localFile != null) && (localFile.delete())) {
           this.lastUsageDates.remove(localFile);
         }
-        AppMethodBeat.o(223933);
+        AppMethodBeat.o(227491);
         return l;
         label212:
         Object localObject4 = localFile;
@@ -1259,16 +1269,16 @@ public class LocalCache
     
     private static byte[] Bitmap2Bytes(Bitmap paramBitmap)
     {
-      AppMethodBeat.i(223982);
+      AppMethodBeat.i(227539);
       if (paramBitmap == null)
       {
-        AppMethodBeat.o(223982);
+        AppMethodBeat.o(227539);
         return null;
       }
       ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
       paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, localByteArrayOutputStream);
       paramBitmap = localByteArrayOutputStream.toByteArray();
-      AppMethodBeat.o(223982);
+      AppMethodBeat.o(227539);
       return paramBitmap;
     }
     
@@ -1280,20 +1290,20 @@ public class LocalCache
     
     private static Drawable bitmap2Drawable(Bitmap paramBitmap)
     {
-      AppMethodBeat.i(223986);
+      AppMethodBeat.i(227561);
       if (paramBitmap == null)
       {
-        AppMethodBeat.o(223986);
+        AppMethodBeat.o(227561);
         return null;
       }
       paramBitmap = new BitmapDrawable(paramBitmap);
-      AppMethodBeat.o(223986);
+      AppMethodBeat.o(227561);
       return paramBitmap;
     }
     
     private static String clearDateInfo(String paramString)
     {
-      AppMethodBeat.i(223964);
+      AppMethodBeat.i(227480);
       String str = paramString;
       if (paramString != null)
       {
@@ -1302,54 +1312,54 @@ public class LocalCache
           str = paramString.substring(paramString.indexOf(' ') + 1, paramString.length());
         }
       }
-      AppMethodBeat.o(223964);
+      AppMethodBeat.o(227480);
       return str;
     }
     
     private static byte[] clearDateInfo(byte[] paramArrayOfByte)
     {
-      AppMethodBeat.i(223965);
+      AppMethodBeat.i(227487);
       if (hasDateInfo(paramArrayOfByte))
       {
         paramArrayOfByte = copyOfRange(paramArrayOfByte, indexOf(paramArrayOfByte, ' ') + 1, paramArrayOfByte.length);
-        AppMethodBeat.o(223965);
+        AppMethodBeat.o(227487);
         return paramArrayOfByte;
       }
-      AppMethodBeat.o(223965);
+      AppMethodBeat.o(227487);
       return paramArrayOfByte;
     }
     
     private static byte[] copyOfRange(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(223973);
+      AppMethodBeat.i(227519);
       int i = paramInt2 - paramInt1;
       if (i < 0)
       {
         paramArrayOfByte = new IllegalArgumentException(paramInt1 + " > " + paramInt2);
-        AppMethodBeat.o(223973);
+        AppMethodBeat.o(227519);
         throw paramArrayOfByte;
       }
       byte[] arrayOfByte = new byte[i];
       System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, 0, Math.min(paramArrayOfByte.length - paramInt1, i));
-      AppMethodBeat.o(223973);
+      AppMethodBeat.o(227519);
       return arrayOfByte;
     }
     
     private static String createDateInfo(int paramInt)
     {
-      AppMethodBeat.i(223977);
+      AppMethodBeat.i(227531);
       for (String str = System.currentTimeMillis(); str.length() < 13; str = "0".concat(String.valueOf(str))) {}
       str = str + "-" + paramInt + ' ';
-      AppMethodBeat.o(223977);
+      AppMethodBeat.o(227531);
       return str;
     }
     
     private static Bitmap drawable2Bitmap(Drawable paramDrawable)
     {
-      AppMethodBeat.i(223985);
+      AppMethodBeat.i(227551);
       if (paramDrawable == null)
       {
-        AppMethodBeat.o(223985);
+        AppMethodBeat.o(227551);
         return null;
       }
       int i = paramDrawable.getIntrinsicWidth();
@@ -1361,34 +1371,34 @@ public class LocalCache
         Canvas localCanvas = new Canvas((Bitmap)localObject);
         paramDrawable.setBounds(0, 0, i, j);
         paramDrawable.draw(localCanvas);
-        AppMethodBeat.o(223985);
+        AppMethodBeat.o(227551);
         return localObject;
       }
     }
     
     private static String[] getDateInfoFromDate(byte[] paramArrayOfByte)
     {
-      AppMethodBeat.i(223970);
+      AppMethodBeat.i(227502);
       if (hasDateInfo(paramArrayOfByte))
       {
         String str = new String(copyOfRange(paramArrayOfByte, 0, 13));
         paramArrayOfByte = new String(copyOfRange(paramArrayOfByte, 14, indexOf(paramArrayOfByte, ' ')));
-        AppMethodBeat.o(223970);
+        AppMethodBeat.o(227502);
         return new String[] { str, paramArrayOfByte };
       }
-      AppMethodBeat.o(223970);
+      AppMethodBeat.o(227502);
       return null;
     }
     
     private static boolean hasDateInfo(byte[] paramArrayOfByte)
     {
-      AppMethodBeat.i(223968);
+      AppMethodBeat.i(227495);
       if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 15) && (paramArrayOfByte[13] == 45) && (indexOf(paramArrayOfByte, ' ') > 14))
       {
-        AppMethodBeat.o(223968);
+        AppMethodBeat.o(227495);
         return true;
       }
-      AppMethodBeat.o(223968);
+      AppMethodBeat.o(227495);
       return false;
     }
     
@@ -1407,15 +1417,15 @@ public class LocalCache
     
     private static boolean isDue(String paramString)
     {
-      AppMethodBeat.i(223948);
+      AppMethodBeat.i(227447);
       boolean bool = isDue(paramString.getBytes());
-      AppMethodBeat.o(223948);
+      AppMethodBeat.o(227447);
       return bool;
     }
     
     private static boolean isDue(byte[] paramArrayOfByte)
     {
-      AppMethodBeat.i(223956);
+      AppMethodBeat.i(227459);
       String[] arrayOfString = getDateInfoFromDate(paramArrayOfByte);
       if ((arrayOfString != null) && (arrayOfString.length == 2))
       {
@@ -1427,43 +1437,43 @@ public class LocalCache
           long l3 = System.currentTimeMillis();
           if (l3 > l1 + l2 * 1000L)
           {
-            AppMethodBeat.o(223956);
+            AppMethodBeat.o(227459);
             return true;
           }
         }
         catch (Exception paramArrayOfByte)
         {
-          AppMethodBeat.o(223956);
+          AppMethodBeat.o(227459);
           return false;
         }
       }
-      AppMethodBeat.o(223956);
+      AppMethodBeat.o(227459);
       return false;
     }
     
     private static byte[] newByteArrayWithDateInfo(int paramInt, byte[] paramArrayOfByte)
     {
-      AppMethodBeat.i(223961);
+      AppMethodBeat.i(227475);
       byte[] arrayOfByte1 = createDateInfo(paramInt).getBytes();
       byte[] arrayOfByte2 = new byte[arrayOfByte1.length + paramArrayOfByte.length];
       System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, arrayOfByte1.length);
       System.arraycopy(paramArrayOfByte, 0, arrayOfByte2, arrayOfByte1.length, paramArrayOfByte.length);
-      AppMethodBeat.o(223961);
+      AppMethodBeat.o(227475);
       return arrayOfByte2;
     }
     
     private static String newStringWithDateInfo(int paramInt, String paramString)
     {
-      AppMethodBeat.i(223959);
+      AppMethodBeat.i(227466);
       paramString = createDateInfo(paramInt) + paramString;
-      AppMethodBeat.o(223959);
+      AppMethodBeat.o(227466);
       return paramString;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.thumbplayer.core.thirdparties.LocalCache
  * JD-Core Version:    0.7.0.1
  */

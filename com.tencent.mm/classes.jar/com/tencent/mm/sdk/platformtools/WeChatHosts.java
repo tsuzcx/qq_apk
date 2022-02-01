@@ -9,9 +9,9 @@ public class WeChatHosts
   
   public static String domainString(int paramInt)
   {
-    AppMethodBeat.i(249519);
+    AppMethodBeat.i(243371);
     String str = MMApplicationContext.getContext().getString(paramInt);
-    AppMethodBeat.o(249519);
+    AppMethodBeat.o(243371);
     return str;
   }
 }

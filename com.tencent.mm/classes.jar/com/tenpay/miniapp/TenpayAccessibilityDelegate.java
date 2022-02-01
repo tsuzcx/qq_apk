@@ -43,7 +43,7 @@ public class TenpayAccessibilityDelegate
   
   public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    AppMethodBeat.i(231383);
+    AppMethodBeat.i(208584);
     Object localObject1;
     if ((paramView != null) && (paramInt == 128)) {
       if ((paramView instanceof EditText))
@@ -88,12 +88,12 @@ public class TenpayAccessibilityDelegate
             localObject1 = View.class.getMethod("requestAccessibilityFocus", new Class[0]);
             ((Method)localObject1).setAccessible(true);
             ((Method)localObject1).invoke(paramView, new Object[0]);
-            AppMethodBeat.o(231383);
+            AppMethodBeat.o(208584);
             return;
           }
           catch (Exception paramView) {}
         }
-        AppMethodBeat.o(231383);
+        AppMethodBeat.o(208584);
         return;
       }
       localObject1 = null;
@@ -104,7 +104,7 @@ public class TenpayAccessibilityDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tenpay.miniapp.TenpayAccessibilityDelegate
  * JD-Core Version:    0.7.0.1
  */

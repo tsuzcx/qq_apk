@@ -1,42 +1,42 @@
 package com.tencent.mm.pluginsdk;
 
-import com.tencent.c.a.a.a.b;
+import com.tencent.d.a.a.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ad.i;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.findersdk.a.ak;
-import com.tencent.mm.plugin.sns.ad.h.a;
-import com.tencent.mm.plugin.sns.b.e;
-import com.tencent.mm.pluginsdk.ui.tools.o;
+import com.tencent.mm.plugin.findersdk.a.cn;
+import com.tencent.mm.plugin.sns.ad.i.a;
+import com.tencent.mm.plugin.sns.c.e;
+import com.tencent.mm.plugin.topstory.a.f;
+import com.tencent.mm.pluginsdk.ui.tools.n;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/pluginsdk/BusinessViewHandler;", "", "()V", "Companion", "plugin-biz_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/BusinessViewHandler;", "", "()V", "Companion", "plugin-biz_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
 {
-  public static final a QRI;
+  public static final a XNw;
   
   static
   {
     AppMethodBeat.i(124791);
-    QRI = new a((byte)0);
+    XNw = new a((byte)0);
     AppMethodBeat.o(124791);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/pluginsdk/BusinessViewHandler$Companion;", "", "()V", "TAG", "", "handle", "", "businessType", "appid", "extInfo", "openId", "handleEmergencyContact", "", "handleOpenAdCanvas", "handleOpenGameHaoWan", "handleShareToHaoKan", "handleUpdateRoomToOpenImChatroom", "isSameAccount", "plugin-biz_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/BusinessViewHandler$Companion;", "", "()V", "TAG", "", "handle", "", "businessType", "appid", "extInfo", "openId", "handleEmergencyContact", "", "handleOpenAdCanvas", "handleOpenGameHaoWan", "handleShareToHaoKan", "handleUpdateRoomToOpenImChatroom", "isSameAccount", "plugin-biz_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
-    public static boolean M(String paramString1, String paramString2, String paramString3, String paramString4)
+    public static boolean P(String paramString1, String paramString2, String paramString3, String paramString4)
     {
-      AppMethodBeat.i(210807);
+      AppMethodBeat.i(244487);
       if (paramString1 == null)
       {
-        AppMethodBeat.o(210807);
+        AppMethodBeat.o(244487);
         return false;
       }
-      boolean bool = o.nv(paramString2, paramString4);
+      boolean bool = n.ps(paramString2, paramString4);
       Log.i("MicroMsg.BusinessViewHandler", "handle businessType=" + paramString1 + ", isSameAccount = " + bool);
       switch (paramString1.hashCode())
       {
@@ -44,10 +44,10 @@ public final class d
       case 1783390588: 
         do
         {
-          AppMethodBeat.o(210807);
+          AppMethodBeat.o(244487);
           return false;
         } while (!paramString1.equals("nativeOpenAdCanvas"));
-        p.k(paramString1, "businessType");
+        s.u(paramString1, "businessType");
       }
       for (;;)
       {
@@ -56,8 +56,8 @@ public final class d
           paramString4 = new i(paramString3);
           l = Util.safeParseLong(paramString4.optString("canvasId"));
           str = paramString4.optString("uxInfo");
-          paramString4 = a.e(l, paramString2, str);
-          a.fU(paramString4, 3);
+          paramString4 = a.f(l, paramString2, str);
+          a.gN(paramString4, 3);
           Log.i("MicroMsg.BusinessViewHandler", "handleOpenAdCanvas, appid=" + paramString2 + ", bType=" + paramString1 + ", extInfo=" + paramString3);
           bool = Util.isNullOrNil(str);
           if (!bool) {
@@ -73,51 +73,51 @@ public final class d
           Log.e("MicroMsg.BusinessViewHandler", "handleOpenAdCanvas ex", new Object[] { paramString1.getMessage() });
           continue;
         }
-        AppMethodBeat.o(210807);
+        AppMethodBeat.o(244487);
         return true;
         if (!paramString1.equals("nativeShareToGameLive")) {
           break;
         }
-        ((b)h.ag(b.class)).gameLiveShare(paramString1, paramString2, paramString3);
-        AppMethodBeat.o(210807);
+        ((b)com.tencent.mm.kernel.h.az(b.class)).gameLiveShare(paramString1, paramString2, paramString3, bool);
+        AppMethodBeat.o(244487);
         return true;
         if (!paramString1.equals("nativeEmergencyContact")) {
           break;
         }
-        p.k(paramString1, "businessType");
-        o.d(paramString1, "testExtMsg", paramString2, -3, "testErrMsg");
-        AppMethodBeat.o(210807);
+        s.u(paramString1, "businessType");
+        n.d(paramString1, "testExtMsg", paramString2, -3, "testErrMsg");
+        AppMethodBeat.o(244487);
         return true;
         if (!paramString1.equals("nativeShareToHaokan")) {
           break;
         }
-        p.k(paramString1, "businessType");
-        ((com.tencent.mm.plugin.topstory.a.g)h.ae(com.tencent.mm.plugin.topstory.a.g.class)).aQ(paramString1, paramString2, paramString3);
-        AppMethodBeat.o(210807);
+        s.u(paramString1, "businessType");
+        ((f)com.tencent.mm.kernel.h.ax(f.class)).bi(paramString1, paramString2, paramString3);
+        AppMethodBeat.o(244487);
         return true;
         if (!paramString1.equals("nativeUpdateRoomToOpenImChatroom")) {
           break;
         }
-        p.k(paramString1, "businessType");
-        o.k(paramString1, paramString2, paramString3, bool);
-        AppMethodBeat.o(210807);
+        s.u(paramString1, "businessType");
+        n.l(paramString1, paramString2, paramString3, bool);
+        AppMethodBeat.o(244487);
         return true;
         if (!paramString1.equals("nativeShareToGameHaoWan")) {
           break;
         }
-        p.k(paramString1, "businessType");
-        ((com.tencent.mm.plugin.game.api.g)h.ae(com.tencent.mm.plugin.game.api.g.class)).aj(paramString1, paramString2, paramString3);
-        AppMethodBeat.o(210807);
+        s.u(paramString1, "businessType");
+        ((com.tencent.mm.plugin.game.api.h)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.game.api.h.class)).at(paramString1, paramString2, paramString3);
+        AppMethodBeat.o(244487);
         return true;
         if (!paramString1.equals("nativeShareToVideoChannels")) {
           break;
         }
-        ((ak)h.ag(ak.class)).sdkShare(paramString1, paramString2, paramString3);
-        AppMethodBeat.o(210807);
+        ((cn)com.tencent.mm.kernel.h.az(cn.class)).sdkShare(paramString1, paramString2, paramString3);
+        AppMethodBeat.o(244487);
         return true;
-        paramString1 = ((e)h.ae(e.class)).aYm(str);
-        ((e)h.ae(e.class)).a(l, paramString1, paramString4, 29);
-        a.fU(paramString4, 4);
+        paramString1 = ((e)com.tencent.mm.kernel.h.ax(e.class)).aWg(str);
+        ((e)com.tencent.mm.kernel.h.ax(e.class)).a(l, paramString1, paramString4, 29);
+        a.gN(paramString4, 4);
       }
     }
   }

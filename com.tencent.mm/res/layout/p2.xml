@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/aij" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/c" android:textColor="#ff555555" android:gravity="center" android:id="@id/ap9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hv" android:layout_marginBottom="@dimen/hw" android:text="@string/ao3" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.finder.widget.record.EdgeTransparentView android:layout_width="fill_parent" android:layout_height="wrap_content" app:edge_position="fmo" app:edge_width="50.0dip">
+        <com.tencent.mm.plugin.game.chatroom.view.ChatMemberListView android:id="@id/b0q" android:scrollbars="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="@dimen/df" android:layout_marginTop="12.0dip" android:overScrollMode="never" />
+    </com.tencent.mm.plugin.finder.widget.record.EdgeTransparentView>
+    <com.google.android.material.tabs.TabLayout android:id="@id/kdb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:layout_marginRight="@dimen/df" app:tabBackground="@color/ahb" app:tabGravity="ayg" app:tabIndicatorHeight="0.0dip" app:tabMaxWidth="200.0dip" app:tabMinWidth="20.0dip" app:tabMode="j4k" app:tabPaddingEnd="@dimen/df" app:tabPaddingStart="@dimen/df" app:tabRippleColor="@color/ahb" app:tabSelectedTextColor="@color/BW_100_Alpha_0_8" app:tabTextAppearance="@style/kg" app:tabTextColor="@color/BW_100_Alpha_0_5" />
 </LinearLayout>

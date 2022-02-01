@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.appbrand.jsapi.openvoice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.b;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.q;
+import com.tencent.mm.plugin.cloudvoip.cloudvoice.service.b;
+import com.tencent.mm.plugin.cloudvoip.cloudvoice.service.q;
 import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,17 +12,17 @@ public final class f
 {
   public static final int CTRL_INDEX = 521;
   public static final String NAME = "updateVoIPChatMuteConfig";
-  boolean pif;
-  boolean pig;
-  private boolean pih;
+  private boolean snA;
+  boolean sny;
+  boolean snz;
   
   public f()
   {
     AppMethodBeat.i(174848);
-    this.pif = false;
-    this.pig = false;
-    this.pih = false;
-    com.tencent.mm.plugin.appbrand.permission.c.amg("updateVoIPChatMuteConfig");
+    this.sny = false;
+    this.snz = false;
+    this.snA = false;
+    com.tencent.mm.plugin.appbrand.permission.c.afo("updateVoIPChatMuteConfig");
     AppMethodBeat.o(174848);
   }
   
@@ -36,9 +36,9 @@ public final class f
       boolean bool2 = localJSONObject.getBoolean("muteEarphone");
       boolean bool3 = paramJSONObject.optBoolean("handsFree", false);
       Log.i("MicroMsg.OpenVoice.JsApiCloudVoiceUpdateVoIPChatMuteConfig", "hy: muteMicroPhone:%b, muteEarPhone:%b, handsFree:%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
-      q.tRM.a(bool2, new b() {});
-      q.tRM.b(bool1, new b() {});
-      q.tRM.c(bool3, new b() {});
+      q.wVc.a(bool2, new b() {});
+      q.wVc.b(bool1, new b() {});
+      q.wVc.c(bool3, new b() {});
       AppMethodBeat.o(46690);
       return;
     }
@@ -51,7 +51,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.openvoice.f
  * JD-Core Version:    0.7.0.1
  */

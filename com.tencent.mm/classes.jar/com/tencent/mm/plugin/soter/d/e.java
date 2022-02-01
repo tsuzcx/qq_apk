@@ -1,17 +1,12 @@
 package com.tencent.mm.plugin.soter.d;
 
+import com.tencent.mm.vending.c.a;
+import com.tencent.mm.vending.g.b;
+
 public final class e
+  implements a<Boolean, Boolean>
 {
-  public String Lwz = "";
-  public String ktM = "";
-  
-  public e() {}
-  
-  public e(String paramString1, String paramString2)
-  {
-    this.Lwz = paramString1;
-    this.ktM = paramString2;
-  }
+  private b pGe = null;
 }
 
 

@@ -1,47 +1,46 @@
 package com.tencent.mm.plugin.account.bind.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
 import com.tencent.mm.kernel.f;
-import com.tencent.mm.kernel.h;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.eve;
-import com.tencent.mm.protocal.protobuf.evf;
+import com.tencent.mm.protocal.protobuf.fqr;
+import com.tencent.mm.protocal.protobuf.fqs;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.aq;
 
 public final class d
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  private final com.tencent.mm.an.d rr;
+  private com.tencent.mm.am.h callback;
+  private final c rr;
   
   public d()
   {
     AppMethodBeat.i(109749);
-    d.a locala = new d.a();
-    locala.lBU = new eve();
-    locala.lBV = new evf();
+    c.a locala = new c.a();
+    locala.otE = new fqr();
+    locala.otF = new fqs();
     locala.uri = "/cgi-bin/micromsg-bin/unbindlinkedincontact";
     locala.funcId = getType();
-    locala.lBW = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.rr = locala.bgN();
-    ((eve)d.b.b(this.rr.lBR)).RNt = 1;
+    this.rr = locala.bEF();
+    ((fqr)c.b.b(this.rr.otB)).YKH = 1;
     AppMethodBeat.o(109749);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
     AppMethodBeat.i(109750);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(109750);
     return i;
@@ -56,13 +55,13 @@ public final class d
   {
     AppMethodBeat.i(109751);
     Log.d("MicroMsg.NetSceneUnBindLinkedinContact", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
-    d.b.b(this.rr.lBR);
-    d.c.b(this.rr.lBS);
+    c.b.b(this.rr.otB);
+    c.c.b(this.rr.otC);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      h.aHG().aHp().i(286722, "");
-      h.aHG().aHp().i(286721, "");
-      h.aHG().aHp().i(286723, "");
+      com.tencent.mm.kernel.h.baE().ban().B(286722, "");
+      com.tencent.mm.kernel.h.baE().ban().B(286721, "");
+      com.tencent.mm.kernel.h.baE().ban().B(286723, "");
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(109751);

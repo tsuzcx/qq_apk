@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.ipcall.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.s;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.sdk.platformtools.Log;
 
@@ -17,10 +17,10 @@ final class IPCallRechargeUI$8
     AppMethodBeat.i(25879);
     try
     {
-      if (this.DXz.DXy != null) {
-        bh.aGY().a(this.DXz.DXy);
+      if (this.JOI.JOH != null) {
+        bh.aZW().a(this.JOI.JOH);
       }
-      this.DXz.finish();
+      this.JOI.finish();
       AppMethodBeat.o(25879);
       return;
     }

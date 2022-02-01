@@ -5,27 +5,27 @@ import java.lang.reflect.Field;
 
 public final class c
 {
-  public static final Class<?>[] ZPJ = new Class[0];
-  public static final Object[] ZPK = new Object[0];
+  public static final Class<?>[] ahUK = new Class[0];
+  public static final Object[] ahUL = new Object[0];
   
-  public static Field j(Class<?> paramClass, String paramString)
+  public static Field m(Class<?> paramClass, String paramString)
   {
-    AppMethodBeat.i(224609);
-    paramClass = l(paramClass, paramString);
-    AppMethodBeat.o(224609);
+    AppMethodBeat.i(210817);
+    paramClass = o(paramClass, paramString);
+    AppMethodBeat.o(210817);
     return paramClass;
   }
   
-  private static Field l(Class<?> paramClass, String paramString)
+  private static Field o(Class<?> paramClass, String paramString)
   {
-    AppMethodBeat.i(224607);
+    AppMethodBeat.i(210810);
     Object localObject = null;
     Class localClass;
     try
     {
       Field localField = paramClass.getDeclaredField(paramString);
       localObject = localField;
-      AppMethodBeat.o(224607);
+      AppMethodBeat.o(210810);
       return localObject;
     }
     catch (NoSuchFieldException localNoSuchFieldException1)

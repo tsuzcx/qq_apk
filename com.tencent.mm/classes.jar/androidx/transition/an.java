@@ -6,7 +6,7 @@ import java.util.Map;
 public abstract class an
   extends u
 {
-  private static final String[] atC = { "android:visibilityPropagation:visibility", "android:visibilityPropagation:center" };
+  private static final String[] cil = { "android:visibilityPropagation:visibility", "android:visibilityPropagation:center" };
   
   private static int a(w paramw, int paramInt)
   {
@@ -42,6 +42,11 @@ public abstract class an
     return a(paramw, 1);
   }
   
+  public final String[] Mb()
+  {
+    return cil;
+  }
+  
   public final void a(w paramw)
   {
     View localView = paramw.view;
@@ -59,11 +64,6 @@ public abstract class an
     int i = localObject[1];
     localObject[1] = (localView.getHeight() / 2 + i);
     paramw.values.put("android:visibilityPropagation:center", localObject);
-  }
-  
-  public final String[] ny()
-  {
-    return atC;
   }
 }
 

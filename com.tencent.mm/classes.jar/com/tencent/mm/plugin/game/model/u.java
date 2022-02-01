@@ -9,34 +9,34 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import org.apache.commons.b.f;
+import org.apache.commons.c.h;
 
 public final class u
 {
-  public static u CKW;
+  public static u IFe;
   
   public static void A(Map<String, String> paramMap, o paramo)
   {
-    AppMethodBeat.i(190542);
-    paramo.CJT.CKy = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.tab_info.default_key"), "");
-    paramo.CJT.CKz = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.tab_info.red_dot.key"), "");
-    if (!Util.isNullOrNil(paramo.CJT.CKz)) {
-      paramo.CJT.CKA = (paramo.field_createTime + Util.getLong((String)paramMap.get(".sysmsg.gamecenter.tab_info.red_dot.expire_time"), 86400L));
+    AppMethodBeat.i(275433);
+    paramo.IEe.IEI = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.tab_info.default_key"), "");
+    paramo.IEe.IEJ = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.tab_info.red_dot.key"), "");
+    if (!Util.isNullOrNil(paramo.IEe.IEJ)) {
+      paramo.IEe.IEK = (paramo.field_createTime + Util.getLong((String)paramMap.get(".sysmsg.gamecenter.tab_info.red_dot.expire_time"), 86400L));
     }
-    AppMethodBeat.o(190542);
+    AppMethodBeat.o(275433);
   }
   
   public static void B(Map<String, String> paramMap, o paramo)
   {
-    AppMethodBeat.i(190549);
-    paramo.CJU.CKf = f.bIm(Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.extra_data.preload"), ""));
-    if ((!Util.isNullOrNil(paramo.CJU.CKf)) && (paramo.CJU.CKf.getBytes().length > 204800)) {
-      paramo.CJU.CKf = "";
+    AppMethodBeat.i(275434);
+    paramo.IEf.IEq = h.bLg(Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.extra_data.preload"), ""));
+    if ((!Util.isNullOrNil(paramo.IEf.IEq)) && (paramo.IEf.IEq.getBytes().length > 204800)) {
+      paramo.IEf.IEq = "";
     }
-    AppMethodBeat.o(190549);
+    AppMethodBeat.o(275434);
   }
   
-  private static List<String> G(String paramString, Map<String, String> paramMap)
+  private static List<String> O(String paramString, Map<String, String> paramMap)
   {
     AppMethodBeat.i(41513);
     ArrayList localArrayList = new ArrayList();
@@ -104,51 +104,51 @@ public final class u
   private static void c(Map<String, String> paramMap, o paramo)
   {
     AppMethodBeat.i(41516);
-    paramo.CJs = Util.getInt((String)paramMap.get(".sysmsg.gamecenter.wifi_flag"), 0);
+    paramo.IDD = Util.getInt((String)paramMap.get(".sysmsg.gamecenter.wifi_flag"), 0);
     AppMethodBeat.o(41516);
   }
   
   private static void d(Map<String, String> paramMap, o paramo)
   {
     AppMethodBeat.i(41505);
-    paramo.CJF = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center.$jump_id"), "");
-    paramo.CJG = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center.user_action_title"), "");
-    paramo.CJH = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center.first_line_content"), "");
-    paramo.CJL.mContent = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center.second_line.second_line_content"), "");
-    paramo.CJL.CKj = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center.second_line.second_line_icon_url"), "");
-    paramo.CJL.CKk = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center.second_line.$jump_id"), "");
-    paramo.CJI = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center.content_pic"), "");
-    paramo.CJJ = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center.content_pic.$jump_id"), "");
+    paramo.IDQ = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center.$jump_id"), "");
+    paramo.IDR = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center.user_action_title"), "");
+    paramo.IDS = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center.first_line_content"), "");
+    paramo.IDW.mContent = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center.second_line.second_line_content"), "");
+    paramo.IDW.IEu = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center.second_line.second_line_icon_url"), "");
+    paramo.IDW.IEv = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center.second_line.$jump_id"), "");
+    paramo.IDT = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center.content_pic"), "");
+    paramo.IDU = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center.content_pic.$jump_id"), "");
     r(paramMap, paramo);
     h(paramMap, paramo);
     t(paramMap, paramo);
     AppMethodBeat.o(41505);
   }
   
-  public static u eyK()
-  {
-    AppMethodBeat.i(41503);
-    if (CKW == null) {
-      CKW = new u();
-    }
-    u localu = CKW;
-    AppMethodBeat.o(41503);
-    return localu;
-  }
-  
   private static void f(Map<String, String> paramMap, o paramo)
   {
     AppMethodBeat.i(41510);
-    paramo.CJj.CKj = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_bubble_info.bubble_icon_url"), "");
-    paramo.CJj.mDesc = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_bubble_info.bubble_desc"), "");
-    paramo.CJj.CKk = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_bubble_info.$jump_id"), "");
+    paramo.IDu.IEu = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_bubble_info.bubble_icon_url"), "");
+    paramo.IDu.mDesc = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_bubble_info.bubble_desc"), "");
+    paramo.IDu.IEv = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_bubble_info.$jump_id"), "");
     AppMethodBeat.o(41510);
+  }
+  
+  public static u fGG()
+  {
+    AppMethodBeat.i(41503);
+    if (IFe == null) {
+      IFe = new u();
+    }
+    u localu = IFe;
+    AppMethodBeat.o(41503);
+    return localu;
   }
   
   private static void h(Map<String, String> paramMap, o paramo)
   {
     AppMethodBeat.i(41508);
-    paramo.CJf.clear();
+    paramo.IDq.clear();
     int i = 0;
     if (i == 0) {}
     for (String str = ".sysmsg.gamecenter.msg_center.userinfo";; str = ".sysmsg.gamecenter.msg_center.userinfo" + i)
@@ -159,10 +159,10 @@ public final class u
       o.l locall = new o.l();
       locall.userName = Util.nullAs((String)paramMap.get(str + ".username"), "");
       locall.nickName = Util.nullAs((String)paramMap.get(str + ".nickname"), "");
-      locall.CKs = Util.nullAs((String)paramMap.get(str + ".usericon"), "");
-      locall.CKu = Util.nullAs((String)paramMap.get(str + ".badge_icon"), "");
-      locall.CKv = Util.nullAs((String)paramMap.get(str + ".$jump_id"), "");
-      paramo.CJf.add(locall);
+      locall.IED = Util.nullAs((String)paramMap.get(str + ".usericon"), "");
+      locall.IEF = Util.nullAs((String)paramMap.get(str + ".badge_icon"), "");
+      locall.DUN = Util.nullAs((String)paramMap.get(str + ".$jump_id"), "");
+      paramo.IDq.add(locall);
       i += 1;
       break;
     }
@@ -174,18 +174,18 @@ public final class u
   {
     boolean bool2 = true;
     AppMethodBeat.i(41514);
-    paramo.CJh.CKl = Util.getInt((String)paramMap.get(".sysmsg.gamecenter.entrance.entrance_red_dot_type"), 0);
-    paramo.CJh.CKj = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.entrance.entrance_icon_url"), "");
-    paramo.CJh.mText = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.entrance.entrance_text"), "");
-    paramo.CJh.mIconWidth = (Util.getInt((String)paramMap.get(".sysmsg.gamecenter.entrance.entrance_icon_width"), 64) / 2);
-    paramo.CJh.mIconHeight = (Util.getInt((String)paramMap.get(".sysmsg.gamecenter.entrance.entrance_icon_height"), 64) / 2);
-    o.g localg = paramo.CJh;
+    paramo.IDs.IEw = Util.getInt((String)paramMap.get(".sysmsg.gamecenter.entrance.entrance_red_dot_type"), 0);
+    paramo.IDs.IEu = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.entrance.entrance_icon_url"), "");
+    paramo.IDs.mText = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.entrance.entrance_text"), "");
+    paramo.IDs.mIconWidth = (Util.getInt((String)paramMap.get(".sysmsg.gamecenter.entrance.entrance_icon_width"), 64) / 2);
+    paramo.IDs.mIconHeight = (Util.getInt((String)paramMap.get(".sysmsg.gamecenter.entrance.entrance_icon_height"), 64) / 2);
+    o.g localg = paramo.IDs;
     if (Util.getInt((String)paramMap.get(".sysmsg.gamecenter.entrance.entrance_icon_rounded_corner"), 0) == 1)
     {
       bool1 = true;
-      localg.CKm = bool1;
-      paramo.CJh.CKn = Util.getInt((String)paramMap.get(".sysmsg.gamecenter.entrance.entrance_show_control.basic_type"), -1);
-      paramo = paramo.CJh;
+      localg.IEx = bool1;
+      paramo.IDs.IEy = Util.getInt((String)paramMap.get(".sysmsg.gamecenter.entrance.entrance_show_control.basic_type"), -1);
+      paramo = paramo.IDs;
       if (Util.getInt((String)paramMap.get(".sysmsg.gamecenter.entrance.entrance_show_control.ignore_local_control"), 0) != 1) {
         break label232;
       }
@@ -193,7 +193,7 @@ public final class u
     label232:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      paramo.CKo = bool1;
+      paramo.IEz = bool1;
       AppMethodBeat.o(41514);
       return;
       bool1 = false;
@@ -204,7 +204,7 @@ public final class u
   private static void q(Map<String, String> paramMap, o paramo)
   {
     AppMethodBeat.i(41506);
-    paramo.CJk.clear();
+    paramo.IDv.clear();
     int i = 0;
     if (i == 0) {}
     for (String str1 = ".sysmsg.gamecenter.jump_info.jump";; str1 = ".sysmsg.gamecenter.jump_info.jump" + i)
@@ -215,9 +215,9 @@ public final class u
       String str2 = (String)paramMap.get(str1 + ".$id");
       o.h localh = new o.h();
       localh.mJumpType = Util.getInt((String)paramMap.get(str1 + ".jump_type"), 0);
-      localh.vnr = Util.nullAs((String)paramMap.get(str1 + ".jump_url"), "");
+      localh.mJumpUrl = Util.nullAs((String)paramMap.get(str1 + ".jump_url"), "");
       if (!Util.isNullOrNil(str2)) {
-        paramo.CJk.put(str2, localh);
+        paramo.IDv.put(str2, localh);
       }
       i += 1;
       break;
@@ -231,11 +231,11 @@ public final class u
     AppMethodBeat.i(41507);
     if (paramMap.get(".sysmsg.gamecenter.msg_center.msg_sender") != null)
     {
-      paramo.CJK = new o.j();
-      paramo.CJK.CKp = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center.msg_sender.sender_name"), "");
-      paramo.CJK.CKq = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center.msg_sender.sender_icon"), "");
-      paramo.CJK.CKr = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center.msg_sender.badge_icon"), "");
-      paramo.CJK.CKk = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center.msg_sender.$jump_id"), "");
+      paramo.IDV = new o.j();
+      paramo.IDV.IEA = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center.msg_sender.sender_name"), "");
+      paramo.IDV.IEB = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center.msg_sender.sender_icon"), "");
+      paramo.IDV.IEC = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center.msg_sender.badge_icon"), "");
+      paramo.IDV.IEv = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center.msg_sender.$jump_id"), "");
     }
     AppMethodBeat.o(41507);
   }
@@ -243,23 +243,23 @@ public final class u
   public static void s(Map<String, String> paramMap, o paramo)
   {
     AppMethodBeat.i(41509);
-    paramo.CJW = Util.getInt((String)paramMap.get(".sysmsg.gamecenter.report.msg_subtype"), 0);
-    paramo.CJX = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.report.noticeid"), "");
-    paramo.CJY = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.report.ext_data"), "");
-    paramo.CJZ = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.report.business_data"), "");
+    paramo.IEh = Util.getInt((String)paramMap.get(".sysmsg.gamecenter.report.msg_subtype"), 0);
+    paramo.mNoticeId = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.report.noticeid"), "");
+    paramo.IEi = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.report.ext_data"), "");
+    paramo.IEj = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.report.business_data"), "");
     AppMethodBeat.o(41509);
   }
   
   private static void t(Map<String, String> paramMap, o paramo)
   {
     AppMethodBeat.i(41511);
-    paramo.CJM.mName = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center.source_info.source_name"), "");
-    o.k localk = paramo.CJM;
+    paramo.IDX.mName = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center.source_info.source_name"), "");
+    o.k localk = paramo.IDX;
     if (Util.getInt((String)paramMap.get(".sysmsg.gamecenter.msg_center.source_info.source_clickable"), 0) > 0) {}
     for (boolean bool = true;; bool = false)
     {
       localk.mClickable = bool;
-      paramo.CJM.CKk = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center.source_info.$jump_id"), "");
+      paramo.IDX.IEv = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center.source_info.$jump_id"), "");
       AppMethodBeat.o(41511);
       return;
     }
@@ -269,14 +269,14 @@ public final class u
   {
     boolean bool2 = true;
     AppMethodBeat.i(41512);
-    paramo.CJx.url = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.float_layer.open_url"), "");
-    o.b localb = paramo.CJx;
+    paramo.IDI.url = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.float_layer.open_url"), "");
+    o.b localb = paramo.IDI;
     if (Util.getInt((String)paramMap.get(".sysmsg.gamecenter.float_layer.full_screen"), 0) == 1)
     {
       bool1 = true;
-      localb.CzQ = bool1;
-      paramo.CJx.FO = Util.getInt((String)paramMap.get(".sysmsg.gamecenter.float_layer.orientation"), 0);
-      localb = paramo.CJx;
+      localb.ItB = bool1;
+      paramo.IDI.orientation = Util.getInt((String)paramMap.get(".sysmsg.gamecenter.float_layer.orientation"), 0);
+      localb = paramo.IDI;
       if (Util.getInt((String)paramMap.get(".sysmsg.gamecenter.float_layer.is_transparent"), 0) != 1) {
         break label167;
       }
@@ -284,9 +284,9 @@ public final class u
     label167:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      localb.cpf = bool1;
-      paramo.CJx.CKe.clear();
-      paramo.CJx.CKe.addAll(G(".sysmsg.gamecenter.float_layer.load_with_wepkg.wepkg", paramMap));
+      localb.egT = bool1;
+      paramo.IDI.IEp.clear();
+      paramo.IDI.IEp.addAll(O(".sysmsg.gamecenter.float_layer.load_with_wepkg.wepkg", paramMap));
       AppMethodBeat.o(41512);
       return;
       bool1 = false;
@@ -297,68 +297,69 @@ public final class u
   private static void v(Map<String, String> paramMap, o paramo)
   {
     AppMethodBeat.i(41515);
-    paramo.CJN.CKw = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.display_with_wepkg.$pkg_id"), "");
-    paramo.CJN.ttm = Util.getInt((String)paramMap.get(".sysmsg.gamecenter.display_with_wepkg"), 0);
-    paramo.CJN.CKx = Util.getLong((String)paramMap.get(".sysmsg.gamecenter.display_with_wepkg.$always_display_after_time"), 0L);
+    paramo.IDY.IEG = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.display_with_wepkg.$pkg_id"), "");
+    paramo.IDY.wxJ = Util.getInt((String)paramMap.get(".sysmsg.gamecenter.display_with_wepkg"), 0);
+    paramo.IDY.IEH = Util.getLong((String)paramMap.get(".sysmsg.gamecenter.display_with_wepkg.$always_display_after_time"), 0L);
     AppMethodBeat.o(41515);
   }
   
   public static void w(Map<String, String> paramMap, o paramo)
   {
-    AppMethodBeat.i(190519);
-    paramo.CJt = Util.getInt((String)paramMap.get(".sysmsg.gamecenter.device_flag"), 0);
-    AppMethodBeat.o(190519);
+    AppMethodBeat.i(275429);
+    paramo.IDE = Util.getInt((String)paramMap.get(".sysmsg.gamecenter.device_flag"), 0);
+    AppMethodBeat.o(275429);
   }
   
   public static void x(Map<String, String> paramMap, o paramo)
   {
     AppMethodBeat.i(41517);
-    paramo.CJO.CKi = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.banner.$banner_id"), "");
-    paramo.CJO.CKe.clear();
-    paramo.CJO.CKe.addAll(G(".sysmsg.gamecenter.banner.load_with_wepkg.wepkg", paramMap));
+    paramo.IDZ.IEt = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.banner.$banner_id"), "");
+    paramo.IDZ.IEp.clear();
+    paramo.IDZ.IEp.addAll(O(".sysmsg.gamecenter.banner.load_with_wepkg.wepkg", paramMap));
     AppMethodBeat.o(41517);
   }
   
   public static void y(Map<String, String> paramMap, o paramo)
   {
     AppMethodBeat.i(183868);
-    paramo.CJR.CKB = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.$jump_id"), "");
-    paramo.CJR.CKC = Util.getInt((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.show_type"), 0);
-    paramo.CJR.CKD = Util.getInt((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.not_in_msg_center"), 0);
-    paramo.CJR.CKE = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.msg_sender.sender_icon"), "");
-    paramo.CJR.CKF = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.msg_sender.sender_name"), "");
-    paramo.CJR.CKG = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.msg_sender.$jump_id"), "");
-    paramo.CJR.CKH = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.notify_msg_content.content_pic"), "");
-    paramo.CJR.CKI = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.notify_msg_content.first_line_text"), "");
-    paramo.CJR.CKJ = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.notify_msg_content.second_line_text"), "");
-    paramo.CJR.CKK = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.interactive_msg_content.merge_id"), "");
-    paramo.CJR.CKL = Util.getInt((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.interactive_msg_content.merge_count"), 0);
-    paramo.CJR.CKM = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.interactive_msg_content.body_text"), "");
-    paramo.CJR.CKN = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.interactive_msg_content.right_pic"), "");
-    paramo.CJR.CKO = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.interactive_msg_content.right_text"), "");
-    paramo.CJR.CKP = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.interactive_msg_content.source_name"), "");
-    paramo.CJR.CKQ = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.interactive_msg_content.related_id"), "");
+    paramo.IEc.jump_id = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.$jump_id"), "");
+    paramo.IEc.show_type = Util.getInt((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.show_type"), 0);
+    paramo.IEc.IEL = Util.getInt((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.not_in_msg_center"), 0);
+    paramo.IEc.IEM = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.msg_sender.sender_icon"), "");
+    paramo.IEc.IEN = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.msg_sender.sender_name"), "");
+    paramo.IEc.IEO = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.msg_sender.$jump_id"), "");
+    paramo.IEc.IEP = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.notify_msg_content.content_pic"), "");
+    paramo.IEc.IEQ = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.notify_msg_content.first_line_text"), "");
+    paramo.IEc.IER = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.notify_msg_content.second_line_text"), "");
+    paramo.IEc.IES = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.interactive_msg_content.merge_id"), "");
+    paramo.IEc.IET = Util.getInt((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.interactive_msg_content.merge_count"), 0);
+    paramo.IEc.IEU = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.interactive_msg_content.body_text"), "");
+    paramo.IEc.IEV = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.interactive_msg_content.right_pic"), "");
+    paramo.IEc.IEW = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.interactive_msg_content.right_text"), "");
+    paramo.IEc.IEX = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.interactive_msg_content.source_name"), "");
+    paramo.IEc.IEY = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_center_v2.interactive_msg_content.related_id"), "");
     AppMethodBeat.o(183868);
   }
   
   public static void z(Map<String, String> paramMap, o paramo)
   {
-    AppMethodBeat.i(190537);
-    o.d locald = paramo.CJS;
+    AppMethodBeat.i(275432);
+    o.d locald = paramo.IEd;
     boolean bool;
     if (Util.getInt((String)paramMap.get(".sysmsg.gamecenter.gamelife.replace_notice"), 0) == 1)
     {
       bool = true;
-      locald.fQf = bool;
+      locald.hWa = bool;
       if (paramMap.get(".sysmsg.gamecenter.gamelife.chatmsg") == null) {
-        break label97;
+        break label124;
       }
     }
-    label97:
-    for (paramo.CJS.CKg = true;; paramo.CJS.CKg = false)
+    label124:
+    for (paramo.IEd.IEr = true;; paramo.IEd.IEr = false)
     {
-      paramo.CJS.CKh.CKd = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.gamelife.chatroom.top_chatroom_name"), "");
-      AppMethodBeat.o(190537);
+      paramo.IEd.IEs.IEn = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.gamelife.chatroom.top_chatroom_name"), "");
+      paramo.IEd.IEs.IEo = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.gamelife.chatroom.entrance_open_chatroom_name"), "");
+      AppMethodBeat.o(275432);
       return;
       bool = false;
       break;
@@ -367,7 +368,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.u
  * JD-Core Version:    0.7.0.1
  */

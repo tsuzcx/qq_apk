@@ -1,162 +1,77 @@
 package com.tencent.mm.plugin.finder.live.model.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.plugin.finder.utils.aj;
-import com.tencent.mm.protocal.protobuf.aqe;
-import com.tencent.mm.protocal.protobuf.arq;
-import com.tencent.mm.protocal.protobuf.arr;
-import com.tencent.mm.protocal.protobuf.ayj;
-import com.tencent.mm.protocal.protobuf.eaf;
-import com.tencent.mm.protocal.protobuf.elx;
-import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.finder.cgi.bi;
+import com.tencent.mm.protocal.protobuf.bic;
+import com.tencent.mm.protocal.protobuf.bid;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.kd;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.Iterator;
+import java.util.Collection;
 import java.util.LinkedList;
-import kotlin.l;
-import org.json.JSONObject;
+import java.util.List;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLivePrepare;", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLive;", "Lcom/tencent/mm/protocal/protobuf/FinderCreateLivePrepareResponse;", "finderBaseRequest", "Lcom/tencent/mm/protocal/protobuf/FinderBaseRequest;", "finderUsername", "", "micFinderUsername", "micObjectId", "", "micLiveId", "timeout", "", "requestId", "callback", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLivePrepare$CallBack;", "(Lcom/tencent/mm/protocal/protobuf/FinderBaseRequest;Ljava/lang/String;Ljava/lang/String;JJIJLcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLivePrepare$CallBack;)V", "TAG", "getCallback", "()Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLivePrepare$CallBack;", "getFinderBaseRequest", "()Lcom/tencent/mm/protocal/protobuf/FinderBaseRequest;", "request", "Lcom/tencent/mm/protocal/protobuf/FinderCreateLivePrepareRequest;", "requestExt", "Lorg/json/JSONObject;", "getRequestId", "()J", "resultExt", "getTimeout", "()I", "actionExt", "addDebugData", "", "resp", "dumpFinderObject", "sb", "Ljava/lang/StringBuilder;", "finderObject", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "dumpFinderRecoverLiveInfo", "recoverLiveInfo", "Lcom/tencent/mm/protocal/protobuf/FinderRecoverLiveInfo;", "dumpResp", "dumpSpamRisk", "spamRisk", "Lcom/tencent/mm/protocal/protobuf/SpamRisk;", "dumpVisibilityFileList", "list", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveAudienceListFile;", "initReqResp", "isEnableReport", "Lcom/tencent/mm/plugin/findersdk/cgi/report/EnableValue;", "onCgiEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "preLoadImg", "CallBack", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveGetLuckyMoneyInfo;", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLive;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveGetRedPacketInfoResponse;", "liveId", "", "objectId", "nonceId", "", "liveCookies", "", "scene", "", "sendIdList", "", "(JJLjava/lang/String;[BILjava/util/List;)V", "TAG", "getTAG", "()Ljava/lang/String;", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLiveGetRedPacketInfoRequest;", "initReqResp", "", "isEnableReport", "Lcom/tencent/mm/plugin/findersdk/cgi/report/EnableValue;", "onCgiEnd", "errType", "errCode", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "CallBack", "Companion", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ae
-  extends n<arr>
+  extends o<bid>
 {
+  public static final b CJU;
+  private bic CJV;
   private final String TAG;
-  private final int timeout;
-  private final JSONObject xbw;
-  private final JSONObject xcu;
-  private arq yjQ;
-  private final long yjR;
-  private final a yjS;
-  private final aqe yjp;
   
-  private ae(aqe paramaqe, String paramString, long paramLong, a parama)
+  static
   {
-    AppMethodBeat.i(284702);
-    this.yjp = paramaqe;
-    this.timeout = 5000;
-    this.yjR = paramLong;
-    this.yjS = parama;
-    this.TAG = "Finder.CgiFinderLivePrepare";
-    this.yjQ = new arq();
-    this.xbw = new JSONObject();
-    this.xcu = new JSONObject();
-    this.yjQ.RLM = this.yjp;
-    this.yjQ.RLN = paramString;
-    this.yjQ.SEF = null;
-    this.yjQ.SEG = 0L;
-    this.yjQ.SEH = 0L;
-    this.xcu.put("mic_live_id", 0L);
-    this.xcu.put("mic_object_id", 0L);
-    this.xbw.put("username", null);
-    Log.i(this.TAG, "CgiFinderLivePrepare finderUsername " + paramString + " micFinderUsername " + null + " micObjectId 0 micLiveId 0");
-    paramaqe = new d.a();
-    paramaqe.c((com.tencent.mm.cd.a)this.yjQ);
-    paramString = new arr();
-    paramString.setBaseResponse(new jh());
-    paramString.getBaseResponse().Tef = new eaf();
-    paramaqe.d((com.tencent.mm.cd.a)paramString);
-    paramaqe.TW("/cgi-bin/micromsg-bin/findercreateliveprepare");
-    paramaqe.vD(5874);
-    c(paramaqe.bgN());
-    AppMethodBeat.o(284702);
+    AppMethodBeat.i(360243);
+    CJU = new b((byte)0);
+    AppMethodBeat.o(360243);
   }
   
-  private static void a(arr paramarr)
+  public ae(long paramLong1, long paramLong2, String paramString, byte[] paramArrayOfByte, int paramInt, List<String> paramList)
   {
-    AppMethodBeat.i(284701);
-    Object localObject = aj.AGc;
-    if (aj.eej())
-    {
-      if (paramarr.SEP.isEmpty())
-      {
-        localObject = com.tencent.c.a.a.a.a.a.Zlt;
-        if (((Number)com.tencent.c.a.a.a.a.a.imf().aSr()).intValue() == 1)
-        {
-          localObject = new LinkedList();
-          int i = 0;
-          while (i < 50)
-          {
-            ayj localayj = new ayj();
-            localayj.RRY = "finder_debug_audien_file_".concat(String.valueOf(i));
-            localayj.title = "测试列表".concat(String.valueOf(i));
-            ((LinkedList)localObject).add(localayj);
-            i += 1;
-          }
-          paramarr.SEP = ((LinkedList)localObject);
-        }
-      }
-      if (paramarr.SEU == null)
-      {
-        paramarr.SEU = new elx();
-        localObject = paramarr.SEU;
-        if (localObject != null) {
-          ((elx)localObject).UnR = "测试";
-        }
-        paramarr = paramarr.SEU;
-        if (paramarr != null)
-        {
-          paramarr.UnQ = "https://weixin110.qq.com/security/newreadtemplate?t=roomlive/verify";
-          AppMethodBeat.o(284701);
-          return;
-        }
-      }
+    AppMethodBeat.i(360237);
+    this.TAG = "Finder.CgiFinderLiveGetRedPacketInfo";
+    this.CJV = new bic();
+    this.CJV.mMJ = paramLong1;
+    this.CJV.object_id = paramLong2;
+    this.CJV.object_nonce_id = paramString;
+    paramString = this.CJV;
+    bi localbi = bi.ABn;
+    paramString.YIY = bi.dVu();
+    this.CJV.YJa = com.tencent.mm.bx.b.cX(paramArrayOfByte);
+    this.CJV.YIZ = z.bAW();
+    this.CJV.scene = paramInt;
+    paramString = this.CJV.ZRj;
+    if (paramString != null) {
+      paramString.addAll((Collection)paramList);
     }
-    AppMethodBeat.o(284701);
+    paramString = new c.a();
+    paramString.otE = ((a)this.CJV);
+    paramArrayOfByte = new bid();
+    paramArrayOfByte.setBaseResponse(new kd());
+    paramArrayOfByte.getBaseResponse().akjO = new etl();
+    paramString.otF = ((a)paramArrayOfByte);
+    paramString.uri = "/cgi-bin/micromsg-bin/finderlivegetredpacketinfo";
+    paramString.funcId = 6271;
+    c(paramString.bEF());
+    Log.i(this.TAG, "CgiFinderLiveGetRedPacketInfo, init liveId:" + this.CJV.mMJ + ", objectId:" + this.CJV.object_id + ", nonceId:" + this.CJV.object_nonce_id + ", send_id_list:" + this.CJV.ZRj);
+    AppMethodBeat.o(360237);
   }
   
-  private final void a(StringBuilder paramStringBuilder, LinkedList<ayj> paramLinkedList)
+  public final com.tencent.mm.plugin.findersdk.b.a.b dVi()
   {
-    AppMethodBeat.i(284699);
-    try
-    {
-      paramStringBuilder.append("VisibilityFileList:");
-      if (paramLinkedList == null) {
-        break label138;
-      }
-      paramLinkedList = ((Iterable)paramLinkedList).iterator();
-      while (paramLinkedList.hasNext())
-      {
-        ayj localayj = (ayj)paramLinkedList.next();
-        paramStringBuilder.append("[" + localayj.title + ':' + localayj.RRY + ']');
-      }
-      AppMethodBeat.o(284699);
-    }
-    catch (Exception paramStringBuilder)
-    {
-      paramLinkedList = aj.AGc;
-      aj.a(paramStringBuilder, this.TAG + ",dumpVisibilityFileList");
-      AppMethodBeat.o(284699);
-      return;
-    }
-    return;
-    label138:
-    AppMethodBeat.o(284699);
+    return com.tencent.mm.plugin.findersdk.b.a.b.Hde;
   }
   
-  public final com.tencent.mm.plugin.findersdk.b.a.b dnF()
-  {
-    return com.tencent.mm.plugin.findersdk.b.a.b.BvU;
-  }
-  
-  public final JSONObject dnI()
-  {
-    return this.xcu;
-  }
-  
-  public final JSONObject dnJ()
-  {
-    return this.xbw;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLivePrepare$CallBack;", "", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "requestId", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderCreateLivePrepareResponse;", "plugin-finder_release"})
-  public static abstract interface a
-  {
-    public abstract void a(int paramInt1, int paramInt2, String paramString, long paramLong, arr paramarr);
-  }
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveGetLuckyMoneyInfo$Companion;", "", "()V", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.model.cgi.ae
  * JD-Core Version:    0.7.0.1
  */

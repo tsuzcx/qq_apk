@@ -9,8 +9,8 @@ import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -18,30 +18,30 @@ import java.util.Map;
 
 public final class b
 {
-  private static final b QFS;
-  public Map<String, Integer> QFi;
+  private static final b Xzq;
+  public Map<String, Integer> XyG;
   public String tag;
   
   static
   {
     AppMethodBeat.i(146307);
-    QFS = new b();
+    Xzq = new b();
     AppMethodBeat.o(146307);
   }
   
   private b()
   {
     AppMethodBeat.i(146299);
-    this.QFi = new HashMap();
+    this.XyG = new HashMap();
     this.tag = "";
-    hdi();
+    iDP();
     AppMethodBeat.o(146299);
   }
   
-  private boolean bnJ(String paramString)
+  private boolean bnx(String paramString)
   {
     AppMethodBeat.i(146302);
-    if ((this.QFi.containsKey(paramString)) && (((Integer)this.QFi.get(paramString)).intValue() == 1))
+    if ((this.XyG.containsKey(paramString)) && (((Integer)this.XyG.get(paramString)).intValue() == 1))
     {
       AppMethodBeat.o(146302);
       return true;
@@ -50,15 +50,15 @@ public final class b
     return false;
   }
   
-  public static b hdh()
+  public static b iDO()
   {
-    return QFS;
+    return Xzq;
   }
   
-  private void hdi()
+  private void iDP()
   {
     AppMethodBeat.i(146300);
-    this.tag = ((String)h.aHG().aHp().get(ar.a.Vqj, null));
+    this.tag = ((String)h.baE().ban().get(at.a.acRL, null));
     Log.i("WeLabRedPointMgr", "load red tag " + this.tag);
     if (!TextUtils.isEmpty(this.tag))
     {
@@ -72,7 +72,7 @@ public final class b
         {
           localObject = ((String)localObject).split("=");
           if ((localObject != null) && (localObject.length == 2)) {
-            this.QFi.put(localObject[0], Integer.valueOf(Util.safeParseInt(localObject[1])));
+            this.XyG.put(localObject[0], Integer.valueOf(Util.safeParseInt(localObject[1])));
           }
         }
         i += 1;
@@ -81,10 +81,10 @@ public final class b
     AppMethodBeat.o(146300);
   }
   
-  public static void hdj()
+  public static void iDQ()
   {
     AppMethodBeat.i(146304);
-    Object localObject = com.tencent.mm.plugin.welab.b.hcS().hcT();
+    Object localObject = com.tencent.mm.plugin.welab.b.iDA().iDB();
     if ((localObject != null) && (((List)localObject).isEmpty())) {}
     localObject = ((List)localObject).iterator();
     com.tencent.mm.plugin.welab.d.a.a locala;
@@ -94,26 +94,26 @@ public final class b
         break;
       }
       locala = (com.tencent.mm.plugin.welab.d.a.a)((Iterator)localObject).next();
-    } while ((locala == null) || (!QFS.e(locala)));
+    } while ((locala == null) || (!Xzq.e(locala)));
     for (int i = 0;; i = 1)
     {
       if (i != 0) {
-        c.aFn().dl(266267, 266241);
+        c.aYo().dX(266267, 266241);
       }
       AppMethodBeat.o(146304);
       return;
     }
   }
   
-  public static boolean hdk()
+  public static boolean iDR()
   {
     AppMethodBeat.i(146305);
-    boolean bool = c.aFn().dk(266267, 266241);
+    boolean bool = c.aYo().dW(266267, 266241);
     AppMethodBeat.o(146305);
     return bool;
   }
   
-  public static boolean hdl()
+  public static boolean iDS()
   {
     AppMethodBeat.i(146306);
     boolean bool = MMApplicationContext.getDefaultPreference().getBoolean("key_has_enter_welab", false);
@@ -129,7 +129,7 @@ public final class b
       AppMethodBeat.o(146301);
       return false;
     }
-    if (bnJ(parama.field_LabsAppId))
+    if (bnx(parama.field_LabsAppId))
     {
       AppMethodBeat.o(146301);
       return false;
@@ -141,15 +141,15 @@ public final class b
   public final void f(com.tencent.mm.plugin.welab.d.a.a parama)
   {
     AppMethodBeat.i(146303);
-    if ((parama.field_RedPoint == 1) && (!bnJ(parama.field_LabsAppId)) && (parama.hdb())) {
-      c.aFn().D(266267, true);
+    if ((parama.field_RedPoint == 1) && (!bnx(parama.field_LabsAppId)) && (parama.MX())) {
+      c.aYo().R(266267, true);
     }
     AppMethodBeat.o(146303);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.e.b
  * JD-Core Version:    0.7.0.1
  */

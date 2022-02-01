@@ -9,7 +9,8 @@ import com.tencent.mm.plugin.fts.a.d.c;
 import com.tencent.mm.plugin.fts.a.d.e.a;
 import com.tencent.mm.plugin.fts.a.d.e.b;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.plugin.sns.b.p;
+import com.tencent.mm.plugin.sns.c.i;
+import com.tencent.mm.plugin.sns.c.q;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.util.HashSet;
@@ -21,23 +22,23 @@ public final class j
   extends d
   implements e.b
 {
-  private MMHandler BMc;
-  private boolean BNo;
-  private com.tencent.mm.plugin.fts.a.d.e BNu;
-  private com.tencent.mm.plugin.fts.ui.c.a BNv;
-  private boolean BNw;
-  private MMHandler BNx;
-  private boolean BNy;
-  private boolean mYQ;
-  private int ptD;
-  private int uMD;
+  private boolean EKW;
+  private MMHandler HwY;
+  private boolean HyH;
+  private com.tencent.mm.plugin.fts.a.d.e HyN;
+  private com.tencent.mm.plugin.fts.ui.d.a HyO;
+  private MMHandler HyP;
+  private boolean HyQ;
+  private boolean pVy;
+  private int syO;
+  private int xVf;
   
   public j(e parame, int paramInt1, int paramInt2)
   {
     super(parame);
     AppMethodBeat.i(111931);
-    this.BMc = new MMHandler(Looper.getMainLooper());
-    this.BNx = new MMHandler(Looper.getMainLooper())
+    this.HwY = new MMHandler(Looper.getMainLooper());
+    this.HyP = new MMHandler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -52,14 +53,14 @@ public final class j
           Log.d("MicroMsg.FTS.FTSDetailAdapter", "ImageEngine attach is true");
           if ((!j.a(j.this)) && (j.this.getCount() > 0))
           {
-            ((n)com.tencent.mm.kernel.h.ag(n.class)).getFTSImageLoader().eqB();
-            p.JPc.start();
+            ((n)com.tencent.mm.kernel.h.az(n.class)).getFTSImageLoader().fxg();
+            q.Qkh.start();
             j.this.notifyDataSetChanged();
           }
         }
       }
     };
-    this.uMD = paramInt1;
+    this.xVf = paramInt1;
     parame = getContext();
     int j = -1;
     int i = j;
@@ -73,9 +74,9 @@ public final class j
       Log.i("MicroMsg.FTS.FTSDetailAdapter", "searchType=%d | uiLogicType=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(i) });
       HashSet localHashSet = new HashSet();
       localHashSet.add(Integer.valueOf(i));
-      this.BNu = ((com.tencent.mm.plugin.fts.a.d.e)((n)com.tencent.mm.kernel.h.ag(n.class)).createFTSUIUnitList(localHashSet, parame, this, paramInt2).get(0));
-      this.BNv = new com.tencent.mm.plugin.fts.ui.c.a();
-      this.ptD = paramInt2;
+      this.HyN = ((com.tencent.mm.plugin.fts.a.d.e)((n)com.tencent.mm.kernel.h.az(n.class)).createFTSUIUnitList(localHashSet, parame, this, paramInt2).get(0));
+      this.HyO = new com.tencent.mm.plugin.fts.ui.d.a();
+      this.syO = paramInt2;
       AppMethodBeat.o(111931);
       return;
       i = 4112;
@@ -90,6 +91,8 @@ public final class j
       continue;
       i = 4208;
       continue;
+      i = 8224;
+      continue;
       i = 4224;
       continue;
       i = 4240;
@@ -98,62 +101,62 @@ public final class j
     }
   }
   
-  protected final com.tencent.mm.plugin.fts.a.d.a.a SC(int paramInt)
+  protected final com.tencent.mm.plugin.fts.a.d.a.a Wj(int paramInt)
   {
     AppMethodBeat.i(111932);
-    com.tencent.mm.plugin.fts.a.d.a.a locala = this.BNu.SC(paramInt);
+    com.tencent.mm.plugin.fts.a.d.a.a locala = this.HyN.Wj(paramInt);
     if (locala != null)
     {
-      locala.BJH = paramInt;
+      locala.Huq = paramInt;
       locala.pageType = 2;
     }
     AppMethodBeat.o(111932);
     return locala;
   }
   
-  public final void a(com.tencent.mm.plugin.fts.a.d.e parame, String paramString)
+  public final void a(com.tencent.mm.plugin.fts.a.d.e parame, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(111937);
+    AppMethodBeat.i(265660);
     if (paramString.equals(getQuery())) {
-      this.mYQ = false;
+      this.pVy = false;
     }
-    setCount(parame.SB(0));
+    setCount(parame.Wi(0));
     notifyDataSetChanged();
-    aB(getCount(), true);
-    this.BNv.BQq = System.currentTimeMillis();
-    paramString = this.BNv;
-    parame = ((a)parame).BLN.iterator();
+    aZ(getCount(), true);
+    this.HyO.HBX = System.currentTimeMillis();
+    paramString = this.HyO;
+    parame = ((a)parame).HwJ.iterator();
     while (parame.hasNext())
     {
       e.a locala = (e.a)parame.next();
-      int i = paramString.BQr;
-      paramString.BQr = (locala.pWR.size() + i);
+      int i = paramString.HBY;
+      paramString.HBY = (locala.tbH.size() + i);
     }
-    AppMethodBeat.o(111937);
+    AppMethodBeat.o(265660);
   }
   
   protected final boolean a(View paramView, com.tencent.mm.plugin.fts.a.d.a.a parama, boolean paramBoolean)
   {
     AppMethodBeat.i(111935);
-    this.BNu.a(paramView, parama, paramBoolean);
-    if (parama.BJP)
+    this.HyN.a(paramView, parama, paramBoolean);
+    if (parama.Huy)
     {
-      Log.d("MicroMsg.FTS.FTSDetailAdapter", "searchType=%d | searchScene=%d | kvPosition=%d | kvSubPosition=%d | kvSearchId=%s | kvDocId=%d", new Object[] { Integer.valueOf(parama.uMD), Integer.valueOf(parama.ptD), Integer.valueOf(parama.BJH), Integer.valueOf(parama.BJI), parama.BJJ, Long.valueOf(parama.BJK) });
-      if (!this.BNo)
+      Log.d("MicroMsg.FTS.FTSDetailAdapter", "searchType=%d | searchScene=%d | kvPosition=%d | kvSubPosition=%d | kvSearchId=%s | kvDocId=%d", new Object[] { Integer.valueOf(parama.xVf), Integer.valueOf(parama.syO), Integer.valueOf(parama.Huq), Integer.valueOf(parama.Hur), parama.Hus, Long.valueOf(parama.Hut) });
+      if (!this.HyH)
       {
-        l.c(getQuery(), true, erb(), parama.uMD);
-        this.BNo = true;
+        l.c(getQuery(), true, fxI(), parama.xVf);
+        this.HyH = true;
       }
-      l.a(parama, this.BNv);
+      l.a(parama, this.HyO);
     }
     for (;;)
     {
       AppMethodBeat.o(111935);
       return false;
-      if ((parama instanceof com.tencent.mm.plugin.fts.ui.a.h))
+      if ((parama instanceof com.tencent.mm.plugin.fts.ui.b.h))
       {
-        this.BNy = true;
-        l.a(parama, this.BNv);
+        this.HyQ = true;
+        l.a(parama, this.HyO);
       }
     }
   }
@@ -162,44 +165,44 @@ public final class j
   {
     AppMethodBeat.i(111934);
     super.clearCache();
-    this.BNv.reset();
-    this.BNu.clearData();
-    this.BNu.eqZ();
-    this.BNx.removeMessages(1);
+    this.HyO.reset();
+    this.HyN.clearData();
+    this.HyN.fxG();
+    this.HyP.removeMessages(1);
     AppMethodBeat.o(111934);
-  }
-  
-  protected final int erb()
-  {
-    AppMethodBeat.i(111939);
-    int i = this.BNu.erb();
-    AppMethodBeat.o(111939);
-    return i;
-  }
-  
-  protected final void erv()
-  {
-    AppMethodBeat.i(111933);
-    this.mYQ = true;
-    this.BNo = false;
-    this.BNv.BQs = com.tencent.mm.plugin.fts.a.d.Sw(this.ptD);
-    this.BNu.a(getQuery(), this.BMc, new HashSet(), 0L);
-    AppMethodBeat.o(111933);
   }
   
   public final void finish()
   {
     AppMethodBeat.i(111936);
-    if (!this.BNo)
+    if (!this.HyH)
     {
-      this.BNo = true;
-      if (!this.BNy) {
-        l.c(getQuery(), false, erb(), this.uMD);
+      this.HyH = true;
+      if (!this.HyQ) {
+        l.c(getQuery(), false, fxI(), this.xVf);
       }
     }
-    this.BNv.reset();
+    this.HyO.reset();
     super.finish();
     AppMethodBeat.o(111936);
+  }
+  
+  protected final int fxI()
+  {
+    AppMethodBeat.i(111939);
+    int i = this.HyN.fxI();
+    AppMethodBeat.o(111939);
+    return i;
+  }
+  
+  protected final void fyd()
+  {
+    AppMethodBeat.i(111933);
+    this.pVy = true;
+    this.HyH = false;
+    this.HyO.HBZ = com.tencent.mm.plugin.fts.a.d.Wd(this.syO);
+    this.HyN.a(getQuery(), this.HwY, new HashSet());
+    AppMethodBeat.o(111933);
   }
   
   public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
@@ -208,25 +211,25 @@ public final class j
     super.onScrollStateChanged(paramAbsListView, paramInt);
     if (paramInt == 2)
     {
-      this.BNw = true;
-      ((n)com.tencent.mm.kernel.h.ag(n.class)).getFTSImageLoader().eqz();
-      p.JPc.pause();
+      this.EKW = true;
+      ((n)com.tencent.mm.kernel.h.az(n.class)).getFTSImageLoader().fxe();
+      q.Qkh.pause();
       Log.d("MicroMsg.FTS.FTSDetailAdapter", "ImageEngine attach is false");
       AppMethodBeat.o(111938);
       return;
     }
-    this.BNw = false;
-    if (!((n)com.tencent.mm.kernel.h.ag(n.class)).getFTSImageLoader().eqA())
+    this.EKW = false;
+    if (!((n)com.tencent.mm.kernel.h.az(n.class)).getFTSImageLoader().fxf())
     {
-      this.BNx.removeMessages(1);
-      this.BNx.sendEmptyMessageDelayed(1, 200L);
+      this.HyP.removeMessages(1);
+      this.HyP.sendEmptyMessageDelayed(1, 200L);
     }
     AppMethodBeat.o(111938);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.j
  * JD-Core Version:    0.7.0.1
  */

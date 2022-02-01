@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/imp" android:paddingLeft="@dimen/hs" android:paddingRight="@dimen/hs" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/isx" android:background="@drawable/d2s" android:layout_width="fill_parent" android:layout_height="@dimen/er" />
-    <View android:id="@id/imr" android:background="@drawable/d2t" android:layout_width="fill_parent" android:layout_height="@dimen/er" android:layout_marginTop="@dimen/eq" />
-</FrameLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:gravity="center_horizontal" android:background="@drawable/ccu" android:visibility="visible" android:layout_width="0.0dip" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/lnf" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@raw/icons_filled_red_envelope_big" android:layout_marginStart="16.0dip" app:iconColor="#fffde3b6" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <TextView android:textSize="14.0dip" android:textColor="#fffde3b6" android:ellipsize="end" android:id="@id/m9w" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/m1i" android:maxLines="1" android:layout_marginStart="8.0dip" android:translationZ="2.0dip" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintStart_toEndOf="@id/lnf" app:layout_constraintTop_toTopOf="hr_" app:layout_constraintWidth_default="lu2" />
+    <ImageView android:id="@id/m9v" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/cd_" app:layout_constraintEnd_toEndOf="hr_" />
+</androidx.constraintlayout.widget.ConstraintLayout>

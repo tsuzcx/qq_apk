@@ -1,80 +1,17 @@
 package kotlin.k;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.NoSuchElementException;
-import kotlin.a.ab;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/ranges/IntProgressionIterator;", "Lkotlin/collections/IntIterator;", "first", "", "last", "step", "(III)V", "finalElement", "hasNext", "", "next", "getStep", "()I", "nextInt", "kotlin-stdlib"})
-public final class d
-  extends ab
+@Metadata(d1={""}, d2={"Lkotlin/ranges/ClosedRange;", "T", "", "", "endInclusive", "getEndInclusive", "()Ljava/lang/Comparable;", "start", "getStart", "contains", "", "value", "(Ljava/lang/Comparable;)Z", "isEmpty", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
+public abstract interface d<T extends Comparable<? super T>>
 {
-  private final int aaBS;
-  private int aaBT;
-  private final int oxQ;
-  private boolean zca;
+  public abstract T klJ();
   
-  public d(int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(129304);
-    this.oxQ = paramInt3;
-    this.aaBS = paramInt2;
-    if (this.oxQ > 0) {
-      if (paramInt1 <= paramInt2)
-      {
-        this.zca = bool;
-        if (!this.zca) {
-          break label75;
-        }
-      }
-    }
-    for (;;)
-    {
-      this.aaBT = paramInt1;
-      AppMethodBeat.o(129304);
-      return;
-      bool = false;
-      break;
-      if (paramInt1 >= paramInt2) {
-        break;
-      }
-      bool = false;
-      break;
-      label75:
-      paramInt1 = this.aaBS;
-    }
-  }
-  
-  public final boolean hasNext()
-  {
-    return this.zca;
-  }
-  
-  public final int zD()
-  {
-    AppMethodBeat.i(129303);
-    int i = this.aaBT;
-    if (i == this.aaBS)
-    {
-      if (!this.zca)
-      {
-        Throwable localThrowable = (Throwable)new NoSuchElementException();
-        AppMethodBeat.o(129303);
-        throw localThrowable;
-      }
-      this.zca = false;
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(129303);
-      return i;
-      this.aaBT += this.oxQ;
-    }
-  }
+  public abstract T klK();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     kotlin.k.d
  * JD-Core Version:    0.7.0.1
  */

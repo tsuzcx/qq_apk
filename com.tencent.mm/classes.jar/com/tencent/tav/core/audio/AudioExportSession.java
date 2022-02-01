@@ -10,17 +10,17 @@ public class AudioExportSession
   
   public static IAudioExportTask generateAudioAssetExportTask(Asset paramAsset, String paramString)
   {
-    AppMethodBeat.i(189443);
+    AppMethodBeat.i(215493);
     paramAsset = new AudioExportTask(new AudioSourceComposition(paramAsset), paramString);
-    AppMethodBeat.o(189443);
+    AppMethodBeat.o(215493);
     return paramAsset;
   }
   
   public static IAudioExportTask generateAudioTrackExportTask(AssetTrack paramAssetTrack, String paramString)
   {
-    AppMethodBeat.i(189444);
+    AppMethodBeat.i(215504);
     paramAssetTrack = new AudioExportTask(new AudioSourceTrack(paramAssetTrack), paramString);
-    AppMethodBeat.o(189444);
+    AppMethodBeat.o(215504);
     return paramAssetTrack;
   }
 }

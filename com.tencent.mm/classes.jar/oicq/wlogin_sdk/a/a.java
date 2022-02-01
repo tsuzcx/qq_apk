@@ -6,43 +6,43 @@ import oicq.wlogin_sdk.tools.util;
 
 public class a
 {
-  public int abFA;
-  public int abFB;
-  public byte[] abFG;
-  public int abFM;
-  int abGu;
-  public int abGv;
-  public int abGw;
+  public int ajGE;
+  public int ajGF;
+  public byte[] ajGK;
+  public int ajGQ;
+  public int ajHA;
+  int ajHy;
+  public int ajHz;
   
   public a()
   {
     AppMethodBeat.i(88120);
-    this.abFA = 128;
-    this.abFB = 0;
-    this.abGu = 0;
-    this.abGv = 4;
-    this.abGw = 0;
-    this.abFG = new byte[this.abFA];
-    this.abFM = 0;
+    this.ajGE = 128;
+    this.ajGF = 0;
+    this.ajHy = 0;
+    this.ajHz = 4;
+    this.ajHA = 0;
+    this.ajGK = new byte[this.ajGE];
+    this.ajGQ = 0;
     AppMethodBeat.o(88120);
   }
   
-  private void ae(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  private void ac(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(88123);
-    if (paramInt2 > this.abFA)
+    if (paramInt2 > this.ajGE)
     {
-      this.abFA = (paramInt2 + 128);
-      this.abFG = new byte[this.abFA];
+      this.ajGE = (paramInt2 + 128);
+      this.ajGK = new byte[this.ajGE];
     }
-    this.abFB = paramInt2;
-    System.arraycopy(paramArrayOfByte, paramInt1, this.abFG, 0, paramInt2);
-    this.abFM = util.ap(paramArrayOfByte, paramInt1);
-    this.abGw = (paramInt2 - this.abGv);
+    this.ajGF = paramInt2;
+    System.arraycopy(paramArrayOfByte, paramInt1, this.ajGK, 0, paramInt2);
+    this.ajGQ = util.aq(paramArrayOfByte, paramInt1);
+    this.ajHA = (paramInt2 - this.ajHz);
     AppMethodBeat.o(88123);
   }
   
-  private static int af(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  private static int ad(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(88127);
     int j = paramArrayOfByte.length;
@@ -60,45 +60,45 @@ public class a
             break;
           }
           i = paramInt1;
-        } while (util.ap(paramArrayOfByte, paramInt1) == paramInt2);
+        } while (util.aq(paramArrayOfByte, paramInt1) == paramInt2);
         paramInt1 += 2;
       } while (paramInt1 + 2 > j);
-      paramInt1 += util.ap(paramArrayOfByte, paramInt1) + 2;
+      paramInt1 += util.aq(paramArrayOfByte, paramInt1) + 2;
     }
   }
   
-  private int d(byte[] paramArrayOfByte1, int paramInt, byte[] paramArrayOfByte2)
+  private int e(byte[] paramArrayOfByte1, int paramInt, byte[] paramArrayOfByte2)
   {
     AppMethodBeat.i(88129);
-    if (this.abGv >= paramInt)
+    if (this.ajHz >= paramInt)
     {
       AppMethodBeat.o(88129);
       return -1;
     }
-    this.abGw = util.ap(paramArrayOfByte1, 2);
-    if (this.abGv + this.abGw > paramInt)
+    this.ajHA = util.aq(paramArrayOfByte1, 2);
+    if (this.ajHz + this.ajHA > paramInt)
     {
       AppMethodBeat.o(88129);
       return -1;
     }
-    paramArrayOfByte2 = d.decrypt(paramArrayOfByte1, this.abGv, this.abGw, paramArrayOfByte2);
+    paramArrayOfByte2 = d.decrypt(paramArrayOfByte1, this.ajHz, this.ajHA, paramArrayOfByte2);
     if (paramArrayOfByte2 == null)
     {
       AppMethodBeat.o(88129);
       return -1015;
     }
-    if (this.abGv + paramArrayOfByte2.length > this.abFA)
+    if (this.ajHz + paramArrayOfByte2.length > this.ajGE)
     {
-      this.abFA = (this.abGv + paramArrayOfByte2.length);
-      this.abFG = new byte[this.abFA];
+      this.ajGE = (this.ajHz + paramArrayOfByte2.length);
+      this.ajGK = new byte[this.ajGE];
     }
-    this.abFB = 0;
-    System.arraycopy(paramArrayOfByte1, 0, this.abFG, 0, this.abGv);
-    this.abFB += this.abGv;
-    System.arraycopy(paramArrayOfByte2, 0, this.abFG, this.abFB, paramArrayOfByte2.length);
-    this.abFB += paramArrayOfByte2.length;
-    this.abGw = paramArrayOfByte2.length;
-    if (!iUK().booleanValue())
+    this.ajGF = 0;
+    System.arraycopy(paramArrayOfByte1, 0, this.ajGK, 0, this.ajHz);
+    this.ajGF += this.ajHz;
+    System.arraycopy(paramArrayOfByte2, 0, this.ajGK, this.ajGF, paramArrayOfByte2.length);
+    this.ajGF += paramArrayOfByte2.length;
+    this.ajHA = paramArrayOfByte2.length;
+    if (!kGl().booleanValue())
     {
       AppMethodBeat.o(88129);
       return -1005;
@@ -107,69 +107,69 @@ public class a
     return 0;
   }
   
-  public final void aGe(int paramInt)
+  public final void aMR(int paramInt)
   {
     AppMethodBeat.i(88124);
-    util.ai(this.abFG, this.abFB, paramInt);
-    this.abFB += 2;
-    util.ai(this.abFG, this.abFB, 0);
-    this.abFB += 2;
+    util.ag(this.ajGK, this.ajGF, paramInt);
+    this.ajGF += 2;
+    util.ag(this.ajGK, this.ajGF, 0);
+    this.ajGF += 2;
     AppMethodBeat.o(88124);
   }
   
-  public final int ag(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public final int ae(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(88128);
-    int i = af(paramArrayOfByte, paramInt1, this.abFM);
+    int i = ad(paramArrayOfByte, paramInt1, this.ajGQ);
     if (i < 0)
     {
       AppMethodBeat.o(88128);
       return -1;
     }
     paramInt1 = paramInt2 - (i - paramInt1);
-    if (this.abGv >= paramInt1)
+    if (this.ajHz >= paramInt1)
     {
       AppMethodBeat.o(88128);
       return -1;
     }
-    this.abGw = util.ap(paramArrayOfByte, i + 2);
-    if (this.abGv + this.abGw > paramInt1)
+    this.ajHA = util.aq(paramArrayOfByte, i + 2);
+    if (this.ajHz + this.ajHA > paramInt1)
     {
       AppMethodBeat.o(88128);
       return -1;
     }
-    ae(paramArrayOfByte, i, this.abGv + this.abGw);
-    if (!iUK().booleanValue())
+    ac(paramArrayOfByte, i, this.ajHz + this.ajHA);
+    if (!kGl().booleanValue())
     {
       AppMethodBeat.o(88128);
       return -1005;
     }
-    paramInt1 = this.abGv;
-    paramInt2 = this.abGw;
+    paramInt1 = this.ajHz;
+    paramInt2 = this.ajHA;
     AppMethodBeat.o(88128);
     return paramInt1 + i + paramInt2;
   }
   
-  public final void am(byte[] paramArrayOfByte, int paramInt)
+  public final void an(byte[] paramArrayOfByte, int paramInt)
   {
     AppMethodBeat.i(88126);
-    if (paramInt > this.abFA - this.abGv)
+    if (paramInt > this.ajGE - this.ajHz)
     {
-      this.abFA = (this.abGv + paramInt + 64);
-      byte[] arrayOfByte = new byte[this.abFA];
-      System.arraycopy(this.abFG, 0, arrayOfByte, 0, this.abFB);
-      this.abFG = arrayOfByte;
+      this.ajGE = (this.ajHz + paramInt + 64);
+      byte[] arrayOfByte = new byte[this.ajGE];
+      System.arraycopy(this.ajGK, 0, arrayOfByte, 0, this.ajGF);
+      this.ajGK = arrayOfByte;
     }
-    this.abGw = paramInt;
-    System.arraycopy(paramArrayOfByte, 0, this.abFG, this.abFB, paramInt);
-    this.abFB += paramInt;
+    this.ajHA = paramInt;
+    System.arraycopy(paramArrayOfByte, 0, this.ajGK, this.ajGF, paramInt);
+    this.ajGF += paramInt;
     AppMethodBeat.o(88126);
   }
   
   public final int c(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, byte[] paramArrayOfByte2)
   {
     AppMethodBeat.i(88130);
-    int i = af(paramArrayOfByte1, paramInt1, this.abFM);
+    int i = ad(paramArrayOfByte1, paramInt1, this.ajGQ);
     if (i < 0)
     {
       AppMethodBeat.o(88130);
@@ -178,44 +178,44 @@ public class a
     paramInt1 = paramInt2 - (i - paramInt1);
     byte[] arrayOfByte = new byte[paramInt1];
     System.arraycopy(paramArrayOfByte1, i, arrayOfByte, 0, paramInt1);
-    paramInt1 = d(arrayOfByte, paramInt1, paramArrayOfByte2);
+    paramInt1 = e(arrayOfByte, paramInt1, paramArrayOfByte2);
     AppMethodBeat.o(88130);
     return paramInt1;
   }
   
-  public final byte[] iUF()
+  public final byte[] kGg()
   {
     AppMethodBeat.i(88121);
-    byte[] arrayOfByte = new byte[this.abFB];
-    System.arraycopy(this.abFG, 0, arrayOfByte, 0, this.abFB);
+    byte[] arrayOfByte = new byte[this.ajGF];
+    System.arraycopy(this.ajGK, 0, arrayOfByte, 0, this.ajGF);
     AppMethodBeat.o(88121);
     return arrayOfByte;
   }
   
-  public final byte[] iUI()
+  public final byte[] kGj()
   {
     AppMethodBeat.i(88122);
-    byte[] arrayOfByte = new byte[this.abGw];
-    System.arraycopy(this.abFG, this.abGv, arrayOfByte, 0, this.abGw);
+    byte[] arrayOfByte = new byte[this.ajHA];
+    System.arraycopy(this.ajGK, this.ajHz, arrayOfByte, 0, this.ajHA);
     AppMethodBeat.o(88122);
     return arrayOfByte;
   }
   
-  public final void iUJ()
+  public final void kGk()
   {
     AppMethodBeat.i(88125);
-    util.ai(this.abFG, 2, this.abFB - this.abGv);
+    util.ag(this.ajGK, 2, this.ajGF - this.ajHz);
     AppMethodBeat.o(88125);
   }
   
-  public Boolean iUK()
+  public Boolean kGl()
   {
     return Boolean.TRUE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     oicq.wlogin_sdk.a.a
  * JD-Core Version:    0.7.0.1
  */

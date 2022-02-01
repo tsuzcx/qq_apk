@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="#ff292c2d" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/be_" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:background="@drawable/in" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_alignParentBottom="true" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/am" android:id="@id/ggv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:text="00:00" android:shadowColor="@color/fm" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="2.0" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-        <TextView android:textSize="14.0dip" android:textColor="#ccffffff" android:ellipsize="end" android:id="@id/ggw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="60.0dip" android:layout_marginBottom="8.0dip" android:text="00:00" android:singleLine="true" android:shadowColor="@color/fm" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="2.0" android:layout_alignParentBottom="true" />
-    </RelativeLayout>
-</FrameLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/j53" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textColor="@color/BW_0" android:gravity="center_vertical" android:id="@id/hq4" android:background="@drawable/p5" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="48.0dip" android:text="@string/atf" />
+    </LinearLayout>
+    <com.tencent.mm.plugin.brandservice.ui.base.BrandServiceSortView android:id="@id/jyf" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

@@ -11,7 +11,7 @@ public class SeMiterLimitActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SeMiterLimitActionArg> CREATOR;
-  public float nTT;
+  public float qTE;
   
   static
   {
@@ -50,7 +50,7 @@ public class SeMiterLimitActionArg
       AppMethodBeat.o(145128);
       return false;
     }
-    if (Float.compare(((SeMiterLimitActionArg)paramObject).nTT, this.nTT) == 0)
+    if (Float.compare(((SeMiterLimitActionArg)paramObject).qTE, this.qTE) == 0)
     {
       AppMethodBeat.o(145128);
       return true;
@@ -62,16 +62,16 @@ public class SeMiterLimitActionArg
   public int hashCode()
   {
     AppMethodBeat.i(145129);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.nTT) });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.qTE) });
     AppMethodBeat.o(145129);
     return i;
   }
   
-  public final void i(Parcel paramParcel)
+  public final void k(Parcel paramParcel)
   {
     AppMethodBeat.i(145125);
-    super.i(paramParcel);
-    this.nTT = paramParcel.readFloat();
+    super.k(paramParcel);
+    this.qTE = paramParcel.readFloat();
     AppMethodBeat.o(145125);
   }
   
@@ -79,7 +79,7 @@ public class SeMiterLimitActionArg
   {
     AppMethodBeat.i(145126);
     super.parse(paramJSONObject);
-    this.nTT = ((float)paramJSONObject.optJSONArray("data").optDouble(0));
+    this.qTE = ((float)paramJSONObject.optJSONArray("data").optDouble(0));
     AppMethodBeat.o(145126);
   }
   
@@ -87,13 +87,13 @@ public class SeMiterLimitActionArg
   {
     AppMethodBeat.i(145127);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeFloat(this.nTT);
+    paramParcel.writeFloat(this.qTE);
     AppMethodBeat.o(145127);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SeMiterLimitActionArg
  * JD-Core Version:    0.7.0.1
  */

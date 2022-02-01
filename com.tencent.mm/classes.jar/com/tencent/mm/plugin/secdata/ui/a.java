@@ -1,27 +1,19 @@
 package com.tencent.mm.plugin.secdata.ui;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewParent;
 import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.b;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.plugin.secdata.d;
-import com.tencent.mm.plugin.secdata.e;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.model.cn;
 import com.tencent.mm.plugin.secdata.f;
 import com.tencent.mm.plugin.secdata.h;
-import com.tencent.mm.protocal.protobuf.acp;
-import com.tencent.mm.protocal.protobuf.acq;
-import com.tencent.mm.protocal.protobuf.acr;
+import com.tencent.mm.protocal.protobuf.aeu;
+import com.tencent.mm.protocal.protobuf.aev;
+import com.tencent.mm.protocal.protobuf.aew;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.component.UIComponent;
-import com.tencent.mm.ui.component.UIComponentActivity;
-import com.tencent.mm.ui.component.g;
-import com.tencent.mm.ui.component.g.a;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -29,554 +21,364 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/secdata/ui/SecDataUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "listSecDataMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/secdata/IListSecData;", "Lkotlin/collections/HashMap;", "getListSecDataMap", "()Ljava/util/HashMap;", "pageSecDataMap", "Lcom/tencent/mm/plugin/secdata/ISecData;", "getPageSecDataMap", "reportObjList", "Lcom/tencent/mm/protocal/protobuf/CommonReportObjList;", "getReportObjList", "()Lcom/tencent/mm/protocal/protobuf/CommonReportObjList;", "getCurrentCommonReportObj", "Lcom/tencent/mm/protocal/protobuf/CommonReportObj;", "getCurrentSubReportObj", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "type", "(I)Lcom/tencent/mm/protobuf/BaseProtoBuf;", "getListSecData", "getPreSubReportObj", "pageIndex", "clazz", "Ljava/lang/Class;", "(IILjava/lang/Class;)Lcom/tencent/mm/protobuf/BaseProtoBuf;", "getSecData", "initUICData", "", "intent", "Landroid/content/Intent;", "onCreateBefore", "savedInstanceState", "Landroid/os/Bundle;", "onNewIntent", "onStartActivityForResult", "requestCode", "options", "registerSecData", "secData", "Companion", "ui-sec-data_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/secdata/ui/SecDataUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "listSecDataMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/secdata/IListSecData;", "Lkotlin/collections/HashMap;", "getListSecDataMap", "()Ljava/util/HashMap;", "pageSecDataMap", "Lcom/tencent/mm/plugin/secdata/ISecData;", "getPageSecDataMap", "reportObjList", "Lcom/tencent/mm/protocal/protobuf/CommonReportObjList;", "getReportObjList", "()Lcom/tencent/mm/protocal/protobuf/CommonReportObjList;", "getCurrentCommonReportObj", "Lcom/tencent/mm/protocal/protobuf/CommonReportObj;", "getCurrentSubReportObj", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "type", "(I)Lcom/tencent/mm/protobuf/BaseProtoBuf;", "getListSecData", "getPreSubReportObj", "pageIndex", "clazz", "Ljava/lang/Class;", "(IILjava/lang/Class;)Lcom/tencent/mm/protobuf/BaseProtoBuf;", "getSecData", "initUICData", "", "intent", "Landroid/content/Intent;", "onCreateBefore", "savedInstanceState", "Landroid/os/Bundle;", "onNewIntent", "onStartActivityForResult", "requestCode", "options", "registerSecData", "secData", "Companion", "ui-sec-data_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   extends UIComponent
 {
-  public static final a JbV;
-  private final acq JbS;
-  private final HashMap<Integer, h<?>> JbT;
-  private final HashMap<Integer, f<?>> JbU;
+  public static final a.a PlI;
+  private final aev PlJ;
+  private final HashMap<Integer, h<?>> PlK;
+  private final HashMap<Integer, f<?>> PlL;
   private final String TAG;
   
   static
   {
-    AppMethodBeat.i(238444);
-    JbV = new a((byte)0);
-    AppMethodBeat.o(238444);
+    AppMethodBeat.i(261523);
+    PlI = new a.a((byte)0);
+    AppMethodBeat.o(261523);
   }
   
   public a(AppCompatActivity paramAppCompatActivity)
   {
     super(paramAppCompatActivity);
-    AppMethodBeat.i(238443);
+    AppMethodBeat.i(261496);
     this.TAG = "MicroMsg.SecData.SecDataUIC";
-    this.JbS = new acq();
-    this.JbT = new HashMap();
-    this.JbU = new HashMap();
-    AppMethodBeat.o(238443);
+    this.PlJ = new aev();
+    this.PlK = new HashMap();
+    this.PlL = new HashMap();
+    AppMethodBeat.o(261496);
   }
   
-  private final void aS(Intent paramIntent)
+  private final void bq(Intent paramIntent)
   {
-    AppMethodBeat.i(238426);
-    this.JbT.clear();
-    this.JbU.clear();
-    this.JbS.rVy.clear();
+    AppMethodBeat.i(261509);
+    this.PlK.clear();
+    this.PlL.clear();
+    this.PlJ.vgO.clear();
     try
     {
       paramIntent = paramIntent.getByteArrayExtra("ReportKey.CommonReportObjKey");
       if (paramIntent != null) {
-        this.JbS.parseFrom(paramIntent);
+        this.PlJ.parseFrom(paramIntent);
       }
     }
     catch (Exception paramIntent)
     {
       label49:
-      Object localObject;
+      aeu localaeu;
       break label49;
     }
-    paramIntent = new acp();
-    paramIntent.Soj = getActivity().getClass().getSimpleName();
-    paramIntent.Sok = cm.bfE();
-    localObject = this.JbS.rVy;
-    p.j(localObject, "reportObjList.List");
-    localObject = (acp)j.lp((List)localObject);
-    if (localObject != null)
+    localaeu = new aeu();
+    localaeu.ZmO = getActivity().getClass().getSimpleName();
+    localaeu.ZmP = cn.bDw();
+    paramIntent = this.PlJ.vgO;
+    s.s(paramIntent, "reportObjList.List");
+    paramIntent = (aeu)p.oL((List)paramIntent);
+    if (paramIntent == null) {}
+    for (paramIntent = null;; paramIntent = ah.aiuX)
     {
-      paramIntent.RYK = ((acp)localObject).RYK;
-      paramIntent.Sol = ((acp)localObject).Sol;
-      paramIntent.Som = 0;
-      Log.i(this.TAG, "fromPage:" + ((acp)localObject).Soj + " contextId:" + ((acp)localObject).RYK + " currentPage:" + paramIntent.Soj);
-    }
-    for (;;)
-    {
-      this.JbS.rVy.addFirst(paramIntent);
-      if (this.JbS.rVy.size() > 5) {
-        this.JbS.rVy.removeLast();
+      if (paramIntent == null)
+      {
+        paramIntent = (a)this;
+        localaeu.YWL = UUID.randomUUID().toString();
+        localaeu.ZmQ = 0;
+        localaeu.ZmR = 1;
+        Log.i(paramIntent.TAG, "firstPage:" + localaeu.ZmO + " contextId:" + localaeu.YWL);
       }
-      AppMethodBeat.o(238426);
+      this.PlJ.vgO.addFirst(localaeu);
+      if (this.PlJ.vgO.size() > 5) {
+        this.PlJ.vgO.removeLast();
+      }
+      AppMethodBeat.o(261509);
       return;
-      localObject = (a)this;
-      paramIntent.RYK = UUID.randomUUID().toString();
-      paramIntent.Sol = 0;
-      paramIntent.Som = 1;
-      Log.i(((a)localObject).TAG, "firstPage:" + paramIntent.Soj + " contextId:" + paramIntent.RYK);
+      localaeu.YWL = paramIntent.YWL;
+      localaeu.ZmQ = paramIntent.ZmQ;
+      localaeu.ZmR = 0;
+      Log.i(this.TAG, "fromPage:" + paramIntent.ZmO + " contextId:" + paramIntent.YWL + " currentPage:" + localaeu.ZmO);
     }
   }
   
-  private acp fFt()
+  private aeu gUB()
   {
-    AppMethodBeat.i(238442);
-    Object localObject = this.JbS.rVy;
-    p.j(localObject, "reportObjList.List");
-    localObject = (acp)j.lp((List)localObject);
-    AppMethodBeat.o(238442);
+    AppMethodBeat.i(261514);
+    Object localObject = this.PlJ.vgO;
+    s.s(localObject, "reportObjList.List");
+    localObject = (aeu)p.oL((List)localObject);
+    AppMethodBeat.o(261514);
     return localObject;
   }
   
-  public final <T extends com.tencent.mm.cd.a> void a(f<T> paramf)
+  public final <T extends com.tencent.mm.bx.a> void a(f<T> paramf)
   {
-    AppMethodBeat.i(238430);
-    p.k(paramf, "secData");
-    ((Map)this.JbU).put(Integer.valueOf(paramf.getType()), paramf);
-    AppMethodBeat.o(238430);
+    AppMethodBeat.i(261543);
+    s.u(paramf, "secData");
+    ((Map)this.PlL).put(Integer.valueOf(paramf.getType()), paramf);
+    AppMethodBeat.o(261543);
   }
   
-  public final <T extends com.tencent.mm.cd.a> void a(h<T> paramh)
+  public final <T extends com.tencent.mm.bx.a> void a(h<T> paramh)
   {
-    AppMethodBeat.i(238428);
-    p.k(paramh, "secData");
-    ((Map)this.JbT).put(Integer.valueOf(paramh.getType()), paramh);
-    AppMethodBeat.o(238428);
+    AppMethodBeat.i(261537);
+    s.u(paramh, "secData");
+    ((Map)this.PlK).put(Integer.valueOf(paramh.getType()), paramh);
+    AppMethodBeat.o(261537);
   }
   
-  public final h<?> aee(int paramInt)
+  public final h<?> aiJ(int paramInt)
   {
-    AppMethodBeat.i(238433);
-    h localh = (h)this.JbT.get(Integer.valueOf(paramInt));
-    AppMethodBeat.o(238433);
+    AppMethodBeat.i(261563);
+    h localh = (h)this.PlK.get(Integer.valueOf(paramInt));
+    AppMethodBeat.o(261563);
     return localh;
   }
   
-  public final <T extends com.tencent.mm.cd.a> T aef(int paramInt)
+  public final <T extends com.tencent.mm.bx.a> T aiK(int paramInt)
   {
-    Object localObject2 = null;
-    AppMethodBeat.i(238436);
-    Object localObject1 = aee(paramInt);
-    if (localObject1 != null)
+    AppMethodBeat.i(261576);
+    Object localObject = aiJ(paramInt);
+    if (localObject == null) {}
+    for (localObject = null; (localObject instanceof com.tencent.mm.bx.a); localObject = ((h)localObject).gUv())
     {
-      localObject1 = ((h)localObject1).fFn();
-      if ((localObject1 instanceof com.tencent.mm.cd.a)) {
-        break label47;
-      }
-      localObject1 = localObject2;
+      AppMethodBeat.o(261576);
+      return localObject;
     }
-    label47:
-    for (;;)
-    {
-      AppMethodBeat.o(238436);
-      return localObject1;
-      localObject1 = null;
-      break;
-    }
+    AppMethodBeat.o(261576);
+    return null;
   }
   
-  public final <T extends com.tencent.mm.cd.a> T c(int paramInt, Class<T> paramClass)
+  public final <T extends com.tencent.mm.bx.a> T c(int paramInt, Class<T> paramClass)
   {
-    AppMethodBeat.i(238432);
-    p.k(paramClass, "clazz");
-    Object localObject = this.JbS.rVy;
+    AppMethodBeat.i(261553);
+    s.u(paramClass, "clazz");
+    Object localObject = this.PlJ.vgO;
     int i;
     if (((LinkedList)localObject).size() > 1)
     {
       i = 1;
       if (i == 0) {
-        break label174;
+        break label165;
       }
       label37:
       if (localObject == null) {
-        break label191;
+        break label182;
       }
-      localObject = (acp)((LinkedList)localObject).get(1);
+      localObject = (aeu)((LinkedList)localObject).get(1);
       if (localObject == null) {
-        break label191;
+        break label182;
       }
-      localObject = ((acp)localObject).Son;
+      localObject = ((aeu)localObject).ZmS;
       if (localObject == null) {
-        break label191;
+        break label182;
       }
       Iterator localIterator = ((Iterable)localObject).iterator();
       label82:
       if (!localIterator.hasNext()) {
-        break label185;
+        break label176;
       }
       localObject = localIterator.next();
-      if (((acr)localObject).rWu != paramInt) {
-        break label180;
+      if (((aew)localObject).vhJ != paramInt) {
+        break label171;
       }
       i = 1;
       label115:
       if (i == 0) {
-        break label183;
+        break label174;
       }
     }
     for (;;)
     {
-      localObject = (acr)localObject;
+      localObject = (aew)localObject;
       if (localObject == null) {
-        break label191;
+        break label182;
       }
-      paramClass = paramClass.newInstance();
-      p.j(paramClass, "clazz.newInstance()");
-      paramClass = (com.tencent.mm.cd.a)paramClass;
-      paramClass.parseFrom(((acr)localObject).rVk.toByteArray());
-      AppMethodBeat.o(238432);
+      paramClass = (com.tencent.mm.bx.a)paramClass.newInstance();
+      paramClass.parseFrom(((aew)localObject).vgA.toByteArray());
+      AppMethodBeat.o(261553);
       return paramClass;
       i = 0;
       break;
-      label174:
+      label165:
       localObject = null;
       break label37;
-      label180:
+      label171:
       i = 0;
       break label115;
-      label183:
+      label174:
       break label82;
-      label185:
+      label176:
       localObject = null;
     }
-    label191:
-    AppMethodBeat.o(238432);
+    label182:
+    AppMethodBeat.o(261553);
     return null;
   }
   
-  public final <T extends com.tencent.mm.cd.a> f<T> fFs()
+  public final <T extends com.tencent.mm.bx.a> f<T> gUA()
   {
-    AppMethodBeat.i(238434);
-    Object localObject2 = this.JbU.get(Integer.valueOf(1));
-    Object localObject1 = localObject2;
-    if (!(localObject2 instanceof f)) {
-      localObject1 = null;
+    AppMethodBeat.i(261571);
+    Object localObject = this.PlL.get(Integer.valueOf(1));
+    if ((localObject instanceof f))
+    {
+      localObject = (f)localObject;
+      AppMethodBeat.o(261571);
+      return localObject;
     }
-    localObject1 = (f)localObject1;
-    AppMethodBeat.o(238434);
-    return localObject1;
+    AppMethodBeat.o(261571);
+    return null;
   }
   
   public final void onCreateBefore(Bundle paramBundle)
   {
-    AppMethodBeat.i(238421);
+    AppMethodBeat.i(261530);
     super.onCreateBefore(paramBundle);
-    aS(getIntent());
-    AppMethodBeat.o(238421);
+    bq(getIntent());
+    AppMethodBeat.o(261530);
   }
   
   public final void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(238439);
-    Log.i(this.TAG, "onNewIntent ".concat(String.valueOf(paramIntent)));
-    if (paramIntent != null)
+    AppMethodBeat.i(261583);
+    Log.i(this.TAG, s.X("onNewIntent ", paramIntent));
+    a locala;
+    if (paramIntent == null)
     {
-      if (paramIntent.getBooleanExtra("ReportKey.CommonReportNewIntentClearKey", false)) {}
-      while (paramIntent != null)
+      paramIntent = null;
+      if (paramIntent == null)
       {
-        aS(paramIntent);
-        AppMethodBeat.o(238439);
-        return;
-        paramIntent = null;
+        locala = (a)this;
+        paramIntent = locala.getIntent();
+        if (!paramIntent.getBooleanExtra("ReportKey.CommonReportNewIntentClearKey", false)) {
+          break label104;
+        }
       }
     }
-    a locala = (a)this;
-    paramIntent = locala.getIntent();
-    if (paramIntent.getBooleanExtra("ReportKey.CommonReportNewIntentClearKey", false)) {}
-    while (paramIntent != null)
+    for (;;)
     {
-      locala.aS(paramIntent);
-      AppMethodBeat.o(238439);
+      if (paramIntent != null) {
+        locala.bq(paramIntent);
+      }
+      AppMethodBeat.o(261583);
       return;
+      if (paramIntent.getBooleanExtra("ReportKey.CommonReportNewIntentClearKey", false)) {}
+      for (;;)
+      {
+        if (paramIntent != null) {
+          break label92;
+        }
+        paramIntent = null;
+        break;
+        paramIntent = null;
+      }
+      label92:
+      bq(paramIntent);
+      paramIntent = ah.aiuX;
+      break;
+      label104:
       paramIntent = null;
     }
-    AppMethodBeat.o(238439);
   }
   
   public final void onStartActivityForResult(Intent paramIntent, int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(238440);
+    AppMethodBeat.i(261591);
     try
     {
       localObject1 = new HashSet();
-      localObject2 = this.JbT.values();
-      p.j(localObject2, "pageSecDataMap.values");
+      localObject2 = this.PlK.values();
+      s.s(localObject2, "pageSecDataMap.values");
       localObject2 = ((Iterable)localObject2).iterator();
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (h)((Iterator)localObject2).next();
-        if (((h)localObject3).aR(paramIntent))
+        if (((h)localObject3).bp(paramIntent))
         {
-          localObject4 = new acr();
-          ((acr)localObject4).rWu = ((h)localObject3).getType();
-          ((acr)localObject4).rVk = new b(((h)localObject3).fFn().toByteArray());
-          Object localObject5 = fFt();
+          localObject4 = new aew();
+          ((aew)localObject4).vhJ = ((h)localObject3).getType();
+          ((aew)localObject4).vgA = new b(((h)localObject3).gUv().toByteArray());
+          Object localObject5 = gUB();
           if (localObject5 != null)
           {
-            localObject5 = ((acp)localObject5).Son;
+            localObject5 = ((aeu)localObject5).ZmS;
             if (localObject5 != null) {
               ((LinkedList)localObject5).add(localObject4);
             }
           }
-          if (!((h)localObject3).fFo()) {
+          if (!((h)localObject3).gUw()) {
             ((HashSet)localObject1).add(Integer.valueOf(((h)localObject3).getType()));
           }
         }
       }
-      localObject1 = ((Iterable)localObject1).iterator();
+      AppMethodBeat.o(261591);
     }
-    catch (Exception paramIntent)
-    {
-      AppMethodBeat.o(238440);
-      return;
-    }
+    catch (Exception paramIntent) {}
+    return;
+    Object localObject1 = ((Iterable)localObject1).iterator();
     int i;
     while (((Iterator)localObject1).hasNext())
     {
       i = ((Number)((Iterator)localObject1).next()).intValue();
-      this.JbT.remove(Integer.valueOf(i));
+      this.PlK.remove(Integer.valueOf(i));
     }
-    Object localObject2 = this.JbS.toByteArray();
+    Object localObject2 = this.PlJ.toByteArray();
     Object localObject3 = this.TAG;
     Object localObject4 = new StringBuilder("onStartActivityForResult SubObjList.size:");
-    Object localObject1 = fFt();
-    if (localObject1 != null)
+    localObject1 = gUB();
+    if (localObject1 == null)
     {
-      localObject1 = ((acp)localObject1).Son;
-      if (localObject1 == null) {}
-    }
-    for (localObject1 = Integer.valueOf(((LinkedList)localObject1).size());; localObject1 = null)
-    {
+      localObject1 = null;
+      label282:
       Log.i((String)localObject3, localObject1 + ", requestCode:" + paramInt + " options:" + paramBundle + " byteSize:" + localObject2.length);
       paramBundle = (Bundle)localObject2;
       if (localObject2.length > 262144)
       {
         paramInt = localObject2.length;
-        paramBundle = this.JbS.rVy;
-        p.j(paramBundle, "reportObjList.List");
-        paramBundle = (acp)j.lp((List)paramBundle);
+        paramBundle = this.PlJ.vgO;
+        s.s(paramBundle, "reportObjList.List");
+        paramBundle = (aeu)p.oL((List)paramBundle);
         if (paramBundle != null)
         {
-          this.JbS.rVy.clear();
-          this.JbS.rVy.add(paramBundle);
+          this.PlJ.vgO.clear();
+          this.PlJ.vgO.add(paramBundle);
         }
-        paramBundle = this.JbS.toByteArray();
+        paramBundle = this.PlJ.toByteArray();
         i = paramBundle.length;
         Log.i(this.TAG, "data size large than 256KB origin:" + Util.getSizeKB(paramInt, 2.0D) + " current:" + Util.getSizeKB(i, 2.0D));
       }
-      if (paramBundle.length < 262144) {
-        if (paramIntent != null) {
-          paramIntent.putExtra("ReportKey.CommonReportObjKey", paramBundle);
-        }
+      if (paramBundle.length >= 262144) {
+        break label537;
       }
-      for (;;)
-      {
-        paramIntent = fFt();
-        if (paramIntent == null) {
-          break;
-        }
-        paramIntent = paramIntent.Son;
-        if (paramIntent == null) {
-          break;
-        }
-        paramIntent.clear();
-        AppMethodBeat.o(238440);
-        return;
-        Log.w(this.TAG, "data size two large");
+      if (paramIntent != null) {
+        paramIntent.putExtra("ReportKey.CommonReportObjKey", paramBundle);
       }
-      AppMethodBeat.o(238440);
+    }
+    for (;;)
+    {
+      paramIntent = gUB();
+      if (paramIntent == null) {
+        break;
+      }
+      paramIntent = paramIntent.ZmS;
+      if (paramIntent == null) {
+        break;
+      }
+      paramIntent.clear();
+      AppMethodBeat.o(261591);
       return;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/secdata/ui/SecDataUIC$Companion;", "", "()V", "getDefaultSecDataObj", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "context", "Landroid/content/Context;", "type", "", "clazz", "Ljava/lang/Class;", "(Landroid/content/Context;ILjava/lang/Class;)Lcom/tencent/mm/protobuf/BaseProtoBuf;", "getOneTimeActivitySecDataObj", "activityName", "", "(Landroid/content/Context;Ljava/lang/String;ILjava/lang/Class;)Lcom/tencent/mm/protobuf/BaseProtoBuf;", "getPreSecDataObj", "pageIndex", "(Landroid/content/Context;IILjava/lang/Class;)Lcom/tencent/mm/protobuf/BaseProtoBuf;", "getSecDataObj", "onDefaultItemChildViewClick", "view", "Landroid/view/View;", "(ILandroid/view/View;)Lcom/tencent/mm/protobuf/BaseProtoBuf;", "onDefaultListSecDataGetView", "", "convertView", "data", "(ILandroid/view/View;Lcom/tencent/mm/protobuf/BaseProtoBuf;)V", "uic", "Lcom/tencent/mm/plugin/secdata/ui/SecDataUIC;", "ui-sec-data_release"})
-  public static final class a
-  {
-    public static <T extends com.tencent.mm.cd.a> T a(Context paramContext, int paramInt, Class<T> paramClass)
-    {
-      Object localObject = null;
-      AppMethodBeat.i(238389);
-      p.k(paramContext, "context");
-      p.k(paramClass, "clazz");
-      paramContext = hU(paramContext);
-      if (paramContext != null)
+      localObject1 = ((aeu)localObject1).ZmS;
+      if (localObject1 == null)
       {
-        paramContext = paramContext.aee(paramInt);
-        if (paramContext != null)
-        {
-          paramContext = paramContext.fFn();
-          if ((paramContext instanceof com.tencent.mm.cd.a)) {
-            break label66;
-          }
-          paramContext = localObject;
-        }
+        localObject1 = null;
+        break label282;
       }
-      label66:
-      for (;;)
-      {
-        AppMethodBeat.o(238389);
-        return paramContext;
-        paramContext = null;
-        break;
-      }
-    }
-    
-    public static <T extends com.tencent.mm.cd.a> T a(Context paramContext, String paramString, int paramInt, Class<T> paramClass)
-    {
-      AppMethodBeat.i(238396);
-      p.k(paramContext, "context");
-      p.k(paramString, "activityName");
-      p.k(paramClass, "clazz");
-      Object localObject1 = hU(paramContext);
-      if (localObject1 != null) {}
-      for (localObject1 = ((a)localObject1).aee(paramInt);; localObject1 = null)
-      {
-        Object localObject2 = localObject1;
-        if (localObject1 == null)
-        {
-          paramString = (h)new com.tencent.mm.plugin.secdata.a(paramString, paramClass, paramInt, false);
-          paramContext = hU(paramContext);
-          localObject2 = paramString;
-          if (paramContext != null)
-          {
-            paramContext.a(paramString);
-            localObject2 = paramString;
-          }
-        }
-        paramString = ((h)localObject2).fFn();
-        paramContext = paramString;
-        if (!(paramString instanceof com.tencent.mm.cd.a)) {
-          paramContext = null;
-        }
-        AppMethodBeat.o(238396);
-        return paramContext;
-      }
-    }
-    
-    public static <T extends com.tencent.mm.cd.a> void a(View paramView, T paramT)
-    {
-      AppMethodBeat.i(238403);
-      p.k(paramView, "convertView");
-      p.k(paramT, "data");
-      Object localObject1 = paramView.getContext();
-      p.j(localObject1, "convertView.context");
-      localObject1 = hU((Context)localObject1);
-      if (localObject1 != null) {}
-      for (localObject1 = ((a)localObject1).fFs();; localObject1 = null)
-      {
-        Object localObject2 = localObject1;
-        if (localObject1 == null)
-        {
-          localObject1 = (f)new d();
-          localObject2 = paramView.getContext();
-          p.j(localObject2, "convertView.context");
-          a locala = hU((Context)localObject2);
-          localObject2 = localObject1;
-          if (locala != null)
-          {
-            locala.a((f)localObject1);
-            localObject2 = localObject1;
-          }
-        }
-        ((f)localObject2).c(String.valueOf(paramView.hashCode()), paramT);
-        AppMethodBeat.o(238403);
-        return;
-      }
-    }
-    
-    public static <T extends com.tencent.mm.cd.a> T b(Context paramContext, int paramInt, Class<T> paramClass)
-    {
-      AppMethodBeat.i(238393);
-      p.k(paramContext, "context");
-      p.k(paramClass, "clazz");
-      paramContext = hU(paramContext);
-      if (paramContext != null)
-      {
-        paramContext = paramContext.c(paramInt, paramClass);
-        AppMethodBeat.o(238393);
-        return paramContext;
-      }
-      AppMethodBeat.o(238393);
-      return null;
-    }
-    
-    public static <T extends com.tencent.mm.cd.a> T c(Context paramContext, int paramInt, Class<T> paramClass)
-    {
-      AppMethodBeat.i(238399);
-      p.k(paramContext, "context");
-      p.k(paramClass, "clazz");
-      Object localObject1 = hU(paramContext);
-      if (localObject1 != null) {}
-      for (localObject1 = ((a)localObject1).aee(paramInt);; localObject1 = null)
-      {
-        Object localObject2 = localObject1;
-        if (localObject1 == null)
-        {
-          paramClass = (h)new e(paramClass, paramInt);
-          paramContext = hU(paramContext);
-          localObject2 = paramClass;
-          if (paramContext != null)
-          {
-            paramContext.a(paramClass);
-            localObject2 = paramClass;
-          }
-        }
-        paramClass = ((h)localObject2).fFn();
-        paramContext = paramClass;
-        if (!(paramClass instanceof com.tencent.mm.cd.a)) {
-          paramContext = null;
-        }
-        AppMethodBeat.o(238399);
-        return paramContext;
-      }
-    }
-    
-    public static <T extends com.tencent.mm.cd.a> T ga(View paramView)
-    {
-      AppMethodBeat.i(238405);
-      p.k(paramView, "view");
-      Object localObject = paramView.getContext();
-      p.j(localObject, "view.context");
-      localObject = hU((Context)localObject);
-      if (localObject != null)
-      {
-        localObject = ((a)localObject).fFs();
-        if (localObject == null) {}
-      }
-      for (localObject = ((f)localObject).fFq(); (localObject != null) && (((Map)localObject).containsKey(String.valueOf(paramView.hashCode())) == true); localObject = null)
-      {
-        paramView = (com.tencent.mm.cd.a)((Map)localObject).get(String.valueOf(paramView.hashCode()));
-        AppMethodBeat.o(238405);
-        return paramView;
-      }
-      paramView = paramView.getParent();
-      if ((paramView == null) || ((localObject != null) && (((Map)localObject).containsKey(String.valueOf(paramView.hashCode())) == true)))
-      {
-        if (localObject == null) {
-          break label176;
-        }
-        if (paramView == null) {
-          break label171;
-        }
-      }
-      label171:
-      for (int i = paramView.hashCode();; i = 0)
-      {
-        paramView = (com.tencent.mm.cd.a)((Map)localObject).get(String.valueOf(i));
-        AppMethodBeat.o(238405);
-        return paramView;
-        paramView = paramView.getParent();
-        break;
-      }
-      label176:
-      AppMethodBeat.o(238405);
-      return null;
-    }
-    
-    public static a hU(Context paramContext)
-    {
-      AppMethodBeat.i(238385);
-      p.k(paramContext, "context");
-      if ((paramContext instanceof UIComponentActivity))
-      {
-        g localg = g.Xox;
-        paramContext = (a)g.b((AppCompatActivity)paramContext).i(a.class);
-        AppMethodBeat.o(238385);
-        return paramContext;
-      }
-      AppMethodBeat.o(238385);
-      return null;
+      localObject1 = Integer.valueOf(((LinkedList)localObject1).size());
+      break label282;
+      label537:
+      Log.w(this.TAG, "data size two large");
     }
   }
 }

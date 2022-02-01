@@ -1,7 +1,6 @@
 package com.tencent.mm.plugin.downloader_app.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
 
@@ -20,11 +19,6 @@ public final class c
   public c(ISQLiteDatabase paramISQLiteDatabase)
   {
     super(paramISQLiteDatabase, a.info, "DownloadTaskItem", null);
-  }
-  
-  public c(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString, String[] paramArrayOfString)
-  {
-    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, paramArrayOfString);
   }
   
   public final boolean a(a parama)

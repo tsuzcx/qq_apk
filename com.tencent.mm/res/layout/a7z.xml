@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/p_" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.base.MMTagPanelScrollView android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fadeScrollbars="false">
-        <com.tencent.mm.plugin.fav.ui.widget.FavTagPanel android:id="@id/cdh" android:paddingLeft="@dimen/ei" android:paddingTop="@dimen/k5" android:paddingRight="@dimen/ei" android:paddingBottom="@dimen/k5" android:layout_width="fill_parent" android:layout_height="wrap_content" flowlayout:horizontalSpacing="@dimen/k5" flowlayout:verticalSpacing="@dimen/k5" />
-    </com.tencent.mm.ui.base.MMTagPanelScrollView>
-    <View android:layout_width="fill_parent" android:layout_height="1.0px" style="@style/hx" />
-    <TextView android:textSize="@dimen/hc" android:textColor="@color/a5c" android:gravity="center" android:id="@id/fb7" android:padding="@dimen/g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ListView android:id="@id/ih_" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/np" />
-    <ListView android:id="@id/hf4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/np" />
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/tr" android:paddingLeft="@dimen/df" android:paddingRight="@dimen/df" android:layout_width="wrap_content" android:layout_height="@dimen/d1"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/hn" android:textColor="@color/FG_0" android:id="@id/czb" android:paddingRight="@dimen/bv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d8o" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:clickable="false" android:layout_width="10.0dip" android:layout_height="@dimen/cr" android:src="@raw/icons_outlined_arrow" app:iconColor="@color/BW_70" />
 </LinearLayout>

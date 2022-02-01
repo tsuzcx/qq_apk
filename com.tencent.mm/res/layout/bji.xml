@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:background="?sg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:baselineAligned="false" android:minHeight="@dimen/k4"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center|left" android:id="@id/be9" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/k4" android:layout_weight="1.0">
-        <LinearLayout android:gravity="center_vertical" android:id="@id/be3" android:paddingTop="@dimen/k5" android:paddingBottom="@dimen/k5" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <LinearLayout android:gravity="left" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i2">
-                <TextView android:gravity="left" android:id="@id/bax" android:layout_width="@dimen/em" android:layout_height="wrap_content" android:text="@string/bbx" android:singleLine="true" style="@style/mi" />
-            </LinearLayout>
-            <LinearLayout android:orientation="vertical" android:id="@id/ieh" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <TextView android:textSize="@dimen/is" android:textColor="@color/l4" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/baw" android:maxLines="1" android:singleLine="true" style="@style/ml" />
-                </LinearLayout>
-            </LinearLayout>
+<LinearLayout android:orientation="vertical" android:background="@drawable/b08" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/t" android:textColor="@color/az" android:gravity="center" android:layout_width="fill_parent" android:layout_height="@dimen/d_" android:text="@string/h2x" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/cdn" android:paddingLeft="@dimen/cp" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" />
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cv" android:layout_marginBottom="@dimen/cv">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/bee" android:padding="@dimen/cp" android:layout_width="@dimen/da" android:layout_height="@dimen/da" android:src="@raw/icons_outlined_close" app:iconColor="@color/BW_100_Alpha_0_8" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+        <LinearLayout android:gravity="center_vertical" android:id="@id/h70" android:layout_width="wrap_content" android:layout_height="@dimen/da" android:paddingStart="@dimen/df" android:paddingEnd="@dimen/df" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/icons_filled_refresh" app:iconColor="@color/BW_100_Alpha_0_8" />
+            <TextView android:textSize="@dimen/j7" android:textColor="@color/BW_100_Alpha_0_8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/h38" android:layout_marginStart="@dimen/df" />
         </LinearLayout>
-    </LinearLayout>
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/bl3" android:padding="@dimen/cp" android:layout_width="@dimen/da" android:layout_height="@dimen/da" android:src="@raw/icons_outlined_done" android:layout_alignParentEnd="true" app:iconColor="@color/BW_100_Alpha_0_8" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

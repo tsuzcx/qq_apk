@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_gravity="center_horizontal" android:background="@drawable/b5b" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="2.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="2.0dip" android:elevation="2.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/dx2" android:layout_width="163.0dip" android:layout_height="290.0dip" android:scaleType="centerCrop" />
-</LinearLayout>
+<RelativeLayout android:id="@id/iwl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cp"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/bst" android:layout_width="fill_parent" android:layout_height="@dimen/d4" android:layout_marginLeft="@dimen/cv" android:layout_marginRight="@dimen/cv" android:layout_above="@id/l59">
+        <com.tencent.mm.ui.tools.PressAlphaImageView android:id="@id/hx5" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:src="@raw/icons_filled_play" android:layout_centerVertical="true" android:elevation="@dimen/avq" app:iconColor="@color/az" />
+        <TextView android:textSize="@dimen/m3" android:textColor="@color/al6" android:id="@id/hx7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k" android:text="00:00" android:shadowColor="#33000000" android:shadowDx="3.0" android:shadowDy="3.0" android:shadowRadius="12.0" android:layout_toRightOf="@id/hx5" android:layout_centerVertical="true" android:elevation="@dimen/avq" />
+        <TextView android:textSize="@dimen/m3" android:textColor="@color/al6" android:id="@id/hxg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:00" android:shadowColor="#33000000" android:shadowDx="3.0" android:shadowDy="3.0" android:shadowRadius="12.0" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:elevation="@dimen/avq" />
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/hxg" android:layout_toRightOf="@id/hx7" android:layout_centerVertical="true">
+            <ImageView android:layout_gravity="center|left" android:id="@id/hxr" android:background="@drawable/azy" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_marginLeft="@dimen/i6" android:layout_marginRight="@dimen/i6" android:elevation="@dimen/avq" />
+            <ImageView android:layout_gravity="center|left" android:id="@id/hxt" android:background="@drawable/azy" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_marginLeft="@dimen/i6" android:layout_marginRight="@dimen/i6" />
+            <ImageView android:layout_gravity="center|left" android:id="@id/hxs" android:background="@drawable/azz" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_marginLeft="@dimen/i6" android:layout_marginRight="@dimen/i6" />
+            <ImageView android:id="@id/hxv" android:paddingLeft="@dimen/k" android:paddingTop="@dimen/k" android:paddingRight="@dimen/k" android:paddingBottom="@dimen/k" android:layout_width="@dimen/d4" android:layout_height="@dimen/d4" android:src="@raw/media_player_control_btn" android:elevation="@dimen/avq" />
+        </FrameLayout>
+    </RelativeLayout>
+    <com.tencent.mm.ui.tools.PressAlphaImageView android:id="@id/l59" android:visibility="visible" android:layout_width="@dimen/cw" android:layout_height="@dimen/cw" android:layout_marginLeft="@dimen/cv" android:layout_marginTop="@dimen/cv" android:src="@raw/icons_outlined_close" android:layout_alignParentBottom="true" app:iconColor="@color/az" />
+</RelativeLayout>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@color/afz" />
-    <item android:drawable="@drawable/b9w" android:left="@dimen/agc" />
-</layer-list>
+    <item android:state_pressed="false" android:drawable="@drawable/ap3" />
+    <item android:state_pressed="true" android:drawable="@drawable/ap4" />
+</selector>

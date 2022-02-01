@@ -6,16 +6,13 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.net.Uri.Builder;
-import android.os.Parcelable;
 import android.text.TextUtils;
 import android.util.Log;
-import androidx.core.app.j.a;
-import androidx.core.f.g;
+import androidx.core.app.k.b;
 import com.google.android.gms.common.AccountPicker;
 import com.google.android.gms.common.GoogleSignatureVerifier;
 import com.google.android.gms.common.api.Scope;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
 import java.util.Locale;
 
 public class GmsIntents
@@ -173,67 +170,14 @@ public class GmsIntents
   
   public static Intent createShareOnPlusIntent(Activity paramActivity, String paramString1, String paramString2)
   {
-    int i = 1;
     AppMethodBeat.i(4657);
-    j.a locala = new j.a((Context)g.checkNotNull(paramActivity), paramActivity.getComponentName());
-    locala.mIntent.putExtra("android.intent.extra.SUBJECT", paramString1);
-    locala.mIntent.putExtra("android.intent.extra.TEXT", paramString2);
-    locala.mIntent.setType("text/plain");
-    if (locala.JN != null)
+    paramString1 = k.b.h(paramActivity).at(paramString1).q(paramString2).as("text/plain").getIntent();
+    paramString1.setPackage("com.google.android.apps.plus");
+    if (isIntentResolvable(paramActivity.getPackageManager(), paramString1))
     {
-      locala.b("android.intent.extra.EMAIL", locala.JN);
-      locala.JN = null;
-    }
-    if (locala.JO != null)
-    {
-      locala.b("android.intent.extra.CC", locala.JO);
-      locala.JO = null;
-    }
-    if (locala.JP != null)
-    {
-      locala.b("android.intent.extra.BCC", locala.JP);
-      locala.JP = null;
-    }
-    if ((locala.JQ != null) && (locala.JQ.size() > 1))
-    {
-      boolean bool = "android.intent.action.SEND_MULTIPLE".equals(locala.mIntent.getAction());
-      if ((i == 0) && (bool))
-      {
-        locala.mIntent.setAction("android.intent.action.SEND");
-        if ((locala.JQ == null) || (locala.JQ.isEmpty())) {
-          break label348;
-        }
-        locala.mIntent.putExtra("android.intent.extra.STREAM", (Parcelable)locala.JQ.get(0));
-        label247:
-        locala.JQ = null;
-      }
-      if ((i != 0) && (!bool))
-      {
-        locala.mIntent.setAction("android.intent.action.SEND_MULTIPLE");
-        if ((locala.JQ == null) || (locala.JQ.isEmpty())) {
-          break label362;
-        }
-        locala.mIntent.putParcelableArrayListExtra("android.intent.extra.STREAM", locala.JQ);
-      }
-    }
-    for (;;)
-    {
-      paramString1 = locala.mIntent;
-      paramString1.setPackage("com.google.android.apps.plus");
-      if (!isIntentResolvable(paramActivity.getPackageManager(), paramString1)) {
-        break label376;
-      }
       AppMethodBeat.o(4657);
       return paramString1;
-      i = 0;
-      break;
-      label348:
-      locala.mIntent.removeExtra("android.intent.extra.STREAM");
-      break label247;
-      label362:
-      locala.mIntent.removeExtra("android.intent.extra.STREAM");
     }
-    label376:
     paramActivity = createPlayStoreIntent("com.google.android.apps.plus");
     AppMethodBeat.o(4657);
     return paramActivity;
@@ -349,7 +293,7 @@ public class GmsIntents
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.gms.common.internal.GmsIntents
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:id="@id/dfb" android:layout_width="60.0dip" android:layout_height="30.0dip" android:text="@string/dq6" style="@style/kt" />
-    <com.tencent.mm.plugin.game.widget.TextProgressBar android:id="@id/dfd" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:max="100" style="@style/ks" />
-</merge>
+<FrameLayout android:id="@id/e7g" android:layout_width="fill_parent" android:layout_height="@dimen/ck"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.RoundCornerRelativeLayout android:id="@id/esw" android:layout_width="fill_parent" android:layout_height="122.0dip" android:layout_marginTop="@dimen/cv" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp" app:cornerRadius="@dimen/bv">
+        <ImageView android:id="@id/a8d" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/a8m" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@color/ahb" />
+        <TextView android:textSize="15.0dip" android:textColor="#a3ffffff" android:id="@id/et0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:text="@string/ep0" android:layout_marginStart="@dimen/cd" android:layout_marginEnd="@dimen/cd" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/esu" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginTop="@dimen/cp" android:src="@raw/icons_filled_close" android:layout_marginEnd="@dimen/cd" android:layout_alignParentEnd="true" app:iconColor="#a3ffffff" />
+        <View android:id="@id/esv" android:layout_width="@dimen/d6" android:layout_height="@dimen/d6" android:layout_alignParentEnd="true" />
+        <com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:layout_width="@dimen/d4" android:layout_height="50.0dip" android:layout_marginTop="@dimen/cd" android:layout_below="@id/et0" android:layout_marginStart="@dimen/cd" app:cornerRadius="@dimen/bt">
+            <ImageView android:id="@id/esy" android:layout_width="@dimen/d4" android:layout_height="50.0dip" android:scaleType="centerCrop" />
+        </com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
+        <TextView android:textSize="15.0dip" android:textColor="#ccffffff" android:ellipsize="end" android:id="@id/esx" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginTop="@dimen/cd" android:maxLines="2" android:layout_below="@id/et0" android:layout_marginStart="@dimen/da" android:layout_marginEnd="@dimen/cd" />
+        <ProgressBar android:id="@id/esz" android:layout_width="fill_parent" android:layout_height="@dimen/bt" android:progress="30" android:layout_weight="1.0" android:layout_alignParentBottom="true" style="@style/jz" />
+    </com.tencent.mm.ui.widget.RoundCornerRelativeLayout>
+</FrameLayout>

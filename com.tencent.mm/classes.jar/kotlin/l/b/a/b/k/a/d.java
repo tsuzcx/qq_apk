@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.a.v;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.b.aa;
-import kotlin.l.b.a.b.b.y;
+import kotlin.a.ab;
+import kotlin.a.p;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.b.ae;
+import kotlin.l.b.a.b.b.ag;
 import kotlin.l.b.a.b.e.a.a;
 import kotlin.l.b.a.b.e.a.b;
 import kotlin.l.b.a.b.e.a.c;
@@ -26,34 +26,34 @@ import kotlin.l.b.a.b.k.a;
 public final class d
   implements c<kotlin.l.b.a.b.b.a.c, g<?>>
 {
-  private final f abnb;
-  private final a abnc;
+  private final a ajlK;
+  private final e ajlL;
   
-  public d(y paramy, aa paramaa, a parama)
+  public d(ae paramae, ag paramag, a parama)
   {
     AppMethodBeat.i(60278);
-    this.abnc = parama;
-    this.abnb = new f(paramy, paramaa);
+    this.ajlK = parama;
+    this.ajlL = new e(paramae, paramag);
     AppMethodBeat.o(60278);
   }
   
   public final List<kotlin.l.b.a.b.b.a.c> a(a.p paramp, kotlin.l.b.a.b.e.b.c paramc)
   {
     AppMethodBeat.i(60275);
-    p.k(paramp, "proto");
-    p.k(paramc, "nameResolver");
-    Object localObject = (List)paramp.d(this.abnc.abdD);
+    s.u(paramp, "proto");
+    s.u(paramc, "nameResolver");
+    Object localObject = (List)paramp.e(this.ajlK.ajce);
     paramp = (a.p)localObject;
     if (localObject == null) {
-      paramp = (List)v.aaAd;
+      paramp = (List)ab.aivy;
     }
     localObject = (Iterable)paramp;
-    paramp = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
+    paramp = (Collection)new ArrayList(p.a((Iterable)localObject, 10));
     localObject = ((Iterable)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
       a.a locala = (a.a)((Iterator)localObject).next();
-      paramp.add(this.abnb.b(locala, paramc));
+      paramp.add(this.ajlL.b(locala, paramc));
     }
     paramp = (List)paramp;
     AppMethodBeat.o(60275);
@@ -63,187 +63,187 @@ public final class d
   public final List<kotlin.l.b.a.b.b.a.c> a(a.r paramr, kotlin.l.b.a.b.e.b.c paramc)
   {
     AppMethodBeat.i(60276);
-    p.k(paramr, "proto");
-    p.k(paramc, "nameResolver");
-    Object localObject = (List)paramr.d(this.abnc.abdE);
+    s.u(paramr, "proto");
+    s.u(paramc, "nameResolver");
+    Object localObject = (List)paramr.e(this.ajlK.ajcf);
     paramr = (a.r)localObject;
     if (localObject == null) {
-      paramr = (List)v.aaAd;
+      paramr = (List)ab.aivy;
     }
     localObject = (Iterable)paramr;
-    paramr = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
+    paramr = (Collection)new ArrayList(p.a((Iterable)localObject, 10));
     localObject = ((Iterable)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
       a.a locala = (a.a)((Iterator)localObject).next();
-      paramr.add(this.abnb.b(locala, paramc));
+      paramr.add(this.ajlL.b(locala, paramc));
     }
     paramr = (List)paramr;
     AppMethodBeat.o(60276);
     return paramr;
   }
   
-  public final List<kotlin.l.b.a.b.b.a.c> a(z paramz, a.f paramf)
+  public final List<kotlin.l.b.a.b.b.a.c> a(y paramy, a.f paramf)
   {
     AppMethodBeat.i(60272);
-    p.k(paramz, "container");
-    p.k(paramf, "proto");
-    Object localObject = (List)paramf.d(this.abnc.abdB);
+    s.u(paramy, "container");
+    s.u(paramf, "proto");
+    Object localObject = (List)paramf.e(this.ajlK.ajcc);
     paramf = (a.f)localObject;
     if (localObject == null) {
-      paramf = (List)v.aaAd;
+      paramf = (List)ab.aivy;
     }
     localObject = (Iterable)paramf;
-    paramf = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
+    paramf = (Collection)new ArrayList(p.a((Iterable)localObject, 10));
     localObject = ((Iterable)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
       a.a locala = (a.a)((Iterator)localObject).next();
-      paramf.add(this.abnb.b(locala, paramz.aaCB));
+      paramf.add(this.ajlL.b(locala, paramy.aiyk));
     }
-    paramz = (List)paramf;
+    paramy = (List)paramf;
     AppMethodBeat.o(60272);
-    return paramz;
+    return paramy;
   }
   
-  public final List<kotlin.l.b.a.b.b.a.c> a(z paramz, a.m paramm)
+  public final List<kotlin.l.b.a.b.b.a.c> a(y paramy, a.m paramm)
   {
     AppMethodBeat.i(60270);
-    p.k(paramz, "container");
-    p.k(paramm, "proto");
-    paramz = (List)v.aaAd;
+    s.u(paramy, "container");
+    s.u(paramm, "proto");
+    paramy = (List)ab.aivy;
     AppMethodBeat.o(60270);
-    return paramz;
+    return paramy;
   }
   
-  public final List<kotlin.l.b.a.b.b.a.c> a(z paramz, r paramr, b paramb)
+  public final List<kotlin.l.b.a.b.b.a.c> a(y paramy, r paramr, b paramb)
   {
     AppMethodBeat.i(60269);
-    p.k(paramz, "container");
-    p.k(paramr, "proto");
-    p.k(paramb, "kind");
+    s.u(paramy, "container");
+    s.u(paramr, "proto");
+    s.u(paramb, "kind");
     if ((paramr instanceof a.c)) {
-      paramr = (List)((a.c)paramr).d(this.abnc.abdv);
+      paramr = (List)((a.c)paramr).e(this.ajlK.ajbW);
     }
     for (;;)
     {
       paramb = paramr;
       if (paramr == null) {
-        paramb = (List)v.aaAd;
+        paramb = (List)ab.aivy;
       }
       paramb = (Iterable)paramb;
-      paramr = (Collection)new ArrayList(j.a(paramb, 10));
+      paramr = (Collection)new ArrayList(p.a(paramb, 10));
       paramb = paramb.iterator();
       while (paramb.hasNext())
       {
         a.a locala = (a.a)paramb.next();
-        paramr.add(this.abnb.b(locala, paramz.aaCB));
+        paramr.add(this.ajlL.b(locala, paramy.aiyk));
       }
       if ((paramr instanceof a.h))
       {
-        paramr = (List)((a.h)paramr).d(this.abnc.abdw);
+        paramr = (List)((a.h)paramr).e(this.ajlK.ajbX);
       }
       else
       {
         if (!(paramr instanceof a.m)) {
           break;
         }
-        switch (e.$EnumSwitchMapping$0[paramb.ordinal()])
+        switch (a.$EnumSwitchMapping$0[paramb.ordinal()])
         {
         default: 
-          paramz = (Throwable)new IllegalStateException("Unsupported callable kind with property proto".toString());
+          paramy = (Throwable)new IllegalStateException("Unsupported callable kind with property proto".toString());
           AppMethodBeat.o(60269);
-          throw paramz;
+          throw paramy;
         case 1: 
-          paramr = (List)((a.m)paramr).d(this.abnc.abdx);
+          paramr = (List)((a.m)paramr).e(this.ajlK.ajbY);
           break;
         case 2: 
-          paramr = (List)((a.m)paramr).d(this.abnc.abdy);
+          paramr = (List)((a.m)paramr).e(this.ajlK.ajbZ);
           break;
         case 3: 
-          paramr = (List)((a.m)paramr).d(this.abnc.abdz);
+          paramr = (List)((a.m)paramr).e(this.ajlK.ajca);
         }
       }
     }
-    paramz = (Throwable)new IllegalStateException("Unknown message: ".concat(String.valueOf(paramr)).toString());
+    paramy = (Throwable)new IllegalStateException(s.X("Unknown message: ", paramr).toString());
     AppMethodBeat.o(60269);
-    throw paramz;
-    paramz = (List)paramr;
+    throw paramy;
+    paramy = (List)paramr;
     AppMethodBeat.o(60269);
-    return paramz;
+    return paramy;
   }
   
-  public final List<kotlin.l.b.a.b.b.a.c> a(z paramz, r paramr, b paramb, int paramInt, a.t paramt)
+  public final List<kotlin.l.b.a.b.b.a.c> a(y paramy, r paramr, b paramb, int paramInt, a.t paramt)
   {
     AppMethodBeat.i(60273);
-    p.k(paramz, "container");
-    p.k(paramr, "callableProto");
-    p.k(paramb, "kind");
-    p.k(paramt, "proto");
-    paramb = (List)paramt.d(this.abnc.abdC);
+    s.u(paramy, "container");
+    s.u(paramr, "callableProto");
+    s.u(paramb, "kind");
+    s.u(paramt, "proto");
+    paramb = (List)paramt.e(this.ajlK.ajcd);
     paramr = paramb;
     if (paramb == null) {
-      paramr = (List)v.aaAd;
+      paramr = (List)ab.aivy;
     }
     paramb = (Iterable)paramr;
-    paramr = (Collection)new ArrayList(j.a(paramb, 10));
+    paramr = (Collection)new ArrayList(p.a(paramb, 10));
     paramb = paramb.iterator();
     while (paramb.hasNext())
     {
       paramt = (a.a)paramb.next();
-      paramr.add(this.abnb.b(paramt, paramz.aaCB));
+      paramr.add(this.ajlL.b(paramt, paramy.aiyk));
     }
-    paramz = (List)paramr;
+    paramy = (List)paramr;
     AppMethodBeat.o(60273);
-    return paramz;
+    return paramy;
   }
   
-  public final List<kotlin.l.b.a.b.b.a.c> b(z.a parama)
+  public final List<kotlin.l.b.a.b.b.a.c> b(y.a parama)
   {
     AppMethodBeat.i(60268);
-    p.k(parama, "container");
-    Object localObject2 = (List)parama.abnd.d(this.abnc.abdu);
+    s.u(parama, "container");
+    Object localObject2 = (List)parama.ajlM.e(this.ajlK.ajbV);
     Object localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = (List)v.aaAd;
+      localObject1 = (List)ab.aivy;
     }
     localObject2 = (Iterable)localObject1;
-    localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
+    localObject1 = (Collection)new ArrayList(p.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext())
     {
       a.a locala = (a.a)((Iterator)localObject2).next();
-      ((Collection)localObject1).add(this.abnb.b(locala, parama.aaCB));
+      ((Collection)localObject1).add(this.ajlL.b(locala, parama.aiyk));
     }
     parama = (List)localObject1;
     AppMethodBeat.o(60268);
     return parama;
   }
   
-  public final List<kotlin.l.b.a.b.b.a.c> b(z paramz, a.m paramm)
+  public final List<kotlin.l.b.a.b.b.a.c> b(y paramy, a.m paramm)
   {
     AppMethodBeat.i(60271);
-    p.k(paramz, "container");
-    p.k(paramm, "proto");
-    paramz = (List)v.aaAd;
+    s.u(paramy, "container");
+    s.u(paramm, "proto");
+    paramy = (List)ab.aivy;
     AppMethodBeat.o(60271);
-    return paramz;
+    return paramy;
   }
   
-  public final List<kotlin.l.b.a.b.b.a.c> b(z paramz, r paramr, b paramb)
+  public final List<kotlin.l.b.a.b.b.a.c> b(y paramy, r paramr, b paramb)
   {
     AppMethodBeat.i(60274);
-    p.k(paramz, "container");
-    p.k(paramr, "proto");
-    p.k(paramb, "kind");
-    paramz = (List)v.aaAd;
+    s.u(paramy, "container");
+    s.u(paramr, "proto");
+    s.u(paramb, "kind");
+    paramy = (List)ab.aivy;
     AppMethodBeat.o(60274);
-    return paramz;
+    return paramy;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.k.a.d
  * JD-Core Version:    0.7.0.1
  */

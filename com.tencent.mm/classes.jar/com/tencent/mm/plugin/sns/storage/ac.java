@@ -1,46 +1,50 @@
 package com.tencent.mm.plugin.sns.storage;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.autogen.b.ho;
+import com.tencent.mm.protocal.protobuf.etl;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import com.tencent.mm.sdk.storage.ISQLiteDatabase;
-import com.tencent.mm.sdk.storage.MAutoStorage;
+import java.util.Iterator;
+import java.util.List;
 
 public final class ac
-  extends MAutoStorage<ab>
+  extends ho
 {
-  public static final String[] SQL_CREATE;
+  protected static IAutoDBItem.MAutoDBInfo info;
+  public int QZA;
   
   static
   {
-    AppMethodBeat.i(97653);
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(ab.info, "UxCanvasInfo") };
-    AppMethodBeat.o(97653);
+    AppMethodBeat.i(97623);
+    info = ho.aJm();
+    AppMethodBeat.o(97623);
   }
   
-  public ac(ISQLiteDatabase paramISQLiteDatabase)
+  public final void convertFrom(Cursor paramCursor)
   {
-    this(paramISQLiteDatabase, ab.info, "UxCanvasInfo", null);
+    AppMethodBeat.i(97622);
+    super.convertFrom(paramCursor);
+    this.QZA = ((int)this.systemRowid);
+    AppMethodBeat.o(97622);
   }
   
-  public ac(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString, String[] paramArrayOfString)
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, paramArrayOfString);
+    return info;
   }
   
-  public final void a(ab paramab)
+  public final void kG(List<etl> paramList)
   {
-    AppMethodBeat.i(97652);
-    if ((paramab == null) || (Util.isNullOrNil(paramab.field_canvasXml)))
+    AppMethodBeat.i(97621);
+    this.field_memberList = "";
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      AppMethodBeat.o(97652);
-      return;
+      etl localetl = (etl)paramList.next();
+      this.field_memberList = (this.field_memberList + localetl.abwM + ",");
     }
-    paramab.field_createTime = System.currentTimeMillis();
-    if (!insert(paramab)) {
-      update(paramab, new String[0]);
-    }
-    AppMethodBeat.o(97652);
+    AppMethodBeat.o(97621);
   }
 }
 

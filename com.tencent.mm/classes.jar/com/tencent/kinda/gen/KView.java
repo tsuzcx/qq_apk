@@ -2,11 +2,17 @@ package com.tencent.kinda.gen;
 
 public abstract interface KView
 {
+  public abstract void accessibilityClickFrom(KView paramKView);
+  
+  public abstract void accessibilityTraitsType(TraitsType paramTraitsType);
+  
   public abstract void addBlurEffect(int paramInt);
   
   public abstract KPoint convertPointToScreen(KPoint paramKPoint);
   
   public abstract KPoint convertPointToView(KPoint paramKPoint, KView paramKView);
+  
+  public abstract void expandHitSize(float paramFloat1, float paramFloat2);
   
   public abstract String getAccessibilityString();
   
@@ -102,6 +108,8 @@ public abstract interface KView
   
   public abstract PositionType getPositionType();
   
+  public abstract String getReportId();
+  
   public abstract float getRight();
   
   public abstract float getRightPercent();
@@ -119,6 +127,8 @@ public abstract interface KView
   public abstract float getShadowOffset();
   
   public abstract float getShadowRadius();
+  
+  public abstract boolean getSupportDynamicSize();
   
   public abstract float getTop();
   
@@ -246,6 +256,8 @@ public abstract interface KView
   
   public abstract void setPositionType(PositionType paramPositionType);
   
+  public abstract void setReportId(String paramString);
+  
   public abstract void setRight(float paramFloat);
   
   public abstract void setRightPercent(float paramFloat);
@@ -263,6 +275,8 @@ public abstract interface KView
   public abstract void setShadowOffset(float paramFloat);
   
   public abstract void setShadowRadius(float paramFloat);
+  
+  public abstract void setSupportDynamicSize(boolean paramBoolean);
   
   public abstract void setTop(float paramFloat);
   
@@ -286,7 +300,7 @@ public abstract interface KView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.kinda.gen.KView
  * JD-Core Version:    0.7.0.1
  */

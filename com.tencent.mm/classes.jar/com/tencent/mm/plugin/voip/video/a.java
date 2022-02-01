@@ -9,34 +9,34 @@ final class a
   implements GLTextureView.e
 {
   private static int EGL_OPENGL_ES2_BIT = 4;
-  private static int[] kYv = { 12324, 4, 12323, 4, 12322, 4, 12352, EGL_OPENGL_ES2_BIT, 12344 };
-  private int[] jCM;
-  protected int jCN;
-  protected int jCO;
-  protected int jCP;
-  protected int jCQ;
-  protected int jCR;
-  protected int jCS;
+  private static int[] nDD = { 12324, 4, 12323, 4, 12322, 4, 12352, EGL_OPENGL_ES2_BIT, 12344 };
+  private int[] mcA;
+  protected int mcB;
+  protected int mcC;
+  protected int mcD;
+  protected int mcE;
+  protected int mcF;
+  protected int mcG;
   
   public a()
   {
     AppMethodBeat.i(115569);
-    this.jCM = new int[1];
-    this.jCN = 5;
-    this.jCO = 6;
-    this.jCP = 5;
-    this.jCQ = 0;
-    this.jCR = 0;
-    this.jCS = 0;
+    this.mcA = new int[1];
+    this.mcB = 5;
+    this.mcC = 6;
+    this.mcD = 5;
+    this.mcE = 0;
+    this.mcF = 0;
+    this.mcG = 0;
     AppMethodBeat.o(115569);
   }
   
-  private int a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, int paramInt)
+  private int b(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, int paramInt)
   {
     AppMethodBeat.i(115572);
-    if (paramEGL10.eglGetConfigAttrib(paramEGLDisplay, paramEGLConfig, paramInt, this.jCM))
+    if (paramEGL10.eglGetConfigAttrib(paramEGLDisplay, paramEGLConfig, paramInt, this.mcA))
     {
-      paramInt = this.jCM[0];
+      paramInt = this.mcA[0];
       AppMethodBeat.o(115572);
       return paramInt;
     }
@@ -52,15 +52,15 @@ final class a
     while (i < j)
     {
       EGLConfig localEGLConfig = paramArrayOfEGLConfig[i];
-      int k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12325);
-      int m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12326);
-      if ((k >= this.jCR) && (m >= this.jCS))
+      int k = b(paramEGL10, paramEGLDisplay, localEGLConfig, 12325);
+      int m = b(paramEGL10, paramEGLDisplay, localEGLConfig, 12326);
+      if ((k >= this.mcF) && (m >= this.mcG))
       {
-        k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12324);
-        m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12323);
-        int n = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12322);
-        int i1 = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12321);
-        if ((k == this.jCN) && (m == this.jCO) && (n == this.jCP) && (i1 == this.jCQ))
+        k = b(paramEGL10, paramEGLDisplay, localEGLConfig, 12324);
+        m = b(paramEGL10, paramEGLDisplay, localEGLConfig, 12323);
+        int n = b(paramEGL10, paramEGLDisplay, localEGLConfig, 12322);
+        int i1 = b(paramEGL10, paramEGLDisplay, localEGLConfig, 12321);
+        if ((k == this.mcB) && (m == this.mcC) && (n == this.mcD) && (i1 == this.mcE))
         {
           AppMethodBeat.o(115571);
           return localEGLConfig;
@@ -76,7 +76,7 @@ final class a
   {
     AppMethodBeat.i(115570);
     int[] arrayOfInt = new int[1];
-    paramEGL10.eglChooseConfig(paramEGLDisplay, kYv, null, 0, arrayOfInt);
+    paramEGL10.eglChooseConfig(paramEGLDisplay, nDD, null, 0, arrayOfInt);
     int i = arrayOfInt[0];
     if (i <= 0)
     {
@@ -85,7 +85,7 @@ final class a
       throw paramEGL10;
     }
     EGLConfig[] arrayOfEGLConfig = new EGLConfig[i];
-    paramEGL10.eglChooseConfig(paramEGLDisplay, kYv, arrayOfEGLConfig, i, arrayOfInt);
+    paramEGL10.eglChooseConfig(paramEGLDisplay, nDD, arrayOfEGLConfig, i, arrayOfInt);
     paramEGL10 = b(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
     AppMethodBeat.o(115570);
     return paramEGL10;
@@ -93,7 +93,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.a
  * JD-Core Version:    0.7.0.1
  */

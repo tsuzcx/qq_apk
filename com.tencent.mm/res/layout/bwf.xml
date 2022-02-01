@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/hyv" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:background="@color/al2" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <include layout="@layout/bsv" />
-        <ImageView android:id="@id/imc" android:background="@color/fm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <FrameLayout android:id="@id/i1s" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <ImageView android:id="@id/kiy" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="4.0dip" android:layout_marginTop="4.0dip" />
-    </FrameLayout>
+    <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/iix" android:paddingBottom="@dimen/d_" android:clipToPadding="false" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </LinearLayout>

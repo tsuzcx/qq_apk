@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@color/al" />
-    <item>
-        <shape android:shape="rectangle">
-            <corners android:topLeftRadius="8.0dip" android:topRightRadius="8.0dip" android:bottomLeftRadius="8.0dip" android:bottomRightRadius="8.0dip" />
-            <solid android:color="@color/am" />
-        </shape>
-    </item>
-</layer-list>
+    <item android:state_pressed="true" android:drawable="@color/lk" />
+    <item android:state_selected="true" android:drawable="@color/lk" />
+    <item android:state_focused="true" android:drawable="@color/lk" />
+    <item android:drawable="@color/c" />
+</selector>

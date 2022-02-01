@@ -1,14 +1,18 @@
 package com.tencent.mm.modelappbrand;
 
-public final class x
+public abstract class x
+  implements o
 {
-  public String appid;
-  public String md5;
-  public int version;
+  public abstract void a(String paramString1, String paramString2, t paramt);
+  
+  public final String getName()
+  {
+    return "showPicker";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.x
  * JD-Core Version:    0.7.0.1
  */

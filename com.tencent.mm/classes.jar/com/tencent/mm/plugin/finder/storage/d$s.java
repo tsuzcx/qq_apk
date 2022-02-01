@@ -1,15 +1,29 @@
 package com.tencent.mm.plugin.finder.storage;
 
-import com.tencent.mm.plugin.findersdk.d.a.b.b.a;
-import kotlin.l;
+import android.app.Activity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.b;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/storage/FinderConfig$FINDER_NEW_FEED_UI$1", "Lcom/tencent/mm/plugin/findersdk/storage/config/item/integer/FinderIntConfig;", "value", "", "()Ljava/lang/Integer;", "plugin-finder-base_release"})
-public final class d$s
-  extends a
+@Metadata(d1={""}, d2={"<anonymous>", "", "it", "Landroid/app/Activity;"}, k=3, mv={1, 5, 1}, xi=48)
+final class d$s
+  extends u
+  implements b<Activity, ah>
 {
-  d$s(String paramString)
+  public static final s FIZ;
+  
+  static
   {
-    super(0, paramString);
+    AppMethodBeat.i(338972);
+    FIZ = new s();
+    AppMethodBeat.o(338972);
+  }
+  
+  d$s()
+  {
+    super(1);
   }
 }
 

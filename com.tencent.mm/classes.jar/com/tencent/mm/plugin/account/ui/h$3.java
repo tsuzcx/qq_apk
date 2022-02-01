@@ -13,14 +13,14 @@ final class h$3
   public final void run()
   {
     AppMethodBeat.i(128261);
-    Object localObject = com.tencent.mm.plugin.account.sdk.a.mIG.bX(this.nfc);
+    Object localObject = com.tencent.mm.plugin.account.sdk.a.pFn.cJ(this.qck);
     ((Intent)localObject).addFlags(67108864);
-    MMActivity localMMActivity = this.nfc;
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-    com.tencent.mm.hellhoundlib.a.a.b(localMMActivity, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/account/ui/MobileAutoLogin$3", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    localMMActivity.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+    MMActivity localMMActivity = this.qck;
+    localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(localMMActivity, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/account/ui/MobileAutoLogin$3", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localMMActivity.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
     com.tencent.mm.hellhoundlib.a.a.c(localMMActivity, "com/tencent/mm/plugin/account/ui/MobileAutoLogin$3", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    this.nfc.finish();
+    this.qck.finish();
     AppMethodBeat.o(128261);
   }
 }

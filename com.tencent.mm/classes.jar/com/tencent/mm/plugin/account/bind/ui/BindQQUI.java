@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.account.bind.ui;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
@@ -11,35 +10,31 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.b.p;
-import com.tencent.mm.by.c;
+import com.tencent.mm.br.c;
 import com.tencent.mm.kernel.f;
-import com.tencent.mm.modelsimple.u;
+import com.tencent.mm.modelsimple.v;
 import com.tencent.mm.plugin.account.bind.a.e;
 import com.tencent.mm.plugin.account.bind.a.f;
 import com.tencent.mm.plugin.account.bind.a.h;
 import com.tencent.mm.plugin.account.bind.a.i;
-import com.tencent.mm.plugin.account.friend.a.aa;
+import com.tencent.mm.plugin.account.friend.model.x;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.aq;
 import com.tencent.mm.ui.MMWizardActivity;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.q.f;
-import com.tencent.mm.ui.base.q.g;
-import com.tencent.mm.ui.base.s;
-import com.tencent.mm.ui.tools.m;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.u.g;
+import com.tencent.mm.ui.base.u.i;
+import com.tencent.mm.ui.base.w;
+import com.tencent.mm.ui.tools.l;
 
 public class BindQQUI
   extends MMWizardActivity
-  implements i
+  implements com.tencent.mm.am.h
 {
-  private String mSb = null;
-  private String mTk = null;
-  s tipDialog;
+  private String pOI = null;
+  private String pPR = null;
+  w tipDialog;
   private int type = 0;
   
   public int getLayoutId()
@@ -50,7 +45,7 @@ public class BindQQUI
   public void initView()
   {
     AppMethodBeat.i(109983);
-    long l = new p(Util.nullAsNil((Integer)com.tencent.mm.kernel.h.aHG().aHp().b(9, null))).longValue();
+    long l = new com.tencent.mm.b.p(Util.nullAsNil((Integer)com.tencent.mm.kernel.h.baE().ban().d(9, null))).longValue();
     Object localObject;
     if (l == 0L)
     {
@@ -95,18 +90,18 @@ public class BindQQUI
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
           AppMethodBeat.i(109977);
-          paramAnonymousMenuItem = new m(BindQQUI.this.getContext());
-          paramAnonymousMenuItem.ODT = new q.f()
+          paramAnonymousMenuItem = new l(BindQQUI.this.getContext());
+          paramAnonymousMenuItem.Vtg = new u.g()
           {
-            public final void onCreateMMMenu(o paramAnonymous2o)
+            public final void onCreateMMMenu(com.tencent.mm.ui.base.s paramAnonymous2s)
             {
               AppMethodBeat.i(109975);
-              paramAnonymous2o.setHeaderTitle(a.i.bind_mcontact_list_menu_title);
-              paramAnonymous2o.mn(0, a.i.unbind_qq);
+              paramAnonymous2s.setHeaderTitle(a.i.bind_mcontact_list_menu_title);
+              paramAnonymous2s.oh(0, a.i.unbind_qq);
               AppMethodBeat.o(109975);
             }
           };
-          paramAnonymousMenuItem.ODU = new q.g()
+          paramAnonymousMenuItem.GAC = new u.i()
           {
             public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
             {
@@ -119,14 +114,14 @@ public class BindQQUI
                 AppMethodBeat.o(109976);
                 return;
                 paramAnonymous2MenuItem = BindQQUI.this;
-                aa localaa = new aa(aa.mWG);
-                com.tencent.mm.kernel.h.aGY().a(localaa, 0);
+                x localx = new x(x.pTn);
+                com.tencent.mm.kernel.h.aZW().a(localx, 0);
                 paramAnonymous2MenuItem.getString(a.i.app_tip);
-                paramAnonymous2MenuItem.tipDialog = com.tencent.mm.ui.base.h.a(paramAnonymous2MenuItem, paramAnonymous2MenuItem.getString(a.i.app_loading), true, new BindQQUI.2(paramAnonymous2MenuItem));
+                paramAnonymous2MenuItem.tipDialog = k.a(paramAnonymous2MenuItem, paramAnonymous2MenuItem.getString(a.i.app_loading), true, new BindQQUI.2(paramAnonymous2MenuItem));
               }
             }
           };
-          paramAnonymousMenuItem.hYu();
+          paramAnonymousMenuItem.jDd();
           AppMethodBeat.o(109977);
           return false;
         }
@@ -161,10 +156,10 @@ public class BindQQUI
       if (paramInt2 == -1)
       {
         Log.i("MicroMsg.BindQQUI", "summerunbind REQUEST_CODE_SET_PSW ok and start NetSceneCheckUnBind again qq");
-        paramIntent = new aa(aa.mWG);
-        com.tencent.mm.kernel.h.aGY().a(paramIntent, 0);
+        paramIntent = new x(x.pTn);
+        com.tencent.mm.kernel.h.aZW().a(paramIntent, 0);
         getString(a.i.app_tip);
-        this.tipDialog = com.tencent.mm.ui.base.h.a(this, getString(a.i.app_loading), true, new DialogInterface.OnCancelListener()
+        this.tipDialog = k.a(this, getString(a.i.app_loading), true, new DialogInterface.OnCancelListener()
         {
           public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
         });
@@ -177,16 +172,16 @@ public class BindQQUI
     AppMethodBeat.i(109980);
     super.onCreate(paramBundle);
     this.type = getIntent().getIntExtra("bindqq_regbymobile", 0);
-    com.tencent.mm.kernel.h.aGY().a(254, this);
-    com.tencent.mm.kernel.h.aGY().a(255, this);
+    com.tencent.mm.kernel.h.aZW().a(254, this);
+    com.tencent.mm.kernel.h.aZW().a(255, this);
     AppMethodBeat.o(109980);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(109981);
-    com.tencent.mm.kernel.h.aGY().b(254, this);
-    com.tencent.mm.kernel.h.aGY().b(255, this);
+    com.tencent.mm.kernel.h.aZW().b(254, this);
+    com.tencent.mm.kernel.h.aZW().b(255, this);
     super.onDestroy();
     AppMethodBeat.o(109981);
   }
@@ -199,33 +194,33 @@ public class BindQQUI
     AppMethodBeat.o(109982);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
   {
     AppMethodBeat.i(109984);
-    Log.d("MicroMsg.BindQQUI", "onSceneEnd " + paramInt1 + " errCode " + paramInt2 + " errMsg " + paramString + "  " + paramq.getType());
+    Log.d("MicroMsg.BindQQUI", "onSceneEnd " + paramInt1 + " errCode " + paramInt2 + " errMsg " + paramString + "  " + paramp.getType());
     if (this.tipDialog != null)
     {
       this.tipDialog.dismiss();
       this.tipDialog = null;
     }
-    if (paramq.getType() == 254)
+    if (paramp.getType() == 254)
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        this.mTk = ((aa)paramq).byt();
-        if ((this.mTk != null) && (this.mTk.length() > 0)) {
-          com.tencent.mm.kernel.h.aHG().aHp().i(102407, this.mTk);
+        this.pPR = ((x)paramp).bXh();
+        if ((this.pPR != null) && (this.pPR.length() > 0)) {
+          com.tencent.mm.kernel.h.baE().ban().B(102407, this.pPR);
         }
-        if (!Util.isNullOrNil(this.mSb))
+        if (!Util.isNullOrNil(this.pOI))
         {
           paramString = new Intent(this, StartUnbindQQ.class);
-          paramString.putExtra("notice", this.mSb);
-          aH(this, paramString);
+          paramString.putExtra("notice", this.pOI);
+          aQ(this, paramString);
           AppMethodBeat.o(109984);
           return;
         }
-        paramString = new u(2);
-        com.tencent.mm.kernel.h.aGY().a(paramString, 0);
+        paramString = new v(2);
+        com.tencent.mm.kernel.h.aZW().a(paramString, 0);
         AppMethodBeat.o(109984);
         return;
       }
@@ -237,7 +232,7 @@ public class BindQQUI
       if (paramInt2 == -3)
       {
         Log.d("MicroMsg.BindQQUI", "summerunbind MMFunc_QueryHasPasswd err and set psw");
-        com.tencent.mm.ui.base.h.a(getContext(), getString(a.i.settings_unbind_tips_set_user_password), null, getString(a.i.settings_unbind_tips_unbind_btn), getString(a.i.settings_unbind_tips_cancel_btn), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+        k.a(getContext(), getString(a.i.settings_unbind_tips_set_user_password), null, getString(a.i.settings_unbind_tips_unbind_btn), getString(a.i.settings_unbind_tips_cancel_btn), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
@@ -257,49 +252,49 @@ public class BindQQUI
       }
       if (paramInt2 == -81)
       {
-        com.tencent.mm.ui.base.h.a(this, a.i.setting_unbind_qq_err_norbindqq, a.i.app_tip, null);
+        k.a(this, a.i.setting_unbind_qq_err_norbindqq, a.i.app_tip, null);
         AppMethodBeat.o(109984);
         return;
       }
       if (paramInt2 == -82)
       {
-        com.tencent.mm.ui.base.h.a(this, a.i.setting_unbind_qq_err_one_left, a.i.app_tip, null);
+        k.a(this, a.i.setting_unbind_qq_err_one_left, a.i.app_tip, null);
         AppMethodBeat.o(109984);
         return;
       }
       if (paramInt2 == -83)
       {
-        com.tencent.mm.ui.base.h.a(this, a.i.setting_unbind_qq_err_has_unbind, a.i.app_tip, null);
+        k.a(this, a.i.setting_unbind_qq_err_has_unbind, a.i.app_tip, null);
         AppMethodBeat.o(109984);
         return;
       }
       if (paramInt2 == -84)
       {
-        com.tencent.mm.ui.base.h.a(this, a.i.setting_unbind_qq_err_hasbinded, a.i.app_tip, null);
+        k.a(this, a.i.setting_unbind_qq_err_hasbinded, a.i.app_tip, null);
         AppMethodBeat.o(109984);
         return;
       }
       if (paramInt2 == -85)
       {
-        com.tencent.mm.ui.base.h.a(this, a.i.setting_unbind_qq_err_bindedbyother, a.i.app_tip, null);
+        k.a(this, a.i.setting_unbind_qq_err_bindedbyother, a.i.app_tip, null);
         AppMethodBeat.o(109984);
         return;
       }
       if (paramInt2 == -86)
       {
-        com.tencent.mm.ui.base.h.a(this, a.i.setting_unbind_qq_err_qmail, a.i.app_tip, null);
+        k.a(this, a.i.setting_unbind_qq_err_qmail, a.i.app_tip, null);
         AppMethodBeat.o(109984);
       }
     }
-    else if (paramq.getType() == 255)
+    else if (paramp.getType() == 255)
     {
       if (paramInt2 == 0)
       {
-        aH(this, new Intent(this, StartUnbindQQ.class));
+        aQ(this, new Intent(this, StartUnbindQQ.class));
         AppMethodBeat.o(109984);
         return;
       }
-      com.tencent.mm.ui.base.h.a(getContext(), getString(a.i.settings_unbind_tips_set_user_password), null, getString(a.i.settings_unbind_tips_unbind_btn), getString(a.i.settings_unbind_tips_cancel_btn), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      k.a(getContext(), getString(a.i.settings_unbind_tips_set_user_password), null, getString(a.i.settings_unbind_tips_unbind_btn), getString(a.i.settings_unbind_tips_cancel_btn), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -326,7 +321,7 @@ public class BindQQUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.BindQQUI
  * JD-Core Version:    0.7.0.1
  */

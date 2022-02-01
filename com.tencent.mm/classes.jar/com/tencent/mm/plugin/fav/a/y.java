@@ -15,65 +15,65 @@ public abstract interface y
   
   public abstract void A(g paramg);
   
-  public abstract boolean B(long paramLong, int paramInt);
+  public abstract boolean L(long paramLong, int paramInt);
   
-  public abstract long C(long paramLong, int paramInt);
+  public abstract long M(long paramLong, int paramInt);
   
-  public abstract LinkedList<Integer> D(long paramLong, int paramInt);
+  public abstract int ME(int paramInt);
   
-  public abstract long E(long paramLong, int paramInt);
+  public abstract LinkedList<Integer> N(long paramLong, int paramInt);
   
-  public abstract g Km(long paramLong);
+  public abstract long O(long paramLong, int paramInt);
   
-  public abstract g Kn(long paramLong);
-  
-  public abstract int LH(int paramInt);
-  
-  public abstract ArrayList<g> a(List<Long> paramList, List<g> paramList1, Set<Integer> paramSet, x paramx);
+  public abstract ArrayList<g> a(List<Long> paramList, List<g> paramList1, Set<Integer> paramSet, x paramx, boolean paramBoolean);
   
   public abstract List<g> a(int paramInt, Set<Integer> paramSet, x paramx);
   
   public abstract boolean a(g paramg, String... paramVarArgs);
   
-  public abstract g aAc(String paramString);
+  public abstract void ak(int paramInt, long paramLong);
   
-  public abstract void ag(int paramInt, long paramLong);
+  public abstract g auj(String paramString);
   
   public abstract List<g> b(long paramLong, int paramInt, Set<Integer> paramSet, x paramx);
   
   public abstract boolean b(g paramg, String... paramVarArgs);
   
-  public abstract ISQLiteDatabase djV();
+  public abstract ISQLiteDatabase dQF();
   
-  public abstract int djW();
+  public abstract int dQG();
   
-  public abstract List<g> djX();
+  public abstract List<g> dQH();
   
-  public abstract List<g> djY();
+  public abstract List<g> dQI();
   
-  public abstract List<g> djZ();
+  public abstract List<g> dQJ();
   
-  public abstract List<g> dka();
+  public abstract List<g> dQK();
   
-  public abstract List<g> dkb();
+  public abstract List<g> dQL();
   
-  public abstract List<g> dkc();
+  public abstract List<g> dQM();
   
-  public abstract List<Long> dkd();
+  public abstract List<Long> dQN();
   
-  public abstract void dke();
+  public abstract void dQO();
   
-  public abstract List<Long> dkf();
+  public abstract List<Long> dQP();
   
   public abstract int getCount();
   
-  public abstract List<g> gq(int paramInt1, int paramInt2);
+  public abstract List<g> hj(int paramInt1, int paramInt2);
+  
+  public abstract g mK(long paramLong);
+  
+  public abstract g mL(long paramLong);
   
   public abstract boolean z(g paramg);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.y
  * JD-Core Version:    0.7.0.1
  */

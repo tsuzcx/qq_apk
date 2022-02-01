@@ -10,16 +10,20 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public abstract class APPluginStatic
 {
+  public static final String FIRST_H5_LAUNCH_ACTIVITY = "com.tencent.midas.pay.APMidasH5DistributeActivity";
+  public static final String FIRST_LAUNCH_ACTIVITY = "com.tencent.midas.pay.APMidasDistributeActivity";
   public static final String PARAM_CLASS_STATISTICS_UPLOADER = "clsUploader";
   public static final String PARAM_CLEAR_TOP = "cleartop";
   static final String PARAM_IS_IN_PLUGIN = "pluginsdk_IsPluginActivity";
   public static final String PARAM_LAUNCH_ACTIVITY = "pluginsdk_launchActivity";
+  public static final String PARAM_PLUGIN_CutOut_ENABLE = "pluginsdk_cutOutEnable";
   public static final String PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY = "PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY";
   public static final String PARAM_PLUGIN_IS_NEW_PROCESS = "pluginsdk_isNewProcess";
   public static final String PARAM_PLUGIN_LOCATION = "pluginsdk_pluginLocation";
   public static final String PARAM_PLUGIN_LOG_CALLBACK_CLASS_NAME = "pluginsdk_logCallbackClassName";
   public static final String PARAM_PLUGIN_LOG_ENABLE = "pluginsdk_logEnable";
   public static final String PARAM_PLUGIN_NAME = "pluginsdk_pluginName";
+  public static final String PARAM_PLUGIN_OPENSDK_ENABLE = "pluginsdk_openSDKEnable";
   public static final String PARAM_PLUGIN_PATH = "pluginsdk_pluginpath";
   public static final String PARAM_PLUGIN_RECEIVER_CLASS_NAME = "pluginsdk_launchReceiver";
   private static final String TAG = "APPluginStatic";
@@ -141,7 +145,7 @@ public abstract class APPluginStatic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.midas.plugin.APPluginStatic
  * JD-Core Version:    0.7.0.1
  */

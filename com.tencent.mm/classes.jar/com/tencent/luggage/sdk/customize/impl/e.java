@@ -1,12 +1,12 @@
 package com.tencent.luggage.sdk.customize.impl;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.p.a;
+import com.tencent.mm.plugin.appbrand.af.r.a;
 
 public class e
-  implements p.a
+  implements r.a
 {
-  public String Qq()
+  public String aqA()
   {
     return " Luggage/";
   }
@@ -20,7 +20,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.sdk.customize.impl.e
  * JD-Core Version:    0.7.0.1
  */

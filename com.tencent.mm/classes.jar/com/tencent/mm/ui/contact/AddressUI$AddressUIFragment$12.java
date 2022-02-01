@@ -13,12 +13,12 @@ final class AddressUI$AddressUIFragment$12
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(286850);
+    AppMethodBeat.i(253590);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/ui/contact/AddressUI$AddressUIFragment$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    localb.cH(paramView);
+    a.c("com/tencent/mm/ui/contact/AddressUI$AddressUIFragment$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
     a.a(this, "com/tencent/mm/ui/contact/AddressUI$AddressUIFragment$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(286850);
+    AppMethodBeat.o(253590);
   }
 }
 

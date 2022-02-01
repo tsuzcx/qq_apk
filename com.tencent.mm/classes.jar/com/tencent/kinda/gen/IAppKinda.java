@@ -150,15 +150,15 @@ public abstract class IAppKinda
     
     public final void applicationReceiveMemoryWarning(ITransmitKvData paramITransmitKvData)
     {
-      AppMethodBeat.i(219408);
+      AppMethodBeat.i(226731);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         paramITransmitKvData = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(219408);
+        AppMethodBeat.o(226731);
         throw paramITransmitKvData;
       }
       native_applicationReceiveMemoryWarning(this.nativeRef, paramITransmitKvData);
-      AppMethodBeat.o(219408);
+      AppMethodBeat.o(226731);
     }
     
     public final void applicationResignActive()
@@ -176,41 +176,41 @@ public abstract class IAppKinda
     
     public final void applicationRestart()
     {
-      AppMethodBeat.i(219424);
+      AppMethodBeat.i(226739);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         AssertionError localAssertionError = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(219424);
+        AppMethodBeat.o(226739);
         throw localAssertionError;
       }
       native_applicationRestart(this.nativeRef);
-      AppMethodBeat.o(219424);
+      AppMethodBeat.o(226739);
     }
     
     public final void applicationWillTerminate(ITransmitKvData paramITransmitKvData)
     {
-      AppMethodBeat.i(219412);
+      AppMethodBeat.i(226733);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         paramITransmitKvData = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(219412);
+        AppMethodBeat.o(226733);
         throw paramITransmitKvData;
       }
       native_applicationWillTerminate(this.nativeRef, paramITransmitKvData);
-      AppMethodBeat.o(219412);
+      AppMethodBeat.o(226733);
     }
     
     public final boolean checkOfflineReady()
     {
-      AppMethodBeat.i(219396);
+      AppMethodBeat.i(226729);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         AssertionError localAssertionError = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(219396);
+        AppMethodBeat.o(226729);
         throw localAssertionError;
       }
       boolean bool = native_checkOfflineReady(this.nativeRef);
-      AppMethodBeat.o(219396);
+      AppMethodBeat.o(226729);
       return bool;
     }
     
@@ -355,7 +355,7 @@ public abstract class IAppKinda
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.kinda.gen.IAppKinda
  * JD-Core Version:    0.7.0.1
  */

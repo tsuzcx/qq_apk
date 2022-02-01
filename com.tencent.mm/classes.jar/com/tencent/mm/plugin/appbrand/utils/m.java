@@ -1,38 +1,65 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
+import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
-import kotlin.l;
+import com.tencent.mm.plugin.appbrand.ba.i;
+import com.tencent.mm.plugin.appbrand.jsapi.al.c.b.c;
+import com.tencent.mm.plugin.appbrand.w;
+import com.tencent.mm.plugin.gamelive.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/utils/CheckServerTrustedIssueFixerABTest;", "", "()V", "DEFAULT_IS_CHECK_SERVER_TRUSTED_ISSUE_FIXER_ENABLE", "", "isEnable", "()Z", "plugin-appbrand-integration_release"})
 public final class m
+  implements c
 {
-  public static final m riE;
-  
-  static
+  public static void ab(w paramw)
   {
-    AppMethodBeat.i(258244);
-    riE = new m();
-    AppMethodBeat.o(258244);
+    AppMethodBeat.i(317308);
+    paramw.a(a.uqH);
+    AppMethodBeat.o(317308);
   }
   
-  public static boolean isEnable()
+  public final String cP(String paramString, int paramInt)
   {
-    AppMethodBeat.i(258242);
-    b localb = (b)h.ae(b.class);
-    if (localb != null) {}
-    for (boolean bool = localb.a(b.a.vCk, true);; bool = true)
+    AppMethodBeat.i(317320);
+    if (((d)h.az(d.class)).isGameLiving(paramString, paramInt).booleanValue())
     {
-      AppMethodBeat.o(258242);
-      return bool;
+      Log.i("MicroMsg.AppBrandVOIPStrategy", "canJoinVOIP: is game living");
+      paramString = MMApplicationContext.getContext().getString(ba.i.in_live_tip);
+      AppMethodBeat.o(317320);
+      return paramString;
+    }
+    paramString = (IPCString)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.mzv, m.b.class);
+    if (paramString != null)
+    {
+      paramString = paramString.value;
+      AppMethodBeat.o(317320);
+      return paramString;
+    }
+    AppMethodBeat.o(317320);
+    return null;
+  }
+  
+  static final class a
+  {
+    static m uqH;
+    
+    static
+    {
+      AppMethodBeat.i(317431);
+      uqH = new m((byte)0);
+      AppMethodBeat.o(317431);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.m
  * JD-Core Version:    0.7.0.1
  */

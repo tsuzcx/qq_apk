@@ -17,22 +17,22 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class c
 {
-  private static final String[] ueD;
-  private static final Map<String, String> ueE;
+  private static final String[] xkF;
+  private static final Map<String, String> xkG;
   
   static
   {
     AppMethodBeat.i(123485);
-    ueD = new String[] { "dlied4.myapp.com", "dlied5.myapp.com" };
-    ueE = new ConcurrentHashMap();
+    xkF = new String[] { "dlied4.myapp.com", "dlied5.myapp.com" };
+    xkG = new ConcurrentHashMap();
     AppMethodBeat.o(123485);
   }
   
-  public static String asQ(String paramString)
+  public static String amF(String paramString)
   {
     AppMethodBeat.i(123483);
     if (Util.isNullOrNil(paramString)) {}
-    for (Object localObject = ""; (Util.isNullOrNil((String)localObject)) || (!Arrays.asList(ueD).contains(localObject)); localObject = Uri.parse(paramString).getHost())
+    for (Object localObject = ""; (Util.isNullOrNil((String)localObject)) || (!Arrays.asList(xkF).contains(localObject)); localObject = Uri.parse(paramString).getHost())
     {
       Log.i("MicroMsg.GameDownloadExtension", "domain is not dlied4/dlied5");
       AppMethodBeat.o(123483);
@@ -42,7 +42,7 @@ public final class c
     if (localObject != null) {}
     for (localObject = ((IPCString)localObject).value;; localObject = "")
     {
-      paramString = fU(fU(paramString, String.format("openid=%s", new Object[] { localObject })), "p=wechat");
+      paramString = gx(gx(paramString, String.format("openid=%s", new Object[] { localObject })), "p=wechat");
       Log.i("MicroMsg.GameDownloadExtension", "after openid added, url: %s", new Object[] { paramString });
       AppMethodBeat.o(123483);
       return paramString;
@@ -52,11 +52,40 @@ public final class c
   public static void clearCache()
   {
     AppMethodBeat.i(123482);
-    ueE.clear();
+    xkG.clear();
     AppMethodBeat.o(123482);
   }
   
-  private static String fU(String paramString1, String paramString2)
+  public static void g(String paramString, String... paramVarArgs)
+  {
+    for (;;)
+    {
+      int i;
+      try
+      {
+        AppMethodBeat.i(123480);
+        if (!Util.isNullOrNil(paramString))
+        {
+          i = 0;
+          if (i < 2)
+          {
+            if (Util.isNullOrNil(paramVarArgs[i])) {
+              break label62;
+            }
+            xkG.put(paramVarArgs[i], paramString);
+            break label62;
+          }
+        }
+        AppMethodBeat.o(123480);
+        return;
+      }
+      finally {}
+      label62:
+      i += 1;
+    }
+  }
+  
+  private static String gx(String paramString1, String paramString2)
   {
     AppMethodBeat.i(123484);
     try
@@ -79,36 +108,7 @@ public final class c
     }
   }
   
-  public static void g(String paramString, String... paramVarArgs)
-  {
-    for (;;)
-    {
-      int i;
-      try
-      {
-        AppMethodBeat.i(123480);
-        if (!Util.isNullOrNil(paramString))
-        {
-          i = 0;
-          if (i < 2)
-          {
-            if (Util.isNullOrNil(paramVarArgs[i])) {
-              break label62;
-            }
-            ueE.put(paramVarArgs[i], paramString);
-            break label62;
-          }
-        }
-        AppMethodBeat.o(123480);
-        return;
-      }
-      finally {}
-      label62:
-      i += 1;
-    }
-  }
-  
-  public static void v(String... paramVarArgs)
+  public static void w(String... paramVarArgs)
   {
     for (;;)
     {
@@ -120,7 +120,7 @@ public final class c
         if (i < 2)
         {
           if (!Util.isNullOrNil(paramVarArgs[i])) {
-            ueE.remove(paramVarArgs[i]);
+            xkG.remove(paramVarArgs[i]);
           }
         }
         else

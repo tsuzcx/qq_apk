@@ -8,23 +8,23 @@ import java.lang.ref.WeakReference;
 
 public final class a
 {
-  static a wzs;
+  static a zVD;
   
   static
   {
     AppMethodBeat.i(103917);
-    wzs = new a();
+    zVD = new a();
     AppMethodBeat.o(103917);
   }
   
   public static final class a
     extends CountDownTimer
   {
-    private WeakReference<TextView> wzt = null;
-    private WeakReference<TextView> wzu = null;
-    private String wzv = null;
-    private int wzw = 0;
-    int wzx = 0;
+    private WeakReference<TextView> zVE = null;
+    private WeakReference<TextView> zVF = null;
+    private String zVG = null;
+    private int zVH = 0;
+    int zVI = 0;
     
     public a()
     {
@@ -36,16 +36,16 @@ public final class a
     public final void onTick(long paramLong)
     {
       AppMethodBeat.i(103904);
-      if ((this.wzt != null) && (this.wzt.get() != null) && (this.wzu != null) && (this.wzu.get() != null))
+      if ((this.zVE != null) && (this.zVE.get() != null) && (this.zVF != null) && (this.zVF.get() != null))
       {
-        TextView localTextView1 = (TextView)this.wzt.get();
-        TextView localTextView2 = (TextView)this.wzu.get();
-        localTextView1.setText(this.wzv.substring(0, this.wzw));
-        localTextView2.setText(this.wzv.substring(this.wzw, this.wzw + this.wzx % (this.wzv.length() - this.wzw + 1)));
+        TextView localTextView1 = (TextView)this.zVE.get();
+        TextView localTextView2 = (TextView)this.zVF.get();
+        localTextView1.setText(this.zVG.substring(0, this.zVH));
+        localTextView2.setText(this.zVG.substring(this.zVH, this.zVH + this.zVI % (this.zVG.length() - this.zVH + 1)));
       }
       for (;;)
       {
-        this.wzx += 1;
+        this.zVI += 1;
         AppMethodBeat.o(103904);
         return;
         Log.w("MicroMsg.FaceDetectJumper", "hy: tv ref released");
@@ -56,7 +56,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.ui.a
  * JD-Core Version:    0.7.0.1
  */

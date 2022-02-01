@@ -2,7 +2,6 @@ package com.tencent.mm.ui.widget.cedit.edit;
 
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -63,13 +62,13 @@ import android.view.inputmethod.ExtractedTextRequest;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Magnifier;
 import android.widget.PopupWindow;
-import androidx.core.widget.g;
+import androidx.core.widget.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ah.a.e;
 import com.tencent.mm.ah.a.g;
 import com.tencent.mm.ah.a.l;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.bd;
 import com.tencent.mm.ui.widget.cedit.util.ParcelableParcel;
 import java.text.BreakIterator;
 import java.util.Collections;
@@ -78,109 +77,109 @@ import java.util.Map;
 
 public class b
 {
-  int IhY;
-  boolean Xlf;
-  boolean YhA;
-  a YhB;
-  boolean YhC;
-  boolean YhD;
-  boolean YhE;
-  boolean YhF;
-  boolean YhG;
-  private boolean YhH;
-  boolean YhI;
-  private boolean YhJ;
-  private d YhK;
-  boolean YhL;
-  boolean YhM;
-  Runnable YhN;
-  Drawable YhO;
-  Drawable YhP;
-  Drawable YhQ;
-  Drawable YhR;
-  l YhS;
-  private float YhT;
-  private float YhU;
-  ActionMode.Callback YhV;
-  ActionMode.Callback YhW;
-  boolean YhX;
-  int YhY;
-  final c YhZ;
-  final CustomTextView Yhe;
-  boolean Yhh;
-  j Yhi;
-  n Yhj;
-  ActionMode Yhk;
-  boolean Yhl;
-  boolean Yhm;
-  private final boolean Yhn;
-  private k Yho;
-  private final Runnable Yhp;
-  final ViewTreeObserver.OnDrawListener Yhq;
-  b Yhr;
-  g Yhs;
-  h Yht;
-  boolean Yhu;
-  boolean Yhv;
-  boolean Yhw;
-  KeyListener Yhx;
-  boolean Yhy;
-  long Yhz;
-  Runnable Yia;
-  private com.tencent.mm.ui.widget.cedit.c.b Yib;
-  private com.tencent.mm.ui.widget.cedit.c.b Yic;
-  private boolean Yid;
-  private final c Yie;
-  final Runnable Yif;
-  boolean Yig;
-  private boolean Yih;
-  private final boolean Yii;
-  private int Yij;
-  private float Yik;
-  private int Yil;
-  private int Yim;
-  private com.tencent.mm.ui.widget.cedit.a.a Yin;
-  private boolean Yio;
+  int OeF;
+  boolean aeVV;
+  boolean afZA;
+  a afZB;
+  boolean afZC;
+  boolean afZD;
+  boolean afZE;
+  boolean afZF;
+  boolean afZG;
+  private boolean afZH;
+  boolean afZI;
+  private boolean afZJ;
+  d afZK;
+  boolean afZL;
+  boolean afZM;
+  Runnable afZN;
+  Drawable afZO;
+  Drawable afZP;
+  Drawable afZQ;
+  Drawable afZR;
+  l afZS;
+  private float afZT;
+  private float afZU;
+  ActionMode.Callback afZV;
+  ActionMode.Callback afZW;
+  boolean afZX;
+  int afZY;
+  final c afZZ;
+  final CustomTextView afZe;
+  boolean afZh;
+  j afZi;
+  n afZj;
+  ActionMode afZk;
+  boolean afZl;
+  boolean afZm;
+  private final boolean afZn;
+  private k afZo;
+  private final Runnable afZp;
+  final ViewTreeObserver.OnDrawListener afZq;
+  b afZr;
+  g afZs;
+  h afZt;
+  boolean afZu;
+  boolean afZv;
+  boolean afZw;
+  KeyListener afZx;
+  boolean afZy;
+  long afZz;
+  Runnable agaa;
+  private com.tencent.mm.ui.widget.cedit.c.b agab;
+  private com.tencent.mm.ui.widget.cedit.c.b agac;
+  private boolean agad;
+  private final c agae;
+  final Runnable agaf;
+  boolean agag;
+  private boolean agah;
+  private final boolean agai;
+  private int agaj;
+  private float agak;
+  private int agal;
+  private int agam;
+  private com.tencent.mm.ui.widget.cedit.a.a agan;
+  private boolean agao;
   private Rect mTempRect;
   
   b(CustomTextView paramCustomTextView)
   {
-    AppMethodBeat.i(187874);
-    this.Yhh = true;
-    this.Yhp = new Runnable()
+    AppMethodBeat.i(252439);
+    this.afZh = true;
+    this.afZp = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(217372);
+        AppMethodBeat.i(252367);
         b.k localk = b.a(b.this);
         if (Build.VERSION.SDK_INT >= 28) {
-          localk.Yjw.update();
+          localk.agbv.update();
         }
-        AppMethodBeat.o(217372);
+        AppMethodBeat.o(252367);
       }
     };
-    this.Yhq = new ViewTreeObserver.OnDrawListener()
+    this.afZq = new ViewTreeObserver.OnDrawListener()
     {
       public final void onDraw()
       {
-        AppMethodBeat.i(190707);
+        AppMethodBeat.i(252395);
         if (b.a(b.this) != null) {
           b.c(b.this).post(b.b(b.this));
         }
-        AppMethodBeat.o(190707);
+        AppMethodBeat.o(252395);
       }
     };
-    this.IhY = 0;
-    this.YhC = true;
-    this.YhG = true;
-    this.YhO = null;
-    this.YhZ = new c();
-    this.Yie = new c((byte)0);
-    this.Yif = new Runnable()
+    this.OeF = 0;
+    this.afZC = true;
+    this.afZG = true;
+    this.afZO = null;
+    this.afZZ = new c();
+    this.agae = new c((byte)0);
+    this.agaf = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(203705);
+        AppMethodBeat.i(252390);
         if (b.d(b.this)) {
           b.e(b.this);
         }
@@ -189,25 +188,25 @@ public class b
           b.f(b.this).hide(0L);
           Log.i("cmEdit.Editor", "mTextActionMode.hide(0)");
         }
-        AppMethodBeat.o(203705);
+        AppMethodBeat.o(252390);
       }
     };
-    this.Yig = false;
-    this.Yik = 1.0F;
-    this.Yio = false;
-    this.Yhe = paramCustomTextView;
-    this.Yhe.setFilters(this.Yhe.getFilters());
-    this.Yhn = false;
-    this.Yih = false;
-    this.Yii = false;
-    this.Yil = ((int)TypedValue.applyDimension(1, 45.0F, this.Yhe.getContext().getResources().getDisplayMetrics()));
-    this.Yim = ((int)TypedValue.applyDimension(1, 12.0F, this.Yhe.getContext().getResources().getDisplayMetrics()));
-    AppMethodBeat.o(187874);
+    this.agag = false;
+    this.agak = 1.0F;
+    this.agao = false;
+    this.afZe = paramCustomTextView;
+    this.afZe.setFilters(this.afZe.getFilters());
+    this.afZn = false;
+    this.agah = false;
+    this.agai = false;
+    this.agal = ((int)TypedValue.applyDimension(1, 45.0F, this.afZe.getContext().getResources().getDisplayMetrics()));
+    this.agam = ((int)TypedValue.applyDimension(1, 12.0F, this.afZe.getContext().getResources().getDisplayMetrics()));
+    AppMethodBeat.o(252439);
   }
   
   private int a(Drawable paramDrawable, float paramFloat)
   {
-    AppMethodBeat.i(187979);
+    AppMethodBeat.i(252565);
     paramFloat = Math.max(0.5F, paramFloat - 0.5F);
     if (this.mTempRect == null) {
       this.mTempRect = new Rect();
@@ -220,9 +219,9 @@ public class b
     {
       paramDrawable.getPadding(this.mTempRect);
       i = paramDrawable.getIntrinsicWidth();
-      j = this.Yhe.getScrollX();
+      j = this.afZe.getScrollX();
       f = paramFloat - j;
-      k = this.Yhe.getWidth() - this.Yhe.getCompoundPaddingLeft() - this.Yhe.getCompoundPaddingRight();
+      k = this.afZe.getWidth() - this.afZe.getCompoundPaddingLeft() - this.afZe.getCompoundPaddingRight();
       if (f < k - 1.0F) {
         break label145;
       }
@@ -230,12 +229,12 @@ public class b
     }
     for (;;)
     {
-      AppMethodBeat.o(187979);
+      AppMethodBeat.o(252565);
       return i;
       this.mTempRect.setEmpty();
       break;
       label145:
-      if ((Math.abs(f) <= 1.0F) || ((TextUtils.isEmpty(this.Yhe.getText())) && (1048576 - j <= k + 1.0F) && (paramFloat <= 1.0F))) {
+      if ((Math.abs(f) <= 1.0F) || ((TextUtils.isEmpty(this.afZe.getText())) && (1048576 - j <= k + 1.0F) && (paramFloat <= 1.0F))) {
         i = j - this.mTempRect.left;
       } else {
         i = (int)paramFloat - this.mTempRect.left;
@@ -245,202 +244,275 @@ public class b
   
   private static Drawable a(Context paramContext, Drawable paramDrawable, int paramInt)
   {
-    AppMethodBeat.i(187991);
+    AppMethodBeat.i(252576);
     if (!(paramDrawable instanceof BitmapDrawable))
     {
-      AppMethodBeat.o(187991);
+      AppMethodBeat.o(252576);
       return paramDrawable;
     }
     int i = paramDrawable.getIntrinsicWidth();
     int j = paramDrawable.getIntrinsicHeight();
     if ((i == 0) || (j == 0))
     {
-      AppMethodBeat.o(187991);
+      AppMethodBeat.o(252576);
       return paramDrawable;
     }
     paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
     float f1 = i / paramDrawable.getWidth();
-    paramInt = aw.fromDPToPix(paramContext, paramInt);
+    paramInt = bd.fromDPToPix(paramContext, paramInt);
     float f2 = paramInt;
     paramDrawable = Bitmap.createScaledBitmap(paramDrawable, (int)(i / j * f2 / f1), (int)(paramInt / f1), true);
     paramContext = new BitmapDrawable(paramContext.getResources(), paramDrawable);
-    AppMethodBeat.o(187991);
+    AppMethodBeat.o(252576);
     return paramContext;
   }
   
   private void a(h paramh)
   {
-    AppMethodBeat.i(187917);
-    if ((paramh.mContentChanged) || (paramh.Yjg))
+    AppMethodBeat.i(252515);
+    if ((paramh.mContentChanged) || (paramh.agbf))
     {
-      this.Yhe.iav();
-      ibc();
-      ibd();
-      if (!ibk()) {
-        if (!this.Yhe.iau()) {
+      this.afZe.jFC();
+      jGm();
+      jGn();
+      if (!jGu()) {
+        if (!this.afZe.jFB()) {
           break label110;
         }
       }
     }
     label110:
-    for (paramh = ibv();; paramh = ibu())
+    for (paramh = jGF();; paramh = jGE())
     {
-      if ((paramh != null) && (!paramh.isActive()) && (!paramh.ibz())) {
+      if ((paramh != null) && (!paramh.isActive()) && (!paramh.jGJ())) {
         paramh.show();
       }
-      AppMethodBeat.o(187917);
+      AppMethodBeat.o(252515);
       return;
-      if (!paramh.Yjf) {
+      if (!paramh.agbe) {
         break;
       }
-      this.Yhe.iaj();
+      this.afZe.jFs();
       break;
     }
   }
   
   static void a(ParcelableParcel paramParcelableParcel)
   {
-    AppMethodBeat.i(187875);
-    paramParcelableParcel.ave.setDataPosition(0);
-    AppMethodBeat.o(187875);
+    AppMethodBeat.i(252445);
+    paramParcelableParcel.cjB.setDataPosition(0);
+    AppMethodBeat.o(252445);
   }
   
-  private boolean aH(float paramFloat1, float paramFloat2)
+  private boolean bl(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(187898);
-    Layout localLayout = this.Yhe.getLayout();
+    AppMethodBeat.i(252493);
+    Layout localLayout = this.afZe.getLayout();
     if (localLayout == null)
     {
-      AppMethodBeat.o(187898);
+      AppMethodBeat.o(252493);
       return false;
     }
-    int i = this.Yhe.cT(paramFloat2);
-    paramFloat1 = this.Yhe.cS(paramFloat1);
+    int i = this.afZe.eg(paramFloat2);
+    paramFloat1 = this.afZe.ef(paramFloat1);
     if (paramFloat1 < localLayout.getLineLeft(i))
     {
-      AppMethodBeat.o(187898);
+      AppMethodBeat.o(252493);
       return false;
     }
     if (paramFloat1 > localLayout.getLineRight(i))
     {
-      AppMethodBeat.o(187898);
+      AppMethodBeat.o(252493);
       return false;
     }
-    AppMethodBeat.o(187898);
+    AppMethodBeat.o(252493);
     return true;
   }
   
-  private int cc(int paramInt, boolean paramBoolean)
+  private int cT(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(187893);
-    Layout localLayout = this.Yhe.getLayout();
+    AppMethodBeat.i(252487);
+    Layout localLayout = this.afZe.getLayout();
     if (localLayout == null)
     {
-      AppMethodBeat.o(187893);
+      AppMethodBeat.o(252487);
       return paramInt;
     }
     if (paramBoolean == localLayout.isRtlCharAt(paramInt))
     {
       paramInt = localLayout.getOffsetToLeftOf(paramInt);
-      AppMethodBeat.o(187893);
+      AppMethodBeat.o(252487);
       return paramInt;
     }
     paramInt = localLayout.getOffsetToRightOf(paramInt);
-    AppMethodBeat.o(187893);
+    AppMethodBeat.o(252487);
     return paramInt;
   }
   
-  private void fLs()
+  private void hbK()
   {
-    AppMethodBeat.i(187938);
-    if (this.Yin != null) {
-      this.Yin.dismiss();
+    AppMethodBeat.i(252537);
+    if (this.agan != null) {
+      this.agan.dismiss();
     }
-    AppMethodBeat.o(187938);
+    AppMethodBeat.o(252537);
   }
   
-  private void h(int paramInt1, int paramInt2, float paramFloat)
+  private void i(int paramInt1, int paramInt2, float paramFloat)
   {
-    AppMethodBeat.i(187978);
-    iby();
-    int i = a(this.YhO, paramFloat);
-    int j = this.YhO.getIntrinsicWidth();
-    this.YhO.setBounds(i, paramInt1 - this.mTempRect.top, j + i, this.mTempRect.bottom + paramInt2);
-    AppMethodBeat.o(187978);
+    AppMethodBeat.i(252561);
+    jGI();
+    int i = a(this.afZO, paramFloat);
+    int j = this.afZO.getIntrinsicWidth();
+    this.afZO.setBounds(i, paramInt1 - this.mTempRect.top, j + i, this.mTempRect.bottom + paramInt2);
+    AppMethodBeat.o(252561);
   }
   
-  private boolean iaR()
+  static boolean jFT()
   {
-    AppMethodBeat.i(187886);
-    if ((this.Yhe.Yfx instanceof PasswordTransformationMethod))
+    return false;
+  }
+  
+  static boolean jFU()
+  {
+    return false;
+  }
+  
+  private boolean jGB()
+  {
+    AppMethodBeat.i(252553);
+    SuggestionSpan[] arrayOfSuggestionSpan = (SuggestionSpan[])((Spannable)this.afZe.getText()).getSpans(this.afZe.getSelectionStart(), this.afZe.getSelectionEnd(), SuggestionSpan.class);
+    int i = 0;
+    while (i < arrayOfSuggestionSpan.length)
     {
-      AppMethodBeat.o(187886);
+      if ((arrayOfSuggestionSpan[i].getFlags() & 0x1) != 0)
+      {
+        AppMethodBeat.o(252553);
+        return true;
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(252553);
+    return false;
+  }
+  
+  private void jGC()
+  {
+    AppMethodBeat.i(252557);
+    jGw();
+    this.afZk = null;
+    jGt();
+    if (!this.afZH) {
+      Selection.setSelection((Spannable)this.afZe.getText(), this.afZe.getSelectionEnd());
+    }
+    if (this.afZj != null) {
+      this.afZj.hide();
+    }
+    this.afZJ = false;
+    AppMethodBeat.o(252557);
+  }
+  
+  private boolean jGG()
+  {
+    AppMethodBeat.i(252571);
+    if ((!jFW()) || (!this.afZe.isFocused()))
+    {
+      AppMethodBeat.o(252571);
+      return false;
+    }
+    int i = this.afZe.getSelectionStart();
+    if (i < 0)
+    {
+      AppMethodBeat.o(252571);
+      return false;
+    }
+    int j = this.afZe.getSelectionEnd();
+    if (j < 0)
+    {
+      AppMethodBeat.o(252571);
+      return false;
+    }
+    if (i == j)
+    {
+      AppMethodBeat.o(252571);
       return true;
     }
-    int j = this.Yhe.getInputType();
+    AppMethodBeat.o(252571);
+    return false;
+  }
+  
+  private boolean jGb()
+  {
+    AppMethodBeat.i(252459);
+    if ((this.afZe.afXx instanceof PasswordTransformationMethod))
+    {
+      AppMethodBeat.o(252459);
+      return true;
+    }
+    int j = this.afZe.getInputType();
     int i = j & 0xF;
     j &= 0xFF0;
     if ((i == 2) || (i == 3) || (i == 4) || (j == 16) || (j == 32) || (j == 208) || (j == 176))
     {
-      AppMethodBeat.o(187886);
+      AppMethodBeat.o(252459);
       return true;
     }
-    AppMethodBeat.o(187886);
+    AppMethodBeat.o(252459);
     return false;
   }
   
-  private boolean iaS()
+  private boolean jGc()
   {
-    AppMethodBeat.i(187888);
-    if (!this.Yhe.iay())
+    AppMethodBeat.i(252471);
+    if (!this.afZe.jFF())
     {
-      AppMethodBeat.o(187888);
+      AppMethodBeat.o(252471);
       return false;
     }
-    if (iaR())
+    if (jGb())
     {
-      boolean bool = this.Yhe.iaG();
-      AppMethodBeat.o(187888);
+      boolean bool = this.afZe.jFO();
+      AppMethodBeat.o(252471);
       return bool;
     }
-    long l = iaX();
+    long l = jGh();
     int k = (int)(l >>> 32);
     int j = (int)(l & 0xFFFFFFFF);
-    if ((k < 0) || (k > this.Yhe.getText().length()))
+    if ((k < 0) || (k > this.afZe.getText().length()))
     {
-      AppMethodBeat.o(187888);
+      AppMethodBeat.o(252471);
       return false;
     }
-    if ((j < 0) || (j > this.Yhe.getText().length()))
+    if ((j < 0) || (j > this.afZe.getText().length()))
     {
-      AppMethodBeat.o(187888);
+      AppMethodBeat.o(252471);
       return false;
     }
-    Object localObject = (URLSpan[])((Spanned)this.Yhe.getText()).getSpans(k, j, URLSpan.class);
+    Object localObject = (URLSpan[])((Spanned)this.afZe.getText()).getSpans(k, j, URLSpan.class);
     int i;
     if (localObject.length > 0)
     {
       localObject = localObject[0];
-      i = ((Spanned)this.Yhe.getText()).getSpanStart(localObject);
-      j = ((Spanned)this.Yhe.getText()).getSpanEnd(localObject);
+      i = ((Spanned)this.afZe.getText()).getSpanStart(localObject);
+      j = ((Spanned)this.afZe.getText()).getSpanEnd(localObject);
     }
     for (;;)
     {
-      Selection.setSelection((Spannable)this.Yhe.getText(), i, j);
+      Selection.setSelection((Spannable)this.afZe.getText(), i, j);
       if (j > i)
       {
-        AppMethodBeat.o(187888);
+        AppMethodBeat.o(252471);
         return true;
         localObject = getWordIterator();
-        ((com.tencent.mm.ui.widget.cedit.c.b)localObject).i(this.Yhe.getText(), k, j);
-        i = ((com.tencent.mm.ui.widget.cedit.c.b)localObject).ce(k, false);
-        j = ((com.tencent.mm.ui.widget.cedit.c.b)localObject).cf(j, false);
+        ((com.tencent.mm.ui.widget.cedit.c.b)localObject).g(this.afZe.getText(), k, j);
+        i = ((com.tencent.mm.ui.widget.cedit.c.b)localObject).cV(k, false);
+        j = ((com.tencent.mm.ui.widget.cedit.c.b)localObject).cW(j, false);
         if ((i == -1) || (j == -1) || (i == j))
         {
-          if (k < this.Yhe.getText().length())
+          if (k < this.afZe.getText().length())
           {
-            i = cc(k, true);
-            l = com.tencent.mm.ui.widget.cedit.util.c.mV(cc(i, false), i);
+            i = cT(k, true);
+            l = com.tencent.mm.ui.widget.cedit.util.c.oO(cT(i, false), i);
           }
           for (;;)
           {
@@ -449,127 +521,132 @@ public class b
             break;
             if (k - 1 >= 0)
             {
-              i = cc(k, false);
-              l = com.tencent.mm.ui.widget.cedit.util.c.mV(i, cc(i, true));
+              i = cT(k, false);
+              l = com.tencent.mm.ui.widget.cedit.util.c.oO(i, cT(i, true));
             }
             else
             {
-              l = com.tencent.mm.ui.widget.cedit.util.c.mV(k, k);
+              l = com.tencent.mm.ui.widget.cedit.util.c.oO(k, k);
             }
           }
         }
       }
       else
       {
-        AppMethodBeat.o(187888);
+        AppMethodBeat.o(252471);
         return false;
       }
     }
   }
   
-  private com.tencent.mm.ui.widget.cedit.c.b iaT()
+  private com.tencent.mm.ui.widget.cedit.c.b jGd()
   {
-    AppMethodBeat.i(187891);
-    if (this.Yic == null)
+    AppMethodBeat.i(252482);
+    if (this.agac == null)
     {
-      this.Yic = new com.tencent.mm.ui.widget.cedit.c.b(this.Yhe.getTextServicesLocale());
-      this.Yid = true;
+      this.agac = new com.tencent.mm.ui.widget.cedit.c.b(this.afZe.getTextServicesLocale());
+      this.agad = true;
     }
-    if (this.Yid)
+    if (this.agad)
     {
-      localObject = this.Yhe.getText();
-      this.Yic.i((CharSequence)localObject, 0, ((CharSequence)localObject).length());
-      this.Yid = false;
+      localObject = this.afZe.getText();
+      this.agac.g((CharSequence)localObject, 0, ((CharSequence)localObject).length());
+      this.agad = false;
     }
-    Object localObject = this.Yic;
-    AppMethodBeat.o(187891);
+    Object localObject = this.agac;
+    AppMethodBeat.o(252482);
     return localObject;
   }
   
-  private l iaU()
+  private l jGe()
   {
-    AppMethodBeat.i(187894);
-    if (this.YhS == null) {
-      this.YhS = new l((byte)0);
+    AppMethodBeat.i(252489);
+    if (this.afZS == null) {
+      this.afZS = new l((byte)0);
     }
-    l locall = this.YhS;
-    AppMethodBeat.o(187894);
+    l locall = this.afZS;
+    AppMethodBeat.o(252489);
     return locall;
   }
   
-  private void iaV()
+  private void jGf()
   {
-    AppMethodBeat.i(187899);
-    ibm();
-    int i = this.Yhe.getSelectionStart();
-    int j = this.Yhe.getSelectionEnd();
-    ClipData.newPlainText(null, this.Yhe.mS(i, j));
-    new e(this.Yhe, i, j);
-    iaB();
-    if (this.Yhm) {
-      ibv().ibM();
-    }
-    AppMethodBeat.o(187899);
-  }
-  
-  private void iaW()
-  {
-    AppMethodBeat.i(187901);
-    if (!ibk())
+    AppMethodBeat.i(252497);
+    jGw();
+    if (CustomTextView.jFH())
     {
-      iaB();
-      AppMethodBeat.o(187901);
+      AppMethodBeat.o(252497);
       return;
     }
-    ibh();
-    AppMethodBeat.o(187901);
+    int i = this.afZe.getSelectionStart();
+    int j = this.afZe.getSelectionEnd();
+    ClipData.newPlainText(null, this.afZe.oL(i, j));
+    new e(this.afZe, i, j);
+    jFJ();
+    if (this.afZm) {
+      jGF().jGW();
+    }
+    AppMethodBeat.o(252497);
   }
   
-  private long iaX()
+  private void jGg()
   {
-    AppMethodBeat.i(187902);
-    n localn = ibv();
-    long l = com.tencent.mm.ui.widget.cedit.util.c.mV(localn.YjT, localn.YjU);
-    AppMethodBeat.o(187902);
+    AppMethodBeat.i(252499);
+    if (!jGu())
+    {
+      jFJ();
+      AppMethodBeat.o(252499);
+      return;
+    }
+    jGr();
+    AppMethodBeat.o(252499);
+  }
+  
+  private long jGh()
+  {
+    AppMethodBeat.i(252506);
+    n localn = jGF();
+    long l = com.tencent.mm.ui.widget.cedit.util.c.oO(localn.agbS, localn.agbT);
+    AppMethodBeat.o(252506);
     return l;
   }
   
-  private void iba()
+  private void jGk()
   {
-    AppMethodBeat.i(187910);
+    AppMethodBeat.i(252511);
     int i = ViewConfiguration.getDoubleTapTimeout();
-    this.Yhe.postDelayed(this.Yif, i);
-    ibm().ibU();
-    AppMethodBeat.o(187910);
+    this.afZe.postDelayed(this.agaf, i);
+    jGw().jHe();
+    AppMethodBeat.o(252511);
   }
   
-  private void ibd()
+  private void jGn()
   {
-    AppMethodBeat.i(187925);
+    AppMethodBeat.i(252521);
     InputMethodManager localInputMethodManager;
     int k;
     int m;
     int i;
     int j;
-    if ((this.Yht != null) && (this.Yht.Yhf <= 0))
+    if ((this.afZt != null) && (this.afZt.afZf <= 0))
     {
       localInputMethodManager = getInputMethodManager();
       if (localInputMethodManager != null)
       {
-        k = this.Yhe.getSelectionStart();
-        m = this.Yhe.getSelectionEnd();
-        if (!(this.Yhe.getText() instanceof Spannable)) {
+        k = this.afZe.getSelectionStart();
+        m = this.afZe.getSelectionEnd();
+        if (!(this.afZe.getText() instanceof Spannable)) {
           break label109;
         }
-        Spannable localSpannable = (Spannable)this.Yhe.getText();
+        Spannable localSpannable = (Spannable)this.afZe.getText();
         i = a.getComposingSpanStart(localSpannable);
         j = a.getComposingSpanEnd(localSpannable);
       }
     }
     for (;;)
     {
-      localInputMethodManager.updateSelection(this.Yhe, k, m, i, j);
-      AppMethodBeat.o(187925);
+      localInputMethodManager.updateSelection(this.afZe, k, m, i, j);
+      AppMethodBeat.o(252521);
       return;
       label109:
       j = -1;
@@ -577,164 +654,101 @@ public class b
     }
   }
   
-  private void ibi()
+  private void jGs()
   {
-    AppMethodBeat.i(187934);
-    if (this.Yin == null) {
-      this.Yin = new com.tencent.mm.ui.widget.cedit.a.a(this.Yhe);
+    AppMethodBeat.i(252526);
+    if (this.agan == null) {
+      this.agan = new com.tencent.mm.ui.widget.cedit.a.a(this.afZe);
     }
-    this.Yin.show();
-    this.Yio = true;
-    AppMethodBeat.o(187934);
+    this.agan.show();
+    this.agao = true;
+    AppMethodBeat.o(252526);
   }
   
-  private void ibj()
+  private void jGt()
   {
-    AppMethodBeat.i(187937);
+    AppMethodBeat.i(252533);
     com.tencent.mm.ui.widget.cedit.a.a locala;
-    if (this.Yin != null) {
-      locala = this.Yin;
+    if (this.agan != null) {
+      locala = this.agan;
     }
     try
     {
       Log.i("cmEdit.OperateWindow", "destroy OpWindow@%s", new Object[] { Integer.valueOf(locala.hashCode()) });
       locala.dismiss();
-      locala.usB.setContentView(null);
-      locala.Ykt = true;
+      locala.xyX.setContentView(null);
+      locala.agcs = true;
       label58:
-      this.Yio = false;
-      AppMethodBeat.o(187937);
+      this.agao = false;
+      AppMethodBeat.o(252533);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       break label58;
     }
   }
   
-  private void ibl()
+  private void jGv()
   {
-    AppMethodBeat.i(187944);
-    if (this.Yhk != null) {
-      this.Yhk.invalidate();
+    AppMethodBeat.i(252541);
+    if (this.afZk != null) {
+      this.afZk.invalidate();
     }
-    AppMethodBeat.o(187944);
+    AppMethodBeat.o(252541);
   }
   
-  private boolean ibn()
+  private boolean jGx()
   {
-    AppMethodBeat.i(187950);
-    if (this.Yia != null) {
-      this.Yhe.removeCallbacks(this.Yia);
+    AppMethodBeat.i(252545);
+    if (this.agaa != null) {
+      this.afZe.removeCallbacks(this.agaa);
     }
-    if (ibq())
+    if (jGA())
     {
-      AppMethodBeat.o(187950);
+      AppMethodBeat.o(252545);
       return false;
     }
-    if (!ibo())
+    if (!jGy())
     {
-      AppMethodBeat.o(187950);
+      AppMethodBeat.o(252545);
       return false;
     }
-    if ((!this.Yhe.iau()) && (!iaS()))
+    if ((!this.afZe.jFB()) && (!jGc()))
     {
-      AppMethodBeat.o(187950);
+      AppMethodBeat.o(252545);
       return false;
     }
-    ibt();
-    ibv().axN(2);
-    AppMethodBeat.o(187950);
+    jGD();
+    jGF().aEw(2);
+    AppMethodBeat.o(252545);
     return true;
   }
   
-  private boolean ibo()
+  private boolean jGy()
   {
-    AppMethodBeat.i(187955);
-    if ((!this.Yhe.iay()) || (!this.Yhe.requestFocus()))
+    AppMethodBeat.i(252548);
+    if ((!this.afZe.jFF()) || (!this.afZe.requestFocus()))
     {
       Log.w("cmEdit.CMTextView", "TextView does not support text selection. Selection cancelled.");
-      AppMethodBeat.o(187955);
+      AppMethodBeat.o(252548);
       return false;
     }
-    AppMethodBeat.o(187955);
+    AppMethodBeat.o(252548);
     return true;
   }
   
-  private boolean ibr()
+  private long oN(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(187963);
-    SuggestionSpan[] arrayOfSuggestionSpan = (SuggestionSpan[])((Spannable)this.Yhe.getText()).getSpans(this.Yhe.getSelectionStart(), this.Yhe.getSelectionEnd(), SuggestionSpan.class);
-    int i = 0;
-    while (i < arrayOfSuggestionSpan.length)
-    {
-      if ((arrayOfSuggestionSpan[i].getFlags() & 0x1) != 0)
-      {
-        AppMethodBeat.o(187963);
-        return true;
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(187963);
-    return false;
-  }
-  
-  private void ibs()
-  {
-    AppMethodBeat.i(187971);
-    ibm();
-    this.Yhk = null;
-    ibj();
-    if (!this.YhH) {
-      Selection.setSelection((Spannable)this.Yhe.getText(), this.Yhe.getSelectionEnd());
-    }
-    if (this.Yhj != null) {
-      this.Yhj.hide();
-    }
-    this.YhJ = false;
-    AppMethodBeat.o(187971);
-  }
-  
-  private boolean ibw()
-  {
-    AppMethodBeat.i(187980);
-    if ((!iaM()) || (!this.Yhe.isFocused()))
-    {
-      AppMethodBeat.o(187980);
-      return false;
-    }
-    int i = this.Yhe.getSelectionStart();
-    if (i < 0)
-    {
-      AppMethodBeat.o(187980);
-      return false;
-    }
-    int j = this.Yhe.getSelectionEnd();
-    if (j < 0)
-    {
-      AppMethodBeat.o(187980);
-      return false;
-    }
-    if (i == j)
-    {
-      AppMethodBeat.o(187980);
-      return true;
-    }
-    AppMethodBeat.o(187980);
-    return false;
-  }
-  
-  private long mU(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(187889);
-    Layout localLayout = this.Yhe.getLayout();
+    AppMethodBeat.i(252479);
+    Layout localLayout = this.afZe.getLayout();
     if (localLayout == null)
     {
-      l = com.tencent.mm.ui.widget.cedit.util.c.mV(-1, -1);
-      AppMethodBeat.o(187889);
+      l = com.tencent.mm.ui.widget.cedit.util.c.oO(-1, -1);
+      AppMethodBeat.o(252479);
       return l;
     }
-    CharSequence localCharSequence = this.Yhe.getText();
+    CharSequence localCharSequence = this.afZe.getText();
     paramInt1 = localLayout.getLineForOffset(paramInt1);
     while ((paramInt1 > 0) && (localCharSequence.charAt(localLayout.getLineEnd(paramInt1 - 1) - 1) != '\n')) {
       paramInt1 -= 1;
@@ -743,29 +757,29 @@ public class b
     while ((paramInt2 < localLayout.getLineCount() - 1) && (localCharSequence.charAt(localLayout.getLineEnd(paramInt2) - 1) != '\n')) {
       paramInt2 += 1;
     }
-    long l = com.tencent.mm.ui.widget.cedit.util.c.mV(localLayout.getLineStart(paramInt1), localLayout.getLineEnd(paramInt2));
-    AppMethodBeat.o(187889);
+    long l = com.tencent.mm.ui.widget.cedit.util.c.oO(localLayout.getLineStart(paramInt1), localLayout.getLineEnd(paramInt2));
+    AppMethodBeat.o(252479);
     return l;
   }
   
-  public final boolean Hu(boolean paramBoolean)
+  public final boolean Nq(boolean paramBoolean)
   {
-    AppMethodBeat.i(187900);
-    if (this.YhM)
+    AppMethodBeat.i(252734);
+    if (this.afZM)
     {
       if (!paramBoolean) {
-        iaW();
+        jGg();
       }
-      AppMethodBeat.o(187900);
+      AppMethodBeat.o(252734);
       return true;
     }
     int i;
-    if ((!paramBoolean) && (!aH(this.YhZ.ryy, this.YhZ.ryz)) && (!this.YhZ.Ykk) && (this.Yhl))
+    if ((!paramBoolean) && (!bl(this.afZZ.uJC, this.afZZ.uJD)) && (!this.afZZ.agcj) && (this.afZl))
     {
-      i = this.Yhe.aG(this.YhZ.ryy, this.YhZ.ryz);
-      Selection.setSelection((Spannable)this.Yhe.getText(), i);
-      ibu().show();
-      this.Yig = true;
+      i = this.afZe.bk(this.afZZ.uJC, this.afZZ.uJD);
+      Selection.setSelection((Spannable)this.afZe.getText(), i);
+      jGE().show();
+      this.agag = true;
     }
     for (boolean bool = true;; bool = paramBoolean)
     {
@@ -774,47 +788,47 @@ public class b
       if (!bool)
       {
         paramBoolean = bool;
-        if (!ibk())
+        if (!jGu())
         {
-          i = this.Yhe.getSelectionStart();
-          j = this.Yhe.getSelectionEnd();
+          i = this.afZe.getSelectionStart();
+          j = this.afZe.getSelectionEnd();
           if (i == j) {
             break label247;
           }
           if (i <= j) {
             break label264;
           }
-          Selection.setSelection((Spannable)this.Yhe.getText(), j, i);
+          Selection.setSelection((Spannable)this.afZe.getText(), j, i);
         }
       }
       for (;;)
       {
-        n localn = ibv();
-        int k = localn.YjT;
-        int m = localn.YjU;
+        n localn = jGF();
+        int k = localn.agbS;
+        int m = localn.agbT;
         if ((k >= j) && (m < i))
         {
           i = 1;
           if (i == 0) {
             break label252;
           }
-          iaV();
+          jGf();
         }
         for (;;)
         {
           paramBoolean = true;
           bool = paramBoolean;
           if (!paramBoolean) {
-            bool = ibn();
+            bool = jGx();
           }
-          AppMethodBeat.o(187900);
+          AppMethodBeat.o(252734);
           return bool;
           label247:
           i = 0;
           break;
           label252:
-          iaB();
-          ibn();
+          jFJ();
+          jGx();
         }
         label264:
         k = i;
@@ -824,83 +838,83 @@ public class b
     }
   }
   
-  final void Hv(boolean paramBoolean)
+  final void Nr(boolean paramBoolean)
   {
-    AppMethodBeat.i(187992);
-    if ((this.YhR == null) || (paramBoolean))
+    AppMethodBeat.i(252840);
+    if ((this.afZR == null) || (paramBoolean))
     {
-      this.YhR = this.Yhe.getTextSelectHandle();
-      if (this.YhR != null)
+      this.afZR = this.afZe.getTextSelectHandle();
+      if (this.afZR != null)
       {
-        this.YhR = a(this.Yhe.getContext(), this.YhR, 23);
-        this.YhR.setTint(this.Yhe.Ygn);
+        this.afZR = a(this.afZe.getContext(), this.afZR, 23);
+        this.afZR.setTint(this.afZe.afYn);
       }
-      if (this.Yhl) {
-        j.a(ibu());
+      if (this.afZl) {
+        j.a(jGE());
       }
     }
-    if ((this.YhP == null) || (this.YhQ == null) || (paramBoolean))
+    if ((this.afZP == null) || (this.afZQ == null) || (paramBoolean))
     {
-      this.YhP = this.Yhe.getTextSelectHandleLeft();
-      this.YhP = a(this.Yhe.getContext(), this.YhP, 21);
-      this.YhP.setTint(this.Yhe.Ygn);
-      this.YhQ = this.Yhe.getTextSelectHandleRight();
-      this.YhQ = a(this.Yhe.getContext(), this.YhQ, 21);
-      this.YhQ.setTint(this.Yhe.Ygn);
-      if (this.Yhm) {
-        n.d(ibv());
+      this.afZP = this.afZe.getTextSelectHandleLeft();
+      this.afZP = a(this.afZe.getContext(), this.afZP, 21);
+      this.afZP.setTint(this.afZe.afYn);
+      this.afZQ = this.afZe.getTextSelectHandleRight();
+      this.afZQ = a(this.afZe.getContext(), this.afZQ, 21);
+      this.afZQ.setTint(this.afZe.afYn);
+      if (this.afZm) {
+        n.d(jGF());
       }
     }
-    AppMethodBeat.o(187992);
+    AppMethodBeat.o(252840);
   }
   
   public final int a(Layout paramLayout, int paramInt, float paramFloat)
   {
-    AppMethodBeat.i(187987);
-    int i = this.Yhe.cT(paramFloat);
+    AppMethodBeat.i(252833);
+    int i = this.afZe.eg(paramFloat);
     if ((paramLayout == null) || (paramInt > paramLayout.getLineCount()) || (paramLayout.getLineCount() <= 0) || (paramInt < 0))
     {
-      AppMethodBeat.o(187987);
+      AppMethodBeat.o(252833);
       return i;
     }
     if (Math.abs(i - paramInt) >= 2)
     {
-      AppMethodBeat.o(187987);
+      AppMethodBeat.o(252833);
       return i;
     }
     int j = paramLayout.getLineBottom(paramInt) - paramLayout.getLineTop(paramInt);
     int k = (int)(0.5F * (paramLayout.getLineBottom(i) - paramLayout.getLineTop(i)));
-    j = Math.max(0, Math.max(this.Yim, Math.min(this.Yil, k + j)) - j);
-    float f = this.Yhe.iat();
+    j = Math.max(0, Math.max(this.agam, Math.min(this.agal, k + j)) - j);
+    float f = this.afZe.jFA();
     if ((i > paramInt) && (paramFloat >= paramLayout.getLineBottom(paramInt) + j + f))
     {
-      AppMethodBeat.o(187987);
+      AppMethodBeat.o(252833);
       return i;
     }
     if ((i < paramInt) && (paramFloat <= paramLayout.getLineTop(paramInt) - j + f))
     {
-      AppMethodBeat.o(187987);
+      AppMethodBeat.o(252833);
       return i;
     }
-    AppMethodBeat.o(187987);
+    AppMethodBeat.o(252833);
     return paramInt;
   }
   
   final void a(DragEvent paramDragEvent)
   {
     int i = 1;
-    AppMethodBeat.i(187983);
+    AppMethodBeat.i(252829);
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    this.Yhe.ian();
+    this.afZe.beginBatchEdit();
     try
     {
-      int n = this.Yhe.aG(paramDragEvent.getX(), paramDragEvent.getY());
+      int n = this.afZe.bk(paramDragEvent.getX(), paramDragEvent.getY());
       Object localObject = paramDragEvent.getLocalState();
       paramDragEvent = null;
       if ((localObject instanceof e)) {
         paramDragEvent = (e)localObject;
       }
-      if ((paramDragEvent != null) && (paramDragEvent.Yiu == this.Yhe)) {}
+      if ((paramDragEvent != null) && (paramDragEvent.agau == this.afZe)) {}
       int j;
       while ((i != 0) && (n >= paramDragEvent.start))
       {
@@ -911,9 +925,9 @@ public class b
         return;
         i = 0;
       }
-      int i1 = this.Yhe.getText().length();
-      Selection.setSelection((Spannable)this.Yhe.getText(), n);
-      ((Editable)this.Yhe.mText).replace(n, n, localSpannableStringBuilder);
+      int i1 = this.afZe.getText().length();
+      Selection.setSelection((Spannable)this.afZe.getText(), n);
+      ((Editable)this.afZe.mText).replace(n, n, localSpannableStringBuilder);
       if (i != 0)
       {
         int m = paramDragEvent.start;
@@ -922,18 +936,18 @@ public class b
         i = m;
         if (n <= m)
         {
-          j = this.Yhe.getText().length() - i1;
+          j = this.afZe.getText().length() - i1;
           i = m + j;
           j = k + j;
         }
-        this.Yhe.mT(i, j);
+        this.afZe.oM(i, j);
         j = Math.max(0, i - 1);
-        i = Math.min(this.Yhe.getText().length(), i + 1);
+        i = Math.min(this.afZe.getText().length(), i + 1);
         if (i > j + 1)
         {
-          paramDragEvent = this.Yhe.mS(j, i);
+          paramDragEvent = this.afZe.oL(j, i);
           if ((Character.isSpaceChar(paramDragEvent.charAt(0))) && (Character.isSpaceChar(paramDragEvent.charAt(1)))) {
-            this.Yhe.mT(j, j + 1);
+            this.afZe.oM(j, j + 1);
           }
         }
       }
@@ -941,30 +955,30 @@ public class b
     }
     finally
     {
-      this.Yhe.iao();
-      AppMethodBeat.o(187983);
+      this.afZe.endBatchEdit();
+      AppMethodBeat.o(252829);
     }
   }
   
   public final void a(p paramp)
   {
-    AppMethodBeat.i(187895);
-    iaU().a(paramp, false);
-    AppMethodBeat.o(187895);
+    AppMethodBeat.i(252729);
+    jGe().a(paramp, false);
+    AppMethodBeat.o(252729);
   }
   
   final boolean a(ExtractedTextRequest paramExtractedTextRequest, int paramInt1, int paramInt2, int paramInt3, ExtractedText paramExtractedText)
   {
-    AppMethodBeat.i(187919);
+    AppMethodBeat.i(252765);
     if ((paramExtractedTextRequest == null) || (paramExtractedText == null))
     {
-      AppMethodBeat.o(187919);
+      AppMethodBeat.o(252765);
       return false;
     }
-    CharSequence localCharSequence = this.Yhe.getText();
+    CharSequence localCharSequence = this.afZe.getText();
     if (localCharSequence == null)
     {
-      AppMethodBeat.o(187919);
+      AppMethodBeat.o(252765);
       return false;
     }
     int i;
@@ -991,16 +1005,16 @@ public class b
           if (MetaKeyKeyListener.getMetaState(localCharSequence, 2048) != 0) {
             paramExtractedText.flags |= 0x2;
           }
-          if (this.Yhe.Wmc) {
+          if (this.afZe.adTq) {
             paramExtractedText.flags |= 0x1;
           }
           paramExtractedText.startOffset = 0;
-          paramExtractedText.selectionStart = this.Yhe.getSelectionStart();
-          paramExtractedText.selectionEnd = this.Yhe.getSelectionEnd();
+          paramExtractedText.selectionStart = this.afZe.getSelectionStart();
+          paramExtractedText.selectionEnd = this.afZe.getSelectionEnd();
           if (Build.VERSION.SDK_INT >= 28) {
-            paramExtractedText.hint = this.Yhe.getHint();
+            paramExtractedText.hint = this.afZe.getHint();
           }
-          AppMethodBeat.o(187919);
+          AppMethodBeat.o(252765);
           return true;
         }
       }
@@ -1077,140 +1091,42 @@ public class b
     }
   }
   
-  final void aI(float paramFloat1, float paramFloat2)
+  final void aA(MotionEvent paramMotionEvent)
   {
-    this.YhT = paramFloat1;
-    this.YhU = paramFloat2;
-  }
-  
-  final void at(boolean paramBoolean, int paramInt)
-  {
-    boolean bool = false;
-    AppMethodBeat.i(187904);
-    this.Yhz = SystemClock.uptimeMillis();
-    ibb();
-    if (paramBoolean)
-    {
-      int k = this.Yhe.getSelectionStart();
-      int m = this.Yhe.getSelectionEnd();
-      if ((this.YhD) && (k == 0) && (m == this.Yhe.getText().length()))
-      {
-        i = 1;
-        if ((!this.Yhu) || (!this.Yhe.iau()) || (i != 0)) {
-          break label306;
-        }
-        paramBoolean = true;
-        label96:
-        this.YhX = paramBoolean;
-        if ((!this.Yhu) || (k < 0) || (m < 0))
-        {
-          if (this.Yhj == null) {
-            break label311;
-          }
-          int j = this.Yhj.YjT;
-          if (j < 0) {
-            break label311;
-          }
-          i = j;
-          if (j <= this.Yhe.getText().length()) {}
-        }
-      }
-      label306:
-      label311:
-      for (int i = this.Yhe.getText().length();; i = -1)
-      {
-        if (i >= 0) {
-          Selection.setSelection((Spannable)this.Yhe.getText(), i);
-        }
-        com.tencent.mm.ui.widget.cedit.b.d locald = this.Yhe.getMovementMethod();
-        if (locald != null) {
-          locald.a(this.Yhe, (Spannable)this.Yhe.getText(), paramInt);
-        }
-        if ((this.Yhv) && (k >= 0) && (m >= 0)) {
-          Selection.setSelection((Spannable)this.Yhe.getText(), k, m);
-        }
-        if (this.YhD) {
-          this.Yhe.iaG();
-        }
-        this.Yhw = true;
-        this.Yhu = false;
-        this.Yhv = false;
-        ibx();
-        AppMethodBeat.o(187904);
-        return;
-        i = 0;
-        break;
-        paramBoolean = false;
-        break label96;
-      }
-    }
-    iaO();
-    paramBoolean = bool;
-    if (Build.VERSION.SDK_INT >= 24) {
-      paramBoolean = this.Yhe.isTemporarilyDetached();
-    }
-    if (paramBoolean) {
-      ibt();
-    }
-    for (;;)
-    {
-      if (this.Yhj != null) {
-        this.Yhj.ibM();
-      }
-      iaY();
-      AppMethodBeat.o(187904);
-      return;
-      iaB();
-    }
-  }
-  
-  final void ax(MotionEvent paramMotionEvent)
-  {
-    AppMethodBeat.i(187907);
+    AppMethodBeat.i(252747);
     switch (paramMotionEvent.getActionMasked())
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(187907);
+      AppMethodBeat.o(252747);
       return;
-      axL(-1);
-      AppMethodBeat.o(187907);
+      aEu(-1);
+      AppMethodBeat.o(252747);
       return;
-      iba();
+      jGk();
     }
   }
   
-  final void axL(int paramInt)
-  {
-    AppMethodBeat.i(187908);
-    this.Yhe.removeCallbacks(this.Yif);
-    fLs();
-    if ((this.Yhk != null) && (Build.VERSION.SDK_INT >= 23)) {
-      this.Yhk.hide(paramInt);
-    }
-    AppMethodBeat.o(187908);
-  }
-  
-  final void ay(MotionEvent paramMotionEvent)
+  final void aB(MotionEvent paramMotionEvent)
   {
     int j = 1;
-    AppMethodBeat.i(187964);
-    ibm();
-    this.Yhe.aG(paramMotionEvent.getX(), paramMotionEvent.getY());
+    AppMethodBeat.i(252804);
+    jGw();
+    this.afZe.bk(paramMotionEvent.getX(), paramMotionEvent.getY());
     CharSequence localCharSequence;
     int k;
-    if ((this.YhD) && (this.Yhe.iax()))
+    if ((this.afZD) && (this.afZe.jFE()))
     {
       i = 1;
-      iaO();
-      iaB();
-      localCharSequence = this.Yhe.getText();
+      jFY();
+      jFJ();
+      localCharSequence = this.afZe.getText();
       if ((i != 0) || (localCharSequence.length() <= 0)) {
         break label201;
       }
-      k = this.Yhe.aG(paramMotionEvent.getX(), paramMotionEvent.getY());
-      if (this.YhJ) {
+      k = this.afZe.bk(paramMotionEvent.getX(), paramMotionEvent.getY());
+      if (this.afZJ) {
         break label164;
       }
     }
@@ -1220,107 +1136,255 @@ public class b
       if (i != 0) {
         Selection.setSelection((Spannable)localCharSequence, k);
       }
-      if (ibq()) {
+      if (jGA()) {
         break label201;
       }
-      if (!ibr()) {
+      if (!jGB()) {
         break label169;
       }
-      if (this.Yia == null) {
+      if (this.agaa == null) {
         break label201;
       }
-      this.Yhe.removeCallbacks(this.Yia);
-      AppMethodBeat.o(187964);
+      this.afZe.removeCallbacks(this.agaa);
+      AppMethodBeat.o(252804);
       return;
       i = 0;
       break;
     }
     label169:
-    if (this.Yhl)
+    if (this.afZl)
     {
       if (i != 0)
       {
-        ibu().show();
-        AppMethodBeat.o(187964);
+        jGE().show();
+        AppMethodBeat.o(252804);
         return;
       }
-      ibu().hide();
+      jGE().hide();
     }
     label201:
-    AppMethodBeat.o(187964);
+    AppMethodBeat.o(252804);
+  }
+  
+  final void aEu(int paramInt)
+  {
+    AppMethodBeat.i(252751);
+    this.afZe.removeCallbacks(this.agaf);
+    hbK();
+    if ((this.afZk != null) && (Build.VERSION.SDK_INT >= 23)) {
+      this.afZk.hide(paramInt);
+    }
+    AppMethodBeat.o(252751);
+  }
+  
+  final void aw(boolean paramBoolean, int paramInt)
+  {
+    boolean bool = false;
+    AppMethodBeat.i(252738);
+    this.afZz = SystemClock.uptimeMillis();
+    jGl();
+    if (paramBoolean)
+    {
+      int k = this.afZe.getSelectionStart();
+      int m = this.afZe.getSelectionEnd();
+      if ((this.afZD) && (k == 0) && (m == this.afZe.getText().length()))
+      {
+        i = 1;
+        if ((!this.afZu) || (!this.afZe.jFB()) || (i != 0)) {
+          break label312;
+        }
+        paramBoolean = true;
+        label96:
+        this.afZX = paramBoolean;
+        if ((!this.afZu) || (k < 0) || (m < 0))
+        {
+          if (this.afZj == null) {
+            break label317;
+          }
+          int j = this.afZj.agbS;
+          if (j < 0) {
+            break label317;
+          }
+          i = j;
+          if (j <= this.afZe.getText().length()) {}
+        }
+      }
+      label312:
+      label317:
+      for (int i = this.afZe.getText().length();; i = -1)
+      {
+        if (i >= 0) {
+          Selection.setSelection((Spannable)this.afZe.getText(), i);
+        }
+        com.tencent.mm.ui.widget.cedit.b.d locald = this.afZe.getMovementMethod();
+        if (locald != null) {
+          locald.a(this.afZe, (Spannable)this.afZe.getText(), paramInt);
+        }
+        if (((CustomTextView.jFH()) || (this.afZv)) && (k >= 0) && (m >= 0)) {
+          Selection.setSelection((Spannable)this.afZe.getText(), k, m);
+        }
+        if (this.afZD) {
+          this.afZe.jFO();
+        }
+        this.afZw = true;
+        this.afZu = false;
+        this.afZv = false;
+        jGH();
+        AppMethodBeat.o(252738);
+        return;
+        i = 0;
+        break;
+        paramBoolean = false;
+        break label96;
+      }
+    }
+    if (CustomTextView.jFH())
+    {
+      jFY();
+      jGD();
+    }
+    for (;;)
+    {
+      if (this.afZj != null) {
+        this.afZj.jGW();
+      }
+      jGi();
+      AppMethodBeat.o(252738);
+      return;
+      jFY();
+      paramBoolean = bool;
+      if (Build.VERSION.SDK_INT >= 24) {
+        paramBoolean = this.afZe.isTemporarilyDetached();
+      }
+      if (paramBoolean) {
+        jGD();
+      } else {
+        jFJ();
+      }
+    }
   }
   
   public final void b(p paramp)
   {
-    AppMethodBeat.i(187896);
-    iaU().c(paramp);
-    AppMethodBeat.o(187896);
+    AppMethodBeat.i(252730);
+    jGe().c(paramp);
+    AppMethodBeat.o(252730);
+  }
+  
+  public final void beginBatchEdit()
+  {
+    AppMethodBeat.i(252758);
+    this.afZF = true;
+    h localh = this.afZt;
+    if (localh != null)
+    {
+      int i = localh.afZf + 1;
+      localh.afZf = i;
+      if (i == 1)
+      {
+        localh.agbe = false;
+        localh.agbi = 0;
+        if (localh.mContentChanged)
+        {
+          localh.agbg = 0;
+          localh.agbh = this.afZe.getText().length();
+          AppMethodBeat.o(252758);
+          return;
+        }
+        localh.agbg = -1;
+        localh.agbh = -1;
+        localh.mContentChanged = false;
+      }
+    }
+    AppMethodBeat.o(252758);
+  }
+  
+  final void bm(float paramFloat1, float paramFloat2)
+  {
+    this.afZT = paramFloat1;
+    this.afZU = paramFloat2;
+  }
+  
+  public final void endBatchEdit()
+  {
+    AppMethodBeat.i(252759);
+    this.afZF = false;
+    h localh = this.afZt;
+    if (localh != null)
+    {
+      int i = localh.afZf - 1;
+      localh.afZf = i;
+      if (i == 0) {
+        a(localh);
+      }
+    }
+    AppMethodBeat.o(252759);
   }
   
   final InputMethodManager getInputMethodManager()
   {
-    AppMethodBeat.i(187912);
+    AppMethodBeat.i(252756);
     if (Build.VERSION.SDK_INT >= 23)
     {
-      localInputMethodManager = (InputMethodManager)this.Yhe.getContext().getSystemService(InputMethodManager.class);
-      AppMethodBeat.o(187912);
+      localInputMethodManager = (InputMethodManager)this.afZe.getContext().getSystemService(InputMethodManager.class);
+      AppMethodBeat.o(252756);
       return localInputMethodManager;
     }
-    InputMethodManager localInputMethodManager = (InputMethodManager)this.Yhe.getContext().getSystemService("input_method");
-    AppMethodBeat.o(187912);
+    InputMethodManager localInputMethodManager = (InputMethodManager)this.afZe.getContext().getSystemService("input_method");
+    AppMethodBeat.o(252756);
     return localInputMethodManager;
   }
   
   public final com.tencent.mm.ui.widget.cedit.c.b getWordIterator()
   {
-    AppMethodBeat.i(187890);
-    if (this.Yib == null) {
-      this.Yib = new com.tencent.mm.ui.widget.cedit.c.b(this.Yhe.getTextServicesLocale());
+    AppMethodBeat.i(252728);
+    if (this.agab == null) {
+      this.agab = new com.tencent.mm.ui.widget.cedit.c.b(this.afZe.getTextServicesLocale());
     }
-    com.tencent.mm.ui.widget.cedit.c.b localb = this.Yib;
-    AppMethodBeat.o(187890);
+    com.tencent.mm.ui.widget.cedit.c.b localb = this.agab;
+    AppMethodBeat.o(252728);
     return localb;
   }
   
-  protected final void iaB()
+  protected final void jFJ()
   {
-    AppMethodBeat.i(187969);
-    if (this.Yhk != null) {
-      this.Yhk.finish();
+    AppMethodBeat.i(252808);
+    if (this.afZk != null) {
+      this.afZk.finish();
     }
-    this.Yhe.removeCallbacks(this.Yif);
-    if (this.Yio) {
-      ibs();
+    this.afZe.removeCallbacks(this.agaf);
+    if (this.agao) {
+      jGC();
     }
-    AppMethodBeat.o(187969);
+    AppMethodBeat.o(252808);
   }
   
-  final void iaL()
+  final void jFV()
   {
-    AppMethodBeat.i(187876);
-    if (this.Yhs == null) {
-      this.Yhs = new g();
+    AppMethodBeat.i(252714);
+    if (this.afZs == null) {
+      this.afZs = new g();
     }
-    AppMethodBeat.o(187876);
+    AppMethodBeat.o(252714);
   }
   
-  final boolean iaM()
+  final boolean jFW()
   {
-    AppMethodBeat.i(187878);
-    if ((this.YhC) && (this.Yhe.iaw()))
+    AppMethodBeat.i(252717);
+    if ((this.afZC) && (this.afZe.jFD()))
     {
-      AppMethodBeat.o(187878);
+      AppMethodBeat.o(252717);
       return true;
     }
-    AppMethodBeat.o(187878);
+    AppMethodBeat.o(252717);
     return false;
   }
   
-  final void iaN()
+  final void jFX()
   {
     boolean bool2 = true;
-    AppMethodBeat.i(187879);
-    Object localObject = this.Yhe.getRootView().getLayoutParams();
+    AppMethodBeat.i(252720);
+    Object localObject = this.afZe.getRootView().getLayoutParams();
     int i;
     if ((localObject instanceof WindowManager.LayoutParams))
     {
@@ -1331,17 +1395,17 @@ public class b
     }
     for (;;)
     {
-      if ((i != 0) && (this.Yhe.getLayout() != null))
+      if ((i != 0) && (this.afZe.getLayout() != null))
       {
         i = 1;
         label75:
-        if ((i == 0) || (!iaM())) {
+        if ((i == 0) || (!jFW())) {
           break label191;
         }
         bool1 = true;
         label88:
-        this.Yhl = bool1;
-        if ((i == 0) || (!this.Yhe.iaz())) {
+        this.afZl = bool1;
+        if ((i == 0) || (!this.afZe.jFG())) {
           break label196;
         }
       }
@@ -1349,26 +1413,26 @@ public class b
       label196:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        this.Yhm = bool1;
-        if (!this.Yhl)
+        this.afZm = bool1;
+        if (!this.afZl)
         {
-          iaO();
-          if (this.Yhi != null)
+          jFY();
+          if (this.afZi != null)
           {
-            this.Yhi.cfy();
-            this.Yhi = null;
+            this.afZi.iQ();
+            this.afZi = null;
           }
         }
-        if (!this.Yhm)
+        if (!this.afZm)
         {
-          iaB();
-          if (this.Yhj != null)
+          jFJ();
+          if (this.afZj != null)
           {
-            this.Yhj.cfy();
-            this.Yhj = null;
+            this.afZj.iQ();
+            this.afZj = null;
           }
         }
-        AppMethodBeat.o(187879);
+        AppMethodBeat.o(252720);
         return;
         i = 0;
         break;
@@ -1381,410 +1445,371 @@ public class b
     }
   }
   
-  final void iaO()
+  final void jFY()
   {
-    AppMethodBeat.i(187881);
-    if (this.Yhi != null) {
-      this.Yhi.hide();
+    AppMethodBeat.i(252722);
+    if (this.afZi != null) {
+      this.afZi.hide();
     }
-    AppMethodBeat.o(187881);
+    AppMethodBeat.o(252722);
   }
   
-  final void iaP()
+  final void jFZ()
   {
-    AppMethodBeat.i(187883);
-    if (this.YhB != null) {
-      this.YhB.cancel();
+    AppMethodBeat.i(252724);
+    if (this.afZB != null) {
+      this.afZB.cancel();
     }
-    AppMethodBeat.o(187883);
+    AppMethodBeat.o(252724);
   }
   
-  final void iaQ()
+  final boolean jGA()
   {
-    AppMethodBeat.i(187884);
-    if (this.YhB != null)
+    AppMethodBeat.i(252800);
+    if (!CustomTextView.jFH())
     {
-      this.YhB.mCancelled = false;
-      ibx();
-    }
-    AppMethodBeat.o(187884);
-  }
-  
-  final void iaY()
-  {
-    AppMethodBeat.i(187905);
-    if ((!this.Yhe.iaz()) && (this.Yhe.iau())) {
-      Selection.setSelection((Spannable)this.Yhe.getText(), this.Yhe.length(), this.Yhe.length());
-    }
-    AppMethodBeat.o(187905);
-  }
-  
-  final void iaZ()
-  {
-    AppMethodBeat.i(187906);
-    ibm();
-    this.Yid = true;
-    iaO();
-    if (this.Yhj != null) {
-      this.Yhj.ibM();
-    }
-    iaB();
-    AppMethodBeat.o(187906);
-  }
-  
-  public final void ian()
-  {
-    AppMethodBeat.i(187913);
-    this.YhF = true;
-    h localh = this.Yht;
-    if (localh != null)
-    {
-      int i = localh.Yhf + 1;
-      localh.Yhf = i;
-      if (i == 1)
+      InputMethodManager localInputMethodManager = getInputMethodManager();
+      if ((localInputMethodManager != null) && (localInputMethodManager.isFullscreenMode()))
       {
-        localh.Yjf = false;
-        localh.Yjj = 0;
-        if (localh.mContentChanged)
-        {
-          localh.Yjh = 0;
-          localh.Yji = this.Yhe.getText().length();
-          AppMethodBeat.o(187913);
-          return;
-        }
-        localh.Yjh = -1;
-        localh.Yji = -1;
-        localh.mContentChanged = false;
+        AppMethodBeat.o(252800);
+        return true;
       }
+      AppMethodBeat.o(252800);
+      return false;
     }
-    AppMethodBeat.o(187913);
+    AppMethodBeat.o(252800);
+    return false;
   }
   
-  public final void iao()
+  final void jGD()
   {
-    AppMethodBeat.i(187914);
-    this.YhF = false;
-    h localh = this.Yht;
-    if (localh != null)
-    {
-      int i = localh.Yhf - 1;
-      localh.Yhf = i;
-      if (i == 0) {
-        a(localh);
-      }
+    AppMethodBeat.i(252810);
+    if (!jGu()) {
+      this.afZI = true;
     }
-    AppMethodBeat.o(187914);
+    this.afZH = true;
+    jFJ();
+    this.afZH = false;
+    AppMethodBeat.o(252810);
   }
   
-  final void ibb()
+  public final j jGE()
   {
-    AppMethodBeat.i(187915);
-    h localh = this.Yht;
-    if ((localh != null) && (localh.Yhf != 0))
+    AppMethodBeat.i(252816);
+    if (!this.afZl)
     {
-      localh.Yhf = 0;
+      AppMethodBeat.o(252816);
+      return null;
+    }
+    if (this.afZi == null)
+    {
+      this.afZi = new j();
+      this.afZe.getViewTreeObserver().addOnTouchModeChangeListener(this.afZi);
+    }
+    j localj = this.afZi;
+    AppMethodBeat.o(252816);
+    return localj;
+  }
+  
+  public final n jGF()
+  {
+    AppMethodBeat.i(252819);
+    if (!this.afZm)
+    {
+      AppMethodBeat.o(252819);
+      return null;
+    }
+    if (this.afZj == null)
+    {
+      this.afZj = new n();
+      this.afZe.getViewTreeObserver().addOnTouchModeChangeListener(this.afZj);
+    }
+    n localn = this.afZj;
+    AppMethodBeat.o(252819);
+    return localn;
+  }
+  
+  final void jGH()
+  {
+    AppMethodBeat.i(252823);
+    if (jGG())
+    {
+      this.afZz = SystemClock.uptimeMillis();
+      if (this.afZB == null) {
+        this.afZB = new a((byte)0);
+      }
+      this.afZe.removeCallbacks(this.afZB);
+      this.afZe.postDelayed(this.afZB, 500L);
+      AppMethodBeat.o(252823);
+      return;
+    }
+    if (this.afZB != null) {
+      this.afZe.removeCallbacks(this.afZB);
+    }
+    AppMethodBeat.o(252823);
+  }
+  
+  final void jGI()
+  {
+    AppMethodBeat.i(252835);
+    if (this.afZO == null) {
+      this.afZO = this.afZe.getTextCursorDrawable();
+    }
+    AppMethodBeat.o(252835);
+  }
+  
+  final void jGa()
+  {
+    AppMethodBeat.i(252726);
+    if (this.afZB != null)
+    {
+      this.afZB.mCancelled = false;
+      jGH();
+    }
+    AppMethodBeat.o(252726);
+  }
+  
+  final void jGi()
+  {
+    AppMethodBeat.i(252743);
+    if ((!this.afZe.jFG()) && (this.afZe.jFB())) {
+      Selection.setSelection((Spannable)this.afZe.getText(), this.afZe.length(), this.afZe.length());
+    }
+    AppMethodBeat.o(252743);
+  }
+  
+  final void jGj()
+  {
+    AppMethodBeat.i(252745);
+    jGw();
+    this.agad = true;
+    jFY();
+    if (this.afZj != null) {
+      this.afZj.jGW();
+    }
+    jFJ();
+    AppMethodBeat.o(252745);
+  }
+  
+  final void jGl()
+  {
+    AppMethodBeat.i(252760);
+    h localh = this.afZt;
+    if ((localh != null) && (localh.afZf != 0))
+    {
+      localh.afZf = 0;
       a(localh);
     }
-    AppMethodBeat.o(187915);
+    AppMethodBeat.o(252760);
   }
   
-  final boolean ibc()
+  final boolean jGm()
   {
-    AppMethodBeat.i(187921);
-    h localh = this.Yht;
+    AppMethodBeat.i(252771);
+    h localh = this.afZt;
     if (localh == null)
     {
-      AppMethodBeat.o(187921);
+      AppMethodBeat.o(252771);
       return false;
     }
     boolean bool = localh.mContentChanged;
-    if ((!bool) && (!localh.Yjg))
+    if ((!bool) && (!localh.agbf))
     {
-      AppMethodBeat.o(187921);
+      AppMethodBeat.o(252771);
       return false;
     }
     localh.mContentChanged = false;
-    localh.Yjg = false;
-    ExtractedTextRequest localExtractedTextRequest = localh.Yjd;
+    localh.agbf = false;
+    ExtractedTextRequest localExtractedTextRequest = localh.agbd;
     if (localExtractedTextRequest == null)
     {
-      AppMethodBeat.o(187921);
+      AppMethodBeat.o(252771);
       return false;
     }
     InputMethodManager localInputMethodManager = getInputMethodManager();
     if (localInputMethodManager == null)
     {
-      AppMethodBeat.o(187921);
+      AppMethodBeat.o(252771);
       return false;
     }
-    if ((localh.Yjh < 0) && (!bool)) {
-      localh.Yjh = -2;
+    if ((localh.agbg < 0) && (!bool)) {
+      localh.agbg = -2;
     }
-    if (a(localExtractedTextRequest, localh.Yjh, localh.Yji, localh.Yjj, localh.Yje))
+    if (a(localExtractedTextRequest, localh.agbg, localh.agbh, localh.agbi, localh.mExtractedText))
     {
-      localInputMethodManager.updateExtractedText(this.Yhe, localExtractedTextRequest.token, localh.Yje);
-      localh.Yjh = -1;
-      localh.Yji = -1;
-      localh.Yjj = 0;
+      localInputMethodManager.updateExtractedText(this.afZe, localExtractedTextRequest.token, localh.mExtractedText);
+      localh.agbg = -1;
+      localh.agbh = -1;
+      localh.agbi = 0;
       localh.mContentChanged = false;
-      AppMethodBeat.o(187921);
+      AppMethodBeat.o(252771);
       return true;
     }
-    AppMethodBeat.o(187921);
+    AppMethodBeat.o(252771);
     return false;
   }
   
-  final void ibe()
+  final void jGo()
   {
-    AppMethodBeat.i(187926);
-    if (this.Yhj != null) {
-      this.Yhj.ibQ();
+    AppMethodBeat.i(252774);
+    if (this.afZj != null) {
+      this.afZj.jHa();
     }
-    if (this.Yhi != null) {
-      this.Yhi.ibJ();
+    if (this.afZi != null) {
+      this.afZi.jGT();
     }
-    if (!ibk()) {
-      ibl();
+    if (!jGu()) {
+      jGv();
     }
-    AppMethodBeat.o(187926);
+    AppMethodBeat.o(252774);
   }
   
-  final void ibf()
+  final void jGp()
   {
-    AppMethodBeat.i(187928);
-    iby();
-    if (this.YhO == null)
+    AppMethodBeat.i(252776);
+    jGI();
+    if (this.afZO == null)
     {
-      AppMethodBeat.o(187928);
+      AppMethodBeat.o(252776);
       return;
     }
-    Layout localLayout = this.Yhe.getLayout();
-    int i = this.Yhe.getSelectionStart();
+    Layout localLayout = this.afZe.getLayout();
+    int i = this.afZe.getSelectionStart();
     int j = localLayout.getLineForOffset(i);
-    h(localLayout.getLineTop(j), localLayout.getLineBottom(j), localLayout.getPrimaryHorizontal(i));
-    AppMethodBeat.o(187928);
+    i(localLayout.getLineTop(j), localLayout.getLineBottom(j), localLayout.getPrimaryHorizontal(i));
+    AppMethodBeat.o(252776);
   }
   
-  final void ibg()
+  final void jGq()
   {
-    AppMethodBeat.i(187930);
-    if (ibq())
+    AppMethodBeat.i(252780);
+    if (jGA())
     {
-      this.YhI = false;
-      AppMethodBeat.o(187930);
+      this.afZI = false;
+      AppMethodBeat.o(252780);
       return;
     }
-    boolean bool = this.Yhe.iau();
-    n localn = ibv();
-    j localj = ibu();
-    if (((localn != null) && (localn.ibz())) || ((localj != null) && (localj.ibz())))
+    boolean bool = this.afZe.jFB();
+    n localn = jGF();
+    j localj = jGE();
+    if (((localn != null) && (localn.jGJ())) || ((localj != null) && (localj.jGJ())))
     {
-      this.YhI = false;
-      AppMethodBeat.o(187930);
+      this.afZI = false;
+      AppMethodBeat.o(252780);
       return;
     }
     if (bool)
     {
-      iaO();
-      if (ibk()) {
-        if (this.YhI) {
-          ibm().ibT();
+      jFY();
+      if (jGu()) {
+        if (this.afZI) {
+          jGw().jHd();
         }
       }
     }
     for (;;)
     {
-      this.YhI = false;
-      AppMethodBeat.o(187930);
+      this.afZI = false;
+      AppMethodBeat.o(252780);
       return;
       if ((localn == null) || (!localn.isActive()))
       {
-        ibt();
-        ibm().ibT();
+        jGD();
+        jGw().jHd();
       }
       else
       {
-        if ((Build.VERSION.SDK_INT >= 23) && (this.Yhk != null)) {
-          this.Yhk.invalidateContentRect();
+        if ((Build.VERSION.SDK_INT >= 23) && (this.afZk != null)) {
+          this.afZk.invalidateContentRect();
         }
-        iba();
+        jGk();
         continue;
         if ((localj == null) || (!localj.isActive())) {
-          iaB();
-        } else if ((this.Yhk != null) && (Build.VERSION.SDK_INT >= 23)) {
-          this.Yhk.invalidateContentRect();
+          jFJ();
+        } else if ((this.afZk != null) && (Build.VERSION.SDK_INT >= 23)) {
+          this.afZk.invalidateContentRect();
         }
       }
     }
   }
   
-  final void ibh()
+  final void jGr()
   {
-    AppMethodBeat.i(187931);
-    if (this.Yia != null) {
-      this.Yhe.removeCallbacks(this.Yia);
+    AppMethodBeat.i(252786);
+    if (this.agaa != null) {
+      this.afZe.removeCallbacks(this.agaa);
     }
-    if (ibq())
+    if (jGA())
     {
-      AppMethodBeat.o(187931);
+      AppMethodBeat.o(252786);
       return;
     }
-    iaB();
+    jFJ();
     if (Build.VERSION.SDK_INT >= 23) {
       new o(1);
     }
-    ibi();
-    if ((!ibk()) && (ibu() != null)) {
-      ibu().show();
+    jGs();
+    if ((!jGu()) && (jGE() != null)) {
+      jGE().show();
     }
-    AppMethodBeat.o(187931);
+    AppMethodBeat.o(252786);
   }
   
-  public final boolean ibk()
+  public final boolean jGu()
   {
-    return (this.Yhk == null) && (!this.Yio);
+    return (this.afZk == null) && (!this.agao);
   }
   
-  final d ibm()
+  final d jGw()
   {
-    AppMethodBeat.i(187948);
-    if (this.YhK == null) {
-      this.YhK = new d(this);
+    AppMethodBeat.i(252791);
+    if (this.afZK == null) {
+      this.afZK = new d(this);
     }
-    d locald = this.YhK;
-    AppMethodBeat.o(187948);
+    d locald = this.afZK;
+    AppMethodBeat.o(252791);
     return locald;
   }
   
-  final boolean ibp()
+  final boolean jGz()
   {
-    AppMethodBeat.i(187958);
-    if (ibq())
+    AppMethodBeat.i(252797);
+    if (jGA())
     {
-      AppMethodBeat.o(187958);
+      AppMethodBeat.o(252797);
       return false;
     }
-    if (this.Yhk != null)
+    if (this.afZk != null)
     {
-      ibl();
-      AppMethodBeat.o(187958);
+      jGv();
+      AppMethodBeat.o(252797);
       return false;
     }
-    if ((!ibo()) || (!this.Yhe.iau()))
+    if ((!jGy()) || (!this.afZe.jFB()))
     {
-      AppMethodBeat.o(187958);
+      AppMethodBeat.o(252797);
       return false;
     }
     if (Build.VERSION.SDK_INT >= 23) {
       new o(0);
     }
-    ibi();
-    if (!this.Yhe.iaw()) {
-      this.Yhe.ial();
+    jGs();
+    if (!this.afZe.jFD()) {
+      this.afZe.jFu();
     }
-    if (!ibk()) {}
+    if (!jGu()) {}
     for (int i = 1;; i = 0)
     {
-      if ((i != 0) && (this.Yhe.iaw()) && (!this.Yhe.ial()) && (this.YhG))
+      if ((i != 0) && (this.afZe.jFD()) && (!this.afZe.jFu()) && (this.afZG))
       {
         InputMethodManager localInputMethodManager = getInputMethodManager();
         if (localInputMethodManager != null) {
-          localInputMethodManager.showSoftInput(this.Yhe, 0, null);
+          localInputMethodManager.showSoftInput(this.afZe, 0, null);
         }
       }
-      AppMethodBeat.o(187958);
+      AppMethodBeat.o(252797);
       return true;
     }
-  }
-  
-  final boolean ibq()
-  {
-    AppMethodBeat.i(187960);
-    InputMethodManager localInputMethodManager = getInputMethodManager();
-    if ((localInputMethodManager != null) && (localInputMethodManager.isFullscreenMode()))
-    {
-      AppMethodBeat.o(187960);
-      return true;
-    }
-    AppMethodBeat.o(187960);
-    return false;
-  }
-  
-  final void ibt()
-  {
-    AppMethodBeat.i(187972);
-    if (!ibk()) {
-      this.YhI = true;
-    }
-    this.YhH = true;
-    iaB();
-    this.YhH = false;
-    AppMethodBeat.o(187972);
-  }
-  
-  public final j ibu()
-  {
-    AppMethodBeat.i(187973);
-    if (!this.Yhl)
-    {
-      AppMethodBeat.o(187973);
-      return null;
-    }
-    if (this.Yhi == null)
-    {
-      this.Yhi = new j();
-      this.Yhe.getViewTreeObserver().addOnTouchModeChangeListener(this.Yhi);
-    }
-    j localj = this.Yhi;
-    AppMethodBeat.o(187973);
-    return localj;
-  }
-  
-  public final n ibv()
-  {
-    AppMethodBeat.i(187975);
-    if (!this.Yhm)
-    {
-      AppMethodBeat.o(187975);
-      return null;
-    }
-    if (this.Yhj == null)
-    {
-      this.Yhj = new n();
-      this.Yhe.getViewTreeObserver().addOnTouchModeChangeListener(this.Yhj);
-    }
-    n localn = this.Yhj;
-    AppMethodBeat.o(187975);
-    return localn;
-  }
-  
-  final void ibx()
-  {
-    AppMethodBeat.i(187982);
-    if (ibw())
-    {
-      this.Yhz = SystemClock.uptimeMillis();
-      if (this.YhB == null) {
-        this.YhB = new a((byte)0);
-      }
-      this.Yhe.removeCallbacks(this.YhB);
-      this.Yhe.postDelayed(this.YhB, 500L);
-      AppMethodBeat.o(187982);
-      return;
-    }
-    if (this.YhB != null) {
-      this.Yhe.removeCallbacks(this.YhB);
-    }
-    AppMethodBeat.o(187982);
-  }
-  
-  final void iby()
-  {
-    AppMethodBeat.i(187988);
-    if (this.YhO == null) {
-      this.YhO = this.Yhe.getTextCursorDrawable();
-    }
-    AppMethodBeat.o(187988);
   }
   
   final class a
@@ -1796,144 +1821,144 @@ public class b
     
     final void cancel()
     {
-      AppMethodBeat.i(204777);
+      AppMethodBeat.i(252332);
       if (!this.mCancelled)
       {
         b.c(b.this).removeCallbacks(this);
         this.mCancelled = true;
       }
-      AppMethodBeat.o(204777);
+      AppMethodBeat.o(252332);
     }
     
     public final void run()
     {
-      AppMethodBeat.i(204776);
+      AppMethodBeat.i(252329);
       if (this.mCancelled)
       {
-        AppMethodBeat.o(204776);
+        AppMethodBeat.o(252329);
         return;
       }
       b.c(b.this).removeCallbacks(this);
       if (b.g(b.this))
       {
         if (b.c(b.this).getLayout() != null) {
-          b.c(b.this).iai();
+          b.c(b.this).jFr();
         }
         b.c(b.this).postDelayed(this, 500L);
       }
-      AppMethodBeat.o(204776);
+      AppMethodBeat.o(252329);
     }
   }
   
   final class b
   {
-    long Yiq;
-    private RectF ajW;
-    final Path auD;
+    long agaq;
+    private RectF bYz;
+    final Path cja;
     final Paint mPaint;
-    int tH;
-    int tI;
+    int uG;
+    int uH;
     
     public b()
     {
-      AppMethodBeat.i(189049);
-      this.auD = new Path();
+      AppMethodBeat.i(252287);
+      this.cja = new Path();
       this.mPaint = new Paint(1);
       this.mPaint.setStyle(Paint.Style.FILL);
-      AppMethodBeat.o(189049);
+      AppMethodBeat.o(252287);
     }
     
-    final void Hw(boolean paramBoolean)
+    final void Ns(boolean paramBoolean)
     {
-      AppMethodBeat.i(189050);
+      AppMethodBeat.i(252297);
       if (b.c(b.this).getLayout() == null)
       {
-        AppMethodBeat.o(189050);
+        AppMethodBeat.o(252297);
         return;
       }
-      if (this.ajW == null) {
-        this.ajW = new RectF();
+      if (this.bYz == null) {
+        this.bYz = new RectF();
       }
-      this.auD.computeBounds(this.ajW, false);
+      this.cja.computeBounds(this.bYz, false);
       int i = b.c(b.this).getCompoundPaddingLeft();
-      int j = b.c(b.this).getExtendedPaddingTop() + b.c(b.this).Hs(true);
+      int j = b.c(b.this).getExtendedPaddingTop() + b.c(b.this).No(true);
       if (paramBoolean)
       {
-        b.c(b.this).postInvalidateOnAnimation((int)this.ajW.left + i, (int)this.ajW.top + j, i + (int)this.ajW.right, j + (int)this.ajW.bottom);
-        AppMethodBeat.o(189050);
+        b.c(b.this).postInvalidateOnAnimation((int)this.bYz.left + i, (int)this.bYz.top + j, i + (int)this.bYz.right, j + (int)this.bYz.bottom);
+        AppMethodBeat.o(252297);
         return;
       }
-      b.c(b.this).postInvalidate((int)this.ajW.left, (int)this.ajW.top, (int)this.ajW.right, (int)this.ajW.bottom);
-      AppMethodBeat.o(189050);
+      b.c(b.this).postInvalidate((int)this.bYz.left, (int)this.bYz.top, (int)this.bYz.right, (int)this.bYz.bottom);
+      AppMethodBeat.o(252297);
     }
     
     final void stopAnimation()
     {
-      AppMethodBeat.i(189052);
+      AppMethodBeat.i(252304);
       b.E(b.this);
-      AppMethodBeat.o(189052);
+      AppMethodBeat.o(252304);
     }
   }
   
   final class c
     implements b.p
   {
-    final CursorAnchorInfo.Builder Yir;
-    final int[] Yis;
-    final Matrix Yit;
+    final CursorAnchorInfo.Builder agar;
+    final int[] agas;
+    final Matrix agat;
     
     private c()
     {
-      AppMethodBeat.i(196630);
-      this.Yir = new CursorAnchorInfo.Builder();
-      this.Yis = new int[2];
-      this.Yit = new Matrix();
-      AppMethodBeat.o(196630);
+      AppMethodBeat.i(252294);
+      this.agar = new CursorAnchorInfo.Builder();
+      this.agas = new int[2];
+      this.agat = new Matrix();
+      AppMethodBeat.o(252294);
     }
     
-    public final void h(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
+    public final void j(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
     {
-      AppMethodBeat.i(196632);
-      Object localObject = b.this.Yht;
-      if ((localObject == null) || (((b.h)localObject).Yhf > 0))
+      AppMethodBeat.i(252309);
+      Object localObject = b.this.afZt;
+      if ((localObject == null) || (((b.h)localObject).afZf > 0))
       {
-        AppMethodBeat.o(196632);
+        AppMethodBeat.o(252309);
         return;
       }
       localObject = b.l(b.this);
       if (localObject == null)
       {
-        AppMethodBeat.o(196632);
+        AppMethodBeat.o(252309);
         return;
       }
       if (!((InputMethodManager)localObject).isActive(b.c(b.this)))
       {
-        AppMethodBeat.o(196632);
+        AppMethodBeat.o(252309);
         return;
       }
-      AppMethodBeat.o(196632);
+      AppMethodBeat.o(252309);
     }
   }
   
   static abstract interface d
     extends ViewTreeObserver.OnTouchModeChangeListener
   {
-    public abstract boolean ibz();
-    
     public abstract boolean isActive();
+    
+    public abstract boolean jGJ();
     
     public abstract void show();
   }
   
   static final class e
   {
-    public CustomTextView Yiu;
+    public CustomTextView agau;
     public int end;
     public int start;
     
     public e(CustomTextView paramCustomTextView, int paramInt1, int paramInt2)
     {
-      this.Yiu = paramCustomTextView;
+      this.agau = paramCustomTextView;
       this.start = paramInt1;
       this.end = paramInt2;
     }
@@ -1943,93 +1968,93 @@ public class b
     extends View
     implements b.p
   {
-    private int DIY;
-    protected int FPB = -1;
-    private int YiA;
-    private int YiB;
-    private float YiC;
-    private float YiD;
-    protected int YiE;
-    protected int YiF;
-    private float YiG;
-    private final float YiH;
-    private int YiI;
-    private int YiJ;
-    private int YiK;
-    private int YiL;
-    private boolean YiM = true;
-    protected int YiN = -1;
-    protected int YiO = -1;
-    private float YiP = -1.0F;
-    private float YiQ;
-    private float YiR;
-    private final int YiS;
-    private final long[] YiT = new long[5];
-    private final int[] YiU = new int[5];
-    private int YiV = 0;
-    private int YiW = 0;
-    protected Drawable Yiv;
-    protected Drawable Yiw;
-    private final PopupWindow Yix;
-    private int Yiy;
-    private int Yiz;
-    private int lgJ = aw.fromDPToPix(getContext(), 18);
-    protected Drawable mDrawable;
-    boolean rmR;
+    private int JAb;
+    protected int LKx = -1;
+    private int agaA;
+    private int agaB;
+    private float agaC;
+    private float agaD;
+    protected int agaE;
+    protected int agaF;
+    private float agaG;
+    private final float agaH;
+    private int agaI;
+    private int agaJ;
+    private int agaK;
+    private int agaL;
+    private boolean agaM = true;
+    protected int agaN = -1;
+    protected int agaO = -1;
+    private float agaP = -1.0F;
+    private float agaQ;
+    private float agaR;
+    private final int agaS;
+    private final long[] agaT = new long[5];
+    private final int[] agaU = new int[5];
+    private int agaV = 0;
+    private int agaW = 0;
+    protected Drawable agav;
+    protected Drawable agaw;
+    private final PopupWindow agax;
+    private int agay;
+    private int agaz;
+    protected Drawable kD;
+    private int nLt = bd.fromDPToPix(getContext(), 18);
+    boolean uwK;
     
     private f(Drawable paramDrawable1, Drawable paramDrawable2, int paramInt)
     {
       super();
       setId(paramInt);
-      this.Yix = new PopupWindow(b.c(b.this).getContext(), null, a.l.OperateItemAnim);
-      this.Yix.setSplitTouchEnabled(true);
-      this.Yix.setClippingEnabled(false);
-      g.a(this.Yix, 1002);
-      this.Yix.setWidth(-2);
-      this.Yix.setHeight(-2);
-      this.Yix.setContentView(this);
+      this.agax = new PopupWindow(b.c(b.this).getContext(), null, a.l.OperateItemAnim);
+      this.agax.setSplitTouchEnabled(true);
+      this.agax.setClippingEnabled(false);
+      h.a(this.agax, 1002);
+      this.agax.setWidth(-2);
+      this.agax.setHeight(-2);
+      this.agax.setContentView(this);
       b(paramDrawable1, paramDrawable2);
-      this.DIY = b.c(b.this).getContext().getResources().getDimensionPixelSize(a.e.text_handle_min_size);
+      this.JAb = b.c(b.this).getContext().getResources().getDimensionPixelSize(a.e.text_handle_min_size);
       paramInt = getPreferredHeight();
-      this.YiG = (-0.3F * paramInt);
-      this.YiH = (paramInt * 0.7F);
-      this.YiS = ((int)(this.YiH - this.YiG));
+      this.agaG = (-0.3F * paramInt);
+      this.agaH = (paramInt * 0.7F);
+      this.agaS = ((int)(this.agaH - this.agaG));
     }
     
     private boolean a(f paramf, Rect paramRect)
     {
-      paramf = paramf.Yix;
-      int i = this.YiA;
-      int j = this.YiB;
-      int k = this.YiA;
+      paramf = paramf.agax;
+      int i = this.agaA;
+      int j = this.agaB;
+      int k = this.agaA;
       int m = paramf.getContentView().getWidth();
-      int n = this.YiB;
+      int n = this.agaB;
       return Rect.intersects(new Rect(i, j, k + m, paramf.getContentView().getHeight() + n), paramRect);
     }
     
-    private void axM(int paramInt)
+    private void aEv(int paramInt)
     {
-      this.YiV = ((this.YiV + 1) % 5);
-      this.YiU[this.YiV] = paramInt;
-      this.YiT[this.YiV] = SystemClock.uptimeMillis();
-      this.YiW += 1;
+      this.agaV = ((this.agaV + 1) % 5);
+      this.agaU[this.agaV] = paramInt;
+      this.agaT[this.agaV] = SystemClock.uptimeMillis();
+      this.agaW += 1;
     }
     
     private int getDrawHeight()
     {
-      return this.mDrawable.getIntrinsicHeight();
+      return this.kD.getIntrinsicHeight();
     }
     
     private int getDrawWidth()
     {
-      return this.mDrawable.getIntrinsicWidth();
+      return this.kD.getIntrinsicWidth();
     }
     
     private int getHorizontalOffset()
     {
       int i = getPreferredWidth();
       int j = getDrawWidth();
-      switch (this.YiF)
+      switch (this.agaF)
       {
       case 4: 
       default: 
@@ -2042,7 +2067,7 @@ public class b
     
     private f getOtherSelectionHandle()
     {
-      b.n localn = b.this.ibv();
+      b.n localn = b.this.jGF();
       if ((localn == null) || (!localn.isActive())) {
         return null;
       }
@@ -2052,27 +2077,27 @@ public class b
       return b.n.c(localn);
     }
     
-    private boolean ibB()
+    private boolean jGL()
     {
-      if (this.rmR) {
+      if (this.uwK) {
         return true;
       }
-      if (b.c(b.this).iaH()) {
+      if (b.c(b.this).jFP()) {
         return false;
       }
-      return b.c(b.this).aF(this.Yiy + this.YiE + getHorizontalOffset(), this.Yiz);
+      return b.c(b.this).bj(this.agay + this.agaE + getHorizontalOffset(), this.agaz);
     }
     
-    private boolean ibC()
+    private boolean jGM()
     {
-      if (b.a(b.this).Yjx) {
+      if (b.a(b.this).agbw) {
         return true;
       }
       if ((b.c(b.this).getRotation() != 0.0F) || (b.c(b.this).getRotationX() != 0.0F) || (b.c(b.this).getRotationY() != 0.0F)) {
         return false;
       }
-      this.YiQ = b.c(b.this).getScaleX();
-      this.YiR = b.c(b.this).getScaleY();
+      this.agaQ = b.c(b.this).getScaleX();
+      this.agaR = b.c(b.this).getScaleY();
       for (ViewParent localViewParent = b.c(b.this).getParent(); localViewParent != null; localViewParent = localViewParent.getParent()) {
         if ((localViewParent instanceof View))
         {
@@ -2080,9 +2105,9 @@ public class b
           if ((localView.getRotation() != 0.0F) || (localView.getRotationX() != 0.0F) || (localView.getRotationY() != 0.0F)) {
             return false;
           }
-          this.YiQ *= localView.getScaleX();
-          float f = this.YiR;
-          this.YiR = (localView.getScaleY() * f);
+          this.agaQ *= localView.getScaleX();
+          float f = this.agaR;
+          this.agaR = (localView.getScaleY() * f);
         }
       }
       return true;
@@ -2090,7 +2115,7 @@ public class b
     
     private void setVisible(boolean paramBoolean)
     {
-      View localView = this.Yix.getContentView();
+      View localView = this.agax.getContentView();
       if (paramBoolean) {}
       for (int i = 0;; i = 4)
       {
@@ -2099,9 +2124,11 @@ public class b
       }
     }
     
-    protected void Hx(boolean paramBoolean)
+    protected abstract void KS(int paramInt);
+    
+    protected void Nt(boolean paramBoolean)
     {
-      if ((!paramBoolean) && (this.rmR)) {}
+      if ((!paramBoolean) && (this.uwK)) {}
       Layout localLayout;
       do
       {
@@ -2110,30 +2137,28 @@ public class b
       } while (localLayout == null);
       int i = getCurrentCursorOffset();
       paramBoolean = b(localLayout, i);
-      Drawable localDrawable2 = this.mDrawable;
+      Drawable localDrawable2 = this.kD;
       if (paramBoolean) {}
-      for (Drawable localDrawable1 = this.Yiw;; localDrawable1 = this.Yiv)
+      for (Drawable localDrawable1 = this.agaw;; localDrawable1 = this.agav)
       {
-        this.mDrawable = localDrawable1;
-        this.YiE = c(this.mDrawable, paramBoolean);
-        this.YiF = Hy(paramBoolean);
-        if ((localDrawable2 == this.mDrawable) || (!isShowing())) {
+        this.kD = localDrawable1;
+        this.agaE = c(this.kD, paramBoolean);
+        this.agaF = Nu(paramBoolean);
+        if ((localDrawable2 == this.kD) || (!isShowing())) {
           break;
         }
-        this.Yiy = (d(localLayout, i) - this.YiE - getHorizontalOffset() + getCursorOffset());
-        this.Yiy += b.c(b.this).ias();
-        this.YiM = true;
-        h(this.YiI, this.YiJ, false, false);
+        this.agay = (d(localLayout, i) - this.agaE - getHorizontalOffset() + getCursorOffset());
+        this.agay += b.c(b.this).jFz();
+        this.agaM = true;
+        j(this.agaI, this.agaJ, false, false);
         postInvalidate();
         return;
       }
     }
     
-    protected abstract int Hy(boolean paramBoolean);
+    protected abstract int Nu(boolean paramBoolean);
     
-    protected abstract void JU(int paramInt);
-    
-    protected final void az(MotionEvent paramMotionEvent)
+    protected final void aC(MotionEvent paramMotionEvent)
     {
       if (b.q(b.this) == null) {}
       Object localObject1;
@@ -2153,7 +2178,7 @@ public class b
         {
           return;
           localObject1 = new PointF();
-          if (!ibC()) {
+          if (!jGM()) {
             break label1178;
           }
           if (!b.o(b.this)) {
@@ -2186,36 +2211,36 @@ public class b
               break label1297;
             }
             b.a(b.this, true);
-            b.c(b.this).iai();
+            b.c(b.this).jFr();
             b.r(b.this);
             paramMotionEvent = b.a(b.this);
             f1 = ((PointF)localObject1).x;
             f2 = ((PointF)localObject1).y;
-            if ((!paramMotionEvent.Yjx) || (f2 == paramMotionEvent.uLU)) {
+            if ((!paramMotionEvent.agbw) || (f2 == paramMotionEvent.xUv)) {
               break label1184;
             }
             i = 1;
             if (i == 0) {
               break label1209;
             }
-            if (!paramMotionEvent.eYu.isRunning()) {
+            if (!paramMotionEvent.hbU.isRunning()) {
               break label1190;
             }
-            paramMotionEvent.eYu.cancel();
-            paramMotionEvent.Yjy = paramMotionEvent.YjA;
-            paramMotionEvent.Yjz = paramMotionEvent.YjB;
-            paramMotionEvent.eYu.start();
-            paramMotionEvent.uLT = f1;
-            paramMotionEvent.uLU = f2;
-            paramMotionEvent.Yjx = true;
+            paramMotionEvent.hbU.cancel();
+            paramMotionEvent.agbx = paramMotionEvent.agbz;
+            paramMotionEvent.agby = paramMotionEvent.agbA;
+            paramMotionEvent.hbU.start();
+            paramMotionEvent.xUu = f1;
+            paramMotionEvent.xUv = f2;
+            paramMotionEvent.agbw = true;
             paramMotionEvent = null;
             if (Build.VERSION.SDK_INT < 29) {
               break label1239;
             }
-            paramMotionEvent = b.a(b.this).Yjw.getPosition();
+            paramMotionEvent = b.a(b.this).agbv.getPosition();
           }
         } while ((paramMotionEvent == null) || (Build.VERSION.SDK_INT < 28));
-        paramMotionEvent = new Rect(paramMotionEvent.x, paramMotionEvent.y, paramMotionEvent.x + b.a(b.this).Yjw.getWidth(), paramMotionEvent.y + b.a(b.this).Yjw.getHeight());
+        paramMotionEvent = new Rect(paramMotionEvent.x, paramMotionEvent.y, paramMotionEvent.x + b.a(b.this).agbv.getWidth(), paramMotionEvent.y + b.a(b.this).agbv.getHeight());
         if (a(this, paramMotionEvent)) {
           break label1285;
         }
@@ -2236,10 +2261,10 @@ public class b
         label425:
         f1 = 0.0F;
         if (Build.VERSION.SDK_INT >= 28) {
-          f1 = Math.round(b.a(b.this).Yjw.getHeight() / b.a(b.this).Yjw.getZoom());
+          f1 = Math.round(b.a(b.this).agbv.getHeight() / b.a(b.this).agbv.getZoom());
         }
         localObject2 = b.c(b.this).getPaint().getFontMetrics();
-        if ((((Paint.FontMetrics)localObject2).descent - ((Paint.FontMetrics)localObject2).ascent) * this.YiR > f1)
+        if ((((Paint.FontMetrics)localObject2).descent - ((Paint.FontMetrics)localObject2).ascent) * this.agaR > f1)
         {
           i = 1;
           break;
@@ -2267,7 +2292,7 @@ public class b
         float f3;
         if (paramMotionEvent.getActionMasked() == 0)
         {
-          this.YiP = paramMotionEvent.getRawX();
+          this.agaP = paramMotionEvent.getRawX();
           localObject2 = b.c(b.this).getLayout();
           i1 = ((Layout)localObject2).getLineForOffset(j);
           if ((i == -1) || (i1 != ((Layout)localObject2).getLineForOffset(i))) {
@@ -2323,11 +2348,11 @@ public class b
         label1027:
         for (f2 = c(b.c(b.this).getLayout(), i) + f2;; f2 = b.c(b.this).getLayout().getLineRight(i1) + f2)
         {
-          f4 = this.YiQ * f1;
-          f2 = this.YiQ * f2;
+          f4 = this.agaQ * f1;
+          f2 = this.agaQ * f2;
           f1 = 0.0F;
           if (Build.VERSION.SDK_INT >= 28) {
-            f1 = Math.round(b.a(b.this).Yjw.getWidth() / b.a(b.this).Yjw.getZoom());
+            f1 = Math.round(b.a(b.this).agbv.getWidth() / b.a(b.this).agbv.getZoom());
           }
           if ((f3 >= f4 - f1 / 2.0F) && (f3 <= f1 / 2.0F + f2)) {
             break label1048;
@@ -2337,7 +2362,7 @@ public class b
           if (paramMotionEvent.getActionMasked() != 1) {
             break label603;
           }
-          this.YiP = -1.0F;
+          this.agaP = -1.0F;
           break label603;
           label970:
           k = 0;
@@ -2362,11 +2387,11 @@ public class b
           break label839;
         }
         label1048:
-        if (this.YiQ == 1.0F) {}
-        for (f1 = f3;; f1 = (paramMotionEvent.getRawX() - this.YiP) * this.YiQ + this.YiP - localObject2[0])
+        if (this.agaQ == 1.0F) {}
+        for (f1 = f3;; f1 = (paramMotionEvent.getRawX() - this.agaP) * this.agaQ + this.agaP - localObject2[0])
         {
           ((PointF)localObject1).x = Math.max(f4, Math.min(f2, f1));
-          ((PointF)localObject1).y = (((b.c(b.this).getLayout().getLineTop(i1) + b.a(b.c(b.this).getLayout(), i1)) / 2.0F + b.c(b.this).getTotalPaddingTop() - b.c(b.this).getScrollY()) * this.YiR);
+          ((PointF)localObject1).y = (((b.c(b.this).getLayout().getLineTop(i1) + b.a(b.c(b.this).getLayout(), i1)) / 2.0F + b.c(b.this).getTotalPaddingTop() - b.c(b.this).getScrollY()) * this.agaR);
           i = 1;
           break;
         }
@@ -2377,39 +2402,39 @@ public class b
         i = 0;
         break label221;
         label1190:
-        paramMotionEvent.Yjy = paramMotionEvent.uLT;
-        paramMotionEvent.Yjz = paramMotionEvent.uLU;
+        paramMotionEvent.agbx = paramMotionEvent.xUu;
+        paramMotionEvent.agby = paramMotionEvent.xUv;
         break label259;
         label1209:
-        if ((paramMotionEvent.eYu.isRunning()) || (Build.VERSION.SDK_INT < 28)) {
+        if ((paramMotionEvent.hbU.isRunning()) || (Build.VERSION.SDK_INT < 28)) {
           break label266;
         }
-        paramMotionEvent.Yjw.show(f1, f2);
+        paramMotionEvent.agbv.show(f1, f2);
         break label266;
         label1239:
         if (Build.VERSION.SDK_INT != 28) {
           break label305;
         }
-        paramMotionEvent = (Point)new com.tencent.mm.ui.widget.cedit.util.a(b.a(b.this).Yjw, "getWindowCoords", new Class[0]).invoke(new Object[0]);
+        paramMotionEvent = (Point)new com.tencent.mm.ui.widget.cedit.util.a(b.a(b.this).agbv, "getWindowCoords", new Class[0]).invoke(new Object[0]);
         break label305;
         label1285:
         bool = false;
         break label381;
       }
       label1297:
-      ibD();
+      jGN();
     }
     
     protected int b(Layout paramLayout, int paramInt, float paramFloat)
     {
-      return b.c(b.this).B(paramInt, paramFloat);
+      return b.c(b.this).E(paramInt, paramFloat);
     }
     
     final void b(Drawable paramDrawable1, Drawable paramDrawable2)
     {
-      this.Yiv = paramDrawable1;
-      this.Yiw = paramDrawable2;
-      Hx(true);
+      this.agav = paramDrawable1;
+      this.agaw = paramDrawable2;
+      Nt(true);
     }
     
     protected boolean b(Layout paramLayout, int paramInt)
@@ -2424,8 +2449,6 @@ public class b
     
     protected abstract int c(Drawable paramDrawable, boolean paramBoolean);
     
-    public void cfy() {}
-    
     int d(Layout paramLayout, int paramInt)
     {
       return (int)(c(paramLayout, paramInt) - 0.5F);
@@ -2433,12 +2456,10 @@ public class b
     
     protected void dismiss()
     {
-      this.rmR = false;
-      this.Yix.dismiss();
-      cfy();
+      this.uwK = false;
+      this.agax.dismiss();
+      iQ();
     }
-    
-    protected abstract void g(float paramFloat1, float paramFloat2, boolean paramBoolean);
     
     public abstract int getCurrentCursorOffset();
     
@@ -2449,66 +2470,24 @@ public class b
     
     final int getIdealFingerToCursorOffset()
     {
-      return this.YiS;
+      return this.agaS;
     }
     
     public float getIdealVerticalOffset()
     {
-      return this.YiH;
+      return this.agaH;
     }
     
     protected abstract int getMagnifierHandleTrigger();
     
     protected final int getPreferredHeight()
     {
-      return Math.max(getDrawWidth(), this.DIY);
+      return Math.max(getDrawWidth(), this.JAb);
     }
     
     protected final int getPreferredWidth()
     {
-      return Math.max(getDrawWidth(), this.DIY);
-    }
-    
-    public final void h(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
-    {
-      p(getCurrentCursorOffset(), paramBoolean2, false);
-      if ((paramBoolean1) || (this.YiM))
-      {
-        if (this.rmR)
-        {
-          if ((paramInt1 != this.YiI) || (paramInt2 != this.YiJ))
-          {
-            this.YiC += paramInt1 - this.YiI;
-            this.YiD += paramInt2 - this.YiJ;
-            this.YiI = paramInt1;
-            this.YiJ = paramInt2;
-          }
-          ibE();
-        }
-        if (!ibB()) {
-          break label166;
-        }
-        paramInt1 = this.Yiy + paramInt1;
-        paramInt2 = this.Yiz + paramInt2;
-        this.YiA = paramInt1;
-        this.YiB = paramInt2;
-        if (!isShowing()) {
-          break label146;
-        }
-        this.Yix.update(paramInt1, paramInt2, -1, -1);
-      }
-      for (;;)
-      {
-        this.YiM = false;
-        return;
-        label146:
-        this.Yix.showAtLocation(b.c(b.this), 0, paramInt1, paramInt2);
-        continue;
-        label166:
-        if (isShowing()) {
-          dismiss();
-        }
-      }
+      return Math.max(getDrawWidth(), this.JAb);
     }
     
     public final void hide()
@@ -2517,12 +2496,71 @@ public class b
       b.m(b.this).c(this);
     }
     
-    public final boolean ibA()
+    public void iQ() {}
+    
+    public void invalidate()
     {
-      return this.YiW > 1;
+      super.invalidate();
+      if (isShowing()) {
+        v(getCurrentCursorOffset(), true, false);
+      }
     }
     
-    protected final void ibD()
+    public boolean isShowing()
+    {
+      return this.agax.isShowing();
+    }
+    
+    protected abstract void j(float paramFloat1, float paramFloat2, boolean paramBoolean);
+    
+    public final void j(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
+    {
+      v(getCurrentCursorOffset(), paramBoolean2, false);
+      if ((paramBoolean1) || (this.agaM))
+      {
+        if (this.uwK)
+        {
+          if ((paramInt1 != this.agaI) || (paramInt2 != this.agaJ))
+          {
+            this.agaC += paramInt1 - this.agaI;
+            this.agaD += paramInt2 - this.agaJ;
+            this.agaI = paramInt1;
+            this.agaJ = paramInt2;
+          }
+          jGO();
+        }
+        if (!jGL()) {
+          break label166;
+        }
+        paramInt1 = this.agay + paramInt1;
+        paramInt2 = this.agaz + paramInt2;
+        this.agaA = paramInt1;
+        this.agaB = paramInt2;
+        if (!isShowing()) {
+          break label146;
+        }
+        this.agax.update(paramInt1, paramInt2, -1, -1);
+      }
+      for (;;)
+      {
+        this.agaM = false;
+        return;
+        label146:
+        this.agax.showAtLocation(b.c(b.this), 0, paramInt1, paramInt2);
+        continue;
+        label166:
+        if (isShowing()) {
+          dismiss();
+        }
+      }
+    }
+    
+    public final boolean jGK()
+    {
+      return this.agaW > 1;
+    }
+    
+    protected final void jGN()
     {
       if (b.a(b.this) != null)
       {
@@ -2537,28 +2575,15 @@ public class b
       }
     }
     
-    void ibE() {}
-    
-    public void invalidate()
-    {
-      super.invalidate();
-      if (isShowing()) {
-        p(getCurrentCursorOffset(), true, false);
-      }
-    }
-    
-    public boolean isShowing()
-    {
-      return this.Yix.isShowing();
-    }
+    void jGO() {}
     
     protected void onDraw(Canvas paramCanvas)
     {
       int i = getDrawWidth();
       int j = getDrawHeight();
       int k = getHorizontalOffset();
-      this.mDrawable.setBounds(k, 0, i + k, j);
-      this.mDrawable.draw(paramCanvas);
+      this.kD.setBounds(k, 0, i + k, j);
+      this.kD.draw(paramCanvas);
     }
     
     protected void onMeasure(int paramInt1, int paramInt2)
@@ -2590,97 +2615,64 @@ public class b
         return true;
       case 0: 
         i = getCurrentCursorOffset();
-        this.YiW = 0;
-        axM(i);
+        this.agaW = 0;
+        aEv(i);
         b.l locall = b.m(b.this);
-        this.YiI = locall.Yiy;
-        this.YiJ = locall.Yiz;
-        this.YiK = locall.YjF;
-        this.YiL = locall.YjG;
+        this.agaI = locall.agay;
+        this.agaJ = locall.agaz;
+        this.agaK = locall.agbE;
+        this.agaL = locall.agbF;
         f1 = paramMotionEvent.getRawX();
-        f2 = this.YiK;
-        f3 = this.YiI;
+        f2 = this.agaK;
+        f3 = this.agaI;
         f4 = paramMotionEvent.getRawY();
-        f5 = this.YiL;
-        f6 = this.YiJ;
-        this.YiC = (f1 - f2 + f3 - this.Yiy);
-        this.YiD = (f4 - f5 + f6 - this.Yiz);
-        this.rmR = true;
-        this.YiO = -1;
+        f5 = this.agaL;
+        f6 = this.agaJ;
+        this.agaC = (f1 - f2 + f3 - this.agay);
+        this.agaD = (f4 - f5 + f6 - this.agaz);
+        this.uwK = true;
+        this.agaO = -1;
         return true;
       case 2: 
         f2 = paramMotionEvent.getRawX();
-        f3 = this.YiK;
-        f4 = this.YiI;
+        f3 = this.agaK;
+        f4 = this.agaI;
         f1 = paramMotionEvent.getRawY();
-        f5 = this.YiL;
-        f5 = this.YiJ + (f1 - f5);
-        f1 = this.YiD - this.YiJ;
-        f6 = f5 - this.Yiz - this.YiJ;
-        if (f1 < this.YiH) {}
-        for (f1 = Math.max(Math.min(f6, this.YiH), f1);; f1 = Math.min(Math.max(f6, this.YiH), f1))
+        f5 = this.agaL;
+        f5 = this.agaJ + (f1 - f5);
+        f1 = this.agaD - this.agaJ;
+        f6 = f5 - this.agaz - this.agaJ;
+        if (f1 < this.agaH) {}
+        for (f1 = Math.max(Math.min(f6, this.agaH), f1);; f1 = Math.min(Math.max(f6, this.agaH), f1))
         {
-          this.YiD = (f1 + this.YiJ);
-          g(f4 + (f2 - f3) - this.YiC + this.YiE + getHorizontalOffset(), f5 - this.YiD + this.YiG, paramMotionEvent.isFromSource(4098));
+          this.agaD = (f1 + this.agaJ);
+          j(f4 + (f2 - f3) - this.agaC + this.agaE + getHorizontalOffset(), f5 - this.agaD + this.agaG, paramMotionEvent.isFromSource(4098));
           return true;
         }
       case 1: 
         boolean bool = paramMotionEvent.isFromSource(4098);
         long l = SystemClock.uptimeMillis();
-        i = this.YiV;
-        int k = Math.min(this.YiW, 5);
+        i = this.agaV;
+        int k = Math.min(this.agaW, 5);
         int j = 0;
-        while ((j < k) && (l - this.YiT[i] < 150L))
+        while ((j < k) && (l - this.agaT[i] < 150L))
         {
           j += 1;
-          i = (this.YiV - j + 5) % 5;
+          i = (this.agaV - j + 5) % 5;
         }
-        if ((j > 0) && (j < k) && (l - this.YiT[i] > 350L)) {
-          p(this.YiU[i], false, bool);
+        if ((j > 0) && (j < k) && (l - this.agaT[i] > 350L)) {
+          v(this.agaU[i], false, bool);
         }
         break;
       }
-      this.rmR = false;
-      Hx(false);
+      this.uwK = false;
+      Nt(false);
       return true;
-    }
-    
-    protected void p(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-    {
-      if (b.c(b.this).getLayout() == null) {
-        b.this.iaN();
-      }
-      for (;;)
-      {
-        return;
-        Layout localLayout = b.c(b.this).getLayout();
-        if (paramInt != this.FPB) {}
-        for (int i = 1; (i != 0) || (paramBoolean1); i = 0)
-        {
-          if (i != 0)
-          {
-            JU(paramInt);
-            if ((paramBoolean2) && (b.n(b.this))) {
-              b.c(b.this).performHapticFeedback(9);
-            }
-            axM(paramInt);
-          }
-          i = localLayout.getLineForOffset(paramInt);
-          this.YiN = i;
-          this.Yiy = (d(localLayout, paramInt) - this.YiE - getHorizontalOffset() + getCursorOffset());
-          this.Yiz = b.a(localLayout, i);
-          this.Yiy += b.c(b.this).ias();
-          this.Yiz += b.c(b.this).iat();
-          this.FPB = paramInt;
-          this.YiM = true;
-          return;
-        }
-      }
     }
     
     public void setTargetWidth(int paramInt)
     {
-      this.lgJ = paramInt;
+      this.nLt = paramInt;
     }
     
     public void show()
@@ -2689,204 +2681,208 @@ public class b
         return;
       }
       b.m(b.this).a(this, true);
-      this.FPB = -1;
-      p(getCurrentCursorOffset(), false, false);
+      this.LKx = -1;
+      v(getCurrentCursorOffset(), false, false);
+    }
+    
+    protected void v(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+    {
+      if (b.c(b.this).getLayout() == null) {
+        b.this.jFX();
+      }
+      for (;;)
+      {
+        return;
+        Layout localLayout = b.c(b.this).getLayout();
+        if (paramInt != this.LKx) {}
+        for (int i = 1; (i != 0) || (paramBoolean1); i = 0)
+        {
+          if (i != 0)
+          {
+            KS(paramInt);
+            if ((paramBoolean2) && (b.n(b.this))) {
+              b.c(b.this).performHapticFeedback(9);
+            }
+            aEv(paramInt);
+          }
+          i = localLayout.getLineForOffset(paramInt);
+          this.agaN = i;
+          this.agay = (d(localLayout, paramInt) - this.agaE - getHorizontalOffset() + getCursorOffset());
+          this.agaz = b.a(localLayout, i);
+          this.agay += b.c(b.this).jFz();
+          this.agaz += b.c(b.this).jFA();
+          this.LKx = paramInt;
+          this.agaM = true;
+          return;
+        }
+      }
     }
   }
   
   static final class g
   {
-    String YiX;
-    CharSequence YiY;
-    int YiZ;
-    CustomTextView.c Yja;
-    boolean Yjb;
-    LocaleList Yjc;
+    String agaX;
+    CharSequence agaY;
+    int agaZ;
+    CustomTextView.c agba;
+    boolean agbb;
+    LocaleList agbc;
     Bundle extras;
-    int nlD = 0;
+    int qiM = 0;
   }
   
   static final class h
   {
-    int Yhf;
-    ExtractedTextRequest Yjd;
-    final ExtractedText Yje;
-    boolean Yjf;
-    boolean Yjg;
-    int Yjh;
-    int Yji;
-    int Yjj;
+    int afZf;
+    ExtractedTextRequest agbd;
+    boolean agbe;
+    boolean agbf;
+    int agbg;
+    int agbh;
+    int agbi;
     boolean mContentChanged;
+    final ExtractedText mExtractedText;
     
     h()
     {
-      AppMethodBeat.i(197276);
-      this.Yje = new ExtractedText();
-      AppMethodBeat.o(197276);
+      AppMethodBeat.i(252312);
+      this.mExtractedText = new ExtractedText();
+      AppMethodBeat.o(252312);
     }
   }
   
   final class i
     extends b.f
   {
-    private boolean WEG;
-    private float Yjk;
-    private float Yjl;
-    private Runnable Yjm;
-    private boolean Yjn;
-    private final int Yjo;
-    private final int Yjp;
+    private boolean aemg;
+    private float agbj;
+    private float agbk;
+    private Runnable agbl;
+    private boolean agbm;
+    private final int agbn;
+    private final int agbo;
     
     i(Drawable paramDrawable)
     {
       super(paramDrawable, paramDrawable, a.g.insertion_handle, (byte)0);
-      AppMethodBeat.i(194399);
-      this.WEG = false;
-      this.Yjn = false;
-      this.Yjp = 0;
-      this.Yjo = 255;
-      AppMethodBeat.o(194399);
+      AppMethodBeat.i(252323);
+      this.aemg = false;
+      this.agbm = false;
+      this.agbo = 0;
+      this.agbn = 255;
+      AppMethodBeat.o(252323);
     }
     
-    private void ibF()
+    private void jGP()
     {
-      AppMethodBeat.i(194400);
-      if (this.Yjm == null) {
-        this.Yjm = new Runnable()
+      AppMethodBeat.i(252330);
+      if (this.agbl == null) {
+        this.agbl = new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(209974);
+            AppMethodBeat.i(252235);
             b.i.this.hide();
-            AppMethodBeat.o(209974);
+            AppMethodBeat.o(252235);
           }
         };
       }
       for (;;)
       {
-        b.c(b.this).postDelayed(this.Yjm, 4000L);
-        AppMethodBeat.o(194400);
+        b.c(b.this).postDelayed(this.agbl, 4000L);
+        AppMethodBeat.o(252330);
         return;
-        ibG();
+        jGQ();
       }
     }
     
-    private void ibG()
+    private void jGQ()
     {
-      AppMethodBeat.i(194401);
-      if (this.Yjm != null) {
-        b.c(b.this).removeCallbacks(this.Yjm);
+      AppMethodBeat.i(252333);
+      if (this.agbl != null) {
+        b.c(b.this).removeCallbacks(this.agbl);
       }
-      AppMethodBeat.o(194401);
+      AppMethodBeat.o(252333);
     }
     
-    protected final void Hx(boolean paramBoolean)
+    public final void KS(int paramInt)
     {
-      AppMethodBeat.i(194414);
-      super.Hx(paramBoolean);
-      this.mDrawable.setAlpha(this.Yjo);
-      AppMethodBeat.o(194414);
+      AppMethodBeat.i(252423);
+      Selection.setSelection((Spannable)b.c(b.this).getText(), paramInt);
+      AppMethodBeat.o(252423);
     }
     
-    protected final int Hy(boolean paramBoolean)
+    protected final void Nt(boolean paramBoolean)
+    {
+      AppMethodBeat.i(252413);
+      super.Nt(paramBoolean);
+      this.kD.setAlpha(this.agbn);
+      AppMethodBeat.o(252413);
+    }
+    
+    protected final int Nu(boolean paramBoolean)
     {
       return 1;
     }
     
-    public final void JU(int paramInt)
-    {
-      AppMethodBeat.i(194417);
-      Selection.setSelection((Spannable)b.c(b.this).getText(), paramInt);
-      AppMethodBeat.o(194417);
-    }
-    
     protected final int c(Drawable paramDrawable, boolean paramBoolean)
     {
-      AppMethodBeat.i(194402);
+      AppMethodBeat.i(252344);
       int i = paramDrawable.getIntrinsicWidth() / 2;
-      AppMethodBeat.o(194402);
+      AppMethodBeat.o(252344);
       return i;
-    }
-    
-    public final void cfy()
-    {
-      AppMethodBeat.i(194423);
-      super.cfy();
-      ibG();
-      AppMethodBeat.o(194423);
     }
     
     final int d(Layout paramLayout, int paramInt)
     {
-      AppMethodBeat.i(194405);
-      if (b.this.YhO != null)
+      AppMethodBeat.i(252364);
+      if (b.this.afZO != null)
       {
         float f = c(paramLayout, paramInt);
-        paramInt = b.a(b.this, b.this.YhO, f);
+        paramInt = b.a(b.this, b.this.afZO, f);
         int i = b.t(b.this).left;
-        AppMethodBeat.o(194405);
+        AppMethodBeat.o(252364);
         return paramInt + i;
       }
       paramInt = super.d(paramLayout, paramInt);
-      AppMethodBeat.o(194405);
+      AppMethodBeat.o(252364);
       return paramInt;
     }
     
     public final void dismiss()
     {
-      AppMethodBeat.i(194413);
-      if (this.WEG)
+      AppMethodBeat.i(252407);
+      if (this.aemg)
       {
-        this.Yjn = true;
-        this.mDrawable.setAlpha(0);
-        AppMethodBeat.o(194413);
+        this.agbm = true;
+        this.kD.setAlpha(0);
+        AppMethodBeat.o(252407);
         return;
       }
       super.dismiss();
-      this.Yjn = false;
-      AppMethodBeat.o(194413);
-    }
-    
-    protected final void g(float paramFloat1, float paramFloat2, boolean paramBoolean)
-    {
-      int i = -1;
-      AppMethodBeat.i(194419);
-      Layout localLayout = b.c(b.this).getLayout();
-      if (localLayout != null)
-      {
-        if (this.YiO == -1) {
-          this.YiO = b.c(b.this).cT(paramFloat2);
-        }
-        int j = b.this.a(localLayout, this.YiO, paramFloat2);
-        i = b(localLayout, j, paramFloat1);
-        this.YiO = j;
-      }
-      p(i, false, paramBoolean);
-      if (b.f(b.this) != null) {
-        b.v(b.this);
-      }
-      AppMethodBeat.o(194419);
+      this.agbm = false;
+      AppMethodBeat.o(252407);
     }
     
     public final int getCurrentCursorOffset()
     {
-      AppMethodBeat.i(194415);
+      AppMethodBeat.i(252418);
       int i = b.c(b.this).getSelectionStart();
-      AppMethodBeat.o(194415);
+      AppMethodBeat.o(252418);
       return i;
     }
     
     protected final int getCursorOffset()
     {
-      AppMethodBeat.i(194403);
+      AppMethodBeat.i(252354);
       int j = super.getCursorOffset();
       int i = j;
-      if (b.this.YhO != null)
+      if (b.this.afZO != null)
       {
-        b.this.YhO.getPadding(b.t(b.this));
-        i = j + (b.this.YhO.getIntrinsicWidth() - b.t(b.this).left - b.t(b.this).right) / 2;
+        b.this.afZO.getPadding(b.t(b.this));
+        i = j + (b.this.afZO.getIntrinsicWidth() - b.t(b.this).left - b.t(b.this).right) / 2;
       }
-      AppMethodBeat.o(194403);
+      AppMethodBeat.o(252354);
       return i;
     }
     
@@ -2895,40 +2891,69 @@ public class b
       return 0;
     }
     
-    final void ibE()
+    public final void iQ()
     {
-      AppMethodBeat.i(194420);
-      super.ibE();
-      ibG();
-      AppMethodBeat.o(194420);
+      AppMethodBeat.i(252438);
+      super.iQ();
+      jGQ();
+      AppMethodBeat.o(252438);
     }
     
     public final boolean isShowing()
     {
-      AppMethodBeat.i(194411);
-      if (this.Yjn)
+      AppMethodBeat.i(252391);
+      if (this.agbm)
       {
-        AppMethodBeat.o(194411);
+        AppMethodBeat.o(252391);
         return false;
       }
       boolean bool = super.isShowing();
-      AppMethodBeat.o(194411);
+      AppMethodBeat.o(252391);
       return bool;
+    }
+    
+    protected final void j(float paramFloat1, float paramFloat2, boolean paramBoolean)
+    {
+      int i = -1;
+      AppMethodBeat.i(252428);
+      Layout localLayout = b.c(b.this).getLayout();
+      if (localLayout != null)
+      {
+        if (this.agaO == -1) {
+          this.agaO = b.c(b.this).eg(paramFloat2);
+        }
+        int j = b.this.a(localLayout, this.agaO, paramFloat2);
+        i = b(localLayout, j, paramFloat1);
+        this.agaO = j;
+      }
+      v(i, false, paramBoolean);
+      if (b.f(b.this) != null) {
+        b.v(b.this);
+      }
+      AppMethodBeat.o(252428);
+    }
+    
+    final void jGO()
+    {
+      AppMethodBeat.i(252434);
+      super.jGO();
+      jGQ();
+      AppMethodBeat.o(252434);
     }
     
     protected final void onMeasure(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(194406);
+      AppMethodBeat.i(252373);
       super.onMeasure(paramInt1, paramInt2);
-      AppMethodBeat.o(194406);
+      AppMethodBeat.o(252373);
     }
     
     public final boolean onTouchEvent(MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(194409);
+      AppMethodBeat.i(252384);
       if (!b.c(b.this).b(paramMotionEvent, true))
       {
-        AppMethodBeat.o(194409);
+        AppMethodBeat.o(252384);
         return true;
       }
       boolean bool = super.onTouchEvent(paramMotionEvent);
@@ -2939,19 +2964,19 @@ public class b
       case 2: 
         for (;;)
         {
-          AppMethodBeat.o(194409);
+          AppMethodBeat.o(252384);
           return bool;
-          this.Yjk = paramMotionEvent.getRawX();
-          this.Yjl = paramMotionEvent.getRawY();
-          az(paramMotionEvent);
+          this.agbj = paramMotionEvent.getRawX();
+          this.agbk = paramMotionEvent.getRawY();
+          aC(paramMotionEvent);
           continue;
-          az(paramMotionEvent);
+          aC(paramMotionEvent);
         }
       case 1: 
-        if (!ibA())
+        if (!jGK())
         {
           ViewConfiguration localViewConfiguration = ViewConfiguration.get(b.c(b.this).getContext());
-          if (c.a(this.Yjk, this.Yjl, paramMotionEvent.getRawX(), paramMotionEvent.getRawY(), localViewConfiguration.getScaledTouchSlop())) {
+          if (c.b(this.agbj, this.agbk, paramMotionEvent.getRawX(), paramMotionEvent.getRawY(), localViewConfiguration.getScaledTouchSlop())) {
             b.u(b.this);
           }
         }
@@ -2959,8 +2984,8 @@ public class b
       }
       for (;;)
       {
-        ibF();
-        ibD();
+        jGP();
+        jGN();
         break;
         if ((b.f(b.this) != null) && (Build.VERSION.SDK_INT >= 23)) {
           b.f(b.this).invalidateContentRect();
@@ -2970,276 +2995,276 @@ public class b
     
     public final void show()
     {
-      AppMethodBeat.i(194412);
+      AppMethodBeat.i(252400);
       super.show();
-      this.Yjn = false;
-      this.mDrawable.setAlpha(this.Yjo);
-      AppMethodBeat.o(194412);
+      this.agbm = false;
+      this.kD.setAlpha(this.agbn);
+      AppMethodBeat.o(252400);
     }
   }
   
   public final class j
     implements b.d
   {
-    private b.i Yjr;
-    boolean Yjs;
-    private boolean Yjt;
-    private int Yju;
+    private b.i agbq;
+    boolean agbr;
+    private boolean agbs;
+    private int agbt;
     
     public j() {}
     
-    final void aA(MotionEvent paramMotionEvent)
+    final void aD(MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(193581);
+      AppMethodBeat.i(252274);
       Layout localLayout = b.c(b.this).getLayout();
       int i;
-      if (this.Yju == -1) {
-        i = b.this.a(localLayout, this.Yju, paramMotionEvent.getY());
+      if (this.agbt == -1) {
+        i = b.this.a(localLayout, this.agbt, paramMotionEvent.getY());
       }
       for (;;)
       {
-        this.Yju = i;
-        i = b.c(b.this).B(this.Yju, paramMotionEvent.getX());
+        this.agbt = i;
+        i = b.c(b.this).E(this.agbt, paramMotionEvent.getX());
         int j = b.c(b.this).getSelectionStart();
         int k = b.c(b.this).getSelectionEnd();
         if ((i != j) || (i != k))
         {
           Selection.setSelection((Spannable)b.c(b.this).getText(), i);
-          b.this.ibf();
+          b.this.jGp();
           if (b.n(b.this)) {
             b.c(b.this).performHapticFeedback(9);
           }
         }
-        ibI().az(paramMotionEvent);
-        AppMethodBeat.o(193581);
+        jGS().aC(paramMotionEvent);
+        AppMethodBeat.o(252274);
         return;
         int[] arrayOfInt = new int[2];
         b.c(b.this).getLocationOnScreen(arrayOfInt);
-        if (b.x(b.this).Ykk) {}
+        if (b.x(b.this).agcj) {}
         for (float f1 = paramMotionEvent.getRawY() - arrayOfInt[1];; f1 = paramMotionEvent.getY())
         {
-          float f2 = ibI().getIdealFingerToCursorOffset();
-          i = b.this.a(localLayout, this.Yju, f1 - f2);
-          if (!this.Yjt) {
+          float f2 = jGS().getIdealFingerToCursorOffset();
+          i = b.this.a(localLayout, this.agbt, f1 - f2);
+          if (!this.agbs) {
             break label256;
           }
           break;
         }
         label256:
-        if (i < this.Yju) {
-          i = Math.min(this.Yju, b.this.a(localLayout, this.Yju, f1));
+        if (i < this.agbt) {
+          i = Math.min(this.agbt, b.this.a(localLayout, this.agbt, f1));
         } else {
-          this.Yjt = true;
+          this.agbs = true;
         }
       }
     }
     
-    public final void cfy()
-    {
-      AppMethodBeat.i(193591);
-      b.c(b.this).getViewTreeObserver().removeOnTouchModeChangeListener(this);
-      if (this.Yjr != null) {
-        this.Yjr.cfy();
-      }
-      AppMethodBeat.o(193591);
-    }
-    
     public final void hide()
     {
-      AppMethodBeat.i(193588);
-      if (this.Yjr != null) {
-        this.Yjr.hide();
+      AppMethodBeat.i(252293);
+      if (this.agbq != null) {
+        this.agbq.hide();
       }
-      AppMethodBeat.o(193588);
+      AppMethodBeat.o(252293);
     }
     
-    final void ibH()
+    public final void iQ()
     {
-      AppMethodBeat.i(193585);
-      this.Yjs = false;
-      this.Yjt = false;
-      this.Yju = -1;
-      ibI().ibD();
-      b.i.a(ibI());
-      b.c(b.this).getParent().requestDisallowInterceptTouchEvent(false);
-      AppMethodBeat.o(193585);
-    }
-    
-    public final b.i ibI()
-    {
-      AppMethodBeat.i(193590);
-      if (this.Yjr == null)
-      {
-        b.this.Hv(false);
-        this.Yjr = new b.i(b.this, b.this.YhR);
+      AppMethodBeat.i(252311);
+      b.c(b.this).getViewTreeObserver().removeOnTouchModeChangeListener(this);
+      if (this.agbq != null) {
+        this.agbq.iQ();
       }
-      b.i locali = this.Yjr;
-      AppMethodBeat.o(193590);
-      return locali;
-    }
-    
-    public final void ibJ()
-    {
-      AppMethodBeat.i(193597);
-      if (this.Yjr != null) {
-        this.Yjr.invalidate();
-      }
-      AppMethodBeat.o(193597);
-    }
-    
-    public final boolean ibz()
-    {
-      return (this.Yjs) || ((this.Yjr != null) && (this.Yjr.rmR));
+      AppMethodBeat.o(252311);
     }
     
     public final boolean isActive()
     {
-      AppMethodBeat.i(193596);
-      if ((this.Yjr != null) && (this.Yjr.isShowing()))
+      AppMethodBeat.i(252321);
+      if ((this.agbq != null) && (this.agbq.isShowing()))
       {
-        AppMethodBeat.o(193596);
+        AppMethodBeat.o(252321);
         return true;
       }
-      AppMethodBeat.o(193596);
+      AppMethodBeat.o(252321);
       return false;
+    }
+    
+    public final boolean jGJ()
+    {
+      return (this.agbr) || ((this.agbq != null) && (this.agbq.uwK));
+    }
+    
+    final void jGR()
+    {
+      AppMethodBeat.i(252281);
+      this.agbr = false;
+      this.agbs = false;
+      this.agbt = -1;
+      jGS().jGN();
+      b.i.a(jGS());
+      b.c(b.this).getParent().requestDisallowInterceptTouchEvent(false);
+      AppMethodBeat.o(252281);
+    }
+    
+    public final b.i jGS()
+    {
+      AppMethodBeat.i(252306);
+      if (this.agbq == null)
+      {
+        b.this.Nr(false);
+        this.agbq = new b.i(b.this, b.this.afZR);
+      }
+      b.i locali = this.agbq;
+      AppMethodBeat.o(252306);
+      return locali;
+    }
+    
+    public final void jGT()
+    {
+      AppMethodBeat.i(252327);
+      if (this.agbq != null) {
+        this.agbq.invalidate();
+      }
+      AppMethodBeat.o(252327);
     }
     
     public final void onTouchModeChanged(boolean paramBoolean)
     {
-      AppMethodBeat.i(193589);
+      AppMethodBeat.i(252299);
       if (!paramBoolean) {
         hide();
       }
-      AppMethodBeat.o(193589);
+      AppMethodBeat.o(252299);
     }
     
     public final void show()
     {
-      AppMethodBeat.i(193586);
-      ibI().show();
+      AppMethodBeat.i(252288);
+      jGS().show();
       long l1 = SystemClock.uptimeMillis();
-      long l2 = CustomTextView.Yfc;
-      if ((b.y(b.this) != null) && ((this.Yjs) || (b.x(b.this).ibS()) || (b.z(b.this)))) {
+      long l2 = CustomTextView.afXc;
+      if ((b.y(b.this) != null) && ((this.agbr) || (b.x(b.this).jHc()) || (b.z(b.this)))) {
         b.c(b.this).removeCallbacks(b.y(b.this));
       }
-      if ((!this.Yjs) && (!b.x(b.this).ibS()) && (!b.z(b.this)) && (l1 - l2 < 15000L) && (b.this.ibk()))
+      if ((!this.agbr) && (!b.x(b.this).jHc()) && (!b.z(b.this)) && (l1 - l2 < 15000L) && (b.this.jGu()))
       {
         if (b.y(b.this) == null) {
           b.a(b.this, new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(188428);
-              b.this.ibh();
-              AppMethodBeat.o(188428);
+              AppMethodBeat.i(252342);
+              b.this.jGr();
+              AppMethodBeat.o(252342);
             }
           });
         }
         b.c(b.this).postDelayed(b.y(b.this), ViewConfiguration.getDoubleTapTimeout() + 1);
       }
-      if (!this.Yjs) {
-        b.i.a(ibI());
+      if (!this.agbr) {
+        b.i.a(jGS());
       }
-      if (b.this.Yhj != null) {
-        b.this.Yhj.hide();
+      if (b.this.afZj != null) {
+        b.this.afZj.hide();
       }
-      AppMethodBeat.o(193586);
+      AppMethodBeat.o(252288);
     }
   }
   
   static final class k
   {
-    float YjA;
-    float YjB;
-    final Magnifier Yjw;
-    boolean Yjx;
-    float Yjy;
-    float Yjz;
-    final ValueAnimator eYu;
-    float uLT;
-    float uLU;
+    float agbA;
+    final Magnifier agbv;
+    boolean agbw;
+    float agbx;
+    float agby;
+    float agbz;
+    final ValueAnimator hbU;
+    float xUu;
+    float xUv;
     
     private k(Magnifier paramMagnifier)
     {
-      AppMethodBeat.i(214393);
-      this.Yjw = paramMagnifier;
-      this.eYu = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-      this.eYu.setDuration(100L);
-      this.eYu.setInterpolator(new LinearInterpolator());
-      this.eYu.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      AppMethodBeat.i(252257);
+      this.agbv = paramMagnifier;
+      this.hbU = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+      this.hbU.setDuration(100L);
+      this.hbU.setInterpolator(new LinearInterpolator());
+      this.hbU.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
-          AppMethodBeat.i(202793);
-          b.k.this.YjA = (b.k.this.Yjy + (b.k.this.uLT - b.k.this.Yjy) * paramAnonymousValueAnimator.getAnimatedFraction());
-          b.k.this.YjB = (b.k.this.Yjz + (b.k.this.uLU - b.k.this.Yjz) * paramAnonymousValueAnimator.getAnimatedFraction());
+          AppMethodBeat.i(252247);
+          b.k.this.agbz = (b.k.this.agbx + (b.k.this.xUu - b.k.this.agbx) * paramAnonymousValueAnimator.getAnimatedFraction());
+          b.k.this.agbA = (b.k.this.agby + (b.k.this.xUv - b.k.this.agby) * paramAnonymousValueAnimator.getAnimatedFraction());
           if (Build.VERSION.SDK_INT >= 28) {
-            b.k.this.Yjw.show(b.k.this.YjA, b.k.this.YjB);
+            b.k.this.agbv.show(b.k.this.agbz, b.k.this.agbA);
           }
-          AppMethodBeat.o(202793);
+          AppMethodBeat.o(252247);
         }
       });
-      AppMethodBeat.o(214393);
+      AppMethodBeat.o(252257);
     }
     
     final void dismiss()
     {
-      AppMethodBeat.i(214394);
+      AppMethodBeat.i(252268);
       if (Build.VERSION.SDK_INT >= 28) {
-        this.Yjw.dismiss();
+        this.agbv.dismiss();
       }
-      this.eYu.cancel();
-      this.Yjx = false;
-      AppMethodBeat.o(214394);
+      this.hbU.cancel();
+      this.agbw = false;
+      AppMethodBeat.o(252268);
     }
   }
   
   final class l
     implements ViewTreeObserver.OnPreDrawListener
   {
-    private boolean YiM;
-    int Yiy;
-    int Yiz;
-    private b.p[] YjD;
-    private boolean[] YjE;
-    int YjF;
-    int YjG;
-    private int YjH;
-    boolean YjI;
-    final int[] YjJ;
+    private boolean agaM;
+    int agay;
+    int agaz;
+    private b.p[] agbC;
+    private boolean[] agbD;
+    int agbE;
+    int agbF;
+    private int agbG;
+    boolean agbH;
+    final int[] agbI;
     
     private l()
     {
-      AppMethodBeat.i(193270);
-      this.YjD = new b.p[7];
-      this.YjE = new boolean[7];
-      this.YiM = true;
-      this.YjJ = new int[2];
-      AppMethodBeat.o(193270);
+      AppMethodBeat.i(252269);
+      this.agbC = new b.p[7];
+      this.agbD = new boolean[7];
+      this.agaM = true;
+      this.agbI = new int[2];
+      AppMethodBeat.o(252269);
     }
     
     private void updatePosition()
     {
-      AppMethodBeat.i(193304);
-      b.c(b.this).getLocationInWindow(this.YjJ);
-      if ((this.YjJ[0] != this.Yiy) || (this.YjJ[1] != this.Yiz)) {}
+      AppMethodBeat.i(252276);
+      b.c(b.this).getLocationInWindow(this.agbI);
+      if ((this.agbI[0] != this.agay) || (this.agbI[1] != this.agaz)) {}
       for (boolean bool = true;; bool = false)
       {
-        this.YiM = bool;
-        this.Yiy = this.YjJ[0];
-        this.Yiz = this.YjJ[1];
-        b.c(b.this).getLocationOnScreen(this.YjJ);
-        this.YjF = this.YjJ[0];
-        this.YjG = this.YjJ[1];
-        AppMethodBeat.o(193304);
+        this.agaM = bool;
+        this.agay = this.agbI[0];
+        this.agaz = this.agbI[1];
+        b.c(b.this).getLocationOnScreen(this.agbI);
+        this.agbE = this.agbI[0];
+        this.agbF = this.agbI[1];
+        AppMethodBeat.o(252276);
         return;
       }
     }
     
     public final void a(b.p paramp, boolean paramBoolean)
     {
-      AppMethodBeat.i(193283);
-      if (this.YjH == 0)
+      AppMethodBeat.i(252289);
+      if (this.agbG == 0)
       {
         updatePosition();
         b.c(b.this).getViewTreeObserver().addOnPreDrawListener(this);
@@ -3248,10 +3273,10 @@ public class b
       int i = 0;
       while (i < 7)
       {
-        b.p localp = this.YjD[i];
+        b.p localp = this.agbC[i];
         if (localp == paramp)
         {
-          AppMethodBeat.o(193283);
+          AppMethodBeat.o(252289);
           return;
         }
         int k = j;
@@ -3265,32 +3290,32 @@ public class b
         i += 1;
         j = k;
       }
-      this.YjD[j] = paramp;
-      this.YjE[j] = paramBoolean;
-      this.YjH += 1;
-      AppMethodBeat.o(193283);
+      this.agbC[j] = paramp;
+      this.agbD[j] = paramBoolean;
+      this.agbG += 1;
+      AppMethodBeat.o(252289);
     }
     
     public final void c(b.p paramp)
     {
-      AppMethodBeat.i(193290);
+      AppMethodBeat.i(252296);
       int i = 0;
       for (;;)
       {
         if (i < 7)
         {
-          if (this.YjD[i] == paramp)
+          if (this.agbC[i] == paramp)
           {
-            this.YjD[i] = null;
-            this.YjH -= 1;
+            this.agbC[i] = null;
+            this.agbG -= 1;
           }
         }
         else
         {
-          if (this.YjH == 0) {
+          if (this.agbG == 0) {
             b.c(b.this).getViewTreeObserver().removeOnPreDrawListener(this);
           }
-          AppMethodBeat.o(193290);
+          AppMethodBeat.o(252296);
           return;
         }
         i += 1;
@@ -3299,22 +3324,22 @@ public class b
     
     public final boolean onPreDraw()
     {
-      AppMethodBeat.i(193296);
+      AppMethodBeat.i(252303);
       updatePosition();
       int i = 0;
       while (i < 7)
       {
-        if ((this.YiM) || (this.YjI) || (this.YjE[i] != 0))
+        if ((this.agaM) || (this.agbH) || (this.agbD[i] != 0))
         {
-          b.p localp = this.YjD[i];
+          b.p localp = this.agbC[i];
           if (localp != null) {
-            localp.h(this.Yiy, this.Yiz, this.YiM, this.YjI);
+            localp.j(this.agay, this.agaz, this.agaM, this.agbH);
           }
         }
         i += 1;
       }
-      this.YjI = false;
-      AppMethodBeat.o(193296);
+      this.agbH = false;
+      AppMethodBeat.o(252303);
       return true;
     }
   }
@@ -3322,29 +3347,29 @@ public class b
   public final class m
     extends b.f
   {
-    private final int YjK;
-    private boolean YjL;
-    private float YjM;
-    private float YjN;
-    private boolean YjO;
-    private final float YjP;
-    private final int[] YjQ;
+    private final int agbJ;
+    private boolean agbK;
+    private float agbL;
+    private float agbM;
+    private boolean agbN;
+    private final float agbO;
+    private final int[] agbP;
     
     public m(Drawable paramDrawable1, Drawable paramDrawable2, int paramInt1, int paramInt2)
     {
       super(paramDrawable1, paramDrawable2, paramInt1, (byte)0);
-      AppMethodBeat.i(200445);
-      this.YjL = false;
-      this.YjO = false;
-      this.YjQ = new int[2];
-      this.YjK = paramInt2;
-      this.YjP = (ViewConfiguration.get(b.c(b.this).getContext()).getScaledTouchSlop() * 4);
-      AppMethodBeat.o(200445);
+      AppMethodBeat.i(252278);
+      this.agbK = false;
+      this.agbN = false;
+      this.agbP = new int[2];
+      this.agbJ = paramInt2;
+      this.agbO = (ViewConfiguration.get(b.c(b.this).getContext()).getScaledTouchSlop() * 4);
+      AppMethodBeat.o(252278);
     }
     
     private static float a(Layout paramLayout, int paramInt, boolean paramBoolean)
     {
-      AppMethodBeat.i(200491);
+      AppMethodBeat.i(252301);
       int j = paramLayout.getLineForOffset(paramInt);
       int i;
       boolean bool;
@@ -3363,31 +3388,31 @@ public class b
           break label75;
         }
         f = paramLayout.getPrimaryHorizontal(paramInt);
-        AppMethodBeat.o(200491);
+        AppMethodBeat.o(252301);
         return f;
         i = Math.max(paramInt - 1, 0);
         break;
       }
       label75:
       float f = paramLayout.getSecondaryHorizontal(paramInt);
-      AppMethodBeat.o(200491);
+      AppMethodBeat.o(252301);
       return f;
     }
     
-    private void cd(int paramInt, boolean paramBoolean)
+    private void cU(int paramInt, boolean paramBoolean)
     {
       boolean bool2 = true;
-      AppMethodBeat.i(200485);
+      AppMethodBeat.i(252295);
       int i;
       int j;
       float f1;
-      if (ibK())
+      if (jGU())
       {
         i = b.c(b.this).getSelectionEnd();
-        if ((!ibK()) || (paramInt < i))
+        if ((!jGU()) || (paramInt < i))
         {
           j = paramInt;
-          if (ibK()) {
+          if (jGU()) {
             break label245;
           }
           j = paramInt;
@@ -3395,13 +3420,13 @@ public class b
             break label245;
           }
         }
-        this.YjM = 0.0F;
+        this.agbL = 0.0F;
         localObject = b.c(b.this).getLayout();
         if ((localObject == null) || (paramInt == i)) {
           break label217;
         }
         f1 = c((Layout)localObject, paramInt);
-        if (ibK()) {
+        if (jGU()) {
           break label211;
         }
       }
@@ -3409,85 +3434,85 @@ public class b
       for (boolean bool1 = true;; bool1 = false)
       {
         float f2 = a((Layout)localObject, i, bool1);
-        float f3 = c((Layout)localObject, this.FPB);
+        float f3 = c((Layout)localObject, this.LKx);
         if (((f3 >= f2) || (f1 >= f2)) && ((f3 <= f2) || (f1 <= f2))) {
           break label217;
         }
         paramInt = getCurrentCursorOffset();
-        if (!ibK()) {
+        if (!jGU()) {
           Math.max(paramInt - 1, 0);
         }
-        ibK();
-        p(0, false, paramBoolean);
-        AppMethodBeat.o(200485);
+        jGU();
+        v(0, false, paramBoolean);
+        AppMethodBeat.o(252295);
         return;
         i = b.c(b.this).getSelectionStart();
         break;
       }
       label217:
       Object localObject = b.this;
-      if (!ibK()) {}
+      if (!jGU()) {}
       for (bool1 = bool2;; bool1 = false)
       {
         j = b.a((b)localObject, i, bool1);
         label245:
-        p(j, false, paramBoolean);
-        AppMethodBeat.o(200485);
+        v(j, false, paramBoolean);
+        AppMethodBeat.o(252295);
         return;
       }
     }
     
-    private boolean ibK()
+    private boolean jGU()
     {
-      return this.YjK == 0;
+      return this.agbJ == 0;
     }
     
-    protected final int Hy(boolean paramBoolean)
+    protected final void KS(int paramInt)
     {
-      AppMethodBeat.i(200450);
-      if (paramBoolean == ibK())
-      {
-        AppMethodBeat.o(200450);
-        return 3;
-      }
-      AppMethodBeat.o(200450);
-      return 5;
-    }
-    
-    protected final void JU(int paramInt)
-    {
-      AppMethodBeat.i(200458);
-      if (ibK()) {
+      AppMethodBeat.i(252325);
+      if (jGU()) {
         Selection.setSelection((Spannable)b.c(b.this).getText(), paramInt, b.c(b.this).getSelectionEnd());
       }
       for (;;)
       {
-        Hx(false);
+        Nt(false);
         if (b.f(b.this) != null) {
           b.v(b.this);
         }
-        AppMethodBeat.o(200458);
+        AppMethodBeat.o(252325);
         return;
         Selection.setSelection((Spannable)b.c(b.this).getText(), b.c(b.this).getSelectionStart(), paramInt);
       }
     }
     
+    protected final int Nu(boolean paramBoolean)
+    {
+      AppMethodBeat.i(252314);
+      if (paramBoolean == jGU())
+      {
+        AppMethodBeat.o(252314);
+        return 3;
+      }
+      AppMethodBeat.o(252314);
+      return 5;
+    }
+    
     protected final int b(Layout paramLayout, int paramInt, float paramFloat)
     {
-      AppMethodBeat.i(200494);
-      paramInt = paramLayout.getOffsetForHorizontal(paramInt, b.c(b.this).cS(paramFloat));
-      AppMethodBeat.o(200494);
+      AppMethodBeat.i(252378);
+      paramInt = paramLayout.getOffsetForHorizontal(paramInt, b.c(b.this).ef(paramFloat));
+      AppMethodBeat.o(252378);
       return paramInt;
     }
     
     protected final boolean b(Layout paramLayout, int paramInt)
     {
-      AppMethodBeat.i(200488);
-      if (ibK()) {}
+      AppMethodBeat.i(252362);
+      if (jGU()) {}
       for (;;)
       {
         boolean bool = paramLayout.isRtlCharAt(paramInt);
-        AppMethodBeat.o(200488);
+        AppMethodBeat.o(252362);
         return bool;
         paramInt = Math.max(paramInt - 1, 0);
       }
@@ -3495,48 +3520,74 @@ public class b
     
     public final float c(Layout paramLayout, int paramInt)
     {
-      AppMethodBeat.i(200489);
-      float f = a(paramLayout, paramInt, ibK());
-      AppMethodBeat.o(200489);
+      AppMethodBeat.i(252372);
+      float f = a(paramLayout, paramInt, jGU());
+      AppMethodBeat.o(252372);
       return f;
     }
     
     protected final int c(Drawable paramDrawable, boolean paramBoolean)
     {
-      AppMethodBeat.i(200448);
-      if (paramBoolean == ibK())
+      AppMethodBeat.i(252308);
+      if (paramBoolean == jGU())
       {
         i = paramDrawable.getIntrinsicWidth() / 4;
-        AppMethodBeat.o(200448);
+        AppMethodBeat.o(252308);
         return i;
       }
       int i = paramDrawable.getIntrinsicWidth() * 3 / 4;
-      AppMethodBeat.o(200448);
+      AppMethodBeat.o(252308);
       return i;
     }
     
-    protected final void g(float paramFloat1, float paramFloat2, boolean paramBoolean)
+    public final int getCurrentCursorOffset()
     {
-      AppMethodBeat.i(200469);
+      AppMethodBeat.i(252319);
+      if (jGU())
+      {
+        i = b.c(b.this).getSelectionStart();
+        AppMethodBeat.o(252319);
+        return i;
+      }
+      int i = b.c(b.this).getSelectionEnd();
+      AppMethodBeat.o(252319);
+      return i;
+    }
+    
+    protected final int getMagnifierHandleTrigger()
+    {
+      AppMethodBeat.i(252385);
+      if (jGU())
+      {
+        AppMethodBeat.o(252385);
+        return 1;
+      }
+      AppMethodBeat.o(252385);
+      return 2;
+    }
+    
+    protected final void j(float paramFloat1, float paramFloat2, boolean paramBoolean)
+    {
+      AppMethodBeat.i(252340);
       Layout localLayout = b.c(b.this).getLayout();
       if (localLayout == null)
       {
-        cd(b.c(b.this).aG(paramFloat1, paramFloat2), paramBoolean);
-        AppMethodBeat.o(200469);
+        cU(b.c(b.this).bk(paramFloat1, paramFloat2), paramBoolean);
+        AppMethodBeat.o(252340);
         return;
       }
-      if (this.YiO == -1) {
-        this.YiO = b.c(b.this).cT(paramFloat2);
+      if (this.agaO == -1) {
+        this.agaO = b.c(b.this).eg(paramFloat2);
       }
       int i;
       int i1;
       int j;
-      if (ibK())
+      if (jGU())
       {
         i = b.c(b.this).getSelectionEnd();
-        i1 = b.this.a(localLayout, this.YiO, paramFloat2);
+        i1 = b.this.a(localLayout, this.agaO, paramFloat2);
         j = b(localLayout, i1, paramFloat1);
-        if (((!ibK()) || (j < i)) && ((ibK()) || (j > i))) {
+        if (((!jGU()) || (j < i)) && ((jGU()) || (j > i))) {
           break label1291;
         }
         i1 = localLayout.getLineForOffset(i);
@@ -3550,37 +3601,37 @@ public class b
       {
         int k = b.a(b.this, j);
         int m = b.b(b.this, j);
-        if (this.YjN == -1.0F) {
-          this.YjN = paramFloat1;
+        if (this.agbM == -1.0F) {
+          this.agbM = paramFloat1;
         }
         int i2 = getCurrentCursorOffset();
         boolean bool1 = b(localLayout, i2);
         boolean bool2 = b(localLayout, j);
         if (((bool1) && (!bool2)) || ((!bool1) && (bool2)))
         {
-          this.YjO = true;
-          this.YjM = 0.0F;
-          cd(j, paramBoolean);
-          AppMethodBeat.o(200469);
+          this.agbN = true;
+          this.agbL = 0.0F;
+          cU(j, paramBoolean);
+          AppMethodBeat.o(252340);
           return;
           i = b.c(b.this).getSelectionStart();
           break;
         }
-        if (this.YjO)
+        if (this.agbN)
         {
-          cd(j, paramBoolean);
-          this.YjM = 0.0F;
-          this.YjO = false;
-          AppMethodBeat.o(200469);
+          cU(j, paramBoolean);
+          this.agbL = 0.0F;
+          this.agbN = false;
+          AppMethodBeat.o(252340);
           return;
         }
-        paramFloat2 = paramFloat1 - this.YjN;
+        paramFloat2 = paramFloat1 - this.agbM;
         int n;
-        if (ibK()) {
-          if (i1 < this.YiO)
+        if (jGU()) {
+          if (i1 < this.agaO)
           {
             i = 1;
-            if (bool2 != ibK()) {
+            if (bool2 != jGU()) {
               break label610;
             }
             if (paramFloat2 <= 0.0F) {
@@ -3592,11 +3643,11 @@ public class b
             if (!b.c(b.this).getHorizontallyScrolling()) {
               break label701;
             }
-            b.c(b.this).getLocationOnScreen(this.YjQ);
-            if (bool2 != ibK()) {
+            b.c(b.this).getLocationOnScreen(this.agbP);
+            if (bool2 != jGU()) {
               break label641;
             }
-            if (paramFloat1 <= this.YjQ[0] + b.c(b.this).getWidth() - b.c(b.this).getPaddingRight() - this.YjP) {
+            if (paramFloat1 <= this.agbP[0] + b.c(b.this).getWidth() - b.c(b.this).getPaddingRight() - this.agbO) {
               break label635;
             }
             i = 1;
@@ -3604,9 +3655,9 @@ public class b
             if (i == 0) {
               break label701;
             }
-            if ((!ibK()) || (b.c(b.this).getScrollX() == 0))
+            if ((!jGU()) || (b.c(b.this).getScrollX() == 0))
             {
-              if (ibK()) {
+              if (jGU()) {
                 break label701;
               }
               CustomTextView localCustomTextView = b.c(b.this);
@@ -3619,25 +3670,25 @@ public class b
                 break label701;
               }
             }
-            if (((n == 0) || (((!ibK()) || (j >= i2)) && ((ibK()) || (j <= i2)))) && (n != 0)) {
+            if (((n == 0) || (((!jGU()) || (j >= i2)) && ((jGU()) || (j <= i2)))) && (n != 0)) {
               break label701;
             }
-            this.YjM = 0.0F;
-            if (bool2 != ibK()) {
+            this.agbL = 0.0F;
+            if (bool2 != jGU()) {
               break label687;
             }
           }
         }
         label681:
         label687:
-        for (i = localLayout.getOffsetToRightOf(this.FPB);; i = localLayout.getOffsetToLeftOf(this.FPB))
+        for (i = localLayout.getOffsetToRightOf(this.LKx);; i = localLayout.getOffsetToLeftOf(this.LKx))
         {
-          cd(i, paramBoolean);
-          AppMethodBeat.o(200469);
+          cU(i, paramBoolean);
+          AppMethodBeat.o(252340);
           return;
           i = 0;
           break;
-          if (i1 > this.YiO)
+          if (i1 > this.agaO)
           {
             i = 1;
             break;
@@ -3657,7 +3708,7 @@ public class b
           label635:
           i = 0;
           break label442;
-          if (paramFloat1 < this.YjQ[0] + b.c(b.this).getPaddingLeft() + this.YjP)
+          if (paramFloat1 < this.agbP[0] + b.c(b.this).getPaddingLeft() + this.agbO)
           {
             i = 1;
             break label442;
@@ -3669,15 +3720,15 @@ public class b
         }
         label701:
         if (n != 0) {
-          if (ibK())
+          if (jGU())
           {
             i = m;
-            if (this.YjL)
+            if (this.agbK)
             {
-              if (!ibK()) {
+              if (!jGU()) {
                 break label944;
               }
-              if (i1 >= this.YiN) {
+              if (i1 >= this.agaN) {
                 break label953;
               }
             }
@@ -3693,22 +3744,22 @@ public class b
             n = i;
             if (localLayout.getLineForOffset(i) != i1)
             {
-              if (!ibK()) {
+              if (!jGU()) {
                 break label959;
               }
               n = localLayout.getLineStart(i1);
             }
-            if (!ibK()) {
+            if (!jGU()) {
               break label971;
             }
             n = k - (k - n) / 2;
-            if (!ibK()) {
+            if (!jGU()) {
               break label986;
             }
             i = m;
             if (j > n)
             {
-              if (i1 >= this.YiN) {
+              if (i1 >= this.agaN) {
                 break label986;
               }
               i = m;
@@ -3720,10 +3771,10 @@ public class b
           label793:
           label812:
           label843:
-          if (((ibK()) && (i < j)) || ((!ibK()) && (i > j)))
+          if (((jGU()) && (i < j)) || ((!jGU()) && (i > j)))
           {
             paramFloat2 = c(localLayout, i);
-            this.YjM = (b.c(b.this).cS(paramFloat1) - paramFloat2);
+            this.agbL = (b.c(b.this).ef(paramFloat1) - paramFloat2);
             k = 1;
             j = i;
             i = k;
@@ -3732,16 +3783,16 @@ public class b
           {
             if (i != 0)
             {
-              this.YiO = i1;
-              cd(j, paramBoolean);
+              this.agaO = i1;
+              cU(j, paramBoolean);
             }
-            this.YjN = paramFloat1;
-            AppMethodBeat.o(200469);
+            this.agbM = paramFloat1;
+            AppMethodBeat.o(252340);
             return;
             i = k;
             break;
             label944:
-            if (i1 > this.YiN) {
+            if (i1 > this.agaN) {
               break label740;
             }
             label953:
@@ -3754,36 +3805,36 @@ public class b
             n = (n - m) / 2 + m;
             break label812;
             label986:
-            if ((!ibK()) && ((j >= n) || (i1 > this.YiN)))
+            if ((!jGU()) && ((j >= n) || (i1 > this.agaN)))
             {
               i = k;
               break label843;
             }
-            i = this.FPB;
+            i = this.LKx;
             break label843;
-            this.YjM = 0.0F;
+            this.agbL = 0.0F;
             break label897;
-            n = b(localLayout, i1, paramFloat1 - this.YjM);
-            if (ibK()) {
-              if ((n > this.FPB) || (i1 > this.YiN))
+            n = b(localLayout, i1, paramFloat1 - this.agbL);
+            if (jGU()) {
+              if ((n > this.LKx) || (i1 > this.agaN))
               {
                 i = 1;
                 label1077:
                 if (i == 0) {
                   break label1220;
                 }
-                if (i1 == this.YiN) {
+                if (i1 == this.agaN) {
                   break label1213;
                 }
-                if (!ibK()) {
+                if (!jGU()) {
                   break label1198;
                 }
                 label1098:
-                if (((!ibK()) || (m >= j)) && ((ibK()) || (m <= j))) {
+                if (((!jGU()) || (m >= j)) && ((jGU()) || (m <= j))) {
                   break label1205;
                 }
                 paramFloat2 = c(localLayout, m);
-                this.YjM = (b.c(b.this).cS(paramFloat1) - paramFloat2);
+                this.agbL = (b.c(b.this).ef(paramFloat1) - paramFloat2);
               }
             }
             for (;;)
@@ -3793,7 +3844,7 @@ public class b
               break;
               i = 0;
               break label1077;
-              if ((n < this.FPB) || (i1 < this.YiN))
+              if ((n < this.LKx) || (i1 < this.agaN))
               {
                 i = 1;
                 break label1077;
@@ -3804,14 +3855,14 @@ public class b
               m = k;
               break label1098;
               label1205:
-              this.YjM = 0.0F;
+              this.agbL = 0.0F;
               continue;
               label1213:
               m = n;
             }
             label1220:
-            if (((ibK()) && (n < this.FPB)) || ((!ibK()) && (n > this.FPB))) {
-              this.YjM = (b.c(b.this).cS(paramFloat1) - c(localLayout, this.FPB));
+            if (((jGU()) && (n < this.LKx)) || ((!jGU()) && (n > this.LKx))) {
+              this.agbL = (b.c(b.this).ef(paramFloat1) - c(localLayout, this.LKx));
             }
             i = 0;
           }
@@ -3820,38 +3871,12 @@ public class b
       }
     }
     
-    public final int getCurrentCursorOffset()
-    {
-      AppMethodBeat.i(200453);
-      if (ibK())
-      {
-        i = b.c(b.this).getSelectionStart();
-        AppMethodBeat.o(200453);
-        return i;
-      }
-      int i = b.c(b.this).getSelectionEnd();
-      AppMethodBeat.o(200453);
-      return i;
-    }
-    
-    protected final int getMagnifierHandleTrigger()
-    {
-      AppMethodBeat.i(200495);
-      if (ibK())
-      {
-        AppMethodBeat.o(200495);
-        return 1;
-      }
-      AppMethodBeat.o(200495);
-      return 2;
-    }
-    
     public final boolean onTouchEvent(MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(200475);
+      AppMethodBeat.i(252353);
       if (!b.c(b.this).b(paramMotionEvent, true))
       {
-        AppMethodBeat.o(200475);
+        AppMethodBeat.o(252353);
         return true;
       }
       boolean bool = super.onTouchEvent(paramMotionEvent);
@@ -3860,32 +3885,32 @@ public class b
       }
       for (;;)
       {
-        AppMethodBeat.o(200475);
+        AppMethodBeat.o(252353);
         return bool;
-        this.YjM = 0.0F;
-        this.YjN = -1.0F;
-        az(paramMotionEvent);
+        this.agbL = 0.0F;
+        this.agbM = -1.0F;
+        aC(paramMotionEvent);
         continue;
-        az(paramMotionEvent);
+        aC(paramMotionEvent);
         continue;
-        ibD();
+        jGN();
       }
     }
     
-    protected final void p(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+    protected final void v(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
     {
-      AppMethodBeat.i(200472);
-      super.p(paramInt, paramBoolean1, paramBoolean2);
+      AppMethodBeat.i(252349);
+      super.v(paramInt, paramBoolean1, paramBoolean2);
       if (paramInt != -1)
       {
         com.tencent.mm.ui.widget.cedit.c.b localb = b.w(b.this);
-        localb.axV(paramInt);
-        if (localb.YkK.isBoundary(paramInt)) {}
+        localb.aEE(paramInt);
+        if (localb.agcI.isBoundary(paramInt)) {}
       }
       for (paramBoolean1 = true;; paramBoolean1 = false)
       {
-        this.YjL = paramBoolean1;
-        AppMethodBeat.o(200472);
+        this.agbK = paramBoolean1;
+        AppMethodBeat.o(252349);
         return;
       }
     }
@@ -3894,31 +3919,31 @@ public class b
   public final class n
     implements b.d
   {
-    private b.m YjR;
-    private b.m YjS;
-    int YjT;
-    int YjU;
-    private boolean YjV;
-    private int YjW;
-    private boolean YjX;
-    private int YjY;
-    private boolean YjZ;
-    private int Yka;
+    private b.m agbQ;
+    private b.m agbR;
+    int agbS;
+    int agbT;
+    private boolean agbU;
+    private int agbV;
+    private boolean agbW;
+    private int agbX;
+    private boolean agbY;
+    private int agbZ;
     
     n()
     {
-      AppMethodBeat.i(215069);
-      this.YjW = -1;
-      this.YjY = -1;
-      this.YjZ = false;
-      this.Yka = 0;
-      ibM();
-      AppMethodBeat.o(215069);
+      AppMethodBeat.i(252283);
+      this.agbV = -1;
+      this.agbX = -1;
+      this.agbY = false;
+      this.agbZ = 0;
+      jGW();
+      AppMethodBeat.o(252283);
     }
     
-    private void U(int paramInt1, int paramInt2, boolean paramBoolean)
+    private void Z(int paramInt1, int paramInt2, boolean paramBoolean)
     {
-      AppMethodBeat.i(215083);
+      AppMethodBeat.i(252328);
       if ((paramBoolean) && (b.n(b.this)) && ((b.c(b.this).getSelectionStart() != paramInt1) || (b.c(b.this).getSelectionEnd() != paramInt2))) {}
       for (int i = 1;; i = 0)
       {
@@ -3926,47 +3951,47 @@ public class b
         if (i != 0) {
           b.c(b.this).performHapticFeedback(9);
         }
-        AppMethodBeat.o(215083);
+        AppMethodBeat.o(252328);
         return;
       }
     }
     
-    private void aB(MotionEvent paramMotionEvent)
+    private void aE(MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(215077);
+      AppMethodBeat.i(252298);
       if (b.c(b.this).getLayout() != null) {
-        switch (this.Yka)
+        switch (this.agbZ)
         {
         }
       }
       for (;;)
       {
-        AppMethodBeat.o(215077);
+        AppMethodBeat.o(252298);
         return;
-        aC(paramMotionEvent);
-        AppMethodBeat.o(215077);
+        aF(paramMotionEvent);
+        AppMethodBeat.o(252298);
         return;
-        aD(paramMotionEvent);
-        AppMethodBeat.o(215077);
+        aG(paramMotionEvent);
+        AppMethodBeat.o(252298);
         return;
-        aE(paramMotionEvent);
+        aH(paramMotionEvent);
       }
     }
     
-    private void aC(MotionEvent paramMotionEvent)
+    private void aF(MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(215078);
-      int i = b.c(b.this).aG(paramMotionEvent.getX(), paramMotionEvent.getY());
-      U(this.YjW, i, paramMotionEvent.isFromSource(4098));
-      AppMethodBeat.o(215078);
+      AppMethodBeat.i(252307);
+      int i = b.c(b.this).bk(paramMotionEvent.getX(), paramMotionEvent.getY());
+      Z(this.agbV, i, paramMotionEvent.isFromSource(4098));
+      AppMethodBeat.o(252307);
     }
     
-    private void aD(MotionEvent paramMotionEvent)
+    private void aG(MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(215079);
-      if (this.YjX)
+      AppMethodBeat.i(252316);
+      if (this.agbW)
       {
-        AppMethodBeat.o(215079);
+        AppMethodBeat.o(252316);
         return;
       }
       boolean bool = paramMotionEvent.isFromSource(8194);
@@ -3978,47 +4003,47 @@ public class b
       int k;
       if (bool)
       {
-        j = b.c(b.this).cT(f2);
-        i = b.c(b.this).B(j, f3);
-        if (this.YjW < i)
+        j = b.c(b.this).eg(f2);
+        i = b.c(b.this).E(j, f3);
+        if (this.agbV < i)
         {
           i = b.a(b.this, i);
-          k = b.b(b.this, this.YjW);
+          k = b.b(b.this, this.agbV);
           label120:
-          this.YjY = j;
-          U(k, i, paramMotionEvent.isFromSource(4098));
-          AppMethodBeat.o(215079);
+          this.agbX = j;
+          Z(k, i, paramMotionEvent.isFromSource(4098));
+          AppMethodBeat.o(252316);
         }
       }
       else
       {
-        if (!this.YjZ) {
+        if (!this.agbY) {
           break label304;
         }
         i = localViewConfiguration.getScaledTouchSlop();
-        if (this.YjR != null) {
-          f1 = this.YjR.getIdealVerticalOffset();
+        if (this.agbQ != null) {
+          f1 = this.agbQ.getIdealVerticalOffset();
         }
       }
       label176:
       for (float f1 = f2 - f1;; f1 = f2)
       {
-        i = b.this.a(b.c(b.this).getLayout(), this.YjY, f1);
+        i = b.this.a(b.c(b.this).getLayout(), this.agbX, f1);
         j = i;
-        if (this.YjZ) {
+        if (this.agbY) {
           break;
         }
         j = i;
-        if (i == this.YjY) {
+        if (i == this.agbX) {
           break;
         }
-        this.YjZ = true;
-        AppMethodBeat.o(215079);
+        this.agbY = true;
+        AppMethodBeat.o(252316);
         return;
         f1 = i;
         break label176;
         int n = b.b(b.this, i);
-        int m = b.a(b.this, this.YjW);
+        int m = b.a(b.this, this.agbV);
         k = m;
         i = n;
         if (m != n) {
@@ -4030,57 +4055,57 @@ public class b
       }
     }
     
-    private void aE(MotionEvent paramMotionEvent)
+    private void aH(MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(215081);
-      int j = b.c(b.this).aG(paramMotionEvent.getX(), paramMotionEvent.getY());
-      int i = Math.min(j, this.YjW);
-      j = Math.max(j, this.YjW);
+      AppMethodBeat.i(252320);
+      int j = b.c(b.this).bk(paramMotionEvent.getX(), paramMotionEvent.getY());
+      int i = Math.min(j, this.agbV);
+      j = Math.max(j, this.agbV);
       long l = b.a(b.this, i, j);
-      U((int)(l >>> 32), (int)(l & 0xFFFFFFFF), paramMotionEvent.isFromSource(4098));
-      AppMethodBeat.o(215081);
+      Z((int)(l >>> 32), (int)(l & 0xFFFFFFFF), paramMotionEvent.isFromSource(4098));
+      AppMethodBeat.o(252320);
     }
     
-    private void ibL()
+    private void jGV()
     {
-      AppMethodBeat.i(215072);
-      if (this.YjR == null) {
-        this.YjR = new b.m(b.this, b.this.YhP, b.this.YhQ, a.g.selection_start_handle, 0);
+      AppMethodBeat.i(252290);
+      if (this.agbQ == null) {
+        this.agbQ = new b.m(b.this, b.this.afZP, b.this.afZQ, a.g.selection_start_handle, 0);
       }
-      if (this.YjS == null) {
-        this.YjS = new b.m(b.this, b.this.YhQ, b.this.YhP, a.g.selection_end_handle, 1);
+      if (this.agbR == null) {
+        this.agbR = new b.m(b.this, b.this.afZQ, b.this.afZP, a.g.selection_end_handle, 1);
       }
-      this.YjR.show();
-      this.YjS.show();
-      b.this.iaO();
-      AppMethodBeat.o(215072);
+      this.agbQ.show();
+      this.agbR.show();
+      b.this.jFY();
+      AppMethodBeat.o(252290);
     }
     
-    private void ibN()
+    private void jGX()
     {
-      AppMethodBeat.i(215086);
-      this.YjW = -1;
-      this.Yka = 0;
-      this.YjZ = false;
+      AppMethodBeat.i(252334);
+      this.agbV = -1;
+      this.agbZ = 0;
+      this.agbY = false;
       int i = b.c(b.this).getSelectionStart();
       int j = b.c(b.this).getSelectionEnd();
       if ((i < 0) || (j < 0))
       {
         Selection.removeSelection((Spannable)b.c(b.this).getText());
-        AppMethodBeat.o(215086);
+        AppMethodBeat.o(252334);
         return;
       }
       if (i > j) {
         Selection.setSelection((Spannable)b.c(b.this).getText(), j, i);
       }
-      AppMethodBeat.o(215086);
+      AppMethodBeat.o(252334);
     }
     
     public final void B(MotionEvent paramMotionEvent)
     {
       int i = 0;
       int j = 0;
-      AppMethodBeat.i(215075);
+      AppMethodBeat.i(252403);
       float f1 = paramMotionEvent.getX();
       float f2 = paramMotionEvent.getY();
       boolean bool2 = paramMotionEvent.isFromSource(8194);
@@ -4089,27 +4114,27 @@ public class b
       }
       for (;;)
       {
-        AppMethodBeat.o(215075);
+        AppMethodBeat.o(252403);
         return;
         if (b.A(b.this))
         {
           hide();
-          AppMethodBeat.o(215075);
+          AppMethodBeat.o(252403);
           return;
         }
-        i = b.c(b.this).aG(f1, f2);
-        this.YjU = i;
-        this.YjT = i;
-        if (this.YjV)
+        i = b.c(b.this).bk(f1, f2);
+        this.agbT = i;
+        this.agbS = i;
+        if (this.agbU)
         {
           paramMotionEvent = b.x(b.this);
-          if ((!paramMotionEvent.ibS()) || (!paramMotionEvent.Ykm)) {
+          if ((!paramMotionEvent.jHc()) || (!paramMotionEvent.agcl)) {
             break label249;
           }
           i = 1;
-          if ((i != 0) && ((bool2) || (b.a(b.this, f1, f2)) || (b.x(b.this).Ykk)))
+          if ((i != 0) && ((bool2) || (b.a(b.this, f1, f2)) || (b.x(b.this).agcj)))
           {
-            if (b.x(b.this).Ykl != 2) {
+            if (b.x(b.this).agck != 2) {
               break label255;
             }
             i = 1;
@@ -4122,10 +4147,10 @@ public class b
         }
         for (;;)
         {
-          b.this.Yhy = true;
-          this.YjV = true;
-          this.YjX = true;
-          AppMethodBeat.o(215075);
+          b.this.afZy = true;
+          this.agbU = true;
+          this.agbW = true;
+          AppMethodBeat.o(252403);
           return;
           label249:
           i = 0;
@@ -4135,7 +4160,7 @@ public class b
           break label212;
           label261:
           i = j;
-          if (b.x(b.this).Ykl == 3) {
+          if (b.x(b.this).agck == 3) {
             i = 1;
           }
           if (i != 0)
@@ -4143,9 +4168,9 @@ public class b
             if (b.y(b.this) != null) {
               b.c(b.this).removeCallbacks(b.y(b.this));
             }
-            b.this.iaB();
+            b.this.jFJ();
             if (b.D(b.this)) {
-              axN(3);
+              aEw(3);
             }
           }
         }
@@ -4154,64 +4179,64 @@ public class b
           j = paramMotionEvent.getPointerCount();
           while (i < j)
           {
-            int k = b.c(b.this).aG(paramMotionEvent.getX(i), paramMotionEvent.getY(i));
-            if (k < this.YjT) {
-              this.YjT = k;
+            int k = b.c(b.this).bk(paramMotionEvent.getX(i), paramMotionEvent.getY(i));
+            if (k < this.agbS) {
+              this.agbS = k;
             }
-            if (k > this.YjU) {
-              this.YjU = k;
+            if (k > this.agbT) {
+              this.agbT = k;
             }
             i += 1;
           }
-          AppMethodBeat.o(215075);
+          AppMethodBeat.o(252403);
           return;
-          if (this.YjV)
+          if (this.agbU)
           {
             ViewConfiguration.get(b.c(b.this).getContext());
-            i = aw.fromDPToPix(b.c(b.this).getContext(), 8);
-            this.YjV = c.a(b.x(b.this).ryy, b.x(b.this).ryz, f1, f2, i);
+            i = bd.fromDPToPix(b.c(b.this).getContext(), 8);
+            this.agbU = c.b(b.x(b.this).uJC, b.x(b.this).uJD, f1, f2, i);
           }
-          if (this.YjX) {
-            if (b.x(b.this).Ykn) {
+          if (this.agbW) {
+            if (b.x(b.this).agcm) {
               break label640;
             }
           }
           label640:
           for (boolean bool1 = true;; bool1 = false)
           {
-            this.YjX = bool1;
-            if ((!bool2) || (ibP())) {
+            this.agbW = bool1;
+            if ((!bool2) || (jGZ())) {
               break label680;
             }
-            i = b.c(b.this).aG(f1, f2);
-            if ((!b.c(b.this).iau()) || ((this.YjX) && (this.YjW == i)) || (i < b.c(b.this).getSelectionStart()) || (i > b.c(b.this).getSelectionEnd())) {
+            i = b.c(b.this).bk(f1, f2);
+            if ((!b.c(b.this).jFB()) || ((this.agbW) && (this.agbV == i)) || (i < b.c(b.this).getSelectionStart()) || (i > b.c(b.this).getSelectionEnd())) {
               break;
             }
             b.C(b.this);
-            AppMethodBeat.o(215075);
+            AppMethodBeat.o(252403);
             return;
           }
-          if (this.YjW != i)
+          if (this.agbV != i)
           {
-            b.this.iaB();
-            axN(1);
-            b.this.Yhy = true;
-            this.YjX = false;
+            b.this.jFJ();
+            aEw(1);
+            b.this.afZy = true;
+            this.agbW = false;
           }
           label680:
-          if ((this.YjR == null) || (!this.YjR.isShowing()))
+          if ((this.agbQ == null) || (!this.agbQ.isShowing()))
           {
-            aB(paramMotionEvent);
-            AppMethodBeat.o(215075);
+            aE(paramMotionEvent);
+            AppMethodBeat.o(252403);
             return;
-            if (ibP())
+            if (jGZ())
             {
-              aB(paramMotionEvent);
+              aE(paramMotionEvent);
               b.c(b.this).getParent().requestDisallowInterceptTouchEvent(false);
-              ibN();
-              if (b.c(b.this).iau())
+              jGX();
+              if (b.c(b.this).jFB())
               {
-                b.this.ibm().ibT();
+                b.this.jGw().jHd();
                 b.c(b.this).invalidate();
               }
             }
@@ -4220,203 +4245,202 @@ public class b
       }
     }
     
-    public final void axN(int paramInt)
+    public final void aEw(int paramInt)
     {
-      AppMethodBeat.i(215074);
+      AppMethodBeat.i(252380);
       show();
-      this.Yka = paramInt;
-      this.YjW = b.c(b.this).aG(b.x(b.this).ryy, b.x(b.this).ryz);
-      this.YjY = b.c(b.this).cT(b.x(b.this).ryz);
+      this.agbZ = paramInt;
+      this.agbV = b.c(b.this).bk(b.x(b.this).uJC, b.x(b.this).uJD);
+      this.agbX = b.c(b.this).eg(b.x(b.this).uJD);
       hide();
       b.c(b.this).getParent().requestDisallowInterceptTouchEvent(true);
       b.c(b.this).cancelLongPress();
-      AppMethodBeat.o(215074);
-    }
-    
-    public final void cfy()
-    {
-      AppMethodBeat.i(215090);
-      b.c(b.this).getViewTreeObserver().removeOnTouchModeChangeListener(this);
-      if (this.YjR != null) {
-        this.YjR.cfy();
-      }
-      if (this.YjS != null) {
-        this.YjS.cfy();
-      }
-      AppMethodBeat.o(215090);
+      AppMethodBeat.o(252380);
     }
     
     public final void hide()
     {
-      AppMethodBeat.i(215073);
-      if (this.YjR != null) {
-        this.YjR.hide();
+      AppMethodBeat.i(252371);
+      if (this.agbQ != null) {
+        this.agbQ.hide();
       }
-      if (this.YjS != null) {
-        this.YjS.hide();
+      if (this.agbR != null) {
+        this.agbR.hide();
       }
-      AppMethodBeat.o(215073);
+      AppMethodBeat.o(252371);
     }
     
-    public final void ibM()
+    public final void iQ()
     {
-      AppMethodBeat.i(215084);
-      this.YjU = -1;
-      this.YjT = -1;
-      ibN();
-      AppMethodBeat.o(215084);
-    }
-    
-    public final boolean ibO()
-    {
-      return (this.YjR != null) && (this.YjR.rmR);
-    }
-    
-    public final boolean ibP()
-    {
-      return this.Yka != 0;
-    }
-    
-    public final void ibQ()
-    {
-      AppMethodBeat.i(215092);
-      if (this.YjR != null) {
-        this.YjR.invalidate();
+      AppMethodBeat.i(252436);
+      b.c(b.this).getViewTreeObserver().removeOnTouchModeChangeListener(this);
+      if (this.agbQ != null) {
+        this.agbQ.iQ();
       }
-      if (this.YjS != null) {
-        this.YjS.invalidate();
+      if (this.agbR != null) {
+        this.agbR.iQ();
       }
-      AppMethodBeat.o(215092);
-    }
-    
-    public final boolean ibz()
-    {
-      AppMethodBeat.i(215088);
-      if ((ibP()) || (ibO()) || ((this.YjS != null) && (this.YjS.rmR)))
-      {
-        AppMethodBeat.o(215088);
-        return true;
-      }
-      AppMethodBeat.o(215088);
-      return false;
+      AppMethodBeat.o(252436);
     }
     
     public final boolean isActive()
     {
-      AppMethodBeat.i(215091);
-      if ((this.YjR != null) && (this.YjR.isShowing()))
+      AppMethodBeat.i(252441);
+      if ((this.agbQ != null) && (this.agbQ.isShowing()))
       {
-        AppMethodBeat.o(215091);
+        AppMethodBeat.o(252441);
         return true;
       }
-      AppMethodBeat.o(215091);
+      AppMethodBeat.o(252441);
       return false;
+    }
+    
+    public final boolean jGJ()
+    {
+      AppMethodBeat.i(252422);
+      if ((jGZ()) || (jGY()) || ((this.agbR != null) && (this.agbR.uwK)))
+      {
+        AppMethodBeat.o(252422);
+        return true;
+      }
+      AppMethodBeat.o(252422);
+      return false;
+    }
+    
+    public final void jGW()
+    {
+      AppMethodBeat.i(252410);
+      this.agbT = -1;
+      this.agbS = -1;
+      jGX();
+      AppMethodBeat.o(252410);
+    }
+    
+    public final boolean jGY()
+    {
+      return (this.agbQ != null) && (this.agbQ.uwK);
+    }
+    
+    public final boolean jGZ()
+    {
+      return this.agbZ != 0;
+    }
+    
+    public final void jHa()
+    {
+      AppMethodBeat.i(252446);
+      if (this.agbQ != null) {
+        this.agbQ.invalidate();
+      }
+      if (this.agbR != null) {
+        this.agbR.invalidate();
+      }
+      AppMethodBeat.o(252446);
     }
     
     public final void onTouchModeChanged(boolean paramBoolean)
     {
-      AppMethodBeat.i(215089);
+      AppMethodBeat.i(252430);
       if (!paramBoolean) {
         hide();
       }
-      AppMethodBeat.o(215089);
+      AppMethodBeat.o(252430);
     }
     
     public final void show()
     {
-      AppMethodBeat.i(215071);
-      if (b.c(b.this).iaH())
+      AppMethodBeat.i(252360);
+      if (b.c(b.this).jFP())
       {
-        AppMethodBeat.o(215071);
+        AppMethodBeat.o(252360);
         return;
       }
-      b.this.Hv(false);
-      ibL();
-      AppMethodBeat.o(215071);
+      b.this.Nr(false);
+      jGV();
+      AppMethodBeat.o(252360);
     }
   }
   
-  @SuppressLint({"NewApi"})
   final class o
     extends ActionMode.Callback2
   {
-    private final Path Ykb;
-    private final RectF Ykc;
-    private final boolean Ykd;
-    private final int Yke;
-    private final Map<MenuItem, View.OnClickListener> Ykf;
+    private final Path agca;
+    private final RectF agcb;
+    private final boolean agcc;
+    private final int agcd;
+    private final Map<MenuItem, View.OnClickListener> agce;
     
     o(int paramInt)
     {
-      AppMethodBeat.i(188377);
-      this.Ykb = new Path();
-      this.Ykc = new RectF();
-      this.Ykf = new HashMap();
-      if ((paramInt == 0) || ((b.this.YhE) && (paramInt == 2))) {}
+      AppMethodBeat.i(252291);
+      this.agca = new Path();
+      this.agcb = new RectF();
+      this.agce = new HashMap();
+      if ((paramInt == 0) || ((b.this.afZE) && (paramInt == 2))) {}
       for (boolean bool = true;; bool = false)
       {
-        this.Ykd = bool;
-        if (!this.Ykd) {
+        this.agcc = bool;
+        if (!this.agcc) {
           break;
         }
-        localObject = b.this.ibv();
+        localObject = b.this.jGF();
         if (b.n.a((b.n)localObject) == null)
         {
-          b.this.Hv(false);
+          b.this.Nr(false);
           b.n.b((b.n)localObject);
           ((b.n)localObject).hide();
         }
-        this.Yke = Math.max(b.this.YhP.getMinimumHeight(), b.this.YhQ.getMinimumHeight());
-        AppMethodBeat.o(188377);
+        this.agcd = Math.max(b.this.afZP.getMinimumHeight(), b.this.afZQ.getMinimumHeight());
+        AppMethodBeat.o(252291);
         return;
       }
-      Object localObject = b.this.ibu();
+      Object localObject = b.this.jGE();
       if (localObject != null)
       {
-        ((b.j)localObject).ibI();
-        this.Yke = b.this.YhR.getMinimumHeight();
-        AppMethodBeat.o(188377);
+        ((b.j)localObject).jGS();
+        this.agcd = b.this.afZR.getMinimumHeight();
+        AppMethodBeat.o(252291);
         return;
       }
-      this.Yke = 0;
-      AppMethodBeat.o(188377);
+      this.agcd = 0;
+      AppMethodBeat.o(252291);
     }
     
     private void g(Menu paramMenu)
     {
-      AppMethodBeat.i(188390);
-      boolean bool = b.c(b.this).iaF();
+      AppMethodBeat.i(252305);
+      boolean bool = b.c(b.this).jFN();
       if (paramMenu.findItem(16908319) != null) {}
       for (int i = 1; (bool) && (i == 0); i = 0)
       {
         paramMenu.add(0, 16908319, 8, 17039373).setShowAsAction(1);
-        AppMethodBeat.o(188390);
+        AppMethodBeat.o(252305);
         return;
       }
       if ((!bool) && (i != 0)) {
         paramMenu.removeItem(16908319);
       }
-      AppMethodBeat.o(188390);
+      AppMethodBeat.o(252305);
     }
     
-    private ActionMode.Callback ibR()
+    private ActionMode.Callback jHb()
     {
-      if (this.Ykd) {
-        return b.this.YhV;
+      if (this.agcc) {
+        return b.this.afZV;
       }
-      return b.this.YhW;
+      return b.this.afZW;
     }
     
     public final boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(188391);
+      AppMethodBeat.i(252326);
       b.h(b.this);
       paramMenuItem.getItemId();
       paramMenuItem.getTitle().toString();
-      ActionMode.Callback localCallback = ibR();
+      ActionMode.Callback localCallback = jHb();
       if ((localCallback != null) && (localCallback.onActionItemClicked(paramActionMode, paramMenuItem)))
       {
-        AppMethodBeat.o(188391);
+        AppMethodBeat.o(252326);
         return true;
       }
       if (paramMenuItem.getGroupId() == 16908353)
@@ -4426,127 +4450,127 @@ public class b
         {
           com.tencent.mm.ui.widget.cedit.util.b.checkArgument(bool);
           b.h(b.this);
-          AppMethodBeat.o(188391);
+          AppMethodBeat.o(252326);
           return true;
         }
       }
       boolean bool = b.c(b.this).onTextContextMenuItem(paramMenuItem.getItemId());
-      AppMethodBeat.o(188391);
+      AppMethodBeat.o(252326);
       return bool;
     }
     
     public final boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
     {
-      AppMethodBeat.i(188381);
-      this.Ykf.clear();
+      AppMethodBeat.i(252313);
+      this.agce.clear();
       paramActionMode.setTitle(null);
       paramActionMode.setSubtitle(null);
       paramActionMode.setTitleOptionalHint(true);
-      if (b.c(b.this).iaC()) {
+      if (b.c(b.this).jFK()) {
         paramMenu.add(0, 16908320, 4, 17039363).setAlphabeticShortcut('x').setShowAsAction(2);
       }
-      if (b.c(b.this).iaD()) {
+      if (b.c(b.this).jFL()) {
         paramMenu.add(0, 16908321, 5, 17039361).setAlphabeticShortcut('c').setShowAsAction(2);
       }
-      if (b.c(b.this).iaE()) {
+      if (b.c(b.this).jFM()) {
         paramMenu.add(0, 16908322, 6, 17039371).setAlphabeticShortcut('v').setShowAsAction(2);
       }
       g(paramMenu);
-      ActionMode.Callback localCallback = ibR();
+      ActionMode.Callback localCallback = jHb();
       if ((localCallback != null) && (!localCallback.onCreateActionMode(paramActionMode, paramMenu)))
       {
         Selection.setSelection((Spannable)b.c(b.this).getText(), b.c(b.this).getSelectionEnd());
-        AppMethodBeat.o(188381);
+        AppMethodBeat.o(252313);
         return false;
       }
-      if ((this.Ykd) && (!b.c(b.this).hasTransientState())) {
+      if ((this.agcc) && (!b.c(b.this).hasTransientState())) {
         b.c(b.this).setHasTransientState(true);
       }
-      AppMethodBeat.o(188381);
+      AppMethodBeat.o(252313);
       return true;
     }
     
     public final void onDestroyActionMode(ActionMode paramActionMode)
     {
-      AppMethodBeat.i(188393);
+      AppMethodBeat.i(252331);
       b.h(b.this);
       b.i(b.this);
-      ActionMode.Callback localCallback = ibR();
+      ActionMode.Callback localCallback = jHb();
       if (localCallback != null) {
         localCallback.onDestroyActionMode(paramActionMode);
       }
       if (!b.j(b.this)) {
         Selection.setSelection((Spannable)b.c(b.this).getText(), b.c(b.this).getSelectionEnd());
       }
-      if (b.this.Yhj != null) {
-        b.this.Yhj.hide();
+      if (b.this.afZj != null) {
+        b.this.afZj.hide();
       }
-      this.Ykf.clear();
+      this.agce.clear();
       b.k(b.this);
-      AppMethodBeat.o(188393);
+      AppMethodBeat.o(252331);
     }
     
     public final void onGetContentRect(ActionMode paramActionMode, View paramView, Rect paramRect)
     {
-      AppMethodBeat.i(188396);
+      AppMethodBeat.i(252337);
       Log.i("cmEdit.Editor", "onGetContentRect mode:" + paramActionMode + ",view:" + paramView + ",outRect:" + paramRect);
       if ((!paramView.equals(b.c(b.this))) || (b.c(b.this).getLayout() == null))
       {
         super.onGetContentRect(paramActionMode, paramView, paramRect);
-        AppMethodBeat.o(188396);
+        AppMethodBeat.o(252337);
         return;
       }
       if (b.c(b.this).getSelectionStart() != b.c(b.this).getSelectionEnd())
       {
-        this.Ykb.reset();
-        b.c(b.this).getLayout().getSelectionPath(b.c(b.this).getSelectionStart(), b.c(b.this).getSelectionEnd(), this.Ykb);
-        this.Ykb.computeBounds(this.Ykc, true);
-        paramActionMode = this.Ykc;
-        paramActionMode.bottom += this.Yke;
+        this.agca.reset();
+        b.c(b.this).getLayout().getSelectionPath(b.c(b.this).getSelectionStart(), b.c(b.this).getSelectionEnd(), this.agca);
+        this.agca.computeBounds(this.agcb, true);
+        paramActionMode = this.agcb;
+        paramActionMode.bottom += this.agcd;
       }
       for (;;)
       {
-        int m = b.c(b.this).ias();
-        int i = b.c(b.this).iat();
-        int j = (int)Math.floor(this.Ykc.left + m);
-        int k = (int)Math.floor(this.Ykc.top + i);
-        float f = this.Ykc.right;
+        int m = b.c(b.this).jFz();
+        int i = b.c(b.this).jFA();
+        int j = (int)Math.floor(this.agcb.left + m);
+        int k = (int)Math.floor(this.agcb.top + i);
+        float f = this.agcb.right;
         m = (int)Math.ceil(m + f);
-        f = this.Ykc.bottom;
+        f = this.agcb.bottom;
         paramRect.set(j, k, m, (int)Math.ceil(i + f));
-        AppMethodBeat.o(188396);
+        AppMethodBeat.o(252337);
         return;
         paramActionMode = b.c(b.this).getLayout();
         i = paramActionMode.getLineForOffset(b.c(b.this).getSelectionStart());
         f = b.a(b.this, null, paramActionMode.getPrimaryHorizontal(b.c(b.this).getSelectionStart()));
-        this.Ykc.set(f, paramActionMode.getLineTop(i), f, paramActionMode.getLineBottom(i) + this.Yke);
+        this.agcb.set(f, paramActionMode.getLineTop(i), f, paramActionMode.getLineBottom(i) + this.agcd);
       }
     }
     
     public final boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
     {
-      AppMethodBeat.i(188386);
+      AppMethodBeat.i(252318);
       g(paramMenu);
-      ActionMode.Callback localCallback = ibR();
+      ActionMode.Callback localCallback = jHb();
       if (localCallback != null)
       {
         boolean bool = localCallback.onPrepareActionMode(paramActionMode, paramMenu);
-        AppMethodBeat.o(188386);
+        AppMethodBeat.o(252318);
         return bool;
       }
-      AppMethodBeat.o(188386);
+      AppMethodBeat.o(252318);
       return true;
     }
   }
   
   public static abstract interface p
   {
-    public abstract void h(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2);
+    public abstract void j(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.widget.cedit.edit.b
  * JD-Core Version:    0.7.0.1
  */

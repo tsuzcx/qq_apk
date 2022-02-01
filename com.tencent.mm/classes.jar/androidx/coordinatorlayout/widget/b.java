@@ -10,41 +10,41 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  private static final ThreadLocal<Matrix> HK;
-  private static final ThreadLocal<RectF> HL;
+  private static final ThreadLocal<Matrix> bnL;
+  private static final ThreadLocal<RectF> bnM;
   
   static
   {
-    AppMethodBeat.i(263453);
-    HK = new ThreadLocal();
-    HL = new ThreadLocal();
-    AppMethodBeat.o(263453);
+    AppMethodBeat.i(193142);
+    bnL = new ThreadLocal();
+    bnM = new ThreadLocal();
+    AppMethodBeat.o(193142);
   }
   
   public static void a(ViewGroup paramViewGroup, View paramView, Rect paramRect)
   {
-    AppMethodBeat.i(263450);
+    AppMethodBeat.i(193121);
     paramRect.set(0, 0, paramView.getWidth(), paramView.getHeight());
-    Matrix localMatrix = (Matrix)HK.get();
+    Matrix localMatrix = (Matrix)bnL.get();
     if (localMatrix == null)
     {
       localMatrix = new Matrix();
-      HK.set(localMatrix);
+      bnL.set(localMatrix);
     }
     for (;;)
     {
       a(paramViewGroup, paramView, localMatrix);
-      paramView = (RectF)HL.get();
+      paramView = (RectF)bnM.get();
       paramViewGroup = paramView;
       if (paramView == null)
       {
         paramViewGroup = new RectF();
-        HL.set(paramViewGroup);
+        bnM.set(paramViewGroup);
       }
       paramViewGroup.set(paramRect);
       localMatrix.mapRect(paramViewGroup);
       paramRect.set((int)(paramViewGroup.left + 0.5F), (int)(paramViewGroup.top + 0.5F), (int)(paramViewGroup.right + 0.5F), (int)(paramViewGroup.bottom + 0.5F));
-      AppMethodBeat.o(263450);
+      AppMethodBeat.o(193121);
       return;
       localMatrix.reset();
     }
@@ -52,7 +52,7 @@ public final class b
   
   private static void a(ViewParent paramViewParent, View paramView, Matrix paramMatrix)
   {
-    AppMethodBeat.i(263451);
+    AppMethodBeat.i(193134);
     Object localObject = paramView.getParent();
     if (((localObject instanceof View)) && (localObject != paramViewParent))
     {
@@ -64,12 +64,12 @@ public final class b
     if (!paramView.getMatrix().isIdentity()) {
       paramMatrix.preConcat(paramView.getMatrix());
     }
-    AppMethodBeat.o(263451);
+    AppMethodBeat.o(193134);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     androidx.coordinatorlayout.widget.b
  * JD-Core Version:    0.7.0.1
  */

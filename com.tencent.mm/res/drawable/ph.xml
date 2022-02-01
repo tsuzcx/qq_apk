@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/afz" />
-</shape>
+    <item android:drawable="@drawable/b71" />
+    <item>
+        <bitmap android:gravity="center" android:src="@drawable/b7p" />
+    </item>
+</layer-list>

@@ -48,10 +48,9 @@ final class zzaat
     try
     {
       paramString = (zzaaw)Class.forName(paramString).getConstructor(new Class[0]).newInstance(new Object[0]);
-      AppMethodBeat.o(40146);
       return paramString;
     }
-    catch (Throwable paramString)
+    finally
     {
       AppMethodBeat.o(40146);
     }
@@ -91,7 +90,7 @@ final class zzaat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzaat
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.game.luggage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.luggage.i.a;
-import com.tencent.mm.plugin.game.luggage.i.a.3;
-import com.tencent.mm.plugin.game.luggage.i.a.a;
+import com.tencent.mm.plugin.game.luggage.h.a;
+import com.tencent.mm.plugin.game.luggage.h.a.3;
+import com.tencent.mm.plugin.game.luggage.h.a.a;
 import com.tencent.mm.plugin.wepkg.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
@@ -11,41 +11,41 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class f
 {
-  private static AtomicInteger CAa;
+  private static AtomicInteger ItL;
   
   static
   {
-    AppMethodBeat.i(231258);
-    CAa = new AtomicInteger(0);
-    AppMethodBeat.o(231258);
+    AppMethodBeat.i(276944);
+    ItL = new AtomicInteger(0);
+    AppMethodBeat.o(276944);
   }
   
-  public static void cMx()
+  public static void dqb()
   {
-    AppMethodBeat.i(231254);
-    CAa.getAndIncrement();
-    AppMethodBeat.o(231254);
+    AppMethodBeat.i(276937);
+    ItL.getAndIncrement();
+    AppMethodBeat.o(276937);
   }
   
   public static void remove()
   {
-    AppMethodBeat.i(231256);
-    int i = CAa.decrementAndGet();
+    AppMethodBeat.i(276941);
+    int i = ItL.decrementAndGet();
     Log.i("MicroMsg.LuggageGameWebViewActivityStack", "remove count = ".concat(String.valueOf(i)));
     if (i <= 0)
     {
-      if (a.exd() != null)
+      if (a.fFa() != null)
       {
-        a locala = a.exd();
+        a locala = a.fFa();
         Log.i("MicroMsg.GameJsCore", "stop");
-        locala.CDu = a.a.CDF;
-        locala.aJE("onStop");
-        locala.cts = new MTimerHandler(new a.3(locala), false);
-        locala.cts.startTimer(300000L);
+        locala.Ixz = a.a.IxK;
+        locala.aGs("onStop");
+        locala.eln = new MTimerHandler(new a.3(locala), false);
+        locala.eln.startTimer(300000L);
       }
-      b.tA();
+      b.Td();
     }
-    AppMethodBeat.o(231256);
+    AppMethodBeat.o(276941);
   }
 }
 

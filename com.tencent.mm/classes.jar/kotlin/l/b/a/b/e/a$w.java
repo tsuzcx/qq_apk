@@ -7,20 +7,20 @@ import kotlin.l.b.a.b.h.k.b;
 public enum a$w
   implements k.a
 {
-  private static k.b<w> abag;
+  private static k.b<w> aiYE;
   private final int value;
   
   static
   {
     AppMethodBeat.i(59045);
-    abdj = new w("INTERNAL", 0, 0);
-    abdk = new w("PRIVATE", 1, 1);
-    abdl = new w("PROTECTED", 2, 2);
-    abdm = new w("PUBLIC", 3, 3);
-    abdn = new w("PRIVATE_TO_THIS", 4, 4);
-    abdo = new w("LOCAL", 5, 5);
-    abdp = new w[] { abdj, abdk, abdl, abdm, abdn, abdo };
-    abag = new k.b() {};
+    ajbK = new w("INTERNAL", 0, 0);
+    ajbL = new w("PRIVATE", 1, 1);
+    ajbM = new w("PROTECTED", 2, 2);
+    ajbN = new w("PUBLIC", 3, 3);
+    ajbO = new w("PRIVATE_TO_THIS", 4, 4);
+    ajbP = new w("LOCAL", 5, 5);
+    ajbQ = new w[] { ajbK, ajbL, ajbM, ajbN, ajbO, ajbP };
+    aiYE = new k.b() {};
     AppMethodBeat.o(59045);
   }
   
@@ -29,24 +29,24 @@ public enum a$w
     this.value = paramInt;
   }
   
-  public static w aFd(int paramInt)
+  public static w aLU(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     case 0: 
-      return abdj;
+      return ajbK;
     case 1: 
-      return abdk;
+      return ajbL;
     case 2: 
-      return abdl;
+      return ajbM;
     case 3: 
-      return abdm;
+      return ajbN;
     case 4: 
-      return abdn;
+      return ajbO;
     }
-    return abdo;
+    return ajbP;
   }
   
   public final int getNumber()
@@ -56,7 +56,7 @@ public enum a$w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.e.a.w
  * JD-Core Version:    0.7.0.1
  */

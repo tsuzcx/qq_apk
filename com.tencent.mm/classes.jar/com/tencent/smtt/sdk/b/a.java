@@ -18,40 +18,40 @@ public class a
   
   public boolean cacheDisabled()
   {
-    AppMethodBeat.i(197111);
+    AppMethodBeat.i(219854);
     boolean bool = ((Boolean)this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cacheDisabled", new Class[0], new Object[0])).booleanValue();
-    AppMethodBeat.o(197111);
+    AppMethodBeat.o(219854);
     return bool;
   }
   
   public void clearLocalStorage()
   {
-    AppMethodBeat.i(197114);
+    AppMethodBeat.i(219867);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "clearLocalStorage", null, new Object[0]);
-    AppMethodBeat.o(197114);
+    AppMethodBeat.o(219867);
   }
   
   public void clearNetworkCache() {}
   
   public InputStream getCacheFile(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(197119);
+    AppMethodBeat.i(219873);
     paramString = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "getCacheFile", new Class[] { String.class, Boolean.TYPE }, new Object[] { paramString, Boolean.valueOf(paramBoolean) });
     if (paramString == null)
     {
-      AppMethodBeat.o(197119);
+      AppMethodBeat.o(219873);
       return null;
     }
     paramString = (InputStream)paramString;
-    AppMethodBeat.o(197119);
+    AppMethodBeat.o(219873);
     return paramString;
   }
   
   public File getCacheFileBaseDir()
   {
-    AppMethodBeat.i(197112);
+    AppMethodBeat.i(219857);
     File localFile = (File)this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "getCachFileBaseDir", new Class[0], new Object[0]);
-    AppMethodBeat.o(197112);
+    AppMethodBeat.o(219857);
     return localFile;
   }
   
@@ -62,7 +62,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.sdk.b.a
  * JD-Core Version:    0.7.0.1
  */

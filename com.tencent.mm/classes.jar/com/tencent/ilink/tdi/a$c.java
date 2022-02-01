@@ -1,28 +1,28 @@
 package com.tencent.ilink.tdi;
 
-import com.google.b.be.b;
-import com.google.b.cl;
+import com.google.d.bj.d;
+import com.google.d.cw;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum a$c
-  implements cl
+  implements cw
 {
-  private static final be.b<c> bRT;
-  private static final c[] cmX;
+  private static final bj.d<c> dLG;
+  private static final c[] eed;
   final int value;
   
   static
   {
-    AppMethodBeat.i(218378);
-    cmS = new c("kLoginQrCodeStatus_NoScan", 0, 0);
-    cmT = new c("kLoginQrCodeStatus_Scaned", 1, 1);
-    cmU = new c("kLoginQrCodeStatus_Confirmed", 2, 2);
-    cmV = new c("kLoginQrCodeStatus_Canceled", 3, 3);
-    cmW = new c("kLoginQrCodeStatus_Expired", 4, 4);
-    cmY = new c[] { cmS, cmT, cmU, cmV, cmW };
-    bRT = new be.b() {};
-    cmX = values();
-    AppMethodBeat.o(218378);
+    AppMethodBeat.i(213996);
+    edY = new c("kLoginQrCodeStatus_NoScan", 0, 0);
+    edZ = new c("kLoginQrCodeStatus_Scaned", 1, 1);
+    eea = new c("kLoginQrCodeStatus_Confirmed", 2, 2);
+    eeb = new c("kLoginQrCodeStatus_Canceled", 3, 3);
+    eec = new c("kLoginQrCodeStatus_Expired", 4, 4);
+    eee = new c[] { edY, edZ, eea, eeb, eec };
+    dLG = new bj.d() {};
+    eed = values();
+    AppMethodBeat.o(213996);
   }
   
   private a$c(int paramInt)
@@ -31,22 +31,22 @@ public enum a$c
   }
   
   @Deprecated
-  public static c iz(int paramInt)
+  public static c me(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     case 0: 
-      return cmS;
+      return edY;
     case 1: 
-      return cmT;
+      return edZ;
     case 2: 
-      return cmU;
+      return eea;
     case 3: 
-      return cmV;
+      return eeb;
     }
-    return cmW;
+    return eec;
   }
   
   public final int getNumber()
@@ -56,7 +56,7 @@ public enum a$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.ilink.tdi.a.c
  * JD-Core Version:    0.7.0.1
  */

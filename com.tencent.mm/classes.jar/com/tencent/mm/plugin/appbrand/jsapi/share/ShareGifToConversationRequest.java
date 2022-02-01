@@ -4,10 +4,10 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareGifToConversationRequest;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessRequest;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "path", "", "(Ljava/lang/String;)V", "getPath", "()Ljava/lang/String;", "describeContents", "", "getTaskClass", "Ljava/lang/Class;", "Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareGifToConversationTask;", "writeToParcel", "", "flags", "CREATOR", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareGifToConversationRequest;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessRequest;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "path", "", "(Ljava/lang/String;)V", "getPath", "()Ljava/lang/String;", "describeContents", "", "getTaskClass", "Ljava/lang/Class;", "Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareGifToConversationTask;", "writeToParcel", "", "flags", "CREATOR", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ShareGifToConversationRequest
   extends AppBrandProxyUIProcessTask.ProcessRequest
 {
@@ -16,28 +16,23 @@ public final class ShareGifToConversationRequest
   
   static
   {
-    AppMethodBeat.i(277087);
+    AppMethodBeat.i(326459);
     CREATOR = new a((byte)0);
-    AppMethodBeat.o(277087);
+    AppMethodBeat.o(326459);
   }
   
   public ShareGifToConversationRequest(Parcel paramParcel)
   {
     this(paramParcel);
-    AppMethodBeat.i(277085);
-    AppMethodBeat.o(277085);
+    AppMethodBeat.i(326455);
+    AppMethodBeat.o(326455);
   }
   
   public ShareGifToConversationRequest(String paramString)
   {
-    AppMethodBeat.i(277084);
+    AppMethodBeat.i(326453);
     this.path = paramString;
-    AppMethodBeat.o(277084);
-  }
-  
-  public final Class<y> bOe()
-  {
-    return y.class;
+    AppMethodBeat.o(326453);
   }
   
   public final int describeContents()
@@ -45,16 +40,21 @@ public final class ShareGifToConversationRequest
     return 0;
   }
   
-  public final void writeToParcel(Parcel paramParcel, int paramInt)
+  public final Class<w> getTaskClass()
   {
-    AppMethodBeat.i(277083);
-    p.k(paramParcel, "parcel");
-    super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.path);
-    AppMethodBeat.o(277083);
+    return w.class;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareGifToConversationRequest$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareGifToConversationRequest;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareGifToConversationRequest;", "plugin-appbrand-integration_release"})
+  public final void writeToParcel(Parcel paramParcel, int paramInt)
+  {
+    AppMethodBeat.i(326462);
+    s.u(paramParcel, "parcel");
+    super.writeToParcel(paramParcel, paramInt);
+    paramParcel.writeString(this.path);
+    AppMethodBeat.o(326462);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareGifToConversationRequest$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareGifToConversationRequest;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareGifToConversationRequest;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     implements Parcelable.Creator<ShareGifToConversationRequest>
   {}

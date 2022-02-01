@@ -19,10 +19,10 @@ final class a$b$1
   {
     AppMethodBeat.i(152099);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/pluginsdk/ui/AvatarDrawable$Factory$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aFi());
-    ClipboardHelper.setText(this.vhS.getContext(), "UserName:", this.lrg);
-    Toast.makeText(this.vhS.getContext(), c.h.app_copy_ok, 0).show();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/pluginsdk/ui/AvatarDrawable$Factory$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aYj());
+    ClipboardHelper.setText(this.ytT.getContext(), "UserName:", this.oiH);
+    Toast.makeText(this.ytT.getContext(), c.h.app_copy_ok, 0).show();
     a.a(true, this, "com/tencent/mm/pluginsdk/ui/AvatarDrawable$Factory$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
     AppMethodBeat.o(152099);
     return true;

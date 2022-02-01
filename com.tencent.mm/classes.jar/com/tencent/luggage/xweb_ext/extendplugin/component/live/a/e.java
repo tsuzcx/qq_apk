@@ -21,12 +21,12 @@ public final class e
     super(paramContext);
   }
   
-  private static void s(Bundle paramBundle)
+  private static void x(Bundle paramBundle)
   {
-    AppMethodBeat.i(221995);
+    AppMethodBeat.i(220657);
     if (paramBundle == null)
     {
-      AppMethodBeat.o(221995);
+      AppMethodBeat.o(220657);
       return;
     }
     if (!paramBundle.containsKey("canStartPlay"))
@@ -34,118 +34,118 @@ public final class e
       Log.i("TXLivePlayerJSAdapterV2SameLayerSupport", "canStartPlayWorkaround, put true");
       paramBundle.putBoolean("canStartPlay", true);
     }
-    AppMethodBeat.o(221995);
-  }
-  
-  public final k To()
-  {
-    AppMethodBeat.i(221983);
-    if (this.oVT.isPlaying())
-    {
-      localk = d("pause", null);
-      AppMethodBeat.o(221983);
-      return localk;
-    }
-    k localk = new k();
-    AppMethodBeat.o(221983);
-    return localk;
-  }
-  
-  public final void Tp()
-  {
-    AppMethodBeat.i(221986);
-    if (this.cGc != null) {
-      this.cGc.onPlayEvent(6000, new Bundle());
-    }
-    AppMethodBeat.o(221986);
-  }
-  
-  public final void Tq()
-  {
-    AppMethodBeat.i(221989);
-    if (this.cGc != null) {
-      this.cGc.onPlayEvent(6001, new Bundle());
-    }
-    AppMethodBeat.o(221989);
-  }
-  
-  public final k Ty()
-  {
-    AppMethodBeat.i(221980);
-    k localk = d("resume", null);
-    AppMethodBeat.o(221980);
-    return localk;
+    AppMethodBeat.o(220657);
   }
   
   public final k a(TXCloudVideoView paramTXCloudVideoView, Bundle paramBundle)
   {
-    AppMethodBeat.i(221968);
-    s(paramBundle);
+    AppMethodBeat.i(220670);
+    x(paramBundle);
     paramTXCloudVideoView = super.a(paramTXCloudVideoView, paramBundle);
-    AppMethodBeat.o(221968);
+    AppMethodBeat.o(220670);
     return paramTXCloudVideoView;
   }
   
-  public final k cn(int paramInt1, int paramInt2)
+  public final k atT()
   {
-    AppMethodBeat.i(221979);
-    k localk = new k(this.oVT.setSurfaceSize(paramInt1, paramInt2));
-    AppMethodBeat.o(221979);
+    AppMethodBeat.i(220707);
+    if (this.sbr.isPlaying())
+    {
+      localk = d("pause", null);
+      AppMethodBeat.o(220707);
+      return localk;
+    }
+    k localk = new k();
+    AppMethodBeat.o(220707);
     return localk;
   }
   
-  public final k e(Surface paramSurface)
+  public final void atU()
   {
-    AppMethodBeat.i(221976);
-    paramSurface = new k(this.oVT.setSurface(paramSurface));
-    AppMethodBeat.o(221976);
+    AppMethodBeat.i(220711);
+    if (this.ezq != null) {
+      this.ezq.onPlayEvent(6000, new Bundle());
+    }
+    AppMethodBeat.o(220711);
+  }
+  
+  public final void atV()
+  {
+    AppMethodBeat.i(220716);
+    if (this.ezq != null) {
+      this.ezq.onPlayEvent(6001, new Bundle());
+    }
+    AppMethodBeat.o(220716);
+  }
+  
+  public final k aud()
+  {
+    AppMethodBeat.i(220702);
+    k localk = d("resume", null);
+    AppMethodBeat.o(220702);
+    return localk;
+  }
+  
+  public final k dc(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(220694);
+    k localk = new k(this.sbr.setSurfaceSize(paramInt1, paramInt2));
+    AppMethodBeat.o(220694);
+    return localk;
+  }
+  
+  public final k h(Surface paramSurface)
+  {
+    AppMethodBeat.i(220687);
+    paramSurface = new k(this.sbr.setSurface(paramSurface));
+    AppMethodBeat.o(220687);
     return paramSurface;
   }
   
   public final boolean isMuted()
   {
-    AppMethodBeat.i(221993);
-    boolean bool = this.oVT.isMuted();
-    AppMethodBeat.o(221993);
+    AppMethodBeat.i(220722);
+    boolean bool = this.sbr.isMuted();
+    AppMethodBeat.o(220722);
     return bool;
   }
   
   public final boolean isPlaying()
   {
-    AppMethodBeat.i(221991);
-    boolean bool = this.oVT.isPlaying();
-    AppMethodBeat.o(221991);
+    AppMethodBeat.i(220718);
+    boolean bool = this.sbr.isPlaying();
+    AppMethodBeat.o(220718);
     return bool;
-  }
-  
-  public final k p(Bundle paramBundle)
-  {
-    AppMethodBeat.i(221972);
-    s(paramBundle);
-    paramBundle = new k(this.oVT.initLivePlayer(paramBundle));
-    AppMethodBeat.o(221972);
-    return paramBundle;
-  }
-  
-  public final k q(Bundle paramBundle)
-  {
-    AppMethodBeat.i(221975);
-    s(paramBundle);
-    paramBundle = super.q(paramBundle);
-    AppMethodBeat.o(221975);
-    return paramBundle;
   }
   
   public final void setThreadHandler(Handler paramHandler)
   {
-    AppMethodBeat.i(221963);
-    this.oVT.setThreadHandler(paramHandler);
-    AppMethodBeat.o(221963);
+    AppMethodBeat.i(220663);
+    this.sbr.setThreadHandler(paramHandler);
+    AppMethodBeat.o(220663);
+  }
+  
+  public final k u(Bundle paramBundle)
+  {
+    AppMethodBeat.i(220677);
+    x(paramBundle);
+    paramBundle = new k(this.sbr.initLivePlayer(paramBundle));
+    AppMethodBeat.o(220677);
+    return paramBundle;
+  }
+  
+  public final k v(Bundle paramBundle)
+  {
+    AppMethodBeat.i(220682);
+    x(paramBundle);
+    paramBundle = super.v(paramBundle);
+    AppMethodBeat.o(220682);
+    return paramBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.live.a.e
  * JD-Core Version:    0.7.0.1
  */

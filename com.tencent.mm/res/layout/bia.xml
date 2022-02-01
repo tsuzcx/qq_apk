@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:gravity="center_vertical" android:background="@drawable/qa" android:layout_width="fill_parent" android:layout_height="@dimen/k4"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:background="@color/a4" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/afq" android:layout_width="fill_parent" android:layout_height="@dimen/d6" android:layout_alignParentTop="true" />
+    <FrameLayout android:id="@id/afo" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <FrameLayout android:id="@id/afp" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/afm" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true" android:layout_alignParentEnd="true" />
+    <FrameLayout android:id="@id/afn" android:layout_width="fill_parent" android:layout_height="@dimen/dc" android:layout_alignParentBottom="true" />
+</RelativeLayout>

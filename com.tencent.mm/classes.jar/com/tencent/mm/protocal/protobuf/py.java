@@ -4,113 +4,127 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class py
-  extends dyl
+  extends com.tencent.mm.bx.a
 {
-  public fbb RYi;
-  public int lpw;
+  public String YPl;
+  public int YRD;
+  public LinkedList<px> YUi;
+  public qk YUj;
+  
+  public py()
+  {
+    AppMethodBeat.i(124435);
+    this.YUi = new LinkedList();
+    AppMethodBeat.o(124435);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(124460);
+    AppMethodBeat.i(124436);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.e(1, 8, this.YUi);
+      paramVarArgs.bS(3, this.YRD);
+      if (this.YPl != null) {
+        paramVarArgs.g(4, this.YPl);
       }
-      paramVarArgs.aY(2, this.lpw);
-      if (this.RYi != null)
+      if (this.YUj != null)
       {
-        paramVarArgs.oE(3, this.RYi.computeSize());
-        this.RYi.writeFields(paramVarArgs);
+        paramVarArgs.qD(5, this.YUj.computeSize());
+        this.YUj.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(124460);
+      AppMethodBeat.o(124436);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label466;
-      }
-    }
-    label466:
-    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    int i;
+    if (paramInt == 1)
     {
-      int i = paramInt + g.a.a.b.b.a.bM(2, this.lpw);
+      i = i.a.a.a.c(1, 8, this.YUi) + 0 + i.a.a.b.b.a.cJ(3, this.YRD);
       paramInt = i;
-      if (this.RYi != null) {
-        paramInt = i + g.a.a.a.oD(3, this.RYi.computeSize());
+      if (this.YPl != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.YPl);
       }
-      AppMethodBeat.o(124460);
-      return paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
-          }
-        }
-        AppMethodBeat.o(124460);
-        return 0;
+      i = paramInt;
+      if (this.YUj != null) {
+        i = paramInt + i.a.a.a.qC(5, this.YUj.computeSize());
       }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
-        py localpy = (py)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(124460);
-          return -1;
-        case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new jg();
-            if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((jg)localObject2).parseFrom((byte[])localObject1);
-            }
-            localpy.BaseRequest = ((jg)localObject2);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(124460);
-          return 0;
-        case 2: 
-          localpy.lpw = ((g.a.a.a.a)localObject1).abFh.AK();
-          AppMethodBeat.o(124460);
-          return 0;
+      AppMethodBeat.o(124436);
+      return i;
+    }
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.YUi.clear();
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
         }
-        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+      }
+      AppMethodBeat.o(124436);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
+      py localpy = (py)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      Object localObject2;
+      switch (paramInt)
+      {
+      case 2: 
+      default: 
+        AppMethodBeat.o(124436);
+        return -1;
+      case 1: 
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject1 = (byte[])paramVarArgs.get(paramInt);
-          localObject2 = new fbb();
+          localObject2 = new px();
           if ((localObject1 != null) && (localObject1.length > 0)) {
-            ((fbb)localObject2).parseFrom((byte[])localObject1);
+            ((px)localObject2).parseFrom((byte[])localObject1);
           }
-          localpy.RYi = ((fbb)localObject2);
+          localpy.YUi.add(localObject2);
           paramInt += 1;
         }
-        AppMethodBeat.o(124460);
+        AppMethodBeat.o(124436);
+        return 0;
+      case 3: 
+        localpy.YRD = ((i.a.a.a.a)localObject1).ajGk.aar();
+        AppMethodBeat.o(124436);
+        return 0;
+      case 4: 
+        localpy.YPl = ((i.a.a.a.a)localObject1).ajGk.readString();
+        AppMethodBeat.o(124436);
         return 0;
       }
-      AppMethodBeat.o(124460);
-      return -1;
+      paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+      i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        localObject1 = (byte[])paramVarArgs.get(paramInt);
+        localObject2 = new qk();
+        if ((localObject1 != null) && (localObject1.length > 0)) {
+          ((qk)localObject2).parseFrom((byte[])localObject1);
+        }
+        localpy.YUj = ((qk)localObject2);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(124436);
+      return 0;
     }
+    AppMethodBeat.o(124436);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.py
  * JD-Core Version:    0.7.0.1
  */

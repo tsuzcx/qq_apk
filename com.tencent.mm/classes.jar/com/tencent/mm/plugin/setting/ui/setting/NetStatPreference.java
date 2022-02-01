@@ -23,7 +23,7 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class NetStatPreference
   extends Preference
 {
-  boolean JeM;
+  boolean Ppi;
   
   public NetStatPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,14 +34,14 @@ public class NetStatPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(73895);
-    this.JeM = false;
+    this.Ppi = false;
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, b.j.NetStatPreference, paramInt, 0);
     if (paramAttributeSet.getInt(b.j.NetStatPreference_srcType, 0) == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      this.JeM = bool;
+      this.Ppi = bool;
       paramAttributeSet.recycle();
-      aF(paramContext.getString(b.i.settings_netstat_statistic_period, new Object[] { Integer.valueOf(15) }));
+      aS(paramContext.getString(b.i.settings_netstat_statistic_period, new Object[] { Integer.valueOf(15) }));
       AppMethodBeat.o(73895);
       return;
     }
@@ -59,16 +59,16 @@ public class NetStatPreference
     {
       localNetStatGroup = new NetStatGroup(this.mContext);
       int m = k - i + 1;
-      bool = this.JeM;
+      bool = this.Ppi;
       localObject = DateFormat.format(localNetStatGroup.getContext().getString(b.i.fmt_date, new Object[] { "" }), m * 86400000L).toString();
-      localNetStatGroup.JeL.setText((CharSequence)localObject);
+      localNetStatGroup.FhD.setText((CharSequence)localObject);
       Log.d("MicroMsg.NetStatGroup", "NetStat dataTime = ".concat(String.valueOf(localObject)));
-      localNetStatGroup.JeK.removeAllViews();
+      localNetStatGroup.Pph.removeAllViews();
       int j = 0;
       if (j < 5)
       {
         localObject = new NetStatUnit(localNetStatGroup.getContext());
-        j localj = p.bpD().wT(m + j);
+        j localj = p.bNk().wT(m + j);
         long l1;
         long l2;
         long l3;
@@ -77,24 +77,24 @@ public class NetStatPreference
           if (!bool) {
             break label321;
           }
-          Log.i("MicroMsg.NetStatUnit", "dknetflow peroid:%d wifi : %d %d %d %d", new Object[] { Integer.valueOf(localj.mdv), Long.valueOf(localj.mdR), Long.valueOf(localj.mdF), Long.valueOf(localj.mdT), Long.valueOf(localj.mdH) });
-          l1 = localj.mdR;
-          l2 = localj.mdF;
-          l3 = localj.mdT;
-          ((NetStatUnit)localObject).au(l1 + l2, localj.mdH + l3);
+          Log.i("MicroMsg.NetStatUnit", "dknetflow peroid:%d wifi : %d %d %d %d", new Object[] { Integer.valueOf(localj.oWo), Long.valueOf(localj.oWK), Long.valueOf(localj.oWy), Long.valueOf(localj.oWM), Long.valueOf(localj.oWA) });
+          l1 = localj.oWK;
+          l2 = localj.oWy;
+          l3 = localj.oWM;
+          ((NetStatUnit)localObject).be(l1 + l2, localj.oWA + l3);
         }
         for (;;)
         {
           ((NetStatUnit)localObject).setLayoutParams(new LinearLayout.LayoutParams(-1, -1, 1.0F));
-          localNetStatGroup.JeK.addView((View)localObject);
+          localNetStatGroup.Pph.addView((View)localObject);
           j += 1;
           break;
           label321:
-          Log.i("MicroMsg.NetStatUnit", "dknetflow peroid:%d mobile : %d %d %d %d", new Object[] { Integer.valueOf(localj.mdv), Long.valueOf(localj.mdQ), Long.valueOf(localj.mdE), Long.valueOf(localj.mdS), Long.valueOf(localj.mdG) });
-          l1 = localj.mdQ;
-          l2 = localj.mdE;
-          l3 = localj.mdS;
-          ((NetStatUnit)localObject).au(l1 + l2, localj.mdG + l3);
+          Log.i("MicroMsg.NetStatUnit", "dknetflow peroid:%d mobile : %d %d %d %d", new Object[] { Integer.valueOf(localj.oWo), Long.valueOf(localj.oWJ), Long.valueOf(localj.oWx), Long.valueOf(localj.oWL), Long.valueOf(localj.oWz) });
+          l1 = localj.oWJ;
+          l2 = localj.oWx;
+          l3 = localj.oWL;
+          ((NetStatUnit)localObject).be(l1 + l2, localj.oWz + l3);
         }
       }
       localLinearLayout.addView(localNetStatGroup, -2, -1);
@@ -103,19 +103,19 @@ public class NetStatPreference
     localLinearLayout = (LinearLayout)paramView.findViewById(b.f.ruler);
     localLinearLayout.removeAllViews();
     NetStatGroup localNetStatGroup = new NetStatGroup(this.mContext);
-    boolean bool = this.JeM;
+    boolean bool = this.Ppi;
     localNetStatGroup.removeAllViews();
     View.inflate(localNetStatGroup.getContext(), b.g.netstat_ruler, localNetStatGroup);
-    localNetStatGroup.JeK = ((LinearLayout)localNetStatGroup.findViewById(b.f.group));
+    localNetStatGroup.Pph = ((LinearLayout)localNetStatGroup.findViewById(b.f.group));
     Object localObject = new NetStatRuler(localNetStatGroup.getContext());
     if (bool) {}
     for (paramView = "wifi";; paramView = "mobile")
     {
       ((NetStatRuler)localObject).setTag(paramView);
       ((NetStatRuler)localObject).setLayoutParams(new LinearLayout.LayoutParams(-1, -1, 1.0F));
-      localNetStatGroup.JeK.addView((View)localObject);
+      localNetStatGroup.Pph.addView((View)localObject);
       localLinearLayout.addView(localNetStatGroup);
-      auO(8);
+      aBq(8);
       AppMethodBeat.o(73897);
       return;
     }
@@ -134,7 +134,7 @@ public class NetStatPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.NetStatPreference
  * JD-Core Version:    0.7.0.1
  */

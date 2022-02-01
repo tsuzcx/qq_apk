@@ -1,54 +1,96 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class csl
-  extends com.tencent.mm.cd.a
+  extends erp
 {
-  public int RKC;
+  public String aayv;
+  public int aayw;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(169083);
+    AppMethodBeat.i(91511);
     if (paramInt == 0)
     {
-      ((g.a.a.c.a)paramVarArgs[0]).aY(1, this.RKC);
-      AppMethodBeat.o(169083);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = g.a.a.b.b.a.bM(1, this.RKC);
-      AppMethodBeat.o(169083);
-      return paramInt + 0;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
-      }
-      AppMethodBeat.o(169083);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      csl localcsl = (csl)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
       {
-      default: 
-        AppMethodBeat.o(169083);
-        return -1;
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      localcsl.RKC = locala.abFh.AK();
-      AppMethodBeat.o(169083);
+      if (this.aayv != null) {
+        paramVarArgs.g(2, this.aayv);
+      }
+      paramVarArgs.bS(3, this.aayw);
+      AppMethodBeat.o(91511);
       return 0;
     }
-    AppMethodBeat.o(169083);
-    return -1;
+    if (paramInt == 1) {
+      if (this.BaseRequest == null) {
+        break label388;
+      }
+    }
+    label388:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    {
+      int i = paramInt;
+      if (this.aayv != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.aayv);
+      }
+      paramInt = i.a.a.b.b.a.cJ(3, this.aayw);
+      AppMethodBeat.o(91511);
+      return i + paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(91511);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
+        csl localcsl = (csl)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(91511);
+          return -1;
+        case 1: 
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kc localkc = new kc();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkc.parseFrom((byte[])localObject);
+            }
+            localcsl.BaseRequest = localkc;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(91511);
+          return 0;
+        case 2: 
+          localcsl.aayv = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(91511);
+          return 0;
+        }
+        localcsl.aayw = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(91511);
+        return 0;
+      }
+      AppMethodBeat.o(91511);
+      return -1;
+    }
   }
 }
 

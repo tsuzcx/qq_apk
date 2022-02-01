@@ -1,142 +1,105 @@
 package kotlin.g.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Arrays;
-import kotlin.e;
-import kotlin.w;
+import kotlin.l.b;
 
 public class p
+  extends f
+  implements o, kotlin.l.f
 {
-  public static String I(String paramString, Object paramObject)
+  private final int arity;
+  private final int flags;
+  
+  public p(int paramInt)
   {
-    AppMethodBeat.i(128973);
-    paramString = paramString + paramObject;
-    AppMethodBeat.o(128973);
-    return paramString;
+    this(paramInt, aiwK, null, null, null, 0);
   }
   
-  public static void bGy(String paramString)
+  public p(int paramInt, Object paramObject)
   {
-    AppMethodBeat.i(128975);
-    paramString = (w)r(new w("lateinit property " + paramString + " has not been initialized"));
-    AppMethodBeat.o(128975);
-    throw paramString;
+    this(paramInt, paramObject, null, null, null, 0);
   }
   
-  static <T extends Throwable> T c(T paramT, String paramString)
+  public p(int paramInt1, Object paramObject, Class paramClass, String paramString1, String paramString2, int paramInt2) {}
+  
+  public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(128981);
-    StackTraceElement[] arrayOfStackTraceElement = paramT.getStackTrace();
-    int k = arrayOfStackTraceElement.length;
-    int j = -1;
-    int i = 0;
-    while (i < k)
+    AppMethodBeat.i(128938);
+    if (paramObject == this)
     {
-      if (paramString.equals(arrayOfStackTraceElement[i].getClassName())) {
-        j = i;
-      }
-      i += 1;
-    }
-    paramT.setStackTrace((StackTraceElement[])Arrays.copyOfRange(arrayOfStackTraceElement, j + 1, k));
-    AppMethodBeat.o(128981);
-    return paramT;
-  }
-  
-  public static int compare(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 < paramInt2) {
-      return -1;
-    }
-    if (paramInt1 == paramInt2) {
-      return 0;
-    }
-    return 1;
-  }
-  
-  public static boolean e(Float paramFloat)
-  {
-    AppMethodBeat.i(128979);
-    if ((paramFloat != null) && (paramFloat.floatValue() == 0.0F))
-    {
-      AppMethodBeat.o(128979);
+      AppMethodBeat.o(128938);
       return true;
     }
-    AppMethodBeat.o(128979);
+    if ((paramObject instanceof p))
+    {
+      paramObject = (p)paramObject;
+      if ((s.p(avF(), paramObject.avF())) && (getName().equals(paramObject.getName())) && (getSignature().equals(paramObject.getSignature())) && (this.flags == paramObject.flags) && (this.arity == paramObject.arity) && (s.p(kln(), paramObject.kln())))
+      {
+        AppMethodBeat.o(128938);
+        return true;
+      }
+      AppMethodBeat.o(128938);
+      return false;
+    }
+    if ((paramObject instanceof kotlin.l.f))
+    {
+      boolean bool = paramObject.equals(klo());
+      AppMethodBeat.o(128938);
+      return bool;
+    }
+    AppMethodBeat.o(128938);
     return false;
   }
   
-  public static boolean h(Object paramObject1, Object paramObject2)
+  public int getArity()
   {
-    AppMethodBeat.i(128978);
-    if (paramObject1 == null)
+    return this.arity;
+  }
+  
+  public int hashCode()
+  {
+    AppMethodBeat.i(128939);
+    if (avF() == null) {}
+    for (int i = 0;; i = avF().hashCode() * 31)
     {
-      if (paramObject2 == null)
-      {
-        AppMethodBeat.o(128978);
-        return true;
-      }
-      AppMethodBeat.o(128978);
-      return false;
+      int j = getName().hashCode();
+      int k = getSignature().hashCode();
+      AppMethodBeat.o(128939);
+      return (i + j) * 31 + k;
     }
-    boolean bool = paramObject1.equals(paramObject2);
-    AppMethodBeat.o(128978);
-    return bool;
   }
   
-  public static void iCn()
+  protected final b klm()
   {
-    AppMethodBeat.i(128974);
-    e locale = (e)r(new e());
-    AppMethodBeat.o(128974);
-    throw locale;
+    AppMethodBeat.i(128937);
+    kotlin.l.f localf = ai.a(this);
+    AppMethodBeat.o(128937);
+    return localf;
   }
   
-  public static void iCo()
+  public String toString()
   {
-    AppMethodBeat.i(216968);
-    UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException("This function has a reified type parameter and thus can only be inlined at compilation time, not called directly.");
-    AppMethodBeat.o(216968);
-    throw localUnsupportedOperationException;
-  }
-  
-  public static void j(Object paramObject, String paramString)
-  {
-    AppMethodBeat.i(128976);
-    if (paramObject == null)
+    AppMethodBeat.i(128940);
+    Object localObject = klo();
+    if (localObject != this)
     {
-      paramObject = (IllegalStateException)r(new IllegalStateException(paramString + " must not be null"));
-      AppMethodBeat.o(128976);
-      throw paramObject;
+      localObject = localObject.toString();
+      AppMethodBeat.o(128940);
+      return localObject;
     }
-    AppMethodBeat.o(128976);
-  }
-  
-  public static void k(Object paramObject, String paramString)
-  {
-    AppMethodBeat.i(128977);
-    if (paramObject == null)
+    if ("<init>".equals(getName()))
     {
-      Object localObject = java.lang.Thread.currentThread().getStackTrace()[3];
-      paramObject = ((StackTraceElement)localObject).getClassName();
-      localObject = ((StackTraceElement)localObject).getMethodName();
-      paramObject = (IllegalArgumentException)r(new IllegalArgumentException("Parameter specified as non-null is null: method " + paramObject + "." + (String)localObject + ", parameter " + paramString));
-      AppMethodBeat.o(128977);
-      throw paramObject;
+      AppMethodBeat.o(128940);
+      return "constructor (Kotlin reflection is not available)";
     }
-    AppMethodBeat.o(128977);
-  }
-  
-  private static <T extends Throwable> T r(T paramT)
-  {
-    AppMethodBeat.i(128980);
-    paramT = c(paramT, p.class.getName());
-    AppMethodBeat.o(128980);
-    return paramT;
+    localObject = "function " + getName() + " (Kotlin reflection is not available)";
+    AppMethodBeat.o(128940);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.g.b.p
  * JD-Core Version:    0.7.0.1
  */

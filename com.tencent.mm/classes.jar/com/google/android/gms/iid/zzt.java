@@ -20,18 +20,14 @@ import java.util.Iterator;
 import java.util.Queue;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import javax.annotation.concurrent.GuardedBy;
 
 final class zzt
   implements ServiceConnection
 {
-  @GuardedBy("this")
   int state;
   final Messenger zzcc;
   zzy zzcd;
-  @GuardedBy("this")
   final Queue<zzz<?>> zzce;
-  @GuardedBy("this")
   final SparseArray<zzz<?>> zzcf;
   
   private zzt(zzr paramzzr)
@@ -304,7 +300,7 @@ final class zzt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.iid.zzt
  * JD-Core Version:    0.7.0.1
  */

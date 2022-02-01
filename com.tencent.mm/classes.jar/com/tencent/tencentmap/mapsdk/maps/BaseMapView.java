@@ -55,13 +55,13 @@ public abstract class BaseMapView
   {
     public abstract TencentMap getMap();
     
+    public abstract boolean isOpaque();
+    
     public abstract boolean isTouchable();
     
     public abstract void onCreated();
     
     public abstract void onDestroy();
-    
-    public abstract boolean onInterceptTouchEvent(MotionEvent paramMotionEvent);
     
     public abstract void onPause();
     
@@ -82,11 +82,13 @@ public abstract class BaseMapView
     public abstract void onUpdateOptions(TencentMapOptions paramTencentMapOptions);
     
     public abstract void setOnTop(boolean paramBoolean);
+    
+    public abstract void setOpaque(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.BaseMapView
  * JD-Core Version:    0.7.0.1
  */

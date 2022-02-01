@@ -1,6 +1,5 @@
 package com.tencent.mm.protocal;
 
-import android.annotation.TargetApi;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -11,11 +10,11 @@ public final class aa$b
   extends l.e
   implements l.c
 {
-  public long RCi = 7L;
-  private byte[] RCj;
-  public int RCk = 0;
+  public long YyK = 7L;
+  private byte[] YyL;
+  public int YyM = 0;
   public byte[] ctx;
-  public byte[] kci = null;
+  public byte[] mCq = null;
   public byte[] networkId;
   private String xml = null;
   
@@ -33,16 +32,16 @@ public final class aa$b
         return -1;
       }
     }
-    this.RCi = (paramArrayOfByte[3] & 0xFF | (paramArrayOfByte[2] & 0xFF) << 8 | (paramArrayOfByte[1] & 0xFF) << 16 | (paramArrayOfByte[0] & 0xFF) << 24);
+    this.YyK = (paramArrayOfByte[3] & 0xFF | (paramArrayOfByte[2] & 0xFF) << 8 | (paramArrayOfByte[1] & 0xFF) << 16 | (paramArrayOfByte[0] & 0xFF) << 24);
     int i = paramArrayOfByte[7] & 0xFF | (paramArrayOfByte[6] & 0xFF) << 8 | (paramArrayOfByte[5] & 0xFF) << 16 | (paramArrayOfByte[4] & 0xFF) << 24;
     int j = paramArrayOfByte[11] & 0xFF | (paramArrayOfByte[10] & 0xFF) << 8 | (paramArrayOfByte[9] & 0xFF) << 16 | (paramArrayOfByte[8] & 0xFF) << 24;
-    Log.d("MicroMsg.MMSyncCheck", " fromProtoBuf oreh synccheck resp selector:%d, redCode:%d, keyLen:%d, buf length:%d", new Object[] { Long.valueOf(this.RCi), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramArrayOfByte.length) });
+    Log.d("MicroMsg.MMSyncCheck", " fromProtoBuf oreh synccheck resp selector:%d, redCode:%d, keyLen:%d, buf length:%d", new Object[] { Long.valueOf(this.YyK), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramArrayOfByte.length) });
     if (i != -3002)
     {
       this.xml = "";
       if (paramArrayOfByte.length > j + 12)
       {
-        this.RCk = (paramArrayOfByte[(j + 15)] & 0xFF | (paramArrayOfByte[(j + 14)] & 0xFF) << 8 | (paramArrayOfByte[(j + 13)] & 0xFF) << 16 | (paramArrayOfByte[(j + 12)] & 0xFF) << 24);
+        this.YyM = (paramArrayOfByte[(j + 15)] & 0xFF | (paramArrayOfByte[(j + 14)] & 0xFF) << 8 | (paramArrayOfByte[(j + 13)] & 0xFF) << 16 | (paramArrayOfByte[(j + 12)] & 0xFF) << 24);
         this.networkId = new byte[32];
         System.arraycopy(paramArrayOfByte, j + 16, this.networkId, 0, 32);
         int k = paramArrayOfByte[(j + 51)] & 0xFF | (paramArrayOfByte[(j + 50)] & 0xFF) << 8 | (paramArrayOfByte[(j + 49)] & 0xFF) << 16 | (paramArrayOfByte[(j + 48)] & 0xFF) << 24;
@@ -64,11 +63,11 @@ public final class aa$b
     }
     if (j == paramArrayOfByte.length - 12 - 16)
     {
-      this.kci = new byte[16];
-      System.arraycopy(paramArrayOfByte, paramArrayOfByte.length - 16, this.kci, 0, 16);
+      this.mCq = new byte[16];
+      System.arraycopy(paramArrayOfByte, paramArrayOfByte.length - 16, this.mCq, 0, 16);
     }
-    this.RCj = new byte[j];
-    System.arraycopy(paramArrayOfByte, 12, this.RCj, 0, j);
+    this.YyL = new byte[j];
+    System.arraycopy(paramArrayOfByte, 12, this.YyL, 0, j);
     AppMethodBeat.o(133128);
     return i;
   }
@@ -78,11 +77,10 @@ public final class aa$b
     return 1000000205;
   }
   
-  @TargetApi(9)
-  public final String hpf()
+  public final String iQa()
   {
     AppMethodBeat.i(133127);
-    if (this.kci == null)
+    if (this.mCq == null)
     {
       AppMethodBeat.o(133127);
       return "";
@@ -90,7 +88,7 @@ public final class aa$b
     Object localObject;
     if (this.xml == null)
     {
-      localObject = MMProtocalJni.aesDecrypt(this.RCj, this.kci);
+      localObject = MMProtocalJni.aesDecrypt(this.YyL, this.mCq);
       if (Util.isNullOrNil((byte[])localObject))
       {
         AppMethodBeat.o(133127);
@@ -116,7 +114,7 @@ public final class aa$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.aa.b
  * JD-Core Version:    0.7.0.1
  */

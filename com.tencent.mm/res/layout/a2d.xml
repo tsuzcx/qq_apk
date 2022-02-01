@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/ht9" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <View android:id="@id/c0w" android:background="?kf" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="@id/htb" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
-        <androidx.recyclerview.widget.RecyclerView android:id="@id/htb" android:scrollbars="none" android:clipToPadding="false" android:layout_width="0.0dip" android:layout_height="@dimen/a35" android:overScrollMode="never" android:paddingStart="@dimen/bt" android:paddingEnd="@dimen/bt" app:layout_constraintEnd_toStartOf="@id/c0m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
-        <ImageView android:id="@id/c0m" android:padding="@dimen/cb" android:visibility="gone" android:layout_width="48.0dip" android:layout_height="0.0dip" android:src="@raw/hide_emoji_panel" android:contentDescription="@string/b5x" app:layout_constraintBottom_toBottomOf="@id/htb" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toEndOf="@id/htb" app:layout_constraintTop_toTopOf="@id/htb" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    <com.tencent.mm.ui.widget.pulldown.NestedBounceView android:id="@id/cp0" android:background="?kc" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <com.tencent.mm.emoji.panel.EmojiPanelGroupView android:id="@id/c0t" android:background="@drawable/cao" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </com.tencent.mm.ui.widget.pulldown.NestedBounceView>
+<LinearLayout android:layout_width="fill_parent" android:layout_height="@dimen/a4p" style="@style/mk"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/cfu" android:layout_width="fill_parent" android:layout_height="@dimen/a4p">
+        <ImageView android:id="@id/chw" android:paddingRight="@dimen/a4v" android:layout_width="@dimen/a4p" android:layout_height="@dimen/a4p" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <TextView android:gravity="center_vertical" android:id="@id/chx" android:background="@drawable/b7q" android:layout_width="wrap_content" android:layout_height="@dimen/a4p" android:layout_toLeftOf="@id/chy" android:layout_toRightOf="@id/chw" android:layout_alignParentTop="true" style="@style/ma" />
+        <ImageView android:id="@id/chy" android:background="@drawable/b7q" android:paddingLeft="@dimen/i_" android:paddingRight="@dimen/j6" android:layout_width="wrap_content" android:layout_height="@dimen/a4p" android:src="@raw/emotionstore_emotionalign_icon" android:maxHeight="@dimen/a4p" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    </RelativeLayout>
 </LinearLayout>

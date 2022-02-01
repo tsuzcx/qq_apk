@@ -14,14 +14,14 @@ final class BankRemitDetailUI$1
   {
     AppMethodBeat.i(67508);
     Log.i("MicroMsg.BankRemitDetailUI", "back press");
-    this.IhB.finish();
+    this.Oee.finish();
     AppMethodBeat.o(67508);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.ui.BankRemitDetailUI.1
  * JD-Core Version:    0.7.0.1
  */

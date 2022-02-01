@@ -10,10 +10,6 @@ import android.view.Surface;
 import com.tencent.liteav.audio.TXAudioEffectManager;
 import com.tencent.liteav.basic.datareport.TXCDRApi;
 import com.tencent.liteav.basic.log.TXCLog;
-import com.tencent.liteav.basic.module.TXCKeyPointReportProxy;
-import com.tencent.liteav.basic.module.TXCKeyPointReportProxy.a;
-import com.tencent.liteav.basic.util.TXCCommonUtil;
-import com.tencent.liteav.basic.util.h;
 import com.tencent.liteav.beauty.TXBeautyManager;
 import com.tencent.liteav.device.TXDeviceManager;
 import com.tencent.liteav.trtc.impl.TRTCCloudImpl;
@@ -95,28 +91,27 @@ public class f
   private boolean o;
   private int p;
   private b q;
-  private Context r;
-  private a s;
-  private V2TXLivePusherObserver t;
-  private boolean u;
+  private boolean r;
+  private Context s;
+  private a t;
+  private V2TXLivePusherObserver u;
   private boolean v;
-  private int w;
+  private boolean w;
   private Map<String, Integer> x;
   
   static
   {
-    AppMethodBeat.i(214219);
+    AppMethodBeat.i(211801);
     a = new HashMap();
     o();
-    AppMethodBeat.o(214219);
+    AppMethodBeat.o(211801);
   }
   
   public f(Context paramContext, a.d paramd, a parama)
   {
-    AppMethodBeat.i(214086);
-    this.w = 4;
-    this.r = paramContext.getApplicationContext();
-    this.s = parama;
+    AppMethodBeat.i(211417);
+    this.s = paramContext.getApplicationContext();
+    this.t = parama;
     if (paramd == a.d.b) {}
     for (this.d = TRTCCloud.sharedInstance(paramContext).createSubCloud();; this.d = b)
     {
@@ -127,49 +122,88 @@ public class f
       this.l = new HashMap();
       this.p = 21;
       f("create instance:" + this.d.hashCode());
-      AppMethodBeat.o(214086);
+      AppMethodBeat.o(211417);
       return;
     }
   }
   
   public static int a(Bitmap paramBitmap, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    AppMethodBeat.i(214104);
+    AppMethodBeat.i(211505);
     b.setWatermark(paramBitmap, 0, paramFloat1, paramFloat2, paramFloat3);
-    AppMethodBeat.o(214104);
+    AppMethodBeat.o(211505);
     return 0;
   }
   
   public static int a(V2TXLiveDef.V2TXLiveVideoFrame paramV2TXLiveVideoFrame)
   {
-    AppMethodBeat.i(214109);
+    AppMethodBeat.i(211547);
     b.sendCustomVideoData(com.tencent.live2.impl.b.a(paramV2TXLiveVideoFrame));
-    AppMethodBeat.o(214109);
+    AppMethodBeat.o(211547);
     return 0;
+  }
+  
+  private int a(a.d paramd, String paramString, int paramInt)
+  {
+    AppMethodBeat.i(211573);
+    int i1 = 0;
+    V2TXLivePusherObserver localV2TXLivePusherObserver = this.u;
+    paramString = (b)d(paramInt).get(paramString);
+    paramInt = i1;
+    if (localV2TXLivePusherObserver != null)
+    {
+      paramInt = i1;
+      if ((localV2TXLivePusherObserver instanceof com.tencent.live2.impl.a.b)) {
+        paramInt = 1;
+      }
+    }
+    if ((paramString != null) && (paramString.f != null) && ((paramString.f instanceof com.tencent.live2.impl.a.a))) {
+      paramInt = 1;
+    }
+    for (;;)
+    {
+      if (paramInt != 0) {
+        if (paramd == a.d.a) {
+          paramInt = 3;
+        }
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(211573);
+        return paramInt;
+        paramInt = 9;
+        continue;
+        if (paramd == a.d.a) {
+          paramInt = 10;
+        } else {
+          paramInt = 4;
+        }
+      }
+    }
   }
   
   public static int a(TRTCCloudDef.TRTCVideoEncParam paramTRTCVideoEncParam, TRTCCloudDef.TRTCScreenShareParams paramTRTCScreenShareParams)
   {
-    AppMethodBeat.i(214094);
+    AppMethodBeat.i(211467);
     TXCLog.i("V2-V2TRTCCloud", "startScreenCapture");
     g = true;
     m();
     b.startScreenCapture(paramTRTCVideoEncParam, paramTRTCScreenShareParams);
-    AppMethodBeat.o(214094);
+    AppMethodBeat.o(211467);
     return 0;
   }
   
   public static int a(boolean paramBoolean)
   {
-    AppMethodBeat.i(214107);
+    AppMethodBeat.i(211531);
     b.setVideoEncoderMirror(paramBoolean);
-    AppMethodBeat.o(214107);
+    AppMethodBeat.o(211531);
     return 0;
   }
   
   public static f a(Context paramContext, String paramString, a.d paramd, a parama)
   {
-    AppMethodBeat.i(214083);
+    AppMethodBeat.i(211399);
     if (paramd == a.d.a)
     {
       Iterator localIterator = a.values().iterator();
@@ -178,7 +212,7 @@ public class f
         f localf = (f)localIterator.next();
         if ((localf != null) && (localf.j()) && (localf.m == a.d.a))
         {
-          AppMethodBeat.o(214083);
+          AppMethodBeat.o(211399);
           return localf;
         }
       }
@@ -186,7 +220,7 @@ public class f
     if (TextUtils.isEmpty(paramString))
     {
       TXCLog.e("V2-V2TRTCCloud", "create instance fail. room id is empty.");
-      AppMethodBeat.o(214083);
+      AppMethodBeat.o(211399);
       return null;
     }
     if (a.containsKey(paramString))
@@ -194,57 +228,57 @@ public class f
       TXCLog.e("V2-V2TRTCCloud", "find exist instance, maybe something error. roomId:".concat(String.valueOf(paramString)));
       n();
       paramContext = (f)a.get(paramString);
-      AppMethodBeat.o(214083);
+      AppMethodBeat.o(211399);
       return paramContext;
     }
     paramContext = new f(paramContext, paramd, parama);
     TXCLog.i("V2-V2TRTCCloud", "create new instance. room id: " + paramString + " instance:" + paramContext.hashCode());
     a.put(paramString, paramContext);
-    AppMethodBeat.o(214083);
+    AppMethodBeat.o(211399);
     return paramContext;
   }
   
   public static void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(214207);
+    AppMethodBeat.i(211705);
     TXCLog.i("V2-V2TRTCCloud", "setPushSurfaceSize [width:" + paramInt1 + "][height:" + paramInt2 + "]");
     if (z == null)
     {
       TXCLog.e("V2-V2TRTCCloud", "set local surface size fail. reflect method fail.");
-      AppMethodBeat.o(214207);
+      AppMethodBeat.o(211705);
       return;
     }
     try
     {
       z.invoke(b, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      AppMethodBeat.o(214207);
+      AppMethodBeat.o(211705);
       return;
     }
     catch (Exception localException)
     {
       TXCLog.e("V2-V2TRTCCloud", "set local surface size fail.", localException);
-      AppMethodBeat.o(214207);
+      AppMethodBeat.o(211705);
     }
   }
   
   public static void a(Context paramContext)
   {
-    AppMethodBeat.i(214082);
+    AppMethodBeat.i(211393);
     b = TRTCCloud.sharedInstance(paramContext);
-    AppMethodBeat.o(214082);
+    AppMethodBeat.o(211393);
   }
   
   public static void a(Bitmap paramBitmap, int paramInt)
   {
-    AppMethodBeat.i(214102);
+    AppMethodBeat.i(211497);
     TXCLog.i("V2-V2TRTCCloud", "setVideoMuteImg [bitmap:" + paramBitmap + "][fps:" + paramInt + "]");
     b.setVideoMuteImage(paramBitmap, paramInt);
-    AppMethodBeat.o(214102);
+    AppMethodBeat.o(211497);
   }
   
   public static void a(Surface paramSurface)
   {
-    AppMethodBeat.i(214206);
+    AppMethodBeat.i(211698);
     StringBuilder localStringBuilder = new StringBuilder("setPushSurface surface:");
     if (paramSurface != null) {}
     for (String str = paramSurface.hashCode();; str = "null")
@@ -254,26 +288,26 @@ public class f
         break;
       }
       TXCLog.e("V2-V2TRTCCloud", "set local surface fail. reflect method fail.");
-      AppMethodBeat.o(214206);
+      AppMethodBeat.o(211698);
       return;
     }
     try
     {
       y.invoke(b, new Object[] { paramSurface });
-      AppMethodBeat.o(214206);
+      AppMethodBeat.o(211698);
       return;
     }
     catch (Exception paramSurface)
     {
       TXCLog.e("V2-V2TRTCCloud", "set local surface fail.", paramSurface);
-      AppMethodBeat.o(214206);
+      AppMethodBeat.o(211698);
     }
   }
   
   public static void a(V2TXLiveDef.V2TXLiveAudioQuality paramV2TXLiveAudioQuality)
   {
     int i1 = 1;
-    AppMethodBeat.i(214092);
+    AppMethodBeat.i(211453);
     TXCLog.i("V2-V2TRTCCloud", "startMicrophone quality: ".concat(String.valueOf(paramV2TXLiveAudioQuality)));
     h = true;
     m();
@@ -281,7 +315,7 @@ public class f
     for (;;)
     {
       b.startLocalAudio(i1);
-      AppMethodBeat.o(214092);
+      AppMethodBeat.o(211453);
       return;
       if (paramV2TXLiveAudioQuality == V2TXLiveDef.V2TXLiveAudioQuality.V2TXLiveAudioQualityMusic) {
         i1 = 3;
@@ -293,19 +327,19 @@ public class f
   
   public static void a(V2TXLiveDef.V2TXLiveMirrorType paramV2TXLiveMirrorType)
   {
-    AppMethodBeat.i(214105);
+    AppMethodBeat.i(211515);
     switch (30.a[paramV2TXLiveMirrorType.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(214105);
+      AppMethodBeat.o(211515);
       return;
       b.setLocalViewMirror(0);
-      AppMethodBeat.o(214105);
+      AppMethodBeat.o(211515);
       return;
       b.setLocalViewMirror(1);
-      AppMethodBeat.o(214105);
+      AppMethodBeat.o(211515);
       return;
       b.setLocalViewMirror(2);
     }
@@ -313,37 +347,41 @@ public class f
   
   public static void a(V2TXLiveDef.V2TXLiveRotation paramV2TXLiveRotation)
   {
-    AppMethodBeat.i(214106);
+    AppMethodBeat.i(211521);
     b.setLocalViewRotation(com.tencent.live2.impl.b.b(paramV2TXLiveRotation));
-    AppMethodBeat.o(214106);
+    AppMethodBeat.o(211521);
   }
   
   public static void a(f paramf)
   {
-    AppMethodBeat.i(214084);
+    AppMethodBeat.i(211405);
     StringBuilder localStringBuilder = new StringBuilder("destroy instance:");
     if (paramf != null) {}
     for (Object localObject = paramf.hashCode();; localObject = "null")
     {
       TXCLog.i("V2-V2TRTCCloud", (String)localObject);
-      localObject = a.entrySet().iterator();
-      do
-      {
-        if (!((Iterator)localObject).hasNext()) {
-          break;
-        }
-      } while (((Map.Entry)((Iterator)localObject).next()).getValue() != paramf);
-      ((Iterator)localObject).remove();
-      paramf.k();
-      AppMethodBeat.o(214084);
+      if (paramf != null) {
+        break;
+      }
+      AppMethodBeat.o(211405);
       return;
     }
-    AppMethodBeat.o(214084);
+    localObject = a.entrySet().iterator();
+    while (((Iterator)localObject).hasNext()) {
+      if (((Map.Entry)((Iterator)localObject).next()).getValue() == paramf)
+      {
+        ((Iterator)localObject).remove();
+        paramf.k();
+        AppMethodBeat.o(211405);
+        return;
+      }
+    }
+    AppMethodBeat.o(211405);
   }
   
   public static void a(a.g paramg)
   {
-    AppMethodBeat.i(214110);
+    AppMethodBeat.i(211555);
     TXCLog.i("V2-V2TRTCCloud", "setVideoEncoderParam param:".concat(String.valueOf(paramg)));
     JSONObject localJSONObject = new JSONObject();
     try
@@ -357,77 +395,76 @@ public class f
       paramg.put("api", "setVideoEncodeParamEx");
       paramg.put("params", localJSONObject);
       b.callExperimentalAPI(paramg.toString());
-      AppMethodBeat.o(214110);
+      AppMethodBeat.o(211555);
       return;
     }
     catch (JSONException paramg)
     {
-      AppMethodBeat.o(214110);
+      AppMethodBeat.o(211555);
     }
   }
   
-  private void a(TRTCCloudDef.TRTCParams paramTRTCParams, int paramInt)
+  private void a(TRTCCloudDef.TRTCParams paramTRTCParams, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(214123);
-    f("enterRoom frameworkType " + this.w);
+    AppMethodBeat.i(211581);
+    f("enterRoom");
+    Context localContext;
+    int i1;
     if (this.m == a.d.a)
     {
       c.a();
-      this.d.callExperimentalAPI(String.format(Locale.ENGLISH, "{\"api\":\"setFramework\", \"params\": {\"framework\":%d}}", new Object[] { Integer.valueOf(this.w) }));
-    }
-    while (this.m != a.d.b)
-    {
       this.p = paramTRTCParams.role;
-      TXCDRApi.txReportDAU(this.r, com.tencent.liteav.basic.datareport.a.bI, paramTRTCParams.sdkAppId, "");
-      this.d.enterRoom(paramTRTCParams, paramInt);
-      AppMethodBeat.o(214123);
-      return;
+      paramInt2 = a(this.m, paramTRTCParams.userId, paramInt2);
+      f("enterRoom frameworkType ".concat(String.valueOf(paramInt2)));
+      this.d.callExperimentalAPI(String.format(Locale.ENGLISH, "{\"api\":\"setFramework\", \"params\": {\"framework\":%d, \"scene\":%d, \"sdkappid\":%d}}", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), Integer.valueOf(paramTRTCParams.sdkAppId) }));
+      localContext = this.s;
+      paramInt2 = com.tencent.liteav.basic.datareport.a.bI;
+      i1 = paramTRTCParams.sdkAppId;
+      if (this.m != a.d.b) {
+        break label221;
+      }
     }
-    c.a(paramTRTCParams.userId, paramTRTCParams.sdkAppId, String.valueOf(paramTRTCParams.strRoomId));
-    this.d.callExperimentalAPI(String.format(Locale.ENGLISH, "{\"api\":\"setRoomType\", \"params\": {\"type\":%d}}", new Object[] { Integer.valueOf(1) }));
-    String str1 = h.d();
-    String str2 = h.c();
-    TXCKeyPointReportProxy.a locala = new TXCKeyPointReportProxy.a();
-    locala.d = paramInt;
-    locala.e = str2;
-    locala.f = str1;
-    if (this.r != null) {}
-    for (str1 = this.r.getPackageName();; str1 = "")
+    label221:
+    for (String str = "RTC";; str = "ROOM")
     {
-      locala.h = str1;
-      locala.b = paramTRTCParams.sdkAppId;
-      locala.g = TXCCommonUtil.getSDKVersionStr();
-      locala.c = this.w;
-      TXCKeyPointReportProxy.a(locala);
+      TXCDRApi.txReportDAU(localContext, paramInt2, i1, str);
+      this.d.enterRoom(paramTRTCParams, paramInt1);
+      AppMethodBeat.o(211581);
+      return;
+      if (this.m != a.d.b) {
+        break;
+      }
+      c.a(paramTRTCParams.userId, paramTRTCParams.sdkAppId, String.valueOf(paramTRTCParams.strRoomId));
+      this.d.callExperimentalAPI(String.format(Locale.ENGLISH, "{\"api\":\"setRoomType\", \"params\": {\"type\":%d}}", new Object[] { Integer.valueOf(1) }));
       break;
     }
   }
   
   public static void a(TRTCCloudListener.TRTCVideoFrameListener paramTRTCVideoFrameListener, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(214112);
+    AppMethodBeat.i(211567);
     b.setLocalVideoProcessListener(paramInt1, paramInt2, paramTRTCVideoFrameListener);
-    AppMethodBeat.o(214112);
+    AppMethodBeat.o(211567);
   }
   
   private void a(String paramString, int paramInt, final V2TXLiveDef.V2TXLivePlayStatus paramV2TXLivePlayStatus, final V2TXLiveDef.V2TXLiveStatusChangeReason paramV2TXLiveStatusChangeReason)
   {
-    AppMethodBeat.i(214211);
-    final b localb = (b)e(paramInt).get(paramString);
+    AppMethodBeat.i(211731);
+    final b localb = (b)d(paramInt).get(paramString);
     c localc = (c)this.l.get(paramString);
     if ((localb != null) && (localc != null))
     {
-      if (f(paramInt)) {}
+      if (e(paramInt)) {}
       for (boolean bool = localc.c; (paramV2TXLivePlayStatus == V2TXLiveDef.V2TXLivePlayStatus.V2TXLivePlayStatusPlaying) && ((!bool) || (localb.j)); bool = localc.f)
       {
         h("update status(video) fail.[userId:" + paramString + "][videoAvailable:" + bool + "][videoMuted:" + localb.j + "][fromStatus:" + b.b(localb) + "][toStatus:" + paramV2TXLivePlayStatus + "][reason:" + paramV2TXLiveStatusChangeReason + "]");
-        AppMethodBeat.o(214211);
+        AppMethodBeat.o(211731);
         return;
       }
       if (!com.tencent.live2.impl.b.a(b.b(localb), paramV2TXLivePlayStatus, paramV2TXLiveStatusChangeReason))
       {
         h("update status(video) fail.[userId:" + paramString + "][videoAvailable:" + bool + "][videoMuted:" + localb.j + "][fromStatus:" + b.b(localb) + "][toStatus:" + paramV2TXLivePlayStatus + "][reason:" + paramV2TXLiveStatusChangeReason + "]");
-        AppMethodBeat.o(214211);
+        AppMethodBeat.o(211731);
         return;
       }
       f("update status(video) success.[userId:" + paramString + "][fromStatus:" + b.b(localb) + "][toStatus:" + paramV2TXLivePlayStatus + "][reason:" + paramV2TXLiveStatusChangeReason + "]");
@@ -436,14 +473,14 @@ public class f
       {
         public void run()
         {
-          AppMethodBeat.i(214065);
+          AppMethodBeat.i(211443);
           if ((localb.f != null) && (localb.g != null)) {
             localb.f.onVideoPlayStatusUpdate(localb.g, paramV2TXLivePlayStatus, paramV2TXLiveStatusChangeReason, new Bundle());
           }
-          AppMethodBeat.o(214065);
+          AppMethodBeat.o(211443);
         }
       });
-      AppMethodBeat.o(214211);
+      AppMethodBeat.o(211731);
       return;
     }
     paramV2TXLivePlayStatus = new StringBuilder("update status(video) fail. cant'find info. [userInfo:");
@@ -459,7 +496,7 @@ public class f
     for (paramString = "null";; paramString = Integer.valueOf(localb.hashCode()))
     {
       h(paramString + "]");
-      AppMethodBeat.o(214211);
+      AppMethodBeat.o(211731);
       return;
       paramString = Integer.valueOf(localc.hashCode());
       break;
@@ -468,15 +505,15 @@ public class f
   
   private void a(String paramString, int paramInt, TXCloudVideoView paramTXCloudVideoView, TRTCCloudDef.TRTCRenderParams paramTRTCRenderParams)
   {
-    AppMethodBeat.i(214130);
+    AppMethodBeat.i(211615);
     this.d.startRemoteView(paramString, paramInt, paramTXCloudVideoView);
     this.d.setRemoteRenderParams(paramString, paramInt, paramTRTCRenderParams);
-    AppMethodBeat.o(214130);
+    AppMethodBeat.o(211615);
   }
   
   private void a(String paramString, final V2TXLiveDef.V2TXLivePlayStatus paramV2TXLivePlayStatus, final V2TXLiveDef.V2TXLiveStatusChangeReason paramV2TXLiveStatusChangeReason)
   {
-    AppMethodBeat.i(214209);
+    AppMethodBeat.i(211716);
     final b localb = (b)this.j.get(paramString);
     c localc = (c)this.l.get(paramString);
     if ((localb != null) && (localc != null))
@@ -484,13 +521,13 @@ public class f
       if ((paramV2TXLivePlayStatus == V2TXLiveDef.V2TXLivePlayStatus.V2TXLivePlayStatusPlaying) && ((!localc.b) || (localb.i)))
       {
         h("update status(audio) fail.[userId:" + paramString + "][audioAvailable:" + localc.b + "][fromStatus:" + b.a(localb) + "][toStatus:" + paramV2TXLivePlayStatus + "][reason:" + paramV2TXLiveStatusChangeReason + "]");
-        AppMethodBeat.o(214209);
+        AppMethodBeat.o(211716);
         return;
       }
       if (!com.tencent.live2.impl.b.a(b.a(localb), paramV2TXLivePlayStatus, paramV2TXLiveStatusChangeReason))
       {
         h("update status(audio) fail.[userId:" + paramString + "][audioAvailable:" + localc.b + "][fromStatus:" + b.a(localb) + "][toStatus:" + paramV2TXLivePlayStatus + "][reason:" + paramV2TXLiveStatusChangeReason + "]");
-        AppMethodBeat.o(214209);
+        AppMethodBeat.o(211716);
         return;
       }
       f("update status(audio) success.[userId:" + paramString + "][fromStatus:" + b.a(localb) + "][toStatus:" + paramV2TXLivePlayStatus + "][reason:" + paramV2TXLiveStatusChangeReason + "]");
@@ -499,14 +536,14 @@ public class f
       {
         public void run()
         {
-          AppMethodBeat.i(213857);
+          AppMethodBeat.i(211454);
           if ((localb.f != null) && (localb.g != null)) {
             localb.f.onAudioPlayStatusUpdate(localb.g, paramV2TXLivePlayStatus, paramV2TXLiveStatusChangeReason, new Bundle());
           }
-          AppMethodBeat.o(213857);
+          AppMethodBeat.o(211454);
         }
       });
-      AppMethodBeat.o(214209);
+      AppMethodBeat.o(211716);
       return;
     }
     paramV2TXLivePlayStatus = new StringBuilder("update status(audio) fail. cant'find info. [userInfo:");
@@ -522,7 +559,7 @@ public class f
     for (paramString = "null";; paramString = Integer.valueOf(localb.hashCode()))
     {
       h(paramString + "]");
-      AppMethodBeat.o(214209);
+      AppMethodBeat.o(211716);
       return;
       paramString = Integer.valueOf(localc.hashCode());
       break;
@@ -531,50 +568,53 @@ public class f
   
   private void a(final String paramString1, final String paramString2, int paramInt)
   {
-    AppMethodBeat.i(214173);
+    AppMethodBeat.i(211664);
     if ((this.m != a.d.b) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
-      AppMethodBeat.o(214173);
+      AppMethodBeat.o(211664);
       return;
     }
-    b localb = (b)e(paramInt).remove(paramString1);
+    b localb = (b)d(paramInt).remove(paramString1);
     if (localb == null)
     {
       h("update remote user id fail. can't find [userId:" + paramString1 + "] playerInfo.");
-      AppMethodBeat.o(214173);
+      AppMethodBeat.o(211664);
       return;
     }
-    if (localb.a == null) {
+    if (localb.a == null)
+    {
       h("update remote user id fail. url param is null.");
+      AppMethodBeat.o(211664);
+      return;
     }
     localb.a.a(paramString2);
-    e(paramInt).put(paramString2, localb);
-    paramString1 = this.s;
+    d(paramInt).put(paramString2, localb);
+    paramString1 = this.t;
     if (paramString1 != null) {
       this.c.post(new Runnable()
       {
         public void run()
         {
-          AppMethodBeat.i(213862);
+          AppMethodBeat.i(211481);
           paramString1.a(paramString2);
-          AppMethodBeat.o(213862);
+          AppMethodBeat.o(211481);
         }
       });
     }
-    AppMethodBeat.o(214173);
+    AppMethodBeat.o(211664);
   }
   
   private void a(final String paramString, final boolean paramBoolean, final int paramInt)
   {
-    AppMethodBeat.i(214180);
+    AppMethodBeat.i(211675);
     c localc = (c)this.l.get(paramString);
     if (localc == null)
     {
       h("onUserVideoAvailableInner error: can't find [userId:" + paramString + "] user info.");
-      AppMethodBeat.o(214180);
+      AppMethodBeat.o(211675);
       return;
     }
-    if (f(paramInt)) {
+    if (e(paramInt)) {
       localc.c = paramBoolean;
     }
     b localb;
@@ -586,11 +626,11 @@ public class f
           if (!localc.b) {
             a("27eb683b73944771ce62fbddab2849a4", paramString, paramInt);
           }
-          localb = (b)e(paramInt).get(paramString);
+          localb = (b)d(paramInt).get(paramString);
           if (localb == null)
           {
             h("onUserVideoAvailableInner error: can't find player info.");
-            AppMethodBeat.o(214180);
+            AppMethodBeat.o(211675);
             return;
             localc.f = paramBoolean;
             continue;
@@ -603,7 +643,7 @@ public class f
         }
         else
         {
-          if (!f(paramInt)) {
+          if (!e(paramInt)) {
             break label380;
           }
           if (localc.d) {
@@ -620,15 +660,15 @@ public class f
         {
           public void run()
           {
-            AppMethodBeat.i(213888);
+            AppMethodBeat.i(211509);
             V2TXLivePusherObserver localV2TXLivePusherObserver = f.b(f.this);
             if ((localV2TXLivePusherObserver != null) && ((localV2TXLivePusherObserver instanceof com.tencent.live2.impl.a.b))) {
               ((com.tencent.live2.impl.a.b)localV2TXLivePusherObserver).onUserVideoAvailable(paramString, paramInt, paramBoolean);
             }
-            AppMethodBeat.o(213888);
+            AppMethodBeat.o(211509);
           }
         });
-        AppMethodBeat.o(214180);
+        AppMethodBeat.o(211675);
         return;
         if ((localb.b != null) || (localb.c == null)) {
           break label370;
@@ -668,7 +708,7 @@ public class f
   
   public static void a(boolean paramBoolean, TXCloudVideoView paramTXCloudVideoView)
   {
-    AppMethodBeat.i(214090);
+    AppMethodBeat.i(211445);
     StringBuilder localStringBuilder = new StringBuilder("startCamera [front:").append(paramBoolean).append("][view: ");
     if (paramTXCloudVideoView != null) {}
     for (String str = paramTXCloudVideoView.hashCode();; str = "null")
@@ -677,32 +717,32 @@ public class f
       f = true;
       m();
       b.startLocalPreview(paramBoolean, paramTXCloudVideoView);
-      AppMethodBeat.o(214090);
+      AppMethodBeat.o(211445);
       return;
     }
   }
   
   public static boolean a(String paramString)
   {
-    AppMethodBeat.i(214085);
+    AppMethodBeat.i(211412);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(214085);
+      AppMethodBeat.o(211412);
       return false;
     }
     paramString = (f)a.get(paramString);
     if ((paramString != null) && (paramString.a()))
     {
-      AppMethodBeat.o(214085);
+      AppMethodBeat.o(211412);
       return true;
     }
-    AppMethodBeat.o(214085);
+    AppMethodBeat.o(211412);
     return false;
   }
   
   public static int b(boolean paramBoolean)
   {
-    AppMethodBeat.i(214108);
+    AppMethodBeat.i(211538);
     if (i != paramBoolean)
     {
       TXCLog.i("V2-V2TRTCCloud", "enableCustomVideoCapture enable: ".concat(String.valueOf(paramBoolean)));
@@ -710,13 +750,13 @@ public class f
       m();
       b.enableCustomVideoCapture(paramBoolean);
     }
-    AppMethodBeat.o(214108);
+    AppMethodBeat.o(211538);
     return 0;
   }
   
   public static void b()
   {
-    AppMethodBeat.i(214091);
+    AppMethodBeat.i(211449);
     if (f)
     {
       TXCLog.i("V2-V2TRTCCloud", "stopCamera");
@@ -724,19 +764,36 @@ public class f
       m();
       b.stopLocalPreview();
     }
-    AppMethodBeat.o(214091);
+    AppMethodBeat.o(211449);
+  }
+  
+  public static void b(int paramInt)
+  {
+    AppMethodBeat.i(211690);
+    try
+    {
+      C.invoke(null, new Object[] { Integer.valueOf(paramInt) });
+      TXCLog.i("V2-V2TRTCCloud", "set env success. env:".concat(String.valueOf(paramInt)));
+      AppMethodBeat.o(211690);
+      return;
+    }
+    catch (Exception localException)
+    {
+      TXCLog.e("V2-V2TRTCCloud", "set env fail.", localException);
+      AppMethodBeat.o(211690);
+    }
   }
   
   public static void b(String paramString)
   {
-    AppMethodBeat.i(214111);
+    AppMethodBeat.i(211561);
     b.callExperimentalAPI(paramString);
-    AppMethodBeat.o(214111);
+    AppMethodBeat.o(211561);
   }
   
   public static void c()
   {
-    AppMethodBeat.i(214093);
+    AppMethodBeat.i(211458);
     if (h)
     {
       TXCLog.i("V2-V2TRTCCloud", "stopMicrophone");
@@ -744,43 +801,12 @@ public class f
       m();
       b.stopLocalAudio();
     }
-    AppMethodBeat.o(214093);
+    AppMethodBeat.o(211458);
   }
   
-  public static void c(int paramInt)
+  private void c(int paramInt)
   {
-    AppMethodBeat.i(214204);
-    try
-    {
-      C.invoke(null, new Object[] { Integer.valueOf(paramInt) });
-      TXCLog.i("V2-V2TRTCCloud", "set env success. env:".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(214204);
-      return;
-    }
-    catch (Exception localException)
-    {
-      TXCLog.e("V2-V2TRTCCloud", "set env fail.", localException);
-      AppMethodBeat.o(214204);
-    }
-  }
-  
-  public static int d()
-  {
-    AppMethodBeat.i(214095);
-    if (g)
-    {
-      TXCLog.i("V2-V2TRTCCloud", "stopScreenCapture");
-      g = false;
-      m();
-      b.stopScreenCapture();
-    }
-    AppMethodBeat.o(214095);
-    return 0;
-  }
-  
-  private void d(int paramInt)
-  {
-    AppMethodBeat.i(214124);
+    AppMethodBeat.i(211588);
     Object localObject2 = new StringBuilder("notify all instance switch role to:");
     if (paramInt == 20) {}
     for (Object localObject1 = "anchor";; localObject1 = "audience")
@@ -799,52 +825,71 @@ public class f
         }
       }
     }
-    AppMethodBeat.o(214124);
+    AppMethodBeat.o(211588);
   }
   
-  public static TXAudioEffectManager e()
+  public static int d()
   {
-    AppMethodBeat.i(214097);
-    TXAudioEffectManager localTXAudioEffectManager = b.getAudioEffectManager();
-    AppMethodBeat.o(214097);
-    return localTXAudioEffectManager;
+    AppMethodBeat.i(211473);
+    if (g)
+    {
+      TXCLog.i("V2-V2TRTCCloud", "stopScreenCapture");
+      g = false;
+      m();
+      b.stopScreenCapture();
+    }
+    AppMethodBeat.o(211473);
+    return 0;
   }
   
-  private Map<String, b> e(int paramInt)
+  private Map<String, b> d(int paramInt)
   {
-    AppMethodBeat.i(214128);
-    if (f(paramInt)) {}
+    AppMethodBeat.i(211602);
+    if (e(paramInt)) {}
     for (Map localMap = this.j;; localMap = this.k)
     {
-      AppMethodBeat.o(214128);
+      AppMethodBeat.o(211602);
       return localMap;
     }
   }
   
+  public static TXAudioEffectManager e()
+  {
+    AppMethodBeat.i(211479);
+    TXAudioEffectManager localTXAudioEffectManager = b.getAudioEffectManager();
+    AppMethodBeat.o(211479);
+    return localTXAudioEffectManager;
+  }
+  
+  private boolean e(int paramInt)
+  {
+    return (paramInt == 0) || (paramInt == 1);
+  }
+  
   private boolean e(String paramString)
   {
-    AppMethodBeat.i(214125);
+    AppMethodBeat.i(211598);
     if ((TextUtils.isEmpty(paramString)) || ("27eb683b73944771ce62fbddab2849a4".equals(paramString)))
     {
-      AppMethodBeat.o(214125);
+      AppMethodBeat.o(211598);
       return true;
     }
-    AppMethodBeat.o(214125);
+    AppMethodBeat.o(211598);
     return false;
   }
   
   public static TXBeautyManager f()
   {
-    AppMethodBeat.i(214098);
+    AppMethodBeat.i(211483);
     TXBeautyManager localTXBeautyManager = b.getBeautyManager();
-    AppMethodBeat.o(214098);
+    AppMethodBeat.o(211483);
     return localTXBeautyManager;
   }
   
   private b f(String paramString, int paramInt)
   {
-    AppMethodBeat.i(214129);
-    Map localMap = e(paramInt);
+    AppMethodBeat.i(211606);
+    Map localMap = d(paramInt);
     b localb2 = (b)localMap.get(paramString);
     b localb1 = localb2;
     if (localb2 == null)
@@ -852,49 +897,44 @@ public class f
       localb1 = new b();
       localMap.put(paramString, localb1);
     }
-    AppMethodBeat.o(214129);
+    AppMethodBeat.o(211606);
     return localb1;
   }
   
   private void f(String paramString)
   {
-    AppMethodBeat.i(214151);
+    AppMethodBeat.i(211621);
     TXCLog.i("V2-V2TRTCCloud", "v2_trtccloud(" + hashCode() + ") " + paramString);
-    AppMethodBeat.o(214151);
-  }
-  
-  private boolean f(int paramInt)
-  {
-    return (paramInt == 0) || (paramInt == 1);
+    AppMethodBeat.o(211621);
   }
   
   public static TXDeviceManager g()
   {
-    AppMethodBeat.i(214100);
+    AppMethodBeat.i(211492);
     TXDeviceManager localTXDeviceManager = b.getDeviceManager();
-    AppMethodBeat.o(214100);
+    AppMethodBeat.o(211492);
     return localTXDeviceManager;
   }
   
   private void g(String paramString)
   {
-    AppMethodBeat.i(214153);
+    AppMethodBeat.i(211630);
     TXCLog.w("V2-V2TRTCCloud", "v2_trtccloud(" + hashCode() + ") " + paramString);
-    AppMethodBeat.o(214153);
+    AppMethodBeat.o(211630);
   }
   
   private void h(String paramString)
   {
-    AppMethodBeat.i(214154);
+    AppMethodBeat.i(211637);
     TXCLog.e("V2-V2TRTCCloud", "v2_trtccloud(" + hashCode() + ") " + paramString);
-    AppMethodBeat.o(214154);
+    AppMethodBeat.o(211637);
   }
   
   private void k()
   {
-    AppMethodBeat.i(214087);
+    AppMethodBeat.i(211425);
     f("destroy instance:" + this.d.hashCode());
-    this.s = null;
+    this.t = null;
     this.j.clear();
     this.k.clear();
     if (b != this.d) {
@@ -902,7 +942,7 @@ public class f
     }
     this.l.clear();
     n();
-    AppMethodBeat.o(214087);
+    AppMethodBeat.o(211425);
   }
   
   private static boolean l()
@@ -912,10 +952,10 @@ public class f
   
   private static void m()
   {
-    AppMethodBeat.i(214089);
+    AppMethodBeat.i(211437);
     if (!e)
     {
-      AppMethodBeat.o(214089);
+      AppMethodBeat.o(211437);
       return;
     }
     String str = null;
@@ -931,32 +971,32 @@ public class f
     } while ((localObject1 == null) || (!((f)localObject1).j()) || (!((f)localObject1).q.i()));
     if (localObject1 == null)
     {
-      AppMethodBeat.o(214089);
+      AppMethodBeat.o(211437);
       return;
     }
     int i1;
-    if (((f)localObject1).i())
+    if ((((f)localObject1).i()) && (((f)localObject1).r))
     {
       if (!l()) {
-        break label173;
+        break label180;
       }
       i1 = 20;
       if (((f)localObject1).p != i1)
       {
         localObject2 = new StringBuilder("switch role to:");
         if (i1 != 20) {
-          break label179;
+          break label186;
         }
       }
     }
-    label173:
-    label179:
+    label180:
+    label186:
     for (str = "anchor";; str = "audience")
     {
       TXCLog.i("V2-V2TRTCCloud", str + " when room protocol.");
       ((f)localObject1).p = i1;
       ((f)localObject1).d.switchRole(i1);
-      AppMethodBeat.o(214089);
+      AppMethodBeat.o(211437);
       return;
       i1 = 21;
       break;
@@ -965,7 +1005,7 @@ public class f
   
   private static void n()
   {
-    AppMethodBeat.i(214156);
+    AppMethodBeat.i(211647);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("All room info: [size:").append(a.size()).append("]\n");
     Iterator localIterator = a.entrySet().iterator();
@@ -981,12 +1021,12 @@ public class f
       }
     }
     TXCLog.i("V2-V2TRTCCloud", localStringBuilder.toString());
-    AppMethodBeat.o(214156);
+    AppMethodBeat.o(211647);
   }
   
   private static void o()
   {
-    AppMethodBeat.i(214203);
+    AppMethodBeat.i(211682);
     try
     {
       y = TRTCCloudImpl.class.getDeclaredMethod("setLocalSurface", new Class[] { Surface.class });
@@ -1002,12 +1042,12 @@ public class f
         try
         {
           C = TRTCCloud.class.getDeclaredMethod("setNetEnv", new Class[] { Integer.TYPE });
-          AppMethodBeat.o(214203);
+          AppMethodBeat.o(211682);
           return;
         }
         catch (NoSuchMethodException localNoSuchMethodException2)
         {
-          AppMethodBeat.o(214203);
+          AppMethodBeat.o(211682);
         }
         localNoSuchMethodException1 = localNoSuchMethodException1;
         TXCLog.e("V2-V2TRTCCloud", "initReflectMethod init fail.", localNoSuchMethodException1);
@@ -1015,13 +1055,21 @@ public class f
     }
   }
   
+  public int a(int paramInt)
+  {
+    AppMethodBeat.i(211924);
+    this.d.enableAudioVolumeEvaluation(paramInt);
+    AppMethodBeat.o(211924);
+    return 0;
+  }
+  
   public int a(String paramString, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(214144);
+    AppMethodBeat.i(211909);
     if (e(paramString))
     {
       h("muteRemoteAudio: invalid user id:".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(214144);
+      AppMethodBeat.o(211909);
       return -3;
     }
     f("muteRemoteAudio [userId:" + paramString + "][streamType:" + paramInt + "][isMute:" + paramBoolean + "]");
@@ -1029,10 +1077,10 @@ public class f
     if (paramBoolean) {
       a(paramString, V2TXLiveDef.V2TXLivePlayStatus.V2TXLivePlayStatusStopped, V2TXLiveDef.V2TXLiveStatusChangeReason.V2TXLiveStatusChangeReasonLocalStopped);
     }
-    while (f(paramInt))
+    while (e(paramInt))
     {
       this.d.muteRemoteAudio(paramString, paramBoolean);
-      AppMethodBeat.o(214144);
+      AppMethodBeat.o(211909);
       return 0;
       c localc = (c)this.l.get(paramString);
       if ((localc != null) && (localc.e))
@@ -1043,55 +1091,50 @@ public class f
         }
       }
     }
-    AppMethodBeat.o(214144);
+    AppMethodBeat.o(211909);
     return -4;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.w = paramInt;
   }
   
   public void a(V2TXLiveDef.V2TXLiveTranscodingConfig paramV2TXLiveTranscodingConfig)
   {
-    AppMethodBeat.i(214113);
+    AppMethodBeat.i(211812);
     paramV2TXLiveTranscodingConfig = com.tencent.live2.impl.b.a(paramV2TXLiveTranscodingConfig);
     this.d.setMixTranscodingConfig(paramV2TXLiveTranscodingConfig);
-    AppMethodBeat.o(214113);
+    AppMethodBeat.o(211812);
   }
   
   public void a(V2TXLivePusherObserver paramV2TXLivePusherObserver)
   {
-    AppMethodBeat.i(214120);
+    AppMethodBeat.i(211858);
     f("registerPusherObserver observer: ".concat(String.valueOf(paramV2TXLivePusherObserver)));
-    this.t = paramV2TXLivePusherObserver;
-    AppMethodBeat.o(214120);
+    this.u = paramV2TXLivePusherObserver;
+    AppMethodBeat.o(211858);
   }
   
   public void a(String paramString, int paramInt)
   {
-    AppMethodBeat.i(214132);
+    AppMethodBeat.i(211880);
     if (e(paramString))
     {
       h("unregisterPlayerObserver: invalid user id:".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(214132);
+      AppMethodBeat.o(211880);
       return;
     }
-    paramString = (b)e(paramInt).get(paramString);
+    paramString = (b)d(paramInt).get(paramString);
     if (paramString != null) {
       paramString.f = null;
     }
-    AppMethodBeat.o(214132);
+    AppMethodBeat.o(211880);
   }
   
   public void a(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(214139);
+    AppMethodBeat.i(211900);
     f("setRemoteSurface [userId:" + paramString + "][streamType:" + paramInt1 + "][width:" + paramInt2 + "][height: " + paramInt3 + "]");
     if (e(paramString))
     {
       h("setPlaySurfaceSize: invalid user id:".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(214139);
+      AppMethodBeat.o(211900);
       return;
     }
     b localb = f(paramString, paramInt1);
@@ -1100,19 +1143,19 @@ public class f
     try
     {
       B.invoke(this.d, new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-      AppMethodBeat.o(214139);
+      AppMethodBeat.o(211900);
       return;
     }
     catch (Exception paramString)
     {
       TXCLog.e("V2-V2TRTCCloud", "set play surface size fail.", paramString);
-      AppMethodBeat.o(214139);
+      AppMethodBeat.o(211900);
     }
   }
   
   public void a(String paramString, int paramInt, Surface paramSurface)
   {
-    AppMethodBeat.i(214138);
+    AppMethodBeat.i(211898);
     StringBuilder localStringBuilder = new StringBuilder("setRemoteSurface [userId:").append(paramString).append("][streamType:").append(paramInt).append("][surface: ");
     if (paramSurface != null) {}
     for (Object localObject = paramSurface.hashCode();; localObject = "null")
@@ -1122,7 +1165,7 @@ public class f
         break;
       }
       h("setPlaySurface: invalid user id:".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(214138);
+      AppMethodBeat.o(211898);
       return;
     }
     localObject = f(paramString, paramInt);
@@ -1135,64 +1178,64 @@ public class f
     try
     {
       A.invoke(this.d, new Object[] { paramString, Integer.valueOf(paramInt), paramSurface });
-      AppMethodBeat.o(214138);
+      AppMethodBeat.o(211898);
       return;
     }
     catch (Exception paramString)
     {
       TXCLog.e("V2-V2TRTCCloud", "set play surface size fail.", paramString);
-      AppMethodBeat.o(214138);
+      AppMethodBeat.o(211898);
     }
   }
   
   public void a(String paramString, int paramInt, V2TXLiveDef.V2TXLiveFillMode paramV2TXLiveFillMode)
   {
-    AppMethodBeat.i(214141);
+    AppMethodBeat.i(211905);
     if (e(paramString))
     {
       h("set play view fill mode fail. invalid user id:".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(214141);
+      AppMethodBeat.o(211905);
       return;
     }
     b localb = f(paramString, paramInt);
     localb.k.fillMode = com.tencent.live2.impl.b.b(paramV2TXLiveFillMode);
     this.d.setRemoteRenderParams(paramString, paramInt, localb.k);
-    AppMethodBeat.o(214141);
+    AppMethodBeat.o(211905);
   }
   
   public void a(String paramString, int paramInt, V2TXLiveDef.V2TXLiveRotation paramV2TXLiveRotation)
   {
-    AppMethodBeat.i(214142);
+    AppMethodBeat.i(211906);
     if (e(paramString))
     {
       h("set play view rotation fail. invalid user id:".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(214142);
+      AppMethodBeat.o(211906);
       return;
     }
     b localb = f(paramString, paramInt);
     localb.k.rotation = com.tencent.live2.impl.b.b(paramV2TXLiveRotation);
     this.d.setRemoteRenderParams(paramString, paramInt, localb.k);
-    AppMethodBeat.o(214142);
+    AppMethodBeat.o(211906);
   }
   
   public void a(String paramString, int paramInt, V2TXLivePlayer paramV2TXLivePlayer, V2TXLivePlayerObserver paramV2TXLivePlayerObserver)
   {
-    AppMethodBeat.i(214131);
+    AppMethodBeat.i(211877);
     if (e(paramString))
     {
       h("registerPlayerObserver: invalid user id:".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(214131);
+      AppMethodBeat.o(211877);
       return;
     }
     paramString = f(paramString, paramInt);
     paramString.g = paramV2TXLivePlayer;
     paramString.f = paramV2TXLivePlayerObserver;
-    AppMethodBeat.o(214131);
+    AppMethodBeat.o(211877);
   }
   
   public void a(String paramString, int paramInt, TXCloudVideoView paramTXCloudVideoView)
   {
-    AppMethodBeat.i(214140);
+    AppMethodBeat.i(211902);
     StringBuilder localStringBuilder = new StringBuilder("setPlayView: [userId:").append(paramString).append("][view:");
     if (paramTXCloudVideoView == null) {}
     for (Object localObject = "null";; localObject = paramTXCloudVideoView.hashCode())
@@ -1202,7 +1245,7 @@ public class f
         break;
       }
       h("setPlayView: invalid user id:".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(214140);
+      AppMethodBeat.o(211902);
       return;
     }
     localObject = f(paramString, paramInt);
@@ -1211,38 +1254,38 @@ public class f
     {
       f("start remote play after set view.");
       a(paramString, paramInt, paramTXCloudVideoView, ((b)localObject).k);
-      AppMethodBeat.o(214140);
+      AppMethodBeat.o(211902);
       return;
     }
     g("waiting for video view for play.");
-    AppMethodBeat.o(214140);
+    AppMethodBeat.o(211902);
   }
   
   public void a(String paramString, int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3)
   {
     int i1 = 1;
-    AppMethodBeat.i(214134);
+    AppMethodBeat.i(211885);
     if (e(paramString))
     {
       h("enableCustomRendering: invalid user id:".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(214134);
+      AppMethodBeat.o(211885);
       return;
     }
     if (paramBoolean)
     {
       f(paramString, paramInt1).h = true;
       this.d.setRemoteVideoRenderListener(paramString, paramInt2, paramInt3, this);
-      AppMethodBeat.o(214134);
+      AppMethodBeat.o(211885);
       return;
     }
-    b localb = (b)e(paramInt1).get(paramString);
+    b localb = (b)d(paramInt1).get(paramString);
     if (localb == null)
     {
-      AppMethodBeat.o(214134);
+      AppMethodBeat.o(211885);
       return;
     }
     localb.h = false;
-    if (f(paramInt1))
+    if (e(paramInt1))
     {
       localb = (b)this.k.get(paramString);
       if ((localb == null) || (!localb.h)) {}
@@ -1251,7 +1294,7 @@ public class f
         if (paramInt1 != 0) {
           this.d.setRemoteVideoRenderListener(paramString, 0, 0, null);
         }
-        AppMethodBeat.o(214134);
+        AppMethodBeat.o(211885);
         return;
       }
     }
@@ -1270,9 +1313,9 @@ public class f
   
   public void a(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(214119);
+    AppMethodBeat.i(211851);
     this.d.sendSEIMsg(paramArrayOfByte, 1);
-    AppMethodBeat.o(214119);
+    AppMethodBeat.o(211851);
   }
   
   public boolean a()
@@ -1280,21 +1323,13 @@ public class f
     return this.n;
   }
   
-  public int b(int paramInt)
-  {
-    AppMethodBeat.i(214150);
-    this.d.enableAudioVolumeEvaluation(paramInt);
-    AppMethodBeat.o(214150);
-    return 0;
-  }
-  
   public int b(String paramString, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(214145);
+    AppMethodBeat.i(211913);
     if (e(paramString))
     {
       h("muteRemoteVideo: invalid user id:".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(214145);
+      AppMethodBeat.o(211913);
       return -3;
     }
     f("muteRemoteVideo [userId:" + paramString + "][streamType:" + paramInt + "][isMute:" + paramBoolean + "]");
@@ -1303,15 +1338,15 @@ public class f
       a(paramString, paramInt, V2TXLiveDef.V2TXLivePlayStatus.V2TXLivePlayStatusStopped, V2TXLiveDef.V2TXLiveStatusChangeReason.V2TXLiveStatusChangeReasonLocalStopped);
     }
     label217:
-    while (f(paramInt))
+    while (e(paramInt))
     {
       this.d.muteRemoteVideoStream(paramString, paramBoolean);
-      AppMethodBeat.o(214145);
+      AppMethodBeat.o(211913);
       return 0;
       c localc = (c)this.l.get(paramString);
       if (localc != null)
       {
-        if (f(paramInt)) {}
+        if (e(paramInt)) {}
         for (boolean bool = localc.d;; bool = localc.g)
         {
           if (!bool) {
@@ -1326,42 +1361,42 @@ public class f
         }
       }
     }
-    AppMethodBeat.o(214145);
+    AppMethodBeat.o(211913);
     return -4;
   }
   
   public boolean b(String paramString, int paramInt)
   {
-    AppMethodBeat.i(214135);
+    AppMethodBeat.i(211889);
     if (e(paramString))
     {
-      AppMethodBeat.o(214135);
+      AppMethodBeat.o(211889);
       return false;
     }
-    if ((b)e(paramInt).get(paramString) != null)
+    if ((b)d(paramInt).get(paramString) != null)
     {
-      AppMethodBeat.o(214135);
+      AppMethodBeat.o(211889);
       return true;
     }
-    AppMethodBeat.o(214135);
+    AppMethodBeat.o(211889);
     return false;
   }
   
   public int c(final String paramString)
   {
-    int i1 = 20;
-    AppMethodBeat.i(214114);
+    boolean bool2 = true;
+    AppMethodBeat.i(211822);
     if (TextUtils.isEmpty(paramString))
     {
       h("start push fail. url is empty.");
-      AppMethodBeat.o(214114);
+      AppMethodBeat.o(211822);
       return -3;
     }
     if (e)
     {
       h("start push fail. already have pusher instance. please check instance map. dumping room map info...");
       n();
-      AppMethodBeat.o(214114);
+      AppMethodBeat.o(211822);
       return -3;
     }
     if (i())
@@ -1370,7 +1405,7 @@ public class f
       for (paramString = this.q.f();; paramString = "null")
       {
         h(paramString);
-        AppMethodBeat.o(214114);
+        AppMethodBeat.o(211822);
         return -3;
       }
     }
@@ -1378,7 +1413,7 @@ public class f
     if ((localb == null) || (!localb.a()))
     {
       h("start push fail. invalid param. [url:" + paramString + "][param:" + localb + "]");
-      AppMethodBeat.o(214114);
+      AppMethodBeat.o(211822);
       return -2;
     }
     f("start push success. push param: ".concat(String.valueOf(localb)));
@@ -1388,6 +1423,9 @@ public class f
     this.n = true;
     this.l.clear();
     this.d.setDefaultStreamRecvMode(this.q.k(), this.q.l());
+    boolean bool1;
+    label378:
+    int i1;
     if (this.q.b())
     {
       paramString = new TRTCCloudDef.TRTCVideoEncParam();
@@ -1399,58 +1437,75 @@ public class f
       b.callExperimentalAPI(String.format("{\"api\":\"enableBlackStream\", \"params\": {\"enable\":%b}}", new Object[] { Boolean.valueOf(this.q.c()) }));
       paramString = this.q.m();
       if (!this.q.i()) {
-        break label454;
+        break label518;
+      }
+      bool1 = bool2;
+      if (this.q.e() != 1)
+      {
+        if (this.q.e() != 3) {
+          break label498;
+        }
+        bool1 = bool2;
+      }
+      this.r = bool1;
+      if (!this.r) {
+        break label509;
       }
       if (!l()) {
-        break label448;
+        break label503;
       }
-      label350:
+      i1 = 20;
+      label399:
       paramString.role = i1;
     }
     for (;;)
     {
-      c(this.q.d());
-      a(paramString, this.q.e());
-      this.d.muteLocalVideo(this.v);
-      this.d.muteLocalAudio(this.u);
+      b(this.q.d());
+      a(paramString, this.q.e(), 0);
+      this.d.muteLocalVideo(this.w);
+      this.d.muteLocalAudio(this.v);
       n();
-      paramString = this.t;
+      paramString = this.u;
       if (paramString != null) {
         this.c.post(new Runnable()
         {
           public void run()
           {
-            AppMethodBeat.i(213872);
+            AppMethodBeat.i(211484);
             paramString.onPushStatusUpdate(V2TXLiveDef.V2TXLivePushStatus.V2TXLivePushStatusConnecting, "connecting to the server.", new Bundle());
-            AppMethodBeat.o(213872);
+            AppMethodBeat.o(211484);
           }
         });
       }
-      AppMethodBeat.o(214114);
+      AppMethodBeat.o(211822);
       return 0;
       b.enableEncSmallVideoStream(false, null);
       break;
-      label448:
+      label498:
+      bool1 = false;
+      break label378;
+      label503:
       i1 = 21;
-      break label350;
-      label454:
+      break label399;
+      label509:
+      paramString.role = 20;
+      continue;
+      label518:
       if (this.q.h())
       {
         paramString.role = 20;
-        d(20);
+        c(20);
       }
     }
   }
   
   public int c(final String paramString, int paramInt)
   {
-    AppMethodBeat.i(214137);
+    AppMethodBeat.i(211896);
     f("stopPlay [userId: " + paramString + "][type:" + paramInt + "]");
     this.d.stopRemoteView(paramString, paramInt);
     if (this.m == a.d.b)
     {
-      this.w = 4;
-      this.d.callExperimentalAPI(String.format(Locale.ENGLISH, "{\"api\":\"setFramework\", \"params\": {\"framework\":%d}}", new Object[] { Integer.valueOf(1) }));
       this.n = false;
       this.m = null;
       this.p = 21;
@@ -1460,64 +1515,67 @@ public class f
       this.l.clear();
       this.j.clear();
       this.k.clear();
-      paramString = this.s;
+      paramString = this.t;
       if (paramString != null) {
         this.c.post(new Runnable()
         {
           public void run()
           {
-            AppMethodBeat.i(214052);
+            AppMethodBeat.i(211447);
             paramString.a("27eb683b73944771ce62fbddab2849a4");
-            AppMethodBeat.o(214052);
+            AppMethodBeat.o(211447);
           }
         });
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(214137);
+      AppMethodBeat.o(211896);
       return 0;
       a(paramString, V2TXLiveDef.V2TXLivePlayStatus.V2TXLivePlayStatusStopped, V2TXLiveDef.V2TXLiveStatusChangeReason.V2TXLiveStatusChangeReasonLocalStopped);
       a(paramString, paramInt, V2TXLiveDef.V2TXLivePlayStatus.V2TXLivePlayStatusStopped, V2TXLiveDef.V2TXLiveStatusChangeReason.V2TXLiveStatusChangeReasonLocalStopped);
-      e(paramInt).remove(paramString);
+      d(paramInt).remove(paramString);
     }
   }
   
   public void c(boolean paramBoolean)
   {
-    AppMethodBeat.i(214117);
-    this.u = paramBoolean;
+    AppMethodBeat.i(211839);
+    this.v = paramBoolean;
     this.d.muteLocalAudio(paramBoolean);
-    AppMethodBeat.o(214117);
+    AppMethodBeat.o(211839);
   }
   
   public int d(String paramString)
   {
-    AppMethodBeat.i(214136);
+    AppMethodBeat.i(211892);
     f("startPlay url: ".concat(String.valueOf(paramString)));
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(214136);
+      AppMethodBeat.o(211892);
       return -3;
     }
     paramString = a.b(paramString);
     b localb = f(paramString.b(), paramString.c());
+    if (paramString.g() >= 0) {
+      b(paramString.g());
+    }
     int i1;
-    if (paramString.h())
+    if (paramString.i())
     {
       if (this.n)
       {
         h("start play fail. already in room.");
-        AppMethodBeat.o(214136);
+        AppMethodBeat.o(211892);
         return -3;
       }
-      TRTCCloudDef.TRTCParams localTRTCParams = paramString.j();
+      TRTCCloudDef.TRTCParams localTRTCParams = paramString.k();
       if (e)
       {
         i1 = 20;
         localTRTCParams.role = i1;
         this.n = true;
-        a(localTRTCParams, paramString.f());
+        a(localTRTCParams, paramString.f(), paramString.c());
       }
     }
     for (;;)
@@ -1525,17 +1583,17 @@ public class f
       f("startPlay param:".concat(String.valueOf(paramString)));
       this.m = paramString.d();
       localb.a = paramString;
-      AppMethodBeat.o(214136);
+      AppMethodBeat.o(211892);
       return 0;
       i1 = 21;
       break;
-      if (!paramString.i()) {
-        break label238;
+      if (!paramString.j()) {
+        break label256;
       }
       if (!this.n)
       {
         h("start play fail. no in room. you should enter room by using V2TXLivePusher.");
-        AppMethodBeat.o(214136);
+        AppMethodBeat.o(211892);
         return -3;
       }
       if (localb.b != null)
@@ -1548,102 +1606,102 @@ public class f
         g("waiting for view to start remote play.");
       }
     }
-    label238:
+    label256:
     h("start play fail.invalid protocol. param:".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(214136);
+    AppMethodBeat.o(211892);
     return -2;
   }
   
   public void d(String paramString, int paramInt)
   {
-    AppMethodBeat.i(214146);
+    AppMethodBeat.i(211914);
     this.d.setRemoteAudioVolume(paramString, paramInt);
-    AppMethodBeat.o(214146);
+    AppMethodBeat.o(211914);
   }
   
   public void d(boolean paramBoolean)
   {
-    AppMethodBeat.i(214118);
-    this.v = paramBoolean;
+    AppMethodBeat.i(211845);
+    this.w = paramBoolean;
     this.d.muteLocalVideo(paramBoolean);
-    AppMethodBeat.o(214118);
+    AppMethodBeat.o(211845);
   }
   
   public void e(final String paramString, final int paramInt)
   {
-    AppMethodBeat.i(214149);
+    AppMethodBeat.i(211921);
     if (paramString == null)
     {
       b.snapshotVideo(paramString, paramInt, new TRTCCloudListener.TRTCSnapshotListener()
       {
         public void onSnapshotComplete(Bitmap paramAnonymousBitmap)
         {
-          AppMethodBeat.i(214057);
+          AppMethodBeat.i(211389);
           V2TXLivePusherObserver localV2TXLivePusherObserver = f.b(f.this);
           if (localV2TXLivePusherObserver != null) {
             localV2TXLivePusherObserver.onSnapshotComplete(paramAnonymousBitmap);
           }
-          AppMethodBeat.o(214057);
+          AppMethodBeat.o(211389);
         }
       });
-      AppMethodBeat.o(214149);
+      AppMethodBeat.o(211921);
       return;
     }
     if (e(paramString))
     {
       h("snapshot: invalid user id:".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(214149);
+      AppMethodBeat.o(211921);
       return;
     }
     this.d.snapshotVideo(paramString, paramInt, new TRTCCloudListener.TRTCSnapshotListener()
     {
       public void onSnapshotComplete(Bitmap paramAnonymousBitmap)
       {
-        AppMethodBeat.i(213865);
+        AppMethodBeat.i(211390);
         f.b localb = (f.b)f.a(f.this, paramInt).get(paramString);
         if ((localb != null) && (localb.f != null) && (localb.g != null)) {
           localb.f.onSnapshotComplete(localb.g, paramAnonymousBitmap);
         }
-        AppMethodBeat.o(213865);
+        AppMethodBeat.o(211390);
       }
     });
-    AppMethodBeat.o(214149);
+    AppMethodBeat.o(211921);
   }
   
   public void e(boolean paramBoolean)
   {
-    AppMethodBeat.i(214147);
+    AppMethodBeat.i(211917);
     TRTCCloud localTRTCCloud = b;
     if (paramBoolean) {}
     for (int i1 = 2;; i1 = 0)
     {
       localTRTCCloud.showDebugView(i1);
-      AppMethodBeat.o(214147);
+      AppMethodBeat.o(211917);
       return;
     }
   }
   
   public void f(boolean paramBoolean)
   {
-    AppMethodBeat.i(214148);
+    AppMethodBeat.i(211919);
     TRTCCloud localTRTCCloud = this.d;
     if (paramBoolean) {}
     for (int i1 = 2;; i1 = 0)
     {
       localTRTCCloud.showDebugView(i1);
-      AppMethodBeat.o(214148);
+      AppMethodBeat.o(211919);
       return;
     }
   }
   
   public int h()
   {
-    AppMethodBeat.i(214115);
+    AppMethodBeat.i(211832);
     f("stop push.");
     if (!i())
     {
       g("stop push fail. no in room or no push instance.");
-      AppMethodBeat.o(214115);
+      AppMethodBeat.o(211832);
       return -3;
     }
     this.n = false;
@@ -1656,8 +1714,6 @@ public class f
       b.callExperimentalAPI(String.format("{\"api\":\"enableBlackStream\", \"params\": {\"enable\":%b}}", new Object[] { Boolean.FALSE }));
     }
     this.q = null;
-    this.w = 4;
-    this.d.callExperimentalAPI(String.format(Locale.ENGLISH, "{\"api\":\"setFramework\", \"params\": {\"framework\":%d}}", new Object[] { Integer.valueOf(1) }));
     b();
     c();
     d();
@@ -1679,23 +1735,24 @@ public class f
     switch (30.b[localObject.ordinal()])
     {
     default: 
-      localObject = this.t;
+      localObject = this.u;
       if (localObject != null) {
         this.c.post(new Runnable()
         {
           public void run()
           {
-            AppMethodBeat.i(214049);
+            AppMethodBeat.i(211487);
             this.a.onPushStatusUpdate(V2TXLiveDef.V2TXLivePushStatus.V2TXLivePushStatusDisconnected, "disconnect server", new Bundle());
-            AppMethodBeat.o(214049);
+            AppMethodBeat.o(211487);
           }
         });
       }
+      this.r = false;
       f("stop push success.");
-      AppMethodBeat.o(214115);
+      AppMethodBeat.o(211832);
       return 0;
     case 1: 
-      d(21);
+      c(21);
     }
     for (;;)
     {
@@ -1723,57 +1780,57 @@ public class f
   
   public boolean i()
   {
-    AppMethodBeat.i(214121);
+    AppMethodBeat.i(211864);
     if ((j()) && (a()))
     {
-      AppMethodBeat.o(214121);
+      AppMethodBeat.o(211864);
       return true;
     }
-    AppMethodBeat.o(214121);
+    AppMethodBeat.o(211864);
     return false;
   }
   
   public boolean j()
   {
-    AppMethodBeat.i(214122);
+    AppMethodBeat.i(211871);
     if ((this.q != null) && (this.q.a()))
     {
-      AppMethodBeat.o(214122);
+      AppMethodBeat.o(211871);
       return true;
     }
-    AppMethodBeat.o(214122);
+    AppMethodBeat.o(211871);
     return false;
   }
   
   public void onCameraDidReady()
   {
-    AppMethodBeat.i(214192);
+    AppMethodBeat.i(212000);
     this.c.post(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(213946);
+        AppMethodBeat.i(211461);
         f.a(f.this, "onCameraDidReady");
         V2TXLivePusherObserver localV2TXLivePusherObserver = f.b(f.this);
         if (localV2TXLivePusherObserver != null) {
           localV2TXLivePusherObserver.onCaptureFirstVideoFrame();
         }
-        AppMethodBeat.o(213946);
+        AppMethodBeat.o(211461);
       }
     });
-    AppMethodBeat.o(214192);
+    AppMethodBeat.o(212000);
   }
   
   public void onCapturedRawAudioFrame(TRTCCloudDef.TRTCAudioFrame paramTRTCAudioFrame) {}
   
   public void onConnectionLost()
   {
-    AppMethodBeat.i(214186);
+    AppMethodBeat.i(211996);
     this.c.post(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(214062);
+        AppMethodBeat.i(211498);
         f.a(f.this, true);
         Object localObject = f.b(f.this);
         if (localObject != null) {
@@ -1793,20 +1850,20 @@ public class f
             f.a(f.this, localb.a.b(), localb.a.c(), V2TXLiveDef.V2TXLivePlayStatus.V2TXLivePlayStatusLoading, V2TXLiveDef.V2TXLiveStatusChangeReason.V2TXLiveStatusChangeReasonBufferingBegin);
           }
         }
-        AppMethodBeat.o(214062);
+        AppMethodBeat.o(211498);
       }
     });
-    AppMethodBeat.o(214186);
+    AppMethodBeat.o(211996);
   }
   
   public void onConnectionRecovery()
   {
-    AppMethodBeat.i(214190);
+    AppMethodBeat.i(211999);
     this.c.post(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(214026);
+        AppMethodBeat.i(211462);
         f.a(f.this, false);
         f.a(f.this, "onConnectionRecovery");
         Object localObject = f.b(f.this);
@@ -1826,19 +1883,19 @@ public class f
             f.a(f.this, localb.a.b(), localb.a.c(), V2TXLiveDef.V2TXLivePlayStatus.V2TXLivePlayStatusPlaying, V2TXLiveDef.V2TXLiveStatusChangeReason.V2TXLiveStatusChangeReasonBufferingEnd);
           }
         }
-        AppMethodBeat.o(214026);
+        AppMethodBeat.o(211462);
       }
     });
-    AppMethodBeat.o(214190);
+    AppMethodBeat.o(211999);
   }
   
   public void onEnterRoom(final long paramLong)
   {
-    AppMethodBeat.i(214161);
+    AppMethodBeat.i(211969);
     f("onEnterRoom result: ".concat(String.valueOf(paramLong)));
     this.l.clear();
     this.o = false;
-    final V2TXLivePusherObserver localV2TXLivePusherObserver = this.t;
+    final V2TXLivePusherObserver localV2TXLivePusherObserver = this.u;
     if (paramLong > 0L)
     {
       localObject = new Bundle();
@@ -1848,32 +1905,32 @@ public class f
         {
           public void run()
           {
-            AppMethodBeat.i(213877);
+            AppMethodBeat.i(211419);
             localV2TXLivePusherObserver.onPushStatusUpdate(V2TXLiveDef.V2TXLivePushStatus.V2TXLivePushStatusConnectSuccess, "connected to the server successfully.", this.b);
             if ((localV2TXLivePusherObserver instanceof com.tencent.live2.impl.a.b)) {
               ((com.tencent.live2.impl.a.b)localV2TXLivePusherObserver).onEnterRoom(paramLong);
             }
-            AppMethodBeat.o(213877);
+            AppMethodBeat.o(211419);
           }
         });
       }
-      AppMethodBeat.o(214161);
+      AppMethodBeat.o(211969);
       return;
     }
     final int i1;
     if (j())
     {
       if (this.m == a.d.b) {
-        d(21);
+        c(21);
       }
       if ((localV2TXLivePusherObserver != null) && ((localV2TXLivePusherObserver instanceof com.tencent.live2.impl.a.b))) {
         this.c.post(new Runnable()
         {
           public void run()
           {
-            AppMethodBeat.i(214013);
+            AppMethodBeat.i(211409);
             ((com.tencent.live2.impl.a.b)localV2TXLivePusherObserver).onEnterRoom(paramLong);
-            AppMethodBeat.o(214013);
+            AppMethodBeat.o(211409);
           }
         });
       }
@@ -1893,7 +1950,7 @@ public class f
       {
         public void run()
         {
-          AppMethodBeat.i(213889);
+          AppMethodBeat.i(211424);
           Object localObject1 = new Bundle();
           ((Bundle)localObject1).putInt("code", (int)paramLong);
           if (this.b != null) {
@@ -1914,10 +1971,10 @@ public class f
           if (localObject1 != null) {
             ((f.a)localObject1).a(paramLong);
           }
-          AppMethodBeat.o(213889);
+          AppMethodBeat.o(211424);
         }
       });
-      AppMethodBeat.o(214161);
+      AppMethodBeat.o(211969);
       return;
       this.m = null;
       this.n = false;
@@ -1931,13 +1988,13 @@ public class f
   public void onError(final int paramInt, final String paramString, final Bundle paramBundle)
   {
     int i1 = -1301;
-    AppMethodBeat.i(214166);
+    AppMethodBeat.i(211975);
     f("onError code: " + paramInt + " msg: " + paramString + " info: " + paramBundle);
-    final V2TXLivePusherObserver localV2TXLivePusherObserver = this.t;
+    final V2TXLivePusherObserver localV2TXLivePusherObserver = this.u;
     switch (paramInt)
     {
     default: 
-      AppMethodBeat.o(214166);
+      AppMethodBeat.o(211975);
       return;
     case -1316: 
     case -1314: 
@@ -1956,7 +2013,7 @@ public class f
         {
           public void run()
           {
-            AppMethodBeat.i(214032);
+            AppMethodBeat.i(211468);
             V2TXLivePusherObserver localV2TXLivePusherObserver;
             int i;
             String str;
@@ -1973,12 +2030,12 @@ public class f
             for (Bundle localBundle = new Bundle();; localBundle = paramBundle)
             {
               localV2TXLivePusherObserver.onWarning(i, str, localBundle);
-              AppMethodBeat.o(214032);
+              AppMethodBeat.o(211468);
               return;
             }
           }
         });
-        AppMethodBeat.o(214166);
+        AppMethodBeat.o(211975);
         return;
         paramString = "start camera failed.";
         paramInt = i1;
@@ -2006,7 +2063,7 @@ public class f
         {
           public void run()
           {
-            AppMethodBeat.i(214245);
+            AppMethodBeat.i(211466);
             V2TXLivePusherObserver localV2TXLivePusherObserver;
             int i;
             String str;
@@ -2023,12 +2080,12 @@ public class f
             for (Bundle localBundle = new Bundle();; localBundle = paramBundle)
             {
               localV2TXLivePusherObserver.onWarning(i, str, localBundle);
-              AppMethodBeat.o(214245);
+              AppMethodBeat.o(211466);
               return;
             }
           }
         });
-        AppMethodBeat.o(214166);
+        AppMethodBeat.o(211975);
         return;
         paramString = "start microphone failed.";
         paramInt = -1302;
@@ -2053,7 +2110,7 @@ public class f
       {
         public void run()
         {
-          AppMethodBeat.i(214017);
+          AppMethodBeat.i(211459);
           V2TXLivePusherObserver localV2TXLivePusherObserver;
           int i;
           String str;
@@ -2070,7 +2127,7 @@ public class f
           for (Bundle localBundle = new Bundle();; localBundle = paramBundle)
           {
             localV2TXLivePusherObserver.onWarning(i, str, localBundle);
-            AppMethodBeat.o(214017);
+            AppMethodBeat.o(211459);
             return;
           }
         }
@@ -2089,32 +2146,32 @@ public class f
   
   public void onExitRoom(final int paramInt)
   {
-    AppMethodBeat.i(214165);
+    AppMethodBeat.i(211972);
     f("onExitRoom reason: ".concat(String.valueOf(paramInt)));
     this.o = false;
-    Object localObject1 = this.t;
+    Object localObject1 = this.u;
     if ((localObject1 != null) && ((localObject1 instanceof com.tencent.live2.impl.a.b))) {
       this.c.post(new Runnable()
       {
         public void run()
         {
-          AppMethodBeat.i(214053);
+          AppMethodBeat.i(211407);
           ((com.tencent.live2.impl.a.b)this.a).onExitRoom(paramInt);
-          AppMethodBeat.o(214053);
+          AppMethodBeat.o(211407);
         }
       });
     }
     if (paramInt == 0)
     {
       f("exit room success. do nothing.");
-      AppMethodBeat.o(214165);
+      AppMethodBeat.o(211972);
       return;
     }
     if (!this.n)
     {
       h("recv exit room callback, but not in room. maybe something error. dump debug info...");
       n();
-      AppMethodBeat.o(214165);
+      AppMethodBeat.o(211972);
       return;
     }
     if (j())
@@ -2123,7 +2180,7 @@ public class f
       c();
       d();
       if (this.m == a.d.b) {
-        d(21);
+        c(21);
       }
       this.m = null;
       e = false;
@@ -2140,15 +2197,15 @@ public class f
     {
       final Bundle localBundle = new Bundle();
       localBundle.putInt("code", paramInt);
-      Object localObject2 = this.t;
+      Object localObject2 = this.u;
       if (localObject2 != null) {
         this.c.post(new Runnable()
         {
           public void run()
           {
-            AppMethodBeat.i(213979);
+            AppMethodBeat.i(211480);
             this.a.onPushStatusUpdate(V2TXLiveDef.V2TXLivePushStatus.V2TXLivePushStatusDisconnected, "disconnect server reason:" + this.b, localBundle);
-            AppMethodBeat.o(213979);
+            AppMethodBeat.o(211480);
           }
         });
       }
@@ -2168,18 +2225,18 @@ public class f
         {
           public void run()
           {
-            AppMethodBeat.i(214063);
+            AppMethodBeat.i(211474);
             if ((localb != null) && (localb.g != null) && (localb.f != null)) {
               localb.f.onError(localb.g, -1, this.b, localBundle);
             }
-            AppMethodBeat.o(214063);
+            AppMethodBeat.o(211474);
           }
         });
       }
       this.m = null;
       this.n = false;
       this.p = 21;
-      localObject1 = this.s;
+      localObject1 = this.t;
       if (localObject1 == null) {
         break;
       }
@@ -2187,9 +2244,9 @@ public class f
       {
         public void run()
         {
-          AppMethodBeat.i(214066);
+          AppMethodBeat.i(211475);
           this.a.a("27eb683b73944771ce62fbddab2849a4");
-          AppMethodBeat.o(214066);
+          AppMethodBeat.o(211475);
         }
       });
       break;
@@ -2200,24 +2257,24 @@ public class f
     this.j.clear();
     this.k.clear();
     this.l.clear();
-    localObject1 = this.s;
+    localObject1 = this.t;
     if (localObject1 != null) {
       this.c.post(new Runnable()
       {
         public void run()
         {
-          AppMethodBeat.i(213894);
+          AppMethodBeat.i(211478);
           this.a.a(paramInt);
-          AppMethodBeat.o(213894);
+          AppMethodBeat.o(211478);
         }
       });
     }
-    AppMethodBeat.o(214165);
+    AppMethodBeat.o(211972);
   }
   
   public void onFirstAudioFrame(String paramString)
   {
-    AppMethodBeat.i(214199);
+    AppMethodBeat.i(212005);
     f("onFirstAudioFrame userId:".concat(String.valueOf(paramString)));
     c localc = (c)this.l.get(paramString);
     if (localc != null) {
@@ -2226,7 +2283,7 @@ public class f
     for (;;)
     {
       a(paramString, V2TXLiveDef.V2TXLivePlayStatus.V2TXLivePlayStatusPlaying, V2TXLiveDef.V2TXLiveStatusChangeReason.V2TXLiveStatusChangeReasonLocalStarted);
-      AppMethodBeat.o(214199);
+      AppMethodBeat.o(212005);
       return;
       h("onFirstAudioFrame: can't find [userId:" + paramString + "]user info.");
     }
@@ -2234,7 +2291,7 @@ public class f
   
   public void onFirstVideoFrame(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(214200);
+    AppMethodBeat.i(212008);
     f("onFirstVideoFrame [userId:" + paramString + "][streamType:" + paramInt1 + "][width:" + paramInt2 + "][height:" + paramInt3 + "]");
     c localc;
     if (!TextUtils.isEmpty(paramString))
@@ -2243,7 +2300,7 @@ public class f
       if (localc == null) {
         break label133;
       }
-      if (!f(paramInt1)) {
+      if (!e(paramInt1)) {
         break label124;
       }
       localc.d = true;
@@ -2251,7 +2308,7 @@ public class f
     for (;;)
     {
       a(paramString, paramInt1, V2TXLiveDef.V2TXLivePlayStatus.V2TXLivePlayStatusPlaying, V2TXLiveDef.V2TXLiveStatusChangeReason.V2TXLiveStatusChangeReasonLocalStarted);
-      AppMethodBeat.o(214200);
+      AppMethodBeat.o(212008);
       return;
       label124:
       localc.g = true;
@@ -2265,21 +2322,21 @@ public class f
   
   public void onMicDidReady()
   {
-    AppMethodBeat.i(214194);
+    AppMethodBeat.i(212002);
     this.c.post(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(213869);
+        AppMethodBeat.i(211430);
         f.a(f.this, "onMicDidReady");
         V2TXLivePusherObserver localV2TXLivePusherObserver = f.b(f.this);
         if (localV2TXLivePusherObserver != null) {
           localV2TXLivePusherObserver.onCaptureFirstAudioFrame();
         }
-        AppMethodBeat.o(213869);
+        AppMethodBeat.o(211430);
       }
     });
-    AppMethodBeat.o(214194);
+    AppMethodBeat.o(212002);
   }
   
   public void onMixedAllAudioFrame(TRTCCloudDef.TRTCAudioFrame paramTRTCAudioFrame) {}
@@ -2288,12 +2345,12 @@ public class f
   
   public void onNetworkQuality(final TRTCCloudDef.TRTCQuality paramTRTCQuality, final ArrayList<TRTCCloudDef.TRTCQuality> paramArrayList)
   {
-    AppMethodBeat.i(214183);
+    AppMethodBeat.i(211993);
     this.c.post(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(213940);
+        AppMethodBeat.i(211513);
         Object localObject1 = f.b(f.this);
         if ((paramTRTCQuality != null) && (localObject1 != null) && ((localObject1 instanceof com.tencent.live2.impl.a.b))) {
           ((com.tencent.live2.impl.a.b)localObject1).onNetworkQuality(paramTRTCQuality.quality);
@@ -2308,33 +2365,33 @@ public class f
             ((com.tencent.live2.impl.a.a)((f.b)localObject2).f).onNetworkQuality(i);
           }
         }
-        AppMethodBeat.o(213940);
+        AppMethodBeat.o(211513);
       }
     });
-    AppMethodBeat.o(214183);
+    AppMethodBeat.o(211993);
   }
   
   public void onRecvSEIMsg(String paramString, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(214197);
+    AppMethodBeat.i(212003);
     paramString = (b)this.j.get(paramString);
     if (paramString == null)
     {
-      AppMethodBeat.o(214197);
+      AppMethodBeat.o(212003);
       return;
     }
     paramString = paramString.f;
     if ((paramString != null) && ((paramString instanceof com.tencent.live2.impl.a.a))) {
       ((com.tencent.live2.impl.a.a)paramString).onRecvSEIMessage(new String(paramArrayOfByte));
     }
-    AppMethodBeat.o(214197);
+    AppMethodBeat.o(212003);
   }
   
   public void onRemoteUserAudioFrame(TRTCCloudDef.TRTCAudioFrame paramTRTCAudioFrame, String paramString) {}
   
   public void onRemoteUserEnterRoom(final String paramString)
   {
-    AppMethodBeat.i(214168);
+    AppMethodBeat.i(211980);
     f("onRemoteUserEnterRoom: [userId:" + paramString + "]");
     c localc = new c(null);
     localc.a = paramString;
@@ -2343,26 +2400,26 @@ public class f
     {
       public void run()
       {
-        AppMethodBeat.i(213879);
+        AppMethodBeat.i(211519);
         V2TXLivePusherObserver localV2TXLivePusherObserver = f.b(f.this);
         if ((localV2TXLivePusherObserver != null) && ((localV2TXLivePusherObserver instanceof com.tencent.live2.impl.a.b))) {
           ((com.tencent.live2.impl.a.b)localV2TXLivePusherObserver).onRemoteUserEnter(paramString);
         }
-        AppMethodBeat.o(213879);
+        AppMethodBeat.o(211519);
       }
     });
-    AppMethodBeat.o(214168);
+    AppMethodBeat.o(211980);
   }
   
   public void onRemoteUserLeaveRoom(final String paramString, final int paramInt)
   {
-    AppMethodBeat.i(214170);
+    AppMethodBeat.i(211983);
     f("onRemoteUserLeaveRoom: [userId:" + paramString + "][reason:" + paramInt + "]");
     final c localc = (c)this.l.get(paramString);
     if (localc == null)
     {
       h("onRemoteUserLeaveRoom error: can't find [userId:" + paramString + "] user info.");
-      AppMethodBeat.o(214170);
+      AppMethodBeat.o(211983);
       return;
     }
     b localb1 = (b)this.j.get(paramString);
@@ -2386,7 +2443,7 @@ public class f
     {
       public void run()
       {
-        AppMethodBeat.i(214025);
+        AppMethodBeat.i(211488);
         V2TXLivePusherObserver localV2TXLivePusherObserver = f.b(f.this);
         if ((localV2TXLivePusherObserver != null) && ((localV2TXLivePusherObserver instanceof com.tencent.live2.impl.a.b)))
         {
@@ -2401,97 +2458,97 @@ public class f
           }
           ((com.tencent.live2.impl.a.b)localV2TXLivePusherObserver).onRemoteUserExit(paramString, paramInt);
         }
-        AppMethodBeat.o(214025);
+        AppMethodBeat.o(211488);
       }
     });
-    AppMethodBeat.o(214170);
+    AppMethodBeat.o(211983);
   }
   
   public void onRenderVideoFrame(String paramString, int paramInt, TRTCCloudDef.TRTCVideoFrame paramTRTCVideoFrame)
   {
-    AppMethodBeat.i(214160);
-    paramString = (b)e(paramInt).get(paramString);
+    AppMethodBeat.i(211967);
+    paramString = (b)d(paramInt).get(paramString);
     if (paramString == null)
     {
-      AppMethodBeat.o(214160);
+      AppMethodBeat.o(211967);
       return;
     }
     if ((paramString.f != null) && (paramString.g != null)) {
       paramString.f.onRenderVideoFrame(paramString.g, com.tencent.live2.impl.b.a(paramTRTCVideoFrame));
     }
-    AppMethodBeat.o(214160);
+    AppMethodBeat.o(211967);
   }
   
   public void onScreenCaptureStarted()
   {
-    AppMethodBeat.i(214193);
+    AppMethodBeat.i(212001);
     this.c.post(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(214234);
+        AppMethodBeat.i(211463);
         f.a(f.this, "onScreenCaptureStarted");
         V2TXLivePusherObserver localV2TXLivePusherObserver = f.b(f.this);
         if (localV2TXLivePusherObserver != null) {
           localV2TXLivePusherObserver.onCaptureFirstVideoFrame();
         }
-        AppMethodBeat.o(214234);
+        AppMethodBeat.o(211463);
       }
     });
-    AppMethodBeat.o(214193);
+    AppMethodBeat.o(212001);
   }
   
   public void onSendFirstLocalAudioFrame()
   {
-    AppMethodBeat.i(214202);
+    AppMethodBeat.i(212012);
     f("onSendFirstLocalAudioFrame");
     this.c.post(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(213893);
+        AppMethodBeat.i(211434);
         V2TXLivePusherObserver localV2TXLivePusherObserver = f.b(f.this);
         if (localV2TXLivePusherObserver != null) {
           localV2TXLivePusherObserver.onCaptureFirstAudioFrame();
         }
-        AppMethodBeat.o(213893);
+        AppMethodBeat.o(211434);
       }
     });
-    AppMethodBeat.o(214202);
+    AppMethodBeat.o(212012);
   }
   
   public void onSendFirstLocalVideoFrame(int paramInt)
   {
-    AppMethodBeat.i(214201);
+    AppMethodBeat.i(212010);
     f("onSendFirstLocalVideoFrame type: ".concat(String.valueOf(paramInt)));
     if (paramInt == 0) {
       this.c.post(new Runnable()
       {
         public void run()
         {
-          AppMethodBeat.i(213969);
+          AppMethodBeat.i(211435);
           V2TXLivePusherObserver localV2TXLivePusherObserver = f.b(f.this);
           if (localV2TXLivePusherObserver != null) {
             localV2TXLivePusherObserver.onCaptureFirstVideoFrame();
           }
-          AppMethodBeat.o(213969);
+          AppMethodBeat.o(211435);
         }
       });
     }
-    AppMethodBeat.o(214201);
+    AppMethodBeat.o(212010);
   }
   
   public void onSetMixTranscodingConfig(final int paramInt, final String paramString)
   {
-    AppMethodBeat.i(214198);
+    AppMethodBeat.i(212004);
     f("onSetMixTranscodingConfig err: " + paramInt + " errMsg: " + paramString);
-    final V2TXLivePusherObserver localV2TXLivePusherObserver = this.t;
+    final V2TXLivePusherObserver localV2TXLivePusherObserver = this.u;
     if (localV2TXLivePusherObserver != null) {
       this.c.post(new Runnable()
       {
         public void run()
         {
-          AppMethodBeat.i(214040);
+          AppMethodBeat.i(211427);
           int i = 0;
           switch (paramInt)
           {
@@ -2501,7 +2558,7 @@ public class f
           for (;;)
           {
             localV2TXLivePusherObserver.onSetMixTranscodingConfig(i, paramString);
-            AppMethodBeat.o(214040);
+            AppMethodBeat.o(211427);
             return;
             i = -6;
             continue;
@@ -2510,17 +2567,17 @@ public class f
         }
       });
     }
-    AppMethodBeat.o(214198);
+    AppMethodBeat.o(212004);
   }
   
   public void onStatistics(final TRTCStatistics paramTRTCStatistics)
   {
-    AppMethodBeat.i(214185);
+    AppMethodBeat.i(211995);
     this.c.post(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(213967);
+        AppMethodBeat.i(211502);
         Object localObject1 = f.b(f.this);
         Object localObject3;
         Object localObject2;
@@ -2562,28 +2619,28 @@ public class f
             ((f.b)localObject3).f.onStatisticsUpdate(((f.b)localObject3).g, localV2TXLivePlayerStatistics);
           }
         }
-        AppMethodBeat.o(213967);
+        AppMethodBeat.o(211502);
       }
     });
-    AppMethodBeat.o(214185);
+    AppMethodBeat.o(211995);
   }
   
   public void onTryToReconnect()
   {
-    AppMethodBeat.i(214187);
+    AppMethodBeat.i(211998);
     f("onTryToReconnect");
-    AppMethodBeat.o(214187);
+    AppMethodBeat.o(211998);
   }
   
   public void onUserAudioAvailable(final String paramString, final boolean paramBoolean)
   {
-    AppMethodBeat.i(214175);
+    AppMethodBeat.i(211985);
     f("onUserAudioAvailable [protocol:" + this.m + "][userId: " + paramString + "][available: " + paramBoolean + "]");
     c localc = (c)this.l.get(paramString);
     if (localc == null)
     {
       h("onUserAudioAvailable error: can't find [userId:" + paramString + "] user info.");
-      AppMethodBeat.o(214175);
+      AppMethodBeat.o(211985);
       return;
     }
     localc.b = paramBoolean;
@@ -2602,15 +2659,15 @@ public class f
       {
         public void run()
         {
-          AppMethodBeat.i(213985);
+          AppMethodBeat.i(211489);
           V2TXLivePusherObserver localV2TXLivePusherObserver = f.b(f.this);
           if ((localV2TXLivePusherObserver != null) && ((localV2TXLivePusherObserver instanceof com.tencent.live2.impl.a.b))) {
             ((com.tencent.live2.impl.a.b)localV2TXLivePusherObserver).onUserAudioAvailable(paramString, paramBoolean);
           }
-          AppMethodBeat.o(213985);
+          AppMethodBeat.o(211489);
         }
       });
-      AppMethodBeat.o(214175);
+      AppMethodBeat.o(211985);
       return;
       a(paramString, V2TXLiveDef.V2TXLivePlayStatus.V2TXLivePlayStatusStopped, V2TXLiveDef.V2TXLiveStatusChangeReason.V2TXLiveStatusChangeReasonRemoteStopped);
       if ((this.m == a.d.b) && (!localc.c)) {
@@ -2621,28 +2678,28 @@ public class f
   
   public void onUserSubStreamAvailable(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(214178);
+    AppMethodBeat.i(211988);
     f("onUserSubStreamAvailable [protocol:" + this.m + "][userId: " + paramString + "][available: " + paramBoolean + "]");
     a(paramString, paramBoolean, 2);
-    AppMethodBeat.o(214178);
+    AppMethodBeat.o(211988);
   }
   
   public void onUserVideoAvailable(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(214176);
+    AppMethodBeat.i(211987);
     f("onUserVideoAvailable [protocol:" + this.m + "][userId: " + paramString + "][available: " + paramBoolean + "]");
     a(paramString, paramBoolean, 0);
-    AppMethodBeat.o(214176);
+    AppMethodBeat.o(211987);
   }
   
   public void onUserVoiceVolume(final ArrayList<TRTCCloudDef.TRTCVolumeInfo> paramArrayList, int paramInt)
   {
-    AppMethodBeat.i(214181);
+    AppMethodBeat.i(211991);
     this.c.post(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(213929);
+        AppMethodBeat.i(211530);
         if (f.f(f.this) == null) {
           f.a(f.this, new HashMap());
         }
@@ -2739,28 +2796,28 @@ public class f
           }
         }
         label592:
-        AppMethodBeat.o(213929);
+        AppMethodBeat.o(211530);
       }
     });
-    AppMethodBeat.o(214181);
+    AppMethodBeat.o(211991);
   }
   
   public void onWarning(int paramInt, final String paramString, final Bundle paramBundle)
   {
-    AppMethodBeat.i(214167);
+    AppMethodBeat.i(211978);
     f("onWarning code: " + paramString + " msg: " + paramString + " info: " + paramBundle);
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(214167);
+      AppMethodBeat.o(211978);
       return;
       this.c.post(new Runnable()
       {
         public void run()
         {
-          AppMethodBeat.i(214237);
+          AppMethodBeat.i(211464);
           Object localObject = new ArrayList();
           ((List)localObject).addAll(f.c(f.this).values());
           ((List)localObject).addAll(f.d(f.this).values());
@@ -2772,7 +2829,7 @@ public class f
               localb.f.onWarning(localb.g, 2105, paramString, paramBundle);
             }
           }
-          AppMethodBeat.o(214237);
+          AppMethodBeat.o(211464);
         }
       });
     }
@@ -2805,20 +2862,20 @@ public class f
     
     public b()
     {
-      AppMethodBeat.i(213882);
+      AppMethodBeat.i(211374);
       this.l = V2TXLiveDef.V2TXLivePlayStatus.V2TXLivePlayStatusStopped;
       this.m = V2TXLiveDef.V2TXLivePlayStatus.V2TXLivePlayStatusStopped;
       this.k = new TRTCCloudDef.TRTCRenderParams();
       this.k.rotation = 0;
       this.k.fillMode = 0;
-      AppMethodBeat.o(213882);
+      AppMethodBeat.o(211374);
     }
     
     public String toString()
     {
-      AppMethodBeat.i(213883);
+      AppMethodBeat.i(211404);
       String str = "[urlParam:" + this.a + "][isAudioMuted:" + this.i + "][isVideoMuted:" + this.j + "][audioPlayStatus:" + this.l + "][videoPlayStatus:" + this.m + "]";
-      AppMethodBeat.o(213883);
+      AppMethodBeat.o(211404);
       return str;
     }
   }
@@ -2835,16 +2892,16 @@ public class f
     
     public String toString()
     {
-      AppMethodBeat.i(214344);
+      AppMethodBeat.i(211394);
       String str = "[userId:" + this.a + "][videoAvailable:" + this.c + "][isAudioAvailable:" + this.b + "][isAuxVideoAvailable:" + this.f + "]";
-      AppMethodBeat.o(214344);
+      AppMethodBeat.o(211394);
       return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.live2.b.f
  * JD-Core Version:    0.7.0.1
  */

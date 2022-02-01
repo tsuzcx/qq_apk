@@ -1,89 +1,79 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class dxo
-  extends dyl
+  extends com.tencent.mm.bx.a
 {
-  public boolean UcY;
+  public String announcement;
+  public String pss;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123641);
+    AppMethodBeat.i(152641);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.pss != null) {
+        paramVarArgs.g(1, this.pss);
       }
-      paramVarArgs.co(2, this.UcY);
-      AppMethodBeat.o(123641);
+      if (this.announcement != null) {
+        paramVarArgs.g(2, this.announcement);
+      }
+      AppMethodBeat.o(152641);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label332;
+      if (this.pss == null) {
+        break label270;
       }
     }
-    label332:
-    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label270:
+    for (paramInt = i.a.a.b.b.a.h(1, this.pss) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.gL(2);
-      AppMethodBeat.o(123641);
-      return paramInt + (i + 1);
+      int i = paramInt;
+      if (this.announcement != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.announcement);
+      }
+      AppMethodBeat.o(152641);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(123641);
+        AppMethodBeat.o(152641);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         dxo localdxo = (dxo)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(123641);
+          AppMethodBeat.o(152641);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject = (byte[])paramVarArgs.get(paramInt);
-            jg localjg = new jg();
-            if ((localObject != null) && (localObject.length > 0)) {
-              localjg.parseFrom((byte[])localObject);
-            }
-            localdxo.BaseRequest = localjg;
-            paramInt += 1;
-          }
-          AppMethodBeat.o(123641);
+          localdxo.pss = locala.ajGk.readString();
+          AppMethodBeat.o(152641);
           return 0;
         }
-        localdxo.UcY = ((g.a.a.a.a)localObject).abFh.AB();
-        AppMethodBeat.o(123641);
+        localdxo.announcement = locala.ajGk.readString();
+        AppMethodBeat.o(152641);
         return 0;
       }
-      AppMethodBeat.o(123641);
+      AppMethodBeat.o(152641);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dxo
  * JD-Core Version:    0.7.0.1
  */

@@ -2,82 +2,49 @@ package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.feed.model.internal.k;
-import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.aza;
-import com.tencent.mm.protocal.protobuf.bcc;
-import com.tencent.mm.protocal.protobuf.bdj;
-import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderLiveWeCoinData;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "amountCnt", "", "giftCnt", "", "wecoinHotInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveRewardGainsInfo;", "(IJLcom/tencent/mm/protocal/protobuf/FinderLiveRewardGainsInfo;)V", "getAmountCnt", "()I", "setAmountCnt", "(I)V", "getGiftCnt", "()J", "setGiftCnt", "(J)V", "getWecoinHotInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveRewardGainsInfo;", "compare", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "getItemType", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/model/FinderLineDivider;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "layoutId", "", "(J)V", "getLayoutId", "()J", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "getItemType", "toString", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ao
-  implements bu
+  implements cc
 {
-  public int zAQ;
-  public long zAR;
-  public final bcc zAS;
+  private final long ECY;
   
-  public ao(int paramInt, long paramLong, bcc parambcc)
+  public ao(long paramLong)
   {
-    AppMethodBeat.i(277217);
-    this.zAQ = paramInt;
-    this.zAR = paramLong;
-    this.zAS = parambcc;
-    AppMethodBeat.o(277217);
+    this.ECY = paramLong;
   }
   
   public final int a(k paramk)
   {
-    Object localObject1 = null;
-    AppMethodBeat.i(277215);
-    p.k(paramk, "obj");
-    if (!(paramk instanceof bdj)) {
-      paramk = null;
-    }
-    for (;;)
+    AppMethodBeat.i(332063);
+    s.u(paramk, "obj");
+    if (((paramk instanceof ao)) && (((ao)paramk).ECY == this.ECY))
     {
-      paramk = (bdj)paramk;
-      if (paramk != null)
-      {
-        String str = paramk.username;
-        Object localObject2 = this.zAS.yYy;
-        paramk = localObject1;
-        if (localObject2 != null)
-        {
-          localObject2 = ((aza)localObject2).contact;
-          paramk = localObject1;
-          if (localObject2 != null) {
-            paramk = ((FinderContact)localObject2).username;
-          }
-        }
-        if (Util.isEqual(str, paramk))
-        {
-          AppMethodBeat.o(277215);
-          return 0;
-        }
-        AppMethodBeat.o(277215);
-        return -1;
-      }
-      AppMethodBeat.o(277215);
-      return -1;
+      AppMethodBeat.o(332063);
+      return 0;
     }
+    AppMethodBeat.o(332063);
+    return -1;
   }
   
-  public final int bAQ()
+  public final long bZA()
   {
-    AppMethodBeat.i(277214);
-    int i = ao.class.hashCode();
-    AppMethodBeat.o(277214);
-    return i;
+    return this.ECY;
   }
   
-  public final long mf()
+  public final int bZB()
   {
-    AppMethodBeat.i(277213);
-    long l = hashCode();
-    AppMethodBeat.o(277213);
-    return l;
+    return 2015;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(332069);
+    String str = "ItemId=" + this.ECY + ",ItemType=2015";
+    AppMethodBeat.o(332069);
+    return str;
   }
 }
 

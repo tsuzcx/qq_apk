@@ -1,198 +1,170 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.cd.b;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.model.z;
-import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.auc;
-import com.tencent.mm.protocal.protobuf.aud;
-import com.tencent.mm.protocal.protobuf.awr;
+import com.tencent.mm.network.g;
+import com.tencent.mm.plugin.finder.api.d;
+import com.tencent.mm.plugin.finder.api.d.a;
+import com.tencent.mm.protocal.protobuf.atk;
+import com.tencent.mm.protocal.protobuf.atl;
+import com.tencent.mm.protocal.protobuf.atz;
+import com.tencent.mm.protocal.protobuf.bui;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.LinkedList;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.n.n;
+import kotlin.r;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderGetFriendRecommendList;", "Lcom/tencent/mm/plugin/findersdk/cgi/NetSceneFinderBase;", "lastBuff", "Lcom/tencent/mm/protobuf/ByteString;", "feedId", "", "isPosterView", "", "(Lcom/tencent/mm/protobuf/ByteString;JZ)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getFriendRecommedList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderLikeInfo;", "getRequestBuffer", "getResponse", "Lcom/tencent/mm/protocal/protobuf/FinderGetFeedLikedListResp;", "getResponseBuffer", "getType", "hasContinue", "onCgiEnd", "", "netId", "errType", "errCode", "errMsg", "", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneAdFeedList;", "Lcom/tencent/mm/plugin/findersdk/cgi/NetSceneFinderBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "req_username", "", "feedId", "", "encryptedFeedId", "maxId", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "pullType", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Ljava/lang/String;JLjava/lang/String;JLcom/tencent/mm/protobuf/ByteString;ILcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "continueFlag", "", "getContinueFlag", "()Z", "setContinueFlag", "(Z)V", "getEncryptedFeedId", "()Ljava/lang/String;", "getFeedId", "()J", "objectList", "", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "getObjectList", "()Ljava/util/List;", "setObjectList", "(Ljava/util/List;)V", "getPullType", "()I", "setPullType", "(I)V", "getReq_username", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getAdFeedList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "getPrivateLock", "getResponseBuffer", "getType", "getWording", "onCgiEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class bo
-  extends com.tencent.mm.plugin.findersdk.b.g
+  extends com.tencent.mm.plugin.findersdk.b.h
 {
-  private static final String TAG = "Finder.NetSceneFinderGetFriendRecommendList";
-  private static final int xcS = 1;
-  private static final int xcT = 2;
-  public static final a xcU;
-  private i callback;
-  private d rr;
+  public static final bo.a ABA;
+  private final String ABB;
+  private final String ABC;
+  public boolean ABD;
+  private com.tencent.mm.am.h callback;
+  private final long feedId;
+  public int pullType;
+  public c rr;
   
   static
   {
-    AppMethodBeat.i(268507);
-    xcU = new a((byte)0);
-    TAG = "Finder.NetSceneFinderGetFriendRecommendList";
-    xcS = 1;
-    xcT = 2;
-    AppMethodBeat.o(268507);
+    AppMethodBeat.i(336452);
+    ABA = new bo.a((byte)0);
+    AppMethodBeat.o(336452);
   }
   
-  public bo(b paramb, long paramLong, boolean paramBoolean)
+  public bo(String paramString1, long paramLong1, String paramString2, long paramLong2, b paramb, int paramInt, bui parambui)
   {
-    AppMethodBeat.i(268506);
-    Object localObject2 = new d.a();
-    ((d.a)localObject2).vD(getType());
-    Object localObject1 = new auc();
-    ((auc)localObject1).finderUsername = z.bdh();
-    ((auc)localObject1).lastBuffer = paramb;
-    ((auc)localObject1).xbk = paramLong;
-    int i;
-    if (paramBoolean)
+    super(parambui);
+    AppMethodBeat.i(336446);
+    this.ABB = paramString1;
+    this.feedId = paramLong1;
+    this.ABC = paramString2;
+    this.ABD = true;
+    paramString1 = d.AwY;
+    paramString1 = d.a.auT(this.ABB);
+    atk localatk;
+    Object localObject;
+    if (paramString1 == null)
     {
-      i = xcT;
-      ((auc)localObject1).scene = i;
-      ao localao = ao.xcj;
-      ((auc)localObject1).SDi = ao.dnO();
-      ((d.a)localObject2).c((a)localObject1);
-      ((d.a)localObject2).d((a)new aud());
-      ((d.a)localObject2).TW("/cgi-bin/micromsg-bin/findergetfeedlikedlist");
-      localObject2 = ((d.a)localObject2).bgN();
-      p.j(localObject2, "builder.buildInstance()");
-      this.rr = ((d)localObject2);
-      localObject2 = TAG;
-      localObject1 = new StringBuilder("NetSceneFinderGetFriendRecommendList feedId:").append(paramLong).append(", scene: $").append(((auc)localObject1).scene).append(", lastBuff is Null? ");
-      if (paramb != null) {
-        break label212;
+      paramString1 = "";
+      paramString2 = new c.a();
+      paramString2.uri = "/cgi-bin/micromsg-bin/finderaduserpage";
+      paramString2.funcId = getType();
+      localatk = new atk();
+      localatk.username = this.ABB;
+      localatk.maxId = paramLong2;
+      localatk.firstPageMD5 = paramString1;
+      localObject = bi.ABn;
+      localatk.ZDQ = bi.bTZ();
+      localatk.YIZ = z.bAW();
+      localObject = bi.ABn;
+      localatk.CJv = bi.a(parambui);
+      localObject = localatk.CJv;
+      if (localObject != null)
+      {
+        if (parambui != null) {
+          break label423;
+        }
+        i = 0;
+        label176:
+        ((atz)localObject).scene = i;
+      }
+      if (n.T(localatk.username, localatk.YIZ, false)) {
+        localatk.ZDP = 1;
+      }
+      parambui = bi.ABn;
+      parambui = localatk.CJv;
+      localObject = localatk.CJv;
+      if (localObject != null) {
+        break label433;
       }
     }
-    label212:
-    for (paramBoolean = true;; paramBoolean = false)
+    label423:
+    label433:
+    for (int i = 0;; i = ((atz)localObject).scene)
     {
-      Log.i((String)localObject2, paramBoolean);
-      AppMethodBeat.o(268506);
+      bi.a(parambui, kotlin.a.p.listOf(new r(Integer.valueOf(i), Long.valueOf(this.feedId))));
+      localatk.ZDR = this.feedId;
+      localatk.AUV = this.ABC;
+      localatk.lastBuffer = paramb;
+      paramb = new atl();
+      paramString2.otE = ((a)localatk);
+      paramString2.otF = ((a)paramb);
+      paramString2 = paramString2.bEF();
+      kotlin.g.b.s.s(paramString2, "builder.buildInstance()");
+      this.rr = paramString2;
+      this.pullType = paramInt;
+      Log.i("Finder.NetSceneAdFeedListval", "NetSceneFinderUserPage init maxId " + paramLong2 + " username " + this.ABB + " pullType " + paramInt + " fpMD5 " + paramString1);
+      AppMethodBeat.o(336446);
       return;
-      i = xcS;
+      paramString1 = paramString1.field_firstPageMD5;
+      if (paramString1 == null)
+      {
+        paramString1 = "";
+        break;
+      }
       break;
+      i = parambui.hLK;
+      break label176;
     }
   }
   
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, s params)
+  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params)
   {
-    AppMethodBeat.i(268500);
-    Log.i(TAG, "errType " + paramInt2 + ", errCode " + paramInt3 + ", errMsg " + paramString);
-    params = this.callback;
-    if (params != null)
+    AppMethodBeat.i(336469);
+    Log.i("Finder.NetSceneAdFeedListval", "errType " + paramInt2 + ", errCode " + paramInt3 + ", errMsg " + paramString);
+    if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
-      AppMethodBeat.o(268500);
+      params = c.c.b(this.rr.otC);
+      if (params == null)
+      {
+        paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderAdUserPageResponse");
+        AppMethodBeat.o(336469);
+        throw paramString;
+      }
+      if (((atl)params).continueFlag != 1) {
+        break label157;
+      }
+    }
+    label157:
+    for (boolean bool = true;; bool = false)
+    {
+      this.ABD = bool;
+      if (this.callback != null)
+      {
+        params = this.callback;
+        kotlin.g.b.s.checkNotNull(params);
+        params.onSceneEnd(paramInt2, paramInt3, paramString, (com.tencent.mm.am.p)this);
+      }
+      AppMethodBeat.o(336469);
       return;
     }
-    AppMethodBeat.o(268500);
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
-    AppMethodBeat.i(268499);
-    this.callback = parami;
-    int i = dispatch(paramg, (s)this.rr, (m)this);
-    AppMethodBeat.o(268499);
+    AppMethodBeat.i(336457);
+    this.callback = paramh;
+    int i = dispatch(paramg, (com.tencent.mm.network.s)this.rr, (com.tencent.mm.network.m)this);
+    AppMethodBeat.o(336457);
     return i;
-  }
-  
-  public final b doa()
-  {
-    AppMethodBeat.i(268502);
-    Object localObject = this.rr.bhY();
-    if (localObject == null)
-    {
-      localObject = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetFeedLikedListResp");
-      AppMethodBeat.o(268502);
-      throw ((Throwable)localObject);
-    }
-    localObject = ((aud)localObject).lastBuffer;
-    AppMethodBeat.o(268502);
-    return localObject;
-  }
-  
-  public final b dob()
-  {
-    AppMethodBeat.i(268501);
-    Object localObject = this.rr.bhX();
-    if (localObject == null)
-    {
-      localObject = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetFeedLikedListReq");
-      AppMethodBeat.o(268501);
-      throw ((Throwable)localObject);
-    }
-    localObject = ((auc)localObject).lastBuffer;
-    AppMethodBeat.o(268501);
-    return localObject;
-  }
-  
-  public final boolean dod()
-  {
-    AppMethodBeat.i(268504);
-    Object localObject = this.rr.bhY();
-    if (localObject == null)
-    {
-      localObject = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetFeedLikedListResp");
-      AppMethodBeat.o(268504);
-      throw ((Throwable)localObject);
-    }
-    if (((aud)localObject).continueFlag != 0)
-    {
-      AppMethodBeat.o(268504);
-      return true;
-    }
-    AppMethodBeat.o(268504);
-    return false;
-  }
-  
-  public final LinkedList<awr> dok()
-  {
-    AppMethodBeat.i(268503);
-    Object localObject = this.rr.bhY();
-    if (localObject == null)
-    {
-      localObject = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetFeedLikedListResp");
-      AppMethodBeat.o(268503);
-      throw ((Throwable)localObject);
-    }
-    localObject = ((aud)localObject).likeList;
-    p.j(localObject, "(rr.responseProtoBuf as …edLikedListResp).likeList");
-    AppMethodBeat.o(268503);
-    return localObject;
-  }
-  
-  public final aud dol()
-  {
-    AppMethodBeat.i(268505);
-    Object localObject = this.rr.bhY();
-    if (localObject == null)
-    {
-      localObject = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetFeedLikedListResp");
-      AppMethodBeat.o(268505);
-      throw ((Throwable)localObject);
-    }
-    localObject = (aud)localObject;
-    AppMethodBeat.o(268505);
-    return localObject;
   }
   
   public final int getType()
   {
-    return 3593;
+    return 6692;
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderGetFriendRecommendList$Companion;", "", "()V", "MMFinder_FeedLikedListAll", "", "MMFinder_FeedLikedListFriend", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.bo
  * JD-Core Version:    0.7.0.1
  */

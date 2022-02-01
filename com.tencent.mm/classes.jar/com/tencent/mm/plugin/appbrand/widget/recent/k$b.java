@@ -6,11 +6,11 @@ public enum k$b
 {
   static
   {
-    AppMethodBeat.i(190602);
-    rFn = new b("TYPE_MENU", 0);
-    rFo = new b("TYPE_CONVERSATION", 1);
-    rFp = new b[] { rFn, rFo };
-    AppMethodBeat.o(190602);
+    AppMethodBeat.i(324029);
+    uQz = new b("TYPE_MENU", 0);
+    uQA = new b("TYPE_CONVERSATION", 1);
+    uQB = new b[] { uQz, uQA };
+    AppMethodBeat.o(324029);
   }
   
   private k$b() {}

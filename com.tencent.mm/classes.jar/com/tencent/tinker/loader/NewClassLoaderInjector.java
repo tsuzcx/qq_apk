@@ -17,7 +17,7 @@ final class NewClassLoaderInjector
     throw new UnsupportedOperationException();
   }
   
-  private static ClassLoader createNewClassLoader(ClassLoader paramClassLoader, File paramFile, boolean paramBoolean, String... paramVarArgs)
+  private static ClassLoader createNewClassLoader(ClassLoader paramClassLoader, File paramFile, boolean paramBoolean1, boolean paramBoolean2, String... paramVarArgs)
   {
     Object localObject1 = findField(Class.forName("dalvik.system.BaseDexClassLoader", false, paramClassLoader), "pathList").get(paramClassLoader);
     Object localObject2 = new StringBuilder();
@@ -37,7 +37,7 @@ final class NewClassLoaderInjector
     localObject2 = ((StringBuilder)localObject2).toString();
     paramVarArgs = findField(localObject1.getClass(), "nativeLibraryDirectories");
     StringBuilder localStringBuilder;
-    label156:
+    label166:
     File localFile;
     if (paramVarArgs.getType().isArray())
     {
@@ -53,21 +53,21 @@ final class NewClassLoaderInjector
         localFile = (File)paramVarArgs.next();
       } while (localFile == null);
       if (i == 0) {
-        break label216;
+        break label230;
       }
       i = 0;
     }
     for (;;)
     {
       localStringBuilder.append(localFile.getAbsolutePath());
-      break label156;
+      break label166;
       paramVarArgs = (List)paramVarArgs.get(localObject1);
       break;
-      label216:
+      label230:
       localStringBuilder.append(File.pathSeparator);
     }
     paramVarArgs = localStringBuilder.toString();
-    if ((paramBoolean) && (Build.VERSION.SDK_INT >= 27))
+    if ((paramBoolean1) && (Build.VERSION.SDK_INT >= 27))
     {
       paramFile = new DelegateLastClassLoader((String)localObject2, paramVarArgs, ClassLoader.getSystemClassLoader());
       paramVarArgs = ClassLoader.class.getDeclaredField("parent");
@@ -76,7 +76,7 @@ final class NewClassLoaderInjector
     }
     for (paramClassLoader = paramFile;; paramClassLoader = new TinkerClassLoader((String)localObject2, paramFile, paramVarArgs, paramClassLoader))
     {
-      if (Build.VERSION.SDK_INT < 26) {
+      if ((paramBoolean2) && (Build.VERSION.SDK_INT < 26)) {
         findField(localObject1.getClass(), "definingContext").set(localObject1, paramClassLoader);
       }
       return paramClassLoader;
@@ -86,13 +86,13 @@ final class NewClassLoaderInjector
   private static void doInject(Application paramApplication, ClassLoader paramClassLoader)
   {
     Thread.currentThread().setContextClassLoader(paramClassLoader);
-    Object localObject = (Context)findField(paramApplication.getClass(), "mBase").get(paramApplication);
+    Object localObject1 = (Context)findField(paramApplication.getClass(), "mBase").get(paramApplication);
     try
     {
-      findField(localObject.getClass(), "mClassLoader").set(localObject, paramClassLoader);
+      findField(localObject1.getClass(), "mClassLoader").set(localObject1, paramClassLoader);
       label38:
-      localObject = findField(localObject.getClass(), "mPackageInfo").get(localObject);
-      findField(localObject.getClass(), "mClassLoader").set(localObject, paramClassLoader);
+      localObject1 = findField(localObject1.getClass(), "mPackageInfo").get(localObject1);
+      findField(localObject1.getClass(), "mClassLoader").set(localObject1, paramClassLoader);
       if (Build.VERSION.SDK_INT < 27) {
         paramApplication = paramApplication.getResources();
       }
@@ -103,11 +103,10 @@ final class NewClassLoaderInjector
         if (paramApplication != null) {
           findField(paramApplication.getClass(), "mClassLoader").set(paramApplication, paramClassLoader);
         }
-        return;
       }
-      catch (Throwable paramApplication) {}
+      finally {}
     }
-    catch (Throwable localThrowable)
+    finally
     {
       break label38;
     }
@@ -115,21 +114,21 @@ final class NewClassLoaderInjector
   
   private static Field findField(Class<?> paramClass, String paramString)
   {
-    Object localObject = paramClass;
+    Object localObject1 = paramClass;
     for (;;)
     {
       try
       {
-        Field localField = ((Class)localObject).getDeclaredField(paramString);
+        Field localField = ((Class)localObject1).getDeclaredField(paramString);
         localField.setAccessible(true);
         return localField;
       }
-      catch (Throwable localThrowable)
+      finally
       {
-        if (localObject == Object.class) {
+        if (localObject1 == Object.class) {
           throw new NoSuchFieldException("Cannot find field " + paramString + " in class " + paramClass.getName() + " and its super classes.");
         }
-        localObject = ((Class)localObject).getSuperclass();
+        localObject1 = ((Class)localObject1).getSuperclass();
       }
     }
   }
@@ -143,19 +142,19 @@ final class NewClassLoaderInjector
       arrayOfString[i] = ((File)paramList.get(i)).getAbsolutePath();
       i += 1;
     }
-    paramClassLoader = createNewClassLoader(paramClassLoader, paramFile, paramBoolean, arrayOfString);
+    paramClassLoader = createNewClassLoader(paramClassLoader, paramFile, paramBoolean, true, arrayOfString);
     doInject(paramApplication, paramClassLoader);
     return paramClassLoader;
   }
   
-  public static void triggerDex2Oat(Context paramContext, File paramFile, boolean paramBoolean, String... paramVarArgs)
+  public static ClassLoader triggerDex2Oat(Context paramContext, File paramFile, boolean paramBoolean, String... paramVarArgs)
   {
-    createNewClassLoader(paramContext.getClassLoader(), paramFile, paramBoolean, paramVarArgs);
+    return createNewClassLoader(paramContext.getClassLoader(), paramFile, paramBoolean, false, paramVarArgs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.loader.NewClassLoaderInjector
  * JD-Core Version:    0.7.0.1
  */

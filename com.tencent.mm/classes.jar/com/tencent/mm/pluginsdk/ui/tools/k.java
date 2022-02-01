@@ -1,55 +1,41 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
-import android.content.Context;
-import android.graphics.Bitmap;
+import android.text.Editable;
+import android.text.InputFilter;
+import android.text.InputFilter.LengthFilter;
+import android.text.TextWatcher;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.MMEditText.b;
 
-public abstract interface k
+public final class k
 {
-  public abstract boolean I(Context paramContext, boolean paramBoolean);
+  public static InputFilter[] Ytp;
   
-  public abstract void b(double paramDouble, boolean paramBoolean);
+  static
+  {
+    AppMethodBeat.i(141184);
+    Ytp = new InputFilter[] { new InputFilter.LengthFilter(50) };
+    AppMethodBeat.o(141184);
+  }
   
-  public abstract int getCurrentPosition();
-  
-  public abstract int getDuration();
-  
-  public abstract double getLastProgresstime();
-  
-  public abstract long getLastSurfaceUpdateTime();
-  
-  public abstract String getVideoPath();
-  
-  public abstract boolean isPlaying();
-  
-  public abstract void onDetach();
-  
-  public abstract void pause();
-  
-  public abstract void q(double paramDouble);
-  
-  public abstract void setLoop(boolean paramBoolean);
-  
-  public abstract void setMute(boolean paramBoolean);
-  
-  public abstract void setOnInfoCallback(k.b paramb);
-  
-  public abstract void setOnSeekCompleteCallback(k.c paramc);
-  
-  public abstract void setOnSurfaceCallback(k.d paramd);
-  
-  public abstract void setOneTimeVideoTextureUpdateCallback(k.e parame);
-  
-  public abstract void setPlayProgressCallback(boolean paramBoolean);
-  
-  public abstract void setThumb(Bitmap paramBitmap);
-  
-  public abstract void setVideoCallback(k.a parama);
-  
-  public abstract void setVideoPath(String paramString);
-  
-  public abstract boolean start();
-  
-  public abstract void stop();
+  public static final class a
+    implements TextWatcher
+  {
+    public MMEditText.b Ytq = null;
+    
+    public final void afterTextChanged(Editable paramEditable) {}
+    
+    public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+    
+    public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+    {
+      AppMethodBeat.i(141183);
+      if (this.Ytq != null) {
+        this.Ytq.bXT();
+      }
+      AppMethodBeat.o(141183);
+    }
+  }
 }
 
 

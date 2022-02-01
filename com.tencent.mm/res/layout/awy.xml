@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@color/a2h" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="64.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/e1l" android:background="@null" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ac_" android:cacheColorHint="#00000000" android:divider="#ffd8d8d8" android:dividerHeight="@dimen/bq" android:layout_weight="1.0" />
-    <TextView android:textSize="@dimen/l" android:textColor="@color/a0j" android:gravity="center" android:id="@id/e1k" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/e8k" android:layout_centerVertical="true" />
-</RelativeLayout>
+    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <View android:layout_gravity="center_vertical" android:background="@color/BW_0_Alpha_0_1" android:layout_width="32.0dip" android:layout_height="1.0px" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/m4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fb3" />
+        <View android:layout_gravity="center_vertical" android:background="@color/BW_0_Alpha_0_1" android:layout_width="32.0dip" android:layout_height="1.0px" />
+    </LinearLayout>
+</FrameLayout>

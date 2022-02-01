@@ -16,12 +16,12 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.emoji.a.i;
-import com.tencent.mm.plugin.emoji.i.e;
-import com.tencent.mm.plugin.emoji.i.f;
+import com.tencent.mm.plugin.emoji.h.e;
+import com.tencent.mm.plugin.emoji.h.f;
 import com.tencent.mm.plugin.emoji.model.b;
-import com.tencent.mm.protocal.protobuf.aju;
-import com.tencent.mm.protocal.protobuf.ajv;
-import com.tencent.mm.protocal.protobuf.ajw;
+import com.tencent.mm.protocal.protobuf.anh;
+import com.tencent.mm.protocal.protobuf.ani;
+import com.tencent.mm.protocal.protobuf.anj;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -33,25 +33,25 @@ public class EmojiStoreVpHeader
   extends LinearLayout
   implements ViewPager.OnPageChangeListener
 {
-  private View mrI;
-  private View nBk;
-  private MMDotView uLP;
-  private ViewPager uLQ;
-  private LinkedList<b> uLR;
-  private i uLS;
-  private float uLT;
-  private float uLU;
-  private a uLV;
-  private volatile boolean uLW;
-  private final int uLX;
-  private final int uLY;
+  private View plc;
+  private View qAv;
+  private MMDotView xUq;
+  private ViewPager xUr;
+  private LinkedList<b> xUs;
+  i xUt;
+  private float xUu;
+  private float xUv;
+  a xUw;
+  private volatile boolean xUx;
+  private final int xUy;
+  private final int xUz;
   
   public EmojiStoreVpHeader(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(109071);
-    this.uLX = 5;
-    this.uLY = 0;
+    this.xUy = 5;
+    this.xUz = 0;
     setOrientation(1);
     AppMethodBeat.o(109071);
   }
@@ -60,18 +60,18 @@ public class EmojiStoreVpHeader
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(109072);
-    this.uLX = 5;
-    this.uLY = 0;
+    this.xUy = 5;
+    this.xUz = 0;
     setOrientation(1);
     AppMethodBeat.o(109072);
   }
   
-  private void cWs()
+  private void dBW()
   {
     try
     {
       AppMethodBeat.i(109074);
-      if (this.uLR == null)
+      if (this.xUs == null)
       {
         IllegalAccessError localIllegalAccessError = new IllegalAccessError("must has emoji baner list first");
         AppMethodBeat.o(109074);
@@ -80,33 +80,33 @@ public class EmojiStoreVpHeader
     }
     finally {}
     int i;
-    if (this.mrI == null)
+    if (this.plc == null)
     {
-      this.mrI = inflate(getContext(), i.f.emoji_store_vp_header, null);
-      this.nBk = this.mrI.findViewById(i.e.emoji_store_ad_root);
-      this.uLP = ((MMDotView)this.mrI.findViewById(i.e.emoji_store_ad_dot));
-      this.uLQ = ((ViewPager)this.mrI.findViewById(i.e.emoji_store_ad_viewpager));
-      this.uLV = new a((byte)0);
+      this.plc = inflate(getContext(), h.f.emoji_store_vp_header, null);
+      this.qAv = this.plc.findViewById(h.e.emoji_store_ad_root);
+      this.xUq = ((MMDotView)this.plc.findViewById(h.e.emoji_store_ad_dot));
+      this.xUr = ((ViewPager)this.plc.findViewById(h.e.emoji_store_ad_viewpager));
+      this.xUw = new a((byte)0);
       i = getScreenWH(getContext())[0] * 3 / 8;
-      if (this.nBk != null) {
-        this.nBk.setLayoutParams(new LinearLayout.LayoutParams(-1, i + 1));
+      if (this.qAv != null) {
+        this.qAv.setLayoutParams(new LinearLayout.LayoutParams(-1, i + 1));
       }
-      addView(this.mrI, new LinearLayout.LayoutParams(-1, -2));
+      addView(this.plc, new LinearLayout.LayoutParams(-1, -2));
     }
-    if (this.uLP != null)
+    if (this.xUq != null)
     {
-      MMDotView localMMDotView = this.uLP;
-      if (this.uLR == null)
+      MMDotView localMMDotView = this.xUq;
+      if (this.xUs == null)
       {
         i = 0;
         localMMDotView.setDotCount(i);
-        this.uLP.setSelectedDot(0);
-        this.uLP.setVisibility(8);
+        this.xUq.setSelectedDot(0);
+        this.xUq.setVisibility(8);
       }
     }
     else
     {
-      if ((this.uLQ != null) && (this.uLR != null)) {
+      if ((this.xUr != null) && (this.xUs != null)) {
         break label253;
       }
       AppMethodBeat.o(109074);
@@ -114,28 +114,28 @@ public class EmojiStoreVpHeader
     for (;;)
     {
       return;
-      i = this.uLR.size();
+      i = this.xUs.size();
       break;
       label253:
-      if (this.uLR.size() <= 0)
+      if (this.xUs.size() <= 0)
       {
-        if (this.nBk != null) {
-          this.nBk.setVisibility(8);
+        if (this.qAv != null) {
+          this.qAv.setVisibility(8);
         }
         AppMethodBeat.o(109074);
       }
       else
       {
-        if (this.nBk != null) {
-          this.nBk.setVisibility(0);
+        if (this.qAv != null) {
+          this.qAv.setVisibility(0);
         }
-        this.uLQ.setOnPageChangeListener(this);
-        if (this.uLS == null)
+        this.xUr.setOnPageChangeListener(this);
+        if (this.xUt == null)
         {
-          this.uLS = new i(getContext(), this.uLR);
-          this.uLQ.setAdapter(this.uLS);
-          this.uLQ.setOffscreenPageLimit(1);
-          cWt();
+          this.xUt = new i(getContext(), this.xUs);
+          this.xUr.setAdapter(this.xUt);
+          this.xUr.setOffscreenPageLimit(1);
+          dBX();
           AppMethodBeat.o(109074);
         }
         else
@@ -149,8 +149,8 @@ public class EmojiStoreVpHeader
               {
                 i locali = EmojiStoreVpHeader.a(EmojiStoreVpHeader.this);
                 LinkedList localLinkedList = EmojiStoreVpHeader.b(EmojiStoreVpHeader.this);
-                locali.uAC.clear();
-                locali.uAC.addAll(localLinkedList);
+                locali.xHf.clear();
+                locali.xHf.addAll(localLinkedList);
                 locali.notifyDataSetChanged();
               }
               AppMethodBeat.o(109068);
@@ -162,15 +162,15 @@ public class EmojiStoreVpHeader
     }
   }
   
-  private void cWt()
+  private void dBX()
   {
     AppMethodBeat.i(109075);
-    if (this.uLQ == null)
+    if (this.xUr == null)
     {
       AppMethodBeat.o(109075);
       return;
     }
-    this.uLQ.setCurrentItem(i.uAD / 2 * this.uLR.size(), false);
+    this.xUr.setCurrentItem(i.xHg / 2 * this.xUs.size(), false);
     AppMethodBeat.o(109075);
   }
   
@@ -195,7 +195,7 @@ public class EmojiStoreVpHeader
     }
   }
   
-  private void mF(boolean paramBoolean)
+  private void oc(boolean paramBoolean)
   {
     AppMethodBeat.i(109082);
     ViewParent localViewParent = getParent();
@@ -205,44 +205,7 @@ public class EmojiStoreVpHeader
     AppMethodBeat.o(109082);
   }
   
-  public final void cWu()
-  {
-    AppMethodBeat.i(109076);
-    if (this.uLV == null) {
-      this.uLV = new a((byte)0);
-    }
-    this.uLW = true;
-    this.uLV.removeMessages(0);
-    this.uLV.sendEmptyMessageDelayed(0, 5000L);
-    AppMethodBeat.o(109076);
-  }
-  
-  public final void cWv()
-  {
-    AppMethodBeat.i(109077);
-    if (this.uLV == null)
-    {
-      AppMethodBeat.o(109077);
-      return;
-    }
-    this.uLW = false;
-    this.uLV.removeMessages(0);
-    AppMethodBeat.o(109077);
-  }
-  
-  public final void clear()
-  {
-    AppMethodBeat.i(109078);
-    if (this.uLS != null)
-    {
-      this.uLS.clear();
-      this.uLS = null;
-    }
-    this.uLV = null;
-    AppMethodBeat.o(109078);
-  }
-  
-  public final void d(LinkedList<aju> paramLinkedList, LinkedList<ajw> paramLinkedList1)
+  public final void d(LinkedList<anh> paramLinkedList, LinkedList<anj> paramLinkedList1)
   {
     AppMethodBeat.i(109079);
     if (paramLinkedList == null)
@@ -250,31 +213,56 @@ public class EmojiStoreVpHeader
       AppMethodBeat.o(109079);
       return;
     }
-    if (this.uLR == null) {
-      this.uLR = new LinkedList();
+    if (this.xUs == null) {
+      this.xUs = new LinkedList();
     }
     for (;;)
     {
       paramLinkedList1 = paramLinkedList1.iterator();
       while (paramLinkedList1.hasNext())
       {
-        ajw localajw = (ajw)paramLinkedList1.next();
-        if ((localajw != null) && (localajw.Tel != null) && (!Util.isNullOrNil(localajw.Tel.Tem))) {
-          this.uLR.add(new b(null, localajw, true));
+        anj localanj = (anj)paramLinkedList1.next();
+        if ((localanj != null) && (localanj.akjS != null) && (!Util.isNullOrNil(localanj.akjS.akjT))) {
+          this.xUs.add(new b(null, localanj, true));
         }
       }
-      this.uLR.clear();
+      this.xUs.clear();
     }
     paramLinkedList = paramLinkedList.iterator();
     while (paramLinkedList.hasNext())
     {
-      paramLinkedList1 = (aju)paramLinkedList.next();
-      if ((paramLinkedList1 != null) && (paramLinkedList1.Tel != null) && (!Util.isNullOrNil(paramLinkedList1.Tel.Tem))) {
-        this.uLR.add(new b(paramLinkedList1, null, false));
+      paramLinkedList1 = (anh)paramLinkedList.next();
+      if ((paramLinkedList1 != null) && (paramLinkedList1.akjS != null) && (!Util.isNullOrNil(paramLinkedList1.akjS.akjT))) {
+        this.xUs.add(new b(paramLinkedList1, null, false));
       }
     }
-    cWs();
+    dBW();
     AppMethodBeat.o(109079);
+  }
+  
+  public final void dBY()
+  {
+    AppMethodBeat.i(109076);
+    if (this.xUw == null) {
+      this.xUw = new a((byte)0);
+    }
+    this.xUx = true;
+    this.xUw.removeMessages(0);
+    this.xUw.sendEmptyMessageDelayed(0, 5000L);
+    AppMethodBeat.o(109076);
+  }
+  
+  public final void dBZ()
+  {
+    AppMethodBeat.i(109077);
+    if (this.xUw == null)
+    {
+      AppMethodBeat.o(109077);
+      return;
+    }
+    this.xUx = false;
+    this.xUw.removeMessages(0);
+    AppMethodBeat.o(109077);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -297,23 +285,23 @@ public class EmojiStoreVpHeader
       boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
       AppMethodBeat.o(109081);
       return bool;
-      this.uLT = f1;
-      this.uLU = f2;
+      this.xUu = f1;
+      this.xUv = f2;
       break;
-      j = (int)(f1 - this.uLT);
-      int k = (int)(f2 - this.uLU);
+      j = (int)(f1 - this.xUu);
+      int k = (int)(f2 - this.xUv);
       if (Math.abs(j) <= Math.abs(k)) {
         break;
       }
-      mF(true);
+      oc(true);
       break;
-      this.uLT = 0.0F;
-      this.uLU = 0.0F;
-      mF(false);
+      this.xUu = 0.0F;
+      this.xUv = 0.0F;
+      oc(false);
       break;
-      cWv();
+      dBZ();
       continue;
-      cWu();
+      dBY();
     }
   }
   
@@ -324,13 +312,13 @@ public class EmojiStoreVpHeader
   public void onPageSelected(int paramInt)
   {
     AppMethodBeat.i(109080);
-    if ((this.uLR == null) || (this.uLR.size() <= 1))
+    if ((this.xUs == null) || (this.xUs.size() <= 1))
     {
       AppMethodBeat.o(109080);
       return;
     }
-    if ((paramInt == 0) || (paramInt == this.uLS.getCount() - 1)) {
-      this.mrI.postDelayed(new Runnable()
+    if ((paramInt == 0) || (paramInt == this.xUt.getCount() - 1)) {
+      this.plc.postDelayed(new Runnable()
       {
         public final void run()
         {
@@ -371,7 +359,7 @@ public class EmojiStoreVpHeader
       int j = EmojiStoreVpHeader.e(EmojiStoreVpHeader.this).getCurrentItem() + 1;
       int i = j;
       if (j >= EmojiStoreVpHeader.a(EmojiStoreVpHeader.this).getCount()) {
-        i = EmojiStoreVpHeader.b(EmojiStoreVpHeader.this).size() * i.uAD / 2;
+        i = EmojiStoreVpHeader.b(EmojiStoreVpHeader.this).size() * i.xHg / 2;
       }
       EmojiStoreVpHeader.e(EmojiStoreVpHeader.this).setCurrentItem(i);
       if ((EmojiStoreVpHeader.d(EmojiStoreVpHeader.this)) && (EmojiStoreVpHeader.f(EmojiStoreVpHeader.this) != null)) {

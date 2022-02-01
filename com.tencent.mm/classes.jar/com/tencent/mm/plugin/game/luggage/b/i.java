@@ -1,55 +1,35 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
+import com.tencent.luggage.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.api.b;
-import com.tencent.mm.plugin.webview.luggage.c.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class i
-  extends br
+  extends bv<com.tencent.luggage.d.a>
 {
-  public final void a(Context paramContext, String paramString, br.a parama)
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
+  
+  public final void b(b<com.tencent.luggage.d.a>.a paramb)
   {
-    AppMethodBeat.i(231015);
-    if (a.gVm())
-    {
-      Log.i("MicroMsg.JsApiDownloadGameResource", "downloadGameResource isTeenMode and ignore");
-      a.ja(paramContext);
-      parama.i("cancel", null);
-      AppMethodBeat.o(231015);
-      return;
+    AppMethodBeat.i(277131);
+    Log.i("MicroMsg.JsApiCloseJsCore", "invokeInOwn");
+    if (com.tencent.mm.plugin.game.luggage.h.a.fFa() != null) {
+      com.tencent.mm.plugin.game.luggage.h.a.fFa().fFb();
     }
-    try
-    {
-      paramContext = new JSONObject(paramString);
-      paramContext = paramContext.optString("appId", "");
-      com.tencent.mm.plugin.game.api.b.a.evu().aIK(paramContext);
-      parama.i(null, null);
-      AppMethodBeat.o(231015);
-      return;
-    }
-    catch (JSONException paramContext)
-    {
-      parama.i("fail", null);
-      AppMethodBeat.o(231015);
-    }
+    AppMethodBeat.o(277131);
   }
   
-  public final void b(com.tencent.luggage.d.b.a parama) {}
-  
-  public final int cDj()
+  public final int dgI()
   {
-    return 2;
+    return 0;
   }
   
   public final String name()
   {
-    return "downloadGameResource";
+    return "closeJsCore";
   }
 }
 

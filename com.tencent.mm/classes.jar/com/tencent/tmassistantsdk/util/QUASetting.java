@@ -7,6 +7,7 @@ import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.deviceinfo.q;
 
 public class QUASetting
 {
@@ -103,7 +104,7 @@ public class QUASetting
     Object localObject = new StringBuffer();
     ((StringBuffer)localObject).append(filter(Build.BRAND));
     ((StringBuffer)localObject).append("_");
-    ((StringBuffer)localObject).append(filter(Build.MODEL));
+    ((StringBuffer)localObject).append(filter(q.aPo()));
     localObject = ((StringBuffer)localObject).toString();
     AppMethodBeat.o(102521);
     return localObject;
@@ -129,7 +130,7 @@ public class QUASetting
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.util.QUASetting
  * JD-Core Version:    0.7.0.1
  */

@@ -92,246 +92,218 @@ public class g
   private static String a(HttpURLConnection paramHttpURLConnection, a parama, boolean paramBoolean)
   {
     // Byte code:
-    //   0: ldc 94
+    //   0: ldc 92
     //   2: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: invokevirtual 100	java/net/HttpURLConnection:getResponseCode	()I
+    //   6: invokevirtual 98	java/net/HttpURLConnection:getResponseCode	()I
     //   9: istore_3
     //   10: aload_1
     //   11: ifnull +10 -> 21
     //   14: aload_1
     //   15: iload_3
-    //   16: invokeinterface 102 2 0
+    //   16: invokeinterface 100 2 0
     //   21: iload_3
     //   22: sipush 200
-    //   25: if_icmpne +231 -> 256
+    //   25: if_icmpne +198 -> 223
     //   28: aload_0
-    //   29: invokevirtual 106	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   29: invokevirtual 104	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
     //   32: astore_1
     //   33: aload_0
-    //   34: invokevirtual 109	java/net/HttpURLConnection:getContentEncoding	()Ljava/lang/String;
+    //   34: invokevirtual 107	java/net/HttpURLConnection:getContentEncoding	()Ljava/lang/String;
     //   37: astore_0
     //   38: aload_0
-    //   39: ifnull +77 -> 116
+    //   39: ifnull +79 -> 118
     //   42: aload_0
-    //   43: ldc 111
-    //   45: invokevirtual 115	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   48: ifeq +68 -> 116
-    //   51: new 117	java/util/zip/GZIPInputStream
+    //   43: ldc 109
+    //   45: invokevirtual 113	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   48: ifeq +70 -> 118
+    //   51: new 115	java/util/zip/GZIPInputStream
     //   54: dup
     //   55: aload_1
-    //   56: invokespecial 120	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
+    //   56: invokespecial 118	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
     //   59: astore_0
-    //   60: new 122	java/io/ByteArrayOutputStream
+    //   60: new 120	java/io/ByteArrayOutputStream
     //   63: dup
-    //   64: invokespecial 123	java/io/ByteArrayOutputStream:<init>	()V
+    //   64: invokespecial 121	java/io/ByteArrayOutputStream:<init>	()V
     //   67: astore 4
     //   69: sipush 128
     //   72: newarray byte
     //   74: astore_1
     //   75: aload_0
     //   76: aload_1
-    //   77: invokevirtual 129	java/io/InputStream:read	([B)I
+    //   77: invokevirtual 127	java/io/InputStream:read	([B)I
     //   80: istore_3
     //   81: iload_3
     //   82: iconst_m1
-    //   83: if_icmpeq +80 -> 163
+    //   83: if_icmpeq +81 -> 164
     //   86: aload 4
     //   88: aload_1
     //   89: iconst_0
     //   90: iload_3
-    //   91: invokevirtual 133	java/io/ByteArrayOutputStream:write	([BII)V
+    //   91: invokevirtual 131	java/io/ByteArrayOutputStream:write	([BII)V
     //   94: goto -19 -> 75
     //   97: astore_1
-    //   98: aload_0
-    //   99: invokestatic 136	com/tencent/smtt/utils/g:a	(Ljava/io/Closeable;)V
-    //   102: aload 4
-    //   104: invokestatic 136	com/tencent/smtt/utils/g:a	(Ljava/io/Closeable;)V
-    //   107: aconst_null
-    //   108: astore_1
-    //   109: ldc 94
-    //   111: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   114: aload_1
-    //   115: areturn
-    //   116: aload_0
-    //   117: ifnull +41 -> 158
-    //   120: aload_0
-    //   121: ldc 138
-    //   123: invokevirtual 115	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   126: ifeq +32 -> 158
-    //   129: new 140	java/util/zip/InflaterInputStream
-    //   132: dup
-    //   133: aload_1
-    //   134: new 142	java/util/zip/Inflater
-    //   137: dup
-    //   138: iconst_1
-    //   139: invokespecial 145	java/util/zip/Inflater:<init>	(Z)V
-    //   142: invokespecial 148	java/util/zip/InflaterInputStream:<init>	(Ljava/io/InputStream;Ljava/util/zip/Inflater;)V
-    //   145: astore_0
-    //   146: goto -86 -> 60
-    //   149: astore_0
-    //   150: aconst_null
-    //   151: astore 4
-    //   153: aconst_null
-    //   154: astore_0
-    //   155: goto -57 -> 98
-    //   158: aload_1
-    //   159: astore_0
-    //   160: goto -100 -> 60
-    //   163: iload_2
-    //   164: ifeq +30 -> 194
-    //   167: new 87	java/lang/String
-    //   170: dup
-    //   171: aload 4
-    //   173: invokevirtual 152	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   176: ldc 154
-    //   178: invokespecial 157	java/lang/String:<init>	([BLjava/lang/String;)V
-    //   181: astore_1
-    //   182: aload_0
-    //   183: invokestatic 136	com/tencent/smtt/utils/g:a	(Ljava/io/Closeable;)V
-    //   186: aload 4
-    //   188: invokestatic 136	com/tencent/smtt/utils/g:a	(Ljava/io/Closeable;)V
-    //   191: goto -82 -> 109
-    //   194: new 87	java/lang/String
-    //   197: dup
-    //   198: invokestatic 67	com/tencent/smtt/utils/h:a	()Lcom/tencent/smtt/utils/h;
-    //   201: aload 4
-    //   203: invokevirtual 152	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   206: invokevirtual 159	com/tencent/smtt/utils/h:c	([B)[B
-    //   209: invokespecial 162	java/lang/String:<init>	([B)V
-    //   212: astore_1
-    //   213: goto -31 -> 182
-    //   216: astore_1
-    //   217: aload_0
-    //   218: invokestatic 136	com/tencent/smtt/utils/g:a	(Ljava/io/Closeable;)V
-    //   221: aload 4
-    //   223: invokestatic 136	com/tencent/smtt/utils/g:a	(Ljava/io/Closeable;)V
-    //   226: ldc 94
-    //   228: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   231: aload_1
-    //   232: athrow
-    //   233: astore_1
-    //   234: aconst_null
-    //   235: astore 4
-    //   237: aconst_null
-    //   238: astore_0
-    //   239: goto -22 -> 217
-    //   242: astore_1
-    //   243: aconst_null
-    //   244: astore 4
-    //   246: goto -29 -> 217
-    //   249: astore_1
-    //   250: aconst_null
-    //   251: astore 4
-    //   253: goto -155 -> 98
-    //   256: aconst_null
-    //   257: astore 4
-    //   259: aconst_null
-    //   260: astore_0
-    //   261: aconst_null
-    //   262: astore_1
-    //   263: goto -81 -> 182
+    //   98: aload 4
+    //   100: astore_1
+    //   101: aload_0
+    //   102: invokestatic 134	com/tencent/smtt/utils/g:a	(Ljava/io/Closeable;)V
+    //   105: aload_1
+    //   106: invokestatic 134	com/tencent/smtt/utils/g:a	(Ljava/io/Closeable;)V
+    //   109: aconst_null
+    //   110: astore_1
+    //   111: ldc 92
+    //   113: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   116: aload_1
+    //   117: areturn
+    //   118: aload_0
+    //   119: ifnull +40 -> 159
+    //   122: aload_0
+    //   123: ldc 136
+    //   125: invokevirtual 113	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   128: ifeq +31 -> 159
+    //   131: new 138	java/util/zip/InflaterInputStream
+    //   134: dup
+    //   135: aload_1
+    //   136: new 140	java/util/zip/Inflater
+    //   139: dup
+    //   140: iconst_1
+    //   141: invokespecial 143	java/util/zip/Inflater:<init>	(Z)V
+    //   144: invokespecial 146	java/util/zip/InflaterInputStream:<init>	(Ljava/io/InputStream;Ljava/util/zip/Inflater;)V
+    //   147: astore_0
+    //   148: goto -88 -> 60
+    //   151: astore_0
+    //   152: aconst_null
+    //   153: astore_1
+    //   154: aconst_null
+    //   155: astore_0
+    //   156: goto -55 -> 101
+    //   159: aload_1
+    //   160: astore_0
+    //   161: goto -101 -> 60
+    //   164: iload_2
+    //   165: ifeq +30 -> 195
+    //   168: new 87	java/lang/String
+    //   171: dup
+    //   172: aload 4
+    //   174: invokevirtual 150	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   177: ldc 152
+    //   179: invokespecial 155	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   182: astore_1
+    //   183: aload_0
+    //   184: invokestatic 134	com/tencent/smtt/utils/g:a	(Ljava/io/Closeable;)V
+    //   187: aload 4
+    //   189: invokestatic 134	com/tencent/smtt/utils/g:a	(Ljava/io/Closeable;)V
+    //   192: goto -81 -> 111
+    //   195: new 87	java/lang/String
+    //   198: dup
+    //   199: invokestatic 67	com/tencent/smtt/utils/h:a	()Lcom/tencent/smtt/utils/h;
+    //   202: aload 4
+    //   204: invokevirtual 150	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   207: invokevirtual 157	com/tencent/smtt/utils/h:c	([B)[B
+    //   210: invokespecial 160	java/lang/String:<init>	([B)V
+    //   213: astore_1
+    //   214: goto -31 -> 183
+    //   217: astore_1
+    //   218: aconst_null
+    //   219: astore_1
+    //   220: goto -119 -> 101
+    //   223: aconst_null
+    //   224: astore 4
+    //   226: aconst_null
+    //   227: astore_0
+    //   228: aconst_null
+    //   229: astore_1
+    //   230: goto -47 -> 183
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	266	0	paramHttpURLConnection	HttpURLConnection
-    //   0	266	1	parama	a
-    //   0	266	2	paramBoolean	boolean
+    //   0	233	0	paramHttpURLConnection	HttpURLConnection
+    //   0	233	1	parama	a
+    //   0	233	2	paramBoolean	boolean
     //   9	82	3	i	int
-    //   67	191	4	localByteArrayOutputStream	java.io.ByteArrayOutputStream
+    //   67	158	4	localByteArrayOutputStream	java.io.ByteArrayOutputStream
     // Exception table:
     //   from	to	target	type
-    //   69	75	97	java/lang/Throwable
-    //   75	81	97	java/lang/Throwable
-    //   86	94	97	java/lang/Throwable
-    //   167	182	97	java/lang/Throwable
-    //   194	213	97	java/lang/Throwable
-    //   5	10	149	java/lang/Throwable
-    //   14	21	149	java/lang/Throwable
-    //   28	38	149	java/lang/Throwable
-    //   42	60	149	java/lang/Throwable
-    //   120	146	149	java/lang/Throwable
-    //   69	75	216	finally
-    //   75	81	216	finally
-    //   86	94	216	finally
-    //   167	182	216	finally
-    //   194	213	216	finally
-    //   5	10	233	finally
-    //   14	21	233	finally
-    //   28	38	233	finally
-    //   42	60	233	finally
-    //   120	146	233	finally
-    //   60	69	242	finally
-    //   60	69	249	java/lang/Throwable
+    //   69	75	97	finally
+    //   75	81	97	finally
+    //   86	94	97	finally
+    //   168	183	97	finally
+    //   195	214	97	finally
+    //   5	10	151	finally
+    //   14	21	151	finally
+    //   28	38	151	finally
+    //   42	60	151	finally
+    //   122	148	151	finally
+    //   60	69	217	finally
   }
   
   /* Error */
   private static HttpURLConnection a(String paramString, Map<String, String> paramMap)
   {
     // Byte code:
-    //   0: ldc 163
+    //   0: ldc 161
     //   2: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 165	java/net/URL
+    //   5: new 163	java/net/URL
     //   8: dup
     //   9: aload_0
-    //   10: invokespecial 168	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   13: invokevirtual 172	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   16: checkcast 96	java/net/HttpURLConnection
+    //   10: invokespecial 166	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   13: invokevirtual 170	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   16: checkcast 94	java/net/HttpURLConnection
     //   19: astore_0
     //   20: aload_0
-    //   21: ldc 174
-    //   23: invokevirtual 177	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   21: ldc 172
+    //   23: invokevirtual 175	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
     //   26: aload_0
     //   27: iconst_1
-    //   28: invokevirtual 180	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   28: invokevirtual 178	java/net/HttpURLConnection:setDoOutput	(Z)V
     //   31: aload_0
     //   32: iconst_1
-    //   33: invokevirtual 183	java/net/HttpURLConnection:setDoInput	(Z)V
+    //   33: invokevirtual 181	java/net/HttpURLConnection:setDoInput	(Z)V
     //   36: aload_0
     //   37: iconst_0
-    //   38: invokevirtual 186	java/net/HttpURLConnection:setUseCaches	(Z)V
+    //   38: invokevirtual 184	java/net/HttpURLConnection:setUseCaches	(Z)V
     //   41: aload_0
     //   42: sipush 20000
-    //   45: invokevirtual 189	java/net/HttpURLConnection:setConnectTimeout	(I)V
-    //   48: getstatic 195	android/os/Build$VERSION:SDK_INT	I
+    //   45: invokevirtual 187	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   48: getstatic 193	android/os/Build$VERSION:SDK_INT	I
     //   51: bipush 13
     //   53: if_icmple +77 -> 130
     //   56: aload_0
-    //   57: ldc 197
-    //   59: ldc 199
-    //   61: invokevirtual 203	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   57: ldc 195
+    //   59: ldc 197
+    //   61: invokevirtual 201	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   64: aload_1
-    //   65: invokeinterface 207 1 0
-    //   70: invokeinterface 213 1 0
+    //   65: invokeinterface 205 1 0
+    //   70: invokeinterface 211 1 0
     //   75: astore_1
     //   76: aload_1
-    //   77: invokeinterface 219 1 0
+    //   77: invokeinterface 217 1 0
     //   82: ifeq +59 -> 141
     //   85: aload_1
-    //   86: invokeinterface 223 1 0
-    //   91: checkcast 225	java/util/Map$Entry
+    //   86: invokeinterface 221 1 0
+    //   91: checkcast 223	java/util/Map$Entry
     //   94: astore_2
     //   95: aload_0
     //   96: aload_2
-    //   97: invokeinterface 228 1 0
+    //   97: invokeinterface 226 1 0
     //   102: checkcast 87	java/lang/String
     //   105: aload_2
-    //   106: invokeinterface 231 1 0
+    //   106: invokeinterface 229 1 0
     //   111: checkcast 87	java/lang/String
-    //   114: invokevirtual 203	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   114: invokevirtual 201	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   117: goto -41 -> 76
     //   120: astore_0
     //   121: aconst_null
     //   122: astore_0
-    //   123: ldc 163
+    //   123: ldc 161
     //   125: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   128: aload_0
     //   129: areturn
     //   130: aload_0
-    //   131: ldc 233
-    //   133: ldc 235
-    //   135: invokevirtual 203	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   131: ldc 231
+    //   133: ldc 233
+    //   135: invokevirtual 201	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   138: goto -74 -> 64
-    //   141: ldc 163
+    //   141: ldc 161
     //   143: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   146: aload_0
     //   147: areturn
@@ -367,48 +339,48 @@ public class g
   private static void a(HttpURLConnection paramHttpURLConnection, byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: ldc 242
+    //   0: ldc 240
     //   2: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 244	java/util/zip/GZIPOutputStream
+    //   5: new 242	java/util/zip/GZIPOutputStream
     //   8: dup
-    //   9: new 246	java/io/BufferedOutputStream
+    //   9: new 244	java/io/BufferedOutputStream
     //   12: dup
     //   13: aload_0
-    //   14: invokevirtual 250	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
-    //   17: ldc 251
-    //   19: invokespecial 254	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;I)V
-    //   22: invokespecial 257	java/util/zip/GZIPOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   14: invokevirtual 248	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   17: ldc 249
+    //   19: invokespecial 252	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;I)V
+    //   22: invokespecial 255	java/util/zip/GZIPOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   25: astore_0
     //   26: aload_0
     //   27: aload_1
-    //   28: invokevirtual 261	java/io/OutputStream:write	([B)V
+    //   28: invokevirtual 259	java/io/OutputStream:write	([B)V
     //   31: aload_0
-    //   32: invokevirtual 264	java/io/OutputStream:flush	()V
+    //   32: invokevirtual 262	java/io/OutputStream:flush	()V
     //   35: aconst_null
-    //   36: invokestatic 136	com/tencent/smtt/utils/g:a	(Ljava/io/Closeable;)V
+    //   36: invokestatic 134	com/tencent/smtt/utils/g:a	(Ljava/io/Closeable;)V
     //   39: aload_0
-    //   40: invokestatic 136	com/tencent/smtt/utils/g:a	(Ljava/io/Closeable;)V
-    //   43: ldc 242
+    //   40: invokestatic 134	com/tencent/smtt/utils/g:a	(Ljava/io/Closeable;)V
+    //   43: ldc 240
     //   45: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   48: return
     //   49: astore_0
     //   50: aconst_null
     //   51: astore_0
     //   52: aconst_null
-    //   53: invokestatic 136	com/tencent/smtt/utils/g:a	(Ljava/io/Closeable;)V
+    //   53: invokestatic 134	com/tencent/smtt/utils/g:a	(Ljava/io/Closeable;)V
     //   56: aload_0
-    //   57: invokestatic 136	com/tencent/smtt/utils/g:a	(Ljava/io/Closeable;)V
-    //   60: ldc 242
+    //   57: invokestatic 134	com/tencent/smtt/utils/g:a	(Ljava/io/Closeable;)V
+    //   60: ldc 240
     //   62: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   65: return
     //   66: astore_0
     //   67: aconst_null
     //   68: astore_1
     //   69: aconst_null
-    //   70: invokestatic 136	com/tencent/smtt/utils/g:a	(Ljava/io/Closeable;)V
+    //   70: invokestatic 134	com/tencent/smtt/utils/g:a	(Ljava/io/Closeable;)V
     //   73: aload_1
-    //   74: invokestatic 136	com/tencent/smtt/utils/g:a	(Ljava/io/Closeable;)V
-    //   77: ldc 242
+    //   74: invokestatic 134	com/tencent/smtt/utils/g:a	(Ljava/io/Closeable;)V
+    //   77: ldc 240
     //   79: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   82: aload_0
     //   83: athrow
@@ -463,7 +435,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.utils.g
  * JD-Core Version:    0.7.0.1
  */

@@ -14,31 +14,25 @@ public final class c$p
   static
   {
     AppMethodBeat.i(62426);
-    String str = new StringBuilder("gsmron").reverse().toString();
+    Object localObject1 = new StringBuilder("gsmron").reverse().toString();
     if (Process.myPid() == Process.myTid())
     {
-      System.loadLibrary(str);
+      localObject1 = new com.tencent.mm.hellhoundlib.b.a().cG(localObject1);
+      localObject3 = new Object();
+      com.tencent.mm.hellhoundlib.a.a.b(localObject3, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aYi(), "com/tencent/mm/normsg/c$p", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+      System.loadLibrary((String)((com.tencent.mm.hellhoundlib.b.a)localObject1).sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(localObject3, "com/tencent/mm/normsg/c$p", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
       AppMethodBeat.o(62426);
       return;
     }
-    final CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    new Handler(Looper.getMainLooper()).postAtFrontOfQueue(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(62425);
-        System.loadLibrary(this.mxi);
-        localCountDownLatch.countDown();
-        AppMethodBeat.o(62425);
-      }
-    });
+    Object localObject3 = new CountDownLatch(1);
+    new Handler(Looper.getMainLooper()).postAtFrontOfQueue(new c.p.1((String)localObject1, (CountDownLatch)localObject3));
     try
     {
-      localCountDownLatch.await();
-      AppMethodBeat.o(62426);
+      ((CountDownLatch)localObject3).await();
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       AppMethodBeat.o(62426);
     }
@@ -148,7 +142,7 @@ public final class c$p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.normsg.c.p
  * JD-Core Version:    0.7.0.1
  */

@@ -6,106 +6,104 @@ import android.content.DialogInterface.OnCancelListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.l;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.kernel.c;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
 import com.tencent.mm.plugin.comm.c.h;
-import com.tencent.mm.protocal.protobuf.ecp;
+import com.tencent.mm.protocal.protobuf.ewg;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.aa;
+import com.tencent.mm.ui.base.k;
 import com.tencent.mm.ui.base.w;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class a
-  implements i
+  implements com.tencent.mm.am.h
 {
-  String Ln;
-  private a fgh;
-  boolean fgi;
-  Runnable fgj;
-  Runnable fgk;
-  private AtomicBoolean fgl;
+  String brD;
+  private a hkr;
+  boolean hks;
+  Runnable hkt;
+  Runnable hku;
+  private AtomicBoolean hkv;
   Context mContext;
   int mScene;
-  private s tipDialog;
+  private w tipDialog;
   
   public a(Context paramContext, int paramInt, String paramString, a parama)
   {
-    AppMethodBeat.i(292335);
-    this.fgl = new AtomicBoolean(false);
+    AppMethodBeat.i(239330);
+    this.hkv = new AtomicBoolean(false);
     this.mContext = paramContext;
-    this.fgh = parama;
+    this.hkr = parama;
     this.tipDialog = null;
     this.mScene = paramInt;
-    this.Ln = paramString;
-    AppMethodBeat.o(292335);
+    this.brD = paramString;
+    AppMethodBeat.o(239330);
   }
   
-  private void a(ecp paramecp)
+  private void a(ewg paramewg)
   {
-    AppMethodBeat.i(292336);
-    if (this.fgh != null) {
-      this.fgh.a(this.mContext, paramecp);
+    AppMethodBeat.i(239332);
+    if (this.hkr != null) {
+      this.hkr.a(this.mContext, paramewg);
     }
-    AppMethodBeat.o(292336);
+    AppMethodBeat.o(239332);
   }
   
-  private void dismissDialog()
+  private void aDM()
   {
-    AppMethodBeat.i(292337);
+    AppMethodBeat.i(239334);
     if (this.tipDialog != null)
     {
       this.tipDialog.dismiss();
       this.tipDialog = null;
     }
-    AppMethodBeat.o(292337);
+    AppMethodBeat.o(239334);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(292338);
+    AppMethodBeat.i(239354);
     Log.d("MicroMsg.AddContact", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2 + "," + paramString);
-    if ((!(paramq instanceof com.tencent.mm.app.plugin.c.a)) || (paramq.getType() != 4790))
+    if ((!(paramp instanceof com.tencent.mm.app.plugin.a.a)) || (paramp.getType() != 4790))
     {
-      Log.w("MicroMsg.AddContact", "not expected scene,  type = " + paramq.getType());
-      AppMethodBeat.o(292338);
+      Log.w("MicroMsg.AddContact", "not expected scene,  type = " + paramp.getType());
+      AppMethodBeat.o(239354);
       return;
     }
-    if (this.fgi)
+    if (this.hks)
     {
-      if (this.fgk != null) {
-        MMHandlerThread.removeRunnable(this.fgk);
+      if (this.hku != null) {
+        MMHandlerThread.removeRunnable(this.hku);
       }
-      dismissDialog();
+      aDM();
     }
-    MMHandlerThread.removeRunnable(this.fgj);
-    com.tencent.mm.kernel.h.aHF().kcd.b(4790, this);
+    MMHandlerThread.removeRunnable(this.hkt);
+    com.tencent.mm.kernel.h.baD().mCm.b(4790, this);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      a((ecp)d.c.b(((com.tencent.mm.app.plugin.c.a)paramq).rr.lBS));
-      AppMethodBeat.o(292338);
+      a((ewg)c.c.b(((com.tencent.mm.app.plugin.a.a)paramp).rr.otC));
+      AppMethodBeat.o(239354);
       return;
     }
     if (!Util.isNullOrNil(paramString)) {
-      com.tencent.mm.ui.base.h.c(this.mContext, paramString, "", true);
+      k.c(this.mContext, paramString, "", true);
     }
     a(null);
-    AppMethodBeat.o(292338);
+    AppMethodBeat.o(239354);
   }
   
   public static abstract interface a
   {
-    public abstract void a(Context paramContext, ecp paramecp);
+    public abstract void a(Context paramContext, ewg paramewg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.app.plugin.a
  * JD-Core Version:    0.7.0.1
  */

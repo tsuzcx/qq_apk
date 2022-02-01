@@ -1,35 +1,57 @@
 package com.tencent.mm.plugin.finder.live.cgi;
 
-import com.tencent.c.a.a.a.c.a;
-import com.tencent.c.a.a.a.c.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.c;
-import com.tencent.mm.protocal.protobuf.aqe;
-import com.tencent.mm.protocal.protobuf.auv;
-import com.tencent.mm.protocal.protobuf.ayv;
-import com.tencent.mm.protocal.protobuf.bid;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.finder.cgi.bi;
+import com.tencent.mm.plugin.findersdk.b.c;
+import com.tencent.mm.protocal.protobuf.bdd;
+import com.tencent.mm.protocal.protobuf.bde;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.kd;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/cgi/LiveCgiFactoryService;", "Lcom/tencent/plugin/finder/live/api/service/ILiveCgiFactoryService;", "()V", "createCgiFinderGetLiveMsg", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/FinderGetLiveMsgResp;", "finderBaseRequest", "Lcom/tencent/mm/protocal/protobuf/FinderBaseRequest;", "finderUsername", "", "liveCookies", "", "liveId", "", "objectId", "nonceId", "scene", "", "offline", "", "clientStatus", "Lcom/tencent/mm/protocal/protobuf/FinderLiveClientStatus;", "reqVisitorRoleType", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "callback", "Lcom/tencent/plugin/finder/live/api/service/ILiveCgiFactoryService$IGetLiveMsgCallBack;", "plugin-finder-live_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/cgi/CgiFinderLiveGetPromoteInfoList;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveAnchorGetPromoteInfoListResponse;", "objectId", "", "liveId", "(JJ)V", "TAG", "", "getLiveId", "()J", "getObjectId", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLiveAnchorGetPromoteInfoListRequest;", "onCgiEnd", "", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class o
-  implements a
+  extends c<bde>
 {
-  public final c<auv> a(aqe paramaqe, String paramString1, byte[] paramArrayOfByte, long paramLong1, long paramLong2, String paramString2, int paramInt1, boolean paramBoolean, ayv paramayv, int paramInt2, bid parambid, a.b paramb)
+  private bdd Cvx;
+  private final String TAG;
+  private final long hKN;
+  private final long liveId;
+  
+  public o(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(233517);
-    p.k(paramaqe, "finderBaseRequest");
-    p.k(paramString2, "nonceId");
-    p.k(parambid, "contextObj");
-    p.k(paramb, "callback");
-    paramaqe = (c)new b(paramaqe, paramString1, paramArrayOfByte, paramLong1, paramLong2, paramString2, paramInt1, paramBoolean, paramayv, paramInt2, parambid, paramb);
-    AppMethodBeat.o(233517);
-    return paramaqe;
+    super(null);
+    AppMethodBeat.i(351191);
+    this.hKN = paramLong1;
+    this.liveId = paramLong2;
+    this.TAG = "Finder.CgiFinderLiveGetPromoteInfoList";
+    this.Cvx = new bdd();
+    Object localObject1 = this.Cvx;
+    Object localObject2 = bi.ABn;
+    ((bdd)localObject1).YIY = bi.dVu();
+    this.Cvx.object_id = this.hKN;
+    this.Cvx.mMJ = this.liveId;
+    this.Cvx.YIZ = z.bAW();
+    localObject1 = new c.a();
+    ((c.a)localObject1).otE = ((a)this.Cvx);
+    localObject2 = new bde();
+    ((bde)localObject2).setBaseResponse(new kd());
+    ((bde)localObject2).getBaseResponse().akjO = new etl();
+    ((c.a)localObject1).otF = ((a)localObject2);
+    ((c.a)localObject1).uri = "/cgi-bin/micromsg-bin/finderliveanchorgetpromoteinfolist";
+    ((c.a)localObject1).funcId = 5250;
+    c(((c.a)localObject1).bEF());
+    Log.i(this.TAG, "init liveId:" + this.liveId + ", objectId:" + this.hKN + '}');
+    AppMethodBeat.o(351191);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.cgi.o
  * JD-Core Version:    0.7.0.1
  */

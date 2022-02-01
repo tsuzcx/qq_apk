@@ -4,57 +4,57 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public class ChatroomBanAction
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
   public BanAction ban_action;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(194852);
+    AppMethodBeat.i(275559);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
       if (this.ban_action != null)
       {
-        paramVarArgs.oE(1, this.ban_action.computeSize());
+        paramVarArgs.qD(1, this.ban_action.computeSize());
         this.ban_action.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(194852);
+      AppMethodBeat.o(275559);
       return 0;
     }
     if (paramInt == 1) {
       if (this.ban_action == null) {
-        break label288;
+        break label284;
       }
     }
-    label288:
-    for (paramInt = g.a.a.a.oD(1, this.ban_action.computeSize()) + 0;; paramInt = 0)
+    label284:
+    for (paramInt = i.a.a.a.qC(1, this.ban_action.computeSize()) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(194852);
+      AppMethodBeat.o(275559);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(194852);
+        AppMethodBeat.o(275559);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         ChatroomBanAction localChatroomBanAction = (ChatroomBanAction)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(194852);
+          AppMethodBeat.o(275559);
           return -1;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
         int i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
@@ -67,10 +67,10 @@ public class ChatroomBanAction
           localChatroomBanAction.ban_action = localBanAction;
           paramInt += 1;
         }
-        AppMethodBeat.o(194852);
+        AppMethodBeat.o(275559);
         return 0;
       }
-      AppMethodBeat.o(194852);
+      AppMethodBeat.o(275559);
       return -1;
     }
   }

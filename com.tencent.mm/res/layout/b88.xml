@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/bsb" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/fun" android:paddingBottom="@dimen/cp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="20.0dip">
+            <RelativeLayout android:id="@id/fy3" android:background="@drawable/acq" android:layout_width="44.0dip" android:layout_height="44.0dip" android:layout_marginBottom="@dimen/bv">
+                <ImageView android:id="@id/fup" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_centerInParent="true" />
+            </RelativeLayout>
+            <TextView android:textSize="14.0dip" android:textColor="@color/az" android:id="@id/ful" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cp" android:text="@string/g7t" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

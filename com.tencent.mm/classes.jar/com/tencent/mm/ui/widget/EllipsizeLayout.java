@@ -9,24 +9,24 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.widget.n.e;
+import com.tencent.mm.plugin.appbrand.widget.q.e;
 
 public class EllipsizeLayout
   extends LinearLayout
 {
-  private final boolean Yak;
+  private final boolean afSf;
   
   public EllipsizeLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(230378);
-    this.Yak = paramContext.obtainStyledAttributes(paramAttributeSet, n.e.EllipsizeLayout).getBoolean(n.e.EllipsizeLayout_center_ellipsize_textview, false);
-    AppMethodBeat.o(230378);
+    AppMethodBeat.i(251717);
+    this.afSf = paramContext.obtainStyledAttributes(paramAttributeSet, q.e.EllipsizeLayout).getBoolean(q.e.EllipsizeLayout_center_ellipsize_textview, false);
+    AppMethodBeat.o(251717);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(230380);
+    AppMethodBeat.i(251722);
     int j;
     int i;
     Object localObject1;
@@ -61,7 +61,7 @@ public class EllipsizeLayout
         if (localObject1 == null)
         {
           ((TextView)localObject2).setMaxWidth(2147483647);
-          if (!this.Yak) {
+          if (!this.afSf) {
             break label412;
           }
           ((LinearLayout.LayoutParams)((TextView)localObject2).getLayoutParams()).leftMargin = 0;
@@ -121,7 +121,7 @@ public class EllipsizeLayout
               k = i;
             }
           }
-          if ((this.Yak) && (localObject1.getMeasuredWidth() > 0)) {
+          if ((this.afSf) && (localObject1.getMeasuredWidth() > 0)) {
             if (j <= i1) {
               break label392;
             }
@@ -132,7 +132,7 @@ public class EllipsizeLayout
           ((LinearLayout.LayoutParams)localObject1.getLayoutParams()).leftMargin = i;
           localObject1.setMaxWidth(k - i);
           super.onMeasure(paramInt1, paramInt2);
-          AppMethodBeat.o(230380);
+          AppMethodBeat.o(251722);
           return;
           n = 0;
           break;

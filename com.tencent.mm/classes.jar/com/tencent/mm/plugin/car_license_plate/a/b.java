@@ -1,54 +1,56 @@
 package com.tencent.mm.plugin.car_license_plate.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.aeu;
-import com.tencent.mm.protocal.protobuf.aev;
-import com.tencent.mm.protocal.protobuf.dyl;
-import com.tencent.mm.protocal.protobuf.dyy;
+import com.tencent.mm.protocal.protobuf.ahg;
+import com.tencent.mm.protocal.protobuf.ahh;
+import com.tencent.mm.protocal.protobuf.erp;
+import com.tencent.mm.protocal.protobuf.esc;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.d.d;
-import kotlin.l;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/car_license_plate/cgi/CgiCreatePlateNo;", "Lcom/tencent/mm/plugin/car_license_plate/cgi/CarLicensePlateCgiBase;", "Lcom/tencent/mm/protocal/protobuf/CreateUserPlateInfoRequest;", "Lcom/tencent/mm/protocal/protobuf/CreateUserPlateInfoResponse;", "plateNo", "", "(Ljava/lang/String;)V", "CMD_ID", "", "getCMD_ID", "()I", "LOG_TAG", "getLOG_TAG", "()Ljava/lang/String;", "URL", "getURL", "send", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "plugin-car-license-plate_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/car_license_plate/cgi/CgiCreatePlateNo;", "Lcom/tencent/mm/plugin/car_license_plate/cgi/CarLicensePlateCgiBase;", "Lcom/tencent/mm/protocal/protobuf/CreateUserPlateInfoRequest;", "Lcom/tencent/mm/protocal/protobuf/CreateUserPlateInfoResponse;", "plateNo", "", "(Ljava/lang/String;)V", "CMD_ID", "", "getCMD_ID", "()I", "LOG_TAG", "getLOG_TAG", "()Ljava/lang/String;", "URL", "getURL", "send", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "plugin-car-license-plate_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends a<aeu, aev>
+  extends a<ahg, ahh>
 {
   private final String LOG_TAG;
   private final String URL;
-  private final int sXA;
-  private final String sXB;
+  private final String wbV;
+  private final int wbW;
   
   public b(String paramString)
   {
-    super((dyl)localaeu, (dyy)new aev());
-    this.sXB = paramString;
+    super((erp)localahg, (esc)new ahh());
+    this.wbV = paramString;
     this.LOG_TAG = "MicroMsg.CgiCreatePlateNo";
     this.URL = "/cgi-bin/mmbiz-bin/wxabusiness/createuserplateinfo";
-    this.sXA = 5876;
-    AppMethodBeat.o(187098);
+    this.wbW = 5876;
+    AppMethodBeat.o(277562);
   }
   
-  public final String btD()
+  public final Object U(d<? super ahh> paramd)
+  {
+    AppMethodBeat.i(277580);
+    Np(s.X("send create ", this.wbV));
+    paramd = super.U(paramd);
+    AppMethodBeat.o(277580);
+    return paramd;
+  }
+  
+  public final String cgR()
   {
     return this.URL;
   }
   
-  public final Object c(d<? super aev> paramd)
-  {
-    AppMethodBeat.i(187091);
-    aqH("send create " + this.sXB);
-    paramd = super.c(paramd);
-    AppMethodBeat.o(187091);
-    return paramd;
-  }
-  
-  public final String cFu()
+  public final String diO()
   {
     return this.LOG_TAG;
   }
   
-  public final int cFv()
+  public final int diP()
   {
-    return this.sXA;
+    return this.wbW;
   }
 }
 

@@ -1,32 +1,27 @@
 package com.tencent.mm.plugin.gamelife;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.util.LinkedList;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.Context;
+import com.tencent.mm.ui.base.w;
+import com.tencent.threadpool.i.d;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.b;
-import kotlin.l;
+import kotlin.g.b.ah.f;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+@Metadata(d1={""}, d2={"<anonymous>", "", "it", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class PluginGameLife$e
-  implements Runnable
+  extends u
+  implements b<String, ah>
 {
-  PluginGameLife$e(AtomicInteger paramAtomicInteger, LinkedList paramLinkedList, b paramb) {}
-  
-  public final void run()
+  PluginGameLife$e(d<?> paramd, ah.f<w> paramf, String paramString, Context paramContext)
   {
-    AppMethodBeat.i(203114);
-    if (this.DeW.incrementAndGet() == 2)
-    {
-      Log.i("GameLife.PluginGameLife", "checkSessionIdAndContact success: " + (String)this.DeX.get(0));
-      this.jFa.invoke(this.DeX.get(0));
-    }
-    AppMethodBeat.o(203114);
+    super(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelife.PluginGameLife.e
  * JD-Core Version:    0.7.0.1
  */

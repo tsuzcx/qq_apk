@@ -1,120 +1,157 @@
 package com.tencent.mm.live.core.core.c;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.live.core.view.LiveVideoView;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.rtmp.ITXLivePlayListener;
+import com.tencent.rtmp.TXLivePlayConfig;
+import com.tencent.rtmp.TXLivePlayer;
+import com.tencent.rtmp.ui.TXCloudVideoView;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/core/visitor/FinderLiveVisitorPlayCore;", "Lcom/tencent/mm/live/core/core/visitor/LiveVisitorTRTCCore;", "()V", "liveId", "", "cdnStartPlay", "", "streamType", "", "playerView", "Lcom/tencent/mm/live/core/view/LiveVideoView;", "playCallback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "success", "cdnStopPlay", "keepLastFrame", "getCoreKey", "toString", "", "Companion", "finder-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/core/core/player/BaseLiveTXPlayer;", "Lcom/tencent/mm/live/core/core/player/ILivePlayer;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "txLivePlayer", "Lcom/tencent/rtmp/TXLivePlayer;", "callExperimentalAPI", "", "jsonStr", "", "debugClose", "", "enableHardwareDecode", "enable", "getPlayer", "isPlaying", "pause", "resume", "setConfig", "config", "Lcom/tencent/rtmp/TXLivePlayConfig;", "setMute", "mute", "setPlayListener", "listener", "Lcom/tencent/rtmp/ITXLivePlayListener;", "setPlayerView", "glRootView", "Lcom/tencent/rtmp/ui/TXCloudVideoView;", "setRenderMode", "mode", "", "setRenderRotation", "rotation", "setVolume", "volume", "startPlay", "url", "streamType", "stopPlay", "isNeedClearLastImg", "switchStream", "playUrl", "plugin-core_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends c
+  implements b
 {
-  private static ConcurrentHashMap<Long, a> kqj;
-  public static final a kqk;
-  public long liveId;
+  private TXLivePlayer mPi;
   
-  static
+  public a(Context paramContext)
   {
-    AppMethodBeat.i(208930);
-    kqk = new a((byte)0);
-    kqj = new ConcurrentHashMap(2);
-    AppMethodBeat.o(208930);
+    AppMethodBeat.i(247974);
+    this.mPi = new TXLivePlayer(paramContext);
+    AppMethodBeat.o(247974);
   }
   
-  public final void a(int paramInt, LiveVideoView paramLiveVideoView, kotlin.g.a.b<? super Boolean, x> paramb)
+  public final void D(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(208926);
-    p.k(paramLiveVideoView, "playerView");
-    Log.i("FinderLiveVisitorPlayCore", "cdnStartPlay liveId:" + this.liveId + '(' + this + ")!");
-    super.a(paramInt, paramLiveVideoView, paramb);
-    AppMethodBeat.o(208926);
-  }
-  
-  public final void fi(boolean paramBoolean)
-  {
-    AppMethodBeat.i(208927);
-    Log.i("FinderLiveVisitorPlayCore", "cdnStopPlay liveId:" + this.liveId + '(' + this + ")!");
-    super.fi(paramBoolean);
-    AppMethodBeat.o(208927);
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(208928);
-    String str = super.toString() + ",Core liveId:" + this.liveId;
-    AppMethodBeat.o(208928);
-    return str;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/core/visitor/FinderLiveVisitorPlayCore$Companion;", "", "()V", "TAG", "", "instanceArray", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/live/core/core/visitor/FinderLiveVisitorPlayCore;", "checkPlayerLeak", "", "clear", "", "create", "liveId", "getCoreSize", "", "getInstance", "hasInstance", "releaseInstance", "releaseWithoutLiveId", "finder-sdk_release"})
-  public static final class a
-  {
-    public static a FB(long paramLong)
+    AppMethodBeat.i(248075);
+    s.u(paramString, "jsonStr");
+    Log.i("BaseLiveTXPlayer", "callExperimentalAPI(debugClose:" + paramBoolean + ") jsonStr:" + n.bX(paramString, "encKey", paramString));
+    if (paramBoolean)
     {
-      AppMethodBeat.i(208109);
-      Object localObject1 = com.tencent.mm.plugin.findersdk.f.b.Bxg;
-      Object localObject2 = new StringBuilder(" create ").append(paramLong).append(' ');
-      localObject1 = (a)a.aMe().get(Long.valueOf(paramLong));
-      if (localObject1 != null) {}
-      for (localObject1 = Integer.valueOf(((a)localObject1).hashCode());; localObject1 = null)
+      AppMethodBeat.o(248075);
+      return;
+    }
+    if (((CharSequence)paramString).length() == 0) {}
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0)
       {
-        com.tencent.mm.plugin.findersdk.f.b.hA("FinderLiveVisitorPlayCore", localObject1);
-        localObject1 = (ConcurrentMap)a.aMe();
-        localObject2 = Long.valueOf(paramLong);
-        if (((ConcurrentMap)localObject1).get(localObject2) == null)
-        {
-          a locala = new a();
-          ((Map)a.aMe()).put(Long.valueOf(paramLong), locala);
-          a.a(locala, paramLong);
-          Log.i("FinderLiveVisitorPlayCore", "FinderLiveVisitorPlayCore create instance:" + locala.hashCode() + ", liveId:" + paramLong + ", core size:" + a.aMe().size());
-          ((ConcurrentMap)localObject1).putIfAbsent(localObject2, locala);
-        }
-        localObject1 = (a)a.aMe().get(Long.valueOf(paramLong));
-        AppMethodBeat.o(208109);
-        return localObject1;
+        this.mPi.callExperimentalAPI(paramString);
+        com.tencent.mm.live.core.core.model.b.F(this.mPi.hashCode(), paramString);
       }
+      AppMethodBeat.o(248075);
+      return;
     }
-    
-    public static a FC(long paramLong)
-    {
-      AppMethodBeat.i(208110);
-      a locala = (a)a.aMe().get(Long.valueOf(paramLong));
-      if (locala == null) {
-        Log.i("FinderLiveVisitorPlayCore", "FinderLiveVisitorPlayCore get liveId:" + paramLong + " instance is empty, core size:" + a.aMe().size());
-      }
-      AppMethodBeat.o(208110);
-      return locala;
-    }
-    
-    public static void clear()
-    {
-      AppMethodBeat.i(208111);
-      Log.i("FinderLiveVisitorPlayCore", "FinderLiveVisitorPlayCore clear, core size:" + a.aMe().size());
-      Object localObject = com.tencent.mm.plugin.findersdk.f.b.Bxg;
-      com.tencent.mm.plugin.findersdk.f.b.hA("FinderLiveVisitorPlayCore", "FinderLiveVisitorPlayCore clear, core size:" + a.aMe().size());
-      localObject = ((Map)a.aMe()).entrySet().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-        ((a)localEntry.getValue()).fi(false);
-        ((a)localEntry.getValue()).release();
-      }
-      a.aMe().clear();
-      AppMethodBeat.o(208111);
-    }
+  }
+  
+  public final void Y(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(247986);
+    s.u(paramString, "url");
+    this.mPi.startPlay(paramString, paramInt);
+    AppMethodBeat.o(247986);
+  }
+  
+  public final boolean enableHardwareDecode(boolean paramBoolean)
+  {
+    AppMethodBeat.i(248014);
+    paramBoolean = this.mPi.enableHardwareDecode(paramBoolean);
+    AppMethodBeat.o(248014);
+    return paramBoolean;
+  }
+  
+  public final void fD(boolean paramBoolean)
+  {
+    AppMethodBeat.i(248001);
+    this.mPi.stopPlay(paramBoolean);
+    AppMethodBeat.o(248001);
+  }
+  
+  public final TXLivePlayer getPlayer()
+  {
+    return this.mPi;
+  }
+  
+  public final boolean isPlaying()
+  {
+    AppMethodBeat.i(248031);
+    boolean bool = this.mPi.isPlaying();
+    AppMethodBeat.o(248031);
+    return bool;
+  }
+  
+  public final void pause()
+  {
+    AppMethodBeat.i(247997);
+    this.mPi.pause();
+    AppMethodBeat.o(247997);
+  }
+  
+  public final void resume()
+  {
+    AppMethodBeat.i(247992);
+    this.mPi.resume();
+    AppMethodBeat.o(247992);
+  }
+  
+  public final void setConfig(TXLivePlayConfig paramTXLivePlayConfig)
+  {
+    AppMethodBeat.i(248053);
+    s.u(paramTXLivePlayConfig, "config");
+    this.mPi.setConfig(paramTXLivePlayConfig);
+    AppMethodBeat.o(248053);
+  }
+  
+  public final void setMute(boolean paramBoolean)
+  {
+    AppMethodBeat.i(248038);
+    this.mPi.setMute(paramBoolean);
+    AppMethodBeat.o(248038);
+  }
+  
+  public final void setPlayListener(ITXLivePlayListener paramITXLivePlayListener)
+  {
+    AppMethodBeat.i(248007);
+    this.mPi.setPlayListener(paramITXLivePlayListener);
+    AppMethodBeat.o(248007);
+  }
+  
+  public final void setPlayerView(TXCloudVideoView paramTXCloudVideoView)
+  {
+    AppMethodBeat.i(248024);
+    this.mPi.setPlayerView(paramTXCloudVideoView);
+    AppMethodBeat.o(248024);
+  }
+  
+  public final void setRenderMode(int paramInt)
+  {
+    AppMethodBeat.i(248020);
+    this.mPi.setRenderMode(paramInt);
+    AppMethodBeat.o(248020);
+  }
+  
+  public final void setVolume(int paramInt)
+  {
+    AppMethodBeat.i(248065);
+    this.mPi.setVolume(paramInt);
+    AppMethodBeat.o(248065);
+  }
+  
+  public final int switchStream(String paramString)
+  {
+    AppMethodBeat.i(248043);
+    s.u(paramString, "playUrl");
+    int i = this.mPi.switchStream(paramString);
+    AppMethodBeat.o(248043);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.live.core.core.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.wallet_core.ui.CustomerScrollView android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/lp0" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="17.0dip" android:textColor="@color/FG_0" android:gravity="center" android:layout_gravity="center" android:id="@id/lp2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cd" android:layout_marginTop="@dimen/d4" android:layout_marginRight="@dimen/cd" android:text="@string/lk3" android:layout_marginHorizontal="@dimen/cd" />
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/lp1" android:background="@drawable/c_0" android:layout_width="264.0dip" android:layout_height="201.0dip" android:layout_marginTop="@dimen/d0">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="69.599976dip">
+                <ImageView android:layout_gravity="center_vertical" android:id="@id/loc" android:layout_width="45.0dip" android:layout_height="45.0dip" android:layout_marginLeft="6.399994dip" android:src="@raw/default_avatar" />
+                <TextView android:textSize="15.0dip" android:textColor="@color/FG_0" android:layout_gravity="center_vertical" android:id="@id/lp3" android:layout_width="0.0dip" android:layout_marginLeft="@dimen/df" android:layout_marginRight="@dimen/d6" android:text="{user}" android:layout_weight="1.0" style="@style/m6" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</com.tencent.mm.wallet_core.ui.CustomerScrollView>

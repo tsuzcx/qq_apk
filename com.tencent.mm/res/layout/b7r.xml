@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/fxb" android:background="@color/a1q" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/y" android:textColor="@color/g3" android:id="@id/iqz" android:paddingLeft="@dimen/u0" android:paddingTop="@dimen/cb" android:paddingRight="@dimen/u0" android:paddingBottom="@dimen/ce" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/x" />
-    <ImageView android:layout_gravity="bottom" android:id="@id/brt" android:visibility="gone" style="@style/hx" />
-</LinearLayout>
+    <RelativeLayout android:id="@id/fx_" android:background="@drawable/acl" android:layout_width="@dimen/bz" android:layout_height="@dimen/bz" android:layout_marginTop="@dimen/cu" android:layout_centerHorizontal="true">
+        <TextView android:textSize="40.0dip" android:textColor="@color/al6" android:id="@id/fxa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <Button android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:id="@id/fx9" android:background="@drawable/ack" android:layout_width="@dimen/bx" android:layout_height="@dimen/d0" android:layout_marginBottom="132.0dip" android:text="@string/g9d" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

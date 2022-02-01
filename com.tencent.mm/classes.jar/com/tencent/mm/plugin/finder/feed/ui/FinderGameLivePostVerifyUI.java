@@ -1,86 +1,97 @@
 package com.tencent.mm.plugin.finder.feed.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
+import com.tencent.d.a.a.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.k;
-import com.tencent.mm.plugin.finder.live.viewmodel.j;
-import com.tencent.mm.plugin.finder.live.viewmodel.j.b;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.f;
+import com.tencent.mm.plugin.f.a;
+import com.tencent.mm.plugin.finder.live.p.h;
+import com.tencent.mm.plugin.finder.live.p.i;
+import com.tencent.mm.plugin.finder.live.viewmodel.l;
+import com.tencent.mm.plugin.finder.live.viewmodel.l.b;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.arr;
-import com.tencent.mm.protocal.protobuf.bac;
-import com.tencent.mm.protocal.protobuf.bbh;
+import com.tencent.mm.protocal.protobuf.awa;
+import com.tencent.mm.protocal.protobuf.bip;
+import com.tencent.mm.protocal.protobuf.bkk;
+import com.tencent.mm.protocal.protobuf.bno;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.base.aa;
 import com.tencent.mm.ui.component.UIComponent;
-import com.tencent.mm.ui.component.g.a;
-import com.tencent.mm.ui.f.h.a;
-import java.util.HashMap;
+import com.tencent.mm.ui.component.k.b;
+import com.tencent.mm.ui.f.i.a;
+import java.util.LinkedList;
 import java.util.Set;
-import kotlin.a.ak;
-import kotlin.f;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.ar;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
 
 @com.tencent.mm.ui.base.a(39)
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderGameLivePostVerifyUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/plugin/finder/live/viewmodel/FinderLiveVerifyUIC$LivePostVerifyCallback;", "()V", "appId", "", "getAppId", "()Ljava/lang/String;", "appId$delegate", "Lkotlin/Lazy;", "ignoreContinueLive", "", "getIgnoreContinueLive", "()Z", "ignoreContinueLive$delegate", "landscapeType", "", "Ljava/lang/Integer;", "versionType", "getVersionType", "()I", "versionType$delegate", "getForceOrientation", "getOrientation", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onCreateBeforeSetContentView", "onVerified", "result", "finderCreateLivePrepareResponse", "Lcom/tencent/mm/protocal/protobuf/FinderCreateLivePrepareResponse;", "finderUserPrepareResponse", "Lcom/tencent/mm/protocal/protobuf/FinderUserPrepareResponse;", "needContinueLive", "setWindowStyle", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderGameLivePostVerifyUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/plugin/finder/live/viewmodel/FinderLiveVerifyUIC$LivePostVerifyCallback;", "()V", "appId", "", "getAppId", "()Ljava/lang/String;", "appId$delegate", "Lkotlin/Lazy;", "developerCustomParam", "getDeveloperCustomParam", "developerCustomParam$delegate", "ignoreContinueLive", "", "getIgnoreContinueLive", "()Z", "ignoreContinueLive$delegate", "landscapeType", "", "Ljava/lang/Integer;", "reportInfo", "getReportInfo", "reportInfo$delegate", "versionType", "getVersionType", "()I", "versionType$delegate", "getForceOrientation", "getOrientation", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onCreateBeforeSetContentView", "onVerified", "result", "finderCreateLivePrepareResponse", "Lcom/tencent/mm/protocal/protobuf/FinderCreateLivePrepareResponse;", "finderUserPrepareResponse", "Lcom/tencent/mm/protocal/protobuf/FinderUserPrepareResponse;", "needContinueLive", "setWindowStyle", "Companion", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderGameLivePostVerifyUI
   extends MMFinderUI
-  implements j.b
+  implements l.b
 {
-  public static final a xNZ;
-  private HashMap _$_findViewCache;
-  private final f sOf;
-  private final f xNW;
-  private final f xNX;
-  private Integer xNY;
+  public static final FinderGameLivePostVerifyUI.a BnW;
+  private final j BnX;
+  private final j BnY;
+  private final j BnZ;
+  private final j Boa;
+  private Integer Bob;
+  private final j vTI;
   
   static
   {
-    AppMethodBeat.i(271840);
-    xNZ = new a((byte)0);
-    AppMethodBeat.o(271840);
+    AppMethodBeat.i(365618);
+    BnW = new FinderGameLivePostVerifyUI.a((byte)0);
+    AppMethodBeat.o(365618);
   }
   
   public FinderGameLivePostVerifyUI()
   {
-    AppMethodBeat.i(271838);
-    this.sOf = kotlin.g.ar((kotlin.g.a.a)new b(this));
-    this.xNW = kotlin.g.ar((kotlin.g.a.a)new d(this));
-    this.xNX = kotlin.g.ar((kotlin.g.a.a)new c(this));
+    AppMethodBeat.i(365603);
+    this.vTI = kotlin.k.cm((kotlin.g.a.a)new b(this));
+    this.BnX = kotlin.k.cm((kotlin.g.a.a)new f(this));
+    this.BnY = kotlin.k.cm((kotlin.g.a.a)new d(this));
+    this.BnZ = kotlin.k.cm((kotlin.g.a.a)new c(this));
+    this.Boa = kotlin.k.cm((kotlin.g.a.a)new e(this));
     Object localObject = getIntent();
-    if (localObject != null) {}
-    for (localObject = Integer.valueOf(((Intent)localObject).getIntExtra("LANDSCAPE_TYPE", f.h.a.VSf.ordinal()));; localObject = null)
+    if (localObject == null) {}
+    for (localObject = null;; localObject = Integer.valueOf(((Intent)localObject).getIntExtra("LANDSCAPE_TYPE", f.i.a.adwn.ordinal())))
     {
-      this.xNY = ((Integer)localObject);
-      AppMethodBeat.o(271838);
+      this.Bob = ((Integer)localObject);
+      AppMethodBeat.o(365603);
       return;
     }
   }
   
   private final int getOrientation()
   {
-    AppMethodBeat.i(271835);
+    AppMethodBeat.i(365610);
     Object localObject = getIntent();
     int i;
-    if (localObject != null)
+    if (localObject == null)
     {
-      localObject = Integer.valueOf(((Intent)localObject).getIntExtra("LANDSCAPE_TYPE", f.h.a.VSf.ordinal()));
-      this.xNY = ((Integer)localObject);
-      localObject = this.xNY;
-      i = f.h.a.VSg.ordinal();
+      localObject = null;
+      this.Bob = ((Integer)localObject);
+      localObject = this.Bob;
+      i = f.i.a.adwo.ordinal();
       if (localObject != null) {
         break label74;
       }
-      label51:
-      i = f.h.a.VSh.ordinal();
+      label37:
+      i = f.i.a.adwp.ordinal();
       if (localObject != null) {
         break label89;
       }
@@ -89,177 +100,164 @@ public final class FinderGameLivePostVerifyUI
     label89:
     while (((Integer)localObject).intValue() != i)
     {
-      AppMethodBeat.o(271835);
+      AppMethodBeat.o(365610);
       return -1;
-      localObject = null;
+      localObject = Integer.valueOf(((Intent)localObject).getIntExtra("LANDSCAPE_TYPE", f.i.a.adwn.ordinal()));
       break;
       if (((Integer)localObject).intValue() != i) {
-        break label51;
+        break label37;
       }
-      AppMethodBeat.o(271835);
+      AppMethodBeat.o(365610);
       return 0;
     }
-    AppMethodBeat.o(271835);
+    AppMethodBeat.o(365610);
     return 8;
   }
   
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(271842);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(271842);
-  }
+  public final void _$_clearFindViewByIdCache() {}
   
-  public final View _$_findCachedViewById(int paramInt)
+  public final void a(boolean paramBoolean1, awa paramawa, boolean paramBoolean2)
   {
-    AppMethodBeat.i(271841);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(271841);
-    return localView1;
-  }
-  
-  public final void a(boolean paramBoolean1, arr paramarr, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(271837);
+    AppMethodBeat.i(365669);
     Object localObject1;
     Object localObject2;
     if (paramBoolean1)
     {
-      if ((!paramBoolean2) || (((Boolean)this.xNX.getValue()).booleanValue())) {
-        break label213;
+      if ((!paramBoolean2) || (((Boolean)this.BnY.getValue()).booleanValue())) {
+        break label239;
       }
-      if (paramarr != null)
+      if (paramawa != null)
       {
-        localObject1 = com.tencent.mm.plugin.finder.utils.a.ACH;
-        Context localContext = (Context)this;
-        localObject1 = paramarr.SEM;
-        if (localObject1 == null) {
-          p.iCn();
-        }
+        f localf = (f)h.ax(f.class);
+        localObject1 = paramawa.ZGo;
+        s.checkNotNull(localObject1);
         long l = ((FinderObject)localObject1).id;
-        localObject1 = paramarr.SEM;
-        if (localObject1 != null)
-        {
-          localObject2 = ((FinderObject)localObject1).objectNonceId;
-          localObject1 = localObject2;
-          if (localObject2 != null) {}
+        localObject1 = paramawa.ZGo;
+        if (localObject1 != null) {
+          break label206;
         }
-        else
-        {
-          localObject1 = "";
+        localObject1 = "";
+        localObject2 = paramawa.ZGo;
+        s.checkNotNull(localObject2);
+        bip localbip = ((FinderObject)localObject2).liveInfo;
+        s.checkNotNull(localbip);
+        bkk localbkk = paramawa.live_notice_info;
+        localObject2 = paramawa.ZGo;
+        if (localObject2 != null) {
+          break label229;
         }
-        localObject2 = paramarr.SEM;
-        if (localObject2 == null) {
-          p.iCn();
-        }
-        bac localbac = ((FinderObject)localObject2).liveInfo;
-        if (localbac == null) {
-          p.iCn();
-        }
-        p.j(localbac, "it.recover_live_object!!.liveInfo!!");
-        bbh localbbh = paramarr.live_notice_info;
-        localObject2 = paramarr.SEM;
-        if (localObject2 == null) {
-          break label207;
-        }
-        localObject2 = ((FinderObject)localObject2).sessionBuffer;
-        com.tencent.mm.plugin.finder.utils.a.a(localContext, l, (String)localObject1, localbac, localbbh, null, paramarr.SEN, paramarr.SEO, null, (String)localObject2, paramarr.SEP, new Intent(), 592);
+        localObject2 = null;
+        label121:
+        LinkedList localLinkedList = paramawa.ZGp;
+        bno localbno = paramawa.ZGq;
+        paramawa = paramawa.ZGr;
+        Intent localIntent = new Intent();
+        s.s(localf, "service(IActivityRouter::class.java)");
+        Context localContext = (Context)this;
+        s.s(localbip, "!!");
+        f.a.a(localf, localContext, l, (String)localObject1, localbip, localbkk, null, localLinkedList, localbno, null, (String)localObject2, paramawa, localIntent, 592);
       }
     }
     for (;;)
     {
       finish();
-      AppMethodBeat.o(271837);
+      AppMethodBeat.o(365669);
       return;
-      label207:
-      localObject2 = null;
+      label206:
+      localObject2 = ((FinderObject)localObject1).objectNonceId;
+      localObject1 = localObject2;
+      if (localObject2 != null) {
+        break;
+      }
+      localObject1 = "";
       break;
-      label213:
+      label229:
+      localObject2 = ((FinderObject)localObject2).sessionBuffer;
+      break label121;
+      label239:
       localObject2 = new Intent();
       ((Intent)localObject2).putExtra("TICKET", "");
-      localObject1 = (String)this.sOf.getValue();
-      paramarr = (arr)localObject1;
+      localObject1 = (String)this.vTI.getValue();
+      paramawa = (awa)localObject1;
       if (localObject1 == null) {
-        paramarr = "";
+        paramawa = "";
       }
-      ((Intent)localObject2).putExtra("APPID", paramarr);
-      ((Intent)localObject2).putExtra("VERSION_TYPE", ((Number)this.xNW.getValue()).intValue());
+      ((Intent)localObject2).putExtra("APPID", paramawa);
+      ((Intent)localObject2).putExtra("VERSION_TYPE", ((Number)this.BnX.getValue()).intValue());
       ((Intent)localObject2).putExtra("POST_FROM_SCENE", 0);
       ((Intent)localObject2).putExtra("IS_FROM_WEAPP", true);
-      paramarr = com.tencent.mm.plugin.finder.utils.a.ACH;
-      paramarr = getContext();
-      p.j(paramarr, "context");
-      com.tencent.mm.plugin.finder.utils.a.af((Context)paramarr, (Intent)localObject2);
+      ((Intent)localObject2).putExtra("MINI_GAME_SCENE", 4);
+      paramawa = (String)this.BnZ.getValue();
+      if (paramawa != null) {
+        ((Intent)localObject2).putExtra("WXA_DEVELOPER_CUSTOM_PARAM", paramawa);
+      }
+      paramawa = (String)this.Boa.getValue();
+      if (paramawa != null) {
+        ((Intent)localObject2).putExtra("REPORT_INFO", paramawa);
+      }
+      paramawa = (f)h.ax(f.class);
+      localObject1 = getContext();
+      s.s(localObject1, "context");
+      paramawa.o((Context)localObject1, (Intent)localObject2);
     }
   }
   
   public final int getForceOrientation()
   {
-    AppMethodBeat.i(271834);
+    AppMethodBeat.i(365652);
     int i = getOrientation();
-    AppMethodBeat.o(271834);
+    AppMethodBeat.o(365652);
     return i;
   }
   
   public final Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(271836);
-    Set localSet = ak.setOf(j.class);
-    AppMethodBeat.o(271836);
+    AppMethodBeat.i(365656);
+    Set localSet = ar.setOf(l.class);
+    AppMethodBeat.o(365656);
     return localSet;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(271832);
+    AppMethodBeat.i(365634);
     supportRequestWindowFeature(1);
     super.onCreate(paramBundle);
+    if (((b)h.az(b.class)).isVisitorLiving())
+    {
+      Log.i("Finder.FinderGameLivePostVerifyUI", "onCreate: isVisitorLiving = true, finish!");
+      aa.makeText((Context)getContext(), (CharSequence)getContext().getResources().getString(p.h.finder_can_not_enter_mv_because_living), 0).show();
+      finish();
+      AppMethodBeat.o(365634);
+      return;
+    }
     setRequestedOrientation(getOrientation());
     setSelfNavigationBarVisible(8);
     getWindow().addFlags(67108864);
     if (Build.VERSION.SDK_INT >= 21)
     {
       getWindow().clearFlags(67108864);
-      paramBundle = getWindow();
-      p.j(paramBundle, "window");
-      paramBundle = paramBundle.getDecorView();
-      p.j(paramBundle, "window.decorView");
-      paramBundle.setSystemUiVisibility(1792);
+      getWindow().getDecorView().setSystemUiVisibility(1792);
       getWindow().addFlags(-2147483648);
-      paramBundle = getWindow();
-      p.j(paramBundle, "window");
-      paramBundle.setStatusBarColor(0);
-      paramBundle = getWindow();
-      p.j(paramBundle, "window");
-      paramBundle.setNavigationBarColor(0);
+      getWindow().setStatusBarColor(0);
+      getWindow().setNavigationBarColor(0);
     }
     getWindow().setFormat(-3);
     getWindow().setSoftInputMode(51);
-    paramBundle = com.tencent.mm.ui.component.g.Xox;
-    ((j)com.tencent.mm.ui.component.g.b((AppCompatActivity)this).i(j.class)).zda = ((j.b)this);
-    paramBundle = com.tencent.mm.ui.component.g.Xox;
-    ((j)com.tencent.mm.ui.component.g.b((AppCompatActivity)this).i(j.class)).scene = 14;
-    AppMethodBeat.o(271832);
+    paramBundle = com.tencent.mm.ui.component.k.aeZF;
+    ((l)com.tencent.mm.ui.component.k.d((AppCompatActivity)this).q(l.class)).DZy = ((l.b)this);
+    paramBundle = com.tencent.mm.ui.component.k.aeZF;
+    ((l)com.tencent.mm.ui.component.k.d((AppCompatActivity)this).q(l.class)).scene = 14;
+    AppMethodBeat.o(365634);
   }
   
   public final void onCreateBeforeSetContentView()
   {
-    AppMethodBeat.i(271833);
+    AppMethodBeat.i(365643);
     super.onCreateBeforeSetContentView();
-    this.AwU = true;
-    setTheme(b.k.MMTheme_FinderNoTitleTranslucent);
-    AppMethodBeat.o(271833);
+    this.FVH = true;
+    setTheme(p.i.MMTheme_FinderNoTitleTranslucent);
+    AppMethodBeat.o(365643);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -268,12 +266,9 @@ public final class FinderGameLivePostVerifyUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderGameLivePostVerifyUI$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
+    extends u
     implements kotlin.g.a.a<String>
   {
     b(FinderGameLivePostVerifyUI paramFinderGameLivePostVerifyUI)
@@ -282,10 +277,10 @@ public final class FinderGameLivePostVerifyUI
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends q
-    implements kotlin.g.a.a<Boolean>
+    extends u
+    implements kotlin.g.a.a<String>
   {
     c(FinderGameLivePostVerifyUI paramFinderGameLivePostVerifyUI)
     {
@@ -293,12 +288,34 @@ public final class FinderGameLivePostVerifyUI
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    extends q
-    implements kotlin.g.a.a<Integer>
+    extends u
+    implements kotlin.g.a.a<Boolean>
   {
     d(FinderGameLivePostVerifyUI paramFinderGameLivePostVerifyUI)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class e
+    extends u
+    implements kotlin.g.a.a<String>
+  {
+    e(FinderGameLivePostVerifyUI paramFinderGameLivePostVerifyUI)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class f
+    extends u
+    implements kotlin.g.a.a<Integer>
+  {
+    f(FinderGameLivePostVerifyUI paramFinderGameLivePostVerifyUI)
     {
       super();
     }
@@ -306,7 +323,7 @@ public final class FinderGameLivePostVerifyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.ui.FinderGameLivePostVerifyUI
  * JD-Core Version:    0.7.0.1
  */

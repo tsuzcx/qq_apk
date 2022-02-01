@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/afz" style="@style/rj"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.base.MMPullDownView android:id="@id/ep2" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ListView android:gravity="center" android:id="@android:id/list" android:background="@color/ac_" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/b0w" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" android:choiceMode="none" />
-    </com.tencent.mm.ui.base.MMPullDownView>
-    <include android:visibility="gone" layout="@layout/a2o" />
-</LinearLayout>
+<ScrollView android:scrollbars="none" android:fillViewport="true" style="@style/r8"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:form="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:importantForAccessibility="no">
+        <LinearLayout android:orientation="vertical" android:id="@id/iss" android:layout_width="fill_parent" android:layout_height="fill_parent" android:importantForAccessibility="no" style="@style/r8">
+            <com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2RewardBannerView android:id="@id/a85" android:background="@drawable/rm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" />
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/m4" android:id="@id/iso" android:paddingLeft="@dimen/if" android:paddingTop="@dimen/i6" android:paddingRight="@dimen/if" android:paddingBottom="@dimen/i6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/c9e" />
+            <com.tencent.mm.plugin.emoji.ui.GridInScrollView android:gravity="center_horizontal" android:id="@android:id/list" android:background="@color/ahb" android:focusable="true" android:scrollbars="none" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/if" android:layout_marginRight="@dimen/if" android:listSelector="@android:color/transparent" android:cacheColorHint="#00000000" android:horizontalSpacing="@dimen/iq" android:verticalSpacing="@dimen/i6" android:numColumns="3" android:divider="@null" android:dividerHeight="0.0dip" />
+            <LinearLayout android:gravity="bottom|center" android:layout_gravity="bottom|center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <TextView android:textColor="@color/o6" android:gravity="bottom|center" android:layout_gravity="bottom|center" android:id="@id/isq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/j6" android:text="@string/c9p" style="@style/ow" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:id="@id/ist" android:visibility="gone" android:importantForAccessibility="no" style="@style/r8">
+            <com.tencent.mm.ui.base.MMFormInputView android:id="@id/isu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/br" android:layout_marginTop="@dimen/i9" android:layout_marginRight="@dimen/br" android:layout_marginBottom="@dimen/j6" form:form_hint="@string/c9r" form:form_layout="@layout/a31" form:form_title="@string/c9s" style="@style/n9" />
+            <Button android:id="@id/isv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/br" android:layout_marginTop="@dimen/j6" android:layout_marginRight="@dimen/br" android:layout_marginBottom="@dimen/j6" android:text="@string/c9t" style="@style/ok" />
+        </LinearLayout>
+    </FrameLayout>
+</ScrollView>

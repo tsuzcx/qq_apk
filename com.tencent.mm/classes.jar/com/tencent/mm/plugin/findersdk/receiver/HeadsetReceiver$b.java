@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.findersdk.receiver;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/findersdk/receiver/HeadsetReceiver$OnHeadsetStateChangeListener;", "", "onHeadsetStateChange", "", "on", "", "finder-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/findersdk/receiver/HeadsetReceiver$OnHeadsetStateChangeListener;", "", "onHeadsetStateChange", "", "on", "", "finder-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface HeadsetReceiver$b
 {
-  public abstract void pR(boolean paramBoolean);
+  public abstract void sO(boolean paramBoolean);
 }
 
 

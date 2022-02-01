@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="32.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="12.0dip" android:textColor="@color/l4" android:id="@id/in2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="今天" />
-</LinearLayout>
+<com.tencent.mm.plugin.forcenotify.ui.view.KeyEventFrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/jfo" android:background="@drawable/a6g" android:layout_width="fill_parent" android:layout_height="136.0dip" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/ixq" android:layout_width="fill_parent" android:layout_height="144.0dip" android:overScrollMode="never" android:layout_marginStart="@dimen/df" android:layout_marginEnd="@dimen/df" />
+    <View android:id="@id/c78" android:clickable="true" android:layout_width="fill_parent" android:layout_height="144.0dip" />
+</com.tencent.mm.plugin.forcenotify.ui.view.KeyEventFrameLayout>

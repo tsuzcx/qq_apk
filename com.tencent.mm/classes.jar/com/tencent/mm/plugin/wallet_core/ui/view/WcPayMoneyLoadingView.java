@@ -7,38 +7,41 @@ import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
-import androidx.lifecycle.h.a;
-import androidx.lifecycle.k;
-import androidx.lifecycle.t;
+import androidx.lifecycle.j.a;
+import androidx.lifecycle.p;
+import androidx.lifecycle.z;
 import com.robinhood.ticker.TickerView;
 import com.robinhood.ticker.TickerView.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.plugin.wxpay.a.e;
 import com.tencent.mm.plugin.wxpay.a.f;
 import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.plugin.wxpay.a.k;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.wallet_core.ui.g;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.wallet_core.ui.i;
 
 public class WcPayMoneyLoadingView
   extends FrameLayout
-  implements k
+  implements p
 {
-  private TickerView PgG;
-  private String PgH;
-  private String PgI;
-  private boolean PgJ;
-  public Runnable PgK;
-  public ProgressBar mUB;
+  private boolean CSK;
+  private TickerView VXu;
+  private String VXv;
+  private String VXw;
+  public Runnable VXx;
+  public ProgressBar pRi;
   
   public WcPayMoneyLoadingView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(71598);
-    this.PgH = "";
-    this.PgJ = false;
-    this.PgK = new Runnable()
+    this.VXv = "";
+    this.CSK = false;
+    this.VXx = new Runnable()
     {
       public final void run()
       {
@@ -58,9 +61,9 @@ public class WcPayMoneyLoadingView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(71599);
-    this.PgH = "";
-    this.PgJ = false;
-    this.PgK = new Runnable()
+    this.VXv = "";
+    this.CSK = false;
+    this.VXx = new Runnable()
     {
       public final void run()
       {
@@ -87,7 +90,7 @@ public class WcPayMoneyLoadingView
     paramAttributeSet.recycle();
     setTextSize(f);
     setTextColor(paramInt);
-    setTypeface(g.bl(getContext(), i));
+    setTypeface(i.bE(getContext(), i));
     AppMethodBeat.o(71600);
   }
   
@@ -95,12 +98,12 @@ public class WcPayMoneyLoadingView
   {
     AppMethodBeat.i(71601);
     inflate(getContext(), a.g.money_loading_view, this);
-    this.PgG = ((TickerView)findViewById(a.f.mlv_money_tv));
-    this.PgG.setCharacterLists(new String[] { "0123456789" });
+    this.VXu = ((TickerView)findViewById(a.f.mlv_money_tv));
+    this.VXu.setCharacterLists(new String[] { "0123456789" });
     AppMethodBeat.o(71601);
   }
   
-  public final void cV(String paramString, boolean paramBoolean)
+  public final void dD(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(71607);
     if (paramString == null)
@@ -108,12 +111,12 @@ public class WcPayMoneyLoadingView
       AppMethodBeat.o(71607);
       return;
     }
-    if (Util.isNullOrNil(this.PgI))
+    if (Util.isNullOrNil(this.VXw))
     {
       setFirstMoney(paramString);
       if (paramBoolean)
       {
-        removeCallbacks(this.PgK);
+        removeCallbacks(this.VXx);
         AppMethodBeat.o(71607);
       }
     }
@@ -124,11 +127,11 @@ public class WcPayMoneyLoadingView
     AppMethodBeat.o(71607);
   }
   
-  @t(jl=h.a.ON_DESTROY)
+  @z(Ho=j.a.ON_DESTROY)
   public void onActivityDestroy()
   {
     AppMethodBeat.i(71611);
-    removeCallbacks(this.PgK);
+    removeCallbacks(this.VXx);
     AppMethodBeat.o(71611);
   }
   
@@ -136,7 +139,7 @@ public class WcPayMoneyLoadingView
   {
     AppMethodBeat.i(71610);
     Log.d("MicroMsg.WcPayMoneyLoadingView", "reset money");
-    this.PgI = null;
+    this.VXw = null;
     AppMethodBeat.o(71610);
   }
   
@@ -144,23 +147,23 @@ public class WcPayMoneyLoadingView
   {
     AppMethodBeat.i(71608);
     Log.d("MicroMsg.WcPayMoneyLoadingView", "set last money: %s", new Object[] { paramString });
-    this.PgI = paramString;
+    this.VXw = paramString;
     if (!Util.isNullOrNil(paramString)) {
-      this.PgG.setText(this.PgH + paramString, false);
+      this.VXu.setText(this.VXv + paramString, false);
     }
-    postDelayed(this.PgK, 500L);
+    postDelayed(this.VXx, 500L);
     AppMethodBeat.o(71608);
   }
   
   public void setLoadingPb(ProgressBar paramProgressBar)
   {
-    this.mUB = paramProgressBar;
+    this.pRi = paramProgressBar;
   }
   
   public void setMoney(String paramString)
   {
     AppMethodBeat.i(71606);
-    cV(paramString, false);
+    dD(paramString, false);
     AppMethodBeat.o(71606);
   }
   
@@ -169,32 +172,32 @@ public class WcPayMoneyLoadingView
     boolean bool1 = false;
     AppMethodBeat.i(71609);
     Log.d("MicroMsg.WcPayMoneyLoadingView", "set new money: %s", new Object[] { paramString });
-    removeCallbacks(this.PgK);
-    this.mUB.setVisibility(8);
+    removeCallbacks(this.VXx);
+    this.pRi.setVisibility(8);
     label94:
     boolean bool2;
-    if (this.PgI.length() != paramString.length())
+    if (this.VXw.length() != paramString.length())
     {
-      this.PgG.setAnimationDuration(800L);
-      double d = Util.getDouble(this.PgI, 0.0D);
+      this.VXu.setAnimationDuration(800L);
+      double d = Util.getDouble(this.VXw, 0.0D);
       if (Util.getDouble(paramString, 0.0D) <= d) {
         break label159;
       }
-      this.PgG.setPreferredScrollingDirection(TickerView.a.cjm);
-      bool2 = this.PgJ;
-      if (!Util.isNullOrNil(this.PgI)) {
+      this.VXu.setPreferredScrollingDirection(TickerView.a.dZK);
+      bool2 = this.CSK;
+      if (!Util.isNullOrNil(this.VXw)) {
         break label172;
       }
     }
     for (;;)
     {
-      this.PgG.setText(this.PgH + paramString, bool1);
+      this.VXu.setText(this.VXv + paramString, bool1);
       AppMethodBeat.o(71609);
       return;
-      this.PgG.setAnimationDuration(500L);
+      this.VXu.setAnimationDuration(500L);
       break;
       label159:
-      this.PgG.setPreferredScrollingDirection(TickerView.a.cjl);
+      this.VXu.setPreferredScrollingDirection(TickerView.a.dZJ);
       break label94;
       label172:
       bool1 = bool2;
@@ -203,7 +206,7 @@ public class WcPayMoneyLoadingView
   
   public void setPrefixSymbol(String paramString)
   {
-    this.PgH = paramString;
+    this.VXv = paramString;
   }
   
   public void setProgressBarStyle(int paramInt)
@@ -211,38 +214,49 @@ public class WcPayMoneyLoadingView
     AppMethodBeat.i(71602);
     if (paramInt == 0)
     {
-      this.mUB.setIndeterminateDrawable(getResources().getDrawable(a.e.progress_single_white_medium_holo));
+      this.pRi.setIndeterminateDrawable(getResources().getDrawable(a.e.progress_single_white_medium_holo));
       AppMethodBeat.o(71602);
       return;
     }
-    this.mUB.setIndeterminateDrawable(getResources().getDrawable(a.e.progress_large_holo));
+    this.pRi.setIndeterminateDrawable(getResources().getDrawable(a.e.progress_large_holo));
     AppMethodBeat.o(71602);
   }
   
   public void setTextColor(int paramInt)
   {
     AppMethodBeat.i(71605);
-    this.PgG.setTextColor(paramInt);
+    this.VXu.setTextColor(paramInt);
     AppMethodBeat.o(71605);
   }
   
   public void setTextSize(float paramFloat)
   {
     AppMethodBeat.i(71604);
-    this.PgG.setTextSize(paramFloat);
+    float f2 = a.getScaleSize(MMApplicationContext.getContext());
+    float f1;
+    if (!aw.bc(f2, a.mi(MMApplicationContext.getContext())))
+    {
+      f1 = f2;
+      if (!aw.bc(f2, a.mj(MMApplicationContext.getContext()))) {}
+    }
+    else
+    {
+      f1 = a.mh(MMApplicationContext.getContext());
+    }
+    this.VXu.setTextSize(f1 * paramFloat);
     AppMethodBeat.o(71604);
   }
   
   public void setTypeface(Typeface paramTypeface)
   {
     AppMethodBeat.i(71603);
-    this.PgG.setTypeface(paramTypeface);
+    this.VXu.setTypeface(paramTypeface);
     AppMethodBeat.o(71603);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.view.WcPayMoneyLoadingView
  * JD-Core Version:    0.7.0.1
  */

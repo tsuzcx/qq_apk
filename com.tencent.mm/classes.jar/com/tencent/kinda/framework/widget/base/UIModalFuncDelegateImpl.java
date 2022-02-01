@@ -6,8 +6,8 @@ import android.graphics.Canvas;
 import android.view.View;
 import android.widget.ImageView;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.e;
-import androidx.fragment.app.i;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.r;
 import com.tencent.kinda.framework.R.id;
 import com.tencent.kinda.gen.IUIModalPlatformFuncDelegate;
 import com.tencent.kinda.gen.VoidCallback;
@@ -24,41 +24,41 @@ public class UIModalFuncDelegateImpl
   
   public UIModalFuncDelegateImpl(MMFragment paramMMFragment)
   {
-    AppMethodBeat.i(264287);
+    AppMethodBeat.i(226461);
     this.weakFragment = new WeakReference(paramMMFragment);
-    AppMethodBeat.o(264287);
+    AppMethodBeat.o(226461);
   }
   
   public void fragmentShow(boolean paramBoolean)
   {
-    AppMethodBeat.i(264290);
+    AppMethodBeat.i(226471);
     MMFragment localMMFragment = (MMFragment)this.weakFragment.get();
     if (localMMFragment == null)
     {
       Log.i("MicroMsg.kinda.UIModalFuncDelegateImpl", "activity == null.");
-      AppMethodBeat.o(264290);
+      AppMethodBeat.o(226471);
       return;
     }
     if (paramBoolean)
     {
       Log.i("MicroMsg.kinda.UIModalFuncDelegateImpl", "show fragment.");
-      localMMFragment.getActivity().getSupportFragmentManager().beginTransaction().c(localMMFragment).ip();
-      AppMethodBeat.o(264290);
+      localMMFragment.getActivity().getSupportFragmentManager().beginTransaction().c(localMMFragment).FX();
+      AppMethodBeat.o(226471);
       return;
     }
     Log.i("MicroMsg.kinda.UIModalFuncDelegateImpl", "hide fragment.");
-    localMMFragment.getActivity().getSupportFragmentManager().beginTransaction().b(localMMFragment).ip();
-    AppMethodBeat.o(264290);
+    localMMFragment.getActivity().getSupportFragmentManager().beginTransaction().b(localMMFragment).FX();
+    AppMethodBeat.o(226471);
   }
   
   public void genSnapshotImpl(boolean paramBoolean, final VoidCallback paramVoidCallback)
   {
-    AppMethodBeat.i(264289);
+    AppMethodBeat.i(226467);
     Object localObject = (MMFragment)this.weakFragment.get();
     if (localObject == null)
     {
       Log.i("MicroMsg.kinda.UIModalFuncDelegateImpl", "activity == null.");
-      AppMethodBeat.o(264289);
+      AppMethodBeat.o(226467);
       return;
     }
     if (!paramBoolean)
@@ -72,12 +72,12 @@ public class UIModalFuncDelegateImpl
       {
         public void run()
         {
-          AppMethodBeat.i(264262);
+          AppMethodBeat.i(226631);
           paramVoidCallback.call();
-          AppMethodBeat.o(264262);
+          AppMethodBeat.o(226631);
         }
       });
-      AppMethodBeat.o(264289);
+      AppMethodBeat.o(226467);
       return;
     }
     Log.i("MicroMsg.kinda.UIModalFuncDelegateImpl", "show snapshot.");
@@ -92,17 +92,17 @@ public class UIModalFuncDelegateImpl
     {
       public void run()
       {
-        AppMethodBeat.i(263513);
+        AppMethodBeat.i(226632);
         paramVoidCallback.call();
-        AppMethodBeat.o(263513);
+        AppMethodBeat.o(226632);
       }
     });
-    AppMethodBeat.o(264289);
+    AppMethodBeat.o(226467);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.UIModalFuncDelegateImpl
  * JD-Core Version:    0.7.0.1
  */

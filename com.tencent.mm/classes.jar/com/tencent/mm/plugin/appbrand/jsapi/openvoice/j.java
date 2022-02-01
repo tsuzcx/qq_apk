@@ -1,10 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.openvoice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
 import com.tencent.mm.plugin.appbrand.service.c;
 import com.tencent.mm.plugin.cloudvoip.cloudvoice.a.a;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.q;
+import com.tencent.mm.plugin.cloudvoip.cloudvoice.service.q;
 import com.tencent.mm.plugin.voip.video.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
@@ -21,11 +20,11 @@ public final class j
   final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
     int i = 1;
-    AppMethodBeat.i(277571);
+    AppMethodBeat.i(326337);
     if (paramJSONObject == null)
     {
-      paramc.j(paramInt, h("fail:data is null or nil", null));
-      AppMethodBeat.o(277571);
+      paramc.callback(paramInt, ZP("fail:data is null or nil"));
+      AppMethodBeat.o(326337);
       return;
     }
     String str = paramc.getAppId();
@@ -34,37 +33,37 @@ public final class j
     {
       if ("play".equalsIgnoreCase(paramJSONObject.getString("type")))
       {
-        paramJSONObject = q.tRM;
+        paramJSONObject = q.wVc;
         if (paramJSONObject.mRoomType == 1) {
           i = 0;
         }
         int j = a.a.phonering;
-        if ((paramJSONObject.tRS != null) && (j > 0)) {
-          paramJSONObject.tRS.M(j, i, true);
+        if ((paramJSONObject.wVi != null) && (j > 0)) {
+          paramJSONObject.wVi.mK(j, i);
         }
         paramJSONObject.mainHandler.sendEmptyMessage(272);
       }
       for (;;)
       {
-        paramc.j(paramInt, h("ok", null));
-        AppMethodBeat.o(277571);
+        paramc.callback(paramInt, ZP("ok"));
+        AppMethodBeat.o(326337);
         return;
         Log.i(TAG, "operate: stop ring");
-        q.tRM.stopRing();
+        q.wVc.stopRing();
       }
       return;
     }
     catch (JSONException paramJSONObject)
     {
       Log.printErrStackTrace(TAG, paramJSONObject, "", new Object[0]);
-      paramc.j(paramInt, h("fail: param error!", null));
-      AppMethodBeat.o(277571);
+      paramc.callback(paramInt, ZP("fail: param error!"));
+      AppMethodBeat.o(326337);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.openvoice.j
  * JD-Core Version:    0.7.0.1
  */

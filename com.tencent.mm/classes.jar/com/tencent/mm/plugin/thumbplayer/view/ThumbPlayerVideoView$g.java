@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.thumbplayer.view;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.thumbplayer.g.c;
+import com.tencent.mm.plugin.thumbplayer.f.c;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.b;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lcom/tencent/mm/plugin/thumbplayer/reporter/PlayerReporter;", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", "", "Lcom/tencent/mm/plugin/thumbplayer/reporter/PlayerReporter;"}, k=3, mv={1, 5, 1}, xi=48)
 final class ThumbPlayerVideoView$g
-  extends q
-  implements b<c, x>
+  extends u
+  implements b<c, ah>
 {
-  public static final g MVb;
+  public static final g THD;
   
   static
   {
-    AppMethodBeat.i(190608);
-    MVb = new g();
-    AppMethodBeat.o(190608);
+    AppMethodBeat.i(272364);
+    THD = new g();
+    AppMethodBeat.o(272364);
   }
   
   ThumbPlayerVideoView$g()
@@ -28,7 +28,7 @@ final class ThumbPlayerVideoView$g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.thumbplayer.view.ThumbPlayerVideoView.g
  * JD-Core Version:    0.7.0.1
  */

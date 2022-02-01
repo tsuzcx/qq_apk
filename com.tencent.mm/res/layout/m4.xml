@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:paddingTop="@dimen/ig" android:paddingBottom="@dimen/g" android:focusable="false" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:ellipsize="end" android:gravity="center" android:id="@id/ak8" android:layout_width="wrap_content" android:layout_height="55.0dip" android:layout_marginLeft="@dimen/r" android:layout_marginRight="@dimen/r" android:singleLine="true" android:drawableRight="@drawable/c1i" android:drawablePadding="@dimen/g" />
-</LinearLayout>
+    <RelativeLayout android:id="@id/bfs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
+        <ImageView android:id="@id/bfr" android:layout_width="209.0dip" android:layout_height="209.0dip" android:scaleType="fitXY" android:importantForAccessibility="no" />
+        <Button android:textSize="@dimen/j7" android:textColor="@color/al6" android:ellipsize="end" android:gravity="center" android:id="@id/bfq" android:background="@drawable/jg" android:visibility="gone" android:layout_width="141.0dip" android:layout_height="35.0dip" android:text="@string/azl" android:singleLine="true" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <TextView android:textSize="@dimen/p" android:textColor="@color/a7b" android:ellipsize="end" android:gravity="center" android:id="@id/bfz" android:background="@drawable/p9" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/j9" android:maxLines="3" android:layout_below="@id/bfs" android:layout_centerHorizontal="true" />
+    <View android:id="@id/atp" android:background="@drawable/q1" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/r" android:layout_marginTop="@dimen/i6" android:layout_marginRight="@dimen/r" android:layout_below="@id/bfz" android:layerType="software" />
+</RelativeLayout>

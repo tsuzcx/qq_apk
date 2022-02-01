@@ -1,78 +1,157 @@
 package androidx.fragment.app;
 
+import android.os.Parcelable;
 import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import android.view.ViewGroup;
+import androidx.lifecycle.j.b;
+import androidx.viewpager.widget.a;
 
-final class m
-  implements View.OnAttachStateChangeListener, ViewTreeObserver.OnPreDrawListener
+@Deprecated
+public abstract class m
+  extends a
 {
-  private ViewTreeObserver Xj;
-  private final Runnable mRunnable;
-  private final View mView;
+  private final int mBehavior;
+  private r mCurTransaction = null;
+  private Fragment mCurrentPrimaryItem = null;
+  private boolean mExecutingFinishUpdate;
+  private final FragmentManager mFragmentManager;
   
-  private m(View paramView, Runnable paramRunnable)
+  @Deprecated
+  public m(FragmentManager paramFragmentManager)
   {
-    AppMethodBeat.i(213127);
-    this.mView = paramView;
-    this.Xj = paramView.getViewTreeObserver();
-    this.mRunnable = paramRunnable;
-    AppMethodBeat.o(213127);
+    this(paramFragmentManager, (byte)0);
   }
   
-  public static m b(View paramView, Runnable paramRunnable)
+  private m(FragmentManager paramFragmentManager, byte paramByte)
   {
-    AppMethodBeat.i(213130);
-    paramRunnable = new m(paramView, paramRunnable);
-    paramView.getViewTreeObserver().addOnPreDrawListener(paramRunnable);
-    paramView.addOnAttachStateChangeListener(paramRunnable);
-    AppMethodBeat.o(213130);
-    return paramRunnable;
+    this.mFragmentManager = paramFragmentManager;
+    this.mBehavior = 0;
   }
   
-  private void removeListener()
+  private static String c(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(213134);
-    if (this.Xj.isAlive()) {
-      this.Xj.removeOnPreDrawListener(this);
+    return "android:switcher:" + paramInt + ":" + paramLong;
+  }
+  
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  {
+    paramViewGroup = (Fragment)paramObject;
+    if (this.mCurTransaction == null) {
+      this.mCurTransaction = this.mFragmentManager.beginTransaction();
+    }
+    this.mCurTransaction.d(paramViewGroup);
+    if (paramViewGroup.equals(this.mCurrentPrimaryItem)) {
+      this.mCurrentPrimaryItem = null;
+    }
+  }
+  
+  public void finishUpdate(ViewGroup paramViewGroup)
+  {
+    if ((this.mCurTransaction == null) || (!this.mExecutingFinishUpdate)) {}
+    try
+    {
+      this.mExecutingFinishUpdate = true;
+      this.mCurTransaction.FZ();
+      this.mExecutingFinishUpdate = false;
+      this.mCurTransaction = null;
+      return;
+    }
+    finally
+    {
+      this.mExecutingFinishUpdate = false;
+    }
+  }
+  
+  public abstract Fragment getItem(int paramInt);
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (this.mCurTransaction == null) {
+      this.mCurTransaction = this.mFragmentManager.beginTransaction();
+    }
+    long l = paramInt;
+    Object localObject = c(paramViewGroup.getId(), l);
+    localObject = this.mFragmentManager.findFragmentByTag((String)localObject);
+    if (localObject != null) {
+      this.mCurTransaction.r((Fragment)localObject);
+    }
+    for (paramViewGroup = (ViewGroup)localObject;; paramViewGroup = (ViewGroup)localObject)
+    {
+      if (paramViewGroup != this.mCurrentPrimaryItem)
+      {
+        paramViewGroup.setMenuVisibility(false);
+        if (this.mBehavior != 1) {
+          break;
+        }
+        this.mCurTransaction.a(paramViewGroup, j.b.bHj);
+      }
+      return paramViewGroup;
+      localObject = getItem(paramInt);
+      this.mCurTransaction.a(paramViewGroup.getId(), (Fragment)localObject, c(paramViewGroup.getId(), l));
+    }
+    paramViewGroup.setUserVisibleHint(false);
+    return paramViewGroup;
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return ((Fragment)paramObject).getView() == paramView;
+  }
+  
+  public void restoreState(Parcelable paramParcelable, ClassLoader paramClassLoader) {}
+  
+  public Parcelable saveState()
+  {
+    return null;
+  }
+  
+  public void setPrimaryItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  {
+    paramViewGroup = (Fragment)paramObject;
+    if (paramViewGroup != this.mCurrentPrimaryItem)
+    {
+      if (this.mCurrentPrimaryItem != null)
+      {
+        this.mCurrentPrimaryItem.setMenuVisibility(false);
+        if (this.mBehavior != 1) {
+          break label118;
+        }
+        if (this.mCurTransaction == null) {
+          this.mCurTransaction = this.mFragmentManager.beginTransaction();
+        }
+        this.mCurTransaction.a(this.mCurrentPrimaryItem, j.b.bHj);
+      }
+      paramViewGroup.setMenuVisibility(true);
+      if (this.mBehavior != 1) {
+        break label129;
+      }
+      if (this.mCurTransaction == null) {
+        this.mCurTransaction = this.mFragmentManager.beginTransaction();
+      }
+      this.mCurTransaction.a(paramViewGroup, j.b.bHk);
     }
     for (;;)
     {
-      this.mView.removeOnAttachStateChangeListener(this);
-      AppMethodBeat.o(213134);
+      this.mCurrentPrimaryItem = paramViewGroup;
       return;
-      this.mView.getViewTreeObserver().removeOnPreDrawListener(this);
+      label118:
+      this.mCurrentPrimaryItem.setUserVisibleHint(false);
+      break;
+      label129:
+      paramViewGroup.setUserVisibleHint(true);
     }
   }
   
-  public final boolean onPreDraw()
+  public void startUpdate(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(213132);
-    removeListener();
-    this.mRunnable.run();
-    AppMethodBeat.o(213132);
-    return true;
-  }
-  
-  public final void onViewAttachedToWindow(View paramView)
-  {
-    AppMethodBeat.i(213135);
-    this.Xj = paramView.getViewTreeObserver();
-    AppMethodBeat.o(213135);
-  }
-  
-  public final void onViewDetachedFromWindow(View paramView)
-  {
-    AppMethodBeat.i(213137);
-    removeListener();
-    AppMethodBeat.o(213137);
+    if (paramViewGroup.getId() == -1) {
+      throw new IllegalStateException("ViewPager with adapter " + this + " requires a view id");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.fragment.app.m
  * JD-Core Version:    0.7.0.1
  */

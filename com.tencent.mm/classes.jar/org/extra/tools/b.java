@@ -16,17 +16,17 @@ public class b
   
   static
   {
-    AppMethodBeat.i(194794);
+    AppMethodBeat.i(187358);
     TAG = b.class.getSimpleName();
-    AppMethodBeat.o(194794);
+    AppMethodBeat.o(187358);
   }
   
-  private static boolean ds(Context paramContext, String paramString)
+  private static boolean dB(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(194790);
+    AppMethodBeat.i(187343);
     if ((paramContext == null) || (TextUtils.isEmpty(paramString)))
     {
-      AppMethodBeat.o(194790);
+      AppMethodBeat.o(187343);
       return false;
     }
     boolean bool = true;
@@ -34,10 +34,10 @@ public class b
     {
       paramContext = paramContext.getApplicationInfo().dataDir + "/lib";
       System.load(paramContext + File.separator + "lib" + paramString + ".so");
-      AppMethodBeat.o(194790);
+      AppMethodBeat.o(187343);
       return bool;
     }
-    catch (Throwable paramContext)
+    finally
     {
       for (;;)
       {
@@ -47,23 +47,22 @@ public class b
     }
   }
   
-  private static boolean dt(Context paramContext, String paramString)
+  private static boolean dC(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(194792);
+    AppMethodBeat.i(187350);
     if ((paramContext == null) || (TextUtils.isEmpty(paramString)))
     {
-      AppMethodBeat.o(194792);
+      AppMethodBeat.o(187350);
       return false;
     }
     try
     {
       c.loadLibrary(paramContext, paramString);
-      AppMethodBeat.o(194792);
       return true;
     }
-    catch (Throwable paramContext)
+    finally
     {
-      AppMethodBeat.o(194792);
+      AppMethodBeat.o(187350);
     }
     return false;
   }
@@ -75,41 +74,45 @@ public class b
   
   private static boolean load(String paramString)
   {
-    AppMethodBeat.i(194787);
+    AppMethodBeat.i(187326);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(194787);
+      AppMethodBeat.o(187326);
       return false;
     }
-    boolean bool = true;
     try
     {
-      System.loadLibrary(paramString);
-      AppMethodBeat.o(194787);
-      return bool;
+      com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG(paramString);
+      Object localObject2 = new Object();
+      com.tencent.mm.hellhoundlib.a.a.b(localObject2, locala.aYi(), "org/extra/tools/LibraryLoadUtils", "load", "(Ljava/lang/String;)Z", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+      System.loadLibrary((String)locala.sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(localObject2, "org/extra/tools/LibraryLoadUtils", "load", "(Ljava/lang/String;)Z", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+      bool = true;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
-        new StringBuilder("loadLibrary ").append(paramString).append(" fail! Error: ").append(localThrowable.getMessage());
-        bool = false;
+        new StringBuilder("loadLibrary ").append(paramString).append(" fail! Error: ").append(localObject1.getMessage());
+        boolean bool = false;
       }
     }
+    AppMethodBeat.o(187326);
+    return bool;
   }
   
   public static void loadLibrary(String paramString)
   {
-    AppMethodBeat.i(194784);
+    AppMethodBeat.i(187309);
     try
     {
       appContext = ((Application)Class.forName("android.app.ActivityThread").getMethod("currentApplication", new Class[0]).invoke(null, null)).getApplicationContext();
       label33:
       Context localContext = appContext;
-      if ((!load(paramString)) && (!ds(localContext, paramString))) {
-        dt(localContext, paramString);
+      if ((!load(paramString)) && (!dB(localContext, paramString))) {
+        dC(localContext, paramString);
       }
-      AppMethodBeat.o(194784);
+      AppMethodBeat.o(187309);
       return;
     }
     catch (Exception localException)
@@ -120,7 +123,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     org.extra.tools.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,52 +1,51 @@
 package com.tencent.mm.plugin.aa.model.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
 import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
 import com.tencent.mm.protocal.protobuf.r;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.model.w;
 
 public final class j
-  extends q
-  implements m, com.tencent.mm.wallet_core.c.j
+  extends w
+  implements com.tencent.mm.wallet_core.model.j
 {
-  private i callback;
-  private d kwO;
-  private r mKA;
-  public com.tencent.mm.protocal.protobuf.s mKB;
+  private h callback;
+  private c nao;
+  private r pHi;
+  public com.tencent.mm.protocal.protobuf.s pHj;
   
   public j(String paramString1, long paramLong, int paramInt, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(269096);
-    d.a locala = new d.a();
-    locala.lBU = new r();
-    locala.lBV = new com.tencent.mm.protocal.protobuf.s();
+    AppMethodBeat.i(268405);
+    c.a locala = new c.a();
+    locala.otE = new r();
+    locala.otF = new com.tencent.mm.protocal.protobuf.s();
     locala.funcId = 1629;
     locala.uri = "/cgi-bin/mmpay-bin/newaapay";
-    locala.lBW = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.kwO = locala.bgN();
-    this.mKA = ((r)d.b.b(this.kwO.lBR));
-    this.mKA.RDi = paramString1;
-    this.mKA.RDB = paramLong;
-    this.mKA.scene = paramInt;
-    this.mKA.RDj = paramString2;
-    this.mKA.RDC = paramString3;
-    Log.i("MicroMsg.NetSceneAAPay", "NetSceneAAPay, bill_no: %s, pay_amount: %s, scene: %s, groupid: %s", new Object[] { this.mKA.RDi, Long.valueOf(this.mKA.RDB), Integer.valueOf(this.mKA.scene), this.mKA.RDj });
-    AppMethodBeat.o(269096);
+    this.nao = locala.bEF();
+    this.pHi = ((r)c.b.b(this.nao.otB));
+    this.pHi.YzL = paramString1;
+    this.pHi.YAe = paramLong;
+    this.pHi.scene = paramInt;
+    this.pHi.YzM = paramString2;
+    this.pHi.YAf = paramString3;
+    Log.i("MicroMsg.NetSceneAAPay", "NetSceneAAPay, bill_no: %s, pay_amount: %s, scene: %s, groupid: %s", new Object[] { this.pHi.YzL, Long.valueOf(this.pHi.YAe), Integer.valueOf(this.pHi.scene), this.pHi.YzM });
+    AppMethodBeat.o(268405);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(63389);
-    this.callback = parami;
-    int i = dispatch(paramg, this.kwO, this);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.nao, this);
     AppMethodBeat.o(63389);
     return i;
   }
@@ -56,16 +55,16 @@ public final class j
     return 1629;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte, long paramLong)
   {
-    AppMethodBeat.i(63390);
+    AppMethodBeat.i(268414);
     Log.i("MicroMsg.NetSceneAAPay", "onGYNetEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.mKB = ((com.tencent.mm.protocal.protobuf.s)d.c.b(((d)params).lBS));
-    Log.i("MicroMsg.NetSceneAAPay", "retcode: %s, retmsg: %s, paymsgid:%s", new Object[] { Integer.valueOf(this.mKB.fwx), this.mKB.tVo, this.mKB.fQR });
+    this.pHj = ((com.tencent.mm.protocal.protobuf.s)c.c.b(((c)params).otC));
+    Log.i("MicroMsg.NetSceneAAPay", "retcode: %s, retmsg: %s, paymsgid:%s", new Object[] { Integer.valueOf(this.pHj.hAV), this.pHj.wYI, this.pHj.hWO });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(63390);
+    AppMethodBeat.o(268414);
   }
 }
 

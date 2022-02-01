@@ -12,19 +12,19 @@ public class Addr
 {
   public static final Parcelable.Creator<Addr> CREATOR;
   public String country;
-  public String lLg;
-  public String lLh;
-  public String lLi;
-  public String lLj;
-  public String lLk;
-  public String lLl;
-  public String lLm;
-  public String lLn;
-  public String lLo;
-  public String lLp;
-  public String lLq;
-  public float lLr;
-  public float lLs;
+  public String oDI;
+  public String oDJ;
+  public String oDK;
+  public String oDL;
+  public String oDM;
+  public String oDN;
+  public String oDO;
+  public String oDP;
+  public String oDQ;
+  public String oDR;
+  public String oDS;
+  public float oDT;
+  public float oDU;
   public String request_id;
   public Object tag = "";
   
@@ -35,22 +35,22 @@ public class Addr
     AppMethodBeat.o(150459);
   }
   
-  public final String blm()
+  public final String bJg()
   {
     AppMethodBeat.i(150457);
     Object localObject = new StringBuilder();
-    if (!Util.isNullOrNil(this.lLi)) {
-      ((StringBuilder)localObject).append(this.lLi);
+    if (!Util.isNullOrNil(this.oDK)) {
+      ((StringBuilder)localObject).append(this.oDK);
     }
     for (;;)
     {
-      ((StringBuilder)localObject).append(Util.nullAs(this.lLk, "")).append(Util.nullAs(this.lLl, "")).append(Util.nullAs(this.lLm, "")).append(Util.nullAs(this.lLn, ""));
+      ((StringBuilder)localObject).append(Util.nullAs(this.oDM, "")).append(Util.nullAs(this.oDN, "")).append(Util.nullAs(this.oDO, "")).append(Util.nullAs(this.oDP, ""));
       Log.d("MicroMsg.Addr", "little addr res: [%s].", new Object[] { localObject });
       localObject = ((StringBuilder)localObject).toString();
       AppMethodBeat.o(150457);
       return localObject;
-      if (!Util.isNullOrNil(this.lLj)) {
-        ((StringBuilder)localObject).append(this.lLj);
+      if (!Util.isNullOrNil(this.oDL)) {
+        ((StringBuilder)localObject).append(this.oDL);
       } else {
         Log.e("MicroMsg.Addr", "wtf!!! locality & locality_shi all invalid!!!");
       }
@@ -66,20 +66,20 @@ public class Addr
   {
     AppMethodBeat.i(150456);
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("address='" + this.lLg + '\'');
+    ((StringBuilder)localObject).append("address='" + this.oDI + '\'');
     ((StringBuilder)localObject).append(", country='" + this.country + '\'');
-    ((StringBuilder)localObject).append(", administrative_area_level_1='" + this.lLh + '\'');
-    ((StringBuilder)localObject).append(", locality='" + this.lLi + '\'');
-    ((StringBuilder)localObject).append(", locality_shi='" + this.lLj + '\'');
-    ((StringBuilder)localObject).append(", sublocality='" + this.lLk + '\'');
-    ((StringBuilder)localObject).append(", neighborhood='" + this.lLl + '\'');
-    ((StringBuilder)localObject).append(", route='" + this.lLm + '\'');
-    ((StringBuilder)localObject).append(", streetNum='" + this.lLn + '\'');
-    ((StringBuilder)localObject).append(", town='" + this.lLo + '\'');
-    ((StringBuilder)localObject).append(", roughAddr='" + this.lLp + '\'');
-    ((StringBuilder)localObject).append(", poi_name='" + this.lLq + '\'');
-    ((StringBuilder)localObject).append(", lat=" + this.lLr);
-    ((StringBuilder)localObject).append(", lng=" + this.lLs);
+    ((StringBuilder)localObject).append(", administrative_area_level_1='" + this.oDJ + '\'');
+    ((StringBuilder)localObject).append(", locality='" + this.oDK + '\'');
+    ((StringBuilder)localObject).append(", locality_shi='" + this.oDL + '\'');
+    ((StringBuilder)localObject).append(", sublocality='" + this.oDM + '\'');
+    ((StringBuilder)localObject).append(", neighborhood='" + this.oDN + '\'');
+    ((StringBuilder)localObject).append(", route='" + this.oDO + '\'');
+    ((StringBuilder)localObject).append(", streetNum='" + this.oDP + '\'');
+    ((StringBuilder)localObject).append(", town='" + this.oDQ + '\'');
+    ((StringBuilder)localObject).append(", roughAddr='" + this.oDR + '\'');
+    ((StringBuilder)localObject).append(", poi_name='" + this.oDS + '\'');
+    ((StringBuilder)localObject).append(", lat=" + this.oDT);
+    ((StringBuilder)localObject).append(", lng=" + this.oDU);
     ((StringBuilder)localObject).append(", tag=" + this.tag);
     localObject = ((StringBuilder)localObject).toString();
     AppMethodBeat.o(150456);
@@ -89,26 +89,26 @@ public class Addr
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(150458);
-    paramParcel.writeString(Util.nullAs(this.lLg, ""));
+    paramParcel.writeString(Util.nullAs(this.oDI, ""));
     paramParcel.writeString(Util.nullAs(this.country, ""));
-    paramParcel.writeString(Util.nullAs(this.lLh, ""));
-    paramParcel.writeString(Util.nullAs(this.lLi, ""));
-    paramParcel.writeString(Util.nullAs(this.lLj, ""));
-    paramParcel.writeString(Util.nullAs(this.lLk, ""));
-    paramParcel.writeString(Util.nullAs(this.lLl, ""));
-    paramParcel.writeString(Util.nullAs(this.lLm, ""));
-    paramParcel.writeString(Util.nullAs(this.lLn, ""));
-    paramParcel.writeString(Util.nullAs(this.lLo, ""));
-    paramParcel.writeString(Util.nullAs(this.lLp, ""));
-    paramParcel.writeString(Util.nullAs(this.lLq, ""));
-    paramParcel.writeFloat(this.lLr);
-    paramParcel.writeFloat(this.lLs);
+    paramParcel.writeString(Util.nullAs(this.oDJ, ""));
+    paramParcel.writeString(Util.nullAs(this.oDK, ""));
+    paramParcel.writeString(Util.nullAs(this.oDL, ""));
+    paramParcel.writeString(Util.nullAs(this.oDM, ""));
+    paramParcel.writeString(Util.nullAs(this.oDN, ""));
+    paramParcel.writeString(Util.nullAs(this.oDO, ""));
+    paramParcel.writeString(Util.nullAs(this.oDP, ""));
+    paramParcel.writeString(Util.nullAs(this.oDQ, ""));
+    paramParcel.writeString(Util.nullAs(this.oDR, ""));
+    paramParcel.writeString(Util.nullAs(this.oDS, ""));
+    paramParcel.writeFloat(this.oDT);
+    paramParcel.writeFloat(this.oDU);
     AppMethodBeat.o(150458);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.modelgeo.Addr
  * JD-Core Version:    0.7.0.1
  */

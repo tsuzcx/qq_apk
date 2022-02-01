@@ -5,7 +5,6 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@VisibleForTesting
 public class UnicodeUtils
 {
   private static final Pattern zzaal;
@@ -48,7 +47,7 @@ public class UnicodeUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.gms.common.util.UnicodeUtils
  * JD-Core Version:    0.7.0.1
  */

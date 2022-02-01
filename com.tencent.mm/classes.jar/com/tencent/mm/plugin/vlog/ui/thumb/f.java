@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.vlog.ui.thumb;
 
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
 import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
@@ -14,74 +14,74 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter$BaseViewHolder;", "()V", "TAG", "", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "contentEndPos", "", "contentStartPos", "inTimeCropMode", "", "getInTimeCropMode", "()Z", "setInTimeCropMode", "(Z)V", "itemClickListener", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "position", "Lcom/tencent/mm/plugin/vlog/ui/thumb/BaseTrackThumbInfo;", "trackThumbInfo", "", "getItemClickListener", "()Lkotlin/jvm/functions/Function2;", "setItemClickListener", "(Lkotlin/jvm/functions/Function2;)V", "selectedIndex", "thumbFetcherFactory", "Lcom/tencent/mm/plugin/vlog/ui/thumb/ThumbFetcherFactory;", "getThumbFetcherFactory", "()Lcom/tencent/mm/plugin/vlog/ui/thumb/ThumbFetcherFactory;", "setThumbFetcherFactory", "(Lcom/tencent/mm/plugin/vlog/ui/thumb/ThumbFetcherFactory;)V", "trackList", "Ljava/util/LinkedList;", "clearFocus", "getItem", "getItemCount", "getItemViewType", "onBindViewHolder", "viewHolder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "onViewRecycled", "holder", "setSelection", "trackIndex", "update", "tracks", "", "BaseViewHolder", "EmptyViewHolder", "FrameViewHolder", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter$BaseViewHolder;", "()V", "TAG", "", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "contentEndPos", "", "contentStartPos", "inTimeCropMode", "", "getInTimeCropMode", "()Z", "setInTimeCropMode", "(Z)V", "itemClickListener", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "position", "Lcom/tencent/mm/plugin/vlog/ui/thumb/BaseTrackThumbInfo;", "trackThumbInfo", "", "getItemClickListener", "()Lkotlin/jvm/functions/Function2;", "setItemClickListener", "(Lkotlin/jvm/functions/Function2;)V", "selectedIndex", "thumbFetcherFactory", "Lcom/tencent/mm/plugin/vlog/ui/thumb/ThumbFetcherFactory;", "getThumbFetcherFactory", "()Lcom/tencent/mm/plugin/vlog/ui/thumb/ThumbFetcherFactory;", "setThumbFetcherFactory", "(Lcom/tencent/mm/plugin/vlog/ui/thumb/ThumbFetcherFactory;)V", "trackList", "Ljava/util/LinkedList;", "clearFocus", "getItem", "getItemCount", "getItemViewType", "onBindViewHolder", "viewHolder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "onViewRecycled", "holder", "setSelection", "trackIndex", "update", "tracks", "", "BaseViewHolder", "EmptyViewHolder", "FrameViewHolder", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
   extends RecyclerView.a<a>
 {
-  private final LinkedList<a> Ggf;
-  public g GhV;
-  public boolean NCV;
-  private int NCs;
-  private int NCt;
+  private final LinkedList<a> Mbq;
+  public g Mdf;
   private final String TAG;
-  private int bhr;
-  public m<? super Integer, ? super a, x> uYj;
+  private int UoY;
+  private int UoZ;
+  public boolean UpA;
+  private int dbk;
+  public m<? super Integer, ? super a, ah> ykx;
   
   public f()
   {
-    AppMethodBeat.i(234968);
+    AppMethodBeat.i(281614);
     this.TAG = "MicroMsg.FrameListAdapter";
-    this.Ggf = new LinkedList();
-    this.NCs = -1;
-    this.NCt = -1;
-    this.bhr = -1;
-    AppMethodBeat.o(234968);
+    this.Mbq = new LinkedList();
+    this.UoY = -1;
+    this.UoZ = -1;
+    this.dbk = -1;
+    AppMethodBeat.o(281614);
   }
   
-  public final a akt(int paramInt)
+  public final a apO(int paramInt)
   {
-    AppMethodBeat.i(234959);
-    Object localObject = this.Ggf.get(paramInt);
-    p.j(localObject, "trackList[position]");
+    AppMethodBeat.i(281657);
+    Object localObject = this.Mbq.get(paramInt);
+    s.s(localObject, "trackList[position]");
     localObject = (a)localObject;
-    AppMethodBeat.o(234959);
+    AppMethodBeat.o(281657);
     return localObject;
   }
   
   public final int getItemCount()
   {
-    AppMethodBeat.i(234962);
-    int i = this.Ggf.size();
-    AppMethodBeat.o(234962);
+    AppMethodBeat.i(281664);
+    int i = this.Mbq.size();
+    AppMethodBeat.o(281664);
     return i;
   }
   
   public final int getItemViewType(int paramInt)
   {
-    AppMethodBeat.i(234964);
-    if (((a)this.Ggf.get(paramInt)).isEmpty())
+    AppMethodBeat.i(281670);
+    if (((a)this.Mbq.get(paramInt)).isEmpty())
     {
-      AppMethodBeat.o(234964);
+      AppMethodBeat.o(281670);
       return 1;
     }
     paramInt = super.getItemViewType(paramInt);
-    AppMethodBeat.o(234964);
+    AppMethodBeat.o(281670);
     return paramInt;
   }
   
-  public final void gg(List<? extends a> paramList)
+  public final void hM(List<? extends a> paramList)
   {
     int j = -1;
-    AppMethodBeat.i(234956);
-    p.k(paramList, "tracks");
-    this.Ggf.clear();
-    this.Ggf.addAll((Collection)paramList);
-    paramList = (List)this.Ggf;
+    AppMethodBeat.i(281643);
+    s.u(paramList, "tracks");
+    this.Mbq.clear();
+    this.Mbq.addAll((Collection)paramList);
+    paramList = (List)this.Mbq;
     int i = 0;
     paramList = paramList.iterator();
     if (paramList.hasNext()) {
@@ -89,8 +89,8 @@ public final class f
     }
     for (;;)
     {
-      this.NCs = (i + 1);
-      paramList = (List)this.Ggf;
+      this.UoY = (i + 1);
+      paramList = (List)this.Mbq;
       paramList = paramList.listIterator(paramList.size());
       do
       {
@@ -100,8 +100,8 @@ public final class f
         }
       } while (!((a)paramList.previous()).isEmpty());
       i = paramList.nextIndex();
-      this.NCt = (i - 1);
-      AppMethodBeat.o(234956);
+      this.UoZ = (i - 1);
+      AppMethodBeat.o(281643);
       return;
       i += 1;
       break;
@@ -111,53 +111,53 @@ public final class f
   
   public final void setSelection(int paramInt)
   {
-    AppMethodBeat.i(234958);
+    AppMethodBeat.i(281649);
     Iterator localIterator;
     int i;
-    if (paramInt != this.bhr)
+    if (paramInt != this.dbk)
     {
-      localIterator = ((List)this.Ggf).iterator();
+      localIterator = ((List)this.Mbq).iterator();
       if (localIterator.hasNext())
       {
-        if (((a)localIterator.next()).trackIndex != this.bhr) {
-          break label119;
+        if (((a)localIterator.next()).trackIndex != this.dbk) {
+          break label124;
         }
         i = 1;
-        label56:
+        label57:
         if (i == 0) {
-          break label122;
+          break label127;
         }
       }
-      localIterator = ((List)this.Ggf).iterator();
+      localIterator = ((List)this.Mbq).iterator();
     }
-    label119:
-    label122:
-    label124:
-    label127:
+    label129:
+    label132:
     for (;;)
     {
       if (localIterator.hasNext()) {
         if (((a)localIterator.next()).trackIndex != paramInt) {
-          break label124;
+          break label129;
         }
       }
       for (i = 1;; i = 0)
       {
         if (i == 0) {
-          break label127;
+          break label132;
         }
-        this.bhr = paramInt;
-        notifyDataSetChanged();
-        AppMethodBeat.o(234958);
+        this.dbk = paramInt;
+        this.bZE.notifyChanged();
+        AppMethodBeat.o(281649);
         return;
+        label124:
         i = 0;
-        break label56;
+        break label57;
+        label127:
         break;
       }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter$BaseViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter;Landroid/view/View;)V", "onBind", "", "trackInfo", "Lcom/tencent/mm/plugin/vlog/ui/thumb/BaseTrackThumbInfo;", "onUnbind", "plugin-vlog_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter$BaseViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter;Landroid/view/View;)V", "onBind", "", "trackInfo", "Lcom/tencent/mm/plugin/vlog/ui/thumb/BaseTrackThumbInfo;", "onUnbind", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
   public abstract class a
     extends RecyclerView.v
   {
@@ -166,180 +166,162 @@ public final class f
       super();
     }
     
-    public void aCO() {}
+    public void aVM() {}
     
-    public abstract void b(a parama);
+    public abstract void c(a parama);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter$EmptyViewHolder;", "Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter$BaseViewHolder;", "Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter;Landroid/view/View;)V", "onBind", "", "trackInfo", "Lcom/tencent/mm/plugin/vlog/ui/thumb/BaseTrackThumbInfo;", "plugin-vlog_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter$EmptyViewHolder;", "Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter$BaseViewHolder;", "Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter;Landroid/view/View;)V", "onBind", "", "trackInfo", "Lcom/tencent/mm/plugin/vlog/ui/thumb/BaseTrackThumbInfo;", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
   public final class b
     extends f.a
   {
     public b()
     {
       super(localObject);
-      AppMethodBeat.i(246475);
+      AppMethodBeat.i(281697);
       localObject.setOnClickListener(null);
-      AppMethodBeat.o(246475);
+      AppMethodBeat.o(281697);
     }
     
-    public final void b(a parama)
+    public final void c(a parama)
     {
-      AppMethodBeat.i(246474);
-      p.k(parama, "trackInfo");
-      Object localObject = this.amk;
-      p.j(localObject, "itemView");
-      localObject = ((View)localObject).getLayoutParams();
-      if (localObject == null)
+      AppMethodBeat.i(281704);
+      s.u(parama, "trackInfo");
+      ViewGroup.LayoutParams localLayoutParams = this.caK.getLayoutParams();
+      if (localLayoutParams == null)
       {
-        parama = new ViewGroup.LayoutParams(parama.ksu, -1);
-        localObject = this.amk;
-        p.j(localObject, "itemView");
-        ((View)localObject).setLayoutParams(parama);
-        AppMethodBeat.o(246474);
+        parama = new ViewGroup.LayoutParams(parama.mWn, -1);
+        this.caK.setLayoutParams(parama);
+        AppMethodBeat.o(281704);
         return;
       }
-      if (((ViewGroup.LayoutParams)localObject).width != parama.ksu)
+      if (localLayoutParams.width != parama.mWn)
       {
-        ((ViewGroup.LayoutParams)localObject).width = parama.ksu;
-        parama = this.amk;
-        p.j(parama, "itemView");
-        parama.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        localLayoutParams.width = parama.mWn;
+        this.caK.setLayoutParams(localLayoutParams);
       }
-      AppMethodBeat.o(246474);
+      AppMethodBeat.o(281704);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter$FrameViewHolder;", "Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter$BaseViewHolder;", "Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter;Landroid/view/View;)V", "frameList", "Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListView;", "getFrameList", "()Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListView;", "onBind", "", "trackInfo", "Lcom/tencent/mm/plugin/vlog/ui/thumb/BaseTrackThumbInfo;", "onUnbind", "plugin-vlog_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter$FrameViewHolder;", "Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter$BaseViewHolder;", "Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter;Landroid/view/View;)V", "frameList", "Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListView;", "getFrameList", "()Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListView;", "onBind", "", "trackInfo", "Lcom/tencent/mm/plugin/vlog/ui/thumb/BaseTrackThumbInfo;", "onUnbind", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
   public final class c
     extends f.a
   {
-    private final FrameListView GlO;
+    private final FrameListView Mgn;
     
     public c()
     {
       super(localObject);
-      AppMethodBeat.i(227907);
+      AppMethodBeat.i(281699);
       this$1 = localObject.findViewById(a.f.frame_list);
-      p.j(f.this, "itemView.findViewById(R.id.frame_list)");
-      this.GlO = ((FrameListView)f.this);
-      AppMethodBeat.o(227907);
+      s.s(f.this, "itemView.findViewById(R.id.frame_list)");
+      this.Mgn = ((FrameListView)f.this);
+      AppMethodBeat.o(281699);
     }
     
-    public final void aCO()
+    private static final void a(f paramf, c paramc, View paramView)
     {
-      AppMethodBeat.i(227904);
-      this.GlO.release();
-      AppMethodBeat.o(227904);
+      AppMethodBeat.i(281706);
+      Object localObject = new Object();
+      b localb = new b();
+      localb.cH(paramf);
+      localb.cH(paramc);
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter$FrameViewHolder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+      s.u(paramf, "this$0");
+      s.u(paramc, "this$1");
+      paramView = paramf.ykx;
+      if (paramView != null)
+      {
+        int i = paramc.KJ();
+        paramf = f.d(paramf).get(paramc.KJ());
+        s.s(paramf, "trackList[adapterPosition]");
+        paramView.invoke(Integer.valueOf(i), paramf);
+      }
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter$FrameViewHolder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(281706);
     }
     
-    public final void b(a parama)
+    public final void aVM()
+    {
+      AppMethodBeat.i(281728);
+      this.Mgn.release();
+      AppMethodBeat.o(281728);
+    }
+    
+    public final void c(a parama)
     {
       boolean bool2 = true;
-      AppMethodBeat.i(227902);
-      p.k(parama, "trackInfo");
+      AppMethodBeat.i(281723);
+      s.u(parama, "trackInfo");
       boolean bool1;
       label55:
       Object localObject;
-      if (f.this.NCV) {
-        if (md() != f.a(f.this))
+      if (f.this.UpA) {
+        if (KJ() != f.a(f.this))
         {
           bool1 = true;
-          if (md() == f.b(f.this)) {
-            break label234;
+          if (KJ() == f.b(f.this)) {
+            break label194;
           }
           bool2 = true;
-          this.GlO.aO(true, true);
-          this.GlO.aP(bool1, bool2);
-          localObject = f.this.GhV;
+          this.Mgn.bl(true, true);
+          this.Mgn.bm(bool1, bool2);
+          localObject = f.this.Mdf;
           if (localObject != null) {
-            this.GlO.setThumbFetcherFactory((g)localObject);
+            this.Mgn.setThumbFetcherFactory((g)localObject);
           }
-          this.GlO.setTrackInfo(parama);
-          localObject = this.amk;
-          p.j(localObject, "itemView");
-          ((View)localObject).setBackground(null);
-          localObject = this.amk;
-          p.j(localObject, "itemView");
-          ((View)localObject).setVisibility(0);
+          this.Mgn.setTrackInfo(parama);
+          this.caK.setBackground(null);
+          this.caK.setVisibility(0);
           if (f.c(f.this) >= 0)
           {
             if (parama.trackIndex != f.c(f.this)) {
-              break label304;
+              break label264;
             }
-            parama = this.amk;
-            p.j(parama, "itemView");
-            localObject = this.amk;
-            p.j(localObject, "itemView");
-            parama.setBackground(com.tencent.mm.ci.a.m(((View)localObject).getContext(), a.e.vlog_single_track_selected));
+            this.caK.setBackground(com.tencent.mm.cd.a.m(this.caK.getContext(), a.e.vlog_single_track_selected));
           }
         }
       }
       for (;;)
       {
-        this.amk.setOnClickListener((View.OnClickListener)new a(this));
-        AppMethodBeat.o(227902);
+        this.caK.setOnClickListener(new f.c..ExternalSyntheticLambda0(f.this, this));
+        AppMethodBeat.o(281723);
         return;
         bool1 = false;
         break;
-        label234:
+        label194:
         bool2 = false;
         break label55;
-        localObject = this.GlO;
-        if (md() == f.a(f.this))
+        localObject = this.Mgn;
+        if (KJ() == f.a(f.this))
         {
           bool1 = true;
-          label261:
-          if (md() != f.b(f.this)) {
-            break label299;
+          label221:
+          if (KJ() != f.b(f.this)) {
+            break label259;
           }
         }
         for (;;)
         {
-          ((FrameListView)localObject).aO(bool1, bool2);
-          this.GlO.aP(false, false);
+          ((FrameListView)localObject).bl(bool1, bool2);
+          this.Mgn.bm(false, false);
           break;
           bool1 = false;
-          break label261;
-          label299:
+          break label221;
+          label259:
           bool2 = false;
         }
-        label304:
-        parama = this.amk;
-        p.j(parama, "itemView");
-        parama.setVisibility(4);
-      }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-    static final class a
-      implements View.OnClickListener
-    {
-      a(f.c paramc) {}
-      
-      public final void onClick(View paramView)
-      {
-        AppMethodBeat.i(238194);
-        Object localObject = new b();
-        ((b)localObject).bn(paramView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter$FrameViewHolder$onBind$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
-        paramView = this.NCX.NCW.uYj;
-        if (paramView != null)
-        {
-          int i = this.NCX.md();
-          localObject = f.d(this.NCX.NCW).get(this.NCX.md());
-          p.j(localObject, "trackList[adapterPosition]");
-          paramView.invoke(Integer.valueOf(i), localObject);
-        }
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter$FrameViewHolder$onBind$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(238194);
+        label264:
+        this.caK.setVisibility(4);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.thumb.f
  * JD-Core Version:    0.7.0.1
  */

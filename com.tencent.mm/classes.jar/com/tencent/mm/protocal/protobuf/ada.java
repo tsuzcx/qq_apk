@@ -1,111 +1,69 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class ada
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public long SoR;
-  public ahm SoS;
-  public ahp SoT;
+  public String YIf;
+  public int ZlC;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(90958);
+    AppMethodBeat.i(124477);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bm(1, this.SoR);
-      if (this.SoS != null)
-      {
-        paramVarArgs.oE(2, this.SoS.computeSize());
-        this.SoS.writeFields(paramVarArgs);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.YIf != null) {
+        paramVarArgs.g(1, this.YIf);
       }
-      if (this.SoT != null)
-      {
-        paramVarArgs.oE(3, this.SoT.computeSize());
-        this.SoT.writeFields(paramVarArgs);
-      }
-      AppMethodBeat.o(90958);
+      paramVarArgs.bS(2, this.ZlC);
+      AppMethodBeat.o(124477);
       return 0;
     }
-    int i;
-    if (paramInt == 1)
-    {
-      i = g.a.a.b.b.a.p(1, this.SoR) + 0;
-      paramInt = i;
-      if (this.SoS != null) {
-        paramInt = i + g.a.a.a.oD(2, this.SoS.computeSize());
+    if (paramInt == 1) {
+      if (this.YIf == null) {
+        break label254;
       }
-      i = paramInt;
-      if (this.SoT != null) {
-        i = paramInt + g.a.a.a.oD(3, this.SoT.computeSize());
-      }
-      AppMethodBeat.o(90958);
-      return i;
     }
-    if (paramInt == 2)
+    label254:
+    for (paramInt = i.a.a.b.b.a.h(1, this.YIf) + 0;; paramInt = 0)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
-      }
-      AppMethodBeat.o(90958);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
-      ada localada = (ada)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      Object localObject2;
-      switch (paramInt)
+      int i = i.a.a.b.b.a.cJ(2, this.ZlC);
+      AppMethodBeat.o(124477);
+      return paramInt + i;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(90958);
-        return -1;
-      case 1: 
-        localada.SoR = ((g.a.a.a.a)localObject1).abFh.AN();
-        AppMethodBeat.o(90958);
-        return 0;
-      case 2: 
-        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject1 = (byte[])paramVarArgs.get(paramInt);
-          localObject2 = new ahm();
-          if ((localObject1 != null) && (localObject1.length > 0)) {
-            ((ahm)localObject2).parseFrom((byte[])localObject1);
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
           }
-          localada.SoS = ((ahm)localObject2);
-          paramInt += 1;
         }
-        AppMethodBeat.o(90958);
+        AppMethodBeat.o(124477);
         return 0;
       }
-      paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-      i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
+      if (paramInt == 3)
       {
-        localObject1 = (byte[])paramVarArgs.get(paramInt);
-        localObject2 = new ahp();
-        if ((localObject1 != null) && (localObject1.length > 0)) {
-          ((ahp)localObject2).parseFrom((byte[])localObject1);
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+        ada localada = (ada)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(124477);
+          return -1;
+        case 1: 
+          localada.YIf = locala.ajGk.readString();
+          AppMethodBeat.o(124477);
+          return 0;
         }
-        localada.SoT = ((ahp)localObject2);
-        paramInt += 1;
+        localada.ZlC = locala.ajGk.aar();
+        AppMethodBeat.o(124477);
+        return 0;
       }
-      AppMethodBeat.o(90958);
-      return 0;
+      AppMethodBeat.o(124477);
+      return -1;
     }
-    AppMethodBeat.o(90958);
-    return -1;
   }
 }
 

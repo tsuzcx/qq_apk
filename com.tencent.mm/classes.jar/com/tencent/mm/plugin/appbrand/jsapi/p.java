@@ -1,76 +1,221 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.luggage.k.f;
-import com.tencent.luggage.k.f.c;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.page.ad;
-import com.tencent.mm.plugin.appbrand.v;
-import com.tencent.mm.sdk.system.AndroidContextUtil;
+import com.tencent.luggage.l.d;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.d;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.e;
+import com.tencent.mm.plugin.appbrand.n.k;
+import com.tencent.mm.plugin.appbrand.utils.ae;
+import com.tencent.mm.plugin.appbrand.utils.ae.a;
+import com.tencent.mm.plugin.appbrand.utils.ae.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.nio.ByteBuffer;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+import org.a.a;
 import org.json.JSONObject;
 
 public abstract class p
-  extends q
+  extends e
 {
-  protected Activity activity;
-  int osC;
+  protected boolean rww = false;
+  private int rwx = -2147483648;
   
-  public p(o paramo, v paramv, ad paramad, JSONObject paramJSONObject, int paramInt)
+  private int cpM()
   {
-    super(paramo, paramv, paramad, paramJSONObject, paramInt);
-    this.activity = AndroidContextUtil.castActivityOrNull(paramv.getRuntime().mContext);
-    if (this.activity == null) {
-      throw new IllegalArgumentException("JsApiActivityResultRequest. Activity is null");
-    }
-    this.osC = (paramo.hashCode() & 0xFFFF);
-  }
-  
-  protected abstract void D(Intent paramIntent);
-  
-  protected abstract boolean a(Activity paramActivity, JSONObject paramJSONObject, int paramInt);
-  
-  public final void d(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    if (this.osC != paramInt1) {
-      return;
-    }
-    if (paramInt2 == -1)
+    if (-2147483648 == this.rwx) {}
+    try
     {
-      D(paramIntent);
-      return;
+      this.rwx = ((Integer)a.cQ(getClass()).bLt("CTRL_INDEX").object).intValue();
+      return this.rwx;
     }
-    if ((paramIntent != null) && (paramIntent.hasExtra("result_error_msg")))
+    catch (Exception localException)
     {
-      onError(paramIntent.getIntExtra("result_error_code", -1), paramIntent.getStringExtra("result_error_msg"));
-      return;
-    }
-    onError(-1, "fail:system error {{unknow error}}");
-  }
-  
-  protected abstract void onError(int paramInt, String paramString);
-  
-  public final void run()
-  {
-    f.aI(this.activity).b(new f.c()
-    {
-      public final boolean c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
+      for (;;)
       {
-        AppMethodBeat.i(174747);
-        if (paramAnonymousInt1 == p.this.osC)
-        {
-          p.this.d(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousIntent);
-          AppMethodBeat.o(174747);
-          return true;
-        }
-        AppMethodBeat.o(174747);
-        return false;
+        Log.e("MicroMsg.AppBrandJsApi", "getCtrlIndex exp = %s", new Object[] { Util.stackTraceToString(localException) });
       }
-    });
-    if (!a(this.activity, bPH(), this.osC)) {
-      onError(-1, "fail:system error {{launch fail}}");
     }
+  }
+  
+  private String i(String paramString, JSONObject paramJSONObject)
+  {
+    JSONObject localJSONObject = paramJSONObject;
+    if (paramJSONObject == null) {
+      localJSONObject = new JSONObject();
+    }
+    if (localJSONObject.has("errMsg"))
+    {
+      paramJSONObject = "api " + getName() + ": Cant put errMsg in res!!!";
+      if (this.rww) {
+        throw new IllegalArgumentException(paramJSONObject);
+      }
+      Log.e("MicroMsg.AppBrandJsApi", paramJSONObject);
+    }
+    try
+    {
+      localJSONObject.put("errMsg", getName() + ":" + paramString);
+      return localJSONObject.toString();
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.AppBrandJsApi", "makeReturnJson with JSONObject, put errMsg, e=%s", new Object[] { paramString });
+      }
+    }
+  }
+  
+  private String n(String paramString, Map<String, ? extends Object> paramMap)
+  {
+    String str = paramString;
+    if ("cancel".equals(paramString)) {
+      str = "fail cancel";
+    }
+    if ((!str.startsWith("fail")) && (!str.startsWith("ok")))
+    {
+      paramString = String.format(Locale.ENGLISH, "api[%s] assert, argument [reason] must start with special prefix", new Object[] { getName() });
+      if (this.rww) {
+        throw new IllegalArgumentException(paramString);
+      }
+      Log.e("MicroMsg.AppBrandJsApi", paramString);
+    }
+    if ((paramMap instanceof HashMap)) {
+      paramString = paramMap;
+    }
+    while ((paramMap != null) && (paramMap.containsKey("errMsg")))
+    {
+      paramMap = "api " + getName() + ": Cant put errMsg in res!!!";
+      if (this.rww)
+      {
+        throw new IllegalArgumentException(paramMap);
+        paramString = new HashMap();
+      }
+      else
+      {
+        Log.e("MicroMsg.AppBrandJsApi", paramMap);
+      }
+    }
+    paramString.put("errMsg", getName() + ":" + str);
+    d.k(paramString);
+    return new JSONObject(paramString).toString();
+  }
+  
+  @Deprecated
+  public final String ZP(String paramString)
+  {
+    if ((this.rww) && (1059 <= cpM())) {
+      throw new IllegalArgumentException("makeReturnJson(String) is deprecated");
+    }
+    return h(paramString, null);
+  }
+  
+  public final String a(f paramf, a.d paramd, Map<String, ? extends Object> paramMap)
+  {
+    if (ae.a(paramf.getJsRuntime(), paramMap, (ae.a)paramf.aN(ae.a.class)) == ae.b.urs) {
+      return a("fail:convert native buffer parameter fail. native buffer exceed size limit.", a.e.rVv, null);
+    }
+    return a(null, paramd, paramMap);
+  }
+  
+  @Deprecated
+  public final String a(f paramf, String paramString, Map<String, ? extends Object> paramMap)
+  {
+    if ((this.rww) && (1059 <= cpM())) {
+      throw new IllegalArgumentException("makeReturnJsonWithNativeBuffer is deprecated");
+    }
+    if (ae.a(paramf.getJsRuntime(), paramMap, (ae.a)paramf.aN(ae.a.class)) == ae.b.urs) {
+      return ZP("fail:convert native buffer parameter fail. native buffer exceed size limit.");
+    }
+    return m(paramString, paramMap);
+  }
+  
+  public final String a(a.d paramd, Map<String, ? extends Object> paramMap)
+  {
+    return a(null, paramd, paramMap);
+  }
+  
+  public final String a(String paramString, a.d paramd, Map<String, ? extends Object> paramMap)
+  {
+    int i = paramd.rVs;
+    if (paramString == null) {
+      paramString = paramd.errMsg;
+    }
+    for (;;)
+    {
+      paramd = paramString;
+      if (paramString == null) {
+        paramd = "";
+      }
+      if ((paramMap instanceof HashMap)) {}
+      for (paramString = paramMap;; paramString = new HashMap())
+      {
+        paramString.put("errno", Integer.valueOf(i));
+        return n(paramd, paramMap);
+      }
+    }
+  }
+  
+  public final String a(String paramString, a.d paramd, JSONObject paramJSONObject)
+  {
+    int i = paramd.rVs;
+    if (paramString == null) {
+      paramString = paramd.errMsg;
+    }
+    for (;;)
+    {
+      if (paramString == null) {
+        paramString = "";
+      }
+      for (;;)
+      {
+        paramd = paramJSONObject;
+        if (paramJSONObject == null) {
+          paramd = new JSONObject();
+        }
+        try
+        {
+          paramd.put("errno", i);
+          return i(paramString, paramd);
+        }
+        catch (Exception paramJSONObject)
+        {
+          for (;;)
+          {
+            Log.e("MicroMsg.AppBrandJsApi", "makeReturnJson with JSONObject, put errno, e=%s", new Object[] { paramJSONObject });
+          }
+        }
+      }
+    }
+  }
+  
+  public ByteBuffer a(String paramString, k paramk, int paramInt)
+  {
+    return paramk.ae(paramInt, false);
+  }
+  
+  public boolean cpN()
+  {
+    return false;
+  }
+  
+  @Deprecated
+  public final String h(String paramString, JSONObject paramJSONObject)
+  {
+    if ((this.rww) && (1059 <= cpM())) {
+      throw new IllegalArgumentException("makeReturnJson(String, JSONObject) is deprecated");
+    }
+    return i(paramString, paramJSONObject);
+  }
+  
+  @Deprecated
+  public final String m(String paramString, Map<String, ? extends Object> paramMap)
+  {
+    if ((this.rww) && (1059 <= cpM())) {
+      throw new IllegalArgumentException("makeReturnJson(String, Map<String, ? extends Object>) is deprecated");
+    }
+    return n(paramString, paramMap);
   }
 }
 

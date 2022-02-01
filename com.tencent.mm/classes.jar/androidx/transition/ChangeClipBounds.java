@@ -9,13 +9,14 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.core.g.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Map;
 
 public class ChangeClipBounds
   extends Transition
 {
-  private static final String[] apt = { "android:clipBounds:clip" };
+  private static final String[] cec = { "android:clipBounds:clip" };
   
   public ChangeClipBounds() {}
   
@@ -26,29 +27,34 @@ public class ChangeClipBounds
   
   private static void a(w paramw)
   {
-    AppMethodBeat.i(191819);
+    AppMethodBeat.i(201270);
     Object localObject = paramw.view;
     if (((View)localObject).getVisibility() == 8)
     {
-      AppMethodBeat.o(191819);
+      AppMethodBeat.o(201270);
       return;
     }
-    Rect localRect = androidx.core.g.w.ak((View)localObject);
+    Rect localRect = z.ax((View)localObject);
     paramw.values.put("android:clipBounds:clip", localRect);
     if (localRect == null)
     {
       localObject = new Rect(0, 0, ((View)localObject).getWidth(), ((View)localObject).getHeight());
       paramw.values.put("android:clipBounds:bounds", localObject);
     }
-    AppMethodBeat.o(191819);
+    AppMethodBeat.o(201270);
+  }
+  
+  public final String[] LI()
+  {
+    return cec;
   }
   
   public final Animator a(ViewGroup paramViewGroup, w paramw1, w paramw2)
   {
-    AppMethodBeat.i(191830);
+    AppMethodBeat.i(201334);
     if ((paramw1 == null) || (paramw2 == null) || (!paramw1.values.containsKey("android:clipBounds:clip")) || (!paramw2.values.containsKey("android:clipBounds:clip")))
     {
-      AppMethodBeat.o(191830);
+      AppMethodBeat.o(201334);
       return null;
     }
     Object localObject = (Rect)paramw1.values.get("android:clipBounds:clip");
@@ -56,7 +62,7 @@ public class ChangeClipBounds
     if (localRect == null) {}
     for (int i = 1; (localObject == null) && (localRect == null); i = 0)
     {
-      AppMethodBeat.o(191830);
+      AppMethodBeat.o(201334);
       return null;
     }
     if (localObject == null)
@@ -66,7 +72,7 @@ public class ChangeClipBounds
     }
     while (paramViewGroup.equals(paramw1))
     {
-      AppMethodBeat.o(191830);
+      AppMethodBeat.o(201334);
       return null;
       paramViewGroup = (ViewGroup)localObject;
       paramw1 = localRect;
@@ -76,46 +82,41 @@ public class ChangeClipBounds
         paramViewGroup = (ViewGroup)localObject;
       }
     }
-    androidx.core.g.w.a(paramw2.view, paramViewGroup);
+    z.a(paramw2.view, paramViewGroup);
     localObject = new n(new Rect());
-    paramViewGroup = ObjectAnimator.ofObject(paramw2.view, ai.ate, (TypeEvaluator)localObject, new Rect[] { paramViewGroup, paramw1 });
+    paramViewGroup = ObjectAnimator.ofObject(paramw2.view, ai.chN, (TypeEvaluator)localObject, new Rect[] { paramViewGroup, paramw1 });
     if (i != 0) {
       paramViewGroup.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
-          AppMethodBeat.i(191814);
-          androidx.core.g.w.a(this.apT, null);
-          AppMethodBeat.o(191814);
+          AppMethodBeat.i(201224);
+          z.a(this.ceC, null);
+          AppMethodBeat.o(201224);
         }
       });
     }
-    AppMethodBeat.o(191830);
+    AppMethodBeat.o(201334);
     return paramViewGroup;
   }
   
   public final void b(w paramw)
   {
-    AppMethodBeat.i(191824);
+    AppMethodBeat.i(201304);
     a(paramw);
-    AppMethodBeat.o(191824);
+    AppMethodBeat.o(201304);
   }
   
   public final void c(w paramw)
   {
-    AppMethodBeat.i(191825);
+    AppMethodBeat.i(201317);
     a(paramw);
-    AppMethodBeat.o(191825);
-  }
-  
-  public final String[] nf()
-  {
-    return apt;
+    AppMethodBeat.o(201317);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     androidx.transition.ChangeClipBounds
  * JD-Core Version:    0.7.0.1
  */

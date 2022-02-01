@@ -15,16 +15,16 @@ final class NearbyFriendsUI$2
   {
     AppMethodBeat.i(89840);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/nearby/ui/NearbyFriendsUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    NearbyFriendsUI.x(this.Gtl);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/nearby/ui/NearbyFriendsUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    NearbyFriendsUI.x(this.Mpl);
     a.a(this, "com/tencent/mm/plugin/nearby/ui/NearbyFriendsUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(89840);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.nearby.ui.NearbyFriendsUI.2
  * JD-Core Version:    0.7.0.1
  */

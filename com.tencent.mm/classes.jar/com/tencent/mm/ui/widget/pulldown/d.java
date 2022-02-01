@@ -2,72 +2,73 @@ package com.tencent.mm.ui.widget.pulldown;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/widget/pulldown/BounceUtil;", "", "()V", "TAG", "", "getAttrs", "", "cls", "Ljava/lang/Class;", "name", "getSuperClassAttrs", "isPullDownEnable", "", "preloadClass", "libmmui_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/widget/pulldown/BounceUtil;", "", "()V", "TAG", "", "getAttrs", "", "cls", "Ljava/lang/Class;", "name", "getSuperClassAttrs", "isPullDownEnable", "", "preloadClass", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
 {
-  public static final d Ytn;
+  public static final d aglB;
   
   static
   {
-    AppMethodBeat.i(203899);
-    Ytn = new d();
-    AppMethodBeat.o(203899);
+    AppMethodBeat.i(251955);
+    aglB = new d();
+    AppMethodBeat.o(251955);
   }
   
-  public static Class<?> byz(String paramString)
+  public static Class<?> bzX(String paramString)
   {
-    AppMethodBeat.i(203896);
+    AppMethodBeat.i(251944);
     try
     {
       Class localClass = Class.forName(paramString);
-      AppMethodBeat.o(203896);
+      AppMethodBeat.o(251944);
       return localClass;
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
       Log.printErrStackTrace("PullDownUtil", (Throwable)localClassNotFoundException, "", new Object[0]);
       Log.e("PullDownUtil", "Class %s not found in dex", new Object[] { paramString });
-      AppMethodBeat.o(203896);
+      AppMethodBeat.o(251944);
     }
     return null;
   }
   
-  private final int bz(Class<?> paramClass)
+  private final int cj(Class<?> paramClass)
   {
-    AppMethodBeat.i(203897);
+    AppMethodBeat.i(251949);
     paramClass = paramClass.getSuperclass();
     if (paramClass != null)
     {
-      int i = by(paramClass);
-      AppMethodBeat.o(203897);
+      int i = ci(paramClass);
+      AppMethodBeat.o(251949);
       return i;
     }
-    AppMethodBeat.o(203897);
+    AppMethodBeat.o(251949);
     return 1;
   }
   
-  public final int by(Class<?> paramClass)
+  public final int ci(Class<?> paramClass)
   {
-    AppMethodBeat.i(203895);
-    p.k(paramClass, "cls");
-    c localc = (c)paramClass.getAnnotation(c.class);
-    if (localc != null)
+    AppMethodBeat.i(251961);
+    s.u(paramClass, "cls");
+    Object localObject = (c)paramClass.getAnnotation(c.class);
+    if (localObject == null) {}
+    for (localObject = null; localObject == null; localObject = Integer.valueOf(((c)localObject).value()))
     {
-      i = localc.value();
-      AppMethodBeat.o(203895);
+      i = cj(paramClass);
+      AppMethodBeat.o(251961);
       return i;
     }
-    int i = bz(paramClass);
-    AppMethodBeat.o(203895);
+    int i = ((Integer)localObject).intValue();
+    AppMethodBeat.o(251961);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.widget.pulldown.d
  * JD-Core Version:    0.7.0.1
  */

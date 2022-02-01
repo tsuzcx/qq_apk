@@ -14,24 +14,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.hld.a.c;
 import com.tencent.mm.plugin.hld.a.d;
 import com.tencent.mm.plugin.hld.a.l;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/view/ImeUnfoldLineView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "arrowWidth", "", "lineHeight", "mContext", "xCoordinate", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "Companion", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/view/ImeUnfoldLineView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "arrowWidth", "", "lineHeight", "mContext", "xCoordinate", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "Companion", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ImeUnfoldLineView
   extends View
 {
-  public static final a DJk;
-  private float DJi;
-  private float DJj;
+  public static final ImeUnfoldLineView.a JAk;
+  private float JAl;
+  private float JAm;
   private Context mContext;
-  private float vaN;
+  private float ymJ;
   
   static
   {
-    AppMethodBeat.i(212715);
-    DJk = new a((byte)0);
-    AppMethodBeat.o(212715);
+    AppMethodBeat.i(312538);
+    JAk = new ImeUnfoldLineView.a((byte)0);
+    AppMethodBeat.o(312538);
   }
   
   public ImeUnfoldLineView(Context paramContext, AttributeSet paramAttributeSet)
@@ -47,27 +47,25 @@ public final class ImeUnfoldLineView
   private ImeUnfoldLineView(Context paramContext, AttributeSet paramAttributeSet, int paramInt, byte paramByte)
   {
     super(paramContext, paramAttributeSet, paramInt, 0);
-    AppMethodBeat.i(212713);
+    AppMethodBeat.i(312522);
     this.mContext = paramContext;
-    if (paramContext == null) {
-      p.iCn();
-    }
-    if (paramContext.obtainStyledAttributes(paramAttributeSet, a.l.ImeUnfoldLineView, paramInt, 0).getInt(a.l.ImeUnfoldLineView_ime_unfold_line_type, 1) == 1) {}
-    for (this.DJi = getResources().getDimensionPixelSize(a.d.ime_unfold_logo_divider_arrow_x_coordinate);; this.DJi = (paramContext.getDisplayMetrics().widthPixels - getResources().getDimensionPixelSize(a.d.ime_unfold_emoji_divider_arrow_x_right_coordinate)))
+    s.checkNotNull(paramContext);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.l.ImeUnfoldLineView, paramInt, 0);
+    s.s(paramContext, "context!!.obtainStyledAt…ineView, defStyleAttr, 0)");
+    if (paramContext.getInt(a.l.ImeUnfoldLineView_ime_unfold_line_type, 1) == 1) {}
+    for (this.JAl = getResources().getDimensionPixelSize(a.d.ime_unfold_logo_divider_arrow_x_coordinate);; this.JAl = (getResources().getDisplayMetrics().widthPixels - getResources().getDimensionPixelSize(a.d.ime_unfold_emoji_divider_arrow_x_right_coordinate)))
     {
-      this.DJj = getResources().getDimensionPixelSize(a.d.ime_unfold_divider_arrow_width);
-      this.vaN = getResources().getDimensionPixelSize(a.d.ime_unfold_divider_height);
-      AppMethodBeat.o(212713);
+      this.JAm = getResources().getDimensionPixelSize(a.d.ime_unfold_divider_arrow_width);
+      this.ymJ = getResources().getDimensionPixelSize(a.d.ime_unfold_divider_height);
+      AppMethodBeat.o(312522);
       return;
-      paramContext = getResources();
-      p.j(paramContext, "resources");
     }
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(212709);
-    p.k(paramCanvas, "canvas");
+    AppMethodBeat.i(312557);
+    s.u(paramCanvas, "canvas");
     super.onDraw(paramCanvas);
     Paint localPaint = new Paint();
     localPaint.setAntiAlias(true);
@@ -75,21 +73,14 @@ public final class ImeUnfoldLineView
     localPaint.setStyle(Paint.Style.STROKE);
     localPaint.setStrokeWidth(getResources().getDimensionPixelSize(a.d.ime_divider_size));
     Path localPath = new Path();
-    localPath.moveTo(0.0F, this.vaN);
-    localPath.lineTo(this.DJi - this.DJj / 2.0F, this.vaN);
-    localPath.lineTo(this.DJi, 0.0F);
-    localPath.lineTo(this.DJi + this.DJj / 2.0F, this.vaN);
-    Object localObject = getContext();
-    p.j(localObject, "context");
-    localObject = ((Context)localObject).getResources();
-    p.j(localObject, "context.resources");
-    localPath.lineTo(((Resources)localObject).getDisplayMetrics().widthPixels, this.vaN);
+    localPath.moveTo(0.0F, this.ymJ);
+    localPath.lineTo(this.JAl - this.JAm / 2.0F, this.ymJ);
+    localPath.lineTo(this.JAl, 0.0F);
+    localPath.lineTo(this.JAl + this.JAm / 2.0F, this.ymJ);
+    localPath.lineTo(getContext().getResources().getDisplayMetrics().widthPixels, this.ymJ);
     paramCanvas.drawPath(localPath, localPaint);
-    AppMethodBeat.o(212709);
+    AppMethodBeat.o(312557);
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/view/ImeUnfoldLineView$Companion;", "", "()V", "TAG", "", "plugin-hld_release"})
-  public static final class a {}
 }
 
 

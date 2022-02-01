@@ -1,66 +1,24 @@
 package kotlin;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.Serializable;
-import kotlin.g.b.p;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/Pair;", "A", "B", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "first", "second", "(Ljava/lang/Object;Ljava/lang/Object;)V", "getFirst", "()Ljava/lang/Object;", "Ljava/lang/Object;", "getSecond", "component1", "component2", "copy", "(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;", "equals", "", "other", "", "hashCode", "", "toString", "", "kotlin-stdlib"})
-public final class o<A, B>
-  implements Serializable
+@Metadata(d1={""}, d2={"Lkotlin/LazyThreadSafetyMode;", "", "(Ljava/lang/String;I)V", "SYNCHRONIZED", "PUBLICATION", "NONE", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
+public enum o
 {
-  public final A Mx;
-  public final B My;
-  
-  public o(A paramA, B paramB)
+  static
   {
-    this.Mx = paramA;
-    this.My = paramB;
+    AppMethodBeat.i(129289);
+    o localo1 = new o("SYNCHRONIZED", 0);
+    aiuF = localo1;
+    o localo2 = new o("PUBLICATION", 1);
+    aiuG = localo2;
+    o localo3 = new o("NONE", 2);
+    aiuH = localo3;
+    aiuI = new o[] { localo1, localo2, localo3 };
+    AppMethodBeat.o(129289);
   }
   
-  public final boolean equals(Object paramObject)
-  {
-    AppMethodBeat.i(129574);
-    if (this != paramObject)
-    {
-      if ((paramObject instanceof o))
-      {
-        paramObject = (o)paramObject;
-        if ((!p.h(this.Mx, paramObject.Mx)) || (!p.h(this.My, paramObject.My))) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(129574);
-      return true;
-    }
-    AppMethodBeat.o(129574);
-    return false;
-  }
-  
-  public final int hashCode()
-  {
-    int j = 0;
-    AppMethodBeat.i(129573);
-    Object localObject = this.Mx;
-    if (localObject != null) {}
-    for (int i = localObject.hashCode();; i = 0)
-    {
-      localObject = this.My;
-      if (localObject != null) {
-        j = localObject.hashCode();
-      }
-      AppMethodBeat.o(129573);
-      return i * 31 + j;
-    }
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(129572);
-    String str = "(" + this.Mx + ", " + this.My + ')';
-    AppMethodBeat.o(129572);
-    return str;
-  }
+  private o() {}
 }
 
 

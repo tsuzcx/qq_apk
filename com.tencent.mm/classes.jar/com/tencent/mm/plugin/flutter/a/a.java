@@ -8,13 +8,13 @@ public abstract interface a
 {
   public abstract void a(Context paramContext, c paramc);
   
-  public abstract boolean a(Context paramContext, int paramInt, Bundle paramBundle);
+  public abstract void fuW();
   
-  public abstract void epU();
+  public abstract boolean h(Context paramContext, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.flutter.a.a
  * JD-Core Version:    0.7.0.1
  */

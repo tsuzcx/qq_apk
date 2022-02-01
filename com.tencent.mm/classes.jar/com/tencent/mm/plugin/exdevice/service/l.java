@@ -20,7 +20,7 @@ public abstract interface l
       attachInterface(this, "com.tencent.mm.plugin.exdevice.service.IBTOnTaskEnd_AIDL");
     }
     
-    public static l D(IBinder paramIBinder)
+    public static l I(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -32,9 +32,9 @@ public abstract interface l
       return new a(paramIBinder);
     }
     
-    public static l cZV()
+    public static l dGo()
     {
-      return a.vjv;
+      return a.yvt;
     }
     
     public IBinder asBinder()
@@ -53,7 +53,7 @@ public abstract interface l
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTOnTaskEnd_AIDL");
-      a(paramParcel1.readLong(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readString(), p.a.F(paramParcel1.readStrongBinder()));
+      a(paramParcel1.readLong(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readString(), p.a.K(paramParcel1.readStrongBinder()));
       paramParcel2.writeNoException();
       return true;
     }
@@ -61,7 +61,7 @@ public abstract interface l
     static final class a
       implements l
     {
-      public static l vjv;
+      public static l yvt;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -85,10 +85,10 @@ public abstract interface l
           for (IBinder localIBinder = paramp.asBinder();; localIBinder = null)
           {
             localParcel1.writeStrongBinder(localIBinder);
-            if ((this.mRemote.transact(1, localParcel1, localParcel2, 0)) || (l.a.cZV() == null)) {
+            if ((this.mRemote.transact(1, localParcel1, localParcel2, 0)) || (l.a.dGo() == null)) {
               break;
             }
-            l.a.cZV().a(paramLong, paramInt1, paramInt2, paramString, paramp);
+            l.a.dGo().a(paramLong, paramInt1, paramInt2, paramString, paramp);
             return;
           }
           localParcel2.readException();
@@ -111,7 +111,7 @@ public abstract interface l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.l
  * JD-Core Version:    0.7.0.1
  */

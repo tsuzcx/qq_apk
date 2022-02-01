@@ -6,8 +6,8 @@ import java.lang.reflect.Field;
 
 public final class a<FieldType>
 {
-  private Class<?> dji;
-  private String djj;
+  private Class<?> fjd;
+  private String fje;
   private Field mField;
   private boolean mInited;
   
@@ -20,12 +20,12 @@ public final class a<FieldType>
       AppMethodBeat.o(158827);
       throw paramClass;
     }
-    this.dji = paramClass;
-    this.djj = paramString;
+    this.fjd = paramClass;
+    this.fje = paramString;
     AppMethodBeat.o(158827);
   }
   
-  private FieldType aFD()
+  private FieldType aYD()
   {
     Object localObject1 = null;
     try
@@ -34,7 +34,7 @@ public final class a<FieldType>
       prepare();
       if (this.mField == null)
       {
-        c.w("SDK.ReflectStaticFieldSmith", "Field %s is no exists.", new Object[] { this.djj });
+        c.w("SDK.ReflectStaticFieldSmith", "Field %s is no exists.", new Object[] { this.fje });
         AppMethodBeat.o(158829);
         return localObject1;
       }
@@ -68,7 +68,7 @@ public final class a<FieldType>
           AppMethodBeat.o(158828);
           return;
         }
-        localClass1 = this.dji;
+        localClass1 = this.fjd;
         if (localClass1 == null) {}
       }
       finally
@@ -76,7 +76,7 @@ public final class a<FieldType>
         try
         {
           Class localClass1;
-          Field localField = localClass1.getDeclaredField(this.djj);
+          Field localField = localClass1.getDeclaredField(this.fje);
           localField.setAccessible(true);
           this.mField = localField;
           this.mInited = true;
@@ -92,7 +92,7 @@ public final class a<FieldType>
   }
   
   /* Error */
-  public final FieldType aFE()
+  public final FieldType aYE()
   {
     // Byte code:
     //   0: aload_0
@@ -102,7 +102,7 @@ public final class a<FieldType>
     //   7: aconst_null
     //   8: astore_1
     //   9: aload_0
-    //   10: invokespecial 105	com/tencent/mm/ipcinvoker/g/a:aFD	()Ljava/lang/Object;
+    //   10: invokespecial 105	com/tencent/mm/ipcinvoker/g/a:aYD	()Ljava/lang/Object;
     //   13: astore_2
     //   14: aload_2
     //   15: astore_1
@@ -174,7 +174,7 @@ public final class a<FieldType>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.g.a
  * JD-Core Version:    0.7.0.1
  */

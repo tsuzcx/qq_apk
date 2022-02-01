@@ -13,75 +13,73 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class d$b
   implements d.a
 {
-  private static final int MM;
-  private static final int MN;
-  private static final int MO;
-  private int MI;
-  private int MJ;
-  private int MK;
-  private int ML;
-  final GestureDetector.OnGestureListener MP;
-  GestureDetector.OnDoubleTapListener MQ;
-  boolean MR;
-  boolean MS;
-  boolean MT;
-  private boolean MU;
-  private boolean MV;
-  MotionEvent MW;
-  private MotionEvent MX;
-  private boolean MY;
-  private float MZ;
-  private float Na;
-  private float Nb;
-  private float Nc;
-  private boolean Nd;
+  private static final int bsP;
+  private static final int bsQ;
+  private int bsL;
+  private int bsM;
+  private int bsN;
+  private int bsO;
+  final GestureDetector.OnGestureListener bsR;
+  GestureDetector.OnDoubleTapListener bsS;
+  boolean bsT;
+  boolean bsU;
+  boolean bsV;
+  private boolean bsW;
+  private boolean bsX;
+  MotionEvent bsY;
+  private MotionEvent bsZ;
+  private boolean bta;
+  private float btb;
+  private float btc;
+  private float btd;
+  private float bte;
+  private boolean btf;
   final Handler mHandler;
   private VelocityTracker mVelocityTracker;
   
   static
   {
-    AppMethodBeat.i(251427);
-    MM = ViewConfiguration.getLongPressTimeout();
-    MN = ViewConfiguration.getTapTimeout();
-    MO = ViewConfiguration.getDoubleTapTimeout();
-    AppMethodBeat.o(251427);
+    AppMethodBeat.i(195680);
+    bsP = ViewConfiguration.getTapTimeout();
+    bsQ = ViewConfiguration.getDoubleTapTimeout();
+    AppMethodBeat.o(195680);
   }
   
   d$b(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener)
   {
-    AppMethodBeat.i(251421);
+    AppMethodBeat.i(195675);
     this.mHandler = new a();
-    this.MP = paramOnGestureListener;
+    this.bsR = paramOnGestureListener;
     if ((paramOnGestureListener instanceof GestureDetector.OnDoubleTapListener)) {
-      this.MQ = ((GestureDetector.OnDoubleTapListener)paramOnGestureListener);
+      this.bsS = ((GestureDetector.OnDoubleTapListener)paramOnGestureListener);
     }
     if (paramContext == null)
     {
       paramContext = new IllegalArgumentException("Context must not be null");
-      AppMethodBeat.o(251421);
+      AppMethodBeat.o(195675);
       throw paramContext;
     }
-    if (this.MP == null)
+    if (this.bsR == null)
     {
       paramContext = new IllegalArgumentException("OnGestureListener must not be null");
-      AppMethodBeat.o(251421);
+      AppMethodBeat.o(195675);
       throw paramContext;
     }
-    this.Nd = true;
+    this.btf = true;
     paramContext = ViewConfiguration.get(paramContext);
     int i = paramContext.getScaledTouchSlop();
     int j = paramContext.getScaledDoubleTapSlop();
-    this.MK = paramContext.getScaledMinimumFlingVelocity();
-    this.ML = paramContext.getScaledMaximumFlingVelocity();
-    this.MI = (i * i);
-    this.MJ = (j * j);
-    AppMethodBeat.o(251421);
+    this.bsN = paramContext.getScaledMinimumFlingVelocity();
+    this.bsO = paramContext.getScaledMaximumFlingVelocity();
+    this.bsL = (i * i);
+    this.bsM = (j * j);
+    AppMethodBeat.o(195675);
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool3 = false;
-    AppMethodBeat.i(251424);
+    AppMethodBeat.i(195700);
     int i1 = paramMotionEvent.getAction();
     if (this.mVelocityTracker == null) {
       this.mVelocityTracker = VelocityTracker.obtain();
@@ -146,32 +144,32 @@ final class d$b
     case 2: 
       for (;;)
       {
-        AppMethodBeat.o(251424);
+        AppMethodBeat.o(195700);
         return bool2;
         i = n;
         break;
-        this.MZ = f2;
-        this.Nb = f2;
-        this.Na = f1;
-        this.Nc = f1;
+        this.btb = f2;
+        this.btd = f2;
+        this.btc = f1;
+        this.bte = f1;
         this.mHandler.removeMessages(1);
         this.mHandler.removeMessages(2);
         this.mHandler.removeMessages(3);
-        this.MY = false;
-        this.MU = false;
-        this.MV = false;
-        this.MS = false;
+        this.bta = false;
+        this.bsW = false;
+        this.bsX = false;
+        this.bsU = false;
         bool2 = bool3;
-        if (this.MT)
+        if (this.bsV)
         {
-          this.MT = false;
+          this.bsV = false;
           bool2 = bool3;
           continue;
-          this.MZ = f2;
-          this.Nb = f2;
-          this.Na = f1;
-          this.Nc = f1;
-          this.mVelocityTracker.computeCurrentVelocity(1000, this.ML);
+          this.btb = f2;
+          this.btd = f2;
+          this.btc = f1;
+          this.bte = f1;
+          this.mVelocityTracker.computeCurrentVelocity(1000, this.bsO);
           k = paramMotionEvent.getActionIndex();
           i = paramMotionEvent.getPointerId(k);
           f1 = this.mVelocityTracker.getXVelocity(i);
@@ -196,83 +194,83 @@ final class d$b
             }
             i += 1;
           }
-          if (this.MQ != null)
+          if (this.bsS != null)
           {
             bool2 = this.mHandler.hasMessages(3);
             if (bool2) {
               this.mHandler.removeMessages(3);
             }
-            if ((this.MW != null) && (this.MX != null) && (bool2))
+            if ((this.bsY != null) && (this.bsZ != null) && (bool2))
             {
-              localMotionEvent = this.MW;
-              localObject = this.MX;
-              if ((this.MV) && (paramMotionEvent.getEventTime() - ((MotionEvent)localObject).getEventTime() <= MO))
+              localMotionEvent = this.bsY;
+              localObject = this.bsZ;
+              if ((this.bsX) && (paramMotionEvent.getEventTime() - ((MotionEvent)localObject).getEventTime() <= bsQ))
               {
                 i = (int)localMotionEvent.getX() - (int)paramMotionEvent.getX();
                 k = (int)localMotionEvent.getY() - (int)paramMotionEvent.getY();
-                if (k * k + i * i < this.MJ)
+                if (k * k + i * i < this.bsM)
                 {
                   i = 1;
                   if (i == 0) {
                     break label801;
                   }
-                  this.MY = true;
+                  this.bta = true;
                 }
               }
             }
           }
-          for (boolean bool1 = this.MQ.onDoubleTap(this.MW) | false | this.MQ.onDoubleTapEvent(paramMotionEvent);; bool1 = false)
+          for (boolean bool1 = this.bsS.onDoubleTap(this.bsY) | false | this.bsS.onDoubleTapEvent(paramMotionEvent);; bool1 = false)
           {
-            this.MZ = f2;
-            this.Nb = f2;
-            this.Na = f1;
-            this.Nc = f1;
-            if (this.MW != null) {
-              this.MW.recycle();
+            this.btb = f2;
+            this.btd = f2;
+            this.btc = f1;
+            this.bte = f1;
+            if (this.bsY != null) {
+              this.bsY.recycle();
             }
-            this.MW = MotionEvent.obtain(paramMotionEvent);
-            this.MU = true;
-            this.MV = true;
-            this.MR = true;
-            this.MT = false;
-            this.MS = false;
-            if (this.Nd)
+            this.bsY = MotionEvent.obtain(paramMotionEvent);
+            this.bsW = true;
+            this.bsX = true;
+            this.bsT = true;
+            this.bsV = false;
+            this.bsU = false;
+            if (this.btf)
             {
               this.mHandler.removeMessages(2);
-              this.mHandler.sendEmptyMessageAtTime(2, this.MW.getDownTime() + MN + MM);
+              this.mHandler.sendEmptyMessageAtTime(2, this.bsY.getDownTime() + bsP + ViewConfiguration.getLongPressTimeout());
             }
-            this.mHandler.sendEmptyMessageAtTime(1, this.MW.getDownTime() + MN);
-            bool2 = bool1 | this.MP.onDown(paramMotionEvent);
+            this.mHandler.sendEmptyMessageAtTime(1, this.bsY.getDownTime() + bsP);
+            bool2 = bool1 | this.bsR.onDown(paramMotionEvent);
             break;
             bool1 = false;
             break label610;
             label801:
-            this.mHandler.sendEmptyMessageDelayed(3, MO);
+            this.mHandler.sendEmptyMessageDelayed(3, bsQ);
           }
           bool2 = bool3;
-          if (!this.MT)
+          if (!this.bsV)
           {
-            f3 = this.MZ - f2;
-            f4 = this.Na - f1;
-            if (!this.MY) {
+            f3 = this.btb - f2;
+            f4 = this.btc - f1;
+            if (!this.bta) {
               break label871;
             }
-            bool2 = this.MQ.onDoubleTapEvent(paramMotionEvent) | false;
+            bool2 = this.bsS.onDoubleTapEvent(paramMotionEvent) | false;
           }
         }
       }
-      if (this.MU)
+      if (this.bsW)
       {
-        j = (int)(f2 - this.Nb);
-        k = (int)(f1 - this.Nc);
+        j = (int)(f2 - this.btd);
+        k = (int)(f1 - this.bte);
         j = j * j + k * k;
-        if (j <= this.MI) {
+        if (j <= this.bsL) {
           break label1415;
         }
-        bool2 = this.MP.onScroll(this.MW, paramMotionEvent, f3, f4);
-        this.MZ = f2;
-        this.Na = f1;
-        this.MU = false;
+        bool2 = this.bsR.onScroll(this.bsY, paramMotionEvent, f3, f4);
+        this.btb = f2;
+        this.btc = f1;
+        this.bsW = false;
         this.mHandler.removeMessages(3);
         this.mHandler.removeMessages(1);
         this.mHandler.removeMessages(2);
@@ -281,8 +279,8 @@ final class d$b
     }
     for (;;)
     {
-      if (j > this.MI) {
-        this.MV = false;
+      if (j > this.bsL) {
+        this.bsX = false;
       }
       break;
       if (Math.abs(f3) < 1.0F)
@@ -292,47 +290,47 @@ final class d$b
           break;
         }
       }
-      bool2 = this.MP.onScroll(this.MW, paramMotionEvent, f3, f4);
-      this.MZ = f2;
-      this.Na = f1;
+      bool2 = this.bsR.onScroll(this.bsY, paramMotionEvent, f3, f4);
+      this.btb = f2;
+      this.btc = f1;
       break;
-      this.MR = false;
+      this.bsT = false;
       localMotionEvent = MotionEvent.obtain(paramMotionEvent);
-      if (this.MY) {
-        bool2 = this.MQ.onDoubleTapEvent(paramMotionEvent) | false;
+      if (this.bta) {
+        bool2 = this.bsS.onDoubleTapEvent(paramMotionEvent) | false;
       }
       for (;;)
       {
-        if (this.MX != null) {
-          this.MX.recycle();
+        if (this.bsZ != null) {
+          this.bsZ.recycle();
         }
-        this.MX = localMotionEvent;
+        this.bsZ = localMotionEvent;
         if (this.mVelocityTracker != null)
         {
           this.mVelocityTracker.recycle();
           this.mVelocityTracker = null;
         }
-        this.MY = false;
-        this.MS = false;
+        this.bta = false;
+        this.bsU = false;
         this.mHandler.removeMessages(1);
         this.mHandler.removeMessages(2);
         break;
-        if (this.MT)
+        if (this.bsV)
         {
           this.mHandler.removeMessages(3);
-          this.MT = false;
+          this.bsV = false;
           bool2 = false;
         }
-        else if (this.MU)
+        else if (this.bsW)
         {
-          bool3 = this.MP.onSingleTapUp(paramMotionEvent);
+          bool3 = this.bsR.onSingleTapUp(paramMotionEvent);
           bool2 = bool3;
-          if (this.MS)
+          if (this.bsU)
           {
             bool2 = bool3;
-            if (this.MQ != null)
+            if (this.bsS != null)
             {
-              this.MQ.onSingleTapConfirmed(paramMotionEvent);
+              this.bsS.onSingleTapConfirmed(paramMotionEvent);
               bool2 = bool3;
             }
           }
@@ -341,28 +339,28 @@ final class d$b
         {
           localObject = this.mVelocityTracker;
           j = paramMotionEvent.getPointerId(0);
-          ((VelocityTracker)localObject).computeCurrentVelocity(1000, this.ML);
+          ((VelocityTracker)localObject).computeCurrentVelocity(1000, this.bsO);
           f1 = ((VelocityTracker)localObject).getYVelocity(j);
           f2 = ((VelocityTracker)localObject).getXVelocity(j);
-          if ((Math.abs(f1) > this.MK) || (Math.abs(f2) > this.MK))
+          if ((Math.abs(f1) > this.bsN) || (Math.abs(f2) > this.bsN))
           {
-            bool2 = this.MP.onFling(this.MW, paramMotionEvent, f2, f1);
+            bool2 = this.bsR.onFling(this.bsY, paramMotionEvent, f2, f1);
             continue;
             this.mHandler.removeMessages(1);
             this.mHandler.removeMessages(2);
             this.mHandler.removeMessages(3);
             this.mVelocityTracker.recycle();
             this.mVelocityTracker = null;
-            this.MY = false;
-            this.MR = false;
-            this.MU = false;
-            this.MV = false;
-            this.MS = false;
+            this.bta = false;
+            this.bsT = false;
+            this.bsW = false;
+            this.bsX = false;
+            this.bsU = false;
             bool2 = bool3;
-            if (!this.MT) {
+            if (!this.bsV) {
               break;
             }
-            this.MT = false;
+            this.bsV = false;
             bool2 = bool3;
             break;
           }
@@ -381,45 +379,45 @@ final class d$b
     
     public final void handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(251405);
+      AppMethodBeat.i(195788);
       switch (paramMessage.what)
       {
       default: 
         paramMessage = new RuntimeException("Unknown message ".concat(String.valueOf(paramMessage)));
-        AppMethodBeat.o(251405);
+        AppMethodBeat.o(195788);
         throw paramMessage;
       case 1: 
-        d.b.this.MP.onShowPress(d.b.this.MW);
-        AppMethodBeat.o(251405);
+        d.b.this.bsR.onShowPress(d.b.this.bsY);
+        AppMethodBeat.o(195788);
         return;
       case 2: 
         paramMessage = d.b.this;
         paramMessage.mHandler.removeMessages(3);
-        paramMessage.MS = false;
-        paramMessage.MT = true;
-        paramMessage.MP.onLongPress(paramMessage.MW);
-        AppMethodBeat.o(251405);
+        paramMessage.bsU = false;
+        paramMessage.bsV = true;
+        paramMessage.bsR.onLongPress(paramMessage.bsY);
+        AppMethodBeat.o(195788);
         return;
       }
-      if (d.b.this.MQ != null)
+      if (d.b.this.bsS != null)
       {
-        if (!d.b.this.MR)
+        if (!d.b.this.bsT)
         {
-          d.b.this.MQ.onSingleTapConfirmed(d.b.this.MW);
-          AppMethodBeat.o(251405);
+          d.b.this.bsS.onSingleTapConfirmed(d.b.this.bsY);
+          AppMethodBeat.o(195788);
           return;
         }
-        d.b.this.MS = true;
-        AppMethodBeat.o(251405);
+        d.b.this.bsU = true;
+        AppMethodBeat.o(195788);
         return;
       }
-      AppMethodBeat.o(251405);
+      AppMethodBeat.o(195788);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     androidx.core.g.d.b
  * JD-Core Version:    0.7.0.1
  */

@@ -4,10 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import com.tencent.tinker.anno.Keep;
 import com.tencent.tinker.loader.shareutil.ShareTinkerLog;
 
-@Keep
 public class DefaultApplicationLike
   extends ApplicationLike
 {
@@ -50,7 +48,7 @@ public class DefaultApplicationLike
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.entry.DefaultApplicationLike
  * JD-Core Version:    0.7.0.1
  */

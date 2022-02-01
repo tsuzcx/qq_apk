@@ -1,33 +1,33 @@
 package com.tencent.mm.audio.mix.f;
 
 import com.tencent.mm.audio.mix.a.c;
-import com.tencent.mm.f.a.z;
+import com.tencent.mm.autogen.a.ac;
 
 public abstract interface b
 {
   public abstract void b(c paramc);
   
-  public abstract void b(z paramz);
+  public abstract void b(ac paramac);
   
-  public abstract void c(z paramz);
+  public abstract void c(ac paramac);
   
-  public abstract void d(z paramz);
+  public abstract void d(ac paramac);
   
-  public abstract void e(z paramz);
+  public abstract void e(ac paramac);
   
-  public abstract void f(z paramz);
+  public abstract void f(ac paramac);
   
-  public abstract void g(z paramz);
+  public abstract void g(ac paramac);
   
-  public abstract void h(z paramz);
+  public abstract void h(ac paramac);
   
-  public abstract void i(z paramz);
+  public abstract void i(ac paramac);
   
-  public abstract void j(z paramz);
+  public abstract void j(ac paramac);
   
-  public abstract void k(z paramz);
+  public abstract void k(ac paramac);
   
-  public abstract void l(z paramz);
+  public abstract void l(ac paramac);
 }
 
 

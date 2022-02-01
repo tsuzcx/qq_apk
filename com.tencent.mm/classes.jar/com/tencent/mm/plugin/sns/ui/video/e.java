@@ -6,17 +6,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView.ScaleType;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.p;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.sns.model.ax;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.plugin.sns.model.az;
 import com.tencent.mm.plugin.sns.ui.OnlineVideoView;
 import com.tencent.mm.plugin.sns.ui.SnsTimeLineUI;
 import com.tencent.mm.pluginsdk.ui.i.e;
-import com.tencent.mm.protocal.protobuf.cvt;
+import com.tencent.mm.protocal.protobuf.dmz;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.threadpool.i;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -25,22 +27,22 @@ import java.util.List;
 
 public final class e
 {
-  private static e LrM;
-  private List<WeakReference<SnsTimelineVideoView>> LrN;
-  private List<SnsTimelineVideoView> LrO;
-  private int LrP;
-  public d LrQ;
-  public String LrR;
-  public SnsTimelineVideoView LrS;
-  private WeakReference<SnsTimelineVideoView> LrT;
+  private static e RUP;
+  private List<WeakReference<SnsTimelineVideoView>> RUQ;
+  private List<SnsTimelineVideoView> RUR;
+  private int RUS;
+  public d RUT;
+  public String RUU;
+  public SnsTimelineVideoView RUV;
+  private WeakReference<SnsTimelineVideoView> RUW;
   
   public e()
   {
     AppMethodBeat.i(100419);
-    this.LrN = new LinkedList();
-    this.LrO = new ArrayList();
-    this.LrP = 0;
-    this.LrT = null;
+    this.RUQ = new LinkedList();
+    this.RUR = new ArrayList();
+    this.RUS = 0;
+    this.RUW = null;
     AppMethodBeat.o(100419);
   }
   
@@ -69,27 +71,27 @@ public final class e
     return bool1;
   }
   
-  public static e fZg()
+  public static e hsu()
   {
     try
     {
       AppMethodBeat.i(100418);
-      if (LrM == null) {
-        LrM = new e();
+      if (RUP == null) {
+        RUP = new e();
       }
-      e locale = LrM;
+      e locale = RUP;
       AppMethodBeat.o(100418);
       return locale;
     }
     finally {}
   }
   
-  public static boolean fZi()
+  public static boolean hsw()
   {
-    AppMethodBeat.i(202768);
-    boolean bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vGA, true);
+    AppMethodBeat.i(308590);
+    boolean bool = ((c)com.tencent.mm.kernel.h.ax(c.class)).a(c.a.yWi, true);
     Log.i("MicroMsg.Sns.SnsVideoViewMgr", "enableNewSmallViewType %b", new Object[] { Boolean.valueOf(bool) });
-    AppMethodBeat.o(202768);
+    AppMethodBeat.o(308590);
     return bool;
   }
   
@@ -98,29 +100,29 @@ public final class e
     AppMethodBeat.i(100421);
     Log.i("MicroMsg.Sns.SnsVideoViewMgr", "stopAll");
     final SnsTimelineVideoView localSnsTimelineVideoView;
-    if (!this.LrO.isEmpty())
+    if (!this.RUR.isEmpty())
     {
-      localIterator = this.LrO.iterator();
+      localIterator = this.RUR.iterator();
       while (localIterator.hasNext())
       {
         localSnsTimelineVideoView = (SnsTimelineVideoView)localIterator.next();
         if ((localSnsTimelineVideoView != null) && (localSnsTimelineVideoView.getParent() != null))
         {
           ViewGroup localViewGroup = (ViewGroup)localSnsTimelineVideoView.getParent();
-          localSnsTimelineVideoView.Lry = false;
+          localSnsTimelineVideoView.RUC = false;
           localViewGroup.removeView(localSnsTimelineVideoView);
         }
         else if (localSnsTimelineVideoView != null)
         {
-          localSnsTimelineVideoView.fZa();
+          localSnsTimelineVideoView.hsl();
         }
       }
-      this.LrO.clear();
+      this.RUR.clear();
     }
-    this.LrS = null;
-    this.LrQ = null;
-    this.LrR = "";
-    Iterator localIterator = this.LrN.iterator();
+    this.RUV = null;
+    this.RUT = null;
+    this.RUU = "";
+    Iterator localIterator = this.RUQ.iterator();
     int j;
     for (int i = 0; localIterator.hasNext(); i = j)
     {
@@ -129,24 +131,24 @@ public final class e
       if (localSnsTimelineVideoView != null)
       {
         j = i;
-        if (!localSnsTimelineVideoView.Lrz) {
+        if (!localSnsTimelineVideoView.RUD) {
           j = i + 1;
         }
-        localSnsTimelineVideoView.fTZ();
-        com.tencent.e.h.ZvG.be(new Runnable()
+        localSnsTimelineVideoView.hmt();
+        com.tencent.threadpool.h.ahAA.bm(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(100417);
-            localSnsTimelineVideoView.KHA = true;
+            localSnsTimelineVideoView.Rha = true;
             localSnsTimelineVideoView.onDestroy();
             AppMethodBeat.o(100417);
           }
         });
       }
     }
-    Log.w("MicroMsg.Sns.SnsVideoViewMgr", "[fallbackRelease] releaseCount=%s allCount=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(this.LrN.size()) });
-    this.LrN.clear();
+    Log.w("MicroMsg.Sns.SnsVideoViewMgr", "[fallbackRelease] releaseCount=%s allCount=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(this.RUQ.size()) });
+    this.RUQ.clear();
     AppMethodBeat.o(100421);
   }
   
@@ -159,28 +161,28 @@ public final class e
       AppMethodBeat.o(100420);
       return;
     }
-    this.LrS = ((SnsTimelineVideoView)paramOnlineVideoView);
-    if (this.LrS != null) {
-      this.LrS.setVisibility(0);
+    this.RUV = ((SnsTimelineVideoView)paramOnlineVideoView);
+    if (this.RUV != null) {
+      this.RUV.setVisibility(0);
     }
-    Log.i("MicroMsg.Sns.SnsVideoViewMgr", "lxl startPlay, pos:%s, vid:%s, tlObjId:%s videoViewsSize: %s info %s", new Object[] { Integer.valueOf(0), paramd.fVT.Id, paramString, Integer.valueOf(this.LrO.size()), paramOnlineVideoView.fUh() });
+    Log.i("MicroMsg.Sns.SnsVideoViewMgr", "lxl startPlay, pos:%s, vid:%s, tlObjId:%s videoViewsSize: %s info %s", new Object[] { Integer.valueOf(0), paramd.ibT.Id, paramString, Integer.valueOf(this.RUR.size()), paramOnlineVideoView.hmB() });
     Object localObject1 = new ArrayList();
-    Object localObject2 = this.LrO.iterator();
+    Object localObject2 = this.RUR.iterator();
     while (((Iterator)localObject2).hasNext())
     {
       SnsTimelineVideoView localSnsTimelineVideoView = (SnsTimelineVideoView)((Iterator)localObject2).next();
       if (localSnsTimelineVideoView != paramOnlineVideoView) {
-        if ((!localSnsTimelineVideoView.isPlaying()) && (!localSnsTimelineVideoView.adH()))
+        if ((!localSnsTimelineVideoView.isPlaying()) && (!localSnsTimelineVideoView.aFF()))
         {
-          Log.i("MicroMsg.Sns.SnsVideoViewMgr", "%s remove isPlaying:%s, isPause:%s", new Object[] { Integer.valueOf(localSnsTimelineVideoView.hashCode()), Boolean.valueOf(localSnsTimelineVideoView.isPlaying()), Boolean.valueOf(localSnsTimelineVideoView.adH()) });
+          Log.i("MicroMsg.Sns.SnsVideoViewMgr", "%s remove isPlaying:%s, isPause:%s", new Object[] { Integer.valueOf(localSnsTimelineVideoView.hashCode()), Boolean.valueOf(localSnsTimelineVideoView.isPlaying()), Boolean.valueOf(localSnsTimelineVideoView.aFF()) });
           ((List)localObject1).add(localSnsTimelineVideoView);
         }
         else
         {
           boolean bool = Q(localSnsTimelineVideoView);
-          localSnsTimelineVideoView.yp(true);
+          localSnsTimelineVideoView.Dt(true);
           if (bool) {
-            localSnsTimelineVideoView.fYY();
+            localSnsTimelineVideoView.hsj();
           }
           Log.i("MicroMsg.Sns.SnsVideoViewMgr", "%s pause ", new Object[] { Integer.valueOf(localSnsTimelineVideoView.hashCode()) });
         }
@@ -193,73 +195,71 @@ public final class e
       if (((SnsTimelineVideoView)localObject2).getParent() != null) {
         ((ViewGroup)((SnsTimelineVideoView)localObject2).getParent()).removeView((View)localObject2);
       }
-      this.LrO.remove(localObject2);
-      ((SnsTimelineVideoView)localObject2).fZa();
+      this.RUR.remove(localObject2);
+      ((SnsTimelineVideoView)localObject2).hsl();
     }
-    if (this.LrS.Lru != null)
+    if (this.RUV.RUz != null)
     {
-      if ((Util.isEqual(paramString, this.LrS.Lrv)) && (this.LrS.Lru.fVT.Id.equals(paramd.fVT.Id)))
+      if ((Util.isEqual(paramString, this.RUV.Rcp)) && (this.RUV.RUz.ibT.Id.equals(paramd.ibT.Id)))
       {
-        Log.i("MicroMsg.Sns.SnsVideoViewMgr", "%s has been played or playing, just resume", new Object[] { Integer.valueOf(this.LrS.hashCode()) });
-        if (!this.LrS.isPlaying())
+        Log.i("MicroMsg.Sns.SnsVideoViewMgr", "%s has been played or playing, just resume", new Object[] { Integer.valueOf(this.RUV.hashCode()) });
+        if (!this.RUV.isPlaying())
         {
-          this.LrS.setScene(1);
-          paramOnlineVideoView = this.LrS;
+          this.RUV.setScene(1);
+          paramOnlineVideoView = this.RUV;
           paramd = new StringBuilder();
-          com.tencent.mm.kernel.h.aHE();
-          paramOnlineVideoView.setSessionId(new p(com.tencent.mm.kernel.b.getUin()).toString() + "_" + Util.nowMilliSecond());
-          this.LrS.setSessionTimestamp(Util.nowMilliSecond());
-          this.LrS.setSnsId(this.LrS.Lru.fLp);
-          this.LrS.setFilePath(ax.E(this.LrS.Lru.fVT));
+          com.tencent.mm.kernel.h.baC();
+          paramOnlineVideoView.setSessionId(new p(b.getUin()).toString() + "_" + Util.nowMilliSecond());
+          this.RUV.setSessionTimestamp(Util.nowMilliSecond());
+          this.RUV.setSnsId(this.RUV.RUz.hQX);
+          this.RUV.setFilePath(az.E(this.RUV.RUz.ibT));
         }
-        this.LrS.fLJ();
-        this.LrS.setMute(true);
-        this.LrS.abandonAudioFocus();
+        this.RUV.bcl();
+        this.RUV.setMute(true);
+        this.RUV.abandonAudioFocus();
         AppMethodBeat.o(100420);
         return;
       }
-      Log.i("MicroMsg.Sns.SnsVideoViewMgr", "%s played another video, destroy it", new Object[] { Integer.valueOf(this.LrS.hashCode()) });
-      this.LrS.fZc();
+      Log.i("MicroMsg.Sns.SnsVideoViewMgr", "%s played another video, destroy it", new Object[] { Integer.valueOf(this.RUV.hashCode()) });
+      this.RUV.hsn();
     }
-    this.LrS.Lru = paramd;
-    this.LrS.Lrv = paramString;
-    this.LrS.Lrt = SnsTimelineVideoView.a.LrF;
-    this.LrS.zXq = System.currentTimeMillis();
-    Log.i("MicroMsg.Sns.SnsVideoViewMgr", "%s startPlay, setState PLAYING %s", new Object[] { Integer.valueOf(this.LrS.hashCode()), paramOnlineVideoView.fUh() });
-    this.LrQ = paramd;
-    this.LrR = paramString;
-    this.LrS.setMute(true);
-    this.LrS.a(paramd.fVT, paramd.fAg, paramd.createTime);
-    this.LrS.abandonAudioFocus();
-    this.LrS.onResume();
-    this.LrS.setScene(1);
-    paramOnlineVideoView = this.LrS;
+    this.RUV.RUz = paramd;
+    this.RUV.Rcp = paramString;
+    this.RUV.RUy = SnsTimelineVideoView.a.RUJ;
+    this.RUV.FsW = System.currentTimeMillis();
+    Log.i("MicroMsg.Sns.SnsVideoViewMgr", "%s startPlay, setState PLAYING %s", new Object[] { Integer.valueOf(this.RUV.hashCode()), paramOnlineVideoView.hmB() });
+    this.RUT = paramd;
+    this.RUU = paramString;
+    this.RUV.setMute(true);
+    this.RUV.a(paramd.ibT, paramd.hES, paramd.createTime);
+    this.RUV.abandonAudioFocus();
+    this.RUV.onResume();
+    this.RUV.setScene(1);
+    paramOnlineVideoView = this.RUV;
     paramd = new StringBuilder();
-    com.tencent.mm.kernel.h.aHE();
-    paramOnlineVideoView.setSessionId(new p(com.tencent.mm.kernel.b.getUin()).toString() + "_" + Util.nowMilliSecond());
-    this.LrS.setSessionTimestamp(Util.nowMilliSecond());
-    this.LrS.setSnsId(this.LrS.Lru.fLp);
-    this.LrS.setFilePath(ax.E(this.LrS.Lru.fVT));
+    com.tencent.mm.kernel.h.baC();
+    paramOnlineVideoView.setSessionId(new p(b.getUin()).toString() + "_" + Util.nowMilliSecond());
+    this.RUV.setSessionTimestamp(Util.nowMilliSecond());
+    this.RUV.setSnsId(this.RUV.RUz.hQX);
+    this.RUV.setFilePath(az.E(this.RUV.RUz.ibT));
     Log.i("MicroMsg.Sns.SnsVideoViewMgr", "lxl normal start");
     AppMethodBeat.o(100420);
   }
   
-  public final void aT(Activity paramActivity)
+  public final boolean bbn(String paramString)
   {
-    AppMethodBeat.i(100424);
-    this.LrP -= 1;
-    Log.i("MicroMsg.Sns.SnsVideoViewMgr", "onUIDestroy %d", new Object[] { Integer.valueOf(this.LrP) });
-    if ((this.LrP <= 0) || ((paramActivity instanceof SnsTimeLineUI)))
+    AppMethodBeat.i(308615);
+    if ((Util.isNullOrNil(this.RUU)) || (Util.isNullOrNil(paramString)))
     {
-      if (this.LrP > 0) {
-        com.tencent.mm.plugin.report.service.h.IzE.p(31L, 4L, 1L);
-      }
-      stopAll();
+      AppMethodBeat.o(308615);
+      return false;
     }
-    AppMethodBeat.o(100424);
+    boolean bool = this.RUU.equals(paramString);
+    AppMethodBeat.o(308615);
+    return bool;
   }
   
-  public final boolean bcA(String paramString)
+  public final boolean bbo(String paramString)
   {
     AppMethodBeat.i(100425);
     if (Util.isNullOrNil(paramString))
@@ -267,11 +267,11 @@ public final class e
       AppMethodBeat.o(100425);
       return false;
     }
-    Iterator localIterator = this.LrO.iterator();
+    Iterator localIterator = this.RUR.iterator();
     while (localIterator.hasNext())
     {
       SnsTimelineVideoView localSnsTimelineVideoView = (SnsTimelineVideoView)localIterator.next();
-      if ((paramString.equals(localSnsTimelineVideoView.Lrv)) && (localSnsTimelineVideoView.Lrt != SnsTimelineVideoView.a.LrD))
+      if ((paramString.equals(localSnsTimelineVideoView.Rcp)) && (localSnsTimelineVideoView.RUy != SnsTimelineVideoView.a.RUH))
       {
         AppMethodBeat.o(100425);
         return true;
@@ -281,7 +281,7 @@ public final class e
     return false;
   }
   
-  public final SnsTimelineVideoView bcB(String paramString)
+  public final SnsTimelineVideoView bbp(String paramString)
   {
     AppMethodBeat.i(100426);
     if (Util.isNullOrNil(paramString))
@@ -289,13 +289,13 @@ public final class e
       AppMethodBeat.o(100426);
       return null;
     }
-    Object localObject = this.LrO.iterator();
+    Object localObject = this.RUR.iterator();
     SnsTimelineVideoView localSnsTimelineVideoView;
     while (((Iterator)localObject).hasNext())
     {
       localSnsTimelineVideoView = (SnsTimelineVideoView)((Iterator)localObject).next();
-      if (paramString.equals(localSnsTimelineVideoView.Lrv)) {
-        this.LrO.remove(localSnsTimelineVideoView);
+      if (paramString.equals(localSnsTimelineVideoView.Rcp)) {
+        this.RUR.remove(localSnsTimelineVideoView);
       }
     }
     for (;;)
@@ -311,7 +311,7 @@ public final class e
         AppMethodBeat.o(100426);
         return localSnsTimelineVideoView;
       }
-      if (localSnsTimelineVideoView != this.LrS)
+      if (localSnsTimelineVideoView != this.RUV)
       {
         AppMethodBeat.o(100426);
         return localSnsTimelineVideoView;
@@ -319,42 +319,42 @@ public final class e
       if (localSnsTimelineVideoView == null)
       {
         localObject = null;
-        localSnsTimelineVideoView.Lry = true;
+        localSnsTimelineVideoView.RUC = true;
         localViewGroup.removeView(localSnsTimelineVideoView);
         if (((SnsTimelineVideoView)localObject).getParent() != null)
         {
-          ((SnsTimelineVideoView)localObject).fZb();
-          ((SnsTimelineVideoView)localObject).Lry = true;
+          ((SnsTimelineVideoView)localObject).hsm();
+          ((SnsTimelineVideoView)localObject).RUC = true;
           ((ViewGroup)((SnsTimelineVideoView)localObject).getParent()).removeView((View)localObject);
         }
         ((SnsTimelineVideoView)localObject).setVisibility(0);
-        ((SnsTimelineVideoView)localObject).setVideoScaleType(i.e.RcH);
+        ((SnsTimelineVideoView)localObject).setVideoScaleType(i.e.XYN);
         localViewGroup.addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
         ((SnsTimelineVideoView)localObject).setTag(new a());
-        ((SnsTimelineVideoView)localObject).a(localSnsTimelineVideoView.Lru.fVT, localSnsTimelineVideoView.Lru.fAg, localSnsTimelineVideoView.Lru.createTime);
+        ((SnsTimelineVideoView)localObject).a(localSnsTimelineVideoView.RUz.ibT, localSnsTimelineVideoView.RUz.hES, localSnsTimelineVideoView.RUz.createTime);
         ((SnsTimelineVideoView)localObject).setThumbViewScaleType(ImageView.ScaleType.CENTER_CROP);
-        if (!fZi()) {
+        if (!hsw()) {
           break label306;
         }
-        this.LrQ = localSnsTimelineVideoView.Lru;
-        this.LrR = localSnsTimelineVideoView.Lrv;
-        this.LrT = new WeakReference(localObject);
+        this.RUT = localSnsTimelineVideoView.RUz;
+        this.RUU = localSnsTimelineVideoView.Rcp;
+        this.RUW = new WeakReference(localObject);
       }
       for (;;)
       {
         Log.i("MicroMsg.Sns.SnsVideoViewMgr", "findAndReCreateVideoView lxl reAttach succ %s", new Object[] { paramString });
         AppMethodBeat.o(100426);
         return localSnsTimelineVideoView;
-        localObject = ie(localSnsTimelineVideoView.getContext());
+        localObject = jU(localSnsTimelineVideoView.getContext());
         break;
         label306:
-        a((OnlineVideoView)localObject, localSnsTimelineVideoView.Lru, localSnsTimelineVideoView.Lrv);
+        a((OnlineVideoView)localObject, localSnsTimelineVideoView.RUz, localSnsTimelineVideoView.Rcp);
       }
       localSnsTimelineVideoView = null;
     }
   }
   
-  public final SnsTimelineVideoView bcC(String paramString)
+  public final SnsTimelineVideoView bbq(String paramString)
   {
     AppMethodBeat.i(100427);
     if (Util.isNullOrNil(paramString))
@@ -362,11 +362,11 @@ public final class e
       AppMethodBeat.o(100427);
       return null;
     }
-    Iterator localIterator = this.LrO.iterator();
+    Iterator localIterator = this.RUR.iterator();
     while (localIterator.hasNext())
     {
       SnsTimelineVideoView localSnsTimelineVideoView = (SnsTimelineVideoView)localIterator.next();
-      if (paramString.equals(localSnsTimelineVideoView.Lrv))
+      if (paramString.equals(localSnsTimelineVideoView.Rcp))
       {
         AppMethodBeat.o(100427);
         return localSnsTimelineVideoView;
@@ -376,49 +376,51 @@ public final class e
     return null;
   }
   
-  public final boolean bcz(String paramString)
-  {
-    AppMethodBeat.i(202761);
-    if ((Util.isNullOrNil(this.LrR)) || (Util.isNullOrNil(paramString)))
-    {
-      AppMethodBeat.o(202761);
-      return false;
-    }
-    boolean bool = this.LrR.equals(paramString);
-    AppMethodBeat.o(202761);
-    return bool;
-  }
-  
-  public final void dmi()
+  public final void bck()
   {
     AppMethodBeat.i(100422);
     Log.i("MicroMsg.Sns.SnsVideoViewMgr", "pausePlay");
-    if (this.LrS != null)
+    if (this.RUV != null)
     {
-      boolean bool = Q(this.LrS);
-      this.LrS.yp(true);
+      boolean bool = Q(this.RUV);
+      this.RUV.Dt(true);
       if (bool) {
-        this.LrS.fYY();
+        this.RUV.hsj();
       }
     }
     AppMethodBeat.o(100422);
   }
   
-  public final void fZh()
+  public final void bx(Activity paramActivity)
   {
-    this.LrP += 1;
+    AppMethodBeat.i(100424);
+    this.RUS -= 1;
+    Log.i("MicroMsg.Sns.SnsVideoViewMgr", "onUIDestroy %d", new Object[] { Integer.valueOf(this.RUS) });
+    if ((this.RUS <= 0) || ((paramActivity instanceof SnsTimeLineUI)))
+    {
+      if (this.RUS > 0) {
+        com.tencent.mm.plugin.report.service.h.OAn.p(31L, 4L, 1L);
+      }
+      stopAll();
+    }
+    AppMethodBeat.o(100424);
   }
   
-  public final SnsTimelineVideoView ie(Context paramContext)
+  public final void hsv()
+  {
+    this.RUS += 1;
+  }
+  
+  public final SnsTimelineVideoView jU(Context paramContext)
   {
     AppMethodBeat.i(100428);
     Object localObject = null;
-    Iterator localIterator = this.LrO.iterator();
+    Iterator localIterator = this.RUR.iterator();
     SnsTimelineVideoView localSnsTimelineVideoView;
     if (localIterator.hasNext())
     {
       localSnsTimelineVideoView = (SnsTimelineVideoView)localIterator.next();
-      if (localSnsTimelineVideoView.Lrt != SnsTimelineVideoView.a.LrD) {
+      if (localSnsTimelineVideoView.RUy != SnsTimelineVideoView.a.RUH) {
         break label494;
       }
       localObject = localSnsTimelineVideoView;
@@ -428,39 +430,39 @@ public final class e
     {
       break;
       if (localObject == null) {
-        if (this.LrO.size() < 3)
+        if (this.RUR.size() < 3)
         {
           paramContext = new SnsTimelineVideoView(paramContext);
-          this.LrO.add(paramContext);
-          this.LrN.add(new WeakReference(paramContext));
+          this.RUR.add(paramContext);
+          this.RUQ.add(new WeakReference(paramContext));
         }
       }
       for (;;)
       {
-        paramContext.Lrt = SnsTimelineVideoView.a.LrE;
-        paramContext.fUe();
+        paramContext.RUy = SnsTimelineVideoView.a.RUI;
+        paramContext.hmy();
         Log.i("MicroMsg.Sns.SnsVideoViewMgr", "%s getAvailableVideoView, setState ATTACHING", new Object[] { Integer.valueOf(paramContext.hashCode()) });
         AppMethodBeat.o(100428);
         return paramContext;
         localObject = new ArrayList();
         int i = -1;
         int j = 0;
-        while (j < this.LrO.size())
+        while (j < this.RUR.size())
         {
-          localSnsTimelineVideoView = (SnsTimelineVideoView)this.LrO.get(j);
+          localSnsTimelineVideoView = (SnsTimelineVideoView)this.RUR.get(j);
           int k = i;
-          if (localSnsTimelineVideoView.Lrt != SnsTimelineVideoView.a.LrF)
+          if (localSnsTimelineVideoView.RUy != SnsTimelineVideoView.a.RUJ)
           {
             k = i;
-            if (localSnsTimelineVideoView.zXq < 9223372036854775807L)
+            if (localSnsTimelineVideoView.FsW < 9223372036854775807L)
             {
               k = i;
-              if (!localSnsTimelineVideoView.Lrx) {
+              if (!localSnsTimelineVideoView.RUB) {
                 k = j;
               }
             }
           }
-          if (localSnsTimelineVideoView.Lrx) {
+          if (localSnsTimelineVideoView.RUB) {
             ((List)localObject).add(localSnsTimelineVideoView);
           }
           j += 1;
@@ -469,25 +471,25 @@ public final class e
         if ((i < 0) && (((List)localObject).size() > 0))
         {
           localSnsTimelineVideoView = (SnsTimelineVideoView)((List)localObject).get(0);
-          this.LrO.remove(localSnsTimelineVideoView);
+          this.RUR.remove(localSnsTimelineVideoView);
           if ((localSnsTimelineVideoView != null) && (localSnsTimelineVideoView.getParent() != null))
           {
-            localSnsTimelineVideoView.Lry = false;
+            localSnsTimelineVideoView.RUC = false;
             ((ViewGroup)localSnsTimelineVideoView.getParent()).removeView(localSnsTimelineVideoView);
           }
           for (;;)
           {
             paramContext = new SnsTimelineVideoView(paramContext);
-            this.LrO.add(paramContext);
-            this.LrN.add(new WeakReference(paramContext));
+            this.RUR.add(paramContext);
+            this.RUQ.add(new WeakReference(paramContext));
             Log.i("MicroMsg.Sns.SnsVideoViewMgr", "use new one, removes size:%s, first:%s", new Object[] { Integer.valueOf(((List)localObject).size()), Integer.valueOf(((SnsTimelineVideoView)((List)localObject).get(0)).hashCode()) });
             break;
             if (localSnsTimelineVideoView != null) {
-              localSnsTimelineVideoView.fZa();
+              localSnsTimelineVideoView.hsl();
             }
           }
         }
-        paramContext = this.LrO;
+        paramContext = this.RUR;
         if (i < 0) {}
         for (j = 0;; j = i)
         {
@@ -504,12 +506,12 @@ public final class e
   {
     AppMethodBeat.i(100423);
     Log.i("MicroMsg.Sns.SnsVideoViewMgr", "pausePlay onUIPause");
-    if (this.LrS != null)
+    if (this.RUV != null)
     {
-      boolean bool = Q(this.LrS);
-      this.LrS.fYZ();
+      boolean bool = Q(this.RUV);
+      this.RUV.hsk();
       if (bool) {
-        this.LrS.fYY();
+        this.RUV.hsj();
       }
     }
     AppMethodBeat.o(100423);
@@ -519,7 +521,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.video.e
  * JD-Core Version:    0.7.0.1
  */

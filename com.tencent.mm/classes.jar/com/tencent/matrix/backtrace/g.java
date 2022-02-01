@@ -12,39 +12,50 @@ import java.util.HashSet;
 public final class g
 {
   private static boolean sLibraryLoaded = false;
-  private volatile a cQV;
-  private b cRS = new b();
-  private boolean cSb = false;
+  private volatile a eMm;
+  private final b eNj = new b();
+  private boolean eNs = false;
   private volatile boolean mConfigured;
-  private Handler mHandler = new Handler(Looper.getMainLooper());
+  private final Handler mHandler = new Handler(Looper.getMainLooper());
   private volatile boolean mInitialized;
   
-  public static String VD()
+  public static void a(d paramd)
+  {
+    b.eMo = paramd;
+  }
+  
+  private static boolean awm()
+  {
+    String str = Build.CPU_ABI;
+    return ("arm64-v8a".equalsIgnoreCase(str)) || ("x86_64".equalsIgnoreCase(str)) || ("mips64".equalsIgnoreCase(str));
+  }
+  
+  public static String awn()
   {
     if (Build.VERSION.SDK_INT >= 29)
     {
-      if (!is64BitRuntime()) {
+      if (!awm()) {
         return "/apex/com.android.runtime/lib/";
       }
       return "/apex/com.android.runtime/lib64/";
     }
-    if (!is64BitRuntime()) {
+    if (!awm()) {
       return "/system/lib/";
     }
     return "/system/lib64/";
   }
   
-  public static g VE()
+  public static g awo()
   {
-    return e.cSy;
+    return e.eNO;
   }
   
-  private void VF()
+  private void awp()
   {
-    if (this.cSb) {
+    if (this.eNs) {
       return;
     }
-    this.cSb = false;
+    this.eNs = false;
     this.mHandler.postDelayed(new Runnable()
     {
       public final void run()
@@ -56,14 +67,9 @@ public final class g
     }, 21600000L);
   }
   
-  public static void a(d paramd)
+  public static String bP(Context paramContext)
   {
-    b.cQX = paramd;
-  }
-  
-  public static String bf(Context paramContext)
-  {
-    if (!is64BitRuntime()) {}
+    if (!awm()) {}
     for (String str = "arm";; str = "arm64") {
       return new File(new File(paramContext.getApplicationInfo().nativeLibraryDir).getParentFile().getParentFile(), "/oat/" + str + "/base.odex").getAbsolutePath();
     }
@@ -74,28 +80,26 @@ public final class g
     WeChatBacktraceNative.enableLogger(paramBoolean);
   }
   
-  private static boolean is64BitRuntime()
-  {
-    String str = Build.CPU_ABI;
-    return ("arm64-v8a".equalsIgnoreCase(str)) || ("x86_64".equalsIgnoreCase(str)) || ("mips64".equalsIgnoreCase(str));
-  }
-  
   static void loadLibrary()
   {
-    System.loadLibrary("wechatbacktrace");
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG("wechatbacktrace");
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/matrix/backtrace/WeChatBacktrace", "loadLibrary", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/matrix/backtrace/WeChatBacktrace", "loadLibrary", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
   }
   
   /* Error */
-  public final a bg(Context paramContext)
+  public final a bQ(Context paramContext)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 409	com/tencent/matrix/backtrace/g:cQV	Lcom/tencent/matrix/backtrace/g$a;
+    //   3: getfield 435	com/tencent/matrix/backtrace/g:eMm	Lcom/tencent/matrix/backtrace/g$a;
     //   6: ifnull +12 -> 18
     //   9: aload_0
-    //   10: getfield 409	com/tencent/matrix/backtrace/g:cQV	Lcom/tencent/matrix/backtrace/g$a;
+    //   10: getfield 435	com/tencent/matrix/backtrace/g:eMm	Lcom/tencent/matrix/backtrace/g$a;
     //   13: astore_1
     //   14: aload_0
     //   15: monitorexit
@@ -106,13 +110,13 @@ public final class g
     //   22: dup
     //   23: aload_1
     //   24: aload_0
-    //   25: invokespecial 412	com/tencent/matrix/backtrace/g$a:<init>	(Landroid/content/Context;Lcom/tencent/matrix/backtrace/g;)V
-    //   28: putfield 409	com/tencent/matrix/backtrace/g:cQV	Lcom/tencent/matrix/backtrace/g$a;
+    //   25: invokespecial 438	com/tencent/matrix/backtrace/g$a:<init>	(Landroid/content/Context;Lcom/tencent/matrix/backtrace/g;)V
+    //   28: putfield 435	com/tencent/matrix/backtrace/g:eMm	Lcom/tencent/matrix/backtrace/g$a;
     //   31: aload_0
     //   32: iconst_1
-    //   33: putfield 108	com/tencent/matrix/backtrace/g:mInitialized	Z
+    //   33: putfield 73	com/tencent/matrix/backtrace/g:mInitialized	Z
     //   36: aload_0
-    //   37: getfield 409	com/tencent/matrix/backtrace/g:cQV	Lcom/tencent/matrix/backtrace/g$a;
+    //   37: getfield 435	com/tencent/matrix/backtrace/g:eMm	Lcom/tencent/matrix/backtrace/g$a;
     //   40: astore_1
     //   41: goto -27 -> 14
     //   44: astore_1
@@ -132,115 +136,114 @@ public final class g
   
   public static final class a
   {
-    public boolean UY = false;
-    String cQR;
-    long cRz = 3000L;
-    HashSet<String> cSe = new HashSet();
-    g.d cSf = g.d.cSt;
-    g.c cSg = null;
-    boolean cSh = false;
-    public boolean cSi = false;
-    boolean cSj = true;
-    boolean cSk = false;
-    boolean cSl = false;
-    boolean cSm = true;
-    g.f cSn = g.f.cSz;
-    boolean cSo = false;
-    boolean cSp = false;
-    String cSq = null;
-    public g cSr;
+    public boolean bBe = false;
+    long eMQ = 3000L;
+    String eMi;
+    boolean eNA = true;
+    boolean eNB = false;
+    boolean eNC = true;
+    g.f eND = g.f.eNP;
+    boolean eNE = false;
+    boolean eNF = false;
+    String eNG = null;
+    public final g eNH;
+    HashSet<String> eNv = new HashSet();
+    g.d eNw = g.d.eNJ;
+    g.c eNx = null;
+    boolean eNy = false;
+    public boolean eNz = false;
     Context mContext;
     
     a(Context paramContext, g paramg)
     {
       this.mContext = paramContext;
-      this.cSr = paramg;
-      this.cSe.add(paramContext.getApplicationInfo().nativeLibraryDir);
-      this.cSe.add(g.VD());
-      this.cSe.add(g.bf(paramContext));
-      this.cSk = a.aU(this.mContext);
+      this.eNH = paramg;
+      this.eNv.add(paramContext.getApplicationInfo().nativeLibraryDir);
+      this.eNv.add(g.awn());
+      this.eNv.add(g.bP(paramContext));
+      this.eNB = a.bE(this.mContext);
     }
     
-    public final a VG()
+    public final a awq()
     {
-      if (this.UY) {
+      if (this.bBe) {
         return this;
       }
-      this.cSe.clear();
+      this.eNv.clear();
       return this;
     }
     
-    public final a VH()
+    public final a awr()
     {
-      if (this.UY) {
+      if (this.bBe) {
         return this;
       }
-      this.cSo = false;
+      this.eNE = false;
       return this;
     }
     
-    public final a VI()
+    public final a aws()
     {
-      if (this.UY) {
+      if (this.bBe) {
         return this;
       }
-      this.cSp = true;
+      this.eNF = true;
       return this;
     }
     
     public final a b(g.d paramd)
     {
-      if (this.UY) {}
+      if (this.bBe) {}
       while (paramd == null) {
         return this;
       }
-      this.cSf = paramd;
+      this.eNw = paramd;
       return this;
     }
     
-    public final a cP(boolean paramBoolean)
+    public final a dw(boolean paramBoolean)
     {
-      if (this.UY) {
+      if (this.bBe) {
         return this;
       }
-      this.cSh = paramBoolean;
+      this.eNy = paramBoolean;
       return this;
     }
     
-    public final a eK(String paramString)
+    public final a gj(String paramString)
     {
-      if (this.UY) {
+      if (this.bBe) {
         return this;
       }
-      this.cSe.add(paramString);
+      this.eNv.add(paramString);
       return this;
     }
     
-    public final a eL(String paramString)
+    public final a gk(String paramString)
     {
-      if (this.UY) {
+      if (this.bBe) {
         return this;
       }
-      this.cSq = paramString;
+      this.eNG = paramString;
       return this;
     }
     
     public final String toString()
     {
-      StringBuilder localStringBuilder = new StringBuilder("\nWeChat backtrace configurations: \n>>> Backtrace Mode: ").append(this.cSf).append("\n>>> Quicken always on: ").append(this.cSi).append("\n>>> Saving Path: ");
+      StringBuilder localStringBuilder = new StringBuilder("\nWeChat backtrace configurations: \n>>> Backtrace Mode: ").append(this.eNw).append("\n>>> Quicken always on: ").append(this.eNz).append("\n>>> Saving Path: ");
       Object localObject;
-      if (this.cQR != null)
+      if (this.eMi != null)
       {
-        localObject = this.cQR;
+        localObject = this.eMi;
         localObject = localStringBuilder.append((String)localObject).append("\n>>> Custom Library Loader: ");
-        if (this.cSg == null) {
-          break label223;
+        if (this.eNx == null) {
+          break label211;
         }
       }
-      label223:
+      label211:
       for (boolean bool = true;; bool = false)
       {
-        return bool + "\n>>> Directories to Warm-up: " + this.cSe.toString() + "\n>>> Is Warm-up Process: " + this.cSk + "\n>>> Warm-up Timing: " + this.cSn + "\n>>> Warm-up Delay: " + this.cRz + "ms\n>>> Warm-up in isolate process: " + this.cSm + "\n>>> Invoke quicken generation immediately: " + this.cSl + "\n>>> Enable logger: " + this.cSo + "\n>>> Enable Isolate Process logger: " + this.cSp + "\n>>> Path of XLog: " + this.cSq + "\n>>> Cool-down: " + this.cSh + "\n>>> Cool-down if Apk Updated: " + this.cSj + "\n";
+        return bool + "\n>>> Directories to Warm-up: " + this.eNv.toString() + "\n>>> Is Warm-up Process: " + this.eNB + "\n>>> Warm-up Timing: " + this.eND + "\n>>> Warm-up Delay: " + this.eMQ + "ms\n>>> Warm-up in isolate process: " + this.eNC + "\n>>> Enable logger: " + this.eNE + "\n>>> Enable Isolate Process logger: " + this.eNF + "\n>>> Path of XLog: " + this.eNG + "\n>>> Cool-down: " + this.eNy + "\n>>> Cool-down if Apk Updated: " + this.eNA + "\n";
         localObject = f.a(this);
         break;
       }
@@ -269,7 +272,7 @@ public final class g
     
     public final String toString()
     {
-      switch (g.2.cSd[ordinal()])
+      switch (g.2.eNu[ordinal()])
       {
       default: 
         return "Unreachable.";
@@ -288,7 +291,7 @@ public final class g
   
   static final class e
   {
-    public static final g cSy = new g();
+    public static final g eNO = new g();
   }
   
   public static enum f
@@ -298,7 +301,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.backtrace.g
  * JD-Core Version:    0.7.0.1
  */

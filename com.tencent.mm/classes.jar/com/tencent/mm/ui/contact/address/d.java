@@ -2,285 +2,309 @@ package com.tencent.mm.ui.contact.address;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.f;
 import com.tencent.mm.R.l;
-import com.tencent.mm.plugin.livelist.a;
-import com.tencent.mm.plugin.livelist.b;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.aa;
+import com.tencent.mm.openim.api.e;
+import com.tencent.mm.pluginsdk.ui.span.p;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.storage.as;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.au;
 import java.util.ArrayList;
 import java.util.Locale;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import kotlin.n.n;
-import kotlin.t;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/contact/address/AddressLiveListItem;", "Lcom/tencent/mm/plugin/livelist/BaseMMLiveListItem;", "contact", "Lcom/tencent/mm/storage/Contact;", "type", "", "showHeadCode", "(Lcom/tencent/mm/storage/Contact;II)V", "compareContentList", "Ljava/util/ArrayList;", "", "getCompareContentList", "()Ljava/util/ArrayList;", "setCompareContentList", "(Ljava/util/ArrayList;)V", "getContact", "()Lcom/tencent/mm/storage/Contact;", "showDivider", "", "getShowDivider", "()Z", "setShowDivider", "(Z)V", "showHead", "getShowHead", "setShowHead", "getShowHeadCode", "()I", "showHeadDisplay", "getShowHeadDisplay", "()Ljava/lang/String;", "setShowHeadDisplay", "(Ljava/lang/String;)V", "getType", "clone", "Lcom/tencent/mm/plugin/livelist/IMMLiveListItem;", "compareTo", "other", "getItemType", "getUniqueId", "isSameContent", "app_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/contact/address/AddressLiveListItem;", "Lcom/tencent/mm/plugin/mvvmlist/BaseMvvmListItem;", "contact", "Lcom/tencent/mm/storage/Contact;", "type", "", "showHeadCode", "(Lcom/tencent/mm/storage/Contact;II)V", "compareContentList", "Ljava/util/ArrayList;", "", "getCompareContentList", "()Ljava/util/ArrayList;", "setCompareContentList", "(Ljava/util/ArrayList;)V", "getContact", "()Lcom/tencent/mm/storage/Contact;", "nickname", "", "getNickname", "()Ljava/lang/CharSequence;", "setNickname", "(Ljava/lang/CharSequence;)V", "openIMWording", "getOpenIMWording", "()Ljava/lang/String;", "setOpenIMWording", "(Ljava/lang/String;)V", "showDivider", "", "getShowDivider", "()Z", "setShowDivider", "(Z)V", "showHead", "getShowHead", "setShowHead", "getShowHeadCode", "()I", "showHeadDisplay", "getShowHeadDisplay", "setShowHeadDisplay", "getType", "compareTo", "other", "getItemType", "getUniqueId", "isSameContent", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
-  extends a
+  extends com.tencent.mm.plugin.mvvmlist.a<d>
 {
-  boolean WGl;
-  final int WGm;
-  String WGn;
-  private ArrayList<String> Xxd;
-  final as contact;
-  boolean tBr;
+  boolean FWu;
+  final int FWv;
+  String FWw;
+  private ArrayList<String> afjl;
+  String afjm;
+  final au contact;
+  CharSequence pJG;
   final int type;
+  boolean wFP;
   
-  public d(as paramas, int paramInt1, int paramInt2)
+  public d(au paramau, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(266950);
-    this.contact = paramas;
+    AppMethodBeat.i(253256);
+    this.contact = paramau;
     this.type = paramInt1;
-    this.WGm = paramInt2;
-    this.WGn = "";
-    this.tBr = true;
-    this.Xxd = new ArrayList(5);
-    paramas = this.contact.apk();
-    if (paramas != null) {
-      if (!n.ba((CharSequence)paramas))
+    this.FWv = paramInt2;
+    this.FWw = "";
+    this.wFP = true;
+    this.afjl = new ArrayList(5);
+    this.afjm = "";
+    paramau = aa.b(this.contact);
+    paramau = p.d(MMApplicationContext.getContext(), (CharSequence)paramau, com.tencent.mm.cd.a.br(MMApplicationContext.getContext(), R.f.NormalTextSize));
+    s.s(paramau, "spanForSmiley(MMApplicat… R.dimen.NormalTextSize))");
+    this.pJG = ((CharSequence)paramau);
+    paramau = this.contact.field_conRemarkPYFull;
+    if (paramau != null) {
+      if (!n.bp((CharSequence)paramau))
       {
         paramInt1 = 1;
         if (paramInt1 != 1) {
-          break label138;
+          break label425;
         }
-        paramas = this.contact.apk();
+        paramInt1 = 1;
+        label132:
+        if (paramInt1 == 0) {
+          break label430;
+        }
+        paramau = this.contact.field_conRemarkPYFull;
       }
     }
     for (;;)
     {
-      Object localObject1 = this.Xxd;
-      Object localObject2;
-      if (paramas != null)
+      ArrayList localArrayList = this.afjl;
+      if (paramau == null)
       {
-        localObject2 = Locale.getDefault();
-        p.j(localObject2, "Locale.getDefault()");
-        if (paramas == null)
-        {
-          paramas = new t("null cannot be cast to non-null type java.lang.String");
-          AppMethodBeat.o(266950);
-          throw paramas;
-          paramInt1 = 0;
-          break;
-          label138:
-          paramas = this.contact.api();
-          if (paramas != null)
-          {
-            if (!n.ba((CharSequence)paramas)) {}
-            for (paramInt1 = 1;; paramInt1 = 0)
-            {
-              if (paramInt1 != 1) {
-                break label718;
-              }
-              paramas = this.contact.api();
-              break;
-            }
-          }
-          paramas = "";
-          continue;
+        paramau = "";
+        label157:
+        localArrayList.add(paramau);
+        paramau = this.contact.field_conRemark;
+        if (paramau == null) {
+          break label532;
         }
-        paramas = paramas.toUpperCase((Locale)localObject2);
-        p.j(paramas, "(this as java.lang.String).toUpperCase(locale)");
-        if (paramas != null) {
-          break label715;
+        if (n.bp((CharSequence)paramau)) {
+          break label527;
         }
+        paramInt1 = 1;
+        label188:
+        if (paramInt1 != 1) {
+          break label532;
+        }
+        paramInt1 = 1;
+        label195:
+        if (paramInt1 == 0) {
+          break label537;
+        }
+        paramau = this.contact.field_conRemark;
       }
-      paramas = "";
-      label301:
-      label706:
-      label709:
-      label715:
       for (;;)
       {
-        ((ArrayList)localObject1).add(paramas);
-        paramas = this.contact.apg();
-        if (paramas != null) {
-          if (!n.ba((CharSequence)paramas))
+        localArrayList = this.afjl;
+        if (paramau == null)
+        {
+          paramau = "";
+          label220:
+          localArrayList.add(paramau);
+          localArrayList = this.afjl;
+          paramau = this.contact.aJu();
+          if (paramau != null) {
+            break label634;
+          }
+          paramau = "";
+          label248:
+          localArrayList.add(paramau);
+          localArrayList = this.afjl;
+          paramau = this.contact.field_nickname;
+          if (paramau != null) {
+            break label675;
+          }
+          paramau = "";
+          label276:
+          localArrayList.add(paramau);
+          localArrayList = this.afjl;
+          paramau = this.contact.field_username;
+          if (paramau != null) {
+            break label716;
+          }
+          paramau = "";
+          label304:
+          localArrayList.add(paramau);
+          paramau = c.afjd;
+          s.u(this, "item");
+          paramau = MMApplicationContext.getContext();
+          if (this.FWv != 123) {
+            break label757;
+          }
+          paramau = "#";
+          label337:
+          this.FWw = paramau;
+          if (au.bwO(this.contact.field_username))
           {
-            paramInt1 = 1;
-            if (paramInt1 != 1) {
-              break label301;
+            paramau = (e)h.ax(e.class);
+            if (paramau != null) {
+              break label795;
             }
-            paramas = this.contact.apg();
+            paramau = "";
           }
         }
         for (;;)
         {
-          localObject1 = this.Xxd;
-          if (paramas != null)
-          {
-            localObject2 = Locale.getDefault();
-            p.j(localObject2, "Locale.getDefault()");
-            if (paramas == null)
+          this.afjm = paramau;
+          if ((!Util.isNullOrNil(this.afjm)) && (s.p("3552365301", this.contact.field_openImAppid))) {
+            this.afjm = s.X("@", this.afjm);
+          }
+          AppMethodBeat.o(253256);
+          return;
+          paramInt1 = 0;
+          break;
+          label425:
+          paramInt1 = 0;
+          break label132;
+          label430:
+          paramau = this.contact.aJu();
+          if (paramau != null) {
+            if (!n.bp((CharSequence)paramau))
             {
-              paramas = new t("null cannot be cast to non-null type java.lang.String");
-              AppMethodBeat.o(266950);
-              throw paramas;
-              paramInt1 = 0;
-              break;
-              paramas = this.contact.api();
-              if (paramas != null)
-              {
-                if (!n.ba((CharSequence)paramas)) {}
-                for (paramInt1 = 1;; paramInt1 = 0)
-                {
-                  if (paramInt1 != 1) {
-                    break label709;
-                  }
-                  paramas = this.contact.api();
-                  break;
-                }
+              paramInt1 = 1;
+              label454:
+              if (paramInt1 != 1) {
+                break label481;
               }
-              paramas = "";
-              continue;
-            }
-            paramas = paramas.toUpperCase((Locale)localObject2);
-            p.j(paramas, "(this as java.lang.String).toUpperCase(locale)");
-            if (paramas != null) {
-              break label706;
             }
           }
-          paramas = "";
-          for (;;)
+          label481:
+          for (paramInt1 = 1;; paramInt1 = 0)
           {
-            ((ArrayList)localObject1).add(paramas);
-            localObject2 = this.Xxd;
-            paramas = this.contact.api();
-            if (paramas != null)
+            if (paramInt1 == 0) {
+              break label837;
+            }
+            paramau = this.contact.aJu();
+            break;
+            paramInt1 = 0;
+            break label454;
+          }
+          Object localObject = Locale.getDefault();
+          s.s(localObject, "getDefault()");
+          localObject = paramau.toUpperCase((Locale)localObject);
+          s.s(localObject, "(this as java.lang.String).toUpperCase(locale)");
+          paramau = (au)localObject;
+          if (localObject != null) {
+            break label157;
+          }
+          paramau = "";
+          break label157;
+          label527:
+          paramInt1 = 0;
+          break label188;
+          label532:
+          paramInt1 = 0;
+          break label195;
+          label537:
+          paramau = this.contact.aJu();
+          if (paramau != null) {
+            if (!n.bp((CharSequence)paramau))
             {
-              localObject1 = Locale.getDefault();
-              p.j(localObject1, "Locale.getDefault()");
-              if (paramas == null)
-              {
-                paramas = new t("null cannot be cast to non-null type java.lang.String");
-                AppMethodBeat.o(266950);
-                throw paramas;
+              paramInt1 = 1;
+              label561:
+              if (paramInt1 != 1) {
+                break label588;
               }
-              localObject1 = paramas.toUpperCase((Locale)localObject1);
-              p.j(localObject1, "(this as java.lang.String).toUpperCase(locale)");
-              paramas = (as)localObject1;
-              if (localObject1 != null) {}
-            }
-            else
-            {
-              paramas = "";
-            }
-            ((ArrayList)localObject2).add(paramas);
-            localObject2 = this.Xxd;
-            paramas = this.contact.getNickname();
-            if (paramas != null)
-            {
-              localObject1 = Locale.getDefault();
-              p.j(localObject1, "Locale.getDefault()");
-              if (paramas == null)
-              {
-                paramas = new t("null cannot be cast to non-null type java.lang.String");
-                AppMethodBeat.o(266950);
-                throw paramas;
-              }
-              localObject1 = paramas.toUpperCase((Locale)localObject1);
-              p.j(localObject1, "(this as java.lang.String).toUpperCase(locale)");
-              paramas = (as)localObject1;
-              if (localObject1 != null) {}
-            }
-            else
-            {
-              paramas = "";
-            }
-            ((ArrayList)localObject2).add(paramas);
-            localObject2 = this.Xxd;
-            paramas = this.contact.getUsername();
-            if (paramas != null)
-            {
-              localObject1 = Locale.getDefault();
-              p.j(localObject1, "Locale.getDefault()");
-              if (paramas == null)
-              {
-                paramas = new t("null cannot be cast to non-null type java.lang.String");
-                AppMethodBeat.o(266950);
-                throw paramas;
-              }
-              localObject1 = paramas.toUpperCase((Locale)localObject1);
-              p.j(localObject1, "(this as java.lang.String).toUpperCase(locale)");
-              paramas = (as)localObject1;
-              if (localObject1 != null) {}
-            }
-            else
-            {
-              paramas = "";
-            }
-            ((ArrayList)localObject2).add(paramas);
-            paramas = c.Xxa;
-            p.k(this, "item");
-            paramas = MMApplicationContext.getContext();
-            if (this.WGm == 123)
-            {
-              paramas = "#";
-              this.WGn = paramas;
-              AppMethodBeat.o(266950);
-              return;
-            }
-            if (this.WGm == 32) {}
-            for (paramas = paramas.getString(R.l.eny);; paramas = String.valueOf((char)this.WGm))
-            {
-              p.j(paramas, "if (item.showHeadCode ==….toString()\n            }");
-              break;
             }
           }
-          paramas = "";
+          label588:
+          for (paramInt1 = 1;; paramInt1 = 0)
+          {
+            if (paramInt1 == 0) {
+              break label831;
+            }
+            paramau = this.contact.aJu();
+            break;
+            paramInt1 = 0;
+            break label561;
+          }
+          localObject = Locale.getDefault();
+          s.s(localObject, "getDefault()");
+          localObject = paramau.toUpperCase((Locale)localObject);
+          s.s(localObject, "(this as java.lang.String).toUpperCase(locale)");
+          paramau = (au)localObject;
+          if (localObject != null) {
+            break label220;
+          }
+          paramau = "";
+          break label220;
+          label634:
+          localObject = Locale.getDefault();
+          s.s(localObject, "getDefault()");
+          localObject = paramau.toUpperCase((Locale)localObject);
+          s.s(localObject, "(this as java.lang.String).toUpperCase(locale)");
+          paramau = (au)localObject;
+          if (localObject != null) {
+            break label248;
+          }
+          paramau = "";
+          break label248;
+          label675:
+          localObject = Locale.getDefault();
+          s.s(localObject, "getDefault()");
+          localObject = paramau.toUpperCase((Locale)localObject);
+          s.s(localObject, "(this as java.lang.String).toUpperCase(locale)");
+          paramau = (au)localObject;
+          if (localObject != null) {
+            break label276;
+          }
+          paramau = "";
+          break label276;
+          label716:
+          localObject = Locale.getDefault();
+          s.s(localObject, "getDefault()");
+          localObject = paramau.toUpperCase((Locale)localObject);
+          s.s(localObject, "(this as java.lang.String).toUpperCase(locale)");
+          paramau = (au)localObject;
+          if (localObject != null) {
+            break label304;
+          }
+          paramau = "";
+          break label304;
+          label757:
+          if (this.FWv == 32)
+          {
+            paramau = paramau.getString(R.l.gqy);
+            s.s(paramau, "{\n                contex…talog_name)\n            }");
+            break label337;
+          }
+          paramau = String.valueOf((char)this.FWv);
+          break label337;
+          label795:
+          localObject = paramau.cc(this.contact.field_openImAppid, this.contact.field_descWordingId);
+          paramau = (au)localObject;
+          if (localObject == null) {
+            paramau = "";
+          }
         }
+        label831:
+        paramau = "";
       }
-      label718:
-      paramas = "";
+      label837:
+      paramau = "";
     }
   }
   
-  public final int bAQ()
+  public final int bZB()
   {
     return this.type;
   }
   
-  public final boolean c(b paramb)
+  public final Object clone()
   {
-    AppMethodBeat.i(266947);
-    p.k(paramb, "other");
-    if ((paramb instanceof d))
-    {
-      if ((p.h(this.contact, ((d)paramb).contact)) && (this.WGl == ((d)paramb).WGl) && (p.h(this.WGn, ((d)paramb).WGn)) && (this.tBr == ((d)paramb).tBr) && (this.WGm == ((d)paramb).WGm))
-      {
-        AppMethodBeat.o(266947);
-        return true;
-      }
-      AppMethodBeat.o(266947);
-      return false;
-    }
-    AppMethodBeat.o(266947);
-    return false;
-  }
-  
-  public final b eLO()
-  {
-    AppMethodBeat.i(266948);
-    Object localObject = new d(this.contact, this.type, this.WGm);
-    ((d)localObject).WGl = this.WGl;
-    ((d)localObject).tBr = this.tBr;
-    ((d)localObject).WGn = this.WGn;
-    ((d)localObject).Xxd = this.Xxd;
-    localObject = (b)localObject;
-    AppMethodBeat.o(266948);
+    AppMethodBeat.i(253269);
+    Object localObject = super.clone();
+    AppMethodBeat.o(253269);
     return localObject;
   }
   
-  public final String eLP()
+  public final String fcs()
   {
-    AppMethodBeat.i(266946);
-    String str = this.contact.getUsername() + '-' + this.type;
-    AppMethodBeat.o(266946);
+    AppMethodBeat.i(253263);
+    String str = this.contact.field_username + '-' + this.type;
+    AppMethodBeat.o(253263);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.contact.address.d
  * JD-Core Version:    0.7.0.1
  */

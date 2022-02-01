@@ -15,9 +15,9 @@ final class IPCallShareCouponUI$11
   {
     AppMethodBeat.i(25948);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/ipcall/ui/IPCallShareCouponUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    IPCallShareCouponUI.f(this.DYL);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/ipcall/ui/IPCallShareCouponUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    IPCallShareCouponUI.f(this.JPU);
     a.a(this, "com/tencent/mm/plugin/ipcall/ui/IPCallShareCouponUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(25948);
   }

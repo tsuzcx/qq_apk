@@ -1,104 +1,101 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
+import java.util.LinkedList;
 
 public final class ezz
-  extends com.tencent.mm.cd.a
+  extends erp
 {
-  public long RIT;
-  public String myd;
-  public String mym;
+  public int abaP;
+  public String appid;
+  public int scene;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152721);
+    AppMethodBeat.i(40109);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.myd == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
       {
-        paramVarArgs = new b("Not all required fields were included: tp_username");
-        AppMethodBeat.o(152721);
-        throw paramVarArgs;
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.mym == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: verify_ticket");
-        AppMethodBeat.o(152721);
-        throw paramVarArgs;
+      if (this.appid != null) {
+        paramVarArgs.g(2, this.appid);
       }
-      if (this.myd != null) {
-        paramVarArgs.f(1, this.myd);
-      }
-      if (this.mym != null) {
-        paramVarArgs.f(2, this.mym);
-      }
-      paramVarArgs.bm(3, this.RIT);
-      AppMethodBeat.o(152721);
+      paramVarArgs.bS(3, this.scene);
+      paramVarArgs.bS(4, this.abaP);
+      AppMethodBeat.o(40109);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.myd == null) {
-        break label414;
+      if (this.BaseRequest == null) {
+        break label436;
       }
     }
-    label414:
-    for (paramInt = g.a.a.b.b.a.g(1, this.myd) + 0;; paramInt = 0)
+    label436:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.mym != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.mym);
+      if (this.appid != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.appid);
       }
-      paramInt = g.a.a.b.b.a.p(3, this.RIT);
-      AppMethodBeat.o(152721);
-      return i + paramInt;
+      paramInt = i.a.a.b.b.a.cJ(3, this.scene);
+      int j = i.a.a.b.b.a.cJ(4, this.abaP);
+      AppMethodBeat.o(40109);
+      return i + paramInt + j;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.myd == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: tp_username");
-          AppMethodBeat.o(152721);
-          throw paramVarArgs;
-        }
-        if (this.mym == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: verify_ticket");
-          AppMethodBeat.o(152721);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(152721);
+        AppMethodBeat.o(40109);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         ezz localezz = (ezz)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(152721);
+          AppMethodBeat.o(40109);
           return -1;
         case 1: 
-          localezz.myd = locala.abFh.readString();
-          AppMethodBeat.o(152721);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kc localkc = new kc();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkc.parseFrom((byte[])localObject);
+            }
+            localezz.BaseRequest = localkc;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(40109);
           return 0;
         case 2: 
-          localezz.mym = locala.abFh.readString();
-          AppMethodBeat.o(152721);
+          localezz.appid = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(40109);
+          return 0;
+        case 3: 
+          localezz.scene = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(40109);
           return 0;
         }
-        localezz.RIT = locala.abFh.AN();
-        AppMethodBeat.o(152721);
+        localezz.abaP = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(40109);
         return 0;
       }
-      AppMethodBeat.o(152721);
+      AppMethodBeat.o(40109);
       return -1;
     }
   }

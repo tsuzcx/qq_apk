@@ -13,13 +13,13 @@ final class EmojiStoreV2DesignerUI$12
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(109153);
+    AppMethodBeat.i(270769);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2DesignerUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    EmojiStoreV2DesignerUI.i(this.uNO);
-    a.a(this, "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2DesignerUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(109153);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2DesignerUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    EmojiStoreV2DesignerUI.f(this.xWy);
+    a.a(this, "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2DesignerUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(270769);
   }
 }
 

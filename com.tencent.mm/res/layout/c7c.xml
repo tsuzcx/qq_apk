@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.address.ui.MMScrollView android:id="@id/ji9" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/rj"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:address="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mm.plugin.address.ui.AddrEditView android:gravity="center_vertical" android:id="@id/hi" android:inputType="text" app:addr_editType="ft7" app:addr_hint="@string/fl" app:addr_infoBackground="@raw/icons_outlined_subscriptions" app:addr_tipmsg="@string/fk" style="@style/mv" />
-        <com.tencent.mm.plugin.address.ui.AddrEditView android:gravity="center_vertical" android:id="@id/hk" android:inputType="phone" android:imeOptions="actionDone" app:addr_editType="ga7" app:addr_hint="@string/fq" app:addr_tipmsg="@string/fp" style="@style/mv" />
-        <com.tencent.mm.plugin.address.ui.AddrEditView android:gravity="center_vertical" android:id="@id/h6" android:paddingRight="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/k4" android:inputType="text" app:addr_editType="h2" app:addr_editable="false" app:addr_hint="@string/ev" app:addr_hintTextBg="@null" app:addr_infoBackground="@raw/icons_outlined_location" app:addr_singleLine="false" app:addr_tipmsg="@string/eu" />
-        <com.tencent.mm.plugin.address.ui.AddrEditView android:gravity="center_vertical" android:id="@id/h7" android:layout_height="wrap_content" android:minHeight="@dimen/k4" android:inputType="text" app:addr_editType="bos" app:addr_hint="@string/ey" app:addr_singleLine="false" app:addr_tipmsg="@string/ex" style="@style/mv" />
-        <com.tencent.mm.plugin.address.ui.AddrEditView android:gravity="center_vertical" android:id="@id/hu" android:inputType="number" app:addr_editType="gfs" app:addr_hint="@string/fs" app:addr_tipmsg="@string/fr" style="@style/mv" />
+<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/k7a" android:paddingTop="2.0dip" android:paddingBottom="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:layout_marginBottom="3.0dip" android:layout_marginStart="12.0dip" android:layout_marginEnd="6.0dip">
+        <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/al6" android:gravity="center" android:layout_gravity="center" android:id="@id/bz6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+        <ImageView android:id="@id/yj" android:background="@drawable/fs" android:padding="4.0dip" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@raw/arrow_right" android:layout_marginStart="4.0dip" />
     </LinearLayout>
-</com.tencent.mm.plugin.address.ui.MMScrollView>
+</LinearLayout>

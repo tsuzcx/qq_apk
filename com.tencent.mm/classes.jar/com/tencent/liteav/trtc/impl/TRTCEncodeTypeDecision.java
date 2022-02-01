@@ -29,14 +29,14 @@ public class TRTCEncodeTypeDecision
   
   public static int getEnterRoomCodecSupportValue()
   {
-    AppMethodBeat.i(225245);
+    AppMethodBeat.i(230753);
     int j = getH265DecoderValue();
     if (c.a(1920, 1080, 20)) {}
     for (int i = 1;; i = 0)
     {
       i = i << 2 | j | 0x3;
       TXCLog.i("TRTCH265Decision", "codecability codecSupport : ".concat(String.valueOf(i)));
-      AppMethodBeat.o(225245);
+      AppMethodBeat.o(230753);
       return i;
     }
   }
@@ -44,7 +44,7 @@ public class TRTCEncodeTypeDecision
   public static int getH265DecoderValue()
   {
     int j = 1;
-    AppMethodBeat.i(225248);
+    AppMethodBeat.i(230758);
     if ((sLifeCycleEnableH265Decoder) && (e.a(1920, 1080, 20)))
     {
       i = 1;
@@ -55,7 +55,7 @@ public class TRTCEncodeTypeDecision
     label49:
     for (int i = j;; i = 0)
     {
-      AppMethodBeat.o(225248);
+      AppMethodBeat.o(230758);
       return i << 3;
       i = 0;
       break;
@@ -85,7 +85,7 @@ public class TRTCEncodeTypeDecision
   public int getExpectVideoCodecType(int paramInt)
   {
     boolean bool1 = true;
-    AppMethodBeat.i(225229);
+    AppMethodBeat.i(230802);
     int i = g.a.a.a();
     if (paramInt == 1)
     {
@@ -103,7 +103,7 @@ public class TRTCEncodeTypeDecision
     {
       TXCLog.i("TRTCH265Decision", "enableH265 = " + bool1 + " expectCodecType=" + paramInt);
       i = paramInt;
-      AppMethodBeat.o(225229);
+      AppMethodBeat.o(230802);
       return i;
       bool1 = false;
       break;
@@ -112,13 +112,13 @@ public class TRTCEncodeTypeDecision
   
   public boolean isVideoEncoderCodecUsingH265()
   {
-    AppMethodBeat.i(225234);
+    AppMethodBeat.i(230806);
     boolean bool2 = c.a(1920, 1080, 20);
     if ((this.mEnableH265EncodeByPrivateAPI) && (this.mEnableH265EncodeByServer) && (isAppLifeCycleEnableH265Encoder()) && (bool2)) {}
     for (boolean bool1 = true;; bool1 = false)
     {
       TXCLog.i("TRTCH265Decision", "codecability getVideoEncoderCodec: " + this.mEnableH265EncodeByServer + " ,mEnableHighQualityEncode=" + this.mEnableH265EncodeByPrivateAPI + ", TRTCH265Decision.isAppLifeCycleEnableH265Encoder()= " + isAppLifeCycleEnableH265Encoder() + " supportEncoder = " + bool2);
-      AppMethodBeat.o(225234);
+      AppMethodBeat.o(230806);
       return bool1;
     }
   }
@@ -126,7 +126,7 @@ public class TRTCEncodeTypeDecision
   public boolean isVideoEncoderStartCodecUsingH265()
   {
     boolean bool2 = true;
-    AppMethodBeat.i(225241);
+    AppMethodBeat.i(230814);
     g.a locala = g.a.a(g.a().b("key_last_encode_type", g.a.a.a()));
     boolean bool3 = c.a(1920, 1080, 20);
     boolean bool1;
@@ -146,7 +146,7 @@ public class TRTCEncodeTypeDecision
     for (;;)
     {
       TXCLog.i("TRTCH265Decision", "getVideoEncoderStartCodec enableH265 = " + bool1 + " , lastEncodeType=" + locala.a() + " mEnableH265EncodeByPrivateAPI=" + this.mEnableH265EncodeByPrivateAPI + " supportEncoder=" + bool3);
-      AppMethodBeat.o(225241);
+      AppMethodBeat.o(230814);
       return bool1;
       bool1 = false;
       break;
@@ -156,46 +156,46 @@ public class TRTCEncodeTypeDecision
   
   public void setEnableH265EncodeByPrivateAPI(boolean paramBoolean)
   {
-    AppMethodBeat.i(225210);
+    AppMethodBeat.i(230771);
     setEnableH265EncodeByPrivateAPI(paramBoolean, ModifyCodecReason.REASON_NO_NEED_CARE);
-    AppMethodBeat.o(225210);
+    AppMethodBeat.o(230771);
   }
   
   public void setEnableH265EncodeByPrivateAPI(boolean paramBoolean, ModifyCodecReason paramModifyCodecReason)
   {
-    AppMethodBeat.i(225215);
+    AppMethodBeat.i(230777);
     this.mEnableH265EncodeByPrivateAPI = paramBoolean;
     TXCLog.i("TRTCH265Decision", "setEnableH265EncodeByPrivateAPI: enableH265EncodeByPrivateAPI= " + paramBoolean + ", reason =" + paramModifyCodecReason);
     if (paramModifyCodecReason == ModifyCodecReason.REASON_ENCODE_ERROR)
     {
       setAppLifeCycleEnableH265Encoder(false);
       this.mTrtcCloud.notifyCurrentEncodeType(false);
-      AppMethodBeat.o(225215);
+      AppMethodBeat.o(230777);
       return;
     }
     if ((paramModifyCodecReason == ModifyCodecReason.REASON_DECODE_ERROR) && (!a.a())) {
       setAppLifeCycleEnableH265Decoder(false);
     }
-    AppMethodBeat.o(225215);
+    AppMethodBeat.o(230777);
   }
   
   public void setEnableH265EncodeByServer(boolean paramBoolean)
   {
-    AppMethodBeat.i(225218);
+    AppMethodBeat.i(230784);
     setEnableH265EncodeByServer(paramBoolean, ModifyCodecReason.REASON_NO_NEED_CARE);
-    AppMethodBeat.o(225218);
+    AppMethodBeat.o(230784);
   }
   
   public void setEnableH265EncodeByServer(boolean paramBoolean, ModifyCodecReason paramModifyCodecReason)
   {
-    AppMethodBeat.i(225222);
+    AppMethodBeat.i(230794);
     if (this.mEnableH265EncodeByServer != paramBoolean)
     {
       if (paramModifyCodecReason == ModifyCodecReason.REASON_QOS)
       {
         if (paramBoolean)
         {
-          AppMethodBeat.o(225222);
+          AppMethodBeat.o(230794);
           return;
         }
         if (isVideoEncoderCodecUsingH265()) {
@@ -217,7 +217,7 @@ public class TRTCEncodeTypeDecision
       g.a().a("key_last_encode_type", locala.a());
       this.mTrtcCloud.notifyCurrentEncodeType(paramBoolean);
       TXCLog.i("TRTCH265Decision", "setEnableH265EncodeByServer: enableH265EncodeByServer= " + this.mEnableH265EncodeByServer + ", reason =" + paramModifyCodecReason);
-      AppMethodBeat.o(225222);
+      AppMethodBeat.o(230794);
       return;
     }
   }
@@ -228,14 +228,14 @@ public class TRTCEncodeTypeDecision
     
     static
     {
-      AppMethodBeat.i(222905);
+      AppMethodBeat.i(230840);
       REASON_NO_NEED_CARE = new ModifyCodecReason("REASON_NO_NEED_CARE", 0, 0);
       REASON_ENCODE_ERROR = new ModifyCodecReason("REASON_ENCODE_ERROR", 1, 1);
       REASON_ENTERROOM_RESPOND = new ModifyCodecReason("REASON_ENTERROOM_RESPOND", 2, 2);
       REASON_QOS = new ModifyCodecReason("REASON_QOS", 3, 3);
       REASON_DECODE_ERROR = new ModifyCodecReason("REASON_DECODE_ERROR", 4, 4);
       $VALUES = new ModifyCodecReason[] { REASON_NO_NEED_CARE, REASON_ENCODE_ERROR, REASON_ENTERROOM_RESPOND, REASON_QOS, REASON_DECODE_ERROR };
-      AppMethodBeat.o(222905);
+      AppMethodBeat.o(230840);
     }
     
     private ModifyCodecReason(int paramInt)
@@ -246,7 +246,7 @@ public class TRTCEncodeTypeDecision
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCEncodeTypeDecision
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/aqj" android:textColor="@color/az" android:id="@id/ef6" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="@dimen/cv" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toLeftOf="@id/azr" app:layout_constraintTop_toTopOf="hr_" />
+    <FrameLayout android:id="@id/azr" android:background="@drawable/yp" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_">
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:id="@id/azu" android:paddingLeft="@dimen/cr" android:paddingRight="@dimen/cr" android:layout_width="wrap_content" android:layout_height="@dimen/d4">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/azs" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@raw/wecoin_balance_icons" app:iconColor="@color/az" />
+            <TextView android:textSize="@dimen/aqj" android:textColor="@color/az" android:id="@id/azt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bt" />
+            <TextView android:textSize="@dimen/aqj" android:textColor="@color/az" android:id="@id/azv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bv" android:maxLines="1" />
+        </LinearLayout>
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,30 +19,30 @@ public final class e
       return localStringBuilder;
     }
     localStringBuilder.append(0).append(". ").append(paramTimePoint.name).append(" : ");
-    localStringBuilder.append(paramTimePoint.nVy);
+    localStringBuilder.append(paramTimePoint.qVi);
     localStringBuilder.append(", ");
-    localStringBuilder.append(paramTimePoint.nVx.get());
+    localStringBuilder.append(paramTimePoint.qVh.get());
     localStringBuilder.append(", ");
-    localStringBuilder.append(paramTimePoint.nVy.get() - paramTimePoint.nVy.get());
+    localStringBuilder.append(paramTimePoint.qVi.get() - paramTimePoint.qVi.get());
     int i = 0;
     TimePoint localTimePoint;
-    for (Object localObject = paramTimePoint; ((TimePoint)localObject).nVz.get() != null; localObject = localTimePoint)
+    for (Object localObject = paramTimePoint; ((TimePoint)localObject).qVj.get() != null; localObject = localTimePoint)
     {
-      localTimePoint = (TimePoint)((TimePoint)localObject).nVz.get();
+      localTimePoint = (TimePoint)((TimePoint)localObject).qVj.get();
       localStringBuilder.append("\n");
       localStringBuilder.append(i + 1).append(". ").append(localTimePoint.name).append(" : ");
-      localStringBuilder.append((localTimePoint.nVy.get() - ((TimePoint)localObject).nVy.get()) / 1000000.0D);
+      localStringBuilder.append((localTimePoint.qVi.get() - ((TimePoint)localObject).qVi.get()) / 1000000.0D);
       i += 1;
     }
     localStringBuilder.append("\n");
-    localStringBuilder.append("total cost : ").append((((TimePoint)localObject).nVy.get() - paramTimePoint.nVy.get()) / 1000000.0D);
+    localStringBuilder.append("total cost : ").append((((TimePoint)localObject).qVi.get() - paramTimePoint.qVi.get()) / 1000000.0D);
     AppMethodBeat.o(146106);
     return localStringBuilder;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.collector.e
  * JD-Core Version:    0.7.0.1
  */

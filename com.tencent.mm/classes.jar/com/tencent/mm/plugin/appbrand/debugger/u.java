@@ -4,12 +4,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.config.b;
-import com.tencent.mm.plugin.appbrand.m.i;
+import com.tencent.mm.plugin.appbrand.n.i;
 import com.tencent.mm.plugin.appbrand.page.ad;
 import com.tencent.mm.plugin.appbrand.page.y;
 import com.tencent.mm.plugin.appbrand.service.c;
-import com.tencent.mm.plugin.appbrand.t;
-import com.tencent.mm.protocal.protobuf.ffu;
+import com.tencent.mm.plugin.appbrand.w;
+import com.tencent.mm.protocal.protobuf.gcg;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
@@ -19,86 +19,86 @@ public final class u
   extends c
   implements l
 {
-  private o cAD;
-  private q cum;
+  private q emf;
+  private o esY;
   
-  public final String OZ()
+  public final void apC()
+  {
+    AppMethodBeat.i(44954);
+    cdl();
+    AppMethodBeat.o(44954);
+  }
+  
+  public final String aph()
   {
     AppMethodBeat.i(44957);
-    Object localObject = Ro();
-    String str = getRuntime().getAppConfig().nWl;
+    Object localObject = arC();
+    String str = getRuntime().getAppConfig().qVW;
     localObject = String.format("var __wxConfig = %s;\nvar __wxIndexPage = \"%s\"", new Object[] { ((JSONObject)localObject).toString(), str });
     AppMethodBeat.o(44957);
     return localObject;
   }
   
-  public final void Pu()
-  {
-    AppMethodBeat.i(44954);
-    bDY();
-    AppMethodBeat.o(44954);
-  }
-  
-  public final i Rl()
+  public final i arz()
   {
     AppMethodBeat.i(44952);
-    this.cum = new q();
-    q localq = this.cum;
+    this.emf = new q();
+    q localq = this.emf;
     AppMethodBeat.o(44952);
     return localq;
   }
   
-  public final void d(AppBrandRuntime paramAppBrandRuntime)
-  {
-    AppMethodBeat.i(44955);
-    super.d(paramAppBrandRuntime);
-    bPz();
-    if (x.odG != null)
-    {
-      this.cAD = x.odG;
-      x.odG = null;
-    }
-    for (;;)
-    {
-      this.cAD.a(this, getRuntime().bDy().extInfo);
-      this.cum.a(this.cAD);
-      AppMethodBeat.o(44955);
-      return;
-      this.cAD = new o();
-    }
-  }
-  
-  public final void dJ(String paramString)
-  {
-    AppMethodBeat.i(44958);
-    Log.d("MicroMsg.RemoteDebugService", "RemoteDebugInfo");
-    ffu localffu = new ffu();
-    localffu.UGl = getRuntime().bDz().getCurrentPage().getCurrentPageView().getComponentId();
-    localffu.UGk = paramString;
-    paramString = x.a(localffu, this.cAD, "domEvent");
-    this.cum.a(paramString);
-    AppMethodBeat.o(44958);
-  }
-  
-  public final boolean dK(String paramString)
-  {
-    return false;
-  }
-  
-  public final void j(int paramInt, String paramString)
+  public final void callback(int paramInt, String paramString)
   {
     AppMethodBeat.i(44953);
     String str = paramString;
     if (Util.isNullOrNil(paramString)) {
       str = "{}";
     }
-    this.cum.af(paramInt, str);
+    this.emf.ao(paramInt, str);
     AppMethodBeat.o(44953);
+  }
+  
+  public final void d(AppBrandRuntime paramAppBrandRuntime)
+  {
+    AppMethodBeat.i(44955);
+    super.d(paramAppBrandRuntime);
+    cpF();
+    if (x.reA != null)
+    {
+      this.esY = x.reA;
+      x.reA = null;
+    }
+    for (;;)
+    {
+      this.esY.a(this, getRuntime().getInitConfig().extInfo);
+      this.emf.a(this.esY);
+      AppMethodBeat.o(44955);
+      return;
+      this.esY = new o();
+    }
+  }
+  
+  public final void eU(String paramString)
+  {
+    AppMethodBeat.i(44958);
+    Log.d("MicroMsg.RemoteDebugService", "RemoteDebugInfo");
+    gcg localgcg = new gcg();
+    localgcg.acau = getRuntime().ccN().getCurrentPage().getCurrentPageView().getComponentId();
+    localgcg.rRQ = paramString;
+    paramString = x.a(localgcg, this.esY, "domEvent");
+    this.emf.a(paramString);
+    AppMethodBeat.o(44958);
+  }
+  
+  public final boolean eV(String paramString)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.debugger.u
  * JD-Core Version:    0.7.0.1
  */

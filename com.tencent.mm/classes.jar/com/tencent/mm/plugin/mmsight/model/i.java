@@ -5,32 +5,32 @@ import com.tencent.mm.sdk.platformtools.MMHandler;
 
 public final class i
 {
-  private static MMHandler EZT;
+  private static MMHandler KVF;
   
   static
   {
     AppMethodBeat.i(89420);
-    EZT = new MMHandler("MMSightHandler");
+    KVF = new MMHandler("MMSightHandler");
     AppMethodBeat.o(89420);
   }
   
-  public static void am(Runnable paramRunnable)
+  public static void au(Runnable paramRunnable)
   {
     AppMethodBeat.i(89418);
-    EZT.postToWorker(paramRunnable);
+    KVF.postToWorker(paramRunnable);
     AppMethodBeat.o(89418);
   }
   
-  public static void ap(Runnable paramRunnable)
+  public static void ax(Runnable paramRunnable)
   {
     AppMethodBeat.i(89419);
-    EZT.postDelayed(paramRunnable, 2000L);
+    KVF.postDelayed(paramRunnable, 2000L);
     AppMethodBeat.o(89419);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.i
  * JD-Core Version:    0.7.0.1
  */

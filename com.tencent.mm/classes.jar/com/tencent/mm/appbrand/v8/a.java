@@ -4,13 +4,15 @@ import android.os.Process;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import com.eclipsesource.mmv8.MultiContextV8;
+import com.eclipsesource.mmv8.V8;
 import com.eclipsesource.mmv8.V8Context;
 import com.eclipsesource.mmv8.V8Locker;
 import com.eclipsesource.mmv8.V8ScriptException;
 import com.eclipsesource.mmv8.utils.MemoryManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.m.h;
+import com.tencent.mm.plugin.appbrand.n.h;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.y;
 import java.util.Locale;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CountDownLatch;
@@ -20,76 +22,79 @@ import java.util.concurrent.atomic.AtomicInteger;
 public abstract class a
   implements IJSRuntime
 {
-  private static final AtomicInteger fhu = new AtomicInteger(0);
-  private static Runnable fhv = new a.1();
-  private aa fhA;
-  private e fhB;
-  private String fhC = "RuntimeLooper";
-  String fhD;
-  byte[] fhE;
-  String fhF;
-  boolean fhG;
-  private final boolean fhH;
-  final boolean fhI;
-  private final SparseArray<h> fhJ;
-  private final ConcurrentLinkedQueue<Runnable> fhK;
-  private final IJSRuntime.Config fhL;
-  private MultiContextV8 fhw;
-  private c fhx;
-  private CountDownLatch fhy;
-  private MemoryManager fhz;
+  private static final AtomicInteger hlE = new AtomicInteger(0);
+  private static Runnable hlF = new a.1();
+  private MultiContextV8 hlG;
+  private c hlH;
+  private CountDownLatch hlI;
+  private MemoryManager hlJ;
+  private aa hlK;
+  private e hlL;
+  private String hlM = "RuntimeLooper";
+  String hlN;
+  byte[] hlO;
+  String hlP;
+  boolean hlQ;
+  boolean hlR;
+  private final boolean hlS;
+  final boolean hlT;
+  private final SparseArray<h> hlU;
+  private final ConcurrentLinkedQueue<Runnable> hlV;
+  private final IJSRuntime.Config hlW;
   private volatile int mTid = -1;
   
   a(final IJSRuntime.Config paramConfig)
   {
     IJSRuntime.Config localConfig;
-    label128:
+    label136:
     boolean bool1;
     boolean bool2;
     if (paramConfig != null)
     {
-      if (!TextUtils.isEmpty(paramConfig.fhP)) {
-        paramConfig.fhP = com.tencent.mm.vfs.u.n(paramConfig.fhP, true);
+      if (!TextUtils.isEmpty(paramConfig.hmb)) {
+        paramConfig.hmb = y.n(paramConfig.hmb, true);
       }
-      this.fhD = paramConfig.fhP;
-      this.fhE = paramConfig.fhQ;
-      this.fhH = paramConfig.useNativeBufferJNI();
-      this.fhG = paramConfig.fhT;
-      this.fhI = paramConfig.fhU;
-      this.fhF = paramConfig.fhW;
-      this.fhB = paramConfig.fhZ;
-      if (!Util.isNullOrNil(paramConfig.fhX)) {
-        this.fhC = paramConfig.fhX;
+      this.hlN = paramConfig.hmb;
+      this.hlO = paramConfig.hmc;
+      this.hlS = paramConfig.useNativeBufferJNI();
+      this.hlR = paramConfig.hmf;
+      this.hlT = paramConfig.hmg;
+      this.hlP = paramConfig.hmi;
+      this.hlL = paramConfig.hmm;
+      if (!Util.isNullOrNil(paramConfig.hmj)) {
+        this.hlM = paramConfig.hmj;
       }
+      this.hlQ = paramConfig.hmk;
       if (paramConfig != null) {
-        break label293;
+        break label308;
       }
       localConfig = new IJSRuntime.Config();
-      this.fhL = localConfig;
-      bool1 = this.fhH;
-      bool2 = this.fhI;
+      this.hlW = localConfig;
+      bool1 = this.hlS;
+      bool2 = this.hlT;
       if (paramConfig == null) {
-        break label299;
+        break label314;
       }
     }
-    label293:
-    label299:
+    label308:
+    label314:
     for (paramConfig = paramConfig.toString();; paramConfig = "")
     {
       com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AbstractJSRuntime", "<init> hy: use native buffer: %b, hasGlobalTimer: %b, config: %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), paramConfig });
-      this.fhJ = new SparseArray();
-      this.fhK = new ConcurrentLinkedQueue();
+      this.hlU = new SparseArray();
+      this.hlV = new ConcurrentLinkedQueue();
       paramConfig = new CountDownLatch(1);
-      this.fhy = new CountDownLatch(1);
-      new Thread(String.format(Locale.US, "JS%s#%d", new Object[] { this.fhC, Integer.valueOf(fhu.getAndIncrement()) }))
+      this.hlI = new CountDownLatch(1);
+      com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AbstractJSRuntime", "startLooper");
+      new Thread(String.format(Locale.US, "JS%s#%d", new Object[] { this.hlM, Integer.valueOf(hlE.getAndIncrement()) }))
       {
         public final void run()
         {
           AppMethodBeat.i(143991);
           a.a(a.this, Process.myTid());
-          a.fhv.run();
+          a.hlF.run();
           com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AbstractJSRuntime", "expansions file is ready");
-          a.a(a.this, a.this.abV());
+          a.a(a.this, a.this.aDU());
           a.b(a.this).a(new c.a()
           {
             public final void b(V8ScriptException paramAnonymous2V8ScriptException)
@@ -103,7 +108,8 @@ public abstract class a
           a.c(a.this).countDown();
           long l = System.currentTimeMillis();
           com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AbstractJSRuntime", "prepareV8WhenThreadStart, tid[%d] JsRuntime[%d] JsLooper[%d]", new Object[] { Integer.valueOf(a.d(a.this)), Integer.valueOf(a.this.hashCode()), Integer.valueOf(a.b(a.this).hashCode()) });
-          a.a(a.this, a.this.abU());
+          a.a(a.this, a.this.aDT());
+          a.a(a.this).getV8().setDelaySaveCodeCache(a.this.hlQ);
           a.a(a.this, new aa(a.a(a.this)));
           a.e(a.this);
           a.a(a.this, a.a(a.this).createMemoryManager());
@@ -117,7 +123,7 @@ public abstract class a
             localV8Locker.release();
           }
           localV8Locker.acquire();
-          a.b(a.this).acb();
+          a.b(a.this).aEa();
           a.f(a.this);
           a.g(a.this).release();
           a.e(a.this);
@@ -125,15 +131,15 @@ public abstract class a
           {
             a.h(a.this).clear();
             com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AbstractJSRuntime", "whenThreadEnd, mJSExceptionHandlerMap.clear() succeed, JsRuntime[%d]", new Object[] { Integer.valueOf(a.this.hashCode()) });
-            a.this.abW();
+            a.this.aDV();
             AppMethodBeat.o(143991);
             return;
           }
-          catch (Throwable localThrowable)
+          finally
           {
             for (;;)
             {
-              com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.AbstractJSRuntime", "whenThreadEnd, mJSExceptionHandlerMap.clear(), JsRuntime[%d] get exception[%s]", new Object[] { Integer.valueOf(a.this.hashCode()), localThrowable });
+              com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.AbstractJSRuntime", "whenThreadEnd, mJSExceptionHandlerMap.clear(), JsRuntime[%d] get exception[%s]", new Object[] { Integer.valueOf(a.this.hashCode()), localObject });
             }
           }
         }
@@ -147,41 +153,41 @@ public abstract class a
       {
         com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AbstractJSRuntime", "init latch.await InterruptedException:%s", new Object[] { paramConfig });
       }
-      this.fhH = false;
-      this.fhI = false;
+      this.hlS = false;
+      this.hlT = false;
       break;
       localConfig = paramConfig;
-      break label128;
+      break label136;
     }
   }
   
   private void a(V8ScriptException paramV8ScriptException)
   {
-    synchronized (this.fhJ)
+    synchronized (this.hlU)
     {
-      h localh = (h)this.fhJ.get(paramV8ScriptException.getContextTag());
+      h localh = (h)this.hlU.get(paramV8ScriptException.getContextTag());
       if (localh != null)
       {
-        localh.A(paramV8ScriptException.getJSMessage(), paramV8ScriptException.getJSStackTrace());
+        localh.handleException(paramV8ScriptException.getJSMessage(), paramV8ScriptException.getJSStackTrace());
         return;
       }
     }
     com.tencent.mm.sdk.platformtools.Log.w("MicroMsg.AbstractJSRuntime", "publishJSException jsHandler null %s", new Object[] { paramV8ScriptException });
   }
   
-  private void abZ()
+  private void aDY()
   {
-    if ((this.fhx == null) && (this.fhy != null)) {
+    if ((this.hlH == null) && (this.hlI != null)) {
       com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AbstractJSRuntime", "scheduleToJSThread but looper null");
     }
     try
     {
-      this.fhy.await(30000L, TimeUnit.MILLISECONDS);
+      this.hlI.await(30000L, TimeUnit.MILLISECONDS);
       com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AbstractJSRuntime", "scheduleToJSThread but looper assigned");
-      if (this.fhx == null)
+      if (this.hlH == null)
       {
-        fhv.run();
-        if (this.fhx == null) {
+        hlF.run();
+        if (this.hlH == null) {
           throw new IllegalStateException("JSRuntime not ready!");
         }
       }
@@ -195,11 +201,6 @@ public abstract class a
     }
   }
   
-  public final String OG()
-  {
-    return this.fhx.OG();
-  }
-  
   public final void a(int paramInt, h paramh)
   {
     if (this.mTid < 0)
@@ -208,76 +209,81 @@ public abstract class a
       return;
     }
     com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AbstractJSRuntime", "setJsExceptionHandler contextId[%d] JsRuntime[%d] JSThread.id[%d], currentThread.id[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(hashCode()), Integer.valueOf(this.mTid), Long.valueOf(Thread.currentThread().getId()) });
-    synchronized (this.fhJ)
+    synchronized (this.hlU)
     {
-      this.fhJ.put(paramInt, paramh);
+      this.hlU.put(paramInt, paramh);
       return;
     }
   }
   
   public final void a(Runnable paramRunnable, long paramLong, boolean paramBoolean)
   {
-    abZ();
-    this.fhx.b(paramRunnable, paramLong, paramBoolean);
+    aDY();
+    this.hlH.b(paramRunnable, paramLong, paramBoolean);
   }
   
-  public final IJSRuntime.Config abT()
+  public final IJSRuntime.Config aDS()
   {
-    return this.fhL;
+    return this.hlW;
   }
   
-  abstract MultiContextV8 abU();
+  abstract MultiContextV8 aDT();
   
-  abstract c abV();
+  abstract c aDU();
   
-  abstract void abW();
+  abstract void aDV();
   
-  public final e abX()
+  public final e aDW()
   {
-    if (this.fhB == null)
+    if (this.hlL == null)
     {
-      if (!this.fhH) {
+      if (!this.hlS) {
         break label38;
       }
       com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AbstractJSRuntime", "hy: start load native buffer jni");
     }
     label38:
-    for (this.fhB = new NativeBufferJNI();; this.fhB = new u()) {
-      return this.fhB;
+    for (this.hlL = new NativeBufferJNI();; this.hlL = new u()) {
+      return this.hlL;
     }
   }
   
-  public final boolean abY()
+  public final boolean aDX()
   {
-    return this.fhx.abY();
+    return this.hlH.aDX();
   }
   
-  public final void d(Runnable paramRunnable, long paramLong)
+  public final String aoO()
   {
-    a(paramRunnable, paramLong, false);
+    return this.hlH.aoO();
   }
   
   public final boolean doInnerLoopTask()
   {
-    return this.fhx.doInnerLoopTask();
+    return this.hlH.doInnerLoopTask();
   }
   
-  public final void dp(boolean paramBoolean)
+  public final void e(Runnable paramRunnable, long paramLong)
   {
-    this.fhx.dp(paramBoolean);
+    a(paramRunnable, paramLong, false);
+  }
+  
+  public final void eb(boolean paramBoolean)
+  {
+    this.hlH.eb(paramBoolean);
   }
   
   public final long getIsolatePtr()
   {
-    return this.fhw.getIsolatePtr();
+    return this.hlG.getIsolatePtr();
   }
   
   public final long getUVLoopPtr()
   {
-    return this.fhw.getUVLoopPtr();
+    return this.hlG.getUVLoopPtr();
   }
   
-  public final void ke(int paramInt)
+  public final void nM(int paramInt)
   {
     int i = this.mTid;
     if (i > 0) {}
@@ -293,11 +299,11 @@ public abstract class a
     }
   }
   
-  public final m kf(final int paramInt)
+  public final m nN(final int paramInt)
   {
-    new m(this, abX(), new m.a()
+    new m(this, aDW(), new m.a()
     {
-      public final V8Context aca()
+      public final V8Context aDZ()
       {
         AppMethodBeat.i(143989);
         if (a.a(a.this) == null)
@@ -315,52 +321,52 @@ public abstract class a
   
   public final void pause()
   {
-    this.fhx.pause();
-  }
-  
-  public final void q(Runnable paramRunnable)
-  {
-    r(paramRunnable);
+    this.hlH.pause();
   }
   
   public final void quit()
   {
     com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AbstractJSRuntime", "quit() JsRuntime[%d]", new Object[] { Integer.valueOf(hashCode()) });
-    this.fhx.quit();
+    this.hlH.quit();
     this.mTid = -1;
-  }
-  
-  public final void r(Runnable paramRunnable)
-  {
-    abZ();
-    this.fhx.t(paramRunnable);
   }
   
   public final void resume()
   {
-    this.fhx.resume();
+    this.hlH.resume();
   }
   
   public final void resumeLoopTasks()
   {
-    this.fhx.resumeLoopTasks();
+    this.hlH.resumeLoopTasks();
   }
   
-  public final void s(Runnable paramRunnable)
+  public final void u(Runnable paramRunnable)
   {
-    this.fhK.add(paramRunnable);
+    v(paramRunnable);
+  }
+  
+  public final void v(Runnable paramRunnable)
+  {
+    aDY();
+    this.hlH.x(paramRunnable);
+  }
+  
+  public final void w(Runnable paramRunnable)
+  {
+    this.hlV.add(paramRunnable);
   }
   
   public final void waitForDebugger(String paramString)
   {
-    n localn = new n(this.fhw, this);
-    localn.fiU.q(new n.1(localn, paramString));
-    localn.fiU.s(new n.2(localn));
+    n localn = new n(this.hlG, this);
+    localn.hnh.u(new n.1(localn, paramString));
+    localn.hnh.w(new n.2(localn));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.a
  * JD-Core Version:    0.7.0.1
  */

@@ -10,16 +10,16 @@ import java.lang.ref.WeakReference;
 
 public final class s
 {
-  public d.c Fcd;
-  SparseArray<WeakReference<d.b>> Fce;
-  private MMHandler Fcf;
+  public d.c KXM;
+  SparseArray<WeakReference<d.b>> KXN;
+  private MMHandler KXO;
   
   public s()
   {
     AppMethodBeat.i(89604);
-    this.Fcd = d.c.FaW;
-    this.Fce = new SparseArray();
-    this.Fcf = new MMHandler(Looper.getMainLooper())
+    this.KXM = d.c.KWF;
+    this.KXN = new SparseArray();
+    this.KXO = new MMHandler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -28,11 +28,11 @@ public final class s
         {
           paramAnonymousMessage = (d.c)paramAnonymousMessage.obj;
           int i = 0;
-          while (i < s.this.Fce.size())
+          while (i < s.this.KXN.size())
           {
-            if ((d.b)((WeakReference)s.this.Fce.valueAt(i)).get() != null)
+            if ((d.b)((WeakReference)s.this.KXN.valueAt(i)).get() != null)
             {
-              int[] arrayOfInt = s.2.Fch;
+              int[] arrayOfInt = s.2.KXQ;
               paramAnonymousMessage.ordinal();
             }
             i += 1;
@@ -48,7 +48,7 @@ public final class s
             AppMethodBeat.o(89602);
             return;
           }
-          s.this.Fce.put(paramAnonymousMessage.hashCode(), new WeakReference(paramAnonymousMessage));
+          s.this.KXN.put(paramAnonymousMessage.hashCode(), new WeakReference(paramAnonymousMessage));
           AppMethodBeat.o(89602);
           return;
         }
@@ -60,7 +60,7 @@ public final class s
             AppMethodBeat.o(89602);
             return;
           }
-          s.this.Fce.remove(paramAnonymousMessage.hashCode());
+          s.this.KXN.remove(paramAnonymousMessage.hashCode());
         }
         AppMethodBeat.o(89602);
       }
@@ -72,8 +72,8 @@ public final class s
   {
     AppMethodBeat.i(89605);
     Log.i("MicroMsg.SightMediaStatusHandler", "status change to %s", new Object[] { paramc.toString() });
-    this.Fcd = paramc;
-    this.Fcf.sendMessage(this.Fcf.obtainMessage(257, paramc));
+    this.KXM = paramc;
+    this.KXO.sendMessage(this.KXO.obtainMessage(257, paramc));
     AppMethodBeat.o(89605);
   }
 }

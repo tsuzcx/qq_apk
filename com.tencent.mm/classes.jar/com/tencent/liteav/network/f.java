@@ -1,17 +1,19 @@
 package com.tencent.liteav.network;
 
-import com.tencent.liteav.basic.structs.TXSNALPacket;
-import com.tencent.liteav.basic.structs.a;
-
-public abstract interface f
+public class f
 {
-  public abstract void onPullAudio(a parama);
+  public String a = "";
+  public boolean b = false;
   
-  public abstract void onPullNAL(TXSNALPacket paramTXSNALPacket);
+  public f(String paramString, boolean paramBoolean)
+  {
+    this.a = paramString;
+    this.b = paramBoolean;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.network.f
  * JD-Core Version:    0.7.0.1
  */

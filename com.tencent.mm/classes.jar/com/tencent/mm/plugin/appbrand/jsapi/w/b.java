@@ -1,59 +1,82 @@
 package com.tencent.mm.plugin.appbrand.jsapi.w;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.page.ad;
-import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/rendering_cache/JsApiSaveInitialRenderingCache;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "()V", "dispatchInJsThread", "", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-wechat-full-sdk_release"})
-public final class b
-  extends c<ad>
+public abstract interface b
 {
-  public static final int CTRL_INDEX = -2;
-  public static final String NAME = "saveInitialRenderingCache";
-  @Deprecated
-  public static final b.a pnb;
+  public abstract a atC();
   
-  static
-  {
-    AppMethodBeat.i(147960);
-    pnb = new b.a((byte)0);
-    AppMethodBeat.o(147960);
-  }
+  public abstract Boolean atD();
   
-  public final boolean bPy()
+  public static enum a
   {
-    return false;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class b
-    extends q
-    implements a<x>
-  {
-    b(b paramb, ad paramad, int paramInt)
+    static
     {
-      super();
+      AppMethodBeat.i(176553);
+      sqy = new a("NONE", 0);
+      sqz = new a("PUSH", 1);
+      sqA = new a("POP", 2);
+      sqB = new a("PUSH_AND_POP", 3);
+      sqC = new a[] { sqy, sqz, sqA, sqB };
+      AppMethodBeat.o(176553);
     }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class c
-    extends q
-    implements a<x>
-  {
-    c(b paramb, ad paramad, int paramInt)
+    
+    private a() {}
+    
+    public static a abu(String paramString)
     {
-      super();
+      AppMethodBeat.i(176552);
+      paramString = paramString.trim();
+      int i = -1;
+      switch (paramString.hashCode())
+      {
+      }
+      for (;;)
+      {
+        switch (i)
+        {
+        default: 
+          AppMethodBeat.o(176552);
+          return null;
+          if (paramString.equals(""))
+          {
+            i = 0;
+            continue;
+            if (paramString.equals("push"))
+            {
+              i = 1;
+              continue;
+              if (paramString.equals("pop"))
+              {
+                i = 2;
+                continue;
+                if (paramString.equals("pushAndPop")) {
+                  i = 3;
+                }
+              }
+            }
+          }
+          break;
+        }
+      }
+      paramString = sqy;
+      AppMethodBeat.o(176552);
+      return paramString;
+      paramString = sqz;
+      AppMethodBeat.o(176552);
+      return paramString;
+      paramString = sqA;
+      AppMethodBeat.o(176552);
+      return paramString;
+      paramString = sqB;
+      AppMethodBeat.o(176552);
+      return paramString;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.w.b
  * JD-Core Version:    0.7.0.1
  */

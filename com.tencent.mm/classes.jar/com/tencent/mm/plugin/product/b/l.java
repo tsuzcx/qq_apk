@@ -1,74 +1,136 @@
 package com.tencent.mm.plugin.product.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.network.g;
-import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.eiy;
-import com.tencent.mm.protocal.protobuf.eox;
-import com.tencent.mm.protocal.protobuf.eoy;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.wallet_core.c.w;
+import i.a.a.b;
+import java.util.LinkedList;
 
-public final class l
-  extends w
+public class l
+  extends com.tencent.mm.bx.a
 {
-  public String GTu;
-  private i callback;
-  private d rr;
+  public String MRC;
+  public int MRD;
+  public LinkedList<e> MRE;
+  public int MRb;
+  public String url;
   
-  public l(eiy parameiy, String paramString)
+  public l()
   {
-    AppMethodBeat.i(66906);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new eox();
-    ((d.a)localObject).lBV = new eoy();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/submitmallorder";
-    ((d.a)localObject).funcId = 556;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (eox)d.b.b(this.rr.lBR);
-    ((eox)localObject).Urq = parameiy;
-    ((eox)localObject).Urs = paramString;
-    AppMethodBeat.o(66906);
+    AppMethodBeat.i(91278);
+    this.MRE = new LinkedList();
+    AppMethodBeat.o(91278);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(66907);
-    this.callback = parami;
-    int i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(66907);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 556;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte, long paramLong)
-  {
-    AppMethodBeat.i(66908);
-    params = (eoy)d.c.b(((d)params).lBS);
-    if ((paramInt2 == 0) && (paramInt3 == 0))
+    AppMethodBeat.i(91279);
+    if (paramInt == 0)
     {
-      Log.d("MicroMsg.NetSceneMallSubmitMallOrder", "resp.ReqKey " + params.Urr);
-      this.GTu = params.Urr;
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.MRC == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: id_info");
+        AppMethodBeat.o(91279);
+        throw paramVarArgs;
+      }
+      if (this.MRC != null) {
+        paramVarArgs.g(1, this.MRC);
+      }
+      paramVarArgs.bS(2, this.MRD);
+      if (this.url != null) {
+        paramVarArgs.g(3, this.url);
+      }
+      paramVarArgs.e(4, 8, this.MRE);
+      paramVarArgs.bS(5, this.MRb);
+      AppMethodBeat.o(91279);
+      return 0;
     }
-    Log.d("MicroMsg.NetSceneMallSubmitMallOrder", "errCode " + paramInt3 + ", errMsg " + paramString);
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(66908);
+    if (paramInt == 1) {
+      if (this.MRC == null) {
+        break label532;
+      }
+    }
+    label532:
+    for (paramInt = i.a.a.b.b.a.h(1, this.MRC) + 0;; paramInt = 0)
+    {
+      int i = paramInt + i.a.a.b.b.a.cJ(2, this.MRD);
+      paramInt = i;
+      if (this.url != null) {
+        paramInt = i + i.a.a.b.b.a.h(3, this.url);
+      }
+      i = i.a.a.a.c(4, 8, this.MRE);
+      int j = i.a.a.b.b.a.cJ(5, this.MRb);
+      AppMethodBeat.o(91279);
+      return paramInt + i + j;
+      if (paramInt == 2)
+      {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.MRE.clear();
+        paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        if (this.MRC == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: id_info");
+          AppMethodBeat.o(91279);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(91279);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
+        l locall = (l)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(91279);
+          return -1;
+        case 1: 
+          locall.MRC = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(91279);
+          return 0;
+        case 2: 
+          locall.MRD = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(91279);
+          return 0;
+        case 3: 
+          locall.url = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(91279);
+          return 0;
+        case 4: 
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            e locale = new e();
+            if ((localObject != null) && (localObject.length > 0)) {
+              locale.parseFrom((byte[])localObject);
+            }
+            locall.MRE.add(locale);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(91279);
+          return 0;
+        }
+        locall.MRb = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(91279);
+        return 0;
+      }
+      AppMethodBeat.o(91279);
+      return -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.product.b.l
  * JD-Core Version:    0.7.0.1
  */

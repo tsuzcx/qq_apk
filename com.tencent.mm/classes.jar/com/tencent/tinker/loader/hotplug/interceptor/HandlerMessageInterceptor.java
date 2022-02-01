@@ -17,17 +17,17 @@ public class HandlerMessageInterceptor
   {
     // Byte code:
     //   0: aconst_null
-    //   1: putstatic 23	com/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor:sMCallbackField	Ljava/lang/reflect/Field;
+    //   1: putstatic 21	com/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor:sMCallbackField	Ljava/lang/reflect/Field;
     //   4: ldc 2
     //   6: monitorenter
-    //   7: getstatic 23	com/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor:sMCallbackField	Ljava/lang/reflect/Field;
+    //   7: getstatic 21	com/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor:sMCallbackField	Ljava/lang/reflect/Field;
     //   10: astore_0
     //   11: aload_0
     //   12: ifnonnull +13 -> 25
-    //   15: ldc 25
-    //   17: ldc 27
-    //   19: invokestatic 33	com/tencent/tinker/loader/shareutil/ShareReflectUtil:findField	(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   22: putstatic 23	com/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor:sMCallbackField	Ljava/lang/reflect/Field;
+    //   15: ldc 23
+    //   17: ldc 25
+    //   19: invokestatic 31	com/tencent/tinker/loader/shareutil/ShareReflectUtil:findField	(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   22: putstatic 21	com/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor:sMCallbackField	Ljava/lang/reflect/Field;
     //   25: ldc 2
     //   27: monitorexit
     //   28: return
@@ -41,14 +41,13 @@ public class HandlerMessageInterceptor
     // Local variable table:
     //   start	length	slot	name	signature
     //   10	2	0	localField	Field
-    //   29	5	0	localObject	Object
-    //   35	1	0	localThrowable	java.lang.Throwable
+    //   29	5	0	localObject1	Object
+    //   35	1	0	localObject2	Object
     // Exception table:
     //   from	to	target	type
     //   7	11	29	finally
-    //   15	25	29	finally
     //   25	28	29	finally
-    //   15	25	35	java/lang/Throwable
+    //   15	25	35	finally
   }
   
   public HandlerMessageInterceptor(Handler paramHandler, MessageHandler paramMessageHandler)
@@ -117,7 +116,7 @@ public class HandlerMessageInterceptor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.loader.hotplug.interceptor.HandlerMessageInterceptor
  * JD-Core Version:    0.7.0.1
  */

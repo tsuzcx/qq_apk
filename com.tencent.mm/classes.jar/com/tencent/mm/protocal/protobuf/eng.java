@@ -1,184 +1,121 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class eng
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String CRQ;
-  public String CRR;
-  public int CreateTime;
-  public long Id;
-  public int IsNotRichText;
-  public String ThumbUrl;
-  public int Ulm;
-  public int Uln;
-  public int Ulr;
-  public String UpX;
-  public String UpY;
-  public int UpZ;
-  public int Uqa;
-  public int Uqb;
-  public String lpy;
+  public amn abrK;
+  public String abrL;
+  public String abrM;
+  public int emoji_from;
+  public int type;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(118438);
+    AppMethodBeat.i(104830);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bm(1, this.Id);
-      if (this.CRR != null) {
-        paramVarArgs.f(2, this.CRR);
-      }
-      if (this.CRQ != null) {
-        paramVarArgs.f(3, this.CRQ);
-      }
-      if (this.UpX != null) {
-        paramVarArgs.f(4, this.UpX);
-      }
-      if (this.UpY != null) {
-        paramVarArgs.f(5, this.UpY);
-      }
-      paramVarArgs.aY(6, this.CreateTime);
-      if (this.lpy != null) {
-        paramVarArgs.f(7, this.lpy);
-      }
-      paramVarArgs.aY(8, this.UpZ);
-      paramVarArgs.aY(9, this.Ulr);
-      paramVarArgs.aY(10, this.Ulm);
-      paramVarArgs.aY(11, this.Uln);
-      paramVarArgs.aY(12, this.IsNotRichText);
-      if (this.ThumbUrl != null) {
-        paramVarArgs.f(13, this.ThumbUrl);
-      }
-      paramVarArgs.aY(14, this.Uqa);
-      paramVarArgs.aY(15, this.Uqb);
-      AppMethodBeat.o(118438);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      int i = g.a.a.b.b.a.p(1, this.Id) + 0;
-      paramInt = i;
-      if (this.CRR != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.CRR);
-      }
-      i = paramInt;
-      if (this.CRQ != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.CRQ);
-      }
-      paramInt = i;
-      if (this.UpX != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.UpX);
-      }
-      i = paramInt;
-      if (this.UpY != null) {
-        i = paramInt + g.a.a.b.b.a.g(5, this.UpY);
-      }
-      i += g.a.a.b.b.a.bM(6, this.CreateTime);
-      paramInt = i;
-      if (this.lpy != null) {
-        paramInt = i + g.a.a.b.b.a.g(7, this.lpy);
-      }
-      i = paramInt + g.a.a.b.b.a.bM(8, this.UpZ) + g.a.a.b.b.a.bM(9, this.Ulr) + g.a.a.b.b.a.bM(10, this.Ulm) + g.a.a.b.b.a.bM(11, this.Uln) + g.a.a.b.b.a.bM(12, this.IsNotRichText);
-      paramInt = i;
-      if (this.ThumbUrl != null) {
-        paramInt = i + g.a.a.b.b.a.g(13, this.ThumbUrl);
-      }
-      i = g.a.a.b.b.a.bM(14, this.Uqa);
-      int j = g.a.a.b.b.a.bM(15, this.Uqb);
-      AppMethodBeat.o(118438);
-      return paramInt + i + j;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
-      }
-      AppMethodBeat.o(118438);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      eng localeng = (eng)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.abrK != null)
       {
-      default: 
-        AppMethodBeat.o(118438);
-        return -1;
-      case 1: 
-        localeng.Id = locala.abFh.AN();
-        AppMethodBeat.o(118438);
-        return 0;
-      case 2: 
-        localeng.CRR = locala.abFh.readString();
-        AppMethodBeat.o(118438);
-        return 0;
-      case 3: 
-        localeng.CRQ = locala.abFh.readString();
-        AppMethodBeat.o(118438);
-        return 0;
-      case 4: 
-        localeng.UpX = locala.abFh.readString();
-        AppMethodBeat.o(118438);
-        return 0;
-      case 5: 
-        localeng.UpY = locala.abFh.readString();
-        AppMethodBeat.o(118438);
-        return 0;
-      case 6: 
-        localeng.CreateTime = locala.abFh.AK();
-        AppMethodBeat.o(118438);
-        return 0;
-      case 7: 
-        localeng.lpy = locala.abFh.readString();
-        AppMethodBeat.o(118438);
-        return 0;
-      case 8: 
-        localeng.UpZ = locala.abFh.AK();
-        AppMethodBeat.o(118438);
-        return 0;
-      case 9: 
-        localeng.Ulr = locala.abFh.AK();
-        AppMethodBeat.o(118438);
-        return 0;
-      case 10: 
-        localeng.Ulm = locala.abFh.AK();
-        AppMethodBeat.o(118438);
-        return 0;
-      case 11: 
-        localeng.Uln = locala.abFh.AK();
-        AppMethodBeat.o(118438);
-        return 0;
-      case 12: 
-        localeng.IsNotRichText = locala.abFh.AK();
-        AppMethodBeat.o(118438);
-        return 0;
-      case 13: 
-        localeng.ThumbUrl = locala.abFh.readString();
-        AppMethodBeat.o(118438);
-        return 0;
-      case 14: 
-        localeng.Uqa = locala.abFh.AK();
-        AppMethodBeat.o(118438);
-        return 0;
+        paramVarArgs.qD(1, this.abrK.computeSize());
+        this.abrK.writeFields(paramVarArgs);
       }
-      localeng.Uqb = locala.abFh.AK();
-      AppMethodBeat.o(118438);
+      if (this.abrL != null) {
+        paramVarArgs.g(2, this.abrL);
+      }
+      paramVarArgs.bS(3, this.type);
+      if (this.abrM != null) {
+        paramVarArgs.g(4, this.abrM);
+      }
+      paramVarArgs.bS(5, this.emoji_from);
+      AppMethodBeat.o(104830);
       return 0;
     }
-    AppMethodBeat.o(118438);
-    return -1;
+    if (paramInt == 1) {
+      if (this.abrK == null) {
+        break label492;
+      }
+    }
+    label492:
+    for (paramInt = i.a.a.a.qC(1, this.abrK.computeSize()) + 0;; paramInt = 0)
+    {
+      int i = paramInt;
+      if (this.abrL != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.abrL);
+      }
+      i += i.a.a.b.b.a.cJ(3, this.type);
+      paramInt = i;
+      if (this.abrM != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.abrM);
+      }
+      i = i.a.a.b.b.a.cJ(5, this.emoji_from);
+      AppMethodBeat.o(104830);
+      return paramInt + i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(104830);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
+        eng localeng = (eng)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(104830);
+          return -1;
+        case 1: 
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            amn localamn = new amn();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localamn.parseFrom((byte[])localObject);
+            }
+            localeng.abrK = localamn;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(104830);
+          return 0;
+        case 2: 
+          localeng.abrL = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(104830);
+          return 0;
+        case 3: 
+          localeng.type = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(104830);
+          return 0;
+        case 4: 
+          localeng.abrM = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(104830);
+          return 0;
+        }
+        localeng.emoji_from = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(104830);
+        return 0;
+      }
+      AppMethodBeat.o(104830);
+      return -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.eng
  * JD-Core Version:    0.7.0.1
  */

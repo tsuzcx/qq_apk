@@ -2,121 +2,116 @@ package com.tencent.mm.plugin.comm;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.util.b.a;
 import java.util.UUID;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/comm/MusicExptFlagLogic;", "", "()V", "KU_GOU_APP_ID", "", "KU_WO_APP_ID", "NetEase_Cloud_APP_ID", "QQ_MUSIC_APP_ID", "isEnableFlexMode", "", "isFromKuGouApp", "appId", "isFromKuWoApp", "isFromNetEaseCloud", "isFromQQMusicApp", "isMusicDowngradeH5", "isOpenDowngradeH5Flag", "isOpenMvChatting", "isUseNetworkDataPlay", "newContextId", "plugin-comm_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/comm/MusicExptFlagLogic;", "", "()V", "KU_GOU_APP_ID", "", "KU_WO_APP_ID", "NetEase_Cloud_APP_ID", "QQ_MUSIC_APP_ID", "isEnableFlexMode", "", "isFromKuGouApp", "appId", "isFromKuWoApp", "isFromNetEaseCloud", "isFromQQMusicApp", "isInShieldAppIdList", "shieldAppIdStr", "isMusicDowngradeH5", "isOpenDowngradeH5Flag", "isOpenMvChatting", "isShieldAppId", "isUseNetworkDataPlay", "newContextId", "plugin-comm_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public static final a ubo;
+  public static final a xeG;
   
   static
   {
-    AppMethodBeat.i(220979);
-    ubo = new a();
-    AppMethodBeat.o(220979);
+    AppMethodBeat.i(260542);
+    xeG = new a();
+    AppMethodBeat.o(260542);
   }
   
-  public static boolean asG(String paramString)
+  public static boolean aml(String paramString)
   {
-    AppMethodBeat.i(220958);
-    boolean bool = p.h("wx5aa333606550dfd5", paramString);
-    AppMethodBeat.o(220958);
+    AppMethodBeat.i(260512);
+    boolean bool = s.p("wx5aa333606550dfd5", paramString);
+    AppMethodBeat.o(260512);
     return bool;
   }
   
-  public static boolean asH(String paramString)
+  public static boolean amm(String paramString)
   {
-    AppMethodBeat.i(220961);
-    boolean bool = p.h("wx8dd6ecd81906fd84", paramString);
-    AppMethodBeat.o(220961);
+    AppMethodBeat.i(260515);
+    boolean bool = s.p("wx8dd6ecd81906fd84", paramString);
+    AppMethodBeat.o(260515);
     return bool;
   }
   
-  public static boolean asI(String paramString)
+  public static boolean amn(String paramString)
   {
-    AppMethodBeat.i(220963);
-    boolean bool = p.h("wxc305711a2a7ad71c", paramString);
-    AppMethodBeat.o(220963);
+    AppMethodBeat.i(260518);
+    boolean bool = s.p("wxc305711a2a7ad71c", paramString);
+    AppMethodBeat.o(260518);
     return bool;
   }
   
-  public static boolean asJ(String paramString)
+  public static boolean amo(String paramString)
   {
-    AppMethodBeat.i(220968);
-    boolean bool = p.h("wx79f2c4418704b4f8", paramString);
-    AppMethodBeat.o(220968);
+    AppMethodBeat.i(260522);
+    boolean bool = s.p("wx79f2c4418704b4f8", paramString);
+    AppMethodBeat.o(260522);
     return bool;
   }
   
-  public static boolean cPi()
+  public static boolean dsO()
   {
-    AppMethodBeat.i(220949);
-    if (((b)h.ae(b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vPt, com.tencent.mm.util.b.a.YxT, 0) == 1)
+    AppMethodBeat.i(260507);
+    if (((c)h.ax(c.class)).a(c.a.zhV, b.a.agqS, 0) == 1)
     {
-      AppMethodBeat.o(220949);
+      AppMethodBeat.o(260507);
       return true;
     }
-    AppMethodBeat.o(220949);
+    AppMethodBeat.o(260507);
     return false;
   }
   
-  public static boolean cPj()
+  public static boolean dsP()
   {
-    AppMethodBeat.i(220955);
-    if (((b)h.ae(b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vNE, 0) == 1)
+    return true;
+  }
+  
+  public static boolean dsQ()
+  {
+    AppMethodBeat.i(260527);
+    if (((c)h.ax(c.class)).a(c.a.zhW, b.a.agqR, 0) == 1)
     {
-      AppMethodBeat.o(220955);
+      AppMethodBeat.o(260527);
       return true;
     }
-    AppMethodBeat.o(220955);
+    AppMethodBeat.o(260527);
     return false;
   }
   
-  public static boolean cPk()
+  public static boolean dsR()
   {
-    AppMethodBeat.i(220972);
-    if (((b)h.ae(b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vPu, com.tencent.mm.util.b.a.YxS, 0) == 1)
+    AppMethodBeat.i(260531);
+    if (((c)h.ax(c.class)).a(c.a.zhY, b.a.agqU, 0) == 1)
     {
-      AppMethodBeat.o(220972);
+      AppMethodBeat.o(260531);
       return true;
     }
-    AppMethodBeat.o(220972);
+    AppMethodBeat.o(260531);
     return false;
   }
   
-  public static boolean cPl()
+  public static boolean dsS()
   {
-    AppMethodBeat.i(220973);
-    if (((b)h.ae(b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vPw, com.tencent.mm.util.b.a.YxV, 0) == 1)
+    AppMethodBeat.i(260535);
+    if (((c)h.ax(c.class)).a(c.a.zhZ, b.a.agqV, 0) == 1)
     {
-      AppMethodBeat.o(220973);
+      AppMethodBeat.o(260535);
       return true;
     }
-    AppMethodBeat.o(220973);
+    AppMethodBeat.o(260535);
     return false;
   }
   
-  public static boolean cPm()
+  public static String dsT()
   {
-    AppMethodBeat.i(220975);
-    if (((b)h.ae(b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vPx, com.tencent.mm.util.b.a.YxW, 0) == 1)
-    {
-      AppMethodBeat.o(220975);
-      return true;
-    }
-    AppMethodBeat.o(220975);
-    return false;
-  }
-  
-  public static String cPn()
-  {
-    AppMethodBeat.i(220977);
+    AppMethodBeat.i(260539);
     String str = UUID.randomUUID().toString();
-    p.j(str, "UUID.randomUUID().toString()");
-    AppMethodBeat.o(220977);
+    s.s(str, "randomUUID().toString()");
+    AppMethodBeat.o(260539);
     return str;
   }
 }

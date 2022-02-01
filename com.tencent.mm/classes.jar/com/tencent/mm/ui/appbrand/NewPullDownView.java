@@ -16,29 +16,29 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class NewPullDownView
   extends View
 {
-  private float Mnm;
-  private boolean Mns;
-  private float WgG;
-  private float WgH;
-  private Paint WgI;
-  private Paint WgJ;
+  private float SQF;
+  private boolean SQL;
+  private float adNC;
+  private float adND;
+  private Paint adNE;
+  private Paint adNF;
   
   public NewPullDownView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(33826);
-    this.Mnm = 0.0F;
-    this.Mns = false;
-    this.WgG = (20.0F * getResources().getDisplayMetrics().density);
-    this.WgH = (14.0F * getResources().getDisplayMetrics().density - getResources().getDisplayMetrics().density * 4.0F);
-    this.WgI = new Paint(1);
-    this.WgI.setStyle(Paint.Style.FILL);
-    this.WgI.setColor(-4408132);
-    this.WgJ = new Paint(1);
-    this.WgJ.setStyle(Paint.Style.STROKE);
-    this.WgJ.setColor(0);
-    this.WgJ.setStrokeWidth(getResources().getDisplayMetrics().density * 4.0F);
-    this.WgJ.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+    this.SQF = 0.0F;
+    this.SQL = false;
+    this.adNC = (20.0F * getResources().getDisplayMetrics().density);
+    this.adND = (14.0F * getResources().getDisplayMetrics().density - getResources().getDisplayMetrics().density * 4.0F);
+    this.adNE = new Paint(1);
+    this.adNE.setStyle(Paint.Style.FILL);
+    this.adNE.setColor(-4408132);
+    this.adNF = new Paint(1);
+    this.adNF.setStyle(Paint.Style.STROKE);
+    this.adNF.setColor(0);
+    this.adNF.setStrokeWidth(getResources().getDisplayMetrics().density * 4.0F);
+    this.adNF.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
     AppMethodBeat.o(33826);
   }
   
@@ -49,9 +49,9 @@ public class NewPullDownView
     float f1 = getMeasuredWidth() / 2;
     float f2 = getMeasuredHeight() / 2;
     paramCanvas.saveLayer(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight(), null, 31);
-    paramCanvas.drawCircle(f1, f2, this.Mnm * this.WgG / 2.0F, this.WgI);
-    if (this.Mnm >= 0.4F) {
-      paramCanvas.drawCircle(f1, f2, (this.Mnm - 0.4F) / 0.6F * this.WgH / 2.0F, this.WgJ);
+    paramCanvas.drawCircle(f1, f2, this.SQF * this.adNC / 2.0F, this.adNE);
+    if (this.SQF >= 0.4F) {
+      paramCanvas.drawCircle(f1, f2, (this.SQF - 0.4F) / 0.6F * this.adND / 2.0F, this.adNF);
     }
     paramCanvas.restore();
     AppMethodBeat.o(33827);
@@ -62,10 +62,10 @@ public class NewPullDownView
     AppMethodBeat.i(33828);
     Log.i("MicroMsg.PullDownView", "[setVerticalScrollPercent] percent:%s", new Object[] { Float.valueOf(paramFloat) });
     float f = paramFloat;
-    if (this.Mns) {
+    if (this.SQL) {
       f = 1.0F - paramFloat;
     }
-    this.Mnm = Math.max(0.0F, Math.min(f, 1.0F));
+    this.SQF = Math.max(0.0F, Math.min(f, 1.0F));
     postInvalidate();
     AppMethodBeat.o(33828);
   }

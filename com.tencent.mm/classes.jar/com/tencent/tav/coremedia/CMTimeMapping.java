@@ -9,10 +9,10 @@ public class CMTimeMapping
   
   public CMTimeMapping(CMTimeRange paramCMTimeRange1, CMTimeRange paramCMTimeRange2)
   {
-    AppMethodBeat.i(203030);
+    AppMethodBeat.i(215752);
     this.source = paramCMTimeRange1.clone();
     this.target = paramCMTimeRange2.clone();
-    AppMethodBeat.o(203030);
+    AppMethodBeat.o(215752);
   }
   
   public CMTimeRange getSource()
@@ -27,23 +27,23 @@ public class CMTimeMapping
   
   public void setSource(CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(203038);
+    AppMethodBeat.i(215778);
     this.source = paramCMTimeRange.clone();
-    AppMethodBeat.o(203038);
+    AppMethodBeat.o(215778);
   }
   
   public void setTarget(CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(203040);
+    AppMethodBeat.i(215799);
     this.target = paramCMTimeRange.clone();
-    AppMethodBeat.o(203040);
+    AppMethodBeat.o(215799);
   }
   
   public String toString()
   {
-    AppMethodBeat.i(203043);
+    AppMethodBeat.i(215812);
     String str = "CMTimeMapping{source=" + this.source.toSimpleString() + ", target=" + this.target.toSimpleString() + '}';
-    AppMethodBeat.o(203043);
+    AppMethodBeat.o(215812);
     return str;
   }
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.game.ui.GameFeedMatchView android:orientation="vertical" android:padding="@dimen/g_" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mm.plugin.game.ui.GameFeedTitleDescView android:id="@id/dfi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/gi" />
-        <com.tencent.mm.plugin.game.ui.GameRoundImageView android:id="@id/a3g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/gg" />
-        <com.tencent.mm.plugin.game.ui.GameFeedSubscriptView android:id="@id/ids" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/gi" />
-    </com.tencent.mm.plugin.game.ui.GameFeedMatchView>
-</FrameLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="start" android:orientation="horizontal" android:paddingTop="@dimen/cp" android:paddingBottom="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/cp" android:paddingEnd="@dimen/cp">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/e7p" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/icons_filled_info" app:iconColor="@color/Blue_100" />
+        <TextView android:textSize="@dimen/hn" android:textColor="@color/gb" android:ellipsize="end" android:gravity="start" android:layout_gravity="center_vertical" android:id="@id/e7q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" android:layout_marginStart="@dimen/df" />
+    </LinearLayout>
+    <ImageView android:id="@id/e7o" android:visibility="visible" android:layout_marginBottom="@dimen/cp" style="@style/i7" />
+</LinearLayout>

@@ -1,24 +1,21 @@
 package com.tencent.mm.plugin.hld.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/model/GetImeDictListConfigStatus;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "GetImeDictListConfigStatusSucc", "GetImeDictListConfigStatusRecommendationFail", "GetImeDictListConfigStatusLogicsvrFail", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/model/GetImeDictListConfigStatus;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "GetImeDictListConfigStatusSucc", "GetImeDictListConfigStatusRecommendationFail", "GetImeDictListConfigStatusLogicsvrFail", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public enum a
 {
   public final int value;
   
   static
   {
-    AppMethodBeat.i(213993);
-    a locala1 = new a("GetImeDictListConfigStatusSucc", 0, 0);
-    DBg = locala1;
-    a locala2 = new a("GetImeDictListConfigStatusRecommendationFail", 1, 1);
-    DBh = locala2;
-    a locala3 = new a("GetImeDictListConfigStatusLogicsvrFail", 2, 2);
-    DBi = locala3;
-    DBj = new a[] { locala1, locala2, locala3 };
-    AppMethodBeat.o(213993);
+    AppMethodBeat.i(311883);
+    Juf = new a("GetImeDictListConfigStatusSucc", 0, 0);
+    Jug = new a("GetImeDictListConfigStatusRecommendationFail", 1, 1);
+    Juh = new a("GetImeDictListConfigStatusLogicsvrFail", 2, 2);
+    Jui = new a[] { Juf, Jug, Juh };
+    AppMethodBeat.o(311883);
   }
   
   private a(int paramInt)

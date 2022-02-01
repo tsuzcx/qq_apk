@@ -2,26 +2,26 @@ package com.tencent.mm.plugin.wallet_payu.security_question.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_payu.security_question.model.PayUSecurityQuestion;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.q.f;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.u.g;
 import java.util.ArrayList;
 
 final class WalletPayUSecurityQuestionSettingUI$1
-  implements q.f
+  implements u.g
 {
   WalletPayUSecurityQuestionSettingUI$1(WalletPayUSecurityQuestionSettingUI paramWalletPayUSecurityQuestionSettingUI) {}
   
-  public final void onCreateMMMenu(o paramo)
+  public final void onCreateMMMenu(s params)
   {
     AppMethodBeat.i(72223);
-    paramo.clear();
-    ArrayList localArrayList = WalletPayUSecurityQuestionSettingUI.a(this.PnB);
+    params.clear();
+    ArrayList localArrayList = WalletPayUSecurityQuestionSettingUI.a(this.Wea);
     if (localArrayList != null)
     {
       int i = 0;
       while (i < localArrayList.size())
       {
-        paramo.add(((PayUSecurityQuestion)localArrayList.get(i)).desc);
+        params.add(((PayUSecurityQuestion)localArrayList.get(i)).desc);
         i += 1;
       }
     }

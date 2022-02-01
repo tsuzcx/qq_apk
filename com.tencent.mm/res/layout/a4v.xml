@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/a" android:paddingLeft="@dimen/cb" android:paddingTop="@dimen/cb" android:paddingRight="@dimen/cb" android:paddingBottom="@dimen/ci" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+<ScrollView android:id="@id/j4l" android:scrollX="0.0dip" android:scrollY="0.0dip" android:background="@color/o_" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="horizontal" android:id="@id/d81" android:background="@drawable/tz" android:paddingLeft="@dimen/cb" android:paddingTop="@dimen/cb" android:paddingRight="@dimen/cb" android:paddingBottom="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/is" android:textColor="@color/FG_0" android:layout_width="343.0dip" android:layout_height="wrap_content" android:text="@string/c26" android:layout_weight="1.0" />
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="@dimen/ce" android:src="@raw/icons_outlined_arrow" app:iconColor="@color/FG_1" />
-        </LinearLayout>
-        <View android:id="@id/tf" android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="1.0px" />
-        <LinearLayout android:orientation="horizontal" android:id="@id/bt2" android:background="@drawable/tw" android:paddingLeft="@dimen/cb" android:paddingTop="@dimen/cb" android:paddingRight="@dimen/cb" android:paddingBottom="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/is" android:textColor="@color/FG_0" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/c0z" android:layout_weight="1.0" />
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:layout_width="@dimen/c5" android:layout_height="@dimen/ce" android:src="@raw/icons_outlined_arrow" app:iconColor="@color/FG_1" />
+        <LinearLayout android:orientation="vertical" android:id="@id/bqz" android:paddingBottom="@dimen/j6" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mm.ui.base.MaxListView android:id="@id/fpo" android:focusable="false" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@color/ahb" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="1.0px" android:overScrollMode="never" />
+            <include android:id="@id/it" android:visibility="gone" layout="@layout/a4w" />
         </LinearLayout>
     </LinearLayout>
-</RelativeLayout>
+</ScrollView>

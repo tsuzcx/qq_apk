@@ -11,35 +11,35 @@ public final class c
   extends d
   implements e.b
 {
-  private com.tencent.mm.plugin.fts.ui.d.a BMa;
-  protected boolean BMb;
-  private MMHandler BMc;
+  private com.tencent.mm.plugin.fts.ui.e.a HwW;
+  protected boolean HwX;
+  private MMHandler HwY;
   
   public c(e parame)
   {
     super(parame);
     AppMethodBeat.i(111813);
-    this.BMc = new MMHandler(Looper.getMainLooper());
-    this.BMa = new com.tencent.mm.plugin.fts.ui.d.a(parame.getContext(), this, 0);
+    this.HwY = new MMHandler(Looper.getMainLooper());
+    this.HwW = new com.tencent.mm.plugin.fts.ui.e.a(parame.getContext(), this, 0);
     AppMethodBeat.o(111813);
   }
   
-  protected final com.tencent.mm.plugin.fts.a.d.a.a SC(int paramInt)
+  protected final com.tencent.mm.plugin.fts.a.d.a.a Wj(int paramInt)
   {
     AppMethodBeat.i(111814);
-    com.tencent.mm.plugin.fts.a.d.a.a locala = this.BMa.SC(paramInt);
+    com.tencent.mm.plugin.fts.a.d.a.a locala = this.HwW.Wj(paramInt);
     AppMethodBeat.o(111814);
     return locala;
   }
   
-  public final void a(com.tencent.mm.plugin.fts.a.d.e parame, String paramString)
+  public final void a(com.tencent.mm.plugin.fts.a.d.e parame, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(111816);
-    int i = this.BMa.SB(0);
+    AppMethodBeat.i(265604);
+    int i = this.HwW.Wi(0);
     setCount(i);
     notifyDataSetChanged();
-    aB(i, true);
-    AppMethodBeat.o(111816);
+    aZ(i, true);
+    AppMethodBeat.o(265604);
   }
   
   protected final boolean a(View paramView, com.tencent.mm.plugin.fts.a.d.a.a parama, boolean paramBoolean)
@@ -47,25 +47,25 @@ public final class c
     return false;
   }
   
-  protected final int erb()
+  protected final int fxI()
   {
     AppMethodBeat.i(111817);
-    int i = this.BMa.eru();
+    int i = this.HwW.fyc();
     AppMethodBeat.o(111817);
     return i;
   }
   
-  protected final void erv()
+  protected final void fyd()
   {
     AppMethodBeat.i(111815);
-    this.BMb = false;
-    this.BMa.a(getQuery(), this.BMc, new HashSet(), 0L);
+    this.HwX = false;
+    this.HwW.a(getQuery(), this.HwY, new HashSet());
     AppMethodBeat.o(111815);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.c
  * JD-Core Version:    0.7.0.1
  */

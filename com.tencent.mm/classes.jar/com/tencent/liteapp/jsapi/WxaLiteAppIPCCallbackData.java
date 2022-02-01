@@ -9,37 +9,37 @@ public class WxaLiteAppIPCCallbackData
   implements Parcelable
 {
   public static final Parcelable.Creator<WxaLiteAppIPCCallbackData> CREATOR;
-  public boolean coH;
-  public String coI;
-  public String coJ;
+  public boolean efS;
+  public String efT;
+  public String efU;
   
   static
   {
-    AppMethodBeat.i(258516);
+    AppMethodBeat.i(219081);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(258516);
+    AppMethodBeat.o(219081);
   }
   
   public WxaLiteAppIPCCallbackData()
   {
-    this.coH = false;
-    this.coI = null;
-    this.coJ = null;
+    this.efS = false;
+    this.efT = null;
+    this.efU = null;
   }
   
   public WxaLiteAppIPCCallbackData(Parcel paramParcel)
   {
-    AppMethodBeat.i(258514);
-    this.coH = false;
-    this.coI = null;
-    this.coJ = null;
+    AppMethodBeat.i(219075);
+    this.efS = false;
+    this.efT = null;
+    this.efU = null;
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.coH = bool;
-      this.coI = paramParcel.readString();
-      this.coJ = paramParcel.readString();
-      AppMethodBeat.o(258514);
+      this.efS = bool;
+      this.efT = paramParcel.readString();
+      this.efU = paramParcel.readString();
+      AppMethodBeat.o(219075);
       return;
       bool = false;
     }
@@ -52,14 +52,14 @@ public class WxaLiteAppIPCCallbackData
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(258515);
-    if (this.coH) {}
+    AppMethodBeat.i(219094);
+    if (this.efS) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeString(this.coI);
-      paramParcel.writeString(this.coJ);
-      AppMethodBeat.o(258515);
+      paramParcel.writeString(this.efT);
+      paramParcel.writeString(this.efU);
+      AppMethodBeat.o(219094);
       return;
     }
   }

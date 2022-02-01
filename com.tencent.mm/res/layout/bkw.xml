@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/o5" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/it2" android:layout_width="fill_parent" android:layout_marginLeft="@dimen/hs" android:layout_marginRight="@dimen/hs" style="@style/hx" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bf0" android:paddingTop="@dimen/k5" android:paddingBottom="@dimen/k5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginRight="@dimen/hs">
-        <TextView android:textSize="@dimen/is" android:textColor="@color/FG_0" android:ellipsize="end" android:gravity="center|left" android:id="@id/ipm" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/wz" android:text="@string/wx" android:maxLines="2" android:layout_weight="1.0" android:lineSpacingExtra="@dimen/k_" />
-        <RelativeLayout android:id="@id/bgx" android:layout_width="@dimen/wz" android:layout_height="@dimen/wz" android:layout_marginLeft="@dimen/hs">
-            <ImageView android:id="@id/bgv" android:background="@color/wt" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-        </RelativeLayout>
-    </LinearLayout>
-</LinearLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:gravity="center" android:orientation="vertical" android:background="@color/ahb" android:paddingLeft="@dimen/df" android:paddingTop="@dimen/cd" android:paddingBottom="@dimen/cd" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/bd" android:textColor="@color/m4" android:ellipsize="end" android:gravity="center" android:id="@id/kd0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:includeFontPadding="false" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <ImageView android:id="@id/kcx" android:visibility="invisible" android:layout_width="@dimen/df" android:layout_height="@dimen/df" android:layout_marginTop="-4.0dip" app:layout_constraintLeft_toRightOf="@id/kd0" app:layout_constraintTop_toTopOf="@id/kd0" />
+</androidx.constraintlayout.widget.ConstraintLayout>

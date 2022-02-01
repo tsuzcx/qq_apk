@@ -1,584 +1,799 @@
 package com.tencent.mm.plugin.finder.storage.logic;
 
+import android.database.Cursor;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.cr;
-import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.cn;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.model.a;
-import com.tencent.mm.plugin.finder.model.ax;
-import com.tencent.mm.plugin.finder.model.ay;
+import com.tencent.mm.plugin.finder.loader.n;
 import com.tencent.mm.plugin.finder.model.az;
-import com.tencent.mm.plugin.finder.model.ba;
-import com.tencent.mm.plugin.finder.model.bb;
-import com.tencent.mm.plugin.finder.model.bc;
-import com.tencent.mm.plugin.finder.model.bd;
-import com.tencent.mm.plugin.finder.model.be;
-import com.tencent.mm.plugin.finder.model.bg;
-import com.tencent.mm.plugin.finder.storage.an;
+import com.tencent.mm.plugin.finder.preload.f;
+import com.tencent.mm.plugin.finder.preload.f.a;
+import com.tencent.mm.plugin.finder.preload.f.b;
+import com.tencent.mm.plugin.finder.preload.model.b.a;
+import com.tencent.mm.plugin.finder.storage.data.i;
+import com.tencent.mm.protocal.protobuf.FinderMedia;
+import com.tencent.mm.protocal.protobuf.dji;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.storage.IAutoDBItem;
-import com.tencent.mm.sdk.storage.MAutoStorage;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.vfs.y;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.j;
+import kotlin.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/logic/FinderMentionLogic;", "", "()V", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/logic/FinderMediaCacheLogic;", "", "()V", "TAG", "", "THREAD_TAG", "isOpenMultiBitRateDownload", "", "isOptFindBestVideo", "mediaCacheStorage", "Lcom/tencent/mm/plugin/finder/storage/FinderMediaCacheStorage;", "memoryCache", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/finder/model/FinderMediaCache;", "preloadModel", "Lcom/tencent/mm/plugin/finder/preload/model/MediaPreloadModel;", "getPreloadModel", "()Lcom/tencent/mm/plugin/finder/preload/model/MediaPreloadModel;", "preloadModel$delegate", "Lkotlin/Lazy;", "checkFileFormat", "", "mediaId", "fileFormat", "createTPMediaInfo", "Lcom/tencent/mm/plugin/thumbplayer/api/TPMediaInfo;", "_finderMedia", "Lcom/tencent/mm/protocal/protobuf/FinderMedia;", "finderFeedId", "", "findBest", "deleteAll", "deleteBelowFileFormat", "originalMediaId", "findBestVideoToPlay", "Lcom/tencent/mm/plugin/finder/loader/FinderVideoLoadData;", "feedId", "media", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "query", "isCheckFileExit", "queryByOriginalMediaId", "", "quickFindBestVideoToPlay", "replace", "cache", "store", "url", "codingFormat", "", "cacheSize", "totalSize", "state", "duration", "urlToken", "decodeKey", "syncMemoryCacheToDB", "updateMoovReady", "updateMoovReadyMemory", "updatePlayed", "hasPlayed", "updateProgress", "updateProgressMemory", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
 {
-  public static final a AnP;
-  private static final String TAG = "Finder.FinderMentionLogic";
+  public static final com.tencent.mm.plugin.finder.storage.u ArE;
+  private static final j EUE;
+  private static final boolean EVA;
+  public static final e FNF;
+  private static final HashMap<String, az> FNG;
+  private static final boolean FNH;
   
   static
   {
-    AppMethodBeat.i(167113);
-    AnP = new a((byte)0);
-    TAG = "Finder.FinderMentionLogic";
-    AppMethodBeat.o(167113);
+    AppMethodBeat.i(167109);
+    FNF = new e();
+    ArE = ((PluginFinder)com.tencent.mm.kernel.h.az(PluginFinder.class)).getMediaCacheStorage();
+    FNG = new HashMap(100);
+    com.tencent.mm.plugin.finder.storage.d locald = com.tencent.mm.plugin.finder.storage.d.FAy;
+    EVA = com.tencent.mm.plugin.finder.storage.d.eRL();
+    locald = com.tencent.mm.plugin.finder.storage.d.FAy;
+    if (((Number)com.tencent.mm.plugin.finder.storage.d.eVd().bmg()).intValue() == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      FNH = bool;
+      EUE = k.cm((kotlin.g.a.a)b.FNI);
+      AppMethodBeat.o(167109);
+      return;
+    }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/logic/FinderMentionLogic$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "deleteMention", "", "mention", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;", "scene", "", "getAfterTimeLimit", "", "mentionId", "", "limit", "types", "", "getBeforeTimeLimit", "getByMentionIdCreateTime", "mentionCreateTime", "getDbSelect", "getLocalFlag", "insertMention", "mentionList", "removePrivateMention", "", "clientMsgId", "transformFinderMentionToCovertData", "Lcom/tencent/mm/plugin/finder/model/BaseFinderMsg;", "transformMentionToLocal", "Lcom/tencent/mm/protocal/protobuf/FinderMention;", "updateMentionExtFlag", "plugin-finder_release"})
-  public static final class a
+  public static az a(String paramString, long paramLong1, long paramLong2, int paramInt)
   {
-    private static String Qr(int paramInt)
+    AppMethodBeat.i(339500);
+    s.u(paramString, "mediaId");
+    paramString = bS(paramString, false);
+    paramString.field_cacheSize = paramLong1;
+    paramString.field_totalSize = paramLong2;
+    paramString.field_state = paramInt;
+    if (!paramString.field_moovReady)
     {
-      AppMethodBeat.i(274345);
-      StringBuilder localStringBuilder = new StringBuilder("SELECT rowid, * FROM ");
-      if (Qs(paramInt) == 1) {}
-      for (String str = cr.hUo;; str = cr.hUn)
-      {
-        str = str;
-        AppMethodBeat.o(274345);
-        return str;
+      f.a locala = f.EUC;
+      if (f.a.a(paramString).EUK) {
+        paramString.field_moovReady = true;
       }
     }
-    
-    public static int Qs(int paramInt)
+    AppMethodBeat.o(339500);
+    return paramString;
+  }
+  
+  public static com.tencent.mm.plugin.thumbplayer.a.b a(FinderMedia paramFinderMedia, long paramLong, boolean paramBoolean)
+  {
+    AppMethodBeat.i(339595);
+    if (paramFinderMedia != null)
     {
-      switch (paramInt)
+      Object localObject2 = i.c(paramFinderMedia);
+      if (paramBoolean) {}
+      for (Object localObject1 = FNF.b(paramLong, (dji)localObject2);; localObject1 = getPreloadModel().a(paramLong, (dji)localObject2))
       {
-      default: 
-        return 0;
-      case 2: 
-        return 1;
-      }
-      return 2;
-    }
-    
-    /* Error */
-    public static List<an> a(long paramLong, int paramInt1, int[] paramArrayOfInt, int paramInt2)
-    {
-      // Byte code:
-      //   0: ldc 92
-      //   2: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-      //   5: aload_3
-      //   6: ldc 93
-      //   8: invokestatic 99	kotlin/g/b/p:k	(Ljava/lang/Object;Ljava/lang/String;)V
-      //   11: ldc 101
-      //   13: invokestatic 107	com/tencent/mm/kernel/h:ag	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/a;
-      //   16: checkcast 101	com/tencent/mm/plugin/finder/PluginFinder
-      //   19: iload 4
-      //   21: invokestatic 69	com/tencent/mm/plugin/finder/storage/logic/e$a:Qs	(I)I
-      //   24: invokevirtual 111	com/tencent/mm/plugin/finder/PluginFinder:getMentionStorage	(I)Lcom/tencent/mm/sdk/storage/MAutoStorage;
-      //   27: astore 12
-      //   29: invokestatic 115	com/tencent/mm/kernel/h:aHG	()Lcom/tencent/mm/kernel/f;
-      //   32: astore 10
-      //   34: aload 10
-      //   36: ldc 117
-      //   38: invokestatic 120	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
-      //   41: aload 10
-      //   43: invokevirtual 126	com/tencent/mm/kernel/f:aHp	()Lcom/tencent/mm/storage/ao;
-      //   46: getstatic 132	com/tencent/mm/storage/ar$a:VAI	Lcom/tencent/mm/storage/ar$a;
-      //   49: iconst_0
-      //   50: invokevirtual 138	com/tencent/mm/storage/ao:getInt	(Lcom/tencent/mm/storage/ar$a;I)I
-      //   53: istore 7
-      //   55: aload_3
-      //   56: arraylength
-      //   57: ifne +205 -> 262
-      //   60: iconst_1
-      //   61: istore 5
-      //   63: iload 5
-      //   65: ifeq +203 -> 268
-      //   68: new 60	java/lang/StringBuilder
-      //   71: dup
-      //   72: invokespecial 139	java/lang/StringBuilder:<init>	()V
-      //   75: iload 4
-      //   77: invokestatic 141	com/tencent/mm/plugin/finder/storage/logic/e$a:Qr	(I)Ljava/lang/String;
-      //   80: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   83: ldc 143
-      //   85: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   88: lload_0
-      //   89: invokevirtual 146	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-      //   92: bipush 32
-      //   94: invokevirtual 149	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-      //   97: ldc 151
-      //   99: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   102: iload 7
-      //   104: invokevirtual 154	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-      //   107: ldc 156
-      //   109: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   112: iload_2
-      //   113: invokevirtual 154	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-      //   116: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   119: astore_3
-      //   120: invokestatic 159	com/tencent/mm/plugin/finder/storage/logic/e:access$getTAG$cp	()Ljava/lang/String;
-      //   123: ldc 161
-      //   125: aload_3
-      //   126: invokestatic 167	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-      //   129: invokevirtual 171	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-      //   132: invokestatic 176	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-      //   135: aload 12
-      //   137: aload_3
-      //   138: iconst_0
-      //   139: anewarray 163	java/lang/String
-      //   142: invokevirtual 182	com/tencent/mm/sdk/storage/MAutoStorage:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
-      //   145: astore 11
-      //   147: aload 11
-      //   149: ifnull +332 -> 481
-      //   152: new 184	java/util/LinkedList
-      //   155: dup
-      //   156: invokespecial 185	java/util/LinkedList:<init>	()V
-      //   159: astore_3
-      //   160: aload 11
-      //   162: checkcast 187	java/io/Closeable
-      //   165: astore 12
-      //   167: aload 12
-      //   169: checkcast 189	android/database/Cursor
-      //   172: astore 10
-      //   174: aload 10
-      //   176: invokeinterface 193 1 0
-      //   181: ifeq +270 -> 451
-      //   184: ldc 195
-      //   186: invokevirtual 201	java/lang/Class:newInstance	()Ljava/lang/Object;
-      //   189: astore 13
-      //   191: aload 13
-      //   193: ldc 203
-      //   195: invokestatic 120	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
-      //   198: aload 13
-      //   200: checkcast 205	com/tencent/mm/sdk/storage/IAutoDBItem
-      //   203: astore 13
-      //   205: aload 13
-      //   207: aload 10
-      //   209: invokevirtual 209	com/tencent/mm/sdk/storage/IAutoDBItem:convertFrom	(Landroid/database/Cursor;)V
-      //   212: aload_3
-      //   213: aload 13
-      //   215: invokevirtual 213	java/util/LinkedList:add	(Ljava/lang/Object;)Z
-      //   218: pop
-      //   219: goto -45 -> 174
-      //   222: astore 10
-      //   224: ldc 92
-      //   226: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   229: aload 10
-      //   231: athrow
-      //   232: astore_3
-      //   233: aload 12
-      //   235: aload 10
-      //   237: invokestatic 218	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-      //   240: ldc 92
-      //   242: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   245: aload_3
-      //   246: athrow
-      //   247: astore_3
-      //   248: aload 11
-      //   250: invokeinterface 221 1 0
-      //   255: ldc 92
-      //   257: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   260: aload_3
-      //   261: athrow
-      //   262: iconst_0
-      //   263: istore 5
-      //   265: goto -202 -> 63
-      //   268: ldc 223
-      //   270: astore 10
-      //   272: iconst_0
-      //   273: istore 5
-      //   275: aload_3
-      //   276: arraylength
-      //   277: istore 8
-      //   279: iconst_0
-      //   280: istore 6
-      //   282: iload 6
-      //   284: iload 8
-      //   286: if_icmpge +80 -> 366
-      //   289: aload_3
-      //   290: iload 6
-      //   292: iaload
-      //   293: istore 9
-      //   295: aload 10
-      //   297: astore 11
-      //   299: iload 5
-      //   301: ifle +25 -> 326
-      //   304: new 60	java/lang/StringBuilder
-      //   307: dup
-      //   308: invokespecial 139	java/lang/StringBuilder:<init>	()V
-      //   311: aload 10
-      //   313: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   316: ldc 225
-      //   318: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   321: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   324: astore 11
-      //   326: new 60	java/lang/StringBuilder
-      //   329: dup
-      //   330: invokespecial 139	java/lang/StringBuilder:<init>	()V
-      //   333: aload 11
-      //   335: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   338: iload 9
-      //   340: invokestatic 227	java/lang/String:valueOf	(I)Ljava/lang/String;
-      //   343: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   346: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   349: astore 10
-      //   351: iload 6
-      //   353: iconst_1
-      //   354: iadd
-      //   355: istore 6
-      //   357: iload 5
-      //   359: iconst_1
-      //   360: iadd
-      //   361: istore 5
-      //   363: goto -81 -> 282
-      //   366: new 60	java/lang/StringBuilder
-      //   369: dup
-      //   370: invokespecial 139	java/lang/StringBuilder:<init>	()V
-      //   373: aload 10
-      //   375: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   378: ldc 229
-      //   380: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   383: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   386: astore_3
-      //   387: new 60	java/lang/StringBuilder
-      //   390: dup
-      //   391: invokespecial 139	java/lang/StringBuilder:<init>	()V
-      //   394: iload 4
-      //   396: invokestatic 141	com/tencent/mm/plugin/finder/storage/logic/e$a:Qr	(I)Ljava/lang/String;
-      //   399: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   402: ldc 143
-      //   404: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   407: lload_0
-      //   408: invokevirtual 146	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-      //   411: bipush 32
-      //   413: invokevirtual 149	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-      //   416: ldc 231
-      //   418: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   421: aload_3
-      //   422: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   425: ldc 233
-      //   427: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   430: iload 7
-      //   432: invokevirtual 154	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-      //   435: ldc 156
-      //   437: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   440: iload_2
-      //   441: invokevirtual 154	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-      //   444: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   447: astore_3
-      //   448: goto -328 -> 120
-      //   451: getstatic 239	kotlin/x:aazN	Lkotlin/x;
-      //   454: astore 10
-      //   456: aload 12
-      //   458: aconst_null
-      //   459: invokestatic 218	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-      //   462: aload_3
-      //   463: checkcast 241	java/util/List
-      //   466: astore_3
-      //   467: aload 11
-      //   469: invokeinterface 221 1 0
-      //   474: ldc 92
-      //   476: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   479: aload_3
-      //   480: areturn
-      //   481: new 184	java/util/LinkedList
-      //   484: dup
-      //   485: invokespecial 185	java/util/LinkedList:<init>	()V
-      //   488: checkcast 241	java/util/List
-      //   491: astore_3
-      //   492: goto -25 -> 467
-      //   495: astore_3
-      //   496: aconst_null
-      //   497: astore 10
-      //   499: goto -266 -> 233
-      // Local variable table:
-      //   start	length	slot	name	signature
-      //   0	502	0	paramLong	long
-      //   0	502	2	paramInt1	int
-      //   0	502	3	paramArrayOfInt	int[]
-      //   0	502	4	paramInt2	int
-      //   61	301	5	i	int
-      //   280	76	6	j	int
-      //   53	378	7	k	int
-      //   277	10	8	m	int
-      //   293	46	9	n	int
-      //   32	176	10	localObject1	Object
-      //   222	14	10	localThrowable	java.lang.Throwable
-      //   270	228	10	localObject2	Object
-      //   145	323	11	localObject3	Object
-      //   27	430	12	localObject4	Object
-      //   189	25	13	localObject5	Object
-      // Exception table:
-      //   from	to	target	type
-      //   167	174	222	java/lang/Throwable
-      //   174	219	222	java/lang/Throwable
-      //   451	456	222	java/lang/Throwable
-      //   224	232	232	finally
-      //   152	167	247	finally
-      //   233	247	247	finally
-      //   456	467	247	finally
-      //   481	492	247	finally
-      //   167	174	495	finally
-      //   174	219	495	finally
-      //   451	456	495	finally
-    }
-    
-    public static boolean a(an paraman, int paramInt)
-    {
-      AppMethodBeat.i(274341);
-      p.k(paraman, "mention");
-      MAutoStorage localMAutoStorage = ((PluginFinder)h.ag(PluginFinder.class)).getMentionStorage(Qs(paramInt));
-      if (Qs(paramInt) == 1) {}
-      for (String str1 = cr.hUo;; str1 = cr.hUn)
-      {
-        String str2 = "UPDATE " + str1 + " SET extFlag=" + paraman.field_extFlag + " WHERE id=" + paraman.field_id;
-        boolean bool = localMAutoStorage.execSQL(str1, str2);
-        Log.i(e.access$getTAG$cp(), "updateMentionExtFlag sql:" + str2 + ", flag:" + paraman.field_extFlag);
-        AppMethodBeat.o(274341);
-        return bool;
+        String str3 = ((com.tencent.mm.plugin.finder.loader.v)localObject1).aUt();
+        String str4 = ((com.tencent.mm.plugin.finder.loader.v)localObject1).getPath();
+        String str5 = ((com.tencent.mm.plugin.finder.loader.v)localObject1).getUrl();
+        String str1 = ((com.tencent.mm.plugin.finder.loader.v)localObject1).eCf();
+        String str2 = ((com.tencent.mm.plugin.finder.loader.v)localObject1).eCe();
+        paramLong = paramFinderMedia.videoDuration;
+        localObject1 = ((com.tencent.mm.plugin.finder.loader.v)localObject1).ExF.detail;
+        Object localObject3 = new n((dji)localObject2, com.tencent.mm.plugin.finder.storage.v.FKZ, null, null, 12);
+        localObject2 = ((n)localObject3).getPath();
+        String str6 = ((n)localObject3).eCi();
+        localObject3 = ((n)localObject3).eCg();
+        paramFinderMedia = new com.tencent.mm.plugin.thumbplayer.a.b(str3, str4, str5, (int)paramFinderMedia.width, (int)paramFinderMedia.height);
+        paramFinderMedia.decodeKey = str2;
+        paramFinderMedia.msf = str1;
+        paramFinderMedia.vYw = paramLong;
+        paramFinderMedia.hVy = ((String)localObject1);
+        paramFinderMedia.thumbPath = ((String)localObject2);
+        paramFinderMedia.thumbUrl = str6;
+        paramFinderMedia.msh = ((String)localObject3);
+        AppMethodBeat.o(339595);
+        return paramFinderMedia;
       }
     }
-    
-    public static a b(an paraman)
+    AppMethodBeat.o(339595);
+    return null;
+  }
+  
+  public static boolean a(String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, long paramLong1, long paramLong2, int paramInt2, int paramInt3, String paramString5, String paramString6)
+  {
+    AppMethodBeat.i(339566);
+    s.u(paramString1, "mediaId");
+    s.u(paramString2, "originalMediaId");
+    s.u(paramString3, "url");
+    s.u(paramString4, "fileFormat");
+    az localaz = bS(paramString1, false);
+    localaz.field_mediaId = paramString1;
+    localaz.field_originMediaId = paramString2;
+    localaz.field_url = paramString3;
+    localaz.field_reqFormat = paramInt1;
+    localaz.field_cacheSize = paramLong1;
+    localaz.field_totalSize = paramLong2;
+    localaz.field_fileFormat = paramString4;
+    localaz.field_state = paramInt2;
+    localaz.field_duration = paramInt3;
+    localaz.field_urlToken = paramString5;
+    localaz.field_decodeKey = paramString6;
+    paramString1 = ah.aiuX;
+    boolean bool = d(localaz);
+    AppMethodBeat.o(339566);
+    return bool;
+  }
+  
+  public static void aAM(String paramString)
+  {
+    AppMethodBeat.i(339514);
+    s.u(paramString, "mediaId");
+    com.tencent.mm.ae.d.e("FinderMediaCacheUpdateThread", (kotlin.g.a.a)new d(paramString));
+    AppMethodBeat.o(339514);
+  }
+  
+  public static List<az> aAO(String paramString)
+  {
+    AppMethodBeat.i(339557);
+    s.u(paramString, "originalMediaId");
+    Object localObject = ArE;
+    s.u(paramString, "originMediaId");
+    LinkedList localLinkedList = new LinkedList();
+    paramString = "select *, rowid from FinderMediaCacheInfoV2  where originMediaId = '" + paramString + "' ";
+    paramString = ((com.tencent.mm.plugin.finder.storage.u)localObject).db.rawQuery(paramString, null);
+    if (paramString != null)
     {
-      AppMethodBeat.i(274344);
-      p.k(paraman, "mention");
-      switch (paraman.field_type)
+      paramString.moveToFirst();
+      while (!paramString.isAfterLast())
       {
-      case 6: 
-      case 9: 
-      default: 
-        AppMethodBeat.o(274344);
-        return null;
-      case 4: 
-        paraman = (a)new bg(paraman);
-        AppMethodBeat.o(274344);
-        return paraman;
-      case 2: 
-        paraman = (a)new bd(paraman);
-        AppMethodBeat.o(274344);
-        return paraman;
-      case 3: 
-        paraman = (a)new ax(paraman);
-        AppMethodBeat.o(274344);
-        return paraman;
-      case 5: 
-        paraman = (a)new be(paraman);
-        AppMethodBeat.o(274344);
-        return paraman;
-      case 1: 
-        paraman = (a)new ay(paraman);
-        AppMethodBeat.o(274344);
-        return paraman;
-      case 7: 
-        paraman = (a)new bc(paraman);
-        AppMethodBeat.o(274344);
-        return paraman;
-      case 8: 
-        paraman = (a)new bb(paraman);
-        AppMethodBeat.o(274344);
-        return paraman;
-      case 10: 
-        paraman = (a)new az(paraman);
-        AppMethodBeat.o(274344);
-        return paraman;
+        localObject = new az();
+        ((az)localObject).convertFrom(paramString);
+        localLinkedList.add(localObject);
+        paramString.moveToNext();
       }
-      paraman = (a)new ba(paraman);
-      AppMethodBeat.o(274344);
-      return paraman;
+      paramString.close();
     }
-    
-    public static boolean b(an paraman, int paramInt)
+    paramString = (List)localLinkedList;
+    AppMethodBeat.o(339557);
+    return paramString;
+  }
+  
+  public static az bS(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(339539);
+    s.u(paramString, "mediaId");
+    if (((CharSequence)paramString).length() == 0) {}
+    az localaz;
+    for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.i(274342);
-      p.k(paraman, "mention");
-      MAutoStorage localMAutoStorage = ((PluginFinder)h.ag(PluginFinder.class)).getMentionStorage(Qs(paramInt));
-      if (Qs(paramInt) == 1) {}
-      for (String str1 = cr.hUo;; str1 = cr.hUn)
+      localaz = new az();
+      localaz.field_mediaId = paramString;
+      AppMethodBeat.o(339539);
+      return localaz;
+    }
+    synchronized (FNG)
+    {
+      localaz = (az)FNG.get(paramString);
+      Log.i("Finder.MediaCacheLogic", "[query] mediaId=" + paramString + " hit memory cache:" + localaz + ", memoryCache size:" + FNG.size());
+      if (localaz == null)
       {
-        String str2 = "DELETE FROM " + str1 + " WHERE id=" + paraman.field_id;
-        boolean bool = localMAutoStorage.execSQL(str1, str2);
-        Log.i(e.access$getTAG$cp(), "updateMentionExtFlag sql:" + str2 + ", flag:" + paraman.field_extFlag + " succ:" + bool);
-        AppMethodBeat.o(274342);
-        return bool;
+        localaz = ArE.aAC(paramString);
+        Log.i("Finder.MediaCacheLogic", "[query] mediaId=" + paramString + " hit db cache:" + localaz + ", memoryCache size:" + FNG.size());
       }
     }
-    
-    /* Error */
-    public static an l(long paramLong, int paramInt1, int paramInt2)
+    for (;;)
     {
-      // Byte code:
-      //   0: aconst_null
-      //   1: astore 5
-      //   3: ldc_w 316
-      //   6: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-      //   9: invokestatic 159	com/tencent/mm/plugin/finder/storage/logic/e:access$getTAG$cp	()Ljava/lang/String;
-      //   12: new 60	java/lang/StringBuilder
-      //   15: dup
-      //   16: ldc_w 318
-      //   19: invokespecial 65	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-      //   22: lload_0
-      //   23: invokevirtual 146	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-      //   26: ldc_w 320
-      //   29: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   32: iload_2
-      //   33: invokevirtual 154	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-      //   36: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   39: invokestatic 176	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-      //   42: ldc 101
-      //   44: invokestatic 107	com/tencent/mm/kernel/h:ag	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/a;
-      //   47: checkcast 101	com/tencent/mm/plugin/finder/PluginFinder
-      //   50: iload_3
-      //   51: invokestatic 69	com/tencent/mm/plugin/finder/storage/logic/e$a:Qs	(I)I
-      //   54: invokevirtual 111	com/tencent/mm/plugin/finder/PluginFinder:getMentionStorage	(I)Lcom/tencent/mm/sdk/storage/MAutoStorage;
-      //   57: astore 4
-      //   59: new 60	java/lang/StringBuilder
-      //   62: dup
-      //   63: invokespecial 139	java/lang/StringBuilder:<init>	()V
-      //   66: iload_3
-      //   67: invokestatic 141	com/tencent/mm/plugin/finder/storage/logic/e$a:Qr	(I)Ljava/lang/String;
-      //   70: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   73: ldc_w 322
-      //   76: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   79: lload_0
-      //   80: invokevirtual 146	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-      //   83: ldc_w 324
-      //   86: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   89: iload_2
-      //   90: invokevirtual 154	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-      //   93: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   96: astore 6
-      //   98: invokestatic 159	com/tencent/mm/plugin/finder/storage/logic/e:access$getTAG$cp	()Ljava/lang/String;
-      //   101: ldc 161
-      //   103: aload 6
-      //   105: invokestatic 167	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-      //   108: invokevirtual 171	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-      //   111: invokestatic 327	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
-      //   114: aload 4
-      //   116: aload 6
-      //   118: iconst_0
-      //   119: anewarray 163	java/lang/String
-      //   122: invokevirtual 182	com/tencent/mm/sdk/storage/MAutoStorage:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
-      //   125: astore 4
-      //   127: aload 4
-      //   129: ifnull +62 -> 191
-      //   132: aload 4
-      //   134: checkcast 187	java/io/Closeable
-      //   137: astore 6
-      //   139: aload 4
-      //   141: invokeinterface 193 1 0
-      //   146: ifeq +34 -> 180
-      //   149: new 195	com/tencent/mm/plugin/finder/storage/an
-      //   152: dup
-      //   153: invokespecial 328	com/tencent/mm/plugin/finder/storage/an:<init>	()V
-      //   156: astore 7
-      //   158: aload 7
-      //   160: aload 4
-      //   162: invokevirtual 329	com/tencent/mm/plugin/finder/storage/an:convertFrom	(Landroid/database/Cursor;)V
-      //   165: aload 6
-      //   167: aconst_null
-      //   168: invokestatic 218	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-      //   171: ldc_w 316
-      //   174: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   177: aload 7
-      //   179: areturn
-      //   180: getstatic 239	kotlin/x:aazN	Lkotlin/x;
-      //   183: astore 4
-      //   185: aload 6
-      //   187: aconst_null
-      //   188: invokestatic 218	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-      //   191: ldc_w 316
-      //   194: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   197: aconst_null
-      //   198: areturn
-      //   199: astore 5
-      //   201: ldc_w 316
-      //   204: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   207: aload 5
-      //   209: athrow
-      //   210: astore 4
-      //   212: aload 6
-      //   214: aload 5
-      //   216: invokestatic 218	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-      //   219: ldc_w 316
-      //   222: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   225: aload 4
-      //   227: athrow
-      //   228: astore 4
-      //   230: goto -18 -> 212
-      // Local variable table:
-      //   start	length	slot	name	signature
-      //   0	233	0	paramLong	long
-      //   0	233	2	paramInt1	int
-      //   0	233	3	paramInt2	int
-      //   57	127	4	localObject1	Object
-      //   210	16	4	localObject2	Object
-      //   228	1	4	localObject3	Object
-      //   1	1	5	localObject4	Object
-      //   199	16	5	localThrowable	java.lang.Throwable
-      //   96	117	6	localObject5	Object
-      //   156	22	7	localan	an
-      // Exception table:
-      //   from	to	target	type
-      //   139	165	199	java/lang/Throwable
-      //   180	185	199	java/lang/Throwable
-      //   201	210	210	finally
-      //   139	165	228	finally
-      //   180	185	228	finally
-    }
-    
-    public static int s(List<an> paramList, int paramInt)
-    {
-      AppMethodBeat.i(274340);
-      p.k(paramList, "mentionList");
-      Iterator localIterator = ((Iterable)paramList).iterator();
-      int i = 0;
-      an localan;
-      if (localIterator.hasNext())
+      synchronized (FNG)
       {
-        paramList = (an)localIterator.next();
-        Object localObject = e.AnP;
-        p.k(paramList, "mention");
-        localObject = ((PluginFinder)h.ag(PluginFinder.class)).getMentionStorage(Qs(paramInt));
-        localan = l(paramList.field_id, paramList.field_createTime, paramInt);
-        if (localan != null) {
-          ((MAutoStorage)localObject).delete(localan.systemRowid);
-        }
-        boolean bool = ((MAutoStorage)localObject).insert((IAutoDBItem)paramList);
-        localObject = e.access$getTAG$cp();
-        StringBuilder localStringBuilder = new StringBuilder("replace mention success ").append(paramList.field_id).append(", ");
-        if (localan == null)
+        ((Map)FNG).put(paramString, localaz);
+        ah localah = ah.aiuX;
+        if (paramBoolean)
         {
-          paramList = "null";
-          label154:
-          Log.i((String)localObject, paramList + ", " + bool);
-          if (!bool) {
-            break label225;
+          if (((CharSequence)localaz.getFilePath()).length() <= 0) {
+            break label347;
           }
-          i += 1;
+          i = 1;
+          if ((i != 0) && (!y.ZC(localaz.getFilePath())))
+          {
+            localaz.reset();
+            localaz.field_state = -2;
+            d(localaz);
+            Log.i("Finder.MediaCacheLogic", "[query] mediaId=" + paramString + " not found file. cache:" + localaz + " filePath=" + localaz.getFilePath());
+          }
+        }
+        AppMethodBeat.o(339539);
+        return localaz;
+        paramString = finally;
+        AppMethodBeat.o(339539);
+        throw paramString;
+      }
+      continue;
+      label347:
+      i = 0;
+    }
+  }
+  
+  public static boolean bwy()
+  {
+    AppMethodBeat.i(339573);
+    int i = ArE.db.delete(ArE.getTableName(), "rowid >= ?", new String[] { "0" });
+    Log.i("Finder.MediaCacheLogic", s.X("[deleteAll] ret=", Integer.valueOf(i)));
+    synchronized (FNG)
+    {
+      FNG.clear();
+      ah localah = ah.aiuX;
+      if (i >= 0)
+      {
+        AppMethodBeat.o(339573);
+        return true;
+      }
+    }
+    AppMethodBeat.o(339573);
+    return false;
+  }
+  
+  /* Error */
+  private static com.tencent.mm.plugin.finder.loader.v c(long paramLong, dji paramdji)
+  {
+    // Byte code:
+    //   0: ldc_w 524
+    //   3: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: invokestatic 530	java/lang/System:currentTimeMillis	()J
+    //   9: lstore 5
+    //   11: iconst_0
+    //   12: istore 4
+    //   14: iconst_0
+    //   15: istore 7
+    //   17: invokestatic 314	com/tencent/mm/plugin/finder/storage/logic/e:getPreloadModel	()Lcom/tencent/mm/plugin/finder/preload/model/b;
+    //   20: lload_0
+    //   21: aload_2
+    //   22: invokevirtual 318	com/tencent/mm/plugin/finder/preload/model/b:a	(JLcom/tencent/mm/protocal/protobuf/dji;)Lcom/tencent/mm/plugin/finder/loader/v;
+    //   25: astore 10
+    //   27: aload 10
+    //   29: invokevirtual 237	com/tencent/mm/plugin/finder/loader/v:aUt	()Ljava/lang/String;
+    //   32: iconst_0
+    //   33: invokestatic 187	com/tencent/mm/plugin/finder/storage/logic/e:bS	(Ljava/lang/String;Z)Lcom/tencent/mm/plugin/finder/model/az;
+    //   36: astore 9
+    //   38: aload 9
+    //   40: invokevirtual 533	com/tencent/mm/plugin/finder/model/az:eDy	()I
+    //   43: istore_3
+    //   44: aload 9
+    //   46: invokevirtual 536	com/tencent/mm/plugin/finder/model/az:eDx	()Z
+    //   49: istore 8
+    //   51: iload 8
+    //   53: ifne +368 -> 421
+    //   56: iload_3
+    //   57: bipush 30
+    //   59: if_icmpge +362 -> 421
+    //   62: aload_2
+    //   63: getfield 540	com/tencent/mm/protocal/protobuf/dji:mediaId	Ljava/lang/String;
+    //   66: astore 11
+    //   68: aload 11
+    //   70: astore 9
+    //   72: aload 11
+    //   74: ifnonnull +8 -> 82
+    //   77: ldc_w 541
+    //   80: astore 9
+    //   82: aload 9
+    //   84: invokestatic 543	com/tencent/mm/plugin/finder/storage/logic/e:aAO	(Ljava/lang/String;)Ljava/util/List;
+    //   87: checkcast 545	java/lang/Iterable
+    //   90: new 10	com/tencent/mm/plugin/finder/storage/logic/e$c
+    //   93: dup
+    //   94: invokespecial 546	com/tencent/mm/plugin/finder/storage/logic/e$c:<init>	()V
+    //   97: checkcast 548	java/util/Comparator
+    //   100: invokestatic 553	kotlin/a/p:a	(Ljava/lang/Iterable;Ljava/util/Comparator;)Ljava/util/List;
+    //   103: checkcast 545	java/lang/Iterable
+    //   106: invokeinterface 557 1 0
+    //   111: astore 11
+    //   113: aload 11
+    //   115: invokeinterface 562 1 0
+    //   120: ifeq +146 -> 266
+    //   123: aload 11
+    //   125: invokeinterface 565 1 0
+    //   130: astore 9
+    //   132: aload 9
+    //   134: checkcast 189	com/tencent/mm/plugin/finder/model/az
+    //   137: invokevirtual 536	com/tencent/mm/plugin/finder/model/az:eDx	()Z
+    //   140: ifeq -27 -> 113
+    //   143: aload 9
+    //   145: checkcast 189	com/tencent/mm/plugin/finder/model/az
+    //   148: astore 9
+    //   150: aload 9
+    //   152: ifnonnull +120 -> 272
+    //   155: aconst_null
+    //   156: astore_2
+    //   157: aload_2
+    //   158: astore 9
+    //   160: aload_2
+    //   161: ifnonnull +7 -> 168
+    //   164: aload 10
+    //   166: astore 9
+    //   168: invokestatic 530	java/lang/System:currentTimeMillis	()J
+    //   171: lload 5
+    //   173: lsub
+    //   174: lstore 5
+    //   176: lload 5
+    //   178: ldc2_w 566
+    //   181: lcmp
+    //   182: ifle +75 -> 257
+    //   185: ldc_w 446
+    //   188: new 383	java/lang/StringBuilder
+    //   191: dup
+    //   192: ldc_w 569
+    //   195: invokespecial 386	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   198: lload 5
+    //   200: invokevirtual 572	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   203: ldc_w 574
+    //   206: invokevirtual 390	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   209: lload_0
+    //   210: invokestatic 578	com/tencent/mm/ae/d:hF	(J)Ljava/lang/String;
+    //   213: invokevirtual 390	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   216: ldc_w 580
+    //   219: invokevirtual 390	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   222: aload 10
+    //   224: invokevirtual 237	com/tencent/mm/plugin/finder/loader/v:aUt	()Ljava/lang/String;
+    //   227: invokevirtual 390	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   230: ldc_w 582
+    //   233: invokevirtual 390	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   236: iload_3
+    //   237: invokevirtual 461	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   240: ldc_w 584
+    //   243: invokevirtual 390	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   246: iload 8
+    //   248: invokevirtual 587	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   251: invokevirtual 395	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   254: invokestatic 466	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   257: ldc_w 524
+    //   260: invokestatic 171	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   263: aload 9
+    //   265: areturn
+    //   266: aconst_null
+    //   267: astore 9
+    //   269: goto -126 -> 143
+    //   272: ldc_w 446
+    //   275: ldc_w 589
+    //   278: aload 9
+    //   280: invokestatic 520	kotlin/g/b/s:X	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/String;
+    //   283: invokestatic 466	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   286: getstatic 593	com/tencent/mm/plugin/finder/preload/model/b:EVg	Lcom/tencent/mm/plugin/finder/preload/model/b$a;
+    //   289: astore 11
+    //   291: new 233	com/tencent/mm/plugin/finder/loader/v
+    //   294: dup
+    //   295: aload_2
+    //   296: aload 9
+    //   298: getfield 338	com/tencent/mm/plugin/finder/model/az:field_fileFormat	Ljava/lang/String;
+    //   301: invokestatic 599	com/tencent/mm/plugin/finder/preload/model/b$a:azm	(Ljava/lang/String;)Lcom/tencent/mm/plugin/finder/storage/v;
+    //   304: aload 9
+    //   306: getfield 335	com/tencent/mm/plugin/finder/model/az:field_reqFormat	I
+    //   309: aconst_null
+    //   310: bipush 8
+    //   312: invokespecial 602	com/tencent/mm/plugin/finder/loader/v:<init>	(Lcom/tencent/mm/protocal/protobuf/dji;Lcom/tencent/mm/plugin/finder/storage/v;ILjava/lang/String;I)V
+    //   315: astore_2
+    //   316: goto -159 -> 157
+    //   319: astore_2
+    //   320: iload 8
+    //   322: istore 7
+    //   324: invokestatic 530	java/lang/System:currentTimeMillis	()J
+    //   327: lload 5
+    //   329: lsub
+    //   330: lstore 5
+    //   332: lload 5
+    //   334: ldc2_w 566
+    //   337: lcmp
+    //   338: ifle +75 -> 413
+    //   341: ldc_w 446
+    //   344: new 383	java/lang/StringBuilder
+    //   347: dup
+    //   348: ldc_w 569
+    //   351: invokespecial 386	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   354: lload 5
+    //   356: invokevirtual 572	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   359: ldc_w 574
+    //   362: invokevirtual 390	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   365: lload_0
+    //   366: invokestatic 578	com/tencent/mm/ae/d:hF	(J)Ljava/lang/String;
+    //   369: invokevirtual 390	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   372: ldc_w 580
+    //   375: invokevirtual 390	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   378: aload 10
+    //   380: invokevirtual 237	com/tencent/mm/plugin/finder/loader/v:aUt	()Ljava/lang/String;
+    //   383: invokevirtual 390	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   386: ldc_w 582
+    //   389: invokevirtual 390	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   392: iload_3
+    //   393: invokevirtual 461	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   396: ldc_w 584
+    //   399: invokevirtual 390	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   402: iload 7
+    //   404: invokevirtual 587	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   407: invokevirtual 395	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   410: invokestatic 466	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   413: ldc_w 524
+    //   416: invokestatic 171	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   419: aload_2
+    //   420: athrow
+    //   421: invokestatic 530	java/lang/System:currentTimeMillis	()J
+    //   424: lload 5
+    //   426: lsub
+    //   427: lstore 5
+    //   429: lload 5
+    //   431: ldc2_w 566
+    //   434: lcmp
+    //   435: ifle +75 -> 510
+    //   438: ldc_w 446
+    //   441: new 383	java/lang/StringBuilder
+    //   444: dup
+    //   445: ldc_w 569
+    //   448: invokespecial 386	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   451: lload 5
+    //   453: invokevirtual 572	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   456: ldc_w 574
+    //   459: invokevirtual 390	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   462: lload_0
+    //   463: invokestatic 578	com/tencent/mm/ae/d:hF	(J)Ljava/lang/String;
+    //   466: invokevirtual 390	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   469: ldc_w 580
+    //   472: invokevirtual 390	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   475: aload 10
+    //   477: invokevirtual 237	com/tencent/mm/plugin/finder/loader/v:aUt	()Ljava/lang/String;
+    //   480: invokevirtual 390	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   483: ldc_w 582
+    //   486: invokevirtual 390	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   489: iload_3
+    //   490: invokevirtual 461	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   493: ldc_w 584
+    //   496: invokevirtual 390	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   499: iload 8
+    //   501: invokevirtual 587	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   504: invokevirtual 395	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   507: invokestatic 466	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   510: ldc_w 524
+    //   513: invokestatic 171	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   516: aload 10
+    //   518: areturn
+    //   519: astore_2
+    //   520: iload 4
+    //   522: istore_3
+    //   523: goto -199 -> 324
+    //   526: astore_2
+    //   527: goto -203 -> 324
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	530	0	paramLong	long
+    //   0	530	2	paramdji	dji
+    //   43	480	3	i	int
+    //   12	509	4	j	int
+    //   9	443	5	l	long
+    //   15	388	7	bool1	boolean
+    //   49	451	8	bool2	boolean
+    //   36	269	9	localObject1	Object
+    //   25	492	10	localv	com.tencent.mm.plugin.finder.loader.v
+    //   66	224	11	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   62	68	319	finally
+    //   82	113	319	finally
+    //   113	143	319	finally
+    //   143	150	319	finally
+    //   272	316	319	finally
+    //   27	44	519	finally
+    //   44	51	526	finally
+  }
+  
+  public static boolean d(az paramaz)
+  {
+    AppMethodBeat.i(339494);
+    s.u(paramaz, "cache");
+    paramaz.field_updateTime = cn.bDw();
+    ??? = ArE;
+    Object localObject2 = paramaz.field_mediaId;
+    s.s(localObject2, "cache.field_mediaId");
+    s.u(localObject2, "mediaId");
+    localObject2 = "select *, rowid from FinderMediaCacheInfoV2  where mediaId = '" + (String)localObject2 + "' ";
+    ??? = ((com.tencent.mm.plugin.finder.storage.u)???).db.rawQuery((String)localObject2, null);
+    boolean bool1;
+    boolean bool2;
+    if (((Cursor)???).getCount() > 0)
+    {
+      bool1 = true;
+      ((Cursor)???).close();
+      if (!bool1) {
+        break label284;
+      }
+      Log.i("Finder.MediaCacheLogic", s.X("replace before cache:", paramaz));
+      bool2 = ArE.c(paramaz);
+      ??? = ArE;
+      localObject2 = paramaz.field_mediaId;
+      s.s(localObject2, "cache.field_mediaId");
+      localObject2 = ((com.tencent.mm.plugin.finder.storage.u)???).aAC((String)localObject2);
+      Log.i("Finder.MediaCacheLogic", s.X("replace after newCache:", localObject2));
+    }
+    for (;;)
+    {
+      Object localObject3;
+      synchronized (FNG)
+      {
+        localObject3 = (Map)FNG;
+        String str = paramaz.field_mediaId;
+        s.s(str, "cache.field_mediaId");
+        ((Map)localObject3).put(str, localObject2);
+        localObject2 = ah.aiuX;
+        Log.i("Finder.MediaCacheLogic", "replaced[" + bool2 + "] isExist=" + bool1 + ' ' + paramaz + ' ');
+        AppMethodBeat.o(339494);
+        return bool2;
+        bool1 = false;
+      }
+      synchronized (FNG)
+      {
+        label284:
+        localObject2 = (Map)FNG;
+        localObject3 = paramaz.field_mediaId;
+        s.s(localObject3, "cache.field_mediaId");
+        ((Map)localObject2).put(localObject3, paramaz);
+        localObject2 = ah.aiuX;
+        bool2 = ArE.b(paramaz);
+      }
+    }
+  }
+  
+  public static boolean eP(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(339528);
+    s.u(paramString, "mediaId");
+    com.tencent.mm.plugin.finder.storage.u localu = ArE;
+    az localaz = bS(paramString, false);
+    Object localObject;
+    if (!localaz.field_moovReady)
+    {
+      localObject = f.EUC;
+      if (f.a.a(localaz).EUK) {
+        localaz.field_moovReady = true;
+      }
+      Log.i("Finder.MediaCacheLogic", "update moov ready " + localaz.field_mediaId + " moovReady:" + localaz.field_moovReady + " audio:" + localaz.field_audioBitrate + " video:" + localaz.field_videoBitrate + " frameRate:" + localaz.field_frameRate);
+    }
+    localaz.field_cacheSize = 0L;
+    localaz.field_totalSize = 0L;
+    localaz.field_state = paramInt;
+    if (paramInt >= 2)
+    {
+      localObject = (CharSequence)localaz.field_fileFormat;
+      if ((localObject != null) && (((CharSequence)localObject).length() != 0)) {
+        break label333;
+      }
+      i = 1;
+      if (i == 0)
+      {
+        localObject = (CharSequence)localaz.field_originMediaId;
+        if ((localObject != null) && (((CharSequence)localObject).length() != 0)) {
+          break label338;
         }
       }
-      label225:
-      for (;;)
+    }
+    label333:
+    label338:
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0)
       {
-        break;
-        paramList = Long.valueOf(localan.systemRowid);
-        break label154;
-        Log.i(e.access$getTAG$cp(), "insert mention ".concat(String.valueOf(i)));
-        AppMethodBeat.o(274340);
-        return i;
+        localObject = localaz.field_originMediaId;
+        s.s(localObject, "this.field_originMediaId");
+        String str = localaz.field_fileFormat;
+        s.s(str, "this.field_fileFormat");
+        ih((String)localObject, str);
       }
+      if (Log.getLogLevel() <= 1) {
+        Log.d("Finder.MediaCacheLogic", "[updateProgress] mediaId=" + paramString + " cacheSize=0 totalSize=0 state=" + paramInt + " moovReady=" + localaz.field_moovReady);
+      }
+      paramString = ah.aiuX;
+      boolean bool = localu.c(localaz);
+      AppMethodBeat.o(339528);
+      return bool;
+      i = 0;
+      break;
+    }
+  }
+  
+  private static com.tencent.mm.plugin.finder.preload.model.b getPreloadModel()
+  {
+    AppMethodBeat.i(339601);
+    com.tencent.mm.plugin.finder.preload.model.b localb = (com.tencent.mm.plugin.finder.preload.model.b)EUE.getValue();
+    AppMethodBeat.o(339601);
+    return localb;
+  }
+  
+  public static az ig(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(339509);
+    s.u(paramString1, "mediaId");
+    s.u(paramString2, "fileFormat");
+    paramString1 = bS(paramString1, false);
+    paramString1.field_moovReady = true;
+    if (!s.p(paramString1.field_fileFormat, paramString2))
+    {
+      paramString1.field_fileFormat = paramString2;
+      if (TextUtils.isEmpty((CharSequence)paramString2)) {
+        com.tencent.mm.plugin.report.service.h.OAn.p(1505L, 251L, 1L);
+      }
+    }
+    AppMethodBeat.o(339509);
+    return paramString1;
+  }
+  
+  private static void ih(String paramString1, String arg1)
+  {
+    AppMethodBeat.i(339582);
+    if (((CharSequence)paramString1).length() == 0) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      Log.w("Finder.MediaCacheLogic", "[deleteBelowFileFormat] originalMediaId is Empty.");
+      AppMethodBeat.o(339582);
+      return;
+    }
+    Object localObject2 = (Iterable)aAO(paramString1);
+    Object localObject1 = (Collection)new ArrayList();
+    localObject2 = ((Iterable)localObject2).iterator();
+    label157:
+    while (((Iterator)localObject2).hasNext())
+    {
+      Object localObject3 = ((Iterator)localObject2).next();
+      Object localObject4 = (az)localObject3;
+      if (s.p(((az)localObject4).field_originMediaId, paramString1))
+      {
+        localObject4 = ((az)localObject4).field_fileFormat;
+        s.s(localObject4, "it.field_fileFormat");
+        if (???.compareTo((String)localObject4) >= 0) {}
+      }
+      for (i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label157;
+        }
+        ((Collection)localObject1).add(localObject3);
+        break;
+      }
+    }
+    localObject1 = ((Iterable)localObject1).iterator();
+    for (;;)
+    {
+      if (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (az)((Iterator)localObject1).next();
+        if (!ArE.delete(((az)localObject2).systemRowid)) {}
+      }
+      else
+      {
+        synchronized (FNG)
+        {
+          FNG.remove(((az)localObject2).field_mediaId);
+          Log.i("Finder.MediaCacheLogic", "[deleteBelowFileFormat] originalMediaId=" + paramString1 + " fileFormat=" + ((az)localObject2).field_fileFormat + " systemRowid" + ((az)localObject2).systemRowid);
+        }
+      }
+    }
+  }
+  
+  public final com.tencent.mm.plugin.finder.loader.v b(long paramLong, dji paramdji)
+  {
+    AppMethodBeat.i(339645);
+    s.u(paramdji, "media");
+    if (FNH)
+    {
+      paramdji = c(paramLong, paramdji);
+      AppMethodBeat.o(339645);
+      return paramdji;
+    }
+    Object localObject2 = paramdji.mediaId;
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = "";
+    }
+    localObject2 = ((Iterable)p.a((Iterable)aAO((String)localObject1), (Comparator)new a())).iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      localObject1 = ((Iterator)localObject2).next();
+      if (((az)localObject1).eDx())
+      {
+        localObject1 = (az)localObject1;
+        if (localObject1 != null) {
+          break label157;
+        }
+      }
+    }
+    for (localObject1 = null;; localObject1 = new com.tencent.mm.plugin.finder.loader.v(paramdji, b.a.azm(((az)localObject1).field_fileFormat), ((az)localObject1).field_reqFormat, null, 8))
+    {
+      if (localObject1 != null) {
+        break label205;
+      }
+      paramdji = getPreloadModel().a(paramLong, paramdji);
+      AppMethodBeat.o(339645);
+      return paramdji;
+      localObject1 = null;
+      break;
+      label157:
+      Log.i("Finder.MediaCacheLogic", s.X("findBestVideoToPlay hit PreLoadCompleted cache:", localObject1));
+      localObject2 = com.tencent.mm.plugin.finder.preload.model.b.EVg;
+    }
+    label205:
+    AppMethodBeat.o(339645);
+    return localObject1;
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareBy$2"}, k=3, mv={1, 5, 1})
+  public static final class a<T>
+    implements Comparator
+  {
+    public final int compare(T paramT1, T paramT2)
+    {
+      AppMethodBeat.i(339460);
+      int i = kotlin.b.a.b((Comparable)Integer.valueOf(((az)paramT1).field_fileFormat.hashCode()), (Comparable)Integer.valueOf(((az)paramT2).field_fileFormat.hashCode()));
+      AppMethodBeat.o(339460);
+      return i;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/finder/preload/model/MediaPreloadModel;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<com.tencent.mm.plugin.finder.preload.model.b>
+  {
+    public static final b FNI;
+    
+    static
+    {
+      AppMethodBeat.i(339464);
+      FNI = new b();
+      AppMethodBeat.o(339464);
+    }
+    
+    b()
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareBy$2"}, k=3, mv={1, 5, 1})
+  public static final class c<T>
+    implements Comparator
+  {
+    public final int compare(T paramT1, T paramT2)
+    {
+      AppMethodBeat.i(339467);
+      int i = kotlin.b.a.b((Comparable)Integer.valueOf(((az)paramT1).field_fileFormat.hashCode()), (Comparable)Integer.valueOf(((az)paramT2).field_fileFormat.hashCode()));
+      AppMethodBeat.o(339467);
+      return i;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class d
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<ah>
+  {
+    d(String paramString)
+    {
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.logic.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_horizontal" android:id="@id/kvy" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:layout_marginTop="@dimen/cl" />
-    <TextView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/ipd" android:paddingLeft="@dimen/ce" android:paddingRight="@dimen/ce" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ce" style="@style/l4" />
-    <TextView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/ip7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" style="@style/zz" />
-    <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/ce">
-        <Button android:layout_gravity="center_horizontal" android:id="@id/aib" android:layout_width="@dimen/c1" android:text="@string/k2y" style="@style/ov" />
-        <Button android:layout_gravity="center_horizontal" android:id="@id/fz0" android:layout_width="@dimen/c1" android:layout_marginLeft="@dimen/cb" android:text="@string/k2x" style="@style/p3" />
-    </LinearLayout>
-    <TextView android:textSize="14.0dip" android:textColor="@color/Link" android:layout_gravity="center_horizontal" android:id="@id/kvx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cc" style="@style/l4" />
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/ma5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="never" />
 </LinearLayout>

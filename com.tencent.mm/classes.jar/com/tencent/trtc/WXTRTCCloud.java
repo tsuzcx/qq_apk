@@ -59,7 +59,7 @@ public class WXTRTCCloud
   
   public static void destroySharedInstance()
   {
-    AppMethodBeat.i(216182);
+    AppMethodBeat.i(211295);
     try
     {
       if (sInstance != null)
@@ -72,7 +72,7 @@ public class WXTRTCCloud
     }
     finally
     {
-      AppMethodBeat.o(216182);
+      AppMethodBeat.o(211295);
     }
   }
   
@@ -132,7 +132,7 @@ public class WXTRTCCloud
   
   public void enableBlackStream(final boolean paramBoolean)
   {
-    AppMethodBeat.i(216195);
+    AppMethodBeat.i(211544);
     runOnMainThread(new Runnable()
     {
       public final void run()
@@ -156,7 +156,7 @@ public class WXTRTCCloud
         AppMethodBeat.o(14292);
       }
     });
-    AppMethodBeat.o(216195);
+    AppMethodBeat.o(211544);
   }
   
   public void enterRoom(TRTCCloudDef.TRTCParams paramTRTCParams, int paramInt)
@@ -187,9 +187,9 @@ public class WXTRTCCloud
   
   public int getMaxZoom()
   {
-    AppMethodBeat.i(216187);
+    AppMethodBeat.i(211496);
     int i = this.mCaptureAndEnc.r();
-    AppMethodBeat.o(216187);
+    AppMethodBeat.o(211496);
     return i;
   }
   
@@ -437,7 +437,7 @@ public class WXTRTCCloud
   
   public void notifyUserVoiceVolume(final ArrayList<TRTCCloudDef.TRTCVolumeInfo> paramArrayList, int paramInt)
   {
-    AppMethodBeat.i(216199);
+    AppMethodBeat.i(211587);
     runOnSDKThread(new Runnable()
     {
       public final void run()
@@ -482,8 +482,8 @@ public class WXTRTCCloud
               continue;
             }
             ((WXTRTCCloud.a)localObject1).a = i;
-            if (((WXTRTCCloud.a)localObject1).ZRo != null) {
-              localObject1 = (WXTRTCCloud.ITXAudioVolumeEvaluationListener)((WXTRTCCloud.a)localObject1).ZRo.get();
+            if (((WXTRTCCloud.a)localObject1).b != null) {
+              localObject1 = (WXTRTCCloud.ITXAudioVolumeEvaluationListener)((WXTRTCCloud.a)localObject1).b.get();
             }
           }
           for (;;)
@@ -541,7 +541,7 @@ public class WXTRTCCloud
         }
       }
     });
-    AppMethodBeat.o(216199);
+    AppMethodBeat.o(211587);
   }
   
   public void pausePusher()
@@ -591,7 +591,7 @@ public class WXTRTCCloud
           locala.a = 0;
           break;
           label107:
-          locala.ZRo = new WeakReference(paramITXAudioVolumeEvaluationListener);
+          locala.b = new WeakReference(paramITXAudioVolumeEvaluationListener);
         }
       }
     });
@@ -651,9 +651,9 @@ public class WXTRTCCloud
   
   public void setFocusPosition(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(216189);
+    AppMethodBeat.i(211506);
     this.mCaptureAndEnc.a(paramFloat1, paramFloat2);
-    AppMethodBeat.o(216189);
+    AppMethodBeat.o(211506);
   }
   
   public void setLocalSurface(final Surface paramSurface)
@@ -690,9 +690,9 @@ public class WXTRTCCloud
   
   public void setPushListener(ITXLivePushListener paramITXLivePushListener)
   {
-    AppMethodBeat.i(216201);
+    AppMethodBeat.i(211595);
     this.mPushListener = new WeakReference(paramITXLivePushListener);
-    AppMethodBeat.o(216201);
+    AppMethodBeat.o(211595);
   }
   
   public void setRemoteSubStreamSurface(final String paramString, final Surface paramSurface)
@@ -867,12 +867,12 @@ public class WXTRTCCloud
             if (paramBoolean) {
               locala.c = null;
             }
-            while ((locala.ZRo == null) && (locala.c == null))
+            while ((locala.b == null) && (locala.c == null))
             {
               WXTRTCCloud.this.mMapAudioVolumeListener.remove(paramString);
               AppMethodBeat.o(14296);
               return;
-              locala.ZRo = null;
+              locala.b = null;
             }
           }
           WXTRTCCloud.this.mMapAudioVolumeListener.remove(paramString);
@@ -911,14 +911,14 @@ public class WXTRTCCloud
   
   static final class a
   {
-    public WeakReference<WXTRTCCloud.ITXAudioVolumeEvaluationListener> ZRo = null;
     public int a;
+    public WeakReference<WXTRTCCloud.ITXAudioVolumeEvaluationListener> b = null;
     public WeakReference<WXTRTCCloud.ITXAudioVolumeEvaluationListener> c = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.trtc.WXTRTCCloud
  * JD-Core Version:    0.7.0.1
  */

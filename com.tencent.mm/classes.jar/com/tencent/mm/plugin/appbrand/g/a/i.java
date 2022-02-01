@@ -5,28 +5,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class i
   extends e
 {
-  private String oes;
+  private String rhY;
   
   public i(String paramString1, String paramString2, String paramString3)
   {
     super(paramString1, paramString2);
     AppMethodBeat.i(158892);
-    this.oes = paramString3;
-    de("SOAPACTION", "\"" + paramString2 + "#" + this.oef + "\"");
-    bMD();
+    this.rhY = paramString3;
+    dx("SOAPACTION", "\"" + paramString2 + "#" + this.rhL + "\"");
+    cmT();
     AppMethodBeat.o(158892);
   }
   
-  public final String bMB()
+  public final String cmR()
   {
     return "Seek";
   }
   
-  public final String bMC()
+  public final String cmS()
   {
     AppMethodBeat.i(158893);
-    String str = this.oes;
-    str = "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?><s:Envelope s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\"><s:Body>" + new StringBuilder("<u:").append(this.oef).append(" xmlns:u=\"").append(this.oeg).append("\">\n <InstanceID>0</InstanceID>\n <Unit>").append("REL_TIME").append("</Unit>\n <Target>").append(str).append("</Target>\n</u:").append(this.oef).append(">\n").toString() + "</s:Body></s:Envelope>";
+    String str = this.rhY;
+    str = "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?><s:Envelope s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\"><s:Body>" + new StringBuilder("<u:").append(this.rhL).append(" xmlns:u=\"").append(this.rhM).append("\">\n <InstanceID>0</InstanceID>\n <Unit>").append("REL_TIME").append("</Unit>\n <Target>").append(str).append("</Target>\n</u:").append(this.rhL).append(">\n").toString() + "</s:Body></s:Envelope>";
     AppMethodBeat.o(158893);
     return str;
   }

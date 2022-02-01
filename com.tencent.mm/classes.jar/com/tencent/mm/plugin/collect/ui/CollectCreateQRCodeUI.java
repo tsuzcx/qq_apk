@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.collect.ui;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -15,33 +14,35 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.p;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.collect.model.o;
-import com.tencent.mm.plugin.collect.model.u;
+import com.tencent.mm.plugin.collect.model.m;
+import com.tencent.mm.plugin.collect.model.s;
 import com.tencent.mm.plugin.wxpay.a.f;
 import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.ui.base.h.b;
-import com.tencent.mm.ui.base.w;
-import com.tencent.mm.wallet_core.c.ah;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.ui.base.aa;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.k.b;
+import com.tencent.mm.wallet_core.model.ai;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
-import com.tencent.mm.wallet_core.ui.g;
+import com.tencent.mm.wallet_core.ui.i;
 
 public class CollectCreateQRCodeUI
   extends WalletBaseUI
 {
   private String mDesc = "";
-  private WalletFormView tZh;
-  private TextView tZi;
+  private TextView xcA;
+  private WalletFormView xcz;
   
   public int getLayoutId()
   {
@@ -63,15 +64,15 @@ public class CollectCreateQRCodeUI
         return true;
       }
     });
-    this.tZh = ((WalletFormView)findViewById(a.f.money_ev));
-    com.tencent.mm.wallet_core.ui.formview.a.f(this.tZh);
+    this.xcz = ((WalletFormView)findViewById(a.f.money_ev));
+    com.tencent.mm.wallet_core.ui.formview.a.f(this.xcz);
     String str = getIntent().getStringExtra("key_currency_unit");
     if (!Util.isNullOrNil(str)) {
-      this.tZh.getTitleTv().setText(str);
+      this.xcz.getTitleTv().setText(str);
     }
     for (;;)
     {
-      this.tZh.a(new TextWatcher()
+      this.xcz.a(new TextWatcher()
       {
         public final void afterTextChanged(Editable paramAnonymousEditable)
         {
@@ -92,21 +93,21 @@ public class CollectCreateQRCodeUI
         
         public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       });
-      setEditFocusListener(this.tZh, 2, false);
+      setEditFocusListener(this.xcz, 2, false);
       ((Button)findViewById(a.f.next_btn)).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(64093);
           b localb = new b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/collect/ui/CollectCreateQRCodeUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/collect/ui/CollectCreateQRCodeUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           double d = Util.getDouble(CollectCreateQRCodeUI.a(CollectCreateQRCodeUI.this).getText(), 0.0D);
-          com.tencent.mm.kernel.h.aHH();
-          int i = ((Integer)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.VlG, Integer.valueOf(0))).intValue();
+          h.baF();
+          int i = ((Integer)h.baE().ban().get(at.a.acNa, Integer.valueOf(0))).intValue();
           Log.i("MicroMsg.CollectCreateQRCodeUI", "wallet region: %s", new Object[] { Integer.valueOf(i) });
-          if (!CollectCreateQRCodeUI.a(CollectCreateQRCodeUI.this).bAz()) {
-            w.makeText(CollectCreateQRCodeUI.this.getContext(), a.i.wallet_balance_save_input_invalid, 0).show();
+          if (!CollectCreateQRCodeUI.a(CollectCreateQRCodeUI.this).bZp()) {
+            aa.makeText(CollectCreateQRCodeUI.this.getContext(), a.i.wallet_balance_save_input_invalid, 0).show();
           }
           for (;;)
           {
@@ -114,26 +115,26 @@ public class CollectCreateQRCodeUI
             AppMethodBeat.o(64093);
             return;
             if (d < 0.01D) {
-              w.makeText(CollectCreateQRCodeUI.this.getContext(), a.i.remittance_amount_lowest_limit, 0).show();
+              aa.makeText(CollectCreateQRCodeUI.this.getContext(), a.i.remittance_amount_lowest_limit, 0).show();
             } else if (i == 8) {
-              CollectCreateQRCodeUI.this.doSceneForceProgress(new o(Math.round(d * 100.0D), CollectCreateQRCodeUI.b(CollectCreateQRCodeUI.this), z.bdg()));
+              CollectCreateQRCodeUI.this.doSceneForceProgress(new m(Math.round(d * 100.0D), CollectCreateQRCodeUI.b(CollectCreateQRCodeUI.this), z.bAV()));
             } else {
-              CollectCreateQRCodeUI.this.doSceneProgress(new u(d, "1", CollectCreateQRCodeUI.b(CollectCreateQRCodeUI.this)));
+              CollectCreateQRCodeUI.this.doSceneProgress(new s(d, "1", CollectCreateQRCodeUI.b(CollectCreateQRCodeUI.this)));
             }
           }
         }
       });
-      this.tZi = ((TextView)findViewById(a.f.collect_main_add_desc));
-      this.tZi.setOnClickListener(new View.OnClickListener()
+      this.xcA = ((TextView)findViewById(a.f.collect_main_add_desc));
+      this.xcA.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(64097);
           b localb = new b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/collect/ui/CollectCreateQRCodeUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/collect/ui/CollectCreateQRCodeUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           CollectCreateQRCodeUI.this.hideTenpayKB();
-          com.tencent.mm.plugin.wallet_core.ui.view.a.a(CollectCreateQRCodeUI.this, CollectCreateQRCodeUI.this.getString(a.i.collect_main_add_desc_title), CollectCreateQRCodeUI.b(CollectCreateQRCodeUI.this), "", true, 32, new h.b()new DialogInterface.OnClickListener
+          com.tencent.mm.plugin.wallet_core.ui.view.a.a(CollectCreateQRCodeUI.this, CollectCreateQRCodeUI.this.getString(a.i.collect_main_add_desc_title), CollectCreateQRCodeUI.b(CollectCreateQRCodeUI.this), "", true, 32, new k.b()new DialogInterface.OnClickListener
           {
             public final boolean onFinish(CharSequence paramAnonymous2CharSequence)
             {
@@ -149,9 +150,9 @@ public class CollectCreateQRCodeUI
                 {
                   public final void run()
                   {
-                    AppMethodBeat.i(207237);
+                    AppMethodBeat.i(293578);
                     CollectCreateQRCodeUI.this.hideVKB();
-                    AppMethodBeat.o(207237);
+                    AppMethodBeat.o(293578);
                   }
                 }, 200L);
                 AppMethodBeat.o(64094);
@@ -183,7 +184,7 @@ public class CollectCreateQRCodeUI
       });
       AppMethodBeat.o(64101);
       return;
-      this.tZh.getTitleTv().setText(ah.ijb());
+      this.xcz.getTitleTv().setText(ai.jOX());
     }
   }
   
@@ -204,63 +205,63 @@ public class CollectCreateQRCodeUI
     AppMethodBeat.o(64100);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, final String paramString, q paramq)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, final String paramString, p paramp)
   {
     AppMethodBeat.i(64102);
-    if ((paramq instanceof u))
+    if ((paramp instanceof s))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = (u)paramq;
-        paramq = new Intent();
-        paramq.putExtra("ftf_pay_url", paramString.tVJ);
-        paramq.putExtra("key_error_level", paramString.tVL);
-        paramq.putExtra("ftf_fixed_fee", paramString.tVK);
-        paramq.putExtra("ftf_fixed_fee_type", paramString.fyc);
-        paramq.putExtra("ftf_fixed_desc", paramString.desc);
-        setResult(-1, paramq);
+        paramString = (s)paramp;
+        paramp = new Intent();
+        paramp.putExtra("ftf_pay_url", paramString.wZd);
+        paramp.putExtra("key_error_level", paramString.wZf);
+        paramp.putExtra("ftf_fixed_fee", paramString.wZe);
+        paramp.putExtra("ftf_fixed_fee_type", paramString.hCH);
+        paramp.putExtra("ftf_fixed_desc", paramString.desc);
+        setResult(-1, paramp);
         hideVKB();
         finish();
         AppMethodBeat.o(64102);
         return true;
       }
     }
-    else if ((paramq instanceof o))
+    else if ((paramp instanceof m))
     {
-      paramString = (o)paramq;
+      paramString = (m)paramp;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        if (paramString.fwx == 0)
+        if (paramString.hAV == 0)
         {
-          paramq = new Intent();
-          paramq.putExtra("ftf_pay_url", paramString.tVp);
-          paramq.putExtra("ftf_fixed_fee", paramString.gbJ / 100.0D);
-          paramq.putExtra("ftf_fixed_desc", paramString.desc);
-          paramq.putExtra("key_currency_unit", paramString.tVy);
-          setResult(-1, paramq);
+          paramp = new Intent();
+          paramp.putExtra("ftf_pay_url", paramString.wYJ);
+          paramp.putExtra("ftf_fixed_fee", paramString.ihV / 100.0D);
+          paramp.putExtra("ftf_fixed_desc", paramString.desc);
+          paramp.putExtra("key_currency_unit", paramString.wYS);
+          setResult(-1, paramp);
           hideVKB();
           finish();
           AppMethodBeat.o(64102);
           return true;
         }
-        if (paramString.tVq == 0)
+        if (paramString.wYK == 0)
         {
-          com.tencent.mm.ui.base.h.c(getContext(), paramString.tVo, paramString.tVr, false);
+          k.c(getContext(), paramString.wYI, paramString.wYL, false);
           AppMethodBeat.o(64102);
           return true;
         }
-        if (paramString.tVq == 1)
+        if (paramString.wYK == 1)
         {
-          if ((!Util.isNullOrNil(paramString.tVs)) && (!Util.isNullOrNil(paramString.tVt))) {
-            com.tencent.mm.ui.base.h.c(getContext(), paramString.tVo, paramString.tVr, paramString.tVt, paramString.tVs, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          if ((!Util.isNullOrNil(paramString.wYM)) && (!Util.isNullOrNil(paramString.wYN))) {
+            k.b(getContext(), paramString.wYI, paramString.wYL, paramString.wYN, paramString.wYM, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
             {
               public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
               {
                 AppMethodBeat.i(64098);
-                if (!Util.isNullOrNil(paramString.tVu))
+                if (!Util.isNullOrNil(paramString.wYO))
                 {
-                  Log.i("MicroMsg.CollectCreateQRCodeUI", "goto h5: %s", new Object[] { paramString.tVu });
-                  g.p(CollectCreateQRCodeUI.this.getContext(), paramString.tVu, true);
+                  Log.i("MicroMsg.CollectCreateQRCodeUI", "goto h5: %s", new Object[] { paramString.wYO });
+                  i.p(CollectCreateQRCodeUI.this.getContext(), paramString.wYO, true);
                 }
                 AppMethodBeat.o(64098);
               }
@@ -290,7 +291,7 @@ public class CollectCreateQRCodeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.ui.CollectCreateQRCodeUI
  * JD-Core Version:    0.7.0.1
  */

@@ -4,18 +4,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static a YAg = null;
+  private static a aguE = null;
   
   public static void a(a parama)
   {
-    YAg = parama;
+    aguE = parama;
   }
   
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(74938);
-    if (YAg != null) {
-      YAg.d(paramString1, paramString2, paramVarArgs);
+    if (aguE != null) {
+      aguE.d(paramString1, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(74938);
   }
@@ -23,8 +23,8 @@ public final class a
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(74935);
-    if (YAg != null) {
-      YAg.e(paramString1, paramString2, paramVarArgs);
+    if (aguE != null) {
+      aguE.e(paramString1, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(74935);
   }
@@ -32,8 +32,8 @@ public final class a
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(74937);
-    if (YAg != null) {
-      YAg.i(paramString1, paramString2, paramVarArgs);
+    if (aguE != null) {
+      aguE.i(paramString1, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(74937);
   }
@@ -41,8 +41,8 @@ public final class a
   public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(74939);
-    if (YAg != null) {
-      YAg.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
+    if (aguE != null) {
+      aguE.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(74939);
   }
@@ -50,8 +50,8 @@ public final class a
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(74936);
-    if (YAg != null) {
-      YAg.w(paramString1, paramString2, paramVarArgs);
+    if (aguE != null) {
+      aguE.w(paramString1, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(74936);
   }
@@ -71,7 +71,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.vending.f.a
  * JD-Core Version:    0.7.0.1
  */

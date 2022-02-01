@@ -9,52 +9,52 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/base/view/TraditionNestedLayout;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "headLayout", "Landroid/view/View;", "headLayoutHeight", "isHeadHide", "", "lastY", "rlLayout", "onFinishInflate", "", "onInterceptTouchEvent", "event", "Landroid/view/MotionEvent;", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "onSizeChanged", "w", "h", "oldw", "oldh", "onTouchEvent", "scrollTo", "x", "y", "Companion", "plugin-finder-nearby-api_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/base/view/TraditionNestedLayout;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "headLayout", "Landroid/view/View;", "headLayoutHeight", "isHeadHide", "", "lastY", "rlLayout", "onFinishInflate", "", "onInterceptTouchEvent", "event", "Landroid/view/MotionEvent;", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "onSizeChanged", "w", "h", "oldw", "oldh", "onTouchEvent", "scrollTo", "x", "y", "Companion", "plugin-finder-nearby-api_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class TraditionNestedLayout
   extends LinearLayout
 {
-  public static final a zDF;
-  private View zDA;
-  private View zDB;
-  private int zDC;
-  private boolean zDD;
-  private int zDE;
+  public static final a EHH;
+  private View EHI;
+  private View EHJ;
+  private int EHK;
+  private boolean EHL;
+  private int EHM;
   
   static
   {
-    AppMethodBeat.i(189084);
-    zDF = new a((byte)0);
-    AppMethodBeat.o(189084);
+    AppMethodBeat.i(339706);
+    EHH = new a((byte)0);
+    AppMethodBeat.o(339706);
   }
   
   public TraditionNestedLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(189070);
-    AppMethodBeat.o(189070);
+    AppMethodBeat.i(339693);
+    AppMethodBeat.o(339693);
   }
   
   public TraditionNestedLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(189083);
-    AppMethodBeat.o(189083);
+    AppMethodBeat.i(339700);
+    AppMethodBeat.o(339700);
   }
   
   protected final void onFinishInflate()
   {
-    AppMethodBeat.i(189069);
+    AppMethodBeat.i(339755);
     super.onFinishInflate();
-    AppMethodBeat.o(189069);
+    AppMethodBeat.o(339755);
   }
   
   public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(189051);
-    p.k(paramMotionEvent, "event");
+    AppMethodBeat.i(339713);
+    s.u(paramMotionEvent, "event");
     int i = paramMotionEvent.getAction();
     int j = (int)paramMotionEvent.getY();
     switch (i & 0xFF)
@@ -67,77 +67,77 @@ public final class TraditionNestedLayout
         for (;;)
         {
           boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
-          AppMethodBeat.o(189051);
+          AppMethodBeat.o(339713);
           return bool;
-          this.zDE = j;
+          this.EHM = j;
         }
-        i = this.zDE - j;
+        i = this.EHM - j;
       } while (Math.abs(i) <= ViewConfiguration.getTouchSlop());
-      if ((i > 0) && (!this.zDD))
+      if ((i > 0) && (!this.EHL))
       {
         Log.d("LiveFriendsTraditionNestedLayout", "onInterceptTouchEvent: 开始向上拦截");
-        AppMethodBeat.o(189051);
+        AppMethodBeat.o(339713);
         return true;
       }
-    } while ((i >= 0) || (!this.zDD));
+    } while ((i >= 0) || (!this.EHL));
     Log.d("LiveFriendsTraditionNestedLayout", "onInterceptTouchEvent: 开始向下拦截");
-    AppMethodBeat.o(189051);
+    AppMethodBeat.o(339713);
     return true;
   }
   
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(189060);
+    AppMethodBeat.i(339734);
     super.onMeasure(paramInt1, paramInt2);
-    Object localObject = this.zDB;
+    Object localObject = this.EHJ;
     int j;
     View localView;
-    if (localObject != null)
+    if (localObject == null)
     {
-      localObject = ((View)localObject).getLayoutParams();
+      localObject = null;
       if (localObject != null)
       {
         j = getMeasuredHeight();
-        localView = this.zDA;
-        if (localView == null) {
-          break label102;
+        localView = this.EHI;
+        if (localView != null) {
+          break label98;
         }
       }
     }
-    label102:
-    for (int i = localView.getMeasuredHeight();; i = 0)
+    label98:
+    for (int i = 0;; i = localView.getMeasuredHeight())
     {
       ((ViewGroup.LayoutParams)localObject).height = (i + j);
-      localView = this.zDB;
+      localView = this.EHJ;
       if (localView != null) {
         localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
       super.onMeasure(paramInt1, paramInt2);
-      AppMethodBeat.o(189060);
+      AppMethodBeat.o(339734);
       return;
-      localObject = null;
+      localObject = ((View)localObject).getLayoutParams();
       break;
     }
   }
   
   protected final void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(189068);
+    AppMethodBeat.i(339747);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    View localView = this.zDA;
-    if (localView != null) {}
-    for (paramInt1 = localView.getMeasuredHeight();; paramInt1 = 0)
+    View localView = this.EHI;
+    if (localView == null) {}
+    for (paramInt1 = 0;; paramInt1 = localView.getMeasuredHeight())
     {
-      this.zDC = paramInt1;
-      AppMethodBeat.o(189068);
+      this.EHK = paramInt1;
+      AppMethodBeat.o(339747);
       return;
     }
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(189057);
-    p.k(paramMotionEvent, "event");
+    AppMethodBeat.i(339723);
+    s.u(paramMotionEvent, "event");
     int j = paramMotionEvent.getAction();
     int i = (int)paramMotionEvent.getY();
     switch (j & 0xFF)
@@ -146,44 +146,44 @@ public final class TraditionNestedLayout
     for (;;)
     {
       boolean bool = super.onTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(189057);
+      AppMethodBeat.o(339723);
       return bool;
-      this.zDE = i;
+      this.EHM = i;
       continue;
-      j = this.zDE - i;
+      j = this.EHM - i;
       if (Math.abs(j) > ViewConfiguration.getTouchSlop()) {
         scrollBy(0, j);
       }
-      this.zDE = i;
+      this.EHM = i;
     }
   }
   
   public final void scrollTo(int paramInt1, int paramInt2)
   {
     boolean bool = false;
-    AppMethodBeat.i(189066);
+    AppMethodBeat.i(339741);
     int i = paramInt2;
     if (paramInt2 < 0) {
       i = 0;
     }
     paramInt2 = i;
-    if (i > this.zDC) {
-      paramInt2 = this.zDC;
+    if (i > this.EHK) {
+      paramInt2 = this.EHK;
     }
     super.scrollTo(paramInt1, paramInt2);
-    if (getScrollY() == this.zDC) {
+    if (getScrollY() == this.EHK) {
       bool = true;
     }
-    this.zDD = bool;
-    AppMethodBeat.o(189066);
+    this.EHL = bool;
+    AppMethodBeat.o(339741);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/base/view/TraditionNestedLayout$Companion;", "", "()V", "TAG", "", "plugin-finder-nearby-api_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/base/view/TraditionNestedLayout$Companion;", "", "()V", "TAG", "", "plugin-finder-nearby-api_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.nearby.base.view.TraditionNestedLayout
  * JD-Core Version:    0.7.0.1
  */

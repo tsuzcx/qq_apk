@@ -21,18 +21,18 @@ public final class Plugin
   {
     AppMethodBeat.i(28829);
     Log.i("MicroMsg.Plugin.subapp", "subapp createApplication " + System.currentTimeMillis());
-    b localb = new b();
+    a locala = new a();
     AppMethodBeat.o(28829);
-    return localb;
+    return locala;
   }
   
   public final be createSubCore()
   {
     AppMethodBeat.i(28831);
     Log.i("MicroMsg.Plugin.subapp", "subapp createSubCore " + System.currentTimeMillis());
-    a locala = new a();
+    SubCoreSubapp localSubCoreSubapp = new SubCoreSubapp();
     AppMethodBeat.o(28831);
-    return locala;
+    return localSubCoreSubapp;
   }
   
   public final c getContactWidgetFactory()

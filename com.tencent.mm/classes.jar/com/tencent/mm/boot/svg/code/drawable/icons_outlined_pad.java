@@ -13,8 +13,8 @@ import com.tencent.mm.svg.c;
 public class icons_outlined_pad
   extends c
 {
-  private final int height = 72;
-  private final int width = 72;
+  private final int height = 24;
+  private final int width = 24;
   
   public int doCommand(int paramInt, Object... paramVarArgs)
   {
@@ -24,8 +24,8 @@ public class icons_outlined_pad
     for (;;)
     {
       return 0;
-      return 72;
-      return 72;
+      return 24;
+      return 24;
       Canvas localCanvas = (Canvas)paramVarArgs[0];
       paramVarArgs = (Looper)paramVarArgs[1];
       c.instanceMatrix(paramVarArgs);
@@ -44,33 +44,33 @@ public class icons_outlined_pad
       ((Paint)localObject).setPathEffect(null);
       c.instancePaint((Paint)localObject, paramVarArgs).setStrokeWidth(1.0F);
       localPaint = c.instancePaint(localPaint, paramVarArgs);
-      localPaint.setColor(-16777216);
+      localPaint.setColor(-436207616);
       localCanvas.save();
       localPaint = c.instancePaint(localPaint, paramVarArgs);
       localObject = c.instancePath(paramVarArgs);
-      ((Path)localObject).moveTo(15.6F, 9.6F);
-      ((Path)localObject).lineTo(15.6F, 62.400002F);
-      ((Path)localObject).lineTo(56.400002F, 62.400002F);
-      ((Path)localObject).lineTo(56.400002F, 9.6F);
-      ((Path)localObject).lineTo(15.6F, 9.6F);
+      ((Path)localObject).moveTo(19.0F, 2.0F);
+      ((Path)localObject).cubicTo(19.552284F, 2.0F, 20.0F, 2.447715F, 20.0F, 3.0F);
+      ((Path)localObject).lineTo(20.0F, 21.0F);
+      ((Path)localObject).cubicTo(20.0F, 21.552284F, 19.552284F, 22.0F, 19.0F, 22.0F);
+      ((Path)localObject).lineTo(5.0F, 22.0F);
+      ((Path)localObject).cubicTo(4.447715F, 22.0F, 4.0F, 21.552284F, 4.0F, 21.0F);
+      ((Path)localObject).lineTo(4.0F, 3.0F);
+      ((Path)localObject).cubicTo(4.0F, 2.447715F, 4.447715F, 2.0F, 5.0F, 2.0F);
+      ((Path)localObject).lineTo(19.0F, 2.0F);
       ((Path)localObject).close();
-      ((Path)localObject).moveTo(12.0F, 9.0F);
-      ((Path)localObject).cubicTo(12.0F, 7.343146F, 13.343145F, 6.0F, 15.0F, 6.0F);
-      ((Path)localObject).lineTo(57.0F, 6.0F);
-      ((Path)localObject).cubicTo(58.656853F, 6.0F, 60.0F, 7.343146F, 60.0F, 9.0F);
-      ((Path)localObject).lineTo(60.0F, 63.0F);
-      ((Path)localObject).cubicTo(60.0F, 64.656853F, 58.656853F, 66.0F, 57.0F, 66.0F);
-      ((Path)localObject).lineTo(15.0F, 66.0F);
-      ((Path)localObject).cubicTo(13.343145F, 66.0F, 12.0F, 64.656853F, 12.0F, 63.0F);
-      ((Path)localObject).lineTo(12.0F, 9.0F);
+      ((Path)localObject).moveTo(18.799999F, 3.2F);
+      ((Path)localObject).lineTo(5.2F, 3.2F);
+      ((Path)localObject).lineTo(5.2F, 20.799999F);
+      ((Path)localObject).lineTo(18.799999F, 20.799999F);
+      ((Path)localObject).lineTo(18.799999F, 3.2F);
       ((Path)localObject).close();
-      ((Path)localObject).moveTo(36.0F, 60.0F);
-      ((Path)localObject).cubicTo(34.343147F, 60.0F, 33.0F, 58.656853F, 33.0F, 57.0F);
-      ((Path)localObject).cubicTo(33.0F, 55.343147F, 34.343147F, 54.0F, 36.0F, 54.0F);
-      ((Path)localObject).cubicTo(37.656853F, 54.0F, 39.0F, 55.343147F, 39.0F, 57.0F);
-      ((Path)localObject).cubicTo(39.0F, 58.656853F, 37.656853F, 60.0F, 36.0F, 60.0F);
+      ((Path)localObject).moveTo(12.0F, 18.0F);
+      ((Path)localObject).cubicTo(12.552284F, 18.0F, 13.0F, 18.447716F, 13.0F, 19.0F);
+      ((Path)localObject).cubicTo(13.0F, 19.552284F, 12.552284F, 20.0F, 12.0F, 20.0F);
+      ((Path)localObject).cubicTo(11.447716F, 20.0F, 11.0F, 19.552284F, 11.0F, 19.0F);
+      ((Path)localObject).cubicTo(11.0F, 18.447716F, 11.447716F, 18.0F, 12.0F, 18.0F);
       ((Path)localObject).close();
-      WeChatSVGRenderC2Java.setFillType((Path)localObject, 1);
+      WeChatSVGRenderC2Java.setFillType((Path)localObject, 2);
       localCanvas.drawPath((Path)localObject, localPaint);
       localCanvas.restore();
       c.done(paramVarArgs);
@@ -79,7 +79,7 @@ public class icons_outlined_pad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.icons_outlined_pad
  * JD-Core Version:    0.7.0.1
  */

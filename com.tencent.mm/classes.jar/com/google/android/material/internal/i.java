@@ -9,53 +9,53 @@ import java.util.ArrayList;
 
 public final class i
 {
-  public final ArrayList<a> bCV;
-  public a bCW;
-  public ValueAnimator bCX;
-  private final Animator.AnimatorListener bCY;
+  public final ArrayList<a> dvW;
+  public a dvX;
+  public ValueAnimator dvY;
+  private final Animator.AnimatorListener dvZ;
   
   public i()
   {
-    AppMethodBeat.i(238190);
-    this.bCV = new ArrayList();
-    this.bCW = null;
-    this.bCX = null;
-    this.bCY = new AnimatorListenerAdapter()
+    AppMethodBeat.i(209267);
+    this.dvW = new ArrayList();
+    this.dvX = null;
+    this.dvY = null;
+    this.dvZ = new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
-        if (i.this.bCX == paramAnonymousAnimator) {
-          i.this.bCX = null;
+        if (i.this.dvY == paramAnonymousAnimator) {
+          i.this.dvY = null;
         }
       }
     };
-    AppMethodBeat.o(238190);
+    AppMethodBeat.o(209267);
   }
   
   public final void a(int[] paramArrayOfInt, ValueAnimator paramValueAnimator)
   {
-    AppMethodBeat.i(238191);
+    AppMethodBeat.i(209276);
     paramArrayOfInt = new a(paramArrayOfInt, paramValueAnimator);
-    paramValueAnimator.addListener(this.bCY);
-    this.bCV.add(paramArrayOfInt);
-    AppMethodBeat.o(238191);
+    paramValueAnimator.addListener(this.dvZ);
+    this.dvW.add(paramArrayOfInt);
+    AppMethodBeat.o(209276);
   }
   
   public static final class a
   {
     public final ValueAnimator animator;
-    public final int[] bDa;
+    public final int[] dwb;
     
     a(int[] paramArrayOfInt, ValueAnimator paramValueAnimator)
     {
-      this.bDa = paramArrayOfInt;
+      this.dwb = paramArrayOfInt;
       this.animator = paramValueAnimator;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.internal.i
  * JD-Core Version:    0.7.0.1
  */

@@ -4,139 +4,103 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class bgg
-  extends dyl
+  extends esc
 {
-  public String username;
-  public LinkedList<aqt> wqP;
-  public aqe yjp;
-  
-  public bgg()
-  {
-    AppMethodBeat.i(169028);
-    this.wqP = new LinkedList();
-    AppMethodBeat.o(169028);
-  }
+  public String ZDB;
+  public long ZDC;
+  public String session_id;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(169029);
+    AppMethodBeat.i(258220);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse != null)
       {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs.qD(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      if (this.username != null) {
-        paramVarArgs.f(2, this.username);
+      if (this.ZDB != null) {
+        paramVarArgs.g(2, this.ZDB);
       }
-      paramVarArgs.e(3, 8, this.wqP);
-      if (this.yjp != null)
-      {
-        paramVarArgs.oE(4, this.yjp.computeSize());
-        this.yjp.writeFields(paramVarArgs);
+      paramVarArgs.bv(3, this.ZDC);
+      if (this.session_id != null) {
+        paramVarArgs.g(4, this.session_id);
       }
-      AppMethodBeat.o(169029);
+      AppMethodBeat.o(258220);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label600;
+      if (this.BaseResponse == null) {
+        break label448;
       }
     }
-    label600:
-    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label448:
+    for (paramInt = i.a.a.a.qC(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.username != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.username);
+      if (this.ZDB != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.ZDB);
       }
-      i += g.a.a.a.c(3, 8, this.wqP);
+      i += i.a.a.b.b.a.q(3, this.ZDC);
       paramInt = i;
-      if (this.yjp != null) {
-        paramInt = i + g.a.a.a.oD(4, this.yjp.computeSize());
+      if (this.session_id != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.session_id);
       }
-      AppMethodBeat.o(169029);
+      AppMethodBeat.o(258220);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.wqP.clear();
-        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = esc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = esc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(169029);
+        AppMethodBeat.o(258220);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         bgg localbgg = (bgg)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(169029);
+          AppMethodBeat.o(258220);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new jg();
-            if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((jg)localObject2).parseFrom((byte[])localObject1);
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kd localkd = new kd();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkd.parseFrom((byte[])localObject);
             }
-            localbgg.BaseRequest = ((jg)localObject2);
+            localbgg.BaseResponse = localkd;
             paramInt += 1;
           }
-          AppMethodBeat.o(169029);
+          AppMethodBeat.o(258220);
           return 0;
         case 2: 
-          localbgg.username = ((g.a.a.a.a)localObject1).abFh.readString();
-          AppMethodBeat.o(169029);
+          localbgg.ZDB = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(258220);
           return 0;
         case 3: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new aqt();
-            if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((aqt)localObject2).parseFrom((byte[])localObject1);
-            }
-            localbgg.wqP.add(localObject2);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(169029);
+          localbgg.ZDC = ((i.a.a.a.a)localObject).ajGk.aaw();
+          AppMethodBeat.o(258220);
           return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject1 = (byte[])paramVarArgs.get(paramInt);
-          localObject2 = new aqe();
-          if ((localObject1 != null) && (localObject1.length > 0)) {
-            ((aqe)localObject2).parseFrom((byte[])localObject1);
-          }
-          localbgg.yjp = ((aqe)localObject2);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(169029);
+        localbgg.session_id = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(258220);
         return 0;
       }
-      AppMethodBeat.o(169029);
+      AppMethodBeat.o(258220);
       return -1;
     }
   }

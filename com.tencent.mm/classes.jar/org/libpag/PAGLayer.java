@@ -18,10 +18,10 @@ public class PAGLayer
   
   static
   {
-    AppMethodBeat.i(195127);
+    AppMethodBeat.i(187395);
     b.loadLibrary("pag");
     nativeInit();
-    AppMethodBeat.o(195127);
+    AppMethodBeat.o(187395);
   }
   
   public PAGLayer(long paramLong)
@@ -49,23 +49,23 @@ public class PAGLayer
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(195123);
+    AppMethodBeat.i(187548);
     if (this == paramObject)
     {
-      AppMethodBeat.o(195123);
+      AppMethodBeat.o(187548);
       return true;
     }
     if ((paramObject instanceof PAGLayer))
     {
       if (hashCode() == paramObject.hashCode())
       {
-        AppMethodBeat.o(195123);
+        AppMethodBeat.o(187548);
         return true;
       }
-      AppMethodBeat.o(195123);
+      AppMethodBeat.o(187548);
       return false;
     }
-    AppMethodBeat.o(195123);
+    AppMethodBeat.o(187548);
     return false;
   }
   
@@ -73,9 +73,9 @@ public class PAGLayer
   
   protected void finalize()
   {
-    AppMethodBeat.i(195120);
+    AppMethodBeat.i(187542);
     nativeRelease();
-    AppMethodBeat.o(195120);
+    AppMethodBeat.o(187542);
   }
   
   public native float frameRate();
@@ -86,12 +86,12 @@ public class PAGLayer
   
   public Matrix getTotalMatrix()
   {
-    AppMethodBeat.i(195101);
+    AppMethodBeat.i(187432);
     float[] arrayOfFloat = new float[9];
     getTotalMatrix(arrayOfFloat);
     Matrix localMatrix = new Matrix();
     localMatrix.setValues(arrayOfFloat);
-    AppMethodBeat.o(195101);
+    AppMethodBeat.o(187432);
     return localMatrix;
   }
   
@@ -112,12 +112,12 @@ public class PAGLayer
   
   public Matrix matrix()
   {
-    AppMethodBeat.i(195091);
+    AppMethodBeat.i(187408);
     float[] arrayOfFloat = new float[9];
     matrix(arrayOfFloat);
     Matrix localMatrix = new Matrix();
     localMatrix.setValues(arrayOfFloat);
-    AppMethodBeat.o(195091);
+    AppMethodBeat.o(187408);
     return localMatrix;
   }
   
@@ -135,16 +135,16 @@ public class PAGLayer
   
   public void setMatrix(Matrix paramMatrix)
   {
-    AppMethodBeat.i(195098);
+    AppMethodBeat.i(187418);
     if (paramMatrix == null)
     {
-      AppMethodBeat.o(195098);
+      AppMethodBeat.o(187418);
       return;
     }
     float[] arrayOfFloat = new float[9];
     paramMatrix.getValues(arrayOfFloat);
     setMatrix(arrayOfFloat);
-    AppMethodBeat.o(195098);
+    AppMethodBeat.o(187418);
   }
   
   public native void setProgress(double paramDouble);
@@ -161,7 +161,7 @@ public class PAGLayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.libpag.PAGLayer
  * JD-Core Version:    0.7.0.1
  */

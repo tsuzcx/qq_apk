@@ -2,79 +2,102 @@ package kotlin.l.b.a.b.k.a;
 
 import java.util.Collection;
 import java.util.List;
-import kotlin.a.x;
-import kotlin.g.b.q;
-import kotlin.l.b.a.b.b.ab;
-import kotlin.l.b.a.b.b.ac;
-import kotlin.l.b.a.b.b.y;
+import kotlin.a.ad;
+import kotlin.a.p;
+import kotlin.g.a.b;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.l.b.a.b.b.ae;
+import kotlin.l.b.a.b.b.ah;
+import kotlin.l.b.a.b.b.ak;
+import kotlin.l.b.a.b.f.c;
 import kotlin.l.b.a.b.f.f;
-import kotlin.l.b.a.b.l.d;
+import kotlin.l.b.a.b.l.g;
+import kotlin.l.b.a.b.l.m;
 
 public abstract class a
-  implements ac
+  implements ak
 {
-  private final kotlin.l.b.a.b.l.j aaFH;
-  private final y aaIY;
-  protected l aaYm;
-  private final d<kotlin.l.b.a.b.f.b, ab> abmT;
-  private final u abmU;
+  private final m aiBu;
+  private final ae aiFr;
+  protected j aiWx;
+  private final t ajlC;
+  private final g<c, ah> ajlD;
   
-  public a(kotlin.l.b.a.b.l.j paramj, u paramu, y paramy)
+  public a(m paramm, t paramt, ae paramae)
   {
-    this.aaFH = paramj;
-    this.abmU = paramu;
-    this.aaIY = paramy;
-    this.abmT = this.aaFH.al((kotlin.g.a.b)new a(this));
+    this.aiBu = paramm;
+    this.ajlC = paramt;
+    this.aiFr = paramae;
+    this.ajlD = this.aiBu.be((b)new a(this));
   }
   
-  public final Collection<kotlin.l.b.a.b.f.b> a(kotlin.l.b.a.b.f.b paramb, kotlin.g.a.b<? super f, Boolean> paramb1)
+  public final Collection<c> a(c paramc, b<? super f, Boolean> paramb)
   {
-    kotlin.g.b.p.k(paramb, "fqName");
-    kotlin.g.b.p.k(paramb1, "nameFilter");
-    return (Collection)x.aaAf;
+    s.u(paramc, "fqName");
+    s.u(paramb, "nameFilter");
+    return (Collection)ad.aivA;
   }
   
-  protected final void a(l paraml)
+  public final void a(c paramc, Collection<ah> paramCollection)
   {
-    kotlin.g.b.p.k(paraml, "<set-?>");
-    this.aaYm = paraml;
+    s.u(paramc, "fqName");
+    s.u(paramCollection, "packageFragments");
+    kotlin.l.b.a.b.o.a.c(paramCollection, this.ajlD.invoke(paramc));
   }
   
-  protected abstract p d(kotlin.l.b.a.b.f.b paramb);
-  
-  public final List<ab> f(kotlin.l.b.a.b.f.b paramb)
+  protected final void a(j paramj)
   {
-    kotlin.g.b.p.k(paramb, "fqName");
-    return kotlin.a.j.eY(this.abmT.invoke(paramb));
+    s.u(paramj, "<set-?>");
+    this.aiWx = paramj;
   }
   
-  protected final kotlin.l.b.a.b.l.j iEV()
+  protected abstract o d(c paramc);
+  
+  public final List<ah> f(c paramc)
   {
-    return this.aaFH;
+    s.u(paramc, "fqName");
+    return p.hs(this.ajlD.invoke(paramc));
   }
   
-  protected final l iIC()
+  public final boolean g(c paramc)
   {
-    l locall = this.aaYm;
-    if (locall == null) {
-      kotlin.g.b.p.bGy("components");
+    s.u(paramc, "fqName");
+    if (this.ajlD.ik(paramc)) {}
+    for (paramc = (ah)this.ajlD.invoke(paramc); paramc == null; paramc = (ah)d(paramc)) {
+      return true;
     }
-    return locall;
+    return false;
   }
   
-  protected final u iPs()
+  protected final m kol()
   {
-    return this.abmU;
+    return this.aiBu;
   }
   
-  protected final y iPt()
+  protected final j ksJ()
   {
-    return this.aaIY;
+    j localj = this.aiWx;
+    if (localj != null) {
+      return localj;
+    }
+    s.bIx("components");
+    return null;
+  }
+  
+  protected final t kzN()
+  {
+    return this.ajlC;
+  }
+  
+  protected final ae kzO()
+  {
+    return this.aiFr;
   }
   
   static final class a
-    extends q
-    implements kotlin.g.a.b<kotlin.l.b.a.b.f.b, p>
+    extends u
+    implements b<c, ah>
   {
     a(a parama)
     {
@@ -84,7 +107,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.k.a.a
  * JD-Core Version:    0.7.0.1
  */

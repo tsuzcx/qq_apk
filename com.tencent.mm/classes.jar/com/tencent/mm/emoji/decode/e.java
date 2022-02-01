@@ -4,14 +4,14 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/decode/MMBitmapDecoder;", "Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "bytes", "", "([B)V", "bitmap", "Landroid/graphics/Bitmap;", "(Landroid/graphics/Bitmap;)V", "lastValidFrame", "decodeNextFrame", "", "destroy", "drawFrameBitmap", "", "frameCount", "", "frameHeight", "frameTime", "frameWidth", "getFrame", "seekTo", "timeMs", "", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/decode/MMBitmapDecoder;", "Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "bytes", "", "([B)V", "bitmap", "Landroid/graphics/Bitmap;", "(Landroid/graphics/Bitmap;)V", "lastValidFrame", "decodeNextFrame", "", "destroy", "drawFrameBitmap", "", "frameCount", "", "frameHeight", "frameTime", "frameWidth", "getFrame", "seekTo", "timeMs", "", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
   implements d
 {
-  private Bitmap jFB;
+  private Bitmap mfo;
   
   public e(Bitmap paramBitmap)
   {
@@ -20,10 +20,10 @@ public final class e
     if (paramBitmap == null)
     {
       localBitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
-      p.j(localBitmap, "Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888)");
+      s.s(localBitmap, "createBitmap(1, 1, Bitmap.Config.ARGB_8888)");
     }
-    this.jFB = localBitmap;
-    this.jFB.setDensity(320);
+    this.mfo = localBitmap;
+    this.mfo.setDensity(320);
     AppMethodBeat.o(105368);
   }
   
@@ -34,30 +34,30 @@ public final class e
     AppMethodBeat.o(105369);
   }
   
-  public final void aBh() {}
+  public final void aUe() {}
   
-  public final int aBi()
+  public final int aUf()
   {
     return 1;
   }
   
-  public final int aBj()
+  public final int aUg()
   {
     return 2147483647;
   }
   
-  public final int aBk()
+  public final int aUh()
   {
     AppMethodBeat.i(105366);
-    int i = this.jFB.getWidth();
+    int i = this.mfo.getWidth();
     AppMethodBeat.o(105366);
     return i;
   }
   
-  public final int aBl()
+  public final int aUi()
   {
     AppMethodBeat.i(105367);
-    int i = this.jFB.getHeight();
+    int i = this.mfo.getHeight();
     AppMethodBeat.o(105367);
     return i;
   }
@@ -66,7 +66,7 @@ public final class e
   
   public final Bitmap getFrame()
   {
-    return this.jFB;
+    return this.mfo;
   }
   
   public final void seekTo(long paramLong) {}

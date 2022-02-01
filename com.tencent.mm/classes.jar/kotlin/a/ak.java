@@ -1,10 +1,10 @@
 package kotlin.a;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={"kotlin/collections/SetsKt__SetsJVMKt", "kotlin/collections/SetsKt__SetsKt", "kotlin/collections/SetsKt___SetsKt"}, iBN=1)
+@Metadata(d1={"kotlin/collections/MapsKt__MapWithDefaultKt", "kotlin/collections/MapsKt__MapsJVMKt", "kotlin/collections/MapsKt__MapsKt", "kotlin/collections/MapsKt___MapsKt"}, k=4, mv={1, 5, 1}, xi=1)
 public final class ak
-  extends an
+  extends ao
 {}
 
 

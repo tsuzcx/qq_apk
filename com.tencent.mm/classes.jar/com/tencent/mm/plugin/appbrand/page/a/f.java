@@ -4,17 +4,17 @@ public abstract interface f
 {
   public abstract void a(f.a parama, int paramInt);
   
-  public abstract void alQ(String paramString);
+  public abstract void aeW(String paramString);
   
-  public abstract void cfe();
+  public abstract void cFS();
   
-  public abstract void cff();
+  public abstract void cFT();
   
-  public abstract void eS(String paramString1, String paramString2);
+  public abstract void fj(String paramString1, String paramString2);
   
-  public abstract void jg(boolean paramBoolean);
+  public abstract void kr(boolean paramBoolean);
   
-  public abstract void ji(boolean paramBoolean);
+  public abstract void kt(boolean paramBoolean);
   
   public abstract void requestDisallowInterceptTouchEvent(boolean paramBoolean);
   
@@ -22,7 +22,7 @@ public abstract interface f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.a.f
  * JD-Core Version:    0.7.0.1
  */

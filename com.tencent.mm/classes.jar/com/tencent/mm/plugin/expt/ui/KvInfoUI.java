@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.expt.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
@@ -20,7 +19,7 @@ import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.MMSwitchBtn;
 import com.tencent.mm.ui.widget.MMSwitchBtn.a;
-import com.tencent.mm.ui.widget.a.d;
+import com.tencent.mm.ui.widget.a.e;
 import com.tencent.mm.ui.widget.picker.b.b;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,35 +28,35 @@ import java.util.List;
 public class KvInfoUI
   extends MMActivity
 {
-  private Button kEt;
-  private d nnz;
-  private ArrayAdapter wqR;
-  private EditText wrN;
-  private Button wrO;
-  private ListView wrP;
-  private TextView wrQ;
-  private MMSwitchBtn wrR;
-  private String wrS;
+  private Button nhC;
+  private e qkG;
+  private ArrayAdapter zMT;
+  private EditText zNT;
+  private Button zNU;
+  private ListView zNV;
+  private TextView zNW;
+  private MMSwitchBtn zNX;
+  private String zNY;
   
-  private void azm(String paramString)
+  private void att(String paramString)
   {
-    AppMethodBeat.i(255785);
-    Log.i("MicroMsg.KvInfoUI", "updateData new[%s] old[%s]", new Object[] { paramString, this.wrS });
-    this.wrS = paramString;
-    paramString = (List)com.tencent.mm.plugin.expt.e.a.dga().wpO.get(this.wrS);
+    AppMethodBeat.i(299600);
+    Log.i("MicroMsg.KvInfoUI", "updateData new[%s] old[%s]", new Object[] { paramString, this.zNY });
+    this.zNY = paramString;
+    paramString = (List)com.tencent.mm.plugin.expt.kvdebug.a.dMK().zLR.get(this.zNY);
     if (paramString != null)
     {
-      this.wrQ.setText(this.wrS + ":" + paramString.size());
-      this.wqR.setNotifyOnChange(false);
-      this.wqR.clear();
-      this.wqR.addAll(paramString);
-      this.wqR.notifyDataSetChanged();
-      AppMethodBeat.o(255785);
+      this.zNW.setText(this.zNY + ":" + paramString.size());
+      this.zMT.setNotifyOnChange(false);
+      this.zMT.clear();
+      this.zMT.addAll(paramString);
+      this.zMT.notifyDataSetChanged();
+      AppMethodBeat.o(299600);
       return;
     }
-    this.wrQ.setText(this.wrS + ":0");
-    this.wqR.clear();
-    AppMethodBeat.o(255785);
+    this.zNW.setText(this.zNY + ":0");
+    this.zMT.clear();
+    AppMethodBeat.o(299600);
   }
   
   public int getLayoutId()
@@ -67,106 +66,106 @@ public class KvInfoUI
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(255782);
+    AppMethodBeat.i(299629);
     super.onCreate(paramBundle);
     setMMTitle("Debug show kv log");
     setBackBtn(new KvInfoUI.1(this));
-    this.wrN = ((EditText)$(b.c.input_log));
-    this.wrQ = ((TextView)$(b.c.select_id_info));
-    this.wrO = ((Button)$(b.c.log_picker));
-    this.wrO.setOnClickListener(new View.OnClickListener()
+    this.zNT = ((EditText)$(b.c.input_log));
+    this.zNW = ((TextView)$(b.c.select_id_info));
+    this.zNU = ((Button)$(b.c.log_picker));
+    this.zNU.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(final View paramAnonymousView)
       {
-        AppMethodBeat.i(252148);
+        AppMethodBeat.i(299604);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/expt/ui/KvInfoUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-        paramAnonymousView = com.tencent.mm.plugin.expt.e.a.dga().wpO;
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/expt/ui/KvInfoUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
+        paramAnonymousView = com.tencent.mm.plugin.expt.kvdebug.a.dMK().zLR;
         if ((paramAnonymousView != null) && (paramAnonymousView.size() > 0))
         {
           paramAnonymousView = new ArrayList(paramAnonymousView.keySet());
           localObject = new com.tencent.mm.ui.widget.picker.b(KvInfoUI.this.getContext(), paramAnonymousView);
-          ((com.tencent.mm.ui.widget.picker.b)localObject).ayK(0);
-          ((com.tencent.mm.ui.widget.picker.b)localObject).YrN = new b.b()
+          ((com.tencent.mm.ui.widget.picker.b)localObject).aFq(0);
+          ((com.tencent.mm.ui.widget.picker.b)localObject).agkc = new b.b()
           {
             public final void onResult(boolean paramAnonymous2Boolean, Object paramAnonymous2Object1, Object paramAnonymous2Object2)
             {
-              AppMethodBeat.i(251924);
-              this.rHY.hide();
-              int i = this.rHY.idp();
+              AppMethodBeat.i(299608);
+              this.uTn.hide();
+              int i = this.uTn.jIz();
               paramAnonymous2Object1 = (String)paramAnonymousView.get(i);
               KvInfoUI.a(KvInfoUI.this, paramAnonymous2Object1);
-              AppMethodBeat.o(251924);
+              AppMethodBeat.o(299608);
             }
           };
           ((com.tencent.mm.ui.widget.picker.b)localObject).show();
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/expt/ui/KvInfoUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(252148);
+        AppMethodBeat.o(299604);
       }
     });
-    this.wrR = ((MMSwitchBtn)$(b.c.debug_flag));
-    this.wrR.setCheck(com.tencent.mm.plugin.expt.e.a.dga().wpN);
-    this.wrR.setSwitchListener(new MMSwitchBtn.a()
+    this.zNX = ((MMSwitchBtn)$(b.c.debug_flag));
+    this.zNX.setCheck(com.tencent.mm.plugin.expt.kvdebug.a.dMK().zLQ);
+    this.zNX.setSwitchListener(new MMSwitchBtn.a()
     {
       public final void onStatusChange(boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(255107);
-        com.tencent.mm.plugin.expt.e.a.dga().wpN = paramAnonymousBoolean;
-        AppMethodBeat.o(255107);
+        AppMethodBeat.i(299601);
+        com.tencent.mm.plugin.expt.kvdebug.a.dMK().zLQ = paramAnonymousBoolean;
+        AppMethodBeat.o(299601);
       }
     });
-    this.kEt = ((Button)$(b.c.confirm_btn));
-    this.kEt.setOnClickListener(new KvInfoUI.4(this));
-    this.wrP = ((ListView)$(b.c.kv_log_list));
-    this.wqR = new ArrayAdapter(this, b.d.kv_info_ui_item, b.c.kv_info_ui_tv)
+    this.nhC = ((Button)$(b.c.confirm_btn));
+    this.nhC.setOnClickListener(new KvInfoUI.4(this));
+    this.zNV = ((ListView)$(b.c.kv_log_list));
+    this.zMT = new ArrayAdapter(this, b.d.kv_info_ui_item, b.c.kv_info_ui_tv)
     {
       public final View getView(int paramAnonymousInt, View paramAnonymousView, ViewGroup paramAnonymousViewGroup)
       {
-        AppMethodBeat.i(256645);
+        AppMethodBeat.i(299597);
         paramAnonymousView = super.getView(paramAnonymousInt, paramAnonymousView, paramAnonymousViewGroup);
-        paramAnonymousViewGroup = (com.tencent.mm.plugin.expt.e.b)KvInfoUI.b(KvInfoUI.this).getItem(paramAnonymousInt);
+        paramAnonymousViewGroup = (com.tencent.mm.plugin.expt.kvdebug.b)KvInfoUI.b(KvInfoUI.this).getItem(paramAnonymousInt);
         TextView localTextView = (TextView)paramAnonymousView.findViewById(b.c.kv_info_ui_tv);
-        if ((paramAnonymousViewGroup != null) && (paramAnonymousViewGroup.wpT)) {
+        if ((paramAnonymousViewGroup != null) && (paramAnonymousViewGroup.zLW)) {
           localTextView.setBackgroundResource(b.a.wechat_green);
         }
         for (;;)
         {
-          AppMethodBeat.o(256645);
+          AppMethodBeat.o(299597);
           return paramAnonymousView;
           localTextView.setBackgroundResource(b.a.transparent);
         }
       }
     };
-    this.wrP.setAdapter(this.wqR);
-    AppMethodBeat.o(255782);
+    this.zNV.setAdapter(this.zMT);
+    AppMethodBeat.o(299629);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(255788);
-    if (this.wqR != null)
+    AppMethodBeat.i(299643);
+    if (this.zMT != null)
     {
-      this.wqR.setNotifyOnChange(false);
-      this.wqR.clear();
+      this.zMT.setNotifyOnChange(false);
+      this.zMT.clear();
     }
-    if (this.nnz != null) {
-      this.nnz.dismiss();
+    if (this.qkG != null) {
+      this.qkG.dismiss();
     }
     hideVKB();
     super.onDestroy();
-    AppMethodBeat.o(255788);
+    AppMethodBeat.o(299643);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(255790);
-    if (!Util.isNullOrNil(this.wrS)) {
-      azm(this.wrS);
+    AppMethodBeat.i(299651);
+    if (!Util.isNullOrNil(this.zNY)) {
+      att(this.zNY);
     }
     super.onResume();
-    AppMethodBeat.o(255790);
+    AppMethodBeat.o(299651);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -177,7 +176,7 @@ public class KvInfoUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.ui.KvInfoUI
  * JD-Core Version:    0.7.0.1
  */

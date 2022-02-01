@@ -1,218 +1,115 @@
 package com.tencent.mm.pluginsdk.model;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
-import android.net.Uri;
-import android.os.Bundle;
+import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mm.message.v;
+import com.tencent.mm.modelimage.loader.a;
+import com.tencent.mm.modelimage.loader.a.c;
+import com.tencent.mm.modelimage.loader.b.h;
+import com.tencent.mm.modelimage.r;
+import com.tencent.mm.plugin.biz.b.d;
+import com.tencent.mm.pluginsdk.ui.applet.g;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.HashMap;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/model/BizImageLoader;", "", "()V", "TAG", "", "loadImage", "", "msgId", "", "msgIndex", "", "item", "Lcom/tencent/mm/message/BizReaderItem;", "scene", "url", "view", "Landroid/widget/ImageView;", "cellPosition", "isPreload", "", "options", "Lcom/tencent/mm/modelimage/loader/cfg/ImageLoaderOptions;", "imageLoaderListener", "Lcom/tencent/mm/modelimage/loader/listener/IImageLoaderListener;", "imageLoadListener", "Lcom/tencent/mm/modelimage/loader/listener/IImageLoadListener;", "ImageLoadListenerWrapper", "plugin-biz_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
-  extends x
 {
-  private final a QUU;
-  private final Intent QUV;
-  private final ac QUW;
+  public static final f XQM;
   
-  public f(Bundle paramBundle)
+  static
   {
-    AppMethodBeat.i(109457);
-    this.QUW = new ac();
-    if ((paramBundle == null) || (paramBundle.getParcelable("key_target_intent") == null)) {
-      this.QUU = a.QUY;
-    }
-    while (this.QUU == a.QUY)
+    AppMethodBeat.i(124831);
+    XQM = new f();
+    AppMethodBeat.o(124831);
+  }
+  
+  public static void a(long paramLong, int paramInt1, v paramv, String paramString, ImageView paramImageView, int paramInt2, boolean paramBoolean, c paramc, h paramh)
+  {
+    AppMethodBeat.i(124830);
+    if (paramString == null)
     {
-      this.QUV = null;
-      AppMethodBeat.o(109457);
+      AppMethodBeat.o(124830);
       return;
-      a locala = a.apB(paramBundle.getInt("key_map_app", a.QUY.code));
-      if (a(MMApplicationContext.getContext(), locala, null) == null) {
-        this.QUU = a.QUY;
-      } else {
-        this.QUU = locala;
+    }
+    Object localObject = e.XQp;
+    String str2 = e.bpr(paramString);
+    if (paramImageView != null) {
+      paramImageView.setTag(b.d.biz_image_view_url, paramString);
+    }
+    String str1;
+    label59:
+    long l;
+    int i;
+    if (paramImageView == null)
+    {
+      localObject = null;
+      if (paramc != null) {
+        break label347;
       }
-    }
-    this.QUV = ((Intent)paramBundle.getParcelable("key_target_intent"));
-    AppMethodBeat.o(109457);
-  }
-  
-  private static ResolveInfo a(Context paramContext, a parama, Intent paramIntent)
-  {
-    AppMethodBeat.i(109458);
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent("android.intent.action.VIEW", Uri.parse(String.format("geo:%f,%f", new Object[] { Float.valueOf(0.0F), Float.valueOf(0.0F) })));
-    }
-    paramContext = paramContext.getPackageManager().queryIntentActivities(localIntent, 0);
-    if (Util.isNullOrNil(paramContext))
-    {
-      AppMethodBeat.o(109458);
-      return null;
-    }
-    paramContext = paramContext.iterator();
-    while (paramContext.hasNext())
-    {
-      paramIntent = (ResolveInfo)paramContext.next();
-      if ((paramIntent != null) && (paramIntent.activityInfo != null) && (parama.getPackage().equals(paramIntent.activityInfo.packageName)))
+      str1 = null;
+      Log.d("MicroMsg.BizImageLoader", "alvinluo BizImage loadImage imageView: %s, isPreload: %b, id: %s, url: %s, fullPath: %s", new Object[] { localObject, Boolean.valueOf(paramBoolean), str2, paramString, str1 });
+      localObject = g.Ybp;
+      if ((g.awm(1)) && (!paramBoolean))
       {
-        AppMethodBeat.o(109458);
-        return paramIntent;
+        l = System.currentTimeMillis();
+        if (paramv != null)
+        {
+          localObject = e.XQp;
+          s.u(paramv, "item");
+          s.u(paramString, "url");
+          if (((CharSequence)paramString).length() != 0) {
+            break label357;
+          }
+          i = 1;
+          label158:
+          if ((i == 0) && (e.LDk.get(paramString) == null))
+          {
+            paramv = (String)e.XQq.get(e.aK(paramLong, paramInt1));
+            localObject = new e.b(paramString);
+            if (l == 0L) {
+              break label363;
+            }
+          }
+        }
       }
     }
-    AppMethodBeat.o(109458);
-    return null;
-  }
-  
-  public final boolean bpD(String paramString)
-  {
-    AppMethodBeat.i(109460);
-    boolean bool = this.QUU.getPackage().equals(paramString);
-    AppMethodBeat.o(109460);
-    return bool;
-  }
-  
-  public final String bvr()
-  {
-    if (this.QUU == a.QUY) {
-      return "http://softroute.map.qq.com/downloadfile?cid=00008&referer=wx_client";
-    }
-    return null;
-  }
-  
-  public final String c(Context paramContext, ResolveInfo paramResolveInfo)
-  {
-    AppMethodBeat.i(109462);
-    paramContext = this.QUW.c(paramContext, paramResolveInfo);
-    AppMethodBeat.o(109462);
-    return paramContext;
-  }
-  
-  public final String getPackageName()
-  {
-    return "com.tencent.map";
-  }
-  
-  public final String hgO()
-  {
-    if (this.QUU == a.QUY) {
-      return "TencentMap.apk";
-    }
-    return null;
-  }
-  
-  public final y.a hgP()
-  {
-    AppMethodBeat.i(109461);
-    if (this.QUU == a.QUY)
+    label347:
+    label357:
+    label363:
+    for (paramLong = l;; paramLong = System.currentTimeMillis())
     {
-      locala = this.QUW.hgP();
-      AppMethodBeat.o(109461);
-      return locala;
-    }
-    y.a locala = new y.a();
-    locala.QVQ = -1;
-    locala.QVN = -1;
-    ResolveInfo localResolveInfo = a(MMApplicationContext.getContext(), this.QUU, this.QUV);
-    if (localResolveInfo != null) {
-      locala.QVR = c(MMApplicationContext.getContext(), localResolveInfo);
-    }
-    AppMethodBeat.o(109461);
-    return locala;
-  }
-  
-  public final boolean jq(Context paramContext)
-  {
-    AppMethodBeat.i(109459);
-    if (this.QUU == a.QUY)
-    {
-      boolean bool = this.QUW.jq(paramContext);
-      AppMethodBeat.o(109459);
-      return bool;
-    }
-    if (a(paramContext, this.QUU, this.QUV) != null)
-    {
-      AppMethodBeat.o(109459);
-      return true;
-    }
-    AppMethodBeat.o(109459);
-    return false;
-  }
-  
-  public static enum a
-  {
-    public final int code;
-    
-    static
-    {
-      AppMethodBeat.i(109456);
-      QUY = new a("TencentMap", 0, 0);
-      QUZ = new a("GoogleMap", 1, 1);
-      QVa = new a("SogouMap", 2, 2);
-      QVb = new a("BaiduMap", 3, 3);
-      QVc = new a("AutonaviMap", 4, 4);
-      QVd = new a[] { QUY, QUZ, QVa, QVb, QVc };
-      AppMethodBeat.o(109456);
-    }
-    
-    private a(int paramInt)
-    {
-      this.code = paramInt;
-    }
-    
-    public static a apB(int paramInt)
-    {
-      switch (paramInt)
+      ((e.b)localObject).position = paramInt2;
+      if (paramv != null) {
+        ((e.b)localObject).bps(paramv);
+      }
+      ((e.b)localObject).bl(1, paramLong);
+      ((Map)e.LDk).put(paramString, localObject);
+      if (e.XQs)
       {
-      default: 
-        return QUY;
-      case 0: 
-        return QUY;
-      case 1: 
-        return QUZ;
-      case 2: 
-        return QVa;
-      case 3: 
-        return QVb;
+        Log.v("MicroMsg.BizImageBlankReporter", "alvinluo startLoad flinging id: %s, url: %s", new Object[] { e.bpr(paramString), paramString });
+        ((e.b)localObject).bl(9, paramLong);
       }
-      return QVc;
-    }
-    
-    public final String getPackage()
-    {
-      AppMethodBeat.i(109455);
-      switch (f.1.QUX[ordinal()])
-      {
-      default: 
-        AppMethodBeat.o(109455);
-        return "com.tencent.map";
-      case 1: 
-        AppMethodBeat.o(109455);
-        return "com.tencent.map";
-      case 2: 
-        AppMethodBeat.o(109455);
-        return "com.google.android.apps.maps";
-      case 3: 
-        AppMethodBeat.o(109455);
-        return "com.sogou.map.android.maps";
-      case 4: 
-        AppMethodBeat.o(109455);
-        return "com.baidu.BaiduMap";
-      }
-      AppMethodBeat.o(109455);
-      return "com.autonavi.minimap";
+      paramv = e.XQp;
+      e.e(8, paramString, l);
+      r.bKe().a(paramString, paramImageView, paramc, null, (h)new f.a(paramString, paramh));
+      AppMethodBeat.o(124830);
+      return;
+      localObject = Integer.valueOf(paramImageView.hashCode());
+      break;
+      str1 = paramc.fullPath;
+      break label59;
+      i = 0;
+      break label158;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.f
  * JD-Core Version:    0.7.0.1
  */

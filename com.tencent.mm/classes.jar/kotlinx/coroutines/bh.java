@@ -1,45 +1,38 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import java.util.concurrent.Future;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/Empty;", "Lkotlinx/coroutines/Incomplete;", "isActive", "", "(Z)V", "()Z", "list", "Lkotlinx/coroutines/NodeList;", "getList", "()Lkotlinx/coroutines/NodeList;", "toString", "", "kotlinx-coroutines-core"})
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/DisposableFutureHandle;", "Lkotlinx/coroutines/DisposableHandle;", "future", "Ljava/util/concurrent/Future;", "(Ljava/util/concurrent/Future;)V", "dispose", "", "toString", "", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
 final class bh
-  implements bt
+  implements bi
 {
-  final boolean isActive;
+  private final Future<?> dBj;
   
-  public bh(boolean paramBoolean)
+  public bh(Future<?> paramFuture)
   {
-    this.isActive = paramBoolean;
+    this.dBj = paramFuture;
   }
   
-  public final cj iRt()
+  public final void dispose()
   {
-    return null;
-  }
-  
-  public final boolean isActive()
-  {
-    return this.isActive;
+    AppMethodBeat.i(188837);
+    this.dBj.cancel(false);
+    AppMethodBeat.o(188837);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(117965);
-    StringBuilder localStringBuilder = new StringBuilder("Empty{");
-    if (this.isActive) {}
-    for (String str = "Active";; str = "New")
-    {
-      str = str + '}';
-      AppMethodBeat.o(117965);
-      return str;
-    }
+    AppMethodBeat.i(188844);
+    String str = "DisposableFutureHandle[" + this.dBj + ']';
+    AppMethodBeat.o(188844);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlinx.coroutines.bh
  * JD-Core Version:    0.7.0.1
  */

@@ -5,31 +5,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class j
 {
-  public static boolean bI(String paramString)
+  public static boolean df(String paramString)
   {
     AppMethodBeat.i(93140);
-    boolean bool = "audio".equals(bN(paramString));
+    boolean bool = "audio".equals(dn(paramString));
     AppMethodBeat.o(93140);
     return bool;
   }
   
-  public static boolean bJ(String paramString)
-  {
-    AppMethodBeat.i(93141);
-    boolean bool = "video".equals(bN(paramString));
-    AppMethodBeat.o(93141);
-    return bool;
-  }
-  
-  public static boolean bK(String paramString)
+  public static boolean dg(String paramString)
   {
     AppMethodBeat.i(93142);
-    boolean bool = "text".equals(bN(paramString));
+    boolean bool = "text".equals(dn(paramString));
     AppMethodBeat.o(93142);
     return bool;
   }
   
-  public static String bL(String paramString)
+  public static String dl(String paramString)
   {
     AppMethodBeat.i(93145);
     if (paramString == null)
@@ -97,7 +89,7 @@ public final class j
     return null;
   }
   
-  public static int bM(String paramString)
+  public static int dm(String paramString)
   {
     AppMethodBeat.i(93146);
     if (TextUtils.isEmpty(paramString))
@@ -105,17 +97,17 @@ public final class j
       AppMethodBeat.o(93146);
       return -1;
     }
-    if (bI(paramString))
+    if (df(paramString))
     {
       AppMethodBeat.o(93146);
       return 1;
     }
-    if (bJ(paramString))
+    if (isVideo(paramString))
     {
       AppMethodBeat.o(93146);
       return 2;
     }
-    if ((bK(paramString)) || ("application/cea-608".equals(paramString)) || ("application/cea-708".equals(paramString)) || ("application/x-mp4-cea-608".equals(paramString)) || ("application/x-subrip".equals(paramString)) || ("application/ttml+xml".equals(paramString)) || ("application/x-quicktime-tx3g".equals(paramString)) || ("application/x-mp4-vtt".equals(paramString)) || ("application/x-rawcc".equals(paramString)) || ("application/vobsub".equals(paramString)) || ("application/pgs".equals(paramString)) || ("application/dvbsubs".equals(paramString)))
+    if ((dg(paramString)) || ("application/cea-608".equals(paramString)) || ("application/cea-708".equals(paramString)) || ("application/x-mp4-cea-608".equals(paramString)) || ("application/x-subrip".equals(paramString)) || ("application/ttml+xml".equals(paramString)) || ("application/x-quicktime-tx3g".equals(paramString)) || ("application/x-mp4-vtt".equals(paramString)) || ("application/x-rawcc".equals(paramString)) || ("application/vobsub".equals(paramString)) || ("application/pgs".equals(paramString)) || ("application/dvbsubs".equals(paramString)))
     {
       AppMethodBeat.o(93146);
       return 3;
@@ -129,7 +121,7 @@ public final class j
     return -1;
   }
   
-  private static String bN(String paramString)
+  private static String dn(String paramString)
   {
     AppMethodBeat.i(93147);
     if (paramString == null)
@@ -147,6 +139,14 @@ public final class j
     paramString = paramString.substring(0, i);
     AppMethodBeat.o(93147);
     return paramString;
+  }
+  
+  public static boolean isVideo(String paramString)
+  {
+    AppMethodBeat.i(93141);
+    boolean bool = "video".equals(dn(paramString));
+    AppMethodBeat.o(93141);
+    return bool;
   }
 }
 

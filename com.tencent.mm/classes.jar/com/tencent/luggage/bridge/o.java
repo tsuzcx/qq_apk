@@ -9,70 +9,128 @@ import org.json.JSONObject;
 
 public class o
 {
-  private s cqM;
-  n cqN;
-  f cqO;
-  public p cqP;
-  public ConcurrentHashMap<String, l> cqQ;
-  private ConcurrentHashMap<String, j> cqR;
-  private ConcurrentHashMap<Integer, h> cqS;
-  private AtomicInteger cqT;
+  private s eiF;
+  n eiG;
+  f eiH;
+  public p eiI;
+  public ConcurrentHashMap<String, l> eiJ;
+  private ConcurrentHashMap<String, j> eiK;
+  private ConcurrentHashMap<Integer, h> eiL;
+  private AtomicInteger eiM;
   
   public o(s params)
   {
     AppMethodBeat.i(140336);
-    this.cqQ = new ConcurrentHashMap();
-    this.cqR = new ConcurrentHashMap();
-    this.cqS = new ConcurrentHashMap();
-    this.cqT = new AtomicInteger(1);
-    this.cqM = params;
-    this.cqN = new n(this);
-    this.cqO = new f(this.cqM);
-    this.cqP = new q(this);
-    this.cqM.addJavascriptInterface(new r(this.cqN), "_luggageBridgeNative");
+    this.eiJ = new ConcurrentHashMap();
+    this.eiK = new ConcurrentHashMap();
+    this.eiL = new ConcurrentHashMap();
+    this.eiM = new AtomicInteger(1);
+    this.eiF = params;
+    this.eiG = new n(this);
+    this.eiH = new f(this.eiF);
+    this.eiI = new q(this);
+    this.eiF.addJavascriptInterface(new r(this.eiG), "_luggageBridgeNative");
     AppMethodBeat.o(140336);
   }
   
   private void a(i parami)
   {
     AppMethodBeat.i(140340);
-    if ((j)this.cqR.get(parami.cqC) == null)
+    if ((j)this.eiK.get(parami.eiv) == null)
     {
-      Log.e("LuggageBridge", "no listener for event: %s", new Object[] { parami.cqC });
+      Log.e("LuggageBridge", "no listener for event: %s", new Object[] { parami.eiv });
       AppMethodBeat.o(140340);
       return;
     }
     AppMethodBeat.o(140340);
   }
   
+  final e a(m paramm, boolean paramBoolean)
+  {
+    AppMethodBeat.i(140338);
+    for (;;)
+    {
+      try
+      {
+        paramm = new k(this.eiH, paramm, paramBoolean);
+        l locall = (l)this.eiJ.get(paramm.eir);
+        if (locall != null)
+        {
+          locall.a(paramm);
+          if (!paramm.eiy) {
+            break;
+          }
+          paramm = paramm.aoa();
+          AppMethodBeat.o(140338);
+          return paramm;
+        }
+      }
+      catch (JSONException paramm)
+      {
+        Log.e("LuggageBridge", "inflate Js2JavaInvokeContext failed: %s", new Object[] { paramm });
+        AppMethodBeat.o(140338);
+        return null;
+      }
+      Log.e("LuggageBridge", "Invoke Listener Not Found: %s", new Object[] { paramm.eir });
+      paramm.a("system:function_not_exist", null);
+    }
+    AppMethodBeat.o(140338);
+    return null;
+  }
+  
+  final void a(m paramm)
+  {
+    AppMethodBeat.i(140339);
+    try
+    {
+      paramm = new i(paramm);
+      Log.i("LuggageBridge", "processEventFromJs, EventName = %s", new Object[] { paramm.eiv });
+      a(paramm);
+      AppMethodBeat.o(140339);
+      return;
+    }
+    catch (JSONException paramm)
+    {
+      Log.e("LuggageBridge", "inflate Js2JavaEventContext failed: %s", new Object[] { paramm });
+      AppMethodBeat.o(140339);
+    }
+  }
+  
+  public final void a(String paramString, l paraml)
+  {
+    AppMethodBeat.i(220087);
+    this.eiJ.put(paramString, paraml);
+    AppMethodBeat.o(220087);
+  }
+  
   /* Error */
-  public final void NQ()
+  public final void aob()
   {
     // Byte code:
-    //   0: ldc 114
+    //   0: ldc 166
     //   2: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: sipush 4096
     //   8: newarray char
     //   10: astore 5
-    //   12: new 116	java/io/StringWriter
+    //   12: new 168	java/io/StringWriter
     //   15: dup
-    //   16: invokespecial 117	java/io/StringWriter:<init>	()V
+    //   16: invokespecial 169	java/io/StringWriter:<init>	()V
     //   19: astore 4
-    //   21: new 119	java/io/InputStreamReader
+    //   21: new 171	java/io/InputStreamReader
     //   24: dup
     //   25: aload_0
-    //   26: getfield 50	com/tencent/luggage/bridge/o:cqM	Lcom/tencent/luggage/bridge/s;
-    //   29: invokeinterface 123 1 0
-    //   34: invokevirtual 129	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   37: ldc 131
-    //   39: invokevirtual 137	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   42: invokespecial 140	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   26: getfield 50	com/tencent/luggage/bridge/o:eiF	Lcom/tencent/luggage/bridge/s;
+    //   29: invokeinterface 175 1 0
+    //   34: invokevirtual 181	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   37: ldc 183
+    //   39: invokevirtual 189	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   42: invokespecial 192	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
     //   45: astore_3
     //   46: aload_3
     //   47: astore_2
     //   48: aload_3
     //   49: aload 5
-    //   51: invokevirtual 144	java/io/InputStreamReader:read	([C)I
+    //   51: invokevirtual 196	java/io/InputStreamReader:read	([C)I
     //   54: istore_1
     //   55: iconst_m1
     //   56: iload_1
@@ -83,13 +141,13 @@ public class o
     //   64: aload 5
     //   66: iconst_0
     //   67: iload_1
-    //   68: invokevirtual 148	java/io/StringWriter:write	([CII)V
+    //   68: invokevirtual 200	java/io/StringWriter:write	([CII)V
     //   71: goto -25 -> 46
     //   74: astore 4
     //   76: aload_3
     //   77: astore_2
     //   78: ldc 102
-    //   80: ldc 150
+    //   80: ldc 202
     //   82: iconst_1
     //   83: anewarray 4	java/lang/Object
     //   86: dup
@@ -100,24 +158,24 @@ public class o
     //   94: aload_3
     //   95: ifnull +7 -> 102
     //   98: aload_3
-    //   99: invokevirtual 153	java/io/InputStreamReader:close	()V
-    //   102: ldc 114
+    //   99: invokevirtual 205	java/io/InputStreamReader:close	()V
+    //   102: ldc 166
     //   104: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   107: return
     //   108: aload_3
-    //   109: invokevirtual 153	java/io/InputStreamReader:close	()V
+    //   109: invokevirtual 205	java/io/InputStreamReader:close	()V
     //   112: aload_0
-    //   113: getfield 50	com/tencent/luggage/bridge/o:cqM	Lcom/tencent/luggage/bridge/s;
+    //   113: getfield 50	com/tencent/luggage/bridge/o:eiF	Lcom/tencent/luggage/bridge/s;
     //   116: aload 4
-    //   118: invokevirtual 157	java/io/StringWriter:toString	()Ljava/lang/String;
+    //   118: invokevirtual 209	java/io/StringWriter:toString	()Ljava/lang/String;
     //   121: aconst_null
-    //   122: invokeinterface 161 3 0
-    //   127: ldc 114
+    //   122: invokeinterface 213 3 0
+    //   127: ldc 166
     //   129: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   132: return
     //   133: astore_2
     //   134: ldc 102
-    //   136: ldc 163
+    //   136: ldc 215
     //   138: iconst_1
     //   139: anewarray 4	java/lang/Object
     //   142: dup
@@ -128,7 +186,7 @@ public class o
     //   149: goto -37 -> 112
     //   152: astore_2
     //   153: ldc 102
-    //   155: ldc 163
+    //   155: ldc 215
     //   157: iconst_1
     //   158: anewarray 4	java/lang/Object
     //   161: dup
@@ -136,7 +194,7 @@ public class o
     //   163: aload_2
     //   164: aastore
     //   165: invokestatic 110	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   168: ldc 114
+    //   168: ldc 166
     //   170: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   173: return
     //   174: astore_3
@@ -145,14 +203,14 @@ public class o
     //   177: aload_2
     //   178: ifnull +7 -> 185
     //   181: aload_2
-    //   182: invokevirtual 153	java/io/InputStreamReader:close	()V
-    //   185: ldc 114
+    //   182: invokevirtual 205	java/io/InputStreamReader:close	()V
+    //   185: ldc 166
     //   187: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   190: aload_3
     //   191: athrow
     //   192: astore_2
     //   193: ldc 102
-    //   195: ldc 163
+    //   195: ldc 215
     //   197: iconst_1
     //   198: anewarray 4	java/lang/Object
     //   201: dup
@@ -198,73 +256,15 @@ public class o
     //   21	46	215	java/lang/Exception
   }
   
-  final e a(m paramm, boolean paramBoolean)
-  {
-    AppMethodBeat.i(140338);
-    for (;;)
-    {
-      try
-      {
-        paramm = new k(this.cqO, paramm, paramBoolean);
-        l locall = (l)this.cqQ.get(paramm.cqz);
-        if (locall != null)
-        {
-          locall.a(paramm);
-          if (!paramm.cqF) {
-            break;
-          }
-          paramm = paramm.NP();
-          AppMethodBeat.o(140338);
-          return paramm;
-        }
-      }
-      catch (JSONException paramm)
-      {
-        Log.e("LuggageBridge", "inflate Js2JavaInvokeContext failed: %s", new Object[] { paramm });
-        AppMethodBeat.o(140338);
-        return null;
-      }
-      Log.e("LuggageBridge", "Invoke Listener Not Found: %s", new Object[] { paramm.cqz });
-      paramm.a("system:function_not_exist", null);
-    }
-    AppMethodBeat.o(140338);
-    return null;
-  }
-  
-  final void a(m paramm)
-  {
-    AppMethodBeat.i(140339);
-    try
-    {
-      paramm = new i(paramm);
-      Log.i("LuggageBridge", "processEventFromJs, EventName = %s", new Object[] { paramm.cqC });
-      a(paramm);
-      AppMethodBeat.o(140339);
-      return;
-    }
-    catch (JSONException paramm)
-    {
-      Log.e("LuggageBridge", "inflate Js2JavaEventContext failed: %s", new Object[] { paramm });
-      AppMethodBeat.o(140339);
-    }
-  }
-  
-  public final void a(String paramString, l paraml)
-  {
-    AppMethodBeat.i(209897);
-    this.cqQ.put(paramString, paraml);
-    AppMethodBeat.o(209897);
-  }
-  
   final void b(m paramm)
   {
     AppMethodBeat.i(140341);
     try
     {
       paramm = new g(paramm);
-      if ((h)this.cqS.get(Integer.valueOf(paramm.cqA)) == null)
+      if ((h)this.eiL.get(Integer.valueOf(paramm.eit)) == null)
       {
-        Log.e("LuggageBridge", "no listener for callback: %d", new Object[] { Integer.valueOf(paramm.cqA) });
+        Log.e("LuggageBridge", "no listener for callback: %d", new Object[] { Integer.valueOf(paramm.eit) });
         AppMethodBeat.o(140341);
         return;
       }
@@ -275,24 +275,24 @@ public class o
       AppMethodBeat.o(140341);
       return;
     }
-    if (!paramm.cqB) {
-      this.cqS.remove(Integer.valueOf(paramm.cqA));
+    if (!paramm.eiu) {
+      this.eiL.remove(Integer.valueOf(paramm.eit));
     }
     AppMethodBeat.o(140341);
   }
   
   public final void b(String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(209896);
+    AppMethodBeat.i(220081);
     paramString = new d(paramString, paramJSONObject);
-    this.cqO.a(paramString);
-    AppMethodBeat.o(209896);
+    this.eiH.a(paramString);
+    AppMethodBeat.o(220081);
   }
   
-  public final void dl(String paramString)
+  public final void ey(String paramString)
   {
     AppMethodBeat.i(140337);
-    this.cqM.evaluateJavascript(paramString, null);
+    this.eiF.evaluateJavascript(paramString, null);
     AppMethodBeat.o(140337);
   }
 }

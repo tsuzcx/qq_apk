@@ -1,7 +1,10 @@
 package com.tencent.mm.ipcinvoker;
 
-public abstract interface c
-  extends d
+import com.tencent.mm.ipcinvoker.c.a;
+
+@a
+public abstract interface c<InputType, ResultType>
+  extends d<InputType, ResultType>
 {}
 
 

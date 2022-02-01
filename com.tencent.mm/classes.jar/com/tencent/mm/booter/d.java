@@ -7,28 +7,28 @@ import android.database.Cursor;
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.g;
-import com.tencent.mm.loader.j.b;
+import com.tencent.mm.loader.i.b;
 import com.tencent.mm.sdk.crash.CrashReportFactory;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.LogDecryptor;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
-import com.tencent.mm.storage.ar;
+import com.tencent.mm.storage.at;
 import com.tencent.mm.xlog.app.XLogSetup;
 import java.util.HashMap;
 
 public final class d
 {
-  private static d iPz;
+  private static d lru;
   private final String[] columns;
   private Context ctx;
-  public int iPy;
+  public int lrt;
   private final HashMap<String, Object> values;
   
   private d(Context paramContext)
   {
     AppMethodBeat.i(131871);
-    this.iPy = -1;
+    this.lrt = -1;
     this.columns = new String[] { "_id", "key", "type", "value" };
     this.values = new HashMap();
     this.ctx = paramContext;
@@ -73,25 +73,25 @@ public final class d
     }
   }
   
-  public static d cc(Context paramContext)
+  public static d cO(Context paramContext)
   {
     AppMethodBeat.i(131870);
-    if (iPz == null) {
-      iPz = new d(paramContext);
+    if (lru == null) {
+      lru = new d(paramContext);
     }
-    paramContext = iPz;
+    paramContext = lru;
     AppMethodBeat.o(131870);
     return paramContext;
   }
   
-  public final void JC(String paramString)
+  public final void Ci(String paramString)
   {
     boolean bool3 = false;
     AppMethodBeat.i(131872);
-    Integer localInteger = JD(".com.tencent.mm.debug.log.level");
-    boolean bool4 = Util.nullAs(JE(".com.tencent.mm.debug.log.append_mode"), true);
+    Integer localInteger = Cj(".com.tencent.mm.debug.log.level");
+    boolean bool4 = Util.nullAs(Ck(".com.tencent.mm.debug.log.append_mode"), true);
     boolean bool2;
-    if ((Util.isNullOrNil(getString(".com.tencent.mm.debug.log.mmlog"))) && (Util.nullAs(JE(".com.tencent.mm.debug.test.uploadLog"), false)))
+    if ((Util.isNullOrNil(getString(".com.tencent.mm.debug.log.mmlog"))) && (Util.nullAs(Ck(".com.tencent.mm.debug.test.uploadLog"), false)))
     {
       bool1 = true;
       if (bool1)
@@ -101,7 +101,7 @@ public final class d
           com.tencent.mars.xlog.Xlog.logDecryptor = new LogDecryptor(str);
         }
       }
-      bool2 = this.ctx.getSharedPreferences("system_config_prefs", g.avK()).getBoolean("first_launch_weixin", true);
+      bool2 = this.ctx.getSharedPreferences("system_config_prefs", g.aQe()).getBoolean("first_launch_weixin", true);
       if (!"MM".equalsIgnoreCase(paramString)) {
         bool2 = false;
       }
@@ -110,7 +110,7 @@ public final class d
       }
       bool2 = true;
       label130:
-      XLogSetup.keep_setupXLog(bool2, ar.Vgc, b.aSS(), localInteger, Boolean.valueOf(bool4), Boolean.valueOf(bool1), paramString);
+      XLogSetup.keep_setupXLog(bool2, at.acHr, b.bmG(), localInteger, Boolean.valueOf(bool4), Boolean.valueOf(bool1), paramString);
       Log.setLevel(Log.getLogLevel(), true);
       if (Util.getInt(Util.nullAs(getString(".com.tencent.mm.debug.monkeyEnv"), "0"), 0) != 1) {
         break label249;
@@ -119,7 +119,7 @@ public final class d
       label181:
       WeChatEnvironment.setMonkeyEnv(bool1);
       WeChatEnvironment.isMonkeyEnv();
-      if (JD(".com.tencent.mm.debug.log.level") == null) {
+      if (Cj(".com.tencent.mm.debug.log.level") == null) {
         break label254;
       }
     }
@@ -132,7 +132,7 @@ public final class d
       if (!WeChatEnvironment.isMonkeyEnv())
       {
         bool1 = bool3;
-        if (!Util.nullAs(JE(".com.tencent.mm.debug.blockReleasedPatch"), false)) {}
+        if (!Util.nullAs(Ck(".com.tencent.mm.debug.blockReleasedPatch"), false)) {}
       }
       else
       {
@@ -150,7 +150,7 @@ public final class d
     }
   }
   
-  public final Integer JD(String paramString)
+  public final Integer Cj(String paramString)
   {
     AppMethodBeat.i(131874);
     Object localObject = this.values.get(paramString);
@@ -165,7 +165,7 @@ public final class d
     return null;
   }
   
-  public final Boolean JE(String paramString)
+  public final Boolean Ck(String paramString)
   {
     AppMethodBeat.i(131875);
     Object localObject = this.values.get(paramString);
@@ -202,7 +202,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.booter.d
  * JD-Core Version:    0.7.0.1
  */

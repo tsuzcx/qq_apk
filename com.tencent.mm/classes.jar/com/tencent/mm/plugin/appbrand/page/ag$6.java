@@ -11,16 +11,16 @@ final class ag$6
     super(paramag2);
   }
   
-  public final void alM(String paramString)
+  public final void aeS(String paramString)
   {
-    AppMethodBeat.i(255831);
-    ag.b(this.qth).add(paramString);
-    AppMethodBeat.o(255831);
+    AppMethodBeat.i(324919);
+    ag.b(this.txN).add(paramString);
+    AppMethodBeat.o(324919);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.ag.6
  * JD-Core Version:    0.7.0.1
  */

@@ -2,19 +2,19 @@ package com.tencent.mm.plugin.fts.ui;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class b$a
 {
-  public static int BLO;
+  public static int HwK;
   
   static
   {
     AppMethodBeat.i(111810);
-    BLO = 0;
+    HwK = 0;
     Context localContext = MMApplicationContext.getContext();
-    BLO = a.kr(localContext) - a.aY(localContext, o.b.SearchLargePadding) * 2 - a.aY(localContext, o.b.NormalAvatarSize) - a.aY(localContext, o.b.SearchLargePadding);
+    HwK = a.ms(localContext) - a.br(localContext, p.b.SearchLargePadding) * 2 - a.br(localContext, p.b.NormalAvatarSize) - a.br(localContext, p.b.SearchLargePadding);
     AppMethodBeat.o(111810);
   }
 }

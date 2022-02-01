@@ -12,34 +12,34 @@ public enum c
 {
   private Choreographer choreographer;
   private int interval;
-  private long jVO;
-  private int jVP;
-  double jVQ;
-  public boolean jVR;
   private final Object lock;
+  private long mvI;
+  private int mvJ;
+  double mvK;
+  public boolean mvL;
   
   static
   {
     AppMethodBeat.i(136204);
-    jVN = new c("INSTANCE");
-    jVS = new c[] { jVN };
+    mvH = new c("INSTANCE");
+    mvM = new c[] { mvH };
     AppMethodBeat.o(136204);
   }
   
   private c()
   {
     AppMethodBeat.i(136201);
-    this.jVO = 0L;
-    this.jVP = 0;
-    this.jVQ = 0.0D;
+    this.mvI = 0L;
+    this.mvJ = 0;
+    this.mvK = 0.0D;
     this.interval = 500;
     this.lock = new Object();
-    this.jVR = false;
+    this.mvL = false;
     AppMethodBeat.o(136201);
   }
   
   /* Error */
-  public final Choreographer aEX()
+  public final Choreographer aXZ()
   {
     // Byte code:
     //   0: ldc 94
@@ -127,40 +127,40 @@ public enum c
   {
     AppMethodBeat.i(136203);
     paramLong = TimeUnit.NANOSECONDS.toMillis(paramLong);
-    if (this.jVO > 0L)
+    if (this.mvI > 0L)
     {
-      long l = paramLong - this.jVO;
-      this.jVP += 1;
+      long l = paramLong - this.mvI;
+      this.mvJ += 1;
       if (l > this.interval)
       {
-        this.jVQ = (this.jVP * 1000 / l);
-        this.jVO = paramLong;
-        this.jVP = 0;
+        this.mvK = (this.mvJ * 1000 / l);
+        this.mvI = paramLong;
+        this.mvJ = 0;
       }
     }
     for (;;)
     {
-      aEX().postFrameCallback(this);
+      aXZ().postFrameCallback(this);
       AppMethodBeat.o(136203);
       return;
-      this.jVO = paramLong;
+      this.mvI = paramLong;
     }
   }
   
   public final void stop()
   {
     AppMethodBeat.i(136202);
-    this.jVO = 0L;
-    this.jVP = 0;
-    this.jVR = false;
+    this.mvI = 0L;
+    this.mvJ = 0;
+    this.mvL = false;
     Log.i("MicroMsg.Metronome", "[stop] stack:%s", new Object[] { Util.getStack() });
-    aEX().removeFrameCallback(this);
+    aXZ().removeFrameCallback(this);
     AppMethodBeat.o(136202);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.graphics.b.c
  * JD-Core Version:    0.7.0.1
  */

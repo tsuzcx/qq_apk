@@ -25,7 +25,6 @@ import com.google.android.gms.common.internal.BaseGmsClient.ConnectionProgressRe
 import com.google.android.gms.common.internal.ClientSettings;
 import com.google.android.gms.common.internal.GmsClient;
 import com.google.android.gms.common.internal.Preconditions;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.wearable.Asset;
 import com.google.android.gms.wearable.CapabilityApi.CapabilityListener;
 import com.google.android.gms.wearable.ChannelApi.ChannelListener;
@@ -46,7 +45,6 @@ import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
-import javax.annotation.Nullable;
 
 public final class zzhg
   extends GmsClient<zzep>
@@ -69,7 +67,6 @@ public final class zzhg
     AppMethodBeat.o(101378);
   }
   
-  @VisibleForTesting
   private zzhg(Context paramContext, Looper paramLooper, GoogleApiClient.ConnectionCallbacks paramConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener paramOnConnectionFailedListener, ClientSettings paramClientSettings, ExecutorService paramExecutorService, zzhp paramzzhp)
   {
     super(paramContext, paramLooper, 14, paramClientSettings, paramConnectionCallbacks, paramOnConnectionFailedListener);
@@ -207,7 +204,7 @@ public final class zzhg
     AppMethodBeat.o(101390);
   }
   
-  public final void zza(BaseImplementation.ResultHolder<Status> paramResultHolder, ChannelApi.ChannelListener paramChannelListener, ListenerHolder<ChannelApi.ChannelListener> paramListenerHolder, @Nullable String paramString, IntentFilter[] paramArrayOfIntentFilter)
+  public final void zza(BaseImplementation.ResultHolder<Status> paramResultHolder, ChannelApi.ChannelListener paramChannelListener, ListenerHolder<ChannelApi.ChannelListener> paramListenerHolder, String paramString, IntentFilter[] paramArrayOfIntentFilter)
   {
     AppMethodBeat.i(101391);
     if (paramString == null)
@@ -340,19 +337,19 @@ public final class zzhg
   public final void zza(BaseImplementation.ResultHolder<Status> paramResultHolder, String paramString, Uri paramUri, long paramLong1, long paramLong2)
   {
     // Byte code:
-    //   0: ldc_w 510
+    //   0: ldc_w 506
     //   3: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 87	com/google/android/gms/wearable/internal/zzhg:zzew	Ljava/util/concurrent/ExecutorService;
+    //   7: getfield 86	com/google/android/gms/wearable/internal/zzhg:zzew	Ljava/util/concurrent/ExecutorService;
     //   10: astore 9
     //   12: aload_1
-    //   13: invokestatic 83	com/google/android/gms/common/internal/Preconditions:checkNotNull	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   13: invokestatic 82	com/google/android/gms/common/internal/Preconditions:checkNotNull	(Ljava/lang/Object;)Ljava/lang/Object;
     //   16: pop
     //   17: aload_2
-    //   18: invokestatic 83	com/google/android/gms/common/internal/Preconditions:checkNotNull	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   18: invokestatic 82	com/google/android/gms/common/internal/Preconditions:checkNotNull	(Ljava/lang/Object;)Ljava/lang/Object;
     //   21: pop
     //   22: aload_3
-    //   23: invokestatic 83	com/google/android/gms/common/internal/Preconditions:checkNotNull	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   23: invokestatic 82	com/google/android/gms/common/internal/Preconditions:checkNotNull	(Ljava/lang/Object;)Ljava/lang/Object;
     //   26: pop
     //   27: lload 4
     //   29: lconst_0
@@ -361,33 +358,33 @@ public final class zzhg
     //   34: iconst_1
     //   35: istore 8
     //   37: iload 8
-    //   39: ldc_w 512
+    //   39: ldc_w 508
     //   42: iconst_1
-    //   43: anewarray 514	java/lang/Object
+    //   43: anewarray 510	java/lang/Object
     //   46: dup
     //   47: iconst_0
     //   48: lload 4
-    //   50: invokestatic 519	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   50: invokestatic 515	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   53: aastore
-    //   54: invokestatic 523	com/google/android/gms/common/internal/Preconditions:checkArgument	(ZLjava/lang/String;[Ljava/lang/Object;)V
+    //   54: invokestatic 519	com/google/android/gms/common/internal/Preconditions:checkArgument	(ZLjava/lang/String;[Ljava/lang/Object;)V
     //   57: lload 6
-    //   59: ldc2_w 524
+    //   59: ldc2_w 520
     //   62: lcmp
     //   63: iflt +61 -> 124
     //   66: iconst_1
     //   67: istore 8
     //   69: iload 8
-    //   71: ldc_w 527
+    //   71: ldc_w 523
     //   74: iconst_1
-    //   75: anewarray 514	java/lang/Object
+    //   75: anewarray 510	java/lang/Object
     //   78: dup
     //   79: iconst_0
     //   80: lload 6
-    //   82: invokestatic 519	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   82: invokestatic 515	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   85: aastore
-    //   86: invokestatic 523	com/google/android/gms/common/internal/Preconditions:checkArgument	(ZLjava/lang/String;[Ljava/lang/Object;)V
+    //   86: invokestatic 519	com/google/android/gms/common/internal/Preconditions:checkArgument	(ZLjava/lang/String;[Ljava/lang/Object;)V
     //   89: aload 9
-    //   91: new 529	com/google/android/gms/wearable/internal/zzhj
+    //   91: new 525	com/google/android/gms/wearable/internal/zzhj
     //   94: dup
     //   95: aload_0
     //   96: aload_3
@@ -395,9 +392,9 @@ public final class zzhg
     //   98: aload_2
     //   99: lload 4
     //   101: lload 6
-    //   103: invokespecial 532	com/google/android/gms/wearable/internal/zzhj:<init>	(Lcom/google/android/gms/wearable/internal/zzhg;Landroid/net/Uri;Lcom/google/android/gms/common/api/internal/BaseImplementation$ResultHolder;Ljava/lang/String;JJ)V
-    //   106: invokeinterface 536 2 0
-    //   111: ldc_w 510
+    //   103: invokespecial 528	com/google/android/gms/wearable/internal/zzhj:<init>	(Lcom/google/android/gms/wearable/internal/zzhg;Landroid/net/Uri;Lcom/google/android/gms/common/api/internal/BaseImplementation$ResultHolder;Ljava/lang/String;JJ)V
+    //   106: invokeinterface 532 2 0
+    //   111: ldc_w 506
     //   114: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   117: return
     //   118: iconst_0
@@ -408,12 +405,12 @@ public final class zzhg
     //   127: goto -58 -> 69
     //   130: astore_2
     //   131: aload_1
-    //   132: new 538	com/google/android/gms/common/api/Status
+    //   132: new 534	com/google/android/gms/common/api/Status
     //   135: dup
     //   136: bipush 8
-    //   138: invokespecial 539	com/google/android/gms/common/api/Status:<init>	(I)V
-    //   141: invokeinterface 545 2 0
-    //   146: ldc_w 510
+    //   138: invokespecial 535	com/google/android/gms/common/api/Status:<init>	(I)V
+    //   141: invokeinterface 541 2 0
+    //   146: ldc_w 506
     //   149: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   152: aload_2
     //   153: athrow
@@ -457,7 +454,7 @@ public final class zzhg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzhg
  * JD-Core Version:    0.7.0.1
  */

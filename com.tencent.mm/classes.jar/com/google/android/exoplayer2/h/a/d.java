@@ -11,22 +11,22 @@ import java.io.InterruptedIOException;
 public final class d
   implements com.google.android.exoplayer2.h.g
 {
-  private long bom;
-  private final com.google.android.exoplayer2.h.g bpD;
-  private final com.google.android.exoplayer2.h.g bpE;
-  private final com.google.android.exoplayer2.h.g bpF;
-  private final d.a bpG;
-  private final boolean bpH;
-  private final boolean bpI;
-  private final boolean bpJ;
-  private com.google.android.exoplayer2.h.g bpK;
-  private boolean bpL;
-  private long bpM;
-  private g bpN;
-  private boolean bpO;
-  private boolean bpP;
-  private long bpQ;
-  private final a bpx;
+  private long die;
+  private final a dja;
+  private final com.google.android.exoplayer2.h.g djh;
+  private final com.google.android.exoplayer2.h.g dji;
+  private final com.google.android.exoplayer2.h.g djj;
+  private final d.a djk;
+  private final boolean djl;
+  private final boolean djm;
+  private final boolean djn;
+  private com.google.android.exoplayer2.h.g djo;
+  private boolean djp;
+  private long djq;
+  private g djr;
+  private boolean djs;
+  private boolean djt;
+  private long dju;
   private int flags;
   private String key;
   private Uri uri;
@@ -34,26 +34,26 @@ public final class d
   public d(a parama, com.google.android.exoplayer2.h.g paramg1, com.google.android.exoplayer2.h.g paramg2, f paramf, int paramInt, d.a parama1)
   {
     AppMethodBeat.i(92966);
-    this.bpx = parama;
-    this.bpD = paramg2;
+    this.dja = parama;
+    this.djh = paramg2;
     boolean bool1;
     if ((paramInt & 0x1) != 0)
     {
       bool1 = true;
-      this.bpH = bool1;
+      this.djl = bool1;
       if ((paramInt & 0x2) == 0) {
         break label113;
       }
       bool1 = true;
       label48:
-      this.bpI = bool1;
+      this.djm = bool1;
       if ((paramInt & 0x4) == 0) {
         break label119;
       }
       bool1 = bool2;
       label65:
-      this.bpJ = bool1;
-      this.bpF = paramg1;
+      this.djn = bool1;
+      this.djj = paramg1;
       if (paramf == null) {
         break label125;
       }
@@ -61,9 +61,9 @@ public final class d
     label113:
     label119:
     label125:
-    for (this.bpE = new v(paramg1, paramf);; this.bpE = null)
+    for (this.dji = new v(paramg1, paramf);; this.dji = null)
     {
-      this.bpG = parama1;
+      this.djk = parama1;
       AppMethodBeat.o(92966);
       return;
       bool1 = false;
@@ -75,20 +75,54 @@ public final class d
     }
   }
   
-  private boolean aU(boolean paramBoolean)
+  private void Ur()
+  {
+    AppMethodBeat.i(92973);
+    if (this.djo == null)
+    {
+      AppMethodBeat.o(92973);
+      return;
+    }
+    try
+    {
+      this.djo.close();
+      this.djo = null;
+      this.djp = false;
+      return;
+    }
+    finally
+    {
+      if (this.djr != null)
+      {
+        this.dja.a(this.djr);
+        this.djr = null;
+      }
+      AppMethodBeat.o(92973);
+    }
+    AppMethodBeat.o(92973);
+  }
+  
+  private void b(IOException paramIOException)
+  {
+    if ((this.djo == this.djh) || ((paramIOException instanceof a.a))) {
+      this.djs = true;
+    }
+  }
+  
+  private boolean bC(boolean paramBoolean)
   {
     AppMethodBeat.i(92971);
     Object localObject1;
-    if (this.bpP)
+    if (this.djt)
     {
       localObject1 = null;
       if (localObject1 != null) {
         break label203;
       }
-      this.bpK = this.bpF;
-      localObject1 = new j(this.uri, this.bpM, this.bom, this.key, this.flags);
+      this.djo = this.djj;
+      localObject1 = new j(this.uri, this.djq, this.die, this.key, this.flags);
       label57:
-      if (((j)localObject1).aFL != -1L) {
+      if (((j)localObject1).length != -1L) {
         break label431;
       }
     }
@@ -98,11 +132,11 @@ public final class d
     {
       for (;;)
       {
-        this.bpL = bool;
+        this.djp = bool;
         bool = false;
         try
         {
-          l1 = this.bpK.a((j)localObject1);
+          l1 = this.djo.a((j)localObject1);
           paramBoolean = true;
         }
         catch (IOException localIOException1)
@@ -117,14 +151,14 @@ public final class d
             if (!paramBoolean)
             {
               localIOException2 = localIOException1;
-              if (!this.bpL) {}
+              if (!this.djp) {}
             }
             for (Object localObject4 = localIOException1;; localObject4 = ((Throwable)localObject4).getCause())
             {
               localIOException2 = localIOException1;
               if (localObject4 != null)
               {
-                if (((localObject4 instanceof com.google.android.exoplayer2.h.h)) && (((com.google.android.exoplayer2.h.h)localObject4).bnA == 0)) {
+                if (((localObject4 instanceof com.google.android.exoplayer2.h.h)) && (((com.google.android.exoplayer2.h.h)localObject4).reason == 0)) {
                   localIOException2 = null;
                 }
               }
@@ -141,17 +175,17 @@ public final class d
             paramBoolean = bool;
           }
         }
-        if ((this.bpL) && (l1 != -1L))
+        if ((this.djp) && (l1 != -1L))
         {
-          this.bom = l1;
-          ap(((j)localObject1).position + this.bom);
+          this.die = l1;
+          cD(((j)localObject1).position + this.die);
         }
         AppMethodBeat.o(92971);
         return paramBoolean;
-        if (this.bpH) {
+        if (this.djl) {
           try
           {
-            localObject1 = this.bpx.e(this.key, this.bpM);
+            localObject1 = this.dja.e(this.key, this.djq);
           }
           catch (InterruptedException localInterruptedException)
           {
@@ -161,89 +195,55 @@ public final class d
           }
         }
       }
-      localObject2 = this.bpx.f(this.key, this.bpM);
+      localObject2 = this.dja.f(this.key, this.djq);
       break;
       label203:
-      if (((g)localObject2).bpU)
+      if (((g)localObject2).djy)
       {
         localObject3 = Uri.fromFile(((g)localObject2).file);
-        l3 = this.bpM - ((g)localObject2).position;
-        l2 = ((g)localObject2).aFL - l3;
+        l3 = this.djq - ((g)localObject2).position;
+        l2 = ((g)localObject2).length - l3;
         l1 = l2;
-        if (this.bom != -1L) {
-          l1 = Math.min(l2, this.bom);
+        if (this.die != -1L) {
+          l1 = Math.min(l2, this.die);
         }
-        localObject2 = new j((Uri)localObject3, this.bpM, l3, l1, this.key, this.flags);
-        this.bpK = this.bpD;
+        localObject2 = new j((Uri)localObject3, this.djq, l3, l1, this.key, this.flags);
+        this.djo = this.djh;
         break label57;
       }
-      if (((g)localObject2).uU()) {
-        l1 = this.bom;
+      if (((g)localObject2).Ut()) {
+        l1 = this.die;
       }
       for (;;)
       {
-        localObject3 = new j(this.uri, this.bpM, l1, this.key, this.flags);
-        if (this.bpE == null) {
+        localObject3 = new j(this.uri, this.djq, l1, this.key, this.flags);
+        if (this.dji == null) {
           break label405;
         }
-        this.bpK = this.bpE;
-        this.bpN = ((g)localObject2);
+        this.djo = this.dji;
+        this.djr = ((g)localObject2);
         localObject2 = localObject3;
         break;
-        l2 = ((g)localObject2).aFL;
+        l2 = ((g)localObject2).length;
         l1 = l2;
-        if (this.bom != -1L) {
-          l1 = Math.min(l2, this.bom);
+        if (this.die != -1L) {
+          l1 = Math.min(l2, this.die);
         }
       }
-      this.bpK = this.bpF;
-      this.bpx.a((g)localObject2);
+      this.djo = this.djj;
+      this.dja.a((g)localObject2);
       localObject2 = localObject3;
       break label57;
     }
   }
   
-  private void ap(long paramLong)
+  private void cD(long paramLong)
   {
     AppMethodBeat.i(92972);
-    if (this.bpK == this.bpE) {
-      this.bpx.g(this.key, paramLong);
+    if (this.djo == this.dji) {
+      this.dja.g(this.key, paramLong);
     }
     AppMethodBeat.o(92972);
-  }
-  
-  private void b(IOException paramIOException)
-  {
-    if ((this.bpK == this.bpD) || ((paramIOException instanceof a.a))) {
-      this.bpO = true;
-    }
-  }
-  
-  private void uS()
-  {
-    AppMethodBeat.i(92973);
-    if (this.bpK == null)
-    {
-      AppMethodBeat.o(92973);
-      return;
-    }
-    try
-    {
-      this.bpK.close();
-      this.bpK = null;
-      this.bpL = false;
-      return;
-    }
-    finally
-    {
-      if (this.bpN != null)
-      {
-        this.bpx.a(this.bpN);
-        this.bpN = null;
-      }
-      AppMethodBeat.o(92973);
-    }
-    AppMethodBeat.o(92973);
   }
   
   public final long a(j paramj)
@@ -255,39 +255,39 @@ public final class d
       this.uri = paramj.uri;
       this.flags = paramj.flags;
       this.key = h.c(paramj);
-      this.bpM = paramj.position;
+      this.djq = paramj.position;
       boolean bool1;
-      if (this.bpI)
+      if (this.djm)
       {
         bool1 = bool2;
-        if (this.bpO) {}
+        if (this.djs) {}
       }
       else
       {
-        if ((paramj.aFL != -1L) || (!this.bpJ)) {
+        if ((paramj.length != -1L) || (!this.djn)) {
           break label126;
         }
         bool1 = bool2;
       }
-      this.bpP = bool1;
-      if ((paramj.aFL != -1L) || (this.bpP)) {
-        this.bom = paramj.aFL;
+      this.djt = bool1;
+      if ((paramj.length != -1L) || (this.djt)) {
+        this.die = paramj.length;
       }
       label126:
       do
       {
         do
         {
-          aU(true);
-          long l = this.bom;
+          bC(true);
+          long l = this.die;
           AppMethodBeat.o(92967);
           return l;
           bool1 = false;
           break;
-          this.bom = this.bpx.bA(this.key);
-        } while (this.bom == -1L);
-        this.bom -= paramj.position;
-      } while (this.bom > 0L);
+          this.die = this.dja.cS(this.key);
+        } while (this.die == -1L);
+        this.die -= paramj.position;
+      } while (this.die > 0L);
       paramj = new com.google.android.exoplayer2.h.h();
       AppMethodBeat.o(92967);
       throw paramj;
@@ -304,14 +304,14 @@ public final class d
   {
     AppMethodBeat.i(92970);
     this.uri = null;
-    if ((this.bpG != null) && (this.bpQ > 0L))
+    if ((this.djk != null) && (this.dju > 0L))
     {
-      this.bpG.l(this.bpx.uP(), this.bpQ);
-      this.bpQ = 0L;
+      this.djk.H(this.dja.Uo(), this.dju);
+      this.dju = 0L;
     }
     try
     {
-      uS();
+      Ur();
       AppMethodBeat.o(92970);
       return;
     }
@@ -326,9 +326,9 @@ public final class d
   public final Uri getUri()
   {
     AppMethodBeat.i(92969);
-    if (this.bpK == this.bpF)
+    if (this.djo == this.djj)
     {
-      localUri = this.bpK.getUri();
+      localUri = this.djo.getUri();
       AppMethodBeat.o(92969);
       return localUri;
     }
@@ -345,35 +345,35 @@ public final class d
       AppMethodBeat.o(92968);
       return 0;
     }
-    if (this.bom == 0L)
+    if (this.die == 0L)
     {
       AppMethodBeat.o(92968);
       return -1;
     }
     try
     {
-      int i = this.bpK.read(paramArrayOfByte, paramInt1, paramInt2);
+      int i = this.djo.read(paramArrayOfByte, paramInt1, paramInt2);
       if (i >= 0)
       {
-        if (this.bpK == this.bpD) {
-          this.bpQ += i;
+        if (this.djo == this.djh) {
+          this.dju += i;
         }
-        this.bpM += i;
-        if (this.bom != -1L) {
-          this.bom -= i;
+        this.djq += i;
+        if (this.die != -1L) {
+          this.die -= i;
         }
       }
       do
       {
         AppMethodBeat.o(92968);
         return i;
-        if (this.bpL)
+        if (this.djp)
         {
-          ap(this.bpM);
-          this.bom = 0L;
+          cD(this.djq);
+          this.die = 0L;
         }
-        uS();
-      } while (((this.bom <= 0L) && (this.bom != -1L)) || (!aU(false)));
+        Ur();
+      } while (((this.die <= 0L) && (this.die != -1L)) || (!bC(false)));
       paramInt1 = read(paramArrayOfByte, paramInt1, paramInt2);
       AppMethodBeat.o(92968);
       return paramInt1;
@@ -388,7 +388,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.h.a.d
  * JD-Core Version:    0.7.0.1
  */

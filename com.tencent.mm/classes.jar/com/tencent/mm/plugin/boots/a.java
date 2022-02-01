@@ -11,35 +11,35 @@ import java.util.List;
 public final class a
   implements c
 {
-  public final void Gs(int paramInt)
+  public final void GR(int paramInt)
   {
     AppMethodBeat.i(117356);
-    if (((d)h.ag(d.class)).getTinkerLogic() != null) {
-      ((d)h.ag(d.class)).getTinkerLogic().Gs(paramInt);
+    if (((d)h.az(d.class)).getTinkerLogic() != null) {
+      ((d)h.az(d.class)).getTinkerLogic().GR(paramInt);
     }
     AppMethodBeat.o(117356);
   }
   
   public final void a(String paramString1, String paramString2, String paramString3, f paramf)
   {
-    AppMethodBeat.i(195272);
-    ((d)h.ag(d.class)).getTinkerLogic().a(paramString1, paramString2, paramString3, paramf);
-    AppMethodBeat.o(195272);
+    AppMethodBeat.i(260584);
+    ((d)h.az(d.class)).getTinkerLogic().a(paramString1, paramString2, paramString3, paramf);
+    AppMethodBeat.o(260584);
   }
   
-  public final List<com.tencent.mm.plugin.boots.a.a> cym()
+  public final List<com.tencent.mm.plugin.boots.a.a> dbd()
   {
     AppMethodBeat.i(117358);
-    List localList = ((d)h.ag(d.class)).getTinkerLogic().cym();
+    List localList = ((d)h.az(d.class)).getTinkerLogic().dbd();
     AppMethodBeat.o(117358);
     return localList;
   }
   
-  public final void fA(int paramInt1, int paramInt2)
+  public final void gs(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(117357);
-    if (((d)h.ag(d.class)).getTinkerLogic() != null) {
-      ((d)h.ag(d.class)).getTinkerLogic().fA(paramInt1, paramInt2);
+    if (((d)h.az(d.class)).getTinkerLogic() != null) {
+      ((d)h.az(d.class)).getTinkerLogic().gs(paramInt1, paramInt2);
     }
     AppMethodBeat.o(117357);
   }

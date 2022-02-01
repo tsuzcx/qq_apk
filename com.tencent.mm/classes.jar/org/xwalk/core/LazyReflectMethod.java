@@ -6,7 +6,8 @@ import java.lang.reflect.Method;
 public class LazyReflectMethod
   extends ReflectMethod
 {
-  boolean mInited = false;
+  public static final String TAG = "LazyReflectMethod";
+  private boolean mInited = false;
   
   public LazyReflectMethod() {}
   
@@ -22,25 +23,21 @@ public class LazyReflectMethod
   
   protected boolean doInit()
   {
-    AppMethodBeat.i(205044);
+    AppMethodBeat.i(187720);
     if (this.mClass == null)
     {
-      AppMethodBeat.o(205044);
+      AppMethodBeat.o(187720);
       return false;
     }
-    boolean bool;
     if ((this.mInited) && (this.mMethod != null))
     {
-      bool = this.mInited;
-      AppMethodBeat.o(205044);
-      return bool;
+      AppMethodBeat.o(187720);
+      return true;
     }
     try
     {
-      if (this.mInited)
-      {
-        bool = this.mInited;
-        return bool;
+      if (this.mInited) {
+        return true;
       }
       try
       {
@@ -48,7 +45,7 @@ public class LazyReflectMethod
         this.mInited = true;
         if (this.mMethod != null)
         {
-          AppMethodBeat.o(205044);
+          AppMethodBeat.o(187720);
           return true;
         }
       }
@@ -63,22 +60,23 @@ public class LazyReflectMethod
           }
           catch (NoSuchMethodException localNoSuchMethodException2)
           {
+            Log.e("LazyReflectMethod", "doInit error:" + localNoSuchMethodException2.getLocalizedMessage());
             localClass = localClass.getSuperclass();
           }
         }
       }
-      AppMethodBeat.o(205044);
+      AppMethodBeat.o(187720);
     }
     finally
     {
-      AppMethodBeat.o(205044);
+      AppMethodBeat.o(187720);
     }
     return false;
   }
   
   public boolean init(Object paramObject, Class<?> paramClass, String paramString, Class<?>... paramVarArgs)
   {
-    AppMethodBeat.i(205043);
+    AppMethodBeat.i(187710);
     this.mInstance = paramObject;
     if (paramClass != null) {}
     for (;;)
@@ -88,7 +86,7 @@ public class LazyReflectMethod
       this.mParameterTypes = paramVarArgs;
       this.mMethod = null;
       this.mInited = false;
-      AppMethodBeat.o(205043);
+      AppMethodBeat.o(187710);
       return true;
       if (paramObject != null) {
         paramClass = paramObject.getClass();
@@ -100,25 +98,25 @@ public class LazyReflectMethod
   
   public Object invoke(Object... paramVarArgs)
   {
-    AppMethodBeat.i(205045);
+    AppMethodBeat.i(187725);
     doInit();
     paramVarArgs = super.invoke(paramVarArgs);
-    AppMethodBeat.o(205045);
+    AppMethodBeat.o(187725);
     return paramVarArgs;
   }
   
   public boolean isNull()
   {
-    AppMethodBeat.i(205046);
+    AppMethodBeat.i(187732);
     doInit();
     boolean bool = super.isNull();
-    AppMethodBeat.o(205046);
+    AppMethodBeat.o(187732);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.LazyReflectMethod
  * JD-Core Version:    0.7.0.1
  */

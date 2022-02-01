@@ -197,7 +197,7 @@ public abstract class ITPPlayListenerAidl$Stub
     
     public long getAdvRemainTime()
     {
-      AppMethodBeat.i(255380);
+      AppMethodBeat.i(228226);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -212,13 +212,13 @@ public abstract class ITPPlayListenerAidl$Stub
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(255380);
+        AppMethodBeat.o(228226);
       }
     }
     
     public String getContentType(int paramInt, String paramString)
     {
-      AppMethodBeat.i(255389);
+      AppMethodBeat.i(228256);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -235,13 +235,13 @@ public abstract class ITPPlayListenerAidl$Stub
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(255389);
+        AppMethodBeat.o(228256);
       }
     }
     
     public int getCurrentPlayClipNo()
     {
-      AppMethodBeat.i(255377);
+      AppMethodBeat.i(228222);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -256,13 +256,13 @@ public abstract class ITPPlayListenerAidl$Stub
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(255377);
+        AppMethodBeat.o(228222);
       }
     }
     
     public long getCurrentPosition()
     {
-      AppMethodBeat.i(255375);
+      AppMethodBeat.i(228218);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -277,13 +277,13 @@ public abstract class ITPPlayListenerAidl$Stub
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(255375);
+        AppMethodBeat.o(228218);
       }
     }
     
     public String getDataFilePath(int paramInt, String paramString)
     {
-      AppMethodBeat.i(255387);
+      AppMethodBeat.i(228250);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -300,13 +300,13 @@ public abstract class ITPPlayListenerAidl$Stub
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(255387);
+        AppMethodBeat.o(228250);
       }
     }
     
     public long getDataTotalSize(int paramInt, String paramString)
     {
-      AppMethodBeat.i(255385);
+      AppMethodBeat.i(228246);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -323,7 +323,7 @@ public abstract class ITPPlayListenerAidl$Stub
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(255385);
+        AppMethodBeat.o(228246);
       }
     }
     
@@ -334,7 +334,7 @@ public abstract class ITPPlayListenerAidl$Stub
     
     public String getPlayInfo(String paramString)
     {
-      AppMethodBeat.i(255381);
+      AppMethodBeat.i(228231);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -350,13 +350,13 @@ public abstract class ITPPlayListenerAidl$Stub
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(255381);
+        AppMethodBeat.o(228231);
       }
     }
     
     public long getPlayerBufferLength()
     {
-      AppMethodBeat.i(255373);
+      AppMethodBeat.i(228212);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -371,13 +371,13 @@ public abstract class ITPPlayListenerAidl$Stub
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(255373);
+        AppMethodBeat.o(228212);
       }
     }
     
     public void onDownloadCdnUrlExpired(Map paramMap)
     {
-      AppMethodBeat.i(255368);
+      AppMethodBeat.i(228199);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -392,13 +392,13 @@ public abstract class ITPPlayListenerAidl$Stub
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(255368);
+        AppMethodBeat.o(228199);
       }
     }
     
     public void onDownloadCdnUrlInfoUpdate(String paramString1, String paramString2, String paramString3, String paramString4)
     {
-      AppMethodBeat.i(255367);
+      AppMethodBeat.i(228193);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -416,13 +416,13 @@ public abstract class ITPPlayListenerAidl$Stub
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(255367);
+        AppMethodBeat.o(228193);
       }
     }
     
     public void onDownloadCdnUrlUpdate(String paramString)
     {
-      AppMethodBeat.i(255366);
+      AppMethodBeat.i(228185);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -437,13 +437,13 @@ public abstract class ITPPlayListenerAidl$Stub
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(255366);
+        AppMethodBeat.o(228185);
       }
     }
     
     public void onDownloadError(int paramInt1, int paramInt2, String paramString)
     {
-      AppMethodBeat.i(255363);
+      AppMethodBeat.i(228165);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -460,13 +460,13 @@ public abstract class ITPPlayListenerAidl$Stub
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(255363);
+        AppMethodBeat.o(228165);
       }
     }
     
     public void onDownloadFinish()
     {
-      AppMethodBeat.i(255362);
+      AppMethodBeat.i(228160);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -480,13 +480,13 @@ public abstract class ITPPlayListenerAidl$Stub
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(255362);
+        AppMethodBeat.o(228160);
       }
     }
     
     public void onDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString)
     {
-      AppMethodBeat.i(255361);
+      AppMethodBeat.i(228150);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -505,13 +505,13 @@ public abstract class ITPPlayListenerAidl$Stub
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(255361);
+        AppMethodBeat.o(228150);
       }
     }
     
     public void onDownloadProtocolUpdate(String paramString1, String paramString2)
     {
-      AppMethodBeat.i(255371);
+      AppMethodBeat.i(228209);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -527,13 +527,13 @@ public abstract class ITPPlayListenerAidl$Stub
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(255371);
+        AppMethodBeat.o(228209);
       }
     }
     
     public void onDownloadStatusUpdate(int paramInt)
     {
-      AppMethodBeat.i(255370);
+      AppMethodBeat.i(228204);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -548,13 +548,13 @@ public abstract class ITPPlayListenerAidl$Stub
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(255370);
+        AppMethodBeat.o(228204);
       }
     }
     
     public int onPlayCallback(int paramInt, List paramList)
     {
-      AppMethodBeat.i(255364);
+      AppMethodBeat.i(228175);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -571,13 +571,13 @@ public abstract class ITPPlayListenerAidl$Stub
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(255364);
+        AppMethodBeat.o(228175);
       }
     }
     
     public int onReadData(int paramInt, String paramString, long paramLong1, long paramLong2)
     {
-      AppMethodBeat.i(255383);
+      AppMethodBeat.i(228238);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -596,13 +596,13 @@ public abstract class ITPPlayListenerAidl$Stub
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(255383);
+        AppMethodBeat.o(228238);
       }
     }
     
     public int onStartReadData(int paramInt, String paramString, long paramLong1, long paramLong2)
     {
-      AppMethodBeat.i(255382);
+      AppMethodBeat.i(228235);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -621,13 +621,13 @@ public abstract class ITPPlayListenerAidl$Stub
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(255382);
+        AppMethodBeat.o(228235);
       }
     }
     
     public int onStopReadData(int paramInt1, String paramString, int paramInt2)
     {
-      AppMethodBeat.i(255384);
+      AppMethodBeat.i(228242);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -645,14 +645,14 @@ public abstract class ITPPlayListenerAidl$Stub
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(255384);
+        AppMethodBeat.o(228242);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl.Stub
  * JD-Core Version:    0.7.0.1
  */

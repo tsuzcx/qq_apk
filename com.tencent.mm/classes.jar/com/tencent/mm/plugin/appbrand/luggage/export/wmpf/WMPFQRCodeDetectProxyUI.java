@@ -1,77 +1,50 @@
 package com.tencent.mm.plugin.appbrand.luggage.export.wmpf;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.rx;
-import com.tencent.mm.f.a.rz;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.app.f;
+import com.tencent.mm.autogen.a.tm;
+import com.tencent.mm.autogen.a.to;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.vfs.u;
-import java.util.HashMap;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.vfs.y;
 import java.util.HashSet;
 import java.util.Set;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
 @a(3)
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/luggage/export/wmpf/WMPFQRCodeDetectProxyUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "activityStarted", "", "eventListen", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/RecogQBarOfImageFileResultEvent;", "finish", "", "getLayoutId", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "onStart", "startActivityForResult", "intent", "Landroid/content/Intent;", "requestCode", "options", "Companion", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/luggage/export/wmpf/WMPFQRCodeDetectProxyUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "activityStarted", "", "eventListen", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/RecogQBarOfImageFileResultEvent;", "finish", "", "getLayoutId", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "onStart", "startActivityForResult", "intent", "Landroid/content/Intent;", "requestCode", "options", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class WMPFQRCodeDetectProxyUI
   extends MMActivity
 {
-  public static final a qcV;
-  private HashMap _$_findViewCache;
-  private boolean qcT;
-  private IListener<rz> qcU;
+  public static final a thI;
+  private boolean thJ;
+  private IListener<to> thK;
   
   static
   {
-    AppMethodBeat.i(253724);
-    qcV = new a((byte)0);
-    AppMethodBeat.o(253724);
+    AppMethodBeat.i(319905);
+    thI = new a((byte)0);
+    AppMethodBeat.o(319905);
   }
   
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(253727);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(253727);
-  }
+  private static final void b(DialogInterface paramDialogInterface) {}
   
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(253725);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(253725);
-    return localView1;
-  }
+  public final void _$_clearFindViewByIdCache() {}
   
   public final void finish()
   {
-    AppMethodBeat.i(253723);
+    AppMethodBeat.i(319944);
     com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.WMPFQRCodeDetectProxyUI", "finish() " + hashCode() + ' ' + android.util.Log.getStackTraceString(new Throwable()));
     super.finish();
-    AppMethodBeat.o(253723);
+    AppMethodBeat.o(319944);
   }
   
   public final int getLayoutId()
@@ -79,97 +52,96 @@ public final class WMPFQRCodeDetectProxyUI
     return -1;
   }
   
-  public final void onCreate(final Bundle paramBundle)
+  public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(253710);
-    com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.WMPFQRCodeDetectProxyUI", "onCreate " + hashCode());
+    AppMethodBeat.i(319915);
+    com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.WMPFQRCodeDetectProxyUI", s.X("onCreate ", Integer.valueOf(hashCode())));
     super.onCreate(paramBundle);
-    paramBundle = WMPFAccessibleProvider.qcQ;
-    if (!WMPFAccessibleProvider.cbf())
+    paramBundle = WMPFAccessibleProvider.thG;
+    if (!WMPFAccessibleProvider.cBz())
     {
       finish();
-      AppMethodBeat.o(253710);
+      AppMethodBeat.o(319915);
       return;
     }
     paramBundle = getIntent();
-    if (paramBundle != null)
+    if (paramBundle == null)
     {
-      paramBundle = paramBundle.getStringExtra("KEY_QRCODE_PATH");
+      paramBundle = null;
       localObject = (CharSequence)paramBundle;
       if ((localObject != null) && (((CharSequence)localObject).length() != 0)) {
-        break label116;
+        break label109;
       }
     }
-    label116:
+    label109:
     for (int i = 1;; i = 0)
     {
-      if ((i == 0) && (u.agG(paramBundle))) {
-        break label121;
+      if ((i == 0) && (y.ZC(paramBundle))) {
+        break label114;
       }
       finish();
-      AppMethodBeat.o(253710);
+      AppMethodBeat.o(319915);
       return;
-      paramBundle = null;
+      paramBundle = paramBundle.getStringExtra("KEY_QRCODE_PATH");
       break;
     }
-    label121:
-    h.a((Context)this, "", false, (DialogInterface.OnCancelListener)c.qcY);
-    Object localObject = new rx();
-    EventCenter localEventCenter = EventCenter.instance;
-    b localb = new b(this, paramBundle);
-    this.qcU = ((IListener)localb);
-    localEventCenter.add((IListener)localb);
-    ((rx)localObject).fRg.fwK = System.currentTimeMillis();
-    ((rx)localObject).fRg.filePath = paramBundle;
-    ((rx)localObject).fRg.fRh = ((Set)new HashSet());
-    EventCenter.instance.publish((IEvent)localObject);
-    AppMethodBeat.o(253710);
+    label114:
+    k.a((Context)this, "", false, WMPFQRCodeDetectProxyUI..ExternalSyntheticLambda0.INSTANCE);
+    Object localObject = new tm();
+    IListener local1 = new IListener(paramBundle) {};
+    this.thK = ((IListener)local1);
+    local1.alive();
+    ((tm)localObject).hXd.hBk = System.currentTimeMillis();
+    ((tm)localObject).hXd.filePath = paramBundle;
+    ((tm)localObject).hXd.hXe = ((Set)new HashSet());
+    ((tm)localObject).publish();
+    AppMethodBeat.o(319915);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(253721);
-    com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.WMPFQRCodeDetectProxyUI", "onDestroy() " + hashCode());
-    IListener localIListener = this.qcU;
+    AppMethodBeat.i(319941);
+    com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.WMPFQRCodeDetectProxyUI", s.X("onDestroy() ", Integer.valueOf(hashCode())));
+    IListener localIListener = this.thK;
     if (localIListener != null) {
-      EventCenter.instance.removeListener(localIListener);
+      localIListener.dead();
     }
     super.onDestroy();
-    AppMethodBeat.o(253721);
+    AppMethodBeat.o(319941);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(253719);
-    com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.WMPFQRCodeDetectProxyUI", "onPause() " + hashCode());
+    AppMethodBeat.i(319938);
+    com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.WMPFQRCodeDetectProxyUI", s.X("onPause() ", Integer.valueOf(hashCode())));
     super.onPause();
-    AppMethodBeat.o(253719);
+    AppMethodBeat.o(319938);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(253714);
-    com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.WMPFQRCodeDetectProxyUI", "onResume() " + hashCode());
+    AppMethodBeat.i(319923);
+    com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.WMPFQRCodeDetectProxyUI", s.X("onResume() ", Integer.valueOf(hashCode())));
     super.onResume();
-    if (this.qcT)
+    if (this.thJ)
     {
       moveTaskToBack(true);
       finish();
     }
-    AppMethodBeat.o(253714);
+    AppMethodBeat.o(319923);
   }
   
   public final void onStart()
   {
-    AppMethodBeat.i(253717);
-    com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.WMPFQRCodeDetectProxyUI", "onStart() " + hashCode());
+    AppMethodBeat.i(319931);
+    com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.WMPFQRCodeDetectProxyUI", s.X("onStart() ", Integer.valueOf(hashCode())));
     super.onStart();
-    if (this.qcT)
+    if (this.thJ)
     {
       moveTaskToBack(true);
       finish();
     }
-    AppMethodBeat.o(253717);
+    AppMethodBeat.o(319931);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -180,45 +152,22 @@ public final class WMPFQRCodeDetectProxyUI
   
   public final void startActivityForResult(Intent paramIntent, int paramInt)
   {
-    AppMethodBeat.i(253712);
+    AppMethodBeat.i(319921);
     super.startActivityForResult(paramIntent, paramInt);
-    this.qcT = true;
-    AppMethodBeat.o(253712);
+    this.thJ = true;
+    AppMethodBeat.o(319921);
   }
   
   public final void startActivityForResult(Intent paramIntent, int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(253711);
+    AppMethodBeat.i(319917);
     super.startActivityForResult(paramIntent, paramInt, paramBundle);
-    this.qcT = true;
-    AppMethodBeat.o(253711);
+    this.thJ = true;
+    AppMethodBeat.o(319917);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/luggage/export/wmpf/WMPFQRCodeDetectProxyUI$Companion;", "", "()V", "KEY_QRCODE_PATH", "", "TAG", "waitFor", "", "context", "Landroid/content/Context;", "qrcodePath", "plugin-appbrand-integration_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/luggage/export/wmpf/WMPFQRCodeDetectProxyUI$Companion;", "", "()V", "KEY_QRCODE_PATH", "", "TAG", "waitFor", "", "context", "Landroid/content/Context;", "qrcodePath", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/luggage/export/wmpf/WMPFQRCodeDetectProxyUI$onCreate$2$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/RecogQBarOfImageFileResultEvent;", "callback", "", "event", "plugin-appbrand-integration_release"})
-  public static final class b
-    extends IListener<rz>
-  {
-    b(WMPFQRCodeDetectProxyUI paramWMPFQRCodeDetectProxyUI, String paramString) {}
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
-  static final class c
-    implements DialogInterface.OnCancelListener
-  {
-    public static final c qcY;
-    
-    static
-    {
-      AppMethodBeat.i(244206);
-      qcY = new c();
-      AppMethodBeat.o(244206);
-    }
-    
-    public final void onCancel(DialogInterface paramDialogInterface) {}
-  }
 }
 
 

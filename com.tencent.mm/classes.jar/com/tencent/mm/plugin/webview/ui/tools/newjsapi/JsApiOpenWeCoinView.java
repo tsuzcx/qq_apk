@@ -8,57 +8,74 @@ import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
-import com.tencent.mm.plugin.webview.d.n;
+import com.tencent.mm.plugin.webview.jsapi.e;
+import com.tencent.mm.plugin.webview.jsapi.h;
+import com.tencent.mm.plugin.webview.jsapi.p;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOpenWeCoinView;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "openWeCoinView", "extInfo", "OpenWeCoinTask", "OpenWeCoinTaskData", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOpenWeCoinView;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "openWeCoinView", "extInfo", "OpenWeCoinTask", "OpenWeCoinTaskData", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class JsApiOpenWeCoinView
-  extends com.tencent.mm.plugin.webview.d.c.a
+  extends com.tencent.mm.plugin.webview.jsapi.c.a
 {
-  private static final int IIl = 390;
-  public static final JsApiOpenWeCoinView Qvy;
-  private static final String fXz = "openFinderWeCoinView";
+  private static final int OOk;
+  public static final JsApiOpenWeCoinView XnI;
+  private static final String idA;
   
   static
   {
-    AppMethodBeat.i(265561);
-    Qvy = new JsApiOpenWeCoinView();
-    IIl = 390;
-    fXz = "openFinderWeCoinView";
-    AppMethodBeat.o(265561);
+    AppMethodBeat.i(297622);
+    XnI = new JsApiOpenWeCoinView();
+    OOk = 390;
+    idA = "openFinderWeCoinView";
+    AppMethodBeat.o(297622);
   }
   
-  public final boolean a(com.tencent.mm.plugin.webview.d.f paramf, final n paramn)
+  private static final void g(h paramh, p paramp, IPCBoolean paramIPCBoolean)
   {
-    AppMethodBeat.i(265560);
-    p.k(paramf, "env");
-    p.k(paramn, "msg");
+    AppMethodBeat.i(297620);
+    s.u(paramh, "$env");
+    s.u(paramp, "$msg");
+    if (paramIPCBoolean.value)
+    {
+      paramh.WDy.doCallback(paramp.WEH, s.X(paramp.function, ":ok"), null);
+      AppMethodBeat.o(297620);
+      return;
+    }
+    paramh.WDy.doCallback(paramp.WEH, s.X(paramp.function, ":fail open fail"), null);
+    AppMethodBeat.o(297620);
+  }
+  
+  public final boolean a(h paramh, p paramp)
+  {
+    AppMethodBeat.i(297636);
+    s.u(paramh, "env");
+    s.u(paramp, "msg");
     Log.i("MicroMsg.JsApiOpenWeCoinView", "OpenWeCoinTaskData");
-    String str2 = (String)paramn.params.get("extInfo");
+    String str2 = (String)paramp.params.get("extInfo");
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
     Log.d("MicroMsg.JsApiOpenWeCoinView", "OpenWeCoinView extInfo: %s", new Object[] { str1 });
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new OpenWeCoinTaskData(str1), a.class, (com.tencent.mm.ipcinvoker.f)new b(paramf, paramn));
-    AppMethodBeat.o(265560);
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new OpenWeCoinTaskData(str1), a.class, new JsApiOpenWeCoinView..ExternalSyntheticLambda0(paramh, paramp));
+    AppMethodBeat.o(297636);
     return true;
   }
   
-  public final String fCm()
+  public final String gPX()
   {
-    return fXz;
+    return idA;
   }
   
-  public final int fCn()
+  public final int gPZ()
   {
-    return IIl;
+    return OOk;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOpenWeCoinView$OpenWeCoinTaskData;", "Landroid/os/Parcelable;", "extInfo", "", "(Ljava/lang/String;)V", "src", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "getExtInfo", "()Ljava/lang/String;", "setExtInfo", "describeContents", "", "writeToParcel", "", "parcel", "flags", "CREATOR", "plugin-webview_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOpenWeCoinView$OpenWeCoinTaskData;", "Landroid/os/Parcelable;", "extInfo", "", "(Ljava/lang/String;)V", "src", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "getExtInfo", "()Ljava/lang/String;", "setExtInfo", "describeContents", "", "writeToParcel", "", "parcel", "flags", "CREATOR", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
   static final class OpenWeCoinTaskData
     implements Parcelable
   {
@@ -67,14 +84,14 @@ public final class JsApiOpenWeCoinView
     
     static
     {
-      AppMethodBeat.i(265753);
+      AppMethodBeat.i(297638);
       CREATOR = new a((byte)0);
-      AppMethodBeat.o(265753);
+      AppMethodBeat.o(297638);
     }
     
     public OpenWeCoinTaskData(Parcel paramParcel)
     {
-      AppMethodBeat.i(265752);
+      AppMethodBeat.i(297633);
       this.extInfo = "";
       String str = paramParcel.readString();
       paramParcel = str;
@@ -82,15 +99,15 @@ public final class JsApiOpenWeCoinView
         paramParcel = "";
       }
       this.extInfo = paramParcel;
-      AppMethodBeat.o(265752);
+      AppMethodBeat.o(297633);
     }
     
     public OpenWeCoinTaskData(String paramString)
     {
-      AppMethodBeat.i(265751);
+      AppMethodBeat.i(297627);
       this.extInfo = "";
       this.extInfo = paramString;
-      AppMethodBeat.o(265751);
+      AppMethodBeat.o(297627);
     }
     
     public final int describeContents()
@@ -100,30 +117,23 @@ public final class JsApiOpenWeCoinView
     
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(265748);
-      p.k(paramParcel, "parcel");
+      AppMethodBeat.i(297646);
+      s.u(paramParcel, "parcel");
       paramParcel.writeString(this.extInfo);
-      AppMethodBeat.o(265748);
+      AppMethodBeat.o(297646);
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOpenWeCoinView$OpenWeCoinTaskData$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOpenWeCoinView$OpenWeCoinTaskData;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOpenWeCoinView$OpenWeCoinTaskData;", "plugin-webview_release"})
+    @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOpenWeCoinView$OpenWeCoinTaskData$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOpenWeCoinView$OpenWeCoinTaskData;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOpenWeCoinView$OpenWeCoinTaskData;", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
     public static final class a
       implements Parcelable.Creator<JsApiOpenWeCoinView.OpenWeCoinTaskData>
     {}
   }
   
   @com.tencent.mm.ipcinvoker.c.a
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOpenWeCoinView$OpenWeCoinTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOpenWeCoinView$OpenWeCoinTaskData;", "Lcom/tencent/mm/ipcinvoker/type/IPCBoolean;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-webview_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOpenWeCoinView$OpenWeCoinTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOpenWeCoinView$OpenWeCoinTaskData;", "Lcom/tencent/mm/ipcinvoker/type/IPCBoolean;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
   static final class a
     implements d<JsApiOpenWeCoinView.OpenWeCoinTaskData, IPCBoolean>
   {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "result", "Lcom/tencent/mm/ipcinvoker/type/IPCBoolean;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class b<T>
-    implements com.tencent.mm.ipcinvoker.f<IPCBoolean>
-  {
-    b(com.tencent.mm.plugin.webview.d.f paramf, n paramn) {}
-  }
 }
 
 

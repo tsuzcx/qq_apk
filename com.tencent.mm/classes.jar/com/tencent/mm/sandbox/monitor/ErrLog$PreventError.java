@@ -9,7 +9,7 @@ class ErrLog$PreventError
   implements Parcelable
 {
   public static final Parcelable.Creator<PreventError> CREATOR;
-  public ErrLog.Error URB;
+  public ErrLog.Error acmO;
   public String processName;
   public String tag;
   public String username;
@@ -26,7 +26,7 @@ class ErrLog$PreventError
     AppMethodBeat.i(32592);
     this.username = paramParcel.readString();
     this.tag = paramParcel.readString();
-    this.URB = ((ErrLog.Error)paramParcel.readParcelable(ErrLog.Error.class.getClassLoader()));
+    this.acmO = ((ErrLog.Error)paramParcel.readParcelable(ErrLog.Error.class.getClassLoader()));
     this.processName = paramParcel.readString();
     AppMethodBeat.o(32592);
   }
@@ -35,7 +35,7 @@ class ErrLog$PreventError
   {
     this.username = paramString1;
     this.tag = paramString2;
-    this.URB = paramError;
+    this.acmO = paramError;
     this.processName = paramString3;
   }
   
@@ -47,7 +47,7 @@ class ErrLog$PreventError
   public String toString()
   {
     AppMethodBeat.i(32590);
-    String str = "PreventError{username='" + this.username + '\'' + ", tag='" + this.tag + '\'' + ", err=" + this.URB + ", processName='" + this.processName + '\'' + '}';
+    String str = "PreventError{username='" + this.username + '\'' + ", tag='" + this.tag + '\'' + ", err=" + this.acmO + ", processName='" + this.processName + '\'' + '}';
     AppMethodBeat.o(32590);
     return str;
   }
@@ -57,14 +57,14 @@ class ErrLog$PreventError
     AppMethodBeat.i(32591);
     paramParcel.writeString(this.username);
     paramParcel.writeString(this.tag);
-    paramParcel.writeParcelable(this.URB, paramInt);
+    paramParcel.writeParcelable(this.acmO, paramInt);
     paramParcel.writeString(this.processName);
     AppMethodBeat.o(32591);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sandbox.monitor.ErrLog.PreventError
  * JD-Core Version:    0.7.0.1
  */

@@ -3,39 +3,37 @@ package com.tencent.mm.plugin.appbrand;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.s;
 import kotlin.n.n;
-import kotlin.t;
-import org.apache.commons.b.g;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/AppBrandFakeNativeCheckXWebConfig;", "", "()V", "DEFAULT_CONFIG", "", "kotlin.jvm.PlatformType", "checkIfXWebRequired", "", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/AppBrandFakeNativeCheckXWebConfig;", "", "()V", "DEFAULT_CONFIG", "", "kotlin.jvm.PlatformType", "checkIfXWebRequired", "", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class i
 {
-  private static final String nsM;
-  public static final i nsN;
+  public static final i qrr;
+  private static final String qrs;
   
   static
   {
     AppMethodBeat.i(175098);
-    nsN = new i();
-    nsM = g.a(new String[] { "wxfe02ecfe70800f46", "wx1d9b0b103d81d15d", "wx162102d2ff543cb2" }, ',', 3);
+    qrr = new i();
+    qrs = org.apache.commons.c.i.a(new String[] { "wxfe02ecfe70800f46", "wx1d9b0b103d81d15d", "wx162102d2ff543cb2" }, ',', 3);
     AppMethodBeat.o(175098);
   }
   
   public static final boolean a(AppBrandInitConfigWC paramAppBrandInitConfigWC)
   {
     AppMethodBeat.i(175097);
-    p.k(paramAppBrandInitConfigWC, "config");
-    Object localObject1 = ((b)h.ae(b.class)).a(b.a.vBp, nsM);
-    p.j(localObject1, "MMKernel.service(IExptSe…required, DEFAULT_CONFIG)");
+    s.u(paramAppBrandInitConfigWC, "config");
+    Object localObject1 = ((c)h.ax(c.class)).a(c.a.yPo, qrs);
+    s.s(localObject1, "service(IExptService::cl…required, DEFAULT_CONFIG)");
     Object localObject2 = (Iterable)n.a((CharSequence)localObject1, new String[] { "," });
     localObject1 = (Collection)new ArrayList();
     localObject2 = ((Iterable)localObject2).iterator();
@@ -55,18 +53,18 @@ public final class i
       }
     }
     localObject2 = (Iterable)localObject1;
-    localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
+    localObject1 = (Collection)new ArrayList(p.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (String)((Iterator)localObject2).next();
       if (localObject3 == null)
       {
-        paramAppBrandInitConfigWC = new t("null cannot be cast to non-null type kotlin.CharSequence");
+        paramAppBrandInitConfigWC = new NullPointerException("null cannot be cast to non-null type kotlin.CharSequence");
         AppMethodBeat.o(175097);
         throw paramAppBrandInitConfigWC;
       }
-      ((Collection)localObject1).add(n.bb((CharSequence)localObject3).toString());
+      ((Collection)localObject1).add(n.bq((CharSequence)localObject3).toString());
     }
     boolean bool = ((List)localObject1).contains(paramAppBrandInitConfigWC.appId);
     AppMethodBeat.o(175097);

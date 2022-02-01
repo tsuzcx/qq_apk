@@ -11,8 +11,8 @@ public class DetectCode
   implements Parcelable
 {
   public static final Parcelable.Creator<DetectCode> CREATOR;
-  public int Zrq;
-  public float Zrr;
+  public float YPr;
+  public int ahwf;
   public List<Point> points;
   
   static
@@ -24,9 +24,9 @@ public class DetectCode
   
   public DetectCode(int paramInt, List<Point> paramList, float paramFloat)
   {
-    this.Zrq = paramInt;
+    this.ahwf = paramInt;
     this.points = paramList;
-    this.Zrr = paramFloat;
+    this.YPr = paramFloat;
   }
   
   public int describeContents()
@@ -37,9 +37,9 @@ public class DetectCode
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(3565);
-    paramParcel.writeInt(this.Zrq);
+    paramParcel.writeInt(this.ahwf);
     paramParcel.writeTypedList(this.points);
-    paramParcel.writeFloat(this.Zrr);
+    paramParcel.writeFloat(this.YPr);
     AppMethodBeat.o(3565);
   }
 }

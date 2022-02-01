@@ -1,75 +1,76 @@
 package com.tencent.mm.plugin.appbrand.ipc;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.ipcinvoker.f;
-import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
-import com.tencent.mm.vending.e.b;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.ipcinvoker.j;
+import com.tencent.mm.ipcinvoker.k;
+import com.tencent.mm.ipcinvoker.p;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandRuntimeLaunchConditionForMainProcessIPC;", "", "()V", "connect", "", "waitFor", "block", "Lkotlin/Function0;", "lifecycleKeeper", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "IPCInvokerConnector", "IPCInvokerConnectorAutoReleaseCallback", "plugin-appbrand-integration_release"})
 public final class c
 {
-  public static final c orl;
+  private static boolean ruy;
   
   static
   {
-    AppMethodBeat.i(275324);
-    orl = new c();
-    AppMethodBeat.o(275324);
+    AppMethodBeat.i(140616);
+    ruy = false;
+    AppMethodBeat.o(140616);
   }
   
-  public static final void a(kotlin.g.a.a<x> parama, b<? super com.tencent.mm.vending.e.a> paramb)
+  public static void cpt()
   {
-    AppMethodBeat.i(275323);
-    String str = MainProcessIPCService.PROCESS_NAME;
-    IPCVoid localIPCVoid = IPCVoid.jZu;
-    if (parama == null) {}
-    for (parama = null;; parama = new b(parama, paramb))
+    AppMethodBeat.i(140604);
+    if (!MMHandlerThread.isMainThread())
     {
-      XIPCInvoker.a(str, localIPCVoid, c.a.class, (f)parama);
-      AppMethodBeat.o(275323);
+      h.ahAA.bk(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(319435);
+          c.cpt();
+          AppMethodBeat.o(319435);
+        }
+      });
+      AppMethodBeat.o(140604);
       return;
     }
-  }
-  
-  public static final void connect()
-  {
-    AppMethodBeat.i(275322);
-    a(null, null);
-    AppMethodBeat.o(275322);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandRuntimeLaunchConditionForMainProcessIPC$IPCInvokerConnectorAutoReleaseCallback;", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "block", "Lkotlin/Function0;", "", "lifecycleKeeper", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "(Lkotlin/jvm/functions/Function0;Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;)V", "dead", "onCallback", "data", "plugin-appbrand-integration_release"})
-  static final class b
-    implements f<IPCVoid>, com.tencent.mm.vending.e.a
-  {
-    private kotlin.g.a.a<x> kRn;
-    
-    public b(kotlin.g.a.a<x> parama, b<? super com.tencent.mm.vending.e.a> paramb)
+    Log.v("MicroMsg.AppBrandMainProcessService", "tryBind: ");
+    if (!ruy)
     {
-      AppMethodBeat.i(280639);
-      this.kRn = parama;
-      if (paramb != null)
-      {
-        paramb.keep((com.tencent.mm.vending.e.a)this);
-        AppMethodBeat.o(280639);
-        return;
-      }
-      AppMethodBeat.o(280639);
+      j.b(MMApplicationContext.getMainProcessName(), new a((byte)0));
+      ruy = true;
     }
-    
-    public final void dead()
+    k.EY(MMApplicationContext.getMainProcessName());
+    AppMethodBeat.o(140604);
+  }
+  
+  public static boolean isLive()
+  {
+    AppMethodBeat.i(319398);
+    boolean bool = j.EX(MMApplicationContext.getMainProcessName());
+    AppMethodBeat.o(319398);
+    return bool;
+  }
+  
+  static final class a
+    implements p
+  {
+    public final void onDisconnect()
     {
-      this.kRn = null;
+      AppMethodBeat.i(319436);
+      Log.i("MicroMsg.AppBrandMainProcessService", "onDisconnect: [%s] disconnected, reconnect immediately", new Object[] { MMApplicationContext.getMainProcessName() });
+      c.cpt();
+      AppMethodBeat.o(319436);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ipc.c
  * JD-Core Version:    0.7.0.1
  */

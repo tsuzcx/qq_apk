@@ -15,111 +15,118 @@ import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy;
 import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy.e;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai;
 import com.tencent.mm.plugin.sns.ui.SnsAdProxyUI;
+import com.tencent.mm.pluginsdk.e.e;
 import com.tencent.mm.sdk.platformtools.IntentUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.q.f;
 import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.u.g;
+import com.tencent.mm.ui.widget.a.f;
+import com.tencent.mm.ui.widget.a.f.b;
 import com.tencent.mm.ui.widget.bottomsheet.ViewTitleWithAnimation;
 import com.tencent.qbar.WxQbarNative.QBarReportMsg;
 import com.tencent.qbar.a.a;
+import com.tencent.qbar.e;
+import com.tencent.qbar.e.b;
+import com.tencent.qbar.e.d;
 import java.net.URLEncoder;
 import java.util.List;
 import org.json.JSONObject;
 
 public final class j
 {
-  ScanCodeSheetItemLogic JQp;
-  int JQq;
-  int JQr;
-  volatile String JQs;
-  private int JQt;
-  private String JQu;
-  private ai JQv;
-  private String JQw;
-  private int JQx;
+  ScanCodeSheetItemLogic QmW;
+  int QmX;
+  int QmY;
+  volatile String QmZ;
+  private int Qna;
+  private String Qnb;
+  private ai Qnc;
+  private String Qnd;
+  private int Qne;
+  Bundle Qnf;
   Context mContext;
   private int mScene;
-  private String oxn;
-  com.tencent.mm.ui.widget.a.e rZT;
+  private String rAM;
+  f vlk;
   
   public j(Context paramContext, ai paramai, int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(228495);
+    AppMethodBeat.i(306392);
     this.mContext = paramContext;
-    this.JQv = paramai;
+    this.Qnc = paramai;
     this.mScene = paramInt;
-    this.JQt = 0;
-    if (this.JQp == null)
+    this.Qna = 0;
+    if (this.QmW == null)
     {
-      this.rZT = new com.tencent.mm.ui.widget.a.e(this.mContext, 1, false);
-      this.JQp = new ScanCodeSheetItemLogic(this.mContext);
-      this.rZT.pMG = true;
-      this.rZT.ODT = new q.f()
+      this.vlk = new f(this.mContext, 1, false);
+      this.QmW = new ScanCodeSheetItemLogic(this.mContext);
+      this.vlk.sRz = true;
+      this.vlk.Vtg = new u.g()
       {
-        public final void onCreateMMMenu(o paramAnonymouso)
+        public final void onCreateMMMenu(s paramAnonymouss)
         {
           AppMethodBeat.i(176226);
           try
           {
-            paramAnonymouso = j.this;
-            paramAnonymouso = paramAnonymouso.JQp.a(new j.3(paramAnonymouso), paramAnonymouso.JQq, paramAnonymouso.JQs, 9);
-            if ((paramAnonymouso instanceof ViewTitleWithAnimation)) {
-              ((ViewTitleWithAnimation)paramAnonymouso).setTopPaddingVisibility(8);
+            paramAnonymouss = j.this;
+            paramAnonymouss = paramAnonymouss.QmW.a(new j.3(paramAnonymouss), paramAnonymouss.QmX, paramAnonymouss.QmZ, 9);
+            if ((paramAnonymouss instanceof ViewTitleWithAnimation)) {
+              ((ViewTitleWithAnimation)paramAnonymouss).setTopPaddingVisibility(8);
             }
-            j.this.rZT.setFooterView(paramAnonymouso);
-            paramAnonymouso = new View(j.this.mContext);
-            paramAnonymouso.setMinimumHeight(com.tencent.mm.ci.a.fromDPToPix(j.this.mContext, 2));
-            j.this.rZT.Z(paramAnonymouso, true);
+            j.this.vlk.setFooterView(paramAnonymouss);
+            paramAnonymouss = new View(j.this.mContext);
+            paramAnonymouss.setMinimumHeight(com.tencent.mm.cd.a.fromDPToPix(j.this.mContext, 2));
+            j.this.vlk.af(paramAnonymouss, true);
             AppMethodBeat.o(176226);
             return;
           }
-          catch (Exception paramAnonymouso)
+          catch (Exception paramAnonymouss)
           {
-            Log.e("SnsAdQRHelper", "onCreateMMMenu exp=" + paramAnonymouso.toString());
+            Log.e("SnsAdQRHelper", "onCreateMMMenu exp=" + paramAnonymouss.toString());
             AppMethodBeat.o(176226);
           }
         }
       };
-      this.rZT.XbB = new com.tencent.mm.ui.widget.a.e.b()
+      this.vlk.aeLi = new f.b()
       {
         public final void onDismiss()
         {
           AppMethodBeat.i(176227);
-          j.this.JQp.onDismiss();
-          j.this.fNl();
+          j.this.QmW.onDismiss();
+          j.this.heM();
           AppMethodBeat.o(176227);
         }
       };
     }
+    this.Qnf = paramBundle;
     try
     {
-      this.JQw = Util.nullAs(IntentUtil.getString(paramBundle, "qrExtInfo"), "");
-      this.JQx = IntentUtil.getInt(paramBundle, "qrIsDirectJump", 0);
-      AppMethodBeat.o(228495);
+      this.Qnd = Util.nullAs(IntentUtil.getString(paramBundle, "qrExtInfo"), "");
+      this.Qne = IntentUtil.getInt(paramBundle, "qrIsDirectJump", 0);
+      AppMethodBeat.o(306392);
       return;
     }
-    catch (Throwable paramContext)
+    finally
     {
       Log.e("SnsAdQRHelper", "there is something wrong in parseExtraParams");
-      AppMethodBeat.o(228495);
+      AppMethodBeat.o(306392);
     }
   }
   
-  private void aYQ(String paramString)
+  private void aXc(String paramString)
   {
     AppMethodBeat.i(176236);
     try
     {
-      Object localObject = this.JQv;
+      Object localObject = this.Qnc;
       String str1 = ((ai)localObject).getSnsId();
       String str2 = Util.nullAsNil(((ai)localObject).uxInfo);
       String str3 = Util.nullAsNil(((ai)localObject).aid);
       int i = ((ai)localObject).source;
       localObject = URLEncoder.encode(paramString, "UTF-8");
-      h.IzE.a(17539, new Object[] { str1, str3, str2, Integer.valueOf(i), localObject });
+      h.OAn.b(17539, new Object[] { str1, str3, str2, Integer.valueOf(i), localObject });
       Log.d("SnsAdQRHelper", "reportKV17539 snsId=" + str1 + ", aid=" + str3 + ", uxInfo=" + str2 + ", kvData=" + paramString);
       AppMethodBeat.o(176236);
       return;
@@ -145,12 +152,12 @@ public final class j
         }
         paramInt = 0;
         localJSONObject.put("qrResult", paramInt);
-        localJSONObject.put("qrUrl", this.oxn);
+        localJSONObject.put("qrUrl", this.rAM);
         localJSONObject.put("qrResultUrl", paramString);
-        localJSONObject.put("qrExtInfo", this.JQw);
-        localJSONObject.put("directJump", this.JQx);
-        if (this.JQt != 0) {
-          localJSONObject.put("qrResultUrlType", this.JQt);
+        localJSONObject.put("qrExtInfo", this.Qnd);
+        localJSONObject.put("directJump", this.Qne);
+        if (this.Qna != 0) {
+          localJSONObject.put("qrResultUrlType", this.Qna);
         }
       }
       catch (Exception paramString)
@@ -170,12 +177,12 @@ public final class j
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      ai localai = this.JQv;
+      ai localai = this.Qnc;
       paramString = h(paramInt, paramString, paramBoolean);
       String str1 = Util.nullAsNil(localai.uxInfo);
       String str2 = localai.getSnsId();
       paramInt = localai.source;
-      long l = Util.safeParseLong(localai.owd);
+      long l = Util.safeParseLong(localai.rzx);
       localJSONObject.put("extInfo", paramString);
       localJSONObject.put("uxinfo", str1);
       localJSONObject.put("snsId", str2);
@@ -198,58 +205,41 @@ public final class j
     }
   }
   
-  public final void a(final s params)
+  public final boolean a(String paramString1, final String paramString2, final a parama)
   {
-    AppMethodBeat.i(228540);
-    MMHandlerThread.postToMainThread(new Runnable()
+    AppMethodBeat.i(306423);
+    this.Qnb = paramString1;
+    this.rAM = paramString2;
+    Log.i("SnsAdQRHelper", "onLongClick, filePath=" + this.Qnb);
+    if (TextUtils.isEmpty(this.Qnb))
     {
-      public final void run()
-      {
-        AppMethodBeat.i(269720);
-        if ((params != null) && (params.isShowing())) {
-          params.dismiss();
-        }
-        AppMethodBeat.o(269720);
+      if (parama != null) {
+        parama.a(paramString2, false, "imgPath is empty", this.Qnf);
       }
-    });
-    AppMethodBeat.o(228540);
-  }
-  
-  public final boolean a(String paramString1, String paramString2, final s params)
-  {
-    AppMethodBeat.i(228504);
-    this.JQu = paramString1;
-    this.oxn = paramString2;
-    Log.i("SnsAdQRHelper", "onLongClick, filePath=" + this.JQu);
-    if (TextUtils.isEmpty(this.JQu))
-    {
-      a(params);
-      fNl();
-      AppMethodBeat.o(228504);
+      heM();
+      AppMethodBeat.o(306423);
       return false;
     }
     long l = System.currentTimeMillis();
-    com.tencent.qbar.e.inE().a(this.mContext, l, this.JQu, new com.tencent.qbar.e.b()
+    e.jWN().a(this.mContext, l, this.Qnb, new e.b()
     {
-      public final void a(long paramAnonymousLong, com.tencent.qbar.e.d paramAnonymousd)
+      public final void a(long paramAnonymousLong, e.d paramAnonymousd)
       {
-        AppMethodBeat.i(267200);
+        AppMethodBeat.i(306421);
         Object localObject;
         if (paramAnonymousd != null)
         {
-          localObject = paramAnonymousd.IMj;
+          localObject = paramAnonymousd.OTq;
           if (paramAnonymousd == null) {
-            break label219;
+            break label238;
           }
-          paramAnonymousd = paramAnonymousd.ZmS;
+          paramAnonymousd = paramAnonymousd.ahrp;
         }
-        label219:
-        boolean bool;
         for (;;)
         {
           if ((localObject != null) && (((List)localObject).size() > 0))
           {
-            int k = com.tencent.mm.pluginsdk.e.d.boV(((a.a)((List)localObject).get(0)).typeName);
+            int k = e.e.boP(((a.a)((List)localObject).get(0)).typeName);
             localObject = ((a.a)((List)localObject).get(0)).data;
             int j = -1;
             int i = j;
@@ -261,135 +251,149 @@ public final class j
               }
             }
             Log.i("SnsAdQRHelper", "QRCodeStr=" + (String)localObject + ", QRCodeType=" + k + ", QRCodeVer=" + i);
-            if (!j.this.cp(k, (String)localObject))
+            if (!j.this.da(k, (String)localObject))
             {
               Log.e("SnsAdQRHelper", "isValidQRCode=false");
-              j.this.cu(Util.nullAsNil((String)localObject), false);
-              j.this.a(params);
-              j.this.fNl();
-              AppMethodBeat.o(267200);
+              j.this.cU(Util.nullAsNil((String)localObject), false);
+              if (parama != null) {
+                parama.a(paramString2, false, "inValid QRCode", j.this.Qnf);
+              }
+              j.this.heM();
+              AppMethodBeat.o(306421);
               return;
               localObject = null;
               break;
+              label238:
               paramAnonymousd = null;
               continue;
             }
-            j.this.JQq = k;
-            j.this.JQs = ((String)localObject);
-            j.this.JQr = i;
+            j.this.QmX = k;
+            j.this.QmZ = ((String)localObject);
+            j.this.QmY = i;
             paramAnonymousd = j.this;
-            localObject = j.this.JQs;
-            if (!TextUtils.isEmpty(j.this.JQs))
+            localObject = j.this.QmZ;
+            if (!TextUtils.isEmpty(j.this.QmZ)) {}
+            for (boolean bool = true;; bool = false)
             {
-              bool = true;
-              paramAnonymousd.cu((String)localObject, bool);
-              AdLandingPagesProxy.getInstance().fetchQRCodeInfo(j.this.JQq, j.this.JQs, new AdLandingPagesProxy.e()
+              paramAnonymousd.cU((String)localObject, bool);
+              AdLandingPagesProxy.getInstance().fetchQRCodeInfo(j.this.QmX, j.this.QmZ, new AdLandingPagesProxy.e()
               {
-                public final void aH(Object paramAnonymous2Object) {}
-                
-                public final void i(final int paramAnonymous2Int1, int paramAnonymous2Int2, final Object paramAnonymous2Object)
+                public final void h(final int paramAnonymous2Int1, int paramAnonymous2Int2, final Object paramAnonymous2Object)
                 {
-                  AppMethodBeat.i(207082);
+                  AppMethodBeat.i(176230);
                   StringBuilder localStringBuilder = new StringBuilder("fetchQRCodeInfo, errType=").append(paramAnonymous2Int1).append(", data==null?");
                   if (paramAnonymous2Object == null) {}
                   for (boolean bool = true;; bool = false)
                   {
                     Log.i("SnsAdQRHelper", bool);
-                    if (TextUtils.isEmpty(j.this.JQs)) {
-                      break;
+                    if (TextUtils.isEmpty(j.this.QmZ)) {
+                      break label172;
                     }
                     MMHandlerThread.postToMainThread(new Runnable()
                     {
                       public final void run()
                       {
-                        AppMethodBeat.i(267782);
+                        AppMethodBeat.i(176229);
                         try
                         {
                           byte[] arrayOfByte = (byte[])paramAnonymous2Object;
-                          j.this.JQp.r(paramAnonymous2Int1, arrayOfByte);
-                          j.this.rZT.eik();
-                          AppMethodBeat.o(267782);
+                          j.this.QmW.s(paramAnonymous2Int1, arrayOfByte);
+                          j.this.vlk.dDn();
+                          AppMethodBeat.o(176229);
                           return;
                         }
-                        catch (Throwable localThrowable)
+                        finally
                         {
                           Log.e("SnsAdQRHelper", "there is something wrong in AdLandingPagesProxy call back");
-                          AppMethodBeat.o(267782);
+                          AppMethodBeat.o(176229);
                         }
                       }
                     });
-                    AppMethodBeat.o(207082);
+                    if ((j.4.this.Qnh == null) || (paramAnonymous2Int1 != 0)) {
+                      break;
+                    }
+                    j.4.this.Qnh.a(j.4.this.PUd, true, "", j.this.Qnf);
+                    AppMethodBeat.o(176230);
                     return;
                   }
+                  j.4.this.Qnh.a(j.4.this.PUd, false, " errType!=MM_OK", j.this.Qnf);
+                  AppMethodBeat.o(176230);
+                  return;
+                  label172:
                   Log.e("SnsAdQRHelper", "the qr code string is empty in AdLandingPagesProxy call back");
-                  AppMethodBeat.o(207082);
+                  if (j.4.this.Qnh != null) {
+                    j.4.this.Qnh.a(j.4.this.PUd, false, "fetchQRCodeInfo empty", j.this.Qnf);
+                  }
+                  AppMethodBeat.o(176230);
                 }
+                
+                public final void onCallback(Object paramAnonymous2Object) {}
               });
               MMHandlerThread.postToMainThread(new Runnable()
               {
                 public final void run()
                 {
-                  AppMethodBeat.i(254060);
-                  j.this.rZT.eik();
-                  AppMethodBeat.o(254060);
+                  AppMethodBeat.i(176231);
+                  j.this.vlk.dDn();
+                  AppMethodBeat.o(176231);
                 }
               });
+              AppMethodBeat.o(306421);
+              return;
             }
           }
         }
-        for (;;)
-        {
-          j.this.a(params);
-          AppMethodBeat.o(267200);
-          return;
-          bool = false;
-          break;
-          Log.e("SnsAdQRHelper", "afterDecode, results is empty");
-          j.this.cu("", false);
-          j.this.fNl();
+        Log.e("SnsAdQRHelper", "afterDecode, results is empty");
+        j.this.cU("", false);
+        if (parama != null) {
+          parama.a(paramString2, false, "QR result is empty", j.this.Qnf);
         }
+        j.this.heM();
+        AppMethodBeat.o(306421);
       }
     });
-    AppMethodBeat.o(228504);
+    AppMethodBeat.o(306423);
     return true;
   }
   
-  public final boolean b(String paramString1, String paramString2, final s params)
+  public final boolean b(String paramString1, final String paramString2, final a parama)
   {
-    AppMethodBeat.i(228510);
-    this.JQu = paramString1;
-    this.oxn = paramString2;
-    Log.i("SnsAdQRHelper", "onClickDirect, filePath=" + this.JQu);
-    if (TextUtils.isEmpty(this.JQu))
+    AppMethodBeat.i(306434);
+    this.Qnb = paramString1;
+    this.rAM = paramString2;
+    Log.i("SnsAdQRHelper", "onClickDirect, filePath=" + this.Qnb);
+    if (TextUtils.isEmpty(this.Qnb))
     {
-      a(params);
-      fNl();
-      AppMethodBeat.o(228510);
+      if (parama != null) {
+        parama.a(paramString2, false, "imgPath is empty", this.Qnf);
+      }
+      heM();
+      AppMethodBeat.o(306434);
       return false;
     }
     long l = System.currentTimeMillis();
-    com.tencent.qbar.e.inE().a(this.mContext, l, this.JQu, new com.tencent.qbar.e.b()
+    e.jWN().a(this.mContext, l, this.Qnb, new e.b()
     {
-      public final void a(long paramAnonymousLong, com.tencent.qbar.e.d paramAnonymousd)
+      public final void a(long paramAnonymousLong, e.d paramAnonymousd)
       {
-        boolean bool2 = true;
-        AppMethodBeat.i(195370);
+        boolean bool2 = false;
+        AppMethodBeat.i(306429);
         Object localObject;
         if (paramAnonymousd != null)
         {
-          localObject = paramAnonymousd.IMj;
+          localObject = paramAnonymousd.OTq;
           if (paramAnonymousd == null) {
-            break label222;
+            break label241;
           }
-          paramAnonymousd = paramAnonymousd.ZmS;
+          paramAnonymousd = paramAnonymousd.ahrp;
         }
-        label222:
+        label241:
         boolean bool1;
         for (;;)
         {
           if ((localObject != null) && (((List)localObject).size() > 0))
           {
-            int k = com.tencent.mm.pluginsdk.e.d.boV(((a.a)((List)localObject).get(0)).typeName);
+            int k = e.e.boP(((a.a)((List)localObject).get(0)).typeName);
             localObject = ((a.a)((List)localObject).get(0)).data;
             int j = -1;
             int i = j;
@@ -401,127 +405,82 @@ public final class j
               }
             }
             Log.i("SnsAdQRHelper", "QRCodeStr=" + (String)localObject + ", QRCodeType=" + k + ", QRCodeVer=" + i);
-            if (!j.this.cp(k, (String)localObject))
+            if (!j.this.da(k, (String)localObject))
             {
               Log.e("SnsAdQRHelper", "isValidQRCode=false");
-              j.this.cu(Util.nullAsNil((String)localObject), false);
-              j.this.a(params);
-              j.this.fNl();
-              AppMethodBeat.o(195370);
+              j.this.cU(Util.nullAsNil((String)localObject), false);
+              if (parama != null) {
+                parama.a(paramString2, false, "inValid QRCode", j.this.Qnf);
+              }
+              j.this.heM();
+              AppMethodBeat.o(306429);
               return;
               localObject = null;
               break;
               paramAnonymousd = null;
               continue;
             }
-            j.this.JQq = k;
-            j.this.JQs = ((String)localObject);
-            j.this.JQr = i;
+            j.this.QmX = k;
+            j.this.QmZ = ((String)localObject);
+            j.this.QmY = i;
             paramAnonymousd = j.this;
-            localObject = j.this.JQs;
-            if (!TextUtils.isEmpty(j.this.JQs))
+            localObject = j.this.QmZ;
+            if (!TextUtils.isEmpty(j.this.QmZ))
             {
               bool1 = true;
-              paramAnonymousd.cu((String)localObject, bool1);
+              paramAnonymousd.cU((String)localObject, bool1);
               Log.i("SnsAdQRHelper", "onClickDirect createIntent");
               localObject = new Intent(j.this.mContext, SnsAdProxyUI.class);
               ((Intent)localObject).putExtra("action_type", 1);
-              ((Intent)localObject).putExtra("qrcodeStr", j.this.JQs);
-              ((Intent)localObject).putExtra("qrcodeType", j.this.JQq);
-              ((Intent)localObject).putExtra("qrcodeVer", j.this.JQr);
+              ((Intent)localObject).putExtra("qrcodeStr", j.this.QmZ);
+              ((Intent)localObject).putExtra("qrcodeType", j.this.QmX);
+              ((Intent)localObject).putExtra("qrcodeVer", j.this.QmY);
               paramAnonymousd = j.this.mContext;
-              localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-              com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousd, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/sns/data/SnsAdQRHelper$6", "afterDecode", "(JLcom/tencent/qbar/WxFileDecodeQueue$ScanCodeForFileResult;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              paramAnonymousd.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
-              com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousd, "com/tencent/mm/plugin/sns/data/SnsAdQRHelper$6", "afterDecode", "(JLcom/tencent/qbar/WxFileDecodeQueue$ScanCodeForFileResult;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+              com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousd, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/sns/data/SnsAdQRHelper$5", "afterDecode", "(JLcom/tencent/qbar/WxFileDecodeQueue$ScanCodeForFileResult;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              paramAnonymousd.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+              com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousd, "com/tencent/mm/plugin/sns/data/SnsAdQRHelper$5", "afterDecode", "(JLcom/tencent/qbar/WxFileDecodeQueue$ScanCodeForFileResult;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
               paramAnonymousd = j.this;
-              localObject = j.this.JQs;
-              if (TextUtils.isEmpty(j.this.JQs)) {
-                break label512;
-              }
+              localObject = j.this.QmZ;
               bool1 = bool2;
-              label474:
-              paramAnonymousd.cv((String)localObject, bool1);
+              if (!TextUtils.isEmpty(j.this.QmZ)) {
+                bool1 = true;
+              }
+              paramAnonymousd.cV((String)localObject, bool1);
+              if (parama != null) {
+                parama.a(paramString2, true, "", j.this.Qnf);
+              }
             }
           }
         }
         for (;;)
         {
-          j.this.a(params);
-          j.this.fNl();
-          AppMethodBeat.o(195370);
+          j.this.heM();
+          AppMethodBeat.o(306429);
           return;
           bool1 = false;
           break;
-          label512:
-          bool1 = false;
-          break label474;
           Log.e("SnsAdQRHelper", "afterDecode, results is empty");
-          j.this.cu("", false);
+          j.this.cU("", false);
+          if (parama != null) {
+            parama.a(paramString2, false, "QR result is empty", j.this.Qnf);
+          }
         }
       }
     });
-    AppMethodBeat.o(228510);
+    AppMethodBeat.o(306434);
     return true;
   }
   
-  public final boolean cp(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(228518);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(228518);
-      return false;
-    }
-    if (k.bY(paramInt, paramString))
-    {
-      this.JQt = 2;
-      AppMethodBeat.o(228518);
-      return true;
-    }
-    if (k.bZ(paramInt, paramString))
-    {
-      this.JQt = 3;
-      AppMethodBeat.o(228518);
-      return true;
-    }
-    if (k.ca(paramInt, paramString))
-    {
-      this.JQt = 4;
-      AppMethodBeat.o(228518);
-      return true;
-    }
-    if (k.cb(paramInt, paramString))
-    {
-      this.JQt = 5;
-      AppMethodBeat.o(228518);
-      return true;
-    }
-    if (k.cc(paramInt, paramString))
-    {
-      this.JQt = 1;
-      AppMethodBeat.o(228518);
-      return true;
-    }
-    if (k.cd(paramInt, paramString))
-    {
-      this.JQt = 6;
-      AppMethodBeat.o(228518);
-      return true;
-    }
-    AppMethodBeat.o(228518);
-    return false;
-  }
-  
-  public final void cu(String paramString, boolean paramBoolean)
+  public final void cU(String paramString, boolean paramBoolean)
   {
     int i = 2;
     AppMethodBeat.i(176235);
     if (this.mScene == 1) {}
     for (;;)
     {
-      aYQ(h(i, paramString, paramBoolean).toString());
-      m.ks("17539", i(i, paramString, paramBoolean));
+      aXc(h(i, paramString, paramBoolean).toString());
+      m.lU("17539", i(i, paramString, paramBoolean));
       AppMethodBeat.o(176235);
       return;
       if (this.mScene == 2) {
@@ -534,16 +493,16 @@ public final class j
     }
   }
   
-  public final void cv(String paramString, boolean paramBoolean)
+  public final void cV(String paramString, boolean paramBoolean)
   {
     int i = 3;
-    AppMethodBeat.i(228524);
+    AppMethodBeat.i(306463);
     if (this.mScene == 1) {}
     for (;;)
     {
-      aYQ(h(i, paramString, paramBoolean).toString());
-      m.ks("17539", i(i, paramString, paramBoolean));
-      AppMethodBeat.o(228524);
+      aXc(h(i, paramString, paramBoolean).toString());
+      m.lU("17539", i(i, paramString, paramBoolean));
+      AppMethodBeat.o(306463);
       return;
       if (this.mScene == 2) {
         i = 7;
@@ -555,150 +514,73 @@ public final class j
     }
   }
   
-  public final void fNl()
+  public final boolean da(int paramInt, String paramString)
   {
-    this.JQs = "";
-    this.JQq = -1;
-    this.JQu = "";
-    this.oxn = "";
-    this.JQr = 0;
-    this.JQt = 0;
-  }
-  
-  public final boolean kr(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(179078);
-    this.JQu = paramString1;
-    this.oxn = paramString2;
-    Log.i("SnsAdQRHelper", "onLongClick, filePath=" + this.JQu);
-    if (TextUtils.isEmpty(this.JQu))
+    AppMethodBeat.i(306445);
+    if (TextUtils.isEmpty(paramString))
     {
-      fNl();
-      AppMethodBeat.o(179078);
+      AppMethodBeat.o(306445);
       return false;
     }
-    long l = System.currentTimeMillis();
-    com.tencent.qbar.e.inE().a(this.mContext, l, this.JQu, new com.tencent.qbar.e.b()
+    if (k.cK(paramInt, paramString))
     {
-      public final void a(long paramAnonymousLong, com.tencent.qbar.e.d paramAnonymousd)
-      {
-        AppMethodBeat.i(226325);
-        Object localObject;
-        if (paramAnonymousd != null)
-        {
-          localObject = paramAnonymousd.IMj;
-          if (paramAnonymousd == null) {
-            break label208;
-          }
-          paramAnonymousd = paramAnonymousd.ZmS;
-        }
-        for (;;)
-        {
-          if ((localObject != null) && (((List)localObject).size() > 0))
-          {
-            int k = com.tencent.mm.pluginsdk.e.d.boV(((a.a)((List)localObject).get(0)).typeName);
-            localObject = ((a.a)((List)localObject).get(0)).data;
-            int j = -1;
-            int i = j;
-            if (paramAnonymousd != null)
-            {
-              i = j;
-              if (!paramAnonymousd.isEmpty()) {
-                i = ((WxQbarNative.QBarReportMsg)paramAnonymousd.get(0)).qrcodeVersion;
-              }
-            }
-            Log.i("SnsAdQRHelper", "QRCodeStr=" + (String)localObject + ", QRCodeType=" + k + ", QRCodeVer=" + i);
-            if (!j.this.cp(k, (String)localObject))
-            {
-              Log.e("SnsAdQRHelper", "isValidQRCode=false");
-              j.this.cu(Util.nullAsNil((String)localObject), false);
-              j.this.fNl();
-              AppMethodBeat.o(226325);
-              return;
-              localObject = null;
-              break;
-              label208:
-              paramAnonymousd = null;
-              continue;
-            }
-            j.this.JQq = k;
-            j.this.JQs = ((String)localObject);
-            j.this.JQr = i;
-            paramAnonymousd = j.this;
-            localObject = j.this.JQs;
-            if (!TextUtils.isEmpty(j.this.JQs)) {}
-            for (boolean bool = true;; bool = false)
-            {
-              paramAnonymousd.cu((String)localObject, bool);
-              AdLandingPagesProxy.getInstance().fetchQRCodeInfo(j.this.JQq, j.this.JQs, new AdLandingPagesProxy.e()
-              {
-                public final void aH(Object paramAnonymous2Object) {}
-                
-                public final void i(final int paramAnonymous2Int1, int paramAnonymous2Int2, final Object paramAnonymous2Object)
-                {
-                  AppMethodBeat.i(176230);
-                  StringBuilder localStringBuilder = new StringBuilder("fetchQRCodeInfo, errType=").append(paramAnonymous2Int1).append(", data==null?");
-                  if (paramAnonymous2Object == null) {}
-                  for (boolean bool = true;; bool = false)
-                  {
-                    Log.i("SnsAdQRHelper", bool);
-                    if (TextUtils.isEmpty(j.this.JQs)) {
-                      break;
-                    }
-                    MMHandlerThread.postToMainThread(new Runnable()
-                    {
-                      public final void run()
-                      {
-                        AppMethodBeat.i(176229);
-                        try
-                        {
-                          byte[] arrayOfByte = (byte[])paramAnonymous2Object;
-                          j.this.JQp.r(paramAnonymous2Int1, arrayOfByte);
-                          j.this.rZT.eik();
-                          AppMethodBeat.o(176229);
-                          return;
-                        }
-                        catch (Throwable localThrowable)
-                        {
-                          Log.e("SnsAdQRHelper", "there is something wrong in AdLandingPagesProxy call back");
-                          AppMethodBeat.o(176229);
-                        }
-                      }
-                    });
-                    AppMethodBeat.o(176230);
-                    return;
-                  }
-                  Log.e("SnsAdQRHelper", "the qr code string is empty in AdLandingPagesProxy call back");
-                  AppMethodBeat.o(176230);
-                }
-              });
-              MMHandlerThread.postToMainThread(new Runnable()
-              {
-                public final void run()
-                {
-                  AppMethodBeat.i(176231);
-                  j.this.rZT.eik();
-                  AppMethodBeat.o(176231);
-                }
-              });
-              AppMethodBeat.o(226325);
-              return;
-            }
-          }
-        }
-        Log.e("SnsAdQRHelper", "afterDecode, results is empty");
-        j.this.cu("", false);
-        j.this.fNl();
-        AppMethodBeat.o(226325);
-      }
-    });
-    AppMethodBeat.o(179078);
-    return true;
+      this.Qna = 2;
+      AppMethodBeat.o(306445);
+      return true;
+    }
+    if (k.cL(paramInt, paramString))
+    {
+      this.Qna = 3;
+      AppMethodBeat.o(306445);
+      return true;
+    }
+    if (k.cM(paramInt, paramString))
+    {
+      this.Qna = 4;
+      AppMethodBeat.o(306445);
+      return true;
+    }
+    if (k.cN(paramInt, paramString))
+    {
+      this.Qna = 5;
+      AppMethodBeat.o(306445);
+      return true;
+    }
+    if (k.cO(paramInt, paramString))
+    {
+      this.Qna = 1;
+      AppMethodBeat.o(306445);
+      return true;
+    }
+    if (k.cP(paramInt, paramString))
+    {
+      this.Qna = 6;
+      AppMethodBeat.o(306445);
+      return true;
+    }
+    AppMethodBeat.o(306445);
+    return false;
+  }
+  
+  public final void heM()
+  {
+    this.QmZ = "";
+    this.QmX = -1;
+    this.Qnb = "";
+    this.rAM = "";
+    this.QmY = 0;
+    this.Qna = 0;
+    this.Qnf = null;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(String paramString1, boolean paramBoolean, String paramString2, Bundle paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.data.j
  * JD-Core Version:    0.7.0.1
  */

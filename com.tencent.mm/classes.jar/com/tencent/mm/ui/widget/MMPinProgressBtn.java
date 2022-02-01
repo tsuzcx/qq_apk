@@ -22,23 +22,23 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class MMPinProgressBtn
   extends CompoundButton
 {
-  private int IB;
-  private Paint JMJ;
-  private int YbC;
-  private int YbD;
-  private final float YbE;
-  private Runnable YbF;
-  private RectF ajW;
-  private Paint aoq;
+  private int afTu;
+  private Paint afTv;
+  private int afTw;
+  private final float afTx;
+  private Runnable afTy;
+  private RectF bYz;
+  private int boE;
+  private Paint cda;
   private int style;
   
   public MMPinProgressBtn(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(143384);
-    this.ajW = new RectF();
-    this.YbE = 4.0F;
-    this.YbF = new Runnable()
+    this.bYz = new RectF();
+    this.afTx = 4.0F;
+    this.afTy = new Runnable()
     {
       public final void run()
       {
@@ -49,16 +49,16 @@ public class MMPinProgressBtn
           AppMethodBeat.o(143379);
           return;
         }
-        MMPinProgressBtn.a(MMPinProgressBtn.this, MMPinProgressBtn.a(MMPinProgressBtn.this) + 1);
-        if (MMPinProgressBtn.a(MMPinProgressBtn.this) >= MMPinProgressBtn.b(MMPinProgressBtn.this))
+        MMPinProgressBtn.a(MMPinProgressBtn.this);
+        if (MMPinProgressBtn.b(MMPinProgressBtn.this) >= MMPinProgressBtn.c(MMPinProgressBtn.this))
         {
-          MMPinProgressBtn.a(MMPinProgressBtn.this, MMPinProgressBtn.a(MMPinProgressBtn.this) - 1);
+          MMPinProgressBtn.d(MMPinProgressBtn.this);
           Log.i("MicroMsg.MMPinProgressBtn", "match auto progress max, return");
           AppMethodBeat.o(143379);
           return;
         }
         MMPinProgressBtn.this.invalidate();
-        MMPinProgressBtn.this.postDelayed(MMPinProgressBtn.c(MMPinProgressBtn.this), 200L);
+        MMPinProgressBtn.this.postDelayed(MMPinProgressBtn.e(MMPinProgressBtn.this), 200L);
         AppMethodBeat.o(143379);
       }
     };
@@ -70,9 +70,9 @@ public class MMPinProgressBtn
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(143385);
-    this.ajW = new RectF();
-    this.YbE = 4.0F;
-    this.YbF = new Runnable()
+    this.bYz = new RectF();
+    this.afTx = 4.0F;
+    this.afTy = new Runnable()
     {
       public final void run()
       {
@@ -83,16 +83,16 @@ public class MMPinProgressBtn
           AppMethodBeat.o(143379);
           return;
         }
-        MMPinProgressBtn.a(MMPinProgressBtn.this, MMPinProgressBtn.a(MMPinProgressBtn.this) + 1);
-        if (MMPinProgressBtn.a(MMPinProgressBtn.this) >= MMPinProgressBtn.b(MMPinProgressBtn.this))
+        MMPinProgressBtn.a(MMPinProgressBtn.this);
+        if (MMPinProgressBtn.b(MMPinProgressBtn.this) >= MMPinProgressBtn.c(MMPinProgressBtn.this))
         {
-          MMPinProgressBtn.a(MMPinProgressBtn.this, MMPinProgressBtn.a(MMPinProgressBtn.this) - 1);
+          MMPinProgressBtn.d(MMPinProgressBtn.this);
           Log.i("MicroMsg.MMPinProgressBtn", "match auto progress max, return");
           AppMethodBeat.o(143379);
           return;
         }
         MMPinProgressBtn.this.invalidate();
-        MMPinProgressBtn.this.postDelayed(MMPinProgressBtn.c(MMPinProgressBtn.this), 200L);
+        MMPinProgressBtn.this.postDelayed(MMPinProgressBtn.e(MMPinProgressBtn.this), 200L);
         AppMethodBeat.o(143379);
       }
     };
@@ -103,8 +103,8 @@ public class MMPinProgressBtn
   private void b(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     AppMethodBeat.i(143386);
-    this.YbC = 100;
-    this.IB = 0;
+    this.afTu = 100;
+    this.boE = 0;
     Resources localResources = getResources();
     int m = localResources.getColor(a.d.pin_progress_default_circle_color);
     int k = localResources.getColor(a.d.pin_progress_default_progress_color);
@@ -122,12 +122,12 @@ public class MMPinProgressBtn
     {
       try
       {
-        this.YbC = paramAttributeSet.getInteger(a.m.MMPinProgressBtn_max, this.YbC);
-        this.IB = paramAttributeSet.getInteger(a.m.MMPinProgressBtn_progress, this.IB);
+        this.afTu = paramAttributeSet.getInteger(a.m.MMPinProgressBtn_max, this.afTu);
+        this.boE = paramAttributeSet.getInteger(a.m.MMPinProgressBtn_progress, this.boE);
         paramInt = paramAttributeSet.getColor(a.m.MMPinProgressBtn_circleColor, m);
         k = paramAttributeSet.getColor(a.m.MMPinProgressBtn_progressColor, k);
         this.style = paramAttributeSet.getInteger(a.m.MMPinProgressBtn_style, 0);
-        this.YbD = paramAttributeSet.getDimensionPixelSize(a.m.MMPinProgressBtn_innerSize, localResources.getDimensionPixelSize(a.e.pin_progress_inner_size));
+        this.afTw = paramAttributeSet.getDimensionPixelSize(a.m.MMPinProgressBtn_innerSize, localResources.getDimensionPixelSize(a.e.pin_progress_inner_size));
         i = k;
         j = paramInt;
         if (paramAttributeSet != null)
@@ -136,14 +136,14 @@ public class MMPinProgressBtn
           j = paramInt;
           i = k;
         }
-        this.aoq = new Paint();
-        this.aoq.setColor(j);
-        this.aoq.setStyle(Paint.Style.STROKE);
-        this.aoq.setStrokeWidth(4.0F);
-        this.aoq.setAntiAlias(true);
-        this.JMJ = new Paint();
-        this.JMJ.setColor(i);
-        this.JMJ.setAntiAlias(true);
+        this.cda = new Paint();
+        this.cda.setColor(j);
+        this.cda.setStyle(Paint.Style.STROKE);
+        this.cda.setStrokeWidth(4.0F);
+        this.cda.setAntiAlias(true);
+        this.afTv = new Paint();
+        this.afTv.setColor(i);
+        this.afTv.setAntiAlias(true);
         setClickable(false);
         AppMethodBeat.o(143386);
         return;
@@ -160,19 +160,19 @@ public class MMPinProgressBtn
   
   public int getMax()
   {
-    return this.YbC;
+    return this.afTu;
   }
   
   public int getProgress()
   {
-    return this.IB;
+    return this.boE;
   }
   
-  public final void hZF()
+  public final void jEN()
   {
     AppMethodBeat.i(143389);
-    removeCallbacks(this.YbF);
-    post(this.YbF);
+    removeCallbacks(this.afTy);
+    post(this.afTy);
     AppMethodBeat.o(143389);
   }
   
@@ -180,9 +180,9 @@ public class MMPinProgressBtn
   {
     AppMethodBeat.i(143391);
     super.onDraw(paramCanvas);
-    this.ajW.set(2.0F, 2.0F, this.YbD - 2.0F, this.YbD - 2.0F);
-    this.ajW.offset((getWidth() - this.YbD) / 2, (getHeight() - this.YbD) / 2);
-    paramCanvas.drawArc(this.ajW, 0.0F, 360.0F, true, this.aoq);
+    this.bYz.set(2.0F, 2.0F, this.afTw - 2.0F, this.afTw - 2.0F);
+    this.bYz.offset((getWidth() - this.afTw) / 2, (getHeight() - this.afTw) / 2);
+    paramCanvas.drawArc(this.bYz, 0.0F, 360.0F, true, this.cda);
     switch (this.style)
     {
     }
@@ -190,21 +190,21 @@ public class MMPinProgressBtn
     {
       AppMethodBeat.o(143391);
       return;
-      this.ajW.set(8.0F, 8.0F, this.YbD - 8.0F, this.YbD - 8.0F);
-      this.ajW.offset((getWidth() - this.YbD) / 2, (getHeight() - this.YbD) / 2);
-      paramCanvas.drawArc(this.ajW, -90.0F, 360.0F * (this.IB * 1.0F / this.YbC), true, this.JMJ);
+      this.bYz.set(8.0F, 8.0F, this.afTw - 8.0F, this.afTw - 8.0F);
+      this.bYz.offset((getWidth() - this.afTw) / 2, (getHeight() - this.afTw) / 2);
+      paramCanvas.drawArc(this.bYz, -90.0F, 360.0F * (this.boE * 1.0F / this.afTu), true, this.afTv);
       AppMethodBeat.o(143391);
       return;
-      this.ajW.set(2.0F, 2.0F, this.YbD - 2.0F, this.YbD - 2.0F);
-      this.ajW.offset((getWidth() - this.YbD) / 2, (getHeight() - this.YbD) / 2);
-      paramCanvas.drawArc(this.ajW, 270.0F, this.IB * 1.0F / this.YbC * 360.0F - 360.0F, true, this.JMJ);
+      this.bYz.set(2.0F, 2.0F, this.afTw - 2.0F, this.afTw - 2.0F);
+      this.bYz.offset((getWidth() - this.afTw) / 2, (getHeight() - this.afTw) / 2);
+      paramCanvas.drawArc(this.bYz, 270.0F, this.boE * 1.0F / this.afTu * 360.0F - 360.0F, true, this.afTv);
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(143390);
-    setMeasuredDimension(resolveSize(this.YbD, paramInt1), resolveSize(this.YbD, paramInt2));
+    setMeasuredDimension(resolveSize(this.afTw, paramInt1), resolveSize(this.afTw, paramInt2));
     AppMethodBeat.o(143390);
   }
   
@@ -219,8 +219,8 @@ public class MMPinProgressBtn
     }
     paramParcelable = (SavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
-    this.YbC = SavedState.a(paramParcelable);
-    this.IB = SavedState.b(paramParcelable);
+    this.afTu = SavedState.a(paramParcelable);
+    this.boE = SavedState.b(paramParcelable);
     AppMethodBeat.o(143393);
   }
   
@@ -231,8 +231,8 @@ public class MMPinProgressBtn
     if (isSaveEnabled())
     {
       localObject = new SavedState((Parcelable)localObject);
-      SavedState.a((SavedState)localObject, this.YbC);
-      SavedState.b((SavedState)localObject, this.IB);
+      SavedState.a((SavedState)localObject, this.afTu);
+      SavedState.b((SavedState)localObject, this.boE);
       AppMethodBeat.o(143392);
       return localObject;
     }
@@ -243,7 +243,7 @@ public class MMPinProgressBtn
   public void setMax(int paramInt)
   {
     AppMethodBeat.i(143387);
-    this.YbC = Math.max(0, paramInt);
+    this.afTu = Math.max(0, paramInt);
     invalidate();
     AppMethodBeat.o(143387);
   }
@@ -251,8 +251,8 @@ public class MMPinProgressBtn
   public void setProgress(int paramInt)
   {
     AppMethodBeat.i(143388);
-    this.IB = Math.max(0, paramInt);
-    this.IB = Math.min(paramInt, this.YbC);
+    this.boE = Math.max(0, paramInt);
+    this.boE = Math.min(paramInt, this.afTu);
     invalidate();
     AppMethodBeat.o(143388);
   }
@@ -261,8 +261,8 @@ public class MMPinProgressBtn
     extends View.BaseSavedState
   {
     public static final Parcelable.Creator<SavedState> CREATOR;
-    private int IB;
-    private int YbC;
+    private int afTu;
+    private int boE;
     
     static
     {
@@ -275,8 +275,8 @@ public class MMPinProgressBtn
     {
       super();
       AppMethodBeat.i(143381);
-      this.IB = paramParcel.readInt();
-      this.YbC = paramParcel.readInt();
+      this.boE = paramParcel.readInt();
+      this.afTu = paramParcel.readInt();
       AppMethodBeat.o(143381);
     }
     
@@ -289,15 +289,15 @@ public class MMPinProgressBtn
     {
       AppMethodBeat.i(143382);
       super.writeToParcel(paramParcel, paramInt);
-      paramParcel.writeInt(this.IB);
-      paramParcel.writeInt(this.YbC);
+      paramParcel.writeInt(this.boE);
+      paramParcel.writeInt(this.afTu);
       AppMethodBeat.o(143382);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.widget.MMPinProgressBtn
  * JD-Core Version:    0.7.0.1
  */

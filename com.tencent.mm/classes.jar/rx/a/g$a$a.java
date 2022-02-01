@@ -6,7 +6,7 @@ import java.util.Set;
 
 final class g$a$a
 {
-  static final Set<Class<?>> abNI;
+  static final Set<Class<?>> akaB;
   
   static
   {
@@ -20,7 +20,7 @@ final class g$a$a
     localHashSet.add(Long.class);
     localHashSet.add(Float.class);
     localHashSet.add(Double.class);
-    abNI = localHashSet;
+    akaB = localHashSet;
     AppMethodBeat.o(90052);
   }
 }

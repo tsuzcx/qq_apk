@@ -29,8 +29,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.a.a;
 import androidx.appcompat.a.f;
-import androidx.c.a.c;
 import androidx.core.content.a;
+import androidx.d.a.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -41,45 +41,45 @@ final class x
   implements View.OnClickListener
 {
   private boolean mClosed;
-  private final SearchableInfo uP;
-  private final WeakHashMap<String, Drawable.ConstantState> uU;
-  private final SearchView ve;
-  private final SearchManager vo;
-  private final Context vp;
-  private final int vq;
-  int vr;
-  private ColorStateList vs;
-  private int vt;
-  private int vu;
-  private int vv;
-  private int vw;
-  private int vx;
-  private int vy;
+  private final SearchableInfo vL;
+  private final WeakHashMap<String, Drawable.ConstantState> vQ;
+  private final SearchView wa;
+  private final SearchManager wj;
+  private final Context wk;
+  private final int wl;
+  int wm;
+  private ColorStateList wn;
+  private int wo;
+  private int wp;
+  private int wq;
+  private int wr;
+  private int ws;
+  private int wt;
   
   public x(Context paramContext, SearchView paramSearchView, SearchableInfo paramSearchableInfo, WeakHashMap<String, Drawable.ConstantState> paramWeakHashMap)
   {
     super(paramContext, paramSearchView.getSuggestionRowLayout());
-    AppMethodBeat.i(241883);
+    AppMethodBeat.i(199791);
     this.mClosed = false;
-    this.vr = 1;
-    this.vt = -1;
-    this.vu = -1;
-    this.vv = -1;
-    this.vw = -1;
-    this.vx = -1;
-    this.vy = -1;
-    this.vo = ((SearchManager)this.mContext.getSystemService("search"));
-    this.ve = paramSearchView;
-    this.uP = paramSearchableInfo;
-    this.vq = paramSearchView.getSuggestionCommitIconResId();
-    this.vp = paramContext;
-    this.uU = paramWeakHashMap;
-    AppMethodBeat.o(241883);
+    this.wm = 1;
+    this.wo = -1;
+    this.wp = -1;
+    this.wq = -1;
+    this.wr = -1;
+    this.ws = -1;
+    this.wt = -1;
+    this.wj = ((SearchManager)this.mContext.getSystemService("search"));
+    this.wa = paramSearchView;
+    this.vL = paramSearchableInfo;
+    this.wl = paramSearchView.getSuggestionCommitIconResId();
+    this.wk = paramContext;
+    this.vQ = paramWeakHashMap;
+    AppMethodBeat.o(199791);
   }
   
   private Drawable a(ComponentName paramComponentName)
   {
-    AppMethodBeat.i(241905);
+    AppMethodBeat.i(199883);
     Object localObject = this.mContext.getPackageManager();
     ActivityInfo localActivityInfo;
     int i;
@@ -89,92 +89,92 @@ final class x
       i = localActivityInfo.getIconResource();
       if (i == 0)
       {
-        AppMethodBeat.o(241905);
+        AppMethodBeat.o(199883);
         return null;
       }
     }
     catch (PackageManager.NameNotFoundException paramComponentName)
     {
-      AppMethodBeat.o(241905);
+      AppMethodBeat.o(199883);
       return null;
     }
     localObject = ((PackageManager)localObject).getDrawable(paramComponentName.getPackageName(), i, localActivityInfo.applicationInfo);
     if (localObject == null)
     {
       new StringBuilder("Invalid icon resource ").append(i).append(" for ").append(paramComponentName.flattenToShortString());
-      AppMethodBeat.o(241905);
+      AppMethodBeat.o(199883);
       return null;
     }
-    AppMethodBeat.o(241905);
+    AppMethodBeat.o(199883);
     return localObject;
   }
   
   private static String a(Cursor paramCursor, int paramInt)
   {
-    AppMethodBeat.i(241908);
+    AppMethodBeat.i(199934);
     if (paramInt == -1)
     {
-      AppMethodBeat.o(241908);
+      AppMethodBeat.o(199934);
       return null;
     }
     try
     {
       paramCursor = paramCursor.getString(paramInt);
-      AppMethodBeat.o(241908);
+      AppMethodBeat.o(199934);
       return paramCursor;
     }
     catch (Exception paramCursor)
     {
-      AppMethodBeat.o(241908);
+      AppMethodBeat.o(199934);
     }
     return null;
   }
   
   public static String a(Cursor paramCursor, String paramString)
   {
-    AppMethodBeat.i(241907);
+    AppMethodBeat.i(199891);
     paramCursor = a(paramCursor, paramCursor.getColumnIndex(paramString));
-    AppMethodBeat.o(241907);
+    AppMethodBeat.o(199891);
     return paramCursor;
   }
   
   private static void a(ImageView paramImageView, Drawable paramDrawable, int paramInt)
   {
-    AppMethodBeat.i(241896);
+    AppMethodBeat.i(199819);
     paramImageView.setImageDrawable(paramDrawable);
     if (paramDrawable == null)
     {
       paramImageView.setVisibility(paramInt);
-      AppMethodBeat.o(241896);
+      AppMethodBeat.o(199819);
       return;
     }
     paramImageView.setVisibility(0);
     paramDrawable.setVisible(false, false);
     paramDrawable.setVisible(true, false);
-    AppMethodBeat.o(241896);
+    AppMethodBeat.o(199819);
   }
   
   private static void a(TextView paramTextView, CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(241895);
+    AppMethodBeat.i(199808);
     paramTextView.setText(paramCharSequence);
     if (TextUtils.isEmpty(paramCharSequence))
     {
       paramTextView.setVisibility(8);
-      AppMethodBeat.o(241895);
+      AppMethodBeat.o(199808);
       return;
     }
     paramTextView.setVisibility(0);
-    AppMethodBeat.o(241895);
+    AppMethodBeat.o(199808);
   }
   
   private void a(String paramString, Drawable paramDrawable)
   {
-    AppMethodBeat.i(241904);
+    AppMethodBeat.i(199871);
     if (paramDrawable != null) {
-      this.uU.put(paramString, paramDrawable.getConstantState());
+      this.vQ.put(paramString, paramDrawable.getConstantState());
     }
-    AppMethodBeat.o(241904);
+    AppMethodBeat.o(199871);
   }
   
   /* Error */
@@ -229,7 +229,7 @@ final class x
     //   90: aconst_null
     //   91: areturn
     //   92: aload_0
-    //   93: getfield 93	androidx/appcompat/widget/x:vp	Landroid/content/Context;
+    //   93: getfield 93	androidx/appcompat/widget/x:wk	Landroid/content/Context;
     //   96: invokevirtual 265	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   99: aload_1
     //   100: invokevirtual 271	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
@@ -317,24 +317,24 @@ final class x
   
   private static void b(Cursor paramCursor)
   {
-    AppMethodBeat.i(241890);
+    AppMethodBeat.i(199801);
     if (paramCursor != null) {}
     for (paramCursor = paramCursor.getExtras(); (paramCursor != null) && (paramCursor.getBoolean("in_progress")); paramCursor = null)
     {
-      AppMethodBeat.o(241890);
+      AppMethodBeat.o(199801);
       return;
     }
-    AppMethodBeat.o(241890);
+    AppMethodBeat.o(199801);
   }
   
   private Drawable c(Uri paramUri)
   {
-    AppMethodBeat.i(241911);
+    AppMethodBeat.i(199949);
     String str = paramUri.getAuthority();
     if (TextUtils.isEmpty(str))
     {
       paramUri = new FileNotFoundException("No authority: ".concat(String.valueOf(paramUri)));
-      AppMethodBeat.o(241911);
+      AppMethodBeat.o(199949);
       throw paramUri;
     }
     Resources localResources;
@@ -346,14 +346,14 @@ final class x
       if (localList == null)
       {
         paramUri = new FileNotFoundException("No path: ".concat(String.valueOf(paramUri)));
-        AppMethodBeat.o(241911);
+        AppMethodBeat.o(199949);
         throw paramUri;
       }
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
     {
       paramUri = new FileNotFoundException("No package found for authority: ".concat(String.valueOf(paramUri)));
-      AppMethodBeat.o(241911);
+      AppMethodBeat.o(199949);
       throw paramUri;
     }
     int i = localList.size();
@@ -367,13 +367,13 @@ final class x
           break;
         }
         paramUri = new FileNotFoundException("No resource found for: ".concat(String.valueOf(paramUri)));
-        AppMethodBeat.o(241911);
+        AppMethodBeat.o(199949);
         throw paramUri;
       }
       catch (NumberFormatException localNumberFormatException)
       {
         paramUri = new FileNotFoundException("Single path segment is not a resource ID: ".concat(String.valueOf(paramUri)));
-        AppMethodBeat.o(241911);
+        AppMethodBeat.o(199949);
         throw paramUri;
       }
       if (i == 2)
@@ -383,165 +383,165 @@ final class x
       else
       {
         paramUri = new FileNotFoundException("More than two path segments: ".concat(String.valueOf(paramUri)));
-        AppMethodBeat.o(241911);
+        AppMethodBeat.o(199949);
         throw paramUri;
       }
     }
     paramUri = localResources.getDrawable(i);
-    AppMethodBeat.o(241911);
+    AppMethodBeat.o(199949);
     return paramUri;
   }
   
-  private Drawable t(String paramString)
+  private Drawable u(String paramString)
   {
-    AppMethodBeat.i(241901);
+    AppMethodBeat.i(199833);
     if ((paramString == null) || (paramString.isEmpty()) || ("0".equals(paramString)))
     {
-      AppMethodBeat.o(241901);
+      AppMethodBeat.o(199833);
       return null;
     }
     try
     {
       int i = Integer.parseInt(paramString);
-      String str = "android.resource://" + this.vp.getPackageName() + "/" + i;
-      Drawable localDrawable2 = u(str);
+      String str = "android.resource://" + this.wk.getPackageName() + "/" + i;
+      Drawable localDrawable2 = x(str);
       if (localDrawable2 != null)
       {
-        AppMethodBeat.o(241901);
+        AppMethodBeat.o(199833);
         return localDrawable2;
       }
-      localDrawable2 = a.m(this.vp, i);
+      localDrawable2 = a.m(this.wk, i);
       a(str, localDrawable2);
-      AppMethodBeat.o(241901);
+      AppMethodBeat.o(199833);
       return localDrawable2;
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      Drawable localDrawable1 = u(paramString);
+      Drawable localDrawable1 = x(paramString);
       if (localDrawable1 != null)
       {
-        AppMethodBeat.o(241901);
+        AppMethodBeat.o(199833);
         return localDrawable1;
       }
       localDrawable1 = b(Uri.parse(paramString));
       a(paramString, localDrawable1);
-      AppMethodBeat.o(241901);
+      AppMethodBeat.o(199833);
       return localDrawable1;
     }
     catch (Resources.NotFoundException paramString)
     {
-      AppMethodBeat.o(241901);
+      AppMethodBeat.o(199833);
     }
     return null;
   }
   
-  private Drawable u(String paramString)
+  private Drawable x(String paramString)
   {
-    AppMethodBeat.i(241903);
-    paramString = (Drawable.ConstantState)this.uU.get(paramString);
+    AppMethodBeat.i(199860);
+    paramString = (Drawable.ConstantState)this.vQ.get(paramString);
     if (paramString == null)
     {
-      AppMethodBeat.o(241903);
+      AppMethodBeat.o(199860);
       return null;
     }
     paramString = paramString.newDrawable();
-    AppMethodBeat.o(241903);
+    AppMethodBeat.o(199860);
     return paramString;
   }
   
   public final void a(View paramView, Cursor paramCursor)
   {
     Object localObject2 = null;
-    AppMethodBeat.i(241893);
+    AppMethodBeat.i(200019);
     a locala = (a)paramView.getTag();
-    if (this.vy != -1) {}
-    for (int i = paramCursor.getInt(this.vy);; i = 0)
+    if (this.wt != -1) {}
+    for (int i = paramCursor.getInt(this.wt);; i = 0)
     {
-      if (locala.vz != null)
+      if (locala.wv != null)
       {
-        paramView = a(paramCursor, this.vt);
-        a(locala.vz, paramView);
+        paramView = a(paramCursor, this.wo);
+        a(locala.wv, paramView);
       }
       Object localObject1;
-      if (locala.vA != null)
+      if (locala.ww != null)
       {
-        localObject1 = a(paramCursor, this.vv);
+        localObject1 = a(paramCursor, this.wq);
         if (localObject1 != null)
         {
-          if (this.vs == null)
+          if (this.wn == null)
           {
             paramView = new TypedValue();
             this.mContext.getTheme().resolveAttribute(a.a.textColorSearchUrl, paramView, true);
-            this.vs = this.mContext.getResources().getColorStateList(paramView.resourceId);
+            this.wn = this.mContext.getResources().getColorStateList(paramView.resourceId);
           }
           paramView = new SpannableString((CharSequence)localObject1);
-          paramView.setSpan(new TextAppearanceSpan(null, 0, 0, this.vs, null), 0, ((CharSequence)localObject1).length(), 33);
+          paramView.setSpan(new TextAppearanceSpan(null, 0, 0, this.wn, null), 0, ((CharSequence)localObject1).length(), 33);
           if (!TextUtils.isEmpty(paramView)) {
             break label357;
           }
-          if (locala.vz != null)
+          if (locala.wv != null)
           {
-            locala.vz.setSingleLine(false);
-            locala.vz.setMaxLines(2);
+            locala.wv.setSingleLine(false);
+            locala.wv.setMaxLines(2);
           }
           label207:
-          a(locala.vA, paramView);
+          a(locala.ww, paramView);
         }
       }
       else
       {
-        if (locala.vB != null)
+        if (locala.wx != null)
         {
-          ImageView localImageView = locala.vB;
-          if (this.vw != -1) {
+          ImageView localImageView = locala.wx;
+          if (this.wr != -1) {
             break label386;
           }
           paramView = null;
           label241:
           a(localImageView, paramView, 4);
         }
-        if (locala.vC != null)
+        if (locala.wy != null)
         {
-          localObject1 = locala.vC;
-          if (this.vx != -1) {
+          localObject1 = locala.wy;
+          if (this.ws != -1) {
             break label531;
           }
         }
       }
       label386:
       label531:
-      for (paramView = localObject2;; paramView = t(paramCursor.getString(this.vx)))
+      for (paramView = localObject2;; paramView = u(paramCursor.getString(this.ws)))
       {
         a((ImageView)localObject1, paramView, 8);
-        if ((this.vr != 2) && ((this.vr != 1) || ((i & 0x1) == 0))) {
+        if ((this.wm != 2) && ((this.wm != 1) || ((i & 0x1) == 0))) {
           break label549;
         }
-        locala.vD.setVisibility(0);
-        locala.vD.setTag(locala.vz.getText());
-        locala.vD.setOnClickListener(this);
-        AppMethodBeat.o(241893);
+        locala.wz.setVisibility(0);
+        locala.wz.setTag(locala.wv.getText());
+        locala.wz.setOnClickListener(this);
+        AppMethodBeat.o(200019);
         return;
-        paramView = a(paramCursor, this.vu);
+        paramView = a(paramCursor, this.wp);
         break;
         label357:
-        if (locala.vz == null) {
+        if (locala.wv == null) {
           break label207;
         }
-        locala.vz.setSingleLine(true);
-        locala.vz.setMaxLines(1);
+        locala.wv.setSingleLine(true);
+        locala.wv.setMaxLines(1);
         break label207;
-        localObject1 = t(paramCursor.getString(this.vw));
+        localObject1 = u(paramCursor.getString(this.wr));
         paramView = (View)localObject1;
         if (localObject1 != null) {
           break label241;
         }
-        paramView = this.uP.getSearchActivity();
+        paramView = this.vL.getSearchActivity();
         String str = paramView.flattenToShortString();
-        if (this.uU.containsKey(str))
+        if (this.vQ.containsKey(str))
         {
-          paramView = (Drawable.ConstantState)this.uU.get(str);
+          paramView = (Drawable.ConstantState)this.vQ.get(str);
           if (paramView == null) {}
-          for (localObject1 = null;; localObject1 = paramView.newDrawable(this.vp.getResources()))
+          for (localObject1 = null;; localObject1 = paramView.newDrawable(this.wk.getResources()))
           {
             paramView = (View)localObject1;
             if (localObject1 != null) {
@@ -555,26 +555,26 @@ final class x
         if (localObject1 == null) {}
         for (paramView = null;; paramView = ((Drawable)localObject1).getConstantState())
         {
-          this.uU.put(str, paramView);
+          this.vQ.put(str, paramView);
           break;
         }
       }
       label549:
-      locala.vD.setVisibility(8);
-      AppMethodBeat.o(241893);
+      locala.wz.setVisibility(8);
+      AppMethodBeat.o(200019);
       return;
     }
   }
   
   public final void c(Cursor paramCursor)
   {
-    AppMethodBeat.i(241891);
+    AppMethodBeat.i(199993);
     if (this.mClosed)
     {
       if (paramCursor != null) {
         paramCursor.close();
       }
-      AppMethodBeat.o(241891);
+      AppMethodBeat.o(199993);
       return;
     }
     try
@@ -582,77 +582,77 @@ final class x
       super.c(paramCursor);
       if (paramCursor != null)
       {
-        this.vt = paramCursor.getColumnIndex("suggest_text_1");
-        this.vu = paramCursor.getColumnIndex("suggest_text_2");
-        this.vv = paramCursor.getColumnIndex("suggest_text_2_url");
-        this.vw = paramCursor.getColumnIndex("suggest_icon_1");
-        this.vx = paramCursor.getColumnIndex("suggest_icon_2");
-        this.vy = paramCursor.getColumnIndex("suggest_flags");
+        this.wo = paramCursor.getColumnIndex("suggest_text_1");
+        this.wp = paramCursor.getColumnIndex("suggest_text_2");
+        this.wq = paramCursor.getColumnIndex("suggest_text_2_url");
+        this.wr = paramCursor.getColumnIndex("suggest_icon_1");
+        this.ws = paramCursor.getColumnIndex("suggest_icon_2");
+        this.wt = paramCursor.getColumnIndex("suggest_flags");
       }
-      AppMethodBeat.o(241891);
+      AppMethodBeat.o(199993);
       return;
     }
     catch (Exception paramCursor)
     {
-      AppMethodBeat.o(241891);
+      AppMethodBeat.o(199993);
     }
   }
   
   public final CharSequence d(Cursor paramCursor)
   {
-    AppMethodBeat.i(241897);
+    AppMethodBeat.i(200036);
     if (paramCursor == null)
     {
-      AppMethodBeat.o(241897);
+      AppMethodBeat.o(200036);
       return null;
     }
     String str = a(paramCursor, "suggest_intent_query");
     if (str != null)
     {
-      AppMethodBeat.o(241897);
+      AppMethodBeat.o(200036);
       return str;
     }
-    if (this.uP.shouldRewriteQueryFromData())
+    if (this.vL.shouldRewriteQueryFromData())
     {
       str = a(paramCursor, "suggest_intent_data");
       if (str != null)
       {
-        AppMethodBeat.o(241897);
+        AppMethodBeat.o(200036);
         return str;
       }
     }
-    if (this.uP.shouldRewriteQueryFromText())
+    if (this.vL.shouldRewriteQueryFromText())
     {
       paramCursor = a(paramCursor, "suggest_text_1");
       if (paramCursor != null)
       {
-        AppMethodBeat.o(241897);
+        AppMethodBeat.o(200036);
         return paramCursor;
       }
     }
-    AppMethodBeat.o(241897);
+    AppMethodBeat.o(200036);
     return null;
   }
   
   public final Cursor g(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(241887);
+    AppMethodBeat.i(199969);
     if (paramCharSequence == null) {}
-    for (paramCharSequence = ""; (this.ve.getVisibility() != 0) || (this.ve.getWindowVisibility() != 0); paramCharSequence = paramCharSequence.toString())
+    for (paramCharSequence = ""; (this.wa.getVisibility() != 0) || (this.wa.getWindowVisibility() != 0); paramCharSequence = paramCharSequence.toString())
     {
-      AppMethodBeat.o(241887);
+      AppMethodBeat.o(199969);
       return null;
     }
     try
     {
-      Object localObject1 = this.uP;
+      Object localObject1 = this.vL;
       if (localObject1 == null) {
         paramCharSequence = null;
       }
       while (paramCharSequence != null)
       {
         paramCharSequence.getCount();
-        AppMethodBeat.o(241887);
+        AppMethodBeat.o(199969);
         return paramCharSequence;
         Object localObject2 = ((SearchableInfo)localObject1).getSuggestAuthority();
         if (localObject2 == null)
@@ -687,46 +687,46 @@ final class x
     }
     catch (RuntimeException paramCharSequence)
     {
-      AppMethodBeat.o(241887);
+      AppMethodBeat.o(199969);
     }
   }
   
   public final View getDropDownView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(241900);
+    AppMethodBeat.i(200055);
     try
     {
       paramView = super.getDropDownView(paramInt, paramView, paramViewGroup);
-      AppMethodBeat.o(241900);
+      AppMethodBeat.o(200055);
       return paramView;
     }
     catch (RuntimeException paramView)
     {
-      paramViewGroup = a(this.mContext, this.fB, paramViewGroup);
+      paramViewGroup = a(this.mContext, this.gw, paramViewGroup);
       if (paramViewGroup != null) {
-        ((a)paramViewGroup.getTag()).vz.setText(paramView.toString());
+        ((a)paramViewGroup.getTag()).wv.setText(paramView.toString());
       }
-      AppMethodBeat.o(241900);
+      AppMethodBeat.o(200055);
     }
     return paramViewGroup;
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(241898);
+    AppMethodBeat.i(200045);
     try
     {
       paramView = super.getView(paramInt, paramView, paramViewGroup);
-      AppMethodBeat.o(241898);
+      AppMethodBeat.o(200045);
       return paramView;
     }
     catch (RuntimeException paramView)
     {
-      paramViewGroup = newView(this.mContext, this.fB, paramViewGroup);
+      paramViewGroup = newView(this.mContext, this.gw, paramViewGroup);
       if (paramViewGroup != null) {
-        ((a)paramViewGroup.getTag()).vz.setText(paramView.toString());
+        ((a)paramViewGroup.getTag()).wv.setText(paramView.toString());
       }
-      AppMethodBeat.o(241898);
+      AppMethodBeat.o(200045);
     }
     return paramViewGroup;
   }
@@ -738,63 +738,63 @@ final class x
   
   public final View newView(Context paramContext, Cursor paramCursor, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(241892);
+    AppMethodBeat.i(200002);
     paramContext = super.newView(paramContext, paramCursor, paramViewGroup);
     paramContext.setTag(new a(paramContext));
-    ((ImageView)paramContext.findViewById(a.f.edit_query)).setImageResource(this.vq);
-    AppMethodBeat.o(241892);
+    ((ImageView)paramContext.findViewById(a.f.edit_query)).setImageResource(this.wl);
+    AppMethodBeat.o(200002);
     return paramContext;
   }
   
   public final void notifyDataSetChanged()
   {
-    AppMethodBeat.i(241888);
+    AppMethodBeat.i(199977);
     super.notifyDataSetChanged();
-    b(hK());
-    AppMethodBeat.o(241888);
+    b(Fv());
+    AppMethodBeat.o(199977);
   }
   
   public final void notifyDataSetInvalidated()
   {
-    AppMethodBeat.i(241889);
+    AppMethodBeat.i(199985);
     super.notifyDataSetInvalidated();
-    b(hK());
-    AppMethodBeat.o(241889);
+    b(Fv());
+    AppMethodBeat.o(199985);
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(241894);
+    AppMethodBeat.i(200027);
     paramView = paramView.getTag();
     if ((paramView instanceof CharSequence)) {
-      this.ve.setQuery((CharSequence)paramView);
+      this.wa.setQuery((CharSequence)paramView);
     }
-    AppMethodBeat.o(241894);
+    AppMethodBeat.o(200027);
   }
   
   static final class a
   {
-    public final TextView vA;
-    public final ImageView vB;
-    public final ImageView vC;
-    public final ImageView vD;
-    public final TextView vz;
+    public final TextView wv;
+    public final TextView ww;
+    public final ImageView wx;
+    public final ImageView wy;
+    public final ImageView wz;
     
     public a(View paramView)
     {
-      AppMethodBeat.i(241875);
-      this.vz = ((TextView)paramView.findViewById(16908308));
-      this.vA = ((TextView)paramView.findViewById(16908309));
-      this.vB = ((ImageView)paramView.findViewById(16908295));
-      this.vC = ((ImageView)paramView.findViewById(16908296));
-      this.vD = ((ImageView)paramView.findViewById(a.f.edit_query));
-      AppMethodBeat.o(241875);
+      AppMethodBeat.i(199344);
+      this.wv = ((TextView)paramView.findViewById(16908308));
+      this.ww = ((TextView)paramView.findViewById(16908309));
+      this.wx = ((ImageView)paramView.findViewById(16908295));
+      this.wy = ((ImageView)paramView.findViewById(16908296));
+      this.wz = ((ImageView)paramView.findViewById(a.f.edit_query));
+      AppMethodBeat.o(199344);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     androidx.appcompat.widget.x
  * JD-Core Version:    0.7.0.1
  */

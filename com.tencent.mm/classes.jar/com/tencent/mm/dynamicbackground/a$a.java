@@ -2,8 +2,8 @@ package com.tencent.mm.dynamicbackground;
 
 public final class a$a
 {
-  public static final int dynamic_bg_end_color = 2131100311;
-  public static final int dynamic_bg_start_color = 2131100312;
+  public static final int dynamic_bg_end_color = 2131100419;
+  public static final int dynamic_bg_start_color = 2131100420;
 }
 
 

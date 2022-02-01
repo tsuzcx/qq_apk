@@ -1,107 +1,110 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
-import java.util.LinkedList;
 
 public final class dko
-  extends dyl
+  extends com.tencent.mm.bx.a
 {
-  public String GIh;
+  public String YPz;
+  public int Zhu;
+  public String aaQL;
+  public String aaQM;
+  public String type;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91608);
+    AppMethodBeat.i(116340);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.GIh == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: Transid");
-        AppMethodBeat.o(91608);
-        throw paramVarArgs;
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.aaQL != null) {
+        paramVarArgs.g(1, this.aaQL);
       }
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      if (this.YPz != null) {
+        paramVarArgs.g(2, this.YPz);
       }
-      if (this.GIh != null) {
-        paramVarArgs.f(2, this.GIh);
+      if (this.type != null) {
+        paramVarArgs.g(3, this.type);
       }
-      AppMethodBeat.o(91608);
+      paramVarArgs.bS(4, this.Zhu);
+      if (this.aaQM != null) {
+        paramVarArgs.g(5, this.aaQM);
+      }
+      AppMethodBeat.o(116340);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label396;
+      if (this.aaQL == null) {
+        break label434;
       }
     }
-    label396:
-    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label434:
+    for (int i = i.a.a.b.b.a.h(1, this.aaQL) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.GIh != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.GIh);
+      paramInt = i;
+      if (this.YPz != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.YPz);
       }
-      AppMethodBeat.o(91608);
-      return i;
+      i = paramInt;
+      if (this.type != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.type);
+      }
+      i += i.a.a.b.b.a.cJ(4, this.Zhu);
+      paramInt = i;
+      if (this.aaQM != null) {
+        paramInt = i + i.a.a.b.b.a.h(5, this.aaQM);
+      }
+      AppMethodBeat.o(116340);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.GIh == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: Transid");
-          AppMethodBeat.o(91608);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(91608);
+        AppMethodBeat.o(116340);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         dko localdko = (dko)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(91608);
+          AppMethodBeat.o(116340);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject = (byte[])paramVarArgs.get(paramInt);
-            jg localjg = new jg();
-            if ((localObject != null) && (localObject.length > 0)) {
-              localjg.parseFrom((byte[])localObject);
-            }
-            localdko.BaseRequest = localjg;
-            paramInt += 1;
-          }
-          AppMethodBeat.o(91608);
+          localdko.aaQL = locala.ajGk.readString();
+          AppMethodBeat.o(116340);
+          return 0;
+        case 2: 
+          localdko.YPz = locala.ajGk.readString();
+          AppMethodBeat.o(116340);
+          return 0;
+        case 3: 
+          localdko.type = locala.ajGk.readString();
+          AppMethodBeat.o(116340);
+          return 0;
+        case 4: 
+          localdko.Zhu = locala.ajGk.aar();
+          AppMethodBeat.o(116340);
           return 0;
         }
-        localdko.GIh = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(91608);
+        localdko.aaQM = locala.ajGk.readString();
+        AppMethodBeat.o(116340);
         return 0;
       }
-      AppMethodBeat.o(91608);
+      AppMethodBeat.o(116340);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dko
  * JD-Core Version:    0.7.0.1
  */

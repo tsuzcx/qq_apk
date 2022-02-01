@@ -4,109 +4,260 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.a.a.c.a;
-import com.tencent.mm.ay.a.c.h;
-import com.tencent.mm.ay.q;
-import com.tencent.mm.f.b.a.ii;
+import com.tencent.mm.autogen.mmdata.rpt.kp;
 import com.tencent.mm.model.z;
+import com.tencent.mm.modelimage.loader.a.c.a;
+import com.tencent.mm.modelimage.loader.b.h;
+import com.tencent.mm.modelimage.r;
 import com.tencent.mm.plugin.finder.api.d.a;
-import com.tencent.mm.plugin.finder.api.i;
-import com.tencent.mm.plugin.finder.utils.aj;
 import com.tencent.mm.plugin.finder.utils.av;
+import com.tencent.mm.plugin.finder.utils.bm;
 import com.tencent.mm.plugin.mv.b.b;
 import com.tencent.mm.plugin.mv.b.d;
 import com.tencent.mm.plugin.mv.b.e;
 import com.tencent.mm.plugin.mv.b.f;
 import com.tencent.mm.plugin.mv.b.h;
+import com.tencent.mm.plugin.mv.ui.free.MusicMvFreeMakerPreviewUI;
+import com.tencent.mm.plugin.mv.ui.uic.q;
+import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.pluginsdk.ui.tools.t;
 import com.tencent.mm.protocal.protobuf.FinderObject;
 import com.tencent.mm.protocal.protobuf.FinderObjectDesc;
-import com.tencent.mm.protocal.protobuf.bdp;
-import com.tencent.mm.protocal.protobuf.bds;
-import com.tencent.mm.protocal.protobuf.dbo;
+import com.tencent.mm.protocal.protobuf.bol;
+import com.tencent.mm.protocal.protobuf.boo;
+import com.tencent.mm.protocal.protobuf.dtf;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MD5Util;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.q.f;
-import com.tencent.mm.ui.base.q.g;
+import com.tencent.mm.ui.aw;
 import com.tencent.mm.ui.component.UIComponent;
-import com.tencent.mm.ui.component.g;
-import com.tencent.mm.ui.component.g.a;
-import com.tencent.mm.ui.w.b;
+import com.tencent.mm.ui.component.k;
+import com.tencent.mm.ui.component.k.b;
 import com.tencent.mm.ui.widget.RoundCornerRelativeLayout;
-import com.tencent.mm.ui.widget.a.e;
-import java.util.HashMap;
+import com.tencent.mm.ui.widget.a.f;
+import com.tencent.mm.ui.y.b;
+import com.tencent.mm.vfs.y;
 import java.util.Set;
-import kotlin.a.ak;
-import kotlin.g.b.p;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.a.ar;
+import kotlin.ah;
+import kotlin.g.b.u;
 
 @com.tencent.mm.ui.base.a(33)
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/MusicMvPostUI;", "Lcom/tencent/mm/plugin/mv/ui/BaseMusicMvUI;", "()V", "captureOutputPath", "", "forceHideFloatBallWhenDestroy", "", "isFinderNew", "originCoverPath", "postData", "Lcom/tencent/mm/protocal/protobuf/MusicMvData;", "getPostData", "()Lcom/tencent/mm/protocal/protobuf/MusicMvData;", "setPostData", "(Lcom/tencent/mm/protocal/protobuf/MusicMvData;)V", "requestForRequest", "selfFinderContact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "getSelfFinderContact", "()Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "setSelfFinderContact", "(Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;)V", "chooseCover", "", "cropCover", "path", "doPost", "needCreateFinderContact", "enterFixPreviewUI", "enterFlexPreviewUI", "getLayoutId", "", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "processPostData", "processor", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "updateCoverImg", "srcImgPath", "updateFinderContact", "updateWhenNotFinderUser", "Companion", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/MusicMvPostUI;", "Lcom/tencent/mm/plugin/mv/ui/BaseMusicMvUI;", "()V", "captureOutputPath", "", "forceHideFloatBallWhenDestroy", "", "isFinderNew", "originCoverPath", "postData", "Lcom/tencent/mm/protocal/protobuf/MusicMvData;", "getPostData", "()Lcom/tencent/mm/protocal/protobuf/MusicMvData;", "setPostData", "(Lcom/tencent/mm/protocal/protobuf/MusicMvData;)V", "requestForRequest", "selfFinderContact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "getSelfFinderContact", "()Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "setSelfFinderContact", "(Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;)V", "chooseCover", "", "cropCover", "path", "doPost", "needCreateFinderContact", "enterFixPreviewUI", "enterFlexPreviewUI", "getLayoutId", "", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "processPostData", "processor", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "updateCoverImg", "srcImgPath", "updateFinderContact", "updateWhenNotFinderUser", "Companion", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class MusicMvPostUI
   extends BaseMusicMvUI
 {
-  public static final a GeZ;
-  dbo GeS;
-  private i GeT;
-  private String GeU;
-  private String GeV;
-  private boolean GeW;
-  private boolean GeX;
-  private boolean GeY;
-  private HashMap _$_findViewCache;
+  public static final MusicMvPostUI.a Mam;
+  dtf Man;
+  private com.tencent.mm.plugin.finder.api.m Mao;
+  private String Map;
+  private String Maq;
+  private boolean Mar;
+  private boolean Mas;
+  private boolean Mat;
   
   static
   {
-    AppMethodBeat.i(227595);
-    GeZ = new a((byte)0);
-    AppMethodBeat.o(227595);
+    AppMethodBeat.i(286527);
+    Mam = new MusicMvPostUI.a((byte)0);
+    AppMethodBeat.o(286527);
   }
   
-  private final void aSG(String paramString)
+  private static final void a(MusicMvPostUI paramMusicMvPostUI, View paramView)
   {
-    AppMethodBeat.i(227573);
+    AppMethodBeat.i(286489);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramMusicMvPostUI);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/MusicMvPostUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    kotlin.g.b.s.u(paramMusicMvPostUI, "this$0");
+    paramMusicMvPostUI.gqa();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/mv/ui/MusicMvPostUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(286489);
+  }
+  
+  private static final void a(MusicMvPostUI paramMusicMvPostUI, com.tencent.mm.ui.base.s params)
+  {
+    AppMethodBeat.i(286502);
+    kotlin.g.b.s.u(paramMusicMvPostUI, "this$0");
+    params.c(1, (CharSequence)paramMusicMvPostUI.getContext().getResources().getString(b.h.app_field_mmsight));
+    params.c(2, (CharSequence)paramMusicMvPostUI.getContext().getResources().getString(b.h.music_post_menu_album));
+    AppMethodBeat.o(286502);
+  }
+  
+  private static final void a(MusicMvPostUI paramMusicMvPostUI, f paramf, MenuItem paramMenuItem, int paramInt)
+  {
+    AppMethodBeat.i(286510);
+    kotlin.g.b.s.u(paramMusicMvPostUI, "this$0");
+    kotlin.g.b.s.u(paramf, "$bottomSheet");
+    switch (paramMenuItem.getItemId())
+    {
+    default: 
+      paramf.cyW();
+      AppMethodBeat.o(286510);
+      return;
+    case 1: 
+      paramf = new Intent((Context)paramMusicMvPostUI, MusicMvRouterUI.class);
+      paramf.putExtra("KEY_MUSIC_ROUTER", 2);
+      paramMenuItem = com.tencent.mm.plugin.music.model.c.LLZ;
+      com.tencent.mm.plugin.music.model.c.zK(true);
+      paramMusicMvPostUI.Mar = true;
+      paramMusicMvPostUI.startActivityForResult(paramf, 1000);
+      AppMethodBeat.o(286510);
+      return;
+    }
+    paramf = com.tencent.mm.plugin.music.model.c.LLZ;
+    com.tencent.mm.plugin.music.model.c.zK(true);
+    paramMusicMvPostUI.Mar = true;
+    t.a((Activity)paramMusicMvPostUI, 1001, 1, 27, 1, false, null);
+    AppMethodBeat.o(286510);
+  }
+  
+  private static final boolean a(MusicMvPostUI paramMusicMvPostUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(286472);
+    kotlin.g.b.s.u(paramMusicMvPostUI, "this$0");
+    paramMenuItem = (CharSequence)z.bAW();
+    if ((paramMenuItem == null) || (paramMenuItem.length() == 0)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramMusicMvPostUI.Mat = bool;
+      paramMenuItem = com.tencent.mm.plugin.mv.model.m.LYc;
+      paramMenuItem = com.tencent.mm.plugin.mv.model.m.gpJ();
+      paramMenuItem.ioV = 14L;
+      paramMenuItem.bMH();
+      com.tencent.mm.util.c localc = com.tencent.mm.util.c.agsX;
+      com.tencent.mm.util.c.a((com.tencent.mm.plugin.report.a)paramMenuItem);
+      paramMusicMvPostUI.zW(true);
+      AppMethodBeat.o(286472);
+      return true;
+    }
+  }
+  
+  private final void aPA(String paramString)
+  {
+    AppMethodBeat.i(286462);
     Intent localIntent = new Intent();
     localIntent.putExtra("CropImageMode", 1);
-    Object localObject = av.AJz;
+    Object localObject = bm.GlZ;
     StringBuilder localStringBuilder = new StringBuilder("music_mv_cover_");
-    localObject = this.GeS;
-    if (localObject != null) {}
-    for (localObject = Long.valueOf(((dbo)localObject).localId);; localObject = null)
+    localObject = this.Man;
+    if (localObject == null) {}
+    for (localObject = null;; localObject = Long.valueOf(((dtf)localObject).localId))
     {
-      localIntent.putExtra("CropImage_OutputPath", av.aGe(localObject + '_' + MD5Util.getMD5String(paramString)));
+      localIntent.putExtra("CropImage_OutputPath", bm.aCh(localObject + '_' + MD5Util.getMD5String(paramString)));
       localIntent.putExtra("CropImage_ImgPath", paramString);
       localIntent.putExtra("CropImage_from_scene", 4);
-      paramString = com.tencent.mm.plugin.music.model.c.FRf;
-      com.tencent.mm.plugin.music.model.c.vs(true);
-      this.GeW = true;
-      com.tencent.mm.plugin.setting.c.mIG.a((Activity)this, localIntent, 1003);
-      AppMethodBeat.o(227573);
+      paramString = com.tencent.mm.plugin.music.model.c.LLZ;
+      com.tencent.mm.plugin.music.model.c.zK(true);
+      this.Mar = true;
+      com.tencent.mm.plugin.setting.c.pFn.a((Activity)this, localIntent, 1003);
+      AppMethodBeat.o(286462);
       return;
     }
   }
   
-  private final void fgx()
+  private static final void b(MusicMvPostUI paramMusicMvPostUI, View paramView)
   {
-    AppMethodBeat.i(227568);
-    Object localObject;
-    if (this.GeT == null)
+    Intent localIntent = null;
+    AppMethodBeat.i(286498);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramMusicMvPostUI);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/MusicMvPostUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    kotlin.g.b.s.u(paramMusicMvPostUI, "this$0");
+    paramView = paramMusicMvPostUI.Man;
+    int i;
+    if (paramView != null)
     {
-      localObject = (CharSequence)z.bdh();
+      paramView = paramView.aaYK;
+      if (paramView != null)
+      {
+        paramView = paramView.objectDesc;
+        if (paramView != null)
+        {
+          paramView = paramView.mvInfo;
+          if ((paramView != null) && (paramView.ZWM == 1))
+          {
+            i = 1;
+            if (i == 0) {
+              break label281;
+            }
+            localIntent = new Intent((Context)paramMusicMvPostUI, MusicMvFreeMakerPreviewUI.class);
+            paramView = paramMusicMvPostUI.Man;
+            if (paramView != null) {
+              break label273;
+            }
+          }
+        }
+      }
+    }
+    label273:
+    for (paramView = null;; paramView = paramView.toByteArray())
+    {
+      localIntent.putExtra("key_track_data", paramView);
+      localIntent.putExtra("key_seek_to_start", true);
+      localIntent.putExtra("key_mv_from_scene", 2);
+      paramView = com.tencent.mm.plugin.music.model.c.LLZ;
+      com.tencent.mm.plugin.music.model.c.zK(true);
+      paramView = new com.tencent.mm.hellhoundlib.b.a().cG(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.b(paramMusicMvPostUI, paramView.aYi(), "com/tencent/mm/plugin/mv/ui/MusicMvPostUI", "enterFlexPreviewUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramMusicMvPostUI.startActivity((Intent)paramView.sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramMusicMvPostUI, "com/tencent/mm/plugin/mv/ui/MusicMvPostUI", "enterFlexPreviewUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/mv/ui/MusicMvPostUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(286498);
+      return;
+      i = 0;
+      break;
+    }
+    label281:
+    localObject = new Intent((Context)paramMusicMvPostUI, MusicMvMakerPreviewUI.class);
+    paramView = paramMusicMvPostUI.Man;
+    if (paramView == null) {}
+    for (paramView = localIntent;; paramView = paramView.toByteArray())
+    {
+      ((Intent)localObject).putExtra("key_track_data", paramView);
+      ((Intent)localObject).putExtra("key_seek_to_start", true);
+      com.tencent.mm.ae.d.a((Intent)localObject, paramMusicMvPostUI.getIntent(), "key_mv_from_scene");
+      paramView = com.tencent.mm.plugin.music.model.c.LLZ;
+      com.tencent.mm.plugin.music.model.c.zK(true);
+      paramView = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(paramMusicMvPostUI, paramView.aYi(), "com/tencent/mm/plugin/mv/ui/MusicMvPostUI", "enterFixPreviewUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramMusicMvPostUI.startActivity((Intent)paramView.sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramMusicMvPostUI, "com/tencent/mm/plugin/mv/ui/MusicMvPostUI", "enterFixPreviewUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      break;
+    }
+  }
+  
+  private static final boolean b(MusicMvPostUI paramMusicMvPostUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(286481);
+    kotlin.g.b.s.u(paramMusicMvPostUI, "this$0");
+    paramMenuItem = k.aeZF;
+    ((q)k.d((AppCompatActivity)paramMusicMvPostUI).q(q.class)).a(paramMusicMvPostUI.Man, true, 4);
+    AppMethodBeat.o(286481);
+    return true;
+  }
+  
+  private final void gpZ()
+  {
+    AppMethodBeat.i(286433);
+    Object localObject;
+    if (this.Mao == null)
+    {
+      localObject = (CharSequence)z.bAW();
       if ((localObject != null) && (((CharSequence)localObject).length() != 0)) {
         break label60;
       }
@@ -116,32 +267,38 @@ public final class MusicMvPostUI
     {
       if (i == 0)
       {
-        localObject = com.tencent.mm.plugin.finder.api.d.wZQ;
-        this.GeT = d.a.aAK(z.bdh());
+        localObject = com.tencent.mm.plugin.finder.api.d.AwY;
+        this.Mao = d.a.auT(z.bAW());
       }
-      AppMethodBeat.o(227568);
+      AppMethodBeat.o(286433);
       return;
     }
   }
   
-  private final void vC(boolean paramBoolean)
+  private final void gqa()
   {
-    AppMethodBeat.i(227571);
-    Object localObject1 = (kotlin.g.a.b)new MusicMvPostUI.e(this);
-    fgx();
-    Object localObject2;
-    if (this.GeT != null)
-    {
-      localObject2 = this.GeS;
-      if (localObject2 == null) {
-        break label162;
-      }
-      a locala = a.Gfi;
-      a.d((dbo)localObject2);
-      ((kotlin.g.a.b)localObject1).invoke(localObject2);
+    AppMethodBeat.i(286452);
+    f localf = new f((Context)this, 1, false);
+    localf.setBackgroundColor(getContext().getResources().getColor(b.b.Dark_5));
+    localf.NE(true);
+    localf.Vtg = new MusicMvPostUI..ExternalSyntheticLambda4(this);
+    localf.GAC = new MusicMvPostUI..ExternalSyntheticLambda5(this, localf);
+    localf.aeLi = MusicMvPostUI..ExternalSyntheticLambda6.INSTANCE;
+    localf.dDn();
+    AppMethodBeat.o(286452);
+  }
+  
+  private static final void gqb() {}
+  
+  private final void zW(boolean paramBoolean)
+  {
+    AppMethodBeat.i(286442);
+    Object localObject1 = (kotlin.g.a.b)new b(this);
+    gpZ();
+    if (this.Mao == null) {
+      localObject1 = null;
     }
-    label162:
-    for (localObject1 = x.aazN;; localObject1 = null)
+    for (;;)
     {
       if (localObject1 == null)
       {
@@ -149,8 +306,8 @@ public final class MusicMvPostUI
         Log.i("MicroMsg.Mv.MusicMvPostUI", "create finder contact");
         if (paramBoolean)
         {
-          localObject2 = aj.AGc;
-          if (aj.at((Activity)localObject1))
+          localObject2 = av.GiL;
+          if (av.aO((Activity)localObject1))
           {
             localObject2 = new Intent();
             ((Intent)localObject2).setClassName((Context)localObject1, "com.tencent.mm.plugin.finder.ui.FinderCreateContactUI");
@@ -160,79 +317,66 @@ public final class MusicMvPostUI
             ((MusicMvPostUI)localObject1).startActivityForResult((Intent)localObject2, 1002);
           }
         }
-        localObject1 = x.aazN;
       }
-      AppMethodBeat.o(227571);
+      AppMethodBeat.o(286442);
       return;
+      Object localObject2 = this.Man;
+      if (localObject2 == null)
+      {
+        localObject1 = null;
+      }
+      else
+      {
+        a locala = a.Maz;
+        a.d((dtf)localObject2);
+        ((kotlin.g.a.b)localObject1).invoke(localObject2);
+        localObject1 = ah.aiuX;
+      }
     }
   }
   
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(227613);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(227613);
-  }
-  
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(227612);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(227612);
-    return localView1;
-  }
+  public final void _$_clearFindViewByIdCache() {}
   
   public final int getLayoutId()
   {
-    return b.f.FZJ;
+    return b.f.LVG;
   }
   
   public final Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(227588);
+    AppMethodBeat.i(286634);
     Set localSet = super.importUIComponents();
-    if (localSet != null)
+    if (localSet == null)
     {
-      localSet = ak.b(localSet, (Iterable)ak.setOf(com.tencent.mm.plugin.mv.ui.uic.t.class));
-      AppMethodBeat.o(227588);
-      return localSet;
+      AppMethodBeat.o(286634);
+      return null;
     }
-    AppMethodBeat.o(227588);
-    return null;
+    localSet = ar.b(localSet, (Iterable)ar.setOf(q.class));
+    AppMethodBeat.o(286634);
+    return localSet;
   }
   
-  public final void onActivityResult(int paramInt1, int paramInt2, final Intent paramIntent)
+  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(227582);
+    AppMethodBeat.i(286604);
     switch (paramInt1)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(227582);
+      AppMethodBeat.o(286604);
       return;
       if ((paramIntent != null) && (paramInt2 == -1))
       {
-        paramIntent = com.tencent.mm.ui.tools.b.h((Context)getContext(), paramIntent, com.tencent.mm.plugin.image.d.bbW());
+        paramIntent = com.tencent.mm.ui.tools.b.i((Context)getContext(), paramIntent, com.tencent.mm.plugin.image.d.bzL());
         if (paramIntent == null)
         {
           Log.i("MicroMsg.Mv.MusicMvPostUI", "onActivityResult: choose path null");
-          AppMethodBeat.o(227582);
+          AppMethodBeat.o(286604);
           return;
         }
-        aSG(paramIntent);
-        AppMethodBeat.o(227582);
+        aPA(paramIntent);
+        AppMethodBeat.o(286604);
         return;
         if ((paramInt2 == -1) && (paramIntent != null))
         {
@@ -240,16 +384,16 @@ public final class MusicMvPostUI
           if (paramIntent == null)
           {
             Log.w("MicroMsg.Mv.MusicMvPostUI", "capture null: ");
-            AppMethodBeat.o(227582);
+            AppMethodBeat.o(286604);
             return;
           }
-          this.GeV = paramIntent;
-          aSG(paramIntent);
-          AppMethodBeat.o(227582);
+          this.Maq = paramIntent;
+          aPA(paramIntent);
+          AppMethodBeat.o(286604);
           return;
           Log.i("MicroMsg.Mv.MusicMvPostUI", "callback create finder contact post");
-          vC(false);
-          AppMethodBeat.o(227582);
+          zW(false);
+          AppMethodBeat.o(286604);
           return;
           if (paramIntent != null)
           {
@@ -257,32 +401,33 @@ public final class MusicMvPostUI
             if (paramIntent == null)
             {
               Log.i("MicroMsg.Mv.MusicMvPostUI", "onActivityResult: crop path null");
-              AppMethodBeat.o(227582);
+              AppMethodBeat.o(286604);
               return;
             }
-            com.tencent.mm.vfs.u.deleteFile(this.GeV);
+            y.deleteFile(this.Maq);
             if (paramInt2 == -1)
             {
-              com.tencent.mm.vfs.u.deleteFile(this.GeU);
-              this.GeU = paramIntent;
-              Object localObject = this.GeS;
-              if (localObject != null) {
-                ((dbo)localObject).TIW = paramIntent;
+              y.deleteFile(this.Map);
+              this.Map = paramIntent;
+              Object localObject1 = this.Man;
+              if (localObject1 != null) {
+                ((dtf)localObject1).aaYL = paramIntent;
               }
-              localObject = findViewById(b.e.blur_bg_view);
+              localObject1 = findViewById(b.e.blur_bg_view);
               ImageView localImageView = (ImageView)findViewById(b.e.thumb_iv);
               if (localImageView != null)
               {
-                com.tencent.mm.ay.a.a.c localc = new c.a().gs(true).bmH().bmL();
-                p.j(localc, "ImageLoaderOptions.Build…ns.LoadFrom.FILE).build()");
-                q.bml().a(paramIntent, localImageView, localc, (h)new k(this, paramIntent, (View)localObject));
-                AppMethodBeat.o(227582);
-                return;
+                Object localObject2 = new c.a();
+                ((c.a)localObject2).oKn = true;
+                ((c.a)localObject2).oKs = 1;
+                localObject2 = ((c.a)localObject2).bKx();
+                kotlin.g.b.s.s(localObject2, "Builder().setCacheInMemo…ns.LoadFrom.FILE).build()");
+                r.bKe().a(paramIntent, localImageView, (com.tencent.mm.modelimage.loader.a.c)localObject2, (h)new MusicMvPostUI.d(this, (View)localObject1));
               }
-              AppMethodBeat.o(227582);
+              AppMethodBeat.o(286604);
               return;
             }
-            com.tencent.mm.vfs.u.deleteFile(paramIntent);
+            y.deleteFile(paramIntent);
           }
         }
       }
@@ -291,119 +436,124 @@ public final class MusicMvPostUI
   
   public final void onBackPressed()
   {
-    AppMethodBeat.i(227589);
-    g localg = g.Xox;
-    ((com.tencent.mm.plugin.mv.ui.uic.t)g.b((AppCompatActivity)this).i(com.tencent.mm.plugin.mv.ui.uic.t.class)).a(this.GeS, true, 4);
-    AppMethodBeat.o(227589);
+    AppMethodBeat.i(286641);
+    k localk = k.aeZF;
+    ((q)k.d((AppCompatActivity)this).q(q.class)).a(this.Man, true, 4);
+    AppMethodBeat.o(286641);
   }
   
-  public final void onCreate(final Bundle paramBundle)
+  public final void onCreate(Bundle paramBundle)
   {
     Object localObject1 = null;
-    AppMethodBeat.i(227567);
+    AppMethodBeat.i(286590);
     super.onCreate(paramBundle);
     setActionbarColor(getResources().getColor(b.b.BW_100));
     setMMTitle(b.h.music_post_to_finder);
-    addTextOptionMenu(0, getString(b.h.sns_send), (MenuItem.OnMenuItemClickListener)new g(this), null, w.b.Waz);
-    setBackBtn((MenuItem.OnMenuItemClickListener)new h(this));
-    fgx();
-    paramBundle = this.GeT;
-    com.tencent.mm.ay.a.a.c localc;
-    if (paramBundle != null)
+    addTextOptionMenu(0, getString(b.h.sns_send), new MusicMvPostUI..ExternalSyntheticLambda0(this), null, y.b.adEU);
+    setBackBtn(new MusicMvPostUI..ExternalSyntheticLambda1(this));
+    gpZ();
+    paramBundle = this.Mao;
+    if (paramBundle == null)
     {
+      paramBundle = null;
+      if (paramBundle != null) {
+        break label330;
+      }
+      localObject2 = (MusicMvPostUI)this;
+      paramBundle = (LinearLayout)((MusicMvPostUI)localObject2).findViewById(b.e.LUc);
+      if (paramBundle != null) {
+        paramBundle.setVisibility(8);
+      }
+      paramBundle = (LinearLayout)((MusicMvPostUI)localObject2).findViewById(b.e.LUc);
+      if (paramBundle != null) {
+        break label273;
+      }
+    }
+    Object localObject3;
+    label273:
+    for (paramBundle = null;; paramBundle = paramBundle.getLayoutParams())
+    {
+      if (paramBundle != null) {
+        break label281;
+      }
+      paramBundle = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
+      AppMethodBeat.o(286590);
+      throw paramBundle;
       localObject2 = (TextView)findViewById(b.e.nickname_tv);
       if (localObject2 != null) {
-        ((TextView)localObject2).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c((Context)getContext(), (CharSequence)paramBundle.getNickname()));
+        ((TextView)localObject2).setText((CharSequence)p.b((Context)getContext(), (CharSequence)paramBundle.getNickname()));
       }
       localObject2 = (ImageView)findViewById(b.e.avatar_iv);
       if (localObject2 != null)
       {
-        localc = new c.a().bmF().gs(true).bmJ().bmL();
-        q.bml().a(paramBundle.Mm(), (ImageView)localObject2, localc);
-        paramBundle = x.aazN;
-        if (paramBundle != null) {
-          break label324;
-        }
+        localObject3 = new c.a();
+        ((c.a)localObject3).oKp = true;
+        ((c.a)localObject3).oKn = true;
+        ((c.a)localObject3).nrc = true;
+        localObject3 = ((c.a)localObject3).bKx();
+        r.bKe().a(paramBundle.amx(), (ImageView)localObject2, (com.tencent.mm.modelimage.loader.a.c)localObject3);
       }
-    }
-    else
-    {
-      localObject2 = (MusicMvPostUI)this;
-      paramBundle = (LinearLayout)((MusicMvPostUI)localObject2).findViewById(b.e.FYy);
-      if (paramBundle != null) {
-        paramBundle.setVisibility(8);
-      }
-      paramBundle = (LinearLayout)((MusicMvPostUI)localObject2).findViewById(b.e.FYy);
-      if (paramBundle == null) {
-        break label270;
-      }
-    }
-    label270:
-    for (paramBundle = paramBundle.getLayoutParams();; paramBundle = null)
-    {
-      if (paramBundle != null) {
-        break label275;
-      }
-      paramBundle = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-      AppMethodBeat.o(227567);
-      throw paramBundle;
-      paramBundle = null;
+      paramBundle = ah.aiuX;
       break;
     }
-    label275:
+    label281:
     paramBundle = (ViewGroup.MarginLayoutParams)paramBundle;
-    paramBundle.topMargin = com.tencent.mm.ci.a.fromDPToPix((Context)((MusicMvPostUI)localObject2).getContext(), 56);
-    Object localObject2 = (LinearLayout)((MusicMvPostUI)localObject2).findViewById(b.e.FYy);
+    paramBundle.topMargin = com.tencent.mm.cd.a.fromDPToPix((Context)((MusicMvPostUI)localObject2).getContext(), 56);
+    Object localObject2 = (LinearLayout)((MusicMvPostUI)localObject2).findViewById(b.e.LUc);
     if (localObject2 != null) {
       ((LinearLayout)localObject2).setLayoutParams((ViewGroup.LayoutParams)paramBundle);
     }
-    label324:
-    this.GeS = new dbo();
+    label330:
+    this.Man = new dtf();
     paramBundle = getIntent().getByteArrayExtra("key_track_data");
     if (paramBundle != null)
     {
-      localObject2 = this.GeS;
+      localObject2 = this.Man;
       if (localObject2 != null) {
-        ((dbo)localObject2).parseFrom(paramBundle);
+        ((dtf)localObject2).parseFrom(paramBundle);
       }
     }
-    localObject2 = this.GeS;
-    paramBundle = (Bundle)localObject1;
-    if (localObject2 != null) {
-      paramBundle = ((dbo)localObject2).TIW;
-    }
-    this.GeU = paramBundle;
-    localObject1 = (LinearLayout)findViewById(b.e.music_container);
-    paramBundle = findViewById(b.e.blur_bg_view);
-    if (ar.isDarkMode()) {
+    paramBundle = this.Man;
+    if (paramBundle == null)
+    {
+      paramBundle = (Bundle)localObject1;
+      this.Map = paramBundle;
+      localObject1 = (LinearLayout)findViewById(b.e.music_container);
+      paramBundle = findViewById(b.e.blur_bg_view);
+      if (!aw.isDarkMode()) {
+        break label747;
+      }
       ((LinearLayout)localObject1).setBackgroundResource(b.d.sns_music_mv_dark_gradient_bg);
     }
     for (;;)
     {
-      localObject1 = this.GeS;
+      localObject1 = this.Man;
       if (localObject1 != null)
       {
-        localObject1 = ((dbo)localObject1).TIW;
+        localObject1 = ((dtf)localObject1).aaYL;
         if (localObject1 != null)
         {
           localObject2 = (ImageView)findViewById(b.e.thumb_iv);
           if (localObject2 != null)
           {
             int i = b.d.music_mv_cover_empty_lightmode;
-            if (ar.isDarkMode()) {
+            if (aw.isDarkMode()) {
               i = b.d.music_mv_cover_empty_darkmode;
             }
             ((ImageView)localObject2).setImageDrawable(getContext().getDrawable(i));
-            localc = new c.a().gs(true).bmH().bmL();
-            p.j(localc, "ImageLoaderOptions.Build…ns.LoadFrom.FILE).build()");
-            q.bml().a((String)localObject1, (ImageView)localObject2, localc, (h)new f((String)localObject1, this, paramBundle));
+            localObject3 = new c.a();
+            ((c.a)localObject3).oKn = true;
+            ((c.a)localObject3).oKs = 1;
+            localObject3 = ((c.a)localObject3).bKx();
+            kotlin.g.b.s.s(localObject3, "Builder().setCacheInMemo…ns.LoadFrom.FILE).build()");
+            r.bKe().a((String)localObject1, (ImageView)localObject2, (com.tencent.mm.modelimage.loader.a.c)localObject3, (h)new MusicMvPostUI.c(this, paramBundle));
           }
         }
       }
-      paramBundle = this.GeS;
+      paramBundle = this.Man;
       if (paramBundle != null)
       {
-        paramBundle = paramBundle.TIV;
+        paramBundle = paramBundle.aaYK;
         if (paramBundle != null)
         {
           paramBundle = paramBundle.objectDesc;
@@ -412,76 +562,77 @@ public final class MusicMvPostUI
             paramBundle = paramBundle.mvInfo;
             if (paramBundle != null)
             {
-              paramBundle = paramBundle.GaB;
+              paramBundle = paramBundle.LWI;
               if (paramBundle != null)
               {
-                localObject1 = (TextView)findViewById(b.e.FYp);
+                localObject1 = (TextView)findViewById(b.e.LTS);
                 if (localObject1 != null) {
-                  ((TextView)localObject1).setText((CharSequence)paramBundle.HLH);
+                  ((TextView)localObject1).setText((CharSequence)paramBundle.songName);
                 }
-                localObject1 = (TextView)findViewById(b.e.FYq);
+                localObject1 = (TextView)findViewById(b.e.LTT);
                 if (localObject1 != null) {
-                  ((TextView)localObject1).setText((CharSequence)paramBundle.ozs);
+                  ((TextView)localObject1).setText((CharSequence)paramBundle.rDl);
                 }
               }
             }
           }
         }
       }
-      paramBundle = (LinearLayout)findViewById(b.e.FWH);
+      paramBundle = (LinearLayout)findViewById(b.e.LRT);
       if (paramBundle != null) {
-        paramBundle.setOnClickListener((View.OnClickListener)new i(this));
+        paramBundle.setOnClickListener(new MusicMvPostUI..ExternalSyntheticLambda2(this));
       }
-      float f = com.tencent.mm.ci.a.fromDPToPix((Context)getContext(), 8);
+      float f = com.tencent.mm.cd.a.fromDPToPix((Context)getContext(), 8);
       paramBundle = (RoundCornerRelativeLayout)findViewById(b.e.round_corner_rl);
       if (paramBundle != null) {
         paramBundle.setRadius(f);
       }
-      if (paramBundle == null) {
-        break;
+      if (paramBundle != null) {
+        paramBundle.setOnClickListener(new MusicMvPostUI..ExternalSyntheticLambda3(this));
       }
-      paramBundle.setOnClickListener((View.OnClickListener)new j(this));
-      AppMethodBeat.o(227567);
+      AppMethodBeat.o(286590);
       return;
+      paramBundle = paramBundle.aaYL;
+      break;
+      label747:
       ((LinearLayout)localObject1).setBackgroundResource(b.d.sns_music_mv_light_gradient_bg);
     }
-    AppMethodBeat.o(227567);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(227591);
+    AppMethodBeat.i(286646);
     super.onDestroy();
-    if (this.GeX)
+    if (this.Mas)
     {
-      com.tencent.mm.plugin.music.model.c localc = com.tencent.mm.plugin.music.model.c.FRf;
-      com.tencent.mm.plugin.music.model.c.cwB();
+      com.tencent.mm.plugin.music.model.c localc = com.tencent.mm.plugin.music.model.c.LLZ;
+      com.tencent.mm.plugin.music.model.c.gnR();
     }
-    AppMethodBeat.o(227591);
+    AppMethodBeat.o(286646);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(227586);
+    AppMethodBeat.i(286628);
     super.onPause();
-    com.tencent.mm.plugin.music.model.c localc = com.tencent.mm.plugin.music.model.c.FRf;
-    com.tencent.mm.plugin.music.model.c.feJ();
-    AppMethodBeat.o(227586);
+    com.tencent.mm.plugin.music.model.c localc = com.tencent.mm.plugin.music.model.c.LLZ;
+    com.tencent.mm.plugin.music.model.c.gnQ();
+    AppMethodBeat.o(286628);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(227585);
+    AppMethodBeat.i(286620);
     super.onResume();
-    if (!this.GeW)
+    if (!this.Mar)
     {
-      com.tencent.mm.plugin.music.model.c localc = com.tencent.mm.plugin.music.model.c.FRf;
+      com.tencent.mm.plugin.music.model.c localc = com.tencent.mm.plugin.music.model.c.LLZ;
       com.tencent.mm.plugin.music.model.c.onResume();
-      AppMethodBeat.o(227585);
+      AppMethodBeat.o(286620);
       return;
     }
-    this.GeW = false;
-    AppMethodBeat.o(227585);
+    this.Mar = false;
+    AppMethodBeat.o(286620);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -490,283 +641,20 @@ public final class MusicMvPostUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/MusicMvPostUI$Companion;", "", "()V", "MENU_ID_FROM_ALBUM", "", "MENU_ID_FROM_CAMERA", "REQUEST_CODE_CREATE_FINDER_POST", "REQUEST_CODE_CROP_COVER", "REQUEST_CODE_SELECT_COVER_FROM_ALBUM", "REQUEST_CODE_SELECT_COVER_FROM_SIGHT", "TAG", "", "plugin-mv_release"})
-  public static final class a {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/MusicMvData;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    implements q.f
+    extends u
+    implements kotlin.g.a.b<dtf, ah>
   {
-    b(MusicMvPostUI paramMusicMvPostUI) {}
-    
-    public final void onCreateMMMenu(o paramo)
+    b(MusicMvPostUI paramMusicMvPostUI)
     {
-      AppMethodBeat.i(228766);
-      AppCompatActivity localAppCompatActivity = this.Gfa.getContext();
-      p.j(localAppCompatActivity, "context");
-      paramo.d(1, (CharSequence)localAppCompatActivity.getResources().getString(b.h.app_field_mmsight));
-      localAppCompatActivity = this.Gfa.getContext();
-      p.j(localAppCompatActivity, "context");
-      paramo.d(2, (CharSequence)localAppCompatActivity.getResources().getString(b.h.music_post_menu_album));
-      AppMethodBeat.o(228766);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onMMMenuItemSelected"})
-  static final class c
-    implements q.g
-  {
-    c(MusicMvPostUI paramMusicMvPostUI, e parame) {}
-    
-    public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
-    {
-      AppMethodBeat.i(228563);
-      p.j(paramMenuItem, "menuItem");
-      switch (paramMenuItem.getItemId())
-      {
-      default: 
-        this.qmB.bYF();
-        AppMethodBeat.o(228563);
-        return;
-      case 1: 
-        paramMenuItem = new Intent((Context)this.Gfa, MusicMvRouterUI.class);
-        paramMenuItem.putExtra("KEY_MUSIC_ROUTER", 2);
-        com.tencent.mm.plugin.music.model.c localc = com.tencent.mm.plugin.music.model.c.FRf;
-        com.tencent.mm.plugin.music.model.c.vs(true);
-        MusicMvPostUI.g(this.Gfa);
-        this.Gfa.startActivityForResult(paramMenuItem, 1000);
-        AppMethodBeat.o(228563);
-        return;
-      }
-      paramMenuItem = com.tencent.mm.plugin.music.model.c.FRf;
-      com.tencent.mm.plugin.music.model.c.vs(true);
-      MusicMvPostUI.g(this.Gfa);
-      com.tencent.mm.pluginsdk.ui.tools.u.a((Activity)this.Gfa, 1001, 1, 27, 1, null);
-      AppMethodBeat.o(228563);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/mv/ui/MusicMvPostUI$onCreate$6$1$1", "Lcom/tencent/mm/modelimage/loader/listener/IImageLoadListener;", "onImageLoadFinish", "", "url", "", "view", "Landroid/view/View;", "imageData", "Lcom/tencent/mm/modelimage/loader/model/Response;", "onImageLoadStart", "onProcessBitmap", "Landroid/graphics/Bitmap;", "plugin-mv_release", "com/tencent/mm/plugin/mv/ui/MusicMvPostUI$$special$$inlined$let$lambda$1"})
-  public static final class f
-    implements h
-  {
-    f(String paramString, MusicMvPostUI paramMusicMvPostUI, View paramView) {}
-    
-    public final Bitmap a(String paramString, View paramView, com.tencent.mm.ay.a.d.b paramb)
-    {
-      return null;
-    }
-    
-    public final void b(String paramString, View paramView) {}
-    
-    public final void b(String paramString, View paramView, com.tencent.mm.ay.a.d.b paramb)
-    {
-      View localView = null;
-      AppMethodBeat.i(231290);
-      p.k(paramString, "url");
-      if (paramb != null) {}
-      for (paramView = paramb.bitmap;; paramView = null)
-      {
-        if (paramView != null)
-        {
-          paramView = localView;
-          if (paramb != null) {
-            paramView = paramb.bitmap;
-          }
-          p.j(paramView, "imageData?.bitmap");
-          if (!paramView.isRecycled())
-          {
-            paramString = paramString.getBytes(kotlin.n.d.UTF_8);
-            p.j(paramString, "(this as java.lang.String).getBytes(charset)");
-            paramString = com.tencent.xweb.util.d.getMessageDigest(paramString);
-            paramView = com.tencent.mm.plugin.comm.b.ubp;
-            paramView = jdField_this.getContext();
-            p.j(paramView, "context");
-            paramView = (Context)paramView;
-            localView = paramBundle;
-            p.j(localView, "mvBlurBg");
-            paramb = paramb.bitmap;
-            p.j(paramb, "imageData.bitmap");
-            p.j(paramString, "md5Key");
-            com.tencent.mm.plugin.comm.b.a(paramView, localView, paramb, paramString);
-          }
-        }
-        AppMethodBeat.o(231290);
-        return;
-      }
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class g
-    implements MenuItem.OnMenuItemClickListener
-  {
-    g(MusicMvPostUI paramMusicMvPostUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(225197);
-      paramMenuItem = this.Gfa;
-      Object localObject = (CharSequence)z.bdh();
-      if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
-      for (boolean bool = true;; bool = false)
-      {
-        MusicMvPostUI.a(paramMenuItem, bool);
-        paramMenuItem = com.tencent.mm.plugin.mv.model.m.GcA;
-        paramMenuItem = com.tencent.mm.plugin.mv.model.m.fgi();
-        paramMenuItem.sP(14L);
-        paramMenuItem.bpa();
-        localObject = com.tencent.mm.util.c.Yyz;
-        com.tencent.mm.util.c.a((com.tencent.mm.plugin.report.a)paramMenuItem);
-        MusicMvPostUI.b(this.Gfa);
-        AppMethodBeat.o(225197);
-        return true;
-      }
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class h
-    implements MenuItem.OnMenuItemClickListener
-  {
-    h(MusicMvPostUI paramMusicMvPostUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(227749);
-      paramMenuItem = g.Xox;
-      ((com.tencent.mm.plugin.mv.ui.uic.t)g.b((AppCompatActivity)this.Gfa).i(com.tencent.mm.plugin.mv.ui.uic.t.class)).a(this.Gfa.GeS, true, 4);
-      AppMethodBeat.o(227749);
-      return true;
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class i
-    implements View.OnClickListener
-  {
-    i(MusicMvPostUI paramMusicMvPostUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(231420);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/MusicMvPostUI$onCreate$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      MusicMvPostUI.c(this.Gfa);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mv/ui/MusicMvPostUI$onCreate$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(231420);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class j
-    implements View.OnClickListener
-  {
-    j(MusicMvPostUI paramMusicMvPostUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(231428);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/MusicMvPostUI$onCreate$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = this.Gfa.GeS;
-      int i;
-      if (paramView != null)
-      {
-        paramView = paramView.TIV;
-        if (paramView != null)
-        {
-          paramView = paramView.objectDesc;
-          if (paramView != null)
-          {
-            paramView = paramView.mvInfo;
-            if ((paramView != null) && (paramView.SOF == 1))
-            {
-              i = 1;
-              if (i == 0) {
-                break label117;
-              }
-              MusicMvPostUI.d(this.Gfa);
-            }
-          }
-        }
-      }
-      for (;;)
-      {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mv/ui/MusicMvPostUI$onCreate$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(231428);
-        return;
-        i = 0;
-        break;
-        label117:
-        MusicMvPostUI.e(this.Gfa);
-      }
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/mv/ui/MusicMvPostUI$updateCoverImg$1$1", "Lcom/tencent/mm/modelimage/loader/listener/IImageLoadListener;", "onImageLoadFinish", "", "url", "", "view", "Landroid/view/View;", "imageData", "Lcom/tencent/mm/modelimage/loader/model/Response;", "onImageLoadStart", "onProcessBitmap", "Landroid/graphics/Bitmap;", "plugin-mv_release"})
-  public static final class k
-    implements h
-  {
-    k(MusicMvPostUI paramMusicMvPostUI, String paramString, View paramView) {}
-    
-    public final Bitmap a(String paramString, View paramView, com.tencent.mm.ay.a.d.b paramb)
-    {
-      return null;
-    }
-    
-    public final void b(String paramString, View paramView) {}
-    
-    public final void b(String paramString, View paramView, com.tencent.mm.ay.a.d.b paramb)
-    {
-      Object localObject = null;
-      AppMethodBeat.i(230144);
-      p.k(paramString, "url");
-      if (paramb != null)
-      {
-        paramView = paramb.bitmap;
-        if (paramView != null) {
-          if (paramb == null) {
-            break label149;
-          }
-        }
-      }
-      label149:
-      for (paramView = paramb.bitmap;; paramView = null)
-      {
-        p.j(paramView, "imageData?.bitmap");
-        if (!paramView.isRecycled())
-        {
-          paramString = paramString.getBytes(kotlin.n.d.UTF_8);
-          p.j(paramString, "(this as java.lang.String).getBytes(charset)");
-          paramView = com.tencent.xweb.util.d.getMessageDigest(paramString);
-          paramString = com.tencent.mm.plugin.comm.b.ubp;
-          paramString = this.Gfa.getContext();
-          p.j(paramString, "context");
-          Context localContext = (Context)paramString;
-          View localView = this.Gfd;
-          p.j(localView, "mvBlurBg");
-          paramString = localObject;
-          if (paramb != null) {
-            paramString = paramb.bitmap;
-          }
-          p.j(paramString, "imageData?.bitmap");
-          p.j(paramView, "md5Key");
-          com.tencent.mm.plugin.comm.b.a(localContext, localView, paramString, paramView);
-        }
-        AppMethodBeat.o(230144);
-        return;
-        paramView = null;
-        break;
-      }
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mv.ui.MusicMvPostUI
  * JD-Core Version:    0.7.0.1
  */

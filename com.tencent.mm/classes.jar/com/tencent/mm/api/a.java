@@ -7,14 +7,14 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class a
 {
-  public static String fU(String paramString)
+  public static String hx(String paramString)
   {
     AppMethodBeat.i(116343);
     String str = paramString;
     if (Util.isNullOrNil(paramString)) {
       str = "tempConv";
     }
-    paramString = new StringBuilder(d.bbX());
+    paramString = new StringBuilder(d.bzM());
     paramString.append(g.getMessageDigest(str.getBytes())).append("/");
     paramString.append("conv/");
     paramString = paramString.toString();

@@ -1,6 +1,6 @@
 package com.tencent.mm.wallet_core.tenpay.model;
 
-import com.tencent.mm.wallet_core.c.e;
+import com.tencent.mm.wallet_core.model.e;
 import java.util.HashMap;
 import org.json.JSONObject;
 
@@ -83,7 +83,7 @@ public abstract class p
     {
       this.can_pay_retry2 = bool;
       this.retryPayInfo = new ITenpaySave.RetryPayInfo();
-      this.retryPayInfo.bV(paramJSONObject);
+      this.retryPayInfo.cq(paramJSONObject);
       return;
       bool = false;
     }
@@ -146,7 +146,7 @@ public abstract class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.wallet_core.tenpay.model.p
  * JD-Core Version:    0.7.0.1
  */

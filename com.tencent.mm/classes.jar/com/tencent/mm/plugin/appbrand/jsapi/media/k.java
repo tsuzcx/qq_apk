@@ -1,107 +1,150 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.r;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.appcache.bl;
+import com.tencent.mm.plugin.appbrand.appstorage.w;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.plugin.appbrand.y;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
-import java.text.DecimalFormat;
+import com.tencent.mm.vfs.ah;
+import com.tencent.mm.vfs.u;
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.ref.WeakReference;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Map;
-import org.json.JSONObject;
 
 public final class k
-  extends c
+  extends c<y>
 {
-  private static final int CTRL_INDEX = 732;
-  public static final String NAME = "getVideoInfo";
+  private static final int CTRL_INDEX = 120;
+  private static final String NAME = "getImageInfo";
+  private static final Collection<b> sgR;
   
-  public final void a(e parame, JSONObject paramJSONObject, int paramInt)
+  static
   {
-    AppMethodBeat.i(46575);
-    if (parame == null)
+    AppMethodBeat.i(139879);
+    LinkedList localLinkedList = new LinkedList();
+    localLinkedList.add(new a((byte)0));
+    localLinkedList.add(new d((byte)0));
+    sgR = Collections.unmodifiableCollection(localLinkedList);
+    AppMethodBeat.o(139879);
+  }
+  
+  static final class a
+    implements k.b
+  {
+    public final com.tencent.mm.vending.j.a j(AppBrandRuntime paramAppBrandRuntime, String paramString)
     {
-      Log.e("MicroMsg.JsApiGetVideoInfo", "fail:internal error");
-      AppMethodBeat.o(46575);
-      return;
+      AppMethodBeat.i(139873);
+      paramAppBrandRuntime = paramAppBrandRuntime.getFileSystem().Wm(paramString);
+      if (paramAppBrandRuntime == null)
+      {
+        AppMethodBeat.o(139873);
+        return null;
+      }
+      BitmapFactory.Options localOptions = new BitmapFactory.Options();
+      localOptions.inJustDecodeBounds = true;
+      BitmapFactory.decodeFile(ah.v(paramAppBrandRuntime.jKT()), localOptions);
+      paramString = new k.c((byte)0);
+      paramString.width = localOptions.outWidth;
+      paramString.height = localOptions.outHeight;
+      paramString.type = com.tencent.luggage.e.a.a.b(localOptions);
+      if (com.tencent.luggage.e.a.a.a(localOptions)) {}
+      for (paramAppBrandRuntime = com.tencent.luggage.e.a.a.mp(com.tencent.luggage.e.a.a.getExifOrientation(ah.v(paramAppBrandRuntime.jKT())));; paramAppBrandRuntime = "up")
+      {
+        paramString.euP = paramAppBrandRuntime;
+        paramAppBrandRuntime = com.tencent.mm.vending.j.a.U(k.e.sgX, paramString);
+        AppMethodBeat.o(139873);
+        return paramAppBrandRuntime;
+      }
     }
-    if (paramJSONObject == null)
+  }
+  
+  static abstract interface b
+  {
+    public abstract com.tencent.mm.vending.j.a j(AppBrandRuntime paramAppBrandRuntime, String paramString);
+  }
+  
+  static final class c
+  {
+    public String euP;
+    public int height;
+    public String type;
+    public int width;
+  }
+  
+  static final class d
+    implements k.b
+  {
+    public final com.tencent.mm.vending.j.a j(AppBrandRuntime paramAppBrandRuntime, String paramString)
     {
-      Log.w("MicroMsg.JsApiGetVideoInfo", "fail:data is null");
-      parame.j(paramInt, h("fail:invalid data", null));
-      AppMethodBeat.o(46575);
-      return;
+      AppMethodBeat.i(139874);
+      paramString = bl.f(paramAppBrandRuntime, paramString);
+      k.c localc;
+      boolean bool;
+      if (paramString != null)
+      {
+        paramString.mark(0);
+        paramAppBrandRuntime = new BitmapFactory.Options();
+        paramAppBrandRuntime.inJustDecodeBounds = true;
+        BitmapFactory.decodeStream(paramString, new Rect(), paramAppBrandRuntime);
+        localc = new k.c((byte)0);
+        localc.width = paramAppBrandRuntime.outWidth;
+        localc.height = paramAppBrandRuntime.outHeight;
+        localc.type = com.tencent.luggage.e.a.a.b(paramAppBrandRuntime);
+        bool = com.tencent.luggage.e.a.a.a(paramAppBrandRuntime);
+      }
+      try
+      {
+        paramString.reset();
+        label92:
+        if (bool) {}
+        for (paramAppBrandRuntime = com.tencent.luggage.e.a.a.mp(com.tencent.luggage.e.a.a.v(paramString));; paramAppBrandRuntime = "up")
+        {
+          localc.euP = paramAppBrandRuntime;
+          Util.qualityClose(paramString);
+          paramAppBrandRuntime = com.tencent.mm.vending.j.a.U(k.e.sgX, localc);
+          AppMethodBeat.o(139874);
+          return paramAppBrandRuntime;
+        }
+        paramAppBrandRuntime = com.tencent.mm.vending.j.a.gT(k.e.sgV);
+        AppMethodBeat.o(139874);
+        return paramAppBrandRuntime;
+      }
+      catch (IOException paramAppBrandRuntime)
+      {
+        break label92;
+      }
     }
-    if (parame.getFileSystem() == null)
+  }
+  
+  static enum e
+  {
+    static
     {
-      Log.w("MicroMsg.JsApiGetVideoInfo", "fail:file system is null");
-      parame.j(paramInt, h("fail:internal error", null));
-      AppMethodBeat.o(46575);
-      return;
+      AppMethodBeat.i(139877);
+      sgV = new e("FILE_NOT_FOUND", 0);
+      sgW = new e("UNKNOWN_FAIL", 1);
+      sgX = new e("RESOLVED", 2);
+      sgY = new e[] { sgV, sgW, sgX };
+      AppMethodBeat.o(139877);
     }
-    paramJSONObject = paramJSONObject.optString("src");
-    if (Util.isNullOrNil(paramJSONObject))
-    {
-      Log.w("MicroMsg.JsApiGetVideoInfo", "fail:data src is null");
-      parame.j(paramInt, h("fail:invalid data", null));
-      AppMethodBeat.o(46575);
-      return;
-    }
-    if (!paramJSONObject.startsWith("wxfile://"))
-    {
-      Log.w("MicroMsg.JsApiGetVideoInfo", "fail:src path not supported");
-      parame.j(paramInt, h("fail:src path not be supported", null));
-      AppMethodBeat.o(46575);
-      return;
-    }
-    paramJSONObject = parame.getFileSystem().adL(paramJSONObject);
-    if (paramJSONObject == null)
-    {
-      parame.j(paramInt, h("fail:file doesn't exist", null));
-      AppMethodBeat.o(46575);
-      return;
-    }
-    t.b localb = t.aif(paramJSONObject.bOF());
-    if (localb == null)
-    {
-      Log.w("MicroMsg.JsApiGetVideoInfo", "fail:videoInfo is null");
-      parame.j(paramInt, h("fail:can't get info from video file", null));
-      AppMethodBeat.o(46575);
-      return;
-    }
-    switch (localb.rotation)
-    {
-    default: 
-      paramJSONObject = "up";
-    }
-    for (;;)
-    {
-      HashMap localHashMap = new HashMap(8);
-      localHashMap.put("orientation", paramJSONObject);
-      localHashMap.put("type", localb.type);
-      localHashMap.put("duration", Float.valueOf(Util.safeParseFloat(new DecimalFormat("#.#").format(localb.duration * 1.0F / 1000.0F))));
-      localHashMap.put("size", Integer.valueOf(Math.round((float)localb.size * 1.0F / 1024.0F)));
-      localHashMap.put("height", Integer.valueOf(localb.height));
-      localHashMap.put("width", Integer.valueOf(localb.width));
-      localHashMap.put("bitrate", Integer.valueOf(Math.round(localb.bitrate * 1.0F / 1000.0F)));
-      localHashMap.put("fps", Float.valueOf(localb.cLa));
-      parame.j(paramInt, m("ok", localHashMap));
-      AppMethodBeat.o(46575);
-      return;
-      paramJSONObject = "right";
-      continue;
-      paramJSONObject = "down";
-      continue;
-      paramJSONObject = "left";
-    }
+    
+    private e() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.k
  * JD-Core Version:    0.7.0.1
  */

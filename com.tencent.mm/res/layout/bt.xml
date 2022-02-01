@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/h8v" android:background="@color/we" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:id="@id/b2" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="16.0dip" android:textColor="@color/fr" android:id="@id/bkm" android:background="@drawable/awj" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="16.0dip" android:layout_marginBottom="16.0dip" android:text="@string/e_q" />
-    <ListView android:id="@id/ecm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="#ffd9d9d9" android:dividerHeight="1.0px" android:layout_below="@id/bkm" android:headerDividersEnabled="true" android:footerDividersEnabled="false" />
-</LinearLayout>
+    <FrameLayout android:id="@id/gug" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <androidx.compose.ui.platform.ComposeView android:id="@id/bkr" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

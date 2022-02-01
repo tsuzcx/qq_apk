@@ -1,23 +1,21 @@
 package com.google.android.exoplayer2.a;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Arrays;
 
-@TargetApi(21)
 public final class c
 {
-  public static final c aOo;
+  public static final c cIk;
   private final int maxChannelCount;
   final int[] supportedEncodings;
   
   static
   {
     AppMethodBeat.i(91761);
-    aOo = new c(new int[] { 2 }, 2);
+    cIk = new c(new int[] { 2 }, 2);
     AppMethodBeat.o(91761);
   }
   
@@ -38,13 +36,13 @@ public final class c
     }
   }
   
-  public static c ab(Context paramContext)
+  public static c aM(Context paramContext)
   {
     AppMethodBeat.i(91756);
     paramContext = paramContext.registerReceiver(null, new IntentFilter("android.media.action.HDMI_AUDIO_PLUG"));
     if ((paramContext == null) || (paramContext.getIntExtra("android.media.extra.AUDIO_PLUG_STATE", 0) == 0))
     {
-      paramContext = aOo;
+      paramContext = cIk;
       AppMethodBeat.o(91756);
       return paramContext;
     }
@@ -95,7 +93,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.a.c
  * JD-Core Version:    0.7.0.1
  */

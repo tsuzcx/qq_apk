@@ -1,233 +1,250 @@
 package androidx.d.a;
 
-import android.os.Build.VERSION;
+import android.content.Context;
+import android.database.ContentObserver;
+import android.database.Cursor;
+import android.database.DataSetObserver;
 import android.os.Handler;
-import android.os.Looper;
-import android.os.SystemClock;
-import android.view.Choreographer;
-import android.view.Choreographer.FrameCallback;
-import androidx.b.g;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.FilterQueryProvider;
+import android.widget.Filterable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
 
-final class a
+public abstract class a
+  extends BaseAdapter
+  implements Filterable, b.a
 {
-  public static final ThreadLocal<a> Sv;
-  long SA;
-  boolean SB;
-  final g<b, Long> Sw;
-  final ArrayList<b> Sx;
-  private final a Sy;
-  private c Sz;
+  protected boolean bxg = false;
+  protected boolean bxh = true;
+  protected int bxi;
+  protected a bxj;
+  protected DataSetObserver bxk;
+  protected b bxl;
+  protected FilterQueryProvider bxm;
+  protected Cursor gw = null;
+  protected Context mContext;
   
-  static
+  public a(Context paramContext)
   {
-    AppMethodBeat.i(250128);
-    Sv = new ThreadLocal();
-    AppMethodBeat.o(250128);
+    this.mContext = paramContext;
+    this.bxi = -1;
+    this.bxj = new a();
+    this.bxk = new b();
   }
   
-  a()
+  public final Cursor Fv()
   {
-    AppMethodBeat.i(250122);
-    this.Sw = new g();
-    this.Sx = new ArrayList();
-    this.Sy = new a();
-    this.SA = 0L;
-    this.SB = false;
-    AppMethodBeat.o(250122);
+    return this.gw;
   }
   
-  public static a hS()
+  public View a(Context paramContext, Cursor paramCursor, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(250124);
-    if (Sv.get() == null) {
-      Sv.set(new a());
+    return newView(paramContext, paramCursor, paramViewGroup);
+  }
+  
+  public abstract void a(View paramView, Cursor paramCursor);
+  
+  public void c(Cursor paramCursor)
+  {
+    if (paramCursor == this.gw) {
+      paramCursor = null;
     }
-    a locala = (a)Sv.get();
-    AppMethodBeat.o(250124);
-    return locala;
-  }
-  
-  public final void a(b paramb)
-  {
-    AppMethodBeat.i(250127);
-    this.Sw.remove(paramb);
-    int i = this.Sx.indexOf(paramb);
-    if (i >= 0)
+    for (;;)
     {
-      this.Sx.set(i, null);
-      this.SB = true;
-    }
-    AppMethodBeat.o(250127);
-  }
-  
-  final c hT()
-  {
-    AppMethodBeat.i(250126);
-    if (this.Sz == null) {
-      if (Build.VERSION.SDK_INT < 16) {
-        break label47;
+      if (paramCursor != null) {
+        paramCursor.close();
+      }
+      return;
+      Cursor localCursor = this.gw;
+      if (localCursor != null)
+      {
+        if (this.bxj != null) {
+          localCursor.unregisterContentObserver(this.bxj);
+        }
+        if (this.bxk != null) {
+          localCursor.unregisterDataSetObserver(this.bxk);
+        }
+      }
+      this.gw = paramCursor;
+      if (paramCursor != null)
+      {
+        if (this.bxj != null) {
+          paramCursor.registerContentObserver(this.bxj);
+        }
+        if (this.bxk != null) {
+          paramCursor.registerDataSetObserver(this.bxk);
+        }
+        this.bxi = paramCursor.getColumnIndexOrThrow("_id");
+        this.bxg = true;
+        notifyDataSetChanged();
+        paramCursor = localCursor;
+      }
+      else
+      {
+        this.bxi = -1;
+        this.bxg = false;
+        notifyDataSetInvalidated();
+        paramCursor = localCursor;
       }
     }
-    label47:
-    for (this.Sz = new e(this.Sy);; this.Sz = new d(this.Sy))
+  }
+  
+  public CharSequence d(Cursor paramCursor)
+  {
+    if (paramCursor == null) {
+      return "";
+    }
+    return paramCursor.toString();
+  }
+  
+  public Cursor g(CharSequence paramCharSequence)
+  {
+    if (this.bxm != null) {
+      return this.bxm.runQuery(paramCharSequence);
+    }
+    return this.gw;
+  }
+  
+  public int getCount()
+  {
+    if ((this.bxg) && (this.gw != null)) {
+      return this.gw.getCount();
+    }
+    return 0;
+  }
+  
+  public View getDropDownView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (this.bxg)
     {
-      c localc = this.Sz;
-      AppMethodBeat.o(250126);
-      return localc;
+      this.gw.moveToPosition(paramInt);
+      View localView = paramView;
+      if (paramView == null) {
+        localView = a(this.mContext, this.gw, paramViewGroup);
+      }
+      a(localView, this.gw);
+      return localView;
+    }
+    return null;
+  }
+  
+  public Filter getFilter()
+  {
+    if (this.bxl == null) {
+      this.bxl = new b(this);
+    }
+    return this.bxl;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((this.bxg) && (this.gw != null))
+    {
+      this.gw.moveToPosition(paramInt);
+      return this.gw;
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    long l2 = 0L;
+    long l1 = l2;
+    if (this.bxg)
+    {
+      l1 = l2;
+      if (this.gw != null)
+      {
+        l1 = l2;
+        if (this.gw.moveToPosition(paramInt)) {
+          l1 = this.gw.getLong(this.bxi);
+        }
+      }
+    }
+    return l1;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (!this.bxg) {
+      throw new IllegalStateException("this should only be called when the cursor is valid");
+    }
+    if (!this.gw.moveToPosition(paramInt)) {
+      throw new IllegalStateException("couldn't move cursor to position ".concat(String.valueOf(paramInt)));
+    }
+    View localView = paramView;
+    if (paramView == null) {
+      localView = newView(this.mContext, this.gw, paramViewGroup);
+    }
+    a(localView, this.gw);
+    return localView;
+  }
+  
+  public boolean hasStableIds()
+  {
+    return true;
+  }
+  
+  public abstract View newView(Context paramContext, Cursor paramCursor, ViewGroup paramViewGroup);
+  
+  protected final void onContentChanged()
+  {
+    if ((this.bxh) && (this.gw != null) && (!this.gw.isClosed())) {
+      this.bxg = this.gw.requery();
     }
   }
   
   final class a
+    extends ContentObserver
   {
-    a() {}
-    
-    final void hU()
-    {
-      AppMethodBeat.i(250103);
-      a.this.SA = SystemClock.uptimeMillis();
-      a locala = a.this;
-      long l1 = a.this.SA;
-      long l2 = SystemClock.uptimeMillis();
-      int j = 0;
-      int i;
-      if (j < locala.Sx.size())
-      {
-        a.b localb = (a.b)locala.Sx.get(j);
-        Long localLong;
-        if (localb != null)
-        {
-          localLong = (Long)locala.Sw.get(localb);
-          if (localLong != null) {
-            break label109;
-          }
-          i = 1;
-        }
-        for (;;)
-        {
-          if (i != 0) {
-            localb.i(l1);
-          }
-          j += 1;
-          break;
-          label109:
-          if (localLong.longValue() < l2)
-          {
-            locala.Sw.remove(localb);
-            i = 1;
-          }
-          else
-          {
-            i = 0;
-          }
-        }
-      }
-      if (locala.SB)
-      {
-        i = locala.Sx.size() - 1;
-        while (i >= 0)
-        {
-          if (locala.Sx.get(i) == null) {
-            locala.Sx.remove(i);
-          }
-          i -= 1;
-        }
-        locala.SB = false;
-      }
-      if (a.this.Sx.size() > 0) {
-        a.this.hT().hV();
-      }
-      AppMethodBeat.o(250103);
-    }
-  }
-  
-  static abstract interface b
-  {
-    public abstract boolean i(long paramLong);
-  }
-  
-  static abstract class c
-  {
-    final a.a SD;
-    
-    c(a.a parama)
-    {
-      this.SD = parama;
-    }
-    
-    abstract void hV();
-  }
-  
-  static final class d
-    extends a.c
-  {
-    long SE;
-    private final Handler mHandler;
-    private final Runnable mRunnable;
-    
-    d(a.a parama)
+    a()
     {
       super();
-      AppMethodBeat.i(250112);
-      this.SE = -1L;
-      this.mRunnable = new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(250109);
-          a.d.this.SE = SystemClock.uptimeMillis();
-          a.d.this.SD.hU();
-          AppMethodBeat.o(250109);
-        }
-      };
-      this.mHandler = new Handler(Looper.myLooper());
-      AppMethodBeat.o(250112);
+      AppMethodBeat.i(192805);
+      AppMethodBeat.o(192805);
     }
     
-    final void hV()
+    public final boolean deliverSelfNotifications()
     {
-      AppMethodBeat.i(250113);
-      long l = Math.max(10L - (SystemClock.uptimeMillis() - this.SE), 0L);
-      this.mHandler.postDelayed(this.mRunnable, l);
-      AppMethodBeat.o(250113);
+      return true;
+    }
+    
+    public final void onChange(boolean paramBoolean)
+    {
+      AppMethodBeat.i(192825);
+      a.this.onContentChanged();
+      AppMethodBeat.o(192825);
     }
   }
   
-  static final class e
-    extends a.c
+  final class b
+    extends DataSetObserver
   {
-    private final Choreographer SG;
-    private final Choreographer.FrameCallback SH;
+    b() {}
     
-    e(a.a parama)
+    public final void onChanged()
     {
-      super();
-      AppMethodBeat.i(250119);
-      this.SG = Choreographer.getInstance();
-      this.SH = new Choreographer.FrameCallback()
-      {
-        public final void doFrame(long paramAnonymousLong)
-        {
-          AppMethodBeat.i(250117);
-          a.e.this.SD.hU();
-          AppMethodBeat.o(250117);
-        }
-      };
-      AppMethodBeat.o(250119);
+      AppMethodBeat.i(192826);
+      a.this.bxg = true;
+      a.this.notifyDataSetChanged();
+      AppMethodBeat.o(192826);
     }
     
-    final void hV()
+    public final void onInvalidated()
     {
-      AppMethodBeat.i(250121);
-      this.SG.postFrameCallback(this.SH);
-      AppMethodBeat.o(250121);
+      AppMethodBeat.i(192836);
+      a.this.bxg = false;
+      a.this.notifyDataSetInvalidated();
+      AppMethodBeat.o(192836);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.d.a.a
  * JD-Core Version:    0.7.0.1
  */

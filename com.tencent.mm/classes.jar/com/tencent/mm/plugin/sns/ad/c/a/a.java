@@ -4,11 +4,10 @@ import android.net.Uri;
 import android.net.Uri.Builder;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.brandservice.a.f;
-import com.tencent.mm.plugin.brandservice.a.f.a;
-import com.tencent.mm.plugin.sns.ad.i.d;
+import com.tencent.mm.plugin.brandservice.api.h.a;
+import com.tencent.mm.plugin.sns.ad.j.d;
 import com.tencent.mm.plugin.sns.data.t;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ao;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ar;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,10 +19,10 @@ public final class a
 {
   public static String[] a(Collection<String> paramCollection, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(204024);
+    AppMethodBeat.i(309929);
     if (d.isEmpty(paramCollection))
     {
-      AppMethodBeat.o(204024);
+      AppMethodBeat.o(309929);
       return null;
     }
     LinkedList localLinkedList = new LinkedList();
@@ -36,7 +35,7 @@ public final class a
       {
         paramCollection = str;
         if (!TextUtils.isEmpty(paramString2)) {
-          paramCollection = ao.m(str, new String[] { "traceid=" + paramString1 + "&aid=" + paramString2 });
+          paramCollection = ar.n(str, new String[] { "traceid=" + paramString1 + "&aid=" + paramString2 });
         }
       }
       if (TextUtils.isEmpty(paramString3)) {
@@ -44,7 +43,7 @@ public final class a
       }
       for (str = paramString4;; str = paramString3)
       {
-        paramCollection = aYn(t.kw(paramCollection, str));
+        paramCollection = aWi(t.lY(paramCollection, str));
         if (TextUtils.isEmpty(paramCollection)) {
           break;
         }
@@ -54,72 +53,69 @@ public final class a
       }
     }
     paramCollection = (String[])localLinkedList.toArray(new String[0]);
-    AppMethodBeat.o(204024);
+    AppMethodBeat.o(309929);
     return paramCollection;
   }
   
-  public static String aYn(String paramString)
+  public static String aWi(String paramString)
   {
-    AppMethodBeat.i(204021);
+    AppMethodBeat.i(309910);
     try
     {
       if (TextUtils.isEmpty(paramString))
       {
-        AppMethodBeat.o(204021);
+        AppMethodBeat.o(309910);
         return "";
       }
       paramString = Uri.parse(paramString);
-      if ((paramString != null) && ("1".equals(paramString.getQueryParameter("canPrefetch"))))
-      {
+      if ((paramString != null) && ("1".equals(paramString.getQueryParameter("canPrefetch")))) {
         paramString = paramString.buildUpon().appendQueryParameter("prefetch", "1").build().toString();
-        AppMethodBeat.o(204021);
-        return paramString;
       }
     }
-    catch (Throwable paramString)
+    finally
     {
-      AppMethodBeat.o(204021);
+      AppMethodBeat.o(309910);
       return "";
     }
-    AppMethodBeat.o(204021);
+    AppMethodBeat.o(309910);
     return "";
   }
   
-  public static String aYo(String paramString)
+  public static String aWj(String paramString)
   {
-    AppMethodBeat.i(204022);
-    String str = aYn(paramString);
+    AppMethodBeat.i(309913);
+    String str = aWi(paramString);
     if (!TextUtils.isEmpty(str))
     {
-      AppMethodBeat.o(204022);
+      AppMethodBeat.o(309913);
       return str;
     }
     Log.d("SnsAd.H5PrefetchHelper", "the usePrefetch return value is ".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(204022);
+    AppMethodBeat.o(309913);
     return paramString;
   }
   
-  public static void hr(List<String> paramList)
+  public static void kt(List<String> paramList)
   {
-    AppMethodBeat.i(204023);
+    AppMethodBeat.i(309919);
     ArrayList localArrayList = new ArrayList();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       String str = (String)paramList.next();
-      f.a locala = new f.a();
+      h.a locala = new h.a();
       locala.url = str;
-      locala.svv = 181;
+      locala.vAZ = 181;
       localArrayList.add(locala);
     }
-    com.tencent.mm.plugin.report.service.h.IzE.p(1612L, 44L, localArrayList.size());
-    paramList = (f)com.tencent.mm.kernel.h.ae(f.class);
+    com.tencent.mm.plugin.report.service.h.OAn.p(1612L, 44L, localArrayList.size());
+    paramList = (com.tencent.mm.plugin.brandservice.api.h)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.brandservice.api.h.class);
     if (paramList != null)
     {
-      paramList.cq(localArrayList);
+      paramList.ei(localArrayList);
       Log.d("SnsAd.H5PrefetchHelper", "the h5 prefetch is done");
     }
-    AppMethodBeat.o(204023);
+    AppMethodBeat.o(309919);
   }
 }
 

@@ -12,17 +12,17 @@ import java.lang.ref.WeakReference;
 public final class a
   extends ImageSpan
 {
-  private WeakReference<Drawable> uvM;
+  private WeakReference<Drawable> xCl;
   
   public a(Drawable paramDrawable)
   {
     super(paramDrawable);
   }
   
-  private Drawable fhz()
+  private Drawable gro()
   {
-    AppMethodBeat.i(232531);
-    Object localObject = this.uvM;
+    AppMethodBeat.i(286900);
+    Object localObject = this.xCl;
     Drawable localDrawable = null;
     if (localObject != null) {
       localDrawable = (Drawable)((WeakReference)localObject).get();
@@ -31,27 +31,27 @@ public final class a
     if (localDrawable == null)
     {
       localObject = getDrawable();
-      this.uvM = new WeakReference(localObject);
+      this.xCl = new WeakReference(localObject);
     }
-    AppMethodBeat.o(232531);
+    AppMethodBeat.o(286900);
     return localObject;
   }
   
   public final void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
   {
-    AppMethodBeat.i(232528);
-    paramCharSequence = fhz();
+    AppMethodBeat.i(286923);
+    paramCharSequence = gro();
     paramCanvas.save();
     paramCanvas.translate(paramFloat, paramInt5 - paramCharSequence.getBounds().bottom - paramPaint.getFontMetricsInt().descent / 2);
     paramCharSequence.draw(paramCanvas);
     paramCanvas.restore();
-    AppMethodBeat.o(232528);
+    AppMethodBeat.o(286923);
   }
   
   public final int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
   {
-    AppMethodBeat.i(232525);
-    paramCharSequence = fhz().getBounds();
+    AppMethodBeat.i(286913);
+    paramCharSequence = gro().getBounds();
     if (paramFontMetricsInt != null)
     {
       paramPaint = paramPaint.getFontMetricsInt();
@@ -61,7 +61,7 @@ public final class a
       paramFontMetricsInt.bottom = paramPaint.bottom;
     }
     paramInt1 = paramCharSequence.right;
-    AppMethodBeat.o(232525);
+    AppMethodBeat.o(286913);
     return paramInt1;
   }
 }

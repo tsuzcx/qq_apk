@@ -61,315 +61,415 @@ import android.view.accessibility.AccessibilityManager;
 import android.view.accessibility.CaptioningManager;
 import android.view.inputmethod.InputMethodManager;
 import android.view.textservice.TextServicesManager;
+import androidx.core.content.a.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.util.HashMap;
 
 public class a
 {
-  private static TypedValue JU;
+  private static final Object bpX;
+  private static TypedValue bpY;
   private static final Object sLock;
   
   static
   {
-    AppMethodBeat.i(250535);
+    AppMethodBeat.i(195605);
     sLock = new Object();
-    AppMethodBeat.o(250535);
-  }
-  
-  public static File[] P(Context paramContext)
-  {
-    AppMethodBeat.i(250517);
-    if (Build.VERSION.SDK_INT >= 19)
-    {
-      paramContext = paramContext.getExternalFilesDirs(null);
-      AppMethodBeat.o(250517);
-      return paramContext;
-    }
-    paramContext = paramContext.getExternalFilesDir(null);
-    AppMethodBeat.o(250517);
-    return new File[] { paramContext };
-  }
-  
-  public static File[] Q(Context paramContext)
-  {
-    AppMethodBeat.i(250518);
-    if (Build.VERSION.SDK_INT >= 19)
-    {
-      paramContext = paramContext.getExternalCacheDirs();
-      AppMethodBeat.o(250518);
-      return paramContext;
-    }
-    paramContext = paramContext.getExternalCacheDir();
-    AppMethodBeat.o(250518);
-    return new File[] { paramContext };
-  }
-  
-  public static File R(Context paramContext)
-  {
-    AppMethodBeat.i(250529);
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      paramContext = paramContext.getNoBackupFilesDir();
-      AppMethodBeat.o(250529);
-      return paramContext;
-    }
-    paramContext = k(new File(paramContext.getApplicationInfo().dataDir, "no_backup"));
-    AppMethodBeat.o(250529);
-    return paramContext;
-  }
-  
-  public static boolean S(Context paramContext)
-  {
-    AppMethodBeat.i(250532);
-    if (Build.VERSION.SDK_INT >= 24)
-    {
-      boolean bool = paramContext.isDeviceProtectedStorage();
-      AppMethodBeat.o(250532);
-      return bool;
-    }
-    AppMethodBeat.o(250532);
-    return false;
+    bpX = new Object();
+    AppMethodBeat.o(195605);
   }
   
   public static <T> T a(Context paramContext, Class<T> paramClass)
   {
-    AppMethodBeat.i(250534);
+    AppMethodBeat.i(195599);
     if (Build.VERSION.SDK_INT >= 23)
     {
-      paramContext = paramContext.getSystemService(paramClass);
-      AppMethodBeat.o(250534);
+      paramContext = d.a(paramContext, paramClass);
+      AppMethodBeat.o(195599);
       return paramContext;
     }
     if (Build.VERSION.SDK_INT >= 23) {}
-    for (paramClass = paramContext.getSystemServiceName(paramClass); paramClass != null; paramClass = (String)a.JV.get(paramClass))
+    for (paramClass = d.b(paramContext, paramClass); paramClass != null; paramClass = (String)f.bpZ.get(paramClass))
     {
       paramContext = paramContext.getSystemService(paramClass);
-      AppMethodBeat.o(250534);
+      AppMethodBeat.o(195599);
       return paramContext;
     }
-    AppMethodBeat.o(250534);
+    AppMethodBeat.o(195599);
     return null;
   }
   
   public static void a(Context paramContext, Intent paramIntent, Bundle paramBundle)
   {
-    AppMethodBeat.i(250516);
+    AppMethodBeat.i(195517);
     if (Build.VERSION.SDK_INT >= 16)
     {
-      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bm(paramBundle).bm(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramIntent.aFh(), "androidx/core/content/ContextCompat", "startActivity", "(Landroid/content/Context;Landroid/content/Intent;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;Landroid/os/Bundle;)V");
-      paramContext.startActivity((Intent)paramIntent.sf(0), (Bundle)paramIntent.sf(1));
-      com.tencent.mm.hellhoundlib.a.a.c(paramContext, "androidx/core/content/ContextCompat", "startActivity", "(Landroid/content/Context;Landroid/content/Intent;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;Landroid/os/Bundle;)V");
-      AppMethodBeat.o(250516);
+      a.a.a(paramContext, paramIntent, paramBundle);
+      AppMethodBeat.o(195517);
       return;
     }
-    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bm(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramIntent.aFh(), "androidx/core/content/ContextCompat", "startActivity", "(Landroid/content/Context;Landroid/content/Intent;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramIntent.sf(0));
+    paramIntent = new com.tencent.mm.hellhoundlib.b.a().cG(paramIntent);
+    com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramIntent.aYi(), "androidx/core/content/ContextCompat", "startActivity", "(Landroid/content/Context;Landroid/content/Intent;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramIntent.sb(0));
     com.tencent.mm.hellhoundlib.a.a.c(paramContext, "androidx/core/content/ContextCompat", "startActivity", "(Landroid/content/Context;Landroid/content/Intent;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(250516);
+    AppMethodBeat.o(195517);
   }
   
   public static boolean a(Context paramContext, Intent[] paramArrayOfIntent)
   {
-    AppMethodBeat.i(250514);
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      paramArrayOfIntent = new com.tencent.mm.hellhoundlib.b.a().bm(null).bm(paramArrayOfIntent);
-      com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramArrayOfIntent.aFh(), "androidx/core/content/ContextCompat", "startActivities", "(Landroid/content/Context;[Landroid/content/Intent;Landroid/os/Bundle;)Z", "Undefined", "startActivities", "([Landroid/content/Intent;Landroid/os/Bundle;)V");
-      paramContext.startActivities((Intent[])paramArrayOfIntent.sf(0), (Bundle)paramArrayOfIntent.sf(1));
-      com.tencent.mm.hellhoundlib.a.a.c(paramContext, "androidx/core/content/ContextCompat", "startActivities", "(Landroid/content/Context;[Landroid/content/Intent;Landroid/os/Bundle;)Z", "Undefined", "startActivities", "([Landroid/content/Intent;Landroid/os/Bundle;)V");
+    AppMethodBeat.i(195504);
+    if (Build.VERSION.SDK_INT >= 16) {
+      a.a.a(paramContext, paramArrayOfIntent, null);
     }
     for (;;)
     {
-      AppMethodBeat.o(250514);
+      AppMethodBeat.o(195504);
       return true;
-      paramArrayOfIntent = new com.tencent.mm.hellhoundlib.b.a().bm(paramArrayOfIntent);
-      com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramArrayOfIntent.aFh(), "androidx/core/content/ContextCompat", "startActivities", "(Landroid/content/Context;[Landroid/content/Intent;Landroid/os/Bundle;)Z", "Undefined", "startActivities", "([Landroid/content/Intent;)V");
-      paramContext.startActivities((Intent[])paramArrayOfIntent.sf(0));
+      paramArrayOfIntent = new com.tencent.mm.hellhoundlib.b.a().cG(paramArrayOfIntent);
+      com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramArrayOfIntent.aYi(), "androidx/core/content/ContextCompat", "startActivities", "(Landroid/content/Context;[Landroid/content/Intent;Landroid/os/Bundle;)Z", "Undefined", "startActivities", "([Landroid/content/Intent;)V");
+      paramContext.startActivities((Intent[])paramArrayOfIntent.sb(0));
       com.tencent.mm.hellhoundlib.a.a.c(paramContext, "androidx/core/content/ContextCompat", "startActivities", "(Landroid/content/Context;[Landroid/content/Intent;Landroid/os/Bundle;)Z", "Undefined", "startActivities", "([Landroid/content/Intent;)V");
     }
   }
   
+  public static File[] aa(Context paramContext)
+  {
+    AppMethodBeat.i(195527);
+    if (Build.VERSION.SDK_INT >= 19)
+    {
+      paramContext = b.g(paramContext, null);
+      AppMethodBeat.o(195527);
+      return paramContext;
+    }
+    paramContext = paramContext.getExternalFilesDir(null);
+    AppMethodBeat.o(195527);
+    return new File[] { paramContext };
+  }
+  
+  public static File[] ab(Context paramContext)
+  {
+    AppMethodBeat.i(195537);
+    if (Build.VERSION.SDK_INT >= 19)
+    {
+      paramContext = b.ab(paramContext);
+      AppMethodBeat.o(195537);
+      return paramContext;
+    }
+    paramContext = paramContext.getExternalCacheDir();
+    AppMethodBeat.o(195537);
+    return new File[] { paramContext };
+  }
+  
+  public static File ac(Context paramContext)
+  {
+    AppMethodBeat.i(195573);
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      paramContext = c.ac(paramContext);
+      AppMethodBeat.o(195573);
+      return paramContext;
+    }
+    paramContext = k(new File(paramContext.getApplicationInfo().dataDir, "no_backup"));
+    AppMethodBeat.o(195573);
+    return paramContext;
+  }
+  
+  public static boolean ad(Context paramContext)
+  {
+    AppMethodBeat.i(195589);
+    if (Build.VERSION.SDK_INT >= 24)
+    {
+      boolean bool = e.ad(paramContext);
+      AppMethodBeat.o(195589);
+      return bool;
+    }
+    AppMethodBeat.o(195589);
+    return false;
+  }
+  
   public static int checkSelfPermission(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(250527);
+    AppMethodBeat.i(195566);
     if (paramString == null)
     {
       paramContext = new IllegalArgumentException("permission is null");
-      AppMethodBeat.o(250527);
+      AppMethodBeat.o(195566);
       throw paramContext;
     }
     int i = paramContext.checkPermission(paramString, Process.myPid(), Process.myUid());
-    AppMethodBeat.o(250527);
+    AppMethodBeat.o(195566);
     return i;
   }
   
   private static File k(File paramFile)
   {
-    for (;;)
+    AppMethodBeat.i(195581);
+    synchronized (bpX)
     {
-      try
+      if (!paramFile.exists())
       {
-        AppMethodBeat.i(250531);
-        if ((!paramFile.exists()) && (!paramFile.mkdirs()))
+        if (paramFile.mkdirs())
         {
-          if (paramFile.exists())
-          {
-            AppMethodBeat.o(250531);
-            return paramFile;
-          }
-          new StringBuilder("Unable to create files subdir ").append(paramFile.getPath());
-          paramFile = null;
-          AppMethodBeat.o(250531);
-          continue;
+          AppMethodBeat.o(195581);
+          return paramFile;
         }
-        AppMethodBeat.o(250531);
+        new StringBuilder("Unable to create files subdir ").append(paramFile.getPath());
       }
-      finally {}
+      AppMethodBeat.o(195581);
+      return paramFile;
     }
   }
   
-  public static ColorStateList l(Context paramContext, @androidx.annotation.a int paramInt)
+  public static ColorStateList l(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(250522);
-    if (Build.VERSION.SDK_INT >= 23)
-    {
-      paramContext = paramContext.getColorStateList(paramInt);
-      AppMethodBeat.o(250522);
-      return paramContext;
-    }
-    paramContext = paramContext.getResources().getColorStateList(paramInt);
-    AppMethodBeat.o(250522);
+    AppMethodBeat.i(195554);
+    paramContext = f.c(paramContext.getResources(), paramInt, paramContext.getTheme());
+    AppMethodBeat.o(195554);
     return paramContext;
   }
   
   public static Drawable m(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(250519);
+    AppMethodBeat.i(195547);
     if (Build.VERSION.SDK_INT >= 21)
     {
-      paramContext = paramContext.getDrawable(paramInt);
-      AppMethodBeat.o(250519);
+      paramContext = c.m(paramContext, paramInt);
+      AppMethodBeat.o(195547);
       return paramContext;
     }
     if (Build.VERSION.SDK_INT >= 16)
     {
       paramContext = paramContext.getResources().getDrawable(paramInt);
-      AppMethodBeat.o(250519);
+      AppMethodBeat.o(195547);
       return paramContext;
     }
     synchronized (sLock)
     {
-      if (JU == null) {
-        JU = new TypedValue();
+      if (bpY == null) {
+        bpY = new TypedValue();
       }
-      paramContext.getResources().getValue(paramInt, JU, true);
-      paramInt = JU.resourceId;
+      paramContext.getResources().getValue(paramInt, bpY, true);
+      paramInt = bpY.resourceId;
       paramContext = paramContext.getResources().getDrawable(paramInt);
-      AppMethodBeat.o(250519);
+      AppMethodBeat.o(195547);
       return paramContext;
     }
   }
   
-  public static int w(Context paramContext, @androidx.annotation.a int paramInt)
+  public static int w(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(250525);
+    AppMethodBeat.i(195561);
     if (Build.VERSION.SDK_INT >= 23)
     {
-      paramInt = paramContext.getColor(paramInt);
-      AppMethodBeat.o(250525);
+      paramInt = d.w(paramContext, paramInt);
+      AppMethodBeat.o(195561);
       return paramInt;
     }
     paramInt = paramContext.getResources().getColor(paramInt);
-    AppMethodBeat.o(250525);
+    AppMethodBeat.o(195561);
     return paramInt;
   }
   
-  static final class a
+  static final class b
   {
-    static final HashMap<Class<?>, String> JV;
+    static File[] ab(Context paramContext)
+    {
+      AppMethodBeat.i(195505);
+      paramContext = paramContext.getExternalCacheDirs();
+      AppMethodBeat.o(195505);
+      return paramContext;
+    }
+    
+    static File[] ae(Context paramContext)
+    {
+      AppMethodBeat.i(195524);
+      paramContext = paramContext.getObbDirs();
+      AppMethodBeat.o(195524);
+      return paramContext;
+    }
+    
+    static File[] g(Context paramContext, String paramString)
+    {
+      AppMethodBeat.i(195514);
+      paramContext = paramContext.getExternalFilesDirs(paramString);
+      AppMethodBeat.o(195514);
+      return paramContext;
+    }
+  }
+  
+  static final class c
+  {
+    static File ac(Context paramContext)
+    {
+      AppMethodBeat.i(195542);
+      paramContext = paramContext.getNoBackupFilesDir();
+      AppMethodBeat.o(195542);
+      return paramContext;
+    }
+    
+    static File af(Context paramContext)
+    {
+      AppMethodBeat.i(195550);
+      paramContext = paramContext.getCodeCacheDir();
+      AppMethodBeat.o(195550);
+      return paramContext;
+    }
+    
+    static Drawable m(Context paramContext, int paramInt)
+    {
+      AppMethodBeat.i(195530);
+      paramContext = paramContext.getDrawable(paramInt);
+      AppMethodBeat.o(195530);
+      return paramContext;
+    }
+  }
+  
+  static final class d
+  {
+    static <T> T a(Context paramContext, Class<T> paramClass)
+    {
+      AppMethodBeat.i(195543);
+      paramContext = paramContext.getSystemService(paramClass);
+      AppMethodBeat.o(195543);
+      return paramContext;
+    }
+    
+    static String b(Context paramContext, Class<?> paramClass)
+    {
+      AppMethodBeat.i(195552);
+      paramContext = paramContext.getSystemServiceName(paramClass);
+      AppMethodBeat.o(195552);
+      return paramContext;
+    }
+    
+    static ColorStateList l(Context paramContext, int paramInt)
+    {
+      AppMethodBeat.i(195525);
+      paramContext = paramContext.getColorStateList(paramInt);
+      AppMethodBeat.o(195525);
+      return paramContext;
+    }
+    
+    static int w(Context paramContext, int paramInt)
+    {
+      AppMethodBeat.i(195534);
+      paramInt = paramContext.getColor(paramInt);
+      AppMethodBeat.o(195534);
+      return paramInt;
+    }
+  }
+  
+  static final class e
+  {
+    static boolean ad(Context paramContext)
+    {
+      AppMethodBeat.i(195644);
+      boolean bool = paramContext.isDeviceProtectedStorage();
+      AppMethodBeat.o(195644);
+      return bool;
+    }
+    
+    static File ag(Context paramContext)
+    {
+      AppMethodBeat.i(195625);
+      paramContext = paramContext.getDataDir();
+      AppMethodBeat.o(195625);
+      return paramContext;
+    }
+    
+    static Context ah(Context paramContext)
+    {
+      AppMethodBeat.i(195633);
+      paramContext = paramContext.createDeviceProtectedStorageContext();
+      AppMethodBeat.o(195633);
+      return paramContext;
+    }
+  }
+  
+  static final class f
+  {
+    static final HashMap<Class<?>, String> bpZ;
     
     static
     {
-      AppMethodBeat.i(250499);
-      JV = new HashMap();
+      AppMethodBeat.i(195546);
+      bpZ = new HashMap();
       if (Build.VERSION.SDK_INT >= 22)
       {
-        JV.put(SubscriptionManager.class, "telephony_subscription_service");
-        JV.put(UsageStatsManager.class, "usagestats");
+        bpZ.put(SubscriptionManager.class, "telephony_subscription_service");
+        bpZ.put(UsageStatsManager.class, "usagestats");
       }
       if (Build.VERSION.SDK_INT >= 21)
       {
-        JV.put(AppWidgetManager.class, "appwidget");
-        JV.put(BatteryManager.class, "batterymanager");
-        JV.put(CameraManager.class, "camera");
-        JV.put(JobScheduler.class, "jobscheduler");
-        JV.put(LauncherApps.class, "launcherapps");
-        JV.put(MediaProjectionManager.class, "media_projection");
-        JV.put(MediaSessionManager.class, "media_session");
-        JV.put(RestrictionsManager.class, "restrictions");
-        JV.put(TelecomManager.class, "telecom");
-        JV.put(TvInputManager.class, "tv_input");
+        bpZ.put(AppWidgetManager.class, "appwidget");
+        bpZ.put(BatteryManager.class, "batterymanager");
+        bpZ.put(CameraManager.class, "camera");
+        bpZ.put(JobScheduler.class, "jobscheduler");
+        bpZ.put(LauncherApps.class, "launcherapps");
+        bpZ.put(MediaProjectionManager.class, "media_projection");
+        bpZ.put(MediaSessionManager.class, "media_session");
+        bpZ.put(RestrictionsManager.class, "restrictions");
+        bpZ.put(TelecomManager.class, "telecom");
+        bpZ.put(TvInputManager.class, "tv_input");
       }
       if (Build.VERSION.SDK_INT >= 19)
       {
-        JV.put(AppOpsManager.class, "appops");
-        JV.put(CaptioningManager.class, "captioning");
-        JV.put(ConsumerIrManager.class, "consumer_ir");
-        JV.put(PrintManager.class, "print");
+        bpZ.put(AppOpsManager.class, "appops");
+        bpZ.put(CaptioningManager.class, "captioning");
+        bpZ.put(ConsumerIrManager.class, "consumer_ir");
+        bpZ.put(PrintManager.class, "print");
       }
       if (Build.VERSION.SDK_INT >= 18) {
-        JV.put(BluetoothManager.class, "bluetooth");
+        bpZ.put(BluetoothManager.class, "bluetooth");
       }
       if (Build.VERSION.SDK_INT >= 17)
       {
-        JV.put(DisplayManager.class, "display");
-        JV.put(UserManager.class, "user");
+        bpZ.put(DisplayManager.class, "display");
+        bpZ.put(UserManager.class, "user");
       }
       if (Build.VERSION.SDK_INT >= 16)
       {
-        JV.put(InputManager.class, "input");
-        JV.put(MediaRouter.class, "media_router");
-        JV.put(NsdManager.class, "servicediscovery");
+        bpZ.put(InputManager.class, "input");
+        bpZ.put(MediaRouter.class, "media_router");
+        bpZ.put(NsdManager.class, "servicediscovery");
       }
-      JV.put(AccessibilityManager.class, "accessibility");
-      JV.put(AccountManager.class, "account");
-      JV.put(ActivityManager.class, "activity");
-      JV.put(AlarmManager.class, "alarm");
-      JV.put(AudioManager.class, "audio");
-      JV.put(ClipboardManager.class, "clipboard");
-      JV.put(ConnectivityManager.class, "connectivity");
-      JV.put(DevicePolicyManager.class, "device_policy");
-      JV.put(DownloadManager.class, "download");
-      JV.put(DropBoxManager.class, "dropbox");
-      JV.put(InputMethodManager.class, "input_method");
-      JV.put(KeyguardManager.class, "keyguard");
-      JV.put(LayoutInflater.class, "layout_inflater");
-      JV.put(LocationManager.class, "location");
-      JV.put(NfcManager.class, "nfc");
-      JV.put(NotificationManager.class, "notification");
-      JV.put(PowerManager.class, "power");
-      JV.put(SearchManager.class, "search");
-      JV.put(SensorManager.class, "sensor");
-      JV.put(StorageManager.class, "storage");
-      JV.put(TelephonyManager.class, "phone");
-      JV.put(TextServicesManager.class, "textservices");
-      JV.put(UiModeManager.class, "uimode");
-      JV.put(UsbManager.class, "usb");
-      JV.put(Vibrator.class, "vibrator");
-      JV.put(WallpaperManager.class, "wallpaper");
-      JV.put(WifiP2pManager.class, "wifip2p");
-      JV.put(WifiManager.class, "wifi");
-      JV.put(WindowManager.class, "window");
-      AppMethodBeat.o(250499);
+      bpZ.put(AccessibilityManager.class, "accessibility");
+      bpZ.put(AccountManager.class, "account");
+      bpZ.put(ActivityManager.class, "activity");
+      bpZ.put(AlarmManager.class, "alarm");
+      bpZ.put(AudioManager.class, "audio");
+      bpZ.put(ClipboardManager.class, "clipboard");
+      bpZ.put(ConnectivityManager.class, "connectivity");
+      bpZ.put(DevicePolicyManager.class, "device_policy");
+      bpZ.put(DownloadManager.class, "download");
+      bpZ.put(DropBoxManager.class, "dropbox");
+      bpZ.put(InputMethodManager.class, "input_method");
+      bpZ.put(KeyguardManager.class, "keyguard");
+      bpZ.put(LayoutInflater.class, "layout_inflater");
+      bpZ.put(LocationManager.class, "location");
+      bpZ.put(NfcManager.class, "nfc");
+      bpZ.put(NotificationManager.class, "notification");
+      bpZ.put(PowerManager.class, "power");
+      bpZ.put(SearchManager.class, "search");
+      bpZ.put(SensorManager.class, "sensor");
+      bpZ.put(StorageManager.class, "storage");
+      bpZ.put(TelephonyManager.class, "phone");
+      bpZ.put(TextServicesManager.class, "textservices");
+      bpZ.put(UiModeManager.class, "uimode");
+      bpZ.put(UsbManager.class, "usb");
+      bpZ.put(Vibrator.class, "vibrator");
+      bpZ.put(WallpaperManager.class, "wallpaper");
+      bpZ.put(WifiP2pManager.class, "wifip2p");
+      bpZ.put(WifiManager.class, "wifi");
+      bpZ.put(WindowManager.class, "window");
+      AppMethodBeat.o(195546);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     androidx.core.content.a
  * JD-Core Version:    0.7.0.1
  */

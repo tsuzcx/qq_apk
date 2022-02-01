@@ -1,24 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/jd"
+<com.tencent.mm.plugin.fav.ui.widget.FavDetailScrollView android:id="@id/j4h" android:background="@color/pv" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:padding="@dimen/ee" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/j6">
-        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <FrameLayout android:id="@id/cc4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/e_">
-                    <ImageView android:id="@id/cc2" style="@style/j5" />
-                    <ImageView android:layout_gravity="center" android:id="@id/cc9" android:visibility="gone" android:src="@drawable/bd8" android:contentDescription="@string/hb" style="@style/jb" />
-                    <ImageView android:layout_gravity="bottom|center|right" android:id="@id/cc8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bti" android:contentDescription="@string/hb" />
-                </FrameLayout>
-                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <TextView android:id="@id/cdn" android:text="{title}" style="@style/j_" />
-                    <TextView android:id="@id/cbm" android:layout_marginTop="3.0dip" android:text="{desc}" style="@style/ja" />
-                    <TextView android:id="@id/cdo" android:layout_marginTop="3.0dip" android:text="{title}" style="@style/j_" />
-                    <TextView android:id="@id/cbn" android:layout_marginTop="3.0dip" android:text="{desc}" style="@style/ja" />
-                </LinearLayout>
-            </LinearLayout>
-            <include layout="@layout/a7h" />
-            <include layout="@layout/a7g" />
-        </LinearLayout>
-        <include layout="@layout/a7e" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/jc">
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/cvh" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/a6h" />
     </LinearLayout>
-</FrameLayout>
+</com.tencent.mm.plugin.fav.ui.widget.FavDetailScrollView>

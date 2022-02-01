@@ -4,7 +4,6 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.base.c;
 import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
-import com.tencent.mm.plugin.appbrand.jsapi.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
@@ -14,7 +13,7 @@ public final class h
   private static final int CTRL_INDEX = 362;
   public static final String NAME = "removeLivePusher";
   
-  public final int K(JSONObject paramJSONObject)
+  public final int V(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(145893);
     int i = paramJSONObject.optInt("livePusherId");
@@ -22,10 +21,10 @@ public final class h
     return i;
   }
   
-  public final boolean b(g paramg, int paramInt, View paramView, JSONObject paramJSONObject)
+  public final boolean b(com.tencent.mm.plugin.appbrand.jsapi.h paramh, int paramInt, View paramView, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(145894);
-    super.b(paramg, paramInt, paramView, paramJSONObject);
+    super.b(paramh, paramInt, paramView, paramJSONObject);
     Log.i("MicroMsg.JsApiRemoveLivePusher", "onRemoveView livePusherId=%d", new Object[] { Integer.valueOf(paramInt) });
     if (!(paramView instanceof CoverViewContainer))
     {
@@ -33,21 +32,21 @@ public final class h
       AppMethodBeat.o(145894);
       return false;
     }
-    paramg = (View)((CoverViewContainer)paramView).aA(View.class);
-    if (!(paramg instanceof AppBrandLivePusherView))
+    paramh = (View)((CoverViewContainer)paramView).aT(View.class);
+    if (!(paramh instanceof AppBrandLivePusherView))
     {
       Log.e("MicroMsg.JsApiRemoveLivePusher", "targetView not AppBrandLivePusherView");
       AppMethodBeat.o(145894);
       return false;
     }
-    ((AppBrandLivePusherView)paramg).onExit();
+    ((AppBrandLivePusherView)paramh).onExit();
     AppMethodBeat.o(145894);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.live.h
  * JD-Core Version:    0.7.0.1
  */

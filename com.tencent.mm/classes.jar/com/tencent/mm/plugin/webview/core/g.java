@@ -1,250 +1,432 @@
 package com.tencent.mm.plugin.webview.core;
 
-import android.content.Context;
-import com.tencent.mars.cdn.CronetLogic;
+import android.net.Uri;
+import android.net.http.SslCertificate;
+import android.net.http.SslError;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.d;
-import com.tencent.mm.plugin.brandservice.a.f.a;
+import com.tencent.mm.b.p;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
+import com.tencent.mm.ui.widget.MMWebView;
+import com.tencent.threadpool.i;
+import com.tencent.xweb.WebResourceRequest;
+import com.tencent.xweb.WebResourceResponse;
+import java.net.URLEncoder;
+import kotlin.Metadata;
+import kotlin.g.a.a;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
+import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/core/WebViewCommand;", "Lcom/tencent/mm/pluginsdk/cmd/ProcessorCommand;", "()V", "processCommand", "", "context", "Landroid/content/Context;", "args", "", "", "username", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "showToast", "", "tag", "content", "Companion", "webview-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/core/WebPageErrorMonitor;", "", "uin", "", "(J)V", "realUin", "getRealUin", "()J", "realUin$delegate", "Lkotlin/Lazy;", "sampleRate", "getSampleRate", "sampleRate$delegate", "getUin", "reportLoadError", "", "errorCode", "", "description", "", "failingUrl", "appId", "webCoreType", "pageLoadType", "reportReceivedError", "isForMainFrame", "", "reportReceivedHttpError", "request", "Lcom/tencent/xweb/WebResourceRequest;", "response", "Lcom/tencent/xweb/WebResourceResponse;", "reportReceivedReceivedSslError", "error", "Landroid/net/http/SslError;", "shouldReport", "urlEncode", "Companion", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class g
-  implements com.tencent.mm.pluginsdk.cmd.a
 {
-  private static final kotlin.f PHC;
-  public static final a PHD;
+  public static final a WxV;
+  private final j WxW;
+  private final j WxX;
+  final long uin;
   
   static
   {
-    AppMethodBeat.i(215836);
-    PHD = new a((byte)0);
-    PHC = kotlin.g.ar((kotlin.g.a.a)b.PHE);
-    AppMethodBeat.o(215836);
+    AppMethodBeat.i(295174);
+    WxV = new a((byte)0);
+    AppMethodBeat.o(295174);
   }
   
-  public static final void OO()
+  public g(long paramLong)
   {
-    AppMethodBeat.i(215837);
-    com.tencent.mm.pluginsdk.cmd.b.a((com.tencent.mm.pluginsdk.cmd.a)new g(), new String[] { "//webview" });
-    AppMethodBeat.o(215837);
+    AppMethodBeat.i(295121);
+    this.uin = paramLong;
+    this.WxW = k.cm((a)new b(this));
+    this.WxX = k.cm((a)c.WxZ);
+    AppMethodBeat.o(295121);
   }
   
-  private static void fv(String paramString1, String paramString2)
+  private static String EL(String paramString)
   {
-    AppMethodBeat.i(215833);
-    if (!a.gSI())
+    AppMethodBeat.i(295147);
+    if (paramString == null)
     {
-      AppMethodBeat.o(215833);
-      return;
+      AppMethodBeat.o(295147);
+      return "";
     }
-    d.uiThread((kotlin.g.a.a)new c(paramString2));
-    Log.i(paramString1, paramString2);
-    AppMethodBeat.o(215833);
+    paramString = URLEncoder.encode(paramString, "UTF-8");
+    s.s(paramString, "encode(this, \"UTF-8\")");
+    AppMethodBeat.o(295147);
+    return paramString;
   }
   
-  public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
+  private static final void a(SslError paramSslError, g paramg, String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(215835);
-    if (!a.gSI())
-    {
-      AppMethodBeat.o(215835);
-      return false;
+    AppMethodBeat.i(295170);
+    s.u(paramg, "this$0");
+    paramg = paramSslError.getUrl();
+    localObject1 = paramg;
+    if (paramg == null) {
+      localObject1 = "";
     }
-    if (paramArrayOfString != null)
+    paramg = null;
+    try
     {
-      paramContext = kotlin.g.b.b.aj(paramArrayOfString);
-      if (paramContext == null) {
-        break label64;
-      }
+      Uri localUri = Uri.parse((String)localObject1);
+      paramg = localUri;
     }
-    label64:
-    for (paramString = (String)paramContext.next();; paramString = null)
+    finally
     {
-      if (!(p.h(paramString, "//webview") ^ true)) {
-        break label69;
-      }
-      AppMethodBeat.o(215835);
-      return false;
-      paramContext = null;
-      break;
-    }
-    label69:
-    paramContext = (String)paramContext.next();
-    if (paramContext == null)
-    {
-      paramContext = new t("null cannot be cast to non-null type java.lang.String");
-      AppMethodBeat.o(215835);
-      throw paramContext;
-    }
-    paramContext = paramContext.toLowerCase();
-    p.j(paramContext, "(this as java.lang.String).toLowerCase()");
-    switch (paramContext.hashCode())
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              AppMethodBeat.o(215835);
-              return false;
-            } while (!paramContext.equals("prefetchpkg"));
-            if (paramArrayOfString.length > 2) {
-              break;
-            }
-            AppMethodBeat.o(215835);
-            return false;
-          } while (!paramContext.equals("manifestdebug"));
-          if (paramArrayOfString.length > 2) {
-            break label516;
-          }
-          AppMethodBeat.o(215835);
-          return false;
-        } while (!paramContext.equals("preauth"));
-        if (paramArrayOfString.length > 2) {
-          break;
-        }
-        AppMethodBeat.o(215835);
-        return false;
-      } while (!paramContext.equals("commit"));
-      if (paramArrayOfString.length > 2) {
-        break;
-      }
-      AppMethodBeat.o(215835);
-      return false;
-    } while (!paramContext.equals("upx5"));
-    if (paramArrayOfString.length <= 4)
-    {
-      AppMethodBeat.o(215835);
-      return false;
-      paramContext = paramArrayOfString[2];
-      switch (paramContext.hashCode())
-      {
-      default: 
-      case 3556498: 
-        do
-        {
-          AppMethodBeat.o(215835);
-          return false;
-        } while (!paramContext.equals("test"));
-        h.cqu().putBoolean("webview_page_commit_mock", true);
-        fv("WebViewCommand", "commit mock enable");
-      }
       for (;;)
       {
-        AppMethodBeat.o(215835);
-        return true;
-        if (!paramContext.equals("reset")) {
-          break;
+        int i;
+        Log.e("MicroMsg.WebPageErrorMonitor", s.X("onReceivedError, parse uri error:", localObject1));
+        continue;
+        String str = paramg.getHost();
+        paramg = str;
+        if (str == null)
+        {
+          paramg = "";
+          continue;
+          paramSslError = paramSslError.toString();
         }
-        h.cqu().putBoolean("webview_page_commit_mock", false);
-        fv("WebViewCommand", "commit mock reset");
       }
     }
-    com.tencent.mm.modelstat.a.b.o(paramArrayOfString[2], paramArrayOfString[3], Util.getInt(paramArrayOfString[4], -1));
-    AppMethodBeat.o(215835);
-    return true;
-    paramArrayOfString = paramArrayOfString[2];
-    paramContext = new f.a();
-    paramContext.url = paramArrayOfString;
-    paramContext.svv = 998;
-    paramContext.svw = 10001;
-    CronetLogic.setUserCertVerify(true);
-    h.cqu().putBoolean("webview_use_a8key_lite_header", true);
-    paramArrayOfString = (com.tencent.mm.plugin.brandservice.a.f)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.brandservice.a.f.class);
-    paramString = new ArrayList();
-    paramString.add(paramContext);
-    paramArrayOfString.cq((List)paramString);
-    AppMethodBeat.o(215835);
-    return true;
-    h.cqu().putInt("prefetchUsePkg", Util.getInt(paramArrayOfString[2], -1));
-    AppMethodBeat.o(215835);
-    return true;
-    label516:
-    h.cqu().putInt("fetchManifestDebug", Util.getInt(paramArrayOfString[2], -1));
-    AppMethodBeat.o(215835);
-    return true;
+    if (paramg == null)
+    {
+      paramg = "";
+      i = paramSslError.getPrimaryError();
+      paramSslError = paramSslError.getCertificate();
+      if (paramSslError != null) {
+        break label185;
+      }
+      paramSslError = null;
+      paramSslError = EL(paramSslError);
+      com.tencent.mm.plugin.report.service.h.OAn.b(22086, new Object[] { Integer.valueOf(3), Integer.valueOf(i), paramg, EL((String)localObject1), paramSslError, Integer.valueOf(1), paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      AppMethodBeat.o(295170);
+    }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/core/WebViewCommand$Companion;", "", "()V", "COMMAND_SCENE", "", "COMMAND_SUB_SCENE", "TAG", "", "WEB_VIEW_PAGE_COMMIT_MOCK", "WEB_VIEW_USE_A8KEY_LITE_HEADER", "command", "webViewActivityTranslucent", "", "getWebViewActivityTranslucent", "()Z", "webViewActivityTranslucent$delegate", "Lkotlin/Lazy;", "canDebug", "commitTestNotCall", "fetchManifestDebug", "isDebug", "prefetchUsePkg", "register", "", "useA8keyLiteHeader", "webview-sdk_release"})
+  private static final void a(WebResourceRequest paramWebResourceRequest, g paramg, WebResourceResponse paramWebResourceResponse, String paramString, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(295163);
+    s.u(paramg, "this$0");
+    int i;
+    if (!paramWebResourceRequest.isForMainFrame())
+    {
+      paramg = paramWebResourceRequest.getUrl();
+      if (paramg != null)
+      {
+        paramg = paramg.getPath();
+        if ((paramg == null) || (n.rs(paramg, ".ico") != true)) {}
+      }
+      for (i = 1; i != 0; i = 0)
+      {
+        AppMethodBeat.o(295163);
+        return;
+      }
+    }
+    Object localObject = paramWebResourceRequest.getUrl().getHost();
+    paramg = (g)localObject;
+    if (localObject == null) {
+      paramg = "";
+    }
+    localObject = paramWebResourceRequest.getUrl();
+    if (localObject == null)
+    {
+      localObject = null;
+      localObject = EL((String)localObject);
+      if (paramWebResourceResponse != null) {
+        break label234;
+      }
+      i = -1;
+      label122:
+      if (paramWebResourceResponse != null) {
+        break label243;
+      }
+      paramWebResourceResponse = null;
+      label128:
+      paramWebResourceResponse = EL(paramWebResourceResponse);
+      if (!paramWebResourceRequest.isForMainFrame()) {
+        break label251;
+      }
+    }
+    label234:
+    label243:
+    label251:
+    for (int j = 1;; j = 0)
+    {
+      com.tencent.mm.plugin.report.service.h.OAn.b(22086, new Object[] { Integer.valueOf(2), Integer.valueOf(i), paramg, localObject, paramWebResourceResponse, Integer.valueOf(j), paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      AppMethodBeat.o(295163);
+      return;
+      localObject = ((Uri)localObject).toString();
+      break;
+      i = paramWebResourceResponse.mStatusCode;
+      break label122;
+      paramWebResourceResponse = paramWebResourceResponse.mReasonPhrase;
+      break label128;
+    }
+  }
+  
+  private static final void a(String paramString1, int paramInt1, g paramg, String paramString2, String paramString3, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(295158);
+    s.u(paramg, "this$0");
+    paramg = null;
+    try
+    {
+      Uri localUri = Uri.parse(paramString1);
+      paramg = localUri;
+    }
+    finally
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.WebPageErrorMonitor", s.X("onReceivedError, parse uri error:", paramString1));
+        continue;
+        String str = paramg.getHost();
+        paramg = str;
+        if (str == null) {
+          paramg = "";
+        }
+      }
+    }
+    if (paramg == null)
+    {
+      paramg = "";
+      com.tencent.mm.plugin.report.service.h.OAn.b(22086, new Object[] { Integer.valueOf(4), Integer.valueOf(paramInt1), paramg, EL(paramString1), EL(paramString2), Integer.valueOf(1), paramString3, Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      AppMethodBeat.o(295158);
+      return;
+    }
+  }
+  
+  private static final void a(String paramString1, int paramInt1, g paramg, String paramString2, boolean paramBoolean, String paramString3, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(295152);
+    s.u(paramg, "this$0");
+    paramg = null;
+    try
+    {
+      localObject1 = Uri.parse(paramString1);
+      paramg = (g)localObject1;
+    }
+    finally
+    {
+      for (;;)
+      {
+        Object localObject1;
+        int i;
+        Log.e("MicroMsg.WebPageErrorMonitor", s.X("onReceivedError, parse uri error:", paramString1));
+        continue;
+        String str = paramg.getHost();
+        paramg = str;
+        if (str == null)
+        {
+          paramg = "";
+          continue;
+          i = 0;
+        }
+      }
+    }
+    if (paramg == null)
+    {
+      paramg = "";
+      localObject1 = com.tencent.mm.plugin.report.service.h.OAn;
+      paramString1 = EL(paramString1);
+      paramString2 = EL(paramString2);
+      if (!paramBoolean) {
+        break label165;
+      }
+      i = 1;
+      ((com.tencent.mm.plugin.report.service.h)localObject1).b(22086, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt1), paramg, paramString1, paramString2, Integer.valueOf(i), paramString3, Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      AppMethodBeat.o(295152);
+    }
+  }
+  
+  private final boolean cJe()
+  {
+    AppMethodBeat.i(295144);
+    if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.DEBUG) || ((Log.getLogLevel() <= 1) && (WeChatEnvironment.hasDebugger())))
+    {
+      AppMethodBeat.o(295144);
+      return true;
+    }
+    if ((isl() == 0L) || (isl() == -1L))
+    {
+      AppMethodBeat.o(295144);
+      return true;
+    }
+    if ((isl() <= 0L) || (getSampleRate() <= 0L))
+    {
+      AppMethodBeat.o(295144);
+      return false;
+    }
+    if (isl() % getSampleRate() == 0L)
+    {
+      AppMethodBeat.o(295144);
+      return true;
+    }
+    AppMethodBeat.o(295144);
+    return false;
+  }
+  
+  private final long getSampleRate()
+  {
+    AppMethodBeat.i(295131);
+    long l = ((Number)this.WxX.getValue()).longValue();
+    AppMethodBeat.o(295131);
+    return l;
+  }
+  
+  private final long isl()
+  {
+    AppMethodBeat.i(295125);
+    long l = ((Number)this.WxW.getValue()).longValue();
+    AppMethodBeat.o(295125);
+    return l;
+  }
+  
+  public final void a(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(295203);
+    if (!cJe())
+    {
+      AppMethodBeat.o(295203);
+      return;
+    }
+    if (paramString2 == null)
+    {
+      AppMethodBeat.o(295203);
+      return;
+    }
+    com.tencent.threadpool.h.ahAA.g(new g..ExternalSyntheticLambda2(paramString2, paramInt1, this, paramString1, paramString3, paramInt2, paramInt3), "MicroMsg.WebPageErrorMonitor");
+    AppMethodBeat.o(295203);
+  }
+  
+  public final void a(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, int paramInt3, boolean paramBoolean)
+  {
+    AppMethodBeat.i(295198);
+    if (!cJe())
+    {
+      AppMethodBeat.o(295198);
+      return;
+    }
+    if (paramString2 == null)
+    {
+      AppMethodBeat.o(295198);
+      return;
+    }
+    com.tencent.threadpool.h.ahAA.g(new g..ExternalSyntheticLambda3(paramString2, paramInt1, this, paramString1, paramBoolean, paramString3, paramInt2, paramInt3), "MicroMsg.WebPageErrorMonitor");
+    AppMethodBeat.o(295198);
+  }
+  
+  public final void a(SslError paramSslError, String paramString, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(295214);
+    if (!cJe())
+    {
+      AppMethodBeat.o(295214);
+      return;
+    }
+    if (paramSslError == null)
+    {
+      AppMethodBeat.o(295214);
+      return;
+    }
+    com.tencent.threadpool.h.ahAA.g(new g..ExternalSyntheticLambda0(paramSslError, this, paramString, paramInt1, paramInt2), "MicroMsg.WebPageErrorMonitor");
+    AppMethodBeat.o(295214);
+  }
+  
+  public final void a(WebResourceRequest paramWebResourceRequest, WebResourceResponse paramWebResourceResponse, String paramString, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(295210);
+    if (!cJe())
+    {
+      AppMethodBeat.o(295210);
+      return;
+    }
+    if (paramWebResourceRequest == null)
+    {
+      AppMethodBeat.o(295210);
+      return;
+    }
+    com.tencent.threadpool.h.ahAA.g(new g..ExternalSyntheticLambda1(paramWebResourceRequest, this, paramWebResourceResponse, paramString, paramInt1, paramInt2), "MicroMsg.WebPageErrorMonitor");
+    AppMethodBeat.o(295210);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/core/WebPageErrorMonitor$Companion;", "", "()V", "COMM_FAST_LOAD", "", "DEFAULT_REPORT_SAMPLE_RATE", "", "DEFAULT_UIN", "DEFAULT_UN_LOGIN_UIN", "ERROR_TYPE_HTTP", "ERROR_TYPE_LOAD_ERROR", "ERROR_TYPE_NORMAL", "ERROR_TYPE_SSL", "LOG_ID", "MP_FAST_LOAD", "NORMAL_LOAD", "PAGE_ICON_SUFFIX", "", "SYS_KERNEL", "TAG", "UNKNOWN_KERNEL", "X5_KERNEL", "XWEB_KERNEL", "getWebCoreType", "webView", "Lcom/tencent/mm/ui/widget/MMWebView;", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
-    public static boolean No()
+    public static int g(MMWebView paramMMWebView)
     {
-      AppMethodBeat.i(206927);
-      if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED) || (WeChatEnvironment.hasDebugger()))
+      AppMethodBeat.i(295059);
+      if (paramMMWebView == null)
       {
-        AppMethodBeat.o(206927);
-        return true;
+        AppMethodBeat.o(295059);
+        return 0;
       }
-      AppMethodBeat.o(206927);
-      return false;
-    }
-    
-    public static boolean gSI()
-    {
-      AppMethodBeat.i(206929);
-      if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.DEBUG) || ((Log.getLogLevel() == 0) && (WeChatEnvironment.hasDebugger())))
+      if (paramMMWebView.getIsX5Kernel())
       {
-        AppMethodBeat.o(206929);
-        return true;
+        AppMethodBeat.o(295059);
+        return 1;
       }
-      AppMethodBeat.o(206929);
-      return false;
-    }
-    
-    public static boolean gSJ()
-    {
-      AppMethodBeat.i(206931);
-      boolean bool = h.cqu().getBoolean("webview_page_commit_mock", false);
-      AppMethodBeat.o(206931);
-      return bool;
+      if (paramMMWebView.isXWalkKernel())
+      {
+        AppMethodBeat.o(295059);
+        return 2;
+      }
+      AppMethodBeat.o(295059);
+      return 3;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
-    implements kotlin.g.a.a<Boolean>
+    extends u
+    implements a<Long>
   {
-    public static final b PHE;
-    
-    static
-    {
-      AppMethodBeat.i(206846);
-      PHE = new b();
-      AppMethodBeat.o(206846);
-    }
-    
-    b()
+    b(g paramg)
     {
       super();
     }
+    
+    private Long ism()
+    {
+      AppMethodBeat.i(295045);
+      long l1 = 0L;
+      try
+      {
+        String str = p.getString((int)this.WxY.uin);
+        s.s(str, "getString(uin.toInt())");
+        long l2 = Long.parseLong(str);
+        l1 = l2;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          Log.i("MicroMsg.WebPageErrorMonitor", "uin parse error");
+        }
+      }
+      AppMethodBeat.o(295045);
+      return Long.valueOf(l1);
+    }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements a<Long>
   {
-    c(String paramString)
+    public static final c WxZ;
+    
+    static
+    {
+      AppMethodBeat.i(295041);
+      WxZ = new c();
+      AppMethodBeat.o(295041);
+    }
+    
+    c()
     {
       super();
     }

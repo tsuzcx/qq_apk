@@ -1,106 +1,86 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import android.net.Uri;
-import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.b;
-import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
-import com.tencent.mm.plugin.appbrand.service.r;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.findersdk.a.cn;
+import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ap
-  extends bs<com.tencent.mm.plugin.webview.luggage.g>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/luggage/jsapi/JsApiOpenFinderTopicView;", "Lcom/tencent/mm/plugin/webview/luggage/jsapi/LuggageMMBaseJsApi;", "Lcom/tencent/mm/plugin/webview/luggage/LuggageMMWebPage;", "()V", "getEnv", "", "invokeInMM", "", "context", "Landroid/content/Context;", "dataStr", "", "jsApiCallback", "Lcom/tencent/mm/plugin/webview/luggage/jsapi/LuggageBaseJsApi$JsApiCallback;", "invokeInOwn", "ctx", "Lcom/tencent/luggage/container/LuggageJsApi$InvokeContext;", "Lcom/tencent/luggage/container/LuggageJsApi;", "kotlin.jvm.PlatformType", "name", "Companion", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class ap
+  extends bw<g>
 {
-  public final void a(Context paramContext, String paramString, br.a parama) {}
+  public static final a WJh;
   
-  public final void b(b<com.tencent.mm.plugin.webview.luggage.g>.a paramb)
+  static
   {
-    AppMethodBeat.i(78592);
-    Log.i("MicroMsg.JsApiOpenWeAppPage", "invokeInOwn %s", new Object[] { paramb.crh.cqn });
-    String str3 = paramb.crh.cqn.optString("userName");
-    String str2 = paramb.crh.cqn.optString("relativeURL");
-    String str1 = str2;
-    if (str2.contains("render_data")) {
-      str1 = str2;
+    AppMethodBeat.i(296020);
+    WJh = new a((byte)0);
+    AppMethodBeat.o(296020);
+  }
+  
+  public final void a(Context paramContext, String paramString, bv.a parama)
+  {
+    AppMethodBeat.i(296028);
+    int i;
+    try
+    {
+      paramContext = new JSONObject(paramString);
+      paramContext = paramContext.getString("extInfo");
+      Log.v("MicroMsg.JsApiOpenFinderTopicView", "openFinderTopic in mm process");
+    }
+    catch (JSONException paramContext)
+    {
+      label74:
+      Log.e("MicroMsg.JsApiOpenFinderTopicView", s.X("paras data error: ", paramContext.getMessage()));
+      parama.j("fail", null);
+      AppMethodBeat.o(296028);
+      return;
     }
     try
     {
-      new StringBuilder();
-      str1 = str2;
-      localObject = new JSONObject(Uri.parse(str2).getQueryParameter("widgetData"));
-      str1 = str2;
-      ((JSONObject)localObject).remove("render_data");
-      str1 = str2;
-      str2 = str2.replaceAll("(widgetData=.*&)|(widgetData=.*$)", "&");
-      str1 = str2;
-      str2 = str2 + "&widgetData=" + ((JSONObject)localObject).toString();
-      str1 = str2;
+      paramString = new JSONObject();
+      paramString.put("extInfo", new JSONObject(paramContext));
+      ((cn)h.az(cn.class)).enterFinderTopicUI(MMApplicationContext.getContext(), paramString.toString());
+      i = 1;
     }
-    catch (JSONException localJSONException)
+    catch (Exception paramContext)
     {
-      for (;;)
-      {
-        Object localObject;
-        int i;
-        int j;
-        int k;
-        String str4;
-        com.tencent.mm.plugin.appbrand.api.g localg;
-        String str5;
-        String str6;
-        String str7;
-        Log.printErrStackTrace("MicroMsg.JsApiOpenWeAppPage", localJSONException, "", new Object[0]);
-        continue;
-        if (k == 3) {
-          localg.scene = 1005;
-        } else if (k == 16) {
-          localg.scene = 1042;
-        } else if (k == 20) {
-          localg.scene = 1053;
-        } else {
-          localg.scene = 1000;
-        }
-      }
+      Log.printErrStackTrace("MicroMsg.JsApiOpenFinderTopicView", (Throwable)paramContext, "openFinderTopic exception", new Object[0]);
+      i = 0;
+      break label74;
+      parama.j("fail", null);
+      AppMethodBeat.o(296028);
     }
-    i = paramb.crh.cqn.optInt("appVersion", 0);
-    str2 = paramb.crh.cqn.optString("searchId");
-    localObject = paramb.crh.cqn.optString("docId");
-    j = paramb.crh.cqn.optInt("position", 1);
-    k = paramb.crh.cqn.optInt("scene", 1000);
-    str4 = paramb.crh.cqn.optString("privateExtraData");
-    localg = new com.tencent.mm.plugin.appbrand.api.g();
-    if ((k == 201) || (k == 14) || (k == 22))
+    if (i != 0)
     {
-      localg.scene = 1006;
-      str5 = paramb.crh.cqn.optString("statSessionId");
-      str6 = paramb.crh.cqn.optString("statKeywordId");
-      str7 = paramb.crh.cqn.optString("subScene");
-      localg.fvd = (str5 + ":" + str6 + ":" + str2 + ":" + (String)localObject + ":" + j + ":" + str7);
-      localg.nBz = new AppBrandLaunchReferrer();
-      localg.nBz.nYC = str4;
-      localg.username = str3;
-      localg.version = i;
-      localg.nBq = str1;
-      ((r)com.tencent.mm.kernel.h.ae(r.class)).a(((com.tencent.mm.plugin.webview.luggage.g)paramb.crg).mContext, localg);
-      paramb.a("", null);
-      AppMethodBeat.o(78592);
+      parama.j(null, null);
+      AppMethodBeat.o(296028);
       return;
     }
   }
   
-  public final int cDj()
+  public final void b(b<g>.a paramb) {}
+  
+  public final int dgI()
   {
-    return 0;
+    return 1;
   }
   
   public final String name()
   {
-    return "openWeAppPage";
+    return "openFinderTopicView";
   }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/luggage/jsapi/JsApiOpenFinderTopicView$Companion;", "", "()V", "TAG", "", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 

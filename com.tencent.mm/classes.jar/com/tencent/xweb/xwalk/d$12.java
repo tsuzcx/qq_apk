@@ -15,9 +15,9 @@ final class d$12
   {
     AppMethodBeat.i(154163);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/xweb/xwalk/WebDebugPage$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    this.aaht.iyA();
+    localb.cH(paramView);
+    a.c("com/tencent/xweb/xwalk/WebDebugPage$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    this.ainW.kjd();
     a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(154163);
   }

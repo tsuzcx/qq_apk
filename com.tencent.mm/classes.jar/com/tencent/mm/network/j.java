@@ -20,9 +20,9 @@ public abstract interface j
       attachInterface(this, "com.tencent.mm.network.INetworkDiagnoseCallback_AIDL");
     }
     
-    public static j btf()
+    public static j bQO()
     {
-      return a.muw;
+      return a.pnQ;
     }
     
     public IBinder asBinder()
@@ -55,7 +55,7 @@ public abstract interface j
     static final class a
       implements j
     {
-      public static j muw;
+      public static j pnQ;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -84,10 +84,10 @@ public abstract interface j
           {
             localParcel1.writeInt(i);
             localParcel1.writeString(paramString);
-            if ((this.mRemote.transact(1, localParcel1, localParcel2, 0)) || (j.a.btf() == null)) {
+            if ((this.mRemote.transact(1, localParcel1, localParcel2, 0)) || (j.a.bQO() == null)) {
               break;
             }
-            j.a.btf().networkAnalysisCallBack(paramInt1, paramInt2, paramBoolean, paramString);
+            j.a.bQO().networkAnalysisCallBack(paramInt1, paramInt2, paramBoolean, paramString);
             return;
             i = 0;
           }
@@ -106,7 +106,7 @@ public abstract interface j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.network.j
  * JD-Core Version:    0.7.0.1
  */

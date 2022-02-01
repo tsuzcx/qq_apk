@@ -10,25 +10,25 @@ import android.util.AttributeSet;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ah.a.e;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public class AutoHintSizeEditText
   extends EditText
 {
-  private float Wqp;
-  private Paint Wqq;
-  private String Wqr;
-  private int Wqs;
-  private float Wqt;
+  private float adXB;
+  private Paint adXC;
+  private String adXD;
+  private int adXE;
+  private float adXF;
   
   public AutoHintSizeEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(142495);
-    this.Wqr = "";
-    this.Wqs = -2147483648;
+    this.adXD = "";
+    this.adXE = -2147483648;
     init();
     AppMethodBeat.o(142495);
   }
@@ -37,8 +37,8 @@ public class AutoHintSizeEditText
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142494);
-    this.Wqr = "";
-    this.Wqs = -2147483648;
+    this.adXD = "";
+    this.adXE = -2147483648;
     init();
     AppMethodBeat.o(142494);
   }
@@ -48,49 +48,49 @@ public class AutoHintSizeEditText
     AppMethodBeat.i(142497);
     if ((paramEditable != null) && (!Util.isNullOrNil(paramEditable.toString())))
     {
-      if (getTextSize() != this.Wqp)
+      if (getTextSize() != this.adXB)
       {
-        Log.v("MicroMsg.AutoHintSizeEdittext", "content not null, reset text size %f", new Object[] { Float.valueOf(this.Wqp) });
-        setTextSize(0, this.Wqp);
+        Log.v("MicroMsg.AutoHintSizeEdittext", "content not null, reset text size %f", new Object[] { Float.valueOf(this.adXB) });
+        setTextSize(0, this.adXB);
       }
       AppMethodBeat.o(142497);
       return;
     }
     if ((paramCharSequence == null) || (Util.isNullOrNil(paramCharSequence.toString())))
     {
-      if (getTextSize() != this.Wqp)
+      if (getTextSize() != this.adXB)
       {
-        Log.v("MicroMsg.AutoHintSizeEdittext", "hint is null, reset text size %f", new Object[] { Float.valueOf(this.Wqp) });
-        setTextSize(0, this.Wqp);
+        Log.v("MicroMsg.AutoHintSizeEdittext", "hint is null, reset text size %f", new Object[] { Float.valueOf(this.adXB) });
+        setTextSize(0, this.adXB);
       }
       AppMethodBeat.o(142497);
       return;
     }
     paramEditable = paramCharSequence.toString();
-    if ((this.Wqr.equals(paramEditable)) && (this.Wqs == paramInt))
+    if ((this.adXD.equals(paramEditable)) && (this.adXE == paramInt))
     {
-      if (getTextSize() != this.Wqt)
+      if (getTextSize() != this.adXF)
       {
-        Log.v("MicroMsg.AutoHintSizeEdittext", "use last hint text size %f", new Object[] { Float.valueOf(this.Wqt) });
-        setTextSize(0, this.Wqt);
+        Log.v("MicroMsg.AutoHintSizeEdittext", "use last hint text size %f", new Object[] { Float.valueOf(this.adXF) });
+        setTextSize(0, this.adXF);
       }
       AppMethodBeat.o(142497);
       return;
     }
-    this.Wqr = paramEditable;
-    this.Wqs = paramInt;
+    this.adXD = paramEditable;
+    this.adXE = paramInt;
     if (getPaint().measureText(paramEditable) > paramInt)
     {
       int j = getResources().getDimensionPixelSize(a.e.SmallestTextSize);
       int k = a.fromDPToPix(getContext(), 1);
-      int i = (int)this.Wqp - k;
+      int i = (int)this.adXB - k;
       while (i > j)
       {
-        this.Wqq.setTextSize(i);
-        if (this.Wqq.measureText(paramEditable) < paramInt)
+        this.adXC.setTextSize(i);
+        if (this.adXC.measureText(paramEditable) < paramInt)
         {
           Log.v("MicroMsg.AutoHintSizeEdittext", "get new hint text size %d", new Object[] { Integer.valueOf(i) });
-          this.Wqt = i;
+          this.adXF = i;
           setTextSize(0, i);
           AppMethodBeat.o(142497);
           return;
@@ -104,9 +104,9 @@ public class AutoHintSizeEditText
   private void init()
   {
     AppMethodBeat.i(142496);
-    this.Wqp = getTextSize();
-    this.Wqt = this.Wqp;
-    this.Wqq = new Paint(getPaint());
+    this.adXB = getTextSize();
+    this.adXF = this.adXB;
+    this.adXC = new Paint(getPaint());
     addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
@@ -136,7 +136,7 @@ public class AutoHintSizeEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.AutoHintSizeEditText
  * JD-Core Version:    0.7.0.1
  */

@@ -9,30 +9,27 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
-import com.tencent.mm.plugin.finder.b.l;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.w.a.a.a.k;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/RCLinearLayout;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "cornerDp", "", "radiusArray", "", "dispatchDraw", "", "canvas", "Landroid/graphics/Canvas;", "initAttribute", "defStyle", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/RCLinearLayout;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "cornerDp", "", "radiusArray", "", "dispatchDraw", "", "canvas", "Landroid/graphics/Canvas;", "initAttribute", "defStyle", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class RCLinearLayout
   extends LinearLayout
 {
-  private float xyP;
-  private float[] xyQ;
+  private float AVY;
+  private float[] AVZ;
   
   public RCLinearLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(166006);
-    this.xyP = (a.fromDPToPix(getContext(), 4) * 1.0F);
-    this.xyQ = new float[] { this.xyP, this.xyP, this.xyP, this.xyP, this.xyP, this.xyP, this.xyP, this.xyP };
-    if (paramAttributeSet != null)
-    {
+    this.AVY = (a.fromDPToPix(getContext(), 4) * 1.0F);
+    this.AVZ = new float[] { this.AVY, this.AVY, this.AVY, this.AVY, this.AVY, this.AVY, this.AVY, this.AVY };
+    if (paramAttributeSet != null) {
       b(paramAttributeSet, 0);
-      AppMethodBeat.o(166006);
-      return;
     }
     AppMethodBeat.o(166006);
   }
@@ -41,40 +38,38 @@ public class RCLinearLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(166007);
-    this.xyP = (a.fromDPToPix(getContext(), 4) * 1.0F);
-    this.xyQ = new float[] { this.xyP, this.xyP, this.xyP, this.xyP, this.xyP, this.xyP, this.xyP, this.xyP };
-    if (paramAttributeSet != null)
-    {
+    this.AVY = (a.fromDPToPix(getContext(), 4) * 1.0F);
+    this.AVZ = new float[] { this.AVY, this.AVY, this.AVY, this.AVY, this.AVY, this.AVY, this.AVY, this.AVY };
+    if (paramAttributeSet != null) {
       b(paramAttributeSet, paramInt);
-      AppMethodBeat.o(166007);
-      return;
     }
     AppMethodBeat.o(166007);
   }
   
   private final void b(AttributeSet paramAttributeSet, int paramInt)
   {
-    AppMethodBeat.i(285056);
+    AppMethodBeat.i(362657);
     if (paramAttributeSet != null)
     {
-      paramAttributeSet = getContext().obtainStyledAttributes(paramAttributeSet, b.l.RCLinearLayout, paramInt, 0);
-      if (paramAttributeSet.hasValue(b.l.RCLinearLayout_radius))
+      paramAttributeSet = getContext().obtainStyledAttributes(paramAttributeSet, a.k.RCLinearLayout, paramInt, 0);
+      s.s(paramAttributeSet, "context.obtainStyledAttr…inearLayout, defStyle, 0)");
+      if (paramAttributeSet.hasValue(a.k.RCLinearLayout_radius))
       {
-        this.xyP = ((int)paramAttributeSet.getDimension(b.l.RCLinearLayout_radius, a.fromDPToPix(getContext(), 4) * 1.0F));
-        this.xyQ = new float[] { this.xyP, this.xyP, this.xyP, this.xyP, this.xyP, this.xyP, this.xyP, this.xyP };
-        Log.i("RCLinearLayout", "initAttribute cornerDp:" + this.xyP);
+        this.AVY = ((int)paramAttributeSet.getDimension(a.k.RCLinearLayout_radius, a.fromDPToPix(getContext(), 4) * 1.0F));
+        this.AVZ = new float[] { this.AVY, this.AVY, this.AVY, this.AVY, this.AVY, this.AVY, this.AVY, this.AVY };
+        Log.i("RCLinearLayout", s.X("initAttribute cornerDp:", Float.valueOf(this.AVY)));
       }
       paramAttributeSet.recycle();
     }
-    AppMethodBeat.o(285056);
+    AppMethodBeat.o(362657);
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(166005);
-    p.k(paramCanvas, "canvas");
+    s.u(paramCanvas, "canvas");
     Path localPath = new Path();
-    localPath.addRoundRect(new RectF(0.0F, 0.0F, getWidth(), getHeight()), this.xyQ, Path.Direction.CW);
+    localPath.addRoundRect(new RectF(0.0F, 0.0F, getWidth(), getHeight()), this.AVZ, Path.Direction.CW);
     paramCanvas.clipPath(localPath);
     super.dispatchDraw(paramCanvas);
     AppMethodBeat.o(166005);

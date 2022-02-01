@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.patmsg;
 
 public final class d$e
 {
-  public static final int pat_suffix_setting_dialog = 2131496007;
-  public static final int pat_tips_view = 2131496009;
+  public static final int pat_suffix_setting_dialog = 2131496101;
+  public static final int pat_tips_view = 2131496102;
 }
 
 

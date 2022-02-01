@@ -4,56 +4,65 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class y
 {
-  public static final y aaYT;
-  public static final y aaYU;
-  public static final y aaYV;
-  public static final y aaYW;
-  public static final y aaYX;
-  public static final y aaYY;
-  public static final y aaYZ;
-  public static final a aaZa;
-  final boolean aaVX;
-  final boolean aaYL;
-  final boolean aaYM;
-  final boolean aaYN;
-  final boolean aaYO;
-  final y aaYP;
-  final boolean aaYQ;
-  final y aaYR;
-  final y aaYS;
+  public static final y.a aiXh;
+  public static final y aiXr;
+  public static final y aiXs;
+  public static final y aiXt;
+  public static final y aiXu;
+  public static final y aiXv;
+  public static final y aiXw;
+  public static final y aiXx;
+  public static final y aiXy;
+  public static final y aiXz;
+  final boolean aiTZ;
+  final boolean aiXi;
+  final boolean aiXj;
+  final boolean aiXk;
+  final boolean aiXl;
+  final y aiXm;
+  final boolean aiXn;
+  final y aiXo;
+  final y aiXp;
+  final boolean aiXq;
   
   static
   {
     AppMethodBeat.i(58273);
-    aaZa = new a((byte)0);
-    aaYT = new y(false, false, false, false, null, false, null, null, 511);
-    aaYU = new y(false, true, false, false, null, false, null, null, 509);
-    aaYV = new y(false, false, false, false, aaYT, false, null, null, 476);
-    aaYW = new y(false, true, false, false, aaYT, false, null, null, 476);
-    aaYX = new y(false, false, false, true, aaYT, false, null, null, 471);
-    aaYY = new y(false, false, false, true, aaYT, false, null, null, 407);
-    aaYZ = new y(false, false, true, false, new y(false, false, true, false, aaYT, false, null, null, 475), false, null, null, 472);
+    aiXh = new y.a((byte)0);
+    aiXr = new y(false, false, false, false, false, null, false, null, null, false, 1023);
+    aiXs = new y(false, false, false, false, false, null, false, null, null, true, 511);
+    aiXt = new y(false, true, false, false, false, null, false, null, null, false, 1021);
+    aiXu = new y(false, false, false, false, false, aiXr, false, null, null, false, 988);
+    aiXv = new y(false, false, false, false, false, aiXs, false, null, null, true, 476);
+    aiXw = new y(false, true, false, false, false, aiXr, false, null, null, false, 988);
+    aiXx = new y(false, false, false, true, false, aiXr, false, null, null, false, 983);
+    aiXy = new y(false, false, false, true, false, aiXr, false, null, null, false, 919);
+    aiXz = new y(false, false, true, false, false, aiXr, false, null, null, false, 984);
     AppMethodBeat.o(58273);
   }
   
-  y(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, y paramy1, boolean paramBoolean6, y paramy2, y paramy3)
+  public y()
   {
-    this.aaYL = paramBoolean1;
-    this.aaYM = paramBoolean2;
-    this.aaVX = paramBoolean3;
-    this.aaYN = paramBoolean4;
-    this.aaYO = paramBoolean5;
-    this.aaYP = paramy1;
-    this.aaYQ = paramBoolean6;
-    this.aaYR = paramy2;
-    this.aaYS = paramy3;
+    this(false, false, false, false, false, null, false, null, null, false, 1023);
   }
   
-  public static final class a {}
+  private y(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, y paramy1, boolean paramBoolean6, y paramy2, y paramy3, boolean paramBoolean7)
+  {
+    this.aiXi = paramBoolean1;
+    this.aiXj = paramBoolean2;
+    this.aiTZ = paramBoolean3;
+    this.aiXk = paramBoolean4;
+    this.aiXl = paramBoolean5;
+    this.aiXm = paramy1;
+    this.aiXn = paramBoolean6;
+    this.aiXo = paramy2;
+    this.aiXp = paramy3;
+    this.aiXq = paramBoolean7;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.d.b.y
  * JD-Core Version:    0.7.0.1
  */

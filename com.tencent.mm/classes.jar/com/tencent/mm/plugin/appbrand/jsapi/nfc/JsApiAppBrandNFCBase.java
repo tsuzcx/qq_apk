@@ -12,7 +12,7 @@ import com.tencent.mm.sdk.platformtools.Util;
 public abstract class JsApiAppBrandNFCBase
   extends c
 {
-  a pfd = null;
+  a skw = null;
   
   protected final void a(a parama)
   {
@@ -21,8 +21,8 @@ public abstract class JsApiAppBrandNFCBase
   
   protected final void a(a parama, boolean paramBoolean)
   {
-    this.pfd = parama;
-    new CheckIsSupportHCETask(this, paramBoolean).bsM();
+    this.skw = parama;
+    new CheckIsSupportHCETask(this, paramBoolean).bQt();
   }
   
   static class CheckIsSupportHCETask
@@ -31,8 +31,8 @@ public abstract class JsApiAppBrandNFCBase
     public static final Parcelable.Creator<CheckIsSupportHCETask> CREATOR;
     private int errCode;
     private String errMsg;
-    private JsApiAppBrandNFCBase pfe;
-    private boolean pff;
+    private JsApiAppBrandNFCBase skx;
+    private boolean sky;
     
     static
     {
@@ -44,37 +44,37 @@ public abstract class JsApiAppBrandNFCBase
     public CheckIsSupportHCETask(Parcel paramParcel)
     {
       AppMethodBeat.i(136095);
-      this.pfe = null;
-      f(paramParcel);
+      this.skx = null;
+      h(paramParcel);
       AppMethodBeat.o(136095);
     }
     
     public CheckIsSupportHCETask(JsApiAppBrandNFCBase paramJsApiAppBrandNFCBase, boolean paramBoolean)
     {
-      this.pfe = null;
-      this.pfe = paramJsApiAppBrandNFCBase;
-      this.pff = paramBoolean;
+      this.skx = null;
+      this.skx = paramJsApiAppBrandNFCBase;
+      this.sky = paramBoolean;
     }
     
-    public final void RW()
+    public final void asn()
     {
       AppMethodBeat.i(136096);
-      if (!d.bTG())
+      if (!d.ctL())
       {
         this.errCode = 13000;
         this.errMsg = "not support NFC";
       }
       for (;;)
       {
-        bPt();
+        cpA();
         AppMethodBeat.o(136096);
         return;
-        if (!d.bTF())
+        if (!d.ctK())
         {
           this.errCode = 13002;
           this.errMsg = "not support HCE";
         }
-        else if ((this.pff) && (!d.bTH()))
+        else if ((this.sky) && (!d.ctM()))
         {
           this.errCode = 13001;
           this.errMsg = "system NFC switch not opened";
@@ -87,22 +87,22 @@ public abstract class JsApiAppBrandNFCBase
       }
     }
     
-    public final void bsK()
+    public final void bQr()
     {
       AppMethodBeat.i(136097);
-      super.bsK();
-      bPk();
-      if (this.pfe != null)
+      super.bQr();
+      cpx();
+      if (this.skx != null)
       {
-        JsApiAppBrandNFCBase localJsApiAppBrandNFCBase = this.pfe;
+        JsApiAppBrandNFCBase localJsApiAppBrandNFCBase = this.skx;
         int i = this.errCode;
         String str2 = this.errMsg;
         Log.i("MicroMsg.JsApiAppBrandNFCBase", "alvinluo checkIsSupport resultCallback errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(i), str2 });
         if (i == 0)
         {
-          if (localJsApiAppBrandNFCBase.pfd != null)
+          if (localJsApiAppBrandNFCBase.skw != null)
           {
-            localJsApiAppBrandNFCBase.pfd.B(i, str2);
+            localJsApiAppBrandNFCBase.skw.onResult(i, str2);
             AppMethodBeat.o(136097);
           }
         }
@@ -112,8 +112,8 @@ public abstract class JsApiAppBrandNFCBase
           if (Util.isNullOrNil(str2)) {
             str1 = "unknown error";
           }
-          if (localJsApiAppBrandNFCBase.pfd != null) {
-            localJsApiAppBrandNFCBase.pfd.B(i, str1);
+          if (localJsApiAppBrandNFCBase.skw != null) {
+            localJsApiAppBrandNFCBase.skw.onResult(i, str1);
           }
         }
       }
@@ -128,17 +128,17 @@ public abstract class JsApiAppBrandNFCBase
       return i;
     }
     
-    public final void f(Parcel paramParcel)
+    public final void h(Parcel paramParcel)
     {
       boolean bool = true;
       AppMethodBeat.i(136100);
-      super.f(paramParcel);
+      super.h(paramParcel);
       this.errCode = paramParcel.readInt();
       this.errMsg = paramParcel.readString();
       if (1 == paramParcel.readInt()) {}
       for (;;)
       {
-        this.pff = bool;
+        this.sky = bool;
         AppMethodBeat.o(136100);
         return;
         bool = false;
@@ -151,7 +151,7 @@ public abstract class JsApiAppBrandNFCBase
       super.writeToParcel(paramParcel, paramInt);
       paramParcel.writeInt(this.errCode);
       paramParcel.writeString(this.errMsg);
-      if (this.pff) {}
+      if (this.sky) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeInt(paramInt);
@@ -163,7 +163,7 @@ public abstract class JsApiAppBrandNFCBase
   
   public static abstract interface a
   {
-    public abstract void B(int paramInt, String paramString);
+    public abstract void onResult(int paramInt, String paramString);
   }
 }
 

@@ -186,7 +186,7 @@ public class CrashMonitorForJni
     //   0: ldc_w 256
     //   3: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: getstatic 19	com/tencent/mm/sdk/platformtools/CrashMonitorForJni:mCrashRecordFd	Landroid/os/ParcelFileDescriptor;
-    //   9: ifnull +109 -> 118
+    //   9: ifnull +82 -> 91
     //   12: new 258	java/io/FileOutputStream
     //   15: dup
     //   16: getstatic 19	com/tencent/mm/sdk/platformtools/CrashMonitorForJni:mCrashRecordFd	Landroid/os/ParcelFileDescriptor;
@@ -225,40 +225,20 @@ public class CrashMonitorForJni
     //   83: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   86: return
     //   87: astore_0
-    //   88: aconst_null
-    //   89: astore_1
-    //   90: aload_1
-    //   91: ifnull +7 -> 98
-    //   94: aload_1
-    //   95: invokevirtual 279	java/io/FileOutputStream:close	()V
-    //   98: ldc_w 256
-    //   101: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   104: aload_0
-    //   105: athrow
-    //   106: astore_1
-    //   107: goto -9 -> 98
-    //   110: astore_0
-    //   111: goto -21 -> 90
-    //   114: astore_0
-    //   115: goto -51 -> 64
-    //   118: aconst_null
-    //   119: astore_1
-    //   120: goto -82 -> 38
+    //   88: goto -24 -> 64
+    //   91: aconst_null
+    //   92: astore_1
+    //   93: goto -55 -> 38
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	123	0	paramString	String
-    //   25	70	1	localFileOutputStream	java.io.FileOutputStream
-    //   106	1	1	localThrowable	Throwable
-    //   119	1	1	localObject	Object
+    //   0	96	0	paramString	String
+    //   25	68	1	localFileOutputStream	java.io.FileOutputStream
     // Exception table:
     //   from	to	target	type
-    //   42	46	53	java/lang/Throwable
-    //   6	26	61	java/lang/Throwable
-    //   68	72	79	java/lang/Throwable
-    //   6	26	87	finally
-    //   94	98	106	java/lang/Throwable
-    //   26	38	110	finally
-    //   26	38	114	java/lang/Throwable
+    //   42	46	53	finally
+    //   6	26	61	finally
+    //   68	72	79	finally
+    //   26	38	87	finally
   }
   
   public static abstract interface CrashExtraMessageGetter
@@ -268,7 +248,7 @@ public class CrashMonitorForJni
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.CrashMonitorForJni
  * JD-Core Version:    0.7.0.1
  */

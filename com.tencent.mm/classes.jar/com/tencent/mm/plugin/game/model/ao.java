@@ -1,18 +1,16 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.kernel.h;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.p;
+import com.tencent.mm.bx.a;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.plugin.game.api.f;
-import com.tencent.mm.plugin.game.protobuf.ad;
-import com.tencent.mm.plugin.game.protobuf.bs;
+import com.tencent.mm.plugin.game.protobuf.ae;
 import com.tencent.mm.plugin.game.protobuf.bt;
+import com.tencent.mm.plugin.game.protobuf.bu;
 import com.tencent.mm.sdk.platformtools.ChannelUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -21,11 +19,11 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class ao
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  public final d jTk;
+  private com.tencent.mm.am.h callback;
+  public final c mtC;
   
   public ao(String paramString, LinkedList<String> paramLinkedList, o paramo1, o paramo2, o paramo3, boolean paramBoolean)
   {
@@ -35,10 +33,10 @@ public final class ao
     while (((Iterator)localObject).hasNext()) {
       Log.i("MicroMsg.NetSceneGetGameIndexDownloadGuidance", "install id:[%s]", new Object[] { (String)((Iterator)localObject).next() });
     }
-    localObject = new bs();
-    ((bs)localObject).CPt = paramString;
-    ((bs)localObject).CPO = paramLinkedList;
-    paramLinkedList = e.gz(MMApplicationContext.getContext());
+    localObject = new bt();
+    ((bt)localObject).IJD = paramString;
+    ((bt)localObject).IJY = paramLinkedList;
+    paramLinkedList = e.hS(MMApplicationContext.getContext());
     paramString = paramLinkedList;
     if (Util.isNullOrNil(paramLinkedList)) {
       paramString = Util.getSimCountryCode(MMApplicationContext.getContext());
@@ -48,43 +46,43 @@ public final class ao
     }
     for (;;)
     {
-      ((bs)localObject).mVH = paramString;
+      ((bt)localObject).pSo = paramString;
       if (paramo1 != null) {}
       for (;;)
       {
-        ((bs)localObject).CPP = new ad();
+        ((bt)localObject).IJZ = new ae();
         if (paramo1 != null)
         {
-          ((bs)localObject).CPP.COg = paramo1.CJh.CKl;
-          ((bs)localObject).CPP.lVG = paramo1.field_appId;
-          ((bs)localObject).CPP.CML = paramo1.CJX;
-          ((bs)localObject).CPP.COi = paramo1.CJW;
+          ((bt)localObject).IJZ.IIq = paramo1.IDs.IEw;
+          ((bt)localObject).IJZ.oOI = paramo1.field_appId;
+          ((bt)localObject).IJZ.IGQ = paramo1.mNoticeId;
+          ((bt)localObject).IJZ.IIs = paramo1.IEh;
         }
         if (paramo2 != null)
         {
-          paramLinkedList = ((bs)localObject).CPP;
-          paramLinkedList.COh |= 0x1;
+          paramLinkedList = ((bt)localObject).IJZ;
+          paramLinkedList.IIr |= 0x1;
         }
         if (paramo3 != null)
         {
-          paramLinkedList = ((bs)localObject).CPP;
-          paramLinkedList.COh |= 0x2;
+          paramLinkedList = ((bt)localObject).IJZ;
+          paramLinkedList.IIr |= 0x2;
         }
-        ((bs)localObject).CPQ = ((f)h.ae(f.class)).evo().eyH();
-        ((bs)localObject).CPR = paramBoolean;
+        ((bt)localObject).IKa = ((f)com.tencent.mm.kernel.h.ax(f.class)).fCh().fGD();
+        ((bt)localObject).IKb = paramBoolean;
         if (ChannelUtil.isGPVersion()) {}
         for (int i = 1;; i = 0)
         {
-          ((bs)localObject).CPu = i;
+          ((bt)localObject).IJE = i;
           Log.i("MicroMsg.NetSceneGetGameIndexDownloadGuidance", "Country Code: %s", new Object[] { paramString });
-          paramString = new d.a();
-          paramString.lBU = ((a)localObject);
-          paramString.lBV = new bt();
+          paramString = new c.a();
+          paramString.otE = ((a)localObject);
+          paramString.otF = new bu();
           paramString.uri = "/cgi-bin/mmgame-bin/getgameindexdownloadguidance";
           paramString.funcId = getType();
-          paramString.lBW = 0;
+          paramString.otG = 0;
           paramString.respCmdId = 0;
-          this.jTk = paramString.bgN();
+          this.mtC = paramString.bEF();
           AppMethodBeat.o(41604);
           return;
           if (paramo2 != null)
@@ -104,11 +102,11 @@ public final class ao
     }
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
     AppMethodBeat.i(41605);
-    this.callback = parami;
-    int i = dispatch(paramg, this.jTk, this);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.mtC, this);
     AppMethodBeat.o(41605);
     return i;
   }
@@ -128,7 +126,7 @@ public final class ao
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.ao
  * JD-Core Version:    0.7.0.1
  */

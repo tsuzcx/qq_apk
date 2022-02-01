@@ -1,92 +1,69 @@
 package kotlinx.coroutines.internal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
-import kotlin.l;
+import java.util.ArrayList;
+import java.util.List;
+import kotlin.Metadata;
+import kotlinx.coroutines.au;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/internal/LockFreeTaskQueue;", "", "E", "", "singleConsumer", "<init>", "(Z)V", "element", "addLast", "(Ljava/lang/Object;)Z", "", "close", "()V", "isClosed", "()Z", "R", "Lkotlin/Function1;", "transform", "", "map", "(Lkotlin/jvm/functions/Function1;)Ljava/util/List;", "removeFirstOrNull", "()Ljava/lang/Object;", "isEmpty", "", "getSize", "()I", "size", "kotlinx-coroutines-core"})
-public class m<E>
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/internal/InlineList;", "E", "", "holder", "constructor-impl", "(Ljava/lang/Object;)Ljava/lang/Object;", "equals", "", "other", "equals-impl", "(Ljava/lang/Object;Ljava/lang/Object;)Z", "forEachReversed", "", "action", "Lkotlin/Function1;", "forEachReversed-impl", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)V", "hashCode", "", "hashCode-impl", "(Ljava/lang/Object;)I", "plus", "element", "plus-FjFbRPM", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "toString", "", "toString-impl", "(Ljava/lang/Object;)Ljava/lang/String;", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+public final class m<E>
 {
-  private static final AtomicReferenceFieldUpdater abzk;
-  private volatile Object _cur;
-  
-  static
+  public static final Object ag(Object paramObject, E paramE)
   {
-    AppMethodBeat.i(118130);
-    abzk = AtomicReferenceFieldUpdater.newUpdater(m.class, Object.class, "_cur");
-    AppMethodBeat.o(118130);
-  }
-  
-  public m()
-  {
-    AppMethodBeat.i(118129);
-    this._cur = new n(8, false);
-    AppMethodBeat.o(118129);
-  }
-  
-  public final void close()
-  {
-    AppMethodBeat.i(118126);
-    for (;;)
+    AppMethodBeat.i(189417);
+    if (au.ASSERTIONS_ENABLED)
     {
-      n localn = (n)this._cur;
-      if (localn.close())
+      if (!(paramE instanceof List)) {}
+      for (int i = 1; i == 0; i = 0)
       {
-        AppMethodBeat.o(118126);
-        return;
-      }
-      abzk.compareAndSet(this, localn, localn.iSS());
-    }
-  }
-  
-  public final int getSize()
-  {
-    long l = ((n)this._cur)._state;
-    int i = (int)((0x3FFFFFFF & l) >> 0);
-    return (int)((l & 0xC0000000) >> 30) - i & 0x3FFFFFFF;
-  }
-  
-  public final boolean gy(E paramE)
-  {
-    AppMethodBeat.i(118127);
-    for (;;)
-    {
-      n localn = (n)this._cur;
-      switch (localn.gz(paramE))
-      {
-      default: 
-        break;
-      case 0: 
-        AppMethodBeat.o(118127);
-        return true;
-      case 2: 
-        AppMethodBeat.o(118127);
-        return false;
-      case 1: 
-        abzk.compareAndSet(this, localn, localn.iSS());
+        paramObject = new AssertionError();
+        AppMethodBeat.o(189417);
+        throw paramObject;
       }
     }
+    if (paramObject == null)
+    {
+      AppMethodBeat.o(189417);
+      return paramE;
+    }
+    if ((paramObject instanceof ArrayList))
+    {
+      if (paramObject == null)
+      {
+        paramObject = new NullPointerException("null cannot be cast to non-null type java.util.ArrayList<E of kotlinx.coroutines.internal.InlineList>{ kotlin.collections.TypeAliasesKt.ArrayList<E of kotlinx.coroutines.internal.InlineList> }");
+        AppMethodBeat.o(189417);
+        throw paramObject;
+      }
+      ((ArrayList)paramObject).add(paramE);
+      AppMethodBeat.o(189417);
+      return paramObject;
+    }
+    ArrayList localArrayList = new ArrayList(4);
+    localArrayList.add(paramObject);
+    localArrayList.add(paramE);
+    AppMethodBeat.o(189417);
+    return localArrayList;
   }
   
-  public final E iSD()
+  public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(118128);
-    for (;;)
-    {
-      n localn = (n)this._cur;
-      Object localObject = localn.iSD();
-      if (localObject != n.abzo)
-      {
-        AppMethodBeat.o(118128);
-        return localObject;
-      }
-      abzk.compareAndSet(this, localn, localn.iSS());
-    }
+    throw null;
+  }
+  
+  public final int hashCode()
+  {
+    throw null;
+  }
+  
+  public final String toString()
+  {
+    throw null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.internal.m
  * JD-Core Version:    0.7.0.1
  */

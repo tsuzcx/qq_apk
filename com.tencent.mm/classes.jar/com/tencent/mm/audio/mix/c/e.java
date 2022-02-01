@@ -8,9 +8,9 @@ import java.io.OutputStream;
 public final class e
   extends d
 {
-  private InputStream aFw;
-  private com.tencent.mm.audio.mix.a.d fnt;
-  private OutputStream outputStream;
+  private OutputStream djc;
+  private com.tencent.mm.audio.mix.a.d hrE;
+  private InputStream inputStream;
   
   /* Error */
   public e(com.tencent.mm.audio.mix.a.d paramd, int paramInt1, int paramInt2, int paramInt3, java.lang.String paramString)
@@ -44,14 +44,14 @@ public final class e
     //   40: invokestatic 38	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   43: aastore
     //   44: invokestatic 43	com/tencent/mm/audio/mix/h/b:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   47: invokestatic 48	com/tencent/mm/audio/mix/c/c:adw	()V
+    //   47: invokestatic 48	com/tencent/mm/audio/mix/c/c:aFv	()V
     //   50: aload_0
     //   51: aload_1
-    //   52: putfield 50	com/tencent/mm/audio/mix/c/e:fnt	Lcom/tencent/mm/audio/mix/a/d;
+    //   52: putfield 50	com/tencent/mm/audio/mix/c/e:hrE	Lcom/tencent/mm/audio/mix/a/d;
     //   55: aload_0
     //   56: aload 5
-    //   58: invokestatic 56	com/tencent/mm/audio/mix/h/a:if	(Ljava/lang/String;)Ljava/lang/String;
-    //   61: putfield 60	com/tencent/mm/audio/mix/c/e:fnn	Ljava/lang/String;
+    //   58: invokestatic 56	com/tencent/mm/audio/mix/h/a:jG	(Ljava/lang/String;)Ljava/lang/String;
+    //   61: putfield 60	com/tencent/mm/audio/mix/c/e:hry	Ljava/lang/String;
     //   64: ldc 28
     //   66: ldc 62
     //   68: iconst_1
@@ -59,47 +59,47 @@ public final class e
     //   72: dup
     //   73: iconst_0
     //   74: aload_0
-    //   75: getfield 60	com/tencent/mm/audio/mix/c/e:fnn	Ljava/lang/String;
+    //   75: getfield 60	com/tencent/mm/audio/mix/c/e:hry	Ljava/lang/String;
     //   78: aastore
     //   79: invokestatic 43	com/tencent/mm/audio/mix/h/b:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   82: aload_0
-    //   83: getfield 60	com/tencent/mm/audio/mix/c/e:fnn	Ljava/lang/String;
-    //   86: invokestatic 68	com/tencent/mm/vfs/u:deleteFile	(Ljava/lang/String;)Z
+    //   83: getfield 60	com/tencent/mm/audio/mix/c/e:hry	Ljava/lang/String;
+    //   86: invokestatic 68	com/tencent/mm/vfs/y:deleteFile	(Ljava/lang/String;)Z
     //   89: pop
-    //   90: invokestatic 74	com/tencent/mm/audio/mix/b/a:adc	()Lcom/tencent/mm/audio/mix/b/a;
+    //   90: invokestatic 74	com/tencent/mm/audio/mix/b/a:aFc	()Lcom/tencent/mm/audio/mix/b/a;
     //   93: aload_1
-    //   94: getfield 79	com/tencent/mm/audio/mix/a/d:fmB	Ljava/lang/String;
-    //   97: invokevirtual 82	com/tencent/mm/audio/mix/b/a:ho	(Ljava/lang/String;)Z
+    //   94: getfield 79	com/tencent/mm/audio/mix/a/d:hqM	Ljava/lang/String;
+    //   97: invokevirtual 82	com/tencent/mm/audio/mix/b/a:iP	(Ljava/lang/String;)Z
     //   100: pop
     //   101: aload_0
     //   102: aload_0
-    //   103: getfield 60	com/tencent/mm/audio/mix/c/e:fnn	Ljava/lang/String;
-    //   106: invokestatic 86	com/tencent/mm/audio/mix/h/a:ig	(Ljava/lang/String;)Lcom/tencent/mm/vfs/q;
-    //   109: invokestatic 90	com/tencent/mm/vfs/u:an	(Lcom/tencent/mm/vfs/q;)Ljava/io/OutputStream;
-    //   112: putfield 92	com/tencent/mm/audio/mix/c/e:outputStream	Ljava/io/OutputStream;
+    //   103: getfield 60	com/tencent/mm/audio/mix/c/e:hry	Ljava/lang/String;
+    //   106: invokestatic 86	com/tencent/mm/audio/mix/h/a:jH	(Ljava/lang/String;)Lcom/tencent/mm/vfs/u;
+    //   109: invokestatic 90	com/tencent/mm/vfs/y:ap	(Lcom/tencent/mm/vfs/u;)Ljava/io/OutputStream;
+    //   112: putfield 92	com/tencent/mm/audio/mix/c/e:djc	Ljava/io/OutputStream;
     //   115: aload_0
     //   116: aload_0
-    //   117: getfield 60	com/tencent/mm/audio/mix/c/e:fnn	Ljava/lang/String;
-    //   120: invokestatic 86	com/tencent/mm/audio/mix/h/a:ig	(Ljava/lang/String;)Lcom/tencent/mm/vfs/q;
-    //   123: invokestatic 96	com/tencent/mm/vfs/u:al	(Lcom/tencent/mm/vfs/q;)Ljava/io/InputStream;
-    //   126: putfield 98	com/tencent/mm/audio/mix/c/e:aFw	Ljava/io/InputStream;
+    //   117: getfield 60	com/tencent/mm/audio/mix/c/e:hry	Ljava/lang/String;
+    //   120: invokestatic 86	com/tencent/mm/audio/mix/h/a:jH	(Ljava/lang/String;)Lcom/tencent/mm/vfs/u;
+    //   123: invokestatic 96	com/tencent/mm/vfs/y:ao	(Lcom/tencent/mm/vfs/u;)Ljava/io/InputStream;
+    //   126: putfield 98	com/tencent/mm/audio/mix/c/e:inputStream	Ljava/io/InputStream;
     //   129: aload_0
     //   130: aload 5
-    //   132: putfield 101	com/tencent/mm/audio/mix/c/e:fna	Ljava/lang/String;
+    //   132: putfield 101	com/tencent/mm/audio/mix/c/e:hrl	Ljava/lang/String;
     //   135: aload_0
     //   136: ldc 102
-    //   138: putfield 106	com/tencent/mm/audio/mix/c/e:fnh	I
+    //   138: putfield 106	com/tencent/mm/audio/mix/c/e:hrs	I
     //   141: aload_0
     //   142: iconst_2
-    //   143: putfield 109	com/tencent/mm/audio/mix/c/e:fni	I
+    //   143: putfield 109	com/tencent/mm/audio/mix/c/e:hrt	I
     //   146: aload_0
     //   147: iconst_2
-    //   148: putfield 112	com/tencent/mm/audio/mix/c/e:fnj	I
+    //   148: putfield 112	com/tencent/mm/audio/mix/c/e:hru	I
     //   151: aload_0
     //   152: iload_2
     //   153: iload_3
     //   154: iload 4
-    //   156: invokevirtual 116	com/tencent/mm/audio/mix/c/e:J	(III)V
+    //   156: invokevirtual 116	com/tencent/mm/audio/mix/c/e:Z	(III)V
     //   159: ldc 20
     //   161: invokestatic 119	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   164: return
@@ -151,55 +151,7 @@ public final class e
     //   115	129	213	java/lang/Exception
   }
   
-  public final void adA()
-  {
-    AppMethodBeat.i(136771);
-    b.i("MicroMsg.Mix.AudioFixedConvertProcess", "flushCache");
-    if (this.aFw == null)
-    {
-      b.e("MicroMsg.Mix.AudioFixedConvertProcess", "flushCache, inputStream is null");
-      AppMethodBeat.o(136771);
-      return;
-    }
-    if (this.fnt.awf)
-    {
-      b.e("MicroMsg.Mix.AudioFixedConvertProcess", "flushCache, cache is complete");
-      AppMethodBeat.o(136771);
-      return;
-    }
-    int i = 0;
-    for (;;)
-    {
-      if (i == -1) {
-        break label131;
-      }
-      byte[] arrayOfByte = new byte[3536];
-      try
-      {
-        int j = this.aFw.read(arrayOfByte, 0, 3536);
-        i = j;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          com.tencent.mm.audio.mix.a.e locale;
-          b.printErrStackTrace("MicroMsg.Mix.AudioFixedConvertProcess", localException, "readPcmDataTrack", new Object[0]);
-        }
-      }
-      if (i > 0)
-      {
-        locale = com.tencent.mm.audio.mix.b.e.adq().adp();
-        locale.fmy = arrayOfByte;
-        this.fnt.a(locale);
-      }
-    }
-    label131:
-    this.fnt.ph();
-    AppMethodBeat.o(136771);
-  }
-  
-  public final i adx()
+  public final i aFw()
   {
     AppMethodBeat.i(136773);
     j localj = new j();
@@ -207,17 +159,17 @@ public final class e
     return localj;
   }
   
-  public final void ady()
+  public final void aFx()
   {
     AppMethodBeat.i(136769);
     b.i("MicroMsg.Mix.AudioFixedConvertProcess", "finishProcess");
     try
     {
-      if (this.outputStream != null)
+      if (this.djc != null)
       {
-        this.outputStream.flush();
-        this.outputStream.close();
-        this.outputStream = null;
+        this.djc.flush();
+        this.djc.close();
+        this.djc = null;
       }
       Runtime.getRuntime().gc();
       AppMethodBeat.o(136769);
@@ -232,10 +184,10 @@ public final class e
     }
   }
   
-  public final com.tencent.mm.audio.mix.a.e adz()
+  public final com.tencent.mm.audio.mix.a.e aFy()
   {
     AppMethodBeat.i(136770);
-    if (this.aFw == null)
+    if (this.inputStream == null)
     {
       b.e("MicroMsg.Mix.AudioFixedConvertProcess", "readPcmDataTrack, inputStream is null");
       AppMethodBeat.o(136770);
@@ -244,11 +196,11 @@ public final class e
     byte[] arrayOfByte = new byte[3536];
     try
     {
-      int i = this.aFw.read(arrayOfByte, 0, 3536);
+      int i = this.inputStream.read(arrayOfByte, 0, 3536);
       if (i > 0)
       {
-        com.tencent.mm.audio.mix.a.e locale = com.tencent.mm.audio.mix.b.e.adq().adp();
-        locale.fmy = arrayOfByte;
+        com.tencent.mm.audio.mix.a.e locale = com.tencent.mm.audio.mix.b.e.aFp().aFo();
+        locale.hqJ = arrayOfByte;
         AppMethodBeat.o(136770);
         return locale;
       }
@@ -264,6 +216,54 @@ public final class e
     return null;
   }
   
+  public final void aFz()
+  {
+    AppMethodBeat.i(136771);
+    b.i("MicroMsg.Mix.AudioFixedConvertProcess", "flushCache");
+    if (this.inputStream == null)
+    {
+      b.e("MicroMsg.Mix.AudioFixedConvertProcess", "flushCache, inputStream is null");
+      AppMethodBeat.o(136771);
+      return;
+    }
+    if (this.hrE.ckB)
+    {
+      b.e("MicroMsg.Mix.AudioFixedConvertProcess", "flushCache, cache is complete");
+      AppMethodBeat.o(136771);
+      return;
+    }
+    int i = 0;
+    for (;;)
+    {
+      if (i == -1) {
+        break label131;
+      }
+      byte[] arrayOfByte = new byte[3536];
+      try
+      {
+        int j = this.inputStream.read(arrayOfByte, 0, 3536);
+        i = j;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          com.tencent.mm.audio.mix.a.e locale;
+          b.printErrStackTrace("MicroMsg.Mix.AudioFixedConvertProcess", localException, "readPcmDataTrack", new Object[0]);
+        }
+      }
+      if (i > 0)
+      {
+        locale = com.tencent.mm.audio.mix.b.e.aFp().aFo();
+        locale.hqJ = arrayOfByte;
+        this.hrE.a(locale);
+      }
+    }
+    label131:
+    this.hrE.GK();
+    AppMethodBeat.o(136771);
+  }
+  
   public final byte[] ae(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(136768);
@@ -273,7 +273,7 @@ public final class e
       return paramArrayOfByte;
     }
     paramArrayOfByte = super.ae(paramArrayOfByte);
-    if (this.outputStream == null)
+    if (this.djc == null)
     {
       AppMethodBeat.o(136768);
       return paramArrayOfByte;
@@ -281,7 +281,7 @@ public final class e
     if (paramArrayOfByte != null) {
       try
       {
-        this.outputStream.write(paramArrayOfByte, 0, paramArrayOfByte.length);
+        this.djc.write(paramArrayOfByte, 0, paramArrayOfByte.length);
         AppMethodBeat.o(136768);
         return paramArrayOfByte;
       }
@@ -305,11 +305,11 @@ public final class e
     super.release();
     try
     {
-      if (this.outputStream != null)
+      if (this.djc != null)
       {
-        this.outputStream.flush();
-        this.outputStream.close();
-        this.outputStream = null;
+        this.djc.flush();
+        this.djc.close();
+        this.djc = null;
       }
     }
     catch (Exception localException1)
@@ -318,10 +318,10 @@ public final class e
       {
         try
         {
-          if (this.aFw != null)
+          if (this.inputStream != null)
           {
-            this.aFw.close();
-            this.aFw = null;
+            this.inputStream.close();
+            this.inputStream = null;
           }
           AppMethodBeat.o(136772);
           return;

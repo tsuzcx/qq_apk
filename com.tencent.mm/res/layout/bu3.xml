@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/fo" android:background="@drawable/auv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ir" android:layout_marginBottom="@dimen/k5"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/fp" android:layout_width="16.0dip" android:layout_height="16.0dip" />
-    <com.tencent.mm.plugin.sns.ui.SnsTextView android:textSize="15.0dip" android:textColor="@color/a92" android:id="@id/fq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:singleLine="true" />
-    <ImageView android:id="@id/fn" android:paddingTop="1.0dip" android:visibility="gone" android:layout_width="16.0dip" android:layout_height="17.0dip" android:layout_marginLeft="4.0dip" android:src="@drawable/bx5" />
+<LinearLayout android:background="@drawable/b1h" android:layout_width="wrap_content" android:layout_height="@dimen/cw" android:minWidth="74.0dip" android:minHeight="28.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.gif.MMAnimateView android:layout_gravity="start|center" android:id="@id/ium" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_marginStart="10.0dip" />
+    <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:layout_gravity="end|center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/iy9" android:layout_marginStart="4.0dip" android:layout_marginEnd="12.0dip" />
 </LinearLayout>

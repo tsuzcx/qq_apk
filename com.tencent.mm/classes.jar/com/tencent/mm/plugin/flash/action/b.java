@@ -5,13 +5,13 @@ import android.content.Intent;
 import android.text.TextUtils;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.i.d;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.g.d;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.facedetect.a.i;
-import com.tencent.mm.protocal.protobuf.but;
-import com.tencent.mm.protocal.protobuf.bux;
+import com.tencent.mm.protocal.protobuf.cjr;
+import com.tencent.mm.protocal.protobuf.cjv;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYtSDKKitNetResponseParser;
@@ -22,35 +22,36 @@ import org.json.JSONObject;
 public final class b
   extends com.tencent.mm.plugin.flash.b.a
 {
-  private int BAV = 0;
-  private long BAW = 0L;
-  private String fSC;
-  private String fSD = "";
+  boolean HiQ = false;
+  private int Hit = 0;
+  private long Hiu = 0L;
+  private String hYA = "";
+  private String hYz;
   private String packageName;
   private String personId;
-  private float wDB;
-  private String wDC;
-  private boolean wDH = false;
-  private byte[] wDM;
-  private String wwU;
+  private String zTa;
+  private float zZM;
+  private String zZN;
+  private boolean zZS = false;
+  private byte[] zZX;
   
-  private void D(int paramInt, String paramString1, String paramString2)
+  private void I(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(194289);
+    AppMethodBeat.i(264765);
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      com.tencent.mm.plugin.flash.c.b.epN().gmH = 3;
+      com.tencent.mm.plugin.flash.c.b.fuP().ivK = 3;
       localJSONObject.put("errorcode", paramInt);
       localJSONObject.put("err_code", paramInt);
       localJSONObject.put("err_msg", paramString1);
-      localJSONObject.put("err_feedback", this.BBv);
-      localJSONObject.put("otherVerifyTitle", this.fSD);
+      localJSONObject.put("err_feedback", this.Hjb);
+      localJSONObject.put("otherVerifyTitle", this.hYA);
       paramString1 = new HashMap();
       paramString1.put("response", localJSONObject.toString());
-      this.BBs.onNetworkResponseEvent(paramString1, null);
+      this.HiY.onNetworkResponseEvent(paramString1, null);
       Log.e("MicroMsg.FaceFlashActionReflectManager", "packageErrorResult get mBioId failed：%s", new Object[] { paramString2 });
-      AppMethodBeat.o(194289);
+      AppMethodBeat.o(264765);
       return;
     }
     catch (JSONException paramString1)
@@ -62,48 +63,48 @@ public final class b
     }
   }
   
-  public final int a(String paramString, int paramInt, com.tencent.mm.i.c paramc, d paramd, boolean paramBoolean)
+  public final int a(String paramString, int paramInt, com.tencent.mm.g.c paramc, d paramd, boolean paramBoolean)
   {
-    AppMethodBeat.i(194286);
+    AppMethodBeat.i(264825);
     Log.i("MicroMsg.FaceFlashActionReflectManager", " cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s] ", new Object[] { paramString, Integer.valueOf(paramInt), paramc, paramd });
     int i;
     if (paramd == null)
     {
       i = -1;
-      com.tencent.mm.plugin.flash.c.b.s("rspCdn", Integer.valueOf(i));
-      com.tencent.mm.plugin.flash.c.b.epN().gmn = i;
-      com.tencent.mm.plugin.flash.c.b.epN().gmp = (System.currentTimeMillis() - this.wDO);
+      com.tencent.mm.plugin.flash.c.b.F("rspCdn", Integer.valueOf(i));
+      com.tencent.mm.plugin.flash.c.b.fuP().ivr = i;
+      com.tencent.mm.plugin.flash.c.b.fuP().ivt = (System.currentTimeMillis() - this.zZZ);
       if ((paramd == null) || (paramd.field_retCode != 0)) {
         break label216;
       }
       Log.i("MicroMsg.FaceFlashActionReflectManager", "cdnCallback upload video done. now upload");
-      paramString = new com.tencent.mm.plugin.facedetectaction.a.c(this.personId, this.wwU, this.wDB, paramd.field_fileId, paramd.field_aesKey, this.scene, this.wDC, this.packageName, this.wDM, this.wDH, 2, this.wwE, this.longitude, this.latitude);
-      h.aGY().a(2726, this);
-      h.aGY().a(paramString, 0);
-      com.tencent.mm.plugin.flash.c.b.aHi("reqVerify");
-      com.tencent.mm.plugin.flash.c.b.epN().gmq = (System.currentTimeMillis() - this.BAW);
+      paramString = new com.tencent.mm.plugin.facedetectaction.a.c(this.personId, this.zTa, this.zZM, paramd.field_fileId, paramd.field_aesKey, this.scene, this.zZN, this.packageName, this.zZX, this.zZS, 2, this.zSK, this.longitude, this.latitude);
+      h.aZW().a(2726, this);
+      h.aZW().a(paramString, 0);
+      com.tencent.mm.plugin.flash.c.b.aDA("reqVerify");
+      com.tencent.mm.plugin.flash.c.b.fuP().ivu = (System.currentTimeMillis() - this.Hiu);
     }
     label216:
     while ((paramInt == 0) && (paramd == null))
     {
-      AppMethodBeat.o(194286);
+      AppMethodBeat.o(264825);
       return 0;
       i = paramd.field_retCode;
       break;
     }
     Log.i("MicroMsg.FaceFlashActionReflectManager", "cdnCallback sceneResult.field_retCode != 0");
-    com.tencent.mm.plugin.flash.c.b.epN().gmH = 5;
+    com.tencent.mm.plugin.flash.c.b.fuP().ivK = 5;
     paramString = new JSONObject();
     try
     {
       paramString.put("errorcode", 90020);
-      paramc = com.tencent.mm.ci.a.ba(this.activity, a.i.msg_net_error);
-      paramString.put("err_feedback", this.BBv);
+      paramc = com.tencent.mm.cd.a.bt(this.activity, a.i.msg_net_error);
+      paramString.put("err_feedback", this.Hjb);
       paramString.put("err_msg", paramc);
       paramc = new HashMap();
       paramc.put("response", paramString.toString());
-      this.BBs.onNetworkResponseEvent(paramc, null);
-      AppMethodBeat.o(194286);
+      this.HiY.onNetworkResponseEvent(paramc, null);
+      AppMethodBeat.o(264825);
       return 0;
     }
     catch (JSONException paramc)
@@ -115,77 +116,139 @@ public final class b
     }
   }
   
-  public final void c(TextView paramTextView, String paramString)
+  public final void aDu(String paramString)
   {
-    AppMethodBeat.i(194294);
-    try
+    AppMethodBeat.i(264845);
+    Log.i("MicroMsg.FaceFlashActionReflectManager", "initPrepareTip :%s", new Object[] { paramString });
+    paramString = paramString.split(",");
+    if (paramString.length > 1) {}
+    for (this.HiQ = true;; this.HiQ = false)
     {
-      if (System.currentTimeMillis() - this.BBx >= 1000L) {
-        this.BBx = System.currentTimeMillis();
+      paramString = paramString[0];
+      if (!paramString.equals("1")) {
+        break;
       }
-      for (int i = 1; i == 0; i = 0)
-      {
-        AppMethodBeat.o(194294);
-        return;
-      }
-      String str = com.tencent.mm.plugin.flash.d.a.aO(paramTextView.getContext(), paramString);
-      Log.i("MicroMsg.FaceFlashActionReflectManager", "updateTipText  tip:%s，res:%s", new Object[] { str, paramString });
-      if (!TextUtils.isEmpty(str)) {
-        paramTextView.setText(str);
-      }
-      AppMethodBeat.o(194294);
+      this.Hjf = com.tencent.mm.cd.a.bt(this.activity, a.i.fl_act_blink);
+      AppMethodBeat.o(264845);
       return;
     }
-    catch (Exception paramTextView)
+    if (paramString.equals("2"))
     {
-      Log.e("MicroMsg.FaceFlashActionReflectManager", "updateTipText：%s", new Object[] { paramTextView.getMessage() });
-      AppMethodBeat.o(194294);
+      this.Hjf = com.tencent.mm.cd.a.bt(this.activity, a.i.fl_act_open_mouth);
+      AppMethodBeat.o(264845);
+      return;
+    }
+    if (paramString.equals("3"))
+    {
+      this.Hjf = com.tencent.mm.cd.a.bt(this.activity, a.i.fl_act_nod_head);
+      AppMethodBeat.o(264845);
+      return;
+    }
+    if (paramString.equals("4"))
+    {
+      this.Hjf = com.tencent.mm.cd.a.bt(this.activity, a.i.fl_act_shake_head);
+      AppMethodBeat.o(264845);
+      return;
+    }
+    if (paramString.equals("5")) {
+      this.Hjf = com.tencent.mm.cd.a.bt(this.activity, a.i.fl_act_silence);
+    }
+    AppMethodBeat.o(264845);
+  }
+  
+  public final void c(TextView paramTextView, String paramString)
+  {
+    AppMethodBeat.i(264854);
+    for (;;)
+    {
+      try
+      {
+        if ((!paramString.equals("fl_act_blink")) && (!paramString.equals("fl_act_open_mouth")) && (!paramString.equals("fl_act_shake_head")))
+        {
+          if (paramString.equals("fl_act_nod_head"))
+          {
+            break label182;
+            if (i == 0)
+            {
+              Log.i("MicroMsg.FaceFlashActionReflectManager", "updateTipText tip failed : %s", new Object[] { paramString });
+              AppMethodBeat.o(264854);
+            }
+          }
+          else
+          {
+            if (System.currentTimeMillis() - this.Hjd < 1000L) {
+              break label187;
+            }
+            this.Hjd = System.currentTimeMillis();
+            i = 1;
+            continue;
+          }
+          String str = com.tencent.mm.plugin.flash.d.a.aP(paramTextView.getContext(), paramString);
+          Log.i("MicroMsg.FaceFlashActionReflectManager", "updateTipText tip succ :%s， res:%s", new Object[] { str, paramString });
+          if (!TextUtils.isEmpty(str)) {
+            paramTextView.setText(str);
+          }
+          AppMethodBeat.o(264854);
+          return;
+        }
+      }
+      catch (Exception paramTextView)
+      {
+        Log.e("MicroMsg.FaceFlashActionReflectManager", "updateTipText：%s", new Object[] { paramTextView.getMessage() });
+        AppMethodBeat.o(264854);
+        return;
+      }
+      label182:
+      int i = 1;
+      continue;
+      label187:
+      i = 0;
     }
   }
   
-  public final int epv()
-  {
-    return 18;
-  }
-  
-  public final int epz()
+  public final int fuB()
   {
     return 3;
   }
   
+  public final int fux()
+  {
+    return 18;
+  }
+  
   public final void h(Intent paramIntent, Activity paramActivity)
   {
-    AppMethodBeat.i(194256);
+    AppMethodBeat.i(264775);
     super.h(paramIntent, paramActivity);
     this.scene = paramIntent.getIntExtra("scene", 0);
     this.packageName = paramIntent.getStringExtra("package");
-    this.fSC = paramIntent.getStringExtra("packageSign");
-    this.wDH = paramIntent.getBooleanExtra("needContract", false);
-    this.fSD = paramIntent.getStringExtra("otherVerifyTitle");
-    Log.i("MicroMsg.FaceFlashActionReflectManager", "[%s]init data, packageName:%s scene：%s,packageSign:%s needSignContract:%s otherVerifyTitle:%s", new Object[] { getClass().getSimpleName(), Integer.valueOf(this.scene), this.packageName, this.fSC, Boolean.valueOf(this.wDH), this.fSD });
-    av(paramActivity);
-    AppMethodBeat.o(194256);
+    this.hYz = paramIntent.getStringExtra("packageSign");
+    this.zZS = paramIntent.getBooleanExtra("needContract", false);
+    this.hYA = paramIntent.getStringExtra("otherVerifyTitle");
+    Log.i("MicroMsg.FaceFlashActionReflectManager", "[%s]init data, packageName:%s scene：%s,packageSign:%s needSignContract:%s otherVerifyTitle:%s", new Object[] { getClass().getSimpleName(), Integer.valueOf(this.scene), this.packageName, this.hYz, Boolean.valueOf(this.zZS), this.hYA });
+    aR(paramActivity);
+    AppMethodBeat.o(264775);
   }
   
   public final void onNetworkRequestEvent(String paramString1, String paramString2, HashMap<String, String> paramHashMap, YtSDKKitFramework.IYtSDKKitNetResponseParser paramIYtSDKKitNetResponseParser)
   {
-    AppMethodBeat.i(194261);
+    AppMethodBeat.i(264782);
     Log.i("MicroMsg.FaceFlashActionReflectManager", "onNetworkRequestEvent  url:%s requestContent:%s requestHeaders:%s", new Object[] { paramString1, paramString2, paramHashMap });
-    this.BBs = paramIYtSDKKitNetResponseParser;
+    this.HiY = paramIYtSDKKitNetResponseParser;
     if (paramString1.contains("wechat_face_config"))
     {
-      com.tencent.mm.plugin.flash.c.b.aHi("reqCfg");
-      epC();
-      com.tencent.mm.plugin.flash.c.a.So(18);
-      com.tencent.mm.plugin.flash.c.b.Su(2);
+      com.tencent.mm.plugin.flash.c.b.aDA("reqCfg");
+      fuE();
+      com.tencent.mm.plugin.flash.c.a.VH(18);
+      com.tencent.mm.plugin.flash.c.b.VN(2);
       try
       {
-        this.BBt = new JSONObject(paramString2).getString("select_data");
-        Log.i("MicroMsg.FaceFlashActionReflectManager", "requestFlashConfig getConfig selectData:%s", new Object[] { this.BBt });
-        paramString1 = new com.tencent.mm.plugin.facedetectaction.a.a(this.scene, this.packageName, this.fSC, 2, this.BBt.getBytes());
-        h.aGY().a(2696, this);
-        h.aGY().a(paramString1, 0);
-        AppMethodBeat.o(194261);
+        this.HiZ = new JSONObject(paramString2).getString("select_data");
+        Log.i("MicroMsg.FaceFlashActionReflectManager", "requestFlashConfig getConfig selectData:%s", new Object[] { this.HiZ });
+        paramString1 = new com.tencent.mm.plugin.facedetectaction.a.a(this.scene, this.packageName, this.hYz, 2, this.HiZ.getBytes());
+        h.aZW().a(2696, this);
+        h.aZW().a(paramString1, 0);
+        AppMethodBeat.o(264782);
         return;
       }
       catch (JSONException paramString1)
@@ -199,10 +262,10 @@ public final class b
     if (paramString1.contains("wechat_face_verify")) {
       try
       {
-        epD();
-        com.tencent.mm.plugin.flash.c.a.Sp(18);
-        aHc(paramString2);
-        AppMethodBeat.o(194261);
+        fuF();
+        com.tencent.mm.plugin.flash.c.a.VI(18);
+        aDv(paramString2);
+        AppMethodBeat.o(264782);
         return;
       }
       catch (Exception paramString1)
@@ -210,33 +273,33 @@ public final class b
         Log.e("MicroMsg.FaceFlashActionReflectManager", "action parse verify body error:%s", new Object[] { paramString1.getMessage() });
       }
     }
-    AppMethodBeat.o(194261);
+    AppMethodBeat.o(264782);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(194277);
+    AppMethodBeat.i(264811);
     Log.i("MicroMsg.FaceFlashActionReflectManager", "onSceneEnd：errType %s，errCode %s ，errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if ((paramq instanceof com.tencent.mm.plugin.facedetectaction.a.a))
+    if ((paramp instanceof com.tencent.mm.plugin.facedetectaction.a.a))
     {
       Log.i("MicroMsg.FaceFlashActionReflectManager", "scene is getFaceCheckActionerrType");
-      h.aGY().b(2696, this);
-      com.tencent.mm.plugin.flash.c.b.s("rspCfg", Integer.valueOf(paramInt2));
-      paramString = (com.tencent.mm.plugin.facedetectaction.a.a)paramq;
-      com.tencent.mm.plugin.flash.c.b.epN().gmm = paramInt2;
-      this.BAV += 1;
-      this.BAW = System.currentTimeMillis();
+      h.aZW().b(2696, this);
+      com.tencent.mm.plugin.flash.c.b.F("rspCfg", Integer.valueOf(paramInt2));
+      paramString = (com.tencent.mm.plugin.facedetectaction.a.a)paramp;
+      com.tencent.mm.plugin.flash.c.b.fuP().ivq = paramInt2;
+      this.Hit += 1;
+      this.Hiu = System.currentTimeMillis();
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramq = paramString.wDe;
-        Log.i("MicroMsg.FaceFlashActionReflectManager", "response.ret_code:%s，response.ret_msg：%s bio_id：%s，response.action_data:%s response.color_data:%s response.select_data:%s", new Object[] { Integer.valueOf(paramq.tqa), paramq.tqb, Long.valueOf(paramq.TeV), paramq.action_data, paramq.color_data, paramq.TeS });
-        if (paramq.tqa == 0)
+        paramp = paramString.zZp;
+        Log.i("MicroMsg.FaceFlashActionReflectManager", "response.ret_code:%s，response.ret_msg：%s bio_id：%s，response.action_data:%s response.color_data:%s response.select_data:%s", new Object[] { Integer.valueOf(paramp.wuz), paramp.wuA, Long.valueOf(paramp.aasp), paramp.action_data, paramp.color_data, paramp.aasm });
+        if (paramp.wuz == 0)
         {
-          this.personId = paramq.person_id;
-          this.wwU = paramq.action_data;
-          this.wDB = paramq.TeT;
-          this.wDC = paramq.SkY;
-          this.wwE = paramq.TeV;
+          this.personId = paramp.person_id;
+          this.zTa = paramp.action_data;
+          this.zZM = paramp.aasn;
+          this.zZN = paramp.Zji;
+          this.zSK = paramp.aasp;
           paramString = new JSONObject();
           for (;;)
           {
@@ -245,30 +308,30 @@ public final class b
               paramString.put("errorcode", 0);
               paramString.put("err_msg", "OK");
               paramString.put("type", 1);
-              com.tencent.mm.cd.b localb = paramq.TeS;
+              com.tencent.mm.bx.b localb = paramp.aasm;
               if (localb == null) {}
             }
-            catch (JSONException paramq)
+            catch (JSONException paramp)
             {
-              Log.e("MicroMsg.FaceFlashActionReflectManager", "reflect get config error:%s", new Object[] { paramq.getMessage() });
+              Log.e("MicroMsg.FaceFlashActionReflectManager", "reflect get config error:%s", new Object[] { paramp.getMessage() });
               continue;
             }
             try
             {
-              paramString.put("select_data", new JSONObject(new String(paramq.TeS.UH)));
-              if (!Util.isNullOrNil(paramq.action_data))
+              paramString.put("select_data", new JSONObject(new String(paramp.aasm.Op)));
+              if (!Util.isNullOrNil(paramp.action_data))
               {
-                aHg(paramq.action_data);
-                paramString.put("action_data", paramq.action_data);
+                aDu(paramp.action_data);
+                paramString.put("action_data", paramp.action_data);
               }
-              if (!Util.isNullOrNil(paramq.color_data)) {
-                paramString.put("color_data", paramq.color_data);
+              if (!Util.isNullOrNil(paramp.color_data)) {
+                paramString.put("color_data", paramp.color_data);
               }
-              paramq = new HashMap();
-              paramq.put("response", paramString.toString());
-              this.BBs.onNetworkResponseEvent(paramq, null);
-              Log.i("MicroMsg.FaceFlashActionReflectManager", "[sdk-info] retMap:%s", new Object[] { paramq });
-              AppMethodBeat.o(194277);
+              paramp = new HashMap();
+              paramp.put("response", paramString.toString());
+              this.HiY.onNetworkResponseEvent(paramp, null);
+              Log.i("MicroMsg.FaceFlashActionReflectManager", "[sdk-info] retMap:%s", new Object[] { paramp });
+              AppMethodBeat.o(264811);
               return;
             }
             catch (Exception localException)
@@ -277,90 +340,90 @@ public final class b
             }
           }
         }
-        D(paramq.tqa, paramq.tqb, "response.ret_code != 0");
-        AppMethodBeat.o(194277);
+        I(paramp.wuz, paramp.wuA, "response.ret_code != 0");
+        AppMethodBeat.o(264811);
         return;
       }
-      D(90036, com.tencent.mm.ci.a.ba(this.activity, a.i.net_fetch_failed), "cgi failed");
-      AppMethodBeat.o(194277);
+      I(90036, com.tencent.mm.cd.a.bt(this.activity, a.i.net_fetch_failed), "cgi failed");
+      AppMethodBeat.o(264811);
       return;
     }
-    if ((paramq instanceof com.tencent.mm.plugin.facedetectaction.a.c))
+    if ((paramp instanceof com.tencent.mm.plugin.facedetectaction.a.c))
     {
-      h.aGY().b(2726, this);
-      paramq = ((com.tencent.mm.plugin.facedetectaction.a.c)paramq).wDi;
-      Log.i("MicroMsg.FaceFlashActionReflectManager", "scene is getFaceCheckResult：ret_code: %s, ret_msg: %s serialId:%s retry:%s", new Object[] { Integer.valueOf(paramq.tqa), paramq.tqb, paramq.Tfa, Integer.valueOf(paramq.TeZ) });
-      com.tencent.mm.plugin.flash.c.b.s("rspVerify", Integer.valueOf(paramq.tqa));
-      com.tencent.mm.plugin.flash.c.b.epN().gmo = paramq.tqa;
+      h.aZW().b(2726, this);
+      paramp = ((com.tencent.mm.plugin.facedetectaction.a.c)paramp).zZt;
+      Log.i("MicroMsg.FaceFlashActionReflectManager", "scene is getFaceCheckResult：ret_code: %s, ret_msg: %s serialId:%s retry:%s", new Object[] { Integer.valueOf(paramp.wuz), paramp.wuA, paramp.aasu, Integer.valueOf(paramp.aast) });
+      com.tencent.mm.plugin.flash.c.b.F("rspVerify", Integer.valueOf(paramp.wuz));
+      com.tencent.mm.plugin.flash.c.b.fuP().ivs = paramp.wuz;
       paramString = new JSONObject();
     }
     for (;;)
     {
       try
       {
-        paramString.put("countFace", this.BAV);
-        paramString.put("err_code", paramq.tqa);
+        paramString.put("countFace", this.Hit);
+        paramString.put("err_code", paramp.wuz);
         if ((paramInt1 != 0) || (paramInt2 != 0)) {
           continue;
         }
-        com.tencent.mm.plugin.flash.c.a.Sq(18);
-        paramString.put("errorcode", paramq.tqa);
-        paramString.put("error_code", paramq.tqa);
-        paramString.put("errormsg", paramq.tqb);
+        com.tencent.mm.plugin.flash.c.a.VJ(18);
+        paramString.put("errorcode", paramp.wuz);
+        paramString.put("error_code", paramp.wuz);
+        paramString.put("errormsg", paramp.wuA);
         paramString.put("err_msg", "ok");
-        paramString.put("token", paramq.SqY);
-        paramString.put("serial_id", paramq.Tfa);
+        paramString.put("token", paramp.ZpZ);
+        paramString.put("serial_id", paramp.aasu);
         paramString.put("scene", this.scene);
-        if (paramq.tqa != 0)
+        if (paramp.wuz != 0)
         {
-          paramString.put("err_retry", paramq.TeZ);
-          paramString.put("err_tip", paramq.tqb);
+          paramString.put("err_retry", paramp.aast);
+          paramString.put("err_tip", paramp.wuA);
           paramString.put("err_msg", "fail");
-          paramString.put("otherVerifyTitle", this.fSD);
+          paramString.put("otherVerifyTitle", this.hYA);
         }
       }
-      catch (JSONException paramq)
+      catch (JSONException paramp)
       {
-        Log.e("MicroMsg.FaceFlashActionReflectManager", "NetSceneGetFaceCheckResult parse fail :%s", new Object[] { paramq.getMessage() });
+        Log.e("MicroMsg.FaceFlashActionReflectManager", "NetSceneGetFaceCheckResult parse fail :%s", new Object[] { paramp.getMessage() });
         continue;
       }
-      paramq = new HashMap();
-      paramq.put("response", paramString.toString());
-      this.BBs.onNetworkResponseEvent(paramq, null);
-      AppMethodBeat.o(194277);
+      paramp = new HashMap();
+      paramp.put("response", paramString.toString());
+      this.HiY.onNetworkResponseEvent(paramp, null);
+      AppMethodBeat.o(264811);
       return;
-      com.tencent.mm.plugin.flash.c.a.Sr(18);
-      com.tencent.mm.plugin.flash.c.b.epN().gmH = 4;
+      com.tencent.mm.plugin.flash.c.a.VK(18);
+      com.tencent.mm.plugin.flash.c.b.fuP().ivK = 4;
       paramString.put("errorcode", paramInt2);
       paramString.put("error_code", paramInt2);
-      paramString.put("errormsg", paramq.tqb);
-      paramString.put("otherVerifyTitle", this.fSD);
+      paramString.put("errormsg", paramp.wuA);
+      paramString.put("otherVerifyTitle", this.hYA);
       paramString.put("err_code", paramInt2);
-      paramString.put("err_retry", paramq.TeZ);
+      paramString.put("err_retry", paramp.aast);
       paramString.put("err_msg", "fail");
     }
   }
   
   public final void release()
   {
-    AppMethodBeat.i(194298);
+    AppMethodBeat.i(264868);
     super.release();
-    h.aGY().b(2696, this);
-    h.aGY().b(2726, this);
-    AppMethodBeat.o(194298);
+    h.aZW().b(2696, this);
+    h.aZW().b(2726, this);
+    AppMethodBeat.o(264868);
   }
   
-  public final void x(TextView paramTextView)
+  public final void y(TextView paramTextView)
   {
-    AppMethodBeat.i(194291);
-    Log.i("MicroMsg.FaceFlashActionReflectManager", "init prepareVerifyTip:%s", new Object[] { this.BBz });
-    paramTextView.setText(this.BBz);
-    AppMethodBeat.o(194291);
+    AppMethodBeat.i(264835);
+    Log.i("MicroMsg.FaceFlashActionReflectManager", "init prepareVerifyTip:%s", new Object[] { this.Hjf });
+    paramTextView.setText(this.Hjf);
+    AppMethodBeat.o(264835);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.flash.action.b
  * JD-Core Version:    0.7.0.1
  */

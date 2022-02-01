@@ -6,636 +6,746 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Parcelable;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import androidx.recyclerview.widget.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.ni;
+import com.tencent.mm.autogen.mmdata.rpt.ra;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.au.c;
-import com.tencent.mm.plugin.appbrand.au.i;
-import com.tencent.mm.plugin.appbrand.jsapi.h.c;
-import com.tencent.mm.plugin.appbrand.p.c;
+import com.tencent.mm.plugin.appbrand.aw;
+import com.tencent.mm.plugin.appbrand.b.c.a;
+import com.tencent.mm.plugin.appbrand.ba.c;
+import com.tencent.mm.plugin.appbrand.ba.i;
+import com.tencent.mm.plugin.appbrand.config.n;
+import com.tencent.mm.plugin.appbrand.jsapi.aj;
+import com.tencent.mm.plugin.appbrand.jsapi.i.c;
+import com.tencent.mm.plugin.appbrand.page.ad;
 import com.tencent.mm.plugin.appbrand.permission.a.b.b;
 import com.tencent.mm.plugin.appbrand.permission.a.b.d;
 import com.tencent.mm.plugin.appbrand.platform.window.a.o;
-import com.tencent.mm.plugin.appbrand.widget.dialog.j.a;
+import com.tencent.mm.plugin.appbrand.widget.dialog.k.a;
+import com.tencent.mm.plugin.appbrand.widget.dialog.n.a;
+import com.tencent.mm.plugin.car_license_plate.a.e;
 import com.tencent.mm.plugin.car_license_plate.api.entity.MMCarLicensePlateInfo;
 import com.tencent.mm.plugin.car_license_plate.ui.CarLicensePlateListUI;
 import com.tencent.mm.plugin.car_license_plate.ui.CarLicensePlateListViewContract.ViewModel;
 import com.tencent.mm.plugin.car_license_plate.ui.CarLicensePlateListViewContract.a;
 import com.tencent.mm.plugin.car_license_plate.ui.CarLicensePlateListViewContract.b;
 import com.tencent.mm.plugin.car_license_plate.ui.CarLicensePlateListViewContract.b.a;
+import com.tencent.mm.protocal.protobuf.eq;
+import com.tencent.mm.protocal.protobuf.fvl;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.system.AndroidContextUtil;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.concurrent.atomic.AtomicBoolean;
+import kotlin.Metadata;
 import kotlin.ResultKt;
-import kotlin.a.v;
+import kotlin.a.ab;
+import kotlin.ah;
+import kotlin.d.b.a.k;
 import kotlin.g.a.m;
-import kotlin.g.b.aa.a;
-import kotlin.g.b.q;
-import kotlin.x;
-import kotlinx.coroutines.ak;
-import kotlinx.coroutines.al;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlinx.coroutines.aq;
+import kotlinx.coroutines.ar;
+import org.apache.commons.c.i;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController;", "Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateListViewContract$ViewCallback;", "env", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "viewCallback", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$ChooserViewCallback;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;Lcom/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$ChooserViewCallback;)V", "dismissed", "Ljava/util/concurrent/atomic/AtomicBoolean;", "displayMode", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$DisplayMode;", "listHalfScreenDialog", "Lcom/tencent/mm/plugin/appbrand/permission/jsauth/IJsAuthorizePromptPresenterView;", "loadingProcessDialog", "Landroid/content/DialogInterface;", "mainScope", "Lkotlinx/coroutines/CoroutineScope;", "report", "Lcom/tencent/mm/autogen/mmdata/rpt/WACarLicensePlateAuthLogStruct;", "com/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$viewCallback$1", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$viewCallback$1;", "viewModel", "Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateListViewContract$ViewModel;", "getViewModel", "()Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateListViewContract$ViewModel;", "viewPresenter", "Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateListViewContract$Presenter;", "dismiss", "", "userInteractive", "", "getActivityForResult", "Landroid/app/Activity;", "getCoroutineScope", "initHalfScreenDialog", "onRenderData", "data", "Lcom/tencent/mm/plugin/car_license_plate/api/entity/MMCarLicensePlateInfo;", "onRenderError", "exception", "Lcom/tencent/mm/plugin/car_license_plate/cgi/CgiException;", "onRenderLoading", "request", "Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateListViewContract$ViewCallback$Request;", "showChooserView", "startListUI", "activityResultCallback", "Lkotlin/Function1;", "Landroid/app/Instrumentation$ActivityResult;", "startListUIForHalfPage", "ChooserViewCallback", "Companion", "DisplayMode", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController;", "Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateListViewContract$ViewCallback;", "Lcom/tencent/mm/plugin/appbrand/OnRuntimeInitConfigUpdatedListener;", "env", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "viewCallback", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$ChooserViewCallback;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;Lcom/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$ChooserViewCallback;)V", "contextOnDestroyListenerAdapter", "com/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$contextOnDestroyListenerAdapter$1", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$contextOnDestroyListenerAdapter$1;", "dismissed", "Ljava/util/concurrent/atomic/AtomicBoolean;", "displayMode", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$DisplayMode;", "listHalfScreenDialog", "Lcom/tencent/mm/plugin/appbrand/permission/jsauth/IJsAuthorizePromptPresenterView;", "loadingProcessDialog", "Landroid/content/DialogInterface;", "mainScope", "Lkotlinx/coroutines/CoroutineScope;", "report", "Lcom/tencent/mm/autogen/mmdata/rpt/WACarLicensePlateAuthLogStruct;", "com/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$viewCallback$1", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$viewCallback$1;", "viewModel", "Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateListViewContract$ViewModel;", "getViewModel", "()Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateListViewContract$ViewModel;", "viewPresenter", "Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateListViewContract$Presenter;", "dismiss", "", "userInteractive", "", "getActivityForResult", "Landroid/app/Activity;", "getCoroutineScope", "initHalfScreenDialog", "onRenderData", "data", "Lcom/tencent/mm/plugin/car_license_plate/api/entity/MMCarLicensePlateInfo;", "onRenderError", "exception", "Lcom/tencent/mm/plugin/car_license_plate/cgi/CgiException;", "onRenderLoading", "request", "Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateListViewContract$ViewCallback$Request;", "onRuntimeInitConfigUpdated", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "initConfig", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfig;", "showChooserView", "startListUI", "activityResultCallback", "Lkotlin/Function1;", "Landroid/app/Instrumentation$ActivityResult;", "startListUIForHalfPage", "ChooserViewCallback", "Companion", "DisplayMode", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class p
-  implements CarLicensePlateListViewContract.b
+  implements aw, CarLicensePlateListViewContract.b
 {
-  public static final p.b oDr;
-  private final ak oDi;
-  private c oDj;
-  CarLicensePlateListViewContract.a oDk;
-  private com.tencent.mm.plugin.appbrand.permission.a.b oDl;
-  private DialogInterface oDm;
-  private AtomicBoolean oDn;
-  final ni oDo;
-  private final l oDp;
-  com.tencent.mm.plugin.appbrand.g oDq;
+  public static final b rGy;
+  private final aq mainScope;
+  private c rGA;
+  CarLicensePlateListViewContract.a rGB;
+  private com.tencent.mm.plugin.appbrand.permission.a.b rGC;
+  private DialogInterface rGD;
+  private AtomicBoolean rGE;
+  final ra rGF;
+  private final j rGG;
+  final e rGH;
+  com.tencent.mm.plugin.appbrand.g rGz;
   
   static
   {
-    AppMethodBeat.i(273048);
-    oDr = new p.b((byte)0);
-    AppMethodBeat.o(273048);
+    AppMethodBeat.i(327008);
+    rGy = new b((byte)0);
+    AppMethodBeat.o(327008);
   }
   
-  public p(com.tencent.mm.plugin.appbrand.g paramg, final a parama)
+  public p(com.tencent.mm.plugin.appbrand.g paramg, a parama)
   {
-    AppMethodBeat.i(273047);
-    this.oDq = paramg;
-    this.oDi = al.iRe();
-    this.oDn = new AtomicBoolean(false);
-    this.oDo = new ni();
-    this.oDp = new l(this, parama);
-    AppMethodBeat.o(273047);
+    AppMethodBeat.i(326921);
+    this.rGz = paramg;
+    this.mainScope = ar.kBZ();
+    this.rGE = new AtomicBoolean(false);
+    this.rGF = new ra();
+    this.rGG = new j(parama, this);
+    this.rGH = new e(this);
+    AppMethodBeat.o(326921);
   }
   
-  private void a(final CarLicensePlateListViewContract.ViewModel paramViewModel, final kotlin.g.a.b<? super Instrumentation.ActivityResult, x> paramb)
+  private static final n.a a(AppBrandRuntime paramAppBrandRuntime, Context paramContext)
   {
-    AppMethodBeat.i(273046);
-    Activity localActivity = ((p)this).bQv();
+    AppMethodBeat.i(326980);
+    s.u(paramAppBrandRuntime, "$runtime");
+    paramAppBrandRuntime = new com.tencent.mm.plugin.appbrand.widget.dialog.j(paramAppBrandRuntime.mContext);
+    paramAppBrandRuntime.setMessage((CharSequence)MMApplicationContext.getString(ba.i.app_loading));
+    paramAppBrandRuntime = (n.a)paramAppBrandRuntime;
+    AppMethodBeat.o(326980);
+    return paramAppBrandRuntime;
+  }
+  
+  private static final void a(p paramp, View paramView)
+  {
+    AppMethodBeat.i(326968);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramp);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramp, "this$0");
+    paramp.rGF.juB = 2L;
+    paramp.a(paramp.cqq(), (kotlin.g.a.b)new i(paramp));
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(326968);
+  }
+  
+  private static final void a(com.tencent.mm.plugin.appbrand.permission.a.b paramb, com.tencent.mm.plugin.appbrand.g paramg, eq parameq, View paramView)
+  {
+    AppMethodBeat.i(326960);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramb);
+    localb.cH(paramg);
+    localb.cH(parameq);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramb, "$this_apply");
+    s.u(paramg, "$env");
+    s.u(parameq, "$it");
+    paramb.a(paramg, parameq.YGI, (aj)paramg.T(aj.class)).h(paramg);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(326960);
+  }
+  
+  private void a(final CarLicensePlateListViewContract.ViewModel paramViewModel, final kotlin.g.a.b<? super Instrumentation.ActivityResult, ah> paramb)
+  {
+    AppMethodBeat.i(326948);
+    Activity localActivity = cqr();
     if (localActivity == null)
     {
       com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.WxaCarLicensePlateChooserViewController", "startListUI get NULL activity");
       paramb.invoke(new Instrumentation.ActivityResult(0, null));
-      AppMethodBeat.o(273046);
+      AppMethodBeat.o(326948);
       return;
     }
-    kotlinx.coroutines.g.b(this.oDi, null, (m)new j(localActivity, paramViewModel, paramb, null), 3);
-    AppMethodBeat.o(273046);
+    kotlinx.coroutines.j.a(this.mainScope, null, null, (m)new h(localActivity, paramViewModel, paramb, null), 3);
+    AppMethodBeat.o(326948);
   }
   
-  private final CarLicensePlateListViewContract.ViewModel bQt()
+  private final CarLicensePlateListViewContract.ViewModel cqq()
   {
-    AppMethodBeat.i(273039);
-    Object localObject = this.oDk;
-    if (localObject == null) {
-      kotlin.g.b.p.bGy("viewPresenter");
+    AppMethodBeat.i(326932);
+    CarLicensePlateListViewContract.a locala = this.rGB;
+    Object localObject = locala;
+    if (locala == null)
+    {
+      s.bIx("viewPresenter");
+      localObject = null;
     }
-    localObject = ((CarLicensePlateListViewContract.a)localObject).bQt();
-    AppMethodBeat.o(273039);
+    localObject = ((CarLicensePlateListViewContract.a)localObject).cqq();
+    AppMethodBeat.o(326932);
     return localObject;
+  }
+  
+  public final void I(AppBrandRuntime paramAppBrandRuntime)
+  {
+    AppMethodBeat.i(327034);
+    aw localaw = (aw)this;
+    paramAppBrandRuntime.qsx.remove(localaw);
+    jb(false);
+    AppMethodBeat.o(327034);
   }
   
   public final void a(com.tencent.mm.plugin.car_license_plate.a.d paramd)
   {
-    AppMethodBeat.i(273045);
-    kotlin.g.b.p.k(paramd, "exception");
+    AppMethodBeat.i(327089);
+    s.u(paramd, "exception");
     com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.WxaCarLicensePlateChooserViewController", "onRenderError(" + paramd + ')');
     com.tencent.mm.plugin.car_license_plate.b.a.b(paramd);
-    if (((paramd.sXC instanceof com.tencent.mm.plugin.car_license_plate.a.e)) && (((p)this).oDj == null)) {
-      this.oDp.bQm();
+    if (((paramd.wbX instanceof e)) && (this.rGA == null)) {
+      this.rGG.bSt();
     }
-    AppMethodBeat.o(273045);
+    AppMethodBeat.o(327089);
   }
   
   public final void a(MMCarLicensePlateInfo paramMMCarLicensePlateInfo)
   {
-    AppMethodBeat.i(273044);
-    if (this.oDn.get())
+    com.tencent.mm.plugin.appbrand.permission.a.b localb = null;
+    Object localObject2 = null;
+    AppMethodBeat.i(327085);
+    if (this.rGE.get())
     {
-      AppMethodBeat.o(273044);
+      AppMethodBeat.o(327085);
       return;
     }
-    Object localObject1 = this.oDm;
+    Object localObject1 = this.rGD;
     if (localObject1 != null) {
       ((DialogInterface)localObject1).dismiss();
     }
-    this.oDm = null;
+    this.rGD = null;
     int i;
     boolean bool;
-    label83:
-    label102:
-    Object localObject2;
     if (paramMMCarLicensePlateInfo != null)
     {
-      localObject1 = paramMMCarLicensePlateInfo.sXr;
+      localObject1 = paramMMCarLicensePlateInfo.wbK;
       if (localObject1 != null) {
         if (!((Collection)localObject1).isEmpty())
         {
           i = 1;
           if (i != 1) {
-            break label272;
+            break label779;
           }
           bool = true;
-          if (((p)this).oDj == null)
+          label89:
+          label105:
+          Object localObject3;
+          if (this.rGA == null)
           {
             if (!bool) {
-              break label277;
+              break label784;
             }
-            localObject1 = c.oDs;
-            this.oDj = ((c)localObject1);
-            localObject1 = this.oDj;
-            if (localObject1 == null) {
-              kotlin.g.b.p.bGy("displayMode");
+            localObject1 = c.rGI;
+            this.rGA = ((c)localObject1);
+            localObject3 = this.rGA;
+            localObject1 = localObject3;
+            if (localObject3 == null)
+            {
+              s.bIx("displayMode");
+              localObject1 = null;
             }
           }
-          switch (q.$EnumSwitchMapping$0[localObject1.ordinal()])
+          switch (d.$EnumSwitchMapping$0[localObject1.ordinal()])
           {
           default: 
-            label156:
-            localObject1 = new StringBuilder("onRenderData, isNotEmpty:").append(bool).append(", settled displayMode:");
-            localObject2 = this.oDj;
-            if (localObject2 == null) {
-              kotlin.g.b.p.bGy("displayMode");
-            }
-            com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.WxaCarLicensePlateChooserViewController", localObject2);
-            localObject1 = this.oDj;
-            if (localObject1 == null) {
-              kotlin.g.b.p.bGy("displayMode");
-            }
-            switch (q.jLJ[localObject1.ordinal()])
+            label168:
+            Object localObject4 = new StringBuilder("onRenderData, isNotEmpty:").append(bool).append(", settled displayMode:");
+            localObject3 = this.rGA;
+            localObject1 = localObject3;
+            if (localObject3 == null)
             {
+              s.bIx("displayMode");
+              localObject1 = null;
+            }
+            com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.WxaCarLicensePlateChooserViewController", localObject1);
+            localObject4 = c.rGI;
+            localObject3 = this.rGA;
+            localObject1 = localObject3;
+            if (localObject3 == null)
+            {
+              s.bIx("displayMode");
+              localObject1 = null;
+            }
+            if (localObject4 != localObject1)
+            {
+              localObject4 = c.rGJ;
+              localObject3 = this.rGA;
+              localObject1 = localObject3;
+              if (localObject3 == null)
+              {
+                s.bIx("displayMode");
+                localObject1 = null;
+              }
+              if ((localObject4 != localObject1) || (!bool)) {
+                break label867;
+              }
+            }
+            cqq().wdn = false;
+            if (2L == this.rGF.juB) {
+              this.rGF.juB = 3L;
+            }
+            if (!bool) {
+              break label853;
+            }
+            if (this.rGC == null)
+            {
+              localObject1 = this.rGz;
+              s.checkNotNull(localObject1);
+              localb = b.b.a((com.tencent.mm.plugin.appbrand.g)localObject1, (b.d)new f(this, (com.tencent.mm.plugin.appbrand.g)localObject1), null);
+              this.rGC = localb;
+              localb.setAppBrandName(((com.tencent.mm.plugin.appbrand.g)localObject1).getRuntime().asG().hEy);
+              localb.setIconUrl(((com.tencent.mm.plugin.appbrand.g)localObject1).getRuntime().asG().phA);
+              localb.setApplyWording(MMApplicationContext.getString(ba.i.car_license_plate_choose_apply_wording));
+              localb.setRequestDesc(MMApplicationContext.getString(ba.i.car_license_plate_choose_description));
+              localObject3 = com.tencent.mm.plugin.car_license_plate.api.entity.a.wbN;
+              localb.setSimpleDetailDesc((String)com.tencent.mm.plugin.car_license_plate.api.entity.a.wbO.a(localObject3, com.tencent.mm.plugin.car_license_plate.api.entity.a.aYe[0]));
+              localObject3 = com.tencent.mm.plugin.car_license_plate.api.entity.a.wbN;
+              localObject3 = (eq)com.tencent.mm.plugin.car_license_plate.api.entity.a.wbP.a(localObject3, com.tencent.mm.plugin.car_license_plate.api.entity.a.aYe[1]);
+              if (!((eq)localObject3).YGH) {
+                break label829;
+              }
+              localObject4 = (CharSequence)((eq)localObject3).YGI;
+              if ((localObject4 == null) || (((CharSequence)localObject4).length() == 0))
+              {
+                i = 1;
+                label535:
+                if (i != 0) {
+                  break label829;
+                }
+                localb.kb(true);
+                localb.setExplainOnClickListener(new p..ExternalSyntheticLambda1(localb, (com.tencent.mm.plugin.appbrand.g)localObject1, (eq)localObject3));
+                label567:
+                localb.setFunctionButtonText(MMApplicationContext.getString(ba.i.car_license_plate_entrance));
+                localb.setFunctionButtonTextColor(MMApplicationContext.getColor(ba.c.link_color));
+                localb.setFunctionButtonOnClickListener(new p..ExternalSyntheticLambda0(this));
+                localb.setPositiveButtonText(MMApplicationContext.getString(ba.i.login_accept_button));
+                localb.setNegativeButtonText(MMApplicationContext.getString(ba.i.login_reject_button));
+                localObject3 = com.tencent.mm.plugin.car_license_plate.api.entity.a.wbN;
+                localObject3 = com.tencent.mm.plugin.car_license_plate.api.entity.a.diN();
+                if ((localObject3 != null) && (((fvl)localObject3).rHj) && (!TextUtils.isEmpty((CharSequence)((fvl)localObject3).wording)))
+                {
+                  localObject3 = ((fvl)localObject3).wording;
+                  s.s(localObject3, "userPrivacyProtectInfo.wording");
+                  localb.setUserAgreementCheckBoxWording((String)localObject3);
+                  localb.setIExternalToolsHelper((aj)((com.tencent.mm.plugin.appbrand.g)localObject1).T(aj.class));
+                }
+                localb.h((com.tencent.mm.plugin.appbrand.g)localObject1);
+              }
+            }
+            else
+            {
+              localObject1 = this.rGC;
+              if (localObject1 != null) {
+                break label840;
+              }
+              s.bIx("listHalfScreenDialog");
+              localObject1 = localObject2;
+              label743:
+              if (!bool) {
+                break label843;
+              }
+              s.checkNotNull(paramMMCarLicensePlateInfo);
             }
             break;
           }
         }
       }
     }
-    for (;;)
+    label779:
+    label784:
+    label829:
+    label840:
+    label843:
+    for (paramMMCarLicensePlateInfo = b.a("webapi_userplateinfo", paramMMCarLicensePlateInfo);; paramMMCarLicensePlateInfo = (List)ab.aivy)
     {
-      AppMethodBeat.o(273044);
+      ((com.tencent.mm.plugin.appbrand.permission.a.b)localObject1).setSelectListItem(paramMMCarLicensePlateInfo);
+      AppMethodBeat.o(327085);
       return;
       i = 0;
       break;
-      label272:
       bool = false;
-      break label83;
-      label277:
-      localObject1 = c.oDt;
-      break label102;
-      this.oDo.zw(1L);
-      this.oDo.zy(1L);
-      break label156;
-      this.oDo.zw(2L);
-      break label156;
-      bQt().sYY = false;
-      if (2L == this.oDo.anY()) {
-        this.oDo.zy(3L);
-      }
-      if (bool)
+      break label89;
+      localObject1 = c.rGJ;
+      break label105;
+      this.rGF.juz = 1L;
+      this.rGF.juB = 1L;
+      break label168;
+      this.rGF.juz = 2L;
+      break label168;
+      i = 0;
+      break label535;
+      localb.kb(false);
+      break label567;
+      break label743;
+    }
+    label853:
+    this.rGG.bSt();
+    AppMethodBeat.o(327085);
+    return;
+    label867:
+    localObject1 = c.rGJ;
+    paramMMCarLicensePlateInfo = this.rGA;
+    if (paramMMCarLicensePlateInfo == null)
+    {
+      s.bIx("displayMode");
+      paramMMCarLicensePlateInfo = localb;
+    }
+    for (;;)
+    {
+      if ((localObject1 == paramMMCarLicensePlateInfo) && (!bool))
       {
-        if (((p)this).oDl == null)
-        {
-          localObject1 = this.oDq;
-          if (localObject1 == null) {
-            kotlin.g.b.p.iCn();
-          }
-          localObject2 = b.b.a((com.tencent.mm.plugin.appbrand.g)localObject1, (b.d)new e(this, (com.tencent.mm.plugin.appbrand.g)localObject1));
-          this.oDl = ((com.tencent.mm.plugin.appbrand.permission.a.b)localObject2);
-          AppBrandRuntime localAppBrandRuntime = ((com.tencent.mm.plugin.appbrand.g)localObject1).getRuntime();
-          kotlin.g.b.p.j(localAppBrandRuntime, "env.runtime");
-          ((com.tencent.mm.plugin.appbrand.permission.a.b)localObject2).setAppBrandName(localAppBrandRuntime.Sp().fzM);
-          localAppBrandRuntime = ((com.tencent.mm.plugin.appbrand.g)localObject1).getRuntime();
-          kotlin.g.b.p.j(localAppBrandRuntime, "env.runtime");
-          ((com.tencent.mm.plugin.appbrand.permission.a.b)localObject2).setIconUrl(localAppBrandRuntime.Sp().mnM);
-          ((com.tencent.mm.plugin.appbrand.permission.a.b)localObject2).setApplyWording(MMApplicationContext.getString(au.i.car_license_plate_choose_apply_wording));
-          ((com.tencent.mm.plugin.appbrand.permission.a.b)localObject2).setRequestDesc(MMApplicationContext.getString(au.i.car_license_plate_choose_description));
-          ((com.tencent.mm.plugin.appbrand.permission.a.b)localObject2).setFunctionButtonText(MMApplicationContext.getString(au.i.car_license_plate_entrance));
-          ((com.tencent.mm.plugin.appbrand.permission.a.b)localObject2).setFunctionButtonTextColor(MMApplicationContext.getColor(au.c.link_color));
-          ((com.tencent.mm.plugin.appbrand.permission.a.b)localObject2).setFunctionButtonOnClickListener((View.OnClickListener)new d(this, (com.tencent.mm.plugin.appbrand.g)localObject1));
-          ((com.tencent.mm.plugin.appbrand.permission.a.b)localObject2).setPositiveButtonText(MMApplicationContext.getString(au.i.login_accept_button));
-          ((com.tencent.mm.plugin.appbrand.permission.a.b)localObject2).setNegativeButtonText(MMApplicationContext.getString(au.i.login_reject_button));
-          ((com.tencent.mm.plugin.appbrand.permission.a.b)localObject2).i((com.tencent.mm.plugin.appbrand.g)localObject1);
-        }
-        localObject1 = this.oDl;
-        if (localObject1 == null) {
-          kotlin.g.b.p.bGy("listHalfScreenDialog");
-        }
-        if (bool) {
-          if (paramMMCarLicensePlateInfo == null) {
-            kotlin.g.b.p.iCn();
-          }
-        }
-        for (paramMMCarLicensePlateInfo = p.b.a("webapi_userplateinfo", paramMMCarLicensePlateInfo);; paramMMCarLicensePlateInfo = (List)v.aaAd)
-        {
-          ((com.tencent.mm.plugin.appbrand.permission.a.b)localObject1).setSelectListItem(paramMMCarLicensePlateInfo);
-          AppMethodBeat.o(273044);
-          return;
-        }
+        cqq().wdn = true;
+        a(cqq(), (kotlin.g.a.b)new g(this));
       }
-      this.oDp.bQm();
-      AppMethodBeat.o(273044);
+      AppMethodBeat.o(327085);
       return;
-      if (!bool)
-      {
-        bQt().sYY = true;
-        a(bQt(), (kotlin.g.a.b)new f(this));
-      }
     }
   }
   
   public final void a(CarLicensePlateListViewContract.b.a parama)
   {
-    AppMethodBeat.i(273043);
-    kotlin.g.b.p.k(parama, "request");
-    if (CarLicensePlateListViewContract.b.a.sYT == parama)
+    AppMethodBeat.i(327072);
+    s.u(parama, "request");
+    if (CarLicensePlateListViewContract.b.a.wdh == parama)
     {
-      parama = this.oDq;
-      if (parama != null)
+      parama = this.rGz;
+      if (parama == null) {}
+      for (parama = null; parama == null; parama = parama.getRuntime())
       {
-        parama = parama.getRuntime();
-        if (parama != null) {}
-      }
-      else
-      {
-        AppMethodBeat.o(273043);
+        AppMethodBeat.o(327072);
         return;
       }
-      c localc = new c();
-      localc.b((androidx.a.a.c.a)new g(parama));
-      localc.ab(parama);
-      this.oDm = ((DialogInterface)localc);
+      com.tencent.mm.plugin.appbrand.q.c localc = new com.tencent.mm.plugin.appbrand.q.c();
+      localc.tmg = new p..ExternalSyntheticLambda2(parama);
+      localc.ap(parama);
+      parama = ah.aiuX;
+      this.rGD = ((DialogInterface)localc);
     }
-    AppMethodBeat.o(273043);
+    AppMethodBeat.o(327072);
   }
   
-  public final ak bQu()
+  public final Activity cqr()
   {
-    return this.oDi;
-  }
-  
-  public final Activity bQv()
-  {
-    AppMethodBeat.i(273042);
-    Object localObject1 = this.oDq;
-    if (localObject1 != null) {}
-    for (localObject1 = ((com.tencent.mm.plugin.appbrand.g)localObject1).getWindowAndroid();; localObject1 = null)
+    AppMethodBeat.i(327066);
+    Object localObject = this.rGz;
+    if (localObject == null)
     {
-      Object localObject2 = localObject1;
-      if (!(localObject1 instanceof o)) {
-        localObject2 = null;
+      localObject = null;
+      if (!(localObject instanceof o)) {
+        break label49;
       }
-      localObject1 = (o)localObject2;
-      if (localObject1 == null) {
-        break;
-      }
-      localObject1 = ((o)localObject1).getActivity();
-      AppMethodBeat.o(273042);
-      return localObject1;
     }
-    AppMethodBeat.o(273042);
-    return null;
-  }
-  
-  public final void ic(boolean paramBoolean)
-  {
-    AppMethodBeat.i(273040);
-    com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.WxaCarLicensePlateChooserViewController", "dismiss stack:" + android.util.Log.getStackTraceString(new Throwable()));
-    this.oDn.set(true);
-    al.a(this.oDi, null);
-    if (((p)this).oDl != null)
+    label49:
+    for (localObject = (o)localObject;; localObject = null)
     {
-      localObject = this.oDl;
-      if (localObject == null) {
-        kotlin.g.b.p.bGy("listHalfScreenDialog");
+      if (localObject != null) {
+        break label54;
       }
-      com.tencent.mm.plugin.appbrand.g localg = this.oDq;
-      if (localg == null) {
-        kotlin.g.b.p.iCn();
-      }
-      ((com.tencent.mm.plugin.appbrand.permission.a.b)localObject).j(localg);
+      AppMethodBeat.o(327066);
+      return null;
+      localObject = ((com.tencent.mm.plugin.appbrand.g)localObject).getWindowAndroid();
+      break;
     }
-    Object localObject = this.oDm;
-    if (localObject != null) {
-      ((DialogInterface)localObject).dismiss();
-    }
-    this.oDm = null;
-    this.oDq = null;
-    if (paramBoolean) {
-      this.oDo.bpa();
-    }
-    AppMethodBeat.o(273040);
+    label54:
+    localObject = AndroidContextUtil.castActivityOrNull(((o)localObject).mContext);
+    AppMethodBeat.o(327066);
+    return localObject;
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$ChooserViewCallback;", "", "onPlateNoChosen", "", "plateNo", "", "onUserCancel", "plugin-appbrand-integration_release"})
+  public final void jb(boolean paramBoolean)
+  {
+    AppMethodBeat.i(327051);
+    if (this.rGE.getAndSet(true))
+    {
+      AppMethodBeat.o(327051);
+      return;
+    }
+    com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.WxaCarLicensePlateChooserViewController", s.X("dismiss stack:", android.util.Log.getStackTraceString(new Throwable())));
+    Object localObject1 = this.rGz;
+    if ((localObject1 instanceof ad)) {}
+    for (localObject1 = (ad)localObject1;; localObject1 = null)
+    {
+      if (localObject1 != null) {
+        ((ad)localObject1).b((i.c)this.rGH);
+      }
+      localObject1 = this.rGz;
+      if (localObject1 != null)
+      {
+        localObject1 = ((com.tencent.mm.plugin.appbrand.g)localObject1).getRuntime();
+        if (localObject1 != null)
+        {
+          localObject1 = ((AppBrandRuntime)localObject1).qsB;
+          if (localObject1 != null) {
+            ((com.tencent.mm.plugin.appbrand.b.c)localObject1).b((c.a)this.rGH);
+          }
+        }
+      }
+      this.rGE.set(true);
+      ar.a(this.mainScope, null);
+      if (this.rGC != null)
+      {
+        Object localObject2 = this.rGC;
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          s.bIx("listHalfScreenDialog");
+          localObject1 = null;
+        }
+        localObject2 = this.rGz;
+        s.checkNotNull(localObject2);
+        ((com.tencent.mm.plugin.appbrand.permission.a.b)localObject1).i((com.tencent.mm.plugin.appbrand.g)localObject2);
+      }
+      localObject1 = this.rGD;
+      if (localObject1 != null) {
+        ((DialogInterface)localObject1).dismiss();
+      }
+      this.rGD = null;
+      this.rGz = null;
+      if (paramBoolean) {
+        this.rGF.bMH();
+      }
+      AppMethodBeat.o(327051);
+      return;
+    }
+  }
+  
+  public final aq wd()
+  {
+    return this.mainScope;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$ChooserViewCallback;", "", "onPlateNoChosen", "", "plateNo", "", "onUserCancel", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface a
   {
-    public abstract void ahc(String paramString);
+    public abstract void ZZ(String paramString);
     
-    public abstract void bQm();
+    public abstract void bSt();
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$DisplayMode;", "", "(Ljava/lang/String;I)V", "HALF_SCREEN_DIALOG", "ACTIVITY", "plugin-appbrand-integration_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$Companion;", "", "()V", "TAG", "", "convertToDialogItem", "", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AuthorizeOptionalListAdapter$Item;", "scope", "data", "Lcom/tencent/mm/plugin/car_license_plate/api/entity/MMCarLicensePlateInfo;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+  {
+    public static List<k.a> a(String paramString, MMCarLicensePlateInfo paramMMCarLicensePlateInfo)
+    {
+      AppMethodBeat.i(326873);
+      s.u(paramString, "scope");
+      s.u(paramMMCarLicensePlateInfo, "data");
+      ArrayList localArrayList = new ArrayList();
+      Object localObject1 = (Iterable)paramMMCarLicensePlateInfo.wbK;
+      int i = 0;
+      localObject1 = ((Iterable)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        Object localObject2 = ((Iterator)localObject1).next();
+        if (i < 0) {
+          kotlin.a.p.kkW();
+        }
+        localObject2 = (String)localObject2;
+        localArrayList.add(new k.a(1, i.bD((String)localObject2, 0, 2) + '·' + i.bD((String)localObject2, 2, ((String)localObject2).length()), "", paramString, null, s.p(paramMMCarLicensePlateInfo.wbL, localObject2), "", i));
+        i += 1;
+      }
+      paramString = (List)localArrayList;
+      AppMethodBeat.o(326873);
+      return paramString;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$DisplayMode;", "", "(Ljava/lang/String;I)V", "HALF_SCREEN_DIALOG", "ACTIVITY", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static enum c
   {
     static
     {
-      AppMethodBeat.i(252428);
-      c localc1 = new c("HALF_SCREEN_DIALOG", 0);
-      oDs = localc1;
-      c localc2 = new c("ACTIVITY", 1);
-      oDt = localc2;
-      oDu = new c[] { localc1, localc2 };
-      AppMethodBeat.o(252428);
+      AppMethodBeat.i(326868);
+      rGI = new c("HALF_SCREEN_DIALOG", 0);
+      rGJ = new c("ACTIVITY", 1);
+      rGK = new c[] { rGI, rGJ };
+      AppMethodBeat.o(326868);
     }
     
     private c() {}
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$initHalfScreenDialog$2$1"})
-  static final class d
-    implements View.OnClickListener
-  {
-    d(p paramp, com.tencent.mm.plugin.appbrand.g paramg) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(278906);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$initHalfScreenDialog$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      p.e(this.oDv);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$initHalfScreenDialog$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(278906);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$initHalfScreenDialog$1", "Lcom/tencent/mm/plugin/appbrand/permission/jsauth/IJsAuthorizePromptPresenterView$Listener;", "onMsg", "", "resultCode", "", "resultData", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "avatarId", "plugin-appbrand-integration_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$contextOnDestroyListenerAdapter$1", "Lcom/tencent/mm/plugin/appbrand/appstate/AppRunningStateController$OnRunningStateChangedListener;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentViewLifecycleStore$OnDestroyListener;", "onDestroy", "", "onRunningStateChanged", "appId", "", "state", "Lcom/tencent/mm/plugin/appbrand/appstate/AppRunningState;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class e
-    implements b.d
+    implements c.a, i.c
   {
-    e(com.tencent.mm.plugin.appbrand.g paramg) {}
-    
-    public final void a(int paramInt1, ArrayList<String> paramArrayList, int paramInt2)
-    {
-      AppMethodBeat.i(277677);
-      kotlin.g.b.p.k(paramArrayList, "resultData");
-      com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.WxaCarLicensePlateChooserViewController", "prompt onMsg, resultCode:" + paramInt1 + ", id:" + paramInt2);
-      if (1 == paramInt1)
-      {
-        paramArrayList = p.b(this.oDv).sYX;
-        if (paramArrayList != null)
-        {
-          paramArrayList = paramArrayList.sXr;
-          if (paramArrayList != null)
-          {
-            paramArrayList = (String)kotlin.a.j.M((List)paramArrayList, paramInt2);
-            CharSequence localCharSequence = (CharSequence)paramArrayList;
-            if ((localCharSequence != null) && (localCharSequence.length() != 0)) {
-              break label167;
-            }
-          }
-        }
-        label167:
-        for (paramInt1 = 1;; paramInt1 = 0)
-        {
-          if (paramInt1 != 0) {
-            break label172;
-          }
-          kotlinx.coroutines.g.b(al.iRe(), null, (m)new p.e.a(this, paramArrayList, null), 3);
-          p.c(this.oDv).zx(3L);
-          p.d(this.oDv).ahc(paramArrayList);
-          AppMethodBeat.o(277677);
-          return;
-          paramArrayList = null;
-          break;
-        }
-        label172:
-        com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.WxaCarLicensePlateChooserViewController", "prompt onMsg, invalid avatarId(index):".concat(String.valueOf(paramInt2)));
-        AppMethodBeat.o(277677);
-        return;
-      }
-      p.c(this.oDv).zx(4L);
-      p.d(this.oDv).bQm();
-      AppMethodBeat.o(277677);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/app/Instrumentation$ActivityResult;", "invoke"})
-  static final class f
-    extends q
-    implements kotlin.g.a.b<Instrumentation.ActivityResult, x>
-  {
-    f(p paramp)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandProgressDialog;", "it", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "apply", "com/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$onRenderLoading$1$1"})
-  static final class g<I, O>
-    implements androidx.a.a.c.a<Context, j.a>
-  {
-    g(AppBrandRuntime paramAppBrandRuntime) {}
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lcom/tencent/luggage/sdk/wxa_ktx/RuntimeLifecycleListenerBuilder;", "invoke", "com/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$showChooserView$1$2"})
-  static final class h
-    extends q
-    implements kotlin.g.a.b<com.tencent.luggage.sdk.h.e, x>
-  {
-    h(p paramp)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onDestroy", "com/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$showChooserView$1$3"})
-  static final class i
-    implements h.c
-  {
-    i(p paramp) {}
+    e(p paramp) {}
     
     public final void onDestroy()
     {
-      AppMethodBeat.i(278471);
-      p.a(this.oDv);
-      AppMethodBeat.o(278471);
+      AppMethodBeat.i(326788);
+      p.a(this.rGL);
+      AppMethodBeat.o(326788);
+    }
+    
+    public final void onRunningStateChanged(String paramString, com.tencent.mm.plugin.appbrand.b.b paramb)
+    {
+      AppMethodBeat.i(326781);
+      if (com.tencent.mm.plugin.appbrand.b.b.qKz == paramb) {
+        p.a(this.rGL);
+      }
+      AppMethodBeat.o(326781);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
-  static final class j
-    extends kotlin.d.b.a.j
-    implements m<ak, kotlin.d.d<? super x>, Object>
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$initHalfScreenDialog$1", "Lcom/tencent/mm/plugin/appbrand/permission/jsauth/IJsAuthorizePromptPresenterView$Listener;", "onMsg", "", "resultCode", "", "resultData", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "avatarId", "userAgreementChecked", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class f
+    implements b.d
   {
-    Object L$0;
-    int label;
-    Object oDA;
-    private ak p$;
+    f(p paramp, com.tencent.mm.plugin.appbrand.g paramg) {}
     
-    j(Activity paramActivity, CarLicensePlateListViewContract.ViewModel paramViewModel, kotlin.g.a.b paramb, kotlin.d.d paramd)
+    public final void a(int paramInt1, ArrayList<String> paramArrayList, int paramInt2, boolean paramBoolean)
+    {
+      AppMethodBeat.i(326776);
+      s.u(paramArrayList, "resultData");
+      com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.WxaCarLicensePlateChooserViewController", "prompt onMsg, resultCode:" + paramInt1 + ", id:" + paramInt2 + "  userAgreementChecked:" + paramBoolean);
+      if (1 == paramInt1)
+      {
+        paramArrayList = p.b(this.rGL).wdm;
+        if (paramArrayList == null)
+        {
+          paramArrayList = null;
+          CharSequence localCharSequence = (CharSequence)paramArrayList;
+          if ((localCharSequence != null) && (localCharSequence.length() != 0)) {
+            break label187;
+          }
+        }
+        label187:
+        for (paramInt1 = 1;; paramInt1 = 0)
+        {
+          if (paramInt1 != 0) {
+            break label192;
+          }
+          kotlinx.coroutines.j.a(ar.kBZ(), null, null, (m)new p.f.a(paramArrayList, this.rCg, paramBoolean, null), 3);
+          p.c(this.rGL).juA = 3L;
+          p.d(this.rGL).ZZ(paramArrayList);
+          AppMethodBeat.o(326776);
+          return;
+          paramArrayList = paramArrayList.wbK;
+          if (paramArrayList == null)
+          {
+            paramArrayList = null;
+            break;
+          }
+          paramArrayList = (String)kotlin.a.p.ae((List)paramArrayList, paramInt2);
+          break;
+        }
+        label192:
+        com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.WxaCarLicensePlateChooserViewController", s.X("prompt onMsg, invalid avatarId(index):", Integer.valueOf(paramInt2)));
+        AppMethodBeat.o(326776);
+        return;
+      }
+      p.c(this.rGL).juA = 4L;
+      p.d(this.rGL).bSt();
+      AppMethodBeat.o(326776);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Landroid/app/Instrumentation$ActivityResult;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class g
+    extends u
+    implements kotlin.g.a.b<Instrumentation.ActivityResult, ah>
+  {
+    g(p paramp)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class h
+    extends k
+    implements m<aq, kotlin.d.d<? super ah>, Object>
+  {
+    int label;
+    
+    h(Activity paramActivity, CarLicensePlateListViewContract.ViewModel paramViewModel, kotlin.g.a.b<? super Instrumentation.ActivityResult, ah> paramb, kotlin.d.d<? super h> paramd)
     {
       super(paramd);
     }
     
-    public final kotlin.d.d<x> create(Object paramObject, kotlin.d.d<?> paramd)
+    public final kotlin.d.d<ah> create(Object paramObject, kotlin.d.d<?> paramd)
     {
-      AppMethodBeat.i(282295);
-      kotlin.g.b.p.k(paramd, "completion");
-      paramd = new j(this.otc, paramViewModel, paramb, paramd);
-      paramd.p$ = ((ak)paramObject);
-      AppMethodBeat.o(282295);
-      return paramd;
-    }
-    
-    public final Object invoke(Object paramObject1, Object paramObject2)
-    {
-      AppMethodBeat.i(282296);
-      paramObject1 = ((j)create(paramObject1, (kotlin.d.d)paramObject2)).invokeSuspend(x.aazN);
-      AppMethodBeat.o(282296);
-      return paramObject1;
+      AppMethodBeat.i(326775);
+      paramObject = (kotlin.d.d)new h(this.rxb, paramViewModel, paramb, paramd);
+      AppMethodBeat.o(326775);
+      return paramObject;
     }
     
     public final Object invokeSuspend(Object paramObject)
     {
-      AppMethodBeat.i(282293);
-      kotlin.d.a.a locala = kotlin.d.a.a.aaAA;
-      Object localObject1;
-      Object localObject2;
+      AppMethodBeat.i(326771);
+      kotlin.d.a.a locala = kotlin.d.a.a.aiwj;
       switch (this.label)
       {
       default: 
         paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-        AppMethodBeat.o(282293);
+        AppMethodBeat.o(326771);
         throw paramObject;
       case 0: 
         ResultKt.throwOnFailure(paramObject);
-        paramObject = this.p$;
-        localObject1 = this.otc;
-        localObject2 = new Intent((Context)this.otc, CarLicensePlateListUI.class);
-        if (paramViewModel != null) {
-          ((Intent)localObject2).putExtra("INTENT_KEY_VIEW_MODEL", (Parcelable)paramViewModel);
+        paramObject = this.rxb;
+        Object localObject1 = new Intent((Context)this.rxb, CarLicensePlateListUI.class);
+        Object localObject2 = paramViewModel;
+        if (localObject2 != null) {
+          ((Intent)localObject1).putExtra("INTENT_KEY_VIEW_MODEL", (Parcelable)localObject2);
         }
-        this.L$0 = paramObject;
+        localObject2 = ah.aiuX;
+        localObject2 = (kotlin.d.d)this;
         this.label = 1;
-        localObject2 = com.tencent.mm.plugin.car_license_plate.b.a.a((Activity)localObject1, (Intent)localObject2, this);
-        localObject1 = localObject2;
-        if (localObject2 == locala)
+        localObject1 = com.tencent.mm.plugin.car_license_plate.b.a.a(paramObject, (Intent)localObject1, (kotlin.d.d)localObject2);
+        paramObject = localObject1;
+        if (localObject1 == locala)
         {
-          AppMethodBeat.o(282293);
+          AppMethodBeat.o(326771);
           return locala;
         }
       case 1: 
-        localObject2 = (ak)this.L$0;
         ResultKt.throwOnFailure(paramObject);
-        localObject1 = paramObject;
-        paramObject = localObject2;
-        localObject1 = (Instrumentation.ActivityResult)localObject1;
-        localObject2 = (kotlin.g.a.a)new a((Instrumentation.ActivityResult)localObject1, this);
-        this.L$0 = paramObject;
-        this.oDA = localObject1;
+        paramObject = (kotlin.g.a.a)new p.h.a(paramb, (Instrumentation.ActivityResult)paramObject);
         this.label = 2;
-        if (com.tencent.mm.plugin.car_license_plate.b.a.a((kotlin.g.a.a)localObject2, this) != locala) {
-          break label213;
+        if (com.tencent.mm.plugin.car_license_plate.b.a.a(paramObject, this) != locala) {
+          break label192;
         }
-        AppMethodBeat.o(282293);
+        AppMethodBeat.o(326771);
         return locala;
       }
       ResultKt.throwOnFailure(paramObject);
-      label213:
-      paramObject = x.aazN;
-      AppMethodBeat.o(282293);
+      label192:
+      paramObject = ah.aiuX;
+      AppMethodBeat.o(326771);
       return paramObject;
-    }
-    
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$startListUI$1$2$1"})
-    static final class a
-      extends q
-      implements kotlin.g.a.a<x>
-    {
-      a(Instrumentation.ActivityResult paramActivityResult, p.j paramj)
-      {
-        super();
-      }
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/app/Instrumentation$ActivityResult;", "invoke"})
-  static final class k
-    extends q
-    implements kotlin.g.a.b<Instrumentation.ActivityResult, x>
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Landroid/app/Instrumentation$ActivityResult;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class i
+    extends u
+    implements kotlin.g.a.b<Instrumentation.ActivityResult, ah>
   {
-    k(p paramp)
+    i(p paramp)
     {
       super();
     }
-    
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$startListUIForHalfPage$1$1$1", "Landroidx/recyclerview/widget/ListUpdateCallback;", "onChanged", "", "position", "", "count", "payload", "", "onInserted", "onMoved", "fromPosition", "toPosition", "onRemoved", "plugin-appbrand-integration_release"})
-    public static final class a
-      implements s
-    {
-      a(aa.a parama) {}
-      
-      public final void W(int paramInt1, int paramInt2)
-      {
-        this.oDF.aaBx = true;
-      }
-      
-      public final void ac(int paramInt1, int paramInt2)
-      {
-        this.oDF.aaBx = true;
-      }
-      
-      public final void ad(int paramInt1, int paramInt2)
-      {
-        this.oDF.aaBx = true;
-      }
-      
-      public final void c(int paramInt1, int paramInt2, Object paramObject)
-      {
-        this.oDF.aaBx = true;
-      }
-    }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$viewCallback$1", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$ChooserViewCallback;", "onPlateNoChosen", "", "plateNo", "", "onUserCancel", "plugin-appbrand-integration_release"})
-  public static final class l
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$viewCallback$1", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/WxaCarLicensePlateChooserViewController$ChooserViewCallback;", "onPlateNoChosen", "", "plateNo", "", "onUserCancel", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class j
     implements p.a
   {
-    l(p.a parama) {}
+    j(p.a parama, p paramp) {}
     
-    public final void ahc(String paramString)
+    public final void ZZ(String paramString)
     {
-      AppMethodBeat.i(274711);
-      kotlin.g.b.p.k(paramString, "plateNo");
-      p.a locala = parama;
+      AppMethodBeat.i(326774);
+      s.u(paramString, "plateNo");
+      p.a locala = this.rGR;
       if (locala != null) {
-        locala.ahc(paramString);
+        locala.ZZ(paramString);
       }
-      this.oDv.ic(true);
-      AppMethodBeat.o(274711);
+      jdField_this.jb(true);
+      AppMethodBeat.o(326774);
     }
     
-    public final void bQm()
+    public final void bSt()
     {
-      AppMethodBeat.i(274712);
-      p.a locala = parama;
+      AppMethodBeat.i(326782);
+      p.a locala = this.rGR;
       if (locala != null) {
-        locala.bQm();
+        locala.bSt();
       }
-      this.oDv.ic(true);
-      AppMethodBeat.o(274712);
+      jdField_this.jb(true);
+      AppMethodBeat.o(326782);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.auth.p
  * JD-Core Version:    0.7.0.1
  */

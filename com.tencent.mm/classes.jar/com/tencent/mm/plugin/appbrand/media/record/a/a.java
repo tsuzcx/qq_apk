@@ -15,9 +15,9 @@ public final class a
 {
   private final int TIMEOUT_USEC = 100;
   private String mFilePath = "";
-  int qes = 2;
-  private aa qet;
-  MediaCodec.BufferInfo qeu;
+  int tjh = 2;
+  private aa tji;
+  MediaCodec.BufferInfo tjj;
   
   public final boolean a(boolean paramBoolean, byte[] paramArrayOfByte, int paramInt)
   {
@@ -28,12 +28,12 @@ public final class a
       AppMethodBeat.o(146338);
       return false;
     }
-    if (this.qet != null)
+    if (this.tji != null)
     {
       Log.i("MicroMsg.Record.AACAudioEncoder", "encodePCMToAAC endOfStream:%b", new Object[] { Boolean.valueOf(paramBoolean) });
-      Object localObject2 = this.qet.avj();
-      Object localObject1 = this.qet.avk();
-      paramInt = this.qet.EX(100L);
+      Object localObject2 = this.tji.aPD();
+      Object localObject1 = this.tji.aPE();
+      paramInt = this.tji.dequeueInputBuffer(100L);
       if (paramInt >= 0)
       {
         localObject2 = localObject2[paramInt];
@@ -44,9 +44,9 @@ public final class a
         Log.i("MicroMsg.Record.AACAudioEncoder", "inputBufferIndex:%d, data length:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfByte.length) });
         if (paramBoolean)
         {
-          this.qet.a(paramInt, paramArrayOfByte.length, System.nanoTime(), 4);
+          this.tji.a(paramInt, paramArrayOfByte.length, System.nanoTime(), 4);
           paramArrayOfByte = (byte[])localObject1;
-          paramInt = this.qet.a(this.qeu, 100L);
+          paramInt = this.tji.dequeueOutputBuffer(this.tjj, 100L);
           if (paramInt != -1) {
             break label240;
           }
@@ -58,7 +58,7 @@ public final class a
         label189:
         AppMethodBeat.o(146338);
         return true;
-        this.qet.a(paramInt, paramArrayOfByte.length, System.nanoTime(), 0);
+        this.tji.a(paramInt, paramArrayOfByte.length, System.nanoTime(), 0);
         paramArrayOfByte = (byte[])localObject1;
         break;
         Log.e("MicroMsg.Record.AACAudioEncoder", "inputBufferIndex %d", new Object[] { Integer.valueOf(paramInt) });
@@ -68,12 +68,12 @@ public final class a
         if (paramInt == -3)
         {
           Log.e("MicroMsg.Record.AACAudioEncoder", "output buff change");
-          paramArrayOfByte = this.qet.avk();
+          paramArrayOfByte = this.tji.aPE();
           break;
         }
         if (paramInt == -2)
         {
-          Log.e("MicroMsg.Record.AACAudioEncoder", "encoder output format changed: ".concat(String.valueOf(this.qet.avi())));
+          Log.e("MicroMsg.Record.AACAudioEncoder", "encoder output format changed: ".concat(String.valueOf(this.tji.getOutputFormat())));
           break;
         }
         if (paramInt < 0)
@@ -89,13 +89,13 @@ public final class a
           AppMethodBeat.o(146338);
           throw paramArrayOfByte;
         }
-        if ((this.qeu.flags & 0x2) != 0) {
+        if ((this.tjj.flags & 0x2) != 0) {
           Log.e("MicroMsg.Record.AACAudioEncoder", "flags is BUFFER_FLAG_CODEC_CONFIG, don't writ data into file");
         }
         for (;;)
         {
-          this.qet.releaseOutputBuffer(paramInt, false);
-          if ((this.qeu.flags & 0x4) == 0) {
+          this.tji.releaseOutputBuffer(paramInt, false);
+          if ((this.tjj.flags & 0x4) == 0) {
             break;
           }
           if (paramBoolean) {
@@ -103,7 +103,7 @@ public final class a
           }
           Log.w("MicroMsg.Record.AACAudioEncoder", "reached end of stream unexpectedly");
           break label189;
-          int i = this.qeu.size;
+          int i = this.tjj.size;
           localObject2 = new byte[i];
           ((ByteBuffer)localObject1).get((byte[])localObject2, 0, i);
           int j = M4aAudioFormatJni.writeAudioBuff((byte[])localObject2, i);
@@ -127,11 +127,11 @@ public final class a
   {
     AppMethodBeat.i(146340);
     Log.i("MicroMsg.Record.AACAudioEncoder", "close");
-    if (this.qet != null)
+    if (this.tji != null)
     {
-      this.qet.stop();
-      this.qet.release();
-      this.qet = null;
+      this.tji.stop();
+      this.tji.release();
+      this.tji = null;
     }
     M4aAudioFormatJni.closeM4aFile();
     AppMethodBeat.o(146340);
@@ -153,13 +153,13 @@ public final class a
     try
     {
       Log.i("MicroMsg.Record.AACAudioEncoder", "initCodec");
-      this.qeu = new MediaCodec.BufferInfo();
-      MediaFormat localMediaFormat = MediaFormat.createAudioFormat(this.qew, paramInt1, paramInt2);
+      this.tjj = new MediaCodec.BufferInfo();
+      MediaFormat localMediaFormat = MediaFormat.createAudioFormat(this.tjl, paramInt1, paramInt2);
       localMediaFormat.setInteger("bitrate", paramInt3);
-      localMediaFormat.setInteger("aac-profile", this.qes);
-      this.qet = aa.t(this.qew, false);
-      this.qet.a(localMediaFormat, null, 1);
-      this.qet.start();
+      localMediaFormat.setInteger("aac-profile", this.tjh);
+      this.tji = aa.u(this.tjl, false);
+      this.tji.a(localMediaFormat, null, 1);
+      this.tji.start();
       Log.i("MicroMsg.Record.AACAudioEncoder", "encoder start to work");
       paramInt3 = 0;
     }
@@ -179,24 +179,24 @@ public final class a
         paramInt3 = -1;
       }
       Log.i("MicroMsg.Record.AACAudioEncoder", "initCodec ok");
-      if (M4aAudioFormatJni.createM4aFile(paramString, paramInt2, paramInt1, this.qes) != 0) {
-        break label241;
+      if (M4aAudioFormatJni.createM4aFile(paramString, paramInt2, paramInt1, this.tjh) != 0) {
+        break label242;
       }
       Log.i("MicroMsg.Record.AACAudioEncoder", "createM4aFile m4a jni api ok,");
       AppMethodBeat.o(146337);
       return true;
       Log.i("MicroMsg.Record.AACAudioEncoder", "createM4aFile m4a jni api fail,");
-      j.BZ(22);
+      j.Co(22);
       AppMethodBeat.o(146337);
     }
     if (paramInt3 == -1)
     {
       Log.i("MicroMsg.Record.AACAudioEncoder", "initCodec  fail,");
-      j.BZ(21);
+      j.Co(21);
       AppMethodBeat.o(146337);
       return false;
     }
-    label241:
+    label242:
     return false;
   }
 }

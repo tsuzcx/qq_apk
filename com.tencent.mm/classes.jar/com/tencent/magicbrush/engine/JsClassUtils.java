@@ -1,14 +1,12 @@
 package com.tencent.magicbrush.engine;
 
 import android.webkit.JavascriptInterface;
-import androidx.annotation.Keep;
 import com.tencent.magicbrush.a.c.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
-@Keep
 public class JsClassUtils
 {
   private static final int BOOLEAN = 1;
@@ -138,7 +136,6 @@ public class JsClassUtils
     return 10;
   }
   
-  @Keep
   public static Method[] getJavascriptInterfaceMethod(Object paramObject)
   {
     AppMethodBeat.i(139978);
@@ -165,7 +162,6 @@ public class JsClassUtils
     }
   }
   
-  @Keep
   public static String getMethodName(Method paramMethod)
   {
     AppMethodBeat.i(139980);
@@ -174,7 +170,6 @@ public class JsClassUtils
     return paramMethod;
   }
   
-  @Keep
   public static String getMethodSignature(Method paramMethod)
   {
     AppMethodBeat.i(139979);
@@ -194,7 +189,6 @@ public class JsClassUtils
     return paramMethod;
   }
   
-  @Keep
   public static int[] getMethodType(Method paramMethod)
   {
     int i = 0;
@@ -212,7 +206,6 @@ public class JsClassUtils
     return arrayOfInt;
   }
   
-  @Keep
   public static byte[] getStringUtf8(String paramString)
   {
     AppMethodBeat.i(139985);
@@ -255,7 +248,6 @@ public class JsClassUtils
     }
   }
   
-  @Keep
   public static void jsLog(int paramInt, String paramString)
   {
     AppMethodBeat.i(139984);
@@ -276,7 +268,7 @@ public class JsClassUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.magicbrush.engine.JsClassUtils
  * JD-Core Version:    0.7.0.1
  */

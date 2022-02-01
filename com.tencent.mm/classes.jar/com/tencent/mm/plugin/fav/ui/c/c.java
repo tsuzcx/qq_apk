@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.fav.ui.c;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.fts.a.a.j;
-import com.tencent.mm.plugin.fts.a.a.k;
+import com.tencent.mm.plugin.fts.a.a.l;
 import com.tencent.mm.plugin.fts.a.a.m;
+import com.tencent.mm.plugin.fts.a.a.o;
 import com.tencent.mm.plugin.fts.a.c.d;
 import com.tencent.mm.plugin.fts.a.d.e.a;
 import com.tencent.mm.plugin.fts.a.d.e.b;
@@ -22,17 +22,17 @@ public final class c
     super(paramContext, paramb, paramInt);
   }
   
-  public final com.tencent.mm.plugin.fts.a.a.a a(MMHandler paramMMHandler, HashSet<String> paramHashSet)
+  public final com.tencent.mm.plugin.fts.a.a.c a(MMHandler paramMMHandler, HashSet<String> paramHashSet)
   {
     AppMethodBeat.i(107312);
-    j localj = new j();
-    localj.nRn = 2;
-    localj.query = getQuery();
-    localj.BIS = paramHashSet;
-    localj.handler = paramMMHandler;
-    localj.BIU = this;
-    localj.BIT = d.BJw;
-    paramMMHandler = ((n)h.ag(n.class)).search(6, localj);
+    l locall = new l();
+    locall.qRb = 2;
+    locall.query = getQuery();
+    locall.HtA = paramHashSet;
+    locall.handler = paramMMHandler;
+    locall.HtC = this;
+    locall.HtB = d.Hug;
+    paramMMHandler = ((n)h.az(n.class)).search(6, locall);
     AppMethodBeat.o(107312);
     return paramMMHandler;
   }
@@ -40,39 +40,39 @@ public final class c
   public final com.tencent.mm.plugin.fts.a.d.a.a a(int paramInt, e.a parama)
   {
     AppMethodBeat.i(107314);
-    int i = paramInt - parama.BJz - 1;
-    m localm = null;
-    Object localObject = localm;
-    if (i < parama.pWR.size())
+    int i = paramInt - parama.Huj - 1;
+    o localo = null;
+    Object localObject = localo;
+    if (i < parama.tbH.size())
     {
-      localObject = localm;
+      localObject = localo;
       if (i >= 0)
       {
-        localm = (m)parama.pWR.get(i);
+        localo = (o)parama.tbH.get(i);
         localObject = new a(paramInt);
-        ((a)localObject).olG = localm;
-        ((a)localObject).BHY = parama.BHY;
-        ((a)localObject).hx(localm.type, localm.BHR);
-        ((a)localObject).wPW = true;
+        ((a)localObject).rpp = localo;
+        ((a)localObject).FWt = parama.FWt;
+        ((a)localObject).iW(localo.type, localo.subtype);
+        ((a)localObject).Amy = true;
       }
     }
     if (localObject != null) {
-      ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).BJI = (i + 1);
+      ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).Hur = (i + 1);
     }
     AppMethodBeat.o(107314);
     return localObject;
   }
   
-  public final void a(k paramk, HashSet<String> paramHashSet)
+  public final void a(m paramm, HashSet<String> paramHashSet)
   {
     AppMethodBeat.i(107313);
-    if (ff(paramk.BIW))
+    if (hS(paramm.HtF))
     {
       paramHashSet = new e.a();
       paramHashSet.businessType = -1;
-      paramHashSet.BHY = paramk.BHY;
-      paramHashSet.pWR = paramk.BIW;
-      this.BLN.add(paramHashSet);
+      paramHashSet.FWt = paramm.FWt;
+      paramHashSet.tbH = paramm.HtF;
+      this.HwJ.add(paramHashSet);
     }
     AppMethodBeat.o(107313);
   }
@@ -84,7 +84,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.c.c
  * JD-Core Version:    0.7.0.1
  */

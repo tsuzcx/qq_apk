@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/j44" android:background="@color/kz" android:paddingLeft="@dimen/ir" android:paddingRight="@dimen/ir" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/j73" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@raw/app_attach_file_icon_unknow" android:scaleType="fitCenter" android:layout_centerInParent="true" />
-    <com.tencent.mm.ui.MMImageView android:id="@id/dtx" android:layout_width="@dimen/hu" android:layout_height="@dimen/hu" android:layout_marginTop="@dimen/hi" android:scaleType="centerCrop" android:layout_centerHorizontal="true" android:contentDescription="@string/hb" />
-    <TextView android:gravity="center" android:id="@id/fti" android:layout_marginLeft="@dimen/g" android:layout_marginTop="@dimen/jv" android:layout_marginRight="@dimen/g" android:text="{name}" android:layout_below="@id/dtx" android:layout_centerHorizontal="true" style="@style/p_" />
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/bue" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/fti">
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hw">
-            <ProgressBar android:id="@id/buc" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" style="?android:progressBarStyleHorizontal" />
-            <ImageView android:id="@id/buk" android:background="@drawable/ap8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ah4" />
-        </LinearLayout>
-        <TextView android:id="@id/bug" android:layout_width="wrap_content" android:layout_marginTop="@dimen/k" style="@style/m0" />
+<com.tencent.mm.view.TouchableLayout android:id="@id/kzv" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical" android:id="@id/gl6" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/ivk" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <androidx.recyclerview.widget.RecyclerView android:id="@id/iix" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </com.tencent.mm.view.RefreshLoadMoreLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <TextView android:textSize="14.0dip" android:gravity="center" android:id="@id/hgy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="64.0dip" android:layout_marginTop="@dimen/ci" android:text="@string/eng" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/g3l" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="64.0dip" android:layout_marginTop="@dimen/ci">
+        <ProgressBar android:background="@color/ahb" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:indeterminateDrawable="@drawable/ang" />
     </LinearLayout>
-    <Button android:id="@id/ggf" android:layout_width="fill_parent" android:layout_marginTop="@dimen/hw" android:text="@string/ca0" android:layout_below="@id/fti" android:layout_centerHorizontal="true" style="@style/ou" />
-    <Button android:id="@id/g48" android:layout_width="fill_parent" android:layout_marginTop="@dimen/hw" android:text="@string/c_z" android:layout_below="@id/ggf" android:layout_centerHorizontal="true" style="@style/ou" />
-    <TextView android:gravity="center" android:id="@id/ipe" android:layout_width="wrap_content" android:layout_marginTop="@dimen/k" android:text="@string/c_x" android:layout_below="@id/g48" android:layout_centerHorizontal="true" style="@style/m0" />
-    <Button android:id="@id/bto" android:layout_marginTop="@dimen/hw" android:text="@string/c_y" android:layout_below="@id/fti" android:layout_centerHorizontal="true" style="@style/ou" />
-</RelativeLayout>
+</com.tencent.mm.view.TouchableLayout>

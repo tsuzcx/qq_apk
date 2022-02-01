@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/j44" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/hrt" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-    <TextView android:textColor="@color/ag2" android:gravity="center" android:id="@id/ipe" android:padding="@dimen/hs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/hw" android:text="@string/h18" android:layout_alignParentBottom="true" />
-    <ImageView android:id="@id/j73" android:background="@color/kp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" android:layout_centerInParent="true" />
-    <com.tencent.mm.ui.widget.MMPinProgressBtn android:id="@id/hrm" android:visibility="gone" android:layout_width="@dimen/ag2" android:layout_height="@dimen/ag2" android:layout_centerInParent="true" />
-    <ImageView android:id="@id/j72" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/btb" android:scaleType="center" android:layout_centerInParent="true" />
-    <include layout="@layout/bsz" />
+<RelativeLayout android:orientation="vertical" android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/et9" android:padding="10.0dip" android:layout_width="@dimen/d5" android:layout_height="@dimen/d5" android:layout_marginLeft="@dimen/cp" android:src="@raw/icons_outlined_close" android:layout_alignParentLeft="true" android:layout_centerVertical="true" app:iconColor="@color/FG_0" />
+    <TextView android:textSize="15.0dip" android:textColor="@color/FG_0" android:layout_gravity="center" android:id="@id/etd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginRight="24.0dip" android:text="" android:singleLine="false" android:layout_centerInParent="true" />
 </RelativeLayout>

@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService;
-import com.tencent.mm.plugin.downloader.b.a.b;
+import com.tencent.mm.plugin.downloader.event.a.b;
 import com.tencent.mm.plugin.downloader.model.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 
 public final class a
 {
-  public static a.b CBs;
+  public static a.b Ivi;
 }
 
 

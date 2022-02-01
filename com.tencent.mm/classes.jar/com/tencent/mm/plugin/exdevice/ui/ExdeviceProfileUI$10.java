@@ -16,16 +16,16 @@ final class ExdeviceProfileUI$10
   {
     AppMethodBeat.i(24103);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/exdevice/ui/ExdeviceProfileUI$18", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    e.f(this.vpc);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/exdevice/ui/ExdeviceProfileUI$18", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    e.g(this.yBy);
     a.a(this, "com/tencent/mm/plugin/exdevice/ui/ExdeviceProfileUI$18", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(24103);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceProfileUI.10
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,26 @@
 package com.tencent.mm.plugin.appbrand.jsapi.bluetooth;
 
-import com.tencent.luggage.a.e;
-import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.w.a;
-import java.util.ArrayList;
+import kotlin.Metadata;
 
-public final class c
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/BluetoothAuthorizeState;", "", "(Ljava/lang/String;I)V", "REJECTED", "ACCEPTED_IN_FOREGROUND", "ALWAYS_ACCEPTED", "luggage-commons-jsapi-connectivity-ext_release"}, k=1, mv={1, 5, 1}, xi=48)
+public enum c
 {
-  public static void ex(int paramInt1, int paramInt2)
+  static
   {
-    AppMethodBeat.i(144492);
-    ArrayList localArrayList = new ArrayList();
-    IDKey localIDKey = new IDKey();
-    localIDKey.SetID(762);
-    localIDKey.SetKey(paramInt1);
-    localIDKey.SetValue(1L);
-    localArrayList.add(localIDKey);
-    localIDKey = new IDKey();
-    localIDKey.SetID(762);
-    localIDKey.SetKey(paramInt2);
-    localIDKey.SetValue(1L);
-    localArrayList.add(localIDKey);
-    ((a)e.L(a.class)).b(localArrayList, true);
-    AppMethodBeat.o(144492);
+    AppMethodBeat.i(329530);
+    rKe = new c("REJECTED", 0);
+    rKf = new c("ACCEPTED_IN_FOREGROUND", 1);
+    rKg = new c("ALWAYS_ACCEPTED", 2);
+    rKh = new c[] { rKe, rKf, rKg };
+    AppMethodBeat.o(329530);
   }
   
-  public static void rE(int paramInt)
-  {
-    AppMethodBeat.i(144491);
-    ((a)e.L(a.class)).idkeyStat(762L, paramInt, 1L, false);
-    AppMethodBeat.o(144491);
-  }
+  private c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c
  * JD-Core Version:    0.7.0.1
  */

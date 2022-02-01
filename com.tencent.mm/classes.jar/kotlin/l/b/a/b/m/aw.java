@@ -1,63 +1,44 @@
 package kotlin.l.b.a.b.m;
 
-public abstract class aw
-  implements av
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.g.b.s;
+
+public final class aw
 {
-  public boolean equals(Object paramObject)
+  public static final boolean am(ad paramad)
   {
-    if (this == paramObject) {}
-    do
+    AppMethodBeat.i(60826);
+    s.u(paramad, "<this>");
+    paramad = paramad.kAK();
+    if ((paramad instanceof l)) {}
+    for (paramad = (l)paramad; paramad == null; paramad = null)
     {
-      return true;
-      if (!(paramObject instanceof av)) {
-        return false;
-      }
-      paramObject = (av)paramObject;
-      if (iPZ() != paramObject.iPZ()) {
-        return false;
-      }
-      if (iQa() != paramObject.iQa()) {
-        return false;
-      }
-    } while (iFN().equals(paramObject.iFN()));
-    return false;
+      AppMethodBeat.o(60826);
+      return false;
+    }
+    boolean bool = paramad.ksA();
+    AppMethodBeat.o(60826);
+    return bool;
   }
   
-  public int hashCode()
+  public static final l an(ad paramad)
   {
-    int i = iQa().hashCode();
-    int j;
-    if (bc.aA(iFN()))
+    AppMethodBeat.i(60827);
+    s.u(paramad, "<this>");
+    paramad = paramad.kAK();
+    if ((paramad instanceof l)) {}
+    for (paramad = (l)paramad; (paramad != null) && (paramad.ksA()); paramad = null)
     {
-      j = i * 31;
-      i = 19;
+      AppMethodBeat.o(60827);
+      return paramad;
     }
-    for (;;)
-    {
-      return i + j;
-      j = i * 31;
-      if (iPZ()) {
-        i = 17;
-      } else {
-        i = iFN().hashCode();
-      }
-    }
-  }
-  
-  public String toString()
-  {
-    if (iPZ()) {
-      return "*";
-    }
-    if (iQa() == bh.abrp) {
-      return iFN().toString();
-    }
-    return iQa() + " " + iFN();
+    AppMethodBeat.o(60827);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.m.aw
  * JD-Core Version:    0.7.0.1
  */

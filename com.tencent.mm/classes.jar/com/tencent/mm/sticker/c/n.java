@@ -4,38 +4,35 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.f;
-import com.tencent.mm.protocal.protobuf.bxc;
-import kotlin.l;
+import com.tencent.mm.protocal.protobuf.cmf;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/sticker/task/IPCGetLensList;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Landroid/os/Bundle;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-sticker_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/sticker/task/IPCGetLensList;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Landroid/os/Bundle;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-sticker_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class n
   implements d<Bundle, Bundle>
 {
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/sticker/task/IPCGetLensList$invoke$1", "Lcom/tencent/mm/sticker/task/GetLensListCallback;", "onResult", "", "errType", "", "errCode", "response", "Lcom/tencent/mm/protocal/protobuf/GetLensListResponse;", "plugin-sticker_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/sticker/task/IPCGetLensList$invoke$1", "Lcom/tencent/mm/sticker/task/GetLensListCallback;", "onResult", "", "errType", "", "errCode", "response", "Lcom/tencent/mm/protocal/protobuf/GetLensListResponse;", "plugin-sticker_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     implements h
   {
-    a(f paramf) {}
+    a(f<Bundle> paramf) {}
     
-    public final void a(int paramInt1, int paramInt2, bxc parambxc)
+    public final void a(int paramInt1, int paramInt2, cmf paramcmf)
     {
       AppMethodBeat.i(105996);
       Bundle localBundle = new Bundle();
-      localBundle.putInt(k.hvo(), paramInt1);
-      localBundle.putInt(k.hvt(), paramInt2);
-      if (parambxc != null)
+      localBundle.putInt(k.iWO(), paramInt1);
+      localBundle.putInt(k.iWT(), paramInt2);
+      if (paramcmf != null)
       {
-        parambxc = parambxc.toByteArray();
-        if (parambxc != null) {
-          localBundle.putByteArray(k.hvu(), parambxc);
+        paramcmf = paramcmf.toByteArray();
+        if (paramcmf != null) {
+          localBundle.putByteArray(k.iWU(), paramcmf);
         }
       }
-      parambxc = this.nyL;
-      if (parambxc != null)
-      {
-        parambxc.aH(localBundle);
-        AppMethodBeat.o(105996);
-        return;
+      paramcmf = this.mht;
+      if (paramcmf != null) {
+        paramcmf.onCallback(localBundle);
       }
       AppMethodBeat.o(105996);
     }
@@ -43,7 +40,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.sticker.c.n
  * JD-Core Version:    0.7.0.1
  */

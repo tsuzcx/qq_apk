@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/t9"
+<LinearLayout android:orientation="vertical" android:id="@id/kr8" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:ellipsize="end" android:id="@id/cg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-    <TextView android:ellipsize="end" android:id="@id/cf" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m7" android:singleLine="true" />
+    <LinearLayout android:gravity="start|center" android:orientation="horizontal" android:id="@id/kps" android:paddingLeft="?je" android:paddingTop="@dimen/os" android:paddingRight="?je" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@android:id/icon" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginRight="8.0dip" android:src="@null" android:scaleType="fitCenter" android:layout_marginEnd="8.0dip" />
+        <androidx.appcompat.widget.DialogTitle android:ellipsize="end" android:id="@id/ob" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:textAlignment="viewStart" style="?android:windowTitleStyle" />
+    </LinearLayout>
+    <android.widget.Space android:id="@id/ko9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/ot" />
 </LinearLayout>

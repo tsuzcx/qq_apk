@@ -1,77 +1,26 @@
 package kotlin.l.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Collection;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.l.b.a.b.b.ah;
-import kotlin.l.b.a.b.b.k;
-import kotlin.l.b.a.b.b.t;
-import kotlin.l.b.a.b.f.f;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.l.b.a.b.b.c.l;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/reflect/jvm/internal/EmptyContainerForLocal;", "Lkotlin/reflect/jvm/internal/KDeclarationContainerImpl;", "()V", "constructorDescriptors", "", "Lkotlin/reflect/jvm/internal/impl/descriptors/ConstructorDescriptor;", "getConstructorDescriptors", "()Ljava/util/Collection;", "jClass", "Ljava/lang/Class;", "getJClass", "()Ljava/lang/Class;", "members", "Lkotlin/reflect/KCallable;", "getMembers", "fail", "", "getFunctions", "Lkotlin/reflect/jvm/internal/impl/descriptors/FunctionDescriptor;", "name", "Lkotlin/reflect/jvm/internal/impl/name/Name;", "getLocalProperty", "Lkotlin/reflect/jvm/internal/impl/descriptors/PropertyDescriptor;", "index", "", "getProperties", "kotlin-reflection"})
-public final class a
-  extends i
+@Metadata(d1={""}, d2={"Lkotlin/reflect/jvm/internal/CreateKCallableVisitor;", "Lkotlin/reflect/jvm/internal/impl/descriptors/impl/DeclarationDescriptorVisitorEmptyBodies;", "Lkotlin/reflect/jvm/internal/KCallableImpl;", "", "container", "Lkotlin/reflect/jvm/internal/KDeclarationContainerImpl;", "(Lkotlin/reflect/jvm/internal/KDeclarationContainerImpl;)V", "visitFunctionDescriptor", "descriptor", "Lkotlin/reflect/jvm/internal/impl/descriptors/FunctionDescriptor;", "data", "(Lorg/jetbrains/kotlin/descriptors/FunctionDescriptor;Lkotlin/Unit;)Lkotlin/reflect/jvm/internal/KCallableImpl;", "visitPropertyDescriptor", "Lkotlin/reflect/jvm/internal/impl/descriptors/PropertyDescriptor;", "(Lorg/jetbrains/kotlin/descriptors/PropertyDescriptor;Lkotlin/Unit;)Lkotlin/reflect/jvm/internal/KCallableImpl;", "kotlin-reflection"}, k=1, mv={1, 5, 1})
+public class a
+  extends l<f<?>, ah>
 {
-  public static final a aaCp;
+  private final j aixX;
   
-  static
+  public a(j paramj)
   {
-    AppMethodBeat.i(56277);
-    aaCp = new a();
-    AppMethodBeat.o(56277);
-  }
-  
-  private static Void iCC()
-  {
-    AppMethodBeat.i(56276);
-    Throwable localThrowable = (Throwable)new w("Introspecting local functions, lambdas, anonymous functions and local variables is not yet fully supported in Kotlin reflection");
-    AppMethodBeat.o(56276);
-    throw localThrowable;
-  }
-  
-  public final Collection<ah> a(f paramf)
-  {
-    AppMethodBeat.i(56274);
-    p.k(paramf, "name");
-    iCC();
-    AppMethodBeat.o(56274);
-    throw null;
-  }
-  
-  public final ah aDF(int paramInt)
-  {
-    return null;
-  }
-  
-  public final Collection<t> b(f paramf)
-  {
-    AppMethodBeat.i(56275);
-    p.k(paramf, "name");
-    iCC();
-    AppMethodBeat.o(56275);
-    throw null;
-  }
-  
-  public final Collection<k> iCB()
-  {
-    AppMethodBeat.i(56273);
-    iCC();
-    AppMethodBeat.o(56273);
-    throw null;
-  }
-  
-  public final Class<?> iCd()
-  {
-    AppMethodBeat.i(56272);
-    iCC();
-    AppMethodBeat.o(56272);
-    throw null;
+    AppMethodBeat.i(191365);
+    this.aixX = paramj;
+    AppMethodBeat.o(191365);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.a
  * JD-Core Version:    0.7.0.1
  */

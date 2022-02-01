@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="@dimen/ce" android:paddingEnd="@dimen/ce"
+<ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true" style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/t" android:textStyle="bold" android:textColor="@color/FG_0" android:gravity="start" android:background="@drawable/a_7" android:paddingTop="@dimen/c5" android:paddingBottom="@dimen/c5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/j_2" />
-</FrameLayout>
+    <LinearLayout android:orientation="vertical" android:paddingTop="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/zv">
+        <TextView android:text="@string/kqd" style="@style/a08" />
+        <CheckedTextView android:textAppearance="@style/nx" android:textColor="@color/a7b" android:ellipsize="marquee" android:gravity="center_vertical" android:id="@id/ba7" android:background="@drawable/p5" android:paddingLeft="@dimen/if" android:paddingRight="@dimen/if" android:layout_width="fill_parent" android:layout_height="wrap_content" android:checkMark="@drawable/aq1" android:maxHeight="48.0dip" android:minHeight="48.0dip" android:text="@string/ksd" />
+        <CheckedTextView android:textAppearance="@style/nx" android:textColor="@color/a7b" android:ellipsize="marquee" android:gravity="center_vertical" android:id="@id/ba8" android:background="@drawable/p5" android:paddingLeft="@dimen/if" android:paddingRight="@dimen/if" android:layout_width="fill_parent" android:layout_height="wrap_content" android:checkMark="@drawable/aq1" android:maxHeight="48.0dip" android:minHeight="48.0dip" android:text="@string/krn" />
+        <TextView android:text="@string/kqb" style="@style/a08" />
+        <com.tencent.mm.ui.base.MaxListView android:id="@id/jez" android:background="@null" android:paddingLeft="@dimen/if" android:paddingRight="@dimen/if" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:divider="#00000000" android:dividerHeight="0.0dip" android:choiceMode="singleChoice" />
+        <TextView android:layout_marginTop="5.0dip" android:text="@string/kqc" style="@style/a08" />
+    </LinearLayout>
+</ScrollView>

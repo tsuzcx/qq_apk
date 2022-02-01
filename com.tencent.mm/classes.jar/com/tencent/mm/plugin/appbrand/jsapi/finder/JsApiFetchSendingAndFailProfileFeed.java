@@ -3,23 +3,27 @@ package com.tencent.mm.plugin.appbrand.jsapi.finder;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.af.k;
 import com.tencent.mm.plugin.appbrand.appstorage.r;
+import com.tencent.mm.plugin.appbrand.appstorage.w;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.mm.plugin.appbrand.y;
 import com.tencent.mm.plugin.finder.PluginFinder;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.storage.n;
 import com.tencent.mm.protocal.protobuf.FinderObject;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
+import com.tencent.threadpool.i;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class JsApiFetchSendingAndFailProfileFeed
-  extends c<v>
+  extends c<y>
 {
   public static final int CTRL_INDEX = -2;
   public static final String NAME = "fetchSendingAndFailProfileFeed";
@@ -28,9 +32,9 @@ public final class JsApiFetchSendingAndFailProfileFeed
     extends MainProcessTask
   {
     public static final Parcelable.Creator<FetchSendingAndFailProfileFeedTask> CREATOR;
-    private v nAz;
-    private String oSX;
-    private int okO;
+    private y qqV;
+    private String rYq;
+    private int ror;
     
     static
     {
@@ -39,28 +43,28 @@ public final class JsApiFetchSendingAndFailProfileFeed
       AppMethodBeat.o(163937);
     }
     
-    public FetchSendingAndFailProfileFeedTask(int paramInt, v paramv)
+    public FetchSendingAndFailProfileFeedTask(int paramInt, y paramy)
     {
-      this.okO = paramInt;
-      this.nAz = paramv;
+      this.ror = paramInt;
+      this.qqV = paramy;
     }
     
     public FetchSendingAndFailProfileFeedTask(Parcel paramParcel)
     {
       AppMethodBeat.i(163931);
-      f(paramParcel);
+      h(paramParcel);
       AppMethodBeat.o(163931);
     }
     
-    public final void RW()
+    public final void asn()
     {
       AppMethodBeat.i(163934);
-      com.tencent.e.h.ZvG.d(new Runnable()
+      com.tencent.threadpool.h.ahAA.g(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(163930);
-          Object localObject = ((PluginFinder)com.tencent.mm.kernel.h.ag(PluginFinder.class)).getFeedStorage().dYD();
+          Object localObject = ((PluginFinder)com.tencent.mm.kernel.h.az(PluginFinder.class)).getFeedStorage().eZj();
           JSONArray localJSONArray = new JSONArray();
           localObject = ((List)localObject).iterator();
           while (((Iterator)localObject).hasNext())
@@ -85,12 +89,12 @@ public final class JsApiFetchSendingAndFailProfileFeed
       AppMethodBeat.o(163934);
     }
     
-    public final void bsK()
+    public final void bQr()
     {
       AppMethodBeat.i(163935);
       try
       {
-        localJSONObject1 = new JSONObject(this.oSX);
+        localJSONObject1 = new JSONObject(this.rYq);
         localJSONArray = localJSONObject1.optJSONArray("data");
         if (localJSONArray == null) {
           break label269;
@@ -109,9 +113,9 @@ public final class JsApiFetchSendingAndFailProfileFeed
           JSONObject localJSONObject2;
           Object localObject2;
           String str;
-          com.tencent.mm.plugin.appbrand.ac.i locali;
+          k localk;
           label269:
-          this.oSX = a.a(localException.getMessage(), -1, new JSONArray());
+          this.rYq = a.a(localException.getMessage(), -1, new JSONArray());
           continue;
           j += 1;
           continue;
@@ -143,42 +147,42 @@ public final class JsApiFetchSendingAndFailProfileFeed
           str = localJSONObject2.optString("thumbUrl");
           if ((!Util.isNullOrNil((String)localObject2)) && (!((String)localObject2).startsWith("http")))
           {
-            locali = new com.tencent.mm.plugin.appbrand.ac.i();
-            if (this.nAz.getFileSystem().a(new q((String)localObject2), null, false, locali) == com.tencent.mm.plugin.appbrand.appstorage.m.nMR) {
-              localJSONObject2.put("url", locali.value);
+            localk = new k();
+            if (this.qqV.getFileSystem().a(new u((String)localObject2), null, false, localk) == r.qML) {
+              localJSONObject2.put("url", localk.value);
             }
           }
           if ((!Util.isNullOrNil(str)) && (!str.startsWith("http")))
           {
-            localObject2 = new com.tencent.mm.plugin.appbrand.ac.i();
-            if (this.nAz.getFileSystem().a(new q(str), null, false, (com.tencent.mm.plugin.appbrand.ac.i)localObject2) == com.tencent.mm.plugin.appbrand.appstorage.m.nMR) {
-              localJSONObject2.put("thumbUrl", ((com.tencent.mm.plugin.appbrand.ac.i)localObject2).value);
+            localObject2 = new k();
+            if (this.qqV.getFileSystem().a(new u(str), null, false, (k)localObject2) == r.qML) {
+              localJSONObject2.put("thumbUrl", ((k)localObject2).value);
             }
           }
         }
       }
       else
       {
-        this.oSX = localJSONObject1.toString();
-        Log.i("MicroMsg.Finder.JsApiFetchSendingAndFailProfileFeed", "runInClientProcess callback, appId[%s], msg[%s], callbackId[%d], isRunning[%b]", new Object[] { this.nAz.getAppId(), this.oSX, Integer.valueOf(this.okO), Boolean.valueOf(this.nAz.isRunning()) });
-        this.nAz.j(this.okO, this.oSX);
-        bPk();
+        this.rYq = localJSONObject1.toString();
+        Log.i("MicroMsg.Finder.JsApiFetchSendingAndFailProfileFeed", "runInClientProcess callback, appId[%s], msg[%s], callbackId[%d], isRunning[%b]", new Object[] { this.qqV.getAppId(), this.rYq, Integer.valueOf(this.ror), Boolean.valueOf(this.qqV.isRunning()) });
+        this.qqV.callback(this.ror, this.rYq);
+        cpx();
         AppMethodBeat.o(163935);
         return;
       }
     }
     
-    public final void f(Parcel paramParcel)
+    public final void h(Parcel paramParcel)
     {
       AppMethodBeat.i(163932);
-      this.oSX = paramParcel.readString();
+      this.rYq = paramParcel.readString();
       AppMethodBeat.o(163932);
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(163933);
-      paramParcel.writeString(this.oSX);
+      paramParcel.writeString(this.rYq);
       AppMethodBeat.o(163933);
     }
   }

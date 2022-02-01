@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="vertical" android:background="@drawable/cj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cl" android:layout_marginTop="@dimen/cb" android:layout_marginRight="@dimen/cl">
-        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cc" android:layout_height="@dimen/cj" android:src="@raw/icons_outlined_search" app:iconColor="@color/dd" />
-            <TextView android:textSize="@dimen/hc" android:textColor="@color/dd" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/nr" android:background="@android:color/transparent" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="@dimen/pd" android:layout_marginLeft="@dimen/bt" android:text="@string/ka" android:textCursorDrawable="@drawable/a70" />
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:dslv="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.sortlist.DragSortListView android:id="@android:id/list" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" dslv:collapsed_height="2.0dip" dslv:drag_enabled="true" dslv:drag_handle_id="@id/qz" dslv:drag_scroll_start="0.33" dslv:drag_start_mode="hm4" dslv:float_alpha="0.4" dslv:max_drag_scroll_speed="0.5" dslv:remove_enabled="false" dslv:remove_mode="eag" dslv:slide_shuffle_speed="0.3" dslv:sort_enabled="true" dslv:track_drag_sort="false" dslv:use_default_controller="true" />
+</FrameLayout>

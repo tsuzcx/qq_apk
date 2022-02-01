@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/ek2" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/ek1" android:background="@drawable/adi" android:layout_width="32.0dip" android:layout_height="32.0dip">
-        <ImageView android:id="@id/ek0" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_centerInParent="true" />
-    </RelativeLayout>
-</LinearLayout>

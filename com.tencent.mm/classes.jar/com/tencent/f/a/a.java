@@ -8,15 +8,15 @@ import java.util.List;
 
 public final class a
 {
-  private Object Van;
-  private HashMap<String, Object> ZQI;
-  c ZQJ;
+  private Object acBH;
+  private HashMap<String, Object> ahVf;
+  c ahVg;
   
   public a()
   {
     AppMethodBeat.i(62812);
-    this.ZQI = new HashMap();
-    this.Van = new Object();
+    this.ahVf = new HashMap();
+    this.acBH = new Object();
     AppMethodBeat.o(62812);
   }
   
@@ -31,9 +31,9 @@ public final class a
     }
     for (;;)
     {
-      synchronized (this.Van)
+      synchronized (this.acBH)
       {
-        localObject1 = this.ZQI.get(str);
+        localObject1 = this.ahVf.get(str);
         if (localObject1 == null) {
           break label171;
         }
@@ -42,14 +42,14 @@ public final class a
           locald = (d)localObject1;
           localObject1 = null;
           if (locald != null) {
-            locald.iq(str, parame.ZQL);
+            locald.jD(str, parame.ahVi);
           }
           if (localObject1 != null)
           {
             localObject1 = ((LinkedList)localObject1).iterator();
             if (((Iterator)localObject1).hasNext())
             {
-              ((d)((Iterator)localObject1).next()).iq(str, parame.ZQL);
+              ((d)((Iterator)localObject1).next()).jD(str, parame.ahVi);
               continue;
             }
           }
@@ -63,7 +63,7 @@ public final class a
           locald = null;
         }
       }
-      this.ZQJ.a(parame);
+      this.ahVg.a(parame);
       AppMethodBeat.o(62815);
       return;
       label171:
@@ -85,7 +85,7 @@ public final class a
       int i;
       Object localObject2;
       Object localObject3;
-      synchronized (this.Van)
+      synchronized (this.acBH)
       {
         int j = paramArrayOfString.length;
         i = 0;
@@ -96,10 +96,10 @@ public final class a
         if (localObject2 == null) {
           break label208;
         }
-        localObject3 = this.ZQI.get(localObject2);
+        localObject3 = this.ahVf.get(localObject2);
         if (localObject3 == null)
         {
-          this.ZQI.put(localObject2, paramd);
+          this.ahVf.put(localObject2, paramd);
         }
         else if ((localObject3 instanceof d))
         {
@@ -112,7 +112,7 @@ public final class a
           LinkedList localLinkedList = new LinkedList();
           localLinkedList.add(localObject3);
           localLinkedList.add(paramd);
-          this.ZQI.put(localObject2, localLinkedList);
+          this.ahVf.put(localObject2, localLinkedList);
         }
       }
       if ((localObject3 instanceof List))
@@ -137,11 +137,11 @@ public final class a
   public final void b(String paramString, int paramInt, Object paramObject)
   {
     AppMethodBeat.i(62814);
-    e locale = (e)this.ZQJ.itt();
+    e locale = (e)this.ahVg.kcL();
     locale.topic = paramString;
-    locale.ZQL = paramInt;
-    locale.ZQM = 0;
-    locale.ZQN = 0;
+    locale.ahVi = paramInt;
+    locale.ahVj = 0;
+    locale.OyS = 0;
     locale.obj = paramObject;
     a(locale);
     AppMethodBeat.o(62814);
@@ -149,7 +149,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.f.a.a
  * JD-Core Version:    0.7.0.1
  */

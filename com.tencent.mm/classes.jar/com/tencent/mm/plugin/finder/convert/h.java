@@ -1,76 +1,38 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import android.content.Context;
-import android.graphics.Paint;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.model.s;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.view.recyclerview.e;
-import com.tencent.mm.view.recyclerview.i;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.a.a;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.model.by;
+import com.tencent.mm.view.recyclerview.f;
+import com.tencent.mm.view.recyclerview.j;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedBulletSubtitleConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "authorItemPaddingStart", "", "getAuthorItemPaddingStart", "()I", "authorItemPaddingStart$delegate", "Lkotlin/Lazy;", "normalPaddingStart", "getNormalPaddingStart", "normalPaddingStart$delegate", "getLayoutId", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/convert/FinderFavFilterConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderTopicInfoFeed;", "()V", "TAG", "", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class h
-  extends e<s>
+  extends f<by>
 {
-  final Context context;
-  private final f xgU;
-  private final f xgV;
+  private final String TAG = "Finder.FinderFavFilterConvert";
   
-  public h(Context paramContext)
+  public final void a(RecyclerView paramRecyclerView, j paramj, int paramInt)
   {
-    AppMethodBeat.i(273394);
-    this.context = paramContext;
-    this.xgU = g.ar((a)new b(this));
-    this.xgV = g.ar((a)new a(this));
-    AppMethodBeat.o(273394);
-  }
-  
-  public final void a(RecyclerView paramRecyclerView, i parami, int paramInt)
-  {
-    AppMethodBeat.i(273388);
-    p.k(paramRecyclerView, "recyclerView");
-    p.k(parami, "holder");
-    paramRecyclerView = (TextView)parami.RD(b.f.tv_bullet_subtitle);
-    p.j(paramRecyclerView, "it");
-    ar.a((Paint)paramRecyclerView.getPaint(), 0.8F);
-    AppMethodBeat.o(273388);
+    AppMethodBeat.i(350428);
+    s.u(paramRecyclerView, "recyclerView");
+    s.u(paramj, "holder");
+    paramRecyclerView = (TextView)paramj.UH(e.e.topic_tv);
+    if (paramRecyclerView != null) {
+      paramRecyclerView.setTextSize(1, 15.0F * a.getScaleSize(paramj.context));
+    }
+    AppMethodBeat.o(350428);
   }
   
   public final int getLayoutId()
   {
-    return b.g.feed_bullet_subtitle_item;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class a
-    extends q
-    implements a<Integer>
-  {
-    a(h paramh)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class b
-    extends q
-    implements a<Integer>
-  {
-    b(h paramh)
-    {
-      super();
-    }
+    return e.f.finder_fav_filter_item;
   }
 }
 

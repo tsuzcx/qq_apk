@@ -1,62 +1,84 @@
 package com.tencent.mm.plugin.appbrand.app;
 
-import com.tencent.luggage.sdk.g.a.b;
+import com.tencent.luggage.sdk.g.a;
+import com.tencent.luggage.sdk.g.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.modelavatar.AvatarStorage;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/app/AppBrandUserInfoProvider;", "Lcom/tencent/luggage/sdk/userinfo/IWechatUserInfoProvider;", "()V", "getUserAvatarHDHeadImage", "", "callback", "Lcom/tencent/luggage/sdk/userinfo/IWechatUserInfoProvider$OnGetImagePathCallback;", "getUserDisplayNickName", "", "IPCGetHeadIconPath", "IPCGetUserDisplayNickName", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/app/AppBrandUserInfoProvider;", "Lcom/tencent/luggage/sdk/userinfo/IWechatUserInfoProvider;", "()V", "getUserAvatarHDHeadImage", "", "callback", "Lcom/tencent/luggage/sdk/userinfo/IWechatUserInfoProvider$OnGetImagePathCallback;", "getUserDisplayNickName", "", "IPCGetHeadIconPath", "IPCGetUserDisplayNickName", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class g
-  implements com.tencent.luggage.sdk.g.a
+  implements a
 {
-  public static final g nCu;
+  public static final g qBP;
   
   static
   {
     AppMethodBeat.i(175112);
-    nCu = new g();
+    qBP = new g();
     AppMethodBeat.o(175112);
   }
   
-  public final String Sy()
+  private static final void a(a.a parama, IPCString paramIPCString)
   {
-    AppMethodBeat.i(175111);
-    Object localObject = (IPCString)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.jZu, g.b.class);
-    if (localObject != null)
-    {
-      localObject = ((IPCString)localObject).value;
-      AppMethodBeat.o(175111);
-      return localObject;
+    AppMethodBeat.i(317796);
+    s.u(parama, "$callback");
+    if (paramIPCString == null) {
+      paramIPCString = null;
     }
-    AppMethodBeat.o(175111);
-    return null;
+    for (;;)
+    {
+      if (paramIPCString == null)
+      {
+        s.u(parama, "$callback");
+        parama.onGetImagePath(null);
+      }
+      AppMethodBeat.o(317796);
+      return;
+      paramIPCString = paramIPCString.value;
+      if (paramIPCString == null)
+      {
+        paramIPCString = null;
+      }
+      else
+      {
+        parama.onGetImagePath(AvatarStorage.LL(paramIPCString));
+        paramIPCString = ah.aiuX;
+      }
+    }
   }
   
-  public final void a(a.b paramb)
+  public final void a(a.a parama)
   {
     AppMethodBeat.i(175110);
-    p.k(paramb, "callback");
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.jZu, g.a.class, (f)new c(paramb));
+    s.u(parama, "callback");
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.mzv, g.a.class, new g..ExternalSyntheticLambda0(parama));
     AppMethodBeat.o(175110);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "path", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class c<T>
-    implements f<ResultType>
+  public final String asO()
   {
-    c(a.b paramb) {}
+    AppMethodBeat.i(175111);
+    Object localObject = (IPCString)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.mzv, g.b.class);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(175111);
+      return null;
+    }
+    localObject = ((IPCString)localObject).value;
+    AppMethodBeat.o(175111);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.app.g
  * JD-Core Version:    0.7.0.1
  */

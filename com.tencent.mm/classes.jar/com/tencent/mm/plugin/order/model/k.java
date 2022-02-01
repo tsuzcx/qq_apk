@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.order.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class k
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String GIM;
+  public String MFB;
   public String ThumbUrl;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -13,36 +13,36 @@ public final class k
     AppMethodBeat.i(91263);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
       if (this.ThumbUrl != null) {
-        paramVarArgs.f(1, this.ThumbUrl);
+        paramVarArgs.g(1, this.ThumbUrl);
       }
-      if (this.GIM != null) {
-        paramVarArgs.f(2, this.GIM);
+      if (this.MFB != null) {
+        paramVarArgs.g(2, this.MFB);
       }
       AppMethodBeat.o(91263);
       return 0;
     }
     if (paramInt == 1) {
       if (this.ThumbUrl == null) {
-        break label274;
+        break label270;
       }
     }
-    label274:
-    for (paramInt = g.a.a.b.b.a.g(1, this.ThumbUrl) + 0;; paramInt = 0)
+    label270:
+    for (paramInt = i.a.a.b.b.a.h(1, this.ThumbUrl) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.GIM != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.GIM);
+      if (this.MFB != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.MFB);
       }
       AppMethodBeat.o(91263);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
         AppMethodBeat.o(91263);
@@ -50,7 +50,7 @@ public final class k
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         k localk = (k)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
@@ -58,11 +58,11 @@ public final class k
           AppMethodBeat.o(91263);
           return -1;
         case 1: 
-          localk.ThumbUrl = locala.abFh.readString();
+          localk.ThumbUrl = locala.ajGk.readString();
           AppMethodBeat.o(91263);
           return 0;
         }
-        localk.GIM = locala.abFh.readString();
+        localk.MFB = locala.ajGk.readString();
         AppMethodBeat.o(91263);
         return 0;
       }

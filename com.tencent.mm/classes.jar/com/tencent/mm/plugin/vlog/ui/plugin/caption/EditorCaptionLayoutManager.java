@@ -6,53 +6,55 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.r;
 import androidx.recyclerview.widget.RecyclerView.s;
+import androidx.recyclerview.widget.o;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorCaptionLayoutManager;", "Landroidx/recyclerview/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "orientation", "", "(Landroid/content/Context;I)V", "smoothScrollToPosition", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "position", "CenterSmoothScroller", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorCaptionLayoutManager;", "Landroidx/recyclerview/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "orientation", "", "(Landroid/content/Context;I)V", "smoothScrollToPosition", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "position", "CenterSmoothScroller", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class EditorCaptionLayoutManager
   extends LinearLayoutManager
 {
   public EditorCaptionLayoutManager(Context paramContext)
   {
     super(1, false);
-    AppMethodBeat.i(229344);
-    AppMethodBeat.o(229344);
+    AppMethodBeat.i(283143);
+    AppMethodBeat.o(283143);
   }
   
   public final void smoothScrollToPosition(RecyclerView paramRecyclerView, RecyclerView.s params, int paramInt)
   {
-    AppMethodBeat.i(229343);
-    kotlin.g.b.p.k(paramRecyclerView, "recyclerView");
+    AppMethodBeat.i(283151);
+    s.u(paramRecyclerView, "recyclerView");
     paramRecyclerView = paramRecyclerView.getContext();
-    kotlin.g.b.p.j(paramRecyclerView, "recyclerView.context");
+    s.s(paramRecyclerView, "recyclerView.context");
     paramRecyclerView = new a(paramRecyclerView);
-    paramRecyclerView.cV(paramInt);
+    paramRecyclerView.cag = paramInt;
     startSmoothScroll((RecyclerView.r)paramRecyclerView);
-    AppMethodBeat.o(229343);
+    AppMethodBeat.o(283151);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorCaptionLayoutManager$CenterSmoothScroller;", "Landroidx/recyclerview/widget/LinearSmoothScroller;", "context", "Landroid/content/Context;", "(Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorCaptionLayoutManager;Landroid/content/Context;)V", "calculateDtToFit", "", "viewStart", "viewEnd", "boxStart", "boxEnd", "snapPreference", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "plugin-vlog_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorCaptionLayoutManager$CenterSmoothScroller;", "Landroidx/recyclerview/widget/LinearSmoothScroller;", "context", "Landroid/content/Context;", "(Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorCaptionLayoutManager;Landroid/content/Context;)V", "calculateDtToFit", "", "viewStart", "viewEnd", "boxStart", "boxEnd", "snapPreference", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
   public final class a
-    extends androidx.recyclerview.widget.p
+    extends o
   {
     public a()
     {
       super();
-      AppMethodBeat.i(226069);
-      AppMethodBeat.o(226069);
+      AppMethodBeat.i(283127);
+      AppMethodBeat.o(283127);
     }
     
-    public final float a(DisplayMetrics paramDisplayMetrics)
+    public final float c(DisplayMetrics paramDisplayMetrics)
     {
-      AppMethodBeat.i(226066);
-      kotlin.g.b.p.k(paramDisplayMetrics, "displayMetrics");
+      AppMethodBeat.i(283138);
+      s.u(paramDisplayMetrics, "displayMetrics");
       float f = 200.0F / paramDisplayMetrics.densityDpi;
-      AppMethodBeat.o(226066);
+      AppMethodBeat.o(283138);
       return f;
     }
     
-    public final int f(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+    public final int g(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
     {
       return (paramInt4 - paramInt3) / 2 + paramInt3 - ((paramInt2 - paramInt1) / 2 + paramInt1);
     }

@@ -8,15 +8,15 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/view/StoryRoundImageView;", "Landroid/widget/ImageView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "path", "Landroid/graphics/Path;", "rect", "Landroid/graphics/RectF;", "round", "getRound", "()I", "setRound", "(I)V", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/ui/view/StoryRoundImageView;", "Landroid/widget/ImageView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "path", "Landroid/graphics/Path;", "rect", "Landroid/graphics/RectF;", "round", "getRound", "()I", "setRound", "(I)V", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class StoryRoundImageView
   extends ImageView
 {
-  private final Path aBZ;
-  private int cUp;
-  private final RectF ctb;
+  private int ePP;
+  private final RectF ekW;
+  private final Path path;
   
   public StoryRoundImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,40 +29,37 @@ public final class StoryRoundImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(120303);
-    this.ctb = new RectF();
-    this.aBZ = new Path();
+    this.ekW = new RectF();
+    this.path = new Path();
     AppMethodBeat.o(120303);
   }
   
   public final int getRound()
   {
-    return this.cUp;
+    return this.ePP;
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(120301);
-    this.ctb.set(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight());
-    this.aBZ.addRoundRect(this.ctb, this.cUp, this.cUp, Path.Direction.CW);
+    this.ekW.set(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight());
+    this.path.addRoundRect(this.ekW, this.ePP, this.ePP, Path.Direction.CW);
     if (paramCanvas != null) {
       paramCanvas.save();
     }
     if (paramCanvas != null) {
-      paramCanvas.clipPath(this.aBZ);
+      paramCanvas.clipPath(this.path);
     }
     super.onDraw(paramCanvas);
-    if (paramCanvas != null)
-    {
+    if (paramCanvas != null) {
       paramCanvas.restore();
-      AppMethodBeat.o(120301);
-      return;
     }
     AppMethodBeat.o(120301);
   }
   
   public final void setRound(int paramInt)
   {
-    this.cUp = paramInt;
+    this.ePP = paramInt;
   }
 }
 

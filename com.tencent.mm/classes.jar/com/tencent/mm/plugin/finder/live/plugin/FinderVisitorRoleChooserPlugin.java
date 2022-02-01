@@ -6,7 +6,6 @@ import android.graphics.Point;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.Window;
@@ -21,181 +20,216 @@ import com.tencent.mm.ae.d;
 import com.tencent.mm.kernel.f;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.live.view.LiveBottomSheetPanel;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.live.cgi.m;
-import com.tencent.mm.plugin.finder.live.cgi.m.a;
-import com.tencent.mm.protocal.protobuf.axc;
-import com.tencent.mm.protocal.protobuf.bcy;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.finder.live.cgi.w;
+import com.tencent.mm.plugin.finder.live.cgi.w.a;
+import com.tencent.mm.plugin.finder.live.p.e;
+import com.tencent.mm.plugin.finder.live.p.f;
+import com.tencent.mm.plugin.finder.live.view.adapter.ai;
+import com.tencent.mm.protocal.protobuf.bcz;
+import com.tencent.mm.protocal.protobuf.bni;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.ui.ad;
-import com.tencent.mm.ui.ax;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.ui.af;
+import com.tencent.mm.ui.bf;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderVisitorRoleChooserPlugin;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "clickArea", "Landroid/view/View;", "contentGroup", "Lcom/tencent/mm/live/view/LiveBottomSheetPanel;", "onRoleChooseListener", "Lkotlin/Function1;", "", "originStatusBarColor", "Ljava/lang/Integer;", "visitorCancel", "Landroid/widget/TextView;", "visitorRoleAdapter", "Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveVisitorRoleAdapter;", "visitorRv", "Landroidx/recyclerview/widget/RecyclerView;", "changeOrResetStatusBar", "isChange", "", "changeRole", "liveIdentity", "initView", "setVisitorRole", "aliasInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveAliasInfo;", "show", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderVisitorRoleChooserPlugin;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "clickArea", "Landroid/view/View;", "contentGroup", "Lcom/tencent/mm/live/view/LiveBottomSheetPanel;", "onRoleChooseListener", "Lkotlin/Function1;", "", "originStatusBarColor", "Ljava/lang/Integer;", "visitorCancel", "Landroid/widget/TextView;", "visitorRoleAdapter", "Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveVisitorRoleAdapter;", "visitorRv", "Landroidx/recyclerview/widget/RecyclerView;", "changeOrResetStatusBar", "isChange", "", "changeRole", "liveIdentity", "initView", "setVisitorRole", "aliasInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveAliasInfo;", "show", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderVisitorRoleChooserPlugin
   extends RelativeLayout
 {
+  private RecyclerView DmN;
+  private TextView DmO;
+  private kotlin.g.a.b<? super Integer, ah> DmP;
+  private Integer DmQ;
+  private ai DmR;
   private final String TAG;
   private View clickArea;
-  private LiveBottomSheetPanel kFV;
-  private RecyclerView yzR;
-  private TextView yzS;
-  private kotlin.g.a.b<? super Integer, x> yzT;
-  private Integer yzU;
-  private com.tencent.mm.plugin.finder.live.view.adapter.z yzV;
+  private LiveBottomSheetPanel niX;
   
   public FinderVisitorRoleChooserPlugin(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(277606);
+    AppMethodBeat.i(355794);
     this.TAG = "FinderLiveVisitorRoleChooserPlugin";
     initView();
-    AppMethodBeat.o(277606);
+    AppMethodBeat.o(355794);
   }
   
   public FinderVisitorRoleChooserPlugin(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(277607);
+    AppMethodBeat.i(355804);
     this.TAG = "FinderLiveVisitorRoleChooserPlugin";
     initView();
-    AppMethodBeat.o(277607);
+    AppMethodBeat.o(355804);
   }
   
-  private final void dCZ()
+  private static final void a(FinderVisitorRoleChooserPlugin paramFinderVisitorRoleChooserPlugin, View paramView)
   {
-    AppMethodBeat.i(277605);
+    AppMethodBeat.i(355885);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramFinderVisitorRoleChooserPlugin);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/plugin/FinderVisitorRoleChooserPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFinderVisitorRoleChooserPlugin, "this$0");
+    paramView = paramFinderVisitorRoleChooserPlugin.niX;
+    if (paramView != null) {
+      paramView.hide();
+    }
+    paramView = paramFinderVisitorRoleChooserPlugin.DmP;
+    if (paramView != null)
+    {
+      paramFinderVisitorRoleChooserPlugin.esY();
+      paramView.invoke(Integer.valueOf(h.baE().ban().getInt(at.a.adaO, 1)));
+      paramFinderVisitorRoleChooserPlugin.DmP = null;
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/live/plugin/FinderVisitorRoleChooserPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(355885);
+  }
+  
+  private static final void b(FinderVisitorRoleChooserPlugin paramFinderVisitorRoleChooserPlugin, View paramView)
+  {
+    AppMethodBeat.i(355902);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramFinderVisitorRoleChooserPlugin);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/plugin/FinderVisitorRoleChooserPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFinderVisitorRoleChooserPlugin, "this$0");
+    paramView = paramFinderVisitorRoleChooserPlugin.niX;
+    if (paramView != null) {
+      paramView.hide();
+    }
+    paramView = paramFinderVisitorRoleChooserPlugin.DmP;
+    if (paramView != null)
+    {
+      paramFinderVisitorRoleChooserPlugin.esY();
+      paramView.invoke(Integer.valueOf(h.baE().ban().getInt(at.a.adaO, 1)));
+      paramFinderVisitorRoleChooserPlugin.DmP = null;
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/live/plugin/FinderVisitorRoleChooserPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(355902);
+  }
+  
+  private final void esY()
+  {
+    AppMethodBeat.i(355866);
     Object localObject = getContext();
     if ((localObject instanceof Activity)) {}
-    while (localObject != null)
+    for (;;)
     {
-      Integer localInteger = this.yzU;
-      if (localInteger != null)
+      if (localObject != null)
       {
-        int i = ((Number)localInteger).intValue();
-        if (localObject == null)
+        Integer localInteger = this.DmQ;
+        if (localInteger != null)
         {
-          localObject = new t("null cannot be cast to non-null type android.app.Activity");
-          AppMethodBeat.o(277605);
-          throw ((Throwable)localObject);
-          localObject = null;
-        }
-        else
-        {
+          int i = ((Number)localInteger).intValue();
           localObject = ((Activity)localObject).getWindow();
-          p.j(localObject, "(it as Activity).window");
+          s.s(localObject, "it as Activity).window");
           ((Window)localObject).setStatusBarColor(i);
-          AppMethodBeat.o(277605);
         }
       }
-      else
-      {
-        AppMethodBeat.o(277605);
-        return;
-      }
+      AppMethodBeat.o(355866);
+      return;
+      localObject = null;
     }
-    AppMethodBeat.o(277605);
   }
   
   private final void initView()
   {
-    Integer localInteger = null;
-    AppMethodBeat.i(277602);
-    setId(b.f.finder_choose_role);
-    Object localObject1 = ad.kS(getContext()).inflate(b.g.finder_live_visitor_role_choose_ui, (ViewGroup)this);
-    this.kFV = ((LiveBottomSheetPanel)((View)localObject1).findViewById(b.f.visitor_role_choose_group));
-    Object localObject2 = this.kFV;
+    AppMethodBeat.i(355828);
+    setId(p.e.finder_choose_role);
+    Object localObject1 = af.mU(getContext()).inflate(p.f.Cga, (ViewGroup)this);
+    this.niX = ((LiveBottomSheetPanel)((View)localObject1).findViewById(p.e.Ccb));
+    Object localObject2 = this.niX;
     if (localObject2 != null)
     {
-      p.j(localObject1, "root");
-      ((LiveBottomSheetPanel)localObject2).setTranslationY(ax.au(((View)localObject1).getContext()).y);
-      ((LiveBottomSheetPanel)localObject2).setOnVisibilityListener((kotlin.g.a.b)FinderVisitorRoleChooserPlugin.d.yAa);
+      ((LiveBottomSheetPanel)localObject2).setTranslationY(bf.bf(((View)localObject1).getContext()).y);
+      ((LiveBottomSheetPanel)localObject2).setOnVisibilityListener((kotlin.g.a.b)FinderVisitorRoleChooserPlugin.b.DmU);
     }
-    this.clickArea = ((View)localObject1).findViewById(b.f.blank_area);
+    this.clickArea = ((View)localObject1).findViewById(p.e.BBP);
     localObject2 = this.clickArea;
     if (localObject2 != null) {
-      ((View)localObject2).setOnClickListener((View.OnClickListener)new e(this));
+      ((View)localObject2).setOnClickListener(new FinderVisitorRoleChooserPlugin..ExternalSyntheticLambda1(this));
     }
-    this.yzR = ((RecyclerView)((View)localObject1).findViewById(b.f.visitor_rv));
-    this.yzS = ((TextView)((View)localObject1).findViewById(b.f.cancel_tv));
-    TextView localTextView = this.yzS;
-    if (localTextView != null)
+    this.DmN = ((RecyclerView)((View)localObject1).findViewById(p.e.visitor_rv));
+    this.DmO = ((TextView)((View)localObject1).findViewById(p.e.BBU));
+    localObject2 = this.DmO;
+    if (localObject2 != null)
     {
-      localTextView.setOnClickListener((View.OnClickListener)new b(this));
-      localObject2 = localTextView.getLayoutParams();
-      localObject1 = localObject2;
-      if (!(localObject2 instanceof ViewGroup.MarginLayoutParams)) {
-        localObject1 = null;
+      ((TextView)localObject2).setOnClickListener(new FinderVisitorRoleChooserPlugin..ExternalSyntheticLambda0(this));
+      localObject1 = ((TextView)localObject2).getLayoutParams();
+      if (!(localObject1 instanceof ViewGroup.MarginLayoutParams)) {
+        break label310;
       }
       localObject1 = (ViewGroup.MarginLayoutParams)localObject1;
       if (localObject1 != null) {
-        ((ViewGroup.MarginLayoutParams)localObject1).bottomMargin = ax.aB(localTextView.getContext());
+        ((ViewGroup.MarginLayoutParams)localObject1).bottomMargin = bf.bk(((TextView)localObject2).getContext());
       }
     }
-    this.yzV = new com.tencent.mm.plugin.finder.live.view.adapter.z();
-    localObject1 = this.yzV;
+    this.DmR = new ai();
+    localObject1 = this.DmR;
     if (localObject1 != null) {
-      ((com.tencent.mm.plugin.finder.live.view.adapter.z)localObject1).yZZ = ((kotlin.g.a.b)new c(this));
+      ((ai)localObject1).DTG = ((kotlin.g.a.b)new c(this));
     }
-    localObject1 = this.yzR;
+    localObject1 = this.DmN;
     if (localObject1 != null)
     {
       ((RecyclerView)localObject1).getContext();
       ((RecyclerView)localObject1).setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager(1, false));
-      ((RecyclerView)localObject1).setAdapter((RecyclerView.a)this.yzV);
+      ((RecyclerView)localObject1).setAdapter((RecyclerView.a)this.DmR);
     }
     localObject1 = getContext();
-    if ((localObject1 instanceof Activity)) {}
-    while (localObject1 != null) {
-      if (localObject1 == null)
-      {
-        localObject1 = new t("null cannot be cast to non-null type android.app.Activity");
-        AppMethodBeat.o(277602);
-        throw ((Throwable)localObject1);
-        localObject1 = null;
-      }
-      else
-      {
-        localObject1 = ((Activity)localObject1).getWindow();
-        p.j(localObject1, "(it as Activity).window");
-        localInteger = Integer.valueOf(((Window)localObject1).getStatusBarColor());
+    if (Boolean.valueOf(localObject1 instanceof Activity).booleanValue()) {
+      label285:
+      if (localObject1 != null) {
+        break label320;
       }
     }
-    this.yzU = localInteger;
-    AppMethodBeat.o(277602);
+    label310:
+    label320:
+    for (localObject1 = null;; localObject1 = Integer.valueOf(((Activity)localObject1).getWindow().getStatusBarColor()))
+    {
+      localObject2 = localObject1;
+      if (localObject1 == null) {
+        localObject2 = null;
+      }
+      this.DmQ = ((Integer)localObject2);
+      AppMethodBeat.o(355828);
+      return;
+      localObject1 = null;
+      break;
+      localObject1 = null;
+      break label285;
+    }
   }
   
-  private final void setVisitorRole(axc paramaxc)
+  private final void setVisitorRole(bcz parambcz)
   {
-    AppMethodBeat.i(277603);
-    final int i = paramaxc.SJy;
-    paramaxc = h.aHG();
-    p.j(paramaxc, "MMKernel.storage()");
-    int j = paramaxc.aHp().getInt(ar.a.VyS, 1);
+    AppMethodBeat.i(355849);
+    final int i = parambcz.ZNI;
+    int j = h.baE().ban().getInt(at.a.adaO, 1);
     Log.i(this.TAG, "setVisitorRole chooseType:" + i + ", curRoleType:" + j);
     if (i != j)
     {
-      paramaxc = com.tencent.mm.model.z.bdh();
-      p.j(paramaxc, "ConfigStorageLogic.getMyFinderUsername()");
-      new m(paramaxc, i, (m.a)new a(this, i)).bhW();
+      parambcz = z.bAW();
+      s.s(parambcz, "getMyFinderUsername()");
+      new w(parambcz, i, (w.a)new a(this, i)).bFJ();
     }
-    paramaxc = this.yzT;
-    if (paramaxc != null)
+    parambcz = this.DmP;
+    if (parambcz != null)
     {
-      dCZ();
-      paramaxc.invoke(Integer.valueOf(i));
-      this.yzT = null;
-      AppMethodBeat.o(277603);
-      return;
+      esY();
+      parambcz.invoke(Integer.valueOf(i));
+      this.DmP = null;
     }
-    AppMethodBeat.o(277603);
+    AppMethodBeat.o(355849);
   }
   
   public final String getTAG()
@@ -203,120 +237,60 @@ public final class FinderVisitorRoleChooserPlugin
     return this.TAG;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/plugin/FinderVisitorRoleChooserPlugin$changeRole$1", "Lcom/tencent/mm/plugin/finder/live/cgi/CgiFinderLiveSwitchIdentity$CallBack;", "onFail", "", "errType", "", "errCode", "errMsg", "", "onSuccess", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderLiveSwitchIdentityResponse;", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/live/plugin/FinderVisitorRoleChooserPlugin$changeRole$1", "Lcom/tencent/mm/plugin/finder/live/cgi/CgiFinderLiveSwitchIdentity$CallBack;", "onFail", "", "errType", "", "errCode", "errMsg", "", "onSuccess", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderLiveSwitchIdentityResponse;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
-    implements m.a
+    implements w.a
   {
-    a(int paramInt) {}
+    a(FinderVisitorRoleChooserPlugin paramFinderVisitorRoleChooserPlugin, int paramInt) {}
     
-    public final void a(bcy parambcy)
+    public final void a(bni parambni)
     {
-      AppMethodBeat.i(279687);
-      p.k(parambcy, "resp");
-      Log.i(this.yzW.getTAG(), "[CgiFinderLiveSwitchIdentity] success");
-      d.uiThread((kotlin.g.a.a)new b(this));
-      AppMethodBeat.o(279687);
+      AppMethodBeat.i(353631);
+      s.u(parambni, "resp");
+      Log.i(this.DmS.getTAG(), "[CgiFinderLiveSwitchIdentity] success");
+      d.uiThread((kotlin.g.a.a)new b(i, this.DmS));
+      AppMethodBeat.o(353631);
     }
     
-    public final void aBO(String paramString)
+    public final void awj(String paramString)
     {
-      AppMethodBeat.i(279688);
-      Log.i(this.yzW.getTAG(), "[CgiFinderLiveSwitchIdentity] failed");
-      d.uiThread((kotlin.g.a.a)new a(this));
-      AppMethodBeat.o(279688);
+      AppMethodBeat.i(353636);
+      Log.i(this.DmS.getTAG(), "[CgiFinderLiveSwitchIdentity] failed");
+      d.uiThread((kotlin.g.a.a)new a(this.DmS));
+      AppMethodBeat.o(353636);
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+    @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
     static final class a
-      extends q
-      implements kotlin.g.a.a<x>
+      extends u
+      implements kotlin.g.a.a<ah>
     {
-      a(FinderVisitorRoleChooserPlugin.a parama)
+      a(FinderVisitorRoleChooserPlugin paramFinderVisitorRoleChooserPlugin)
       {
         super();
       }
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+    @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
     static final class b
-      extends q
-      implements kotlin.g.a.a<x>
+      extends u
+      implements kotlin.g.a.a<ah>
     {
-      b(FinderVisitorRoleChooserPlugin.a parama)
+      b(int paramInt, FinderVisitorRoleChooserPlugin paramFinderVisitorRoleChooserPlugin)
       {
         super();
       }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/live/plugin/FinderVisitorRoleChooserPlugin$initView$3$1"})
-  static final class b
-    implements View.OnClickListener
-  {
-    b(FinderVisitorRoleChooserPlugin paramFinderVisitorRoleChooserPlugin) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(279193);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/plugin/FinderVisitorRoleChooserPlugin$initView$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-      paramView = FinderVisitorRoleChooserPlugin.a(this.yzW);
-      if (paramView != null) {
-        paramView.hide();
-      }
-      paramView = FinderVisitorRoleChooserPlugin.b(this.yzW);
-      if (paramView != null)
-      {
-        FinderVisitorRoleChooserPlugin.d(this.yzW);
-        localObject = h.aHG();
-        p.j(localObject, "MMKernel.storage()");
-        paramView.invoke(Integer.valueOf(((f)localObject).aHp().getInt(ar.a.VyS, 1)));
-        FinderVisitorRoleChooserPlugin.c(this.yzW);
-      }
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/plugin/FinderVisitorRoleChooserPlugin$initView$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(279193);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/FinderLiveAliasInfo;", "invoke", "com/tencent/mm/plugin/finder/live/plugin/FinderVisitorRoleChooserPlugin$initView$4$1"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/FinderLiveAliasInfo;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends q
-    implements kotlin.g.a.b<axc, x>
+    extends u
+    implements kotlin.g.a.b<bcz, ah>
   {
     c(FinderVisitorRoleChooserPlugin paramFinderVisitorRoleChooserPlugin)
     {
       super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class e
-    implements View.OnClickListener
-  {
-    e(FinderVisitorRoleChooserPlugin paramFinderVisitorRoleChooserPlugin) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(283884);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/plugin/FinderVisitorRoleChooserPlugin$initView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-      paramView = FinderVisitorRoleChooserPlugin.a(this.yzW);
-      if (paramView != null) {
-        paramView.hide();
-      }
-      paramView = FinderVisitorRoleChooserPlugin.b(this.yzW);
-      if (paramView != null)
-      {
-        FinderVisitorRoleChooserPlugin.d(this.yzW);
-        localObject = h.aHG();
-        p.j(localObject, "MMKernel.storage()");
-        paramView.invoke(Integer.valueOf(((f)localObject).aHp().getInt(ar.a.VyS, 1)));
-        FinderVisitorRoleChooserPlugin.c(this.yzW);
-      }
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/plugin/FinderVisitorRoleChooserPlugin$initView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(283884);
     }
   }
 }

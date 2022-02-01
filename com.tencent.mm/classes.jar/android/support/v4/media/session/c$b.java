@@ -74,8 +74,8 @@ final class c$b<T extends c.a>
   
   public final void onExtrasChanged(Bundle paramBundle)
   {
-    MediaSessionCompat.d(paramBundle);
-    this.dH.aA();
+    MediaSessionCompat.e(paramBundle);
+    this.dH.bk();
   }
   
   public final void onMetadataChanged(MediaMetadata paramMediaMetadata)
@@ -95,7 +95,7 @@ final class c$b<T extends c.a>
   
   public final void onQueueTitleChanged(CharSequence paramCharSequence)
   {
-    this.dH.az();
+    this.dH.bj();
   }
   
   public final void onSessionDestroyed()
@@ -105,13 +105,13 @@ final class c$b<T extends c.a>
   
   public final void onSessionEvent(String paramString, Bundle paramBundle)
   {
-    MediaSessionCompat.d(paramBundle);
-    this.dH.ay();
+    MediaSessionCompat.e(paramBundle);
+    this.dH.bi();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v4.media.session.c.b
  * JD-Core Version:    0.7.0.1
  */

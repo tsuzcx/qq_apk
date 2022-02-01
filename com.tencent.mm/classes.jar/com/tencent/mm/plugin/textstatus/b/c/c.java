@@ -1,80 +1,52 @@
 package com.tencent.mm.plugin.textstatus.b.c;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.plugin.textstatus.b.f;
-import com.tencent.mm.view.recyclerview.e;
-import com.tencent.mm.view.recyclerview.i;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.mvvmlist.a;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/convert/planet/PlanetItemConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/textstatus/model/planet/PlanetItem;", "itemClickListener", "Lcom/tencent/mm/plugin/textstatus/convert/planet/PlanetItemConvert$OnClickCardItemListener;", "(Lcom/tencent/mm/plugin/textstatus/convert/planet/PlanetItemConvert$OnClickCardItemListener;)V", "getItemClickListener", "()Lcom/tencent/mm/plugin/textstatus/convert/planet/PlanetItemConvert$OnClickCardItemListener;", "setItemClickListener", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "planetItem", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "Companion", "OnClickCardItemListener", "plugin-textstatus_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/textstatus/convert/topic/SameTopicFriendData;", "Lcom/tencent/mm/plugin/mvvmlist/BaseMvvmListItem;", "groupItem", "Lcom/tencent/mm/plugin/textstatus/model/topic/SameTopicFriendsItem;", "userName", "", "createTime", "", "itemInfo", "Lcom/tencent/mm/plugin/textstatus/model/storage/TextStatusItem;", "(Lcom/tencent/mm/plugin/textstatus/model/topic/SameTopicFriendsItem;Ljava/lang/String;ILcom/tencent/mm/plugin/textstatus/model/storage/TextStatusItem;)V", "getCreateTime", "()I", "getGroupItem", "()Lcom/tencent/mm/plugin/textstatus/model/topic/SameTopicFriendsItem;", "getItemInfo", "()Lcom/tencent/mm/plugin/textstatus/model/storage/TextStatusItem;", "getUserName", "()Ljava/lang/String;", "compareTo", "other", "getItemType", "getUniqueId", "isSameContent", "", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
-  extends e<com.tencent.mm.plugin.textstatus.g.c.b>
+  extends a<c>
 {
-  public static final c.a MAJ;
-  b MAI;
+  final com.tencent.mm.plugin.textstatus.h.g.b Tkq;
+  final com.tencent.mm.plugin.textstatus.h.f.b Tkr;
+  final int createTime;
+  final String userName;
   
-  static
+  public c(com.tencent.mm.plugin.textstatus.h.g.b paramb, String paramString, int paramInt, com.tencent.mm.plugin.textstatus.h.f.b paramb1)
   {
-    AppMethodBeat.i(233250);
-    MAJ = new c.a((byte)0);
-    AppMethodBeat.o(233250);
+    AppMethodBeat.i(290238);
+    this.Tkq = paramb;
+    this.userName = paramString;
+    this.createTime = paramInt;
+    this.Tkr = paramb1;
+    AppMethodBeat.o(290238);
   }
   
-  public c(b paramb)
+  public final int bZB()
   {
-    AppMethodBeat.i(233249);
-    this.MAI = paramb;
-    AppMethodBeat.o(233249);
+    AppMethodBeat.i(290250);
+    int i = this.userName.hashCode();
+    AppMethodBeat.o(290250);
+    return i;
   }
   
-  public final void a(RecyclerView paramRecyclerView, i parami, int paramInt)
+  public final Object clone()
   {
-    AppMethodBeat.i(233239);
-    p.k(paramRecyclerView, "recyclerView");
-    p.k(parami, "holder");
-    AppMethodBeat.o(233239);
+    AppMethodBeat.i(290255);
+    Object localObject = super.clone();
+    AppMethodBeat.o(290255);
+    return localObject;
   }
   
-  public final int getLayoutId()
+  public final String fcs()
   {
-    return b.f.MxY;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/convert/planet/PlanetItemConvert$OnClickCardItemListener;", "", "onClickItem", "", "itemData", "Lcom/tencent/mm/plugin/textstatus/model/planet/PlanetItem;", "view", "Landroid/view/View;", "plugin-textstatus_release"})
-  public static abstract interface b
-  {
-    public abstract void a(com.tencent.mm.plugin.textstatus.g.c.b paramb, View paramView);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class c
-    implements View.OnClickListener
-  {
-    c(c paramc, com.tencent.mm.plugin.textstatus.g.c.b paramb) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(237842);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-      a.c("com/tencent/mm/plugin/textstatus/convert/planet/PlanetItemConvert$onBindViewHolder$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-      localObject = this.MAK.MAI;
-      com.tencent.mm.plugin.textstatus.g.c.b localb = this.MAL;
-      p.j(paramView, "it");
-      ((c.b)localObject).a(localb, paramView);
-      a.a(this, "com/tencent/mm/plugin/textstatus/convert/planet/PlanetItemConvert$onBindViewHolder$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(237842);
-    }
+    return this.userName;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.b.c.c
  * JD-Core Version:    0.7.0.1
  */

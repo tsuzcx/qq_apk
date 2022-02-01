@@ -5,6 +5,7 @@ import java.util.List;
 
 public abstract class WebViewExtensionInterface
 {
+  private static final String TAG = "WebViewExtensionInterface";
   private Object bridge;
   private ArrayList<Object> constructorParams = new ArrayList();
   private ArrayList<Object> constructorTypes = new ArrayList();
@@ -26,25 +27,15 @@ public abstract class WebViewExtensionInterface
     reflectionInit();
   }
   
-  protected Object getBridge()
+  private void reflectionInit()
   {
-    return this.bridge;
-  }
-  
-  public abstract int getHostByName(String paramString, List<String> paramList);
-  
-  public abstract Object onMiscCallBack(String paramString, Object... paramVarArgs);
-  
-  void reflectionInit()
-  {
-    XWalkCoreWrapper.initEmbeddedMode();
-    this.coreWrapper = XWalkCoreWrapper.getInstance();
-    if (this.coreWrapper == null) {
-      XWalkCoreWrapper.reserveReflectObject(this);
+    if (XWalkCoreWrapper.getInstance() == null) {
+      XWalkReflectionInitHandler.reserveReflectObject(this);
     }
     for (;;)
     {
       return;
+      this.coreWrapper = XWalkCoreWrapper.getInstance();
       int j = this.constructorTypes.size();
       Object localObject1 = new Class[j + 1];
       int i = 0;
@@ -56,7 +47,7 @@ public abstract class WebViewExtensionInterface
           localObject1[i] = this.coreWrapper.getBridgeClass((String)localObject2);
           this.constructorParams.set(i, this.coreWrapper.getBridgeObject(this.constructorParams.get(i)));
         }
-        label127:
+        label123:
         do
         {
           for (;;)
@@ -64,7 +55,7 @@ public abstract class WebViewExtensionInterface
             i += 1;
             break;
             if (!(localObject2 instanceof Class)) {
-              break label127;
+              break label123;
             }
             localObject1[i] = ((Class)localObject2);
           }
@@ -83,13 +74,25 @@ public abstract class WebViewExtensionInterface
           return;
         }
       }
-      catch (UnsupportedOperationException localUnsupportedOperationException) {}
+      catch (UnsupportedOperationException localUnsupportedOperationException)
+      {
+        Log.e("WebViewExtensionInterface", "reflectionInit, error:".concat(String.valueOf(localUnsupportedOperationException)));
+      }
     }
   }
+  
+  protected Object getBridge()
+  {
+    return this.bridge;
+  }
+  
+  public abstract int getHostByName(String paramString, List<String> paramList);
+  
+  public abstract Object onMiscCallBack(String paramString, Object... paramVarArgs);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.WebViewExtensionInterface
  * JD-Core Version:    0.7.0.1
  */

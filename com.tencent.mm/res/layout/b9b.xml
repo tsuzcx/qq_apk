@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/be3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/bb"
+<LinearLayout android:orientation="vertical" android:background="@color/f" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/iqp" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:gravity="center|left" android:layout_gravity="center_vertical" android:id="@android:id/title" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i2" android:minWidth="@dimen/el" android:singleLine="true" style="@style/mi" />
-        <LinearLayout android:orientation="vertical" android:id="@id/ieh" android:paddingTop="@dimen/cb" android:paddingBottom="@dimen/cb" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <ImageView android:id="@id/dvz" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="@dimen/bt" android:scaleType="centerCrop" />
-                <TextView android:ellipsize="end" android:gravity="center|left" android:id="@android:id/summary" android:layout_width="@dimen/c6" android:singleLine="false" android:layout_weight="1.0" style="@style/ml" />
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
+    <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="@color/gg" android:gravity="left" android:layout_gravity="left" android:id="@id/etd" android:layout_width="327.0dip" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:text="@string/kwc" android:singleLine="false" />
 </LinearLayout>

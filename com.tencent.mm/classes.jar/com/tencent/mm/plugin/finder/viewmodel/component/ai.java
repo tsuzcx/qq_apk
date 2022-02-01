@@ -1,266 +1,145 @@
 package com.tencent.mm.plugin.finder.viewmodel.component;
 
-import android.content.Context;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.viewmodel.b;
-import com.tencent.mm.plugin.finder.viewmodel.b.a;
-import com.tencent.mm.plugin.finder.viewmodel.b.e;
-import com.tencent.mm.plugin.findersdk.a.ak;
-import com.tencent.mm.plugin.findersdk.a.z;
-import com.tencent.mm.protocal.protobuf.awm;
-import com.tencent.mm.protocal.protobuf.bhx;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.component.UIComponent;
-import com.tencent.mm.ui.component.g.a;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
+import com.tencent.mm.plugin.finder.e.h;
+import com.tencent.mm.plugin.finder.storage.data.k;
+import com.tencent.mm.plugin.finder.storage.data.k.a;
+import com.tencent.mm.plugin.finder.ui.fragment.FinderHomeTabFragment;
+import com.tencent.mm.plugin.finder.ui.fragment.FinderLikeFeedGridFragment;
+import com.tencent.mm.plugin.finder.ui.fragment.FinderLikeMegaVideoFragment;
+import com.tencent.mm.plugin.finder.view.tabcomp.IFinderTabProvider;
+import com.tencent.mm.plugin.finder.view.tabcomp.g;
+import com.tencent.mm.plugin.finder.view.tabcomp.h;
+import com.tencent.mm.plugin.finder.view.tabcomp.i;
+import com.tencent.mm.plugin.finder.view.tabcomp.l;
+import com.tencent.mm.plugin.finder.view.tabcomp.m;
+import com.tencent.mm.plugin.finder.view.tabcomp.n;
+import com.tencent.mm.plugin.findersdk.storage.config.base.b;
+import java.util.ArrayList;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.a;
+import kotlin.g.b.u;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderRedDotUIJumpUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "fragment", "Landroidx/fragment/app/Fragment;", "(Landroidx/fragment/app/Fragment;)V", "enterCtrlInfo", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "getEnterCtrlInfo", "()Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "enterCtrlInfo$delegate", "Lkotlin/Lazy;", "enterCtrlInfoExt", "Lcom/tencent/mm/protocal/protobuf/FinderRedDotExtInfo;", "getEnterCtrlInfoExt", "()Lcom/tencent/mm/protocal/protobuf/FinderRedDotExtInfo;", "setEnterCtrlInfoExt", "(Lcom/tencent/mm/protocal/protobuf/FinderRedDotExtInfo;)V", "homeTabStateVM", "Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM;", "getHomeTabStateVM", "()Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM;", "setHomeTabStateVM", "(Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM;)V", "getEnterPath", "", "isIgnore", "", "markHardRefresh", "", "onCreateBefore", "savedInstanceState", "Landroid/os/Bundle;", "printJumpConfig", "config", "Lcom/tencent/mm/protocal/protobuf/FinderJumpConfig;", "Companion", "plugin-finder_release"})
-public class ai
-  extends UIComponent
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderLikeListTabUIC;", "Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderTabUIC;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "addMegaVideoFragment", "", "generateProvider", "Lcom/tencent/mm/plugin/finder/view/tabcomp/IFinderTabProvider;", "onBackPressed", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "removeMegaVideoFragment", "clearCache", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class ai
+  extends FinderTabUIC
 {
-  public static final a BmM;
-  private bhx BmJ;
-  private final kotlin.f BmK;
-  private b BmL;
-  
-  static
-  {
-    AppMethodBeat.i(272843);
-    BmM = new a((byte)0);
-    AppMethodBeat.o(272843);
-  }
-  
   public ai(AppCompatActivity paramAppCompatActivity)
   {
     super(paramAppCompatActivity);
-    AppMethodBeat.i(272841);
-    this.BmK = kotlin.g.ar((kotlin.g.a.a)new b(this));
-    paramAppCompatActivity = com.tencent.mm.ui.component.g.Xox;
-    paramAppCompatActivity = com.tencent.mm.ui.component.g.bD(PluginFinder.class).i(b.class);
-    p.j(paramAppCompatActivity, "UICProvider.of(PluginFin…meTabStateVM::class.java)");
-    this.BmL = ((b)paramAppCompatActivity);
-    AppMethodBeat.o(272841);
+    AppMethodBeat.i(338743);
+    AppMethodBeat.o(338743);
   }
   
-  public ai(Fragment paramFragment)
+  public final IFinderTabProvider dTN()
   {
-    super(paramFragment);
-    AppMethodBeat.i(272842);
-    this.BmK = kotlin.g.ar((kotlin.g.a.a)new b(this));
-    paramFragment = com.tencent.mm.ui.component.g.Xox;
-    paramFragment = com.tencent.mm.ui.component.g.bD(PluginFinder.class).i(b.class);
-    p.j(paramFragment, "UICProvider.of(PluginFin…meTabStateVM::class.java)");
-    this.BmL = ((b)paramFragment);
-    AppMethodBeat.o(272842);
+    AppMethodBeat.i(338750);
+    IFinderTabProvider localIFinderTabProvider = (IFinderTabProvider)new b();
+    AppMethodBeat.o(338750);
+    return localIFinderTabProvider;
   }
   
-  public String dLg()
+  public final boolean onBackPressed()
   {
-    return "FinderEntrance";
+    AppMethodBeat.i(338766);
+    boolean bool = getActiveFragment().onBackPressed();
+    AppMethodBeat.o(338766);
+    return bool;
   }
   
-  public void dLh()
+  public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(272840);
-    com.tencent.mm.kernel.b.a locala = h.ag(PluginFinder.class);
-    p.j(locala, "MMKernel.plugin(PluginFinder::class.java)");
-    int i = ((PluginFinder)locala).getRedDotManager().dqG();
-    Log.i("Finder.RedDotUIJumpUIC", "[markHardRefresh] aliveType=".concat(String.valueOf(i)));
-    this.BmL.RI(i).a(b.e.BgO);
-    AppMethodBeat.o(272840);
+    AppMethodBeat.i(338754);
+    super.onCreate(paramBundle);
+    if (k.a.a(k.FNg, 11).isEmpty()) {
+      vl(false);
+    }
+    eKo();
+    AppMethodBeat.o(338754);
   }
   
-  public boolean dLi()
+  public final void vl(final boolean paramBoolean)
   {
-    AppMethodBeat.i(272839);
-    Object localObject = h.ag(ak.class);
-    p.j(localObject, "MMKernel.plugin(IPluginFinder::class.java)");
-    localObject = ((ak)localObject).getRedDotManager();
-    p.j(localObject, "MMKernel.plugin(IPluginF…class.java).redDotManager");
-    boolean bool = ((z)localObject).dqI();
-    Log.i("Finder.RedDotUIJumpUIC", "[isIgnore] isEnableShowEntranceRedDot=".concat(String.valueOf(bool)));
-    if (!bool)
+    AppMethodBeat.i(338760);
+    com.tencent.mm.ae.d.uiThread((a)new c(this, paramBoolean));
+    AppMethodBeat.o(338760);
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  public static final class a
+    extends u
+    implements a<ah>
+  {
+    public a(ai paramai)
     {
-      AppMethodBeat.o(272839);
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/viewmodel/component/FinderLikeListTabUIC$generateProvider$1", "Lcom/tencent/mm/plugin/finder/view/tabcomp/IFinderTabProvider;", "fragments", "", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "isDynamic", "", "tabContainer", "Lcom/tencent/mm/plugin/finder/view/tabcomp/ITabContainer;", "tabViewAction", "Lcom/tencent/mm/plugin/finder/view/tabcomp/IFinderTabViewAction;", "tabs", "Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderBaseTab;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+    implements IFinderTabProvider
+  {
+    public final List<FinderHomeTabFragment> fragments()
+    {
+      AppMethodBeat.i(337431);
+      Object localObject = new ArrayList();
+      ((ArrayList)localObject).add(new FinderLikeFeedGridFragment());
+      com.tencent.mm.plugin.finder.storage.d locald = com.tencent.mm.plugin.finder.storage.d.FAy;
+      if (((Number)com.tencent.mm.plugin.finder.storage.d.eUT().bmg()).intValue() == 1) {
+        ((ArrayList)localObject).add(new FinderLikeMegaVideoFragment());
+      }
+      localObject = (List)localObject;
+      AppMethodBeat.o(337431);
+      return localObject;
+    }
+    
+    public final boolean isDynamic()
+    {
       return true;
     }
-    AppMethodBeat.o(272839);
-    return false;
-  }
-  
-  public final b dMI()
-  {
-    return this.BmL;
-  }
-  
-  public final bhx ekS()
-  {
-    return this.BmJ;
-  }
-  
-  public void onCreateBefore(Bundle paramBundle)
-  {
-    int j = 1;
-    int i = 1;
-    Object localObject1 = null;
-    AppMethodBeat.i(272837);
-    super.onCreate(paramBundle);
-    paramBundle = (com.tencent.mm.plugin.finder.extension.reddot.l)this.BmK.getValue();
-    boolean bool;
-    label64:
-    Object localObject2;
-    if (paramBundle != null)
+    
+    public final n tabContainer()
     {
-      paramBundle = paramBundle.xuM;
-      this.BmJ = paramBundle;
-      paramBundle = new StringBuilder("enterCtrlInfoExt=");
-      if (this.BmJ == null) {
-        break label167;
-      }
-      bool = true;
-      localObject2 = paramBundle.append(bool).append(" enter_action=");
-      paramBundle = this.BmJ;
-      if (paramBundle == null) {
-        break label173;
-      }
-      paramBundle = Integer.valueOf(paramBundle.SSw);
-      label94:
-      localObject2 = ((StringBuilder)localObject2).append(paramBundle).append(' ').append("jump_config=");
-      paramBundle = this.BmJ;
-      if (paramBundle == null) {
-        break label178;
-      }
-      paramBundle = paramBundle.SSA;
-      label127:
-      if (paramBundle != null) {
-        break label183;
-      }
+      AppMethodBeat.i(337438);
+      n localn = (n)new h();
+      AppMethodBeat.o(337438);
+      return localn;
     }
-    label167:
-    label173:
-    label178:
-    label183:
-    for (paramBundle = "";; paramBundle = "miniapp_path=" + paramBundle.RFo + ", miniapp_scene=" + paramBundle.RFq + ", miniapp_username=" + paramBundle.RFn + "web_url=" + paramBundle.ugh)
+    
+    public final m tabViewAction()
     {
-      Log.i("Finder.RedDotUIJumpUIC", paramBundle);
-      if (!dLi()) {
-        break label246;
-      }
-      AppMethodBeat.o(272837);
-      return;
-      paramBundle = null;
-      break;
-      bool = false;
-      break label64;
-      paramBundle = null;
-      break label94;
-      paramBundle = null;
-      break label127;
+      AppMethodBeat.i(337452);
+      m localm = (m)new l();
+      AppMethodBeat.o(337452);
+      return localm;
     }
-    label246:
-    paramBundle = this.BmJ;
-    if (paramBundle != null)
+    
+    public final List<g> tabs()
     {
-      awm localawm = paramBundle.SSA;
-      if (localawm != null)
-      {
-        paramBundle = this.BmJ;
-        if ((paramBundle != null) && (paramBundle.SSw == 6))
-        {
-          paramBundle = localawm.ugh;
-          if (paramBundle != null)
-          {
-            p.j(paramBundle, "it");
-            if (((CharSequence)paramBundle).length() > 0) {
-              if (i == 0) {
-                break label363;
-              }
-            }
-            for (;;)
-            {
-              if (paramBundle == null) {
-                break label368;
-              }
-              dLh();
-              localObject1 = com.tencent.mm.plugin.finder.utils.a.ACH;
-              localObject1 = (Context)getActivity();
-              p.j(paramBundle, "url");
-              com.tencent.mm.plugin.finder.utils.a.aH((Context)localObject1, paramBundle);
-              AppMethodBeat.o(272837);
-              return;
-              i = 0;
-              break;
-              label363:
-              paramBundle = null;
-            }
-          }
-          label368:
-          AppMethodBeat.o(272837);
-          return;
-        }
-        paramBundle = this.BmJ;
-        if (paramBundle != null)
-        {
-          if (paramBundle.SSw != 7) {
-            break label517;
-          }
-          localObject2 = localawm.RFn;
-          if (localObject2 == null) {
-            break label517;
-          }
-          p.j(localObject2, "it");
-          if (((CharSequence)localObject2).length() <= 0) {
-            break label512;
-          }
-        }
-        label512:
-        for (i = j;; i = 0)
-        {
-          paramBundle = (Bundle)localObject1;
-          if (i != 0) {
-            paramBundle = (Bundle)localObject2;
-          }
-          if (paramBundle == null) {
-            break;
-          }
-          dLh();
-          localObject1 = com.tencent.mm.plugin.finder.utils.a.ACH;
-          Context localContext = (Context)getActivity();
-          p.j(paramBundle, "appId");
-          localObject2 = localawm.RFo;
-          localObject1 = localObject2;
-          if (localObject2 == null) {
-            localObject1 = "";
-          }
-          com.tencent.mm.plugin.finder.utils.a.b(localContext, paramBundle, (String)localObject1, localawm.RFq);
-          AppMethodBeat.o(272837);
-          return;
-          AppMethodBeat.o(272837);
-          return;
-        }
-        label517:
-        AppMethodBeat.o(272837);
-        return;
+      AppMethodBeat.i(337442);
+      Object localObject = new ArrayList();
+      ((ArrayList)localObject).add(new i(e.h.finder_tab_title_normal));
+      com.tencent.mm.plugin.finder.storage.d locald = com.tencent.mm.plugin.finder.storage.d.FAy;
+      if (((Number)com.tencent.mm.plugin.finder.storage.d.eUT().bmg()).intValue() == 1) {
+        ((ArrayList)localObject).add(new i(e.h.finder_tab_title_long_video));
       }
+      localObject = (List)localObject;
+      AppMethodBeat.o(337442);
+      return localObject;
     }
-    AppMethodBeat.o(272837);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderRedDotUIJumpUIC$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "invoke"})
-  static final class b
-    extends q
-    implements kotlin.g.a.a<com.tencent.mm.plugin.finder.extension.reddot.l>
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends u
+    implements a<ah>
   {
-    b(ai paramai)
+    c(ai paramai, boolean paramBoolean)
     {
       super();
     }

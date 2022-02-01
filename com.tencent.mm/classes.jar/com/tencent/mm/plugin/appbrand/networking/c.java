@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.appbrand.networking;
 
 import com.tencent.luggage.a.b;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.protocal.protobuf.dyy;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.protocal.protobuf.esc;
 
 public abstract interface c
   extends b
 {
-  public abstract <Resp extends dyy> com.tencent.mm.vending.g.c<Resp> a(String paramString, a parama, Class<Resp> paramClass);
+  public abstract <Resp extends esc> com.tencent.mm.vending.g.c<Resp> a(String paramString, a parama, Class<Resp> paramClass);
 }
 
 

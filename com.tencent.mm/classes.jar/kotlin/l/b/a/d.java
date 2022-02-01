@@ -1,205 +1,184 @@
 package kotlin.l.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.lang.reflect.Field;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.l.b.a.b.b.ab;
-import kotlin.l.b.a.b.b.ah;
-import kotlin.l.b.a.b.b.az;
-import kotlin.l.b.a.b.b.d.b.b;
-import kotlin.l.b.a.b.d.a.o;
-import kotlin.l.b.a.b.e.a.m;
-import kotlin.l.b.a.b.e.b.c;
-import kotlin.l.b.a.b.e.b.h;
-import kotlin.l.b.a.b.e.c.a;
-import kotlin.l.b.a.b.e.c.a.b;
-import kotlin.l.b.a.b.e.c.a.c;
-import kotlin.l.b.a.b.e.c.a.e.a;
-import kotlin.l.b.a.b.e.c.a.i;
-import kotlin.l.b.a.b.f.g;
-import kotlin.l.b.a.b.h.i.c;
-import kotlin.l.b.a.b.k.a.b.e;
-import kotlin.t;
+import java.util.Comparator;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.a.k;
+import kotlin.a.p;
+import kotlin.g.a.b;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/reflect/jvm/internal/JvmPropertySignature;", "", "()V", "asString", "", "JavaField", "JavaMethodProperty", "KotlinProperty", "MappedKotlinProperty", "Lkotlin/reflect/jvm/internal/JvmPropertySignature$KotlinProperty;", "Lkotlin/reflect/jvm/internal/JvmPropertySignature$JavaMethodProperty;", "Lkotlin/reflect/jvm/internal/JvmPropertySignature$JavaField;", "Lkotlin/reflect/jvm/internal/JvmPropertySignature$MappedKotlinProperty;", "kotlin-reflection"})
+@Metadata(d1={""}, d2={"Lkotlin/reflect/jvm/internal/JvmFunctionSignature;", "", "()V", "asString", "", "FakeJavaAnnotationConstructor", "JavaConstructor", "JavaMethod", "KotlinConstructor", "KotlinFunction", "Lkotlin/reflect/jvm/internal/JvmFunctionSignature$KotlinFunction;", "Lkotlin/reflect/jvm/internal/JvmFunctionSignature$KotlinConstructor;", "Lkotlin/reflect/jvm/internal/JvmFunctionSignature$JavaMethod;", "Lkotlin/reflect/jvm/internal/JvmFunctionSignature$JavaConstructor;", "Lkotlin/reflect/jvm/internal/JvmFunctionSignature$FakeJavaAnnotationConstructor;", "kotlin-reflection"}, k=1, mv={1, 5, 1})
 public abstract class d
 {
-  public abstract String qu();
+  public abstract String PF();
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/reflect/jvm/internal/JvmPropertySignature$JavaField;", "Lkotlin/reflect/jvm/internal/JvmPropertySignature;", "field", "Ljava/lang/reflect/Field;", "(Ljava/lang/reflect/Field;)V", "getField", "()Ljava/lang/reflect/Field;", "asString", "", "kotlin-reflection"})
+  @Metadata(d1={""}, d2={"Lkotlin/reflect/jvm/internal/JvmFunctionSignature$FakeJavaAnnotationConstructor;", "Lkotlin/reflect/jvm/internal/JvmFunctionSignature;", "jClass", "Ljava/lang/Class;", "(Ljava/lang/Class;)V", "getJClass", "()Ljava/lang/Class;", "methods", "", "Ljava/lang/reflect/Method;", "kotlin.jvm.PlatformType", "getMethods", "()Ljava/util/List;", "asString", "", "kotlin-reflection"}, k=1, mv={1, 5, 1})
   public static final class a
     extends d
   {
-    final Field bKF;
+    private final Class<?> aiwN;
+    final List<Method> aixZ;
     
-    public a(Field paramField)
+    public a(Class<?> paramClass)
     {
       super();
-      AppMethodBeat.i(56292);
-      this.bKF = paramField;
-      AppMethodBeat.o(56292);
+      AppMethodBeat.i(56282);
+      this.aiwN = paramClass;
+      paramClass = this.aiwN.getDeclaredMethods();
+      s.s(paramClass, "jClass.declaredMethods");
+      this.aixZ = k.b(paramClass, (Comparator)new d.a.a());
+      AppMethodBeat.o(56282);
     }
     
-    public final String qu()
+    public final String PF()
     {
-      AppMethodBeat.i(56291);
-      Object localObject = new StringBuilder().append(o.bGM(this.bKF.getName())).append("()");
-      Class localClass = this.bKF.getType();
-      p.j(localClass, "field.type");
-      localObject = b.cb(localClass);
-      AppMethodBeat.o(56291);
-      return localObject;
+      AppMethodBeat.i(56281);
+      String str = p.a((Iterable)this.aixZ, (CharSequence)"", (CharSequence)"<init>(", (CharSequence)")V", 0, null, (b)b.aiya, 24);
+      AppMethodBeat.o(56281);
+      return str;
+    }
+    
+    @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Ljava/lang/reflect/Method;", "kotlin.jvm.PlatformType", "invoke"}, k=3, mv={1, 5, 1})
+    static final class b
+      extends u
+      implements b<Method, CharSequence>
+    {
+      public static final b aiya;
+      
+      static
+      {
+        AppMethodBeat.i(56280);
+        aiya = new b();
+        AppMethodBeat.o(56280);
+      }
+      
+      b()
+      {
+        super();
+      }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/reflect/jvm/internal/JvmPropertySignature$JavaMethodProperty;", "Lkotlin/reflect/jvm/internal/JvmPropertySignature;", "getterMethod", "Ljava/lang/reflect/Method;", "setterMethod", "(Ljava/lang/reflect/Method;Ljava/lang/reflect/Method;)V", "getGetterMethod", "()Ljava/lang/reflect/Method;", "getSetterMethod", "asString", "", "kotlin-reflection"})
+  @Metadata(d1={""}, d2={"Lkotlin/reflect/jvm/internal/JvmFunctionSignature$JavaConstructor;", "Lkotlin/reflect/jvm/internal/JvmFunctionSignature;", "constructor", "Ljava/lang/reflect/Constructor;", "(Ljava/lang/reflect/Constructor;)V", "getConstructor", "()Ljava/lang/reflect/Constructor;", "asString", "", "kotlin-reflection"}, k=1, mv={1, 5, 1})
   public static final class b
     extends d
   {
-    final Method aaCw;
-    final Method aaCx;
+    final Constructor<?> aiyb;
     
-    public b(Method paramMethod1, Method paramMethod2)
+    public b(Constructor<?> paramConstructor)
     {
       super();
-      AppMethodBeat.i(56294);
-      this.aaCw = paramMethod1;
-      this.aaCx = paramMethod2;
-      AppMethodBeat.o(56294);
+      AppMethodBeat.i(56286);
+      this.aiyb = paramConstructor;
+      AppMethodBeat.o(56286);
     }
     
-    public final String qu()
+    public final String PF()
     {
-      AppMethodBeat.i(56293);
-      String str = ad.c(this.aaCw);
-      AppMethodBeat.o(56293);
+      AppMethodBeat.i(56285);
+      Object localObject = this.aiyb.getParameterTypes();
+      s.s(localObject, "constructor.parameterTypes");
+      localObject = k.a((Object[])localObject, (CharSequence)"", (CharSequence)"<init>(", (CharSequence)")V", 0, null, (b)a.aiyc, 24);
+      AppMethodBeat.o(56285);
+      return localObject;
+    }
+    
+    @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Ljava/lang/Class;", "kotlin.jvm.PlatformType", "invoke"}, k=3, mv={1, 5, 1})
+    static final class a
+      extends u
+      implements b<Class<?>, CharSequence>
+    {
+      public static final a aiyc;
+      
+      static
+      {
+        AppMethodBeat.i(56284);
+        aiyc = new a();
+        AppMethodBeat.o(56284);
+      }
+      
+      a()
+      {
+        super();
+      }
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"Lkotlin/reflect/jvm/internal/JvmFunctionSignature$JavaMethod;", "Lkotlin/reflect/jvm/internal/JvmFunctionSignature;", "method", "Ljava/lang/reflect/Method;", "(Ljava/lang/reflect/Method;)V", "getMethod", "()Ljava/lang/reflect/Method;", "asString", "", "kotlin-reflection"}, k=1, mv={1, 5, 1})
+  public static final class c
+    extends d
+  {
+    final Method method;
+    
+    public c(Method paramMethod)
+    {
+      super();
+      AppMethodBeat.i(56288);
+      this.method = paramMethod;
+      AppMethodBeat.o(56288);
+    }
+    
+    public final String PF()
+    {
+      AppMethodBeat.i(56287);
+      String str = ah.g(this.method);
+      AppMethodBeat.o(56287);
       return str;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/reflect/jvm/internal/JvmPropertySignature$KotlinProperty;", "Lkotlin/reflect/jvm/internal/JvmPropertySignature;", "descriptor", "Lkotlin/reflect/jvm/internal/impl/descriptors/PropertyDescriptor;", "proto", "Lkotlin/reflect/jvm/internal/impl/metadata/ProtoBuf$Property;", "signature", "Lkotlin/reflect/jvm/internal/impl/metadata/jvm/JvmProtoBuf$JvmPropertySignature;", "nameResolver", "Lkotlin/reflect/jvm/internal/impl/metadata/deserialization/NameResolver;", "typeTable", "Lkotlin/reflect/jvm/internal/impl/metadata/deserialization/TypeTable;", "(Lorg/jetbrains/kotlin/descriptors/PropertyDescriptor;Lorg/jetbrains/kotlin/metadata/ProtoBuf$Property;Lorg/jetbrains/kotlin/metadata/jvm/JvmProtoBuf$JvmPropertySignature;Lorg/jetbrains/kotlin/metadata/deserialization/NameResolver;Lorg/jetbrains/kotlin/metadata/deserialization/TypeTable;)V", "getDescriptor", "()Lorg/jetbrains/kotlin/descriptors/PropertyDescriptor;", "getNameResolver", "()Lorg/jetbrains/kotlin/metadata/deserialization/NameResolver;", "getProto", "()Lorg/jetbrains/kotlin/metadata/ProtoBuf$Property;", "getSignature", "()Lorg/jetbrains/kotlin/metadata/jvm/JvmProtoBuf$JvmPropertySignature;", "string", "", "getTypeTable", "()Lorg/jetbrains/kotlin/metadata/deserialization/TypeTable;", "asString", "getManglingSuffix", "kotlin-reflection"})
-  public static final class c
-    extends d
-  {
-    private final String aJg;
-    final a.c aaCA;
-    final c aaCB;
-    final h aaCC;
-    final ah aaCy;
-    final a.m aaCz;
-    
-    public c(ah paramah, a.m paramm, a.c paramc, c paramc1, h paramh)
-    {
-      super();
-      AppMethodBeat.i(56295);
-      this.aaCy = paramah;
-      this.aaCz = paramm;
-      this.aaCA = paramc;
-      this.aaCB = paramc1;
-      this.aaCC = paramh;
-      if (this.aaCA.iMU())
-      {
-        paramah = new StringBuilder();
-        paramm = this.aaCB;
-        paramc = this.aaCA.abeQ;
-        p.j(paramc, "signature.getter");
-        paramah = paramah.append(paramm.getString(paramc.abbb));
-        paramm = this.aaCB;
-        paramc = this.aaCA.abeQ;
-        p.j(paramc, "signature.getter");
-        paramah = paramm.getString(paramc.abeL);
-        this.aJg = paramah;
-        AppMethodBeat.o(56295);
-        return;
-      }
-      paramah = i.abfB;
-      paramm = i.a(this.aaCz, this.aaCB, this.aaCC);
-      if (paramm == null)
-      {
-        paramah = (Throwable)new w("No field signature for property: " + this.aaCy);
-        AppMethodBeat.o(56295);
-        throw paramah;
-      }
-      paramah = paramm.name;
-      paramc = paramm.desc;
-      paramc1 = new StringBuilder().append(o.bGM(paramah));
-      paramah = this.aaCy.iDJ();
-      p.j(paramah, "descriptor.containingDeclaration");
-      if ((p.h(this.aaCy.iDQ(), az.aaKN)) && ((paramah instanceof e)))
-      {
-        paramah = (i.c)((e)paramah).abnd;
-        paramm = a.abeF;
-        p.j(paramm, "JvmProtoBuf.classModuleName");
-        paramah = (Integer)kotlin.l.b.a.b.e.b.f.a(paramah, paramm);
-        if (paramah != null)
-        {
-          paramm = this.aaCB.getString(((Number)paramah).intValue());
-          paramah = paramm;
-          if (paramm != null) {}
-        }
-        else
-        {
-          paramah = "main";
-        }
-        paramah = "$" + g.bHf(paramah);
-      }
-      for (;;)
-      {
-        paramah = paramah + "()" + paramc;
-        break;
-        if ((p.h(this.aaCy.iDQ(), az.aaKK)) && ((paramah instanceof ab)))
-        {
-          paramah = this.aaCy;
-          if (paramah == null)
-          {
-            paramah = new t("null cannot be cast to non-null type org.jetbrains.kotlin.serialization.deserialization.descriptors.DeserializedPropertyDescriptor");
-            AppMethodBeat.o(56295);
-            throw paramah;
-          }
-          paramah = ((kotlin.l.b.a.b.k.a.b.j)paramah).abnE;
-          if (((paramah instanceof kotlin.l.b.a.b.d.b.j)) && (((kotlin.l.b.a.b.d.b.j)paramah).aaYw != null))
-          {
-            paramah = "$" + ((kotlin.l.b.a.b.d.b.j)paramah).iIG().qu();
-            continue;
-          }
-        }
-        paramah = "";
-      }
-    }
-    
-    public final String qu()
-    {
-      return this.aJg;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/reflect/jvm/internal/JvmPropertySignature$MappedKotlinProperty;", "Lkotlin/reflect/jvm/internal/JvmPropertySignature;", "getterSignature", "Lkotlin/reflect/jvm/internal/JvmFunctionSignature$KotlinFunction;", "setterSignature", "(Lkotlin/reflect/jvm/internal/JvmFunctionSignature$KotlinFunction;Lkotlin/reflect/jvm/internal/JvmFunctionSignature$KotlinFunction;)V", "getGetterSignature", "()Lkotlin/reflect/jvm/internal/JvmFunctionSignature$KotlinFunction;", "getSetterSignature", "asString", "", "kotlin-reflection"})
+  @Metadata(d1={""}, d2={"Lkotlin/reflect/jvm/internal/JvmFunctionSignature$KotlinConstructor;", "Lkotlin/reflect/jvm/internal/JvmFunctionSignature;", "signature", "Lkotlin/reflect/jvm/internal/impl/metadata/jvm/deserialization/JvmMemberSignature$Method;", "(Lorg/jetbrains/kotlin/metadata/jvm/deserialization/JvmMemberSignature$Method;)V", "_signature", "", "constructorDesc", "getConstructorDesc", "()Ljava/lang/String;", "getSignature", "()Lorg/jetbrains/kotlin/metadata/jvm/deserialization/JvmMemberSignature$Method;", "asString", "kotlin-reflection"}, k=1, mv={1, 5, 1})
   public static final class d
     extends d
   {
-    final c.e aaCD;
-    final c.e aaCE;
+    private final String aiyd;
+    final kotlin.l.b.a.b.e.c.a.d.b aiye;
     
-    public d(c.e parame1, c.e parame2)
+    public d(kotlin.l.b.a.b.e.c.a.d.b paramb)
     {
       super();
-      AppMethodBeat.i(56296);
-      this.aaCD = parame1;
-      this.aaCE = parame2;
-      AppMethodBeat.o(56296);
+      AppMethodBeat.i(56289);
+      this.aiye = paramb;
+      this.aiyd = this.aiye.PF();
+      AppMethodBeat.o(56289);
     }
     
-    public final String qu()
+    public final String PF()
     {
-      return this.aaCD.aaCu;
+      return this.aiyd;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"Lkotlin/reflect/jvm/internal/JvmFunctionSignature$KotlinFunction;", "Lkotlin/reflect/jvm/internal/JvmFunctionSignature;", "signature", "Lkotlin/reflect/jvm/internal/impl/metadata/jvm/deserialization/JvmMemberSignature$Method;", "(Lorg/jetbrains/kotlin/metadata/jvm/deserialization/JvmMemberSignature$Method;)V", "_signature", "", "methodDesc", "getMethodDesc", "()Ljava/lang/String;", "methodName", "getMethodName", "getSignature", "()Lorg/jetbrains/kotlin/metadata/jvm/deserialization/JvmMemberSignature$Method;", "asString", "kotlin-reflection"}, k=1, mv={1, 5, 1})
+  public static final class e
+    extends d
+  {
+    final String aiyd;
+    final kotlin.l.b.a.b.e.c.a.d.b aiye;
+    
+    public e(kotlin.l.b.a.b.e.c.a.d.b paramb)
+    {
+      super();
+      AppMethodBeat.i(56290);
+      this.aiye = paramb;
+      this.aiyd = this.aiye.PF();
+      AppMethodBeat.o(56290);
+    }
+    
+    public final String PF()
+    {
+      return this.aiyd;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.d
  * JD-Core Version:    0.7.0.1
  */

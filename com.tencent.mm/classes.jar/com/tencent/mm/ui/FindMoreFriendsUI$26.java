@@ -1,24 +1,19 @@
 package com.tencent.mm.ui;
 
-import android.graphics.Bitmap;
-import android.view.View;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.a.c.k;
-import com.tencent.mm.f.a.jp;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.br.c;
 
 final class FindMoreFriendsUI$26
-  implements k
+  implements Runnable
 {
-  FindMoreFriendsUI$26(FindMoreFriendsUI paramFindMoreFriendsUI, jp paramjp) {}
+  FindMoreFriendsUI$26(FindMoreFriendsUI paramFindMoreFriendsUI, Intent paramIntent) {}
   
-  public final void a(String paramString, View paramView, Bitmap paramBitmap, Object... paramVarArgs)
+  public final void run()
   {
-    AppMethodBeat.i(280465);
-    this.DdJ.fGP.Vh = 2;
-    this.DdJ.fGP.url = paramString;
-    EventCenter.instance.publish(this.DdJ);
-    AppMethodBeat.o(280465);
+    AppMethodBeat.i(250133);
+    c.b(this.adyF.getContext(), "webview", ".ui.tools.WebViewUI", this.val$intent);
+    AppMethodBeat.o(250133);
   }
 }
 

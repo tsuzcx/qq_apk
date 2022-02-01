@@ -2,26 +2,26 @@ package com.tencent.mm.ui.chatting;
 
 import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.h.e;
-import com.tencent.mm.ui.base.q.g;
+import com.tencent.mm.ui.base.k.e;
+import com.tencent.mm.ui.base.u.i;
 
 final class AppAttachDownloadUI$14
-  implements q.g
+  implements u.i
 {
-  AppAttachDownloadUI$14(AppAttachDownloadUI paramAppAttachDownloadUI, h.e parame) {}
+  AppAttachDownloadUI$14(AppAttachDownloadUI paramAppAttachDownloadUI, k.e parame) {}
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
-    AppMethodBeat.i(268310);
-    if (this.Wiw != null) {
-      this.Wiw.cS(paramInt, paramMenuItem.getItemId());
+    AppMethodBeat.i(253849);
+    if (this.adPx != null) {
+      this.adPx.onClick(paramInt, paramMenuItem.getItemId());
     }
-    AppMethodBeat.o(268310);
+    AppMethodBeat.o(253849);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.AppAttachDownloadUI.14
  * JD-Core Version:    0.7.0.1
  */

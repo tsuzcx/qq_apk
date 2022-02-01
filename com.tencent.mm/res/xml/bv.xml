@@ -1,2 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <SelectPreference android:key="select_male" android:title="@string/j35" />
+    <SelectPreference android:key="select_female" android:title="@string/j34" />
+</PreferenceScreen>

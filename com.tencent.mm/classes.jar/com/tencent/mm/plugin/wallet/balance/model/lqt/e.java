@@ -1,28 +1,28 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.c;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.protocal.protobuf.drf;
-import com.tencent.mm.protocal.protobuf.drg;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.protocal.protobuf.eka;
+import com.tencent.mm.protocal.protobuf.ekb;
+import com.tencent.mm.wallet_core.model.z;
 
 public final class e
-  extends c<drg>
+  extends z<ekb>
 {
   public e()
   {
     AppMethodBeat.i(68402);
-    drf localdrf = new drf();
-    localdrf.time_stamp = ((int)System.currentTimeMillis());
-    localdrf.OmF = ah.gFF();
-    d.a locala = new d.a();
-    locala.lBU = localdrf;
-    locala.lBV = new drg();
+    eka localeka = new eka();
+    localeka.time_stamp = ((int)System.currentTimeMillis());
+    localeka.Vbl = ai.ieD();
+    c.a locala = new c.a();
+    locala.otE = localeka;
+    locala.otF = new ekb();
     locala.funcId = 2668;
     locala.uri = "/cgi-bin/mmpay-bin/lqtlqautoin/qrysetting";
-    locala.lBW = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    c(locala.bgN());
+    c(locala.bEF());
     AppMethodBeat.o(68402);
   }
 }

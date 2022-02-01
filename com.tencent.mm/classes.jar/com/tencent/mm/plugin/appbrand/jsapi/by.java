@@ -1,12 +1,25 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.page.ad;
+import android.content.Intent;
+import com.tencent.luggage.l.e.c;
+import com.tencent.luggage.sdk.h.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.y;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class by
-  extends c<ad>
+  extends c<y>
 {
-  public static final int CTRL_INDEX = 0;
-  public static final String NAME = "openLink";
+  public static final int CTRL_INDEX = 59;
+  public static final String NAME = "openCard";
+  final int rzG;
+  
+  public by()
+  {
+    AppMethodBeat.i(174756);
+    this.rzG = a.ce(this);
+    AppMethodBeat.o(174756);
+  }
 }
 
 

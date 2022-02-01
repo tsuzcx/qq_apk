@@ -4,35 +4,39 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.ui.fragment.FinderHomeTabFragment;
 import com.tencent.mm.plugin.finder.ui.sample.FinderSampleTabUI.FinderSampleTabFragment;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderTabProvider;", "Lcom/tencent/mm/plugin/finder/view/tabcomp/IFinderTabProvider;", "()V", "fragments", "", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "getFragments", "()Ljava/util/List;", "setFragments", "(Ljava/util/List;)V", "tabContainer", "Lcom/tencent/mm/plugin/finder/view/tabcomp/ITabContainer;", "getTabContainer", "()Lcom/tencent/mm/plugin/finder/view/tabcomp/ITabContainer;", "setTabContainer", "(Lcom/tencent/mm/plugin/finder/view/tabcomp/ITabContainer;)V", "tabViewAction", "Lcom/tencent/mm/plugin/finder/view/tabcomp/IFinderTabViewAction;", "getTabViewAction", "()Lcom/tencent/mm/plugin/finder/view/tabcomp/IFinderTabViewAction;", "setTabViewAction", "(Lcom/tencent/mm/plugin/finder/view/tabcomp/IFinderTabViewAction;)V", "tabs", "Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderBaseTab;", "getTabs", "setTabs", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderTabProvider;", "Lcom/tencent/mm/plugin/finder/view/tabcomp/IFinderTabProvider;", "()V", "fragments", "", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "getFragments", "()Ljava/util/List;", "setFragments", "(Ljava/util/List;)V", "tabContainer", "Lcom/tencent/mm/plugin/finder/view/tabcomp/ITabContainer;", "getTabContainer", "()Lcom/tencent/mm/plugin/finder/view/tabcomp/ITabContainer;", "setTabContainer", "(Lcom/tencent/mm/plugin/finder/view/tabcomp/ITabContainer;)V", "tabViewAction", "Lcom/tencent/mm/plugin/finder/view/tabcomp/IFinderTabViewAction;", "getTabViewAction", "()Lcom/tencent/mm/plugin/finder/view/tabcomp/IFinderTabViewAction;", "setTabViewAction", "(Lcom/tencent/mm/plugin/finder/view/tabcomp/IFinderTabViewAction;)V", "tabs", "Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderBaseTab;", "getTabs", "setTabs", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class FinderTabProvider
   implements IFinderTabProvider
 {
-  private List<? extends FinderHomeTabFragment> fragments;
-  private g tabContainer;
-  private f tabViewAction;
-  private List<? extends a> tabs;
+  public List<? extends FinderHomeTabFragment> fragments;
+  private n tabContainer;
+  private m tabViewAction;
+  private List<? extends g> tabs;
   
   public FinderTabProvider()
   {
-    AppMethodBeat.i(240900);
+    AppMethodBeat.i(345595);
     Object localObject1 = new FinderSampleTabUI.FinderSampleTabFragment();
     ((FinderHomeTabFragment)localObject1).title = 101;
+    Object localObject2 = ah.aiuX;
     localObject1 = (FinderHomeTabFragment)localObject1;
-    Object localObject2 = new FinderSampleTabUI.FinderSampleTabFragment();
+    localObject2 = new FinderSampleTabUI.FinderSampleTabFragment();
     ((FinderHomeTabFragment)localObject2).title = 102;
+    Object localObject3 = ah.aiuX;
     localObject2 = (FinderHomeTabFragment)localObject2;
-    FinderSampleTabUI.FinderSampleTabFragment localFinderSampleTabFragment = new FinderSampleTabUI.FinderSampleTabFragment();
-    localFinderSampleTabFragment.title = 103;
-    this.fragments = ((List)j.ag(new FinderHomeTabFragment[] { localObject1, localObject2, (FinderHomeTabFragment)localFinderSampleTabFragment }));
-    this.tabContainer = ((g)new d());
-    this.tabs = ((List)j.ag(new c[] { new c("喜欢"), new c("点赞"), new c("提到") }));
-    this.tabViewAction = ((f)new e());
-    AppMethodBeat.o(240900);
+    localObject3 = new FinderSampleTabUI.FinderSampleTabFragment();
+    ((FinderHomeTabFragment)localObject3).title = 103;
+    ah localah = ah.aiuX;
+    this.fragments = ((List)p.al(new FinderHomeTabFragment[] { localObject1, localObject2, (FinderHomeTabFragment)localObject3 }));
+    this.tabContainer = ((n)new j());
+    this.tabs = ((List)p.al(new i[] { new i("喜欢"), new i("点赞"), new i("提到") }));
+    this.tabViewAction = ((m)new l());
+    AppMethodBeat.o(345595);
   }
   
   public List<FinderHomeTabFragment> fragments()
@@ -45,69 +49,72 @@ public class FinderTabProvider
     return this.fragments;
   }
   
-  public final g getTabContainer()
+  public final n getTabContainer()
   {
     return this.tabContainer;
   }
   
-  public final f getTabViewAction()
+  public final m getTabViewAction()
   {
     return this.tabViewAction;
   }
   
-  public final List<a> getTabs()
+  public final List<g> getTabs()
   {
     return this.tabs;
   }
   
   public boolean isDynamic()
   {
+    AppMethodBeat.i(345670);
+    s.u(this, "this");
+    AppMethodBeat.o(345670);
     return false;
   }
   
   public final void setFragments(List<? extends FinderHomeTabFragment> paramList)
   {
-    AppMethodBeat.i(240877);
-    p.k(paramList, "<set-?>");
+    AppMethodBeat.i(345606);
+    s.u(paramList, "<set-?>");
     this.fragments = paramList;
-    AppMethodBeat.o(240877);
+    AppMethodBeat.o(345606);
   }
   
-  public final void setTabContainer(g paramg)
+  public final void setTabContainer(n paramn)
   {
-    AppMethodBeat.i(240880);
-    p.k(paramg, "<set-?>");
-    this.tabContainer = paramg;
-    AppMethodBeat.o(240880);
+    AppMethodBeat.i(345620);
+    s.u(paramn, "<set-?>");
+    this.tabContainer = paramn;
+    AppMethodBeat.o(345620);
   }
   
-  public final void setTabViewAction(f paramf)
+  public final void setTabViewAction(m paramm)
   {
-    AppMethodBeat.i(240887);
-    p.k(paramf, "<set-?>");
-    this.tabViewAction = paramf;
-    AppMethodBeat.o(240887);
+    AppMethodBeat.i(345643);
+    s.u(paramm, "<set-?>");
+    this.tabViewAction = paramm;
+    AppMethodBeat.o(345643);
   }
   
-  public final void setTabs(List<? extends a> paramList)
+  public final void setTabs(List<? extends g> paramList)
   {
-    AppMethodBeat.i(240884);
-    p.k(paramList, "<set-?>");
+    AppMethodBeat.i(345630);
+    s.u(paramList, "<set-?>");
     this.tabs = paramList;
-    AppMethodBeat.o(240884);
+    AppMethodBeat.o(345630);
   }
   
-  public g tabContainer()
+  public n tabContainer()
   {
     return this.tabContainer;
   }
   
-  public f tabViewAction()
+  public m tabViewAction()
   {
     return this.tabViewAction;
   }
   
-  public List<a> tabs()
+  public List<g> tabs()
   {
     return this.tabs;
   }

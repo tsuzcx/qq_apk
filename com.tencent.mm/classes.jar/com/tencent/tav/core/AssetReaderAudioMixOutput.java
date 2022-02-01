@@ -2,6 +2,7 @@ package com.tencent.tav.core;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tav.asset.AssetTrack;
+import com.tencent.tav.codec.IDecoderFactory;
 import com.tencent.tav.coremedia.CMSampleBuffer;
 import com.tencent.tav.coremedia.CMSampleState;
 import com.tencent.tav.coremedia.CMTime;
@@ -15,20 +16,19 @@ public class AssetReaderAudioMixOutput
   extends AssetReaderOutput
 {
   public static final String TAG = "AssetReaderAudioMixOutput";
-  private AssetReader assetReader;
   private AudioCompositionDecoderTrack audioCompositionDecoderTrack;
   private Map<String, Object> audioSettings;
   private ArrayList<AssetTrack> audioTracks;
   private boolean decoderStarted;
   
-  public AssetReaderAudioMixOutput(ArrayList<AssetTrack> paramArrayList, Map<String, Object> paramMap)
+  public AssetReaderAudioMixOutput(ArrayList<AssetTrack> paramArrayList, Map<String, Object> paramMap, IDecoderFactory paramIDecoderFactory)
   {
-    AppMethodBeat.i(188774);
+    AppMethodBeat.i(215070);
     this.decoderStarted = false;
     this.audioTracks = paramArrayList;
     this.audioSettings = paramMap;
-    this.audioCompositionDecoderTrack = new AudioCompositionDecoderTrack(paramArrayList, 2);
-    AppMethodBeat.o(188774);
+    this.audioCompositionDecoderTrack = new AudioCompositionDecoderTrack(paramArrayList, 2, paramIDecoderFactory);
+    AppMethodBeat.o(215070);
   }
   
   public Map<String, Object> getAudioSettings()
@@ -43,64 +43,64 @@ public class AssetReaderAudioMixOutput
   
   public void markConfigurationAsFinal() {}
   
-  public CMSampleBuffer nextSampleBuffer()
+  public CMSampleBuffer nextSampleBuffer(boolean paramBoolean)
   {
-    AppMethodBeat.i(188779);
+    AppMethodBeat.i(215098);
     CMSampleBuffer localCMSampleBuffer = this.audioCompositionDecoderTrack.readSample();
-    if (localCMSampleBuffer.getTime().smallThan(this.assetReader.getTimeRange().getStart()))
+    if (localCMSampleBuffer.getTime().smallThan(this.timeRange.getStart()))
     {
-      AppMethodBeat.o(188779);
+      AppMethodBeat.o(215098);
       return localCMSampleBuffer;
     }
-    if (localCMSampleBuffer.getTime().smallThan(this.assetReader.getTimeRange().getEnd()))
+    if (localCMSampleBuffer.getTime().smallThan(this.timeRange.getEnd()))
     {
-      localCMSampleBuffer = new CMSampleBuffer(localCMSampleBuffer.getTime().sub(this.assetReader.getTimeRange().getStart()), localCMSampleBuffer.getSampleByteBuffer(), localCMSampleBuffer.isNewFrame());
-      AppMethodBeat.o(188779);
+      localCMSampleBuffer = new CMSampleBuffer(localCMSampleBuffer.getTime().sub(this.timeRange.getStart()), localCMSampleBuffer.getSampleByteBuffer(), localCMSampleBuffer.isNewFrame());
+      AppMethodBeat.o(215098);
       return localCMSampleBuffer;
     }
     localCMSampleBuffer = new CMSampleBuffer(CMSampleState.fromError(-1L));
-    AppMethodBeat.o(188779);
+    AppMethodBeat.o(215098);
     return localCMSampleBuffer;
   }
   
   void release()
   {
-    AppMethodBeat.i(188789);
+    AppMethodBeat.i(215141);
     if (this.audioCompositionDecoderTrack != null) {
       this.audioCompositionDecoderTrack.release();
     }
-    AppMethodBeat.o(188789);
+    AppMethodBeat.o(215141);
   }
   
   public void resetForReadingTimeRanges(List<CMTimeRange> paramList) {}
   
   public void setAudioInfo(AudioInfo paramAudioInfo)
   {
-    AppMethodBeat.i(188781);
+    AppMethodBeat.i(215106);
     this.audioCompositionDecoderTrack.setAudioInfo(paramAudioInfo);
-    AppMethodBeat.o(188781);
+    AppMethodBeat.o(215106);
   }
   
   public void setAudioMix(AudioMix paramAudioMix)
   {
-    AppMethodBeat.i(188790);
+    AppMethodBeat.i(215146);
     if (this.audioCompositionDecoderTrack != null) {
       this.audioCompositionDecoderTrack.setAudioMix(paramAudioMix);
     }
-    AppMethodBeat.o(188790);
+    AppMethodBeat.o(215146);
   }
   
-  void start(IContextCreate paramIContextCreate, AssetReader paramAssetReader)
+  public void start(IContextCreate paramIContextCreate, CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(188785);
-    this.assetReader = paramAssetReader;
+    AppMethodBeat.i(215131);
+    super.start(paramIContextCreate, paramCMTimeRange);
     if ((this.audioCompositionDecoderTrack != null) && (!this.decoderStarted))
     {
       this.audioCompositionDecoderTrack.start(null);
-      this.audioCompositionDecoderTrack.seekTo(paramAssetReader.getTimeRange().getStart(), false, true);
+      this.audioCompositionDecoderTrack.seekTo(paramCMTimeRange.getStart(), false, true);
       this.decoderStarted = true;
     }
-    AppMethodBeat.o(188785);
+    AppMethodBeat.o(215131);
   }
 }
 

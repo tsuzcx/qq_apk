@@ -8,8 +8,8 @@ import com.tencent.mm.sdk.storage.MAutoStorage;
 public final class h
   extends MAutoStorage<g>
 {
-  private static final String[] DSM;
-  public static int DSN;
+  private static final String[] JJW;
+  public static int JJX;
   public static final String[] SQL_CREATE;
   public ISQLiteDatabase db;
   
@@ -17,8 +17,8 @@ public final class h
   {
     AppMethodBeat.i(25550);
     SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(g.info, "IPCallMsg") };
-    DSM = new String[] { "*", "rowid" };
-    DSN = 0;
+    JJW = new String[] { "*", "rowid" };
+    JJX = 0;
     AppMethodBeat.o(25550);
   }
   
@@ -28,10 +28,10 @@ public final class h
     this.db = paramISQLiteDatabase;
   }
   
-  public final Cursor Vo(int paramInt)
+  public final Cursor Zj(int paramInt)
   {
     AppMethodBeat.i(25549);
-    Cursor localCursor = this.db.query("IPCallMsg", DSM, null, null, null, null, "pushTime desc limit ".concat(String.valueOf(paramInt)));
+    Cursor localCursor = this.db.query("IPCallMsg", JJW, null, null, null, null, "pushTime desc limit ".concat(String.valueOf(paramInt)));
     AppMethodBeat.o(25549);
     return localCursor;
   }

@@ -1,68 +1,119 @@
 package com.tencent.mm.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.File;
-import java.io.PrintStream;
-import java.io.RandomAccessFile;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public final class h
 {
-  public static int b(String paramString1, String paramString2, String paramString3, String paramString4)
+  public String heA;
+  private Map<String, a> heB;
+  public int versionCode;
+  
+  public h(String paramString, int paramInt)
   {
-    AppMethodBeat.i(966);
-    if ((paramString1 == null) || (paramString2 == null) || (paramString3 == null))
+    AppMethodBeat.i(953);
+    this.heB = new HashMap();
+    if (paramString == null) {}
+    for (this.heA = "http://dldir1.qq.com/weixin/android/";; this.heA = paramString)
     {
-      AppMethodBeat.o(966);
-      return -1;
+      this.versionCode = paramInt;
+      AppMethodBeat.o(953);
+      return;
     }
-    for (;;)
+  }
+  
+  public static h ib(String paramString)
+  {
+    AppMethodBeat.i(957);
+    Map localMap = f.Z(paramString, "patchupdate");
+    if (localMap == null)
     {
-      try
+      AppMethodBeat.o(957);
+      return null;
+    }
+    h localh = new h((String)localMap.get(".patchupdate.$base"), i.ew((String)localMap.get(".patchupdate.$versioncode")));
+    int k = i.ew((String)localMap.get(".patchupdate.$count"));
+    int i = 0;
+    if (i < k)
+    {
+      StringBuilder localStringBuilder = new StringBuilder(".patchupdate.item");
+      if (i > 0)
       {
-        File localFile2 = new File(paramString1);
-        RandomAccessFile localRandomAccessFile = new RandomAccessFile(localFile2, "r");
-        File localFile1 = new File(paramString3);
-        paramString2 = new File(paramString2);
-        if ((!localFile2.exists()) || (!paramString2.exists()))
-        {
-          System.err.println("MicroMsg.MergePatchApk: file not found in merge(): oldFile.exists()=" + localFile2.exists() + ", newFile.exists()=" + localFile1.exists() + ", patch.exists()=" + paramString2.exists());
-          localRandomAccessFile.close();
-          AppMethodBeat.o(966);
-          return -1;
-        }
-        paramString1 = a.gy(paramString1);
-        if ((paramString1 != null) && (paramString1.faL != null))
-        {
-          i = paramString1.faL.faO + 8;
-          System.out.println("MicroMsg.MergePatchApk:extLen = ".concat(String.valueOf(i)));
-          if (d.a(localRandomAccessFile, localFile1, paramString2, i) != 1)
-          {
-            System.out.println("MicroMsg.MergePatchApk:merge failed in patchLessMemory()");
-            localRandomAccessFile.close();
-            AppMethodBeat.o(966);
-            return -1;
-          }
-          localRandomAccessFile.close();
-          boolean bool = paramString4.equalsIgnoreCase(g.getMD5(paramString3));
-          if (!bool)
-          {
-            AppMethodBeat.o(966);
-            return -2;
-          }
-          paramString1 = new b();
-          paramString1.apkMd5 = paramString4;
-          new a(paramString1).t(localFile1);
-          AppMethodBeat.o(966);
-          return 0;
+        paramString = Integer.valueOf(i);
+        label106:
+        paramString = paramString;
+        paramString = new a((String)localMap.get(paramString + ".$old"), (String)localMap.get(paramString + ".$new"), (String)localMap.get(paramString + ".$patch"), (String)localMap.get(paramString + ".$url"), i.ew((String)localMap.get(paramString + ".$size")));
+        if ((paramString.heC == null) || (paramString.heD == null) || (paramString.patchMd5 == null) || (paramString.url == null)) {
+          break label335;
         }
       }
-      catch (Exception paramString1)
+      label335:
+      for (int j = 1;; j = 0)
       {
-        System.out.println("MicroMsg.MergePatchApk:Exception in merge()");
-        AppMethodBeat.o(966);
-        return -1;
+        if (j != 0) {
+          localh.heB.put(paramString.heC, paramString);
+        }
+        i += 1;
+        break;
+        paramString = "";
+        break label106;
       }
-      int i = 0;
+    }
+    AppMethodBeat.o(957);
+    return localh;
+  }
+  
+  public final void a(a parama)
+  {
+    AppMethodBeat.i(954);
+    this.heB.put(parama.heC, parama);
+    AppMethodBeat.o(954);
+  }
+  
+  public final String aBN()
+  {
+    AppMethodBeat.i(956);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(String.format("<patchupdate base=\"%s\" count=\"%d\" versioncode=\"%d\">", new Object[] { this.heA, Integer.valueOf(this.heB.size()), Integer.valueOf(this.versionCode) }));
+    Iterator localIterator = this.heB.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      a locala = (a)((Map.Entry)localIterator.next()).getValue();
+      ((StringBuilder)localObject).append(String.format("<item old=\"%s\" new=\"%s\" patch=\"%s\" url=\"%s\" size=\"%s\"></item>", new Object[] { locala.heC, locala.heD, locala.patchMd5, locala.url, Integer.valueOf(locala.size) }));
+    }
+    ((StringBuilder)localObject).append("</patchupdate>");
+    localObject = ((StringBuilder)localObject).toString();
+    AppMethodBeat.o(956);
+    return localObject;
+  }
+  
+  public final a ia(String paramString)
+  {
+    AppMethodBeat.i(955);
+    paramString = (a)this.heB.get(paramString);
+    AppMethodBeat.o(955);
+    return paramString;
+  }
+  
+  public static final class a
+  {
+    String heC;
+    public String heD;
+    public String patchMd5;
+    public int size;
+    public String url;
+    
+    public a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
+    {
+      this.heC = paramString1;
+      this.heD = paramString2;
+      this.patchMd5 = paramString3;
+      this.size = paramInt;
+      this.url = paramString4;
     }
   }
 }

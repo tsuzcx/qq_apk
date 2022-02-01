@@ -1,109 +1,171 @@
 package com.tencent.mm.plugin.finder.utils.pref;
 
 import android.content.Context;
-import androidx.lifecycle.r;
-import androidx.lifecycle.s;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.cm;
+import com.tencent.mm.model.cn;
 import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.f.a;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.extension.reddot.h.a;
+import com.tencent.mm.plugin.finder.api.d.a;
+import com.tencent.mm.plugin.finder.extension.reddot.l;
+import com.tencent.mm.plugin.finder.extension.reddot.l.a;
+import com.tencent.mm.plugin.finder.extension.reddot.p;
+import com.tencent.mm.plugin.finder.report.w;
 import com.tencent.mm.plugin.finder.utils.a;
-import com.tencent.mm.plugin.finder.viewmodel.component.aj;
-import com.tencent.mm.plugin.finder.viewmodel.component.aj.a;
-import com.tencent.mm.protocal.protobuf.bid;
-import com.tencent.mm.protocal.protobuf.bkn;
-import kotlin.g.b.p;
-import kotlin.t;
+import com.tencent.mm.plugin.finder.viewmodel.component.as;
+import com.tencent.mm.plugin.finder.viewmodel.component.as.a;
+import com.tencent.mm.plugin.newtips.NewTipPreference;
+import com.tencent.mm.protocal.protobuf.btw;
+import com.tencent.mm.protocal.protobuf.bui;
+import com.tencent.mm.protocal.protobuf.bxq;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/utils/pref/PosterCenterLiveTaskPref;", "Lcom/tencent/mm/plugin/finder/utils/pref/PrefComponent;", "name", "", "preferenceScreen", "Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "context", "Landroid/content/Context;", "(Ljava/lang/String;Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Landroid/content/Context;)V", "TAG", "getContext", "()Landroid/content/Context;", "hasExposeLiveTaskTips", "getName", "()Ljava/lang/String;", "getPreferenceScreen", "()Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "getNameTag", "onClick", "", "onCreate", "onDestroy", "onResume", "onStop", "updateView", "isFromSceneEnd", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/utils/pref/PosterCenterLiveTaskPref;", "Lcom/tencent/mm/plugin/finder/utils/pref/PrefComponent;", "name", "", "preferenceScreen", "Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "context", "Landroid/content/Context;", "(Ljava/lang/String;Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Landroid/content/Context;)V", "TAG", "getContext", "()Landroid/content/Context;", "hasExposeLiveTaskTips", "getName", "()Ljava/lang/String;", "getPreferenceScreen", "()Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "getNameTag", "onClick", "", "onCreate", "onDestroy", "onResume", "onStop", "updateView", "isFromSceneEnd", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
   implements i
 {
-  final com.tencent.mm.ui.base.preference.f AJD;
-  String AJH;
+  private final com.tencent.mm.ui.base.preference.f Gmr;
+  private String Gmv;
   private final String TAG;
-  final Context context;
-  final String name;
+  private final Context context;
+  private final String name;
   
   public d(String paramString, com.tencent.mm.ui.base.preference.f paramf, Context paramContext)
   {
-    AppMethodBeat.i(269535);
+    AppMethodBeat.i(333847);
     this.name = paramString;
-    this.AJD = paramf;
+    this.Gmr = paramf;
     this.context = paramContext;
     this.TAG = "Finder.PosterCenterLiveTaskPref";
-    this.AJH = "";
-    AppMethodBeat.o(269535);
+    this.Gmv = "";
+    AppMethodBeat.o(333847);
   }
   
-  public final String egv()
+  private static final void a(d paramd, l.a parama)
+  {
+    AppMethodBeat.i(333858);
+    s.u(paramd, "this$0");
+    Object localObject = paramd.Gmr.bAi(paramd.name);
+    if (localObject == null)
+    {
+      paramd = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.newtips.NewTipPreference");
+      AppMethodBeat.o(333858);
+      throw paramd;
+    }
+    localObject = (NewTipPreference)localObject;
+    boolean bool;
+    int i;
+    label82:
+    bxq localbxq;
+    p localp;
+    if (parama == null)
+    {
+      bool = false;
+      ((NewTipPreference)localObject).yn(bool);
+      if ((parama == null) || (parama.hBY != true)) {
+        break label217;
+      }
+      i = 1;
+      if (i != 0)
+      {
+        localbxq = ((PluginFinder)com.tencent.mm.kernel.h.az(PluginFinder.class)).getRedDotManager().avp("FinderSettingLiveTask");
+        localp = ((PluginFinder)com.tencent.mm.kernel.h.az(PluginFinder.class)).getRedDotManager().Su("FinderSettingLiveTask");
+        if (localp != null) {
+          break label222;
+        }
+        parama = "";
+        label130:
+        if (!s.p(parama, paramd.Gmv))
+        {
+          paramd.Gmv = parama;
+          if ((localp != null) && (localbxq != null))
+          {
+            parama = w.FrV;
+            localObject = as.GSQ;
+            paramd = as.a.hu((Context)paramd.context);
+            if (paramd != null) {
+              break label258;
+            }
+          }
+        }
+      }
+    }
+    label258:
+    for (paramd = null;; paramd = paramd.fou())
+    {
+      w.a(parama, "10", localp, localbxq, 1, paramd, 0, null, 0, 480);
+      AppMethodBeat.o(333858);
+      return;
+      bool = parama.hBY;
+      break;
+      label217:
+      i = 0;
+      break label82;
+      label222:
+      parama = localp.field_ctrInfo;
+      if (parama == null)
+      {
+        parama = "";
+        break label130;
+      }
+      localObject = parama.ZYN;
+      parama = (l.a)localObject;
+      if (localObject != null) {
+        break label130;
+      }
+      parama = "";
+      break label130;
+    }
+  }
+  
+  public final String fiv()
   {
     return this.name;
   }
   
-  public final void jq(boolean paramBoolean)
+  public final void kD(boolean paramBoolean)
   {
-    AppMethodBeat.i(269533);
-    this.AJD.dz(this.name, true);
-    Object localObject = com.tencent.mm.plugin.finder.api.d.wZQ;
-    if (com.tencent.mm.plugin.finder.api.d.a.aAQ("Entrance_PrimarySetting"))
+    AppMethodBeat.i(333893);
+    this.Gmr.eh(this.name, true);
+    Object localObject = com.tencent.mm.plugin.finder.api.d.AwY;
+    if (d.a.auX("Entrance_PrimarySetting"))
     {
-      this.AJD.dz(this.name, false);
-      localObject = com.tencent.mm.plugin.finder.extension.reddot.h.xup;
-      localObject = com.tencent.mm.plugin.finder.extension.reddot.h.xup;
-      localObject = com.tencent.mm.plugin.finder.extension.reddot.h.drm();
-      Context localContext = this.context;
-      if (localContext == null)
-      {
-        localObject = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-        AppMethodBeat.o(269533);
-        throw ((Throwable)localObject);
-      }
-      com.tencent.mm.plugin.finder.extension.reddot.h.a((r)localObject, (androidx.lifecycle.l)localContext, (s)new a(this));
+      this.Gmr.eh(this.name, false);
+      localObject = l.ARA;
+      com.tencent.mm.ae.d.a((LiveData)l.eaa(), (q)this.context, new d..ExternalSyntheticLambda0(this));
       if (paramBoolean) {
-        com.tencent.mm.plugin.report.service.h.IzE.a(22748, new Object[] { Integer.valueOf(1), Integer.valueOf(1), Long.valueOf(cm.bfE()), z.bdh() });
+        com.tencent.mm.plugin.report.service.h.OAn.b(22748, new Object[] { Integer.valueOf(1), Integer.valueOf(1), Long.valueOf(cn.bDw()), z.bAW() });
       }
     }
-    AppMethodBeat.o(269533);
+    AppMethodBeat.o(333893);
   }
   
   public final void onClick()
   {
-    AppMethodBeat.i(269534);
-    Object localObject = com.tencent.mm.kernel.h.ag(PluginFinder.class);
-    p.j(localObject, "MMKernel.plugin(PluginFinder::class.java)");
-    bkn localbkn = ((PluginFinder)localObject).getRedDotManager().aBe("FinderSettingLiveTask");
-    localObject = com.tencent.mm.kernel.h.ag(PluginFinder.class);
-    p.j(localObject, "MMKernel.plugin(PluginFinder::class.java)");
-    com.tencent.mm.plugin.finder.extension.reddot.l locall = ((PluginFinder)localObject).getRedDotManager().aBf("FinderSettingLiveTask");
-    if ((locall != null) && (localbkn != null))
+    AppMethodBeat.i(333903);
+    bxq localbxq = ((PluginFinder)com.tencent.mm.kernel.h.az(PluginFinder.class)).getRedDotManager().avp("FinderSettingLiveTask");
+    p localp = ((PluginFinder)com.tencent.mm.kernel.h.az(PluginFinder.class)).getRedDotManager().Su("FinderSettingLiveTask");
+    w localw;
+    if ((localp != null) && (localbxq != null))
     {
-      localObject = com.tencent.mm.plugin.finder.report.l.zWx;
-      localObject = aj.Bnu;
-      localObject = this.context;
-      if (localObject == null)
-      {
-        localObject = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-        AppMethodBeat.o(269534);
-        throw ((Throwable)localObject);
-      }
-      localObject = aj.a.fZ((Context)localObject);
-      if (localObject == null) {
-        break label216;
+      localw = w.FrV;
+      localObject = as.GSQ;
+      localObject = as.a.hu((Context)this.context);
+      if (localObject != null) {
+        break label173;
       }
     }
-    label216:
-    for (localObject = ((aj)localObject).ekY();; localObject = null)
+    label173:
+    for (Object localObject = null;; localObject = ((as)localObject).fou())
     {
-      com.tencent.mm.plugin.finder.report.l.a("10", locall, localbkn, 2, (bid)localObject, 0, 0, null, 224);
-      localObject = com.tencent.mm.kernel.h.ag(PluginFinder.class);
-      p.j(localObject, "MMKernel.plugin(PluginFinder::class.java)");
-      ((PluginFinder)localObject).getRedDotManager().aBd("FinderSettingLiveTask");
-      localObject = a.ACH;
-      a.ao(this.context, 1);
-      com.tencent.mm.plugin.report.service.h.IzE.a(22748, new Object[] { Integer.valueOf(1), Integer.valueOf(2), Long.valueOf(cm.bfE()), z.bdh() });
-      AppMethodBeat.o(269534);
+      w.a(localw, "10", localp, localbxq, 2, (bui)localObject, 0, null, 0, 480);
+      ((PluginFinder)com.tencent.mm.kernel.h.az(PluginFinder.class)).getRedDotManager().TL("FinderSettingLiveTask");
+      f.a.a((com.tencent.mm.plugin.f)a.GfO, this.context, 1);
+      com.tencent.mm.plugin.report.service.h.OAn.b(22748, new Object[] { Integer.valueOf(1), Integer.valueOf(2), Long.valueOf(cn.bDw()), z.bAW() });
+      AppMethodBeat.o(333903);
       return;
     }
   }
@@ -114,19 +176,12 @@ public final class d
   
   public final void onStop()
   {
-    this.AJH = "";
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "kotlin.jvm.PlatformType", "onChanged"})
-  static final class a<T>
-    implements s<h.a>
-  {
-    a(d paramd) {}
+    this.Gmv = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.utils.pref.d
  * JD-Core Version:    0.7.0.1
  */

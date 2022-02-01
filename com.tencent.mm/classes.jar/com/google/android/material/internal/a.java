@@ -17,69 +17,69 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class a
   extends Drawable
 {
-  final a bBj;
-  private int bBk;
-  private int bBl;
-  private int bBm;
-  private int bBn;
-  private ColorStateList bBo;
-  private int bBp;
-  private boolean bBq;
+  final RectF avO;
   float borderWidth;
-  final Rect byG;
-  final RectF byj;
+  final a dul;
+  private int dum;
+  private int dun;
+  private int duo;
+  private int dup;
+  private ColorStateList duq;
+  private int dur;
+  private boolean dus;
   final Paint paint;
+  final Rect rect;
   public float rotation;
   
   public a()
   {
-    AppMethodBeat.i(237540);
-    this.byG = new Rect();
-    this.byj = new RectF();
-    this.bBj = new a((byte)0);
-    this.bBq = true;
+    AppMethodBeat.i(209290);
+    this.rect = new Rect();
+    this.avO = new RectF();
+    this.dul = new a((byte)0);
+    this.dus = true;
     this.paint = new Paint(1);
     this.paint.setStyle(Paint.Style.STROKE);
-    AppMethodBeat.o(237540);
+    AppMethodBeat.o(209290);
   }
   
   public final void d(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(237555);
+    AppMethodBeat.i(209364);
     if (paramColorStateList != null) {
-      this.bBp = paramColorStateList.getColorForState(getState(), this.bBp);
+      this.dur = paramColorStateList.getColorForState(getState(), this.dur);
     }
-    this.bBo = paramColorStateList;
-    this.bBq = true;
+    this.duq = paramColorStateList;
+    this.dus = true;
     invalidateSelf();
-    AppMethodBeat.o(237555);
+    AppMethodBeat.o(209364);
   }
   
   public void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(237548);
-    if (this.bBq)
+    AppMethodBeat.i(209334);
+    if (this.dus)
     {
       localObject1 = this.paint;
-      Object localObject2 = this.byG;
+      Object localObject2 = this.rect;
       copyBounds((Rect)localObject2);
       f1 = this.borderWidth / ((Rect)localObject2).height();
-      int i = b.A(this.bBk, this.bBp);
-      int j = b.A(this.bBl, this.bBp);
-      int k = b.A(b.C(this.bBl, 0), this.bBp);
-      int m = b.A(b.C(this.bBn, 0), this.bBp);
-      int n = b.A(this.bBn, this.bBp);
-      int i1 = b.A(this.bBm, this.bBp);
+      int i = b.av(this.dum, this.dur);
+      int j = b.av(this.dun, this.dur);
+      int k = b.av(b.ax(this.dun, 0), this.dur);
+      int m = b.av(b.ax(this.dup, 0), this.dur);
+      int n = b.av(this.dup, this.dur);
+      int i1 = b.av(this.duo, this.dur);
       float f2 = ((Rect)localObject2).top;
       float f3 = ((Rect)localObject2).bottom;
       localObject2 = Shader.TileMode.CLAMP;
       ((Paint)localObject1).setShader(new LinearGradient(0.0F, f2, 0.0F, f3, new int[] { i, j, k, m, n, i1 }, new float[] { 0.0F, f1, 0.5F, 0.5F, 1.0F - f1, 1.0F }, (Shader.TileMode)localObject2));
-      this.bBq = false;
+      this.dus = false;
     }
     float f1 = this.paint.getStrokeWidth() / 2.0F;
-    Object localObject1 = this.byj;
-    copyBounds(this.byG);
-    ((RectF)localObject1).set(this.byG);
+    Object localObject1 = this.avO;
+    copyBounds(this.rect);
+    ((RectF)localObject1).set(this.rect);
     ((RectF)localObject1).left += f1;
     ((RectF)localObject1).top += f1;
     ((RectF)localObject1).right -= f1;
@@ -88,12 +88,12 @@ public class a
     paramCanvas.rotate(this.rotation, ((RectF)localObject1).centerX(), ((RectF)localObject1).centerY());
     paramCanvas.drawOval((RectF)localObject1, this.paint);
     paramCanvas.restore();
-    AppMethodBeat.o(237548);
+    AppMethodBeat.o(209334);
   }
   
   public Drawable.ConstantState getConstantState()
   {
-    return this.bBj;
+    return this.dul;
   }
   
   public int getOpacity()
@@ -106,85 +106,85 @@ public class a
   
   public boolean getPadding(Rect paramRect)
   {
-    AppMethodBeat.i(237551);
+    AppMethodBeat.i(209343);
     int i = Math.round(this.borderWidth);
     paramRect.set(i, i, i, i);
-    AppMethodBeat.o(237551);
+    AppMethodBeat.o(209343);
     return true;
   }
   
   public boolean isStateful()
   {
-    AppMethodBeat.i(237560);
-    if (((this.bBo != null) && (this.bBo.isStateful())) || (super.isStateful()))
+    AppMethodBeat.i(209400);
+    if (((this.duq != null) && (this.duq.isStateful())) || (super.isStateful()))
     {
-      AppMethodBeat.o(237560);
+      AppMethodBeat.o(209400);
       return true;
     }
-    AppMethodBeat.o(237560);
+    AppMethodBeat.o(209400);
     return false;
-  }
-  
-  public final void o(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.bBk = paramInt1;
-    this.bBl = paramInt2;
-    this.bBm = paramInt3;
-    this.bBn = paramInt4;
   }
   
   protected void onBoundsChange(Rect paramRect)
   {
-    this.bBq = true;
+    this.dus = true;
   }
   
   protected boolean onStateChange(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(237563);
-    if (this.bBo != null)
+    AppMethodBeat.i(209409);
+    if (this.duq != null)
     {
-      int i = this.bBo.getColorForState(paramArrayOfInt, this.bBp);
-      if (i != this.bBp)
+      int i = this.duq.getColorForState(paramArrayOfInt, this.dur);
+      if (i != this.dur)
       {
-        this.bBq = true;
-        this.bBp = i;
+        this.dus = true;
+        this.dur = i;
       }
     }
-    if (this.bBq) {
+    if (this.dus) {
       invalidateSelf();
     }
-    boolean bool = this.bBq;
-    AppMethodBeat.o(237563);
+    boolean bool = this.dus;
+    AppMethodBeat.o(209409);
     return bool;
   }
   
   public void setAlpha(int paramInt)
   {
-    AppMethodBeat.i(237553);
+    AppMethodBeat.i(209352);
     this.paint.setAlpha(paramInt);
     invalidateSelf();
-    AppMethodBeat.o(237553);
+    AppMethodBeat.o(209352);
   }
   
   public final void setBorderWidth(float paramFloat)
   {
-    AppMethodBeat.i(237544);
+    AppMethodBeat.i(209322);
     if (this.borderWidth != paramFloat)
     {
       this.borderWidth = paramFloat;
       this.paint.setStrokeWidth(1.3333F * paramFloat);
-      this.bBq = true;
+      this.dus = true;
       invalidateSelf();
     }
-    AppMethodBeat.o(237544);
+    AppMethodBeat.o(209322);
   }
   
   public void setColorFilter(ColorFilter paramColorFilter)
   {
-    AppMethodBeat.i(237557);
+    AppMethodBeat.i(209371);
     this.paint.setColorFilter(paramColorFilter);
     invalidateSelf();
-    AppMethodBeat.o(237557);
+    AppMethodBeat.o(209371);
+  }
+  
+  public final void x(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.dum = paramInt1;
+    this.dun = paramInt2;
+    this.duo = paramInt3;
+    this.dup = paramInt4;
   }
   
   final class a
@@ -205,7 +205,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.internal.a
  * JD-Core Version:    0.7.0.1
  */

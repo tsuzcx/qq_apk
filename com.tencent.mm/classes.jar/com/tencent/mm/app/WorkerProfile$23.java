@@ -1,30 +1,24 @@
 package com.tencent.mm.app;
 
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.h.a;
-import com.tencent.mm.an.h.c;
-import com.tencent.mm.model.ck.a;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.report.service.j;
-import com.tencent.mm.protocal.protobuf.db;
+import com.tencent.mm.autogen.a.vs;
+import com.tencent.mm.sdk.event.IListener;
 
-final class WorkerProfile$23
-  implements ck.a
+class WorkerProfile$23
+  extends IListener<vs>
 {
-  WorkerProfile$23(WorkerProfile paramWorkerProfile) {}
-  
-  public final void a(h.a parama)
+  WorkerProfile$23(WorkerProfile paramWorkerProfile, q paramq)
   {
-    AppMethodBeat.i(19570);
-    j.aWZ(z.a(parama.jQG.RIF));
-    AppMethodBeat.o(19570);
+    super(paramq);
+    AppMethodBeat.i(239185);
+    this.__eventId = vs.class.getName().hashCode();
+    AppMethodBeat.o(239185);
   }
-  
-  public final void a(h.c paramc) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.app.WorkerProfile.23
  * JD-Core Version:    0.7.0.1
  */

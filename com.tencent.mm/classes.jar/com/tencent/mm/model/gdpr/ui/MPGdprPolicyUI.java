@@ -1,7 +1,5 @@
 package com.tencent.mm.model.gdpr.ui;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.ResultReceiver;
@@ -12,25 +10,28 @@ import android.view.View;
 import android.widget.FrameLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.appbrand.ac.p;
-import com.tencent.mm.plugin.appbrand.ac.p.a;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.plugin.appbrand.af.r;
+import com.tencent.mm.plugin.appbrand.af.r.a;
+import com.tencent.mm.plugin.n.a.a;
 import com.tencent.mm.plugin.n.a.b;
 import com.tencent.mm.plugin.n.a.c;
-import com.tencent.mm.plugin.webview.ui.tools.widget.c.a;
+import com.tencent.mm.plugin.webview.ui.tools.widget.d;
+import com.tencent.mm.plugin.webview.ui.tools.widget.d.a;
 import com.tencent.mm.plugin.webview.ui.tools.widget.f.a;
-import com.tencent.mm.protocal.protobuf.egg;
-import com.tencent.mm.protocal.protobuf.egh;
+import com.tencent.mm.plugin.webview.ui.tools.widget.i;
+import com.tencent.mm.plugin.webview.ui.tools.widget.i.a;
+import com.tencent.mm.protocal.protobuf.ezz;
+import com.tencent.mm.protocal.protobuf.faa;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatHosts;
-import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.aq;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMFalseProgressBar;
 import com.tencent.mm.ui.widget.MMWebView;
-import com.tencent.xweb.aa;
+import com.tencent.xweb.ad;
 import java.io.File;
 import java.util.Locale;
 
@@ -38,27 +39,27 @@ import java.util.Locale;
 public class MPGdprPolicyUI
   extends MMActivity
 {
-  private static final String lwY;
-  private MMFalseProgressBar lwZ;
-  private MMWebView lxa;
-  private com.tencent.mm.model.gdpr.a lxb;
-  private ResultReceiver lxc;
+  private static final String oox;
   private String mAppID;
+  private com.tencent.mm.model.gdpr.a ooA;
+  private ResultReceiver ooB;
+  private MMFalseProgressBar ooy;
+  private MMWebView ooz;
   
   static
   {
-    AppMethodBeat.i(241056);
-    lwY = "https://" + WeChatHosts.domainString(a.c.host_weixin_qq_com) + "/cgi-bin/newreadtemplate?t=gdpr/confirm&business=%s&lang=%s&cc=%s";
-    AppMethodBeat.o(241056);
+    AppMethodBeat.i(242105);
+    oox = "https://" + WeChatHosts.domainString(a.c.host_weixin_qq_com) + "/cgi-bin/newreadtemplate?t=gdpr/confirm&business=%s&lang=%s&cc=%s";
+    AppMethodBeat.o(242105);
   }
   
-  private void gc(boolean paramBoolean)
+  private void gT(boolean paramBoolean)
   {
     AppMethodBeat.i(40100);
     ResultReceiver localResultReceiver;
-    if (this.lxc != null)
+    if (this.ooB != null)
     {
-      localResultReceiver = this.lxc;
+      localResultReceiver = this.ooB;
       if (!paramBoolean) {
         break label35;
       }
@@ -72,41 +73,40 @@ public class MPGdprPolicyUI
     }
   }
   
-  @SuppressLint({"SetJavaScriptEnabled", "InlinedApi"})
   public void dealContentView(View paramView)
   {
     AppMethodBeat.i(40102);
     super.dealContentView(paramView);
-    this.lxa = f.a.QwC.eN(this);
-    this.lxa.getSettings().iwC();
-    this.lxa.getSettings().setJavaScriptEnabled(true);
-    this.lxa.getSettings().setMediaPlaybackRequiresUserGesture(false);
-    this.lxa.getSettings().iwE();
-    this.lxa.getSettings().setUserAgentString(p.a(getContext(), this.lxa.getSettings().getUserAgentString(), (p.a)com.tencent.luggage.a.e.K(p.a.class)));
-    this.lxa.getView().setHorizontalScrollBarEnabled(false);
-    this.lxa.getView().setVerticalScrollBarEnabled(false);
-    this.lxa.getSettings().setBuiltInZoomControls(true);
-    this.lxa.getSettings().setUseWideViewPort(true);
-    this.lxa.getSettings().setLoadWithOverviewMode(true);
-    this.lxa.getSettings().iwx();
-    this.lxa.getSettings().iww();
-    this.lxa.getSettings().setGeolocationEnabled(true);
-    this.lxa.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-    this.lxa.getSettings().iwA();
-    this.lxa.getSettings().setAppCachePath(getContext().getDir("webviewcache", 0).getAbsolutePath());
-    this.lxa.getSettings().iwz();
-    this.lxa.getSettings().iwB();
-    this.lxa.getSettings().setDatabasePath(com.tencent.mm.loader.j.b.aSC() + "databases/");
+    this.ooz = i.a.Xpw.fJ(this);
+    this.ooz.getSettings().kfS();
+    this.ooz.getSettings().setJavaScriptEnabled(true);
+    this.ooz.getSettings().setMediaPlaybackRequiresUserGesture(false);
+    this.ooz.getSettings().kfU();
+    this.ooz.getSettings().setUserAgentString(r.a(getContext(), this.ooz.getSettings().getUserAgentString(), (r.a)com.tencent.luggage.a.e.T(r.a.class)));
+    this.ooz.getView().setHorizontalScrollBarEnabled(false);
+    this.ooz.getView().setVerticalScrollBarEnabled(false);
+    this.ooz.getSettings().setBuiltInZoomControls(true);
+    this.ooz.getSettings().setUseWideViewPort(true);
+    this.ooz.getSettings().setLoadWithOverviewMode(true);
+    this.ooz.getSettings().kfN();
+    this.ooz.getSettings().kfM();
+    this.ooz.getSettings().setGeolocationEnabled(true);
+    this.ooz.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+    this.ooz.getSettings().kfQ();
+    this.ooz.getSettings().setAppCachePath(getContext().getDir("webviewcache", 0).getAbsolutePath());
+    this.ooz.getSettings().kfP();
+    this.ooz.getSettings().kfR();
+    this.ooz.getSettings().setDatabasePath(com.tencent.mm.loader.i.b.bmq() + "databases/");
     Bundle localBundle = new Bundle(1);
     localBundle.putBoolean("KInitialParam_Force_wcPrivacyPolicyResult_DoInService", true);
-    this.lxa.setWebViewClient(c.a.QwB.a(this.lxa, new com.tencent.mm.plugin.webview.ui.tools.widget.e()
+    this.ooz.setWebViewClient(f.a.Xpv.a(this.ooz, new com.tencent.mm.plugin.webview.ui.tools.widget.h()
     {
-      public final boolean Su(String paramAnonymousString)
+      public final boolean Kw(String paramAnonymousString)
       {
         return false;
       }
       
-      public final boolean bgr()
+      public final boolean bEj()
       {
         AppMethodBeat.i(40092);
         MPGdprPolicyUI.this.runOnUiThread(new Runnable()
@@ -122,7 +122,7 @@ public class MPGdprPolicyUI
         return true;
       }
       
-      public final void bgs()
+      public final void bEk()
       {
         AppMethodBeat.i(40093);
         MPGdprPolicyUI.this.runOnUiThread(new Runnable()
@@ -152,7 +152,7 @@ public class MPGdprPolicyUI
         AppMethodBeat.o(40094);
       }
       
-      public final boolean h(int paramAnonymousInt, Bundle paramAnonymousBundle)
+      public final boolean i(int paramAnonymousInt, Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(40095);
         if (paramAnonymousInt == 200)
@@ -160,28 +160,28 @@ public class MPGdprPolicyUI
           boolean bool = paramAnonymousBundle.getBoolean("OnMPGdprPolicyAgreement_KIsAgree", false);
           MPGdprPolicyUI.a(MPGdprPolicyUI.this, bool);
           MPGdprPolicyUI.b(MPGdprPolicyUI.this);
-          if ((bool) && (!Util.isNullOrNil(MPGdprPolicyUI.c(MPGdprPolicyUI.this))) && (MPGdprPolicyUI.d(MPGdprPolicyUI.this).lwS != 0))
+          if ((bool) && (!Util.isNullOrNil(MPGdprPolicyUI.c(MPGdprPolicyUI.this))) && (MPGdprPolicyUI.d(MPGdprPolicyUI.this).oor != 0))
           {
-            paramAnonymousBundle = new com.tencent.mm.an.c();
-            egg localegg = new egg();
-            localegg.appid = MPGdprPolicyUI.c(MPGdprPolicyUI.this);
-            localegg.scene = MPGdprPolicyUI.d(MPGdprPolicyUI.this).lwS;
-            d.a locala = new d.a();
-            locala.lBU = localegg;
-            locala.lBV = new egh();
+            paramAnonymousBundle = new com.tencent.mm.am.b();
+            ezz localezz = new ezz();
+            localezz.appid = MPGdprPolicyUI.c(MPGdprPolicyUI.this);
+            localezz.scene = MPGdprPolicyUI.d(MPGdprPolicyUI.this).oor;
+            c.a locala = new c.a();
+            locala.otE = localezz;
+            locala.otF = new faa();
             locala.funcId = 2734;
             locala.uri = "/cgi-bin/mmbiz-bin/wxabusiness/setgdrpauth";
-            paramAnonymousBundle.c(locala.bgN());
-            paramAnonymousBundle.bhW();
+            paramAnonymousBundle.c(locala.bEF());
+            paramAnonymousBundle.bFJ();
           }
         }
         AppMethodBeat.o(40095);
         return false;
       }
     }, localBundle));
-    this.lxa.setWebChromeClient(com.tencent.mm.plugin.webview.ui.tools.widget.a.a.QwA.a(this.lxa, new com.tencent.mm.plugin.webview.ui.tools.widget.b()
+    this.ooz.setWebChromeClient(d.a.Xpu.a(this.ooz, new com.tencent.mm.plugin.webview.ui.tools.widget.e()
     {
-      public final boolean Sv(final String paramAnonymousString)
+      public final boolean Kx(final String paramAnonymousString)
       {
         AppMethodBeat.i(40097);
         MPGdprPolicyUI.this.runOnUiThread(new Runnable()
@@ -197,10 +197,10 @@ public class MPGdprPolicyUI
         return true;
       }
     }));
-    ((FrameLayout)paramView).addView(this.lxa, -1, -1);
-    this.lwZ = new MMFalseProgressBar(this);
-    this.lwZ.setProgressDrawable(com.tencent.mm.ci.a.m(this, com.tencent.mm.plugin.n.a.a.mm_webview_progress_horizontal));
-    ((FrameLayout)paramView).addView(this.lwZ, -1, com.tencent.mm.ci.a.fromDPToPix(this, 3));
+    ((FrameLayout)paramView).addView(this.ooz, -1, -1);
+    this.ooy = new MMFalseProgressBar(this);
+    this.ooy.setProgressDrawable(com.tencent.mm.cd.a.m(this, a.a.mm_webview_progress_horizontal));
+    ((FrameLayout)paramView).addView(this.ooy, -1, com.tencent.mm.cd.a.fromDPToPix(this, 3));
     AppMethodBeat.o(40102);
   }
   
@@ -208,10 +208,10 @@ public class MPGdprPolicyUI
   {
     AppMethodBeat.i(40101);
     super.finish();
-    if (this.lxc != null)
+    if (this.ooB != null)
     {
-      gc(false);
-      this.lxc = null;
+      gT(false);
+      this.ooB = null;
     }
     AppMethodBeat.o(40101);
   }
@@ -230,7 +230,7 @@ public class MPGdprPolicyUI
       if (getIntent() != null)
       {
         paramBundle = (ResultReceiver)getIntent().getParcelableExtra("MPGdprPolicyUI_KEY_RECEIVER");
-        this.lxc = paramBundle;
+        this.ooB = paramBundle;
         if (paramBundle != null) {}
       }
       else
@@ -247,11 +247,11 @@ public class MPGdprPolicyUI
       AppMethodBeat.o(40099);
       return;
     }
-    this.lxb = com.tencent.mm.model.gdpr.a.St(getIntent().getStringExtra("MPGdprPolicyUI_KEY_BUSINESS"));
-    if (this.lxb == null)
+    this.ooA = com.tencent.mm.model.gdpr.a.Kv(getIntent().getStringExtra("MPGdprPolicyUI_KEY_BUSINESS"));
+    if (this.ooA == null)
     {
       Log.e("MicroMsg.MPGdprPolicyUI", "onCreate get empty business");
-      gc(false);
+      gT(false);
       finish();
       AppMethodBeat.o(40099);
       return;
@@ -266,7 +266,7 @@ public class MPGdprPolicyUI
     super.onDestroy();
     try
     {
-      this.lxa.destroy();
+      this.ooz.destroy();
       return;
     }
     catch (Exception localException)
@@ -276,7 +276,7 @@ public class MPGdprPolicyUI
     }
     finally
     {
-      this.lxa = null;
+      this.ooz = null;
       AppMethodBeat.o(40104);
     }
   }
@@ -284,9 +284,9 @@ public class MPGdprPolicyUI
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(40105);
-    if ((paramInt == 4) && (this.lxa.canGoBack()))
+    if ((paramInt == 4) && (this.ooz.canGoBack()))
     {
-      this.lxa.goBack();
+      this.ooz.goBack();
       AppMethodBeat.o(40105);
       return true;
     }
@@ -310,8 +310,8 @@ public class MPGdprPolicyUI
       }
     }, a.b.actionbar_icon_dark_close);
     setActionbarColor(-1);
-    paramBundle = String.format(Locale.US, lwY, new Object[] { this.lxb.lwR, LocaleUtil.getCurrentLanguage(this), (String)h.aHG().aHp().b(274436, null) });
-    this.lxa.loadUrl(paramBundle);
+    paramBundle = String.format(Locale.US, oox, new Object[] { this.ooA.ooq, LocaleUtil.getCurrentLanguage(this), (String)com.tencent.mm.kernel.h.baE().ban().d(274436, null) });
+    this.ooz.loadUrl(paramBundle);
     AppMethodBeat.o(40103);
   }
   

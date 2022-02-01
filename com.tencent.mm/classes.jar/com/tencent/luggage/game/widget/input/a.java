@@ -14,68 +14,78 @@ import android.view.WindowInsets;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import com.tencent.luggage.wxa.a.a.c;
 import com.tencent.luggage.wxa.a.a.d;
 import com.tencent.luggage.wxa.a.a.e;
+import com.tencent.luggage.wxa.a.a.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ui.x;
+import com.tencent.mm.plugin.appbrand.ui.ae;
 import com.tencent.mm.plugin.appbrand.widget.input.aa;
 import com.tencent.mm.plugin.appbrand.widget.input.aa.a;
 import com.tencent.mm.plugin.appbrand.widget.input.ah;
 import com.tencent.mm.plugin.appbrand.widget.input.d.b;
-import com.tencent.mm.plugin.appbrand.widget.input.d.d;
+import com.tencent.mm.plugin.appbrand.widget.input.d.e;
 import com.tencent.mm.plugin.appbrand.widget.input.n;
 import com.tencent.mm.plugin.appbrand.widget.input.u;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.as;
+import com.tencent.mm.ui.ay;
 import com.tencent.mm.ui.statusbar.c;
 
 public final class a
   extends aa
 {
-  private static final int cpM = a.c.app_brand_game_input_panel;
-  private static a.b cws;
-  public a cwt;
-  public WAGamePanelInputEditText cwu;
-  private View.OnClickListener cwv;
+  private static final int ehD = a.d.app_brand_game_input_panel;
+  private static a.b eor;
+  private static boolean eot = false;
+  public a eos;
+  public WAGamePanelInputEditText eou;
+  private View.OnClickListener eov;
   
-  private a(Context paramContext)
+  private a(Context paramContext, boolean paramBoolean)
   {
-    super(paramContext, null);
-    AppMethodBeat.i(130711);
-    AppMethodBeat.o(130711);
+    super(paramContext, null, paramBoolean);
   }
   
-  public static a cv(View paramView)
+  public static a cQ(View paramView)
   {
     AppMethodBeat.i(130712);
-    paramView = (a)paramView.getRootView().findViewById(cpM);
+    paramView = (a)paramView.getRootView().findViewById(ehD);
     AppMethodBeat.o(130712);
     return paramView;
   }
   
-  public static a cw(View paramView)
+  public static a l(View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(130713);
-    n localn = n.dp(paramView);
-    n.dr(paramView);
-    Object localObject = aa.dw(paramView);
+    AppMethodBeat.i(220159);
+    n localn = n.ed(paramView);
+    n.ef(paramView);
+    Object localObject = aa.ek(paramView);
     if ((localObject != null) && ((((aa)localObject).getParent() instanceof ViewGroup))) {
       ((ViewGroup)((aa)localObject).getParent()).removeView((View)localObject);
     }
-    localObject = cv(paramView);
+    a locala = cQ(paramView);
+    localObject = locala;
+    if (eot != paramBoolean)
+    {
+      localObject = locala;
+      if (locala != null)
+      {
+        localn.removeView(locala);
+        localObject = null;
+      }
+    }
+    eot = paramBoolean;
     if (localObject == null) {
       if ((paramView instanceof a))
       {
         paramView = (a)paramView;
-        localn.dq(paramView);
+        localn.ee(paramView);
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(130713);
+      AppMethodBeat.o(220159);
       return paramView;
-      paramView = new a(paramView.getContext());
+      paramView = new a(paramView.getContext(), paramBoolean);
       break;
       paramView = (View)localObject;
     }
@@ -83,40 +93,40 @@ public final class a
   
   public static void setGameInputEditBarLayoutFactory(a.b paramb)
   {
-    cws = paramb;
+    eor = paramb;
   }
   
-  public final int Qh()
+  public final int aqr()
   {
-    return cpM;
+    return ehD;
   }
   
-  public final void Qi()
+  public final void aqs()
   {
     AppMethodBeat.i(130714);
-    cw(this);
+    l(this, eot);
     AppMethodBeat.o(130714);
   }
   
-  public final void Qj()
+  public final void aqt()
   {
     AppMethodBeat.i(130715);
-    this.cwt.setIsHide(false);
+    this.eos.setIsHide(false);
     AppMethodBeat.o(130715);
   }
   
-  public final void Qk()
+  public final void aqu()
   {
     int k = 0;
     AppMethodBeat.i(130716);
-    View localView = this.cwt.Qn();
+    View localView = this.eos.aqx();
     int i;
-    if ((this.cwu.getInputType() & 0x20000) > 0)
+    if ((this.eou.getInputType() & 0x20000) > 0)
     {
       i = 1;
       j = k;
       if (i == 0) {
-        if ((this.rwL == null) || (this.rwL.getVisibility() != 0)) {
+        if ((this.uHP == null) || (this.uHP.getVisibility() != 0)) {
           break label73;
         }
       }
@@ -132,23 +142,23 @@ public final class a
     }
   }
   
-  public final void ca(boolean paramBoolean)
+  public final void cK(boolean paramBoolean)
   {
-    AppMethodBeat.i(247221);
-    super.ca(paramBoolean);
+    AppMethodBeat.i(220183);
+    super.cK(paramBoolean);
     if (!paramBoolean) {
-      c.bA(this.rwQ.getHostActivity()).hXX();
+      c.ch(this.uHU.getHostActivity()).jCH();
     }
-    AppMethodBeat.o(247221);
+    AppMethodBeat.o(220183);
   }
   
-  public final void ce(boolean paramBoolean)
+  public final void cL(boolean paramBoolean)
   {
-    AppMethodBeat.i(247223);
-    if ((coY()) && (this.rwJ != null)) {
-      this.rwJ.ce(paramBoolean);
+    AppMethodBeat.i(220186);
+    if ((cRB()) && (this.uHN != null)) {
+      this.uHN.cL(paramBoolean);
     }
-    AppMethodBeat.o(247223);
+    AppMethodBeat.o(220186);
   }
   
   public final WAGamePanelInputEditText getAttachedEditText()
@@ -159,23 +169,23 @@ public final class a
     return localWAGamePanelInputEditText;
   }
   
-  public final void iF(int paramInt)
+  public final void mo(int paramInt)
   {
-    AppMethodBeat.i(247220);
+    AppMethodBeat.i(220182);
     int i = paramInt;
     if (paramInt > 0)
     {
       i = paramInt;
-      if (2 == ((u)n.dp(this).getOnLayoutListener()).rvS)
+      if (2 == ((u)n.ed(this).getOnLayoutListener()).uGY)
       {
-        Object localObject = this.rwQ.getHostActivity();
+        Object localObject = this.uHU.getHostActivity();
         i = paramInt;
-        if (x.eq((Context)localObject))
+        if (ae.fm((Context)localObject))
         {
           i = paramInt;
           if (Build.VERSION.SDK_INT <= 29)
           {
-            localObject = as.bu((Activity)localObject);
+            localObject = ay.bY((Activity)localObject);
             i = paramInt;
             if (localObject != null)
             {
@@ -186,39 +196,39 @@ public final class a
         }
       }
     }
-    super.iF(i);
-    AppMethodBeat.o(247220);
+    super.mo(i);
+    AppMethodBeat.o(220182);
   }
   
   public final void setOnConfirmClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.cwv = paramOnClickListener;
+    this.eov = paramOnClickListener;
   }
   
-  public final void setOnEmoticonOperationListener(d paramd)
+  public final void setOnEmoticonOperationListener(e parame)
   {
-    AppMethodBeat.i(247224);
-    if (this.rwJ != null) {
-      this.rwJ.setOnEmoticonOperationListener(paramd);
+    AppMethodBeat.i(220191);
+    if (this.uHN != null) {
+      this.uHN.setOnEmoticonOperationListener(parame);
     }
-    AppMethodBeat.o(247224);
+    AppMethodBeat.o(220191);
   }
   
   public final void show()
   {
     AppMethodBeat.i(130718);
-    if (this.rwQ.getHostActivity() != null) {}
+    if (this.uHU.getHostActivity() != null) {}
     try
     {
-      localu = (u)n.dp(this).getOnLayoutListener();
-      Activity localActivity = this.rwQ.getHostActivity();
+      localu = (u)n.ed(this).getOnLayoutListener();
+      Activity localActivity = this.uHU.getHostActivity();
       if ((Build.VERSION.SDK_INT < 24) || (localActivity == null) || (!localActivity.isInMultiWindowMode())) {
         break label149;
       }
       i = 1;
       if (i == 0)
       {
-        localActivity = this.rwQ.getHostActivity();
+        localActivity = this.uHU.getHostActivity();
         if ((!(localActivity instanceof Activity)) || (localActivity.getResources().getConfiguration().orientation != 2)) {
           break label154;
         }
@@ -238,21 +248,21 @@ public final class a
         if (i == 0) {}
       }
     }
-    this.rwQ.getHostActivity().getWindow().setSoftInputMode(16);
-    localu.DP(1);
+    this.uHU.getHostActivity().getWindow().setSoftInputMode(16);
+    localu.Ep(1);
     for (;;)
     {
-      this.rwP = this.cwu;
-      this.cwu.requestFocus();
+      this.uHT = this.eou;
+      this.eou.requestFocus();
       super.show();
       AppMethodBeat.o(130718);
       return;
       i = 0;
       break;
       i = 0;
-      break label204;
-      this.rwQ.getHostActivity().getWindow().setSoftInputMode(48);
-      localu.DP(2);
+      break label205;
+      this.uHU.getHostActivity().getWindow().setSoftInputMode(48);
+      localu.Ep(2);
     }
   }
   
@@ -260,32 +270,32 @@ public final class a
     extends FrameLayout
     implements aa.a
   {
-    public View cwy;
+    public View eoy;
     
     public a(Context paramContext)
     {
       super();
       AppMethodBeat.i(130708);
-      if (a.Qm() != null) {
-        a.Qm().d(this);
+      if (a.aqw() != null) {
+        a.aqw().g(this);
       }
       for (;;)
       {
-        ((Button)findViewById(a.c.game_edit_send)).setText(a.e.appbrand_game_input_confirm);
+        ((Button)findViewById(a.d.game_edit_send)).setText(a.f.appbrand_game_input_confirm);
         setClickable(true);
         AppMethodBeat.o(130708);
         return;
-        LayoutInflater.from(paramContext).inflate(a.d.app_brand_game_input_panel_edit_bar, this, true);
+        LayoutInflater.from(paramContext).inflate(a.e.app_brand_game_input_panel_edit_bar, this, true);
       }
     }
     
-    public final View Qn()
+    public final View aqx()
     {
       AppMethodBeat.i(130707);
-      if (this.cwy == null) {
-        this.cwy = findViewById(a.c.game_edit_send);
+      if (this.eoy == null) {
+        this.eoy = findViewById(a.d.game_edit_send);
       }
-      View localView = this.cwy;
+      View localView = this.eoy;
       AppMethodBeat.o(130707);
       return localView;
     }
@@ -305,7 +315,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.game.widget.input.a
  * JD-Core Version:    0.7.0.1
  */

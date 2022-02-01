@@ -1,10 +1,10 @@
 package com.tencent.mm.picker.e;
 
-import com.tencent.mm.cr.a.a;
+import com.tencent.mm.ck.a.a;
 
 public final class a
 {
-  public static int K(int paramInt, boolean paramBoolean)
+  public static int Z(int paramInt, boolean paramBoolean)
   {
     switch (paramInt)
     {
@@ -19,7 +19,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.picker.e.a
  * JD-Core Version:    0.7.0.1
  */

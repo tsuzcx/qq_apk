@@ -22,77 +22,77 @@ class b
   extends Drawable
   implements Drawable.Callback
 {
-  private boolean iF;
-  private b iP;
-  private Rect iQ;
-  private Drawable iR;
-  private Drawable iS;
-  private boolean iT;
-  private int iU = -1;
-  private int iV = -1;
-  private Runnable iW;
-  private long iX;
-  private long iY;
-  private a iZ;
+  private boolean jA;
+  private b jK;
+  private Rect jL;
+  private Drawable jM;
+  private Drawable jN;
+  private boolean jO;
+  private int jP = -1;
+  private int jQ = -1;
+  private Runnable jR;
+  private long jS;
+  private long jT;
+  private a jU;
   private int mAlpha = 255;
   
   static int a(Resources paramResources, int paramInt)
   {
-    AppMethodBeat.i(238806);
+    AppMethodBeat.i(199314);
     if (paramResources == null) {}
     while (paramInt == 0)
     {
-      AppMethodBeat.o(238806);
+      AppMethodBeat.o(199314);
       return 160;
       paramInt = paramResources.getDisplayMetrics().densityDpi;
     }
-    AppMethodBeat.o(238806);
+    AppMethodBeat.o(199314);
     return paramInt;
   }
   
   /* Error */
-  private void a(Drawable paramDrawable)
+  private void b(Drawable paramDrawable)
   {
     // Byte code:
     //   0: ldc 70
     //   2: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: getfield 72	androidx/appcompat/b/a/b:iZ	Landroidx/appcompat/b/a/b$a;
+    //   6: getfield 72	androidx/appcompat/b/a/b:jU	Landroidx/appcompat/b/a/b$a;
     //   9: ifnonnull +14 -> 23
     //   12: aload_0
     //   13: new 10	androidx/appcompat/b/a/b$a
     //   16: dup
     //   17: invokespecial 73	androidx/appcompat/b/a/b$a:<init>	()V
-    //   20: putfield 72	androidx/appcompat/b/a/b:iZ	Landroidx/appcompat/b/a/b$a;
+    //   20: putfield 72	androidx/appcompat/b/a/b:jU	Landroidx/appcompat/b/a/b$a;
     //   23: aload_0
-    //   24: getfield 72	androidx/appcompat/b/a/b:iZ	Landroidx/appcompat/b/a/b$a;
+    //   24: getfield 72	androidx/appcompat/b/a/b:jU	Landroidx/appcompat/b/a/b$a;
     //   27: astore_2
     //   28: aload_2
     //   29: aload_1
     //   30: invokevirtual 77	android/graphics/drawable/Drawable:getCallback	()Landroid/graphics/drawable/Drawable$Callback;
-    //   33: putfield 81	androidx/appcompat/b/a/b$a:jb	Landroid/graphics/drawable/Drawable$Callback;
+    //   33: putfield 81	androidx/appcompat/b/a/b$a:jW	Landroid/graphics/drawable/Drawable$Callback;
     //   36: aload_1
     //   37: aload_2
     //   38: invokevirtual 85	android/graphics/drawable/Drawable:setCallback	(Landroid/graphics/drawable/Drawable$Callback;)V
     //   41: aload_0
-    //   42: getfield 87	androidx/appcompat/b/a/b:iP	Landroidx/appcompat/b/a/b$b;
-    //   45: getfield 90	androidx/appcompat/b/a/b$b:jz	I
+    //   42: getfield 87	androidx/appcompat/b/a/b:jK	Landroidx/appcompat/b/a/b$b;
+    //   45: getfield 90	androidx/appcompat/b/a/b$b:ku	I
     //   48: ifgt +18 -> 66
     //   51: aload_0
-    //   52: getfield 92	androidx/appcompat/b/a/b:iT	Z
+    //   52: getfield 92	androidx/appcompat/b/a/b:jO	Z
     //   55: ifeq +11 -> 66
     //   58: aload_1
     //   59: aload_0
     //   60: getfield 41	androidx/appcompat/b/a/b:mAlpha	I
     //   63: invokevirtual 95	android/graphics/drawable/Drawable:setAlpha	(I)V
     //   66: aload_0
-    //   67: getfield 87	androidx/appcompat/b/a/b:iP	Landroidx/appcompat/b/a/b$b;
-    //   70: getfield 98	androidx/appcompat/b/a/b$b:jD	Z
+    //   67: getfield 87	androidx/appcompat/b/a/b:jK	Landroidx/appcompat/b/a/b$b;
+    //   70: getfield 98	androidx/appcompat/b/a/b$b:ky	Z
     //   73: ifeq +151 -> 224
     //   76: aload_1
     //   77: aload_0
-    //   78: getfield 87	androidx/appcompat/b/a/b:iP	Landroidx/appcompat/b/a/b$b;
-    //   81: getfield 102	androidx/appcompat/b/a/b$b:jC	Landroid/graphics/ColorFilter;
+    //   78: getfield 87	androidx/appcompat/b/a/b:jK	Landroidx/appcompat/b/a/b$b;
+    //   81: getfield 102	androidx/appcompat/b/a/b$b:kx	Landroid/graphics/ColorFilter;
     //   84: invokevirtual 106	android/graphics/drawable/Drawable:setColorFilter	(Landroid/graphics/ColorFilter;)V
     //   87: aload_1
     //   88: aload_0
@@ -102,8 +102,8 @@ class b
     //   96: pop
     //   97: aload_1
     //   98: aload_0
-    //   99: getfield 87	androidx/appcompat/b/a/b:iP	Landroidx/appcompat/b/a/b$b;
-    //   102: getfield 117	androidx/appcompat/b/a/b$b:jy	Z
+    //   99: getfield 87	androidx/appcompat/b/a/b:jK	Landroidx/appcompat/b/a/b$b;
+    //   102: getfield 117	androidx/appcompat/b/a/b$b:kt	Z
     //   105: invokevirtual 121	android/graphics/drawable/Drawable:setDither	(Z)V
     //   108: aload_1
     //   109: aload_0
@@ -132,11 +132,11 @@ class b
     //   156: if_icmplt +14 -> 170
     //   159: aload_1
     //   160: aload_0
-    //   161: getfield 87	androidx/appcompat/b/a/b:iP	Landroidx/appcompat/b/a/b$b;
-    //   164: getfield 159	androidx/appcompat/b/a/b$b:jB	Z
+    //   161: getfield 87	androidx/appcompat/b/a/b:jK	Landroidx/appcompat/b/a/b$b;
+    //   164: getfield 159	androidx/appcompat/b/a/b$b:kw	Z
     //   167: invokevirtual 162	android/graphics/drawable/Drawable:setAutoMirrored	(Z)V
     //   170: aload_0
-    //   171: getfield 164	androidx/appcompat/b/a/b:iQ	Landroid/graphics/Rect;
+    //   171: getfield 164	androidx/appcompat/b/a/b:jL	Landroid/graphics/Rect;
     //   174: astore_2
     //   175: getstatic 150	android/os/Build$VERSION:SDK_INT	I
     //   178: bipush 21
@@ -155,36 +155,36 @@ class b
     //   204: invokevirtual 182	android/graphics/drawable/Drawable:setHotspotBounds	(IIII)V
     //   207: aload_1
     //   208: aload_0
-    //   209: getfield 72	androidx/appcompat/b/a/b:iZ	Landroidx/appcompat/b/a/b$a;
-    //   212: invokevirtual 185	androidx/appcompat/b/a/b$a:bu	()Landroid/graphics/drawable/Drawable$Callback;
+    //   209: getfield 72	androidx/appcompat/b/a/b:jU	Landroidx/appcompat/b/a/b$a;
+    //   212: invokevirtual 185	androidx/appcompat/b/a/b$a:cn	()Landroid/graphics/drawable/Drawable$Callback;
     //   215: invokevirtual 85	android/graphics/drawable/Drawable:setCallback	(Landroid/graphics/drawable/Drawable$Callback;)V
     //   218: ldc 70
     //   220: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   223: return
     //   224: aload_0
-    //   225: getfield 87	androidx/appcompat/b/a/b:iP	Landroidx/appcompat/b/a/b$b;
-    //   228: getfield 188	androidx/appcompat/b/a/b$b:jG	Z
+    //   225: getfield 87	androidx/appcompat/b/a/b:jK	Landroidx/appcompat/b/a/b$b;
+    //   228: getfield 188	androidx/appcompat/b/a/b$b:kB	Z
     //   231: ifeq +14 -> 245
     //   234: aload_1
     //   235: aload_0
-    //   236: getfield 87	androidx/appcompat/b/a/b:iP	Landroidx/appcompat/b/a/b$b;
-    //   239: getfield 192	androidx/appcompat/b/a/b$b:jE	Landroid/content/res/ColorStateList;
+    //   236: getfield 87	androidx/appcompat/b/a/b:jK	Landroidx/appcompat/b/a/b$b;
+    //   239: getfield 192	androidx/appcompat/b/a/b$b:kz	Landroid/content/res/ColorStateList;
     //   242: invokestatic 197	androidx/core/graphics/drawable/a:a	(Landroid/graphics/drawable/Drawable;Landroid/content/res/ColorStateList;)V
     //   245: aload_0
-    //   246: getfield 87	androidx/appcompat/b/a/b:iP	Landroidx/appcompat/b/a/b$b;
-    //   249: getfield 200	androidx/appcompat/b/a/b$b:jH	Z
+    //   246: getfield 87	androidx/appcompat/b/a/b:jK	Landroidx/appcompat/b/a/b$b;
+    //   249: getfield 200	androidx/appcompat/b/a/b$b:kC	Z
     //   252: ifeq -165 -> 87
     //   255: aload_1
     //   256: aload_0
-    //   257: getfield 87	androidx/appcompat/b/a/b:iP	Landroidx/appcompat/b/a/b$b;
-    //   260: getfield 204	androidx/appcompat/b/a/b$b:jF	Landroid/graphics/PorterDuff$Mode;
+    //   257: getfield 87	androidx/appcompat/b/a/b:jK	Landroidx/appcompat/b/a/b$b;
+    //   260: getfield 204	androidx/appcompat/b/a/b$b:kA	Landroid/graphics/PorterDuff$Mode;
     //   263: invokestatic 207	androidx/core/graphics/drawable/a:a	(Landroid/graphics/drawable/Drawable;Landroid/graphics/PorterDuff$Mode;)V
     //   266: goto -179 -> 87
     //   269: astore_2
     //   270: aload_1
     //   271: aload_0
-    //   272: getfield 72	androidx/appcompat/b/a/b:iZ	Landroidx/appcompat/b/a/b$a;
-    //   275: invokevirtual 185	androidx/appcompat/b/a/b$a:bu	()Landroid/graphics/drawable/Drawable$Callback;
+    //   272: getfield 72	androidx/appcompat/b/a/b:jU	Landroidx/appcompat/b/a/b$a;
+    //   275: invokevirtual 185	androidx/appcompat/b/a/b$a:cn	()Landroid/graphics/drawable/Drawable$Callback;
     //   278: invokevirtual 85	android/graphics/drawable/Drawable:setCallback	(Landroid/graphics/drawable/Drawable$Callback;)V
     //   281: ldc 70
     //   283: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -208,106 +208,106 @@ class b
     //   245	266	269	finally
   }
   
-  final void E(boolean paramBoolean)
+  final void I(boolean paramBoolean)
   {
-    AppMethodBeat.i(238798);
-    this.iT = true;
+    AppMethodBeat.i(199618);
+    this.jO = true;
     long l = SystemClock.uptimeMillis();
-    if (this.iR != null)
+    if (this.jM != null)
     {
-      if (this.iX != 0L)
+      if (this.jS != 0L)
       {
-        if (this.iX > l) {
+        if (this.jS > l) {
           break label142;
         }
-        this.iR.setAlpha(this.mAlpha);
+        this.jM.setAlpha(this.mAlpha);
       }
     }
     else {
-      this.iX = 0L;
+      this.jS = 0L;
     }
     int i = 0;
-    if (this.iS != null)
+    if (this.jN != null)
     {
       j = i;
-      if (this.iY != 0L)
+      if (this.jT != 0L)
       {
-        if (this.iY > l) {
+        if (this.jT > l) {
           break label189;
         }
-        this.iS.setVisible(false, false);
-        this.iS = null;
-        this.iV = -1;
+        this.jN.setVisible(false, false);
+        this.jN = null;
+        this.jQ = -1;
       }
     }
     else
     {
-      this.iY = 0L;
+      this.jT = 0L;
     }
     for (int j = i;; j = 1)
     {
       if ((paramBoolean) && (j != 0)) {
-        scheduleSelf(this.iW, 16L + l);
+        scheduleSelf(this.jR, 16L + l);
       }
-      AppMethodBeat.o(238798);
+      AppMethodBeat.o(199618);
       return;
       label142:
-      i = (int)((this.iX - l) * 255L) / this.iP.jz;
-      this.iR.setAlpha((255 - i) * this.mAlpha / 255);
+      i = (int)((this.jS - l) * 255L) / this.jK.ku;
+      this.jM.setAlpha((255 - i) * this.mAlpha / 255);
       i = 1;
       break;
       label189:
-      i = (int)((this.iY - l) * 255L) / this.iP.jA;
-      this.iS.setAlpha(i * this.mAlpha / 255);
+      i = (int)((this.jT - l) * 255L) / this.jK.kv;
+      this.jN.setAlpha(i * this.mAlpha / 255);
     }
   }
   
-  final boolean Z(int paramInt)
+  final boolean X(int paramInt)
   {
-    AppMethodBeat.i(238793);
-    if (paramInt == this.iU)
+    AppMethodBeat.i(199603);
+    if (paramInt == this.jP)
     {
-      AppMethodBeat.o(238793);
+      AppMethodBeat.o(199603);
       return false;
     }
     long l = SystemClock.uptimeMillis();
-    if (this.iP.jA > 0)
+    if (this.jK.kv > 0)
     {
-      if (this.iS != null) {
-        this.iS.setVisible(false, false);
+      if (this.jN != null) {
+        this.jN.setVisible(false, false);
       }
-      if (this.iR != null)
+      if (this.jM != null)
       {
-        this.iS = this.iR;
-        this.iV = this.iU;
-        this.iY = (this.iP.jA + l);
-        if ((paramInt < 0) || (paramInt >= this.iP.ji)) {
+        this.jN = this.jM;
+        this.jQ = this.jP;
+        this.jT = (this.jK.kv + l);
+        if ((paramInt < 0) || (paramInt >= this.jK.kd)) {
           break label250;
         }
-        Drawable localDrawable = this.iP.aa(paramInt);
-        this.iR = localDrawable;
-        this.iU = paramInt;
+        Drawable localDrawable = this.jK.Y(paramInt);
+        this.jM = localDrawable;
+        this.jP = paramInt;
         if (localDrawable != null)
         {
-          if (this.iP.jz > 0) {
-            this.iX = (l + this.iP.jz);
+          if (this.jK.ku > 0) {
+            this.jS = (l + this.jK.ku);
           }
-          a(localDrawable);
+          b(localDrawable);
         }
         label159:
-        if ((this.iX != 0L) || (this.iY != 0L))
+        if ((this.jS != 0L) || (this.jT != 0L))
         {
-          if (this.iW != null) {
+          if (this.jR != null) {
             break label263;
           }
-          this.iW = new Runnable()
+          this.jR = new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(238726);
-              b.this.E(true);
+              AppMethodBeat.i(199301);
+              b.this.I(true);
               b.this.invalidateSelf();
-              AppMethodBeat.o(238726);
+              AppMethodBeat.o(199301);
             }
           };
         }
@@ -315,98 +315,98 @@ class b
     }
     for (;;)
     {
-      E(true);
+      I(true);
       invalidateSelf();
-      AppMethodBeat.o(238793);
+      AppMethodBeat.o(199603);
       return true;
-      this.iS = null;
-      this.iV = -1;
-      this.iY = 0L;
+      this.jN = null;
+      this.jQ = -1;
+      this.jT = 0L;
       break;
-      if (this.iR == null) {
+      if (this.jM == null) {
         break;
       }
-      this.iR.setVisible(false, false);
+      this.jM.setVisible(false, false);
       break;
       label250:
-      this.iR = null;
-      this.iU = -1;
+      this.jM = null;
+      this.jP = -1;
       break label159;
       label263:
-      unscheduleSelf(this.iW);
+      unscheduleSelf(this.jR);
     }
   }
   
   protected void a(b paramb)
   {
-    AppMethodBeat.i(238805);
-    this.iP = paramb;
-    if (this.iU >= 0)
+    AppMethodBeat.i(199684);
+    this.jK = paramb;
+    if (this.jP >= 0)
     {
-      this.iR = paramb.aa(this.iU);
-      if (this.iR != null) {
-        a(this.iR);
+      this.jM = paramb.Y(this.jP);
+      if (this.jM != null) {
+        b(this.jM);
       }
     }
-    this.iV = -1;
-    this.iS = null;
-    AppMethodBeat.o(238805);
+    this.jQ = -1;
+    this.jN = null;
+    AppMethodBeat.o(199684);
   }
   
   public void applyTheme(Resources.Theme paramTheme)
   {
-    AppMethodBeat.i(238801);
-    b localb = this.iP;
+    AppMethodBeat.i(199650);
+    b localb = this.jK;
     if (paramTheme != null)
     {
-      localb.bw();
-      int j = localb.ji;
-      Drawable[] arrayOfDrawable = localb.jh;
+      localb.cp();
+      int j = localb.kd;
+      Drawable[] arrayOfDrawable = localb.kc;
       int i = 0;
       while (i < j)
       {
         if ((arrayOfDrawable[i] != null) && (arrayOfDrawable[i].canApplyTheme()))
         {
           arrayOfDrawable[i].applyTheme(paramTheme);
-          localb.jf |= arrayOfDrawable[i].getChangingConfigurations();
+          localb.ka |= arrayOfDrawable[i].getChangingConfigurations();
         }
         i += 1;
       }
       localb.e(paramTheme.getResources());
     }
-    AppMethodBeat.o(238801);
-  }
-  
-  b bq()
-  {
-    return this.iP;
+    AppMethodBeat.o(199650);
   }
   
   public boolean canApplyTheme()
   {
-    AppMethodBeat.i(238802);
-    boolean bool = this.iP.canApplyTheme();
-    AppMethodBeat.o(238802);
+    AppMethodBeat.i(199653);
+    boolean bool = this.jK.canApplyTheme();
+    AppMethodBeat.o(199653);
     return bool;
+  }
+  
+  b cj()
+  {
+    return this.jK;
   }
   
   public void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(238742);
-    if (this.iR != null) {
-      this.iR.draw(paramCanvas);
+    AppMethodBeat.i(199321);
+    if (this.jM != null) {
+      this.jM.draw(paramCanvas);
     }
-    if (this.iS != null) {
-      this.iS.draw(paramCanvas);
+    if (this.jN != null) {
+      this.jN.draw(paramCanvas);
     }
-    AppMethodBeat.o(238742);
+    AppMethodBeat.o(199321);
   }
   
   final void e(Resources paramResources)
   {
-    AppMethodBeat.i(238800);
-    this.iP.e(paramResources);
-    AppMethodBeat.o(238800);
+    AppMethodBeat.i(199637);
+    this.jK.e(paramResources);
+    AppMethodBeat.o(199637);
   }
   
   public int getAlpha()
@@ -416,165 +416,165 @@ class b
   
   public int getChangingConfigurations()
   {
-    AppMethodBeat.i(238743);
+    AppMethodBeat.i(199325);
     int i = super.getChangingConfigurations();
-    int j = this.iP.getChangingConfigurations();
-    AppMethodBeat.o(238743);
+    int j = this.jK.getChangingConfigurations();
+    AppMethodBeat.o(199325);
     return i | j;
   }
   
   public final Drawable.ConstantState getConstantState()
   {
-    AppMethodBeat.i(238803);
-    if (this.iP.canConstantState())
+    AppMethodBeat.i(199663);
+    if (this.jK.canConstantState())
     {
-      this.iP.mChangingConfigurations = getChangingConfigurations();
-      b localb = this.iP;
-      AppMethodBeat.o(238803);
+      this.jK.mChangingConfigurations = getChangingConfigurations();
+      b localb = this.jK;
+      AppMethodBeat.o(199663);
       return localb;
     }
-    AppMethodBeat.o(238803);
+    AppMethodBeat.o(199663);
     return null;
   }
   
   public Drawable getCurrent()
   {
-    return this.iR;
+    return this.jM;
   }
   
   final int getCurrentIndex()
   {
-    return this.iU;
+    return this.jP;
   }
   
   public void getHotspotBounds(Rect paramRect)
   {
-    AppMethodBeat.i(238764);
-    if (this.iQ != null)
+    AppMethodBeat.i(199446);
+    if (this.jL != null)
     {
-      paramRect.set(this.iQ);
-      AppMethodBeat.o(238764);
+      paramRect.set(this.jL);
+      AppMethodBeat.o(199446);
       return;
     }
     super.getHotspotBounds(paramRect);
-    AppMethodBeat.o(238764);
+    AppMethodBeat.o(199446);
   }
   
   public int getIntrinsicHeight()
   {
-    AppMethodBeat.i(238770);
+    AppMethodBeat.i(199503);
     int i;
-    if (this.iP.jm)
+    if (this.jK.kh)
     {
-      b localb = this.iP;
-      if (!localb.jn) {
-        localb.bx();
+      b localb = this.jK;
+      if (!localb.ki) {
+        localb.cq();
       }
-      i = localb.jp;
-      AppMethodBeat.o(238770);
+      i = localb.kk;
+      AppMethodBeat.o(199503);
       return i;
     }
-    if (this.iR != null)
+    if (this.jM != null)
     {
-      i = this.iR.getIntrinsicHeight();
-      AppMethodBeat.o(238770);
+      i = this.jM.getIntrinsicHeight();
+      AppMethodBeat.o(199503);
       return i;
     }
-    AppMethodBeat.o(238770);
+    AppMethodBeat.o(199503);
     return -1;
   }
   
   public int getIntrinsicWidth()
   {
-    AppMethodBeat.i(238769);
+    AppMethodBeat.i(199493);
     int i;
-    if (this.iP.jm)
+    if (this.jK.kh)
     {
-      b localb = this.iP;
-      if (!localb.jn) {
-        localb.bx();
+      b localb = this.jK;
+      if (!localb.ki) {
+        localb.cq();
       }
-      i = localb.jo;
-      AppMethodBeat.o(238769);
+      i = localb.kj;
+      AppMethodBeat.o(199493);
       return i;
     }
-    if (this.iR != null)
+    if (this.jM != null)
     {
-      i = this.iR.getIntrinsicWidth();
-      AppMethodBeat.o(238769);
+      i = this.jM.getIntrinsicWidth();
+      AppMethodBeat.o(199493);
       return i;
     }
-    AppMethodBeat.o(238769);
+    AppMethodBeat.o(199493);
     return -1;
   }
   
   public int getMinimumHeight()
   {
-    AppMethodBeat.i(238773);
+    AppMethodBeat.i(199526);
     int i;
-    if (this.iP.jm)
+    if (this.jK.kh)
     {
-      b localb = this.iP;
-      if (!localb.jn) {
-        localb.bx();
+      b localb = this.jK;
+      if (!localb.ki) {
+        localb.cq();
       }
-      i = localb.jr;
-      AppMethodBeat.o(238773);
+      i = localb.km;
+      AppMethodBeat.o(199526);
       return i;
     }
-    if (this.iR != null)
+    if (this.jM != null)
     {
-      i = this.iR.getMinimumHeight();
-      AppMethodBeat.o(238773);
+      i = this.jM.getMinimumHeight();
+      AppMethodBeat.o(199526);
       return i;
     }
-    AppMethodBeat.o(238773);
+    AppMethodBeat.o(199526);
     return 0;
   }
   
   public int getMinimumWidth()
   {
-    AppMethodBeat.i(238772);
+    AppMethodBeat.i(199514);
     int i;
-    if (this.iP.jm)
+    if (this.jK.kh)
     {
-      b localb = this.iP;
-      if (!localb.jn) {
-        localb.bx();
+      b localb = this.jK;
+      if (!localb.ki) {
+        localb.cq();
       }
-      i = localb.jq;
-      AppMethodBeat.o(238772);
+      i = localb.kl;
+      AppMethodBeat.o(199514);
       return i;
     }
-    if (this.iR != null)
+    if (this.jM != null)
     {
-      i = this.iR.getMinimumWidth();
-      AppMethodBeat.o(238772);
+      i = this.jM.getMinimumWidth();
+      AppMethodBeat.o(199514);
       return i;
     }
-    AppMethodBeat.o(238772);
+    AppMethodBeat.o(199514);
     return 0;
   }
   
   public int getOpacity()
   {
     int i = -2;
-    AppMethodBeat.i(238789);
-    if ((this.iR == null) || (!this.iR.isVisible()))
+    AppMethodBeat.i(199577);
+    if ((this.jM == null) || (!this.jM.isVisible()))
     {
-      AppMethodBeat.o(238789);
+      AppMethodBeat.o(199577);
       return -2;
     }
-    b localb = this.iP;
-    if (localb.js)
+    b localb = this.jK;
+    if (localb.kn)
     {
-      i = localb.jt;
-      AppMethodBeat.o(238789);
+      i = localb.ko;
+      AppMethodBeat.o(199577);
       return i;
     }
-    localb.bw();
-    int k = localb.ji;
-    Drawable[] arrayOfDrawable = localb.jh;
+    localb.cp();
+    int k = localb.kd;
+    Drawable[] arrayOfDrawable = localb.kc;
     if (k > 0) {
       i = arrayOfDrawable[0].getOpacity();
     }
@@ -584,19 +584,19 @@ class b
       i = Drawable.resolveOpacity(i, arrayOfDrawable[j].getOpacity());
       j += 1;
     }
-    localb.jt = i;
-    localb.js = true;
-    AppMethodBeat.o(238789);
+    localb.ko = i;
+    localb.kn = true;
+    AppMethodBeat.o(199577);
     return i;
   }
   
   public void getOutline(Outline paramOutline)
   {
-    AppMethodBeat.i(238746);
-    if (this.iR != null) {
-      this.iR.getOutline(paramOutline);
+    AppMethodBeat.i(199339);
+    if (this.jM != null) {
+      this.jM.getOutline(paramOutline);
     }
-    AppMethodBeat.o(238746);
+    AppMethodBeat.o(199339);
   }
   
   public boolean getPadding(Rect paramRect)
@@ -604,11 +604,11 @@ class b
     Object localObject1 = null;
     Object localObject2 = null;
     int j = 1;
-    AppMethodBeat.i(238744);
-    b localb = this.iP;
+    AppMethodBeat.i(199333);
+    b localb = this.jK;
     int k;
     boolean bool;
-    if (localb.jj)
+    if (localb.ke)
     {
       localObject1 = localObject2;
       if (localObject1 == null) {
@@ -636,17 +636,17 @@ class b
         paramRect.left = paramRect.right;
         paramRect.right = i;
       }
-      AppMethodBeat.o(238744);
+      AppMethodBeat.o(199333);
       return bool;
-      if ((localb.jl != null) || (localb.jk))
+      if ((localb.kg != null) || (localb.kf))
       {
-        localObject1 = localb.jl;
+        localObject1 = localb.kg;
         break;
       }
-      localb.bw();
+      localb.cp();
       Rect localRect = new Rect();
-      k = localb.ji;
-      Drawable[] arrayOfDrawable = localb.jh;
+      k = localb.kd;
+      Drawable[] arrayOfDrawable = localb.kc;
       i = 0;
       while (i < k)
       {
@@ -676,16 +676,16 @@ class b
         i += 1;
         localObject1 = localObject3;
       }
-      localb.jk = true;
-      localb.jl = ((Rect)localObject1);
+      localb.kf = true;
+      localb.kg = ((Rect)localObject1);
       break;
       label357:
       bool = false;
       break label82;
       label363:
-      if (this.iR != null)
+      if (this.jM != null)
       {
-        bool = this.iR.getPadding(paramRect);
+        bool = this.jM.getPadding(paramRect);
         break label82;
       }
       bool = super.getPadding(paramRect);
@@ -695,36 +695,36 @@ class b
   
   public void invalidateDrawable(Drawable paramDrawable)
   {
-    AppMethodBeat.i(238777);
-    if (this.iP != null) {
-      this.iP.bv();
+    AppMethodBeat.i(199537);
+    if (this.jK != null) {
+      this.jK.co();
     }
-    if ((paramDrawable == this.iR) && (getCallback() != null)) {
+    if ((paramDrawable == this.jM) && (getCallback() != null)) {
       getCallback().invalidateDrawable(this);
     }
-    AppMethodBeat.o(238777);
+    AppMethodBeat.o(199537);
   }
   
   public boolean isAutoMirrored()
   {
-    return this.iP.jB;
+    return this.jK.kw;
   }
   
   public boolean isStateful()
   {
     boolean bool2 = false;
-    AppMethodBeat.i(238757);
-    b localb = this.iP;
+    AppMethodBeat.i(199399);
+    b localb = this.jK;
     boolean bool1;
-    if (localb.ju)
+    if (localb.kp)
     {
-      bool1 = localb.jv;
-      AppMethodBeat.o(238757);
+      bool1 = localb.kq;
+      AppMethodBeat.o(199399);
       return bool1;
     }
-    localb.bw();
-    int j = localb.ji;
-    Drawable[] arrayOfDrawable = localb.jh;
+    localb.cp();
+    int j = localb.kd;
+    Drawable[] arrayOfDrawable = localb.kc;
     int i = 0;
     for (;;)
     {
@@ -737,9 +737,9 @@ class b
       }
       else
       {
-        localb.jv = bool1;
-        localb.ju = true;
-        AppMethodBeat.o(238757);
+        localb.kq = bool1;
+        localb.kp = true;
+        AppMethodBeat.o(199399);
         return bool1;
       }
       i += 1;
@@ -749,30 +749,30 @@ class b
   public void jumpToCurrentState()
   {
     int j = 1;
-    AppMethodBeat.i(238761);
+    AppMethodBeat.i(199420);
     int i = 0;
-    if (this.iS != null)
+    if (this.jN != null)
     {
-      this.iS.jumpToCurrentState();
-      this.iS = null;
-      this.iV = -1;
+      this.jN.jumpToCurrentState();
+      this.jN = null;
+      this.jQ = -1;
       i = 1;
     }
-    if (this.iR != null)
+    if (this.jM != null)
     {
-      this.iR.jumpToCurrentState();
-      if (this.iT) {
-        this.iR.setAlpha(this.mAlpha);
+      this.jM.jumpToCurrentState();
+      if (this.jO) {
+        this.jM.setAlpha(this.mAlpha);
       }
     }
-    if (this.iY != 0L)
+    if (this.jT != 0L)
     {
-      this.iY = 0L;
+      this.jT = 0L;
       i = 1;
     }
-    if (this.iX != 0L)
+    if (this.jS != 0L)
     {
-      this.iX = 0L;
+      this.jS = 0L;
       i = j;
     }
     for (;;)
@@ -780,44 +780,44 @@ class b
       if (i != 0) {
         invalidateSelf();
       }
-      AppMethodBeat.o(238761);
+      AppMethodBeat.o(199420);
       return;
     }
   }
   
   public Drawable mutate()
   {
-    AppMethodBeat.i(238804);
-    if ((!this.iF) && (super.mutate() == this))
+    AppMethodBeat.i(199669);
+    if ((!this.jA) && (super.mutate() == this))
     {
-      b localb = bq();
-      localb.br();
+      b localb = cj();
+      localb.ck();
       a(localb);
-      this.iF = true;
+      this.jA = true;
     }
-    AppMethodBeat.o(238804);
+    AppMethodBeat.o(199669);
     return this;
   }
   
   protected void onBoundsChange(Rect paramRect)
   {
-    AppMethodBeat.i(238756);
-    if (this.iS != null) {
-      this.iS.setBounds(paramRect);
+    AppMethodBeat.i(199389);
+    if (this.jN != null) {
+      this.jN.setBounds(paramRect);
     }
-    if (this.iR != null) {
-      this.iR.setBounds(paramRect);
+    if (this.jM != null) {
+      this.jM.setBounds(paramRect);
     }
-    AppMethodBeat.o(238756);
+    AppMethodBeat.o(199389);
   }
   
   public boolean onLayoutDirectionChanged(int paramInt)
   {
-    AppMethodBeat.i(238767);
-    b localb = this.iP;
-    int j = this.iU;
-    int k = localb.ji;
-    Drawable[] arrayOfDrawable = localb.jh;
+    AppMethodBeat.i(199478);
+    b localb = this.jK;
+    int j = this.jP;
+    int k = localb.kd;
+    Drawable[] arrayOfDrawable = localb.kc;
     int i = 0;
     boolean bool1 = false;
     if (i < k)
@@ -840,7 +840,7 @@ class b
         bool1 = bool2;
         break;
         localb.mLayoutDirection = paramInt;
-        AppMethodBeat.o(238767);
+        AppMethodBeat.o(199478);
         return bool1;
         bool2 = bool1;
       }
@@ -849,196 +849,196 @@ class b
   
   protected boolean onLevelChange(int paramInt)
   {
-    AppMethodBeat.i(238766);
+    AppMethodBeat.i(199465);
     boolean bool;
-    if (this.iS != null)
+    if (this.jN != null)
     {
-      bool = this.iS.setLevel(paramInt);
-      AppMethodBeat.o(238766);
+      bool = this.jN.setLevel(paramInt);
+      AppMethodBeat.o(199465);
       return bool;
     }
-    if (this.iR != null)
+    if (this.jM != null)
     {
-      bool = this.iR.setLevel(paramInt);
-      AppMethodBeat.o(238766);
+      bool = this.jM.setLevel(paramInt);
+      AppMethodBeat.o(199465);
       return bool;
     }
-    AppMethodBeat.o(238766);
+    AppMethodBeat.o(199465);
     return false;
   }
   
   protected boolean onStateChange(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(238765);
+    AppMethodBeat.i(199457);
     boolean bool;
-    if (this.iS != null)
+    if (this.jN != null)
     {
-      bool = this.iS.setState(paramArrayOfInt);
-      AppMethodBeat.o(238765);
+      bool = this.jN.setState(paramArrayOfInt);
+      AppMethodBeat.o(199457);
       return bool;
     }
-    if (this.iR != null)
+    if (this.jM != null)
     {
-      bool = this.iR.setState(paramArrayOfInt);
-      AppMethodBeat.o(238765);
+      bool = this.jM.setState(paramArrayOfInt);
+      AppMethodBeat.o(199457);
       return bool;
     }
-    AppMethodBeat.o(238765);
+    AppMethodBeat.o(199457);
     return false;
   }
   
   public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
   {
-    AppMethodBeat.i(238780);
-    if ((paramDrawable == this.iR) && (getCallback() != null)) {
+    AppMethodBeat.i(199546);
+    if ((paramDrawable == this.jM) && (getCallback() != null)) {
       getCallback().scheduleDrawable(this, paramRunnable, paramLong);
     }
-    AppMethodBeat.o(238780);
+    AppMethodBeat.o(199546);
   }
   
   public void setAlpha(int paramInt)
   {
-    AppMethodBeat.i(238748);
-    if ((!this.iT) || (this.mAlpha != paramInt))
+    AppMethodBeat.i(199343);
+    if ((!this.jO) || (this.mAlpha != paramInt))
     {
-      this.iT = true;
+      this.jO = true;
       this.mAlpha = paramInt;
-      if (this.iR != null)
+      if (this.jM != null)
       {
-        if (this.iX == 0L)
+        if (this.jS == 0L)
         {
-          this.iR.setAlpha(paramInt);
-          AppMethodBeat.o(238748);
+          this.jM.setAlpha(paramInt);
+          AppMethodBeat.o(199343);
           return;
         }
-        E(false);
+        I(false);
       }
     }
-    AppMethodBeat.o(238748);
+    AppMethodBeat.o(199343);
   }
   
   public void setAutoMirrored(boolean paramBoolean)
   {
-    AppMethodBeat.i(238758);
-    if (this.iP.jB != paramBoolean)
+    AppMethodBeat.i(199406);
+    if (this.jK.kw != paramBoolean)
     {
-      this.iP.jB = paramBoolean;
-      if (this.iR != null) {
-        a.b(this.iR, this.iP.jB);
+      this.jK.kw = paramBoolean;
+      if (this.jM != null) {
+        a.b(this.jM, this.jK.kw);
       }
     }
-    AppMethodBeat.o(238758);
+    AppMethodBeat.o(199406);
   }
   
   public void setColorFilter(ColorFilter paramColorFilter)
   {
-    AppMethodBeat.i(238751);
-    this.iP.jD = true;
-    if (this.iP.jC != paramColorFilter)
+    AppMethodBeat.i(199365);
+    this.jK.ky = true;
+    if (this.jK.kx != paramColorFilter)
     {
-      this.iP.jC = paramColorFilter;
-      if (this.iR != null) {
-        this.iR.setColorFilter(paramColorFilter);
+      this.jK.kx = paramColorFilter;
+      if (this.jM != null) {
+        this.jM.setColorFilter(paramColorFilter);
       }
     }
-    AppMethodBeat.o(238751);
+    AppMethodBeat.o(199365);
   }
   
   public void setDither(boolean paramBoolean)
   {
-    AppMethodBeat.i(238750);
-    if (this.iP.jy != paramBoolean)
+    AppMethodBeat.i(199357);
+    if (this.jK.kt != paramBoolean)
     {
-      this.iP.jy = paramBoolean;
-      if (this.iR != null) {
-        this.iR.setDither(this.iP.jy);
+      this.jK.kt = paramBoolean;
+      if (this.jM != null) {
+        this.jM.setDither(this.jK.kt);
       }
     }
-    AppMethodBeat.o(238750);
+    AppMethodBeat.o(199357);
   }
   
   public void setHotspot(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(238762);
-    if (this.iR != null) {
-      a.a(this.iR, paramFloat1, paramFloat2);
+    AppMethodBeat.i(199427);
+    if (this.jM != null) {
+      a.a(this.jM, paramFloat1, paramFloat2);
     }
-    AppMethodBeat.o(238762);
+    AppMethodBeat.o(199427);
   }
   
   public void setHotspotBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(238763);
-    if (this.iQ == null) {
-      this.iQ = new Rect(paramInt1, paramInt2, paramInt3, paramInt4);
+    AppMethodBeat.i(199436);
+    if (this.jL == null) {
+      this.jL = new Rect(paramInt1, paramInt2, paramInt3, paramInt4);
     }
     for (;;)
     {
-      if (this.iR != null) {
-        a.a(this.iR, paramInt1, paramInt2, paramInt3, paramInt4);
+      if (this.jM != null) {
+        a.a(this.jM, paramInt1, paramInt2, paramInt3, paramInt4);
       }
-      AppMethodBeat.o(238763);
+      AppMethodBeat.o(199436);
       return;
-      this.iQ.set(paramInt1, paramInt2, paramInt3, paramInt4);
+      this.jL.set(paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
   public void setTintList(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(238753);
-    this.iP.jG = true;
-    if (this.iP.jE != paramColorStateList)
+    AppMethodBeat.i(199370);
+    this.jK.kB = true;
+    if (this.jK.kz != paramColorStateList)
     {
-      this.iP.jE = paramColorStateList;
-      a.a(this.iR, paramColorStateList);
+      this.jK.kz = paramColorStateList;
+      a.a(this.jM, paramColorStateList);
     }
-    AppMethodBeat.o(238753);
+    AppMethodBeat.o(199370);
   }
   
   public void setTintMode(PorterDuff.Mode paramMode)
   {
-    AppMethodBeat.i(238755);
-    this.iP.jH = true;
-    if (this.iP.jF != paramMode)
+    AppMethodBeat.i(199380);
+    this.jK.kC = true;
+    if (this.jK.kA != paramMode)
     {
-      this.iP.jF = paramMode;
-      a.a(this.iR, paramMode);
+      this.jK.kA = paramMode;
+      a.a(this.jM, paramMode);
     }
-    AppMethodBeat.o(238755);
+    AppMethodBeat.o(199380);
   }
   
   public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(238786);
+    AppMethodBeat.i(199566);
     boolean bool = super.setVisible(paramBoolean1, paramBoolean2);
-    if (this.iS != null) {
-      this.iS.setVisible(paramBoolean1, paramBoolean2);
+    if (this.jN != null) {
+      this.jN.setVisible(paramBoolean1, paramBoolean2);
     }
-    if (this.iR != null) {
-      this.iR.setVisible(paramBoolean1, paramBoolean2);
+    if (this.jM != null) {
+      this.jM.setVisible(paramBoolean1, paramBoolean2);
     }
-    AppMethodBeat.o(238786);
+    AppMethodBeat.o(199566);
     return bool;
   }
   
   public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
   {
-    AppMethodBeat.i(238785);
-    if ((paramDrawable == this.iR) && (getCallback() != null)) {
+    AppMethodBeat.i(199556);
+    if ((paramDrawable == this.jM) && (getCallback() != null)) {
       getCallback().unscheduleDrawable(this, paramRunnable);
     }
-    AppMethodBeat.o(238785);
+    AppMethodBeat.o(199556);
   }
   
   static final class a
     implements Drawable.Callback
   {
-    Drawable.Callback jb;
+    Drawable.Callback jW;
     
-    public final Drawable.Callback bu()
+    public final Drawable.Callback cn()
     {
-      Drawable.Callback localCallback = this.jb;
-      this.jb = null;
+      Drawable.Callback localCallback = this.jW;
+      this.jW = null;
       return localCallback;
     }
     
@@ -1046,133 +1046,133 @@ class b
     
     public final void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
     {
-      AppMethodBeat.i(238727);
-      if (this.jb != null) {
-        this.jb.scheduleDrawable(paramDrawable, paramRunnable, paramLong);
+      AppMethodBeat.i(199316);
+      if (this.jW != null) {
+        this.jW.scheduleDrawable(paramDrawable, paramRunnable, paramLong);
       }
-      AppMethodBeat.o(238727);
+      AppMethodBeat.o(199316);
     }
     
     public final void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
     {
-      AppMethodBeat.i(238728);
-      if (this.jb != null) {
-        this.jb.unscheduleDrawable(paramDrawable, paramRunnable);
+      AppMethodBeat.i(199327);
+      if (this.jW != null) {
+        this.jW.unscheduleDrawable(paramDrawable, paramRunnable);
       }
-      AppMethodBeat.o(238728);
+      AppMethodBeat.o(199327);
     }
   }
   
   static abstract class b
     extends Drawable.ConstantState
   {
-    boolean iF;
-    int jA = 0;
-    boolean jB;
-    ColorFilter jC;
-    boolean jD;
-    ColorStateList jE;
-    PorterDuff.Mode jF;
-    boolean jG;
-    boolean jH;
-    final b jc;
-    Resources jd;
-    int je = 160;
-    int jf;
-    SparseArray<Drawable.ConstantState> jg;
-    Drawable[] jh;
-    int ji;
-    boolean jj = false;
-    boolean jk;
-    Rect jl;
-    boolean jm = false;
-    boolean jn;
-    int jo;
-    int jp;
-    int jq;
-    int jr;
-    boolean js;
-    int jt;
-    boolean ju;
-    boolean jv;
-    boolean jw;
-    boolean jx;
-    boolean jy = true;
-    int jz = 0;
+    boolean jA;
+    final b jX;
+    Resources jY;
+    int jZ = 160;
+    PorterDuff.Mode kA;
+    boolean kB;
+    boolean kC;
+    int ka;
+    SparseArray<Drawable.ConstantState> kb;
+    Drawable[] kc;
+    int kd;
+    boolean ke = false;
+    boolean kf;
+    Rect kg;
+    boolean kh = false;
+    boolean ki;
+    int kj;
+    int kk;
+    int kl;
+    int km;
+    boolean kn;
+    int ko;
+    boolean kp;
+    boolean kq;
+    boolean kr;
+    boolean ks;
+    boolean kt = true;
+    int ku = 0;
+    int kv = 0;
+    boolean kw;
+    ColorFilter kx;
+    boolean ky;
+    ColorStateList kz;
     int mChangingConfigurations;
     int mLayoutDirection;
     
     b(b paramb, b paramb1, Resources paramResources)
     {
-      this.jc = paramb1;
+      this.jX = paramb1;
       int i;
       if (paramResources != null)
       {
         paramb1 = paramResources;
-        this.jd = paramb1;
+        this.jY = paramb1;
         if (paramb == null) {
           break label450;
         }
-        i = paramb.je;
+        i = paramb.jZ;
         label65:
-        this.je = b.a(paramResources, i);
+        this.jZ = b.a(paramResources, i);
         if (paramb == null) {
           break label488;
         }
         this.mChangingConfigurations = paramb.mChangingConfigurations;
-        this.jf = paramb.jf;
-        this.jw = true;
-        this.jx = true;
-        this.jj = paramb.jj;
-        this.jm = paramb.jm;
-        this.jy = paramb.jy;
-        this.iF = paramb.iF;
-        this.mLayoutDirection = paramb.mLayoutDirection;
-        this.jz = paramb.jz;
+        this.ka = paramb.ka;
+        this.kr = true;
+        this.ks = true;
+        this.ke = paramb.ke;
+        this.kh = paramb.kh;
+        this.kt = paramb.kt;
         this.jA = paramb.jA;
-        this.jB = paramb.jB;
-        this.jC = paramb.jC;
-        this.jD = paramb.jD;
-        this.jE = paramb.jE;
-        this.jF = paramb.jF;
-        this.jG = paramb.jG;
-        this.jH = paramb.jH;
-        if (paramb.je == this.je)
+        this.mLayoutDirection = paramb.mLayoutDirection;
+        this.ku = paramb.ku;
+        this.kv = paramb.kv;
+        this.kw = paramb.kw;
+        this.kx = paramb.kx;
+        this.ky = paramb.ky;
+        this.kz = paramb.kz;
+        this.kA = paramb.kA;
+        this.kB = paramb.kB;
+        this.kC = paramb.kC;
+        if (paramb.jZ == this.jZ)
         {
-          if (paramb.jk)
+          if (paramb.kf)
           {
-            this.jl = new Rect(paramb.jl);
-            this.jk = true;
+            this.kg = new Rect(paramb.kg);
+            this.kf = true;
           }
-          if (paramb.jn)
+          if (paramb.ki)
           {
-            this.jo = paramb.jo;
-            this.jp = paramb.jp;
-            this.jq = paramb.jq;
-            this.jr = paramb.jr;
-            this.jn = true;
+            this.kj = paramb.kj;
+            this.kk = paramb.kk;
+            this.kl = paramb.kl;
+            this.km = paramb.km;
+            this.ki = true;
           }
         }
-        if (paramb.js)
+        if (paramb.kn)
         {
-          this.jt = paramb.jt;
-          this.js = true;
+          this.ko = paramb.ko;
+          this.kn = true;
         }
-        if (paramb.ju)
+        if (paramb.kp)
         {
-          this.jv = paramb.jv;
-          this.ju = true;
+          this.kq = paramb.kq;
+          this.kp = true;
         }
-        paramb1 = paramb.jh;
-        this.jh = new Drawable[paramb1.length];
-        this.ji = paramb.ji;
-        paramb = paramb.jg;
+        paramb1 = paramb.kc;
+        this.kc = new Drawable[paramb1.length];
+        this.kd = paramb.kd;
+        paramb = paramb.kb;
         if (paramb == null) {
           break label456;
         }
-        this.jg = paramb.clone();
+        this.kb = paramb.clone();
         label378:
-        int k = this.ji;
+        int k = this.kd;
         i = j;
         label388:
         if (i >= k) {
@@ -1184,7 +1184,7 @@ class b
           if (paramb == null) {
             break label474;
           }
-          this.jg.put(i, paramb);
+          this.kb.put(i, paramb);
         }
       }
       for (;;)
@@ -1193,7 +1193,7 @@ class b
         break label388;
         if (paramb != null)
         {
-          paramb1 = paramb.jd;
+          paramb1 = paramb.jY;
           break;
         }
         paramb1 = null;
@@ -1202,147 +1202,75 @@ class b
         i = 0;
         break label65;
         label456:
-        this.jg = new SparseArray(this.ji);
+        this.kb = new SparseArray(this.kd);
         break label378;
         label474:
-        this.jh[i] = paramb1[i];
+        this.kc[i] = paramb1[i];
       }
       label488:
-      this.jh = new Drawable[10];
-      this.ji = 0;
+      this.kc = new Drawable[10];
+      this.kd = 0;
     }
     
-    private Drawable c(Drawable paramDrawable)
+    private Drawable d(Drawable paramDrawable)
     {
       if (Build.VERSION.SDK_INT >= 23) {
         paramDrawable.setLayoutDirection(this.mLayoutDirection);
       }
       paramDrawable = paramDrawable.mutate();
-      paramDrawable.setCallback(this.jc);
+      paramDrawable.setCallback(this.jX);
       return paramDrawable;
     }
     
-    public final Drawable aa(int paramInt)
+    public final Drawable Y(int paramInt)
     {
-      Object localObject = this.jh[paramInt];
+      Object localObject = this.kc[paramInt];
       if (localObject != null) {}
       Drawable localDrawable;
       do
       {
         return localObject;
-        if (this.jg == null) {
+        if (this.kb == null) {
           break;
         }
-        int i = this.jg.indexOfKey(paramInt);
+        int i = this.kb.indexOfKey(paramInt);
         if (i < 0) {
           break;
         }
-        localDrawable = c(((Drawable.ConstantState)this.jg.valueAt(i)).newDrawable(this.jd));
-        this.jh[paramInt] = localDrawable;
-        this.jg.removeAt(i);
+        localDrawable = d(((Drawable.ConstantState)this.kb.valueAt(i)).newDrawable(this.jY));
+        this.kc[paramInt] = localDrawable;
+        this.kb.removeAt(i);
         localObject = localDrawable;
-      } while (this.jg.size() != 0);
-      this.jg = null;
+      } while (this.kb.size() != 0);
+      this.kb = null;
       return localDrawable;
       return null;
     }
     
-    public final int b(Drawable paramDrawable)
+    public final int c(Drawable paramDrawable)
     {
-      int i = this.ji;
-      if (i >= this.jh.length) {
-        h(i, i + 10);
+      int i = this.kd;
+      if (i >= this.kc.length) {
+        m(i, i + 10);
       }
       paramDrawable.mutate();
       paramDrawable.setVisible(false, true);
-      paramDrawable.setCallback(this.jc);
-      this.jh[i] = paramDrawable;
-      this.ji += 1;
-      this.jf |= paramDrawable.getChangingConfigurations();
-      bv();
-      this.jl = null;
-      this.jk = false;
-      this.jn = false;
-      this.jw = false;
+      paramDrawable.setCallback(this.jX);
+      this.kc[i] = paramDrawable;
+      this.kd += 1;
+      this.ka |= paramDrawable.getChangingConfigurations();
+      co();
+      this.kg = null;
+      this.kf = false;
+      this.ki = false;
+      this.kr = false;
       return i;
-    }
-    
-    void br()
-    {
-      int j = this.ji;
-      Drawable[] arrayOfDrawable = this.jh;
-      int i = 0;
-      while (i < j)
-      {
-        if (arrayOfDrawable[i] != null) {
-          arrayOfDrawable[i].mutate();
-        }
-        i += 1;
-      }
-      this.iF = true;
-    }
-    
-    final void bv()
-    {
-      this.js = false;
-      this.ju = false;
-    }
-    
-    final void bw()
-    {
-      if (this.jg != null)
-      {
-        int j = this.jg.size();
-        int i = 0;
-        while (i < j)
-        {
-          int k = this.jg.keyAt(i);
-          Drawable.ConstantState localConstantState = (Drawable.ConstantState)this.jg.valueAt(i);
-          this.jh[k] = c(localConstantState.newDrawable(this.jd));
-          i += 1;
-        }
-        this.jg = null;
-      }
-    }
-    
-    final void bx()
-    {
-      int i = 0;
-      this.jn = true;
-      bw();
-      int j = this.ji;
-      Drawable[] arrayOfDrawable = this.jh;
-      this.jp = -1;
-      this.jo = -1;
-      this.jr = 0;
-      this.jq = 0;
-      while (i < j)
-      {
-        Drawable localDrawable = arrayOfDrawable[i];
-        int k = localDrawable.getIntrinsicWidth();
-        if (k > this.jo) {
-          this.jo = k;
-        }
-        k = localDrawable.getIntrinsicHeight();
-        if (k > this.jp) {
-          this.jp = k;
-        }
-        k = localDrawable.getMinimumWidth();
-        if (k > this.jq) {
-          this.jq = k;
-        }
-        k = localDrawable.getMinimumHeight();
-        if (k > this.jr) {
-          this.jr = k;
-        }
-        i += 1;
-      }
     }
     
     public boolean canApplyTheme()
     {
-      int j = this.ji;
-      Drawable[] arrayOfDrawable = this.jh;
+      int j = this.kd;
+      Drawable[] arrayOfDrawable = this.kc;
       int i = 0;
       while (i < j)
       {
@@ -1355,7 +1283,7 @@ class b
         }
         else
         {
-          localObject = (Drawable.ConstantState)this.jg.get(i);
+          localObject = (Drawable.ConstantState)this.kb.get(i);
           if ((localObject != null) && (((Drawable.ConstantState)localObject).canApplyTheme())) {
             return true;
           }
@@ -1372,22 +1300,22 @@ class b
       {
         try
         {
-          if (this.jw)
+          if (this.kr)
           {
-            bool = this.jx;
+            bool = this.ks;
             return bool;
           }
-          bw();
-          this.jw = true;
-          int j = this.ji;
-          Drawable[] arrayOfDrawable = this.jh;
+          cp();
+          this.kr = true;
+          int j = this.kd;
+          Drawable[] arrayOfDrawable = this.kc;
           int i = 0;
           if (i >= j) {
             break label79;
           }
           if (arrayOfDrawable[i].getConstantState() == null)
           {
-            this.jx = false;
+            this.ks = false;
             continue;
           }
           i += 1;
@@ -1395,8 +1323,80 @@ class b
         finally {}
         continue;
         label79:
-        this.jx = true;
+        this.ks = true;
         bool = true;
+      }
+    }
+    
+    void ck()
+    {
+      int j = this.kd;
+      Drawable[] arrayOfDrawable = this.kc;
+      int i = 0;
+      while (i < j)
+      {
+        if (arrayOfDrawable[i] != null) {
+          arrayOfDrawable[i].mutate();
+        }
+        i += 1;
+      }
+      this.jA = true;
+    }
+    
+    final void co()
+    {
+      this.kn = false;
+      this.kp = false;
+    }
+    
+    final void cp()
+    {
+      if (this.kb != null)
+      {
+        int j = this.kb.size();
+        int i = 0;
+        while (i < j)
+        {
+          int k = this.kb.keyAt(i);
+          Drawable.ConstantState localConstantState = (Drawable.ConstantState)this.kb.valueAt(i);
+          this.kc[k] = d(localConstantState.newDrawable(this.jY));
+          i += 1;
+        }
+        this.kb = null;
+      }
+    }
+    
+    final void cq()
+    {
+      int i = 0;
+      this.ki = true;
+      cp();
+      int j = this.kd;
+      Drawable[] arrayOfDrawable = this.kc;
+      this.kk = -1;
+      this.kj = -1;
+      this.km = 0;
+      this.kl = 0;
+      while (i < j)
+      {
+        Drawable localDrawable = arrayOfDrawable[i];
+        int k = localDrawable.getIntrinsicWidth();
+        if (k > this.kj) {
+          this.kj = k;
+        }
+        k = localDrawable.getIntrinsicHeight();
+        if (k > this.kk) {
+          this.kk = k;
+        }
+        k = localDrawable.getMinimumWidth();
+        if (k > this.kl) {
+          this.kl = k;
+        }
+        k = localDrawable.getMinimumHeight();
+        if (k > this.km) {
+          this.km = k;
+        }
+        i += 1;
       }
     }
     
@@ -1404,34 +1404,34 @@ class b
     {
       if (paramResources != null)
       {
-        this.jd = paramResources;
-        int i = b.a(paramResources, this.je);
-        int j = this.je;
-        this.je = i;
+        this.jY = paramResources;
+        int i = b.a(paramResources, this.jZ);
+        int j = this.jZ;
+        this.jZ = i;
         if (j != i)
         {
-          this.jn = false;
-          this.jk = false;
+          this.ki = false;
+          this.kf = false;
         }
       }
     }
     
     public int getChangingConfigurations()
     {
-      return this.mChangingConfigurations | this.jf;
+      return this.mChangingConfigurations | this.ka;
     }
     
-    public void h(int paramInt1, int paramInt2)
+    public void m(int paramInt1, int paramInt2)
     {
       Drawable[] arrayOfDrawable = new Drawable[paramInt2];
-      System.arraycopy(this.jh, 0, arrayOfDrawable, 0, paramInt1);
-      this.jh = arrayOfDrawable;
+      System.arraycopy(this.kc, 0, arrayOfDrawable, 0, paramInt1);
+      this.kc = arrayOfDrawable;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.b.a.b
  * JD-Core Version:    0.7.0.1
  */

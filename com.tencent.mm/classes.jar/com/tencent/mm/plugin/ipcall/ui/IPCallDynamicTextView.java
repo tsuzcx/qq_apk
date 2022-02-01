@@ -14,29 +14,29 @@ import java.text.DecimalFormat;
 public class IPCallDynamicTextView
   extends TextView
 {
-  private int DVC;
-  private double DVD;
-  private double DVE;
-  private double DVF;
-  private boolean DVG;
-  private int DVH;
-  private int DVI;
-  DecimalFormat DVJ;
-  private String DVK;
-  private String DVL;
+  private int JML;
+  private double JMM;
+  private double JMN;
+  private double JMO;
+  private boolean JMP;
+  private int JMQ;
+  private int JMR;
+  DecimalFormat JMS;
+  private String JMT;
+  private String JMU;
+  private String lWc;
   private MMHandler mHandler;
   private int mHeight;
-  private String mValue;
   
   public IPCallDynamicTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(25761);
-    this.DVH = 4000;
-    this.DVI = 50;
-    this.DVJ = new DecimalFormat("0.00");
-    this.DVK = "";
-    this.DVL = "";
+    this.JMQ = 4000;
+    this.JMR = 50;
+    this.JMS = new DecimalFormat("0.00");
+    this.JMT = "";
+    this.JMU = "";
     this.mHandler = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
@@ -53,7 +53,7 @@ public class IPCallDynamicTextView
           {
             IPCallDynamicTextView.a(IPCallDynamicTextView.this, true);
             IPCallDynamicTextView.a(IPCallDynamicTextView.this, IPCallDynamicTextView.b(IPCallDynamicTextView.this));
-            IPCallDynamicTextView.b(IPCallDynamicTextView.this, IPCallDynamicTextView.b(IPCallDynamicTextView.this) + IPCallDynamicTextView.a(IPCallDynamicTextView.this));
+            IPCallDynamicTextView.b(IPCallDynamicTextView.this, IPCallDynamicTextView.a(IPCallDynamicTextView.this));
             IPCallDynamicTextView.e(IPCallDynamicTextView.this).sendEmptyMessageDelayed(1, IPCallDynamicTextView.d(IPCallDynamicTextView.this));
             AppMethodBeat.o(25759);
             return;
@@ -71,11 +71,11 @@ public class IPCallDynamicTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(25762);
-    this.DVH = 4000;
-    this.DVI = 50;
-    this.DVJ = new DecimalFormat("0.00");
-    this.DVK = "";
-    this.DVL = "";
+    this.JMQ = 4000;
+    this.JMR = 50;
+    this.JMS = new DecimalFormat("0.00");
+    this.JMT = "";
+    this.JMU = "";
     this.mHandler = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
@@ -92,7 +92,7 @@ public class IPCallDynamicTextView
           {
             IPCallDynamicTextView.a(IPCallDynamicTextView.this, true);
             IPCallDynamicTextView.a(IPCallDynamicTextView.this, IPCallDynamicTextView.b(IPCallDynamicTextView.this));
-            IPCallDynamicTextView.b(IPCallDynamicTextView.this, IPCallDynamicTextView.b(IPCallDynamicTextView.this) + IPCallDynamicTextView.a(IPCallDynamicTextView.this));
+            IPCallDynamicTextView.b(IPCallDynamicTextView.this, IPCallDynamicTextView.a(IPCallDynamicTextView.this));
             IPCallDynamicTextView.e(IPCallDynamicTextView.this).sendEmptyMessageDelayed(1, IPCallDynamicTextView.d(IPCallDynamicTextView.this));
             AppMethodBeat.o(25759);
             return;
@@ -106,7 +106,7 @@ public class IPCallDynamicTextView
     AppMethodBeat.o(25762);
   }
   
-  public static String aMs(String paramString)
+  public static String aJm(String paramString)
   {
     AppMethodBeat.i(25765);
     String str1 = "";
@@ -155,7 +155,7 @@ public class IPCallDynamicTextView
   
   public void setLocHeight(int paramInt)
   {
-    this.DVC = paramInt;
+    this.JML = paramInt;
   }
   
   public final void setValue(String paramString1, String paramString2)
@@ -169,15 +169,15 @@ public class IPCallDynamicTextView
     }
     try
     {
-      this.DVE = Double.parseDouble(aMs(paramString1));
-      this.DVK = "";
+      this.JMN = Double.parseDouble(aJm(paramString1));
+      this.JMT = "";
       i = 0;
       while ((i < paramString2.length()) && (!Character.isDigit(paramString2.charAt(i))))
       {
-        this.DVK += paramString2.charAt(i);
+        this.JMT += paramString2.charAt(i);
         i += 1;
       }
-      this.DVL = "";
+      this.JMU = "";
     }
     catch (NumberFormatException paramString1)
     {
@@ -188,16 +188,16 @@ public class IPCallDynamicTextView
     int i = paramString2.length() - 1;
     while ((i > 0) && (!Character.isDigit(paramString2.charAt(i))))
     {
-      this.DVL += paramString2.charAt(i);
+      this.JMU += paramString2.charAt(i);
       i -= 1;
     }
-    paramString1 = paramString2.substring(this.DVK.length(), paramString2.length() - this.DVL.length());
+    paramString1 = paramString2.substring(this.JMT.length(), paramString2.length() - this.JMU.length());
     try
     {
-      this.DVF = Double.parseDouble(paramString1);
-      this.mValue = paramString2;
-      this.DVD = ((this.DVF - this.DVE) / (this.DVH / this.DVI));
-      if (this.DVD == 0.0D)
+      this.JMO = Double.parseDouble(paramString1);
+      this.lWc = paramString2;
+      this.JMM = ((this.JMO - this.JMN) / (this.JMQ / this.JMR));
+      if (this.JMM == 0.0D)
       {
         setText(paramString2);
         AppMethodBeat.o(25764);
@@ -210,7 +210,7 @@ public class IPCallDynamicTextView
       AppMethodBeat.o(25764);
       return;
     }
-    this.DVD = new BigDecimal(this.DVD).setScale(2, 4).doubleValue();
+    this.JMM = new BigDecimal(this.JMM).setScale(2, 4).doubleValue();
     if (isShown()) {
       this.mHandler.sendEmptyMessage(1);
     }
@@ -219,7 +219,7 @@ public class IPCallDynamicTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallDynamicTextView
  * JD-Core Version:    0.7.0.1
  */

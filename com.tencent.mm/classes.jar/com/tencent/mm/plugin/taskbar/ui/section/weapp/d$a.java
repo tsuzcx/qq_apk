@@ -1,32 +1,12 @@
 package com.tencent.mm.plugin.taskbar.ui.section.weapp;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/taskbar/ui/section/weapp/TaskBarSectionWeAppView$moreView$1$1"})
-final class d$a
-  implements View.OnClickListener
-{
-  d$a(d paramd) {}
-  
-  public final void onClick(View paramView)
-  {
-    AppMethodBeat.i(214806);
-    b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/taskbar/ui/section/weapp/TaskBarSectionWeAppView$$special$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    this.MrV.gkm();
-    a.a(this, "com/tencent/mm/plugin/taskbar/ui/section/weapp/TaskBarSectionWeAppView$$special$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(214806);
-  }
-}
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/taskbar/ui/section/weapp/TaskBarSectionWeAppView$Companion;", "", "()V", "TAG", "", "itemsDescription", "items", "", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/AppBrandDesktopView$AppBrandItem;", "plugin-taskbar_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class d$a {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.taskbar.ui.section.weapp.d.a
  * JD-Core Version:    0.7.0.1
  */

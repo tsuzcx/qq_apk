@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.normsg.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.q.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.p.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
@@ -11,40 +11,40 @@ import com.tencent.mm.protocal.s.a;
 import com.tencent.mm.protocal.s.b;
 
 public final class b
-  extends q
+  extends p
   implements m
 {
-  private boolean GxN;
-  private int GxO;
+  private boolean MtT;
+  private int MtU;
   private final String TAG;
-  private i callback;
-  private final s lCW;
+  private h callback;
+  private final s ouH;
   
   public b(boolean paramBoolean, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(149011);
-    this.GxN = true;
-    this.GxO = 0;
+    this.MtT = true;
+    this.MtU = 0;
     this.TAG = "NetSceneFPInit";
-    this.GxN = paramBoolean;
-    this.lCW = new s.a(this.GxN);
-    ((s.b)this.lCW.getReqObj()).RBQ.SwU = com.tencent.mm.cd.b.cU(paramArrayOfByte);
+    this.MtT = paramBoolean;
+    this.ouH = new s.a(this.MtT);
+    ((s.b)this.ouH.getReqObj()).Yyt.ZxE = com.tencent.mm.bx.b.cX(paramArrayOfByte);
     AppMethodBeat.o(149011);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(149012);
-    this.callback = parami;
-    this.GxO += 1;
-    int i = dispatch(paramg, this.lCW, this);
+    this.callback = paramh;
+    this.MtU += 1;
+    int i = dispatch(paramg, this.ouH, this);
     AppMethodBeat.o(149012);
     return i;
   }
   
   public final int getType()
   {
-    if (this.GxN) {
+    if (this.MtT) {
       return 3789;
     }
     return 3644;
@@ -62,7 +62,7 @@ public final class b
       AppMethodBeat.o(149013);
       return;
     }
-    if (this.GxO < 2)
+    if (this.MtU < 2)
     {
       if (doScene(dispatcher(), this.callback) < 0)
       {
@@ -84,14 +84,14 @@ public final class b
     return 3;
   }
   
-  public final q.b securityVerificationChecked(s params)
+  public final p.b securityVerificationChecked(s params)
   {
-    return q.b.lCx;
+    return p.b.ouh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.normsg.b.b
  * JD-Core Version:    0.7.0.1
  */

@@ -42,9 +42,9 @@ import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MD5Util;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ad;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.widget.a.d;
+import com.tencent.mm.ui.af;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.widget.a.e;
 import com.tencent.mm.ui.widget.g;
 import com.tenpay.android.wechat.TenpaySecureEditText;
 import java.text.DecimalFormat;
@@ -55,38 +55,38 @@ public class EditHintView
   extends RelativeLayout
   implements View.OnFocusChangeListener
 {
-  public boolean WrK;
-  private b YWA;
-  private TextView YWB;
-  TenpaySecureEditText YWC;
-  private int YWD;
-  private int YWE;
-  private int YWF;
-  private boolean YWG;
-  private String YWH;
-  private DatePickerDialog YWI;
-  private int YWJ;
-  private int YWK;
-  private d YWL;
-  private a YWM;
+  public boolean adZa;
+  private boolean agUA;
+  private String agUB;
+  private DatePickerDialog agUC;
+  private int agUD;
+  private int agUE;
+  private e agUF;
+  private a agUG;
+  private b agUu;
+  private TextView agUv;
+  TenpaySecureEditText agUw;
+  private int agUx;
+  private int agUy;
+  private int agUz;
   private int background;
   private int editType;
-  private int ek;
+  private int fl;
   private int inputType;
   private int mode;
-  private TextView mrN;
-  private ImageView nlA;
-  private String nlB;
-  private String nlC;
-  private int nlD;
-  private int nlE;
-  public boolean nlF;
-  private boolean nlH;
-  private int nlI;
-  private int nlJ;
-  private View.OnClickListener nlK;
-  private View.OnFocusChangeListener nly;
-  private boolean oYn;
+  private TextView pls;
+  private View.OnFocusChangeListener qiH;
+  private ImageView qiJ;
+  private String qiK;
+  private String qiL;
+  private int qiM;
+  private int qiN;
+  public boolean qiO;
+  private boolean qiQ;
+  private int qiR;
+  private int qiS;
+  private View.OnClickListener qiT;
+  private boolean sdN;
   
   public EditHintView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -97,42 +97,42 @@ public class EditHintView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(72906);
-    this.nlB = "";
-    this.nlC = "";
+    this.qiK = "";
+    this.qiL = "";
     this.inputType = 1;
-    this.oYn = true;
-    this.nlJ = -1;
-    this.nlI = 1;
-    this.ek = 19;
-    this.YWD = -1;
+    this.sdN = true;
+    this.qiS = -1;
+    this.qiR = 1;
+    this.fl = 19;
+    this.agUx = -1;
     this.editType = -1;
-    this.nlH = false;
-    this.YWE = 1;
-    this.YWF = -1;
+    this.qiQ = false;
+    this.agUy = 1;
+    this.agUz = -1;
     this.background = -1;
-    this.nlE = -1;
-    this.nlF = true;
-    this.WrK = true;
-    this.YWG = true;
-    this.YWH = null;
+    this.qiN = -1;
+    this.qiO = true;
+    this.adZa = true;
+    this.agUA = true;
+    this.agUB = null;
     this.mode = 0;
-    this.YWI = null;
-    this.YWJ = 0;
-    this.YWK = 0;
-    this.nlK = new View.OnClickListener()
+    this.agUC = null;
+    this.agUD = 0;
+    this.agUE = 0;
+    this.qiT = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(72904);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/wallet_core/ui/EditHintView$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/wallet_core/ui/EditHintView$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         if (EditHintView.l(EditHintView.this).getVisibility() == 0)
         {
-          if ((!EditHintView.this.nlF) || (Util.isNullOrNil(EditHintView.this.getText()))) {
+          if ((!EditHintView.this.qiO) || (Util.isNullOrNil(EditHintView.this.getText()))) {
             break label98;
           }
-          EditHintView.this.YWC.ClearInput();
+          EditHintView.this.agUw.ClearInput();
         }
         for (;;)
         {
@@ -152,53 +152,53 @@ public class EditHintView
         }
       }
     };
-    this.YWL = null;
+    this.agUF = null;
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.k.EditHintView, paramInt, 0);
     paramInt = paramAttributeSet.getResourceId(a.k.EditHintView_hint, 0);
     if (paramInt != 0) {
-      this.nlB = paramContext.getString(paramInt);
+      this.qiK = paramContext.getString(paramInt);
     }
     paramInt = paramAttributeSet.getResourceId(a.k.EditHintView_tipmsg, 0);
     if (paramInt != 0) {
-      this.nlC = paramContext.getString(paramInt);
+      this.qiL = paramContext.getString(paramInt);
     }
     this.inputType = paramAttributeSet.getInteger(a.k.EditHintView_android_inputType, 1);
-    this.nlF = paramAttributeSet.getBoolean(a.k.EditHintView_editable, true);
-    this.ek = paramAttributeSet.getInt(a.k.EditHintView_android_gravity, 19);
-    this.oYn = paramAttributeSet.getBoolean(a.k.EditHintView_android_clickable, true);
-    this.nlJ = paramAttributeSet.getInteger(a.k.EditHintView_maxLength, -1);
+    this.qiO = paramAttributeSet.getBoolean(a.k.EditHintView_editable, true);
+    this.fl = paramAttributeSet.getInt(a.k.EditHintView_android_gravity, 19);
+    this.sdN = paramAttributeSet.getBoolean(a.k.EditHintView_android_clickable, true);
+    this.qiS = paramAttributeSet.getInteger(a.k.EditHintView_maxLength, -1);
     this.editType = paramAttributeSet.getInteger(a.k.EditHintView_editType, 0);
-    this.nlD = paramAttributeSet.getInteger(a.k.EditHintView_android_imeOptions, 5);
-    this.YWF = paramAttributeSet.getColor(a.k.EditHintView_hintTextColor, a.c.normal_text_color);
+    this.qiM = paramAttributeSet.getInteger(a.k.EditHintView_android_imeOptions, 5);
+    this.agUz = paramAttributeSet.getColor(a.k.EditHintView_hintTextColor, a.c.normal_text_color);
     this.background = paramAttributeSet.getResourceId(a.k.EditHintView_android_background, -1);
-    this.nlE = paramAttributeSet.getResourceId(a.k.EditHintView_hintTextBg, a.e.edittext_bg_selector);
-    this.nlI = paramAttributeSet.getInteger(a.k.EditHintView_minLength, 1);
-    this.WrK = paramAttributeSet.getBoolean(a.k.EditHintView_android_singleLine, true);
+    this.qiN = paramAttributeSet.getResourceId(a.k.EditHintView_hintTextBg, a.e.edittext_bg_selector);
+    this.qiR = paramAttributeSet.getInteger(a.k.EditHintView_minLength, 1);
+    this.adZa = paramAttributeSet.getBoolean(a.k.EditHintView_android_singleLine, true);
     paramAttributeSet.recycle();
-    paramContext = ad.kS(paramContext).inflate(a.g.edit_hint_view, this, true);
-    this.YWC = ((TenpaySecureEditText)paramContext.findViewById(a.f.hint_et));
-    this.mrN = ((TextView)paramContext.findViewById(a.f.tip_tv));
-    this.YWB = ((TextView)paramContext.findViewById(a.f.pre_filled_tv));
-    this.nlA = ((ImageView)paramContext.findViewById(a.f.info_iv));
-    this.YWC.setImeOptions(this.nlD);
+    paramContext = af.mU(paramContext).inflate(a.g.edit_hint_view, this, true);
+    this.agUw = ((TenpaySecureEditText)paramContext.findViewById(a.f.hint_et));
+    this.pls = ((TextView)paramContext.findViewById(a.f.tip_tv));
+    this.agUv = ((TextView)paramContext.findViewById(a.f.pre_filled_tv));
+    this.qiJ = ((ImageView)paramContext.findViewById(a.f.info_iv));
+    this.agUw.setImeOptions(this.qiM);
     switch (this.editType)
     {
     case 11: 
     default: 
       this.inputType = 1;
     case 0: 
-      ijp();
-      this.YWC.setSingleLine(this.WrK);
-      if (!this.WrK) {
-        this.YWC.setMaxLines(1073741823);
+      jPk();
+      this.agUw.setSingleLine(this.adZa);
+      if (!this.adZa) {
+        this.agUw.setMaxLines(1073741823);
       }
-      this.nlA.setOnClickListener(this.nlK);
-      this.YWC.addTextChangedListener(new TextWatcher()
+      this.qiJ.setOnClickListener(this.qiT);
+      this.agUw.addTextChangedListener(new TextWatcher()
       {
         public final void afterTextChanged(Editable paramAnonymousEditable)
         {
           AppMethodBeat.i(72901);
-          boolean bool = EditHintView.this.bAz();
+          boolean bool = EditHintView.this.bZp();
           if ((bool != EditHintView.c(EditHintView.this)) && (EditHintView.d(EditHintView.this) != null))
           {
             Log.d("MicroMsg.EditHintView", "View:" + EditHintView.e(EditHintView.this) + ", editType:" + EditHintView.f(EditHintView.this) + " inputValid change to " + bool);
@@ -213,27 +213,27 @@ public class EditHintView
         public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
         {
           AppMethodBeat.i(72900);
-          if ((EditHintView.a(EditHintView.this) == 4) && (EditHintView.this.bAz()))
+          if ((EditHintView.a(EditHintView.this) == 4) && (EditHintView.this.bZp()))
           {
             EditHintView.b(EditHintView.this);
-            EditHintView.this.YWC.ClearInput();
+            EditHintView.this.agUw.ClearInput();
           }
           AppMethodBeat.o(72900);
         }
         
         public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       });
-      this.YWC.setOnFocusChangeListener(this);
-      if (!Util.isNullOrNil(this.nlB)) {
-        this.YWC.setHint(this.nlB);
+      this.agUw.setOnFocusChangeListener(this);
+      if (!Util.isNullOrNil(this.qiK)) {
+        this.agUw.setHint(this.qiK);
       }
-      if (!Util.isNullOrNil(this.nlC)) {
-        this.mrN.setText(this.nlC);
+      if (!Util.isNullOrNil(this.qiL)) {
+        this.pls.setText(this.qiL);
       }
-      this.YWC.setGravity(this.ek);
+      this.agUw.setGravity(this.fl);
       if (this.inputType == 2)
       {
-        this.YWC.setKeyListener(new NumberKeyListener()
+        this.agUw.setKeyListener(new NumberKeyListener()
         {
           protected final char[] getAcceptedChars()
           {
@@ -246,29 +246,29 @@ public class EditHintView
           }
         });
         label667:
-        if (this.nlJ != -1) {
-          this.YWC.setFilters(new InputFilter[] { new InputFilter.LengthFilter(this.nlJ) });
+        if (this.qiS != -1) {
+          this.agUw.setFilters(new InputFilter[] { new InputFilter.LengthFilter(this.qiS) });
         }
         super.setEnabled(true);
         super.setClickable(true);
-        if (!this.oYn)
+        if (!this.sdN)
         {
-          this.YWC.setEnabled(false);
-          this.YWC.setTextColor(getResources().getColor(this.YWF));
-          this.YWC.setFocusable(false);
-          this.YWC.setClickable(false);
-          this.YWC.setBackgroundResource(a.e.transparent_background);
+          this.agUw.setEnabled(false);
+          this.agUw.setTextColor(getResources().getColor(this.agUz));
+          this.agUw.setFocusable(false);
+          this.agUw.setClickable(false);
+          this.agUw.setBackgroundResource(a.e.transparent_background);
           setBackgroundResource(a.e.list_item_normal);
         }
-        if (this.nlF) {
+        if (this.qiO) {
           break label1336;
         }
-        this.nlH = true;
-        this.YWC.setEnabled(false);
-        this.YWC.setTextColor(getResources().getColor(a.c.link_color_pressed));
-        this.YWC.setFocusable(false);
-        this.YWC.setClickable(false);
-        this.YWC.setBackgroundResource(a.e.transparent_background);
+        this.qiQ = true;
+        this.agUw.setEnabled(false);
+        this.agUw.setTextColor(getResources().getColor(a.c.link_color_pressed));
+        this.agUw.setFocusable(false);
+        this.agUw.setClickable(false);
+        this.agUw.setBackgroundResource(a.e.transparent_background);
         setBackgroundResource(a.e.comm_list_item_selector);
       }
       break;
@@ -278,58 +278,58 @@ public class EditHintView
       if (this.background > 0) {
         setBackgroundResource(this.background);
       }
-      if ((this.mrN != null) && (this.YWD != -1))
+      if ((this.pls != null) && (this.agUx != -1))
       {
-        paramContext = this.mrN.getLayoutParams();
-        paramContext.width = this.YWD;
-        this.mrN.setLayoutParams(paramContext);
+        paramContext = this.pls.getLayoutParams();
+        paramContext.width = this.agUx;
+        this.pls.setLayoutParams(paramContext);
       }
-      if (z.bdq()) {
-        this.YWC.setSecureEncrypt(new com.tencent.mm.wallet_core.a.a(getEncryptType()));
+      if (z.bBi()) {
+        this.agUw.setSecureEncrypt(new com.tencent.mm.wallet_core.a.a(getEncryptType()));
       }
       AppMethodBeat.o(72906);
       return;
-      this.nlJ = 25;
-      this.YWC.setIsBankcardFormat(true);
+      this.qiS = 25;
+      this.agUw.setIsBankcardFormat(true);
       this.inputType = 2;
       break;
-      this.nlJ = 6;
-      this.mrN.setVisibility(8);
-      this.YWC.setIsPasswordFormat(true, true);
-      this.YWC.setImeOptions(6);
+      this.qiS = 6;
+      this.pls.setVisibility(8);
+      this.agUw.setIsPasswordFormat(true, true);
+      this.agUw.setImeOptions(6);
       this.inputType = 128;
       break;
-      this.nlJ = 3;
-      this.mrN.setVisibility(8);
-      this.YWC.setIsCvvPaymentFormat(true);
-      this.YWC.setImeOptions(6);
+      this.qiS = 3;
+      this.pls.setVisibility(8);
+      this.agUw.setIsCvvPaymentFormat(true);
+      this.agUw.setImeOptions(6);
       this.inputType = 128;
       break;
-      this.nlJ = 4;
-      this.mrN.setVisibility(8);
-      this.YWC.setIsCvv4PaymentFormat(true);
-      this.YWC.setImeOptions(6);
+      this.qiS = 4;
+      this.pls.setVisibility(8);
+      this.agUw.setIsCvv4PaymentFormat(true);
+      this.agUw.setImeOptions(6);
       this.inputType = 128;
       break;
-      this.nlJ = 30;
+      this.qiS = 30;
       this.inputType = 3;
       break;
-      this.nlJ = 18;
+      this.qiS = 18;
       this.inputType = 4;
       break;
-      this.nlJ = 4;
+      this.qiS = 4;
       this.inputType = 2;
       break;
-      this.nlF = false;
-      this.YWC.setIsValidThru(true);
+      this.qiO = false;
+      this.agUw.setIsValidThru(true);
       setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(72903);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/wallet_core/ui/EditHintView$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/wallet_core/ui/EditHintView$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           if (EditHintView.h(EditHintView.this) == null)
           {
             paramAnonymousView = Calendar.getInstance();
@@ -344,8 +344,8 @@ public class EditHintView
                 AppMethodBeat.i(72902);
                 if ((paramAnonymous2Int1 < EditHintView.i(EditHintView.this)) && (paramAnonymous2Int2 < EditHintView.j(EditHintView.this)))
                 {
-                  h.c(EditHintView.this.getContext(), EditHintView.this.getContext().getString(a.i.wallet_err_expired_date), null, true);
-                  EditHintView.a(EditHintView.this, EditHintView.this.bAz());
+                  k.c(EditHintView.this.getContext(), EditHintView.this.getContext().getString(a.i.wallet_err_expired_date), null, true);
+                  EditHintView.a(EditHintView.this, EditHintView.this.bZp());
                   if (EditHintView.d(EditHintView.this) != null)
                   {
                     Log.d("MicroMsg.EditHintView", "View:" + EditHintView.e(EditHintView.this) + ", editType:" + EditHintView.f(EditHintView.this) + " inputValid change to " + EditHintView.c(EditHintView.this));
@@ -356,7 +356,7 @@ public class EditHintView
                   return;
                 }
                 paramAnonymous2DatePicker = new DecimalFormat("00");
-                if (z.bdq()) {
+                if (z.bBi()) {
                   EditHintView.a(EditHintView.this, paramAnonymous2DatePicker.format(paramAnonymous2Int2 + 1) + paramAnonymous2Int1);
                 }
                 for (;;)
@@ -374,24 +374,24 @@ public class EditHintView
         }
       });
       break;
-      this.nlJ = 6;
-      this.mrN.setVisibility(8);
+      this.qiS = 6;
+      this.pls.setVisibility(8);
       this.inputType = 2;
       break;
       this.inputType = 32;
       break;
-      if ((this.nlF) || (!this.oYn)) {
+      if ((this.qiO) || (!this.sdN)) {
         break;
       }
       break;
-      this.nlJ = 12;
-      this.YWC.setIsMoneyAmountFormat(true);
+      this.qiS = 12;
+      this.agUw.setIsMoneyAmountFormat(true);
       break;
-      this.YWC.setIsSecurityAnswerFormat(true);
+      this.agUw.setIsSecurityAnswerFormat(true);
       break;
       if (this.inputType == 4)
       {
-        this.YWC.setKeyListener(new NumberKeyListener()
+        this.agUw.setKeyListener(new NumberKeyListener()
         {
           protected final char[] getAcceptedChars()
           {
@@ -407,8 +407,8 @@ public class EditHintView
       }
       if (this.inputType == 128)
       {
-        this.YWC.setTransformationMethod(PasswordTransformationMethod.getInstance());
-        this.YWC.setKeyListener(new NumberKeyListener()
+        this.agUw.setTransformationMethod(PasswordTransformationMethod.getInstance());
+        this.agUw.setKeyListener(new NumberKeyListener()
         {
           protected final char[] getAcceptedChars()
           {
@@ -420,12 +420,12 @@ public class EditHintView
             return 18;
           }
         });
-        this.YWC.setRawInputType(18);
+        this.agUw.setRawInputType(18);
         break label667;
       }
       if (this.inputType == 3)
       {
-        this.YWC.setKeyListener(new NumberKeyListener()
+        this.agUw.setKeyListener(new NumberKeyListener()
         {
           protected final char[] getAcceptedChars()
           {
@@ -439,11 +439,11 @@ public class EditHintView
         });
         break label667;
       }
-      this.YWC.setInputType(this.inputType);
+      this.agUw.setInputType(this.inputType);
       break label667;
       label1336:
-      this.nlH = false;
-      this.YWC.setBackgroundResource(this.nlE);
+      this.qiQ = false;
+      this.agUw.setBackgroundResource(this.qiN);
       setBackgroundResource(a.e.transparent_background);
     }
   }
@@ -484,7 +484,7 @@ public class EditHintView
   {
     AppMethodBeat.i(72936);
     Rect localRect = new Rect();
-    this.nlA.getHitRect(localRect);
+    this.qiJ.getHitRect(localRect);
     localRect.left -= 50;
     localRect.right += 50;
     localRect.top -= 25;
@@ -493,7 +493,7 @@ public class EditHintView
     return localRect;
   }
   
-  private void ijp()
+  private void jPk()
   {
     AppMethodBeat.i(72931);
     if ((this.editType == 7) || (this.editType == 14) || (this.editType == 15))
@@ -501,10 +501,10 @@ public class EditHintView
       AppMethodBeat.o(72931);
       return;
     }
-    if ((this.nlF) && (!Util.isNullOrNil(getText())))
+    if ((this.qiO) && (!Util.isNullOrNil(getText())))
     {
-      this.nlA.setVisibility(0);
-      this.nlA.setImageResource(a.e.list_clear);
+      this.qiJ.setVisibility(0);
+      this.qiJ.setImageResource(a.e.list_clear);
       AppMethodBeat.o(72931);
       return;
     }
@@ -516,45 +516,45 @@ public class EditHintView
     case 7: 
     case 8: 
     default: 
-      this.nlA.setVisibility(8);
+      this.qiJ.setVisibility(8);
       AppMethodBeat.o(72931);
       return;
     case 3: 
     case 4: 
     case 9: 
     case 10: 
-      this.nlA.setVisibility(0);
-      this.nlA.setImageResource(a.e.payinfoicon);
+      this.qiJ.setVisibility(0);
+      this.qiJ.setImageResource(a.e.payinfoicon);
       AppMethodBeat.o(72931);
       return;
     }
-    if (this.YWG)
+    if (this.agUA)
     {
-      this.nlA.setVisibility(0);
-      this.nlA.setImageResource(a.h.wallet_scan_camera);
+      this.qiJ.setVisibility(0);
+      this.qiJ.setImageResource(a.h.wallet_scan_camera);
       AppMethodBeat.o(72931);
       return;
     }
-    this.nlA.setVisibility(8);
+    this.qiJ.setVisibility(8);
     AppMethodBeat.o(72931);
   }
   
   private void setValStrForce(String paramString)
   {
     AppMethodBeat.i(72914);
-    KeyListener localKeyListener = this.YWC.getKeyListener();
-    this.YWC.setKeyListener(null);
+    KeyListener localKeyListener = this.agUw.getKeyListener();
+    this.agUw.setKeyListener(null);
     setEnabled(false);
     setClickable(false);
     setValStr(paramString);
-    this.YWC.setKeyListener(localKeyListener);
+    this.agUw.setKeyListener(localKeyListener);
     AppMethodBeat.o(72914);
   }
   
-  public final boolean bAz()
+  public final boolean bZp()
   {
     AppMethodBeat.i(72923);
-    if ((!this.nlF) && (!this.oYn))
+    if ((!this.qiO) && (!this.sdN))
     {
       AppMethodBeat.o(72923);
       return true;
@@ -571,22 +571,22 @@ public class EditHintView
     case 13: 
     case 16: 
     default: 
-      if (this.YWC.getInputLength() >= this.nlI)
+      if (this.agUw.getInputLength() >= this.qiR)
       {
         AppMethodBeat.o(72923);
         return true;
       }
       break;
     case 1: 
-      bool = this.YWC.isBankcardNum();
+      bool = this.agUw.isBankcardNum();
       AppMethodBeat.o(72923);
       return bool;
     case 9: 
-      bool = this.YWC.isPhoneNum();
+      bool = this.agUw.isPhoneNum();
       AppMethodBeat.o(72923);
       return bool;
     case 4: 
-      if (this.YWC.getInputLength() > 0)
+      if (this.agUw.getInputLength() > 0)
       {
         AppMethodBeat.o(72923);
         return true;
@@ -594,12 +594,12 @@ public class EditHintView
       AppMethodBeat.o(72923);
       return false;
     case 5: 
-      bool = this.YWC.isAreaIDCardNum(this.YWE);
+      bool = this.agUw.isAreaIDCardNum(this.agUy);
       AppMethodBeat.o(72923);
       return bool;
     case 7: 
     case 17: 
-      if (this.YWC.getInputLength() == 6)
+      if (this.agUw.getInputLength() == 6)
       {
         AppMethodBeat.o(72923);
         return true;
@@ -607,7 +607,7 @@ public class EditHintView
       AppMethodBeat.o(72923);
       return false;
     case 14: 
-      if (this.YWC.getInputLength() == 3)
+      if (this.agUw.getInputLength() == 3)
       {
         AppMethodBeat.o(72923);
         return true;
@@ -615,7 +615,7 @@ public class EditHintView
       AppMethodBeat.o(72923);
       return false;
     case 15: 
-      if (this.YWC.getInputLength() == 4)
+      if (this.agUw.getInputLength() == 4)
       {
         AppMethodBeat.o(72923);
         return true;
@@ -623,11 +623,11 @@ public class EditHintView
       AppMethodBeat.o(72923);
       return false;
     case 8: 
-      bool = Util.isValidEmail(this.YWC.getText().toString());
+      bool = Util.isValidEmail(this.agUw.getText().toString());
       AppMethodBeat.o(72923);
       return bool;
     case 12: 
-      bool = this.YWC.isMoneyAmount();
+      bool = this.agUw.isMoneyAmount();
       AppMethodBeat.o(72923);
       return bool;
     }
@@ -638,7 +638,7 @@ public class EditHintView
   public String get3DesEncrptData()
   {
     AppMethodBeat.i(72924);
-    String str = this.YWC.get3DesEncrptData();
+    String str = this.agUw.get3DesEncrptData();
     AppMethodBeat.o(72924);
     return str;
   }
@@ -647,7 +647,7 @@ public class EditHintView
   {
     AppMethodBeat.i(72922);
     if (this.editType == 3) {}
-    for (String str = Util.nullAs(this.YWH, "").replace("/", "");; str = this.YWC.getText().toString())
+    for (String str = Util.nullAs(this.agUB, "").replace("/", "");; str = this.agUw.getText().toString())
     {
       str = MD5Util.getMD5String(str);
       AppMethodBeat.o(72922);
@@ -663,50 +663,50 @@ public class EditHintView
     case 11: 
     case 12: 
     default: 
-      localObject = Util.nullAs(this.YWC.getText().toString(), "");
+      localObject = Util.nullAs(this.agUw.getText().toString(), "");
       AppMethodBeat.o(72921);
       return localObject;
     case 1: 
     case 13: 
     case 16: 
-      localObject = this.YWC;
-      com.tencent.mm.wallet_core.b.iie();
-      localObject = ((TenpaySecureEditText)localObject).getEncryptDataWithHash(false, com.tencent.mm.wallet_core.b.iif());
+      localObject = this.agUw;
+      com.tencent.mm.wallet_core.b.jNX();
+      localObject = ((TenpaySecureEditText)localObject).getEncryptDataWithHash(false, com.tencent.mm.wallet_core.b.jNY());
       AppMethodBeat.o(72921);
       return localObject;
     case 4: 
     case 14: 
     case 15: 
-      localObject = this.YWC.get3DesEncrptData();
+      localObject = this.agUw.get3DesEncrptData();
       AppMethodBeat.o(72921);
       return localObject;
     case 5: 
-      localObject = this.YWC.get3DesEncrptData();
+      localObject = this.agUw.get3DesEncrptData();
       AppMethodBeat.o(72921);
       return localObject;
     case 3: 
-      localObject = Util.nullAs(this.YWH, "").replace("/", "");
+      localObject = Util.nullAs(this.agUB, "").replace("/", "");
       AppMethodBeat.o(72921);
       return localObject;
     case 2: 
     case 9: 
-      localObject = Util.nullAs(this.YWC.getText().toString(), "");
+      localObject = Util.nullAs(this.agUw.getText().toString(), "");
       AppMethodBeat.o(72921);
       return localObject;
     case 0: 
     case 8: 
     case 10: 
-      localObject = Util.nullAs(this.YWC.getText().toString(), "");
+      localObject = Util.nullAs(this.agUw.getText().toString(), "");
       AppMethodBeat.o(72921);
       return localObject;
     case 6: 
-      localObject = this.YWC.get3DesVerifyCode();
+      localObject = this.agUw.get3DesVerifyCode();
       AppMethodBeat.o(72921);
       return localObject;
     }
-    Object localObject = this.YWC;
-    com.tencent.mm.wallet_core.b.iie();
-    localObject = ((TenpaySecureEditText)localObject).getEncryptDataWithHash(true, com.tencent.mm.wallet_core.b.iif());
+    Object localObject = this.agUw;
+    com.tencent.mm.wallet_core.b.jNX();
+    localObject = ((TenpaySecureEditText)localObject).getEncryptDataWithHash(true, com.tencent.mm.wallet_core.b.jNY());
     AppMethodBeat.o(72921);
     return localObject;
   }
@@ -714,17 +714,17 @@ public class EditHintView
   public void onFocusChange(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(72932);
-    if (this.nly != null) {
-      this.nly.onFocusChange(this, paramBoolean);
+    if (this.qiH != null) {
+      this.qiH.onFocusChange(this, paramBoolean);
     }
-    Log.d("MicroMsg.EditHintView", "View:" + this.nlC + ", editType:" + this.editType + " onFocusChange to " + paramBoolean);
-    if (!this.nlH)
+    Log.d("MicroMsg.EditHintView", "View:" + this.qiL + ", editType:" + this.editType + " onFocusChange to " + paramBoolean);
+    if (!this.qiQ)
     {
-      this.mrN.setEnabled(false);
+      this.pls.setEnabled(false);
       AppMethodBeat.o(72932);
       return;
     }
-    this.mrN.setEnabled(true);
+    this.pls.setEnabled(true);
     AppMethodBeat.o(72932);
   }
   
@@ -732,9 +732,9 @@ public class EditHintView
   {
     AppMethodBeat.i(72928);
     int i;
-    if (!this.nlF)
+    if (!this.qiO)
     {
-      if (this.nlA.getVisibility() != 0) {
+      if (this.qiJ.getVisibility() != 0) {
         break label63;
       }
       i = 1;
@@ -810,22 +810,22 @@ public class EditHintView
     switch (this.editType)
     {
     default: 
-      this.YWC.setText(paramString);
-      this.YWC.setSelection(this.YWC.getText().length());
+      this.agUw.setText(paramString);
+      this.agUw.setSelection(this.agUw.getText().length());
       AppMethodBeat.o(72913);
       return;
     }
     if ((!Util.isNullOrNil(paramString)) && (paramString.length() <= 5))
     {
-      this.YWC.setSelection(0);
-      this.YWC.set3DesEncrptData(paramString);
-      this.nlJ = (24 - paramString.length());
-      this.YWC.setFilters(new InputFilter[] { new InputFilter.LengthFilter(this.nlJ) });
+      this.agUw.setSelection(0);
+      this.agUw.set3DesEncrptData(paramString);
+      this.qiS = (24 - paramString.length());
+      this.agUw.setFilters(new InputFilter[] { new InputFilter.LengthFilter(this.qiS) });
       AppMethodBeat.o(72913);
       return;
     }
-    this.YWC.set3DesEncrptData(paramString);
-    this.YWC.setSelection(this.YWC.getText().length());
+    this.agUw.set3DesEncrptData(paramString);
+    this.agUw.setSelection(this.agUw.getText().length());
     AppMethodBeat.o(72913);
   }
   
@@ -833,41 +833,41 @@ public class EditHintView
   {
     AppMethodBeat.i(72927);
     super.setClickable(paramBoolean);
-    this.oYn = paramBoolean;
+    this.sdN = paramBoolean;
     if (!paramBoolean)
     {
-      this.YWC.setEnabled(false);
-      if (!this.nlF) {
-        this.YWC.setTextColor(getResources().getColor(a.c.lightgrey));
+      this.agUw.setEnabled(false);
+      if (!this.qiO) {
+        this.agUw.setTextColor(getResources().getColor(a.c.lightgrey));
       }
       for (;;)
       {
-        this.YWC.setFocusable(false);
-        this.YWC.setClickable(false);
+        this.agUw.setFocusable(false);
+        this.agUw.setClickable(false);
         AppMethodBeat.o(72927);
         return;
-        this.YWC.setTextColor(getResources().getColor(this.YWF));
+        this.agUw.setTextColor(getResources().getColor(this.agUz));
       }
     }
-    this.YWC.setEnabled(true);
-    if (!this.nlF) {
-      this.YWC.setTextColor(getResources().getColor(a.c.link_color_pressed));
+    this.agUw.setEnabled(true);
+    if (!this.qiO) {
+      this.agUw.setTextColor(getResources().getColor(a.c.link_color_pressed));
     }
     for (;;)
     {
-      this.YWC.setFocusable(true);
-      this.YWC.setClickable(true);
+      this.agUw.setFocusable(true);
+      this.agUw.setClickable(true);
       AppMethodBeat.o(72927);
       return;
-      this.YWC.setTextColor(getResources().getColor(this.YWF));
+      this.agUw.setTextColor(getResources().getColor(this.agUz));
     }
   }
   
   public void setEditBG(int paramInt)
   {
     AppMethodBeat.i(72916);
-    if (this.YWC != null) {
-      this.YWC.setBackgroundResource(paramInt);
+    if (this.agUw != null) {
+      this.agUw.setBackgroundResource(paramInt);
     }
     AppMethodBeat.o(72916);
   }
@@ -875,7 +875,7 @@ public class EditHintView
   public void setEllipsize(TextUtils.TruncateAt paramTruncateAt)
   {
     AppMethodBeat.i(72925);
-    this.YWC.setEllipsize(paramTruncateAt);
+    this.agUw.setEllipsize(paramTruncateAt);
     AppMethodBeat.o(72925);
   }
   
@@ -883,16 +883,16 @@ public class EditHintView
   {
     AppMethodBeat.i(72926);
     super.setEnabled(paramBoolean);
-    this.nlF = paramBoolean;
-    this.nlA.setEnabled(true);
+    this.qiO = paramBoolean;
+    this.qiJ.setEnabled(true);
     AppMethodBeat.o(72926);
   }
   
   public void setEncryptType(int paramInt)
   {
     AppMethodBeat.i(72917);
-    if (z.bdq()) {
-      this.YWC.setSecureEncrypt(new com.tencent.mm.wallet_core.a.a(paramInt));
+    if (z.bBi()) {
+      this.agUw.setSecureEncrypt(new com.tencent.mm.wallet_core.a.a(paramInt));
     }
     AppMethodBeat.o(72917);
   }
@@ -900,17 +900,17 @@ public class EditHintView
   public void setHintStr(String paramString)
   {
     AppMethodBeat.i(72909);
-    this.YWC.setHint(paramString);
+    this.agUw.setHint(paramString);
     AppMethodBeat.o(72909);
   }
   
   public void setIdentifyCardType(int paramInt)
   {
     AppMethodBeat.i(72920);
-    this.YWE = paramInt;
+    this.agUy = paramInt;
     if (paramInt == 1)
     {
-      this.YWC.setKeyListener(new NumberKeyListener()
+      this.agUw.setKeyListener(new NumberKeyListener()
       {
         protected final char[] getAcceptedChars()
         {
@@ -925,21 +925,21 @@ public class EditHintView
       AppMethodBeat.o(72920);
       return;
     }
-    this.YWC.setInputType(1);
+    this.agUw.setInputType(1);
     AppMethodBeat.o(72920);
   }
   
   public void setImeOptions(int paramInt)
   {
     AppMethodBeat.i(72933);
-    this.YWC.setImeOptions(paramInt);
+    this.agUw.setImeOptions(paramInt);
     AppMethodBeat.o(72933);
   }
   
   public void setInfoIvVisible(int paramInt)
   {
     AppMethodBeat.i(72935);
-    this.nlA.setVisibility(paramInt);
+    this.qiJ.setVisibility(paramInt);
     AppMethodBeat.o(72935);
   }
   
@@ -948,8 +948,8 @@ public class EditHintView
     AppMethodBeat.i(72919);
     if (paramInt != -1)
     {
-      this.nlJ = paramInt;
-      this.YWC.setFilters(new InputFilter[] { new InputFilter.LengthFilter(paramInt) });
+      this.qiS = paramInt;
+      this.agUw.setFilters(new InputFilter[] { new InputFilter.LengthFilter(paramInt) });
     }
     AppMethodBeat.o(72919);
   }
@@ -964,7 +964,7 @@ public class EditHintView
   public void setOnEditorActionListener(TextView.OnEditorActionListener paramOnEditorActionListener)
   {
     AppMethodBeat.i(72934);
-    this.YWC.setOnEditorActionListener(paramOnEditorActionListener);
+    this.agUw.setOnEditorActionListener(paramOnEditorActionListener);
     AppMethodBeat.o(72934);
   }
   
@@ -972,18 +972,18 @@ public class EditHintView
   {
     AppMethodBeat.i(72930);
     super.setOnFocusChangeListener(paramOnFocusChangeListener);
-    this.nly = paramOnFocusChangeListener;
+    this.qiH = paramOnFocusChangeListener;
     AppMethodBeat.o(72930);
   }
   
   public void setOnInfoListener(a parama)
   {
-    this.YWM = parama;
+    this.agUG = parama;
   }
   
   public void setOnInputValidChangeListener(b paramb)
   {
-    this.YWA = paramb;
+    this.agUu = paramb;
   }
   
   public void setPreFilledStr(String paramString)
@@ -991,24 +991,24 @@ public class EditHintView
     AppMethodBeat.i(72911);
     if (!Util.isNullOrNil(paramString))
     {
-      this.YWB.setText(paramString);
-      this.YWB.setVisibility(0);
+      this.agUv.setText(paramString);
+      this.agUv.setVisibility(0);
       AppMethodBeat.o(72911);
       return;
     }
-    this.YWB.setText("");
-    this.YWB.setVisibility(8);
+    this.agUv.setText("");
+    this.agUv.setVisibility(8);
     AppMethodBeat.o(72911);
   }
   
   public void setPreText(String paramString)
   {
     AppMethodBeat.i(72915);
-    KeyListener localKeyListener = this.YWC.getKeyListener();
-    this.YWC.setInputType(1);
-    this.YWC.setKeyListener(null);
+    KeyListener localKeyListener = this.agUw.getKeyListener();
+    this.agUw.setInputType(1);
+    this.agUw.setKeyListener(null);
     setValStr(paramString);
-    this.YWC.setKeyListener(localKeyListener);
+    this.agUw.setKeyListener(localKeyListener);
     this.mode = 4;
     AppMethodBeat.o(72915);
   }
@@ -1016,23 +1016,23 @@ public class EditHintView
   public void setShowScanCamera(boolean paramBoolean)
   {
     AppMethodBeat.i(72937);
-    this.YWG = paramBoolean;
-    ijp();
+    this.agUA = paramBoolean;
+    jPk();
     AppMethodBeat.o(72937);
   }
   
   public void setTipStr(String paramString)
   {
     AppMethodBeat.i(72910);
-    this.mrN.setText(paramString);
+    this.pls.setText(paramString);
     AppMethodBeat.o(72910);
   }
   
   public void setTipTextColor(int paramInt)
   {
     AppMethodBeat.i(72918);
-    if (this.mrN != null) {
-      this.mrN.setTextColor(paramInt);
+    if (this.pls != null) {
+      this.pls.setTextColor(paramInt);
     }
     AppMethodBeat.o(72918);
   }
@@ -1040,12 +1040,12 @@ public class EditHintView
   public void setTipWidth(int paramInt)
   {
     AppMethodBeat.i(72907);
-    this.YWD = BackwardSupportUtil.BitmapFactory.fromDPToPix(getContext(), paramInt * 1.0F);
-    if (this.mrN != null)
+    this.agUx = BackwardSupportUtil.BitmapFactory.fromDPToPix(getContext(), paramInt * 1.0F);
+    if (this.pls != null)
     {
-      ViewGroup.LayoutParams localLayoutParams = this.mrN.getLayoutParams();
-      localLayoutParams.width = this.YWD;
-      this.mrN.setLayoutParams(localLayoutParams);
+      ViewGroup.LayoutParams localLayoutParams = this.pls.getLayoutParams();
+      localLayoutParams.width = this.agUx;
+      this.pls.setLayoutParams(localLayoutParams);
     }
     AppMethodBeat.o(72907);
   }
@@ -1056,22 +1056,22 @@ public class EditHintView
     switch (this.editType)
     {
     default: 
-      this.YWC.setText(paramString);
-      this.YWC.setSelection(this.YWC.getText().length());
+      this.agUw.setText(paramString);
+      this.agUw.setSelection(this.agUw.getText().length());
       AppMethodBeat.o(72912);
       return;
     }
     if ((!Util.isNullOrNil(paramString)) && (paramString.length() <= 5))
     {
-      this.YWC.setSelection(0);
-      this.YWC.setBankcardTailNum(paramString);
-      this.nlJ = (24 - paramString.length());
-      this.YWC.setFilters(new InputFilter[] { new InputFilter.LengthFilter(this.nlJ) });
+      this.agUw.setSelection(0);
+      this.agUw.setBankcardTailNum(paramString);
+      this.qiS = (24 - paramString.length());
+      this.agUw.setFilters(new InputFilter[] { new InputFilter.LengthFilter(this.qiS) });
       AppMethodBeat.o(72912);
       return;
     }
-    this.YWC.setText(paramString);
-    this.YWC.setSelection(this.YWC.getText().length());
+    this.agUw.setText(paramString);
+    this.agUw.setSelection(this.agUw.getText().length());
     AppMethodBeat.o(72912);
   }
   
@@ -1081,7 +1081,7 @@ public class EditHintView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.wallet_core.ui.EditHintView
  * JD-Core Version:    0.7.0.1
  */

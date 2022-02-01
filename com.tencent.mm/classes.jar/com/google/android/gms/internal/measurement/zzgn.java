@@ -7,7 +7,6 @@ import com.google.android.gms.common.GoogleSignatureVerifier;
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.util.Clock;
 import com.google.android.gms.common.util.UidVerifier;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collections;
 import java.util.List;
@@ -97,7 +96,6 @@ public final class zzgn
     }
   }
   
-  @VisibleForTesting
   private final void zze(Runnable paramRunnable)
   {
     AppMethodBeat.i(1632);
@@ -121,49 +119,49 @@ public final class zzgn
     //   6: aload_0
     //   7: aload_1
     //   8: iconst_0
-    //   9: invokespecial 203	com/google/android/gms/internal/measurement/zzgn:zzb	(Lcom/google/android/gms/internal/measurement/zzdz;Z)V
+    //   9: invokespecial 201	com/google/android/gms/internal/measurement/zzgn:zzb	(Lcom/google/android/gms/internal/measurement/zzdz;Z)V
     //   12: aload_0
     //   13: getfield 33	com/google/android/gms/internal/measurement/zzgn:zzajp	Lcom/google/android/gms/internal/measurement/zzjr;
-    //   16: invokevirtual 183	com/google/android/gms/internal/measurement/zzjr:zzgd	()Lcom/google/android/gms/internal/measurement/zzgg;
-    //   19: new 205	com/google/android/gms/internal/measurement/zzhd
+    //   16: invokevirtual 182	com/google/android/gms/internal/measurement/zzjr:zzgd	()Lcom/google/android/gms/internal/measurement/zzgg;
+    //   19: new 203	com/google/android/gms/internal/measurement/zzhd
     //   22: dup
     //   23: aload_0
     //   24: aload_1
-    //   25: invokespecial 208	com/google/android/gms/internal/measurement/zzhd:<init>	(Lcom/google/android/gms/internal/measurement/zzgn;Lcom/google/android/gms/internal/measurement/zzdz;)V
-    //   28: invokevirtual 211	com/google/android/gms/internal/measurement/zzgg:zzb	(Ljava/util/concurrent/Callable;)Ljava/util/concurrent/Future;
+    //   25: invokespecial 206	com/google/android/gms/internal/measurement/zzhd:<init>	(Lcom/google/android/gms/internal/measurement/zzgn;Lcom/google/android/gms/internal/measurement/zzdz;)V
+    //   28: invokevirtual 209	com/google/android/gms/internal/measurement/zzgg:zzb	(Ljava/util/concurrent/Callable;)Ljava/util/concurrent/Future;
     //   31: astore_3
     //   32: aload_3
-    //   33: invokeinterface 214 1 0
-    //   38: checkcast 216	java/util/List
+    //   33: invokeinterface 212 1 0
+    //   38: checkcast 214	java/util/List
     //   41: astore 4
-    //   43: new 218	java/util/ArrayList
+    //   43: new 216	java/util/ArrayList
     //   46: dup
     //   47: aload 4
-    //   49: invokeinterface 221 1 0
-    //   54: invokespecial 223	java/util/ArrayList:<init>	(I)V
+    //   49: invokeinterface 219 1 0
+    //   54: invokespecial 221	java/util/ArrayList:<init>	(I)V
     //   57: astore_3
     //   58: aload 4
-    //   60: invokeinterface 227 1 0
+    //   60: invokeinterface 225 1 0
     //   65: astore 4
     //   67: aload 4
-    //   69: invokeinterface 232 1 0
+    //   69: invokeinterface 230 1 0
     //   74: ifeq +81 -> 155
     //   77: aload 4
-    //   79: invokeinterface 235 1 0
-    //   84: checkcast 237	com/google/android/gms/internal/measurement/zzjz
+    //   79: invokeinterface 233 1 0
+    //   84: checkcast 235	com/google/android/gms/internal/measurement/zzjz
     //   87: astore 5
     //   89: iload_2
     //   90: ifne +14 -> 104
     //   93: aload 5
-    //   95: getfield 240	com/google/android/gms/internal/measurement/zzjz:name	Ljava/lang/String;
-    //   98: invokestatic 243	com/google/android/gms/internal/measurement/zzka:zzci	(Ljava/lang/String;)Z
+    //   95: getfield 238	com/google/android/gms/internal/measurement/zzjz:name	Ljava/lang/String;
+    //   98: invokestatic 241	com/google/android/gms/internal/measurement/zzka:zzci	(Ljava/lang/String;)Z
     //   101: ifne -34 -> 67
     //   104: aload_3
-    //   105: new 245	com/google/android/gms/internal/measurement/zzjx
+    //   105: new 243	com/google/android/gms/internal/measurement/zzjx
     //   108: dup
     //   109: aload 5
-    //   111: invokespecial 248	com/google/android/gms/internal/measurement/zzjx:<init>	(Lcom/google/android/gms/internal/measurement/zzjz;)V
-    //   114: invokeinterface 251 2 0
+    //   111: invokespecial 246	com/google/android/gms/internal/measurement/zzjx:<init>	(Lcom/google/android/gms/internal/measurement/zzjz;)V
+    //   114: invokeinterface 249 2 0
     //   119: pop
     //   120: goto -53 -> 67
     //   123: astore_3
@@ -171,12 +169,12 @@ public final class zzgn
     //   125: getfield 33	com/google/android/gms/internal/measurement/zzgn:zzajp	Lcom/google/android/gms/internal/measurement/zzjr;
     //   128: invokevirtual 78	com/google/android/gms/internal/measurement/zzjr:zzge	()Lcom/google/android/gms/internal/measurement/zzfg;
     //   131: invokevirtual 84	com/google/android/gms/internal/measurement/zzfg:zzim	()Lcom/google/android/gms/internal/measurement/zzfi;
-    //   134: ldc 253
+    //   134: ldc 251
     //   136: aload_1
     //   137: getfield 47	com/google/android/gms/internal/measurement/zzdz:packageName	Ljava/lang/String;
     //   140: invokestatic 160	com/google/android/gms/internal/measurement/zzfg:zzbm	(Ljava/lang/String;)Ljava/lang/Object;
     //   143: aload_3
-    //   144: invokevirtual 256	com/google/android/gms/internal/measurement/zzfi:zze	(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+    //   144: invokevirtual 254	com/google/android/gms/internal/measurement/zzfi:zze	(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
     //   147: sipush 1619
     //   150: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   153: aconst_null
@@ -246,48 +244,48 @@ public final class zzgn
     //   9: invokespecial 51	com/google/android/gms/internal/measurement/zzgn:zzc	(Ljava/lang/String;Z)V
     //   12: aload_0
     //   13: getfield 33	com/google/android/gms/internal/measurement/zzgn:zzajp	Lcom/google/android/gms/internal/measurement/zzjr;
-    //   16: invokevirtual 183	com/google/android/gms/internal/measurement/zzjr:zzgd	()Lcom/google/android/gms/internal/measurement/zzgg;
-    //   19: new 276	com/google/android/gms/internal/measurement/zzgu
+    //   16: invokevirtual 182	com/google/android/gms/internal/measurement/zzjr:zzgd	()Lcom/google/android/gms/internal/measurement/zzgg;
+    //   19: new 274	com/google/android/gms/internal/measurement/zzgu
     //   22: dup
     //   23: aload_0
     //   24: aload_1
     //   25: aload_2
     //   26: aload_3
-    //   27: invokespecial 279	com/google/android/gms/internal/measurement/zzgu:<init>	(Lcom/google/android/gms/internal/measurement/zzgn;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   30: invokevirtual 211	com/google/android/gms/internal/measurement/zzgg:zzb	(Ljava/util/concurrent/Callable;)Ljava/util/concurrent/Future;
+    //   27: invokespecial 277	com/google/android/gms/internal/measurement/zzgu:<init>	(Lcom/google/android/gms/internal/measurement/zzgn;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   30: invokevirtual 209	com/google/android/gms/internal/measurement/zzgg:zzb	(Ljava/util/concurrent/Callable;)Ljava/util/concurrent/Future;
     //   33: astore_2
     //   34: aload_2
-    //   35: invokeinterface 214 1 0
-    //   40: checkcast 216	java/util/List
+    //   35: invokeinterface 212 1 0
+    //   40: checkcast 214	java/util/List
     //   43: astore_3
-    //   44: new 218	java/util/ArrayList
+    //   44: new 216	java/util/ArrayList
     //   47: dup
     //   48: aload_3
-    //   49: invokeinterface 221 1 0
-    //   54: invokespecial 223	java/util/ArrayList:<init>	(I)V
+    //   49: invokeinterface 219 1 0
+    //   54: invokespecial 221	java/util/ArrayList:<init>	(I)V
     //   57: astore_2
     //   58: aload_3
-    //   59: invokeinterface 227 1 0
+    //   59: invokeinterface 225 1 0
     //   64: astore_3
     //   65: aload_3
-    //   66: invokeinterface 232 1 0
+    //   66: invokeinterface 230 1 0
     //   71: ifeq +82 -> 153
     //   74: aload_3
-    //   75: invokeinterface 235 1 0
-    //   80: checkcast 237	com/google/android/gms/internal/measurement/zzjz
+    //   75: invokeinterface 233 1 0
+    //   80: checkcast 235	com/google/android/gms/internal/measurement/zzjz
     //   83: astore 5
     //   85: iload 4
     //   87: ifne +14 -> 101
     //   90: aload 5
-    //   92: getfield 240	com/google/android/gms/internal/measurement/zzjz:name	Ljava/lang/String;
-    //   95: invokestatic 243	com/google/android/gms/internal/measurement/zzka:zzci	(Ljava/lang/String;)Z
+    //   92: getfield 238	com/google/android/gms/internal/measurement/zzjz:name	Ljava/lang/String;
+    //   95: invokestatic 241	com/google/android/gms/internal/measurement/zzka:zzci	(Ljava/lang/String;)Z
     //   98: ifne -33 -> 65
     //   101: aload_2
-    //   102: new 245	com/google/android/gms/internal/measurement/zzjx
+    //   102: new 243	com/google/android/gms/internal/measurement/zzjx
     //   105: dup
     //   106: aload 5
-    //   108: invokespecial 248	com/google/android/gms/internal/measurement/zzjx:<init>	(Lcom/google/android/gms/internal/measurement/zzjz;)V
-    //   111: invokeinterface 251 2 0
+    //   108: invokespecial 246	com/google/android/gms/internal/measurement/zzjx:<init>	(Lcom/google/android/gms/internal/measurement/zzjz;)V
+    //   111: invokeinterface 249 2 0
     //   116: pop
     //   117: goto -52 -> 65
     //   120: astore_2
@@ -295,12 +293,12 @@ public final class zzgn
     //   122: getfield 33	com/google/android/gms/internal/measurement/zzgn:zzajp	Lcom/google/android/gms/internal/measurement/zzjr;
     //   125: invokevirtual 78	com/google/android/gms/internal/measurement/zzjr:zzge	()Lcom/google/android/gms/internal/measurement/zzfg;
     //   128: invokevirtual 84	com/google/android/gms/internal/measurement/zzfg:zzim	()Lcom/google/android/gms/internal/measurement/zzfi;
-    //   131: ldc 253
+    //   131: ldc 251
     //   133: aload_1
     //   134: invokestatic 160	com/google/android/gms/internal/measurement/zzfg:zzbm	(Ljava/lang/String;)Ljava/lang/Object;
     //   137: aload_2
-    //   138: invokevirtual 256	com/google/android/gms/internal/measurement/zzfi:zze	(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
-    //   141: invokestatic 272	java/util/Collections:emptyList	()Ljava/util/List;
+    //   138: invokevirtual 254	com/google/android/gms/internal/measurement/zzfi:zze	(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+    //   141: invokestatic 270	java/util/Collections:emptyList	()Ljava/util/List;
     //   144: astore_1
     //   145: sipush 1628
     //   148: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -341,51 +339,51 @@ public final class zzgn
     //   6: aload_0
     //   7: aload 4
     //   9: iconst_0
-    //   10: invokespecial 203	com/google/android/gms/internal/measurement/zzgn:zzb	(Lcom/google/android/gms/internal/measurement/zzdz;Z)V
+    //   10: invokespecial 201	com/google/android/gms/internal/measurement/zzgn:zzb	(Lcom/google/android/gms/internal/measurement/zzdz;Z)V
     //   13: aload_0
     //   14: getfield 33	com/google/android/gms/internal/measurement/zzgn:zzajp	Lcom/google/android/gms/internal/measurement/zzjr;
-    //   17: invokevirtual 183	com/google/android/gms/internal/measurement/zzjr:zzgd	()Lcom/google/android/gms/internal/measurement/zzgg;
-    //   20: new 283	com/google/android/gms/internal/measurement/zzgt
+    //   17: invokevirtual 182	com/google/android/gms/internal/measurement/zzjr:zzgd	()Lcom/google/android/gms/internal/measurement/zzgg;
+    //   20: new 281	com/google/android/gms/internal/measurement/zzgt
     //   23: dup
     //   24: aload_0
     //   25: aload 4
     //   27: aload_1
     //   28: aload_2
-    //   29: invokespecial 284	com/google/android/gms/internal/measurement/zzgt:<init>	(Lcom/google/android/gms/internal/measurement/zzgn;Lcom/google/android/gms/internal/measurement/zzdz;Ljava/lang/String;Ljava/lang/String;)V
-    //   32: invokevirtual 211	com/google/android/gms/internal/measurement/zzgg:zzb	(Ljava/util/concurrent/Callable;)Ljava/util/concurrent/Future;
+    //   29: invokespecial 282	com/google/android/gms/internal/measurement/zzgt:<init>	(Lcom/google/android/gms/internal/measurement/zzgn;Lcom/google/android/gms/internal/measurement/zzdz;Ljava/lang/String;Ljava/lang/String;)V
+    //   32: invokevirtual 209	com/google/android/gms/internal/measurement/zzgg:zzb	(Ljava/util/concurrent/Callable;)Ljava/util/concurrent/Future;
     //   35: astore_1
     //   36: aload_1
-    //   37: invokeinterface 214 1 0
-    //   42: checkcast 216	java/util/List
+    //   37: invokeinterface 212 1 0
+    //   42: checkcast 214	java/util/List
     //   45: astore_2
-    //   46: new 218	java/util/ArrayList
+    //   46: new 216	java/util/ArrayList
     //   49: dup
     //   50: aload_2
-    //   51: invokeinterface 221 1 0
-    //   56: invokespecial 223	java/util/ArrayList:<init>	(I)V
+    //   51: invokeinterface 219 1 0
+    //   56: invokespecial 221	java/util/ArrayList:<init>	(I)V
     //   59: astore_1
     //   60: aload_2
-    //   61: invokeinterface 227 1 0
+    //   61: invokeinterface 225 1 0
     //   66: astore_2
     //   67: aload_2
-    //   68: invokeinterface 232 1 0
+    //   68: invokeinterface 230 1 0
     //   73: ifeq +85 -> 158
     //   76: aload_2
-    //   77: invokeinterface 235 1 0
-    //   82: checkcast 237	com/google/android/gms/internal/measurement/zzjz
+    //   77: invokeinterface 233 1 0
+    //   82: checkcast 235	com/google/android/gms/internal/measurement/zzjz
     //   85: astore 5
     //   87: iload_3
     //   88: ifne +14 -> 102
     //   91: aload 5
-    //   93: getfield 240	com/google/android/gms/internal/measurement/zzjz:name	Ljava/lang/String;
-    //   96: invokestatic 243	com/google/android/gms/internal/measurement/zzka:zzci	(Ljava/lang/String;)Z
+    //   93: getfield 238	com/google/android/gms/internal/measurement/zzjz:name	Ljava/lang/String;
+    //   96: invokestatic 241	com/google/android/gms/internal/measurement/zzka:zzci	(Ljava/lang/String;)Z
     //   99: ifne -32 -> 67
     //   102: aload_1
-    //   103: new 245	com/google/android/gms/internal/measurement/zzjx
+    //   103: new 243	com/google/android/gms/internal/measurement/zzjx
     //   106: dup
     //   107: aload 5
-    //   109: invokespecial 248	com/google/android/gms/internal/measurement/zzjx:<init>	(Lcom/google/android/gms/internal/measurement/zzjz;)V
-    //   112: invokeinterface 251 2 0
+    //   109: invokespecial 246	com/google/android/gms/internal/measurement/zzjx:<init>	(Lcom/google/android/gms/internal/measurement/zzjz;)V
+    //   112: invokeinterface 249 2 0
     //   117: pop
     //   118: goto -51 -> 67
     //   121: astore_1
@@ -393,13 +391,13 @@ public final class zzgn
     //   123: getfield 33	com/google/android/gms/internal/measurement/zzgn:zzajp	Lcom/google/android/gms/internal/measurement/zzjr;
     //   126: invokevirtual 78	com/google/android/gms/internal/measurement/zzjr:zzge	()Lcom/google/android/gms/internal/measurement/zzfg;
     //   129: invokevirtual 84	com/google/android/gms/internal/measurement/zzfg:zzim	()Lcom/google/android/gms/internal/measurement/zzfi;
-    //   132: ldc 253
+    //   132: ldc 251
     //   134: aload 4
     //   136: getfield 47	com/google/android/gms/internal/measurement/zzdz:packageName	Ljava/lang/String;
     //   139: invokestatic 160	com/google/android/gms/internal/measurement/zzfg:zzbm	(Ljava/lang/String;)Ljava/lang/Object;
     //   142: aload_1
-    //   143: invokevirtual 256	com/google/android/gms/internal/measurement/zzfi:zze	(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
-    //   146: invokestatic 272	java/util/Collections:emptyList	()Ljava/util/List;
+    //   143: invokevirtual 254	com/google/android/gms/internal/measurement/zzfi:zze	(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+    //   146: invokestatic 270	java/util/Collections:emptyList	()Ljava/util/List;
     //   149: astore_1
     //   150: sipush 1627
     //   153: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -603,7 +601,7 @@ public final class zzgn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzgn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,175 +1,35 @@
 package kotlinx.a.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import kotlin.g.b.ab;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
-import kotlinx.a.h;
-import kotlinx.a.u;
+import kotlin.Metadata;
+import kotlinx.a.b;
+import kotlinx.a.b.d;
+import kotlinx.a.b.d.a;
+import kotlinx.a.b.e;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/serialization/modules/SerialModuleImpl;", "Lkotlinx/serialization/modules/SerialModule;", "class2Serializer", "", "Lkotlin/reflect/KClass;", "Lkotlinx/serialization/KSerializer;", "polyBase2Serializers", "polyBase2NamedSerializers", "", "(Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;)V", "dumpTo", "", "collector", "Lkotlinx/serialization/modules/SerialModuleCollector;", "getContextual", "T", "", "kclass", "getPolymorphic", "baseClass", "value", "(Lkotlin/reflect/KClass;Ljava/lang/Object;)Lkotlinx/serialization/KSerializer;", "serializedClassName", "kotlinx-serialization-runtime"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lkotlinx/serialization/internal/BooleanSerializer;", "Lkotlinx/serialization/KSerializer;", "", "()V", "descriptor", "Lkotlinx/serialization/descriptors/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/descriptors/SerialDescriptor;", "deserialize", "decoder", "Lkotlinx/serialization/encoding/Decoder;", "(Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Boolean;", "serialize", "", "encoder", "Lkotlinx/serialization/encoding/Encoder;", "value", "kotlinx-serialization-runtime"}, k=1, mv={1, 4, 0})
 public final class f
-  implements b
+  implements b<Boolean>
 {
-  private final Map<kotlin.l.b<?>, h<?>> abDZ;
-  private final Map<kotlin.l.b<?>, Map<kotlin.l.b<?>, h<?>>> abEa;
-  private final Map<kotlin.l.b<?>, Map<String, h<?>>> abEb;
+  private static final e Wki;
+  public static final f ajDq;
   
-  public f(Map<kotlin.l.b<?>, ? extends h<?>> paramMap, Map<kotlin.l.b<?>, ? extends Map<kotlin.l.b<?>, ? extends h<?>>> paramMap1, Map<kotlin.l.b<?>, ? extends Map<String, ? extends h<?>>> paramMap2)
+  static
   {
-    AppMethodBeat.i(257245);
-    this.abDZ = paramMap;
-    this.abEa = paramMap1;
-    this.abEb = paramMap2;
-    AppMethodBeat.o(257245);
+    AppMethodBeat.i(188599);
+    ajDq = new f();
+    Wki = (e)new ai("kotlin.Boolean", (d)d.a.ajCK);
+    AppMethodBeat.o(188599);
   }
   
-  public final <T> h<? extends T> a(kotlin.l.b<T> paramb, T paramT)
+  public final e iou()
   {
-    Object localObject3 = null;
-    AppMethodBeat.i(257241);
-    p.k(paramb, "baseClass");
-    p.k(paramT, "value");
-    if (!u.a(paramT, paramb))
-    {
-      AppMethodBeat.o(257241);
-      return null;
-    }
-    Object localObject1 = (Map)this.abEa.get(paramb);
-    if (localObject1 != null) {}
-    for (localObject1 = (h)((Map)localObject1).get(ab.bO(paramT.getClass()));; localObject1 = null)
-    {
-      Object localObject2 = localObject1;
-      if (!(localObject1 instanceof h)) {
-        localObject2 = null;
-      }
-      if (localObject2 == null) {
-        break;
-      }
-      AppMethodBeat.o(257241);
-      return localObject2;
-    }
-    if (p.h(paramb, ab.bO(Object.class)))
-    {
-      paramb = i.abEd;
-      paramb = i.gS(paramT);
-      if ((paramb instanceof h)) {
-        break label146;
-      }
-      paramb = localObject3;
-    }
-    label146:
-    for (;;)
-    {
-      AppMethodBeat.o(257241);
-      return paramb;
-      AppMethodBeat.o(257241);
-      return null;
-    }
-  }
-  
-  public final <T> h<? extends T> a(kotlin.l.b<T> paramb, String paramString)
-  {
-    Object localObject2 = null;
-    AppMethodBeat.i(257243);
-    p.k(paramb, "baseClass");
-    p.k(paramString, "serializedClassName");
-    if (p.h(paramb, ab.bO(Object.class))) {
-      localObject1 = i.abEd;
-    }
-    for (Object localObject1 = i.bHX(paramString); localObject1 != null; localObject1 = null)
-    {
-      AppMethodBeat.o(257243);
-      return localObject1;
-    }
-    paramb = (Map)this.abEb.get(paramb);
-    if (paramb != null)
-    {
-      paramb = (h)paramb.get(paramString);
-      if ((paramb instanceof h)) {
-        break label108;
-      }
-      paramb = localObject2;
-    }
-    label108:
-    for (;;)
-    {
-      AppMethodBeat.o(257243);
-      return paramb;
-      paramb = null;
-      break;
-    }
-  }
-  
-  public final void a(d paramd)
-  {
-    AppMethodBeat.i(257244);
-    p.k(paramd, "collector");
-    Iterator localIterator = this.abDZ.entrySet().iterator();
-    Object localObject1;
-    kotlin.l.b localb1;
-    while (localIterator.hasNext())
-    {
-      localObject1 = (Map.Entry)localIterator.next();
-      localb1 = (kotlin.l.b)((Map.Entry)localObject1).getKey();
-      localObject1 = (h)((Map.Entry)localObject1).getValue();
-      if (localb1 == null)
-      {
-        paramd = new t("null cannot be cast to non-null type kotlin.reflect.KClass<kotlin.Any>");
-        AppMethodBeat.o(257244);
-        throw paramd;
-      }
-      if (localObject1 == null)
-      {
-        paramd = new t("null cannot be cast to non-null type kotlinx.serialization.KSerializer<T>");
-        AppMethodBeat.o(257244);
-        throw paramd;
-      }
-      paramd.a(localb1, (h)localObject1);
-    }
-    localIterator = this.abEa.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      localObject1 = (Map.Entry)localIterator.next();
-      localb1 = (kotlin.l.b)((Map.Entry)localObject1).getKey();
-      localObject1 = ((Map)((Map.Entry)localObject1).getValue()).entrySet().iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
-        kotlin.l.b localb2 = (kotlin.l.b)((Map.Entry)localObject2).getKey();
-        localObject2 = (h)((Map.Entry)localObject2).getValue();
-        if (localb1 == null)
-        {
-          paramd = new t("null cannot be cast to non-null type kotlin.reflect.KClass<kotlin.Any>");
-          AppMethodBeat.o(257244);
-          throw paramd;
-        }
-        if (localb2 == null)
-        {
-          paramd = new t("null cannot be cast to non-null type kotlin.reflect.KClass<kotlin.Any>");
-          AppMethodBeat.o(257244);
-          throw paramd;
-        }
-        if (localObject2 == null)
-        {
-          paramd = new t("null cannot be cast to non-null type kotlinx.serialization.KSerializer<T>");
-          AppMethodBeat.o(257244);
-          throw paramd;
-        }
-        paramd.a(localb1, localb2, (h)localObject2);
-      }
-    }
-    AppMethodBeat.o(257244);
+    return Wki;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlinx.a.d.f
  * JD-Core Version:    0.7.0.1
  */

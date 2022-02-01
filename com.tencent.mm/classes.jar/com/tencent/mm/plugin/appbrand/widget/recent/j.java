@@ -1,27 +1,28 @@
 package com.tencent.mm.plugin.appbrand.widget.recent;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appusage.ag.a;
+import com.tencent.mm.plugin.appbrand.appusage.af.a;
+import kotlin.Metadata;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/widget/recent/CollectionQueryCacheConfig;", "Lcom/tencent/mm/plugin/appbrand/widget/recent/QueryCacheConfig;", "count", "", "order", "Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage$ORDER;", "(ILcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage$ORDER;)V", "getCount", "()I", "getOrder", "()Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage$ORDER;", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/widget/recent/CollectionQueryCacheConfig;", "Lcom/tencent/mm/plugin/appbrand/widget/recent/QueryCacheConfig;", "count", "", "order", "Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage$ORDER;", "(ILcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage$ORDER;)V", "getCount", "()I", "getOrder", "()Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage$ORDER;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class j
   extends l
 {
   public final int count;
-  public final ag.a nQx;
+  public final af.a qQm;
   
-  public j(ag.a parama)
+  public j(af.a parama)
   {
     super(new Object[] { Integer.valueOf(2147483647), parama });
-    AppMethodBeat.i(278924);
+    AppMethodBeat.i(324040);
     this.count = 2147483647;
-    this.nQx = parama;
-    AppMethodBeat.o(278924);
+    this.qQm = parama;
+    AppMethodBeat.o(324040);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.recent.j
  * JD-Core Version:    0.7.0.1
  */

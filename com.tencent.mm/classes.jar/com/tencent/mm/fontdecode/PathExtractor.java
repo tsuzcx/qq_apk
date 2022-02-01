@@ -3,19 +3,22 @@ package com.tencent.mm.fontdecode;
 import android.graphics.Matrix;
 import android.graphics.Path;
 import android.graphics.RectF;
-import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class PathExtractor
 {
   private String filePath;
-  private long jSm;
+  public long msD;
   
   static
   {
     AppMethodBeat.i(145549);
-    System.loadLibrary("fontdecode");
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG("fontdecode");
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/mm/fontdecode/PathExtractor", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/fontdecode/PathExtractor", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
     AppMethodBeat.o(145549);
   }
   
@@ -23,10 +26,10 @@ public class PathExtractor
   {
     AppMethodBeat.i(145544);
     this.filePath = paramString;
-    this.jSm = nInit(paramString);
-    if (this.jSm != 0L)
+    this.msD = nInit(paramString);
+    if (this.msD != 0L)
     {
-      Log.i("MicroMsg.PathExtractor", "create for %s, %d", new Object[] { paramString, Long.valueOf(this.jSm) });
+      Log.i("MicroMsg.PathExtractor", "create for %s, %d", new Object[] { paramString, Long.valueOf(this.msD) });
       AppMethodBeat.o(145544);
       return;
     }
@@ -38,27 +41,11 @@ public class PathExtractor
   
   private static native void nFinalize(long paramLong);
   
-  private static native void nGetMetrics(long paramLong, Metrics paramMetrics);
+  public static native void nGetMetrics(long paramLong, Metrics paramMetrics);
   
   private static native long nInit(String paramString);
   
-  private static native void nSetTextSize(long paramLong, int paramInt);
-  
-  public final void a(Metrics paramMetrics)
-  {
-    AppMethodBeat.i(145546);
-    if (paramMetrics == null)
-    {
-      Log.w("MicroMsg.PathExtractor", "metrics is null");
-      AppMethodBeat.o(145546);
-      return;
-    }
-    nGetMetrics(this.jSm, paramMetrics);
-    paramMetrics.height *= 0.015625F;
-    paramMetrics.ascender *= 0.015625F;
-    paramMetrics.descender *= 0.015625F;
-    AppMethodBeat.o(145546);
-  }
+  public static native void nSetTextSize(long paramLong, int paramInt);
   
   public final boolean a(char paramChar, Path paramPath, RectF paramRectF)
   {
@@ -66,7 +53,7 @@ public class PathExtractor
     int[] arrayOfInt = new int[4];
     try
     {
-      bool = nExtractPath(this.jSm, paramChar, paramPath, arrayOfInt);
+      bool = nExtractPath(this.msD, paramChar, paramPath, arrayOfInt);
       if (bool)
       {
         Matrix localMatrix = new Matrix();
@@ -96,7 +83,7 @@ public class PathExtractor
     AppMethodBeat.i(145548);
     try
     {
-      nFinalize(this.jSm);
+      nFinalize(this.msD);
       return;
     }
     finally
@@ -106,20 +93,6 @@ public class PathExtractor
     }
   }
   
-  public final boolean isValid()
-  {
-    return this.jSm != 0L;
-  }
-  
-  public final void setTextSize(int paramInt)
-  {
-    AppMethodBeat.i(145545);
-    Log.i("MicroMsg.PathExtractor", "set text size %d, %d", new Object[] { Long.valueOf(this.jSm), Integer.valueOf(paramInt) });
-    nSetTextSize(this.jSm, paramInt);
-    AppMethodBeat.o(145545);
-  }
-  
-  @Keep
   public static class Metrics
   {
     public float ascender;

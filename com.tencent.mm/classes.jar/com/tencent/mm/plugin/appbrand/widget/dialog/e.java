@@ -1,308 +1,188 @@
 package com.tencent.mm.plugin.appbrand.widget.dialog;
 
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.app.Dialog;
+import android.animation.TimeInterpolator;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnDismissListener;
-import android.media.AudioManager;
+import android.content.res.Resources;
+import android.os.Vibrator;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.AccelerateInterpolator;
-import android.webkit.ValueCallback;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RatingBar;
-import android.widget.RatingBar.OnRatingBarChangeListener;
+import android.view.animation.LinearInterpolator;
+import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.Toast;
+import androidx.core.g.z;
+import com.tencent.luggage.m.a.a;
+import com.tencent.luggage.m.a.b;
+import com.tencent.luggage.m.a.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
-import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.api.g;
-import com.tencent.mm.plugin.appbrand.au.f;
-import com.tencent.mm.plugin.appbrand.au.i;
-import com.tencent.mm.plugin.appbrand.au.j;
-import com.tencent.mm.plugin.appbrand.service.c;
-import com.tencent.mm.plugin.appbrand.service.r;
-import com.tencent.mm.plugin.appbrand.t;
-import com.tencent.mm.plugin.music.b.i;
-import com.tencent.mm.protocal.protobuf.aku;
-import com.tencent.mm.protocal.protobuf.dgz;
-import com.tencent.mm.protocal.protobuf.eoz;
-import com.tencent.mm.protocal.protobuf.epa;
-import com.tencent.mm.protocal.protobuf.eww;
-import com.tencent.mm.protocal.protobuf.ewx;
-import com.tencent.mm.protocal.protobuf.fok;
-import com.tencent.mm.protocal.protobuf.fqd;
-import com.tencent.mm.protocal.protobuf.fqe;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.util.LinkedList;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.appbrand.jsapi.aj;
+import com.tencent.mm.plugin.appbrand.utils.html.c;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandAuthorizeUserAgreementComponent;", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IAuthorizeUserAgreementComponent;", "context", "Landroid/content/Context;", "view", "Landroid/view/View;", "(Landroid/content/Context;Landroid/view/View;)V", "externalToolsHelper", "Lcom/tencent/mm/plugin/appbrand/jsapi/IExternalToolsHelper;", "listener", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/UserAgreementCheckedAlertListener;", "userAgreementCb", "Landroid/widget/CheckBox;", "userAgreementCbClickArea", "userAgreementEnable", "", "userAgreementLayout", "userAgreementTv", "Landroid/widget/TextView;", "ensureUserAgreementLayoutVisible", "", "findViewById", "T", "id", "", "(I)Landroid/view/View;", "isUserUserAgreementChecked", "isUserUserAgreementVisible", "setIExternalToolsHelper", "setUserAgreementCheckBoxWording", "wording", "", "setUserAgreementCheckedAlertListener", "shakeUserAgreementLayout", "userAgreementChecked", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
+  implements q
 {
-  public String appId;
-  public Dialog dialog;
-  public String fve;
-  public com.tencent.mm.plugin.appbrand.report.b olT;
-  public int pEa;
-  public TextView rrS;
-  public boolean rtM;
-  int rtO;
-  public RatingBar rtQ;
-  public TextView rtR;
-  public LinearLayout rtS;
-  public LinearLayout rtT;
-  boolean rtU;
-  public int scene;
-  public String sessionId;
-  public String userName;
+  private final Context context;
+  private View uBT;
+  private TextView uBU;
+  private CheckBox uBV;
+  private View uBW;
+  private aj uBX;
+  private boolean uBY;
+  private u uBZ;
+  private final View view;
   
-  public e(c paramc)
+  public e(Context paramContext, View paramView)
   {
-    AppMethodBeat.i(49886);
-    this.rtM = false;
-    this.rtO = 0;
-    this.pEa = -1;
-    this.rtU = false;
-    paramc = (com.tencent.mm.plugin.appbrand.game.b)paramc.R(com.tencent.mm.plugin.appbrand.game.b.class);
-    if (paramc != null) {
-      this.olT = paramc.bOq();
-    }
-    AppMethodBeat.o(49886);
+    AppMethodBeat.i(324684);
+    this.context = paramContext;
+    this.view = paramView;
+    this.uBT = findViewById(a.d.user_agreement_layout);
+    this.uBU = ((TextView)findViewById(a.d.user_agreement_desc_tv));
+    this.uBV = ((CheckBox)findViewById(a.d.user_agreement_cb));
+    this.uBW = findViewById(a.d.user_agreement_cb_click_area);
+    this.uBT.setOnClickListener(new e..ExternalSyntheticLambda0(this));
+    AppMethodBeat.o(324684);
   }
   
-  public static Dialog C(Context paramContext, boolean paramBoolean)
+  private static final void a(e parame, View paramView)
   {
-    AppMethodBeat.i(49887);
-    paramContext = new com.tencent.mm.plugin.crashfix.b.a(paramContext, au.j.AppBrandEvaluateDialogStyle);
-    paramContext.setCancelable(true);
-    paramContext.setCanceledOnTouchOutside(paramBoolean);
-    Window localWindow = paramContext.getWindow();
-    if (localWindow != null)
+    AppMethodBeat.i(324696);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(parame);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/appbrand/widget/dialog/AppBrandAuthorizeUserAgreementComponent", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(parame, "this$0");
+    paramView = parame.uBV;
+    if (!parame.uBV.isChecked()) {}
+    for (boolean bool = true;; bool = false)
     {
-      localWindow.getDecorView().setPadding(0, 0, 0, 0);
-      WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
-      localLayoutParams.gravity = 81;
-      localLayoutParams.height = -2;
-      localLayoutParams.width = -1;
-      localWindow.setAttributes(localLayoutParams);
-      localWindow.setWindowAnimations(au.j.AppBrandEvaluateDialogAnimation);
-    }
-    AppMethodBeat.o(49887);
-    return paramContext;
-  }
-  
-  final void DG(int paramInt)
-  {
-    AppMethodBeat.i(49890);
-    int i = au.i.app_brand_evaluate_star_one;
-    switch (paramInt)
-    {
-    default: 
-      paramInt = i;
-    }
-    for (;;)
-    {
-      this.rtR.setText(paramInt);
-      AppMethodBeat.o(49890);
-      return;
-      paramInt = au.i.app_brand_evaluate_star_one;
-      continue;
-      paramInt = au.i.app_brand_evaluate_star_two;
-      continue;
-      paramInt = au.i.app_brand_evaluate_star_three;
-      continue;
-      paramInt = au.i.app_brand_evaluate_star_four;
-      continue;
-      paramInt = au.i.app_brand_evaluate_star_five;
-    }
-  }
-  
-  final void a(t paramt, boolean paramBoolean, dgz paramdgz, fqd paramfqd)
-  {
-    AppMethodBeat.i(175092);
-    if (this.rtU)
-    {
-      AppMethodBeat.o(175092);
+      paramView.setChecked(bool);
+      a.a(new Object(), "com/tencent/mm/plugin/appbrand/widget/dialog/AppBrandAuthorizeUserAgreementComponent", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(324696);
       return;
     }
-    this.rtU = true;
-    int i;
-    if (paramdgz == null)
-    {
-      i = 0;
-      paramdgz = (AudioManager)paramt.mContext.getSystemService("audio");
-      if (paramdgz == null) {
-        break label390;
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        j = paramdgz.getStreamVolume(3);
-        fok localfok = new fok();
-        if (j != 0) {
-          break label396;
-        }
-        bool = true;
-        localfok.UMy = bool;
-        paramdgz = i.fcS();
-        str1 = paramt.mAppId;
-        localfok.UMz = paramdgz.FNQ.contains(str1);
-        localfok.UMA = (this.pEa / 1000);
-        if (!paramBoolean) {
-          break label402;
-        }
-        paramdgz = "true";
-        String str3 = paramfqd.UNV;
-        if (j != 0) {
-          break label409;
-        }
-        str1 = "true";
-        if (!localfok.UMz) {
-          break label417;
-        }
-        str2 = "true";
-        Log.i("MicroMsg.AppBrand.Evaluate.AppBrandEvaluateDialogHelper", "submitGameEvaluateResult reject[%s] questionId[%s] optionId[%d] isMute[%s] isPlayMusic[%s] playSeconds[%d]", new Object[] { paramdgz, str3, Integer.valueOf(i), str1, str2, Integer.valueOf(localfok.UMA) });
-        paramdgz = new fqe();
-        paramdgz.UOa = paramBoolean;
-        paramdgz.TNG = i;
-        paramdgz.UNV = paramfqd.UNV;
-        paramfqd = new eoz();
-        paramfqd.lVG = paramt.mAppId;
-        paramfqd.Ton = this.olT.qIn;
-        paramfqd.Tom = this.olT.qIo;
-        paramfqd.Too = localfok;
-        paramfqd.Urt = paramdgz;
-        paramt = new d.a();
-        paramt.funcId = 2772;
-        paramt.uri = "/cgi-bin/mmgame-bin/submitoriginalreview";
-        paramt.lBU = paramfqd;
-        paramt.lBV = new epa();
-        IPCRunCgi.a(paramt.bgN(), new e.14(this));
-        AppMethodBeat.o(175092);
-        return;
-      }
-      catch (Exception paramdgz)
-      {
-        Log.e("MicroMsg.AppBrand.Evaluate.AppBrandEvaluateDialogHelper", "currentVolume get error: %s", new Object[] { paramdgz.toString() });
-        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1237L, 6L, 1L, false);
-      }
-      i = paramdgz.TNG;
-      break;
-      label390:
-      int j = 0;
-      continue;
-      label396:
-      boolean bool = false;
-      continue;
-      label402:
-      paramdgz = "false";
-      continue;
-      label409:
-      String str1 = "false";
-      continue;
-      label417:
-      String str2 = "false";
-    }
   }
   
-  final void a(eww parameww)
+  private static final void a(e parame, String paramString)
   {
-    AppMethodBeat.i(49888);
-    d.a locala = new d.a();
-    locala.funcId = 2521;
-    locala.uri = "/cgi-bin/mmbiz-bin/wxabusiness/updateevaluate";
-    locala.lBU = parameww;
-    locala.lBV = new ewx();
-    IPCRunCgi.a(locala.bgN(), new IPCRunCgi.a()
-    {
-      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, d paramAnonymousd)
-      {
-        AppMethodBeat.i(49869);
-        Log.i("MicroMsg.AppBrand.Evaluate.AppBrandEvaluateDialogHelper", "updateEvaluateCgi, errType:%s, errCode:%s, errMsg:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
-        if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0) && (paramAnonymousd != null) && (d.c.b(paramAnonymousd.lBS) != null) && ((d.c.b(paramAnonymousd.lBS) instanceof ewx)))
-        {
-          Log.i("MicroMsg.AppBrand.Evaluate.AppBrandEvaluateDialogHelper", "updateEvaluateCgi, request success");
-          if (e.this.rtM)
-          {
-            e.this.fg(3, 1);
-            AppMethodBeat.o(49869);
-            return;
-          }
-          e.this.fg(2, 1);
-          AppMethodBeat.o(49869);
-          return;
-        }
-        Log.e("MicroMsg.AppBrand.Evaluate.AppBrandEvaluateDialogHelper", "updateEvaluateCgi, request fail");
-        if (e.this.rtM)
-        {
-          e.this.fg(3, 2);
-          AppMethodBeat.o(49869);
-          return;
-        }
-        e.this.fg(2, 2);
-        AppMethodBeat.o(49869);
-      }
-    });
-    AppMethodBeat.o(49888);
-  }
-  
-  public final void dismiss()
-  {
-    AppMethodBeat.i(49892);
-    if (this.dialog != null)
-    {
-      this.dialog.dismiss();
-      this.dialog = null;
+    AppMethodBeat.i(324700);
+    s.u(parame, "this$0");
+    aj localaj = parame.uBX;
+    if (localaj != null) {
+      localaj.a(parame.context, paramString, "", null);
     }
-    AppMethodBeat.o(49892);
+    AppMethodBeat.o(324700);
   }
   
-  public final void fg(int paramInt1, int paramInt2)
+  private void cPT()
   {
-    AppMethodBeat.i(49893);
-    if (Util.isNullOrNil(this.appId))
+    AppMethodBeat.i(324688);
+    int i = this.context.getResources().getDimensionPixelOffset(a.b.Edge_A);
+    Object localObject = ObjectAnimator.ofFloat(this.view, "translationX", new float[] { 0.0F, -i, i, -i, 0.0F }).setDuration(300L);
+    s.s(localObject, "ofFloat(\n            vie…       ).setDuration(300)");
+    ((ObjectAnimator)localObject).setInterpolator((TimeInterpolator)new LinearInterpolator());
+    ((ObjectAnimator)localObject).start();
+    localObject = MMApplicationContext.getContext().getSystemService("vibrator");
+    if (localObject == null)
     {
-      Log.e("MicroMsg.AppBrand.Evaluate.AppBrandEvaluateDialogHelper", "operateReport, no app id");
-      AppMethodBeat.o(49893);
+      localObject = new NullPointerException("null cannot be cast to non-null type android.os.Vibrator");
+      AppMethodBeat.o(324688);
+      throw ((Throwable)localObject);
+    }
+    ((Vibrator)localObject).vibrate(100L);
+    AppMethodBeat.o(324688);
+  }
+  
+  private <T extends View> T findViewById(int paramInt)
+  {
+    AppMethodBeat.i(324692);
+    View localView = this.view.findViewById(paramInt);
+    AppMethodBeat.o(324692);
+    return localView;
+  }
+  
+  public final boolean cBy()
+  {
+    AppMethodBeat.i(324726);
+    if ((this.uBY) && (!this.uBV.isChecked()))
+    {
+      cPT();
+      u localu = this.uBZ;
+      if (localu != null) {
+        localu.onAlert();
+      }
+      AppMethodBeat.o(324726);
+      return false;
+    }
+    AppMethodBeat.o(324726);
+    return true;
+  }
+  
+  public final boolean cPR()
+  {
+    AppMethodBeat.i(324734);
+    if ((this.uBY) && (this.view.getVisibility() == 0))
+    {
+      AppMethodBeat.o(324734);
+      return true;
+    }
+    AppMethodBeat.o(324734);
+    return false;
+  }
+  
+  public final boolean cPS()
+  {
+    AppMethodBeat.i(324739);
+    if ((this.uBT.getVisibility() == 0) && (this.uBV.isChecked()))
+    {
+      AppMethodBeat.o(324739);
+      return true;
+    }
+    AppMethodBeat.o(324739);
+    return false;
+  }
+  
+  public final void setIExternalToolsHelper(aj paramaj)
+  {
+    this.uBX = paramaj;
+  }
+  
+  public final void setUserAgreementCheckBoxWording(String paramString)
+  {
+    AppMethodBeat.i(324716);
+    s.u(paramString, "wording");
+    if (((CharSequence)paramString).length() == 0) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      AppMethodBeat.o(324716);
       return;
     }
-    Log.i("MicroMsg.AppBrand.Evaluate.AppBrandEvaluateDialogHelper", "operateReport, appId:%s, eventId:%s, session:%s, score:%s, scene:%s, result:%s, path:%s", new Object[] { this.appId, Integer.valueOf(paramInt1), this.sessionId, Integer.valueOf(this.rtO), Integer.valueOf(this.scene), Integer.valueOf(paramInt2), this.fve });
-    com.tencent.mm.plugin.report.service.h.IzE.a(16176, new Object[] { this.appId, Integer.valueOf(paramInt1), Long.valueOf(Util.nowSecond()), Integer.valueOf(this.rtO), this.sessionId, this.fve, Integer.valueOf(this.scene), Integer.valueOf(paramInt2) });
-    AppMethodBeat.o(49893);
+    if (this.view.getVisibility() != 0) {
+      this.view.setVisibility(0);
+    }
+    this.uBU.setText(c.a(paramString, false, new e..ExternalSyntheticLambda1(this)));
+    this.uBU.setMovementMethod(LinkMovementMethod.getInstance());
+    this.uBU.setLinkTextColor(this.context.getResources().getColor(a.a.link_color));
+    z.T((View)this.uBU);
+    this.uBY = true;
+    AppMethodBeat.o(324716);
   }
   
-  public final void show()
+  public final void setUserAgreementCheckedAlertListener(u paramu)
   {
-    AppMethodBeat.i(49891);
-    if (this.dialog != null) {
-      this.dialog.show();
-    }
-    AppMethodBeat.o(49891);
+    this.uBZ = paramu;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.multitask.ui.base.MultiTaskSnapView android:id="@id/h3h" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="matrix" />
+    <ProgressBar android:layout_gravity="center" android:id="@id/h3i" android:visibility="gone" android:layout_width="@dimen/d4" android:layout_height="@dimen/d4" style="@style/a85" />
+</FrameLayout>

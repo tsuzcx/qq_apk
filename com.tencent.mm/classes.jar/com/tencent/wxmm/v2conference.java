@@ -5,6 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class v2conference
 {
   private static final String TAG = "WXMM.Conference";
+  private byte _hellAccFlag_;
   public int[] audioChannels;
   public int[] audioFrameLen;
   public int[] audioSampleRate;
@@ -32,10 +33,26 @@ public class v2conference
   static
   {
     AppMethodBeat.i(40774);
-    System.loadLibrary("c++_shared");
-    System.loadLibrary("ilink_xlog");
-    System.loadLibrary("ilink_network");
-    System.loadLibrary("confService");
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG("c++_shared");
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/wxmm/v2conference", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/wxmm/v2conference", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    locala = new com.tencent.mm.hellhoundlib.b.a().cG("ilink_xlog");
+    localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/wxmm/v2conference", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/wxmm/v2conference", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    locala = new com.tencent.mm.hellhoundlib.b.a().cG("ilink_network");
+    localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/wxmm/v2conference", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/wxmm/v2conference", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    locala = new com.tencent.mm.hellhoundlib.b.a().cG("confService");
+    localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/wxmm/v2conference", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/wxmm/v2conference", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
     AppMethodBeat.o(40774);
   }
   
@@ -119,13 +136,13 @@ public class v2conference
   
   public int GetDecodeVideoData(byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(231693);
+    AppMethodBeat.i(210461);
     if (1 == GetVideoData(paramArrayOfByte, paramInt))
     {
-      AppMethodBeat.o(231693);
+      AppMethodBeat.o(210461);
       return 1;
     }
-    AppMethodBeat.o(231693);
+    AppMethodBeat.o(210461);
     return 0;
   }
   
@@ -197,6 +214,10 @@ public class v2conference
     this.mUiConfCallback = paramIConfCallBack;
   }
   
+  public native int StartPublish(byte[] paramArrayOfByte, int paramInt);
+  
+  public native int StopPublish();
+  
   public native int SubscribeVideo(byte[] paramArrayOfByte, int paramInt);
   
   public native int SwitchAV(int paramInt1, int paramInt2, int paramInt3);
@@ -227,7 +248,7 @@ public class v2conference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.wxmm.v2conference
  * JD-Core Version:    0.7.0.1
  */

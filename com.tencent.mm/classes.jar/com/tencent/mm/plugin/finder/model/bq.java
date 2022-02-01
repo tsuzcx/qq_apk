@@ -1,35 +1,66 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bkr;
-import com.tencent.mm.view.recyclerview.a;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.feed.model.internal.k;
+import com.tencent.mm.protocal.protobuf.aue;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderTopicFollowData;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "topicInfo", "Lcom/tencent/mm/protocal/protobuf/FinderTopicInfo;", "(Lcom/tencent/mm/protocal/protobuf/FinderTopicInfo;)V", "getTopicInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderTopicInfo;", "getItemId", "", "getItemType", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/model/FinderPoiData;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "info", "Lcom/tencent/mm/protocal/protobuf/FinderBindPoiInfo;", "type", "", "pullType", "(Lcom/tencent/mm/protocal/protobuf/FinderBindPoiInfo;II)V", "getInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderBindPoiInfo;", "getPullType", "()I", "titleType", "getTitleType", "setTitleType", "(I)V", "getType", "compare", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "", "getItemType", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class bq
-  implements a
+  implements cc
 {
-  public final bkr fGc;
+  public static final a EDv;
+  public final aue EDw;
+  public int EDx;
+  private final int pullType;
+  public final int type;
   
-  public bq(bkr parambkr)
+  static
   {
-    AppMethodBeat.i(276823);
-    this.fGc = parambkr;
-    AppMethodBeat.o(276823);
+    AppMethodBeat.i(331952);
+    EDv = new a((byte)0);
+    AppMethodBeat.o(331952);
   }
   
-  public final int bAQ()
+  public bq(aue paramaue, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(276822);
-    int i = bq.class.getName().hashCode();
-    AppMethodBeat.o(276822);
-    return i;
+    AppMethodBeat.i(331943);
+    this.EDw = paramaue;
+    this.type = paramInt1;
+    this.pullType = paramInt2;
+    AppMethodBeat.o(331943);
   }
   
-  public final long mf()
+  public final int a(k paramk)
   {
-    return 0L;
+    AppMethodBeat.i(331966);
+    s.u(paramk, "obj");
+    if ((paramk instanceof bq)) {}
+    for (paramk = (bq)paramk; (paramk != null) && (s.p(paramk.EDw.id, this.EDw.id)); paramk = null)
+    {
+      AppMethodBeat.o(331966);
+      return 0;
+    }
+    AppMethodBeat.o(331966);
+    return -1;
   }
+  
+  public final long bZA()
+  {
+    AppMethodBeat.i(331957);
+    long l = hashCode();
+    AppMethodBeat.o(331957);
+    return l;
+  }
+  
+  public final int bZB()
+  {
+    return this.type;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/model/FinderPoiData$Companion;", "", "()V", "AUDIT_TYPE_APPROVE", "", "AUDIT_TYPE_AUDITING", "AUDIT_TYPE_REJECT", "ITEM_TYPE_NORMAL", "ITEM_TYPE_TITLE", "TITLE_TYPE_AUDIT", "TITLE_TYPE_BIND", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 

@@ -1,24 +1,21 @@
 package com.tencent.mm.plugin.wallet_core.utils;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/wallet_core/utils/SenderType;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "DEFAULT", "SENDER", "RECEIVER", "plugin-wxpay_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/wallet_core/utils/MessageType;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "DEFAULT", "TRANSFER", "C2C", "plugin-wxpay_release"}, k=1, mv={1, 5, 1}, xi=48)
 public enum f
 {
   final int value;
   
   static
   {
-    AppMethodBeat.i(204897);
-    f localf1 = new f("DEFAULT", 0, 0);
-    Phr = localf1;
-    f localf2 = new f("SENDER", 1, 1);
-    Phs = localf2;
-    f localf3 = new f("RECEIVER", 2, 2);
-    Pht = localf3;
-    Phu = new f[] { localf1, localf2, localf3 };
-    AppMethodBeat.o(204897);
+    AppMethodBeat.i(301433);
+    VYa = new f("DEFAULT", 0, 0);
+    VYb = new f("TRANSFER", 1, 1);
+    VYc = new f("C2C", 2, 2);
+    VYd = new f[] { VYa, VYb, VYc };
+    AppMethodBeat.o(301433);
   }
   
   private f(int paramInt)
@@ -28,7 +25,7 @@ public enum f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.utils.f
  * JD-Core Version:    0.7.0.1
  */

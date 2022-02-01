@@ -1,29 +1,43 @@
 package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.protocal.protobuf.dtx;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.wallet_core.ui.i;
 
 final class WalletLqtDetailUI$17
-  implements View.OnClickListener
+  implements MenuItem.OnMenuItemClickListener
 {
-  WalletLqtDetailUI$17(WalletLqtDetailUI paramWalletLqtDetailUI, com.google.android.material.bottomsheet.a parama) {}
+  WalletLqtDetailUI$17(WalletLqtDetailUI paramWalletLqtDetailUI, dtx paramdtx) {}
   
-  public final void onClick(View paramView)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(186283);
-    b localb = new b();
-    localb.bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtDetailUI$24", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    this.Oqc.dismiss();
-    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtDetailUI$24", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(186283);
+    AppMethodBeat.i(316469);
+    if (this.Vfh.aaZv != 1)
+    {
+      if (this.Vfh.aaZv != 2) {
+        break label62;
+      }
+      if (!Util.isNullOrNil(this.Vfh.Krl)) {
+        i.o(this.VeZ, this.Vfh.Krl, false);
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(316469);
+      return false;
+      label62:
+      if ((this.Vfh.aaZv == 3) && (!Util.isNullOrNil(this.Vfh.YYZ)) && (!Util.isNullOrNil(this.Vfh.Krl))) {
+        i.y(this.Vfh.YYZ, this.Vfh.Krl, 0, 1061);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtDetailUI.17
  * JD-Core Version:    0.7.0.1
  */

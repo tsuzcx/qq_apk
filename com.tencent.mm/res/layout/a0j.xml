@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="horizontal" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/eai" android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/ior" android:focusable="false" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/g" android:minWidth="68.0dip" android:text="@string/iad" android:singleLine="true" />
-        <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/gfw" android:focusable="false" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/kb" android:singleLine="true" />
-    </LinearLayout>
-    <com.tenpay.android.wechat.TenpaySecureEditText android:gravity="center_vertical" android:id="@id/dpf" android:background="@null" android:paddingRight="32.0dip" android:layout_height="fill_parent" android:minHeight="48.0dip" android:singleLine="true" android:layout_toRightOf="@id/eai" style="@style/nn" />
-    <ImageView android:id="@id/dy5" android:background="@null" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="wrap_content" android:src="@drawable/bk3" android:scaleType="center" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-</RelativeLayout>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/epm" android:background="@drawable/az3" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/epn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@raw/wu" android:layout_centerInParent="true" app:iconColor="@color/ahb" />
+    </FrameLayout>
+    <TextView android:textSize="@dimen/m_" android:textColor="@color/al6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:text="@string/kc_" />
+</LinearLayout>

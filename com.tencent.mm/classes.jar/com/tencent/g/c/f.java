@@ -1,5 +1,6 @@
 package com.tencent.g.c;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.Closeable;
 import java.io.InputStream;
@@ -9,23 +10,22 @@ public final class f
 {
   public static void closeQuietly(Closeable paramCloseable)
   {
-    AppMethodBeat.i(207778);
+    AppMethodBeat.i(212032);
     if (paramCloseable != null) {}
     try
     {
       paramCloseable.close();
-      AppMethodBeat.o(207778);
       return;
     }
-    catch (Throwable paramCloseable)
+    finally
     {
-      AppMethodBeat.o(207778);
+      AppMethodBeat.o(212032);
     }
   }
   
-  public static long d(InputStream paramInputStream, OutputStream paramOutputStream)
+  public static long f(InputStream paramInputStream, OutputStream paramOutputStream)
   {
-    AppMethodBeat.i(207780);
+    AppMethodBeat.i(212040);
     byte[] arrayOfByte = new byte[4096];
     int i;
     for (long l = 0L;; l += i)
@@ -36,13 +36,28 @@ public final class f
       }
       paramOutputStream.write(arrayOfByte, 0, i);
     }
-    AppMethodBeat.o(207780);
+    AppMethodBeat.o(212040);
     return l;
+  }
+  
+  public static void z(Cursor paramCursor)
+  {
+    AppMethodBeat.i(212037);
+    if (paramCursor != null) {}
+    try
+    {
+      paramCursor.close();
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(212037);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.g.c.f
  * JD-Core Version:    0.7.0.1
  */

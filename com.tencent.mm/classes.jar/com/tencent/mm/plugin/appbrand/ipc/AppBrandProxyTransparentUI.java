@@ -1,12 +1,11 @@
 package com.tencent.mm.plugin.appbrand.ipc;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.aw;
 import com.tencent.mm.ui.base.a;
 
 @a(7)
@@ -23,7 +22,7 @@ public class AppBrandProxyTransparentUI
     AppMethodBeat.i(45408);
     super.onCreate(paramBundle);
     Log.i("MicroMsg.AppBrandProxyTransparentUI", "onCreate");
-    ar.e(getWindow());
+    aw.g(getWindow());
     try
     {
       paramBundle = Class.forName(getIntent().getStringExtra("task_class_name"));
@@ -34,7 +33,7 @@ public class AppBrandProxyTransparentUI
       {
         paramBundle.a(this, new AppBrandProxyTransparentUIProcessTask.a()
         {
-          public final void bPh()
+          public final void cpu()
           {
             AppMethodBeat.i(45407);
             Log.i("MicroMsg.AppBrandProxyTransparentUI", "onResult");
@@ -90,7 +89,7 @@ public class AppBrandProxyTransparentUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyTransparentUI
  * JD-Core Version:    0.7.0.1
  */

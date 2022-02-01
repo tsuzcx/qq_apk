@@ -1,6 +1,5 @@
 package com.tencent.magicbrush.ui;
 
-import androidx.annotation.Keep;
 import com.tencent.magicbrush.utils.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
@@ -11,16 +10,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import kotlin.a.j;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.ah;
 import kotlin.g.a.b;
-import kotlin.g.b.aa.d;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.ah.d;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/magicbrush/ui/MBViewManager;", "", "()V", "idGenerator", "", "listeners", "Lcom/tencent/magicbrush/utils/ListenerList;", "Lcom/tencent/magicbrush/ui/MBViewManager$Listener;", "viewContainer", "Ljava/util/HashMap;", "Lcom/tencent/magicbrush/ui/MagicBrushView;", "Lkotlin/collections/HashMap;", "add", "", "view", "add$lib_magicbrush_nano_release", "fromId", "addListener", "l", "addSurfaceListenerForAllViews", "Lcom/tencent/magicbrush/ui/MagicBrushView$MBSurfaceListener;", "clear", "clear$lib_magicbrush_nano_release", "find", "virtualElementId", "findOrNull", "forEach", "fn", "Lkotlin/Function1;", "remove", "remove$lib_magicbrush_nano_release", "removeListener", "toString", "", "Listener", "lib-magicbrush-nano_release"})
-@Keep
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/magicbrush/ui/MBViewManager;", "", "()V", "idGenerator", "", "listeners", "Lcom/tencent/magicbrush/utils/ListenerList;", "Lcom/tencent/magicbrush/ui/MBViewManager$Listener;", "viewContainer", "Ljava/util/HashMap;", "Lcom/tencent/magicbrush/ui/MagicBrushView;", "Lkotlin/collections/HashMap;", "add", "", "view", "add$lib_magicbrush_nano_release", "fromId", "addListener", "l", "addSurfaceListenerForAllViews", "Lcom/tencent/magicbrush/ui/MagicBrushView$MBSurfaceListener;", "clear", "clear$lib_magicbrush_nano_release", "find", "virtualElementId", "findOrNull", "forEach", "fn", "Lkotlin/Function1;", "remove", "remove$lib_magicbrush_nano_release", "removeListener", "toString", "", "Listener", "lib-magicbrush-nano_release"}, k=1, mv={1, 1, 16})
 public final class MBViewManager
 {
   private int idGenerator;
@@ -38,40 +36,40 @@ public final class MBViewManager
   public final void add$lib_magicbrush_nano_release(MagicBrushView paramMagicBrushView)
   {
     AppMethodBeat.i(140242);
-    p.k(paramMagicBrushView, "view");
+    s.t(paramMagicBrushView, "view");
     add$lib_magicbrush_nano_release(paramMagicBrushView, -1);
     AppMethodBeat.o(140242);
   }
   
   public final void add$lib_magicbrush_nano_release(MagicBrushView paramMagicBrushView, int paramInt)
   {
-    AppMethodBeat.i(205346);
-    p.k(paramMagicBrushView, "view");
-    aa.d locald = new aa.d();
+    AppMethodBeat.i(229018);
+    s.t(paramMagicBrushView, "view");
+    ah.d locald = new ah.d();
     int i = paramInt;
     if (paramInt < 0) {}
     try
     {
       i = this.idGenerator;
       this.idGenerator = (i + 1);
-      locald.aaBA = i;
-      ((Map)this.viewContainer).put(Integer.valueOf(locald.aaBA), paramMagicBrushView);
-      x localx = x.aazN;
-      paramMagicBrushView.setVirtualElementId$lib_magicbrush_nano_release(locald.aaBA);
-      this.listeners.b((b)new b(paramMagicBrushView));
-      AppMethodBeat.o(205346);
+      locald.aixb = i;
+      ((Map)this.viewContainer).put(Integer.valueOf(locald.aixb), paramMagicBrushView);
+      ah localah = ah.aiuX;
+      paramMagicBrushView.setVirtualElementId$lib_magicbrush_nano_release(locald.aixb);
+      this.listeners.r((b)new b(paramMagicBrushView));
+      AppMethodBeat.o(229018);
       return;
     }
     finally
     {
-      AppMethodBeat.o(205346);
+      AppMethodBeat.o(229018);
     }
   }
   
   public final void addListener(a parama)
   {
     AppMethodBeat.i(140238);
-    p.k(parama, "l");
+    s.t(parama, "l");
     this.listeners.add(parama);
     AppMethodBeat.o(140238);
   }
@@ -79,7 +77,7 @@ public final class MBViewManager
   public final void addSurfaceListenerForAllViews(MagicBrushView.c paramc)
   {
     AppMethodBeat.i(162121);
-    p.k(paramc, "l");
+    s.t(paramc, "l");
     this.listeners.add(new c(paramc));
     AppMethodBeat.o(162121);
   }
@@ -108,7 +106,7 @@ public final class MBViewManager
       AppMethodBeat.i(140241);
       Object localObject1 = this.viewContainer.get(Integer.valueOf(paramInt));
       if (localObject1 == null) {
-        p.iCn();
+        s.klw();
       }
       localObject1 = (MagicBrushView)localObject1;
       AppMethodBeat.o(140241);
@@ -133,10 +131,10 @@ public final class MBViewManager
     }
   }
   
-  public final void forEach(b<? super MagicBrushView, x> paramb)
+  public final void forEach(b<? super MagicBrushView, ah> paramb)
   {
     AppMethodBeat.i(182582);
-    p.k(paramb, "fn");
+    s.t(paramb, "fn");
     Object localObject1 = (List)new ArrayList();
     try
     {
@@ -144,10 +142,10 @@ public final class MBViewManager
       while (((Iterator)localObject2).hasNext())
       {
         MagicBrushView localMagicBrushView = (MagicBrushView)((Iterator)localObject2).next();
-        p.j(localMagicBrushView, "v");
+        s.r(localMagicBrushView, "v");
         ((List)localObject1).add(localMagicBrushView);
       }
-      localObject2 = x.aazN;
+      localObject2 = ah.aiuX;
     }
     finally
     {
@@ -163,7 +161,7 @@ public final class MBViewManager
   public final void remove$lib_magicbrush_nano_release(MagicBrushView paramMagicBrushView)
   {
     AppMethodBeat.i(140243);
-    p.k(paramMagicBrushView, "view");
+    s.t(paramMagicBrushView, "view");
     int i;
     try
     {
@@ -171,7 +169,7 @@ public final class MBViewManager
       if (!this.viewContainer.containsKey(Integer.valueOf(i)))
       {
         paramMagicBrushView = String.format("VirtualElementId error. current [%s] request [%d]", Arrays.copyOf(new Object[] { toString(), Integer.valueOf(i) }, 2));
-        p.j(paramMagicBrushView, "java.lang.String.format(this, *args)");
+        s.r(paramMagicBrushView, "java.lang.String.format(this, *args)");
         paramMagicBrushView = (Throwable)new IllegalStateException(paramMagicBrushView.toString());
         AppMethodBeat.o(140243);
         throw paramMagicBrushView;
@@ -182,16 +180,21 @@ public final class MBViewManager
       AppMethodBeat.o(140243);
     }
     this.viewContainer.remove(Integer.valueOf(i));
-    this.listeners.b((b)new d(paramMagicBrushView));
+    this.listeners.r((b)new d(paramMagicBrushView));
     AppMethodBeat.o(140243);
   }
   
   public final void removeListener(a parama)
   {
     AppMethodBeat.i(140239);
-    p.k(parama, "l");
-    this.listeners.remove(parama);
-    AppMethodBeat.o(140239);
+    s.t(parama, "l");
+    c localc = this.listeners;
+    synchronized (localc.listeners)
+    {
+      localc.listeners.remove(parama);
+      AppMethodBeat.o(140239);
+      return;
+    }
   }
   
   public final String toString()
@@ -202,10 +205,10 @@ public final class MBViewManager
     try
     {
       Set localSet = this.viewContainer.keySet();
-      p.j(localSet, "viewContainer.keys");
-      ((StringBuilder)localObject1).append(j.s((Collection)localSet));
+      s.r(localSet, "viewContainer.keys");
+      ((StringBuilder)localObject1).append(p.I((Collection)localSet));
       localObject1 = ((StringBuilder)localObject1).toString();
-      p.j(localObject1, "result.toString()");
+      s.r(localObject1, "result.toString()");
       AppMethodBeat.o(140246);
       return localObject1;
     }
@@ -215,7 +218,7 @@ public final class MBViewManager
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/magicbrush/ui/MBViewManager$Listener;", "", "onViewAdd", "", "v", "Lcom/tencent/magicbrush/ui/MagicBrushView;", "onViewRemove", "lib-magicbrush-nano_release"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/magicbrush/ui/MBViewManager$Listener;", "", "onViewAdd", "", "v", "Lcom/tencent/magicbrush/ui/MagicBrushView;", "onViewRemove", "lib-magicbrush-nano_release"}, k=1, mv={1, 1, 16})
   public static abstract interface a
   {
     public abstract void a(MagicBrushView paramMagicBrushView);
@@ -223,10 +226,10 @@ public final class MBViewManager
     public abstract void b(MagicBrushView paramMagicBrushView);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/magicbrush/ui/MBViewManager$Listener;", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/magicbrush/ui/MBViewManager$Listener;", "invoke"}, k=3, mv={1, 1, 16})
   static final class b
-    extends q
-    implements b<MBViewManager.a, x>
+    extends u
+    implements b<MBViewManager.a, ah>
   {
     b(MagicBrushView paramMagicBrushView)
     {
@@ -234,7 +237,7 @@ public final class MBViewManager
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/magicbrush/ui/MBViewManager$addSurfaceListenerForAllViews$1", "Lcom/tencent/magicbrush/ui/MBViewManager$Listener;", "onViewAdd", "", "v", "Lcom/tencent/magicbrush/ui/MagicBrushView;", "lib-magicbrush-nano_release"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/magicbrush/ui/MBViewManager$addSurfaceListenerForAllViews$1", "Lcom/tencent/magicbrush/ui/MBViewManager$Listener;", "onViewAdd", "", "v", "Lcom/tencent/magicbrush/ui/MagicBrushView;", "lib-magicbrush-nano_release"}, k=1, mv={1, 1, 16})
   public static final class c
     implements MBViewManager.a
   {
@@ -243,24 +246,24 @@ public final class MBViewManager
     public final void a(MagicBrushView paramMagicBrushView)
     {
       AppMethodBeat.i(162120);
-      p.k(paramMagicBrushView, "v");
-      p.k(paramMagicBrushView, "v");
+      s.t(paramMagicBrushView, "v");
+      s.t(paramMagicBrushView, "v");
       AppMethodBeat.o(162120);
     }
     
     public final void b(MagicBrushView paramMagicBrushView)
     {
       AppMethodBeat.i(162119);
-      p.k(paramMagicBrushView, "v");
-      paramMagicBrushView.a(this.cPF);
+      s.t(paramMagicBrushView, "v");
+      paramMagicBrushView.a(this.eKK);
       AppMethodBeat.o(162119);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/magicbrush/ui/MBViewManager$Listener;", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/magicbrush/ui/MBViewManager$Listener;", "invoke"}, k=3, mv={1, 1, 16})
   static final class d
-    extends q
-    implements b<MBViewManager.a, x>
+    extends u
+    implements b<MBViewManager.a, ah>
   {
     d(MagicBrushView paramMagicBrushView)
     {
@@ -270,7 +273,7 @@ public final class MBViewManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.magicbrush.ui.MBViewManager
  * JD-Core Version:    0.7.0.1
  */

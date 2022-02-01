@@ -16,20 +16,20 @@ import java.util.HashMap;
 public final class d
   implements Cursor, com.tencent.mm.storagebase.a.d
 {
-  private static Cursor VJe;
+  private static Cursor adni;
   
-  public static Cursor hBM()
+  public static Cursor jdS()
   {
     AppMethodBeat.i(133330);
-    if (VJe == null) {
-      VJe = new d();
+    if (adni == null) {
+      adni = new d();
     }
-    Cursor localCursor = VJe;
+    Cursor localCursor = adni;
     AppMethodBeat.o(133330);
     return localCursor;
   }
   
-  public final void EV(boolean paramBoolean) {}
+  public final void KF(boolean paramBoolean) {}
   
   public final void a(f.a parama) {}
   
@@ -38,17 +38,15 @@ public final class d
     return false;
   }
   
-  public final boolean asV(int paramInt)
+  public final boolean azm(int paramInt)
   {
     return false;
   }
   
-  public final a asW(int paramInt)
+  public final a azn(int paramInt)
   {
     return null;
   }
-  
-  public final void asX(int paramInt) {}
   
   public final void close() {}
   
@@ -56,12 +54,14 @@ public final class d
   
   public final void deactivate() {}
   
-  public final boolean eh(Object paramObject)
+  public final void fi(int paramInt) {}
+  
+  public final boolean gF(Object paramObject)
   {
     return false;
   }
   
-  public final a ei(Object paramObject)
+  public final a gG(Object paramObject)
   {
     return null;
   }
@@ -156,21 +156,6 @@ public final class d
     return false;
   }
   
-  public final SparseArray[] hBN()
-  {
-    return null;
-  }
-  
-  public final HashMap hBO()
-  {
-    return null;
-  }
-  
-  public final boolean hBP()
-  {
-    return false;
-  }
-  
   public final boolean isAfterLast()
   {
     return true;
@@ -197,6 +182,21 @@ public final class d
   }
   
   public final boolean isNull(int paramInt)
+  {
+    return false;
+  }
+  
+  public final SparseArray[] jdT()
+  {
+    return null;
+  }
+  
+  public final HashMap jdU()
+  {
+    return null;
+  }
+  
+  public final boolean jdV()
   {
     return false;
   }
@@ -255,7 +255,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.storagebase.d
  * JD-Core Version:    0.7.0.1
  */

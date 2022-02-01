@@ -7,27 +7,40 @@ import android.graphics.Canvas;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.a;
-import com.tencent.mm.aj.f;
-import com.tencent.mm.aj.k.a;
-import com.tencent.mm.aj.k.b;
-import com.tencent.mm.aj.w;
-import com.tencent.mm.aj.w.a;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.f.a.uz;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.z.a;
+import com.tencent.mm.autogen.a.wp;
+import com.tencent.mm.autogen.mmdata.rpt.uj;
+import com.tencent.mm.autogen.mmdata.rpt.uj.a;
+import com.tencent.mm.autogen.mmdata.rpt.uj.b;
+import com.tencent.mm.autogen.mmdata.rpt.uj.c;
+import com.tencent.mm.autogen.mmdata.rpt.uj.d;
+import com.tencent.mm.autogen.mmdata.rpt.uj.e;
 import com.tencent.mm.kernel.h;
+import com.tencent.mm.message.a;
+import com.tencent.mm.message.f;
+import com.tencent.mm.message.k.a;
+import com.tencent.mm.message.k.b;
+import com.tencent.mm.message.w;
+import com.tencent.mm.message.w.a;
+import com.tencent.mm.model.ab;
 import com.tencent.mm.model.ad;
 import com.tencent.mm.model.ad.b;
-import com.tencent.mm.model.aq;
+import com.tencent.mm.model.ar;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.protocal.protobuf.fnj;
-import com.tencent.mm.protocal.protobuf.fnk;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.protocal.protobuf.fbt;
+import com.tencent.mm.protocal.protobuf.fnp;
+import com.tencent.mm.protocal.protobuf.gkc;
+import com.tencent.mm.protocal.protobuf.gkd;
+import com.tencent.mm.protocal.protobuf.gkr;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.FilePathGenerator;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.storage.au;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -41,54 +54,54 @@ public class SendAppMessageTask
   public static final Parcelable.Creator<SendAppMessageTask> CREATOR;
   public String appId;
   public int appVersion;
-  public String cacheKey;
   public String description;
-  public int fES;
-  public String fVg;
-  public String fXg;
-  public String fvd;
-  public int hDp;
+  public int hJK;
+  public int hyY;
+  public String hzx;
+  public String ibd;
   public String iconUrl;
-  public String lkm;
-  public String lky;
-  public boolean lkz;
-  public String lnb;
-  public int lyw;
-  public int nYp;
+  public String idf;
+  public String mgR;
+  public int nOX;
+  public String nOY;
+  public String nPk;
+  public boolean nPl;
+  public String nSg;
   public String nickname;
-  public boolean oOP;
-  public String obW;
-  public int otE;
-  public Runnable otv;
+  public int opX;
   public String path;
-  public boolean ppC;
-  public int ppE;
-  public String ppF;
-  public String ppL;
-  public String ppQ;
-  public String ppR;
-  public boolean ppv;
-  public boolean ppw;
-  public boolean ppx;
-  public String pqA;
-  public ArrayList<ShareInfo> pqB;
-  public String pqm;
-  public String pqn;
-  public String pqo;
-  public String pqp;
-  public int pqq;
-  public int pqr;
-  public String pqs;
-  public String pqt;
-  public String pqu;
-  public boolean pqv;
-  public String pqw;
-  public String pqx;
-  public String pqy;
-  public String pqz;
+  public boolean rSD;
+  public String rcM;
+  public Runnable rxj;
+  public int rxs;
   public int scene;
   public int serviceType;
+  public String suA;
+  public String suE;
+  public String suF;
+  public String suZ;
   public int subType;
+  public boolean suj;
+  public boolean suk;
+  public boolean sul;
+  public boolean sur;
+  public int sut;
+  public String suu;
+  public String sva;
+  public String svb;
+  public String svc;
+  public int svd;
+  public int sve;
+  public String svf;
+  public String svg;
+  public String svh;
+  public boolean svi;
+  public String svj;
+  public String svk;
+  public String svl;
+  public String svm;
+  public String svn;
+  public ArrayList<ShareInfo> svo;
   public String title;
   public String toUser;
   public int type;
@@ -108,57 +121,57 @@ public class SendAppMessageTask
   public SendAppMessageTask()
   {
     AppMethodBeat.i(46798);
-    this.pqq = 1;
-    this.hDp = k.a.llS.ordinal();
+    this.svd = 1;
+    this.hyY = k.a.nQY.ordinal();
     this.subType = 0;
     this.scene = 1000;
-    this.lkz = false;
+    this.nPl = false;
     AppMethodBeat.o(46798);
   }
   
   protected SendAppMessageTask(Parcel paramParcel)
   {
     AppMethodBeat.i(46806);
-    this.pqq = 1;
-    this.hDp = k.a.llS.ordinal();
+    this.svd = 1;
+    this.hyY = k.a.nQY.ordinal();
     this.subType = 0;
     this.scene = 1000;
-    this.lkz = false;
-    f(paramParcel);
+    this.nPl = false;
+    h(paramParcel);
     AppMethodBeat.o(46806);
   }
   
   private void a(k.b paramb, byte[] paramArrayOfByte, String paramString, StringBuilder paramStringBuilder, int paramInt)
   {
     AppMethodBeat.i(46802);
-    w.a.bbx().a(paramb, this.appId, this.title, paramString, null, paramArrayOfByte);
-    if (!Util.isNullOrNil(this.pqm))
+    w.a.bwq().a(paramb, this.appId, this.title, paramString, null, paramArrayOfByte);
+    if (!Util.isNullOrNil(this.suZ))
     {
-      paramb = new uz();
-      paramb.fUn.fcD = paramString;
-      paramb.fUn.content = this.pqm;
-      paramb.fUn.type = com.tencent.mm.model.ab.QZ(paramString);
-      paramb.fUn.flags = 0;
-      EventCenter.instance.publish(paramb);
+      paramb = new wp();
+      paramb.iak.hgl = paramString;
+      paramb.iak.content = this.suZ;
+      paramb.iak.type = ab.IX(paramString);
+      paramb.iak.flags = 0;
+      paramb.publish();
     }
     int i = 1;
     if (paramString.toLowerCase().endsWith("@chatroom"))
     {
-      paramb = ((com.tencent.mm.plugin.chatroom.a.b)h.ae(com.tencent.mm.plugin.chatroom.a.b.class)).bbV().RA(paramString);
+      paramb = ((com.tencent.mm.plugin.chatroom.a.b)h.ax(com.tencent.mm.plugin.chatroom.a.b.class)).bzK().Jy(paramString);
       if (paramb != null) {
         i = paramb.size();
       }
     }
     else
     {
-      if (!com.tencent.mm.model.ab.Lj(paramString)) {
-        break label222;
+      if (!au.bwE(paramString)) {
+        break label219;
       }
     }
-    label222:
+    label219:
     for (int j = 2;; j = 1)
     {
-      z.a(this.appId, paramInt, this.fvd, this.pqs, paramString, this.title, this.path, this.pqt, this.pqu, i, paramStringBuilder.toString(), this.ppF, this.serviceType, this.pqn, this.appVersion, j, this.fXg);
+      x.a(this.appId, paramInt, this.hzx, this.svf, paramString, this.title, this.path, this.svg, this.svh, i, paramStringBuilder.toString(), this.suu, this.serviceType, this.sva, this.appVersion, j, this.idf);
       AppMethodBeat.o(46802);
       return;
       i = 0;
@@ -173,15 +186,15 @@ public class SendAppMessageTask
     AppMethodBeat.o(46803);
   }
   
-  public final void RW()
+  public final void asn()
   {
     int i = 3;
     AppMethodBeat.i(46799);
-    Log.i("MicroMsg.SendAppMessageTask", "username = %s, thumbIconUrl = %s", new Object[] { this.userName, this.pqn });
+    Log.i("MicroMsg.SendAppMessageTask", "username = %s, thumbIconUrl = %s", new Object[] { this.userName, this.sva });
     Object localObject2 = new byte[0];
     Object localObject1;
-    if ((!Util.isNullOrNil(this.pqn)) && ((this.pqn.startsWith("http://")) || (this.pqn.startsWith("https://")))) {
-      localObject1 = com.tencent.mm.modelappbrand.a.b.bhh().a(this.pqn, null);
+    if ((!Util.isNullOrNil(this.sva)) && ((this.sva.startsWith("http://")) || (this.sva.startsWith("https://")))) {
+      localObject1 = com.tencent.mm.modelappbrand.a.b.bEY().a(this.sva, null);
     }
     for (;;)
     {
@@ -189,10 +202,10 @@ public class SendAppMessageTask
       label208:
       Object localObject5;
       label736:
-      int j;
+      final int j;
       boolean bool1;
-      fnj localfnj;
-      LinkedList localLinkedList;
+      gkc localgkc;
+      final LinkedList localLinkedList;
       if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled()))
       {
         Log.i("MicroMsg.SendAppMessageTask", "thumb image is not null ");
@@ -205,161 +218,241 @@ public class SendAppMessageTask
         localObject1 = ((ByteArrayOutputStream)localObject1).toByteArray();
         Log.i("MicroMsg.SendAppMessageTask", "bitmap recycle %s", new Object[] { localObject2 });
         ((Bitmap)localObject2).recycle();
-        Log.i("MicroMsg.SendAppMessageTask", "doSendMessage, appId : %s, title = %s, description = %s ,username = %s ,path = %s, thumbIconUrl = %s", new Object[] { this.appId, this.title, this.description, this.userName, this.path, this.pqn });
-        localObject2 = ad.Rp("wxapp_" + this.appId + this.path);
-        ad.beh().I((String)localObject2, true).k("prePublishId", "wxapp_" + this.appId + this.path);
+        Log.i("MicroMsg.SendAppMessageTask", "doSendMessage, appId : %s, title = %s, description = %s ,username = %s ,path = %s, thumbIconUrl = %s", new Object[] { this.appId, this.title, this.description, this.userName, this.path, this.sva });
+        localObject2 = ad.Jo("wxapp_" + this.appId + this.path);
+        ad.bCb().M((String)localObject2, true).q("prePublishId", "wxapp_" + this.appId + this.path);
         localObject2 = new k.b();
         ((k.b)localObject2).title = this.title;
         ((k.b)localObject2).description = this.description;
-        ((k.b)localObject2).loA = this.userName;
-        ((k.b)localObject2).loz = this.path;
-        ((k.b)localObject2).loB = this.appId;
-        ((k.b)localObject2).loT = this.fES;
-        ((k.b)localObject2).loU = this.version;
-        ((k.b)localObject2).loD = this.obW;
-        ((k.b)localObject2).loC = this.type;
-        ((k.b)localObject2).loJ = this.otE;
-        ((k.b)localObject2).loM = this.lyw;
-        if (this.lyw != 0) {
-          ((k.b)localObject2).loJ = 1;
+        ((k.b)localObject2).nTD = this.userName;
+        ((k.b)localObject2).nTC = this.path;
+        ((k.b)localObject2).nTE = this.appId;
+        ((k.b)localObject2).nTW = this.hJK;
+        ((k.b)localObject2).nTX = this.version;
+        ((k.b)localObject2).nTG = this.rcM;
+        ((k.b)localObject2).nTF = this.type;
+        ((k.b)localObject2).nTM = this.rxs;
+        ((k.b)localObject2).nTP = this.opX;
+        if (this.opX != 0) {
+          ((k.b)localObject2).nTM = 1;
         }
         ((k.b)localObject2).url = this.url;
-        ((k.b)localObject2).loV = this.iconUrl;
-        ((k.b)localObject2).fUj = ("wxapp_" + this.appId + this.path);
-        ((k.b)localObject2).fUd = this.userName;
-        ((k.b)localObject2).fUe = this.nickname;
+        ((k.b)localObject2).nTY = this.iconUrl;
+        ((k.b)localObject2).iag = ("wxapp_" + this.appId + this.path);
+        ((k.b)localObject2).iaa = this.userName;
+        ((k.b)localObject2).iab = this.nickname;
         localObject4 = new a();
-        ((a)localObject4).ljZ = this.ppv;
-        ((a)localObject4).lka = this.cacheKey;
-        ((a)localObject4).lkb = this.serviceType;
-        ((a)localObject4).lkc = this.ppw;
-        ((a)localObject4).lkn = this.fXg;
-        ((a)localObject4).imageUrl = this.pqn;
-        ((a)localObject4).lkq = Util.isNullOrNil(this.pqn);
-        ((a)localObject4).lkl = this.nYp;
-        ((a)localObject4).lkz = this.lkz;
-        ((a)localObject4).lko = this.subType;
+        ((a)localObject4).nOK = this.suj;
+        ((a)localObject4).nOL = this.mgR;
+        ((a)localObject4).nOM = this.serviceType;
+        ((a)localObject4).nON = this.suk;
+        ((a)localObject4).nOZ = this.idf;
+        ((a)localObject4).imageUrl = this.sva;
+        ((a)localObject4).nPc = Util.isNullOrNil(this.sva);
+        ((a)localObject4).nOX = this.nOX;
+        ((a)localObject4).nPl = this.nPl;
+        ((a)localObject4).nPa = this.subType;
         ((k.b)localObject2).a((f)localObject4);
-        localObject3 = z.ck(this.appId, this.pqr);
-        ((k.b)localObject2).loF = ((StringBuilder)localObject3).toString();
-        localObject5 = new aa();
-        ((aa)localObject5).pqV = 1;
-        ((aa)localObject5).pqW = this.title;
-        ((aa)localObject5).pqX = this.path;
-        ((aa)localObject5).pqY = this.pqn;
-        ((aa)localObject5).pqZ = this.ppE;
-        ab.a(((k.b)localObject2).loF, (aa)localObject5);
-        if (1 != this.pqq) {
+        localObject3 = x.cJ(this.appId, this.sve);
+        ((k.b)localObject2).nTI = ((StringBuilder)localObject3).toString();
+        localObject5 = new y();
+        ((y)localObject5).svF = 1;
+        ((y)localObject5).svG = this.title;
+        ((y)localObject5).svH = this.path;
+        ((y)localObject5).svI = this.sva;
+        ((y)localObject5).svJ = this.sut;
+        z.a(((k.b)localObject2).nTI, (y)localObject5);
+        if (1 != this.svd) {
           break label1122;
         }
         ((k.b)localObject2).type = 33;
-        Log.i("MicroMsg.SendAppMessageTask", "doSendMessage isUpdateMsg:%b, withShareTicket:%b, isToDoMessage:%b isPrivateMsg:%b", new Object[] { Boolean.valueOf(this.ppw), Boolean.valueOf(this.withShareTicket), Boolean.valueOf(this.ppC), Boolean.valueOf(this.ppx) });
-        if (((!this.ppw) || (!this.withShareTicket)) && (!this.withShareTicket) && (!this.ppC) && (!this.ppx)) {
-          break label1396;
+        Log.i("MicroMsg.SendAppMessageTask", "doSendMessage isUpdateMsg:%b, withShareTicket:%b, isToDoMessage:%b isPrivateMsg:%b", new Object[] { Boolean.valueOf(this.suk), Boolean.valueOf(this.withShareTicket), Boolean.valueOf(this.sur), Boolean.valueOf(this.sul) });
+        if (((!this.suk) || (!this.withShareTicket)) && (!this.withShareTicket) && (!this.sur) && (!this.sul)) {
+          break label1397;
         }
         j = this.scene;
-        bool1 = this.ppw;
-        boolean bool2 = this.ppx;
-        localObject4 = this.lnb;
-        localObject5 = new d.a();
-        ((d.a)localObject5).funcId = 1118;
-        ((d.a)localObject5).uri = "/cgi-bin/mmbiz-bin/wxaapp/getshareinfo";
-        localfnj = new fnj();
-        localfnj.appid = this.appId;
+        bool1 = this.suk;
+        boolean bool2 = this.sul;
+        localObject4 = this.nSg;
+        localObject5 = new c.a();
+        ((c.a)localObject5).funcId = 1118;
+        ((c.a)localObject5).uri = "/cgi-bin/mmbiz-bin/wxaapp/getshareinfo";
+        localgkc = new gkc();
+        localgkc.appid = this.appId;
         localLinkedList = new LinkedList(Util.stringsToList(this.toUser.split(",")));
-        localfnj.ULK = localLinkedList;
-        localfnj.ULM = ((String)localObject4);
-        localfnj.ULL = bool1;
-        localfnj.ULN = this.ppC;
-        localfnj.Uub = this.lkm;
-        localfnj.ULO = bool2;
+        localgkc.acfY = localLinkedList;
+        localgkc.acga = ((String)localObject4);
+        localgkc.acfZ = bool1;
+        localgkc.acgb = this.sur;
+        localgkc.abNC = this.nOY;
+        localgkc.acgc = bool2;
         if (!bool2) {
-          break label1391;
+          break label1392;
         }
       }
       for (;;)
       {
-        localfnj.SEl = i;
-        ((d.a)localObject5).lBU = localfnj;
-        ((d.a)localObject5).lBV = new fnk();
-        com.tencent.mm.an.aa.a(((d.a)localObject5).bgN(), new SendAppMessageTask.1(this, localLinkedList, (k.b)localObject2, j, (byte[])localObject1, (StringBuilder)localObject3));
+        localgkc.ZFJ = i;
+        ((c.a)localObject5).otE = localgkc;
+        ((c.a)localObject5).otF = new gkd();
+        com.tencent.mm.am.z.a(((c.a)localObject5).bEF(), new z.a()
+        {
+          public final int callback(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, c paramAnonymousc, p paramAnonymousp)
+          {
+            AppMethodBeat.i(46796);
+            Log.i("MicroMsg.SendAppMessageTask", "callback, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+            paramAnonymousString = (gkd)c.c.b(paramAnonymousc.otC);
+            if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0) && (paramAnonymousString != null) && (!Util.isNullOrNil(paramAnonymousString.acgd)))
+            {
+              paramAnonymousp = paramAnonymousString.acgd;
+              SendAppMessageTask.this.svo = new ArrayList();
+              paramAnonymousInt1 = 0;
+              if (paramAnonymousInt1 < localLinkedList.size())
+              {
+                label120:
+                a locala;
+                uj localuj;
+                if (paramAnonymousInt1 < paramAnonymousp.size())
+                {
+                  paramAnonymousString = (gkr)paramAnonymousp.get(paramAnonymousInt1);
+                  this.svq.nTJ = paramAnonymousString.abBw;
+                  SendAppMessageTask.this.svo.add(new ShareInfo(paramAnonymousString.abBw, paramAnonymousString.acgx));
+                  locala = (a)this.svq.aK(a.class);
+                  locala.nON = paramAnonymousString.acfZ;
+                  locala.nPb = paramAnonymousString.acgc;
+                  if ((paramAnonymousString.acfZ) && (paramAnonymousString.acgy != null))
+                  {
+                    locala.nOO = paramAnonymousString.acgy.content;
+                    locala.nOP = paramAnonymousString.acgy.abBq;
+                    locala.nOQ = paramAnonymousString.acgy.abBr;
+                    locala.nOR = paramAnonymousString.acgy.abBs;
+                    locala.nOS = paramAnonymousString.acgy.abBt;
+                    locala.nOT = paramAnonymousString.acgy.abBv;
+                    locala.nOV = paramAnonymousString.acgy.state;
+                    locala.nOU = paramAnonymousString.acgy.abBu;
+                    localuj = new uj().Ad(SendAppMessageTask.this.appId).Ae(SendAppMessageTask.this.path).Af(paramAnonymousString.abBw).Ag((String)localLinkedList.get(paramAnonymousInt1));
+                    if (!((String)localLinkedList.get(paramAnonymousInt1)).toLowerCase().endsWith("@chatroom")) {
+                      break label551;
+                    }
+                  }
+                }
+                label551:
+                for (paramAnonymousc = uj.c.jHe;; paramAnonymousc = uj.c.jHf)
+                {
+                  localuj.jGL = paramAnonymousc;
+                  localuj.jGM = uj.b.jGY;
+                  localuj.iqr = j;
+                  paramAnonymousc = localuj.Ah(SendAppMessageTask.this.hzx);
+                  paramAnonymousc.jGP = uj.a.pk(SendAppMessageTask.this.serviceType + 1000);
+                  paramAnonymousc = paramAnonymousc.aJl();
+                  paramAnonymousc.jGN = uj.d.jHi;
+                  paramAnonymousc.jGO = uj.e.jHm;
+                  paramAnonymousc.bMH();
+                  if ((paramAnonymousString.acgb) && (paramAnonymousString.acgz != null) && (paramAnonymousString.acgz.abNB)) {
+                    locala.nOY = paramAnonymousString.acgz.abNC;
+                  }
+                  SendAppMessageTask.a(SendAppMessageTask.this, this.svq, this.nMM, (String)localLinkedList.get(paramAnonymousInt1), this.svr, j);
+                  paramAnonymousInt1 += 1;
+                  break;
+                  paramAnonymousString = new gkr();
+                  break label120;
+                }
+              }
+            }
+            else
+            {
+              if (this.svq.nTF == 3) {
+                this.svq.nTF = 2;
+              }
+              paramAnonymousString = localLinkedList.iterator();
+              while (paramAnonymousString.hasNext())
+              {
+                paramAnonymousc = (String)paramAnonymousString.next();
+                SendAppMessageTask.a(SendAppMessageTask.this, this.svq, this.nMM, paramAnonymousc, this.svr, j);
+              }
+            }
+            SendAppMessageTask.a(SendAppMessageTask.this);
+            AppMethodBeat.o(46796);
+            return 0;
+          }
+        });
         AppMethodBeat.o(46799);
         return;
-        if (Util.isNullOrNil(this.pqo)) {
-          break label1465;
+        if (Util.isNullOrNil(this.svb)) {
+          break label1466;
         }
-        localObject1 = BitmapUtil.getBitmapNative(this.pqo);
-        if (this.oOP)
+        localObject1 = BitmapUtil.getBitmapNative(this.svb);
+        if (this.rSD)
         {
-          bool1 = u.deleteFile(this.pqo);
-          Log.v("MicroMsg.SendAppMessageTask", "decode thumb icon bitmap by path(%s), and deleted(%s) file.", new Object[] { this.pqo, Boolean.valueOf(bool1) });
+          bool1 = com.tencent.mm.vfs.y.deleteFile(this.svb);
+          Log.v("MicroMsg.SendAppMessageTask", "decode thumb icon bitmap by path(%s), and deleted(%s) file.", new Object[] { this.svb, Boolean.valueOf(bool1) });
           break;
         }
-        Log.v("MicroMsg.SendAppMessageTask", "decode thumb icon bitmap by path(%s)", new Object[] { this.pqo });
+        Log.v("MicroMsg.SendAppMessageTask", "decode thumb icon bitmap by path(%s)", new Object[] { this.svb });
         break;
         Log.e("MicroMsg.SendAppMessageTask", "thumb image is null");
         localObject1 = localObject2;
         break label208;
         label1122:
-        if (2 == this.pqq)
+        if (2 == this.svd)
         {
           ((k.b)localObject2).type = 44;
-          ((k.b)localObject2).loH = this.hDp;
-          ((k.b)localObject2).loI = this.pqp;
-          ((k.b)localObject2).loK = this.ppQ;
-          ((k.b)localObject2).loL = this.ppR;
+          ((k.b)localObject2).nTK = this.hyY;
+          ((k.b)localObject2).nTL = this.svc;
+          ((k.b)localObject2).nTN = this.suE;
+          ((k.b)localObject2).nTO = this.suF;
           break label736;
         }
-        if (this.pqq == 3)
+        if (this.svd == 3)
         {
           ((k.b)localObject2).type = 46;
-          ((k.b)localObject2).appId = this.pqw;
-          ((k.b)localObject2).appName = this.pqx;
-          ((k.b)localObject2).fUd = this.pqy;
-          ((k.b)localObject2).fUe = null;
-          ((a)localObject4).appThumbUrl = this.pqz;
+          ((k.b)localObject2).appId = this.svj;
+          ((k.b)localObject2).appName = this.svk;
+          ((k.b)localObject2).iaa = this.svl;
+          ((k.b)localObject2).iab = null;
+          ((a)localObject4).appThumbUrl = this.svm;
           break label736;
         }
-        if (this.pqq == 4)
+        if (this.svd == 4)
         {
           ((k.b)localObject2).type = 48;
-          FilePathGenerator.checkMkdir(com.tencent.mm.loader.j.b.aTq());
-          localObject5 = com.tencent.mm.loader.j.b.aTq() + this.fVg;
+          FilePathGenerator.checkMkdir(com.tencent.mm.loader.i.b.bne());
+          localObject5 = com.tencent.mm.loader.i.b.bne() + this.ibd;
           if (!((String)localObject5).equals(this.videoPath)) {
-            Log.i("MicroMsg.SendAppMessageTask", "hy: copy upload file to %s, len is %d", new Object[] { localObject5, Long.valueOf(u.on(this.videoPath, (String)localObject5)) });
+            Log.i("MicroMsg.SendAppMessageTask", "hy: copy upload file to %s, len is %d", new Object[] { localObject5, Long.valueOf(com.tencent.mm.vfs.y.O(this.videoPath, (String)localObject5, false)) });
           }
-          ((a)localObject4).lku = ((String)localObject5);
-          ((a)localObject4).fVg = this.fVg;
-          ((a)localObject4).lkw = this.ppL;
-          ((a)localObject4).lky = this.lky;
+          ((a)localObject4).nPg = ((String)localObject5);
+          ((a)localObject4).ibd = this.ibd;
+          ((a)localObject4).nPi = this.suA;
+          ((a)localObject4).nPk = this.nPk;
           break label736;
         }
-        if (this.pqq != 5) {
+        if (this.svd != 5) {
           break label736;
         }
         ((k.b)localObject2).type = 5;
-        ((k.b)localObject2).thumburl = this.pqn;
+        ((k.b)localObject2).thumburl = this.sva;
         break label736;
-        label1391:
+        label1392:
         i = 0;
       }
-      label1396:
+      label1397:
       Object localObject4 = new LinkedList(Util.stringsToList(this.toUser.split(","))).iterator();
       while (((Iterator)localObject4).hasNext()) {
         b((k.b)localObject2, (byte[])localObject1, (String)((Iterator)localObject4).next(), (StringBuilder)localObject3, this.scene);
       }
       AppMethodBeat.o(46799);
       return;
-      label1465:
+      label1466:
       localObject1 = null;
     }
   }
   
-  public final void bsK()
+  public final void bQr()
   {
     AppMethodBeat.i(46800);
-    if (this.otv != null) {
-      this.otv.run();
+    if (this.rxj != null) {
+      this.rxj.run();
     }
     AppMethodBeat.o(46800);
   }
@@ -369,7 +462,7 @@ public class SendAppMessageTask
     return 0;
   }
   
-  public final void f(Parcel paramParcel)
+  public final void h(Parcel paramParcel)
   {
     boolean bool2 = true;
     AppMethodBeat.i(46804);
@@ -377,28 +470,28 @@ public class SendAppMessageTask
     this.userName = paramParcel.readString();
     this.title = paramParcel.readString();
     this.description = paramParcel.readString();
-    this.pqm = paramParcel.readString();
+    this.suZ = paramParcel.readString();
     this.toUser = paramParcel.readString();
     this.url = paramParcel.readString();
     this.path = paramParcel.readString();
     this.type = paramParcel.readInt();
-    this.pqn = paramParcel.readString();
+    this.sva = paramParcel.readString();
     this.iconUrl = paramParcel.readString();
-    this.pqo = paramParcel.readString();
+    this.svb = paramParcel.readString();
     if (paramParcel.readInt() == 1)
     {
       bool1 = true;
-      this.oOP = bool1;
-      this.fES = paramParcel.readInt();
-      this.obW = paramParcel.readString();
+      this.rSD = bool1;
+      this.hJK = paramParcel.readInt();
+      this.rcM = paramParcel.readString();
       this.version = paramParcel.readInt();
       this.nickname = paramParcel.readString();
-      this.pqr = paramParcel.readInt();
+      this.sve = paramParcel.readInt();
       this.scene = paramParcel.readInt();
-      this.fvd = paramParcel.readString();
-      this.pqs = paramParcel.readString();
-      this.pqt = paramParcel.readString();
-      this.pqu = paramParcel.readString();
+      this.hzx = paramParcel.readString();
+      this.svf = paramParcel.readString();
+      this.svg = paramParcel.readString();
+      this.svh = paramParcel.readString();
       if (paramParcel.readByte() != 1) {
         break label537;
       }
@@ -410,53 +503,53 @@ public class SendAppMessageTask
       }
       bool1 = true;
       label224:
-      this.ppv = bool1;
+      this.suj = bool1;
       if (paramParcel.readInt() != 1) {
         break label547;
       }
       bool1 = true;
       label239:
-      this.ppw = bool1;
-      this.lnb = paramParcel.readString();
+      this.suk = bool1;
+      this.nSg = paramParcel.readString();
       if (paramParcel.readInt() != 1) {
         break label552;
       }
       bool1 = true;
       label262:
-      this.ppx = bool1;
-      this.cacheKey = paramParcel.readString();
+      this.sul = bool1;
+      this.mgR = paramParcel.readString();
       this.serviceType = paramParcel.readInt();
-      this.ppF = paramParcel.readString();
-      this.pqB = paramParcel.readArrayList(SendAppMessageTask.class.getClassLoader());
-      this.fXg = paramParcel.readString();
+      this.suu = paramParcel.readString();
+      this.svo = paramParcel.readArrayList(SendAppMessageTask.class.getClassLoader());
+      this.idf = paramParcel.readString();
       this.appVersion = paramParcel.readInt();
-      this.hDp = paramParcel.readInt();
-      this.pqp = paramParcel.readString();
-      this.otE = paramParcel.readInt();
-      this.pqq = paramParcel.readInt();
-      this.pqw = paramParcel.readString();
-      this.pqx = paramParcel.readString();
-      this.pqy = paramParcel.readString();
-      this.pqz = paramParcel.readString();
+      this.hyY = paramParcel.readInt();
+      this.svc = paramParcel.readString();
+      this.rxs = paramParcel.readInt();
+      this.svd = paramParcel.readInt();
+      this.svj = paramParcel.readString();
+      this.svk = paramParcel.readString();
+      this.svl = paramParcel.readString();
+      this.svm = paramParcel.readString();
       if (paramParcel.readInt() != 1) {
         break label557;
       }
       bool1 = true;
       label394:
-      this.pqv = bool1;
+      this.svi = bool1;
       this.videoPath = paramParcel.readString();
-      this.fVg = paramParcel.readString();
-      this.pqA = paramParcel.readString();
-      this.ppL = paramParcel.readString();
-      this.lky = paramParcel.readString();
-      this.nYp = paramParcel.readInt();
+      this.ibd = paramParcel.readString();
+      this.svn = paramParcel.readString();
+      this.suA = paramParcel.readString();
+      this.nPk = paramParcel.readString();
+      this.nOX = paramParcel.readInt();
       if (paramParcel.readInt() != 1) {
         break label562;
       }
       bool1 = true;
       label457:
-      this.ppC = bool1;
-      this.lkm = paramParcel.readString();
+      this.sur = bool1;
+      this.nOY = paramParcel.readString();
       if (paramParcel.readInt() != 1) {
         break label567;
       }
@@ -470,12 +563,12 @@ public class SendAppMessageTask
     label567:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.lkz = bool1;
+      this.nPl = bool1;
       this.subType = paramParcel.readInt();
-      this.ppQ = paramParcel.readString();
-      this.ppR = paramParcel.readString();
-      this.ppE = paramParcel.readInt();
-      this.lyw = paramParcel.readInt();
+      this.suE = paramParcel.readString();
+      this.suF = paramParcel.readString();
+      this.sut = paramParcel.readInt();
+      this.opX = paramParcel.readInt();
       AppMethodBeat.o(46804);
       return;
       bool1 = false;
@@ -504,87 +597,87 @@ public class SendAppMessageTask
     paramParcel.writeString(this.userName);
     paramParcel.writeString(this.title);
     paramParcel.writeString(this.description);
-    paramParcel.writeString(this.pqm);
+    paramParcel.writeString(this.suZ);
     paramParcel.writeString(this.toUser);
     paramParcel.writeString(this.url);
     paramParcel.writeString(this.path);
     paramParcel.writeInt(this.type);
-    paramParcel.writeString(this.pqn);
+    paramParcel.writeString(this.sva);
     paramParcel.writeString(this.iconUrl);
-    paramParcel.writeString(this.pqo);
-    if (this.oOP)
+    paramParcel.writeString(this.svb);
+    if (this.rSD)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.fES);
-      paramParcel.writeString(this.obW);
+      paramParcel.writeInt(this.hJK);
+      paramParcel.writeString(this.rcM);
       paramParcel.writeInt(this.version);
       paramParcel.writeString(this.nickname);
-      paramParcel.writeInt(this.pqr);
+      paramParcel.writeInt(this.sve);
       paramParcel.writeInt(this.scene);
-      paramParcel.writeString(this.fvd);
-      paramParcel.writeString(this.pqs);
-      paramParcel.writeString(this.pqt);
-      paramParcel.writeString(this.pqu);
+      paramParcel.writeString(this.hzx);
+      paramParcel.writeString(this.svf);
+      paramParcel.writeString(this.svg);
+      paramParcel.writeString(this.svh);
       if (!this.withShareTicket) {
         break label531;
       }
       paramInt = 1;
       label213:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.ppv) {
+      if (!this.suj) {
         break label536;
       }
       paramInt = 1;
       label228:
       paramParcel.writeInt(paramInt);
-      if (!this.ppw) {
+      if (!this.suk) {
         break label541;
       }
       paramInt = 1;
       label242:
       paramParcel.writeInt(paramInt);
-      paramParcel.writeString(this.lnb);
-      if (!this.ppx) {
+      paramParcel.writeString(this.nSg);
+      if (!this.sul) {
         break label546;
       }
       paramInt = 1;
       label264:
       paramParcel.writeInt(paramInt);
-      paramParcel.writeString(this.cacheKey);
+      paramParcel.writeString(this.mgR);
       paramParcel.writeInt(this.serviceType);
-      paramParcel.writeString(this.ppF);
-      paramParcel.writeList(this.pqB);
-      paramParcel.writeString(this.fXg);
+      paramParcel.writeString(this.suu);
+      paramParcel.writeList(this.svo);
+      paramParcel.writeString(this.idf);
       paramParcel.writeInt(this.appVersion);
-      paramParcel.writeInt(this.hDp);
-      paramParcel.writeString(this.pqp);
-      paramParcel.writeInt(this.otE);
-      paramParcel.writeInt(this.pqq);
-      paramParcel.writeString(this.pqw);
-      paramParcel.writeString(this.pqx);
-      paramParcel.writeString(this.pqy);
-      paramParcel.writeString(this.pqz);
-      if (!this.pqv) {
+      paramParcel.writeInt(this.hyY);
+      paramParcel.writeString(this.svc);
+      paramParcel.writeInt(this.rxs);
+      paramParcel.writeInt(this.svd);
+      paramParcel.writeString(this.svj);
+      paramParcel.writeString(this.svk);
+      paramParcel.writeString(this.svl);
+      paramParcel.writeString(this.svm);
+      if (!this.svi) {
         break label551;
       }
       paramInt = 1;
       label390:
       paramParcel.writeInt(paramInt);
       paramParcel.writeString(this.videoPath);
-      paramParcel.writeString(this.fVg);
-      paramParcel.writeString(this.pqA);
-      paramParcel.writeString(this.ppL);
-      paramParcel.writeString(this.lky);
-      paramParcel.writeInt(this.nYp);
-      if (!this.ppC) {
+      paramParcel.writeString(this.ibd);
+      paramParcel.writeString(this.svn);
+      paramParcel.writeString(this.suA);
+      paramParcel.writeString(this.nPk);
+      paramParcel.writeInt(this.nOX);
+      if (!this.sur) {
         break label556;
       }
       paramInt = 1;
       label452:
       paramParcel.writeInt(paramInt);
-      paramParcel.writeString(this.lkm);
-      if (!this.lkz) {
+      paramParcel.writeString(this.nOY);
+      if (!this.nPl) {
         break label561;
       }
     }
@@ -599,10 +692,10 @@ public class SendAppMessageTask
     {
       paramParcel.writeInt(paramInt);
       paramParcel.writeInt(this.subType);
-      paramParcel.writeString(this.ppQ);
-      paramParcel.writeString(this.ppR);
-      paramParcel.writeInt(this.ppE);
-      paramParcel.writeInt(this.lyw);
+      paramParcel.writeString(this.suE);
+      paramParcel.writeString(this.suF);
+      paramParcel.writeInt(this.sut);
+      paramParcel.writeInt(this.opX);
       AppMethodBeat.o(46805);
       return;
       paramInt = 0;
@@ -624,7 +717,7 @@ public class SendAppMessageTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.share.SendAppMessageTask
  * JD-Core Version:    0.7.0.1
  */

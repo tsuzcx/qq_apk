@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:gravity="center|top" android:layout_gravity="center|top" android:id="@id/ss" android:clickable="false" android:layout_width="60.0dip" android:layout_height="60.0dip" />
-    <TextView android:textSize="11.0dip" android:textColor="#ffffffff" android:layout_gravity="bottom|center" android:id="@id/st" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" />
+    <LinearLayout android:layout_gravity="center" android:id="@id/wk" android:paddingTop="24.0dip" android:paddingBottom="24.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.appbrand.page.AppBrandActionSingleHeaderView android:gravity="center" android:id="@id/wu" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </LinearLayout>
+    <HorizontalScrollView android:gravity="center" android:id="@id/wi" android:paddingTop="24.0dip" android:paddingBottom="24.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true">
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:id="@id/wj" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mm.plugin.appbrand.page.AppBrandActionMultipleHeaderView android:gravity="center" android:id="@id/wo" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+            <com.tencent.mm.plugin.appbrand.page.AppBrandActionMultipleHeaderView android:gravity="center" android:id="@id/wp" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+            <com.tencent.mm.plugin.appbrand.page.AppBrandActionMultipleHeaderView android:gravity="center" android:id="@id/wq" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+            <com.tencent.mm.plugin.appbrand.page.AppBrandActionMultipleHeaderView android:gravity="center" android:id="@id/wr" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        </LinearLayout>
+    </HorizontalScrollView>
+    <TextView android:textSize="@dimen/qm" android:textColor="@color/d7" android:gravity="center|left" android:id="@id/wl" android:paddingLeft="@dimen/vy" android:paddingTop="14.0dip" android:paddingBottom="7.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/ql" />
 </LinearLayout>

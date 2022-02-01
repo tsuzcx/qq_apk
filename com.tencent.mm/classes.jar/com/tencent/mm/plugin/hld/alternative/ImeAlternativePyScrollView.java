@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
 import androidx.recyclerview.widget.RecyclerView.h;
 import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -14,31 +15,32 @@ import com.tencent.mm.plugin.hld.a.d;
 import com.tencent.mm.plugin.hld.a.f;
 import com.tencent.mm.plugin.hld.a.h;
 import com.tencent.mm.plugin.hld.a.j;
+import com.tencent.mm.plugin.hld.f.l;
 import com.tencent.mm.plugin.hld.model.k;
 import com.tencent.mm.plugin.hld.model.n;
 import com.tencent.mm.plugin.hld.view.ImeKeyRelativeLayout;
 import com.tencent.mm.plugin.hld.view.ImeVerticalScrollView;
-import com.tencent.mm.plugin.hld.view.i.a;
+import com.tencent.mm.view.recyclerview.k.a;
 import com.tencent.wxhld.info.Syllable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import kotlin.g.b.p;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativePyScrollView;", "Lcom/tencent/mm/plugin/hld/view/ImeVerticalScrollView;", "Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativePyViewHolder$IAlternativePyViewListener;", "Lcom/tencent/mm/plugin/hld/alternative/ISyllableListDataListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "mSyllables", "Ljava/util/ArrayList;", "Lcom/tencent/wxhld/info/Syllable;", "Lkotlin/collections/ArrayList;", "getAdapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "getItemDecoration", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getResourceId", "onClick", "", "v", "Landroid/view/View;", "onSyllableClick", "syllable", "pressTime", "", "reset", "updateSingleAllExchangeBt", "Lcom/tencent/mm/plugin/hld/view/ImeKeyRelativeLayout;", "single", "", "updateSyllableList", "syllables", "Companion", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativePyScrollView;", "Lcom/tencent/mm/plugin/hld/view/ImeVerticalScrollView;", "Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativePyViewHolder$IAlternativePyViewListener;", "Lcom/tencent/mm/plugin/hld/alternative/ISyllableListDataListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "mSyllables", "Ljava/util/ArrayList;", "Lcom/tencent/wxhld/info/Syllable;", "Lkotlin/collections/ArrayList;", "getAdapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "getItemDecoration", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getResourceId", "onClick", "", "v", "Landroid/view/View;", "onSyllableClick", "syllable", "pressTime", "", "reset", "updateSingleAllExchangeBt", "Lcom/tencent/mm/plugin/hld/view/ImeKeyRelativeLayout;", "single", "", "updateSyllableList", "syllables", "Companion", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ImeAlternativePyScrollView
   extends ImeVerticalScrollView
   implements a, c.a
 {
-  public static final a DtN;
-  private final ArrayList<Syllable> DtM;
+  public static final ImeAlternativePyScrollView.a Jnn;
+  private final ArrayList<Syllable> Jno;
   
   static
   {
-    AppMethodBeat.i(214695);
-    DtN = new a((byte)0);
-    AppMethodBeat.o(214695);
+    AppMethodBeat.i(311648);
+    Jnn = new ImeAlternativePyScrollView.a((byte)0);
+    AppMethodBeat.o(311648);
   }
   
   public ImeAlternativePyScrollView(Context paramContext, AttributeSet paramAttributeSet)
@@ -54,93 +56,90 @@ public final class ImeAlternativePyScrollView
   private ImeAlternativePyScrollView(Context paramContext, AttributeSet paramAttributeSet, int paramInt, byte paramByte)
   {
     super(paramContext, paramAttributeSet, paramInt, (byte)0);
-    AppMethodBeat.i(214693);
-    this.DtM = new ArrayList();
+    AppMethodBeat.i(311629);
+    this.Jno = new ArrayList();
     initView();
-    AppMethodBeat.o(214693);
+    AppMethodBeat.o(311629);
   }
   
   private final void a(ImeKeyRelativeLayout paramImeKeyRelativeLayout, boolean paramBoolean)
   {
-    AppMethodBeat.i(214690);
-    Object localObject = k.DDb;
-    k.hO(702, 1);
+    AppMethodBeat.i(311638);
+    Object localObject = k.JvH;
+    k.YA(702);
     if (paramBoolean)
     {
       localObject = getResources().getString(a.j.key_single_word);
-      p.j(localObject, "resources.getString(R.string.key_single_word)");
+      s.s(localObject, "resources.getString(R.string.key_single_word)");
       ImeKeyRelativeLayout.a(paramImeKeyRelativeLayout, (String)localObject);
       localObject = getResources().getString(a.j.key_all_word);
-      p.j(localObject, "resources.getString(R.string.key_all_word)");
-      paramImeKeyRelativeLayout.aLK((String)localObject);
-      paramImeKeyRelativeLayout.UQ(10);
-      AppMethodBeat.o(214690);
+      s.s(localObject, "resources.getString(R.string.key_all_word)");
+      paramImeKeyRelativeLayout.aIE((String)localObject);
+      paramImeKeyRelativeLayout.YO(10);
+      AppMethodBeat.o(311638);
       return;
     }
     localObject = getResources().getString(a.j.key_all_word);
-    p.j(localObject, "resources.getString(R.string.key_all_word)");
+    s.s(localObject, "resources.getString(R.string.key_all_word)");
     ImeKeyRelativeLayout.a(paramImeKeyRelativeLayout, (String)localObject);
     localObject = getResources().getString(a.j.key_single_word);
-    p.j(localObject, "resources.getString(R.string.key_single_word)");
-    paramImeKeyRelativeLayout.aLK((String)localObject);
-    paramImeKeyRelativeLayout.UQ(11);
-    AppMethodBeat.o(214690);
+    s.s(localObject, "resources.getString(R.string.key_single_word)");
+    paramImeKeyRelativeLayout.aIE((String)localObject);
+    paramImeKeyRelativeLayout.YO(11);
+    AppMethodBeat.o(311638);
   }
   
   public final void a(Syllable paramSyllable, long paramLong)
   {
-    AppMethodBeat.i(214682);
-    Object localObject = com.tencent.mm.plugin.hld.f.l.DHK;
-    com.tencent.mm.plugin.hld.f.l.it("WxIme.ImeAlternativePyScrollView", "onClick ".concat(String.valueOf(paramSyllable)));
+    AppMethodBeat.i(311689);
+    Object localObject = l.JyV;
+    l.jC("WxIme.ImeAlternativePyScrollView", s.X("onClick ", paramSyllable));
     if (paramSyllable != null)
     {
       localObject = getScrollContainerRv().getAdapter();
       if (localObject == null)
       {
-        paramSyllable = new t("null cannot be cast to non-null type com.tencent.mm.plugin.hld.alternative.ImeAlternativePyAdapter");
-        AppMethodBeat.o(214682);
+        paramSyllable = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.hld.alternative.ImeAlternativePyAdapter");
+        AppMethodBeat.o(311689);
         throw paramSyllable;
       }
       ((b)localObject).a(paramSyllable);
-      localObject = n.DEn;
+      localObject = n.JvW;
       n.b(paramSyllable, paramLong);
     }
-    paramSyllable = k.DDb;
-    k.hO(701, 1);
-    AppMethodBeat.o(214682);
+    paramSyllable = k.JvH;
+    k.YA(701);
+    AppMethodBeat.o(311689);
   }
   
-  public final void aB(ArrayList<Syllable> paramArrayList)
+  public final void aQ(ArrayList<Syllable> paramArrayList)
   {
-    AppMethodBeat.i(214685);
-    p.k(paramArrayList, "syllables");
-    this.DtM.clear();
-    this.DtM.addAll((Collection)paramArrayList);
+    AppMethodBeat.i(311702);
+    s.u(paramArrayList, "syllables");
+    this.Jno.clear();
+    this.Jno.addAll((Collection)paramArrayList);
     paramArrayList = getScrollContainerRv().getAdapter();
-    if (paramArrayList != null)
-    {
-      paramArrayList.notifyDataSetChanged();
-      AppMethodBeat.o(214685);
-      return;
+    if (paramArrayList != null) {
+      paramArrayList.bZE.notifyChanged();
     }
-    AppMethodBeat.o(214685);
+    AppMethodBeat.o(311702);
   }
   
   public final RecyclerView.a<RecyclerView.v> getAdapter()
   {
-    AppMethodBeat.i(214678);
-    RecyclerView.a locala = (RecyclerView.a)new b(this.DtM, (c.a)this);
-    AppMethodBeat.o(214678);
+    AppMethodBeat.i(311660);
+    RecyclerView.a locala = (RecyclerView.a)new b(this.Jno, (c.a)this);
+    AppMethodBeat.o(311660);
     return locala;
   }
   
   public final RecyclerView.h getItemDecoration()
   {
-    AppMethodBeat.i(214679);
+    AppMethodBeat.i(311665);
     Object localObject = getContext();
-    p.j(localObject, "context");
-    localObject = (RecyclerView.h)new i.a((Context)localObject).US(a.c.ime_divider_color).UT(a.c.S6_pinyin_bg_color).UR(a.d.ime_divider_size).eHI();
-    AppMethodBeat.o(214679);
+    s.s(localObject, "context");
+    localObject = (RecyclerView.h)new k.a((Context)localObject).aGi(a.c.ime_divider_color).aGj(a.c.S6_pinyin_bg_color).aGh(a.d.ime_divider_size).jNn();
+    AppMethodBeat.o(311665);
     return localObject;
   }
   
@@ -151,12 +150,12 @@ public final class ImeAlternativePyScrollView
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(214687);
+    AppMethodBeat.i(311715);
     super.onClick(paramView);
     if ((paramView instanceof ImeKeyRelativeLayout))
     {
-      com.tencent.mm.plugin.hld.f.l locall = com.tencent.mm.plugin.hld.f.l.DHK;
-      com.tencent.mm.plugin.hld.f.l.it("WxIme.ImeAlternativePyScrollView", "onClick:" + ((ImeKeyRelativeLayout)paramView).getType() + ' ' + ((ImeKeyRelativeLayout)paramView).getText() + ' ' + ((ImeKeyRelativeLayout)paramView).getSecondText() + ' ' + ((ImeKeyRelativeLayout)paramView).getFunctionCode());
+      l locall = l.JyV;
+      l.jC("WxIme.ImeAlternativePyScrollView", "onClick:" + ((ImeKeyRelativeLayout)paramView).getType() + ' ' + ((ImeKeyRelativeLayout)paramView).getText() + ' ' + ((ImeKeyRelativeLayout)paramView).getSecondText() + ' ' + ((ImeKeyRelativeLayout)paramView).getFunctionCode());
       if ((((ImeKeyRelativeLayout)paramView).getType() & 0x2) == 2) {
         switch (((ImeKeyRelativeLayout)paramView).getFunctionCode())
         {
@@ -165,10 +164,10 @@ public final class ImeAlternativePyScrollView
     }
     for (;;)
     {
-      AppMethodBeat.o(214687);
+      AppMethodBeat.o(311715);
       return;
       a((ImeKeyRelativeLayout)paramView, false);
-      AppMethodBeat.o(214687);
+      AppMethodBeat.o(311715);
       return;
       a((ImeKeyRelativeLayout)paramView, true);
     }
@@ -176,36 +175,33 @@ public final class ImeAlternativePyScrollView
   
   public final void reset()
   {
-    AppMethodBeat.i(214681);
+    AppMethodBeat.i(311676);
     super.reset();
     Object localObject = getScrollContainerRv().getAdapter();
     if (localObject == null)
     {
-      localObject = new t("null cannot be cast to non-null type com.tencent.mm.plugin.hld.alternative.ImeAlternativePyAdapter");
-      AppMethodBeat.o(214681);
+      localObject = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.hld.alternative.ImeAlternativePyAdapter");
+      AppMethodBeat.o(311676);
       throw ((Throwable)localObject);
     }
     ((b)localObject).a(null);
     localObject = getScrollContainerRv().getAdapter();
     if (localObject == null)
     {
-      localObject = new t("null cannot be cast to non-null type com.tencent.mm.plugin.hld.alternative.ImeAlternativePyAdapter");
-      AppMethodBeat.o(214681);
+      localObject = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.hld.alternative.ImeAlternativePyAdapter");
+      AppMethodBeat.o(311676);
       throw ((Throwable)localObject);
     }
     localObject = (b)localObject;
-    ((b)localObject).DtH = null;
-    ((b)localObject).DtJ.clear();
-    localObject = n.DEn;
-    n.sS(false);
+    ((b)localObject).Jnk = null;
+    ((b)localObject).Jnm.clear();
+    localObject = n.JvW;
+    n.wY(false);
     localObject = findViewById(a.f.below_button_ikb);
-    p.j(localObject, "findViewById<ImeKeyRelat…t>(R.id.below_button_ikb)");
+    s.s(localObject, "findViewById<ImeKeyRelat…t>(R.id.below_button_ikb)");
     a((ImeKeyRelativeLayout)localObject, false);
-    AppMethodBeat.o(214681);
+    AppMethodBeat.o(311676);
   }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativePyScrollView$Companion;", "", "()V", "TAG", "", "plugin-hld_release"})
-  public static final class a {}
 }
 
 

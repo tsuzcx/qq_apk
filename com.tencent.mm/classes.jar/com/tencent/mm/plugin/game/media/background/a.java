@@ -5,19 +5,23 @@ import android.media.ThumbnailUtils;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.media.r;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.CaptureVideoNormalModel;
 import com.tencent.mm.plugin.recordvideo.jumper.RecordMediaReportInfo;
 import com.tencent.mm.plugin.sight.base.b;
+import com.tencent.mm.plugin.sight.base.f;
 import com.tencent.mm.plugin.webview.model.WebViewJSSDKFileItem;
 import com.tencent.mm.plugin.webview.model.WebViewJSSDKVideoItem;
 import com.tencent.mm.plugin.webview.model.ao;
 import com.tencent.mm.plugin.webview.model.az;
+import com.tencent.mm.plugin.webview.modeltools.g;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.system.AndroidMediaUtil;
 import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -30,19 +34,19 @@ public final class a
   public static String a(CaptureDataManager.CaptureVideoNormalModel paramCaptureVideoNormalModel)
   {
     AppMethodBeat.i(41190);
-    WebViewJSSDKVideoItem localWebViewJSSDKVideoItem = aJN(paramCaptureVideoNormalModel.videoPath);
+    WebViewJSSDKVideoItem localWebViewJSSDKVideoItem = aGC(paramCaptureVideoNormalModel.videoPath);
     if (localWebViewJSSDKVideoItem == null)
     {
       AppMethodBeat.o(41190);
       return null;
     }
-    String str = hS(paramCaptureVideoNormalModel.thumbPath, paramCaptureVideoNormalModel.videoPath);
-    WebViewJSSDKFileItem localWebViewJSSDKFileItem = ao.gVN().bkI(str);
+    String str = ja(paramCaptureVideoNormalModel.thumbPath, paramCaptureVideoNormalModel.videoPath);
+    WebViewJSSDKFileItem localWebViewJSSDKFileItem = ao.ivu().bks(str);
     if (localWebViewJSSDKFileItem != null) {
-      localWebViewJSSDKVideoItem.oLR = localWebViewJSSDKFileItem.nVa;
+      localWebViewJSSDKVideoItem.rPM = localWebViewJSSDKFileItem.qUK;
     }
-    localWebViewJSSDKVideoItem.mab.putInt("mark_edit_flag", c(paramCaptureVideoNormalModel.fvU()));
-    paramCaptureVideoNormalModel = az.c(localWebViewJSSDKVideoItem.fCM, str, localWebViewJSSDKVideoItem.duration, localWebViewJSSDKVideoItem.height, localWebViewJSSDKVideoItem.width, localWebViewJSSDKVideoItem.size);
+    localWebViewJSSDKVideoItem.oSS.putInt("mark_edit_flag", c(paramCaptureVideoNormalModel.gHE()));
+    paramCaptureVideoNormalModel = az.c(localWebViewJSSDKVideoItem.hHB, str, localWebViewJSSDKVideoItem.duration, localWebViewJSSDKVideoItem.height, localWebViewJSSDKVideoItem.width, localWebViewJSSDKVideoItem.size);
     AppMethodBeat.o(41190);
     return paramCaptureVideoNormalModel;
   }
@@ -51,18 +55,18 @@ public final class a
   {
     AppMethodBeat.i(41185);
     int i = paramBundle.getInt("key_video_from", 0);
-    Object localObject = paramCaptureVideoNormalModel.fvU();
+    Object localObject = paramCaptureVideoNormalModel.gHE();
     HashMap localHashMap = new HashMap();
-    localHashMap.put("videoid", u.buc(paramCaptureVideoNormalModel.videoPath));
-    localHashMap.put("costtime", ((RecordMediaReportInfo)localObject).x("KEY_REMUX_VIDEO_COST_MS_INT", Integer.valueOf(0)));
+    localHashMap.put("videoid", y.bub(paramCaptureVideoNormalModel.videoPath));
+    localHashMap.put("costtime", ((RecordMediaReportInfo)localObject).J("KEY_REMUX_VIDEO_COST_MS_INT", Integer.valueOf(0)));
     localHashMap.put("origtime", Integer.valueOf(paramBundle.getInt("key_raw_video_duration", 0)));
-    localHashMap.put("cliptime", Integer.valueOf(Util.videoMsToSec(paramCaptureVideoNormalModel.HKL.longValue())));
+    localHashMap.put("cliptime", Integer.valueOf(Util.videoMsToSec(paramCaptureVideoNormalModel.NHJ.longValue())));
     localHashMap.put("origsize", Integer.valueOf(paramBundle.getInt("key_raw_video_size", 0)));
-    localHashMap.put("remuxsize", Integer.valueOf((int)u.bBQ(paramCaptureVideoNormalModel.videoPath)));
-    localHashMap.put("hasexpre", ((RecordMediaReportInfo)localObject).x("KEY_ADD_EMOJI_COUNT_INT", Integer.valueOf(0)));
-    localHashMap.put("hasword", ((RecordMediaReportInfo)localObject).x("KEY_ADD_TEXT_COUNT_INT", Integer.valueOf(0)));
+    localHashMap.put("remuxsize", Integer.valueOf((int)y.bEl(paramCaptureVideoNormalModel.videoPath)));
+    localHashMap.put("hasexpre", ((RecordMediaReportInfo)localObject).J("KEY_ADD_EMOJI_COUNT_INT", Integer.valueOf(0)));
+    localHashMap.put("hasword", ((RecordMediaReportInfo)localObject).J("KEY_ADD_TEXT_COUNT_INT", Integer.valueOf(0)));
     localHashMap.put("hasmusic", Integer.valueOf(1));
-    if (((Integer)((RecordMediaReportInfo)localObject).x("KEY_MUSIC_ID_INT", Integer.valueOf(-1))).intValue() == -1) {
+    if (((Integer)((RecordMediaReportInfo)localObject).J("KEY_MUSIC_ID_INT", Integer.valueOf(-1))).intValue() == -1) {
       localHashMap.put("hasmusic", Integer.valueOf(0));
     }
     localObject = new StringBuffer();
@@ -75,16 +79,16 @@ public final class a
       ((StringBuffer)localObject).append(localEntry.getValue());
       ((StringBuffer)localObject).append(", ");
     }
-    Log.i("MicroMsg.Haowan.ActionAfterVideoEdited", "remuxResult:%b, statistic:[%s]", new Object[] { paramCaptureVideoNormalModel.HKK, ((StringBuffer)localObject).toString() });
+    Log.i("MicroMsg.Haowan.ActionAfterVideoEdited", "remuxResult:%b, statistic:[%s]", new Object[] { paramCaptureVideoNormalModel.NHI, ((StringBuffer)localObject).toString() });
     int j = paramBundle.getInt("game_haowan_source_scene_id", 0);
-    if (!paramCaptureVideoNormalModel.HKK.booleanValue())
+    if (!paramCaptureVideoNormalModel.NHI.booleanValue())
     {
       Log.e("MicroMsg.Haowan.ActionAfterVideoEdited", "video remux error");
-      com.tencent.mm.game.report.b.a.a(MMApplicationContext.getContext(), 8763, 2, 56, j, com.tencent.mm.game.report.b.a.b(i, localHashMap));
+      com.tencent.mm.game.report.b.a.a(MMApplicationContext.getContext(), 8763, 2, 56, j, com.tencent.mm.game.report.b.a.a(i, localHashMap));
       AppMethodBeat.o(41185);
       return;
     }
-    com.tencent.mm.game.report.b.a.a(MMApplicationContext.getContext(), 8763, 2, 48, j, com.tencent.mm.game.report.b.a.b(i, localHashMap));
+    com.tencent.mm.game.report.b.a.a(MMApplicationContext.getContext(), 8763, 2, 48, j, com.tencent.mm.game.report.b.a.a(i, localHashMap));
     AppMethodBeat.o(41185);
   }
   
@@ -93,40 +97,40 @@ public final class a
     AppMethodBeat.i(41186);
     if (!paramString.equals(paramCaptureVideoNormalModel.videoPath))
     {
-      u.bBD(u.bBT(paramString));
-      if (u.on(paramCaptureVideoNormalModel.videoPath, paramString) > 0L) {
+      y.bDX(y.bEo(paramString));
+      if (y.O(paramCaptureVideoNormalModel.videoPath, paramString, false) > 0L) {
         paramCaptureVideoNormalModel.videoPath = paramString;
       }
     }
     AppMethodBeat.o(41186);
   }
   
-  public static void aJM(String paramString)
+  public static void aGB(String paramString)
   {
     AppMethodBeat.i(41189);
     String str = AndroidMediaUtil.getExportImagePath("mp4");
     Log.i("MicroMsg.Haowan.ActionAfterVideoEdited", "auto save video :%s", new Object[] { str });
-    u.on(paramString, str);
+    y.O(paramString, str, false);
     AndroidMediaUtil.refreshMediaScanner(str, MMApplicationContext.getContext());
     AppMethodBeat.o(41189);
   }
   
-  public static WebViewJSSDKVideoItem aJN(String paramString)
+  public static WebViewJSSDKVideoItem aGC(String paramString)
   {
     AppMethodBeat.i(41193);
-    b localb = com.tencent.mm.plugin.sight.base.f.aYg(paramString);
+    b localb = f.aVX(paramString);
     if (localb == null)
     {
       Log.e("MicroMsg.Haowan.ActionAfterVideoEdited", "video after edited is error");
       AppMethodBeat.o(41193);
       return null;
     }
-    WebViewJSSDKVideoItem localWebViewJSSDKVideoItem = WebViewJSSDKFileItem.bIJ(paramString);
+    WebViewJSSDKVideoItem localWebViewJSSDKVideoItem = WebViewJSSDKFileItem.bLD(paramString);
     localWebViewJSSDKVideoItem.duration = localb.getVideoDuration();
     localWebViewJSSDKVideoItem.width = localb.width;
     localWebViewJSSDKVideoItem.height = localb.height;
-    localWebViewJSSDKVideoItem.size = ((int)u.bBQ(paramString));
-    com.tencent.mm.plugin.webview.modeltools.f.gWt().a(localWebViewJSSDKVideoItem);
+    localWebViewJSSDKVideoItem.size = ((int)y.bEl(paramString));
+    g.ivZ().a(localWebViewJSSDKVideoItem);
     AppMethodBeat.o(41193);
     return localWebViewJSSDKVideoItem;
   }
@@ -136,8 +140,8 @@ public final class a
     AppMethodBeat.i(41187);
     if (!paramString.equals(paramCaptureVideoNormalModel.thumbPath))
     {
-      u.bBD(u.bBT(paramString));
-      if (u.on(paramCaptureVideoNormalModel.thumbPath, paramString) > 0L) {
+      y.bDX(y.bEo(paramString));
+      if (y.O(paramCaptureVideoNormalModel.thumbPath, paramString, false) > 0L) {
         paramCaptureVideoNormalModel.thumbPath = paramString;
       }
     }
@@ -156,20 +160,20 @@ public final class a
     boolean bool2;
     label60:
     boolean bool3;
-    if (((Integer)paramRecordMediaReportInfo.x("KEY_ADD_EMOJI_COUNT_INT", Integer.valueOf(0))).intValue() != 0)
+    if (((Integer)paramRecordMediaReportInfo.J("KEY_ADD_EMOJI_COUNT_INT", Integer.valueOf(0))).intValue() != 0)
     {
       bool1 = true;
-      if (((Integer)paramRecordMediaReportInfo.x("KEY_ADD_TEXT_COUNT_INT", Integer.valueOf(0))).intValue() == 0) {
+      if (((Integer)paramRecordMediaReportInfo.J("KEY_ADD_TEXT_COUNT_INT", Integer.valueOf(0))).intValue() == 0) {
         break label220;
       }
       bool2 = true;
-      if (((Integer)paramRecordMediaReportInfo.x("KEY_SELECT_MUSIC_INT", Integer.valueOf(0))).intValue() == 0) {
+      if (((Integer)paramRecordMediaReportInfo.J("KEY_SELECT_MUSIC_INT", Integer.valueOf(0))).intValue() == 0) {
         break label225;
       }
       bool3 = true;
       label83:
-      long l1 = ((Integer)paramRecordMediaReportInfo.x("KEY_ORIGIN_MEDIA_DURATION_MS_LONG", Integer.valueOf(0))).intValue();
-      long l2 = ((Integer)paramRecordMediaReportInfo.x("KEY_VIDEO_CROP_DURATION_MS_INT", Integer.valueOf(0))).intValue();
+      long l1 = ((Integer)paramRecordMediaReportInfo.J("KEY_ORIGIN_MEDIA_DURATION_MS_LONG", Integer.valueOf(0))).intValue();
+      long l2 = ((Integer)paramRecordMediaReportInfo.J("KEY_VIDEO_CROP_DURATION_MS_INT", Integer.valueOf(0))).intValue();
       if ((l1 == 0L) || (l2 == 0L) || (l1 == l2)) {
         break label231;
       }
@@ -179,7 +183,7 @@ public final class a
     label231:
     for (boolean bool4 = true;; bool4 = false)
     {
-      int i = com.tencent.mm.plugin.game.media.q.c(bool1, bool2, bool3, bool4);
+      int i = r.d(bool1, bool2, bool3, bool4);
       Log.i("MicroMsg.Haowan.ActionAfterVideoEdited", "hasEmoji:%b, hasText:%b, hasMusic:%b, hasCut:%b, editFlag:%d", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Integer.valueOf(i) });
       AppMethodBeat.o(41188);
       return i;
@@ -192,33 +196,33 @@ public final class a
     }
   }
   
-  public static WebViewJSSDKVideoItem hR(String paramString1, String paramString2)
+  public static WebViewJSSDKVideoItem iZ(String paramString1, String paramString2)
   {
     AppMethodBeat.i(41191);
-    WebViewJSSDKVideoItem localWebViewJSSDKVideoItem = aJN(paramString1);
+    WebViewJSSDKVideoItem localWebViewJSSDKVideoItem = aGC(paramString1);
     if (localWebViewJSSDKVideoItem == null)
     {
       AppMethodBeat.o(41191);
       return null;
     }
-    paramString1 = hS(paramString2, paramString1);
-    paramString1 = ao.gVN().bkI(paramString1);
+    paramString1 = ja(paramString2, paramString1);
+    paramString1 = ao.ivu().bks(paramString1);
     if (paramString1 != null) {
-      localWebViewJSSDKVideoItem.oLR = paramString1.nVa;
+      localWebViewJSSDKVideoItem.rPM = paramString1.qUK;
     }
     AppMethodBeat.o(41191);
     return localWebViewJSSDKVideoItem;
   }
   
-  public static String hS(String paramString1, String paramString2)
+  public static String ja(String paramString1, String paramString2)
   {
     AppMethodBeat.i(41192);
     String str1 = paramString1;
-    com.tencent.mm.vfs.q localq;
+    u localu;
     if (TextUtils.isEmpty(paramString1))
     {
-      localq = new com.tencent.mm.vfs.q(paramString2);
-      String str2 = localq.getName();
+      localu = new u(paramString2);
+      String str2 = localu.getName();
       str1 = null;
       paramString1 = str1;
       if (!TextUtils.isEmpty(str2))
@@ -231,9 +235,9 @@ public final class a
       if (TextUtils.isEmpty(paramString1)) {
         break label177;
       }
-      str1 = localq.ifA() + "/" + paramString1 + ".jpeg";
+      str1 = localu.jKO() + "/" + paramString1 + ".jpeg";
     }
-    while (!new com.tencent.mm.vfs.q(str1).ifE())
+    while (!new u(str1).jKS())
     {
       Log.i("MicroMsg.Haowan.ActionAfterVideoEdited", "create new thumb path:%s!", new Object[] { str1 });
       paramString1 = ThumbnailUtils.createVideoThumbnail(paramString2, 1);
@@ -243,7 +247,7 @@ public final class a
         AppMethodBeat.o(41192);
         return "";
         label177:
-        str1 = localq.ifA() + "microMsg_" + System.currentTimeMillis() + ".jpeg";
+        str1 = localu.jKO() + "microMsg_" + System.currentTimeMillis() + ".jpeg";
       }
       else
       {
@@ -258,11 +262,11 @@ public final class a
         if (TextUtils.isEmpty(str1)) {
           break;
         }
-        paramString1 = WebViewJSSDKFileItem.oF(str1, str1);
-        paramString1.nVe = true;
+        paramString1 = WebViewJSSDKFileItem.rW(str1, str1);
+        paramString1.qUO = true;
         paramString1.mediaType = 1;
-        com.tencent.mm.plugin.webview.modeltools.f.gWt().a(paramString1);
-        paramString1 = paramString1.fCM;
+        g.ivZ().a(paramString1);
+        paramString1 = paramString1.hHB;
         AppMethodBeat.o(41192);
         return paramString1;
       }
@@ -279,7 +283,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.background.a
  * JD-Core Version:    0.7.0.1
  */

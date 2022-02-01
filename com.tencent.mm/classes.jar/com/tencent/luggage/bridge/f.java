@@ -7,41 +7,24 @@ import java.util.LinkedList;
 
 final class f
 {
-  private s cqw;
-  private LinkedList<e> cqx;
-  private boolean cqy;
+  private s eio;
+  private LinkedList<e> eip;
+  private boolean eiq;
   
   f(s params)
   {
     AppMethodBeat.i(140319);
-    this.cqw = params;
-    this.cqx = new LinkedList();
-    this.cqy = false;
+    this.eio = params;
+    this.eip = new LinkedList();
+    this.eiq = false;
     AppMethodBeat.o(140319);
   }
   
   private void b(e parame)
   {
     AppMethodBeat.i(140321);
-    this.cqw.evaluateJavascript(String.format("if(typeof luggageBridge !== 'undefined') luggageBridge._processMessageFromJava(%s);", new Object[] { parame.toString() }), null);
+    this.eio.evaluateJavascript(String.format("if(typeof luggageBridge !== 'undefined') luggageBridge._processMessageFromJava(%s);", new Object[] { parame.toString() }), null);
     AppMethodBeat.o(140321);
-  }
-  
-  final void NO()
-  {
-    try
-    {
-      AppMethodBeat.i(140322);
-      Log.i("Java2JsMessageQueue", "ready");
-      this.cqy = true;
-      Iterator localIterator = this.cqx.iterator();
-      while (localIterator.hasNext()) {
-        b((e)localIterator.next());
-      }
-      this.cqx.clear();
-    }
-    finally {}
-    AppMethodBeat.o(140322);
   }
   
   /* Error */
@@ -50,25 +33,25 @@ final class f
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 91
+    //   2: ldc 61
     //   4: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 32	com/tencent/luggage/bridge/f:cqy	Z
+    //   8: getfield 32	com/tencent/luggage/bridge/f:eiq	Z
     //   11: ifeq +16 -> 27
     //   14: aload_0
     //   15: aload_1
-    //   16: invokespecial 86	com/tencent/luggage/bridge/f:b	(Lcom/tencent/luggage/bridge/e;)V
-    //   19: ldc 91
+    //   16: invokespecial 63	com/tencent/luggage/bridge/f:b	(Lcom/tencent/luggage/bridge/e;)V
+    //   19: ldc 61
     //   21: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   24: aload_0
     //   25: monitorexit
     //   26: return
     //   27: aload_0
-    //   28: getfield 30	com/tencent/luggage/bridge/f:cqx	Ljava/util/LinkedList;
+    //   28: getfield 30	com/tencent/luggage/bridge/f:eip	Ljava/util/LinkedList;
     //   31: aload_1
-    //   32: invokevirtual 95	java/util/LinkedList:add	(Ljava/lang/Object;)Z
+    //   32: invokevirtual 67	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   35: pop
-    //   36: ldc 91
+    //   36: ldc 61
     //   38: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   41: goto -17 -> 24
     //   44: astore_1
@@ -84,6 +67,23 @@ final class f
     //   from	to	target	type
     //   2	24	44	finally
     //   27	41	44	finally
+  }
+  
+  final void ready()
+  {
+    try
+    {
+      AppMethodBeat.i(140322);
+      Log.i("Java2JsMessageQueue", "ready");
+      this.eiq = true;
+      Iterator localIterator = this.eip.iterator();
+      while (localIterator.hasNext()) {
+        b((e)localIterator.next());
+      }
+      this.eip.clear();
+    }
+    finally {}
+    AppMethodBeat.o(140322);
   }
 }
 

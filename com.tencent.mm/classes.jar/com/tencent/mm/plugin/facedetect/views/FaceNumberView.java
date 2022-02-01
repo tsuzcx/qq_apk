@@ -10,7 +10,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.plugin.facedetect.a.a;
 import com.tencent.mm.plugin.facedetect.a.c;
 import com.tencent.mm.plugin.facedetect.a.d;
@@ -22,13 +22,13 @@ import com.tencent.mm.sdk.platformtools.Util;
 public class FaceNumberView
   extends LinearLayout
 {
-  private FaceNumberView.a wCA;
-  private String wCu;
-  private int wCv;
-  private ViewGroup wCw;
-  public FaceNumberItemView[] wCx;
-  private int wCy;
-  private Animation wCz;
+  private String zYF;
+  private int zYG;
+  private ViewGroup zYH;
+  public FaceNumberItemView[] zYI;
+  private int zYJ;
+  private Animation zYK;
+  private FaceNumberView.a zYL;
   
   public FaceNumberView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -39,14 +39,14 @@ public class FaceNumberView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(104176);
-    this.wCu = null;
-    this.wCx = null;
-    this.wCy = 0;
-    this.wCz = null;
-    this.wCA = FaceNumberView.a.wCC;
-    this.wCw = ((ViewGroup)inflate(getContext(), a.g.face_number_view, null));
-    addView(this.wCw);
-    this.wCz = AnimationUtils.loadAnimation(getContext(), a.a.pop_in);
+    this.zYF = null;
+    this.zYI = null;
+    this.zYJ = 0;
+    this.zYK = null;
+    this.zYL = FaceNumberView.a.zYN;
+    this.zYH = ((ViewGroup)inflate(getContext(), a.g.face_number_view, null));
+    addView(this.zYH);
+    this.zYK = AnimationUtils.loadAnimation(getContext(), a.a.pop_in);
     AppMethodBeat.o(104176);
   }
   
@@ -122,40 +122,40 @@ public class FaceNumberView
     AppMethodBeat.o(104178);
   }
   
-  private void dja()
+  private void dPL()
   {
     int i = 0;
     int j = 0;
     AppMethodBeat.i(104177);
-    if ((this.wCx != null) && (this.wCx.length > 0))
+    if ((this.zYI != null) && (this.zYI.length > 0))
     {
-      if (!Util.isNullOrNil(this.wCu))
+      if (!Util.isNullOrNil(this.zYF))
       {
         i = j;
-        if (i < this.wCx.length)
+        if (i < this.zYI.length)
         {
           String str;
           FaceNumberItemView localFaceNumberItemView;
-          if (this.wCv > i)
+          if (this.zYG > i)
           {
-            str = this.wCu.charAt(i);
-            if (this.wCv == i + 1)
+            str = this.zYF.charAt(i);
+            if (this.zYG == i + 1)
             {
-              localFaceNumberItemView = this.wCx[i];
-              localFaceNumberItemView.diZ();
-              FaceNumberItemView.a locala = new FaceNumberItemView.a(localFaceNumberItemView.wCr);
-              localFaceNumberItemView.wCj = new MTimerHandler(Looper.getMainLooper(), locala, true);
-              localFaceNumberItemView.wCj.startTimer(0L, FaceNumberItemView.wCk);
+              localFaceNumberItemView = this.zYI[i];
+              localFaceNumberItemView.dPK();
+              FaceNumberItemView.a locala = new FaceNumberItemView.a(localFaceNumberItemView.zYC);
+              localFaceNumberItemView.zYu = new MTimerHandler(Looper.getMainLooper(), locala, true);
+              localFaceNumberItemView.zYu.startTimer(0L, FaceNumberItemView.zYv);
             }
           }
           for (;;)
           {
-            a(this.wCx[i], str);
+            a(this.zYI[i], str);
             i += 1;
             break;
-            this.wCx[i].diZ();
-            localFaceNumberItemView = this.wCx[i];
-            localFaceNumberItemView.wCq = 30;
+            this.zYI[i].dPK();
+            localFaceNumberItemView = this.zYI[i];
+            localFaceNumberItemView.zYB = 30;
             localFaceNumberItemView.invalidate();
             continue;
             str = "";
@@ -164,34 +164,34 @@ public class FaceNumberView
         AppMethodBeat.o(104177);
         return;
       }
-      while (i < this.wCx.length)
+      while (i < this.zYI.length)
       {
-        a(this.wCx[i], "point");
+        a(this.zYI[i], "point");
         i += 1;
       }
     }
     AppMethodBeat.o(104177);
   }
   
-  private void djb()
+  private void dPM()
   {
     AppMethodBeat.i(104179);
-    if (this.wCu != null)
+    if (this.zYF != null)
     {
-      this.wCv = this.wCu.length();
+      this.zYG = this.zYF.length();
       AppMethodBeat.o(104179);
       return;
     }
-    this.wCv = 0;
+    this.zYG = 0;
     AppMethodBeat.o(104179);
   }
   
-  public final void azG(String paramString)
+  public final void atN(String paramString)
   {
     AppMethodBeat.i(104180);
-    this.wCu = paramString;
-    djb();
-    dja();
+    this.zYF = paramString;
+    dPM();
+    dPL();
     AppMethodBeat.o(104180);
   }
   
@@ -210,16 +210,16 @@ public class FaceNumberView
       AppMethodBeat.o(104175);
       return;
     }
-    if (paramInt == this.wCy)
+    if (paramInt == this.zYJ)
     {
       Log.i("MicroMsg.Facing.MMPwdInputView", "hy: already correct length. quit");
-      azG(null);
+      atN(null);
       AppMethodBeat.o(104175);
       return;
     }
-    this.wCw.removeAllViews();
-    this.wCy = paramInt;
-    this.wCx = new FaceNumberItemView[this.wCy];
+    this.zYH.removeAllViews();
+    this.zYJ = paramInt;
+    this.zYI = new FaceNumberItemView[this.zYJ];
     int k = 0;
     if (k < paramInt)
     {
@@ -235,8 +235,8 @@ public class FaceNumberView
       for (;;)
       {
         localFaceNumberItemView.setGravity(j);
-        this.wCx[k] = localFaceNumberItemView;
-        this.wCw.addView(localFaceNumberItemView, new ViewGroup.LayoutParams(i, getResources().getDimensionPixelSize(a.c.face_number_height)));
+        this.zYI[k] = localFaceNumberItemView;
+        this.zYH.addView(localFaceNumberItemView, new ViewGroup.LayoutParams(i, getResources().getDimensionPixelSize(a.c.face_number_height)));
         k += 1;
         break;
         if (k == paramInt - 1)
@@ -256,7 +256,7 @@ public class FaceNumberView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.views.FaceNumberView
  * JD-Core Version:    0.7.0.1
  */

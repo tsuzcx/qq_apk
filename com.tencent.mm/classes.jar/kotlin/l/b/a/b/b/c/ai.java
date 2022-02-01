@@ -1,208 +1,164 @@
 package kotlin.l.b.a.b.b.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
-import java.util.List;
-import kotlin.g.a.b;
-import kotlin.l.b.a.b.b.an;
-import kotlin.l.b.a.b.b.aq;
-import kotlin.l.b.a.b.b.aq.a;
-import kotlin.l.b.a.b.b.as;
+import kotlin.g.a.a;
+import kotlin.g.b.af;
+import kotlin.g.b.ag;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.l.b.a.b.b.a.g;
+import kotlin.l.b.a.b.b.ab;
+import kotlin.l.b.a.b.b.av;
+import kotlin.l.b.a.b.b.az;
+import kotlin.l.b.a.b.b.b.a;
+import kotlin.l.b.a.b.b.d;
 import kotlin.l.b.a.b.b.l;
+import kotlin.l.b.a.b.b.t;
+import kotlin.l.b.a.b.b.x;
+import kotlin.l.b.a.b.b.x.a;
 import kotlin.l.b.a.b.f.f;
-import kotlin.l.b.a.b.j.c;
-import kotlin.l.b.a.b.j.d.a;
-import kotlin.l.b.a.b.l.j;
-import kotlin.l.b.a.b.m.ab;
+import kotlin.l.b.a.b.l.i;
+import kotlin.l.b.a.b.l.m;
 import kotlin.l.b.a.b.m.ad;
-import kotlin.l.b.a.b.m.bh;
+import kotlin.l.b.a.b.m.be;
+import kotlin.l.o;
 
 public final class ai
-  extends e
+  extends p
+  implements ah
 {
-  private final b<ab, Void> aaPl;
-  private final List<ab> aaPm;
-  private boolean initialized;
+  public static final a aiLX;
+  final m aiBu;
+  final az aiLY;
+  private final i aiLZ;
+  private d aiMa;
   
-  private ai(l paraml, kotlin.l.b.a.b.b.a.g paramg, boolean paramBoolean, bh parambh, f paramf, int paramInt, an paraman, aq paramaq, j paramj)
+  static
   {
-    super(paramj, paraml, paramg, paramf, parambh, paramBoolean, paramInt, paraman, paramaq);
-    AppMethodBeat.i(259654);
-    this.aaPm = new ArrayList(1);
-    this.initialized = false;
-    this.aaPl = null;
-    AppMethodBeat.o(259654);
+    AppMethodBeat.i(57298);
+    aYe = new o[] { (o)kotlin.g.b.ai.a((af)new ag((kotlin.l.e)kotlin.g.b.ai.cz(ai.class), "withDispatchReceiver", "getWithDispatchReceiver()Lorg/jetbrains/kotlin/descriptors/impl/TypeAliasConstructorDescriptor;")) };
+    aiLX = new a((byte)0);
+    AppMethodBeat.o(57298);
   }
   
-  private void L(ab paramab)
+  private ai(m paramm, az paramaz, final d paramd, ah paramah, g paramg, b.a parama, av paramav)
   {
-    AppMethodBeat.i(57325);
-    if (ad.ap(paramab))
+    super((l)paramaz, (x)paramah, paramg, f.bJg("<init>"), parama, paramav);
+    AppMethodBeat.i(57316);
+    this.aiBu = paramm;
+    this.aiLY = paramaz;
+    Pk(this.aiLY.knj());
+    this.aiLZ = this.aiBu.cr((a)new b(this, paramd));
+    this.aiMa = paramd;
+    AppMethodBeat.o(57316);
+  }
+  
+  private ah d(l paraml, ab paramab, t paramt, b.a parama, boolean paramBoolean)
+  {
+    AppMethodBeat.i(191888);
+    s.u(paraml, "newOwner");
+    s.u(paramab, "modality");
+    s.u(paramt, "visibility");
+    s.u(parama, "kind");
+    paraml = koO().h(paraml).a(paramab).d(paramt).a(parama).Pj(paramBoolean).koU();
+    if (paraml == null)
     {
-      AppMethodBeat.o(57325);
-      return;
+      paraml = new NullPointerException("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.impl.TypeAliasConstructorDescriptor");
+      AppMethodBeat.o(191888);
+      throw paraml;
     }
-    this.aaPm.add(paramab);
-    AppMethodBeat.o(57325);
-  }
-  
-  public static as a(l paraml, kotlin.l.b.a.b.b.a.g paramg, bh parambh, f paramf, int paramInt, j paramj)
-  {
-    AppMethodBeat.i(259648);
-    if (paraml == null) {
-      aDG(0);
-    }
-    if (paramg == null) {
-      aDG(1);
-    }
-    if (parambh == null) {
-      aDG(2);
-    }
-    if (paramf == null) {
-      aDG(3);
-    }
-    if (paramj == null) {
-      aDG(4);
-    }
-    paramg = a(paraml, paramg, false, parambh, paramf, paramInt, an.aaKE, paramj);
-    paramg.K(a.G(paraml).iDw());
-    paramg.iGP();
-    if (paramg == null) {
-      aDG(5);
-    }
-    AppMethodBeat.o(259648);
-    return paramg;
-  }
-  
-  private static ai a(l paraml, kotlin.l.b.a.b.b.a.g paramg, boolean paramBoolean, bh parambh, f paramf, int paramInt, an paraman, aq paramaq, j paramj)
-  {
-    AppMethodBeat.i(259653);
-    if (paraml == null) {
-      aDG(12);
-    }
-    if (paramg == null) {
-      aDG(13);
-    }
-    if (parambh == null) {
-      aDG(14);
-    }
-    if (paramf == null) {
-      aDG(15);
-    }
-    if (paraman == null) {
-      aDG(16);
-    }
-    if (paramaq == null) {
-      aDG(17);
-    }
-    if (paramj == null) {
-      aDG(18);
-    }
-    paraml = new ai(paraml, paramg, paramBoolean, parambh, paramf, paramInt, paraman, paramaq, paramj);
-    AppMethodBeat.o(259653);
+    paraml = (ah)paraml;
+    AppMethodBeat.o(191888);
     return paraml;
   }
   
-  public static ai a(l paraml, kotlin.l.b.a.b.b.a.g paramg, boolean paramBoolean, bh parambh, f paramf, int paramInt, an paraman, j paramj)
+  private ah i(be parambe)
   {
-    AppMethodBeat.i(259651);
-    if (paraml == null) {
-      aDG(6);
-    }
-    if (paramg == null) {
-      aDG(7);
-    }
-    if (parambh == null) {
-      aDG(8);
-    }
-    if (paramf == null) {
-      aDG(9);
-    }
-    if (paraman == null) {
-      aDG(10);
-    }
-    if (paramj == null) {
-      aDG(11);
-    }
-    paraml = a(paraml, paramg, paramBoolean, parambh, paramf, paramInt, paraman, aq.a.aaKG, paramj);
-    AppMethodBeat.o(259651);
-    return paraml;
-  }
-  
-  private void iGN()
-  {
-    AppMethodBeat.i(57321);
-    if (this.initialized)
+    AppMethodBeat.i(57308);
+    s.u(parambe, "substitutor");
+    parambe = super.c(parambe);
+    if (parambe == null)
     {
-      IllegalStateException localIllegalStateException = new IllegalStateException("Type parameter descriptor is already initialized: " + iGO());
-      AppMethodBeat.o(57321);
-      throw localIllegalStateException;
+      parambe = new NullPointerException("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.impl.TypeAliasConstructorDescriptorImpl");
+      AppMethodBeat.o(57308);
+      throw parambe;
     }
-    AppMethodBeat.o(57321);
-  }
-  
-  private String iGO()
-  {
-    AppMethodBeat.i(57322);
-    String str = iEU() + " declared in " + c.n(iDJ());
-    AppMethodBeat.o(57322);
-    return str;
-  }
-  
-  protected final void H(ab paramab)
-  {
-    AppMethodBeat.i(57326);
-    if (paramab == null) {
-      aDG(27);
-    }
-    if (this.aaPl == null)
+    parambe = (ai)parambe;
+    Object localObject = be.aq(parambe.kob());
+    s.s(localObject, "create(substitutedTypeAliasConstructor.returnType)");
+    localObject = this.aiMa.kos().a((be)localObject);
+    if (localObject == null)
     {
-      AppMethodBeat.o(57326);
-      return;
+      AppMethodBeat.o(57308);
+      return null;
     }
-    this.aaPl.invoke(paramab);
-    AppMethodBeat.o(57326);
+    parambe.aiMa = ((d)localObject);
+    parambe = (ah)parambe;
+    AppMethodBeat.o(57308);
+    return parambe;
   }
   
-  public final void K(ab paramab)
+  public final boolean koA()
   {
-    AppMethodBeat.i(57324);
-    if (paramab == null) {
-      aDG(26);
-    }
-    iGN();
-    L(paramab);
-    AppMethodBeat.o(57324);
+    AppMethodBeat.i(57299);
+    boolean bool = this.aiMa.koA();
+    AppMethodBeat.o(57299);
+    return bool;
   }
   
-  public final void iGP()
+  public final ad kob()
   {
-    AppMethodBeat.i(57323);
-    iGN();
-    this.initialized = true;
-    AppMethodBeat.o(57323);
+    AppMethodBeat.i(57301);
+    ad localad = super.kob();
+    s.checkNotNull(localad);
+    s.s(localad, "super.getReturnType()!!");
+    AppMethodBeat.o(57301);
+    return localad;
   }
   
-  protected final List<ab> iGl()
+  public final kotlin.l.b.a.b.b.e koz()
   {
-    AppMethodBeat.i(57327);
-    if (!this.initialized)
+    AppMethodBeat.i(57300);
+    kotlin.l.b.a.b.b.e locale = this.aiMa.koz();
+    s.s(locale, "underlyingConstructorDescriptor.constructedClass");
+    AppMethodBeat.o(57300);
+    return locale;
+  }
+  
+  public final d kqj()
+  {
+    return this.aiMa;
+  }
+  
+  public static final class a
+  {
+    static be a(az paramaz)
     {
-      localObject = new IllegalStateException("Type parameter descriptor is not initialized: " + iGO());
-      AppMethodBeat.o(57327);
-      throw ((Throwable)localObject);
+      AppMethodBeat.i(57296);
+      if (paramaz.kpn() == null)
+      {
+        AppMethodBeat.o(57296);
+        return null;
+      }
+      paramaz = be.aq((ad)paramaz.kpm());
+      AppMethodBeat.o(57296);
+      return paramaz;
     }
-    Object localObject = this.aaPm;
-    if (localObject == null) {
-      aDG(28);
+  }
+  
+  static final class b
+    extends u
+    implements a<ai>
+  {
+    b(ai paramai, d paramd)
+    {
+      super();
     }
-    AppMethodBeat.o(57327);
-    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.b.c.ai
  * JD-Core Version:    0.7.0.1
  */

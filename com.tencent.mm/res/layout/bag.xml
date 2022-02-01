@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:orientation="vertical" android:background="@color/m0" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/d9k" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="0.0px" android:layout_height="0.0px" />
-    <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/is" android:textColor="@color/a2x" android:textColorHint="@color/uj" android:layout_gravity="center_vertical" android:id="@id/bxz" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/g" android:hint="@string/dm" android:includeFontPadding="false" android:textCursorDrawable="@drawable/a70" />
-</LinearLayout>
+    <View android:id="@id/evf" android:layout_width="fill_parent" android:layout_height="@dimen/aje" />
+    <RelativeLayout android:id="@id/kfx" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.plugin.multitalk.ui.widget.MultitalkFrameView android:id="@id/kg4" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <View android:id="@id/gp5" android:background="#80000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/g3k" android:background="@drawable/aij" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/al6" android:gravity="center" android:id="@id/kb9" android:background="#dd1f2127" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/h1d" />
+        <ImageView android:id="@id/lam" android:visibility="gone" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:src="@drawable/c2b" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+        <ImageView android:id="@id/h5j" android:visibility="gone" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:src="@raw/multitalk_network_mark" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+        <RelativeLayout android:id="@id/h4s" android:background="@drawable/aik" android:visibility="gone" android:layout_width="@dimen/cw" android:layout_height="@dimen/cw" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/h4t" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/a2a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignBottom="@id/kg4" android:layout_alignParentBottom="true">
+            <RelativeLayout android:id="@id/a2j" android:background="@drawable/icon_shadow_multitalk_avatar" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:id="@id/a2k" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/df" android:text="fafasfasfasgasgasggada" android:maxLines="2" android:layout_alignParentBottom="true" android:layout_marginStart="@dimen/df" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <View android:id="@id/edn" android:layout_width="fill_parent" android:layout_height="@dimen/aje" android:layout_alignParentBottom="true" />
+    <FrameLayout android:id="@id/a1x" android:layout_width="fill_parent" android:layout_height="fill_parent" android:importantForAccessibility="noHideDescendants" />
+    <RelativeLayout android:id="@id/j36" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/d1" android:layout_alignParentBottom="true" />
+</RelativeLayout>

@@ -1,76 +1,77 @@
 package com.tencent.mm.vfs;
 
 import android.os.CancellationSignal;
-import android.os.HandlerThread;
-import android.os.Looper;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.vfs.a.f.a;
+import com.tencent.mm.vfs.a.h;
 import com.tencent.mm.vfs.a.h.a;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.TreeMap;
 
 public class StatisticsFileSystem
   extends AbstractFileSystem
 {
   public static final Parcelable.Creator<StatisticsFileSystem> CREATOR;
-  private static final String[] YEl;
-  protected final FileSystem YBI;
-  protected final boolean YDa;
-  protected final String[] YEm;
+  private static final String[] agzH;
+  protected final FileSystem agvG;
+  protected final boolean agya;
+  protected final String[] agzI;
   
   static
   {
-    AppMethodBeat.i(236831);
-    YEl = new String[] { "" };
+    AppMethodBeat.i(238255);
+    agzH = new String[] { "" };
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(236831);
+    AppMethodBeat.o(238255);
   }
   
   protected StatisticsFileSystem(Parcel paramParcel)
   {
-    AppMethodBeat.i(236819);
-    ad.a(paramParcel, StatisticsFileSystem.class, 1);
-    this.YBI = ((FileSystem)paramParcel.readParcelable(getClass().getClassLoader()));
-    if (this.YBI == null)
+    AppMethodBeat.i(238248);
+    ah.a(paramParcel, StatisticsFileSystem.class, 1);
+    this.agvG = ((FileSystem)paramParcel.readParcelable(getClass().getClassLoader()));
+    if (this.agvG == null)
     {
       paramParcel = new IllegalArgumentException("Wrong wrapped filesystem.");
-      AppMethodBeat.o(236819);
+      AppMethodBeat.o(238248);
       throw paramParcel;
     }
-    this.YEm = paramParcel.createStringArray();
+    this.agzI = paramParcel.createStringArray();
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.YDa = bool;
-      AppMethodBeat.o(236819);
+      this.agya = bool;
+      AppMethodBeat.o(238248);
       return;
     }
   }
   
   public StatisticsFileSystem(FileSystem paramFileSystem)
   {
-    this.YBI = paramFileSystem;
-    this.YEm = YEl;
-    this.YDa = true;
+    this.agvG = paramFileSystem;
+    this.agzI = agzH;
+    this.agya = true;
   }
   
   public StatisticsFileSystem(FileSystem paramFileSystem, Collection<String> paramCollection)
   {
-    AppMethodBeat.i(236817);
-    this.YBI = paramFileSystem;
-    this.YDa = true;
+    AppMethodBeat.i(238241);
+    this.agvG = paramFileSystem;
+    this.agya = true;
     if (paramCollection.isEmpty())
     {
-      this.YEm = YEl;
-      AppMethodBeat.o(236817);
+      this.agzI = agzH;
+      AppMethodBeat.o(238241);
       return;
     }
-    this.YEm = new String[paramCollection.size()];
+    this.agzI = new String[paramCollection.size()];
     Iterator localIterator = paramCollection.iterator();
     int i = 0;
     if (localIterator.hasNext())
@@ -87,12 +88,12 @@ public class StatisticsFileSystem
       }
       for (;;)
       {
-        paramCollection = ad.r(paramFileSystem, true, true);
+        paramCollection = ah.v(paramFileSystem, true, true);
         paramFileSystem = paramCollection;
         if (j == 0) {
           paramFileSystem = paramCollection + "";
         }
-        this.YEm[i] = paramFileSystem;
+        this.agzI[i] = paramFileSystem;
         i += 1;
         break;
         j = 0;
@@ -101,263 +102,457 @@ public class StatisticsFileSystem
         paramFileSystem = paramFileSystem.substring(0, paramFileSystem.length() - 1);
       }
     }
-    Arrays.sort(this.YEm);
-    AppMethodBeat.o(236817);
+    Arrays.sort(this.agzI);
+    AppMethodBeat.o(238241);
   }
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(236827);
+    AppMethodBeat.i(238273);
     if (!(paramObject instanceof StatisticsFileSystem))
     {
-      AppMethodBeat.o(236827);
+      AppMethodBeat.o(238273);
       return false;
     }
     paramObject = (StatisticsFileSystem)paramObject;
-    if ((this.YBI.equals(paramObject.YBI)) && (this.YDa == paramObject.YDa) && (Arrays.equals(this.YEm, paramObject.YEm)))
+    if ((this.agvG.equals(paramObject.agvG)) && (this.agya == paramObject.agya) && (Arrays.equals(this.agzI, paramObject.agzI)))
     {
-      AppMethodBeat.o(236827);
+      AppMethodBeat.o(238273);
       return true;
     }
-    AppMethodBeat.o(236827);
+    AppMethodBeat.o(238273);
     return false;
   }
   
   public int hashCode()
   {
-    AppMethodBeat.i(236826);
+    AppMethodBeat.i(238267);
     int i = StatisticsFileSystem.class.hashCode();
-    int j = ad.hash(new Object[] { this.YBI, this.YEm, Boolean.valueOf(this.YDa) });
-    AppMethodBeat.o(236826);
+    int j = ah.hash(new Object[] { this.agvG, this.agzI, Boolean.valueOf(this.agya) });
+    AppMethodBeat.o(238267);
     return i ^ j;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(236825);
-    String str = this.YBI.toString();
-    AppMethodBeat.o(236825);
+    AppMethodBeat.i(238262);
+    String str = this.agvG.toString();
+    AppMethodBeat.o(238262);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
-    AppMethodBeat.i(236822);
-    ad.b(paramParcel, StatisticsFileSystem.class, 1);
-    paramParcel.writeParcelable(this.YBI, paramInt);
-    paramParcel.writeStringArray(this.YEm);
-    if (this.YDa) {}
+    AppMethodBeat.i(238259);
+    ah.b(paramParcel, StatisticsFileSystem.class, 1);
+    paramParcel.writeParcelable(this.agvG, paramInt);
+    paramParcel.writeStringArray(this.agzI);
+    if (this.agya) {}
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      AppMethodBeat.o(236822);
+      AppMethodBeat.o(238259);
       return;
     }
   }
   
   protected class a
-    extends d
+    extends f
   {
-    protected final FileSystem.b YBJ;
-    protected final List<FileSystem.b> YCf;
-    private final boolean[] YEn;
+    protected final FileSystem.b agwv;
+    protected final List<FileSystem.b> agxd;
+    private long agzJ;
+    private TreeMap<String, StatisticsFileSystem.b[]> agzK;
+    private StatisticsFileSystem.b[] agzL;
+    private byte[] agzM;
+    private StatisticsFileSystem.b[] agzN;
+    private byte[] agzO;
+    private int agzP;
     
     a(FileSystem.b paramb)
     {
-      AppMethodBeat.i(236806);
-      this.YBJ = paramb;
-      this.YCf = Collections.singletonList(paramb);
-      this.YEn = new boolean[StatisticsFileSystem.this.YEm.length];
-      AppMethodBeat.o(236806);
+      AppMethodBeat.i(238138);
+      this.agzJ = -9223372036854775808L;
+      this.agwv = paramb;
+      this.agxd = Collections.singletonList(paramb);
+      AppMethodBeat.o(238138);
+    }
+    
+    private void a(StatisticsFileSystem.b paramb)
+    {
+      AppMethodBeat.i(238157);
+      StatisticsFileSystem localStatisticsFileSystem = StatisticsFileSystem.this;
+      String str = paramb.basePath;
+      boolean bool = paramb.agzT;
+      long l2 = paramb.uWn;
+      int i = paramb.ZBN;
+      int j = paramb.agwM;
+      if (paramb.ZBN - paramb.agzX == 0) {}
+      for (long l1 = 0L;; l1 = paramb.agzW / (paramb.ZBN - paramb.agzX))
+      {
+        localStatisticsFileSystem.l(2, new Object[] { "relPath", str, "recursive", Boolean.valueOf(bool), "totalSize", Long.valueOf(l2), "fileCount", Integer.valueOf(i), "dirCount", Integer.valueOf(j), "averageAge", Long.valueOf(l1), "maxDepth", Integer.valueOf(paramb.agwN), "maxFileSize", Long.valueOf(paramb.cBA) });
+        AppMethodBeat.o(238157);
+        return;
+      }
+    }
+    
+    private void jKL()
+    {
+      AppMethodBeat.i(238149);
+      long l = k.kMs().kMu();
+      if (this.agzJ == l)
+      {
+        AppMethodBeat.o(238149);
+        return;
+      }
+      this.agzJ = l;
+      ArrayList localArrayList1 = new ArrayList();
+      ArrayList localArrayList2 = new ArrayList();
+      this.agzK = new TreeMap();
+      this.agzP = 0;
+      String[] arrayOfString = StatisticsFileSystem.this.agzI;
+      int j = arrayOfString.length;
+      int i = 0;
+      if (i < j)
+      {
+        localObject = arrayOfString[i];
+        boolean bool;
+        label105:
+        label110:
+        StatisticsFileSystem.b localb;
+        if (!((String)localObject).endsWith(""))
+        {
+          bool = true;
+          if (!bool) {
+            break label168;
+          }
+          localb = new StatisticsFileSystem.b((String)localObject, bool);
+          if (!bool) {
+            break label186;
+          }
+          localArrayList1.add(localb);
+          this.agzK.put(localObject, new StatisticsFileSystem.b[] { localb });
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          bool = false;
+          break label105;
+          label168:
+          localObject = ((String)localObject).substring(0, ((String)localObject).length() - 1);
+          break label110;
+          label186:
+          localArrayList2.add(localb);
+        }
+      }
+      Object localObject = new StatisticsFileSystem.b[0];
+      this.agzL = ((StatisticsFileSystem.b[])localArrayList1.toArray((Object[])localObject));
+      this.agzN = ((StatisticsFileSystem.b[])localArrayList2.toArray((Object[])localObject));
+      this.agzM = new byte[this.agzL.length];
+      this.agzO = new byte[this.agzN.length];
+      AppMethodBeat.o(238149);
     }
     
     public final void a(CancellationSignal paramCancellationSignal)
     {
-      AppMethodBeat.i(236812);
-      int j;
-      Object localObject;
-      boolean bool;
-      label62:
-      label67:
+      AppMethodBeat.i(238187);
       int i;
-      if (StatisticsFileSystem.this.YDa)
+      Object localObject;
+      for (;;)
       {
-        j = 0;
-        if (j < StatisticsFileSystem.this.YEm.length) {
-          if (this.YEn[j] == 0)
+        int j;
+        int k;
+        try
+        {
+          if (!StatisticsFileSystem.this.agya) {
+            break;
+          }
+          if (this.agzP != 0)
           {
-            localObject = StatisticsFileSystem.this.YEm[j];
-            if (!((String)localObject).endsWith(""))
+            this.agzK = null;
+            this.agzL = null;
+            this.agzN = null;
+            this.agzO = null;
+            this.agzP = 0;
+          }
+          jKL();
+          j = 0;
+          i = 0;
+          if (j >= this.agzN.length) {
+            break label509;
+          }
+          k = i;
+          if (this.agzO[j] <= 0)
+          {
+            localObject = bDW(this.agzN[j].basePath);
+            k = i;
+            if (localObject != null)
             {
-              bool = true;
-              if (!bool) {
-                break label132;
-              }
-              localObject = dJ((String)localObject, bool);
-              if (localObject == null) {
-                break label150;
-              }
               localObject = ((Iterable)localObject).iterator();
-              i = 0;
+              k = i;
+              if (((Iterator)localObject).hasNext())
+              {
+                ((Iterator)localObject).next();
+                k = i + 1;
+                i = k;
+                if ((k & 0x10) != 0) {
+                  continue;
+                }
+                paramCancellationSignal.throwIfCanceled();
+                i = k;
+                continue;
+              }
             }
           }
+          j += 1;
         }
+        finally
+        {
+          this.agzJ = -9223372036854775808L;
+          this.agzK = null;
+          this.agzL = null;
+          this.agzM = null;
+          this.agzN = null;
+          this.agzO = null;
+          this.agzP = 0;
+          AppMethodBeat.o(238187);
+        }
+        i = k;
+        continue;
+        do
+        {
+          j = i;
+          i = j;
+          if (this.agzK.isEmpty()) {
+            break;
+          }
+          localObject = bDW((String)this.agzK.lastKey());
+        } while (localObject == null);
+        localObject = ((Iterable)localObject).iterator();
+        for (;;)
+        {
+          j = i;
+          if (!((Iterator)localObject).hasNext()) {
+            break;
+          }
+          ((Iterator)localObject).next();
+          j = i + 1;
+          i = j;
+          if ((j & 0x10) == 0)
+          {
+            paramCancellationSignal.throwIfCanceled();
+            i = j;
+          }
+        }
+      }
+      if ((this.agzL != null) && (this.agzN != null) && (this.agzP == 0))
+      {
+        i = 0;
+        label319:
+        if (i >= this.agzL.length) {
+          break label519;
+        }
+        if (this.agzM[i] != 1) {
+          break label512;
+        }
+        localObject = this.agzL[i];
+        String str = (String)this.agzK.ceilingKey(((StatisticsFileSystem.b)localObject).basePath);
+        if ((str != null) && ((str.equals(((StatisticsFileSystem.b)localObject).basePath)) || (str.startsWith(((StatisticsFileSystem.b)localObject).basePath + '/')))) {
+          break label512;
+        }
+        a((StatisticsFileSystem.b)localObject);
       }
       for (;;)
       {
-        if (((Iterator)localObject).hasNext())
+        if (i < this.agzN.length)
         {
-          ((Iterator)localObject).next();
-          if (i < 10) {
-            break label176;
+          if (this.agzO[i] == 1) {
+            a(this.agzN[i]);
           }
-          paramCancellationSignal.throwIfCanceled();
-          i = 0;
-          continue;
-          bool = false;
-          break label62;
-          label132:
-          localObject = ((String)localObject).substring(0, ((String)localObject).length() - 1);
-          break label67;
+          i += 1;
         }
-        label150:
-        j += 1;
-        break;
-        super.a(paramCancellationSignal);
-        Arrays.fill(this.YEn, false);
-        AppMethodBeat.o(236812);
-        return;
-        label176:
-        i += 1;
+        else
+        {
+          this.agzJ = -9223372036854775808L;
+          this.agzK = null;
+          this.agzL = null;
+          this.agzM = null;
+          this.agzN = null;
+          this.agzO = null;
+          this.agzP = 0;
+          paramCancellationSignal.throwIfCanceled();
+          super.a(paramCancellationSignal);
+          AppMethodBeat.o(238187);
+          return;
+          label509:
+          break;
+          label512:
+          i += 1;
+          break label319;
+          label519:
+          i = 0;
+        }
       }
     }
     
-    public final Iterable<f> dJ(String paramString, boolean paramBoolean)
+    public final Iterable<j> bDW(String paramString)
     {
-      AppMethodBeat.i(236810);
-      Iterable localIterable = super.dJ(paramString, paramBoolean);
-      if (localIterable == null)
+      int j = 2;
+      AppMethodBeat.i(238174);
+      Iterable localIterable = super.bDW(paramString);
+      if (k.kMs().kMu() == -9223372036854775808L)
       {
-        AppMethodBeat.o(236810);
-        return null;
-      }
-      String str = ad.r(paramString, true, true);
-      String[] arrayOfString = StatisticsFileSystem.this.YEm;
-      if (paramBoolean) {}
-      int i;
-      for (paramString = str;; paramString = str + "")
-      {
-        i = Arrays.binarySearch(arrayOfString, paramString);
-        if (i >= 0) {
-          break;
-        }
-        AppMethodBeat.o(236810);
+        AppMethodBeat.o(238174);
         return localIterable;
       }
-      paramString = new a(str, i, paramBoolean);
-      paramString = new com.tencent.mm.vfs.a.h(new com.tencent.mm.vfs.a.f(localIterable, paramString), paramString);
-      AppMethodBeat.o(236810);
+      jKL();
+      Object localObject = ah.v(paramString, true, true);
+      StatisticsFileSystem.b[] arrayOfb = (StatisticsFileSystem.b[])this.agzK.remove(localObject);
+      int k = Arrays.binarySearch(this.agzN, localObject);
+      if ((arrayOfb == null) && (k < 0))
+      {
+        AppMethodBeat.o(238174);
+        return localIterable;
+      }
+      if (k < 0)
+      {
+        paramString = null;
+        k = Arrays.binarySearch(this.agzL, localObject);
+        if (k >= 0)
+        {
+          localObject = this.agzM;
+          if (localIterable != null) {
+            break label185;
+          }
+        }
+      }
+      label185:
+      for (int i = j;; i = 1)
+      {
+        localObject[k] = ((byte)i);
+        if (localIterable != null) {
+          break label190;
+        }
+        AppMethodBeat.o(238174);
+        return null;
+        paramString = this.agzN[k];
+        byte[] arrayOfByte = this.agzO;
+        if (localIterable == null) {}
+        for (i = 2;; i = 1)
+        {
+          arrayOfByte[k] = ((byte)i);
+          break;
+        }
+      }
+      label190:
+      this.agzP += 1;
+      paramString = new a(arrayOfb, paramString);
+      paramString = new h(new com.tencent.mm.vfs.a.f(localIterable, paramString), paramString);
+      AppMethodBeat.o(238174);
       return paramString;
     }
     
     public boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(236815);
+      AppMethodBeat.i(238197);
       if (!(paramObject instanceof a))
       {
-        AppMethodBeat.o(236815);
+        AppMethodBeat.o(238197);
         return false;
       }
       paramObject = (a)paramObject;
-      if ((this.YBJ.equals(paramObject.YBJ)) && (Arrays.equals(StatisticsFileSystem.this.YEm, paramObject.YEo.YEm)) && (StatisticsFileSystem.this.YDa == paramObject.YEo.YDa))
+      if ((this.agwv.equals(paramObject.agwv)) && (Arrays.equals(StatisticsFileSystem.this.agzI, paramObject.agzQ.agzI)) && (StatisticsFileSystem.this.agya == paramObject.agzQ.agya))
       {
-        AppMethodBeat.o(236815);
+        AppMethodBeat.o(238197);
         return true;
       }
-      AppMethodBeat.o(236815);
+      AppMethodBeat.o(238197);
       return false;
-    }
-    
-    public final FileSystem.b hX(String paramString, int paramInt)
-    {
-      return this.YBJ;
     }
     
     public int hashCode()
     {
-      AppMethodBeat.i(236814);
+      AppMethodBeat.i(238192);
       int i = a.class.hashCode();
-      int j = ad.hash(new Object[] { this.YBJ, StatisticsFileSystem.this.YEm, Boolean.valueOf(StatisticsFileSystem.this.YDa) });
-      AppMethodBeat.o(236814);
+      int j = ah.hash(new Object[] { this.agwv, StatisticsFileSystem.this.agzI, Boolean.valueOf(StatisticsFileSystem.this.agya) });
+      AppMethodBeat.o(238192);
       return i ^ j;
     }
     
-    public final List<FileSystem.b> ifa()
+    public final List<FileSystem.b> jKf()
     {
-      return this.YCf;
+      return this.agxd;
+    }
+    
+    public final FileSystem.b jk(String paramString, int paramInt)
+    {
+      return this.agwv;
     }
     
     final class a
-      implements f.a<f, f>, h.a
+      implements f.a<j, j>, h.a
     {
-      final boolean Wa;
-      final long YEp;
-      final int YEq;
-      int YEr;
-      int YEs;
-      long YEt;
-      int YEu;
-      long YEv;
-      int YEw;
-      final String mPath;
-      final int mPos;
-      long mTotalSize;
+      final StatisticsFileSystem.b[] agzL;
+      final StatisticsFileSystem.b agzR;
       
-      a(String paramString, int paramInt, boolean paramBoolean)
+      static
       {
-        AppMethodBeat.i(236801);
-        this.YEp = System.currentTimeMillis();
-        this.mTotalSize = 0L;
-        this.YEr = 0;
-        this.YEs = 0;
-        this.YEt = 0L;
-        this.YEu = 0;
-        this.YEv = 0L;
-        this.YEw = 0;
-        this.mPath = paramString;
-        this.mPos = paramInt;
-        this.YEq = StatisticsFileSystem.bBO(paramString);
-        this.Wa = paramBoolean;
-        AppMethodBeat.o(236801);
-      }
-      
-      public final void ifx()
-      {
-        AppMethodBeat.i(236803);
-        StatisticsFileSystem localStatisticsFileSystem = StatisticsFileSystem.this;
-        String str = this.mPath;
-        boolean bool = this.Wa;
-        long l2 = this.mTotalSize;
-        int i = this.YEr;
-        int j = this.YEs;
-        if (this.YEr - this.YEw == 0) {}
-        for (long l1 = 0L;; l1 = this.YEt / (this.YEr - this.YEw))
+        AppMethodBeat.i(238203);
+        if (!StatisticsFileSystem.class.desiredAssertionStatus()) {}
+        for (boolean bool = true;; bool = false)
         {
-          localStatisticsFileSystem.k(2, new Object[] { "relPath", str, "recursive", Boolean.valueOf(bool), "totalSize", Long.valueOf(l2), "fileCount", Integer.valueOf(i), "dirCount", Integer.valueOf(j), "averageAge", Long.valueOf(l1), "maxDepth", Integer.valueOf(this.YEu), "maxFileSize", Long.valueOf(this.YEv) });
-          if (h.iWH().abSU.getLooper() == Looper.myLooper()) {
-            StatisticsFileSystem.a.a(StatisticsFileSystem.a.this)[this.mPos] = 1;
-          }
-          AppMethodBeat.o(236803);
+          $assertionsDisabled = bool;
+          AppMethodBeat.o(238203);
           return;
         }
       }
+      
+      a(StatisticsFileSystem.b[] paramArrayOfb, StatisticsFileSystem.b paramb)
+      {
+        this.agzL = paramArrayOfb;
+        this.agzR = paramb;
+      }
+      
+      public final void jKE()
+      {
+        AppMethodBeat.i(238208);
+        StatisticsFileSystem.a.b(StatisticsFileSystem.a.this);
+        AppMethodBeat.o(238208);
+      }
+    }
+  }
+  
+  static final class b
+    implements Comparable<String>
+  {
+    int ZBN;
+    int agwM;
+    int agwN;
+    final boolean agzT;
+    final long agzU;
+    final int agzV;
+    long agzW;
+    int agzX;
+    final String basePath;
+    long cBA;
+    long uWn;
+    
+    b(String paramString, boolean paramBoolean)
+    {
+      AppMethodBeat.i(238129);
+      this.basePath = paramString;
+      this.agzT = paramBoolean;
+      this.agzU = System.currentTimeMillis();
+      this.agzV = StatisticsFileSystem.bEk(paramString);
+      AppMethodBeat.o(238129);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.vfs.StatisticsFileSystem
  * JD-Core Version:    0.7.0.1
  */

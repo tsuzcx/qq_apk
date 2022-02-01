@@ -8,6 +8,9 @@ import com.google.android.gms.common.api.Releasable;
 import com.google.android.gms.common.api.Result;
 import com.google.android.gms.common.api.Status;
 import java.io.InputStream;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 @Deprecated
 public abstract interface DataApi
@@ -60,6 +63,9 @@ public abstract interface DataApi
     public abstract int getNumDeleted();
   }
   
+  @Retention(RetentionPolicy.SOURCE)
+  public static @interface FilterType {}
+  
   @Deprecated
   public static abstract interface GetFdForAssetResult
     extends Releasable, Result
@@ -71,7 +77,7 @@ public abstract interface DataApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.DataApi
  * JD-Core Version:    0.7.0.1
  */

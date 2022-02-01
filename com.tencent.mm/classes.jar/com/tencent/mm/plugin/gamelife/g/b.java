@@ -1,120 +1,68 @@
 package com.tencent.mm.plugin.gamelife.g;
 
+import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.k;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.gamelife.PluginGameLife;
-import com.tencent.mm.pluginsdk.model.app.l.b;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.storage.IAutoDBItem;
-import java.util.Arrays;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.loader.b.e;
+import com.tencent.mm.vfs.y;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelife/message/GameLifeAppMessageInterceptor;", "Lcom/tencent/mm/pluginsdk/model/app/AppMessageStorage$IAppMessageStorageInterceptor;", "()V", "get", "Lcom/tencent/mm/message/AppMessage;", "msgId", "", "insertNotify", "", "item", "isNotify", "replace", "shouldIntercept", "updateNotify", "keys", "", "", "(Lcom/tencent/mm/message/AppMessage;Z[Ljava/lang/String;)Z", "toGameLifeAppMessage", "Lcom/tencent/mm/plugin/gamelife/message/GameLifeAppMessage;", "Companion", "plugin-gamelife_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/gamelife/loader/GameLifeAvatarDiskCache;", "Lcom/tencent/mm/loader/cache/disk/BitmapDiskCache;", "Lcom/tencent/mm/plugin/gamelife/loader/GameLifeAvatarData;", "()V", "buildFilePath", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "Landroid/graphics/Bitmap;", "clear", "", "get", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "onSaveCompleted", "", "diskResource", "Lcom/tencent/mm/loader/model/Resource;", "onSaveStarted", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "resource", "plugin-gamelife_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  implements l.b
+  extends com.tencent.mm.loader.cache.a.a<a>
 {
-  public static final b.a DhO;
-  
-  static
+  public final boolean a(com.tencent.mm.loader.g.a.a<a> parama, e parame, com.tencent.mm.loader.f<?, Bitmap> paramf)
   {
-    AppMethodBeat.i(204290);
-    DhO = new b.a((byte)0);
-    AppMethodBeat.o(204290);
+    AppMethodBeat.i(268160);
+    s.u(parama, "url");
+    s.u(parame, "opts");
+    s.u(paramf, "reaper");
+    AppMethodBeat.o(268160);
+    return true;
   }
   
-  private static a b(k paramk)
+  public final boolean a(com.tencent.mm.loader.g.a.a<a> parama, com.tencent.mm.loader.g.f<?> paramf, e parame, com.tencent.mm.loader.f<?, Bitmap> paramf1)
   {
-    AppMethodBeat.i(204289);
-    p.k(paramk, "$this$toGameLifeAppMessage");
-    a locala = new a();
-    locala.field_appId = paramk.field_appId;
-    locala.field_description = paramk.field_description;
-    locala.field_msgId = paramk.field_msgId;
-    locala.field_source = paramk.field_source;
-    locala.field_title = paramk.field_title;
-    locala.field_type = paramk.field_type;
-    locala.field_xml = paramk.field_xml;
-    AppMethodBeat.o(204289);
-    return locala;
+    AppMethodBeat.i(268149);
+    s.u(parama, "url");
+    s.u(paramf, "httpResponse");
+    s.u(parame, "opts");
+    s.u(paramf1, "reaper");
+    AppMethodBeat.o(268149);
+    return true;
   }
   
-  public final k NR(long paramLong)
+  public final com.tencent.mm.loader.g.b.a b(com.tencent.mm.loader.g.a.a<a> parama, e parame, com.tencent.mm.loader.f<?, Bitmap> paramf)
   {
-    AppMethodBeat.i(204287);
-    a locala = new a();
-    locala.field_msgId = paramLong;
-    if (!((PluginGameLife)h.ag(PluginGameLife.class)).getAppMessageStorage().get((IAutoDBItem)locala, new String[0]))
+    AppMethodBeat.i(268182);
+    s.u(parama, "url");
+    s.u(parame, "opts");
+    s.u(paramf, "reaper");
+    parama = ((a)parama.bmg()).getPath();
+    if (y.ZC(parama))
     {
-      Log.i("GameLife.AppMessageInterceptor", "[get] msg:" + paramLong + " not found!");
-      AppMethodBeat.o(204287);
-      return null;
+      parama = com.tencent.mm.loader.g.b.a.GJ(parama);
+      AppMethodBeat.o(268182);
+      return parama;
     }
-    Log.i("GameLife.AppMessageInterceptor", "[get] appId:" + locala.field_appId + " title:" + locala.field_title + " desc:" + locala.field_description + " type:" + locala.field_type + " msgId:" + locala.field_msgId);
-    k localk = new k();
-    localk.field_appId = locala.field_appId;
-    localk.field_description = locala.field_description;
-    localk.field_msgId = locala.field_msgId;
-    localk.field_source = locala.field_source;
-    localk.field_title = locala.field_title;
-    localk.field_type = locala.field_type;
-    localk.field_xml = locala.field_xml;
-    AppMethodBeat.o(204287);
-    return localk;
+    AppMethodBeat.o(268182);
+    return null;
   }
   
-  public final boolean NS(long paramLong)
+  public final String c(com.tencent.mm.loader.g.a.a<a> parama, e parame, com.tencent.mm.loader.f<?, Bitmap> paramf)
   {
-    return ((paramLong >= 4500001L) && (paramLong <= 5000000L)) || ((paramLong >= 208000001L) && (paramLong <= 308000000L));
-  }
-  
-  public final boolean a(k paramk, boolean paramBoolean)
-  {
-    AppMethodBeat.i(204284);
-    if (paramk == null)
-    {
-      AppMethodBeat.o(204284);
-      return false;
-    }
-    paramBoolean = ((PluginGameLife)h.ag(PluginGameLife.class)).getAppMessageStorage().insertNotify((IAutoDBItem)b(paramk), paramBoolean);
-    Log.i("GameLife.AppMessageInterceptor", "[insert ret:" + paramBoolean + "] appid:" + paramk.field_appId + " title:" + paramk.field_title + " desc:" + paramk.field_description + ' ' + "type:" + paramk.field_type + " msgId:" + paramk.field_msgId);
-    AppMethodBeat.o(204284);
-    return paramBoolean;
-  }
-  
-  public final boolean a(k paramk, boolean paramBoolean, String... paramVarArgs)
-  {
-    AppMethodBeat.i(204288);
-    p.k(paramVarArgs, "keys");
-    if (paramk == null)
-    {
-      AppMethodBeat.o(204288);
-      return false;
-    }
-    paramBoolean = ((PluginGameLife)h.ag(PluginGameLife.class)).getAppMessageStorage().updateNotify((IAutoDBItem)b(paramk), paramBoolean, (String[])Arrays.copyOf(paramVarArgs, paramVarArgs.length));
-    Log.i("GameLife.AppMessageInterceptor", "[update ret:" + paramBoolean + "] appid:" + paramk.field_appId + " title:" + paramk.field_title + " desc:" + paramk.field_description + ' ' + "type:" + paramk.field_type + " msgId:" + paramk.field_msgId);
-    AppMethodBeat.o(204288);
-    return paramBoolean;
-  }
-  
-  public final boolean b(k paramk, boolean paramBoolean)
-  {
-    AppMethodBeat.i(204286);
-    if (paramk == null)
-    {
-      AppMethodBeat.o(204286);
-      return false;
-    }
-    paramBoolean = ((PluginGameLife)h.ag(PluginGameLife.class)).getAppMessageStorage().replace((IAutoDBItem)b(paramk), paramBoolean);
-    Log.i("GameLife.AppMessageInterceptor", "[replace ret:" + paramBoolean + "] appid:" + paramk.field_appId + " title:" + paramk.field_title + " desc:" + paramk.field_description + ' ' + "type:" + paramk.field_type + " msgId:" + paramk.field_msgId);
-    AppMethodBeat.o(204286);
-    return paramBoolean;
+    AppMethodBeat.i(268171);
+    s.u(parama, "url");
+    s.u(parame, "opts");
+    s.u(paramf, "reaper");
+    parama = ((a)parama.bmg()).getPath();
+    AppMethodBeat.o(268171);
+    return parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelife.g.b
  * JD-Core Version:    0.7.0.1
  */

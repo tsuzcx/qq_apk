@@ -8,12 +8,12 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
-import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.ah;
+import com.tencent.mm.vfs.u;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -181,11 +181,11 @@ public class GlobalUtil
     AppMethodBeat.i(102499);
     if (getInstance().getContext() != null)
     {
-      paramString = q.Q(getInstance().getContext().getDatabasePath(paramString));
-      if (paramString.ifE() == true) {
+      paramString = u.V(getInstance().getContext().getDatabasePath(paramString));
+      if (paramString.jKS() == true) {
         try
         {
-          paramString.cFq();
+          paramString.diJ();
           TMLog.i("GlobalUtil", "deleteDB");
           AppMethodBeat.o(102499);
           return;
@@ -268,7 +268,7 @@ public class GlobalUtil
   public static boolean isDBExist(String paramString)
   {
     AppMethodBeat.i(102498);
-    if ((getInstance().getContext() != null) && (q.Q(getInstance().getContext().getDatabasePath(paramString)).ifE()))
+    if ((getInstance().getContext() != null) && (u.V(getInstance().getContext().getDatabasePath(paramString)).jKS()))
     {
       AppMethodBeat.o(102498);
       return true;
@@ -280,13 +280,13 @@ public class GlobalUtil
   public static void updateFilePathAuthorized(String paramString)
   {
     AppMethodBeat.i(102497);
-    Object localObject = new q(paramString);
-    String str2 = ((q)localObject).ifA();
-    String str1 = new q(str2).ifA();
-    paramString = new q(str1).ifA();
+    Object localObject = new u(paramString);
+    String str2 = ((u)localObject).jKO();
+    String str1 = new u(str2).jKO();
+    paramString = new u(str1).jKO();
     try
     {
-      localObject = "chmod 777 " + ((q)localObject).bOF();
+      localObject = "chmod 777 " + ah.v(((u)localObject).jKT());
       Runtime.getRuntime().exec((String)localObject);
       str2 = "chmod 777 ".concat(String.valueOf(str2));
       Runtime.getRuntime().exec(str2);
@@ -323,9 +323,11 @@ public class GlobalUtil
       AppMethodBeat.o(102489);
       return null;
     }
-    String str = Settings.Secure.getString(getContext().getContentResolver(), "android_id");
+    Object localObject = getContext().getContentResolver();
+    localObject = new com.tencent.mm.hellhoundlib.b.a().cG("android_id").cG(localObject);
+    localObject = (String)com.tencent.mm.hellhoundlib.a.a.a(new Object(), ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/tmassistantsdk/util/GlobalUtil", "getAndroidIdInPhone", "()Ljava/lang/String;", "android/provider/Settings$Secure", "getString", "(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;");
     AppMethodBeat.o(102489);
-    return str;
+    return localObject;
   }
   
   public Context getContext()
@@ -513,7 +515,7 @@ public class GlobalUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.util.GlobalUtil
  * JD-Core Version:    0.7.0.1
  */

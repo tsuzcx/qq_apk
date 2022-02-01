@@ -12,7 +12,7 @@ public abstract interface a
   
   public abstract void a(MMActivity paramMMActivity, String paramString1, String paramString2, int paramInt, String paramString3, a parama);
   
-  public abstract void g(Context paramContext, String paramString1, String paramString2);
+  public abstract void k(Context paramContext, String paramString1, String paramString2);
   
   public static abstract interface a
   {
@@ -21,7 +21,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.choosemsgfile.compat.a
  * JD-Core Version:    0.7.0.1
  */

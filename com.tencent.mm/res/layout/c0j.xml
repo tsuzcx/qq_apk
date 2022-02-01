@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@id/iqp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/k4"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center|left" android:id="@id/be9" android:paddingLeft="@dimen/ih" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/k4" android:layout_weight="1.0">
-        <TextView android:id="@android:id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/mi" />
-        <TextView android:id="@android:id/summary" android:paddingTop="@dimen/k5" android:paddingRight="@dimen/ih" android:paddingBottom="@dimen/k5" android:singleLine="true" style="@style/ml" />
-    </LinearLayout>
-    <FrameLayout android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center|right" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent">
-            <com.tencent.mm.chatroom.ui.story.StoryAvatarDotsView android:id="@id/ibl" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        </LinearLayout>
-    </FrameLayout>
-</LinearLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_gravity="center_horizontal" android:id="@id/yt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cp"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.emoji.view.EmojiStatusView android:id="@id/yr" android:padding="4.0dip" android:layout_width="@dimen/a52" android:layout_height="@dimen/a52" android:src="@color/d" android:scaleType="fitCenter" app:layout_constraintBottom_toTopOf="@id/ys" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <TextView android:textSize="@dimen/y" android:textColor="@color/al2" android:id="@id/hsj" android:background="@color/a7q" android:paddingLeft="2.0dip" android:paddingRight="2.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/j8t" android:importantForAccessibility="no" app:layout_constraintBottom_toBottomOf="@id/yr" app:layout_constraintEnd_toEndOf="@id/yr" />
+    <TextView android:textSize="12.0sp" android:textColor="?kx" android:id="@id/ys" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toBottomOf="@id/yr" />
+</androidx.constraintlayout.widget.ConstraintLayout>

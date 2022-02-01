@@ -1,27 +1,23 @@
 package com.tencent.mm.plugin.forcenotify.ui;
 
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import android.media.AudioManager;
+import kotlin.Metadata;
+import kotlin.g.a.a;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "onAudioFocusChange"})
+@Metadata(d1={""}, d2={"<anonymous>", "Landroid/media/AudioManager;"}, k=3, mv={1, 5, 1}, xi=48)
 final class b$c
-  implements AudioManager.OnAudioFocusChangeListener
+  extends u
+  implements a<AudioManager>
 {
-  public static final c BEU;
-  
-  static
+  b$c(b paramb)
   {
-    AppMethodBeat.i(252793);
-    BEU = new c();
-    AppMethodBeat.o(252793);
+    super(0);
   }
-  
-  public final void onAudioFocusChange(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.forcenotify.ui.b.c
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.biz;
 
 public final class b$e
 {
-  public static final int default_avatar = 2131690045;
+  public static final int default_avatar = 2131690088;
 }
 
 

@@ -1,43 +1,23 @@
 package com.tencent.mm.plugin.finder.nearby.live.square.page;
 
+import androidx.fragment.app.Fragment;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.nearby.guide.b;
+import com.tencent.mm.ui.component.UIComponent;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/live/square/page/NearbyLiveSquareTabParser;", "", "()V", "COMMENT_SCENE_PREFIX", "", "isFinderLiveSquareCommentScene", "", "commentScene", "isFinderLiveSquareMoreCommentScene", "isFinderLiveSquareOperationCommentScene", "parseTabCommentScene", "tabId", "parseTabIdFlag", "plugin-finder-nearby_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/live/square/page/FinderLivePageScrollGuideUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "fragment", "Landroidx/fragment/app/Fragment;", "(Landroidx/fragment/app/Fragment;)V", "scrollGuideHelper", "Lcom/tencent/mm/plugin/finder/nearby/guide/FinderLivePageScrollGuideHelper;", "getTabLayoutScrollGuideHelper", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
+  extends UIComponent
 {
-  public static final a zGC;
+  public b ELU;
   
-  static
+  public a(Fragment paramFragment)
   {
-    AppMethodBeat.i(199953);
-    zGC = new a();
-    AppMethodBeat.o(199953);
-  }
-  
-  public static int Ou(int paramInt)
-  {
-    return 1005000 + paramInt;
-  }
-  
-  public static boolean Ov(int paramInt)
-  {
-    return (paramInt == 9500001) || (paramInt == 9500002);
-  }
-  
-  public static boolean isFinderLiveSquareCommentScene(int paramInt)
-  {
-    return paramInt / 100000 == 94;
-  }
-  
-  public static boolean isFinderLiveSquareMoreCommentScene(int paramInt)
-  {
-    return (paramInt / 100000 == 80) || (paramInt == 80);
-  }
-  
-  public static int parseTabCommentScene(int paramInt1, int paramInt2)
-  {
-    return 100000 * paramInt1 + paramInt2;
+    super(paramFragment);
+    AppMethodBeat.i(341296);
+    this.ELU = new b();
+    AppMethodBeat.o(341296);
   }
 }
 

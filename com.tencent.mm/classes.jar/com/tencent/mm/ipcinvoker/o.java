@@ -2,7 +2,7 @@ package com.tencent.mm.ipcinvoker;
 
 public abstract interface o
 {
-  public abstract void RQ();
+  public abstract void onDied();
 }
 
 

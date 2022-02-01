@@ -3,7 +3,7 @@ package com.tencent.matrix.mrs.core;
 import android.content.Context;
 import android.os.Build.VERSION;
 import com.tencent.matrix.strategy.c.a;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.s;
 import com.tencent.mm.b.g;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
@@ -12,7 +12,7 @@ import com.tencent.mm.protocal.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.WeChatHosts;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 
 public abstract class MatrixStrategyCaller
   implements MrsCallback
@@ -24,7 +24,7 @@ public abstract class MatrixStrategyCaller
   
   public String getCryptKey(MatrixUploadDataSlice paramMatrixUploadDataSlice)
   {
-    return g.getMessageDigest(String.format("weixin#$()%d%d", new Object[] { Integer.valueOf(d.RAD), Long.valueOf(paramMatrixUploadDataSlice.getDataSize()) }).getBytes()).toLowerCase();
+    return g.getMessageDigest(String.format("weixin#$()%d%d", new Object[] { Integer.valueOf(d.Yxh), Long.valueOf(paramMatrixUploadDataSlice.getDataSize()) }).getBytes()).toLowerCase();
   }
   
   public String getHost(MatrixUploadDataSlice paramMatrixUploadDataSlice)
@@ -36,11 +36,11 @@ public abstract class MatrixStrategyCaller
   {
     try
     {
-      Object localObject = q.Q(MMApplicationContext.getContext().getFilesDir());
-      if (!((q)localObject).ifE()) {
-        ((q)localObject).ifM();
+      Object localObject = u.V(MMApplicationContext.getContext().getFilesDir());
+      if (!((u)localObject).jKS()) {
+        ((u)localObject).jKZ();
       }
-      localObject = ((q)localObject).toString();
+      localObject = ((u)localObject).toString();
       com.tencent.matrix.e.c.i("Matrix.MatrixStrategyCaller", "[TEST-PATH] getPublicSharePath, path: %s", new Object[] { localObject });
       localObject = (String)localObject + "/mrs/";
       return localObject;
@@ -54,12 +54,12 @@ public abstract class MatrixStrategyCaller
   
   public String getUrl(MatrixUploadDataSlice paramMatrixUploadDataSlice)
   {
-    String str = g.getMessageDigest(String.format("weixin#$()%d%d", new Object[] { Integer.valueOf(d.RAD), Long.valueOf(paramMatrixUploadDataSlice.getDataSize()) }).getBytes()).toLowerCase();
-    StringBuilder localStringBuilder = new StringBuilder(512).append("/cgi-bin/mmsupport-bin/stackreport?version=").append(Integer.toHexString(d.RAD)).append("&devicetype=").append("android-" + Build.VERSION.SDK_INT).append("&filelength=").append(paramMatrixUploadDataSlice.getDataSize()).append("&sum=").append(str);
+    String str = g.getMessageDigest(String.format("weixin#$()%d%d", new Object[] { Integer.valueOf(d.Yxh), Long.valueOf(paramMatrixUploadDataSlice.getDataSize()) }).getBytes()).toLowerCase();
+    StringBuilder localStringBuilder = new StringBuilder(512).append("/cgi-bin/mmsupport-bin/stackreport?version=").append(Integer.toHexString(d.Yxh)).append("&devicetype=").append("android-" + Build.VERSION.SDK_INT).append("&filelength=").append(paramMatrixUploadDataSlice.getDataSize()).append("&sum=").append(str);
     long l;
-    if ((MMApplicationContext.isMMProcess()) && (h.aHB()))
+    if ((MMApplicationContext.isMMProcess()) && (h.baz()))
     {
-      str = z.bcZ();
+      str = z.bAM();
       if ((str != null) && (str.length() != 0)) {
         localStringBuilder.append("&username=").append(str);
       }
@@ -91,7 +91,7 @@ public abstract class MatrixStrategyCaller
   {
     try
     {
-      if (!h.aHB())
+      if (!h.baz())
       {
         Log.e("Matrix.MatrixStrategyCaller", "onRequestGetMrsStrategy, account not ready");
         return false;
@@ -119,13 +119,13 @@ public abstract class MatrixStrategyCaller
         MrsLogic.onStrategyResp(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousArrayOfByte);
       }
     });
-    h.aHF().kcd.a(paramArrayOfByte, 0);
+    h.baD().mCm.a(paramArrayOfByte, 0);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.mrs.core.MatrixStrategyCaller
  * JD-Core Version:    0.7.0.1
  */

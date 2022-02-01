@@ -1,3 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="@dimen/t" android:textColor="@color/am" android:id="@id/krp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="取消" android:fontFamily="sans-serif-medium"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<com.tencent.mm.ui.widget.InsectRelativeLayout android:id="@id/iic" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:background="@drawable/a4f" android:layout_width="fill_parent" android:layout_height="282.0dip" android:layout_alignParentBottom="true" />
+    <include android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_above="@id/e6m" android:layout_centerHorizontal="true" layout="@layout/cm7" />
+    <include android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/e6m" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:layout_marginBottom="@dimen/cp" android:layout_above="@id/iik" layout="@layout/cm6" />
+    <FrameLayout android:id="@id/m8a" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignTop="@id/e6m" android:layout_alignBottom="@id/e6m">
+        <com.tencent.mm.plugin.finder.view.InterceptRecyclerView android:layout_gravity="center_vertical" android:id="@id/kh1" android:scrollbars="none" android:fadingEdge="horizontal" android:fadingEdgeLength="@dimen/cp" android:layout_width="fill_parent" android:layout_height="@dimen/d6" android:requiresFadingEdge="horizontal" />
+    </FrameLayout>
+    <com.tencent.mm.plugin.finder.video.plugin.view.RecordTypeSelectView android:id="@id/iik" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cw" android:layout_alignParentBottom="true" />
+    <include android:id="@id/e6l" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/cm9" />
+</com.tencent.mm.ui.widget.InsectRelativeLayout>

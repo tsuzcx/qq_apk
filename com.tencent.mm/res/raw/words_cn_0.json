@@ -6,6 +6,7 @@
     "BRAND_ID_Others": "微信号",
     "BRAND_Team": "微信团队",
     "BRAND_Pay": "微信支付",
+    "BRAND_Pay_Separation": "微信支付",
     "BRAND_Pay_OverseaMY": "WeChat Pay MY",
     "BRAND_Pay_OverseaHK": "WeChat Pay HK",
     "BRAND_Pay_Oversea": "WeChat Pay",
@@ -84,7 +85,7 @@
     "Compliance_Locale": "国家",
     "OfficialAliasName": "Weixin",
     "OfficialEntity": "深圳市腾讯计算机系统有限公司",
-    "Compliance_Terms": "微信软件许可及服务协议",
+    "Compliance_Terms": "软件许可及服务协议",
     "HC_LANG": "zh_CN",
     "HC_MENU_SELF": "自助工具",
     "HC_MENU_FREEZE_ACCOUNT": "冻结帐号",
@@ -92,5 +93,7 @@
     "HC_MENU_FORGOT_PASSWORD": "忘记密码",
     "HC_MENU_HELP_LOGIN": "解封/申诉辅助验证",
     "HC_MENU_HELP_REGISTER": "注册辅助验证",
-    "HC_MENU_FEEDBACK": "意见反馈"
+    "HC_MENU_FEEDBACK": "意见反馈",
+
+    "BRAND_SEPARATION": "微信"
 }

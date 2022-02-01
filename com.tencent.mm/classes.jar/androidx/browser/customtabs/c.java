@@ -5,49 +5,49 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  final android.support.a.a yA;
-  private final a yB;
+  final android.support.a.a zw;
+  private final a zx;
   
   c(android.support.a.a parama)
   {
-    AppMethodBeat.i(191324);
-    this.yA = parama;
-    this.yB = new a() {};
-    AppMethodBeat.o(191324);
-  }
-  
-  final IBinder eU()
-  {
-    AppMethodBeat.i(191325);
-    IBinder localIBinder = this.yA.asBinder();
-    AppMethodBeat.o(191325);
-    return localIBinder;
+    AppMethodBeat.i(192986);
+    this.zw = parama;
+    this.zx = new a() {};
+    AppMethodBeat.o(192986);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(191331);
+    AppMethodBeat.i(193003);
     if (!(paramObject instanceof c))
     {
-      AppMethodBeat.o(191331);
+      AppMethodBeat.o(193003);
       return false;
     }
-    boolean bool = ((c)paramObject).eU().equals(this.yA.asBinder());
-    AppMethodBeat.o(191331);
+    boolean bool = ((c)paramObject).fR().equals(this.zw.asBinder());
+    AppMethodBeat.o(193003);
     return bool;
+  }
+  
+  final IBinder fR()
+  {
+    AppMethodBeat.i(192991);
+    IBinder localIBinder = this.zw.asBinder();
+    AppMethodBeat.o(192991);
+    return localIBinder;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(191328);
-    int i = eU().hashCode();
-    AppMethodBeat.o(191328);
+    AppMethodBeat.i(192996);
+    int i = fR().hashCode();
+    AppMethodBeat.o(192996);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     androidx.browser.customtabs.c
  * JD-Core Version:    0.7.0.1
  */

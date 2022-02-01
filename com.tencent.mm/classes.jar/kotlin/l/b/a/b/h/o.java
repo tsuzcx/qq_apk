@@ -12,13 +12,13 @@ public final class o
   extends AbstractList<String>
   implements RandomAccess, p
 {
-  public static final p abgz;
+  public static final p ajfq;
   private final List<Object> list;
   
   static
   {
     AppMethodBeat.i(59516);
-    abgz = new o().iOd();
+    ajfq = new o().kyv();
     AppMethodBeat.o(59516);
   }
   
@@ -37,7 +37,7 @@ public final class o
     AppMethodBeat.o(59502);
   }
   
-  private static String ap(Object paramObject)
+  private static String bx(Object paramObject)
   {
     AppMethodBeat.i(59509);
     if ((paramObject instanceof String))
@@ -48,24 +48,16 @@ public final class o
     }
     if ((paramObject instanceof d))
     {
-      paramObject = ((d)paramObject).Ap();
+      paramObject = ((d)paramObject).ZV();
       AppMethodBeat.o(59509);
       return paramObject;
     }
-    paramObject = k.E((byte[])paramObject);
+    paramObject = k.G((byte[])paramObject);
     AppMethodBeat.o(59509);
     return paramObject;
   }
   
-  public final List<?> Iw()
-  {
-    AppMethodBeat.i(59510);
-    List localList = Collections.unmodifiableList(this.list);
-    AppMethodBeat.o(59510);
-    return localList;
-  }
-  
-  public final d aFw(int paramInt)
+  public final d aMk(int paramInt)
   {
     AppMethodBeat.i(59508);
     Object localObject = this.list.get(paramInt);
@@ -81,9 +73,9 @@ public final class o
       AppMethodBeat.o(59508);
       return locald;
       if ((localObject instanceof String)) {
-        locald = d.bHg((String)localObject);
+        locald = d.bJj((String)localObject);
       } else {
-        locald = d.dG((byte[])localObject);
+        locald = d.dJ((byte[])localObject);
       }
     }
   }
@@ -93,7 +85,7 @@ public final class o
     AppMethodBeat.i(59505);
     Object localObject = paramCollection;
     if ((paramCollection instanceof p)) {
-      localObject = ((p)paramCollection).Iw();
+      localObject = ((p)paramCollection).aiu();
     }
     boolean bool = this.list.addAll(paramInt, (Collection)localObject);
     this.modCount += 1;
@@ -107,6 +99,14 @@ public final class o
     boolean bool = addAll(size(), paramCollection);
     AppMethodBeat.o(59504);
     return bool;
+  }
+  
+  public final List<?> aiu()
+  {
+    AppMethodBeat.i(59510);
+    List localList = Collections.unmodifiableList(this.list);
+    AppMethodBeat.o(59510);
+    return localList;
   }
   
   public final void clear()
@@ -125,7 +125,7 @@ public final class o
     AppMethodBeat.o(59507);
   }
   
-  public final p iOd()
+  public final p kyv()
   {
     AppMethodBeat.i(59511);
     y localy = new y(this);
@@ -143,7 +143,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.h.o
  * JD-Core Version:    0.7.0.1
  */

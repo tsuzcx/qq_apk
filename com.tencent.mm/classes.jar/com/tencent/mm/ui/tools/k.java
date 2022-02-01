@@ -4,7 +4,6 @@ import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.animation.AnimatorInflater;
 import android.animation.TimeInterpolator;
-import android.annotation.TargetApi;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.view.animation.AnimationUtils;
@@ -17,11 +16,10 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class k
 {
-  @TargetApi(11)
-  public static final void D(View paramView, float paramFloat)
+  public static final void E(View paramView, float paramFloat)
   {
     AppMethodBeat.i(143107);
-    if ((paramView == null) || (d.qW(11)))
+    if ((paramView == null) || (d.rc(11)))
     {
       AppMethodBeat.o(143107);
       return;
@@ -35,11 +33,10 @@ public final class k
     AppMethodBeat.o(143107);
   }
   
-  @TargetApi(14)
   public static final void a(View paramView, long paramLong, float paramFloat, a parama)
   {
     AppMethodBeat.i(143109);
-    if ((paramView == null) || (d.qW(14)))
+    if ((paramView == null) || (d.rc(14)))
     {
       AppMethodBeat.o(143109);
       return;
@@ -62,16 +59,16 @@ public final class k
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(143106);
-        this.XSz.aEa();
-        AppMethodBeat.o(143106);
+        AppMethodBeat.i(251114);
+        k.this.aXe();
+        AppMethodBeat.o(251114);
       }
       
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(143105);
-        this.XSz.onAnimationEnd();
-        AppMethodBeat.o(143105);
+        AppMethodBeat.i(251111);
+        k.this.onAnimationEnd();
+        AppMethodBeat.o(251111);
       }
       
       public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
@@ -81,11 +78,10 @@ public final class k
     AppMethodBeat.o(143109);
   }
   
-  @TargetApi(11)
   public static void a(View paramView, Animator.AnimatorListener paramAnimatorListener)
   {
     AppMethodBeat.i(143110);
-    if ((paramView == null) || (d.qW(11)))
+    if ((paramView == null) || (d.rc(11)))
     {
       AppMethodBeat.o(143110);
       return;
@@ -104,11 +100,10 @@ public final class k
     AppMethodBeat.o(143110);
   }
   
-  @TargetApi(14)
-  public static final void q(View paramView, float paramFloat)
+  public static final void r(View paramView, float paramFloat)
   {
     AppMethodBeat.i(143108);
-    if ((paramView == null) || (d.qW(14)))
+    if ((paramView == null) || (d.rc(14)))
     {
       AppMethodBeat.o(143108);
       return;
@@ -125,14 +120,14 @@ public final class k
   
   public static abstract interface a
   {
-    public abstract void aEa();
+    public abstract void aXe();
     
     public abstract void onAnimationEnd();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.tools.k
  * JD-Core Version:    0.7.0.1
  */

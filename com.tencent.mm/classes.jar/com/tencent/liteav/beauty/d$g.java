@@ -6,11 +6,11 @@ public enum d$g
 {
   static
   {
-    AppMethodBeat.i(231452);
+    AppMethodBeat.i(229758);
     a = new g("TXE_FILL_MODE_SCALL_TO_FILL", 0);
     b = new g("TXE_FILL_MODE_SCALL_ASPECT_FILL", 1);
     c = new g[] { a, b };
-    AppMethodBeat.o(231452);
+    AppMethodBeat.o(229758);
   }
   
   private d$g() {}

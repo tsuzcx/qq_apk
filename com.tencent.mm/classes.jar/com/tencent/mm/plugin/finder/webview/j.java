@@ -3,241 +3,396 @@ package com.tencent.mm.plugin.finder.webview;
 import android.content.Context;
 import android.content.Intent;
 import android.net.http.SslError;
+import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.aa;
+import com.tencent.mm.api.ab;
 import com.tencent.mm.plugin.box.webview.BoxWebView;
+import com.tencent.mm.plugin.finder.webview.ad.ScrollFrameLayout;
 import com.tencent.mm.plugin.scanner.MultiCodeMaskView;
 import com.tencent.mm.plugin.webview.core.BaseWebViewController;
 import com.tencent.mm.plugin.webview.core.BaseWebViewController.d;
-import com.tencent.mm.plugin.webview.f.g;
+import com.tencent.mm.plugin.webview.stub.b;
 import com.tencent.mm.plugin.webview.stub.e;
-import com.tencent.mm.plugin.webview.ui.tools.c;
-import com.tencent.mm.protocal.protobuf.qm;
+import com.tencent.mm.plugin.webview.ui.tools.d;
+import com.tencent.mm.protocal.protobuf.rx;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
-import com.tencent.mm.ui.ax;
+import com.tencent.mm.ui.bf;
 import com.tencent.mm.ui.widget.MMWebView;
+import com.tencent.threadpool.i;
 import com.tencent.xweb.WebResourceRequest;
 import com.tencent.xweb.WebResourceResponse;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.r;
+import com.tencent.xweb.ac;
+import com.tencent.xweb.t;
+import com.tencent.xweb.x5.export.external.extension.proxy.a;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.q;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/webview/FinderWebViewHelper;", "Lcom/tencent/mm/plugin/finder/webview/IFinderWebViewHelper;", "Lcom/tencent/mm/plugin/finder/webview/IWebViewLongClickProvider;", "context", "Landroid/content/Context;", "homeContext", "Lcom/tencent/mm/protocal/protobuf/BoxHomeContext;", "uxInfo", "", "window", "Landroid/view/Window;", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/BoxHomeContext;Ljava/lang/String;Landroid/view/Window;)V", "boxWebView", "Lcom/tencent/mm/plugin/box/webview/BoxWebView;", "codeMaskView", "Lcom/tencent/mm/plugin/scanner/MultiCodeMaskView;", "getCodeMaskView", "()Lcom/tencent/mm/plugin/scanner/MultiCodeMaskView;", "setCodeMaskView", "(Lcom/tencent/mm/plugin/scanner/MultiCodeMaskView;)V", "isReleased", "", "longClickHelper", "Lcom/tencent/mm/plugin/finder/webview/WebViewLongClickHelper;", "mCurrentURL", "mWebViewStatusListeners", "", "Lcom/tencent/mm/plugin/finder/webview/IFinderWebViewHelper$IWebViewStateListener;", "sslErrorHandler", "Lcom/tencent/mm/plugin/webview/ui/tools/MMSslErrorHandler;", "webViewClientListener", "com/tencent/mm/plugin/finder/webview/FinderWebViewHelper$webViewClientListener$1", "Lcom/tencent/mm/plugin/finder/webview/FinderWebViewHelper$webViewClientListener$1;", "webViewController", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;", "webViewControllerListener", "Lcom/tencent/mm/plugin/finder/webview/FinderWebViewController;", "addJsApiPool", "", "addWebViewStateListener", "listener", "clearWebViewStateListener", "getContext", "getController", "getCurrentURL", "getInvoke", "Lcom/tencent/mm/plugin/webview/stub/WebViewStub_AIDL;", "getMaskView", "getPerm", "Lcom/tencent/mm/plugin/webview/permission/WebViewPermission;", "getTouchX", "", "getTouchY", "getWVTopOffset", "", "getWebView", "Lcom/tencent/mm/ui/widget/MMWebView;", "getWindow", "getWithInitWebView", "initWebView", "initWebViewController", "isRelease", "onCreateBoxWebViewEnd", "enablePreloadWebView", "enablePreloadFromFindTab", "useCache", "onCreateBoxWebViewStart", "onError", "onExecuteActionCode", "actionCode", "data", "Landroid/os/Bundle;", "onInitWebViewEnd", "onInitWebViewStart", "onWebViewReady", "release", "reload", "removeWebViewStateListener", "startLoadUrl", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/webview/FinderWebViewHelper;", "Lcom/tencent/mm/plugin/finder/webview/IFinderWebViewHelper;", "Lcom/tencent/mm/plugin/finder/webview/IWebViewLongClickProvider;", "context", "Landroid/content/Context;", "homeContext", "Lcom/tencent/mm/protocal/protobuf/BoxHomeContext;", "window", "Landroid/view/Window;", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/BoxHomeContext;Landroid/view/Window;)V", "boxWebView", "Lcom/tencent/mm/plugin/box/webview/BoxWebView;", "codeMaskView", "Lcom/tencent/mm/plugin/scanner/MultiCodeMaskView;", "getCodeMaskView", "()Lcom/tencent/mm/plugin/scanner/MultiCodeMaskView;", "setCodeMaskView", "(Lcom/tencent/mm/plugin/scanner/MultiCodeMaskView;)V", "dialogWindow", "getDialogWindow", "()Landroid/view/Window;", "setDialogWindow", "(Landroid/view/Window;)V", "errorRunnable", "Ljava/lang/Runnable;", "isReleased", "", "longClickHelper", "Lcom/tencent/mm/plugin/finder/webview/WebViewLongClickHelper;", "mCurrentURL", "", "mWebViewStatusListeners", "", "Lcom/tencent/mm/plugin/finder/webview/IFinderWebViewHelper$IWebViewStateListener;", "posProvider", "Lcom/tencent/mm/plugin/finder/webview/IDetectPosProvider;", "getPosProvider", "()Lcom/tencent/mm/plugin/finder/webview/IDetectPosProvider;", "setPosProvider", "(Lcom/tencent/mm/plugin/finder/webview/IDetectPosProvider;)V", "sslErrorHandler", "Lcom/tencent/mm/plugin/webview/ui/tools/MMSslErrorHandler;", "webViewClientListener", "com/tencent/mm/plugin/finder/webview/FinderWebViewHelper$webViewClientListener$1", "Lcom/tencent/mm/plugin/finder/webview/FinderWebViewHelper$webViewClientListener$1;", "webViewController", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;", "webViewControllerListener", "Lcom/tencent/mm/plugin/finder/webview/FinderWebViewController;", "addWebViewStateListener", "", "listener", "clearWebViewStateListener", "getContext", "getController", "getCurrentURL", "getInvoke", "Lcom/tencent/mm/plugin/webview/stub/WebViewStub_AIDL;", "getMaskView", "getPerm", "Lcom/tencent/mm/plugin/webview/permission/WebViewPermission;", "getTouchX", "", "()Ljava/lang/Float;", "getTouchY", "getWVTopOffset", "", "getWebView", "Lcom/tencent/mm/ui/widget/MMWebView;", "getWindow", "getWithInitWebView", "initWebView", "initWebViewController", "isRelease", "onCreateBoxWebViewEnd", "enablePreloadWebView", "enablePreloadFromFindTab", "useCache", "onCreateBoxWebViewStart", "onError", "onExecuteActionCode", "actionCode", "data", "Landroid/os/Bundle;", "onInitWebViewEnd", "onInitWebViewStart", "onWebViewReady", "release", "reload", "reloadUrl", "url", "removeWebViewStateListener", "startLoadUrl", "isReload", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class j
-  implements k, l
+  implements l, m
 {
-  public static final a BrF;
-  private h BrA;
-  private final List<k.a> BrB;
-  private BaseWebViewController BrC;
-  private WebViewLongClickHelper BrD;
-  private e BrE;
-  private Window Bry;
-  MultiCodeMaskView Brz;
+  public static final a GXT;
+  public Window GXU;
+  public MultiCodeMaskView GXV;
+  private k GXW;
+  private g GXX;
+  private final List<l.a> GXY;
+  private BaseWebViewController GXZ;
+  private WebViewLongClickHelper GYa;
+  private d GYb;
+  private final Runnable GYc;
   private Context context;
   private boolean isReleased;
-  private String pFV;
-  private c pHc;
-  private qm sog;
-  private BoxWebView soj;
-  private String uxInfo;
+  private String sLe;
+  private d sMc;
+  private rx vAe;
+  private BoxWebView vAh;
   
   static
   {
-    AppMethodBeat.i(221118);
-    BrF = new a((byte)0);
-    AppMethodBeat.o(221118);
+    AppMethodBeat.i(334559);
+    GXT = new a((byte)0);
+    AppMethodBeat.o(334559);
   }
   
-  public j(Context paramContext, qm paramqm, String paramString, Window paramWindow)
+  private j(Context paramContext, rx paramrx)
   {
-    AppMethodBeat.i(221117);
-    this.pFV = "";
-    this.BrB = ((List)new ArrayList());
-    this.BrE = new e(this);
+    AppMethodBeat.i(334454);
+    this.sLe = "";
+    this.GXY = ((List)new ArrayList());
+    this.GYb = new d(this);
+    this.GYc = new j..ExternalSyntheticLambda0(this);
     this.context = paramContext;
-    this.sog = paramqm;
-    this.Bry = paramWindow;
-    this.uxInfo = paramString;
-    AppMethodBeat.o(221117);
+    this.vAe = paramrx;
+    this.GXU = null;
+    AppMethodBeat.o(334454);
   }
   
-  private final void elP()
+  private static final void a(j paramj)
   {
-    AppMethodBeat.i(221098);
-    Iterator localIterator = this.BrB.iterator();
-    while (localIterator.hasNext()) {
-      ((k.a)localIterator.next()).elP();
+    AppMethodBeat.i(334490);
+    s.u(paramj, "this$0");
+    paramj.atR();
+    AppMethodBeat.o(334490);
+  }
+  
+  private static final void a(j paramj, String paramString)
+  {
+    AppMethodBeat.i(334515);
+    s.u(paramj, "this$0");
+    s.u(paramString, "$url");
+    rx localrx = paramj.vAe;
+    if (localrx != null) {
+      localrx.Url = paramString;
     }
-    AppMethodBeat.o(221098);
-  }
-  
-  private final void elS()
-  {
-    AppMethodBeat.i(221100);
-    com.tencent.e.h.ZvG.bc((Runnable)new d(this));
-    AppMethodBeat.o(221100);
-  }
-  
-  public final void a(k.a parama)
-  {
-    AppMethodBeat.i(221090);
-    if (!this.BrB.contains(parama)) {
-      this.BrB.add(parama);
+    paramj = paramj.GXZ;
+    if (paramj != null) {
+      paramj.loadUrl(paramString, null, false);
     }
-    AppMethodBeat.o(221090);
+    AppMethodBeat.o(334515);
   }
   
-  public final MMWebView elR()
+  private static final void a(j paramj, boolean paramBoolean)
   {
-    AppMethodBeat.i(221086);
-    Object localObject1 = this.BrB.iterator();
-    while (((Iterator)localObject1).hasNext()) {
-      ((k.a)((Iterator)localObject1).next()).elM();
-    }
-    localObject1 = this.context;
+    AppMethodBeat.i(334508);
+    s.u(paramj, "this$0");
+    Object localObject1 = paramj.vAe;
     if (localObject1 == null) {
-      p.iCn();
+      localObject1 = "";
     }
-    this.soj = f.a((Context)localObject1, (kotlin.g.a.q)new b(this));
-    localObject1 = new h();
-    Object localObject2 = this.context;
-    if (localObject2 != null) {
-      ((h)localObject1).aFX = new WeakReference(localObject2);
-    }
-    this.BrA = ((h)localObject1);
-    localObject1 = (aa)com.tencent.mm.kernel.h.ae(aa.class);
-    localObject2 = this.soj;
-    if (localObject2 == null) {
-      p.iCn();
-    }
-    this.BrC = ((aa)localObject1).a((MMWebView)localObject2, new BaseWebViewController.d(null, true, true, false, false, 41), null);
-    localObject1 = this.BrC;
-    if (localObject1 != null)
+    for (;;)
     {
-      localObject2 = this.BrA;
-      if (localObject2 != null)
-      {
-        BaseWebViewController localBaseWebViewController = this.BrC;
-        if (localBaseWebViewController != null) {
-          localBaseWebViewController.a((com.tencent.mm.plugin.webview.core.j)localObject2);
-        }
-        ((h)localObject2).Brt = new WeakReference(localObject1);
+      Log.i("Finder.AdWebViewImpl", s.X("startLoadUrl ", localObject1));
+      paramj.sLe = ((String)localObject1);
+      if (paramBoolean) {
+        break;
       }
-      ((BaseWebViewController)localObject1).a((com.tencent.mm.plugin.webview.core.f)this.BrE);
-      ((BaseWebViewController)localObject1).init();
+      paramj = paramj.GXZ;
+      if (paramj == null) {
+        break label134;
+      }
+      Object localObject2 = new Intent();
+      ((Intent)localObject2).putExtra("rawUrl", (String)localObject1);
+      ((Intent)localObject2).putExtra("useJs", true);
+      ((Intent)localObject2).putExtra("startTime", System.currentTimeMillis());
+      localObject1 = ah.aiuX;
+      paramj.bJ((Intent)localObject2);
+      AppMethodBeat.o(334508);
+      return;
+      localObject2 = ((rx)localObject1).Url;
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
     }
-    elP();
-    Log.i("Finder.AdWebViewImpl", "initWebView");
-    com.tencent.e.h.ZvG.bg((Runnable)new c(this));
-    this.BrD = new WebViewLongClickHelper((l)this);
-    WebViewLongClickHelper.d((MMWebView)this.soj);
-    localObject1 = this.BrD;
-    if (localObject1 != null) {
-      ((WebViewLongClickHelper)localObject1).emd();
+    paramj = paramj.GXZ;
+    if (paramj != null) {
+      paramj.reload();
     }
-    localObject1 = this.soj;
-    if (localObject1 == null) {
-      p.iCn();
-    }
-    localObject1 = (MMWebView)localObject1;
-    AppMethodBeat.o(221086);
-    return localObject1;
+    label134:
+    AppMethodBeat.o(334508);
   }
   
-  public final e elT()
+  private final void atR()
   {
-    AppMethodBeat.i(221103);
-    Object localObject = this.BrC;
-    if (localObject != null)
-    {
-      localObject = ((BaseWebViewController)localObject).gSm();
-      AppMethodBeat.o(221103);
-      return localObject;
+    AppMethodBeat.i(334475);
+    Iterator localIterator = this.GXY.iterator();
+    while (localIterator.hasNext()) {
+      ((l.a)localIterator.next()).atR();
     }
-    AppMethodBeat.o(221103);
-    return null;
+    AppMethodBeat.o(334475);
   }
   
-  public final g elU()
+  private static final void b(j paramj)
   {
-    BaseWebViewController localBaseWebViewController = this.BrC;
-    if (localBaseWebViewController != null) {
-      return localBaseWebViewController.pGD;
+    AppMethodBeat.i(334496);
+    s.u(paramj, "this$0");
+    BoxWebView localBoxWebView = paramj.vAh;
+    if (localBoxWebView != null) {
+      localBoxWebView.a(null, null);
     }
-    return null;
+    paramj.fpV();
+    paramj = paramj.GXY.iterator();
+    while (paramj.hasNext()) {
+      ((l.a)paramj.next()).fpT();
+    }
+    AppMethodBeat.o(334496);
   }
   
-  public final boolean elX()
+  private final void fpS()
+  {
+    AppMethodBeat.i(334469);
+    Iterator localIterator = this.GXY.iterator();
+    while (localIterator.hasNext()) {
+      ((l.a)localIterator.next()).fpS();
+    }
+    AppMethodBeat.o(334469);
+  }
+  
+  private final void fpV()
+  {
+    AppMethodBeat.i(334484);
+    com.tencent.threadpool.h.ahAA.bk(new j..ExternalSyntheticLambda3(this, false));
+    AppMethodBeat.o(334484);
+  }
+  
+  public final void a(l.a parama)
+  {
+    AppMethodBeat.i(334615);
+    if (!this.GXY.contains(parama)) {
+      this.GXY.add(parama);
+    }
+    AppMethodBeat.o(334615);
+  }
+  
+  public final void aCT(String paramString)
+  {
+    AppMethodBeat.i(334631);
+    s.u(paramString, "url");
+    com.tencent.threadpool.h.ahAA.bk(new j..ExternalSyntheticLambda2(this, paramString));
+    AppMethodBeat.o(334631);
+  }
+  
+  public final boolean bpe()
   {
     return this.isReleased;
   }
   
-  public final String elY()
+  public final MMWebView fpU()
   {
-    AppMethodBeat.i(221109);
-    Object localObject = this.BrC;
-    if ((localObject != null) && (!Util.isNullOrNil(((BaseWebViewController)localObject).getCurrentUrl())))
+    AppMethodBeat.i(334608);
+    Object localObject1 = this.GXY.iterator();
+    while (((Iterator)localObject1).hasNext()) {
+      ((l.a)((Iterator)localObject1).next()).fpP();
+    }
+    localObject1 = this.context;
+    s.checkNotNull(localObject1);
+    this.vAh = f.a((Context)localObject1, (q)new b(this));
+    localObject1 = new g();
+    Object localObject2 = this.context;
+    if (localObject2 != null) {
+      ((g)localObject1).contextRef = new WeakReference(localObject2);
+    }
+    this.GXX = ((g)localObject1);
+    localObject1 = (ab)com.tencent.mm.kernel.h.ax(ab.class);
+    localObject2 = this.vAh;
+    s.checkNotNull(localObject2);
+    this.GXZ = ((ab)localObject1).a((MMWebView)localObject2, new BaseWebViewController.d(null, true, true, false, false, false, 105), null);
+    localObject1 = this.GXZ;
+    if (localObject1 != null)
     {
-      str = ((BaseWebViewController)localObject).getCurrentUrl();
-      localObject = str;
-      if (str == null) {
-        localObject = "";
+      localObject2 = this.GXX;
+      if (localObject2 != null)
+      {
+        Object localObject3 = this.GXZ;
+        if (localObject3 != null) {
+          ((BaseWebViewController)localObject3).a((com.tencent.mm.plugin.webview.core.l)localObject2);
+        }
+        ((g)localObject2).GXD = new WeakReference(localObject1);
+        localObject3 = ((g)localObject2).GXD;
+        s.checkNotNull(localObject3);
+        ((g)localObject2).GXF = ((b)new g.b((g)localObject2, (WeakReference)localObject3));
+        ((g)localObject2).GXE = new WeakReference(this.GYc);
       }
-      AppMethodBeat.o(221109);
-      return localObject;
+      ((BaseWebViewController)localObject1).a((com.tencent.mm.plugin.webview.core.h)this.GYb);
+      localObject2 = this.vAh;
+      if (localObject2 != null) {
+        ((BoxWebView)localObject2).setWebViewClientExtension((a)new c(this));
+      }
+      ((BaseWebViewController)localObject1).init();
     }
-    String str = this.sog.Url;
-    localObject = str;
-    if (str == null) {
-      localObject = "";
+    fpS();
+    Log.i("Finder.AdWebViewImpl", "initWebView");
+    com.tencent.threadpool.h.ahAA.bk(new j..ExternalSyntheticLambda1(this));
+    this.GYa = new WebViewLongClickHelper((m)this);
+    WebViewLongClickHelper.d((MMWebView)this.vAh);
+    localObject1 = this.GYa;
+    if (localObject1 != null) {
+      ((WebViewLongClickHelper)localObject1).fqh();
     }
-    AppMethodBeat.o(221109);
+    localObject1 = this.vAh;
+    s.checkNotNull(localObject1);
+    localObject1 = (MMWebView)localObject1;
+    AppMethodBeat.o(334608);
+    return localObject1;
+  }
+  
+  public final e fpW()
+  {
+    AppMethodBeat.i(334636);
+    Object localObject = this.GXZ;
+    if (localObject == null)
+    {
+      AppMethodBeat.o(334636);
+      return null;
+    }
+    localObject = ((BaseWebViewController)localObject).irJ();
+    AppMethodBeat.o(334636);
     return localObject;
   }
   
-  public final int elZ()
+  public final com.tencent.mm.plugin.webview.e.g fpX()
   {
-    AppMethodBeat.i(221112);
+    BaseWebViewController localBaseWebViewController = this.GXZ;
+    if (localBaseWebViewController == null) {
+      return null;
+    }
+    return localBaseWebViewController.sLD;
+  }
+  
+  public final Float fpY()
+  {
+    AppMethodBeat.i(334647);
+    Object localObject = this.GXW;
+    if (localObject == null)
+    {
+      localObject = null;
+      if (localObject != null) {
+        break label53;
+      }
+      localObject = ScrollFrameLayout.GYN;
+    }
+    label53:
+    for (float f = ScrollFrameLayout.fqs();; f = ((Float)localObject).floatValue())
+    {
+      AppMethodBeat.o(334647);
+      return Float.valueOf(f);
+      localObject = Float.valueOf(((k)localObject).fqe());
+      break;
+    }
+  }
+  
+  public final Float fpZ()
+  {
+    AppMethodBeat.i(334654);
+    Object localObject = this.GXW;
+    if (localObject == null)
+    {
+      localObject = null;
+      if (localObject != null) {
+        break label53;
+      }
+      localObject = ScrollFrameLayout.GYN;
+    }
+    label53:
+    for (float f = ScrollFrameLayout.fqt();; f = ((Float)localObject).floatValue())
+    {
+      AppMethodBeat.o(334654);
+      return Float.valueOf(f);
+      localObject = Float.valueOf(((k)localObject).fqf());
+      break;
+    }
+  }
+  
+  public final String fqa()
+  {
+    AppMethodBeat.i(334687);
+    Object localObject = this.GXZ;
+    if ((localObject != null) && (!Util.isNullOrNil(((BaseWebViewController)localObject).getCurrentUrl())))
+    {
+      localObject = ((BaseWebViewController)localObject).getCurrentUrl();
+      if (localObject == null)
+      {
+        AppMethodBeat.o(334687);
+        return "";
+      }
+      AppMethodBeat.o(334687);
+      return localObject;
+    }
+    localObject = this.vAe;
+    if (localObject == null)
+    {
+      AppMethodBeat.o(334687);
+      return "";
+    }
+    localObject = ((rx)localObject).Url;
+    if (localObject == null)
+    {
+      AppMethodBeat.o(334687);
+      return "";
+    }
+    AppMethodBeat.o(334687);
+    return localObject;
+  }
+  
+  public final int fqb()
+  {
+    AppMethodBeat.i(334698);
     int j = 0;
     int i = j;
-    if (this.soj != null)
+    if (this.vAh != null)
     {
       i = j;
-      if (this.Bry != null)
+      if (this.GXU != null)
       {
-        Object localObject = this.Bry;
-        if (localObject == null) {
-          p.iCn();
-        }
-        localObject = ((Window)localObject).getDecorView();
-        p.j(localObject, "window!!.decorView");
-        i = ((View)localObject).getMeasuredHeight();
-        localObject = this.soj;
-        if (localObject == null) {
-          p.iCn();
-        }
-        i -= ((BoxWebView)localObject).getMeasuredHeight();
-        ax.aB(this.context);
+        Object localObject = this.GXU;
+        s.checkNotNull(localObject);
+        i = ((Window)localObject).getDecorView().getMeasuredHeight();
+        localObject = this.vAh;
+        s.checkNotNull(localObject);
+        i = i - ((BoxWebView)localObject).getMeasuredHeight() - bf.bk(this.context);
       }
     }
-    Log.d("Finder.AdWebViewImpl", "getWVTopOffest :".concat(String.valueOf(i)));
-    AppMethodBeat.o(221112);
+    Log.d("Finder.AdWebViewImpl", s.X("getWVTopOffset :", Integer.valueOf(i)));
+    AppMethodBeat.o(334698);
     return i;
   }
   
-  public final MultiCodeMaskView ema()
+  public final MultiCodeMaskView fqc()
   {
-    return this.Brz;
+    return this.GXV;
   }
   
   public final Context getContext()
@@ -247,89 +402,87 @@ public final class j
   
   public final BaseWebViewController getController()
   {
-    return this.BrC;
+    return this.GXZ;
   }
   
   public final MMWebView getWebView()
   {
-    return (MMWebView)this.soj;
+    return (MMWebView)this.vAh;
   }
   
   public final Window getWindow()
   {
-    return this.Bry;
+    return this.GXU;
   }
   
   public final void release()
   {
-    AppMethodBeat.i(221096);
+    AppMethodBeat.i(334623);
     Log.i("Finder.AdWebViewImpl", "release destroy");
     this.isReleased = true;
-    this.BrB.clear();
-    Object localObject1 = this.BrC;
+    this.GXY.clear();
+    Object localObject1 = this.GXZ;
     if (localObject1 != null) {
-      com.tencent.mm.plugin.webview.ui.tools.jsapi.i.aoU(((BaseWebViewController)localObject1).gSo()).a(null, null, null);
+      com.tencent.mm.plugin.webview.ui.tools.jsapi.k.auP(((BaseWebViewController)localObject1).irL()).a(null, null, null);
     }
-    localObject1 = this.soj;
+    localObject1 = this.vAh;
     if (localObject1 != null) {
       ((BoxWebView)localObject1).destroy();
     }
-    this.soj = null;
-    localObject1 = this.BrC;
+    this.vAh = null;
+    localObject1 = this.GXZ;
     if (localObject1 != null) {
       ((BaseWebViewController)localObject1).onDestroy();
     }
-    localObject1 = this.BrA;
+    localObject1 = this.GXX;
     Object localObject2;
     if (localObject1 != null)
     {
-      localObject2 = this.BrC;
+      localObject2 = this.GXZ;
       if (localObject2 != null) {
-        ((BaseWebViewController)localObject2).b((com.tencent.mm.plugin.webview.core.j)localObject1);
+        ((BaseWebViewController)localObject2).b((com.tencent.mm.plugin.webview.core.l)localObject1);
       }
-      ((h)localObject1).aFX = null;
+      ((g)localObject1).contextRef = null;
     }
-    localObject1 = this.BrC;
+    localObject1 = this.GXZ;
     if (localObject1 != null) {
-      ((BaseWebViewController)localObject1).b((com.tencent.mm.plugin.webview.core.f)this.BrE);
+      ((BaseWebViewController)localObject1).b((com.tencent.mm.plugin.webview.core.h)this.GYb);
     }
-    this.BrA = null;
-    localObject1 = this.Brz;
+    this.GXX = null;
+    localObject1 = this.GXV;
     if ((localObject1 != null) && (((MultiCodeMaskView)localObject1).getVisibility() == 0))
     {
       long l = 0L;
-      if (this.BrD != null)
+      if (this.GYa != null)
       {
-        localObject2 = this.BrD;
-        if (localObject2 == null) {
-          p.iCn();
-        }
-        localObject2 = ((WebViewLongClickHelper)localObject2).BrO;
-        p.j(localObject2, "longClickHelper!!.mCodeSessionId");
-        l = ((Long)localObject2).longValue();
+        localObject2 = this.GYa;
+        s.checkNotNull(localObject2);
+        localObject2 = ((WebViewLongClickHelper)localObject2).GYk;
+        s.s(localObject2, "longClickHelper!!.mCodeSessionId");
+        l = ((Number)localObject2).longValue();
       }
-      ((MultiCodeMaskView)localObject1).F(l, false);
+      ((MultiCodeMaskView)localObject1).P(l, false);
     }
-    this.BrD = null;
-    this.BrC = null;
+    this.GYa = null;
+    this.GXZ = null;
     this.context = null;
-    AppMethodBeat.o(221096);
+    AppMethodBeat.o(334623);
   }
   
   public final void reload()
   {
-    AppMethodBeat.i(221088);
-    elS();
-    AppMethodBeat.o(221088);
+    AppMethodBeat.i(334610);
+    fpV();
+    AppMethodBeat.o(334610);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/webview/FinderWebViewHelper$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/webview/FinderWebViewHelper$Companion;", "", "()V", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "enablePreloadWebView", "", "enablePreloadFromFindTab", "useCache", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "enablePreloadWebView", "", "enablePreloadFromFindTab", "useCache"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends kotlin.g.b.q
-    implements kotlin.g.a.q<Boolean, Boolean, Boolean, x>
+    extends u
+    implements q<Boolean, Boolean, Boolean, ah>
   {
     b(j paramj)
     {
@@ -337,154 +490,181 @@ public final class j
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class c
-    implements Runnable
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/webview/FinderWebViewHelper$initWebViewController$1$2", "Lcom/tencent/xweb/x5/export/external/extension/proxy/ProxyWebViewClientExtension;", "onMiscCallBack", "", "method", "", "bundle", "Landroid/os/Bundle;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
+    extends a
   {
     c(j paramj) {}
     
-    public final void run()
+    public final Object onMiscCallBack(String paramString, Bundle paramBundle)
     {
-      AppMethodBeat.i(289323);
-      try
+      AppMethodBeat.i(334487);
+      Log.i("Finder.AdWebViewImpl", "method bundle :" + paramString + "  bundle:" + paramBundle);
+      int i;
+      if (s.p(paramString, "shouldInterceptLoadError"))
       {
-        BoxWebView localBoxWebView = j.b(this.BrG);
-        if (localBoxWebView != null) {
-          localBoxWebView.a(null, null);
+        if (paramBundle != null) {
+          break label117;
         }
-        j.c(this.BrG);
-        j.d(this.BrG);
-        AppMethodBeat.o(289323);
-        return;
+        i = 0;
+        if (paramBundle != null) {
+          break label127;
+        }
+        paramString = "";
+        label57:
+        if (paramBundle != null) {
+          break label147;
+        }
+        paramBundle = "";
       }
-      catch (Throwable localThrowable)
+      for (;;)
       {
-        Log.printErrStackTrace("Finder.AdWebViewImpl", localThrowable, "initWebView exception", new Object[0]);
-        com.tencent.e.h.ZvG.bc((Runnable)new Runnable()
+        Log.i("Finder.AdWebViewImpl", "errCode :" + i + " description:" + paramString + " failingUrl:" + paramBundle);
+        j.d(this.GYd);
+        AppMethodBeat.o(334487);
+        return null;
+        label117:
+        i = paramBundle.getInt("errorCode");
+        break;
+        label127:
+        paramString = paramBundle.getString("description");
+        if (paramString == null)
         {
-          public final void run()
-          {
-            AppMethodBeat.i(290764);
-            BoxWebView localBoxWebView = j.b(this.BrH.BrG);
-            if (localBoxWebView != null) {
-              localBoxWebView.a(null, null);
-            }
-            j.c(this.BrH.BrG);
-            j.d(this.BrH.BrG);
-            AppMethodBeat.o(290764);
-          }
-        });
-        AppMethodBeat.o(289323);
+          paramString = "";
+          break label57;
+        }
+        break label57;
+        label147:
+        String str = paramBundle.getString("failingUrl");
+        paramBundle = str;
+        if (str == null) {
+          paramBundle = "";
+        }
       }
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class d
-    implements Runnable
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/webview/FinderWebViewHelper$webViewClientListener$1", "Lcom/tencent/mm/plugin/webview/core/WebViewClientListener;", "onPageCommitVisible", "", "webview", "Lcom/tencent/xweb/WebView;", "url", "", "onPageFinished", "onPageStarted", "onReceivedError", "view", "request", "Lcom/tencent/xweb/WebResourceRequest;", "error", "Lcom/tencent/xweb/WebResourceError;", "errorCode", "", "description", "failingUrl", "onReceivedHttpError", "webResourceRequest", "webResourceResponse", "Lcom/tencent/xweb/WebResourceResponse;", "onReceivedSslError", "handler", "Lcom/tencent/xweb/SslErrorHandler;", "Landroid/net/http/SslError;", "webViewReady", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class d
+    extends com.tencent.mm.plugin.webview.core.h
   {
     d(j paramj) {}
     
-    public final void run()
+    private final void fqd()
     {
-      AppMethodBeat.i(259403);
-      String str = com.tencent.mm.compatible.util.q.an(j.e(this.BrG), "UTF-8");
-      str = j.f(this.BrG).Url + "&uxinfo=" + str;
-      Log.i("Finder.AdWebViewImpl", "startLoadUrl %s", new Object[] { str });
-      j.a(this.BrG, str);
-      BaseWebViewController localBaseWebViewController = j.h(this.BrG);
-      if (localBaseWebViewController != null)
-      {
-        Intent localIntent = new Intent();
-        localIntent.putExtra("rawUrl", str);
-        localIntent.putExtra("useJs", true);
-        localBaseWebViewController.bj(localIntent);
-        AppMethodBeat.o(259403);
-        return;
-      }
-      AppMethodBeat.o(259403);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/webview/FinderWebViewHelper$webViewClientListener$1", "Lcom/tencent/mm/plugin/webview/core/WebViewClientListener;", "onPageCommitVisible", "", "webview", "Lcom/tencent/xweb/WebView;", "url", "", "onPageFinished", "onPageStarted", "onReceivedError", "errorCode", "", "description", "failingUrl", "onReceivedHttpError", "webResourceRequest", "Lcom/tencent/xweb/WebResourceRequest;", "webResourceResponse", "Lcom/tencent/xweb/WebResourceResponse;", "onReceivedSslError", "handler", "Lcom/tencent/xweb/SslErrorHandler;", "error", "Landroid/net/http/SslError;", "webViewReady", "plugin-finder_release"})
-  public static final class e
-    extends com.tencent.mm.plugin.webview.core.f
-  {
-    private final void emb()
-    {
-      AppMethodBeat.i(280229);
+      AppMethodBeat.i(334492);
       Log.i("Finder.AdWebViewImpl", "webViewReady");
-      j.i(this.BrG);
-      AppMethodBeat.o(280229);
+      j.e(this.GYd);
+      AppMethodBeat.o(334492);
+    }
+    
+    public final void a(WebResourceRequest paramWebResourceRequest, ac paramac)
+    {
+      AppMethodBeat.i(334526);
+      StringBuilder localStringBuilder = new StringBuilder("onReceivedError request :").append(paramWebResourceRequest).append(" error:").append(paramac).append(" isForMain:");
+      if (paramWebResourceRequest == null)
+      {
+        paramac = null;
+        Log.i("Finder.AdWebViewImpl", paramac);
+        if ((paramWebResourceRequest == null) || (paramWebResourceRequest.isForMainFrame() != true)) {
+          break label100;
+        }
+      }
+      label100:
+      for (int i = 1;; i = 0)
+      {
+        if (i != 0) {
+          j.d(this.GYd);
+        }
+        AppMethodBeat.o(334526);
+        return;
+        paramac = Boolean.valueOf(paramWebResourceRequest.isForMainFrame());
+        break;
+      }
     }
     
     public final void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
     {
-      AppMethodBeat.i(280231);
+      AppMethodBeat.i(334519);
       super.a(paramWebView, paramInt, paramString1, paramString2);
       Log.i("Finder.AdWebViewImpl", "onReceivedError errorCode :" + paramInt + " description:" + paramString1 + " failingUrl:" + paramString2);
-      j.j(this.BrG);
-      AppMethodBeat.o(280231);
+      AppMethodBeat.o(334519);
     }
     
     public final void a(WebView paramWebView, WebResourceRequest paramWebResourceRequest, WebResourceResponse paramWebResourceResponse)
     {
-      AppMethodBeat.i(280232);
+      AppMethodBeat.i(334534);
       super.a(paramWebView, paramWebResourceRequest, paramWebResourceResponse);
-      Log.i("Finder.AdWebViewImpl", "onReceivedHttpError");
-      j.j(this.BrG);
-      AppMethodBeat.o(280232);
+      if (paramWebResourceRequest == null)
+      {
+        paramWebView = null;
+        Log.i("Finder.AdWebViewImpl", s.X("onReceivedHttpError :", paramWebView));
+        if ((paramWebResourceRequest == null) || (paramWebResourceRequest.isForMainFrame() != true)) {
+          break label77;
+        }
+      }
+      label77:
+      for (int i = 1;; i = 0)
+      {
+        if (i != 0) {
+          j.d(this.GYd);
+        }
+        AppMethodBeat.o(334534);
+        return;
+        paramWebView = Boolean.valueOf(paramWebResourceRequest.isForMainFrame());
+        break;
+      }
     }
     
-    public final void a(WebView paramWebView, r paramr, SslError paramSslError)
+    public final void a(WebView paramWebView, t paramt, SslError paramSslError)
     {
-      AppMethodBeat.i(280233);
-      super.a(paramWebView, paramr, paramSslError);
+      AppMethodBeat.i(334543);
+      super.a(paramWebView, paramt, paramSslError);
       Log.i("Finder.AdWebViewImpl", "onReceivedSslError");
-      String str = j.g(this.BrG);
+      String str = j.f(this.GYd);
       if (Util.isNullOrNil(str))
       {
         Log.d("Finder.AdWebViewImpl", "urlStr == null, return");
-        AppMethodBeat.o(280233);
+        AppMethodBeat.o(334543);
         return;
       }
-      if ((j.k(this.BrG) == null) && (paramWebView != null)) {
-        j.a(this.BrG, new c(paramWebView.getContext(), paramWebView));
+      if ((j.g(this.GYd) == null) && (paramWebView != null)) {
+        j.a(this.GYd, new d(paramWebView.getContext(), paramWebView));
       }
-      paramWebView = j.k(this.BrG);
+      paramWebView = j.g(this.GYd);
       if (paramWebView != null) {
-        paramWebView.a(str, paramr, paramSslError);
+        paramWebView.a(str, paramt, paramSslError);
       }
       if (!WeChatEnvironment.isCoolassistEnv()) {
-        j.j(this.BrG);
+        j.d(this.GYd);
       }
-      AppMethodBeat.o(280233);
+      AppMethodBeat.o(334543);
     }
     
     public final void b(WebView paramWebView, String paramString)
     {
-      AppMethodBeat.i(280230);
+      AppMethodBeat.i(334512);
       super.b(paramWebView, paramString);
-      Log.i("Finder.AdWebViewImpl", "onPageFinished :".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(280230);
+      Log.i("Finder.AdWebViewImpl", s.X("onPageFinished :", paramString));
+      AppMethodBeat.o(334512);
     }
     
     public final void e(WebView paramWebView, String paramString)
     {
-      AppMethodBeat.i(280226);
+      AppMethodBeat.i(334498);
       super.e(paramWebView, paramString);
-      Log.i("Finder.AdWebViewImpl", "onPageCommitVisible :".concat(String.valueOf(paramString)));
-      emb();
-      AppMethodBeat.o(280226);
+      Log.i("Finder.AdWebViewImpl", s.X("onPageCommitVisible :", paramString));
+      fqd();
+      AppMethodBeat.o(334498);
     }
     
     public final void h(WebView paramWebView, String paramString)
     {
-      AppMethodBeat.i(280228);
+      AppMethodBeat.i(334506);
       super.h(paramWebView, paramString);
-      Log.i("Finder.AdWebViewImpl", "onPageStarted :".concat(String.valueOf(paramString)));
-      emb();
-      AppMethodBeat.o(280228);
+      Log.i("Finder.AdWebViewImpl", s.X("onPageStarted :", paramString));
+      fqd();
+      AppMethodBeat.o(334506);
     }
   }
 }

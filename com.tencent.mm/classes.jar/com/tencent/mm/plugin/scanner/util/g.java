@@ -1,80 +1,123 @@
 package com.tencent.mm.plugin.scanner.util;
 
-import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Point;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.scanner.n;
-import com.tencent.mm.pluginsdk.cmd.a;
-import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.graphics.MMBitmapFactory;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.y;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import kotlin.Metadata;
+import kotlin.Result;
+import kotlin.ah;
+import kotlin.d.a.a;
+import kotlin.d.a.b;
+import kotlin.d.d;
+import kotlin.d.h;
+import kotlin.g.b.s;
+import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/util/ScanProcessorCommand;", "Lcom/tencent/mm/pluginsdk/cmd/ProcessorCommand;", "()V", "processCommand", "", "context", "Landroid/content/Context;", "args", "", "", "username", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "Companion", "scan-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/util/ScanImageUtils;", "", "()V", "TAG", "", "convertHevcToJpeg", "", "imagePath", "targetImagePath", "(Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getImageMimeType", "getImageSize", "Landroid/graphics/Point;", "isHevc", "scan-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class g
-  implements a
 {
-  public static final a IYZ;
+  public static final g PiK;
   
   static
   {
-    AppMethodBeat.i(193384);
-    IYZ = new a((byte)0);
-    AppMethodBeat.o(193384);
+    AppMethodBeat.i(314133);
+    PiK = new g();
+    AppMethodBeat.o(314133);
   }
   
-  public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
+  public static Point aVg(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = false;
-    AppMethodBeat.i(193382);
-    if ((paramArrayOfString != null) && (p.h("//scan", paramArrayOfString[0])) && (p.h("showDebug", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+    AppMethodBeat.i(314118);
+    Object localObject = (CharSequence)paramString;
+    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
     {
-      paramContext = MultiProcessMMKV.getSingleMMKV("ScanDebug");
-      if (Util.getInt(paramArrayOfString[2], 0) == 1) {
-        bool1 = true;
-      }
-      paramContext.putBoolean("scan_debug_show_debug_view", bool1);
-      paramContext.apply();
-      AppMethodBeat.o(193382);
+      AppMethodBeat.o(314118);
+      return null;
+    }
+    if (!y.ZC(paramString))
+    {
+      AppMethodBeat.o(314118);
+      return null;
+    }
+    localObject = new BitmapFactory.Options();
+    ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
+    MMBitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject);
+    paramString = new Point(((BitmapFactory.Options)localObject).outWidth, ((BitmapFactory.Options)localObject).outHeight);
+    AppMethodBeat.o(314118);
+    return paramString;
+  }
+  
+  public static final boolean aVh(String paramString)
+  {
+    AppMethodBeat.i(314123);
+    Object localObject = new BitmapFactory.Options();
+    ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
+    BitmapUtil.decodeFile(paramString, (BitmapFactory.Options)localObject);
+    Log.d("MicroMsg.ScanImageUtils", "alvinluo getImageMimeType %s", new Object[] { ((BitmapFactory.Options)localObject).outMimeType });
+    paramString = ((BitmapFactory.Options)localObject).outMimeType;
+    localObject = (CharSequence)paramString;
+    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
+    for (int i = 1; (i == 0) && ((n.rs(paramString, "hevc")) || (n.rs(paramString, "wxpc")) || (n.rs(paramString, "wxam"))); i = 0)
+    {
+      AppMethodBeat.o(314123);
       return true;
     }
-    if ((paramArrayOfString != null) && (p.h("//scan", paramArrayOfString[0])) && (p.h("clearSearch", paramArrayOfString[1])) && (paramArrayOfString.length > 1))
-    {
-      paramContext = z.bcZ();
-      paramContext = MultiProcessMMKV.getMMKV(paramContext + "__image_gallery_search_preview_slot_mmkv_key__");
-      if (paramContext != null) {
-        paramContext.clearAll();
-      }
-      AppMethodBeat.o(193382);
-      return true;
-    }
-    if ((paramArrayOfString != null) && (p.h("//scan", paramArrayOfString[0])) && (p.h("clearConfig", paramArrayOfString[1])) && (paramArrayOfString.length > 1))
-    {
-      paramContext = z.bcZ();
-      paramContext = MultiProcessMMKV.getMMKV(paramContext + "_scan_config_mmkv");
-      if (paramContext != null) {
-        paramContext.clearAll();
-      }
-      AppMethodBeat.o(193382);
-      return true;
-    }
-    if ((paramArrayOfString != null) && (p.h("//scan", paramArrayOfString[0])) && (p.h("wordDetect", paramArrayOfString[1])) && (paramArrayOfString.length > 1))
-    {
-      bool1 = bool2;
-      if (Util.getInt(paramArrayOfString[2], 1) == 0) {
-        bool1 = true;
-      }
-      n.xk(bool1);
-      AppMethodBeat.o(193382);
-      return true;
-    }
-    AppMethodBeat.o(193382);
+    AppMethodBeat.o(314123);
     return false;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/util/ScanProcessorCommand$Companion;", "", "()V", "COMMAND_SCAN", "", "SCAN_DEBUG", "SCAN_DEBUG_SHOW_DEBUG_VIEW", "init", "", "scan-sdk_release"})
-  public static final class a {}
+  public static final Object b(String paramString1, String paramString2, d<? super Boolean> paramd)
+  {
+    AppMethodBeat.i(314130);
+    h localh = new h(b.au(paramd));
+    d locald = (d)localh;
+    Object localObject = new BitmapFactory.Options();
+    ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
+    ah localah = ah.aiuX;
+    paramString1 = BitmapUtil.decodeFile(paramString1, (BitmapFactory.Options)localObject);
+    if (paramString1 == null)
+    {
+      Log.e("MicroMsg.ScanImageUtils", "alvinluo convertHevcToJpeg bitmap null");
+      paramString1 = Boolean.FALSE;
+      paramString2 = Result.Companion;
+      locald.resumeWith(Result.constructor-impl(paramString1));
+    }
+    for (;;)
+    {
+      paramString1 = localh.kli();
+      if (paramString1 == a.aiwj) {
+        s.u(paramd, "frame");
+      }
+      AppMethodBeat.o(314130);
+      return paramString1;
+      try
+      {
+        localObject = new ByteArrayOutputStream();
+        paramString1.compress(Bitmap.CompressFormat.JPEG, 100, (OutputStream)localObject);
+        paramString1 = ((ByteArrayOutputStream)localObject).toByteArray();
+        y.f(paramString2, paramString1, paramString1.length);
+        paramString1 = Boolean.TRUE;
+        paramString2 = Result.Companion;
+        locald.resumeWith(Result.constructor-impl(paramString1));
+      }
+      catch (Exception paramString1)
+      {
+        Log.printErrStackTrace("MicroMsg.ScanImageUtils", (Throwable)paramString1, "alvinluo convertHevcToJpeg exception", new Object[0]);
+        paramString1 = Boolean.FALSE;
+        paramString2 = Result.Companion;
+        locald.resumeWith(Result.constructor-impl(paramString1));
+      }
+    }
+  }
 }
 
 

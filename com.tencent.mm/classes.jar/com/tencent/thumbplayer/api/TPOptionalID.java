@@ -5,7 +5,9 @@ import com.tencent.thumbplayer.a.b.b.a.f;
 
 public class TPOptionalID
 {
-  public static final int OPTION_ID_BEFORE_BOOLEAN_USE_PROXY = 205;
+  public static final int OPTION_ID_BEFORE_BOOLEAN_USE_PROXY = 206;
+  @a.d(type=3, value=411)
+  public static final int OPTION_ID_BEFORE_BOOL_AUDIO_SYNC_FREE_RUN = 411;
   @a.d(type=3, value=402)
   public static final int OPTION_ID_BEFORE_BOOL_ENABLE_AUDIO_FRAME_CALLBACK = 120;
   @a.d(type=3, value=210)
@@ -22,6 +24,8 @@ public class TPOptionalID
   public static final int OPTION_ID_BEFORE_BOOL_ENABLE_MEDIA_CODEC_REUSE = 123;
   @a.d(type=3, value=209)
   public static final int OPTION_ID_BEFORE_BOOL_ENABLE_MULTI_RECEIVE_FRAMES = 126;
+  @a.d(type=3, value=205)
+  public static final int OPTION_ID_BEFORE_BOOL_ENABLE_SET_OUTPUT_SURFACE_API = 205;
   @a.d(type=3, value=403)
   public static final int OPTION_ID_BEFORE_BOOL_ENABLE_VIDEO_FRAME_CALLBACK = 119;
   @a.d(type=3, value=110)
@@ -44,8 +48,12 @@ public class TPOptionalID
   public static final int OPTION_ID_BEFORE_FLOAT_VIDEO_DROP_FRAME_DETECT_MIN_RATE = 125;
   @a.d(type=4, value=404)
   public static final int OPTION_ID_BEFORE_INT_AUDIO_RENDERER_TYPE = 300;
+  @a.d(type=4, value=304)
+  public static final int OPTION_ID_BEFORE_INT_AUDIO_STREAM_TYPE = 302;
   @a.d(type=4, value=200)
   public static final int OPTION_ID_BEFORE_INT_DECODER_MAX_TOLERATED_ERROR_COUNT = 200;
+  @a.d(type=4, value=451)
+  public static final int OPTION_ID_BEFORE_INT_ENABLE_RENDERER_SHARPEN = 451;
   @a.d(type=4, value=109)
   public static final int OPTION_ID_BEFORE_INT_TCP_RETRY_COUNT = 109;
   @a.d(type=4, value=310)
@@ -88,6 +96,8 @@ public class TPOptionalID
   public static final int OPTION_ID_BEFORE_QUEUE_INT_VIDEO_DEC_TYPE = 204;
   @a.d(type=6, value=113)
   public static final int OPTION_ID_BEFORE_QUEUE_STRING_HLS_TAG_CALLBACK = 118;
+  @a.d(type=2, value=452)
+  public static final int OPTION_ID_BEFORE_STRING_SHARPEN_SHADER_PATH = 452;
   public static final int OPTION_ID_EXTERNAL_AUDIO_TRACK_PARAM = 6;
   @a.f(type=1, value=1)
   public static final int OPTION_ID_GLOBAL_LONG_ADAPTIVE_LIMIT_BITRATE_RANGE = 503;
@@ -107,7 +117,7 @@ public class TPOptionalID
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPOptionalID
  * JD-Core Version:    0.7.0.1
  */

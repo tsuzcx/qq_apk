@@ -1,38 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="#cdf2f2f2" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <RelativeLayout android:id="@id/f37" android:background="@drawable/ce4" android:padding="0.0dip" android:layout_width="290.0dip" android:layout_height="480.0dip" android:scaleType="centerInside">
-            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="210.0dip">
-                    <ImageView android:id="@id/f2m" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/ce3" android:scaleType="fitXY" />
-                    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/f2k" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                        <ImageView android:id="@id/f2g" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_marginTop="58.0dip" android:src="@drawable/afg" android:scaleType="fitXY" />
-                        <TextView android:textSize="16.0dip" android:textColor="#ffbe2f2f" android:id="@id/f2l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/env" android:includeFontPadding="false" />
-                    </LinearLayout>
-                    <RelativeLayout android:id="@id/f2j" android:visibility="gone" android:layout_width="150.0dip" android:layout_height="150.0dip" android:layout_marginTop="40.0dip" android:layout_marginBottom="21.0dip">
-                        <ImageView android:id="@id/f2h" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" android:layout_centerInParent="true" />
-                        <com.tencent.mm.emoji.view.BaseEmojiView android:id="@id/f2f" android:background="@drawable/afj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/i2" />
-                        <ImageView android:id="@id/f2i" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginRight="6.0dip" android:layout_marginBottom="6.0dip" android:src="@drawable/afh" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-                        <TextView android:textSize="13.0dip" android:textColor="#ffebcd9a" android:gravity="center" android:id="@id/f2p" android:background="@drawable/aey" android:layout_width="101.0dip" android:layout_height="30.0dip" android:text="@string/eql" android:layout_centerInParent="true" />
-                        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/f2e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-                            <com.tencent.mm.plugin.gif.MMAnimateView android:gravity="center_horizontal" android:id="@id/epj" android:layout_width="40.0dip" android:layout_height="40.0dip" />
-                            <TextView android:textSize="16.0dip" android:textColor="#ffbe2f2f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="@string/eqg" android:includeFontPadding="false" />
-                        </LinearLayout>
-                    </RelativeLayout>
-                </LinearLayout>
-                <TextView android:textSize="@dimen/abh" android:textColor="@color/z6" android:ellipsize="end" android:gravity="center" android:id="@id/f2u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ir" android:layout_marginRight="@dimen/ir" android:layout_marginBottom="@dimen/abf" android:text="" android:singleLine="true" android:includeFontPadding="false" />
-                <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyAutoScrollView android:id="@id/f2d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/aba" />
-                    <TextView android:textSize="15.0dip" android:textColor="@color/z6" android:id="@id/ey0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:text="@string/eo0" android:includeFontPadding="false" />
-                </LinearLayout>
-                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/f2o" android:padding="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/abd">
-                    <ImageView android:background="@drawable/afd" android:layout_width="14.0dip" android:layout_height="14.0dip" android:scaleType="fitXY" />
-                    <TextView android:textSize="@dimen/kc" android:textColor="@color/yc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:text="@string/erm" android:includeFontPadding="false" />
-                </LinearLayout>
-            </LinearLayout>
-            <Button android:textSize="@dimen/is" android:textColor="@color/z3" android:id="@id/f2r" android:background="@drawable/af9" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="30.0dip" android:layout_marginRight="30.0dip" android:layout_marginBottom="51.0dip" android:text="@string/esf" android:layout_alignParentBottom="true" />
-        </RelativeLayout>
-        <ImageView android:layout_gravity="center_horizontal" android:id="@id/f2t" android:visibility="visible" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginTop="24.0dip" android:src="@drawable/aet" />
+<LinearLayout android:orientation="vertical" android:background="@color/lz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/iq">
+        <EditText android:id="@id/f7z" android:layout_width="100.0dip" android:layout_marginRight="10.0dip" android:hint="logId" android:inputType="number" style="@style/lx" />
+        <Button android:id="@id/bl1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="confirm" />
+        <Button android:id="@id/g5d" android:layout_marginRight="10.0dip" android:text="select log" style="@style/or" />
+        <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/bzh" android:layout_width="100.0dip" android:layout_height="@dimen/md" app:off_color="#ff999999" app:off_text="off" app:on_color="@color/aks" app:on_text="on" app:slide_color="#ff76fef3" />
     </LinearLayout>
-</RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/iq">
+        <TextView android:textSize="@dimen/j7" android:id="@id/j_f" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <ListView android:id="@id/fgw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="@dimen/iq" android:divider="@color/aks" android:dividerHeight="1.0dip" />
+</LinearLayout>

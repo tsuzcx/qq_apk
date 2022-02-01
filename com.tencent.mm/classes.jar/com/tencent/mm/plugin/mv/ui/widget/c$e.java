@@ -4,9 +4,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/widget/MvTracksAdapter$SpacingViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "parent", "Landroid/view/ViewGroup;", "(Landroid/view/ViewGroup;)V", "bind", "", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/widget/MvTracksAdapter$SpacingViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "parent", "Landroid/view/ViewGroup;", "(Landroid/view/ViewGroup;)V", "bind", "", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c$e
   extends RecyclerView.v
 {
@@ -15,9 +15,9 @@ public final class c$e
   public c$e(ViewGroup paramViewGroup)
   {
     super(new View(paramViewGroup.getContext()));
-    AppMethodBeat.i(230793);
+    AppMethodBeat.i(286639);
     this.parent = paramViewGroup;
-    AppMethodBeat.o(230793);
+    AppMethodBeat.o(286639);
   }
 }
 

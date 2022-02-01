@@ -16,16 +16,16 @@ public class APInventory
   
   public APInventory(String paramString)
   {
-    AppMethodBeat.i(253315);
+    AppMethodBeat.i(217337);
     this.mPurchaseMap = new HashMap();
     this.mPurchaseList = new ArrayList();
     parsePurchse(paramString);
-    AppMethodBeat.o(253315);
+    AppMethodBeat.o(217337);
   }
   
   private void parsePurchse(String paramString)
   {
-    AppMethodBeat.i(253316);
+    AppMethodBeat.i(217346);
     new ArrayList();
     try
     {
@@ -38,45 +38,45 @@ public class APInventory
         this.mPurchaseList.add(localAPPurchase);
         i += 1;
       }
-      AppMethodBeat.o(253316);
+      AppMethodBeat.o(217346);
       return;
     }
     catch (JSONException paramString)
     {
-      AppMethodBeat.o(253316);
+      AppMethodBeat.o(217346);
     }
   }
   
   public void erasePurchase(String paramString)
   {
-    AppMethodBeat.i(253322);
+    AppMethodBeat.i(217375);
     if (this.mPurchaseMap.containsKey(paramString)) {
       this.mPurchaseMap.remove(paramString);
     }
-    AppMethodBeat.o(253322);
+    AppMethodBeat.o(217375);
   }
   
   List<String> getAllOwnedSkus()
   {
-    AppMethodBeat.i(253324);
+    AppMethodBeat.i(217382);
     ArrayList localArrayList = new ArrayList(this.mPurchaseMap.keySet());
-    AppMethodBeat.o(253324);
+    AppMethodBeat.o(217382);
     return localArrayList;
   }
   
   List<APPurchase> getAllPurchases()
   {
-    AppMethodBeat.i(253325);
+    AppMethodBeat.i(217387);
     ArrayList localArrayList = new ArrayList(this.mPurchaseMap.values());
-    AppMethodBeat.o(253325);
+    AppMethodBeat.o(217387);
     return localArrayList;
   }
   
   public APPurchase getPurchase(String paramString)
   {
-    AppMethodBeat.i(253319);
+    AppMethodBeat.i(217359);
     paramString = (APPurchase)this.mPurchaseMap.get(paramString);
-    AppMethodBeat.o(253319);
+    AppMethodBeat.o(217359);
     return paramString;
   }
   
@@ -87,9 +87,9 @@ public class APInventory
   
   public boolean hasPurchase(String paramString)
   {
-    AppMethodBeat.i(253320);
+    AppMethodBeat.i(217367);
     boolean bool = this.mPurchaseMap.containsKey(paramString);
-    AppMethodBeat.o(253320);
+    AppMethodBeat.o(217367);
     return bool;
   }
 }

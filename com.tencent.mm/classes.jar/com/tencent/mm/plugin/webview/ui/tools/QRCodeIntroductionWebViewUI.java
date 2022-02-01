@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,8 +7,8 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.c.h;
-import com.tencent.mm.plugin.webview.d.h;
-import com.tencent.mm.ui.base.h.d;
+import com.tencent.mm.plugin.webview.jsapi.j;
+import com.tencent.mm.ui.base.k.d;
 
 public class QRCodeIntroductionWebViewUI
   extends WebViewUI

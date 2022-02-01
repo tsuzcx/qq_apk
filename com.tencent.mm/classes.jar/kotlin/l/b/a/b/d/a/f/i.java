@@ -1,359 +1,74 @@
 package kotlin.l.b.a.b.d.a.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Map;
-import kotlin.g.a.b;
-import kotlin.g.b.q;
-import kotlin.l.b.a.b.d.b.v;
-import kotlin.x;
+import kotlin.g.b.s;
 
 public final class i
 {
-  private static final d aaWT;
-  private static final d aaWU;
-  private static final d aaWV;
-  private static final Map<String, j> aaWW;
+  public final h aiVa;
+  final boolean aiVb;
   
-  static
+  public i(h paramh, boolean paramBoolean)
   {
-    AppMethodBeat.i(58074);
-    aaWT = new d(g.aaWN, null, false);
-    aaWU = new d(g.aaWO, null, false);
-    aaWV = new d(g.aaWO, null, true);
-    v localv = v.aaYI;
-    final String str1 = v.bGU("Object");
-    final String str2 = v.bGW("Predicate");
-    final String str3 = v.bGW("Function");
-    final String str4 = v.bGW("Consumer");
-    final String str5 = v.bGW("BiFunction");
-    final String str6 = v.bGW("BiConsumer");
-    final String str7 = v.bGW("UnaryOperator");
-    final String str8 = v.bGV("stream/Stream");
-    final String str9 = v.bGV("Optional");
-    m localm = new m();
-    new m.a(localm, v.bGV("Iterator")).r("forEachRemaining", (b)new a(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    new m.a(localm, v.bGU("Iterable")).r("spliterator", (b)new l(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    m.a locala = new m.a(localm, v.bGV("Collection"));
-    locala.r("removeIf", (b)new v(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.r("stream", (b)new w(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.r("parallelStream", (b)new x(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    new m.a(localm, v.bGV("List")).r("replaceAll", (b)new y(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala = new m.a(localm, v.bGV("Map"));
-    locala.r("forEach", (b)new z(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.r("putIfAbsent", (b)new aa(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.r("replace", (b)new ab(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.r("replace", (b)new b(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.r("replaceAll", (b)new c(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.r("compute", (b)new d(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.r("computeIfAbsent", (b)new e(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.r("computeIfPresent", (b)new f(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.r("merge", (b)new g(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala = new m.a(localm, str9);
-    locala.r("empty", (b)new h(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.r("of", (b)new i(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.r("ofNullable", (b)new j(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.r("get", (b)new k(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.r("ifPresent", (b)new m(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    new m.a(localm, v.bGU("ref/Reference")).r("get", (b)new n(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    new m.a(localm, str2).r("test", (b)new o(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    new m.a(localm, v.bGW("BiPredicate")).r("test", (b)new p(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    new m.a(localm, str4).r("accept", (b)new q(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    new m.a(localm, str6).r("accept", (b)new r(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    new m.a(localm, str3).r("apply", (b)new s(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    new m.a(localm, str5).r("apply", (b)new t(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    new m.a(localm, v.bGW("Supplier")).r("get", (b)new u(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    aaWW = localm.aaXD;
-    AppMethodBeat.o(58074);
+    AppMethodBeat.i(58040);
+    this.aiVa = paramh;
+    this.aiVb = paramBoolean;
+    AppMethodBeat.o(58040);
   }
   
-  public static final Map<String, j> iIv()
+  private static i a(h paramh, boolean paramBoolean)
   {
-    return aaWW;
+    AppMethodBeat.i(58041);
+    s.u(paramh, "qualifier");
+    paramh = new i(paramh, paramBoolean);
+    AppMethodBeat.o(58041);
+    return paramh;
   }
   
-  static final class a
-    extends q
-    implements b<m.a.a, x>
+  public final boolean equals(Object paramObject)
   {
-    a(v paramv, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
+    AppMethodBeat.i(58045);
+    if (this == paramObject)
     {
-      super();
+      AppMethodBeat.o(58045);
+      return true;
     }
+    if (!(paramObject instanceof i))
+    {
+      AppMethodBeat.o(58045);
+      return false;
+    }
+    paramObject = (i)paramObject;
+    if (this.aiVa != paramObject.aiVa)
+    {
+      AppMethodBeat.o(58045);
+      return false;
+    }
+    if (this.aiVb != paramObject.aiVb)
+    {
+      AppMethodBeat.o(58045);
+      return false;
+    }
+    AppMethodBeat.o(58045);
+    return true;
   }
   
-  static final class aa
-    extends q
-    implements b<m.a.a, x>
+  public final int hashCode()
   {
-    aa(v paramv, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-    {
-      super();
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  static final class ab
-    extends q
-    implements b<m.a.a, x>
+  public final String toString()
   {
-    ab(v paramv, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-    {
-      super();
-    }
-  }
-  
-  static final class b
-    extends q
-    implements b<m.a.a, x>
-  {
-    b(v paramv, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-    {
-      super();
-    }
-  }
-  
-  static final class c
-    extends q
-    implements b<m.a.a, x>
-  {
-    c(v paramv, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-    {
-      super();
-    }
-  }
-  
-  static final class d
-    extends q
-    implements b<m.a.a, x>
-  {
-    d(v paramv, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-    {
-      super();
-    }
-  }
-  
-  static final class e
-    extends q
-    implements b<m.a.a, x>
-  {
-    e(v paramv, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-    {
-      super();
-    }
-  }
-  
-  static final class f
-    extends q
-    implements b<m.a.a, x>
-  {
-    f(v paramv, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-    {
-      super();
-    }
-  }
-  
-  static final class g
-    extends q
-    implements b<m.a.a, x>
-  {
-    g(v paramv, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-    {
-      super();
-    }
-  }
-  
-  static final class h
-    extends q
-    implements b<m.a.a, x>
-  {
-    h(v paramv, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-    {
-      super();
-    }
-  }
-  
-  static final class i
-    extends q
-    implements b<m.a.a, x>
-  {
-    i(v paramv, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-    {
-      super();
-    }
-  }
-  
-  static final class j
-    extends q
-    implements b<m.a.a, x>
-  {
-    j(v paramv, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-    {
-      super();
-    }
-  }
-  
-  static final class k
-    extends q
-    implements b<m.a.a, x>
-  {
-    k(v paramv, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-    {
-      super();
-    }
-  }
-  
-  static final class l
-    extends q
-    implements b<m.a.a, x>
-  {
-    l(v paramv, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-    {
-      super();
-    }
-  }
-  
-  static final class m
-    extends q
-    implements b<m.a.a, x>
-  {
-    m(v paramv, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-    {
-      super();
-    }
-  }
-  
-  static final class n
-    extends q
-    implements b<m.a.a, x>
-  {
-    n(v paramv, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-    {
-      super();
-    }
-  }
-  
-  static final class o
-    extends q
-    implements b<m.a.a, x>
-  {
-    o(v paramv, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-    {
-      super();
-    }
-  }
-  
-  static final class p
-    extends q
-    implements b<m.a.a, x>
-  {
-    p(v paramv, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-    {
-      super();
-    }
-  }
-  
-  static final class q
-    extends q
-    implements b<m.a.a, x>
-  {
-    q(v paramv, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-    {
-      super();
-    }
-  }
-  
-  static final class r
-    extends q
-    implements b<m.a.a, x>
-  {
-    r(v paramv, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-    {
-      super();
-    }
-  }
-  
-  static final class s
-    extends q
-    implements b<m.a.a, x>
-  {
-    s(v paramv, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-    {
-      super();
-    }
-  }
-  
-  static final class t
-    extends q
-    implements b<m.a.a, x>
-  {
-    t(v paramv, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-    {
-      super();
-    }
-  }
-  
-  static final class u
-    extends q
-    implements b<m.a.a, x>
-  {
-    u(v paramv, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-    {
-      super();
-    }
-  }
-  
-  static final class v
-    extends q
-    implements b<m.a.a, x>
-  {
-    v(v paramv, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-    {
-      super();
-    }
-  }
-  
-  static final class w
-    extends q
-    implements b<m.a.a, x>
-  {
-    w(v paramv, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-    {
-      super();
-    }
-  }
-  
-  static final class x
-    extends q
-    implements b<m.a.a, x>
-  {
-    x(v paramv, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-    {
-      super();
-    }
-  }
-  
-  static final class y
-    extends q
-    implements b<m.a.a, x>
-  {
-    y(v paramv, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-    {
-      super();
-    }
-  }
-  
-  static final class z
-    extends q
-    implements b<m.a.a, x>
-  {
-    z(v paramv, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-    {
-      super();
-    }
+    AppMethodBeat.i(58043);
+    String str = "NullabilityQualifierWithMigrationStatus(qualifier=" + this.aiVa + ", isForWarningOnly=" + this.aiVb + ')';
+    AppMethodBeat.o(58043);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.f.i
  * JD-Core Version:    0.7.0.1
  */

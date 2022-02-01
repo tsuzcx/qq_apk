@@ -4,7 +4,7 @@ public abstract interface f
 {
   public static abstract interface a
   {
-    public abstract void eTF();
+    public abstract void gcy();
   }
 }
 

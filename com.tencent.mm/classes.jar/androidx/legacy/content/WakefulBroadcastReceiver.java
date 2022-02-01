@@ -57,9 +57,9 @@ public abstract class WakefulBroadcastReceiver
       paramContext = ((PowerManager)paramContext.getSystemService("power")).newWakeLock(1, "androidx.core:wake:" + paramIntent.flattenToShortString());
       paramContext.setReferenceCounted(false);
       com.tencent.mm.hellhoundlib.b.a locala = c.a(60000L, new com.tencent.mm.hellhoundlib.b.a());
-      com.tencent.mm.hellhoundlib.a.a.b(paramContext, locala.aFh(), "androidx/legacy/content/WakefulBroadcastReceiver", "startWakefulService", "(Landroid/content/Context;Landroid/content/Intent;)Landroid/content/ComponentName;", "android/os/PowerManager$WakeLock_EXEC_", "acquire", "(J)V");
-      long l = ((Long)c.a(locala).sf(0)).longValue();
-      c.aFj();
+      com.tencent.mm.hellhoundlib.a.a.b(paramContext, locala.aYi(), "androidx/legacy/content/WakefulBroadcastReceiver", "startWakefulService", "(Landroid/content/Context;Landroid/content/Intent;)Landroid/content/ComponentName;", "android/os/PowerManager$WakeLock_EXEC_", "acquire", "(J)V");
+      long l = ((Long)c.a(locala).sb(0)).longValue();
+      c.aYk();
       paramContext.acquire(l);
       com.tencent.mm.hellhoundlib.a.a.c(paramContext, "androidx/legacy/content/WakefulBroadcastReceiver", "startWakefulService", "(Landroid/content/Context;Landroid/content/Intent;)Landroid/content/ComponentName;", "android/os/PowerManager$WakeLock_EXEC_", "acquire", "(J)V");
       sActiveWakeLocks.put(i, paramContext);
@@ -69,7 +69,7 @@ public abstract class WakefulBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     androidx.legacy.content.WakefulBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

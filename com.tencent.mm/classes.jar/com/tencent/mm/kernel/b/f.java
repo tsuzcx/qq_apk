@@ -19,11 +19,11 @@ public abstract class f
   
   private void checkIfNeedDefaultDependency()
   {
-    Object localObject = i.aHL().aHC();
+    Object localObject = i.baI().baA();
     Class localClass = getClass();
-    if (!((com.tencent.mm.kernel.d)localObject).kcp.bF(localClass))
+    if (!((com.tencent.mm.kernel.d)localObject).mCx.cY(localClass))
     {
-      localObject = i.aHL().aHC().kcs;
+      localObject = i.baI().baA().mCA;
       if (localObject != null)
       {
         dependsOn((Class)localObject);
@@ -51,7 +51,7 @@ public abstract class f
   {
     Assert.assertNotNull(paramClass);
     Assert.assertTrue(paramClass.isInstance(this));
-    i.aHL().aHC().f(getClass(), paramClass);
+    i.baI().baA().f(getClass(), paramClass);
   }
   
   public void configure(g paramg) {}
@@ -65,7 +65,7 @@ public abstract class f
       l.w("MMKernel.Plugin", "Ignore this dependency. It's not dependency phase now!", new Object[0]);
       return;
     }
-    i.aHL().aHC().g(getClass(), paramClass);
+    i.baI().baA().g(getClass(), paramClass);
   }
   
   protected void dependsOnRoot()
@@ -75,7 +75,7 @@ public abstract class f
       l.w("MMKernel.Plugin", "Ignore this dependency. It's not dependency phase now!", new Object[0]);
       return;
     }
-    i.aHL().aHC().g(getClass(), getClass());
+    i.baI().baA().g(getClass(), getClass());
   }
   
   public int hashCode()
@@ -149,7 +149,7 @@ public abstract class f
       if (!this.mPins.contains(paramc))
       {
         this.mPins.add(paramc);
-        i.aHL().aHC().a(paramc.getClass(), new e(paramc));
+        i.baI().baA().a(paramc.getClass(), new e(paramc));
       }
       return;
     }
@@ -178,7 +178,7 @@ public abstract class f
       if (this.mPins.contains(paramc))
       {
         this.mPins.remove(paramc);
-        i.aHL().aHC().af(paramc.getClass());
+        i.baI().baA().ay(paramc.getClass());
       }
       return;
     }
@@ -191,7 +191,7 @@ public abstract class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.kernel.b.f
  * JD-Core Version:    0.7.0.1
  */

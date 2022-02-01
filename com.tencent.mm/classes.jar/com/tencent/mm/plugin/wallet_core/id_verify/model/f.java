@@ -10,9 +10,9 @@ import org.json.JSONObject;
 public final class f
   extends m
 {
-  public int OHJ;
-  public String cpm;
+  public int Vxv;
   public String desc;
+  public String egj;
   public String title;
   
   public f(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, RealNameBundle paramRealNameBundle)
@@ -27,7 +27,7 @@ public final class f
     localHashMap.put("session_id", paramString4);
     Log.i("MicroMsg.NetSceneRealNameReg", "realname_scene=%d", new Object[] { Integer.valueOf(paramInt) });
     if (paramRealNameBundle != null) {
-      paramRealNameBundle.aS(localHashMap);
+      paramRealNameBundle.bj(localHashMap);
     }
     setRequestData(localHashMap);
     AppMethodBeat.o(174504);
@@ -54,14 +54,14 @@ public final class f
     Log.i("MicroMsg.NetSceneRealNameReg", "errCode=" + paramString + ";errMsg=" + paramString);
     this.title = paramJSONObject.optString("title");
     this.desc = paramJSONObject.optString("desc");
-    this.cpm = paramJSONObject.optString("page");
-    this.OHJ = paramJSONObject.optInt("err_jump_page");
+    this.egj = paramJSONObject.optString("page");
+    this.Vxv = paramJSONObject.optInt("err_jump_page");
     AppMethodBeat.o(70144);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.id_verify.model.f
  * JD-Core Version:    0.7.0.1
  */

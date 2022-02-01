@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.view.menu.ListMenuItemView android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minWidth="196.0dip"
+<RelativeLayout android:background="@color/v5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="?a0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/dln" android:background="@drawable/af" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="4.0dip" android:layout_marginBottom="4.0dip" />
-    <LinearLayout android:id="@id/be9" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="?jv" style="@style/ta">
-        <RelativeLayout android:layout_gravity="center_vertical" android:duplicateParentState="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" style="@style/tb">
-            <TextView android:textAppearance="?a1t" android:ellipsize="marquee" android:id="@id/ipm" android:fadingEdge="horizontal" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentTop="true" style="@style/te" />
-            <TextView android:textAppearance="?a21" android:id="@id/hqo" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_below="@id/ipm" style="@style/te" />
-        </RelativeLayout>
-        <ImageView android:layout_gravity="center" android:id="@id/idd" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="center" style="@style/td" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/jno" android:background="@drawable/aqz" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerVertical="true" android:layout_marginStart="@dimen/df" android:layout_alignParentStart="true">
+        <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bmq" android:paddingStart="@dimen/df" android:paddingEnd="@dimen/df" />
     </LinearLayout>
-</androidx.appcompat.view.menu.ListMenuItemView>
+    <Button android:enabled="false" android:id="@id/jnr" android:background="@drawable/j5" android:text="@string/a2r" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/cp" android:layout_alignParentEnd="true" style="@style/oi" />
+    <EditText android:textSize="@dimen/io" android:textColor="@color/az" android:textColorHint="#4dffffff" android:ellipsize="end" android:id="@id/jnq" android:background="@null" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/j8y" android:singleLine="true" android:layout_centerVertical="true" android:inputType="text" android:imeOptions="actionSearch" android:textCursorDrawable="@drawable/a8b" android:layout_marginEnd="@dimen/df" android:layout_toStartOf="@id/jnr" android:layout_toEndOf="@id/jno" />
+</RelativeLayout>

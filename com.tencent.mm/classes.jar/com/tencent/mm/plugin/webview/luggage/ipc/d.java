@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.webview.luggage.ipc;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
@@ -19,15 +19,25 @@ public class d
     if (str == null)
     {
       Log.e("MicroMsg.JsApiMMActivityTask", "jsapi is null");
-      parama.C(new Bundle());
+      parama.J(new Bundle());
       AppMethodBeat.o(78494);
       return;
     }
     try
     {
-      ((br)Class.forName(str).newInstance()).a(paramContext, paramBundle, new br.a()
+      ((bv)Class.forName(str).newInstance()).a(paramContext, paramBundle, new bv.a()
       {
-        public final void i(String paramAnonymousString, JSONObject paramAnonymousJSONObject)
+        public final void b(String paramAnonymousString, JSONObject paramAnonymousJSONObject)
+        {
+          AppMethodBeat.i(295984);
+          Bundle localBundle = new Bundle();
+          localBundle.putString("event", paramAnonymousString);
+          localBundle.putString("data", paramAnonymousJSONObject.toString());
+          parama.bn(localBundle);
+          AppMethodBeat.o(295984);
+        }
+        
+        public final void j(String paramAnonymousString, JSONObject paramAnonymousJSONObject)
         {
           AppMethodBeat.i(78493);
           Bundle localBundle = new Bundle();
@@ -36,7 +46,7 @@ public class d
           for (paramAnonymousString = paramAnonymousJSONObject.toString();; paramAnonymousString = "")
           {
             localBundle.putString("data", paramAnonymousString);
-            parama.C(localBundle);
+            parama.J(localBundle);
             AppMethodBeat.o(78493);
             return;
           }
@@ -48,7 +58,7 @@ public class d
     catch (Exception paramContext)
     {
       Log.printErrStackTrace("MicroMsg.JsApiMMActivityTask", paramContext, "", new Object[0]);
-      parama.C(new Bundle());
+      parama.J(new Bundle());
       AppMethodBeat.o(78494);
     }
   }

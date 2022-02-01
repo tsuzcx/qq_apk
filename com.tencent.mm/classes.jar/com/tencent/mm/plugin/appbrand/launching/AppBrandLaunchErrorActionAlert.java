@@ -4,58 +4,56 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Parcel;
-import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.au.i;
+import com.tencent.mm.plugin.appbrand.ba.i;
 import com.tencent.mm.plugin.appbrand.ipc.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.k;
 import java.util.Locale;
 
 final class AppBrandLaunchErrorActionAlert
   extends AppBrandLaunchErrorAction
 {
-  final String mTv;
-  final String mnu;
+  final String pQc;
+  final String phh;
   
-  @Keep
   AppBrandLaunchErrorActionAlert(Parcel paramParcel)
   {
     super(paramParcel);
     AppMethodBeat.i(47044);
-    this.mnu = paramParcel.readString();
-    this.mTv = paramParcel.readString();
+    this.phh = paramParcel.readString();
+    this.pQc = paramParcel.readString();
     AppMethodBeat.o(47044);
   }
   
   AppBrandLaunchErrorActionAlert(String paramString1, int paramInt, String paramString2, String paramString3)
   {
     super(paramString1, paramInt);
-    this.mnu = paramString2;
-    this.mTv = paramString3;
+    this.phh = paramString2;
+    this.pQc = paramString3;
   }
   
   final void ad(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(276417);
-    String str1 = this.mTv;
-    String str2 = this.mnu;
+    AppMethodBeat.i(321066);
+    String str1 = this.pQc;
+    String str2 = this.phh;
     Log.i("MicroMsg.AppBrandLaunchErrorAction", "showError(%s) alert title:%s, message:%s", new Object[] { paramString, str2, str1 });
     if (!(paramContext instanceof Activity))
     {
-      a.a(null, str1, str2, MMApplicationContext.getResources().getString(au.i.app_ok), "", null, null, null);
-      AppMethodBeat.o(276417);
+      a.a(null, str1, str2, MMApplicationContext.getResources().getString(ba.i.app_ok), "", null, null, null);
+      AppMethodBeat.o(321066);
       return;
     }
-    h.a(paramContext, str1, str2, false, null);
-    AppMethodBeat.o(276417);
+    k.a(paramContext, str1, str2, false, null);
+    AppMethodBeat.o(321066);
   }
   
   public final String toString()
   {
     AppMethodBeat.i(174926);
-    String str = String.format(Locale.ENGLISH, "AppBrandLaunchErrorActionAlert[%s %s]", new Object[] { this.mnu, this.mTv });
+    String str = String.format(Locale.ENGLISH, "AppBrandLaunchErrorActionAlert[%s %s]", new Object[] { this.phh, this.pQc });
     AppMethodBeat.o(174926);
     return str;
   }
@@ -64,14 +62,14 @@ final class AppBrandLaunchErrorActionAlert
   {
     AppMethodBeat.i(47045);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.mnu);
-    paramParcel.writeString(this.mTv);
+    paramParcel.writeString(this.phh);
+    paramParcel.writeString(this.pQc);
     AppMethodBeat.o(47045);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchErrorActionAlert
  * JD-Core Version:    0.7.0.1
  */

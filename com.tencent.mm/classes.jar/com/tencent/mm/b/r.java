@@ -1,13 +1,14 @@
 package com.tencent.mm.b;
 
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.ah;
 import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 
 public final class r
 {
-  public static String a(q paramq, String paramString)
+  public static String a(u paramu, String paramString)
   {
-    u.os(paramq.getPath(), paramString);
+    y.qq(ah.v(paramu.mUri), paramString);
     return paramString;
   }
 }

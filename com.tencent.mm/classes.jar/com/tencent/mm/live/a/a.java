@@ -1,10 +1,8 @@
 package com.tencent.mm.live.a;
 
 import android.app.Activity;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.database.ContentObserver;
 import android.os.Handler;
 import android.os.Looper;
 import android.telephony.PhoneStateListener;
@@ -17,108 +15,163 @@ import android.view.ViewGroup.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.c;
 import com.tencent.mm.live.api.LiveConfig;
-import com.tencent.mm.live.b.l.j;
+import com.tencent.mm.live.model.l.j;
 import com.tencent.mm.live.view.BaseLivePluginLayout;
 import com.tencent.mm.live.view.LiveAnchorPluginLayout;
 import com.tencent.mm.live.view.LiveVisitorPluginLayout;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.tools.h;
 import com.tencent.mm.ui.tools.i;
 import java.lang.reflect.Constructor;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
-import org.xwalk.core.XWalkEnvironment;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/controller/LiveUIRouter;", "Lcom/tencent/mm/live/controller/ILiveUINavigation;", "context", "Landroid/content/Context;", "root", "Landroid/view/ViewGroup;", "provider", "Lcom/tencent/mm/live/api/LiveConfig;", "isFinished", "", "(Landroid/content/Context;Landroid/view/ViewGroup;Lcom/tencent/mm/live/api/LiveConfig;Z)V", "TAG", "", "currentView", "Lcom/tencent/mm/live/view/BaseLivePluginLayout;", "()Z", "isKeyBoardShow", "keyboardHeightProvider", "Lcom/tencent/mm/ui/tools/KeyboardHeightProvider;", "phoneStatelistener", "Landroid/telephony/PhoneStateListener;", "getProvider", "()Lcom/tencent/mm/live/api/LiveConfig;", "rotationSwitchObserver", "Lcom/tencent/mm/live/controller/LiveUIRouter$RotationSwitchObserver;", "sp", "Landroid/content/SharedPreferences;", "viewMap", "Landroid/util/SparseArray;", "viewTable", "Ljava/lang/Class;", "keyboardChange", "", "show", "height", "", "loadViewFromClass", "key", "clazz", "maximizeUi", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onCreate", "onDestroy", "onPause", "onResume", "onStart", "onStop", "onSwipeBack", "route", "toWhere", "RotationSwitchObserver", "plugin-logic_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/controller/LiveUIRouter;", "Lcom/tencent/mm/live/controller/ILiveUINavigation;", "context", "Landroid/content/Context;", "root", "Landroid/view/ViewGroup;", "provider", "Lcom/tencent/mm/live/api/LiveConfig;", "isFinished", "", "(Landroid/content/Context;Landroid/view/ViewGroup;Lcom/tencent/mm/live/api/LiveConfig;Z)V", "TAG", "", "currentView", "Lcom/tencent/mm/live/view/BaseLivePluginLayout;", "()Z", "isKeyBoardShow", "keyboardHeightProvider", "Lcom/tencent/mm/ui/tools/KeyboardHeightProvider;", "phoneStatelistener", "Landroid/telephony/PhoneStateListener;", "getProvider", "()Lcom/tencent/mm/live/api/LiveConfig;", "rotationSwitchObserver", "Lcom/tencent/mm/live/controller/LiveUIRouter$RotationSwitchObserver;", "sp", "Landroid/content/SharedPreferences;", "viewMap", "Landroid/util/SparseArray;", "viewTable", "Ljava/lang/Class;", "keyboardChange", "", "show", "height", "", "loadViewFromClass", "key", "clazz", "maximizeUi", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onCreate", "onDestroy", "onPause", "onResume", "onStart", "onStop", "onSwipeBack", "route", "toWhere", "RotationSwitchObserver", "plugin-logic_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
   public final String TAG;
   public final Context context;
   private final boolean isFinished;
-  public i jij;
-  private final SparseArray<Class<?>> kiA;
-  private final SparseArray<BaseLivePluginLayout> kiB;
-  public BaseLivePluginLayout kiC;
-  boolean kiD;
-  public final PhoneStateListener kiE;
-  private final ViewGroup kiF;
-  private final LiveConfig kiG;
-  public final a kiz;
+  public i lKz;
+  private final ViewGroup mJe;
+  private final LiveConfig mJf;
+  public final a.a mJg;
+  private final SparseArray<Class<?>> mJh;
+  private final SparseArray<BaseLivePluginLayout> mJi;
+  public BaseLivePluginLayout mJj;
+  private boolean mJk;
+  public final PhoneStateListener mJl;
   public final SharedPreferences sp;
   
   public a(Context paramContext, ViewGroup paramViewGroup, LiveConfig paramLiveConfig, boolean paramBoolean)
   {
-    AppMethodBeat.i(190998);
+    AppMethodBeat.i(245972);
     this.context = paramContext;
-    this.kiF = paramViewGroup;
-    this.kiG = paramLiveConfig;
+    this.mJe = paramViewGroup;
+    this.mJf = paramLiveConfig;
     this.isFinished = paramBoolean;
     this.TAG = "MicroMsg.LiveUIRouter";
     paramContext = this.context.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 4);
-    p.j(paramContext, "context.getSharedPrefere…ntext.MODE_MULTI_PROCESS)");
+    s.s(paramContext, "context.getSharedPrefere…ntext.MODE_MULTI_PROCESS)");
     this.sp = paramContext;
-    this.kiz = new a(new Handler(Looper.getMainLooper()), (kotlin.g.a.a)new d(this));
-    this.kiA = new SparseArray();
-    this.kiB = new SparseArray();
-    this.kiE = ((PhoneStateListener)new c(this));
+    this.mJg = new a.a(new Handler(Looper.getMainLooper()), (kotlin.g.a.a)new c(this));
+    this.mJh = new SparseArray();
+    this.mJi = new SparseArray();
+    this.mJl = ((PhoneStateListener)new b(this));
     Log.i(this.TAG, "init");
-    paramContext = this.kiA;
-    paramViewGroup = l.j.kuS;
-    paramContext.put(l.j.aNT(), LiveAnchorPluginLayout.class);
-    paramContext = this.kiA;
-    paramViewGroup = l.j.kuS;
-    paramContext.put(l.j.aNU(), LiveVisitorPluginLayout.class);
-    AppMethodBeat.o(190998);
+    paramContext = this.mJh;
+    paramViewGroup = l.j.mYK;
+    paramContext.put(l.j.bhE(), LiveAnchorPluginLayout.class);
+    paramContext = this.mJh;
+    paramViewGroup = l.j.mYK;
+    paramContext.put(l.j.bhF(), LiveVisitorPluginLayout.class);
+    AppMethodBeat.o(245972);
+  }
+  
+  private static final void a(a parama)
+  {
+    AppMethodBeat.i(245988);
+    s.u(parama, "this$0");
+    if (parama.lKz == null)
+    {
+      parama.lKz = new i((Activity)parama.context);
+      i locali = parama.lKz;
+      if (locali != null) {
+        locali.afIL = new a..ExternalSyntheticLambda0(parama);
+      }
+    }
+    parama = parama.lKz;
+    if (parama != null) {
+      parama.start();
+    }
+    AppMethodBeat.o(245988);
+  }
+  
+  private static final void a(a parama, int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(245978);
+    s.u(parama, "this$0");
+    Log.i(parama.TAG, "onKeyboardHeightChanged, height:" + paramInt + ", isResized:" + paramBoolean);
+    if (paramInt > 0) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      if (parama.mJk != paramBoolean)
+      {
+        parama.mJk = paramBoolean;
+        parama = parama.mJj;
+        if (parama != null) {
+          parama.keyboardChange(paramBoolean, paramInt);
+        }
+      }
+      AppMethodBeat.o(245978);
+      return;
+    }
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(190982);
-    Log.i(this.TAG, "onDestroy " + this.kiC);
-    int j = this.kiB.size();
-    int i = 0;
-    while (i < j)
+    AppMethodBeat.i(246026);
+    Log.i(this.TAG, s.X("onDestroy ", this.mJj));
+    int k = this.mJi.size();
+    if (k > 0) {}
+    int j;
+    for (int i = 0;; i = j)
     {
-      ((BaseLivePluginLayout)this.kiB.valueAt(i)).unMount();
-      i += 1;
+      j = i + 1;
+      ((BaseLivePluginLayout)this.mJi.valueAt(i)).unMount();
+      if (j >= k)
+      {
+        Object localObject1 = this.context.getSystemService("phone");
+        if (localObject1 == null)
+        {
+          localObject1 = new NullPointerException("null cannot be cast to non-null type android.telephony.TelephonyManager");
+          AppMethodBeat.o(246026);
+          throw ((Throwable)localObject1);
+        }
+        localObject1 = (TelephonyManager)localObject1;
+        Object localObject2 = this.mJl;
+        localObject2 = c.a(0, new com.tencent.mm.hellhoundlib.b.a()).cG(localObject2);
+        com.tencent.mm.hellhoundlib.a.a.b(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aYi(), "com/tencent/mm/live/controller/LiveUIRouter", "onDestroy", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
+        ((TelephonyManager)localObject1).listen((PhoneStateListener)((com.tencent.mm.hellhoundlib.b.a)localObject2).sb(0), ((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject2).sb(1)).intValue());
+        com.tencent.mm.hellhoundlib.a.a.c(localObject1, "com/tencent/mm/live/controller/LiveUIRouter", "onDestroy", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
+        AppMethodBeat.o(246026);
+        return;
+      }
     }
-    Object localObject1 = this.context.getSystemService("phone");
-    if (localObject1 == null)
-    {
-      localObject1 = new t("null cannot be cast to non-null type android.telephony.TelephonyManager");
-      AppMethodBeat.o(190982);
-      throw ((Throwable)localObject1);
-    }
-    localObject1 = (TelephonyManager)localObject1;
-    Object localObject2 = this.kiE;
-    localObject2 = c.a(0, new com.tencent.mm.hellhoundlib.b.a()).bm(localObject2);
-    com.tencent.mm.hellhoundlib.a.a.b(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aFh(), "com/tencent/mm/live/controller/LiveUIRouter", "onDestroy", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
-    ((TelephonyManager)localObject1).listen((PhoneStateListener)((com.tencent.mm.hellhoundlib.b.a)localObject2).sf(0), ((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject2).sf(1)).intValue());
-    com.tencent.mm.hellhoundlib.a.a.c(localObject1, "com/tencent/mm/live/controller/LiveUIRouter", "onDestroy", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
-    AppMethodBeat.o(190982);
   }
   
-  public final void sR(int paramInt)
+  public final void onResume()
   {
-    AppMethodBeat.i(190993);
-    if (this.kiB.get(paramInt) == null)
+    AppMethodBeat.i(246013);
+    Log.i(this.TAG, s.X("onResume ", this.mJj));
+    BaseLivePluginLayout localBaseLivePluginLayout = this.mJj;
+    if (localBaseLivePluginLayout != null) {
+      localBaseLivePluginLayout.resume();
+    }
+    localBaseLivePluginLayout = this.mJj;
+    if (localBaseLivePluginLayout != null) {
+      localBaseLivePluginLayout.post(new a..ExternalSyntheticLambda1(this));
+    }
+    AppMethodBeat.o(246013);
+  }
+  
+  public final void sL(int paramInt)
+  {
+    AppMethodBeat.i(246039);
+    if (this.mJi.get(paramInt) == null)
     {
-      Object localObject1 = this.kiA.get(paramInt);
-      p.j(localObject1, "viewTable[toWhere]");
+      Object localObject1 = this.mJh.get(paramInt);
+      s.s(localObject1, "viewTable[toWhere]");
       localObject1 = (Class)localObject1;
       try
       {
-        localObject1 = ((Class)localObject1).getConstructor(new Class[] { Context.class, AttributeSet.class });
-        p.j(localObject1, "clazz.getConstructor(Con…AttributeSet::class.java)");
-        localObject1 = ((Constructor)localObject1).newInstance(new Object[] { this.context, null });
+        localObject1 = ((Class)localObject1).getConstructor(new Class[] { Context.class, AttributeSet.class }).newInstance(new Object[] { this.context, null });
         if (localObject1 == null)
         {
-          localObject1 = new t("null cannot be cast to non-null type com.tencent.mm.live.view.BaseLivePluginLayout");
-          AppMethodBeat.o(190993);
+          localObject1 = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.live.view.BaseLivePluginLayout");
+          AppMethodBeat.o(246039);
           throw ((Throwable)localObject1);
         }
       }
@@ -129,153 +182,59 @@ public final class a
     }
     for (;;)
     {
-      Object localObject2 = this.kiC;
-      this.kiC = ((BaseLivePluginLayout)this.kiB.get(paramInt));
-      Object localObject3 = this.kiC;
+      Object localObject2 = this.mJj;
+      this.mJj = ((BaseLivePluginLayout)this.mJi.get(paramInt));
+      Object localObject3 = this.mJj;
       if (localObject3 != null) {
         ((BaseLivePluginLayout)localObject3).mount();
       }
-      localObject3 = this.kiC;
+      localObject3 = this.mJj;
       if (localObject3 != null) {
         ((BaseLivePluginLayout)localObject3).bringToFront();
       }
-      if (localObject2 == null) {
-        break;
+      if (localObject2 != null) {
+        ((BaseLivePluginLayout)localObject2).pause();
       }
-      ((BaseLivePluginLayout)localObject2).pause();
-      AppMethodBeat.o(190993);
+      AppMethodBeat.o(246039);
       return;
       BaseLivePluginLayout localBaseLivePluginLayout = (BaseLivePluginLayout)localObject2;
-      localObject3 = this.kiG;
+      localObject3 = this.mJf;
       localObject2 = localObject3;
-      if (localObject3 == null)
-      {
-        localObject2 = LiveConfig.an("", LiveConfig.khV);
-        p.j(localObject2, "LiveConfig.getDefaultAnc…ig.SCENE_CHATTING_FOOTER)");
+      if (localObject3 == null) {
+        localObject2 = LiveConfig.aw("", LiveConfig.mIr);
       }
+      s.s(localObject2, "provider ?: LiveConfig.g…ig.SCENE_CHATTING_FOOTER)");
       localBaseLivePluginLayout.initLogic((LiveConfig)localObject2, this.isFinished);
-      this.kiB.put(paramInt, localBaseLivePluginLayout);
-      this.kiF.addView((View)localBaseLivePluginLayout, new ViewGroup.LayoutParams(-1, -1));
+      this.mJi.put(paramInt, localBaseLivePluginLayout);
+      this.mJe.addView((View)localBaseLivePluginLayout, new ViewGroup.LayoutParams(-1, -1));
       localBaseLivePluginLayout.setVisibility(8);
     }
-    AppMethodBeat.o(190993);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/controller/LiveUIRouter$RotationSwitchObserver;", "Landroid/database/ContentObserver;", "handler", "Landroid/os/Handler;", "onChangCallback", "Lkotlin/Function0;", "", "(Landroid/os/Handler;Lkotlin/jvm/functions/Function0;)V", "mResolver", "Landroid/content/ContentResolver;", "getMResolver", "()Landroid/content/ContentResolver;", "setMResolver", "(Landroid/content/ContentResolver;)V", "getOnChangCallback", "()Lkotlin/jvm/functions/Function0;", "onChange", "selfChange", "", "startObserver", "stopObserver", "plugin-logic_release"})
-  public static final class a
-    extends ContentObserver
-  {
-    public ContentResolver kiH;
-    private final kotlin.g.a.a<x> kiI;
-    
-    public a(Handler paramHandler, kotlin.g.a.a<x> parama)
-    {
-      super();
-      AppMethodBeat.i(194624);
-      this.kiI = parama;
-      paramHandler = XWalkEnvironment.getContentResolver();
-      p.j(paramHandler, "getContentResolver()");
-      this.kiH = paramHandler;
-      AppMethodBeat.o(194624);
-    }
-    
-    public final void onChange(boolean paramBoolean)
-    {
-      AppMethodBeat.i(194623);
-      super.onChange(paramBoolean);
-      kotlin.g.a.a locala = this.kiI;
-      if (locala != null)
-      {
-        locala.invoke();
-        AppMethodBeat.o(194623);
-        return;
-      }
-      AppMethodBeat.o(194623);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/live/controller/LiveUIRouter$phoneStatelistener$1", "Landroid/telephony/PhoneStateListener;", "onCallStateChanged", "", "state", "", "incomingNumber", "", "plugin-logic_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
-    implements Runnable
-  {
-    public b(a parama) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(196783);
-      if (this.kiJ.jij == null)
-      {
-        localObject = this.kiJ;
-        Context localContext = this.kiJ.context;
-        if (localContext == null)
-        {
-          localObject = new t("null cannot be cast to non-null type android.app.Activity");
-          AppMethodBeat.o(196783);
-          throw ((Throwable)localObject);
-        }
-        ((a)localObject).jij = new i((Activity)localContext);
-        localObject = this.kiJ.jij;
-        if (localObject != null) {
-          ((i)localObject).setKeyboardHeightObserver((h)new h()
-          {
-            public final void A(int paramAnonymousInt, boolean paramAnonymousBoolean)
-            {
-              AppMethodBeat.i(193981);
-              Log.i(this.kiK.kiJ.TAG, "onKeyboardHeightChanged, height:" + paramAnonymousInt + ", isResized:" + paramAnonymousBoolean);
-              Object localObject = this.kiK.kiJ;
-              if (paramAnonymousInt > 0) {}
-              for (paramAnonymousBoolean = true; ((a)localObject).kiD != paramAnonymousBoolean; paramAnonymousBoolean = false)
-              {
-                ((a)localObject).kiD = paramAnonymousBoolean;
-                localObject = ((a)localObject).kiC;
-                if (localObject == null) {
-                  break;
-                }
-                ((BaseLivePluginLayout)localObject).keyboardChange(paramAnonymousBoolean, paramAnonymousInt);
-                AppMethodBeat.o(193981);
-                return;
-              }
-              AppMethodBeat.o(193981);
-            }
-          });
-        }
-      }
-      Object localObject = this.kiJ.jij;
-      if (localObject != null)
-      {
-        ((i)localObject).start();
-        AppMethodBeat.o(196783);
-        return;
-      }
-      AppMethodBeat.o(196783);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/live/controller/LiveUIRouter$phoneStatelistener$1", "Landroid/telephony/PhoneStateListener;", "onCallStateChanged", "", "state", "", "incomingNumber", "", "plugin-logic_release"})
-  public static final class c
     extends PhoneStateListener
   {
+    b(a parama) {}
+    
     public final void onCallStateChanged(int paramInt, String paramString)
     {
-      AppMethodBeat.i(188948);
-      p.k(paramString, "incomingNumber");
-      BaseLivePluginLayout localBaseLivePluginLayout = this.kiJ.kiC;
-      if (localBaseLivePluginLayout != null)
-      {
+      AppMethodBeat.i(245963);
+      s.u(paramString, "incomingNumber");
+      BaseLivePluginLayout localBaseLivePluginLayout = this.mJo.mJj;
+      if (localBaseLivePluginLayout != null) {
         localBaseLivePluginLayout.onCallStateChanged(paramInt, paramString);
-        AppMethodBeat.o(188948);
-        return;
       }
-      AppMethodBeat.o(188948);
+      AppMethodBeat.o(245963);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class d
-    extends q
-    implements kotlin.g.a.a<x>
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    d(a parama)
+    c(a parama)
     {
       super();
     }
@@ -283,7 +242,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.live.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.exdevice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.be;
-import com.tencent.mm.plugin.exdevice.model.ae;
+import com.tencent.mm.plugin.exdevice.model.ah;
 import com.tencent.mm.pluginsdk.c.c;
 import com.tencent.mm.pluginsdk.c.d;
 import com.tencent.mm.pluginsdk.n;
@@ -21,9 +21,9 @@ public class Plugin
   public be createSubCore()
   {
     AppMethodBeat.i(23142);
-    ae localae = new ae();
+    ah localah = new ah();
     AppMethodBeat.o(23142);
-    return localae;
+    return localah;
   }
   
   public c getContactWidgetFactory()

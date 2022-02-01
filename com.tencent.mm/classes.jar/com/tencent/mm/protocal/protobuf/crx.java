@@ -1,136 +1,151 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import org.json.JSONObject;
 
 public final class crx
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public cry Tzt;
-  public cru Tzu;
-  public crv Tzv;
+  public int IJG;
+  public String SessionId;
+  public String YWK;
+  public int aayc;
+  public String aaye;
+  public String aayf;
+  public String nUB;
+  
+  private JSONObject toJSON()
+  {
+    AppMethodBeat.i(258643);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      com.tencent.mm.bk.a.a(localJSONObject, "Scene", Integer.valueOf(this.IJG), false);
+      com.tencent.mm.bk.a.a(localJSONObject, "SessionId", this.SessionId, false);
+      com.tencent.mm.bk.a.a(localJSONObject, "RequestId", this.aaye, false);
+      com.tencent.mm.bk.a.a(localJSONObject, "SearchId", this.aayf, false);
+      com.tencent.mm.bk.a.a(localJSONObject, "H5Version", Integer.valueOf(this.aayc), false);
+      com.tencent.mm.bk.a.a(localJSONObject, "Query", this.YWK, false);
+      com.tencent.mm.bk.a.a(localJSONObject, "Content", this.nUB, false);
+      label96:
+      AppMethodBeat.o(258643);
+      return localJSONObject;
+    }
+    catch (Exception localException)
+    {
+      break label96;
+    }
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(253427);
+    AppMethodBeat.i(258648);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.Tzt != null)
-      {
-        paramVarArgs.oE(1, this.Tzt.computeSize());
-        this.Tzt.writeFields(paramVarArgs);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.IJG);
+      if (this.SessionId != null) {
+        paramVarArgs.g(2, this.SessionId);
       }
-      if (this.Tzu != null)
-      {
-        paramVarArgs.oE(2, this.Tzu.computeSize());
-        this.Tzu.writeFields(paramVarArgs);
+      if (this.aaye != null) {
+        paramVarArgs.g(3, this.aaye);
       }
-      if (this.Tzv != null)
-      {
-        paramVarArgs.oE(3, this.Tzv.computeSize());
-        this.Tzv.writeFields(paramVarArgs);
+      if (this.aayf != null) {
+        paramVarArgs.g(4, this.aayf);
       }
-      AppMethodBeat.o(253427);
+      paramVarArgs.bS(5, this.aayc);
+      if (this.YWK != null) {
+        paramVarArgs.g(6, this.YWK);
+      }
+      if (this.nUB != null) {
+        paramVarArgs.g(7, this.nUB);
+      }
+      AppMethodBeat.o(258648);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.Tzt == null) {
-        break label552;
-      }
-    }
-    label552:
-    for (int i = g.a.a.a.oD(1, this.Tzt.computeSize()) + 0;; i = 0)
+    if (paramInt == 1)
     {
+      int i = i.a.a.b.b.a.cJ(1, this.IJG) + 0;
       paramInt = i;
-      if (this.Tzu != null) {
-        paramInt = i + g.a.a.a.oD(2, this.Tzu.computeSize());
+      if (this.SessionId != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.SessionId);
       }
       i = paramInt;
-      if (this.Tzv != null) {
-        i = paramInt + g.a.a.a.oD(3, this.Tzv.computeSize());
+      if (this.aaye != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.aaye);
       }
-      AppMethodBeat.o(253427);
+      paramInt = i;
+      if (this.aayf != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.aayf);
+      }
+      i = paramInt + i.a.a.b.b.a.cJ(5, this.aayc);
+      paramInt = i;
+      if (this.YWK != null) {
+        paramInt = i + i.a.a.b.b.a.h(6, this.YWK);
+      }
+      i = paramInt;
+      if (this.nUB != null) {
+        i = paramInt + i.a.a.b.b.a.h(7, this.nUB);
+      }
+      AppMethodBeat.o(258648);
       return i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
-          }
-        }
-        AppMethodBeat.o(253427);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
-        crx localcrx = (crx)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(253427);
-          return -1;
-        case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new cry();
-            if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((cry)localObject2).parseFrom((byte[])localObject1);
-            }
-            localcrx.Tzt = ((cry)localObject2);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(253427);
-          return 0;
-        case 2: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new cru();
-            if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((cru)localObject2).parseFrom((byte[])localObject1);
-            }
-            localcrx.Tzu = ((cru)localObject2);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(253427);
-          return 0;
-        }
-        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject1 = (byte[])paramVarArgs.get(paramInt);
-          localObject2 = new crv();
-          if ((localObject1 != null) && (localObject1.length > 0)) {
-            ((crv)localObject2).parseFrom((byte[])localObject1);
-          }
-          localcrx.Tzv = ((crv)localObject2);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(253427);
-        return 0;
-      }
-      AppMethodBeat.o(253427);
-      return -1;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(258648);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+      crx localcrx = (crx)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(258648);
+        return -1;
+      case 1: 
+        localcrx.IJG = locala.ajGk.aar();
+        AppMethodBeat.o(258648);
+        return 0;
+      case 2: 
+        localcrx.SessionId = locala.ajGk.readString();
+        AppMethodBeat.o(258648);
+        return 0;
+      case 3: 
+        localcrx.aaye = locala.ajGk.readString();
+        AppMethodBeat.o(258648);
+        return 0;
+      case 4: 
+        localcrx.aayf = locala.ajGk.readString();
+        AppMethodBeat.o(258648);
+        return 0;
+      case 5: 
+        localcrx.aayc = locala.ajGk.aar();
+        AppMethodBeat.o(258648);
+        return 0;
+      case 6: 
+        localcrx.YWK = locala.ajGk.readString();
+        AppMethodBeat.o(258648);
+        return 0;
+      }
+      localcrx.nUB = locala.ajGk.readString();
+      AppMethodBeat.o(258648);
+      return 0;
+    }
+    AppMethodBeat.o(258648);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.crx
  * JD-Core Version:    0.7.0.1
  */

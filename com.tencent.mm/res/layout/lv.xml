@@ -1,9 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/h8v" android:background="@drawable/b58" android:layout_width="@dimen/bz" android:layout_height="@dimen/bu"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:gravity="center" android:id="@id/jmg" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:src="@raw/wecoin_balance_icons" android:layout_centerVertical="true" app:iconColor="@color/ah" />
-        <TextView android:textSize="@dimen/ce" android:textColor="@color/fr" android:gravity="center" android:id="@id/gv6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bt" android:text="50" android:layout_toRightOf="@id/jmg" android:layout_centerVertical="true" />
-    </RelativeLayout>
-    <TextView android:textSize="14.0dip" android:textColor="@color/BW_0_Alpha_0_5" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/gv8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:text="50" />
-</LinearLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

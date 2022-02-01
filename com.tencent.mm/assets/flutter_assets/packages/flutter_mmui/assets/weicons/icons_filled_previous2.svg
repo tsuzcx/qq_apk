@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>icons_filled_previous2</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icons_filled_previous2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="common_icons_miniprogram" fill="#000000" fill-rule="nonzero">
+            <path d="M36,66 C19.4314575,66 6,52.5685425 6,36 C6,19.4314575 19.4314575,6 36,6 C52.5685425,6 66,19.4314575 66,36 C66,52.5685425 52.5685425,66 36,66 Z M27.8058872,33.6000001 L42,33.6 C44.9823376,33.6 47.4,36.0176624 47.4,39 C47.4,41.9823376 44.9823376,44.4 42,44.4000006 L36,44.4000006 L36,48.0000007 L42,48 C46.9705627,48 51,43.9705627 51,39 C51,34.0294373 46.9705627,30 42,30 L27.976451,30 L32.0308659,25.9455851 L29.4852814,23.4000006 L22.0606602,30.8246218 C21.4748737,31.4104082 21.4748737,32.3601557 22.0606602,32.9459421 L29.4852814,40.3705633 L32.0308659,37.8249788 L27.8058872,33.6000001 Z" id="Combined-Shape"></path>
+        </g>
+    </g>
+</svg>

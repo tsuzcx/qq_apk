@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d
 {
-  public static a a(int paramInt, long[] paramArrayOfLong, int[] paramArrayOfInt, long paramLong)
+  public static d.a a(int paramInt, long[] paramArrayOfLong, int[] paramArrayOfInt, long paramLong)
   {
     AppMethodBeat.i(92074);
     int i1 = 8192 / paramInt;
@@ -14,7 +14,7 @@ final class d
     int m;
     for (int i = 0; j < k; i = m + i)
     {
-      m = x.bq(paramArrayOfInt[j], i1);
+      m = x.cl(paramArrayOfInt[j], i1);
       j += 1;
     }
     long[] arrayOfLong1 = new long[i];
@@ -44,27 +44,9 @@ final class d
       }
       i += 1;
     }
-    paramArrayOfLong = new a(arrayOfLong1, arrayOfInt1, n, arrayOfLong2, arrayOfInt2, (byte)0);
+    paramArrayOfLong = new d.a(arrayOfLong1, arrayOfInt1, n, arrayOfLong2, arrayOfInt2, (byte)0);
     AppMethodBeat.o(92074);
     return paramArrayOfLong;
-  }
-  
-  public static final class a
-  {
-    public final int[] aRk;
-    public final int[] aWA;
-    public final int aWy;
-    public final long[] aWz;
-    public final long[] offsets;
-    
-    private a(long[] paramArrayOfLong1, int[] paramArrayOfInt1, int paramInt, long[] paramArrayOfLong2, int[] paramArrayOfInt2)
-    {
-      this.offsets = paramArrayOfLong1;
-      this.aRk = paramArrayOfInt1;
-      this.aWy = paramInt;
-      this.aWz = paramArrayOfLong2;
-      this.aWA = paramArrayOfInt2;
-    }
   }
 }
 

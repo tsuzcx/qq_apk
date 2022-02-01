@@ -9,18 +9,18 @@ import java.util.Map;
 public final class b
 {
   private static String TAG = "TPPlaybackInfo";
-  public String ZxR;
-  String ZxS;
-  public int ZxT;
-  public int ZxU;
-  public long ZxV;
-  String ZxW;
-  int ZxX;
-  long ZxY;
-  public int ZxZ;
-  long Zya;
-  public long Zyb;
-  int Zyc;
+  public long Gpr;
+  public String ahCV;
+  String ahCW;
+  public int ahCX;
+  public int ahCY;
+  String ahCZ;
+  int ahDa;
+  long ahDb;
+  public int ahDc;
+  long ahDd;
+  public long ahDe;
+  int ahDf;
   int channels;
   String definition;
   public long durationMs;
@@ -28,13 +28,13 @@ public final class b
   long sampleRate;
   public long width;
   
-  public static b bDq(String paramString)
+  public static b bFY(String paramString)
   {
-    AppMethodBeat.i(218628);
+    AppMethodBeat.i(228477);
     if (TextUtils.isEmpty(paramString))
     {
       paramString = new b();
-      AppMethodBeat.o(218628);
+      AppMethodBeat.o(228477);
       return paramString;
     }
     String[] arrayOfString = paramString.split("\n");
@@ -65,13 +65,13 @@ public final class b
     }
     paramString = new b();
     if (localHashMap.containsKey("ContainerFormat")) {
-      paramString.ZxR = ((String)localHashMap.get("ContainerFormat"));
+      paramString.ahCV = ((String)localHashMap.get("ContainerFormat"));
     }
     if (localHashMap.containsKey("VideoCodec")) {
-      paramString.ZxS = ((String)localHashMap.get("VideoCodec"));
+      paramString.ahCW = ((String)localHashMap.get("VideoCodec"));
     }
     if (localHashMap.containsKey("AudioCodec")) {
-      paramString.ZxW = ((String)localHashMap.get("AudioCodec"));
+      paramString.ahCZ = ((String)localHashMap.get("AudioCodec"));
     }
     if (localHashMap.containsKey("Width")) {
       paramString.width = Long.valueOf((String)localHashMap.get("Width")).longValue();
@@ -80,10 +80,10 @@ public final class b
       paramString.height = Long.valueOf((String)localHashMap.get("Height")).longValue();
     }
     if (localHashMap.containsKey("VideoBitRate")) {
-      paramString.ZxV = Long.valueOf((String)localHashMap.get("VideoBitRate")).longValue();
+      paramString.Gpr = Long.valueOf((String)localHashMap.get("VideoBitRate")).longValue();
     }
     if (localHashMap.containsKey("AudioBitRate")) {
-      paramString.ZxY = Long.valueOf((String)localHashMap.get("AudioBitRate")).longValue();
+      paramString.ahDb = Long.valueOf((String)localHashMap.get("AudioBitRate")).longValue();
     }
     if (localHashMap.containsKey("SampleRate")) {
       paramString.sampleRate = Long.valueOf((String)localHashMap.get("SampleRate")).longValue();
@@ -94,13 +94,13 @@ public final class b
     if (localHashMap.containsKey("Definition")) {
       paramString.definition = ((String)localHashMap.get("Definition"));
     }
-    AppMethodBeat.o(218628);
+    AppMethodBeat.o(228477);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.a.b
  * JD-Core Version:    0.7.0.1
  */

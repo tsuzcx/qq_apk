@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.story.api;
 
 import android.content.Context;
 import com.tencent.mm.kernel.b.d;
-import com.tencent.mm.protocal.protobuf.eom;
+import com.tencent.mm.protocal.protobuf.fjk;
 import java.util.List;
 
 public abstract interface e
@@ -36,7 +36,7 @@ public abstract interface e
   
   public abstract n getStoryUIFactory();
   
-  public abstract eom getStoryUserInfo();
+  public abstract fjk getStoryUserInfo();
   
   public abstract boolean hasNewStory(String paramString);
   
@@ -58,11 +58,11 @@ public abstract interface e
   
   public abstract void startStoryCaptureForResult(Context paramContext, int paramInt1, long paramLong, int paramInt2);
   
-  public abstract void updateStoryUserInfo(String paramString, eom parameom);
+  public abstract void updateStoryUserInfo(String paramString, fjk paramfjk);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.story.api.e
  * JD-Core Version:    0.7.0.1
  */

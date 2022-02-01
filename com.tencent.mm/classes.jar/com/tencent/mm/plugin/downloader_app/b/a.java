@@ -12,7 +12,7 @@ import org.json.JSONObject;
 
 public final class a
 {
-  public static int IX(int paramInt)
+  public static int JF(int paramInt)
   {
     switch (paramInt)
     {
@@ -32,11 +32,11 @@ public final class a
   {
     AppMethodBeat.i(8921);
     Log.d("MicroMsg.DownloadReporter", "kv16099, sceneId = %d, areaId = %d, positionId = %d, actionId = %d, appId = %s,noticeId = %s, extInfo = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramString1, paramString2, paramString3 });
-    h.IzE.a(16099, new Object[] { Integer.valueOf(bMs()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramString1, paramString2, paramString3 });
+    h.OAn.b(16099, new Object[] { Integer.valueOf(clS()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramString1, paramString2, paramString3 });
     AppMethodBeat.o(8921);
   }
   
-  private static int bMs()
+  private static int clS()
   {
     AppMethodBeat.i(8922);
     if (NetStatusUtil.isWifi(MMApplicationContext.getContext()))
@@ -63,7 +63,7 @@ public final class a
     return 1;
   }
   
-  public static String fV(String paramString1, String paramString2)
+  public static String gy(String paramString1, String paramString2)
   {
     AppMethodBeat.i(8923);
     JSONObject localJSONObject = new JSONObject();

@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.webview;
 
 import java.util.Map;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/PageLogicCallback;", "", "getLocalRandomID", "", "getTransCache", "", "getUserTransStatus", "Lcom/tencent/mm/plugin/webview/WebTransStatus;", "storeTransCache", "", "key", "value", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/PageLogicCallback;", "", "getLocalRandomID", "", "getTransCache", "", "getUserTransStatus", "Lcom/tencent/mm/plugin/webview/WebTransStatus;", "storeTransCache", "", "key", "value", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface b
 {
-  public abstract String gRY();
+  public abstract String irp();
   
-  public abstract n gRZ();
+  public abstract n irq();
   
-  public abstract Map<String, String> gSa();
+  public abstract Map<String, String> irr();
   
-  public abstract void ml(String paramString1, String paramString2);
+  public abstract void nY(String paramString1, String paramString2);
 }
 
 

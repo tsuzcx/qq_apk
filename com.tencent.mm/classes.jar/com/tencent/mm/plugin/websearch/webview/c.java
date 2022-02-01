@@ -1,14 +1,11 @@
 package com.tencent.mm.plugin.websearch.webview;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/websearch/webview/IWebSearchImageUIComponent;", "T", "Lcom/tencent/mm/plugin/websearch/webview/IWebSearchUIComponent;", "getWebSearchData", "Lcom/tencent/mm/plugin/websearch/webview/WebSearchImageData;", "getWebSearchJSApi", "Lcom/tencent/mm/plugin/websearch/webview/WebSearchImageJSApi;", "ui-websearch_release"})
-public abstract interface c<T>
-  extends d<T>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/websearch/webview/IMultiProcessWebSearchUIComponent;", "", "getWebView", "Lcom/tencent/mm/plugin/websearch/webview/WebSearchWebView;", "ui-websearch_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface c
 {
-  public abstract g<T> esH();
-  
-  public abstract h<T> esI();
+  public abstract WebSearchWebView getWebView();
 }
 
 

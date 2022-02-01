@@ -13,6 +13,7 @@ import android.net.Proxy;
 import android.provider.Settings.System;
 import android.telephony.TelephonyManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.systemservicecache.NetworkCache;
 import java.lang.reflect.Method;
 import java.util.LinkedList;
 import java.util.List;
@@ -65,7 +66,7 @@ public class NetStatusUtil
     StringBuilder localStringBuilder = new StringBuilder();
     try
     {
-      NetworkInfo localNetworkInfo = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+      NetworkInfo localNetworkInfo = ((ConnectivityManager)paramContext.getApplicationContext().getSystemService("connectivity")).getActiveNetworkInfo();
       localStringBuilder.append("isAvailable " + localNetworkInfo.isAvailable() + "\r\n");
       localStringBuilder.append("isConnected " + localNetworkInfo.isConnected() + "\r\n");
       localStringBuilder.append("isRoaming " + localNetworkInfo.isRoaming() + "\r\n");
@@ -92,6 +93,30 @@ public class NetStatusUtil
         Log.printErrStackTrace("MicroMsg.NetStatusUtil", paramContext, "", new Object[0]);
       }
     }
+  }
+  
+  public static NetworkInfo getActiveNetworkInfo(Context paramContext)
+  {
+    AppMethodBeat.i(243564);
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(243564);
+      return null;
+    }
+    if ((paramContext != null) && (paramContext.checkCallingOrSelfPermission("android.permission.ACCESS_NETWORK_STATE") != 0))
+    {
+      AppMethodBeat.o(243564);
+      return null;
+    }
+    paramContext = (ConnectivityManager)paramContext.getApplicationContext().getSystemService("connectivity");
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(243564);
+      return null;
+    }
+    paramContext = paramContext.getActiveNetworkInfo();
+    AppMethodBeat.o(243564);
+    return paramContext;
   }
   
   public static int getBackgroundLimitType(Context paramContext)
@@ -141,7 +166,7 @@ public class NetStatusUtil
   }
   
   @Deprecated
-  public static List<CellInfo> getCellInfoList(Context paramContext)
+  public static List<NetStatusUtil.CellInfo> getCellInfoList(Context paramContext)
   {
     try
     {
@@ -201,7 +226,7 @@ public class NetStatusUtil
     }
     try
     {
-      paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+      paramContext = ((ConnectivityManager)paramContext.getApplicationContext().getSystemService("connectivity")).getActiveNetworkInfo();
       if (paramContext == null)
       {
         AppMethodBeat.o(157734);
@@ -243,6 +268,52 @@ public class NetStatusUtil
     return 0;
   }
   
+  public static int getIOSNetType(NetworkInfo paramNetworkInfo)
+  {
+    AppMethodBeat.i(243547);
+    if (paramNetworkInfo == null)
+    {
+      AppMethodBeat.o(243547);
+      return 0;
+    }
+    try
+    {
+      int i = paramNetworkInfo.getType();
+      if (i == 1)
+      {
+        AppMethodBeat.o(243547);
+        return 1;
+      }
+      if (paramNetworkInfo.getSubtype() != 1)
+      {
+        i = paramNetworkInfo.getSubtype();
+        if (i != 2) {}
+      }
+      else
+      {
+        AppMethodBeat.o(243547);
+        return 2;
+      }
+      i = paramNetworkInfo.getSubtype();
+      if (i >= 13)
+      {
+        AppMethodBeat.o(243547);
+        return 4;
+      }
+      i = paramNetworkInfo.getSubtype();
+      if (i >= 3)
+      {
+        AppMethodBeat.o(243547);
+        return 3;
+      }
+    }
+    catch (Exception paramNetworkInfo)
+    {
+      AppMethodBeat.o(243547);
+    }
+    return 0;
+  }
+  
   public static int getIOSOldNetType(Context paramContext)
   {
     AppMethodBeat.i(157735);
@@ -254,7 +325,7 @@ public class NetStatusUtil
     try
     {
       int i = getNetType(paramContext);
-      paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+      paramContext = ((ConnectivityManager)paramContext.getApplicationContext().getSystemService("connectivity")).getActiveNetworkInfo();
       if (paramContext == null)
       {
         AppMethodBeat.o(157735);
@@ -396,7 +467,7 @@ public class NetStatusUtil
       AppMethodBeat.o(157737);
       return -1;
     }
-    paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+    paramContext = (ConnectivityManager)paramContext.getApplicationContext().getSystemService("connectivity");
     if (paramContext == null)
     {
       AppMethodBeat.o(157737);
@@ -415,10 +486,10 @@ public class NetStatusUtil
   
   public static int getNetType(NetworkInfo paramNetworkInfo)
   {
-    AppMethodBeat.i(188029);
+    AppMethodBeat.i(243579);
     if (paramNetworkInfo.getType() == 1)
     {
-      AppMethodBeat.o(188029);
+      AppMethodBeat.o(243579);
       return 0;
     }
     Log.d("MicroMsg.NetStatusUtil", "activeNetInfo extra=%s, type=%d", new Object[] { paramNetworkInfo.getExtraInfo(), Integer.valueOf(paramNetworkInfo.getType()) });
@@ -426,51 +497,51 @@ public class NetStatusUtil
     {
       if (paramNetworkInfo.getExtraInfo().equalsIgnoreCase("uninet"))
       {
-        AppMethodBeat.o(188029);
+        AppMethodBeat.o(243579);
         return 1;
       }
       if (paramNetworkInfo.getExtraInfo().equalsIgnoreCase("uniwap"))
       {
-        AppMethodBeat.o(188029);
+        AppMethodBeat.o(243579);
         return 2;
       }
       if (paramNetworkInfo.getExtraInfo().equalsIgnoreCase("3gwap"))
       {
-        AppMethodBeat.o(188029);
+        AppMethodBeat.o(243579);
         return 3;
       }
       if (paramNetworkInfo.getExtraInfo().equalsIgnoreCase("3gnet"))
       {
-        AppMethodBeat.o(188029);
+        AppMethodBeat.o(243579);
         return 4;
       }
       if (paramNetworkInfo.getExtraInfo().equalsIgnoreCase("cmwap"))
       {
-        AppMethodBeat.o(188029);
+        AppMethodBeat.o(243579);
         return 5;
       }
       if (paramNetworkInfo.getExtraInfo().equalsIgnoreCase("cmnet"))
       {
-        AppMethodBeat.o(188029);
+        AppMethodBeat.o(243579);
         return 6;
       }
       if (paramNetworkInfo.getExtraInfo().equalsIgnoreCase("ctwap"))
       {
-        AppMethodBeat.o(188029);
+        AppMethodBeat.o(243579);
         return 7;
       }
       if (paramNetworkInfo.getExtraInfo().equalsIgnoreCase("ctnet"))
       {
-        AppMethodBeat.o(188029);
+        AppMethodBeat.o(243579);
         return 8;
       }
       if (paramNetworkInfo.getExtraInfo().equalsIgnoreCase("LTE"))
       {
-        AppMethodBeat.o(188029);
+        AppMethodBeat.o(243579);
         return 10;
       }
     }
-    AppMethodBeat.o(188029);
+    AppMethodBeat.o(243579);
     return 9;
   }
   
@@ -484,7 +555,7 @@ public class NetStatusUtil
     }
     try
     {
-      paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+      paramContext = (ConnectivityManager)paramContext.getApplicationContext().getSystemService("connectivity");
       if (paramContext == null)
       {
         AppMethodBeat.o(157756);
@@ -529,7 +600,7 @@ public class NetStatusUtil
     }
     try
     {
-      paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+      paramContext = (ConnectivityManager)paramContext.getApplicationContext().getSystemService("connectivity");
       if (paramContext == null)
       {
         AppMethodBeat.o(157732);
@@ -574,7 +645,7 @@ public class NetStatusUtil
     }
     try
     {
-      paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+      paramContext = ((ConnectivityManager)paramContext.getApplicationContext().getSystemService("connectivity")).getActiveNetworkInfo();
       if (paramContext != null)
       {
         int i = paramContext.getType();
@@ -592,7 +663,7 @@ public class NetStatusUtil
   
   public static int getProxyInfo(Context paramContext, StringBuffer paramStringBuffer)
   {
-    AppMethodBeat.i(188104);
+    AppMethodBeat.i(243760);
     try
     {
       paramContext = Proxy.getDefaultHost();
@@ -601,7 +672,7 @@ public class NetStatusUtil
       if ((paramContext != null) && (paramContext.length() > 0) && (i > 0))
       {
         paramStringBuffer.append(paramContext);
-        AppMethodBeat.o(188104);
+        AppMethodBeat.o(243760);
         return i;
       }
       paramContext = System.getProperty("http.proxyHost");
@@ -619,41 +690,41 @@ public class NetStatusUtil
       if ((paramContext != null) && (paramContext.length() > 0))
       {
         paramStringBuffer.append(paramContext);
-        AppMethodBeat.o(188104);
+        AppMethodBeat.o(243760);
         return i;
       }
     }
     catch (Exception paramContext)
     {
       Log.printErrStackTrace("MicroMsg.NetStatusUtil", paramContext, "", new Object[0]);
-      AppMethodBeat.o(188104);
+      AppMethodBeat.o(243760);
     }
     return 0;
   }
   
   public static int getWifiSleepPolicy(Context paramContext)
   {
-    AppMethodBeat.i(188089);
+    AppMethodBeat.i(243738);
     int i = Settings.System.getInt(paramContext.getContentResolver(), "wifi_sleep_policy", 2);
-    AppMethodBeat.o(188089);
+    AppMethodBeat.o(243738);
     return i;
   }
   
   public static int guessNetSpeed(Context paramContext)
   {
-    AppMethodBeat.i(188045);
+    AppMethodBeat.i(243620);
     if ((paramContext != null) && (paramContext.checkCallingOrSelfPermission("android.permission.ACCESS_NETWORK_STATE") != 0))
     {
-      AppMethodBeat.o(188045);
+      AppMethodBeat.o(243620);
       return 102400;
     }
     try
     {
-      paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+      paramContext = ((ConnectivityManager)paramContext.getApplicationContext().getSystemService("connectivity")).getActiveNetworkInfo();
       int i = paramContext.getType();
       if (i == 1)
       {
-        AppMethodBeat.o(188045);
+        AppMethodBeat.o(243620);
         return 102400;
       }
       i = paramContext.getSubtype();
@@ -668,13 +739,13 @@ public class NetStatusUtil
         Log.printErrStackTrace("MicroMsg.NetStatusUtil", paramContext, "", new Object[0]);
       }
     }
-    AppMethodBeat.o(188045);
+    AppMethodBeat.o(243620);
     return 102400;
-    AppMethodBeat.o(188045);
+    AppMethodBeat.o(243620);
     return 4096;
-    AppMethodBeat.o(188045);
+    AppMethodBeat.o(243620);
     return 8192;
-    AppMethodBeat.o(188045);
+    AppMethodBeat.o(243620);
     return 102400;
   }
   
@@ -688,7 +759,7 @@ public class NetStatusUtil
     }
     try
     {
-      paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+      paramContext = ((ConnectivityManager)paramContext.getApplicationContext().getSystemService("connectivity")).getActiveNetworkInfo();
       if (paramContext == null)
       {
         AppMethodBeat.o(157741);
@@ -730,7 +801,7 @@ public class NetStatusUtil
     }
     try
     {
-      paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+      paramContext = ((ConnectivityManager)paramContext.getApplicationContext().getSystemService("connectivity")).getActiveNetworkInfo();
       if (paramContext == null)
       {
         AppMethodBeat.o(157744);
@@ -771,7 +842,7 @@ public class NetStatusUtil
     }
     try
     {
-      paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+      paramContext = ((ConnectivityManager)paramContext.getApplicationContext().getSystemService("connectivity")).getActiveNetworkInfo();
       if (paramContext == null)
       {
         AppMethodBeat.o(157742);
@@ -804,40 +875,40 @@ public class NetStatusUtil
   
   public static boolean is5G(Context paramContext)
   {
-    AppMethodBeat.i(188055);
+    AppMethodBeat.i(243664);
     if (paramContext != null) {}
     try
     {
       int i = paramContext.checkCallingOrSelfPermission("android.permission.ACCESS_NETWORK_STATE");
       if (i != 0)
       {
-        AppMethodBeat.o(188055);
+        AppMethodBeat.o(243664);
         return false;
       }
-      paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+      paramContext = ((ConnectivityManager)paramContext.getApplicationContext().getSystemService("connectivity")).getActiveNetworkInfo();
       if (paramContext == null)
       {
-        AppMethodBeat.o(188055);
+        AppMethodBeat.o(243664);
         return false;
       }
       i = paramContext.getType();
       if (i == 1)
       {
-        AppMethodBeat.o(188055);
+        AppMethodBeat.o(243664);
         return false;
       }
       Log.d("MicroMsg.NetStatusUtil", "is5G subtype %d", new Object[] { Integer.valueOf(paramContext.getSubtype()) });
       i = paramContext.getSubtype();
       if (i >= 20)
       {
-        AppMethodBeat.o(188055);
+        AppMethodBeat.o(243664);
         return true;
       }
     }
     catch (Exception paramContext)
     {
       Log.printErrStackTrace("MicroMsg.NetStatusUtil", paramContext, "", new Object[0]);
-      AppMethodBeat.o(188055);
+      AppMethodBeat.o(243664);
     }
     return false;
   }
@@ -850,7 +921,7 @@ public class NetStatusUtil
       AppMethodBeat.o(157731);
       return false;
     }
-    paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+    paramContext = (ConnectivityManager)paramContext.getApplicationContext().getSystemService("connectivity");
     if (paramContext == null)
     {
       AppMethodBeat.o(157731);
@@ -872,28 +943,46 @@ public class NetStatusUtil
     }
   }
   
+  public static boolean isConnected(NetworkInfo paramNetworkInfo)
+  {
+    AppMethodBeat.i(243489);
+    boolean bool1 = false;
+    try
+    {
+      boolean bool2 = paramNetworkInfo.isConnected();
+      bool1 = bool2;
+    }
+    catch (Exception paramNetworkInfo)
+    {
+      label15:
+      break label15;
+    }
+    AppMethodBeat.o(243489);
+    return bool1;
+  }
+  
   public static boolean isImmediatelyDestroyActivities(Context paramContext)
   {
-    AppMethodBeat.i(188101);
+    AppMethodBeat.i(243752);
     if (Settings.System.getInt(paramContext.getContentResolver(), "always_finish_activities", 0) != 0)
     {
-      AppMethodBeat.o(188101);
+      AppMethodBeat.o(243752);
       return true;
     }
-    AppMethodBeat.o(188101);
+    AppMethodBeat.o(243752);
     return false;
   }
   
   public static boolean isKnownDirectNet(Context paramContext)
   {
-    AppMethodBeat.i(188105);
+    AppMethodBeat.i(243763);
     int i = getNetType(paramContext);
     if ((6 == i) || (1 == i) || (4 == i) || (8 == i) || (10 == i) || (i == 0))
     {
-      AppMethodBeat.o(188105);
+      AppMethodBeat.o(243763);
       return true;
     }
-    AppMethodBeat.o(188105);
+    AppMethodBeat.o(243763);
     return false;
   }
   
@@ -912,7 +1001,7 @@ public class NetStatusUtil
     }
     try
     {
-      paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+      paramContext = ((ConnectivityManager)paramContext.getApplicationContext().getSystemService("connectivity")).getActiveNetworkInfo();
       if (paramContext == null)
       {
         AppMethodBeat.o(157740);
@@ -936,23 +1025,23 @@ public class NetStatusUtil
   
   public static boolean isMobileNetworkOpen(Context paramContext)
   {
-    AppMethodBeat.i(188047);
+    AppMethodBeat.i(243643);
     try
     {
-      paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+      paramContext = (ConnectivityManager)paramContext.getApplicationContext().getSystemService("connectivity");
       if (paramContext != null)
       {
         Method localMethod = paramContext.getClass().getMethod("getMobileDataEnabled", new Class[0]);
         localMethod.setAccessible(true);
         boolean bool = ((Boolean)localMethod.invoke(paramContext, new Object[0])).booleanValue();
-        AppMethodBeat.o(188047);
+        AppMethodBeat.o(243643);
         return bool;
       }
     }
     catch (Exception paramContext)
     {
       Log.printErrStackTrace("MicroMsg.NetStatusUtil", paramContext, "", new Object[0]);
-      AppMethodBeat.o(188047);
+      AppMethodBeat.o(243643);
     }
     return false;
   }
@@ -979,6 +1068,14 @@ public class NetStatusUtil
     return bool;
   }
   
+  public static boolean isWapFromCache(Context paramContext)
+  {
+    AppMethodBeat.i(243670);
+    boolean bool = NetworkCache.INSTANCE.isWapFromCache(paramContext);
+    AppMethodBeat.o(243670);
+    return bool;
+  }
+  
   public static boolean isWifi(int paramInt)
   {
     return paramInt == 0;
@@ -994,9 +1091,17 @@ public class NetStatusUtil
   
   public static boolean isWifi(NetworkInfo paramNetworkInfo)
   {
-    AppMethodBeat.i(188073);
+    AppMethodBeat.i(243684);
     boolean bool = isWifi(getNetType(paramNetworkInfo));
-    AppMethodBeat.o(188073);
+    AppMethodBeat.o(243684);
+    return bool;
+  }
+  
+  public static boolean isWifiFromCache(Context paramContext)
+  {
+    AppMethodBeat.i(243699);
+    boolean bool = NetworkCache.INSTANCE.isWifiFromCache(paramContext);
+    AppMethodBeat.o(243699);
     return bool;
   }
   
@@ -1059,9 +1164,9 @@ public class NetStatusUtil
                       localObject2 = new Intent("/");
                       ((Intent)localObject2).setComponent(new ComponentName(((ActivityInfo)localObject1).packageName, ((ActivityInfo)localObject1).name));
                       ((Intent)localObject2).setAction("android.intent.action.VIEW");
-                      localObject1 = new com.tencent.mm.hellhoundlib.b.a().bm(localObject2);
-                      com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aFh(), "com/tencent/mm/sdk/platformtools/NetStatusUtil", "searchIntentByClass", "(Landroid/content/Context;Ljava/lang/String;)Landroid/content/Intent;", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).sf(0));
+                      localObject1 = new com.tencent.mm.hellhoundlib.b.a().cG(localObject2);
+                      com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aYi(), "com/tencent/mm/sdk/platformtools/NetStatusUtil", "searchIntentByClass", "(Landroid/content/Context;Ljava/lang/String;)Landroid/content/Intent;", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).sb(0));
                       com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/sdk/platformtools/NetStatusUtil", "searchIntentByClass", "(Landroid/content/Context;Ljava/lang/String;)Landroid/content/Intent;", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
                       AppMethodBeat.o(157747);
                       return localObject2;
@@ -1116,9 +1221,9 @@ public class NetStatusUtil
         Object localObject1 = new Intent("/");
         ((Intent)localObject1).setComponent(new ComponentName("com.android.providers.subscribedfeeds", "com.android.settings.ManageAccountsSettings"));
         ((Intent)localObject1).setAction("android.intent.action.VIEW");
-        localObject1 = new com.tencent.mm.hellhoundlib.b.a().bm(localObject1);
-        com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aFh(), "com/tencent/mm/sdk/platformtools/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).sf(0));
+        localObject1 = new com.tencent.mm.hellhoundlib.b.a().cG(localObject1);
+        com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aYi(), "com/tencent/mm/sdk/platformtools/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).sb(0));
         com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/sdk/platformtools/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(157748);
         return;
@@ -1130,9 +1235,9 @@ public class NetStatusUtil
           Object localObject2 = new Intent("/");
           ((Intent)localObject2).setComponent(new ComponentName("com.htc.settings.accountsync", "com.htc.settings.accountsync.ManageAccountsSettings"));
           ((Intent)localObject2).setAction("android.intent.action.VIEW");
-          localObject2 = new com.tencent.mm.hellhoundlib.b.a().bm(localObject2);
-          com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aFh(), "com/tencent/mm/sdk/platformtools/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).sf(0));
+          localObject2 = new com.tencent.mm.hellhoundlib.b.a().cG(localObject2);
+          com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aYi(), "com/tencent/mm/sdk/platformtools/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).sb(0));
           com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/sdk/platformtools/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(157748);
           return;
@@ -1149,9 +1254,9 @@ public class NetStatusUtil
         Object localObject3 = new Intent("/");
         ((Intent)localObject3).setComponent(new ComponentName("com.android.settings", "com.android.settings.DevelopmentSettings"));
         ((Intent)localObject3).setAction("android.intent.action.VIEW");
-        localObject3 = new com.tencent.mm.hellhoundlib.b.a().bm(localObject3);
-        com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject3).aFh(), "com/tencent/mm/sdk/platformtools/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject3).sf(0));
+        localObject3 = new com.tencent.mm.hellhoundlib.b.a().cG(localObject3);
+        com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject3).aYi(), "com/tencent/mm/sdk/platformtools/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject3).sb(0));
         com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/sdk/platformtools/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(157748);
         return;
@@ -1166,9 +1271,9 @@ public class NetStatusUtil
       {
         Object localObject4 = new Intent();
         ((Intent)localObject4).setAction("android.settings.WIFI_IP_SETTINGS");
-        localObject4 = new com.tencent.mm.hellhoundlib.b.a().bm(localObject4);
-        com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject4).aFh(), "com/tencent/mm/sdk/platformtools/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject4).sf(0));
+        localObject4 = new com.tencent.mm.hellhoundlib.b.a().cG(localObject4);
+        com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject4).aYi(), "com/tencent/mm/sdk/platformtools/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject4).sb(0));
         com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/sdk/platformtools/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(157748);
         return;
@@ -1179,38 +1284,10 @@ public class NetStatusUtil
       }
     }
   }
-  
-  public static class CellInfo
-  {
-    public static final int MAX_CID = 65535;
-    public static final int MAX_LAC = 65535;
-    public String cellid;
-    public String dbm;
-    public String lac;
-    public String mcc;
-    public String mnc;
-    public String networkId;
-    public String stationId;
-    public String systemId;
-    public String type;
-    
-    public CellInfo(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-    {
-      this.mcc = paramString1;
-      this.mnc = paramString2;
-      this.lac = paramString3;
-      this.type = paramString6;
-      this.cellid = paramString4;
-      this.stationId = paramString7;
-      this.networkId = paramString8;
-      this.systemId = paramString9;
-      this.dbm = paramString5;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.NetStatusUtil
  * JD-Core Version:    0.7.0.1
  */

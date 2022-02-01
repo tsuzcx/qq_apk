@@ -1,376 +1,285 @@
 package com.tencent.mm.plugin.finder.profile.uic;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.app.Activity;
+import android.content.res.Resources;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
+import androidx.recyclerview.widget.RecyclerView.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.d;
-import com.tencent.mm.f.a.no;
-import com.tencent.mm.f.a.np;
-import com.tencent.mm.plugin.finder.b.e;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.convert.ce;
-import com.tencent.mm.plugin.finder.feed.model.FinderProfileMusicLoader;
-import com.tencent.mm.plugin.finder.feed.model.internal.BaseFeedLoader;
-import com.tencent.mm.plugin.finder.model.bi;
-import com.tencent.mm.plugin.finder.model.bu;
-import com.tencent.mm.plugin.finder.storage.aa;
-import com.tencent.mm.protocal.protobuf.bds;
-import com.tencent.mm.sdk.event.IListener;
-import com.tencent.mm.ui.ad;
-import com.tencent.mm.view.RefreshLoadMoreLayout;
-import com.tencent.mm.view.RefreshLoadMoreLayout.a;
-import com.tencent.mm.view.RefreshLoadMoreLayout.c;
-import com.tencent.mm.view.j;
+import com.tencent.mm.plugin.appbrand.config.HalfScreenConfig;
+import com.tencent.mm.plugin.appbrand.config.HalfScreenConfig.c;
+import com.tencent.mm.plugin.finder.api.m;
+import com.tencent.mm.plugin.finder.e.c;
+import com.tencent.mm.plugin.finder.profile.servicemenu.b;
+import com.tencent.mm.plugin.finder.profile.servicemenu.c;
+import com.tencent.mm.protocal.protobuf.FinderJumpInfo;
+import com.tencent.mm.protocal.protobuf.NativeInfo;
+import com.tencent.mm.protocal.protobuf.bcf;
+import com.tencent.mm.ui.component.UIComponent;
+import com.tencent.mm.ui.component.k.b;
 import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
-import com.tencent.mm.view.recyclerview.e;
-import com.tencent.mm.view.recyclerview.h.c;
+import com.tencent.mm.view.recyclerview.WxRecyclerView;
+import com.tencent.mm.view.recyclerview.f;
 import java.util.ArrayList;
-import kotlin.g;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.x;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.ah;
+import kotlin.g.b.u;
+import kotlin.j;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileMusicUIC;", "Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileFragmentUIC;", "fragment", "Landroidx/fragment/app/Fragment;", "(Landroidx/fragment/app/Fragment;)V", "actionCallback", "Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileMusicUIC$ViewActionCallback;", "getActionCallback", "()Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileMusicUIC$ViewActionCallback;", "actionCallback$delegate", "Lkotlin/Lazy;", "layoutConfig", "Lcom/tencent/mm/plugin/finder/profile/FinderProfileLayoutConfig;", "getLayoutConfig", "()Lcom/tencent/mm/plugin/finder/profile/FinderProfileLayoutConfig;", "layoutConfig$delegate", "mainFlowLayout", "Landroid/widget/FrameLayout;", "musicAdapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "musicCheckErrorListener", "Lcom/tencent/mm/sdk/event/IListener;", "musicLoader", "Lcom/tencent/mm/plugin/finder/feed/model/FinderProfileMusicLoader;", "getMusicLoader", "()Lcom/tencent/mm/plugin/finder/feed/model/FinderProfileMusicLoader;", "musicLoader$delegate", "musicPlayEventListener", "com/tencent/mm/plugin/finder/profile/uic/FinderProfileMusicUIC$musicPlayEventListener$1", "Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileMusicUIC$musicPlayEventListener$1;", "musicSongInfo", "Lcom/tencent/mm/protocal/protobuf/FinderMVSongInfo;", "musicThumbUrl", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "getRecyclerView", "()Landroidx/recyclerview/widget/RecyclerView;", "recyclerView$delegate", "rlLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "kotlin.jvm.PlatformType", "getRlLayout", "()Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "rlLayout$delegate", "stateLayout", "getLayoutId", "", "initLayout", "", "initLoading", "initPlayParam", "musicObject", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onFetchEnd", "onPause", "onResume", "processPlayError", "errMsg", "Companion", "ViewActionCallback", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileServiceMenuUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "adapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "Lcom/tencent/mm/plugin/finder/profile/servicemenu/ProfileJumpInfo;", "dataList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "hasCover", "", "getHasCover", "()Z", "setHasCover", "(Z)V", "menuRecyclerView", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "kotlin.jvm.PlatformType", "getMenuRecyclerView", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "menuRecyclerView$delegate", "Lkotlin/Lazy;", "msgBtn", "Landroid/view/View;", "getMsgBtn", "()Landroid/view/View;", "msgBtn$delegate", "serviceLayout", "getServiceLayout", "serviceLayout$delegate", "handleServiceMenu", "", "contact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "notifyCoverChange", "refreshMenu", "jumpInfoList", "", "Lcom/tencent/mm/protocal/protobuf/FinderJumpInfo;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class l
-  extends i
+  extends UIComponent
 {
-  public static final a zTh;
-  private final IListener<?> wNM;
-  private final kotlin.f xDO;
-  private final kotlin.f zQB;
-  private final kotlin.f zQD;
-  private final kotlin.f zQF;
-  private FrameLayout zQO;
-  private FrameLayout zQP;
-  private WxRecyclerAdapter<bu> zTc;
-  private final kotlin.f zTd;
-  private String zTe;
-  private bds zTf;
-  private final k zTg;
+  private WxRecyclerAdapter<com.tencent.mm.plugin.finder.profile.servicemenu.a> ALE;
+  private final j Ffn;
+  private final j Ffo;
+  private final j Ffp;
+  public boolean Ffq;
+  private final ArrayList<com.tencent.mm.plugin.finder.profile.servicemenu.a> pUj;
   
-  static
+  public l(AppCompatActivity paramAppCompatActivity)
   {
-    AppMethodBeat.i(278856);
-    zTh = new a((byte)0);
-    AppMethodBeat.o(278856);
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(348845);
+    this.Ffn = kotlin.k.cm((kotlin.g.a.a)new d(paramAppCompatActivity));
+    this.Ffo = kotlin.k.cm((kotlin.g.a.a)new a(this));
+    this.Ffp = kotlin.k.cm((kotlin.g.a.a)new b(paramAppCompatActivity));
+    this.pUj = new ArrayList();
+    AppMethodBeat.o(348845);
   }
   
-  public l(Fragment paramFragment)
+  private final void a(List<? extends FinderJumpInfo> paramList, m paramm)
   {
-    super(paramFragment);
-    AppMethodBeat.i(278854);
-    this.zQB = g.ar((kotlin.g.a.a)new h(this));
-    this.xDO = g.ar((kotlin.g.a.a)new m(paramFragment));
-    this.zQD = g.ar((kotlin.g.a.a)new l(this));
-    this.zTd = g.ar((kotlin.g.a.a)new j(this));
-    this.zQF = g.ar((kotlin.g.a.a)new c(this));
-    this.zTg = new k(this);
-    this.wNM = ((IListener)new i(this));
-    AppMethodBeat.o(278854);
-  }
-  
-  private final FinderProfileMusicLoader dOH()
-  {
-    AppMethodBeat.i(278843);
-    FinderProfileMusicLoader localFinderProfileMusicLoader = (FinderProfileMusicLoader)this.zTd.getValue();
-    AppMethodBeat.o(278843);
-    return localFinderProfileMusicLoader;
-  }
-  
-  private final b dOI()
-  {
-    AppMethodBeat.i(278844);
-    b localb = (b)this.zQF.getValue();
-    AppMethodBeat.o(278844);
-    return localb;
-  }
-  
-  private final RefreshLoadMoreLayout getRlLayout()
-  {
-    AppMethodBeat.i(278842);
-    RefreshLoadMoreLayout localRefreshLoadMoreLayout = (RefreshLoadMoreLayout)this.xDO.getValue();
-    AppMethodBeat.o(278842);
-    return localRefreshLoadMoreLayout;
-  }
-  
-  public final int getLayoutId()
-  {
-    return b.g.finder_profile_music_layout;
-  }
-  
-  public final void onCreate(Bundle paramBundle)
-  {
-    AppMethodBeat.i(278846);
-    super.onCreate(paramBundle);
-    paramBundle = aa.Amg;
-    aa.dYQ();
-    dOH().register((j)dOI());
-    this.zQO = ((FrameLayout)findViewById(b.f.main_flow_layout));
-    getRlLayout().setEnableRefresh(false);
-    getRlLayout().setSuperNestedScroll(true);
-    getRlLayout().setActionCallback((RefreshLoadMoreLayout.a)new e(this));
-    paramBundle = getRlLayout();
-    View localView = ad.kS((Context)getActivity()).inflate(b.g.load_more_footer, null);
-    p.j(localView, "MMLayoutInflater.getInfl…t.load_more_footer, null)");
-    paramBundle.setLoadMoreFooter(localView);
-    paramBundle = new WxRecyclerAdapter((com.tencent.mm.view.recyclerview.f)new f(this), (ArrayList)dOH().getDataListJustForAdapter(), true);
-    paramBundle.YSn = ((h.c)new d(paramBundle, this));
-    this.zTc = paramBundle;
-    paramBundle = (RecyclerView)this.zQD.getValue();
-    getActivity();
-    paramBundle.setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager());
-    paramBundle.setAdapter((RecyclerView.a)this.zTc);
-    dOH().xEI = ((kotlin.g.a.a)new g(this));
-    this.zQP = ((FrameLayout)findViewById(b.f.profile_loading_state_container));
-    paramBundle = this.zQP;
-    if (paramBundle != null) {
-      paramBundle.setBackgroundResource(b.e.finder_profile_gradient_bg);
-    }
-    paramBundle = this.zQP;
-    if (paramBundle != null) {
-      paramBundle.setVisibility(0);
-    }
-    BaseFeedLoader.requestInit$default(dOH(), false, 1, null);
-    dOH().requestRefresh();
-    AppMethodBeat.o(278846);
-  }
-  
-  public final void onDestroy()
-  {
-    AppMethodBeat.i(278848);
-    super.onDestroy();
-    dOH().unregister((j)dOI());
-    AppMethodBeat.o(278848);
-  }
-  
-  public final void onPause()
-  {
-    AppMethodBeat.i(278851);
-    super.onPause();
-    this.zTg.dead();
-    this.wNM.dead();
-    AppMethodBeat.o(278851);
-  }
-  
-  public final void onResume()
-  {
-    AppMethodBeat.i(278849);
-    super.onResume();
-    this.zTg.alive();
-    this.wNM.alive();
-    AppMethodBeat.o(278849);
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileMusicUIC$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileMusicUIC$ViewActionCallback;", "Lcom/tencent/mm/view/BaseViewActionCallback;", "rlLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "(Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileMusicUIC;Lcom/tencent/mm/view/RefreshLoadMoreLayout;)V", "updateState", "", "plugin-finder_release"})
-  public final class b
-    extends com.tencent.mm.view.b
-  {
-    public b()
+    AppMethodBeat.i(348907);
+    this.pUj.clear();
+    Object localObject1 = this.pUj;
+    Object localObject2 = (Iterable)paramList;
+    paramList = (Collection)new ArrayList(p.a((Iterable)localObject2, 10));
+    localObject2 = ((Iterable)localObject2).iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      super();
-      AppMethodBeat.i(279797);
-      AppMethodBeat.o(279797);
-    }
-    
-    public final void dFf()
-    {
-      AppMethodBeat.i(279795);
-      d.a(0L, (kotlin.g.a.a)new a(this));
-      AppMethodBeat.o(279795);
-    }
-    
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-    static final class a
-      extends q
-      implements kotlin.g.a.a<x>
-    {
-      a(l.b paramb)
+      Object localObject3 = (FinderJumpInfo)((Iterator)localObject2).next();
+      com.tencent.mm.plugin.finder.feed.jumper.k localk = new com.tencent.mm.plugin.finder.feed.jumper.k((FinderJumpInfo)localObject3);
+      localk.contact = paramm;
+      if (((FinderJumpInfo)localObject3).jumpinfo_type == 1)
       {
-        super();
+        localk.hzx = paramm.getUsername();
+        localObject3 = new com.tencent.mm.plugin.appbrand.api.g();
+        ((com.tencent.mm.plugin.appbrand.api.g)localObject3).qAT = new HalfScreenConfig(true, 0, null, false, null, false, null, HalfScreenConfig.c.rao, false, false, null, null, false, false, null, false, null, 0, 0, 0, false, false, false, null, 16777086);
+        ah localah = ah.aiuX;
+        localk.Beb = ((com.tencent.mm.plugin.appbrand.api.g)localObject3);
       }
-      
-      @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/profile/uic/FinderProfileMusicUIC$ViewActionCallback$updateState$1$4$1"})
-      static final class a
-        implements View.OnClickListener
+      localObject3 = ah.aiuX;
+      paramList.add(new com.tencent.mm.plugin.finder.profile.servicemenu.a(localk));
+    }
+    ((ArrayList)localObject1).addAll((Collection)paramList);
+    paramm = ((Iterable)this.pUj).iterator();
+    int i;
+    if (paramm.hasNext())
+    {
+      paramList = paramm.next();
+      localObject1 = ((com.tencent.mm.plugin.finder.profile.servicemenu.a)paramList).Fcp.hVf.native_info;
+      if ((localObject1 != null) && (((NativeInfo)localObject1).native_type == 7))
       {
-        a(l.b.a parama) {}
-        
-        public final void onClick(View paramView)
+        i = 1;
+        label267:
+        if (i == 0) {
+          break label455;
+        }
+        label271:
+        if ((com.tencent.mm.plugin.finder.profile.servicemenu.a)paramList != null) {
+          break label462;
+        }
+        paramList = null;
+        label280:
+        if (paramList == null)
         {
-          AppMethodBeat.i(271611);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/profile/uic/FinderProfileMusicUIC$ViewActionCallback$updateState$1$$special$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-          RefreshLoadMoreLayout.d(l.c(this.zTk.zTj.zTi));
-          this.zTk.zTj.dFf();
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/profile/uic/FinderProfileMusicUIC$ViewActionCallback$updateState$1$$special$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(271611);
+          paramList = (l)this;
+          paramm = paramList.eKh();
+          localObject1 = com.tencent.mm.ui.component.k.aeZF;
+          if (!((h)com.tencent.mm.ui.component.k.d(paramList.getActivity()).q(h.class)).eJG()) {
+            break label478;
+          }
+          i = 0;
+          label323:
+          paramm.setVisibility(i);
+        }
+        paramList = this.ALE;
+        if (paramList != null) {
+          break label484;
         }
       }
     }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileMusicUIC$ViewActionCallback;", "Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileMusicUIC;", "invoke"})
-  static final class c
-    extends q
-    implements kotlin.g.a.a<l.b>
-  {
-    c(l paraml)
+    for (paramList = null;; paramList = ah.aiuX)
     {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/profile/uic/FinderProfileMusicUIC$initLayout$3$1", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$OnItemClickListener;", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "onItemClick", "", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "view", "Landroid/view/View;", "position", "", "holder", "plugin-finder_release"})
-  public static final class d
-    implements h.c<com.tencent.mm.view.recyclerview.i>
-  {
-    d(WxRecyclerAdapter paramWxRecyclerAdapter, l paraml) {}
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/profile/uic/FinderProfileMusicUIC$initLayout$1", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback;", "onLoadMoreBegin", "", "onRefreshBegin", "refreshType", "", "onRefreshEnd", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "", "plugin-finder_release"})
-  public static final class e
-    extends RefreshLoadMoreLayout.a
-  {
-    public final void Ie(int paramInt)
-    {
-      AppMethodBeat.i(283768);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.sg(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/profile/uic/FinderProfileMusicUIC$initLayout$1", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V", this, localb.aFi());
-      super.Ie(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/profile/uic/FinderProfileMusicUIC$initLayout$1", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V");
-      AppMethodBeat.o(283768);
-    }
-    
-    public final void a(RefreshLoadMoreLayout.c paramc)
-    {
-      AppMethodBeat.i(283772);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramc);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/profile/uic/FinderProfileMusicUIC$initLayout$1", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.aFi());
-      super.a(paramc);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/profile/uic/FinderProfileMusicUIC$initLayout$1", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V");
-      AppMethodBeat.o(283772);
-    }
-    
-    public final void cKQ()
-    {
-      AppMethodBeat.i(283771);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/profile/uic/FinderProfileMusicUIC$initLayout$1", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreBegin", "()V", this);
-      super.cKQ();
-      l.a(this.zTi).requestLoadMore();
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/profile/uic/FinderProfileMusicUIC$initLayout$1", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreBegin", "()V");
-      AppMethodBeat.o(283771);
-    }
-    
-    public final void onRefreshEnd(RefreshLoadMoreLayout.c<Object> paramc)
-    {
-      AppMethodBeat.i(283769);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramc);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/profile/uic/FinderProfileMusicUIC$initLayout$1", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.aFi());
-      p.k(paramc, "reason");
-      super.onRefreshEnd(paramc);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/profile/uic/FinderProfileMusicUIC$initLayout$1", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V");
-      AppMethodBeat.o(283769);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/profile/uic/FinderProfileMusicUIC$initLayout$2", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"})
-  public static final class f
-    implements com.tencent.mm.view.recyclerview.f
-  {
-    public final e<?> yx(int paramInt)
-    {
-      AppMethodBeat.i(282299);
-      if (paramInt == bi.class.getName().hashCode())
+      if (paramList == null)
       {
-        Object localObject = new ce();
-        ((ce)localObject).xor = Boolean.valueOf(this.zTi.isSelfFlag());
-        localObject = (e)localObject;
-        AppMethodBeat.o(282299);
-        return localObject;
+        paramList = (l)this;
+        paramList.ALE = new WxRecyclerAdapter((com.tencent.mm.view.recyclerview.g)new c(), paramList.pUj);
+        paramList.eKg().setAdapter((RecyclerView.a)paramList.ALE);
+        paramList.eKg().setNestedScrollingEnabled(false);
+        paramList.eKg().setLayoutManager((RecyclerView.LayoutManager)new FinderProfileServiceMenuUIC.refreshMenu.6.2(paramList.getContext()));
+        paramList.eKg().a((RecyclerView.h)new c(paramList.getContext().getResources().getDimensionPixelOffset(e.c.Edge_A)));
       }
-      p.iCn();
-      AppMethodBeat.o(282299);
-      return null;
+      AppMethodBeat.o(348907);
+      return;
+      i = 0;
+      break label267;
+      label455:
+      break;
+      paramList = null;
+      break label271;
+      label462:
+      eKh().setVisibility(8);
+      paramList = ah.aiuX;
+      break label280;
+      label478:
+      i = 8;
+      break label323;
+      label484:
+      paramList.bZE.notifyChanged();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class g
-    extends q
-    implements kotlin.g.a.a<x>
+  private final View eKf()
   {
-    g(l paraml)
+    AppMethodBeat.i(348863);
+    View localView = (View)this.Ffn.getValue();
+    AppMethodBeat.o(348863);
+    return localView;
+  }
+  
+  private final WxRecyclerView eKg()
+  {
+    AppMethodBeat.i(348875);
+    WxRecyclerView localWxRecyclerView = (WxRecyclerView)this.Ffo.getValue();
+    AppMethodBeat.o(348875);
+    return localWxRecyclerView;
+  }
+  
+  private final View eKh()
+  {
+    AppMethodBeat.i(348886);
+    View localView = (View)this.Ffp.getValue();
+    AppMethodBeat.o(348886);
+    return localView;
+  }
+  
+  public final void i(m paramm)
+  {
+    AppMethodBeat.i(348934);
+    if (paramm == null)
+    {
+      AppMethodBeat.o(348934);
+      return;
+    }
+    Object localObject = paramm.field_jumpInfoList;
+    if (localObject == null) {
+      paramm = null;
+    }
+    for (;;)
+    {
+      if (paramm == null) {
+        ((l)this).eKf().setVisibility(8);
+      }
+      AppMethodBeat.o(348934);
+      return;
+      localObject = ((bcf)localObject).jump_info;
+      if (localObject == null)
+      {
+        paramm = null;
+      }
+      else
+      {
+        int i;
+        if (!((Collection)localObject).isEmpty())
+        {
+          i = 1;
+          label79:
+          if (i == 0) {
+            break label97;
+          }
+        }
+        for (;;)
+        {
+          if (localObject != null) {
+            break label102;
+          }
+          paramm = null;
+          break;
+          i = 0;
+          break label79;
+          label97:
+          localObject = null;
+        }
+        label102:
+        eKf().setVisibility(0);
+        a((List)localObject, paramm);
+        paramm = ah.aiuX;
+      }
+    }
+  }
+  
+  public final void tj(boolean paramBoolean)
+  {
+    AppMethodBeat.i(348924);
+    this.Ffq = paramBoolean;
+    WxRecyclerAdapter localWxRecyclerAdapter = this.ALE;
+    if (localWxRecyclerAdapter != null) {
+      localWxRecyclerAdapter.bZE.notifyChanged();
+    }
+    AppMethodBeat.o(348924);
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements kotlin.g.a.a<WxRecyclerView>
+  {
+    a(l paraml)
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/finder/profile/FinderProfileLayoutConfig;", "invoke"})
-  static final class h
-    extends q
-    implements kotlin.g.a.a<com.tencent.mm.plugin.finder.profile.a>
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements kotlin.g.a.a<View>
   {
-    h(l paraml)
+    b(AppCompatActivity paramAppCompatActivity)
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/profile/uic/FinderProfileMusicUIC$musicCheckErrorListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/MusicCheckErrorEvent;", "callback", "", "event", "plugin-finder_release"})
-  public static final class i
-    extends IListener<no>
-  {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/finder/feed/model/FinderProfileMusicLoader;", "invoke"})
-  static final class j
-    extends q
-    implements kotlin.g.a.a<FinderProfileMusicLoader>
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/profile/uic/FinderProfileServiceMenuUIC$refreshMenu$6$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
+    implements com.tencent.mm.view.recyclerview.g
   {
-    j(l paraml)
+    public final f<?> yF(int paramInt)
     {
-      super();
+      AppMethodBeat.i(348703);
+      f localf = (f)new b();
+      AppMethodBeat.o(348703);
+      return localf;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/profile/uic/FinderProfileMusicUIC$musicPlayEventListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/MusicPlayerEvent;", "callback", "", "event", "plugin-finder_release"})
-  public static final class k
-    extends IListener<np>
-  {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroidx/recyclerview/widget/RecyclerView;", "invoke"})
-  static final class l
-    extends q
-    implements kotlin.g.a.a<RecyclerView>
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class d
+    extends u
+    implements kotlin.g.a.a<View>
   {
-    l(l paraml)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class m
-    extends q
-    implements kotlin.g.a.a<RefreshLoadMoreLayout>
-  {
-    m(Fragment paramFragment)
+    d(AppCompatActivity paramAppCompatActivity)
     {
       super();
     }
@@ -378,7 +287,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.profile.uic.l
  * JD-Core Version:    0.7.0.1
  */

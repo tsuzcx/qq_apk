@@ -7,50 +7,50 @@ import java.util.List;
 public abstract class b
   extends a
 {
-  int LpY;
+  int RSR;
   protected Context mContext;
   private ArrayList<Object> mItems = new ArrayList();
   
   protected b(Context paramContext)
   {
     this.mContext = paramContext;
-    this.LpY = 3;
+    this.RSR = 3;
   }
   
   public final void add(int paramInt, Object paramObject)
   {
-    dW(paramObject);
+    gu(paramObject);
     this.mItems.add(paramInt, paramObject);
     notifyDataSetChanged();
   }
   
   public final void add(Object paramObject)
   {
-    dW(paramObject);
+    gu(paramObject);
     this.mItems.add(paramObject);
     notifyDataSetChanged();
   }
   
-  public boolean ahA(int paramInt)
+  public boolean amC(int paramInt)
   {
     return true;
   }
   
-  public boolean ahB(int paramInt)
+  public boolean amD(int paramInt)
   {
     return true;
   }
   
   public void clear()
   {
-    fYE();
+    hrN();
     this.mItems.clear();
     notifyDataSetChanged();
   }
   
   public final int getColumnCount()
   {
-    return this.LpY;
+    return this.RSR;
   }
   
   protected final Context getContext()
@@ -68,15 +68,15 @@ public abstract class b
     return this.mItems.get(paramInt);
   }
   
-  public void hU(List<?> paramList)
+  public void kY(List<?> paramList)
   {
     clear();
-    hT(paramList);
+    kX(paramList);
     this.mItems.addAll(paramList);
     notifyDataSetChanged();
   }
   
-  public void kc(int paramInt1, int paramInt2)
+  public void lP(int paramInt1, int paramInt2)
   {
     if (paramInt2 < getCount())
     {
@@ -89,13 +89,13 @@ public abstract class b
   public final void remove(Object paramObject)
   {
     this.mItems.remove(paramObject);
-    dX(paramObject);
+    gv(paramObject);
     notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.previewimageview.b
  * JD-Core Version:    0.7.0.1
  */

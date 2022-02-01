@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="15.0dip" android:textColor="@color/al6" android:id="@id/dd_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d0" android:layout_marginBottom="@dimen/cp" android:text="@string/dos" android:layout_centerHorizontal="true" android:layout_marginStart="@dimen/cv" android:layout_marginEnd="@dimen/cv" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/xe" android:id="@id/dd9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dos" android:layout_below="@id/dd_" android:layout_centerHorizontal="true" android:layout_marginStart="@dimen/cv" android:layout_marginEnd="@dimen/cv" />
+    <Button android:textSize="17.0dip" android:textColor="@color/UN_BW_0_Alpha_0_9" android:id="@id/dd8" android:background="@drawable/yf" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginTop="@dimen/c2" android:layout_marginBottom="@dimen/db" android:text="@string/zp" android:layout_below="@id/dd9" android:layout_centerHorizontal="true" android:layout_marginStart="96.0dip" android:layout_marginEnd="96.0dip" />
+</RelativeLayout>

@@ -4,102 +4,85 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class bpi
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public dky TaS;
-  public LinkedList<dky> TaT;
-  
-  public bpi()
-  {
-    AppMethodBeat.i(123570);
-    this.TaT = new LinkedList();
-    AppMethodBeat.o(123570);
-  }
+  public String ZXU;
+  public bqj musicInfo;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123571);
+    AppMethodBeat.i(258130);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.TaS != null)
-      {
-        paramVarArgs.oE(1, this.TaS.computeSize());
-        this.TaS.writeFields(paramVarArgs);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.ZXU != null) {
+        paramVarArgs.g(1, this.ZXU);
       }
-      paramVarArgs.e(2, 8, this.TaT);
-      AppMethodBeat.o(123571);
+      if (this.musicInfo != null)
+      {
+        paramVarArgs.qD(2, this.musicInfo.computeSize());
+        this.musicInfo.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(258130);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.TaS == null) {
-        break label406;
+      if (this.ZXU == null) {
+        break label344;
       }
     }
-    label406:
-    for (paramInt = g.a.a.a.oD(1, this.TaS.computeSize()) + 0;; paramInt = 0)
+    label344:
+    for (paramInt = i.a.a.b.b.a.h(1, this.ZXU) + 0;; paramInt = 0)
     {
-      int i = g.a.a.a.c(2, 8, this.TaT);
-      AppMethodBeat.o(123571);
-      return paramInt + i;
+      int i = paramInt;
+      if (this.musicInfo != null) {
+        i = paramInt + i.a.a.a.qC(2, this.musicInfo.computeSize());
+      }
+      AppMethodBeat.o(258130);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.TaT.clear();
-        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(123571);
+        AppMethodBeat.o(258130);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         bpi localbpi = (bpi)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
-        dky localdky;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(123571);
+          AppMethodBeat.o(258130);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject = (byte[])paramVarArgs.get(paramInt);
-            localdky = new dky();
-            if ((localObject != null) && (localObject.length > 0)) {
-              localdky.parseFrom((byte[])localObject);
-            }
-            localbpi.TaS = localdky;
-            paramInt += 1;
-          }
-          AppMethodBeat.o(123571);
+          localbpi.ZXU = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(258130);
           return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject = (byte[])paramVarArgs.get(paramInt);
-          localdky = new dky();
+          bqj localbqj = new bqj();
           if ((localObject != null) && (localObject.length > 0)) {
-            localdky.parseFrom((byte[])localObject);
+            localbqj.parseFrom((byte[])localObject);
           }
-          localbpi.TaT.add(localdky);
+          localbpi.musicInfo = localbqj;
           paramInt += 1;
         }
-        AppMethodBeat.o(123571);
+        AppMethodBeat.o(258130);
         return 0;
       }
-      AppMethodBeat.o(123571);
+      AppMethodBeat.o(258130);
       return -1;
     }
   }

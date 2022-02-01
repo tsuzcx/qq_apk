@@ -12,7 +12,7 @@ public class PAGText$Justification
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     org.libpag.PAGText.Justification
  * JD-Core Version:    0.7.0.1
  */

@@ -1,141 +1,130 @@
 package com.tencent.mm.plugin.cast.e;
 
-import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Paint;
+import android.media.Image;
+import android.media.Image.Plane;
+import android.media.ImageReader;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.by.c;
-import com.tencent.mm.model.z;
-import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.azj;
-import com.tencent.mm.protocal.protobuf.azk;
-import com.tencent.mm.protocal.protobuf.bcg;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import java.nio.Buffer;
+import java.nio.ByteBuffer;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/cast/netscene/NetSceneGetScreenCastAuthorization;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "ticket", "", "(Ljava/lang/String;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "reqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLiveGetAuthorizationRequest;", "getRequest", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveGetAuthorizationRequest;", "setRequest", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveGetAuthorizationRequest;)V", "response", "Lcom/tencent/mm/protocal/protobuf/FinderLiveGetAuthorizationResponse;", "getResponse", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveGetAuthorizationResponse;", "setResponse", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveGetAuthorizationResponse;)V", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-cast_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/cast/render/ScreenCastImageReader;", "", "width", "", "height", "(II)V", "bmp", "Landroid/graphics/Bitmap;", "encodeSurface", "Landroid/view/Surface;", "getHeight", "()I", "setHeight", "(I)V", "imageReader", "Landroid/media/ImageReader;", "inputSurface", "getInputSurface", "()Landroid/view/Surface;", "setInputSurface", "(Landroid/view/Surface;)V", "lock", "paint", "Landroid/graphics/Paint;", "getWidth", "setWidth", "doSendData", "", "initScreenCastImageReader", "looper", "Landroid/os/Looper;", "setEncodeSurface", "surface", "stopRenderer", "Companion", "plugin-cast_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends q
-  implements m
 {
-  public static final a tJL;
-  private i callback;
-  private d kwO;
-  private azj tJJ;
-  public azk tJK;
+  public static final a.a wNi;
+  private int height;
+  public ImageReader imageReader;
+  public Surface inputSurface;
+  final Object lock;
+  final Paint paint;
+  public Surface wNj;
+  Bitmap wNk;
+  private int width;
   
   static
   {
-    AppMethodBeat.i(189656);
-    tJL = new a((byte)0);
-    AppMethodBeat.o(189656);
+    AppMethodBeat.i(274084);
+    wNi = new a.a((byte)0);
+    AppMethodBeat.o(274084);
   }
   
-  public a(String paramString)
+  public a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(189652);
-    Object localObject = new d.a();
-    ((d.a)localObject).c((com.tencent.mm.cd.a)new azj());
-    ((d.a)localObject).d((com.tencent.mm.cd.a)new azk());
-    ((d.a)localObject).vD(4261);
-    ((d.a)localObject).TW("/cgi-bin/micromsg-bin/finderlivegetauthorization");
-    ((d.a)localObject).vF(0);
-    ((d.a)localObject).vG(0);
-    localObject = ((d.a)localObject).bgN();
-    p.j(localObject, "builder.buildInstance()");
-    this.kwO = ((d)localObject);
-    localObject = this.kwO.bhX();
-    if (localObject == null)
-    {
-      paramString = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderLiveGetAuthorizationRequest");
-      AppMethodBeat.o(189652);
-      throw paramString;
-    }
-    this.tJJ = ((azj)localObject);
-    this.tJJ.scene = 3;
-    this.tJJ.RLN = z.bdh();
-    this.tJJ.fAo = paramString;
-    setHasCallbackToQueue(true);
-    AppMethodBeat.o(189652);
+    AppMethodBeat.i(274067);
+    this.width = paramInt1;
+    this.height = paramInt2;
+    this.lock = new Object();
+    this.paint = new Paint();
+    AppMethodBeat.o(274067);
   }
   
-  public final int doScene(g paramg, i parami)
+  private static final void a(a parama, ImageReader paramImageReader)
   {
-    AppMethodBeat.i(189642);
-    Log.i("MicroMsg.NetSceneGetScreenCastAuthorization", "doScene");
-    this.callback = parami;
-    int i = dispatch(paramg, (s)this.kwO, (m)this);
-    AppMethodBeat.o(189642);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 4261;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(189649);
-    Log.i("MicroMsg.NetSceneGetScreenCastAuthorization", "onGYNetEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    if (params == null)
+    int j = 1;
+    AppMethodBeat.i(274079);
+    s.u(parama, "this$0");
+    paramImageReader = paramImageReader.acquireLatestImage();
+    int i;
+    if (paramImageReader != null)
     {
-      paramString = new t("null cannot be cast to non-null type com.tencent.mm.modelbase.CommReqResp");
-      AppMethodBeat.o(189649);
-      throw paramString;
+      ??? = paramImageReader.getPlanes();
+      s.s(???, "planes");
+      if (???.length != 0) {
+        break label173;
+      }
+      i = 1;
     }
-    params = ((d)params).bhY();
-    if (params == null)
+    for (;;)
     {
-      paramString = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderLiveGetAuthorizationResponse");
-      AppMethodBeat.o(189649);
-      throw paramString;
-    }
-    this.tJK = ((azk)params);
-    if ((paramInt2 != 0) || (paramInt3 != 0))
-    {
-      Log.e("MicroMsg.NetSceneGetScreenCastAuthorization", "onGYNetEnd error");
-      params = com.tencent.mm.plugin.cast.g.a.tKa;
-      com.tencent.mm.plugin.cast.g.a.cLF();
-    }
-    params = this.tJK;
-    if (params != null)
-    {
-      params = params.SLm;
-      if (params != null)
+      ByteBuffer localByteBuffer;
+      int k;
+      if (i == 0)
       {
-        paramArrayOfByte = this.callback;
-        if (paramArrayOfByte != null) {
-          paramArrayOfByte.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
+        i = j;
+        if (i != 0)
+        {
+          localByteBuffer = ???[0].getBuffer();
+          i = ???[0].getPixelStride();
+          j = ???[0].getRowStride();
+          k = parama.width;
         }
-        Log.i("MicroMsg.NetSceneGetScreenCastAuthorization", "response is " + params.SNI + " and " + params.SNJ + " and " + params.SNK);
-        paramString = new Intent();
-        paramString.putExtra("remoteConfig", params.SNI);
-        paramString.putExtra("pc_ip", params.SNJ);
-        paramString.putExtra("phone_ip", params.SNK);
-        params = com.tencent.mm.plugin.cast.g.a.tKa;
-        com.tencent.mm.plugin.cast.g.a.cLG();
-        c.b(MMApplicationContext.getContext(), "cast", ".ui.ScreenCastActivity", paramString);
-        AppMethodBeat.o(189649);
+      }
+      synchronized (parama.lock)
+      {
+        if (parama.wNk == null)
+        {
+          Log.i("MicroMsg.ScreenCastImageReader", "image reader render ");
+          int m = parama.width;
+          parama.wNk = Bitmap.createBitmap((j - k * i) / i + m, parama.height, Bitmap.Config.ARGB_8888);
+        }
+        parama = parama.wNk;
+        if (parama != null)
+        {
+          parama.copyPixelsFromBuffer((Buffer)localByteBuffer);
+          parama = ah.aiuX;
+        }
+        paramImageReader.close();
+        AppMethodBeat.o(274079);
         return;
+        label173:
+        i = 0;
+        continue;
+        i = 0;
       }
     }
-    AppMethodBeat.o(189649);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/cast/netscene/NetSceneGetScreenCastAuthorization$Companion;", "", "()V", "TAG", "", "plugin-cast_release"})
-  public static final class a {}
+  public final void i(Looper paramLooper)
+  {
+    AppMethodBeat.i(274096);
+    s.u(paramLooper, "looper");
+    this.imageReader = ImageReader.newInstance(this.width, this.height, 1, 1);
+    ImageReader localImageReader = this.imageReader;
+    if (localImageReader != null) {
+      localImageReader.setOnImageAvailableListener(new a..ExternalSyntheticLambda0(this), new Handler(paramLooper));
+    }
+    paramLooper = this.imageReader;
+    if (paramLooper == null) {}
+    for (paramLooper = null;; paramLooper = paramLooper.getSurface())
+    {
+      this.inputSurface = paramLooper;
+      AppMethodBeat.o(274096);
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.cast.e.a
  * JD-Core Version:    0.7.0.1
  */

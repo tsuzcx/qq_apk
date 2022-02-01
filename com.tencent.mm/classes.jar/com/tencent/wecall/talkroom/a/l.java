@@ -1,6 +1,6 @@
 package com.tencent.wecall.talkroom.a;
 
-import com.google.b.a.e;
+import com.google.d.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.pb.common.b.a.a.a.ah;
 import com.tencent.pb.common.b.a.a.a.ap;
@@ -13,23 +13,23 @@ import java.util.List;
 public final class l
   extends d
 {
-  public String CSB;
-  public int DVO;
-  public long NXM;
+  public String IMR;
+  public int JMX;
+  public long UGt;
   
   public l(String paramString, int paramInt, long paramLong, List<a.ap> paramList)
   {
-    AppMethodBeat.i(209868);
+    AppMethodBeat.i(212274);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "NetSceneSubscribeScreenSharingVideo" });
     a.i locali = new a.i();
     try
     {
       locali.groupId = paramString;
-      this.CSB = paramString;
+      this.IMR = paramString;
       locali.roomId = paramInt;
-      this.DVO = paramInt;
-      locali.DPJ = paramLong;
-      this.NXM = paramLong;
+      this.JMX = paramInt;
+      locali.Hnt = paramLong;
+      this.UGt = paramLong;
       i = paramList.size();
       arrayOfap = null;
       if (i > 0)
@@ -52,18 +52,18 @@ public final class l
         b.w(this.TAG2, new Object[] { "NetSceneSubscribeScreenSharingVideo constructor", paramString });
       }
     }
-    locali.Zff = arrayOfap;
+    locali.ahdI = arrayOfap;
     locali.timestamp = System.currentTimeMillis();
-    b.i("MicroMsg.Voip", new Object[] { "roomId: %d, roomKey: %d, groupId: %s, timestamp: %d, memberCnt: %d", Integer.valueOf(locali.roomId), Long.valueOf(locali.DPJ), locali.groupId, Long.valueOf(locali.timestamp), Integer.valueOf(i) });
-    aAc(3);
-    aAd(c.iuI().bEi(paramString));
+    b.i("MicroMsg.Voip", new Object[] { "roomId: %d, roomKey: %d, groupId: %s, timestamp: %d, memberCnt: %d", Integer.valueOf(locali.roomId), Long.valueOf(locali.Hnt), locali.groupId, Long.valueOf(locali.timestamp), Integer.valueOf(i) });
+    aGP(3);
+    aGQ(c.ked().bGH(paramString));
     c(259, locali);
-    AppMethodBeat.o(209868);
+    AppMethodBeat.o(212274);
   }
   
-  public final Object dn(byte[] paramArrayOfByte)
+  public final Object dp(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(209869);
+    AppMethodBeat.i(212276);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
     if (paramArrayOfByte != null) {}
     for (;;)
@@ -71,7 +71,7 @@ public final class l
       try
       {
         paramArrayOfByte = (a.ah)e.a(new a.ah(), paramArrayOfByte, paramArrayOfByte.length);
-        AppMethodBeat.o(209869);
+        AppMethodBeat.o(212276);
         return paramArrayOfByte;
       }
       catch (Exception paramArrayOfByte)
@@ -89,14 +89,14 @@ public final class l
     return 802;
   }
   
-  public final String ikF()
+  public final String jQW()
   {
     return "CsCmd.Cmd_V_CSSubscribeScreenSharingVideoReq";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.l
  * JD-Core Version:    0.7.0.1
  */

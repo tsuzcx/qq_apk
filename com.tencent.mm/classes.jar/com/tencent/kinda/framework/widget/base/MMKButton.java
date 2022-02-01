@@ -15,7 +15,7 @@ import com.tencent.kinda.gen.KImage;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.wallet_core.ui.g;
+import com.tencent.mm.wallet_core.ui.i;
 import java.util.ArrayList;
 
 public class MMKButton
@@ -23,6 +23,7 @@ public class MMKButton
   implements KButton
 {
   public static final String TAG = "MMKView.MMKButton";
+  private String accessibilityString;
   private long disabledColor;
   private MMKImage disabledImage;
   private FontStyle fontStyle;
@@ -164,7 +165,7 @@ public class MMKButton
   
   private void updateTypeface()
   {
-    AppMethodBeat.i(263180);
+    AppMethodBeat.i(226607);
     int i;
     if (this.textFontName != null) {
       if (this.textFontName.equalsIgnoreCase("WeChat-Sans-SS-Light")) {
@@ -175,17 +176,17 @@ public class MMKButton
     {
       if (i != -1)
       {
-        String str = g.azI(i);
+        String str = i.aGy(i);
         try
         {
           ((KindaButtonImpl)getView()).getKButtonTextView().setTypeface(Typeface.createFromAsset(MMApplicationContext.getContext().getAssets(), str));
-          AppMethodBeat.o(263180);
+          AppMethodBeat.o(226607);
           return;
         }
         catch (Exception localException)
         {
           Log.e("MMKView.MMKButton", "setTypeface() Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
-          AppMethodBeat.o(263180);
+          AppMethodBeat.o(226607);
           return;
         }
         if (this.textFontName.equalsIgnoreCase("WeChat-Sans-SS-Medium"))
@@ -207,11 +208,11 @@ public class MMKButton
       if (this.fontStyle == FontStyle.REGULAR)
       {
         ((KindaButtonImpl)getView()).getKButtonTextView().setTypeface(null, 0);
-        AppMethodBeat.o(263180);
+        AppMethodBeat.o(226607);
         return;
       }
       ((KindaButtonImpl)getView()).getKButtonTextView().setTypeface(null, 1);
-      AppMethodBeat.o(263180);
+      AppMethodBeat.o(226607);
       return;
       label203:
       i = -1;
@@ -334,10 +335,10 @@ public class MMKButton
   
   public void setFontStyle(FontStyle paramFontStyle)
   {
-    AppMethodBeat.i(263177);
+    AppMethodBeat.i(226639);
     this.fontStyle = paramFontStyle;
     updateTypeface();
-    AppMethodBeat.o(263177);
+    AppMethodBeat.o(226639);
   }
   
   public void setNormalColor(DynamicColor paramDynamicColor)
@@ -439,16 +440,21 @@ public class MMKButton
   public void setTextSize(float paramFloat)
   {
     AppMethodBeat.i(19000);
-    this.textSize = paramFloat;
-    if (paramFloat > 0.0F) {
-      ((KindaButtonImpl)getView()).setTextSize(0, MMKViewUtil.dpToPx(MMApplicationContext.getContext(), paramFloat));
+    if (paramFloat > 0.0F)
+    {
+      float f = 1.0F;
+      if (getSupportDynamicSize()) {
+        f = MMKViewUtil.getScaleSize(MMApplicationContext.getContext());
+      }
+      this.textSize = (f * paramFloat);
+      ((KindaButtonImpl)getView()).setTextSize(1, this.textSize);
     }
     AppMethodBeat.o(19000);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKButton
  * JD-Core Version:    0.7.0.1
  */

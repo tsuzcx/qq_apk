@@ -1,208 +1,115 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.content.SharedPreferences;
+import android.content.Context;
+import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.s.b.b;
-import com.tencent.mm.plugin.appbrand.s.d.b;
-import com.tencent.mm.plugin.appbrand.s.k.c;
-import com.tencent.mm.plugin.appbrand.u.c;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.appbrand.config.i;
+import com.tencent.mm.plugin.appbrand.launching.AppBrandPreInitTask;
+import com.tencent.mm.plugin.appbrand.launching.AppBrandPreInitTask.a;
+import com.tencent.mm.plugin.appbrand.launching.AppBrandPrepareTask;
+import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
+import com.tencent.mm.plugin.appbrand.launching.report.AppBrandRuntimeReloadReportBundle;
+import com.tencent.mm.plugin.appbrand.launching.report.a;
+import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
+import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.system.AndroidContextUtil;
+import java.util.concurrent.atomic.AtomicBoolean;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/RuntimeLaunchTimeoutFallbackReloadTask;", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandPreInitTask$PreInitCallback;", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "prepareTask", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandPrepareTask;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;Lcom/tencent/mm/plugin/appbrand/launching/AppBrandPrepareTask;)V", "TAG", "", "mCanceled", "Ljava/util/concurrent/atomic/AtomicBoolean;", "cancel", "", "onResult", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "stat", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class bf
+  implements AppBrandPreInitTask.a
 {
-  private static int nzD;
-  private static int nzE;
-  private static int nzF;
-  private static int nzG;
-  private static k.c nzH;
-  private static k.c nzI;
-  private static d.b nzJ;
-  private static b.b nzK;
+  public static final bf.a qyl;
+  private final String TAG;
+  private final w qxY;
+  private final AppBrandPrepareTask qym;
+  final AtomicBoolean qyn;
   
   static
   {
-    AppMethodBeat.i(43996);
-    nzD = 1;
-    nzE = 2;
-    nzF = 3;
-    nzG = 4;
-    nzH = new k.c()
-    {
-      public final boolean acg(String paramAnonymousString)
-      {
-        AppMethodBeat.i(43986);
-        if (c.ale(paramAnonymousString))
-        {
-          Log.i("MicroMsg.WcWssSwitchLogic", "isWcWssOpen : true for hardcode case");
-          AppMethodBeat.o(43986);
-          return true;
-        }
-        boolean bool = bf.yQ(bf.nzD);
-        AppMethodBeat.o(43986);
-        return bool;
-      }
-      
-      public final boolean bEw()
-      {
-        AppMethodBeat.i(43987);
-        boolean bool = bf.yR(bf.nzD);
-        AppMethodBeat.o(43987);
-        return bool;
-      }
-    };
-    nzI = new k.c()
-    {
-      public final boolean acg(String paramAnonymousString)
-      {
-        AppMethodBeat.i(43988);
-        boolean bool = bf.yQ(bf.nzD);
-        AppMethodBeat.o(43988);
-        return bool;
-      }
-      
-      public final boolean bEw()
-      {
-        AppMethodBeat.i(43989);
-        boolean bool = bf.yR(bf.nzD);
-        AppMethodBeat.o(43989);
-        return bool;
-      }
-    };
-    nzJ = new d.b()
-    {
-      public final boolean bEw()
-      {
-        AppMethodBeat.i(43991);
-        boolean bool = bf.yR(bf.nzE);
-        AppMethodBeat.o(43991);
-        return bool;
-      }
-      
-      public final boolean bEx()
-      {
-        AppMethodBeat.i(43990);
-        boolean bool = bf.yQ(bf.nzE);
-        AppMethodBeat.o(43990);
-        return bool;
-      }
-      
-      public final boolean bEy()
-      {
-        AppMethodBeat.i(280196);
-        boolean bool = bf.yQ(bf.nzG);
-        AppMethodBeat.o(280196);
-        return bool;
-      }
-    };
-    nzK = new b.b()
-    {
-      public final boolean bEx()
-      {
-        AppMethodBeat.i(43992);
-        boolean bool = bf.yQ(bf.nzF);
-        AppMethodBeat.o(43992);
-        return bool;
-      }
-    };
-    AppMethodBeat.o(43996);
+    AppMethodBeat.i(316632);
+    qyl = new bf.a((byte)0);
+    AppMethodBeat.o(316632);
   }
   
-  public static k.c bEs()
+  private bf(w paramw, AppBrandPrepareTask paramAppBrandPrepareTask)
   {
-    return nzH;
+    AppMethodBeat.i(316601);
+    this.qxY = paramw;
+    this.qym = paramAppBrandPrepareTask;
+    this.TAG = ("MicroMsg.AppBrand.RuntimeLaunchTimeoutFallbackReloadTask[" + this.qxY.mAppId + '|' + this.qxY.hashCode() + ']');
+    this.qyn = new AtomicBoolean(false);
+    AppMethodBeat.o(316601);
   }
   
-  public static k.c bEt()
+  public static final bf a(w paramw, AppBrandPrepareTask paramAppBrandPrepareTask)
   {
-    return nzI;
-  }
-  
-  public static d.b bEu()
-  {
-    return nzJ;
-  }
-  
-  public static b.b bEv()
-  {
-    return nzK;
-  }
-  
-  private static Boolean yP(int paramInt)
-  {
-    AppMethodBeat.i(43993);
-    Object localObject;
-    if (paramInt == nzD)
+    AppMethodBeat.i(316623);
+    s.u(paramw, "rt");
+    s.u(paramAppBrandPrepareTask, "prepareTask");
+    Object localObject1 = AndroidContextUtil.castActivityOrNull(paramw.mContext);
+    if (localObject1 == null) {}
+    for (localObject1 = paramw.mContext;; localObject1 = (Context)localObject1)
     {
-      localObject = MMApplicationContext.getToolsProcesstPreference().getString("appbrandgame_open_wcwss", "");
-      if ((localObject != null) && (((String)localObject).equalsIgnoreCase("wcwss")))
-      {
-        localObject = Boolean.TRUE;
-        AppMethodBeat.o(43993);
-        return localObject;
-      }
-      if ((localObject != null) && (((String)localObject).equalsIgnoreCase("websocket")))
-      {
-        localObject = Boolean.FALSE;
-        AppMethodBeat.o(43993);
-        return localObject;
-      }
+      s.s(localObject1, "rt.context ?: rt.appContext");
+      Object localObject2 = paramw.getInitConfig();
+      s.s(localObject2, "rt.initConfig");
+      localObject2 = i.g((AppBrandInitConfigWC)localObject2);
+      String str = paramw.getInitConfig().qYm.eup;
+      s.s(str, "rt.initConfig.qualityReportSession.instanceId");
+      ((LaunchParcel)localObject2).ted = ((Parcelable)new AppBrandRuntimeReloadReportBundle(str, a.teV.stringValue));
+      paramw = new bf(paramw, paramAppBrandPrepareTask);
+      paramAppBrandPrepareTask = new AppBrandPreInitTask((Context)localObject1, (LaunchParcel)localObject2, true, (AppBrandPreInitTask.a)paramw);
+      paramAppBrandPrepareTask.sWe = true;
+      paramAppBrandPrepareTask.czH();
+      AppMethodBeat.o(316623);
+      return paramw;
     }
-    else if (paramInt == nzE)
+  }
+  
+  private static final void a(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject, bf parambf)
+  {
+    AppMethodBeat.i(316612);
+    s.u(parambf, "this$0");
+    paramAppBrandInitConfigWC.qYs = true;
+    paramAppBrandInitConfigWC.epn = paramAppBrandStatObject;
+    paramAppBrandInitConfigWC.aqI();
+    paramAppBrandStatObject = parambf.qxY.getInitConfig().qYm.eup;
+    s.s(paramAppBrandStatObject, "rt.initConfig.qualityReportSession.instanceId");
+    paramAppBrandInitConfigWC.qYu = new AppBrandRuntimeReloadReportBundle(paramAppBrandStatObject, a.teV.stringValue);
+    parambf.qxY.a((AppBrandInitConfig)paramAppBrandInitConfigWC, a.teV.stringValue);
+    AppMethodBeat.o(316612);
+  }
+  
+  public final void onResult(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
+  {
+    AppMethodBeat.i(316649);
+    if (this.qyn.get())
     {
-      localObject = MMApplicationContext.getToolsProcesstPreference().getString("appbrandgame_open_cdnrequest", "");
-      if ((localObject != null) && (((String)localObject).equalsIgnoreCase("chromium")))
-      {
-        localObject = Boolean.TRUE;
-        AppMethodBeat.o(43993);
-        return localObject;
-      }
-      if ((localObject != null) && (((String)localObject).equalsIgnoreCase("request")))
-      {
-        localObject = Boolean.FALSE;
-        AppMethodBeat.o(43993);
-        return localObject;
-      }
+      Log.w(this.TAG, "onResult but canceled");
+      AppMethodBeat.o(316649);
+      return;
     }
-    else if (paramInt == nzF)
+    Log.i(this.TAG, s.X("onResult with config:", paramAppBrandInitConfigWC));
+    this.qym.interrupt();
+    if (paramAppBrandInitConfigWC == null)
     {
-      localObject = MMApplicationContext.getToolsProcesstPreference().getString("appbrandgame_open_cronetdownload", "");
-      if ((localObject != null) && (((String)localObject).equalsIgnoreCase("open")))
-      {
-        localObject = Boolean.TRUE;
-        AppMethodBeat.o(43993);
-        return localObject;
-      }
-      if ((localObject != null) && (((String)localObject).equalsIgnoreCase("close")))
-      {
-        localObject = Boolean.FALSE;
-        AppMethodBeat.o(43993);
-        return localObject;
-      }
+      this.qxY.finish();
+      AppMethodBeat.o(316649);
+      return;
     }
-    else if (paramInt == nzG)
-    {
-      localObject = MMApplicationContext.getToolsProcesstPreference().getString("appbrandgame_open_cdnrequest_httpdns", "");
-      if ((localObject != null) && (((String)localObject).equalsIgnoreCase("open")))
-      {
-        localObject = Boolean.TRUE;
-        AppMethodBeat.o(43993);
-        return localObject;
-      }
-      if ((localObject != null) && (((String)localObject).equalsIgnoreCase("close")))
-      {
-        localObject = Boolean.FALSE;
-        AppMethodBeat.o(43993);
-        return localObject;
-      }
-    }
-    AppMethodBeat.o(43993);
-    return null;
+    this.qxY.i(new bf..ExternalSyntheticLambda0(paramAppBrandInitConfigWC, paramAppBrandStatObject, this), 0L);
+    AppMethodBeat.o(316649);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.bf
  * JD-Core Version:    0.7.0.1
  */

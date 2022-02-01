@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.canvas.action;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.g;
+import com.tencent.mm.plugin.appbrand.af.i;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.SetTransformActionArg;
@@ -33,7 +33,7 @@ public final class ai
       AppMethodBeat.o(144984);
       return false;
     }
-    boolean bool = a(paramCanvas, paramd.scaleX, paramd.nUd, paramd.nUe, paramd.scaleY, paramd.translateX, paramd.translateY);
+    boolean bool = a(paramCanvas, paramd.scaleX, paramd.bbL, paramd.qTO, paramd.scaleY, paramd.translateX, paramd.translateY);
     AppMethodBeat.o(144984);
     return bool;
   }
@@ -48,7 +48,7 @@ public final class ai
     }
     try
     {
-      boolean bool = a(paramCanvas, (float)paramJSONArray.getDouble(0), (float)paramJSONArray.getDouble(1), (float)paramJSONArray.getDouble(2), (float)paramJSONArray.getDouble(3), g.e(paramJSONArray, 4), g.e(paramJSONArray, 5));
+      boolean bool = a(paramCanvas, (float)paramJSONArray.getDouble(0), (float)paramJSONArray.getDouble(1), (float)paramJSONArray.getDouble(2), (float)paramJSONArray.getDouble(3), i.e(paramJSONArray, 4), i.e(paramJSONArray, 5));
       AppMethodBeat.o(144982);
       return bool;
     }
@@ -59,7 +59,7 @@ public final class ai
     return false;
   }
   
-  public final BaseDrawActionArg bKy()
+  public final BaseDrawActionArg cjY()
   {
     AppMethodBeat.i(144981);
     SetTransformActionArg localSetTransformActionArg = new SetTransformActionArg();
@@ -74,7 +74,7 @@ public final class ai
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.ai
  * JD-Core Version:    0.7.0.1
  */

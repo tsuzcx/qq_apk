@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:padding="@dimen/hs" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <EditText android:textColor="@color/FG_0" android:id="@id/hfq" android:singleLine="true" style="@style/nm" />
+    <Button android:textSize="@dimen/bd" android:textColor="@color/gm" android:id="@id/anx" android:background="@drawable/p9" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <View android:id="@id/anz" android:background="@color/a1f" android:layout_width="1.0px" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/cp" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" />
+    <Button android:textSize="@dimen/bd" android:textColor="@color/gm" android:id="@id/ao0" android:background="@drawable/p9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" />
+    <View android:id="@id/ao1" android:background="@color/a1f" android:layout_width="1.0px" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/cp" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" />
+    <Button android:textSize="@dimen/bd" android:textColor="@color/gm" android:id="@id/ao2" android:background="@drawable/p9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" />
 </LinearLayout>

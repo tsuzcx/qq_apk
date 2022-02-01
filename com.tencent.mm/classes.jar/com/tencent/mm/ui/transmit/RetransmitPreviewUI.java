@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.transmit;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -9,18 +8,18 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
-import com.tencent.mm.cl.h;
+import com.tencent.mm.smiley.u;
 import com.tencent.mm.ui.MMActivity;
 
 public class RetransmitPreviewUI
   extends MMActivity
 {
-  private TextView rR = null;
+  private TextView sQ = null;
   private String text = null;
   
   public int getLayoutId()
   {
-    return R.i.edw;
+    return R.i.ggm;
   }
   
   public void onBackPressed()
@@ -36,8 +35,8 @@ public class RetransmitPreviewUI
     super.onCreate(paramBundle);
     setMMTitle("");
     this.text = getIntent().getStringExtra("Retr_Msg_content");
-    this.rR = ((TextView)findViewById(R.h.dHK));
-    this.rR.setText(h.htZ().a(getContext(), this.text, this.rR.getTextSize()));
+    this.sQ = ((TextView)findViewById(R.h.fIW));
+    this.sQ.setText(u.iVt().a(getContext(), this.text, this.sQ.getTextSize()));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)

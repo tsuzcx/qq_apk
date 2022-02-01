@@ -1,329 +1,488 @@
 package com.tencent.mm.storage;
 
-import android.database.Cursor;
-import android.text.TextUtils;
+import android.text.SpannableStringBuilder;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aq;
+import com.tencent.mm.an.af;
+import com.tencent.mm.autogen.b.ap;
+import com.tencent.mm.autogen.b.bd;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.storage.ISQLiteDatabase;
-import com.tencent.mm.sdk.storage.MAutoStorage;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import junit.framework.Assert;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.g.a.a;
+import kotlin.g.a.b;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
+@Metadata(d1={""}, d2={"cacheAvatarUrl", "", "cacheFollowMsgId", "", "cacheFollowValues", "", "cacheMsgId", "cacheUrlMsgId", "cacheValues", "checkNewDyeingTemplate", "", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "checkShowDigesNum", "getArticleUrl", "getAvatarUrl", "getDisplayName", "getDyeingDigest", "getDyeingTemplateWord", "Landroid/text/SpannableStringBuilder;", "index", "", "getFollowDisplayName", "getFollowDyeingTemplateWord", "getFollowValue", "getIconUrl", "getItemShowType", "getMsgType", "getUnreadCount", "getUserName", "getValue", "hasOfficialAccountRedDot", "isDyeingTemplateToTimeline", "msg", "Lcom/tencent/mm/storage/MsgInfo;", "msgCluster", "onDyeingTemplateClick", "", "context", "Landroid/content/Context;", "reportMsgNotify", "username", "actionType", "notifyType", "notifyMsgId", "notifyRow", "sessionId", "scene", "enterId", "setFollowMaxLine", "view", "Landroid/widget/TextView;", "setMaxLine", "plugin-biz_release"}, k=2, mv={1, 5, 1}, xi=48)
 public final class ai
-  extends MAutoStorage<ah>
-  implements aq
 {
-  public static final String[] INDEX_CREATE;
-  public static final String[] SQL_CREATE;
-  private ConcurrentHashMap<String, ah> VfC;
-  private ISQLiteDatabase db;
+  private static long acGI;
+  private static String acGJ;
+  private static long acGK;
+  private static Map<String, String> acGL;
+  private static long acGM;
+  private static Map<String, String> acGN;
   
-  static
+  public static final String L(ab paramab)
   {
-    AppMethodBeat.i(116941);
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(ah.info, "chatroom") };
-    INDEX_CREATE = new String[] { "CREATE INDEX IF NOT EXISTS serverChatRoomUserIndex ON chatroom ( chatroomname )" };
-    AppMethodBeat.o(116941);
-  }
-  
-  public ai(ISQLiteDatabase paramISQLiteDatabase)
-  {
-    super(paramISQLiteDatabase, ah.info, "chatroom", INDEX_CREATE);
-    AppMethodBeat.i(189558);
-    this.VfC = new ConcurrentHashMap();
-    this.db = paramISQLiteDatabase;
-    AppMethodBeat.o(189558);
-  }
-  
-  private boolean a(ah paramah, boolean paramBoolean)
-  {
-    ah localah = null;
-    AppMethodBeat.i(189571);
-    if (paramah == null)
+    AppMethodBeat.i(248521);
+    s.u(paramab, "info");
+    a locala = (a)new a(paramab);
+    Object localObject1 = "";
+    Object localObject2;
+    String str;
+    if ((paramab.iYl()) || (paramab.iYk()))
     {
-      Log.w("MicroMsg.ChatroomStorage", "replace error(item == null)");
-      AppMethodBeat.o(189571);
-      return false;
-    }
-    if (Util.isNullOrNil(paramah.field_chatroomname))
-    {
-      Log.w("MicroMsg.ChatroomStorage", "replace error,item.field_chatroomname is null");
-      AppMethodBeat.o(189571);
-      return false;
-    }
-    Object localObject = "select rowid,chatroomname from chatroom where chatroomname='" + Util.escapeSqlValue(paramah.field_chatroomname) + "'";
-    Log.d("MicroMsg.ChatroomStorage", "replace : ".concat(String.valueOf(localObject)));
-    localObject = this.db.rawQuery((String)localObject, null, 2);
-    if (((Cursor)localObject).moveToFirst())
-    {
-      localah = new ah();
-      localah.convertFrom((Cursor)localObject);
-    }
-    ((Cursor)localObject).close();
-    if (localah == null) {}
-    for (paramBoolean = insertNotify(paramah, paramBoolean);; paramBoolean = update(paramah.systemRowid, paramah, paramBoolean))
-    {
-      AppMethodBeat.o(189571);
-      return paramBoolean;
-      paramah.systemRowid = localah.systemRowid;
-    }
-  }
-  
-  public final String PJ(String paramString)
-  {
-    AppMethodBeat.i(116936);
-    boolean bool;
-    Cursor localCursor;
-    if (paramString.length() > 0)
-    {
-      bool = true;
-      Assert.assertTrue(bool);
-      paramString = "select displayname from chatroom where chatroomname='" + Util.escapeSqlValue(paramString) + "'";
-      localCursor = this.db.rawQuery(paramString, null, 2);
-      if (!localCursor.moveToFirst()) {
-        break label112;
-      }
-      paramString = new ah();
-      paramString.convertFrom(localCursor);
+      localObject2 = R(paramab);
+      str = ".msgsource.notify_msg.";
     }
     for (;;)
     {
-      localCursor.close();
-      if (paramString == null)
+      if (localObject2 != null)
       {
-        AppMethodBeat.o(116936);
-        return null;
-        bool = false;
-        break;
+        localObject2 = (String)((Map)localObject2).get(s.X(str, "box_digest"));
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = "";
+        }
       }
-      paramString = paramString.field_displayname;
-      AppMethodBeat.o(116936);
-      return paramString;
-      label112:
-      paramString = null;
+      localObject2 = localObject1;
+      if (Util.isNullOrNil((String)localObject1))
+      {
+        localObject2 = localObject1;
+        if (paramab.iYi()) {
+          localObject2 = (String)locala.invoke();
+        }
+      }
+      AppMethodBeat.o(248521);
+      return localObject2;
+      if (paramab.iYi())
+      {
+        localObject2 = P(paramab);
+        str = ".msg.appmsg.mmreader.notify_msg.";
+      }
+      else
+      {
+        localObject2 = null;
+        str = null;
+      }
     }
   }
   
-  public final List<String> RA(String paramString)
+  public static final String M(ab paramab)
   {
-    AppMethodBeat.i(116937);
-    Object localObject = Rz(paramString);
+    AppMethodBeat.i(248526);
+    s.u(paramab, "info");
+    paramab = P(paramab);
+    if (paramab == null)
+    {
+      AppMethodBeat.o(248526);
+      return "";
+    }
+    paramab = (String)paramab.get(".msg.appmsg.mmreader.notify_msg.publisher_username");
+    if (paramab == null)
+    {
+      AppMethodBeat.o(248526);
+      return "";
+    }
+    AppMethodBeat.o(248526);
+    return paramab;
+  }
+  
+  public static final String N(ab paramab)
+  {
+    AppMethodBeat.i(248539);
+    s.u(paramab, "info");
+    if ((paramab.field_msgId == acGI) && (acGJ != null))
+    {
+      paramab = acGJ;
+      s.checkNotNull(paramab);
+      AppMethodBeat.o(248539);
+      return paramab;
+    }
+    Object localObject = XmlParser.parseXml(paramab.field_content, "avatar_url", null);
     if (localObject == null)
     {
-      AppMethodBeat.o(116937);
-      return null;
+      AppMethodBeat.o(248539);
+      return "";
     }
-    paramString = new LinkedList();
-    if (!((String)localObject).equals(""))
-    {
-      localObject = ((String)localObject).split(";");
-      int i = 0;
-      while (i < localObject.length)
-      {
-        paramString.add(localObject[i]);
-        i += 1;
-      }
+    String str = (String)((Map)localObject).get(".avatar_url");
+    localObject = str;
+    if (str == null) {
+      localObject = "";
     }
-    AppMethodBeat.o(116937);
-    return paramString;
+    acGJ = (String)localObject;
+    acGI = paramab.field_msgId;
+    AppMethodBeat.o(248539);
+    return localObject;
   }
   
-  public final boolean RB(String paramString)
+  public static final boolean O(ab paramab)
   {
-    Object localObject = null;
-    AppMethodBeat.i(116938);
-    paramString = "select * from chatroom where chatroomname='" + Util.escapeSqlValue(paramString) + "'";
-    Cursor localCursor = this.db.rawQuery(paramString, null, 2);
-    paramString = localObject;
-    if (localCursor.moveToFirst())
+    AppMethodBeat.i(248560);
+    s.u(paramab, "info");
+    if (!paramab.iYi())
     {
-      paramString = new ah();
-      paramString.convertFrom(localCursor);
+      AppMethodBeat.o(248560);
+      return false;
     }
-    localCursor.close();
-    if ((paramString != null) && ((paramString.field_roomflag & 0x1) == 0))
+    paramab = P(paramab);
+    if (paramab == null)
     {
-      AppMethodBeat.o(116938);
+      AppMethodBeat.o(248560);
+      return false;
+    }
+    if (!Util.isNullOrNil((String)paramab.get(".msg.appmsg.mmreader.notify_msg.act")))
+    {
+      AppMethodBeat.o(248560);
       return true;
     }
-    AppMethodBeat.o(116938);
+    Log.i("MicroMsg.BizTimeLineStorageLogicExKt", "checkNewDyeingTemplate false");
+    AppMethodBeat.o(248560);
     return false;
   }
   
-  public final boolean RC(String paramString)
+  public static final Map<String, String> P(ab paramab)
   {
-    AppMethodBeat.i(116939);
-    if (paramString.length() > 0) {}
-    for (boolean bool = true;; bool = false)
+    AppMethodBeat.i(248571);
+    if ((paramab.field_msgId == acGK) && (acGL != null))
     {
-      Assert.assertTrue(bool);
-      if (this.db.delete("chatroom", "chatroomname=?", new String[] { paramString }) != 0) {
-        break;
-      }
-      AppMethodBeat.o(116939);
-      return false;
+      paramab = acGL;
+      AppMethodBeat.o(248571);
+      return paramab;
     }
-    doNotify(paramString);
-    AppMethodBeat.o(116939);
-    return true;
+    acGK = paramab.field_msgId;
+    paramab = XmlParser.parseXml(paramab.field_content, "msg", null);
+    acGL = paramab;
+    AppMethodBeat.o(248571);
+    return paramab;
   }
   
-  public final int RD(String paramString)
+  public static final String Q(ab paramab)
   {
-    ah localah = null;
-    AppMethodBeat.i(116935);
-    if (TextUtils.isEmpty(paramString))
+    AppMethodBeat.i(248594);
+    s.u(paramab, "info");
+    Map localMap = R(paramab);
+    if (localMap == null)
     {
-      AppMethodBeat.o(116935);
+      AppMethodBeat.o(248594);
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    String str = (String)localMap.get(".msgsource.notify_msg.title2");
+    paramab = str;
+    if (str == null) {
+      paramab = "";
+    }
+    localStringBuilder = localStringBuilder.append(paramab).append(' ');
+    str = (String)localMap.get(".msgsource.notify_msg.action");
+    paramab = str;
+    if (str == null) {
+      paramab = "";
+    }
+    paramab = paramab;
+    AppMethodBeat.o(248594);
+    return paramab;
+  }
+  
+  private static final Map<String, String> R(ab paramab)
+  {
+    AppMethodBeat.i(248598);
+    if ((paramab.field_msgId == acGM) && (acGN != null))
+    {
+      paramab = acGN;
+      AppMethodBeat.o(248598);
+      return paramab;
+    }
+    acGM = paramab.field_msgId;
+    paramab = XmlParser.parseXml(paramab.jUr, "msgsource", null);
+    acGN = paramab;
+    AppMethodBeat.o(248598);
+    return paramab;
+  }
+  
+  public static final void a(ab paramab, int paramInt, TextView paramTextView)
+  {
+    AppMethodBeat.i(248512);
+    s.u(paramab, "info");
+    s.u(paramTextView, "view");
+    Map localMap = P(paramab);
+    if (localMap != null) {
+      if (paramInt == 0)
+      {
+        paramab = "";
+        paramab = s.X(".msg.appmsg.mmreader.notify_msg.msg.item", paramab);
+        Log.i("MicroMsg.BizTimeLineStorageLogicExKt", String.valueOf(localMap.get(s.X(paramab, ".max_line_count"))));
+        if (Util.isNullOrNil((String)localMap.get(s.X(paramab, ".max_line_count")))) {
+          break label134;
+        }
+      }
+    }
+    label134:
+    for (paramInt = Util.getInt((String)localMap.get(s.X(paramab, ".max_line_count")), 2);; paramInt = 0)
+    {
+      int i = paramInt;
+      if (paramInt == 0) {
+        i = 2147483647;
+      }
+      paramTextView.setMaxLines(i);
+      AppMethodBeat.o(248512);
+      return;
+      paramab = Integer.valueOf(paramInt);
+      break;
+    }
+  }
+  
+  public static final void a(String paramString, int paramInt1, int paramInt2, long paramLong, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  {
+    AppMethodBeat.i(248578);
+    int i = (int)(System.currentTimeMillis() / 1000L);
+    com.tencent.mm.plugin.report.service.h.OAn.b(17750, new Object[] { paramString, Integer.valueOf(i), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6) });
+    AppMethodBeat.o(248578);
+  }
+  
+  public static final void b(ab paramab, int paramInt, TextView paramTextView)
+  {
+    AppMethodBeat.i(248587);
+    s.u(paramab, "info");
+    s.u(paramTextView, "view");
+    Map localMap = R(paramab);
+    if (localMap != null) {
+      if (paramInt == 0)
+      {
+        paramab = "";
+        paramab = s.X(".msgsource.notify_msg.msg.item", paramab);
+        Log.i("MicroMsg.BizTimeLineStorageLogicExKt", String.valueOf(localMap.get(s.X(paramab, ".max_line_count"))));
+        if (Util.isNullOrNil((String)localMap.get(s.X(paramab, ".max_line_count")))) {
+          break label137;
+        }
+      }
+    }
+    label137:
+    for (paramInt = Util.getInt((String)localMap.get(s.X(paramab, ".max_line_count")), 2);; paramInt = 0)
+    {
+      int i = paramInt;
+      if (paramInt == 0) {
+        i = 2147483647;
+      }
+      paramTextView.setMaxLines(i);
+      AppMethodBeat.o(248587);
+      return;
+      paramab = Integer.valueOf(paramInt);
+      break;
+    }
+  }
+  
+  public static final int h(ab paramab)
+  {
+    AppMethodBeat.i(248546);
+    s.u(paramab, "info");
+    paramab = P(paramab);
+    if (paramab == null)
+    {
+      AppMethodBeat.o(248546);
       return 0;
     }
-    long l = System.currentTimeMillis();
-    try
+    int i = Util.getInt((String)paramab.get(".msg.appmsg.mmreader.notify_msg.scene"), 0);
+    AppMethodBeat.o(248546);
+    return i;
+  }
+  
+  public static final SpannableStringBuilder h(ab paramab, int paramInt)
+  {
+    AppMethodBeat.i(248516);
+    s.u(paramab, "info");
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    Map localMap = P(paramab);
+    if (localMap == null)
     {
-      Object localObject = "select memberCount from chatroom where chatroomname='" + Util.escapeSqlValue(paramString) + "'";
-      localObject = this.db.rawQuery((String)localObject, null, 2);
-      if (((Cursor)localObject).moveToFirst())
+      AppMethodBeat.o(248516);
+      return localSpannableStringBuilder;
+    }
+    if (Util.isNullOrNil((String)localMap.get(".msg.appmsg.mmreader.notify_msg.act")))
+    {
+      AppMethodBeat.o(248516);
+      return localSpannableStringBuilder;
+    }
+    b localb = (b)new ai.b(localMap);
+    if (paramInt == 0) {}
+    for (paramab = "";; paramab = Integer.valueOf(paramInt))
+    {
+      paramab = s.X(".msg.appmsg.mmreader.notify_msg.msg.item", paramab);
+      if (!Util.isNullOrNil((String)localMap.get(s.X(paramab, ".content")))) {
+        localSpannableStringBuilder.append((CharSequence)localb.invoke(paramab));
+      }
+      AppMethodBeat.o(248516);
+      return localSpannableStringBuilder;
+    }
+  }
+  
+  public static final boolean h(cc paramcc, String paramString)
+  {
+    AppMethodBeat.i(248509);
+    if (paramcc == null)
+    {
+      AppMethodBeat.o(248509);
+      return false;
+    }
+    if (paramcc.jbz() == true) {}
+    for (int i = 1; i == 0; i = 0)
+    {
+      Log.i("MicroMsg.BizTimeLineStorageLogicExKt", "isDyeingTemplateToTimeline isTemplateMsg false");
+      AppMethodBeat.o(248509);
+      return false;
+    }
+    if (!au.bwv(paramString))
+    {
+      Log.i("MicroMsg.BizTimeLineStorageLogicExKt", "isDyeingTemplateToTimeline isMsgClusterNotifyMessage = false");
+      AppMethodBeat.o(248509);
+      return false;
+    }
+    paramString = (c)com.tencent.mm.kernel.h.ax(c.class);
+    if ((paramString != null) && (paramString.a(c.a.yOx, 1) == 1)) {}
+    for (i = 1; i == 0; i = 0)
+    {
+      Log.i("MicroMsg.BizTimeLineStorageLogicExKt", "isDyeingTemplateToTimeline open = false");
+      AppMethodBeat.o(248509);
+      return false;
+    }
+    paramcc = XmlParser.parseXml(paramcc.field_content, "msg", null);
+    if (paramcc != null)
+    {
+      paramcc = (String)paramcc.get(".msg.appmsg.mmreader.notify_msg.act");
+      if (!Util.isNullOrNil(paramcc)) {}
+      for (boolean bool = true;; bool = false)
       {
-        localah = new ah();
-        localah.convertFrom((Cursor)localObject);
+        Log.i("MicroMsg.BizTimeLineStorageLogicExKt", "isDyeingTemplateToTimeline notifyMsg = %s", new Object[] { Boolean.valueOf(bool) });
+        if (Util.isNullOrNil(paramcc)) {
+          break;
+        }
+        AppMethodBeat.o(248509);
+        return true;
       }
-      ((Cursor)localObject).close();
-      if (localah == null) {
-        return 0;
+      AppMethodBeat.o(248509);
+      return false;
+    }
+    Log.i("MicroMsg.BizTimeLineStorageLogicExKt", "isDyeingTemplateToTimeline false");
+    AppMethodBeat.o(248509);
+    return false;
+  }
+  
+  public static final SpannableStringBuilder i(ab paramab, int paramInt)
+  {
+    AppMethodBeat.i(248583);
+    s.u(paramab, "info");
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    Map localMap = R(paramab);
+    if (localMap == null)
+    {
+      AppMethodBeat.o(248583);
+      return localSpannableStringBuilder;
+    }
+    if (Util.isNullOrNil((String)localMap.get(".msgsource.notify_msg.act")))
+    {
+      AppMethodBeat.o(248583);
+      return localSpannableStringBuilder;
+    }
+    b localb = (b)new ai.c(localMap);
+    if (paramInt == 0) {}
+    for (paramab = "";; paramab = Integer.valueOf(paramInt))
+    {
+      paramab = s.X(".msgsource.notify_msg.msg.item", paramab);
+      if (!Util.isNullOrNil((String)localMap.get(s.X(paramab, ".content")))) {
+        localSpannableStringBuilder.append((CharSequence)localb.invoke(paramab));
       }
-      if (localah.field_memberCount < 0)
+      AppMethodBeat.o(248583);
+      return localSpannableStringBuilder;
+    }
+  }
+  
+  public static final int iZe()
+  {
+    AppMethodBeat.i(248554);
+    Object localObject = ((n)com.tencent.mm.kernel.h.ax(n.class)).bzG();
+    if (localObject == null) {}
+    for (localObject = null; localObject == null; localObject = ((by)localObject).bxM("officialaccounts"))
+    {
+      AppMethodBeat.o(248554);
+      return 0;
+    }
+    if (((bd)localObject).field_unReadCount <= 0)
+    {
+      if (((((bb)localObject).rx(8388608)) || (((bb)localObject).rx(2097152))) && (((bd)localObject).field_unReadMuteCount > 0))
       {
-        i = Rz(paramString).split(";").length;
-        localah.field_memberCount = i;
-        localObject = "update chatroom set memberCount = " + i + " where chatroomname = '" + Util.escapeSqlValue(paramString) + "'";
-        this.db.execSQL("chatroom", (String)localObject);
-        Log.i("MicroMsg.ChatroomStorage", "[getMemberCount] init field_memberCount! username:%s count:%s", new Object[] { paramString, Integer.valueOf(i) });
+        AppMethodBeat.o(248554);
+        return 1;
       }
-      int i = localah.field_memberCount;
-      return i;
+      AppMethodBeat.o(248554);
+      return 0;
     }
-    finally
+    if ((!((bb)localObject).rx(16)) && (!((bb)localObject).rx(64)))
     {
-      Log.i("MicroMsg.ChatroomStorage", "[getMemberCount] cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-      AppMethodBeat.o(116935);
+      AppMethodBeat.o(248554);
+      return 0;
     }
+    AppMethodBeat.o(248554);
+    return 1;
   }
   
-  public final ah Rw(String paramString)
+  public static final boolean iZf()
   {
-    AppMethodBeat.i(116930);
-    ah localah = new ah();
-    localah.field_chatroomname = paramString;
-    if (super.get(localah, new String[] { "chatroomname" }))
+    boolean bool2 = true;
+    AppMethodBeat.i(248565);
+    long l = MultiProcessMMKV.getSingleMMKV("brandService").decodeLong("BizLastMsgId");
+    boolean bool1 = bool2;
+    if (l < 0L)
     {
-      AppMethodBeat.o(116930);
-      return localah;
-    }
-    AppMethodBeat.o(116930);
-    return null;
-  }
-  
-  public final ah Rx(String paramString)
-  {
-    AppMethodBeat.i(116931);
-    ah localah = new ah();
-    localah.field_chatroomname = paramString;
-    if (super.get(localah, new String[] { "chatroomname" }))
-    {
-      AppMethodBeat.o(116931);
-      return localah;
-    }
-    AppMethodBeat.o(116931);
-    return localah;
-  }
-  
-  public final String Ry(String paramString)
-  {
-    AppMethodBeat.i(116933);
-    if (paramString.length() > 0) {}
-    Cursor localCursor;
-    for (boolean bool = true;; bool = false)
-    {
-      Assert.assertTrue(bool);
-      paramString = "select roomowner from chatroom where chatroomname='" + Util.escapeSqlValue(paramString) + "'";
-      localCursor = this.db.rawQuery(paramString, null, 2);
-      if (localCursor != null) {
-        break;
-      }
-      Log.e("MicroMsg.ChatroomStorage", "getChatroomOwner fail, cursor is null");
-      AppMethodBeat.o(116933);
-      return null;
-    }
-    if (localCursor.moveToFirst())
-    {
-      paramString = new ah();
-      paramString.convertFrom(localCursor);
-    }
-    for (;;)
-    {
-      localCursor.close();
-      if (paramString == null)
+      Object localObject = af.bHo().aq(l, "msgId");
+      bool1 = bool2;
+      if (localObject != null)
       {
-        AppMethodBeat.o(116933);
-        return null;
+        bool1 = bool2;
+        if (((ab)localObject).iYi())
+        {
+          localObject = P((ab)localObject);
+          if (localObject == null)
+          {
+            AppMethodBeat.o(248565);
+            return true;
+          }
+          if (Util.getInt((String)((Map)localObject).get(".msg.appmsg.mmreader.notify_msg.is_show_msg_count"), 1) != 1) {
+            break label109;
+          }
+        }
       }
-      paramString = paramString.field_roomowner;
-      AppMethodBeat.o(116933);
-      return paramString;
-      paramString = null;
+    }
+    label109:
+    for (bool1 = true;; bool1 = false)
+    {
+      AppMethodBeat.o(248565);
+      return bool1;
     }
   }
   
-  public final String Rz(String paramString)
+  @Metadata(d1={""}, d2={"<no name provided>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements a<String>
   {
-    AppMethodBeat.i(116934);
-    boolean bool;
-    Cursor localCursor;
-    if (paramString.length() > 0)
+    a(ab paramab)
     {
-      bool = true;
-      Assert.assertTrue(bool);
-      paramString = "select memberlist from chatroom where chatroomname='" + Util.escapeSqlValue(paramString) + "'";
-      localCursor = this.db.rawQuery(paramString, null, 2);
-      if (!localCursor.moveToFirst()) {
-        break label116;
-      }
-      paramString = new ah();
-      paramString.convertFrom(localCursor);
+      super();
     }
-    for (;;)
-    {
-      localCursor.close();
-      if (paramString == null)
-      {
-        AppMethodBeat.o(116934);
-        return null;
-        bool = false;
-        break;
-      }
-      paramString = paramString.field_memberlist;
-      AppMethodBeat.o(116934);
-      return paramString;
-      label116:
-      paramString = null;
-    }
-  }
-  
-  public final void w(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(116932);
-    paramString = "update chatroom set modifytime = " + paramLong + " where chatroomname = '" + Util.escapeSqlValue(paramString) + "'";
-    this.db.execSQL("chatroom", paramString);
-    AppMethodBeat.o(116932);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.storage.ai
  * JD-Core Version:    0.7.0.1
  */

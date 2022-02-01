@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.fcm;
 
+import androidx.lifecycle.q;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.hj;
-import com.tencent.mm.f.a.hk;
+import com.tencent.mm.autogen.a.hu;
+import com.tencent.mm.autogen.a.hv;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 
@@ -13,40 +13,40 @@ public class PluginFCM
   extends com.tencent.mm.kernel.b.f
   implements com.tencent.mm.plugin.fcm.a.a
 {
-  private static boolean wUc = true;
-  IListener wUd;
-  IListener wUe;
+  private static boolean AqF = true;
+  IListener AqG;
+  IListener AqH;
   
   public PluginFCM()
   {
     AppMethodBeat.i(127584);
-    this.wUd = new IListener() {};
-    this.wUe = new IListener() {};
+    this.AqG = new IListener(com.tencent.mm.app.f.hfK) {};
+    this.AqH = new IListener(com.tencent.mm.app.f.hfK) {};
     AppMethodBeat.o(127584);
   }
   
   private boolean handleLogin()
   {
     AppMethodBeat.i(127588);
-    if (!com.tencent.mm.kernel.h.aHB())
+    if (!com.tencent.mm.kernel.h.baz())
     {
       Log.w("MicroMsg.FCM.PluginFCM", "accout not ready");
       AppMethodBeat.o(127588);
       return false;
     }
-    b localb = b.dmn();
+    b localb = b.dTd();
     if (localb != null)
     {
-      if (localb.dmp())
+      if (localb.dTf())
       {
         Log.i("MicroMsg.FCM.FcmRegister", "Google Play Services is available, " + Thread.currentThread().getId());
-        if (localb.dmo())
+        if (localb.dTe())
         {
-          String str = FirebaseInstanceId.yw().getToken();
+          String str = FirebaseInstanceId.Yh().getToken();
           if (str == null) {
             Log.w("MicroMsg.FCM.FcmRegister", "token is null, not ready");
           }
-          localb.aAE(str);
+          localb.auM(str);
           AppMethodBeat.o(127588);
           return true;
         }
@@ -54,12 +54,12 @@ public class PluginFCM
       }
       for (;;)
       {
-        com.tencent.mm.plugin.report.service.h.IzE.kvStat(11250, "2,0");
-        com.tencent.mm.plugin.report.f.Iyx.idkeyStat(901L, 0L, 1L, false);
-        if (!localb.dmr()) {
+        com.tencent.mm.plugin.report.service.h.OAn.kvStat(11250, "2,0");
+        com.tencent.mm.plugin.report.f.Ozc.idkeyStat(901L, 0L, 1L, false);
+        if (!localb.dTh()) {
           break;
         }
-        localb.dmq();
+        localb.dTg();
         break;
         Log.w("MicroMsg.FCM.FcmRegister", "Google Play Services Unavailable");
       }
@@ -71,19 +71,19 @@ public class PluginFCM
   private boolean handleLogout()
   {
     AppMethodBeat.i(127589);
-    b localb = b.dmn();
+    b localb = b.dTd();
     if (localb != null)
     {
-      Log.i("MicroMsg.FCM.FcmRegister", "FCM onLogout. isRegToSvr:" + localb.dmr());
-      WCFirebaseMessagingService.dmt();
-      if (localb.dmr()) {
-        localb.dmq();
+      Log.i("MicroMsg.FCM.FcmRegister", "FCM onLogout. isRegToSvr:" + localb.dTh());
+      WCFirebaseMessagingService.dTj();
+      if (localb.dTh()) {
+        localb.dTg();
       }
       for (;;)
       {
         AppMethodBeat.o(127589);
         return true;
-        com.tencent.mm.plugin.report.f.Iyx.idkeyStat(901L, 20L, 1L, false);
+        com.tencent.mm.plugin.report.f.Ozc.idkeyStat(901L, 20L, 1L, false);
       }
     }
     AppMethodBeat.o(127589);
@@ -100,17 +100,17 @@ public class PluginFCM
   public void execute(g paramg)
   {
     AppMethodBeat.i(127587);
-    if (paramg.aIE())
+    if (paramg.bbA())
     {
       Log.i("MicroMsg.FCM.PluginFCM", "register listener at " + paramg.mProcessName);
-      if (!a.fo(paramg.Zw))
+      if (!a.gm(paramg.bGP))
       {
-        wUc = false;
+        AqF = false;
         AppMethodBeat.o(127587);
         return;
       }
-      EventCenter.instance.add(this.wUd);
-      EventCenter.instance.add(this.wUe);
+      this.AqG.alive();
+      this.AqH.alive();
     }
     AppMethodBeat.o(127587);
   }
@@ -130,7 +130,7 @@ public class PluginFCM
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fcm.PluginFCM
  * JD-Core Version:    0.7.0.1
  */

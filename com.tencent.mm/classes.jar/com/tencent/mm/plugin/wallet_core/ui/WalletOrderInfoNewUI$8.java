@@ -6,22 +6,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.ui.i;
 
 final class WalletOrderInfoNewUI$8
   implements View.OnClickListener
 {
-  WalletOrderInfoNewUI$8(WalletOrderInfoNewUI paramWalletOrderInfoNewUI) {}
+  WalletOrderInfoNewUI$8(WalletOrderInfoNewUI paramWalletOrderInfoNewUI, String paramString1, String paramString2, int paramInt) {}
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(187435);
+    AppMethodBeat.i(301320);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/wallet_core/ui/WalletOrderInfoNewUI$19", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    Log.i("MicroMsg.WalletOrderInfoNewUI", "click activity button");
-    WalletOrderInfoNewUI.v(this.Pah);
-    a.a(this, "com/tencent/mm/plugin/wallet_core/ui/WalletOrderInfoNewUI$19", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(187435);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/wallet_core/ui/WalletOrderInfoNewUI$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    Log.i("MicroMsg.WalletOrderInfoNewUI", "leadViewInfo click app username：%s，path：%s，version：%s ,mTransactionId：%s", new Object[] { this.VQF, this.VQG, Integer.valueOf(this.VQH), WalletOrderInfoNewUI.o(this.VQz) });
+    i.y(this.VQF, this.VQG, this.VQH, 8);
+    a.a(this, "com/tencent/mm/plugin/wallet_core/ui/WalletOrderInfoNewUI$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(301320);
   }
 }
 

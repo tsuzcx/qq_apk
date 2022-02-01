@@ -1,73 +1,82 @@
 package com.tencent.mm.plugin.webview.luggage;
 
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.luggage.d.i;
+import com.tencent.luggage.d.j;
+import com.tencent.luggage.l.e.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.ui.tools.jsapi.a.d;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.util.HashMap;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bx;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.widget.SwipeBackLayout;
+import java.util.LinkedList;
 
-public final class w
+public class w
+  extends i
 {
-  public g PPn;
-  public final HashMap<String, a.d> PRA;
-  public final HashMap<String, String> PRB;
-  public final HashMap<String, String> PRz;
+  com.tencent.mm.plugin.webview.modeltools.a WHU;
   
-  public w(g paramg)
+  public w(final Activity paramActivity)
   {
-    AppMethodBeat.i(78474);
-    this.PRz = new HashMap();
-    this.PRA = new HashMap();
-    this.PRB = new HashMap();
-    this.PPn = paramg;
-    AppMethodBeat.o(78474);
+    super(paramActivity);
+    AppMethodBeat.i(78469);
+    X(com.tencent.mm.plugin.webview.luggage.d.a.class);
+    this.ejl.aZ(bx.fEv());
+    this.WHU = new com.tencent.mm.plugin.webview.modeltools.a();
+    this.ejq.aoy().a(new e.c()
+    {
+      public final boolean onResult(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
+      {
+        AppMethodBeat.i(78468);
+        boolean bool = w.this.WHU.d(paramActivity, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousIntent);
+        AppMethodBeat.o(78468);
+        return bool;
+      }
+    });
+    AppMethodBeat.o(78469);
   }
   
-  public static String bks(String paramString)
+  private void iuM()
   {
-    AppMethodBeat.i(78476);
-    if (Util.isNullOrNil(paramString))
+    AppMethodBeat.i(78471);
+    if ((this.mContext instanceof MMActivity))
     {
-      AppMethodBeat.o(78476);
-      return paramString;
+      SwipeBackLayout localSwipeBackLayout = ((MMActivity)this.mContext).getSwipeBackLayout();
+      if (localSwipeBackLayout != null)
+      {
+        if (this.ejq.aov().size() <= 1)
+        {
+          localSwipeBackLayout.setEnableGesture(true);
+          AppMethodBeat.o(78471);
+          return;
+        }
+        localSwipeBackLayout.setEnableGesture(false);
+      }
     }
-    int i = paramString.indexOf("#");
-    if (i < 0)
-    {
-      AppMethodBeat.o(78476);
-      return paramString;
-    }
-    paramString = paramString.substring(0, i);
-    AppMethodBeat.o(78476);
-    return paramString;
+    AppMethodBeat.o(78471);
   }
   
-  public final String getAppId()
+  public final void aoq()
   {
-    AppMethodBeat.i(78475);
-    String str = this.PPn.getUrl();
-    if (Util.isNullOrNil(str))
-    {
-      AppMethodBeat.o(78475);
-      return null;
-    }
-    str = bks(str);
-    str = (String)this.PRz.get(str);
-    AppMethodBeat.o(78475);
-    return str;
+    AppMethodBeat.i(78472);
+    ((g)aol()).iua();
+    iuM();
+    AppMethodBeat.o(78472);
   }
   
-  public final String getIcon()
+  public final void aor()
   {
-    AppMethodBeat.i(78477);
-    String str = getAppId();
-    if (Util.isNullOrNil(str))
-    {
-      AppMethodBeat.o(78477);
-      return null;
-    }
-    str = (String)this.PRB.get(str);
-    AppMethodBeat.o(78477);
-    return str;
+    AppMethodBeat.i(78473);
+    iuM();
+    AppMethodBeat.o(78473);
+  }
+  
+  public final void onResume()
+  {
+    AppMethodBeat.i(78470);
+    super.onResume();
+    iuM();
+    AppMethodBeat.o(78470);
   }
 }
 

@@ -8,7 +8,6 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.text.TextUtils;
 import com.google.android.gms.common.internal.GmsIntents;
 import com.google.android.gms.common.util.DeviceProperties;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.common.wrappers.PackageManagerWrapper;
 import com.google.android.gms.common.wrappers.Wrappers;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -33,7 +32,6 @@ public class GoogleApiAvailabilityLight
     return zzaw;
   }
   
-  @VisibleForTesting
   private static String zza(Context paramContext, String paramString)
   {
     AppMethodBeat.i(4398);
@@ -219,7 +217,7 @@ public class GoogleApiAvailabilityLight
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.GoogleApiAvailabilityLight
  * JD-Core Version:    0.7.0.1
  */

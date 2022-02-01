@@ -4,26 +4,25 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
-import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader.b;
 
 public class AppBrandSysConfigWC
   extends AppBrandSysConfigLU
 {
   public static final Parcelable.Creator<AppBrandSysConfigWC> CREATOR;
-  public boolean nYU;
-  public boolean nYV;
-  public boolean nYW;
-  public int nYX;
-  public byte[] nYY;
-  public ICommLibReader nYZ;
-  public int nYp;
-  public int nYq;
+  public int nOX;
+  public int qYr;
+  public boolean qZb;
+  public boolean qZc;
+  public boolean qZd;
+  public int qZe;
+  public byte[] qZf;
+  public int qZg;
+  public int qZh;
   
   static
   {
     AppMethodBeat.i(44848);
-    CREATOR = new Parcelable.Creator() {};
+    CREATOR = new AppBrandSysConfigWC.1();
     AppMethodBeat.o(44848);
   }
   
@@ -36,27 +35,28 @@ public class AppBrandSysConfigWC
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.nYU = bool1;
+      this.qZb = bool1;
       if (paramParcel.readInt() != 1) {
-        break label107;
+        break label115;
       }
       bool1 = true;
       label36:
-      this.nYV = bool1;
-      this.nYX = paramParcel.readInt();
+      this.qZc = bool1;
+      this.qZe = paramParcel.readInt();
       if (paramParcel.readInt() != 1) {
-        break label112;
+        break label120;
       }
     }
-    label107:
-    label112:
+    label115:
+    label120:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.nYW = bool1;
-      this.nYY = paramParcel.createByteArray();
-      this.nYZ = ICommLibReader.b.h(paramParcel);
-      this.nYp = paramParcel.readInt();
-      this.nYq = paramParcel.readInt();
+      this.qZd = bool1;
+      this.qZf = paramParcel.createByteArray();
+      this.nOX = paramParcel.readInt();
+      this.qYr = paramParcel.readInt();
+      this.qZg = paramParcel.readInt();
+      this.qZh = paramParcel.readInt();
       AppMethodBeat.o(44846);
       return;
       bool1 = false;
@@ -68,46 +68,47 @@ public class AppBrandSysConfigWC
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int j = 1;
+    int i = 1;
     AppMethodBeat.i(44847);
     super.writeToParcel(paramParcel, paramInt);
     byte b;
-    if (this.nYU)
+    if (this.qZb)
     {
       b = 1;
       paramParcel.writeByte(b);
-      if (!this.nYV) {
-        break label113;
+      if (!this.qZc) {
+        break label116;
       }
-      i = 1;
-      label38:
-      paramParcel.writeInt(i);
-      paramParcel.writeInt(this.nYX);
-      if (!this.nYW) {
-        break label119;
+      paramInt = 1;
+      label37:
+      paramParcel.writeInt(paramInt);
+      paramParcel.writeInt(this.qZe);
+      if (!this.qZd) {
+        break label121;
       }
     }
-    label113:
-    label119:
-    for (int i = j;; i = 0)
+    label116:
+    label121:
+    for (paramInt = i;; paramInt = 0)
     {
-      paramParcel.writeInt(i);
-      paramParcel.writeByteArray(this.nYY);
-      ICommLibReader.b.a(this.nYZ, paramParcel, paramInt);
-      paramParcel.writeInt(this.nYp);
-      paramParcel.writeInt(this.nYq);
+      paramParcel.writeInt(paramInt);
+      paramParcel.writeByteArray(this.qZf);
+      paramParcel.writeInt(this.nOX);
+      paramParcel.writeInt(this.qYr);
+      paramParcel.writeInt(this.qZg);
+      paramParcel.writeInt(this.qZh);
       AppMethodBeat.o(44847);
       return;
       b = 0;
       break;
-      i = 0;
-      break label38;
+      paramInt = 0;
+      break label37;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC
  * JD-Core Version:    0.7.0.1
  */

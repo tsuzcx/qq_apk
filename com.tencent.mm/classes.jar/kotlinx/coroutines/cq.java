@@ -1,32 +1,17 @@
 package kotlinx.coroutines;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
-import kotlin.x;
+import java.util.concurrent.CancellationException;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/ResumeUndispatchedRunnable;", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "dispatcher", "Lkotlinx/coroutines/CoroutineDispatcher;", "continuation", "Lkotlinx/coroutines/CancellableContinuation;", "", "(Lkotlinx/coroutines/CoroutineDispatcher;Lkotlinx/coroutines/CancellableContinuation;)V", "run", "kotlinx-coroutines-core"})
-final class cq
-  implements Runnable
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/ParentJob;", "Lkotlinx/coroutines/Job;", "getChildJobCancellationCause", "Ljava/util/concurrent/CancellationException;", "Lkotlinx/coroutines/CancellationException;", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface cq
+  extends cb
 {
-  private final af abwP;
-  private final m<x> abwc;
-  
-  public cq(af paramaf, m<? super x> paramm)
-  {
-    this.abwP = paramaf;
-    this.abwc = paramm;
-  }
-  
-  public final void run()
-  {
-    AppMethodBeat.i(204220);
-    this.abwc.a(this.abwP, x.aazN);
-    AppMethodBeat.o(204220);
-  }
+  public abstract CancellationException kCz();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.cq
  * JD-Core Version:    0.7.0.1
  */

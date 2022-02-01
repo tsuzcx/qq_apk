@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.gif.MMAnimateView android:gravity="center" android:id="@id/g3k" android:layout_width="@dimen/d_" android:layout_height="@dimen/d_" android:layout_marginTop="160.0dip" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/FG_2" android:id="@id/g3y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:text="@string/ht6" android:layout_below="@id/g3k" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/FG_2" android:id="@id/cl0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="160.0dip" android:text="@string/ht9" android:layout_centerHorizontal="true" />
+    <Button android:id="@id/ckr" android:visibility="gone" android:layout_width="150.0dip" android:layout_height="40.0dip" android:layout_marginTop="@dimen/cp" android:text="@string/a2j" android:layout_below="@id/cl0" android:layout_centerHorizontal="true" style="@style/oh" />
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/FG_2" android:id="@id/cn3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="160.0dip" android:text="@string/lel" android:layout_centerHorizontal="true" />
+    <Button android:id="@id/cn2" android:visibility="gone" android:layout_width="150.0dip" android:layout_height="40.0dip" android:layout_marginTop="@dimen/cp" android:text="@string/fn2" android:layout_below="@id/cn3" android:layout_centerHorizontal="true" style="@style/oh" />
+</RelativeLayout>

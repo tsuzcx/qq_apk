@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="2.7"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <FrameLayout android:id="@id/a83" android:background="@drawable/w3" android:layout_width="@dimen/d4" android:layout_height="@dimen/d4">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/a81" android:padding="@dimen/df" android:layout_width="@dimen/d4" android:layout_height="@dimen/d4" android:src="@raw/icons_filled_cutie" />
+            <ImageView android:layout_gravity="end|bottom|center" android:id="@id/a82" android:visibility="gone" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" />
+        </FrameLayout>
+        <TextView android:textSize="@dimen/fa" android:textColor="@color/az" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:text="@string/htm" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <FrameLayout android:id="@id/k28" android:background="@drawable/w3" android:layout_width="@dimen/d4" android:layout_height="@dimen/d4">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/k26" android:padding="@dimen/df" android:layout_width="@dimen/d4" android:layout_height="@dimen/d4" android:src="@raw/icons_filled_sticker" />
+            <ImageView android:layout_gravity="end|bottom|center" android:id="@id/k27" android:visibility="gone" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" />
+        </FrameLayout>
+        <TextView android:textSize="@dimen/fa" android:textColor="@color/az" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:text="@string/hus" />
+    </LinearLayout>
+</LinearLayout>

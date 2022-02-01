@@ -8,97 +8,99 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.appbrand.service.r;
-import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.plugin.appbrand.service.t;
+import com.tencent.mm.plugin.finder.live.p.f;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
 import com.tencent.mm.plugin.findersdk.a.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.b;
-import com.tencent.mm.ui.base.b.b;
-import java.util.HashMap;
 import java.util.Map;
-import kotlin.g.b.ag;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.an;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveMiniProProxyUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "checkIntentState", "", "enableActivityAnimation", "", "finish", "getLayoutId", "", "launchMiniProgram", "context", "Landroid/content/Context;", "bundle", "Lcom/tencent/mm/plugin/appbrand/api/WeAppOpenBundle;", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onNewIntent", "intent", "Landroid/content/Intent;", "onPause", "onResume", "onStart", "onStop", "setWindowStyle", "plugin-finder-live_release"})
-public final class FinderLiveMiniProProxyUI
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveMiniProProxyUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "checkIntentState", "", "enableActivityAnimation", "", "finish", "getLayoutId", "", "launchMiniProgram", "context", "Landroid/content/Context;", "bundle", "Lcom/tencent/mm/plugin/appbrand/api/WeAppOpenBundle;", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onNewIntent", "intent", "Landroid/content/Intent;", "onPause", "onResume", "onStart", "onStop", "setWindowStyle", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+public class FinderLiveMiniProProxyUI
   extends MMFinderUI
 {
-  final String TAG = "FinderLive.MiniProProxyUI";
-  private HashMap _$_findViewCache;
+  private final String TAG = "FinderLive.MiniProProxyUI";
+  
+  private static final void a(FinderLiveMiniProProxyUI paramFinderLiveMiniProProxyUI, boolean paramBoolean)
+  {
+    AppMethodBeat.i(365494);
+    s.u(paramFinderLiveMiniProProxyUI, "this$0");
+    Log.i(paramFinderLiveMiniProProxyUI.TAG, s.X("convertActivityToTranslucent complete:", Boolean.valueOf(paramBoolean)));
+    AppMethodBeat.o(365494);
+  }
   
   private final void b(Context paramContext, com.tencent.mm.plugin.appbrand.api.g paramg)
   {
-    AppMethodBeat.i(232813);
-    Log.i(this.TAG, "launchMiniProgram appid:" + paramg.appId + ", path:" + paramg.nBq);
-    ((r)h.ae(r.class)).a(paramContext, paramg);
-    AppMethodBeat.o(232813);
+    AppMethodBeat.i(365480);
+    Log.i(this.TAG, "launchMiniProgram appid:" + paramg.appId + ", path:" + paramg.qAF);
+    ((t)h.ax(t.class)).a(paramContext, paramg);
+    AppMethodBeat.o(365480);
   }
   
-  private final void dvq()
+  private final void efk()
   {
     Object localObject2 = null;
-    AppMethodBeat.i(232814);
+    AppMethodBeat.i(365489);
     Object localObject1 = getIntent();
     Object localObject3;
     int i;
-    if (localObject1 != null)
+    if (localObject1 == null)
     {
-      localObject3 = a.b.BuP;
-      localObject3 = a.b.emQ();
-      a.b localb = a.b.BuP;
-      localObject1 = Integer.valueOf(((Intent)localObject1).getIntExtra((String)localObject3, a.b.emS()));
-      Log.i(this.TAG, "[checkIntentState] purpose = ".concat(String.valueOf(localObject1)));
-      localObject3 = a.b.BuP;
-      i = a.b.emT();
+      localObject1 = null;
+      Log.i(this.TAG, s.X("[checkIntentState] purpose = ", localObject1));
+      localObject3 = a.b.Hbz;
+      i = a.b.frc();
       if (localObject1 != null) {
-        break label115;
+        break label112;
       }
-      label74:
-      localObject2 = a.b.BuP;
-      i = a.b.emU();
+      label45:
+      localObject2 = a.b.Hbz;
+      i = a.b.frd();
       if (localObject1 != null) {
-        break label286;
+        break label284;
       }
-      label87:
-      localObject2 = a.b.BuP;
-      i = a.b.emV();
+      label58:
+      localObject2 = a.b.Hbz;
+      i = a.b.fre();
       if (localObject1 != null) {
-        break label297;
+        break label295;
       }
     }
     for (;;)
     {
       finish();
-      AppMethodBeat.o(232814);
+      AppMethodBeat.o(365489);
       return;
-      localObject1 = null;
+      localObject3 = a.b.Hbz;
+      localObject3 = a.b.fqZ();
+      a.b localb = a.b.Hbz;
+      localObject1 = Integer.valueOf(((Intent)localObject1).getIntExtra((String)localObject3, a.b.frb()));
       break;
-      label115:
+      label112:
       if (((Integer)localObject1).intValue() != i) {
-        break label74;
+        break label45;
       }
-      localObject3 = getIntent();
-      localObject1 = localObject2;
-      if (localObject3 != null)
+      localObject1 = getIntent();
+      if (localObject1 == null) {}
+      for (localObject1 = localObject2;; localObject1 = Integer.valueOf(((Intent)localObject1).getIntExtra(a.b.fra(), 0)))
       {
-        localObject1 = a.b.BuP;
-        localObject1 = Integer.valueOf(((Intent)localObject3).getIntExtra(a.b.emR(), 0));
-      }
-      localObject2 = com.tencent.mm.plugin.finder.live.viewmodel.data.g.zeD;
-      localObject2 = (Map)com.tencent.mm.plugin.finder.live.viewmodel.data.g.dGB();
-      if (localObject2 == null)
-      {
-        localObject1 = new t("null cannot be cast to non-null type kotlin.collections.MutableMap<K, V>");
-        AppMethodBeat.o(232814);
+        localObject2 = com.tencent.mm.plugin.finder.live.viewmodel.data.g.Ebv;
+        localObject2 = (Map)com.tencent.mm.plugin.finder.live.viewmodel.data.g.exX();
+        if (localObject2 != null) {
+          break;
+        }
+        localObject1 = new NullPointerException("null cannot be cast to non-null type kotlin.collections.MutableMap<K, V>");
+        AppMethodBeat.o(365489);
         throw ((Throwable)localObject1);
+        localObject2 = a.b.Hbz;
       }
-      localObject2 = (com.tencent.mm.plugin.appbrand.api.g)ag.fk(localObject2).remove(localObject1);
+      localObject2 = (com.tencent.mm.plugin.appbrand.api.g)an.hJ(localObject2).remove(localObject1);
       localObject3 = this.TAG;
       localObject1 = new StringBuilder("[LUANCH_MINI_PROGRAM] key = ").append(localObject1).append(",bundle is null:");
       if (localObject2 == null) {}
@@ -109,17 +111,17 @@ public final class FinderLiveMiniProProxyUI
           break;
         }
         b((Context)this, (com.tencent.mm.plugin.appbrand.api.g)localObject2);
-        AppMethodBeat.o(232814);
+        AppMethodBeat.o(365489);
         return;
       }
       finish();
-      AppMethodBeat.o(232814);
+      AppMethodBeat.o(365489);
       return;
-      label286:
+      label284:
       if (((Integer)localObject1).intValue() != i)
       {
-        break label87;
-        label297:
+        break label58;
+        label295:
         if (((Integer)localObject1).intValue() == i) {
           moveTaskToBack(true);
         }
@@ -127,79 +129,56 @@ public final class FinderLiveMiniProProxyUI
     }
   }
   
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(232820);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(232820);
-  }
+  public void _$_clearFindViewByIdCache() {}
   
-  public final View _$_findCachedViewById(int paramInt)
+  public boolean enableActivityAnimation()
   {
-    AppMethodBeat.i(232818);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(232818);
-    return localView1;
-  }
-  
-  public final boolean enableActivityAnimation()
-  {
-    AppMethodBeat.i(232811);
+    AppMethodBeat.i(365561);
     Object localObject1 = getIntent();
     if (localObject1 != null)
     {
-      Object localObject2 = a.b.BuP;
-      localObject2 = a.b.emQ();
-      a.b localb = a.b.BuP;
-      int i = ((Intent)localObject1).getIntExtra((String)localObject2, a.b.emS());
-      localObject1 = a.b.BuP;
-      if (i == a.b.emT())
-      {
-        AppMethodBeat.o(232811);
-        return false;
-      }
+      Object localObject2 = a.b.Hbz;
+      localObject2 = a.b.fqZ();
+      a.b localb = a.b.Hbz;
+      i = ((Intent)localObject1).getIntExtra((String)localObject2, a.b.frb());
+      localObject1 = a.b.Hbz;
+      if (i != a.b.frc()) {}
+    }
+    for (int i = 1; i != 0; i = 0)
+    {
+      AppMethodBeat.o(365561);
+      return false;
     }
     boolean bool = super.enableActivityAnimation();
-    AppMethodBeat.o(232811);
+    AppMethodBeat.o(365561);
     return bool;
   }
   
-  public final void finish()
+  public void finish()
   {
-    AppMethodBeat.i(232809);
+    AppMethodBeat.i(365547);
     Log.i(this.TAG, "finish");
     super.finish();
-    AppMethodBeat.o(232809);
+    AppMethodBeat.o(365547);
   }
   
-  public final int getLayoutId()
+  public int getLayoutId()
   {
-    return b.g.finder_live_occupy_ui;
+    return p.f.CeO;
   }
   
-  public final void onConfigurationChanged(Configuration paramConfiguration)
+  public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(232810);
-    p.k(paramConfiguration, "newConfig");
+    AppMethodBeat.i(365554);
+    s.u(paramConfiguration, "newConfig");
     super.onConfigurationChanged(paramConfiguration);
-    Log.i(this.TAG, "onConfigurationChanged orientation:" + paramConfiguration.orientation);
-    AppMethodBeat.o(232810);
+    Log.i(this.TAG, s.X("onConfigurationChanged orientation:", Integer.valueOf(paramConfiguration.orientation)));
+    AppMethodBeat.o(365554);
   }
   
-  public final void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(232802);
+    AppMethodBeat.i(365512);
     Log.i(this.TAG, "onCreate");
     super.onCreate(paramBundle);
     setSelfNavigationBarVisible(8);
@@ -208,93 +187,71 @@ public final class FinderLiveMiniProProxyUI
     if (Build.VERSION.SDK_INT >= 21)
     {
       getWindow().clearFlags(67108864);
-      paramBundle = getWindow();
-      p.j(paramBundle, "window");
-      paramBundle = paramBundle.getDecorView();
-      p.j(paramBundle, "window.decorView");
-      paramBundle.setSystemUiVisibility(1792);
+      getWindow().getDecorView().setSystemUiVisibility(1792);
       getWindow().addFlags(-2147483648);
-      paramBundle = getWindow();
-      p.j(paramBundle, "window");
-      paramBundle.setStatusBarColor(0);
-      paramBundle = getWindow();
-      p.j(paramBundle, "window");
-      paramBundle.setNavigationBarColor(0);
+      getWindow().setStatusBarColor(0);
+      getWindow().setNavigationBarColor(0);
     }
     getWindow().setFormat(-3);
     getWindow().setSoftInputMode(51);
-    b.a((Activity)this, (b.b)new a(this));
-    AppMethodBeat.o(232802);
+    b.a((Activity)this, new FinderLiveMiniProProxyUI..ExternalSyntheticLambda0(this));
+    AppMethodBeat.o(365512);
   }
   
-  public final void onDestroy()
+  public void onDestroy()
   {
-    AppMethodBeat.i(232808);
+    AppMethodBeat.i(365543);
     Log.i(this.TAG, "onDestroy");
     super.onDestroy();
-    AppMethodBeat.o(232808);
+    AppMethodBeat.o(365543);
   }
   
-  public final void onNewIntent(Intent paramIntent)
+  public void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(232804);
+    AppMethodBeat.i(365524);
     Log.i(this.TAG, "onNewIntent");
     super.onNewIntent(paramIntent);
-    dvq();
-    AppMethodBeat.o(232804);
+    efk();
+    AppMethodBeat.o(365524);
   }
   
-  public final void onPause()
+  public void onPause()
   {
-    AppMethodBeat.i(232806);
+    AppMethodBeat.i(365529);
     Log.i(this.TAG, "onPause");
     super.onPause();
-    AppMethodBeat.o(232806);
+    AppMethodBeat.o(365529);
   }
   
-  public final void onResume()
+  public void onResume()
   {
-    AppMethodBeat.i(232805);
+    AppMethodBeat.i(365527);
     Log.i(this.TAG, "onResume");
     super.onResume();
-    dvq();
-    AppMethodBeat.o(232805);
+    efk();
+    AppMethodBeat.o(365527);
   }
   
-  public final void onStart()
+  public void onStart()
   {
-    AppMethodBeat.i(232803);
+    AppMethodBeat.i(365520);
     Log.i(this.TAG, "onStart");
     super.onStart();
-    AppMethodBeat.o(232803);
+    AppMethodBeat.o(365520);
   }
   
-  public final void onStop()
+  public void onStop()
   {
-    AppMethodBeat.i(232807);
+    AppMethodBeat.i(365535);
     Log.i(this.TAG, "onStop");
     super.onStop();
-    AppMethodBeat.o(232807);
+    AppMethodBeat.o(365535);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "onComplete"})
-  static final class a
-    implements b.b
-  {
-    a(FinderLiveMiniProProxyUI paramFinderLiveMiniProProxyUI) {}
-    
-    public final void eG(boolean paramBoolean)
-    {
-      AppMethodBeat.i(233083);
-      Log.i(this.xPr.TAG, "convertActivityToTranslucent complete:".concat(String.valueOf(paramBoolean)));
-      AppMethodBeat.o(233083);
-    }
   }
 }
 

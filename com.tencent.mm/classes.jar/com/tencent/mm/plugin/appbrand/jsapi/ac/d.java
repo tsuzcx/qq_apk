@@ -1,110 +1,104 @@
 package com.tencent.mm.plugin.appbrand.jsapi.ac;
 
-import android.os.IInterface;
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.j;
+import com.tencent.mm.plugin.appbrand.game.g.b.4;
+import com.tencent.mm.plugin.appbrand.game.g.b.5;
+import com.tencent.mm.plugin.appbrand.game.g.b.6;
+import com.tencent.mm.plugin.appbrand.game.g.b.7;
+import com.tencent.mm.plugin.appbrand.jsapi.file.ax;
+import com.tencent.mm.plugin.appbrand.service.c;
+import com.tencent.mm.plugin.appbrand.w;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.trafficcard.ITencentSmartcardOpenService;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.ah;
+import com.tencent.mm.vfs.u;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class d
-  extends a
+  extends b
 {
-  public static final int CTRL_INDEX = 998;
-  public static final String NAME = "deleteTrafficCard";
+  public static final int CTRL_INDEX = 687;
+  public static final String NAME = "operateMediaTrack";
   
-  protected final void a(j paramj, int paramInt, IInterface paramIInterface, JSONObject paramJSONObject)
+  public final void a(final c paramc, JSONObject paramJSONObject, final int paramInt)
   {
-    AppMethodBeat.i(283107);
-    if (paramJSONObject == null)
+    AppMethodBeat.i(46760);
+    Log.i("MicroMsg.GameRecord.JsApiScreenRecorderOperateMediaTrack", "hy: %s %s", new Object[] { "operateMediaTrack", paramJSONObject.toString() });
+    Object localObject1 = paramJSONObject.optString("operationType");
+    Object localObject2;
+    if (((String)localObject1).equalsIgnoreCase("get"))
     {
-      paramIInterface = new HashMap();
-      paramIInterface.put("errCode", Integer.valueOf(b.psC.errorCode));
-      paramj.j(paramInt, m("fail:" + b.psC.errorMsg, paramIInterface));
-      q(7, b.psC.errorCode, "deviceData is null");
-      Log.e("MicroMsg.JsApiDeleteTrafficCard", "deviceData is null, invoke fail: [%s] ! with appId[%s] callbackId[%s]", new Object[] { b.psC.errorMsg, paramj.getAppId(), Integer.valueOf(paramInt) });
-      AppMethodBeat.o(283107);
-      return;
-    }
-    HashMap localHashMap = new HashMap();
-    String str1 = paramJSONObject.optString("issuerID");
-    String str2 = paramJSONObject.optString("signData");
-    String str3 = paramJSONObject.optString("timestamp");
-    paramJSONObject = paramJSONObject.optString("certId");
-    localHashMap.put("issuerID", str1);
-    localHashMap.put("appID", "APP-WECHAT");
-    localHashMap.put("signData", str2);
-    localHashMap.put("timestamp", str3);
-    localHashMap.put("certId", paramJSONObject);
-    boolean bool = paramIInterface instanceof com.huawei.b.a.a.a;
-    if (bool) {}
-    for (;;)
-    {
+      localObject1 = paramJSONObject.optString("source");
+      if (Util.isNullOrNil((String)localObject1))
+      {
+        paramc.callback(paramInt, ZP(String.format("fail: parmas error %s", new Object[] { paramJSONObject.toString() })));
+        AppMethodBeat.o(46760);
+        return;
+      }
       try
       {
-        paramIInterface = ((com.huawei.b.a.a.a)paramIInterface).deleteCard(localHashMap);
-        if (TextUtils.isEmpty(paramIInterface)) {
-          continue;
-        }
-        paramIInterface = new JSONObject(paramIInterface);
+        paramJSONObject.put("filePath", ah.v(paramc.getRuntime().asx().Wm((String)localObject1).jKT()));
+        localObject1 = e(paramc);
+        localObject2 = new com.tencent.mm.plugin.appbrand.game.g.d() {};
+        ((com.tencent.mm.plugin.appbrand.game.g.b)localObject1).rtv.postToWorker(new b.4((com.tencent.mm.plugin.appbrand.game.g.b)localObject1, paramJSONObject, (com.tencent.mm.plugin.appbrand.game.g.d)localObject2));
+        AppMethodBeat.o(46760);
+        return;
       }
-      catch (Exception paramIInterface)
+      catch (JSONException paramJSONObject)
       {
-        Log.e("MicroMsg.JsApiDeleteTrafficCard", "call remote interface fail: [%s] ! ", new Object[] { paramIInterface.getMessage() });
-        paramIInterface = null;
-        continue;
-        int i = paramIInterface.optInt("resultCode");
-        if (i == b.psB.errorCode) {
-          continue;
-        }
-        if (!bool) {
-          continue;
-        }
-        paramIInterface = b.AM(i);
-        paramJSONObject = paramIInterface;
-        if (paramIInterface != b.ptn) {
-          continue;
-        }
-        paramJSONObject = b.ptk;
-        localHashMap.put("errCode", Integer.valueOf(paramJSONObject.errorCode));
-        paramj.j(paramInt, m("fail:" + paramJSONObject.errorMsg, localHashMap));
-        q(7, paramJSONObject.errorCode, paramJSONObject.errorMsg);
-        Log.e("MicroMsg.JsApiDeleteTrafficCard", "Return code from remote interface! with RetCode deleteCard[%s] ", new Object[] { Integer.valueOf(i) });
-        AppMethodBeat.o(283107);
-        return;
-        paramIInterface = b.AN(i);
-        continue;
-        localHashMap.put("errCode", Integer.valueOf(b.psB.errorCode));
-        paramj.j(paramInt, m(b.psB.errorMsg, localHashMap));
-        q(7, b.psB.errorCode, "");
-        AppMethodBeat.o(283107);
+        paramc.callback(paramInt, ZP(String.format("fail: error %s", new Object[] { paramJSONObject.getMessage() })));
+        AppMethodBeat.o(46760);
         return;
       }
-      localHashMap = new HashMap();
-      if (paramIInterface == null)
+      catch (Exception paramJSONObject)
       {
-        localHashMap.put("errCode", Integer.valueOf(b.psG.errorCode));
-        paramj.j(paramInt, m("fail:" + b.psG.errorMsg, localHashMap));
-        q(7, b.psG.errorCode, "call remote interface exception");
-        Log.e("MicroMsg.JsApiDeleteTrafficCard", "call remote interface exception.");
-        AppMethodBeat.o(283107);
+        paramc.callback(paramInt, ZP(String.format("fail: error %s", new Object[] { paramJSONObject.getMessage() })));
+        AppMethodBeat.o(46760);
         return;
-        if (!(paramIInterface instanceof ITencentSmartcardOpenService)) {
-          break label602;
-        }
-        paramIInterface = ((ITencentSmartcardOpenService)paramIInterface).deleteCard(localHashMap);
       }
-      label602:
-      paramIInterface = "";
     }
+    if (((String)localObject1).equalsIgnoreCase("create"))
+    {
+      localObject1 = e(paramc);
+      paramc = new com.tencent.mm.plugin.appbrand.game.g.d() {};
+      ((com.tencent.mm.plugin.appbrand.game.g.b)localObject1).rtv.postToWorker(new b.5((com.tencent.mm.plugin.appbrand.game.g.b)localObject1, paramJSONObject, paramc));
+      AppMethodBeat.o(46760);
+      return;
+    }
+    if (((String)localObject1).equalsIgnoreCase("update")) {
+      try
+      {
+        localObject1 = e(paramc);
+        localObject2 = new com.tencent.mm.plugin.appbrand.game.g.d() {};
+        ((com.tencent.mm.plugin.appbrand.game.g.b)localObject1).rtv.postToWorker(new b.6((com.tencent.mm.plugin.appbrand.game.g.b)localObject1, paramJSONObject, (com.tencent.mm.plugin.appbrand.game.g.d)localObject2));
+        AppMethodBeat.o(46760);
+        return;
+      }
+      catch (Exception paramJSONObject)
+      {
+        paramc.callback(paramInt, ZP(String.format("fail: error %s", new Object[] { paramJSONObject.getMessage() })));
+        AppMethodBeat.o(46760);
+        return;
+      }
+    }
+    if (((String)localObject1).equalsIgnoreCase("remove"))
+    {
+      localObject1 = e(paramc);
+      paramc = new com.tencent.mm.plugin.appbrand.game.g.d() {};
+      ((com.tencent.mm.plugin.appbrand.game.g.b)localObject1).rtv.postToWorker(new b.7((com.tencent.mm.plugin.appbrand.game.g.b)localObject1, paramJSONObject, paramc));
+      AppMethodBeat.o(46760);
+      return;
+    }
+    Log.e("MicroMsg.GameRecord.JsApiScreenRecorderOperateMediaTrack", "hy: invalid operate type: %s", new Object[] { localObject1 });
+    paramc.callback(paramInt, ZP(String.format("fail: not valid operate type: %s", new Object[] { localObject1 })));
+    AppMethodBeat.o(46760);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.ac.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.google.android.gms.gcm;
 
-import android.annotation.TargetApi;
 import android.app.Service;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -16,14 +15,12 @@ import android.os.RemoteException;
 import android.util.Log;
 import com.google.android.gms.common.util.PlatformVersion;
 import com.google.android.gms.common.util.UidVerifier;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.RejectedExecutionException;
-import javax.annotation.concurrent.GuardedBy;
 
 public abstract class GcmTaskService
   extends Service
@@ -33,7 +30,6 @@ public abstract class GcmTaskService
   public static final String SERVICE_PERMISSION = "com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE";
   private ComponentName componentName;
   private final Object lock = new Object();
-  @GuardedBy("lock")
   private int zzt;
   private ExecutorService zzu;
   private Messenger zzv;
@@ -159,8 +155,6 @@ public abstract class GcmTaskService
     }
   }
   
-  @TargetApi(21)
-  @VisibleForTesting
   final class zzd
     extends Handler
   {
@@ -354,7 +348,7 @@ public abstract class GcmTaskService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.gcm.GcmTaskService
  * JD-Core Version:    0.7.0.1
  */

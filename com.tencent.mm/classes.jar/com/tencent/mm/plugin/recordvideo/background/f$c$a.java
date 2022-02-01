@@ -1,24 +1,12 @@
 package com.tencent.mm.plugin.recordvideo.background;
 
-import kotlin.g.a.a;
-import kotlin.g.b.aa.f;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-final class f$c$a
-  extends q
-  implements a<x>
-{
-  f$c$a(aa.f paramf)
-  {
-    super(0);
-  }
-}
+@Metadata(k=3, mv={1, 5, 1}, xi=48)
+public final class f$c$a {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.background.f.c.a
  * JD-Core Version:    0.7.0.1
  */

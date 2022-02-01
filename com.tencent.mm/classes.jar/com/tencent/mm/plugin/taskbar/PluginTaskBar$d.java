@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.taskbar;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class PluginTaskBar$d
-  extends q
-  implements a<x>
+  extends u
+  implements a<ah>
 {
-  public static final d Mmb;
+  public static final d SPu;
   
   static
   {
-    AppMethodBeat.i(215536);
-    Mmb = new d();
-    AppMethodBeat.o(215536);
+    AppMethodBeat.i(263990);
+    SPu = new d();
+    AppMethodBeat.o(263990);
   }
   
   PluginTaskBar$d()
@@ -27,7 +27,7 @@ final class PluginTaskBar$d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.taskbar.PluginTaskBar.d
  * JD-Core Version:    0.7.0.1
  */

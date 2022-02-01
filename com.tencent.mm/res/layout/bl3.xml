@@ -1,45 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/gt5" android:background="@color/am" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/f63" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout style="@style/a6u">
-            <TextView android:textColor="@color/UN_BW_0_Alpha_0_5" android:text="@string/fui" style="@style/a6v" />
-            <com.tencent.mm.plugin.qqmail.ui.MailAddrsViewControl android:id="@id/gnt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
-            <TextView android:textColor="@color/Link" android:id="@id/gtd" android:text="@string/fu6" style="@style/a5b" />
-        </LinearLayout>
-        <LinearLayout android:orientation="vertical" android:id="@id/gtf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <LinearLayout style="@style/a6u">
-                <TextView android:textColor="@color/UN_BW_0_Alpha_0_5" android:text="@string/ful" style="@style/a6v" />
-                <com.tencent.mm.plugin.qqmail.ui.MailAddrsViewControl android:id="@id/gnu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
-            </LinearLayout>
-            <LinearLayout android:id="@id/gtc" style="@style/a6u">
-                <TextView android:textColor="@color/UN_BW_0_Alpha_0_5" android:text="@string/fu9" style="@style/a6v" />
-                <com.tencent.mm.plugin.qqmail.ui.MailAddrsViewControl android:id="@id/gns" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout android:orientation="vertical" android:background="@drawable/ai_" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textStyle="bold" android:gravity="left" android:id="@id/gti" style="@style/a76" />
-            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <TextView android:layout_gravity="left" android:id="@id/gtj" android:layout_weight="1.0" style="@style/a6i" />
-                <TextView android:textColor="@color/Link" android:id="@id/gth" android:visibility="gone" android:text="@string/fuj" android:drawablePadding="3.0dip" style="@style/a5b" />
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout android:orientation="vertical" android:id="@id/gtb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip">
-            <TextView android:textColor="@color/UN_BW_0_Alpha_0_9" android:id="@id/gt6" android:background="@drawable/b6_" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_weight="1.0" />
-            <com.tencent.mm.plugin.qqmail.ui.MailAttachListLinearLayout android:orientation="vertical" android:id="@id/gta" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        </LinearLayout>
-        <LinearLayout android:background="@drawable/b9w" android:paddingBottom="2.0px" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/UN_BW_0_Alpha_0_5" android:gravity="center_vertical" android:id="@id/gtk" android:background="#fffef8d4" android:paddingLeft="5.0dip" android:layout_width="fill_parent" android:layout_height="34.0dip" />
-        </LinearLayout>
+<com.tencent.mm.view.TouchableLayout android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/ivk" android:layout_width="fill_parent" android:layout_height="fill_parent" app:loadMoreLayout="@layout/b8d" app:refreshLayout="@layout/b7b">
+            <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/klh" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </com.tencent.mm.view.RefreshLoadMoreLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <LinearLayout android:gravity="center" android:id="@id/di" android:background="@color/BW_93" android:paddingTop="@dimen/cd" android:paddingBottom="@dimen/cd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@raw/finder_self_feed_like_arrow" android:rotation="-90.0" app:iconColor="@color/m4" />
+        <TextView android:textSize="@dimen/cd" android:textColor="@color/m4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d6z" />
     </LinearLayout>
-    <FrameLayout android:id="@id/gt4" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <FrameLayout android:id="@id/f5x" android:background="@drawable/bdv" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="20.0dip">
-        <TextView android:id="@id/f5z" android:background="@drawable/bl1" android:layout_width="0.0dip" android:layout_height="48.0dip" />
-        <LinearLayout android:gravity="center" android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <ImageView android:id="@id/f5y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:src="@raw/promo_icon_qqmail" android:contentDescription="@null" />
-            <TextView android:textSize="@dimen/is" android:textColor="@color/UN_BW_0_Alpha_0_9" android:id="@id/f60" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fud" />
-        </LinearLayout>
-    </FrameLayout>
-    <ProgressBar android:layout_gravity="center" android:id="@id/gte" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a61" />
-    <ImageView android:layout_gravity="center" android:id="@id/gtg" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bhp" />
-</FrameLayout>
+</com.tencent.mm.view.TouchableLayout>

@@ -14,36 +14,36 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.hld.a.d;
 import com.tencent.mm.plugin.hld.a.k;
+import com.tencent.mm.plugin.hld.f.l;
 import com.tencent.mm.plugin.hld.model.k;
 import com.tencent.mm.plugin.hld.model.n;
 import com.tencent.mm.plugin.hld.view.ImeGridScrollView;
-import com.tencent.mm.plugin.hld.view.f;
+import com.tencent.mm.plugin.hld.view.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.view.recyclerview.WxGridLayoutManager;
 import com.tencent.wxhld.info.Candidate;
 import java.util.ArrayList;
-import java.util.ArrayList<Lcom.tencent.wxhld.info.Candidate;>;
 import java.util.Collection;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridScrollView;", "Lcom/tencent/mm/plugin/hld/view/ImeGridScrollView;", "Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridViewHolder$IAlternativeWordViewListener;", "Lcom/tencent/mm/plugin/hld/candidate/ICandidateDataListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "alternativeWordList", "Ljava/util/ArrayList;", "Lcom/tencent/wxhld/info/Candidate;", "Lkotlin/collections/ArrayList;", "candidateListfetching", "", "hasMoreCandidate", "getAdapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "initView", "", "onClick", "text", "", "id", "", "order", "pressTime", "", "reset", "updateCandidateList", "addList", "type", "newList", "hasMore", "Companion", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridScrollView;", "Lcom/tencent/mm/plugin/hld/view/ImeGridScrollView;", "Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridViewHolder$IAlternativeWordViewListener;", "Lcom/tencent/mm/plugin/hld/candidate/ICandidateDataListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "alternativeWordList", "Ljava/util/ArrayList;", "Lcom/tencent/wxhld/info/Candidate;", "Lkotlin/collections/ArrayList;", "candidateListfetching", "", "hasMoreCandidate", "getAdapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "initView", "", "onClick", "text", "", "id", "", "order", "pressTime", "", "reset", "updateCandidateList", "addList", "type", "newList", "hasMore", "Companion", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ImeAlternativeWordGridScrollView
   extends ImeGridScrollView
   implements e.a, com.tencent.mm.plugin.hld.candidate.a
 {
-  public static final a DtX;
-  private ArrayList<Candidate> DtU;
-  private boolean DtV;
-  private boolean DtW;
+  public static final ImeAlternativeWordGridScrollView.a Jnu;
+  private ArrayList<Candidate> Jnv;
+  private boolean Jnw;
+  private boolean Jnx;
   
   static
   {
-    AppMethodBeat.i(211575);
-    DtX = new a((byte)0);
-    AppMethodBeat.o(211575);
+    AppMethodBeat.i(311673);
+    Jnu = new ImeAlternativeWordGridScrollView.a((byte)0);
+    AppMethodBeat.o(311673);
   }
   
   public ImeAlternativeWordGridScrollView(Context paramContext, AttributeSet paramAttributeSet)
@@ -59,210 +59,212 @@ public final class ImeAlternativeWordGridScrollView
   private ImeAlternativeWordGridScrollView(Context paramContext, AttributeSet paramAttributeSet, int paramInt, byte paramByte)
   {
     super(paramContext, paramAttributeSet, paramInt, (byte)0);
-    AppMethodBeat.i(211574);
-    this.DtU = new ArrayList();
+    AppMethodBeat.i(311640);
+    this.Jnv = new ArrayList();
     initView();
-    AppMethodBeat.o(211574);
+    AppMethodBeat.o(311640);
   }
   
   public final void a(String paramString, byte[] paramArrayOfByte, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(211569);
-    p.k(paramString, "text");
-    p.k(paramArrayOfByte, "id");
-    com.tencent.mm.plugin.hld.f.l locall = com.tencent.mm.plugin.hld.f.l.DHK;
-    com.tencent.mm.plugin.hld.f.l.it("WxIme.ImeAlternativeWordGridScrollView", "onClick " + paramString + ' ' + paramInt);
-    n.a(n.DEn, paramString, paramArrayOfByte, null, true, paramLong, false, 36);
-    paramString = k.DDb;
-    k.hN(2, paramInt);
-    paramString = k.DDb;
-    k.hO(700, 1);
-    AppMethodBeat.o(211569);
+    AppMethodBeat.i(311710);
+    s.u(paramString, "text");
+    s.u(paramArrayOfByte, "id");
+    l locall = l.JyV;
+    l.jC("WxIme.ImeAlternativeWordGridScrollView", "onClick " + paramString + ' ' + paramInt);
+    n.a(n.JvW, paramString, paramArrayOfByte, null, true, paramLong, false, 36);
+    paramString = k.JvH;
+    k.jr(2, paramInt);
+    paramString = k.JvH;
+    k.YA(700);
+    AppMethodBeat.o(311710);
   }
   
   public final void a(ArrayList<Candidate> paramArrayList, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
     boolean bool = true;
-    AppMethodBeat.i(211572);
-    p.k(paramArrayList, "addList");
-    Log.d("WxIme.ImeAlternativeWordGridScrollView", "updateCandidates " + paramArrayList.size());
-    Object localObject2 = new ArrayList((Collection)paramArrayList);
+    AppMethodBeat.i(311735);
+    s.u(paramArrayList, "addList");
+    Log.d("WxIme.ImeAlternativeWordGridScrollView", s.X("updateCandidates ", Integer.valueOf(paramArrayList.size())));
+    Object localObject = new ArrayList((Collection)paramArrayList);
     if (paramInt == 1) {
-      ((ArrayList)localObject2).clear();
+      ((ArrayList)localObject).clear();
     }
-    this.DtV = false;
-    Object localObject1 = getScrollContainerRv().getAdapter();
-    paramArrayList = (ArrayList<Candidate>)localObject1;
-    if (!(localObject1 instanceof d)) {
-      paramArrayList = null;
-    }
-    paramArrayList = (d)paramArrayList;
-    if (paramArrayList != null) {
-      paramArrayList.nnu = null;
-    }
-    localObject1 = getScrollContainerRv().getAdapter();
-    paramArrayList = (ArrayList<Candidate>)localObject1;
-    if (!(localObject1 instanceof d)) {
-      paramArrayList = null;
-    }
-    paramArrayList = (d)paramArrayList;
-    if (paramArrayList != null)
+    this.Jnw = false;
+    paramArrayList = getScrollContainerRv().getAdapter();
+    label108:
+    RecyclerView localRecyclerView;
+    if ((paramArrayList instanceof d))
     {
-      localObject1 = getScrollContainerRv();
-      localObject2 = (List)localObject2;
-      if (paramBoolean1) {
-        break label176;
+      paramArrayList = (d)paramArrayList;
+      if (paramArrayList != null) {
+        paramArrayList.qkB = null;
+      }
+      paramArrayList = getScrollContainerRv().getAdapter();
+      if (!(paramArrayList instanceof d)) {
+        break label165;
+      }
+      paramArrayList = (d)paramArrayList;
+      if (paramArrayList != null)
+      {
+        paramArrayList = (e)paramArrayList;
+        localRecyclerView = getScrollContainerRv();
+        localObject = (List)localObject;
+        if (paramBoolean1) {
+          break label170;
+        }
       }
     }
-    label176:
+    label165:
+    label170:
     for (paramBoolean1 = bool;; paramBoolean1 = false)
     {
-      f.a(paramArrayList, (RecyclerView)localObject1, (List)localObject2, null, paramBoolean1, 4);
-      this.DtW = paramBoolean2;
-      AppMethodBeat.o(211572);
+      e.a(paramArrayList, localRecyclerView, (List)localObject, null, paramBoolean1, 4);
+      this.Jnx = paramBoolean2;
+      AppMethodBeat.o(311735);
       return;
+      paramArrayList = null;
+      break;
+      paramArrayList = null;
+      break label108;
     }
   }
   
   public final RecyclerView.a<RecyclerView.v> getAdapter()
   {
-    AppMethodBeat.i(211567);
+    AppMethodBeat.i(311698);
     Object localObject = getContext();
-    p.j(localObject, "context");
-    localObject = (RecyclerView.a)new d((Context)localObject, this.DtU, (e.a)this);
-    AppMethodBeat.o(211567);
+    s.s(localObject, "context");
+    localObject = (RecyclerView.a)new d((Context)localObject, this.Jnv, (e.a)this);
+    AppMethodBeat.o(311698);
     return localObject;
   }
   
   public final void initView()
   {
-    AppMethodBeat.i(211564);
+    AppMethodBeat.i(311682);
     super.initView();
     getScrollContainerRv().a((RecyclerView.l)new b(this));
-    AppMethodBeat.o(211564);
+    AppMethodBeat.o(311682);
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(211570);
+    AppMethodBeat.i(311719);
     super.reset();
-    this.DtU.clear();
-    AppMethodBeat.o(211570);
+    this.Jnv.clear();
+    AppMethodBeat.o(311719);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridScrollView$Companion;", "", "()V", "TAG", "", "plugin-hld_release"})
-  public static final class a {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridScrollView$initView$1", "Landroidx/recyclerview/widget/RecyclerView$OnScrollListener;", "onScrolled", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "dx", "", "dy", "plugin-hld_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridScrollView$initView$1", "Landroidx/recyclerview/widget/RecyclerView$OnScrollListener;", "onScrolled", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "dx", "", "dy", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
     extends RecyclerView.l
   {
-    public final void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
-    {
-      AppMethodBeat.i(213923);
-      b localb = new b();
-      localb.bn(paramRecyclerView);
-      localb.sg(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridScrollView$initView$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aFi());
-      super.onScrollStateChanged(paramRecyclerView, paramInt);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridScrollView$initView$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
-      AppMethodBeat.o(213923);
-    }
+    b(ImeAlternativeWordGridScrollView paramImeAlternativeWordGridScrollView) {}
     
-    public final void onScrolled(final RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+    private static final void a(ImeAlternativeWordGridScrollView paramImeAlternativeWordGridScrollView, ArrayList paramArrayList)
     {
-      AppMethodBeat.i(213921);
-      Object localObject = new b();
-      ((b)localObject).bn(paramRecyclerView);
-      ((b)localObject).sg(paramInt1);
-      ((b)localObject).sg(paramInt2);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridScrollView$initView$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, ((b)localObject).aFi());
-      p.k(paramRecyclerView, "recyclerView");
-      if (ImeAlternativeWordGridScrollView.a(this.DtY).isEmpty())
+      AppMethodBeat.i(311704);
+      s.u(paramImeAlternativeWordGridScrollView, "this$0");
+      s.u(paramArrayList, "$candidateList");
+      Object localObject = paramImeAlternativeWordGridScrollView.getScrollContainerRv().getAdapter();
+      if ((localObject instanceof d)) {}
+      for (localObject = (d)localObject;; localObject = null)
       {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridScrollView$initView$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
-        AppMethodBeat.o(213921);
+        if (localObject != null) {
+          e.a((e)localObject, paramImeAlternativeWordGridScrollView.getScrollContainerRv(), (List)paramArrayList, null, true, 4);
+        }
+        AppMethodBeat.o(311704);
         return;
       }
-      paramInt1 = ImeAlternativeWordGridScrollView.a(this.DtY).size();
-      paramRecyclerView = this.DtY.getScrollContainerRv().getLayoutManager();
+    }
+    
+    public final void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+    {
+      AppMethodBeat.i(311772);
+      b localb = new b();
+      localb.cH(paramRecyclerView);
+      localb.sc(paramInt);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridScrollView$initView$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aYj());
+      super.onScrollStateChanged(paramRecyclerView, paramInt);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridScrollView$initView$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
+      AppMethodBeat.o(311772);
+    }
+    
+    public final void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(311758);
+      Object localObject = new b();
+      ((b)localObject).cH(paramRecyclerView);
+      ((b)localObject).sc(paramInt1);
+      ((b)localObject).sc(paramInt2);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridScrollView$initView$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, ((b)localObject).aYj());
+      s.u(paramRecyclerView, "recyclerView");
+      if (ImeAlternativeWordGridScrollView.a(this.Jny).isEmpty())
+      {
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridScrollView$initView$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
+        AppMethodBeat.o(311758);
+        return;
+      }
+      paramInt1 = ImeAlternativeWordGridScrollView.a(this.Jny).size();
+      paramRecyclerView = this.Jny.getScrollContainerRv().getLayoutManager();
       if (paramRecyclerView == null)
       {
-        paramRecyclerView = new t("null cannot be cast to non-null type com.tencent.mm.view.recyclerview.WxGridLayoutManager");
-        AppMethodBeat.o(213921);
+        paramRecyclerView = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.view.recyclerview.WxGridLayoutManager");
+        AppMethodBeat.o(311758);
         throw paramRecyclerView;
       }
-      paramInt2 = ((WxGridLayoutManager)paramRecyclerView).kL();
-      if (ImeAlternativeWordGridScrollView.b(this.DtY))
+      paramInt2 = ((WxGridLayoutManager)paramRecyclerView).Jw();
+      if (ImeAlternativeWordGridScrollView.b(this.Jny))
       {
-        if ((!ImeAlternativeWordGridScrollView.c(this.DtY)) && (paramInt1 - paramInt2 <= 20))
+        if ((!ImeAlternativeWordGridScrollView.c(this.Jny)) && (paramInt1 - paramInt2 <= 20))
         {
-          ImeAlternativeWordGridScrollView.d(this.DtY);
-          paramRecyclerView = n.DEn;
-          n.eEN();
+          ImeAlternativeWordGridScrollView.d(this.Jny);
+          paramRecyclerView = n.JvW;
+          n.fMQ();
         }
-        if ((ImeAlternativeWordGridScrollView.c(this.DtY)) && (paramInt2 == paramInt1 - 1))
+        if ((ImeAlternativeWordGridScrollView.c(this.Jny)) && (paramInt2 == paramInt1 - 1))
         {
-          localObject = this.DtY.getScrollContainerRv().getAdapter();
-          paramRecyclerView = (RecyclerView)localObject;
-          if (!(localObject instanceof d)) {
-            paramRecyclerView = null;
-          }
-          paramRecyclerView = (d)paramRecyclerView;
-          if (paramRecyclerView == null) {
-            break label403;
-          }
-        }
-      }
-      label403:
-      for (paramRecyclerView = paramRecyclerView.nnu;; paramRecyclerView = null)
-      {
-        if (paramRecyclerView == null)
-        {
-          ProgressBar localProgressBar = new ProgressBar(this.DtY.getContext(), null, 0, a.k.smallCustomProgressBar);
-          paramRecyclerView = new RelativeLayout.LayoutParams(com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.d.S5_alternative_footer_progress_size), com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.d.S5_alternative_footer_progress_size));
-          paramRecyclerView.addRule(13);
-          localProgressBar.setLayoutParams((ViewGroup.LayoutParams)paramRecyclerView);
-          localObject = this.DtY.getScrollContainerRv().getAdapter();
-          paramRecyclerView = (RecyclerView)localObject;
-          if (!(localObject instanceof d)) {
-            paramRecyclerView = null;
+          paramRecyclerView = this.Jny.getScrollContainerRv().getAdapter();
+          if (!(paramRecyclerView instanceof d)) {
+            break label386;
           }
           paramRecyclerView = (d)paramRecyclerView;
           if (paramRecyclerView != null) {
-            paramRecyclerView.nnu = ((View)localProgressBar);
+            break label391;
           }
-          paramRecyclerView = new ArrayList((Collection)ImeAlternativeWordGridScrollView.a(this.DtY));
-          this.DtY.getScrollContainerRv().post((Runnable)new a(this, paramRecyclerView));
+          paramRecyclerView = null;
+          label225:
+          if (paramRecyclerView == null)
+          {
+            localObject = new ProgressBar(this.Jny.getContext(), null, 0, a.k.smallCustomProgressBar);
+            paramRecyclerView = new RelativeLayout.LayoutParams(com.tencent.mm.cd.a.bs(MMApplicationContext.getContext(), a.d.S5_alternative_footer_progress_size), com.tencent.mm.cd.a.bs(MMApplicationContext.getContext(), a.d.S5_alternative_footer_progress_size));
+            paramRecyclerView.addRule(13);
+            ((ProgressBar)localObject).setLayoutParams((ViewGroup.LayoutParams)paramRecyclerView);
+            paramRecyclerView = this.Jny.getScrollContainerRv().getAdapter();
+            if (!(paramRecyclerView instanceof d)) {
+              break label399;
+            }
+          }
         }
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridScrollView$initView$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
-        AppMethodBeat.o(213921);
-        return;
       }
-    }
-    
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-    static final class a
-      implements Runnable
-    {
-      a(ImeAlternativeWordGridScrollView.b paramb, ArrayList paramArrayList) {}
-      
-      public final void run()
+      label386:
+      label391:
+      label399:
+      for (paramRecyclerView = (d)paramRecyclerView;; paramRecyclerView = null)
       {
-        AppMethodBeat.i(216439);
-        RecyclerView.a locala = this.DtZ.DtY.getScrollContainerRv().getAdapter();
-        Object localObject = locala;
-        if (!(locala instanceof d)) {
-          localObject = null;
+        if (paramRecyclerView != null) {
+          paramRecyclerView.qkB = ((View)localObject);
         }
-        localObject = (d)localObject;
-        if (localObject != null)
-        {
-          f.a((f)localObject, this.DtZ.DtY.getScrollContainerRv(), (List)paramRecyclerView, null, true, 4);
-          AppMethodBeat.o(216439);
-          return;
-        }
-        AppMethodBeat.o(216439);
+        paramRecyclerView = new ArrayList((Collection)ImeAlternativeWordGridScrollView.a(this.Jny));
+        this.Jny.getScrollContainerRv().post(new ImeAlternativeWordGridScrollView.b..ExternalSyntheticLambda0(this.Jny, paramRecyclerView));
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridScrollView$initView$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
+        AppMethodBeat.o(311758);
+        return;
+        paramRecyclerView = null;
+        break;
+        paramRecyclerView = paramRecyclerView.qkB;
+        break label225;
       }
     }
   }

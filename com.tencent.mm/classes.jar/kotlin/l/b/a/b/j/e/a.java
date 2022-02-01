@@ -1,71 +1,99 @@
 package kotlin.l.b.a.b.j.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.b.as;
-import kotlin.l.b.a.b.b.h;
-import kotlin.l.b.a.b.b.l;
-import kotlin.l.b.a.b.j.c;
-import kotlin.l.b.a.b.j.e;
-import kotlin.l.b.a.b.m.ab;
-import kotlin.l.b.a.b.m.at;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import kotlin.a.p;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.b.au;
+import kotlin.l.b.a.b.b.d;
+import kotlin.l.b.a.b.b.e;
 
 public final class a
+  implements f
 {
-  private static boolean af(ab paramab)
+  private final List<f> ajkb;
+  
+  public a(List<? extends f> paramList)
   {
-    AppMethodBeat.i(60160);
-    p.k(paramab, "$this$isInlineClassThatRequiresMangling");
-    paramab = paramab.iOU().iEf();
-    if (paramab != null)
-    {
-      paramab = (l)paramab;
-      p.k(paramab, "$this$isInlineClassThatRequiresMangling");
-      if ((e.D(paramab)) && (!p.h(kotlin.l.b.a.b.j.d.a.o((l)paramab), c.abke))) {}
-      for (int i = 1; i == 1; i = 0)
-      {
-        AppMethodBeat.o(60160);
-        return true;
-      }
-    }
-    AppMethodBeat.o(60160);
-    return false;
+    AppMethodBeat.i(192189);
+    this.ajkb = paramList;
+    AppMethodBeat.o(192189);
   }
   
-  public static final boolean ag(ab paramab)
+  public final List<kotlin.l.b.a.b.f.f> D(e parame)
   {
-    AppMethodBeat.i(60161);
-    if ((af(paramab)) || (ah(paramab)))
-    {
-      AppMethodBeat.o(60161);
-      return true;
+    AppMethodBeat.i(192193);
+    s.u(parame, "thisDescriptor");
+    Object localObject = (Iterable)this.ajkb;
+    Collection localCollection = (Collection)new ArrayList();
+    localObject = ((Iterable)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      p.a(localCollection, (Iterable)((f)((Iterator)localObject).next()).D(parame));
     }
-    AppMethodBeat.o(60161);
-    return false;
+    parame = (List)localCollection;
+    AppMethodBeat.o(192193);
+    return parame;
   }
   
-  private static final boolean ah(ab paramab)
+  public final List<kotlin.l.b.a.b.f.f> E(e parame)
   {
-    AppMethodBeat.i(60162);
-    h localh = paramab.iOU().iEf();
-    paramab = localh;
-    if (!(localh instanceof as)) {
-      paramab = null;
+    AppMethodBeat.i(192201);
+    s.u(parame, "thisDescriptor");
+    Object localObject = (Iterable)this.ajkb;
+    Collection localCollection = (Collection)new ArrayList();
+    localObject = ((Iterable)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      p.a(localCollection, (Iterable)((f)((Iterator)localObject).next()).E(parame));
     }
-    paramab = (as)paramab;
-    if (paramab == null)
-    {
-      AppMethodBeat.o(60162);
-      return false;
+    parame = (List)localCollection;
+    AppMethodBeat.o(192201);
+    return parame;
+  }
+  
+  public final void a(e parame, kotlin.l.b.a.b.f.f paramf, Collection<au> paramCollection)
+  {
+    AppMethodBeat.i(192197);
+    s.u(parame, "thisDescriptor");
+    s.u(paramf, "name");
+    s.u(paramCollection, "result");
+    Iterator localIterator = ((Iterable)this.ajkb).iterator();
+    while (localIterator.hasNext()) {
+      ((f)localIterator.next()).a(parame, paramf, paramCollection);
     }
-    boolean bool = ag(kotlin.l.b.a.b.m.d.a.e(paramab));
-    AppMethodBeat.o(60162);
-    return bool;
+    AppMethodBeat.o(192197);
+  }
+  
+  public final void b(e parame, List<d> paramList)
+  {
+    AppMethodBeat.i(192206);
+    s.u(parame, "thisDescriptor");
+    s.u(paramList, "result");
+    Iterator localIterator = ((Iterable)this.ajkb).iterator();
+    while (localIterator.hasNext()) {
+      ((f)localIterator.next()).b(parame, paramList);
+    }
+    AppMethodBeat.o(192206);
+  }
+  
+  public final void b(e parame, kotlin.l.b.a.b.f.f paramf, Collection<au> paramCollection)
+  {
+    AppMethodBeat.i(192204);
+    s.u(parame, "thisDescriptor");
+    s.u(paramf, "name");
+    s.u(paramCollection, "result");
+    Iterator localIterator = ((Iterable)this.ajkb).iterator();
+    while (localIterator.hasNext()) {
+      ((f)localIterator.next()).b(parame, paramf, paramCollection);
+    }
+    AppMethodBeat.o(192204);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.j.e.a
  * JD-Core Version:    0.7.0.1
  */

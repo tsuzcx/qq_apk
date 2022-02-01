@@ -1,23 +1,36 @@
 package kotlin.g.b;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.l.b;
+import kotlin.l.q;
+import kotlin.l.q.a;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/jvm/internal/ShortCompanionObject;", "", "()V", "MAX_VALUE", "", "MIN_VALUE", "SIZE_BITS", "", "SIZE_BYTES", "kotlin-stdlib"})
-public final class ad
+public abstract class ad
+  extends ac
+  implements q
 {
-  public static final ad aaBF;
-  
-  static
+  public ad(Object paramObject, Class paramClass, String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(217102);
-    aaBF = new ad();
-    AppMethodBeat.o(217102);
+    super(paramObject, paramClass, paramString1, paramString2, paramInt);
+  }
+  
+  public Object invoke()
+  {
+    return get();
+  }
+  
+  public final q.a klB()
+  {
+    return ((q)klE()).klB();
+  }
+  
+  protected final b klm()
+  {
+    return ai.a(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.g.b.ad
  * JD-Core Version:    0.7.0.1
  */

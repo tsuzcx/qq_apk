@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.sns.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cei;
+import com.tencent.mm.protocal.protobuf.cuk;
 import com.tencent.mm.vending.g.d.b;
 
 final class AdLandingPagesProxy$9
@@ -11,14 +11,14 @@ final class AdLandingPagesProxy$9
   
   public final void run()
   {
-    AppMethodBeat.i(265315);
-    new com.tencent.mm.plugin.scanner.e().bX(this.oNc, this.IFU).a(new d.b() {});
-    AppMethodBeat.o(265315);
+    AppMethodBeat.i(309425);
+    new com.tencent.mm.plugin.scanner.e().cJ(this.rQZ, this.OMd).a(new d.b() {});
+    AppMethodBeat.o(309425);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.AdLandingPagesProxy.9
  * JD-Core Version:    0.7.0.1
  */

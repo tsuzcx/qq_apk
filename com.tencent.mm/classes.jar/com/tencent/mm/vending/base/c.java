@@ -8,11 +8,11 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public abstract class c<_Struct, _Change>
   extends Vending<_Struct, Integer, _Change>
 {
-  public int Yzy = 5;
-  private a Yzz = new a((byte)0);
+  public int agtW = 5;
+  private a agtX = new a((byte)0);
   public int mCount = 0;
   
-  private void ni(int paramInt1, int paramInt2)
+  private void pe(int paramInt1, int paramInt2)
   {
     int i;
     int j;
@@ -25,27 +25,27 @@ public abstract class c<_Struct, _Change>
     for (;;)
     {
       int k;
-      synchronized (this.Yzz)
+      synchronized (this.agtX)
       {
-        Object localObject1 = this.Yzz;
+        Object localObject1 = this.agtX;
         if (!((a)localObject1).initialized)
         {
-          ((a)localObject1).ca(j, paramInt1);
+          ((a)localObject1).pf(j, paramInt1);
           ((a)localObject1).initialized = true;
           localObject1 = new int[] { j, paramInt1 };
           if (localObject1 != null) {}
         }
         else
         {
-          paramInt2 = ((a)localObject1).tF;
-          k = ((a)localObject1).tG;
+          paramInt2 = ((a)localObject1).uE;
+          k = ((a)localObject1).uF;
           if (paramInt2 > paramInt1) {
             break label485;
           }
           if (k < j)
           {
             break label485;
-            ((a)localObject1).ca(j, paramInt1);
+            ((a)localObject1).pf(j, paramInt1);
             localObject1 = new int[] { j, paramInt1 };
             continue;
           }
@@ -53,17 +53,17 @@ public abstract class c<_Struct, _Change>
           {
             if (paramInt1 > k)
             {
-              ((a)localObject1).ca(j, paramInt1);
+              ((a)localObject1).pf(j, paramInt1);
               localObject1 = new int[] { j, paramInt2 - 1, k + 1, paramInt1 };
               continue;
             }
-            ((a)localObject1).ca(j, k);
+            ((a)localObject1).pf(j, k);
             localObject1 = new int[] { j, paramInt2 - 1 };
             continue;
           }
           if (paramInt1 > k)
           {
-            ((a)localObject1).ca(paramInt2, paramInt1);
+            ((a)localObject1).pf(paramInt2, paramInt1);
             localObject1 = new int[] { k + 1, paramInt1 };
             continue;
           }
@@ -98,12 +98,12 @@ public abstract class c<_Struct, _Change>
           j = m - paramInt2;
           localf = getLoader();
           localInteger = Integer.valueOf(j);
-          if (localf.nLe.get()) {}
+          if (localf.qKN.get()) {}
         }
-        synchronized (localf.YzF)
+        synchronized (localf.agud)
         {
-          Vending.f.b localb = (Vending.f.b)localf.YzD.get(localInteger);
-          if ((localb != null) && (localb != Vending.f.b.YzH))
+          Vending.f.b localb = (Vending.f.b)localf.agub.get(localInteger);
+          if ((localb != null) && (localb != Vending.f.b.aguf))
           {
             paramInt2 += 1;
             break label301;
@@ -117,7 +117,7 @@ public abstract class c<_Struct, _Change>
             j = k + paramInt2;
             break label317;
           }
-          localf.YzD.put(localInteger, Vending.f.b.YzI);
+          localf.agub.put(localInteger, Vending.f.b.agug);
           localf.mVendingHandler.sendMessage(localf.mVendingHandler.obtainMessage(0, localInteger));
         }
         label461:
@@ -137,7 +137,7 @@ public abstract class c<_Struct, _Change>
     }
   }
   
-  protected abstract _Struct ahx(int paramInt);
+  protected abstract _Struct amr(int paramInt);
   
   public final <T> T get(int paramInt)
   {
@@ -149,15 +149,15 @@ public abstract class c<_Struct, _Change>
     return super.get(Integer.valueOf(paramInt));
   }
   
-  protected abstract int ieu();
+  protected abstract int jJB();
   
   protected void loaderClear()
   {
-    synchronized (this.Yzz)
+    synchronized (this.agtX)
     {
-      a locala2 = this.Yzz;
-      locala2.tF = -1;
-      locala2.tG = -1;
+      a locala2 = this.agtX;
+      locala2.uE = -1;
+      locala2.uF = -1;
       locala2.initialized = false;
       return;
     }
@@ -165,26 +165,26 @@ public abstract class c<_Struct, _Change>
   
   protected void synchronizing(int paramInt, Object paramObject)
   {
-    this.mCount = ieu();
+    this.mCount = jJB();
     a.i("Vending.ForwardVending", "the count %s", new Object[] { Integer.valueOf(this.mCount) });
   }
   
   static final class a
   {
     boolean initialized = false;
-    public int tF = -1;
-    public int tG = -1;
+    public int uE = -1;
+    public int uF = -1;
     
-    final void ca(int paramInt1, int paramInt2)
+    final void pf(int paramInt1, int paramInt2)
     {
-      this.tF = paramInt1;
-      this.tG = paramInt2;
+      this.uE = paramInt1;
+      this.uF = paramInt2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.vending.base.c
  * JD-Core Version:    0.7.0.1
  */

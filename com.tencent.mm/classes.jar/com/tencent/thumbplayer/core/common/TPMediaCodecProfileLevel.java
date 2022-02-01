@@ -1,6 +1,9 @@
 package com.tencent.thumbplayer.core.common;
 
-public class TPMediaCodecProfileLevel
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.HashMap;
+
+public final class TPMediaCodecProfileLevel
 {
   public static final int AACObjectELD = 39;
   public static final int AACObjectERLC = 17;
@@ -29,7 +32,12 @@ public class TPMediaCodecProfileLevel
   public static final int AVCLevel5 = 16384;
   public static final int AVCLevel51 = 32768;
   public static final int AVCLevel52 = 65536;
+  public static final int AVCLevel6 = 131072;
+  public static final int AVCLevel61 = 262144;
+  public static final int AVCLevel62 = 524288;
   public static final int AVCProfileBaseline = 1;
+  public static final int AVCProfileConstrainedBaseline = 65536;
+  public static final int AVCProfileConstrainedHigh = 524288;
   public static final int AVCProfileExtended = 4;
   public static final int AVCProfileHigh = 8;
   public static final int AVCProfileHigh10 = 16;
@@ -47,11 +55,13 @@ public class TPMediaCodecProfileLevel
   public static final int DolbyVisionLevelUhd60 = 256;
   public static final int DolbyVisionProfileDvavPen = 2;
   public static final int DolbyVisionProfileDvavPer = 1;
+  public static final int DolbyVisionProfileDvavSe = 512;
   public static final int DolbyVisionProfileDvheDen = 8;
   public static final int DolbyVisionProfileDvheDer = 4;
   public static final int DolbyVisionProfileDvheDtb = 128;
   public static final int DolbyVisionProfileDvheDth = 64;
   public static final int DolbyVisionProfileDvheDtr = 16;
+  public static final int DolbyVisionProfileDvheSt = 256;
   public static final int DolbyVisionProfileDvheStn = 32;
   public static final int H263Level10 = 1;
   public static final int H263Level20 = 2;
@@ -100,6 +110,7 @@ public class TPMediaCodecProfileLevel
   public static final int HEVCProfileMain = 1;
   public static final int HEVCProfileMain10 = 2;
   public static final int HEVCProfileMain10HDR10 = 4096;
+  public static final int HEVCProfileMain10HDR10Plus = 8192;
   public static final int HEVCProfileMainStill = 4;
   public static final int MPEG2LevelH14 = 2;
   public static final int MPEG2LevelHL = 3;
@@ -168,10 +179,127 @@ public class TPMediaCodecProfileLevel
   public static final int VP9Profile2HDR = 4096;
   public static final int VP9Profile3 = 8;
   public static final int VP9Profile3HDR = 8192;
+  public static final HashMap<Integer, Integer> avcLumaSampleMap;
+  public static final HashMap<Integer, Integer> hevcLumaSampleMap;
+  public static final HashMap<Integer, Integer> vp9LumaSampleMap;
+  
+  static
+  {
+    AppMethodBeat.i(227613);
+    HashMap localHashMap = new HashMap();
+    avcLumaSampleMap = localHashMap;
+    localHashMap.put(Integer.valueOf(1), Integer.valueOf(25344));
+    avcLumaSampleMap.put(Integer.valueOf(2), Integer.valueOf(25344));
+    avcLumaSampleMap.put(Integer.valueOf(4), Integer.valueOf(101376));
+    avcLumaSampleMap.put(Integer.valueOf(8), Integer.valueOf(101376));
+    avcLumaSampleMap.put(Integer.valueOf(16), Integer.valueOf(101376));
+    avcLumaSampleMap.put(Integer.valueOf(32), Integer.valueOf(202752));
+    avcLumaSampleMap.put(Integer.valueOf(64), Integer.valueOf(202752));
+    avcLumaSampleMap.put(Integer.valueOf(128), Integer.valueOf(414720));
+    avcLumaSampleMap.put(Integer.valueOf(256), Integer.valueOf(414720));
+    avcLumaSampleMap.put(Integer.valueOf(512), Integer.valueOf(921600));
+    avcLumaSampleMap.put(Integer.valueOf(1024), Integer.valueOf(1310720));
+    avcLumaSampleMap.put(Integer.valueOf(2048), Integer.valueOf(2097152));
+    avcLumaSampleMap.put(Integer.valueOf(4096), Integer.valueOf(2097152));
+    avcLumaSampleMap.put(Integer.valueOf(8192), Integer.valueOf(2228224));
+    avcLumaSampleMap.put(Integer.valueOf(16384), Integer.valueOf(5652480));
+    avcLumaSampleMap.put(Integer.valueOf(32768), Integer.valueOf(9437184));
+    avcLumaSampleMap.put(Integer.valueOf(65536), Integer.valueOf(9437184));
+    avcLumaSampleMap.put(Integer.valueOf(131072), Integer.valueOf(36651584));
+    avcLumaSampleMap.put(Integer.valueOf(262144), Integer.valueOf(36651584));
+    avcLumaSampleMap.put(Integer.valueOf(524288), Integer.valueOf(36651584));
+    localHashMap = new HashMap();
+    hevcLumaSampleMap = localHashMap;
+    localHashMap.put(Integer.valueOf(1), Integer.valueOf(36864));
+    hevcLumaSampleMap.put(Integer.valueOf(2), Integer.valueOf(36864));
+    hevcLumaSampleMap.put(Integer.valueOf(4), Integer.valueOf(122880));
+    hevcLumaSampleMap.put(Integer.valueOf(8), Integer.valueOf(122880));
+    hevcLumaSampleMap.put(Integer.valueOf(16), Integer.valueOf(245760));
+    hevcLumaSampleMap.put(Integer.valueOf(32), Integer.valueOf(245760));
+    hevcLumaSampleMap.put(Integer.valueOf(64), Integer.valueOf(552960));
+    hevcLumaSampleMap.put(Integer.valueOf(128), Integer.valueOf(552960));
+    hevcLumaSampleMap.put(Integer.valueOf(256), Integer.valueOf(983040));
+    hevcLumaSampleMap.put(Integer.valueOf(512), Integer.valueOf(983040));
+    hevcLumaSampleMap.put(Integer.valueOf(1024), Integer.valueOf(2228224));
+    hevcLumaSampleMap.put(Integer.valueOf(2048), Integer.valueOf(2228224));
+    hevcLumaSampleMap.put(Integer.valueOf(4096), Integer.valueOf(2228224));
+    hevcLumaSampleMap.put(Integer.valueOf(8192), Integer.valueOf(2228224));
+    hevcLumaSampleMap.put(Integer.valueOf(16384), Integer.valueOf(8912896));
+    hevcLumaSampleMap.put(Integer.valueOf(32768), Integer.valueOf(8912896));
+    hevcLumaSampleMap.put(Integer.valueOf(65536), Integer.valueOf(8912896));
+    hevcLumaSampleMap.put(Integer.valueOf(131072), Integer.valueOf(8912896));
+    hevcLumaSampleMap.put(Integer.valueOf(262144), Integer.valueOf(8912896));
+    hevcLumaSampleMap.put(Integer.valueOf(524288), Integer.valueOf(8912896));
+    hevcLumaSampleMap.put(Integer.valueOf(1048576), Integer.valueOf(35651584));
+    hevcLumaSampleMap.put(Integer.valueOf(2097152), Integer.valueOf(35651584));
+    hevcLumaSampleMap.put(Integer.valueOf(4194304), Integer.valueOf(35651584));
+    hevcLumaSampleMap.put(Integer.valueOf(8388608), Integer.valueOf(35651584));
+    hevcLumaSampleMap.put(Integer.valueOf(16777216), Integer.valueOf(35651584));
+    hevcLumaSampleMap.put(Integer.valueOf(33554432), Integer.valueOf(35651584));
+    localHashMap = new HashMap();
+    vp9LumaSampleMap = localHashMap;
+    localHashMap.put(Integer.valueOf(1), Integer.valueOf(36864));
+    vp9LumaSampleMap.put(Integer.valueOf(2), Integer.valueOf(73728));
+    vp9LumaSampleMap.put(Integer.valueOf(4), Integer.valueOf(122880));
+    vp9LumaSampleMap.put(Integer.valueOf(8), Integer.valueOf(245760));
+    vp9LumaSampleMap.put(Integer.valueOf(16), Integer.valueOf(552960));
+    vp9LumaSampleMap.put(Integer.valueOf(32), Integer.valueOf(983040));
+    vp9LumaSampleMap.put(Integer.valueOf(64), Integer.valueOf(2228224));
+    vp9LumaSampleMap.put(Integer.valueOf(128), Integer.valueOf(2228224));
+    vp9LumaSampleMap.put(Integer.valueOf(256), Integer.valueOf(8912896));
+    vp9LumaSampleMap.put(Integer.valueOf(512), Integer.valueOf(8912896));
+    vp9LumaSampleMap.put(Integer.valueOf(1024), Integer.valueOf(8912896));
+    vp9LumaSampleMap.put(Integer.valueOf(2048), Integer.valueOf(35651584));
+    vp9LumaSampleMap.put(Integer.valueOf(4096), Integer.valueOf(35651584));
+    vp9LumaSampleMap.put(Integer.valueOf(8192), Integer.valueOf(35651584));
+    AppMethodBeat.o(227613);
+  }
+  
+  public static int getAVCMaxLumaSample(int paramInt)
+  {
+    AppMethodBeat.i(227583);
+    if (avcLumaSampleMap.containsKey(Integer.valueOf(paramInt)))
+    {
+      paramInt = ((Integer)avcLumaSampleMap.get(Integer.valueOf(paramInt))).intValue();
+      AppMethodBeat.o(227583);
+      return paramInt;
+    }
+    paramInt = ((Integer)avcLumaSampleMap.get(Integer.valueOf(256))).intValue();
+    AppMethodBeat.o(227583);
+    return paramInt;
+  }
+  
+  public static int getHEVCMaxLumaSample(int paramInt)
+  {
+    AppMethodBeat.i(227592);
+    if (hevcLumaSampleMap.containsKey(Integer.valueOf(paramInt)))
+    {
+      paramInt = ((Integer)hevcLumaSampleMap.get(Integer.valueOf(paramInt))).intValue();
+      AppMethodBeat.o(227592);
+      return paramInt;
+    }
+    paramInt = ((Integer)hevcLumaSampleMap.get(Integer.valueOf(64))).intValue();
+    AppMethodBeat.o(227592);
+    return paramInt;
+  }
+  
+  public static int getVP9MaxLumaSample(int paramInt)
+  {
+    AppMethodBeat.i(227600);
+    if (vp9LumaSampleMap.containsKey(Integer.valueOf(paramInt)))
+    {
+      paramInt = ((Integer)vp9LumaSampleMap.get(Integer.valueOf(paramInt))).intValue();
+      AppMethodBeat.o(227600);
+      return paramInt;
+    }
+    paramInt = ((Integer)vp9LumaSampleMap.get(Integer.valueOf(16))).intValue();
+    AppMethodBeat.o(227600);
+    return paramInt;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPMediaCodecProfileLevel
  * JD-Core Version:    0.7.0.1
  */

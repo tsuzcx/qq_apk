@@ -1,141 +1,188 @@
 package com.tencent.mm.plugin.kidswatch.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.p.a;
+import com.tencent.mm.am.p.b;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.protocal.protobuf.apq;
+import com.tencent.mm.protocal.protobuf.apr;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/kidswatch/model/KidsWatchReport;", "", "()V", "LoginReportID", "", "RegReportID", "loginReport", "", "accountType", "Lcom/tencent/mm/plugin/kidswatch/model/KidsWatchReport$AccountType;", "loginUrl", "", "type", "Lcom/tencent/mm/plugin/kidswatch/model/KidsWatchReport$LoginType;", "result", "Lcom/tencent/mm/plugin/kidswatch/model/KidsWatchReport$LoginResult;", "childCount", "errCode", "regReport", "kidsUIN", "Lcom/tencent/mm/plugin/kidswatch/model/KidsWatchReport$RegResult;", "AccountType", "LoginResult", "LoginType", "RegResult", "Scene", "plugin-kidswatch_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/kidswatch/model/NetSceneExtReg;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "nickName", "", "bindMobile", "regMode", "", "hasAvatar", "", "extRegUrl", "fileId", "aesKey", "(Ljava/lang/String;Ljava/lang/String;IZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "openId", "getOpenId", "()Ljava/lang/String;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "serverTime", "getServerTime", "()I", "status", "getStatus", "uin", "getUin", "username", "getUsername", "doScene", "autoAuth", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "securityLimitCount", "securityVerificationChecked", "Lcom/tencent/mm/modelbase/NetSceneBase$SecurityCheckStatus;", "setReSessionId", "regSessionId", "setSecurityCheckError", "e", "Lcom/tencent/mm/modelbase/NetSceneBase$SecurityCheckError;", "Companion", "plugin-kidswatch_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
+  extends p
+  implements m
 {
-  public static final c EbU;
+  public static final a JTp;
+  private h callback;
+  private com.tencent.mm.am.c rr;
   
   static
   {
-    AppMethodBeat.i(251595);
-    EbU = new c();
-    AppMethodBeat.o(251595);
+    AppMethodBeat.i(262307);
+    JTp = new a((byte)0);
+    AppMethodBeat.o(262307);
   }
   
-  public static void a(a parama, String paramString, c paramc, b paramb, int paramInt1, int paramInt2)
+  public c(String paramString1, String paramString2, boolean paramBoolean, String paramString3, String paramString4, String paramString5)
   {
-    AppMethodBeat.i(251591);
-    p.k(parama, "accountType");
-    p.k(paramString, "loginUrl");
-    p.k(paramc, "type");
-    p.k(paramb, "result");
-    h.IzE.a(21127, true, true, false, new Object[] { Integer.valueOf(paramb.value), Integer.valueOf(paramc.value), paramString, Integer.valueOf(paramInt1), Integer.valueOf(parama.value), Integer.valueOf(paramInt2) });
-    AppMethodBeat.o(251591);
+    AppMethodBeat.i(262291);
+    Log.d("MicroMsg.NetSceneExtReg", "NetSceneExtReg: nickname = " + paramString1 + ", bindMobile = " + paramString2 + ", regMode = 4, hasAvatar=" + paramBoolean + ", extRegUrl:" + paramString3);
+    Object localObject = new com.tencent.mm.am.c.a();
+    ((com.tencent.mm.am.c.a)localObject).otE = ((a)new apq());
+    ((com.tencent.mm.am.c.a)localObject).otF = ((a)new apr());
+    ((com.tencent.mm.am.c.a)localObject).uri = "/cgi-bin/micromsg-bin/extreg";
+    ((com.tencent.mm.am.c.a)localObject).funcId = 5888;
+    ((com.tencent.mm.am.c.a)localObject).otG = 0;
+    ((com.tencent.mm.am.c.a)localObject).respCmdId = 0;
+    localObject = ((com.tencent.mm.am.c.a)localObject).bEF();
+    kotlin.g.b.s.s(localObject, "builder.buildInstance()");
+    this.rr = ((com.tencent.mm.am.c)localObject);
+    localObject = c.b.b(this.rr.otB);
+    if (localObject == null)
+    {
+      paramString1 = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.ExtRegRequest");
+      AppMethodBeat.o(262291);
+      throw paramString1;
+    }
+    localObject = (apq)localObject;
+    ((apq)localObject).vhX = paramString1;
+    ((apq)localObject).YBW = paramString2;
+    ((apq)localObject).ZwR = 4;
+    if (paramBoolean) {
+      i = 1;
+    }
+    ((apq)localObject).ZwS = i;
+    ((apq)localObject).YOs = paramString3;
+    ((apq)localObject).ZwU = paramString4;
+    ((apq)localObject).ZwV = paramString5;
+    Log.i("MicroMsg.NetSceneExtReg", "fileId:" + paramString4 + ", aesKey:" + paramString5);
+    AppMethodBeat.o(262291);
   }
   
-  public static void a(String paramString, d paramd, int paramInt)
+  public final void OZ(String paramString)
   {
-    AppMethodBeat.i(251592);
-    p.k(paramString, "kidsUIN");
-    p.k(paramd, "result");
-    h.IzE.a(21256, true, true, false, new Object[] { paramString, Integer.valueOf(paramd.value), Integer.valueOf(paramInt) });
-    AppMethodBeat.o(251592);
+    AppMethodBeat.i(262322);
+    if (!Util.isNullOrNil(paramString))
+    {
+      a locala = c.b.b(this.rr.otB);
+      if (locala == null)
+      {
+        paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.ExtRegRequest");
+        AppMethodBeat.o(262322);
+        throw paramString;
+      }
+      ((apq)locala).YOn = paramString;
+      Log.i("MicroMsg.NetSceneExtReg", "setRegSessionId %s", new Object[] { paramString });
+    }
+    AppMethodBeat.o(262322);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/kidswatch/model/KidsWatchReport$AccountType;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "ACCOUNT_TYPE_NORMAL", "ACCOUNT_TYPE_KIDS", "plugin-kidswatch_release"})
-  public static enum a
+  public final int doScene(g paramg, h paramh)
   {
-    final int value;
-    
-    static
-    {
-      AppMethodBeat.i(251837);
-      a locala1 = new a("ACCOUNT_TYPE_NORMAL", 0, 0);
-      EbV = locala1;
-      a locala2 = new a("ACCOUNT_TYPE_KIDS", 1, 1);
-      EbW = locala2;
-      EbX = new a[] { locala1, locala2 };
-      AppMethodBeat.o(251837);
-    }
-    
-    private a(int paramInt)
-    {
-      this.value = paramInt;
-    }
+    AppMethodBeat.i(262337);
+    kotlin.g.b.s.u(paramg, "autoAuth");
+    kotlin.g.b.s.u(paramh, "callback");
+    this.callback = paramh;
+    int i = dispatch(paramg, (com.tencent.mm.network.s)this.rr, (m)this);
+    AppMethodBeat.o(262337);
+    return i;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/kidswatch/model/KidsWatchReport$LoginResult;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "LOGIN_RESULT_SUCCESS", "LOGIN_RESULT_TURN_TO_REG", "LOGIN_RESULT_CANCEL", "LOGIN_RESULT_FAIL", "plugin-kidswatch_release"})
-  public static enum b
+  public final String getOpenId()
   {
-    final int value;
-    
-    static
+    AppMethodBeat.i(262387);
+    Object localObject = c.c.b(this.rr.otC);
+    if (localObject == null)
     {
-      AppMethodBeat.i(252251);
-      b localb1 = new b("LOGIN_RESULT_SUCCESS", 0, 1);
-      EbY = localb1;
-      b localb2 = new b("LOGIN_RESULT_TURN_TO_REG", 1, 2);
-      EbZ = localb2;
-      b localb3 = new b("LOGIN_RESULT_CANCEL", 2, 3);
-      Eca = localb3;
-      b localb4 = new b("LOGIN_RESULT_FAIL", 3, 4);
-      Ecb = localb4;
-      Ecc = new b[] { localb1, localb2, localb3, localb4 };
-      AppMethodBeat.o(252251);
+      localObject = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.ExtRegResponse");
+      AppMethodBeat.o(262387);
+      throw ((Throwable)localObject);
     }
-    
-    private b(int paramInt)
-    {
-      this.value = paramInt;
-    }
+    localObject = ((apr)localObject).muE;
+    kotlin.g.b.s.s(localObject, "rr.responseProtoBuf as ExtRegResponse).OpenID");
+    AppMethodBeat.o(262387);
+    return localObject;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/kidswatch/model/KidsWatchReport$LoginType;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "LOGIN_TYPE_DEFAULT", "LOGIN_TYPE_BOTH", "LOGIN_TYPE_WATCH_ONLY", "plugin-kidswatch_release"})
-  public static enum c
+  public final int getType()
   {
-    final int value;
-    
-    static
-    {
-      AppMethodBeat.i(252144);
-      c localc1 = new c("LOGIN_TYPE_DEFAULT", 0, 0);
-      Ecd = localc1;
-      c localc2 = new c("LOGIN_TYPE_BOTH", 1, 1);
-      Ece = localc2;
-      c localc3 = new c("LOGIN_TYPE_WATCH_ONLY", 2, 2);
-      Ecf = localc3;
-      Ecg = new c[] { localc1, localc2, localc3 };
-      AppMethodBeat.o(252144);
-    }
-    
-    private c(int paramInt)
-    {
-      this.value = paramInt;
-    }
+    return 5888;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/kidswatch/model/KidsWatchReport$RegResult;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "REG_RESULT_SUCCESS", "REG_RESULT_FAIL", "REG_RESULT_CANCEL", "plugin-kidswatch_release"})
-  public static enum d
+  public final String getUsername()
   {
-    final int value;
-    
-    static
+    AppMethodBeat.i(262380);
+    Object localObject = c.c.b(this.rr.otC);
+    if (localObject == null)
     {
-      AppMethodBeat.i(251913);
-      d locald1 = new d("REG_RESULT_SUCCESS", 0, 1);
-      Ech = locald1;
-      d locald2 = new d("REG_RESULT_FAIL", 1, 2);
-      Eci = locald2;
-      d locald3 = new d("REG_RESULT_CANCEL", 2, 3);
-      Ecj = locald3;
-      Eck = new d[] { locald1, locald2, locald3 };
-      AppMethodBeat.o(251913);
+      localObject = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.ExtRegResponse");
+      AppMethodBeat.o(262380);
+      throw ((Throwable)localObject);
     }
-    
-    private d(int paramInt)
-    {
-      this.value = paramInt;
-    }
+    localObject = ((apr)localObject).UserName;
+    AppMethodBeat.o(262380);
+    return localObject;
   }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(262374);
+    kotlin.g.b.s.u(params, "rr");
+    if (c.b.b(((com.tencent.mm.am.c)params).otB) == null)
+    {
+      paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.ExtRegRequest");
+      AppMethodBeat.o(262374);
+      throw paramString;
+    }
+    if (c.c.b(((com.tencent.mm.am.c)params).otC) == null)
+    {
+      paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.ExtRegResponse");
+      AppMethodBeat.o(262374);
+      throw paramString;
+    }
+    params = this.callback;
+    kotlin.g.b.s.checkNotNull(params);
+    params.onSceneEnd(paramInt2, paramInt3, paramString, (p)this);
+    Log.i("MicroMsg.NetSceneExtReg", "errType:" + paramInt2 + ", errCode:" + paramInt3 + ", errType:" + paramString);
+    AppMethodBeat.o(262374);
+  }
+  
+  public final int securityLimitCount()
+  {
+    return 3;
+  }
+  
+  public final p.b securityVerificationChecked(com.tencent.mm.network.s params)
+  {
+    AppMethodBeat.i(262353);
+    kotlin.g.b.s.u(params, "rr");
+    params = p.b.ouh;
+    AppMethodBeat.o(262353);
+    return params;
+  }
+  
+  public final void setSecurityCheckError(p.a parama)
+  {
+    AppMethodBeat.i(262358);
+    kotlin.g.b.s.u(parama, "e");
+    AppMethodBeat.o(262358);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/kidswatch/model/NetSceneExtReg$Companion;", "", "()V", "MM_REGMODE_MOBILE_NOPWD", "", "REG_MODE_MOBILE", "TAG", "", "plugin-kidswatch_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.kidswatch.model.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,29 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bc.a;
-import com.tencent.mm.bc.a.a;
-import com.tencent.mm.storage.ca;
+import com.tencent.mm.ax.a;
+import com.tencent.mm.ax.a.a;
+import com.tencent.mm.storage.cc;
 import java.util.LinkedList;
 import java.util.Map;
 
 public final class n
   extends a
 {
-  public n(Map<String, String> paramMap, ca paramca)
+  public n(Map<String, String> paramMap, cc paramcc)
   {
-    super(paramMap, paramca);
+    super(paramMap, paramcc);
   }
   
-  public static void bcA()
+  public static void bAp()
   {
     AppMethodBeat.i(123971);
     a.a.a("biz_services_mute", new a.a()
     {
-      public final a a(Map<String, String> paramAnonymousMap, ca paramAnonymousca)
+      public final a a(Map<String, String> paramAnonymousMap, cc paramAnonymouscc)
       {
         AppMethodBeat.i(123969);
-        paramAnonymousMap = new n(paramAnonymousMap, paramAnonymousca);
+        paramAnonymousMap = new n(paramAnonymousMap, paramAnonymouscc);
         AppMethodBeat.o(123969);
         return paramAnonymousMap;
       }
@@ -31,7 +31,7 @@ public final class n
     AppMethodBeat.o(123971);
   }
   
-  public final boolean bcz()
+  public final boolean bAo()
   {
     AppMethodBeat.i(123970);
     if (this.values == null)
@@ -47,17 +47,17 @@ public final class n
     String str2 = (String)this.values.get(".sysmsg.biz_services_mute.text");
     String str1 = (String)this.values.get(".sysmsg.biz_services_mute.link.text");
     str2 = str2 + str1;
-    this.lWj.add(str1);
-    this.lWk.addFirst(Integer.valueOf(str2.length() - str1.length()));
-    this.lWl.add(Integer.valueOf(str2.length()));
-    this.lWg = str2;
+    this.oPl.add(str1);
+    this.oPm.addFirst(Integer.valueOf(str2.length() - str1.length()));
+    this.oPn.add(Integer.valueOf(str2.length()));
+    this.oPj = str2;
     AppMethodBeat.o(123970);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.n
  * JD-Core Version:    0.7.0.1
  */

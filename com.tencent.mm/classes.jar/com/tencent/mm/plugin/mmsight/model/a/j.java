@@ -9,14 +9,14 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 public final class j
   extends a<byte[]>
 {
-  public static final j FbH;
-  private static int miK;
+  public static final j KXq;
+  private static int pch;
   
   static
   {
     AppMethodBeat.i(148835);
-    FbH = new j();
-    miK = 0;
+    KXq = new j();
+    pch = 0;
     AppMethodBeat.o(148835);
   }
   
@@ -25,7 +25,7 @@ public final class j
     try
     {
       AppMethodBeat.i(148826);
-      super.bU(paramArrayOfByte);
+      super.dn(paramArrayOfByte);
       AppMethodBeat.o(148826);
       return;
     }
@@ -36,13 +36,13 @@ public final class j
     }
   }
   
-  public final long baJ()
+  public final long bvE()
   {
     AppMethodBeat.i(148828);
-    if (miK <= 0) {
-      miK = ((ActivityManager)MMApplicationContext.getContext().getSystemService("activity")).getLargeMemoryClass();
+    if (pch <= 0) {
+      pch = ((ActivityManager)MMApplicationContext.getContext().getSystemService("activity")).getLargeMemoryClass();
     }
-    if (miK >= 512)
+    if (pch >= 512)
     {
       AppMethodBeat.o(148828);
       return 41943040L;
@@ -51,19 +51,19 @@ public final class j
     return 20971520L;
   }
   
-  public final long baK()
+  public final long bvF()
   {
     return 10485760L;
   }
   
-  public final void baL()
+  public final void bvG()
   {
     AppMethodBeat.i(148829);
-    super.baL();
+    super.bvG();
     AppMethodBeat.o(148829);
   }
   
-  public final byte[] k(Integer paramInteger)
+  public final byte[] m(Integer paramInteger)
   {
     try
     {
@@ -81,7 +81,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.a.j
  * JD-Core Version:    0.7.0.1
  */

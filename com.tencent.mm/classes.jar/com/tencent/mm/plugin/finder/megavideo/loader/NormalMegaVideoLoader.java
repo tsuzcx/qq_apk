@@ -1,133 +1,127 @@
 package com.tencent.mm.plugin.finder.megavideo.loader;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cw.f;
-import com.tencent.mm.plugin.finder.cgi.ag;
+import com.tencent.mm.am.b.a;
+import com.tencent.mm.cp.f;
+import com.tencent.mm.plugin.finder.cgi.az;
 import com.tencent.mm.plugin.finder.feed.model.internal.BaseFeedLoader;
 import com.tencent.mm.plugin.finder.feed.model.internal.BaseFeedLoader.a;
 import com.tencent.mm.plugin.finder.feed.model.internal.IResponse;
-import com.tencent.mm.plugin.finder.feed.model.internal.IResponse<Lcom.tencent.mm.plugin.finder.model.bu;>;
+import com.tencent.mm.plugin.finder.feed.model.internal.IResponse<Lcom.tencent.mm.plugin.finder.model.cc;>;
 import com.tencent.mm.plugin.finder.feed.model.internal.c;
 import com.tencent.mm.plugin.finder.feed.model.internal.i;
-import com.tencent.mm.plugin.finder.model.bs;
-import com.tencent.mm.plugin.finder.model.bu;
+import com.tencent.mm.plugin.finder.model.ca;
+import com.tencent.mm.plugin.finder.model.cc;
 import com.tencent.mm.plugin.finder.storage.data.e;
 import com.tencent.mm.plugin.finder.storage.data.e.a;
+import com.tencent.mm.plugin.finder.storage.logic.d.a;
+import com.tencent.mm.plugin.finder.utils.aw;
 import com.tencent.mm.protocal.protobuf.FinderContact;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.bid;
+import com.tencent.mm.protocal.protobuf.ayl;
+import com.tencent.mm.protocal.protobuf.bui;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMFragmentActivity;
 import java.util.ArrayList;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.a.v;
+import kotlin.Metadata;
+import kotlin.a.ab;
+import kotlin.ah;
+import kotlin.g.a.a;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/megavideo/loader/NormalMegaVideoLoader;", "Lcom/tencent/mm/plugin/finder/megavideo/loader/BaseMegaVideoLoader;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "activity", "Lcom/tencent/mm/ui/MMFragmentActivity;", "(Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;Lcom/tencent/mm/ui/MMFragmentActivity;)V", "getActivity", "()Lcom/tencent/mm/ui/MMFragmentActivity;", "firstFeedId", "", "getFirstFeedId", "()J", "setFirstFeedId", "(J)V", "firstNonceId", "", "getFirstNonceId", "()Ljava/lang/String;", "setFirstNonceId", "(Ljava/lang/String;)V", "firstUserName", "getFirstUserName", "setFirstUserName", "needGetDetail", "", "getNeedGetDetail", "()Z", "setNeedGetDetail", "(Z)V", "showErrUi", "Lkotlin/Function2;", "", "", "getShowErrUi", "()Lkotlin/jvm/functions/Function2;", "setShowErrUi", "(Lkotlin/jvm/functions/Function2;)V", "successNext", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/finder/model/MegaVideoFeed;", "getSuccessNext", "()Lkotlin/jvm/functions/Function1;", "setSuccessNext", "(Lkotlin/jvm/functions/Function1;)V", "createDataFetch", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "createDataMerger", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataMerger;", "onFetchDone", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "MegaVideoGetDetailResponse", "MegaVideoListResponse", "NormalMegaVideoDataFetcher", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/megavideo/loader/NormalMegaVideoLoader;", "Lcom/tencent/mm/plugin/finder/megavideo/loader/BaseMegaVideoLoader;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "activity", "Lcom/tencent/mm/ui/MMFragmentActivity;", "(Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;Lcom/tencent/mm/ui/MMFragmentActivity;)V", "getActivity", "()Lcom/tencent/mm/ui/MMFragmentActivity;", "firstFeedId", "", "getFirstFeedId", "()J", "setFirstFeedId", "(J)V", "firstNonceId", "", "getFirstNonceId", "()Ljava/lang/String;", "setFirstNonceId", "(Ljava/lang/String;)V", "firstUserName", "getFirstUserName", "setFirstUserName", "needGetDetail", "", "getNeedGetDetail", "()Z", "setNeedGetDetail", "(Z)V", "showErrUi", "Lkotlin/Function2;", "", "", "getShowErrUi", "()Lkotlin/jvm/functions/Function2;", "setShowErrUi", "(Lkotlin/jvm/functions/Function2;)V", "successNext", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/finder/model/MegaVideoFeed;", "getSuccessNext", "()Lkotlin/jvm/functions/Function1;", "setSuccessNext", "(Lkotlin/jvm/functions/Function1;)V", "createDataFetch", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "createDataMerger", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataMerger;", "onFetchDone", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "MegaVideoGetDetailResponse", "MegaVideoListResponse", "NormalMegaVideoDataFetcher", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class NormalMegaVideoLoader
   extends BaseMegaVideoLoader
 {
-  public long xHm;
-  public String xHn;
-  public m<? super Integer, ? super String, x> xxM;
-  public kotlin.g.a.b<? super bs, x> xxN;
-  private String zwQ;
-  public boolean zwR;
-  final MMFragmentActivity zwS;
+  public m<? super Integer, ? super String, ah> AUX;
+  public kotlin.g.a.b<? super ca, ah> AUY;
+  public long Bgq;
+  public String Bgr;
+  final MMFragmentActivity EzS;
+  private String EzT;
+  public boolean EzU;
   
-  public NormalMegaVideoLoader(bid parambid, MMFragmentActivity paramMMFragmentActivity)
+  public NormalMegaVideoLoader(bui parambui, MMFragmentActivity paramMMFragmentActivity)
   {
-    super(parambid);
-    AppMethodBeat.i(243984);
-    this.zwS = paramMMFragmentActivity;
-    this.zwQ = "";
-    this.xHn = "";
-    AppMethodBeat.o(243984);
+    super(parambui);
+    AppMethodBeat.i(342201);
+    this.EzS = paramMMFragmentActivity;
+    this.EzT = "";
+    this.Bgr = "";
+    AppMethodBeat.o(342201);
   }
   
-  public final i<bu> createDataFetch()
+  public final i<cc> createDataFetch()
   {
-    AppMethodBeat.i(243981);
+    AppMethodBeat.i(342208);
     i locali = (i)new c();
-    AppMethodBeat.o(243981);
+    AppMethodBeat.o(342208);
     return locali;
   }
   
-  public final com.tencent.mm.plugin.finder.feed.model.internal.d<bu> createDataMerger()
+  public final com.tencent.mm.plugin.finder.feed.model.internal.d<cc> createDataMerger()
   {
-    AppMethodBeat.i(243982);
+    AppMethodBeat.i(342211);
     com.tencent.mm.plugin.finder.feed.model.internal.d locald = (com.tencent.mm.plugin.finder.feed.model.internal.d)new d(this);
-    AppMethodBeat.o(243982);
+    AppMethodBeat.o(342211);
     return locald;
   }
   
-  public final void onFetchDone(IResponse<bu> paramIResponse)
+  public final void onFetchDone(IResponse<cc> paramIResponse)
   {
-    AppMethodBeat.i(243983);
-    p.k(paramIResponse, "response");
+    AppMethodBeat.i(342221);
+    kotlin.g.b.s.u(paramIResponse, "response");
     super.onFetchDone(paramIResponse);
     if (isInitOperation(paramIResponse))
     {
       localObject = paramIResponse.getIncrementList();
       int i;
-      if (localObject != null) {
-        i = ((List)localObject).size();
-      }
-      while ((i > 0) && ((paramIResponse instanceof b)))
+      ca localca;
+      if (localObject == null)
       {
-        paramIResponse = paramIResponse.getIncrementList();
-        if (paramIResponse == null) {
-          p.iCn();
-        }
-        paramIResponse = paramIResponse.get(0);
-        if (paramIResponse == null)
+        i = 0;
+        if ((i > 0) && ((paramIResponse instanceof b)))
         {
-          paramIResponse = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.model.MegaVideoFeed");
-          AppMethodBeat.o(243983);
-          throw paramIResponse;
-          i = 0;
-        }
-        else
-        {
-          bs localbs = (bs)paramIResponse;
-          paramIResponse = localbs.contact;
-          if (paramIResponse != null)
-          {
-            localObject = paramIResponse.username;
-            paramIResponse = (IResponse<bu>)localObject;
-            if (localObject != null) {}
+          paramIResponse = paramIResponse.getIncrementList();
+          kotlin.g.b.s.checkNotNull(paramIResponse);
+          localca = (ca)paramIResponse.get(0);
+          paramIResponse = localca.contact;
+          if (paramIResponse != null) {
+            break label119;
           }
-          else
-          {
-            paramIResponse = "";
-          }
-          this.zwQ = paramIResponse;
-          this.xHm = localbs.dKW();
-          this.xHn = localbs.dKX();
+          paramIResponse = "";
         }
       }
-      AppMethodBeat.o(243983);
-      return;
+      for (;;)
+      {
+        this.EzT = paramIResponse;
+        this.Bgq = localca.eDF();
+        this.Bgr = localca.eDG();
+        AppMethodBeat.o(342221);
+        return;
+        i = ((List)localObject).size();
+        break;
+        label119:
+        localObject = paramIResponse.username;
+        paramIResponse = (IResponse<cc>)localObject;
+        if (localObject == null) {
+          paramIResponse = "";
+        }
+      }
     }
     this.hasMore = paramIResponse.getHasMore();
     Object localObject = this.fetchEndCallback;
-    if (localObject != null)
-    {
+    if (localObject != null) {
       ((kotlin.g.a.b)localObject).invoke(paramIResponse);
-      AppMethodBeat.o(243983);
-      return;
     }
-    AppMethodBeat.o(243983);
+    AppMethodBeat.o(342221);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/megavideo/loader/NormalMegaVideoLoader$MegaVideoGetDetailResponse;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "errType", "", "errCode", "errMsg", "", "(IILjava/lang/String;)V", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/megavideo/loader/NormalMegaVideoLoader$MegaVideoGetDetailResponse;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "errType", "", "errCode", "errMsg", "", "(IILjava/lang/String;)V", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
-    extends IResponse<bu>
+    extends IResponse<cc>
   {
     public a(int paramInt1, int paramInt2, String paramString)
     {
@@ -135,9 +129,9 @@ public final class NormalMegaVideoLoader
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/megavideo/loader/NormalMegaVideoLoader$MegaVideoListResponse;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "errType", "", "errCode", "errMsg", "", "(IILjava/lang/String;)V", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/megavideo/loader/NormalMegaVideoLoader$MegaVideoListResponse;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "errType", "", "errCode", "errMsg", "", "(IILjava/lang/String;)V", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
-    extends IResponse<bu>
+    extends IResponse<cc>
   {
     public b(String paramString)
     {
@@ -145,145 +139,204 @@ public final class NormalMegaVideoLoader
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/megavideo/loader/NormalMegaVideoLoader$NormalMegaVideoDataFetcher;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataFetchNetscene;", "(Lcom/tencent/mm/plugin/finder/megavideo/loader/NormalMegaVideoLoader;)V", "callInit", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "dealOnSceneEnd", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "genLoadMoreNetScene", "genRefreshNetScene", "getCmdIds", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/megavideo/loader/NormalMegaVideoLoader$NormalMegaVideoDataFetcher;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataFetchNetscene;", "(Lcom/tencent/mm/plugin/finder/megavideo/loader/NormalMegaVideoLoader;)V", "callInit", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "dealOnSceneEnd", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "genLoadMoreNetScene", "genRefreshNetScene", "getCmdIds", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public final class c
     extends c
   {
-    public final IResponse<bu> callInit()
+    public c()
     {
-      AppMethodBeat.i(288491);
+      AppMethodBeat.i(342217);
+      AppMethodBeat.o(342217);
+    }
+    
+    private static final ah a(c paramc, NormalMegaVideoLoader paramNormalMegaVideoLoader, b.a parama)
+    {
+      AppMethodBeat.i(342229);
+      kotlin.g.b.s.u(paramc, "this$0");
+      kotlin.g.b.s.u(paramNormalMegaVideoLoader, "this$1");
+      if (parama == null)
+      {
+        Log.i(paramc.getTAG(), kotlin.g.b.s.X("result == null finder id ", Long.valueOf(paramNormalMegaVideoLoader.Bgq)));
+        paramc = paramNormalMegaVideoLoader.AUX;
+        if (paramc != null) {
+          paramc.invoke(Integer.valueOf(-1), null);
+        }
+        paramc = ah.aiuX;
+        AppMethodBeat.o(342229);
+        return paramc;
+      }
+      Log.i(paramc.getTAG(), "NormalMegaVideoLoader: CgiGetFinderFeedComment errType = " + parama.errType + ", errCode = " + parama.errCode);
+      if ((parama.errType != 0) || (parama.errCode != 0))
+      {
+        paramc = aw.Gjk;
+        if (!aw.iv(parama.errType, parama.errCode)) {}
+      }
+      else
+      {
+        paramc = ((ayl)parama.ott).feedObject;
+        if (paramc != null)
+        {
+          NormalMegaVideoLoader.a locala = new NormalMegaVideoLoader.a(parama.errType, parama.errCode, parama.errMsg);
+          parama = new ca(paramc);
+          d.a locala1 = com.tencent.mm.plugin.finder.storage.logic.d.FND;
+          d.a.d(kotlin.a.p.listOf(paramc), paramNormalMegaVideoLoader.getContextObj());
+          locala.setIncrementList(kotlin.a.p.listOf(parama));
+          locala.setPullType(1000);
+          paramNormalMegaVideoLoader.onFetchDone((IResponse)locala);
+          paramc = paramNormalMegaVideoLoader.AUY;
+          if (paramc != null) {
+            paramc.invoke(parama);
+          }
+        }
+      }
+      for (;;)
+      {
+        paramc = ah.aiuX;
+        AppMethodBeat.o(342229);
+        return paramc;
+        paramc = paramNormalMegaVideoLoader.AUX;
+        if (paramc != null) {
+          paramc.invoke(Integer.valueOf(parama.errCode), parama.errMsg);
+        }
+      }
+    }
+    
+    public final IResponse<cc> callInit()
+    {
+      AppMethodBeat.i(342258);
       NormalMegaVideoLoader.b localb = new NormalMegaVideoLoader.b("");
       localb.setPullType(1000);
-      Object localObject1 = this.zwT.getCache();
-      label115:
-      long l;
-      label166:
+      Object localObject1 = this.EzV.getCache();
       Object localObject2;
-      if (localObject1 != null)
+      label166:
+      long l;
+      if (localObject1 == null)
       {
-        localObject1 = ((com.tencent.mm.plugin.finder.feed.model.q)localObject1).mXB;
-        if (localObject1 != null)
+        localObject1 = null;
+        if (localObject1 == null)
         {
-          Log.i(getTAG(), "fetchInit: use old data list, size: " + ((ArrayList)localObject1).size());
-          localb.setIncrementList((List)localObject1);
-          localObject1 = this.zwT.getCache();
-          if (localObject1 != null)
+          localObject2 = this.EzV;
+          localObject1 = (c)this;
+          if (((NormalMegaVideoLoader)localObject2).Bgq != 0L)
           {
-            localObject1 = ((com.tencent.mm.plugin.finder.feed.model.q)localObject1).lastBuffer;
-            localb.setLastBuffer((com.tencent.mm.cd.b)localObject1);
-            if ((this.zwT.zwR) && (this.zwT.xHm != 0L))
+            e.a locala = e.FMN;
+            localObject2 = e.a.qh(((NormalMegaVideoLoader)localObject2).Bgq);
+            if (localObject2 != null)
             {
-              localObject1 = (CharSequence)this.zwT.xHn;
-              if ((localObject1 != null) && (((CharSequence)localObject1).length() != 0)) {
-                break label362;
-              }
-              i = 1;
-              if (i == 0)
-              {
-                l = this.zwT.xHm;
-                localObject1 = this.zwT.xHn;
-                localObject2 = this.zwT.getContextObj();
-                if (localObject2 == null) {
-                  break label367;
-                }
-              }
+              Log.i(((c)localObject1).getTAG(), "fetchInit: use finder cache data");
+              localb.setIncrementList(kotlin.a.p.listOf(new ca((FinderObject)localObject2)));
+            }
+          }
+        }
+        if ((this.EzV.EzU) && (this.EzV.Bgq != 0L))
+        {
+          localObject1 = (CharSequence)this.EzV.Bgr;
+          if ((localObject1 != null) && (((CharSequence)localObject1).length() != 0)) {
+            break label379;
+          }
+          i = 1;
+          if (i == 0)
+          {
+            l = this.EzV.Bgq;
+            localObject1 = this.EzV.Bgr;
+            localObject2 = this.EzV.getContextObj();
+            if (localObject2 != null) {
+              break label384;
             }
           }
         }
       }
-      label362:
-      label367:
-      for (int i = ((bid)localObject2).xkX;; i = 0)
+      label384:
+      for (int i = 0;; i = ((bui)localObject2).AJo)
       {
-        new ag(l, (String)localObject1, i, 2, "", true, null, null, 0L, null, false, false, null, this.zwT.getContextObj(), 0, null, 57280).bhW().b((com.tencent.mm.vending.c.a)new a(this)).a((com.tencent.mm.vending.e.b)this.zwT.zwS);
+        new az(l, (String)localObject1, i, 2, "", true, null, null, 0L, null, false, false, null, this.EzV.getContextObj(), 0, null, 57280).bFJ().b(new NormalMegaVideoLoader.c..ExternalSyntheticLambda0(this, this.EzV)).a((com.tencent.mm.vending.e.b)this.EzV.EzS);
         localObject1 = (IResponse)localb;
-        AppMethodBeat.o(288491);
+        AppMethodBeat.o(342258);
         return localObject1;
-        localObject1 = null;
-        break;
-        localObject1 = (c)this;
-        if (this.zwT.xHm == 0L) {
-          break label115;
+        localObject1 = ((com.tencent.mm.plugin.finder.feed.model.s)localObject1).pUj;
+        if (localObject1 == null)
+        {
+          localObject1 = null;
+          break;
         }
-        localObject2 = e.AmW;
-        localObject2 = e.a.MM(this.zwT.xHm);
-        if (localObject2 == null) {
-          break label115;
+        localObject2 = this.EzV;
+        Log.i(getTAG(), kotlin.g.b.s.X("fetchInit: use old data list, size: ", Integer.valueOf(((ArrayList)localObject1).size())));
+        localb.setIncrementList((List)localObject1);
+        localObject1 = ((NormalMegaVideoLoader)localObject2).getCache();
+        if (localObject1 == null) {}
+        for (localObject1 = null;; localObject1 = ((com.tencent.mm.plugin.finder.feed.model.s)localObject1).lastBuffer)
+        {
+          localb.setLastBuffer((com.tencent.mm.bx.b)localObject1);
+          localObject1 = ah.aiuX;
+          break;
         }
-        Log.i(((c)localObject1).getTAG(), "fetchInit: use finder cache data");
-        localb.setIncrementList(j.listOf(new bs((FinderObject)localObject2)));
-        break label115;
+        label379:
         i = 0;
         break label166;
       }
     }
     
-    public final IResponse<bu> dealOnSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
+    public final IResponse<cc> dealOnSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
     {
-      AppMethodBeat.i(288489);
-      p.k(paramq, "scene");
-      AppMethodBeat.o(288489);
+      AppMethodBeat.i(342247);
+      kotlin.g.b.s.u(paramp, "scene");
+      AppMethodBeat.o(342247);
       return null;
     }
     
-    public final com.tencent.mm.an.q genLoadMoreNetScene()
+    public final com.tencent.mm.am.p genLoadMoreNetScene()
     {
       return null;
     }
     
-    public final com.tencent.mm.an.q genRefreshNetScene()
+    public final com.tencent.mm.am.p genRefreshNetScene()
     {
       return null;
     }
     
     public final List<Integer> getCmdIds()
     {
-      AppMethodBeat.i(288487);
-      List localList = j.listOf(Integer.valueOf(4195));
-      AppMethodBeat.o(288487);
+      AppMethodBeat.i(342241);
+      List localList = kotlin.a.p.listOf(Integer.valueOf(4195));
+      AppMethodBeat.o(342241);
       return localList;
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "result", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/FinderGetCommentDetailResponse;", "kotlin.jvm.PlatformType", "call"})
-    static final class a<_Ret, _Var>
-      implements com.tencent.mm.vending.c.a<_Ret, _Var>
-    {
-      a(NormalMegaVideoLoader.c paramc) {}
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/megavideo/loader/NormalMegaVideoLoader$createDataMerger$1", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader$DefaultDataMerger;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "mergeInit", "", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "next", "Lkotlin/Function1;", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/megavideo/loader/NormalMegaVideoLoader$createDataMerger$1", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader$DefaultDataMerger;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "mergeInit", "", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "next", "Lkotlin/Function1;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class d
-    extends BaseFeedLoader<bu>.a
+    extends BaseFeedLoader<cc>.a
   {
-    d()
+    d(NormalMegaVideoLoader paramNormalMegaVideoLoader)
     {
-      super();
+      super(false, 1, null);
+      AppMethodBeat.i(342215);
+      AppMethodBeat.o(342215);
     }
     
-    public final void mergeInit(final IResponse<bu> paramIResponse, final kotlin.g.a.b<? super IResponse<bu>, x> paramb)
+    public final void mergeInit(final IResponse<cc> paramIResponse, final kotlin.g.a.b<? super IResponse<cc>, ah> paramb)
     {
-      AppMethodBeat.i(291492);
-      p.k(paramIResponse, "response");
+      AppMethodBeat.i(342224);
+      kotlin.g.b.s.u(paramIResponse, "response");
       if ((paramIResponse instanceof NormalMegaVideoLoader.a))
       {
         if (paramIResponse.getIncrementList() == null) {
-          paramIResponse.setIncrementList((List)v.aaAd);
+          paramIResponse.setIncrementList((List)ab.aivy);
         }
-        com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new a(this, paramIResponse, paramb));
-        AppMethodBeat.o(291492);
+        com.tencent.mm.ae.d.uiThread((a)new a(this.EzV, paramIResponse, paramb));
+        AppMethodBeat.o(342224);
         return;
       }
       super.mergeInit(paramIResponse, paramb);
-      AppMethodBeat.o(291492);
+      AppMethodBeat.o(342224);
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+    @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
     static final class a
-      extends kotlin.g.b.q
-      implements kotlin.g.a.a<x>
+      extends u
+      implements a<ah>
     {
-      a(NormalMegaVideoLoader.d paramd, IResponse paramIResponse, kotlin.g.a.b paramb)
+      a(NormalMegaVideoLoader paramNormalMegaVideoLoader, IResponse<cc> paramIResponse, kotlin.g.a.b<? super IResponse<cc>, ah> paramb)
       {
         super();
       }

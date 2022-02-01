@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/ct"
+<RelativeLayout android:background="@color/al2" android:paddingLeft="@dimen/d0" android:paddingRight="@dimen/d0" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/a5c" android:paddingLeft="8.0dip" android:paddingTop="4.0dip" android:paddingRight="8.0dip" android:paddingBottom="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:layout_marginRight="@dimen/bt" android:src="@raw/icons_outlined_search" app:iconColor="@color/FG_2" />
-        <TextView android:textSize="@dimen/k6" android:textColor="@color/FG_0" android:ellipsize="middle" android:layout_gravity="center_vertical" android:id="@id/ie5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{sug_1}" android:singleLine="true" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hpb" android:layout_width="@dimen/d_" android:layout_height="@dimen/d_" android:layout_marginTop="@dimen/d6" android:src="@raw/finder_original" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" app:iconColor="@color/Orange_100" />
+    <TextView android:textSize="@dimen/n" android:textColor="@color/FG_0" android:id="@id/hpn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:text="@string/eg9" android:layout_below="@id/hpb" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/uy" android:textColor="@color/FG_0" android:gravity="center" android:id="@id/hp_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:text="@string/eg6" android:layout_below="@id/hpn" android:layout_centerHorizontal="true" />
+    <Button android:enabled="false" android:textSize="@dimen/j7" android:textColor="@drawable/v2" android:id="@id/apy" android:background="@drawable/v1" android:clickable="false" android:layout_width="184.0dip" android:layout_height="@dimen/d4" android:layout_marginBottom="@dimen/c2" android:text="@string/eg4" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/hp9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="36.0dip" android:layout_above="@id/apy" android:layout_centerHorizontal="true">
+        <CheckBox android:id="@id/hp8" android:layout_width="13.0dip" android:layout_height="13.0dip" style="@style/lq" />
+        <TextView android:textSize="@dimen/m_" android:textColor="@color/FG_1" android:id="@id/hpk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bv" android:text="@string/eg2" />
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

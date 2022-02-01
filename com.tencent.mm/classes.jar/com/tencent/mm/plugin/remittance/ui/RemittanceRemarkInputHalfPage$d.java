@@ -4,26 +4,22 @@ import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.widget.a.g;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.ui.widget.a.j;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/remittance/ui/RemittanceRemarkInputHalfPage$animHideKeyboard$1$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-wxpay_release"})
+@Metadata(d1={""}, d2={"com/tencent/mm/plugin/remittance/ui/RemittanceRemarkInputHalfPage$animHideKeyboard$1$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-wxpay_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class RemittanceRemarkInputHalfPage$d
   implements Animator.AnimatorListener
 {
-  RemittanceRemarkInputHalfPage$d(g paramg) {}
+  RemittanceRemarkInputHalfPage$d(j paramj) {}
   
   public final void onAnimationCancel(Animator paramAnimator) {}
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    AppMethodBeat.i(202990);
-    paramAnimator = this.IuU;
-    View localView = this.IuU.oFW;
-    p.j(localView, "it.rootView");
-    paramAnimator.D(localView.getHeight());
-    AppMethodBeat.o(202990);
+    AppMethodBeat.i(288936);
+    this.OsC.rootView.getHeight();
+    AppMethodBeat.o(288936);
   }
   
   public final void onAnimationRepeat(Animator paramAnimator) {}

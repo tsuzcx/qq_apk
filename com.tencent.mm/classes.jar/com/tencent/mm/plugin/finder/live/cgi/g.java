@@ -1,65 +1,63 @@
 package com.tencent.mm.plugin.finder.live.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.cgi.ao;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.plugin.finder.cgi.bi;
 import com.tencent.mm.plugin.findersdk.b.c;
-import com.tencent.mm.protocal.protobuf.azj;
-import com.tencent.mm.protocal.protobuf.azk;
-import com.tencent.mm.protocal.protobuf.eaf;
-import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.protocal.protobuf.atu;
+import com.tencent.mm.protocal.protobuf.atv;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.kd;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/cgi/CgiFinderLiveGetAuthorization;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveGetAuthorizationResponse;", "appid", "", "scene", "", "ticket", "opType", "(Ljava/lang/String;ILjava/lang/String;I)V", "TAG", "getAppid", "()Ljava/lang/String;", "getOpType", "()I", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLiveGetAuthorizationRequest;", "getScene", "getTicket", "onCgiEnd", "", "errType", "errCode", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/cgi/CgiFinderLiveBanComment;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderBanLiveCommentResponse;", "liveId", "", "objectId", "audienceUsername", "", "scene", "", "enable", "", "callback", "Lcom/tencent/mm/plugin/finder/live/cgi/CgiFinderLiveBanComment$CallBack;", "(JJLjava/lang/String;IZLcom/tencent/mm/plugin/finder/live/cgi/CgiFinderLiveBanComment$CallBack;)V", "TAG", "request", "Lcom/tencent/mm/protocal/protobuf/FinderBanLiveCommentRequest;", "initReqResp", "", "onCgiEnd", "errType", "errCode", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "CallBack", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class g
-  extends c<azk>
+  extends c<atv>
 {
+  private a Cvm;
+  private atu Cvn;
   private final String TAG;
-  private final String appid;
-  private final String fAo;
-  private final int opType;
-  private final int scene;
-  private azj tJJ;
   
-  public g(String paramString1, int paramInt1, String paramString2, int paramInt2)
+  public g(long paramLong1, long paramLong2, String paramString, boolean paramBoolean, a parama)
   {
-    super(null);
-    AppMethodBeat.i(288762);
-    this.appid = paramString1;
-    this.scene = paramInt1;
-    this.fAo = paramString2;
-    this.opType = paramInt2;
-    this.TAG = "Finder.CgiFinderLiveGetAuthorization";
-    this.tJJ = new azj();
-    paramString1 = this.tJJ;
-    paramString2 = ao.xcj;
-    paramString1.RLM = ao.dnO();
-    this.tJJ.RLN = z.bdh();
-    this.tJJ.SLk = q.auM();
-    this.tJJ.fAo = this.fAo;
-    this.tJJ.app_id = this.appid;
-    this.tJJ.scene = this.scene;
-    this.tJJ.SLl = this.opType;
-    paramString1 = new d.a();
-    paramString1.c((a)this.tJJ);
-    paramString2 = new azk();
-    paramString2.setBaseResponse(new jh());
-    paramString2.getBaseResponse().Tef = new eaf();
-    paramString1.d((a)paramString2);
-    paramString1.TW("/cgi-bin/micromsg-bin/finderlivegetauthorization");
-    paramString1.vD(4261);
-    c(paramString1.bgN());
-    Log.i(this.TAG, "init " + this.appid + ", " + this.scene);
-    AppMethodBeat.o(288762);
+    AppMethodBeat.i(351117);
+    this.TAG = "Finder.CgiFinderLiveBanComment";
+    this.Cvm = parama;
+    this.Cvn = new atu();
+    this.Cvn.liveId = paramLong1;
+    this.Cvn.hKN = paramLong2;
+    this.Cvn.ZEm = paramString;
+    this.Cvn.scene = 2;
+    this.Cvn.enable = paramBoolean;
+    paramString = this.Cvn;
+    parama = bi.ABn;
+    paramString.ZEc = bi.dVu();
+    paramString = new c.a();
+    paramString.otE = ((a)this.Cvn);
+    parama = new atv();
+    parama.setBaseResponse(new kd());
+    parama.getBaseResponse().akjO = new etl();
+    paramString.otF = ((a)parama);
+    paramString.uri = "/cgi-bin/micromsg-bin/finderbanlivecomment";
+    paramString.funcId = 6656;
+    c(paramString.bEF());
+    Log.i(this.TAG, "CgiFinderLiveBanComment init " + this.Cvn.liveId + ',' + this.Cvn.ZEm);
+    AppMethodBeat.o(351117);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/cgi/CgiFinderLiveBanComment$CallBack;", "", "onFail", "", "errType", "", "errCode", "errMsg", "", "enable", "", "onSuccess", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static abstract interface a
+  {
+    public abstract void qo(boolean paramBoolean);
+    
+    public abstract void w(int paramInt1, int paramInt2, boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.cgi.g
  * JD-Core Version:    0.7.0.1
  */

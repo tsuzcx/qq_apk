@@ -13,21 +13,21 @@ public final class c
   implements a
 {
   private String appId;
-  private String jQi;
-  private String nTp;
-  private Map<String, Integer> ojZ;
+  private String mpa;
+  private String qTb;
+  private Map<String, Integer> rnB;
   
   public c(String paramString1, String paramString2)
   {
     AppMethodBeat.i(121458);
-    this.ojZ = new HashMap();
+    this.rnB = new HashMap();
     this.appId = paramString1;
-    this.jQi = paramString2;
-    this.nTp = (this.jQi + "-" + this.appId);
+    this.mpa = paramString2;
+    this.qTb = (this.mpa + "-" + this.appId);
     AppMethodBeat.o(121458);
   }
   
-  public final void agr(String paramString)
+  public final void Zn(String paramString)
   {
     AppMethodBeat.i(121459);
     if (TextUtils.isEmpty(paramString))
@@ -35,25 +35,25 @@ public final class c
       AppMethodBeat.o(121459);
       return;
     }
-    Integer localInteger2 = (Integer)this.ojZ.get(paramString);
+    Integer localInteger2 = (Integer)this.rnB.get(paramString);
     Integer localInteger1 = localInteger2;
     if (localInteger2 == null) {
       localInteger1 = Integer.valueOf(0);
     }
-    this.ojZ.put(paramString, Integer.valueOf(localInteger1.intValue() + 1));
+    this.rnB.put(paramString, Integer.valueOf(localInteger1.intValue() + 1));
     AppMethodBeat.o(121459);
   }
   
   public final void report()
   {
     AppMethodBeat.i(121460);
-    Iterator localIterator = this.ojZ.entrySet().iterator();
+    Iterator localIterator = this.rnB.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
-      h.IzE.a(14705, new Object[] { localEntry.getKey(), localEntry.getValue(), this.nTp, this.jQi, this.appId });
+      h.OAn.b(14705, new Object[] { localEntry.getKey(), localEntry.getValue(), this.qTb, this.mpa, this.appId });
     }
-    this.ojZ.clear();
+    this.rnB.clear();
     AppMethodBeat.o(121460);
   }
 }

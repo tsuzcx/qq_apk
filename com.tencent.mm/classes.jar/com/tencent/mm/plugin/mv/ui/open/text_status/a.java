@@ -9,176 +9,181 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 import androidx.recyclerview.widget.RecyclerView.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.music.e.k;
-import com.tencent.mm.plugin.music.f.a.d.a;
+import com.tencent.mm.plugin.music.e.a.d.a;
 import com.tencent.mm.plugin.music.model.e;
 import com.tencent.mm.plugin.music.model.e.a;
 import com.tencent.mm.plugin.mv.ui.adapter.MusicLyricLayoutManager;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.List;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/open/text_status/MusicMvLyricManager;", "", "context", "Landroid/content/Context;", "rootView", "Landroid/view/View;", "(Landroid/content/Context;Landroid/view/View;)V", "getContext", "()Landroid/content/Context;", "currentIndex", "", "currentTime", "itemClick", "com/tencent/mm/plugin/mv/ui/open/text_status/MusicMvLyricManager$itemClick$1", "Lcom/tencent/mm/plugin/mv/ui/open/text_status/MusicMvLyricManager$itemClick$1;", "lyricLines", "Ljava/util/ArrayList;", "", "lyricObj", "Lcom/tencent/mm/plugin/music/model/LyricObj;", "lyricRV", "Landroidx/recyclerview/widget/RecyclerView;", "kotlin.jvm.PlatformType", "getLyricRV", "()Landroidx/recyclerview/widget/RecyclerView;", "lyricRV$delegate", "Lkotlin/Lazy;", "playProgressListener", "Lcom/tencent/mm/plugin/music/player/base/IMusicPlayer$PlayProgressListener;", "getRootView", "()Landroid/view/View;", "onBackPressed", "", "onCreate", "", "onDestroy", "onPause", "onResume", "parseLyric", "lyric", "setCurrentTime", "currentPos", "setSongInfo", "Companion", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/open/text_status/MusicMvLyricManager;", "", "context", "Landroid/content/Context;", "rootView", "Landroid/view/View;", "(Landroid/content/Context;Landroid/view/View;)V", "getContext", "()Landroid/content/Context;", "currentIndex", "", "currentTime", "itemClick", "com/tencent/mm/plugin/mv/ui/open/text_status/MusicMvLyricManager$itemClick$1", "Lcom/tencent/mm/plugin/mv/ui/open/text_status/MusicMvLyricManager$itemClick$1;", "lyricLines", "Ljava/util/ArrayList;", "", "lyricObj", "Lcom/tencent/mm/plugin/music/model/LyricObj;", "lyricRV", "Landroidx/recyclerview/widget/RecyclerView;", "kotlin.jvm.PlatformType", "getLyricRV", "()Landroidx/recyclerview/widget/RecyclerView;", "lyricRV$delegate", "Lkotlin/Lazy;", "playProgressListener", "Lcom/tencent/mm/plugin/music/player/base/IMusicPlayer$PlayProgressListener;", "getRootView", "()Landroid/view/View;", "onBackPressed", "", "onCreate", "", "onDestroy", "onPause", "onResume", "parseLyric", "lyric", "setCurrentTime", "currentPos", "setSongInfo", "Companion", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public static final a.a GgT;
-  public final d.a FOE;
-  public e FTB;
-  private final f GgQ;
-  public final ArrayList<String> GgR;
-  private final b GgS;
+  public static final a.a Mca;
+  public final d.a LJz;
+  public e LOA;
+  private final kotlin.j Mcb;
+  public final ArrayList<String> Mcc;
+  private final b Mcd;
   private final Context context;
   private int currentIndex;
   private int currentTime;
-  final View oFW;
+  final View rootView;
   
   static
   {
-    AppMethodBeat.i(226049);
-    GgT = new a.a((byte)0);
-    AppMethodBeat.o(226049);
+    AppMethodBeat.i(286593);
+    Mca = new a.a((byte)0);
+    AppMethodBeat.o(286593);
   }
   
   public a(Context paramContext, View paramView)
   {
-    AppMethodBeat.i(226048);
+    AppMethodBeat.i(286562);
     this.context = paramContext;
-    this.oFW = paramView;
-    this.GgQ = g.ar((kotlin.g.a.a)new c(this));
-    this.GgR = new ArrayList();
+    this.rootView = paramView;
+    this.Mcb = k.cm((kotlin.g.a.a)new c(this));
+    this.Mcc = new ArrayList();
     this.currentIndex = -1;
-    this.GgS = new b();
-    this.FOE = ((d.a)new d(this));
-    AppMethodBeat.o(226048);
+    this.Mcd = new b();
+    this.LJz = new a..ExternalSyntheticLambda0(this);
+    AppMethodBeat.o(286562);
   }
   
-  private final RecyclerView fgH()
+  private static final void a(final a parama, int paramInt1, final int paramInt2)
   {
-    AppMethodBeat.i(226036);
-    RecyclerView localRecyclerView = (RecyclerView)this.GgQ.getValue();
-    AppMethodBeat.o(226036);
+    AppMethodBeat.i(286575);
+    s.u(parama, "this$0");
+    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new d(paramInt1, paramInt2, parama));
+    AppMethodBeat.o(286575);
+  }
+  
+  private final RecyclerView gqn()
+  {
+    AppMethodBeat.i(286568);
+    RecyclerView localRecyclerView = (RecyclerView)this.Mcb.getValue();
+    AppMethodBeat.o(286568);
     return localRecyclerView;
   }
   
-  public final void aSK(String paramString)
+  public final void aPE(String paramString)
   {
     int j = 0;
-    AppMethodBeat.i(226043);
+    AppMethodBeat.i(286640);
+    label29:
+    Object localObject1;
+    label71:
+    Object localObject3;
+    int k;
     if (paramString != null)
     {
-      int i;
-      if (((CharSequence)paramString).length() > 0)
+      if (((CharSequence)paramString).length() <= 0) {
+        break label295;
+      }
+      i = 1;
+      if (i == 0) {
+        break label300;
+      }
+      if (paramString != null)
       {
-        i = 1;
-        if (i == 0) {
-          break label157;
-        }
-        label29:
-        if (paramString == null) {
-          break label349;
-        }
-        this.GgR.clear();
+        this.Mcc.clear();
         if (paramString != null)
         {
           localObject1 = e.a(paramString, "", "", true, "", false, false);
-          p.j(localObject1, "obj");
-          if (((e)localObject1).feO() <= 1) {
-            break label162;
+          if (((e)localObject1).LMm.size() <= 1) {
+            break label305;
           }
+          this.LOA = ((e)localObject1);
+        }
+        localObject3 = this.LOA;
+        if (localObject3 != null)
+        {
+          k = ((e)localObject3).LMm.size();
+          if (k <= 0) {}
         }
       }
-      Object localObject2;
-      for (;;)
+    }
+    for (int i = j;; i = j)
+    {
+      j = i + 1;
+      ArrayList localArrayList = this.Mcc;
+      Object localObject2 = ((e)localObject3).adz(i).content;
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      localArrayList.add(localObject1);
+      if (j >= k)
       {
-        this.FTB = ((e)localObject1);
-        e locale = this.FTB;
-        if (locale == null) {
-          break label168;
-        }
-        int k = locale.feO();
-        i = j;
-        while (i < k)
+        if ((com.tencent.mm.plugin.mv.ui.adapter.a)gqn().getAdapter() == null)
         {
-          ArrayList localArrayList = this.GgR;
-          localObject2 = locale.Zm(i).content;
-          localObject1 = localObject2;
-          if (localObject2 == null) {
-            localObject1 = "";
-          }
-          localArrayList.add(localObject1);
-          i += 1;
+          localObject1 = gqn();
+          localObject2 = new com.tencent.mm.plugin.mv.ui.adapter.a((com.tencent.mm.plugin.mv.ui.adapter.a.b)this.Mcd);
+          ((com.tencent.mm.plugin.mv.ui.adapter.a)localObject2).hM((List)this.Mcc);
+          localObject3 = ah.aiuX;
+          ((RecyclerView)localObject1).setAdapter((RecyclerView.a)localObject2);
         }
+        Log.i("MicroMsg.Mv.MusicMvLyric", "setSongInfo, lyric.length:" + paramString.length() + ", lyricLine.size:" + this.Mcc.size() + ", lyricRv-Visisble:" + gqn().getVisibility() + ", lyricRv.alpha:" + gqn().getAlpha());
+        AppMethodBeat.o(286640);
+        return;
+        label295:
         i = 0;
         break;
-        label157:
+        label300:
         paramString = null;
         break label29;
-        label162:
+        label305:
         localObject1 = null;
+        break label71;
       }
-      label168:
-      Object localObject1 = fgH();
-      p.j(localObject1, "lyricRV");
-      if ((com.tencent.mm.plugin.mv.ui.adapter.a)((RecyclerView)localObject1).getAdapter() == null)
-      {
-        localObject1 = fgH();
-        p.j(localObject1, "lyricRV");
-        localObject2 = new com.tencent.mm.plugin.mv.ui.adapter.a((com.tencent.mm.plugin.mv.ui.adapter.a.b)this.GgS);
-        ((com.tencent.mm.plugin.mv.ui.adapter.a)localObject2).gg((List)this.GgR);
-        ((RecyclerView)localObject1).setAdapter((RecyclerView.a)localObject2);
-      }
-      paramString = new StringBuilder("setSongInfo, lyric.length:").append(paramString.length()).append(", lyricLine.size:").append(this.GgR.size()).append(", lyricRv-Visisble:");
-      localObject1 = fgH();
-      p.j(localObject1, "lyricRV");
-      paramString = paramString.append(((RecyclerView)localObject1).getVisibility()).append(", lyricRv.alpha:");
-      localObject1 = fgH();
-      p.j(localObject1, "lyricRV");
-      Log.i("MicroMsg.Mv.MusicMvLyric", ((RecyclerView)localObject1).getAlpha());
-      AppMethodBeat.o(226043);
-      return;
     }
-    label349:
-    AppMethodBeat.o(226043);
   }
   
   public final void onCreate()
   {
-    AppMethodBeat.i(293125);
+    AppMethodBeat.i(286610);
     Log.i("MicroMsg.Mv.MusicMvLyric", "onCreate");
-    Object localObject = fgH();
-    p.j(localObject, "lyricRV");
-    ((RecyclerView)localObject).setLayoutManager((RecyclerView.LayoutManager)new MusicLyricLayoutManager(this.context, (byte)0));
-    localObject = fgH();
-    p.j(localObject, "lyricRV");
-    localObject = (ViewGroup.MarginLayoutParams)((RecyclerView)localObject).getLayoutParams();
-    if (localObject != null)
-    {
-      Resources localResources = this.context.getResources();
-      p.j(localResources, "context.resources");
-      ((ViewGroup.MarginLayoutParams)localObject).topMargin = ((int)(localResources.getDisplayMetrics().heightPixels * 0.37F - com.tencent.mm.ci.a.fromDPToPix(this.context, 15)));
+    gqn().setLayoutManager((RecyclerView.LayoutManager)new MusicLyricLayoutManager(this.context, (byte)0));
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)gqn().getLayoutParams();
+    if (localMarginLayoutParams != null) {
+      localMarginLayoutParams.topMargin = ((int)(this.context.getResources().getDisplayMetrics().heightPixels * 0.37F - com.tencent.mm.cd.a.fromDPToPix(this.context, 15)));
     }
-    localObject = k.fet();
-    p.j(localObject, "MusicPlayerManager.Instance()");
-    ((k)localObject).feg().a(this.FOE);
-    AppMethodBeat.o(293125);
+    com.tencent.mm.plugin.music.logic.j.gnw().gnj().a(this.LJz);
+    AppMethodBeat.o(286610);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/mv/ui/open/text_status/MusicMvLyricManager$itemClick$1", "Lcom/tencent/mm/plugin/mv/ui/adapter/MusicLyricAdapter$OnItemClickListener;", "onClick", "", "position", "", "plugin-mv_release"})
+  public final void onPause()
+  {
+    AppMethodBeat.i(286627);
+    Log.i("MicroMsg.Mv.MusicMvLyric", "onPause");
+    com.tencent.mm.plugin.music.logic.j.gnw().gnj().b(this.LJz);
+    AppMethodBeat.o(286627);
+  }
+  
+  public final void onResume()
+  {
+    AppMethodBeat.i(286619);
+    Log.i("MicroMsg.Mv.MusicMvLyric", "onResume");
+    com.tencent.mm.plugin.music.logic.j.gnw().gnj().a(this.LJz);
+    AppMethodBeat.o(286619);
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/mv/ui/open/text_status/MusicMvLyricManager$itemClick$1", "Lcom/tencent/mm/plugin/mv/ui/adapter/MusicLyricAdapter$OnItemClickListener;", "onClick", "", "position", "", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
     implements com.tencent.mm.plugin.mv.ui.adapter.a.b
   {
-    public final void dkT() {}
+    public final void dRJ() {}
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroidx/recyclerview/widget/RecyclerView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroidx/recyclerview/widget/RecyclerView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends q
+    extends u
     implements kotlin.g.a.a<RecyclerView>
   {
     c(a parama)
@@ -187,23 +192,20 @@ public final class a
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "currentPos", "", "totalDuration", "onProgress"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    implements d.a
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    d(a parama) {}
-    
-    public final void fK(final int paramInt1, final int paramInt2)
+    d(int paramInt1, int paramInt2, a parama)
     {
-      AppMethodBeat.i(229501);
-      com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new q(paramInt1) {});
-      AppMethodBeat.o(229501);
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.mv.ui.open.text_status.a
  * JD-Core Version:    0.7.0.1
  */

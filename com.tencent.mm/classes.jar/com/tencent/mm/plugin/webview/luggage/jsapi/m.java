@@ -8,20 +8,20 @@ import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class m
-  extends bs<g>
+  extends bw<g>
 {
-  public final void a(Context paramContext, String paramString, br.a parama) {}
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
   
   public final void b(b<g>.a paramb)
   {
     AppMethodBeat.i(78545);
     Log.i("MicroMsg.JsApiCloseWindow", "invokeInOwn");
-    ((g)paramb.crg).gUG();
+    ((g)paramb.eiY).iup();
     paramb.a("", null);
     AppMethodBeat.o(78545);
   }
   
-  public final int cDj()
+  public final int dgI()
   {
     return 0;
   }

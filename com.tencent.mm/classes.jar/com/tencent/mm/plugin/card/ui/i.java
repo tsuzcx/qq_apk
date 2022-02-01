@@ -12,92 +12,92 @@ import com.tencent.mm.kernel.f;
 import com.tencent.mm.plugin.card.a.b;
 import com.tencent.mm.plugin.card.a.c;
 import com.tencent.mm.plugin.card.a.g;
-import com.tencent.mm.plugin.card.b.k;
-import com.tencent.mm.plugin.card.b.k.a;
-import com.tencent.mm.plugin.card.d.n;
+import com.tencent.mm.plugin.card.c.n;
+import com.tencent.mm.plugin.card.mgr.j;
+import com.tencent.mm.plugin.card.mgr.j.a;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.model.g;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import com.tencent.mm.ui.MMActivity;
 
 public final class i
-  implements k.a
+  implements j.a
 {
-  View mrI;
-  MMActivity tmY;
-  boolean ttT = false;
-  View tza;
-  TextView tzb;
-  ImageView tzc;
-  View tzd;
-  TextView tze;
-  ImageView tzf;
+  View plc;
+  View wDA;
+  TextView wDB;
+  ImageView wDC;
+  View wDx;
+  TextView wDy;
+  ImageView wDz;
+  MMActivity wry;
+  boolean wyq = false;
   
   public i(MMActivity paramMMActivity, View paramView)
   {
-    this.tmY = paramMMActivity;
-    this.mrI = paramView;
+    this.wry = paramMMActivity;
+    this.plc = paramView;
   }
   
   public final void a(g paramg)
   {
     AppMethodBeat.i(113517);
-    cJH();
+    dmX();
     AppMethodBeat.o(113517);
   }
   
-  final void cJH()
+  final void dmX()
   {
     AppMethodBeat.i(113518);
-    int i = am.cHw().tnQ;
-    if ((i > 0) && (this.ttT))
+    int i = am.dkN().wsr;
+    if ((i > 0) && (this.wyq))
     {
-      String str1 = (String)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.VhX, "");
-      String str2 = (String)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.VhY, "");
-      int j = this.tmY.getResources().getDimensionPixelOffset(a.b.sZI);
+      String str1 = (String)com.tencent.mm.kernel.h.baE().ban().get(at.a.acJr, "");
+      String str2 = (String)com.tencent.mm.kernel.h.baE().ban().get(at.a.acJs, "");
+      int j = this.wry.getResources().getDimensionPixelOffset(a.b.wdP);
       if (!TextUtils.isEmpty(str2))
       {
-        n.a(this.tzc, str2, j, a.c.tak, true);
+        n.a(this.wDz, str2, j, a.c.wes, true);
         if (TextUtils.isEmpty(str1)) {
           break label190;
         }
-        this.tzb.setText(str1);
+        this.wDy.setText(str1);
         label111:
-        this.tza.setVisibility(0);
-        if (this.tzd != null)
+        this.wDx.setVisibility(0);
+        if (this.wDA != null)
         {
           if (TextUtils.isEmpty(str2)) {
             break label221;
           }
-          n.a(this.tzf, str2, j, a.c.tak, true);
+          n.a(this.wDC, str2, j, a.c.wes, true);
           label148:
           if (TextUtils.isEmpty(str1)) {
             break label234;
           }
-          this.tze.setText(str1);
+          this.wDB.setText(str1);
         }
       }
       for (;;)
       {
-        this.tzd.setVisibility(0);
+        this.wDA.setVisibility(0);
         AppMethodBeat.o(113518);
         return;
-        this.tzc.setImageResource(a.c.tak);
+        this.wDz.setImageResource(a.c.wes);
         break;
         label190:
-        this.tzb.setText(this.tmY.getString(a.g.tkC, new Object[] { Integer.valueOf(i) }));
+        this.wDy.setText(this.wry.getString(a.g.wpa, new Object[] { Integer.valueOf(i) }));
         break label111;
         label221:
-        this.tzf.setImageResource(a.c.tak);
+        this.wDC.setImageResource(a.c.wes);
         break label148;
         label234:
-        this.tze.setText(this.tmY.getString(a.g.tkC, new Object[] { Integer.valueOf(i) }));
+        this.wDB.setText(this.wry.getString(a.g.wpa, new Object[] { Integer.valueOf(i) }));
       }
     }
-    this.tza.setVisibility(8);
-    if (this.tzd != null) {
-      this.tzd.setVisibility(8);
+    this.wDx.setVisibility(8);
+    if (this.wDA != null) {
+      this.wDA.setVisibility(8);
     }
     AppMethodBeat.o(113518);
   }
@@ -106,7 +106,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.i
  * JD-Core Version:    0.7.0.1
  */

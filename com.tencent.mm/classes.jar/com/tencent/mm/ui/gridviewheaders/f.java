@@ -14,22 +14,22 @@ public final class f
   extends BaseAdapter
   implements b
 {
-  private e XIn;
-  private List<b> XIo;
+  private e afvT;
+  private List<b> afvU;
   
   public f(e parame)
   {
     AppMethodBeat.i(142848);
-    this.XIn = parame;
+    this.afvT = parame;
     parame.registerDataSetObserver(new a((byte)0));
-    this.XIo = a(parame);
+    this.afvU = a(parame);
     AppMethodBeat.o(142848);
   }
   
   public final View a(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(142851);
-    paramView = this.XIn.a(((b)this.XIo.get(paramInt)).XIq, paramView, paramViewGroup);
+    paramView = this.afvT.a(((b)this.afvU.get(paramInt)).afvW, paramView, paramViewGroup);
     AppMethodBeat.o(142851);
     return paramView;
   }
@@ -42,7 +42,7 @@ public final class f
     int i = 0;
     while (i < parame.getCount())
     {
-      long l = parame.Ix(i);
+      long l = parame.Ja(i);
       b localb2 = (b)localHashMap.get(Long.valueOf(l));
       b localb1 = localb2;
       if (localb2 == null)
@@ -58,12 +58,12 @@ public final class f
     return localArrayList;
   }
   
-  public final int axg(int paramInt)
+  public final int aDO(int paramInt)
   {
     AppMethodBeat.i(142850);
     try
     {
-      paramInt = ((b)this.XIo.get(paramInt)).mCount;
+      paramInt = ((b)this.afvU.get(paramInt)).mCount;
       AppMethodBeat.o(142850);
       return paramInt;
     }
@@ -77,7 +77,7 @@ public final class f
   public final int getCount()
   {
     AppMethodBeat.i(142849);
-    int i = this.XIn.getCount();
+    int i = this.afvT.getCount();
     AppMethodBeat.o(142849);
     return i;
   }
@@ -85,7 +85,7 @@ public final class f
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(142852);
-    Object localObject = this.XIn.getItem(paramInt);
+    Object localObject = this.afvT.getItem(paramInt);
     AppMethodBeat.o(142852);
     return localObject;
   }
@@ -93,7 +93,7 @@ public final class f
   public final long getItemId(int paramInt)
   {
     AppMethodBeat.i(142853);
-    long l = this.XIn.getItemId(paramInt);
+    long l = this.afvT.getItemId(paramInt);
     AppMethodBeat.o(142853);
     return l;
   }
@@ -101,15 +101,15 @@ public final class f
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(142855);
-    paramView = this.XIn.getView(paramInt, paramView, paramViewGroup);
+    paramView = this.afvT.getView(paramInt, paramView, paramViewGroup);
     AppMethodBeat.o(142855);
     return paramView;
   }
   
-  public final int hXa()
+  public final int jBx()
   {
     AppMethodBeat.i(142854);
-    int i = this.XIo.size();
+    int i = this.afvU.size();
     AppMethodBeat.o(142854);
     return i;
   }
@@ -138,19 +138,19 @@ public final class f
   
   final class b
   {
-    int XIq;
+    int afvW;
     int mCount;
     
     public b(int paramInt)
     {
-      this.XIq = paramInt;
+      this.afvW = paramInt;
       this.mCount = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.gridviewheaders.f
  * JD-Core Version:    0.7.0.1
  */

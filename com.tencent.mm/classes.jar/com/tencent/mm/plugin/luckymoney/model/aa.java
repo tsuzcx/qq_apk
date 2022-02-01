@@ -1,233 +1,152 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.kernel.c;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.base.s;
-import com.tencent.mm.wallet_core.c.w;
-import com.tencent.mm.wallet_core.d.e;
-import com.tencent.mm.wallet_core.d.f;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
 
 public final class aa
-  implements i, e
+  extends com.tencent.mm.bx.a
 {
-  private f EAz;
-  private Context mContext;
-  private String mProcessName;
-  private HashSet<q> nkO;
-  private HashSet<q> nkP;
-  private Set<Integer> nkQ;
-  private s tipDialog;
+  public String Ktr;
+  public String Kts;
+  public String Ktt;
+  public String Ktu;
+  public String pdv;
+  public String verifyInfo;
+  public int videoHeight;
+  public String videoUrl;
+  public int videoWidth;
   
-  public aa(Context paramContext, f paramf)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(65230);
-    this.EAz = null;
-    this.nkO = new HashSet();
-    this.nkP = new HashSet();
-    this.tipDialog = null;
-    this.nkQ = new HashSet();
-    this.mContext = paramContext;
-    this.EAz = paramf;
-    AppMethodBeat.o(65230);
-  }
-  
-  private void k(q paramq)
-  {
-    AppMethodBeat.i(65238);
-    if ((paramq != null) && ((paramq instanceof w))) {
-      ((w)paramq).setProcessName(this.mProcessName);
-    }
-    AppMethodBeat.o(65238);
-  }
-  
-  public final void addSceneEndListener(int paramInt)
-  {
-    AppMethodBeat.i(65234);
-    this.nkQ.add(Integer.valueOf(paramInt));
-    com.tencent.mm.kernel.h.aHH();
-    com.tencent.mm.kernel.h.aHF().kcd.a(paramInt, this);
-    AppMethodBeat.o(65234);
-  }
-  
-  public final void b(q paramq, boolean paramBoolean)
-  {
-    AppMethodBeat.i(65231);
-    k(paramq);
-    this.nkO.add(paramq);
-    if ((paramBoolean) && ((this.tipDialog == null) || ((this.tipDialog != null) && (!this.tipDialog.isShowing()))))
+    AppMethodBeat.i(283925);
+    if (paramInt == 0)
     {
-      if (this.tipDialog != null) {
-        this.tipDialog.dismiss();
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.Ktr != null) {
+        paramVarArgs.g(1, this.Ktr);
       }
-      this.tipDialog = com.tencent.mm.ui.base.h.a(this.mContext, this.mContext.getString(a.i.loading_tips), false, new DialogInterface.OnCancelListener()
-      {
-        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
-        {
-          AppMethodBeat.i(65228);
-          aa.this.forceCancel();
-          AppMethodBeat.o(65228);
-        }
-      });
+      if (this.pdv != null) {
+        paramVarArgs.g(2, this.pdv);
+      }
+      if (this.Kts != null) {
+        paramVarArgs.g(3, this.Kts);
+      }
+      if (this.Ktt != null) {
+        paramVarArgs.g(4, this.Ktt);
+      }
+      if (this.videoUrl != null) {
+        paramVarArgs.g(5, this.videoUrl);
+      }
+      if (this.Ktu != null) {
+        paramVarArgs.g(6, this.Ktu);
+      }
+      paramVarArgs.bS(7, this.videoWidth);
+      paramVarArgs.bS(8, this.videoHeight);
+      if (this.verifyInfo != null) {
+        paramVarArgs.g(9, this.verifyInfo);
+      }
+      AppMethodBeat.o(283925);
+      return 0;
     }
-    com.tencent.mm.kernel.h.aHH();
-    com.tencent.mm.kernel.h.aHF().kcd.a(paramq, 0);
-    AppMethodBeat.o(65231);
-  }
-  
-  public final void doSceneProgress(q paramq, boolean paramBoolean)
-  {
-    AppMethodBeat.i(65232);
-    Log.d("MicroMsg.WalletNetSceneMgr", "isShowProgress ".concat(String.valueOf(paramBoolean)));
-    k(paramq);
-    this.nkP.add(paramq);
-    if ((paramBoolean) && ((this.tipDialog == null) || ((this.tipDialog != null) && (!this.tipDialog.isShowing()))))
-    {
-      if (this.tipDialog != null) {
-        this.tipDialog.dismiss();
+    if (paramInt == 1) {
+      if (this.Ktr == null) {
+        break label666;
       }
-      this.tipDialog = com.tencent.mm.ui.base.h.a(this.mContext, 3, this.mContext.getString(a.i.loading_tips), true, new DialogInterface.OnCancelListener()
+    }
+    label666:
+    for (int i = i.a.a.b.b.a.h(1, this.Ktr) + 0;; i = 0)
+    {
+      paramInt = i;
+      if (this.pdv != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.pdv);
+      }
+      i = paramInt;
+      if (this.Kts != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.Kts);
+      }
+      paramInt = i;
+      if (this.Ktt != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.Ktt);
+      }
+      i = paramInt;
+      if (this.videoUrl != null) {
+        i = paramInt + i.a.a.b.b.a.h(5, this.videoUrl);
+      }
+      paramInt = i;
+      if (this.Ktu != null) {
+        paramInt = i + i.a.a.b.b.a.h(6, this.Ktu);
+      }
+      i = paramInt + i.a.a.b.b.a.cJ(7, this.videoWidth) + i.a.a.b.b.a.cJ(8, this.videoHeight);
+      paramInt = i;
+      if (this.verifyInfo != null) {
+        paramInt = i + i.a.a.b.b.a.h(9, this.verifyInfo);
+      }
+      AppMethodBeat.o(283925);
+      return paramInt;
+      if (paramInt == 2)
       {
-        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
-        {
-          AppMethodBeat.i(65229);
-          if ((aa.a(aa.this) != null) && (aa.b(aa.this).isEmpty()))
-          {
-            aa.a(aa.this).dismiss();
-            paramAnonymousDialogInterface = aa.c(aa.this).iterator();
-            while (paramAnonymousDialogInterface.hasNext())
-            {
-              q localq = (q)paramAnonymousDialogInterface.next();
-              com.tencent.mm.kernel.h.aHH();
-              com.tencent.mm.kernel.h.aHF().kcd.a(localq);
-            }
-            aa.c(aa.this).clear();
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
           }
-          AppMethodBeat.o(65229);
         }
-      });
-    }
-    com.tencent.mm.kernel.h.aHH();
-    com.tencent.mm.kernel.h.aHF().kcd.a(paramq, 0);
-    AppMethodBeat.o(65232);
-  }
-  
-  public final void eOG()
-  {
-    AppMethodBeat.i(65239);
-    if ((this.tipDialog != null) && (this.tipDialog.isShowing())) {
-      this.tipDialog.dismiss();
-    }
-    AppMethodBeat.o(65239);
-  }
-  
-  public final void forceCancel()
-  {
-    AppMethodBeat.i(65233);
-    if (this.tipDialog != null)
-    {
-      this.tipDialog.dismiss();
-      this.tipDialog = null;
-    }
-    Iterator localIterator = this.nkO.iterator();
-    q localq;
-    while (localIterator.hasNext())
-    {
-      localq = (q)localIterator.next();
-      com.tencent.mm.kernel.h.aHH();
-      com.tencent.mm.kernel.h.aHF().kcd.a(localq);
-    }
-    localIterator = this.nkP.iterator();
-    while (localIterator.hasNext())
-    {
-      localq = (q)localIterator.next();
-      com.tencent.mm.kernel.h.aHH();
-      com.tencent.mm.kernel.h.aHF().kcd.a(localq);
-    }
-    this.nkO.clear();
-    this.nkP.clear();
-    AppMethodBeat.o(65233);
-  }
-  
-  public final boolean isProcessing()
-  {
-    AppMethodBeat.i(65237);
-    if ((this.nkP.isEmpty()) && (this.nkO.isEmpty()))
-    {
-      AppMethodBeat.o(65237);
-      return false;
-    }
-    AppMethodBeat.o(65237);
-    return true;
-  }
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
-  {
-    AppMethodBeat.i(65236);
-    int i;
-    if (this.nkP.contains(paramq))
-    {
-      this.nkP.remove(paramq);
-      Log.d("MicroMsg.WalletNetSceneMgr", "has find scene ");
-      i = 1;
-    }
-    for (;;)
-    {
-      if ((this.nkP.isEmpty()) && (this.nkO.isEmpty())) {
-        if (this.tipDialog != null)
-        {
-          this.tipDialog.dismiss();
-          this.tipDialog = null;
-        }
+        AppMethodBeat.o(283925);
+        return 0;
       }
-      for (boolean bool = true;; bool = false)
+      if (paramInt == 3)
       {
-        if ((i != 0) && (this.EAz != null)) {
-          this.EAz.onSceneEnd(paramInt1, paramInt2, paramString, paramq, bool);
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+        aa localaa = (aa)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(283925);
+          return -1;
+        case 1: 
+          localaa.Ktr = locala.ajGk.readString();
+          AppMethodBeat.o(283925);
+          return 0;
+        case 2: 
+          localaa.pdv = locala.ajGk.readString();
+          AppMethodBeat.o(283925);
+          return 0;
+        case 3: 
+          localaa.Kts = locala.ajGk.readString();
+          AppMethodBeat.o(283925);
+          return 0;
+        case 4: 
+          localaa.Ktt = locala.ajGk.readString();
+          AppMethodBeat.o(283925);
+          return 0;
+        case 5: 
+          localaa.videoUrl = locala.ajGk.readString();
+          AppMethodBeat.o(283925);
+          return 0;
+        case 6: 
+          localaa.Ktu = locala.ajGk.readString();
+          AppMethodBeat.o(283925);
+          return 0;
+        case 7: 
+          localaa.videoWidth = locala.ajGk.aar();
+          AppMethodBeat.o(283925);
+          return 0;
+        case 8: 
+          localaa.videoHeight = locala.ajGk.aar();
+          AppMethodBeat.o(283925);
+          return 0;
         }
-        AppMethodBeat.o(65236);
-        return;
-        if (!this.nkO.contains(paramq)) {
-          break label154;
-        }
-        this.nkO.remove(paramq);
-        Log.d("MicroMsg.WalletNetSceneMgr", "has find forcescenes ");
-        i = 1;
-        break;
+        localaa.verifyInfo = locala.ajGk.readString();
+        AppMethodBeat.o(283925);
+        return 0;
       }
-      label154:
-      i = 0;
+      AppMethodBeat.o(283925);
+      return -1;
     }
-  }
-  
-  public final void removeSceneEndListener(int paramInt)
-  {
-    AppMethodBeat.i(65235);
-    com.tencent.mm.kernel.h.aHH();
-    com.tencent.mm.kernel.h.aHF().kcd.b(paramInt, this);
-    this.nkQ.remove(Integer.valueOf(paramInt));
-    if (this.nkQ.isEmpty())
-    {
-      forceCancel();
-      this.EAz = null;
-      this.mContext = null;
-    }
-    AppMethodBeat.o(65235);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.aa
  * JD-Core Version:    0.7.0.1
  */

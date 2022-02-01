@@ -2,32 +2,32 @@ package com.tencent.matrix.trace.d;
 
 public final class a
 {
-  public int blG;
+  public int aOm;
   public int count = 1;
-  public int dfL;
-  public int dfM;
+  public int ffa;
+  public int ffb;
   
   public a(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.dfL = paramInt1;
-    this.dfM = paramInt2;
-    this.blG = paramInt3;
+    this.ffa = paramInt1;
+    this.ffb = paramInt2;
+    this.aOm = paramInt3;
   }
   
-  public final void bu(long paramLong)
+  public final void dP(long paramLong)
   {
     this.count += 1;
-    this.dfM = ((int)(this.dfM + paramLong));
+    this.ffb = ((int)(this.ffb + paramLong));
   }
   
   public final String toString()
   {
-    return this.blG + "," + this.dfL + "," + this.count + "," + this.dfM;
+    return this.aOm + "," + this.ffa + "," + this.count + "," + this.ffb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.trace.d.a
  * JD-Core Version:    0.7.0.1
  */

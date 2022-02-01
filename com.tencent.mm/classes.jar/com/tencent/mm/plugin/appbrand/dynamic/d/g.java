@@ -22,10 +22,10 @@ public final class g
   public final void a(com.tencent.mm.ac.c.a parama, JSONObject paramJSONObject, final b.a<JSONObject> parama1)
   {
     AppMethodBeat.i(121318);
-    parama = parama.aGj();
+    parama = parama.aZk();
     a locala = new a((byte)0);
     locala.id = parama.getString("__page_view_id", "");
-    locala.fVa = paramJSONObject.optString("phoneNumber", "");
+    locala.iaX = paramJSONObject.optString("phoneNumber", "");
     XIPCInvoker.a(parama.getString("__process_name", MMApplicationContext.getProcessName()), locala, b.class, new com.tencent.mm.ipcinvoker.f() {});
     AppMethodBeat.o(121318);
   }
@@ -33,14 +33,14 @@ public final class g
   static final class a
     implements com.tencent.mm.ipcinvoker.extension.f
   {
-    String fVa;
+    String iaX;
     String id;
     
-    public final void e(Parcel paramParcel)
+    public final void g(Parcel paramParcel)
     {
       AppMethodBeat.i(121314);
       paramParcel.writeString(this.id);
-      paramParcel.writeString(this.fVa);
+      paramParcel.writeString(this.iaX);
       AppMethodBeat.o(121314);
     }
     
@@ -48,7 +48,7 @@ public final class g
     {
       AppMethodBeat.i(121315);
       this.id = paramParcel.readString();
-      this.fVa = paramParcel.readString();
+      this.iaX = paramParcel.readString();
       AppMethodBeat.o(121315);
     }
   }
@@ -59,7 +59,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.g
  * JD-Core Version:    0.7.0.1
  */

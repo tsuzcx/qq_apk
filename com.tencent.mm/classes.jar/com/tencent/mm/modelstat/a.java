@@ -1,71 +1,71 @@
 package com.tencent.mm.modelstat;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.k.b;
-import com.tencent.mm.f.b.a.hw;
-import com.tencent.mm.f.b.a.hx;
-import com.tencent.mm.f.c.et;
-import com.tencent.mm.model.ab;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.autogen.mmdata.rpt.jz;
+import com.tencent.mm.autogen.mmdata.rpt.ka;
+import com.tencent.mm.message.k.b;
 import com.tencent.mm.model.ac;
-import com.tencent.mm.model.bq;
+import com.tencent.mm.model.br;
 import com.tencent.mm.model.z;
 import com.tencent.mm.modelsns.n;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ca;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.cc;
 
 public final class a
 {
-  public static void a(ca paramca, a parama)
+  public static void a(cc paramcc, a parama)
   {
     AppMethodBeat.i(20656);
-    if (Util.isNullOrNil(paramca.ilq))
+    if (Util.isNullOrNil(paramcc.kLp))
     {
       AppMethodBeat.o(20656);
       return;
     }
     n localn = new n();
-    localn.m("20ExpIdStr", paramca.ilq + ",");
-    localn.m("21OpType", parama.value + ",");
-    localn.m("22msgId", paramca.field_msgSvrId + ",");
-    localn.m("23MessageType", paramca.getType() + ",");
+    localn.s("20ExpIdStr", paramcc.kLp + ",");
+    localn.s("21OpType", parama.value + ",");
+    localn.s("22msgId", paramcc.field_msgSvrId + ",");
+    localn.s("23MessageType", paramcc.getType() + ",");
     int i;
-    if (paramca.erk())
+    if (paramcc.fxR())
     {
-      parama = k.b.aG(paramca.field_content, paramca.field_reserved);
+      parama = k.b.aP(paramcc.field_content, paramcc.field_reserved);
       if (parama == null) {
         i = 0;
       }
     }
     for (;;)
     {
-      parama = paramca.field_talker;
-      localn.m("24AppMsgInnerType", i + ",");
-      localn.m("25curUsername", parama + ",");
+      parama = paramcc.field_talker;
+      localn.s("24AppMsgInnerType", i + ",");
+      localn.s("25curUsername", parama + ",");
       String str = "";
-      if (paramca.field_isSend == 1) {
-        parama = z.bcZ();
+      if (paramcc.field_isSend == 1) {
+        parama = z.bAM();
       }
       for (;;)
       {
-        localn.m("26msgPostUserName", parama + ",");
-        localn.m("27MediaState", paramca.ilr + ",");
-        Log.v("MicroMsg.ChattingExpUtil", "report logbuffer(13564): [chatting_exp]" + localn.agI());
-        h.IzE.a(13564, new Object[] { localn });
+        localn.s("26msgPostUserName", parama + ",");
+        localn.s("27MediaState", paramcc.kLq + ",");
+        Log.v("MicroMsg.ChattingExpUtil", "report logbuffer(13564): [chatting_exp]" + localn.aIF());
+        h.OAn.b(13564, new Object[] { localn });
         AppMethodBeat.o(20656);
         return;
         i = parama.type;
         break;
-        if ((parama != null) && (ab.Lj(parama)))
+        if ((parama != null) && (au.bwE(parama)))
         {
           parama = str;
-          if (paramca.field_content != null)
+          if (paramcc.field_content != null)
           {
-            i = bq.RI(paramca.field_content);
+            i = br.JG(paramcc.field_content);
             parama = str;
             if (i != -1) {
-              parama = paramca.field_content.substring(0, i).trim();
+              parama = paramcc.field_content.substring(0, i).trim();
             }
           }
         }
@@ -74,55 +74,55 @@ public final class a
     }
   }
   
-  public static void ai(ca paramca)
+  public static void an(cc paramcc)
   {
-    AppMethodBeat.i(276621);
-    if (paramca == null)
+    AppMethodBeat.i(242902);
+    if (paramcc == null)
     {
       Log.v("MicroMsg.ChattingExpUtil", "reportClickRecordHistoryMsgs, msg = null.");
-      AppMethodBeat.o(276621);
+      AppMethodBeat.o(242902);
       return;
     }
-    hx localhx = new hx();
-    paramca = paramca.field_talker;
-    localhx.gGV = localhx.z("ChatNameStr", paramca, true);
-    int i = ac.Rl(paramca);
-    localhx.gAN = i;
-    localhx.bpa();
-    Log.d("MicroMsg.ChattingExpUtil", "report logbuffer(22335): [curUsername]: %s, chatType: %s", new Object[] { paramca, Integer.valueOf(i) });
-    AppMethodBeat.o(276621);
+    ka localka = new ka();
+    paramcc = paramcc.field_talker;
+    localka.iVm = localka.F("ChatNameStr", paramcc, true);
+    int i = ac.Jj(paramcc);
+    localka.iNl = i;
+    localka.bMH();
+    Log.d("MicroMsg.ChattingExpUtil", "report logbuffer(22335): [curUsername]: %s, chatType: %s", new Object[] { paramcc, Integer.valueOf(i) });
+    AppMethodBeat.o(242902);
   }
   
-  public static void c(ca paramca, int paramInt)
+  public static void c(cc paramcc, int paramInt)
   {
-    AppMethodBeat.i(276622);
-    if (paramca == null)
+    AppMethodBeat.i(242905);
+    if (paramcc == null)
     {
       Log.v("MicroMsg.ChattingExpUtil", "reportHistoryRecordAction, msg = null.");
-      AppMethodBeat.o(276622);
+      AppMethodBeat.o(242905);
       return;
     }
-    hw localhw = new hw();
-    String str2 = paramca.field_talker;
+    jz localjz = new jz();
+    String str2 = paramcc.field_talker;
     String str1 = Util.nullAs(str2, "");
-    boolean bool = ab.Lj(str2);
+    boolean bool = au.bwE(str2);
     if ((bool) && (bool))
     {
-      paramca = bq.RL(paramca.field_content);
-      if ((paramca == null) || (paramca.length() <= 0)) {}
+      paramcc = br.JJ(paramcc.field_content);
+      if ((paramcc == null) || (paramcc.length() <= 0)) {}
     }
     for (;;)
     {
-      str1 = z.bcZ();
-      int i = ac.Rl(str2);
-      localhw.gAN = i;
-      Log.d("MicroMsg.ChattingExpUtil", "report logbuffer(22336): [username]: %s, curUsername: %s, actionType: %s, chatType: %s, chatname: %s.", new Object[] { str1, str2, Integer.valueOf(paramInt), Integer.valueOf(i), paramca });
-      localhw.gGV = localhw.z("ChatNameStr", str2, true);
-      localhw.gef = paramInt;
-      localhw.bpa();
-      AppMethodBeat.o(276622);
+      str1 = z.bAM();
+      int i = ac.Jj(str2);
+      localjz.iNl = i;
+      Log.d("MicroMsg.ChattingExpUtil", "report logbuffer(22336): [username]: %s, curUsername: %s, actionType: %s, chatType: %s, chatname: %s.", new Object[] { str1, str2, Integer.valueOf(paramInt), Integer.valueOf(i), paramcc });
+      localjz.iVm = localjz.F("ChatNameStr", str2, true);
+      localjz.ikE = paramInt;
+      localjz.bMH();
+      AppMethodBeat.o(242905);
       return;
-      paramca = str1;
+      paramcc = str1;
     }
   }
   
@@ -133,9 +133,9 @@ public final class a
     static
     {
       AppMethodBeat.i(20655);
-      mca = new a("Expose", 0, 1);
-      mcb = new a("Click", 1, 2);
-      mcd = new a[] { mca, mcb };
+      oUV = new a("Expose", 0, 1);
+      oUW = new a("Click", 1, 2);
+      oUX = new a[] { oUV, oUW };
       AppMethodBeat.o(20655);
     }
     

@@ -1,91 +1,40 @@
 package androidx.core.widget;
 
 import android.os.Build.VERSION;
-import android.widget.PopupWindow;
+import android.view.View;
+import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 
 public final class g
 {
-  private static Method QC;
-  private static boolean QD;
-  private static Field QE;
-  private static boolean QF;
-  
-  public static void a(PopupWindow paramPopupWindow, int paramInt)
+  public static boolean a(ListView paramListView)
   {
-    AppMethodBeat.i(253061);
-    if (Build.VERSION.SDK_INT >= 23)
+    AppMethodBeat.i(195358);
+    if (Build.VERSION.SDK_INT >= 19)
     {
-      paramPopupWindow.setWindowLayoutType(paramInt);
-      AppMethodBeat.o(253061);
-      return;
+      boolean bool = paramListView.canScrollList(-1);
+      AppMethodBeat.o(195358);
+      return bool;
     }
-    if (!QD) {}
-    try
+    if (paramListView.getChildCount() == 0)
     {
-      Method localMethod = PopupWindow.class.getDeclaredMethod("setWindowLayoutType", new Class[] { Integer.TYPE });
-      QC = localMethod;
-      localMethod.setAccessible(true);
-      label57:
-      QD = true;
-      if (QC != null) {
-        try
-        {
-          QC.invoke(paramPopupWindow, new Object[] { Integer.valueOf(paramInt) });
-          AppMethodBeat.o(253061);
-          return;
-        }
-        catch (Exception paramPopupWindow) {}
-      }
-      AppMethodBeat.o(253061);
-      return;
+      AppMethodBeat.o(195358);
+      return false;
     }
-    catch (Exception localException)
+    int i = paramListView.getFirstVisiblePosition();
+    int j = paramListView.getChildAt(0).getTop();
+    if ((i > 0) || (j < paramListView.getListPaddingTop()))
     {
-      break label57;
+      AppMethodBeat.o(195358);
+      return true;
     }
-  }
-  
-  public static void a(PopupWindow paramPopupWindow, boolean paramBoolean)
-  {
-    AppMethodBeat.i(253059);
-    if (Build.VERSION.SDK_INT >= 23)
-    {
-      paramPopupWindow.setOverlapAnchor(paramBoolean);
-      AppMethodBeat.o(253059);
-      return;
-    }
-    if ((Build.VERSION.SDK_INT < 21) || (!QF)) {}
-    try
-    {
-      Field localField = PopupWindow.class.getDeclaredField("mOverlapAnchor");
-      QE = localField;
-      localField.setAccessible(true);
-      label55:
-      QF = true;
-      if (QE != null) {
-        try
-        {
-          QE.set(paramPopupWindow, Boolean.valueOf(paramBoolean));
-          AppMethodBeat.o(253059);
-          return;
-        }
-        catch (IllegalAccessException paramPopupWindow) {}
-      }
-      AppMethodBeat.o(253059);
-      return;
-    }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      break label55;
-    }
+    AppMethodBeat.o(195358);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     androidx.core.widget.g
  * JD-Core Version:    0.7.0.1
  */

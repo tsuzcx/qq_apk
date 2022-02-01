@@ -2,10 +2,11 @@ package com.tencent.mm.plugin.offline;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.s;
 import com.tencent.mm.kernel.c;
-import com.tencent.mm.plugin.offline.a.o;
-import com.tencent.mm.plugin.offline.c.a.a;
+import com.tencent.mm.plugin.offline.a.q;
+import com.tencent.mm.plugin.offline.c.d;
+import com.tencent.mm.plugin.offline.c.d.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMStack;
@@ -18,101 +19,101 @@ import java.util.List;
 public final class e
   extends a<b>
 {
-  public String GBp;
-  private i.a GBq;
+  public String Mxy;
+  private i.a Mxz;
   
   public e()
   {
     AppMethodBeat.i(66207);
-    this.GBp = "";
-    this.GBq = new i.a()
+    this.Mxy = "";
+    this.Mxz = new i.a()
     {
-      public final void fkL()
+      public final void gvc()
       {
         AppMethodBeat.i(66205);
         e.this.onChange();
         AppMethodBeat.o(66205);
       }
     };
-    k.fkT();
-    if (k.fkW() != null)
+    k.gvj();
+    if (k.gvm() != null)
     {
-      k.fkT();
-      k.fkW().GBS = this.GBq;
+      k.gvj();
+      k.gvm().Mya = this.Mxz;
     }
     AppMethodBeat.o(66207);
   }
   
-  private static void a(int paramInt1, int paramInt2, int paramInt3, String paramString)
+  private static void a(int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(66210);
-    paramString = new o(paramInt1, paramInt2, paramInt3, paramString);
-    com.tencent.mm.kernel.h.aHH();
-    com.tencent.mm.kernel.h.aHF().kcd.a(paramString, 0);
-    AppMethodBeat.o(66210);
+    AppMethodBeat.i(269113);
+    paramString1 = new q(paramInt1, paramInt2, paramInt3, paramString1, paramString2);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.a(paramString1, 0);
+    AppMethodBeat.o(269113);
   }
   
-  private static void fkI()
+  private static void guZ()
   {
     AppMethodBeat.i(66208);
-    k.fkT();
-    k.fkW().iK(1, 1);
+    k.gvj();
+    k.gvm().kq(1, 1);
     AppMethodBeat.o(66208);
   }
   
-  private static void fkJ()
+  private static void gva()
   {
     AppMethodBeat.i(66209);
-    k.fkT();
-    k.fkW().aaI(2);
+    k.gvj();
+    k.gvm().afb(2);
     AppMethodBeat.o(66209);
   }
   
-  public static int fkK()
+  public static int gvb()
   {
     AppMethodBeat.i(66213);
-    k.fkT();
-    k.fkW();
-    int i = i.fkS();
+    k.gvj();
+    k.gvm();
+    int i = i.gvi();
     AppMethodBeat.o(66213);
     return i;
   }
   
-  public final String C(int paramInt1, int paramInt2, String paramString)
+  public final String G(int paramInt1, int paramInt2, String paramString)
   {
     AppMethodBeat.i(66211);
     Log.i("MicroMsg.OfflineCodesMgr", "generatetKey scene %s isSnapshot %s stack: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Util.getStack().toString() });
-    paramString = D(paramInt1, paramInt2, paramString);
+    paramString = H(paramInt1, paramInt2, paramString);
     AppMethodBeat.o(66211);
     return paramString;
   }
   
-  public final String D(int paramInt1, int paramInt2, String paramString)
+  public final String H(int paramInt1, int paramInt2, String paramString)
   {
-    int j = 0;
     int i = 0;
     AppMethodBeat.i(66212);
-    int k = fkK();
-    if (k > 0)
+    int j = gvb();
+    String str;
+    if (j > 0)
     {
-      if (k < k.GCh)
+      if (j < k.Myp)
       {
-        Log.i("MicroMsg.OfflineCodesMgr", "generateKey_V3 getTokenCount < %s", new Object[] { Integer.valueOf(k.GCh) });
-        fkJ();
+        Log.i("MicroMsg.OfflineCodesMgr", "generateKey_V3 getTokenCount < %s", new Object[] { Integer.valueOf(k.Myp) });
+        gva();
       }
-      k.fkT();
-      localObject = k.aaK(196617);
+      k.gvj();
+      localObject = k.afd(196617);
       if (TextUtils.isEmpty((CharSequence)localObject))
       {
         Log.e("MicroMsg.OfflineCodesMgr", "generateKey_V3 cn is null, the csr is not exist! cn:".concat(String.valueOf(localObject)));
         AppMethodBeat.o(66212);
         return "";
       }
-      com.tencent.mm.wallet_core.c.b.iiL();
-      localObject = com.tencent.mm.wallet_core.c.b.getToken((String)localObject);
-      if (TextUtils.isEmpty((CharSequence)localObject))
+      com.tencent.mm.wallet_core.model.b.jOG();
+      str = com.tencent.mm.wallet_core.model.b.getToken((String)localObject);
+      if (TextUtils.isEmpty(str))
       {
-        fkI();
+        guZ();
         Log.i("MicroMsg.OfflineCodesMgr", "generateKey_V3 code is null");
         AppMethodBeat.o(66212);
         return "";
@@ -120,125 +121,148 @@ public final class e
     }
     else
     {
-      paramString = com.tencent.mm.plugin.report.service.h.IzE;
-      if (com.tencent.mm.plugin.offline.c.a.isAppOnForeground(MMApplicationContext.getContext()))
+      paramString = com.tencent.mm.plugin.report.service.h.OAn;
+      MMApplicationContext.getContext();
+      if (d.gwX())
       {
         paramInt1 = 0;
         paramInt2 = i;
         if (NetStatusUtil.isNetworkConnected(MMApplicationContext.getContext())) {
           paramInt2 = 1;
         }
-        paramString.a(14163, new Object[] { Integer.valueOf(2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(135L, 29L, 1L, true);
+        paramString.b(14163, new Object[] { Integer.valueOf(2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(135L, 29L, 1L, true);
         if (!NetStatusUtil.isNetworkConnected(MMApplicationContext.getContext())) {
-          break label252;
+          break label250;
         }
-        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(135L, 31L, 1L, true);
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(135L, 31L, 1L, true);
       }
       for (;;)
       {
-        fkI();
+        guZ();
         Log.i("MicroMsg.OfflineCodesMgr", "generateKey_V3 getTokenCount is 0");
         AppMethodBeat.o(66212);
         return "";
         paramInt1 = 1;
         break;
-        label252:
-        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(135L, 30L, 1L, true);
+        label250:
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(135L, 30L, 1L, true);
       }
     }
-    if (localObject != null) {
-      Log.i("MicroMsg.OfflineCodesMgr", "generateKey_V3 code length : %s ext_business_attach %s %s", new Object[] { Integer.valueOf(((String)localObject).length()), paramString, localObject });
-    }
-    a(k - 1, paramInt1, paramInt2, paramString);
-    Log.i("MicroMsg.OfflineCodesMgr", "doNetSceneShowCode count " + (k - 1));
-    paramString = com.tencent.mm.plugin.offline.c.a.aTI(com.tencent.mm.plugin.offline.c.a.fme());
-    if ((paramString == null) || (paramString.size() == 0))
+    boolean bool = d.aQX(str);
+    if (bool) {}
+    for (i = 2;; i = 1)
     {
-      Log.i("MicroMsg.OfflineCodesMgr", "generateKey_V3 cardList is null");
-      fkI();
+      d.setTokenType(i);
+      if ((d.gxe() != 0) || (!bool)) {
+        break;
+      }
+      com.tencent.mm.wallet_core.model.b.jOG();
+      com.tencent.mm.wallet_core.model.b.clearToken((String)localObject);
+      guZ();
+      Log.i("MicroMsg.OfflineCodesMgr", "generateKey_V3 online code is close, need get token again");
       AppMethodBeat.o(66212);
       return "";
     }
-    long l3;
-    long l1;
-    if ((localObject != null) && (com.tencent.mm.plugin.offline.c.a.isNumeric((String)localObject)))
-    {
-      l3 = Long.valueOf((String)localObject, 10).longValue();
-      l1 = 0L;
-      paramInt1 = j;
+    if (str != null) {
+      Log.i("MicroMsg.OfflineCodesMgr", "generateKey_V3 code length : %s ext_business_attach %s %s", new Object[] { Integer.valueOf(str.length()), paramString, str });
     }
-    while (paramInt1 < paramString.size())
+    if (bool) {}
+    long l2;
+    for (Object localObject = "1";; localObject = "0")
     {
-      localObject = (a.a)paramString.get(paramInt1);
-      long l2 = l1;
-      if (localObject != null)
+      a(j - 1, paramInt1, paramInt2, paramString, (String)localObject);
+      Log.i("MicroMsg.OfflineCodesMgr", "doNetSceneShowCode count " + (j - 1));
+      if (!d.isNumeric(str)) {
+        break;
+      }
+      l2 = Long.valueOf(str, 10).longValue();
+      if (bool) {
+        break label640;
+      }
+      paramString = d.aQN(d.gwQ());
+      if ((paramString != null) && (paramString.size() != 0)) {
+        break label498;
+      }
+      Log.i("MicroMsg.OfflineCodesMgr", "generateKey_V3 cardList is null");
+      guZ();
+      AppMethodBeat.o(66212);
+      return "";
+    }
+    Log.i("MicroMsg.OfflineCodesMgr", "generateKey_V3 code is null or is not isNumeric");
+    AppMethodBeat.o(66212);
+    return "";
+    label498:
+    long l1 = 0L;
+    paramInt1 = 0;
+    if (paramInt1 < paramString.size())
+    {
+      localObject = (d.a)paramString.get(paramInt1);
+      if ((localObject == null) || (((d.a)localObject).MDt == null) || (!((d.a)localObject).MDt.equals(this.Mxy))) {
+        break label747;
+      }
+      l1 = ((d.a)localObject).MDs;
+    }
+    label603:
+    label733:
+    label747:
+    for (;;)
+    {
+      paramInt1 += 1;
+      break;
+      l1 = l1 << 48 | l2;
+      localObject = String.valueOf(l1);
+      if (((String)localObject).length() == 15)
       {
-        l2 = l1;
-        if (((a.a)localObject).GGC != null)
-        {
-          l2 = l1;
-          if (((a.a)localObject).GGC.equals(this.GBp)) {
-            l2 = ((a.a)localObject).GGB;
-          }
+        paramString = "0".concat(String.valueOf(localObject));
+        if (TextUtils.isEmpty(d.getTokenPin())) {
+          break label733;
         }
       }
-      paramInt1 += 1;
-      l1 = l2;
-      continue;
-      Log.i("MicroMsg.OfflineCodesMgr", "generateKey_V3 code is null or is not isNumeric");
-      AppMethodBeat.o(66212);
-      return "";
-    }
-    Object localObject = String.valueOf(l1 << 48 | l3);
-    if (((String)localObject).length() == 15)
-    {
-      paramString = "0".concat(String.valueOf(localObject));
-      if (TextUtils.isEmpty(com.tencent.mm.plugin.offline.c.a.getTokenPin())) {
-        break label649;
-      }
-    }
-    label649:
-    for (paramString = com.tencent.mm.plugin.offline.c.a.getTokenPin() + paramString;; paramString = "12".concat(String.valueOf(paramString)))
-    {
-      AppMethodBeat.o(66212);
-      return paramString;
-      if (((String)localObject).length() == 14)
+      for (paramString = d.getTokenPin() + paramString;; paramString = "12".concat(String.valueOf(paramString)))
       {
-        paramString = "00".concat(String.valueOf(localObject));
+        AppMethodBeat.o(66212);
+        return paramString;
+        Log.i("MicroMsg.OfflineCodesMgr", "is online code");
+        l1 = l2;
         break;
+        if (((String)localObject).length() == 14)
+        {
+          paramString = "00".concat(String.valueOf(localObject));
+          break label603;
+        }
+        if (((String)localObject).length() == 13)
+        {
+          paramString = "000".concat(String.valueOf(localObject));
+          break label603;
+        }
+        paramString = (String)localObject;
+        if (((String)localObject).length() != 12) {
+          break label603;
+        }
+        paramString = "0000".concat(String.valueOf(localObject));
+        break label603;
       }
-      if (((String)localObject).length() == 13)
-      {
-        paramString = "000".concat(String.valueOf(localObject));
-        break;
-      }
-      paramString = (String)localObject;
-      if (((String)localObject).length() != 12) {
-        break;
-      }
-      paramString = "0000".concat(String.valueOf(localObject));
-      break;
     }
   }
   
   public final void onChange()
   {
     AppMethodBeat.i(66206);
-    if (this.GBm == null)
+    if (this.Mxv == null)
     {
       AppMethodBeat.o(66206);
       return;
     }
     int i = 0;
-    while (i < this.GBm.size())
+    while (i < this.Mxv.size())
     {
-      Object localObject = (WeakReference)this.GBm.get(i);
+      Object localObject = (WeakReference)this.Mxv.get(i);
       if (localObject != null)
       {
         localObject = (b)((WeakReference)localObject).get();
         if (localObject != null) {
-          ((b)localObject).cGM();
+          ((b)localObject).dkd();
         }
       }
       i += 1;
@@ -248,7 +272,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.e
  * JD-Core Version:    0.7.0.1
  */

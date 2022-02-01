@@ -6,218 +6,212 @@ import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.h;
-import androidx.lifecycle.h.a;
-import androidx.lifecycle.k;
-import androidx.lifecycle.t;
+import androidx.lifecycle.j;
+import androidx.lifecycle.j.a;
+import androidx.lifecycle.p;
+import androidx.lifecycle.q;
+import androidx.lifecycle.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ad.i.f;
-import com.tencent.mm.plugin.sns.ad.i.f.a;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
+import com.tencent.mm.plugin.sns.ad.j.f;
+import com.tencent.mm.plugin.sns.ad.j.f.a;
+import com.tencent.mm.plugin.sns.ad.j.l;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class CountDownTimerLayout
   extends LinearLayout
-  implements k, c
+  implements p, c
 {
-  private TextView JLL;
-  private TextView JLM;
-  private TextView JLN;
-  private TextView JLO;
-  private TextView JLP;
-  private boolean JLQ;
-  private long JLR;
-  private d JLS;
-  private a JLT;
+  private TextView Qfm;
+  private TextView Qfn;
+  private TextView Qfo;
+  private TextView Qfp;
+  private TextView Qfq;
+  private boolean Qfr;
+  private long Qfs;
+  private d Qft;
+  private a Qfu;
   
   public CountDownTimerLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(207314);
-    this.JLQ = true;
-    this.JLR = -1L;
-    dbb();
-    AppMethodBeat.o(207314);
+    AppMethodBeat.i(310398);
+    this.Qfr = true;
+    this.Qfs = -1L;
+    dHA();
+    AppMethodBeat.o(310398);
   }
   
   public CountDownTimerLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(207316);
-    this.JLQ = true;
-    this.JLR = -1L;
-    dbb();
-    AppMethodBeat.o(207316);
+    AppMethodBeat.i(310411);
+    this.Qfr = true;
+    this.Qfs = -1L;
+    dHA();
+    AppMethodBeat.o(310411);
   }
   
-  private void dbb()
+  private void dHA()
   {
-    AppMethodBeat.i(207317);
+    AppMethodBeat.i(310421);
     try
     {
-      LayoutInflater.from(getContext()).inflate(i.g.sns_ad_timeline_countdown_view, this);
-      this.JLT = new a(this);
-      this.JLL = ((TextView)findViewById(i.f.sns_ad_countdown_day_unit));
-      this.JLM = ((TextView)findViewById(i.f.sns_ad_countdown_day));
-      this.JLN = ((TextView)findViewById(i.f.sns_ad_countdown_hour));
-      this.JLO = ((TextView)findViewById(i.f.sns_ad_countdown_minute));
-      this.JLP = ((TextView)findViewById(i.f.sns_ad_countdown_second));
-      AppMethodBeat.o(207317);
+      LayoutInflater.from(getContext()).inflate(b.g.sns_ad_timeline_countdown_view, this);
+      this.Qfu = new a(this);
+      this.Qfm = ((TextView)findViewById(b.f.sns_ad_countdown_day_unit));
+      this.Qfn = ((TextView)findViewById(b.f.sns_ad_countdown_day));
+      this.Qfo = ((TextView)findViewById(b.f.sns_ad_countdown_hour));
+      this.Qfp = ((TextView)findViewById(b.f.sns_ad_countdown_minute));
+      this.Qfq = ((TextView)findViewById(b.f.sns_ad_countdown_second));
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      AppMethodBeat.o(207317);
+      AppMethodBeat.o(310421);
     }
   }
   
   private static void f(TextView paramTextView, String paramString)
   {
-    AppMethodBeat.i(207323);
+    AppMethodBeat.i(310440);
     if (paramTextView != null) {
       paramTextView.setText(paramString);
     }
-    AppMethodBeat.o(207323);
+    AppMethodBeat.o(310440);
   }
   
   private void setDateTime(f.a parama)
   {
-    AppMethodBeat.i(207322);
+    AppMethodBeat.i(310431);
     if (parama == null)
     {
       Log.w("SnsAd.CountDownTimerLayout", "the date time is null!!");
-      AppMethodBeat.o(207322);
+      AppMethodBeat.o(310431);
       return;
     }
     if (parama.day > 0)
     {
-      com.tencent.mm.plugin.sns.ad.i.l.w(this.JLM, true);
-      com.tencent.mm.plugin.sns.ad.i.l.w(this.JLL, true);
-      f(this.JLM, String.valueOf(parama.day));
+      l.C(this.Qfn, true);
+      l.C(this.Qfm, true);
+      f(this.Qfn, String.valueOf(parama.day));
     }
     for (;;)
     {
-      f(this.JLN, f.afg(parama.hour));
-      f(this.JLO, f.afg(parama.JLz));
-      f(this.JLP, f.afg(parama.second));
-      AppMethodBeat.o(207322);
+      f(this.Qfo, f.ajP(parama.hour));
+      f(this.Qfp, f.ajP(parama.Qdm));
+      f(this.Qfq, f.ajP(parama.second));
+      AppMethodBeat.o(310431);
       return;
-      com.tencent.mm.plugin.sns.ad.i.l.w(this.JLM, false);
-      com.tencent.mm.plugin.sns.ad.i.l.w(this.JLL, false);
+      l.C(this.Qfn, false);
+      l.C(this.Qfm, false);
     }
   }
   
   public final void b(long paramLong, f.a parama)
   {
-    AppMethodBeat.i(207324);
+    AppMethodBeat.i(310494);
     try
     {
-      this.JLR = paramLong;
-      if ((isAttachedToWindow()) && (this.JLQ)) {
+      this.Qfs = paramLong;
+      if ((isAttachedToWindow()) && (this.Qfr)) {
         setDateTime(parama);
       }
-      AppMethodBeat.o(207324);
       return;
     }
-    catch (Throwable parama)
+    finally
     {
-      AppMethodBeat.o(207324);
+      AppMethodBeat.o(310494);
     }
   }
   
-  @t(jl=h.a.ON_STOP)
-  public final void doPause(androidx.lifecycle.l paraml)
+  @z(Ho=j.a.ON_STOP)
+  public final void doPause(q paramq)
   {
-    AppMethodBeat.i(207320);
+    AppMethodBeat.i(310477);
     try
     {
       Log.d("SnsAd.CountDownTimerLayout", "the doPause is called");
-      this.JLQ = false;
-      AppMethodBeat.o(207320);
+      this.Qfr = false;
       return;
     }
-    catch (Throwable paraml)
+    finally
     {
-      AppMethodBeat.o(207320);
+      AppMethodBeat.o(310477);
     }
   }
   
-  @t(jl=h.a.ON_RESUME)
-  public final void doResume(androidx.lifecycle.l paraml)
+  @z(Ho=j.a.ON_RESUME)
+  public final void doResume(q paramq)
   {
-    AppMethodBeat.i(207321);
+    AppMethodBeat.i(310485);
     try
     {
       Log.d("SnsAd.CountDownTimerLayout", "the doResume is called");
-      this.JLQ = true;
-      if ((!this.JLQ) || (!isAttachedToWindow()))
-      {
-        AppMethodBeat.o(207321);
+      this.Qfr = true;
+      if ((!this.Qfr) || (!isAttachedToWindow())) {
         return;
       }
-      if (this.JLR >= 0L) {
-        setDateTime(f.a(this.JLR, null));
+      if (this.Qfs >= 0L) {
+        setDateTime(f.a(this.Qfs, null));
       }
-      AppMethodBeat.o(207321);
       return;
     }
-    catch (Throwable paraml)
+    finally
     {
-      AppMethodBeat.o(207321);
+      AppMethodBeat.o(310485);
     }
   }
   
   public d getCountDownVM()
   {
-    return this.JLS;
+    return this.Qft;
   }
   
   protected void onAttachedToWindow()
   {
-    AppMethodBeat.i(207318);
+    AppMethodBeat.i(310446);
     super.onAttachedToWindow();
     try
     {
       Context localContext = getContext();
       if ((localContext instanceof FragmentActivity)) {
-        ((FragmentActivity)localContext).getLifecycle().a(this);
+        ((FragmentActivity)localContext).getLifecycle().addObserver(this);
       }
-      AppMethodBeat.o(207318);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      AppMethodBeat.o(207318);
+      AppMethodBeat.o(310446);
     }
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(207319);
+    AppMethodBeat.i(310460);
     super.onDetachedFromWindow();
     try
     {
-      Object localObject = getContext();
-      if ((localObject instanceof FragmentActivity)) {
-        ((FragmentActivity)localObject).getLifecycle().b(this);
+      Object localObject1 = getContext();
+      if ((localObject1 instanceof FragmentActivity)) {
+        ((FragmentActivity)localObject1).getLifecycle().removeObserver(this);
       }
-      localObject = getCountDownVM();
-      if (this.JLT != null) {
-        a.a((d)localObject);
+      localObject1 = getCountDownVM();
+      if (this.Qfu != null) {
+        a.a((d)localObject1);
       }
-      AppMethodBeat.o(207319);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      AppMethodBeat.o(207319);
+      AppMethodBeat.o(310460);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.widget.countdown.CountDownTimerLayout
  * JD-Core Version:    0.7.0.1
  */

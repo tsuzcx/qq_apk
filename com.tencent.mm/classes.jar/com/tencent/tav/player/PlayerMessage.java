@@ -32,9 +32,9 @@ public class PlayerMessage
   
   public String toString()
   {
-    AppMethodBeat.i(192881);
+    AppMethodBeat.i(215964);
     String str = "PlayerMessage{bizMsg1=" + this.bizMsg1 + ", form='" + this.form + '\'' + ", msgId=" + this.msgId + '}';
-    AppMethodBeat.o(192881);
+    AppMethodBeat.o(215964);
     return str;
   }
 }

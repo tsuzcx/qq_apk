@@ -15,20 +15,20 @@ import com.tencent.neattextview.textview.view.NeatTextView;
 public final class c
   implements LineBackgroundSpan
 {
-  private View Whj;
-  private Rect byG;
+  private View adOe;
   private final int color;
   private int end;
+  private Rect rect;
   private int start;
   
   public c(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(159148);
-    this.Whj = paramView;
+    this.adOe = paramView;
     this.color = paramInt1;
     this.start = paramInt2;
     this.end = paramInt3;
-    this.byG = new Rect();
+    this.rect = new Rect();
     AppMethodBeat.o(159148);
   }
   
@@ -46,8 +46,8 @@ public final class c
       return;
     }
     int i = paramPaint.getColor();
-    int k = b.aZ(this.Whj, this.start);
-    int j = b.aZ(this.Whj, this.end);
+    int k = b.bw(this.adOe, this.start);
+    int j = b.bw(this.adOe, this.end);
     paramInt7 = paramInt1;
     paramInt5 = paramInt2;
     float f;
@@ -60,7 +60,7 @@ public final class c
         if (k != paramInt8) {
           break label269;
         }
-        f = b.ba(this.Whj, this.start);
+        f = b.bx(this.adOe, this.start);
         paramInt7 = (int)f;
         if (j != paramInt8) {
           break label360;
@@ -70,36 +70,36 @@ public final class c
     label269:
     label354:
     label360:
-    for (paramInt5 = (int)b.ba(this.Whj, this.end);; paramInt5 = (int)b.bd(this.Whj, paramInt8) + paramInt7)
+    for (paramInt5 = (int)b.bx(this.adOe, this.end);; paramInt5 = (int)b.bA(this.adOe, paramInt8) + paramInt7)
     {
       paramInt1 = (int)(paramInt4 + paramPaint.descent());
-      this.byG.left = paramInt7;
+      this.rect.left = paramInt7;
       if (this.start == paramInt6)
       {
-        paramCharSequence = this.byG;
+        paramCharSequence = this.rect;
         paramCharSequence.left -= 4;
       }
-      this.byG.right = paramInt5;
+      this.rect.right = paramInt5;
       if (this.end == paramInt5)
       {
-        paramCharSequence = this.byG;
+        paramCharSequence = this.rect;
         paramCharSequence.right += 4;
       }
-      this.byG.top = paramInt3;
-      this.byG.bottom = paramInt1;
+      this.rect.top = paramInt3;
+      this.rect.bottom = paramInt1;
       paramPaint.setColor(this.color);
-      paramCanvas.drawRect(this.byG, paramPaint);
+      paramCanvas.drawRect(this.rect, paramPaint);
       paramPaint.setColor(i);
       AppMethodBeat.o(159149);
       return;
-      paramCharSequence = this.Whj;
+      paramCharSequence = this.adOe;
       if ((paramCharSequence instanceof NeatTextView))
       {
         paramCharSequence = ((NeatTextView)paramCharSequence).getLayout();
         if (paramCharSequence == null) {
           break label354;
         }
-        f = paramCharSequence.azU(paramCharSequence.azW(paramInt8));
+        f = paramCharSequence.dv(paramCharSequence.dk(paramInt8));
         break;
       }
       if ((paramCharSequence instanceof TextView))
@@ -116,7 +116,7 @@ public final class c
     }
   }
   
-  public final void setPosition(int paramInt1, int paramInt2)
+  public final void od(int paramInt1, int paramInt2)
   {
     this.start = paramInt1;
     this.end = paramInt2;
@@ -124,7 +124,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.c
  * JD-Core Version:    0.7.0.1
  */

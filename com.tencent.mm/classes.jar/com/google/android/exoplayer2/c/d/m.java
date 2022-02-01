@@ -6,10 +6,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class m
 {
-  public final int[] aRk;
-  public final int[] aWA;
-  public final int aWy;
-  public final long[] aYs;
+  public final int[] cLg;
+  public final int cQu;
+  public final int[] cQw;
+  public final long[] cSo;
   public final long[] offsets;
   public final int sampleCount;
   
@@ -36,10 +36,10 @@ final class m
     {
       a.checkArgument(bool1);
       this.offsets = paramArrayOfLong1;
-      this.aRk = paramArrayOfInt1;
-      this.aWy = paramInt;
-      this.aYs = paramArrayOfLong2;
-      this.aWA = paramArrayOfInt2;
+      this.cLg = paramArrayOfInt1;
+      this.cQu = paramInt;
+      this.cSo = paramArrayOfLong2;
+      this.cQw = paramArrayOfInt2;
       this.sampleCount = paramArrayOfLong1.length;
       AppMethodBeat.o(92132);
       return;
@@ -50,13 +50,13 @@ final class m
     }
   }
   
-  public final int S(long paramLong)
+  public final int cg(long paramLong)
   {
     AppMethodBeat.i(92133);
-    int i = x.a(this.aYs, paramLong, false);
+    int i = x.a(this.cSo, paramLong, false);
     while (i >= 0)
     {
-      if ((this.aWA[i] & 0x1) != 0)
+      if ((this.cQw[i] & 0x1) != 0)
       {
         AppMethodBeat.o(92133);
         return i;
@@ -67,13 +67,13 @@ final class m
     return -1;
   }
   
-  public final int T(long paramLong)
+  public final int ch(long paramLong)
   {
     AppMethodBeat.i(92134);
-    int i = x.a(this.aYs, paramLong, true, false);
-    while (i < this.aYs.length)
+    int i = x.a(this.cSo, paramLong, true, false);
+    while (i < this.cSo.length)
     {
-      if ((this.aWA[i] & 0x1) != 0)
+      if ((this.cQw[i] & 0x1) != 0)
       {
         AppMethodBeat.o(92134);
         return i;
@@ -86,7 +86,7 @@ final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.c.d.m
  * JD-Core Version:    0.7.0.1
  */

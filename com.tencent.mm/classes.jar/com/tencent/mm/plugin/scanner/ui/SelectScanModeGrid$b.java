@@ -4,25 +4,25 @@ import android.widget.TextView;
 
 public final class SelectScanModeGrid$b
 {
-  public int ITI;
-  public int ITJ;
-  public int ITK;
-  public TextView ITL;
-  public boolean ITM;
+  public int PcB;
+  public int PcC;
+  public int PcD;
+  public TextView PcE;
+  public boolean PcF;
   public String title;
   
   public SelectScanModeGrid$b(String paramString, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
     this.title = paramString;
-    this.ITI = paramInt1;
-    this.ITJ = paramInt2;
-    this.ITK = paramInt3;
-    this.ITM = paramBoolean;
+    this.PcB = paramInt1;
+    this.PcC = paramInt2;
+    this.PcD = paramInt3;
+    this.PcF = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.SelectScanModeGrid.b
  * JD-Core Version:    0.7.0.1
  */

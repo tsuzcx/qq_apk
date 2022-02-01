@@ -2,45 +2,46 @@ package kotlin.l.b.a.b.j.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.b.y;
-import kotlin.l.b.a.b.m.ab;
-import kotlin.z;
+import kotlin.ak;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.a.h;
+import kotlin.l.b.a.b.b.ae;
+import kotlin.l.b.a.b.m.ad;
 
-public final class b
+public class b
   extends g<List<? extends g<?>>>
 {
-  private final kotlin.g.a.b<y, ab> abkW;
+  private final kotlin.g.a.b<ae, ad> ajjC;
   
-  public b(List<? extends g<?>> paramList, kotlin.g.a.b<? super y, ? extends ab> paramb)
+  public b(List<? extends g<?>> paramList, kotlin.g.a.b<? super ae, ? extends ad> paramb)
   {
     super(paramList);
     AppMethodBeat.i(60041);
-    this.abkW = paramb;
+    this.ajjC = paramb;
     AppMethodBeat.o(60041);
   }
   
-  public final ab b(y paramy)
+  public final ad c(ae paramae)
   {
     AppMethodBeat.i(60040);
-    p.k(paramy, "module");
-    paramy = this.abkW.invoke(paramy);
-    ab localab = (ab)paramy;
-    if ((kotlin.l.b.a.b.a.g.m(localab)) || (kotlin.l.b.a.b.a.g.n(localab))) {}
-    for (int i = 1; (z.aazO) && (i == 0); i = 0)
+    s.u(paramae, "module");
+    paramae = this.ajjC.invoke(paramae);
+    ad localad = (ad)paramae;
+    if ((h.m(localad)) || (h.n(localad)) || (h.q(localad))) {}
+    for (int i = 1; (ak.aiuY) && (i == 0); i = 0)
     {
-      paramy = (Throwable)new AssertionError("Type should be an array, but was " + localab + ": " + (List)getValue());
+      paramae = (Throwable)new AssertionError("Type should be an array, but was " + localad + ": " + getValue());
       AppMethodBeat.o(60040);
-      throw paramy;
+      throw paramae;
     }
-    paramy = (ab)paramy;
+    paramae = (ad)paramae;
     AppMethodBeat.o(60040);
-    return paramy;
+    return paramae;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.j.b.b
  * JD-Core Version:    0.7.0.1
  */

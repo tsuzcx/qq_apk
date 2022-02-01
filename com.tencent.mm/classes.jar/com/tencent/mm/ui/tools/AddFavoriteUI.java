@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.tools;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
@@ -13,18 +12,15 @@ import android.os.Bundle;
 import android.os.Message;
 import android.os.Parcelable;
 import android.widget.Toast;
-import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.l;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.autogen.a.dn;
 import com.tencent.mm.booter.NotifyReceiver;
-import com.tencent.mm.by.c;
-import com.tencent.mm.f.a.dd;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.modelsimple.g;
+import com.tencent.mm.modelsimple.i;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
 import com.tencent.mm.opensdk.modelmsg.WXFileObject;
 import com.tencent.mm.opensdk.modelmsg.WXImageObject;
@@ -33,11 +29,10 @@ import com.tencent.mm.opensdk.modelmsg.WXMediaMessage.IMediaObject;
 import com.tencent.mm.opensdk.modelmsg.WXTextObject;
 import com.tencent.mm.opensdk.modelmsg.WXVideoFileObject;
 import com.tencent.mm.plugin.account.ui.SimpleLoginUI;
-import com.tencent.mm.plugin.fav.a.ag;
-import com.tencent.mm.pluginsdk.m.e;
-import com.tencent.mm.pluginsdk.model.j;
-import com.tencent.mm.protocal.protobuf.zo;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.plugin.fav.a.ah;
+import com.tencent.mm.pluginsdk.l.e;
+import com.tencent.mm.pluginsdk.model.l;
+import com.tencent.mm.protocal.protobuf.abm;
 import com.tencent.mm.sdk.platformtools.FileProviderHelper;
 import com.tencent.mm.sdk.platformtools.ImgUtil;
 import com.tencent.mm.sdk.platformtools.IntentUtil;
@@ -48,37 +43,38 @@ import com.tencent.mm.sdk.thread.ThreadPool;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMWizardActivity;
 import com.tencent.mm.ui.base.a;
+import com.tencent.mm.ui.base.k;
 import com.tencent.mm.ui.widget.snackbar.a.c;
 import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 @a(3)
-@JgClassChecked(author=12, fComment="checked", lastDate="20141010", reviewer=20, vComment={com.jg.EType.ACTIVITYCHECK})
 public class AddFavoriteUI
   extends MMActivity
-  implements i
+  implements com.tencent.mm.am.h
 {
-  private dd XNn;
-  ArrayList<String> XNo;
-  private MMHandler XNp;
-  private MMHandler XNq;
+  private dn afDB;
+  ArrayList<String> afDC;
+  private MMHandler afDD;
+  private MMHandler afDE;
   String filePath;
   private MMHandler handler;
-  private ProgressDialog iXX;
   private Intent intent;
+  private ProgressDialog lzP;
   Uri uri;
   
   public AddFavoriteUI()
   {
     AppMethodBeat.i(38953);
-    this.iXX = null;
+    this.lzP = null;
     this.intent = null;
     this.filePath = null;
     this.uri = null;
-    this.XNo = null;
-    this.XNp = new MMHandler()
+    this.afDC = null;
+    this.afDD = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -88,7 +84,7 @@ public class AddFavoriteUI
         AppMethodBeat.o(38946);
       }
     };
-    this.XNq = new MMHandler()
+    this.afDE = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -104,7 +100,7 @@ public class AddFavoriteUI
       {
         AppMethodBeat.i(38948);
         AddFavoriteUI.d(AddFavoriteUI.this);
-        if ((Util.isNullOrNil(AddFavoriteUI.this.filePath)) || ((Util.isImageFilename(AddFavoriteUI.this.filePath)) && (!AddFavoriteUI.bAz(AddFavoriteUI.this.filePath))))
+        if ((Util.isNullOrNil(AddFavoriteUI.this.filePath)) || ((Util.isImageFilename(AddFavoriteUI.this.filePath)) && (!AddFavoriteUI.bCv(AddFavoriteUI.this.filePath))))
         {
           Log.e("MicroMsg.AddFavoriteUI", "launch : fail, filePath is null or file is not a valid img.");
           AddFavoriteUI.g(AddFavoriteUI.this);
@@ -123,549 +119,559 @@ public class AddFavoriteUI
   private String a(Uri paramUri, android.database.Cursor paramCursor)
   {
     // Byte code:
-    //   0: ldc 119
-    //   2: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc 107
+    //   2: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
-    //   6: ifnull +435 -> 441
-    //   9: ldc 121
+    //   6: ifnull +434 -> 440
+    //   9: ldc 109
     //   11: astore 8
     //   13: aload_2
-    //   14: ldc 123
-    //   16: invokeinterface 129 2 0
+    //   14: ldc 111
+    //   16: invokeinterface 117 2 0
     //   21: istore_3
     //   22: iload_3
     //   23: iconst_m1
     //   24: if_icmpeq +51 -> 75
     //   27: aload_2
     //   28: iload_3
-    //   29: invokeinterface 133 2 0
+    //   29: invokeinterface 121 2 0
     //   34: astore 5
     //   36: aload 5
     //   38: astore 4
     //   40: aload 5
     //   42: ifnull +14 -> 56
     //   45: aload 5
-    //   47: ldc 135
-    //   49: ldc 137
-    //   51: invokevirtual 143	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   47: ldc 123
+    //   49: ldc 125
+    //   51: invokevirtual 131	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   54: astore 4
-    //   56: ldc 145
-    //   58: ldc 147
+    //   56: ldc 133
+    //   58: ldc 135
     //   60: aload 4
-    //   62: invokestatic 151	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   65: invokevirtual 155	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   68: invokestatic 160	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   62: invokestatic 139	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   65: invokevirtual 143	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   68: invokestatic 148	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   71: aload 4
     //   73: astore 8
     //   75: aload_2
-    //   76: invokeinterface 163 1 0
+    //   76: invokeinterface 151 1 0
     //   81: aload_0
-    //   82: invokevirtual 167	com/tencent/mm/ui/tools/AddFavoriteUI:getContentResolver	()Landroid/content/ContentResolver;
+    //   82: invokevirtual 155	com/tencent/mm/ui/tools/AddFavoriteUI:getContentResolver	()Landroid/content/ContentResolver;
     //   85: aload_1
-    //   86: ldc 169
-    //   88: invokevirtual 175	android/content/ContentResolver:openAssetFileDescriptor	(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
+    //   86: ldc 157
+    //   88: invokevirtual 163	android/content/ContentResolver:openAssetFileDescriptor	(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
     //   91: astore_1
     //   92: aload_1
-    //   93: invokevirtual 181	android/content/res/AssetFileDescriptor:createInputStream	()Ljava/io/FileInputStream;
+    //   93: invokevirtual 169	android/content/res/AssetFileDescriptor:createInputStream	()Ljava/io/FileInputStream;
     //   96: astore_2
     //   97: aload_1
-    //   98: invokevirtual 185	android/content/res/AssetFileDescriptor:getDeclaredLength	()J
+    //   98: invokevirtual 173	android/content/res/AssetFileDescriptor:getDeclaredLength	()J
     //   101: l2i
     //   102: newarray byte
     //   104: astore 9
     //   106: aload_2
     //   107: aload 9
-    //   109: invokevirtual 191	java/io/FileInputStream:read	([B)I
-    //   112: ifle +313 -> 425
-    //   115: invokestatic 197	com/tencent/mm/model/bh:beI	()Lcom/tencent/mm/model/c;
+    //   109: invokevirtual 179	java/io/FileInputStream:read	([B)I
+    //   112: ifle +312 -> 424
+    //   115: invokestatic 185	com/tencent/mm/model/bh:bCz	()Lcom/tencent/mm/model/c;
     //   118: pop
-    //   119: invokestatic 203	com/tencent/mm/model/c:isSDCardAvailable	()Z
-    //   122: ifne +143 -> 265
+    //   119: invokestatic 191	com/tencent/mm/model/c:isSDCardAvailable	()Z
+    //   122: ifne +144 -> 266
     //   125: aload_0
     //   126: aload 8
-    //   128: invokevirtual 207	com/tencent/mm/ui/tools/AddFavoriteUI:deleteFile	(Ljava/lang/String;)Z
+    //   128: invokevirtual 195	com/tencent/mm/ui/tools/AddFavoriteUI:deleteFile	(Ljava/lang/String;)Z
     //   131: pop
     //   132: aload 8
-    //   134: invokestatic 213	com/tencent/mm/vfs/u:Te	(Ljava/lang/String;)Ljava/io/OutputStream;
-    //   137: astore 7
-    //   139: aload 7
-    //   141: astore 6
-    //   143: aload_2
-    //   144: astore 5
-    //   146: aload_1
-    //   147: astore 4
-    //   149: aload 7
-    //   151: aload 9
-    //   153: invokevirtual 219	java/io/OutputStream:write	([B)V
-    //   156: aload 7
-    //   158: astore 6
-    //   160: aload_2
-    //   161: astore 5
-    //   163: aload_1
-    //   164: astore 4
-    //   166: aload 7
-    //   168: invokevirtual 222	java/io/OutputStream:flush	()V
-    //   171: aload 7
-    //   173: astore 6
-    //   175: aload_2
-    //   176: astore 5
-    //   178: aload_1
-    //   179: astore 4
-    //   181: new 224	java/lang/StringBuilder
-    //   184: dup
-    //   185: invokespecial 225	java/lang/StringBuilder:<init>	()V
-    //   188: aload_0
-    //   189: invokevirtual 229	com/tencent/mm/ui/tools/AddFavoriteUI:getFilesDir	()Ljava/io/File;
-    //   192: invokevirtual 235	java/io/File:getPath	()Ljava/lang/String;
-    //   195: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   198: ldc 241
-    //   200: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   203: aload 8
-    //   205: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   208: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   211: astore 8
-    //   213: aload_2
-    //   214: ifnull +7 -> 221
-    //   217: aload_2
-    //   218: invokevirtual 245	java/io/FileInputStream:close	()V
-    //   221: aload_1
-    //   222: ifnull +7 -> 229
-    //   225: aload_1
-    //   226: invokevirtual 246	android/content/res/AssetFileDescriptor:close	()V
-    //   229: aload 7
-    //   231: ifnull +8 -> 239
-    //   234: aload 7
-    //   236: invokevirtual 247	java/io/OutputStream:close	()V
-    //   239: ldc 119
-    //   241: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   244: aload 8
-    //   246: areturn
-    //   247: astore_1
-    //   248: ldc 145
-    //   250: aload_1
+    //   134: iconst_0
+    //   135: invokestatic 201	com/tencent/mm/vfs/y:ev	(Ljava/lang/String;Z)Ljava/io/OutputStream;
+    //   138: astore 7
+    //   140: aload 7
+    //   142: astore 6
+    //   144: aload_2
+    //   145: astore 5
+    //   147: aload_1
+    //   148: astore 4
+    //   150: aload 7
+    //   152: aload 9
+    //   154: invokevirtual 207	java/io/OutputStream:write	([B)V
+    //   157: aload 7
+    //   159: astore 6
+    //   161: aload_2
+    //   162: astore 5
+    //   164: aload_1
+    //   165: astore 4
+    //   167: aload 7
+    //   169: invokevirtual 210	java/io/OutputStream:flush	()V
+    //   172: aload 7
+    //   174: astore 6
+    //   176: aload_2
+    //   177: astore 5
+    //   179: aload_1
+    //   180: astore 4
+    //   182: new 212	java/lang/StringBuilder
+    //   185: dup
+    //   186: invokespecial 213	java/lang/StringBuilder:<init>	()V
+    //   189: aload_0
+    //   190: invokevirtual 217	com/tencent/mm/ui/tools/AddFavoriteUI:getFilesDir	()Ljava/io/File;
+    //   193: invokevirtual 223	java/io/File:getPath	()Ljava/lang/String;
+    //   196: invokevirtual 227	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   199: ldc 229
+    //   201: invokevirtual 227	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   204: aload 8
+    //   206: invokevirtual 227	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   209: invokevirtual 232	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   212: astore 8
+    //   214: aload_2
+    //   215: ifnull +7 -> 222
+    //   218: aload_2
+    //   219: invokevirtual 233	java/io/FileInputStream:close	()V
+    //   222: aload_1
+    //   223: ifnull +7 -> 230
+    //   226: aload_1
+    //   227: invokevirtual 234	android/content/res/AssetFileDescriptor:close	()V
+    //   230: aload 7
+    //   232: ifnull +8 -> 240
+    //   235: aload 7
+    //   237: invokevirtual 235	java/io/OutputStream:close	()V
+    //   240: ldc 107
+    //   242: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   245: aload 8
+    //   247: areturn
+    //   248: astore_1
+    //   249: ldc 133
     //   251: aload_1
-    //   252: invokevirtual 250	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   255: iconst_0
-    //   256: anewarray 252	java/lang/Object
-    //   259: invokestatic 256	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   262: goto -23 -> 239
-    //   265: new 224	java/lang/StringBuilder
-    //   268: dup
-    //   269: invokespecial 225	java/lang/StringBuilder:<init>	()V
-    //   272: invokestatic 261	com/tencent/mm/loader/j/b:aSL	()Ljava/lang/String;
-    //   275: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   278: ldc_w 263
-    //   281: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   284: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   252: aload_1
+    //   253: invokevirtual 238	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   256: iconst_0
+    //   257: anewarray 240	java/lang/Object
+    //   260: invokestatic 244	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   263: goto -23 -> 240
+    //   266: new 212	java/lang/StringBuilder
+    //   269: dup
+    //   270: invokespecial 213	java/lang/StringBuilder:<init>	()V
+    //   273: invokestatic 249	com/tencent/mm/loader/i/b:bmz	()Ljava/lang/String;
+    //   276: invokevirtual 227	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   279: ldc 251
+    //   281: invokevirtual 227	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   284: invokevirtual 232	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   287: astore 5
-    //   289: new 224	java/lang/StringBuilder
+    //   289: new 212	java/lang/StringBuilder
     //   292: dup
-    //   293: invokespecial 225	java/lang/StringBuilder:<init>	()V
-    //   296: invokestatic 261	com/tencent/mm/loader/j/b:aSL	()Ljava/lang/String;
-    //   299: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   302: ldc_w 265
-    //   305: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   308: aload 8
-    //   310: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   313: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   316: astore 4
-    //   318: new 267	com/tencent/mm/vfs/q
-    //   321: dup
-    //   322: aload 5
-    //   324: invokespecial 270	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
-    //   327: astore 5
-    //   329: aload 5
-    //   331: invokevirtual 273	com/tencent/mm/vfs/q:ifE	()Z
-    //   334: ifne +9 -> 343
-    //   337: aload 5
-    //   339: invokevirtual 276	com/tencent/mm/vfs/q:ifK	()Z
-    //   342: pop
-    //   343: new 267	com/tencent/mm/vfs/q
-    //   346: dup
-    //   347: aload 4
-    //   349: invokespecial 270	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
-    //   352: astore 5
-    //   354: aload 5
-    //   356: invokevirtual 273	com/tencent/mm/vfs/q:ifE	()Z
-    //   359: ifne +9 -> 368
-    //   362: aload 5
-    //   364: invokevirtual 279	com/tencent/mm/vfs/q:ifM	()Z
-    //   367: pop
-    //   368: aload 4
-    //   370: aload 9
-    //   372: aload 9
-    //   374: arraylength
-    //   375: invokestatic 283	com/tencent/mm/vfs/u:f	(Ljava/lang/String;[BI)I
-    //   378: istore_3
-    //   379: iload_3
-    //   380: ifne +45 -> 425
-    //   383: aload_2
-    //   384: ifnull +7 -> 391
-    //   387: aload_2
-    //   388: invokevirtual 245	java/io/FileInputStream:close	()V
-    //   391: aload_1
-    //   392: ifnull +7 -> 399
-    //   395: aload_1
-    //   396: invokevirtual 246	android/content/res/AssetFileDescriptor:close	()V
-    //   399: ldc 119
-    //   401: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   404: aload 4
-    //   406: areturn
-    //   407: astore_1
-    //   408: ldc 145
+    //   293: invokespecial 213	java/lang/StringBuilder:<init>	()V
+    //   296: invokestatic 249	com/tencent/mm/loader/i/b:bmz	()Ljava/lang/String;
+    //   299: invokevirtual 227	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   302: ldc 253
+    //   304: invokevirtual 227	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   307: aload 8
+    //   309: invokevirtual 227	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   312: invokevirtual 232	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   315: astore 4
+    //   317: new 255	com/tencent/mm/vfs/u
+    //   320: dup
+    //   321: aload 5
+    //   323: invokespecial 258	com/tencent/mm/vfs/u:<init>	(Ljava/lang/String;)V
+    //   326: astore 5
+    //   328: aload 5
+    //   330: invokevirtual 261	com/tencent/mm/vfs/u:jKS	()Z
+    //   333: ifne +9 -> 342
+    //   336: aload 5
+    //   338: invokevirtual 264	com/tencent/mm/vfs/u:jKY	()Z
+    //   341: pop
+    //   342: new 255	com/tencent/mm/vfs/u
+    //   345: dup
+    //   346: aload 4
+    //   348: invokespecial 258	com/tencent/mm/vfs/u:<init>	(Ljava/lang/String;)V
+    //   351: astore 5
+    //   353: aload 5
+    //   355: invokevirtual 261	com/tencent/mm/vfs/u:jKS	()Z
+    //   358: ifne +9 -> 367
+    //   361: aload 5
+    //   363: invokevirtual 267	com/tencent/mm/vfs/u:jKZ	()Z
+    //   366: pop
+    //   367: aload 4
+    //   369: aload 9
+    //   371: aload 9
+    //   373: arraylength
+    //   374: invokestatic 271	com/tencent/mm/vfs/y:f	(Ljava/lang/String;[BI)I
+    //   377: istore_3
+    //   378: iload_3
+    //   379: ifne +45 -> 424
+    //   382: aload_2
+    //   383: ifnull +7 -> 390
+    //   386: aload_2
+    //   387: invokevirtual 233	java/io/FileInputStream:close	()V
+    //   390: aload_1
+    //   391: ifnull +7 -> 398
+    //   394: aload_1
+    //   395: invokevirtual 234	android/content/res/AssetFileDescriptor:close	()V
+    //   398: ldc 107
+    //   400: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   403: aload 4
+    //   405: areturn
+    //   406: astore_1
+    //   407: ldc 133
+    //   409: aload_1
     //   410: aload_1
-    //   411: aload_1
-    //   412: invokevirtual 250	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   415: iconst_0
-    //   416: anewarray 252	java/lang/Object
-    //   419: invokestatic 256	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   422: goto -23 -> 399
-    //   425: aload_2
-    //   426: ifnull +7 -> 433
-    //   429: aload_2
-    //   430: invokevirtual 245	java/io/FileInputStream:close	()V
-    //   433: aload_1
-    //   434: ifnull +7 -> 441
-    //   437: aload_1
-    //   438: invokevirtual 246	android/content/res/AssetFileDescriptor:close	()V
-    //   441: ldc 119
-    //   443: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   446: aconst_null
-    //   447: areturn
-    //   448: astore_1
-    //   449: ldc 145
+    //   411: invokevirtual 238	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   414: iconst_0
+    //   415: anewarray 240	java/lang/Object
+    //   418: invokestatic 244	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   421: goto -23 -> 398
+    //   424: aload_2
+    //   425: ifnull +7 -> 432
+    //   428: aload_2
+    //   429: invokevirtual 233	java/io/FileInputStream:close	()V
+    //   432: aload_1
+    //   433: ifnull +7 -> 440
+    //   436: aload_1
+    //   437: invokevirtual 234	android/content/res/AssetFileDescriptor:close	()V
+    //   440: ldc 107
+    //   442: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   445: aconst_null
+    //   446: areturn
+    //   447: astore_1
+    //   448: ldc 133
+    //   450: aload_1
     //   451: aload_1
-    //   452: aload_1
-    //   453: invokevirtual 250	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   456: iconst_0
-    //   457: anewarray 252	java/lang/Object
-    //   460: invokestatic 256	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   463: goto -22 -> 441
-    //   466: astore 8
-    //   468: aconst_null
-    //   469: astore 7
-    //   471: aconst_null
-    //   472: astore_2
-    //   473: aconst_null
-    //   474: astore_1
-    //   475: aload 7
-    //   477: astore 6
-    //   479: aload_2
-    //   480: astore 5
-    //   482: aload_1
-    //   483: astore 4
-    //   485: ldc 145
-    //   487: new 224	java/lang/StringBuilder
-    //   490: dup
-    //   491: ldc_w 285
-    //   494: invokespecial 286	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   497: aload 8
-    //   499: invokevirtual 287	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
-    //   502: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   505: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   508: invokestatic 290	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   511: aload_2
-    //   512: ifnull +7 -> 519
-    //   515: aload_2
-    //   516: invokevirtual 245	java/io/FileInputStream:close	()V
-    //   519: aload_1
-    //   520: ifnull +7 -> 527
-    //   523: aload_1
-    //   524: invokevirtual 246	android/content/res/AssetFileDescriptor:close	()V
-    //   527: aload 7
-    //   529: ifnull -88 -> 441
-    //   532: aload 7
-    //   534: invokevirtual 247	java/io/OutputStream:close	()V
-    //   537: goto -96 -> 441
-    //   540: astore_1
-    //   541: ldc 145
+    //   452: invokevirtual 238	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   455: iconst_0
+    //   456: anewarray 240	java/lang/Object
+    //   459: invokestatic 244	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   462: goto -22 -> 440
+    //   465: astore 8
+    //   467: aconst_null
+    //   468: astore 7
+    //   470: aconst_null
+    //   471: astore_2
+    //   472: aconst_null
+    //   473: astore_1
+    //   474: aload 7
+    //   476: astore 6
+    //   478: aload_2
+    //   479: astore 5
+    //   481: aload_1
+    //   482: astore 4
+    //   484: ldc 133
+    //   486: new 212	java/lang/StringBuilder
+    //   489: dup
+    //   490: ldc_w 273
+    //   493: invokespecial 274	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   496: aload 8
+    //   498: invokevirtual 275	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
+    //   501: invokevirtual 227	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   504: invokevirtual 232	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   507: invokestatic 278	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   510: aload_2
+    //   511: ifnull +7 -> 518
+    //   514: aload_2
+    //   515: invokevirtual 233	java/io/FileInputStream:close	()V
+    //   518: aload_1
+    //   519: ifnull +7 -> 526
+    //   522: aload_1
+    //   523: invokevirtual 234	android/content/res/AssetFileDescriptor:close	()V
+    //   526: aload 7
+    //   528: ifnull -88 -> 440
+    //   531: aload 7
+    //   533: invokevirtual 235	java/io/OutputStream:close	()V
+    //   536: goto -96 -> 440
+    //   539: astore_1
+    //   540: ldc 133
+    //   542: aload_1
     //   543: aload_1
-    //   544: aload_1
-    //   545: invokevirtual 250	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   548: iconst_0
-    //   549: anewarray 252	java/lang/Object
-    //   552: invokestatic 256	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   555: goto -114 -> 441
-    //   558: astore 8
-    //   560: aconst_null
-    //   561: astore 7
-    //   563: aconst_null
-    //   564: astore_2
-    //   565: aconst_null
-    //   566: astore_1
-    //   567: aload 7
-    //   569: astore 6
-    //   571: aload_2
-    //   572: astore 5
-    //   574: aload_1
-    //   575: astore 4
-    //   577: ldc 145
-    //   579: new 224	java/lang/StringBuilder
-    //   582: dup
-    //   583: ldc_w 292
-    //   586: invokespecial 286	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   589: aload 8
-    //   591: invokevirtual 293	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   594: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   597: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   600: invokestatic 290	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   603: aload_2
-    //   604: ifnull +7 -> 611
-    //   607: aload_2
-    //   608: invokevirtual 245	java/io/FileInputStream:close	()V
-    //   611: aload_1
-    //   612: ifnull +7 -> 619
-    //   615: aload_1
-    //   616: invokevirtual 246	android/content/res/AssetFileDescriptor:close	()V
-    //   619: aload 7
-    //   621: ifnull -180 -> 441
-    //   624: aload 7
-    //   626: invokevirtual 247	java/io/OutputStream:close	()V
-    //   629: goto -188 -> 441
-    //   632: astore_1
-    //   633: ldc 145
+    //   544: invokevirtual 238	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   547: iconst_0
+    //   548: anewarray 240	java/lang/Object
+    //   551: invokestatic 244	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   554: goto -114 -> 440
+    //   557: astore 8
+    //   559: aconst_null
+    //   560: astore 7
+    //   562: aconst_null
+    //   563: astore_2
+    //   564: aconst_null
+    //   565: astore_1
+    //   566: aload 7
+    //   568: astore 6
+    //   570: aload_2
+    //   571: astore 5
+    //   573: aload_1
+    //   574: astore 4
+    //   576: ldc 133
+    //   578: new 212	java/lang/StringBuilder
+    //   581: dup
+    //   582: ldc_w 280
+    //   585: invokespecial 274	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   588: aload 8
+    //   590: invokevirtual 281	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   593: invokevirtual 227	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   596: invokevirtual 232	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   599: invokestatic 278	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   602: aload_2
+    //   603: ifnull +7 -> 610
+    //   606: aload_2
+    //   607: invokevirtual 233	java/io/FileInputStream:close	()V
+    //   610: aload_1
+    //   611: ifnull +7 -> 618
+    //   614: aload_1
+    //   615: invokevirtual 234	android/content/res/AssetFileDescriptor:close	()V
+    //   618: aload 7
+    //   620: ifnull -180 -> 440
+    //   623: aload 7
+    //   625: invokevirtual 235	java/io/OutputStream:close	()V
+    //   628: goto -188 -> 440
+    //   631: astore_1
+    //   632: ldc 133
+    //   634: aload_1
     //   635: aload_1
-    //   636: aload_1
-    //   637: invokevirtual 250	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   640: iconst_0
-    //   641: anewarray 252	java/lang/Object
-    //   644: invokestatic 256	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   647: goto -206 -> 441
-    //   650: astore 8
-    //   652: aconst_null
-    //   653: astore 7
-    //   655: aconst_null
-    //   656: astore_2
-    //   657: aconst_null
-    //   658: astore_1
-    //   659: aload 7
-    //   661: astore 6
-    //   663: aload_2
-    //   664: astore 5
-    //   666: aload_1
-    //   667: astore 4
-    //   669: ldc 145
-    //   671: new 224	java/lang/StringBuilder
-    //   674: dup
-    //   675: ldc_w 295
-    //   678: invokespecial 286	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   681: aload 8
-    //   683: invokevirtual 250	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   686: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   689: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   692: invokestatic 290	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   695: aload_2
-    //   696: ifnull +7 -> 703
-    //   699: aload_2
-    //   700: invokevirtual 245	java/io/FileInputStream:close	()V
-    //   703: aload_1
-    //   704: ifnull +7 -> 711
-    //   707: aload_1
-    //   708: invokevirtual 246	android/content/res/AssetFileDescriptor:close	()V
-    //   711: aload 7
-    //   713: ifnull -272 -> 441
-    //   716: aload 7
-    //   718: invokevirtual 247	java/io/OutputStream:close	()V
-    //   721: goto -280 -> 441
-    //   724: astore_1
-    //   725: ldc 145
+    //   636: invokevirtual 238	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   639: iconst_0
+    //   640: anewarray 240	java/lang/Object
+    //   643: invokestatic 244	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   646: goto -206 -> 440
+    //   649: astore 8
+    //   651: aconst_null
+    //   652: astore 7
+    //   654: aconst_null
+    //   655: astore_2
+    //   656: aconst_null
+    //   657: astore_1
+    //   658: aload 7
+    //   660: astore 6
+    //   662: aload_2
+    //   663: astore 5
+    //   665: aload_1
+    //   666: astore 4
+    //   668: ldc 133
+    //   670: new 212	java/lang/StringBuilder
+    //   673: dup
+    //   674: ldc_w 283
+    //   677: invokespecial 274	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   680: aload 8
+    //   682: invokevirtual 238	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   685: invokevirtual 227	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   688: invokevirtual 232	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   691: invokestatic 278	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   694: aload_2
+    //   695: ifnull +7 -> 702
+    //   698: aload_2
+    //   699: invokevirtual 233	java/io/FileInputStream:close	()V
+    //   702: aload_1
+    //   703: ifnull +7 -> 710
+    //   706: aload_1
+    //   707: invokevirtual 234	android/content/res/AssetFileDescriptor:close	()V
+    //   710: aload 7
+    //   712: ifnull -272 -> 440
+    //   715: aload 7
+    //   717: invokevirtual 235	java/io/OutputStream:close	()V
+    //   720: goto -280 -> 440
+    //   723: astore_1
+    //   724: ldc 133
+    //   726: aload_1
     //   727: aload_1
-    //   728: aload_1
-    //   729: invokevirtual 250	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   732: iconst_0
-    //   733: anewarray 252	java/lang/Object
-    //   736: invokestatic 256	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   739: goto -298 -> 441
-    //   742: astore 7
-    //   744: aconst_null
-    //   745: astore 6
-    //   747: aconst_null
-    //   748: astore_2
-    //   749: aconst_null
-    //   750: astore_1
-    //   751: aload_2
-    //   752: ifnull +7 -> 759
-    //   755: aload_2
-    //   756: invokevirtual 245	java/io/FileInputStream:close	()V
-    //   759: aload_1
-    //   760: ifnull +7 -> 767
-    //   763: aload_1
-    //   764: invokevirtual 246	android/content/res/AssetFileDescriptor:close	()V
-    //   767: aload 6
-    //   769: ifnull +8 -> 777
-    //   772: aload 6
-    //   774: invokevirtual 247	java/io/OutputStream:close	()V
-    //   777: ldc 119
-    //   779: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   782: aload 7
-    //   784: athrow
-    //   785: astore_1
-    //   786: ldc 145
+    //   728: invokevirtual 238	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   731: iconst_0
+    //   732: anewarray 240	java/lang/Object
+    //   735: invokestatic 244	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   738: goto -298 -> 440
+    //   741: astore 7
+    //   743: aconst_null
+    //   744: astore 6
+    //   746: aconst_null
+    //   747: astore_2
+    //   748: aconst_null
+    //   749: astore_1
+    //   750: aload_2
+    //   751: ifnull +7 -> 758
+    //   754: aload_2
+    //   755: invokevirtual 233	java/io/FileInputStream:close	()V
+    //   758: aload_1
+    //   759: ifnull +7 -> 766
+    //   762: aload_1
+    //   763: invokevirtual 234	android/content/res/AssetFileDescriptor:close	()V
+    //   766: aload 6
+    //   768: ifnull +8 -> 776
+    //   771: aload 6
+    //   773: invokevirtual 235	java/io/OutputStream:close	()V
+    //   776: ldc 107
+    //   778: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   781: aload 7
+    //   783: athrow
+    //   784: astore_1
+    //   785: ldc 133
+    //   787: aload_1
     //   788: aload_1
-    //   789: aload_1
-    //   790: invokevirtual 250	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   793: iconst_0
-    //   794: anewarray 252	java/lang/Object
-    //   797: invokestatic 256	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   800: goto -23 -> 777
-    //   803: astore 7
-    //   805: aconst_null
-    //   806: astore 6
-    //   808: aconst_null
-    //   809: astore_2
-    //   810: goto -59 -> 751
-    //   813: astore 7
-    //   815: aconst_null
-    //   816: astore 6
-    //   818: goto -67 -> 751
-    //   821: astore 7
-    //   823: aload 5
-    //   825: astore_2
-    //   826: aload 4
-    //   828: astore_1
-    //   829: goto -78 -> 751
-    //   832: astore 8
-    //   834: aconst_null
-    //   835: astore 7
-    //   837: aconst_null
-    //   838: astore_2
-    //   839: goto -180 -> 659
-    //   842: astore 8
-    //   844: aconst_null
-    //   845: astore 7
-    //   847: goto -188 -> 659
-    //   850: astore 8
-    //   852: goto -193 -> 659
-    //   855: astore 8
-    //   857: aconst_null
-    //   858: astore 7
-    //   860: aconst_null
-    //   861: astore_2
-    //   862: goto -295 -> 567
-    //   865: astore 8
-    //   867: aconst_null
-    //   868: astore 7
-    //   870: goto -303 -> 567
-    //   873: astore 8
-    //   875: goto -308 -> 567
-    //   878: astore 8
-    //   880: aconst_null
-    //   881: astore 7
-    //   883: aconst_null
-    //   884: astore_2
-    //   885: goto -410 -> 475
-    //   888: astore 8
-    //   890: aconst_null
-    //   891: astore 7
-    //   893: goto -418 -> 475
-    //   896: astore 8
-    //   898: goto -423 -> 475
+    //   789: invokevirtual 238	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   792: iconst_0
+    //   793: anewarray 240	java/lang/Object
+    //   796: invokestatic 244	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   799: goto -23 -> 776
+    //   802: astore 7
+    //   804: aconst_null
+    //   805: astore 6
+    //   807: aconst_null
+    //   808: astore_2
+    //   809: goto -59 -> 750
+    //   812: astore 7
+    //   814: aconst_null
+    //   815: astore 6
+    //   817: goto -67 -> 750
+    //   820: astore 7
+    //   822: aload 5
+    //   824: astore_2
+    //   825: aload 4
+    //   827: astore_1
+    //   828: goto -78 -> 750
+    //   831: astore 8
+    //   833: aconst_null
+    //   834: astore 7
+    //   836: aconst_null
+    //   837: astore_2
+    //   838: goto -180 -> 658
+    //   841: astore 8
+    //   843: aconst_null
+    //   844: astore 7
+    //   846: goto -188 -> 658
+    //   849: astore 8
+    //   851: goto -193 -> 658
+    //   854: astore 8
+    //   856: aconst_null
+    //   857: astore 7
+    //   859: aconst_null
+    //   860: astore_2
+    //   861: goto -295 -> 566
+    //   864: astore 8
+    //   866: aconst_null
+    //   867: astore 7
+    //   869: goto -303 -> 566
+    //   872: astore 8
+    //   874: goto -308 -> 566
+    //   877: astore 8
+    //   879: aconst_null
+    //   880: astore 7
+    //   882: aconst_null
+    //   883: astore_2
+    //   884: goto -410 -> 474
+    //   887: astore 8
+    //   889: aconst_null
+    //   890: astore 7
+    //   892: goto -418 -> 474
+    //   895: astore 8
+    //   897: goto -423 -> 474
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	901	0	this	AddFavoriteUI
-    //   0	901	1	paramUri	Uri
-    //   0	901	2	paramCursor	android.database.Cursor
-    //   21	359	3	i	int
-    //   38	789	4	localObject1	Object
-    //   34	790	5	localObject2	Object
-    //   141	676	6	localOutputStream1	java.io.OutputStream
-    //   137	580	7	localOutputStream2	java.io.OutputStream
-    //   742	41	7	localObject3	Object
-    //   803	1	7	localObject4	Object
-    //   813	1	7	localObject5	Object
-    //   821	1	7	localObject6	Object
-    //   835	57	7	localObject7	Object
-    //   11	298	8	localObject8	Object
-    //   466	32	8	localFileNotFoundException1	java.io.FileNotFoundException
-    //   558	32	8	localIOException1	java.io.IOException
-    //   650	32	8	localException1	java.lang.Exception
-    //   832	1	8	localException2	java.lang.Exception
-    //   842	1	8	localException3	java.lang.Exception
-    //   850	1	8	localException4	java.lang.Exception
-    //   855	1	8	localIOException2	java.io.IOException
-    //   865	1	8	localIOException3	java.io.IOException
-    //   873	1	8	localIOException4	java.io.IOException
-    //   878	1	8	localFileNotFoundException2	java.io.FileNotFoundException
-    //   888	1	8	localFileNotFoundException3	java.io.FileNotFoundException
-    //   896	1	8	localFileNotFoundException4	java.io.FileNotFoundException
-    //   104	269	9	arrayOfByte	byte[]
+    //   0	900	0	this	AddFavoriteUI
+    //   0	900	1	paramUri	Uri
+    //   0	900	2	paramCursor	android.database.Cursor
+    //   21	358	3	i	int
+    //   38	788	4	localObject1	Object
+    //   34	789	5	localObject2	Object
+    //   142	674	6	localOutputStream1	java.io.OutputStream
+    //   138	578	7	localOutputStream2	java.io.OutputStream
+    //   741	41	7	localObject3	Object
+    //   802	1	7	localObject4	Object
+    //   812	1	7	localObject5	Object
+    //   820	1	7	localObject6	Object
+    //   834	57	7	localObject7	Object
+    //   11	297	8	localObject8	Object
+    //   465	32	8	localFileNotFoundException1	java.io.FileNotFoundException
+    //   557	32	8	localIOException1	java.io.IOException
+    //   649	32	8	localException1	Exception
+    //   831	1	8	localException2	Exception
+    //   841	1	8	localException3	Exception
+    //   849	1	8	localException4	Exception
+    //   854	1	8	localIOException2	java.io.IOException
+    //   864	1	8	localIOException3	java.io.IOException
+    //   872	1	8	localIOException4	java.io.IOException
+    //   877	1	8	localFileNotFoundException2	java.io.FileNotFoundException
+    //   887	1	8	localFileNotFoundException3	java.io.FileNotFoundException
+    //   895	1	8	localFileNotFoundException4	java.io.FileNotFoundException
+    //   104	268	9	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   217	221	247	java/lang/Exception
-    //   225	229	247	java/lang/Exception
-    //   234	239	247	java/lang/Exception
-    //   387	391	407	java/lang/Exception
-    //   395	399	407	java/lang/Exception
-    //   429	433	448	java/lang/Exception
-    //   437	441	448	java/lang/Exception
-    //   81	92	466	java/io/FileNotFoundException
-    //   515	519	540	java/lang/Exception
-    //   523	527	540	java/lang/Exception
-    //   532	537	540	java/lang/Exception
-    //   81	92	558	java/io/IOException
-    //   607	611	632	java/lang/Exception
-    //   615	619	632	java/lang/Exception
-    //   624	629	632	java/lang/Exception
-    //   81	92	650	java/lang/Exception
-    //   699	703	724	java/lang/Exception
-    //   707	711	724	java/lang/Exception
-    //   716	721	724	java/lang/Exception
-    //   81	92	742	finally
-    //   755	759	785	java/lang/Exception
-    //   763	767	785	java/lang/Exception
-    //   772	777	785	java/lang/Exception
-    //   92	97	803	finally
-    //   97	139	813	finally
-    //   265	343	813	finally
-    //   343	368	813	finally
-    //   368	379	813	finally
-    //   149	156	821	finally
-    //   166	171	821	finally
-    //   181	213	821	finally
-    //   485	511	821	finally
-    //   577	603	821	finally
-    //   669	695	821	finally
-    //   92	97	832	java/lang/Exception
-    //   97	139	842	java/lang/Exception
-    //   265	343	842	java/lang/Exception
-    //   343	368	842	java/lang/Exception
-    //   368	379	842	java/lang/Exception
-    //   149	156	850	java/lang/Exception
-    //   166	171	850	java/lang/Exception
-    //   181	213	850	java/lang/Exception
-    //   92	97	855	java/io/IOException
-    //   97	139	865	java/io/IOException
-    //   265	343	865	java/io/IOException
-    //   343	368	865	java/io/IOException
-    //   368	379	865	java/io/IOException
-    //   149	156	873	java/io/IOException
-    //   166	171	873	java/io/IOException
-    //   181	213	873	java/io/IOException
-    //   92	97	878	java/io/FileNotFoundException
-    //   97	139	888	java/io/FileNotFoundException
-    //   265	343	888	java/io/FileNotFoundException
-    //   343	368	888	java/io/FileNotFoundException
-    //   368	379	888	java/io/FileNotFoundException
-    //   149	156	896	java/io/FileNotFoundException
-    //   166	171	896	java/io/FileNotFoundException
-    //   181	213	896	java/io/FileNotFoundException
+    //   218	222	248	java/lang/Exception
+    //   226	230	248	java/lang/Exception
+    //   235	240	248	java/lang/Exception
+    //   386	390	406	java/lang/Exception
+    //   394	398	406	java/lang/Exception
+    //   428	432	447	java/lang/Exception
+    //   436	440	447	java/lang/Exception
+    //   81	92	465	java/io/FileNotFoundException
+    //   514	518	539	java/lang/Exception
+    //   522	526	539	java/lang/Exception
+    //   531	536	539	java/lang/Exception
+    //   81	92	557	java/io/IOException
+    //   606	610	631	java/lang/Exception
+    //   614	618	631	java/lang/Exception
+    //   623	628	631	java/lang/Exception
+    //   81	92	649	java/lang/Exception
+    //   698	702	723	java/lang/Exception
+    //   706	710	723	java/lang/Exception
+    //   715	720	723	java/lang/Exception
+    //   81	92	741	finally
+    //   754	758	784	java/lang/Exception
+    //   762	766	784	java/lang/Exception
+    //   771	776	784	java/lang/Exception
+    //   92	97	802	finally
+    //   97	140	812	finally
+    //   266	342	812	finally
+    //   342	367	812	finally
+    //   367	378	812	finally
+    //   150	157	820	finally
+    //   167	172	820	finally
+    //   182	214	820	finally
+    //   484	510	820	finally
+    //   576	602	820	finally
+    //   668	694	820	finally
+    //   92	97	831	java/lang/Exception
+    //   97	140	841	java/lang/Exception
+    //   266	342	841	java/lang/Exception
+    //   342	367	841	java/lang/Exception
+    //   367	378	841	java/lang/Exception
+    //   150	157	849	java/lang/Exception
+    //   167	172	849	java/lang/Exception
+    //   182	214	849	java/lang/Exception
+    //   92	97	854	java/io/IOException
+    //   97	140	864	java/io/IOException
+    //   266	342	864	java/io/IOException
+    //   342	367	864	java/io/IOException
+    //   367	378	864	java/io/IOException
+    //   150	157	872	java/io/IOException
+    //   167	172	872	java/io/IOException
+    //   182	214	872	java/io/IOException
+    //   92	97	877	java/io/FileNotFoundException
+    //   97	140	887	java/io/FileNotFoundException
+    //   266	342	887	java/io/FileNotFoundException
+    //   342	367	887	java/io/FileNotFoundException
+    //   367	378	887	java/io/FileNotFoundException
+    //   150	157	895	java/io/FileNotFoundException
+    //   167	172	895	java/io/FileNotFoundException
+    //   182	214	895	java/io/FileNotFoundException
   }
   
-  private void axt(int paramInt)
+  private void aDM()
+  {
+    AppMethodBeat.i(38968);
+    if ((this.lzP != null) && (this.lzP.isShowing())) {
+      this.lzP.dismiss();
+    }
+    AppMethodBeat.o(38968);
+  }
+  
+  private void aEc(int paramInt)
   {
     AppMethodBeat.i(38966);
     switch (paramInt)
     {
     default: 
-      Toast.makeText(this, R.l.eTt, 1).show();
+      Toast.makeText(this, R.l.gWk, 1).show();
       AppMethodBeat.o(38966);
       return;
     }
-    Toast.makeText(this, R.l.eTq, 1).show();
+    Toast.makeText(this, R.l.gWh, 1).show();
     AppMethodBeat.o(38966);
   }
   
-  private static int bAy(String paramString)
+  private static int bCu(String paramString)
   {
     AppMethodBeat.i(38964);
     if ((paramString == null) || (paramString.length() == 0))
@@ -690,33 +696,24 @@ public class AddFavoriteUI
     return 8;
   }
   
-  private void dismissDialog()
-  {
-    AppMethodBeat.i(38968);
-    if ((this.iXX != null) && (this.iXX.isShowing())) {
-      this.iXX.dismiss();
-    }
-    AppMethodBeat.o(38968);
-  }
-  
-  private void elK()
+  private void fpM()
   {
     AppMethodBeat.i(38967);
     getString(R.l.app_tip);
-    this.iXX = com.tencent.mm.ui.base.h.a(this, getString(R.l.app_waiting), true, new DialogInterface.OnCancelListener()
+    this.lzP = k.a(this, getString(R.l.app_waiting), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
     });
     AppMethodBeat.o(38967);
   }
   
-  private void hYg()
+  private void jCQ()
   {
     AppMethodBeat.i(38960);
     Intent localIntent = new Intent(this, AddFavoriteUI.class);
     localIntent.setAction("android.intent.action.SEND");
     if (Util.isNullOrNil(this.filePath)) {}
-    for (Object localObject = null;; localObject = FileProviderHelper.getUriForFile(getContext(), new com.tencent.mm.vfs.q(this.filePath)))
+    for (Object localObject = null;; localObject = FileProviderHelper.getUriForFile(getContext(), new u(this.filePath)))
     {
       localIntent.putExtra("android.intent.extra.STREAM", (Parcelable)localObject);
       localIntent.addFlags(268435456).addFlags(32768);
@@ -727,7 +724,7 @@ public class AddFavoriteUI
     }
   }
   
-  private boolean hYh()
+  private boolean jCR()
   {
     AppMethodBeat.i(38961);
     this.intent = getIntent();
@@ -752,18 +749,18 @@ public class AddFavoriteUI
     int i = ((SendMessageToWX.Req)localObject2).message.getType();
     localObject3 = new Bundle();
     ((SendMessageToWX.Req)localObject2).toBundle((Bundle)localObject3);
-    ((Bundle)localObject3).putInt("_mmessage_sdkVersion", 637992960);
+    ((Bundle)localObject3).putInt("_mmessage_sdkVersion", 638058496);
     ((Bundle)localObject3).putString("_mmessage_appPackage", "com.tencent.mm.openapi");
     ((Bundle)localObject3).putString("SendAppMessageWrapper_AppId", "wx4310bbd51be7d979");
-    if ((bh.beJ()) && (!bh.aGE()))
+    if ((bh.bCA()) && (!bh.aZG()))
     {
-      localObject2 = new dd();
-      localObject3 = u.bBW(this.filePath) + "." + u.asq(this.filePath);
+      localObject2 = new dn();
+      localObject3 = y.bEq(this.filePath) + "." + y.alV(this.filePath);
       if (i == 1)
       {
-        j.b((dd)localObject2, (String)localObject1, 13);
-        ((dd)localObject2).fyI.activity = this;
-        ((dd)localObject2).fyI.fyQ = new DialogInterface.OnClickListener()
+        l.b((dn)localObject2, (String)localObject1, 13);
+        ((dn)localObject2).hDr.activity = this;
+        ((dn)localObject2).hDr.hDz = new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
@@ -772,9 +769,9 @@ public class AddFavoriteUI
             AppMethodBeat.o(38940);
           }
         };
-        ((dd)localObject2).fyI.fyR = new a.c()
+        ((dn)localObject2).hDr.hDA = new a.c()
         {
-          public final void bPL() {}
+          public final void cpT() {}
           
           public final void onHide()
           {
@@ -785,20 +782,20 @@ public class AddFavoriteUI
           
           public final void onShow() {}
         };
-        this.XNn = ((dd)localObject2);
+        this.afDB = ((dn)localObject2);
         localObject2 = new ArrayList();
         ((ArrayList)localObject2).add(localObject1);
-        localObject1 = new g(5, (List)localObject2, getCallerPackage());
-        bh.aGY().a(837, this);
-        com.tencent.mm.kernel.h.aGY().a((com.tencent.mm.an.q)localObject1, 0);
-        elK();
+        localObject1 = new i(5, (List)localObject2, getCallerPackage());
+        bh.aZW().a(837, this);
+        com.tencent.mm.kernel.h.aZW().a((p)localObject1, 0);
+        fpM();
       }
     }
     for (;;)
     {
       AppMethodBeat.o(38961);
       return true;
-      j.a((dd)localObject2, 13, this.filePath, (String)localObject3, "", false);
+      l.a((dn)localObject2, 13, this.filePath, (String)localObject3, "", false);
       break;
       Log.w("MicroMsg.AddFavoriteUI", "not logged in, jump to simple login");
       MMWizardActivity.b(this, new Intent(this, SimpleLoginUI.class), getIntent().addFlags(67108864));
@@ -806,15 +803,15 @@ public class AddFavoriteUI
     }
   }
   
-  private void hYi()
+  private void jCS()
   {
     AppMethodBeat.i(38965);
-    axt(0);
-    Toast.makeText(this, R.l.eTt, 1).show();
+    aEc(0);
+    Toast.makeText(this, R.l.gWk, 1).show();
     AppMethodBeat.o(38965);
   }
   
-  private void o(int paramInt, String paramString, boolean paramBoolean)
+  private void p(int paramInt, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(38962);
     if ((paramString == null) || (paramString.length() == 0))
@@ -823,7 +820,7 @@ public class AddFavoriteUI
       AppMethodBeat.o(38962);
       return;
     }
-    long l1 = u.bBQ(paramString);
+    long l1 = y.bEl(paramString);
     Log.i("MicroMsg.AddFavoriteUI", "filelength: [%d]", new Object[] { Long.valueOf(l1) });
     if (l1 == 0L)
     {
@@ -833,8 +830,8 @@ public class AddFavoriteUI
       AppMethodBeat.o(38962);
       return;
     }
-    long l2 = ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavSizeLimit(paramBoolean, paramInt);
-    int i = ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavSizeLimitInMB(paramBoolean, paramInt);
+    long l2 = ((ah)com.tencent.mm.kernel.h.az(ah.class)).getFavSizeLimit(paramBoolean, paramInt);
+    int i = ((ah)com.tencent.mm.kernel.h.az(ah.class)).getFavSizeLimitInMB(paramBoolean, paramInt);
     if (l1 > l2)
     {
       Log.e("MicroMsg.AddFavoriteUI", "dealWithFile fail, fileLength is too large");
@@ -843,22 +840,22 @@ public class AddFavoriteUI
       AppMethodBeat.o(38962);
       return;
     }
-    if ((bh.beJ()) && (!bh.aGE()))
+    if ((bh.bCA()) && (!bh.aZG()))
     {
       Object localObject1 = new ArrayList();
       ((ArrayList)localObject1).add(paramString);
-      dd localdd = new dd();
-      String str = u.bBW(paramString) + "." + u.asq(paramString);
+      dn localdn = new dn();
+      String str = y.bEq(paramString) + "." + y.alV(paramString);
       Object localObject2;
       switch (paramInt)
       {
       case 3: 
       default: 
         localObject2 = new WXFileObject(paramString);
-        localObject1 = new g(4, (List)localObject1, getCallerPackage());
-        j.a(localdd, 13, paramString, str, "", paramBoolean);
+        localObject1 = new i(4, (List)localObject1, getCallerPackage());
+        l.a(localdn, 13, paramString, str, "", paramBoolean);
         localObject2 = new WXMediaMessage((WXMediaMessage.IMediaObject)localObject2);
-        ((WXMediaMessage)localObject2).title = new com.tencent.mm.vfs.q(paramString).getName();
+        ((WXMediaMessage)localObject2).title = new u(paramString).getName();
         if (Util.isNullOrNil(null))
         {
           ((WXMediaMessage)localObject2).description = Util.getSizeKB(l1);
@@ -866,7 +863,7 @@ public class AddFavoriteUI
           if (l1 >= 30720L) {
             break label631;
           }
-          ((WXMediaMessage)localObject2).thumbData = u.aY(paramString, 0, -1);
+          ((WXMediaMessage)localObject2).thumbData = y.bi(paramString, 0, -1);
         }
         break;
       }
@@ -877,11 +874,11 @@ public class AddFavoriteUI
         paramString.message = ((WXMediaMessage)localObject2);
         localObject2 = new Bundle();
         paramString.toBundle((Bundle)localObject2);
-        ((Bundle)localObject2).putInt("_mmessage_sdkVersion", 637992960);
+        ((Bundle)localObject2).putInt("_mmessage_sdkVersion", 638058496);
         ((Bundle)localObject2).putString("_mmessage_appPackage", "com.tencent.mm.openapi");
         ((Bundle)localObject2).putString("SendAppMessageWrapper_AppId", "wx4310bbd51be7d979");
-        localdd.fyI.activity = this;
-        localdd.fyI.fyQ = new DialogInterface.OnClickListener()
+        localdn.hDr.activity = this;
+        localdn.hDr.hDz = new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
@@ -890,9 +887,9 @@ public class AddFavoriteUI
             AppMethodBeat.o(38942);
           }
         };
-        localdd.fyI.fyR = new a.c()
+        localdn.hDr.hDA = new a.c()
         {
-          public final void bPL() {}
+          public final void cpT() {}
           
           public final void onHide()
           {
@@ -903,20 +900,20 @@ public class AddFavoriteUI
           
           public final void onShow() {}
         };
-        this.XNn = localdd;
-        com.tencent.mm.kernel.h.aGY().a(837, this);
-        com.tencent.mm.kernel.h.aGY().a((com.tencent.mm.an.q)localObject1, 0);
-        elK();
+        this.afDB = localdn;
+        com.tencent.mm.kernel.h.aZW().a(837, this);
+        com.tencent.mm.kernel.h.aZW().a((p)localObject1, 0);
+        fpM();
         AppMethodBeat.o(38962);
         return;
         localObject2 = new WXImageObject();
         ((WXImageObject)localObject2).setImagePath(paramString);
-        localObject1 = new g(1, (List)localObject1, getCallerPackage());
-        j.a(localdd, 13, paramString);
+        localObject1 = new i(1, (List)localObject1, getCallerPackage());
+        l.a(localdn, 13, paramString);
         break;
         localObject2 = new WXVideoFileObject(paramString);
-        localObject1 = new g(3, (List)localObject1, getCallerPackage());
-        j.a(localdd, 13, paramString, null, 0, str, "", paramBoolean);
+        localObject1 = new i(3, (List)localObject1, getCallerPackage());
+        l.a(localdn, 13, paramString, null, 0, str, "", paramBoolean);
         break;
         ((WXMediaMessage)localObject2).description = null;
         break label365;
@@ -926,7 +923,7 @@ public class AddFavoriteUI
     }
     Log.w("MicroMsg.AddFavoriteUI", "not logged in, jump to simple login");
     finish();
-    hYg();
+    jCQ();
     AppMethodBeat.o(38962);
   }
   
@@ -942,7 +939,7 @@ public class AddFavoriteUI
     if (this.intent == null)
     {
       Log.e("MicroMsg.AddFavoriteUI", "launch : fail, intent is null");
-      hYi();
+      jCS();
       finish();
       AppMethodBeat.o(38959);
       return;
@@ -952,7 +949,7 @@ public class AddFavoriteUI
     if (Util.isNullOrNil((String)localObject1))
     {
       Log.e("MicroMsg.AddFavoriteUI", "launch : fail, action is null");
-      hYi();
+      jCS();
       finish();
       AppMethodBeat.o(38959);
       return;
@@ -967,7 +964,7 @@ public class AddFavoriteUI
         if (!Util.isUriSafeToBeCopySrc(this.uri))
         {
           Log.e("MicroMsg.AddFavoriteUI", "launch : fail, not accept, %s", new Object[] { this.uri });
-          hYi();
+          jCS();
           finish();
           AppMethodBeat.o(38959);
         }
@@ -975,7 +972,7 @@ public class AddFavoriteUI
       else if (localObject3 != null)
       {
         Log.e("MicroMsg.AddFavoriteUI", "launch : fail, uri check fail, %s", new Object[] { localObject3 });
-        hYi();
+        jCS();
         finish();
         AppMethodBeat.o(38959);
         return;
@@ -986,7 +983,7 @@ public class AddFavoriteUI
       Log.i("MicroMsg.AddFavoriteUI", "send signal: ".concat(String.valueOf(localObject1)));
       if (this.uri == null)
       {
-        elK();
+        fpM();
         ThreadPool.post(new Runnable()
         {
           public final void run()
@@ -999,10 +996,10 @@ public class AddFavoriteUI
         AppMethodBeat.o(38959);
         return;
       }
-      elK();
+      fpM();
       ThreadPool.post(new a(this.uri, new b()
       {
-        public final void hYj()
+        public final void jCT()
         {
           AppMethodBeat.i(38944);
           AddFavoriteUI.b(AddFavoriteUI.this).sendEmptyMessage(0);
@@ -1019,7 +1016,7 @@ public class AddFavoriteUI
       if (!Util.nullAs((String)localObject3, "").contains("image"))
       {
         Log.e("MicroMsg.AddFavoriteUI", "launch : fail, mimeType not contains image");
-        axt(1);
+        aEc(1);
         finish();
         AppMethodBeat.o(38959);
         return;
@@ -1048,12 +1045,12 @@ public class AddFavoriteUI
       }
       for (;;)
       {
-        this.XNo = ((ArrayList)localObject1);
-        if ((this.XNo != null) && (this.XNo.size() != 0)) {
+        this.afDC = ((ArrayList)localObject1);
+        if ((this.afDC != null) && (this.afDC.size() != 0)) {
           break label676;
         }
         Log.e("MicroMsg.AddFavoriteUI", "launch : fail, filePathList is null");
-        axt(1);
+        aEc(1);
         finish();
         AppMethodBeat.o(38959);
         return;
@@ -1087,7 +1084,7 @@ public class AddFavoriteUI
         }
       }
       label676:
-      elK();
+      fpM();
       ThreadPool.post(new Runnable()
       {
         public final void run()
@@ -1101,7 +1098,7 @@ public class AddFavoriteUI
       return;
     }
     Log.e("MicroMsg.AddFavoriteUI", "launch : fail, uri is null");
-    hYi();
+    jCS();
     finish();
     AppMethodBeat.o(38959);
   }
@@ -1125,7 +1122,7 @@ public class AddFavoriteUI
       AppMethodBeat.o(38954);
       return;
     }
-    NotifyReceiver.aqB();
+    NotifyReceiver.aKz();
     initView();
     AppMethodBeat.o(38954);
   }
@@ -1134,7 +1131,7 @@ public class AddFavoriteUI
   {
     AppMethodBeat.i(38958);
     Log.i("MicroMsg.AddFavoriteUI", "on Destroy");
-    bh.aGY().b(837, this);
+    bh.aZW().b(837, this);
     super.onDestroy();
     AppMethodBeat.o(38958);
   }
@@ -1163,40 +1160,40 @@ public class AddFavoriteUI
     AppMethodBeat.o(38955);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(38969);
     Log.i("MicroMsg.AddFavoriteUI", "onSceneEnd, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    dismissDialog();
-    if ((paramq instanceof g)) {
+    aDM();
+    if ((paramp instanceof i)) {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        if (this.XNn != null)
+        if (this.afDB != null)
         {
-          EventCenter.instance.publish(this.XNn);
-          this.XNn = null;
+          this.afDB.publish();
+          this.afDB = null;
           AppMethodBeat.o(38969);
         }
       }
-      else if (paramq.getReqResp() != null)
+      else if (paramp.getReqResp() != null)
       {
-        paramString = (zo)d.c.b(((d)paramq.getReqResp()).lBS);
-        if ((paramString != null) && (!Util.isNullOrNil(paramString.SlS)))
+        paramString = (abm)c.c.b(((com.tencent.mm.am.c)paramp.getReqResp()).otC);
+        if ((paramString != null) && (!Util.isNullOrNil(paramString.Zkd)))
         {
-          paramq = new Intent();
-          paramq.putExtra("rawUrl", paramString.SlS);
-          paramq.putExtra("showShare", false);
-          paramq.putExtra("show_bottom", false);
-          paramq.putExtra("needRedirect", false);
-          c.b(this, "webview", ".ui.tools.WebViewUI", paramq);
+          paramp = new Intent();
+          paramp.putExtra("rawUrl", paramString.Zkd);
+          paramp.putExtra("showShare", false);
+          paramp.putExtra("show_bottom", false);
+          paramp.putExtra("needRedirect", false);
+          com.tencent.mm.br.c.b(this, "webview", ".ui.tools.WebViewUI", paramp);
           finish();
           AppMethodBeat.o(38969);
           return;
         }
-        if (this.XNn != null)
+        if (this.afDB != null)
         {
-          EventCenter.instance.publish(this.XNn);
-          this.XNn = null;
+          this.afDB.publish();
+          this.afDB = null;
         }
       }
     }
@@ -1212,13 +1209,13 @@ public class AddFavoriteUI
   final class a
     implements Runnable
   {
-    private AddFavoriteUI.b XNs;
+    private AddFavoriteUI.b afDG;
     private Uri mUri;
     
     public a(Uri paramUri, AddFavoriteUI.b paramb)
     {
       this.mUri = paramUri;
-      this.XNs = paramb;
+      this.afDG = paramb;
     }
     
     public final void run()
@@ -1227,8 +1224,8 @@ public class AddFavoriteUI
       try
       {
         AddFavoriteUI.this.filePath = AddFavoriteUI.a(AddFavoriteUI.this, this.mUri);
-        if ((Util.isNullOrNil(AddFavoriteUI.this.filePath)) || (!new com.tencent.mm.vfs.q(AddFavoriteUI.this.filePath).ifE()) || ((Build.VERSION.SDK_INT >= 30) && (!new com.tencent.mm.vfs.q(AddFavoriteUI.this.filePath).ifC()))) {
-          if (AddFavoriteUI.bAA(AddFavoriteUI.this.getContentResolver().getType(this.mUri)) != 2) {
+        if ((Util.isNullOrNil(AddFavoriteUI.this.filePath)) || (!new u(AddFavoriteUI.this.filePath).jKS()) || ((Build.VERSION.SDK_INT >= 30) && (!new u(AddFavoriteUI.this.filePath).jKQ()))) {
+          if (AddFavoriteUI.bCw(AddFavoriteUI.this.getContentResolver().getType(this.mUri)) != 2) {
             break label149;
           }
         }
@@ -1238,16 +1235,16 @@ public class AddFavoriteUI
         }
         AppMethodBeat.o(38952);
       }
-      catch (IllegalAccessException localIllegalAccessException)
+      catch (Exception localException)
       {
-        Log.printErrStackTrace("MicroMsg.AddFavoriteUI", localIllegalAccessException, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.AddFavoriteUI", localException, "", new Object[0]);
         AddFavoriteUI.this.filePath = null;
         return;
       }
       finally
       {
-        if (this.XNs != null) {
-          this.XNs.hYj();
+        if (this.afDG != null) {
+          this.afDG.jCT();
         }
         AppMethodBeat.o(38952);
       }
@@ -1256,12 +1253,12 @@ public class AddFavoriteUI
   
   public static abstract interface b
   {
-    public abstract void hYj();
+    public abstract void jCT();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.tools.AddFavoriteUI
  * JD-Core Version:    0.7.0.1
  */

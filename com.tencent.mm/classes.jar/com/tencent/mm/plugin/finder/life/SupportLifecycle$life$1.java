@@ -1,113 +1,106 @@
 package com.tencent.mm.plugin.finder.life;
 
-import androidx.lifecycle.h;
-import androidx.lifecycle.k;
+import androidx.lifecycle.j;
+import androidx.lifecycle.p;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMFragmentActivity;
-import kotlin.g.b.p;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/life/SupportLifecycle$life$1", "Lcom/tencent/mm/plugin/finder/life/UILifecycleObserver;", "onCreate", "", "var1", "Landroidx/lifecycle/LifecycleOwner;", "onDestroy", "onPause", "onResume", "onStart", "onStop", "plugin-finder-base_release"})
+@Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/life/SupportLifecycle$life$1", "Lcom/tencent/mm/plugin/finder/life/UILifecycleObserver;", "onCreate", "", "var1", "Landroidx/lifecycle/LifecycleOwner;", "onDestroy", "onPause", "onResume", "onStart", "onStop", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class SupportLifecycle$life$1
   implements b
 {
-  SupportLifecycle$life$1(b paramb, MMFragmentActivity paramMMFragmentActivity) {}
+  SupportLifecycle$life$1(a parama, b paramb, MMFragmentActivity paramMMFragmentActivity) {}
   
-  public final void onCreate(androidx.lifecycle.l paraml)
+  public final void onCreate(q paramq)
   {
-    AppMethodBeat.i(258912);
-    p.k(paraml, "var1");
-    this.xUz.xUo = a.a.xUr;
-    b localb = this.xUA;
-    if (localb != null)
-    {
-      localb.onCreate(paraml);
-      AppMethodBeat.o(258912);
-      return;
-    }
-    AppMethodBeat.o(258912);
-  }
-  
-  public final void onDestroy(androidx.lifecycle.l paraml)
-  {
-    AppMethodBeat.i(258922);
-    p.k(paraml, "var1");
-    this.xUz.xUo = a.a.xUw;
-    b localb = this.xUA;
+    AppMethodBeat.i(329886);
+    s.u(paramq, "var1");
+    this.Bvy.Bvn = a.a.Bvq;
+    b localb = this.Bvz;
     if (localb != null) {
-      localb.onDestroy(paraml);
+      localb.onCreate(paramq);
     }
-    paraml = this.xUz.xUq;
-    if (paraml != null)
-    {
-      Log.i("Finder.EventObserver", "auto life remove " + this.iVS + " this" + this.xUz);
-      this.iVS.getLifecycle().b((k)paraml);
-      this.xUz.xUq = null;
-      AppMethodBeat.o(258922);
-      return;
-    }
-    AppMethodBeat.o(258922);
+    AppMethodBeat.o(329886);
   }
   
-  public final void onPause(androidx.lifecycle.l paraml)
+  public final void onDestroy(q paramq)
   {
-    AppMethodBeat.i(258918);
-    p.k(paraml, "var1");
-    this.xUz.xUo = a.a.xUu;
-    b localb = this.xUA;
+    AppMethodBeat.i(329911);
+    s.u(paramq, "var1");
+    this.Bvy.Bvn = a.a.Bvv;
+    Object localObject = this.Bvz;
+    if (localObject != null) {
+      ((b)localObject).onDestroy(paramq);
+    }
+    paramq = this.Bvy.Bvp;
+    if (paramq != null)
+    {
+      localObject = this.BvA;
+      a locala = this.Bvy;
+      Log.i("Finder.EventObserver", "auto life remove " + localObject + " this" + locala);
+      ((MMFragmentActivity)localObject).getLifecycle().removeObserver((p)paramq);
+      locala.Bvp = null;
+    }
+    AppMethodBeat.o(329911);
+  }
+  
+  public final void onPause(q paramq)
+  {
+    AppMethodBeat.i(329900);
+    s.u(paramq, "var1");
+    this.Bvy.Bvn = a.a.Bvt;
+    b localb = this.Bvz;
     if (localb != null) {
-      localb.onPause(paraml);
+      localb.onPause(paramq);
     }
-    Log.v("Finder.EventObserver", "onPause life " + this.iVS + " this" + this.xUz);
-    AppMethodBeat.o(258918);
+    Log.v("Finder.EventObserver", "onPause life " + this.BvA + " this" + this.Bvy);
+    AppMethodBeat.o(329900);
   }
   
-  public final void onResume(androidx.lifecycle.l paraml)
+  public final void onResume(q paramq)
   {
-    AppMethodBeat.i(258916);
-    p.k(paraml, "var1");
-    this.xUz.xUo = a.a.xUt;
-    b localb = this.xUA;
+    AppMethodBeat.i(329895);
+    s.u(paramq, "var1");
+    this.Bvy.Bvn = a.a.Bvs;
+    b localb = this.Bvz;
     if (localb != null) {
-      localb.onResume(paraml);
+      localb.onResume(paramq);
     }
-    Log.v("Finder.EventObserver", "onResume life " + this.iVS + " this" + this.xUz);
-    AppMethodBeat.o(258916);
+    Log.v("Finder.EventObserver", "onResume life " + this.BvA + " this" + this.Bvy);
+    AppMethodBeat.o(329895);
   }
   
-  public final void onStart(androidx.lifecycle.l paraml)
+  public final void onStart(q paramq)
   {
-    AppMethodBeat.i(258913);
-    p.k(paraml, "var1");
-    this.xUz.xUo = a.a.xUs;
-    b localb = this.xUA;
-    if (localb != null)
-    {
-      localb.onStart(paraml);
-      AppMethodBeat.o(258913);
-      return;
+    AppMethodBeat.i(329889);
+    s.u(paramq, "var1");
+    this.Bvy.Bvn = a.a.Bvr;
+    b localb = this.Bvz;
+    if (localb != null) {
+      localb.onStart(paramq);
     }
-    AppMethodBeat.o(258913);
+    AppMethodBeat.o(329889);
   }
   
-  public final void onStop(androidx.lifecycle.l paraml)
+  public final void onStop(q paramq)
   {
-    AppMethodBeat.i(258920);
-    p.k(paraml, "var1");
-    this.xUz.xUo = a.a.xUv;
-    b localb = this.xUA;
-    if (localb != null)
-    {
-      localb.onStop(paraml);
-      AppMethodBeat.o(258920);
-      return;
+    AppMethodBeat.i(329906);
+    s.u(paramq, "var1");
+    this.Bvy.Bvn = a.a.Bvu;
+    b localb = this.Bvz;
+    if (localb != null) {
+      localb.onStop(paramq);
     }
-    AppMethodBeat.o(258920);
+    AppMethodBeat.o(329906);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.life.SupportLifecycle.life.1
  * JD-Core Version:    0.7.0.1
  */

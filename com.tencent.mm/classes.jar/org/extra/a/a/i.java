@@ -9,21 +9,21 @@ public final class i
 {
   public i(f paramf, c.b paramb)
   {
-    AppMethodBeat.i(194754);
+    AppMethodBeat.i(187250);
     ByteBuffer localByteBuffer = ByteBuffer.allocate(4);
-    if (paramb.abLe) {}
+    if (paramb.ajXX) {}
     for (ByteOrder localByteOrder = ByteOrder.BIG_ENDIAN;; localByteOrder = ByteOrder.LITTLE_ENDIAN)
     {
       localByteBuffer.order(localByteOrder);
-      this.abLo = paramf.e(localByteBuffer, paramb.abLg + paramb.abLj * 0 + 28L);
-      AppMethodBeat.o(194754);
+      this.ajYh = paramf.f(localByteBuffer, paramb.ajXZ + paramb.ajYc * 0 + 28L);
+      AppMethodBeat.o(187250);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     org.extra.a.a.i
  * JD-Core Version:    0.7.0.1
  */

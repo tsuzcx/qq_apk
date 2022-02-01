@@ -1,87 +1,87 @@
 package com.tencent.mm.plugin.finder.live.model.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.cgi.ao;
-import com.tencent.mm.protocal.protobuf.aps;
-import com.tencent.mm.protocal.protobuf.apt;
-import com.tencent.mm.protocal.protobuf.axe;
-import com.tencent.mm.protocal.protobuf.eaf;
-import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.plugin.finder.cgi.bi;
+import com.tencent.mm.protocal.protobuf.atm;
+import com.tencent.mm.protocal.protobuf.atn;
+import com.tencent.mm.protocal.protobuf.bdm;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.kd;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
 import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderApplyLiveMicPk;", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLive;", "Lcom/tencent/mm/protocal/protobuf/FinderApplyLiveMicResponse;", "liveId", "", "objectId", "objectNonceId", "", "liveCookie", "", "scene", "", "msg", "Lcom/tencent/mm/protocal/protobuf/FinderLiveAppMsg;", "callback", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderApplyLiveMicPk$CallBack;", "(JJLjava/lang/String;[BILcom/tencent/mm/protocal/protobuf/FinderLiveAppMsg;Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderApplyLiveMicPk$CallBack;)V", "TAG", "getCallback", "()Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderApplyLiveMicPk$CallBack;", "request", "Lcom/tencent/mm/protocal/protobuf/FinderApplyLiveMicRequest;", "requestExt", "Lorg/json/JSONObject;", "resultExt", "actionExt", "initReqResp", "", "isEnableReport", "Lcom/tencent/mm/plugin/findersdk/cgi/report/EnableValue;", "onCgiEnd", "errType", "errCode", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "CallBack", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderApplyLiveMicPk;", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLive;", "Lcom/tencent/mm/protocal/protobuf/FinderApplyLiveMicResponse;", "liveId", "", "objectId", "objectNonceId", "", "liveCookie", "", "scene", "", "msg", "Lcom/tencent/mm/protocal/protobuf/FinderLiveAppMsg;", "callback", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderApplyLiveMicPk$CallBack;", "(JJLjava/lang/String;[BILcom/tencent/mm/protocal/protobuf/FinderLiveAppMsg;Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderApplyLiveMicPk$CallBack;)V", "TAG", "getCallback", "()Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderApplyLiveMicPk$CallBack;", "request", "Lcom/tencent/mm/protocal/protobuf/FinderApplyLiveMicRequest;", "requestExt", "Lorg/json/JSONObject;", "resultExt", "actionExt", "initReqResp", "", "isEnableReport", "Lcom/tencent/mm/plugin/findersdk/cgi/report/EnableValue;", "onCgiEnd", "errType", "errCode", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "CallBack", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
-  extends n<apt>
+  extends o<atn>
 {
+  private final JSONObject AAn;
+  private final JSONObject ABH;
+  private final a CIT;
+  private atm CIU;
   private final String TAG;
-  private final JSONObject xbw;
-  private final JSONObject xcu;
-  private aps yiR;
-  private final a yiS;
   
-  public e(long paramLong1, long paramLong2, String paramString, byte[] paramArrayOfByte, int paramInt, axe paramaxe, a parama)
+  public e(long paramLong1, long paramLong2, String paramString, byte[] paramArrayOfByte, int paramInt, bdm parambdm, a parama)
   {
-    AppMethodBeat.i(286690);
-    this.yiS = parama;
+    AppMethodBeat.i(360313);
+    this.CIT = parama;
     this.TAG = "Finder.CgiFinderApplyLiveMicPk";
-    this.xbw = new JSONObject();
-    this.xcu = new JSONObject();
-    this.yiR = new aps();
-    this.yiR.klE = paramLong1;
-    parama = this.yiR;
-    ao localao = ao.xcj;
-    parama.RLM = ao.dnO();
-    this.yiR.object_id = paramLong2;
-    this.yiR.object_nonce_id = paramString;
-    this.yiR.RLN = z.bdh();
-    this.yiR.scene = paramInt;
-    this.yiR.RLO = com.tencent.mm.cd.b.cU(paramArrayOfByte);
-    this.yiR.yet = paramaxe;
-    this.xcu.put("liveId", paramLong1);
-    this.xcu.put("objectId", paramLong2);
-    this.xcu.put("username", this.yiR.RLN);
+    this.AAn = new JSONObject();
+    this.ABH = new JSONObject();
+    this.CIU = new atm();
+    this.CIU.mMJ = paramLong1;
+    parama = this.CIU;
+    bi localbi = bi.ABn;
+    parama.YIY = bi.dVu();
+    this.CIU.object_id = paramLong2;
+    this.CIU.object_nonce_id = paramString;
+    this.CIU.YIZ = z.bAW();
+    this.CIU.scene = paramInt;
+    this.CIU.YJa = com.tencent.mm.bx.b.cX(paramArrayOfByte);
+    this.CIU.CER = parambdm;
+    this.ABH.put("liveId", paramLong1);
+    this.ABH.put("objectId", paramLong2);
+    this.ABH.put("username", this.CIU.YIZ);
     Log.i(this.TAG, "apply live id:" + paramLong1 + " objectId:" + paramLong2 + " objectNonceId:" + paramString);
-    paramString = new d.a();
-    paramString.c((a)this.yiR);
-    paramArrayOfByte = new apt();
-    paramArrayOfByte.setBaseResponse(new jh());
-    paramArrayOfByte.getBaseResponse().Tef = new eaf();
-    paramString.d((a)paramArrayOfByte);
-    paramString.TW("/cgi-bin/micromsg-bin/finderapplylivemic");
-    paramString.vD(3917);
-    c(paramString.bgN());
-    AppMethodBeat.o(286690);
+    paramString = new c.a();
+    paramString.otE = ((a)this.CIU);
+    paramArrayOfByte = new atn();
+    paramArrayOfByte.setBaseResponse(new kd());
+    paramArrayOfByte.getBaseResponse().akjO = new etl();
+    paramString.otF = ((a)paramArrayOfByte);
+    paramString.uri = "/cgi-bin/micromsg-bin/finderapplylivemic";
+    paramString.funcId = 3917;
+    c(paramString.bEF());
+    AppMethodBeat.o(360313);
   }
   
-  public final com.tencent.mm.plugin.findersdk.b.a.b dnF()
+  public final com.tencent.mm.plugin.findersdk.b.a.b dVi()
   {
-    return com.tencent.mm.plugin.findersdk.b.a.b.BvU;
+    return com.tencent.mm.plugin.findersdk.b.a.b.Hde;
   }
   
-  public final JSONObject dnI()
+  public final JSONObject dVk()
   {
-    return this.xcu;
+    return this.ABH;
   }
   
-  public final JSONObject dnJ()
+  public final JSONObject dVl()
   {
-    return this.xbw;
+    return this.AAn;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderApplyLiveMicPk$CallBack;", "", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderApplyLiveMicResponse;", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderApplyLiveMicPk$CallBack;", "", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderApplyLiveMicResponse;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface a
   {
-    public abstract void a(int paramInt1, int paramInt2, String paramString, apt paramapt);
+    public abstract void a(int paramInt1, int paramInt2, String paramString, atn paramatn);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.model.cgi.e
  * JD-Core Version:    0.7.0.1
  */

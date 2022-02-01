@@ -7,19 +7,19 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ad.i.f.a;
-import com.tencent.mm.plugin.sns.ad.i.l;
-import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.mm.plugin.sns.ad.j.f.a;
+import com.tencent.mm.plugin.sns.ad.j.l;
+import com.tencent.mm.plugin.sns.b.f;
 
 public class PromotionBarLayout
   extends RelativeLayout
   implements c
 {
-  private d JLS;
-  private a JLT;
-  private View JLZ;
-  private TextView JMa;
-  private TextView JMb;
+  private View QfA;
+  private TextView QfB;
+  private TextView QfC;
+  private d Qft;
+  private a Qfu;
   
   public PromotionBarLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,114 +33,110 @@ public class PromotionBarLayout
   
   public final void b(long paramLong, f.a parama)
   {
-    AppMethodBeat.i(201079);
+    AppMethodBeat.i(310475);
     if (paramLong <= 0L) {}
     try
     {
       setVisibility(8);
-      View localView = this.JLZ;
+      View localView = this.QfA;
       if ((localView instanceof c)) {
         ((c)localView).b(paramLong, parama);
       }
-      AppMethodBeat.o(201079);
       return;
     }
-    catch (Throwable parama)
+    finally
     {
-      AppMethodBeat.o(201079);
+      AppMethodBeat.o(310475);
     }
   }
   
   public final void b(d paramd)
   {
-    AppMethodBeat.i(201075);
+    AppMethodBeat.i(310451);
     try
     {
-      a locala = this.JLT;
-      if ((locala != null) && (locala.JLU != null))
+      a locala = this.Qfu;
+      if ((locala != null) && (locala.Qfv != null))
       {
-        d locald = locala.JLU.getCountDownVM();
+        d locald = locala.Qfv.getCountDownVM();
         if ((locald != null) && (locald != paramd)) {
           a.a(locald);
         }
-        paramd.a(locala.JLU);
-        paramd.fMb();
+        paramd.a(locala.Qfv);
+        paramd.exT();
       }
-      this.JLS = paramd;
-      AppMethodBeat.o(201075);
+      this.Qft = paramd;
       return;
     }
-    catch (Throwable paramd)
+    finally
     {
-      AppMethodBeat.o(201075);
+      AppMethodBeat.o(310451);
     }
   }
   
   public d getCountDownVM()
   {
-    return this.JLS;
+    return this.Qft;
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(201077);
+    AppMethodBeat.i(310459);
     super.onDetachedFromWindow();
     try
     {
-      if (this.JLT != null) {
-        a.a(this.JLS);
+      if (this.Qfu != null) {
+        a.a(this.Qft);
       }
-      AppMethodBeat.o(201077);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      AppMethodBeat.o(201077);
+      AppMethodBeat.o(310459);
     }
   }
   
   protected void onFinishInflate()
   {
-    AppMethodBeat.i(201070);
+    AppMethodBeat.i(310428);
     super.onFinishInflate();
     try
     {
-      this.JLT = new a(this);
-      this.JLZ = findViewById(i.f.ad_promotion_countdown);
-      this.JMa = ((TextView)findViewById(i.f.ad_promotion_price));
-      this.JMb = ((TextView)findViewById(i.f.sns_ad_countdown_title));
-      AppMethodBeat.o(201070);
+      this.Qfu = new a(this);
+      this.QfA = findViewById(b.f.ad_promotion_countdown);
+      this.QfB = ((TextView)findViewById(b.f.ad_promotion_price));
+      this.QfC = ((TextView)findViewById(b.f.sns_ad_countdown_title));
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      AppMethodBeat.o(201070);
+      AppMethodBeat.o(310428);
     }
   }
   
   public void setPromotionalPrice(String paramString)
   {
-    AppMethodBeat.i(201072);
-    if ((this.JMa != null) && (!TextUtils.isEmpty(paramString)))
+    AppMethodBeat.i(310435);
+    if ((this.QfB != null) && (!TextUtils.isEmpty(paramString)))
     {
-      this.JMa.setText(paramString);
-      l.C(this.JMa);
+      this.QfB.setText(paramString);
+      l.F(this.QfB);
     }
-    AppMethodBeat.o(201072);
+    AppMethodBeat.o(310435);
   }
   
   public void setRightTitle(String paramString)
   {
-    AppMethodBeat.i(201073);
-    if (this.JMb != null) {
-      this.JMb.setText(paramString);
+    AppMethodBeat.i(310443);
+    if (this.QfC != null) {
+      this.QfC.setText(paramString);
     }
-    AppMethodBeat.o(201073);
+    AppMethodBeat.o(310443);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.widget.countdown.PromotionBarLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -16,9 +16,9 @@ public class SnsSceneServiceFactory
     default: 
       localObject = new ISnsUseCaseCallback()
       {
-        public final void call(ITransmitKvData paramAnonymousITransmitKvData) {}
+        public void call(ITransmitKvData paramAnonymousITransmitKvData) {}
         
-        public final void setData(Context paramAnonymousContext, PayInfo paramAnonymousPayInfo) {}
+        public void setData(Context paramAnonymousContext, PayInfo paramAnonymousPayInfo) {}
       };
     }
     for (;;)
@@ -64,7 +64,7 @@ public class SnsSceneServiceFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.sns_cross.SnsSceneServiceFactory
  * JD-Core Version:    0.7.0.1
  */

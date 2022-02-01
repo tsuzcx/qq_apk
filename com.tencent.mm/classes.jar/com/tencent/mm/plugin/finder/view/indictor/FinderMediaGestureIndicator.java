@@ -4,53 +4,55 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
 import androidx.recyclerview.widget.RecyclerView.n;
 import androidx.recyclerview.widget.RecyclerView.r;
 import androidx.recyclerview.widget.RecyclerView.s;
 import androidx.recyclerview.widget.RecyclerView.v;
-import androidx.recyclerview.widget.q;
+import androidx.recyclerview.widget.o;
+import androidx.recyclerview.widget.p;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.hellhoundlib.b.c;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.view.h;
-import com.tencent.mm.view.h.a;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.view.i;
+import com.tencent.mm.view.i.a;
 import java.util.ArrayList;
 import java.util.Collection;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator;", "Landroidx/recyclerview/widget/RecyclerView;", "Lcom/tencent/mm/view/IMediaBannerIndicator;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "count", "", "currentIndex", "isShowOnlyOneIndicator", "", "onSelectedPageListener", "Lcom/tencent/mm/view/IMediaBannerIndicator$OnSelectedPageListener;", "sliderAdapter", "Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderAdapter;", "getSliderAdapter", "()Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderAdapter;", "sliderLayoutManager", "Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderLayoutManager;", "getSliderLayoutManager", "()Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderLayoutManager;", "getCount", "getCurrentIndex", "getOnSelectedPageListener", "getView", "Landroid/view/View;", "setCount", "", "setCurrentIndex", "index", "setOnSelectedPageListener", "listener", "setShowOnlyOneIndicator", "isShow", "SliderAdapter", "SliderItemViewHolder", "SliderLayoutManager", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator;", "Landroidx/recyclerview/widget/RecyclerView;", "Lcom/tencent/mm/view/IMediaBannerIndicator;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "count", "", "currentIndex", "isShowOnlyOneIndicator", "", "onSelectedPageListener", "Lcom/tencent/mm/view/IMediaBannerIndicator$OnSelectedPageListener;", "sliderAdapter", "Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderAdapter;", "getSliderAdapter", "()Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderAdapter;", "sliderLayoutManager", "Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderLayoutManager;", "getSliderLayoutManager", "()Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderLayoutManager;", "getCount", "getCurrentIndex", "getOnSelectedPageListener", "getView", "Landroid/view/View;", "setCount", "", "setCurrentIndex", "index", "setOnSelectedPageListener", "listener", "setShowOnlyOneIndicator", "isShow", "SliderAdapter", "SliderItemViewHolder", "SliderLayoutManager", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderMediaGestureIndicator
   extends RecyclerView
-  implements h
+  implements i
 {
-  private h.a BeG;
-  private boolean BeH;
-  private final a BeJ;
-  private final SliderLayoutManager BeK;
+  private i.a GHm;
+  private boolean GHn;
+  private final a GHp;
+  private final SliderLayoutManager GHq;
   private int count;
   private int currentIndex;
   
   public FinderMediaGestureIndicator(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(272451);
-    this.BeJ = new a();
+    AppMethodBeat.i(345498);
+    this.GHp = new a();
     paramContext = getContext();
-    kotlin.g.b.p.j(paramContext, "context");
-    this.BeK = new SliderLayoutManager(paramContext);
-    setAdapter((RecyclerView.a)this.BeJ);
-    setLayoutManager((RecyclerView.LayoutManager)this.BeK);
+    s.s(paramContext, "context");
+    this.GHq = new SliderLayoutManager(paramContext);
+    setAdapter((RecyclerView.a)this.GHp);
+    setLayoutManager((RecyclerView.LayoutManager)this.GHq);
     setHasFixedSize(true);
     setClipToPadding(false);
-    this.BeH = true;
-    AppMethodBeat.o(272451);
+    this.GHn = true;
+    AppMethodBeat.o(345498);
   }
   
   public final int getCount()
@@ -63,19 +65,19 @@ public final class FinderMediaGestureIndicator
     return this.currentIndex;
   }
   
-  public final h.a getOnSelectedPageListener()
+  public final i.a getOnSelectedPageListener()
   {
-    return this.BeG;
+    return this.GHm;
   }
   
   public final a getSliderAdapter()
   {
-    return this.BeJ;
+    return this.GHp;
   }
   
   public final SliderLayoutManager getSliderLayoutManager()
   {
-    return this.BeK;
+    return this.GHq;
   }
   
   public final View getView()
@@ -86,273 +88,301 @@ public final class FinderMediaGestureIndicator
   public final void setCount(int paramInt)
   {
     int i = 0;
-    AppMethodBeat.i(272448);
+    AppMethodBeat.i(345524);
     this.count = paramInt;
     setCurrentIndex(0);
     ArrayList localArrayList = new ArrayList();
-    while (i < paramInt)
+    if (paramInt > 0) {}
+    for (;;)
     {
+      int j = i + 1;
       localArrayList.add(Integer.valueOf(i));
-      i += 1;
+      if (j >= paramInt)
+      {
+        a locala = this.GHp;
+        s.u(localArrayList, "data");
+        locala.data.clear();
+        locala.data.addAll((Collection)localArrayList);
+        locala.bZE.notifyChanged();
+        AppMethodBeat.o(345524);
+        return;
+      }
+      i = j;
     }
-    a locala = this.BeJ;
-    kotlin.g.b.p.k(localArrayList, "data");
-    locala.data.clear();
-    locala.data.addAll((Collection)localArrayList);
-    locala.notifyDataSetChanged();
-    AppMethodBeat.o(272448);
   }
   
   public final void setCurrentIndex(int paramInt)
   {
-    AppMethodBeat.i(272449);
+    AppMethodBeat.i(345532);
     int i = this.currentIndex;
-    this.BeJ.cL(i);
+    this.GHp.fV(i);
     this.currentIndex = paramInt;
-    this.BeJ.currentIndex = paramInt;
-    this.BeJ.cL(paramInt);
+    this.GHp.currentIndex = paramInt;
+    this.GHp.fV(paramInt);
     com.tencent.mm.hellhoundlib.b.a locala = c.a(i + (paramInt - i), new com.tencent.mm.hellhoundlib.b.a());
-    com.tencent.mm.hellhoundlib.a.a.b(this, locala.aFh(), "com/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator", "setCurrentIndex", "(I)V", "Undefined", "smoothScrollToPosition", "(I)V");
-    smoothScrollToPosition(((Integer)locala.sf(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.b(this, locala.aYi(), "com/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator", "setCurrentIndex", "(I)V", "Undefined", "smoothScrollToPosition", "(I)V");
+    smoothScrollToPosition(((Integer)locala.sb(0)).intValue());
     com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator", "setCurrentIndex", "(I)V", "Undefined", "smoothScrollToPosition", "(I)V");
-    AppMethodBeat.o(272449);
+    AppMethodBeat.o(345532);
   }
   
-  public final void setOnSelectedPageListener(h.a parama)
+  public final void setOnSelectedPageListener(i.a parama)
   {
-    AppMethodBeat.i(272450);
-    kotlin.g.b.p.k(parama, "listener");
-    this.BeG = parama;
-    AppMethodBeat.o(272450);
+    AppMethodBeat.i(345548);
+    s.u(parama, "listener");
+    this.GHm = parama;
+    AppMethodBeat.o(345548);
   }
   
   public final void setShowOnlyOneIndicator(boolean paramBoolean)
   {
-    this.BeH = paramBoolean;
+    this.GHn = paramBoolean;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderLayoutManager;", "Landroidx/recyclerview/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "callback", "Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderLayoutManager$OnItemSelectedListener;", "getCallback", "()Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderLayoutManager$OnItemSelectedListener;", "setCallback", "(Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderLayoutManager$OnItemSelectedListener;)V", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "smoothScrollerSpeed", "", "getSmoothScrollerSpeed", "()F", "setSmoothScrollerSpeed", "(F)V", "getRecyclerViewCenterX", "", "onAttachedToWindow", "", "view", "onLayoutChildren", "recycler", "Landroidx/recyclerview/widget/RecyclerView$Recycler;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "onScrollStateChanged", "scaleDownView", "scrollHorizontallyBy", "dx", "smoothScrollToPosition", "position", "OnItemSelectedListener", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderLayoutManager;", "Landroidx/recyclerview/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "callback", "Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderLayoutManager$OnItemSelectedListener;", "getCallback", "()Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderLayoutManager$OnItemSelectedListener;", "setCallback", "(Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderLayoutManager$OnItemSelectedListener;)V", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "smoothScrollerSpeed", "", "getSmoothScrollerSpeed", "()F", "setSmoothScrollerSpeed", "(F)V", "getRecyclerViewCenterX", "", "onAttachedToWindow", "", "view", "onLayoutChildren", "recycler", "Landroidx/recyclerview/widget/RecyclerView$Recycler;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "onScrollStateChanged", "scaleDownView", "scrollHorizontallyBy", "dx", "smoothScrollToPosition", "position", "OnItemSelectedListener", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class SliderLayoutManager
     extends LinearLayoutManager
   {
-    float BdV;
-    private RecyclerView jLl;
+    float GGx;
+    private RecyclerView mkw;
     
     public SliderLayoutManager(Context paramContext)
     {
-      AppMethodBeat.i(287300);
+      AppMethodBeat.i(345479);
       setOrientation(0);
-      this.BdV = 50.0F;
-      AppMethodBeat.o(287300);
+      this.GGx = 50.0F;
+      AppMethodBeat.o(345479);
     }
     
-    private final void ejJ()
+    private final void flW()
     {
-      AppMethodBeat.i(287298);
+      AppMethodBeat.i(345487);
       float f1 = getWidth() / 2.0F;
       int i = 0;
-      int j = getChildCount();
-      while (i < j)
+      int k = getChildCount();
+      if (k > 0) {}
+      for (;;)
       {
+        int j = i + 1;
         View localView = getChildAt(i);
-        if (localView == null) {
-          kotlin.g.b.p.iCn();
-        }
-        kotlin.g.b.p.j(localView, "getChildAt(i)!!");
+        s.checkNotNull(localView);
+        s.s(localView, "getChildAt(i)!!");
         float f2 = 1.0F - (float)Math.sqrt(Math.abs(f1 - (getDecoratedLeft(localView) + getDecoratedRight(localView)) / 2.0F) / getWidth()) * 0.66F;
         localView.setScaleX(f2);
         localView.setScaleY(f2);
-        i += 1;
+        if (j >= k)
+        {
+          AppMethodBeat.o(345487);
+          return;
+        }
+        i = j;
       }
-      AppMethodBeat.o(287298);
     }
     
     public final void onAttachedToWindow(RecyclerView paramRecyclerView)
     {
-      AppMethodBeat.i(287294);
+      AppMethodBeat.i(345493);
       super.onAttachedToWindow(paramRecyclerView);
-      if (paramRecyclerView == null) {
-        kotlin.g.b.p.iCn();
+      s.checkNotNull(paramRecyclerView);
+      this.mkw = paramRecyclerView;
+      p localp = new p();
+      RecyclerView localRecyclerView = this.mkw;
+      paramRecyclerView = localRecyclerView;
+      if (localRecyclerView == null)
+      {
+        s.bIx("recyclerView");
+        paramRecyclerView = null;
       }
-      this.jLl = paramRecyclerView;
-      paramRecyclerView = new q();
-      RecyclerView localRecyclerView = this.jLl;
-      if (localRecyclerView == null) {
-        kotlin.g.b.p.bGy("recyclerView");
-      }
-      paramRecyclerView.a(localRecyclerView);
-      AppMethodBeat.o(287294);
+      localp.a(paramRecyclerView);
+      AppMethodBeat.o(345493);
     }
     
     public final void onLayoutChildren(RecyclerView.n paramn, RecyclerView.s params)
     {
-      AppMethodBeat.i(287295);
-      kotlin.g.b.p.k(params, "state");
+      AppMethodBeat.i(345501);
+      s.u(params, "state");
       super.onLayoutChildren(paramn, params);
-      ejJ();
-      AppMethodBeat.o(287295);
+      flW();
+      AppMethodBeat.o(345501);
     }
     
     public final void onScrollStateChanged(int paramInt)
     {
-      AppMethodBeat.i(287299);
+      AppMethodBeat.i(345523);
       super.onScrollStateChanged(paramInt);
       int i;
+      int n;
+      int j;
       if (paramInt == 0)
       {
-        Object localObject = this.jLl;
-        if (localObject == null) {
-          kotlin.g.b.p.bGy("recyclerView");
+        RecyclerView localRecyclerView = this.mkw;
+        Object localObject = localRecyclerView;
+        if (localRecyclerView == null)
+        {
+          s.bIx("recyclerView");
+          localObject = null;
         }
         paramInt = ((RecyclerView)localObject).getRight();
-        localObject = this.jLl;
-        if (localObject == null) {
-          kotlin.g.b.p.bGy("recyclerView");
+        localRecyclerView = this.mkw;
+        localObject = localRecyclerView;
+        if (localRecyclerView == null)
+        {
+          s.bIx("recyclerView");
+          localObject = null;
         }
         int k = (paramInt - ((RecyclerView)localObject).getLeft()) / 2;
-        localObject = this.jLl;
-        if (localObject == null) {
-          kotlin.g.b.p.bGy("recyclerView");
+        localRecyclerView = this.mkw;
+        localObject = localRecyclerView;
+        if (localRecyclerView == null)
+        {
+          s.bIx("recyclerView");
+          localObject = null;
         }
         int m = ((RecyclerView)localObject).getLeft();
-        paramInt = 2147483647;
-        localObject = this.jLl;
-        if (localObject == null) {
-          kotlin.g.b.p.bGy("recyclerView");
-        }
-        int n = ((RecyclerView)localObject).getChildCount();
         i = 0;
-        if (i < n)
+        localRecyclerView = this.mkw;
+        localObject = localRecyclerView;
+        if (localRecyclerView == null)
         {
-          localObject = this.jLl;
-          if (localObject == null) {
-            kotlin.g.b.p.bGy("recyclerView");
+          s.bIx("recyclerView");
+          localObject = null;
+        }
+        n = ((RecyclerView)localObject).getChildCount();
+        if (n > 0)
+        {
+          paramInt = 2147483647;
+          j = i + 1;
+          localRecyclerView = this.mkw;
+          localObject = localRecyclerView;
+          if (localRecyclerView == null)
+          {
+            s.bIx("recyclerView");
+            localObject = null;
           }
           localObject = ((RecyclerView)localObject).getChildAt(i);
-          int j = Math.abs(getDecoratedLeft((View)localObject) + (getDecoratedRight((View)localObject) - getDecoratedLeft((View)localObject)) / 2 - (k + m));
-          if (j >= paramInt) {
-            break label214;
+          i = Math.abs(getDecoratedLeft((View)localObject) + (getDecoratedRight((View)localObject) - getDecoratedLeft((View)localObject)) / 2 - (k + m));
+          if (i >= paramInt) {
+            break label256;
           }
-          if (this.jLl == null) {
-            kotlin.g.b.p.bGy("recyclerView");
+          if (this.mkw == null) {
+            s.bIx("recyclerView");
           }
-          RecyclerView.bi((View)localObject);
-          paramInt = j;
+          RecyclerView.bB((View)localObject);
+          paramInt = i;
         }
       }
-      label214:
+      label256:
       for (;;)
       {
-        i += 1;
+        if (j >= n)
+        {
+          AppMethodBeat.o(345523);
+          return;
+        }
+        i = j;
         break;
-        AppMethodBeat.o(287299);
-        return;
       }
     }
     
     public final int scrollHorizontallyBy(int paramInt, RecyclerView.n paramn, RecyclerView.s params)
     {
-      AppMethodBeat.i(287297);
+      AppMethodBeat.i(345515);
       if (getOrientation() == 0)
       {
         paramInt = super.scrollHorizontallyBy(paramInt, paramn, params);
-        ejJ();
-        AppMethodBeat.o(287297);
+        flW();
+        AppMethodBeat.o(345515);
         return paramInt;
       }
-      AppMethodBeat.o(287297);
+      AppMethodBeat.o(345515);
       return 0;
     }
     
-    public final void smoothScrollToPosition(final RecyclerView paramRecyclerView, RecyclerView.s params, int paramInt)
+    public final void smoothScrollToPosition(RecyclerView paramRecyclerView, RecyclerView.s params, int paramInt)
     {
-      AppMethodBeat.i(287296);
-      kotlin.g.b.p.k(paramRecyclerView, "recyclerView");
-      paramRecyclerView = new a(this, paramRecyclerView, paramRecyclerView.getContext());
-      paramRecyclerView.cV(paramInt);
+      AppMethodBeat.i(345510);
+      s.u(paramRecyclerView, "recyclerView");
+      paramRecyclerView = new a(this, paramRecyclerView.getContext());
+      paramRecyclerView.cag = paramInt;
       startSmoothScroll((RecyclerView.r)paramRecyclerView);
-      AppMethodBeat.o(287296);
+      AppMethodBeat.o(345510);
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderLayoutManager$smoothScrollToPosition$linearSmoothScroller$1", "Landroidx/recyclerview/widget/LinearSmoothScroller;", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "plugin-finder_release"})
+    @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderLayoutManager$smoothScrollToPosition$linearSmoothScroller$1", "Landroidx/recyclerview/widget/LinearSmoothScroller;", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
     public static final class a
-      extends androidx.recyclerview.widget.p
+      extends o
     {
-      a(RecyclerView paramRecyclerView, Context paramContext)
+      a(FinderMediaGestureIndicator.SliderLayoutManager paramSliderLayoutManager, Context paramContext)
       {
         super();
       }
       
-      public final float a(DisplayMetrics paramDisplayMetrics)
+      public final float c(DisplayMetrics paramDisplayMetrics)
       {
-        AppMethodBeat.i(291082);
-        kotlin.g.b.p.k(paramDisplayMetrics, "displayMetrics");
-        float f = this.BeP.BdV / paramDisplayMetrics.densityDpi;
-        AppMethodBeat.o(291082);
+        AppMethodBeat.i(345502);
+        s.u(paramDisplayMetrics, "displayMetrics");
+        float f = this.GHt.GGx / paramDisplayMetrics.densityDpi;
+        AppMethodBeat.o(345502);
         return f;
       }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderItemViewHolder;", "()V", "callback", "Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderAdapter$Callback;", "getCallback", "()Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderAdapter$Callback;", "setCallback", "(Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderAdapter$Callback;)V", "currentIndex", "", "getCurrentIndex", "()I", "setCurrentIndex", "(I)V", "data", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getItemCount", "onBindViewHolder", "", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "setData", "Callback", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderItemViewHolder;", "()V", "callback", "Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderAdapter$Callback;", "getCallback", "()Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderAdapter$Callback;", "setCallback", "(Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderAdapter$Callback;)V", "currentIndex", "", "getCurrentIndex", "()I", "setCurrentIndex", "(I)V", "data", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getItemCount", "onBindViewHolder", "", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "setData", "Callback", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     extends RecyclerView.a<FinderMediaGestureIndicator.b>
   {
-    a BeL;
+    private FinderMediaGestureIndicator.a.a GHr;
     int currentIndex;
     final ArrayList<Integer> data;
     
     public a()
     {
-      AppMethodBeat.i(286281);
+      AppMethodBeat.i(345483);
       this.data = new ArrayList();
-      AppMethodBeat.o(286281);
+      AppMethodBeat.o(345483);
+    }
+    
+    private static final void a(a parama, FinderMediaGestureIndicator.b paramb, int paramInt, View paramView)
+    {
+      AppMethodBeat.i(345489);
+      Object localObject = new Object();
+      b localb = new b();
+      localb.cH(parama);
+      localb.cH(paramb);
+      localb.sc(paramInt);
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+      s.u(parama, "this$0");
+      s.u(paramb, "$holder");
+      if (parama.GHr != null) {
+        s.s(paramb.caK, "holder.itemView");
+      }
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(345489);
     }
     
     public final int getItemCount()
     {
-      AppMethodBeat.i(286279);
+      AppMethodBeat.i(345503);
       int i = this.data.size();
-      AppMethodBeat.o(286279);
+      AppMethodBeat.o(345503);
       return i;
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderAdapter$Callback;", "", "onItemClicked", "", "view", "Landroid/view/View;", "index", "", "plugin-finder_release"})
-    public static abstract interface a {}
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-    static final class b
-      implements View.OnClickListener
-    {
-      b(FinderMediaGestureIndicator.a parama, FinderMediaGestureIndicator.b paramb, int paramInt) {}
-      
-      public final void onClick(View paramView)
-      {
-        AppMethodBeat.i(279385);
-        b localb = new b();
-        localb.bn(paramView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        if (this.BeM.BeL != null) {
-          kotlin.g.b.p.j(this.BeN.amk, "holder.itemView");
-        }
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(279385);
-      }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderItemViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "circleView", "Landroid/widget/ImageView;", "getCircleView", "()Landroid/widget/ImageView;", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/indictor/FinderMediaGestureIndicator$SliderItemViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "circleView", "Landroid/widget/ImageView;", "getCircleView", "()Landroid/widget/ImageView;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
     extends RecyclerView.v
   {
-    final ImageView BeO;
+    final ImageView GHs;
     
     public b(View paramView)
     {
       super();
-      AppMethodBeat.i(287951);
-      this.BeO = ((ImageView)paramView.findViewById(b.f.circle));
-      AppMethodBeat.o(287951);
+      AppMethodBeat.i(345478);
+      this.GHs = ((ImageView)paramView.findViewById(e.e.circle));
+      AppMethodBeat.o(345478);
     }
   }
 }

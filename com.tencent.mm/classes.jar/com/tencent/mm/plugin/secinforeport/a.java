@@ -6,9 +6,9 @@ import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.plugin.secinforeport.a.b;
-import com.tencent.mm.protocal.protobuf.abe;
-import com.tencent.mm.protocal.protobuf.abf;
-import com.tencent.mm.protocal.protobuf.eae;
+import com.tencent.mm.protocal.protobuf.adg;
+import com.tencent.mm.protocal.protobuf.adh;
+import com.tencent.mm.protocal.protobuf.gol;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.nio.charset.Charset;
@@ -20,8 +20,8 @@ public enum a
   static
   {
     AppMethodBeat.i(89142);
-    JbW = new a("INSTANCE");
-    JbX = new a[] { JbW };
+    PlM = new a("INSTANCE");
+    PlN = new a[] { PlM };
     AppMethodBeat.o(89142);
   }
   
@@ -36,29 +36,29 @@ public enum a
       AppMethodBeat.o(89141);
       return;
     }
-    if (!h.aHB())
+    if (!h.baz())
     {
       AppMethodBeat.o(89141);
       return;
     }
-    abe localabe = new abe();
-    localabe.Snt = paramInt1;
-    localabe.Snv = paramInt2;
+    adg localadg = new adg();
+    localadg.ZlP = paramInt1;
+    localadg.ZlR = paramInt2;
     paramString = paramString.getBytes(Charset.forName("UTF-8"));
-    localabe.Snu = new eae().dc(paramString);
+    localadg.ZlQ = new gol().df(paramString);
     if (!Util.isNullOrNil(paramArrayOfByte)) {
-      localabe.Snw = new eae().dc(paramArrayOfByte);
+      localadg.ZlS = new gol().df(paramArrayOfByte);
     }
-    paramString = new abf();
-    paramString.Sny.add(localabe);
-    paramString.Snx = paramString.Sny.size();
-    ((n)h.ae(n.class)).bbK().d(new k.a(211, paramString));
+    paramString = new adh();
+    paramString.ZlU.add(localadg);
+    paramString.ZlT = paramString.ZlU.size();
+    ((n)h.ax(n.class)).bzz().d(new k.a(211, paramString));
     AppMethodBeat.o(89141);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.secinforeport.a
  * JD-Core Version:    0.7.0.1
  */

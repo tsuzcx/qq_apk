@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.misc.a;
 
 public abstract interface a$a
 {
-  public abstract void dM(int paramInt1, int paramInt2);
+  public abstract void onSIMCardChange(int paramInt1, int paramInt2);
 }
 
 

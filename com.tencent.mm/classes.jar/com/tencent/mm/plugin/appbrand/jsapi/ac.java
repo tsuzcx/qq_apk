@@ -1,27 +1,39 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/CopyType;", "", "(Ljava/lang/String;I)V", "MP_SHORT_LINK", "PAGE_PATH", "luggage-wechat-full-sdk_release"})
-public enum ac
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandVideoAutogirationParseHelper;", "", "()V", "IS_AUTOGIRATION_DEFAULT", "", "IS_AUTOGIRATION_KEY", "", "isAutogiration", "dataJsonObj", "Lorg/json/JSONObject;", "(Lorg/json/JSONObject;)Ljava/lang/Boolean;", "luggage-wxa-app_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class ac
 {
+  public static final ac rwL;
+  
   static
   {
-    AppMethodBeat.i(237396);
-    ac localac1 = new ac("MP_SHORT_LINK", 0);
-    osP = localac1;
-    ac localac2 = new ac("PAGE_PATH", 1);
-    osQ = localac2;
-    osR = new ac[] { localac1, localac2 };
-    AppMethodBeat.o(237396);
+    AppMethodBeat.i(135570);
+    rwL = new ac();
+    AppMethodBeat.o(135570);
   }
   
-  private ac() {}
+  public static final Boolean Z(JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(178663);
+    s.u(paramJSONObject, "dataJsonObj");
+    if (paramJSONObject.has("autoRotation"))
+    {
+      boolean bool = paramJSONObject.optBoolean("autoRotation", false);
+      AppMethodBeat.o(178663);
+      return Boolean.valueOf(bool);
+    }
+    AppMethodBeat.o(178663);
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.ac
  * JD-Core Version:    0.7.0.1
  */

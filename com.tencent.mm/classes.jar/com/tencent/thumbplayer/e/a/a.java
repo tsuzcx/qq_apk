@@ -4,17 +4,17 @@ import com.tencent.thumbplayer.api.resourceloader.ITPAssetResourceLoaderListener
 
 public abstract interface a
 {
-  public abstract String Rv(int paramInt);
-  
   public abstract void a(ITPAssetResourceLoaderListener paramITPAssetResourceLoaderListener);
   
   public abstract String getContentType(int paramInt, String paramString);
   
+  public abstract String getDataFilePath(int paramInt, String paramString);
+  
   public abstract long getDataTotalSize(int paramInt, String paramString);
   
-  public abstract void irc();
+  public abstract void kay();
   
-  public abstract int n(int paramInt, long paramLong1, long paramLong2);
+  public abstract int onReadData(int paramInt, String paramString, long paramLong1, long paramLong2);
   
   public abstract int onStartReadData(int paramInt, String paramString, long paramLong1, long paramLong2);
   
@@ -26,7 +26,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.e.a.a
  * JD-Core Version:    0.7.0.1
  */

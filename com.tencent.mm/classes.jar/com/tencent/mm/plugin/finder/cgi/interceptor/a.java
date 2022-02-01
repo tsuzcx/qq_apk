@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.finder.cgi.interceptor;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.cgi.aa.e;
-import com.tencent.mm.plugin.finder.cgi.aa.f;
-import com.tencent.mm.plugin.findersdk.d.a.a.b;
+import com.tencent.mm.plugin.finder.cgi.aq.c;
+import com.tencent.mm.plugin.finder.cgi.aq.d;
+import com.tencent.mm.plugin.findersdk.storage.config.base.b;
 import com.tencent.mm.protocal.protobuf.FinderCommentInfo;
 import com.tencent.mm.protocal.protobuf.FinderObject;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -14,163 +14,163 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/interceptor/AdjustOrderAvatarInterceptor;", "Lcom/tencent/mm/plugin/finder/cgi/interceptor/IFinderStreamInterceptor;", "()V", "MAX_RED_DOT_USER_NUM", "", "getMAX_RED_DOT_USER_NUM", "()I", "redDotFeedId", "", "getRedDotFeedId", "()J", "setRedDotFeedId", "(J)V", "redDotUserNameList", "", "", "getRedDotUserNameList", "()Ljava/util/List;", "setRedDotUserNameList", "(Ljava/util/List;)V", "redDotUsername", "getRedDotUsername", "()Ljava/lang/String;", "setRedDotUsername", "(Ljava/lang/String;)V", "modify", "", "resp", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderStream$FinderStreamResponseEx;", "modifyLikeList", "onIntercept", "", "tabType", "onInterceptAfterStore", "loadedInfo", "Lcom/tencent/mm/plugin/finder/feed/model/CgiFinderStreamResult;", "onInterceptBeforeStore", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/cgi/interceptor/AdjustOrderAvatarInterceptor;", "Lcom/tencent/mm/plugin/finder/cgi/interceptor/IFinderStreamInterceptor;", "()V", "MAX_RED_DOT_USER_NUM", "", "getMAX_RED_DOT_USER_NUM", "()I", "redDotFeedId", "", "getRedDotFeedId", "()J", "setRedDotFeedId", "(J)V", "redDotUserNameList", "", "", "getRedDotUserNameList", "()Ljava/util/List;", "setRedDotUserNameList", "(Ljava/util/List;)V", "redDotUsername", "getRedDotUsername", "()Ljava/lang/String;", "setRedDotUsername", "(Ljava/lang/String;)V", "modify", "", "resp", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderStream$FinderStreamResponseEx;", "modifyLikeList", "onIntercept", "", "tabType", "onInterceptAfterStore", "loadedInfo", "Lcom/tencent/mm/plugin/finder/feed/model/CgiFinderStreamResult;", "onInterceptBeforeStore", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  implements f
+  implements g
 {
-  public static final a xfC;
-  private String xfA = "";
-  private final int xfB = 3;
-  private long xfz;
+  public static final a AES;
+  private long AET;
+  private String AEU = "";
+  private final int AEV = 3;
   
   static
   {
-    AppMethodBeat.i(285449);
-    xfC = new a((byte)0);
-    AppMethodBeat.o(285449);
+    AppMethodBeat.i(336753);
+    AES = new a((byte)0);
+    AppMethodBeat.o(336753);
   }
   
-  public final boolean a(aa.f paramf)
+  public final boolean a(aq.d paramd, int paramInt)
   {
-    AppMethodBeat.i(285446);
-    p.k(paramf, "resp");
-    Object localObject1 = com.tencent.mm.plugin.finder.storage.d.AjH;
-    if (((Number)com.tencent.mm.plugin.finder.storage.d.dVD().aSr()).intValue() == 1)
+    AppMethodBeat.i(336773);
+    s.u(paramd, "resp");
+    Object localObject1 = com.tencent.mm.plugin.finder.storage.d.FAy;
+    if (((Number)com.tencent.mm.plugin.finder.storage.d.eUe().bmg()).intValue() == 1)
     {
-      p.k(paramf, "resp");
-      this.xfz = paramf.dnK().SUw;
-      Object localObject2 = paramf.dnK().SUC;
+      s.u(paramd, "resp");
+      this.AET = paramd.dVm().EWw;
+      Object localObject2 = paramd.dVm().aaeR;
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
       }
-      this.xfA = ((String)localObject1);
-      if ((this.xfz != 0L) && (!Util.isNullOrNil(this.xfA)))
+      this.AEU = ((String)localObject1);
+      if ((this.AET != 0L) && (!Util.isNullOrNil(this.AEU)))
       {
-        paramf = paramf.object;
+        paramd = paramd.object;
+        label138:
         int i;
-        label151:
-        label155:
-        label160:
-        label191:
-        int j;
-        if (paramf != null)
+        if (paramd == null)
         {
-          localObject1 = ((Iterable)paramf).iterator();
-          if (((Iterator)localObject1).hasNext())
+          paramd = null;
+          if (paramd == null) {
+            break label525;
+          }
+          localObject1 = paramd.likeList;
+          s.s(localObject1, "likeList");
+          localObject1 = ((List)localObject1).iterator();
+          paramInt = 0;
+          if (!((Iterator)localObject1).hasNext()) {
+            break label491;
+          }
+          if (!s.p(((FinderCommentInfo)((Iterator)localObject1).next()).username, z.bAM())) {
+            break label484;
+          }
+          i = paramInt;
+          label172:
+          if (i > 1)
           {
-            paramf = ((Iterator)localObject1).next();
-            if (((FinderObject)paramf).id == this.xfz)
-            {
-              i = 1;
-              if (i == 0) {
-                break label472;
-              }
-              paramf = (FinderObject)paramf;
-              if (paramf == null) {
-                break label525;
-              }
-              localObject1 = paramf.likeList;
-              p.j(localObject1, "likeList");
-              localObject1 = ((List)localObject1).iterator();
-              i = 0;
-              if (!((Iterator)localObject1).hasNext()) {
-                break label491;
-              }
-              if (!p.h(((FinderCommentInfo)((Iterator)localObject1).next()).username, z.bcZ())) {
-                break label484;
-              }
-              j = i;
-              label225:
-              if (j > 1)
-              {
-                localObject1 = (FinderCommentInfo)paramf.likeList.remove(j);
-                paramf.likeList.add(1, localObject1);
-              }
-              localObject1 = paramf.likeList;
-              p.j(localObject1, "likeList");
-              localObject1 = ((List)localObject1).iterator();
-              i = 0;
-              label280:
-              if (!((Iterator)localObject1).hasNext()) {
-                break label503;
-              }
-              if (!p.h(((FinderCommentInfo)((Iterator)localObject1).next()).username, this.xfA)) {
-                break label496;
-              }
-            }
+            localObject1 = (FinderCommentInfo)paramd.likeList.remove(i);
+            paramd.likeList.add(1, localObject1);
+          }
+          localObject1 = paramd.likeList;
+          s.s(localObject1, "likeList");
+          localObject1 = ((List)localObject1).iterator();
+          paramInt = 0;
+          label227:
+          if (!((Iterator)localObject1).hasNext()) {
+            break label503;
+          }
+          if (!s.p(((FinderCommentInfo)((Iterator)localObject1).next()).username, this.AEU)) {
+            break label496;
           }
         }
         for (;;)
         {
-          if (i > 0)
+          if (paramInt > 0)
           {
-            localObject1 = (FinderCommentInfo)paramf.likeList.remove(i);
-            paramf.likeList.add(0, localObject1);
+            localObject1 = (FinderCommentInfo)paramd.likeList.remove(paramInt);
+            paramd.likeList.add(0, localObject1);
           }
-          localObject1 = new StringBuilder("meExistIndex=").append(j).append(" friendExistIndex=").append(i).append(" redDotUsername=").append(this.xfA).append(" self=").append(z.bcZ()).append("likeList=");
-          paramf = paramf.likeList;
-          p.j(paramf, "likeList");
-          localObject2 = (Iterable)paramf;
-          paramf = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
+          localObject1 = new StringBuilder("meExistIndex=").append(i).append(" friendExistIndex=").append(paramInt).append(" redDotUsername=").append(this.AEU).append(" self=").append(z.bAM()).append("likeList=");
+          paramd = paramd.likeList;
+          s.s(paramd, "likeList");
+          localObject2 = (Iterable)paramd;
+          paramd = (Collection)new ArrayList(p.a((Iterable)localObject2, 10));
           localObject2 = ((Iterable)localObject2).iterator();
           while (((Iterator)localObject2).hasNext()) {
-            paramf.add(((FinderCommentInfo)((Iterator)localObject2).next()).username);
+            paramd.add(((FinderCommentInfo)((Iterator)localObject2).next()).username);
           }
-          i = 0;
-          break label151;
-          label472:
-          break;
-          paramf = null;
-          break label155;
-          paramf = null;
-          break label160;
+          localObject1 = ((Iterable)paramd).iterator();
+          label427:
+          if (((Iterator)localObject1).hasNext())
+          {
+            paramd = ((Iterator)localObject1).next();
+            if (((FinderObject)paramd).id == this.AET)
+            {
+              paramInt = 1;
+              label462:
+              if (paramInt == 0) {
+                break label477;
+              }
+            }
+          }
+          for (;;)
+          {
+            paramd = (FinderObject)paramd;
+            break;
+            paramInt = 0;
+            break label462;
+            label477:
+            break label427;
+            paramd = null;
+          }
           label484:
-          i += 1;
-          break label191;
+          paramInt += 1;
+          break label138;
           label491:
-          j = -1;
-          break label225;
-          label496:
-          i += 1;
-          break label280;
-          label503:
           i = -1;
+          break label172;
+          label496:
+          paramInt += 1;
+          break label227;
+          label503:
+          paramInt = -1;
         }
-        Log.i("Finder.AdjustOrderAvatarInterceptor", (List)paramf);
+        Log.i("Finder.AdjustOrderAvatarInterceptor", (List)paramd);
       }
     }
     label525:
-    AppMethodBeat.o(285446);
+    AppMethodBeat.o(336773);
     return false;
   }
   
   public final boolean a(com.tencent.mm.plugin.finder.feed.model.d paramd)
   {
-    AppMethodBeat.i(285447);
-    p.k(paramd, "loadedInfo");
-    AppMethodBeat.o(285447);
+    AppMethodBeat.i(336781);
+    s.u(paramd, "loadedInfo");
+    AppMethodBeat.o(336781);
     return false;
   }
   
   public final boolean b(com.tencent.mm.plugin.finder.feed.model.d paramd, int paramInt)
   {
-    AppMethodBeat.i(285448);
-    p.k(paramd, "loadedInfo");
-    AppMethodBeat.o(285448);
+    AppMethodBeat.i(336789);
+    s.u(paramd, "loadedInfo");
+    AppMethodBeat.o(336789);
     return false;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/interceptor/AdjustOrderAvatarInterceptor$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/cgi/interceptor/AdjustOrderAvatarInterceptor$Companion;", "", "()V", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.interceptor.a
  * JD-Core Version:    0.7.0.1
  */

@@ -3,186 +3,184 @@ package com.tencent.mm.plugin.recordvideo.ui.editor.item;
 import android.graphics.Matrix;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.eae;
-import com.tencent.mm.protocal.protobuf.erf;
-import com.tencent.mm.protocal.protobuf.fbn;
-import com.tencent.mm.protocal.protobuf.jc;
+import com.tencent.mm.protocal.protobuf.fmm;
+import com.tencent.mm.protocal.protobuf.fxy;
+import com.tencent.mm.protocal.protobuf.gol;
+import com.tencent.mm.protocal.protobuf.jy;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/TextItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/IEditorTTSData;", "text", "", "textColor", "", "textBgColor", "marginBottom", "matrix", "Landroid/graphics/Matrix;", "(Ljava/lang/CharSequence;IIILandroid/graphics/Matrix;)V", "font", "", "(Ljava/lang/CharSequence;IILjava/lang/String;ILandroid/graphics/Matrix;)V", "proto", "Lcom/tencent/mm/protocal/protobuf/BaseItemData;", "(Lcom/tencent/mm/protocal/protobuf/BaseItemData;)V", "getFont", "()Ljava/lang/String;", "setFont", "(Ljava/lang/String;)V", "getMarginBottom", "()I", "setMarginBottom", "(I)V", "<set-?>", "getText", "()Ljava/lang/CharSequence;", "getTextBgColor", "getTextColor", "ttsInfo", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/property/TTSInfo;", "getTTSInfo", "isValid", "", "setTTSInfo", "", "path", "durationMs", "", "toProtoBuf", "Lcom/tencent/mm/protocal/protobuf/TextItemData;", "toString", "update", "item", "Companion", "plugin-recordvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/TextItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/IEditorTTSData;", "text", "", "textColor", "", "textBgColor", "marginBottom", "matrix", "Landroid/graphics/Matrix;", "(Ljava/lang/CharSequence;IIILandroid/graphics/Matrix;)V", "font", "", "(Ljava/lang/CharSequence;IILjava/lang/String;ILandroid/graphics/Matrix;)V", "proto", "Lcom/tencent/mm/protocal/protobuf/BaseItemData;", "(Lcom/tencent/mm/protocal/protobuf/BaseItemData;)V", "getFont", "()Ljava/lang/String;", "setFont", "(Ljava/lang/String;)V", "getMarginBottom", "()I", "setMarginBottom", "(I)V", "<set-?>", "getText", "()Ljava/lang/CharSequence;", "getTextBgColor", "getTextColor", "ttsInfo", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/property/TTSInfo;", "getTTSInfo", "isValid", "", "setTTSInfo", "", "path", "durationMs", "", "toProtoBuf", "Lcom/tencent/mm/protocal/protobuf/TextItemData;", "toString", "update", "item", "Companion", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class r
   extends a
   implements j
 {
-  public static final a IcX;
-  public String IbE;
-  int Ibx;
-  private final com.tencent.mm.plugin.recordvideo.ui.editor.item.b.b IcS;
-  public int IcW;
-  public CharSequence LV;
+  public static final r.a NZs;
+  int CMB;
+  private final com.tencent.mm.plugin.recordvideo.ui.editor.item.b.b NZo;
+  public int NZt;
+  public CharSequence bba;
+  public String mAD;
   public int textColor;
   
   static
   {
-    AppMethodBeat.i(221080);
-    IcX = new a((byte)0);
-    AppMethodBeat.o(221080);
+    AppMethodBeat.i(280299);
+    NZs = new r.a((byte)0);
+    AppMethodBeat.o(280299);
   }
   
-  public r(jc paramjc)
+  public r(jy paramjy)
   {
-    super(d.IbG);
-    AppMethodBeat.i(221079);
-    this.IbE = "";
-    this.IcS = new com.tencent.mm.plugin.recordvideo.ui.editor.item.b.b();
+    super(d.NYd);
+    AppMethodBeat.i(280291);
+    this.mAD = "";
+    this.NZo = new com.tencent.mm.plugin.recordvideo.ui.editor.item.b.b();
     try
     {
-      Object localObject = (com.tencent.mm.cd.a)new erf();
-      paramjc = paramjc.ROY;
-      p.j(paramjc, "proto.itemData");
-      paramjc = paramjc.Tkb;
-      p.j(paramjc, "proto.itemData.buffer");
-      paramjc = paramjc.UH;
+      Object localObject = (com.tencent.mm.bx.a)new fmm();
+      paramjy = paramjy.YMl.aaxD.Op;
       try
       {
-        ((com.tencent.mm.cd.a)localObject).parseFrom(paramjc);
-        paramjc = (jc)localObject;
+        ((com.tencent.mm.bx.a)localObject).parseFrom(paramjy);
+        paramjy = (jy)localObject;
       }
-      catch (Exception paramjc)
+      catch (Exception paramjy)
       {
         for (;;)
         {
-          fbn localfbn;
-          Log.printDebugStack("safeParser", "", new Object[] { paramjc });
-          paramjc = null;
+          fxy localfxy;
+          Log.printDebugStack("safeParser", "", new Object[] { paramjy });
+          paramjy = null;
         }
-        AppMethodBeat.o(221079);
-        return;
       }
-      paramjc = (erf)paramjc;
-      if (paramjc != null)
+      paramjy = (fmm)paramjy;
+      if (paramjy != null)
       {
-        this.LV = ((CharSequence)paramjc.text);
-        this.textColor = paramjc.textColor;
-        this.IcW = paramjc.IcW;
-        this.Ibx = paramjc.Ibx;
-        localObject = this.aHZ;
-        localfbn = paramjc.Sdr;
-        p.j(localfbn, "it.matrix");
-        ((Matrix)localObject).setValues(a(localfbn));
-        localObject = paramjc.IbE;
-        p.j(localObject, "it.font");
-        this.IbE = ((String)localObject);
-        a(paramjc.IcZ);
+        this.bba = ((CharSequence)paramjy.text);
+        this.textColor = paramjy.textColor;
+        this.NZt = paramjy.NZt;
+        this.CMB = paramjy.CMB;
+        localObject = this.matrix;
+        localfxy = paramjy.Zbl;
+        s.s(localfxy, "it.matrix");
+        ((Matrix)localObject).setValues(a(localfxy));
+        localObject = paramjy.mAD;
+        s.s(localObject, "it.font");
+        setFont((String)localObject);
+        a(paramjy.NZv);
         Log.i("MicroMsg.TextItem", toString());
-        AppMethodBeat.o(221079);
+        AppMethodBeat.o(280291);
         return;
       }
-      return;
     }
-    catch (IOException paramjc)
+    catch (IOException paramjy)
     {
-      Log.printErrStackTrace("MicroMsg.TextItem", (Throwable)paramjc, "LocationItem parse error", new Object[0]);
-      AppMethodBeat.o(221079);
+      Log.printErrStackTrace("MicroMsg.TextItem", (Throwable)paramjy, "LocationItem parse error", new Object[0]);
+      AppMethodBeat.o(280291);
     }
   }
   
   public r(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3, Matrix paramMatrix)
   {
-    super(d.IbG);
-    AppMethodBeat.i(221061);
-    this.IbE = "";
-    this.IcS = new com.tencent.mm.plugin.recordvideo.ui.editor.item.b.b();
-    this.LV = paramCharSequence;
+    super(d.NYd);
+    AppMethodBeat.i(280269);
+    this.mAD = "";
+    this.NZo = new com.tencent.mm.plugin.recordvideo.ui.editor.item.b.b();
+    this.bba = paramCharSequence;
     this.textColor = paramInt1;
-    this.IcW = paramInt2;
-    this.Ibx = paramInt3;
-    this.aHZ.set(paramMatrix);
+    this.NZt = paramInt2;
+    this.CMB = paramInt3;
+    this.matrix.set(paramMatrix);
     Log.i("MicroMsg.TextItem", toString());
-    AppMethodBeat.o(221061);
+    AppMethodBeat.o(280269);
   }
   
   private r(CharSequence paramCharSequence, int paramInt1, int paramInt2, String paramString, Matrix paramMatrix)
   {
-    super(d.IbG);
-    AppMethodBeat.i(221066);
-    this.IbE = "";
-    this.IcS = new com.tencent.mm.plugin.recordvideo.ui.editor.item.b.b();
-    this.LV = paramCharSequence;
+    super(d.NYd);
+    AppMethodBeat.i(280281);
+    this.mAD = "";
+    this.NZo = new com.tencent.mm.plugin.recordvideo.ui.editor.item.b.b();
+    this.bba = paramCharSequence;
     this.textColor = paramInt1;
-    this.IcW = paramInt2;
-    this.IbE = paramString;
-    this.Ibx = 0;
-    this.aHZ.set(paramMatrix);
+    this.NZt = paramInt2;
+    this.mAD = paramString;
+    this.CMB = 0;
+    this.matrix.set(paramMatrix);
     Log.i("MicroMsg.TextItem", toString());
-    AppMethodBeat.o(221066);
+    AppMethodBeat.o(280281);
   }
   
   public final void a(r paramr)
   {
-    AppMethodBeat.i(221036);
-    p.k(paramr, "item");
-    this.LV = paramr.LV;
+    AppMethodBeat.i(280311);
+    s.u(paramr, "item");
+    this.bba = paramr.bba;
     this.textColor = paramr.textColor;
-    this.IcW = paramr.IcW;
-    this.Ibx = paramr.Ibx;
-    this.aHZ.set(paramr.aHZ);
-    this.IbE = paramr.IbE;
+    this.NZt = paramr.NZt;
+    this.CMB = paramr.CMB;
+    this.matrix.set(paramr.matrix);
+    this.mAD = paramr.mAD;
     Log.i("MicroMsg.TextItem", toString());
-    AppMethodBeat.o(221036);
+    AppMethodBeat.o(280311);
   }
   
-  public final void bj(String paramString, long paramLong)
+  public final void bv(String paramString, long paramLong)
   {
-    AppMethodBeat.i(221050);
-    p.k(paramString, "path");
-    this.IcS.setPath(paramString);
-    this.IcS.durationMs = paramLong;
-    AppMethodBeat.o(221050);
+    AppMethodBeat.i(280325);
+    s.u(paramString, "path");
+    this.NZo.setPath(paramString);
+    this.NZo.durationMs = paramLong;
+    AppMethodBeat.o(280325);
   }
   
-  public final com.tencent.mm.plugin.recordvideo.ui.editor.item.b.b fyN()
+  public final boolean gKA()
   {
-    return this.IcS;
-  }
-  
-  public final boolean fyO()
-  {
-    AppMethodBeat.i(221081);
+    AppMethodBeat.i(280346);
     boolean bool = j.a.a(this);
-    AppMethodBeat.o(221081);
+    AppMethodBeat.o(280346);
     return bool;
+  }
+  
+  public final com.tencent.mm.plugin.recordvideo.ui.editor.item.b.b gKz()
+  {
+    return this.NZo;
   }
   
   public final boolean isValid()
   {
-    AppMethodBeat.i(221046);
-    if (!TextUtils.isEmpty(this.LV))
+    AppMethodBeat.i(280318);
+    if (!TextUtils.isEmpty(this.bba))
     {
-      AppMethodBeat.o(221046);
+      AppMethodBeat.o(280318);
       return true;
     }
-    AppMethodBeat.o(221046);
+    AppMethodBeat.o(280318);
     return false;
+  }
+  
+  public final void setFont(String paramString)
+  {
+    AppMethodBeat.i(280305);
+    s.u(paramString, "<set-?>");
+    this.mAD = paramString;
+    AppMethodBeat.o(280305);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(221054);
-    String str = "[" + hashCode() + "]text:" + this.LV + " color:" + this.textColor + " bgColor:" + this.IcW;
-    AppMethodBeat.o(221054);
+    AppMethodBeat.i(280340);
+    String str = "[" + hashCode() + "]text:" + this.bba + " color:" + this.textColor + " bgColor:" + this.NZt;
+    AppMethodBeat.o(280340);
     return str;
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/TextItem$Companion;", "", "()V", "TAG", "", "plugin-recordvideo_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.item.r
  * JD-Core Version:    0.7.0.1
  */

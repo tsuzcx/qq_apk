@@ -1,15 +1,13 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.h;
-import com.tencent.mm.an.h.a;
-import com.tencent.mm.an.h.b;
-import com.tencent.mm.an.h.c;
-import com.tencent.mm.f.a.da;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.db;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.am.g;
+import com.tencent.mm.am.g.a;
+import com.tencent.mm.am.g.b;
+import com.tencent.mm.am.g.c;
+import com.tencent.mm.autogen.a.dk;
+import com.tencent.mm.platformtools.w;
+import com.tencent.mm.protocal.protobuf.dl;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.io.ByteArrayInputStream;
@@ -23,20 +21,20 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
 public final class ae
-  implements h
+  implements g
 {
-  public final h.b b(h.a parama)
+  public final g.b b(g.a parama)
   {
     AppMethodBeat.i(150155);
-    parama = parama.jQG;
-    if ((parama == null) || (parama.RIF == null))
+    parama = parama.mpN;
+    if ((parama == null) || (parama.YFG == null))
     {
       Log.f("MicroMsg.DeletePackageMsgExtension", "[oneliang]DeletePackageMsgExtension failed, invalid cmdAM");
       AppMethodBeat.o(150155);
       return null;
     }
     Log.i("MicroMsg.DeletePackageMsgExtension", "[oneliang]DeletePackageMsgExtension start");
-    parama = z.a(parama.RIF);
+    parama = w.a(parama.YFG);
     Object localObject = DocumentBuilderFactory.newInstance();
     for (;;)
     {
@@ -55,21 +53,21 @@ public final class ae
           {
             localObject = parama.item(i);
             if ((localObject == null) || (((Node)localObject).getNodeName() == null) || (!((Node)localObject).getNodeName().equals("pack"))) {
-              break label298;
+              break label295;
             }
             localObject = ((Node)localObject).getAttributes();
             if (localObject == null) {
-              break label298;
+              break label295;
             }
             localObject = ((NamedNodeMap)localObject).getNamedItem("type");
             if (localObject == null) {
-              break label298;
+              break label295;
             }
             int k = Util.getInt(((Node)localObject).getNodeValue(), 0);
-            localObject = new da();
-            ((da)localObject).fyG.fyH = k;
-            EventCenter.instance.publish((IEvent)localObject);
-            break label298;
+            localObject = new dk();
+            ((dk)localObject).hDp.hDq = k;
+            ((dk)localObject).publish();
+            break label295;
           }
         }
         Log.i("MicroMsg.DeletePackageMsgExtension", "[oneliang]DeletePackageMsgExtension end");
@@ -82,16 +80,16 @@ public final class ae
         AppMethodBeat.o(150155);
         return null;
       }
-      label298:
+      label295:
       i += 1;
     }
   }
   
-  public final void b(h.c paramc) {}
+  public final void b(g.c paramc) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.model.ae
  * JD-Core Version:    0.7.0.1
  */

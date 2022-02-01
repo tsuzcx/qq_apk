@@ -20,44 +20,45 @@ import com.tencent.mm.plugin.hld.a.f;
 import com.tencent.mm.plugin.hld.a.h;
 import com.tencent.mm.plugin.hld.a.l;
 import com.tencent.mm.plugin.hld.a.m;
+import com.tencent.mm.plugin.hld.model.g;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ad;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.af;
+import com.tencent.mm.ui.aw;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
-import kotlin.f;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/view/ImeKeyButton;", "Lcom/tencent/mm/plugin/hld/view/ImeKeyRelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "buttonTextView", "Landroid/widget/TextView;", "getButtonTextView", "()Landroid/widget/TextView;", "buttonTextView$delegate", "Lkotlin/Lazy;", "iconColor", "Ljava/lang/Integer;", "iconHeight", "iconImg", "Landroid/graphics/drawable/Drawable;", "iconIv", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "getIconIv", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "iconIv$delegate", "iconWidth", "insideRootView", "Landroid/view/View;", "getInsideRootView", "()Landroid/view/View;", "insideRootView$delegate", "isOnlyClickFloatView", "", "Ljava/lang/Boolean;", "textColor", "textColorStateList", "Landroid/content/res/ColorStateList;", "textMarginTopSize", "", "Ljava/lang/Float;", "textSize", "textSizeUpperMode", "textStr", "", "upTextSize", "upTextStr", "upTextView", "getUpTextView", "upTextView$delegate", "getInsideView", "getSecondText", "getText", "()Ljava/lang/Boolean;", "onFinishInflate", "", "updateButtonTextColor", "enabled", "resId", "updateImg", "colorId", "updateSecondText", "text", "updateText", "isUpperMode", "(Ljava/lang/String;Ljava/lang/Boolean;)V", "updateTextColor", "updateTextColorStateList", "Companion", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/view/ImeKeyButton;", "Lcom/tencent/mm/plugin/hld/view/ImeKeyRelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "buttonTextView", "Landroid/widget/TextView;", "getButtonTextView", "()Landroid/widget/TextView;", "buttonTextView$delegate", "Lkotlin/Lazy;", "iconColor", "Ljava/lang/Integer;", "iconHeight", "iconImg", "Landroid/graphics/drawable/Drawable;", "iconIv", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "getIconIv", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "iconIv$delegate", "iconWidth", "insideRootView", "Landroid/view/View;", "getInsideRootView", "()Landroid/view/View;", "insideRootView$delegate", "isOnlyClickFloatView", "", "Ljava/lang/Boolean;", "textColor", "textColorStateList", "Landroid/content/res/ColorStateList;", "textMarginTopSize", "", "Ljava/lang/Float;", "textSize", "textSizeUpperMode", "textStr", "", "upTextSize", "upTextStr", "upTextView", "getUpTextView", "upTextView$delegate", "getInsideView", "getSecondText", "getText", "()Ljava/lang/Boolean;", "onFinishInflate", "", "updateButtonTextColor", "enabled", "resId", "updateImg", "colorId", "updateSecondText", "text", "updateText", "isUpperMode", "(Ljava/lang/String;Ljava/lang/Boolean;)V", "updateTextColor", "updateTextColorStateList", "Companion", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ImeKeyButton
   extends ImeKeyRelativeLayout
 {
-  public static final a DIB;
-  private final f DHT;
-  private Integer DIA;
-  private final f DIl;
-  private final f DIm;
-  private final f DIn;
-  private String DIo;
-  private String DIp;
-  private Float DIq;
-  private Float DIr;
-  private Float DIs;
-  private Float DIt;
-  private Integer DIu;
-  private ColorStateList DIv;
-  private Boolean DIw;
-  private Integer DIx;
-  private Drawable DIy;
-  private Integer DIz;
+  public static final ImeKeyButton.a Jzo;
+  private Integer Fgw;
+  private Boolean JzA;
+  private Drawable JzB;
+  private Integer JzC;
+  private Integer JzD;
+  private final j Jzb;
+  private final j Jzp;
+  private final j Jzq;
+  private final j Jzr;
+  private String Jzs;
+  private String Jzt;
+  private Float Jzu;
+  private Float Jzv;
+  private Float Jzw;
+  private Float Jzx;
+  private Integer Jzy;
+  private ColorStateList Jzz;
   
   static
   {
-    AppMethodBeat.i(214968);
-    DIB = new a((byte)0);
-    AppMethodBeat.o(214968);
+    AppMethodBeat.i(312595);
+    Jzo = new ImeKeyButton.a((byte)0);
+    AppMethodBeat.o(312595);
   }
   
   public ImeKeyButton(Context paramContext, AttributeSet paramAttributeSet)
@@ -73,288 +74,313 @@ public final class ImeKeyButton
   private ImeKeyButton(Context paramContext, AttributeSet paramAttributeSet, int paramInt, byte paramByte)
   {
     super(paramContext, paramAttributeSet, paramInt, (byte)0);
-    AppMethodBeat.i(214966);
-    this.DIl = kotlin.g.ar((kotlin.g.a.a)new d(this));
-    this.DIm = kotlin.g.ar((kotlin.g.a.a)new e(this));
-    this.DIn = kotlin.g.ar((kotlin.g.a.a)new b(this));
-    this.DIw = Boolean.FALSE;
-    this.DHT = kotlin.g.ar((kotlin.g.a.a)new c(this));
-    if (paramContext == null) {
-      p.iCn();
-    }
+    AppMethodBeat.i(312580);
+    this.Jzp = k.cm((kotlin.g.a.a)new d(this));
+    this.Jzq = k.cm((kotlin.g.a.a)new e(this));
+    this.Jzr = k.cm((kotlin.g.a.a)new b(this));
+    this.JzA = Boolean.FALSE;
+    this.Jzb = k.cm((kotlin.g.a.a)new c(this));
+    s.checkNotNull(paramContext);
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.l.ImeKeyButton, paramInt, 0);
+    s.s(paramAttributeSet, "context!!.obtainStyledAt…yButton, defStyleAttr, 0)");
     setViewType(Integer.valueOf(paramAttributeSet.getInt(a.l.ImeKeyButton_key_view_type, 1)));
     Integer localInteger = getViewType();
     if (localInteger == null)
     {
       if (localInteger != null) {
-        break label400;
+        break label353;
       }
-      if (localInteger != null) {
-        break label451;
-      }
+      label144:
+      paramInt = 0;
       label146:
-      if (localInteger != null) {
-        break label558;
+      if (paramInt == 0) {
+        break label406;
       }
+      localInteger = getViewType();
       if (localInteger != null) {
-        break label610;
+        break label367;
       }
-      label156:
-      if (localInteger != null) {
-        break label702;
+      label161:
+      af.mU(paramContext).inflate(a.m.wxime_key_buttom_layout, (ViewGroup)this, true);
+      label177:
+      this.Jzs = paramAttributeSet.getString(a.l.ImeKeyButton_up_text);
+      this.Jzt = paramAttributeSet.getString(a.l.ImeKeyButton_text);
+      this.Jzu = Float.valueOf(paramAttributeSet.getDimension(a.l.ImeKeyButton_key_up_text_size, 0.0F));
+      this.Jzv = Float.valueOf(paramAttributeSet.getDimension(a.l.ImeKeyButton_key_text_size, 0.0F));
+      this.Jzw = Float.valueOf(paramAttributeSet.getDimension(a.l.ImeKeyButton_key_text_size_upper_mode, 0.0F));
+      if (s.a(this.Jzw, 0.0F)) {
+        this.Jzw = this.Jzv;
       }
-      if (localInteger != null) {
-        break label754;
-      }
-      label166:
-      if (localInteger != null) {
-        break label917;
-      }
-      label171:
-      Log.w("WxIme.KeyButton", "ImeKeyButton viewType:" + getViewType() + " ????");
+      this.Jzx = Float.valueOf(paramAttributeSet.getDimension(a.l.ImeKeyButton_key_text_margin_top, 0.0F));
+      this.Jzy = Integer.valueOf(paramAttributeSet.getColor(a.l.ImeKeyButton_key_text_color, paramContext.getResources().getColor(a.c.key_text_color_default)));
+      this.Jzz = paramAttributeSet.getColorStateList(a.l.ImeKeyButton_key_text_color_state_list);
+      this.JzA = Boolean.valueOf(paramAttributeSet.getBoolean(a.l.ImeKeyButton_key_only_click_float, false));
     }
     for (;;)
     {
-      label200:
       setHapticFeedbackEnabled(false);
-      AppMethodBeat.o(214966);
+      AppMethodBeat.o(312580);
       return;
       if (localInteger.intValue() != 5) {
         break;
       }
-      label220:
-      localInteger = getViewType();
-      if (localInteger == null) {
-        label231:
-        ad.kS(paramContext).inflate(a.m.wxime_key_buttom_layout, (ViewGroup)this, true);
+      paramInt = 1;
+      break label146;
+      label353:
+      if (localInteger.intValue() != 1) {
+        break label144;
+      }
+      paramInt = 1;
+      break label146;
+      label367:
+      if (localInteger.intValue() != 5) {
+        break label161;
+      }
+      af.mU(paramContext).inflate(a.m.wxime_key_padding_buttom_layout, (ViewGroup)this, true);
+      getInsideRootView().setBackground(getKeyBackground());
+      break label177;
+      label406:
+      if (localInteger == null)
+      {
+        label411:
+        if (localInteger != null) {
+          break label534;
+        }
+        label416:
+        paramInt = 0;
+        label418:
+        if (paramInt == 0) {
+          break label588;
+        }
+        localInteger = getViewType();
+        if (localInteger != null) {
+          break label548;
+        }
+        label433:
+        af.mU(paramContext).inflate(a.m.wxime_key_img_buttom_layout, (ViewGroup)this, true);
       }
       for (;;)
       {
-        this.DIo = paramAttributeSet.getString(a.l.ImeKeyButton_up_text);
-        this.DIp = paramAttributeSet.getString(a.l.ImeKeyButton_text);
-        this.DIq = Float.valueOf(paramAttributeSet.getDimension(a.l.ImeKeyButton_key_up_text_size, 0.0F));
-        this.DIr = Float.valueOf(paramAttributeSet.getDimension(a.l.ImeKeyButton_key_text_size, 0.0F));
-        this.DIs = Float.valueOf(paramAttributeSet.getDimension(a.l.ImeKeyButton_key_text_size_upper_mode, 0.0F));
-        if (p.e(this.DIs)) {
-          this.DIs = this.DIr;
-        }
-        this.DIt = Float.valueOf(paramAttributeSet.getDimension(a.l.ImeKeyButton_key_text_margin_top, 0.0F));
-        this.DIu = Integer.valueOf(paramAttributeSet.getColor(a.l.ImeKeyButton_key_text_color, paramContext.getResources().getColor(a.c.key_text_color_default)));
-        this.DIv = paramAttributeSet.getColorStateList(a.l.ImeKeyButton_key_text_color_state_list);
-        this.DIw = Boolean.valueOf(paramAttributeSet.getBoolean(a.l.ImeKeyButton_key_only_click_float, false));
-        break label200;
-        label400:
-        if (localInteger.intValue() != 1) {
-          break;
-        }
-        break label220;
-        if (localInteger.intValue() != 5) {
-          break label231;
-        }
-        ad.kS(paramContext).inflate(a.m.wxime_key_padding_buttom_layout, (ViewGroup)this, true);
-        getInsideRootView().setBackground(getKeyBackground());
-      }
-      label451:
-      if (localInteger.intValue() != 6) {
-        break label146;
-      }
-      label461:
-      localInteger = getViewType();
-      if (localInteger == null) {
-        label472:
-        ad.kS(paramContext).inflate(a.m.wxime_key_img_buttom_layout, (ViewGroup)this, true);
-      }
-      for (;;)
-      {
-        this.DIx = Integer.valueOf(paramAttributeSet.getColor(a.l.ImeKeyButton_icon_color, paramContext.getResources().getColor(a.c.FG_0)));
-        this.DIy = paramAttributeSet.getDrawable(a.l.ImeKeyButton_icon_src);
-        this.DIz = Integer.valueOf((int)paramAttributeSet.getDimension(a.l.ImeKeyButton_icon_width, 0.0F));
-        this.DIA = Integer.valueOf((int)paramAttributeSet.getDimension(a.l.ImeKeyButton_icon_width, 0.0F));
-        break label200;
-        label558:
-        if (localInteger.intValue() != 2) {
-          break;
-        }
-        break label461;
+        this.Fgw = Integer.valueOf(paramAttributeSet.getColor(a.l.ImeKeyButton_icon_color, paramContext.getResources().getColor(a.c.FG_0)));
+        this.JzB = paramAttributeSet.getDrawable(a.l.ImeKeyButton_icon_src);
+        this.JzC = Integer.valueOf((int)paramAttributeSet.getDimension(a.l.ImeKeyButton_icon_width, 0.0F));
+        this.JzD = Integer.valueOf((int)paramAttributeSet.getDimension(a.l.ImeKeyButton_icon_width, 0.0F));
+        break;
         if (localInteger.intValue() != 6) {
-          break label472;
+          break label411;
         }
-        ad.kS(paramContext).inflate(a.m.wxime_key_padding_img_buttom_layout, (ViewGroup)this, true);
+        paramInt = 1;
+        break label418;
+        label534:
+        if (localInteger.intValue() != 2) {
+          break label416;
+        }
+        paramInt = 1;
+        break label418;
+        label548:
+        if (localInteger.intValue() != 6) {
+          break label433;
+        }
+        af.mU(paramContext).inflate(a.m.wxime_key_padding_img_buttom_layout, (ViewGroup)this, true);
         getInsideRootView().setBackground(getKeyBackground());
       }
-      label610:
-      if (localInteger.intValue() != 7) {
-        break label156;
-      }
-      label620:
-      localInteger = getViewType();
-      if (localInteger == null) {
-        label631:
-        ad.kS(paramContext).inflate(a.m.wxime_key_exchange_buttom_layout, (ViewGroup)this, true);
+      label588:
+      if (localInteger == null)
+      {
+        label593:
+        if (localInteger != null) {
+          break label701;
+        }
+        label598:
+        paramInt = 0;
+        label600:
+        if (paramInt == 0) {
+          break label755;
+        }
+        localInteger = getViewType();
+        if (localInteger != null) {
+          break label715;
+        }
+        label615:
+        af.mU(paramContext).inflate(a.m.wxime_key_exchange_buttom_layout, (ViewGroup)this, true);
       }
       for (;;)
       {
-        this.DIo = paramAttributeSet.getString(a.l.ImeKeyButton_up_text);
-        this.DIp = paramAttributeSet.getString(a.l.ImeKeyButton_text);
-        this.DIq = Float.valueOf(paramAttributeSet.getDimension(a.l.ImeKeyButton_key_up_text_size, 0.0F));
-        this.DIr = Float.valueOf(paramAttributeSet.getDimension(a.l.ImeKeyButton_key_text_size, 0.0F));
-        break label200;
-        label702:
-        if (localInteger.intValue() != 3) {
-          break;
-        }
-        break label620;
+        this.Jzs = paramAttributeSet.getString(a.l.ImeKeyButton_up_text);
+        this.Jzt = paramAttributeSet.getString(a.l.ImeKeyButton_text);
+        this.Jzu = Float.valueOf(paramAttributeSet.getDimension(a.l.ImeKeyButton_key_up_text_size, 0.0F));
+        this.Jzv = Float.valueOf(paramAttributeSet.getDimension(a.l.ImeKeyButton_key_text_size, 0.0F));
+        break;
         if (localInteger.intValue() != 7) {
-          break label631;
+          break label593;
         }
-        ad.kS(paramContext).inflate(a.h.wxime_key_padding_exchange_buttom_layout, (ViewGroup)this, true);
+        paramInt = 1;
+        break label600;
+        label701:
+        if (localInteger.intValue() != 3) {
+          break label598;
+        }
+        paramInt = 1;
+        break label600;
+        label715:
+        if (localInteger.intValue() != 7) {
+          break label615;
+        }
+        af.mU(paramContext).inflate(a.h.wxime_key_padding_exchange_buttom_layout, (ViewGroup)this, true);
         getInsideRootView().setBackground(getKeyBackground());
       }
-      label754:
-      if (localInteger.intValue() != 4) {
-        break label166;
+      label755:
+      if (localInteger == null) {
+        label760:
+        if (localInteger != null) {
+          break label964;
+        }
       }
-      ad.kS(paramContext).inflate(a.m.wxime_key_buttom_large_up_layout, (ViewGroup)this, true);
+      label964:
+      while (localInteger.intValue() != 8)
+      {
+        Log.w("WxIme.KeyButton", "ImeKeyButton viewType:" + getViewType() + " ????");
+        break;
+        if (localInteger.intValue() != 4) {
+          break label760;
+        }
+        af.mU(paramContext).inflate(a.m.wxime_key_buttom_large_up_layout, (ViewGroup)this, true);
+        getInsideRootView().setBackground(getKeyBackground());
+        this.Jzs = paramAttributeSet.getString(a.l.ImeKeyButton_up_text);
+        this.Jzt = paramAttributeSet.getString(a.l.ImeKeyButton_text);
+        this.Jzu = Float.valueOf(paramAttributeSet.getDimension(a.l.ImeKeyButton_key_up_text_size, 0.0F));
+        this.Jzv = Float.valueOf(paramAttributeSet.getDimension(a.l.ImeKeyButton_key_text_size, 0.0F));
+        this.Jzw = Float.valueOf(paramAttributeSet.getDimension(a.l.ImeKeyButton_key_text_size_upper_mode, 0.0F));
+        if (s.a(this.Jzw, 0.0F)) {
+          this.Jzw = this.Jzv;
+        }
+        this.Jzx = Float.valueOf(paramAttributeSet.getDimension(a.l.ImeKeyButton_key_text_margin_top, 0.0F));
+        this.Jzy = Integer.valueOf(paramAttributeSet.getColor(a.l.ImeKeyButton_key_text_color, paramContext.getResources().getColor(a.c.key_text_color_default)));
+        break;
+      }
+      af.mU(paramContext).inflate(a.m.wxime_key_text_padding_img_buttom_layout, (ViewGroup)this, true);
       getInsideRootView().setBackground(getKeyBackground());
-      this.DIo = paramAttributeSet.getString(a.l.ImeKeyButton_up_text);
-      this.DIp = paramAttributeSet.getString(a.l.ImeKeyButton_text);
-      this.DIq = Float.valueOf(paramAttributeSet.getDimension(a.l.ImeKeyButton_key_up_text_size, 0.0F));
-      this.DIr = Float.valueOf(paramAttributeSet.getDimension(a.l.ImeKeyButton_key_text_size, 0.0F));
-      this.DIs = Float.valueOf(paramAttributeSet.getDimension(a.l.ImeKeyButton_key_text_size_upper_mode, 0.0F));
-      if (p.e(this.DIs)) {
-        this.DIs = this.DIr;
+      this.Jzt = paramAttributeSet.getString(a.l.ImeKeyButton_text);
+      this.Jzs = paramAttributeSet.getString(a.l.ImeKeyButton_up_text);
+      this.Jzu = Float.valueOf(paramAttributeSet.getDimension(a.l.ImeKeyButton_key_up_text_size, 0.0F));
+      this.Jzv = Float.valueOf(paramAttributeSet.getDimension(a.l.ImeKeyButton_key_text_size, 0.0F));
+      this.Jzw = Float.valueOf(paramAttributeSet.getDimension(a.l.ImeKeyButton_key_text_size_upper_mode, 0.0F));
+      if (s.a(this.Jzw, 0.0F)) {
+        this.Jzw = this.Jzv;
       }
-      this.DIt = Float.valueOf(paramAttributeSet.getDimension(a.l.ImeKeyButton_key_text_margin_top, 0.0F));
-      this.DIu = Integer.valueOf(paramAttributeSet.getColor(a.l.ImeKeyButton_key_text_color, paramContext.getResources().getColor(a.c.key_text_color_default)));
-      continue;
-      label917:
-      if (localInteger.intValue() != 8) {
-        break label171;
-      }
-      ad.kS(paramContext).inflate(a.m.wxime_key_text_padding_img_buttom_layout, (ViewGroup)this, true);
-      getInsideRootView().setBackground(getKeyBackground());
-      this.DIp = paramAttributeSet.getString(a.l.ImeKeyButton_text);
-      this.DIo = paramAttributeSet.getString(a.l.ImeKeyButton_up_text);
-      this.DIq = Float.valueOf(paramAttributeSet.getDimension(a.l.ImeKeyButton_key_up_text_size, 0.0F));
-      this.DIr = Float.valueOf(paramAttributeSet.getDimension(a.l.ImeKeyButton_key_text_size, 0.0F));
-      this.DIs = Float.valueOf(paramAttributeSet.getDimension(a.l.ImeKeyButton_key_text_size_upper_mode, 0.0F));
-      if (p.e(this.DIs)) {
-        this.DIs = this.DIr;
-      }
-      this.DIt = Float.valueOf(paramAttributeSet.getDimension(a.l.ImeKeyButton_key_text_margin_top, 0.0F));
-      this.DIu = Integer.valueOf(paramAttributeSet.getColor(a.l.ImeKeyButton_key_text_color, paramContext.getResources().getColor(a.c.key_text_color_default)));
-      this.DIv = paramAttributeSet.getColorStateList(a.l.ImeKeyButton_key_text_color_state_list);
-      this.DIx = Integer.valueOf(paramAttributeSet.getColor(a.l.ImeKeyButton_icon_color, paramContext.getResources().getColor(a.c.FG_0)));
-      this.DIy = paramAttributeSet.getDrawable(a.l.ImeKeyButton_icon_src);
-      this.DIz = Integer.valueOf((int)paramAttributeSet.getDimension(a.l.ImeKeyButton_icon_width, 0.0F));
-      this.DIA = Integer.valueOf((int)paramAttributeSet.getDimension(a.l.ImeKeyButton_icon_width, 0.0F));
+      this.Jzx = Float.valueOf(paramAttributeSet.getDimension(a.l.ImeKeyButton_key_text_margin_top, 0.0F));
+      this.Jzy = Integer.valueOf(paramAttributeSet.getColor(a.l.ImeKeyButton_key_text_color, paramContext.getResources().getColor(a.c.key_text_color_default)));
+      this.Jzz = paramAttributeSet.getColorStateList(a.l.ImeKeyButton_key_text_color_state_list);
+      this.Fgw = Integer.valueOf(paramAttributeSet.getColor(a.l.ImeKeyButton_icon_color, paramContext.getResources().getColor(a.c.FG_0)));
+      this.JzB = paramAttributeSet.getDrawable(a.l.ImeKeyButton_icon_src);
+      this.JzC = Integer.valueOf((int)paramAttributeSet.getDimension(a.l.ImeKeyButton_icon_width, 0.0F));
+      this.JzD = Integer.valueOf((int)paramAttributeSet.getDimension(a.l.ImeKeyButton_icon_width, 0.0F));
     }
   }
   
   private final WeImageView getIconIv()
   {
-    AppMethodBeat.i(214939);
-    WeImageView localWeImageView = (WeImageView)this.DHT.getValue();
-    AppMethodBeat.o(214939);
-    return localWeImageView;
+    AppMethodBeat.i(312542);
+    Object localObject = this.Jzb.getValue();
+    s.s(localObject, "<get-iconIv>(...)");
+    localObject = (WeImageView)localObject;
+    AppMethodBeat.o(312542);
+    return localObject;
   }
   
   private final View getInsideRootView()
   {
-    AppMethodBeat.i(214934);
-    View localView = (View)this.DIl.getValue();
-    AppMethodBeat.o(214934);
-    return localView;
+    AppMethodBeat.i(312526);
+    Object localObject = this.Jzp.getValue();
+    s.s(localObject, "<get-insideRootView>(...)");
+    localObject = (View)localObject;
+    AppMethodBeat.o(312526);
+    return localObject;
   }
   
   private final TextView getUpTextView()
   {
-    AppMethodBeat.i(214935);
-    TextView localTextView = (TextView)this.DIm.getValue();
-    AppMethodBeat.o(214935);
-    return localTextView;
+    AppMethodBeat.i(312533);
+    Object localObject = this.Jzq.getValue();
+    s.s(localObject, "<get-upTextView>(...)");
+    localObject = (TextView)localObject;
+    AppMethodBeat.o(312533);
+    return localObject;
   }
   
-  public final void UO(int paramInt)
+  public final void YM(int paramInt)
   {
-    AppMethodBeat.i(214952);
+    AppMethodBeat.i(312642);
     getButtonTextView().setTextColor(getResources().getColor(paramInt));
-    AppMethodBeat.o(214952);
+    AppMethodBeat.o(312642);
   }
   
-  public final void UP(int paramInt)
+  public final void YN(int paramInt)
   {
-    AppMethodBeat.i(214956);
-    Object localObject = getContext();
-    p.j(localObject, "context");
-    localObject = ((Context)localObject).getResources().getDrawable(paramInt);
-    getIconIv().setImageDrawable((Drawable)localObject);
-    AppMethodBeat.o(214956);
+    AppMethodBeat.i(312650);
+    Drawable localDrawable = getContext().getResources().getDrawable(paramInt);
+    getIconIv().setImageDrawable(localDrawable);
+    AppMethodBeat.o(312650);
   }
   
-  public final void aLK(String paramString)
+  public final void aIE(String paramString)
   {
-    AppMethodBeat.i(214951);
-    p.k(paramString, "text");
+    AppMethodBeat.i(312638);
+    s.u(paramString, "text");
     getUpTextView().setText((CharSequence)paramString);
-    AppMethodBeat.o(214951);
+    AppMethodBeat.o(312638);
   }
   
   public final void b(String paramString, Boolean paramBoolean)
   {
-    AppMethodBeat.i(214949);
-    p.k(paramString, "text");
+    AppMethodBeat.i(312633);
+    s.u(paramString, "text");
     getButtonTextView().setText((CharSequence)paramString);
     if (paramBoolean != null)
     {
       if (paramBoolean.booleanValue())
       {
         paramString = getButtonTextView();
-        paramBoolean = this.DIs;
-        if (paramBoolean == null) {
-          p.iCn();
-        }
+        paramBoolean = this.Jzw;
+        s.checkNotNull(paramBoolean);
         paramString.setTextSize(0, paramBoolean.floatValue());
-        AppMethodBeat.o(214949);
+        AppMethodBeat.o(312633);
         return;
       }
       paramString = getButtonTextView();
-      paramBoolean = this.DIr;
-      if (paramBoolean == null) {
-        p.iCn();
-      }
+      paramBoolean = this.Jzv;
+      s.checkNotNull(paramBoolean);
       paramString.setTextSize(0, paramBoolean.floatValue());
-      AppMethodBeat.o(214949);
-      return;
     }
-    AppMethodBeat.o(214949);
+    AppMethodBeat.o(312633);
   }
   
-  public final Boolean eHG()
+  public final Boolean fPs()
   {
-    return this.DIw;
+    return this.JzA;
   }
   
   public final TextView getButtonTextView()
   {
-    AppMethodBeat.i(214936);
-    TextView localTextView = (TextView)this.DIn.getValue();
-    AppMethodBeat.o(214936);
-    return localTextView;
+    AppMethodBeat.i(312602);
+    Object localObject = this.Jzr.getValue();
+    s.s(localObject, "<get-buttonTextView>(...)");
+    localObject = (TextView)localObject;
+    AppMethodBeat.o(312602);
+    return localObject;
   }
   
   public final View getInsideView()
   {
-    AppMethodBeat.i(214953);
+    AppMethodBeat.i(312645);
     View localView = getInsideRootView();
-    AppMethodBeat.o(214953);
+    AppMethodBeat.o(312645);
     return localView;
   }
   
   public final String getSecondText()
   {
-    String str2 = this.DIo;
+    String str2 = this.Jzs;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
@@ -364,7 +390,7 @@ public final class ImeKeyButton
   
   public final String getText()
   {
-    String str2 = this.DIp;
+    String str2 = this.Jzt;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
@@ -375,241 +401,292 @@ public final class ImeKeyButton
   protected final void onFinishInflate()
   {
     int j = 1;
-    int i = 1;
-    AppMethodBeat.i(214946);
+    int k = 1;
+    AppMethodBeat.i(312619);
     super.onFinishInflate();
     Object localObject1 = getViewType();
+    label31:
+    int i;
+    label33:
+    label39:
+    label97:
+    label104:
+    label108:
+    float f;
     if (localObject1 == null)
     {
       if (localObject1 != null) {
-        break label248;
+        break label238;
       }
-      if (localObject1 != null) {
-        break label260;
+      i = 0;
+      if (i == 0) {
+        break label252;
       }
-      label35:
-      if (localObject1 != null) {
-        break label413;
+      i = 1;
+      if (i == 0) {
+        break label419;
       }
-      label40:
-      if (localObject1 != null) {
-        break label535;
-      }
-      if (localObject1 != null) {
-        break label547;
-      }
-    }
-    label76:
-    float f;
-    label128:
-    label132:
-    label195:
-    label248:
-    Object localObject2;
-    for (;;)
-    {
-      label640:
-      if (localObject1 == null)
+      getUpTextView().setText((CharSequence)this.Jzs);
+      getButtonTextView().setText((CharSequence)this.Jzt);
+      localObject1 = this.Jzu;
+      if (localObject1 != null)
       {
-        if (localObject1 != null) {
-          break label773;
+        if (((Number)localObject1).floatValue() != 0.0F) {
+          break label276;
         }
-        AppMethodBeat.o(214946);
-        return;
-        if (((Integer)localObject1).intValue() != 5) {
-          break;
+        i = 1;
+        if (i != 0) {
+          break label281;
         }
-        getUpTextView().setText((CharSequence)this.DIo);
-        getButtonTextView().setText((CharSequence)this.DIp);
-        localObject1 = this.DIq;
+        i = k;
+        if (i == 0) {
+          break label286;
+        }
         if (localObject1 != null)
         {
-          if (((Number)localObject1).floatValue() == 0.0F) {
-            break label272;
-          }
-          if (i == 0) {
-            break label277;
-          }
-          if (localObject1 != null)
-          {
-            f = ((Number)localObject1).floatValue();
-            getUpTextView().setTextSize(0, f);
-          }
-        }
-        localObject1 = com.tencent.mm.plugin.hld.model.g.DCm;
-        if (com.tencent.mm.plugin.hld.model.g.eEk())
-        {
-          localObject1 = this.DIs;
-          if (localObject1 != null)
-          {
-            f = ((Number)localObject1).floatValue();
-            getButtonTextView().setTextSize(0, f);
-          }
-          if (this.DIv == null) {
-            break label315;
-          }
-          getButtonTextView().setTextColor(this.DIv);
-        }
-        for (;;)
-        {
-          localObject1 = getButtonTextView().getLayoutParams();
-          if (localObject1 != null) {
-            break label346;
-          }
-          localObject1 = new t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
-          AppMethodBeat.o(214946);
-          throw ((Throwable)localObject1);
-          if (((Integer)localObject1).intValue() == 4) {
-            break label76;
-          }
-          break;
-          label260:
-          if (((Integer)localObject1).intValue() != 1) {
-            break label35;
-          }
-          break label76;
-          label272:
-          i = 0;
-          break label128;
-          label277:
-          localObject1 = null;
-          break label132;
-          localObject1 = this.DIr;
-          if (localObject1 == null) {
-            break label195;
-          }
           f = ((Number)localObject1).floatValue();
-          getButtonTextView().setTextSize(0, f);
-          break label195;
-          label315:
-          localObject1 = this.DIu;
-          if (localObject1 != null)
-          {
-            i = ((Number)localObject1).intValue();
-            getButtonTextView().setTextColor(i);
-          }
-        }
-        label346:
-        localObject1 = (RelativeLayout.LayoutParams)localObject1;
-        localObject2 = this.DIt;
-        if (localObject2 == null) {
-          p.iCn();
-        }
-        ((RelativeLayout.LayoutParams)localObject1).topMargin = ((int)((Float)localObject2).floatValue());
-        getButtonTextView().setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        ar.a((Paint)getButtonTextView().getPaint(), 0.1F);
-        AppMethodBeat.o(214946);
-        return;
-        label413:
-        if (((Integer)localObject1).intValue() != 6) {
-          break label40;
-        }
-        for (;;)
-        {
-          localObject1 = this.DIx;
-          if (localObject1 != null)
-          {
-            i = ((Number)localObject1).intValue();
-            getIconIv().setIconColor(i);
-          }
-          getIconIv().setImageDrawable(this.DIy);
-          localObject1 = getIconIv().getLayoutParams();
-          localObject2 = this.DIz;
-          if (localObject2 == null) {
-            p.iCn();
-          }
-          ((ViewGroup.LayoutParams)localObject1).width = ((Integer)localObject2).intValue();
-          localObject2 = this.DIA;
-          if (localObject2 == null) {
-            p.iCn();
-          }
-          ((ViewGroup.LayoutParams)localObject1).height = ((Integer)localObject2).intValue();
-          getIconIv().setLayoutParams((ViewGroup.LayoutParams)localObject1);
-          AppMethodBeat.o(214946);
-          return;
-          label535:
-          if (((Integer)localObject1).intValue() != 2) {
-            break;
-          }
-        }
-        label547:
-        if (((Integer)localObject1).intValue() == 7)
-        {
-          label557:
-          getUpTextView().setText((CharSequence)this.DIo);
-          getButtonTextView().setText((CharSequence)this.DIp);
-          ((TextView)findViewById(a.f.solidus_tv)).setTextSize(0, com.tencent.mm.ci.a.aZ(getContext(), a.d.ime_exchange_below_text_size));
-          localObject1 = this.DIq;
-          if (localObject1 != null)
-          {
-            if (((Number)localObject1).floatValue() == 0.0F) {
-              break label751;
-            }
-            i = 1;
-            label636:
-            if (i == 0) {
-              break label756;
-            }
-            if (localObject1 != null)
-            {
-              f = ((Number)localObject1).floatValue();
-              getUpTextView().setTextSize(0, f);
-            }
-          }
-          localObject1 = this.DIr;
-          if (localObject1 != null)
-          {
-            if (((Number)localObject1).floatValue() == 0.0F) {
-              break label762;
-            }
-            i = j;
-            label689:
-            if (i == 0) {
-              break label767;
-            }
-          }
+          getUpTextView().setTextSize(0, f);
         }
       }
-    }
-    for (;;)
-    {
+      localObject1 = g.JuL;
+      if (!g.fMm()) {
+        break label292;
+      }
+      localObject1 = this.Jzw;
       if (localObject1 != null)
       {
         f = ((Number)localObject1).floatValue();
         getButtonTextView().setTextSize(0, f);
       }
-      ar.a((Paint)getButtonTextView().getPaint(), 0.1F);
-      AppMethodBeat.o(214946);
-      return;
-      if (((Integer)localObject1).intValue() != 3) {
+      label171:
+      if (this.Jzz == null) {
+        break label324;
+      }
+      getButtonTextView().setTextColor(this.Jzz);
+    }
+    for (;;)
+    {
+      localObject1 = getButtonTextView().getLayoutParams();
+      if (localObject1 != null) {
+        break label355;
+      }
+      localObject1 = new NullPointerException("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
+      AppMethodBeat.o(312619);
+      throw ((Throwable)localObject1);
+      if (((Integer)localObject1).intValue() != 5) {
         break;
       }
-      break label557;
-      label751:
+      i = 1;
+      break label33;
+      label238:
+      if (((Integer)localObject1).intValue() != 4) {
+        break label31;
+      }
+      i = 1;
+      break label33;
+      label252:
+      if (localObject1 == null) {}
+      while (((Integer)localObject1).intValue() != 1)
+      {
+        i = 0;
+        break;
+      }
+      i = 1;
+      break label39;
+      label276:
       i = 0;
-      break label636;
-      label756:
-      localObject1 = null;
-      break label640;
-      label762:
+      break label97;
+      label281:
       i = 0;
-      break label689;
-      label767:
+      break label104;
+      label286:
       localObject1 = null;
-    }
-    label773:
-    if (((Integer)localObject1).intValue() == 8)
-    {
-      getUpTextView().setText((CharSequence)this.DIo);
-      localObject1 = this.DIq;
+      break label108;
+      label292:
+      localObject1 = this.Jzv;
+      if (localObject1 == null) {
+        break label171;
+      }
+      f = ((Number)localObject1).floatValue();
+      getButtonTextView().setTextSize(0, f);
+      break label171;
+      label324:
+      localObject1 = this.Jzy;
       if (localObject1 != null)
       {
-        if (((Number)localObject1).floatValue() == 0.0F) {
-          break label962;
+        i = ((Number)localObject1).intValue();
+        getButtonTextView().setTextColor(i);
+      }
+    }
+    label355:
+    localObject1 = (RelativeLayout.LayoutParams)localObject1;
+    Object localObject2 = this.Jzx;
+    s.checkNotNull(localObject2);
+    ((RelativeLayout.LayoutParams)localObject1).topMargin = ((int)((Float)localObject2).floatValue());
+    getButtonTextView().setLayoutParams((ViewGroup.LayoutParams)localObject1);
+    aw.a((Paint)getButtonTextView().getPaint(), 0.1F);
+    AppMethodBeat.o(312619);
+    return;
+    label419:
+    if (localObject1 == null)
+    {
+      if (localObject1 != null) {
+        break label556;
+      }
+      label429:
+      i = 0;
+    }
+    for (;;)
+    {
+      if (i == 0) {
+        break label570;
+      }
+      localObject1 = this.Fgw;
+      if (localObject1 != null)
+      {
+        i = ((Number)localObject1).intValue();
+        getIconIv().setIconColor(i);
+      }
+      getIconIv().setImageDrawable(this.JzB);
+      localObject1 = getIconIv().getLayoutParams();
+      localObject2 = this.JzC;
+      s.checkNotNull(localObject2);
+      ((ViewGroup.LayoutParams)localObject1).width = ((Integer)localObject2).intValue();
+      localObject2 = this.JzD;
+      s.checkNotNull(localObject2);
+      ((ViewGroup.LayoutParams)localObject1).height = ((Integer)localObject2).intValue();
+      getIconIv().setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      AppMethodBeat.o(312619);
+      return;
+      if (((Integer)localObject1).intValue() != 6) {
+        break;
+      }
+      i = 1;
+      continue;
+      label556:
+      if (((Integer)localObject1).intValue() != 2) {
+        break label429;
+      }
+      i = 1;
+    }
+    label570:
+    if (localObject1 == null)
+    {
+      if (localObject1 != null) {
+        break label795;
+      }
+      label580:
+      i = 0;
+      label582:
+      if (i == 0) {
+        break label841;
+      }
+      getUpTextView().setText((CharSequence)this.Jzs);
+      getButtonTextView().setText((CharSequence)this.Jzt);
+      ((TextView)findViewById(a.f.solidus_tv)).setTextSize(0, com.tencent.mm.cd.a.bs(getContext(), a.d.ime_exchange_below_text_size));
+      localObject1 = this.Jzu;
+      if (localObject1 != null)
+      {
+        if (((Number)localObject1).floatValue() != 0.0F) {
+          break label809;
+        }
+        i = 1;
+        if (i != 0) {
+          break label814;
         }
         i = 1;
         if (i == 0) {
-          break label967;
+          break label819;
+        }
+        if (localObject1 != null)
+        {
+          f = ((Number)localObject1).floatValue();
+          getUpTextView().setTextSize(0, f);
+        }
+      }
+      localObject1 = this.Jzv;
+      if (localObject1 != null)
+      {
+        if (((Number)localObject1).floatValue() != 0.0F) {
+          break label825;
+        }
+        i = 1;
+        label724:
+        if (i != 0) {
+          break label830;
+        }
+        i = j;
+        label730:
+        if (i == 0) {
+          break label835;
+        }
+      }
+    }
+    for (;;)
+    {
+      label665:
+      label671:
+      label675:
+      if (localObject1 != null)
+      {
+        f = ((Number)localObject1).floatValue();
+        getButtonTextView().setTextSize(0, f);
+      }
+      aw.a((Paint)getButtonTextView().getPaint(), 0.1F);
+      AppMethodBeat.o(312619);
+      return;
+      if (((Integer)localObject1).intValue() != 7) {
+        break;
+      }
+      i = 1;
+      break label582;
+      label795:
+      if (((Integer)localObject1).intValue() != 3) {
+        break label580;
+      }
+      i = 1;
+      break label582;
+      label809:
+      i = 0;
+      break label665;
+      label814:
+      i = 0;
+      break label671;
+      label819:
+      localObject1 = null;
+      break label675;
+      label825:
+      i = 0;
+      break label724;
+      label830:
+      i = 0;
+      break label730;
+      label835:
+      localObject1 = null;
+    }
+    label841:
+    if (localObject1 == null)
+    {
+      AppMethodBeat.o(312619);
+      return;
+    }
+    if (((Integer)localObject1).intValue() == 8)
+    {
+      getUpTextView().setText((CharSequence)this.Jzs);
+      localObject1 = this.Jzu;
+      if (localObject1 != null)
+      {
+        if (((Number)localObject1).floatValue() != 0.0F) {
+          break label1042;
+        }
+        i = 1;
+        if (i != 0) {
+          break label1047;
+        }
+        i = 1;
+        label909:
+        if (i == 0) {
+          break label1052;
         }
       }
     }
@@ -620,41 +697,37 @@ public final class ImeKeyButton
         f = ((Number)localObject1).floatValue();
         getUpTextView().setTextSize(0, f);
       }
-      localObject1 = this.DIx;
+      localObject1 = this.Fgw;
       if (localObject1 != null)
       {
         i = ((Number)localObject1).intValue();
         getIconIv().setIconColor(i);
       }
-      getIconIv().setImageDrawable(this.DIy);
+      getIconIv().setImageDrawable(this.JzB);
       localObject1 = getIconIv().getLayoutParams();
-      localObject2 = this.DIz;
-      if (localObject2 == null) {
-        p.iCn();
-      }
+      localObject2 = this.JzC;
+      s.checkNotNull(localObject2);
       ((ViewGroup.LayoutParams)localObject1).width = ((Integer)localObject2).intValue();
-      localObject2 = this.DIA;
-      if (localObject2 == null) {
-        p.iCn();
-      }
+      localObject2 = this.JzD;
+      s.checkNotNull(localObject2);
       ((ViewGroup.LayoutParams)localObject1).height = ((Integer)localObject2).intValue();
       getIconIv().setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      AppMethodBeat.o(214946);
+      AppMethodBeat.o(312619);
       return;
-      label962:
+      label1042:
       i = 0;
       break;
-      label967:
+      label1047:
+      i = 0;
+      break label909;
+      label1052:
       localObject1 = null;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/view/ImeKeyButton$Companion;", "", "()V", "TAG", "", "plugin-hld_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
+    extends u
     implements kotlin.g.a.a<TextView>
   {
     b(ImeKeyButton paramImeKeyButton)
@@ -663,9 +736,9 @@ public final class ImeKeyButton
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends q
+    extends u
     implements kotlin.g.a.a<WeImageView>
   {
     c(ImeKeyButton paramImeKeyButton)
@@ -674,9 +747,9 @@ public final class ImeKeyButton
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    extends q
+    extends u
     implements kotlin.g.a.a<View>
   {
     d(ImeKeyButton paramImeKeyButton)
@@ -685,9 +758,9 @@ public final class ImeKeyButton
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class e
-    extends q
+    extends u
     implements kotlin.g.a.a<TextView>
   {
     e(ImeKeyButton paramImeKeyButton)

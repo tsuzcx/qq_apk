@@ -6,89 +6,89 @@ import java.util.Locale;
 
 public final class a
 {
-  static final d LL;
-  private static final String LM;
-  private static final String LN;
-  static final a LO;
-  static final a LP;
-  private final boolean LR;
-  private final d LS;
+  static final d brT;
+  private static final String brU;
+  private static final String brV;
+  static final a brW;
+  static final a brX;
+  private final boolean brY;
+  private final d brZ;
   private final int cN;
   
   static
   {
-    AppMethodBeat.i(251207);
-    LL = e.Mm;
-    LM = Character.toString('‎');
-    LN = Character.toString('‏');
-    LO = new a(false, 2, LL);
-    LP = new a(true, 2, LL);
-    AppMethodBeat.o(251207);
+    AppMethodBeat.i(195491);
+    brT = e.bsr;
+    brU = Character.toString('‎');
+    brV = Character.toString('‏');
+    brW = new a(false, 2, brT);
+    brX = new a(true, 2, brT);
+    AppMethodBeat.o(195491);
   }
   
   private a(boolean paramBoolean, int paramInt, d paramd)
   {
-    this.LR = paramBoolean;
+    this.brY = paramBoolean;
     this.cN = paramInt;
-    this.LS = paramd;
+    this.brZ = paramd;
+  }
+  
+  public static a DT()
+  {
+    AppMethodBeat.i(195451);
+    Object localObject = new a();
+    if ((((a)localObject).cN == 2) && (((a)localObject).bsa == brT))
+    {
+      if (((a)localObject).brY)
+      {
+        localObject = brX;
+        AppMethodBeat.o(195451);
+        return localObject;
+      }
+      localObject = brW;
+      AppMethodBeat.o(195451);
+      return localObject;
+    }
+    localObject = new a(((a)localObject).brY, ((a)localObject).cN, ((a)localObject).bsa);
+    AppMethodBeat.o(195451);
+    return localObject;
   }
   
   static boolean a(Locale paramLocale)
   {
-    AppMethodBeat.i(251202);
+    AppMethodBeat.i(195466);
     if (f.d(paramLocale) == 1)
     {
-      AppMethodBeat.o(251202);
+      AppMethodBeat.o(195466);
       return true;
     }
-    AppMethodBeat.o(251202);
+    AppMethodBeat.o(195466);
     return false;
   }
   
-  public static a gI()
+  private static int s(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(251198);
-    Object localObject = new a();
-    if ((((a)localObject).cN == 2) && (((a)localObject).LT == LL))
-    {
-      if (((a)localObject).LR)
-      {
-        localObject = LP;
-        AppMethodBeat.o(251198);
-        return localObject;
-      }
-      localObject = LO;
-      AppMethodBeat.o(251198);
-      return localObject;
-    }
-    localObject = new a(((a)localObject).LR, ((a)localObject).cN, ((a)localObject).LT);
-    AppMethodBeat.o(251198);
-    return localObject;
-  }
-  
-  private static int q(CharSequence paramCharSequence)
-  {
-    AppMethodBeat.i(251204);
-    int i = new b(paramCharSequence).gK();
-    AppMethodBeat.o(251204);
+    AppMethodBeat.i(195475);
+    int i = new b(paramCharSequence).DV();
+    AppMethodBeat.o(195475);
     return i;
   }
   
-  private static int r(CharSequence paramCharSequence)
+  private static int t(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(251206);
-    int i = new b(paramCharSequence).gJ();
-    AppMethodBeat.o(251206);
+    AppMethodBeat.i(195483);
+    int i = new b(paramCharSequence).DU();
+    AppMethodBeat.o(195483);
     return i;
   }
   
-  public final CharSequence p(CharSequence paramCharSequence)
+  public final CharSequence r(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(251201);
-    Object localObject = this.LS;
+    AppMethodBeat.i(195503);
+    Object localObject = this.brZ;
     if (paramCharSequence == null)
     {
-      AppMethodBeat.o(251201);
+      AppMethodBeat.o(195503);
       return null;
     }
     boolean bool1 = ((d)localObject).a(paramCharSequence, paramCharSequence.length());
@@ -104,16 +104,16 @@ public final class a
         if (!bool1) {
           break label232;
         }
-        localObject = e.Ml;
+        localObject = e.bsq;
         bool2 = ((d)localObject).a(paramCharSequence, paramCharSequence.length());
-        if ((this.LR) || ((!bool2) && (r(paramCharSequence) != 1))) {
+        if ((this.brY) || ((!bool2) && (t(paramCharSequence) != 1))) {
           break label240;
         }
-        localObject = LM;
+        localObject = brU;
         label113:
         localSpannableStringBuilder.append((CharSequence)localObject);
       }
-      if (bool1 == this.LR) {
+      if (bool1 == this.brY) {
         break label282;
       }
       if (!bool1) {
@@ -128,28 +128,28 @@ public final class a
       if (!bool1) {
         break label292;
       }
-      localObject = e.Ml;
+      localObject = e.bsq;
       label172:
       bool1 = ((d)localObject).a(paramCharSequence, paramCharSequence.length());
-      if ((this.LR) || ((!bool1) && (q(paramCharSequence) != 1))) {
+      if ((this.brY) || ((!bool1) && (s(paramCharSequence) != 1))) {
         break label300;
       }
-      paramCharSequence = LM;
+      paramCharSequence = brU;
     }
     for (;;)
     {
       localSpannableStringBuilder.append(paramCharSequence);
-      AppMethodBeat.o(251201);
+      AppMethodBeat.o(195503);
       return localSpannableStringBuilder;
       k = 0;
       break;
       label232:
-      localObject = e.Mk;
+      localObject = e.bsp;
       break label72;
       label240:
-      if ((this.LR) && ((!bool2) || (r(paramCharSequence) == -1)))
+      if ((this.brY) && ((!bool2) || (t(paramCharSequence) == -1)))
       {
-        localObject = LN;
+        localObject = brV;
         break label113;
       }
       localObject = "";
@@ -161,11 +161,11 @@ public final class a
       localSpannableStringBuilder.append(paramCharSequence);
       break label162;
       label292:
-      localObject = e.Mk;
+      localObject = e.bsp;
       break label172;
       label300:
-      if ((this.LR) && ((!bool1) || (q(paramCharSequence) == -1))) {
-        paramCharSequence = LN;
+      if ((this.brY) && ((!bool1) || (s(paramCharSequence) == -1))) {
+        paramCharSequence = brV;
       } else {
         paramCharSequence = "";
       }
@@ -174,161 +174,147 @@ public final class a
   
   public static final class a
   {
-    boolean LR;
-    d LT;
+    boolean brY;
+    d bsa;
     int cN;
     
     public a()
     {
-      AppMethodBeat.i(251169);
-      this.LR = a.a(Locale.getDefault());
-      this.LT = a.LL;
+      AppMethodBeat.i(195463);
+      this.brY = a.a(Locale.getDefault());
+      this.bsa = a.brT;
       this.cN = 2;
-      AppMethodBeat.o(251169);
+      AppMethodBeat.o(195463);
     }
   }
   
   static final class b
   {
-    private static final byte[] LU;
-    private final CharSequence LV;
-    private final boolean LW;
-    private int LX;
-    private char LY;
+    private static final byte[] bsb;
+    private final CharSequence bba;
+    private final boolean bsc;
+    private int bsd;
+    private char bse;
     private final int length;
     
     static
     {
-      AppMethodBeat.i(251195);
-      LU = new byte[1792];
+      AppMethodBeat.i(195564);
+      bsb = new byte[1792];
       int i = 0;
       while (i < 1792)
       {
-        LU[i] = Character.getDirectionality(i);
+        bsb[i] = Character.getDirectionality(i);
         i += 1;
       }
-      AppMethodBeat.o(251195);
+      AppMethodBeat.o(195564);
     }
     
     b(CharSequence paramCharSequence)
     {
-      AppMethodBeat.i(251177);
-      this.LV = paramCharSequence;
-      this.LW = false;
+      AppMethodBeat.i(195472);
+      this.bba = paramCharSequence;
+      this.bsc = false;
       this.length = paramCharSequence.length();
-      AppMethodBeat.o(251177);
+      AppMethodBeat.o(195472);
     }
     
-    private static byte a(char paramChar)
+    private byte DW()
     {
-      AppMethodBeat.i(251182);
-      if (paramChar < '܀')
+      AppMethodBeat.i(195494);
+      this.bse = this.bba.charAt(this.bsd);
+      if (Character.isHighSurrogate(this.bse))
       {
-        b = LU[paramChar];
-        AppMethodBeat.o(251182);
-        return b;
-      }
-      byte b = Character.getDirectionality(paramChar);
-      AppMethodBeat.o(251182);
-      return b;
-    }
-    
-    private byte gL()
-    {
-      AppMethodBeat.i(251184);
-      this.LY = this.LV.charAt(this.LX);
-      if (Character.isHighSurrogate(this.LY))
-      {
-        int i = Character.codePointAt(this.LV, this.LX);
-        this.LX += Character.charCount(i);
+        int i = Character.codePointAt(this.bba, this.bsd);
+        this.bsd += Character.charCount(i);
         b1 = Character.getDirectionality(i);
-        AppMethodBeat.o(251184);
+        AppMethodBeat.o(195494);
         return b1;
       }
-      this.LX += 1;
-      byte b2 = a(this.LY);
+      this.bsd += 1;
+      byte b2 = b(this.bse);
       byte b1 = b2;
-      if (this.LW)
+      if (this.bsc)
       {
-        if (this.LY != '<') {
+        if (this.bse != '<') {
           break label117;
         }
-        b1 = gN();
+        b1 = DY();
       }
       for (;;)
       {
-        AppMethodBeat.o(251184);
+        AppMethodBeat.o(195494);
         return b1;
         label117:
         b1 = b2;
-        if (this.LY == '&') {
-          b1 = gP();
+        if (this.bse == '&') {
+          b1 = Ea();
         }
       }
     }
     
-    private byte gM()
+    private byte DX()
     {
-      AppMethodBeat.i(251185);
-      this.LY = this.LV.charAt(this.LX - 1);
-      if (Character.isLowSurrogate(this.LY))
+      AppMethodBeat.i(195509);
+      this.bse = this.bba.charAt(this.bsd - 1);
+      if (Character.isLowSurrogate(this.bse))
       {
-        int i = Character.codePointBefore(this.LV, this.LX);
-        this.LX -= Character.charCount(i);
+        int i = Character.codePointBefore(this.bba, this.bsd);
+        this.bsd -= Character.charCount(i);
         b1 = Character.getDirectionality(i);
-        AppMethodBeat.o(251185);
+        AppMethodBeat.o(195509);
         return b1;
       }
-      this.LX -= 1;
-      byte b2 = a(this.LY);
+      this.bsd -= 1;
+      byte b2 = b(this.bse);
       byte b1 = b2;
-      if (this.LW)
+      if (this.bsc)
       {
-        if (this.LY != '>') {
+        if (this.bse != '>') {
           break label119;
         }
-        b1 = gO();
+        b1 = DZ();
       }
       for (;;)
       {
-        AppMethodBeat.o(251185);
+        AppMethodBeat.o(195509);
         return b1;
         label119:
         b1 = b2;
-        if (this.LY == ';') {
-          b1 = gQ();
+        if (this.bse == ';') {
+          b1 = Eb();
         }
       }
     }
     
-    private byte gN()
+    private byte DY()
     {
-      AppMethodBeat.i(251188);
-      int j = this.LX;
+      AppMethodBeat.i(195520);
+      int j = this.bsd;
       for (;;)
       {
-        if (this.LX >= this.length) {
+        if (this.bsd >= this.length) {
           break label145;
         }
-        CharSequence localCharSequence = this.LV;
-        int k = this.LX;
-        this.LX = (k + 1);
-        this.LY = localCharSequence.charAt(k);
-        if (this.LY == '>')
+        CharSequence localCharSequence = this.bba;
+        int k = this.bsd;
+        this.bsd = (k + 1);
+        this.bse = localCharSequence.charAt(k);
+        if (this.bse == '>')
         {
-          AppMethodBeat.o(251188);
+          AppMethodBeat.o(195520);
           return 12;
         }
-        if ((this.LY == '"') || (this.LY == '\''))
+        if ((this.bse == '"') || (this.bse == '\''))
         {
-          k = this.LY;
-          if (this.LX < this.length)
+          k = this.bse;
+          if (this.bsd < this.length)
           {
-            localCharSequence = this.LV;
-            int m = this.LX;
-            this.LX = (m + 1);
+            localCharSequence = this.bba;
+            int m = this.bsd;
+            this.bsd = (m + 1);
             int i = localCharSequence.charAt(m);
-            this.LY = i;
+            this.bse = i;
             if (i != k) {
               break;
             }
@@ -336,43 +322,43 @@ public final class a
         }
       }
       label145:
-      this.LX = j;
-      this.LY = '<';
-      AppMethodBeat.o(251188);
+      this.bsd = j;
+      this.bse = '<';
+      AppMethodBeat.o(195520);
       return 13;
     }
     
-    private byte gO()
+    private byte DZ()
     {
-      AppMethodBeat.i(251189);
-      int j = this.LX;
+      AppMethodBeat.i(195535);
+      int j = this.bsd;
       for (;;)
       {
-        if (this.LX <= 0) {
+        if (this.bsd <= 0) {
           break label146;
         }
-        CharSequence localCharSequence = this.LV;
-        int k = this.LX - 1;
-        this.LX = k;
-        this.LY = localCharSequence.charAt(k);
-        if (this.LY == '<')
+        CharSequence localCharSequence = this.bba;
+        int k = this.bsd - 1;
+        this.bsd = k;
+        this.bse = localCharSequence.charAt(k);
+        if (this.bse == '<')
         {
-          AppMethodBeat.o(251189);
+          AppMethodBeat.o(195535);
           return 12;
         }
-        if (this.LY == '>') {
+        if (this.bse == '>') {
           break label146;
         }
-        if ((this.LY == '"') || (this.LY == '\''))
+        if ((this.bse == '"') || (this.bse == '\''))
         {
-          k = this.LY;
-          if (this.LX > 0)
+          k = this.bse;
+          if (this.bsd > 0)
           {
-            localCharSequence = this.LV;
-            int m = this.LX - 1;
-            this.LX = m;
+            localCharSequence = this.bba;
+            int m = this.bsd - 1;
+            this.bsd = m;
             int i = localCharSequence.charAt(m);
-            this.LY = i;
+            this.bse = i;
             if (i != k) {
               break;
             }
@@ -380,65 +366,79 @@ public final class a
         }
       }
       label146:
-      this.LX = j;
-      this.LY = '>';
-      AppMethodBeat.o(251189);
+      this.bsd = j;
+      this.bse = '>';
+      AppMethodBeat.o(195535);
       return 13;
     }
     
-    private byte gP()
+    private byte Ea()
     {
-      AppMethodBeat.i(251192);
+      AppMethodBeat.i(195545);
       char c;
       do
       {
-        if (this.LX >= this.length) {
+        if (this.bsd >= this.length) {
           break;
         }
-        CharSequence localCharSequence = this.LV;
-        int i = this.LX;
-        this.LX = (i + 1);
+        CharSequence localCharSequence = this.bba;
+        int i = this.bsd;
+        this.bsd = (i + 1);
         c = localCharSequence.charAt(i);
-        this.LY = c;
+        this.bse = c;
       } while (c != ';');
-      AppMethodBeat.o(251192);
+      AppMethodBeat.o(195545);
       return 12;
     }
     
-    private byte gQ()
+    private byte Eb()
     {
-      AppMethodBeat.i(251193);
-      int i = this.LX;
+      AppMethodBeat.i(195557);
+      int i = this.bsd;
       do
       {
-        if (this.LX <= 0) {
+        if (this.bsd <= 0) {
           break;
         }
-        CharSequence localCharSequence = this.LV;
-        int j = this.LX - 1;
-        this.LX = j;
-        this.LY = localCharSequence.charAt(j);
-        if (this.LY == '&')
+        CharSequence localCharSequence = this.bba;
+        int j = this.bsd - 1;
+        this.bsd = j;
+        this.bse = localCharSequence.charAt(j);
+        if (this.bse == '&')
         {
-          AppMethodBeat.o(251193);
+          AppMethodBeat.o(195557);
           return 12;
         }
-      } while (this.LY != ';');
-      this.LX = i;
-      this.LY = ';';
-      AppMethodBeat.o(251193);
+      } while (this.bse != ';');
+      this.bsd = i;
+      this.bse = ';';
+      AppMethodBeat.o(195557);
       return 13;
     }
     
-    final int gJ()
+    private static byte b(char paramChar)
     {
-      AppMethodBeat.i(251179);
-      this.LX = 0;
+      AppMethodBeat.i(195481);
+      if (paramChar < '܀')
+      {
+        b = bsb[paramChar];
+        AppMethodBeat.o(195481);
+        return b;
+      }
+      byte b = Character.getDirectionality(paramChar);
+      AppMethodBeat.o(195481);
+      return b;
+    }
+    
+    final int DU()
+    {
+      AppMethodBeat.i(195578);
+      this.bsd = 0;
       int j = 0;
       int k = 0;
       int i = 0;
-      while ((this.LX < this.length) && (j == 0)) {
-        switch (gL())
+      while ((this.bsd < this.length) && (j == 0)) {
+        switch (DW())
         {
         case 9: 
         case 3: 
@@ -471,7 +471,7 @@ public final class a
         case 0: 
           if (i == 0)
           {
-            AppMethodBeat.o(251179);
+            AppMethodBeat.o(195578);
             return -1;
           }
           j = i;
@@ -480,7 +480,7 @@ public final class a
         case 2: 
           if (i == 0)
           {
-            AppMethodBeat.o(251179);
+            AppMethodBeat.o(195578);
             return 1;
           }
           j = i;
@@ -488,16 +488,16 @@ public final class a
       }
       if (j == 0)
       {
-        AppMethodBeat.o(251179);
+        AppMethodBeat.o(195578);
         return 0;
       }
       if (k != 0)
       {
-        AppMethodBeat.o(251179);
+        AppMethodBeat.o(195578);
         return k;
       }
-      while (this.LX > 0) {
-        switch (gM())
+      while (this.bsd > 0) {
+        switch (DX())
         {
         default: 
           break;
@@ -505,7 +505,7 @@ public final class a
         case 15: 
           if (j == i)
           {
-            AppMethodBeat.o(251179);
+            AppMethodBeat.o(195578);
             return -1;
           }
           i -= 1;
@@ -514,7 +514,7 @@ public final class a
         case 17: 
           if (j == i)
           {
-            AppMethodBeat.o(251179);
+            AppMethodBeat.o(195578);
             return 1;
           }
           i -= 1;
@@ -523,18 +523,18 @@ public final class a
           i += 1;
         }
       }
-      AppMethodBeat.o(251179);
+      AppMethodBeat.o(195578);
       return 0;
     }
     
-    final int gK()
+    final int DV()
     {
-      AppMethodBeat.i(251180);
-      this.LX = this.length;
+      AppMethodBeat.i(195595);
+      this.bsd = this.length;
       int j = 0;
       int i = 0;
-      while (this.LX > 0) {
-        switch (gM())
+      while (this.bsd > 0) {
+        switch (DX())
         {
         case 9: 
         case 3: 
@@ -555,7 +555,7 @@ public final class a
         case 0: 
           if (i == 0)
           {
-            AppMethodBeat.o(251180);
+            AppMethodBeat.o(195595);
             return -1;
           }
           if (j == 0) {
@@ -566,7 +566,7 @@ public final class a
         case 15: 
           if (j == i)
           {
-            AppMethodBeat.o(251180);
+            AppMethodBeat.o(195595);
             return -1;
           }
           i -= 1;
@@ -575,7 +575,7 @@ public final class a
         case 2: 
           if (i == 0)
           {
-            AppMethodBeat.o(251180);
+            AppMethodBeat.o(195595);
             return 1;
           }
           if (j == 0) {
@@ -586,7 +586,7 @@ public final class a
         case 17: 
           if (j == i)
           {
-            AppMethodBeat.o(251180);
+            AppMethodBeat.o(195595);
             return 1;
           }
           i -= 1;
@@ -595,14 +595,14 @@ public final class a
           i += 1;
         }
       }
-      AppMethodBeat.o(251180);
+      AppMethodBeat.o(195595);
       return 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.core.e.a
  * JD-Core Version:    0.7.0.1
  */

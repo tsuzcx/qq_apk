@@ -3,6 +3,7 @@ package com.tencent.qbar;
 import android.graphics.Point;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.scanner.util.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
@@ -10,43 +11,46 @@ import java.util.List;
 
 public final class c
 {
-  public static int Zmg;
-  public static int Zmh;
-  public static int Zmi;
-  public static int Zmj;
-  public static int Zmk;
-  public static int Zml;
-  public static c Zmm;
-  public static c Zmn;
-  private boolean Aaj;
-  private Object Brg;
-  public long IMq;
-  private boolean IMt;
-  private int ImC;
-  public int ZmA;
-  public float ZmB;
-  public long ZmC;
-  int ZmD;
-  boolean ZmE;
-  private List<QbarNative.QBarCodeDetectInfo> ZmF;
-  private int ZmG;
-  private int ZmH;
-  private long Zmo;
-  public int Zmp;
-  private long Zmq;
-  private Point Zmr;
-  private String Zms;
-  private String Zmt;
-  private String Zmu;
-  private int Zmv;
-  private String Zmw;
-  private int Zmx;
-  private int Zmy;
-  private int Zmz;
+  public static int ahqA;
+  public static int ahqB;
+  public static int ahqC;
+  public static int ahqD;
+  public static int ahqE;
+  public static int ahqF;
+  public static int ahqG;
+  public static c ahqH;
+  public static c ahqI;
+  private Object GXz;
+  public long OTD;
+  private boolean OTG;
+  private String OTx;
+  private String OTy;
+  private int OjS;
+  private long ahqJ;
+  public int ahqK;
+  private long ahqL;
+  private Point ahqM;
+  private String ahqN;
+  private String ahqO;
+  private String ahqP;
+  private int ahqQ;
+  private String ahqR;
+  private int ahqS;
+  private int ahqT;
+  private int ahqU;
+  public int ahqV;
+  public float ahqW;
+  public long ahqX;
+  int ahqY;
+  boolean ahqZ;
+  private List<QbarNative.QBarCodeDetectInfo> ahra;
+  private int ahrb;
+  private int ahrc;
   public float decodeScale;
   public int detectTime;
-  private int fEH;
-  private int ftP;
+  private int hJx;
+  private int hyf;
+  private boolean lAr;
   private int pyramidLv;
   private int retryCount;
   public String scaleList;
@@ -55,78 +59,90 @@ public final class c
   static
   {
     AppMethodBeat.i(91151);
-    Zmg = 0;
-    Zmh = 1;
-    Zmi = 2;
-    Zmj = 1;
-    Zmk = 2;
-    Zml = 3;
-    Zmm = new c();
-    Zmn = new c();
+    ahqA = 0;
+    ahqB = 1;
+    ahqC = 2;
+    ahqD = 1;
+    ahqE = 2;
+    ahqF = 3;
+    ahqG = 4;
+    ahqH = new c();
+    ahqI = new c();
     AppMethodBeat.o(91151);
   }
   
   public c()
   {
     AppMethodBeat.i(91141);
-    this.Zmo = 0L;
-    this.IMt = false;
-    this.Zmp = 0;
-    this.Zmq = 0L;
-    this.ImC = -1;
-    this.Zmr = null;
+    this.ahqJ = 0L;
+    this.OTG = false;
+    this.ahqK = 0;
+    this.ahqL = 0L;
+    this.OjS = -1;
+    this.ahqM = null;
     this.retryCount = 0;
-    this.ftP = 0;
-    this.Zmy = 0;
-    this.fEH = 0;
-    this.IMq = 0L;
-    this.ZmA = 0;
-    this.ZmB = 1.0F;
-    this.ZmC = 0L;
-    this.ZmD = 0;
-    this.Aaj = false;
-    this.ZmG = 0;
-    this.ZmH = 0;
-    this.Brg = new Object();
+    this.hyf = 0;
+    this.ahqT = 0;
+    this.hJx = 0;
+    this.OTD = 0L;
+    this.ahqV = 0;
+    this.ahqW = 1.0F;
+    this.ahqX = 0L;
+    this.ahqY = 0;
+    this.lAr = false;
+    this.ahrb = 0;
+    this.ahrc = 0;
+    this.OTx = "";
+    this.OTy = "";
+    this.GXz = new Object();
     AppMethodBeat.o(91141);
   }
   
-  public final void WL(long paramLong)
+  public final void AW(long paramLong)
   {
     AppMethodBeat.i(91142);
     Log.i("MicroMsg.QBarEngineReporter", "addScanTime: %s", new Object[] { Long.valueOf(paramLong) });
-    this.Zmo += paramLong;
+    this.ahqJ += paramLong;
     AppMethodBeat.o(91142);
   }
   
-  public final void WM(long paramLong)
+  public final void AX(long paramLong)
   {
     AppMethodBeat.i(91147);
     Log.i("MicroMsg.QBarEngineReporter", "setScanSuccessTime: %s,", new Object[] { Long.valueOf(paramLong) });
-    this.Zmq = paramLong;
+    this.ahqL = paramLong;
     AppMethodBeat.o(91147);
+  }
+  
+  public final void a(h.d paramd)
+  {
+    if (paramd == null) {
+      return;
+    }
+    this.OTx = paramd.OTx;
+    this.OTy = paramd.OTy;
   }
   
   public final void a(String paramString1, String paramString2, String paramString3, WxQbarNative.QBarReportMsg paramQBarReportMsg, int paramInt, List<WxQbarNative.QBarReportMsg> paramList)
   {
     AppMethodBeat.i(91148);
-    this.Zms = paramString1;
-    this.Zmt = paramString2;
-    this.Zmu = paramString3;
-    this.ftP = paramInt;
-    this.Zmx = 0;
+    this.ahqN = paramString1;
+    this.ahqO = paramString2;
+    this.ahqP = paramString3;
+    this.hyf = paramInt;
+    this.ahqS = 0;
     if (paramQBarReportMsg != null)
     {
-      this.Zmv = paramQBarReportMsg.qrcodeVersion;
+      this.ahqQ = paramQBarReportMsg.qrcodeVersion;
       this.pyramidLv = paramQBarReportMsg.pyramidLv;
-      this.Zmw = paramQBarReportMsg.binaryMethod;
+      this.ahqR = paramQBarReportMsg.binaryMethod;
       this.scaleList = paramQBarReportMsg.scaleList;
       this.decodeScale = paramQBarReportMsg.decodeScale;
       this.detectTime = paramQBarReportMsg.detectTime;
       this.srTime = paramQBarReportMsg.srTime;
     }
-    this.ZmG = 0;
-    this.ZmH = 0;
+    this.ahrb = 0;
+    this.ahrc = 0;
     if (paramList != null)
     {
       paramQBarReportMsg = paramList.iterator();
@@ -134,72 +150,73 @@ public final class c
       {
         paramList = (WxQbarNative.QBarReportMsg)paramQBarReportMsg.next();
         if (paramList.inWhiteList) {
-          this.ZmG += 1;
+          this.ahrb += 1;
         } else if (paramList.inBlackList) {
-          this.ZmH += 1;
+          this.ahrc += 1;
         }
       }
     }
-    Log.i("MicroMsg.QBarEngineReporter", "setDecodeResult, decodeTypeName: %s, dataContent: %s, dataCharSet: %s, qrCodeVersion: %s, pyramidLv: %s, binarizerMethod: %s, resultSize %d, isFilterResult %d,scaleList %s,decodeScale %f,detectTime %d,srTime %d, whiteListHit %d, blackListHit %d", new Object[] { paramString1, paramString2, paramString3, Integer.valueOf(this.Zmv), Integer.valueOf(this.pyramidLv), this.Zmw, Integer.valueOf(paramInt), Integer.valueOf(0), this.scaleList, Float.valueOf(this.decodeScale), Integer.valueOf(this.detectTime), Integer.valueOf(this.srTime), Integer.valueOf(this.ZmG), Integer.valueOf(this.ZmH) });
+    Log.i("MicroMsg.QBarEngineReporter", "setDecodeResult, decodeTypeName: %s, dataContent: %s, dataCharSet: %s, qrCodeVersion: %s, pyramidLv: %s, binarizerMethod: %s, resultSize %d, isFilterResult %d,scaleList %s,decodeScale %f,detectTime %d,srTime %d, whiteListHit %d, blackListHit %d", new Object[] { paramString1, paramString2, paramString3, Integer.valueOf(this.ahqQ), Integer.valueOf(this.pyramidLv), this.ahqR, Integer.valueOf(paramInt), Integer.valueOf(0), this.scaleList, Float.valueOf(this.decodeScale), Integer.valueOf(this.detectTime), Integer.valueOf(this.srTime), Integer.valueOf(this.ahrb), Integer.valueOf(this.ahrc) });
     AppMethodBeat.o(91148);
   }
   
-  public final void aAj(int paramInt)
+  public final void aGV(int paramInt)
   {
     AppMethodBeat.i(91145);
     Log.i("MicroMsg.QBarEngineReporter", "setScanScene, scene: %s", new Object[] { Integer.valueOf(paramInt) });
-    this.ImC = paramInt;
+    this.OjS = paramInt;
     AppMethodBeat.o(91145);
   }
   
-  public final void aAk(int paramInt)
+  public final void aGW(int paramInt)
   {
-    if (this.Zmz != 2) {
-      this.Zmz = paramInt;
+    if (this.ahqU != 2) {
+      this.ahqU = paramInt;
     }
   }
   
-  public final void cig()
+  public final void cIX()
   {
     AppMethodBeat.i(91149);
     for (;;)
     {
       int j;
-      synchronized (this.Brg)
+      synchronized (this.GXz)
       {
-        if (this.Aaj)
+        if (this.lAr)
         {
           Log.i("MicroMsg.QBarEngineReporter", "doReport, already report");
           AppMethodBeat.o(91149);
           return;
         }
-        j = this.Zmp;
-        long l1 = this.Zmo;
-        long l2 = this.Zmq;
-        int k = this.ImC;
-        Object localObject1 = this.Zmr;
+        int n = e.gTX();
+        j = this.ahqK;
+        long l1 = this.ahqJ;
+        long l2 = this.ahqL;
+        int k = this.OjS;
+        Object localObject1 = this.ahqM;
         int m = this.retryCount;
-        boolean bool = this.IMt;
-        str1 = this.Zms;
-        localObject3 = this.Zmt;
-        Object localObject5 = this.Zmu;
-        int n = this.Zmv;
-        int i1 = this.pyramidLv;
-        String str2 = this.Zmw;
-        if (Util.isNullOrNil(this.Zmt)) {
-          break label1059;
+        boolean bool = this.OTG;
+        str1 = this.ahqN;
+        localObject3 = this.ahqO;
+        Object localObject5 = this.ahqP;
+        int i1 = this.ahqQ;
+        int i2 = this.pyramidLv;
+        String str2 = this.ahqR;
+        if (Util.isNullOrNil(this.ahqO)) {
+          break label1112;
         }
-        i = this.Zmt.length();
-        Log.i("MicroMsg.QBarEngineReporter", "doReport, scanTotalFrames: %s, totalScanTime: %s, scanSuccessTime: %s, scanScene: %s, scanResolution: %s, retryCount: %s, scanSuccess: %s, decodeTypeName: %s, dataContent: %s, dataCharSet: %s, qrCodeVersion: %s, pyramidLv: %s, binarizerMethod: %s,dataContentLen: %d,zoomLog: %s,lightMode: %d, tabType: %d,zoomCount: %s, zoomLastCostTime: %s, totalZoomFactor: %s, waitingFrame: %s", new Object[] { Integer.valueOf(j), Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(k), localObject1, Integer.valueOf(m), Boolean.valueOf(bool), str1, localObject3, localObject5, Integer.valueOf(n), Integer.valueOf(i1), str2, Integer.valueOf(i), this.Zmy, Integer.valueOf(this.Zmz), Integer.valueOf(this.fEH), Integer.valueOf(this.ZmA), Long.valueOf(this.ZmC), Float.valueOf(this.ZmB), Integer.valueOf(this.ZmD) });
-        if (this.Zmr != null)
+        i = this.ahqO.length();
+        Log.i("MicroMsg.QBarEngineReporter", "doReport, scanTotalFrames: %s, totalScanTime: %s, scanSuccessTime: %s, scanScene: %s, scanResolution: %s, retryCount: %s, scanSuccess: %s, decodeTypeName: %s, dataContent: %s, dataCharSet: %s, qrCodeVersion: %s, pyramidLv: %s, binarizerMethod: %s,dataContentLen: %d,zoomLog: %s,lightMode: %d, tabType: %d,zoomCount: %s, zoomLastCostTime: %s, totalZoomFactor: %s, waitingFrame: %s, qbarBackend:%d, tabSession:%s, scanSession:%s", new Object[] { Integer.valueOf(j), Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(k), localObject1, Integer.valueOf(m), Boolean.valueOf(bool), str1, localObject3, localObject5, Integer.valueOf(i1), Integer.valueOf(i2), str2, Integer.valueOf(i), this.ahqT, Integer.valueOf(this.ahqU), Integer.valueOf(this.hJx), Integer.valueOf(this.ahqV), Long.valueOf(this.ahqX), Float.valueOf(this.ahqW), Integer.valueOf(this.ahqY), Integer.valueOf(n), this.OTx, this.OTy });
+        if (this.ahqM != null)
         {
-          str1 = this.Zmr.x + "x" + this.Zmr.y;
-          if ((this.IMt) || (this.ZmF == null)) {
-            break label1064;
+          str1 = this.ahqM.x + "x" + this.ahqM.y;
+          if ((this.OTG) || (this.ahra == null)) {
+            break label1117;
           }
-          k = this.ZmF.size();
+          k = this.ahra.size();
           Log.i("MicroMsg.QBarEngineReporter", "doReport possibleResults %d", new Object[] { Integer.valueOf(k) });
-          localObject5 = this.ZmF.iterator();
+          localObject5 = this.ahra.iterator();
           j = 0;
           localObject1 = "";
           localObject3 = localObject1;
@@ -207,39 +224,39 @@ public final class c
           if (((Iterator)localObject5).hasNext())
           {
             localObject3 = (QbarNative.QBarCodeDetectInfo)((Iterator)localObject5).next();
-            if (j < this.ZmF.size() - 1)
+            if (j < this.ahra.size() - 1)
             {
               localObject1 = (String)localObject1 + ((QbarNative.QBarCodeDetectInfo)localObject3).prob + "|";
-              break label1052;
+              break label1105;
             }
             localObject1 = (String)localObject1 + ((QbarNative.QBarCodeDetectInfo)localObject3).prob;
-            break label1052;
+            break label1105;
           }
-          localObject1 = h.IzE;
-          n = this.Zmp;
-          l1 = this.Zmo;
-          l2 = this.Zmq;
-          i1 = this.ImC;
-          int i2 = this.retryCount;
-          if (this.IMt)
+          localObject1 = h.OAn;
+          i1 = this.ahqK;
+          l1 = this.ahqJ;
+          l2 = this.ahqL;
+          i2 = this.OjS;
+          int i3 = this.retryCount;
+          if (this.OTG)
           {
             j = 0;
-            localObject5 = this.Zms;
-            str2 = this.Zmu;
-            int i3 = this.Zmv;
-            int i4 = this.pyramidLv;
-            String str3 = this.Zmw;
-            if (!Util.isNullOrNil(this.Zmt))
+            localObject5 = this.ahqN;
+            str2 = this.ahqP;
+            int i4 = this.ahqQ;
+            int i5 = this.pyramidLv;
+            String str3 = this.ahqR;
+            if (!Util.isNullOrNil(this.ahqO))
             {
-              k = this.Zmt.length();
-              String str4 = this.Zmy;
-              int i5 = this.Zmz;
-              if (!this.ZmE) {
+              k = this.ahqO.length();
+              String str4 = this.ahqT;
+              int i6 = this.ahqU;
+              if (!this.ahqZ) {
                 continue;
               }
               m = 1;
-              ((h)localObject1).a(13233, new Object[] { Integer.valueOf(n), Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i1), str1, Integer.valueOf(i2), Integer.valueOf(j), localObject5, "", str2, Integer.valueOf(i3), Integer.valueOf(i4), str3, Integer.valueOf(k), str4, Integer.valueOf(i5), Integer.valueOf(m), Integer.valueOf(0), a.getVersion(), Integer.valueOf(this.ftP), Integer.valueOf(this.Zmx), Integer.valueOf(i), localObject3, this.scaleList, Integer.valueOf((int)(this.decodeScale * 10.0F)), Integer.valueOf(this.detectTime), Integer.valueOf(this.srTime), Integer.valueOf(this.ZmG), Integer.valueOf(this.ZmH), Integer.valueOf(this.fEH), Integer.valueOf(this.ftP), Integer.valueOf(this.ZmA), Long.valueOf(this.ZmC), Integer.valueOf((int)(this.ZmB * 100.0F)), Integer.valueOf(this.ZmD) });
-              this.Aaj = true;
+              ((h)localObject1).b(13233, new Object[] { Integer.valueOf(i1), Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i2), str1, Integer.valueOf(i3), Integer.valueOf(j), localObject5, "", str2, Integer.valueOf(i4), Integer.valueOf(i5), str3, Integer.valueOf(k), str4, Integer.valueOf(i6), Integer.valueOf(m), Integer.valueOf(0), a.getVersion(), Integer.valueOf(this.hyf), Integer.valueOf(this.ahqS), Integer.valueOf(i), localObject3, this.scaleList, Integer.valueOf((int)(this.decodeScale * 10.0F)), Integer.valueOf(this.detectTime), Integer.valueOf(this.srTime), Integer.valueOf(this.ahrb), Integer.valueOf(this.ahrc), Integer.valueOf(this.hJx), Integer.valueOf(this.hyf), Integer.valueOf(this.ahqV), Long.valueOf(this.ahqX), Integer.valueOf((int)(this.ahqW * 100.0F)), Integer.valueOf(this.ahqY), Integer.valueOf(n), this.OTx, this.OTy });
+              this.lAr = true;
               AppMethodBeat.o(91149);
             }
           }
@@ -255,78 +272,80 @@ public final class c
       }
       String str1 = "";
       continue;
-      label1052:
+      label1105:
       j += 1;
       continue;
-      label1059:
+      label1112:
       int i = 0;
       continue;
-      label1064:
+      label1117:
       Object localObject3 = "";
       i = 0;
     }
   }
   
-  public final void inC()
+  public final void jWK()
   {
     AppMethodBeat.i(91143);
     Log.i("MicroMsg.QBarEngineReporter", "markScanSuccess");
-    this.IMt = true;
+    this.OTG = true;
     AppMethodBeat.o(91143);
   }
   
-  public final void inD()
+  public final void jWL()
   {
     AppMethodBeat.i(91144);
-    Log.i("MicroMsg.QBarEngineReporter", "addScanFrame, current scan frame: %s", new Object[] { Integer.valueOf(this.Zmp) });
-    this.Zmp += 1;
+    Log.i("MicroMsg.QBarEngineReporter", "addScanFrame, current scan frame: %s", new Object[] { Integer.valueOf(this.ahqK) });
+    this.ahqK += 1;
     AppMethodBeat.o(91144);
   }
   
-  public final void nI(int paramInt1, int paramInt2)
+  public final void pF(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(91146);
     Log.i("MicroMsg.QBarEngineReporter", "setScanResolution, width: %s, height: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    this.Zmr = new Point(paramInt1, paramInt2);
+    this.ahqM = new Point(paramInt1, paramInt2);
     AppMethodBeat.o(91146);
   }
   
   public final void reset()
   {
     AppMethodBeat.i(91150);
-    synchronized (this.Brg)
+    synchronized (this.GXz)
     {
-      this.Zmo = 0L;
-      this.IMt = false;
-      this.Zmp = 0;
-      this.ImC = -1;
-      this.Zmr = null;
+      this.ahqJ = 0L;
+      this.OTG = false;
+      this.ahqK = 0;
+      this.OjS = -1;
+      this.ahqM = null;
       this.retryCount = 0;
-      this.Zms = "";
-      this.Zmt = "";
-      this.Zmu = "";
-      this.Zmv = 0;
+      this.ahqN = "";
+      this.ahqO = "";
+      this.ahqP = "";
+      this.ahqQ = 0;
       this.pyramidLv = 0;
-      this.Zmw = "";
-      this.Zmq = 0L;
-      this.Aaj = false;
-      this.Zmy = 0;
-      this.Zmz = 0;
-      this.ZmE = false;
-      this.ftP = 0;
-      this.Zmx = 0;
-      this.ZmF = null;
+      this.ahqR = "";
+      this.ahqL = 0L;
+      this.lAr = false;
+      this.ahqT = 0;
+      this.ahqU = 0;
+      this.ahqZ = false;
+      this.hyf = 0;
+      this.ahqS = 0;
+      this.ahra = null;
       this.scaleList = "";
       this.decodeScale = 0.0F;
       this.detectTime = 0;
       this.srTime = 0;
-      this.ZmG = 0;
-      this.ZmH = 0;
-      this.fEH = 0;
-      this.IMq = 0L;
-      this.ZmA = 0;
-      this.ZmC = 0L;
-      this.ZmD = 0;
+      this.ahrb = 0;
+      this.ahrc = 0;
+      this.hJx = 0;
+      this.OTD = 0L;
+      this.ahqV = 0;
+      this.ahqX = 0L;
+      this.ahqY = 0;
+      this.OTx = "";
+      this.OTy = "";
       Log.i("MicroMsg.QBarEngineReporter", "reset");
       AppMethodBeat.o(91150);
       return;
@@ -337,13 +356,13 @@ public final class c
   {
     AppMethodBeat.i(176205);
     Log.i("MicroMsg.QBarEngineReporter", "alvinluo setReportTabType tabType: %d", new Object[] { Integer.valueOf(paramInt) });
-    this.fEH = paramInt;
+    this.hJx = paramInt;
     AppMethodBeat.o(176205);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.qbar.c
  * JD-Core Version:    0.7.0.1
  */

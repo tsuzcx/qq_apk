@@ -12,6 +12,8 @@ public class XWebLibraryLoader
     AppMethodBeat.i(4312);
     IXWebLibraryLoader local1 = new IXWebLibraryLoader()
     {
+      private byte _hellAccFlag_;
+      
       public final boolean afterLoad()
       {
         return false;
@@ -27,7 +29,11 @@ public class XWebLibraryLoader
         AppMethodBeat.i(4308);
         try
         {
-          System.loadLibrary(paramAnonymousString);
+          com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG(paramAnonymousString);
+          Object localObject = new Object();
+          com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/xweb/skia_canvas/XWebLibraryLoader$1", "load", "(Ljava/lang/String;)Z", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+          System.loadLibrary((String)locala.sb(0));
+          com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/xweb/skia_canvas/XWebLibraryLoader$1", "load", "(Ljava/lang/String;)Z", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
           AppMethodBeat.o(4308);
           return true;
         }
@@ -75,7 +81,7 @@ public class XWebLibraryLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.skia_canvas.XWebLibraryLoader
  * JD-Core Version:    0.7.0.1
  */

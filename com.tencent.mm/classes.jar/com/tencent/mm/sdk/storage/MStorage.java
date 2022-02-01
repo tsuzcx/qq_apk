@@ -1,34 +1,32 @@
 package com.tencent.mm.sdk.storage;
 
 import android.os.Looper;
-import com.tencent.e.j.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.storage.observer.StorageObserverOwner;
+import com.tencent.threadpool.j.a;
 
 public abstract class MStorage
-  extends ObservableStorage<Object>
   implements IStorage
 {
-  private final MStorageEvent<IOnStorageChange, MStorageEventData> defaults = new MStorageEvent()
+  private final MStorageEvent<MStorage.IOnStorageChange, MStorageEventData> defaults = new MStorageEvent()
   {
     protected void processEvent(MStorage.IOnStorageChange paramAnonymousIOnStorageChange, MStorageEventData paramAnonymousMStorageEventData)
     {
-      AppMethodBeat.i(192915);
+      AppMethodBeat.i(244218);
       MStorage.this.processEvent(paramAnonymousIOnStorageChange, paramAnonymousMStorageEventData);
-      AppMethodBeat.o(192915);
+      AppMethodBeat.o(244218);
     }
   };
   private final MStorageEvent<IOnStorageLoaded, String> loadedListener = new MStorageEvent()
   {
     protected void processEvent(MStorage.IOnStorageLoaded paramAnonymousIOnStorageLoaded, String paramAnonymousString)
     {
-      AppMethodBeat.i(193769);
+      AppMethodBeat.i(244219);
       MStorage.this.processLoaded(paramAnonymousIOnStorageLoaded, paramAnonymousString);
-      AppMethodBeat.o(193769);
+      AppMethodBeat.o(244219);
     }
   };
   
-  private void processEvent(IOnStorageChange paramIOnStorageChange, MStorageEventData paramMStorageEventData)
+  private void processEvent(MStorage.IOnStorageChange paramIOnStorageChange, MStorageEventData paramMStorageEventData)
   {
     paramIOnStorageChange.onNotifyChange(paramMStorageEventData.event, paramMStorageEventData);
   }
@@ -38,24 +36,24 @@ public abstract class MStorage
     paramIOnStorageLoaded.onNotifyLoaded();
   }
   
-  public void add(a parama, IOnStorageChange paramIOnStorageChange)
-  {
-    this.defaults.add(paramIOnStorageChange, parama);
-  }
-  
-  public void add(IOnStorageChange paramIOnStorageChange)
+  public void add(MStorage.IOnStorageChange paramIOnStorageChange)
   {
     this.defaults.add(paramIOnStorageChange, Looper.getMainLooper());
   }
   
-  public void add(IOnStorageChange paramIOnStorageChange, Looper paramLooper)
+  public void add(MStorage.IOnStorageChange paramIOnStorageChange, Looper paramLooper)
   {
     this.defaults.add(paramIOnStorageChange, paramLooper);
   }
   
-  public void add(String paramString, IOnStorageChange paramIOnStorageChange)
+  public void add(a parama, MStorage.IOnStorageChange paramIOnStorageChange)
   {
-    this.defaults.add(paramIOnStorageChange, a.bDn(paramString));
+    this.defaults.add(paramIOnStorageChange, parama);
+  }
+  
+  public void add(String paramString, MStorage.IOnStorageChange paramIOnStorageChange)
+  {
+    this.defaults.add(paramIOnStorageChange, a.bFV(paramString));
   }
   
   public void addLoadedListener(IOnStorageLoaded paramIOnStorageLoaded)
@@ -68,7 +66,6 @@ public abstract class MStorage
     MStorageEventData localMStorageEventData = new MStorageEventData("*");
     this.defaults.event(localMStorageEventData);
     this.defaults.doNotify();
-    getOwner().doNotify(localMStorageEventData);
   }
   
   public void doNotify(String paramString)
@@ -76,7 +73,6 @@ public abstract class MStorage
     paramString = new MStorageEventData(paramString);
     this.defaults.event(paramString);
     this.defaults.doNotify();
-    getOwner().doNotify(paramString);
   }
   
   public void doNotify(String paramString, int paramInt, Object paramObject)
@@ -88,13 +84,11 @@ public abstract class MStorage
     localMStorageEventData.stg = this;
     this.defaults.event(localMStorageEventData);
     this.defaults.doNotify();
-    getOwner().doNotify(localMStorageEventData);
   }
   
   public void lock()
   {
     this.defaults.lock();
-    getOwner().lock();
   }
   
   public int lockCount()
@@ -102,7 +96,7 @@ public abstract class MStorage
     return this.defaults.lockCount();
   }
   
-  public void remove(IOnStorageChange paramIOnStorageChange)
+  public void remove(MStorage.IOnStorageChange paramIOnStorageChange)
   {
     this.defaults.remove(paramIOnStorageChange);
   }
@@ -115,12 +109,6 @@ public abstract class MStorage
   public void unlock()
   {
     this.defaults.unlock();
-    getOwner().unlock();
-  }
-  
-  public static abstract interface IOnStorageChange
-  {
-    public abstract void onNotifyChange(String paramString, MStorageEventData paramMStorageEventData);
   }
   
   public static abstract interface IOnStorageLoaded
@@ -130,7 +118,7 @@ public abstract class MStorage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sdk.storage.MStorage
  * JD-Core Version:    0.7.0.1
  */

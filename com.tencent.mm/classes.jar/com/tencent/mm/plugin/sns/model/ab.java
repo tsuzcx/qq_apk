@@ -1,62 +1,65 @@
 package com.tencent.mm.plugin.sns.model;
 
-import android.database.Cursor;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.kernel.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
-import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.sns.b.b;
-import com.tencent.mm.plugin.sns.storage.l;
-import com.tencent.mm.plugin.sns.storage.n;
+import com.tencent.mm.network.m;
+import com.tencent.mm.plugin.sns.data.t;
+import com.tencent.mm.plugin.sns.storage.a.a;
+import com.tencent.mm.plugin.sns.storage.q;
+import com.tencent.mm.plugin.sns.storage.r;
+import com.tencent.mm.plugin.sns.storage.u;
+import com.tencent.mm.plugin.sns.storage.v;
+import com.tencent.mm.plugin.sns.storage.w;
+import com.tencent.mm.plugin.sns.ui.widget.Tiger2022Helper;
 import com.tencent.mm.protocal.protobuf.SnsObject;
-import com.tencent.mm.protocal.protobuf.elj;
-import com.tencent.mm.protocal.protobuf.elk;
-import com.tencent.mm.protocal.protobuf.ell;
+import com.tencent.mm.protocal.protobuf.ffs;
+import com.tencent.mm.protocal.protobuf.fft;
+import com.tencent.mm.protocal.protobuf.ffu;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.vfs.y;
 import java.util.LinkedList;
 import java.util.Vector;
 
 public final class ab
-  extends q
-  implements com.tencent.mm.network.m, b
+  extends p
+  implements m, com.tencent.mm.plugin.sns.c.b
 {
-  private static Vector<String> JWt;
-  private int BAV;
-  private String JVL;
-  private boolean JVe;
-  private long JVf;
-  long JVg;
-  public int JVi;
-  private boolean JWA;
-  public long JWB;
-  public int JWC;
-  public int JWD;
-  private long JWd;
-  private boolean JWg;
-  private int JWu;
-  private boolean JWv;
-  private String JWw;
-  public long JWx;
-  private boolean JWy;
-  private boolean JWz;
-  public i callback;
-  private boolean fCB;
-  private com.tencent.mm.an.d rr;
+  private static Vector<String> Qtz;
+  private int Hit;
+  private String QsM;
+  private boolean Qsg;
+  long Qsh;
+  public int Qsj;
+  private int QtA;
+  private boolean QtB;
+  private String QtC;
+  public long QtD;
+  private boolean QtE;
+  private boolean QtF;
+  private boolean QtG;
+  public long QtH;
+  public int QtI;
+  public int QtJ;
+  private long Qte;
+  private boolean Qth;
+  public com.tencent.mm.am.h callback;
+  private boolean hHq;
+  private long maxId;
+  private com.tencent.mm.am.c rr;
   private int sourceType;
   String userName;
   
   static
   {
     AppMethodBeat.i(95688);
-    JWt = new Vector();
+    Qtz = new Vector();
     AppMethodBeat.o(95688);
   }
   
@@ -69,162 +72,165 @@ public final class ab
   
   public ab(String paramString, long paramLong, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    AppMethodBeat.i(201876);
-    this.JWd = 0L;
-    this.JVf = 0L;
-    this.JVg = 0L;
-    this.JWu = 0;
-    this.JWv = false;
-    this.JVL = "";
-    this.JWw = "";
-    this.JWx = 0L;
-    this.JWy = false;
-    this.JWz = false;
-    this.JWg = false;
-    this.JWA = false;
-    this.JVi = 0;
-    this.JWC = -1;
-    this.JWD = 0;
-    this.BAV = 0;
-    this.BAV = paramInt6;
+    AppMethodBeat.i(309407);
+    this.Qte = 0L;
+    this.maxId = 0L;
+    this.Qsh = 0L;
+    this.QtA = 0;
+    this.QtB = false;
+    this.QsM = "";
+    this.QtC = "";
+    this.QtD = 0L;
+    this.QtE = false;
+    this.QtF = false;
+    this.Qth = false;
+    this.QtG = false;
+    this.Qsj = 0;
+    this.QtI = -1;
+    this.QtJ = 0;
+    this.Hit = 0;
+    this.Hit = paramInt6;
     this.userName = paramString;
-    this.JVf = paramLong;
-    this.fCB = paramBoolean;
-    this.JWC = paramInt2;
+    this.maxId = paramLong;
+    this.hHq = paramBoolean;
+    this.QtI = paramInt2;
     Object localObject;
     if (paramLong == 0L)
     {
       Log.i("MicroMsg.NetSceneSnsUserPage", "fp userName ".concat(String.valueOf(paramString)));
       this.sourceType = paramInt4;
-      this.JWD = paramInt5;
-      localObject = new d.a();
-      ((d.a)localObject).lBU = new elk();
-      ((d.a)localObject).lBV = new ell();
-      ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/mmsnsuserpage";
-      ((d.a)localObject).funcId = 212;
-      ((d.a)localObject).lBW = 99;
-      ((d.a)localObject).respCmdId = 1000000099;
-      this.rr = ((d.a)localObject).bgN();
-      localObject = (elk)d.b.b(this.rr.lBR);
-      ((elk)localObject).Username = paramString;
-      ((elk)localObject).UlB = paramLong;
-      ((elk)localObject).Uny = paramInt3;
+      this.QtJ = paramInt5;
+      localObject = new c.a();
+      ((c.a)localObject).otE = new fft();
+      ((c.a)localObject).otF = new ffu();
+      ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/mmsnsuserpage";
+      ((c.a)localObject).funcId = 212;
+      ((c.a)localObject).otG = 99;
+      ((c.a)localObject).respCmdId = 1000000099;
+      this.rr = ((c.a)localObject).bEF();
+      localObject = (fft)c.b.b(this.rr.otB);
+      ((fft)localObject).Username = paramString;
+      ((fft)localObject).abDv = paramLong;
+      ((fft)localObject).abFH = paramInt3;
+      if (!MultiProcessMMKV.getDefault().getBoolean("ShowWithTaEntrance_".concat(String.valueOf(paramString)), false)) {
+        ((fft)localObject).abFJ = 1;
+      }
       if (paramLong != 0L) {
-        break label403;
+        break label428;
       }
     }
-    label403:
+    label428:
     for (boolean bool = true;; bool = false)
     {
-      this.JVe = bool;
-      if ((paramInt2 != aw.Kbk) && (paramInt2 != aw.Kbl) && (paramInt2 != aw.Kbj)) {
-        break label409;
+      this.Qsg = bool;
+      if ((paramInt2 != ay.QyA) && (paramInt2 != ay.QyB) && (paramInt2 != ay.Qyz)) {
+        break label434;
       }
-      ((elk)localObject).UmO = 0L;
-      ((elk)localObject).Cqs = paramInt1;
-      if (paramInt2 == aw.Kbk) {
-        ((elk)localObject).UmU = 1;
+      ((fft)localObject).abEV = 0L;
+      ((fft)localObject).IcB = paramInt1;
+      if (paramInt2 == ay.QyA) {
+        ((fft)localObject).abFb = 1;
       }
       this.sourceType = 16;
-      Log.i("MicroMsg.NetSceneSnsUserPage", "maxId:%s, minId:%s, snsSource:%s, pullType:%s", new Object[] { com.tencent.mm.plugin.sns.data.t.Qu(paramLong), com.tencent.mm.plugin.sns.data.t.Qu(this.JVg), Integer.valueOf(paramInt1), Integer.valueOf(((elk)localObject).UmU) });
-      this.JWd = paramLong;
-      AppMethodBeat.o(201876);
+      Log.i("MicroMsg.NetSceneSnsUserPage", "maxId:%s, minId:%s, snsSource:%s, pullType:%s", new Object[] { t.uA(paramLong), t.uA(this.Qsh), Integer.valueOf(paramInt1), Integer.valueOf(((fft)localObject).abFb) });
+      this.Qte = paramLong;
+      AppMethodBeat.o(309407);
       return;
       Log.i("MicroMsg.NetSceneSnsUserPage", "np userName ".concat(String.valueOf(paramString)));
       break;
     }
-    label409:
-    paramInt2 = aj.fOy().baj(paramString);
-    n localn = aj.fOI();
+    label434:
+    paramInt2 = al.hgr().aYB(paramString);
+    w localw = al.hgB();
     long l;
-    if (this.JVe)
+    if (this.Qsg)
     {
       l = 0L;
-      label433:
-      this.JVg = localn.a(l, paramInt2, paramString, paramBoolean);
-      ((elk)localObject).UmO = this.JVg;
-      paramInt3 = d.a(this.JVg, paramLong, paramString);
-      ((elk)localObject).UmP = paramInt3;
-      ((elk)localObject).Cqs = paramInt1;
-      if (this.JVe) {
-        if (!fOf()) {
-          break label629;
+      label458:
+      this.Qsh = localw.a(l, paramInt2, paramString, paramBoolean);
+      ((fft)localObject).abEV = this.Qsh;
+      paramInt3 = d.b(this.Qsh, paramLong, paramString);
+      ((fft)localObject).abEW = paramInt3;
+      ((fft)localObject).IcB = paramInt1;
+      if (this.Qsg) {
+        if (!hfS()) {
+          break label651;
         }
       }
     }
-    label629:
-    for (this.JVL = aj.fOM().bbr(paramString).field_albumMd5;; this.JVL = aj.fOM().bbr(paramString).field_md5)
+    label651:
+    for (this.QsM = al.hgF().aZT(paramString);; this.QsM = al.hgF().aZS(paramString))
     {
-      if (this.JVL == null) {
-        this.JVL = "";
+      if (this.QsM == null) {
+        this.QsM = "";
       }
-      ((elk)localObject).UlA = this.JVL;
-      Log.i("MicroMsg.NetSceneSnsUserPage", "nextCount: " + paramInt2 + " maxId:" + com.tencent.mm.plugin.sns.data.t.Qu(paramLong) + " minId:" + com.tencent.mm.plugin.sns.data.t.Qu(this.JVg) + " lastReqTime:" + paramInt3 + " snsSource:" + paramInt1 + " FirstPageMd5:" + this.JVL);
+      ((fft)localObject).abDu = this.QsM;
+      Log.i("MicroMsg.NetSceneSnsUserPage", "nextCount: " + paramInt2 + " maxId:" + t.uA(paramLong) + " minId:" + t.uA(this.Qsh) + " lastReqTime:" + paramInt3 + " snsSource:" + paramInt1 + " FirstPageMd5:" + this.QsM);
       break;
       l = paramLong;
-      break label433;
+      break label458;
     }
   }
   
-  private void a(final elk paramelk)
+  private void a(final fft paramfft)
   {
-    AppMethodBeat.i(201981);
-    aj.fwa().post(new Runnable()
+    AppMethodBeat.i(309417);
+    al.gHI().post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(269733);
-        Log.i("MicroMsg.NetSceneSnsUserPage", "doFetchByContinueID continueID:%s", new Object[] { Long.valueOf(paramelk.UlB) });
-        com.tencent.mm.kernel.h.aHH();
-        com.tencent.mm.kernel.h.aHF().kcd.a(new ab(paramelk.Username, paramelk.UlB, ab.a(ab.this), paramelk.Cqs, ab.this.JWC, paramelk.Uny, ab.b(ab.this), ab.this.JWD, ab.c(ab.this) + 1), 0);
-        AppMethodBeat.o(269733);
+        AppMethodBeat.i(309472);
+        Log.i("MicroMsg.NetSceneSnsUserPage", "doFetchByContinueID continueID:%s", new Object[] { Long.valueOf(paramfft.abDv) });
+        com.tencent.mm.kernel.h.baF();
+        com.tencent.mm.kernel.h.baD().mCm.a(new ab(paramfft.Username, paramfft.abDv, ab.a(ab.this), paramfft.IcB, ab.this.QtI, paramfft.abFH, ab.b(ab.this), ab.this.QtJ, ab.c(ab.this) + 1), 0);
+        AppMethodBeat.o(309472);
       }
     });
-    AppMethodBeat.o(201981);
+    AppMethodBeat.o(309417);
   }
   
-  private void a(ell paramell, String paramString)
+  private void a(ffu paramffu, String paramString)
   {
     AppMethodBeat.i(95685);
-    an.a(this.userName, this.sourceType, paramell.RPF, paramString);
-    if (this.JVf == 0L) {}
-    for (this.JVf = ((SnsObject)paramell.RPF.getFirst()).Id;; this.JVf = d.Qy(this.JVf))
+    ap.a(this.userName, this.sourceType, paramffu.YMT, paramString);
+    if (this.maxId == 0L) {}
+    for (this.maxId = ((SnsObject)paramffu.YMT.getFirst()).Id;; this.maxId = d.uE(this.maxId))
     {
-      this.JVg = ((SnsObject)paramell.RPF.getLast()).Id;
-      Log.i("MicroMsg.NetSceneSnsUserPage", "insertListAndUpdateFaultInfo userName %s maxId %s minId %s NewRequestTime %s", new Object[] { this.userName, Long.valueOf(this.JVf), Long.valueOf(this.JVg), Integer.valueOf(paramell.Unb) });
-      d.f(this.userName, this.JVf, this.JVg, paramell.Unb);
+      this.Qsh = ((SnsObject)paramffu.YMT.getLast()).Id;
+      Log.i("MicroMsg.NetSceneSnsUserPage", "insertListAndUpdateFaultInfo userName %s maxId %s minId %s NewRequestTime %s", new Object[] { this.userName, Long.valueOf(this.maxId), Long.valueOf(this.Qsh), Integer.valueOf(paramffu.abFi) });
+      d.f(this.userName, this.maxId, this.Qsh, paramffu.abFi);
       AppMethodBeat.o(95685);
       return;
     }
   }
   
   /* Error */
-  public static boolean aZY(String paramString)
+  public static boolean aYm(String paramString)
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc_w 373
+    //   3: ldc_w 382
     //   6: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: getstatic 58	com/tencent/mm/plugin/sns/model/ab:JWt	Ljava/util/Vector;
+    //   9: getstatic 58	com/tencent/mm/plugin/sns/model/ab:Qtz	Ljava/util/Vector;
     //   12: aload_0
-    //   13: invokevirtual 377	java/util/Vector:contains	(Ljava/lang/Object;)Z
+    //   13: invokevirtual 386	java/util/Vector:contains	(Ljava/lang/Object;)Z
     //   16: ifeq +16 -> 32
     //   19: iconst_0
     //   20: istore_1
-    //   21: ldc_w 373
+    //   21: ldc_w 382
     //   24: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   27: ldc 2
     //   29: monitorexit
     //   30: iload_1
     //   31: ireturn
-    //   32: getstatic 58	com/tencent/mm/plugin/sns/model/ab:JWt	Ljava/util/Vector;
+    //   32: getstatic 58	com/tencent/mm/plugin/sns/model/ab:Qtz	Ljava/util/Vector;
     //   35: aload_0
-    //   36: invokevirtual 380	java/util/Vector:add	(Ljava/lang/Object;)Z
+    //   36: invokevirtual 389	java/util/Vector:add	(Ljava/lang/Object;)Z
     //   39: pop
     //   40: iconst_1
     //   41: istore_1
-    //   42: ldc_w 373
+    //   42: ldc_w 382
     //   45: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   48: goto -21 -> 27
     //   51: astore_0
@@ -244,12 +250,12 @@ public final class ab
     //   42	48	51	finally
   }
   
-  public static boolean aZZ(String paramString)
+  public static boolean aYn(String paramString)
   {
     try
     {
       AppMethodBeat.i(95682);
-      JWt.remove(paramString);
+      Qtz.remove(paramString);
       AppMethodBeat.o(95682);
       return true;
     }
@@ -260,102 +266,34 @@ public final class ab
     }
   }
   
-  private boolean fOf()
+  private boolean hfS()
   {
     return this.sourceType == 64;
   }
   
-  private void jD(int paramInt1, int paramInt2)
+  private void lp(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(95684);
-    Object localObject = aj.fOI();
-    String str = this.userName;
-    boolean bool = this.fCB;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("select snsId from SnsInfo ").append(n.cA(str, bool)).append(" AND type in ( 1,2 , 3 , 4 , 18 , 5 , 12 , 9 , 14 , 15 , 13 , 21 , 25 , 26,28,29,30 , 34,43,38,33,37,36,39,41,42,44) and  (snsId != 0  )  limit 4");
-    str = localStringBuilder.toString();
-    localObject = ((n)localObject).lvy.rawQuery(str, null);
-    int i = ((Cursor)localObject).getCount();
-    ((Cursor)localObject).close();
-    if ((i <= 3) && (i > 0) && (paramInt1 == 0) && (paramInt2 == 0))
+    int i = al.hgB().df(this.userName, this.hHq);
+    if ((i <= 10) && (i > 0) && (paramInt1 == 0) && (paramInt2 == 0))
     {
-      this.JWg = true;
+      this.Qth = true;
       AppMethodBeat.o(95684);
       return;
     }
     if (i == 0) {
-      this.JWy = true;
+      this.QtE = true;
     }
     AppMethodBeat.o(95684);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
     AppMethodBeat.i(95687);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(95687);
     return i;
-  }
-  
-  public final boolean fML()
-  {
-    return this.JVe;
-  }
-  
-  public final boolean fMM()
-  {
-    return (this.JWC == aw.Kbj) || (this.JWC == aw.Kbl) || (this.JWC == aw.Kbk);
-  }
-  
-  public final int fMN()
-  {
-    return this.JWC;
-  }
-  
-  public final boolean fMO()
-  {
-    return this.JWz;
-  }
-  
-  public final boolean fMP()
-  {
-    return this.JWy;
-  }
-  
-  public final boolean fMQ()
-  {
-    return this.JWg;
-  }
-  
-  public final boolean fMR()
-  {
-    return this.JWA;
-  }
-  
-  public final long fMS()
-  {
-    return this.JVg;
-  }
-  
-  public final boolean fMT()
-  {
-    return this.JWv;
-  }
-  
-  public final long fMU()
-  {
-    return this.JWB;
-  }
-  
-  public final String fMV()
-  {
-    return this.JWw;
-  }
-  
-  public final boolean fMW()
-  {
-    return false;
   }
   
   public final int getType()
@@ -368,262 +306,363 @@ public final class ab
     return this.userName;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  public final boolean hdR()
+  {
+    return this.Qsg;
+  }
+  
+  public final boolean hdS()
+  {
+    return (this.QtI == ay.Qyz) || (this.QtI == ay.QyB) || (this.QtI == ay.QyA);
+  }
+  
+  public final int hdT()
+  {
+    return this.QtI;
+  }
+  
+  public final boolean hdU()
+  {
+    return this.QtF;
+  }
+  
+  public final boolean hdV()
+  {
+    return this.QtE;
+  }
+  
+  public final boolean hdW()
+  {
+    return this.Qth;
+  }
+  
+  public final boolean hdX()
+  {
+    return this.QtG;
+  }
+  
+  public final long hdY()
+  {
+    return this.Qsh;
+  }
+  
+  public final boolean hdZ()
+  {
+    return this.QtB;
+  }
+  
+  public final long hea()
+  {
+    return this.QtH;
+  }
+  
+  public final String heb()
+  {
+    return this.QtC;
+  }
+  
+  public final boolean hec()
+  {
+    return false;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(95686);
     Log.i("MicroMsg.NetSceneSnsUserPage", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
-    ell localell = (ell)d.c.b(((com.tencent.mm.an.d)params).lBS);
-    boolean bool;
-    if (this.JWC == -1)
+    params = (ffu)c.c.b(((com.tencent.mm.am.c)params).otC);
+    if ((!MultiProcessMMKV.getDefault().getBoolean("ShowWithTaEntrance_" + this.userName, false)) && (params.abFQ > 0)) {
+      MultiProcessMMKV.getDefault().encode("ShowWithTaEntrance_" + this.userName, true);
+    }
+    if (this.QtI == -1)
     {
-      if ((this.rr.lBS.getRetCode() != 207) && (this.rr.lBS.getRetCode() != 203) && (this.rr.lBS.getRetCode() != 0) && (this.rr.lBS.getRetCode() != 2001) && (this.rr.lBS.getRetCode() != 2004) && (this.rr.lBS.getRetCode() != 2005) && (this.rr.lBS.getRetCode() != 2003))
+      if ((this.rr.otC.getRetCode() != 207) && (this.rr.otC.getRetCode() != 203) && (this.rr.otC.getRetCode() != 0) && (this.rr.otC.getRetCode() != 2001) && (this.rr.otC.getRetCode() != 2004) && (this.rr.otC.getRetCode() != 2005) && (this.rr.otC.getRetCode() != 2003))
       {
-        aZZ(this.userName);
+        aYn(this.userName);
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
         AppMethodBeat.o(95686);
         return;
       }
-      if (this.rr.lBS.getRetCode() == 2003)
-      {
-        params = aj.fOI();
-        paramArrayOfByte = this.userName;
-        Log.printInfoStack("MicroMsg.SnsInfoStorage", "deleteByUserName userName:%s", new Object[] { paramArrayOfByte });
-        str1 = "DELETE FROM SnsInfo" + " where SnsInfo.userName=\"" + Util.escapeSqlValue(paramArrayOfByte) + "\"";
-        bool = params.lvy.execSQL("SnsInfo", str1);
-        Log.d("MicroMsg.SnsInfoStorage", "del snsinfo " + paramArrayOfByte + " res " + bool);
+      Tiger2022Helper.a(params.abDz);
+      if ((params.abFM == 0L) || (this.Hit > 10)) {
+        break label2555;
       }
-      this.JWw = localell.UnC;
-      this.JVi = localell.UlE;
-      Log.i("MicroMsg.NetSceneSnsUserPage", "ForSameMd5 count: " + localell.UlE + " , objCount:" + localell.TGK + ", retTips:" + this.JWw + ", ContinueID:" + localell.UnB + ", requestTime:" + this.BAV);
-      this.JWB = localell.UnA;
-      String str1 = com.tencent.mm.plugin.sns.data.t.Qv(this.JVf);
-      if (!this.JVe)
+      paramArrayOfByte = (fft)c.b.b(this.rr.otB);
+      paramArrayOfByte.abDv = params.abFM;
+      a(paramArrayOfByte);
+    }
+    label626:
+    label2555:
+    for (paramInt1 = 1;; paramInt1 = 0)
+    {
+      if (this.rr.otC.getRetCode() == 2003) {
+        al.hgB().aZZ(this.userName);
+      }
+      this.QtC = params.abFN;
+      this.Qsj = params.abDy;
+      Log.i("MicroMsg.NetSceneSnsUserPage", "ForSameMd5 count: " + params.abDy + " , objCount:" + params.aaWr + ", retTips:" + this.QtC + ", ContinueID:" + params.abFM + ", requestTime:" + this.Hit);
+      this.QtH = params.abFL;
+      paramArrayOfByte = t.uB(this.maxId);
+      boolean bool;
+      if (!this.Qsg)
       {
-        Log.d("MicroMsg.NetSceneSnsUserPage", "np  " + localell.RPF.size());
-        if (localell.RPF.isEmpty()) {
-          if ((localell.UnB != 0L) && (this.rr.lBS.getRetCode() != 207) && (this.BAV <= 50))
+        Log.d("MicroMsg.NetSceneSnsUserPage", "np  " + params.YMT.size());
+        if (params.YMT.isEmpty()) {
+          if (paramInt1 == 0)
           {
-            params = (elk)d.b.b(this.rr.lBR);
-            params.UlB = localell.UnB;
-            a(params);
+            if (this.rr.otC.getRetCode() != 203) {
+              break label626;
+            }
+            bool = true;
+            this.QtG = bool;
+            al.hgB().i(this.userName, this.hHq, paramArrayOfByte);
+            this.QtE = true;
+            this.Qsh = this.maxId;
           }
         }
         for (;;)
         {
-          aZZ(this.userName);
+          if (paramInt1 == 0) {
+            aYn(this.userName);
+          }
           this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
           AppMethodBeat.o(95686);
           return;
-          if (this.rr.lBS.getRetCode() == 203) {}
-          for (bool = true;; bool = false)
-          {
-            this.JWA = bool;
-            aj.fOI().e(this.userName, this.fCB, str1);
-            this.JWy = true;
-            this.JVg = this.JVf;
-            break;
-          }
-          a(localell, str1);
+          bool = false;
+          break;
+          a(params, paramArrayOfByte);
         }
       }
-      aj.fOM().D(this.userName, localell.Uma);
-      if (this.JVL.equals(localell.UlA))
+      al.hgF().J(this.userName, params.abEb);
+      if (this.QsM.equals(params.abDu))
       {
-        params = aj.fOI();
-        if (this.JVe) {}
-        for (long l = 0L;; l = this.JWd)
+        params = al.hgB();
+        if (this.Qsg) {}
+        for (long l = 0L;; l = this.Qte)
         {
-          this.JVg = params.a(l, this.JVi, this.userName, this.fCB);
-          Log.i("MicroMsg.NetSceneSnsUserPage", "md5 is nochange the new minid %s", new Object[] { Long.valueOf(this.JVg) });
-          jD(paramInt2, paramInt3);
-          aZZ(this.userName);
-          params = aj.fOM().bbr(this.userName);
+          this.Qsh = params.a(l, this.Qsj, this.userName, this.hHq);
+          Log.i("MicroMsg.NetSceneSnsUserPage", "md5 is nochange the new minid %s", new Object[] { Long.valueOf(this.Qsh) });
+          lp(paramInt2, paramInt3);
+          if (paramInt1 == 0) {
+            aYn(this.userName);
+          }
+          params = al.hgF().aZW(this.userName);
           this.callback.onSceneEnd(params.field_lastFirstPageRequestErrType, params.field_lastFirstPageRequestErrCode, paramString, this);
           AppMethodBeat.o(95686);
           return;
         }
       }
-      Log.i("MicroMsg.NetSceneSnsUserPage", "fp  " + localell.RPF.size());
-      if ((!this.JVe) || (this.JVL.equals(localell.UlA)))
+      Log.i("MicroMsg.NetSceneSnsUserPage", "fp  " + params.YMT.size());
+      if ((!this.Qsg) || (this.QsM.equals(params.abDu)))
       {
-        if ((this.rr.lBS.getRetCode() != 207) && (this.rr.lBS.getRetCode() != 2001) && (this.rr.lBS.getRetCode() != 2004) && (this.rr.lBS.getRetCode() != 2005)) {
-          break label1659;
+        Log.i("MicroMsg.NetSceneSnsUserPage", "jump readfpInfo for requestMd5:%s FirstPageMd5:%s", new Object[] { this.QsM, params.abDu });
+        if ((this.rr.otC.getRetCode() != 207) && (this.rr.otC.getRetCode() != 2001) && (this.rr.otC.getRetCode() != 2004) && (this.rr.otC.getRetCode() != 2005)) {
+          break label1816;
         }
-        aj.fOM().lg(this.userName, "");
-        if (!localell.RPF.isEmpty()) {
-          break label1453;
-        }
-        if ((localell.UnB == 0L) || (this.rr.lBS.getRetCode() == 207) || (this.BAV > 50)) {
-          break label1392;
-        }
-        params = (elk)d.b.b(this.rr.lBR);
-        params.UlB = localell.UnB;
-        a(params);
-      }
-      Object localObject;
-      String str2;
-      for (;;)
-      {
-        jD(paramInt2, paramInt3);
-        aZZ(this.userName);
-        this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-        AppMethodBeat.o(95686);
-        return;
-        this.JWu = localell.Unz;
-        params = aj.fOM().bbr(this.userName);
-        params.field_icount = this.JWu;
-        paramArrayOfByte = localell.TxL;
-        if (paramArrayOfByte != null)
+        al.hgF().mP(this.userName, "");
+        if (params.YMT.isEmpty())
         {
-          localObject = com.tencent.mm.plugin.sns.data.t.Qu(paramArrayOfByte.mVL);
-          str2 = aj.getAccSnsPath();
-          String str3 = this.userName + "bg_";
-          String str4 = this.userName + "tbg_";
-          if ((params.field_bgUrl == null) || (!params.field_bgId.equals(localObject)))
+          if (paramInt1 == 0)
           {
-            params.field_older_bgId = params.field_bgId;
-            if (u.agG(aq.kD(str2, this.userName) + str3))
-            {
-              u.deleteFile(aq.kD(str2, this.userName) + str4);
-              u.bj(aq.kD(str2, this.userName), str3, str4);
-            }
-            this.JWv = true;
-            params.fSC();
-            Log.d("MicroMsg.NetSceneSnsUserPage", "get new  bgid " + paramArrayOfByte.mVK);
+            al.hgB().dc(this.userName, this.hHq);
+            this.Qsh = this.maxId;
           }
-          params.field_bgId = ((String)localObject);
-          params.field_bgUrl = paramArrayOfByte.mVK;
-          aj.fOM();
-          com.tencent.mm.plugin.sns.storage.m.a(params, paramArrayOfByte.mVK, this.userName);
-          params.field_snsBgId = paramArrayOfByte.mVL;
-        }
-        aj.fOM().a(params);
-        break;
-        label1392:
-        params = aj.fOI();
-        paramArrayOfByte = this.userName;
-        bool = this.fCB;
-        params.K(bool, n.cA(paramArrayOfByte, bool) + " AND  (snsId != 0  ) ");
-        this.JVg = this.JVf;
-      }
-      label1453:
-      if (fOf()) {
-        aj.fOM().p(this.userName, localell.UlA, paramInt2, paramInt3);
-      }
-      for (;;)
-      {
-        localObject = aj.fOI();
-        params = this.userName;
-        bool = this.fCB;
-        str2 = com.tencent.mm.plugin.sns.data.t.Qv(((SnsObject)localell.RPF.getFirst()).Id);
-        paramArrayOfByte = n.cA(params, bool) + " AND  (snsId != 0  ) ";
-        params = paramArrayOfByte;
-        if (n.bbw(str2)) {
-          params = paramArrayOfByte + " AND " + ((n)localObject).bbz(str2);
-        }
-        ((n)localObject).K(bool, params);
-        aj.fOI().e(this.userName, this.fCB, com.tencent.mm.plugin.sns.data.t.Qv(((SnsObject)localell.RPF.getLast()).Id));
-        a(localell, str1);
-        break;
-        aj.fOM().o(this.userName, localell.UlA, paramInt2, paramInt3);
-      }
-      label1659:
-      if (localell.RPF.size() == 0)
-      {
-        if ((localell.UnB != 0L) && (this.rr.lBS.getRetCode() != 207) && (this.BAV <= 50))
-        {
-          paramString = (elk)d.b.b(this.rr.lBR);
-          paramString.UlB = localell.UnB;
-          a(paramString);
+          lp(paramInt2, paramInt3);
+          if (paramInt1 == 0) {
+            aYn(this.userName);
+          }
+          this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
           AppMethodBeat.o(95686);
-          return;
         }
-        Log.d("MicroMsg.NetSceneSnsUserPage", "error: server give size zero");
-        this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-        AppMethodBeat.o(95686);
-        return;
       }
-      if (fOf()) {
-        aj.fOM().p(this.userName, localell.UlA, paramInt2, paramInt3);
+      else
+      {
+        this.QtA = params.abFK;
+        u localu = al.hgF().aZW(this.userName);
+        localu.field_icount = this.QtA;
+        ffs localffs = params.aaMs;
+        Object localObject1;
+        Object localObject2;
+        Object localObject3;
+        if (localffs != null)
+        {
+          localObject1 = t.uA(localffs.pSs);
+          localObject2 = al.getAccSnsPath();
+          localObject3 = this.userName + "bg_";
+          String str = this.userName + "tbg_";
+          Log.i("MicroMsg.NetSceneSnsUserPage", "current ext bg id:%s net_id:%s", new Object[] { localu.field_bgId, localObject1 });
+          if ((localu.field_bgUrl == null) || (!localu.field_bgId.equals(localObject1)))
+          {
+            localu.field_older_bgId = localu.field_bgId;
+            if (y.ZC(as.mg((String)localObject2, this.userName) + (String)localObject3))
+            {
+              y.deleteFile(as.mg((String)localObject2, this.userName) + str);
+              y.bF(as.mg((String)localObject2, this.userName), (String)localObject3, str);
+            }
+            this.QtB = true;
+            localu.hkO();
+            Log.i("MicroMsg.NetSceneSnsUserPage", "get new  bgid " + localffs.pSr);
+          }
+          localu.field_bgId = ((String)localObject1);
+          localu.field_bgUrl = localffs.pSr;
+          al.hgF();
+          v.a(localu, localffs.pSr, this.userName);
+          localu.field_snsBgId = localffs.pSs;
+          localObject1 = al.hgG().aZM(this.userName);
+          Log.i("MicroMsg.NetSceneSnsUserPage", "isBgChange:%b  coverId:%s extId:%s", new Object[] { Boolean.valueOf(this.QtB), t.uA(((q)localObject1).field_snsBgId), t.uA(localffs.pSs) });
+          if ((this.QtB) || (((q)localObject1).field_snsBgId != localffs.pSs))
+          {
+            localObject1 = al.hgG();
+            localObject3 = this.userName;
+            kotlin.g.b.s.u(localObject3, "userName");
+            kotlin.g.b.s.u(localffs, "snsUserInfo");
+            Log.i(r.TAG, kotlin.g.b.s.X("updateUserSnsCoverNetScene ", localObject3));
+            localObject2 = al.hgG().aZM((String)localObject3);
+            if (localObject2 == null) {
+              break label1681;
+            }
+            if ((((q)localObject2).field_snsBgId != localffs.pSs) || (localffs.pSs == 0L)) {
+              break label1610;
+            }
+            if (TextUtils.isEmpty((CharSequence)localffs.pSr))
+            {
+              Log.i(r.TAG, "user:" + (String)localObject3 + " has been block");
+              localObject3 = com.tencent.mm.plugin.sns.cover.c.b.Qmn;
+              com.tencent.mm.plugin.sns.cover.c.b.b((q)localObject2);
+              ((q)localObject2).field_type = 5;
+              ((r)localObject1).a((q)localObject2, true);
+              ((r)localObject1).d((q)localObject2);
+            }
+            if (!((q)localObject2).field_success) {
+              break label1681;
+            }
+          }
+        }
+        for (;;)
+        {
+          al.hgF().a(localu);
+          break;
+          if (localffs.pSs == 0L)
+          {
+            Log.i(r.TAG, "user:" + (String)localObject3 + " only chatting");
+            ((q)localObject2).field_type = 0;
+            ((q)localObject2).field_snsBgId = 0L;
+            ((r)localObject1).a((q)localObject2, true);
+            ((r)localObject1).d((q)localObject2);
+          }
+          else
+          {
+            ((r)localObject1).QYK.vp(localffs.pSs);
+          }
+        }
+      }
+      if (hfS()) {
+        al.hgF().t(this.userName, params.abDu, paramInt2, paramInt3);
       }
       for (;;)
       {
-        a(localell, str1);
-        aZZ(this.userName);
-        this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-        AppMethodBeat.o(95686);
-        return;
-        aj.fOM().o(this.userName, localell.UlA, paramInt2, paramInt3);
-      }
-    }
-    if ((this.rr.lBS.getRetCode() != 207) && (this.rr.lBS.getRetCode() != 203) && (this.rr.lBS.getRetCode() != 0) && (this.rr.lBS.getRetCode() != 2001) && (this.rr.lBS.getRetCode() != 2004) && (this.rr.lBS.getRetCode() != 2005) && (this.rr.lBS.getRetCode() != 2003))
-    {
-      aZZ(this.userName);
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(95686);
-      return;
-    }
-    this.JWw = localell.UnC;
-    this.JVi = localell.UlE;
-    Log.i("MicroMsg.NetSceneSnsUserPage", "ForSameMd5: " + localell.UlE + " , objCount:  " + localell.TGK + ", retTips:" + this.JWw + ", prePageDayEndFlag:" + localell.UnD + ", ObjectList:" + localell.RPF.size() + ", ContinueID:" + localell.UnB + ", requestTime:" + this.BAV);
-    this.JWB = localell.UnA;
-    if (localell.RPF.size() == 0)
-    {
-      if ((localell.UnB != 0L) && (this.rr.lBS.getRetCode() != 207) && (this.BAV <= 50))
-      {
-        paramString = (elk)d.b.b(this.rr.lBR);
-        paramString.UlB = localell.UnB;
-        a(paramString);
-        AppMethodBeat.o(95686);
-        return;
-      }
-      Log.e("MicroMsg.NetSceneSnsUserPage", "error: server give size zero");
-      if (this.rr.lBS.getRetCode() == 203)
-      {
-        bool = true;
-        this.JWA = bool;
-        if (this.JWC != aw.Kbk) {
-          break label2306;
-        }
-        this.JWz = true;
-      }
-      for (;;)
-      {
-        aZZ(this.userName);
-        this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-        this.JVg = this.JVf;
-        AppMethodBeat.o(95686);
-        return;
-        bool = false;
+        al.hgB().h(this.userName, this.hHq, t.uB(((SnsObject)params.YMT.getFirst()).Id));
+        al.hgB().i(this.userName, this.hHq, t.uB(((SnsObject)params.YMT.getLast()).Id));
+        a(params, paramArrayOfByte);
         break;
-        label2306:
-        this.JWy = true;
+        al.hgF().s(this.userName, params.abDu, paramInt2, paramInt3);
       }
-    }
-    if (this.JWC == aw.Kbk) {
-      if (localell.UnD) {
-        this.JWx = ((SnsObject)localell.RPF.getFirst()).Id;
+      if (params.YMT.size() == 0)
+      {
+        if (paramInt1 == 0)
+        {
+          Log.d("MicroMsg.NetSceneSnsUserPage", "error: server give size zero");
+          this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+        }
+        AppMethodBeat.o(95686);
+        return;
       }
-    }
-    for (;;)
-    {
-      params = com.tencent.mm.plugin.sns.data.t.Qv(((SnsObject)localell.RPF.getFirst()).Id);
-      an.a(this.userName, this.sourceType, localell.RPF, params);
-      an.k(localell.RPF, this.JWC);
-      Log.i("MicroMsg.NetSceneSnsUserPage", "insertSearchCacheList userName:%s maxId:%s minId:%s NewRequestTime:%s", new Object[] { this.userName, Long.valueOf(an.JVf), Long.valueOf(an.JVg), Integer.valueOf(localell.Unb) });
-      aZZ(this.userName);
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(95686);
-      return;
-      if (this.JWC == aw.Kbj) {
-        this.JWx = ((SnsObject)localell.RPF.getFirst()).Id;
+      if (hfS()) {
+        al.hgF().t(this.userName, params.abDu, paramInt2, paramInt3);
+      }
+      for (;;)
+      {
+        a(params, paramArrayOfByte);
+        if (paramInt1 != 0) {
+          break;
+        }
+        aYn(this.userName);
+        break;
+        al.hgF().s(this.userName, params.abDu, paramInt2, paramInt3);
+      }
+      if ((this.rr.otC.getRetCode() != 207) && (this.rr.otC.getRetCode() != 203) && (this.rr.otC.getRetCode() != 0) && (this.rr.otC.getRetCode() != 2001) && (this.rr.otC.getRetCode() != 2004) && (this.rr.otC.getRetCode() != 2005) && (this.rr.otC.getRetCode() != 2003))
+      {
+        aYn(this.userName);
+        this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+        AppMethodBeat.o(95686);
+        return;
+      }
+      if ((params.abFM != 0L) && (this.Hit <= 10))
+      {
+        paramArrayOfByte = (fft)c.b.b(this.rr.otB);
+        paramArrayOfByte.abDv = params.abFM;
+        a(paramArrayOfByte);
+      }
+      for (paramInt1 = 1;; paramInt1 = 0)
+      {
+        this.QtC = params.abFN;
+        this.Qsj = params.abDy;
+        Log.i("MicroMsg.NetSceneSnsUserPage", "ForSameMd5: " + params.abDy + " , objCount:  " + params.aaWr + ", retTips:" + this.QtC + ", prePageDayEndFlag:" + params.abFO + ", ObjectList:" + params.YMT.size() + ", ContinueID:" + params.abFM + ", requestTime:" + this.Hit);
+        this.QtH = params.abFL;
+        if (params.YMT.size() == 0)
+        {
+          if (paramInt1 == 0)
+          {
+            Log.e("MicroMsg.NetSceneSnsUserPage", "error: server give size zero");
+            if (this.rr.otC.getRetCode() != 203) {
+              break label2357;
+            }
+            bool = true;
+            this.QtG = bool;
+            if (this.QtI != ay.QyA) {
+              break label2363;
+            }
+            this.QtF = true;
+          }
+          for (;;)
+          {
+            aYn(this.userName);
+            this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+            this.Qsh = this.maxId;
+            AppMethodBeat.o(95686);
+            return;
+            bool = false;
+            break;
+            this.QtE = true;
+          }
+        }
+        if (this.QtI == ay.QyA) {
+          if (params.abFO) {
+            this.QtD = ((SnsObject)params.YMT.getFirst()).Id;
+          }
+        }
+        for (;;)
+        {
+          paramArrayOfByte = t.uB(((SnsObject)params.YMT.getFirst()).Id);
+          ap.a(this.userName, this.sourceType, params.YMT, paramArrayOfByte);
+          ap.n(params.YMT, this.QtI);
+          Log.i("MicroMsg.NetSceneSnsUserPage", "insertSearchCacheList userName:%s maxId:%s minId:%s NewRequestTime:%s", new Object[] { this.userName, Long.valueOf(ap.maxId), Long.valueOf(ap.Qsh), Integer.valueOf(params.abFi) });
+          if (paramInt1 != 0) {
+            break;
+          }
+          aYn(this.userName);
+          break;
+          if (this.QtI == ay.Qyz) {
+            this.QtD = ((SnsObject)params.YMT.getFirst()).Id;
+          }
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.ab
  * JD-Core Version:    0.7.0.1
  */

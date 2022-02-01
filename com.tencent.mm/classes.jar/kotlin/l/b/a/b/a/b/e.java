@@ -1,100 +1,115 @@
 package kotlin.l.b.a.b.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.ab;
-import kotlin.g.b.q;
-import kotlin.g.b.z;
-import kotlin.l.b.a.b.a.g;
-import kotlin.l.b.a.b.b.b.c;
-import kotlin.l.b.a.b.b.y;
-import kotlin.l.b.a.b.l.f;
-import kotlin.l.b.a.b.l.i;
-import kotlin.l.b.a.b.l.j;
-import kotlin.l.n;
+import java.util.Collection;
+import kotlin.a.ad;
+import kotlin.a.ar;
+import kotlin.g.a.a;
+import kotlin.g.b.af;
+import kotlin.g.b.ag;
+import kotlin.g.b.ai;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.l.b.a.b.a.k;
+import kotlin.l.b.a.b.a.k.a;
+import kotlin.l.b.a.b.b.ae;
+import kotlin.l.b.a.b.f.c;
+import kotlin.l.b.a.b.f.d;
+import kotlin.l.b.a.b.f.f;
+import kotlin.l.b.a.b.l.m;
+import kotlin.l.o;
 
 public final class e
-  extends g
+  implements kotlin.l.b.a.b.b.b.b
 {
-  public y aaJh;
-  public boolean aaJi;
-  private final f aaJj;
+  public static final e.a aiFq;
+  private static final c aiFu;
+  private static final f aiFv;
+  private static final kotlin.l.b.a.b.f.b aiFw;
+  private final ae aiFr;
+  private final kotlin.g.a.b<ae, kotlin.l.b.a.b.b.l> aiFs;
+  private final kotlin.l.b.a.b.l.h aiFt;
   
   static
   {
-    AppMethodBeat.i(56785);
-    cMt = new n[] { (n)ab.a(new z(ab.bO(e.class), "settings", "getSettings()Lorg/jetbrains/kotlin/builtins/jvm/JvmBuiltInsSettings;")) };
-    AppMethodBeat.o(56785);
+    AppMethodBeat.i(56771);
+    aYe = new o[] { (o)ai.a((af)new ag((kotlin.l.e)ai.cz(e.class), "cloneable", "getCloneable()Lorg/jetbrains/kotlin/descriptors/impl/ClassDescriptorImpl;")) };
+    aiFq = new e.a((byte)0);
+    aiFu = k.aiCr;
+    Object localObject = k.a.aiCA.kxT();
+    s.s(localObject, "cloneable.shortName()");
+    aiFv = (f)localObject;
+    localObject = kotlin.l.b.a.b.f.b.s(k.a.aiCA.kxX());
+    s.s(localObject, "topLevel(StandardNames.FqNames.cloneable.toSafe())");
+    aiFw = (kotlin.l.b.a.b.f.b)localObject;
+    AppMethodBeat.o(56771);
   }
   
-  public e(final j paramj, a parama)
+  private e(final m paramm, ae paramae, kotlin.g.a.b<? super ae, ? extends kotlin.l.b.a.b.b.l> paramb)
   {
-    super(paramj);
-    AppMethodBeat.i(56790);
-    this.aaJi = true;
-    this.aaJj = paramj.av((kotlin.g.a.a)new b(this, paramj));
-    switch (f.$EnumSwitchMapping$0[parama.ordinal()])
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(56790);
-      return;
-      AppMethodBeat.o(56790);
-      return;
-      iDo();
-      AppMethodBeat.o(56790);
-      return;
-      iDo();
-    }
+    AppMethodBeat.i(56776);
+    this.aiFr = paramae;
+    this.aiFs = paramb;
+    this.aiFt = paramm.cq((a)new b(this, paramm));
+    AppMethodBeat.o(56776);
   }
   
-  public final kotlin.l.b.a.b.b.b.a iDp()
+  private final kotlin.l.b.a.b.b.c.h knH()
   {
-    AppMethodBeat.i(56788);
-    kotlin.l.b.a.b.b.b.a locala = (kotlin.l.b.a.b.b.b.a)iEt();
-    AppMethodBeat.o(56788);
-    return locala;
-  }
-  
-  public final c iDq()
-  {
-    AppMethodBeat.i(56787);
-    c localc = (c)iEt();
-    AppMethodBeat.o(56787);
-    return localc;
-  }
-  
-  public final h iEt()
-  {
-    AppMethodBeat.i(56786);
-    h localh = (h)i.a(this.aaJj, cMt[0]);
-    AppMethodBeat.o(56786);
+    AppMethodBeat.i(56772);
+    kotlin.l.b.a.b.b.c.h localh = (kotlin.l.b.a.b.b.c.h)kotlin.l.b.a.b.l.l.a(this.aiFt, aYe[0]);
+    AppMethodBeat.o(56772);
     return localh;
   }
   
-  public static enum a
+  public final boolean a(c paramc, f paramf)
   {
-    static
+    AppMethodBeat.i(56773);
+    s.u(paramc, "packageFqName");
+    s.u(paramf, "name");
+    if ((s.p(paramf, aiFv)) && (s.p(paramc, aiFu)))
     {
-      AppMethodBeat.i(56778);
-      a locala1 = new a("FROM_DEPENDENCIES", 0);
-      aaJk = locala1;
-      a locala2 = new a("FROM_CLASS_LOADER", 1);
-      aaJl = locala2;
-      a locala3 = new a("FALLBACK", 2);
-      aaJm = locala3;
-      aaJn = new a[] { locala1, locala2, locala3 };
-      AppMethodBeat.o(56778);
+      AppMethodBeat.o(56773);
+      return true;
     }
-    
-    private a() {}
+    AppMethodBeat.o(56773);
+    return false;
+  }
+  
+  public final Collection<kotlin.l.b.a.b.b.e> b(c paramc)
+  {
+    AppMethodBeat.i(56775);
+    s.u(paramc, "packageFqName");
+    if (s.p(paramc, aiFu))
+    {
+      paramc = (Collection)ar.setOf(knH());
+      AppMethodBeat.o(56775);
+      return paramc;
+    }
+    paramc = (Collection)ad.aivA;
+    AppMethodBeat.o(56775);
+    return paramc;
+  }
+  
+  public final kotlin.l.b.a.b.b.e b(kotlin.l.b.a.b.f.b paramb)
+  {
+    AppMethodBeat.i(56774);
+    s.u(paramb, "classId");
+    if (s.p(paramb, aiFw))
+    {
+      paramb = (kotlin.l.b.a.b.b.e)knH();
+      AppMethodBeat.o(56774);
+      return paramb;
+    }
+    AppMethodBeat.o(56774);
+    return null;
   }
   
   static final class b
-    extends q
-    implements kotlin.g.a.a<h>
+    extends u
+    implements a<kotlin.l.b.a.b.b.c.h>
   {
-    b(e parame, j paramj)
+    b(e parame, m paramm)
     {
       super();
     }
@@ -102,7 +117,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.a.b.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.aa.ui;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -19,17 +18,20 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.view.accessibility.AccessibilityNodeInfo;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.aa.model.b.c;
 import com.tencent.mm.plugin.aa.model.b.c.a;
-import com.tencent.mm.plugin.aa.model.i;
+import com.tencent.mm.plugin.aa.model.j;
 import com.tencent.mm.plugin.messenger.a.b;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.plugin.wxpay.a.a;
@@ -38,22 +40,25 @@ import com.tencent.mm.plugin.wxpay.a.e;
 import com.tencent.mm.plugin.wxpay.a.f;
 import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.pluginsdk.ui.span.p;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.ad;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.w.b;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.ui.af;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.component.UIComponent;
+import com.tencent.mm.ui.y.b;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
-import com.tencent.mm.wallet_core.ui.g;
+import com.tencent.mm.wallet_core.ui.i;
 import com.tenpay.android.wechat.TenpaySecureEditText;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -62,38 +67,38 @@ import java.util.Set;
 public class LaunchAAByPersonAmountSelectUI
   extends BaseAAPresenterActivity
 {
-  private String fxT;
-  private MMHandler knk;
-  private HashMap<String, Double> mLj;
-  private c mNF;
-  private ListView mNG;
-  private TextView mNH;
-  private TextView mNI;
-  private View mNJ;
-  private TextView mNK;
-  private boolean mNL;
-  private Map<String, String> mNM;
-  private a mNN;
-  private double mNO;
-  private long mNP;
-  private int mNQ;
-  private boolean mNR;
-  private boolean mNS;
-  private Runnable mNT;
+  private String hCy;
+  private MMHandler mRi;
+  private HashMap<String, Double> pHQ;
+  private boolean pKA;
+  private Runnable pKB;
+  private com.tencent.mm.plugin.aa.model.b.c pKn;
+  private ListView pKo;
+  private TextView pKp;
+  private TextView pKq;
+  private View pKr;
+  private TextView pKs;
+  private boolean pKt;
+  private Map<String, String> pKu;
+  private a pKv;
+  private double pKw;
+  private long pKx;
+  private int pKy;
+  private boolean pKz;
   private int scene;
   
   public LaunchAAByPersonAmountSelectUI()
   {
     AppMethodBeat.i(63606);
-    this.mNF = ((c)at(c.class));
-    this.mNL = false;
-    this.mNM = new HashMap();
-    this.mNN = null;
-    this.mNP = -1L;
-    this.mNQ = -1;
-    this.mNS = false;
-    this.knk = new MMHandler(Looper.getMainLooper());
-    this.mNT = new Runnable()
+    this.pKn = ((com.tencent.mm.plugin.aa.model.b.c)aM(com.tencent.mm.plugin.aa.model.b.c.class));
+    this.pKt = false;
+    this.pKu = new HashMap();
+    this.pKv = null;
+    this.pKx = -1L;
+    this.pKy = -1;
+    this.pKA = false;
+    this.mRi = new MMHandler(Looper.getMainLooper());
+    this.pKB = new Runnable()
     {
       public final void run()
       {
@@ -106,26 +111,26 @@ public class LaunchAAByPersonAmountSelectUI
     AppMethodBeat.o(63606);
   }
   
-  private void bwO()
+  private void bVE()
   {
     AppMethodBeat.i(63608);
     try
     {
-      this.mNO = 0.0D;
-      this.mNR = false;
-      if (this.mNM == null) {
+      this.pKw = 0.0D;
+      this.pKz = false;
+      if (this.pKu == null) {
         break label267;
       }
-      Iterator localIterator = this.mNM.values().iterator();
+      Iterator localIterator = this.pKu.values().iterator();
       while (localIterator.hasNext())
       {
         double d = Util.getDouble((String)localIterator.next(), 0.0D);
-        this.mNO += d;
-        if ((this.mNP > 0L) && (d * 100.0D > this.mNP)) {
-          this.mNR = true;
+        this.pKw += d;
+        if ((this.pKx > 0L) && (d * 100.0D > this.pKx)) {
+          this.pKz = true;
         }
       }
-      if (this.mNN == null) {
+      if (this.pKv == null) {
         break label267;
       }
     }
@@ -135,11 +140,11 @@ public class LaunchAAByPersonAmountSelectUI
       AppMethodBeat.o(63608);
       return;
     }
-    Object localObject2 = this.mNN;
-    Object localObject1 = this.mNM;
+    Object localObject2 = this.pKv;
+    Object localObject1 = this.pKu;
     Object localObject3 = ((a)localObject2).dataList.iterator();
     while (((Iterator)localObject3).hasNext()) {
-      ((b)((Iterator)localObject3).next()).mOd = "";
+      ((b)((Iterator)localObject3).next()).pKL = "";
     }
     if ((localObject1 != null) && (((Map)localObject1).size() > 0))
     {
@@ -148,91 +153,105 @@ public class LaunchAAByPersonAmountSelectUI
       {
         localObject3 = (b)((Iterator)localObject2).next();
         if (((Map)localObject1).containsKey(((b)localObject3).username)) {
-          ((b)localObject3).mOd = ((String)((Map)localObject1).get(((b)localObject3).username));
+          ((b)localObject3).pKL = ((String)((Map)localObject1).get(((b)localObject3).username));
         }
       }
     }
     label267:
-    this.mNI.setText(getString(a.i.launch_aa_by_person_amount_select_summary, new Object[] { Double.valueOf(this.mNO) }));
-    if ((this.mNM != null) && (this.mNM.size() > 0))
+    this.pKq.setText(getString(a.i.launch_aa_by_person_amount_select_summary, new Object[] { Double.valueOf(this.pKw) }));
+    if ((this.pKu != null) && (this.pKu.size() > 0))
     {
-      updateOptionMenuText(233, getString(a.i.aa_confirm_num, new Object[] { Integer.valueOf(this.mNM.size()) }));
-      if (!this.mNR) {
-        break label545;
+      updateOptionMenuText(233, getString(a.i.aa_confirm_num, new Object[] { Integer.valueOf(this.pKu.size()) }));
+      if (!this.pKz) {
+        break label559;
       }
-      com.tencent.mm.plugin.report.service.h.IzE.a(13722, new Object[] { Integer.valueOf(7) });
+      com.tencent.mm.plugin.report.service.h.OAn.b(13722, new Object[] { Integer.valueOf(7) });
       enableOptionMenu(233, false);
-      localObject1 = getString(a.i.launch_aa_money_exceed_avg_amount_alert, new Object[] { Float.valueOf((float)this.mNP / 100.0F) });
+      localObject1 = getString(a.i.launch_aa_money_exceed_avg_amount_alert, new Object[] { Float.valueOf((float)this.pKx / 100.0F) });
       if (!Util.isNullOrNil((String)localObject1))
       {
-        this.mNK.setText((CharSequence)localObject1);
-        if (!this.mNK.isShown())
+        this.pKs.setText((CharSequence)localObject1);
+        if (!this.pKs.isShown())
         {
-          this.mNK.startAnimation(AnimationUtils.loadAnimation(this, a.a.in_from_up));
-          this.mNK.setVisibility(0);
-          localObject1 = (RelativeLayout.LayoutParams)this.mNG.getLayoutParams();
-          ((RelativeLayout.LayoutParams)localObject1).topMargin = com.tencent.mm.ci.a.fromDPToPix(getContext(), 55);
-          this.mNG.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+          localObject1 = AnimationUtils.loadAnimation(this, a.a.in_from_up);
+          ((Animation)localObject1).setAnimationListener(new Animation.AnimationListener()
+          {
+            public final void onAnimationEnd(Animation paramAnonymousAnimation)
+            {
+              AppMethodBeat.i(268512);
+              LaunchAAByPersonAmountSelectUI.p(LaunchAAByPersonAmountSelectUI.this).sendAccessibilityEvent(128);
+              AppMethodBeat.o(268512);
+            }
+            
+            public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
+            
+            public final void onAnimationStart(Animation paramAnonymousAnimation) {}
+          });
+          this.pKs.startAnimation((Animation)localObject1);
+          this.pKs.setVisibility(0);
+          localObject1 = (RelativeLayout.LayoutParams)this.pKo.getLayoutParams();
+          ((RelativeLayout.LayoutParams)localObject1).topMargin = com.tencent.mm.cd.a.fromDPToPix(getContext(), 55);
+          this.pKo.setLayoutParams((ViewGroup.LayoutParams)localObject1);
         }
       }
     }
-    label657:
+    label671:
     for (;;)
     {
-      if (this.mNH.getRight() > this.mNI.getLeft()) {
-        this.mNI.setMaxEms(this.mNI.length() / 2);
+      if (this.pKp.getRight() > this.pKq.getLeft()) {
+        this.pKq.setMaxEms(this.pKq.length() / 2);
       }
       AppMethodBeat.o(63608);
       return;
       updateOptionMenuText(233, getString(a.i.app_ok));
       break;
-      label545:
-      if ((this.mNM != null) && (this.mNM.size() > 0)) {
+      label559:
+      if ((this.pKu != null) && (this.pKu.size() > 0)) {
         enableOptionMenu(233, true);
       }
       for (;;)
       {
-        if (!this.mNK.isShown()) {
-          break label657;
+        if (!this.pKs.isShown()) {
+          break label671;
         }
-        this.mNK.setText("");
-        this.mNK.startAnimation(AnimationUtils.loadAnimation(this, a.a.out_to_up));
-        this.mNK.setVisibility(8);
-        localObject1 = (RelativeLayout.LayoutParams)this.mNG.getLayoutParams();
-        ((RelativeLayout.LayoutParams)localObject1).topMargin = com.tencent.mm.ci.a.fromDPToPix(getContext(), 0);
-        this.mNG.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        this.pKs.setText("");
+        this.pKs.startAnimation(AnimationUtils.loadAnimation(this, a.a.out_to_up));
+        this.pKs.setVisibility(8);
+        localObject1 = (RelativeLayout.LayoutParams)this.pKo.getLayoutParams();
+        ((RelativeLayout.LayoutParams)localObject1).topMargin = com.tencent.mm.cd.a.fromDPToPix(getContext(), 0);
+        this.pKo.setLayoutParams((ViewGroup.LayoutParams)localObject1);
         break;
         enableOptionMenu(233, false);
       }
     }
   }
   
-  private void bwP()
+  private void bVF()
   {
     AppMethodBeat.i(63609);
-    if (this.mNO > 0.0D)
+    if (this.pKw > 0.0D)
     {
-      this.mNL = true;
-      this.mNH.setTextColor(getResources().getColor(a.c.link_color));
+      this.pKt = true;
+      this.pKp.setTextColor(getResources().getColor(a.c.link_color));
       AppMethodBeat.o(63609);
       return;
     }
-    this.mNL = false;
-    bwQ();
+    this.pKt = false;
+    bVG();
     AppMethodBeat.o(63609);
   }
   
-  private void bwQ()
+  private void bVG()
   {
-    AppMethodBeat.i(270217);
-    if (!ar.isDarkMode())
+    AppMethodBeat.i(268518);
+    if (!aw.isDarkMode())
     {
-      this.mNH.setTextColor(Color.parseColor("#4c576B95"));
-      AppMethodBeat.o(270217);
+      this.pKp.setTextColor(Color.parseColor("#4c576B95"));
+      AppMethodBeat.o(268518);
       return;
     }
-    this.mNH.setTextColor(Color.parseColor("#4c7D90A9"));
-    AppMethodBeat.o(270217);
+    this.pKp.setTextColor(Color.parseColor("#4c7D90A9"));
+    AppMethodBeat.o(268518);
   }
   
   public int getForceOrientation()
@@ -279,7 +298,7 @@ public class LaunchAAByPersonAmountSelectUI
         for (int i = 0;; i = 1)
         {
           if (i != 0) {
-            com.tencent.mm.ui.base.h.a(LaunchAAByPersonAmountSelectUI.this, LaunchAAByPersonAmountSelectUI.this.getString(a.i.aa_select_contact_back_confirm), null, LaunchAAByPersonAmountSelectUI.this.getString(a.i.aa_select_contact_save), LaunchAAByPersonAmountSelectUI.this.getString(a.i.aa_select_contact_not_save), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+            k.a(LaunchAAByPersonAmountSelectUI.this, LaunchAAByPersonAmountSelectUI.this.getString(a.i.aa_select_contact_back_confirm), null, LaunchAAByPersonAmountSelectUI.this.getString(a.i.aa_select_contact_save), LaunchAAByPersonAmountSelectUI.this.getString(a.i.aa_select_contact_not_save), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
             {
               public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
               {
@@ -315,27 +334,27 @@ public class LaunchAAByPersonAmountSelectUI
         AppMethodBeat.i(63591);
         if ((LaunchAAByPersonAmountSelectUI.f(LaunchAAByPersonAmountSelectUI.this) > 0) && (LaunchAAByPersonAmountSelectUI.c(LaunchAAByPersonAmountSelectUI.this) != null) && (LaunchAAByPersonAmountSelectUI.c(LaunchAAByPersonAmountSelectUI.this).size() > LaunchAAByPersonAmountSelectUI.f(LaunchAAByPersonAmountSelectUI.this)))
         {
-          com.tencent.mm.ui.base.h.c(LaunchAAByPersonAmountSelectUI.this.getContext(), LaunchAAByPersonAmountSelectUI.this.getString(a.i.launch_aa_by_person_number_exceed_limit_alert, new Object[] { Integer.valueOf(LaunchAAByPersonAmountSelectUI.f(LaunchAAByPersonAmountSelectUI.this)) }), "", true);
-          com.tencent.mm.plugin.report.service.h.IzE.a(13722, new Object[] { Integer.valueOf(8) });
+          k.c(LaunchAAByPersonAmountSelectUI.this.getContext(), LaunchAAByPersonAmountSelectUI.this.getString(a.i.launch_aa_by_person_number_exceed_limit_alert, new Object[] { Integer.valueOf(LaunchAAByPersonAmountSelectUI.f(LaunchAAByPersonAmountSelectUI.this)) }), "", true);
+          com.tencent.mm.plugin.report.service.h.OAn.b(13722, new Object[] { Integer.valueOf(8) });
           AppMethodBeat.o(63591);
           return true;
         }
         LaunchAAByPersonAmountSelectUI.e(LaunchAAByPersonAmountSelectUI.this);
-        com.tencent.mm.plugin.report.service.h.IzE.a(13721, new Object[] { Integer.valueOf(3), Integer.valueOf(4) });
+        com.tencent.mm.plugin.report.service.h.OAn.b(13721, new Object[] { Integer.valueOf(3), Integer.valueOf(4) });
         AppMethodBeat.o(63591);
         return true;
       }
-    }, null, w.b.Wao);
-    this.mNG = ((ListView)findViewById(a.f.amount_select_list));
-    this.mNH = ((TextView)findViewById(a.f.clear_amount));
-    this.mNI = ((TextView)findViewById(a.f.amount_summary));
-    this.mNI.setText(getString(a.i.launch_aa_by_person_amount_select_summary, new Object[] { Float.valueOf(0.0F) }));
-    this.mNJ = findViewById(a.f.summary_layout);
-    this.mNK = ((TextView)findViewById(a.f.alert_tip_tv));
-    this.mNv = this.mNG;
-    this.mNJ.setVisibility(8);
-    ar.a(this.mNH.getPaint(), 0.8F);
-    this.mNH.setOnTouchListener(new View.OnTouchListener()
+    }, null, y.b.adEJ);
+    this.pKo = ((ListView)findViewById(a.f.amount_select_list));
+    this.pKp = ((TextView)findViewById(a.f.clear_amount));
+    this.pKq = ((TextView)findViewById(a.f.amount_summary));
+    this.pKq.setText(getString(a.i.launch_aa_by_person_amount_select_summary, new Object[] { Float.valueOf(0.0F) }));
+    this.pKr = findViewById(a.f.summary_layout);
+    this.pKs = ((TextView)findViewById(a.f.alert_tip_tv));
+    this.pKd = this.pKo;
+    this.pKr.setVisibility(8);
+    aw.a(this.pKp.getPaint(), 0.8F);
+    this.pKp.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -356,16 +375,16 @@ public class LaunchAAByPersonAmountSelectUI
         }
       }
     });
-    this.mNH.setOnClickListener(new LaunchAAByPersonAmountSelectUI.6(this));
-    this.mNL = true;
-    this.mNG.setOnScrollListener(new LaunchAAByPersonAmountSelectUI.7(this));
+    this.pKp.setOnClickListener(new LaunchAAByPersonAmountSelectUI.6(this));
+    this.pKt = true;
+    this.pKo.setOnScrollListener(new LaunchAAByPersonAmountSelectUI.7(this));
     this.scene = getIntent().getIntExtra("enter_scene", 1);
-    this.fxT = getIntent().getStringExtra("chatroom");
-    this.mNP = getIntent().getLongExtra("maxPerAmount", -1L);
-    this.mNQ = getIntent().getIntExtra("maxUserNumber", -1);
-    Log.i("MicroMsg.LaunchAAByPersonAmountSelectUI", "onCreate, chatroom: %s, maxPerAmount: %s, ", new Object[] { this.fxT, Long.valueOf(this.mNP) });
-    this.mNF.bG(c.a.class);
-    this.mNF.a(c.a.class, new com.tencent.mm.vending.app.a.b() {});
+    this.hCy = getIntent().getStringExtra("chatroom");
+    this.pKx = getIntent().getLongExtra("maxPerAmount", -1L);
+    this.pKy = getIntent().getIntExtra("maxUserNumber", -1);
+    Log.i("MicroMsg.LaunchAAByPersonAmountSelectUI", "onCreate, chatroom: %s, maxPerAmount: %s, ", new Object[] { this.hCy, Long.valueOf(this.pKx) });
+    this.pKn.ct(c.a.class);
+    this.pKn.a(c.a.class, new com.tencent.mm.vending.app.a.b() {});
     AppMethodBeat.o(63607);
   }
   
@@ -373,8 +392,8 @@ public class LaunchAAByPersonAmountSelectUI
   {
     AppMethodBeat.i(63610);
     super.onDestroy();
-    if (this.mNM != null) {
-      this.mNM.clear();
+    if (this.pKu != null) {
+      this.pKu.clear();
     }
     AppMethodBeat.o(63610);
   }
@@ -383,6 +402,14 @@ public class LaunchAAByPersonAmountSelectUI
   {
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
+  }
+  
+  public void superImportUIComponents(HashSet<Class<? extends UIComponent>> paramHashSet)
+  {
+    AppMethodBeat.i(268589);
+    super.superImportUIComponents(paramHashSet);
+    paramHashSet.add(com.tencent.mm.plugin.aa.model.a.class);
+    AppMethodBeat.o(268589);
   }
   
   final class a
@@ -403,7 +430,7 @@ public class LaunchAAByPersonAmountSelectUI
         localb.username = str;
         Object localObject;
         if ((localObject != null) && (localObject.containsKey(str))) {}
-        for (localb.mOd = LaunchAAByPersonAmountSelectUI.this.getString(a.i.aa_amount_format, new Object[] { localObject.get(str) });; localb.mOd = "")
+        for (localb.pKL = LaunchAAByPersonAmountSelectUI.this.getString(a.i.aa_amount_format, new Object[] { localObject.get(str) });; localb.pKL = "")
         {
           this.dataList.add(localb);
           break;
@@ -412,7 +439,7 @@ public class LaunchAAByPersonAmountSelectUI
       AppMethodBeat.o(63600);
     }
     
-    private LaunchAAByPersonAmountSelectUI.b yf(int paramInt)
+    private LaunchAAByPersonAmountSelectUI.b yl(int paramInt)
     {
       AppMethodBeat.i(63602);
       LaunchAAByPersonAmountSelectUI.b localb = (LaunchAAByPersonAmountSelectUI.b)this.dataList.get(paramInt);
@@ -436,7 +463,7 @@ public class LaunchAAByPersonAmountSelectUI
     public final View getView(int paramInt, final View paramView, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(63603);
-      LaunchAAByPersonAmountSelectUI.b localb = yf(paramInt);
+      LaunchAAByPersonAmountSelectUI.b localb = yl(paramInt);
       View localView = paramView;
       if (localb != null)
       {
@@ -446,159 +473,176 @@ public class LaunchAAByPersonAmountSelectUI
           localView = paramView;
           if (paramView == null)
           {
-            localView = ad.kS(LaunchAAByPersonAmountSelectUI.this).inflate(a.g.launch_aa_by_person_amount_select_row, paramViewGroup, false);
+            localView = af.mU(LaunchAAByPersonAmountSelectUI.this).inflate(a.g.launch_aa_by_person_amount_select_row, paramViewGroup, false);
             paramView = new a((byte)0);
-            paramView.mNZ = ((LinearLayout)localView.findViewById(a.f.root));
-            paramView.jiu = ((ImageView)localView.findViewById(a.f.avatar));
-            paramView.kMa = ((TextView)localView.findViewById(a.f.username));
-            paramView.mOa = ((TextView)localView.findViewById(a.f.subname));
-            paramView.mNC = ((WalletFormView)localView.findViewById(a.f.money_edit));
-            paramView.mOb = ((TextView)localView.findViewById(a.f.launch_aa_by_person_money_unit));
-            paramView.mOc = new LaunchAAByPersonAmountSelectUI.c(LaunchAAByPersonAmountSelectUI.this, localb.username, paramView.mNC);
-            paramView.mNC.a(paramView.mOc);
-            paramView.mNZ.setOnTouchListener(new View.OnTouchListener()
+            paramView.pKH = ((LinearLayout)localView.findViewById(a.f.root));
+            paramView.lKK = ((ImageView)localView.findViewById(a.f.avatar));
+            paramView.nnW = ((TextView)localView.findViewById(a.f.username));
+            paramView.pKI = ((TextView)localView.findViewById(a.f.subname));
+            paramView.pKk = ((WalletFormView)localView.findViewById(a.f.money_edit));
+            paramView.pKJ = ((TextView)localView.findViewById(a.f.launch_aa_by_person_money_unit));
+            paramView.pKK = new LaunchAAByPersonAmountSelectUI.c(LaunchAAByPersonAmountSelectUI.this, localb.username, paramView.pKk);
+            paramView.pKk.a(paramView.pKK);
+            paramView.pKH.setOnTouchListener(new View.OnTouchListener()
             {
               public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
               {
                 AppMethodBeat.i(63598);
-                paramView.mNC.d(LaunchAAByPersonAmountSelectUI.this);
+                paramView.pKk.d(LaunchAAByPersonAmountSelectUI.this);
                 AppMethodBeat.o(63598);
                 return false;
               }
             });
-            paramView.jiu.setOnTouchListener(new View.OnTouchListener()
+            paramView.lKK.setOnTouchListener(new View.OnTouchListener()
             {
               public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
               {
                 AppMethodBeat.i(63599);
-                paramView.mNC.d(LaunchAAByPersonAmountSelectUI.this);
+                paramView.pKk.d(LaunchAAByPersonAmountSelectUI.this);
                 AppMethodBeat.o(63599);
                 return false;
               }
             });
-            paramView.kMa.setOnTouchListener(new View.OnTouchListener()
+            paramView.nnW.setOnTouchListener(new View.OnTouchListener()
             {
               public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
               {
-                AppMethodBeat.i(270552);
-                paramView.mNC.d(LaunchAAByPersonAmountSelectUI.this);
-                AppMethodBeat.o(270552);
+                AppMethodBeat.i(268562);
+                paramView.pKk.d(LaunchAAByPersonAmountSelectUI.this);
+                AppMethodBeat.o(268562);
                 return false;
               }
             });
+            paramView.pKk.setAccessibilityDelegate(new com.tencent.mm.wallet_core.c()
+            {
+              public final void onInitializeAccessibilityNodeInfo(View paramAnonymousView, AccessibilityNodeInfo paramAnonymousAccessibilityNodeInfo)
+              {
+                AppMethodBeat.i(268559);
+                super.onInitializeAccessibilityNodeInfo(paramAnonymousView, paramAnonymousAccessibilityNodeInfo);
+                paramAnonymousAccessibilityNodeInfo.setClassName(EditText.class.getName());
+                String str = paramView.pKk.getContentEt().getText().toString();
+                paramAnonymousView = str;
+                if (str.length() == 0) {
+                  paramAnonymousView = "0";
+                }
+                paramAnonymousAccessibilityNodeInfo.setContentDescription(paramAnonymousView + LaunchAAByPersonAmountSelectUI.this.getString(a.i.launch_aa_by_person_money_edit_unit));
+                AppMethodBeat.o(268559);
+              }
+            });
+            paramView.pKk.getContentEt().setImportantForAccessibility(2);
             localView.setTag(paramView);
-            LaunchAAByPersonAmountSelectUI.this.setEditFocusListener(paramView.mNC, 2, false, true);
+            LaunchAAByPersonAmountSelectUI.this.setEditFocusListener(paramView.pKk, 2, false, true);
           }
           paramView = (a)localView.getTag();
           if (!Util.isNullOrNil(localb.username))
           {
-            paramView.mOc.username = localb.username;
-            com.tencent.mm.pluginsdk.ui.a.b.c(paramView.jiu, localb.username);
-            paramView.kMa.setText(l.b(LaunchAAByPersonAmountSelectUI.this.getContext(), ((b)com.tencent.mm.kernel.h.ae(b.class)).aL(localb.username, LaunchAAByPersonAmountSelectUI.r(LaunchAAByPersonAmountSelectUI.this)), paramView.kMa.getTextSize()));
+            paramView.pKK.username = localb.username;
+            com.tencent.mm.pluginsdk.ui.a.b.g(paramView.lKK, localb.username);
+            paramView.nnW.setText(p.b(LaunchAAByPersonAmountSelectUI.this.getContext(), ((b)com.tencent.mm.kernel.h.ax(b.class)).aV(localb.username, LaunchAAByPersonAmountSelectUI.s(LaunchAAByPersonAmountSelectUI.this)), paramView.nnW.getTextSize()));
           }
-          if ((localb.mOd != null) && (paramView.mNC.getText() != null) && (!localb.mOd.equals(paramView.mNC.getText().toLowerCase())))
+          if ((localb.pKL != null) && (paramView.pKk.getText() != null) && (!localb.pKL.equals(paramView.pKk.getText().toLowerCase())))
           {
-            paramViewGroup = paramView.mNC;
-            LaunchAAByPersonAmountSelectUI.c localc = paramView.mOc;
-            if (paramViewGroup.YXE != null) {
-              paramViewGroup.YXE.removeTextChangedListener(localc);
+            paramViewGroup = paramView.pKk;
+            LaunchAAByPersonAmountSelectUI.c localc = paramView.pKK;
+            if (paramViewGroup.agVJ != null) {
+              paramViewGroup.agVJ.removeTextChangedListener(localc);
             }
-            paramView.mNC.setText(localb.mOd);
-            paramView.mNC.a(paramView.mOc);
+            paramView.pKk.setText(localb.pKL);
+            paramView.pKk.a(paramView.pKK);
           }
-          if ((paramView.mNC == null) || (paramView.mNC.getText() == null) || (g.b(paramView.mNC.getText(), "100", RoundingMode.HALF_UP) <= LaunchAAByPersonAmountSelectUI.p(LaunchAAByPersonAmountSelectUI.this))) {
-            break label796;
+          if ((paramView.pKk == null) || (paramView.pKk.getText() == null) || (i.b(paramView.pKk.getText(), "100", RoundingMode.HALF_UP) <= LaunchAAByPersonAmountSelectUI.q(LaunchAAByPersonAmountSelectUI.this))) {
+            break label825;
           }
-          paramView.mNC.setContentTextColorRes(a.c.Red);
+          paramView.pKk.setContentTextColorRes(a.c.Red);
           if (paramInt != 0) {
-            break label809;
+            break label838;
           }
-          paramView.mNZ.setBackgroundResource(a.e.launch_aa_by_person_circle_bg_header);
-          label512:
-          if (!as.bvK(localb.username)) {
-            break label850;
+          paramView.pKH.setBackgroundResource(a.e.launch_aa_by_person_circle_bg_header);
+          label540:
+          if (!au.bwO(localb.username)) {
+            break label879;
           }
-          paramView.jiu.setAlpha(0.3F);
-          paramView.kMa.setAlpha(0.3F);
-          paramView.mOb.setAlpha(0.3F);
-          paramView.mNC.setAlpha(0.15F);
-          paramView.jiu.setAlpha(0.3F);
-          paramView.jiu.setOnTouchListener(null);
-          paramView.kMa.setAlpha(0.3F);
-          paramView.kMa.setOnTouchListener(null);
-          paramView.mOb.setAlpha(0.3F);
-          paramView.mNC.setAlpha(0.15F);
-          paramView.mNC.findViewById(a.f.wallet_content).setFocusable(false);
-          paramView.mNC.findViewById(a.f.wallet_content).setFocusableInTouchMode(false);
-          paramView.mNC.findViewById(a.f.wallet_content).setClickable(false);
-          paramViewGroup = com.tencent.mm.openim.room.a.a.V(((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().RG(localb.username));
-          paramView.mOa.setVisibility(0);
-          paramView.mOa.setText(paramViewGroup);
-          paramView.mOa.setAlpha(0.3F);
-          Log.i("MicroMsg.LaunchAAByPersonAmountSelectUI", "username：%s，data.username：%s,subName:%s", new Object[] { l.b(LaunchAAByPersonAmountSelectUI.this.getContext(), ((b)com.tencent.mm.kernel.h.ae(b.class)).aL(localb.username, LaunchAAByPersonAmountSelectUI.r(LaunchAAByPersonAmountSelectUI.this)), paramView.kMa.getTextSize()).toString(), localb.username, paramViewGroup });
+          paramView.lKK.setAlpha(0.3F);
+          paramView.nnW.setAlpha(0.3F);
+          paramView.pKJ.setAlpha(0.3F);
+          paramView.pKk.setAlpha(0.15F);
+          paramView.lKK.setAlpha(0.3F);
+          paramView.lKK.setOnTouchListener(null);
+          paramView.nnW.setAlpha(0.3F);
+          paramView.nnW.setOnTouchListener(null);
+          paramView.pKJ.setAlpha(0.3F);
+          paramView.pKk.setAlpha(0.15F);
+          paramView.pKk.findViewById(a.f.wallet_content).setFocusable(false);
+          paramView.pKk.findViewById(a.f.wallet_content).setFocusableInTouchMode(false);
+          paramView.pKk.findViewById(a.f.wallet_content).setClickable(false);
+          paramViewGroup = com.tencent.mm.openim.room.a.a.X(((n)com.tencent.mm.kernel.h.ax(n.class)).bzA().JE(localb.username));
+          paramView.pKI.setVisibility(0);
+          paramView.pKI.setText(paramViewGroup);
+          paramView.pKI.setAlpha(0.3F);
+          Log.i("MicroMsg.LaunchAAByPersonAmountSelectUI", "username：%s，data.username：%s,subName:%s", new Object[] { p.b(LaunchAAByPersonAmountSelectUI.this.getContext(), ((b)com.tencent.mm.kernel.h.ax(b.class)).aV(localb.username, LaunchAAByPersonAmountSelectUI.s(LaunchAAByPersonAmountSelectUI.this)), paramView.nnW.getTextSize()).toString(), localb.username, paramViewGroup });
         }
       }
       for (;;)
       {
         AppMethodBeat.o(63603);
         return localView;
-        label796:
-        paramView.mNC.setContentTextColorRes(a.c.normal_text_color);
+        label825:
+        paramView.pKk.setContentTextColorRes(a.c.normal_text_color);
         break;
-        label809:
+        label838:
         if (paramInt == this.dataList.size() - 1)
         {
-          paramView.mNZ.setBackgroundResource(a.e.launch_aa_by_person_circle_bg_tail);
-          break label512;
+          paramView.pKH.setBackgroundResource(a.e.launch_aa_by_person_circle_bg_tail);
+          break label540;
         }
-        paramView.mNZ.setBackgroundResource(a.e.launch_aa_by_person_circle_bg);
-        break label512;
-        label850:
-        paramView.jiu.setAlpha(1.0F);
-        paramView.kMa.setAlpha(1.0F);
-        paramView.mOb.setAlpha(1.0F);
-        paramView.mNC.setAlpha(1.0F);
-        paramView.jiu.setAlpha(1.0F);
-        paramView.jiu.setOnTouchListener(new View.OnTouchListener()
+        paramView.pKH.setBackgroundResource(a.e.launch_aa_by_person_circle_bg);
+        break label540;
+        label879:
+        paramView.lKK.setAlpha(1.0F);
+        paramView.nnW.setAlpha(1.0F);
+        paramView.pKJ.setAlpha(1.0F);
+        paramView.pKk.setAlpha(1.0F);
+        paramView.lKK.setAlpha(1.0F);
+        paramView.lKK.setOnTouchListener(new View.OnTouchListener()
         {
           public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
           {
-            AppMethodBeat.i(269017);
-            paramView.mNC.d(LaunchAAByPersonAmountSelectUI.this);
-            AppMethodBeat.o(269017);
+            AppMethodBeat.i(268554);
+            paramView.pKk.d(LaunchAAByPersonAmountSelectUI.this);
+            AppMethodBeat.o(268554);
             return false;
           }
         });
-        paramView.kMa.setAlpha(1.0F);
-        paramView.kMa.setOnTouchListener(new View.OnTouchListener()
+        paramView.nnW.setAlpha(1.0F);
+        paramView.nnW.setOnTouchListener(new View.OnTouchListener()
         {
           public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
           {
-            AppMethodBeat.i(227923);
-            paramView.mNC.d(LaunchAAByPersonAmountSelectUI.this);
-            AppMethodBeat.o(227923);
+            AppMethodBeat.i(268557);
+            paramView.pKk.d(LaunchAAByPersonAmountSelectUI.this);
+            AppMethodBeat.o(268557);
             return false;
           }
         });
-        paramView.mOb.setAlpha(1.0F);
-        paramView.mNC.setAlpha(1.0F);
-        paramView.mNC.findViewById(a.f.wallet_content).setFocusable(true);
-        paramView.mNC.findViewById(a.f.wallet_content).setFocusableInTouchMode(true);
-        paramView.mNC.findViewById(a.f.wallet_content).setClickable(true);
-        paramView.mOa.setVisibility(4);
-        Log.i("MicroMsg.LaunchAAByPersonAmountSelectUI", "username：%s，data.username：%s", new Object[] { l.b(LaunchAAByPersonAmountSelectUI.this.getContext(), ((b)com.tencent.mm.kernel.h.ae(b.class)).aL(localb.username, LaunchAAByPersonAmountSelectUI.r(LaunchAAByPersonAmountSelectUI.this)), paramView.kMa.getTextSize()).toString(), localb.username });
+        paramView.pKJ.setAlpha(1.0F);
+        paramView.pKk.setAlpha(1.0F);
+        paramView.pKk.findViewById(a.f.wallet_content).setFocusable(true);
+        paramView.pKk.findViewById(a.f.wallet_content).setFocusableInTouchMode(true);
+        paramView.pKk.findViewById(a.f.wallet_content).setClickable(true);
+        paramView.pKI.setVisibility(4);
+        Log.i("MicroMsg.LaunchAAByPersonAmountSelectUI", "username：%s，data.username：%s", new Object[] { p.b(LaunchAAByPersonAmountSelectUI.this.getContext(), ((b)com.tencent.mm.kernel.h.ax(b.class)).aV(localb.username, LaunchAAByPersonAmountSelectUI.s(LaunchAAByPersonAmountSelectUI.this)), paramView.nnW.getTextSize()).toString(), localb.username });
       }
     }
     
     final class a
     {
-      ImageView jiu;
-      TextView kMa;
-      WalletFormView mNC;
-      LinearLayout mNZ;
-      TextView mOa;
-      TextView mOb;
-      LaunchAAByPersonAmountSelectUI.c mOc;
+      ImageView lKK;
+      TextView nnW;
+      LinearLayout pKH;
+      TextView pKI;
+      TextView pKJ;
+      LaunchAAByPersonAmountSelectUI.c pKK;
+      WalletFormView pKk;
       
       private a() {}
     }
@@ -606,7 +650,7 @@ public class LaunchAAByPersonAmountSelectUI
   
   final class b
   {
-    String mOd = null;
+    String pKL = null;
     String username = null;
     
     private b() {}
@@ -615,13 +659,13 @@ public class LaunchAAByPersonAmountSelectUI
   protected final class c
     implements TextWatcher
   {
-    private WalletFormView mNC;
+    private WalletFormView pKk;
     String username;
     
     public c(String paramString, WalletFormView paramWalletFormView)
     {
       this.username = paramString;
-      this.mNC = paramWalletFormView;
+      this.pKk = paramWalletFormView;
     }
     
     public final void afterTextChanged(Editable paramEditable)
@@ -659,23 +703,23 @@ public class LaunchAAByPersonAmountSelectUI
       if ((!Util.isNullOrNil(paramEditable)) && (Util.getDouble(paramEditable.toString(), 0.0D) > 0.0D))
       {
         LaunchAAByPersonAmountSelectUI.c(LaunchAAByPersonAmountSelectUI.this).put(this.username, paramEditable.toString());
-        if ((this.mNC == null) || (g.b(this.mNC.getText(), "100", RoundingMode.HALF_UP) <= LaunchAAByPersonAmountSelectUI.p(LaunchAAByPersonAmountSelectUI.this))) {
+        if ((this.pKk == null) || (i.b(this.pKk.getText(), "100", RoundingMode.HALF_UP) <= LaunchAAByPersonAmountSelectUI.q(LaunchAAByPersonAmountSelectUI.this))) {
           break label347;
         }
-        this.mNC.setContentTextColorRes(a.c.Red);
+        this.pKk.setContentTextColorRes(a.c.Red);
       }
       for (;;)
       {
         LaunchAAByPersonAmountSelectUI.k(LaunchAAByPersonAmountSelectUI.this).removeCallbacks(LaunchAAByPersonAmountSelectUI.j(LaunchAAByPersonAmountSelectUI.this));
         LaunchAAByPersonAmountSelectUI.k(LaunchAAByPersonAmountSelectUI.this).postDelayed(LaunchAAByPersonAmountSelectUI.j(LaunchAAByPersonAmountSelectUI.this), 50L);
-        if (LaunchAAByPersonAmountSelectUI.q(LaunchAAByPersonAmountSelectUI.this)) {
-          i.yd(3);
+        if (LaunchAAByPersonAmountSelectUI.r(LaunchAAByPersonAmountSelectUI.this)) {
+          j.yj(3);
         }
         AppMethodBeat.o(63605);
         return;
         LaunchAAByPersonAmountSelectUI.c(LaunchAAByPersonAmountSelectUI.this).remove(this.username);
         break;
-        this.mNC.setContentTextColorRes(a.c.normal_text_color);
+        this.pKk.setContentTextColorRes(a.c.normal_text_color);
       }
     }
     
@@ -686,7 +730,7 @@ public class LaunchAAByPersonAmountSelectUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.LaunchAAByPersonAmountSelectUI
  * JD-Core Version:    0.7.0.1
  */

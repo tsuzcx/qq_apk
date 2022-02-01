@@ -1,26 +1,32 @@
 package com.tencent.mm.plugin.sns.model;
 
-import com.tencent.mm.plugin.sns.k.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.pluginsdk.model.t;
+import java.io.OutputStream;
+import java.util.concurrent.ExecutorService;
 
 public final class bb
-  implements ai
+  extends t<r, String, Boolean>
 {
-  public d JZd;
-  private int scene = 0;
+  private String Qsm;
+  private String Qsq = "";
+  private String fileName;
+  private String mediaId;
+  private OutputStream osU = null;
+  private String osV;
   
-  public final d fOn()
+  public final ExecutorService gDT()
   {
-    return this.JZd;
-  }
-  
-  public final int getScene()
-  {
-    return this.scene;
+    AppMethodBeat.i(179117);
+    ExecutorService localExecutorService = al.hgn();
+    AppMethodBeat.o(179117);
+    return localExecutorService;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.bb
  * JD-Core Version:    0.7.0.1
  */

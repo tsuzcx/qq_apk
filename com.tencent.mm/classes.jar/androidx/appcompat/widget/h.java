@@ -15,21 +15,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class h
 {
-  private final ImageView qQ;
-  private aa qR;
-  private aa qS;
-  private aa qs;
+  private final ImageView rN;
+  private aa rO;
+  private aa rP;
+  private aa ro;
   
   public h(ImageView paramImageView)
   {
-    this.qQ = paramImageView;
+    this.rN = paramImageView;
   }
   
-  private boolean dn()
+  private boolean em()
   {
     int i = Build.VERSION.SDK_INT;
     if (i > 21) {
-      if (this.qR == null) {}
+      if (this.rO == null) {}
     }
     while (i == 21)
     {
@@ -39,180 +39,180 @@ public final class h
     return false;
   }
   
-  private boolean f(Drawable paramDrawable)
+  private boolean g(Drawable paramDrawable)
   {
-    AppMethodBeat.i(240869);
-    if (this.qs == null) {
-      this.qs = new aa();
+    AppMethodBeat.i(200079);
+    if (this.ro == null) {
+      this.ro = new aa();
     }
-    aa localaa = this.qs;
+    aa localaa = this.ro;
     localaa.clear();
-    Object localObject = e.a(this.qQ);
+    Object localObject = e.a(this.rN);
     if (localObject != null)
     {
-      localaa.jG = true;
-      localaa.jE = ((ColorStateList)localObject);
+      localaa.kB = true;
+      localaa.kz = ((ColorStateList)localObject);
     }
-    localObject = e.b(this.qQ);
+    localObject = e.b(this.rN);
     if (localObject != null)
     {
-      localaa.jH = true;
-      localaa.jF = ((PorterDuff.Mode)localObject);
+      localaa.kC = true;
+      localaa.kA = ((PorterDuff.Mode)localObject);
     }
-    if ((localaa.jG) || (localaa.jH))
+    if ((localaa.kB) || (localaa.kC))
     {
-      f.a(paramDrawable, localaa, this.qQ.getDrawableState());
-      AppMethodBeat.o(240869);
+      f.a(paramDrawable, localaa, this.rN.getDrawableState());
+      AppMethodBeat.o(200079);
       return true;
     }
-    AppMethodBeat.o(240869);
+    AppMethodBeat.o(200079);
     return false;
   }
   
   public final void a(AttributeSet paramAttributeSet, int paramInt)
   {
-    AppMethodBeat.i(240862);
-    ac localac = ac.a(this.qQ.getContext(), paramAttributeSet, a.j.AppCompatImageView, paramInt, 0);
+    AppMethodBeat.i(200093);
+    ac localac = ac.a(this.rN.getContext(), paramAttributeSet, a.j.AppCompatImageView, paramInt, 0);
     try
     {
-      Drawable localDrawable = this.qQ.getDrawable();
+      Drawable localDrawable = this.rN.getDrawable();
       paramAttributeSet = localDrawable;
       if (localDrawable == null)
       {
-        paramInt = localac.r(a.j.AppCompatImageView_srcCompat, -1);
+        paramInt = localac.w(a.j.AppCompatImageView_srcCompat, -1);
         paramAttributeSet = localDrawable;
         if (paramInt != -1)
         {
-          localDrawable = a.m(this.qQ.getContext(), paramInt);
+          localDrawable = a.m(this.rN.getContext(), paramInt);
           paramAttributeSet = localDrawable;
           if (localDrawable != null)
           {
-            this.qQ.setImageDrawable(localDrawable);
+            this.rN.setImageDrawable(localDrawable);
             paramAttributeSet = localDrawable;
           }
         }
       }
       if (paramAttributeSet != null) {
-        o.h(paramAttributeSet);
+        o.i(paramAttributeSet);
       }
-      if (localac.aC(a.j.AppCompatImageView_tint)) {
-        e.a(this.qQ, localac.getColorStateList(a.j.AppCompatImageView_tint));
+      if (localac.az(a.j.AppCompatImageView_tint)) {
+        e.a(this.rN, localac.getColorStateList(a.j.AppCompatImageView_tint));
       }
-      if (localac.aC(a.j.AppCompatImageView_tintMode)) {
-        e.a(this.qQ, o.c(localac.getInt(a.j.AppCompatImageView_tintMode, -1), null));
+      if (localac.az(a.j.AppCompatImageView_tintMode)) {
+        e.a(this.rN, o.c(localac.getInt(a.j.AppCompatImageView_tintMode, -1), null));
       }
       return;
     }
     finally
     {
-      localac.wA.recycle();
-      AppMethodBeat.o(240862);
+      localac.xv.recycle();
+      AppMethodBeat.o(200093);
     }
   }
   
-  final void dr()
+  final void eq()
   {
-    AppMethodBeat.i(240868);
-    Drawable localDrawable = this.qQ.getDrawable();
+    AppMethodBeat.i(200152);
+    Drawable localDrawable = this.rN.getDrawable();
     if (localDrawable != null) {
-      o.h(localDrawable);
+      o.i(localDrawable);
     }
     if (localDrawable != null)
     {
-      if ((dn()) && (f(localDrawable)))
+      if ((em()) && (g(localDrawable)))
       {
-        AppMethodBeat.o(240868);
+        AppMethodBeat.o(200152);
         return;
       }
-      if (this.qS != null)
+      if (this.rP != null)
       {
-        f.a(localDrawable, this.qS, this.qQ.getDrawableState());
-        AppMethodBeat.o(240868);
+        f.a(localDrawable, this.rP, this.rN.getDrawableState());
+        AppMethodBeat.o(200152);
         return;
       }
-      if (this.qR != null) {
-        f.a(localDrawable, this.qR, this.qQ.getDrawableState());
+      if (this.rO != null) {
+        f.a(localDrawable, this.rO, this.rN.getDrawableState());
       }
     }
-    AppMethodBeat.o(240868);
+    AppMethodBeat.o(200152);
   }
   
   final ColorStateList getSupportImageTintList()
   {
-    if (this.qS != null) {
-      return this.qS.jE;
+    if (this.rP != null) {
+      return this.rP.kz;
     }
     return null;
   }
   
   final PorterDuff.Mode getSupportImageTintMode()
   {
-    if (this.qS != null) {
-      return this.qS.jF;
+    if (this.rP != null) {
+      return this.rP.kA;
     }
     return null;
   }
   
   final boolean hasOverlappingRendering()
   {
-    AppMethodBeat.i(240865);
-    Drawable localDrawable = this.qQ.getBackground();
+    AppMethodBeat.i(200110);
+    Drawable localDrawable = this.rN.getBackground();
     if ((Build.VERSION.SDK_INT >= 21) && ((localDrawable instanceof RippleDrawable)))
     {
-      AppMethodBeat.o(240865);
+      AppMethodBeat.o(200110);
       return false;
     }
-    AppMethodBeat.o(240865);
+    AppMethodBeat.o(200110);
     return true;
   }
   
   public final void setImageResource(int paramInt)
   {
-    AppMethodBeat.i(240864);
+    AppMethodBeat.i(200103);
     if (paramInt != 0)
     {
-      Drawable localDrawable = a.m(this.qQ.getContext(), paramInt);
+      Drawable localDrawable = a.m(this.rN.getContext(), paramInt);
       if (localDrawable != null) {
-        o.h(localDrawable);
+        o.i(localDrawable);
       }
-      this.qQ.setImageDrawable(localDrawable);
+      this.rN.setImageDrawable(localDrawable);
     }
     for (;;)
     {
-      dr();
-      AppMethodBeat.o(240864);
+      eq();
+      AppMethodBeat.o(200103);
       return;
-      this.qQ.setImageDrawable(null);
+      this.rN.setImageDrawable(null);
     }
   }
   
   final void setSupportImageTintList(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(240866);
-    if (this.qS == null) {
-      this.qS = new aa();
+    AppMethodBeat.i(200118);
+    if (this.rP == null) {
+      this.rP = new aa();
     }
-    this.qS.jE = paramColorStateList;
-    this.qS.jG = true;
-    dr();
-    AppMethodBeat.o(240866);
+    this.rP.kz = paramColorStateList;
+    this.rP.kB = true;
+    eq();
+    AppMethodBeat.o(200118);
   }
   
   final void setSupportImageTintMode(PorterDuff.Mode paramMode)
   {
-    AppMethodBeat.i(240867);
-    if (this.qS == null) {
-      this.qS = new aa();
+    AppMethodBeat.i(200134);
+    if (this.rP == null) {
+      this.rP = new aa();
     }
-    this.qS.jF = paramMode;
-    this.qS.jH = true;
-    dr();
-    AppMethodBeat.o(240867);
+    this.rP.kA = paramMode;
+    this.rP.kC = true;
+    eq();
+    AppMethodBeat.o(200134);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.widget.h
  * JD-Core Version:    0.7.0.1
  */

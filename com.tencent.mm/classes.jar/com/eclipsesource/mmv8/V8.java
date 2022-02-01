@@ -314,6 +314,8 @@ public class V8
   
   private static native void _setCodeCacheDir(String paramString);
   
+  private native void _setDelaySaveCodeCache(long paramLong, boolean paramBoolean);
+  
   private static native void _setFlags(String paramString);
   
   private native void _setPrototype(long paramLong1, long paramLong2, long paramLong3);
@@ -338,9 +340,9 @@ public class V8
   
   public static void broadcastMessage(int paramInt, String paramString)
   {
-    AppMethodBeat.i(232155);
+    AppMethodBeat.i(208330);
     _nativeTransBroadcastMessage(paramInt, paramString);
-    AppMethodBeat.o(232155);
+    AppMethodBeat.o(208330);
   }
   
   private void checkArgs(Object[] paramArrayOfObject)
@@ -468,7 +470,7 @@ public class V8
   protected static V8 createV8Runtime(String arg0, String paramString2, boolean paramBoolean, String paramString3, byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: ldc_w 441
+    //   0: ldc_w 443
     //   3: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: getstatic 90	com/eclipsesource/mmv8/V8:nativeLibraryLoaded	Z
     //   9: ifne +24 -> 33
@@ -479,10 +481,10 @@ public class V8
     //   20: getstatic 90	com/eclipsesource/mmv8/V8:nativeLibraryLoaded	Z
     //   23: ifne +7 -> 30
     //   26: aload_1
-    //   27: invokestatic 444	com/eclipsesource/mmv8/V8:load	(Ljava/lang/String;)V
+    //   27: invokestatic 446	com/eclipsesource/mmv8/V8:load	(Ljava/lang/String;)V
     //   30: aload 5
     //   32: monitorexit
-    //   33: invokestatic 446	com/eclipsesource/mmv8/V8:checkNativeLibraryLoaded	()V
+    //   33: invokestatic 448	com/eclipsesource/mmv8/V8:checkNativeLibraryLoaded	()V
     //   36: getstatic 88	com/eclipsesource/mmv8/V8:initialized	Z
     //   39: ifne +33 -> 72
     //   42: getstatic 80	com/eclipsesource/mmv8/V8:lock	Ljava/lang/Object;
@@ -492,11 +494,11 @@ public class V8
     //   48: aload_3
     //   49: ifnull +7 -> 56
     //   52: aload_3
-    //   53: invokestatic 448	com/eclipsesource/mmv8/V8:_setCodeCacheDir	(Ljava/lang/String;)V
+    //   53: invokestatic 450	com/eclipsesource/mmv8/V8:_setCodeCacheDir	(Ljava/lang/String;)V
     //   56: aload 4
     //   58: ifnull +8 -> 66
     //   61: aload 4
-    //   63: invokestatic 450	com/eclipsesource/mmv8/V8:_setSnapshotBlob	([B)V
+    //   63: invokestatic 452	com/eclipsesource/mmv8/V8:_setSnapshotBlob	([B)V
     //   66: aload_1
     //   67: monitorexit
     //   68: iconst_1
@@ -517,28 +519,28 @@ public class V8
     //   93: putstatic 82	com/eclipsesource/mmv8/V8:runtimeCounter	I
     //   96: aload_0
     //   97: monitorexit
-    //   98: ldc_w 441
+    //   98: ldc_w 443
     //   101: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   104: aload_1
     //   105: areturn
     //   106: astore_0
     //   107: aload 5
     //   109: monitorexit
-    //   110: ldc_w 441
+    //   110: ldc_w 443
     //   113: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   116: aload_0
     //   117: athrow
     //   118: astore_0
     //   119: aload_1
     //   120: monitorexit
-    //   121: ldc_w 441
+    //   121: ldc_w 443
     //   124: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   127: aload_0
     //   128: athrow
     //   129: astore_1
     //   130: aload_0
     //   131: monitorexit
-    //   132: ldc_w 441
+    //   132: ldc_w 443
     //   135: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   138: aload_1
     //   139: athrow
@@ -660,9 +662,9 @@ public class V8
   
   public static long getNativeTransManager()
   {
-    AppMethodBeat.i(232150);
+    AppMethodBeat.i(208328);
     long l = _getNativeTransManager();
-    AppMethodBeat.o(232150);
+    AppMethodBeat.o(208328);
     return l;
   }
   
@@ -720,14 +722,14 @@ public class V8
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc_w 604
+    //   3: ldc_w 606
     //   6: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: getstatic 106	com/eclipsesource/mmv8/V8:sLoadLibraryDelegate	Lcom/eclipsesource/mmv8/ILoadLibraryDelegate;
     //   12: aload_0
-    //   13: invokeinterface 609 2 0
+    //   13: invokeinterface 611 2 0
     //   18: iconst_1
     //   19: putstatic 90	com/eclipsesource/mmv8/V8:nativeLibraryLoaded	Z
-    //   22: ldc_w 604
+    //   22: ldc_w 606
     //   25: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   28: ldc 2
     //   30: monitorexit
@@ -735,7 +737,7 @@ public class V8
     //   32: astore_0
     //   33: aload_0
     //   34: putstatic 92	com/eclipsesource/mmv8/V8:nativeLoadError	Ljava/lang/Error;
-    //   37: ldc_w 604
+    //   37: ldc_w 606
     //   40: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   43: goto -15 -> 28
     //   46: astore_0
@@ -746,7 +748,7 @@ public class V8
     //   52: astore_0
     //   53: aload_0
     //   54: putstatic 94	com/eclipsesource/mmv8/V8:nativeLoadException	Ljava/lang/Exception;
-    //   57: ldc_w 604
+    //   57: ldc_w 606
     //   60: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   63: goto -35 -> 28
     // Local variable table:
@@ -818,9 +820,9 @@ public class V8
   
   public static void postMessage(int paramInt, String paramString)
   {
-    AppMethodBeat.i(232152);
+    AppMethodBeat.i(208329);
     _nativeTransPostMessage(paramInt, paramString);
-    AppMethodBeat.o(232152);
+    AppMethodBeat.o(208329);
   }
   
   private void releaseArguments(Object[] paramArrayOfObject, boolean paramBoolean)
@@ -883,9 +885,9 @@ public class V8
   
   public static void setBreakOnStart(Boolean paramBoolean)
   {
-    AppMethodBeat.i(232133);
+    AppMethodBeat.i(208327);
     _setBreakOnStart(paramBoolean.booleanValue());
-    AppMethodBeat.o(232133);
+    AppMethodBeat.o(208327);
   }
   
   private Object[] setDefaultValues(Object[] paramArrayOfObject, Class<?>[] paramArrayOfClass, V8Object paramV8Object, boolean paramBoolean)
@@ -1200,66 +1202,66 @@ public class V8
   protected Object callObjectJavaMethod(long paramLong, V8Object paramV8Object, V8Array paramV8Array)
   {
     // Byte code:
-    //   0: ldc_w 853
+    //   0: ldc_w 855
     //   3: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: getfield 136	com/eclipsesource/mmv8/V8:functionRegistry	Ljava/util/Map;
     //   10: lload_1
-    //   11: invokestatic 856	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   14: invokeinterface 858 2 0
+    //   11: invokestatic 858	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   14: invokeinterface 860 2 0
     //   19: checkcast 11	com/eclipsesource/mmv8/V8$MethodDescriptor
     //   22: astore 6
     //   24: aload 6
-    //   26: getfield 862	com/eclipsesource/mmv8/V8$MethodDescriptor:callback	Lcom/eclipsesource/mmv8/JavaCallback;
+    //   26: getfield 864	com/eclipsesource/mmv8/V8$MethodDescriptor:callback	Lcom/eclipsesource/mmv8/JavaCallback;
     //   29: ifnull +29 -> 58
     //   32: aload_0
     //   33: aload 6
-    //   35: getfield 862	com/eclipsesource/mmv8/V8$MethodDescriptor:callback	Lcom/eclipsesource/mmv8/JavaCallback;
+    //   35: getfield 864	com/eclipsesource/mmv8/V8$MethodDescriptor:callback	Lcom/eclipsesource/mmv8/JavaCallback;
     //   38: aload_3
     //   39: aload 4
-    //   41: invokeinterface 868 3 0
-    //   46: invokespecial 870	com/eclipsesource/mmv8/V8:checkResult	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   41: invokeinterface 870 3 0
+    //   46: invokespecial 872	com/eclipsesource/mmv8/V8:checkResult	(Ljava/lang/Object;)Ljava/lang/Object;
     //   49: astore_3
-    //   50: ldc_w 853
+    //   50: ldc_w 855
     //   53: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   56: aload_3
     //   57: areturn
     //   58: aload 6
-    //   60: getfield 459	com/eclipsesource/mmv8/V8$MethodDescriptor:method	Ljava/lang/reflect/Method;
-    //   63: invokevirtual 873	java/lang/reflect/Method:isVarArgs	()Z
+    //   60: getfield 461	com/eclipsesource/mmv8/V8$MethodDescriptor:method	Ljava/lang/reflect/Method;
+    //   63: invokevirtual 875	java/lang/reflect/Method:isVarArgs	()Z
     //   66: istore 5
     //   68: aload_0
     //   69: aload_3
     //   70: aload 6
     //   72: aload 4
     //   74: iload 5
-    //   76: invokespecial 875	com/eclipsesource/mmv8/V8:getArgs	(Lcom/eclipsesource/mmv8/V8Object;Lcom/eclipsesource/mmv8/V8$MethodDescriptor;Lcom/eclipsesource/mmv8/V8Array;Z)[Ljava/lang/Object;
+    //   76: invokespecial 877	com/eclipsesource/mmv8/V8:getArgs	(Lcom/eclipsesource/mmv8/V8Object;Lcom/eclipsesource/mmv8/V8$MethodDescriptor;Lcom/eclipsesource/mmv8/V8Array;Z)[Ljava/lang/Object;
     //   79: astore_3
     //   80: aload_0
     //   81: aload_3
-    //   82: invokespecial 877	com/eclipsesource/mmv8/V8:checkArgs	([Ljava/lang/Object;)V
+    //   82: invokespecial 879	com/eclipsesource/mmv8/V8:checkArgs	([Ljava/lang/Object;)V
     //   85: aload_0
     //   86: aload 6
-    //   88: getfield 459	com/eclipsesource/mmv8/V8$MethodDescriptor:method	Ljava/lang/reflect/Method;
+    //   88: getfield 461	com/eclipsesource/mmv8/V8$MethodDescriptor:method	Ljava/lang/reflect/Method;
     //   91: aload 6
-    //   93: getfield 880	com/eclipsesource/mmv8/V8$MethodDescriptor:object	Ljava/lang/Object;
+    //   93: getfield 882	com/eclipsesource/mmv8/V8$MethodDescriptor:object	Ljava/lang/Object;
     //   96: aload_3
-    //   97: invokevirtual 883	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   100: invokespecial 870	com/eclipsesource/mmv8/V8:checkResult	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   97: invokevirtual 885	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   100: invokespecial 872	com/eclipsesource/mmv8/V8:checkResult	(Ljava/lang/Object;)Ljava/lang/Object;
     //   103: astore 4
     //   105: aload_0
     //   106: aload_3
     //   107: iload 5
-    //   109: invokespecial 885	com/eclipsesource/mmv8/V8:releaseArguments	([Ljava/lang/Object;Z)V
-    //   112: ldc_w 853
+    //   109: invokespecial 887	com/eclipsesource/mmv8/V8:releaseArguments	([Ljava/lang/Object;Z)V
+    //   112: ldc_w 855
     //   115: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   118: aload 4
     //   120: areturn
     //   121: astore 4
     //   123: aload 4
-    //   125: invokevirtual 889	java/lang/reflect/InvocationTargetException:getTargetException	()Ljava/lang/Throwable;
+    //   125: invokevirtual 891	java/lang/reflect/InvocationTargetException:getTargetException	()Ljava/lang/Throwable;
     //   128: astore 4
-    //   130: ldc_w 853
+    //   130: ldc_w 855
     //   133: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   136: aload 4
     //   138: athrow
@@ -1267,18 +1269,18 @@ public class V8
     //   141: aload_0
     //   142: aload_3
     //   143: iload 5
-    //   145: invokespecial 885	com/eclipsesource/mmv8/V8:releaseArguments	([Ljava/lang/Object;Z)V
-    //   148: ldc_w 853
+    //   145: invokespecial 887	com/eclipsesource/mmv8/V8:releaseArguments	([Ljava/lang/Object;Z)V
+    //   148: ldc_w 855
     //   151: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   154: aload 4
     //   156: athrow
     //   157: astore 4
-    //   159: ldc_w 853
+    //   159: ldc_w 855
     //   162: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   165: aload 4
     //   167: athrow
     //   168: astore 4
-    //   170: ldc_w 853
+    //   170: ldc_w 855
     //   173: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   176: aload 4
     //   178: athrow
@@ -1305,59 +1307,59 @@ public class V8
   protected void callVoidJavaMethod(long paramLong, V8Object paramV8Object, V8Array paramV8Array)
   {
     // Byte code:
-    //   0: ldc_w 892
+    //   0: ldc_w 894
     //   3: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: getfield 136	com/eclipsesource/mmv8/V8:functionRegistry	Ljava/util/Map;
     //   10: lload_1
-    //   11: invokestatic 856	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   14: invokeinterface 858 2 0
+    //   11: invokestatic 858	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   14: invokeinterface 860 2 0
     //   19: checkcast 11	com/eclipsesource/mmv8/V8$MethodDescriptor
     //   22: astore 6
     //   24: aload 6
-    //   26: getfield 896	com/eclipsesource/mmv8/V8$MethodDescriptor:voidCallback	Lcom/eclipsesource/mmv8/JavaVoidCallback;
+    //   26: getfield 898	com/eclipsesource/mmv8/V8$MethodDescriptor:voidCallback	Lcom/eclipsesource/mmv8/JavaVoidCallback;
     //   29: ifnull +23 -> 52
     //   32: aload 6
-    //   34: getfield 896	com/eclipsesource/mmv8/V8$MethodDescriptor:voidCallback	Lcom/eclipsesource/mmv8/JavaVoidCallback;
+    //   34: getfield 898	com/eclipsesource/mmv8/V8$MethodDescriptor:voidCallback	Lcom/eclipsesource/mmv8/JavaVoidCallback;
     //   37: aload_3
     //   38: aload 4
-    //   40: invokeinterface 901 3 0
-    //   45: ldc_w 892
+    //   40: invokeinterface 903 3 0
+    //   45: ldc_w 894
     //   48: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   51: return
     //   52: aload 6
-    //   54: getfield 459	com/eclipsesource/mmv8/V8$MethodDescriptor:method	Ljava/lang/reflect/Method;
-    //   57: invokevirtual 873	java/lang/reflect/Method:isVarArgs	()Z
+    //   54: getfield 461	com/eclipsesource/mmv8/V8$MethodDescriptor:method	Ljava/lang/reflect/Method;
+    //   57: invokevirtual 875	java/lang/reflect/Method:isVarArgs	()Z
     //   60: istore 5
     //   62: aload_0
     //   63: aload_3
     //   64: aload 6
     //   66: aload 4
     //   68: iload 5
-    //   70: invokespecial 875	com/eclipsesource/mmv8/V8:getArgs	(Lcom/eclipsesource/mmv8/V8Object;Lcom/eclipsesource/mmv8/V8$MethodDescriptor;Lcom/eclipsesource/mmv8/V8Array;Z)[Ljava/lang/Object;
+    //   70: invokespecial 877	com/eclipsesource/mmv8/V8:getArgs	(Lcom/eclipsesource/mmv8/V8Object;Lcom/eclipsesource/mmv8/V8$MethodDescriptor;Lcom/eclipsesource/mmv8/V8Array;Z)[Ljava/lang/Object;
     //   73: astore_3
     //   74: aload_0
     //   75: aload_3
-    //   76: invokespecial 877	com/eclipsesource/mmv8/V8:checkArgs	([Ljava/lang/Object;)V
+    //   76: invokespecial 879	com/eclipsesource/mmv8/V8:checkArgs	([Ljava/lang/Object;)V
     //   79: aload 6
-    //   81: getfield 459	com/eclipsesource/mmv8/V8$MethodDescriptor:method	Ljava/lang/reflect/Method;
+    //   81: getfield 461	com/eclipsesource/mmv8/V8$MethodDescriptor:method	Ljava/lang/reflect/Method;
     //   84: aload 6
-    //   86: getfield 880	com/eclipsesource/mmv8/V8$MethodDescriptor:object	Ljava/lang/Object;
+    //   86: getfield 882	com/eclipsesource/mmv8/V8$MethodDescriptor:object	Ljava/lang/Object;
     //   89: aload_3
-    //   90: invokevirtual 883	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   90: invokevirtual 885	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
     //   93: pop
     //   94: aload_0
     //   95: aload_3
     //   96: iload 5
-    //   98: invokespecial 885	com/eclipsesource/mmv8/V8:releaseArguments	([Ljava/lang/Object;Z)V
-    //   101: ldc_w 892
+    //   98: invokespecial 887	com/eclipsesource/mmv8/V8:releaseArguments	([Ljava/lang/Object;Z)V
+    //   101: ldc_w 894
     //   104: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   107: return
     //   108: astore 4
     //   110: aload 4
-    //   112: invokevirtual 889	java/lang/reflect/InvocationTargetException:getTargetException	()Ljava/lang/Throwable;
+    //   112: invokevirtual 891	java/lang/reflect/InvocationTargetException:getTargetException	()Ljava/lang/Throwable;
     //   115: astore 4
-    //   117: ldc_w 892
+    //   117: ldc_w 894
     //   120: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   123: aload 4
     //   125: athrow
@@ -1365,18 +1367,18 @@ public class V8
     //   128: aload_0
     //   129: aload_3
     //   130: iload 5
-    //   132: invokespecial 885	com/eclipsesource/mmv8/V8:releaseArguments	([Ljava/lang/Object;Z)V
-    //   135: ldc_w 892
+    //   132: invokespecial 887	com/eclipsesource/mmv8/V8:releaseArguments	([Ljava/lang/Object;Z)V
+    //   135: ldc_w 894
     //   138: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   141: aload 4
     //   143: athrow
     //   144: astore 4
-    //   146: ldc_w 892
+    //   146: ldc_w 894
     //   149: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   152: aload 4
     //   154: athrow
     //   155: astore 4
-    //   157: ldc_w 892
+    //   157: ldc_w 894
     //   160: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   163: aload 4
     //   165: athrow
@@ -1509,9 +1511,9 @@ public class V8
   
   public void enableNativeTrans()
   {
-    AppMethodBeat.i(232147);
+    AppMethodBeat.i(208768);
     _enableNativeTrans(this.v8RuntimePtr);
-    AppMethodBeat.o(232147);
+    AppMethodBeat.o(208768);
   }
   
   protected boolean equals(long paramLong1, long paramLong2, long paramLong3)
@@ -2203,49 +2205,49 @@ public class V8
   
   public void nativeDispatch()
   {
-    AppMethodBeat.i(232135);
+    AppMethodBeat.i(208760);
     _nativeDispatch(this.v8RuntimePtr);
-    AppMethodBeat.o(232135);
+    AppMethodBeat.o(208760);
   }
   
   public void nativeLoopStop()
   {
-    AppMethodBeat.i(232137);
+    AppMethodBeat.i(208761);
     _nativeLoopStop(this.v8RuntimePtr);
-    AppMethodBeat.o(232137);
+    AppMethodBeat.o(208761);
   }
   
   public void nativeMessageLoop()
   {
-    AppMethodBeat.i(232134);
+    AppMethodBeat.i(208758);
     _nativeMessageLoop(this.v8RuntimePtr);
-    AppMethodBeat.o(232134);
+    AppMethodBeat.o(208758);
   }
   
   protected void onNativeRunJavaTask()
   {
-    AppMethodBeat.i(232140);
+    AppMethodBeat.i(208763);
     if (this.nativeJavaCallback_ != null) {
       this.nativeJavaCallback_.run();
     }
-    AppMethodBeat.o(232140);
+    AppMethodBeat.o(208763);
   }
   
   protected void onNativeTransMsgDispatchByJava()
   {
-    AppMethodBeat.i(232146);
+    AppMethodBeat.i(208767);
     if (this._javaTaskScheduler != null) {
       this._javaTaskScheduler.Schedule(new Runnable()
       {
         public void run()
         {
-          AppMethodBeat.i(231978);
+          AppMethodBeat.i(208218);
           V8.access$200(V8.this.v8RuntimePtr);
-          AppMethodBeat.o(231978);
+          AppMethodBeat.o(208218);
         }
       });
     }
-    AppMethodBeat.o(232146);
+    AppMethodBeat.o(208767);
   }
   
   boolean pumpMessageLoop()
@@ -2258,9 +2260,9 @@ public class V8
   
   public void pumpMessageLoopDirect()
   {
-    AppMethodBeat.i(232048);
+    AppMethodBeat.i(208566);
     _pumpMessageLoopDirect(this.v8RuntimePtr);
-    AppMethodBeat.o(232048);
+    AppMethodBeat.o(208566);
   }
   
   void registerCallback(JavaCallback paramJavaCallback, long paramLong, String paramString)
@@ -2478,12 +2480,19 @@ public class V8
     finally {}
   }
   
+  public void setDelaySaveCodeCache(boolean paramBoolean)
+  {
+    AppMethodBeat.i(208332);
+    _setDelaySaveCodeCache(this.v8RuntimePtr, paramBoolean);
+    AppMethodBeat.o(208332);
+  }
+  
   public void setJavaTaskScheduler(JavaTaskScheduler paramJavaTaskScheduler)
   {
-    AppMethodBeat.i(232143);
+    AppMethodBeat.i(208766);
     this._javaTaskScheduler = paramJavaTaskScheduler;
     _nativeTransSetJavaSchedule(1L);
-    AppMethodBeat.o(232143);
+    AppMethodBeat.o(208766);
   }
   
   public void setNativeJavaCallback(Runnable paramRunnable)
@@ -2616,7 +2625,7 @@ public class V8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.eclipsesource.mmv8.V8
  * JD-Core Version:    0.7.0.1
  */

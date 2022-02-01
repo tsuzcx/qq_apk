@@ -3,18 +3,19 @@ package com.tencent.mm.plugin.luckymoney.model;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.luckymoney.a.a;
-import com.tencent.mm.protocal.protobuf.dvj;
+import com.tencent.mm.protocal.protobuf.eof;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import java.io.IOException;
 
 public final class p
 {
-  o EtY;
-  private h EyX;
+  o KmF;
+  private i KrK;
   
   public p()
   {
@@ -26,67 +27,56 @@ public final class p
   private void init()
   {
     AppMethodBeat.i(65180);
-    this.EtY = new o();
-    com.tencent.mm.kernel.h.aHH();
-    String str = (String)com.tencent.mm.kernel.h.aHG().aHp().b(356355, null);
+    this.KmF = new o();
+    h.baF();
+    String str = (String)h.baE().ban().d(356355, null);
     if (Util.isNullOrNil(str))
     {
-      this.EtY.Etx = 2000.0D;
-      this.EtY.Etu = 100;
-      this.EtY.Ety = 200.0D;
-      this.EtY.Etw = 0.01D;
-      this.EtY.Etv = 200.0D;
+      this.KmF.Kme = 2000.0D;
+      this.KmF.Kmb = 100;
+      this.KmF.Kmf = 200.0D;
+      this.KmF.Kmd = 0.01D;
+      this.KmF.Kmc = 200.0D;
     }
     for (;;)
     {
-      Log.i("MicroMsg.LuckyMoneyConfigManager", "LuckyMoneyConfig init maxTotalAmount:" + this.EtY.Etx + " maxTotalNum:" + this.EtY.Etu + " perGroupMaxValue:" + this.EtY.Ety + " perMinValue:" + this.EtY.Etw + " perPersonMaxValue:" + this.EtY.Etv);
+      Log.i("MicroMsg.LuckyMoneyConfigManager", "LuckyMoneyConfig init maxTotalAmount:" + this.KmF.Kme + " maxTotalNum:" + this.KmF.Kmb + " perGroupMaxValue:" + this.KmF.Kmf + " perMinValue:" + this.KmF.Kmd + " perPersonMaxValue:" + this.KmF.Kmc);
       AppMethodBeat.o(65180);
       return;
       try
       {
-        this.EtY.parseFrom(str.getBytes("ISO-8859-1"));
-        eOy();
+        this.KmF.parseFrom(str.getBytes("ISO-8859-1"));
+        fWV();
       }
       catch (Exception localException)
       {
         Log.w("MicroMsg.LuckyMoneyConfigManager", "parseConfig exp, " + localException.getLocalizedMessage());
-        this.EtY.Etx = 2000.0D;
-        this.EtY.Etu = 100;
-        this.EtY.Ety = 200.0D;
-        this.EtY.Etw = 0.01D;
-        this.EtY.Etv = 200.0D;
+        this.KmF.Kme = 2000.0D;
+        this.KmF.Kmb = 100;
+        this.KmF.Kmf = 200.0D;
+        this.KmF.Kmd = 0.01D;
+        this.KmF.Kmc = 200.0D;
       }
     }
   }
   
-  public final h eOA()
-  {
-    AppMethodBeat.i(65183);
-    if (this.EyX == null) {
-      init();
-    }
-    h localh = this.EyX;
-    AppMethodBeat.o(65183);
-    return localh;
-  }
-  
-  final void eOy()
+  final void fWV()
   {
     AppMethodBeat.i(65181);
-    if (this.EtY != null)
+    if (this.KmF != null)
     {
-      this.EyX = h.aNC(this.EtY.EyT);
-      if ((this.EyX != null) && (this.EyX.Eyz != null))
+      this.KrK = i.aKy(this.KmF.KrG);
+      if ((this.KrK != null) && (this.KrK.Krm != null))
       {
-        ((a)com.tencent.mm.kernel.h.ae(a.class)).a(this.EyX.Eyz);
-        com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vty, Integer.valueOf(1));
-        if (!Util.isNullOrNil(this.EtY.EyU))
+        ((a)h.ax(a.class)).a(this.KrK.Krm);
+        h.baE().ban().set(at.a.acVd, Integer.valueOf(1));
+        if (!Util.isNullOrNil(this.KmF.KrH))
         {
           Log.d("MicroMsg.LuckyMoneyConfigManager", "parse cover info");
           try
           {
-            dvj localdvj = (dvj)new dvj().parseFrom(Base64.decode(this.EtY.EyU, 0));
-            this.EyX.Eyz.llL = localdvj.llL;
+            eof localeof = (eof)new eof().parseFrom(Base64.decode(this.KmF.KrH, 0));
+            this.KrK.Krm.nQJ = localeof.nQJ;
             AppMethodBeat.o(65181);
             return;
           }
@@ -100,20 +90,31 @@ public final class p
     AppMethodBeat.o(65181);
   }
   
-  public final o eOz()
+  public final o fWW()
   {
     AppMethodBeat.i(65182);
-    if (this.EtY == null) {
+    if (this.KmF == null) {
       init();
     }
-    o localo = this.EtY;
+    o localo = this.KmF;
     AppMethodBeat.o(65182);
     return localo;
+  }
+  
+  public final i fWX()
+  {
+    AppMethodBeat.i(65183);
+    if (this.KrK == null) {
+      init();
+    }
+    i locali = this.KrK;
+    AppMethodBeat.o(65183);
+    return locali;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.p
  * JD-Core Version:    0.7.0.1
  */

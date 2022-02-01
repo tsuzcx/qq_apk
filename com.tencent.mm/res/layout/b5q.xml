@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:background="@drawable/asu" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:gravity="top" android:orientation="horizontal" android:id="@id/g5e" android:layout_width="fill_parent" android:layout_height="76.0dip" style="@style/rb">
-            <TextView android:textSize="@dimen/is" android:textColor="@color/zj" android:id="@id/g5j" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:text="@string/ew8" android:layout_weight="1.0" />
-            <CheckedTextView android:layout_gravity="center|right" android:id="@id/g5h" android:background="@drawable/ah3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="24.0dip" />
-            <CheckedTextView android:layout_gravity="center|right" android:id="@id/g5d" android:background="@drawable/ah2" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        </LinearLayout>
-    </LinearLayout>
+    <TextView android:textSize="@dimen/hr" android:textColor="@color/BW_0_Alpha_0_9" android:gravity="center" android:layout_gravity="center" android:id="@id/jei" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:layout_marginTop="@dimen/c2" android:layout_marginRight="@dimen/ct" android:layout_marginBottom="@dimen/d6" android:text="@string/iqn" android:includeFontPadding="false" />
 </LinearLayout>

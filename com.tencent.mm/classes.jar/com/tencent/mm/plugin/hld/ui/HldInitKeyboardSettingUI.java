@@ -1,13 +1,10 @@
 package com.tencent.mm.plugin.hld.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
@@ -28,118 +25,146 @@ import com.tencent.mm.plugin.hld.a.j;
 import com.tencent.mm.plugin.hld.b.e;
 import com.tencent.mm.plugin.hld.b.e.a;
 import com.tencent.mm.plugin.hld.f.i;
+import com.tencent.mm.plugin.hld.f.l;
 import com.tencent.mm.plugin.hld.keyboard.c;
 import com.tencent.mm.plugin.hld.view.ImeCheckBox;
+import com.tencent.mm.plugin.hld.view.f;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.au;
+import com.tencent.mm.ui.bb;
 import com.tencent.mm.ui.widget.MMSwitchBtn;
 import java.util.ArrayList;
 import java.util.List;
-import kotlin.f;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/ui/HldInitKeyboardSettingUI;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/plugin/hld/view/IImeCheckBoxCallback;", "Landroid/view/View$OnClickListener;", "()V", "chooseSound", "", "chooseT9", "finishBt", "Landroid/widget/Button;", "getFinishBt", "()Landroid/widget/Button;", "finishBt$delegate", "Lkotlin/Lazy;", "soundBtn", "Lcom/tencent/mm/plugin/hld/view/ImeCheckBox;", "getSoundBtn", "()Lcom/tencent/mm/plugin/hld/view/ImeCheckBox;", "soundBtn$delegate", "t26Bt", "Landroid/widget/RelativeLayout;", "getT26Bt", "()Landroid/widget/RelativeLayout;", "t26Bt$delegate", "t26SelectIv", "Landroid/widget/ImageView;", "getT26SelectIv", "()Landroid/widget/ImageView;", "t26SelectIv$delegate", "t26TitleTv", "Landroid/widget/TextView;", "getT26TitleTv", "()Landroid/widget/TextView;", "t26TitleTv$delegate", "t9Bt", "getT9Bt", "t9Bt$delegate", "t9SelectIv", "getT9SelectIv", "t9SelectIv$delegate", "t9TitleTv", "getT9TitleTv", "t9TitleTv$delegate", "getLayoutId", "", "initView", "", "onCheck", "v", "Landroid/view/View;", "checked", "onClick", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "Companion", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/ui/HldInitKeyboardSettingUI;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/plugin/hld/view/IImeCheckBoxCallback;", "Landroid/view/View$OnClickListener;", "()V", "chooseSound", "", "chooseT9", "finishBt", "Landroid/widget/Button;", "getFinishBt", "()Landroid/widget/Button;", "finishBt$delegate", "Lkotlin/Lazy;", "soundBtn", "Lcom/tencent/mm/plugin/hld/view/ImeCheckBox;", "getSoundBtn", "()Lcom/tencent/mm/plugin/hld/view/ImeCheckBox;", "soundBtn$delegate", "t26Bt", "Landroid/widget/RelativeLayout;", "getT26Bt", "()Landroid/widget/RelativeLayout;", "t26Bt$delegate", "t26SelectIv", "Landroid/widget/ImageView;", "getT26SelectIv", "()Landroid/widget/ImageView;", "t26SelectIv$delegate", "t26TitleTv", "Landroid/widget/TextView;", "getT26TitleTv", "()Landroid/widget/TextView;", "t26TitleTv$delegate", "t9Bt", "getT9Bt", "t9Bt$delegate", "t9SelectIv", "getT9SelectIv", "t9SelectIv$delegate", "t9TitleTv", "getT9TitleTv", "t9TitleTv$delegate", "getLayoutId", "", "initView", "", "onCheck", "v", "Landroid/view/View;", "checked", "onClick", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "Companion", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class HldInitKeyboardSettingUI
   extends MMActivity
   implements View.OnClickListener, com.tencent.mm.plugin.hld.view.b
 {
-  public static final a DFU;
-  private final f DFR;
-  private final f DFS;
-  private final f DFT;
-  private final f DyB;
-  private final f Dyy;
-  private final f Dzq;
-  private final f Dzr;
-  private final f Dzs;
-  private boolean Dzt;
-  private boolean Dzw;
+  public static final HldInitKeyboardSettingUI.a Jxu;
+  private final j JrD;
+  private final j JrG;
+  private final j Jst;
+  private final j Jsu;
+  private final j Jsv;
+  private boolean Jsw;
+  private boolean Jsz;
+  private final j Jxv;
+  private final j Jxw;
+  private final j Jxx;
   
   static
   {
-    AppMethodBeat.i(212861);
-    DFU = new a((byte)0);
-    AppMethodBeat.o(212861);
+    AppMethodBeat.i(312440);
+    Jxu = new HldInitKeyboardSettingUI.a((byte)0);
+    AppMethodBeat.o(312440);
   }
   
   public HldInitKeyboardSettingUI()
   {
-    AppMethodBeat.i(212860);
-    this.Dzq = kotlin.g.ar((kotlin.g.a.a)new b(this));
-    this.Dzr = kotlin.g.ar((kotlin.g.a.a)new h(this));
-    this.Dzs = kotlin.g.ar((kotlin.g.a.a)new e(this));
-    this.Dyy = kotlin.g.ar((kotlin.g.a.a)new j(this));
-    this.DyB = kotlin.g.ar((kotlin.g.a.a)new g(this));
-    this.DFR = kotlin.g.ar((kotlin.g.a.a)new i(this));
-    this.DFS = kotlin.g.ar((kotlin.g.a.a)new f(this));
-    this.DFT = kotlin.g.ar((kotlin.g.a.a)new d(this));
-    AppMethodBeat.o(212860);
+    AppMethodBeat.i(312365);
+    this.Jst = kotlin.k.cm((kotlin.g.a.a)new b(this));
+    this.Jsu = kotlin.k.cm((kotlin.g.a.a)new g(this));
+    this.Jsv = kotlin.k.cm((kotlin.g.a.a)new d(this));
+    this.JrD = kotlin.k.cm((kotlin.g.a.a)new i(this));
+    this.JrG = kotlin.k.cm((kotlin.g.a.a)new f(this));
+    this.Jxv = kotlin.k.cm((kotlin.g.a.a)new h(this));
+    this.Jxw = kotlin.k.cm((kotlin.g.a.a)new e(this));
+    this.Jxx = kotlin.k.cm((kotlin.g.a.a)new c(this));
+    AppMethodBeat.o(312365);
   }
   
-  private final ImageView eFA()
+  private static final boolean a(HldInitKeyboardSettingUI paramHldInitKeyboardSettingUI, MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(212846);
-    ImageView localImageView = (ImageView)this.DFS.getValue();
-    AppMethodBeat.o(212846);
-    return localImageView;
+    AppMethodBeat.i(312433);
+    s.u(paramHldInitKeyboardSettingUI, "this$0");
+    paramHldInitKeyboardSettingUI.finish();
+    AppMethodBeat.o(312433);
+    return true;
   }
   
-  private final ImeCheckBox eFB()
+  private final ImageView fNs()
   {
-    AppMethodBeat.i(212848);
-    ImeCheckBox localImeCheckBox = (ImeCheckBox)this.DFT.getValue();
-    AppMethodBeat.o(212848);
-    return localImeCheckBox;
+    AppMethodBeat.i(312411);
+    Object localObject = this.Jxv.getValue();
+    s.s(localObject, "<get-t9SelectIv>(...)");
+    localObject = (ImageView)localObject;
+    AppMethodBeat.o(312411);
+    return localObject;
   }
   
-  private final ImageView eFz()
+  private final ImageView fNt()
   {
-    AppMethodBeat.i(212844);
-    ImageView localImageView = (ImageView)this.DFR.getValue();
-    AppMethodBeat.o(212844);
-    return localImageView;
+    AppMethodBeat.i(312418);
+    Object localObject = this.Jxw.getValue();
+    s.s(localObject, "<get-t26SelectIv>(...)");
+    localObject = (ImageView)localObject;
+    AppMethodBeat.o(312418);
+    return localObject;
+  }
+  
+  private final ImeCheckBox fNu()
+  {
+    AppMethodBeat.i(312425);
+    Object localObject = this.Jxx.getValue();
+    s.s(localObject, "<get-soundBtn>(...)");
+    localObject = (ImeCheckBox)localObject;
+    AppMethodBeat.o(312425);
+    return localObject;
   }
   
   private final Button getFinishBt()
   {
-    AppMethodBeat.i(212835);
-    Button localButton = (Button)this.Dzq.getValue();
-    AppMethodBeat.o(212835);
-    return localButton;
+    AppMethodBeat.i(312373);
+    Object localObject = this.Jst.getValue();
+    s.s(localObject, "<get-finishBt>(...)");
+    localObject = (Button)localObject;
+    AppMethodBeat.o(312373);
+    return localObject;
   }
   
   private final RelativeLayout getT26Bt()
   {
-    AppMethodBeat.i(212838);
-    RelativeLayout localRelativeLayout = (RelativeLayout)this.Dzs.getValue();
-    AppMethodBeat.o(212838);
-    return localRelativeLayout;
+    AppMethodBeat.i(312387);
+    Object localObject = this.Jsv.getValue();
+    s.s(localObject, "<get-t26Bt>(...)");
+    localObject = (RelativeLayout)localObject;
+    AppMethodBeat.o(312387);
+    return localObject;
   }
   
   private final TextView getT26TitleTv()
   {
-    AppMethodBeat.i(212842);
-    TextView localTextView = (TextView)this.DyB.getValue();
-    AppMethodBeat.o(212842);
-    return localTextView;
+    AppMethodBeat.i(312397);
+    Object localObject = this.JrG.getValue();
+    s.s(localObject, "<get-t26TitleTv>(...)");
+    localObject = (TextView)localObject;
+    AppMethodBeat.o(312397);
+    return localObject;
   }
   
   private final RelativeLayout getT9Bt()
   {
-    AppMethodBeat.i(212836);
-    RelativeLayout localRelativeLayout = (RelativeLayout)this.Dzr.getValue();
-    AppMethodBeat.o(212836);
-    return localRelativeLayout;
+    AppMethodBeat.i(312380);
+    Object localObject = this.Jsu.getValue();
+    s.s(localObject, "<get-t9Bt>(...)");
+    localObject = (RelativeLayout)localObject;
+    AppMethodBeat.o(312380);
+    return localObject;
   }
   
   private final TextView getT9TitleTv()
   {
-    AppMethodBeat.i(212840);
-    TextView localTextView = (TextView)this.Dyy.getValue();
-    AppMethodBeat.o(212840);
-    return localTextView;
+    AppMethodBeat.i(312393);
+    Object localObject = this.JrD.getValue();
+    s.s(localObject, "<get-t9TitleTv>(...)");
+    localObject = (TextView)localObject;
+    AppMethodBeat.o(312393);
+    return localObject;
   }
   
   public int getLayoutId()
@@ -149,135 +174,118 @@ public class HldInitKeyboardSettingUI
   
   public void initView()
   {
-    AppMethodBeat.i(212854);
+    AppMethodBeat.i(312484);
     super.initView();
     if (getSupportActionBar() != null)
     {
-      localObject1 = getSupportActionBar();
-      if (localObject1 == null) {
-        p.iCn();
-      }
-      ((ActionBar)localObject1).hide();
+      localObject = getSupportActionBar();
+      s.checkNotNull(localObject);
+      ((ActionBar)localObject).hide();
     }
     setActionbarColor(getResources().getColor(a.c.white));
     setBackGroundColorResource(a.c.white);
-    setBackBtn((MenuItem.OnMenuItemClickListener)new c(this));
+    setBackBtn(new HldInitKeyboardSettingUI..ExternalSyntheticLambda0(this));
     getFinishBt().setEnabled(false);
     getFinishBt().setClickable(false);
-    Object localObject1 = eFB();
-    Object localObject2 = getContext().getString(a.j.ime_setting_sound_switch);
-    p.j(localObject2, "context.getString(R.stri…ime_setting_sound_switch)");
-    ((ImeCheckBox)localObject1).setTitle((String)localObject2);
-    eFB().setChecked(this.Dzw);
-    eFB().setIImeSeekCallback((com.tencent.mm.plugin.hld.view.b)this);
-    localObject1 = i.DHq;
-    i.te(this.Dzw);
-    localObject1 = com.tencent.mm.plugin.hld.view.g.DIP;
-    com.tencent.mm.plugin.hld.view.g.a((View)getFinishBt(), (View.OnClickListener)this);
-    localObject1 = com.tencent.mm.plugin.hld.view.g.DIP;
-    com.tencent.mm.plugin.hld.view.g.a((View)getT9Bt(), (View.OnClickListener)this);
-    localObject1 = com.tencent.mm.plugin.hld.view.g.DIP;
-    com.tencent.mm.plugin.hld.view.g.a((View)getT26Bt(), (View.OnClickListener)this);
-    localObject1 = eFz();
-    localObject2 = MMApplicationContext.getContext();
-    p.j(localObject2, "MMApplicationContext.getContext()");
-    localObject2 = ((Context)localObject2).getResources().getDrawable(a.i.icons_filled_done2);
-    Context localContext = MMApplicationContext.getContext();
-    p.j(localContext, "MMApplicationContext.getContext()");
-    ((ImageView)localObject1).setImageDrawable(au.e((Drawable)localObject2, localContext.getResources().getColor(a.c.BW_70)));
-    localObject1 = eFA();
-    localObject2 = MMApplicationContext.getContext();
-    p.j(localObject2, "MMApplicationContext.getContext()");
-    localObject2 = ((Context)localObject2).getResources().getDrawable(a.i.icons_filled_done2);
-    localContext = MMApplicationContext.getContext();
-    p.j(localContext, "MMApplicationContext.getContext()");
-    ((ImageView)localObject1).setImageDrawable(au.e((Drawable)localObject2, localContext.getResources().getColor(a.c.BW_70)));
-    localObject1 = com.tencent.mm.plugin.hld.f.k.DHH;
-    int i = (com.tencent.mm.plugin.hld.f.k.getScreenWidth((Context)this) - com.tencent.mm.ci.a.aZ((Context)this, a.d.Edge_5A)) / 2;
-    localObject1 = getT9Bt().getLayoutParams();
-    ((ViewGroup.LayoutParams)localObject1).width = i;
-    getT9Bt().setLayoutParams((ViewGroup.LayoutParams)localObject1);
+    Object localObject = fNu();
+    String str = getContext().getString(a.j.ime_setting_sound_switch);
+    s.s(str, "context.getString(R.stri…ime_setting_sound_switch)");
+    ((ImeCheckBox)localObject).setTitle(str);
+    fNu().setChecked(this.Jsz);
+    fNu().setIImeSeekCallback((com.tencent.mm.plugin.hld.view.b)this);
+    localObject = i.JyA;
+    i.xp(this.Jsz);
+    f.JzR.a((View)getFinishBt(), (View.OnClickListener)this);
+    f.JzR.a((View)getT9Bt(), (View.OnClickListener)this);
+    f.JzR.a((View)getT26Bt(), (View.OnClickListener)this);
+    fNs().setImageDrawable(bb.e(MMApplicationContext.getContext().getResources().getDrawable(a.i.icons_filled_done2), MMApplicationContext.getContext().getResources().getColor(a.c.BW_70)));
+    fNt().setImageDrawable(bb.e(MMApplicationContext.getContext().getResources().getDrawable(a.i.icons_filled_done2), MMApplicationContext.getContext().getResources().getColor(a.c.BW_70)));
+    localObject = com.tencent.mm.plugin.hld.f.k.JyF;
+    int i = (com.tencent.mm.plugin.hld.f.k.getScreenWidth((Context)this) - com.tencent.mm.cd.a.bs((Context)this, a.d.Edge_5A)) / 2;
+    localObject = getT9Bt().getLayoutParams();
+    ((ViewGroup.LayoutParams)localObject).width = i;
+    getT9Bt().setLayoutParams((ViewGroup.LayoutParams)localObject);
     getT9Bt().invalidate();
-    localObject1 = getT26Bt().getLayoutParams();
-    ((ViewGroup.LayoutParams)localObject1).width = i;
-    getT26Bt().setLayoutParams((ViewGroup.LayoutParams)localObject1);
+    localObject = getT26Bt().getLayoutParams();
+    ((ViewGroup.LayoutParams)localObject).width = i;
+    getT26Bt().setLayoutParams((ViewGroup.LayoutParams)localObject);
     getT26Bt().invalidate();
-    AppMethodBeat.o(212854);
+    AppMethodBeat.o(312484);
   }
   
   public void onClick(View paramView)
   {
-    AppMethodBeat.i(212859);
+    AppMethodBeat.i(312510);
     Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-    ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/hld/ui/HldInitKeyboardSettingUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+    ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/hld/ui/HldInitKeyboardSettingUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
     int i;
-    if (paramView != null)
+    if (paramView == null)
     {
-      paramView = Integer.valueOf(paramView.getId());
+      paramView = null;
       i = a.f.finish_bt;
       if (paramView != null) {
         break label103;
       }
-      label59:
+      label53:
       i = a.f.t9_rv;
       if (paramView != null) {
         break label278;
       }
-      label67:
+      label61:
       i = a.f.t26_rv;
       if (paramView != null) {
-        break label473;
+        break label423;
       }
     }
     for (;;)
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/hld/ui/HldInitKeyboardSettingUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(212859);
+      AppMethodBeat.o(312510);
       return;
-      paramView = null;
+      paramView = Integer.valueOf(paramView.getId());
       break;
       label103:
       if (paramView.intValue() != i) {
-        break label59;
+        break label53;
       }
-      paramView = com.tencent.mm.plugin.hld.model.k.DDb;
-      if (this.Dzt)
+      paramView = com.tencent.mm.plugin.hld.model.k.JvH;
+      if (this.Jsw)
       {
         i = 1;
         label124:
-        com.tencent.mm.plugin.hld.model.k.ap(i, 3, 1);
-        paramView = com.tencent.mm.plugin.hld.model.k.DDb;
-        if (!this.Dzw) {
+        com.tencent.mm.plugin.hld.model.k.aL(i, 3, 1);
+        paramView = com.tencent.mm.plugin.hld.model.k.JvH;
+        if (!this.Jsz) {
           break label259;
         }
         i = 4;
         label143:
-        com.tencent.mm.plugin.hld.model.k.ap(i, 3, 1);
+        com.tencent.mm.plugin.hld.model.k.aL(i, 3, 1);
         localObject = new ArrayList();
         if (!getT9Bt().isSelected()) {
           break label264;
         }
-        paramView = com.tencent.mm.plugin.hld.model.b.DBm;
+        paramView = com.tencent.mm.plugin.hld.model.b.Jul;
         label171:
         ((ArrayList)localObject).add(paramView);
-        if (!eFB().getSwitchBtn().isCheck()) {
+        if (!fNu().getSwitchBtn().afTT) {
           break label271;
         }
       }
       label259:
       label264:
       label271:
-      for (paramView = com.tencent.mm.plugin.hld.model.b.DBo;; paramView = com.tencent.mm.plugin.hld.model.b.DBp)
+      for (paramView = com.tencent.mm.plugin.hld.model.b.Jun;; paramView = com.tencent.mm.plugin.hld.model.b.Juo)
       {
         ((ArrayList)localObject).add(paramView);
-        ((ArrayList)localObject).add(com.tencent.mm.plugin.hld.model.b.DBv);
-        paramView = e.Dvq;
-        e.a.fB((List)localObject);
-        paramView = com.tencent.mm.plugin.hld.model.k.DDb;
-        com.tencent.mm.plugin.hld.model.k.UB(7);
-        paramView = com.tencent.mm.plugin.hld.f.l.DHK;
-        com.tencent.mm.plugin.hld.f.l.eHr();
+        ((ArrayList)localObject).add(com.tencent.mm.plugin.hld.model.b.Juu);
+        paramView = e.JoK;
+        e.a.iy((List)localObject);
+        paramView = com.tencent.mm.plugin.hld.model.k.JvH;
+        com.tencent.mm.plugin.hld.model.k.Yy(7);
+        paramView = l.JyV;
+        l.fPa();
         setResult(-1, new Intent());
         finish();
         break;
@@ -285,76 +293,52 @@ public class HldInitKeyboardSettingUI
         break label124;
         i = 5;
         break label143;
-        paramView = com.tencent.mm.plugin.hld.model.b.DBn;
+        paramView = com.tencent.mm.plugin.hld.model.b.Jum;
         break label171;
       }
       label278:
       if (paramView.intValue() != i) {
-        break label67;
+        break label61;
       }
       getT9Bt().setSelected(true);
       getT26Bt().setSelected(false);
       getT9TitleTv().setSelected(true);
       getT26TitleTv().setSelected(false);
-      paramView = eFz();
-      localObject = MMApplicationContext.getContext();
-      p.j(localObject, "MMApplicationContext.getContext()");
-      localObject = ((Context)localObject).getResources().getDrawable(a.i.icons_filled_done2);
-      Context localContext = MMApplicationContext.getContext();
-      p.j(localContext, "MMApplicationContext.getContext()");
-      paramView.setImageDrawable(au.e((Drawable)localObject, localContext.getResources().getColor(a.c.Brand)));
-      paramView = eFA();
-      localObject = MMApplicationContext.getContext();
-      p.j(localObject, "MMApplicationContext.getContext()");
-      localObject = ((Context)localObject).getResources().getDrawable(a.i.icons_filled_done2);
-      localContext = MMApplicationContext.getContext();
-      p.j(localContext, "MMApplicationContext.getContext()");
-      paramView.setImageDrawable(au.e((Drawable)localObject, localContext.getResources().getColor(a.c.BW_70)));
-      paramView = i.DHq;
-      i.UJ(c.Dyl.ordinal());
+      fNs().setImageDrawable(bb.e(MMApplicationContext.getContext().getResources().getDrawable(a.i.icons_filled_done2), MMApplicationContext.getContext().getResources().getColor(a.c.Brand)));
+      fNt().setImageDrawable(bb.e(MMApplicationContext.getContext().getResources().getDrawable(a.i.icons_filled_done2), MMApplicationContext.getContext().getResources().getColor(a.c.BW_70)));
+      paramView = i.JyA;
+      i.YH(c.Jrp.ordinal());
       getFinishBt().setEnabled(true);
       getFinishBt().setClickable(true);
-      this.Dzt = true;
+      this.Jsw = true;
       continue;
-      label473:
+      label423:
       if (paramView.intValue() == i)
       {
         getT9Bt().setSelected(false);
         getT26Bt().setSelected(true);
         getT9TitleTv().setSelected(false);
         getT26TitleTv().setSelected(true);
-        paramView = eFz();
-        localObject = MMApplicationContext.getContext();
-        p.j(localObject, "MMApplicationContext.getContext()");
-        localObject = ((Context)localObject).getResources().getDrawable(a.i.icons_filled_done2);
-        localContext = MMApplicationContext.getContext();
-        p.j(localContext, "MMApplicationContext.getContext()");
-        paramView.setImageDrawable(au.e((Drawable)localObject, localContext.getResources().getColor(a.c.BW_70)));
-        paramView = eFA();
-        localObject = MMApplicationContext.getContext();
-        p.j(localObject, "MMApplicationContext.getContext()");
-        localObject = ((Context)localObject).getResources().getDrawable(a.i.icons_filled_done2);
-        localContext = MMApplicationContext.getContext();
-        p.j(localContext, "MMApplicationContext.getContext()");
-        paramView.setImageDrawable(au.e((Drawable)localObject, localContext.getResources().getColor(a.c.Brand)));
-        paramView = i.DHq;
-        i.UJ(c.Dym.ordinal());
+        fNs().setImageDrawable(bb.e(MMApplicationContext.getContext().getResources().getDrawable(a.i.icons_filled_done2), MMApplicationContext.getContext().getResources().getColor(a.c.BW_70)));
+        fNt().setImageDrawable(bb.e(MMApplicationContext.getContext().getResources().getDrawable(a.i.icons_filled_done2), MMApplicationContext.getContext().getResources().getColor(a.c.Brand)));
+        paramView = i.JyA;
+        i.YH(c.Jrq.ordinal());
         getFinishBt().setEnabled(true);
         getFinishBt().setClickable(true);
-        this.Dzt = false;
+        this.Jsw = false;
       }
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(212851);
+    AppMethodBeat.i(312467);
     super.onCreate(paramBundle);
     initView();
     overridePendingTransition(a.a.slide_right_in, a.a.slide_left_out);
-    paramBundle = com.tencent.mm.plugin.hld.model.k.DDb;
-    com.tencent.mm.plugin.hld.model.k.ap(0, 3, 1);
-    AppMethodBeat.o(212851);
+    paramBundle = com.tencent.mm.plugin.hld.model.k.JvH;
+    com.tencent.mm.plugin.hld.model.k.aL(0, 3, 1);
+    AppMethodBeat.o(312467);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -363,25 +347,22 @@ public class HldInitKeyboardSettingUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void t(View paramView, boolean paramBoolean)
+  public final void z(View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(212856);
-    p.k(paramView, "v");
+    AppMethodBeat.i(312493);
+    s.u(paramView, "v");
     if (((paramView instanceof ImeCheckBox)) && (((ImeCheckBox)paramView).getId() == a.f.sound_bt))
     {
-      this.Dzw = paramBoolean;
-      paramView = i.DHq;
-      i.te(paramBoolean);
+      this.Jsz = paramBoolean;
+      paramView = i.JyA;
+      i.xp(paramBoolean);
     }
-    AppMethodBeat.o(212856);
+    AppMethodBeat.o(312493);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/ui/HldInitKeyboardSettingUI$Companion;", "", "()V", "TAG", "", "plugin-hld_release"})
-  public static final class a {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/Button;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/Button;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
+    extends u
     implements kotlin.g.a.a<Button>
   {
     b(HldInitKeyboardSettingUI paramHldInitKeyboardSettingUI)
@@ -390,25 +371,21 @@ public class HldInitKeyboardSettingUI
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/hld/view/ImeCheckBox;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    implements MenuItem.OnMenuItemClickListener
+    extends u
+    implements kotlin.g.a.a<ImeCheckBox>
   {
-    c(HldInitKeyboardSettingUI paramHldInitKeyboardSettingUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
+    c(HldInitKeyboardSettingUI paramHldInitKeyboardSettingUI)
     {
-      AppMethodBeat.i(213584);
-      this.DFV.finish();
-      AppMethodBeat.o(213584);
-      return true;
+      super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/hld/view/ImeCheckBox;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/RelativeLayout;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    extends q
-    implements kotlin.g.a.a<ImeCheckBox>
+    extends u
+    implements kotlin.g.a.a<RelativeLayout>
   {
     d(HldInitKeyboardSettingUI paramHldInitKeyboardSettingUI)
     {
@@ -416,10 +393,10 @@ public class HldInitKeyboardSettingUI
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/RelativeLayout;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class e
-    extends q
-    implements kotlin.g.a.a<RelativeLayout>
+    extends u
+    implements kotlin.g.a.a<ImageView>
   {
     e(HldInitKeyboardSettingUI paramHldInitKeyboardSettingUI)
     {
@@ -427,10 +404,10 @@ public class HldInitKeyboardSettingUI
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class f
-    extends q
-    implements kotlin.g.a.a<ImageView>
+    extends u
+    implements kotlin.g.a.a<TextView>
   {
     f(HldInitKeyboardSettingUI paramHldInitKeyboardSettingUI)
     {
@@ -438,10 +415,10 @@ public class HldInitKeyboardSettingUI
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/RelativeLayout;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class g
-    extends q
-    implements kotlin.g.a.a<TextView>
+    extends u
+    implements kotlin.g.a.a<RelativeLayout>
   {
     g(HldInitKeyboardSettingUI paramHldInitKeyboardSettingUI)
     {
@@ -449,10 +426,10 @@ public class HldInitKeyboardSettingUI
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/RelativeLayout;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class h
-    extends q
-    implements kotlin.g.a.a<RelativeLayout>
+    extends u
+    implements kotlin.g.a.a<ImageView>
   {
     h(HldInitKeyboardSettingUI paramHldInitKeyboardSettingUI)
     {
@@ -460,23 +437,12 @@ public class HldInitKeyboardSettingUI
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class i
-    extends q
-    implements kotlin.g.a.a<ImageView>
-  {
-    i(HldInitKeyboardSettingUI paramHldInitKeyboardSettingUI)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class j
-    extends q
+    extends u
     implements kotlin.g.a.a<TextView>
   {
-    j(HldInitKeyboardSettingUI paramHldInitKeyboardSettingUI)
+    i(HldInitKeyboardSettingUI paramHldInitKeyboardSettingUI)
     {
       super();
     }

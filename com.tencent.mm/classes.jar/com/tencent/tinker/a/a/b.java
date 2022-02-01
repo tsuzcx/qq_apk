@@ -6,22 +6,22 @@ import java.util.Arrays;
 public final class b
   extends s.a.a<b>
 {
-  public int[] ZIj;
+  public int[] ahNm;
   
   public b(int paramInt, int[] paramArrayOfInt)
   {
     super(paramInt);
-    this.ZIj = paramArrayOfInt;
+    this.ahNm = paramArrayOfInt;
   }
   
   private int a(b paramb)
   {
     int k = 0;
-    int m = this.ZIj.length;
-    int i = paramb.ZIj.length;
+    int m = this.ahNm.length;
+    int i = paramb.ahNm.length;
     if (m != i)
     {
-      i = c.nU(m, i);
+      i = c.pR(m, i);
       return i;
     }
     int j = 0;
@@ -31,8 +31,8 @@ public final class b
       if (j >= m) {
         break;
       }
-      if (this.ZIj[j] != paramb.ZIj[j]) {
-        return c.nU(this.ZIj[j], paramb.ZIj[j]);
+      if (this.ahNm[j] != paramb.ahNm[j]) {
+        return c.pR(this.ahNm[j], paramb.ahNm[j]);
       }
       j += 1;
     }
@@ -49,12 +49,12 @@ public final class b
   
   public final int hashCode()
   {
-    return Arrays.hashCode(this.ZIj);
+    return Arrays.hashCode(this.ahNm);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.tinker.a.a.b
  * JD-Core Version:    0.7.0.1
  */

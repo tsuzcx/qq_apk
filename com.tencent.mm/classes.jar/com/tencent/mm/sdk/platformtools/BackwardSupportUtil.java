@@ -18,7 +18,7 @@ import com.tencent.mm.compatible.i.d;
 import com.tencent.mm.compatible.util.Exif;
 import com.tencent.mm.compatible.util.Exif.a;
 import com.tencent.mm.graphics.MMBitmapFactory;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.InputStream;
 
 public class BackwardSupportUtil
@@ -114,19 +114,19 @@ public class BackwardSupportUtil
     
     public static Bitmap decodeFileWithMemLimit(String paramString, int paramInt)
     {
-      AppMethodBeat.i(262205);
+      AppMethodBeat.i(243708);
       BitmapFactory.Options localOptions = BitmapUtil.getImageOptions(paramString);
       if ((localOptions == null) || (TextUtils.isEmpty(localOptions.outMimeType)))
       {
         Log.e("MicroMsg.SDK.BackwardSupportUtil", "[-] [tomys] Fail to get image size: %s", new Object[] { paramString });
-        AppMethodBeat.o(262205);
+        AppMethodBeat.o(243708);
         return null;
       }
       if ((localOptions.outWidth == 0) || (localOptions.outHeight == 0))
       {
         Log.w("MicroMsg.SDK.BackwardSupportUtil", "[!] [tomys] Bad image size: %s x %s, try to decode it directly.", new Object[] { Integer.valueOf(localOptions.outWidth), Integer.valueOf(localOptions.outHeight) });
         paramString = BitmapUtil.getBitmapNative(paramString);
-        AppMethodBeat.o(262205);
+        AppMethodBeat.o(243708);
         return paramString;
       }
       localOptions.inJustDecodeBounds = false;
@@ -143,7 +143,7 @@ public class BackwardSupportUtil
         while (l <= paramInt)
         {
           paramString = MMBitmapFactory.decodeFile(paramString, localOptions);
-          AppMethodBeat.o(262205);
+          AppMethodBeat.o(243708);
           return paramString;
         }
         localOptions.inSampleSize += 1;
@@ -152,9 +152,9 @@ public class BackwardSupportUtil
     
     public static Bitmap decodeStream(InputStream paramInputStream)
     {
-      AppMethodBeat.i(262206);
+      AppMethodBeat.i(243714);
       paramInputStream = BitmapUtil.decodeStream(paramInputStream);
-      AppMethodBeat.o(262206);
+      AppMethodBeat.o(243714);
       return paramInputStream;
     }
     
@@ -168,12 +168,12 @@ public class BackwardSupportUtil
     
     public static Bitmap decodeStream(InputStream paramInputStream, float paramFloat, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(262207);
+      AppMethodBeat.i(243720);
       paramInputStream = BitmapUtil.decodeStream(paramInputStream, paramFloat, paramInt1, paramInt2);
       if (paramInputStream != null) {
         paramInputStream.setDensity((int)(160.0F * paramFloat));
       }
-      AppMethodBeat.o(262207);
+      AppMethodBeat.o(243720);
       return paramInputStream;
     }
     
@@ -376,7 +376,7 @@ public class BackwardSupportUtil
         AppMethodBeat.o(156072);
         return null;
       }
-      if (!u.agG(paramString))
+      if (!y.ZC(paramString))
       {
         Log.d("MicroMsg.SDK.BackwardSupportUtil", "file not exist:[%s]", new Object[] { paramString });
         AppMethodBeat.o(156072);
@@ -404,7 +404,7 @@ public class BackwardSupportUtil
         AppMethodBeat.o(156071);
         return 0;
       }
-      if (!u.agG(paramString))
+      if (!y.ZC(paramString))
       {
         Log.d("MicroMsg.SDK.BackwardSupportUtil", "file not exist:[%s]", new Object[] { paramString });
         AppMethodBeat.o(156071);
@@ -417,21 +417,21 @@ public class BackwardSupportUtil
     
     public static String getExifTime(String paramString)
     {
-      AppMethodBeat.i(261546);
+      AppMethodBeat.i(244173);
       if (Util.isNullOrNil(paramString))
       {
         Log.d("MicroMsg.SDK.BackwardSupportUtil", "filepath is null or nil");
-        AppMethodBeat.o(261546);
+        AppMethodBeat.o(244173);
         return null;
       }
-      if (!u.agG(paramString))
+      if (!y.ZC(paramString))
       {
         Log.d("MicroMsg.SDK.BackwardSupportUtil", "file not exist:[%s]", new Object[] { paramString });
-        AppMethodBeat.o(261546);
+        AppMethodBeat.o(244173);
         return null;
       }
       paramString = Exif.fromFile(paramString).dateTime;
-      AppMethodBeat.o(261546);
+      AppMethodBeat.o(244173);
       return paramString;
     }
     
@@ -448,17 +448,17 @@ public class BackwardSupportUtil
         AppMethodBeat.i(156070);
         CREATOR = new Parcelable.Creator()
         {
-          public final BackwardSupportUtil.ExifHelper.LatLongData createFromParcel(Parcel paramAnonymousParcel)
+          public BackwardSupportUtil.ExifHelper.LatLongData createFromParcel(Parcel paramAnonymousParcel)
           {
-            AppMethodBeat.i(263138);
+            AppMethodBeat.i(244114);
             BackwardSupportUtil.ExifHelper.LatLongData localLatLongData = new BackwardSupportUtil.ExifHelper.LatLongData();
             localLatLongData.latitude = paramAnonymousParcel.readFloat();
             localLatLongData.longtitude = paramAnonymousParcel.readFloat();
-            AppMethodBeat.o(263138);
+            AppMethodBeat.o(244114);
             return localLatLongData;
           }
           
-          public final BackwardSupportUtil.ExifHelper.LatLongData[] newArray(int paramAnonymousInt)
+          public BackwardSupportUtil.ExifHelper.LatLongData[] newArray(int paramAnonymousInt)
           {
             return new BackwardSupportUtil.ExifHelper.LatLongData[paramAnonymousInt];
           }
@@ -584,7 +584,7 @@ public class BackwardSupportUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.BackwardSupportUtil
  * JD-Core Version:    0.7.0.1
  */

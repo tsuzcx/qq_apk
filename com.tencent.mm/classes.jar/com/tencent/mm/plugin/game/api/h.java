@@ -1,10 +1,21 @@
 package com.tencent.mm.plugin.game.api;
 
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mm.kernel.c.a;
+
 public abstract interface h
+  extends a
 {
-  public abstract void ey(String paramString, int paramInt);
+  public abstract void a(Context paramContext, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2, Bundle paramBundle, int paramInt3);
   
-  public abstract void g(String paramString, float paramFloat);
+  public abstract void a(Context paramContext, String paramString, int paramInt1, Bundle paramBundle, int paramInt2);
+  
+  public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2);
+  
+  public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, Bundle paramBundle);
+  
+  public abstract void at(String paramString1, String paramString2, String paramString3);
 }
 
 

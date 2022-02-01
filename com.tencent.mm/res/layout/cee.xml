@@ -1,13 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:background="@drawable/cts" android:layout_width="fill_parent" android:layout_height="@dimen/cr">
-        <RelativeLayout android:orientation="vertical" android:id="@id/kgc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cb" android:layout_marginRight="@dimen/ct" android:layout_toLeftOf="@id/gcf" android:layout_centerVertical="true">
-            <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:ellipsize="end" android:id="@id/kgt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="歌曲名字" android:singleLine="true" />
-            <TextView android:textSize="12.0dip" android:textColor="@color/ua" android:ellipsize="end" android:id="@id/kik" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="歌手" android:singleLine="true" android:layout_below="@id/kgt" />
-            <org.libpag.PAGView android:id="@id/fq2" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginLeft="@dimen/bt" android:layout_toRightOf="@id/kgt" android:layout_alignTop="@id/kgt" />
-        </RelativeLayout>
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/gcf" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginRight="@dimen/cb" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:iconColor="@color/BW_100" />
-        <View android:background="@color/BW_100_Alpha_0_0_5" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cb" android:layout_alignParentBottom="true" />
-    </RelativeLayout>
-</FrameLayout>
+<ScrollView android:background="@color/aav" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center|top" android:orientation="vertical" android:background="@color/aav" android:paddingLeft="0.0dip" android:paddingTop="0.0dip" android:paddingRight="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/zv">
+        <LinearLayout android:orientation="vertical" android:id="@id/lfd" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="18.0dip" android:textColor="@color/a7b" android:gravity="center" android:id="@id/lf6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i6" android:layout_marginRight="@dimen/i6" android:layout_marginBottom="20.0dip" android:text="@string/kmo" android:shadowColor="#ffededed" android:shadowDx="1.2" android:shadowDy="1.2" android:shadowRadius="1.0" />
+            <TextView android:background="@null" android:layout_marginLeft="@dimen/i6" android:layout_marginRight="@dimen/i6" android:text="@string/kmx" style="@style/a08" />
+            <LinearLayout style="@style/zs">
+                <LinearLayout style="@style/zr">
+                    <TextView android:gravity="center" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/kmv" style="@style/q9" />
+                    <TextView android:id="@id/lfg" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/q8" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout style="@style/zs">
+                <LinearLayout android:background="@null" style="@style/zr">
+                    <TextView android:gravity="center" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/kmy" style="@style/q9" />
+                    <TextView android:id="@id/lfh" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/q8" />
+                </LinearLayout>
+            </LinearLayout>
+            <TextView android:background="@null" android:layout_marginLeft="@dimen/i6" android:layout_marginRight="@dimen/i6" android:text="@string/kmw" style="@style/a08" />
+            <LinearLayout style="@style/zs">
+                <LinearLayout style="@style/zr">
+                    <TextView android:gravity="center" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/kmv" style="@style/q9" />
+                    <TextView android:id="@id/lfe" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/q8" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout style="@style/zs">
+                <LinearLayout android:background="@null" style="@style/zr">
+                    <TextView android:gravity="center" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/kmy" style="@style/q9" />
+                    <TextView android:id="@id/lff" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/q8" />
+                </LinearLayout>
+            </LinearLayout>
+            <TextView android:id="@id/lf_" android:background="@null" android:visibility="gone" android:layout_marginLeft="@dimen/i6" android:layout_marginRight="@dimen/i6" android:text="@string/kms" style="@style/a08" />
+            <LinearLayout android:id="@id/lfi" android:visibility="gone" style="@style/zs">
+                <TextView android:layout_width="fill_parent" android:layout_height="@dimen/m1" android:layout_marginLeft="@dimen/i6" android:layout_marginRight="@dimen/i6" android:text="@string/kmz" style="@style/q9" />
+            </LinearLayout>
+            <TextView android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i6" android:layout_marginRight="@dimen/i6">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/kml" />
+                <TextView android:textSize="13.0dip" android:textColor="@color/aj0" android:id="@id/lf5" android:paddingLeft="3.0dip" android:paddingRight="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/kmm" android:shadowColor="#fff0f0f0" android:shadowDx="1.2" android:shadowDy="1.2" android:shadowRadius="1.0" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:gravity="center|top" android:orientation="vertical" android:id="@id/lf7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="15.0dip" android:textColor="#ff868686" android:gravity="bottom|center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="52.0dip" android:layout_marginBottom="25.0dip" android:text="@string/kmq" android:shadowColor="@color/al2" android:shadowDx="1.2" android:shadowDy="1.2" android:shadowRadius="1.0" android:drawableTop="@drawable/bi_" android:drawablePadding="12.0dip" />
+            <TextView android:id="@id/lfk" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:text="@string/kui" style="@style/ok" />
+            <TextView android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip">
+                <TextView android:id="@id/lf9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/kmr" />
+                <TextView android:textSize="13.0dip" android:textColor="@color/aj0" android:id="@id/lf8" android:paddingLeft="3.0dip" android:paddingRight="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/kmm" android:shadowColor="#fff0f0f0" android:shadowDx="1.2" android:shadowDy="1.2" android:shadowRadius="1.0" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:gravity="center|top" android:orientation="vertical" android:id="@id/lfb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:padding="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="45.0dip" android:layout_marginBottom="20.0dip" android:src="@drawable/c98" android:scaleType="center" />
+            <TextView android:textSize="18.0dip" android:textColor="@color/a7b" android:id="@id/lfa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="12.0dip" android:text="@string/kmo" android:shadowColor="#ffededed" android:shadowDx="1.2" android:shadowDy="1.2" android:shadowRadius="1.0" />
+            <TextView android:textSize="15.0dip" android:textColor="#ff474747" android:id="@id/lfc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.5dip" android:layout_marginRight="30.0dip" android:text="@string/kmt" android:shadowColor="#ffededed" android:shadowDx="1.2" android:shadowDy="1.2" android:shadowRadius="1.0" android:lineSpacingExtra="6.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

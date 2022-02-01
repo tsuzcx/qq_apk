@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/k5" android:paddingRight="@dimen/k5" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/k0" />
-    <LinearLayout android:orientation="vertical" android:background="@drawable/ib" android:paddingBottom="@dimen/t7" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/js" />
-        <TextView android:textSize="@dimen/aja" android:textColor="@color/u7" android:gravity="left" android:id="@id/ikp" android:paddingTop="@dimen/t7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/t7" android:layout_marginRight="@dimen/t7" android:text="@string/aid" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@drawable/fy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cd" android:layout_marginTop="@dimen/df" android:layout_marginRight="@dimen/cd" android:minHeight="@dimen/db">
+        <ProgressBar android:layout_gravity="center" android:id="@id/i83" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a85" />
     </LinearLayout>
 </LinearLayout>

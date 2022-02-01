@@ -1,10 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.pay;
 
 import android.content.Intent;
-import com.tencent.luggage.k.f.c;
+import com.tencent.luggage.l.e.c;
 import com.tencent.luggage.sdk.h.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class g
@@ -12,12 +11,12 @@ public final class g
 {
   public static final int CTRL_INDEX = 714;
   public static final String NAME = "requestBizSplitBillPayment";
-  private final int pkq;
+  private final int spr;
   
   public g()
   {
     AppMethodBeat.i(174867);
-    this.pkq = a.aI(this);
+    this.spr = a.ce(this);
     AppMethodBeat.o(174867);
   }
 }

@@ -5,35 +5,40 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class b
   implements e.a
 {
-  h Aj;
-  public float Ak;
-  boolean Al;
-  public final a Am;
-  public boolean An;
+  h bgr;
+  public float bgs;
+  boolean bgt;
+  public final a bgu;
+  public boolean bgv;
   
   public b(c paramc)
   {
-    AppMethodBeat.i(229820);
-    this.Aj = null;
-    this.Ak = 0.0F;
-    this.Al = false;
-    this.An = false;
-    this.Am = new a(this, paramc);
-    AppMethodBeat.o(229820);
+    AppMethodBeat.i(193951);
+    this.bgr = null;
+    this.bgs = 0.0F;
+    this.bgt = false;
+    this.bgv = false;
+    this.bgu = new a(this, paramc);
+    AppMethodBeat.o(193951);
+  }
+  
+  public final h Cr()
+  {
+    return this.bgr;
   }
   
   public final b a(e parame, int paramInt)
   {
-    AppMethodBeat.i(229834);
-    this.Am.a(parame.aT(paramInt), 1.0F);
-    this.Am.a(parame.aT(paramInt), -1.0F);
-    AppMethodBeat.o(229834);
+    AppMethodBeat.i(194001);
+    this.bgu.a(parame.dJ(paramInt), 1.0F);
+    this.bgu.a(parame.dJ(paramInt), -1.0F);
+    AppMethodBeat.o(194001);
     return this;
   }
   
   public final b a(h paramh1, h paramh2, h paramh3, int paramInt)
   {
-    AppMethodBeat.i(229829);
+    AppMethodBeat.i(193984);
     int i = 0;
     int j = 0;
     if (paramInt != 0)
@@ -45,66 +50,58 @@ public class b
         j = paramInt * -1;
         i = 1;
       }
-      this.Ak = j;
+      this.bgs = j;
     }
     if (i == 0)
     {
-      this.Am.a(paramh1, -1.0F);
-      this.Am.a(paramh2, 1.0F);
-      this.Am.a(paramh3, 1.0F);
+      this.bgu.a(paramh1, -1.0F);
+      this.bgu.a(paramh2, 1.0F);
+      this.bgu.a(paramh3, 1.0F);
     }
     for (;;)
     {
-      AppMethodBeat.o(229829);
+      AppMethodBeat.o(193984);
       return this;
-      this.Am.a(paramh1, 1.0F);
-      this.Am.a(paramh2, -1.0F);
-      this.Am.a(paramh3, -1.0F);
+      this.bgu.a(paramh1, 1.0F);
+      this.bgu.a(paramh2, -1.0F);
+      this.bgu.a(paramh3, -1.0F);
     }
   }
   
   public final b a(h paramh1, h paramh2, h paramh3, h paramh4, float paramFloat)
   {
-    AppMethodBeat.i(229836);
-    this.Am.a(paramh1, -1.0F);
-    this.Am.a(paramh2, 1.0F);
-    this.Am.a(paramh3, paramFloat);
-    this.Am.a(paramh4, -paramFloat);
-    AppMethodBeat.o(229836);
+    AppMethodBeat.i(194010);
+    this.bgu.a(paramh1, -1.0F);
+    this.bgu.a(paramh2, 1.0F);
+    this.bgu.a(paramh3, paramFloat);
+    this.bgu.a(paramh4, -paramFloat);
+    AppMethodBeat.o(194010);
     return this;
-  }
-  
-  public final h a(boolean[] paramArrayOfBoolean)
-  {
-    AppMethodBeat.i(229842);
-    paramArrayOfBoolean = this.Am.a(paramArrayOfBoolean, null);
-    AppMethodBeat.o(229842);
-    return paramArrayOfBoolean;
   }
   
   public final void a(e.a parama)
   {
-    AppMethodBeat.i(229845);
+    AppMethodBeat.i(194047);
     if ((parama instanceof b))
     {
       parama = (b)parama;
-      this.Aj = null;
-      this.Am.clear();
+      this.bgr = null;
+      this.bgu.clear();
       int i = 0;
-      while (i < parama.Am.zY)
+      while (i < parama.bgu.bgg)
       {
-        h localh = parama.Am.aR(i);
-        float f = parama.Am.aS(i);
-        this.Am.a(localh, f, true);
+        h localh = parama.bgu.dH(i);
+        float f = parama.bgu.dI(i);
+        this.bgu.a(localh, f, true);
         i += 1;
       }
     }
-    AppMethodBeat.o(229845);
+    AppMethodBeat.o(194047);
   }
   
   public final b b(h paramh1, h paramh2, h paramh3, int paramInt)
   {
-    AppMethodBeat.i(229833);
+    AppMethodBeat.i(193992);
     int i = 0;
     int j = 0;
     if (paramInt != 0)
@@ -116,46 +113,54 @@ public class b
         j = paramInt * -1;
         i = 1;
       }
-      this.Ak = j;
+      this.bgs = j;
     }
     if (i == 0)
     {
-      this.Am.a(paramh1, -1.0F);
-      this.Am.a(paramh2, 1.0F);
-      this.Am.a(paramh3, -1.0F);
+      this.bgu.a(paramh1, -1.0F);
+      this.bgu.a(paramh2, 1.0F);
+      this.bgu.a(paramh3, -1.0F);
     }
     for (;;)
     {
-      AppMethodBeat.o(229833);
+      AppMethodBeat.o(193992);
       return this;
-      this.Am.a(paramh1, 1.0F);
-      this.Am.a(paramh2, -1.0F);
-      this.Am.a(paramh3, 1.0F);
+      this.bgu.a(paramh1, 1.0F);
+      this.bgu.a(paramh2, -1.0F);
+      this.bgu.a(paramh3, 1.0F);
     }
   }
   
   public final b b(h paramh1, h paramh2, h paramh3, h paramh4, float paramFloat)
   {
-    AppMethodBeat.i(229837);
-    this.Am.a(paramh3, 0.5F);
-    this.Am.a(paramh4, 0.5F);
-    this.Am.a(paramh1, -0.5F);
-    this.Am.a(paramh2, -0.5F);
-    this.Ak = (-paramFloat);
-    AppMethodBeat.o(229837);
+    AppMethodBeat.i(194016);
+    this.bgu.a(paramh3, 0.5F);
+    this.bgu.a(paramh4, 0.5F);
+    this.bgu.a(paramh1, -0.5F);
+    this.bgu.a(paramh2, -0.5F);
+    this.bgs = (-paramFloat);
+    AppMethodBeat.o(194016);
     return this;
+  }
+  
+  public final h b(boolean[] paramArrayOfBoolean)
+  {
+    AppMethodBeat.i(194031);
+    paramArrayOfBoolean = this.bgu.a(paramArrayOfBoolean, null);
+    AppMethodBeat.o(194031);
+    return paramArrayOfBoolean;
   }
   
   final boolean c(h paramh)
   {
     boolean bool2 = false;
-    a locala = this.Am;
+    a locala = this.bgu;
     boolean bool1 = bool2;
     int j;
     int i;
-    if (locala.Ag != -1)
+    if (locala.bgo != -1)
     {
-      j = locala.Ag;
+      j = locala.bgo;
       i = 0;
     }
     for (;;)
@@ -164,9 +169,9 @@ public class b
       if (j != -1)
       {
         bool1 = bool2;
-        if (i < locala.zY)
+        if (i < locala.bgg)
         {
-          if (locala.Ad[j] != paramh.id) {
+          if (locala.bgl[j] != paramh.id) {
             break label72;
           }
           bool1 = true;
@@ -174,104 +179,99 @@ public class b
       }
       return bool1;
       label72:
-      j = locala.Ae[j];
+      j = locala.bgm[j];
       i += 1;
     }
   }
   
   public final void clear()
   {
-    AppMethodBeat.i(229844);
-    this.Am.clear();
-    this.Aj = null;
-    this.Ak = 0.0F;
-    AppMethodBeat.o(229844);
+    AppMethodBeat.i(194040);
+    this.bgu.clear();
+    this.bgr = null;
+    this.bgs = 0.0F;
+    AppMethodBeat.o(194040);
   }
   
   final void d(h paramh)
   {
-    AppMethodBeat.i(229840);
-    if (this.Aj != null)
+    AppMethodBeat.i(194025);
+    if (this.bgr != null)
     {
-      this.Am.a(this.Aj, -1.0F);
-      this.Aj = null;
+      this.bgu.a(this.bgr, -1.0F);
+      this.bgr = null;
     }
-    float f = -1.0F * this.Am.a(paramh, true);
-    this.Aj = paramh;
+    float f = -1.0F * this.bgu.a(paramh, true);
+    this.bgr = paramh;
     if (f == 1.0F)
     {
-      AppMethodBeat.o(229840);
+      AppMethodBeat.o(194025);
       return;
     }
-    this.Ak /= f;
-    paramh = this.Am;
-    int j = paramh.Ag;
+    this.bgs /= f;
+    paramh = this.bgu;
+    int j = paramh.bgo;
     int i = 0;
-    while ((j != -1) && (i < paramh.zY))
+    while ((j != -1) && (i < paramh.bgg))
     {
-      float[] arrayOfFloat = paramh.Af;
+      float[] arrayOfFloat = paramh.bgn;
       arrayOfFloat[j] /= f;
-      j = paramh.Ae[j];
+      j = paramh.bgm[j];
       i += 1;
     }
-    AppMethodBeat.o(229840);
+    AppMethodBeat.o(194025);
   }
   
   public void e(h paramh)
   {
     float f = 1.0F;
-    AppMethodBeat.i(229846);
-    if (paramh.AN == 1) {}
+    AppMethodBeat.i(194058);
+    if (paramh.bgV == 1) {}
     for (;;)
     {
-      this.Am.a(paramh, f);
-      AppMethodBeat.o(229846);
+      this.bgu.a(paramh, f);
+      AppMethodBeat.o(194058);
       return;
-      if (paramh.AN == 2) {
+      if (paramh.bgV == 2) {
         f = 1000.0F;
-      } else if (paramh.AN == 3) {
+      } else if (paramh.bgV == 3) {
         f = 1000000.0F;
-      } else if (paramh.AN == 4) {
+      } else if (paramh.bgV == 4) {
         f = 1.0E+009F;
-      } else if (paramh.AN == 5) {
+      } else if (paramh.bgV == 5) {
         f = 1.0E+012F;
       }
     }
   }
   
-  public final h fh()
-  {
-    return this.Aj;
-  }
-  
   public String toString()
   {
-    AppMethodBeat.i(229824);
+    AppMethodBeat.i(193961);
     String str;
-    if (this.Aj == null)
+    if (this.bgr == null)
     {
       str = "" + "0";
       str = str + " = ";
-      if (this.Ak == 0.0F) {
+      if (this.bgs == 0.0F) {
         break label385;
       }
-      str = str + this.Ak;
+      str = str + this.bgs;
     }
     label385:
     for (int i = 1;; i = 0)
     {
-      int k = this.Am.zY;
+      int k = this.bgu.bgg;
       int j = 0;
       label102:
       Object localObject;
       float f;
       if (j < k)
       {
-        localObject = this.Am.aR(j);
+        localObject = this.bgu.dH(j);
         if (localObject == null) {
           break label382;
         }
-        f = this.Am.aS(j);
+        f = this.bgu.dI(j);
         if (f == 0.0F) {
           break label382;
         }
@@ -299,7 +299,7 @@ public class b
       {
         j += 1;
         break label102;
-        str = "" + this.Aj;
+        str = "" + this.bgr;
         break;
         if (f > 0.0F)
         {
@@ -315,7 +315,7 @@ public class b
         if (i == 0) {
           localObject = str + "0.0";
         }
-        AppMethodBeat.o(229824);
+        AppMethodBeat.o(193961);
         return localObject;
         break label182;
       }
@@ -324,7 +324,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     androidx.constraintlayout.a.b
  * JD-Core Version:    0.7.0.1
  */

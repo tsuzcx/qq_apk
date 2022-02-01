@@ -1,6 +1,5 @@
 package com.google.android.exoplayer2;
 
-import android.annotation.TargetApi;
 import android.graphics.SurfaceTexture;
 import android.os.Handler;
 import android.os.Looper;
@@ -10,9 +9,11 @@ import android.view.SurfaceHolder.Callback;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
 import com.google.android.exoplayer2.a.b;
+import com.google.android.exoplayer2.a.b.a;
 import com.google.android.exoplayer2.b.d;
 import com.google.android.exoplayer2.f.a;
 import com.google.android.exoplayer2.f.j.a;
+import com.google.android.exoplayer2.i.x;
 import com.google.android.exoplayer2.metadata.Metadata;
 import com.google.android.exoplayer2.metadata.e.a;
 import com.google.android.exoplayer2.source.k;
@@ -21,40 +22,39 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArraySet;
 
-@TargetApi(16)
 public class v
   implements f
 {
-  protected final r[] aLB;
-  private final f aMc;
-  private boolean aNA;
-  private int aNB;
-  private SurfaceHolder aNC;
-  private TextureView aND;
-  public com.google.android.exoplayer2.a.e aNE;
-  private com.google.android.exoplayer2.video.e aNF;
-  private d aNG;
-  private d aNH;
-  private int aNI;
-  private b aNJ;
-  private float aNK;
-  private final a aNs;
-  private final CopyOnWriteArraySet<Object> aNt;
-  private final CopyOnWriteArraySet<j.a> aNu;
-  public final CopyOnWriteArraySet<e.a> aNv;
-  private final int aNw;
-  private final int aNx;
-  private Format aNy;
-  private Format aNz;
+  private final f cFZ;
+  protected final r[] cFy;
+  public com.google.android.exoplayer2.a.e cHA;
+  private com.google.android.exoplayer2.video.e cHB;
+  private d cHC;
+  private d cHD;
+  private int cHE;
+  private b cHF;
+  public float cHG;
+  public final a cHo;
+  private final CopyOnWriteArraySet<Object> cHp;
+  private final CopyOnWriteArraySet<j.a> cHq;
+  public final CopyOnWriteArraySet<e.a> cHr;
+  private final int cHs;
+  private final int cHt;
+  private Format cHu;
+  private Format cHv;
+  private boolean cHw;
+  private int cHx;
+  private SurfaceHolder cHy;
+  public TextureView cHz;
   private Surface surface;
   
   protected v(u paramu, com.google.android.exoplayer2.g.h paramh, m paramm)
   {
     AppMethodBeat.i(92534);
-    this.aNs = new a((byte)0);
-    this.aNt = new CopyOnWriteArraySet();
-    this.aNu = new CopyOnWriteArraySet();
-    this.aNv = new CopyOnWriteArraySet();
+    this.cHo = new a((byte)0);
+    this.cHp = new CopyOnWriteArraySet();
+    this.cHq = new CopyOnWriteArraySet();
+    this.cHr = new CopyOnWriteArraySet();
     Looper localLooper;
     int i;
     int k;
@@ -62,8 +62,8 @@ public class v
     if (Looper.myLooper() != null)
     {
       localLooper = Looper.myLooper();
-      this.aLB = paramu.a(new Handler(localLooper), this.aNs, this.aNs, this.aNs, this.aNs);
-      paramu = this.aLB;
+      this.cFy = paramu.a(new Handler(localLooper), this.cHo, this.cHo, this.cHo, this.cHo);
+      paramu = this.cFy;
       int m = paramu.length;
       i = 0;
       k = 0;
@@ -87,21 +87,70 @@ public class v
       k += 1;
     }
     label191:
-    this.aNw = j;
-    this.aNx = k;
-    this.aNK = 1.0F;
-    this.aNI = 0;
-    this.aNJ = b.aOk;
-    this.aNB = 1;
-    this.aMc = new h(this.aLB, paramh, paramm);
+    this.cHs = j;
+    this.cHt = k;
+    this.cHG = 1.0F;
+    this.cHE = 0;
+    this.cHF = b.cIg;
+    this.cHx = 1;
+    this.cFZ = new h(this.cFy, paramh, paramm);
     AppMethodBeat.o(92534);
   }
   
-  private void a(Surface paramSurface, boolean paramBoolean)
+  public final void J(int paramInt)
+  {
+    AppMethodBeat.i(92545);
+    this.cFZ.J(paramInt);
+    AppMethodBeat.o(92545);
+  }
+  
+  public final int QC()
+  {
+    AppMethodBeat.i(92541);
+    int i = this.cFZ.QC();
+    AppMethodBeat.o(92541);
+    return i;
+  }
+  
+  public final boolean QD()
+  {
+    AppMethodBeat.i(92544);
+    boolean bool = this.cFZ.QD();
+    AppMethodBeat.o(92544);
+    return bool;
+  }
+  
+  public final long QF()
+  {
+    AppMethodBeat.i(92555);
+    long l = this.cFZ.QF();
+    AppMethodBeat.o(92555);
+    return l;
+  }
+  
+  public final void QV()
+  {
+    AppMethodBeat.i(92557);
+    if (this.cHz != null)
+    {
+      if (this.cHz.getSurfaceTextureListener() == this.cHo) {
+        this.cHz.setSurfaceTextureListener(null);
+      }
+      this.cHz = null;
+    }
+    if (this.cHy != null)
+    {
+      this.cHy.removeCallback(this.cHo);
+      this.cHy = null;
+    }
+    AppMethodBeat.o(92557);
+  }
+  
+  public final void a(Surface paramSurface, boolean paramBoolean)
   {
     AppMethodBeat.i(92558);
-    f.c[] arrayOfc = new f.c[this.aNw];
-    r[] arrayOfr = this.aLB;
+    f.c[] arrayOfc = new f.c[this.cHs];
+    r[] arrayOfr = this.cFy;
     int m = arrayOfr.length;
     int j = 0;
     int i = 0;
@@ -122,127 +171,75 @@ public class v
       break;
       if ((this.surface != null) && (this.surface != paramSurface))
       {
-        this.aMc.b(arrayOfc);
-        if (this.aNA) {
+        this.cFZ.b(arrayOfc);
+        if (this.cHw) {
           this.surface.release();
         }
       }
       for (;;)
       {
         this.surface = paramSurface;
-        this.aNA = paramBoolean;
+        this.cHw = paramBoolean;
         AppMethodBeat.o(92558);
         return;
-        this.aMc.a(arrayOfc);
+        this.cFZ.a(arrayOfc);
       }
     }
-  }
-  
-  private void ru()
-  {
-    AppMethodBeat.i(92557);
-    if (this.aND != null)
-    {
-      if (this.aND.getSurfaceTextureListener() == this.aNs) {
-        this.aND.setSurfaceTextureListener(null);
-      }
-      this.aND = null;
-    }
-    if (this.aNC != null)
-    {
-      this.aNC.removeCallback(this.aNs);
-      this.aNC = null;
-    }
-    AppMethodBeat.o(92557);
-  }
-  
-  public final void L(int paramInt)
-  {
-    AppMethodBeat.i(92545);
-    this.aMc.L(paramInt);
-    AppMethodBeat.o(92545);
   }
   
   public final void a(p paramp)
   {
     AppMethodBeat.i(92548);
-    this.aMc.a(paramp);
+    this.cFZ.a(paramp);
     AppMethodBeat.o(92548);
   }
   
   public final void a(q.a parama)
   {
     AppMethodBeat.i(92539);
-    this.aMc.a(parama);
+    this.cFZ.a(parama);
     AppMethodBeat.o(92539);
   }
   
   public final void a(k paramk)
   {
     AppMethodBeat.i(92542);
-    this.aMc.a(paramk);
+    this.cFZ.a(paramk);
     AppMethodBeat.o(92542);
   }
   
   public final void a(f.c... paramVarArgs)
   {
     AppMethodBeat.i(92551);
-    this.aMc.a(paramVarArgs);
+    this.cFZ.a(paramVarArgs);
     AppMethodBeat.o(92551);
-  }
-  
-  public final void aM(boolean paramBoolean)
-  {
-    AppMethodBeat.i(92543);
-    this.aMc.aM(paramBoolean);
-    AppMethodBeat.o(92543);
   }
   
   public final void b(q.a parama)
   {
     AppMethodBeat.i(92540);
-    this.aMc.b(parama);
+    this.cFZ.b(parama);
     AppMethodBeat.o(92540);
   }
   
   public final void b(f.c... paramVarArgs)
   {
     AppMethodBeat.i(92552);
-    this.aMc.b(paramVarArgs);
+    this.cFZ.b(paramVarArgs);
     AppMethodBeat.o(92552);
   }
   
-  public final void c(TextureView paramTextureView)
+  public final void bv(boolean paramBoolean)
   {
-    Surface localSurface = null;
-    AppMethodBeat.i(195961);
-    ru();
-    this.aND = paramTextureView;
-    if (paramTextureView == null) {}
-    label76:
-    for (;;)
-    {
-      a(localSurface, true);
-      AppMethodBeat.o(195961);
-      return;
-      paramTextureView.getSurfaceTextureListener();
-      paramTextureView.setSurfaceTextureListener(this.aNs);
-      if (paramTextureView.isAvailable()) {}
-      for (paramTextureView = paramTextureView.getSurfaceTexture();; paramTextureView = null)
-      {
-        if (paramTextureView == null) {
-          break label76;
-        }
-        localSurface = new Surface(paramTextureView);
-        break;
-      }
-    }
+    AppMethodBeat.i(92543);
+    this.cFZ.bv(paramBoolean);
+    AppMethodBeat.o(92543);
   }
   
   public final int getBufferedPercentage()
   {
     AppMethodBeat.i(92556);
-    int i = this.aMc.getBufferedPercentage();
+    int i = this.cFZ.getBufferedPercentage();
     AppMethodBeat.o(92556);
     return i;
   }
@@ -250,7 +247,7 @@ public class v
   public final long getCurrentPosition()
   {
     AppMethodBeat.i(92554);
-    long l = this.aMc.getCurrentPosition();
+    long l = this.cFZ.getCurrentPosition();
     AppMethodBeat.o(92554);
     return l;
   }
@@ -258,7 +255,7 @@ public class v
   public final long getDuration()
   {
     AppMethodBeat.i(92553);
-    long l = this.aMc.getDuration();
+    long l = this.cFZ.getDuration();
     AppMethodBeat.o(92553);
     return l;
   }
@@ -266,43 +263,19 @@ public class v
   public final boolean isLoading()
   {
     AppMethodBeat.i(92546);
-    boolean bool = this.aMc.isLoading();
+    boolean bool = this.cFZ.isLoading();
     AppMethodBeat.o(92546);
     return bool;
-  }
-  
-  public final int ra()
-  {
-    AppMethodBeat.i(92541);
-    int i = this.aMc.ra();
-    AppMethodBeat.o(92541);
-    return i;
-  }
-  
-  public final boolean rb()
-  {
-    AppMethodBeat.i(92544);
-    boolean bool = this.aMc.rb();
-    AppMethodBeat.o(92544);
-    return bool;
-  }
-  
-  public final long rd()
-  {
-    AppMethodBeat.i(92555);
-    long l = this.aMc.rd();
-    AppMethodBeat.o(92555);
-    return l;
   }
   
   public final void release()
   {
     AppMethodBeat.i(92550);
-    this.aMc.release();
-    ru();
+    this.cFZ.release();
+    QV();
     if (this.surface != null)
     {
-      if (this.aNA) {
+      if (this.cHw) {
         this.surface.release();
       }
       this.surface = null;
@@ -313,14 +286,81 @@ public class v
   public final void seekTo(long paramLong)
   {
     AppMethodBeat.i(92547);
-    this.aMc.seekTo(paramLong);
+    this.cFZ.seekTo(paramLong);
     AppMethodBeat.o(92547);
+  }
+  
+  @Deprecated
+  public final void setAudioStreamType(int paramInt)
+  {
+    AppMethodBeat.i(210231);
+    int i = x.iN(paramInt);
+    paramInt = x.iO(paramInt);
+    Object localObject = new b.a();
+    ((b.a)localObject).cIi = i;
+    ((b.a)localObject).cIh = paramInt;
+    localObject = ((b.a)localObject).Ra();
+    this.cHF = ((b)localObject);
+    f.c[] arrayOfc = new f.c[this.cHt];
+    r[] arrayOfr = this.cFy;
+    int k = arrayOfr.length;
+    i = 0;
+    paramInt = 0;
+    if (i < k)
+    {
+      r localr = arrayOfr[i];
+      if (localr.getTrackType() != 1) {
+        break label144;
+      }
+      int j = paramInt + 1;
+      arrayOfc[paramInt] = new f.c(localr, 3, localObject);
+      paramInt = j;
+    }
+    label144:
+    for (;;)
+    {
+      i += 1;
+      break;
+      this.cFZ.a(arrayOfc);
+      AppMethodBeat.o(210231);
+      return;
+    }
+  }
+  
+  public final void setVolume(float paramFloat)
+  {
+    AppMethodBeat.i(92538);
+    this.cHG = paramFloat;
+    f.c[] arrayOfc = new f.c[this.cHt];
+    r[] arrayOfr = this.cFy;
+    int m = arrayOfr.length;
+    int j = 0;
+    int i = 0;
+    if (j < m)
+    {
+      r localr = arrayOfr[j];
+      if (localr.getTrackType() != 1) {
+        break label109;
+      }
+      int k = i + 1;
+      arrayOfc[i] = new f.c(localr, 2, Float.valueOf(paramFloat));
+      i = k;
+    }
+    label109:
+    for (;;)
+    {
+      j += 1;
+      break;
+      this.cFZ.a(arrayOfc);
+      AppMethodBeat.o(92538);
+      return;
+    }
   }
   
   public final void stop()
   {
     AppMethodBeat.i(92549);
-    this.aMc.stop();
+    this.cFZ.stop();
     AppMethodBeat.o(92549);
   }
   
@@ -328,19 +368,6 @@ public class v
     implements SurfaceHolder.Callback, TextureView.SurfaceTextureListener, com.google.android.exoplayer2.a.e, j.a, e.a, com.google.android.exoplayer2.video.e
   {
     private a() {}
-    
-    public final void a(int paramInt1, int paramInt2, int paramInt3, float paramFloat)
-    {
-      AppMethodBeat.i(92519);
-      Iterator localIterator = v.b(v.this).iterator();
-      while (localIterator.hasNext()) {
-        localIterator.next();
-      }
-      if (v.a(v.this) != null) {
-        v.a(v.this).a(paramInt1, paramInt2, paramInt3, paramFloat);
-      }
-      AppMethodBeat.o(92519);
-    }
     
     public final void a(d paramd)
     {
@@ -350,6 +377,29 @@ public class v
         v.a(v.this).a(paramd);
       }
       AppMethodBeat.o(92515);
+    }
+    
+    public final void ag(List<a> paramList)
+    {
+      AppMethodBeat.i(92528);
+      Iterator localIterator = v.e(v.this).iterator();
+      while (localIterator.hasNext()) {
+        ((j.a)localIterator.next()).ag(paramList);
+      }
+      AppMethodBeat.o(92528);
+    }
+    
+    public final void b(int paramInt1, int paramInt2, int paramInt3, float paramFloat)
+    {
+      AppMethodBeat.i(92519);
+      Iterator localIterator = v.b(v.this).iterator();
+      while (localIterator.hasNext()) {
+        localIterator.next();
+      }
+      if (v.a(v.this) != null) {
+        v.a(v.this).b(paramInt1, paramInt2, paramInt3, paramFloat);
+      }
+      AppMethodBeat.o(92519);
     }
     
     public final void b(d paramd)
@@ -380,22 +430,6 @@ public class v
         v.a(v.this).b(paramString, paramLong1, paramLong2);
       }
       AppMethodBeat.o(92516);
-    }
-    
-    public final void c(Surface paramSurface)
-    {
-      AppMethodBeat.i(92520);
-      if (v.c(v.this) == paramSurface)
-      {
-        Iterator localIterator = v.b(v.this).iterator();
-        while (localIterator.hasNext()) {
-          localIterator.next();
-        }
-      }
-      if (v.a(v.this) != null) {
-        v.a(v.this).c(paramSurface);
-      }
-      AppMethodBeat.o(92520);
     }
     
     public final void c(Format paramFormat)
@@ -458,14 +492,20 @@ public class v
       AppMethodBeat.o(92527);
     }
     
-    public final void dU(int paramInt)
+    public final void f(Surface paramSurface)
     {
-      AppMethodBeat.i(92523);
-      v.a(v.this, paramInt);
-      if (v.d(v.this) != null) {
-        v.d(v.this).dU(paramInt);
+      AppMethodBeat.i(92520);
+      if (v.c(v.this) == paramSurface)
+      {
+        Iterator localIterator = v.b(v.this).iterator();
+        while (localIterator.hasNext()) {
+          localIterator.next();
+        }
       }
-      AppMethodBeat.o(92523);
+      if (v.a(v.this) != null) {
+        v.a(v.this).f(paramSurface);
+      }
+      AppMethodBeat.o(92520);
     }
     
     public final void h(int paramInt, long paramLong)
@@ -477,14 +517,14 @@ public class v
       AppMethodBeat.o(92518);
     }
     
-    public final void n(List<a> paramList)
+    public final void hl(int paramInt)
     {
-      AppMethodBeat.i(92528);
-      Iterator localIterator = v.e(v.this).iterator();
-      while (localIterator.hasNext()) {
-        ((j.a)localIterator.next()).n(paramList);
+      AppMethodBeat.i(92523);
+      v.a(v.this, paramInt);
+      if (v.d(v.this) != null) {
+        v.d(v.this).hl(paramInt);
       }
-      AppMethodBeat.o(92528);
+      AppMethodBeat.o(92523);
     }
     
     public final void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)

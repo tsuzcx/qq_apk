@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.search.ui;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
@@ -16,49 +15,50 @@ import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
 import com.tencent.mm.R.l;
 import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.plugin.fts.a.a.j;
-import com.tencent.mm.plugin.fts.a.a.k;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.comm.a.c;
+import com.tencent.mm.plugin.fts.a.a.m;
 import com.tencent.mm.plugin.fts.a.e;
 import com.tencent.mm.plugin.fts.a.e.a;
-import com.tencent.mm.plugin.fts.a.l;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.plugin.websearch.api.ai;
+import com.tencent.mm.plugin.websearch.api.aj;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.w;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
 public class FTSInfoUI
   extends MMActivity
-  implements l
+  implements com.tencent.mm.plugin.fts.a.l
 {
-  private TextView BOV;
-  private Button Jbv;
-  private Button Jbw;
-  private Button Jbx;
-  private Button Jby;
-  private View.OnClickListener Jbz;
-  private s oTk;
+  private TextView HAL;
+  private Button Plm;
+  private Button Pln;
+  private Button Plo;
+  private Button Plp;
+  private View.OnClickListener Plq;
+  private w rYw;
   
   public FTSInfoUI()
   {
     AppMethodBeat.i(28076);
-    this.Jbz = new View.OnClickListener()
+    this.Plq = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(28075);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/search/ui/FTSInfoUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/search/ui/FTSInfoUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
         int i = ((Integer)paramAnonymousView.getTag()).intValue();
         if (i == 1)
         {
-          paramAnonymousView = (com.tencent.mm.plugin.comm.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.comm.a.b.class);
-          FTSInfoUI.foJ();
-          paramAnonymousView = paramAnonymousView.cPo();
+          paramAnonymousView = (c)h.ax(c.class);
+          FTSInfoUI.gzM();
+          paramAnonymousView = paramAnonymousView.dsU();
         }
         for (;;)
         {
@@ -68,21 +68,21 @@ public class FTSInfoUI
           {
             Pair localPair = (Pair)paramAnonymousView.next();
             ((StringBuffer)localObject).append("[");
-            ((StringBuffer)localObject).append(((com.tencent.mm.plugin.messenger.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.a.b.class)).PJ((String)localPair.first));
+            ((StringBuffer)localObject).append(((com.tencent.mm.plugin.messenger.a.b)h.ax(com.tencent.mm.plugin.messenger.a.b.class)).getDisplayName((String)localPair.first));
             ((StringBuffer)localObject).append("]\n");
             ((StringBuffer)localObject).append((String)localPair.second);
             ((StringBuffer)localObject).append("\n");
           }
           if (i == 2)
           {
-            paramAnonymousView = ((com.tencent.mm.plugin.comm.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.comm.a.b.class)).Is(FTSInfoUI.foJ());
+            paramAnonymousView = ((c)h.ax(c.class)).kK(FTSInfoUI.gzM());
           }
           else
           {
             if (i != 3) {
               break;
             }
-            paramAnonymousView = ((com.tencent.mm.plugin.comm.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.comm.a.b.class)).Ir(FTSInfoUI.foJ());
+            paramAnonymousView = ((c)h.ax(c.class)).kJ(FTSInfoUI.gzM());
           }
         }
         a.a(this, "com/tencent/mm/plugin/search/ui/FTSInfoUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -96,7 +96,7 @@ public class FTSInfoUI
     AppMethodBeat.o(28076);
   }
   
-  public static long foJ()
+  public static long gzM()
   {
     AppMethodBeat.i(28078);
     Calendar localCalendar = Calendar.getInstance();
@@ -109,36 +109,36 @@ public class FTSInfoUI
     return l;
   }
   
-  public final void b(k paramk)
+  public final void b(m paramm)
   {
     AppMethodBeat.i(28079);
-    if (this.oTk != null) {
-      this.oTk.dismiss();
+    if (this.rYw != null) {
+      this.rYw.dismiss();
     }
-    paramk = new StringBuffer();
-    paramk.append("[DBSize]=" + Util.getSizeMB(e.BHh.BHk * 1048576L));
-    paramk.append("\n");
-    paramk.append("[WXContact]=" + e.BHh.BHl);
-    paramk.append("\n");
-    paramk.append("[WXChatroom]=" + e.BHh.BHm);
-    paramk.append("\n");
-    paramk.append("[Favorite]=" + e.BHh.BHo);
-    paramk.append("\n");
-    paramk.append("[Message]=" + e.BHh.BHn);
-    paramk.append("\n");
-    paramk.append("[WebSearchH5Version]=" + ai.anh(0));
-    paramk.append("\n");
-    paramk.append("[TopStoryH5Version]=" + ai.anh(1));
-    paramk.append("\n");
-    paramk.append("[WxAppH5Version]=" + ai.anh(3));
-    paramk.append("\n");
-    paramk.append("[BoxH5Version]=" + ai.anh(2));
-    paramk.append("\n");
-    paramk.append("[TopStoryWebViewCore]=" + ((com.tencent.mm.plugin.topstory.a.b)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.topstory.a.b.class)).getWebViewType());
-    paramk.append("\n");
-    paramk.append("[PardusH5Version]=" + ai.anh(5));
-    paramk.append("\n");
-    this.BOV.setText(paramk.toString());
+    paramm = new StringBuffer();
+    paramm.append("[DBSize]=" + Util.getSizeMB(e.HrL.HrP * 1048576L));
+    paramm.append("\n");
+    paramm.append("[WXContact]=" + e.HrL.HrQ);
+    paramm.append("\n");
+    paramm.append("[WXChatroom]=" + e.HrL.HrR);
+    paramm.append("\n");
+    paramm.append("[Favorite]=" + e.HrL.HrT);
+    paramm.append("\n");
+    paramm.append("[Message]=" + e.HrL.HrS);
+    paramm.append("\n");
+    paramm.append("[WebSearchH5Version]=" + aj.asY(0));
+    paramm.append("\n");
+    paramm.append("[TopStoryH5Version]=" + aj.asY(1));
+    paramm.append("\n");
+    paramm.append("[WxAppH5Version]=" + aj.asY(3));
+    paramm.append("\n");
+    paramm.append("[BoxH5Version]=" + aj.asY(2));
+    paramm.append("\n");
+    paramm.append("[TopStoryWebViewCore]=" + ((com.tencent.mm.plugin.topstory.a.b)h.az(com.tencent.mm.plugin.topstory.a.b.class)).getWebViewType());
+    paramm.append("\n");
+    paramm.append("[PardusH5Version]=" + aj.asY(5));
+    paramm.append("\n");
+    this.HAL.setText(paramm.toString());
     AppMethodBeat.o(28079);
   }
   
@@ -162,18 +162,18 @@ public class FTSInfoUI
         return false;
       }
     });
-    this.Jbv = ((Button)findViewById(R.h.index_info_btn));
-    this.BOV = ((TextView)findViewById(R.h.info_tv));
-    this.Jbv.setOnClickListener(new View.OnClickListener()
+    this.Plm = ((Button)findViewById(R.h.index_info_btn));
+    this.HAL = ((TextView)findViewById(R.h.info_tv));
+    this.Plm.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(28074);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/search/ui/FTSInfoUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/search/ui/FTSInfoUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         if (FTSInfoUI.a(FTSInfoUI.this) == null) {
-          FTSInfoUI.a(FTSInfoUI.this, com.tencent.mm.ui.base.h.a(FTSInfoUI.this, FTSInfoUI.this.getString(R.l.loading_tips), true, new DialogInterface.OnCancelListener()
+          FTSInfoUI.a(FTSInfoUI.this, k.a(FTSInfoUI.this, FTSInfoUI.this.getString(R.l.loading_tips), true, new DialogInterface.OnCancelListener()
           {
             public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
             {
@@ -184,23 +184,23 @@ public class FTSInfoUI
           }));
         }
         FTSInfoUI.a(FTSInfoUI.this).show();
-        paramAnonymousView = new j();
-        paramAnonymousView.nRn = 65526;
-        paramAnonymousView.BIU = FTSInfoUI.this;
-        ((n)com.tencent.mm.kernel.h.ag(n.class)).search(10000, paramAnonymousView);
+        paramAnonymousView = new com.tencent.mm.plugin.fts.a.a.l();
+        paramAnonymousView.qRb = 65526;
+        paramAnonymousView.HtC = FTSInfoUI.this;
+        ((n)h.az(n.class)).search(10000, paramAnonymousView);
         a.a(this, "com/tencent/mm/plugin/search/ui/FTSInfoUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(28074);
       }
     });
-    this.Jbw = ((Button)findViewById(R.h.priority_chat_info));
-    this.Jbx = ((Button)findViewById(R.h.priority_img_info));
-    this.Jby = ((Button)findViewById(R.h.priority_file_info));
-    this.Jbw.setTag(Integer.valueOf(1));
-    this.Jbx.setTag(Integer.valueOf(2));
-    this.Jby.setTag(Integer.valueOf(3));
-    this.Jbw.setOnClickListener(this.Jbz);
-    this.Jbx.setOnClickListener(this.Jbz);
-    this.Jby.setOnClickListener(this.Jbz);
+    this.Pln = ((Button)findViewById(R.h.priority_chat_info));
+    this.Plo = ((Button)findViewById(R.h.priority_img_info));
+    this.Plp = ((Button)findViewById(R.h.priority_file_info));
+    this.Pln.setTag(Integer.valueOf(1));
+    this.Plo.setTag(Integer.valueOf(2));
+    this.Plp.setTag(Integer.valueOf(3));
+    this.Pln.setOnClickListener(this.Plq);
+    this.Plo.setOnClickListener(this.Plq);
+    this.Plp.setOnClickListener(this.Plq);
     AppMethodBeat.o(28077);
   }
   
@@ -212,7 +212,7 @@ public class FTSInfoUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.search.ui.FTSInfoUI
  * JD-Core Version:    0.7.0.1
  */

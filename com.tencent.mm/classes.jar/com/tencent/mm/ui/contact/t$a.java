@@ -2,22 +2,22 @@ package com.tencent.mm.ui.contact;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.MMHandler;
+import kotlin.Metadata;
 import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MMHandler;"}, k=3, mv={1, 5, 1}, xi=48)
 final class t$a
-  extends q
+  extends u
   implements a<MMHandler>
 {
-  public static final a Xtu;
+  public static final a afeY;
   
   static
   {
-    AppMethodBeat.i(186948);
-    Xtu = new a();
-    AppMethodBeat.o(186948);
+    AppMethodBeat.i(252945);
+    afeY = new a();
+    AppMethodBeat.o(252945);
   }
   
   t$a()

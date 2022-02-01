@@ -1,14 +1,12 @@
 package com.tencent.mm.api;
 
-import com.tencent.mm.ao.a.k;
+import com.tencent.mm.an.a.c;
 import com.tencent.mm.kernel.c.a;
 
 public abstract interface l
   extends a
 {
-  public abstract k gm(String paramString);
-  
-  public abstract String gn(String paramString);
+  public abstract c dW(long paramLong);
 }
 
 

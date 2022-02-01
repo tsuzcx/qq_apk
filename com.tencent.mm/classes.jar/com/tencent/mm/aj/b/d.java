@@ -1,61 +1,68 @@
 package com.tencent.mm.aj.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.in;
-import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.aj.b.b;
+import kotlin.Metadata;
 
-public final class d
-  extends in
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/mm_compose/weui/MMButtonSize;", "", "minWidthResId", "", "minHeightResId", "cornerRadiusResId", "textSizeResId", "paddingHorizontal", "(IIIII)V", "getCornerRadiusResId", "()I", "getMinHeightResId", "getMinWidthResId", "getPaddingHorizontal", "getTextSizeResId", "Large", "Middle", "Small", "Lcom/tencent/mm/mm_compose/weui/MMButtonSize$Large;", "Lcom/tencent/mm/mm_compose/weui/MMButtonSize$Middle;", "Lcom/tencent/mm/mm_compose/weui/MMButtonSize$Small;", "compose-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract class d
 {
-  public static IAutoDBItem.MAutoDBInfo lqK;
+  final int ogA;
+  final int ogB;
+  final int ogC;
+  final int ogD;
+  final int ogE;
   
-  static
+  private d(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(2616);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[6];
-    localMAutoDBInfo.columns = new String[7];
-    StringBuilder localStringBuilder = new StringBuilder();
-    localMAutoDBInfo.columns[0] = "shareKeyHash";
-    localMAutoDBInfo.colsMap.put("shareKeyHash", "INTEGER PRIMARY KEY ");
-    localStringBuilder.append(" shareKeyHash INTEGER PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.primaryKey = "shareKeyHash";
-    localMAutoDBInfo.columns[1] = "btnState";
-    localMAutoDBInfo.colsMap.put("btnState", "INTEGER");
-    localStringBuilder.append(" btnState INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[2] = "msgState";
-    localMAutoDBInfo.colsMap.put("msgState", "INTEGER");
-    localStringBuilder.append(" msgState INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[3] = "content";
-    localMAutoDBInfo.colsMap.put("content", "TEXT");
-    localStringBuilder.append(" content TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[4] = "contentColor";
-    localMAutoDBInfo.colsMap.put("contentColor", "TEXT");
-    localStringBuilder.append(" contentColor TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[5] = "updatePeroid";
-    localMAutoDBInfo.colsMap.put("updatePeroid", "INTEGER");
-    localStringBuilder.append(" updatePeroid INTEGER");
-    localMAutoDBInfo.columns[6] = "rowid";
-    localMAutoDBInfo.sql = localStringBuilder.toString();
-    lqK = localMAutoDBInfo;
-    AppMethodBeat.o(2616);
+    this.ogA = paramInt1;
+    this.ogB = paramInt2;
+    this.ogC = paramInt3;
+    this.ogD = paramInt4;
+    this.ogE = paramInt5;
   }
   
-  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/mm_compose/weui/MMButtonSize$Large;", "Lcom/tencent/mm/mm_compose/weui/MMButtonSize;", "()V", "compose-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+    extends d
   {
-    return lqK;
+    public static final a ogF;
+    
+    static
+    {
+      AppMethodBeat.i(238673);
+      ogF = new a();
+      AppMethodBeat.o(238673);
+    }
+    
+    private a()
+    {
+      super(b.b.NormalButtonHeight, b.b.ButtonCornerSize, b.b.LargeBtnTextSize, b.b.LargeBtnPadding, (byte)0);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/mm_compose/weui/MMButtonSize$Small;", "Lcom/tencent/mm/mm_compose/weui/MMButtonSize;", "()V", "compose-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+    extends d
+  {
+    public static final b ogG;
+    
+    static
+    {
+      AppMethodBeat.i(238671);
+      ogG = new b();
+      AppMethodBeat.o(238671);
+    }
+    
+    private b()
+    {
+      super(b.b.SmallButtonHeight, b.b.ButtonSmallCornerSize, b.b.SmallBtnTextSize, b.b.SmallBtnPadding, (byte)0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.aj.b.d
  * JD-Core Version:    0.7.0.1
  */

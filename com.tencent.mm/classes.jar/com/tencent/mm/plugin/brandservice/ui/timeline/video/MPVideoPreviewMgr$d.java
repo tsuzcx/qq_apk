@@ -1,46 +1,34 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.video;
 
+import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.storage.z;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.q;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"onClick", "", "invoke"})
+@Metadata(d1={""}, d2={"<no name provided>", "", "same", "", "parent", "Landroid/view/ViewGroup;", "height", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class MPVideoPreviewMgr$d
-  extends q
-  implements kotlin.g.a.a<x>
+  extends u
+  implements q<Boolean, ViewGroup, Integer, ah>
 {
-  MPVideoPreviewMgr$d(String paramString, z paramz)
+  public static final d vXX;
+  
+  static
   {
-    super(0);
+    AppMethodBeat.i(302059);
+    vXX = new d();
+    AppMethodBeat.o(302059);
   }
   
-  public final void invoke()
+  MPVideoPreviewMgr$d()
   {
-    AppMethodBeat.i(265695);
-    Object localObject = this.sSD;
-    switch (((String)localObject).hashCode())
-    {
-    }
-    do
-    {
-      localObject = MPVideoPreviewMgr.sSn;
-      MPVideoPreviewMgr.aqv(MPVideoPreviewMgr.t(this.sAV));
-      localObject = com.tencent.mm.plugin.webview.ui.tools.video.a.QvS;
-      localObject = MPVideoPreviewMgr.sSn;
-      com.tencent.mm.plugin.webview.ui.tools.video.a.bnh(MPVideoPreviewMgr.t(this.sAV));
-      AppMethodBeat.o(265695);
-      return;
-    } while (!((String)localObject).equals("PAUSE_FOR_RESUME"));
-    localObject = MPVideoPreviewMgr.sSn;
-    MPVideoPreviewMgr.aqt("PAUSE_FOR_RESUME");
-    AppMethodBeat.o(265695);
+    super(3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.video.MPVideoPreviewMgr.d
  * JD-Core Version:    0.7.0.1
  */

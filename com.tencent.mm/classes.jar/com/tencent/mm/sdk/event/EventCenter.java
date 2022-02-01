@@ -2,12 +2,11 @@ package com.tencent.mm.sdk.event;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ListenerInstanceMonitor;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.vending.b.b;
 import com.tencent.mm.vending.g.g;
-import com.tencent.mm.vending.h.d;
+import com.tencent.threadpool.i;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -22,7 +21,7 @@ public final class EventCenter
   public static EventCenter instance;
   private final HashMap<Integer, LinkedList<IListener>> listenersMap;
   private final HashMap<Integer, WxEventsCallbacks> mCallbacksMap;
-  private SilenceNoLooperScheduler mSilenceNoLooperScheduler;
+  private EventCenter.SilenceNoLooperScheduler mSilenceNoLooperScheduler;
   
   static
   {
@@ -34,7 +33,7 @@ public final class EventCenter
   private EventCenter()
   {
     AppMethodBeat.i(125191);
-    this.mSilenceNoLooperScheduler = new SilenceNoLooperScheduler();
+    this.mSilenceNoLooperScheduler = new EventCenter.SilenceNoLooperScheduler();
     this.listenersMap = new HashMap();
     this.mCallbacksMap = new HashMap();
     AppMethodBeat.o(125191);
@@ -48,10 +47,10 @@ public final class EventCenter
       {
         public int compare(IListener paramAnonymousIListener1, IListener paramAnonymousIListener2)
         {
-          AppMethodBeat.i(248855);
+          AppMethodBeat.i(243255);
           int i = paramAnonymousIListener2.getPriority();
           int j = paramAnonymousIListener1.getPriority();
-          AppMethodBeat.o(248855);
+          AppMethodBeat.o(243255);
           return i - j;
         }
       });
@@ -69,7 +68,7 @@ public final class EventCenter
     AppMethodBeat.o(125200);
   }
   
-  public final b<IListener> add(IListener paramIListener)
+  protected final b<IListener> add(IListener paramIListener)
   {
     AppMethodBeat.i(125192);
     try
@@ -94,53 +93,47 @@ public final class EventCenter
     }
   }
   
-  @Deprecated
-  public final boolean addListener(IListener paramIListener)
-  {
-    AppMethodBeat.i(125193);
-    try
-    {
-      Assert.assertNotNull("EventPoolImpl.add", paramIListener);
-      Log.v("MicroMsg.EventCenter", "addListener %s(%d)", new Object[] { paramIListener, Integer.valueOf(paramIListener.__getEventID()) });
-      Object localObject2 = (LinkedList)this.listenersMap.get(Integer.valueOf(paramIListener.__getEventID()));
-      Object localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        localObject2 = this.listenersMap;
-        int i = paramIListener.__getEventID();
-        localObject1 = new LinkedList();
-        ((HashMap)localObject2).put(Integer.valueOf(i), localObject1);
-      }
-      if (((LinkedList)localObject1).contains(paramIListener)) {
-        return true;
-      }
-      ListenerInstanceMonitor.markInstanceRegistered(paramIListener);
-      boolean bool = ((LinkedList)localObject1).add(paramIListener);
-      return bool;
-    }
-    finally
-    {
-      AppMethodBeat.o(125193);
-    }
-  }
-  
-  public final void asyncPublish(IEvent paramIEvent, Looper paramLooper)
+  protected final void asyncPublish(IEvent paramIEvent, Looper paramLooper)
   {
     AppMethodBeat.i(125196);
     Assert.assertNotNull("EventPoolImpl.asyncPublish event", paramIEvent);
     Assert.assertNotNull("EventPoolImpl.asyncPublish looper", paramLooper);
     Log.v("MicroMsg.EventCenter", "publish %s(%d)", new Object[] { paramIEvent, Integer.valueOf(paramIEvent.__getEventID()) });
-    new MMHandler(paramLooper).post(new EventCenter.1(this, paramIEvent));
+    new MMHandler(paramLooper).post(new EventCenter..ExternalSyntheticLambda1(this, paramIEvent));
     AppMethodBeat.o(125196);
   }
   
-  public final void asyncPublish(IEvent paramIEvent, Executor paramExecutor)
+  protected final void asyncPublish(IEvent paramIEvent, String paramString)
+  {
+    AppMethodBeat.i(243262);
+    Log.v("MicroMsg.EventCenter", "publish %s(%d)", new Object[] { paramIEvent, Integer.valueOf(paramIEvent.__getEventID()) });
+    com.tencent.threadpool.h.ahAA.g(new EventCenter..ExternalSyntheticLambda0(this, paramIEvent), paramString);
+    AppMethodBeat.o(243262);
+  }
+  
+  public final void asyncPublish(final IEvent paramIEvent, Executor paramExecutor)
   {
     AppMethodBeat.i(125197);
     Assert.assertNotNull("EventPoolImpl.asyncPublish event", paramIEvent);
     Assert.assertNotNull("EventPoolImpl.asyncPublish executor", paramExecutor);
     Log.v("MicroMsg.EventCenter", "publish %s(%d)", new Object[] { paramIEvent, Integer.valueOf(paramIEvent.__getEventID()) });
-    paramExecutor.execute(new EventCenter.2(this, paramIEvent));
+    paramExecutor.execute(new com.tencent.threadpool.i.h()
+    {
+      public String getKey()
+      {
+        AppMethodBeat.i(243256);
+        String str = paramIEvent.getClass().getName();
+        AppMethodBeat.o(243256);
+        return str;
+      }
+      
+      public void run()
+      {
+        AppMethodBeat.i(125179);
+        EventCenter.this.publish(paramIEvent);
+        AppMethodBeat.o(125179);
+      }
+    });
     AppMethodBeat.o(125197);
   }
   
@@ -150,30 +143,30 @@ public final class EventCenter
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 200
-    //   4: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: ldc 202
+    //   2: ldc 199
+    //   4: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: ldc 201
     //   9: aload_1
-    //   10: invokestatic 114	junit/framework/Assert:assertNotNull	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   10: invokestatic 115	junit/framework/Assert:assertNotNull	(Ljava/lang/String;Ljava/lang/Object;)V
     //   13: aload_0
-    //   14: getfield 55	com/tencent/mm/sdk/event/EventCenter:listenersMap	Ljava/util/HashMap;
+    //   14: getfield 56	com/tencent/mm/sdk/event/EventCenter:listenersMap	Ljava/util/HashMap;
     //   17: aload_1
-    //   18: invokevirtual 119	com/tencent/mm/sdk/event/IListener:__getEventID	()I
-    //   21: invokestatic 125	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   24: invokevirtual 135	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   27: checkcast 79	java/util/LinkedList
+    //   18: invokevirtual 120	com/tencent/mm/sdk/event/IListener:__getEventID	()I
+    //   21: invokestatic 126	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   24: invokevirtual 136	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   27: checkcast 80	java/util/LinkedList
     //   30: astore_3
     //   31: aload_3
     //   32: ifnull +29 -> 61
     //   35: aload_3
-    //   36: invokevirtual 205	java/util/LinkedList:isEmpty	()Z
+    //   36: invokevirtual 204	java/util/LinkedList:isEmpty	()Z
     //   39: ifne +22 -> 61
     //   42: aload_3
     //   43: aload_1
-    //   44: invokevirtual 152	java/util/LinkedList:contains	(Ljava/lang/Object;)Z
+    //   44: invokevirtual 208	java/util/LinkedList:contains	(Ljava/lang/Object;)Z
     //   47: ifeq +14 -> 61
-    //   50: ldc 200
-    //   52: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   50: ldc 199
+    //   52: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   55: iconst_1
     //   56: istore_2
     //   57: aload_0
@@ -181,31 +174,31 @@ public final class EventCenter
     //   59: iload_2
     //   60: ireturn
     //   61: aload_0
-    //   62: getfield 57	com/tencent/mm/sdk/event/EventCenter:mCallbacksMap	Ljava/util/HashMap;
+    //   62: getfield 58	com/tencent/mm/sdk/event/EventCenter:mCallbacksMap	Ljava/util/HashMap;
     //   65: aload_1
-    //   66: invokevirtual 119	com/tencent/mm/sdk/event/IListener:__getEventID	()I
-    //   69: invokestatic 125	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   72: invokevirtual 135	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   75: checkcast 11	com/tencent/mm/sdk/event/EventCenter$WxEventsCallbacks
+    //   66: invokevirtual 120	com/tencent/mm/sdk/event/IListener:__getEventID	()I
+    //   69: invokestatic 126	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   72: invokevirtual 136	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   75: checkcast 12	com/tencent/mm/sdk/event/EventCenter$WxEventsCallbacks
     //   78: astore_3
     //   79: aload_3
     //   80: ifnull +28 -> 108
     //   83: aload_3
-    //   84: invokevirtual 206	com/tencent/mm/sdk/event/EventCenter$WxEventsCallbacks:size	()I
+    //   84: invokevirtual 209	com/tencent/mm/sdk/event/EventCenter$WxEventsCallbacks:size	()I
     //   87: ifle +21 -> 108
     //   90: aload_3
     //   91: aload_1
-    //   92: invokevirtual 207	com/tencent/mm/sdk/event/EventCenter$WxEventsCallbacks:contains	(Ljava/lang/Object;)Z
+    //   92: invokevirtual 210	com/tencent/mm/sdk/event/EventCenter$WxEventsCallbacks:contains	(Ljava/lang/Object;)Z
     //   95: ifeq +13 -> 108
-    //   98: ldc 200
-    //   100: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   98: ldc 199
+    //   100: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   103: iconst_1
     //   104: istore_2
     //   105: goto -48 -> 57
     //   108: iconst_0
     //   109: istore_2
-    //   110: ldc 200
-    //   112: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   110: ldc 199
+    //   112: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   115: goto -58 -> 57
     //   118: astore_1
     //   119: aload_0
@@ -228,32 +221,32 @@ public final class EventCenter
   }
   
   /* Error */
-  public final boolean hasListener(java.lang.Class<? extends IEvent> paramClass)
+  public final boolean hasListener(Class<? extends IEvent> paramClass)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 210
-    //   4: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: ldc 212
+    //   2: ldc 213
+    //   4: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: ldc 215
     //   9: aload_1
-    //   10: invokestatic 114	junit/framework/Assert:assertNotNull	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   10: invokestatic 115	junit/framework/Assert:assertNotNull	(Ljava/lang/String;Ljava/lang/Object;)V
     //   13: aload_0
-    //   14: getfield 55	com/tencent/mm/sdk/event/EventCenter:listenersMap	Ljava/util/HashMap;
+    //   14: getfield 56	com/tencent/mm/sdk/event/EventCenter:listenersMap	Ljava/util/HashMap;
     //   17: aload_1
-    //   18: invokevirtual 218	java/lang/Class:getName	()Ljava/lang/String;
-    //   21: invokevirtual 223	java/lang/String:hashCode	()I
-    //   24: invokestatic 125	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   27: invokevirtual 135	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   30: checkcast 79	java/util/LinkedList
+    //   18: invokevirtual 221	java/lang/Class:getName	()Ljava/lang/String;
+    //   21: invokevirtual 226	java/lang/String:hashCode	()I
+    //   24: invokestatic 126	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   27: invokevirtual 136	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   30: checkcast 80	java/util/LinkedList
     //   33: astore_3
     //   34: aload_3
     //   35: ifnull +21 -> 56
     //   38: aload_3
-    //   39: invokevirtual 83	java/util/LinkedList:size	()I
+    //   39: invokevirtual 84	java/util/LinkedList:size	()I
     //   42: ifle +14 -> 56
-    //   45: ldc 210
-    //   47: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   45: ldc 213
+    //   47: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   50: iconst_1
     //   51: istore_2
     //   52: aload_0
@@ -261,28 +254,28 @@ public final class EventCenter
     //   54: iload_2
     //   55: ireturn
     //   56: aload_0
-    //   57: getfield 57	com/tencent/mm/sdk/event/EventCenter:mCallbacksMap	Ljava/util/HashMap;
+    //   57: getfield 58	com/tencent/mm/sdk/event/EventCenter:mCallbacksMap	Ljava/util/HashMap;
     //   60: aload_1
-    //   61: invokevirtual 218	java/lang/Class:getName	()Ljava/lang/String;
-    //   64: invokevirtual 223	java/lang/String:hashCode	()I
-    //   67: invokestatic 125	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   70: invokevirtual 135	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   73: checkcast 11	com/tencent/mm/sdk/event/EventCenter$WxEventsCallbacks
+    //   61: invokevirtual 221	java/lang/Class:getName	()Ljava/lang/String;
+    //   64: invokevirtual 226	java/lang/String:hashCode	()I
+    //   67: invokestatic 126	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   70: invokevirtual 136	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   73: checkcast 12	com/tencent/mm/sdk/event/EventCenter$WxEventsCallbacks
     //   76: astore_1
     //   77: aload_1
     //   78: ifnull +20 -> 98
     //   81: aload_1
-    //   82: invokevirtual 206	com/tencent/mm/sdk/event/EventCenter$WxEventsCallbacks:size	()I
+    //   82: invokevirtual 209	com/tencent/mm/sdk/event/EventCenter$WxEventsCallbacks:size	()I
     //   85: ifle +13 -> 98
-    //   88: ldc 210
-    //   90: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   88: ldc 213
+    //   90: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   93: iconst_1
     //   94: istore_2
     //   95: goto -43 -> 52
     //   98: iconst_0
     //   99: istore_2
-    //   100: ldc 210
-    //   102: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   100: ldc 213
+    //   102: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   105: goto -53 -> 52
     //   108: astore_1
     //   109: aload_0
@@ -292,7 +285,7 @@ public final class EventCenter
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	113	0	this	EventCenter
-    //   0	113	1	paramClass	java.lang.Class<? extends IEvent>
+    //   0	113	1	paramClass	Class<? extends IEvent>
     //   51	49	2	bool	boolean
     //   33	6	3	localLinkedList	LinkedList
     // Exception table:
@@ -304,7 +297,7 @@ public final class EventCenter
     //   100	105	108	finally
   }
   
-  public final boolean publish(IEvent paramIEvent)
+  protected final boolean publish(IEvent paramIEvent)
   {
     boolean bool1 = false;
     boolean bool2 = true;
@@ -334,7 +327,7 @@ public final class EventCenter
             trigger(localLinkedList, paramIEvent);
           }
           if (localObject != null) {
-            ((WxEventsCallbacks)localObject).invoke(g.eu(paramIEvent));
+            ((WxEventsCallbacks)localObject).invoke(g.gS(paramIEvent));
           }
           AppMethodBeat.o(125195);
           return bool1;
@@ -344,65 +337,6 @@ public final class EventCenter
       {
         AppMethodBeat.o(125195);
       }
-    }
-  }
-  
-  @Deprecated
-  public final boolean removeListener(IListener paramIListener)
-  {
-    boolean bool = false;
-    AppMethodBeat.i(125194);
-    for (;;)
-    {
-      try
-      {
-        Assert.assertNotNull("EventPoolImpl.remove", paramIListener);
-        Log.v("MicroMsg.EventCenter", "removeListener %s(%d)", new Object[] { paramIListener, Integer.valueOf(paramIListener.__getEventID()) });
-        Object localObject = (LinkedList)this.listenersMap.get(Integer.valueOf(paramIListener.__getEventID()));
-        if (localObject != null) {
-          bool = ((LinkedList)localObject).remove(paramIListener);
-        }
-        localObject = (WxEventsCallbacks)this.mCallbacksMap.get(Integer.valueOf(paramIListener.__getEventID()));
-        if (localObject != null)
-        {
-          ((WxEventsCallbacks)localObject).remove(paramIListener);
-          bool = true;
-          ListenerInstanceMonitor.markInstanceUnregistered(paramIListener);
-          return bool;
-        }
-      }
-      finally
-      {
-        AppMethodBeat.o(125194);
-      }
-    }
-  }
-  
-  public static class SilenceNoLooperScheduler
-    extends d
-  {
-    public void arrange(Runnable paramRunnable)
-    {
-      AppMethodBeat.i(125183);
-      paramRunnable.run();
-      AppMethodBeat.o(125183);
-    }
-    
-    public void arrangeInterval(Runnable paramRunnable, long paramLong)
-    {
-      AppMethodBeat.i(125184);
-      paramRunnable.run();
-      AppMethodBeat.o(125184);
-    }
-    
-    public void cancel() {}
-    
-    public String getType()
-    {
-      AppMethodBeat.i(125185);
-      String str = Thread.currentThread().toString();
-      AppMethodBeat.o(125185);
-      return str;
     }
   }
   
@@ -440,10 +374,10 @@ public final class EventCenter
         {
           public int compare(b paramAnonymousb1, b paramAnonymousb2)
           {
-            AppMethodBeat.i(248727);
-            int i = ((IListener)paramAnonymousb2.YzW).getPriority();
-            int j = ((IListener)paramAnonymousb1.YzW).getPriority();
-            AppMethodBeat.o(248727);
+            AppMethodBeat.i(243259);
+            int i = ((IListener)paramAnonymousb2.aguu).getPriority();
+            int j = ((IListener)paramAnonymousb1.aguu).getPriority();
+            AppMethodBeat.o(243259);
             return i - j;
           }
         });
@@ -452,7 +386,7 @@ public final class EventCenter
       localLinkedList.toArray(arrayOfb);
       int j = arrayOfb.length;
       int i = 0;
-      while ((i < j) && ((!((IListener)arrayOfb[i].YzW).callback(parama)) || (!parama.getOrder()))) {
+      while ((i < j) && ((!((IListener)arrayOfb[i].aguu).callback(parama)) || (!parama.getOrder()))) {
         i += 1;
       }
       if (parama.callback != null) {
@@ -471,7 +405,7 @@ public final class EventCenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sdk.event.EventCenter
  * JD-Core Version:    0.7.0.1
  */

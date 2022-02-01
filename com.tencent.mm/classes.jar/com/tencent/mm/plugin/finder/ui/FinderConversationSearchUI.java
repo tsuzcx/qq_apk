@@ -1,51 +1,21 @@
 package com.tencent.mm.plugin.finder.ui;
 
-import android.app.Activity;
-import android.view.View;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
-import java.util.HashMap;
-import kotlin.l;
-import kotlin.n;
+import kotlin.Metadata;
+import kotlin.q;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderConversationSearchUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "getLayoutId", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/ui/FinderConversationSearchUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "getLayoutId", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderConversationSearchUI
   extends MMActivity
 {
-  private HashMap _$_findViewCache;
-  
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(290851);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(290851);
-  }
-  
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(290850);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(290850);
-    return localView1;
-  }
+  public final void _$_clearFindViewByIdCache() {}
   
   public final int getLayoutId()
   {
-    AppMethodBeat.i(290849);
-    Throwable localThrowable = (Throwable)new n("An operation is not implemented: ".concat(String.valueOf("Not yet implemented")));
-    AppMethodBeat.o(290849);
+    AppMethodBeat.i(346515);
+    Throwable localThrowable = (Throwable)new q("An operation is not implemented: ".concat(String.valueOf("Not yet implemented")));
+    AppMethodBeat.o(346515);
     throw localThrowable;
   }
   

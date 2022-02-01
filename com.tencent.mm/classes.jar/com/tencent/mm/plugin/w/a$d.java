@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.w;
 
 public final class a$d
 {
-  public static final int icon_filled_clip_border = 2131233172;
-  public static final int mmsight_circle_button_white = 2131234124;
-  public static final int mmsight_recorder_button_inner = 2131234125;
-  public static final int mmsight_recorder_button_outer = 2131234126;
+  public static final int icon_filled_clip_border = 2131232875;
+  public static final int mmsight_circle_button_white = 2131233531;
+  public static final int mmsight_recorder_button_inner = 2131233532;
+  public static final int mmsight_recorder_button_outer = 2131233533;
 }
 
 

@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface a
   extends IInterface
 {
-  public abstract void S(IBinder paramIBinder);
+  public abstract void X(IBinder paramIBinder);
   
   public static abstract class a
     extends Binder
@@ -20,9 +20,9 @@ public abstract interface a
       attachInterface(this, "com.tencent.mm.service.IMMServiceConnectionStub_AIDL");
     }
     
-    public static a htB()
+    public static a iUC()
     {
-      return a.UXw;
+      return a.acwo;
     }
     
     public IBinder asBinder()
@@ -41,7 +41,7 @@ public abstract interface a
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.service.IMMServiceConnectionStub_AIDL");
-      S(paramParcel1.readStrongBinder());
+      X(paramParcel1.readStrongBinder());
       paramParcel2.writeNoException();
       return true;
     }
@@ -49,7 +49,7 @@ public abstract interface a
     static final class a
       implements a
     {
-      public static a UXw;
+      public static a acwo;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -57,7 +57,7 @@ public abstract interface a
         this.mRemote = paramIBinder;
       }
       
-      public final void S(IBinder paramIBinder)
+      public final void X(IBinder paramIBinder)
       {
         AppMethodBeat.i(125304);
         Parcel localParcel1 = Parcel.obtain();
@@ -66,9 +66,9 @@ public abstract interface a
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.service.IMMServiceConnectionStub_AIDL");
           localParcel1.writeStrongBinder(paramIBinder);
-          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (a.a.htB() != null))
+          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (a.a.iUC() != null))
           {
-            a.a.htB().S(paramIBinder);
+            a.a.iUC().X(paramIBinder);
             return;
           }
           localParcel2.readException();
@@ -91,7 +91,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.service.a
  * JD-Core Version:    0.7.0.1
  */

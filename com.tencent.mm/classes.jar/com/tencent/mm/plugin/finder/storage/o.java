@@ -1,75 +1,40 @@
 package com.tencent.mm.plugin.finder.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.convert.ad;
-import com.tencent.mm.plugin.finder.convert.bd;
-import com.tencent.mm.plugin.finder.convert.be;
-import com.tencent.mm.plugin.finder.feed.ar.a;
-import com.tencent.mm.plugin.finder.utils.aj;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.view.recyclerview.e;
-import kotlin.g.a.b;
-import kotlin.l;
+import com.tencent.mm.autogen.b.cz;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderLbsConfig;", "", "contextId", "", "clickTabContextId", "context", "Lcom/tencent/mm/ui/MMActivity;", "(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/ui/MMActivity;)V", "getClickTabContextId", "()Ljava/lang/String;", "getContext", "()Lcom/tencent/mm/ui/MMActivity;", "getContextId", "spanCount", "", "getSpanCount", "()I", "canFullSpan", "", "type", "getDefaultConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "getIfReachBottom", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "getItemConvertFactory", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "extraMap", "Lkotlin/Function1;", "presenter", "Lcom/tencent/mm/plugin/finder/feed/FinderTimelineLbsContract$Presenter;", "Lcom/tencent/mm/plugin/finder/model/BaseMixFeed;", "getItemDecoration", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "Landroid/content/Context;", "getLayoutManager", "Landroidx/recyclerview/widget/RecyclerView$LayoutManager;", "getViewPool", "Landroidx/recyclerview/widget/RecyclerView$RecycledViewPool;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/FinderFinderMentionStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/autogen/table/BaseFinderMention;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class o
+  extends MAutoStorage<cz>
 {
-  private final MMActivity iXq;
-  private final int spanCount;
-  private final String wmL;
-  private final String wmz;
+  public static final a FKK;
+  private static final String[] INDEX_CREATE;
+  private static final String[] SQL_CREATE;
   
-  private o(String paramString1, String paramString2, MMActivity paramMMActivity)
+  static
   {
-    AppMethodBeat.i(264592);
-    this.wmL = paramString1;
-    this.wmz = paramString2;
-    this.iXq = paramMMActivity;
-    this.spanCount = 2;
-    AppMethodBeat.o(264592);
+    AppMethodBeat.i(339206);
+    FKK = new a((byte)0);
+    Object localObject = new StringBuilder("CREATE INDEX IF NOT EXISTS ");
+    av.a locala = av.FMF;
+    INDEX_CREATE = new String[] { av.eZU() + " ON " + cz.ktM + " ( id, flag, type, userVersion)", "CREATE INDEX IF NOT EXISTS Finder_Mention_Id_Create_Time ON " + cz.ktM + "(createTime, id)", "CREATE INDEX IF NOT EXISTS Finder_Mention_Type ON " + cz.ktM + "(type)", "CREATE INDEX IF NOT EXISTS Finder_Object_Id ON " + cz.ktM + "(objectId)", "CREATE INDEX IF NOT EXISTS Finder_Comment_Id ON " + cz.ktM + "(commentId)" };
+    localObject = av.FMF;
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(av.access$getInfo$cp(), cz.ktM) };
+    AppMethodBeat.o(339206);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/storage/FinderLbsConfig$getItemConvertFactory$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"})
-  public static final class a
-    implements com.tencent.mm.view.recyclerview.f
+  public o(ISQLiteDatabase paramISQLiteDatabase)
   {
-    public a(ar.a parama, b paramb) {}
-    
-    public final e<?> yx(int paramInt)
-    {
-      AppMethodBeat.i(232564);
-      switch (paramInt)
-      {
-      default: 
-        localObject = this.zJM;
-        if (localObject != null)
-        {
-          e locale = (e)((b)localObject).invoke(Integer.valueOf(paramInt));
-          localObject = locale;
-          if (locale != null) {}
-        }
-        else
-        {
-          localObject = aj.AGc;
-          aj.em("FinderLbsConfig", paramInt);
-          localObject = (e)new com.tencent.mm.plugin.finder.convert.f();
-        }
-        AppMethodBeat.o(232564);
-        return localObject;
-      case 1001: 
-        localObject = (e)new be(this.Alo);
-        AppMethodBeat.o(232564);
-        return localObject;
-      case 1002: 
-        localObject = (e)new bd();
-        AppMethodBeat.o(232564);
-        return localObject;
-      }
-      Object localObject = (e)new ad();
-      AppMethodBeat.o(232564);
-      return localObject;
-    }
+    super(paramISQLiteDatabase, av.access$getInfo$cp(), cz.ktM, INDEX_CREATE);
+    AppMethodBeat.i(339196);
+    AppMethodBeat.o(339196);
   }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/FinderFinderMentionStorage$Companion;", "", "()V", "INDEX_CREATE", "", "", "getINDEX_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "SQL_CREATE", "kotlin.jvm.PlatformType", "getSQL_CREATE", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 

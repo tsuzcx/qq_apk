@@ -4,13 +4,13 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.d;
-import com.tencent.mm.am.f;
-import com.tencent.mm.am.f.a;
-import com.tencent.mm.am.q;
 import com.tencent.mm.b.h;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.model.be;
+import com.tencent.mm.modelavatar.AvatarStorage;
+import com.tencent.mm.modelavatar.AvatarStorage.a;
+import com.tencent.mm.modelavatar.d;
+import com.tencent.mm.modelavatar.q;
 import com.tencent.mm.plugin.radar.ui.b.a;
 import com.tencent.mm.pluginsdk.ui.j;
 import com.tencent.mm.pluginsdk.ui.j.a;
@@ -22,21 +22,20 @@ import com.tencent.mm.storagebase.h.b;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/radar/SubCoreRadar;", "Lcom/tencent/mm/model/ISubCore;", "()V", "clearPluginData", "", "pluginFlag", "", "doRadar", "getBaseDBFactories", "Ljava/util/HashMap;", "Lcom/tencent/mm/storagebase/SqliteDB$IFactory;", "onAccountPostReset", "updated", "", "onAccountRelease", "onSdcardMount", "mounted", "Companion", "plugin-radar_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/radar/SubCoreRadar;", "Lcom/tencent/mm/model/ISubCore;", "()V", "clearPluginData", "", "pluginFlag", "", "doRadar", "getBaseDBFactories", "Ljava/util/HashMap;", "Lcom/tencent/mm/storagebase/SqliteDB$IFactory;", "onAccountPostReset", "updated", "", "onAccountRelease", "onSdcardMount", "mounted", "Companion", "plugin-radar_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
   implements be
 {
-  public static final a Hty;
-  private static final String TAG = "MicroMsg.SubCoreRadar";
+  public static final a Nro;
+  private static final String TAG;
   
   static
   {
     AppMethodBeat.i(138504);
-    Hty = new a((byte)0);
+    Nro = new a((byte)0);
     TAG = "MicroMsg.SubCoreRadar";
     AppMethodBeat.o(138504);
   }
@@ -51,7 +50,7 @@ public final class c
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(138503);
-    b.a locala = b.a.HuQ;
+    b.a locala = b.a.NsB;
     b.a.a((j.a)new b());
     AppMethodBeat.o(138503);
   }
@@ -60,72 +59,67 @@ public final class c
   
   public final void onSdcardMount(boolean paramBoolean) {}
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/radar/SubCoreRadar$Companion;", "", "()V", "TAG", "", "plugin-radar_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/radar/SubCoreRadar$Companion;", "", "()V", "TAG", "", "plugin-radar_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/radar/SubCoreRadar$onAccountPostReset$1", "Lcom/tencent/mm/pluginsdk/ui/LazyBitmapDrawable$BitmapLoader;", "defaultBitmap", "Landroid/graphics/Bitmap;", "defaultBitmapRoundCorner", "mAvatarBitmapCache", "Lcom/tencent/mm/algorithm/MMLRUMap;", "", "Ljava/lang/ref/WeakReference;", "getDefaultBitmap", "getDefaultBitmapRoundCorner", "loadBitmap", "tag", "loadFromCache", "loadHdBitmap", "width", "", "height", "customFillet", "watch", "", "drawable", "Lcom/tencent/mm/pluginsdk/ui/LazyBitmapDrawable;", "plugin-radar_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/radar/SubCoreRadar$onAccountPostReset$1", "Lcom/tencent/mm/pluginsdk/ui/LazyBitmapDrawable$BitmapLoader;", "defaultBitmap", "Landroid/graphics/Bitmap;", "defaultBitmapRoundCorner", "mAvatarBitmapCache", "Lcom/tencent/mm/algorithm/MMLRUMap;", "", "Ljava/lang/ref/WeakReference;", "getDefaultBitmap", "getDefaultBitmapRoundCorner", "loadBitmap", "tag", "loadFromCache", "loadHdBitmap", "width", "", "height", "customFillet", "watch", "", "drawable", "Lcom/tencent/mm/pluginsdk/ui/LazyBitmapDrawable;", "plugin-radar_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
     implements j.a
   {
-    private final h<String, WeakReference<Bitmap>> HtA;
-    private Bitmap Htz;
-    private Bitmap fcd;
+    private Bitmap Nrp;
+    private final h<String, WeakReference<Bitmap>> Nrq;
+    private Bitmap hfN;
     
     b()
     {
       AppMethodBeat.i(138502);
-      this.HtA = new h(15);
+      this.Nrq = new h(15);
       AppMethodBeat.o(138502);
     }
     
-    private Bitmap fti()
+    private Bitmap gEU()
     {
       AppMethodBeat.i(138499);
-      if ((this.Htz == null) && (aaC() != null)) {}
+      if ((this.Nrp == null) && (aCj() != null)) {}
       try
       {
-        localBitmap1 = this.fcd;
-        Bitmap localBitmap2 = this.fcd;
-        if (localBitmap2 == null) {
-          p.iCn();
-        }
-        this.Htz = BitmapUtil.getRoundedCornerBitmap(localBitmap1, false, localBitmap2.getWidth() / 2);
+        Bitmap localBitmap1 = this.hfN;
+        Bitmap localBitmap2 = this.hfN;
+        s.checkNotNull(localBitmap2);
+        this.Nrp = BitmapUtil.getRoundedCornerBitmap(localBitmap1, false, localBitmap2.getWidth() / 2);
+        localBitmap1 = this.Nrp;
+        AppMethodBeat.o(138499);
+        return localBitmap1;
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          Bitmap localBitmap1;
           Log.printErrStackTrace(c.access$getTAG$cp(), (Throwable)localException, "", new Object[0]);
         }
       }
-      localBitmap1 = this.Htz;
-      AppMethodBeat.o(138499);
-      return localBitmap1;
     }
     
     public final void a(j paramj)
     {
       AppMethodBeat.i(138496);
-      p.k(paramj, "drawable");
-      if ((paramj instanceof f.a)) {
-        q.bhz().a((f.a)paramj);
+      s.u(paramj, "drawable");
+      if ((paramj instanceof AvatarStorage.a)) {
+        q.bFp().a((AvatarStorage.a)paramj);
       }
       AppMethodBeat.o(138496);
     }
     
-    public final Bitmap aaC()
+    public final Bitmap aCj()
     {
       AppMethodBeat.i(138498);
-      if (this.fcd == null) {}
+      if (this.hfN == null) {}
       try
       {
-        Object localObject = MMApplicationContext.getContext();
-        p.j(localObject, "MMApplicationContext.getContext()");
-        this.fcd = BackwardSupportUtil.BitmapFactory.decodeStream(((Context)localObject).getAssets().open("avatar/default_nor_avatar.png"), a.getDensity(null));
-        localObject = this.fcd;
+        this.hfN = BackwardSupportUtil.BitmapFactory.decodeStream(MMApplicationContext.getContext().getAssets().open("avatar/default_nor_avatar.png"), a.getDensity(null));
+        Bitmap localBitmap = this.hfN;
         AppMethodBeat.o(138498);
-        return localObject;
+        return localBitmap;
       }
       catch (IOException localIOException)
       {
@@ -139,50 +133,50 @@ public final class c
     public final Bitmap b(String paramString, int paramInt1, int paramInt2, int paramInt3)
     {
       AppMethodBeat.i(138501);
-      p.k(paramString, "tag");
+      s.u(paramString, "tag");
       AppMethodBeat.o(138501);
       return null;
     }
     
-    public final Bitmap gJ(String paramString)
+    public final Bitmap ik(String paramString)
+    {
+      AppMethodBeat.i(138500);
+      s.u(paramString, "tag");
+      AppMethodBeat.o(138500);
+      return null;
+    }
+    
+    public final Bitmap loadBitmap(String paramString)
     {
       AppMethodBeat.i(138497);
-      p.k(paramString, "tag");
-      Object localObject1 = (WeakReference)this.HtA.get(paramString);
+      s.u(paramString, "tag");
+      Object localObject1 = (WeakReference)this.Nrq.get(paramString);
       if ((localObject1 != null) && (((WeakReference)localObject1).get() != null))
       {
         Object localObject2 = ((WeakReference)localObject1).get();
         if (localObject2 == null)
         {
-          paramString = new t("null cannot be cast to non-null type android.graphics.Bitmap");
+          paramString = new NullPointerException("null cannot be cast to non-null type android.graphics.Bitmap");
           AppMethodBeat.o(138497);
           throw paramString;
         }
-        if ((!((Bitmap)localObject2).isRecycled()) && (!(p.h((Bitmap)((WeakReference)localObject1).get(), aaC()) ^ true))) {}
+        if ((!((Bitmap)localObject2).isRecycled()) && (s.p(((WeakReference)localObject1).get(), aCj()))) {}
       }
       else
       {
-        localObject1 = d.Tx(paramString);
+        localObject1 = d.a(paramString, false, -1, null);
         if ((localObject1 == null) || (((Bitmap)localObject1).isRecycled())) {}
-        for (paramString = fti();; paramString = (String)localObject1)
+        for (paramString = gEU();; paramString = (String)localObject1)
         {
           AppMethodBeat.o(138497);
           return paramString;
           localObject1 = BitmapUtil.getRoundedCornerBitmap((Bitmap)localObject1, false, ((Bitmap)localObject1).getWidth() / 2);
-          this.HtA.q(paramString, new WeakReference(localObject1));
+          this.Nrq.B(paramString, new WeakReference(localObject1));
         }
       }
       paramString = (Bitmap)((WeakReference)localObject1).get();
       AppMethodBeat.o(138497);
       return paramString;
-    }
-    
-    public final Bitmap gK(String paramString)
-    {
-      AppMethodBeat.i(138500);
-      p.k(paramString, "tag");
-      AppMethodBeat.o(138500);
-      return null;
     }
   }
 }

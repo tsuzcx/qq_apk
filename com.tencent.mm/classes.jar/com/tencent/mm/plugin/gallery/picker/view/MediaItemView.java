@@ -1,38 +1,42 @@
 package com.tencent.mm.plugin.gallery.picker.view;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.view.ViewPropertyAnimator;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.FrameLayout;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import android.widget.FrameLayout.LayoutParams;
 import com.tencent.mm.loader.d;
 import com.tencent.mm.plugin.gallery.b.e;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem;
-import com.tencent.mm.plugin.gallery.picker.a.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.base.a.b;
+import com.tencent.mm.ui.af;
+import com.tencent.mm.view.recyclerview.j;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gallery/picker/view/MediaItemView;", "T", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "adapter", "Lcom/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerAdapter;", "getAdapter", "()Lcom/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerAdapter;", "setAdapter", "(Lcom/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerAdapter;)V", "holder", "Lcom/tencent/mm/ui/base/adapter/ViewWrapper;", "getHolder", "()Lcom/tencent/mm/ui/base/adapter/ViewWrapper;", "setHolder", "(Lcom/tencent/mm/ui/base/adapter/ViewWrapper;)V", "loader", "Lcom/tencent/mm/loader/Loader;", "getLoader", "()Lcom/tencent/mm/loader/Loader;", "setLoader", "(Lcom/tencent/mm/loader/Loader;)V", "onItemMediaSelectedListener", "Lcom/tencent/mm/plugin/gallery/picker/view/MediaItemView$OnItemMediaSelectedListener;", "getOnItemMediaSelectedListener", "()Lcom/tencent/mm/plugin/gallery/picker/view/MediaItemView$OnItemMediaSelectedListener;", "setOnItemMediaSelectedListener", "(Lcom/tencent/mm/plugin/gallery/picker/view/MediaItemView$OnItemMediaSelectedListener;)V", "selectedList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getSelectedList", "()Ljava/util/ArrayList;", "setSelectedList", "(Ljava/util/ArrayList;)V", "selectedSet", "Ljava/util/HashSet;", "getSelectedSet", "()Ljava/util/HashSet;", "setSelectedSet", "(Ljava/util/HashSet;)V", "animVisible", "", "v", "Landroid/view/View;", "targetVisibility", "isAnim", "", "disableSelected", "enableSelected", "getLayoutId", "isSelectedEnable", "media", "(Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;)Z", "onCovert", "covertType", "(Lcom/tencent/mm/ui/base/adapter/ViewWrapper;Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;Lcom/tencent/mm/loader/Loader;I)V", "onCreateView", "onSelectItem", "isSelected", "Companion", "OnItemMediaSelectedListener", "plugin-gallery_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/gallery/picker/view/MediaItemView;", "T", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "adapter", "Lcom/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerAdapter;", "getAdapter", "()Lcom/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerAdapter;", "setAdapter", "(Lcom/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerAdapter;)V", "holder", "Lcom/tencent/mm/ui/base/adapter/ViewWrapper;", "getHolder", "()Lcom/tencent/mm/ui/base/adapter/ViewWrapper;", "setHolder", "(Lcom/tencent/mm/ui/base/adapter/ViewWrapper;)V", "loader", "Lcom/tencent/mm/loader/Loader;", "getLoader", "()Lcom/tencent/mm/loader/Loader;", "setLoader", "(Lcom/tencent/mm/loader/Loader;)V", "onItemMediaSelectedListener", "Lcom/tencent/mm/plugin/gallery/picker/view/MediaItemView$OnItemMediaSelectedListener;", "getOnItemMediaSelectedListener", "()Lcom/tencent/mm/plugin/gallery/picker/view/MediaItemView$OnItemMediaSelectedListener;", "setOnItemMediaSelectedListener", "(Lcom/tencent/mm/plugin/gallery/picker/view/MediaItemView$OnItemMediaSelectedListener;)V", "selectedList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getSelectedList", "()Ljava/util/ArrayList;", "setSelectedList", "(Ljava/util/ArrayList;)V", "selectedSet", "Ljava/util/HashSet;", "getSelectedSet", "()Ljava/util/HashSet;", "setSelectedSet", "(Ljava/util/HashSet;)V", "animVisible", "", "v", "Landroid/view/View;", "targetVisibility", "isAnim", "", "disableSelected", "enableSelected", "getLayoutId", "isSelectedEnable", "media", "(Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;)Z", "onCovert", "covertType", "(Lcom/tencent/mm/ui/base/adapter/ViewWrapper;Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;Lcom/tencent/mm/loader/Loader;I)V", "onCreateView", "onSelectItem", "isSelected", "Companion", "OnItemMediaSelectedListener", "plugin-gallery_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class MediaItemView<T extends GalleryItem.MediaItem>
   extends FrameLayout
 {
-  public static final a BZe = new a((byte)0);
-  private b<?> BWX;
-  public HashSet<T> BWY;
-  public a BWw;
-  public b BXW;
-  public d<T> jGC;
-  public ArrayList<T> kMn;
+  public static final MediaItemView.a HLf = new MediaItemView.a((byte)0);
+  public com.tencent.mm.plugin.gallery.picker.a.a HIV;
+  public HashSet<T> HJm;
+  private b<?> HJp;
+  public com.tencent.mm.ui.base.a.b HKj;
+  public d<T> mgk;
+  public ArrayList<T> nog;
   
   public MediaItemView(Context paramContext)
   {
@@ -49,8 +53,90 @@ public abstract class MediaItemView<T extends GalleryItem.MediaItem>
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private static void e(View paramView, final int paramInt, boolean paramBoolean)
+  private static final void a(MediaItemView paramMediaItemView, HashSet paramHashSet, ArrayList paramArrayList, d paramd, CompoundButton paramCompoundButton, boolean paramBoolean)
   {
+    s.u(paramMediaItemView, "this$0");
+    s.u(paramHashSet, "$selectedSet");
+    s.u(paramArrayList, "$selectedList");
+    s.u(paramd, "$loader");
+    paramCompoundButton = (GalleryItem.MediaItem)paramMediaItemView.getHolder().CSA;
+    if (paramBoolean != paramHashSet.contains(paramCompoundButton))
+    {
+      if (!paramBoolean) {
+        break label125;
+      }
+      if (paramHashSet.add(paramCompoundButton)) {
+        paramArrayList.add(paramCompoundButton);
+      }
+      paramHashSet = paramMediaItemView.getHolder();
+      s.s(paramCompoundButton, "media");
+      a(paramMediaItemView, paramHashSet, paramCompoundButton, paramd);
+      paramHashSet = paramMediaItemView.getOnItemMediaSelectedListener();
+      if (paramHashSet != null)
+      {
+        paramArrayList = paramMediaItemView.getHolder();
+        paramMediaItemView = paramMediaItemView.getHolder().CSA;
+        s.s(paramMediaItemView, "holder.getAssociatedObject()");
+        paramHashSet.b(paramArrayList, paramMediaItemView);
+      }
+    }
+    label125:
+    do
+    {
+      return;
+      paramHashSet.remove(paramCompoundButton);
+      paramArrayList.remove(paramCompoundButton);
+      paramHashSet = paramMediaItemView.getHolder();
+      s.s(paramCompoundButton, "media");
+      a(paramMediaItemView, paramHashSet, paramCompoundButton, paramd);
+      paramHashSet = paramMediaItemView.getOnItemMediaSelectedListener();
+    } while (paramHashSet == null);
+    paramArrayList = paramMediaItemView.getHolder();
+    paramMediaItemView = paramMediaItemView.getHolder().CSA;
+    s.s(paramMediaItemView, "holder.getAssociatedObject()");
+    paramHashSet.a(paramArrayList, paramMediaItemView);
+  }
+  
+  private static final void ax(View paramView, int paramInt)
+  {
+    s.u(paramView, "$v");
+    paramView.setVisibility(0);
+    switch (paramInt)
+    {
+    }
+    for (float f = 0.0F;; f = 1.0F)
+    {
+      paramView.setAlpha(f);
+      return;
+    }
+  }
+  
+  private static final void ay(View paramView, int paramInt)
+  {
+    s.u(paramView, "$v");
+    paramView.setVisibility(paramInt);
+    paramView.setAlpha(1.0F);
+  }
+  
+  private static final void b(CheckBox paramCheckBox, View paramView)
+  {
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramCheckBox);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/gallery/picker/view/MediaItemView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    if (!paramCheckBox.isChecked()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramCheckBox.setChecked(bool);
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/gallery/picker/view/MediaItemView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      return;
+    }
+  }
+  
+  private static void g(View paramView, int paramInt, boolean paramBoolean)
+  {
+    float f = 1.0F;
     Log.d("MediaItemView", "[animVisible] isAnim=" + paramBoolean + " view=" + paramView.hashCode());
     if (paramView.getVisibility() == paramInt) {
       return;
@@ -65,374 +151,243 @@ public abstract class MediaItemView<T extends GalleryItem.MediaItem>
     if (localViewPropertyAnimator != null) {
       localViewPropertyAnimator.cancel();
     }
-    paramView = paramView.animate().withStartAction((Runnable)new c(paramView, paramInt)).withEndAction((Runnable)new d(paramView, paramInt)).setDuration(300L);
-    if ((paramInt == 4) || (paramInt == 8)) {}
-    for (float f = 0.0F;; f = 1.0F)
+    paramView = paramView.animate().withStartAction(new MediaItemView..ExternalSyntheticLambda2(paramView, paramInt)).withEndAction(new MediaItemView..ExternalSyntheticLambda3(paramView, paramInt)).setDuration(300L);
+    switch (paramInt)
+    {
+    }
+    for (;;)
     {
       paramView.alpha(f).start();
       return;
+      f = 0.0F;
     }
   }
   
-  public void a(b paramb, T paramT, d<T> paramd, int paramInt)
+  public final void a(d<T> paramd, HashSet<T> paramHashSet, ArrayList<T> paramArrayList, com.tencent.mm.plugin.gallery.picker.a.a parama)
+  {
+    s.u(paramd, "loader");
+    s.u(paramHashSet, "selectedSet");
+    s.u(paramArrayList, "selectedList");
+    s.u(parama, "adapter");
+    setAdapter(parama);
+    setLoader(paramd);
+    setSelectedSet(paramHashSet);
+    setSelectedList(paramArrayList);
+    Object localObject = af.mU(getContext()).inflate(getLayoutId(), (ViewGroup)this);
+    float f = getResources().getDisplayMetrics().widthPixels / 4 - 8.0F;
+    ((View)localObject).setLayoutParams((ViewGroup.LayoutParams)new FrameLayout.LayoutParams((int)f, (int)f));
+    parama = ((View)localObject).findViewById(b.e.media_select_area);
+    localObject = (CheckBox)((View)localObject).findViewById(b.e.media_cbx);
+    ((CheckBox)localObject).setOnCheckedChangeListener(new MediaItemView..ExternalSyntheticLambda1(this, paramHashSet, paramArrayList, paramd));
+    parama.setOnClickListener(new MediaItemView..ExternalSyntheticLambda0((CheckBox)localObject));
+  }
+  
+  public void a(com.tencent.mm.ui.base.a.b paramb, T paramT, d<T> paramd, int paramInt)
   {
     boolean bool2 = true;
-    p.k(paramb, "holder");
-    p.k(paramT, "media");
-    p.k(paramd, "loader");
-    this.BXW = paramb;
-    paramb.ez(paramT);
-    if ((paramInt == 0) || (paramInt == 1))
+    s.u(paramb, "holder");
+    s.u(paramT, "media");
+    s.u(paramd, "loader");
+    setHolder(paramb);
+    paramb.CSA = paramT;
+    switch (paramInt)
     {
-      paramd = (CheckBox)paramb.RD(b.e.media_cbx);
-      p.j(paramd, "mediaSelectBox");
-      paramb = this.BWY;
-      if (paramb == null) {
-        p.bGy("selectedSet");
+    default: 
+      s.u(paramT, "media");
+      if (getSelectedSet().size() >= 9)
+      {
+        bool1 = getSelectedSet().contains(paramT);
+        label84:
+        if (!bool1) {
+          break label391;
+        }
+        if (paramInt != 2) {
+          break label385;
+        }
       }
-      paramd.setChecked(paramb.contains(paramT));
+      break;
+    }
+    label385:
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      paramb = getHolder().UH(b.e.media_select_area);
+      paramT = (CheckBox)getHolder().UH(b.e.media_cbx);
+      paramd = getHolder().UH(b.e.media_mask_area);
+      s.s(paramT, "mediaSelectBox");
+      g((View)paramT, 0, bool1);
+      s.s(paramd, "mediaMaskArea");
+      g(paramd, 4, bool1);
+      paramT.setEnabled(true);
+      paramb.setEnabled(true);
+      return;
+      paramd = (CheckBox)paramb.UH(b.e.media_cbx);
+      paramd.setChecked(getSelectedSet().contains(paramT));
       if ((paramT.getType() == 1) && (paramd.isChecked()))
       {
         bool1 = true;
+        label217:
         paramd.setSelected(bool1);
-        paramb = this.BWw;
-        if (paramb == null) {
-          p.bGy("adapter");
+        if ((!getAdapter().HJe) || (getSelectedList().size() <= 0) || (!paramd.isChecked()) || (paramT.getType() != 1)) {
+          break label289;
         }
-        if (!paramb.BWG) {
-          break label386;
-        }
-        paramb = this.kMn;
-        if (paramb == null) {
-          p.bGy("selectedList");
-        }
-        if ((paramb.size() <= 0) || (!paramd.isChecked()) || (paramT.getType() != 1)) {
-          break label386;
-        }
-        paramb = this.kMn;
-        if (paramb == null) {
-          p.bGy("selectedList");
-        }
-        paramb = (CharSequence)String.valueOf(paramb.indexOf(paramT) + 1);
-        label194:
+      }
+      label289:
+      for (paramb = (CharSequence)String.valueOf(getSelectedList().indexOf(paramT) + 1);; paramb = (CharSequence)"")
+      {
         paramd.setText(paramb);
+        break;
+        bool1 = false;
+        break label217;
       }
-    }
-    else
-    {
-      p.k(paramT, "media");
-      paramb = this.BWY;
-      if (paramb == null) {
-        p.bGy("selectedSet");
-      }
-      if (paramb.size() < 9) {
-        break label396;
-      }
-      paramb = this.BWY;
-      if (paramb == null) {
-        p.bGy("selectedSet");
-      }
-      bool1 = paramb.contains(paramT);
-      label249:
-      if (!bool1) {
-        break label500;
-      }
-      if (paramInt != 2) {
-        break label494;
-      }
-    }
-    label386:
-    label396:
-    label494:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      paramb = this.BXW;
-      if (paramb == null) {
-        p.bGy("holder");
-      }
-      paramb = paramb.RD(b.e.media_select_area);
-      paramT = this.BXW;
-      if (paramT == null) {
-        p.bGy("holder");
-      }
-      paramT = (CheckBox)paramT.RD(b.e.media_cbx);
-      paramd = this.BXW;
-      if (paramd == null) {
-        p.bGy("holder");
-      }
-      paramd = paramd.RD(b.e.media_mask_area);
-      p.j(paramT, "mediaSelectBox");
-      e((View)paramT, 0, bool1);
-      p.j(paramd, "mediaMaskArea");
-      e(paramd, 4, bool1);
-      paramT.setEnabled(true);
-      p.j(paramb, "mediaSelectArea");
-      paramb.setEnabled(true);
-      return;
-      bool1 = false;
-      break;
-      paramb = (CharSequence)"";
-      break label194;
-      paramb = this.kMn;
-      if (paramb == null) {
-        p.bGy("selectedList");
-      }
-      paramb = (GalleryItem.MediaItem)j.lp((List)paramb);
+      paramb = (GalleryItem.MediaItem)p.oL((List)getSelectedList());
       if (paramb != null)
       {
-        if ((paramb.getType() == 2) && (paramb.BVl != paramT.BVl) && (paramT.getType() != 2))
+        if ((paramb.getType() == 2) && (paramb.HHJ != paramT.HHJ) && (paramT.getType() != 2))
         {
           bool1 = false;
-          break label249;
+          break label84;
         }
         if ((paramb.getType() == 1) && (paramT.getType() == 2))
         {
           bool1 = false;
-          break label249;
+          break label84;
         }
         bool1 = true;
-        break label249;
+        break label84;
       }
       bool1 = true;
-      break label249;
+      break label84;
     }
-    label500:
+    label391:
     if (paramInt == 2) {}
     for (bool1 = bool2;; bool1 = false)
     {
-      paramb = this.BXW;
-      if (paramb == null) {
-        p.bGy("holder");
-      }
-      paramb = paramb.RD(b.e.media_select_area);
-      paramT = this.BXW;
-      if (paramT == null) {
-        p.bGy("holder");
-      }
-      paramT = (CheckBox)paramT.RD(b.e.media_cbx);
-      paramd = this.BXW;
-      if (paramd == null) {
-        p.bGy("holder");
-      }
-      paramd = paramd.RD(b.e.media_mask_area);
-      p.j(paramT, "mediaSelectBox");
-      e((View)paramT, 4, bool1);
-      p.j(paramd, "mediaGrepArea");
-      e(paramd, 0, bool1);
+      paramb = getHolder().UH(b.e.media_select_area);
+      paramT = (CheckBox)getHolder().UH(b.e.media_cbx);
+      paramd = getHolder().UH(b.e.media_mask_area);
+      s.s(paramT, "mediaSelectBox");
+      g((View)paramT, 4, bool1);
+      s.s(paramd, "mediaGrepArea");
+      g(paramd, 0, bool1);
       paramT.setSelected(false);
       paramT.setChecked(false);
       paramT.setEnabled(false);
-      p.j(paramb, "mediaSelectArea");
       paramb.setEnabled(false);
       return;
     }
   }
   
-  public final a getAdapter()
+  public final com.tencent.mm.plugin.gallery.picker.a.a getAdapter()
   {
-    a locala = this.BWw;
-    if (locala == null) {
-      p.bGy("adapter");
+    com.tencent.mm.plugin.gallery.picker.a.a locala = this.HIV;
+    if (locala != null) {
+      return locala;
     }
-    return locala;
+    s.bIx("adapter");
+    return null;
   }
   
-  public final b getHolder()
+  public final com.tencent.mm.ui.base.a.b getHolder()
   {
-    b localb = this.BXW;
-    if (localb == null) {
-      p.bGy("holder");
+    com.tencent.mm.ui.base.a.b localb = this.HKj;
+    if (localb != null) {
+      return localb;
     }
-    return localb;
+    s.bIx("holder");
+    return null;
   }
   
   public abstract int getLayoutId();
   
   public final d<T> getLoader()
   {
-    d locald = this.jGC;
-    if (locald == null) {
-      p.bGy("loader");
+    d locald = this.mgk;
+    if (locald != null) {
+      return locald;
     }
-    return locald;
+    s.bIx("loader");
+    return null;
   }
   
   public final b<?> getOnItemMediaSelectedListener()
   {
-    return this.BWX;
+    return this.HJp;
   }
   
   public final ArrayList<T> getSelectedList()
   {
-    ArrayList localArrayList = this.kMn;
-    if (localArrayList == null) {
-      p.bGy("selectedList");
+    ArrayList localArrayList = this.nog;
+    if (localArrayList != null) {
+      return localArrayList;
     }
-    return localArrayList;
+    s.bIx("selectedList");
+    return null;
   }
   
   public final HashSet<T> getSelectedSet()
   {
-    HashSet localHashSet = this.BWY;
-    if (localHashSet == null) {
-      p.bGy("selectedSet");
+    HashSet localHashSet = this.HJm;
+    if (localHashSet != null) {
+      return localHashSet;
     }
-    return localHashSet;
+    s.bIx("selectedSet");
+    return null;
   }
   
-  public final void rT(boolean paramBoolean)
+  public final void setAdapter(com.tencent.mm.plugin.gallery.picker.a.a parama)
   {
-    Object localObject = this.BXW;
-    if (localObject == null) {
-      p.bGy("holder");
-    }
-    localObject = (CheckBox)((b)localObject).RD(b.e.media_cbx);
-    p.j(localObject, "mediaSelectBox");
-    if (((CheckBox)localObject).isEnabled()) {
-      ((CheckBox)localObject).setChecked(paramBoolean);
-    }
+    s.u(parama, "<set-?>");
+    this.HIV = parama;
   }
   
-  public final void setAdapter(a parama)
+  public final void setHolder(com.tencent.mm.ui.base.a.b paramb)
   {
-    p.k(parama, "<set-?>");
-    this.BWw = parama;
-  }
-  
-  public final void setHolder(b paramb)
-  {
-    p.k(paramb, "<set-?>");
-    this.BXW = paramb;
+    s.u(paramb, "<set-?>");
+    this.HKj = paramb;
   }
   
   public final void setLoader(d<T> paramd)
   {
-    p.k(paramd, "<set-?>");
-    this.jGC = paramd;
+    s.u(paramd, "<set-?>");
+    this.mgk = paramd;
   }
   
   public final void setOnItemMediaSelectedListener(b<?> paramb)
   {
-    this.BWX = paramb;
+    this.HJp = paramb;
   }
   
   public final void setSelectedList(ArrayList<T> paramArrayList)
   {
-    p.k(paramArrayList, "<set-?>");
-    this.kMn = paramArrayList;
+    s.u(paramArrayList, "<set-?>");
+    this.nog = paramArrayList;
   }
   
   public final void setSelectedSet(HashSet<T> paramHashSet)
   {
-    p.k(paramHashSet, "<set-?>");
-    this.BWY = paramHashSet;
+    s.u(paramHashSet, "<set-?>");
+    this.HJm = paramHashSet;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gallery/picker/view/MediaItemView$Companion;", "", "()V", "TAG", "", "plugin-gallery_release"})
-  public static final class a {}
+  public final void uu(boolean paramBoolean)
+  {
+    CheckBox localCheckBox = (CheckBox)getHolder().UH(b.e.media_cbx);
+    if (localCheckBox.isEnabled()) {
+      localCheckBox.setChecked(paramBoolean);
+    }
+  }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gallery/picker/view/MediaItemView$OnItemMediaSelectedListener;", "E", "", "onMediaSelected", "", "holder", "Lcom/tencent/mm/ui/base/adapter/ViewWrapper;", "media", "(Lcom/tencent/mm/ui/base/adapter/ViewWrapper;Ljava/lang/Object;)V", "onMediaUnSelected", "plugin-gallery_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/gallery/picker/view/MediaItemView$OnItemMediaSelectedListener;", "E", "", "onMediaSelected", "", "holder", "Lcom/tencent/mm/ui/base/adapter/ViewWrapper;", "media", "(Lcom/tencent/mm/ui/base/adapter/ViewWrapper;Ljava/lang/Object;)V", "onMediaUnSelected", "plugin-gallery_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface b<E>
   {
-    public abstract void a(b paramb, E paramE);
+    public abstract void a(com.tencent.mm.ui.base.a.b paramb, E paramE);
     
-    public abstract void b(b paramb, E paramE);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "run"})
-  static final class c
-    implements Runnable
-  {
-    c(View paramView, int paramInt) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(164949);
-      this.jLx.setVisibility(0);
-      View localView = this.jLx;
-      if ((paramInt == 4) || (paramInt == 8)) {}
-      for (float f = 1.0F;; f = 0.0F)
-      {
-        localView.setAlpha(f);
-        AppMethodBeat.o(164949);
-        return;
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "run"})
-  static final class d
-    implements Runnable
-  {
-    d(View paramView, int paramInt) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(164950);
-      this.jLx.setVisibility(paramInt);
-      this.jLx.setAlpha(1.0F);
-      AppMethodBeat.o(164950);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "<anonymous parameter 0>", "Landroid/widget/CompoundButton;", "kotlin.jvm.PlatformType", "isChecked", "", "onCheckedChanged"})
-  public static final class e
-    implements CompoundButton.OnCheckedChangeListener
-  {
-    public e(MediaItemView paramMediaItemView, HashSet paramHashSet, ArrayList paramArrayList, d paramd) {}
-    
-    public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-    {
-      AppMethodBeat.i(164951);
-      paramCompoundButton = (GalleryItem.MediaItem)this.BZg.getHolder().ihX();
-      if (paramBoolean != this.BZh.contains(paramCompoundButton))
-      {
-        if (paramBoolean)
-        {
-          if (this.BZh.add(paramCompoundButton)) {
-            this.BZi.add(paramCompoundButton);
-          }
-          localObject1 = this.BZg;
-          localObject2 = this.BZg.getHolder();
-          p.j(paramCompoundButton, "media");
-          MediaItemView.a((MediaItemView)localObject1, (b)localObject2, paramCompoundButton, this.BZj);
-          paramCompoundButton = this.BZg.getOnItemMediaSelectedListener();
-          if (paramCompoundButton != null)
-          {
-            localObject1 = this.BZg.getHolder();
-            localObject2 = this.BZg.getHolder().ihX();
-            p.j(localObject2, "holder.getAssociatedObject()");
-            paramCompoundButton.b((b)localObject1, localObject2);
-            AppMethodBeat.o(164951);
-            return;
-          }
-          AppMethodBeat.o(164951);
-          return;
-        }
-        this.BZh.remove(paramCompoundButton);
-        this.BZi.remove(paramCompoundButton);
-        Object localObject1 = this.BZg;
-        Object localObject2 = this.BZg.getHolder();
-        p.j(paramCompoundButton, "media");
-        MediaItemView.a((MediaItemView)localObject1, (b)localObject2, paramCompoundButton, this.BZj);
-        paramCompoundButton = this.BZg.getOnItemMediaSelectedListener();
-        if (paramCompoundButton != null)
-        {
-          localObject1 = this.BZg.getHolder();
-          localObject2 = this.BZg.getHolder().ihX();
-          p.j(localObject2, "holder.getAssociatedObject()");
-          paramCompoundButton.a((b)localObject1, localObject2);
-          AppMethodBeat.o(164951);
-          return;
-        }
-      }
-      AppMethodBeat.o(164951);
-    }
+    public abstract void b(com.tencent.mm.ui.base.a.b paramb, E paramE);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.picker.view.MediaItemView
  * JD-Core Version:    0.7.0.1
  */

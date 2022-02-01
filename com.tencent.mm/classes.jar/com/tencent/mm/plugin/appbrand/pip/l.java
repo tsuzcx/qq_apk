@@ -1,67 +1,36 @@
 package com.tencent.mm.plugin.appbrand.pip;
 
-import android.graphics.Point;
-import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.f;
-import com.tencent.mm.ipcinvoker.j;
-import com.tencent.mm.ipcinvoker.type.IPCString;
-import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.plugin.appbrand.widget.AppBrandPipContainerView;
-import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/pip/AppBrandPipStablePosLogicWC;", "Lcom/tencent/mm/plugin/appbrand/pip/AppBrandPipStablePosLogic;", "appId", "", "pipContainerView", "Lcom/tencent/mm/plugin/appbrand/widget/AppBrandPipContainerView;", "(Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/widget/AppBrandPipContainerView;)V", "lastStablePos", "Landroid/graphics/Point;", "getStablePosAsync", "", "callback", "Lcom/tencent/mm/plugin/appbrand/pip/AppBrandPipStablePosCallback;", "saveStablePos", "point", "plugin-appbrand-integration_release"})
-final class l
-  extends i
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/pip/AppBrandPipStablePosLogicFactoryWC;", "Lcom/tencent/mm/plugin/appbrand/pip/AppBrandPipStablePosLogicFactory;", "()V", "createPipStablePosLogic", "Lcom/tencent/mm/plugin/appbrand/pip/AppBrandPipStablePosLogic;", "appId", "", "pipContainerView", "Lcom/tencent/mm/plugin/appbrand/widget/AppBrandPipContainerView;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class l
+  implements k
 {
-  volatile Point qGb;
+  public static final l tKP;
   
-  public l(String paramString, AppBrandPipContainerView paramAppBrandPipContainerView)
+  static
   {
-    super(paramString, paramAppBrandPipContainerView);
-    AppMethodBeat.i(266756);
-    AppMethodBeat.o(266756);
+    AppMethodBeat.i(319631);
+    tKP = new l();
+    AppMethodBeat.o(319631);
   }
   
-  public final void a(final h paramh)
+  public final j a(String paramString, AppBrandPipContainerView paramAppBrandPipContainerView)
   {
-    AppMethodBeat.i(266753);
-    kotlin.g.b.p.k(paramh, "callback");
-    j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)new IPCString(getAppId()), n.class, (f)new a(this, paramh));
-    AppMethodBeat.o(266753);
-  }
-  
-  protected final void g(final Point paramPoint)
-  {
-    AppMethodBeat.i(266755);
-    kotlin.g.b.p.k(paramPoint, "point");
-    if (kotlin.g.b.p.h(paramPoint, this.qGb))
-    {
-      Log.i("MicroMsg.AppBrand.AppBrandPipStablePosLogicWC", "saveStablePos, same pos");
-      AppMethodBeat.o(266755);
-      return;
-    }
-    j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)new PipStablePos(getAppId(), paramPoint), p.class, (f)new b(this, paramPoint));
-    AppMethodBeat.o(266755);
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "point", "Landroid/graphics/Point;", "onCallback"})
-  static final class a<T>
-    implements f<ResultType>
-  {
-    a(l paraml, h paramh) {}
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class b<T>
-    implements f<ResultType>
-  {
-    b(l paraml, Point paramPoint) {}
+    AppMethodBeat.i(319641);
+    s.u(paramString, "appId");
+    s.u(paramAppBrandPipContainerView, "pipContainerView");
+    paramString = (j)new m(paramString, paramAppBrandPipContainerView);
+    AppMethodBeat.o(319641);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.pip.l
  * JD-Core Version:    0.7.0.1
  */

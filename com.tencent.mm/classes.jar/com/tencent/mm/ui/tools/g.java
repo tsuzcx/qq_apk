@@ -11,16 +11,16 @@ import java.util.regex.Pattern;
 public class g
   implements InputFilter
 {
-  private int rvB;
-  private a rvC;
+  private int uGH;
+  private a uGI;
   
   public g(int paramInt, a parama)
   {
-    this.rvB = paramInt;
-    this.rvC = parama;
+    this.uGH = paramInt;
+    this.uGI = parama;
   }
   
-  public static int N(char paramChar)
+  public static int G(char paramChar)
   {
     if (paramChar <= '') {
       return 1;
@@ -32,21 +32,21 @@ public class g
   {
     AppMethodBeat.i(133834);
     int i;
-    if (parama == a.XSt)
+    if (parama == a.afIH)
     {
-      i = bAD(paramString);
+      i = bCz(paramString);
       AppMethodBeat.o(133834);
       return i;
     }
-    if (parama == a.XSu)
+    if (parama == a.afII)
     {
-      i = bAB(paramString);
+      i = bCx(paramString);
       AppMethodBeat.o(133834);
       return i;
     }
-    if (parama == a.XSv)
+    if (parama == a.afIJ)
     {
-      i = bAC(paramString);
+      i = bCy(paramString);
       AppMethodBeat.o(133834);
       return i;
     }
@@ -54,7 +54,7 @@ public class g
     return 0;
   }
   
-  public static int axu(int paramInt)
+  public static int aEd(int paramInt)
   {
     if (paramInt % 2 != 0) {
       return (paramInt + 1) / 2;
@@ -62,56 +62,7 @@ public class g
     return paramInt / 2;
   }
   
-  public static int bAB(String paramString)
-  {
-    AppMethodBeat.i(133835);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(133835);
-      return 0;
-    }
-    int i = paramString.length();
-    int j = bAE(paramString);
-    int k = bAF(paramString);
-    AppMethodBeat.o(133835);
-    return i + j + k;
-  }
-  
-  private static int bAC(String paramString)
-  {
-    AppMethodBeat.i(237713);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(237713);
-      return 0;
-    }
-    int k = paramString.length();
-    int i = 0;
-    int j = 0;
-    while (i < k)
-    {
-      j += N(paramString.charAt(i));
-      i += 1;
-    }
-    i = axu(j);
-    AppMethodBeat.o(237713);
-    return i;
-  }
-  
-  private static int bAD(String paramString)
-  {
-    AppMethodBeat.i(133836);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(133836);
-      return 0;
-    }
-    int i = paramString.length();
-    AppMethodBeat.o(133836);
-    return i;
-  }
-  
-  public static int bAE(String paramString)
+  public static int bCA(String paramString)
   {
     AppMethodBeat.i(133837);
     if (Util.isNullOrNil(paramString))
@@ -139,7 +90,7 @@ public class g
     return i;
   }
   
-  private static int bAF(String paramString)
+  private static int bCB(String paramString)
   {
     AppMethodBeat.i(133838);
     if (Util.isNullOrNil(paramString))
@@ -164,18 +115,67 @@ public class g
       j += 1;
       break;
       j = paramString.length();
-      k = bAE(paramString);
+      k = bCA(paramString);
       AppMethodBeat.o(133838);
       return j - (k + i);
     }
   }
   
-  public static int dp(int paramInt, String paramString)
+  public static int bCx(String paramString)
   {
-    AppMethodBeat.i(237727);
+    AppMethodBeat.i(133835);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(237727);
+      AppMethodBeat.o(133835);
+      return 0;
+    }
+    int i = paramString.length();
+    int j = bCA(paramString);
+    int k = bCB(paramString);
+    AppMethodBeat.o(133835);
+    return i + j + k;
+  }
+  
+  public static int bCy(String paramString)
+  {
+    AppMethodBeat.i(251044);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(251044);
+      return 0;
+    }
+    int k = paramString.length();
+    int i = 0;
+    int j = 0;
+    while (i < k)
+    {
+      j += G(paramString.charAt(i));
+      i += 1;
+    }
+    i = aEd(j);
+    AppMethodBeat.o(251044);
+    return i;
+  }
+  
+  private static int bCz(String paramString)
+  {
+    AppMethodBeat.i(133836);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(133836);
+      return 0;
+    }
+    int i = paramString.length();
+    AppMethodBeat.o(133836);
+    return i;
+  }
+  
+  public static int ei(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(251052);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(251052);
       return -1;
     }
     Pattern localPattern = Pattern.compile("[\\u4e00-\\u9fa5]");
@@ -188,47 +188,47 @@ public class g
       }
       while (i >= paramInt)
       {
-        AppMethodBeat.o(237727);
+        AppMethodBeat.o(251052);
         return j;
         i += 1;
       }
       j += 1;
     }
-    AppMethodBeat.o(237727);
+    AppMethodBeat.o(251052);
     return -1;
   }
   
-  public static int dq(int paramInt, String paramString)
+  public static int ej(int paramInt, String paramString)
   {
     AppMethodBeat.i(133839);
     if (LocaleUtil.isChineseAppLang())
     {
-      i = bAB(paramString);
+      i = bCx(paramString);
       AppMethodBeat.o(133839);
       return paramInt - i;
     }
-    int i = bAB(paramString);
+    int i = bCx(paramString);
     AppMethodBeat.o(133839);
     return paramInt - i;
   }
   
-  public static int dr(int paramInt, String paramString)
+  public static int ek(int paramInt, String paramString)
   {
     AppMethodBeat.i(133840);
     if (LocaleUtil.isChineseAppLang())
     {
-      paramInt = Math.round((Math.round(bAB(paramString)) - paramInt) / 2.0F);
+      paramInt = Math.round((Math.round(bCx(paramString)) - paramInt) / 2.0F);
       AppMethodBeat.o(133840);
       return paramInt;
     }
-    int i = bAB(paramString);
+    int i = bCx(paramString);
     AppMethodBeat.o(133840);
     return i - paramInt;
   }
   
-  public static String hV(String paramString, int paramInt)
+  public static String jd(String paramString, int paramInt)
   {
-    AppMethodBeat.i(237731);
+    AppMethodBeat.i(251058);
     int i = 0;
     int j = 0;
     while (i < paramString.length())
@@ -241,19 +241,19 @@ public class g
           break;
         }
         paramString = paramString.substring(0, i);
-        AppMethodBeat.o(237731);
+        AppMethodBeat.o(251058);
         return paramString;
       }
       i += 1;
     }
-    AppMethodBeat.o(237731);
+    AppMethodBeat.o(251058);
     return paramString;
   }
   
   public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(133833);
-    if (a(paramSpanned.toString(), this.rvC) + a(paramCharSequence.toString(), this.rvC) > this.rvB)
+    if (a(paramSpanned.toString(), this.uGI) + a(paramCharSequence.toString(), this.uGI) > this.uGH)
     {
       AppMethodBeat.o(133833);
       return "";
@@ -267,10 +267,10 @@ public class g
     static
     {
       AppMethodBeat.i(133832);
-      XSt = new a("MODE_CHINESE_AS_1", 0);
-      XSu = new a("MODE_CHINESE_AS_2", 1);
-      XSv = new a("MODE_CHINESE_AS_3", 2);
-      XSw = new a[] { XSt, XSu, XSv };
+      afIH = new a("MODE_CHINESE_AS_1", 0);
+      afII = new a("MODE_CHINESE_AS_2", 1);
+      afIJ = new a("MODE_CHINESE_AS_3", 2);
+      afIK = new a[] { afIH, afII, afIJ };
       AppMethodBeat.o(133832);
     }
     
@@ -279,7 +279,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.tools.g
  * JD-Core Version:    0.7.0.1
  */

@@ -5,639 +5,750 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.d;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.p;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.finder.b.c;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.i;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.cgi.cg;
-import com.tencent.mm.plugin.finder.report.k;
-import com.tencent.mm.protocal.protobuf.bfv;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.finder.api.m;
+import com.tencent.mm.plugin.finder.cgi.dh;
+import com.tencent.mm.plugin.finder.e.b;
+import com.tencent.mm.plugin.finder.e.d;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.e.g;
+import com.tencent.mm.plugin.finder.e.h;
+import com.tencent.mm.plugin.finder.report.v;
+import com.tencent.mm.plugin.finder.report.y;
+import com.tencent.mm.plugin.finder.utils.av;
+import com.tencent.mm.protocal.protobuf.awx;
+import com.tencent.mm.protocal.protobuf.brg;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ad;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.q.f;
-import com.tencent.mm.ui.base.q.g;
-import com.tencent.mm.ui.widget.a.e;
-import com.tencent.mm.ui.widget.a.e.b;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.af;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderExtendActivityView;", "Landroid/widget/FrameLayout;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "activityAvatarIcon", "", "getActivityAvatarIcon", "()Ljava/lang/String;", "setActivityAvatarIcon", "(Ljava/lang/String;)V", "activityCreateSheet", "Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "activityCreatorNickName", "getActivityCreatorNickName", "setActivityCreatorNickName", "activityDesc", "getActivityDesc", "setActivityDesc", "activityDescSheet", "activityEvent", "Lcom/tencent/mm/protocal/protobuf/FinderObjectEventDesc;", "getActivityEvent", "()Lcom/tencent/mm/protocal/protobuf/FinderObjectEventDesc;", "setActivityEvent", "(Lcom/tencent/mm/protocal/protobuf/FinderObjectEventDesc;)V", "activityName", "getActivityName", "setActivityName", "activityPostSheet", "activityTopicId", "", "getActivityTopicId", "()J", "setActivityTopicId", "(J)V", "activityType", "contact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "getContact", "()Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "setContact", "(Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;)V", "coverUrl", "getCoverUrl", "setCoverUrl", "descTextView", "Landroid/widget/TextView;", "iconImageView", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "isEnablePost", "", "localCoverUrl", "getLocalCoverUrl", "setLocalCoverUrl", "mediaWidget", "Lcom/tencent/mm/plugin/finder/widget/post/BasePostMediaWidget;", "getMediaWidget", "()Lcom/tencent/mm/plugin/finder/widget/post/BasePostMediaWidget;", "setMediaWidget", "(Lcom/tencent/mm/plugin/finder/widget/post/BasePostMediaWidget;)V", "onClickListener", "Landroid/view/View$OnClickListener;", "getOnClickListener", "()Landroid/view/View$OnClickListener;", "titleTextView", "confirmActivityType", "intent", "Landroid/content/Intent;", "srcActivityType", "deleteActivity", "", "doCheckScene", "jumpToActivityDesc", "jumpToPost", "jumpToSelectActivity", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "refresh", "setEnable", "isEnable", "setIntentParam", "setText", "title", "desc", "showCreateActivitySheet", "showDescActivitySheet", "showPostActivitySheet", "update", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/FinderExtendActivityView;", "Landroid/widget/FrameLayout;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "activityAvatarIcon", "", "activityCreateSheet", "Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "activityCreatorNickName", "activityDesc", "activityDescSheet", "activityEndTime", "", "activityEvent", "Lcom/tencent/mm/protocal/protobuf/FinderObjectEventDesc;", "getActivityEvent", "()Lcom/tencent/mm/protocal/protobuf/FinderObjectEventDesc;", "setActivityEvent", "(Lcom/tencent/mm/protocal/protobuf/FinderObjectEventDesc;)V", "activityFromType", "activityItemLayout", "Landroid/widget/RelativeLayout;", "activityName", "activityNickName", "activityPostSheet", "Lcom/tencent/mm/plugin/finder/view/FinderBottomSheet;", "activityTopicId", "getActivityTopicId", "()J", "setActivityTopicId", "(J)V", "activityType", "activityWordingInfo", "Lcom/tencent/mm/protocal/protobuf/FinderEventWordingInfo;", "getActivityWordingInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderEventWordingInfo;", "setActivityWordingInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderEventWordingInfo;)V", "contact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "getContact", "()Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "setContact", "(Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;)V", "coverUrl", "descTextView", "Landroid/widget/TextView;", "displayMask", "getDisplayMask", "setDisplayMask", "endTimeToString", "iconImageView", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "isEnablePost", "", "localCoverUrl", "onClickListener", "Landroid/view/View$OnClickListener;", "getOnClickListener", "()Landroid/view/View$OnClickListener;", "titleTextView", "confirmActivityType", "intent", "Landroid/content/Intent;", "srcActivityType", "deleteActivity", "", "doCheckScene", "jumpToActivityDesc", "jumpToPost", "jumpToSelectActivity", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "refresh", "setEnable", "isEnable", "setIntentParam", "setText", "title", "desc", "nickName", "showCreateActivitySheet", "showDescActivitySheet", "showPostActivitySheet", "update", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderExtendActivityView
   extends FrameLayout
-  implements com.tencent.mm.an.i
+  implements com.tencent.mm.am.h
 {
-  private static final int AWt = 3001;
-  private static final int AWu = 3002;
-  private static final int AWv = 4001;
-  private static final int AWw = 4002;
-  private static final int AWx = 5001;
-  private static final int AWy = 5002;
-  public static final a AWz;
-  private bfv ABi;
-  private WeImageView AWo;
-  private e AWp;
-  private String AWq;
-  private String AWr;
-  private boolean AWs;
-  private String activityName;
-  private final View.OnClickListener bwV;
-  private com.tencent.mm.plugin.finder.api.i contact;
+  public static final a GxX;
+  private static final int Gyh;
+  private static final int Gyi;
+  private static final int Gyj;
+  private static final int Gyk;
+  private static final int Gyl;
+  private static final int Gym;
+  private String AtM;
+  private String Ava;
+  private String Avx;
+  private int Avy;
+  private long FOe;
+  private String FOf;
+  private long FOi;
+  private brg Gcw;
+  private RelativeLayout GxY;
+  private WeImageView GxZ;
+  private d Gya;
+  private String Gyb;
+  private String Gyc;
+  private awx Gyd;
+  private String Gye;
+  private boolean Gyf;
+  private String Gyg;
+  private m contact;
   private String coverUrl;
-  private long fuv;
-  private TextView iXT;
-  private TextView rrS;
-  private String wYd;
-  private String wYi;
-  private int wYj;
-  private com.tencent.mm.plugin.finder.widget.post.a yOR;
+  private final View.OnClickListener dpY;
+  private long hyN;
+  private TextView lzN;
+  private TextView uck;
   
   static
   {
-    AppMethodBeat.i(275018);
-    AWz = new a((byte)0);
-    AWt = 3001;
-    AWu = 3002;
-    AWv = 4001;
-    AWw = 4002;
-    AWx = 5001;
-    AWy = 5002;
-    AppMethodBeat.o(275018);
+    AppMethodBeat.i(345905);
+    GxX = new a((byte)0);
+    Gyh = 3001;
+    Gyi = 3002;
+    Gyj = 4001;
+    Gyk = 4002;
+    Gyl = 5001;
+    Gym = 5002;
+    AppMethodBeat.o(345905);
   }
   
   public FinderExtendActivityView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(275016);
-    this.wYj = 100;
-    this.ABi = new bfv();
-    this.wYi = "";
+    AppMethodBeat.i(345701);
+    this.Gcw = new brg();
+    this.Avy = 100;
+    this.Avx = "";
     this.coverUrl = "";
-    this.activityName = "";
-    this.AWq = "";
-    this.AWr = "";
-    this.wYd = "";
-    this.AWs = true;
-    this.bwV = ((View.OnClickListener)new b(this));
-    paramContext = ad.kS(getContext()).inflate(b.g.finder_post_activity_item_view, (ViewGroup)this, true);
-    paramAttributeSet = paramContext.findViewById(b.f.post_activity_item_title);
-    p.j(paramAttributeSet, "view.findViewById(R.id.post_activity_item_title)");
-    this.iXT = ((TextView)paramAttributeSet);
-    paramAttributeSet = paramContext.findViewById(b.f.post_activity_item_desc);
-    p.j(paramAttributeSet, "view.findViewById(R.id.post_activity_item_desc)");
-    this.rrS = ((TextView)paramAttributeSet);
-    paramContext = paramContext.findViewById(b.f.activity_flag_icon);
-    p.j(paramContext, "view.findViewById(R.id.activity_flag_icon)");
-    this.AWo = ((WeImageView)paramContext);
-    setOnClickListener(this.bwV);
-    AppMethodBeat.o(275016);
+    this.AtM = "";
+    this.Gyb = "";
+    this.Gyc = "";
+    this.Ava = "";
+    this.Gye = "";
+    this.FOf = "";
+    this.Gyf = true;
+    this.Gyg = "";
+    this.dpY = new FinderExtendActivityView..ExternalSyntheticLambda0(this);
+    paramContext = af.mU(getContext()).inflate(e.f.finder_post_activity_item_view, (ViewGroup)this, true);
+    paramAttributeSet = paramContext.findViewById(e.e.post_activity_item_title);
+    kotlin.g.b.s.s(paramAttributeSet, "view.findViewById(R.id.post_activity_item_title)");
+    this.lzN = ((TextView)paramAttributeSet);
+    paramAttributeSet = paramContext.findViewById(e.e.post_activity_item_desc);
+    kotlin.g.b.s.s(paramAttributeSet, "view.findViewById(R.id.post_activity_item_desc)");
+    this.uck = ((TextView)paramAttributeSet);
+    paramAttributeSet = paramContext.findViewById(e.e.fidner_post_activity_item_layout);
+    kotlin.g.b.s.s(paramAttributeSet, "view.findViewById(R.id.f…ost_activity_item_layout)");
+    this.GxY = ((RelativeLayout)paramAttributeSet);
+    paramContext = paramContext.findViewById(e.e.activity_flag_icon);
+    kotlin.g.b.s.s(paramContext, "view.findViewById(R.id.activity_flag_icon)");
+    this.GxZ = ((WeImageView)paramContext);
+    setOnClickListener(this.dpY);
+    AppMethodBeat.o(345701);
   }
   
   public FinderExtendActivityView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(275017);
-    this.wYj = 100;
-    this.ABi = new bfv();
-    this.wYi = "";
+    AppMethodBeat.i(345713);
+    this.Gcw = new brg();
+    this.Avy = 100;
+    this.Avx = "";
     this.coverUrl = "";
-    this.activityName = "";
-    this.AWq = "";
-    this.AWr = "";
-    this.wYd = "";
-    this.AWs = true;
-    this.bwV = ((View.OnClickListener)new b(this));
-    paramContext = ad.kS(getContext()).inflate(b.g.finder_post_activity_item_view, (ViewGroup)this, true);
-    paramAttributeSet = paramContext.findViewById(b.f.post_activity_item_title);
-    p.j(paramAttributeSet, "view.findViewById(R.id.post_activity_item_title)");
-    this.iXT = ((TextView)paramAttributeSet);
-    paramAttributeSet = paramContext.findViewById(b.f.post_activity_item_desc);
-    p.j(paramAttributeSet, "view.findViewById(R.id.post_activity_item_desc)");
-    this.rrS = ((TextView)paramAttributeSet);
-    paramContext = paramContext.findViewById(b.f.activity_flag_icon);
-    p.j(paramContext, "view.findViewById(R.id.activity_flag_icon)");
-    this.AWo = ((WeImageView)paramContext);
-    setOnClickListener(this.bwV);
-    AppMethodBeat.o(275017);
+    this.AtM = "";
+    this.Gyb = "";
+    this.Gyc = "";
+    this.Ava = "";
+    this.Gye = "";
+    this.FOf = "";
+    this.Gyf = true;
+    this.Gyg = "";
+    this.dpY = new FinderExtendActivityView..ExternalSyntheticLambda0(this);
+    paramContext = af.mU(getContext()).inflate(e.f.finder_post_activity_item_view, (ViewGroup)this, true);
+    paramAttributeSet = paramContext.findViewById(e.e.post_activity_item_title);
+    kotlin.g.b.s.s(paramAttributeSet, "view.findViewById(R.id.post_activity_item_title)");
+    this.lzN = ((TextView)paramAttributeSet);
+    paramAttributeSet = paramContext.findViewById(e.e.post_activity_item_desc);
+    kotlin.g.b.s.s(paramAttributeSet, "view.findViewById(R.id.post_activity_item_desc)");
+    this.uck = ((TextView)paramAttributeSet);
+    paramAttributeSet = paramContext.findViewById(e.e.fidner_post_activity_item_layout);
+    kotlin.g.b.s.s(paramAttributeSet, "view.findViewById(R.id.f…ost_activity_item_layout)");
+    this.GxY = ((RelativeLayout)paramAttributeSet);
+    paramContext = paramContext.findViewById(e.e.activity_flag_icon);
+    kotlin.g.b.s.s(paramContext, "view.findViewById(R.id.activity_flag_icon)");
+    this.GxZ = ((WeImageView)paramContext);
+    setOnClickListener(this.dpY);
+    AppMethodBeat.o(345713);
   }
   
-  private final void T(String paramString1, String paramString2, int paramInt)
+  private static final void a(FinderExtendActivityView paramFinderExtendActivityView)
   {
-    AppMethodBeat.i(275012);
-    int i;
-    if (paramString2 != null)
+    AppMethodBeat.i(345890);
+    kotlin.g.b.s.u(paramFinderExtendActivityView, "this$0");
+    paramFinderExtendActivityView.Gya = null;
+    AppMethodBeat.o(345890);
+  }
+  
+  private static final void a(FinderExtendActivityView paramFinderExtendActivityView, View paramView)
+  {
+    AppMethodBeat.i(345827);
+    Object localObject1 = new Object();
+    Object localObject2 = new b();
+    ((b)localObject2).cH(paramFinderExtendActivityView);
+    ((b)localObject2).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderExtendActivityView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject1, ((b)localObject2).aYj());
+    kotlin.g.b.s.u(paramFinderExtendActivityView, "this$0");
+    paramView = y.FrY;
+    paramView = z.bAW();
+    kotlin.g.b.s.s(paramView, "getMyFinderUsername()");
+    y.c("1", paramView, null);
+    switch (paramFinderExtendActivityView.Avy)
     {
-      this.rrS.setVisibility(0);
-      this.rrS.setText((CharSequence)paramString2);
-      if (paramString2 != null) {}
     }
-    else
+    for (;;)
     {
-      paramString2 = this.rrS;
-      if (!this.AWs) {
-        break label150;
-      }
-      i = b.j.finder_activity_default_desc;
-      paramString2.setText(i);
-      paramString2 = x.aazN;
-    }
-    paramString2 = this.iXT;
-    if ((paramInt == 101) || (paramInt == 102)) {
-      if (paramString1 != null)
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/view/FinderExtendActivityView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(345827);
+      return;
+      paramView = new Intent();
+      paramFinderExtendActivityView.setIntentParam(paramView);
+      localObject1 = com.tencent.mm.plugin.finder.utils.a.GfO;
+      paramFinderExtendActivityView = paramFinderExtendActivityView.getContext();
+      if (paramFinderExtendActivityView == null)
       {
-        paramString1 = (CharSequence)paramString1;
-        label86:
-        paramString2.setText(paramString1);
-        paramString2.setTextColor(paramString2.getResources().getColor(b.c.Orange));
+        paramFinderExtendActivityView = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
+        AppMethodBeat.o(345827);
+        throw paramFinderExtendActivityView;
+      }
+      com.tencent.mm.plugin.finder.utils.a.e((MMActivity)paramFinderExtendActivityView, paramView);
+      continue;
+      if (paramFinderExtendActivityView.Gya == null)
+      {
+        paramView = new d(paramFinderExtendActivityView.getContext());
+        paramView.UD(e.f.finder_activity_cant_post_view);
+        localObject1 = (RelativeLayout)paramView.rootView.findViewById(e.e.finder_activity_post);
+        if (paramFinderExtendActivityView.Gyf)
+        {
+          localObject2 = (TextView)paramView.rootView.findViewById(e.e.activity_cant_post_title);
+          TextView localTextView = (TextView)paramView.rootView.findViewById(e.e.activity_cant_post_desc);
+          Object localObject3 = ((TextView)localObject2).getLayoutParams();
+          if (localObject3 == null)
+          {
+            paramFinderExtendActivityView = new NullPointerException("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
+            AppMethodBeat.o(345827);
+            throw paramFinderExtendActivityView;
+          }
+          localObject3 = (RelativeLayout.LayoutParams)localObject3;
+          ((RelativeLayout.LayoutParams)localObject3).topMargin = com.tencent.mm.cd.a.fromDPToPix(paramFinderExtendActivityView.getContext(), 4);
+          ((RelativeLayout.LayoutParams)localObject3).bottomMargin = com.tencent.mm.cd.a.fromDPToPix(paramFinderExtendActivityView.getContext(), 4);
+          ((TextView)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
+          ((TextView)localObject2).setTextColor(paramFinderExtendActivityView.getResources().getColor(e.b.FG_0));
+          ((TextView)localObject2).setAlpha(1.0F);
+          localTextView.setVisibility(8);
+          ((RelativeLayout)localObject1).setBackground(paramFinderExtendActivityView.getContext().getResources().getDrawable(e.d.finder_activity_selector_click_bg));
+        }
+        paramView.rootView.findViewById(e.e.finder_activity_post).setOnClickListener(new FinderExtendActivityView..ExternalSyntheticLambda1(paramFinderExtendActivityView, paramView));
+        paramView.rootView.findViewById(e.e.finder_activity_post_participate_btn).setOnClickListener(new FinderExtendActivityView..ExternalSyntheticLambda2(paramFinderExtendActivityView, paramView));
+        paramView.rootView.findViewById(e.e.finder_activity_post_cancel_btn).setOnClickListener(new FinderExtendActivityView..ExternalSyntheticLambda3(paramView));
+        paramView.GwT = new FinderExtendActivityView..ExternalSyntheticLambda4(paramFinderExtendActivityView);
+        localObject1 = kotlin.ah.aiuX;
+        paramFinderExtendActivityView.Gya = paramView;
+      }
+      paramFinderExtendActivityView = paramFinderExtendActivityView.Gya;
+      if ((paramFinderExtendActivityView != null) && (!paramFinderExtendActivityView.isShowing())) {
+        paramFinderExtendActivityView.dDn();
+      }
+    }
+  }
+  
+  private static final void a(FinderExtendActivityView paramFinderExtendActivityView, d paramd, View paramView)
+  {
+    AppMethodBeat.i(345848);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramFinderExtendActivityView);
+    localb.cH(paramd);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderExtendActivityView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    kotlin.g.b.s.u(paramFinderExtendActivityView, "this$0");
+    kotlin.g.b.s.u(paramd, "$this_apply");
+    if (paramFinderExtendActivityView.Gyf)
+    {
+      paramView = new Intent();
+      paramFinderExtendActivityView.setIntentParam(paramView);
+      localObject = com.tencent.mm.plugin.finder.utils.a.GfO;
+      paramFinderExtendActivityView = paramFinderExtendActivityView.getContext();
+      if (paramFinderExtendActivityView == null)
+      {
+        paramFinderExtendActivityView = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
+        AppMethodBeat.o(345848);
+        throw paramFinderExtendActivityView;
+      }
+      com.tencent.mm.plugin.finder.utils.a.d((MMActivity)paramFinderExtendActivityView, paramView);
+      paramd.cyW();
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/view/FinderExtendActivityView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(345848);
+  }
+  
+  private static final void b(FinderExtendActivityView paramFinderExtendActivityView, d paramd, View paramView)
+  {
+    AppMethodBeat.i(345864);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramFinderExtendActivityView);
+    localb.cH(paramd);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderExtendActivityView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    kotlin.g.b.s.u(paramFinderExtendActivityView, "this$0");
+    kotlin.g.b.s.u(paramd, "$this_apply");
+    paramView = y.FrY;
+    paramView = z.bAW();
+    kotlin.g.b.s.s(paramView, "getMyFinderUsername()");
+    y.c("2", paramView, null);
+    paramView = new Intent();
+    paramFinderExtendActivityView.setIntentParam(paramView);
+    localObject = com.tencent.mm.plugin.finder.utils.a.GfO;
+    paramFinderExtendActivityView = paramFinderExtendActivityView.getContext();
+    if (paramFinderExtendActivityView == null)
+    {
+      paramFinderExtendActivityView = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
+      AppMethodBeat.o(345864);
+      throw paramFinderExtendActivityView;
+    }
+    com.tencent.mm.plugin.finder.utils.a.f((MMActivity)paramFinderExtendActivityView, paramView);
+    paramd.cyW();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/view/FinderExtendActivityView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(345864);
+  }
+  
+  private static boolean c(Intent paramIntent, int paramInt)
+  {
+    AppMethodBeat.i(345726);
+    if (((paramIntent.hasExtra("key_topic_id")) && ((paramInt == 101) || (paramInt == 102))) || (paramInt == 100))
+    {
+      AppMethodBeat.o(345726);
+      return true;
+    }
+    AppMethodBeat.o(345726);
+    return false;
+  }
+  
+  private final void d(Intent paramIntent, int paramInt)
+  {
+    AppMethodBeat.i(345741);
+    Object localObject3;
+    Object localObject1;
+    if (paramIntent != null)
+    {
+      this.FOf = paramIntent.getStringExtra("key_nick_name");
+      this.AtM = paramIntent.getStringExtra("key_activity_name");
+      this.Ava = paramIntent.getStringExtra("key_activity_desc");
+      setDisplayMask(paramIntent.getLongExtra("key_activity_display_mask", 0L));
+      this.Gyb = paramIntent.getStringExtra("key_nick_name");
+      localObject3 = paramIntent.getByteArrayExtra("key_wording_info");
+      if (localObject3 != null) {
+        localObject1 = (com.tencent.mm.bx.a)new awx();
+      }
+    }
+    try
+    {
+      ((com.tencent.mm.bx.a)localObject1).parseFrom((byte[])localObject3);
+      setActivityWordingInfo((awx)localObject1);
+      this.Gyc = paramIntent.getStringExtra("key_avatar_url");
+      setActivityTopicId(paramIntent.getLongExtra("key_topic_id", 0L));
+      this.FOe = paramIntent.getLongExtra("key_activity_end_time", 0L);
+      localObject3 = paramIntent.getStringExtra("key_activity_src_type");
+      localObject1 = localObject3;
+      if (localObject3 == null) {
+        localObject1 = "";
+      }
+      this.Gyg = ((String)localObject1);
+      localObject1 = av.GiL;
+      long l = this.FOe;
+      localObject1 = getContext();
+      kotlin.g.b.s.s(localObject1, "context");
+      this.Gye = av.b(l * 1000L, (Context)localObject1);
+      if (this.FOe != 0L)
+      {
+        i(this.AtM, this.Gye, this.FOf, paramInt);
+        if (paramInt != 100)
+        {
+          if (paramInt != 102) {
+            break label353;
+          }
+          i = 1;
+          localObject1 = v.FrN;
+          v.eG(com.tencent.mm.ae.d.hF(getActivityTopicId()), i);
+        }
+        switch (paramInt)
+        {
+        default: 
+          this.Avx = "";
+          this.coverUrl = "";
+          AppMethodBeat.o(345741);
+          return;
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.printDebugStack("safeParser", "", new Object[] { localException });
+        Object localObject2 = null;
+        continue;
+        i(this.AtM, null, this.FOf, paramInt);
+        continue;
+        label353:
+        int i = 2;
+      }
+      this.Avx = paramIntent.getStringExtra("key_activity_local_cover_url");
+      this.coverUrl = paramIntent.getStringExtra("key_cover_url");
+      AppMethodBeat.o(345741);
+      return;
+    }
+    this.coverUrl = paramIntent.getStringExtra("key_cover_url");
+    AppMethodBeat.o(345741);
+  }
+  
+  private final void fkw()
+  {
+    AppMethodBeat.i(345721);
+    m localm = this.contact;
+    if ((localm != null) && (this.Avy == 100))
+    {
+      com.tencent.mm.kernel.h.aZW().a(4050, (com.tencent.mm.am.h)this);
+      com.tencent.mm.kernel.h.aZW().a((p)new dh(localm.getUsername(), null, null, null, 0L, 1, 30), 0);
+    }
+    AppMethodBeat.o(345721);
+  }
+  
+  private final void i(String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    AppMethodBeat.i(345765);
+    label12:
+    int i;
+    if (paramString2 == null)
+    {
+      paramString2 = null;
+      if (paramString2 == null)
+      {
+        paramString2 = (CharSequence)paramString1;
+        if ((paramString2 != null) && (paramString2.length() != 0)) {
+          break label260;
+        }
+        i = 1;
+        label37:
+        if (i == 0)
+        {
+          paramString2 = (CharSequence)paramString3;
+          if ((paramString2 != null) && (paramString2.length() != 0)) {
+            break label266;
+          }
+          i = 1;
+          label63:
+          if (i == 0) {
+            break label272;
+          }
+        }
+        this.uck.setVisibility(0);
+        this.uck.setText(e.h.finder_activity_default_desc);
       }
     }
     for (;;)
     {
-      paramString1 = this.AWo;
-      if ((paramInt != 101) && (paramInt != 102)) {
-        break label198;
-      }
-      paramString1.setIconColor(paramString1.getResources().getColor(b.c.Orange));
-      paramString1.setImageResource(b.i.finder_filled_activity);
-      AppMethodBeat.o(275012);
-      return;
-      label150:
-      i = b.j.finder_activity_disable_create;
-      break;
-      paramString1 = (CharSequence)"";
-      break label86;
-      paramString2.setText(paramString2.getResources().getText(b.j.finder_activity_title));
-      paramString2.setTextColor(paramString2.getResources().getColor(b.c.normal_text_color));
-    }
-    label198:
-    paramString1.setIconColor(paramString1.getResources().getColor(b.c.FG_0));
-    paramString1.setImageResource(b.i.finder_outlined_activity);
-    AppMethodBeat.o(275012);
-  }
-  
-  private static boolean d(Intent paramIntent, int paramInt)
-  {
-    AppMethodBeat.i(275010);
-    if (((paramIntent.hasExtra("key_topic_id")) && ((paramInt == 101) || (paramInt == 102))) || (paramInt == 100))
-    {
-      AppMethodBeat.o(275010);
-      return true;
-    }
-    AppMethodBeat.o(275010);
-    return false;
-  }
-  
-  private final void e(Intent paramIntent, int paramInt)
-  {
-    AppMethodBeat.i(275011);
-    if (paramIntent != null)
-    {
-      this.activityName = paramIntent.getStringExtra("key_activity_name");
-      this.wYd = paramIntent.getStringExtra("key_activity_desc");
-      this.AWq = paramIntent.getStringExtra("key_nick_name");
-      this.AWr = paramIntent.getStringExtra("key_avatar_url");
-      this.fuv = paramIntent.getLongExtra("key_topic_id", 0L);
-      int i;
-      if (paramInt != 100)
+      paramString2 = this.lzN;
+      switch (paramInt)
       {
-        if (paramInt == 102)
-        {
-          i = 1;
-          k localk = k.zWs;
-          k.dU(d.Fw(this.fuv), i);
-        }
-      }
-      else {
+      default: 
+        paramString2.setText(paramString2.getResources().getText(e.h.finder_activity_title));
+        paramString2.setTextColor(paramString2.getResources().getColor(e.b.normal_text_color));
+        paramString1 = this.GxZ;
         switch (paramInt)
         {
         default: 
-          this.wYi = "";
-          this.coverUrl = "";
+          paramString1.setIconColor(paramString1.getResources().getColor(e.b.FG_0));
+          paramString1.setImageResource(e.g.finder_outlined_activity);
+          AppMethodBeat.o(345765);
+          return;
+          if (this.FOe != 4294967295L)
+          {
+            localObject = av.GiL;
+            if (av.qJ(getDisplayMask())) {}
+          }
+          else
+          {
+            this.uck.setVisibility(8);
+            break label12;
+          }
+          this.uck.setVisibility(0);
+          this.uck.setText((CharSequence)paramString2);
+          break label12;
+          label260:
+          i = 0;
+          break label37;
+          label266:
+          i = 0;
+          break label63;
+          label272:
+          this.uck.setVisibility(8);
         }
-      }
-      for (;;)
-      {
-        T(this.activityName, this.wYd, paramInt);
-        AppMethodBeat.o(275011);
-        return;
-        i = 2;
         break;
-        this.wYi = paramIntent.getStringExtra("key_activity_local_cover_url");
-        this.coverUrl = paramIntent.getStringExtra("key_cover_url");
-        continue;
-        this.coverUrl = paramIntent.getStringExtra("key_cover_url");
       }
     }
-    AppMethodBeat.o(275011);
+    Object localObject = av.GiL;
+    if (av.qI(getDisplayMask())) {
+      localObject = com.tencent.mm.plugin.finder.storage.ah.FMh;
+    }
+    for (paramString1 = (CharSequence)com.tencent.mm.plugin.finder.storage.ah.jdMethod_if(paramString3, paramString1);; paramString1 = (CharSequence)paramString1)
+    {
+      paramString2.setText(paramString1);
+      paramString2.setTextColor(paramString2.getResources().getColor(e.b.Orange));
+      break;
+    }
+    paramString1.setIconColor(paramString1.getResources().getColor(e.b.Orange));
+    paramString1.setImageResource(e.g.finder_filled_activity);
+    AppMethodBeat.o(345765);
   }
   
-  private final void eiA()
+  private static final void l(d paramd, View paramView)
   {
-    AppMethodBeat.i(275009);
-    com.tencent.mm.plugin.finder.api.i locali = this.contact;
-    if (locali != null)
-    {
-      if (this.wYj == 100)
-      {
-        com.tencent.mm.kernel.h.aGY().a(4050, (com.tencent.mm.an.i)this);
-        com.tencent.mm.kernel.h.aGY().b((q)new cg(locali.getUsername(), null, null, null, 0L, 1, 30));
-      }
-      AppMethodBeat.o(275009);
-      return;
-    }
-    AppMethodBeat.o(275009);
+    AppMethodBeat.i(345878);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramd);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderExtendActivityView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    kotlin.g.b.s.u(paramd, "$this_apply");
+    paramd.cyW();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/view/FinderExtendActivityView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(345878);
   }
   
   private final void setEnable(boolean paramBoolean)
   {
-    AppMethodBeat.i(275015);
-    this.AWs = paramBoolean;
+    AppMethodBeat.i(345787);
+    this.Gyf = paramBoolean;
+    setAlpha(1.0F);
+    setOnClickListener(this.dpY);
+    this.uck.setTextColor(getContext().getResources().getColor(e.b.FG_2));
     if (paramBoolean)
     {
-      setAlpha(1.0F);
-      setOnClickListener(this.bwV);
-      localTextView = this.rrS;
-      localContext = getContext();
-      p.j(localContext, "context");
-      localTextView.setTextColor(localContext.getResources().getColor(b.c.FG_2));
-      this.rrS.setText(b.j.finder_activity_default_desc);
-      AppMethodBeat.o(275015);
+      this.uck.setText(e.h.finder_activity_default_desc);
+      AppMethodBeat.o(345787);
       return;
     }
-    setAlpha(0.3F);
-    setOnClickListener(null);
-    TextView localTextView = this.rrS;
-    Context localContext = getContext();
-    p.j(localContext, "context");
-    localTextView.setTextColor(localContext.getResources().getColor(b.c.BW_0_Alpha_0_8));
-    this.rrS.setText(b.j.finder_activity_disable_create);
-    AppMethodBeat.o(275015);
+    this.uck.setText(e.h.finder_activity_desc_participate_only);
+    AppMethodBeat.o(345787);
   }
   
-  public final void c(Intent paramIntent, int paramInt)
+  public final void b(Intent paramIntent, int paramInt)
   {
-    AppMethodBeat.i(275008);
-    p.k(paramIntent, "intent");
-    if (d(paramIntent, paramInt))
+    AppMethodBeat.i(346065);
+    kotlin.g.b.s.u(paramIntent, "intent");
+    if (c(paramIntent, paramInt))
     {
-      this.wYj = paramInt;
-      e(paramIntent, paramInt);
+      this.Avy = paramInt;
+      d(paramIntent, paramInt);
     }
-    eiA();
-    AppMethodBeat.o(275008);
+    fkw();
+    AppMethodBeat.o(346065);
   }
   
-  public final String getActivityAvatarIcon()
+  public final brg getActivityEvent()
   {
-    return this.AWr;
-  }
-  
-  public final String getActivityCreatorNickName()
-  {
-    return this.AWq;
-  }
-  
-  public final String getActivityDesc()
-  {
-    return this.wYd;
-  }
-  
-  public final bfv getActivityEvent()
-  {
-    AppMethodBeat.i(275002);
-    bfv localbfv = this.ABi;
-    localbfv.xdR = this.fuv;
-    String str = this.activityName;
+    AppMethodBeat.i(345983);
+    brg localbrg = this.Gcw;
+    localbrg.ocD = getActivityTopicId();
+    String str = this.AtM;
     Object localObject = str;
     if (str == null) {
       localObject = "";
     }
-    localbfv.eventName = ((String)localObject);
-    str = this.AWq;
+    localbrg.eventName = ((String)localObject);
+    str = this.Gyb;
     localObject = str;
     if (str == null) {
       localObject = "";
     }
-    localbfv.SQA = ((String)localObject);
-    new StringBuilder("get activityEvent ").append(this.ABi.eventName).append(" eventTopicId:").append(this.ABi.xdR);
-    com.tencent.d.f.h.ioq();
-    localObject = this.ABi;
-    AppMethodBeat.o(275002);
+    localbrg.ZZl = ((String)localObject);
+    localbrg.ZHN = getActivityWordingInfo();
+    Log.i("Finder.ExtendActivityView", "get activityEvent " + this.Gcw.eventName + " eventTopicId:" + this.Gcw.ocD);
+    localObject = this.Gcw;
+    AppMethodBeat.o(345983);
     return localObject;
-  }
-  
-  public final String getActivityName()
-  {
-    return this.activityName;
   }
   
   public final long getActivityTopicId()
   {
-    return this.fuv;
+    return this.hyN;
   }
   
-  public final com.tencent.mm.plugin.finder.api.i getContact()
+  public final awx getActivityWordingInfo()
+  {
+    return this.Gyd;
+  }
+  
+  public final m getContact()
   {
     return this.contact;
   }
   
-  public final String getCoverUrl()
+  public final long getDisplayMask()
   {
-    return this.coverUrl;
-  }
-  
-  public final String getLocalCoverUrl()
-  {
-    return this.wYi;
-  }
-  
-  public final com.tencent.mm.plugin.finder.widget.post.a getMediaWidget()
-  {
-    return this.yOR;
+    return this.FOi;
   }
   
   public final View.OnClickListener getOnClickListener()
   {
-    return this.bwV;
+    return this.dpY;
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(275014);
-    if ((paramq instanceof cg))
+    AppMethodBeat.i(346093);
+    if ((paramp instanceof dh))
     {
-      com.tencent.mm.kernel.h.aGY().b(4050, (com.tencent.mm.an.i)this);
+      com.tencent.mm.kernel.h.aZW().b(4050, (com.tencent.mm.am.h)this);
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
         setEnable(true);
-        AppMethodBeat.o(275014);
+        AppMethodBeat.o(346093);
         return;
       }
       if (paramInt2 == -4064) {
         setEnable(false);
       }
     }
-    AppMethodBeat.o(275014);
+    AppMethodBeat.o(346093);
   }
   
-  public final void setActivityAvatarIcon(String paramString)
+  public final void setActivityEvent(brg parambrg)
   {
-    this.AWr = paramString;
-  }
-  
-  public final void setActivityCreatorNickName(String paramString)
-  {
-    this.AWq = paramString;
-  }
-  
-  public final void setActivityDesc(String paramString)
-  {
-    this.wYd = paramString;
-  }
-  
-  public final void setActivityEvent(bfv parambfv)
-  {
-    AppMethodBeat.i(275003);
-    p.k(parambfv, "<set-?>");
-    this.ABi = parambfv;
-    AppMethodBeat.o(275003);
-  }
-  
-  public final void setActivityName(String paramString)
-  {
-    this.activityName = paramString;
+    AppMethodBeat.i(345991);
+    kotlin.g.b.s.u(parambrg, "<set-?>");
+    this.Gcw = parambrg;
+    AppMethodBeat.o(345991);
   }
   
   public final void setActivityTopicId(long paramLong)
   {
-    this.fuv = paramLong;
+    this.hyN = paramLong;
   }
   
-  public final void setContact(com.tencent.mm.plugin.finder.api.i parami)
+  public final void setActivityWordingInfo(awx paramawx)
   {
-    this.contact = parami;
+    this.Gyd = paramawx;
   }
   
-  public final void setCoverUrl(String paramString)
+  public final void setContact(m paramm)
   {
-    this.coverUrl = paramString;
+    this.contact = paramm;
+  }
+  
+  public final void setDisplayMask(long paramLong)
+  {
+    this.FOi = paramLong;
   }
   
   public final void setIntentParam(Intent paramIntent)
   {
-    AppMethodBeat.i(275013);
+    AppMethodBeat.i(346082);
+    Object localObject;
+    label53:
+    label84:
+    String str;
     if (paramIntent != null)
     {
-      Object localObject = this.contact;
-      String str;
-      if (localObject != null)
-      {
-        str = ((com.tencent.mm.plugin.finder.api.i)localObject).field_username;
-        localObject = str;
-        if (str != null) {}
+      localObject = getContact();
+      if (localObject != null) {
+        break label288;
       }
-      else
-      {
+      localObject = "";
+      paramIntent.putExtra("key_user_name", (String)localObject);
+      if (!Util.isNullOrNil(this.Gyb)) {
+        break label322;
+      }
+      localObject = getContact();
+      if (localObject != null) {
+        break label305;
+      }
+      localObject = "";
+      paramIntent.putExtra("key_nick_name", (String)localObject);
+      if (!Util.isNullOrNil(this.Gyc)) {
+        break label347;
+      }
+      localObject = getContact();
+      if (localObject != null) {
+        break label330;
+      }
+      localObject = "";
+      paramIntent.putExtra("key_avatar_url", (String)localObject);
+      paramIntent.putExtra("key_topic_id", getActivityTopicId());
+      str = this.AtM;
+      localObject = str;
+      if (str == null) {
         localObject = "";
       }
-      paramIntent.putExtra("key_user_name", (String)localObject);
-      if (Util.isNullOrNil(this.AWq))
+      paramIntent.putExtra("key_activity_name", (String)localObject);
+      str = this.Ava;
+      localObject = str;
+      if (str == null) {
+        localObject = "";
+      }
+      paramIntent.putExtra("key_activity_desc", (String)localObject);
+      paramIntent.putExtra("key_activity_display_mask", getDisplayMask());
+      paramIntent.putExtra("key_activity_end_time", this.FOe);
+      paramIntent.putExtra("key_activity_src_type", this.Gyg);
+      localObject = getActivityWordingInfo();
+      if (localObject != null)
       {
-        localObject = this.contact;
-        if (localObject != null)
-        {
-          str = ((com.tencent.mm.plugin.finder.api.i)localObject).getNickname();
-          localObject = str;
-          if (str != null) {}
+        localObject = ((awx)localObject).toByteArray();
+        if (localObject != null) {
+          paramIntent.putExtra("key_wording_info", (byte[])localObject);
         }
-        else
-        {
-          localObject = "";
-        }
-        paramIntent.putExtra("key_nick_name", (String)localObject);
-        if (!Util.isNullOrNil(this.AWr)) {
-          break label271;
-        }
-        localObject = this.contact;
-        if (localObject != null)
-        {
-          str = ((com.tencent.mm.plugin.finder.api.i)localObject).Mm();
-          localObject = str;
-          if (str != null) {}
-        }
-        else
-        {
-          localObject = "";
-        }
-        label117:
-        paramIntent.putExtra("key_avatar_url", (String)localObject);
-        paramIntent.putExtra("key_topic_id", this.fuv);
-        str = this.activityName;
-        localObject = str;
-        if (str == null) {
-          localObject = "";
-        }
-        paramIntent.putExtra("key_activity_name", (String)localObject);
-        str = this.wYd;
-        localObject = str;
-        if (str == null) {
-          localObject = "";
-        }
-        paramIntent.putExtra("key_activity_desc", (String)localObject);
-        if (this.wYj != 101) {
-          break label279;
-        }
-        str = this.wYi;
-        localObject = str;
-        if (str == null) {
-          localObject = "";
-        }
-        paramIntent.putExtra("key_activity_local_cover_url", (String)localObject);
+      }
+      if (this.Avy != 101) {
+        break label355;
+      }
+      str = this.Avx;
+      localObject = str;
+      if (str == null) {
+        localObject = "";
+      }
+      paramIntent.putExtra("key_activity_local_cover_url", (String)localObject);
+      str = this.coverUrl;
+      localObject = str;
+      if (str == null) {
+        localObject = "";
+      }
+      paramIntent.putExtra("key_cover_url", (String)localObject);
+    }
+    for (;;)
+    {
+      paramIntent.putExtra("key_activity_type", this.Avy);
+      AppMethodBeat.o(346082);
+      return;
+      label288:
+      str = ((m)localObject).field_username;
+      localObject = str;
+      if (str != null) {
+        break;
+      }
+      localObject = "";
+      break;
+      label305:
+      str = ((m)localObject).getNickname();
+      localObject = str;
+      if (str != null) {
+        break label53;
+      }
+      localObject = "";
+      break label53;
+      label322:
+      localObject = this.Gyb;
+      break label53;
+      label330:
+      str = ((m)localObject).amx();
+      localObject = str;
+      if (str != null) {
+        break label84;
+      }
+      localObject = "";
+      break label84;
+      label347:
+      localObject = this.Gyc;
+      break label84;
+      label355:
+      if (this.Avy == 102)
+      {
         str = this.coverUrl;
         localObject = str;
         if (str == null) {
           localObject = "";
         }
-        p.j(paramIntent.putExtra("key_cover_url", (String)localObject), "putExtra(ConstantsUI.Fin…TY_COVER, coverUrl ?: \"\")");
-      }
-      for (;;)
-      {
-        paramIntent.putExtra("key_activity_type", this.wYj);
-        AppMethodBeat.o(275013);
-        return;
-        localObject = this.AWq;
-        break;
-        label271:
-        localObject = this.AWr;
-        break label117;
-        label279:
-        if (this.wYj == 102)
-        {
-          str = this.coverUrl;
-          localObject = str;
-          if (str == null) {
-            localObject = "";
-          }
-          paramIntent.putExtra("key_cover_url", (String)localObject);
-          paramIntent.putExtra("key_is_from_post", true);
-        }
+        paramIntent.putExtra("key_cover_url", (String)localObject);
+        paramIntent.putExtra("key_is_from_post", true);
       }
     }
-    AppMethodBeat.o(275013);
   }
   
-  public final void setLocalCoverUrl(String paramString)
-  {
-    this.wYi = paramString;
-  }
-  
-  public final void setMediaWidget(com.tencent.mm.plugin.finder.widget.post.a parama)
-  {
-    this.yOR = parama;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderExtendActivityView$Companion;", "", "()V", "ACTIVITY_TYPE_CREATE", "", "ACTIVITY_TYPE_NONE", "ACTIVITY_TYPE_SELECT", "MENU_ID_CREATE_DELETE", "MENU_ID_CREATE_MODIFY", "MENU_ID_DESC_DETAIL", "MENU_ID_DESC_EXIT", "MENU_ID_PARTICIPATE", "MENU_ID_POST_ACTIVITY", "REQUEST_CODE_PARTICIPATE_ACTIVITY", "REQUEST_CODE_PRE_POST_ACTIVITY", "TAG", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/FinderExtendActivityView$Companion;", "", "()V", "ACTIVITY_TYPE_CREATE", "", "ACTIVITY_TYPE_NONE", "ACTIVITY_TYPE_SELECT", "MENU_ID_CREATE_DELETE", "MENU_ID_CREATE_MODIFY", "MENU_ID_DESC_DETAIL", "MENU_ID_DESC_EXIT", "MENU_ID_PARTICIPATE", "MENU_ID_POST_ACTIVITY", "REQUEST_CODE_PARTICIPATE_ACTIVITY", "REQUEST_CODE_PRE_POST_ACTIVITY", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class b
-    implements View.OnClickListener
-  {
-    b(FinderExtendActivityView paramFinderExtendActivityView) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(279621);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderExtendActivityView$onClickListener$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      switch (FinderExtendActivityView.e(this.AWA))
-      {
-      }
-      for (;;)
-      {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/view/FinderExtendActivityView$onClickListener$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(279621);
-        return;
-        FinderExtendActivityView.f(this.AWA);
-        continue;
-        FinderExtendActivityView.b(this.AWA);
-        continue;
-        FinderExtendActivityView.a(this.AWA);
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu", "com/tencent/mm/plugin/finder/view/FinderExtendActivityView$showCreateActivitySheet$1$1"})
-  static final class c
-    implements q.f
-  {
-    c(FinderExtendActivityView paramFinderExtendActivityView) {}
-    
-    public final void onCreateMMMenu(o paramo)
-    {
-      AppMethodBeat.i(225607);
-      p.j(paramo, "it");
-      if (paramo.hJO())
-      {
-        paramo.a(FinderExtendActivityView.eiB(), this.AWA.getResources().getColor(b.c.FG_0), (CharSequence)this.AWA.getResources().getString(b.j.finder_activity_modify_text));
-        paramo.a(FinderExtendActivityView.eiC(), this.AWA.getResources().getColor(b.c.FG_0), (CharSequence)this.AWA.getResources().getString(b.j.finder_activity_delete_text));
-      }
-      AppMethodBeat.o(225607);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected", "com/tencent/mm/plugin/finder/view/FinderExtendActivityView$showCreateActivitySheet$1$2"})
-  static final class d
-    implements q.g
-  {
-    d(FinderExtendActivityView paramFinderExtendActivityView) {}
-    
-    public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
-    {
-      AppMethodBeat.i(257031);
-      p.j(paramMenuItem, "menuItem");
-      paramInt = paramMenuItem.getItemId();
-      if (paramInt == FinderExtendActivityView.eiB())
-      {
-        FinderExtendActivityView.a(this.AWA);
-        AppMethodBeat.o(257031);
-        return;
-      }
-      if (paramInt == FinderExtendActivityView.eiC()) {
-        FinderExtendActivityView.c(this.AWA);
-      }
-      AppMethodBeat.o(257031);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onDismiss", "com/tencent/mm/plugin/finder/view/FinderExtendActivityView$showCreateActivitySheet$1$3"})
-  static final class e
-    implements e.b
-  {
-    e(FinderExtendActivityView paramFinderExtendActivityView) {}
-    
-    public final void onDismiss()
-    {
-      AppMethodBeat.i(270747);
-      FinderExtendActivityView.d(this.AWA);
-      AppMethodBeat.o(270747);
-    }
-  }
 }
 
 

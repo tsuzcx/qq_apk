@@ -8,50 +8,47 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.plugin.multitask.c.d;
 import com.tencent.mm.plugin.multitask.f;
 import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/ui/MultiTaskFloatBallContainer;", "", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "displayHeight", "", "lastOrientation", "multiTaskFloatBallView", "Lcom/tencent/mm/plugin/multitask/ui/MultiTaskFloatBallView;", "parent", "Landroid/view/ViewGroup;", "addFloatBallViewListener", "", "listener", "Lcom/tencent/mm/plugin/multitask/listener/OnMultiTaskFBViewListener;", "attachFloatBallViewToWindow", "attachToView", "canNotShowFloatBall", "", "detachFloatBallViewFromWindow", "detachFromWindow", "detachFromWindowInternal", "hide", "withTransAnimation", "withAlphaAnimation", "animatorListenerAdapter", "Landroid/animation/AnimatorListenerAdapter;", "initFloatBallView", "isAnimating", "markWechatInForeground", "inForeground", "onFloatBallInfoChanged", "multiTaskInfo", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "removeFloatBallViewListener", "resume", "withAnimation", "checkVisible", "setNeedTranslateAnimation", "needTranslateAnimation", "whenOrientationChange", "newOrientation", "Companion", "plugin-multitask_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitask/ui/MultiTaskFloatBallContainer;", "", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "displayHeight", "", "lastOrientation", "multiTaskFloatBallView", "Lcom/tencent/mm/plugin/multitask/ui/MultiTaskFloatBallView;", "parent", "Landroid/view/ViewGroup;", "addFloatBallViewListener", "", "listener", "Lcom/tencent/mm/plugin/multitask/listener/OnMultiTaskFBViewListener;", "attachFloatBallViewToWindow", "attachToView", "canNotShowFloatBall", "", "detachFloatBallViewFromWindow", "detachFromWindow", "detachFromWindowInternal", "hide", "withTransAnimation", "withAlphaAnimation", "animatorListenerAdapter", "Landroid/animation/AnimatorListenerAdapter;", "initFloatBallView", "isAnimating", "markWechatInForeground", "inForeground", "onFloatBallInfoChanged", "multiTaskInfo", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "removeFloatBallViewListener", "resume", "withAnimation", "checkVisible", "setNeedTranslateAnimation", "needTranslateAnimation", "whenOrientationChange", "newOrientation", "Companion", "plugin-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  public static final b.a FIc;
-  public MultiTaskFloatBallView FIb;
+  public static final b.a LDu;
+  public MultiTaskFloatBallView LDv;
   private int displayHeight;
   private int lastOrientation;
   private ViewGroup parent;
   
   static
   {
-    AppMethodBeat.i(248506);
-    FIc = new b.a((byte)0);
-    AppMethodBeat.o(248506);
+    AppMethodBeat.i(304152);
+    LDu = new b.a((byte)0);
+    AppMethodBeat.o(304152);
   }
   
   public b(Context paramContext)
   {
-    AppMethodBeat.i(248503);
+    AppMethodBeat.i(304131);
     this.lastOrientation = 1;
-    this.displayHeight = a.ks(paramContext);
-    this.FIb = new MultiTaskFloatBallView(paramContext, null, 6, (byte)0);
-    paramContext = this.FIb;
-    if (paramContext != null)
-    {
+    this.displayHeight = a.mt(paramContext);
+    this.LDv = new MultiTaskFloatBallView(paramContext, null, 6, (byte)0);
+    paramContext = this.LDv;
+    if (paramContext != null) {
       paramContext.a((d)new c(this));
-      AppMethodBeat.o(248503);
-      return;
     }
-    AppMethodBeat.o(248503);
+    AppMethodBeat.o(304131);
   }
   
-  public final void H(ViewGroup paramViewGroup)
+  public final void R(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(248495);
-    Object localObject = this.FIb;
+    AppMethodBeat.i(304172);
+    Object localObject = this.LDv;
     if (localObject != null) {
       ((MultiTaskFloatBallView)localObject).setVisibility(8);
     }
@@ -59,49 +56,50 @@ public final class b
     if (paramViewGroup != null)
     {
       localObject = new ViewGroup.MarginLayoutParams(-2, -2);
-      ((ViewGroup.MarginLayoutParams)localObject).leftMargin = (0 - f.FEU);
-      ((ViewGroup.MarginLayoutParams)localObject).topMargin = (f.saX - f.FEV);
-      Log.i("MicroMsg.FloatBallContainer", "attachFloatBallViewToWindow success, topMargin:" + ((ViewGroup.MarginLayoutParams)localObject).topMargin);
+      ((ViewGroup.MarginLayoutParams)localObject).leftMargin = (0 - f.LAY);
+      ((ViewGroup.MarginLayoutParams)localObject).topMargin = (f.vmp - f.LAZ);
+      Log.i("MicroMsg.FloatBallContainer", s.X("attachFloatBallViewToWindow success, topMargin:", Integer.valueOf(((ViewGroup.MarginLayoutParams)localObject).topMargin)));
       if (((ViewGroup.MarginLayoutParams)localObject).topMargin > 0) {
-        ((ViewGroup.MarginLayoutParams)localObject).topMargin -= f.FEV;
+        ((ViewGroup.MarginLayoutParams)localObject).topMargin -= f.LAZ;
       }
-      MultiTaskFloatBallView localMultiTaskFloatBallView = this.FIb;
+      MultiTaskFloatBallView localMultiTaskFloatBallView = this.LDv;
       if (localMultiTaskFloatBallView != null) {
         localMultiTaskFloatBallView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
       try
       {
-        paramViewGroup.addView((View)this.FIb, paramViewGroup.getChildCount());
+        paramViewGroup.addView((View)this.LDv, paramViewGroup.getChildCount());
         Log.i("MicroMsg.FloatBallContainer", "attachFloatBallViewToWindow success");
-        AppMethodBeat.o(248495);
+        AppMethodBeat.o(304172);
         return;
       }
       catch (Exception paramViewGroup)
       {
         Log.printErrStackTrace("MicroMsg.FloatBallContainer", (Throwable)paramViewGroup, "attachFloatBallViewToWindow fail", new Object[0]);
-        AppMethodBeat.o(248495);
+        AppMethodBeat.o(304172);
         return;
       }
     }
     Log.e("MicroMsg.FloatBallContainer", "attachFloatBallViewToWindow, window manager is null");
-    AppMethodBeat.o(248495);
+    AppMethodBeat.o(304172);
   }
   
   public final void a(MultiTaskInfo paramMultiTaskInfo, AnimatorListenerAdapter paramAnimatorListenerAdapter)
   {
-    AppMethodBeat.i(248493);
+    int i = 1;
+    AppMethodBeat.i(304160);
     Object localObject;
     if (paramMultiTaskInfo != null)
     {
-      localObject = this.FIb;
-      if (localObject != null)
+      localObject = this.LDv;
+      if (localObject == null)
       {
-        localObject = Boolean.valueOf(((MultiTaskFloatBallView)localObject).sak);
+        localObject = null;
         Log.i("MicroMsg.FloatBallContainer", "onFloatBallInfoChanged, show FloatBallView %b", new Object[] { localObject });
-        localObject = this.FIb;
-        if ((localObject != null) && (!((MultiTaskFloatBallView)localObject).sak))
+        localObject = this.LDv;
+        if ((localObject != null) && (!((MultiTaskFloatBallView)localObject).vlB))
         {
-          localObject = this.FIb;
+          localObject = this.LDv;
           if (localObject != null)
           {
             ((MultiTaskFloatBallView)localObject).getVisibility();
@@ -111,104 +109,110 @@ public final class b
         }
       }
     }
+    label189:
     for (;;)
     {
-      if (this.FIb == null) {
-        break label158;
-      }
-      localObject = this.FIb;
-      if (localObject == null) {
-        break label158;
-      }
-      ((MultiTaskFloatBallView)localObject).a(paramMultiTaskInfo, paramAnimatorListenerAdapter);
-      AppMethodBeat.o(248493);
-      return;
-      localObject = null;
-      break;
-      localObject = this.FIb;
-      if ((localObject != null) && (((MultiTaskFloatBallView)localObject).getVisibility() == 0))
+      if (this.LDv != null)
       {
-        Log.i("MicroMsg.FloatBallContainer", "onFloatBallInfoChanged, hide FloatBallView");
-        localObject = this.FIb;
+        localObject = this.LDv;
         if (localObject != null) {
-          ((MultiTaskFloatBallView)localObject).d(false, false, paramAnimatorListenerAdapter);
+          ((MultiTaskFloatBallView)localObject).a(paramMultiTaskInfo, paramAnimatorListenerAdapter);
         }
       }
+      AppMethodBeat.o(304160);
+      return;
+      localObject = Boolean.valueOf(((MultiTaskFloatBallView)localObject).vlB);
+      break;
+      localObject = this.LDv;
+      if ((localObject != null) && (((MultiTaskFloatBallView)localObject).getVisibility() == 0)) {}
+      for (;;)
+      {
+        if (i == 0) {
+          break label189;
+        }
+        Log.i("MicroMsg.FloatBallContainer", "onFloatBallInfoChanged, hide FloatBallView");
+        localObject = this.LDv;
+        if (localObject == null) {
+          break;
+        }
+        ((MultiTaskFloatBallView)localObject).d(false, false, paramAnimatorListenerAdapter);
+        break;
+        i = 0;
+      }
     }
-    label158:
-    AppMethodBeat.o(248493);
   }
   
-  final void cwo()
+  final void cYY()
   {
-    AppMethodBeat.i(248501);
+    AppMethodBeat.i(304193);
     try
     {
       if (this.parent != null)
       {
         ViewGroup localViewGroup = this.parent;
         if (localViewGroup != null) {
-          localViewGroup.removeView((View)this.FIb);
+          localViewGroup.removeView((View)this.LDv);
         }
         Log.i("MicroMsg.FloatBallContainer", "detachFromWindowInternal, detach all views");
-        AppMethodBeat.o(248501);
+        AppMethodBeat.o(304193);
         return;
       }
       Log.e("MicroMsg.FloatBallContainer", "detachFromWindowInternal, window manager is null");
-      AppMethodBeat.o(248501);
+      AppMethodBeat.o(304193);
       return;
     }
     catch (Exception localException)
     {
       Log.printErrStackTrace("MicroMsg.FloatBallContainer", (Throwable)localException, "detachFromWindowInternal exception", new Object[0]);
-      AppMethodBeat.o(248501);
+      AppMethodBeat.o(304193);
     }
   }
   
   public final void setNeedTranslateAnimation(boolean paramBoolean)
   {
-    AppMethodBeat.i(248498);
-    if (this.FIb != null)
+    AppMethodBeat.i(304178);
+    if (this.LDv != null)
     {
-      MultiTaskFloatBallView localMultiTaskFloatBallView = this.FIb;
-      if (localMultiTaskFloatBallView != null)
-      {
+      MultiTaskFloatBallView localMultiTaskFloatBallView = this.LDv;
+      if (localMultiTaskFloatBallView != null) {
         localMultiTaskFloatBallView.setNeedTranslateAnimation(paramBoolean);
-        AppMethodBeat.o(248498);
-        return;
       }
     }
-    AppMethodBeat.o(248498);
+    AppMethodBeat.o(304178);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/multitask/ui/MultiTaskFloatBallContainer$detachFloatBallViewFromWindow$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-multitask_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/multitask/ui/MultiTaskFloatBallContainer$detachFloatBallViewFromWindow$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
     extends AnimatorListenerAdapter
   {
+    b(b paramb) {}
+    
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(248480);
-      p.k(paramAnimator, "animation");
-      b.a(this.FId);
-      AppMethodBeat.o(248480);
+      AppMethodBeat.i(304199);
+      s.u(paramAnimator, "animation");
+      b.a(this.LDw);
+      AppMethodBeat.o(304199);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/multitask/ui/MultiTaskFloatBallContainer$initFloatBallView$1", "Lcom/tencent/mm/plugin/multitask/listener/OnMultiTaskFBViewListener;", "onMultiTaskPanelClicked", "", "onMultiTaskPanelDelete", "onMultiTaskPanelHide", "onMultiTaskPanelShow", "anim", "", "onOrientationChange", "orientation", "", "setTransformationListener", "listener", "Lcom/tencent/mm/plugin/multitask/listener/OnMultiTaskFBTransformationListener;", "plugin-multitask_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/multitask/ui/MultiTaskFloatBallContainer$initFloatBallView$1", "Lcom/tencent/mm/plugin/multitask/listener/OnMultiTaskFBViewListener;", "onMultiTaskPanelClicked", "", "onMultiTaskPanelDelete", "onMultiTaskPanelHide", "onMultiTaskPanelShow", "anim", "", "onOrientationChange", "orientation", "", "setTransformationListener", "listener", "Lcom/tencent/mm/plugin/multitask/listener/OnMultiTaskFBTransformationListener;", "plugin-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class c
     implements d
   {
+    c(b paramb) {}
+    
     public final void onOrientationChange(int paramInt)
     {
-      AppMethodBeat.i(248031);
-      b.a(this.FId, paramInt);
-      AppMethodBeat.o(248031);
+      AppMethodBeat.i(304205);
+      b.a(this.LDw, paramInt);
+      AppMethodBeat.o(304205);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.multitask.ui.b
  * JD-Core Version:    0.7.0.1
  */

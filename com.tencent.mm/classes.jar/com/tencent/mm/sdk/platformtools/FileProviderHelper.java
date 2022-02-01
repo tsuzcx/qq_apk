@@ -6,19 +6,20 @@ import android.net.Uri;
 import android.os.Build.VERSION;
 import androidx.core.content.FileProvider;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.ah;
 import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.File;
 
 public class FileProviderHelper
 {
   private static final String TAG = "MicroMsg.FileProviderHelper";
   
-  public static Uri getUriForFile(Context paramContext, q paramq)
+  public static Uri getUriForFile(Context paramContext, u paramu)
   {
     AppMethodBeat.i(156179);
-    paramq = u.n(paramq.getPath(), false);
-    if (paramq == null) {
+    paramu = y.n(ah.v(paramu.mUri), false);
+    if (paramu == null) {
       paramContext = null;
     }
     for (;;)
@@ -26,26 +27,26 @@ public class FileProviderHelper
       AppMethodBeat.o(156179);
       return paramContext;
       if (Build.VERSION.SDK_INT >= 24) {
-        paramContext = FileProvider.getUriForFile(paramContext, paramContext.getPackageName() + ".external.fileprovider", new File(paramq));
+        paramContext = FileProvider.getUriForFile(paramContext, paramContext.getPackageName() + ".external.fileprovider", new File(paramu));
       } else {
-        paramContext = Uri.fromFile(new File(paramq));
+        paramContext = Uri.fromFile(new File(paramu));
       }
     }
   }
   
   public static Uri getUriForFileWithoutVFSRemap(Context paramContext, File paramFile)
   {
-    AppMethodBeat.i(248704);
+    AppMethodBeat.i(243561);
     try
     {
       if (Build.VERSION.SDK_INT >= 24) {}
       for (paramContext = FileProvider.getUriForFile(paramContext, paramContext.getPackageName() + ".external.fileprovider", paramFile);; paramContext = Uri.fromFile(paramFile))
       {
-        AppMethodBeat.o(248704);
+        AppMethodBeat.o(243561);
         return paramContext;
       }
     }
-    catch (Throwable paramContext)
+    finally
     {
       for (;;)
       {
@@ -57,12 +58,12 @@ public class FileProviderHelper
   
   public static void setIntentDataAndType(Context paramContext, Intent paramIntent, Uri paramUri, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(248700);
+    AppMethodBeat.i(243549);
     String str = paramUri.getScheme();
     if ((str == null) || (str.isEmpty()) || (str.equals("file")) || (str.equals("wcf")))
     {
-      setIntentDataAndType(paramContext, paramIntent, new q(paramUri.getPath()), paramString, paramBoolean);
-      AppMethodBeat.o(248700);
+      setIntentDataAndType(paramContext, paramIntent, new u(paramUri.getPath()), paramString, paramBoolean);
+      AppMethodBeat.o(243549);
       return;
     }
     paramIntent.setDataAndType(paramUri, paramString);
@@ -70,22 +71,23 @@ public class FileProviderHelper
     if (paramBoolean) {
       paramIntent.addFlags(2);
     }
-    AppMethodBeat.o(248700);
+    AppMethodBeat.o(243549);
   }
   
-  public static void setIntentDataAndType(Context paramContext, Intent paramIntent, q paramq, String paramString, boolean paramBoolean)
+  public static void setIntentDataAndType(Context paramContext, Intent paramIntent, u paramu, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(248696);
-    String str = u.n(paramq.getPath(), false);
+    AppMethodBeat.i(243540);
+    String str = y.n(ah.v(paramu.mUri), false);
+    Log.i("MicroMsg.FileProviderHelper", "setIntentDataAndType: realPath:".concat(String.valueOf(str)));
     if (str == null) {
       paramContext = null;
     }
     while ((BuildInfo.IS_FLAVOR_RED) && (paramContext == null))
     {
-      paramContext = new IllegalArgumentException("Path cannot be exported via provider: ".concat(String.valueOf(paramq)));
-      AppMethodBeat.o(248696);
+      paramContext = new IllegalArgumentException("Path cannot be exported via provider: ".concat(String.valueOf(paramu)));
+      AppMethodBeat.o(243540);
       throw paramContext;
-      if (Build.VERSION.SDK_INT >= 21) {
+      if (((str.startsWith("/data/data")) && (Build.VERSION.SDK_INT >= 21)) || (Build.VERSION.SDK_INT >= 24)) {
         paramContext = FileProvider.getUriForFile(paramContext, paramContext.getPackageName() + ".external.fileprovider", new File(str));
       } else {
         paramContext = Uri.fromFile(new File(str));
@@ -96,7 +98,7 @@ public class FileProviderHelper
       i = 3;
     }
     paramIntent.setDataAndType(paramContext, paramString).addFlags(i);
-    AppMethodBeat.o(248696);
+    AppMethodBeat.o(243540);
   }
 }
 

@@ -22,13 +22,13 @@ public abstract class AbsStoryMuteView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public abstract void gbo();
+  public abstract void huH();
   
-  public abstract void gbp();
+  public abstract void huI();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.story.api.AbsStoryMuteView
  * JD-Core Version:    0.7.0.1
  */

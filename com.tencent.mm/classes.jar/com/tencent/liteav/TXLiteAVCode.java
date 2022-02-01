@@ -211,6 +211,7 @@ public class TXLiteAVCode
   public static final int EVT_PLAY_LIVE_STREAM_BEGIN = 2002;
   public static final int EVT_PLAY_LIVE_STREAM_CONNECT_SUCC = 2001;
   public static final int EVT_PLAY_LIVE_STREAM_SWITCH_SUCC = 2015;
+  public static final int EVT_PLAY_VIEW_CHANGED_FIRST_I_FRAME = 2032;
   public static final int EVT_RENDER_FIRST_I_FRAME = 2003;
   public static final int EVT_ROOM_CONNECT_SUCC = 8002;
   public static final int EVT_ROOM_ENTER = 1018;

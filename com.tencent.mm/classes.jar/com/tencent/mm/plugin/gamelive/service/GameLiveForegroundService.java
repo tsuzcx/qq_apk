@@ -6,29 +6,29 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.IBinder;
-import androidx.core.app.e.d;
+import androidx.core.app.f.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.ay;
-import com.tencent.mm.plugin.gamelive.g.b;
-import com.tencent.mm.plugin.gamelive.g.c;
-import com.tencent.mm.protocal.protobuf.azg;
+import com.tencent.mm.plugin.gamelive.e.b;
+import com.tencent.mm.plugin.gamelive.e.c;
+import com.tencent.mm.protocal.protobuf.bgt;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelive/service/GameLiveForegroundService;", "Landroid/app/Service;", "()V", "getNotificationIconRs", "", "onBind", "Landroid/os/IBinder;", "intent", "Landroid/content/Intent;", "onCreate", "", "onDestroy", "onStartCommand", "flags", "startId", "Companion", "plugin-gamelive_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/gamelive/service/GameLiveForegroundService;", "Landroid/app/Service;", "()V", "getNotificationIconRs", "", "onBind", "Landroid/os/IBinder;", "intent", "Landroid/content/Intent;", "onCreate", "", "onDestroy", "onStartCommand", "flags", "startId", "Companion", "plugin-gamelive_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class GameLiveForegroundService
   extends Service
 {
-  public static final GameLiveForegroundService.a DmO;
+  public static final a Jgy;
   
   static
   {
-    AppMethodBeat.i(208595);
-    DmO = new GameLiveForegroundService.a((byte)0);
-    AppMethodBeat.o(208595);
+    AppMethodBeat.i(277234);
+    Jgy = new a((byte)0);
+    AppMethodBeat.o(277234);
   }
   
   public final IBinder onBind(Intent paramIntent)
@@ -38,57 +38,57 @@ public final class GameLiveForegroundService
   
   public final void onCreate()
   {
-    AppMethodBeat.i(208590);
+    AppMethodBeat.i(277250);
     Log.i("MicroMsg.GameLiveForegroundService", "foreground service onCreate");
-    if (!h.aHE().aGM())
+    if (!h.baC().aZN())
     {
       stopSelf();
-      AppMethodBeat.o(208590);
+      AppMethodBeat.o(277250);
       return;
     }
-    Object localObject = ((com.tencent.c.a.a.a.b)h.ag(com.tencent.c.a.a.a.b.class)).getFinderLiveExternalInfo();
-    if (localObject != null)
+    Object localObject = ((com.tencent.d.a.a.a.b)h.az(com.tencent.d.a.a.a.b.class)).getFinderLiveExternalInfo();
+    if (localObject == null)
     {
-      localObject = ((azg)localObject).yxR;
-      String str = com.tencent.mm.ci.a.ba((Context)this, g.c.Dlf);
-      localObject = com.tencent.mm.bx.a.cp(MMApplicationContext.getContext(), "reminder_channel_id").n((CharSequence)str).l((CharSequence)str).k((CharSequence)localObject).e(System.currentTimeMillis());
+      localObject = null;
+      String str = com.tencent.mm.cd.a.bt((Context)this, e.c.Jep);
+      localObject = com.tencent.mm.bq.a.cA(MMApplicationContext.getContext(), "reminder_channel_id").o((CharSequence)str).m((CharSequence)str).l((CharSequence)localObject).bt(System.currentTimeMillis());
       if (Build.VERSION.SDK_INT >= 19) {
-        break label149;
+        break label154;
       }
     }
-    label149:
-    for (int i = g.b.notification_icon;; i = g.b.notification_icon_gray)
+    label154:
+    for (int i = e.b.notification_icon;; i = e.b.notification_icon_gray)
     {
-      localObject = ((e.d)localObject).bn(i).gp().gr();
-      p.j(localObject, "builder\n                ….setOngoing(true).build()");
+      localObject = ((f.d)localObject).eb(i);
+      ((f.d)localObject).q(2, true);
+      localObject = ((f.d)localObject).DA();
+      s.s(localObject, "builder\n                ….setOngoing(true).build()");
       try
       {
         startForeground(46, (Notification)localObject);
-        AppMethodBeat.o(208590);
+        AppMethodBeat.o(277250);
         return;
       }
       catch (Exception localException)
       {
         Log.i("MicroMsg.GameLiveForegroundService", "start foreground service happened error %s", new Object[] { localException.getMessage() });
-        AppMethodBeat.o(208590);
+        AppMethodBeat.o(277250);
       }
-      localObject = null;
+      localObject = ((bgt)localObject).Dky;
       break;
     }
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(208593);
+    AppMethodBeat.i(277258);
     Log.i("MicroMsg.GameLiveForegroundService", "foreground service onDestroy");
     try
     {
       stopForeground(true);
-      com.tencent.mm.kernel.b.a locala = h.ag(com.tencent.mm.plugin.notification.b.a.class);
-      p.j(locala, "MMKernel.plugin(IPluginNotification::class.java)");
-      ((com.tencent.mm.plugin.notification.b.a)locala).getNotification().cancel(46);
+      ((com.tencent.mm.plugin.notification.b.b)h.az(com.tencent.mm.plugin.notification.b.b.class)).getNotification().cancel(46);
       super.onDestroy();
-      AppMethodBeat.o(208593);
+      AppMethodBeat.o(277258);
       return;
     }
     catch (Exception localException)
@@ -102,22 +102,25 @@ public final class GameLiveForegroundService
   
   public final int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(208588);
+    AppMethodBeat.i(277239);
     Log.i("MicroMsg.GameLiveForegroundService", "foreground service onStartCommand");
-    if (!h.aHE().aGM())
+    if (!h.baC().aZN())
     {
       Log.e("MicroMsg.GameLiveForegroundService", "error called foreground service in onStartCommand process");
       stopSelf();
-      AppMethodBeat.o(208588);
+      AppMethodBeat.o(277239);
       return 2;
     }
-    AppMethodBeat.o(208588);
+    AppMethodBeat.o(277239);
     return 3;
   }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/gamelive/service/GameLiveForegroundService$Companion;", "", "()V", "TAG", "", "plugin-gamelive_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelive.service.GameLiveForegroundService
  * JD-Core Version:    0.7.0.1
  */

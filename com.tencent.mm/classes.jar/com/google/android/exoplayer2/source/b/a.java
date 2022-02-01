@@ -8,16 +8,16 @@ import javax.crypto.CipherInputStream;
 final class a
   implements g
 {
-  private final byte[] aRL;
-  private final g bgU;
-  private final byte[] bgV;
-  private CipherInputStream bgW;
+  private final byte[] cLH;
+  private final g daO;
+  private final byte[] daP;
+  private CipherInputStream daQ;
   
   public a(g paramg, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    this.bgU = paramg;
-    this.aRL = paramArrayOfByte1;
-    this.bgV = paramArrayOfByte2;
+    this.daO = paramg;
+    this.cLH = paramArrayOfByte1;
+    this.daP = paramArrayOfByte2;
   }
   
   /* Error */
@@ -32,14 +32,14 @@ final class a
     //   11: new 52	javax/crypto/spec/SecretKeySpec
     //   14: dup
     //   15: aload_0
-    //   16: getfield 22	com/google/android/exoplayer2/source/b/a:aRL	[B
+    //   16: getfield 22	com/google/android/exoplayer2/source/b/a:cLH	[B
     //   19: ldc 54
     //   21: invokespecial 57	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
     //   24: astore_3
     //   25: new 59	javax/crypto/spec/IvParameterSpec
     //   28: dup
     //   29: aload_0
-    //   30: getfield 24	com/google/android/exoplayer2/source/b/a:bgV	[B
+    //   30: getfield 24	com/google/android/exoplayer2/source/b/a:daP	[B
     //   33: invokespecial 62	javax/crypto/spec/IvParameterSpec:<init>	([B)V
     //   36: astore 4
     //   38: aload_2
@@ -53,12 +53,12 @@ final class a
     //   51: new 70	com/google/android/exoplayer2/h/i
     //   54: dup
     //   55: aload_0
-    //   56: getfield 20	com/google/android/exoplayer2/source/b/a:bgU	Lcom/google/android/exoplayer2/h/g;
+    //   56: getfield 20	com/google/android/exoplayer2/source/b/a:daO	Lcom/google/android/exoplayer2/h/g;
     //   59: aload_1
     //   60: invokespecial 73	com/google/android/exoplayer2/h/i:<init>	(Lcom/google/android/exoplayer2/h/g;Lcom/google/android/exoplayer2/h/j;)V
     //   63: aload_2
     //   64: invokespecial 76	javax/crypto/CipherInputStream:<init>	(Ljava/io/InputStream;Ljavax/crypto/Cipher;)V
-    //   67: putfield 78	com/google/android/exoplayer2/source/b/a:bgW	Ljavax/crypto/CipherInputStream;
+    //   67: putfield 78	com/google/android/exoplayer2/source/b/a:daQ	Ljavax/crypto/CipherInputStream;
     //   70: ldc 36
     //   72: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   75: ldc2_w 82
@@ -105,15 +105,15 @@ final class a
   public final void close()
   {
     AppMethodBeat.i(62819);
-    this.bgW = null;
-    this.bgU.close();
+    this.daQ = null;
+    this.daO.close();
     AppMethodBeat.o(62819);
   }
   
   public final Uri getUri()
   {
     AppMethodBeat.i(62821);
-    Uri localUri = this.bgU.getUri();
+    Uri localUri = this.daO.getUri();
     AppMethodBeat.o(62821);
     return localUri;
   }
@@ -121,11 +121,11 @@ final class a
   public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(62820);
-    if (this.bgW != null) {}
+    if (this.daQ != null) {}
     for (boolean bool = true;; bool = false)
     {
       com.google.android.exoplayer2.i.a.checkState(bool);
-      paramInt1 = this.bgW.read(paramArrayOfByte, paramInt1, paramInt2);
+      paramInt1 = this.daQ.read(paramArrayOfByte, paramInt1, paramInt2);
       if (paramInt1 >= 0) {
         break;
       }

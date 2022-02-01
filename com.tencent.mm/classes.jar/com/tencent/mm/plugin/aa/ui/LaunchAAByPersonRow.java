@@ -15,11 +15,11 @@ import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 public class LaunchAAByPersonRow
   extends LinearLayout
 {
-  private ImageView mOe;
-  private TextView mOf;
-  private TextView mOg;
-  private WalletFormView mOh;
-  private TextView mOi;
+  private ImageView pKM;
+  private TextView pKN;
+  private TextView pKO;
+  private WalletFormView pKP;
+  private TextView pKQ;
   private String username;
   
   public LaunchAAByPersonRow(Context paramContext, AttributeSet paramAttributeSet)
@@ -42,23 +42,23 @@ public class LaunchAAByPersonRow
   {
     AppMethodBeat.i(63624);
     inflate(getContext(), a.g.launch_aa_by_person_row, this);
-    this.mOe = ((ImageView)findViewById(a.f.aa_avatar));
-    this.mOf = ((TextView)findViewById(a.f.aa_username));
-    this.mOh = ((WalletFormView)findViewById(a.f.launch_aa_by_person_money_edit));
-    this.mOg = ((TextView)findViewById(a.f.launch_aa_by_person_money_unit));
-    this.mOi = ((TextView)findViewById(a.f.my_self_note));
+    this.pKM = ((ImageView)findViewById(a.f.aa_avatar));
+    this.pKN = ((TextView)findViewById(a.f.aa_username));
+    this.pKP = ((WalletFormView)findViewById(a.f.launch_aa_by_person_money_edit));
+    this.pKO = ((TextView)findViewById(a.f.launch_aa_by_person_money_unit));
+    this.pKQ = ((TextView)findViewById(a.f.my_self_note));
     AppMethodBeat.o(63624);
   }
   
   public WalletFormView getAmountEditView()
   {
-    return this.mOh;
+    return this.pKP;
   }
   
   public double getMoneyAmount()
   {
     AppMethodBeat.i(63625);
-    String str = this.mOh.getText().toString();
+    String str = this.pKP.getText().toString();
     if ((Util.isNullOrNil(str)) || ("".equals(str)))
     {
       AppMethodBeat.o(63625);
@@ -78,14 +78,14 @@ public class LaunchAAByPersonRow
   {
     AppMethodBeat.i(63626);
     if (paramTextWatcher != null) {
-      this.mOh.a(paramTextWatcher);
+      this.pKP.a(paramTextWatcher);
     }
     AppMethodBeat.o(63626);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.LaunchAAByPersonRow
  * JD-Core Version:    0.7.0.1
  */

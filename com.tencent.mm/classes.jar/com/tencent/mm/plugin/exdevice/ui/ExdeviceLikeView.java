@@ -21,12 +21,12 @@ public class ExdeviceLikeView
   extends RelativeLayout
 {
   private Context mContext;
-  private int vob;
-  private a voc;
-  private int vod;
-  private TextView voe;
-  private ImageView vof;
-  private ProgressBar vog;
+  private TextView yAA;
+  private ImageView yAB;
+  private ProgressBar yAC;
+  private int yAx;
+  private a yAy;
+  private int yAz;
   
   public ExdeviceLikeView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,33 +37,33 @@ public class ExdeviceLikeView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(24046);
-    this.vod = 2;
+    this.yAz = 2;
     this.mContext = paramContext;
-    paramContext = LayoutInflater.from(this.mContext).inflate(R.i.egx, this, true);
-    this.voe = ((TextView)paramContext.findViewById(R.h.dFW));
-    this.vof = ((ImageView)paramContext.findViewById(R.h.dFV));
-    this.vog = ((ProgressBar)paramContext.findViewById(R.h.dFZ));
+    paramContext = LayoutInflater.from(this.mContext).inflate(R.i.gjq, this, true);
+    this.yAA = ((TextView)paramContext.findViewById(R.h.fHc));
+    this.yAB = ((ImageView)paramContext.findViewById(R.h.fHb));
+    this.yAC = ((ProgressBar)paramContext.findViewById(R.h.fHf));
     setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(24045);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/exdevice/ui/ExdeviceLikeView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/exdevice/ui/ExdeviceLikeView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         if (ExdeviceLikeView.a(ExdeviceLikeView.this) != null)
         {
           paramAnonymousView = ExdeviceLikeView.a(ExdeviceLikeView.this);
           ExdeviceLikeView.b(ExdeviceLikeView.this);
-          if ((!paramAnonymousView.daA()) && (ExdeviceLikeView.b(ExdeviceLikeView.this) == 0))
+          if ((!paramAnonymousView.dGV()) && (ExdeviceLikeView.b(ExdeviceLikeView.this) == 0))
           {
             Log.d("MicroMsg.ExdeviceLikeView", "click listener is not null");
-            ExdeviceLikeView.this.setSelfLikeState(ExdeviceLikeView.Ko(ExdeviceLikeView.b(ExdeviceLikeView.this)));
+            ExdeviceLikeView.this.setSelfLikeState(ExdeviceLikeView.Ln(ExdeviceLikeView.b(ExdeviceLikeView.this)));
             if (ExdeviceLikeView.b(ExdeviceLikeView.this) == 1) {
               ExdeviceLikeView.c(ExdeviceLikeView.this);
             }
             if (ExdeviceLikeView.a(ExdeviceLikeView.this) != null) {
-              ExdeviceLikeView.a(ExdeviceLikeView.this).qy(ExdeviceLikeView.b(ExdeviceLikeView.this));
+              ExdeviceLikeView.a(ExdeviceLikeView.this).qz(ExdeviceLikeView.b(ExdeviceLikeView.this));
             }
           }
         }
@@ -82,20 +82,20 @@ public class ExdeviceLikeView
   public void setLikeNum(int paramInt)
   {
     AppMethodBeat.i(24047);
-    this.vob = paramInt;
-    String str = this.vob;
-    if (this.vob < 0)
+    this.yAx = paramInt;
+    String str = this.yAx;
+    if (this.yAx < 0)
     {
       Log.w("MicroMsg.ExdeviceLikeView", "hy: like num is negative. set to 0");
       str = "0";
-      if (this.vob > 0) {
+      if (this.yAx > 0) {
         break label97;
       }
-      this.voe.setVisibility(8);
+      this.yAA.setVisibility(8);
     }
     for (;;)
     {
-      this.voe.setText(str);
+      this.yAA.setText(str);
       AppMethodBeat.o(24047);
       return;
       if (paramInt <= 999) {
@@ -105,42 +105,42 @@ public class ExdeviceLikeView
       str = "999+";
       break;
       label97:
-      this.voe.setVisibility(0);
+      this.yAA.setVisibility(0);
     }
   }
   
   public void setOnLikeViewClickListener(a parama)
   {
-    this.voc = parama;
+    this.yAy = parama;
   }
   
   public void setSelfLikeState(int paramInt)
   {
     AppMethodBeat.i(24048);
-    this.vod = paramInt;
-    if (this.vod == 1)
+    this.yAz = paramInt;
+    if (this.yAz == 1)
     {
-      this.vog.setVisibility(8);
-      this.voe.setVisibility(0);
-      this.vof.setVisibility(0);
-      this.vof.setImageResource(R.k.device_rank_item_liked);
+      this.yAC.setVisibility(8);
+      this.yAA.setVisibility(0);
+      this.yAB.setVisibility(0);
+      this.yAB.setImageResource(R.k.device_rank_item_liked);
       AppMethodBeat.o(24048);
       return;
     }
-    if (this.vod == 0)
+    if (this.yAz == 0)
     {
-      this.vog.setVisibility(8);
-      this.voe.setVisibility(0);
-      this.vof.setVisibility(0);
-      this.vof.setImageResource(R.k.device_rank_item_unliked);
+      this.yAC.setVisibility(8);
+      this.yAA.setVisibility(0);
+      this.yAB.setVisibility(0);
+      this.yAB.setImageResource(R.k.device_rank_item_unliked);
       AppMethodBeat.o(24048);
       return;
     }
-    if (this.vod == 2)
+    if (this.yAz == 2)
     {
-      this.voe.setVisibility(8);
-      this.vog.setVisibility(0);
-      this.vof.setVisibility(8);
+      this.yAA.setVisibility(8);
+      this.yAC.setVisibility(0);
+      this.yAB.setVisibility(8);
       AppMethodBeat.o(24048);
       return;
     }
@@ -150,14 +150,14 @@ public class ExdeviceLikeView
   
   public static abstract interface a
   {
-    public abstract boolean daA();
+    public abstract boolean dGV();
     
-    public abstract void qy(int paramInt);
+    public abstract void qz(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceLikeView
  * JD-Core Version:    0.7.0.1
  */

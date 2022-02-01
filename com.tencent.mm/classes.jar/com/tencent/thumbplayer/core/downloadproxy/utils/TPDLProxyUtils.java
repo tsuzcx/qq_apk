@@ -10,19 +10,19 @@ public class TPDLProxyUtils
   
   public static String byteArrayToString(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(256239);
+    AppMethodBeat.i(227959);
     if (paramArrayOfByte == null)
     {
-      AppMethodBeat.o(256239);
+      AppMethodBeat.o(227959);
       return "";
     }
     try
     {
       paramArrayOfByte = new String(paramArrayOfByte, "UTF-8");
-      AppMethodBeat.o(256239);
+      AppMethodBeat.o(227959);
       return paramArrayOfByte;
     }
-    catch (Throwable paramArrayOfByte)
+    finally
     {
       for (;;)
       {
@@ -34,105 +34,105 @@ public class TPDLProxyUtils
   
   public static String losePackageCheck(int paramInt)
   {
-    AppMethodBeat.i(256249);
-    Object localObject2 = "";
+    AppMethodBeat.i(228021);
+    Object localObject3 = "";
     String str1 = "";
     String str2 = str1;
-    localObject1 = localObject2;
+    localObject1 = localObject3;
     try
     {
-      Object localObject3 = "ping -c " + paramInt + " www.qq.com";
+      Object localObject4 = "ping -c " + paramInt + " www.qq.com";
       str2 = str1;
-      localObject1 = localObject2;
-      BufferedReader localBufferedReader = new BufferedReader(new InputStreamReader(Runtime.getRuntime().exec((String)localObject3).getInputStream()));
+      localObject1 = localObject3;
+      BufferedReader localBufferedReader = new BufferedReader(new InputStreamReader(Runtime.getRuntime().exec((String)localObject4).getInputStream()));
       for (;;)
       {
         str2 = str1;
-        localObject1 = localObject2;
+        localObject1 = localObject3;
         String str3 = localBufferedReader.readLine();
         str2 = str1;
-        localObject1 = localObject2;
+        localObject1 = localObject3;
         if (str3 == null) {
           break;
         }
-        localObject3 = localObject2;
+        localObject4 = localObject3;
         str2 = str1;
-        localObject1 = localObject2;
+        localObject1 = localObject3;
         if (str3.contains(" packet loss"))
         {
           str2 = str1;
-          localObject1 = localObject2;
+          localObject1 = localObject3;
           paramInt = str3.indexOf("received, ");
           str2 = str1;
-          localObject1 = localObject2;
+          localObject1 = localObject3;
           int i = str3.indexOf("%");
           str2 = str1;
-          localObject1 = localObject2;
-          localObject3 = str3.substring(paramInt + "received, ".length(), i + 1);
+          localObject1 = localObject3;
+          localObject4 = str3.substring(paramInt + "received, ".length(), i + 1);
         }
-        localObject2 = localObject3;
+        localObject3 = localObject4;
         str2 = str1;
-        localObject1 = localObject3;
+        localObject1 = localObject4;
         if (str3.contains("avg"))
         {
           str2 = str1;
-          localObject1 = localObject3;
+          localObject1 = localObject4;
           paramInt = str3.indexOf("/", 20);
           str2 = str1;
-          localObject1 = localObject3;
+          localObject1 = localObject4;
           str1 = str3.substring(paramInt + 1, str3.indexOf(".", paramInt));
-          localObject2 = localObject3;
+          localObject3 = localObject4;
         }
       }
       return localObject1;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       localObject1 = (String)localObject1 + ";" + str2;
-      AppMethodBeat.o(256249);
+      AppMethodBeat.o(228021);
     }
   }
   
   public static int objectToInt(Object paramObject, int paramInt)
   {
-    AppMethodBeat.i(256242);
+    AppMethodBeat.i(227970);
     if (paramObject == null)
     {
-      AppMethodBeat.o(256242);
+      AppMethodBeat.o(227970);
       return paramInt;
     }
     try
     {
       int i = ((Integer)paramObject).intValue();
-      AppMethodBeat.o(256242);
+      AppMethodBeat.o(227970);
       return i;
     }
-    catch (Throwable paramObject)
+    finally
     {
       TPDLProxyLog.e("TPDLProxyUtils", 0, "tpdlnative", "object to int failed, error:" + paramObject.toString());
-      AppMethodBeat.o(256242);
+      AppMethodBeat.o(227970);
     }
     return paramInt;
   }
   
   public static long objectToLong(Object paramObject, long paramLong)
   {
-    AppMethodBeat.i(256244);
+    AppMethodBeat.i(227982);
     if (paramObject == null)
     {
-      AppMethodBeat.o(256244);
+      AppMethodBeat.o(227982);
       return paramLong;
     }
     try
     {
       long l = ((Long)paramObject).longValue();
-      AppMethodBeat.o(256244);
+      AppMethodBeat.o(227982);
       return l;
     }
-    catch (Throwable paramObject)
+    finally
     {
       TPDLProxyLog.e("TPDLProxyUtils", 0, "tpdlnative", "object to long failed, error:" + paramObject.toString());
-      AppMethodBeat.o(256244);
+      AppMethodBeat.o(227982);
     }
     return paramLong;
   }
@@ -142,220 +142,182 @@ public class TPDLProxyUtils
   {
     // Byte code:
     //   0: ldc 157
-    //   2: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: new 159	java/io/ByteArrayOutputStream
     //   8: dup
     //   9: invokespecial 160	java/io/ByteArrayOutputStream:<init>	()V
-    //   12: astore_1
+    //   12: astore_2
     //   13: new 162	java/io/ObjectOutputStream
     //   16: dup
-    //   17: aload_1
+    //   17: aload_2
     //   18: invokespecial 165	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   21: astore 5
-    //   23: aload_1
-    //   24: astore_3
-    //   25: aload 5
-    //   27: astore_2
-    //   28: aload 5
-    //   30: aload_0
-    //   31: invokevirtual 169	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   21: astore_1
+    //   22: aload_1
+    //   23: aload_0
+    //   24: invokevirtual 169	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   27: aload_2
+    //   28: ldc 171
+    //   30: invokevirtual 174	java/io/ByteArrayOutputStream:toString	(Ljava/lang/String;)Ljava/lang/String;
+    //   33: astore_0
     //   34: aload_1
-    //   35: astore_3
-    //   36: aload 5
-    //   38: astore_2
-    //   39: aload_1
-    //   40: ldc 171
-    //   42: invokevirtual 174	java/io/ByteArrayOutputStream:toString	(Ljava/lang/String;)Ljava/lang/String;
-    //   45: astore_0
-    //   46: aload 5
-    //   48: invokevirtual 177	java/io/ObjectOutputStream:close	()V
-    //   51: aload_1
-    //   52: invokevirtual 178	java/io/ByteArrayOutputStream:close	()V
-    //   55: ldc 157
-    //   57: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   60: aload_0
-    //   61: areturn
-    //   62: astore_2
-    //   63: ldc 8
-    //   65: iconst_0
-    //   66: ldc 38
-    //   68: new 40	java/lang/StringBuilder
-    //   71: dup
-    //   72: ldc 180
-    //   74: invokespecial 45	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   77: aload_2
-    //   78: invokevirtual 49	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   81: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   84: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   87: invokestatic 60	com/tencent/thumbplayer/core/downloadproxy/utils/TPDLProxyLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
-    //   90: goto -39 -> 51
-    //   93: astore_1
-    //   94: ldc 8
-    //   96: iconst_0
-    //   97: ldc 38
-    //   99: new 40	java/lang/StringBuilder
-    //   102: dup
-    //   103: ldc 182
-    //   105: invokespecial 45	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   108: aload_1
-    //   109: invokevirtual 49	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   112: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   115: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   118: invokestatic 60	com/tencent/thumbplayer/core/downloadproxy/utils/TPDLProxyLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
-    //   121: goto -66 -> 55
-    //   124: astore 4
-    //   126: aconst_null
-    //   127: astore_1
-    //   128: aconst_null
-    //   129: astore_0
-    //   130: aload_1
-    //   131: astore_3
-    //   132: aload_0
-    //   133: astore_2
-    //   134: ldc 8
-    //   136: iconst_0
-    //   137: ldc 38
-    //   139: new 40	java/lang/StringBuilder
-    //   142: dup
-    //   143: ldc 184
-    //   145: invokespecial 45	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   148: aload 4
-    //   150: invokevirtual 49	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   153: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   156: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   159: invokestatic 60	com/tencent/thumbplayer/core/downloadproxy/utils/TPDLProxyLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
-    //   162: aload_0
-    //   163: ifnull +7 -> 170
-    //   166: aload_0
-    //   167: invokevirtual 177	java/io/ObjectOutputStream:close	()V
-    //   170: aload_1
-    //   171: invokevirtual 178	java/io/ByteArrayOutputStream:close	()V
-    //   174: ldc 157
-    //   176: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   179: ldc 29
-    //   181: areturn
-    //   182: astore_0
-    //   183: ldc 8
-    //   185: iconst_0
-    //   186: ldc 38
-    //   188: new 40	java/lang/StringBuilder
-    //   191: dup
-    //   192: ldc 180
-    //   194: invokespecial 45	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   197: aload_0
-    //   198: invokevirtual 49	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   201: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   204: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   207: invokestatic 60	com/tencent/thumbplayer/core/downloadproxy/utils/TPDLProxyLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
-    //   210: goto -40 -> 170
-    //   213: astore_0
-    //   214: ldc 8
-    //   216: iconst_0
-    //   217: ldc 38
-    //   219: new 40	java/lang/StringBuilder
-    //   222: dup
-    //   223: ldc 182
-    //   225: invokespecial 45	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   228: aload_0
-    //   229: invokevirtual 49	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   232: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   235: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   238: invokestatic 60	com/tencent/thumbplayer/core/downloadproxy/utils/TPDLProxyLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
-    //   241: goto -67 -> 174
-    //   244: astore_0
-    //   245: aconst_null
-    //   246: astore_1
-    //   247: aconst_null
-    //   248: astore_2
-    //   249: aload_2
-    //   250: ifnull +7 -> 257
-    //   253: aload_2
-    //   254: invokevirtual 177	java/io/ObjectOutputStream:close	()V
-    //   257: aload_1
-    //   258: invokevirtual 178	java/io/ByteArrayOutputStream:close	()V
-    //   261: ldc 157
-    //   263: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   266: aload_0
-    //   267: athrow
-    //   268: astore_2
-    //   269: ldc 8
-    //   271: iconst_0
-    //   272: ldc 38
-    //   274: new 40	java/lang/StringBuilder
-    //   277: dup
-    //   278: ldc 180
-    //   280: invokespecial 45	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   283: aload_2
-    //   284: invokevirtual 49	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   287: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   290: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   293: invokestatic 60	com/tencent/thumbplayer/core/downloadproxy/utils/TPDLProxyLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
-    //   296: goto -39 -> 257
-    //   299: astore_1
-    //   300: ldc 8
-    //   302: iconst_0
-    //   303: ldc 38
-    //   305: new 40	java/lang/StringBuilder
-    //   308: dup
-    //   309: ldc 182
-    //   311: invokespecial 45	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   314: aload_1
-    //   315: invokevirtual 49	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   318: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   321: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   324: invokestatic 60	com/tencent/thumbplayer/core/downloadproxy/utils/TPDLProxyLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
-    //   327: goto -66 -> 261
-    //   330: astore_0
-    //   331: aconst_null
-    //   332: astore_2
-    //   333: goto -84 -> 249
-    //   336: astore_0
-    //   337: aload_3
-    //   338: astore_1
-    //   339: goto -90 -> 249
-    //   342: astore 4
-    //   344: aconst_null
-    //   345: astore_0
-    //   346: goto -216 -> 130
-    //   349: astore 4
-    //   351: aload 5
-    //   353: astore_0
-    //   354: goto -224 -> 130
+    //   35: invokevirtual 177	java/io/ObjectOutputStream:close	()V
+    //   38: aload_2
+    //   39: invokevirtual 178	java/io/ByteArrayOutputStream:close	()V
+    //   42: ldc 157
+    //   44: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   47: aload_0
+    //   48: areturn
+    //   49: astore_1
+    //   50: ldc 8
+    //   52: iconst_0
+    //   53: ldc 36
+    //   55: new 38	java/lang/StringBuilder
+    //   58: dup
+    //   59: ldc 180
+    //   61: invokespecial 43	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   64: aload_1
+    //   65: invokevirtual 49	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   68: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   71: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   74: invokestatic 60	com/tencent/thumbplayer/core/downloadproxy/utils/TPDLProxyLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
+    //   77: goto -39 -> 38
+    //   80: astore_1
+    //   81: ldc 8
+    //   83: iconst_0
+    //   84: ldc 36
+    //   86: new 38	java/lang/StringBuilder
+    //   89: dup
+    //   90: ldc 182
+    //   92: invokespecial 43	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   95: aload_1
+    //   96: invokevirtual 49	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   99: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   102: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   105: invokestatic 60	com/tencent/thumbplayer/core/downloadproxy/utils/TPDLProxyLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
+    //   108: goto -66 -> 42
+    //   111: astore_0
+    //   112: aconst_null
+    //   113: astore_2
+    //   114: aconst_null
+    //   115: astore_1
+    //   116: ldc 8
+    //   118: iconst_0
+    //   119: ldc 36
+    //   121: new 38	java/lang/StringBuilder
+    //   124: dup
+    //   125: ldc 184
+    //   127: invokespecial 43	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   130: aload_0
+    //   131: invokevirtual 49	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   134: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   137: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   140: invokestatic 60	com/tencent/thumbplayer/core/downloadproxy/utils/TPDLProxyLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
+    //   143: aload_1
+    //   144: ifnull +7 -> 151
+    //   147: aload_1
+    //   148: invokevirtual 177	java/io/ObjectOutputStream:close	()V
+    //   151: aload_2
+    //   152: invokevirtual 178	java/io/ByteArrayOutputStream:close	()V
+    //   155: ldc 157
+    //   157: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   160: ldc 27
+    //   162: areturn
+    //   163: astore_0
+    //   164: ldc 8
+    //   166: iconst_0
+    //   167: ldc 36
+    //   169: new 38	java/lang/StringBuilder
+    //   172: dup
+    //   173: ldc 180
+    //   175: invokespecial 43	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   178: aload_0
+    //   179: invokevirtual 49	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   182: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   185: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   188: invokestatic 60	com/tencent/thumbplayer/core/downloadproxy/utils/TPDLProxyLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
+    //   191: goto -40 -> 151
+    //   194: astore_0
+    //   195: ldc 8
+    //   197: iconst_0
+    //   198: ldc 36
+    //   200: new 38	java/lang/StringBuilder
+    //   203: dup
+    //   204: ldc 182
+    //   206: invokespecial 43	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   209: aload_0
+    //   210: invokevirtual 49	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   213: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   216: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   219: invokestatic 60	com/tencent/thumbplayer/core/downloadproxy/utils/TPDLProxyLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
+    //   222: goto -67 -> 155
+    //   225: astore_0
+    //   226: aload_1
+    //   227: ifnull +7 -> 234
+    //   230: aload_1
+    //   231: invokevirtual 177	java/io/ObjectOutputStream:close	()V
+    //   234: aload_2
+    //   235: invokevirtual 178	java/io/ByteArrayOutputStream:close	()V
+    //   238: ldc 157
+    //   240: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   243: aload_0
+    //   244: athrow
+    //   245: astore_1
+    //   246: ldc 8
+    //   248: iconst_0
+    //   249: ldc 36
+    //   251: new 38	java/lang/StringBuilder
+    //   254: dup
+    //   255: ldc 180
+    //   257: invokespecial 43	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   260: aload_1
+    //   261: invokevirtual 49	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   264: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   267: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   270: invokestatic 60	com/tencent/thumbplayer/core/downloadproxy/utils/TPDLProxyLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
+    //   273: goto -39 -> 234
+    //   276: astore_1
+    //   277: ldc 8
+    //   279: iconst_0
+    //   280: ldc 36
+    //   282: new 38	java/lang/StringBuilder
+    //   285: dup
+    //   286: ldc 182
+    //   288: invokespecial 43	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   291: aload_1
+    //   292: invokevirtual 49	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   295: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   298: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   301: invokestatic 60	com/tencent/thumbplayer/core/downloadproxy/utils/TPDLProxyLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
+    //   304: goto -66 -> 238
+    //   307: astore_0
+    //   308: aconst_null
+    //   309: astore_1
+    //   310: goto -194 -> 116
+    //   313: astore_0
+    //   314: goto -198 -> 116
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	357	0	paramObject	Object
-    //   12	40	1	localByteArrayOutputStream	java.io.ByteArrayOutputStream
-    //   93	16	1	localThrowable1	Throwable
-    //   127	131	1	localObject1	Object
-    //   299	16	1	localThrowable2	Throwable
-    //   338	1	1	localObject2	Object
-    //   27	12	2	localObjectOutputStream1	java.io.ObjectOutputStream
-    //   62	16	2	localThrowable3	Throwable
-    //   133	121	2	localObject3	Object
-    //   268	16	2	localThrowable4	Throwable
-    //   332	1	2	localObject4	Object
-    //   24	314	3	localObject5	Object
-    //   124	25	4	localThrowable5	Throwable
-    //   342	1	4	localThrowable6	Throwable
-    //   349	1	4	localThrowable7	Throwable
-    //   21	331	5	localObjectOutputStream2	java.io.ObjectOutputStream
+    //   0	317	0	paramObject	Object
+    //   21	14	1	localObjectOutputStream	java.io.ObjectOutputStream
+    //   49	16	1	localObject1	Object
+    //   80	16	1	localObject2	Object
+    //   115	116	1	localObject3	Object
+    //   245	16	1	localObject4	Object
+    //   276	16	1	localObject5	Object
+    //   309	1	1	localObject6	Object
+    //   12	223	2	localByteArrayOutputStream	java.io.ByteArrayOutputStream
     // Exception table:
     //   from	to	target	type
-    //   46	51	62	java/lang/Throwable
-    //   51	55	93	java/lang/Throwable
-    //   5	13	124	java/lang/Throwable
-    //   166	170	182	java/lang/Throwable
-    //   170	174	213	java/lang/Throwable
-    //   5	13	244	finally
-    //   253	257	268	java/lang/Throwable
-    //   257	261	299	java/lang/Throwable
-    //   13	23	330	finally
-    //   28	34	336	finally
-    //   39	46	336	finally
-    //   134	162	336	finally
-    //   13	23	342	java/lang/Throwable
-    //   28	34	349	java/lang/Throwable
-    //   39	46	349	java/lang/Throwable
+    //   34	38	49	finally
+    //   38	42	80	finally
+    //   5	13	111	finally
+    //   147	151	163	finally
+    //   151	155	194	finally
+    //   116	143	225	finally
+    //   230	234	245	finally
+    //   234	238	276	finally
+    //   13	22	307	finally
+    //   22	34	313	finally
   }
   
   /* Error */
@@ -363,215 +325,190 @@ public class TPDLProxyUtils
   {
     // Byte code:
     //   0: ldc 187
-    //   2: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: new 189	java/io/ByteArrayInputStream
     //   8: dup
     //   9: aload_0
     //   10: ldc 171
     //   12: invokevirtual 193	java/lang/String:getBytes	(Ljava/lang/String;)[B
     //   15: invokespecial 196	java/io/ByteArrayInputStream:<init>	([B)V
-    //   18: astore_1
+    //   18: astore_2
     //   19: new 198	java/io/ObjectInputStream
     //   22: dup
-    //   23: aload_1
+    //   23: aload_2
     //   24: invokespecial 199	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
-    //   27: astore_0
-    //   28: aload_0
-    //   29: astore_3
-    //   30: aload_1
-    //   31: astore_2
-    //   32: aload_0
-    //   33: invokevirtual 203	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   36: astore 4
-    //   38: aload_0
-    //   39: invokevirtual 204	java/io/ObjectInputStream:close	()V
-    //   42: aload_1
-    //   43: invokevirtual 205	java/io/ByteArrayInputStream:close	()V
-    //   46: ldc 187
-    //   48: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   51: aload 4
-    //   53: areturn
-    //   54: astore_0
-    //   55: ldc 8
-    //   57: iconst_0
-    //   58: ldc 38
-    //   60: new 40	java/lang/StringBuilder
-    //   63: dup
-    //   64: ldc 207
-    //   66: invokespecial 45	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   69: aload_0
-    //   70: invokevirtual 49	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   73: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   76: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   79: invokestatic 60	com/tencent/thumbplayer/core/downloadproxy/utils/TPDLProxyLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
-    //   82: goto -40 -> 42
-    //   85: astore_0
-    //   86: ldc 8
-    //   88: iconst_0
-    //   89: ldc 38
-    //   91: new 40	java/lang/StringBuilder
-    //   94: dup
-    //   95: ldc 209
-    //   97: invokespecial 45	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   100: aload_0
-    //   101: invokevirtual 49	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   104: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   107: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   110: invokestatic 60	com/tencent/thumbplayer/core/downloadproxy/utils/TPDLProxyLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
-    //   113: goto -67 -> 46
-    //   116: astore 4
-    //   118: aconst_null
-    //   119: astore_0
-    //   120: aconst_null
-    //   121: astore_1
-    //   122: aload_0
-    //   123: astore_3
-    //   124: aload_1
-    //   125: astore_2
-    //   126: ldc 8
-    //   128: iconst_0
-    //   129: ldc 38
-    //   131: new 40	java/lang/StringBuilder
-    //   134: dup
-    //   135: ldc 211
-    //   137: invokespecial 45	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   140: aload 4
-    //   142: invokevirtual 49	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   145: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   148: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   151: invokestatic 60	com/tencent/thumbplayer/core/downloadproxy/utils/TPDLProxyLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
-    //   154: aload_0
-    //   155: ifnull +7 -> 162
-    //   158: aload_0
-    //   159: invokevirtual 204	java/io/ObjectInputStream:close	()V
-    //   162: aload_1
-    //   163: ifnull +7 -> 170
-    //   166: aload_1
-    //   167: invokevirtual 205	java/io/ByteArrayInputStream:close	()V
-    //   170: ldc 187
-    //   172: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   175: aconst_null
-    //   176: areturn
-    //   177: astore_0
-    //   178: ldc 8
-    //   180: iconst_0
-    //   181: ldc 38
-    //   183: new 40	java/lang/StringBuilder
-    //   186: dup
-    //   187: ldc 207
-    //   189: invokespecial 45	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   192: aload_0
-    //   193: invokevirtual 49	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   196: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   199: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   202: invokestatic 60	com/tencent/thumbplayer/core/downloadproxy/utils/TPDLProxyLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
-    //   205: goto -43 -> 162
-    //   208: astore_0
-    //   209: ldc 8
-    //   211: iconst_0
-    //   212: ldc 38
-    //   214: new 40	java/lang/StringBuilder
-    //   217: dup
-    //   218: ldc 209
-    //   220: invokespecial 45	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   223: aload_0
-    //   224: invokevirtual 49	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   227: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   230: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   233: invokestatic 60	com/tencent/thumbplayer/core/downloadproxy/utils/TPDLProxyLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
-    //   236: goto -66 -> 170
-    //   239: astore_0
-    //   240: aconst_null
-    //   241: astore_3
-    //   242: aconst_null
-    //   243: astore_1
-    //   244: aload_3
-    //   245: ifnull +7 -> 252
-    //   248: aload_3
-    //   249: invokevirtual 204	java/io/ObjectInputStream:close	()V
-    //   252: aload_1
-    //   253: ifnull +7 -> 260
-    //   256: aload_1
-    //   257: invokevirtual 205	java/io/ByteArrayInputStream:close	()V
-    //   260: ldc 187
-    //   262: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   265: aload_0
-    //   266: athrow
-    //   267: astore_2
-    //   268: ldc 8
-    //   270: iconst_0
-    //   271: ldc 38
-    //   273: new 40	java/lang/StringBuilder
-    //   276: dup
-    //   277: ldc 207
-    //   279: invokespecial 45	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   282: aload_2
-    //   283: invokevirtual 49	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   286: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   289: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   292: invokestatic 60	com/tencent/thumbplayer/core/downloadproxy/utils/TPDLProxyLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
-    //   295: goto -43 -> 252
-    //   298: astore_1
-    //   299: ldc 8
-    //   301: iconst_0
-    //   302: ldc 38
-    //   304: new 40	java/lang/StringBuilder
-    //   307: dup
-    //   308: ldc 209
-    //   310: invokespecial 45	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   313: aload_1
-    //   314: invokevirtual 49	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   317: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   320: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   323: invokestatic 60	com/tencent/thumbplayer/core/downloadproxy/utils/TPDLProxyLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
-    //   326: goto -66 -> 260
-    //   329: astore_0
-    //   330: aconst_null
-    //   331: astore_3
-    //   332: goto -88 -> 244
-    //   335: astore_0
-    //   336: aload_2
-    //   337: astore_1
-    //   338: goto -94 -> 244
-    //   341: astore 4
-    //   343: aconst_null
-    //   344: astore_0
-    //   345: goto -223 -> 122
-    //   348: astore 4
-    //   350: goto -228 -> 122
+    //   27: astore_1
+    //   28: aload_1
+    //   29: invokevirtual 203	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   32: astore_0
+    //   33: aload_1
+    //   34: invokevirtual 204	java/io/ObjectInputStream:close	()V
+    //   37: aload_2
+    //   38: invokevirtual 205	java/io/ByteArrayInputStream:close	()V
+    //   41: ldc 187
+    //   43: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   46: aload_0
+    //   47: areturn
+    //   48: astore_1
+    //   49: ldc 8
+    //   51: iconst_0
+    //   52: ldc 36
+    //   54: new 38	java/lang/StringBuilder
+    //   57: dup
+    //   58: ldc 207
+    //   60: invokespecial 43	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   63: aload_1
+    //   64: invokevirtual 49	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   67: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   70: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   73: invokestatic 60	com/tencent/thumbplayer/core/downloadproxy/utils/TPDLProxyLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
+    //   76: goto -39 -> 37
+    //   79: astore_1
+    //   80: ldc 8
+    //   82: iconst_0
+    //   83: ldc 36
+    //   85: new 38	java/lang/StringBuilder
+    //   88: dup
+    //   89: ldc 209
+    //   91: invokespecial 43	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   94: aload_1
+    //   95: invokevirtual 49	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   98: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   101: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   104: invokestatic 60	com/tencent/thumbplayer/core/downloadproxy/utils/TPDLProxyLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
+    //   107: goto -66 -> 41
+    //   110: astore_0
+    //   111: aconst_null
+    //   112: astore_1
+    //   113: aconst_null
+    //   114: astore_2
+    //   115: ldc 8
+    //   117: iconst_0
+    //   118: ldc 36
+    //   120: new 38	java/lang/StringBuilder
+    //   123: dup
+    //   124: ldc 211
+    //   126: invokespecial 43	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   129: aload_0
+    //   130: invokevirtual 49	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   133: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   136: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   139: invokestatic 60	com/tencent/thumbplayer/core/downloadproxy/utils/TPDLProxyLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
+    //   142: aload_1
+    //   143: ifnull +7 -> 150
+    //   146: aload_1
+    //   147: invokevirtual 204	java/io/ObjectInputStream:close	()V
+    //   150: aload_2
+    //   151: ifnull +7 -> 158
+    //   154: aload_2
+    //   155: invokevirtual 205	java/io/ByteArrayInputStream:close	()V
+    //   158: ldc 187
+    //   160: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   163: aconst_null
+    //   164: areturn
+    //   165: astore_0
+    //   166: ldc 8
+    //   168: iconst_0
+    //   169: ldc 36
+    //   171: new 38	java/lang/StringBuilder
+    //   174: dup
+    //   175: ldc 207
+    //   177: invokespecial 43	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   180: aload_0
+    //   181: invokevirtual 49	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   184: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   187: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   190: invokestatic 60	com/tencent/thumbplayer/core/downloadproxy/utils/TPDLProxyLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
+    //   193: goto -43 -> 150
+    //   196: astore_0
+    //   197: ldc 8
+    //   199: iconst_0
+    //   200: ldc 36
+    //   202: new 38	java/lang/StringBuilder
+    //   205: dup
+    //   206: ldc 209
+    //   208: invokespecial 43	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   211: aload_0
+    //   212: invokevirtual 49	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   215: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   218: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   221: invokestatic 60	com/tencent/thumbplayer/core/downloadproxy/utils/TPDLProxyLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
+    //   224: goto -66 -> 158
+    //   227: astore_0
+    //   228: aload_1
+    //   229: ifnull +7 -> 236
+    //   232: aload_1
+    //   233: invokevirtual 204	java/io/ObjectInputStream:close	()V
+    //   236: aload_2
+    //   237: ifnull +7 -> 244
+    //   240: aload_2
+    //   241: invokevirtual 205	java/io/ByteArrayInputStream:close	()V
+    //   244: ldc 187
+    //   246: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   249: aload_0
+    //   250: athrow
+    //   251: astore_1
+    //   252: ldc 8
+    //   254: iconst_0
+    //   255: ldc 36
+    //   257: new 38	java/lang/StringBuilder
+    //   260: dup
+    //   261: ldc 207
+    //   263: invokespecial 43	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   266: aload_1
+    //   267: invokevirtual 49	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   270: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   273: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   276: invokestatic 60	com/tencent/thumbplayer/core/downloadproxy/utils/TPDLProxyLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
+    //   279: goto -43 -> 236
+    //   282: astore_1
+    //   283: ldc 8
+    //   285: iconst_0
+    //   286: ldc 36
+    //   288: new 38	java/lang/StringBuilder
+    //   291: dup
+    //   292: ldc 209
+    //   294: invokespecial 43	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   297: aload_1
+    //   298: invokevirtual 49	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   301: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   304: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   307: invokestatic 60	com/tencent/thumbplayer/core/downloadproxy/utils/TPDLProxyLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
+    //   310: goto -66 -> 244
+    //   313: astore_0
+    //   314: aconst_null
+    //   315: astore_1
+    //   316: goto -201 -> 115
+    //   319: astore_0
+    //   320: goto -205 -> 115
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	353	0	paramString	String
-    //   18	239	1	localByteArrayInputStream1	java.io.ByteArrayInputStream
-    //   298	16	1	localThrowable1	Throwable
-    //   337	1	1	localObject1	Object
-    //   31	95	2	localByteArrayInputStream2	java.io.ByteArrayInputStream
-    //   267	70	2	localThrowable2	Throwable
-    //   29	303	3	str	String
-    //   36	16	4	localObject2	Object
-    //   116	25	4	localThrowable3	Throwable
-    //   341	1	4	localThrowable4	Throwable
-    //   348	1	4	localThrowable5	Throwable
+    //   0	323	0	paramString	String
+    //   27	7	1	localObjectInputStream	java.io.ObjectInputStream
+    //   48	16	1	localObject1	Object
+    //   79	16	1	localObject2	Object
+    //   112	121	1	localObject3	Object
+    //   251	16	1	localObject4	Object
+    //   282	16	1	localObject5	Object
+    //   315	1	1	localObject6	Object
+    //   18	223	2	localByteArrayInputStream	java.io.ByteArrayInputStream
     // Exception table:
     //   from	to	target	type
-    //   38	42	54	java/lang/Throwable
-    //   42	46	85	java/lang/Throwable
-    //   5	19	116	java/lang/Throwable
-    //   158	162	177	java/lang/Throwable
-    //   166	170	208	java/lang/Throwable
-    //   5	19	239	finally
-    //   248	252	267	java/lang/Throwable
-    //   256	260	298	java/lang/Throwable
-    //   19	28	329	finally
-    //   32	38	335	finally
-    //   126	154	335	finally
-    //   19	28	341	java/lang/Throwable
-    //   32	38	348	java/lang/Throwable
+    //   33	37	48	finally
+    //   37	41	79	finally
+    //   5	19	110	finally
+    //   146	150	165	finally
+    //   154	158	196	finally
+    //   115	142	227	finally
+    //   232	236	251	finally
+    //   240	244	282	finally
+    //   19	28	313	finally
+    //   28	33	319	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.utils.TPDLProxyUtils
  * JD-Core Version:    0.7.0.1
  */

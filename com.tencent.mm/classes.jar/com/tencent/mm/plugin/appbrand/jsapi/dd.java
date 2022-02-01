@@ -1,46 +1,35 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
+import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.r;
-import com.tencent.mm.plugin.appbrand.utils.e.a;
-import com.tencent.mm.vfs.q;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.n.n;
+import com.tencent.mm.plugin.appbrand.g;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"loadAppBrandImage", "", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "path", "", "md5", "onLoadCallback", "Lcom/tencent/mm/plugin/appbrand/utils/AppBrandFileLoadHelper$IOnLoadCallback;", "plugin-appbrand-integration_release"})
 public final class dd
+  extends c<g>
 {
-  public static final void a(e parame, String paramString, e.a parama)
+  public static final int CTRL_INDEX = 215;
+  public static final String NAME = "updatePerfData";
+  private static final SparseArray<Integer> rBl;
+  
+  static
   {
-    Object localObject = null;
-    AppMethodBeat.i(273272);
-    p.k(parame, "component");
-    p.k(paramString, "path");
-    p.k(parama, "onLoadCallback");
-    if ((n.M(paramString, "http://", false)) || (n.M(paramString, "https://", false)))
-    {
-      com.tencent.mm.plugin.appbrand.utils.e.a(parame, paramString, null, parama);
-      AppMethodBeat.o(273272);
-      return;
-    }
-    r localr = parame.getFileSystem();
-    parame = localObject;
-    if (localr != null)
-    {
-      paramString = localr.adL(paramString);
-      parame = localObject;
-      if (paramString != null) {
-        parame = paramString.bOF();
-      }
-    }
-    parama.dR(parame);
-    AppMethodBeat.o(273272);
+    AppMethodBeat.i(147147);
+    SparseArray localSparseArray = new SparseArray();
+    rBl = localSparseArray;
+    localSparseArray.put("firstRenderTime".hashCode(), Integer.valueOf(301));
+    rBl.put("reRenderTime".hashCode(), Integer.valueOf(302));
+    rBl.put("webview2AppServiceTotalTime".hashCode(), Integer.valueOf(402));
+    rBl.put("webview2AppServiceDataSize".hashCode(), Integer.valueOf(403));
+    rBl.put("webview2AppServiceNativeTime".hashCode(), Integer.valueOf(404));
+    rBl.put("appService2WebviewTotalTime".hashCode(), Integer.valueOf(405));
+    rBl.put("appService2WebviewDataSize".hashCode(), Integer.valueOf(406));
+    rBl.put("appService2WebviewNativeTime".hashCode(), Integer.valueOf(407));
+    AppMethodBeat.o(147147);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.dd
  * JD-Core Version:    0.7.0.1
  */

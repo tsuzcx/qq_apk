@@ -1,58 +1,28 @@
 package com.tencent.mm.plugin.finder.utils;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.id;
-import com.tencent.mm.f.a.id.a;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
-import kotlin.l;
+import com.tencent.mm.plugin.report.service.h;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/utils/FinderReportUtil;", "", "()V", "onCommentAction", "", "action", "", "commentId", "", "onLikeComment", "isLike", "", "onPostComment", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/utils/FinderNewReporter;", "", "()V", "id", "", "getId", "()J", "reportCreateContact", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class z
 {
-  public static final z AEm;
+  public static final z GgY;
+  private static final long id;
   
   static
   {
-    AppMethodBeat.i(226737);
-    AEm = new z();
-    AppMethodBeat.o(226737);
+    AppMethodBeat.i(333711);
+    GgY = new z();
+    id = 1585L;
+    AppMethodBeat.o(333711);
   }
   
-  public static void ap(int paramInt, long paramLong)
+  public static void feX()
   {
-    AppMethodBeat.i(226736);
-    id localid = new id();
-    localid.fFj.action = paramInt;
-    localid.fFj.commentId = paramLong;
-    EventCenter.instance.publish((IEvent)localid);
-    AppMethodBeat.o(226736);
-  }
-  
-  public static void edr()
-  {
-    AppMethodBeat.i(226731);
-    id localid = new id();
-    localid.fFj.action = 1;
-    localid.fFj.commentId = 0L;
-    EventCenter.instance.publish((IEvent)localid);
-    AppMethodBeat.o(226731);
-  }
-  
-  public static void h(boolean paramBoolean, long paramLong)
-  {
-    AppMethodBeat.i(226726);
-    id localid = new id();
-    id.a locala = localid.fFj;
-    if (paramBoolean) {}
-    for (int i = 2;; i = 3)
-    {
-      locala.action = i;
-      localid.fFj.commentId = paramLong;
-      EventCenter.instance.publish((IEvent)localid);
-      AppMethodBeat.o(226726);
-      return;
-    }
+    AppMethodBeat.i(333695);
+    h.OAn.p(id, 1L, 1L);
+    AppMethodBeat.o(333695);
   }
 }
 

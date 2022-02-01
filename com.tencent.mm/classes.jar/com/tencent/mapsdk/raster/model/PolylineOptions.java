@@ -1,6 +1,8 @@
 package com.tencent.mapsdk.raster.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.o.a.b.k.a;
+import com.tencent.mm.plugin.appbrand.jsapi.o.a.b.k.b;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,6 +31,8 @@ public final class PolylineOptions
   private int lineType;
   private IndoorInfo mIndoorInfo;
   private final List<LatLng> points;
+  private List<b.k.a> segmentTexts;
+  private b.k.b textStyle;
   private float width;
   private float zIndex;
   
@@ -228,6 +232,16 @@ public final class PolylineOptions
     return this.points;
   }
   
+  public final List<b.k.a> getSegmentTexts()
+  {
+    return this.segmentTexts;
+  }
+  
+  public final b.k.b getTextStyle()
+  {
+    return this.textStyle;
+  }
+  
   public final float getWidth()
   {
     return this.width;
@@ -300,6 +314,18 @@ public final class PolylineOptions
     this.enableGradient = paramBoolean;
   }
   
+  public final PolylineOptions setSegmentTexts(List<b.k.a> paramList)
+  {
+    this.segmentTexts = paramList;
+    return this;
+  }
+  
+  public final PolylineOptions setTextStyle(b.k.b paramb)
+  {
+    this.textStyle = paramb;
+    return this;
+  }
+  
   public final PolylineOptions visible(boolean paramBoolean)
   {
     this.isVisible = paramBoolean;
@@ -321,24 +347,10 @@ public final class PolylineOptions
     this.zIndex = paramFloat;
     return this;
   }
-  
-  public static final class Colors
-  {
-    public static final int DARK_BLUE = 6;
-    public static final int GRAYBLUE = 8;
-    public static final int GREEN = 4;
-    public static final int GREY = 0;
-    public static final int LIGHT_BLUE = 1;
-    public static final int LIVER_RED = 9;
-    public static final int MID_BLUE = 5;
-    public static final int RED = 2;
-    public static final int TRANSPARENT = 7;
-    public static final int YELLOW = 3;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mapsdk.raster.model.PolylineOptions
  * JD-Core Version:    0.7.0.1
  */

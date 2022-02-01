@@ -6,11 +6,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 {
   static
   {
-    AppMethodBeat.i(256670);
+    AppMethodBeat.i(218306);
     VideoType = new MediaType("VideoType", 0);
     AudioType = new MediaType("AudioType", 1);
     $VALUES = new MediaType[] { VideoType, AudioType };
-    AppMethodBeat.o(256670);
+    AppMethodBeat.o(218306);
   }
   
   private YtVideoEncoder$MediaType() {}

@@ -9,25 +9,25 @@ import javax.net.ssl.SSLContext;
 public final class c
   implements Runnable
 {
-  f QLs;
-  HttpURLConnection QLt;
-  private String QLu;
-  private String QLv;
-  private String QLw;
-  boolean QLx;
-  private boolean QLy;
-  private boolean QLz = false;
-  Future<?> mBs;
+  Future<?> PL;
+  f XER;
+  HttpURLConnection XES;
+  private String XET;
+  private String XEU;
+  private String XEV;
+  boolean XEW;
+  private boolean XEX;
+  private boolean XEY = false;
   private String mContentType;
   private int mStatusCode;
   private int retCode = 0;
   
   public c(f paramf)
   {
-    this.QLs = paramf;
+    this.XER = paramf;
   }
   
-  private static SSLContext bos(String paramString)
+  private static SSLContext bog(String paramString)
   {
     AppMethodBeat.i(110594);
     try
@@ -43,7 +43,7 @@ public final class c
     return null;
   }
   
-  private static int bot(String paramString)
+  private static int boh(String paramString)
   {
     AppMethodBeat.i(110595);
     if (!TextUtils.isEmpty(paramString))
@@ -63,7 +63,7 @@ public final class c
     return -1;
   }
   
-  private static long bou(String paramString)
+  private static long boi(String paramString)
   {
     AppMethodBeat.i(110596);
     if (!TextUtils.isEmpty(paramString)) {
@@ -80,7 +80,7 @@ public final class c
   }
   
   /* Error */
-  private void heB()
+  private void iFj()
   {
     // Byte code:
     //   0: iconst_1
@@ -94,7 +94,7 @@ public final class c
     //   13: putfield 103	com/tencent/mm/plugin/wepkg/downloader/c:mStatusCode	I
     //   16: aload_0
     //   17: aload_0
-    //   18: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:QLt	Ljava/net/HttpURLConnection;
+    //   18: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:XES	Ljava/net/HttpURLConnection;
     //   21: invokevirtual 110	java/net/HttpURLConnection:getResponseCode	()I
     //   24: putfield 103	com/tencent/mm/plugin/wepkg/downloader/c:mStatusCode	I
     //   27: ldc 112
@@ -104,8 +104,8 @@ public final class c
     //   35: dup
     //   36: iconst_0
     //   37: aload_0
-    //   38: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
-    //   41: getfield 119	com/tencent/mm/plugin/wepkg/downloader/f:QLQ	Ljava/lang/String;
+    //   38: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   41: getfield 119	com/tencent/mm/plugin/wepkg/downloader/f:XFp	Ljava/lang/String;
     //   44: aastore
     //   45: dup
     //   46: iconst_1
@@ -123,37 +123,37 @@ public final class c
     //   96: aconst_null
     //   97: astore 7
     //   99: aload 7
-    //   101: invokestatic 133	com/tencent/mm/pluginsdk/k/a/d/a:c	(Ljava/io/Closeable;)V
+    //   101: invokestatic 133	com/tencent/mm/pluginsdk/res/downloader/b/a:c	(Ljava/io/Closeable;)V
     //   104: aload 8
-    //   106: invokestatic 133	com/tencent/mm/pluginsdk/k/a/d/a:c	(Ljava/io/Closeable;)V
+    //   106: invokestatic 133	com/tencent/mm/pluginsdk/res/downloader/b/a:c	(Ljava/io/Closeable;)V
     //   109: ldc 101
     //   111: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   114: return
     //   115: aload_0
     //   116: aload_0
-    //   117: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:QLt	Ljava/net/HttpURLConnection;
+    //   117: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:XES	Ljava/net/HttpURLConnection;
     //   120: ldc 135
     //   122: invokevirtual 139	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
     //   125: putfield 141	com/tencent/mm/plugin/wepkg/downloader/c:mContentType	Ljava/lang/String;
     //   128: aload_0
-    //   129: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:QLt	Ljava/net/HttpURLConnection;
+    //   129: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:XES	Ljava/net/HttpURLConnection;
     //   132: invokevirtual 145	java/net/HttpURLConnection:getHeaderFields	()Ljava/util/Map;
     //   135: pop
     //   136: aload_0
     //   137: aload_0
-    //   138: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:QLt	Ljava/net/HttpURLConnection;
+    //   138: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:XES	Ljava/net/HttpURLConnection;
     //   141: ldc 147
     //   143: invokevirtual 139	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
-    //   146: putfield 149	com/tencent/mm/plugin/wepkg/downloader/c:QLu	Ljava/lang/String;
+    //   146: putfield 149	com/tencent/mm/plugin/wepkg/downloader/c:XET	Ljava/lang/String;
     //   149: aload_0
     //   150: aload_0
-    //   151: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:QLt	Ljava/net/HttpURLConnection;
+    //   151: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:XES	Ljava/net/HttpURLConnection;
     //   154: ldc 151
     //   156: invokevirtual 139	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
-    //   159: putfield 153	com/tencent/mm/plugin/wepkg/downloader/c:QLv	Ljava/lang/String;
+    //   159: putfield 153	com/tencent/mm/plugin/wepkg/downloader/c:XEU	Ljava/lang/String;
     //   162: ldc 155
     //   164: aload_0
-    //   165: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:QLt	Ljava/net/HttpURLConnection;
+    //   165: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:XES	Ljava/net/HttpURLConnection;
     //   168: ldc 157
     //   170: invokevirtual 139	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
     //   173: invokevirtual 161	java/lang/String:equals	(Ljava/lang/Object;)Z
@@ -161,7 +161,7 @@ public final class c
     //   179: iconst_1
     //   180: istore_3
     //   181: aload_0
-    //   182: getfield 163	com/tencent/mm/plugin/wepkg/downloader/c:QLy	Z
+    //   182: getfield 163	com/tencent/mm/plugin/wepkg/downloader/c:XEX	Z
     //   185: ifeq +185 -> 370
     //   188: iload_3
     //   189: ifne +130 -> 319
@@ -169,17 +169,17 @@ public final class c
     //   194: ldc 165
     //   196: invokestatic 168	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   199: aload_0
-    //   200: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   200: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
     //   203: getfield 171	com/tencent/mm/plugin/wepkg/downloader/f:mFilePath	Ljava/lang/String;
-    //   206: invokestatic 175	com/tencent/mm/pluginsdk/k/a/d/a:bqF	(Ljava/lang/String;)Z
+    //   206: invokestatic 175	com/tencent/mm/pluginsdk/res/downloader/b/a:bqu	(Ljava/lang/String;)Z
     //   209: pop
     //   210: aload_0
-    //   211: getfield 153	com/tencent/mm/plugin/wepkg/downloader/c:QLv	Ljava/lang/String;
-    //   214: invokestatic 177	com/tencent/mm/plugin/wepkg/downloader/c:bou	(Ljava/lang/String;)J
+    //   211: getfield 153	com/tencent/mm/plugin/wepkg/downloader/c:XEU	Ljava/lang/String;
+    //   214: invokestatic 177	com/tencent/mm/plugin/wepkg/downloader/c:boi	(Ljava/lang/String;)J
     //   217: lstore 5
     //   219: aload_0
     //   220: iload_3
-    //   221: putfield 34	com/tencent/mm/plugin/wepkg/downloader/c:QLz	Z
+    //   221: putfield 34	com/tencent/mm/plugin/wepkg/downloader/c:XEY	Z
     //   224: ldc 112
     //   226: ldc 179
     //   228: iconst_5
@@ -187,18 +187,18 @@ public final class c
     //   232: dup
     //   233: iconst_0
     //   234: aload_0
-    //   235: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
-    //   238: getfield 119	com/tencent/mm/plugin/wepkg/downloader/f:QLQ	Ljava/lang/String;
+    //   235: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   238: getfield 119	com/tencent/mm/plugin/wepkg/downloader/f:XFp	Ljava/lang/String;
     //   241: aastore
     //   242: dup
     //   243: iconst_1
     //   244: aload_0
-    //   245: getfield 149	com/tencent/mm/plugin/wepkg/downloader/c:QLu	Ljava/lang/String;
+    //   245: getfield 149	com/tencent/mm/plugin/wepkg/downloader/c:XET	Ljava/lang/String;
     //   248: aastore
     //   249: dup
     //   250: iconst_2
     //   251: aload_0
-    //   252: getfield 153	com/tencent/mm/plugin/wepkg/downloader/c:QLv	Ljava/lang/String;
+    //   252: getfield 153	com/tencent/mm/plugin/wepkg/downloader/c:XEU	Ljava/lang/String;
     //   255: aastore
     //   256: dup
     //   257: iconst_3
@@ -222,10 +222,10 @@ public final class c
     //   290: astore 7
     //   292: goto -193 -> 99
     //   295: aload_0
-    //   296: getfield 149	com/tencent/mm/plugin/wepkg/downloader/c:QLu	Ljava/lang/String;
+    //   296: getfield 149	com/tencent/mm/plugin/wepkg/downloader/c:XET	Ljava/lang/String;
     //   299: ifnull +760 -> 1059
     //   302: aload_0
-    //   303: getfield 149	com/tencent/mm/plugin/wepkg/downloader/c:QLu	Ljava/lang/String;
+    //   303: getfield 149	com/tencent/mm/plugin/wepkg/downloader/c:XET	Ljava/lang/String;
     //   306: ldc 155
     //   308: invokevirtual 187	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   311: ifeq +748 -> 1059
@@ -233,8 +233,8 @@ public final class c
     //   315: istore_3
     //   316: goto -135 -> 181
     //   319: aload_0
-    //   320: getfield 149	com/tencent/mm/plugin/wepkg/downloader/c:QLu	Ljava/lang/String;
-    //   323: invokestatic 189	com/tencent/mm/plugin/wepkg/downloader/c:bot	(Ljava/lang/String;)I
+    //   320: getfield 149	com/tencent/mm/plugin/wepkg/downloader/c:XET	Ljava/lang/String;
+    //   323: invokestatic 189	com/tencent/mm/plugin/wepkg/downloader/c:boh	(Ljava/lang/String;)I
     //   326: i2l
     //   327: lstore 5
     //   329: lload 5
@@ -245,13 +245,13 @@ public final class c
     //   340: ldc 191
     //   342: invokestatic 168	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   345: aload_0
-    //   346: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   346: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
     //   349: getfield 171	com/tencent/mm/plugin/wepkg/downloader/f:mFilePath	Ljava/lang/String;
-    //   352: invokestatic 175	com/tencent/mm/pluginsdk/k/a/d/a:bqF	(Ljava/lang/String;)Z
+    //   352: invokestatic 175	com/tencent/mm/pluginsdk/res/downloader/b/a:bqu	(Ljava/lang/String;)Z
     //   355: pop
     //   356: aload_0
-    //   357: getfield 153	com/tencent/mm/plugin/wepkg/downloader/c:QLv	Ljava/lang/String;
-    //   360: invokestatic 177	com/tencent/mm/plugin/wepkg/downloader/c:bou	(Ljava/lang/String;)J
+    //   357: getfield 153	com/tencent/mm/plugin/wepkg/downloader/c:XEU	Ljava/lang/String;
+    //   360: invokestatic 177	com/tencent/mm/plugin/wepkg/downloader/c:boi	(Ljava/lang/String;)J
     //   363: lstore 5
     //   365: iconst_0
     //   366: istore_3
@@ -260,8 +260,8 @@ public final class c
     //   372: ldc 193
     //   374: invokestatic 168	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   377: aload_0
-    //   378: getfield 153	com/tencent/mm/plugin/wepkg/downloader/c:QLv	Ljava/lang/String;
-    //   381: invokestatic 177	com/tencent/mm/plugin/wepkg/downloader/c:bou	(Ljava/lang/String;)J
+    //   378: getfield 153	com/tencent/mm/plugin/wepkg/downloader/c:XEU	Ljava/lang/String;
+    //   381: invokestatic 177	com/tencent/mm/plugin/wepkg/downloader/c:boi	(Ljava/lang/String;)J
     //   384: lstore 5
     //   386: iconst_0
     //   387: istore_3
@@ -273,8 +273,8 @@ public final class c
     //   399: dup
     //   400: iconst_0
     //   401: aload_0
-    //   402: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
-    //   405: getfield 199	com/tencent/mm/plugin/wepkg/downloader/f:QLU	J
+    //   402: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   405: getfield 199	com/tencent/mm/plugin/wepkg/downloader/f:XFs	J
     //   408: invokestatic 202	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   411: aastore
     //   412: dup
@@ -285,19 +285,19 @@ public final class c
     //   420: invokestatic 127	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   423: aload_0
     //   424: aload_0
-    //   425: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:QLt	Ljava/net/HttpURLConnection;
+    //   425: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:XES	Ljava/net/HttpURLConnection;
     //   428: invokevirtual 206	java/net/HttpURLConnection:getContentEncoding	()Ljava/lang/String;
-    //   431: putfield 208	com/tencent/mm/plugin/wepkg/downloader/c:QLw	Ljava/lang/String;
+    //   431: putfield 208	com/tencent/mm/plugin/wepkg/downloader/c:XEV	Ljava/lang/String;
     //   434: aload_0
-    //   435: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:QLt	Ljava/net/HttpURLConnection;
+    //   435: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:XES	Ljava/net/HttpURLConnection;
     //   438: invokevirtual 212	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
     //   441: astore 7
     //   443: aload_0
-    //   444: getfield 208	com/tencent/mm/plugin/wepkg/downloader/c:QLw	Ljava/lang/String;
+    //   444: getfield 208	com/tencent/mm/plugin/wepkg/downloader/c:XEV	Ljava/lang/String;
     //   447: invokestatic 217	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   450: ifne +184 -> 634
     //   453: aload_0
-    //   454: getfield 208	com/tencent/mm/plugin/wepkg/downloader/c:QLw	Ljava/lang/String;
+    //   454: getfield 208	com/tencent/mm/plugin/wepkg/downloader/c:XEV	Ljava/lang/String;
     //   457: ldc 219
     //   459: invokevirtual 222	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   462: ifeq +172 -> 634
@@ -310,15 +310,15 @@ public final class c
     //   478: invokespecial 229	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
     //   481: astore 7
     //   483: aload_0
-    //   484: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   484: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
     //   487: getfield 171	com/tencent/mm/plugin/wepkg/downloader/f:mFilePath	Ljava/lang/String;
     //   490: astore 8
     //   492: aload_0
-    //   493: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
-    //   496: getfield 119	com/tencent/mm/plugin/wepkg/downloader/f:QLQ	Ljava/lang/String;
+    //   493: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   496: getfield 119	com/tencent/mm/plugin/wepkg/downloader/f:XFp	Ljava/lang/String;
     //   499: astore 9
     //   501: aload_0
-    //   502: getfield 163	com/tencent/mm/plugin/wepkg/downloader/c:QLy	Z
+    //   502: getfield 163	com/tencent/mm/plugin/wepkg/downloader/c:XEX	Z
     //   505: ifeq +154 -> 659
     //   508: iload_3
     //   509: ifeq +150 -> 659
@@ -362,7 +362,7 @@ public final class c
     //   581: aload 10
     //   583: astore 7
     //   585: aload_0
-    //   586: getfield 247	com/tencent/mm/plugin/wepkg/downloader/c:QLx	Z
+    //   586: getfield 247	com/tencent/mm/plugin/wepkg/downloader/c:XEW	Z
     //   589: ifeq +232 -> 821
     //   592: aload_0
     //   593: sipush 1001
@@ -378,9 +378,9 @@ public final class c
     //   614: aastore
     //   615: invokestatic 255	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   618: aload 8
-    //   620: invokestatic 133	com/tencent/mm/pluginsdk/k/a/d/a:c	(Ljava/io/Closeable;)V
+    //   620: invokestatic 133	com/tencent/mm/pluginsdk/res/downloader/b/a:c	(Ljava/io/Closeable;)V
     //   623: aload 7
-    //   625: invokestatic 133	com/tencent/mm/pluginsdk/k/a/d/a:c	(Ljava/io/Closeable;)V
+    //   625: invokestatic 133	com/tencent/mm/pluginsdk/res/downloader/b/a:c	(Ljava/io/Closeable;)V
     //   628: ldc 101
     //   630: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   633: return
@@ -403,7 +403,7 @@ public final class c
     //   668: dup
     //   669: aload 8
     //   671: iload 4
-    //   673: invokestatic 266	com/tencent/mm/vfs/u:dI	(Ljava/lang/String;Z)Ljava/io/OutputStream;
+    //   673: invokestatic 266	com/tencent/mm/vfs/y:ev	(Ljava/lang/String;Z)Ljava/io/OutputStream;
     //   676: invokespecial 269	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   679: astore 8
     //   681: ldc 112
@@ -413,13 +413,13 @@ public final class c
     //   690: dup
     //   691: iconst_0
     //   692: aload_0
-    //   693: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
-    //   696: getfield 119	com/tencent/mm/plugin/wepkg/downloader/f:QLQ	Ljava/lang/String;
+    //   693: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   696: getfield 119	com/tencent/mm/plugin/wepkg/downloader/f:XFp	Ljava/lang/String;
     //   699: aastore
     //   700: dup
     //   701: iconst_1
     //   702: aload_0
-    //   703: getfield 163	com/tencent/mm/plugin/wepkg/downloader/c:QLy	Z
+    //   703: getfield 163	com/tencent/mm/plugin/wepkg/downloader/c:XEX	Z
     //   706: invokestatic 184	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   709: aastore
     //   710: dup
@@ -459,7 +459,7 @@ public final class c
     //   771: dup
     //   772: iconst_0
     //   773: aload_0
-    //   774: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   774: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
     //   777: getfield 288	com/tencent/mm/plugin/wepkg/downloader/f:mUrl	Ljava/lang/String;
     //   780: aastore
     //   781: dup
@@ -477,13 +477,13 @@ public final class c
     //   805: dup
     //   806: iconst_0
     //   807: aload_0
-    //   808: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   808: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
     //   811: getfield 288	com/tencent/mm/plugin/wepkg/downloader/f:mUrl	Ljava/lang/String;
     //   814: aastore
     //   815: invokestatic 127	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   818: goto -719 -> 99
-    //   821: invokestatic 299	com/tencent/mm/kernel/h:aGY	()Lcom/tencent/mm/an/t;
-    //   824: invokevirtual 304	com/tencent/mm/an/t:bih	()I
+    //   821: invokestatic 299	com/tencent/mm/kernel/h:aZW	()Lcom/tencent/mm/am/s;
+    //   824: invokevirtual 304	com/tencent/mm/am/s:bFQ	()I
     //   827: ifne +45 -> 872
     //   830: aload_0
     //   831: sipush 1002
@@ -497,9 +497,9 @@ public final class c
     //   850: aload 10
     //   852: astore 7
     //   854: aload 9
-    //   856: invokestatic 133	com/tencent/mm/pluginsdk/k/a/d/a:c	(Ljava/io/Closeable;)V
+    //   856: invokestatic 133	com/tencent/mm/pluginsdk/res/downloader/b/a:c	(Ljava/io/Closeable;)V
     //   859: aload 8
-    //   861: invokestatic 133	com/tencent/mm/pluginsdk/k/a/d/a:c	(Ljava/io/Closeable;)V
+    //   861: invokestatic 133	com/tencent/mm/pluginsdk/res/downloader/b/a:c	(Ljava/io/Closeable;)V
     //   864: ldc 101
     //   866: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   869: aload 7
@@ -676,82 +676,82 @@ public final class c
     //   0: ldc_w 320
     //   3: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   7: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
     //   10: ifnonnull +10 -> 20
     //   13: ldc_w 320
     //   16: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   19: return
     //   20: aload_0
-    //   21: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   21: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
     //   24: getfield 288	com/tencent/mm/plugin/wepkg/downloader/f:mUrl	Ljava/lang/String;
     //   27: ifnonnull +10 -> 37
     //   30: ldc_w 320
     //   33: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   36: return
     //   37: aload_0
-    //   38: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
-    //   41: getfield 323	com/tencent/mm/plugin/wepkg/downloader/f:vds	I
+    //   38: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   41: getfield 323	com/tencent/mm/plugin/wepkg/downloader/f:ypf	I
     //   44: istore_3
     //   45: iconst_0
     //   46: istore_1
     //   47: new 325	java/net/URL
     //   50: dup
     //   51: aload_0
-    //   52: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   52: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
     //   55: getfield 288	com/tencent/mm/plugin/wepkg/downloader/f:mUrl	Ljava/lang/String;
     //   58: invokespecial 326	java/net/URL:<init>	(Ljava/lang/String;)V
     //   61: astore 7
     //   63: aload_0
-    //   64: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:QLt	Ljava/net/HttpURLConnection;
+    //   64: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:XES	Ljava/net/HttpURLConnection;
     //   67: astore 8
     //   69: aload 8
     //   71: ifnull +20 -> 91
     //   74: aload_0
-    //   75: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:QLt	Ljava/net/HttpURLConnection;
+    //   75: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:XES	Ljava/net/HttpURLConnection;
     //   78: invokevirtual 212	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
     //   81: invokevirtual 329	java/io/InputStream:close	()V
     //   84: aload_0
-    //   85: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:QLt	Ljava/net/HttpURLConnection;
+    //   85: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:XES	Ljava/net/HttpURLConnection;
     //   88: invokevirtual 332	java/net/HttpURLConnection:disconnect	()V
     //   91: aload_0
     //   92: aload 7
     //   94: invokevirtual 336	java/net/URL:openConnection	()Ljava/net/URLConnection;
     //   97: checkcast 107	java/net/HttpURLConnection
-    //   100: putfield 105	com/tencent/mm/plugin/wepkg/downloader/c:QLt	Ljava/net/HttpURLConnection;
+    //   100: putfield 105	com/tencent/mm/plugin/wepkg/downloader/c:XES	Ljava/net/HttpURLConnection;
     //   103: aload_0
-    //   104: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:QLt	Ljava/net/HttpURLConnection;
+    //   104: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:XES	Ljava/net/HttpURLConnection;
     //   107: aload_0
-    //   108: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
-    //   111: getfield 339	com/tencent/mm/plugin/wepkg/downloader/f:QLW	I
+    //   108: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   111: getfield 339	com/tencent/mm/plugin/wepkg/downloader/f:XFu	I
     //   114: invokevirtual 342	java/net/HttpURLConnection:setConnectTimeout	(I)V
     //   117: aload_0
-    //   118: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:QLt	Ljava/net/HttpURLConnection;
+    //   118: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:XES	Ljava/net/HttpURLConnection;
     //   121: aload_0
-    //   122: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
-    //   125: getfield 345	com/tencent/mm/plugin/wepkg/downloader/f:QLX	I
+    //   122: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   125: getfield 345	com/tencent/mm/plugin/wepkg/downloader/f:XFv	I
     //   128: invokevirtual 348	java/net/HttpURLConnection:setReadTimeout	(I)V
     //   131: aload_0
-    //   132: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:QLt	Ljava/net/HttpURLConnection;
+    //   132: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:XES	Ljava/net/HttpURLConnection;
     //   135: iconst_0
     //   136: invokevirtual 352	java/net/HttpURLConnection:setUseCaches	(Z)V
     //   139: aload_0
-    //   140: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:QLt	Ljava/net/HttpURLConnection;
+    //   140: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:XES	Ljava/net/HttpURLConnection;
     //   143: iconst_1
     //   144: invokevirtual 355	java/net/HttpURLConnection:setDoInput	(Z)V
     //   147: aload_0
-    //   148: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:QLt	Ljava/net/HttpURLConnection;
+    //   148: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:XES	Ljava/net/HttpURLConnection;
     //   151: ldc_w 357
     //   154: invokevirtual 360	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
     //   157: aload_0
-    //   158: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:QLt	Ljava/net/HttpURLConnection;
+    //   158: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:XES	Ljava/net/HttpURLConnection;
     //   161: iconst_0
     //   162: invokevirtual 363	java/net/HttpURLConnection:setDoOutput	(Z)V
     //   165: aload_0
-    //   166: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:QLt	Ljava/net/HttpURLConnection;
+    //   166: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:XES	Ljava/net/HttpURLConnection;
     //   169: iconst_1
     //   170: invokevirtual 366	java/net/HttpURLConnection:setInstanceFollowRedirects	(Z)V
     //   173: aload_0
-    //   174: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:QLt	Ljava/net/HttpURLConnection;
+    //   174: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:XES	Ljava/net/HttpURLConnection;
     //   177: ldc_w 368
     //   180: ldc_w 370
     //   183: invokevirtual 373	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
@@ -762,18 +762,18 @@ public final class c
     //   196: invokestatic 217	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   199: ifne +15 -> 214
     //   202: aload_0
-    //   203: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:QLt	Ljava/net/HttpURLConnection;
+    //   203: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:XES	Ljava/net/HttpURLConnection;
     //   206: ldc_w 382
     //   209: aload 8
     //   211: invokevirtual 373	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   214: aload_0
-    //   215: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
-    //   218: getfield 385	com/tencent/mm/plugin/wepkg/downloader/f:QLY	Z
+    //   215: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   218: getfield 385	com/tencent/mm/plugin/wepkg/downloader/f:XFw	Z
     //   221: ifeq +564 -> 785
     //   224: aload_0
-    //   225: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   225: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
     //   228: getfield 171	com/tencent/mm/plugin/wepkg/downloader/f:mFilePath	Ljava/lang/String;
-    //   231: invokestatic 388	com/tencent/mm/pluginsdk/k/a/d/a:ij	(Ljava/lang/String;)J
+    //   231: invokestatic 388	com/tencent/mm/pluginsdk/res/downloader/b/a:jK	(Ljava/lang/String;)J
     //   234: lstore 4
     //   236: ldc 112
     //   238: ldc_w 390
@@ -782,8 +782,8 @@ public final class c
     //   245: dup
     //   246: iconst_0
     //   247: aload_0
-    //   248: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
-    //   251: getfield 119	com/tencent/mm/plugin/wepkg/downloader/f:QLQ	Ljava/lang/String;
+    //   248: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   251: getfield 119	com/tencent/mm/plugin/wepkg/downloader/f:XFp	Ljava/lang/String;
     //   254: aastore
     //   255: dup
     //   256: iconst_1
@@ -799,29 +799,29 @@ public final class c
     //   274: istore 6
     //   276: aload_0
     //   277: iload 6
-    //   279: putfield 163	com/tencent/mm/plugin/wepkg/downloader/c:QLy	Z
+    //   279: putfield 163	com/tencent/mm/plugin/wepkg/downloader/c:XEX	Z
     //   282: ldc_w 392
     //   285: aload 7
     //   287: invokevirtual 395	java/net/URL:getProtocol	()Ljava/lang/String;
     //   290: invokevirtual 398	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   293: ifeq +88 -> 381
     //   296: aload_0
-    //   297: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
-    //   300: getfield 339	com/tencent/mm/plugin/wepkg/downloader/f:QLW	I
+    //   297: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   300: getfield 339	com/tencent/mm/plugin/wepkg/downloader/f:XFu	I
     //   303: istore_2
     //   304: aload_0
-    //   305: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:QLt	Ljava/net/HttpURLConnection;
+    //   305: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:XES	Ljava/net/HttpURLConnection;
     //   308: checkcast 400	javax/net/ssl/HttpsURLConnection
     //   311: astore 9
     //   313: ldc_w 402
-    //   316: invokestatic 404	com/tencent/mm/plugin/wepkg/downloader/c:bos	(Ljava/lang/String;)Ljavax/net/ssl/SSLContext;
+    //   316: invokestatic 404	com/tencent/mm/plugin/wepkg/downloader/c:bog	(Ljava/lang/String;)Ljavax/net/ssl/SSLContext;
     //   319: astore 8
     //   321: aload 8
     //   323: astore 7
     //   325: aload 8
     //   327: ifnonnull +25 -> 352
     //   330: ldc_w 406
-    //   333: invokestatic 404	com/tencent/mm/plugin/wepkg/downloader/c:bos	(Ljava/lang/String;)Ljavax/net/ssl/SSLContext;
+    //   333: invokestatic 404	com/tencent/mm/plugin/wepkg/downloader/c:bog	(Ljava/lang/String;)Ljavax/net/ssl/SSLContext;
     //   336: astore 8
     //   338: aload 8
     //   340: astore 7
@@ -843,7 +843,7 @@ public final class c
     //   375: invokevirtual 421	javax/net/ssl/SSLContext:getSocketFactory	()Ljavax/net/ssl/SSLSocketFactory;
     //   378: invokevirtual 425	javax/net/ssl/HttpsURLConnection:setSSLSocketFactory	(Ljavax/net/ssl/SSLSocketFactory;)V
     //   381: aload_0
-    //   382: invokespecial 427	com/tencent/mm/plugin/wepkg/downloader/c:heB	()V
+    //   382: invokespecial 427	com/tencent/mm/plugin/wepkg/downloader/c:iFj	()V
     //   385: ldc 112
     //   387: ldc_w 429
     //   390: iconst_1
@@ -859,18 +859,18 @@ public final class c
     //   408: getfield 32	com/tencent/mm/plugin/wepkg/downloader/c:retCode	I
     //   411: ifne +497 -> 908
     //   414: aload_0
-    //   415: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
-    //   418: getfield 433	com/tencent/mm/plugin/wepkg/downloader/f:QLZ	Lcom/tencent/mm/plugin/wepkg/downloader/a;
+    //   415: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   418: getfield 433	com/tencent/mm/plugin/wepkg/downloader/f:XFx	Lcom/tencent/mm/plugin/wepkg/downloader/a;
     //   421: ifnull +624 -> 1045
     //   424: aload_0
-    //   425: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
-    //   428: getfield 433	com/tencent/mm/plugin/wepkg/downloader/f:QLZ	Lcom/tencent/mm/plugin/wepkg/downloader/a;
+    //   425: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   428: getfield 433	com/tencent/mm/plugin/wepkg/downloader/f:XFx	Lcom/tencent/mm/plugin/wepkg/downloader/a;
     //   431: astore 7
     //   433: aload_0
-    //   434: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   434: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
     //   437: astore 8
     //   439: aload_0
-    //   440: getfield 34	com/tencent/mm/plugin/wepkg/downloader/c:QLz	Z
+    //   440: getfield 34	com/tencent/mm/plugin/wepkg/downloader/c:XEY	Z
     //   443: ifeq +701 -> 1144
     //   446: iconst_1
     //   447: istore_2
@@ -885,7 +885,7 @@ public final class c
     //   460: invokespecial 438	com/tencent/mm/plugin/wepkg/downloader/g:<init>	(Lcom/tencent/mm/plugin/wepkg/downloader/f;IIII)V
     //   463: invokeinterface 444 2 0
     //   468: aload_0
-    //   469: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   469: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
     //   472: getfield 288	com/tencent/mm/plugin/wepkg/downloader/f:mUrl	Ljava/lang/String;
     //   475: ldc_w 392
     //   478: invokevirtual 187	java/lang/String:startsWith	(Ljava/lang/String;)Z
@@ -903,9 +903,9 @@ public final class c
     //   503: ldc_w 446
     //   506: invokestatic 168	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   509: aload_0
-    //   510: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   510: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
     //   513: aload_0
-    //   514: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   514: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
     //   517: getfield 288	com/tencent/mm/plugin/wepkg/downloader/f:mUrl	Ljava/lang/String;
     //   520: ldc_w 392
     //   523: ldc_w 448
@@ -916,7 +916,7 @@ public final class c
     //   534: putfield 32	com/tencent/mm/plugin/wepkg/downloader/c:retCode	I
     //   537: aload_0
     //   538: iconst_0
-    //   539: putfield 34	com/tencent/mm/plugin/wepkg/downloader/c:QLz	Z
+    //   539: putfield 34	com/tencent/mm/plugin/wepkg/downloader/c:XEY	Z
     //   542: ldc_w 320
     //   545: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   548: return
@@ -940,7 +940,7 @@ public final class c
     //   586: iload_1
     //   587: istore_2
     //   588: aload_0
-    //   589: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   589: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
     //   592: getfield 288	com/tencent/mm/plugin/wepkg/downloader/f:mUrl	Ljava/lang/String;
     //   595: ldc_w 392
     //   598: invokevirtual 187	java/lang/String:startsWith	(Ljava/lang/String;)Z
@@ -962,9 +962,9 @@ public final class c
     //   627: ldc_w 446
     //   630: invokestatic 168	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   633: aload_0
-    //   634: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   634: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
     //   637: aload_0
-    //   638: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   638: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
     //   641: getfield 288	com/tencent/mm/plugin/wepkg/downloader/f:mUrl	Ljava/lang/String;
     //   644: ldc_w 392
     //   647: ldc_w 448
@@ -975,7 +975,7 @@ public final class c
     //   658: putfield 32	com/tencent/mm/plugin/wepkg/downloader/c:retCode	I
     //   661: aload_0
     //   662: iconst_0
-    //   663: putfield 34	com/tencent/mm/plugin/wepkg/downloader/c:QLz	Z
+    //   663: putfield 34	com/tencent/mm/plugin/wepkg/downloader/c:XEY	Z
     //   666: iconst_m1
     //   667: istore_2
     //   668: iload_2
@@ -988,21 +988,21 @@ public final class c
     //   675: iload_3
     //   676: if_icmplt -629 -> 47
     //   679: aload_0
-    //   680: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
-    //   683: getfield 433	com/tencent/mm/plugin/wepkg/downloader/f:QLZ	Lcom/tencent/mm/plugin/wepkg/downloader/a;
+    //   680: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   683: getfield 433	com/tencent/mm/plugin/wepkg/downloader/f:XFx	Lcom/tencent/mm/plugin/wepkg/downloader/a;
     //   686: ifnull +52 -> 738
     //   689: aload_0
-    //   690: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
-    //   693: getfield 433	com/tencent/mm/plugin/wepkg/downloader/f:QLZ	Lcom/tencent/mm/plugin/wepkg/downloader/a;
+    //   690: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   693: getfield 433	com/tencent/mm/plugin/wepkg/downloader/f:XFx	Lcom/tencent/mm/plugin/wepkg/downloader/a;
     //   696: astore 7
     //   698: aload_0
-    //   699: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   699: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
     //   702: astore 8
     //   704: aload_0
     //   705: getfield 32	com/tencent/mm/plugin/wepkg/downloader/c:retCode	I
     //   708: istore_3
     //   709: aload_0
-    //   710: getfield 34	com/tencent/mm/plugin/wepkg/downloader/c:QLz	Z
+    //   710: getfield 34	com/tencent/mm/plugin/wepkg/downloader/c:XEY	Z
     //   713: ifeq +417 -> 1130
     //   716: iconst_1
     //   717: istore_1
@@ -1020,7 +1020,7 @@ public final class c
     //   741: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   744: return
     //   745: aload_0
-    //   746: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:QLt	Ljava/net/HttpURLConnection;
+    //   746: getfield 105	com/tencent/mm/plugin/wepkg/downloader/c:XES	Ljava/net/HttpURLConnection;
     //   749: ldc_w 458
     //   752: new 460	java/lang/StringBuilder
     //   755: dup
@@ -1036,14 +1036,14 @@ public final class c
     //   780: istore 6
     //   782: goto -506 -> 276
     //   785: aload_0
-    //   786: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   786: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
     //   789: getfield 171	com/tencent/mm/plugin/wepkg/downloader/f:mFilePath	Ljava/lang/String;
-    //   792: invokestatic 175	com/tencent/mm/pluginsdk/k/a/d/a:bqF	(Ljava/lang/String;)Z
+    //   792: invokestatic 175	com/tencent/mm/pluginsdk/res/downloader/b/a:bqu	(Ljava/lang/String;)Z
     //   795: pop
     //   796: goto -514 -> 282
     //   799: astore 7
     //   801: aload_0
-    //   802: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   802: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
     //   805: getfield 288	com/tencent/mm/plugin/wepkg/downloader/f:mUrl	Ljava/lang/String;
     //   808: ldc_w 392
     //   811: invokevirtual 187	java/lang/String:startsWith	(Ljava/lang/String;)Z
@@ -1061,9 +1061,9 @@ public final class c
     //   836: ldc_w 446
     //   839: invokestatic 168	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   842: aload_0
-    //   843: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   843: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
     //   846: aload_0
-    //   847: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   847: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
     //   850: getfield 288	com/tencent/mm/plugin/wepkg/downloader/f:mUrl	Ljava/lang/String;
     //   853: ldc_w 392
     //   856: ldc_w 448
@@ -1074,7 +1074,7 @@ public final class c
     //   867: putfield 32	com/tencent/mm/plugin/wepkg/downloader/c:retCode	I
     //   870: aload_0
     //   871: iconst_0
-    //   872: putfield 34	com/tencent/mm/plugin/wepkg/downloader/c:QLz	Z
+    //   872: putfield 34	com/tencent/mm/plugin/wepkg/downloader/c:XEY	Z
     //   875: ldc_w 320
     //   878: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   881: aload 7
@@ -1114,7 +1114,7 @@ public final class c
     //   960: iload_1
     //   961: istore_2
     //   962: aload_0
-    //   963: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   963: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
     //   966: getfield 288	com/tencent/mm/plugin/wepkg/downloader/f:mUrl	Ljava/lang/String;
     //   969: ldc_w 392
     //   972: invokevirtual 187	java/lang/String:startsWith	(Ljava/lang/String;)Z
@@ -1136,9 +1136,9 @@ public final class c
     //   1001: ldc_w 446
     //   1004: invokestatic 168	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1007: aload_0
-    //   1008: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   1008: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
     //   1011: aload_0
-    //   1012: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   1012: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
     //   1015: getfield 288	com/tencent/mm/plugin/wepkg/downloader/f:mUrl	Ljava/lang/String;
     //   1018: ldc_w 392
     //   1021: ldc_w 448
@@ -1149,14 +1149,14 @@ public final class c
     //   1032: putfield 32	com/tencent/mm/plugin/wepkg/downloader/c:retCode	I
     //   1035: aload_0
     //   1036: iconst_0
-    //   1037: putfield 34	com/tencent/mm/plugin/wepkg/downloader/c:QLz	Z
+    //   1037: putfield 34	com/tencent/mm/plugin/wepkg/downloader/c:XEY	Z
     //   1040: iconst_m1
     //   1041: istore_2
     //   1042: goto -363 -> 679
     //   1045: iload_1
     //   1046: istore_2
     //   1047: aload_0
-    //   1048: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   1048: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
     //   1051: getfield 288	com/tencent/mm/plugin/wepkg/downloader/f:mUrl	Ljava/lang/String;
     //   1054: ldc_w 392
     //   1057: invokevirtual 187	java/lang/String:startsWith	(Ljava/lang/String;)Z
@@ -1178,9 +1178,9 @@ public final class c
     //   1086: ldc_w 446
     //   1089: invokestatic 168	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1092: aload_0
-    //   1093: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   1093: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
     //   1096: aload_0
-    //   1097: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:QLs	Lcom/tencent/mm/plugin/wepkg/downloader/f;
+    //   1097: getfield 36	com/tencent/mm/plugin/wepkg/downloader/c:XER	Lcom/tencent/mm/plugin/wepkg/downloader/f;
     //   1100: getfield 288	com/tencent/mm/plugin/wepkg/downloader/f:mUrl	Ljava/lang/String;
     //   1103: ldc_w 392
     //   1106: ldc_w 448
@@ -1191,7 +1191,7 @@ public final class c
     //   1117: putfield 32	com/tencent/mm/plugin/wepkg/downloader/c:retCode	I
     //   1120: aload_0
     //   1121: iconst_0
-    //   1122: putfield 34	com/tencent/mm/plugin/wepkg/downloader/c:QLz	Z
+    //   1122: putfield 34	com/tencent/mm/plugin/wepkg/downloader/c:XEY	Z
     //   1125: iconst_m1
     //   1126: istore_2
     //   1127: goto -459 -> 668

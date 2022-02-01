@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.task.ipc;
 
 import android.os.Parcel;
+import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.luggage.sdk.processes.c;
@@ -10,104 +11,99 @@ import com.tencent.luggage.sdk.processes.main.LuggageRegisterTask;
 import com.tencent.luggage.sdk.processes.main.RuntimeInfo;
 import com.tencent.luggage.sdk.processes.main.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.cs;
+import com.tencent.mm.app.f;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.config.h;
-import com.tencent.mm.sdk.event.IListener;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/task/ipc/AppBrandRegisterTask;", "Lcom/tencent/luggage/sdk/processes/main/LuggageRegisterTask;", "rt", "Lcom/tencent/luggage/sdk/runtime/AppBrandRuntimeLU;", "commLibVersion", "", "(Lcom/tencent/luggage/sdk/runtime/AppBrandRuntimeLU;I)V", "runtimeInfo", "Lcom/tencent/luggage/sdk/processes/main/RuntimeInfo;", "(Lcom/tencent/luggage/sdk/processes/main/RuntimeInfo;I)V", "getRuntimeInfo", "()Lcom/tencent/luggage/sdk/processes/main/RuntimeInfo;", "runInMainProcess", "", "process", "Lcom/tencent/luggage/sdk/processes/LuggageMiniProgramProcess;", "Lcom/tencent/luggage/sdk/processes/LuggageStartParams;", "writeToParcel", "parcel", "Landroid/os/Parcel;", "flags", "Companion", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/task/ipc/AppBrandRegisterTask;", "Lcom/tencent/luggage/sdk/processes/main/LuggageRegisterTask;", "rt", "Lcom/tencent/luggage/sdk/runtime/AppBrandRuntimeLU;", "commLibVersion", "", "(Lcom/tencent/luggage/sdk/runtime/AppBrandRuntimeLU;I)V", "runtimeInfo", "Lcom/tencent/luggage/sdk/processes/main/RuntimeInfo;", "(Lcom/tencent/luggage/sdk/processes/main/RuntimeInfo;I)V", "getRuntimeInfo", "()Lcom/tencent/luggage/sdk/processes/main/RuntimeInfo;", "runInMainProcess", "", "process", "Lcom/tencent/luggage/sdk/processes/LuggageMiniProgramProcess;", "Lcom/tencent/luggage/sdk/processes/LuggageStartParams;", "writeToParcel", "parcel", "Landroid/os/Parcel;", "flags", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class AppBrandRegisterTask
   extends LuggageRegisterTask
 {
-  public static final Parcelable.Creator CREATOR;
-  @Deprecated
-  public static final AppBrandRegisterTask.a qSj;
-  private final RuntimeInfo cCa;
-  private final int qRa;
+  public static final Parcelable.Creator<AppBrandRegisterTask> CREATOR;
+  private static final AppBrandRegisterTask.a tWN;
+  private final RuntimeInfo euF;
+  private final int tVP;
   
   static
   {
-    AppMethodBeat.i(266085);
-    qSj = new AppBrandRegisterTask.a((byte)0);
-    CREATOR = new AppBrandRegisterTask.b();
-    AppMethodBeat.o(266085);
+    AppMethodBeat.i(318630);
+    tWN = new AppBrandRegisterTask.a((byte)0);
+    CREATOR = (Parcelable.Creator)new b();
+    AppMethodBeat.o(318630);
   }
   
   public AppBrandRegisterTask(com.tencent.luggage.sdk.e.d paramd, int paramInt)
   {
     this(a.d(paramd), paramInt);
-    AppMethodBeat.i(266084);
-    AppMethodBeat.o(266084);
+    AppMethodBeat.i(318624);
+    AppMethodBeat.o(318624);
   }
   
   public AppBrandRegisterTask(RuntimeInfo paramRuntimeInfo, int paramInt)
   {
     super(paramRuntimeInfo);
-    AppMethodBeat.i(266083);
-    this.cCa = paramRuntimeInfo;
-    this.qRa = paramInt;
-    AppMethodBeat.o(266083);
+    AppMethodBeat.i(318620);
+    this.euF = paramRuntimeInfo;
+    this.tVP = paramInt;
+    AppMethodBeat.o(318620);
   }
   
-  public final RuntimeInfo RX()
+  public final RuntimeInfo asm()
   {
-    return this.cCa;
+    return this.euF;
   }
   
   public final void c(c<g> paramc)
   {
-    AppMethodBeat.i(266082);
-    p.k(paramc, "process");
+    AppMethodBeat.i(318647);
+    s.u(paramc, "process");
     super.c(paramc);
-    ((com.tencent.mm.plugin.appbrand.task.d)paramc).qRa = this.qRa;
-    String str2 = this.cCa.appId;
-    String str1 = this.cCa.cBH;
-    paramc = paramc.ec(str2);
+    ((com.tencent.mm.plugin.appbrand.task.d)paramc).tVP = this.tVP;
+    String str2 = this.euF.appId;
+    String str1 = this.euF.eup;
+    paramc = paramc.fv(str2);
     if (paramc == null)
     {
-      AppMethodBeat.o(266082);
+      AppMethodBeat.o(318647);
       return;
     }
-    paramc.ei(str1);
-    if (h.bLi() != null)
+    if (this.euF.euz != paramc.eul)
     {
-      h.bLi().a(this.cCa.userName, (AppBrandInitConfigLU)this.cCa.cCf);
-      AppMethodBeat.o(266082);
+      Log.e("MicroMsg.AppBrandRegisterTask", "runInMainProcess appId:" + this.euF.appId + ", instanceId:" + this.euF.eup + ", runtimeInfo.versionType(" + this.euF.euz + ") != record.debugType(" + paramc.eul + ')');
+      AppMethodBeat.o(318647);
       return;
     }
-    paramc = this.cCa.cCf;
-    if (paramc == null)
+    paramc.fB(str1);
+    if (h.ckG() != null)
     {
-      paramc = new t("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC");
-      AppMethodBeat.o(266082);
-      throw paramc;
+      h.ckG().a(this.euF.userName, (AppBrandInitConfigLU)this.euF.euK);
+      AppMethodBeat.o(318647);
+      return;
     }
-    new c((AppBrandInitConfigWC)paramc).alive();
-    AppMethodBeat.o(266082);
+    new AppBrandRegisterTask.runInMainProcess.1((AppBrandInitConfigWC)this.euF.euK, f.hfK).alive();
+    AppMethodBeat.o(318647);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(266086);
-    p.k(paramParcel, "parcel");
-    paramParcel.writeParcelable(this.cCa, paramInt);
-    paramParcel.writeInt(this.qRa);
-    AppMethodBeat.o(266086);
+    AppMethodBeat.i(318649);
+    s.u(paramParcel, "out");
+    paramParcel.writeParcelable((Parcelable)this.euF, paramInt);
+    paramParcel.writeInt(this.tVP);
+    AppMethodBeat.o(318649);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/task/ipc/AppBrandRegisterTask$runInMainProcess$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/CoreAccountInitializationNotifiedEvent;", "callback", "", "event", "plugin-appbrand-integration_release"})
-  public static final class c
-    extends IListener<cs>
-  {
-    c(AppBrandInitConfigWC paramAppBrandInitConfigWC) {}
-  }
+  @Metadata(k=3, mv={1, 5, 1}, xi=48)
+  public static final class b
+    implements Parcelable.Creator<AppBrandRegisterTask>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.task.ipc.AppBrandRegisterTask
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.card.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -17,9 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.s;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.c;
 import com.tencent.mm.plugin.card.a.a;
@@ -27,22 +24,22 @@ import com.tencent.mm.plugin.card.a.b;
 import com.tencent.mm.plugin.card.a.d;
 import com.tencent.mm.plugin.card.a.e;
 import com.tencent.mm.plugin.card.a.g;
-import com.tencent.mm.plugin.card.d.d;
-import com.tencent.mm.plugin.card.d.f;
-import com.tencent.mm.plugin.card.d.l;
-import com.tencent.mm.plugin.card.d.n;
+import com.tencent.mm.plugin.card.c.d;
+import com.tencent.mm.plugin.card.c.f;
+import com.tencent.mm.plugin.card.c.l;
+import com.tencent.mm.plugin.card.c.n;
 import com.tencent.mm.plugin.card.model.CardInfo;
 import com.tencent.mm.plugin.card.model.ab;
 import com.tencent.mm.plugin.card.model.am;
-import com.tencent.mm.plugin.card.model.p;
 import com.tencent.mm.plugin.card.sharecard.model.ShareCardInfo;
 import com.tencent.mm.plugin.card.sharecard.model.g;
-import com.tencent.mm.protocal.protobuf.uo;
-import com.tencent.mm.protocal.protobuf.vb;
+import com.tencent.mm.protocal.protobuf.wf;
+import com.tencent.mm.protocal.protobuf.ws;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.w;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -54,113 +51,113 @@ import java.util.Map;
 
 public class CardAcceptCardListUI
   extends MMActivity
-  implements i, MMActivity.a
+  implements com.tencent.mm.am.h, MMActivity.a
 {
-  private View Xg;
-  int fUN;
-  private s jhZ;
-  private String lnb;
-  protected ListView tmq;
-  protected RelativeLayout tms;
-  private boolean tog;
-  private String tqj;
-  private int tqk;
-  private String tql;
-  private int tqm;
-  private String tqn;
-  private Button tsX;
-  public int tte;
-  private String ttf;
-  private String ttg;
-  public ArrayList<String> tth;
-  public ArrayList<String> tti;
-  private View tuA;
-  private TextView tuB;
-  private Button tuC;
-  LinkedList<uo> tuD;
-  int tuE;
-  String tuF;
-  String tuG;
-  private String tuH;
-  LinkedList<uo> tuI;
-  LinkedList<String> tuJ;
-  HashMap<String, Integer> tuq;
-  private View tuw;
-  private View tux;
-  protected a tuy;
-  private View tuz;
+  private View bEA;
+  int iaK;
+  private w lKp;
+  private String nSg;
+  protected ListView wqQ;
+  protected RelativeLayout wqS;
+  private boolean wsH;
+  private String wuI;
+  private int wuJ;
+  private String wuK;
+  private int wuL;
+  private String wuM;
+  public int wxB;
+  private String wxC;
+  private String wxD;
+  public ArrayList<String> wxE;
+  public ArrayList<String> wxF;
+  private Button wxu;
+  HashMap<String, Integer> wyN;
+  private View wyT;
+  private View wyU;
+  protected a wyV;
+  private View wyW;
+  private View wyX;
+  private TextView wyY;
+  private Button wyZ;
+  LinkedList<wf> wza;
+  int wzb;
+  String wzc;
+  String wzd;
+  private String wze;
+  LinkedList<wf> wzf;
+  LinkedList<String> wzg;
   
   public CardAcceptCardListUI()
   {
     AppMethodBeat.i(113155);
-    this.tmq = null;
-    this.tuy = null;
-    this.tms = null;
-    this.jhZ = null;
-    this.tuD = new LinkedList();
-    this.tqj = "";
-    this.fUN = 8;
-    this.tuE = 7;
-    this.tuF = "";
-    this.tuG = "";
-    this.tuH = "";
-    this.tog = false;
-    this.tte = 0;
-    this.ttf = "";
-    this.ttg = "";
-    this.tth = new ArrayList();
-    this.tti = new ArrayList();
-    this.tuI = new LinkedList();
-    this.tuJ = new LinkedList();
-    this.tuq = new HashMap();
-    this.lnb = "";
+    this.wqQ = null;
+    this.wyV = null;
+    this.wqS = null;
+    this.lKp = null;
+    this.wza = new LinkedList();
+    this.wuI = "";
+    this.iaK = 8;
+    this.wzb = 7;
+    this.wzc = "";
+    this.wzd = "";
+    this.wze = "";
+    this.wsH = false;
+    this.wxB = 0;
+    this.wxC = "";
+    this.wxD = "";
+    this.wxE = new ArrayList();
+    this.wxF = new ArrayList();
+    this.wzf = new LinkedList();
+    this.wzg = new LinkedList();
+    this.wyN = new HashMap();
+    this.nSg = "";
     AppMethodBeat.o(113155);
   }
   
-  private void HR(int paramInt)
+  private void Is(int paramInt)
   {
     AppMethodBeat.i(113162);
     Log.i("MicroMsg.CardAcceptCardListUI", "CardAcceptCardListUI finishUI() result_code:".concat(String.valueOf(paramInt)));
     Intent localIntent = new Intent();
-    localIntent.putExtra("card_list", this.tqj);
+    localIntent.putExtra("card_list", this.wuI);
     localIntent.putExtra("result_code", paramInt);
     setResult(0, localIntent);
     finish();
     AppMethodBeat.o(113162);
   }
   
-  private void cIB()
+  private void dlS()
   {
     AppMethodBeat.i(113165);
-    if (!TextUtils.isEmpty(this.tqn))
+    if (!TextUtils.isEmpty(this.wuM))
     {
-      this.tuB.setText(this.tqn);
+      this.wyY.setText(this.wuM);
       AppMethodBeat.o(113165);
       return;
     }
-    this.tuB.setText(a.g.tlA);
+    this.wyY.setText(a.g.wpZ);
     AppMethodBeat.o(113165);
   }
   
-  private String cIi()
+  private String dlz()
   {
     AppMethodBeat.i(113164);
     String str;
-    if ((!TextUtils.isEmpty(this.ttf)) && (!TextUtils.isEmpty(this.ttg)))
+    if ((!TextUtils.isEmpty(this.wxC)) && (!TextUtils.isEmpty(this.wxD)))
     {
-      str = this.ttf + "," + l.arU(this.ttg);
+      str = this.wxC + "," + l.aly(this.wxD);
       AppMethodBeat.o(113164);
       return str;
     }
-    if (!TextUtils.isEmpty(this.ttf))
+    if (!TextUtils.isEmpty(this.wxC))
     {
-      str = this.ttf;
+      str = this.wxC;
       AppMethodBeat.o(113164);
       return str;
     }
-    if (!TextUtils.isEmpty(this.ttg))
+    if (!TextUtils.isEmpty(this.wxD))
     {
-      str = l.arU(this.ttg);
+      str = l.aly(this.wxD);
       AppMethodBeat.o(113164);
       return str;
     }
@@ -168,7 +165,7 @@ public class CardAcceptCardListUI
     return "";
   }
   
-  private ArrayList<CardInfo> cP(List<CardInfo> paramList)
+  private ArrayList<CardInfo> eK(List<CardInfo> paramList)
   {
     AppMethodBeat.i(113166);
     if ((paramList == null) || (paramList.size() == 0))
@@ -177,33 +174,122 @@ public class CardAcceptCardListUI
       AppMethodBeat.o(113166);
       return null;
     }
-    this.tuI.clear();
-    this.tuJ.clear();
-    this.tuq.clear();
+    this.wzf.clear();
+    this.wzg.clear();
+    this.wyN.clear();
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     if (i < paramList.size())
     {
       CardInfo localCardInfo = (CardInfo)paramList.get(i);
-      if (this.tuJ.contains(localCardInfo.field_card_tp_id))
+      if (this.wzg.contains(localCardInfo.field_card_tp_id))
       {
-        int j = ((Integer)this.tuq.get(localCardInfo.field_card_tp_id)).intValue();
-        this.tuq.put(localCardInfo.field_card_tp_id, Integer.valueOf(j + 1));
+        int j = ((Integer)this.wyN.get(localCardInfo.field_card_tp_id)).intValue();
+        this.wyN.put(localCardInfo.field_card_tp_id, Integer.valueOf(j + 1));
       }
       for (;;)
       {
         i += 1;
         break;
         localArrayList.add(localCardInfo);
-        this.tuq.put(localCardInfo.field_card_tp_id, Integer.valueOf(1));
-        this.tuJ.add(localCardInfo.field_card_tp_id);
+        this.wyN.put(localCardInfo.field_card_tp_id, Integer.valueOf(1));
+        this.wzg.add(localCardInfo.field_card_tp_id);
       }
     }
     AppMethodBeat.o(113166);
     return localArrayList;
   }
   
-  public final void d(int paramInt1, int paramInt2, Intent paramIntent)
+  public int getLayoutId()
+  {
+    return a.e.wfg;
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(113156);
+    setMMTitle(a.g.wnT);
+    setBackBtn(new CardAcceptCardListUI.1(this));
+    this.wyT = findViewById(a.d.wfg);
+    this.wyU = findViewById(a.d.top_layout);
+    this.bEA = findViewById(a.d.list_layout);
+    this.wyU.setVisibility(4);
+    this.wqQ = ((ListView)findViewById(16908298));
+    this.wqS = ((RelativeLayout)findViewById(a.d.wjH));
+    this.wqQ.setEmptyView(this.wqS);
+    this.wyV = new a(this);
+    this.wqQ.setAdapter(this.wyV);
+    this.wqQ.setOnItemClickListener(new CardAcceptCardListUI.2(this));
+    this.wyW = findViewById(a.d.wfj);
+    this.wxu = ((Button)findViewById(a.d.fvn));
+    this.wxu.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(113151);
+        Object localObject = new b();
+        ((b)localObject).cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/card/ui/CardAcceptCardListUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
+        if (CardAcceptCardListUI.a(CardAcceptCardListUI.this)) {
+          CardAcceptCardListUI.a(CardAcceptCardListUI.this, CardAcceptCardListUI.b(CardAcceptCardListUI.this));
+        }
+        for (;;)
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/ui/CardAcceptCardListUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(113151);
+          return;
+          paramAnonymousView = CardAcceptCardListUI.this;
+          localObject = CardAcceptCardListUI.b(CardAcceptCardListUI.this);
+          paramAnonymousView.na(true);
+          paramAnonymousView = new com.tencent.mm.plugin.card.model.p((LinkedList)localObject, paramAnonymousView.iaK, paramAnonymousView.wzc, paramAnonymousView.wzd, paramAnonymousView.wzb);
+          com.tencent.mm.kernel.h.baD().mCm.a(paramAnonymousView, 0);
+        }
+      }
+    });
+    this.wxu.setEnabled(false);
+    this.wyX = findViewById(a.d.whw);
+    this.wyY = ((TextView)findViewById(a.d.whx));
+    this.wyZ = ((Button)findViewById(a.d.whv));
+    this.wyZ.setOnClickListener(new CardAcceptCardListUI.4(this));
+    Object localObject2 = getIntent();
+    if (localObject2 == null)
+    {
+      Log.e("MicroMsg.CardAcceptCardListUI", "CardAcceptCardListUI initView () intent == null");
+      Is(2);
+      AppMethodBeat.o(113156);
+      return;
+    }
+    Log.i("MicroMsg.CardAcceptCardListUI", "CardAcceptCardListUI handle data");
+    Object localObject3 = ((Intent)localObject2).getStringExtra("key_in_card_list");
+    this.iaK = ((Intent)localObject2).getIntExtra("key_from_scene", 8);
+    Object localObject1 = ((Intent)localObject2).getStringExtra("key_package_name");
+    localObject2 = ((Intent)localObject2).getStringExtra("key_sign");
+    this.wzb = getIntent().getIntExtra("key_stastic_scene", 7);
+    this.wzc = getIntent().getStringExtra("src_username");
+    this.wzd = getIntent().getStringExtra("js_url");
+    this.wze = getIntent().getStringExtra("key_consumed_card_id");
+    this.nSg = getIntent().getStringExtra("key_template_id");
+    localObject3 = com.tencent.mm.plugin.card.c.h.dM((String)localObject3, this.iaK);
+    if ((localObject3 == null) || (((List)localObject3).size() == 0))
+    {
+      Log.e("MicroMsg.CardAcceptCardListUI", "CardAcceptCardListUI initView () tempList == null || tempList.size() == 0");
+      Is(2);
+      AppMethodBeat.o(113156);
+      return;
+    }
+    this.wza.clear();
+    this.wza.addAll((Collection)localObject3);
+    this.wzf.clear();
+    this.wzg.clear();
+    this.wyN.clear();
+    localObject3 = this.wza;
+    na(true);
+    localObject1 = new ab((LinkedList)localObject3, this.iaK, (String)localObject1, (String)localObject2, this.wzc, this.wzd, this.wze, this.wzb);
+    com.tencent.mm.kernel.h.baD().mCm.a((com.tencent.mm.am.p)localObject1, 0);
+    AppMethodBeat.o(113156);
+  }
+  
+  public void mmOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(113163);
     switch (paramInt1)
@@ -218,166 +304,77 @@ public class CardAcceptCardListUI
         AppMethodBeat.o(113163);
         return;
       }
-      this.tte = paramIntent.getIntExtra("Ktag_range_index", 0);
-      Log.i("MicroMsg.CardAcceptCardListUI", "mPrivateSelelct : %d", new Object[] { Integer.valueOf(this.tte) });
-      if (this.tte >= 2)
+      this.wxB = paramIntent.getIntExtra("Ktag_range_index", 0);
+      Log.i("MicroMsg.CardAcceptCardListUI", "mPrivateSelelct : %d", new Object[] { Integer.valueOf(this.wxB) });
+      if (this.wxB >= 2)
       {
-        this.ttf = paramIntent.getStringExtra("Klabel_name_list");
-        this.ttg = paramIntent.getStringExtra("Kother_user_name_list");
-        Log.d("MicroMsg.CardAcceptCardListUI", "mPrivateSelect : %d, names : %s", new Object[] { Integer.valueOf(this.tte), this.ttf });
-        if ((TextUtils.isEmpty(this.ttf)) && (TextUtils.isEmpty(this.ttg)))
+        this.wxC = paramIntent.getStringExtra("Klabel_name_list");
+        this.wxD = paramIntent.getStringExtra("Kother_user_name_list");
+        Log.d("MicroMsg.CardAcceptCardListUI", "mPrivateSelect : %d, names : %s", new Object[] { Integer.valueOf(this.wxB), this.wxC });
+        if ((TextUtils.isEmpty(this.wxC)) && (TextUtils.isEmpty(this.wxD)))
         {
           Log.e("MicroMsg.CardAcceptCardListUI", "mLabelNameList by getIntent is empty");
-          cIB();
+          dlS();
           AppMethodBeat.o(113163);
           return;
         }
-        paramIntent = Arrays.asList(this.ttf.split(","));
-        this.tti = l.cW(paramIntent);
-        this.tth = l.cV(paramIntent);
-        if ((this.ttg != null) && (this.ttg.length() > 0))
+        paramIntent = Arrays.asList(this.wxC.split(","));
+        this.wxF = l.eR(paramIntent);
+        this.wxE = l.eQ(paramIntent);
+        if ((this.wxD != null) && (this.wxD.length() > 0))
         {
-          paramIntent = Arrays.asList(this.ttg.split(","));
-          this.tth.addAll(paramIntent);
+          paramIntent = Arrays.asList(this.wxD.split(","));
+          this.wxE.addAll(paramIntent);
         }
-        if (this.tti != null) {
-          Log.i("MicroMsg.CardAcceptCardListUI", "mPrivateIdsList size is " + this.tti.size());
+        if (this.wxF != null) {
+          Log.i("MicroMsg.CardAcceptCardListUI", "mPrivateIdsList size is " + this.wxF.size());
         }
-        if (this.tth != null)
+        if (this.wxE != null)
         {
-          Log.i("MicroMsg.CardAcceptCardListUI", "mPrivateNamesList size is " + this.tth.size());
-          paramIntent = this.tth.iterator();
+          Log.i("MicroMsg.CardAcceptCardListUI", "mPrivateNamesList size is " + this.wxE.size());
+          paramIntent = this.wxE.iterator();
           while (paramIntent.hasNext()) {
             Log.d("MicroMsg.CardAcceptCardListUI", "username : %s", new Object[] { (String)paramIntent.next() });
           }
         }
-        if (!TextUtils.isEmpty(this.ttf))
+        if (!TextUtils.isEmpty(this.wxC))
         {
-          if (this.tte == 2)
+          if (this.wxB == 2)
           {
-            this.tuB.setText(getString(a.g.tlC, new Object[] { cIi() }));
+            this.wyY.setText(getString(a.g.wqb, new Object[] { dlz() }));
             AppMethodBeat.o(113163);
             return;
           }
-          if (this.tte == 3)
+          if (this.wxB == 3)
           {
-            this.tuB.setText(getString(a.g.tlB, new Object[] { cIi() }));
+            this.wyY.setText(getString(a.g.wqa, new Object[] { dlz() }));
             AppMethodBeat.o(113163);
           }
         }
         else
         {
-          cIB();
+          dlS();
         }
         AppMethodBeat.o(113163);
         return;
       }
-      cIB();
+      dlS();
     }
   }
   
-  public int getLayoutId()
-  {
-    return a.e.taW;
-  }
-  
-  public void initView()
-  {
-    AppMethodBeat.i(113156);
-    setMMTitle(a.g.tjw);
-    setBackBtn(new CardAcceptCardListUI.1(this));
-    this.tuw = findViewById(a.d.taW);
-    this.tux = findViewById(a.d.top_layout);
-    this.Xg = findViewById(a.d.list_layout);
-    this.tux.setVisibility(4);
-    this.tmq = ((ListView)findViewById(16908298));
-    this.tms = ((RelativeLayout)findViewById(a.d.tfq));
-    this.tmq.setEmptyView(this.tms);
-    this.tuy = new a(this);
-    this.tmq.setAdapter(this.tuy);
-    this.tmq.setOnItemClickListener(new CardAcceptCardListUI.2(this));
-    this.tuz = findViewById(a.d.taZ);
-    this.tsX = ((Button)findViewById(a.d.duV));
-    this.tsX.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(113151);
-        Object localObject = new b();
-        ((b)localObject).bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/card/ui/CardAcceptCardListUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
-        if (CardAcceptCardListUI.a(CardAcceptCardListUI.this)) {
-          CardAcceptCardListUI.a(CardAcceptCardListUI.this, CardAcceptCardListUI.b(CardAcceptCardListUI.this));
-        }
-        for (;;)
-        {
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/ui/CardAcceptCardListUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(113151);
-          return;
-          paramAnonymousView = CardAcceptCardListUI.this;
-          localObject = CardAcceptCardListUI.b(CardAcceptCardListUI.this);
-          paramAnonymousView.lG(true);
-          paramAnonymousView = new p((LinkedList)localObject, paramAnonymousView.fUN, paramAnonymousView.tuF, paramAnonymousView.tuG, paramAnonymousView.tuE);
-          com.tencent.mm.kernel.h.aHF().kcd.a(paramAnonymousView, 0);
-        }
-      }
-    });
-    this.tsX.setEnabled(false);
-    this.tuA = findViewById(a.d.tdi);
-    this.tuB = ((TextView)findViewById(a.d.tdj));
-    this.tuC = ((Button)findViewById(a.d.tdh));
-    this.tuC.setOnClickListener(new CardAcceptCardListUI.4(this));
-    Object localObject2 = getIntent();
-    if (localObject2 == null)
-    {
-      Log.e("MicroMsg.CardAcceptCardListUI", "CardAcceptCardListUI initView () intent == null");
-      HR(2);
-      AppMethodBeat.o(113156);
-      return;
-    }
-    Log.i("MicroMsg.CardAcceptCardListUI", "CardAcceptCardListUI handle data");
-    Object localObject3 = ((Intent)localObject2).getStringExtra("key_in_card_list");
-    this.fUN = ((Intent)localObject2).getIntExtra("key_from_scene", 8);
-    Object localObject1 = ((Intent)localObject2).getStringExtra("key_package_name");
-    localObject2 = ((Intent)localObject2).getStringExtra("key_sign");
-    this.tuE = getIntent().getIntExtra("key_stastic_scene", 7);
-    this.tuF = getIntent().getStringExtra("src_username");
-    this.tuG = getIntent().getStringExtra("js_url");
-    this.tuH = getIntent().getStringExtra("key_consumed_card_id");
-    this.lnb = getIntent().getStringExtra("key_template_id");
-    localObject3 = com.tencent.mm.plugin.card.d.h.dl((String)localObject3, this.fUN);
-    if ((localObject3 == null) || (((List)localObject3).size() == 0))
-    {
-      Log.e("MicroMsg.CardAcceptCardListUI", "CardAcceptCardListUI initView () tempList == null || tempList.size() == 0");
-      HR(2);
-      AppMethodBeat.o(113156);
-      return;
-    }
-    this.tuD.clear();
-    this.tuD.addAll((Collection)localObject3);
-    this.tuI.clear();
-    this.tuJ.clear();
-    this.tuq.clear();
-    localObject3 = this.tuD;
-    lG(true);
-    localObject1 = new ab((LinkedList)localObject3, this.fUN, (String)localObject1, (String)localObject2, this.tuF, this.tuG, this.tuH, this.tuE);
-    com.tencent.mm.kernel.h.aHF().kcd.a((q)localObject1, 0);
-    AppMethodBeat.o(113156);
-  }
-  
-  final void lG(boolean paramBoolean)
+  final void na(boolean paramBoolean)
   {
     AppMethodBeat.i(113159);
     if (paramBoolean)
     {
-      this.jhZ = s.a(this, getString(a.g.loading_tips), false, 0, null);
+      this.lKp = w.a(this, getString(a.g.loading_tips), false, 0, null);
       AppMethodBeat.o(113159);
       return;
     }
-    if ((this.jhZ != null) && (this.jhZ.isShowing()))
+    if ((this.lKp != null) && (this.lKp.isShowing()))
     {
-      this.jhZ.dismiss();
-      this.jhZ = null;
+      this.lKp.dismiss();
+      this.lKp = null;
     }
     AppMethodBeat.o(113159);
   }
@@ -386,9 +383,9 @@ public class CardAcceptCardListUI
   {
     AppMethodBeat.i(113157);
     super.onCreate(paramBundle);
-    com.tencent.mm.kernel.h.aHF().kcd.a(1079, this);
-    com.tencent.mm.kernel.h.aHF().kcd.a(1049, this);
-    com.tencent.mm.kernel.h.aHF().kcd.a(902, this);
+    com.tencent.mm.kernel.h.baD().mCm.a(1079, this);
+    com.tencent.mm.kernel.h.baD().mCm.a(1049, this);
+    com.tencent.mm.kernel.h.baD().mCm.a(902, this);
     initView();
     AppMethodBeat.o(113157);
   }
@@ -396,12 +393,12 @@ public class CardAcceptCardListUI
   public void onDestroy()
   {
     AppMethodBeat.i(113158);
-    com.tencent.mm.kernel.h.aHF().kcd.b(1079, this);
-    com.tencent.mm.kernel.h.aHF().kcd.b(1049, this);
-    com.tencent.mm.kernel.h.aHF().kcd.b(902, this);
-    this.tuD.clear();
-    a locala = this.tuy;
-    locala.tup.clear();
+    com.tencent.mm.kernel.h.baD().mCm.b(1079, this);
+    com.tencent.mm.kernel.h.baD().mCm.b(1049, this);
+    com.tencent.mm.kernel.h.baD().mCm.b(902, this);
+    this.wza.clear();
+    a locala = this.wyV;
+    locala.wyM.clear();
     locala.mContext = null;
     super.onDestroy();
     AppMethodBeat.o(113158);
@@ -413,199 +410,198 @@ public class CardAcceptCardListUI
     if (paramInt == 4)
     {
       Log.i("MicroMsg.CardAcceptCardListUI", "CardAcceptCardListUI onKeyDown() back cancel");
-      HR(1);
+      Is(1);
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
     AppMethodBeat.o(113161);
     return bool;
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
   {
     AppMethodBeat.i(113160);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       Object localObject1;
-      if ((paramq instanceof ab))
+      if ((paramp instanceof ab))
       {
-        lG(false);
-        paramString = (ab)paramq;
-        paramq = paramString.tpZ;
-        this.tqk = paramString.tqk;
-        this.tql = paramString.tql;
-        this.tqm = paramString.tqm;
-        this.tqn = paramString.tqn;
-        Log.i("MicroMsg.CardAcceptCardListUI", "accept_button_status: " + this.tqk + "  accept_button_wording: " + this.tql);
-        Log.i("MicroMsg.CardAcceptCardListUI", "private_status: " + this.tqm + "  private_wording: " + this.tqn);
-        paramString = f.arK(paramq);
-        paramq = cP(paramString);
+        na(false);
+        paramString = (ab)paramp;
+        paramp = paramString.wuy;
+        this.wuJ = paramString.wuJ;
+        this.wuK = paramString.wuK;
+        this.wuL = paramString.wuL;
+        this.wuM = paramString.wuM;
+        Log.i("MicroMsg.CardAcceptCardListUI", "accept_button_status: " + this.wuJ + "  accept_button_wording: " + this.wuK);
+        Log.i("MicroMsg.CardAcceptCardListUI", "private_status: " + this.wuL + "  private_wording: " + this.wuM);
+        paramString = f.alo(paramp);
+        paramp = eK(paramString);
         Object localObject2;
         if ((paramString != null) && (paramString.size() > 0))
         {
           Log.i("MicroMsg.CardAcceptCardListUI", "The card info list size is " + paramString.size());
-          if ((paramq != null) && (paramq.size() > 0))
+          if ((paramp != null) && (paramp.size() > 0))
           {
-            localObject1 = this.tuy;
-            localObject2 = this.tuq;
-            if (paramq != null)
+            localObject1 = this.wyV;
+            localObject2 = this.wyN;
+            if (paramp != null)
             {
-              ((a)localObject1).tup.clear();
-              ((a)localObject1).tup.addAll(paramq);
-              ((a)localObject1).tuq.putAll((Map)localObject2);
+              ((a)localObject1).wyM.clear();
+              ((a)localObject1).wyM.addAll(paramp);
+              ((a)localObject1).wyN.putAll((Map)localObject2);
             }
           }
-          this.tuy.notifyDataSetChanged();
-          if (((CardInfo)paramString.get(0)).cFX()) {
-            this.tog = true;
+          this.wyV.notifyDataSetChanged();
+          if (((CardInfo)paramString.get(0)).djp()) {
+            this.wsH = true;
           }
-          this.tux.setVisibility(0);
-          if (this.tuy.getCount() <= 0) {
-            break label861;
+          this.wyU.setVisibility(0);
+          if (this.wyV.getCount() <= 0) {
+            break label859;
           }
-          paramString = this.tuy.HQ(0);
+          paramString = this.wyV.Ir(0);
           n.a(this, paramString);
-          this.tuw.setBackgroundColor(l.arR(paramString.cGs().lmL));
-          this.tuz.setVisibility(0);
-          paramq = new StateListDrawable();
-          paramInt1 = getResources().getDimensionPixelOffset(a.b.sZS);
-          if (this.tqk != 1) {
-            break label699;
+          this.wyT.setBackgroundColor(l.alv(paramString.djK().nRQ));
+          this.wyW.setVisibility(0);
+          paramp = new StateListDrawable();
+          paramInt1 = getResources().getDimensionPixelOffset(a.b.wdZ);
+          if (this.wuJ != 1) {
+            break label697;
           }
-          this.tsX.setEnabled(true);
-          localObject1 = l.fF(l.arR(paramString.cGs().lmL), paramInt1);
-          localObject2 = l.fF(l.convertStringToRGB(paramString.cGs().lmL, 175), paramInt1);
-          paramq.addState(new int[] { 16842919 }, (Drawable)localObject2);
-          paramq.addState(new int[0], (Drawable)localObject1);
+          this.wxu.setEnabled(true);
+          localObject1 = l.gx(l.alv(paramString.djK().nRQ), paramInt1);
+          localObject2 = l.gx(l.convertStringToRGB(paramString.djK().nRQ, 175), paramInt1);
+          paramp.addState(new int[] { 16842919 }, (Drawable)localObject2);
+          paramp.addState(new int[0], (Drawable)localObject1);
         }
         for (;;)
         {
-          this.tsX.setBackgroundDrawable(paramq);
-          if (!TextUtils.isEmpty(this.tql)) {
-            this.tsX.setText(this.tql);
+          this.wxu.setBackgroundDrawable(paramp);
+          if (!TextUtils.isEmpty(this.wuK)) {
+            this.wxu.setText(this.wuK);
           }
-          if (this.tqm != 1) {
-            break label756;
+          if (this.wuL != 1) {
+            break label754;
           }
           paramInt1 = getResources().getDimensionPixelOffset(a.b.NormalPadding);
-          paramq = l.e(this, getResources().getColor(a.a.white), paramInt1);
-          localObject1 = l.fF(getResources().getColor(a.a.white), paramInt1);
+          paramp = l.e(this, getResources().getColor(a.a.white), paramInt1);
+          localObject1 = l.gx(getResources().getColor(a.a.white), paramInt1);
           localObject2 = new StateListDrawable();
           ((StateListDrawable)localObject2).addState(new int[] { 16842919 }, (Drawable)localObject1);
-          ((StateListDrawable)localObject2).addState(new int[0], paramq);
-          this.tuC.setBackgroundDrawable((Drawable)localObject2);
-          paramInt1 = l.arR(paramString.cGs().lmL);
+          ((StateListDrawable)localObject2).addState(new int[0], paramp);
+          this.wyZ.setBackgroundDrawable((Drawable)localObject2);
+          paramInt1 = l.alv(paramString.djK().nRQ);
           paramInt2 = getResources().getColor(a.a.white);
-          paramString = new int[0];
-          paramString = new ColorStateList(new int[][] { { 16842919, 16842910 }, paramString }, new int[] { paramInt1, paramInt2 });
-          this.tuC.setTextColor(paramString);
-          this.tuA.setVisibility(0);
-          if (TextUtils.isEmpty(this.tqn)) {
-            break label739;
+          paramString = new ColorStateList(new int[][] { { 16842919, 16842910 }, new int[0] }, new int[] { paramInt1, paramInt2 });
+          this.wyZ.setTextColor(paramString);
+          this.wyX.setVisibility(0);
+          if (TextUtils.isEmpty(this.wuM)) {
+            break label737;
           }
-          this.tuB.setText(this.tqn);
+          this.wyY.setText(this.wuM);
           AppMethodBeat.o(113160);
           return;
           Log.e("MicroMsg.CardAcceptCardListUI", "The card info list size is 0!");
           break;
-          label699:
-          this.tsX.setEnabled(false);
-          localObject1 = l.fF(l.convertStringToRGB(paramString.cGs().lmL, 175), paramInt1);
-          paramq.addState(new int[0], (Drawable)localObject1);
+          label697:
+          this.wxu.setEnabled(false);
+          localObject1 = l.gx(l.convertStringToRGB(paramString.djK().nRQ, 175), paramInt1);
+          paramp.addState(new int[0], (Drawable)localObject1);
         }
-        label739:
-        this.tuB.setText(a.g.tlA);
+        label737:
+        this.wyY.setText(a.g.wpZ);
         AppMethodBeat.o(113160);
         return;
-        label756:
-        this.tuA.setVisibility(8);
-        paramString = (RelativeLayout.LayoutParams)this.tux.getLayoutParams();
+        label754:
+        this.wyX.setVisibility(8);
+        paramString = (RelativeLayout.LayoutParams)this.wyU.getLayoutParams();
         paramString.topMargin = getResources().getDimensionPixelSize(a.b.SmallPadding);
         paramString.bottomMargin = getResources().getDimensionPixelSize(a.b.LargestPadding);
-        this.tux.setLayoutParams(paramString);
-        this.tux.invalidate();
-        paramString = (RelativeLayout.LayoutParams)this.tuz.getLayoutParams();
+        this.wyU.setLayoutParams(paramString);
+        this.wyU.invalidate();
+        paramString = (RelativeLayout.LayoutParams)this.wyW.getLayoutParams();
         paramString.addRule(8, a.d.list_layout);
-        this.tuz.setLayoutParams(paramString);
-        this.tuz.invalidate();
+        this.wyW.setLayoutParams(paramString);
+        this.wyW.invalidate();
         AppMethodBeat.o(113160);
         return;
-        label861:
-        this.tuz.setVisibility(8);
-        this.tuA.setVisibility(8);
-        this.tuw.setBackgroundColor(getResources().getColor(a.a.sZs));
+        label859:
+        this.wyW.setVisibility(8);
+        this.wyX.setVisibility(8);
+        this.wyT.setBackgroundColor(getResources().getColor(a.a.wdB));
         AppMethodBeat.o(113160);
         return;
       }
-      if ((paramq instanceof p))
+      if ((paramp instanceof com.tencent.mm.plugin.card.model.p))
       {
-        lG(false);
-        localObject1 = (p)paramq;
-        if (((p)localObject1).tqa != 0)
+        na(false);
+        localObject1 = (com.tencent.mm.plugin.card.model.p)paramp;
+        if (((com.tencent.mm.plugin.card.model.p)localObject1).wuz != 0)
         {
-          paramq = ((p)localObject1).tqb;
-          paramString = paramq;
-          if (TextUtils.isEmpty(paramq)) {
-            paramString = getString(a.g.tjJ);
+          paramp = ((com.tencent.mm.plugin.card.model.p)localObject1).wuA;
+          paramString = paramp;
+          if (TextUtils.isEmpty(paramp)) {
+            paramString = getString(a.g.wog);
           }
-          com.tencent.mm.ui.base.h.a(this, paramString, null, false, new CardAcceptCardListUI.5(this));
-          this.tqj = ((p)localObject1).tpZ;
+          k.a(this, paramString, null, false, new CardAcceptCardListUI.5(this));
+          this.wuI = ((com.tencent.mm.plugin.card.model.p)localObject1).wuy;
           AppMethodBeat.o(113160);
           return;
         }
-        com.tencent.mm.ui.base.h.cO(this, getResources().getString(a.g.tko));
+        k.cZ(this, getResources().getString(a.g.woM));
         paramString = new Intent();
-        paramString.putExtra("card_list", ((p)localObject1).tpZ);
+        paramString.putExtra("card_list", ((com.tencent.mm.plugin.card.model.p)localObject1).wuy);
         setResult(-1, paramString);
         Log.i("MicroMsg.CardAcceptCardListUI", "CardAcceptCardListUI setResult RESULT_OK for card");
-        l.cLg();
+        l.doO();
         finish();
         AppMethodBeat.o(113160);
         return;
       }
-      if ((paramq instanceof g))
+      if ((paramp instanceof g))
       {
-        lG(false);
-        paramString = ((g)paramq).tpZ;
-        paramInt1 = ((g)paramq).tqa;
-        paramq = ((g)paramq).tqb;
-        this.tqj = paramString;
+        na(false);
+        paramString = ((g)paramp).wuy;
+        paramInt1 = ((g)paramp).wuz;
+        paramp = ((g)paramp).wuA;
+        this.wuI = paramString;
         if (paramInt1 != 0)
         {
-          paramString = paramq;
-          if (TextUtils.isEmpty(paramq)) {
-            paramString = getString(a.g.tlJ);
+          paramString = paramp;
+          if (TextUtils.isEmpty(paramp)) {
+            paramString = getString(a.g.wqi);
           }
-          com.tencent.mm.ui.base.h.a(this, paramString, null, false, new CardAcceptCardListUI.6(this));
+          k.a(this, paramString, null, false, new CardAcceptCardListUI.6(this));
           AppMethodBeat.o(113160);
           return;
         }
-        com.tencent.mm.ui.base.h.cO(this, getResources().getString(a.g.tjB));
-        paramq = new Intent();
-        paramq.putExtra("card_list", this.tqj);
-        setResult(-1, paramq);
+        k.cZ(this, getResources().getString(a.g.wnY));
+        paramp = new Intent();
+        paramp.putExtra("card_list", this.wuI);
+        setResult(-1, paramp);
         Log.i("MicroMsg.CardAcceptCardListUI", "CardAcceptCardListUI setResult RESULT_OK for sharecard");
-        l.cLi();
-        paramq = new ShareCardInfo();
-        f.a(paramq, paramString);
-        l.a(paramq);
-        am.cHz().onChange();
+        l.doQ();
+        paramp = new ShareCardInfo();
+        f.a(paramp, paramString);
+        l.a(paramp);
+        am.dkQ().onChange();
         finish();
         AppMethodBeat.o(113160);
       }
     }
     else
     {
-      Log.e("MicroMsg.CardAcceptCardListUI", "CardAddEntranceUI onSceneEnd() netsene type" + paramq.getType() + "errType = " + paramInt1 + " errCode = " + paramInt2);
-      lG(false);
+      Log.e("MicroMsg.CardAcceptCardListUI", "CardAddEntranceUI onSceneEnd() netsene type" + paramp.getType() + "errType = " + paramInt1 + " errCode = " + paramInt2);
+      na(false);
       d.b(this, paramString, paramInt2);
-      if ((paramq instanceof p))
+      if ((paramp instanceof com.tencent.mm.plugin.card.model.p))
       {
-        this.tqj = paramString;
+        this.wuI = paramString;
         AppMethodBeat.o(113160);
         return;
       }
-      if ((paramq instanceof g)) {
-        this.tqj = "";
+      if ((paramp instanceof g)) {
+        this.wuI = "";
       }
     }
     AppMethodBeat.o(113160);
@@ -619,7 +615,7 @@ public class CardAcceptCardListUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardAcceptCardListUI
  * JD-Core Version:    0.7.0.1
  */

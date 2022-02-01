@@ -1,271 +1,247 @@
 package com.tencent.mm.ui.chatting.j.a;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.View;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.text.Spannable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.R.l;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.appbrand.service.f;
-import com.tencent.mm.plugin.multitask.d;
-import com.tencent.mm.plugin.multitask.g;
-import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
-import com.tencent.mm.plugin.multitask.ui.c;
-import com.tencent.mm.protocal.protobuf.aco;
-import com.tencent.mm.protocal.protobuf.apf;
-import com.tencent.mm.protocal.protobuf.dal;
-import com.tencent.mm.protocal.protobuf.daq;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.compatible.deviceinfo.q;
+import com.tencent.mm.model.b.b;
+import com.tencent.mm.model.b.b.b;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.c;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.normsg.a.d;
+import com.tencent.mm.pluginsdk.ui.span.t;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.w;
-import com.tencent.mm.ui.widget.a.f.a;
-import com.tencent.mm.ui.widget.a.f.c;
-import com.tencent.mm.vfs.u;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.storage.cc;
+import com.tencent.mm.ui.widget.MMTextView.a;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/chatting/multitask/uic/FileMultiTaskUIC;", "Lcom/tencent/mm/plugin/multitask/ui/MultiTaskUIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "fragment", "Landroidx/fragment/app/Fragment;", "(Landroidx/fragment/app/Fragment;)V", "getLayoutId", "", "getMultiTaskMode", "Lcom/tencent/mm/plugin/multitask/ui/IMultiTaskUIComponent$MultiTaskMode;", "onActivityResult", "", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "", "onBeforeFinish", "resultIntent", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onCreateAfter", "onCreateBefore", "onDestroy", "onKeyDown", "keyCode", "event", "Landroid/view/KeyEvent;", "onKeyUp", "onMultiTaskInit", "obj", "", "onMultiTaskItemClick", "view", "Landroid/view/View;", "info", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "animateData", "Lcom/tencent/mm/protocal/protobuf/MultiTaskAnimData;", "callback", "onMultiTaskPagePause", "onMultiTaskPageResume", "onPause", "onRequestPermissionsResult", "permissions", "", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onRestoreInstanceState", "onResume", "onSaveInstanceState", "outState", "onStart", "onStartActivityForResult", "intent", "options", "onStop", "onUserVisibleFocused", "onUserVisibleUnFocused", "supportMultiTaskType", "multiTaskType", "Companion", "app_release"})
-public final class a
-  extends c
+public class a
 {
-  public static final a.a WYN;
+  private static volatile a aeJt;
+  private static final MMHandler aeJu;
   
   static
   {
-    AppMethodBeat.i(236769);
-    WYN = new a.a((byte)0);
-    AppMethodBeat.o(236769);
+    AppMethodBeat.i(36623);
+    aeJt = null;
+    aeJu = new MMHandler("AAChattingHelper");
+    AppMethodBeat.o(36623);
   }
   
-  public a(AppCompatActivity paramAppCompatActivity)
+  private a()
   {
-    super(paramAppCompatActivity);
-    AppMethodBeat.i(236767);
-    AppMethodBeat.o(236767);
+    AppMethodBeat.i(185017);
+    aeJu.setLogging(false);
+    AppMethodBeat.o(185017);
   }
   
-  public a(Fragment paramFragment)
+  public static void a(CharSequence paramCharSequence, cc paramcc)
   {
-    super(paramFragment);
-    AppMethodBeat.i(236768);
-    AppMethodBeat.o(236768);
+    AppMethodBeat.i(36621);
+    a(paramCharSequence, paramcc, 1);
+    AppMethodBeat.o(36621);
   }
   
-  public final boolean Of(int paramInt)
+  private static void a(CharSequence paramCharSequence, cc paramcc, int paramInt)
   {
-    return paramInt == 4;
+    AppMethodBeat.i(36620);
+    if ((paramCharSequence instanceof Spannable)) {
+      aeJu.postToWorker(new b(paramCharSequence, paramcc, paramInt));
+    }
+    AppMethodBeat.o(36620);
   }
   
-  public final void a(View paramView, MultiTaskInfo paramMultiTaskInfo, dal paramdal, Object paramObject)
+  public static a jwS()
   {
-    AppMethodBeat.i(236766);
-    p.k(paramMultiTaskInfo, "info");
-    p.k(paramdal, "animateData");
-    if (paramMultiTaskInfo.field_data != null)
-    {
-      Log.i("MicroMsg.FileMultiTaskUIC", "handleBallInfoClicked, openFile t:%s", new Object[] { paramMultiTaskInfo });
-      paramObject = getActivity();
-      if (!com.tencent.mm.ui.chatting.j.b.hRJ())
-      {
-        w.g((Context)paramObject, null);
-        AppMethodBeat.o(236766);
-        return;
-      }
-      apf localapf = new apf();
+    AppMethodBeat.i(36619);
+    if (aeJt == null) {
       try
       {
-        localapf.parseFrom(paramMultiTaskInfo.field_data);
-        String str1 = localapf.filePath;
-        if (!u.agG(str1))
-        {
-          Log.i("MicroMsg.FileMultiTaskUIC", "handleBallInfoClicked() %s not exist", new Object[] { str1 });
-          paramView = new f.a((Context)paramObject);
-          paramView.aR((CharSequence)"");
-          paramView.bBl(paramObject.getString(R.l.eEZ)).HL(true).icD().b((f.c)new b()).show();
-          ((d)h.ag(d.class)).removeTaskInfoAndCoverImg(paramMultiTaskInfo.field_id);
-          AppMethodBeat.o(236766);
-          return;
+        if (aeJt == null) {
+          aeJt = new a();
         }
+        a locala1 = aeJt;
+        return locala1;
       }
-      catch (Throwable localThrowable)
+      finally
       {
-        for (;;)
-        {
-          Log.e("MicroMsg.FileMultiTaskUIC", "handleMultiTaskInfoClicked", new Object[] { localThrowable });
-        }
-        paramMultiTaskInfo = new aco();
-        paramMultiTaskInfo.Soh = paramdal;
-        if (paramView != null)
-        {
-          paramdal = com.tencent.mm.plugin.secdata.ui.a.JbV;
-          paramView = paramView.getContext();
-          p.j(paramView, "it.context");
-          paramView = com.tencent.mm.plugin.secdata.ui.a.a.hU(paramView);
-          if (paramView == null) {
-            break label437;
-          }
-          paramView = (daq)paramView.aef(5);
-          if (paramView == null) {
-            break label437;
-          }
-        }
-        label437:
-        for (paramView = paramView.wmL;; paramView = null)
-        {
-          paramMultiTaskInfo.wmL = paramView;
-          if (!localapf.SCl) {
-            break;
-          }
-          paramView = new Intent();
-          paramView.setClassName((Context)paramObject, "com.tencent.mm.ui.chatting.AppAttachDownloadUI");
-          com.tencent.mm.plugin.multitask.f.b.a(paramView, localapf);
-          paramView.putExtra("key_multi_task_common_info", paramMultiTaskInfo.toByteArray());
-          paramMultiTaskInfo = paramView.getExtras();
-          if (paramMultiTaskInfo != null) {
-            paramMultiTaskInfo.putInt("scene", 9);
-          }
-          paramView.addFlags(268435456);
-          paramView = new com.tencent.mm.hellhoundlib.b.a().bm(paramView);
-          com.tencent.mm.hellhoundlib.a.a.b(paramObject, paramView.aFh(), "com/tencent/mm/ui/chatting/multitask/uic/FileMultiTaskUIC", "onMultiTaskItemClick", "(Landroid/view/View;Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;Lcom/tencent/mm/protocal/protobuf/MultiTaskAnimData;Ljava/lang/Object;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramObject.startActivity((Intent)paramView.sf(0));
-          com.tencent.mm.hellhoundlib.a.a.c(paramObject, "com/tencent/mm/ui/chatting/multitask/uic/FileMultiTaskUIC", "onMultiTaskItemClick", "(Landroid/view/View;Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;Lcom/tencent/mm/protocal/protobuf/MultiTaskAnimData;Ljava/lang/Object;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          AppMethodBeat.o(236766);
-          return;
-        }
-        paramView = localapf.jmx;
-        paramdal = localapf.appId;
-        String str2 = localapf.processName;
-        boolean bool = localapf.orn;
-        if (Util.isNullOrNil(str2))
-        {
-          if (com.tencent.mm.pluginsdk.ui.tools.a.a(localThrowable, paramView, "", 9, paramMultiTaskInfo))
-          {
-            com.tencent.mm.pluginsdk.ui.tools.a.a((Activity)getActivity(), localThrowable, paramView, "", 9, paramMultiTaskInfo);
-            AppMethodBeat.o(236766);
-          }
-        }
-        else {
-          ((f)h.ae(f.class)).a((Context)paramObject, localThrowable, paramView, paramdal, bool, str2);
-        }
+        AppMethodBeat.o(36619);
       }
     }
-    AppMethodBeat.o(236766);
+    a locala2 = aeJt;
+    AppMethodBeat.o(36619);
+    return locala2;
   }
   
-  public final void dKo() {}
-  
-  public final com.tencent.mm.plugin.multitask.ui.a.b dKp()
+  public static MMTextView.a jwT()
   {
-    return com.tencent.mm.plugin.multitask.ui.a.b.FHX;
+    return a.aeJv;
   }
   
-  public final void dp(Object paramObject) {}
-  
-  public final int getLayoutId()
+  static enum a
+    implements MMTextView.a
   {
-    AppMethodBeat.i(236758);
-    int i = super.getLayoutId();
-    AppMethodBeat.o(236758);
-    return i;
-  }
-  
-  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public final boolean onBackPressed()
-  {
-    return false;
-  }
-  
-  public final void onBeforeFinish(Intent paramIntent) {}
-  
-  public final void onConfigurationChanged(Configuration paramConfiguration)
-  {
-    AppMethodBeat.i(236739);
-    p.k(paramConfiguration, "newConfig");
-    AppMethodBeat.o(236739);
-  }
-  
-  public final void onCreate(Bundle paramBundle)
-  {
-    AppMethodBeat.i(236714);
-    getRootView().findViewById(getLayoutId());
-    AppMethodBeat.o(236714);
-  }
-  
-  public final void onCreateAfter(Bundle paramBundle) {}
-  
-  public final void onCreateBefore(Bundle paramBundle) {}
-  
-  public final void onDestroy() {}
-  
-  public final boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
-  {
-    AppMethodBeat.i(236751);
-    p.k(paramKeyEvent, "event");
-    AppMethodBeat.o(236751);
-    return false;
-  }
-  
-  public final boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
-  {
-    AppMethodBeat.i(236754);
-    p.k(paramKeyEvent, "event");
-    AppMethodBeat.o(236754);
-    return false;
-  }
-  
-  public final void onPause() {}
-  
-  public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    AppMethodBeat.i(236735);
-    p.k(paramArrayOfString, "permissions");
-    p.k(paramArrayOfInt, "grantResults");
-    AppMethodBeat.o(236735);
-  }
-  
-  public final void onRestoreInstanceState(Bundle paramBundle) {}
-  
-  public final void onResume() {}
-  
-  public final void onSaveInstanceState(Bundle paramBundle) {}
-  
-  public final void onStart() {}
-  
-  public final void onStartActivityForResult(Intent paramIntent, int paramInt, Bundle paramBundle) {}
-  
-  public final void onStop() {}
-  
-  public final void onUserVisibleFocused() {}
-  
-  public final void onUserVisibleUnFocused() {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/ui/chatting/multitask/uic/FileMultiTaskUIC$onMultiTaskItemClick$1$1", "Lcom/tencent/mm/ui/widget/dialog/MMConfirmDialog$IOnDialogClick;", "onDialogClick", "", "bOk", "", "text", "", "app_release"})
-  public static final class b
-    implements f.c
-  {
-    public final void g(boolean paramBoolean, String paramString)
+    static
     {
-      AppMethodBeat.i(266198);
-      if (paramBoolean)
+      AppMethodBeat.i(36616);
+      aeJv = new a("TEXT_CALLBACK");
+      aeJw = new a[] { aeJv };
+      AppMethodBeat.o(36616);
+    }
+    
+    private a() {}
+    
+    public final void a(CharSequence paramCharSequence, long paramLong)
+    {
+      AppMethodBeat.i(36615);
+      cc localcc = ((n)com.tencent.mm.kernel.h.ax(n.class)).gaZ().sl(paramLong);
+      if ((localcc == null) || (Util.isNullOrNil(localcc.field_talker)))
       {
-        paramString = (d)h.ag(d.class);
-        g localg = g.FEX;
-        paramString.sendMultiTaskEvent(0, g.fan(), 1048576);
+        Log.w("MicroMsg.AAChattingHelper", "hy: not retrieving correct msg from db. try use old one. msg id: %d", new Object[] { Long.valueOf(paramLong) });
+        AppMethodBeat.o(36615);
+        return;
       }
-      AppMethodBeat.o(266198);
+      if ((localcc.field_flag & 0x10) == 0)
+      {
+        a.b(paramCharSequence, localcc);
+        AppMethodBeat.o(36615);
+        return;
+      }
+      Log.v("MicroMsg.AAChattingHelper", "hy: show already checked. msg id is: %d", new Object[] { Long.valueOf(paramLong) });
+      AppMethodBeat.o(36615);
+    }
+  }
+  
+  static final class b
+    implements Runnable
+  {
+    private CharSequence bba;
+    private cc hzO;
+    private int scene;
+    
+    b(CharSequence paramCharSequence, cc paramcc, int paramInt)
+    {
+      this.bba = paramCharSequence;
+      this.hzO = paramcc;
+      this.scene = paramInt;
+    }
+    
+    public final void run()
+    {
+      int i = 0;
+      AppMethodBeat.i(36618);
+      if ((this.bba instanceof Spannable)) {}
+      for (;;)
+      {
+        try
+        {
+          Spannable localSpannable = (Spannable)this.bba;
+          System.nanoTime();
+          Object[] arrayOfObject = localSpannable.getSpans(0, localSpannable.length(), Object.class);
+          Object localObject3 = new ArrayList(1);
+          if ((arrayOfObject == null) || (arrayOfObject.length == 0)) {
+            break label398;
+          }
+          int j = arrayOfObject.length;
+          Object localObject1 = localObject3;
+          if (i < j)
+          {
+            localObject1 = arrayOfObject[i];
+            if ((localObject1 == null) || (!d.MtP.d(localObject1, t.class))) {
+              break label391;
+            }
+            ((ArrayList)localObject3).add(new a.a((byte)0).a(localObject1, localSpannable));
+            break label391;
+          }
+          if ((localObject1 == null) || (((ArrayList)localObject1).size() == 0)) {
+            break label385;
+          }
+          this.hzO = ((n)com.tencent.mm.kernel.h.ax(n.class)).gaZ().sl(this.hzO.field_msgId);
+          if ((this.hzO != null) && (!Util.isNullOrNil(this.hzO.field_talker)))
+          {
+            this.hzO.setFlag(this.hzO.field_flag | 0x10);
+            ((n)com.tencent.mm.kernel.h.ax(n.class)).gaZ().a(this.hzO.field_msgId, this.hzO);
+          }
+          bh.bCz().bAb().bEd();
+          bh.bCz().bAb().b(b.b.ool);
+          localObject1 = ((ArrayList)localObject1).iterator();
+          if (!((Iterator)localObject1).hasNext()) {
+            break label385;
+          }
+          localObject3 = ((c)((Iterator)localObject1).next()).extInfo;
+          com.tencent.mm.plugin.report.service.h.OAn.b(14237, new Object[] { "msg", Long.valueOf(this.hzO.field_msgId), Build.MANUFACTURER, q.aPo(), Build.VERSION.RELEASE, Build.VERSION.INCREMENTAL, Build.DISPLAY, Integer.valueOf(this.scene), localObject3 });
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(587L, 0L, 1L, false);
+          continue;
+          AppMethodBeat.o(36618);
+        }
+        catch (Exception localException) {}
+        return;
+        label385:
+        AppMethodBeat.o(36618);
+        return;
+        label391:
+        i += 1;
+        continue;
+        label398:
+        Object localObject2 = null;
+      }
+    }
+    
+    static final class a$a
+      implements a.b.b
+    {
+      public final a.b.c a(Object paramObject, Spannable paramSpannable)
+      {
+        AppMethodBeat.i(36617);
+        String str = paramSpannable.toString().substring(paramSpannable.getSpanStart(paramObject), paramSpannable.getSpanEnd(paramObject));
+        try
+        {
+          paramSpannable = Util.nullAs(new JSONObject(paramObject.toString()).optString("type"), paramObject.getClass().getName());
+          paramObject = paramSpannable;
+        }
+        catch (JSONException paramSpannable)
+        {
+          for (;;)
+          {
+            paramObject = paramObject.getClass().getName();
+          }
+        }
+        paramObject = new a.b.c(str, paramObject);
+        AppMethodBeat.o(36617);
+        return paramObject;
+      }
+    }
+    
+    static abstract interface b
+    {
+      public abstract a.b.c a(Object paramObject, Spannable paramSpannable);
+    }
+    
+    static final class c
+    {
+      String extInfo;
+      String text;
+      
+      c(String paramString1, String paramString2)
+      {
+        this.text = paramString1;
+        this.extInfo = paramString2;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.j.a.a
  * JD-Core Version:    0.7.0.1
  */

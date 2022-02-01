@@ -10,63 +10,54 @@ public class b<K, V>
   implements Iterable<Map.Entry<K, V>>
 {
   public int mSize;
-  public c<K, V> ye;
-  public c<K, V> yf;
-  public WeakHashMap<f<K, V>, Boolean> yg;
+  public c<K, V> yZ;
+  public c<K, V> za;
+  public WeakHashMap<f<K, V>, Boolean> zb;
   
   public b()
   {
-    AppMethodBeat.i(186290);
-    this.yg = new WeakHashMap();
+    AppMethodBeat.i(201101);
+    this.zb = new WeakHashMap();
     this.mSize = 0;
-    AppMethodBeat.o(186290);
+    AppMethodBeat.o(201101);
   }
   
-  protected final c<K, V> a(K paramK, V paramV)
+  protected final c<K, V> c(K paramK, V paramV)
   {
-    AppMethodBeat.i(186300);
+    AppMethodBeat.i(201134);
     paramK = new c(paramK, paramV);
     this.mSize += 1;
-    if (this.yf == null)
+    if (this.za == null)
     {
-      this.ye = paramK;
-      this.yf = this.ye;
-      AppMethodBeat.o(186300);
+      this.yZ = paramK;
+      this.za = this.yZ;
+      AppMethodBeat.o(201134);
       return paramK;
     }
-    this.yf.yi = paramK;
-    paramK.yj = this.yf;
-    this.yf = paramK;
-    AppMethodBeat.o(186300);
+    this.za.zc = paramK;
+    paramK.zd = this.za;
+    this.za = paramK;
+    AppMethodBeat.o(201134);
     return paramK;
-  }
-  
-  public final b<K, V>.d eM()
-  {
-    AppMethodBeat.i(186313);
-    d locald = new d();
-    this.yg.put(locald, Boolean.FALSE);
-    AppMethodBeat.o(186313);
-    return locald;
   }
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(186317);
+    AppMethodBeat.i(201173);
     if (paramObject == this)
     {
-      AppMethodBeat.o(186317);
+      AppMethodBeat.o(201173);
       return true;
     }
     if (!(paramObject instanceof b))
     {
-      AppMethodBeat.o(186317);
+      AppMethodBeat.o(201173);
       return false;
     }
     Object localObject1 = (b)paramObject;
     if (this.mSize != ((b)localObject1).mSize)
     {
-      AppMethodBeat.o(186317);
+      AppMethodBeat.o(201173);
       return false;
     }
     paramObject = iterator();
@@ -77,102 +68,111 @@ public class b<K, V>
       Object localObject2 = ((Iterator)localObject1).next();
       if (((localEntry == null) && (localObject2 != null)) || ((localEntry != null) && (!localEntry.equals(localObject2))))
       {
-        AppMethodBeat.o(186317);
+        AppMethodBeat.o(201173);
         return false;
       }
     }
     if ((!paramObject.hasNext()) && (!((Iterator)localObject1).hasNext()))
     {
-      AppMethodBeat.o(186317);
+      AppMethodBeat.o(201173);
       return true;
     }
-    AppMethodBeat.o(186317);
+    AppMethodBeat.o(201173);
     return false;
+  }
+  
+  public final b<K, V>.d fJ()
+  {
+    AppMethodBeat.i(201161);
+    d locald = new d();
+    this.zb.put(locald, Boolean.FALSE);
+    AppMethodBeat.o(201161);
+    return locald;
   }
   
   public int hashCode()
   {
-    AppMethodBeat.i(186319);
+    AppMethodBeat.i(201180);
     Iterator localIterator = iterator();
     for (int i = 0; localIterator.hasNext(); i = ((Map.Entry)localIterator.next()).hashCode() + i) {}
-    AppMethodBeat.o(186319);
+    AppMethodBeat.o(201180);
     return i;
   }
   
   public Iterator<Map.Entry<K, V>> iterator()
   {
-    AppMethodBeat.i(186311);
-    a locala = new a(this.ye, this.yf);
-    this.yg.put(locala, Boolean.FALSE);
-    AppMethodBeat.o(186311);
+    AppMethodBeat.i(201153);
+    a locala = new a(this.yZ, this.za);
+    this.zb.put(locala, Boolean.FALSE);
+    AppMethodBeat.o(201153);
     return locala;
-  }
-  
-  protected c<K, V> n(K paramK)
-  {
-    AppMethodBeat.i(186293);
-    for (c localc = this.ye; (localc != null) && (!localc.yh.equals(paramK)); localc = localc.yi) {}
-    AppMethodBeat.o(186293);
-    return localc;
   }
   
   public V putIfAbsent(K paramK, V paramV)
   {
-    AppMethodBeat.i(186298);
-    c localc = n(paramK);
+    AppMethodBeat.i(201121);
+    c localc = q(paramK);
     if (localc != null)
     {
       paramK = localc.mValue;
-      AppMethodBeat.o(186298);
+      AppMethodBeat.o(201121);
       return paramK;
     }
-    a(paramK, paramV);
-    AppMethodBeat.o(186298);
+    c(paramK, paramV);
+    AppMethodBeat.o(201121);
     return null;
+  }
+  
+  protected c<K, V> q(K paramK)
+  {
+    AppMethodBeat.i(201111);
+    for (c localc = this.yZ; (localc != null) && (!localc.mKey.equals(paramK)); localc = localc.zc) {}
+    AppMethodBeat.o(201111);
+    return localc;
   }
   
   public V remove(K paramK)
   {
-    AppMethodBeat.i(186305);
-    paramK = n(paramK);
+    AppMethodBeat.i(201145);
+    paramK = q(paramK);
     if (paramK == null)
     {
-      AppMethodBeat.o(186305);
+      AppMethodBeat.o(201145);
       return null;
     }
     this.mSize -= 1;
-    if (!this.yg.isEmpty())
+    if (!this.zb.isEmpty())
     {
-      Iterator localIterator = this.yg.keySet().iterator();
+      Iterator localIterator = this.zb.keySet().iterator();
       while (localIterator.hasNext()) {
         ((f)localIterator.next()).c(paramK);
       }
     }
-    if (paramK.yj != null)
+    if (paramK.zd != null)
     {
-      paramK.yj.yi = paramK.yi;
-      if (paramK.yi == null) {
+      paramK.zd.zc = paramK.zc;
+      if (paramK.zc == null) {
         break label151;
       }
-      paramK.yi.yj = paramK.yj;
+      paramK.zc.zd = paramK.zd;
     }
     for (;;)
     {
-      paramK.yi = null;
-      paramK.yj = null;
+      paramK.zc = null;
+      paramK.zd = null;
       paramK = paramK.mValue;
-      AppMethodBeat.o(186305);
+      AppMethodBeat.o(201145);
       return paramK;
-      this.ye = paramK.yi;
+      this.yZ = paramK.zc;
       break;
       label151:
-      this.yf = paramK.yj;
+      this.za = paramK.zd;
     }
   }
   
   public String toString()
   {
-    AppMethodBeat.i(186322);
+    AppMethodBeat.i(201192);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[");
     Iterator localIterator = iterator();
@@ -185,7 +185,7 @@ public class b<K, V>
     }
     ((StringBuilder)localObject).append("]");
     localObject = ((StringBuilder)localObject).toString();
-    AppMethodBeat.o(186322);
+    AppMethodBeat.o(201192);
     return localObject;
   }
   
@@ -199,12 +199,12 @@ public class b<K, V>
     
     final b.c<K, V> a(b.c<K, V> paramc)
     {
-      return paramc.yi;
+      return paramc.zc;
     }
     
     final b.c<K, V> b(b.c<K, V> paramc)
     {
-      return paramc.yj;
+      return paramc.zd;
     }
   }
   
@@ -218,55 +218,55 @@ public class b<K, V>
     
     final b.c<K, V> a(b.c<K, V> paramc)
     {
-      return paramc.yj;
+      return paramc.zd;
     }
     
     final b.c<K, V> b(b.c<K, V> paramc)
     {
-      return paramc.yi;
+      return paramc.zc;
     }
   }
   
   public static final class c<K, V>
     implements Map.Entry<K, V>
   {
+    final K mKey;
     final V mValue;
-    final K yh;
-    c<K, V> yi;
-    public c<K, V> yj;
+    c<K, V> zc;
+    public c<K, V> zd;
     
     c(K paramK, V paramV)
     {
-      this.yh = paramK;
+      this.mKey = paramK;
       this.mValue = paramV;
     }
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(186268);
+      AppMethodBeat.i(201118);
       if (paramObject == this)
       {
-        AppMethodBeat.o(186268);
+        AppMethodBeat.o(201118);
         return true;
       }
       if (!(paramObject instanceof c))
       {
-        AppMethodBeat.o(186268);
+        AppMethodBeat.o(201118);
         return false;
       }
       paramObject = (c)paramObject;
-      if ((this.yh.equals(paramObject.yh)) && (this.mValue.equals(paramObject.mValue)))
+      if ((this.mKey.equals(paramObject.mKey)) && (this.mValue.equals(paramObject.mValue)))
       {
-        AppMethodBeat.o(186268);
+        AppMethodBeat.o(201118);
         return true;
       }
-      AppMethodBeat.o(186268);
+      AppMethodBeat.o(201118);
       return false;
     }
     
     public final K getKey()
     {
-      return this.yh;
+      return this.mKey;
     }
     
     public final V getValue()
@@ -276,26 +276,26 @@ public class b<K, V>
     
     public final int hashCode()
     {
-      AppMethodBeat.i(186271);
-      int i = this.yh.hashCode();
+      AppMethodBeat.i(201128);
+      int i = this.mKey.hashCode();
       int j = this.mValue.hashCode();
-      AppMethodBeat.o(186271);
+      AppMethodBeat.o(201128);
       return i ^ j;
     }
     
     public final V setValue(V paramV)
     {
-      AppMethodBeat.i(186243);
+      AppMethodBeat.i(201103);
       paramV = new UnsupportedOperationException("An entry modification is not supported");
-      AppMethodBeat.o(186243);
+      AppMethodBeat.o(201103);
       throw paramV;
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(186244);
-      String str = this.yh + "=" + this.mValue;
-      AppMethodBeat.o(186244);
+      AppMethodBeat.i(201110);
+      String str = this.mKey + "=" + this.mValue;
+      AppMethodBeat.o(201110);
       return str;
     }
   }
@@ -303,34 +303,34 @@ public class b<K, V>
   public final class d
     implements b.f<K, V>, Iterator<Map.Entry<K, V>>
   {
-    private b.c<K, V> yk;
-    private boolean yl = true;
+    private b.c<K, V> ze;
+    private boolean zf = true;
     
     d() {}
     
     public final void c(b.c<K, V> paramc)
     {
-      if (paramc == this.yk)
+      if (paramc == this.ze)
       {
-        this.yk = this.yk.yj;
-        if (this.yk != null) {
+        this.ze = this.ze.zd;
+        if (this.ze != null) {
           break label34;
         }
       }
       label34:
       for (boolean bool = true;; bool = false)
       {
-        this.yl = bool;
+        this.zf = bool;
         return;
       }
     }
     
     public final boolean hasNext()
     {
-      if (this.yl) {
-        if (b.this.ye == null) {}
+      if (this.zf) {
+        if (b.this.yZ == null) {}
       }
-      while ((this.yk != null) && (this.yk.yi != null))
+      while ((this.ze != null) && (this.ze.zc != null))
       {
         return true;
         return false;
@@ -342,21 +342,21 @@ public class b<K, V>
   static abstract class e<K, V>
     implements b.f<K, V>, Iterator<Map.Entry<K, V>>
   {
-    b.c<K, V> yi;
-    b.c<K, V> yn;
+    b.c<K, V> zc;
+    b.c<K, V> zi;
     
     e(b.c<K, V> paramc1, b.c<K, V> paramc2)
     {
-      this.yn = paramc2;
-      this.yi = paramc1;
+      this.zi = paramc2;
+      this.zc = paramc1;
     }
     
-    private b.c<K, V> eN()
+    private b.c<K, V> fK()
     {
-      if ((this.yi == this.yn) || (this.yn == null)) {
+      if ((this.zc == this.zi) || (this.zi == null)) {
         return null;
       }
-      return a(this.yi);
+      return a(this.zc);
     }
     
     abstract b.c<K, V> a(b.c<K, V> paramc);
@@ -365,22 +365,22 @@ public class b<K, V>
     
     public final void c(b.c<K, V> paramc)
     {
-      if ((this.yn == paramc) && (paramc == this.yi))
+      if ((this.zi == paramc) && (paramc == this.zc))
       {
-        this.yi = null;
-        this.yn = null;
+        this.zc = null;
+        this.zi = null;
       }
-      if (this.yn == paramc) {
-        this.yn = b(this.yn);
+      if (this.zi == paramc) {
+        this.zi = b(this.zi);
       }
-      if (this.yi == paramc) {
-        this.yi = eN();
+      if (this.zc == paramc) {
+        this.zc = fK();
       }
     }
     
     public boolean hasNext()
     {
-      return this.yi != null;
+      return this.zc != null;
     }
   }
   
@@ -391,7 +391,7 @@ public class b<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     androidx.a.a.b.b
  * JD-Core Version:    0.7.0.1
  */

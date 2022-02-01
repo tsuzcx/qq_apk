@@ -7,34 +7,33 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.comm.c.c;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.aw;
-import com.tencent.mm.ui.base.g;
+import com.tencent.mm.ui.bd;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.o;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.r;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/ImageCodeManager;", "", "()V", "TAG", "", "animateScanCodeSuccessView", "", "context", "Landroid/content/Context;", "successView", "Landroid/view/View;", "transX", "", "transY", "listenerAdapter", "Landroid/animation/AnimatorListenerAdapter;", "getGreenPointOnCurrentView", "Lkotlin/Pair;", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/scanner/ImageQBarDataBean;", "Lkotlin/collections/ArrayList;", "Landroid/graphics/PointF;", "currentView", "dataList", "wvOffset", "", "handleCode", "handleListener", "Lcom/tencent/mm/plugin/scanner/ImageCodeHandleListener;", "needShowScanCodeSuccessView", "", "point", "viewWidth", "viewHeight", "successViewSize", "vibrate", "plugin-comm_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/ImageCodeManager;", "", "()V", "TAG", "", "animateScanCodeSuccessView", "", "context", "Landroid/content/Context;", "successView", "Landroid/view/View;", "transX", "", "transY", "listenerAdapter", "Landroid/animation/AnimatorListenerAdapter;", "getGreenPointOnCurrentView", "Lkotlin/Pair;", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/scanner/ImageQBarDataBean;", "Lkotlin/collections/ArrayList;", "Landroid/graphics/PointF;", "currentView", "dataList", "wvOffset", "", "handleCode", "handleListener", "Lcom/tencent/mm/plugin/scanner/ImageCodeHandleListener;", "needShowScanCodeSuccessView", "", "point", "viewWidth", "viewHeight", "successViewSize", "vibrate", "plugin-comm_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class i
 {
-  public static final i IAF;
+  public static final i OGO;
   
   static
   {
-    AppMethodBeat.i(199350);
-    IAF = new i();
-    AppMethodBeat.o(199350);
+    AppMethodBeat.i(313354);
+    OGO = new i();
+    AppMethodBeat.o(313354);
   }
   
-  public static final o<ArrayList<ImageQBarDataBean>, ArrayList<PointF>> a(Context paramContext, View paramView, ArrayList<ImageQBarDataBean> paramArrayList, int paramInt)
+  public static final r<ArrayList<ImageQBarDataBean>, ArrayList<PointF>> a(Context paramContext, View paramView, ArrayList<ImageQBarDataBean> paramArrayList, int paramInt)
   {
-    AppMethodBeat.i(199347);
-    p.k(paramContext, "context");
-    p.k(paramArrayList, "dataList");
-    int i = aw.aZ(paramContext, c.c.multi_code_green_dot_size);
+    AppMethodBeat.i(313350);
+    s.u(paramContext, "context");
+    s.u(paramArrayList, "dataList");
+    int i = bd.bs(paramContext, c.c.multi_code_green_dot_size);
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     if (paramView != null)
@@ -46,18 +45,18 @@ public final class i
         ImageQBarDataBean localImageQBarDataBean = (ImageQBarDataBean)localIterator.next();
         if (localImageQBarDataBean != null)
         {
-          PointF localPointF = new PointF(localImageQBarDataBean.IAI, localImageQBarDataBean.IAJ);
+          PointF localPointF = new PointF(localImageQBarDataBean.OGR, localImageQBarDataBean.OGS);
           label149:
           int j;
           int k;
           boolean bool;
-          if ((paramView instanceof g))
+          if ((paramView instanceof com.tencent.mm.ui.base.i))
           {
-            paramArrayList = ((g)paramView).a(localPointF, localImageQBarDataBean.fRr, localImageQBarDataBean.fRs);
-            p.j(paramArrayList, "(currentView as IZoomabl…aBean.decodedImageHeight)");
+            paramArrayList = ((com.tencent.mm.ui.base.i)paramView).a(localPointF, localImageQBarDataBean.hXo, localImageQBarDataBean.hXp);
+            s.s(paramArrayList, "{\n                      …ht)\n                    }");
             j = paramView.getMeasuredWidth();
             k = paramView.getMeasuredHeight();
-            p.k(paramContext, "context");
+            s.u(paramContext, "context");
             if (paramArrayList != null) {
               break label285;
             }
@@ -71,12 +70,12 @@ public final class i
             }
             localArrayList1.add(localImageQBarDataBean);
             localArrayList2.add(paramArrayList);
-            localHashSet.add(localImageQBarDataBean.IAH);
+            localHashSet.add(localImageQBarDataBean.OGQ);
             break;
-            paramArrayList = new PointF(localImageQBarDataBean.IAI * paramView.getMeasuredWidth(), localImageQBarDataBean.IAJ * paramView.getMeasuredHeight() + paramInt);
+            paramArrayList = new PointF(localImageQBarDataBean.OGR * paramView.getMeasuredWidth(), localImageQBarDataBean.OGS * paramView.getMeasuredHeight() + paramInt);
             break label149;
             label285:
-            int m = aw.fromDPToPix(paramContext, 16);
+            int m = bd.fromDPToPix(paramContext, 16);
             if ((paramArrayList.x < 0.0F) || (paramArrayList.x > j) || (paramArrayList.y < 0.0F) || (paramArrayList.y > k + paramInt - i / 2 - m)) {
               bool = false;
             } else {
@@ -87,12 +86,12 @@ public final class i
       }
       if ((localArrayList1.size() > 1) && (localHashSet.size() == 1))
       {
-        Log.i("MicroMsg.ScanCodeViewHelper", "getGreenPointOnCurrentView, all the point is the same url:" + localArrayList1.size());
+        Log.i("MicroMsg.ScanCodeViewHelper", s.X("getGreenPointOnCurrentView, all the point is the same url:", Integer.valueOf(localArrayList1.size())));
         paramContext = localArrayList1.get(0);
-        p.j(paramContext, "codePointInfoList[0]");
+        s.s(paramContext, "codePointInfoList[0]");
         paramContext = (ImageQBarDataBean)paramContext;
         paramView = localArrayList2.get(0);
-        p.j(paramView, "dstPointList[0]");
+        s.s(paramView, "dstPointList[0]");
         paramView = (PointF)paramView;
         localArrayList1.clear();
         localArrayList1.add(paramContext);
@@ -100,70 +99,75 @@ public final class i
         localArrayList2.add(paramView);
       }
     }
-    paramContext = new o(localArrayList1, localArrayList2);
-    AppMethodBeat.o(199347);
+    paramContext = new r(localArrayList1, localArrayList2);
+    AppMethodBeat.o(313350);
     return paramContext;
   }
   
   public static final void a(Context paramContext, View paramView, ArrayList<ImageQBarDataBean> paramArrayList, int paramInt, h paramh)
   {
-    AppMethodBeat.i(199341);
-    p.k(paramContext, "context");
-    p.k(paramArrayList, "dataList");
-    ArrayList localArrayList1;
+    AppMethodBeat.i(313339);
+    s.u(paramContext, "context");
+    s.u(paramArrayList, "dataList");
+    ArrayList localArrayList;
+    Object localObject;
     if (paramView != null)
     {
-      if (((Collection)paramArrayList).isEmpty()) {}
-      for (int i = 1; i == 0; i = 0)
+      int i;
+      if (((Collection)paramArrayList).isEmpty())
       {
-        localArrayList1 = new ArrayList();
-        localArrayList1.addAll((Collection)paramArrayList);
-        paramView = a(paramContext, paramView, localArrayList1, paramInt);
-        ArrayList localArrayList2 = (ArrayList)paramView.Mx;
-        ArrayList localArrayList3 = (ArrayList)paramView.My;
-        Log.i("MicroMsg.ScanCodeViewHelper", "handleCode  dataList:" + paramArrayList.size() + "  dstPointListOnCurrentDisplay:" + localArrayList3.size() + ' ');
-        p.k(paramContext, "context");
-        try
+        i = 1;
+        if (i == 0)
         {
-          paramView = paramContext.getSystemService("vibrator");
-          paramContext = paramView;
-          if (!(paramView instanceof Vibrator)) {
-            paramContext = null;
-          }
-          paramContext = (Vibrator)paramContext;
-          if (paramContext != null) {
-            paramContext.vibrate(10L);
-          }
+          localArrayList = new ArrayList();
+          localArrayList.addAll((Collection)paramArrayList);
+          localObject = a(paramContext, paramView, localArrayList, paramInt);
+          paramView = (ArrayList)((r)localObject).bsC;
+          localObject = (ArrayList)((r)localObject).bsD;
+          Log.i("MicroMsg.ScanCodeViewHelper", "handleCode  dataList:" + paramArrayList.size() + "  dstPointListOnCurrentDisplay:" + ((ArrayList)localObject).size() + ' ');
+          s.u(paramContext, "context");
         }
-        catch (Exception paramContext)
+      }
+      else
+      {
+        for (;;)
         {
-          for (;;)
+          try
+          {
+            paramContext = paramContext.getSystemService("vibrator");
+            if (!(paramContext instanceof Vibrator)) {
+              continue;
+            }
+            paramContext = (Vibrator)paramContext;
+            if (paramContext != null) {
+              paramContext.vibrate(10L);
+            }
+          }
+          catch (Exception paramContext)
           {
             Log.printErrStackTrace("MicroMsg.ScanCodeViewHelper", (Throwable)paramContext, "", new Object[0]);
+            continue;
+            paramh.a((ArrayList)localObject, paramView, localArrayList);
+          }
+          if (paramView.size() != 0) {
+            continue;
           }
           if (paramArrayList.size() <= 0) {
-            break;
+            break label259;
           }
           paramContext = paramArrayList.get(0);
-          p.j(paramContext, "dataList[0]");
-          paramContext = (ImageQBarDataBean)paramContext;
-          if (paramContext == null) {
-            break;
-          }
-          paramh.a(paramContext, localArrayList1);
-          AppMethodBeat.o(199341);
+          s.s(paramContext, "dataList[0]");
+          paramh.a((ImageQBarDataBean)paramContext, localArrayList);
+          AppMethodBeat.o(313339);
           return;
-        }
-        switch (localArrayList2.size())
-        {
-        default: 
-          paramh.a(localArrayList3, localArrayList2, localArrayList1);
-          AppMethodBeat.o(199341);
-          return;
+          i = 0;
+          break;
+          paramContext = null;
         }
       }
     }
-    AppMethodBeat.o(199341);
+    label259:
+    AppMethodBeat.o(313339);
   }
 }
 

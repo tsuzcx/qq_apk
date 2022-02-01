@@ -1,34 +1,23 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.api.i;
-import com.tencent.mm.view.recyclerview.a;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderFollowData;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "contact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "(Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;)V", "getContact", "()Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "getItemId", "", "getItemType", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/model/FinderFeedVideo;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "feedObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "hasDeleteFromHistory", "", "getHasDeleteFromHistory", "()Z", "setHasDeleteFromHistory", "(Z)V", "hasShowLongVideoGuide", "getHasShowLongVideoGuide", "setHasShowLongVideoGuide", "isShowFullscreen", "setShowFullscreen", "videoHasCompleted", "getVideoHasCompleted", "setVideoHasCompleted", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ah
-  implements a
+  extends BaseFinderFeed
 {
-  public final i contact;
+  public boolean ECO;
+  public boolean ECP;
+  public boolean ECQ;
+  public boolean ECR;
   
-  public ah(i parami)
+  public ah(FinderItem paramFinderItem)
   {
-    AppMethodBeat.i(286937);
-    this.contact = parami;
-    AppMethodBeat.o(286937);
-  }
-  
-  public final int bAQ()
-  {
-    AppMethodBeat.i(286936);
-    int i = ah.class.getName().hashCode();
-    AppMethodBeat.o(286936);
-    return i;
-  }
-  
-  public final long mf()
-  {
-    return 0L;
+    super(paramFinderItem);
+    AppMethodBeat.i(166389);
+    AppMethodBeat.o(166389);
   }
 }
 

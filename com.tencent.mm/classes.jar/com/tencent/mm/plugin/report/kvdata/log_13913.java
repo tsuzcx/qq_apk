@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.report.kvdata;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class log_13913
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
   public int clientVersion_;
   public int device_;
@@ -19,36 +19,36 @@ public class log_13913
     AppMethodBeat.i(151548);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.import_ds_);
-      paramVarArgs.aY(2, this.ds_);
-      paramVarArgs.bm(3, this.uin_);
-      paramVarArgs.aY(4, this.device_);
-      paramVarArgs.aY(5, this.clientVersion_);
-      paramVarArgs.bm(6, this.time_stamp_);
-      paramVarArgs.aY(7, this.scene_);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.import_ds_);
+      paramVarArgs.bS(2, this.ds_);
+      paramVarArgs.bv(3, this.uin_);
+      paramVarArgs.bS(4, this.device_);
+      paramVarArgs.bS(5, this.clientVersion_);
+      paramVarArgs.bv(6, this.time_stamp_);
+      paramVarArgs.bS(7, this.scene_);
       if (this.error_ != null) {
-        paramVarArgs.f(8, this.error_);
+        paramVarArgs.g(8, this.error_);
       }
       AppMethodBeat.o(151548);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.bM(1, this.import_ds_) + 0 + g.a.a.b.b.a.bM(2, this.ds_) + g.a.a.b.b.a.p(3, this.uin_) + g.a.a.b.b.a.bM(4, this.device_) + g.a.a.b.b.a.bM(5, this.clientVersion_) + g.a.a.b.b.a.p(6, this.time_stamp_) + g.a.a.b.b.a.bM(7, this.scene_);
+      int i = i.a.a.b.b.a.cJ(1, this.import_ds_) + 0 + i.a.a.b.b.a.cJ(2, this.ds_) + i.a.a.b.b.a.q(3, this.uin_) + i.a.a.b.b.a.cJ(4, this.device_) + i.a.a.b.b.a.cJ(5, this.clientVersion_) + i.a.a.b.b.a.q(6, this.time_stamp_) + i.a.a.b.b.a.cJ(7, this.scene_);
       paramInt = i;
       if (this.error_ != null) {
-        paramInt = i + g.a.a.b.b.a.g(8, this.error_);
+        paramInt = i + i.a.a.b.b.a.h(8, this.error_);
       }
       AppMethodBeat.o(151548);
       return paramInt;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
       AppMethodBeat.o(151548);
@@ -56,7 +56,7 @@ public class log_13913
     }
     if (paramInt == 3)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       log_13913 locallog_13913 = (log_13913)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
@@ -64,35 +64,35 @@ public class log_13913
         AppMethodBeat.o(151548);
         return -1;
       case 1: 
-        locallog_13913.import_ds_ = locala.abFh.AK();
+        locallog_13913.import_ds_ = locala.ajGk.aar();
         AppMethodBeat.o(151548);
         return 0;
       case 2: 
-        locallog_13913.ds_ = locala.abFh.AK();
+        locallog_13913.ds_ = locala.ajGk.aar();
         AppMethodBeat.o(151548);
         return 0;
       case 3: 
-        locallog_13913.uin_ = locala.abFh.AN();
+        locallog_13913.uin_ = locala.ajGk.aaw();
         AppMethodBeat.o(151548);
         return 0;
       case 4: 
-        locallog_13913.device_ = locala.abFh.AK();
+        locallog_13913.device_ = locala.ajGk.aar();
         AppMethodBeat.o(151548);
         return 0;
       case 5: 
-        locallog_13913.clientVersion_ = locala.abFh.AK();
+        locallog_13913.clientVersion_ = locala.ajGk.aar();
         AppMethodBeat.o(151548);
         return 0;
       case 6: 
-        locallog_13913.time_stamp_ = locala.abFh.AN();
+        locallog_13913.time_stamp_ = locala.ajGk.aaw();
         AppMethodBeat.o(151548);
         return 0;
       case 7: 
-        locallog_13913.scene_ = locala.abFh.AK();
+        locallog_13913.scene_ = locala.ajGk.aar();
         AppMethodBeat.o(151548);
         return 0;
       }
-      locallog_13913.error_ = locala.abFh.readString();
+      locallog_13913.error_ = locala.ajGk.readString();
       AppMethodBeat.o(151548);
       return 0;
     }

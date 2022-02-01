@@ -10,7 +10,7 @@ public abstract class b$a
   extends Binder
   implements b
 {
-  public static b i(IBinder paramIBinder)
+  public static b j(IBinder paramIBinder)
   {
     if (paramIBinder == null) {
       return null;
@@ -35,7 +35,7 @@ public abstract class b$a
       return true;
     case 1: 
       paramParcel1.enforceInterface("com.huawei.multimedia.audioengine.IHwAudioKaraokeFeature");
-      bool = Kd();
+      bool = ake();
       paramParcel2.writeNoException();
       paramInt1 = i;
       if (bool) {
@@ -48,19 +48,19 @@ public abstract class b$a
       if (paramParcel1.readInt() != 0) {
         bool = true;
       }
-      paramInt1 = bV(bool);
+      paramInt1 = cA(bool);
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
     case 3: 
       paramParcel1.enforceInterface("com.huawei.multimedia.audioengine.IHwAudioKaraokeFeature");
-      paramInt1 = Ke();
+      paramInt1 = akf();
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
     case 4: 
       paramParcel1.enforceInterface("com.huawei.multimedia.audioengine.IHwAudioKaraokeFeature");
-      paramInt1 = t(paramParcel1.readString(), paramParcel1.readInt());
+      paramInt1 = A(paramParcel1.readString(), paramParcel1.readInt());
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
@@ -81,13 +81,36 @@ public abstract class b$a
       this.mRemote = paramIBinder;
     }
     
+    public final int A(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(208297);
+      Parcel localParcel1 = Parcel.obtain();
+      Parcel localParcel2 = Parcel.obtain();
+      try
+      {
+        localParcel1.writeInterfaceToken("com.huawei.multimedia.audioengine.IHwAudioKaraokeFeature");
+        localParcel1.writeString(paramString);
+        localParcel1.writeInt(paramInt);
+        this.mRemote.transact(4, localParcel1, localParcel2, 0);
+        localParcel2.readException();
+        paramInt = localParcel2.readInt();
+        return paramInt;
+      }
+      finally
+      {
+        localParcel2.recycle();
+        localParcel1.recycle();
+        AppMethodBeat.o(208297);
+      }
+    }
+    
     /* Error */
-    public final boolean Kd()
+    public final boolean ake()
     {
       // Byte code:
       //   0: iconst_1
       //   1: istore_2
-      //   2: ldc 22
+      //   2: ldc 68
       //   4: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   7: invokestatic 34	android/os/Parcel:obtain	()Landroid/os/Parcel;
       //   10: astore_3
@@ -102,21 +125,21 @@ public abstract class b$a
       //   27: aload_3
       //   28: aload 4
       //   30: iconst_0
-      //   31: invokeinterface 46 5 0
+      //   31: invokeinterface 52 5 0
       //   36: pop
       //   37: aload 4
-      //   39: invokevirtual 49	android/os/Parcel:readException	()V
+      //   39: invokevirtual 55	android/os/Parcel:readException	()V
       //   42: aload 4
-      //   44: invokevirtual 53	android/os/Parcel:readInt	()I
+      //   44: invokevirtual 59	android/os/Parcel:readInt	()I
       //   47: istore_1
       //   48: iload_1
       //   49: ifeq +19 -> 68
       //   52: aload 4
-      //   54: invokevirtual 56	android/os/Parcel:recycle	()V
+      //   54: invokevirtual 62	android/os/Parcel:recycle	()V
       //   57: aload_3
-      //   58: invokevirtual 56	android/os/Parcel:recycle	()V
-      //   61: ldc 22
-      //   63: invokestatic 59	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   58: invokevirtual 62	android/os/Parcel:recycle	()V
+      //   61: ldc 68
+      //   63: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   66: iload_2
       //   67: ireturn
       //   68: iconst_0
@@ -124,11 +147,11 @@ public abstract class b$a
       //   70: goto -18 -> 52
       //   73: astore 5
       //   75: aload 4
-      //   77: invokevirtual 56	android/os/Parcel:recycle	()V
+      //   77: invokevirtual 62	android/os/Parcel:recycle	()V
       //   80: aload_3
-      //   81: invokevirtual 56	android/os/Parcel:recycle	()V
-      //   84: ldc 22
-      //   86: invokestatic 59	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   81: invokevirtual 62	android/os/Parcel:recycle	()V
+      //   84: ldc 68
+      //   86: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   89: aload 5
       //   91: athrow
       // Local variable table:
@@ -144,9 +167,9 @@ public abstract class b$a
       //   16	48	73	finally
     }
     
-    public final int Ke()
+    public final int akf()
     {
-      AppMethodBeat.i(213553);
+      AppMethodBeat.i(208293);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -161,7 +184,7 @@ public abstract class b$a
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(213553);
+        AppMethodBeat.o(208293);
       }
     }
     
@@ -170,10 +193,10 @@ public abstract class b$a
       return this.mRemote;
     }
     
-    public final int bV(boolean paramBoolean)
+    public final int cA(boolean paramBoolean)
     {
       int i = 0;
-      AppMethodBeat.i(213552);
+      AppMethodBeat.i(208286);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -192,13 +215,13 @@ public abstract class b$a
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(213552);
+        AppMethodBeat.o(208286);
       }
     }
     
     public final void init(String paramString)
     {
-      AppMethodBeat.i(213556);
+      AppMethodBeat.i(208300);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -213,30 +236,7 @@ public abstract class b$a
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(213556);
-      }
-    }
-    
-    public final int t(String paramString, int paramInt)
-    {
-      AppMethodBeat.i(213554);
-      Parcel localParcel1 = Parcel.obtain();
-      Parcel localParcel2 = Parcel.obtain();
-      try
-      {
-        localParcel1.writeInterfaceToken("com.huawei.multimedia.audioengine.IHwAudioKaraokeFeature");
-        localParcel1.writeString(paramString);
-        localParcel1.writeInt(paramInt);
-        this.mRemote.transact(4, localParcel1, localParcel2, 0);
-        localParcel2.readException();
-        paramInt = localParcel2.readInt();
-        return paramInt;
-      }
-      finally
-      {
-        localParcel2.recycle();
-        localParcel1.recycle();
-        AppMethodBeat.o(213554);
+        AppMethodBeat.o(208300);
       }
     }
   }

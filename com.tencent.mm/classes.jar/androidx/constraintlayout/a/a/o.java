@@ -6,64 +6,64 @@ import java.util.Iterator;
 
 public class o
 {
-  HashSet<o> Es;
+  HashSet<o> bkA;
   public int state;
   
   public o()
   {
-    AppMethodBeat.i(229632);
-    this.Es = new HashSet(2);
+    AppMethodBeat.i(194027);
+    this.bkA = new HashSet(2);
     this.state = 0;
-    AppMethodBeat.o(229632);
+    AppMethodBeat.o(194027);
   }
   
-  public final void a(o paramo)
-  {
-    AppMethodBeat.i(229635);
-    this.Es.add(paramo);
-    AppMethodBeat.o(229635);
-  }
+  public void CB() {}
   
-  public final void fV()
+  public final void De()
   {
-    AppMethodBeat.i(229642);
+    AppMethodBeat.i(194057);
     this.state = 1;
-    Iterator localIterator = this.Es.iterator();
+    Iterator localIterator = this.bkA.iterator();
     while (localIterator.hasNext()) {
-      ((o)localIterator.next()).fs();
+      ((o)localIterator.next()).CB();
     }
-    AppMethodBeat.o(229642);
+    AppMethodBeat.o(194057);
   }
   
-  public final boolean fW()
+  public final boolean Df()
   {
     return this.state == 1;
   }
   
-  public void fs() {}
+  public final void a(o paramo)
+  {
+    AppMethodBeat.i(194034);
+    this.bkA.add(paramo);
+    AppMethodBeat.o(194034);
+  }
   
   public final void invalidate()
   {
-    AppMethodBeat.i(229640);
+    AppMethodBeat.i(194051);
     this.state = 0;
-    Iterator localIterator = this.Es.iterator();
+    Iterator localIterator = this.bkA.iterator();
     while (localIterator.hasNext()) {
       ((o)localIterator.next()).invalidate();
     }
-    AppMethodBeat.o(229640);
+    AppMethodBeat.o(194051);
   }
   
   public void reset()
   {
-    AppMethodBeat.i(229637);
+    AppMethodBeat.i(194045);
     this.state = 0;
-    this.Es.clear();
-    AppMethodBeat.o(229637);
+    this.bkA.clear();
+    AppMethodBeat.o(194045);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     androidx.constraintlayout.a.a.o
  * JD-Core Version:    0.7.0.1
  */

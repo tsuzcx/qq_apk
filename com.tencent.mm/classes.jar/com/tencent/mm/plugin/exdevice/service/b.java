@@ -4,7 +4,7 @@ import android.os.Build.VERSION;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.jni.Java2CExDevice;
-import com.tencent.mm.plugin.f.a.d.c;
+import com.tencent.mm.plugin.g.a.d.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
@@ -17,22 +17,22 @@ import junit.framework.Assert;
 public final class b
   implements c
 {
-  private static b viW = null;
+  private static b yuV = null;
   private MMHandler mHandler;
-  private com.tencent.mm.plugin.f.a.d.b viS;
-  private final Vector<r> viT;
-  private final HashMap<Long, Integer> viU;
-  private final HashMap<Long, Integer> viV;
-  private CountDownLatch viX;
+  private com.tencent.mm.plugin.g.a.d.b yuR;
+  private final Vector<r> yuS;
+  private final HashMap<Long, Integer> yuT;
+  private final HashMap<Long, Integer> yuU;
+  private CountDownLatch yuW;
   
   public b()
   {
     AppMethodBeat.i(23614);
-    this.viS = null;
-    this.viT = new Vector();
-    this.viU = new HashMap();
-    this.viV = new HashMap();
-    this.mHandler = new MMHandler(v.dam().mat.getSerialTag());
+    this.yuR = null;
+    this.yuS = new Vector();
+    this.yuT = new HashMap();
+    this.yuU = new HashMap();
+    this.mHandler = new MMHandler(v.dGF().oTi.getSerialTag());
     long l1 = Thread.currentThread().getId();
     long l2 = Looper.getMainLooper().getThread().getId();
     Log.i("MicroMsg.exdevice.BluetoothSDKAdapter", "now thread id : %d, main thread is : %d", new Object[] { Long.valueOf(l1), Long.valueOf(l2) });
@@ -41,7 +41,7 @@ public final class b
       if (l1 == l2)
       {
         Log.i("MicroMsg.exdevice.BluetoothSDKAdapter", "it is main thread now, init the bluetoothadapter directly");
-        this.viS = new com.tencent.mm.plugin.f.a.d.b(MMApplicationContext.getContext(), this, v.dam().mat);
+        this.yuR = new com.tencent.mm.plugin.g.a.d.b(MMApplicationContext.getContext(), this, v.dGF().oTi);
         AppMethodBeat.o(23614);
         return;
       }
@@ -50,22 +50,22 @@ public final class b
         public final void run()
         {
           AppMethodBeat.i(23607);
-          b.a(b.this, new com.tencent.mm.plugin.f.a.d.b(MMApplicationContext.getContext(), b.this, v.dam().mat));
+          b.a(b.this, new com.tencent.mm.plugin.g.a.d.b(MMApplicationContext.getContext(), b.this, v.dGF().oTi));
           Log.i("MicroMsg.exdevice.BluetoothSDKAdapter", "now notify");
           b.a(b.this).countDown();
           AppMethodBeat.o(23607);
         }
       });
-      this.viX = new CountDownLatch(1);
+      this.yuW = new CountDownLatch(1);
     }
     try
     {
-      this.viX.await();
+      this.yuW.await();
       label208:
       Log.i("MicroMsg.exdevice.BluetoothSDKAdapter", "now has init the sdk adapter");
       AppMethodBeat.o(23614);
       return;
-      this.viS = new com.tencent.mm.plugin.f.a.d.b(MMApplicationContext.getContext(), this, v.dam().mat);
+      this.yuR = new com.tencent.mm.plugin.g.a.d.b(MMApplicationContext.getContext(), this, v.dGF().oTi);
       AppMethodBeat.o(23614);
       return;
     }
@@ -75,17 +75,17 @@ public final class b
     }
   }
   
-  public static boolean Kh(final int paramInt)
+  public static boolean Lg(final int paramInt)
   {
     AppMethodBeat.i(23617);
     Log.i("MicroMsg.exdevice.BluetoothSDKAdapter", "---stopScan--- aBluetoothVersion = %d", new Object[] { Integer.valueOf(paramInt) });
-    b localb = cZO();
+    b localb = dGh();
     boolean bool = localb.mHandler.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(23609);
-        if (!b.a(this.viZ, paramInt)) {
+        if (!b.a(b.this, paramInt)) {
           Log.e("MicroMsg.exdevice.BluetoothSDKAdapter", "instance.stopScanImp failed!!!");
         }
         AppMethodBeat.o(23609);
@@ -101,13 +101,13 @@ public final class b
   public static boolean a(final int paramInt, final r paramr, final int... paramVarArgs)
   {
     AppMethodBeat.i(23616);
-    b localb = cZO();
+    b localb = dGh();
     boolean bool = localb.mHandler.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(23608);
-        if (!b.a(this.viZ, paramInt, paramr, paramVarArgs)) {
+        if (!b.a(b.this, paramInt, paramr, paramVarArgs)) {
           Log.e("MicroMsg.exdevice.BluetoothSDKAdapter", "instance.scanImp failed!!!");
         }
         AppMethodBeat.o(23608);
@@ -120,32 +120,17 @@ public final class b
     return bool;
   }
   
-  private static b cZO()
-  {
-    AppMethodBeat.i(23615);
-    if (viW != null)
-    {
-      localb = viW;
-      AppMethodBeat.o(23615);
-      return localb;
-    }
-    b localb = new b();
-    viW = localb;
-    AppMethodBeat.o(23615);
-    return localb;
-  }
-  
   public static boolean connect(final long paramLong)
   {
     AppMethodBeat.i(23620);
     Log.i("MicroMsg.exdevice.BluetoothSDKAdapter", "---connect--- aSessionId = %d", new Object[] { Long.valueOf(paramLong) });
-    b localb = cZO();
+    b localb = dGh();
     boolean bool = localb.mHandler.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(23612);
-        if (!b.a(this.viZ, paramLong)) {
+        if (!b.a(b.this, paramLong)) {
           Log.e("MicroMsg.exdevice.BluetoothSDKAdapter", "instance.connectImp failed!!!");
         }
         AppMethodBeat.o(23612);
@@ -162,13 +147,13 @@ public final class b
   {
     AppMethodBeat.i(23618);
     Log.i("MicroMsg.exdevice.BluetoothSDKAdapter", "---createSession--- aDeviceId = %d, aChannelId = %d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
-    b localb = cZO();
+    b localb = dGh();
     if (!localb.mHandler.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(23610);
-        b.a(this.viZ, paramLong1, this.vjd);
+        b.a(b.this, paramLong1, this.yvc);
         AppMethodBeat.o(23610);
       }
     })) {
@@ -177,17 +162,32 @@ public final class b
     AppMethodBeat.o(23618);
   }
   
+  private static b dGh()
+  {
+    AppMethodBeat.i(23615);
+    if (yuV != null)
+    {
+      localb = yuV;
+      AppMethodBeat.o(23615);
+      return localb;
+    }
+    b localb = new b();
+    yuV = localb;
+    AppMethodBeat.o(23615);
+    return localb;
+  }
+  
   public static void destroySession(final long paramLong)
   {
     AppMethodBeat.i(23621);
     Log.i("MicroMsg.exdevice.BluetoothSDKAdapter", "---destroySession--- aSessionId = %d", new Object[] { Long.valueOf(paramLong) });
-    b localb = cZO();
+    b localb = dGh();
     if (!localb.mHandler.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(23613);
-        b.b(this.viZ, paramLong);
+        b.b(b.this, paramLong);
         AppMethodBeat.o(23613);
       }
     })) {
@@ -205,13 +205,13 @@ public final class b
     {
       Log.i("MicroMsg.exdevice.BluetoothSDKAdapter", "----sendData---- aSessionId = %d, datalength = %d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(i) });
       Assert.assertNotNull(paramArrayOfByte);
-      b localb = cZO();
+      b localb = dGh();
       boolean bool = localb.mHandler.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(23611);
-          if (!b.a(this.viZ, paramLong, this.vjf)) {
+          if (!b.a(b.this, paramLong, this.yve)) {
             Log.e("MicroMsg.exdevice.BluetoothSDKAdapter", "instance.sendDataImp failed!!!");
           }
           AppMethodBeat.o(23611);
@@ -226,33 +226,26 @@ public final class b
     }
   }
   
-  public final void Gp(int paramInt)
+  public final void GO(int paramInt)
   {
     AppMethodBeat.i(23623);
     Log.i("MicroMsg.exdevice.BluetoothSDKAdapter", "---onScanFinished--- aBluetoothVersion =%d", new Object[] { Integer.valueOf(paramInt) });
-    if (this.viT.isEmpty())
+    if (this.yuS.isEmpty())
     {
       Log.w("MicroMsg.exdevice.BluetoothSDKAdapter", "mScanCallbackList is empty");
       AppMethodBeat.o(23623);
       return;
     }
-    Iterator localIterator = this.viT.iterator();
+    Iterator localIterator = this.yuS.iterator();
     while (localIterator.hasNext())
     {
       r localr = (r)localIterator.next();
       if (localr != null) {
-        localr.Gp(paramInt);
+        localr.GO(paramInt);
       }
     }
-    this.viT.clear();
+    this.yuS.clear();
     AppMethodBeat.o(23623);
-  }
-  
-  public final void HO(long paramLong)
-  {
-    AppMethodBeat.i(23628);
-    Java2CExDevice.onBluetoothError(paramLong, 0);
-    AppMethodBeat.o(23628);
   }
   
   public final void a(String paramString1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte)
@@ -262,21 +255,21 @@ public final class b
     for (int i = -1;; i = paramArrayOfByte.length)
     {
       Log.d("MicroMsg.exdevice.BluetoothSDKAdapter", "---onScanFound--- deviceMac = %s, deviceName = %s, BTversion = %d, rssi = %d, advertisment length = %d", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i) });
-      if (!this.viT.isEmpty()) {
+      if (!this.yuS.isEmpty()) {
         break;
       }
       Log.w("MicroMsg.exdevice.BluetoothSDKAdapter", "mScanCallbackList is empty");
       AppMethodBeat.o(23624);
       return;
     }
-    Iterator localIterator = this.viT.iterator();
+    Iterator localIterator = this.yuS.iterator();
     while (localIterator.hasNext()) {
       ((r)localIterator.next()).a(paramString1, paramString2, paramInt1, paramInt2, paramArrayOfByte);
     }
     AppMethodBeat.o(23624);
   }
   
-  public final void b(long paramLong, byte[] paramArrayOfByte)
+  public final void c(long paramLong, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23626);
     Log.i("MicroMsg.exdevice.BluetoothSDKAdapter", "---onRecv--- sessionId = ".concat(String.valueOf(paramLong)));
@@ -284,19 +277,26 @@ public final class b
     AppMethodBeat.o(23626);
   }
   
-  public final void j(long paramLong1, long paramLong2, long paramLong3)
+  public final void k(long paramLong1, long paramLong2, long paramLong3)
   {
     AppMethodBeat.i(23622);
     Log.i("MicroMsg.exdevice.BluetoothSDKAdapter", "---onSessionCreate--- aSessionId = " + paramLong1 + " aDeviceID = " + paramLong2);
-    Assert.assertTrue(this.viU.containsKey(Long.valueOf(paramLong2)));
-    if (!this.viV.containsKey(Long.valueOf(paramLong1))) {
-      this.viV.put(Long.valueOf(paramLong1), this.viU.get(Long.valueOf(paramLong2)));
+    Assert.assertTrue(this.yuT.containsKey(Long.valueOf(paramLong2)));
+    if (!this.yuU.containsKey(Long.valueOf(paramLong1))) {
+      this.yuU.put(Long.valueOf(paramLong1), (Integer)this.yuT.get(Long.valueOf(paramLong2)));
     }
     Java2CExDevice.onBluetoothSessionCreated(paramLong2, paramLong3, paramLong1);
     AppMethodBeat.o(23622);
   }
   
-  public final void l(long paramLong, boolean paramBoolean)
+  public final void kf(long paramLong)
+  {
+    AppMethodBeat.i(23628);
+    Java2CExDevice.onBluetoothError(paramLong, 0);
+    AppMethodBeat.o(23628);
+  }
+  
+  public final void r(long paramLong, boolean paramBoolean)
   {
     AppMethodBeat.i(23625);
     Log.i("MicroMsg.exdevice.BluetoothSDKAdapter", "---onConnected--- sessionId = " + paramLong + "Connected = " + paramBoolean);
@@ -310,7 +310,7 @@ public final class b
     AppMethodBeat.o(23625);
   }
   
-  public final void m(long paramLong, boolean paramBoolean)
+  public final void s(long paramLong, boolean paramBoolean)
   {
     AppMethodBeat.i(23627);
     Log.i("MicroMsg.exdevice.BluetoothSDKAdapter", "---onSend--- sessionId = " + paramLong + "success = " + paramBoolean);
@@ -326,7 +326,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.b
  * JD-Core Version:    0.7.0.1
  */

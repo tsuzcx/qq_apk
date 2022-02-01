@@ -8,15 +8,15 @@ import rx.j;
 public abstract class h
 {
   @Deprecated
-  public static <T> Throwable X(Throwable paramThrowable)
-  {
-    return paramThrowable;
-  }
-  
-  @Deprecated
   public static <T> h.a<T> a(h.a<T> parama)
   {
     return parama;
+  }
+  
+  @Deprecated
+  public static <T> Throwable ao(Throwable paramThrowable)
+  {
+    return paramThrowable;
   }
   
   @Deprecated
@@ -39,7 +39,7 @@ public abstract class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     rx.d.h
  * JD-Core Version:    0.7.0.1
  */

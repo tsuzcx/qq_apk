@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.ipcall.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.j.b;
-import com.tencent.mm.n.f;
-import com.tencent.mm.n.h;
+import com.tencent.mm.k.f;
+import com.tencent.mm.k.i;
+import com.tencent.mm.loader.i.b;
 import com.tencent.mm.plugin.ipcall.model.h.j;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.ad;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.ah;
 import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.BufferedReader;
 import java.io.Closeable;
 import java.io.InputStream;
@@ -21,21 +21,21 @@ import org.json.JSONObject;
 
 public final class c
 {
-  private static c DOz;
-  private ArrayList<Integer> DOA;
-  ArrayList<Integer> DOB;
+  private static c JFO;
+  private ArrayList<Integer> JFP;
+  ArrayList<Integer> JFQ;
   boolean isInit;
   
   private c()
   {
     AppMethodBeat.i(25338);
-    this.DOA = new ArrayList();
-    this.DOB = new ArrayList();
+    this.JFP = new ArrayList();
+    this.JFQ = new ArrayList();
     this.isInit = false;
     AppMethodBeat.o(25338);
   }
   
-  private void aLY(String paramString)
+  private void aIS(String paramString)
   {
     AppMethodBeat.i(25341);
     if (Util.isNullOrNil(paramString))
@@ -47,12 +47,12 @@ public final class c
     {
       paramString = new JSONObject(paramString).getJSONArray("restriction");
       Log.d("MicroMsg.IPCallCountryCodeConfig", "restrictionCountryCode: %d", new Object[] { Integer.valueOf(paramString.length()) });
-      this.DOB.clear();
+      this.JFQ.clear();
       int i = 0;
       while (i < paramString.length())
       {
         int j = paramString.getInt(i);
-        this.DOB.add(Integer.valueOf(j));
+        this.JFQ.add(Integer.valueOf(j));
         i += 1;
       }
       AppMethodBeat.o(25341);
@@ -66,22 +66,22 @@ public final class c
     }
   }
   
-  public static c eJb()
+  public static c fRb()
   {
     AppMethodBeat.i(25339);
-    if (DOz == null) {
-      DOz = new c();
+    if (JFO == null) {
+      JFO = new c();
     }
-    c localc = DOz;
+    c localc = JFO;
     AppMethodBeat.o(25339);
     return localc;
   }
   
-  private void eJc()
+  private void fRc()
   {
     AppMethodBeat.i(25342);
-    this.DOA.clear();
-    Object localObject = h.axc().getValue("WeChatOutTopCountryCode");
+    this.JFP.clear();
+    Object localObject = i.aRC().getValue("WeChatOutTopCountryCode");
     Log.d("MicroMsg.IPCallCountryCodeConfig", "popularCountryConfig: %s", new Object[] { localObject });
     if (!Util.isNullOrNil((String)localObject))
     {
@@ -94,8 +94,8 @@ public final class c
         while (i < k)
         {
           Integer localInteger = Integer.valueOf(Util.getInt(localObject[i], 0));
-          this.DOA.add(localInteger);
-          i.eJy().az(localInteger.intValue(), j);
+          this.JFP.add(localInteger);
+          h.fRy().aG(localInteger.intValue(), j);
           j -= 1;
           i += 1;
         }
@@ -110,41 +110,41 @@ public final class c
     AppMethodBeat.o(25342);
   }
   
-  private void eJd()
+  private void fRd()
   {
     AppMethodBeat.i(25343);
-    ArrayList localArrayList = i.eJy().eJY();
+    ArrayList localArrayList = h.fRy().fRY();
     if (localArrayList.size() > 0)
     {
-      this.DOA = localArrayList;
+      this.JFP = localArrayList;
       AppMethodBeat.o(25343);
       return;
     }
-    eJc();
+    fRc();
     AppMethodBeat.o(25343);
   }
   
-  public final boolean Vg(int paramInt)
+  public final boolean Zb(int paramInt)
   {
     AppMethodBeat.i(25346);
     if (!this.isInit) {
-      tp(false);
+      xA(false);
     }
-    if ((this.DOB == null) || (this.DOB.size() <= 0))
+    if ((this.JFQ == null) || (this.JFQ.size() <= 0))
     {
       AppMethodBeat.o(25346);
       return false;
     }
-    boolean bool = this.DOB.contains(Integer.valueOf(paramInt));
+    boolean bool = this.JFQ.contains(Integer.valueOf(paramInt));
     AppMethodBeat.o(25346);
     return bool;
   }
   
-  public final void aLZ(String paramString)
+  public final void aIT(String paramString)
   {
     AppMethodBeat.i(25344);
     if (!this.isInit) {
-      tp(false);
+      xA(false);
     }
     if (Util.isNullOrNil(paramString))
     {
@@ -152,23 +152,23 @@ public final class c
       return;
     }
     paramString = paramString.replace("+", "");
-    i.eJy().az(Util.getInt(paramString, 0), Util.nowMilliSecond());
-    eJd();
+    h.fRy().aG(Util.getInt(paramString, 0), Util.nowMilliSecond());
+    fRd();
     AppMethodBeat.o(25344);
   }
   
-  public final List<Integer> eJe()
+  public final List<Integer> fRe()
   {
     AppMethodBeat.i(25345);
     if (!this.isInit) {
-      tp(false);
+      xA(false);
     }
-    ArrayList localArrayList = this.DOA;
+    ArrayList localArrayList = this.JFP;
     AppMethodBeat.o(25345);
     return localArrayList;
   }
   
-  public final void tp(boolean paramBoolean)
+  public final void xA(boolean paramBoolean)
   {
     String str = null;
     InputStream localInputStream2 = null;
@@ -178,16 +178,16 @@ public final class c
       AppMethodBeat.o(25340);
       return;
     }
-    eJd();
-    Object localObject3 = b.aSD() + "ipcallCountryCodeConfig.cfg";
+    fRd();
+    Object localObject3 = b.bmr() + "ipcallCountryCodeConfig.cfg";
     InputStream localInputStream1 = localInputStream2;
     Object localObject1 = str;
     try
     {
-      Object localObject4 = new q((String)localObject3);
+      Object localObject4 = new u((String)localObject3);
       localInputStream1 = localInputStream2;
       localObject1 = str;
-      if (!((q)localObject4).ifE())
+      if (!((u)localObject4).jKS())
       {
         localInputStream1 = localInputStream2;
         localObject1 = str;
@@ -195,13 +195,13 @@ public final class c
         localInputStream1 = localInputStream2;
         localObject1 = str;
         this.isInit = true;
-        ad.closeQuietly(null);
+        ah.closeQuietly(null);
         AppMethodBeat.o(25340);
         return;
       }
       localInputStream1 = localInputStream2;
       localObject1 = str;
-      localInputStream2 = u.al((q)localObject4);
+      localInputStream2 = y.ao((u)localObject4);
       localInputStream1 = localInputStream2;
       localObject1 = localInputStream2;
       localObject3 = new BufferedReader(new InputStreamReader(localInputStream2));
@@ -221,11 +221,11 @@ public final class c
       Log.d("MicroMsg.IPCallCountryCodeConfig", "config file content: %s", new Object[] { str });
       localInputStream1 = localInputStream2;
       localObject1 = localInputStream2;
-      aLY(str);
+      aIS(str);
       localInputStream1 = localInputStream2;
       localObject1 = localInputStream2;
       this.isInit = true;
-      ad.closeQuietly(localInputStream2);
+      ah.closeQuietly(localInputStream2);
       AppMethodBeat.o(25340);
       return;
     }
@@ -235,20 +235,20 @@ public final class c
       Log.printErrStackTrace("MicroMsg.IPCallCountryCodeConfig", localException, "", new Object[0]);
       localObject1 = localInputStream1;
       Log.e("MicroMsg.IPCallCountryCodeConfig", "initConfig error: %s", new Object[] { localException.getMessage() });
-      ad.closeQuietly(localInputStream1);
+      ah.closeQuietly(localInputStream1);
       AppMethodBeat.o(25340);
       return;
     }
     finally
     {
-      ad.closeQuietly((Closeable)localObject1);
+      ah.closeQuietly((Closeable)localObject1);
       AppMethodBeat.o(25340);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.c
  * JD-Core Version:    0.7.0.1
  */

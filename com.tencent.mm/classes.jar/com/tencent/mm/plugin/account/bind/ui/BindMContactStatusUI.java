@@ -1,30 +1,35 @@
 package com.tencent.mm.plugin.account.bind.ui;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.f;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.account.bind.a.e;
 import com.tencent.mm.plugin.account.bind.a.f;
 import com.tencent.mm.plugin.account.bind.a.h;
 import com.tencent.mm.plugin.account.bind.a.i;
-import com.tencent.mm.plugin.account.friend.a.l;
-import com.tencent.mm.plugin.account.friend.a.l.a;
-import com.tencent.mm.storage.ao;
+import com.tencent.mm.plugin.account.friend.model.i;
+import com.tencent.mm.plugin.account.friend.model.i.a;
+import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.storage.aq;
 import com.tencent.mm.ui.MMWizardActivity;
 
 public class BindMContactStatusUI
   extends MMWizardActivity
 {
-  private Button kEt;
-  private ImageView mRU;
-  private TextView mSl;
-  private TextView mSn;
+  public static String pOU = "intent_back_launcherui";
+  private Button nhC;
+  private ImageView pOB;
+  private TextView pOS;
+  private TextView pOT;
   
   public int getLayoutId()
   {
@@ -34,14 +39,14 @@ public class BindMContactStatusUI
   public void initView()
   {
     AppMethodBeat.i(109883);
-    this.mRU = ((ImageView)findViewById(a.e.bind_m_contact_status_state_icon));
-    this.mSl = ((TextView)findViewById(a.e.bind_m_contact_status_bind_state_title));
-    this.mSn = ((TextView)findViewById(a.e.bind_m_contact_status_bind_state));
-    this.kEt = ((Button)findViewById(a.e.bind_m_contact_status_ok_btn));
-    if (l.byi() == l.a.mWk)
+    this.pOB = ((ImageView)findViewById(a.e.bind_m_contact_status_state_icon));
+    this.pOS = ((TextView)findViewById(a.e.bind_m_contact_status_bind_state_title));
+    this.pOT = ((TextView)findViewById(a.e.bind_m_contact_status_bind_state));
+    this.nhC = ((Button)findViewById(a.e.bind_m_contact_status_ok_btn));
+    if (i.bWW() == i.a.pSQ)
     {
-      this.mRU.setImageResource(a.h.mobile_binded_icon);
-      String str2 = (String)h.aHG().aHp().b(6, null);
+      this.pOB.setImageResource(a.h.mobile_binded_icon);
+      String str2 = (String)h.baE().ban().d(6, null);
       String str1;
       if (str2 != null)
       {
@@ -50,20 +55,41 @@ public class BindMContactStatusUI
       }
       else
       {
-        str1 = (String)h.aHG().aHp().b(4097, null);
+        str1 = (String)h.baE().ban().d(4097, null);
       }
-      this.mSn.setText(getString(a.i.bind_mcontact_status_bind_ok));
-      this.mSl.setText(getString(a.i.bind_mcontact_verify_mobile, new Object[] { str1 }));
+      this.pOT.setText(getString(a.i.bind_mcontact_status_bind_ok));
+      this.pOS.setText(getString(a.i.bind_mcontact_verify_mobile, new Object[] { str1 }));
     }
     for (;;)
     {
-      this.kEt.setOnClickListener(new BindMContactStatusUI.1(this));
+      this.nhC.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(109881);
+          b localb = new b();
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/bind/ui/BindMContactStatusUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          if (BindMContactStatusUI.this.getIntent().getBooleanExtra(BindMContactStatusUI.pOU, false))
+          {
+            paramAnonymousView = new Intent();
+            paramAnonymousView.addFlags(67108864);
+            com.tencent.mm.plugin.account.sdk.a.pFn.n(paramAnonymousView, BindMContactStatusUI.this);
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/bind/ui/BindMContactStatusUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(109881);
+            return;
+          }
+          BindMContactStatusUI.a(BindMContactStatusUI.this);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/bind/ui/BindMContactStatusUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(109881);
+        }
+      });
       AppMethodBeat.o(109883);
       return;
-      this.mRU.setImageResource(a.h.mobile_unbind_icon);
-      this.mSn.setText(a.i.bind_mcontact_unbind_ok);
-      this.mSl.setText(a.i.bind_mcontact_unbind_ok);
-      this.mSn.setVisibility(8);
+      this.pOB.setImageResource(a.h.mobile_unbind_icon);
+      this.pOT.setText(a.i.bind_mcontact_unbind_ok);
+      this.pOS.setText(a.i.bind_mcontact_unbind_ok);
+      this.pOT.setVisibility(8);
     }
   }
   
@@ -81,7 +107,15 @@ public class BindMContactStatusUI
     AppMethodBeat.i(109884);
     if (paramInt == 4)
     {
-      atX(1);
+      if (getIntent().getBooleanExtra(pOU, false))
+      {
+        paramKeyEvent = new Intent();
+        paramKeyEvent.addFlags(67108864);
+        com.tencent.mm.plugin.account.sdk.a.pFn.n(paramKeyEvent, this);
+        AppMethodBeat.o(109884);
+        return true;
+      }
+      aAp(1);
       AppMethodBeat.o(109884);
       return true;
     }
@@ -98,7 +132,7 @@ public class BindMContactStatusUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.BindMContactStatusUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,79 +1,76 @@
 package com.tencent.mm.plugin.remittance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
 import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.sq;
-import com.tencent.mm.protocal.protobuf.su;
-import com.tencent.mm.protocal.protobuf.sv;
+import com.tencent.mm.protocal.protobuf.ug;
+import com.tencent.mm.protocal.protobuf.uh;
+import com.tencent.mm.protocal.protobuf.ui;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class w
-  extends q
-  implements m
+  extends com.tencent.mm.wallet_core.model.w
 {
-  private sv IlX;
-  private su IlY;
-  private i callback;
-  private final d rr;
+  private uh Ojm;
+  private ui Ojn;
+  private h callback;
+  private final c rr;
   
   public w(String paramString1, String paramString2, long paramLong, String paramString3)
   {
-    AppMethodBeat.i(265414);
-    Log.i("MicroMsg.NetScenePersonalPayCheck", "personalpay_order_id = %s ,trans_id = %s ,total_amount = %s，placeorder_ext = %s", new Object[] { paramString1, paramString2, Long.valueOf(paramLong), paramString3 });
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new su();
-    ((d.a)localObject).lBV = new sv();
-    ((d.a)localObject).funcId = 5047;
-    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/personalpaypaycheck";
-    this.rr = ((d.a)localObject).bgN();
-    this.IlY = ((su)d.b.b(this.rr.lBR));
-    localObject = new sq();
-    ((sq)localObject).InU = paramString1;
-    ((sq)localObject).InV = paramString2;
-    ((sq)localObject).InT = paramLong;
-    ((sq)localObject).InW = paramString3;
-    this.IlY.Scb = ((sq)localObject);
-    AppMethodBeat.o(265414);
+    AppMethodBeat.i(288831);
+    Log.i("MicroMsg.NetScenePersonalPayCancelPay", "personalpay_order_id = %s ,trans_id = %s ,total_amount = %s，placeorder_ext = %s", new Object[] { paramString1, paramString2, Long.valueOf(paramLong), paramString3 });
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new uh();
+    ((c.a)localObject).otF = new ui();
+    ((c.a)localObject).funcId = 5003;
+    ((c.a)localObject).uri = "/cgi-bin/mmpay-bin/personalpaycancelpay";
+    this.rr = ((c.a)localObject).bEF();
+    this.Ojm = ((uh)c.b.b(this.rr.otB));
+    localObject = new ug();
+    ((ug)localObject).Olm = paramString1;
+    ((ug)localObject).Oln = paramString2;
+    ((ug)localObject).Oll = paramLong;
+    ((ug)localObject).Olo = paramString3;
+    this.Ojm.YZT = ((ug)localObject);
+    AppMethodBeat.o(288831);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(265415);
-    this.callback = parami;
+    AppMethodBeat.i(288836);
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(265415);
+    AppMethodBeat.o(288836);
     return i;
   }
   
   public final int getType()
   {
-    return 5047;
+    return 5003;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte, long paramLong)
   {
-    AppMethodBeat.i(265416);
-    Log.i("MicroMsg.NetScenePersonalPayCheck", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(288838);
+    Log.i("MicroMsg.NetScenePersonalPayCancelPay", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      this.IlX = ((sv)d.c.b(((d)params).lBS));
+      this.Ojn = ((ui)c.c.b(((c)params).otC));
     }
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(265416);
+    AppMethodBeat.o(288838);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.model.w
  * JD-Core Version:    0.7.0.1
  */

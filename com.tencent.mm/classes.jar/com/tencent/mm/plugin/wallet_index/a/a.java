@@ -2,20 +2,20 @@ package com.tencent.mm.plugin.wallet_index.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.be;
-import com.tencent.mm.plugin.wallet_index.c.o;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.plugin.wallet_index.model.WalletGetA8KeyRedirectListener;
+import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class a
   implements be
 {
-  private o Pji;
+  private WalletGetA8KeyRedirectListener VZW;
   
   public a()
   {
     AppMethodBeat.i(71797);
-    this.Pji = new o();
+    this.VZW = new WalletGetA8KeyRedirectListener();
     AppMethodBeat.o(71797);
   }
   
@@ -29,16 +29,16 @@ public class a
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(71798);
-    EventCenter.instance.addListener(this.Pji.PjG);
-    EventCenter.instance.addListener(this.Pji.PjH);
+    this.VZW.Way.alive();
+    this.VZW.Waz.alive();
     AppMethodBeat.o(71798);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(71799);
-    EventCenter.instance.removeListener(this.Pji.PjG);
-    EventCenter.instance.removeListener(this.Pji.PjH);
+    this.VZW.Way.dead();
+    this.VZW.Waz.dead();
     AppMethodBeat.o(71799);
   }
   

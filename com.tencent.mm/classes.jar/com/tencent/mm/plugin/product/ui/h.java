@@ -11,7 +11,7 @@ import android.widget.Filterable;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.product.a.a;
-import com.tencent.mm.plugin.product.b.d;
+import com.tencent.mm.plugin.product.model.c;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -20,17 +20,17 @@ public final class h
   extends BaseAdapter
   implements Filterable
 {
-  private List<String> GTn;
-  private List<String> GVa;
-  Filter GVb;
+  private List<String> MQR;
+  private List<String> MSC;
+  Filter MSD;
   private Context mContext;
   
   public h(Context paramContext)
   {
     AppMethodBeat.i(66991);
-    this.GVa = null;
-    this.GTn = null;
-    this.GVb = new Filter()
+    this.MSC = null;
+    this.MQR = null;
+    this.MSD = new Filter()
     {
       protected final Filter.FilterResults performFiltering(CharSequence paramAnonymousCharSequence)
       {
@@ -69,14 +69,14 @@ public final class h
       }
     };
     this.mContext = paramContext;
-    this.GVa = a.foU().foW().GTn;
+    this.MSC = a.gzY().gAa().MQR;
     AppMethodBeat.o(66991);
   }
   
   private String getItem(int paramInt)
   {
     AppMethodBeat.i(66993);
-    String str = (String)this.GTn.get(paramInt);
+    String str = (String)this.MQR.get(paramInt);
     AppMethodBeat.o(66993);
     return str;
   }
@@ -84,9 +84,9 @@ public final class h
   public final int getCount()
   {
     AppMethodBeat.i(66992);
-    if (this.GTn != null)
+    if (this.MQR != null)
     {
-      int i = this.GTn.size();
+      int i = this.MQR.size();
       AppMethodBeat.o(66992);
       return i;
     }
@@ -96,7 +96,7 @@ public final class h
   
   public final Filter getFilter()
   {
-    return this.GVb;
+    return this.MSD;
   }
   
   public final long getItemId(int paramInt)
@@ -112,13 +112,13 @@ public final class h
     {
       paramView = new a();
       localView = LayoutInflater.from(this.mContext).inflate(17367043, null);
-      paramView.zlv = ((TextView)localView.findViewById(16908308));
+      paramView.ElR = ((TextView)localView.findViewById(16908308));
       localView.setTag(paramView);
       paramViewGroup = paramView;
     }
     for (;;)
     {
-      paramViewGroup.zlv.setText(getItem(paramInt));
+      paramViewGroup.ElR.setText(getItem(paramInt));
       AppMethodBeat.o(66994);
       return localView;
       paramViewGroup = (a)paramView.getTag();
@@ -128,14 +128,14 @@ public final class h
   
   final class a
   {
-    TextView zlv;
+    TextView ElR;
     
     a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.h
  * JD-Core Version:    0.7.0.1
  */

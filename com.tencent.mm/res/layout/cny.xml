@@ -1,19 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/kx8" android:background="@color/BW_0_Alpha_0_8" android:paddingLeft="@dimen/cn" android:paddingRight="@dimen/cn" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/kz8" android:background="@drawable/d30" android:paddingTop="@dimen/ce" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <TextView android:textSize="@dimen/cb" android:textColor="@color/BW_100_Alpha_0_8" android:gravity="center" android:id="@id/kzc" android:paddingLeft="@dimen/ce" android:paddingRight="@dimen/ce" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/k4m" android:includeFontPadding="false" />
-        <ImageView android:id="@id/kz6" android:layout_width="@dimen/cn" android:layout_height="@dimen/cn" android:layout_marginTop="@dimen/ci" />
-        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb">
-            <TextView android:textSize="@dimen/cb" android:textColor="@color/BW_100_Alpha_0_9" android:ellipsize="end" android:id="@id/kz_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_centerHorizontal="true" />
-            <ImageView android:id="@id/kzb" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:layout_marginLeft="6.0dip" android:layout_toRightOf="@id/kz_" android:layout_centerVertical="true" />
-        </RelativeLayout>
-        <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_5" android:ellipsize="end" android:id="@id/kz7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" android:singleLine="true" android:layout_centerHorizontal="true" />
-        <View android:background="@color/BW_100_Alpha_0_0_5" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="@dimen/ci" />
-        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/cp">
-            <TextView android:textSize="@dimen/cb" android:textColor="@color/BW_100_Alpha_0_8" android:gravity="center" android:id="@id/kza" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="@dimen/bt" android:text="@string/k4l" android:layout_weight="1.0" />
-            <View android:background="@color/BW_100_Alpha_0_0_5" android:layout_width="1.0px" android:layout_height="fill_parent" />
-            <TextView android:textSize="@dimen/cb" android:textColor="#ff7d90a9" android:gravity="center" android:id="@id/kz9" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="@dimen/bt" android:text="@string/k4k" android:layout_weight="1.0" android:layout_centerHorizontal="true" />
-        </LinearLayout>
-    </LinearLayout>
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.finder.view.FinderRefreshLayout android:orientation="vertical" android:id="@id/m_a" android:layout_width="fill_parent" android:layout_height="wrap_content" app:enableFooterFollowWhenNoMoreData="true" app:enableLoadMore="true">
+        <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/ma7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="never" />
+        <com.tencent.mm.plugin.finder.view.refresh.FinderLoaderMoreFooter android:layout_width="wrap_content" android:layout_height="wrap_content" app:loadMoreLayout="@layout/b8d" />
+    </com.tencent.mm.plugin.finder.view.FinderRefreshLayout>
+</LinearLayout>

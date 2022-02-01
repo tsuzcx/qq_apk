@@ -1,0 +1,33 @@
+package com.tencent.mm.plugin.finder.feed;
+
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.finder.model.cc;
+import kotlin.Metadata;
+import kotlin.g.a.b;
+import kotlin.g.b.u;
+
+@Metadata(d1={""}, d2={"<anonymous>", "", "RVFeed", "Lcom/tencent/mm/plugin/finder/model/RVFeed;"}, k=3, mv={1, 5, 1}, xi=48)
+public final class bb$j
+  extends u
+  implements b<cc, Boolean>
+{
+  public static final j AZw;
+  
+  static
+  {
+    AppMethodBeat.i(362925);
+    AZw = new j();
+    AppMethodBeat.o(362925);
+  }
+  
+  bb$j()
+  {
+    super(1);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+ * Qualified Name:     com.tencent.mm.plugin.finder.feed.bb.j
+ * JD-Core Version:    0.7.0.1
+ */

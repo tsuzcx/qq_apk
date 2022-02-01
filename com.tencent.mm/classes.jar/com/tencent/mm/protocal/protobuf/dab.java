@@ -3,96 +3,146 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class dab
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String Inf;
-  public long THw;
-  public String THx;
-  public String THy;
-  public long gbJ;
+  public String Ocp;
+  public String YYi;
+  public String aaFv;
+  public long aaFw;
+  public String aaFx;
+  public String aaFy;
+  public String aaFz;
+  public int state;
+  public String title;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(217118);
+    AppMethodBeat.i(72500);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bm(1, this.THw);
-      if (this.Inf != null) {
-        paramVarArgs.f(2, this.Inf);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.YYi != null) {
+        paramVarArgs.g(1, this.YYi);
       }
-      paramVarArgs.bm(3, this.gbJ);
-      if (this.THx != null) {
-        paramVarArgs.f(4, this.THx);
+      paramVarArgs.bS(2, this.state);
+      if (this.title != null) {
+        paramVarArgs.g(3, this.title);
       }
-      if (this.THy != null) {
-        paramVarArgs.f(5, this.THy);
+      if (this.aaFv != null) {
+        paramVarArgs.g(4, this.aaFv);
       }
-      AppMethodBeat.o(217118);
+      paramVarArgs.bv(5, this.aaFw);
+      if (this.aaFx != null) {
+        paramVarArgs.g(6, this.aaFx);
+      }
+      if (this.Ocp != null) {
+        paramVarArgs.g(7, this.Ocp);
+      }
+      if (this.aaFy != null) {
+        paramVarArgs.g(8, this.aaFy);
+      }
+      if (this.aaFz != null) {
+        paramVarArgs.g(9, this.aaFz);
+      }
+      AppMethodBeat.o(72500);
       return 0;
     }
-    if (paramInt == 1)
-    {
-      int i = g.a.a.b.b.a.p(1, this.THw) + 0;
-      paramInt = i;
-      if (this.Inf != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.Inf);
+    if (paramInt == 1) {
+      if (this.YYi == null) {
+        break label666;
       }
-      i = paramInt + g.a.a.b.b.a.p(3, this.gbJ);
+    }
+    label666:
+    for (paramInt = i.a.a.b.b.a.h(1, this.YYi) + 0;; paramInt = 0)
+    {
+      int i = paramInt + i.a.a.b.b.a.cJ(2, this.state);
       paramInt = i;
-      if (this.THx != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.THx);
+      if (this.title != null) {
+        paramInt = i + i.a.a.b.b.a.h(3, this.title);
       }
       i = paramInt;
-      if (this.THy != null) {
-        i = paramInt + g.a.a.b.b.a.g(5, this.THy);
+      if (this.aaFv != null) {
+        i = paramInt + i.a.a.b.b.a.h(4, this.aaFv);
       }
-      AppMethodBeat.o(217118);
+      i += i.a.a.b.b.a.q(5, this.aaFw);
+      paramInt = i;
+      if (this.aaFx != null) {
+        paramInt = i + i.a.a.b.b.a.h(6, this.aaFx);
+      }
+      i = paramInt;
+      if (this.Ocp != null) {
+        i = paramInt + i.a.a.b.b.a.h(7, this.Ocp);
+      }
+      paramInt = i;
+      if (this.aaFy != null) {
+        paramInt = i + i.a.a.b.b.a.h(8, this.aaFy);
+      }
+      i = paramInt;
+      if (this.aaFz != null) {
+        i = paramInt + i.a.a.b.b.a.h(9, this.aaFz);
+      }
+      AppMethodBeat.o(72500);
       return i;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
-      }
-      AppMethodBeat.o(217118);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      dab localdab = (dab)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(217118);
-        return -1;
-      case 1: 
-        localdab.THw = locala.abFh.AN();
-        AppMethodBeat.o(217118);
-        return 0;
-      case 2: 
-        localdab.Inf = locala.abFh.readString();
-        AppMethodBeat.o(217118);
-        return 0;
-      case 3: 
-        localdab.gbJ = locala.abFh.AN();
-        AppMethodBeat.o(217118);
-        return 0;
-      case 4: 
-        localdab.THx = locala.abFh.readString();
-        AppMethodBeat.o(217118);
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(72500);
         return 0;
       }
-      localdab.THy = locala.abFh.readString();
-      AppMethodBeat.o(217118);
-      return 0;
+      if (paramInt == 3)
+      {
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+        dab localdab = (dab)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(72500);
+          return -1;
+        case 1: 
+          localdab.YYi = locala.ajGk.readString();
+          AppMethodBeat.o(72500);
+          return 0;
+        case 2: 
+          localdab.state = locala.ajGk.aar();
+          AppMethodBeat.o(72500);
+          return 0;
+        case 3: 
+          localdab.title = locala.ajGk.readString();
+          AppMethodBeat.o(72500);
+          return 0;
+        case 4: 
+          localdab.aaFv = locala.ajGk.readString();
+          AppMethodBeat.o(72500);
+          return 0;
+        case 5: 
+          localdab.aaFw = locala.ajGk.aaw();
+          AppMethodBeat.o(72500);
+          return 0;
+        case 6: 
+          localdab.aaFx = locala.ajGk.readString();
+          AppMethodBeat.o(72500);
+          return 0;
+        case 7: 
+          localdab.Ocp = locala.ajGk.readString();
+          AppMethodBeat.o(72500);
+          return 0;
+        case 8: 
+          localdab.aaFy = locala.ajGk.readString();
+          AppMethodBeat.o(72500);
+          return 0;
+        }
+        localdab.aaFz = locala.ajGk.readString();
+        AppMethodBeat.o(72500);
+        return 0;
+      }
+      AppMethodBeat.o(72500);
+      return -1;
     }
-    AppMethodBeat.o(217118);
-    return -1;
   }
 }
 

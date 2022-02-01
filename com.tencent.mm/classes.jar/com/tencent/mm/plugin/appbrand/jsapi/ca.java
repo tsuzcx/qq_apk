@@ -1,19 +1,10 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.content.Intent;
-import com.tencent.luggage.k.f.b;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.v;
-import com.tencent.mm.sdk.platformtools.Log;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public final class ca
-  extends c<com.tencent.mm.plugin.appbrand.service.c>
+  extends c<k>
 {
-  public static final int CTRL_INDEX = 192;
-  public static final String NAME = "openSetting";
+  public static final int CTRL_INDEX = 643;
+  public static final String NAME = "openWCCertHomePage";
 }
 
 

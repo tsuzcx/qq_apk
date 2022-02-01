@@ -9,16 +9,16 @@ class AnimationHelperImpl21below
 {
   public void cancelAnimation(View paramView, Animation paramAnimation)
   {
-    AppMethodBeat.i(263131);
+    AppMethodBeat.i(244082);
     if (paramView != null) {
       paramView.setAnimation(null);
     }
-    AppMethodBeat.o(263131);
+    AppMethodBeat.o(244082);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.AnimationHelperImpl21below
  * JD-Core Version:    0.7.0.1
  */

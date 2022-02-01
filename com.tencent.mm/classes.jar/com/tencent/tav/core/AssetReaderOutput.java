@@ -13,15 +13,16 @@ public abstract class AssetReaderOutput
   protected int mediaType;
   private StatusListener statusListener;
   protected boolean supportsRandomAccess = false;
+  protected CMTimeRange timeRange;
   
-  void addStatusListener(StatusListener paramStatusListener)
+  public void addStatusListener(StatusListener paramStatusListener)
   {
     this.statusListener = paramStatusListener;
   }
   
-  public final CMSampleBuffer copyNextSampleBuffer()
+  public final CMSampleBuffer copyNextSampleBuffer(boolean paramBoolean)
   {
-    CMSampleBuffer localCMSampleBuffer = nextSampleBuffer();
+    CMSampleBuffer localCMSampleBuffer = nextSampleBuffer(paramBoolean);
     if (localCMSampleBuffer.getTime().getTimeUs() > 0L) {}
     do
     {
@@ -32,19 +33,19 @@ public abstract class AssetReaderOutput
           break;
         }
       } while (this.statusListener == null);
-      this.statusListener.statusChanged(this, AssetReader.AVAssetReaderStatus.AssetReaderStatusCompleted);
+      this.statusListener.statusChanged(this, AVAssetReaderStatus.AssetReaderStatusCompleted);
       return localCMSampleBuffer;
     } while (this.statusListener == null);
-    this.statusListener.statusChanged(this, AssetReader.AVAssetReaderStatus.AssetReaderStatusFailed);
+    this.statusListener.statusChanged(this, AVAssetReaderStatus.AssetReaderStatusFailed);
     return localCMSampleBuffer;
   }
   
-  long duration()
+  public long duration()
   {
     return 0L;
   }
   
-  AverageTimeReporter getDecodePerformance()
+  public AverageTimeReporter getDecodePerformance()
   {
     return null;
   }
@@ -66,9 +67,11 @@ public abstract class AssetReaderOutput
   
   public abstract void markConfigurationAsFinal();
   
-  public abstract CMSampleBuffer nextSampleBuffer();
+  public abstract CMSampleBuffer nextSampleBuffer(boolean paramBoolean);
   
   abstract void release();
+  
+  public void reset(CMTimeRange paramCMTimeRange) {}
   
   public abstract void resetForReadingTimeRanges(List<CMTimeRange> paramList);
   
@@ -82,11 +85,14 @@ public abstract class AssetReaderOutput
     this.supportsRandomAccess = paramBoolean;
   }
   
-  abstract void start(IContextCreate paramIContextCreate, AssetReader paramAssetReader);
+  public void start(IContextCreate paramIContextCreate, CMTimeRange paramCMTimeRange)
+  {
+    this.timeRange = paramCMTimeRange;
+  }
   
   static abstract interface StatusListener
   {
-    public abstract void statusChanged(AssetReaderOutput paramAssetReaderOutput, AssetReader.AVAssetReaderStatus paramAVAssetReaderStatus);
+    public abstract void statusChanged(AssetReaderOutput paramAssetReaderOutput, AVAssetReaderStatus paramAVAssetReaderStatus);
   }
 }
 
